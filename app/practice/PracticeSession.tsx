@@ -6,6 +6,9 @@ import { useRouter } from 'next/navigation'
 import MathText from '@/components/MathText'
 import { getSubjectQuestions, type Question } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
+import { predictGrade } from '@/lib/grading'
+import { getPracticeCutoffs } from '@/data/cutoffs'
+import { recordAttempt } from '@/lib/progress'
 import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
 
 function shuffle<T>(arr: T[]): T[] {
@@ -82,16 +85,32 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
+      const subjectName = subjectMeta?.name ?? '練習'
+      const topicResults = buildTopicResults(questions, newAnswers)
+      const elapsed = Math.floor((Date.now() - startTime) / 1000)
+      const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId)).grade
       const resultData = {
         score,
         total: totalQ,
         subjectId,
-        subjectName: subjectMeta?.name ?? '練習',
+        subjectName,
         topicFilter: topicFilter ?? null,
-        topicResults: buildTopicResults(questions, newAnswers),
-        elapsed: Math.floor((Date.now() - startTime) / 1000),
+        topicResults,
+        elapsed,
       }
       localStorage.setItem('dse_result', JSON.stringify(resultData))
+      // Persist to the long-term progress log (powers the dashboard / streaks).
+      recordAttempt({
+        subjectId,
+        subjectName,
+        topicFilter: topicFilter ?? null,
+        score,
+        total: totalQ,
+        grade,
+        topicResults,
+        elapsed,
+        timestamp: Date.now(),
+      })
       router.push('/result')
     } else {
       setCurrent((c) => c + 1)

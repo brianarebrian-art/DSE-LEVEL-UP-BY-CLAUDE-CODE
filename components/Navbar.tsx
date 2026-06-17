@@ -7,6 +7,7 @@ import { Menu, X, BookOpen } from 'lucide-react'
 
 const navLinks = [
   { href: '/subjects', label: '科目' },
+  { href: '/dashboard', label: '我的進度' },
   { href: '/methodology', label: '方法論' },
   { href: '/leaderboard', label: '排行榜' },
   { href: '/about', label: '關於我們' },
