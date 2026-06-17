@@ -7,6 +7,9 @@ import { chemistryQuestions, chemistryTopics } from './chemistry'
 import { biologyQuestions, biologyTopics } from './biology'
 import { englishQuestions, englishTopics } from './english'
 import { ictQuestions, ictTopics } from './ict'
+import { chineseQuestions, chineseTopics } from './chinese'
+import { bafsQuestions, bafsTopics } from './bafs'
+import { geographyQuestions, geographyTopics } from './geography'
 
 export type { Question, MCQuestion, Topic, Difficulty } from './types'
 
@@ -25,6 +28,9 @@ const banks: Record<string, SubjectBank> = {
   biology: { questions: biologyQuestions, topics: biologyTopics },
   english: { questions: englishQuestions, topics: englishTopics },
   ict: { questions: ictQuestions, topics: ictTopics },
+  chinese: { questions: chineseQuestions, topics: chineseTopics },
+  bafs: { questions: bafsQuestions, topics: bafsTopics },
+  geography: { questions: geographyQuestions, topics: geographyTopics },
 }
 
 export function getSubjectQuestions(subjectId: string): Question[] {
