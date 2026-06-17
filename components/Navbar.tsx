@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
+import AuthButton from '@/components/AuthButton'
 
 const navLinks = [
   { href: '/subjects', label: '科目' },
@@ -49,6 +50,7 @@ export default function Navbar() {
           >
             開始練習
           </Link>
+          <AuthButton />
         </div>
 
         {/* Mobile hamburger */}
@@ -82,6 +84,9 @@ export default function Navbar() {
           >
             開始練習
           </Link>
+          <div className="pt-1">
+            <AuthButton onAction={() => setOpen(false)} />
+          </div>
         </div>
       )}
     </nav>

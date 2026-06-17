@@ -92,7 +92,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-3 text-sm">
             <LogIn size={18} className="text-amber-400 shrink-0" />
             <span className="text-slate-400">
-              進度目前儲存喺呢部裝置。<span className="text-slate-300">Google 登入</span>即將推出，登入後可跨裝置同步。
+              進度暫存喺呢部裝置。<span className="text-slate-300">Google 登入</span>後嘅跨裝置同步功能開發中（需數據庫）。
             </span>
           </div>
         </div>
