@@ -10,6 +10,16 @@ import { ictQuestions, ictTopics } from './ict'
 import { chineseQuestions, chineseTopics } from './chinese'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { geographyQuestions, geographyTopics } from './geography'
+import { historyQuestions, historyTopics } from './history'
+import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
+import { thsQuestions, thsTopics } from './ths'
+import { healthManagementQuestions, healthManagementTopics } from './health-management'
+import { designTechQuestions, designTechTopics } from './design-tech'
+import { musicQuestions, musicTopics } from './music'
+import { peQuestions, peTopics } from './pe'
+import { chineseLiteratureQuestions, chineseLiteratureTopics } from './chinese-literature'
+import { englishLiteratureQuestions, englishLiteratureTopics } from './english-literature'
+import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 
 export type { Question, MCQuestion, Topic, Difficulty } from './types'
 
@@ -31,6 +41,16 @@ const banks: Record<string, SubjectBank> = {
   chinese: { questions: chineseQuestions, topics: chineseTopics },
   bafs: { questions: bafsQuestions, topics: bafsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
+  history: { questions: historyQuestions, topics: historyTopics },
+  'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },
+  ths: { questions: thsQuestions, topics: thsTopics },
+  'health-management': { questions: healthManagementQuestions, topics: healthManagementTopics },
+  'design-tech': { questions: designTechQuestions, topics: designTechTopics },
+  music: { questions: musicQuestions, topics: musicTopics },
+  pe: { questions: peQuestions, topics: peTopics },
+  'chinese-literature': { questions: chineseLiteratureQuestions, topics: chineseLiteratureTopics },
+  'english-literature': { questions: englishLiteratureQuestions, topics: englishLiteratureTopics },
+  'visual-arts': { questions: visualArtsQuestions, topics: visualArtsTopics },
 }
 
 export function getSubjectQuestions(subjectId: string): Question[] {
