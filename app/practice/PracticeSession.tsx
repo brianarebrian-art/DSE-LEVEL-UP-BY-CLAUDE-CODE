@@ -20,15 +20,23 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-function buildPool(subjectId: string, topicFilter: string | null): Question[] {
-  const all = getSubjectQuestions(subjectId)
-  const pool = topicFilter ? all.filter((q) => q.topic === topicFilter) : all
-  return shuffle(pool)
+// A question prepared for display: options shuffled, correct answer kept by TEXT
+// so grading compares text (never index) and survives the option shuffle.
+type PreparedQuestion = Question & { shuffledOptions: string[]; correctText: string }
+
+function prepareQuestion(q: Question): PreparedQuestion {
+  return { ...q, shuffledOptions: shuffle(q.options), correctText: q.options[q.correctIndex] }
 }
 
-type AnswerState = { selectedIndex: number; isCorrect: boolean } | null
+function buildPool(subjectId: string, topicFilter: string | null): PreparedQuestion[] {
+  const all = getSubjectQuestions(subjectId)
+  const pool = topicFilter ? all.filter((q) => q.topic === topicFilter) : all
+  return shuffle(pool).map(prepareQuestion)
+}
 
-function buildTopicResults(qs: Question[], ans: AnswerState[]) {
+type AnswerState = { selectedText: string; isCorrect: boolean } | null
+
+function buildTopicResults(qs: PreparedQuestion[], ans: AnswerState[]) {
   const map: Record<string, { topic: string; correct: number; total: number }> = {}
   qs.forEach((q, i) => {
     if (!map[q.topic]) map[q.topic] = { topic: q.topicZh, correct: 0, total: 0 }
@@ -53,7 +61,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
   const router = useRouter()
   const subjectMeta = getSubject(subjectId)
 
-  const [questions] = useState<Question[]>(() => buildPool(subjectId, topicFilter))
+  const [questions] = useState<PreparedQuestion[]>(() => buildPool(subjectId, topicFilter))
   const [startTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
@@ -71,9 +79,9 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
   const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
 
   const selectOption = useCallback(
-    (idx: number) => {
+    (text: string) => {
       if (answerState !== null || !currentQ) return
-      setAnswerState({ selectedIndex: idx, isCorrect: idx === currentQ.correctIndex })
+      setAnswerState({ selectedText: text, isCorrect: text === currentQ.correctText })
     },
     [answerState, currentQ]
   )
@@ -193,14 +201,18 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
 
           {/* Options */}
           <div className="space-y-3">
-            {currentQ.options.map((opt, idx) => {
+            {currentQ.shuffledOptions.map((opt, idx) => {
+              const isCorrectOpt = opt === currentQ.correctText
+              const isSelectedWrong =
+                answerState !== null && opt === answerState.selectedText && !answerState.isCorrect
+
               let style =
                 'border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 hover:border-slate-600 cursor-pointer'
 
               if (answerState !== null) {
-                if (idx === currentQ.correctIndex) {
+                if (isCorrectOpt) {
                   style = 'border-green-500 bg-green-500/10 cursor-default'
-                } else if (idx === answerState.selectedIndex && !answerState.isCorrect) {
+                } else if (isSelectedWrong) {
                   style = 'border-red-500 bg-red-500/10 cursor-default'
                 } else {
                   style = 'border-slate-800 bg-slate-800/30 opacity-50 cursor-default'
@@ -210,7 +222,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
               return (
                 <button
                   key={idx}
-                  onClick={() => selectOption(idx)}
+                  onClick={() => selectOption(opt)}
                   disabled={answerState !== null}
                   className={`w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all option-btn ${style}`}
                 >
@@ -220,14 +232,12 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
                   <span className="leading-relaxed text-sm sm:text-base">
                     <MathText>{opt}</MathText>
                   </span>
-                  {answerState !== null && idx === currentQ.correctIndex && (
+                  {answerState !== null && isCorrectOpt && (
                     <CheckCircle size={18} className="text-green-400 ml-auto shrink-0 mt-0.5" />
                   )}
-                  {answerState !== null &&
-                    idx === answerState.selectedIndex &&
-                    !answerState.isCorrect && (
-                      <XCircle size={18} className="text-red-400 ml-auto shrink-0 mt-0.5" />
-                    )}
+                  {isSelectedWrong && (
+                    <XCircle size={18} className="text-red-400 ml-auto shrink-0 mt-0.5" />
+                  )}
                 </button>
               )
             })}
