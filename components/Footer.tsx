@@ -51,7 +51,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="mailto:contact@dselevelup.hk" className="hover:text-slate-300 transition-colors">
+                <a href="mailto:brianarebrian@gmail.com" className="hover:text-slate-300 transition-colors">
                   聯絡我們
                 </a>
               </li>

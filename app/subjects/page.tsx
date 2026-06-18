@@ -145,7 +145,7 @@ export default function SubjectsPage() {
             話我哋知你考緊邊科，我哋會調整生產優先級。
           </p>
           <a
-            href="mailto:contact@dselevelup.hk"
+            href="mailto:brianarebrian@gmail.com"
             className="inline-flex items-center gap-2 text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
           >
             告訴我哋你想要嘅科目
