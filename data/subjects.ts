@@ -152,6 +152,19 @@ export const subjects: SubjectMeta[] = [
     description: '選修科中較熱門。數字系統、程式編寫、數據庫、網絡。',
     accent: 'blue',
   },
+  {
+    id: 'economics',
+    name: '經濟',
+    nameEn: 'Economics',
+    short: '經濟',
+    emoji: '📈',
+    category: 'elective',
+    priority: 'P2',
+    hasMC: true,
+    isActive: true,
+    description: '熱門選修科。微觀（需求供應、彈性、市場結構）與宏觀（國民收入、通脹、國際貿易）。',
+    accent: 'emerald',
+  },
 
   // ── P3：人文科目 ──
   {

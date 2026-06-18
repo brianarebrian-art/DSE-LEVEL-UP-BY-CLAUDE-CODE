@@ -9,6 +9,7 @@ import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
+import { getSeen, recordSeen } from '@/lib/seen'
 import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
 
 function shuffle<T>(arr: T[]): T[] {
@@ -28,10 +29,24 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: shuffle(q.options), correctText: q.options[q.correctIndex] }
 }
 
+// How many questions one practice run draws from the subject's bank.
+const SESSION_SIZE = 20
+
 function buildPool(subjectId: string, topicFilter: string | null): PreparedQuestion[] {
   const all = getSubjectQuestions(subjectId)
   const pool = topicFilter ? all.filter((q) => q.topic === topicFilter) : all
-  return shuffle(pool).map(prepareQuestion)
+
+  // Prefer questions the user hasn't been shown recently: unseen ones first (in
+  // random order), then the longest-ago-seen, so re-doing a subject surfaces
+  // fresh questions and only repeats once the whole bank is exhausted.
+  const seen = getSeen(subjectId) // recently-shown ids, most-recent first
+  const recency = new Map(seen.map((id, i) => [id, i]))
+  const unseen = shuffle(pool.filter((q) => !recency.has(q.id)))
+  const seenOldestFirst = pool
+    .filter((q) => recency.has(q.id))
+    .sort((a, b) => recency.get(b.id)! - recency.get(a.id)!)
+
+  return [...unseen, ...seenOldestFirst].slice(0, SESSION_SIZE).map(prepareQuestion)
 }
 
 type AnswerState = { selectedText: string; isCorrect: boolean } | null
@@ -67,6 +82,11 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
   const [answers, setAnswers] = useState<AnswerState[]>([])
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   const [elapsed, setElapsed] = useState(0)
+
+  // Remember which questions were shown so the next run can avoid repeating them.
+  useEffect(() => {
+    recordSeen(subjectId, questions.map((q) => q.id))
+  }, [subjectId, questions])
 
   // Live timer.
   useEffect(() => {

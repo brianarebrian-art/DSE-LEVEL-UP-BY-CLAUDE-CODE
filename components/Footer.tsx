@@ -1,7 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import { BookOpen } from 'lucide-react'
+import { useT } from '@/lib/i18n'
 
 export default function Footer() {
+  const t = useT()
   return (
     <footer className="border-t border-slate-800 bg-[#080C14] mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
@@ -15,44 +19,44 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed">
-              改寫版歷屆試題，掌握核心邏輯。
-              <br />由 2026 DSE 考生製作。
+              {t.footer.tagline1}
+              <br />{t.footer.tagline2}
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <div className="text-slate-300 font-medium mb-3">練習</div>
+            <div className="text-slate-300 font-medium mb-3">{t.footer.practiceHeading}</div>
             <ul className="space-y-2 text-sm text-slate-500">
               <li>
                 <Link href="/subjects/math" className="hover:text-slate-300 transition-colors">
-                  數學
+                  {t.footer.linkMath}
                 </Link>
               </li>
               <li>
                 <Link href="/methodology" className="hover:text-slate-300 transition-colors">
-                  方法論
+                  {t.footer.linkMethodology}
                 </Link>
               </li>
               <li>
                 <Link href="/leaderboard" className="hover:text-slate-300 transition-colors">
-                  排行榜
+                  {t.footer.linkLeaderboard}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <div className="text-slate-300 font-medium mb-3">關於</div>
+            <div className="text-slate-300 font-medium mb-3">{t.footer.aboutHeading}</div>
             <ul className="space-y-2 text-sm text-slate-500">
               <li>
                 <Link href="/about" className="hover:text-slate-300 transition-colors">
-                  關於我們
+                  {t.footer.aboutUs}
                 </Link>
               </li>
               <li>
                 <a href="mailto:brianarebrian@gmail.com" className="hover:text-slate-300 transition-colors">
-                  聯絡我們
+                  {t.footer.contact}
                 </a>
               </li>
             </ul>
@@ -62,11 +66,11 @@ export default function Footer() {
         {/* Legal disclaimer */}
         <div className="border-t border-slate-800 pt-6 text-xs text-slate-600 leading-relaxed">
           <p className="mb-2">
-            <span className="text-slate-500 font-medium">免責聲明：</span>
-            本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。官方歷屆試題請前往 HKEAA 網站下載。等級預測僅供參考，最終成績以 HKEAA 公布為準。
+            <span className="text-slate-500 font-medium">{t.footer.disclaimerLabel}</span>
+            {t.footer.disclaimerBody}
           </p>
           <p className="text-slate-700">
-            © 2026 DSE Level Up · 非商業用途 · 保留所有權利
+            {t.footer.copyright}
           </p>
         </div>
       </div>

@@ -5,18 +5,21 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
+import LanguageToggle from '@/components/LanguageToggle'
+import { useT } from '@/lib/i18n'
 
-const navLinks = [
-  { href: '/subjects', label: '科目' },
-  { href: '/dashboard', label: '我的進度' },
-  { href: '/methodology', label: '方法論' },
-  { href: '/leaderboard', label: '排行榜' },
-  { href: '/about', label: '關於我們' },
+const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'leaderboard' | 'about' }[] = [
+  { href: '/subjects', key: 'subjects' },
+  { href: '/dashboard', key: 'progress' },
+  { href: '/methodology', key: 'methodology' },
+  { href: '/leaderboard', key: 'leaderboard' },
+  { href: '/about', key: 'about' },
 ]
 
 export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const t = useT()
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80 bg-[#080C14]/90 backdrop-blur-md">
@@ -41,15 +44,16 @@ export default function Navbar() {
                   : 'text-slate-400 hover:text-slate-100'
               }`}
             >
-              {l.label}
+              {t.nav[l.key]}
             </Link>
           ))}
           <Link
             href="/subjects/math"
             className="ml-2 bg-amber-500 hover:bg-amber-400 text-black font-semibold text-sm px-4 py-2 rounded-lg transition-colors"
           >
-            開始練習
+            {t.nav.startPractice}
           </Link>
+          <LanguageToggle />
           <AuthButton />
         </div>
 
@@ -74,7 +78,7 @@ export default function Navbar() {
                 pathname === l.href ? 'text-amber-400' : 'text-slate-300'
               }`}
             >
-              {l.label}
+              {t.nav[l.key]}
             </Link>
           ))}
           <Link
@@ -82,9 +86,10 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="bg-amber-500 text-black font-semibold text-sm text-center py-2 rounded-lg"
           >
-            開始練習
+            {t.nav.startPractice}
           </Link>
-          <div className="pt-1">
+          <div className="pt-1 flex items-center justify-between">
+            <LanguageToggle />
             <AuthButton onAction={() => setOpen(false)} />
           </div>
         </div>
