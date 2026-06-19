@@ -304,15 +304,165 @@ export const economicsQuestions: Question[] = [
       'A depreciation of the local currency lowers the foreign-currency price of exports (more competitive, tending to rise) while making imports bought in local currency dearer (tending to fall). Key point: the directional effect of exchange-rate changes on import/export prices.',
     marks: 4,
   },
+  {
+    id: 'econ_q21', type: 'mc', subject: 'economics', topic: 'firm_production', topicZh: '廠商與生產', topicEn: 'Firms & Production',
+    framework: 'production', frameworkZh: '生產理論', frameworkEn: 'Production Theory', frameworkEmoji: '🏭',
+    difficulty: 'hard', year: 2023,
+    content: '在「短期」內，廠房與機器數量固定，廠商不斷增聘工人。當工人增加到某一點後，每多聘一名工人所帶來的「額外產量」開始下降。這現象稱為？',
+    contentEn: 'In the "short run", with factory space and machines fixed, a firm keeps hiring more workers. Beyond a certain point, each additional worker adds less "extra output" than the one before. This is called?',
+    options: ['邊際回報遞減（diminishing marginal returns）', '規模經濟（economies of scale）', '規模不經濟（diseconomies of scale）', '長期平均成本下降'],
+    optionsEn: ['Diminishing marginal returns', 'Economies of scale', 'Diseconomies of scale', 'Falling long-run average cost'],
+    correctIndex: 0,
+    explanation:
+      '邊際回報遞減是「短期」概念：在固定生產要素（廠房、機器）下增加可變要素（勞工），超過某點後每單位新增要素的邊際產量下降。規模經濟／不經濟是「長期」、所有要素同時改變時平均成本的變化，與此不同。考核重點：短期邊際回報遞減 vs 長期規模經濟。',
+    explanationEn:
+      'Diminishing marginal returns is a "short-run" idea: adding a variable input (labour) to fixed inputs (premises, machines) eventually lowers the marginal product of each extra unit. Economies/diseconomies of scale are "long-run" changes in average cost when all inputs change together — a different concept. Key point: short-run diminishing returns vs long-run economies of scale.',
+    marks: 4,
+  },
+  {
+    id: 'econ_q22', type: 'mc', subject: 'economics', topic: 'firm_production', topicZh: '廠商與生產', topicEn: 'Firms & Production',
+    framework: 'production', frameworkZh: '生產理論', frameworkEn: 'Production Theory', frameworkEmoji: '🏭',
+    difficulty: 'hard', year: 2022,
+    content: '某廠商生產 50 件產品，總固定成本為 \\$2,000、總可變成本為 \\$3,000。其「平均總成本」（average total cost, ATC）為？',
+    contentEn: 'A firm produces 50 units. Its total fixed cost is \\$2,000 and total variable cost is \\$3,000. Its "average total cost" (ATC) is?',
+    options: ['\\$100', '\\$60（只計可變成本）', '\\$40（只計固定成本）', '\\$5,000（總成本，未除以產量）'],
+    optionsEn: ['\\$100', '\\$60 (variable cost only)', '\\$40 (fixed cost only)', '\\$5,000 (total cost, not divided by output)'],
+    correctIndex: 0,
+    explanation:
+      '平均總成本 ＝ 總成本 ÷ 產量 ＝（總固定成本 ＋ 總可變成本）÷ 產量 ＝（\\$2,000 ＋ \\$3,000）÷ 50 ＝ \\$5,000 ÷ 50 ＝ \\$100。常見錯誤是只用固定或可變成本其中一項，或忘記除以產量。考核重點：ATC ＝（TFC＋TVC）÷ Q。',
+    explanationEn:
+      'Average total cost = total cost ÷ output = (total fixed cost + total variable cost) ÷ output = (\\$2,000 + \\$3,000) ÷ 50 = \\$5,000 ÷ 50 = \\$100. Common errors are using only fixed or only variable cost, or forgetting to divide by output. Key point: ATC = (TFC + TVC) ÷ Q.',
+    marks: 4,
+  },
+  {
+    id: 'econ_q23', type: 'mc', subject: 'economics', topic: 'firm_production', topicZh: '廠商與生產', topicEn: 'Firms & Production',
+    framework: 'production', frameworkZh: '生產理論', frameworkEn: 'Production Theory', frameworkEmoji: '🏭',
+    difficulty: 'hard', year: 2021,
+    content: '老闆放棄一份月薪 \\$30,000 的工作來自己創業。計算企業的「經濟利潤」（economic profit）時，相比「會計利潤」還必須額外扣除甚麼？',
+    contentEn: 'An owner gives up a job paying \\$30,000 a month to start her own business. Compared with "accounting profit", what must be additionally deducted to obtain "economic profit"?',
+    options: ['隱性成本（自有資源的機會成本，如放棄的薪金）', '只需扣除顯性（會計）成本，毋須其他', '銷售稅', '只扣除固定成本'],
+    optionsEn: ['Implicit costs (the opportunity cost of own resources, e.g. the forgone salary)', 'Only explicit (accounting) costs, nothing more', 'Sales tax', 'Only fixed costs'],
+    correctIndex: 0,
+    explanation:
+      '會計利潤只扣除「顯性成本」（實際支付的費用）；經濟利潤還要扣除「隱性成本」——投入自有資源的機會成本，如老闆放棄的 \\$30,000 月薪、自有資金本可賺取的利息等，故經濟利潤通常低於會計利潤。考核重點：經濟利潤 ＝ 總收入 － 顯性成本 － 隱性成本。',
+    explanationEn:
+      'Accounting profit deducts only "explicit costs" (actual payments); economic profit also deducts "implicit costs" — the opportunity cost of own resources, such as the owner’s forgone \\$30,000 salary or interest the own capital could have earned — so economic profit is usually lower than accounting profit. Key point: economic profit = total revenue − explicit − implicit costs.',
+    marks: 4,
+  },
+  {
+    id: 'econ_q24', type: 'mc', subject: 'economics', topic: 'market_structure', topicZh: '市場結構', topicEn: 'Market Structure',
+    framework: 'market_structure', frameworkZh: '市場結構', frameworkEn: 'Market Structure', frameworkEmoji: '🏪',
+    difficulty: 'medium', year: 2022,
+    content: '市場有「眾多」廠商售賣性質相近但「有差異」的產品（如食肆、髮型屋），可自由出入市場，各廠商對自己的產品有少許定價能力。這屬於哪種市場結構？',
+    contentEn: 'A market has "many" firms selling similar but "differentiated" products (e.g. restaurants, hair salons), with free entry and exit, and each firm has slight pricing power over its own product. This is which market structure?',
+    options: ['壟斷性競爭（monopolistic competition）', '完全競爭（perfect competition）', '寡頭壟斷（oligopoly）', '完全壟斷（monopoly）'],
+    optionsEn: ['Monopolistic competition', 'Perfect competition', 'Oligopoly', 'Monopoly'],
+    correctIndex: 0,
+    explanation:
+      '壟斷性競爭兼有「競爭」（廠商眾多、自由出入）與「壟斷」（產品差異化帶來少許定價能力）的特徵。完全競爭要求產品同質、廠商為價格接受者；寡頭壟斷只得少數大廠商互相依存；完全壟斷則只得一家。考核重點：以「廠商數目 ＋ 產品是否差異化」辨認市場結構。',
+    explanationEn:
+      'Monopolistic competition combines "competitive" features (many firms, free entry/exit) with "monopoly-like" features (differentiation giving slight pricing power). Perfect competition requires homogeneous products and price-taking firms; oligopoly has only a few interdependent large firms; monopoly has just one. Key point: identify a structure by the number of firms plus whether products are differentiated.',
+    marks: 3,
+  },
+  {
+    id: 'econ_q25', type: 'mc', subject: 'economics', topic: 'market_structure', topicZh: '市場結構', topicEn: 'Market Structure',
+    framework: 'market_structure', frameworkZh: '市場結構', frameworkEn: 'Market Structure', frameworkEmoji: '🏪',
+    difficulty: 'hard', year: 2023,
+    content: '香港的超級市場、電訊及石油氣市場，均由「少數大廠商」主導，每家在定價或推廣時都必須顧及對手的反應。這種「互相依存」最能反映哪種市場結構？',
+    contentEn: 'Hong Kong’s supermarket, telecoms and LPG markets are each dominated by "a few large firms", and each must consider rivals’ reactions when pricing or promoting. This "interdependence" best reflects which market structure?',
+    options: ['寡頭壟斷（oligopoly）', '完全競爭（perfect competition）', '壟斷性競爭（monopolistic competition）', '完全壟斷（monopoly）'],
+    optionsEn: ['Oligopoly', 'Perfect competition', 'Monopolistic competition', 'Monopoly'],
+    correctIndex: 0,
+    explanation:
+      '寡頭壟斷的核心特徵是「少數大廠商」與「相互依存」——一家的定價或推廣決策會牽動對手反應，故常見價格僵硬、非價格競爭甚至勾結。完全競爭與壟斷性競爭廠商眾多、無須理會個別對手；完全壟斷則根本沒有競爭對手。考核重點：寡頭壟斷的「相互依存」特性。',
+    explanationEn:
+      'The defining features of oligopoly are "a few large firms" and "interdependence" — one firm’s pricing or promotion provokes rivals’ reactions, often giving rigid prices, non-price competition or even collusion. Perfect and monopolistic competition have many firms that need not watch any single rival; a monopoly has no rivals at all. Key point: the "interdependence" of oligopoly.',
+    marks: 4,
+  },
+  {
+    id: 'econ_q26', type: 'mc', subject: 'economics', topic: 'macroeconomics', topicZh: '宏觀經濟', topicEn: 'Macroeconomics',
+    framework: 'macro', frameworkZh: '宏觀經濟', frameworkEn: 'Macroeconomics', frameworkEmoji: '🧮',
+    difficulty: 'hard', year: 2022,
+    content: '在一個只有家庭與廠商的簡單模型中，若「邊際消費傾向」（MPC）為 0.8，則「簡單支出乘數」（multiplier）的數值為？',
+    contentEn: 'In a simple model with only households and firms, if the "marginal propensity to consume" (MPC) is 0.8, the value of the "simple spending multiplier" is?',
+    options: ['5', '1.25', '0.2', '8'],
+    optionsEn: ['5', '1.25', '0.2', '8'],
+    correctIndex: 0,
+    explanation:
+      '簡單支出乘數 ＝ 1 ÷（1 － MPC）＝ 1 ÷（1 － 0.8）＝ 1 ÷ 0.2 ＝ 5，即每 \\$1 自發開支最終令國民收入增加約 \\$5。常見錯誤是計成 1 ÷ MPC（＝1.25）或 1 － MPC（＝0.2）。考核重點：乘數 ＝ 1 ÷（1 － MPC）。',
+    explanationEn:
+      'The simple multiplier = 1 ÷ (1 − MPC) = 1 ÷ (1 − 0.8) = 1 ÷ 0.2 = 5, so each \\$1 of autonomous spending ultimately raises national income by about \\$5. Common errors are computing 1 ÷ MPC (= 1.25) or 1 − MPC (= 0.2). Key point: multiplier = 1 ÷ (1 − MPC).',
+    marks: 4,
+  },
+  {
+    id: 'econ_q27', type: 'mc', subject: 'economics', topic: 'macroeconomics', topicZh: '宏觀經濟', topicEn: 'Macroeconomics',
+    framework: 'macro', frameworkZh: '宏觀經濟', frameworkEn: 'Macroeconomics', frameworkEmoji: '🧮',
+    difficulty: 'hard', year: 2023,
+    content: '若一國出現嚴重通脹，中央銀行採取「緊縮性貨幣政策」（contractionary monetary policy），最典型的做法是？',
+    contentEn: 'Facing serious inflation, a central bank adopts a "contractionary monetary policy". The most typical action is?',
+    options: ['提高利率／減少貨幣供應，以抑制總需求', '增加政府開支以刺激經濟', '減稅以增加家庭可支配收入', '降低利率以鼓勵借貸消費'],
+    optionsEn: ['Raise interest rates / reduce the money supply to curb aggregate demand', 'Increase government spending to stimulate the economy', 'Cut taxes to raise households’ disposable income', 'Lower interest rates to encourage borrowing and spending'],
+    correctIndex: 0,
+    explanation:
+      '緊縮性「貨幣」政策由中央銀行透過提高利率、減少貨幣供應，壓抑借貸與總需求，從而為通脹降溫。增加政府開支與減稅屬「財政」政策（且方向為擴張性）；降低利率屬擴張性貨幣政策，方向相反。考核重點：分辨貨幣 vs 財政政策、緊縮 vs 擴張方向。',
+    explanationEn:
+      'A contractionary "monetary" policy works through the central bank raising interest rates and reducing the money supply, dampening borrowing and aggregate demand to cool inflation. Raising government spending and cutting taxes are "fiscal" policy (and expansionary); lowering interest rates is expansionary monetary policy — the opposite direction. Key point: monetary vs fiscal policy and contractionary vs expansionary direction.',
+    marks: 4,
+  },
+  {
+    id: 'econ_q28', type: 'mc', subject: 'economics', topic: 'macroeconomics', topicZh: '宏觀經濟', topicEn: 'Macroeconomics',
+    framework: 'macro', frameworkZh: '宏觀經濟', frameworkEn: 'Macroeconomics', frameworkEmoji: '🧮',
+    difficulty: 'medium', year: 2021,
+    content: '計算本地生產總值（GDP）時，下列哪一項「應」被計算在內？',
+    contentEn: 'When computing Gross Domestic Product (GDP), which of the following "should" be included?',
+    options: ['本期在本地生產的最終商品及服務的市場價值', '二手轉售舊樓的成交額', '製造汽車時用作中間投入的鋼材價值（已計入汽車）', '政府發放的綜援等轉移支付'],
+    optionsEn: ['The market value of final goods and services produced domestically this period', 'The resale value of an old second-hand flat', 'The value of steel used as an intermediate input in making cars (already in the car)', 'Government transfer payments such as social-security allowances'],
+    correctIndex: 0,
+    explanation:
+      'GDP 只計「本期」「本地」生產的「最終」商品及服務的市場價值。中間產品（鋼材）已包含在最終產品（汽車）價值內，另計會重複計算；二手轉售並非本期生產；轉移支付（綜援）並無對應的生產，故均不計入。考核重點：最終產品、避免重複計算、剔除二手與轉移支付。',
+    explanationEn:
+      'GDP counts only the market value of "final" goods and services produced "domestically" "this period". Intermediate goods (steel) are already embedded in the final product (cars), so counting them again double-counts; a second-hand resale is not current production; and transfer payments (allowances) correspond to no production — all excluded. Key point: final goods, avoid double counting, exclude second-hand sales and transfers.',
+    marks: 3,
+  },
+  {
+    id: 'econ_q29', type: 'mc', subject: 'economics', topic: 'trade', topicZh: '國際貿易', topicEn: 'International Trade',
+    framework: 'international', frameworkZh: '國際經濟', frameworkEn: 'International Economics', frameworkEmoji: '🌐',
+    difficulty: 'hard', year: 2022,
+    content: '政府對進口鋼材徵收「關稅」（tariff）以保護本地鋼鐵業。其最直接的影響是？',
+    contentEn: 'A government imposes a "tariff" on imported steel to protect its domestic steel industry. The most direct effect is?',
+    options: ['推高進口鋼材的本地售價，減少進口、保護本地生產者，但本地消費者付出更高價格', '降低進口鋼材的本地售價，令進口增加', '對進口鋼材的價格與數量都沒有影響', '令本地鋼材的出口立即大增'],
+    optionsEn: ['It raises the local price of imported steel, cutting imports and protecting domestic producers, but local consumers pay more', 'It lowers the local price of imported steel, increasing imports', 'It has no effect on the price or quantity of imported steel', 'It immediately boosts local steel exports'],
+    correctIndex: 0,
+    explanation:
+      '關稅是對進口品徵稅，直接推高進口鋼材的本地售價，使進口量下跌、本地生產者受保護，但本地消費者（及以鋼為原料的廠商）須付更高價格，整體往往造成無謂損失。這是貿易保護主義的典型工具。考核重點：關稅對價格、進口量與不同持份者的影響。',
+    explanationEn:
+      'A tariff taxes imports, directly raising the local price of imported steel, so imports fall and domestic producers are protected — but local consumers (and firms using steel) pay more, often creating a deadweight loss overall. It is a classic protectionist tool. Key point: a tariff’s effect on price, import volume and different stakeholders.',
+    marks: 4,
+  },
+  {
+    id: 'econ_q30', type: 'mc', subject: 'economics', topic: 'trade', topicZh: '國際貿易', topicEn: 'International Trade',
+    framework: 'international', frameworkZh: '國際經濟', frameworkEn: 'International Economics', frameworkEmoji: '🌐',
+    difficulty: 'hard', year: 2020,
+    content: '甲國每生產 1 部電腦須放棄 4 噸小麥；乙國每生產 1 部電腦須放棄 6 噸小麥。按「比較優勢」原則，應由哪一國專門生產電腦？',
+    contentEn: 'Country A gives up 4 tonnes of wheat to produce 1 computer; Country B gives up 6 tonnes of wheat to produce 1 computer. By the principle of "comparative advantage", which country should specialise in computers?',
+    options: ['甲國（生產電腦的機會成本較低：4 ＜ 6 噸小麥）', '乙國（放棄較多小麥）', '兩國都應自給自足、不作分工', '資料不足，無法判斷'],
+    optionsEn: ['Country A (lower opportunity cost of a computer: 4 < 6 tonnes of wheat)', 'Country B (it gives up more wheat)', 'Both should be self-sufficient without specialising', 'Cannot be determined from the data'],
+    correctIndex: 0,
+    explanation:
+      '比較優勢看「機會成本」：生產 1 部電腦，甲國放棄 4 噸小麥、乙國放棄 6 噸，甲國機會成本較低，故甲國應專門生產電腦、乙國專門生產小麥，再透過貿易互利。「放棄較多」反而代表機會成本較高、不應專責生產該物。考核重點：以機會成本（而非絕對產量）判斷比較優勢。',
+    explanationEn:
+      'Comparative advantage looks at "opportunity cost": to make 1 computer, Country A gives up 4 tonnes of wheat versus Country B’s 6, so A’s opportunity cost is lower and A should specialise in computers while B specialises in wheat, then trade. Giving up "more" wheat means a higher opportunity cost — a reason NOT to specialise in that good. Key point: judge comparative advantage by opportunity cost, not absolute output.',
+    marks: 4,
+  },
 ]
 
 export const economicsTopics: Topic[] = [
   { id: 'basic_concepts', zh: '基礎概念', framework: '稀缺與選擇', emoji: '💡', count: 3 },
   { id: 'demand_supply', zh: '需求與供應', framework: '市場機制', emoji: '📈', count: 3 },
   { id: 'elasticity', zh: '彈性', framework: '市場機制', emoji: '📊', count: 3 },
-  { id: 'firm_production', zh: '廠商與生產', framework: '生產理論', emoji: '🏭', count: 2 },
-  { id: 'market_structure', zh: '市場結構', framework: '市場結構', emoji: '🏪', count: 2 },
+  { id: 'firm_production', zh: '廠商與生產', framework: '生產理論', emoji: '🏭', count: 5 },
+  { id: 'market_structure', zh: '市場結構', framework: '市場結構', emoji: '🏪', count: 4 },
   { id: 'market_failure', zh: '市場失靈', framework: '效率與干預', emoji: '⚖️', count: 2 },
-  { id: 'macroeconomics', zh: '宏觀經濟', framework: '宏觀經濟', emoji: '🧮', count: 3 },
-  { id: 'trade', zh: '國際貿易', framework: '國際經濟', emoji: '🌐', count: 2 },
+  { id: 'macroeconomics', zh: '宏觀經濟', framework: '宏觀經濟', emoji: '🧮', count: 6 },
+  { id: 'trade', zh: '國際貿易', framework: '國際經濟', emoji: '🌐', count: 4 },
 ]
