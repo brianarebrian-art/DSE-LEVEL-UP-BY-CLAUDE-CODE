@@ -6,15 +6,20 @@ export interface MCQuestion {
   subject: string
   topic: string
   topicZh: string
+  topicEn?: string
   framework: string
   frameworkZh: string
+  frameworkEn?: string
   frameworkEmoji: string
   difficulty: Difficulty
   year: number
   content: string
+  contentEn?: string
   options: string[]
+  optionsEn?: string[]
   correctIndex: number
   explanation: string
+  explanationEn?: string
   marks: number
 }
 

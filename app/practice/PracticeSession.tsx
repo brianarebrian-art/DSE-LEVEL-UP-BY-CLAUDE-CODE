@@ -10,6 +10,7 @@ import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
 import { getSeen, recordSeen } from '@/lib/seen'
+import { useLocale } from '@/lib/i18n'
 import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
 
 function shuffle<T>(arr: T[]): T[] {
@@ -21,12 +22,21 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
-// A question prepared for display: options shuffled, correct answer kept by TEXT
-// so grading compares text (never index) and survives the option shuffle.
-type PreparedQuestion = Question & { shuffledOptions: string[]; correctText: string }
+// An option carries both languages so the display can switch 中/EN while grading
+// stays anchored to the (always-present) Chinese text.
+interface PreparedOption {
+  zh: string
+  en: string | null
+}
+
+// A question prepared for display: options shuffled as zh/en pairs, with the
+// correct answer kept by its Chinese TEXT — so grading compares a stable,
+// language-independent value (never an index, and unaffected by the toggle).
+type PreparedQuestion = Question & { shuffledOptions: PreparedOption[]; correctZh: string }
 
 function prepareQuestion(q: Question): PreparedQuestion {
-  return { ...q, shuffledOptions: shuffle(q.options), correctText: q.options[q.correctIndex] }
+  const pairs: PreparedOption[] = q.options.map((zh, i) => ({ zh, en: q.optionsEn?.[i] ?? null }))
+  return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
 }
 
 // How many questions one practice run draws from the subject's bank.
@@ -49,7 +59,7 @@ function buildPool(subjectId: string, topicFilter: string | null): PreparedQuest
   return [...unseen, ...seenOldestFirst].slice(0, SESSION_SIZE).map(prepareQuestion)
 }
 
-type AnswerState = { selectedText: string; isCorrect: boolean } | null
+type AnswerState = { selectedZh: string; isCorrect: boolean } | null
 
 function buildTopicResults(qs: PreparedQuestion[], ans: AnswerState[]) {
   const map: Record<string, { topic: string; correct: number; total: number }> = {}
@@ -74,6 +84,7 @@ interface SessionProps {
 // It is re-mounted (via `key`) whenever subject/topic changes, re-running the shuffle.
 export default function PracticeSession({ subjectId, topicFilter }: SessionProps) {
   const router = useRouter()
+  const { locale, t } = useLocale()
   const subjectMeta = getSubject(subjectId)
 
   const [questions] = useState<PreparedQuestion[]>(() => buildPool(subjectId, topicFilter))
@@ -82,6 +93,13 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
   const [answers, setAnswers] = useState<AnswerState[]>([])
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   const [elapsed, setElapsed] = useState(0)
+
+  // Show the English string when the UI is in English and a translation exists;
+  // otherwise fall back to the Chinese original (so untranslated subjects still work).
+  const tr = useCallback(
+    (zh: string, en?: string | null) => (locale === 'en' && en ? en : zh),
+    [locale]
+  )
 
   // Remember which questions were shown so the next run can avoid repeating them.
   useEffect(() => {
@@ -99,9 +117,9 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
   const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
 
   const selectOption = useCallback(
-    (text: string) => {
+    (zh: string) => {
       if (answerState !== null || !currentQ) return
-      setAnswerState({ selectedText: text, isCorrect: text === currentQ.correctText })
+      setAnswerState({ selectedZh: zh, isCorrect: zh === currentQ.correctZh })
     },
     [answerState, currentQ]
   )
@@ -153,10 +171,12 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center">
         <div className="text-5xl">{subjectMeta?.emoji ?? '📝'}</div>
         <p className="text-slate-400">
-          {subjectMeta ? `${subjectMeta.name} 嘅練習` : '呢個練習'}仲未上線。
+          {subjectMeta
+            ? t.practice.notLive.replace('{subject}', tr(subjectMeta.name, subjectMeta.nameEn))
+            : t.practice.notLiveGeneric}
         </p>
         <Link href="/subjects" className="text-amber-400 hover:text-amber-300 underline">
-          睇下其他已上線科目 →
+          {t.practice.otherSubjects}
         </Link>
       </div>
     )
@@ -164,7 +184,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
 
   if (!currentQ) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-slate-500">載入中…</div>
+      <div className="min-h-screen flex items-center justify-center text-slate-500">{t.practice.loading}</div>
     )
   }
 
@@ -176,7 +196,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
         {subjectMeta && (
           <div className="flex items-center gap-2 mb-3 text-sm">
             <span>{subjectMeta.emoji}</span>
-            <span className="text-slate-300 font-medium">{subjectMeta.name}</span>
+            <span className="text-slate-300 font-medium">{tr(subjectMeta.name, subjectMeta.nameEn)}</span>
           </div>
         )}
 
@@ -184,7 +204,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
         <div className="mb-6">
           <div className="flex justify-between text-sm text-slate-500 mb-2">
             <span>
-              第 {current + 1} / {totalQ} 題
+              {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
             </span>
             <span className="flex items-center gap-1">
               <Clock size={13} /> {formatTime(elapsed)}
@@ -204,10 +224,10 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
           <div className="flex items-center gap-3 mb-6">
             <span className="inline-flex items-center gap-1.5 text-xs text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full">
               <span>{currentQ.frameworkEmoji}</span>
-              {currentQ.frameworkZh}
+              {tr(currentQ.frameworkZh, currentQ.frameworkEn)}
             </span>
             <span className="text-xs text-slate-600 bg-slate-800 px-3 py-1 rounded-full">
-              {currentQ.topicZh}
+              {tr(currentQ.topicZh, currentQ.topicEn)}
             </span>
             <span className="text-xs text-slate-600 bg-slate-800 px-3 py-1 rounded-full ml-auto">
               {currentQ.year}
@@ -216,15 +236,15 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
 
           {/* Content */}
           <p className="text-lg leading-relaxed mb-8 text-slate-100">
-            <MathText>{currentQ.content}</MathText>
+            <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
           </p>
 
           {/* Options */}
           <div className="space-y-3">
             {currentQ.shuffledOptions.map((opt, idx) => {
-              const isCorrectOpt = opt === currentQ.correctText
+              const isCorrectOpt = opt.zh === currentQ.correctZh
               const isSelectedWrong =
-                answerState !== null && opt === answerState.selectedText && !answerState.isCorrect
+                answerState !== null && opt.zh === answerState.selectedZh && !answerState.isCorrect
 
               let style =
                 'border-slate-700 bg-slate-800/50 hover:bg-slate-700/50 hover:border-slate-600 cursor-pointer'
@@ -242,7 +262,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
               return (
                 <button
                   key={idx}
-                  onClick={() => selectOption(opt)}
+                  onClick={() => selectOption(opt.zh)}
                   disabled={answerState !== null}
                   className={`w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all option-btn ${style}`}
                 >
@@ -250,7 +270,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
                     {optionLetters[idx]}
                   </span>
                   <span className="leading-relaxed text-sm sm:text-base">
-                    <MathText>{opt}</MathText>
+                    <MathText>{tr(opt.zh, opt.en)}</MathText>
                   </span>
                   {answerState !== null && isCorrectOpt && (
                     <CheckCircle size={18} className="text-green-400 ml-auto shrink-0 mt-0.5" />
@@ -279,18 +299,18 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
                 {answerState.isCorrect ? (
                   <>
                     <CheckCircle size={18} className="text-green-400" />
-                    <span className="text-green-400 font-semibold">答啱！</span>
+                    <span className="text-green-400 font-semibold">{t.practice.correct}</span>
                   </>
                 ) : (
                   <>
                     <XCircle size={18} className="text-red-400" />
-                    <span className="text-red-400 font-semibold">答錯了——再思考一下</span>
+                    <span className="text-red-400 font-semibold">{t.practice.wrong}</span>
                   </>
                 )}
               </div>
               <div className="flex items-start gap-1.5 text-sm text-slate-400 leading-relaxed">
                 <Brain size={14} className="text-amber-400 shrink-0 mt-0.5" />
-                <MathText>{currentQ.explanation}</MathText>
+                <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
               </div>
             </div>
 
@@ -299,8 +319,8 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
               onClick={next}
               className="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2"
             >
-              {current + 1 >= totalQ ? '睇結果 🎉' : (
-                <>下一題 <ChevronRight size={18} /></>
+              {current + 1 >= totalQ ? t.practice.seeResult : (
+                <>{t.practice.next} <ChevronRight size={18} /></>
               )}
             </button>
           </div>
