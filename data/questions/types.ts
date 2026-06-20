@@ -28,7 +28,9 @@ export type Question = MCQuestion
 export interface Topic {
   id: string
   zh: string
+  en?: string // English topic name (falls back to zh when absent)
   framework: string
+  frameworkEn?: string // English framework label (falls back to framework when absent)
   emoji: string
   count: number
 }

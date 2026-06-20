@@ -277,11 +277,11 @@ export const musicQuestions: Question[] = [
 ]
 
 export const musicTopics: Topic[] = [
-  { id: 'pitch_intervals', zh: '音高與音程', framework: '樂理基礎', emoji: '🎵', count: 5 },
-  { id: 'scales_keys', zh: '音階與調', framework: '樂理基礎', emoji: '🎼', count: 5 },
-  { id: 'rhythm_metre', zh: '節奏與拍子', framework: '樂理基礎', emoji: '🥁', count: 4 },
-  { id: 'harmony', zh: '和聲', framework: '音樂分析', emoji: '🎹', count: 4 },
-  { id: 'texture_form', zh: '織體與曲式', framework: '音樂分析', emoji: '🧩', count: 4 },
-  { id: 'terms_dynamics', zh: '術語與表情', framework: '樂理基礎', emoji: '🔊', count: 4 },
-  { id: 'styles_context', zh: '風格與背景', framework: '音樂常識', emoji: '🌏', count: 5 },
+  { id: 'pitch_intervals', zh: '音高與音程', en: 'Pitch & Intervals', framework: '樂理基礎', frameworkEn: 'Music Theory', emoji: '🎵', count: 5 },
+  { id: 'scales_keys', zh: '音階與調', en: 'Scales & Keys', framework: '樂理基礎', frameworkEn: 'Music Theory', emoji: '🎼', count: 5 },
+  { id: 'rhythm_metre', zh: '節奏與拍子', en: 'Rhythm & Metre', framework: '樂理基礎', frameworkEn: 'Music Theory', emoji: '🥁', count: 4 },
+  { id: 'harmony', zh: '和聲', en: 'Harmony', framework: '音樂分析', frameworkEn: 'Musical Analysis', emoji: '🎹', count: 4 },
+  { id: 'texture_form', zh: '織體與曲式', en: 'Texture & Form', framework: '音樂分析', frameworkEn: 'Musical Analysis', emoji: '🧩', count: 4 },
+  { id: 'terms_dynamics', zh: '術語與表情', en: 'Terms & Expression', framework: '樂理基礎', frameworkEn: 'Music Theory', emoji: '🔊', count: 4 },
+  { id: 'styles_context', zh: '風格與背景', en: 'Styles & Context', framework: '音樂常識', frameworkEn: 'Music in Context', emoji: '🌏', count: 5 },
 ]

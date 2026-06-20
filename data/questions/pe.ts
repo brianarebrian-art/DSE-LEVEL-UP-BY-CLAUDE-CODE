@@ -270,11 +270,11 @@ export const peQuestions: Question[] = [
 ]
 
 export const peTopics: Topic[] = [
-  { id: 'anatomy', zh: '人體結構', framework: '運動科學', emoji: '🦴', count: 4 },
-  { id: 'physiology', zh: '生理系統', framework: '運動科學', emoji: '❤️', count: 7 },
-  { id: 'biomechanics', zh: '動作分析', framework: '生物力學', emoji: '⚙️', count: 4 },
-  { id: 'fitness_training', zh: '體適能與訓練', framework: '訓練原則', emoji: '💪', count: 6 },
-  { id: 'nutrition_health', zh: '營養與健康', framework: '概念理解', emoji: '🥗', count: 3 },
-  { id: 'injuries', zh: '運動創傷', framework: '概念理解', emoji: '🩹', count: 3 },
-  { id: 'psychology', zh: '運動心理', framework: '概念理解', emoji: '🧠', count: 4 },
+  { id: 'anatomy', zh: '人體結構', en: 'Anatomy', framework: '運動科學', frameworkEn: 'Sports Science', emoji: '🦴', count: 4 },
+  { id: 'physiology', zh: '生理系統', en: 'Physiological Systems', framework: '運動科學', frameworkEn: 'Sports Science', emoji: '❤️', count: 7 },
+  { id: 'biomechanics', zh: '動作分析', en: 'Movement Analysis', framework: '生物力學', frameworkEn: 'Biomechanics', emoji: '⚙️', count: 4 },
+  { id: 'fitness_training', zh: '體適能與訓練', en: 'Fitness & Training', framework: '訓練原則', frameworkEn: 'Training Principles', emoji: '💪', count: 6 },
+  { id: 'nutrition_health', zh: '營養與健康', en: 'Nutrition & Health', framework: '概念理解', frameworkEn: 'Concepts', emoji: '🥗', count: 3 },
+  { id: 'injuries', zh: '運動創傷', en: 'Sports Injuries', framework: '概念理解', frameworkEn: 'Concepts', emoji: '🩹', count: 3 },
+  { id: 'psychology', zh: '運動心理', en: 'Sports Psychology', framework: '概念理解', frameworkEn: 'Concepts', emoji: '🧠', count: 4 },
 ]

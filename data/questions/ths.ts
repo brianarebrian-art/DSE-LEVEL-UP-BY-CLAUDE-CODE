@@ -52,8 +52,8 @@ export const thsQuestions: Question[] = [
 ]
 
 export const thsTopics: Topic[] = [
-  { id: 'tourism_types', zh: '旅遊類型', framework: '概念理解', emoji: '✈️', count: 2 },
-  { id: 'hospitality', zh: '款待業', framework: '營運知識', emoji: '🏨', count: 2 },
-  { id: 'service', zh: '顧客服務', framework: '服務質素', emoji: '🤝', count: 1 },
-  { id: 'sustainability', zh: '可持續旅遊', framework: '概念理解', emoji: '🌱', count: 1 },
+  { id: 'tourism_types', zh: '旅遊類型', en: 'Types of Tourism', framework: '概念理解', frameworkEn: 'Concepts', emoji: '✈️', count: 2 },
+  { id: 'hospitality', zh: '款待業', en: 'Hospitality Industry', framework: '營運知識', frameworkEn: 'Operations', emoji: '🏨', count: 2 },
+  { id: 'service', zh: '顧客服務', en: 'Customer Service', framework: '服務質素', frameworkEn: 'Service Quality', emoji: '🤝', count: 1 },
+  { id: 'sustainability', zh: '可持續旅遊', en: 'Sustainable Tourism', framework: '概念理解', frameworkEn: 'Concepts', emoji: '🌱', count: 1 },
 ]

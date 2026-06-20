@@ -166,12 +166,12 @@ export const visualArtsQuestions: Question[] = [
 ]
 
 export const visualArtsTopics: Topic[] = [
-  { id: 'elements', zh: '藝術元素', framework: '藝術元素', emoji: '🎨', count: 1 },
-  { id: 'colour', zh: '色彩學', framework: '色彩理論', emoji: '🌈', count: 3 },
-  { id: 'principles', zh: '構成原理', framework: '構成原理', emoji: '⚖️', count: 3 },
-  { id: 'appreciation', zh: '藝術評賞', framework: '評賞方法', emoji: '🔍', count: 3 },
-  { id: 'movements', zh: '藝術流派', framework: '西方藝術流派', emoji: '🖌️', count: 4 },
-  { id: 'chinese_art', zh: '中國藝術', framework: '中國藝術', emoji: '🏯', count: 3 },
-  { id: 'art_history', zh: '藝術史', framework: '藝術史知識', emoji: '🖼️', count: 1 },
-  { id: 'media', zh: '媒介與形式', framework: '媒介認識', emoji: '🗿', count: 2 },
+  { id: 'elements', zh: '藝術元素', en: 'Art Elements', framework: '藝術元素', frameworkEn: 'Art Elements', emoji: '🎨', count: 1 },
+  { id: 'colour', zh: '色彩學', en: 'Colour Theory', framework: '色彩理論', frameworkEn: 'Colour Theory', emoji: '🌈', count: 3 },
+  { id: 'principles', zh: '構成原理', en: 'Principles of Composition', framework: '構成原理', frameworkEn: 'Principles of Composition', emoji: '⚖️', count: 3 },
+  { id: 'appreciation', zh: '藝術評賞', en: 'Art Appreciation', framework: '評賞方法', frameworkEn: 'Appreciation Methods', emoji: '🔍', count: 3 },
+  { id: 'movements', zh: '藝術流派', en: 'Art Movements', framework: '西方藝術流派', frameworkEn: 'Western Art Movements', emoji: '🖌️', count: 4 },
+  { id: 'chinese_art', zh: '中國藝術', en: 'Chinese Art', framework: '中國藝術', frameworkEn: 'Chinese Art', emoji: '🏯', count: 3 },
+  { id: 'art_history', zh: '藝術史', en: 'Art History', framework: '藝術史知識', frameworkEn: 'Art History', emoji: '🖼️', count: 1 },
+  { id: 'media', zh: '媒介與形式', en: 'Media & Forms', framework: '媒介認識', frameworkEn: 'Media Knowledge', emoji: '🗿', count: 2 },
 ]

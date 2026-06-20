@@ -21,6 +21,8 @@ import { peQuestions, peTopics } from './pe'
 import { chineseLiteratureQuestions, chineseLiteratureTopics } from './chinese-literature'
 import { englishLiteratureQuestions, englishLiteratureTopics } from './english-literature'
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
+import { csdQuestions, csdTopics } from './csd'
+import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 
 export type { Question, MCQuestion, Topic, Difficulty } from './types'
 
@@ -53,6 +55,8 @@ const banks: Record<string, SubjectBank> = {
   'chinese-literature': { questions: chineseLiteratureQuestions, topics: chineseLiteratureTopics },
   'english-literature': { questions: englishLiteratureQuestions, topics: englishLiteratureTopics },
   'visual-arts': { questions: visualArtsQuestions, topics: visualArtsTopics },
+  csd: { questions: csdQuestions, topics: csdTopics },
+  'ethics-religious': { questions: ethicsReligiousQuestions, topics: ethicsReligiousTopics },
 }
 
 export function getSubjectQuestions(subjectId: string): Question[] {

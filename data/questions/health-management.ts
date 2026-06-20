@@ -52,8 +52,8 @@ export const healthManagementQuestions: Question[] = [
 ]
 
 export const healthManagementTopics: Topic[] = [
-  { id: 'health_concepts', zh: '健康概念', framework: '概念理解', emoji: '❤️‍🩹', count: 2 },
-  { id: 'disease', zh: '疾病預防', framework: '預防策略', emoji: '🛡️', count: 2 },
-  { id: 'lifestyle', zh: '生活方式', framework: '概念理解', emoji: '🥗', count: 1 },
-  { id: 'social_care', zh: '社會關懷', framework: '關懷照顧', emoji: '🤲', count: 1 },
+  { id: 'health_concepts', zh: '健康概念', en: 'Health Concepts', framework: '概念理解', frameworkEn: 'Concepts', emoji: '❤️‍🩹', count: 2 },
+  { id: 'disease', zh: '疾病預防', en: 'Disease Prevention', framework: '預防策略', frameworkEn: 'Prevention Strategies', emoji: '🛡️', count: 2 },
+  { id: 'lifestyle', zh: '生活方式', en: 'Lifestyle', framework: '概念理解', frameworkEn: 'Concepts', emoji: '🥗', count: 1 },
+  { id: 'social_care', zh: '社會關懷', en: 'Social Care', framework: '關懷照顧', frameworkEn: 'Care & Support', emoji: '🤲', count: 1 },
 ]

@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowRight, Trophy, Flame } from 'lucide-react'
+import { useT } from '@/lib/i18n'
 
 const mockLeaderboard = [
   { rank: 1, name: 'Marco L.', score: 12, grade: '5**', streak: 7 },
@@ -21,23 +24,27 @@ const gradeColors: Record<string, string> = {
 }
 
 export default function LeaderboardPage() {
+  const t = useT()
+  const lb = t.leaderboard
+  const stats = [
+    { label: lb.statToday, value: '342' },
+    { label: lb.statAvg, value: '7.8 / 12' },
+    { label: lb.statAbove5, value: '23%' },
+  ]
+
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-2xl mx-auto">
 
         <div className="mb-10 text-center">
           <div className="text-4xl mb-3">🏆</div>
-          <h1 className="text-3xl font-extrabold mb-2">今日排行榜</h1>
-          <p className="text-slate-500">數學綜合練習 · 匿名排名</p>
+          <h1 className="text-3xl font-extrabold mb-2">{lb.title}</h1>
+          <p className="text-slate-500">{lb.subtitle}</p>
         </div>
 
         {/* Stats bar */}
         <div className="grid grid-cols-3 gap-4 mb-8">
-          {[
-            { label: '今日參與', value: '342' },
-            { label: '平均分', value: '7.8 / 12' },
-            { label: '5 級以上', value: '23%' },
-          ].map((s) => (
+          {stats.map((s) => (
             <div key={s.label} className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
               <div className="text-xl font-bold text-amber-400 mb-1">{s.value}</div>
               <div className="text-xs text-slate-500">{s.label}</div>
@@ -49,7 +56,7 @@ export default function LeaderboardPage() {
         <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden mb-8">
           <div className="px-5 py-3 border-b border-slate-800 flex items-center gap-2">
             <Trophy size={14} className="text-amber-400" />
-            <span className="text-sm font-semibold text-slate-300">本週最高分</span>
+            <span className="text-sm font-semibold text-slate-300">{lb.tableTitle}</span>
           </div>
           <div className="divide-y divide-slate-800/50">
             {mockLeaderboard.map((entry) => (
@@ -70,7 +77,7 @@ export default function LeaderboardPage() {
                   <div className="font-medium text-sm">{entry.name}</div>
                   <div className="text-xs text-slate-600 flex items-center gap-1">
                     <Flame size={10} className="text-orange-400" />
-                    {entry.streak} 日連續
+                    {entry.streak}{lb.streakSuffix}
                   </div>
                 </div>
 
@@ -88,12 +95,12 @@ export default function LeaderboardPage() {
 
         {/* CTA */}
         <div className="text-center">
-          <p className="text-slate-500 text-sm mb-4">完成練習，上榜！</p>
+          <p className="text-slate-500 text-sm mb-4">{lb.cta}</p>
           <Link
             href="/practice"
             className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
           >
-            開始練習 <ArrowRight size={16} />
+            {lb.startPractice} <ArrowRight size={16} />
           </Link>
         </div>
       </div>

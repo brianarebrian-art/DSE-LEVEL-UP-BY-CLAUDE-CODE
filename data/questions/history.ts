@@ -52,8 +52,8 @@ export const historyQuestions: Question[] = [
 ]
 
 export const historyTopics: Topic[] = [
-  { id: 'world_wars', zh: '世界大戰', framework: '時序脈絡', emoji: '⏳', count: 2 },
-  { id: 'intl_cooperation', zh: '國際合作', framework: '因果分析', emoji: '🔗', count: 2 },
-  { id: 'cold_war', zh: '冷戰', framework: '因果分析', emoji: '🔗', count: 1 },
-  { id: 'modern_china', zh: '近代中國', framework: '時序脈絡', emoji: '⏳', count: 1 },
+  { id: 'world_wars', zh: '世界大戰', en: 'World Wars', framework: '時序脈絡', frameworkEn: 'Chronological Context', emoji: '⏳', count: 2 },
+  { id: 'intl_cooperation', zh: '國際合作', en: 'International Cooperation', framework: '因果分析', frameworkEn: 'Causal Analysis', emoji: '🔗', count: 2 },
+  { id: 'cold_war', zh: '冷戰', en: 'The Cold War', framework: '因果分析', frameworkEn: 'Causal Analysis', emoji: '🔗', count: 1 },
+  { id: 'modern_china', zh: '近代中國', en: 'Modern China', framework: '時序脈絡', frameworkEn: 'Chronological Context', emoji: '⏳', count: 1 },
 ]

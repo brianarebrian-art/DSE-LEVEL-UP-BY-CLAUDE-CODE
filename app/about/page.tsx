@@ -1,7 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import { ArrowRight, Mail } from 'lucide-react'
+import { useT } from '@/lib/i18n'
 
 export default function AboutPage() {
+  const t = useT()
+  const a = t.about
+
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-2xl mx-auto">
@@ -9,10 +15,10 @@ export default function AboutPage() {
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-4">
-            關於 <span className="text-amber-400">DSE Level Up</span>
+            {a.titlePrefix}<span className="text-amber-400">DSE Level Up</span>
           </h1>
           <p className="text-slate-400 text-lg">
-            一個 2026 DSE 考生，一個問題：點樣真係考好 DSE？
+            {a.intro}
           </p>
         </div>
 
@@ -20,67 +26,46 @@ export default function AboutPage() {
         <div className="space-y-6 text-slate-300 leading-relaxed">
 
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h2 className="font-bold text-lg mb-3">為什麼要做呢個平台？</h2>
+            <h2 className="font-bold text-lg mb-3">{a.whyTitle}</h2>
             <p className="text-slate-400 mb-4">
-              我係今屆（2026）DSE 考生。溫書期間，我一直用 past paper 操練，但做完一份又一份之後，慢慢發現一件事：
+              {a.whyP1}
             </p>
             <p className="text-slate-300 font-medium mb-4">
-              「咦，其實每年 DSE 都係考緊同一樣嘢——只係換左個數字。」
+              {a.whyQuote}
             </p>
             <p className="text-slate-400">
-              我決定用 AI 系統分析 2014–2023 年的 DSE Math 試卷，提煉每道題背後考核的底層邏輯。
-              發現唔係 100 個邏輯，係 12 個核心框架。
+              {a.whyP2}
             </p>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h2 className="font-bold text-lg mb-3">改寫題目的方法</h2>
+            <h2 className="font-bold text-lg mb-3">{a.methodTitle}</h2>
             <ol className="space-y-3 text-slate-400">
-              <li className="flex gap-3">
-                <span className="text-amber-400 font-bold shrink-0">1.</span>
-                <span>分析每道官方試題的考核能力點（唔係答案，係「考緊乜嘢」）</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-amber-400 font-bold shrink-0">2.</span>
-                <span>將數字、名稱、情景全部改動，但保留相同的邏輯結構</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-amber-400 font-bold shrink-0">3.</span>
-                <span>每道改寫題標注「考核框架」，讓你知道自己在練習哪個邏輯</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-amber-400 font-bold shrink-0">4.</span>
-                <span>解釋說明不直接給答案，而係點出邏輯，留思考空間</span>
-              </li>
+              {a.methodSteps.map((step, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="text-amber-400 font-bold shrink-0">{i + 1}.</span>
+                  <span>{step}</span>
+                </li>
+              ))}
             </ol>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h2 className="font-bold text-lg mb-3">承諾</h2>
+            <h2 className="font-bold text-lg mb-3">{a.promiseTitle}</h2>
             <div className="space-y-2 text-slate-400">
-              <div className="flex items-start gap-2">
-                <span className="text-green-400 mt-0.5">✓</span>
-                <span><strong className="text-slate-300">完全免費</strong>——我唔係為咗賺錢，係想幫同屆考生</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-green-400 mt-0.5">✓</span>
-                <span><strong className="text-slate-300">無廣告</strong>——唔想破壞學習體驗</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-green-400 mt-0.5">✓</span>
-                <span><strong className="text-slate-300">開源方法論</strong>——即使平台有一日唔喺，方法論永遠存在</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-green-400 mt-0.5">✓</span>
-                <span><strong className="text-slate-300">持續改善</strong>——你的 feedback 係我最大動力</span>
-              </div>
+              {a.promises.map((p, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="text-green-400 mt-0.5">✓</span>
+                  <span><strong className="text-slate-300">{p.k}</strong>{p.v}</span>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-            <h2 className="font-bold text-lg mb-3">聯絡我</h2>
+            <h2 className="font-bold text-lg mb-3">{a.contactTitle}</h2>
             <p className="text-slate-400 mb-4">
-              有任何問題、建議、或者你想報告 bug——都可以搵我。
+              {a.contactBody}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
@@ -94,9 +79,8 @@ export default function AboutPage() {
 
           {/* Legal */}
           <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 text-xs text-slate-600 leading-relaxed">
-            <strong className="text-slate-500">法律聲明：</strong>
-            本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。
-            官方歷屆試題請前往 HKEAA 網站下載。等級預測僅供參考，最終成績以 HKEAA 公布為準。
+            <strong className="text-slate-500">{a.legalLabel}</strong>
+            {a.legalBody}
           </div>
         </div>
 
@@ -106,7 +90,7 @@ export default function AboutPage() {
             href="/practice"
             className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
           >
-            開始練習 <ArrowRight size={16} />
+            {a.cta} <ArrowRight size={16} />
           </Link>
         </div>
       </div>

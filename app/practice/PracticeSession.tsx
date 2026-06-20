@@ -131,7 +131,7 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
-      const subjectName = subjectMeta?.name ?? '練習'
+      const subjectName = subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : tr('練習', 'Practice')
       const topicResults = buildTopicResults(questions, newAnswers)
       const elapsed = Math.floor((Date.now() - startTime) / 1000)
       const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId)).grade

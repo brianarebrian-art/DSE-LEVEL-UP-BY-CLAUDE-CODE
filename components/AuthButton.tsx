@@ -2,6 +2,7 @@
 
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { LogIn, LogOut } from 'lucide-react'
+import { useT } from '@/lib/i18n'
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 
@@ -9,13 +10,14 @@ const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 // SessionProvider is guaranteed to wrap it).
 function AuthButtonInner({ onAction }: { onAction?: () => void }) {
   const { data: session, status } = useSession()
+  const t = useT()
 
   if (status === 'loading') {
     return <div className="w-7 h-7 rounded-full bg-slate-800 animate-pulse" />
   }
 
   if (session?.user) {
-    const label = session.user.name ?? session.user.email ?? '用戶'
+    const label = session.user.name ?? session.user.email ?? t.auth.user
     const initial = label.charAt(0).toUpperCase()
     return (
       <div className="flex items-center gap-2">
@@ -32,7 +34,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
           }}
           className="text-sm text-slate-400 hover:text-slate-100 flex items-center gap-1"
         >
-          <LogOut size={14} /> 登出
+          <LogOut size={14} /> {t.auth.signOut}
         </button>
       </div>
     )
@@ -46,7 +48,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
       }}
       className="flex items-center gap-2 text-sm border border-slate-700 hover:border-slate-500 text-slate-200 rounded-lg px-3 py-1.5 transition-colors"
     >
-      <LogIn size={14} /> Google 登入
+      <LogIn size={14} /> {t.auth.signIn}
     </button>
   )
 }

@@ -52,7 +52,7 @@ export const designTechQuestions: Question[] = [
 ]
 
 export const designTechTopics: Topic[] = [
-  { id: 'design_process', zh: '設計流程', framework: '設計思維', emoji: '🛠️', count: 3 },
-  { id: 'ergonomics', zh: '人體工學', framework: '人因考量', emoji: '🧍', count: 1 },
-  { id: 'structures', zh: '結構與材料', framework: '結構原理', emoji: '📐', count: 2 },
+  { id: 'design_process', zh: '設計流程', en: 'Design Process', framework: '設計思維', frameworkEn: 'Design Thinking', emoji: '🛠️', count: 3 },
+  { id: 'ergonomics', zh: '人體工學', en: 'Ergonomics', framework: '人因考量', frameworkEn: 'Human Factors', emoji: '🧍', count: 1 },
+  { id: 'structures', zh: '結構與材料', en: 'Structures & Materials', framework: '結構原理', frameworkEn: 'Structural Principles', emoji: '📐', count: 2 },
 ]
