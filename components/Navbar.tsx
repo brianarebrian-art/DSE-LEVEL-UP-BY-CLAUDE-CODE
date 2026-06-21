@@ -7,6 +7,7 @@ import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
 import LanguageToggle from '@/components/LanguageToggle'
 import { useT } from '@/lib/i18n'
+import { usePlan } from '@/lib/usePlan'
 
 const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'leaderboard' | 'about' }[] = [
   { href: '/subjects', key: 'subjects' },
@@ -20,6 +21,8 @@ export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const t = useT()
+  const { isPremium, authEnabled } = usePlan()
+  const showUpgrade = authEnabled && !isPremium
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80 bg-[#080C14]/90 backdrop-blur-md">
@@ -53,6 +56,14 @@ export default function Navbar() {
           >
             {t.nav.startPractice}
           </Link>
+          {showUpgrade && (
+            <Link
+              href="/upgrade"
+              className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors"
+            >
+              {t.premium.navUpgrade}
+            </Link>
+          )}
           <LanguageToggle />
           <AuthButton />
         </div>
@@ -88,6 +99,15 @@ export default function Navbar() {
           >
             {t.nav.startPractice}
           </Link>
+          {showUpgrade && (
+            <Link
+              href="/upgrade"
+              onClick={() => setOpen(false)}
+              className="py-2 text-sm font-medium text-amber-400"
+            >
+              {t.premium.navUpgrade}
+            </Link>
+          )}
           <div className="pt-1 flex items-center justify-between">
             <LanguageToggle />
             <AuthButton onAction={() => setOpen(false)} />

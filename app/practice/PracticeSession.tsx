@@ -9,6 +9,7 @@ import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
+import { incrementAttemptsUsed } from '@/lib/freeUsage'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { useLocale } from '@/lib/i18n'
 import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
@@ -39,10 +40,11 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
 }
 
-// How many questions one practice run draws from the subject's bank.
-const SESSION_SIZE = 20
-
-function buildPool(subjectId: string, topicFilter: string | null): PreparedQuestion[] {
+function buildPool(
+  subjectId: string,
+  topicFilter: string | null,
+  sessionSize: number,
+): PreparedQuestion[] {
   const all = getSubjectQuestions(subjectId)
   const pool = topicFilter ? all.filter((q) => q.topic === topicFilter) : all
 
@@ -56,7 +58,7 @@ function buildPool(subjectId: string, topicFilter: string | null): PreparedQuest
     .filter((q) => recency.has(q.id))
     .sort((a, b) => recency.get(b.id)! - recency.get(a.id)!)
 
-  return [...unseen, ...seenOldestFirst].slice(0, SESSION_SIZE).map(prepareQuestion)
+  return [...unseen, ...seenOldestFirst].slice(0, sessionSize).map(prepareQuestion)
 }
 
 type AnswerState = { selectedZh: string; isCorrect: boolean } | null
@@ -76,18 +78,25 @@ const optionLetters = ['A', 'B', 'C', 'D']
 interface SessionProps {
   subjectId: string
   topicFilter: string | null
+  sessionSize: number
+  countsAgainstFreeQuota: boolean
 }
 
 // A single practice run. This component is loaded client-only (via next/dynamic
 // ssr:false in page.tsx), so the lazy `useState` initializers below can safely use
 // Math.random()/Date.now() without causing a server/client hydration mismatch.
 // It is re-mounted (via `key`) whenever subject/topic changes, re-running the shuffle.
-export default function PracticeSession({ subjectId, topicFilter }: SessionProps) {
+export default function PracticeSession({
+  subjectId,
+  topicFilter,
+  sessionSize,
+  countsAgainstFreeQuota,
+}: SessionProps) {
   const router = useRouter()
   const { locale, t } = useLocale()
   const subjectMeta = getSubject(subjectId)
 
-  const [questions] = useState<PreparedQuestion[]>(() => buildPool(subjectId, topicFilter))
+  const [questions] = useState<PreparedQuestion[]>(() => buildPool(subjectId, topicFilter, sessionSize))
   const [startTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
@@ -157,11 +166,13 @@ export default function PracticeSession({ subjectId, topicFilter }: SessionProps
         elapsed,
         timestamp: Date.now(),
       })
+      // Free users: a completed run counts against their per-subject quota.
+      if (countsAgainstFreeQuota) incrementAttemptsUsed(subjectId)
       router.push('/result')
     } else {
       setCurrent((c) => c + 1)
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, countsAgainstFreeQuota])
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 

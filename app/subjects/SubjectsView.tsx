@@ -8,6 +8,8 @@ import {
   type SubjectMeta,
 } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+import { usePlan } from '@/lib/usePlan'
+import { isFreeSubject } from '@/lib/entitlements'
 
 // Tailwind needs literal class names, so map accents explicitly.
 const accentRing: Record<string, string> = {
@@ -31,29 +33,46 @@ const accentRing: Record<string, string> = {
 
 export default function SubjectsView() {
   const { t, locale } = useLocale()
+  const { isPremium, authEnabled } = usePlan()
   const tl = t.subjectsList
   const activeCount = subjects.filter((s) => s.isActive).length
   const name = (s: SubjectMeta) => (locale === 'en' ? s.nameEn : s.name)
   const desc = (s: SubjectMeta) => (locale === 'en' ? s.descriptionEn : s.description)
 
-  const ActiveCard = ({ s }: { s: SubjectMeta }) => (
-    <Link
-      href={`/subjects/${s.id}`}
-      className={`group relative bg-slate-900 border border-slate-800 rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}
-    >
-      <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1 text-[10px] text-green-400 bg-green-400/10 border border-green-400/20 px-2 py-0.5 rounded-full">
-          <CheckCircle2 size={10} /> {t.common.live}
-        </span>
-      </div>
-      <div className="text-3xl mb-3">{s.emoji}</div>
-      <div className="font-bold mb-1">{name(s)}</div>
-      <div className="text-xs text-slate-500 mb-3 leading-relaxed">{desc(s)}</div>
-      <div className="flex items-center gap-1 text-sm text-amber-400 font-medium">
-        {tl.startPractice} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-      </div>
-    </Link>
-  )
+  const ActiveCard = ({ s }: { s: SubjectMeta }) => {
+    const premiumLocked = authEnabled && !isPremium && !isFreeSubject(s.id)
+    const freeBadge = authEnabled && !isPremium && isFreeSubject(s.id)
+    return (
+      <Link
+        href={`/subjects/${s.id}`}
+        className={`group relative bg-slate-900 border border-slate-800 rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}
+      >
+        <div className="absolute top-4 right-4">
+          <span className="inline-flex items-center gap-1 text-[10px] text-green-400 bg-green-400/10 border border-green-400/20 px-2 py-0.5 rounded-full">
+            <CheckCircle2 size={10} /> {t.common.live}
+          </span>
+        </div>
+        <div className="text-3xl mb-3">{s.emoji}</div>
+        <div className="font-bold mb-1">{name(s)}</div>
+        <div className="text-xs text-slate-500 mb-3 leading-relaxed">{desc(s)}</div>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1 text-sm text-amber-400 font-medium">
+            {tl.startPractice} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          </div>
+          {premiumLocked && (
+            <span className="inline-flex items-center gap-1 text-[10px] text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">
+              <Lock size={10} /> {t.premium.paidTag}
+            </span>
+          )}
+          {freeBadge && (
+            <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
+              {t.premium.freeTag}
+            </span>
+          )}
+        </div>
+      </Link>
+    )
+  }
 
   const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
     <div className="relative bg-slate-900/40 border border-slate-800/60 rounded-xl p-5 opacity-70">

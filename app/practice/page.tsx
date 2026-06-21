@@ -1,9 +1,9 @@
 'use client'
 
 import { Suspense } from 'react'
-import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
 import { useT } from '@/lib/i18n'
+import PracticeGate from './PracticeGate'
 
 function LoadingScreen() {
   const t = useT()
@@ -12,20 +12,13 @@ function LoadingScreen() {
   )
 }
 
-// Client-only: the quiz uses Math.random()/Date.now()/localStorage, so server
-// rendering it would cause a hydration mismatch. ssr:false keeps it browser-only.
-const PracticeSession = dynamic(() => import('./PracticeSession'), {
-  ssr: false,
-  loading: () => <LoadingScreen />,
-})
-
 function PracticeRouter() {
   const params = useSearchParams()
   const subjectId = params.get('subject') ?? 'math'
   const topicFilter = params.get('topic')
-  // Re-mount the session whenever the subject/topic changes.
+  // Re-mount the gate (and the session beneath it) whenever subject/topic changes.
   return (
-    <PracticeSession
+    <PracticeGate
       key={`${subjectId}|${topicFilter ?? ''}`}
       subjectId={subjectId}
       topicFilter={topicFilter}

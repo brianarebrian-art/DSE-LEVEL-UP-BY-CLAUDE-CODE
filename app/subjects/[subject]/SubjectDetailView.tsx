@@ -1,10 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Lock, Sparkles } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
+import { usePlan } from '@/lib/usePlan'
+import {
+  canAccessSubject,
+  isFreeSubject,
+  FREE_SESSION_SIZE,
+  FREE_ATTEMPTS_PER_SUBJECT,
+} from '@/lib/entitlements'
 
 export default function SubjectDetailView({
   meta,
@@ -16,7 +23,9 @@ export default function SubjectDetailView({
   topics: Topic[]
 }) {
   const { t, locale } = useLocale()
+  const { isPremium, loading: planLoading, authEnabled } = usePlan()
   const sd = t.subjectDetail
+  const pm = t.premium
   const en = locale === 'en'
   const name = en ? meta.nameEn : meta.name
   const short = en ? meta.shortEn : meta.short
@@ -51,6 +60,11 @@ export default function SubjectDetailView({
     .map((s) => (en ? s.shortEn : s.short))
     .join(en ? ', ' : '、')
 
+  // Paywall state (only once the session has resolved, to avoid flashing).
+  const locked = authEnabled && !planLoading && !canAccessSubject(isPremium, meta.id)
+  const showFreeNote =
+    authEnabled && !planLoading && !isPremium && isFreeSubject(meta.id)
+
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-4xl mx-auto">
@@ -65,9 +79,14 @@ export default function SubjectDetailView({
 
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-3 flex items-center gap-3">
+          <h1 className="text-3xl sm:text-4xl font-extrabold mb-3 flex items-center gap-3 flex-wrap">
             <span>{meta.emoji}</span>
             {name}
+            {locked && (
+              <span className="inline-flex items-center gap-1 text-xs text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2.5 py-1 rounded-full">
+                <Lock size={12} /> {pm.paidTag}
+              </span>
+            )}
           </h1>
           <p className="text-slate-400 text-lg">{description}</p>
         </div>
@@ -86,43 +105,79 @@ export default function SubjectDetailView({
               <span>·</span>
               <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
             </div>
+            {showFreeNote && (
+              <div className="mt-3 text-xs text-amber-400/90">
+                {pm.freeNote
+                  .replace('{q}', String(FREE_SESSION_SIZE))
+                  .replace('{cap}', String(FREE_ATTEMPTS_PER_SUBJECT))}
+                {' · '}
+                <Link href="/upgrade" className="underline hover:text-amber-300">{pm.upgrade}</Link>
+              </div>
+            )}
           </div>
-          <Link
-            href={`/practice?subject=${meta.id}`}
-            className="shrink-0 inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
-          >
-            {sd.startNow} <ArrowRight size={16} />
-          </Link>
+          {locked ? (
+            <Link
+              href="/upgrade"
+              className="shrink-0 inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+            >
+              <Sparkles size={16} /> {pm.upgrade}
+            </Link>
+          ) : (
+            <Link
+              href={`/practice?subject=${meta.id}`}
+              className="shrink-0 inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+            >
+              {sd.startNow} <ArrowRight size={16} />
+            </Link>
+          )}
         </div>
 
         {/* Topic list */}
         <h2 className="text-lg font-bold mb-4 text-slate-300">{sd.byTopic}</h2>
         <div className="grid sm:grid-cols-2 gap-3 mb-12">
-          {topics.map((topic) => (
-            <Link
-              key={topic.id}
-              href={`/practice?subject=${meta.id}&topic=${topic.id}`}
-              className="group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 rounded-xl p-5 transition-all flex items-center justify-between"
-            >
-              <div className="flex items-center gap-4">
-                <div className="text-2xl">{topic.emoji}</div>
-                <div>
-                  <div className="font-semibold mb-0.5">{en ? (topic.en ?? topic.zh) : topic.zh}</div>
-                  <div className="text-xs text-slate-500">
-                    {sd.topicFwPrefix}{en ? (topic.frameworkEn ?? topic.framework) : topic.framework}{sd.topicCountA}{topic.count}{sd.topicCountB}
+          {topics.map((topic) => {
+            const inner = (
+              <>
+                <div className="flex items-center gap-4">
+                  <div className="text-2xl">{topic.emoji}</div>
+                  <div>
+                    <div className="font-semibold mb-0.5">{en ? (topic.en ?? topic.zh) : topic.zh}</div>
+                    <div className="text-xs text-slate-500">
+                      {sd.topicFwPrefix}{en ? (topic.frameworkEn ?? topic.framework) : topic.framework}{sd.topicCountA}{topic.count}{sd.topicCountB}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <svg
-                className="w-4 h-4 text-slate-600 group-hover:text-slate-400 transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                {locked ? (
+                  <Lock className="w-4 h-4 text-slate-600 shrink-0" />
+                ) : (
+                  <svg
+                    className="w-4 h-4 text-slate-600 group-hover:text-slate-400 transition-colors"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                )}
+              </>
+            )
+            return locked ? (
+              <div
+                key={topic.id}
+                className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex items-center justify-between opacity-60 cursor-not-allowed"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          ))}
+                {inner}
+              </div>
+            ) : (
+              <Link
+                key={topic.id}
+                href={`/practice?subject=${meta.id}&topic=${topic.id}`}
+                className="group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 rounded-xl p-5 transition-all flex items-center justify-between"
+              >
+                {inner}
+              </Link>
+            )
+          })}
         </div>
 
         {/* Cross-link to other subjects */}
