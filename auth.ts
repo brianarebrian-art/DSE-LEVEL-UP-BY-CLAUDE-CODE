@@ -1,6 +1,6 @@
 import NextAuth, { type DefaultSession } from 'next-auth'
 import Google from 'next-auth/providers/google'
-import { isSchoolEmail } from '@/lib/entitlements'
+import { resolveIsPremium } from '@/lib/entitlements'
 
 // Auth.js (NextAuth v5). Reads AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET and AUTH_SECRET
 // from the environment automatically. Without them, the session endpoint simply
@@ -22,29 +22,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: { strategy: 'jwt' },
   trustHost: true,
   callbacks: {
-    // Pre-launch STRICT lockdown: ONLY emails on the allowlist (comma-separated
-    // ALLOWED_EMAILS env, else the fallback below) may sign in. School @lhymss.net
-    // emails are NOT auto-allowed during testing — add them to ALLOWED_EMAILS if you
-    // want them in. Returning false denies cleanly (Auth.js → ?error=AccessDenied).
-    // Anonymous visitors are unaffected — the free tier needs no login.
-    async signIn({ user }) {
-      const email = user.email?.toLowerCase()
-      if (!email) return false
-      const env = (process.env.ALLOWED_EMAILS ?? '')
-        .split(',')
-        .map((e) => e.trim().toLowerCase())
-        .filter(Boolean)
-      const allowlist = env.length ? env : ['yunawong0128@gmail.com']
-      return allowlist.includes(email)
-    },
-    // `profile` is only present on the initial sign-in. We compute the entitlement
-    // once from the verified Google profile and persist it in the JWT, so every
-    // later request carries it cheaply without re-checking. Source of truth is the
-    // server — the client never decides its own premium status.
+    // Sign-in is OPEN — any Google account may log in. Access level is decided by
+    // `isPremium` below: guests and other accounts get the free 4-subject tier;
+    // ALLOWED_EMAILS (testers), PREMIUM_EMAILS (paid) and verified @lhymss.net school
+    // emails get Premium automatically (no manual approval). To restrict who may sign
+    // in again, add a `signIn({ user })` callback that returns false to deny.
+    //
+    // `profile` is only present on the initial sign-in, so we compute the entitlement
+    // once and persist it in the JWT. The server is the source of truth — the client
+    // never decides its own Premium status.
     async jwt({ token, profile }) {
       if (profile) {
         const p = profile as { email?: string | null; email_verified?: boolean }
-        token.isPremium = isSchoolEmail(p.email, p.email_verified)
+        token.isPremium = resolveIsPremium(p.email, p.email_verified)
       }
       return token
     },

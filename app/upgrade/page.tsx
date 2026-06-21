@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { Check, Sparkles } from 'lucide-react'
+import { Check, Sparkles, MessageCircle, QrCode } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { usePlan } from '@/lib/usePlan'
 import { getActiveSubjects } from '@/data/subjects'
@@ -13,6 +14,7 @@ import {
   PREMIUM_PRICE_YEARLY_HKD,
   yearlySavingHkd,
 } from '@/lib/entitlements'
+import { PAYMENT } from '@/lib/payment'
 
 export default function UpgradePage() {
   const { t } = useLocale()
@@ -20,6 +22,7 @@ export default function UpgradePage() {
   const { isPremium, authEnabled } = usePlan()
   const n = getActiveSubjects().length
   const alreadyPremium = authEnabled && isPremium
+  const [qrOpen, setQrOpen] = useState<{ label: string; qr: string } | null>(null)
 
   return (
     <div className="min-h-screen px-4 py-14">
@@ -88,46 +91,99 @@ export default function UpgradePage() {
           </div>
         </div>
 
-        {/* Payment methods */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
-          <div className="font-bold mb-1">{p.payTitle}</div>
-          <p className="text-xs text-slate-500 mb-4">{p.payCurrency}</p>
-          <div className="grid grid-cols-3 gap-3">
-            {[p.payAlipay, p.payFps, p.payWechat].map((m) => (
-              <div
-                key={m}
-                className="bg-slate-800/60 border border-slate-700 rounded-xl py-3 text-center text-sm text-slate-300"
-              >
-                {m}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Checkout (Stage 2: wired to the PSP) */}
-        <div className="text-center">
-          {alreadyPremium ? (
+        {/* Manual payment (Plan A — no automated checkout) */}
+        {alreadyPremium ? (
+          <div className="text-center">
             <Link
               href="/subjects"
               className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-6 py-3 rounded-xl transition-all"
             >
               {p.backHome}
             </Link>
-          ) : (
-            <>
-              <button
-                type="button"
-                disabled
-                title={p.checkoutSoon}
-                className="inline-flex items-center gap-2 bg-amber-500/60 text-black/70 font-bold px-8 py-3 rounded-xl cursor-not-allowed"
-              >
-                <Sparkles size={16} /> {p.checkout}
-              </button>
-              <p className="text-xs text-slate-500 mt-3">{p.checkoutSoon}</p>
-            </>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div className="font-bold mb-1">{p.payHowTitle}</div>
+            <p className="text-xs text-slate-500 mb-4">{p.payCurrency}</p>
+
+            {/* Payee */}
+            <div className="flex items-center justify-between gap-3 bg-slate-800/60 border border-slate-700 rounded-xl px-4 py-3 text-sm mb-3">
+              <span className="text-slate-400 shrink-0">{p.payee}</span>
+              <span className="text-slate-100 font-medium">{PAYMENT.payeeName}</span>
+            </div>
+
+            {/* 轉數快 FPS — text */}
+            <div className="flex items-center justify-between gap-3 bg-slate-800/60 border border-slate-700 rounded-xl px-4 py-3 text-sm mb-3">
+              <span className="text-slate-400 shrink-0">{p.payFps}</span>
+              <span className="font-mono text-slate-100 text-base tracking-wider">{PAYMENT.fpsId}</span>
+            </div>
+
+            {/* Alipay HK + WeChat Pay — tap to reveal the collection QR */}
+            <div className="grid grid-cols-2 gap-3 mb-5">
+              {[
+                { label: p.payAlipay, qr: PAYMENT.alipayHkQr },
+                { label: p.payWechat, qr: PAYMENT.wechatQr },
+              ].map((m) => (
+                <button
+                  key={m.label}
+                  type="button"
+                  onClick={() => setQrOpen(m)}
+                  className="bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700 hover:border-slate-500 rounded-xl px-4 py-3 text-center transition-colors"
+                >
+                  <div className="text-sm font-medium text-slate-200">{m.label}</div>
+                  <div className="text-[11px] text-amber-400 mt-0.5 flex items-center justify-center gap-1">
+                    <QrCode size={11} /> {p.showQr}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <ol className="text-sm text-slate-400 space-y-1.5 list-decimal list-inside mb-5">
+              <li>{p.manualStep1}</li>
+              <li>{p.manualStep2}</li>
+              <li>{p.manualStep3}</li>
+            </ol>
+
+            <a
+              href={`https://wa.me/${PAYMENT.whatsappNumber}?text=${encodeURIComponent(p.whatsappPrefill)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+            >
+              <MessageCircle size={18} /> {p.whatsappCta}
+            </a>
+          </div>
+        )}
       </div>
+
+      {qrOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
+          onClick={() => setQrOpen(null)}
+        >
+          <div
+            className="bg-slate-900 border border-slate-700 rounded-2xl p-5 max-w-xs w-full text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="font-bold mb-3">{qrOpen.label}</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={qrOpen.qr}
+              alt={qrOpen.label}
+              onClick={() => setQrOpen(null)}
+              className="w-full h-auto rounded-lg cursor-pointer"
+            />
+            <p className="text-xs text-slate-500 mt-3">{p.scanToPay}</p>
+            <button
+              type="button"
+              onClick={() => setQrOpen(null)}
+              className="mt-4 w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg py-2 text-sm"
+            >
+              {p.close}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

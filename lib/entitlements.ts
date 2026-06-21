@@ -69,3 +69,45 @@ export function sessionSizeFor(isPremium: boolean): number {
 export function attemptCapFor(isPremium: boolean): number | null {
   return isPremium ? null : FREE_ATTEMPTS_PER_SUBJECT
 }
+
+// ── Manual Premium grants (Plan A: offline payment) ──────────────────────────
+/** Parse a comma-separated email env var into a normalised, lower-cased list. */
+export function parseEmailList(raw: string | undefined): string[] {
+  return (raw ?? '')
+    .split(',')
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean)
+}
+
+/**
+ * True if the email has been manually granted Premium via the PREMIUM_EMAILS env
+ * var. This is the Plan-A unlock: a user pays offline, WhatsApps you proof, and you
+ * add their email here + redeploy — no database required. Server-side only.
+ */
+export function isManuallyGrantedPremium(email?: string | null): boolean {
+  if (!email) return false
+  return parseEmailList(process.env.PREMIUM_EMAILS).includes(email.trim().toLowerCase())
+}
+
+/** True if the email is on ALLOWED_EMAILS (your testers/team get Premium free). */
+export function isAllowlistedEmail(email?: string | null): boolean {
+  if (!email) return false
+  const list = parseEmailList(process.env.ALLOWED_EMAILS)
+  const allowlist = list.length ? list : ['yunawong0128@gmail.com']
+  return allowlist.includes(email.trim().toLowerCase())
+}
+
+/**
+ * Single source of truth for Premium. A user is Premium if ANY of:
+ *  - a verified @lhymss.net school email (free, automatic, no approval)
+ *  - on PREMIUM_EMAILS (paid users you unlocked)
+ *  - on ALLOWED_EMAILS (your testers / team)
+ * Everyone else — guests and other Google accounts — gets the free tier.
+ */
+export function resolveIsPremium(email?: string | null, emailVerified?: boolean): boolean {
+  return (
+    isSchoolEmail(email, emailVerified) ||
+    isManuallyGrantedPremium(email) ||
+    isAllowlistedEmail(email)
+  )
+}
