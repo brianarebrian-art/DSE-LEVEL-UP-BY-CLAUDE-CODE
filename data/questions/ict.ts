@@ -30,42 +30,42 @@ const hex2 = (n: number) => n.toString(16).toUpperCase().padStart(2, '0')
 // ── Data representation (42) ─────────────────────────────────────────────────
 const data: Question[] = []
 // bin → dec  (distractors = single-bit-flip values: guaranteed 4 distinct)
-;[10, 42, 85, 100, 170, 200, 51, 99].forEach((v, i) => {
+;[10, 42, 85].forEach((v, i) => {
   data.push(q(id('b2d'), T.data, FW.logic, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 2,
     [`二進位 $${bin8(v)}_2$ 轉成十進位是？`, `Convert binary $${bin8(v)}_2$ to decimal:`],
     [optm(`${v}`), optm(`${v ^ 1}`), optm(`${v ^ 8}`), optm(`${v ^ 128}`)],
     [`按位權相加：$${bin8(v)}_2 = ${v}_{10}$。`, `Summing place values: $${bin8(v)}_2 = ${v}_{10}$.`]))
 })
 // dec → bin
-;[12, 37, 64, 130, 200, 99].forEach((v, i) => {
+;[12, 37, 64].forEach((v, i) => {
   data.push(q(id('d2b'), T.data, FW.logic, 'medium', 2020 + (i % 4), 2,
     [`十進位 $${v}_{10}$ 的 8 位二進位表示是？`, `The 8-bit binary representation of $${v}_{10}$ is?`],
     [optm(`${bin8(v)}_2`), optm(`${bin8(v ^ 1)}_2`), optm(`${bin8(v ^ 8)}_2`), optm(`${bin8(v ^ 128)}_2`)],
     [`$${v}_{10} = ${bin8(v)}_2$。`, `$${v}_{10} = ${bin8(v)}_2$.`]))
 })
 // hex → dec
-;[0x2a, 0x4f, 0xa0, 0x3c, 0xff, 0x1b].forEach((v, i) => {
+;[0x2a, 0x4f, 0xa0].forEach((v, i) => {
   data.push(q(id('h2d'), T.data, FW.logic, 'medium', 2019 + (i % 5), 2,
     [`十六進位 $${hex2(v)}_{16}$ 轉成十進位是？`, `Convert hexadecimal $${hex2(v)}_{16}$ to decimal:`],
     [optm(`${v}`), optm(`${v ^ 1}`), optm(`${v ^ 16}`), optm(`${v ^ 128}`)],
     [`$${hex2(v)}_{16} = ${v}_{10}$。`, `$${hex2(v)}_{16} = ${v}_{10}$.`]))
 })
 // dec → hex
-;[47, 160, 205, 90, 255].forEach((v, i) => {
+;[47, 160].forEach((v, i) => {
   data.push(q(id('d2h'), T.data, FW.logic, 'medium', 2020 + (i % 4), 2,
     [`十進位 $${v}_{10}$ 的十六進位表示是？`, `The hexadecimal representation of $${v}_{10}$ is?`],
     [optm(`${hex2(v)}_{16}`), optm(`${hex2(v ^ 1)}_{16}`), optm(`${hex2(v ^ 16)}_{16}`), optm(`${hex2(v ^ 128)}_{16}`)],
     [`$${v}_{10} = ${hex2(v)}_{16}$。`, `$${v}_{10} = ${hex2(v)}_{16}$.`]))
 })
 // storage units (1 KB = 1024 B)
-;[2, 4, 8, 16, 3, 5].forEach((n, i) => {
+;[2, 4, 8].forEach((n, i) => {
   data.push(q(id('unit'), T.data, FW.apply, 'easy', 2021 + (i % 3), 2,
     [`$${n}$ KB 等於多少 byte（以 $1\\text{ KB}=1024$ B 計）？`, `How many bytes is $${n}$ KB (using $1\\text{ KB}=1024$ B)?`],
     [optm(`${n * 1024}`), optm(`${n * 1000}`), optm(`${n * 512}`), optm(`${n * 2048}`)],
     [`$${n}\\times 1024 = ${n * 1024}$ B。`, `$${n}\\times 1024 = ${n * 1024}$ B.`]))
 })
 // colour depth: n bits → 2^n colours
-;[3, 5, 6, 8].forEach((n, i) => {
+;[3, 5, 6].forEach((n, i) => {
   data.push(q(id('cd'), T.data, FW.apply, 'medium', 2022 - (i % 3), 2,
     [`每像素 $${n}$ 位元色深可表示多少種顏色？`, `How many colours can a colour depth of $${n}$ bits per pixel represent?`],
     [optm(`2^{${n}} = ${2 ** n}`), optm(`${2 ** (n - 1)}`), optm(`${2 ** (n + 1)}`), optm(`${2 * n}`)],
@@ -623,9 +623,51 @@ const security: Question[] = [
       opt('會加快電腦', 'it speeds up the computer'),
       opt('沒有任何風險', 'there is no risk')],
     ['公共網絡較易被竊聽，敏感操作宜用加密連線或避免。', 'Public networks are easier to eavesdrop on; use encrypted connections or avoid sensitive tasks.']),
+  q(id('sec'), T.security, FW.concept, 'hard', 2024, 3,
+    ['「物聯網」(IoT) 裝置普及帶來的一項主要保安隱患是？', 'A major security concern from the spread of "Internet of Things" (IoT) devices is that?'],
+    [opt('大量裝置常欠缺更新與強密碼，易被入侵操控', 'many devices lack updates and strong passwords, making them easy to hijack'),
+      opt('它們完全不能連接網絡', 'they cannot connect to a network at all'),
+      opt('它們必然非常安全', 'they are inherently very secure'),
+      opt('它們不會收集任何資料', 'they collect no data')],
+    ['許多 IoT 裝置（如智能攝錄機）運算資源有限、預設密碼弱又少更新，易被入侵並被串連成殭屍網絡發動攻擊，故須改密碼、更新韌體並分隔網絡。', 'Many IoT devices have weak default passwords and rarely receive updates, so they are easily compromised and marshalled into botnets; changing passwords, updating firmware and network segmentation help.']),
+  q(id('sec'), T.security, FW.concept, 'medium', 2023, 2,
+    ['使用人工智能 (AI) 系統時，一項重要的倫理考慮是？', 'When using artificial intelligence (AI) systems, an important ethical consideration is?'],
+    [opt('演算法偏見可能造成不公平的決定', 'algorithmic bias may lead to unfair decisions'),
+      opt('AI 一定完全客觀', 'AI is always perfectly objective'),
+      opt('AI 不需要任何資料', 'AI needs no data'),
+      opt('AI 與私隱無關', 'AI has nothing to do with privacy')],
+    ['AI 從歷史資料學習，若資料本身含偏見，模型可能在招聘、信貸等決策中複製甚至放大歧視，故須關注資料代表性、透明度與問責，避免不公平。', 'AI learns from historical data, so biased data can make models reproduce or amplify discrimination in hiring or lending; data representativeness, transparency and accountability are needed to avoid unfairness.']),
+  q(id('sec'), T.security, FW.concept, 'medium', 2024, 2,
+    ['「雙重認證」(two-factor authentication) 提升保安的原理是？', 'Two-factor authentication improves security because it?'],
+    [opt('除密碼外再需第二項憑證，盜密碼亦難登入', 'requires a second proof beyond the password, so a stolen password alone is not enough'),
+      opt('使密碼變長', 'makes the password longer'),
+      opt('完全不需密碼', 'removes the need for any password'),
+      opt('加快登入速度', 'speeds up the login')],
+    ['雙重認證要求「你知道的」（密碼）加「你擁有的」（如手機一次性碼），即使密碼外洩，攻擊者缺第二因素仍難登入，大幅提升帳戶安全。', 'Two-factor authentication combines something you know (password) with something you have (a one-time code on your phone), so even a leaked password is not enough to log in, greatly improving security.']),
+  q(id('sec'), T.security, FW.concept, 'hard', 2023, 3,
+    ['「網絡釣魚」(phishing) 攻擊的主要手法是？', 'A "phishing" attack mainly works by?'],
+    [opt('假冒可信機構誘騙用戶交出敏感資料', 'impersonating a trusted party to trick users into giving up sensitive data'),
+      opt('物理破壞伺服器', 'physically destroying the server'),
+      opt('提升網速以吸引用戶', 'boosting speed to attract users'),
+      opt('免費贈送防毒軟件', 'giving away free antivirus')],
+    ['釣魚常以偽冒銀行、機構的電郵或網站誘使用戶輸入密碼、信用卡等資料；防範方法包括核實寄件人、不亂按連結、留意網址真偽與啟用雙重認證。', 'Phishing uses fake emails or sites impersonating banks or institutions to trick users into entering passwords or card details; defences include verifying senders, not clicking unknown links, checking URLs and enabling two-factor authentication.']),
+  q(id('sec'), T.security, FW.concept, 'medium', 2024, 2,
+    ['《個人資料（私隱）條例》對機構收集個人資料的一項要求是？', 'A requirement of the Personal Data (Privacy) Ordinance on organisations collecting personal data is that they should?'],
+    [opt('只收集必要資料並說明用途，妥善保護', 'collect only necessary data, state its purpose and protect it properly'),
+      opt('可隨意把資料賣給任何人', 'may sell the data to anyone freely'),
+      opt('永久公開所有個人資料', 'must publish all personal data permanently'),
+      opt('無需保護所收集的資料', 'need not protect the data collected')],
+    ['私隱條例要求以合法、公平方式收集必要的個人資料、告知用途、確保準確與安全，並限制未經同意的轉用；違規可被追究，保障資料當事人的權益。', 'The Privacy Ordinance requires collecting only necessary personal data lawfully and fairly, stating the purpose, keeping it accurate and secure, and limiting use without consent, with penalties for breaches.']),
+  q(id('sec'), T.security, FW.concept, 'medium', 2023, 2,
+    ['定期為系統與軟件安裝「更新／修補程式」(updates/patches) 的保安作用是？', 'Regularly installing software "updates/patches" helps security by?'],
+    [opt('修補已知保安漏洞，減低被攻擊風險', 'fixing known security vulnerabilities, reducing attack risk'),
+      opt('刪除所有使用者檔案', 'deleting all user files'),
+      opt('使電腦永不出錯', 'making the computer never fail'),
+      opt('與保安完全無關', 'being unrelated to security')],
+    ['軟件漏洞一旦被發現，攻擊者可能加以利用；及時安裝官方更新與修補程式可堵塞已知漏洞，是個人與機構維持系統安全的基本而重要的措施。', 'Once a vulnerability is found, attackers may exploit it; promptly installing official updates and patches closes known holes — a basic, important measure for keeping systems secure.']),
 ]
 
-// ── Multimedia & web (4) ─────────────────────────────────────────────────────
+// ── Multimedia & web (16) ────────────────────────────────────────────────────
 const web: Question[] = [
   q(id('web'), T.web, FW.concept, 'easy', 2023, 2,
     ['HTML 的主要用途是？', 'HTML is mainly used to?'],
@@ -655,6 +697,84 @@ const web: Question[] = [
       opt('移除所有圖片', 'remove all images'),
       opt('加密網頁內容', 'encrypt the page content')],
     ['響應式設計用彈性版面與媒體查詢，適配手機、平板與桌面。', 'Responsive design uses flexible layouts and media queries to fit phones, tablets and desktops.']),
+  q(id('web'), T.web, FW.concept, 'medium', 2024, 2,
+    ['JavaScript 在網頁中的主要作用是？', 'The main role of JavaScript in a web page is to?'],
+    [opt('提供互動行為與動態功能', 'provide interactivity and dynamic behaviour'),
+      opt('描述頁面結構', 'describe page structure'),
+      opt('只控制顏色', 'control only colours'),
+      opt('儲存伺服器資料', 'store server data')],
+    ['HTML 負責結構、CSS 負責樣式，JavaScript 則在瀏覽器執行以提供互動與動態效果，三者分工。', 'HTML gives structure, CSS styling, and JavaScript runs in the browser to add interactivity and dynamic effects — a separation of concerns.']),
+  q(id('web'), T.web, FW.concept, 'easy', 2023, 2,
+    ['下列哪種檔案格式最適合儲存有透明背景的網頁圖示？', 'Which file format best stores a web icon with a transparent background?'],
+    [opt('PNG', 'PNG'), opt('JPEG', 'JPEG'), opt('BMP（點陣，無壓縮）', 'BMP (uncompressed bitmap)'), opt('TXT', 'TXT')],
+    ['PNG 支援無損壓縮與透明度（alpha 通道），適合圖示與線條圖；JPEG 為有損壓縮且不支援透明，BMP 檔案龐大。', 'PNG supports lossless compression and transparency (alpha channel), ideal for icons and line art; JPEG is lossy without transparency and BMP files are large.']),
+  q(id('web'), T.web, FW.apply, 'hard', 2024, 3,
+    ['一幅未壓縮的點陣圖有 $800\\times600$ 像素、每像素 24 位元色彩，檔案大小約為？', 'An uncompressed bitmap of $800\\times600$ pixels at 24-bit colour has a file size of about?'],
+    [opt('約 1.44 MB', 'about 1.44 MB'), opt('約 480 KB', 'about 480 KB'), opt('約 14.4 MB', 'about 14.4 MB'), opt('約 144 KB', 'about 144 KB')],
+    ['大小 = 像素數 × 每像素位元 = $800\\times600\\times24$ 位元 = 11 520 000 位元 ÷ 8 ≈ 1.44 MB；位元深度愈高、解析度愈大則檔案愈大。', 'Size = pixels × bits/pixel = $800\\times600\\times24$ bits = 11,520,000 bits ÷ 8 ≈ 1.44 MB; higher bit depth and resolution mean larger files.']),
+  q(id('web'), T.web, FW.concept, 'medium', 2023, 2,
+    ['數碼聲音的「取樣率」(sampling rate) 提高，一般會？', 'Increasing the "sampling rate" of digital audio generally?'],
+    [opt('提升音質但增加檔案大小', 'improves quality but increases file size'),
+      opt('降低音質', 'lowers the quality'),
+      opt('使檔案變小', 'makes the file smaller'),
+      opt('與音質無關', 'has no effect on quality')],
+    ['取樣率指每秒對聲波取樣的次數，愈高愈能還原原聲、音質愈佳，但資料量與檔案亦相應增大，需在品質與大小間取捨。', 'Sampling rate is samples taken per second; higher rates reproduce sound more faithfully with better quality but larger files — a quality-versus-size trade-off.']),
+  q(id('web'), T.web, FW.concept, 'medium', 2024, 2,
+    ['「有損壓縮」(lossy compression) 的特點是？', 'A feature of "lossy compression" is that it?'],
+    [opt('永久丟棄部分資料以大幅縮小檔案', 'permanently discards some data to shrink files greatly'),
+      opt('完全不丟失任何資料', 'loses no data at all'),
+      opt('只能用於文字', 'works only on text'),
+      opt('一定使檔案變大', 'always enlarges the file')],
+    ['有損壓縮（如 JPEG、MP3）丟棄人眼耳較難察覺的資料以大幅縮小檔案，但無法完全還原原檔；無損壓縮（如 PNG、ZIP）則可完全還原。', 'Lossy compression (JPEG, MP3) discards data less noticeable to human senses to shrink files greatly but cannot restore the original, unlike lossless (PNG, ZIP) which can.']),
+  q(id('web'), T.web, FW.concept, 'easy', 2023, 2,
+    ['URL 中的「https://」相比「http://」，主要分別是？', 'Compared with "http://", the "https://" in a URL mainly indicates?'],
+    [opt('資料經加密傳輸，較安全', 'data is transmitted encrypted, more securely'),
+      opt('網頁載入更快', 'the page loads faster'),
+      opt('網頁沒有圖片', 'the page has no images'),
+      opt('網站一定免費', 'the site is always free')],
+    ['HTTPS 在 HTTP 之上加入 TLS/SSL 加密，保障瀏覽器與伺服器間傳輸的資料（如密碼、信用卡）不被竊取或竄改，比 HTTP 安全。', 'HTTPS adds TLS/SSL encryption over HTTP, protecting data (passwords, card numbers) between browser and server from interception or tampering — more secure than plain HTTP.']),
+  q(id('web'), T.web, FW.concept, 'medium', 2024, 2,
+    ['影片串流 (video streaming) 對網絡的主要要求是？', 'Video streaming mainly requires the network to have?'],
+    [opt('足夠的頻寬以維持流暢播放', 'enough bandwidth to sustain smooth playback'),
+      opt('極小的儲存空間', 'very small storage'),
+      opt('完全不需網絡', 'no network at all'),
+      opt('只需文字傳輸', 'only text transmission')],
+    ['串流邊下載邊播放，需足夠頻寬與穩定連線以避免緩衝中斷；頻寬不足時播放器會降低畫質或出現卡頓。', 'Streaming plays while downloading, needing enough bandwidth and a stable connection to avoid buffering; with too little bandwidth, players drop quality or stall.']),
+  q(id('web'), T.web, FW.apply, 'hard', 2023, 3,
+    ['某網站要讓用戶上載相片並自動調整大小，最適合在哪一端處理較能減輕伺服器負擔？', 'To let users upload photos that are auto-resized, processing where can best ease server load?'],
+    [opt('用戶端（瀏覽器）先壓縮再上載', 'on the client (browser) by compressing before upload'),
+      opt('完全不壓縮直接上載', 'uploading with no compression at all'),
+      opt('只在伺服器重複處理多次', 'processing repeatedly on the server only'),
+      opt('交由資料庫處理影像', 'letting the database process the image')],
+    ['在用戶端（瀏覽器以 JavaScript）先行壓縮縮放，可減少上載流量與伺服器運算負擔；這體現按系統需要在前後端之間合理分配運算的設計思維。', 'Resizing and compressing on the client (browser via JavaScript) before upload cuts upload traffic and server computation — sensible division of work between front and back end.']),
+  q(id('web'), T.web, FW.concept, 'medium', 2024, 2,
+    ['網頁中「超連結」(hyperlink) 的作用是？', 'The purpose of a "hyperlink" in a web page is to?'],
+    [opt('連接到其他網頁或資源', 'link to other pages or resources'),
+      opt('加密整個網站', 'encrypt the whole site'),
+      opt('壓縮圖片', 'compress images'),
+      opt('儲存資料庫', 'store a database')],
+    ['超連結讓用戶按下後跳轉到其他網頁、檔案或同頁特定位置，是萬維網「互相連結」特性的核心，由 HTML 的 anchor 標記實現。', 'A hyperlink lets users jump to another page, file or position when clicked — the core of the Web’s interconnected nature, implemented by HTML anchor tags.']),
+  q(id('web'), T.web, FW.concept, 'easy', 2023, 2,
+    ['網頁瀏覽器 (web browser) 的主要功能是？', 'The main function of a web browser is to?'],
+    [opt('請求並顯示網頁', 'request and display web pages'),
+      opt('編寫程式語言', 'write programming languages'),
+      opt('製造硬件', 'manufacture hardware'),
+      opt('管理電源', 'manage power supply')],
+    ['瀏覽器向伺服器發出 HTTP 請求取得 HTML、CSS、JavaScript 等資源，並解析、繪製成可閱讀的網頁供用戶互動。', 'A browser sends HTTP requests to servers for HTML, CSS and JavaScript, then parses and renders them into readable, interactive pages.']),
+  q(id('web'), T.web, FW.apply, 'medium', 2024, 2,
+    ['製作多媒體簡報時，把高解析相片直接放入會使檔案過大，較佳的做法是？', 'When making a multimedia presentation, inserting full-resolution photos bloats the file; a better approach is to?'],
+    [opt('先把圖片壓縮／縮放至所需尺寸', 'compress/resize images to the needed dimensions first'),
+      opt('加入更多未壓縮影片', 'add more uncompressed video'),
+      opt('使用最大解析度的圖片', 'use the highest-resolution images possible'),
+      opt('完全不理會檔案大小', 'ignore file size entirely')],
+    ['按實際顯示需要把圖片壓縮、縮放可大幅減小檔案，便於傳送與載入；盲目使用超高解析素材只會浪費空間與頻寬。', 'Compressing and resizing images to the size actually displayed greatly reduces file size for easier sharing and loading; using needlessly high-resolution media wastes space and bandwidth.']),
+  q(id('web'), T.web, FW.concept, 'medium', 2023, 2,
+    ['「雲端儲存」(cloud storage) 相比只存於本機的一項優點是？', 'An advantage of "cloud storage" over local-only storage is that it?'],
+    [opt('可跨裝置存取並便於備份共享', 'allows cross-device access and easy backup/sharing'),
+      opt('完全不需網絡連線', 'needs no network connection at all'),
+      opt('一定比本機更快', 'is always faster than local'),
+      opt('永遠免費且無限', 'is always free and unlimited')],
+    ['雲端儲存把資料存於遠端伺服器，可隨時跨裝置存取、自動備份與分享協作；但依賴網絡連線與服務商，亦帶來私隱與保安的考量。', 'Cloud storage keeps data on remote servers for cross-device access, automatic backup and sharing, but depends on a network and the provider and raises privacy and security considerations.']),
 ]
 
 export const ictQuestions: Question[] = [

@@ -11,6 +11,7 @@ const T = {
   matrices: { id: 'matrices', zh: '矩陣與行列式', en: 'Matrices & Determinants' },
   vectors: { id: 'vectors', zh: '向量', en: 'Vectors' },
   induction: { id: 'mathematical_induction', zh: '數學歸納法', en: 'Mathematical Induction' },
+  binomial: { id: 'binomial_theorem', zh: '二項式定理', en: 'Binomial Theorem' },
   calcapp: { id: 'calculus_app', zh: '微積分應用', en: 'Applications of Calculus' },
 } satisfies Record<string, TopicMeta>
 
@@ -36,7 +37,7 @@ const pw = (c: number, e: number): string => {
 
 // ── Differentiation (24) ─────────────────────────────────────────────────────
 const diff: Question[] = []
-;([[2, 3], [3, 2], [5, 2], [4, 3], [2, 4], [6, 2], [3, 4], [2, 5]] as [number, number][]).forEach(([a, n], i) => {
+;([[2, 3], [3, 2]] as [number, number][]).forEach(([a, n], i) => {
   diff.push(q(id('dpow'), T.diff, FW.rate, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 2,
     [`求 $\\frac{d}{dx}(${pw(a, n)})$。`, `Find $\\frac{d}{dx}(${pw(a, n)})$.`],
     [optm(pw(a * n, n - 1)), optm(pw(a * n, n)), optm(pw(a, n - 1)), optm(pw(a, n + 1))],
@@ -99,7 +100,7 @@ diff.push(
 
 // ── Integration (22) ─────────────────────────────────────────────────────────
 const integ: Question[] = []
-;([[2, 3], [2, 6], [3, 4], [1, 2], [3, 8], [4, 5], [2, 9], [1, 6]] as [number, number][]).forEach(([n, a], i) => {
+;([[2, 3], [2, 6]] as [number, number][]).forEach(([n, a], i) => {
   // ∫ a x^n dx = a/(n+1) x^{n+1} + C   (a chosen divisible by n+1)
   const c = a / (n + 1)
   integ.push(q(id('ipow'), T.integ, FW.transform, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 3,
@@ -411,8 +412,61 @@ const calcapp: Question[] = []
       `Area $=\\int_0^{${b}} x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_0^{${b}} = \\frac{${b * b * b}}{3}$.`]))
 })
 
+// ── Binomial theorem (12) ────────────────────────────────────────────────────
+const binomial: Question[] = [
+  q(id('bin'), T.binomial, FW.decompose, 'easy', 2024, 2,
+    ['$(a+b)^n$ 的展開式共有多少項？', 'How many terms does the expansion of $(a+b)^n$ have?'],
+    [optm('n+1'), optm('n'), optm('n-1'), optm('2n')],
+    ['$(a+b)^n$ 按二項式定理展開，由 $r=0$ 到 $r=n$ 共 $n+1$ 項。', 'By the binomial theorem $(a+b)^n$ expands into terms for $r=0$ to $r=n$, giving $n+1$ terms.']),
+  q(id('bin'), T.binomial, FW.decompose, 'easy', 2023, 2,
+    ['二項式係數 $\\binom{5}{2}$ 的值是？', 'The value of the binomial coefficient $\\binom{5}{2}$ is?'],
+    [optm('10'), optm('20'), optm('15'), optm('25')],
+    ['$\\binom{5}{2}=\\frac{5!}{2!\\,3!}=\\frac{5\\times4}{2}=10$。', '$\\binom{5}{2}=\\frac{5!}{2!\\,3!}=\\frac{5\\times4}{2}=10$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'medium', 2024, 3,
+    ['$(1+x)^5$ 展開式中 $x^2$ 項的係數是？', 'In the expansion of $(1+x)^5$, the coefficient of $x^2$ is?'],
+    [optm('10'), optm('5'), optm('20'), optm('15')],
+    ['$x^2$ 項係數為 $\\binom{5}{2}=10$。', 'The coefficient of $x^2$ is $\\binom{5}{2}=10$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'medium', 2023, 3,
+    ['$(1+x)^6$ 展開式中 $x^3$ 項的係數是？', 'In the expansion of $(1+x)^6$, the coefficient of $x^3$ is?'],
+    [optm('20'), optm('15'), optm('6'), optm('30')],
+    ['$x^3$ 項係數為 $\\binom{6}{3}=\\frac{6\\times5\\times4}{3\\times2}=20$。', 'The coefficient of $x^3$ is $\\binom{6}{3}=\\frac{6\\times5\\times4}{3\\times2}=20$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'medium', 2024, 3,
+    ['$(x+y)^n$ 展開式的一般項（第 $r+1$ 項）是？', 'The general term (the $(r+1)$-th term) of $(x+y)^n$ is?'],
+    [optm('\\binom{n}{r}x^{n-r}y^{r}'), optm('\\binom{n}{r}x^{r}y^{n-r}'),
+      optm('\\binom{n}{r}x^{n}y^{r}'), optm('\\binom{n}{r+1}x^{n-r}y^{r}')],
+    ['二項式定理一般項為 $T_{r+1}=\\binom{n}{r}x^{n-r}y^{r}$，$x$ 的次方由 $n$ 遞減，$y$ 由 $0$ 遞增。', 'The general term is $T_{r+1}=\\binom{n}{r}x^{n-r}y^{r}$, the power of $x$ decreasing from $n$ as that of $y$ increases.']),
+  q(id('bin'), T.binomial, FW.decompose, 'hard', 2023, 3,
+    ['$(2+x)^4$ 展開式中 $x^2$ 項的係數是？', 'In the expansion of $(2+x)^4$, the coefficient of $x^2$ is?'],
+    [optm('24'), optm('6'), optm('12'), optm('16')],
+    ['$x^2$ 項 $=\\binom{4}{2}\\,2^{2}x^{2}=6\\times4\\,x^2=24x^2$，故係數為 $24$。', 'The $x^2$ term is $\\binom{4}{2}\\,2^{2}x^{2}=6\\times4\\,x^2=24x^2$, so the coefficient is $24$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'medium', 2024, 2,
+    ['把 $(1+x)^4$ 各項係數相加（即令 $x=1$）得？', 'The sum of all coefficients of $(1+x)^4$ (i.e. putting $x=1$) is?'],
+    [optm('16'), optm('8'), optm('4'), optm('32')],
+    ['令 $x=1$，$(1+1)^4=2^4=16$，即各項係數之和。', 'Setting $x=1$ gives $(1+1)^4=2^4=16$, the sum of the coefficients.']),
+  q(id('bin'), T.binomial, FW.decompose, 'easy', 2023, 2,
+    ['$(1+x)^n$ 展開式中 $x$ 的係數是？', 'In the expansion of $(1+x)^n$, the coefficient of $x$ is?'],
+    [optm('n'), optm('1'), optm('n-1'), optm('n+1')],
+    ['$x^1$ 項係數為 $\\binom{n}{1}=n$。', 'The coefficient of $x$ is $\\binom{n}{1}=n$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'hard', 2024, 3,
+    ['$\\left(x+\\dfrac{1}{x}\\right)^{6}$ 展開式中的常數項是？', 'The constant term in the expansion of $\\left(x+\\dfrac{1}{x}\\right)^{6}$ is?'],
+    [optm('20'), optm('15'), optm('6'), optm('1')],
+    ['一般項 $\\binom{6}{r}x^{6-r}x^{-r}=\\binom{6}{r}x^{6-2r}$，常數項需 $6-2r=0$，即 $r=3$，係數 $\\binom{6}{3}=20$。', 'The general term is $\\binom{6}{r}x^{6-2r}$; a constant needs $6-2r=0$, i.e. $r=3$, giving $\\binom{6}{3}=20$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'medium', 2023, 2,
+    ['二項式係數的對稱性 $\\binom{n}{r}=$？', 'By the symmetry of binomial coefficients, $\\binom{n}{r}=$?'],
+    [optm('\\binom{n}{n-r}'), optm('\\binom{n}{r-1}'), optm('\\binom{n-1}{r}'), optm('\\binom{r}{n}')],
+    ['由定義 $\\binom{n}{r}=\\frac{n!}{r!(n-r)!}=\\binom{n}{n-r}$，故二項式係數對稱。', 'From the definition $\\binom{n}{r}=\\frac{n!}{r!(n-r)!}=\\binom{n}{n-r}$, so the coefficients are symmetric.']),
+  q(id('bin'), T.binomial, FW.decompose, 'medium', 2024, 3,
+    ['$(1+2x)^3$ 展開式中 $x^2$ 項的係數是？', 'In the expansion of $(1+2x)^3$, the coefficient of $x^2$ is?'],
+    [optm('12'), optm('6'), optm('8'), optm('3')],
+    ['$x^2$ 項 $=\\binom{3}{2}(2x)^2=3\\times4x^2=12x^2$，係數為 $12$。', 'The $x^2$ term is $\\binom{3}{2}(2x)^2=3\\times4x^2=12x^2$, so the coefficient is $12$.']),
+  q(id('bin'), T.binomial, FW.decompose, 'easy', 2023, 2,
+    ['$\\binom{n}{0}$ 與 $\\binom{n}{n}$ 的值分別是？', 'The values of $\\binom{n}{0}$ and $\\binom{n}{n}$ are respectively?'],
+    [optm('1 \\text{ 與 } 1'), optm('0 \\text{ 與 } 1'), optm('n \\text{ 與 } 1'), optm('1 \\text{ 與 } n')],
+    ['$\\binom{n}{0}=\\binom{n}{n}=1$，對應展開式首末兩項的係數。', '$\\binom{n}{0}=\\binom{n}{n}=1$, the coefficients of the first and last terms.']),
+]
+
 export const m2Questions: Question[] = [
-  ...diff, ...integ, ...limits, ...matrices, ...vectors, ...induction, ...calcapp,
+  ...diff, ...integ, ...limits, ...matrices, ...vectors, ...induction, ...binomial, ...calcapp,
 ]
 
 export const m2Topics: Topic[] = topicList([
@@ -422,5 +476,6 @@ export const m2Topics: Topic[] = topicList([
   { topic: T.matrices, fw: FW.decompose, count: matrices.length },
   { topic: T.vectors, fw: FW.geometry, count: vectors.length },
   { topic: T.induction, fw: FW.decompose, count: induction.length },
+  { topic: T.binomial, fw: FW.decompose, count: binomial.length },
   { topic: T.calcapp, fw: FW.model, count: calcapp.length },
 ])

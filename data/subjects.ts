@@ -398,6 +398,22 @@ export const subjects: SubjectMeta[] = [
     descriptionEn: 'Smaller subject, added later. Sports science, human anatomy and physical culture.',
     accent: 'lime',
   },
+  {
+    id: 'technology-living',
+    name: '科技與生活',
+    nameEn: 'Technology and Living',
+    short: '科生',
+    shortEn: 'Tech&Living',
+    emoji: '🍳',
+    category: 'elective',
+    priority: 'P4',
+    hasMC: true,
+    isActive: true,
+    launchDate: '2027 年',
+    description: '冷門科目、後期補上。食物科學與營養、膳食計劃、食物安全、纖維布料與時尚設計、消費與可持續。',
+    descriptionEn: 'Smaller subject, added later. Food science and nutrition, meal planning, food safety, fibres and fashion design, and sustainable consumption.',
+    accent: 'orange',
+  },
 ]
 
 export function getSubject(id: string): SubjectMeta | undefined {

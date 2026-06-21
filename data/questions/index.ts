@@ -23,6 +23,7 @@ import { englishLiteratureQuestions, englishLiteratureTopics } from './english-l
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { csdQuestions, csdTopics } from './csd'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
+import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
 
 export type { Question, MCQuestion, Topic, Difficulty } from './types'
 
@@ -57,6 +58,7 @@ const banks: Record<string, SubjectBank> = {
   'visual-arts': { questions: visualArtsQuestions, topics: visualArtsTopics },
   csd: { questions: csdQuestions, topics: csdTopics },
   'ethics-religious': { questions: ethicsReligiousQuestions, topics: ethicsReligiousTopics },
+  'technology-living': { questions: technologyLivingQuestions, topics: technologyLivingTopics },
 }
 
 export function getSubjectQuestions(subjectId: string): Question[] {

@@ -1,5 +1,5 @@
 const targets = (process.argv[2] || 'm2').split(',')
-const camel: Record<string,string> = {'chinese-history':'chineseHistory','health-management':'healthManagement','design-tech':'designTech','chinese-literature':'chineseLiterature','english-literature':'englishLiterature','visual-arts':'visualArts','ethics-religious':'ethicsReligious'}
+const camel: Record<string,string> = {'chinese-history':'chineseHistory','health-management':'healthManagement','design-tech':'designTech','chinese-literature':'chineseLiterature','english-literature':'englishLiterature','visual-arts':'visualArts','ethics-religious':'ethicsReligious','technology-living':'technologyLiving'}
 for (const file of targets) {
   const name = camel[file] || file
   const m: any = await import('./data/questions/' + file + '.ts')

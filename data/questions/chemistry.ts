@@ -12,6 +12,7 @@ const T = {
   rates_energy: { id: 'rates_energy', zh: '反應速率與能量', en: 'Reaction Rates & Energy' },
   bonding: { id: 'bonding', zh: '化學鍵', en: 'Chemical Bonding' },
   periodic_table: { id: 'periodic_table', zh: '週期表', en: 'The Periodic Table' },
+  organic: { id: 'organic', zh: '有機化學', en: 'Organic Chemistry' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -20,6 +21,7 @@ const FW = {
   electron: { id: 'electron', zh: '電子轉移', en: 'Electron Transfer', emoji: '🔋' },
   dynamics: { id: 'dynamics', zh: '反應動力', en: 'Reaction Dynamics', emoji: '🔥' },
   structure: { id: 'structure', zh: '結構與性質', en: 'Structure & Properties', emoji: '🔗' },
+  carbon: { id: 'carbon', zh: '碳化合物', en: 'Carbon Compounds', emoji: '🛢️' },
 } satisfies Record<string, FwMeta>
 
 const opt = (v: string): Pair => [v, v]
@@ -32,8 +34,7 @@ const mole: Question[] = []
 // n = m / M
 const molM: [number, number, string, string][] = [
   [36, 18, 'H₂O', 'water'], [88, 44, 'CO₂', 'carbon dioxide'], [117, 58.5, 'NaCl', 'sodium chloride'],
-  [64, 32, 'O₂', 'oxygen gas'], [200, 100, 'CaCO₃', 'calcium carbonate'], [20, 2, 'H₂', 'hydrogen gas'],
-  [196, 98, 'H₂SO₄', 'sulfuric acid'], [80, 16, 'CH₄', 'methane'], [120, 24, 'Mg', 'magnesium'], [56, 28, 'N₂', 'nitrogen gas'],
+  [64, 32, 'O₂', 'oxygen gas'], [200, 100, 'CaCO₃', 'calcium carbonate'],
 ]
 molM.forEach(([m, M, f, en], i) =>
   mole.push(q(id('nmM'), T.mole, FW.quant, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 1,
@@ -53,7 +54,7 @@ molM.forEach(([m, M, f, en], i) =>
     [`$m = nM = ${n}\\times${M} = ${rnd(n * M)}\\,\\text{g}$。`, `$m = nM = ${n}\\times${M} = ${rnd(n * M)}\\,\\text{g}$.`]))
 })
 // gas volume at rtp (24 dm³/mol)
-;[[2, 48], [0.5, 12], [3, 72], [0.25, 6]].forEach((p, i) => {
+;[[2, 48]].forEach((p, i) => {
   const [n, v] = p
   mole.push(q(id('gas'), T.mole, FW.quant, 'medium', 2021 + (i % 3), 1,
     [`室溫及標準壓力下，$${n}\\,\\text{mol}$ 氣體佔多少體積（莫耳體積 $24\\,\\text{dm}^3$）？`,
@@ -62,7 +63,7 @@ molM.forEach(([m, M, f, en], i) =>
     [`$V = n \\times 24 = ${n}\\times24 = ${v}\\,\\text{dm}^3$。`, `$V = n \\times 24 = ${n}\\times24 = ${v}\\,\\text{dm}^3$.`]))
 })
 // concentration c = n/V (V in dm³)
-;[[0.5, 2, 0.25], [0.8, 4, 0.2], [2, 5, 0.4], [0.6, 3, 0.2]].forEach((p, i) => {
+;[[0.5, 2, 0.25], [0.8, 4, 0.2]].forEach((p, i) => {
   const [n, V, c] = p
   mole.push(q(id('conc'), T.mole, FW.quant, 'hard', 2020 + (i % 4), 1,
     [`把 $${n}\\,\\text{mol}$ 溶質溶於水成 $${V}\\,\\text{dm}^3$ 溶液，求濃度。`,
@@ -72,9 +73,7 @@ molM.forEach(([m, M, f, en], i) =>
       `$c = \\frac{n}{V} = \\frac{${n}}{${V}} = ${rnd(c)}\\,\\text{mol/dm}^3$.`]))
 })
 // molar mass (curated)
-;[['H₂O', 18, 'O=16, H=1'], ['CO₂', 44, 'C=12, O=16'], ['NaOH', 40, 'Na=23, O=16, H=1'],
-  ['CaCO₃', 100, 'Ca=40, C=12, O=16'], ['NH₃', 17, 'N=14, H=1'], ['CH₄', 16, 'C=12, H=1'],
-  ['H₂SO₄', 98, 'H=1, S=32, O=16']].forEach((p, i) => {
+;[['H₂O', 18, 'O=16, H=1'], ['CO₂', 44, 'C=12, O=16']].forEach((p, i) => {
   const [f, M, hint] = p as [string, number, string]
   mole.push(q(id('mm'), T.mole, FW.quant, i < 2 ? 'easy' : 'medium', 2019 + (i % 5), 1,
     [`${f} 的摩爾質量是多少？（$${hint}$）`, `What is the molar mass of ${f}? ($${hint}$)`],
@@ -464,8 +463,100 @@ const periodic: Question[] = [
     ['現代週期表按原子序（質子數）遞增排列。', 'The modern periodic table is ordered by increasing atomic number (proton number).']),
 ]
 
+// ── Organic chemistry / carbon compounds (15) ────────────────────────────────
+const organic: Question[] = [
+  q(id('og'), T.organic, FW.carbon, 'easy', 2023, 1,
+    ['同系列（homologous series）中相鄰成員的分子式相差？', 'Adjacent members of a homologous series differ in formula by?'],
+    [opt('一個 CH₂ / one CH₂ unit'), opt('一個 CH₃ / one CH₃ unit'), opt('一個 C₂H₂ / one C₂H₂ unit'), opt('一個 H₂O / one H₂O unit')],
+    ['同系物有相同通式與相似化學性質，相鄰成員相差一個 $CH_2$，物理性質隨碳數遞變。', 'Members of a homologous series share a general formula and similar chemistry; consecutive ones differ by one $CH_2$, with physical properties trending with chain length.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2024, 1,
+    ['烷（alkanes）的通式是？', 'The general formula of alkanes is?'],
+    [optm('C_nH_{2n+2}'), optm('C_nH_{2n}'), optm('C_nH_{2n-2}'), optm('C_nH_{n}')],
+    ['飽和烷烴每個碳以單鍵相連，通式為 $C_nH_{2n+2}$；烯烴（含一個雙鍵）為 $C_nH_{2n}$。', 'Saturated alkanes have only single bonds, formula $C_nH_{2n+2}$; alkenes with one C=C are $C_nH_{2n}$.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2023, 1,
+    ['區分烷與烯的常用化學測試是？', 'A common chemical test to distinguish an alkane from an alkene is?'],
+    [opt('加入溴水：烯使其褪色，烷則否 / bromine water decolourised by the alkene only'),
+      opt('加入石蕊：烯變紅 / litmus turns red with the alkene'),
+      opt('加水：烯溶解 / the alkene dissolves in water'),
+      opt('點火：只有烷可燃 / only the alkane burns')],
+    ['烯含 C=C 雙鍵，能與溴水進行加成反應而使其由橙褐色褪去；烷為飽和，常溫下不與溴水反應，故可藉此區分。', 'Alkenes have a C=C double bond that adds bromine, decolourising bromine water; saturated alkanes do not react at room temperature, so this distinguishes them.']),
+  q(id('og'), T.organic, FW.carbon, 'hard', 2024, 1,
+    ['烯的 C=C 雙鍵與溴的反應屬於哪類反應？', 'The reaction of an alkene’s C=C with bromine is which type?'],
+    [opt('加成反應 / addition'), opt('取代反應 / substitution'), opt('縮合反應 / condensation'), opt('中和反應 / neutralisation')],
+    ['雙鍵打開，溴的兩個原子加到相鄰碳上形成二溴化物，無小分子釋出，屬加成反應；烷與鹵素在光照下則行取代反應。', 'The double bond opens and the two bromine atoms add across adjacent carbons forming a dibromide with no small molecule lost — addition; alkanes undergo substitution with halogens under light.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2023, 1,
+    ['乙醇（ethanol）所屬的官能團（functional group）是？', 'Ethanol belongs to which functional group?'],
+    [opt('羥基 —OH（醇）/ hydroxyl —OH (alcohol)'), opt('羧基 —COOH（酸）/ carboxyl —COOH (acid)'),
+      opt('羰基 C=O（酮）/ carbonyl C=O (ketone)'), opt('胺基 —NH₂ / amino —NH₂')],
+    ['醇類的官能團是羥基 $-OH$，乙醇為 $C_2H_5OH$；官能團決定該系列的特徵化學性質。', 'Alcohols have the hydroxyl $-OH$ group; ethanol is $C_2H_5OH$. The functional group governs the series’ characteristic chemistry.']),
+  q(id('og'), T.organic, FW.carbon, 'hard', 2024, 1,
+    ['乙醇氧化（如加酸化重鉻酸鉀）後生成的羧酸是？', 'Oxidising ethanol (e.g. with acidified dichromate) gives which carboxylic acid?'],
+    [opt('乙酸 CH₃COOH / ethanoic acid CH₃COOH'), opt('甲酸 HCOOH / methanoic acid'),
+      opt('丙酸 C₂H₅COOH / propanoic acid'), opt('乙醛保持不變 / it stays as ethanal')],
+    ['乙醇先被氧化為乙醛，再進一步氧化成乙酸（$CH_3COOH$）；氧化劑橙色的重鉻酸鉀會還原為綠色 $Cr^{3+}$，可作觀察。', 'Ethanol is oxidised first to ethanal then to ethanoic acid ($CH_3COOH$); the orange dichromate is reduced to green $Cr^{3+}$, a visible change.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2023, 1,
+    ['「同分異構體」（structural isomers）指？', '"Structural isomers" are compounds that have?'],
+    [opt('相同分子式但不同結構 / the same molecular formula but different structures'),
+      opt('相同結構但不同分子式 / the same structure but different formulae'),
+      opt('完全相同的化合物 / are identical compounds'),
+      opt('不同元素組成 / different elements')],
+    ['同分異構體分子式相同，但原子的連接方式（結構）不同，故物理化學性質可能各異，如丁烷與異丁烷。', 'Structural isomers share a molecular formula but differ in how the atoms are connected, so their properties can differ, e.g. butane and isobutane.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2024, 1,
+    ['石油（原油）主要由什麼組成，並以何種方法分離成餾分？', 'Crude oil is mainly a mixture of hydrocarbons separated into fractions by?'],
+    [opt('分餾（按沸點）/ fractional distillation (by boiling point)'),
+      opt('過濾 / filtration'), opt('結晶 / crystallisation'), opt('電解 / electrolysis')],
+    ['原油是不同碳鏈長度的碳氫化合物混合物，藉分餾按沸點差異分離成石油氣、汽油、煤油、柴油等餾分；碳鏈愈長沸點愈高。', 'Crude oil is a mixture of hydrocarbons separated by fractional distillation according to boiling point into gas, petrol, kerosene, diesel, etc.; longer chains boil higher.']),
+  q(id('og'), T.organic, FW.carbon, 'hard', 2023, 1,
+    ['「裂解」（cracking）長鏈碳氫化合物的主要目的是？', 'The main purpose of "cracking" long-chain hydrocarbons is to?'],
+    [opt('產生較有用的短鏈烷與烯 / make more useful short-chain alkanes and alkenes'),
+      opt('把短鏈合成長鏈 / build long chains from short ones'),
+      opt('增加原油的硫含量 / raise the sulfur content'),
+      opt('把碳氫化合物變成金屬 / turn hydrocarbons into metals')],
+    ['裂解把供過於求的長鏈分子斷裂成需求較大的短鏈烷（如汽油成分）及烯（如乙烯，作塑膠原料），提高原油的經濟價值。', 'Cracking breaks surplus long chains into more sought-after short-chain alkanes (petrol) and alkenes (e.g. ethene for plastics), raising the value of crude oil.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2024, 1,
+    ['乙烯（ethene）聚合形成的聚合物是？', 'Polymerising ethene produces which polymer?'],
+    [opt('聚乙烯 / poly(ethene)'), opt('聚氯乙烯 / poly(chloroethene)'),
+      opt('尼龍 / nylon'), opt('澱粉 / starch')],
+    ['許多乙烯單體（$C_2H_4$）的雙鍵打開並連接成長鏈，形成加成聚合物聚乙烯，廣泛用於膠袋與容器。', 'Many ethene monomers ($C_2H_4$) open their double bonds and join into long chains forming the addition polymer poly(ethene), widely used for bags and containers.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2023, 1,
+    ['完全燃燒碳氫化合物的產物是？', 'Complete combustion of a hydrocarbon gives?'],
+    [opt('二氧化碳和水 / carbon dioxide and water'),
+      opt('一氧化碳和碳 / carbon monoxide and carbon'),
+      opt('氫氣和氧氣 / hydrogen and oxygen'),
+      opt('甲烷和水 / methane and water')],
+    ['充足氧氣下，碳氫化合物完全燃燒生成 $CO_2$ 與 $H_2O$；氧氣不足時則不完全燃燒，產生有毒的一氧化碳與碳（煙）。', 'With ample oxygen, hydrocarbons burn completely to $CO_2$ and $H_2O$; with too little oxygen, incomplete combustion gives toxic carbon monoxide and soot.']),
+  q(id('og'), T.organic, FW.carbon, 'hard', 2024, 1,
+    ['乙酸與乙醇在酸催化下反應生成具果香的產物，屬哪類反應與產物？', 'Ethanoic acid and ethanol with an acid catalyst give a sweet-smelling product; this is which reaction and product?'],
+    [opt('酯化反應，生成酯 / esterification, forming an ester'),
+      opt('加成反應，生成醇 / addition, forming an alcohol'),
+      opt('中和反應，生成鹽 / neutralisation, forming a salt'),
+      opt('裂解反應，生成烯 / cracking, forming an alkene')],
+    ['羧酸與醇在濃硫酸催化下發生酯化（縮合）反應，生成具果香的酯並脫去一分子水，如乙酸乙酯，常用作香料與溶劑。', 'A carboxylic acid and an alcohol undergo esterification (condensation) with concentrated sulfuric acid catalyst, forming a fragrant ester and water, e.g. ethyl ethanoate, used in flavours and solvents.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2023, 1,
+    ['「不完全燃燒」碳氫化合物的危險產物主要是？', 'A dangerous product of "incomplete combustion" of hydrocarbons is mainly?'],
+    [opt('一氧化碳（有毒）/ carbon monoxide (toxic)'),
+      opt('二氧化碳 / carbon dioxide'),
+      opt('水蒸氣 / water vapour'),
+      opt('氧氣 / oxygen')],
+    ['氧氣不足時碳氫化合物不完全燃燒，產生有毒、無色無味的一氧化碳，會與血紅蛋白結合而妨礙運氧，故需保持通風。', 'When oxygen is limited, hydrocarbons burn incompletely producing toxic, colourless, odourless carbon monoxide, which binds haemoglobin and impairs oxygen transport — hence the need for ventilation.']),
+  q(id('og'), T.organic, FW.carbon, 'medium', 2024, 1,
+    ['乙酸屬於弱酸，與碳酸鈉反應會？', 'Ethanoic acid is a weak acid; reacting it with sodium carbonate?'],
+    [opt('放出二氧化碳氣體 / releases carbon dioxide gas'),
+      opt('放出氫氣 / releases hydrogen gas'),
+      opt('放出氧氣 / releases oxygen gas'),
+      opt('沒有任何反應 / shows no reaction')],
+    ['羧酸具酸性，與碳酸鹽反應生成鹽、水及二氧化碳（產生氣泡），這也是檢驗 $-COOH$ 羧酸官能團的常用方法之一。', 'Carboxylic acids react with carbonates to give a salt, water and carbon dioxide (effervescence) — a common test for the $-COOH$ group.']),
+  q(id('og'), T.organic, FW.carbon, 'hard', 2023, 1,
+    ['塑膠（如聚乙烯）難以生物降解，對環境造成的主要問題是？', 'Plastics such as poly(ethene) are non-biodegradable; the main environmental problem is?'],
+    [opt('長期積聚造成污染與堆填壓力 / long-term accumulation causing pollution and landfill burden'),
+      opt('迅速分解放出養分 / they decompose quickly releasing nutrients'),
+      opt('能完全溶於水 / they dissolve fully in water'),
+      opt('能自行蒸發 / they evaporate by themselves')],
+    ['加成聚合物的碳鏈穩定、不易被微生物分解，棄置後長期積聚於環境與堆填區，造成污染；故須減用、回收或開發可降解塑膠。', 'Addition polymers have stable carbon chains that microbes cannot easily break down, so discarded plastic accumulates in the environment and landfills, driving reduce-reuse-recycle and biodegradable alternatives.']),
+]
+
 export const chemistryQuestions: Question[] = [
-  ...mole, ...acids, ...redox, ...rates, ...bonding, ...periodic,
+  ...mole, ...acids, ...redox, ...rates, ...bonding, ...periodic, ...organic,
 ]
 
 export const chemistryTopics: Topic[] = topicList([
@@ -475,4 +566,5 @@ export const chemistryTopics: Topic[] = topicList([
   { topic: T.rates_energy, fw: FW.dynamics, count: rates.length },
   { topic: T.bonding, fw: FW.structure, count: bonding.length },
   { topic: T.periodic_table, fw: FW.structure, count: periodic.length },
+  { topic: T.organic, fw: FW.carbon, count: organic.length },
 ])
