@@ -673,6 +673,13 @@ const philosophy: Question[] = [
      opt('全知', 'Omniscience'),
      opt('永恆', 'Eternity')],
     opt('此悖論藉看似兩難的處境質疑「全能」概念是否自洽；常見回應是全能不包含做邏輯上自相矛盾之事，故不損全能定義。', 'The paradox probes whether "omnipotence" is internally coherent; a common reply is that omnipotence does not include doing the logically self-contradictory, so the definition stands.')),
+  q(id('ph'), T.philosophy, FW.philosophy, 'hard', 2023, 1,
+    opt('「道德論證」(moral argument)如何由道德推論神的存在？', 'How does the "moral argument" infer God’s existence from morality?'),
+    [opt('客觀道德法則的存在似需一超越的立法者作根源', 'The existence of objective moral law seems to require a transcendent lawgiver as its source'),
+     opt('由宇宙的因果鏈推論第一因', 'It infers a first cause from the universe’s causal chain'),
+     opt('由「神」概念本身推論其存在', 'It infers existence from the concept of God itself'),
+     opt('由自然界的精巧設計推論', 'It infers from nature’s intricate design')],
+    opt('道德論證主張：若道德法則客觀而具約束力，便似需一超越人類的根源（神）來確立；質疑者則認為道德可由演化、理性或社會契約解釋，無須訴諸神。', 'The moral argument holds that if moral law is objective and binding it seems to need a transcendent source (God); critics reply that morality can be explained by evolution, reason or social contract without invoking God.')),
 ]
 
 // ── 7. Religious ethics (宗教倫理) ───────────────────────────────────────────
