@@ -22,6 +22,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: { strategy: 'jwt' },
   trustHost: true,
   callbacks: {
+    // Pre-launch STRICT lockdown: ONLY emails on the allowlist (comma-separated
+    // ALLOWED_EMAILS env, else the fallback below) may sign in. School @lhymss.net
+    // emails are NOT auto-allowed during testing — add them to ALLOWED_EMAILS if you
+    // want them in. Returning false denies cleanly (Auth.js → ?error=AccessDenied).
+    // Anonymous visitors are unaffected — the free tier needs no login.
+    async signIn({ user }) {
+      const email = user.email?.toLowerCase()
+      if (!email) return false
+      const env = (process.env.ALLOWED_EMAILS ?? '')
+        .split(',')
+        .map((e) => e.trim().toLowerCase())
+        .filter(Boolean)
+      const allowlist = env.length ? env : ['yunawong0128@gmail.com']
+      return allowlist.includes(email)
+    },
     // `profile` is only present on the initial sign-in. We compute the entitlement
     // once from the verified Google profile and persist it in the JWT, so every
     // later request carries it cheaply without re-checking. Source of truth is the
