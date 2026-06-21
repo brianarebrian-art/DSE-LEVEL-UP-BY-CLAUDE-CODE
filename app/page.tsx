@@ -9,9 +9,7 @@ import { useLocale } from '@/lib/i18n'
 const activeSubjects = getActiveSubjects()
 const totalSubjects = subjects.length
 
-// Emojis are language-neutral; text comes from the dictionary (t.home.frameworks).
-const frameworkEmojis = ['🔄', '📈', '🎯', '🏗️', '📐', '🔢', '⚡', '🎲', '🔍', '💡', '📊', '🌀']
-const statNums = ['10', '120+', '12']
+const statNums = ['10', '120+', '25']
 const testimonialNames = ['Marco L.', 'Rachel C.', 'Jayden K.']
 
 export default function HomePage() {
@@ -63,7 +61,7 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/subjects/math"
+              href="/subjects"
               className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-xl text-base transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               {h.ctaStart} <ArrowRight size={18} />
@@ -148,32 +146,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FRAMEWORKS GRID ── */}
-      <section className="py-16 px-4 bg-slate-900/30">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3">
-            {h.fwTitle}
-          </h2>
-          <p className="text-slate-500 text-center mb-12">
-            {h.fwSub}
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {h.frameworks.map((f, i) => (
-              <div
-                key={i}
-                className="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-600 transition-colors"
-              >
-                <div className="text-2xl mb-2">{frameworkEmojis[i]}</div>
-                <div className="font-semibold text-sm mb-1">{f.name}</div>
-                <div className="text-xs text-slate-500 mb-2">{f.desc}</div>
-                <div className="text-xs text-amber-500/70 font-mono">{f.freq}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── STATS ── */}
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto">
@@ -249,7 +221,7 @@ export default function HomePage() {
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">{h.ctaTitle}</h2>
           <p className="text-slate-500 mb-8">{h.ctaSub}</p>
           <Link
-            href="/subjects/math"
+            href="/subjects"
             className="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-400 text-black font-bold px-10 py-5 rounded-xl text-lg transition-all hover:scale-[1.02]"
           >
             {h.ctaBtn} <ArrowRight size={22} />

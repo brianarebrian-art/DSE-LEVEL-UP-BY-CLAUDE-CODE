@@ -13,7 +13,7 @@ import { isSchoolEmail } from '@/lib/entitlements'
 // can live on the token without any further module augmentation.)
 declare module 'next-auth' {
   interface Session {
-    user: { isPremium?: boolean } & DefaultSession['user']
+    user: { id?: string; isPremium?: boolean } & DefaultSession['user']
   }
 }
 
@@ -34,7 +34,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token
     },
     async session({ session, token }) {
-      if (session.user) session.user.isPremium = Boolean(token.isPremium)
+      if (session.user) {
+        // `token.sub` is the user's stable Google account id — the right key for
+        // the future paid-entitlements / device-limit database (email can change,
+        // the sub does not). Surfacing it now so Stage 2 can rely on it.
+        if (token.sub) session.user.id = token.sub
+        session.user.isPremium = Boolean(token.isPremium)
+      }
       return session
     },
   },

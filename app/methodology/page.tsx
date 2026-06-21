@@ -5,14 +5,9 @@ import { ArrowRight } from 'lucide-react'
 import MathText from '@/components/MathText'
 import { useT } from '@/lib/i18n'
 
-// Language-neutral metadata (emoji + official paper reference), zipped by index
-// with the translated framework copy in t.methodology.frameworks.
-const fwMeta = [
-  { emoji: '🔄', year: 2023, paper: 'Paper 1 Q1' },
-  { emoji: '📈', year: 2022, paper: 'Paper 1 Q5' },
-  { emoji: '🎯', year: 2021, paper: 'Paper 1 Q8' },
-  { emoji: '🏗️', year: 2023, paper: 'Paper 1 Q10' },
-]
+// Language-neutral emoji per framework, zipped by index with the translated copy
+// in t.methodology.frameworks. (Examples span Maths, Chemistry, Biology, Economics.)
+const fwEmojis = ['🔄', '⚗️', '🧬', '📈']
 
 export default function MethodologyPage() {
   const t = useT()
@@ -56,7 +51,7 @@ export default function MethodologyPage() {
             <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
               {/* Framework header */}
               <div className="border-b border-slate-800 px-6 py-5 flex items-center gap-4">
-                <span className="text-3xl">{fwMeta[i].emoji}</span>
+                <span className="text-3xl">{fwEmojis[i]}</span>
                 <div>
                   <h3 className="text-lg font-bold">{f.name}</h3>
                   <p className="text-slate-400 text-sm">{f.tagline}</p>
@@ -80,7 +75,6 @@ export default function MethodologyPage() {
                 {/* Official */}
                 <div className="p-5">
                   <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.officialLabel}</div>
-                  <div className="text-xs text-amber-400 mb-3 font-mono">{fwMeta[i].year} DSE {fwMeta[i].paper}</div>
                   <p className="text-slate-300 text-sm leading-relaxed mb-3">
                     <MathText>{f.content}</MathText>
                   </p>
