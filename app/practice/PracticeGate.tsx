@@ -3,7 +3,8 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Lock, Sparkles } from 'lucide-react'
+import { Lock, Sparkles, LogIn } from 'lucide-react'
+import { signIn } from 'next-auth/react'
 import { useT, useLocale } from '@/lib/i18n'
 import { usePlan } from '@/lib/usePlan'
 import { getSubject, getActiveSubjects } from '@/data/subjects'
@@ -36,11 +37,13 @@ function UpgradeWall({
   subjectName,
   cap,
   activeCount,
+  signedIn,
 }: {
   kind: 'subject' | 'limit'
   subjectName: string
   cap: number
   activeCount: number
+  signedIn: boolean
 }) {
   const { t } = useLocale()
   const p = t.premium
@@ -58,12 +61,23 @@ function UpgradeWall({
       <h1 className="text-2xl font-extrabold">{title}</h1>
       <p className="text-slate-400 max-w-md leading-relaxed">{body}</p>
       <div className="flex flex-col sm:flex-row gap-3 mt-2">
-        <Link
-          href="/upgrade"
-          className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
-        >
-          <Sparkles size={16} /> {p.upgrade}
-        </Link>
+        {signedIn ? (
+          <Link
+            href="/upgrade"
+            className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+          >
+            <Sparkles size={16} /> {p.upgrade}
+          </Link>
+        ) : (
+          // Guest → encourage Google login first: it's free and may unlock Premium
+          // outright (school / registered / paid email), no payment needed.
+          <button
+            onClick={() => signIn('google')}
+            className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+          >
+            <LogIn size={16} /> {p.wallSignIn}
+          </button>
+        )}
         <Link
           href="/subjects"
           className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-6 py-3 rounded-xl transition-all text-sm"
@@ -71,6 +85,14 @@ function UpgradeWall({
           {p.wallBack}
         </Link>
       </div>
+      {!signedIn && (
+        <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
+          {p.wallSignInHint}{' '}
+          <Link href="/upgrade" className="text-amber-400 hover:underline">
+            {p.upgrade}
+          </Link>
+        </p>
+      )}
     </div>
   )
 }
@@ -82,7 +104,7 @@ export default function PracticeGate({
   subjectId: string
   topicFilter: string | null
 }) {
-  const { isPremium, loading } = usePlan()
+  const { isPremium, signedIn, loading } = usePlan()
   const { locale } = useLocale()
   const meta = getSubject(subjectId)
   const subjectName = meta ? (locale === 'en' ? meta.nameEn : meta.name) : subjectId
@@ -105,6 +127,7 @@ export default function PracticeGate({
         subjectName={subjectName}
         cap={FREE_ATTEMPTS_PER_SUBJECT}
         activeCount={activeCount}
+        signedIn={signedIn}
       />
     )
   }
@@ -118,6 +141,7 @@ export default function PracticeGate({
         subjectName={subjectName}
         cap={cap}
         activeCount={activeCount}
+        signedIn={signedIn}
       />
     )
   }
