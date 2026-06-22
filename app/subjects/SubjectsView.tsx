@@ -161,7 +161,7 @@ export default function SubjectsView() {
             {tl.footerBody}
           </p>
           <a
-            href="mailto:dselevelup@gmail.com"
+            href="mailto:brianarebrian@gmail.com"
             className="inline-flex items-center gap-2 text-sm bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2 rounded-xl transition-all"
           >
             {tl.footerBtn}
