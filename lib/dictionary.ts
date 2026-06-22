@@ -122,7 +122,7 @@ const zh = {
     introB: '，其餘陸續推出。',
     progressLabel: '內容生產進度',
     progressUnit: ' 科',
-    strategy: '策略：先上線數學 + 理科，用 AI 輔助改寫加速生產，其餘科目按優先級逐步補上。',
+    strategy: '全部 25 科已上線。免費版開放 4 科核心科目，升級 Premium 即解鎖其餘全部 + 無限次練習。',
     startPractice: '開始練習',
     priorities: {
       P0: { label: '核心必爭', desc: '最多考生、最易改寫、即時批改' },
@@ -130,6 +130,10 @@ const zh = {
       P2: { label: '必修與熱門選修', desc: '必修中文 + 熱門選修科' },
       P3: { label: '人文科目', desc: '需大量內容改寫的人文與文學科' },
       P4: { label: '其他選修', desc: '冷門科目、後期逐步補上' },
+    },
+    zones: {
+      free: { tag: '免費', label: '免費區', desc: '登入即玩，每次 10 題、每科最多 10 次練習。' },
+      premium: { tag: 'Premium', label: '收費區', desc: '升級 Premium 即解鎖全部科目，每次 20 題、無限次練習。' },
     },
     footerTitle: '想優先睇到某科？',
     footerBody: '話我哋知你考緊邊科，我哋會調整生產優先級。',
@@ -503,7 +507,7 @@ const en: typeof zh = {
     introB: ', with the rest coming soon.',
     progressLabel: 'Content production progress',
     progressUnit: ' subjects',
-    strategy: 'Strategy: launch Maths + sciences first, use AI-assisted rewriting to speed production, and add the rest by priority.',
+    strategy: 'All 25 subjects are live. The free plan opens 4 core subjects; upgrade to Premium to unlock the rest plus unlimited practice.',
     startPractice: 'Start practice',
     priorities: {
       P0: { label: 'Core must-win', desc: 'Largest entry, easiest to rewrite, instant marking' },
@@ -511,6 +515,10 @@ const en: typeof zh = {
       P2: { label: 'Compulsory & popular electives', desc: 'Compulsory Chinese + popular electives' },
       P3: { label: 'Humanities', desc: 'Humanities and literature needing heavy rewriting' },
       P4: { label: 'Other electives', desc: 'Smaller subjects, added later' },
+    },
+    zones: {
+      free: { tag: 'Free', label: 'Free zone', desc: 'Sign in and start — 10 questions per run, up to 10 runs per subject.' },
+      premium: { tag: 'Premium', label: 'Premium zone', desc: 'Upgrade to Premium to unlock every subject — 20 questions per run, unlimited practice.' },
     },
     footerTitle: 'Want a subject prioritised?',
     footerBody: 'Tell us which subjects you’re taking and we’ll adjust the production priority.',

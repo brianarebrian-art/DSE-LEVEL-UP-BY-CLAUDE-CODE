@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { ArrowRight, Lock, CheckCircle2 } from 'lucide-react'
 import {
   subjects,
-  priorityOrder,
   type SubjectMeta,
 } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
@@ -123,19 +122,23 @@ export default function SubjectsView() {
           </p>
         </div>
 
-        {/* Grouped by priority */}
+        {/* Grouped into Free vs Premium zones */}
         <div className="space-y-12">
-          {priorityOrder.map((p) => {
-            const group = subjects.filter((s) => s.priority === p)
+          {(['free', 'premium'] as const).map((zone) => {
+            const group = subjects.filter((s) =>
+              zone === 'free' ? isFreeSubject(s.id) : !isFreeSubject(s.id)
+            )
             if (group.length === 0) return null
-            const info = tl.priorities[p]
+            const info = tl.zones[zone]
+            const tagClass =
+              zone === 'free'
+                ? 'text-xs font-bold bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 px-2 py-1 rounded'
+                : 'text-xs font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20 px-2 py-1 rounded'
             return (
-              <section key={p}>
+              <section key={zone}>
                 <div className="mb-4">
                   <h2 className="text-lg font-bold flex items-center gap-2">
-                    <span className="text-xs font-mono bg-slate-800 text-slate-400 px-2 py-1 rounded">
-                      {p}
-                    </span>
+                    <span className={tagClass}>{info.tag}</span>
                     {info.label}
                   </h2>
                   <p className="text-sm text-slate-500 mt-1">{info.desc}</p>
