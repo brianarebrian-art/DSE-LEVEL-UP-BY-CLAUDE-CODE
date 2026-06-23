@@ -21,7 +21,27 @@
  * never write it to a file. .env.local stays gitignored.
  */
 
+import { readFileSync } from 'node:fs'
+
 const MODEL_DEFAULT = 'claude-opus-4-8' // latest, most capable (per claude-api skill)
+
+// Load ANTHROPIC_API_KEY (+ other vars) from the gitignored .env.local so the key
+// can stay OUT of your shell history. A standalone tsx script does NOT read
+// .env.local the way Next.js does, so we parse it ourselves. A real exported env
+// var always wins (we never overwrite an already-set var).
+function loadEnvLocal() {
+  try {
+    const txt = readFileSync(new URL('../.env.local', import.meta.url), 'utf8')
+    for (const line of txt.split(/\r?\n/)) {
+      const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/)
+      if (!m || process.env[m[1]] !== undefined) continue
+      let v = m[2].trim()
+      if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1)
+      process.env[m[1]] = v
+    }
+  } catch { /* no .env.local — fall back to the real environment */ }
+}
+loadEnvLocal()
 
 // ── CLI args ────────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2)
@@ -39,6 +59,7 @@ const TARGET = num('--count', 180) // how many NEW questions to add this run
 const BATCH = num('--batch', 20) // questions per API call (DSE 6/10/4 maps to 20)
 const MODEL = str('--model', MODEL_DEFAULT)
 const MAX_ROUNDS = num('--max-rounds', Math.ceil((TARGET / BATCH) * 3) + 4)
+const MIN_PASS = num('--min-pass-pct', 25) / 100 // token-saver: bail after round 1 if accept rate is below this
 
 if (SUBJECT !== 'math') {
   console.error(`This proof targets "math" only. Got "${SUBJECT}". (The engine is subject-agnostic; add a blueprint for other subjects before scaling.)`)
@@ -377,6 +398,17 @@ async function main() {
       recentStems.push(norm(q.question_zh).slice(0, 40))
     }
     console.log(`   round ${round}: +${judged.length} accepted (total ${accepted.length}/${TARGET}) | struct✗${stats.structRejected} dup✗${stats.dupRejected} judge✗${stats.judgeRejected}`)
+
+    // Token-saver: if the FIRST real round barely passes, the prompt/judge needs
+    // tuning — stop now instead of grinding through MAX_ROUNDS and burning quota.
+    if (round === 1 && !DRY_RUN && batch.length) {
+      const rate = judged.length / batch.length
+      if (rate < MIN_PASS) {
+        console.error(`\n⛔ round-1 pass rate ${(rate * 100).toFixed(0)}% < ${MIN_PASS * 100}% — stopping to save tokens.`)
+        console.error('   The judge rejected most questions. Tune the generation prompt, lower the bar with --min-pass-pct 0, or re-run; nothing is wasted.')
+        break
+      }
+    }
   }
 
   if (!accepted.length) {
