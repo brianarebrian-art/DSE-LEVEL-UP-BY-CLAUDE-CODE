@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",

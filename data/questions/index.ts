@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { mathQuestions, mathTopics } from './math'
+import { mathGeneratedQuestions } from './math-generated'
 import { m1Questions, m1Topics } from './m1'
 import { m2Questions, m2Topics } from './m2'
 import { physicsQuestions, physicsTopics } from './physics'
@@ -34,7 +35,8 @@ interface SubjectBank {
 
 // Registry of all subjects that have live question content
 const banks: Record<string, SubjectBank> = {
-  math: { questions: mathQuestions, topics: mathTopics },
+  // Hand-authored 120 + offline AI-generated (gate + LLM-judge verified) extras.
+  math: { questions: [...mathQuestions, ...mathGeneratedQuestions], topics: mathTopics },
   m1: { questions: m1Questions, topics: m1Topics },
   m2: { questions: m2Questions, topics: m2Topics },
   physics: { questions: physicsQuestions, topics: physicsTopics },
