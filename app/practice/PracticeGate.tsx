@@ -2,22 +2,21 @@
 
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Lock, Sparkles, LogIn } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useT, useLocale } from '@/lib/i18n'
 import { usePlan } from '@/lib/usePlan'
-import { getSubject, getActiveSubjects } from '@/data/subjects'
-import {
-  canAccessSubject,
-  sessionSizeFor,
-  attemptCapFor,
-  FREE_ATTEMPTS_PER_SUBJECT,
-} from '@/lib/entitlements'
-import { getAttemptsUsed } from '@/lib/freeUsage'
+import { getActiveSubjects } from '@/data/subjects'
+import { canAccessSubject, sessionSizeFor, attemptCapFor } from '@/lib/entitlements'
+import { getGlobalAttemptsUsed } from '@/lib/freeUsage'
+import { loadSubjectQuestions } from '@/data/questions/load'
+import type { Question } from '@/data/questions'
+import UpgradeModal from '@/components/UpgradeModal'
 
 // Client-only quiz runner (uses Math.random/localStorage); mounted only once the
-// gate has confirmed access + the correct question count.
+// gate has confirmed access AND the subject bank chunk has loaded.
 const PracticeSession = dynamic(() => import('./PracticeSession'), {
   ssr: false,
   loading: () => <Loading />,
@@ -32,34 +31,19 @@ function Loading() {
   )
 }
 
-function UpgradeWall({
-  kind,
-  subjectName,
-  cap,
-  activeCount,
-  signedIn,
-}: {
-  kind: 'subject' | 'limit'
-  subjectName: string
-  cap: number
-  activeCount: number
-  signedIn: boolean
-}) {
+// Full-page wall for a subject that isn't on the free plan at all.
+function SubjectWall({ activeCount, signedIn }: { activeCount: number; signedIn: boolean }) {
   const { t } = useLocale()
   const p = t.premium
-  const title = kind === 'subject' ? p.wallSubjectTitle : p.wallLimitTitle
-  const body =
-    kind === 'subject'
-      ? p.wallSubjectBody.replace('{n}', String(activeCount))
-      : p.wallLimitBody.replace('{cap}', String(cap)).replace('{subject}', subjectName)
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-5 px-4 text-center">
       <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 grid place-items-center">
         <Lock className="text-amber-400" size={28} />
       </div>
-      <h1 className="text-2xl font-extrabold">{title}</h1>
-      <p className="text-slate-400 max-w-md leading-relaxed">{body}</p>
+      <h1 className="text-2xl font-extrabold">{p.wallSubjectTitle}</h1>
+      <p className="text-slate-400 max-w-md leading-relaxed">
+        {p.wallSubjectBody.replace('{n}', String(activeCount))}
+      </p>
       <div className="flex flex-col sm:flex-row gap-3 mt-2">
         {signedIn ? (
           <Link
@@ -69,8 +53,6 @@ function UpgradeWall({
             <Sparkles size={16} /> {p.upgrade}
           </Link>
         ) : (
-          // Guest → encourage Google login first: it's free and may unlock Premium
-          // outright (school / registered / paid email), no payment needed.
           <button
             onClick={() => signIn('google')}
             className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
@@ -88,11 +70,27 @@ function UpgradeWall({
       {!signedIn && (
         <p className="text-xs text-slate-500 max-w-sm leading-relaxed">
           {p.wallSignInHint}{' '}
-          <Link href="/upgrade" className="text-amber-400 hover:underline">
-            {p.upgrade}
-          </Link>
+          <Link href="/upgrade" className="text-amber-400 hover:underline">{p.upgrade}</Link>
         </p>
       )}
+    </div>
+  )
+}
+
+// Dimmed, locked practice backdrop sitting behind the cap modal.
+function LockedBackdrop() {
+  return (
+    <div className="min-h-screen px-4 py-10 select-none pointer-events-none blur-[2px] opacity-40">
+      <div className="max-w-2xl mx-auto">
+        <div className="h-1.5 bg-slate-800 rounded-full mb-6" />
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 mb-4 space-y-4">
+          <div className="h-5 w-2/3 bg-slate-800 rounded" />
+          <div className="h-12 bg-slate-800/60 rounded-xl" />
+          <div className="h-12 bg-slate-800/60 rounded-xl" />
+          <div className="h-12 bg-slate-800/60 rounded-xl" />
+          <div className="h-12 bg-slate-800/60 rounded-xl" />
+        </div>
+      </div>
     </div>
   )
 }
@@ -105,49 +103,61 @@ export default function PracticeGate({
   topicFilter: string | null
 }) {
   const { isPremium, signedIn, loading } = usePlan()
-  const { locale } = useLocale()
-  const meta = getSubject(subjectId)
-  const subjectName = meta ? (locale === 'en' ? meta.nameEn : meta.name) : subjectId
+  const router = useRouter()
 
-  // Free-tier usage is in localStorage, so read it after mount (client only).
+  // Free-tier usage lives in localStorage → read after mount (client only).
   const [used, setUsed] = useState<number | null>(null)
   useEffect(() => {
-    setUsed(getAttemptsUsed(subjectId))
-  }, [subjectId])
+    setUsed(getGlobalAttemptsUsed())
+  }, [])
+
+  // The subject's question bank, lazily fetched as its own chunk.
+  const [questions, setQuestions] = useState<Question[] | null>(null)
+
+  const subjectLocked = !canAccessSubject(isPremium, subjectId)
+  const cap = attemptCapFor(isPremium)
+  const capReached = cap !== null && used !== null && used >= cap
+  const canPractice = !loading && !subjectLocked && !capReached
+
+  // Download the bank only when the user can actually practise (saves the chunk
+  // fetch for locked / capped users).
+  useEffect(() => {
+    if (!canPractice) return
+    let alive = true
+    loadSubjectQuestions(subjectId).then((qs) => {
+      if (alive) setQuestions(qs)
+    })
+    return () => {
+      alive = false
+    }
+  }, [canPractice, subjectId])
 
   if (loading || used === null) return <Loading />
 
   const activeCount = getActiveSubjects().length
 
-  // Subject not on the free plan → block.
-  if (!canAccessSubject(isPremium, subjectId)) {
+  // Subject not on the free plan → full-page wall.
+  if (subjectLocked) {
+    return <SubjectWall activeCount={activeCount} signedIn={signedIn} />
+  }
+
+  // Free plan + global attempt cap reached → popup modal over a locked backdrop.
+  if (capReached) {
     return (
-      <UpgradeWall
-        kind="subject"
-        subjectName={subjectName}
-        cap={FREE_ATTEMPTS_PER_SUBJECT}
-        activeCount={activeCount}
-        signedIn={signedIn}
-      />
+      <>
+        <LockedBackdrop />
+        <UpgradeModal cap={cap!} signedIn={signedIn} onClose={() => router.push('/subjects')} />
+      </>
     )
   }
 
-  // Free plan + per-subject attempt cap reached → block.
-  const cap = attemptCapFor(isPremium)
-  if (cap !== null && used >= cap) {
-    return (
-      <UpgradeWall
-        kind="limit"
-        subjectName={subjectName}
-        cap={cap}
-        activeCount={activeCount}
-        signedIn={signedIn}
-      />
-    )
-  }
+  // Access granted; wait for the bank chunk before mounting the runner.
+  if (questions === null) return <Loading />
 
   return (
     <PracticeSession
+      key={subjectId + '|' + (topicFilter ?? '')}
+      bank={questions}
       subjectId={subjectId}
       topicFilter={topicFilter}
       sessionSize={sessionSizeFor(isPremium)}

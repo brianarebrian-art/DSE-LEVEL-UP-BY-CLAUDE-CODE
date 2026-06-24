@@ -4,12 +4,12 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import MathText from '@/components/MathText'
-import { getSubjectQuestions, type Question } from '@/data/questions'
+import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
-import { incrementAttemptsUsed } from '@/lib/freeUsage'
+import { incrementGlobalAttemptsUsed } from '@/lib/freeUsage'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { useLocale } from '@/lib/i18n'
 import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
@@ -40,13 +40,60 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
 }
 
+// DSE difficulty mix for a practice run: 30% easy / 50% medium / 20% hard.
+const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.3, medium: 0.5, hard: 0.2 }
+
+// Pick `size` questions from a recency-ordered pool honouring the 3:5:2 mix.
+// `ordered` is already in preference order (unseen first, then longest-ago-seen);
+// we draw per difficulty in that order, then top up from whatever's left if a
+// difficulty bucket runs short — so a thin bank never returns fewer than it can.
+function pickByDifficulty(ordered: Question[], size: number): Question[] {
+  if (ordered.length <= size) return ordered
+
+  const target: Record<Difficulty, number> = {
+    easy: Math.round(size * DIFF_RATIO.easy),
+    hard: Math.round(size * DIFF_RATIO.hard),
+    medium: 0,
+  }
+  target.medium = size - target.easy - target.hard
+
+  const buckets: Record<Difficulty, Question[]> = { easy: [], medium: [], hard: [] }
+  for (const q of ordered) buckets[q.difficulty]?.push(q)
+
+  const chosen: Question[] = []
+  const taken = new Set<string>()
+  const take = (d: Difficulty, n: number) => {
+    for (const q of buckets[d]) {
+      if (chosen.length >= size || n <= 0) break
+      if (taken.has(q.id)) continue
+      chosen.push(q)
+      taken.add(q.id)
+      n--
+    }
+  }
+  take('easy', target.easy)
+  take('medium', target.medium)
+  take('hard', target.hard)
+
+  // Top up any shortfall from the remaining pool, keeping recency preference.
+  if (chosen.length < size) {
+    for (const q of ordered) {
+      if (chosen.length >= size) break
+      if (taken.has(q.id)) continue
+      chosen.push(q)
+      taken.add(q.id)
+    }
+  }
+  return chosen
+}
+
 function buildPool(
+  bank: Question[],
   subjectId: string,
   topicFilter: string | null,
   sessionSize: number,
 ): PreparedQuestion[] {
-  const all = getSubjectQuestions(subjectId)
-  const pool = topicFilter ? all.filter((q) => q.topic === topicFilter) : all
+  const pool = topicFilter ? bank.filter((q) => q.topic === topicFilter) : bank
 
   // Prefer questions the user hasn't been shown recently: unseen ones first (in
   // random order), then the longest-ago-seen, so re-doing a subject surfaces
@@ -58,7 +105,9 @@ function buildPool(
     .filter((q) => recency.has(q.id))
     .sort((a, b) => recency.get(b.id)! - recency.get(a.id)!)
 
-  return [...unseen, ...seenOldestFirst].slice(0, sessionSize).map(prepareQuestion)
+  const ordered = [...unseen, ...seenOldestFirst]
+  // Stratify to the DSE 3:5:2 mix, then shuffle so difficulties aren't clustered.
+  return shuffle(pickByDifficulty(ordered, sessionSize)).map(prepareQuestion)
 }
 
 type AnswerState = { selectedZh: string; isCorrect: boolean } | null
@@ -76,6 +125,7 @@ function buildTopicResults(qs: PreparedQuestion[], ans: AnswerState[]) {
 const optionLetters = ['A', 'B', 'C', 'D']
 
 interface SessionProps {
+  bank: Question[]
   subjectId: string
   topicFilter: string | null
   sessionSize: number
@@ -87,6 +137,7 @@ interface SessionProps {
 // Math.random()/Date.now() without causing a server/client hydration mismatch.
 // It is re-mounted (via `key`) whenever subject/topic changes, re-running the shuffle.
 export default function PracticeSession({
+  bank,
   subjectId,
   topicFilter,
   sessionSize,
@@ -96,7 +147,7 @@ export default function PracticeSession({
   const { locale, t } = useLocale()
   const subjectMeta = getSubject(subjectId)
 
-  const [questions] = useState<PreparedQuestion[]>(() => buildPool(subjectId, topicFilter, sessionSize))
+  const [questions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize))
   const [startTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
@@ -166,8 +217,8 @@ export default function PracticeSession({
         elapsed,
         timestamp: Date.now(),
       })
-      // Free users: a completed run counts against their per-subject quota.
-      if (countsAgainstFreeQuota) incrementAttemptsUsed(subjectId)
+      // Free users: a completed run counts against their platform-wide quota.
+      if (countsAgainstFreeQuota) incrementGlobalAttemptsUsed()
       router.push('/result')
     } else {
       setCurrent((c) => c + 1)

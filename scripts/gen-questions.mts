@@ -1,27 +1,33 @@
 /**
  * DSE Level Up — offline question-bank generation engine (Plan B).
  * ---------------------------------------------------------------------------
- * Generates NEW bilingual HKDSE MC questions with Claude, runs a deterministic
- * structural gate + an independent LLM-as-judge pass, then writes the survivors
- * into a static `data/questions/<subject>-generated.ts` bank (merged in index.ts).
- * The live site stays 100% static / $0 — this runs on YOUR machine only.
+ * Generates NEW bilingual HKDSE MC questions with Claude for ANY of the 25
+ * subjects, runs a deterministic structural gate + an independent LLM-as-judge
+ * pass, then writes the survivors into a static `data/questions/<subject>-generated.ts`
+ * bank. The live site stays 100% static / $0 — this runs on YOUR machine only.
+ *
+ * The subject "blueprint" (topics + the framework each topic belongs to) is DERIVED
+ * automatically from the live bank in data/questions/<subject>.ts, so every subject
+ * works with no per-subject config. A small CONFIG map only tweaks language mode
+ * (monolingual language subjects) and whether to use $...$ LaTeX.
  *
  * Usage (needs a local Node on PATH + the Anthropic SDK):
  *   export PATH="../.node-local/bin:$PATH"        # from dse-level-up/
  *   npm i @anthropic-ai/sdk                        # one-time
  *   export ANTHROPIC_API_KEY=sk-ant-...            # YOUR key (gitignored / shell only)
  *   npx --yes tsx@4.19.2 scripts/gen-questions.mts math --count 180
+ *   npx --yes tsx@4.19.2 scripts/gen-questions.mts physics --count 60
  *
- * Verify the machinery WITHOUT a key or the SDK (mock batch, no API calls):
+ * Verify the machinery WITHOUT a key or the SDK (mock batch, no API calls, no write):
  *   npx --yes tsx@4.19.2 scripts/gen-questions.mts math --count 6 --dry-run
  *
- * Flags: <subject> --count N --batch N --dry-run --model <id>
+ * Flags: <subject> --count N --batch N --dry-run --model <id> --min-pass-pct N
  *
  * SECURITY: the API key is read from process.env only. Never hard-code it,
  * never write it to a file. .env.local stays gitignored.
  */
 
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 
 const MODEL_DEFAULT = 'claude-opus-4-8' // latest, most capable (per claude-api skill)
 
@@ -61,42 +67,37 @@ const MODEL = str('--model', MODEL_DEFAULT)
 const MAX_ROUNDS = num('--max-rounds', Math.ceil((TARGET / BATCH) * 3) + 4)
 const MIN_PASS = num('--min-pass-pct', 25) / 100 // token-saver: bail after round 1 if accept rate is below this
 
-if (SUBJECT !== 'math') {
-  console.error(`This proof targets "math" only. Got "${SUBJECT}". (The engine is subject-agnostic; add a blueprint for other subjects before scaling.)`)
-  process.exit(1)
+// ── Per-subject configuration (only the things we can't derive) ───────────────
+// Monolingual language subjects: write in ONE language and mirror it to both
+// fields (matches the hand-authored banks' m(s)=[s,s] convention).
+const MONO_LANG: Record<string, 'zh' | 'en'> = {
+  chinese: 'zh',
+  'chinese-literature': 'zh',
+  english: 'en',
+  'english-literature': 'en',
 }
+// Subjects whose questions are naturally quantitative → instruct $...$ LaTeX.
+const QUANTITATIVE = new Set(['math', 'm1', 'm2', 'physics', 'chemistry'])
 
-// ── Subject blueprint: topics + a default framework per topic ────────────────
-// Mirrors data/questions/math.ts (T / FW). The generator must tag each question
-// with one of these topicIds; the framework is derived from the topic.
+const camel = (id: string) => id.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
+
+// ── Types ─────────────────────────────────────────────────────────────────────
 type Meta = { id: string; zh: string; en: string }
 type Fw = Meta & { emoji: string }
+type TopicMeta = { topic: Meta; fw: Fw }
+type Blueprint = Record<string, TopicMeta>
 
-const FW = {
-  transform: { id: 'transformation_thinking', zh: '轉化思維', en: 'Transformative Thinking', emoji: '🔄' },
-  rate: { id: 'rate_intuition', zh: '變化率直覺', en: 'Rate-of-change Intuition', emoji: '📈' },
-  decompose: { id: 'condition_decomposition', zh: '條件分解', en: 'Condition Decomposition', emoji: '🎯' },
-  modelling: { id: 'modelling', zh: '建模能力', en: 'Modelling', emoji: '🏗️' },
-  geometry: { id: 'geometric_intuition', zh: '幾何直覺', en: 'Geometric Intuition', emoji: '📐' },
-  sequence: { id: 'sequence_patterns', zh: '數列規律', en: 'Sequence Patterns', emoji: '🔢' },
-} satisfies Record<string, Fw>
-
-const TOPICS: Record<string, { topic: Meta; fw: Fw }> = {
-  quadratic_equations: { topic: { id: 'quadratic_equations', zh: '二次方程', en: 'Quadratic Equations' }, fw: FW.transform },
-  calculus: { topic: { id: 'calculus', zh: '微積分', en: 'Calculus' }, fw: FW.rate },
-  probability: { topic: { id: 'probability', zh: '概率', en: 'Probability' }, fw: FW.decompose },
-  functions: { topic: { id: 'functions', zh: '函數與建模', en: 'Functions & Modelling' }, fw: FW.modelling },
-  trigonometry: { topic: { id: 'trigonometry', zh: '三角函數', en: 'Trigonometry' }, fw: FW.geometry },
-  statistics: { topic: { id: 'statistics', zh: '統計', en: 'Statistics' }, fw: FW.modelling },
-  logarithms: { topic: { id: 'logarithms', zh: '對數與指數', en: 'Logarithms & Exponents' }, fw: FW.transform },
-  sequences: { topic: { id: 'sequences', zh: '數列', en: 'Sequences' }, fw: FW.sequence },
-  percentage: { topic: { id: 'percentage', zh: '百分數與利率', en: 'Percentages & Interest' }, fw: FW.modelling },
-  coordinate_geometry: { topic: { id: 'coordinate_geometry', zh: '坐標幾何', en: 'Coordinate Geometry' }, fw: FW.geometry },
-  inequalities: { topic: { id: 'inequalities', zh: '不等式', en: 'Inequalities' }, fw: FW.transform },
+type Ctx = {
+  id: string
+  name: string
+  nameEn: string
+  blueprint: Blueprint
+  topicIds: string[]
+  lang: 'zh' | 'en' | 'bi'
+  quantitative: boolean
+  knowledge: string
 }
-const TOPIC_IDS = Object.keys(TOPICS)
 
-// ── The shape Claude must return (raw json_schema → guaranteed valid JSON) ────
 type GenQ = {
   difficulty: 'easy' | 'medium' | 'hard'
   topicId: string
@@ -109,7 +110,74 @@ type GenQ = {
   combat_analysis_en: string
 }
 
-const GEN_SCHEMA = {
+// ── Build the subject blueprint from the LIVE bank (works for all 25 subjects) ─
+function slug(s: string): string {
+  return s.trim().toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || 'general'
+}
+
+async function buildContext(subjectId: string): Promise<Ctx> {
+  const qmod: any = await import('../data/questions/index.ts')
+  const smod: any = await import('../data/subjects.ts')
+
+  const topics: any[] = qmod.getSubjectTopics(subjectId) ?? []
+  const questions: any[] = qmod.getSubjectQuestions(subjectId) ?? []
+  if (!topics.length) {
+    throw new Error(`No topics found for subject "${subjectId}". Check the id against data/questions/index.ts.`)
+  }
+
+  // A representative question per topic gives us real framework ids/labels/emoji.
+  const repByTopic = new Map<string, any>()
+  for (const q of questions) if (!repByTopic.has(q.topic)) repByTopic.set(q.topic, q)
+
+  const blueprint: Blueprint = {}
+  for (const t of topics) {
+    const rep = repByTopic.get(t.id)
+    const fw: Fw = rep
+      ? { id: rep.framework, zh: rep.frameworkZh, en: rep.frameworkEn ?? rep.frameworkZh, emoji: rep.frameworkEmoji }
+      : { id: slug(t.framework), zh: t.framework, en: t.frameworkEn ?? t.framework, emoji: t.emoji }
+    blueprint[t.id] = {
+      topic: { id: t.id, zh: t.zh, en: t.en ?? rep?.topicEn ?? t.zh },
+      fw,
+    }
+  }
+
+  const meta = smod.getSubject(subjectId)
+  return {
+    id: subjectId,
+    name: meta?.name ?? subjectId,
+    nameEn: meta?.nameEn ?? subjectId,
+    blueprint,
+    topicIds: Object.keys(blueprint),
+    lang: MONO_LANG[subjectId] ?? 'bi',
+    quantitative: QUANTITATIVE.has(subjectId),
+    knowledge: loadKnowledge(subjectId),
+  }
+}
+
+// ── Ingest data/raw-sources/<subject>/*.{md,txt} as a strict knowledge base ────
+function loadKnowledge(subjectId: string): string {
+  try {
+    const dir = new URL(`../data/raw-sources/${subjectId}/`, import.meta.url)
+    const files = readdirSync(dir).filter((f) => /\.(md|txt)$/i.test(f)).sort()
+    if (!files.length) return ''
+    const parts = files.map((f) => {
+      const body = readFileSync(new URL(f, dir), 'utf8').trim()
+      return `--- ${f} ---\n${body}`
+    })
+    const joined = parts.join('\n\n')
+    const CAP = 12000 // keep the prompt sane
+    if (joined.length > CAP) {
+      console.warn(`⚠️  knowledge base for ${subjectId} is ${joined.length} chars — truncating to ${CAP}.`)
+      return joined.slice(0, CAP)
+    }
+    return joined
+  } catch {
+    return '' // no folder for this subject — generation still works, just ungrounded
+  }
+}
+
+// ── The shape Claude must return (raw json_schema → guaranteed valid JSON) ────
+const genSchema = (topicIds: string[]) => ({
   type: 'object',
   additionalProperties: false,
   properties: {
@@ -120,7 +188,7 @@ const GEN_SCHEMA = {
         additionalProperties: false,
         properties: {
           difficulty: { type: 'string', enum: ['easy', 'medium', 'hard'] },
-          topicId: { type: 'string', enum: TOPIC_IDS },
+          topicId: { type: 'string', enum: topicIds },
           question_zh: { type: 'string' },
           question_en: { type: 'string' },
           options_zh: { type: 'array', items: { type: 'string' } },
@@ -134,7 +202,7 @@ const GEN_SCHEMA = {
     },
   },
   required: ['questions'],
-}
+})
 
 const JUDGE_SCHEMA = {
   type: 'object',
@@ -157,32 +225,38 @@ const JUDGE_SCHEMA = {
   required: ['verdicts'],
 }
 
-// ── Prompts ───────────────────────────────────────────────────────────────────
-const GEN_SYSTEM = `You are an expert HKDSE Mathematics (compulsory part) question writer for "DSE Level Up", a Gen-Z / Gen-Alpha exam-prep platform in Hong Kong.
+// ── Prompts (subject-generic, driven by Ctx) ─────────────────────────────────
+function langRules(ctx: Ctx): string {
+  if (ctx.lang === 'zh') return '- Write EVERYTHING in Traditional Chinese (Hong Kong). Put the SAME Chinese text in BOTH the _zh and _en fields (this subject is monolingual).'
+  if (ctx.lang === 'en') return '- Write EVERYTHING in English. Put the SAME English text in BOTH the _zh and _en fields (this subject is monolingual).'
+  return '- Bilingual: *_zh fields in Traditional Chinese (Hong Kong); *_en fields in English. The two languages must be faithful translations of each other.'
+}
 
-Write FLAWLESS multiple-choice questions. The single most important rule: the marked correct answer MUST be mathematically, verifiably correct, and exactly one option is correct.
+const genSystem = (ctx: Ctx) => `You are an expert HKDSE ${ctx.name} (${ctx.nameEn}) question writer for "DSE Level Up", a Gen-Z / Gen-Alpha exam-prep platform in Hong Kong.
+
+Write FLAWLESS multiple-choice questions. The single most important rule: the marked correct answer MUST be verifiably correct, and exactly one option is correct.
 
 Rules:
 - 4 options each. options_zh[answer_index] / options_en[answer_index] is THE correct answer. The other 3 are plausible traps from common mistakes.
 - All 4 options must be DISTINCT (in both languages).
-- Bilingual: question_zh + combat_analysis_zh in Traditional Chinese (Hong Kong); question_en + combat_analysis_en in English. Math symbols are language-neutral — use $...$ LaTeX (e.g. $x^2 - 5x + 6 = 0$). Write a literal dollar sign as \\$.
-- HK-localised, Gen-Z scenarios for word problems (gaming, boba/bubble tea, K-pop, Steam sales, MTR, meme stocks, etc.) — vary names, numbers and scenarios every time.
+${langRules(ctx)}
+- HK-localised, Gen-Z scenarios where natural (gaming, boba/bubble tea, K-pop, MTR, Steam sales, meme stocks, etc.) — vary names, numbers and scenarios every time.
 - combat_analysis: max ~2 sentences, casual Hong Kong Cantonese peer tone (人話). Explain WHY the answer is right and the tactical trap of a wrong option — but NEVER refer to options by letter (A/B/C/D) or position; describe the wrong-answer CONTENT instead (options get shuffled in the app).
 - Tag each question with one topicId from the allowed list and an honest difficulty.
-- Difficulty: easy = Level 2-3 direct application; medium = Level 4-5 multi-step; hard = Level 5** unseen scenario / logic trap.`
+- Difficulty: easy = Level 2-3 direct application; medium = Level 4-5 multi-step; hard = Level 5** unseen scenario / logic trap.${ctx.quantitative ? '\n- Use $...$ LaTeX for all maths/symbols (e.g. $x^2 - 5x + 6 = 0$). Write a literal dollar sign as \\$.' : ''}${ctx.knowledge ? `\n\n=== STRICT KNOWLEDGE BASE (obey these facts, shortcuts & calculator techniques; do NOT contradict them; prefer making distractors out of the listed traps) ===\n${ctx.knowledge}\n=== END KNOWLEDGE BASE ===` : ''}`
 
-const genUser = (seed: string, count: number, dist: { easy: number; medium: number; hard: number }, excluded: string[]) => `Generate EXACTLY ${count} brand-new questions: ${dist.easy} easy, ${dist.medium} medium, ${dist.hard} hard.
+const genUser = (ctx: Ctx, seed: string, count: number, dist: { easy: number; medium: number; hard: number }, excluded: string[]) => `Generate EXACTLY ${count} brand-new ${ctx.name} questions: ${dist.easy} easy, ${dist.medium} medium, ${dist.hard} hard.
 
 Random_Seed: ${seed}  (use it to shift scenarios, names and numbers — output must be 100% different from any prior set)
 
 Excluded scenarios/openings (do NOT reuse these question stems or their numbers — make genuinely new ones):
 ${excluded.length ? excluded.map((e) => `- ${e}`).join('\n') : '- (none yet)'}
 
-Allowed topicIds: ${TOPIC_IDS.join(', ')}
+Allowed topicIds: ${ctx.topicIds.join(', ')}
 
 Return JSON matching the schema. Double-check every answer by solving it yourself before finalising.`
 
-const JUDGE_SYSTEM = `You are a strict HKDSE Mathematics grader. For each question you are given the stem, the 4 options, and which option index the author marked correct. Independently SOLVE each question from scratch, then decide whether the author's marked option is the one and only correct answer. Be ruthless: if the marked answer is wrong, if more than one option is correct, if the question is ambiguous/ill-posed, or if no option is correct, mark answer_is_correct=false. Only mark true when you are confident the marked option is uniquely correct. Give a one-line reason.`
+const judgeSystem = (ctx: Ctx) => `You are a strict HKDSE ${ctx.name} grader. For each question you are given the stem, the 4 options, and which option index the author marked correct. Independently SOLVE/answer each question from scratch, then decide whether the author's marked option is the one and only correct answer. Be ruthless: if the marked answer is wrong, if more than one option is correct, if the question is ambiguous/ill-posed, or if no option is correct, mark answer_is_correct=false. Only mark true when you are confident the marked option is uniquely correct. Give a one-line reason.`
 
 const judgeUser = (batch: GenQ[]) => `Grade these ${batch.length} questions. For each, the marked-correct option text is options_zh[answer_index].
 
@@ -230,8 +304,8 @@ const norm = (s: string) => s.replace(/\s+/g, '').replace(/[，。、！？,.!?:
 const sig = (q: GenQ) => `${q.topicId}::${norm(q.question_zh).slice(0, 30)}`
 const LETTER_REF = /(選項|答案|option)\s*[（(]?\s*[A-DＡ-Ｄ甲乙丙丁]\b|[（(][A-D][）)]/
 
-function structuralReject(q: GenQ): string | null {
-  if (!TOPIC_IDS.includes(q.topicId)) return `unknown topicId ${q.topicId}`
+function structuralReject(ctx: Ctx, q: GenQ): string | null {
+  if (!ctx.topicIds.includes(q.topicId)) return `unknown topicId ${q.topicId}`
   if (!['easy', 'medium', 'hard'].includes(q.difficulty)) return `bad difficulty`
   if (!Array.isArray(q.options_zh) || q.options_zh.length !== 4) return `options_zh != 4`
   if (!Array.isArray(q.options_en) || q.options_en.length !== 4) return `options_en != 4`
@@ -246,13 +320,13 @@ function structuralReject(q: GenQ): string | null {
 }
 
 // ── Map an accepted GenQ → the static MCQuestion shape (correct goes to idx 0) ─
-function toMC(q: GenQ, id: string) {
-  const meta = TOPICS[q.topicId]
+function toMC(ctx: Ctx, q: GenQ, id: string) {
+  const meta = ctx.blueprint[q.topicId]
   const order = [q.answer_index, ...[0, 1, 2, 3].filter((i) => i !== q.answer_index)]
   return {
     id,
     type: 'mc' as const,
-    subject: 'math',
+    subject: ctx.id,
     topic: meta.topic.id,
     topicZh: meta.topic.zh,
     topicEn: meta.topic.en,
@@ -274,21 +348,23 @@ function toMC(q: GenQ, id: string) {
 }
 
 // ── A tiny mock batch so --dry-run exercises the full pipeline (no API) ────────
-function mockBatch(n: number, seed: string): GenQ[] {
+function mockBatch(ctx: Ctx, n: number, seed: string): GenQ[] {
   const out: GenQ[] = []
   const r = Number(seed.replace(/\D/g, '').slice(-4) || '1')
   for (let i = 0; i < n; i++) {
     const a = ((r + i) % 9) + 2
     const sum = a + 3
+    const zh = `[MOCK-${seed}-${i}] 阿珍儲咗 ${a} 件嘢，阿明多佢 3 件。阿明有幾多件？`
+    const en = `[MOCK-${seed}-${i}] Jan has ${a} items; Ming has 3 more. How many does Ming have?`
     out.push({
       difficulty: i % 3 === 0 ? 'easy' : i % 3 === 1 ? 'medium' : 'hard',
-      topicId: TOPIC_IDS[i % TOPIC_IDS.length],
-      question_zh: `[MOCK-${seed}-${i}] 阿珍儲咗 ${a} 張閃卡，阿明多佢 3 張。阿明有幾多張？`,
-      question_en: `[MOCK-${seed}-${i}] Jan has ${a} holo cards; Ming has 3 more. How many does Ming have?`,
+      topicId: ctx.topicIds[i % ctx.topicIds.length],
+      question_zh: ctx.lang === 'en' ? en : zh,
+      question_en: ctx.lang === 'zh' ? zh : en,
       options_zh: [`${sum}`, `${a}`, `${a + 6}`, `${a * 3}`],
       options_en: [`${sum}`, `${a}`, `${a + 6}`, `${a * 3}`],
       answer_index: 0,
-      combat_analysis_zh: `多 3 張即係 ${a} + 3 = ${sum}。揀返 ${a} 嗰個係睇漏咗「多 3」。`,
+      combat_analysis_zh: `多 3 即係 ${a} + 3 = ${sum}。揀返 ${a} 嗰個係睇漏咗「多 3」。`,
       combat_analysis_en: `"3 more" means ${a} + 3 = ${sum}. Picking ${a} ignores the "+3".`,
     })
   }
@@ -296,11 +372,11 @@ function mockBatch(n: number, seed: string): GenQ[] {
 }
 
 // ── Load existing questions (hand + already-generated) for dedup ──────────────
-async function loadExistingSignatures(): Promise<Set<string>> {
+async function loadExistingSignatures(subjectId: string): Promise<Set<string>> {
   const set = new Set<string>()
   try {
     const mod: any = await import('../data/questions/index.ts')
-    for (const q of mod.getSubjectQuestions('math') as any[]) {
+    for (const q of mod.getSubjectQuestions(subjectId) as any[]) {
       set.add(`${q.topic}::${norm(q.content).slice(0, 30)}`)
     }
   } catch (e) {
@@ -308,39 +384,57 @@ async function loadExistingSignatures(): Promise<Set<string>> {
   }
   return set
 }
-async function loadExistingGenerated(): Promise<any[]> {
+async function loadExistingGenerated(subjectId: string): Promise<any[]> {
   try {
-    const mod: any = await import('../data/questions/math-generated.ts')
-    return (mod.mathGeneratedQuestions as any[]) ?? []
+    const mod: any = await import(`../data/questions/${subjectId}-generated.ts`)
+    return (mod[`${camel(subjectId)}GeneratedQuestions`] as any[]) ?? []
   } catch {
-    return []
+    return [] // no generated file yet for this subject
   }
 }
 
 // ── Write the static bank file ────────────────────────────────────────────────
-async function writeBank(questions: any[]) {
+async function writeBank(subjectId: string, questions: any[]) {
   const { writeFile } = await import('node:fs/promises')
-  const path = new URL('../data/questions/math-generated.ts', import.meta.url)
+  const path = new URL(`../data/questions/${subjectId}-generated.ts`, import.meta.url)
+  const exportName = `${camel(subjectId)}GeneratedQuestions`
   const header = `import type { Question } from './types'
 
 // AUTO-GENERATED by scripts/gen-questions.mts — do not hand-edit.
 // Each question passed a deterministic structural gate + an independent
-// LLM-as-judge correctness pass. Merged into the math bank in index.ts.
-// Count: ${questions.length}. Regenerate with: npx tsx scripts/gen-questions.mts math --count <n>
+// LLM-as-judge correctness pass. Merge into the bank via data/questions/load.ts
+// (and index.ts for the server build). Count: ${questions.length}.
+// Regenerate: npx tsx scripts/gen-questions.mts ${subjectId} --count <n>
 
-export const mathGeneratedQuestions: Question[] = ${JSON.stringify(questions, null, 2)}
+export const ${exportName}: Question[] = ${JSON.stringify(questions, null, 2)}
 `
   await writeFile(path, header, 'utf8')
-  console.log(`📝 wrote ${questions.length} questions → data/questions/math-generated.ts`)
+  console.log(`📝 wrote ${questions.length} questions → data/questions/${subjectId}-generated.ts`)
+}
+
+function wiringHint(subjectId: string) {
+  if (subjectId === 'math') return // already wired
+  const c = camel(subjectId)
+  console.log(`\n🔌 To ship "${subjectId}" generated questions, wire the new file in two places:`)
+  console.log(`   data/questions/load.ts  →  in the "${subjectId}" loader, merge:`)
+  console.log(`       const [base, gen] = await Promise.all([import('./${subjectId}'), import('./${subjectId}-generated')])`)
+  console.log(`       return [...base.${c}Questions, ...gen.${c}GeneratedQuestions]`)
+  console.log(`   data/questions/index.ts →  import { ${c}GeneratedQuestions } from './${subjectId}-generated'`)
+  console.log(`       and spread it into the "${subjectId}" bank's questions array.`)
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
-  console.log(`\n🚀 gen-questions: subject=math target=+${TARGET} batch=${BATCH} model=${MODEL} ${DRY_RUN ? '(DRY RUN — mock data, no API)' : ''}`)
+  const ctx = await buildContext(SUBJECT)
+  console.log(`\n🚀 gen-questions: subject=${ctx.id} (${ctx.name}) topics=${ctx.topicIds.length} lang=${ctx.lang} kb=${ctx.knowledge ? ctx.knowledge.length + 'ch' : 'none'} target=+${TARGET} batch=${BATCH} model=${MODEL} ${DRY_RUN ? '(DRY RUN — mock data, no API, no write)' : ''}`)
 
-  const existingSig = await loadExistingSignatures()
+  const schema = genSchema(ctx.topicIds)
+  const sys = genSystem(ctx)
+  const judgeSys = judgeSystem(ctx)
+
+  const existingSig = await loadExistingSignatures(ctx.id)
   const seen = new Set<string>(existingSig)
-  const accepted: any[] = []
+  const accepted: GenQ[] = []
   const recentStems: string[] = []
   let round = 0
   const stats = { generated: 0, structRejected: 0, dupRejected: 0, judgeRejected: 0 }
@@ -356,8 +450,8 @@ async function main() {
     let batch: GenQ[]
     try {
       batch = DRY_RUN
-        ? mockBatch(need, seed)
-        : (await callJSON(GEN_SYSTEM, genUser(seed, need, dist, recentStems.slice(-40)), GEN_SCHEMA)).questions
+        ? mockBatch(ctx, need, seed)
+        : (await callJSON(sys, genUser(ctx, seed, need, dist, recentStems.slice(-40)), schema)).questions
     } catch (e) {
       console.error(`   round ${round}: generation failed — ${(e as Error).message}`)
       if (!DRY_RUN && round === 1) throw e // fail fast on first-round auth/SDK errors
@@ -368,7 +462,7 @@ async function main() {
     // 1) deterministic structural + dedup gate
     const structOk: GenQ[] = []
     for (const q of batch) {
-      const why = structuralReject(q)
+      const why = structuralReject(ctx, q)
       if (why) { stats.structRejected++; continue }
       const s = sig(q)
       if (seen.has(s)) { stats.dupRejected++; continue }
@@ -380,7 +474,7 @@ async function main() {
     let judged: GenQ[] = structOk
     if (!DRY_RUN && structOk.length) {
       try {
-        const { verdicts } = await callJSON(JUDGE_SYSTEM, judgeUser(structOk), JUDGE_SCHEMA)
+        const { verdicts } = await callJSON(judgeSys, judgeUser(structOk), JUDGE_SCHEMA)
         const ok = new Map<number, boolean>(verdicts.map((v: any) => [v.index, v.answer_is_correct]))
         judged = structOk.filter((_, i) => {
           const pass = ok.get(i) === true
@@ -416,15 +510,24 @@ async function main() {
     process.exit(1)
   }
 
+  // In a dry run we NEVER touch the shipped bank file (mock data must not leak
+  // into the site). Just report what would have happened.
+  if (DRY_RUN) {
+    console.log(`\n✅ DRY RUN ok: pipeline accepted ${accepted.length} mock questions (judge skipped, nothing written).`)
+    console.log(`   stats: generated=${stats.generated} structRejected=${stats.structRejected} dupRejected=${stats.dupRejected}`)
+    console.log('   Run without --dry-run + a key for real questions.\n')
+    return
+  }
+
   // map → MCQuestion and append to any previously-generated bank
-  const oldGen = await loadExistingGenerated()
+  const oldGen = await loadExistingGenerated(ctx.id)
   const startN = oldGen.length
-  const mapped = accepted.map((q, i) => toMC(q, `math_gen_${startN + i + 1}`))
-  await writeBank([...oldGen, ...mapped])
+  const mapped = accepted.map((q, i) => toMC(ctx, q, `${camel(ctx.id)}_gen_${startN + i + 1}`))
+  await writeBank(ctx.id, [...oldGen, ...mapped])
 
   console.log(`\n✅ done. accepted ${accepted.length} new (bank generated total: ${startN + mapped.length}).`)
   console.log(`   stats: generated=${stats.generated} structRejected=${stats.structRejected} dupRejected=${stats.dupRejected} judgeRejected=${stats.judgeRejected}`)
-  if (DRY_RUN) console.log('   (DRY RUN: mock data, judge skipped. Run without --dry-run + a key for real questions.)')
+  wiringHint(ctx.id)
   console.log('   next: `npm run build -- --webpack` to confirm the bank compiles.\n')
 }
 

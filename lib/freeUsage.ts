@@ -1,49 +1,67 @@
-// Per-subject practice counter for FREE users, stored in localStorage. This is a
+// Platform-wide practice counter for FREE users, stored in localStorage. This is a
 // soft client-side gate (a determined user can clear it) — consistent with the
 // site's other localStorage data and its static, no-backend model. Reliable
 // enforcement for PAID access is the server-side session entitlement (auth.ts);
-// this just nudges free users toward upgrading once they hit the cap.
+// this just nudges free users toward upgrading once they hit the global cap.
+//
+// The cap is now GLOBAL (total runs across every subject), not per subject — see
+// FREE_ATTEMPTS_TOTAL in lib/entitlements.ts.
 
-const KEY = 'dse_free_usage'
+const TOTAL_KEY = 'dse_free_attempts_total'
+const LEGACY_MAP_KEY = 'dse_free_usage' // pre-global, per-subject map (migrated once)
 
 function isBrowser(): boolean {
   return typeof window !== 'undefined'
 }
 
-type UsageMap = Record<string, number>
-
-function load(): UsageMap {
-  if (!isBrowser()) return {}
+// One-time migration: fold any legacy per-subject counts into the global total so
+// existing free users don't silently get a fresh 10 runs after the change.
+function migrateLegacy(current: number): number {
+  if (!isBrowser()) return current
   try {
-    const raw = localStorage.getItem(KEY)
-    if (!raw) return {}
-    const parsed = JSON.parse(raw)
-    return parsed && typeof parsed === 'object' ? (parsed as UsageMap) : {}
+    const raw = localStorage.getItem(LEGACY_MAP_KEY)
+    if (!raw) return current
+    const map = JSON.parse(raw)
+    let sum = 0
+    if (map && typeof map === 'object') {
+      for (const v of Object.values(map)) sum += typeof v === 'number' ? v : 0
+    }
+    localStorage.removeItem(LEGACY_MAP_KEY)
+    const merged = current + sum
+    localStorage.setItem(TOTAL_KEY, String(merged))
+    return merged
   } catch {
-    return {}
+    return current
   }
 }
 
-function save(map: UsageMap): void {
-  if (!isBrowser()) return
-  localStorage.setItem(KEY, JSON.stringify(map))
+/** Total completed free practice runs across the whole platform. */
+export function getGlobalAttemptsUsed(): number {
+  if (!isBrowser()) return 0
+  let n = 0
+  try {
+    n = Number(localStorage.getItem(TOTAL_KEY)) || 0
+  } catch {
+    n = 0
+  }
+  return migrateLegacy(n)
 }
 
-/** Completed free practice runs for a subject. */
-export function getAttemptsUsed(subjectId: string): number {
-  return load()[subjectId] ?? 0
+/** Record one completed free run (any subject); returns the new global total. */
+export function incrementGlobalAttemptsUsed(): number {
+  if (!isBrowser()) return 0
+  const next = getGlobalAttemptsUsed() + 1
+  try {
+    localStorage.setItem(TOTAL_KEY, String(next))
+  } catch {
+    /* storage full / blocked — soft gate, ignore */
+  }
+  return next
 }
 
-/** Record one completed free run; returns the new count. */
-export function incrementAttemptsUsed(subjectId: string): number {
-  const map = load()
-  map[subjectId] = (map[subjectId] ?? 0) + 1
-  save(map)
-  return map[subjectId]
-}
-
-/** Clear all free-usage counters (e.g. on upgrade, or for testing). */
+/** Clear the free-usage counter (e.g. on upgrade, or for testing). */
 export function resetFreeUsage(): void {
   if (!isBrowser()) return
-  localStorage.removeItem(KEY)
+  localStorage.removeItem(TOTAL_KEY)
+  localStorage.removeItem(LEGACY_MAP_KEY)
 }

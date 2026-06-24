@@ -38,8 +38,10 @@ export const FREE_SUBJECTS = ['chinese', 'english', 'math', 'csd'] as const
 export const FREE_SESSION_SIZE = 10
 export const PREMIUM_SESSION_SIZE = 20
 
-// How many practice runs a free user may complete per subject.
-export const FREE_ATTEMPTS_PER_SUBJECT = 10
+// How many practice runs a free user may complete IN TOTAL across the whole
+// platform (not per subject). Once this global cap is hit, the upgrade modal
+// fires. Premium (and @lhymss.net) users are uncapped.
+export const FREE_ATTEMPTS_TOTAL = 10
 
 // Subscription prices, in HKD. Adjust to taste.
 export const PREMIUM_PRICE_MONTHLY_HKD = 38
@@ -65,9 +67,9 @@ export function sessionSizeFor(isPremium: boolean): number {
   return isPremium ? PREMIUM_SESSION_SIZE : FREE_SESSION_SIZE
 }
 
-/** Per-subject attempt cap for this plan; `null` means unlimited. */
+/** Platform-wide total attempt cap for this plan; `null` means unlimited. */
 export function attemptCapFor(isPremium: boolean): number | null {
-  return isPremium ? null : FREE_ATTEMPTS_PER_SUBJECT
+  return isPremium ? null : FREE_ATTEMPTS_TOTAL
 }
 
 // ── Manual Premium grants (Plan A: offline payment) ──────────────────────────

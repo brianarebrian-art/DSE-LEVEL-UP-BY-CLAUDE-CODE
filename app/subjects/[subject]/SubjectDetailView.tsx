@@ -10,7 +10,7 @@ import {
   canAccessSubject,
   isFreeSubject,
   FREE_SESSION_SIZE,
-  FREE_ATTEMPTS_PER_SUBJECT,
+  FREE_ATTEMPTS_TOTAL,
 } from '@/lib/entitlements'
 
 export default function SubjectDetailView({
@@ -109,7 +109,7 @@ export default function SubjectDetailView({
               <div className="mt-3 text-xs text-amber-400/90">
                 {pm.freeNote
                   .replace('{q}', String(FREE_SESSION_SIZE))
-                  .replace('{cap}', String(FREE_ATTEMPTS_PER_SUBJECT))}
+                  .replace('{cap}', String(FREE_ATTEMPTS_TOTAL))}
                 {' · '}
                 <Link href="/upgrade" className="underline hover:text-amber-300">{pm.upgrade}</Link>
               </div>

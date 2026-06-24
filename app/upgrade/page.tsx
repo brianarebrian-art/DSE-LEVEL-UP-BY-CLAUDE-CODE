@@ -9,7 +9,7 @@ import { getActiveSubjects } from '@/data/subjects'
 import {
   FREE_SESSION_SIZE,
   PREMIUM_SESSION_SIZE,
-  FREE_ATTEMPTS_PER_SUBJECT,
+  FREE_ATTEMPTS_TOTAL,
   PREMIUM_PRICE_MONTHLY_HKD,
   PREMIUM_PRICE_YEARLY_HKD,
   yearlySavingHkd,
@@ -50,7 +50,7 @@ export default function UpgradePage() {
             <ul className="space-y-2 text-sm text-slate-400">
               <li className="flex gap-2"><Check size={16} className="text-slate-500 shrink-0 mt-0.5" />{p.featSubjectsFree}</li>
               <li className="flex gap-2"><Check size={16} className="text-slate-500 shrink-0 mt-0.5" />{p.featPerRunFree.replace('{n}', String(FREE_SESSION_SIZE))}</li>
-              <li className="flex gap-2"><Check size={16} className="text-slate-500 shrink-0 mt-0.5" />{p.featAttemptsFree.replace('{n}', String(FREE_ATTEMPTS_PER_SUBJECT))}</li>
+              <li className="flex gap-2"><Check size={16} className="text-slate-500 shrink-0 mt-0.5" />{p.featAttemptsFree.replace('{n}', String(FREE_ATTEMPTS_TOTAL))}</li>
             </ul>
           </div>
 
