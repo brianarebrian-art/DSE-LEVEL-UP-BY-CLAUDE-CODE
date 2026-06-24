@@ -16,10 +16,18 @@ export default function UpgradeModal({
   cap,
   signedIn,
   onClose,
+  title,
+  body,
+  kicker,
 }: {
   cap: number
   signedIn: boolean
   onClose: () => void
+  // Optional copy overrides — e.g. gating a Premium-only feature rather than the
+  // practice cap. Fall back to the practice-limit strings when omitted.
+  title?: string
+  body?: string
+  kicker?: string
 }) {
   const { t } = useLocale()
   const p = t.premium
@@ -65,13 +73,13 @@ export default function UpgradeModal({
         </div>
 
         <div className="text-xs font-semibold tracking-wide text-amber-400/90 uppercase mb-1">
-          {p.wallLimitKicker}
+          {kicker ?? p.wallLimitKicker}
         </div>
         <h2 id="upgrade-modal-title" className="text-xl font-extrabold mb-2">
-          {p.wallLimitTitle}
+          {title ?? p.wallLimitTitle}
         </h2>
         <p className="text-slate-400 text-sm leading-relaxed mb-6">
-          {p.wallLimitBody.replace('{cap}', String(cap))}
+          {body ?? p.wallLimitBody.replace('{cap}', String(cap))}
         </p>
 
         <div className="flex flex-col gap-2.5">

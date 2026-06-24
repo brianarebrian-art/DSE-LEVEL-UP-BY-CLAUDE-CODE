@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Flame, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, LogIn } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Flame, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, LogIn, Sparkles } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -12,6 +13,12 @@ import {
 import { getSubject } from '@/data/subjects'
 import { gradeBgColors } from '@/lib/grading'
 import { useLocale } from '@/lib/i18n'
+import { usePlan } from '@/lib/usePlan'
+import { FREE_ATTEMPTS_TOTAL } from '@/lib/entitlements'
+import { getExp, rankFor, nextRankAt, getThemes, getActiveTheme, setActiveTheme } from '@/lib/gamify'
+import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
+import RadarChart from '@/components/RadarChart'
+import UpgradeModal from '@/components/UpgradeModal'
 import type { Dictionary } from '@/lib/dictionary'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
@@ -29,12 +36,24 @@ export default function DashboardPage() {
   const { t, locale } = useLocale()
   const d = t.dashboard
   const en = locale === 'en'
+  const router = useRouter()
+  const { isPremium, signedIn } = usePlan()
   const [stats, setStats] = useState<ProgressStats | null>(null)
+  const [exp, setExp] = useState(0)
+  const [topics, setTopics] = useState<TopicStatEntry[]>([])
+  const [themes, setThemes] = useState<string[]>([])
+  const [activeTheme, setActive] = useState('default')
+  const [modalOpen, setModalOpen] = useState(false)
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time hydration of localStorage data
+    /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration of localStorage data */
     setStats(computeStats(loadAttempts()))
+    setExp(getExp())
+    setTopics(getTopicStats())
+    setThemes(getThemes())
+    setActive(getActiveTheme())
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [])
 
   if (!stats) {
@@ -71,6 +90,24 @@ export default function DashboardPage() {
     )
   }
 
+  const rank = rankFor(exp, isPremium)
+  const nextAt = nextRankAt(exp)
+  // Radar axes: the user's most-practised topics, each scored by win rate (0–1).
+  const radarAxes = [...topics]
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 6)
+    .map((e) => ({ label: e.label, value: winRate(e) }))
+  const onRepair = () => {
+    if (!isPremium) {
+      setModalOpen(true)
+      return
+    }
+    // Target the subject of the single weakest topic (fallback: most-practised).
+    const weak = weakestTopics({ min: 1, limit: 1 })[0]
+    const sid = weak?.subjectId ?? stats.subjects[0]?.subjectId
+    if (sid) router.push(`/practice?subject=${sid}&mode=weakness`)
+  }
+
   const statCards = [
     { icon: Flame, label: d.statStreak, value: `${stats.currentStreak}`, unit: d.statStreakUnit, accent: 'text-orange-400' },
     { icon: BookOpen, label: d.statQuestions, value: `${stats.totalQuestions}`, unit: d.statQuestionsUnit, accent: 'text-sky-400' },
@@ -89,12 +126,20 @@ export default function DashboardPage() {
               {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
             </p>
           </div>
-          <Link
-            href="/subjects"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all text-sm"
-          >
-            {d.continueP} <ArrowRight size={15} />
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/focus"
+              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl transition-all text-sm"
+            >
+              🍅 {en ? 'Focus' : '番茄鐘'}
+            </Link>
+            <Link
+              href="/subjects"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all text-sm"
+            >
+              {d.continueP} <ArrowRight size={15} />
+            </Link>
+          </div>
         </div>
 
         {/* Login teaser */}
@@ -119,6 +164,84 @@ export default function DashboardPage() {
               <div className="text-xs text-slate-500 mt-1">{c.label}</div>
             </div>
           ))}
+        </div>
+
+        {/* 弱項殲滅大腦 — rank, radar & repair worksheet */}
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-10">
+          <div className="flex items-center justify-between gap-3 mb-5 flex-wrap">
+            <div>
+              <div className="text-xs text-slate-500 mb-1">{en ? 'Rank' : '戰力稱號'}</div>
+              <div className="text-xl font-extrabold flex items-center gap-2 flex-wrap">
+                <span className={rank.cls}>{en ? rank.en : rank.zh}</span>
+                <span className="text-xs font-normal text-slate-500">EXP {exp.toLocaleString()}</span>
+              </div>
+            </div>
+            {themes.includes('cyber') && (
+              <div className="flex items-center gap-1.5 text-xs">
+                <span className="text-slate-500">{en ? 'Theme' : '主題'}</span>
+                {(['default', 'cyber'] as const).map((th) => (
+                  <button
+                    key={th}
+                    onClick={() => { setActiveTheme(th); setActive(th) }}
+                    className={`px-2.5 py-1 rounded-lg border transition-colors ${
+                      activeTheme === th
+                        ? 'border-amber-500 text-amber-400 bg-amber-500/10'
+                        : 'border-slate-700 text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    {th === 'default' ? (en ? 'Default' : '預設') : 'Cyberpunk'}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {nextAt !== null && (
+            <div className="mb-6">
+              <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-full"
+                  style={{ width: `${Math.min(100, Math.round((exp / nextAt) * 100))}%` }}
+                />
+              </div>
+              <div className="text-[11px] text-slate-500 mt-1">
+                {en
+                  ? `${(nextAt - exp).toLocaleString()} EXP to the next rank`
+                  : `距離下一段位仲爭 ${(nextAt - exp).toLocaleString()} EXP`}
+              </div>
+            </div>
+          )}
+
+          <div className="grid sm:grid-cols-2 gap-6 items-center">
+            <div>
+              {radarAxes.length >= 3 ? (
+                <RadarChart axes={radarAxes} />
+              ) : (
+                <div className="text-center text-sm text-slate-500 py-12">
+                  {en
+                    ? 'Practise a few more topics to unlock your ability radar.'
+                    : '再操多幾個唔同課題，就會解鎖你嘅能力雷達圖。'}
+                </div>
+              )}
+            </div>
+            <div className="text-center sm:text-left">
+              <h3 className="font-bold text-lg mb-1">🛠️ {en ? 'Weakness Repair Worksheet' : '弱項修復卷'}</h3>
+              <p className="text-sm text-slate-400 mb-4">
+                {en
+                  ? 'Auto-build a 20-question drill from your lowest win-rate topics.'
+                  : '自動由你勝率最低嘅課題，砌一份 20 題專屬特訓卷。'}
+              </p>
+              <button
+                onClick={onRepair}
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-3 rounded-xl transition-all"
+              >
+                <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '智能生成：專屬弱項修復卷'}
+              </button>
+              {!isPremium && (
+                <p className="text-[11px] text-slate-500 mt-2">{en ? 'Premium feature' : 'Premium 專屬功能'}</p>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Per-subject performance */}
@@ -218,6 +341,21 @@ export default function DashboardPage() {
           </button>
         </div>
       </div>
+
+      {modalOpen && (
+        <UpgradeModal
+          cap={FREE_ATTEMPTS_TOTAL}
+          signedIn={signedIn}
+          onClose={() => setModalOpen(false)}
+          kicker={en ? 'Locked' : '未解鎖'}
+          title={en ? 'Premium feature' : 'Premium 專屬功能'}
+          body={
+            en
+              ? 'The weakness repair worksheet is Premium-only. Sign in with a school / registered email, or upgrade, to unlock adaptive drills.'
+              : '弱項修復卷係 Premium 專屬功能。用學校／已登記電郵登入，或升級 Premium，即可解鎖自適應特訓。'
+          }
+        />
+      )}
     </div>
   )
 }

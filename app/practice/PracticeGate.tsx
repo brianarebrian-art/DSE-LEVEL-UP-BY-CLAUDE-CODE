@@ -98,9 +98,11 @@ function LockedBackdrop() {
 export default function PracticeGate({
   subjectId,
   topicFilter,
+  mode = 'normal',
 }: {
   subjectId: string
   topicFilter: string | null
+  mode?: 'normal' | 'weakness'
 }) {
   const { isPremium, signedIn, loading } = usePlan()
   const router = useRouter()
@@ -156,12 +158,13 @@ export default function PracticeGate({
 
   return (
     <PracticeSession
-      key={subjectId + '|' + (topicFilter ?? '')}
+      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode}
       bank={questions}
       subjectId={subjectId}
       topicFilter={topicFilter}
       sessionSize={sessionSizeFor(isPremium)}
       countsAgainstFreeQuota={cap !== null}
+      mode={mode}
     />
   )
 }

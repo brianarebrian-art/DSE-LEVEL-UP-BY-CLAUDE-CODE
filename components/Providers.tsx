@@ -2,6 +2,7 @@
 
 import { SessionProvider } from 'next-auth/react'
 import { LanguageProvider } from '@/lib/i18n'
+import ThemeApplier from '@/components/ThemeApplier'
 
 // LanguageProvider wraps everything so the whole UI can switch 中/EN client-side.
 // SessionProvider always wraps too, so useSession()/usePlan() are safe everywhere;
@@ -11,7 +12,10 @@ import { LanguageProvider } from '@/lib/i18n'
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <LanguageProvider>
-      <SessionProvider>{children}</SessionProvider>
+      <SessionProvider>
+        <ThemeApplier />
+        {children}
+      </SessionProvider>
     </LanguageProvider>
   )
 }

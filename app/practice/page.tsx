@@ -16,12 +16,14 @@ function PracticeRouter() {
   const params = useSearchParams()
   const subjectId = params.get('subject') ?? 'math'
   const topicFilter = params.get('topic')
-  // Re-mount the gate (and the session beneath it) whenever subject/topic changes.
+  const mode = params.get('mode') === 'weakness' ? 'weakness' : 'normal'
+  // Re-mount the gate (and the session beneath it) whenever subject/topic/mode changes.
   return (
     <PracticeGate
-      key={`${subjectId}|${topicFilter ?? ''}`}
+      key={`${subjectId}|${topicFilter ?? ''}|${mode}`}
       subjectId={subjectId}
       topicFilter={topicFilter}
+      mode={mode}
     />
   )
 }

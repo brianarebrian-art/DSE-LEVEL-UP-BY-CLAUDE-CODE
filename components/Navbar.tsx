@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
 import LanguageToggle from '@/components/LanguageToggle'
+import StreakFlame from '@/components/StreakFlame'
 import { useT } from '@/lib/i18n'
 import { usePlan } from '@/lib/usePlan'
 
@@ -64,17 +65,21 @@ export default function Navbar() {
               {t.premium.navUpgrade}
             </Link>
           )}
+          <StreakFlame />
           <LanguageToggle />
           <AuthButton />
         </div>
 
         {/* Mobile hamburger */}
-        <button
-          className="md:hidden text-slate-400 hover:text-slate-100"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <StreakFlame />
+          <button
+            className="text-slate-400 hover:text-slate-100"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
