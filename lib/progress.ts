@@ -2,6 +2,8 @@
 // Designed so a server-backed implementation (once the user logs in + we add a DB)
 // can replace the storage layer without changing the public API.
 
+import { notifyProgressChanged } from '@/lib/sync'
+
 export interface AttemptRecord {
   subjectId: string
   subjectName: string
@@ -39,6 +41,7 @@ export function recordAttempt(a: AttemptRecord): void {
   // Keep the store bounded (most recent 500 attempts).
   const trimmed = all.slice(-500)
   localStorage.setItem(KEY, JSON.stringify(trimmed))
+  notifyProgressChanged() // queue a debounced cloud sync (if signed in)
 }
 
 export function clearProgress(): void {

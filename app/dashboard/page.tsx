@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Flame, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, LogIn, Sparkles } from 'lucide-react'
+import { Flame, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -19,6 +19,8 @@ import { getExp, rankFor, nextRankAt, getThemes, getActiveTheme, setActiveTheme 
 import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
 import UpgradeModal from '@/components/UpgradeModal'
+import SyncStatus from '@/components/SyncStatus'
+import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
@@ -38,6 +40,7 @@ export default function DashboardPage() {
   const en = locale === 'en'
   const router = useRouter()
   const { isPremium, signedIn } = usePlan()
+  const { version } = useSync() // re-read local progress after a cloud pull/merge
   const [stats, setStats] = useState<ProgressStats | null>(null)
   const [exp, setExp] = useState(0)
   const [topics, setTopics] = useState<TopicStatEntry[]>([])
@@ -54,7 +57,7 @@ export default function DashboardPage() {
     setThemes(getThemes())
     setActive(getActiveTheme())
     /* eslint-enable react-hooks/set-state-in-effect */
-  }, [])
+  }, [version])
 
   if (!stats) {
     return (
@@ -142,15 +145,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Login teaser */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 mb-8 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 text-sm">
-            <LogIn size={18} className="text-amber-400 shrink-0" />
-            <span className="text-slate-400">
-              {d.loginTeaserA}<span className="text-slate-300">{d.loginTeaserGoogle}</span>{d.loginTeaserB}
-            </span>
-          </div>
-        </div>
+        {/* Cross-device sync status (replaces the old on-device teaser) */}
+        <SyncStatus />
 
         {/* Stat cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">

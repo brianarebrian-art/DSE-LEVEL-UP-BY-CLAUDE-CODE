@@ -4,6 +4,8 @@
 // without a browser. This is the live error-weight signal that adaptive worksheets
 // and the dashboard radar both read.
 
+import { notifyProgressChanged } from '@/lib/sync'
+
 const KEY = 'dse_topic_stats'
 
 function isBrowser(): boolean {
@@ -60,6 +62,7 @@ export function recordTopicOutcomes(
     s[k] = e
   }
   save(s)
+  notifyProgressChanged() // queue a debounced cloud sync (if signed in)
 }
 
 export function getTopicStats(): TopicStatEntry[] {

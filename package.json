@@ -10,6 +10,7 @@
     "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
     "framer-motion": "^12.40.0",
     "katex": "^0.17.0",
     "lucide-react": "^1.20.0",

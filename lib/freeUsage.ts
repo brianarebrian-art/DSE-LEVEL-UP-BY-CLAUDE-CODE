@@ -7,6 +7,8 @@
 // The cap is now GLOBAL (total runs across every subject), not per subject — see
 // FREE_ATTEMPTS_TOTAL in lib/entitlements.ts.
 
+import { notifyProgressChanged } from '@/lib/sync'
+
 const TOTAL_KEY = 'dse_free_attempts_total'
 const LEGACY_MAP_KEY = 'dse_free_usage' // pre-global, per-subject map (migrated once)
 
@@ -56,6 +58,7 @@ export function incrementGlobalAttemptsUsed(): number {
   } catch {
     /* storage full / blocked — soft gate, ignore */
   }
+  notifyProgressChanged() // queue a debounced cloud sync (if signed in)
   return next
 }
 
