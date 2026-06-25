@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Lock, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Lock, CheckCircle2, Search } from 'lucide-react'
 import {
   subjects,
   type SubjectMeta,
@@ -37,6 +38,23 @@ export default function SubjectsView() {
   const activeCount = subjects.filter((s) => s.isActive).length
   const name = (s: SubjectMeta) => (locale === 'en' ? s.nameEn : s.name)
   const desc = (s: SubjectMeta) => (locale === 'en' ? s.descriptionEn : s.description)
+  const en = locale === 'en'
+
+  // Search / category / sort — filter WITHIN the existing Free/Premium zones.
+  const [query, setQuery] = useState('')
+  const [category, setCategory] = useState<'all' | 'core' | 'extended' | 'elective'>('all')
+  const [sort, setSort] = useState<'default' | 'az' | 'live'>('default')
+
+  const q = query.trim().toLowerCase()
+  const matches = (s: SubjectMeta) =>
+    (!q || [s.name, s.nameEn, s.short, s.shortEn].some((v) => v.toLowerCase().includes(q))) &&
+    (category === 'all' || s.category === category)
+  const sortGroup = (group: SubjectMeta[]) => {
+    if (sort === 'az') return [...group].sort((a, b) => name(a).localeCompare(name(b)))
+    if (sort === 'live') return [...group].sort((a, b) => Number(b.isActive) - Number(a.isActive))
+    return group
+  }
+  const totalMatched = subjects.filter(matches).length
 
   const ActiveCard = ({ s }: { s: SubjectMeta }) => {
     const premiumLocked = authEnabled && !isPremium && !isFreeSubject(s.id)
@@ -122,12 +140,73 @@ export default function SubjectsView() {
           </p>
         </div>
 
+        {/* Controls: search + sort */}
+        <div className="flex flex-col sm:flex-row gap-3 mb-4">
+          <div className="relative flex-1">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={en ? 'Search subjects…' : '搜尋科目…'}
+              className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500/50 focus:outline-none"
+            />
+          </div>
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as 'default' | 'az' | 'live')}
+            className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-300 focus:border-amber-500/50 focus:outline-none"
+          >
+            <option value="default">{en ? 'Default order' : '預設排序'}</option>
+            <option value="az">{en ? 'Name A–Z' : '名稱 A–Z'}</option>
+            <option value="live">{en ? 'Live first' : '已上線優先'}</option>
+          </select>
+        </div>
+
+        {/* Category chips */}
+        <div className="flex gap-2 mb-10 flex-wrap">
+          {([
+            ['all', en ? 'All' : '全部'],
+            ['core', en ? 'Core' : '核心'],
+            ['extended', en ? 'Extended (M1·M2)' : '延伸 M1·M2'],
+            ['elective', en ? 'Elective' : '選修'],
+          ] as const).map(([val, label]) => (
+            <button
+              key={val}
+              type="button"
+              onClick={() => setCategory(val)}
+              className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                category === val
+                  ? 'bg-amber-500/15 text-amber-300 border-amber-500/40'
+                  : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* No results */}
+        {totalMatched === 0 && (
+          <div className="text-center py-16 text-slate-500">
+            <div className="text-4xl mb-3">🔍</div>
+            <p className="mb-4">{en ? 'No subjects match your search.' : '搵唔到符合嘅科目。'}</p>
+            <button
+              type="button"
+              onClick={() => { setQuery(''); setCategory('all') }}
+              className="text-sm text-amber-400 hover:underline"
+            >
+              {en ? 'Clear filters' : '清除篩選'}
+            </button>
+          </div>
+        )}
+
         {/* Grouped into Free vs Premium zones */}
         <div className="space-y-12">
           {(['free', 'premium'] as const).map((zone) => {
-            const group = subjects.filter((s) =>
+            const base = subjects.filter((s) =>
               zone === 'free' ? isFreeSubject(s.id) : !isFreeSubject(s.id)
             )
+            const group = sortGroup(base.filter(matches))
             if (group.length === 0) return null
             const info = tl.zones[zone]
             const tagClass =

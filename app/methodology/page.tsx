@@ -1,17 +1,29 @@
 'use client'
 
+import { Fragment, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import MathText from '@/components/MathText'
-import { useT } from '@/lib/i18n'
+import { useLocale } from '@/lib/i18n'
 
 // Language-neutral emoji per framework, zipped by index with the translated copy
 // in t.methodology.frameworks. (Examples span Maths, Chemistry, Biology, Economics.)
 const fwEmojis = ['🔄', '⚗️', '🧬', '📈']
 
 export default function MethodologyPage() {
-  const t = useT()
+  const { t, locale } = useLocale()
   const m = t.methodology
+  const en = locale === 'en'
+  // Frameworks are collapsible (accordion) to cut the page's text density; the
+  // first one is open by default so the page never looks empty.
+  const [open, setOpen] = useState<Set<number>>(() => new Set([0]))
+  const toggle = (i: number) =>
+    setOpen((prev) => {
+      const next = new Set(prev)
+      if (next.has(i)) next.delete(i)
+      else next.add(i)
+      return next
+    })
 
   return (
     <div className="min-h-screen px-4 py-12">
@@ -44,72 +56,108 @@ export default function MethodologyPage() {
         </div>
 
         {/* 4 Frameworks */}
-        <h2 className="text-2xl font-bold mb-8">{m.fwSectionTitle}</h2>
+        <h2 className="text-2xl font-bold mb-3">{m.fwSectionTitle}</h2>
 
-        <div className="space-y-10">
-          {m.frameworks.map((f, i) => (
-            <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-              {/* Framework header */}
-              <div className="border-b border-slate-800 px-6 py-5 flex items-center gap-4">
-                <span className="text-3xl">{fwEmojis[i]}</span>
-                <div>
-                  <h3 className="text-lg font-bold">{f.name}</h3>
-                  <p className="text-slate-400 text-sm">{f.tagline}</p>
+        {/* Methodology flow — how every framework gets turned into practice */}
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-10 flex-wrap">
+          {[
+            { icon: '📄', label: m.officialLabel },
+            { icon: '🔍', label: m.analysisLabel },
+            { icon: '✍️', label: m.rewrittenLabel },
+            { icon: '🎯', label: en ? 'Your turn' : '你嚟做' },
+          ].map((step, i, arr) => (
+            <Fragment key={i}>
+              <div className="flex flex-col items-center gap-1.5 w-20 text-center">
+                <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 grid place-items-center text-xl">
+                  {step.icon}
                 </div>
-                <div className="ml-auto hidden sm:flex gap-2 flex-wrap justify-end">
-                  {f.topics.map((tp) => (
-                    <span key={tp} className="text-xs text-amber-400/70 bg-amber-400/10 px-2 py-0.5 rounded-full">
-                      {tp}
-                    </span>
-                  ))}
-                </div>
+                <span className="text-[11px] text-slate-400 leading-tight">{step.label}</span>
               </div>
-
-              {/* Description */}
-              <div className="px-6 py-4 text-slate-400 text-sm leading-relaxed border-b border-slate-800/50">
-                {f.description}
-              </div>
-
-              {/* 3-column breakdown */}
-              <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-800">
-                {/* Official */}
-                <div className="p-5">
-                  <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.officialLabel}</div>
-                  <p className="text-slate-300 text-sm leading-relaxed mb-3">
-                    <MathText>{f.content}</MathText>
-                  </p>
-                  <div className="text-xs text-slate-600">
-                    {m.answerLabel}<MathText>{f.answer}</MathText>
-                  </div>
-                </div>
-
-                {/* Analysis */}
-                <div className="p-5 bg-amber-500/5">
-                  <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.analysisLabel}</div>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    <MathText>{f.analysis}</MathText>
-                  </p>
-                </div>
-
-                {/* Rewritten */}
-                <div className="p-5 bg-green-500/5">
-                  <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.rewrittenLabel}</div>
-                  <p className="text-slate-300 text-sm leading-relaxed mb-3">
-                    <MathText>{f.rwContent}</MathText>
-                  </p>
-                  <div className="text-xs text-slate-600 mb-4">
-                    {m.answerLabel}<MathText>{f.rwAnswer}</MathText>
-                  </div>
-                  <Link
-                    href="/practice"
-                    className="text-xs text-green-400 bg-green-400/10 hover:bg-green-400/20 border border-green-400/20 px-3 py-1.5 rounded-lg transition-all inline-block"
-                  >
-                    {m.practiseSimilar}
-                  </Link>
-                </div>
-              </div>
-            </div>
+              {i < arr.length - 1 && <ArrowRight className="text-slate-600 shrink-0" size={16} />}
+            </Fragment>
           ))}
+        </div>
+
+        <div className="space-y-4">
+          {m.frameworks.map((f, i) => {
+            const isOpen = open.has(i)
+            return (
+              <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+                {/* Framework header — click to expand/collapse */}
+                <button
+                  type="button"
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  className="w-full text-left px-6 py-5 flex items-center gap-4 hover:bg-slate-800/40 transition-colors"
+                >
+                  <span className="text-3xl">{fwEmojis[i]}</span>
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-bold">{f.name}</h3>
+                    <p className="text-slate-400 text-sm">{f.tagline}</p>
+                  </div>
+                  <div className="ml-auto hidden md:flex gap-2 flex-wrap justify-end max-w-[40%]">
+                    {f.topics.map((tp) => (
+                      <span key={tp} className="text-xs text-amber-400/70 bg-amber-400/10 px-2 py-0.5 rounded-full">
+                        {tp}
+                      </span>
+                    ))}
+                  </div>
+                  <ChevronDown
+                    size={18}
+                    className={`text-slate-500 shrink-0 ml-2 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <>
+                    {/* Description */}
+                    <div className="px-6 py-4 text-slate-400 text-sm leading-relaxed border-y border-slate-800/50">
+                      {f.description}
+                    </div>
+
+                    {/* 3-column breakdown */}
+                    <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+                      {/* Official */}
+                      <div className="p-5">
+                        <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.officialLabel}</div>
+                        <p className="text-slate-300 text-sm leading-relaxed mb-3">
+                          <MathText>{f.content}</MathText>
+                        </p>
+                        <div className="text-xs text-slate-600">
+                          {m.answerLabel}<MathText>{f.answer}</MathText>
+                        </div>
+                      </div>
+
+                      {/* Analysis */}
+                      <div className="p-5 bg-amber-500/5">
+                        <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.analysisLabel}</div>
+                        <p className="text-slate-400 text-sm leading-relaxed">
+                          <MathText>{f.analysis}</MathText>
+                        </p>
+                      </div>
+
+                      {/* Rewritten */}
+                      <div className="p-5 bg-green-500/5">
+                        <div className="text-xs text-slate-600 uppercase tracking-wide mb-3 font-medium">{m.rewrittenLabel}</div>
+                        <p className="text-slate-300 text-sm leading-relaxed mb-3">
+                          <MathText>{f.rwContent}</MathText>
+                        </p>
+                        <div className="text-xs text-slate-600 mb-4">
+                          {m.answerLabel}<MathText>{f.rwAnswer}</MathText>
+                        </div>
+                        <Link
+                          href="/practice"
+                          className="text-xs text-green-400 bg-green-400/10 hover:bg-green-400/20 border border-green-400/20 px-3 py-1.5 rounded-lg transition-all inline-block"
+                        >
+                          {m.practiseSimilar}
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            )
+          })}
         </div>
 
         {/* CTA */}
