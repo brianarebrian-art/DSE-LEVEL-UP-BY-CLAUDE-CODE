@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { LogIn, LogOut, Loader2, CloudOff, Cloud } from 'lucide-react'
+import { LogIn, LogOut, Loader2, CloudOff, Cloud, BadgeCheck } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { useSync } from '@/components/SyncProvider'
 
@@ -77,24 +77,42 @@ export default function SyncStatus() {
         ? '🟢 Progress safely synced'
         : '🟢 進度已安全同步'
 
+  const isPremium = Boolean(session.user.isPremium)
+
   return (
     <div
       className={`rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap border ${
         error ? 'bg-red-500/5 border-red-500/30' : 'bg-slate-900 border-slate-800'
       }`}
     >
-      <span className="flex items-center gap-2 text-sm">
-        {error ? (
-          <CloudOff size={18} className="text-red-400 shrink-0" />
-        ) : syncing ? (
-          <Loader2 size={18} className="text-amber-400 shrink-0 animate-spin" />
-        ) : (
-          <Cloud size={18} className="text-green-400 shrink-0" />
-        )}
-        <span className={error ? 'text-red-300' : 'text-slate-300'}>{label}</span>
-        <span className="text-slate-600 hidden sm:inline">·</span>
-        <span className="text-slate-500 hidden sm:inline">{session.user.email}</span>
-      </span>
+      <div className="min-w-0">
+        <span className="flex items-center gap-2 text-sm">
+          {error ? (
+            <CloudOff size={18} className="text-red-400 shrink-0" />
+          ) : syncing ? (
+            <Loader2 size={18} className="text-amber-400 shrink-0 animate-spin" />
+          ) : (
+            <Cloud size={18} className="text-green-400 shrink-0" />
+          )}
+          <span className={error ? 'text-red-300' : 'text-slate-300'}>{label}</span>
+        </span>
+        {/* Identity + plan tier. Doubles as the support line: if a tester reports
+            Premium isn't working, this shows the EXACT email Google reported and
+            whether the server resolved them to Premium or Free — instantly telling
+            apart an email mismatch, a stale token, or an env/redeploy miss. */}
+        <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+          <span className="text-xs text-slate-500 break-all">{session.user.email}</span>
+          {isPremium ? (
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
+              <BadgeCheck size={11} /> Premium
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-slate-700/40 border border-slate-600/40 px-2 py-0.5 rounded-full">
+              {en ? 'Free plan' : '免費版'}
+            </span>
+          )}
+        </div>
+      </div>
       <button
         onClick={() => signOut()}
         className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-100 border border-slate-700 hover:border-slate-500 rounded-lg px-3 py-1.5 transition-colors shrink-0"
