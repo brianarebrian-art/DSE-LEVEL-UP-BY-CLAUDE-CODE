@@ -50,13 +50,11 @@ export default function DashboardPage() {
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
-    /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration of localStorage data */
     setStats(computeStats(loadAttempts()))
     setExp(getExp())
     setTopics(getTopicStats())
     setThemes(getThemes())
     setActive(getActiveTheme())
-    /* eslint-enable react-hooks/set-state-in-effect */
   }, [version])
 
   if (!stats) {
@@ -76,18 +74,22 @@ export default function DashboardPage() {
   if (stats.totalAttempts === 0) {
     return (
       <div className="min-h-screen px-4 py-20">
-        <div className="max-w-md mx-auto text-center">
-          <div className="text-6xl mb-6">📊</div>
-          <h1 className="text-3xl font-extrabold mb-3">{d.title}</h1>
-          <p className="text-slate-400 mb-8">
-            {d.emptyBody}
-          </p>
-          <Link
-            href="/subjects"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
-          >
-            {d.emptyCta} <ArrowRight size={16} />
-          </Link>
+        <div className="max-w-md mx-auto">
+          {/* Even with zero history, let new users bind Google to sync */}
+          <SyncStatus />
+          <div className="text-center">
+            <div className="text-6xl mb-6">📊</div>
+            <h1 className="text-3xl font-extrabold mb-3">{d.title}</h1>
+            <p className="text-slate-400 mb-8">
+              {d.emptyBody}
+            </p>
+            <Link
+              href="/subjects"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+            >
+              {d.emptyCta} <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
     )

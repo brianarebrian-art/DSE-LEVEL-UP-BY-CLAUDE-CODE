@@ -1,5 +1,5 @@
 import type { Question, Topic } from './types'
-import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta, type Difficulty } from './_builder'
+import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 
 // HKDSE Physics — 120-question bilingual bank. Parametrised numeric generators
 // (answers code-computed) + curated conceptual items. Units are language-neutral.

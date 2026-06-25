@@ -404,7 +404,6 @@ const calcapp: Question[] = []
 })
 ;([2, 4, 5] as number[]).forEach((b, i) => {
   // area under y=x² from 0 to b = b³/3  (avoid b∈{1,3} where b² or b³ would equal the answer)
-  const area = (b * b * b) / 3
   calcapp.push(q(id('caarea'), T.calcapp, FW.model, 'hard', 2021 + (i % 3), 4,
     [`求 $y=x^2$、$x$ 軸與 $x=${b}$ 所圍面積。`, `Find the area bounded by $y=x^2$, the $x$-axis and $x=${b}$.`],
     [optm(`\\frac{${b * b * b}}{3}`), optm(`${b * b}`), optm(`${b * b * b}`), optm(`\\frac{${b * b}}{2}`)],

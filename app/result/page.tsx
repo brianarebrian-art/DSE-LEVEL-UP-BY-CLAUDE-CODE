@@ -54,7 +54,6 @@ export default function ResultPage() {
     if (!raw) return
     const data: StoredResult = JSON.parse(raw)
     const gr = predictGrade(data.score, getPracticeCutoffs(data.total, data.subjectId ?? 'practice'))
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time hydration of client-only data
     setResult(data)
     setGradeResult(gr)
     setTimeout(() => setShowBadge(true), 1600)

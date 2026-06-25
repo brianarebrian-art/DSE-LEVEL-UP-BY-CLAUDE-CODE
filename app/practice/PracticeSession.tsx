@@ -297,7 +297,7 @@ export default function PracticeSession({
     } else {
       setCurrent((c) => c + 1)
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, countsAgainstFreeQuota])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, countsAgainstFreeQuota, tr])
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 

@@ -13,6 +13,9 @@ import {
   snapshotLocal,
   applyLocal,
   mergeSnapshots,
+  emptySnapshot,
+  getSyncOwner,
+  setSyncOwner,
   PROGRESS_EVENT,
   type CloudData,
 } from '@/lib/sync'
@@ -38,11 +41,11 @@ const DEBOUNCE_MS = 2500 // 防線 D: cap cloud writes to ~one per burst of acti
 // useSession() is available. Reads the Auth.js login state; when authenticated it
 // pulls + smart-merges the cloud row, then debounce-pushes local changes up.
 export default function SyncProvider({ children }: { children: React.ReactNode }) {
-  const { status: authStatus } = useSession()
+  const { data: session, status: authStatus } = useSession()
+  const userId = session?.user?.id ?? null
   const [status, setStatus] = useState<SyncStatus>('idle')
   const [version, setVersion] = useState(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const pendingRef = useRef(false) // a local change is waiting to be pushed
 
   const bump = useCallback(() => setVersion((v) => v + 1), [])
 
@@ -60,7 +63,6 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
         body: JSON.stringify({ progress: snapshotLocal() }),
       })
       if (!res.ok) throw new Error(`push ${res.status}`)
-      pendingRef.current = false
       setStatus('synced')
     } catch {
       // 防線 F: keep working on local; retry fires on the next 'online' event.
@@ -79,19 +81,28 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
       const res = await fetch('/api/progress')
       if (!res.ok) throw new Error(`pull ${res.status}`)
       const cloud = (await res.json()) as CloudData
-      const winner = mergeSnapshots(snapshotLocal(), cloud)
+
+      // Anti-contamination (防線: 多用戶切換): if this device's local data belongs
+      // to a DIFFERENT user, the new user's cloud is the only truth — never let the
+      // previous user's leftover local data win the merge or push up to this account.
+      const owner = getSyncOwner()
+      const foreignLocal = Boolean(owner && userId && owner !== userId)
+      const winner = foreignLocal
+        ? (cloud.progress ?? emptySnapshot())
+        : mergeSnapshots(snapshotLocal(), cloud)
+
       applyLocal(winner) // write the merged result to localStorage
+      if (userId) setSyncOwner(userId) // this device now belongs to the current user
       bump() // 防線 A.2: UI re-renders from the merged data, no manual refresh
       // Converge: push the winner up so both ends match.
       await push()
     } catch {
       setStatus('error')
     }
-  }, [bump, push])
+  }, [bump, push, userId])
 
   // Debounced push scheduler.
   const schedulePush = useCallback(() => {
-    pendingRef.current = true
     if (debounceRef.current) clearTimeout(debounceRef.current)
     debounceRef.current = setTimeout(() => {
       void push()
@@ -116,11 +127,13 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
     return () => window.removeEventListener(PROGRESS_EVENT, onChange)
   }, [authStatus, schedulePush, bump])
 
-  // Auto-recover when the network returns (防線 F).
+  // Auto-recover when the network returns (防線 F): re-run a full pull+merge so we
+  // BOTH catch up on any cloud changes we missed while offline AND flush local
+  // changes that failed to push. (Fixes the earlier gap where reconnect only pushed.)
   useEffect(() => {
     if (!AUTH_ENABLED) return
     const onOnline = () => {
-      if (authStatus === 'authenticated' && pendingRef.current) void push()
+      if (authStatus === 'authenticated') void pullMerge()
     }
     const onOffline = () => setStatus('offline')
     window.addEventListener('online', onOnline)
@@ -129,7 +142,7 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
       window.removeEventListener('online', onOnline)
       window.removeEventListener('offline', onOffline)
     }
-  }, [authStatus, push])
+  }, [authStatus, pullMerge])
 
   return <SyncContext.Provider value={{ status, version }}>{children}</SyncContext.Provider>
 }

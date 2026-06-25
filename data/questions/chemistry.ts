@@ -212,7 +212,7 @@ const redox: Question[] = [
 ;[['Mg', 'Cu²⁺', '鎂 / magnesium', '銅 / copper'], ['Zn', 'Fe²⁺', '鋅 / zinc', '鐵 / iron'],
   ['Fe', 'Cu²⁺', '鐵 / iron', '銅 / copper'], ['Zn', 'Cu²⁺', '鋅 / zinc', '銅 / copper'],
   ['Al', 'Fe³⁺', '鋁 / aluminium', '鐵 / iron'], ['Mg', 'Zn²⁺', '鎂 / magnesium', '鋅 / zinc']].forEach((p, i) => {
-  const [metal, ion, mName, dName] = p
+  const [, , mName, dName] = p
   redox.push(q(id('disp'), T.redox, FW.electron, 'medium', 2019 + (i % 5), 1,
     [`把 ${mName} 放入含 ${dName} 離子的溶液中，會發生置換是因為 ${mName} 較？`,
       `Putting ${mName} into a solution of ${dName} ions causes displacement because ${mName} is?`],

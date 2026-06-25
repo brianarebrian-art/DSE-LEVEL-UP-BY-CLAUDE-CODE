@@ -14,6 +14,7 @@ const KEYS = {
 } as const
 const UPDATED_AT = 'dse_updated_at'
 const SYNCED_AT = 'dse_synced_at'
+const SYNC_OWNER = 'dse_sync_owner' // which user id the local data last synced as
 
 /** Window event fired after a LOCAL progress change (drives debounced push + UI). */
 export const PROGRESS_EVENT = 'dse:progress-changed'
@@ -113,6 +114,35 @@ export function applyLocal(s: Snapshot): void {
     localStorage.setItem(SYNCED_AT, String(now))
   } catch {
     /* quota / private mode — soft sync, ignore */
+  }
+}
+
+/** An empty snapshot — used to give a different user a clean local slate. */
+export function emptySnapshot(): Snapshot {
+  return {
+    dse_progress: [],
+    dse_free_attempts_total: 0,
+    dse_topic_stats: {},
+    updatedAt: null,
+    syncedAt: null,
+  }
+}
+
+/** The user id this device's local data last synced as (null if never). */
+export function getSyncOwner(): string | null {
+  if (!isBrowser()) return null
+  try {
+    return localStorage.getItem(SYNC_OWNER)
+  } catch {
+    return null
+  }
+}
+export function setSyncOwner(id: string): void {
+  if (!isBrowser()) return
+  try {
+    localStorage.setItem(SYNC_OWNER, id)
+  } catch {
+    /* ignore */
   }
 }
 

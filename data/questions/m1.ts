@@ -197,7 +197,7 @@ const explog: Question[] = [
 // ── Calculus applications (20) ───────────────────────────────────────────────
 const calcapp: Question[] = []
 ;[[1, -6, 9, 3], [1, -4, 0, 2], [1, -2, -3, 1], [2, -12, 0, 3], [1, -8, 7, 4]].forEach((p, i) => {
-  const [a, b, c, crit] = p // f(x)=ax^2+bx+c min at x=-b/2a
+  const [a, b, c] = p // f(x)=ax^2+bx+c min at x=-b/2a
   const xmin = -b / (2 * a)
   calcapp.push(q(id('minx'), T.calcapp, FW.model, 'medium', 2019 + (i % 5), 1,
     [`函數 $f(x) = ${a === 1 ? '' : a}x^2 ${b < 0 ? '-' : '+'} ${Math.abs(b)}x ${c < 0 ? '-' : '+'} ${Math.abs(c)}$ 的極小值在 $x = ?$`,
