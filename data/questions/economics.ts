@@ -6,6 +6,7 @@ const q = makeQ('economics')
 
 const T = {
   basic: { id: 'basic_concepts', zh: '基礎概念', en: 'Basic Concepts' },
+  ppf: { id: 'ppf', zh: '生產可能線（PPF）', en: 'Production Possibility Frontier' },
   ds: { id: 'demand_supply', zh: '需求與供應', en: 'Demand & Supply' },
   elas: { id: 'elasticity', zh: '彈性', en: 'Elasticity' },
   firm: { id: 'firm_production', zh: '廠商與生產', en: 'Firms & Production' },
@@ -28,10 +29,11 @@ const opt = (zh: string, en: string): Pair => [zh, en]
 let uid = 0
 const id = (p: string) => `econ_${p}_${++uid}`
 
-// ── Basic concepts (14) ──────────────────────────────────────────────────────
+// ── Basic concepts (11) ──────────────────────────────────────────────────────
 const basic: Question[] = []
-// opportunity cost = highest forgone alternative (generated scenarios)
-;([[300, 250], [500, 400], [180, 220], [120, 90], [600, 450], [80, 110]] as [number, number][]).forEach(([a, b], i) => {
+// Opportunity cost — 2 retained numeric calc items (L2-3 "執分位"); the qualitative
+// scenario/stance pool below now forms the majority of the OC bank (V1.0 Pillar 3).
+;([[300, 250], [600, 450]] as [number, number][]).forEach(([a, b], i) => {
   const oc = Math.max(a, b)
   basic.push(q(id('oc'), T.basic, FW.scarcity, i < 3 ? 'medium' : 'hard', 2019 + (i % 5), 3,
     [`某下午只能三選一：方案甲賺 \\$${a}、方案乙賺 \\$${b}，或免費活動。若選免費活動，機會成本是？`,
@@ -40,14 +42,67 @@ const basic: Question[] = []
     [`機會成本只計放棄的「最佳」替代方案（\\$${oc}），不可相加，免費≠零成本。`,
       `Opportunity cost is the single best forgone alternative (\\$${oc}); not a sum, and "free" ≠ zero cost.`]))
 })
+
+// Opportunity cost — qualitative scenario / stance pool (V1.0 Pillar 3: makes the OC
+// bank ≥60% qualitative). Every explanation walks the DSE "highest forgone alternative"
+// logic, sunk-cost exclusion, and the "free ≠ zero cost" trap.
 basic.push(
-  q(id('bc'), T.basic, FW.scarcity, 'medium', 2021, 3,
-    ['一條向原點凸出（concave）的生產可能線 (PPF) 反映？', 'A PPF concave to the origin reflects?'],
-    [opt('機會成本遞增', 'increasing opportunity cost'),
-      opt('機會成本固定', 'constant opportunity cost'),
-      opt('資源可無限增加', 'resources that can grow without limit'),
-      opt('必然生產於線外', 'production must lie outside the curve')],
-    ['凸出的 PPF 表示多產一單位須放棄越來越多另一物，即機會成本遞增。', 'A concave PPF means each extra unit costs ever more of the other good — increasing opportunity cost.']),
+  q(id('ocq'), T.basic, FW.scarcity, 'medium', 2023, 2,
+    ['排隊輪候一間人氣餐廳的時間，由 30 分鐘大增至 2 小時，其他條件不變。「光顧該餐廳」的機會成本會：',
+      'The wait for a popular restaurant jumps from 30 minutes to 2 hours, all else equal. The opportunity cost of dining there:'],
+    [opt('上升——為光顧而放棄的時間（及其最佳用途）增加了', 'rises — the forgone time (and its best alternative use) has increased'),
+      opt('不變——食物的價格沒有改變', 'is unchanged — the price of the food did not change'),
+      opt('下降——等得越耐，越值得光顧', 'falls — the longer the wait, the more worthwhile dining becomes'),
+      opt('為零——排隊不需額外付費', 'is zero — queuing requires no extra payment')],
+    ['機會成本包含非貨幣成本。輪候時間增加，代表你放棄的「時間及其最佳用途」上升，故機會成本上升——即使食物標價不變。',
+      'Opportunity cost includes non-monetary costs. A longer wait means more forgone time (and its best use), so the opportunity cost rises — even though the menu price is unchanged.']),
+  q(id('ocq'), T.basic, FW.scarcity, 'medium', 2022, 2,
+    ['你已花 \\$120 買戲票，看了 20 分鐘覺得很悶。理性決策應如何看待這 \\$120？',
+      'You spent \\$120 on a film ticket; 20 minutes in, it is dull. How should a rational decision treat the \\$120?'],
+    [opt('視為沉沒成本而忽略，只比較「續看」與「離場」的未來成本效益', 'treat it as a sunk cost and ignore it — weigh only the future costs/benefits of staying vs leaving'),
+      opt('因已付款，應坐到散場以免浪費', 'since it is paid, stay to the end so it is not wasted'),
+      opt('把 \\$120 計入「離場」的機會成本', 'add the \\$120 to the opportunity cost of leaving'),
+      opt('要求戲院全額退款', 'demand a full refund from the cinema')],
+    ['\\$120 已付且不可收回，屬沉沒成本，不應影響當下決策。理性上只比較未來：若離場去做更有價值的事，就應離場——「為咗唔嘥」而坐到散場正是沉沒成本謬誤。',
+      'The \\$120 is paid and unrecoverable — a sunk cost that must not sway the choice now. Compare only future value: if leaving frees time for something better, leave. Staying "so it is not wasted" is the sunk-cost fallacy.']),
+  q(id('ocq'), T.basic, FW.scarcity, 'hard', 2023, 3,
+    ['小明週六只能三選一：補習（預期價值 \\$600）、兼職（賺 \\$300）、打波（享受價值 \\$200）。若他選補習，機會成本是：',
+      'On Saturday Ming picks one of: tutoring (value \\$600), a part-time job (\\$300), or basketball (value \\$200). Choosing tutoring, the opportunity cost is:'],
+    [opt('\\$300——放棄選項中價值最高者（兼職）', '\\$300 — the highest-valued forgone option (the job)'),
+      opt('\\$500——放棄的兩個選項價值之和', '\\$500 — the sum of the two forgone options'),
+      opt('\\$600——補習本身的價值', '\\$600 — the value of tutoring itself'),
+      opt('\\$0——補習是最佳選擇，故無成本', '\\$0 — tutoring is the best choice, so there is no cost')],
+    ['機會成本 = 放棄的「單一最佳」替代選項的價值，即兼職 \\$300（不是兩個放棄選項相加，也不是被選中選項本身的價值）。',
+      'Opportunity cost is the value of the single best forgone alternative — the \\$300 job (not the sum of forgone options, nor the value of the chosen option).']),
+  q(id('ocq'), T.basic, FW.scarcity, 'hard', 2021, 3,
+    ['「公立醫院免費，所以病人完全沒有付出機會成本。」此說法：',
+      '"Public hospital care is free, so patients bear no opportunity cost at all." This claim is:'],
+    [opt('錯誤——輪候及康復期所放棄的工作或其他用途，都是機會成本', 'false — the work and other uses given up while waiting and recovering are opportunity costs'),
+      opt('正確——服務不收費，故無成本', 'true — the service is free of charge, so there is no cost'),
+      opt('正確——成本已由政府全數承擔', 'true — the cost has been fully borne by the government'),
+      opt('錯誤——但機會成本只等於藥物的市場價', 'false — but the opportunity cost equals only the market price of the medicine')],
+    ['「免費」只指沒有金錢支出。病人仍放棄了輪候與康復所需的時間及其最佳用途，這些非貨幣代價就是機會成本，故「免費 ≠ 零機會成本」。',
+      '"Free" only means no money is paid. Patients still give up the time (and its best use) spent waiting and recovering — those non-monetary sacrifices are the opportunity cost. So "free" ≠ zero opportunity cost.']),
+  q(id('ocq'), T.basic, FW.scarcity, 'hard', 2022, 4,
+    ['有同學說：「我用政府派發的消費券買嘢，等於免費，冇成本。」從機會成本角度，此說法：',
+      'A student says: "I buy things with the government voucher, so it is free — no cost." From an opportunity-cost view, this is:'],
+    [opt('不正確——消費券用於 A 物，就放棄了用於 B 物的機會，故仍有機會成本', 'incorrect — spending the voucher on A forgoes using it on B, so an opportunity cost remains'),
+      opt('正確——消費券由政府免費派發', 'correct — the voucher was handed out free by the government'),
+      opt('正確——沒有動用自己的現金', 'correct — none of one’s own cash was used'),
+      opt('不正確——但只有當消費券可找贖時才有成本', 'incorrect — but only if the voucher gives change')],
+    ['定義：機會成本是「為得到某物而放棄的最佳替代選項的價值」。消費券雖免費取得，但用途互相排斥——用咗買 A 就放棄咗買 B，故使用消費券仍有機會成本。',
+      'Definition: opportunity cost is the value of the best alternative given up. Although the voucher is free to receive, its uses are mutually exclusive — spending it on A forgoes B — so using it still carries an opportunity cost.']),
+  q(id('ocq'), T.basic, FW.scarcity, 'hard', 2020, 4,
+    ['一公司已投入 \\$500 萬研發，現發現市場前景黯淡。決定是否繼續投產時，這 \\$500 萬應：',
+      'A firm has sunk \\$5M into R&D and now sees a poor market outlook. In deciding whether to continue to production, the \\$5M should be:'],
+    [opt('視為沉沒成本予以忽略，只比較繼續投產的未來成本與預期收益', 'treated as a sunk cost and ignored — compare only the future cost and expected revenue of continuing'),
+      opt('計入「繼續投產」的機會成本', 'counted into the opportunity cost of continuing'),
+      opt('成為繼續投產的理由，以免浪費', 'a reason to continue, so the money is not wasted'),
+      opt('從預期收益中扣除', 'subtracted from the expected revenue')],
+    ['已投入且不可收回的 \\$500 萬是沉沒成本，與未來決策無關，不應計入機會成本，更不應成為「繼續以免浪費」的理由。理性決策只看未來的邊際成本與收益。',
+      'The unrecoverable \\$5M is a sunk cost, irrelevant to the future decision: it should not enter the opportunity cost, nor justify "continuing so the money is not wasted." Rational choice weighs only future marginal cost and benefit.']),
+)
+basic.push(
   q(id('bc'), T.basic, FW.scarcity, 'medium', 2020, 3,
     ['下列哪句屬「規範性陳述」(normative)？', 'Which is a normative statement?'],
     [opt('政府應增加福利開支', 'the government should increase welfare spending'),
@@ -76,20 +131,6 @@ basic.push(
       opt('土地與礦產', 'land and minerals'),
       opt('工人的勞動', 'workers’ labour')],
     ['企業家才能指承擔風險、作決策並統合土地、勞動與資本的能力。', 'Enterprise is the capacity to bear risk, decide and combine land, labour and capital.']),
-  q(id('bc'), T.basic, FW.scarcity, 'hard', 2020, 4,
-    ['若一經濟體目前生產於 PPF 內部，代表？', 'If an economy currently produces inside its PPF, this indicates?'],
-    [opt('資源未充分或低效運用', 'resources are unemployed or used inefficiently'),
-      opt('已達最大產出', 'it has reached maximum output'),
-      opt('技術倒退', 'technological regress'),
-      opt('機會成本為零', 'zero opportunity cost')],
-    ['線內生產代表存在閒置或低效資源，未達生產效率邊界。', 'Producing inside the PPF means idle or inefficient resources — short of the efficiency frontier.']),
-  q(id('bc'), T.basic, FW.scarcity, 'medium', 2023, 3,
-    ['PPF 整條向外移動，最可能由於？', 'The entire PPF shifting outward is most likely due to?'],
-    [opt('技術進步或資源增加', 'technological progress or more resources'),
-      opt('需求上升', 'a rise in demand'),
-      opt('價格下跌', 'a fall in prices'),
-      opt('失業上升', 'rising unemployment')],
-    ['PPF 外移反映生產能力提升，源於資源增加或技術進步。', 'An outward PPF shift reflects greater productive capacity from more resources or better technology.']),
   q(id('bc'), T.basic, FW.scarcity, 'medium', 2022, 3,
     ['「邊際分析」(marginal analysis) 指決策時比較？', 'Marginal analysis means making decisions by comparing?'],
     [opt('多做一單位的額外效益與額外成本', 'the extra benefit and extra cost of one more unit'),
@@ -98,6 +139,33 @@ basic.push(
       opt('沉沒成本', 'sunk costs')],
     ['理性決策在邊際效益 > 邊際成本時繼續，直至兩者相等。', 'Rational choices continue while marginal benefit exceeds marginal cost, stopping where they are equal.']),
 )
+
+// ── Production Possibility Frontier (3) — its own stream, moved OUT of Basic
+// Concepts per the V1.0 academic structure. (PPF illustrates scarcity & opportunity
+// cost, so it keeps the Scarcity & Choice framework but is no longer a "basic" tag.)
+const ppf: Question[] = [
+  q(id('ppf'), T.ppf, FW.scarcity, 'medium', 2021, 3,
+    ['一條向原點凸出（concave）的生產可能線 (PPF) 反映？', 'A PPF concave to the origin reflects?'],
+    [opt('機會成本遞增', 'increasing opportunity cost'),
+      opt('機會成本固定', 'constant opportunity cost'),
+      opt('資源可無限增加', 'resources that can grow without limit'),
+      opt('必然生產於線外', 'production must lie outside the curve')],
+    ['凸出的 PPF 表示多產一單位須放棄越來越多另一物，即機會成本遞增。', 'A concave PPF means each extra unit costs ever more of the other good — increasing opportunity cost.']),
+  q(id('ppf'), T.ppf, FW.scarcity, 'hard', 2020, 4,
+    ['若一經濟體目前生產於 PPF 內部，代表？', 'If an economy currently produces inside its PPF, this indicates?'],
+    [opt('資源未充分或低效運用', 'resources are unemployed or used inefficiently'),
+      opt('已達最大產出', 'it has reached maximum output'),
+      opt('技術倒退', 'technological regress'),
+      opt('機會成本為零', 'zero opportunity cost')],
+    ['線內生產代表存在閒置或低效資源，未達生產效率邊界。', 'Producing inside the PPF means idle or inefficient resources — short of the efficiency frontier.']),
+  q(id('ppf'), T.ppf, FW.scarcity, 'medium', 2023, 3,
+    ['PPF 整條向外移動，最可能由於？', 'The entire PPF shifting outward is most likely due to?'],
+    [opt('技術進步或資源增加', 'technological progress or more resources'),
+      opt('需求上升', 'a rise in demand'),
+      opt('價格下跌', 'a fall in prices'),
+      opt('失業上升', 'rising unemployment')],
+    ['PPF 外移反映生產能力提升，源於資源增加或技術進步。', 'An outward PPF shift reflects greater productive capacity from more resources or better technology.']),
+]
 
 // ── Demand & supply (18) ─────────────────────────────────────────────────────
 const ds: Question[] = []
@@ -686,11 +754,12 @@ trade.push(
 )
 
 export const economicsQuestions: Question[] = [
-  ...basic, ...ds, ...elas, ...firm, ...structure, ...failure, ...macro, ...trade,
+  ...basic, ...ppf, ...ds, ...elas, ...firm, ...structure, ...failure, ...macro, ...trade,
 ]
 
 export const economicsTopics: Topic[] = topicList([
   { topic: T.basic, fw: FW.scarcity, count: basic.length },
+  { topic: T.ppf, fw: FW.scarcity, count: ppf.length },
   { topic: T.ds, fw: FW.market, count: ds.length },
   { topic: T.elas, fw: FW.market, count: elas.length },
   { topic: T.firm, fw: FW.production, count: firm.length },

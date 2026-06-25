@@ -43,6 +43,7 @@ export default function DashboardPage() {
   const [stats, setStats] = useState<ProgressStats | null>(null)
   const [topics, setTopics] = useState<TopicStatEntry[]>([])
   const [modalOpen, setModalOpen] = useState(false)
+  const [confirmReset, setConfirmReset] = useState(false)
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
@@ -306,17 +307,30 @@ export default function DashboardPage() {
 
         {/* Reset */}
         <div className="text-center">
-          <button
-            onClick={() => {
-              if (confirm(d.resetConfirm)) {
-                clearProgress()
-                setStats(computeStats([]))
-              }
-            }}
-            className="inline-flex items-center gap-2 text-xs text-slate-600 hover:text-slate-400 transition-colors"
-          >
-            <RotateCcw size={13} /> {d.resetBtn}
-          </button>
+          {confirmReset ? (
+            <div className="inline-flex items-center gap-3 text-xs flex-wrap justify-center">
+              <span className="text-slate-400">{d.resetConfirm}</span>
+              <button
+                onClick={() => { clearProgress(); setStats(computeStats([])); setConfirmReset(false) }}
+                className="font-medium text-red-400 hover:text-red-300"
+              >
+                {en ? 'Confirm reset' : '確定清除'}
+              </button>
+              <button
+                onClick={() => setConfirmReset(false)}
+                className="text-slate-500 hover:text-slate-300"
+              >
+                {en ? 'Cancel' : '取消'}
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setConfirmReset(true)}
+              className="inline-flex items-center gap-2 text-xs text-slate-600 hover:text-slate-400 transition-colors"
+            >
+              <RotateCcw size={13} /> {d.resetBtn}
+            </button>
+          )}
         </div>
       </div>
 

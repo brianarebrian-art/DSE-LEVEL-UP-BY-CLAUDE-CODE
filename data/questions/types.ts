@@ -18,8 +18,10 @@ export interface MCQuestion {
   options: string[]
   optionsEn?: string[]
   correctIndex: number
-  explanation: string
+  explanation: string // Path A — formal HKEAA-style marking-scheme reasoning
   explanationEn?: string
+  mcHack?: string // Path B — optional "名師速解 / MC Hack" exam shortcut
+  mcHackEn?: string
   marks: number
 }
 

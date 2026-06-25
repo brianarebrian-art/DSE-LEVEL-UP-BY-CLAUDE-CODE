@@ -46,6 +46,7 @@ export default function ResultPage() {
   const [result, setResult] = useState<StoredResult | null>(null)
   const [gradeResult, setGradeResult] = useState<GradeResult | null>(null)
   const [showBadge, setShowBadge] = useState(false)
+  const [shared, setShared] = useState(false)
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
@@ -238,15 +239,16 @@ export default function ResultPage() {
           onClick={() => {
             const text = `${r.shareTextA}${subjName}${r.shareTextB}${result.score}/${result.total}${r.shareTextC}${gradeResult.grade}${r.shareTextD}`
             if (navigator.share) {
-              navigator.share({ text })
+              navigator.share({ text }).catch(() => {})
             } else {
               navigator.clipboard.writeText(text)
-              alert(r.shareCopied)
+              setShared(true)
+              setTimeout(() => setShared(false), 1800)
             }
           }}
           className="w-full flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 border border-slate-800 py-3 rounded-xl transition-all text-sm"
         >
-          <Share2 size={14} /> {r.shareScore}
+          <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
 
         {/* Disclaimer */}
