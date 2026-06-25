@@ -28,14 +28,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     // emails get Premium automatically (no manual approval). To restrict who may sign
     // in again, add a `signIn({ user })` callback that returns false to deny.
     //
-    // `profile` is only present on the initial sign-in, so we compute the entitlement
-    // once and persist it in the JWT. The server is the source of truth — the client
-    // never decides its own Premium status.
+    // `isPremium` is recomputed on EVERY token refresh — not just at sign-in — so a
+    // server-side entitlement change (e.g. an email added to ALLOWED_EMAILS and the
+    // site redeployed) takes effect on the user's next session refresh, with no forced
+    // sign-out/in. On the initial sign-in `profile` carries the verified-email flag; on
+    // later refreshes we reuse the email already stored on the token. (Google never
+    // falsely reports email_verified, so an undefined flag on refresh is safe — see
+    // isSchoolEmail.) The server stays the source of truth; the client never decides
+    // its own Premium status.
     async jwt({ token, profile }) {
-      if (profile) {
-        const p = profile as { email?: string | null; email_verified?: boolean }
-        token.isPremium = resolveIsPremium(p.email, p.email_verified)
-      }
+      const p = profile as { email?: string | null; email_verified?: boolean } | undefined
+      const email = p?.email ?? token.email
+      token.isPremium = resolveIsPremium(email, p?.email_verified)
       return token
     },
     async session({ session, token }) {
