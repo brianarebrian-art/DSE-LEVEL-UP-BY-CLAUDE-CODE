@@ -17,7 +17,8 @@ import {
 import { PAYMENT } from '@/lib/payment'
 
 export default function UpgradePage() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
+  const en = locale === 'en'
   const p = t.premium
   const { isPremium, authEnabled } = usePlan()
   const n = getActiveSubjects().length
@@ -35,6 +36,41 @@ export default function UpgradePage() {
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-3">{p.pageTitle}</h1>
           <p className="text-slate-400 text-lg">{p.pageSubtitle.replace('{n}', String(n))}</p>
         </div>
+
+        {!alreadyPremium && (
+          /* 反補習社 hero — the 每日一蚊 mission, framed against cram-school pricing.
+             Cram rates are public market ballparks; our price is the real yearly fee
+             ÷ 365 — an honest contrast, not an invented "saved $X" figure. */
+          <div className="bg-gradient-to-br from-amber-500/10 to-slate-900 border border-amber-500/30 rounded-2xl p-6 mb-8">
+            <div className="text-center mb-5">
+              <div className="text-2xl sm:text-3xl font-extrabold mb-2">
+                {en ? 'HK$1 a day. Stop getting fleeced by tutoring centres.' : '每日一蚊，唔再俾補習社割韭菜。'}
+              </div>
+              <p className="text-sm text-slate-400 max-w-xl mx-auto leading-relaxed">
+                {en
+                  ? 'The same exam-cracking logic the star tutors sell — at a price every student can afford. That is the whole point.'
+                  : '補習天王賣嘅嗰套拆題邏輯，我哋一樣有 —— 但價錢係人人讀得起。呢個先係重點。'}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-slate-900/60 border border-slate-700/60 rounded-xl p-4 text-center">
+                <div className="text-xs text-slate-500 mb-1">{en ? 'Cram school' : '補習社'}</div>
+                <div className="text-xl font-extrabold text-slate-300">
+                  HK$200<span className="text-sm font-normal text-slate-500">{en ? '+ / lesson' : '+ / 堂'}</span>
+                </div>
+                <div className="text-[11px] text-slate-600 mt-1">{en ? 'one subject · one session' : '一科 · 一堂'}</div>
+              </div>
+              <div className="bg-amber-500/10 border border-amber-500/40 rounded-xl p-4 text-center">
+                <div className="text-xs text-amber-400/80 mb-1">DSE Level Up</div>
+                <div className="text-xl font-extrabold text-amber-400">
+                  ≈ HK${(PREMIUM_PRICE_YEARLY_HKD / 365).toFixed(1)}
+                  <span className="text-sm font-normal text-amber-300/70">{en ? ' / day' : ' / 日'}</span>
+                </div>
+                <div className="text-[11px] text-slate-500 mt-1">{en ? 'all 25 subjects · unlimited' : '全 25 科 · 無限次'}</div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {alreadyPremium && (
           <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6 text-center text-amber-300 font-medium">

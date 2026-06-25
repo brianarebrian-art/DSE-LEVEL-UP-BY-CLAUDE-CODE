@@ -38,7 +38,7 @@ const pw = (c: number, e: number): string => {
 // ── Differentiation (24) ─────────────────────────────────────────────────────
 const diff: Question[] = []
 ;([[2, 3], [3, 2]] as [number, number][]).forEach(([a, n], i) => {
-  diff.push(q(id('dpow'), T.diff, FW.rate, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 2,
+  diff.push(q(id('dpow'), T.diff, FW.rate, 'medium', 2019 + (i % 5), 2,
     [`求 $\\frac{d}{dx}(${pw(a, n)})$。`, `Find $\\frac{d}{dx}(${pw(a, n)})$.`],
     [optm(pw(a * n, n - 1)), optm(pw(a * n, n)), optm(pw(a, n - 1)), optm(pw(a, n + 1))],
     [`冪法則：$\\frac{d}{dx}(${pw(a, n)}) = ${a}\\cdot${n}\\,${pw(1, n - 1)} = ${pw(a * n, n - 1)}$。`,
@@ -103,7 +103,7 @@ const integ: Question[] = []
 ;([[2, 3], [2, 6]] as [number, number][]).forEach(([n, a], i) => {
   // ∫ a x^n dx = a/(n+1) x^{n+1} + C   (a chosen divisible by n+1)
   const c = a / (n + 1)
-  integ.push(q(id('ipow'), T.integ, FW.transform, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 3,
+  integ.push(q(id('ipow'), T.integ, FW.transform, 'medium', 2019 + (i % 5), 3,
     [`求 $\\int ${pw(a, n)}\\,dx$。`, `Find $\\int ${pw(a, n)}\\,dx$.`],
     [optm(`${pw(c, n + 1)} + C`), optm(`${pw(a, n + 1)} + C`), optm(`${pw(c, n)} + C`), optm(`${pw(a * n, n - 1)} + C`)],
     [`冪法則積分：$\\int ${pw(a, n)}\\,dx = \\frac{${a}}{${n + 1}}${pw(1, n + 1)} + C = ${pw(c, n + 1)} + C$。`,
@@ -198,7 +198,7 @@ limits.push(
 const matrices: Question[] = []
 ;([[2, 1, 3, 4], [3, 2, 1, 5], [4, 1, 2, 3], [2, 3, 1, 4], [5, 2, 1, 3], [3, 1, 4, 2], [2, 2, 1, 5], [4, 3, 2, 5]] as [number, number, number, number][]).forEach(([a, b, c, d], i) => {
   const det = a * d - b * c
-  matrices.push(q(id('det'), T.matrices, FW.decompose, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 3,
+  matrices.push(q(id('det'), T.matrices, FW.decompose, 'medium', 2019 + (i % 5), 3,
     [`求 $\\det\\begin{pmatrix} ${a} & ${b} \\\\ ${c} & ${d} \\end{pmatrix}$。`, `Find $\\det\\begin{pmatrix} ${a} & ${b} \\\\ ${c} & ${d} \\end{pmatrix}$.`],
     [optm(`${det}`), optm(`${a * d + b * c}`), optm(`${b * c - a * d}`), optm(`${a * d}`)],
     [`$\\det = ad - bc = (${a})(${d}) - (${b})(${c}) = ${det}$。`,
@@ -273,14 +273,14 @@ const vectors: Question[] = []
 ;([[3, 4, 1, 2], [1, 2, 4, 3], [2, 1, 3, 5], [5, 2, 3, 1], [2, 3, 4, 1], [4, 1, 2, 5]] as [number, number, number, number][]).forEach(([ax, ay, bx, by], i) => {
   // params have ax≠ay and bx≠by so the cross-term distractor ≠ the true dot product
   const dot = ax * bx + ay * by
-  vectors.push(q(id('dot'), T.vectors, FW.geometry, i < 3 ? 'easy' : 'medium', 2019 + (i % 5), 3,
+  vectors.push(q(id('dot'), T.vectors, FW.geometry, 'medium', 2019 + (i % 5), 3,
     [`設 $\\vec{a}=(${ax}, ${ay})$、$\\vec{b}=(${bx}, ${by})$，求 $\\vec{a}\\cdot\\vec{b}$。`, `Given $\\vec{a}=(${ax}, ${ay})$ and $\\vec{b}=(${bx}, ${by})$, find $\\vec{a}\\cdot\\vec{b}$.`],
     [optm(`${dot}`), optm(`${ax * bx}`), optm(`${ax * by + ay * bx}`), optm(`${(ax + ay) * (bx + by)}`)],
     [`點積 $= ${ax}\\cdot${bx} + ${ay}\\cdot${by} = ${dot}$。`, `Dot product $= ${ax}\\cdot${bx} + ${ay}\\cdot${by} = ${dot}$.`]))
 })
 ;([[3, 4], [6, 8], [5, 12], [8, 6], [9, 12], [7, 24]] as [number, number][]).forEach(([x, y], i) => {
   const mag = Math.sqrt(x * x + y * y)
-  vectors.push(q(id('mag'), T.vectors, FW.geometry, i < 3 ? 'easy' : 'medium', 2020 + (i % 4), 3,
+  vectors.push(q(id('mag'), T.vectors, FW.geometry, 'medium', 2020 + (i % 4), 3,
     [`求向量 $(${x}, ${y})$ 的模長 $|\\vec{v}|$。`, `Find the magnitude $|\\vec{v}|$ of $(${x}, ${y})$.`],
     [optm(`${rnd(mag)}`), optm(`${x + y}`), optm(`${x * x + y * y}`), optm(`${rnd(mag + 1)}`)],
     [`$|\\vec{v}| = \\sqrt{${x}^2 + ${y}^2} = \\sqrt{${x * x + y * y}} = ${rnd(mag)}$。`,

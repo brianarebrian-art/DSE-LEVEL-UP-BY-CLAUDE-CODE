@@ -71,15 +71,15 @@ function quad(n: number, r1: number, r2: number, year: number, diff: 'easy' | 'm
       [`$${root(r1)}$ 或 $${root(r2)}$`, `$${root(r1)}$ or $${root(r2)}$`],
       [`$${root(-r1)}$ 或 $${root(-r2)}$`, `$${root(-r1)}$ or $${root(-r2)}$`],
       [`$${root(r1)}$ 或 $${root(-r2)}$`, `$${root(r1)}$ or $${root(-r2)}$`],
-      [`$${root(r1 + 1)}$ 或 $${root(r2 - 1)}$`, `$${root(r1 + 1)}$ or $${root(r2 - 1)}$`],
+      [`$${root(-r1)}$ 或 $${root(r2)}$`, `$${root(-r1)}$ or $${root(r2)}$`],
     ],
-    [`因式分解為 $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$，故 $x = ${r1}$ 或 $x = ${r2}$。把根代回原方程可驗證。`,
-      `Factorise as $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$, so $x = ${r1}$ or $x = ${r2}$. Substituting the roots back verifies them.`])
+    [`因式分解為 $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$。陷阱：由 $(x${cTerm(-r1)}) = 0$ 移項，$x = ${r1}$（要變號），唔係 $${-r1}$。故 $x = ${r1}$ 或 $x = ${r2}$ —— 四個選項全部係符號陷阱，要逐個根驗清楚。`,
+      `Factorise as $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$. Trap: $(x${cTerm(-r1)}) = 0$ gives $x = ${r1}$ (flip the sign as you move it across), NOT $${-r1}$. So $x = ${r1}$ or $x = ${r2}$ — every distractor here is a sign trap, so check each root.`])
 }
 const quadParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [1, 3, 2023, 'easy'], [2, 5, 2022, 'easy'], [-1, 4, 2021, 'easy'], [-2, 3, 2023, 'medium'],
-  [-3, -5, 2020, 'medium'], [3, 7, 2022, 'medium'], [-4, 6, 2021, 'medium'], [2, 8, 2019, 'easy'],
-  [-6, 1, 2023, 'medium'], [4, 9, 2020, 'hard'], [-7, -2, 2022, 'hard'], [5, -3, 2021, 'medium'],
+  [1, 3, 2023, 'medium'], [2, 5, 2022, 'medium'], [-1, 4, 2021, 'medium'], [-2, 3, 2023, 'hard'],
+  [-3, -5, 2020, 'hard'], [3, 7, 2022, 'medium'], [-4, 6, 2021, 'hard'], [2, 8, 2019, 'medium'],
+  [-6, 1, 2023, 'hard'], [4, 9, 2020, 'hard'], [-7, -2, 2022, 'hard'], [5, -3, 2021, 'hard'],
 ]
 const quadQs = quadParams.map(([r1, r2, y, d], i) => quad(i + 1, r1, r2, y, d))
 
@@ -102,9 +102,9 @@ function deriv(n: number, a: number, b: number, c: number, year: number, diff: '
       `By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $${dy}$. The constant term differentiates to 0.`])
 }
 const derivParams: [number, number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [1, -3, 4, 2023, 'easy'], [2, -6, 3, 2022, 'medium'], [1, 2, -5, 2021, 'easy'], [3, -1, 2, 2023, 'medium'],
-  [2, 5, -1, 2020, 'medium'], [1, -4, -7, 2019, 'medium'], [4, 3, 6, 2022, 'hard'], [2, -7, 1, 2021, 'medium'],
-  [3, 2, -4, 2020, 'medium'], [1, -5, 8, 2023, 'hard'],
+  [1, -3, 4, 2023, 'medium'], [2, -6, 3, 2022, 'hard'], [1, 2, -5, 2021, 'medium'], [3, -1, 2, 2023, 'hard'],
+  [2, 5, -1, 2020, 'hard'], [1, -4, -7, 2019, 'medium'], [4, 3, 6, 2022, 'hard'], [2, -7, 1, 2021, 'hard'],
+  [3, 2, -4, 2020, 'hard'], [1, -5, 8, 2023, 'hard'],
 ]
 const derivQs = derivParams.map(([a, b, c, y, d], i) => deriv(i + 1, a, b, c, y, d))
 
@@ -186,9 +186,9 @@ function maxParab(n: number, a: number, h: number, k: number, year: number, diff
 }
 // params chosen so {k, h, -k, c} are all distinct (no duplicate options).
 const funcParams: [number, number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [-1, 2, 5, 2023, 'medium'], [-2, 3, 4, 2022, 'medium'], [1, -1, -4, 2021, 'medium'], [-1, 4, 10, 2020, 'hard'],
-  [2, 2, -3, 2023, 'medium'], [-3, 1, 6, 2019, 'easy'], [1, 4, 2, 2022, 'medium'], [-2, -1, 7, 2021, 'hard'],
-  [1, 2, 3, 2020, 'easy'], [-1, -2, 4, 2022, 'medium'],
+  [-1, 2, 5, 2023, 'medium'], [-2, 3, 4, 2022, 'hard'], [1, -1, -4, 2021, 'medium'], [-1, 4, 10, 2020, 'hard'],
+  [2, 2, -3, 2023, 'hard'], [-3, 1, 6, 2019, 'medium'], [1, 4, 2, 2022, 'medium'], [-2, -1, 7, 2021, 'hard'],
+  [1, 2, 3, 2020, 'medium'], [-1, -2, 4, 2022, 'hard'],
 ]
 const funcQs = funcParams.map(([a, h, k, y, d], i) => maxParab(i + 1, a, h, k, y, d))
 

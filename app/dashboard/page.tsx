@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Flame, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles } from 'lucide-react'
+import { Flame, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -15,7 +15,6 @@ import { gradeBgColors } from '@/lib/grading'
 import { useLocale } from '@/lib/i18n'
 import { usePlan } from '@/lib/usePlan'
 import { FREE_ATTEMPTS_TOTAL } from '@/lib/entitlements'
-import { getExp, rankFor, nextRankAt, getThemes, getActiveTheme, setActiveTheme } from '@/lib/gamify'
 import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
 import UpgradeModal from '@/components/UpgradeModal'
@@ -42,19 +41,13 @@ export default function DashboardPage() {
   const { isPremium, signedIn } = usePlan()
   const { version } = useSync() // re-read local progress after a cloud pull/merge
   const [stats, setStats] = useState<ProgressStats | null>(null)
-  const [exp, setExp] = useState(0)
   const [topics, setTopics] = useState<TopicStatEntry[]>([])
-  const [themes, setThemes] = useState<string[]>([])
-  const [activeTheme, setActive] = useState('default')
   const [modalOpen, setModalOpen] = useState(false)
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
     setStats(computeStats(loadAttempts()))
-    setExp(getExp())
     setTopics(getTopicStats())
-    setThemes(getThemes())
-    setActive(getActiveTheme())
   }, [version])
 
   if (!stats) {
@@ -95,13 +88,13 @@ export default function DashboardPage() {
     )
   }
 
-  const rank = rankFor(exp, isPremium)
-  const nextAt = nextRankAt(exp)
   // Radar axes: the user's most-practised topics, each scored by win rate (0–1).
   const radarAxes = [...topics]
     .sort((a, b) => b.total - a.total)
     .slice(0, 6)
     .map((e) => ({ label: e.label, value: winRate(e) }))
+  // ROI: topics the user has a solid grip on (≥70% win rate over a real sample).
+  const conquered = topics.filter((e) => e.total >= 4 && winRate(e) >= 0.7).length
   const onRepair = () => {
     if (!isPremium) {
       setModalOpen(true)
@@ -164,51 +157,38 @@ export default function DashboardPage() {
           ))}
         </div>
 
-        {/* 弱項殲滅大腦 — rank, radar & repair worksheet */}
+        {/* 高效 ROI — replaces the EXP/rank vanity meter with honest money-and-time
+            framing tied to the 每日一蚊 mission (no fabricated peer percentiles). */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-10">
-          <div className="flex items-center justify-between gap-3 mb-5 flex-wrap">
+          <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
             <div>
-              <div className="text-xs text-slate-500 mb-1">{en ? 'Rank' : '戰力稱號'}</div>
-              <div className="text-xl font-extrabold flex items-center gap-2 flex-wrap">
-                <span className={rank.cls}>{en ? rank.en : rank.zh}</span>
-                <span className="text-xs font-normal text-slate-500">EXP {exp.toLocaleString()}</span>
+              <div className="text-xs text-slate-500 mb-1">{en ? 'Efficiency ROI' : '高效溫習 ROI'}</div>
+              <div className="text-xl font-extrabold">
+                {en ? 'Every drill, a real return' : '每一卷，都係實打實嘅回報'}
               </div>
             </div>
-            {themes.includes('cyber') && (
-              <div className="flex items-center gap-1.5 text-xs">
-                <span className="text-slate-500">{en ? 'Theme' : '主題'}</span>
-                {(['default', 'cyber'] as const).map((th) => (
-                  <button
-                    key={th}
-                    onClick={() => { setActiveTheme(th); setActive(th) }}
-                    className={`px-2.5 py-1 rounded-lg border transition-colors ${
-                      activeTheme === th
-                        ? 'border-amber-500 text-amber-400 bg-amber-500/10'
-                        : 'border-slate-700 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    {th === 'default' ? (en ? 'Default' : '預設') : 'Cyberpunk'}
-                  </button>
-                ))}
-              </div>
-            )}
+            <span className="inline-flex items-center gap-1.5 text-xs text-emerald-300 bg-emerald-400/10 border border-emerald-400/20 px-3 py-1.5 rounded-full">
+              <Coins size={13} /> {en ? '≈ HK$1 / day · vs cram HK$200+/lesson' : '每日 ≈ HK$1 · 補習社一堂 HK$200+'}
+            </span>
           </div>
 
-          {nextAt !== null && (
-            <div className="mb-6">
-              <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-amber-500 to-orange-400 rounded-full"
-                  style={{ width: `${Math.min(100, Math.round((exp / nextAt) * 100))}%` }}
-                />
-              </div>
-              <div className="text-[11px] text-slate-500 mt-1">
-                {en
-                  ? `${(nextAt - exp).toLocaleString()} EXP to the next rank`
-                  : `距離下一段位仲爭 ${(nextAt - exp).toLocaleString()} EXP`}
-              </div>
+          <div className="grid grid-cols-3 gap-3 mb-6">
+            <div className="bg-slate-800/40 rounded-xl p-4 text-center">
+              <Crosshair size={16} className="text-amber-400 mx-auto mb-2" />
+              <div className="text-2xl font-extrabold">{conquered}</div>
+              <div className="text-[11px] text-slate-500 mt-1">{en ? 'Blind spots conquered' : '攻克思維盲點'}</div>
             </div>
-          )}
+            <div className="bg-slate-800/40 rounded-xl p-4 text-center">
+              <BookOpen size={16} className="text-sky-400 mx-auto mb-2" />
+              <div className="text-2xl font-extrabold">{stats.totalQuestions}</div>
+              <div className="text-[11px] text-slate-500 mt-1">{en ? 'Questions drilled' : '已操練題數'}</div>
+            </div>
+            <div className="bg-slate-800/40 rounded-xl p-4 text-center">
+              <Flame size={16} className="text-orange-400 mx-auto mb-2" />
+              <div className="text-2xl font-extrabold">{stats.activeDays}</div>
+              <div className="text-[11px] text-slate-500 mt-1">{en ? 'Days invested' : '自主溫習日數'}</div>
+            </div>
+          </div>
 
           <div className="grid sm:grid-cols-2 gap-6 items-center">
             <div>

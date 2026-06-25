@@ -12,13 +12,8 @@ import { recordAttempt } from '@/lib/progress'
 import { incrementGlobalAttemptsUsed } from '@/lib/freeUsage'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
-import { touchStreak, addExp, EXP_PER_QUESTION, rollGacha, unlockTheme, setActiveTheme } from '@/lib/gamify'
-import { playCorrect, playWrong, playCombo, playHell, playJackpot, isMuted, setMuted } from '@/lib/sfx'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Volume2, VolumeX } from 'lucide-react'
-
-// Combo milestones that fire the on-screen COMBO ×N effect + zap SFX.
-const COMBO_MILESTONES = new Set([3, 5, 10, 15, 20, 30])
+import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -46,8 +41,10 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
 }
 
-// DSE difficulty mix for a practice run: 30% easy / 50% medium / 20% hard.
-const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.3, medium: 0.5, hard: 0.2 }
+// 地獄模式 difficulty mix: 10% easy / 40% medium / 50% hard — biased toward each
+// bank's hardest questions (pickByDifficulty tops up from what's left if a bank is
+// thin on hard ones, so it never returns fewer than it can).
+const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.1, medium: 0.4, hard: 0.5 }
 
 // Pick `size` questions from a recency-ordered pool honouring the 3:5:2 mix.
 // `ordered` is already in preference order (unseen first, then longest-ago-seen);
@@ -186,21 +183,6 @@ export default function PracticeSession({
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   const [elapsed, setElapsed] = useState(0)
 
-  // Dopamine engine: in-session combo, the transient COMBO ×N flash, the 5% gacha
-  // jackpot toast, and a mute toggle.
-  const [combo, setCombo] = useState(0)
-  const [comboFx, setComboFx] = useState<number | null>(null)
-  const [jackpot, setJackpot] = useState(false)
-  const [muted, setMutedState] = useState(false)
-  useEffect(() => {
-    setMutedState(isMuted())
-  }, [])
-  useEffect(() => {
-    if (comboFx === null) return
-    const id = setTimeout(() => setComboFx(null), 1100)
-    return () => clearTimeout(id)
-  }, [comboFx])
-
   // Show the English string when the UI is in English and a translation exists;
   // otherwise fall back to the Chinese original (so untranslated subjects still work).
   const tr = useCallback(
@@ -226,32 +208,9 @@ export default function PracticeSession({
   const selectOption = useCallback(
     (zh: string) => {
       if (answerState !== null || !currentQ) return
-      const isCorrect = zh === currentQ.correctZh
-      setAnswerState({ selectedZh: zh, isCorrect })
-
-      if (!isCorrect) {
-        setCombo(0)
-        playWrong()
-        return
-      }
-      const newCombo = combo + 1
-      setCombo(newCombo)
-      const hell = currentQ.difficulty === 'hard'
-      if (COMBO_MILESTONES.has(newCombo)) {
-        setComboFx(newCombo)
-        playCombo(newCombo)
-      } else if (hell) {
-        playHell()
-      } else {
-        playCorrect()
-      }
-      // 5% gacha drop for nailing a 🔴 hell-level question → unlock the cyber theme.
-      if (hell && rollGacha(0.05) && unlockTheme('cyber')) {
-        setJackpot(true)
-        playJackpot()
-      }
+      setAnswerState({ selectedZh: zh, isCorrect: zh === currentQ.correctZh })
     },
-    [answerState, currentQ, combo]
+    [answerState, currentQ]
   )
 
   const next = useCallback(() => {
@@ -287,9 +246,7 @@ export default function PracticeSession({
         elapsed,
         timestamp: Date.now(),
       })
-      // Gamification: advance the daily streak, bank EXP, update the weakness tally.
-      touchStreak()
-      addExp(totalQ * EXP_PER_QUESTION)
+      // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
       // Free users: a completed run counts against their platform-wide quota.
       if (countsAgainstFreeQuota) incrementGlobalAttemptsUsed()
@@ -326,45 +283,9 @@ export default function PracticeSession({
 
   return (
     <div className="min-h-screen px-4 py-10">
-      {/* Combo flash */}
-      {comboFx !== null && (
-        <div className="fixed inset-x-0 top-24 z-40 flex justify-center pointer-events-none">
-          <div className="animate-combo text-4xl sm:text-5xl font-extrabold text-amber-400 drop-shadow-[0_0_12px_rgba(245,158,11,0.7)]">
-            COMBO ×{comboFx} 🔥
-          </div>
-        </div>
-      )}
-
-      {/* Gacha jackpot toast */}
-      {jackpot && (
-        <div className="fixed inset-x-0 bottom-6 z-50 flex justify-center px-4">
-          <div className="animate-jackpot bg-slate-900 border border-amber-500/50 rounded-2xl px-5 py-4 max-w-sm w-full shadow-2xl text-center">
-            <div className="text-2xl mb-1">🎉🎰</div>
-            <div className="font-bold text-amber-400 mb-1">{tr('隱藏彩蛋解鎖！', 'Easter egg unlocked!')}</div>
-            <p className="text-xs text-slate-400 mb-3">
-              {tr('你撼低咗地獄題，抽中 5% 隱藏主題：Cyberpunk 黑客界面。', 'You cracked a hell question and hit the 5% drop: the Cyberpunk theme.')}
-            </p>
-            <div className="flex gap-2">
-              <button
-                onClick={() => { setActiveTheme('cyber'); setJackpot(false) }}
-                className="flex-1 bg-amber-500 hover:bg-amber-400 text-black font-bold py-2 rounded-lg text-sm"
-              >
-                {tr('即刻試', 'Try it')}
-              </button>
-              <button
-                onClick={() => setJackpot(false)}
-                className="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-sm"
-              >
-                {tr('遲啲', 'Later')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className="max-w-2xl mx-auto">
 
-        {/* Subject label + weakness badge + mute */}
+        {/* Subject label + weakness badge */}
         <div className="flex items-center gap-2 mb-3 text-sm">
           {subjectMeta && (
             <>
@@ -377,14 +298,6 @@ export default function PracticeSession({
               🛠️ {tr('弱項修復卷', 'Repair worksheet')}
             </span>
           )}
-          <button
-            onClick={() => { const m = !muted; setMuted(m); setMutedState(m) }}
-            className="ml-auto text-slate-500 hover:text-slate-300 transition-colors"
-            title={muted ? tr('開音效', 'Unmute') : tr('靜音', 'Mute')}
-            aria-label="toggle sound"
-          >
-            {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-          </button>
         </div>
 
         {/* Progress bar */}
@@ -406,7 +319,7 @@ export default function PracticeSession({
         </div>
 
         {/* Question card */}
-        <div className={`bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-4 ${answerState && !answerState.isCorrect ? 'animate-shake' : 'animate-slide-up'}`}>
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-4 animate-slide-up">
           {/* Meta */}
           <div className="flex items-center gap-3 mb-6">
             <span className="inline-flex items-center gap-1.5 text-xs text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full">
@@ -474,32 +387,38 @@ export default function PracticeSession({
         {/* Feedback + Next */}
         {answerState !== null && (
           <div className="animate-slide-up">
-            {/* Feedback box */}
-            <div
-              className={`rounded-2xl p-5 mb-4 border ${
-                answerState.isCorrect
-                  ? 'bg-green-500/10 border-green-500/30'
-                  : 'bg-red-500/10 border-red-500/30'
-              }`}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                {answerState.isCorrect ? (
-                  <>
-                    <CheckCircle size={18} className="text-green-400" />
-                    <span className="text-green-400 font-semibold">{t.practice.correct}</span>
-                  </>
-                ) : (
-                  <>
-                    <XCircle size={18} className="text-red-400" />
-                    <span className="text-red-400 font-semibold">{t.practice.wrong}</span>
-                  </>
-                )}
+            {answerState.isCorrect ? (
+              /* Correct — calm acknowledgement, no fanfare. */
+              <div className="rounded-2xl p-5 mb-4 border bg-green-500/10 border-green-500/30">
+                <div className="flex items-center gap-2 mb-2">
+                  <CheckCircle size={18} className="text-green-400" />
+                  <span className="text-green-400 font-semibold">{t.practice.correct}</span>
+                </div>
+                <div className="flex items-start gap-1.5 text-sm text-slate-400 leading-relaxed">
+                  <Brain size={14} className="text-amber-400 shrink-0 mt-0.5" />
+                  <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                </div>
               </div>
-              <div className="flex items-start gap-1.5 text-sm text-slate-400 leading-relaxed">
-                <Brain size={14} className="text-amber-400 shrink-0 mt-0.5" />
-                <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+            ) : (
+              /* Wrong → reframed as 思維逆襲解密: the error IS the lesson, not a failure.
+                 Calm amber insight tone — no red shaming, no shake. */
+              <div className="rounded-2xl p-5 mb-4 border bg-amber-500/10 border-amber-500/30">
+                <div className="flex items-center gap-2 mb-1">
+                  <Brain size={18} className="text-amber-400" />
+                  <span className="text-amber-300 font-semibold">{tr('🔍 思維逆襲解密', '🔍 Mind-flip decode')}</span>
+                </div>
+                <p className="text-xs text-slate-500 mb-3 leading-relaxed">
+                  {tr(
+                    '唔緊要 —— 睇穿你今次中咗嘅思維盲區，先係真正攞分嘅一刻。',
+                    'No stress — seeing through the blind spot you just hit is exactly where marks are won.',
+                  )}
+                </p>
+                <div className="text-sm text-slate-300 leading-relaxed border-t border-amber-500/15 pt-3">
+                  <span className="text-amber-400 text-xs font-bold mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
+                  <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Next button */}
             <button

@@ -10,7 +10,6 @@ const activeSubjects = getActiveSubjects()
 const totalSubjects = subjects.length
 
 const statNums = ['10', '120+', '25']
-const testimonialNames = ['Marco L.', 'Rachel C.', 'Jayden K.']
 
 export default function HomePage() {
   const { t, locale } = useLocale()
@@ -162,18 +161,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF ── */}
-      <section className="py-12 px-4 bg-slate-900/30">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-xl font-bold text-center mb-8 text-slate-300">{h.proofTitle}</h2>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {h.testimonials.map((t, i) => (
-              <div key={i} className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-                <p className="text-slate-400 text-sm leading-relaxed mb-4">&ldquo;{t.quote}&rdquo;</p>
-                <div className="text-sm font-medium text-slate-200">{testimonialNames[i]}</div>
-                <div className="text-xs text-amber-500">{t.grade}</div>
-              </div>
-            ))}
+      {/* ── MISSION: anti-cram, 每日一蚊, education equity ──
+          Replaces invented testimonials (Marco L. etc.) with the real reason the
+          product exists — no fabricated names, grades, or social proof. */}
+      <section className="py-16 px-4 bg-slate-900/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+            {locale === 'en' ? 'Why we only charge HK$1 a day' : '點解我哋淨係收每日一蚊'}
+          </h2>
+          <p className="text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+            {locale === 'en'
+              ? 'A cram-school lesson runs HK$200+. Real exam skill should not be locked behind that wall — so we rebuilt it for the price of a sweet.'
+              : '補習社一堂收你 HK$200 起跳。攞分嘅真功夫，唔應該被呢道牆擋住 —— 所以我哋用一粒糖嘅價錢，重新砌返俾你。'}
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4 text-left">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+              <div className="text-2xl mb-2">🧠</div>
+              <div className="font-bold mb-1">{locale === 'en' ? 'Efficient' : '高效'}</div>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                {locale === 'en'
+                  ? 'Crack the underlying logic of past papers — not memorise answers that never come back.'
+                  : '拆穿歷屆試題嘅底層邏輯 —— 唔係死背啲唔會再出嘅答案。'}
+              </p>
+            </div>
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+              <div className="text-2xl mb-2">⚖️</div>
+              <div className="font-bold mb-1">{locale === 'en' ? 'Fair' : '公平'}</div>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                {locale === 'en'
+                  ? 'HK$1 a day. Every student — not only the ones who can afford star tutors — gets the same edge.'
+                  : '每日一蚊。唔止俾得起補習天王嘅人 —— 係每一個學生，都攞到同一個籌碼。'}
+              </p>
+            </div>
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+              <div className="text-2xl mb-2">🤝</div>
+              <div className="font-bold mb-1">{locale === 'en' ? 'For your family' : '利他'}</div>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                {locale === 'en'
+                  ? 'The thousands you save on tutoring stay home with your family. That is the whole point.'
+                  : '慳返嗰幾千蚊補習費，留返喺屋企。呢個先係我哋嘅初心。'}
+              </p>
+            </div>
           </div>
         </div>
       </section>

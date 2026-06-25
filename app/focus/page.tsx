@@ -4,7 +4,6 @@ import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Play, Pause, RotateCcw, Share2, MessageCircle, Users, Award } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
-import { playJackpot } from '@/lib/sfx'
 
 const FOCUS_MIN = 25
 const BREAK_MIN = 5
@@ -104,7 +103,6 @@ function FocusRoom() {
       setMinutes(next.minutes)
       setPomodoros(next.pomodoros)
       saveFocusToday(next)
-      playJackpot()
       setMode('break')
       setSecondsLeft(BREAK_MIN * 60) // auto-roll into the break
     } else {
