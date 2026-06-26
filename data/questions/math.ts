@@ -83,9 +83,9 @@ function quad(n: number, r1: number, r2: number, year: number, diff: 'easy' | 'm
       `Factorise as $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$. Trap: $(x${cTerm(-r1)}) = 0$ gives $x = ${r1}$ (flip the sign as you move it across), NOT $${-r1}$. So $x = ${r1}$ or $x = ${r2}$ — every distractor here is a sign trap, so check each root.`])
 }
 const quadParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [1, 3, 2023, 'medium'], [2, 5, 2022, 'medium'], [-1, 4, 2021, 'medium'], [-2, 3, 2023, 'hard'],
-  [-3, -5, 2020, 'hard'], [3, 7, 2022, 'medium'], [-4, 6, 2021, 'hard'], [2, 8, 2019, 'medium'],
-  [-6, 1, 2023, 'hard'], [4, 9, 2020, 'hard'], [-7, -2, 2022, 'hard'], [5, -3, 2021, 'hard'],
+  [1, 3, 2023, 'medium'], [2, 5, 2022, 'medium'], [-1, 4, 2021, 'medium'], [-2, 3, 2023, 'medium'],
+  [-3, -5, 2020, 'medium'], [3, 7, 2022, 'medium'], [-4, 6, 2021, 'medium'], [2, 8, 2019, 'medium'],
+  [-6, 1, 2023, 'medium'], [4, 9, 2020, 'medium'], [-7, -2, 2022, 'medium'], [5, -3, 2021, 'medium'],
 ]
 const quadQs = quadParams.map(([r1, r2, y, d], i) => quad(i + 1, r1, r2, y, d))
 
@@ -108,9 +108,9 @@ function deriv(n: number, a: number, b: number, c: number, year: number, diff: '
       `By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $${dy}$. The constant term differentiates to 0.`])
 }
 const derivParams: [number, number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [1, -3, 4, 2023, 'medium'], [2, -6, 3, 2022, 'hard'], [1, 2, -5, 2021, 'medium'], [3, -1, 2, 2023, 'hard'],
-  [2, 5, -1, 2020, 'hard'], [1, -4, -7, 2019, 'medium'], [4, 3, 6, 2022, 'hard'], [2, -7, 1, 2021, 'hard'],
-  [3, 2, -4, 2020, 'hard'], [1, -5, 8, 2023, 'hard'],
+  [1, -3, 4, 2023, 'medium'], [2, -6, 3, 2022, 'medium'], [1, 2, -5, 2021, 'medium'], [3, -1, 2, 2023, 'medium'],
+  [2, 5, -1, 2020, 'medium'], [1, -4, -7, 2019, 'medium'], [4, 3, 6, 2022, 'medium'], [2, -7, 1, 2021, 'medium'],
+  [3, 2, -4, 2020, 'medium'], [1, -5, 8, 2023, 'medium'],
 ]
 const derivQs = derivParams.map(([a, b, c, y, d], i) => deriv(i + 1, a, b, c, y, d))
 
@@ -147,7 +147,7 @@ const probQs: Question[] = [
       'A box has 5 good items and 2 defective. One is drawn at random. Find P(good).'],
     [['$\\frac{5}{7}$', '$\\frac{5}{7}$'], ['$\\frac{2}{7}$', '$\\frac{2}{7}$'], ['$\\frac{5}{2}$', '$\\frac{5}{2}$'], ['$\\frac{1}{2}$', '$\\frac{1}{2}$']],
     ['合格 5 件，總數 7 件，$P = \\frac{5}{7}$。', '5 good out of 7 total, so $P = \\frac{5}{7}$.']),
-  q('math_prob_7', T.probability, FW.decompose, 'hard', 2021, 1,
+  q('math_prob_7', T.probability, FW.decompose, 'medium', 2021, 1,
     ['連續擲一粒公正硬幣 3 次，求恰好出現 2 次「公」的概率。',
       'A fair coin is tossed 3 times. Find P(exactly 2 heads).'],
     [['$\\frac{3}{8}$', '$\\frac{3}{8}$'], ['$\\frac{1}{4}$', '$\\frac{1}{4}$'], ['$\\frac{1}{2}$', '$\\frac{1}{2}$'], ['$\\frac{1}{8}$', '$\\frac{1}{8}$']],
@@ -163,7 +163,7 @@ const probQs: Question[] = [
     [['$0.3$', '$0.3$'], ['$1.1$', '$1.1$'], ['$0.8$', '$0.8$'], ['$0.11$', '$0.11$']],
     ['獨立事件 $P(A \\cap B) = P(A)P(B) = 0.6 \\times 0.5 = 0.3$。',
       'For independent events $P(A \\cap B) = P(A)P(B) = 0.6 \\times 0.5 = 0.3$.']),
-  q('math_prob_10', T.probability, FW.decompose, 'hard', 2020, 1,
+  q('math_prob_10', T.probability, FW.decompose, 'medium', 2020, 1,
     ['袋中有 2 紅 3 綠球。不放回地連抽 2 球，求兩球都是綠的概率。',
       'A bag has 2 red and 3 green balls. Two are drawn without replacement. Find P(both green).'],
     [['$\\frac{3}{10}$', '$\\frac{3}{10}$'], ['$\\frac{9}{25}$', '$\\frac{9}{25}$'], ['$\\frac{2}{5}$', '$\\frac{2}{5}$'], ['$\\frac{1}{5}$', '$\\frac{1}{5}$']],
@@ -192,9 +192,9 @@ function maxParab(n: number, a: number, h: number, k: number, year: number, diff
 }
 // params chosen so {k, h, -k, c} are all distinct (no duplicate options).
 const funcParams: [number, number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [-1, 2, 5, 2023, 'medium'], [-2, 3, 4, 2022, 'hard'], [1, -1, -4, 2021, 'medium'], [-1, 4, 10, 2020, 'hard'],
-  [2, 2, -3, 2023, 'hard'], [-3, 1, 6, 2019, 'medium'], [1, 4, 2, 2022, 'medium'], [-2, -1, 7, 2021, 'hard'],
-  [1, 2, 3, 2020, 'medium'], [-1, -2, 4, 2022, 'hard'],
+  [-1, 2, 5, 2023, 'medium'], [-2, 3, 4, 2022, 'medium'], [1, -1, -4, 2021, 'medium'], [-1, 4, 10, 2020, 'medium'],
+  [2, 2, -3, 2023, 'medium'], [-3, 1, 6, 2019, 'medium'], [1, 4, 2, 2022, 'medium'], [-2, -1, 7, 2021, 'medium'],
+  [1, 2, 3, 2020, 'medium'], [-1, -2, 4, 2022, 'medium'],
 ]
 const funcQs = funcParams.map(([a, h, k, y, d], i) => maxParab(i + 1, a, h, k, y, d))
 
@@ -228,7 +228,7 @@ const trigQs: Question[] = [
     ['化簡 $\\frac{\\sin\\theta}{\\cos\\theta}$。', 'Simplify $\\frac{\\sin\\theta}{\\cos\\theta}$.'],
     [['$\\tan\\theta$', '$\\tan\\theta$'], ['$\\cot\\theta$', '$\\cot\\theta$'], ['$\\sec\\theta$', '$\\sec\\theta$'], ['$1$', '$1$']],
     ['依定義 $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$。', 'By definition $\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$.']),
-  q('math_trig_7', T.trigonometry, FW.transform, 'hard', 2021, 1,
+  q('math_trig_7', T.trigonometry, FW.transform, 'medium', 2021, 1,
     ['在直角三角形中，斜邊長 $10$，一銳角為 $30°$，求其對邊長。',
       'In a right triangle the hypotenuse is $10$ and one acute angle is $30°$. Find the opposite side.'],
     [['$5$', '$5$'], ['$5\\sqrt{3}$', '$5\\sqrt{3}$'], ['$10$', '$10$'], ['$\\frac{10}{\\sqrt{3}}$', '$\\frac{10}{\\sqrt{3}}$']],
@@ -237,7 +237,7 @@ const trigQs: Question[] = [
     ['求 $\\cos 0°$ 的值。', 'Find the value of $\\cos 0°$.'],
     [['$1$', '$1$'], ['$0$', '$0$'], ['$\\frac{1}{2}$', '$\\frac{1}{2}$'], ['$\\frac{\\sqrt{3}}{2}$', '$\\frac{\\sqrt{3}}{2}$']],
     ['$\\cos 0° = 1$。', '$\\cos 0° = 1$.']),
-  q('math_trig_9', T.trigonometry, FW.transform, 'hard', 2023, 1,
+  q('math_trig_9', T.trigonometry, FW.transform, 'medium', 2023, 1,
     ['化簡 $1 - \\sin^2\\theta$。', 'Simplify $1 - \\sin^2\\theta$.'],
     [['$\\cos^2\\theta$', '$\\cos^2\\theta$'], ['$\\tan^2\\theta$', '$\\tan^2\\theta$'], ['$\\sec^2\\theta$', '$\\sec^2\\theta$'], ['$\\cos 2\\theta$', '$\\cos 2\\theta$']],
     ['由 $\\sin^2\\theta + \\cos^2\\theta = 1$，得 $1 - \\sin^2\\theta = \\cos^2\\theta$。',
@@ -280,7 +280,7 @@ const statQs: Question[] = [
     [['$3.5$', '$3.5$'], ['$3$', '$3$'], ['$4$', '$4$'], ['$3$ 與 $4$ 之間任意值', 'any value between $3$ and $4$']],
     ['偶數個數據，中位數為中間兩數平均：$\\frac{3+4}{2} = 3.5$。',
       'With an even count, the median is the mean of the middle two: $\\frac{3+4}{2} = 3.5$.']),
-  q('math_stat_7', T.statistics, FW.decompose, 'hard', 2021, 1,
+  q('math_stat_7', T.statistics, FW.decompose, 'medium', 2021, 1,
     ['5 個數的平均數為 $8$。若加入第 6 個數 $14$，新平均數是？',
       'Five numbers have mean $8$. A sixth number $14$ is added. The new mean is?'],
     [['$9$', '$9$'], ['$11$', '$11$'], ['$8$', '$8$'], ['$10$', '$10$']],
@@ -299,7 +299,7 @@ const statQs: Question[] = [
     ['數據 $2, 4, 4, 4, 5, 5, 7, 9$ 的眾數是？', 'The mode of $2, 4, 4, 4, 5, 5, 7, 9$ is?'],
     [['$4$', '$4$'], ['$5$', '$5$'], ['$4.75$', '$4.75$'], ['$4.5$', '$4.5$']],
     ['$4$ 出現 3 次，為最頻繁值。', '$4$ appears three times — the most frequent value.']),
-  q('math_stat_11', T.statistics, FW.decompose, 'hard', 2022, 1,
+  q('math_stat_11', T.statistics, FW.decompose, 'medium', 2022, 1,
     ['數據 $3, 7, 7, 11$ 的平均數與中位數之差（平均 $-$ 中位）是？',
       'For $3, 7, 7, 11$, find (mean − median).'],
     [['$0$', '$0$'], ['$1$', '$1$'], ['$-1$', '$-1$'], ['$7$', '$7$']],
@@ -334,7 +334,7 @@ const logQs: Question[] = [
     ['化簡 $\\log 100 - \\log 10$（以 10 為底）。', 'Simplify $\\log 100 - \\log 10$ (base 10).'],
     [['$1$', '$1$'], ['$10$', '$10$'], ['$\\log 90$', '$\\log 90$'], ['$2$', '$2$']],
     ['$\\log\\frac{100}{10} = \\log 10 = 1$。', '$\\log\\frac{100}{10} = \\log 10 = 1$.']),
-  q('math_log_7', T.logarithms, FW.transform, 'hard', 2021, 1,
+  q('math_log_7', T.logarithms, FW.transform, 'medium', 2021, 1,
     ['解方程 $2^x = 16$。', 'Solve $2^x = 16$.'],
     [['$x = 4$', '$x = 4$'], ['$x = 8$', '$x = 8$'], ['$x = 2$', '$x = 2$'], ['$x = 16$', '$x = 16$']],
     ['$16 = 2^4$，故 $x = 4$。', '$16 = 2^4$, so $x = 4$.']),
@@ -342,7 +342,7 @@ const logQs: Question[] = [
     ['求 $\\log_5 1$ 的值。', 'Find the value of $\\log_5 1$.'],
     [['$0$', '$0$'], ['$1$', '$1$'], ['$5$', '$5$'], ['未定義', 'undefined']],
     ['$5^0 = 1$，故 $\\log_5 1 = 0$。', '$5^0 = 1$, so $\\log_5 1 = 0$.']),
-  q('math_log_9', T.logarithms, FW.transform, 'hard', 2023, 1,
+  q('math_log_9', T.logarithms, FW.transform, 'medium', 2023, 1,
     ['化簡 $\\log_2 32 - \\log_2 4$。', 'Simplify $\\log_2 32 - \\log_2 4$.'],
     [['$3$', '$3$'], ['$5$', '$5$'], ['$8$', '$8$'], ['$\\log_2 28$', '$\\log_2 28$']],
     ['$\\log_2\\frac{32}{4} = \\log_2 8 = 3$。', '$\\log_2\\frac{32}{4} = \\log_2 8 = 3$.']),
@@ -381,9 +381,9 @@ function gpTerm(n: number, a: number, r: number, k: number, year: number, diff: 
 }
 const seqQs: Question[] = [
   apTerm(1, 3, 4, 10, 2023, 'easy'), apTerm(2, 5, 3, 8, 2022, 'easy'), apTerm(3, 2, 5, 12, 2021, 'medium'),
-  apTerm(4, 7, -2, 9, 2020, 'medium'), apTerm(5, -4, 6, 7, 2023, 'medium'), apTerm(6, 1, 7, 11, 2019, 'hard'),
+  apTerm(4, 7, -2, 9, 2020, 'medium'), apTerm(5, -4, 6, 7, 2023, 'medium'), apTerm(6, 1, 7, 11, 2019, 'medium'),
   gpTerm(1, 2, 3, 4, 2022, 'medium'), gpTerm(2, 3, 2, 5, 2021, 'medium'), gpTerm(3, 1, 5, 4, 2020, 'easy'),
-  gpTerm(4, 5, 2, 4, 2023, 'medium'), gpTerm(5, 2, 4, 3, 2022, 'hard'),
+  gpTerm(4, 5, 2, 4, 2023, 'medium'), gpTerm(5, 2, 4, 3, 2022, 'medium'),
 ]
 
 // ── Topic 9: Percentages & interest (code-built) ─────────────────────────────
@@ -411,7 +411,7 @@ const pctQs: Question[] = [
   profit(1, 200, 20, 2023, 'easy'), profit(2, 500, 15, 2022, 'medium'), profit(3, 150, 30, 2021, 'medium'),
   profit(4, 800, 25, 2020, 'medium'), profit(5, 1200, 10, 2023, 'easy'), profit(6, 250, 40, 2019, 'medium'),
   simpleInterest(1, 1000, 5, 3, 2022, 'medium'), simpleInterest(2, 2000, 4, 2, 2021, 'medium'),
-  simpleInterest(3, 5000, 6, 2, 2020, 'easy'), simpleInterest(4, 1500, 8, 2, 2023, 'hard'),
+  simpleInterest(3, 5000, 6, 2, 2020, 'easy'), simpleInterest(4, 1500, 8, 2, 2023, 'medium'),
   simpleInterest(5, 3000, 5, 4, 2022, 'medium'),
 ]
 
@@ -472,7 +472,7 @@ function ineq(n: number, a: number, b: number, year: number, diff: 'easy' | 'med
 const ineqParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
   [1, -3, 2023, 'easy'], [2, -8, 2022, 'easy'], [1, 5, 2021, 'easy'], [4, -12, 2023, 'medium'],
   [3, 9, 2020, 'medium'], [5, -10, 2019, 'medium'], [2, 7, 2022, 'medium'], [6, -18, 2021, 'medium'],
-  [1, -11, 2020, 'medium'], [3, -6, 2023, 'easy'], [4, 8, 2022, 'hard'],
+  [1, -11, 2020, 'medium'], [3, -6, 2023, 'easy'], [4, 8, 2022, 'medium'],
 ]
 const ineqQs = ineqParams.map(([a, b, y, d], i) => ineq(i + 1, a, b, y, d))
 
@@ -643,19 +643,19 @@ export const mathQuestions: Question[] = [
 ]
 
 export const mathTopics: Topic[] = [
-  { id: 'quadratic_equations', zh: '二次方程', en: 'Quadratic Equations', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 12 },
+  { id: 'quadratic_equations', zh: '二次方程', en: 'Quadratic Equations', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 22 },
   { id: 'calculus', zh: '微積分', en: 'Calculus', framework: '變化率直覺', frameworkEn: 'Rate-of-change Intuition', emoji: '📈', count: 10 },
   { id: 'probability', zh: '概率', en: 'Probability', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 11 },
   { id: 'functions', zh: '函數與建模', en: 'Functions & Modelling', framework: '建模能力', frameworkEn: 'Modelling', emoji: '🏗️', count: 10 },
   { id: 'trigonometry', zh: '三角函數', en: 'Trigonometry', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 11 },
   { id: 'statistics', zh: '統計', en: 'Statistics', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 11 },
-  { id: 'logarithms', zh: '對數與指數', en: 'Logarithms & Exponents', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 11 },
+  { id: 'logarithms', zh: '對數與指數', en: 'Logarithms & Exponents', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 21 },
   { id: 'sequences', zh: '數列', en: 'Sequences', framework: '數列規律', frameworkEn: 'Sequence Patterns', emoji: '🔢', count: 11 },
   { id: 'percentage', zh: '百分數與利率', en: 'Percentages & Interest', framework: '建模能力', frameworkEn: 'Modelling', emoji: '🏗️', count: 11 },
   { id: 'coordinate_geometry', zh: '坐標幾何', en: 'Coordinate Geometry', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 11 },
   { id: 'inequalities', zh: '不等式', en: 'Inequalities', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 11 },
-  { id: 'circles', zh: '圓的幾何特性', en: 'Properties of Circles', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 3 },
-  { id: 'trig_3d', zh: '三維三角學', en: '3D Trigonometry', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 2 },
-  { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 3 },
-  { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 2 },
+  { id: 'circles', zh: '圓的幾何特性', en: 'Properties of Circles', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 13 },
+  { id: 'trig_3d', zh: '三維三角學', en: '3D Trigonometry', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 12 },
+  { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 23 },
+  { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 12 },
 ]

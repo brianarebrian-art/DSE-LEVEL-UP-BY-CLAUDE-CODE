@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight, Brain, Zap } from 'lucide-react'
 import MathText from '@/components/MathText'
+import BlindTestQuestion from '@/components/BlindTestQuestion'
 import { subjects, getActiveSubjects } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 
@@ -31,10 +32,12 @@ export default function HomePage() {
 
         <div className="max-w-5xl mx-auto text-center relative z-10">
 
-          {/* Live users badge */}
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-2 mb-8 text-sm text-amber-300">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse inline-block" />
-            {h.liveBadge}
+          {/* 非官方 DSE 地獄極限修煉場 — Hell-mode positioning slogan */}
+          <div className="inline-flex items-center gap-2 bg-red-950/50 border border-red-800/60 rounded-full px-4 py-2 mb-8 text-sm font-bold text-red-300">
+            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block" />
+            {locale === 'en'
+              ? '🔥 The Unofficial DSE Hell Training Ground'
+              : '🔥 非官方 DSE 地獄極限修煉場'}
           </div>
 
           {/* Main headline */}
@@ -48,6 +51,12 @@ export default function HomePage() {
 
           <p className="text-xl text-slate-400 mb-3 max-w-2xl mx-auto">
             {h.subhead}
+          </p>
+
+          <p className="text-sm text-red-300/70 mb-3 max-w-2xl mx-auto leading-relaxed">
+            {locale === 'en'
+              ? 'Built by hand by ex-DSE top scorers — a dark defensive weapon forged purely to crack the examiners’ hidden traps.'
+              : '純粹由舊生學霸人手建立，專門用嚟攻破官方考評陷阱嘅暗黑防禦武器。'}
           </p>
 
           <div className="flex items-center justify-center gap-4 text-sm text-slate-600 mb-10">
@@ -72,6 +81,21 @@ export default function HomePage() {
               <Brain size={18} className="text-amber-400" /> {h.ctaMethod}
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── 盲測黑題 (Blind Test) showcase ── */}
+      <section className="py-12 px-4">
+        <div className="max-w-md mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2">
+            {locale === 'en' ? 'Can you see through the trap?' : '你睇唔睇穿到陷阱？'}
+          </h2>
+          <p className="text-slate-500 text-center text-sm mb-7">
+            {locale === 'en'
+              ? 'Numbers blacked out. Only the logic remains. This is hardcore.'
+              : '數字全部塗黑，淨返邏輯。呢個先叫硬核。'}
+          </p>
+          <BlindTestQuestion />
         </div>
       </section>
 

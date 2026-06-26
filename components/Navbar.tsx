@@ -27,13 +27,21 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80 bg-[#080C14]/90 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-          <BookOpen size={22} className="text-amber-400" />
-          <span>
-            DSE <span className="text-amber-400">Level Up</span>
+        {/* Logo + LHYMSS V1.0 exclusive badge */}
+        <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+            <BookOpen size={22} className="text-amber-400" />
+            <span>
+              DSE <span className="text-amber-400">Level Up</span>
+            </span>
+          </Link>
+          <span
+            className="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold text-red-300 bg-red-950/60 border border-red-800/70 px-2 py-0.5 rounded-full whitespace-nowrap"
+            title="Version 1.0 — Exclusive for 嶺南衡怡紀念中學 (LHYMSS)"
+          >
+            🔥 V1.0 · 嶺南衡怡 LHYMSS
           </span>
-        </Link>
+        </div>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">

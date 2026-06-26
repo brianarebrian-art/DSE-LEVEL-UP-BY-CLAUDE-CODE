@@ -449,7 +449,7 @@ const paper1: Question[] = [
   q(id('p1'), T.paper1, FW.reading, 'hard', 2023, 1,
     m('Read this sentence: "Theo had spent weeks on a model rocket that never left the launchpad; he won first prize anyway, for \'restraint\'." The quotation marks around "restraint" signal that the narrator finds Theo\'s victory —'),
     [m('ironic, since the prize rewards a failure as though it were a deliberate choice'), m('completely deserved and well earned'), m('clearly the result of cheating'), m('deeply distressing for Theo himself')],
-    m('The scare-quotes distance the narrator from the judges\' word: a rocket that "never left the launchpad" is praised as deliberate "restraint". The prize therefore rewards an accident, and the quotation marks flag the narrator\'s irony.')),
+    m('The scare-quotes distance the narrator from the judges\' word: a rocket that "never left the launchpad" is praised as deliberate "restraint". The prize therefore rewards an accident, and the quotation marks flag the narrator\'s irony.\n\n【Distractor autopsy】"deserved and well earned" is a Concept-Substitution trap — it takes the praise at face value and ignores the scare-quotes; "the result of cheating" is Over-inference — morally plausible but the text gives no evidence of cheating; "deeply distressing for Theo" is Half-right/Half-wrong — emotion is relevant to the passage, but the wrong emotion is pinned on the wrong subject.')),
 
   // ── Part B1: factual & persuasive (assistance dogs / accessibility) ──
   q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
@@ -473,7 +473,7 @@ const paper1: Question[] = [
   q(id('p1'), T.paper1, FW.reading, 'hard', 2023, 1,
     m('Read this excerpt: "Every time I sat at the piano I felt a stubborn spark in my chest — not talent, exactly, but a refusal to stop." The "stubborn spark in my chest" is best understood as —'),
     [m('the writer\'s inner determination to keep going'), m('a literal fire somewhere near the piano'), m('a sudden, effortless gift for music'), m('a feeling of anger toward the teacher')],
-    m('The writer immediately redefines the "spark" as "a refusal to stop" and explicitly rules out talent. It is a metaphor for inner drive and persistence, not a literal fire or natural ability — recognising the figurative meaning from the surrounding words is the skill.')),
+    m('The writer immediately redefines the "spark" as "a refusal to stop" and explicitly rules out talent. It is a metaphor for inner drive and persistence, not a literal fire or natural ability — recognising the figurative meaning from the surrounding words is the skill.\n\n【Distractor autopsy】"a literal fire near the piano" is the Context-Distortion trap — it reads a metaphor word-for-word; "a sudden gift for music" is direct Concept Substitution — the text says "not talent, exactly", the exact opposite; "anger toward the teacher" is Over-inference — an emotion never mentioned in the excerpt, supplied by the reader.')),
   q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
     m('Read this reflection: "Looking back, I am almost grateful for those clumsy early lessons; they taught me that progress is mostly stubbornness." The tone of the reflection is best described as —'),
     [m('warmly reflective and accepting'), m('resentful and bitter'), m('anxious and fearful'), m('coldly indifferent')],

@@ -117,6 +117,22 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-4xl mx-auto">
+        {/* LHYMSS V1.0 exclusive banner */}
+        <div className="mb-6 bg-gradient-to-r from-red-950/50 to-amber-500/10 border border-red-800/50 rounded-2xl px-5 py-3 flex items-center gap-3">
+          <span className="text-xl shrink-0">🔥</span>
+          <div className="min-w-0">
+            <div className="font-bold text-slate-100 text-sm">
+              DSE Level Up V1.0 ·{' '}
+              {locale === 'en' ? 'Exclusive for LHYMSS' : '嶺南衡怡紀念中學專屬備考版'}
+            </div>
+            <p className="text-xs text-red-300/70 mt-0.5">
+              {locale === 'en'
+                ? 'Unofficial DSE Hell Training Ground — for LHYMSS students & teachers.'
+                : '非官方 DSE 地獄極限修煉場 — 專為嶺南衡怡師生而設。'}
+            </p>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
           <div>

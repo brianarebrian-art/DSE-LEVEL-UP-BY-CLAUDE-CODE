@@ -13,8 +13,25 @@ import { incrementGlobalAttemptsUsed } from '@/lib/freeUsage'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap } from 'lucide-react'
+import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock } from 'lucide-react'
 import DifficultyBadge from '@/components/DifficultyBadge'
+import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
+
+// 三維逆向錯因 (the forced self-diagnosis behind the "答錯即鎖死" lockout). The student
+// must own WHICH underlying trap caught them before the Marking Scheme unlocks.
+const REVERSE_CAUSES: {
+  key: ReverseCause; emoji: string; zh: string; zhDesc: string; en: string; enDesc: string
+}[] = [
+  { key: 'A', emoji: '🧠', zh: '概念盲區', en: 'Conceptual Blindspot',
+    zhDesc: '未完全理解定理底層邏輯（如忽略定義域或公式前提條件）',
+    enDesc: "Didn't fully grasp the underlying theorem (e.g. ignored a domain or a formula precondition)" },
+  { key: 'B', emoji: '🎯', zh: '審題陷阱', en: 'HKEAA Reading Trap',
+    zhDesc: '踩中題目隱蔽字眼、關鍵限制或雙重否定句',
+    enDesc: 'Fell for a hidden keyword, constraint or double-negative in the question' },
+  { key: 'C', emoji: '🧮', zh: '運算粗心', en: 'Execution / Calculator Error',
+    zhDesc: '按錯計算機或純運算失誤，思路其實正確',
+    enDesc: 'Mis-keyed the calculator or a pure arithmetic slip — the method was right' },
+]
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -98,7 +115,12 @@ function buildPool(
   sessionSize: number,
   mode: 'normal' | 'weakness',
 ): PreparedQuestion[] {
-  const base = topicFilter ? bank.filter((q) => q.topic === topicFilter) : bank
+  const scoped = topicFilter ? bank.filter((q) => q.topic === topicFilter) : bank
+  // 拔尖 MODE: this platform serves ONLY 5★★ (hard) questions — we target students
+  // pushing for the top, not remedial drilling. Fall back to the full scope only if
+  // a subject/topic genuinely lacks enough hard items to fill a run.
+  const hardOnly = scoped.filter((q) => q.difficulty === 'hard')
+  const base = hardOnly.length >= sessionSize ? hardOnly : scoped
 
   let ordered: Question[]
   if (mode === 'weakness') {
@@ -198,6 +220,9 @@ export default function PracticeSession({
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
   const [answerState, setAnswerState] = useState<AnswerState>(null)
+  // Which reverse-cause the student admitted to for the current wrong answer.
+  // While null on a WRONG answer, the lockout overlay hides the Marking Scheme.
+  const [diagnosed, setDiagnosed] = useState<ReverseCause | null>(null)
   const [elapsed, setElapsed] = useState(0)
 
   // Show the English string when the UI is in English and a translation exists;
@@ -230,10 +255,30 @@ export default function PracticeSession({
     [answerState, currentQ]
   )
 
+  // Student completes the forced 3-way self-diagnosis → record the reverse cause
+  // to the local error log, which unlocks the Marking Scheme below.
+  const chooseCause = useCallback(
+    (cause: ReverseCause) => {
+      if (!currentQ || answerState === null) return
+      setDiagnosed(cause)
+      logReverseError({
+        subjectId,
+        questionId: currentQ.id,
+        topic: currentQ.topicZh,
+        cause,
+        selected: answerState.selectedZh,
+        correct: currentQ.correctZh,
+        ts: Date.now(),
+      })
+    },
+    [currentQ, answerState, subjectId]
+  )
+
   const next = useCallback(() => {
     const newAnswers = [...answers, answerState]
     setAnswers(newAnswers)
     setAnswerState(null)
+    setDiagnosed(null)
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -407,68 +452,111 @@ export default function PracticeSession({
         {/* Feedback + Next */}
         {answerState !== null && (
           <div className="animate-slide-up">
-            {answerState.isCorrect ? (
-              /* Correct — calm acknowledgement, no fanfare. */
-              <div className="rounded-2xl p-5 mb-4 border bg-green-500/10 border-green-500/30">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle size={18} className="text-green-400" />
-                  <span className="text-green-400 font-semibold">{t.practice.correct}</span>
+            {!answerState.isCorrect && diagnosed === null ? (
+              /* 答錯即鎖死 (Heinz visual hammer): a wrong answer LOCKS the solution
+                 behind a forced 3-way reverse-cause self-diagnosis. Black/red, severe. */
+              <div className="rounded-2xl p-6 mb-4 border-2 border-red-600 bg-black animate-hell-pulse">
+                <div className="flex items-center gap-2 mb-1">
+                  <Lock size={18} className="text-red-500" />
+                  <span className="text-red-500 font-extrabold tracking-wide text-sm uppercase">
+                    🔒 Access Locked
+                  </span>
                 </div>
-                <div className="flex items-start gap-1.5 text-sm text-slate-400 leading-relaxed">
-                  <Brain size={14} className="text-amber-400 shrink-0 mt-0.5" />
-                  <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                <p className="text-red-300/90 text-xs font-bold mb-1">
+                  {tr('你已墮入考評局陷阱 — ACCUSED OF FALLING INTO HKEAA TRAP',
+                      "You've fallen into an HKEAA trap — ACCESS LOCKED")}
+                </p>
+                <p className="text-slate-500 text-xs mb-4 leading-relaxed">
+                  {tr('解鎖詳解前，必須誠實面對：你今次中咗邊一種底層陷阱？',
+                      'Before the solution unlocks, own it honestly — which underlying trap caught you?')}
+                </p>
+                <div className="space-y-2">
+                  {REVERSE_CAUSES.map((c) => (
+                    <button
+                      key={c.key}
+                      onClick={() => chooseCause(c.key)}
+                      className="w-full text-left flex items-start gap-3 border border-red-900/60 bg-red-950/30 hover:bg-red-900/40 hover:border-red-500 rounded-xl px-4 py-3 transition-all"
+                    >
+                      <span className="shrink-0 w-7 h-7 rounded-lg bg-red-900/70 text-red-200 flex items-center justify-center text-sm font-extrabold">
+                        {c.key}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold text-slate-100">{c.emoji} {tr(c.zh, c.en)}</span>
+                        <span className="block text-xs text-slate-500 mt-0.5 leading-relaxed">{tr(c.zhDesc, c.enDesc)}</span>
+                      </span>
+                    </button>
+                  ))}
                 </div>
               </div>
             ) : (
-              /* Wrong → reframed as 思維逆襲解密: the error IS the lesson, not a failure.
-                 Calm amber insight tone — no red shaming, no shake. */
-              <div className="rounded-2xl p-5 mb-4 border bg-amber-500/10 border-amber-500/30">
-                <div className="flex items-center gap-2 mb-1">
-                  <Brain size={18} className="text-amber-400" />
-                  <span className="text-amber-300 font-semibold">{tr('🔍 思維逆襲解密', '🔍 Mind-flip decode')}</span>
-                </div>
-                <p className="text-xs text-slate-500 mb-3 leading-relaxed">
-                  {tr(
-                    '唔緊要 —— 睇穿你今次中咗嘅思維盲區，先係真正攞分嘅一刻。',
-                    'No stress — seeing through the blind spot you just hit is exactly where marks are won.',
-                  )}
-                </p>
-                <div className="text-sm text-slate-300 leading-relaxed border-t border-amber-500/15 pt-3">
-                  <span className="text-amber-400 text-xs font-bold mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
-                  <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
-                </div>
-              </div>
-            )}
+              <>
+                {answerState.isCorrect ? (
+                  /* Correct — calm acknowledgement, no fanfare. */
+                  <div className="rounded-2xl p-5 mb-4 border bg-green-500/10 border-green-500/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle size={18} className="text-green-400" />
+                      <span className="text-green-400 font-semibold">{t.practice.correct}</span>
+                    </div>
+                    <div className="flex items-start gap-1.5 text-sm text-slate-400 leading-relaxed">
+                      <Brain size={14} className="text-amber-400 shrink-0 mt-0.5" />
+                      <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                    </div>
+                  </div>
+                ) : (
+                  /* Wrong → unlocked after self-diagnosis: the error IS the lesson. */
+                  <div className="rounded-2xl p-5 mb-4 border bg-amber-500/10 border-amber-500/30">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Brain size={18} className="text-amber-400" />
+                      <span className="text-amber-300 font-semibold">{tr('🔍 思維逆襲解密', '🔍 Mind-flip decode')}</span>
+                    </div>
+                    {(() => {
+                      const c = REVERSE_CAUSES.find((x) => x.key === diagnosed)
+                      return (
+                        <p className="text-xs text-red-300/80 mb-3 leading-relaxed">
+                          {tr('已記錄錯因：', 'Logged cause: ')}
+                          <strong>{c ? `${c.emoji} ${tr(c.zh, c.en)}` : ''}</strong>
+                          {tr(' → 已寫入逆向錯題本。', ' → saved to your reverse error log.')}
+                        </p>
+                      )
+                    })()}
+                    <div className="text-sm text-slate-300 leading-relaxed border-t border-amber-500/15 pt-3">
+                      <span className="text-amber-400 text-xs font-bold mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
+                      <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                    </div>
+                  </div>
+                )}
 
-            {/* Path B — 名師速解 / MC Hack (the exam shortcut, distinct from the
-                formal Path A reasoning above). Shown whenever the question carries one. */}
-            {currentQ.mcHack && (
-              <div className="rounded-2xl p-5 mb-4 border bg-indigo-500/10 border-indigo-500/30">
-                <div className="flex items-center gap-2 mb-2">
-                  <Zap size={18} className="text-indigo-300" />
-                  <span className="text-indigo-200 font-semibold">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
-                </div>
-                <p className="text-xs text-slate-500 mb-3 leading-relaxed">
-                  {tr(
-                    '考場上唔使寫足證明 —— 呢招專為 MC 而設，秒級攞分。',
-                    'No full proof needed in the exam — this is the MC-only quick kill.',
-                  )}
-                </p>
-                <div className="text-sm text-slate-200 leading-relaxed border-t border-indigo-500/15 pt-3">
-                  <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
-                </div>
-              </div>
-            )}
+                {/* Path B — 名師速解 / MC Hack (the exam shortcut, distinct from the
+                    formal Path A reasoning above). Shown whenever the question carries one. */}
+                {currentQ.mcHack && (
+                  <div className="rounded-2xl p-5 mb-4 border bg-indigo-500/10 border-indigo-500/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Zap size={18} className="text-indigo-300" />
+                      <span className="text-indigo-200 font-semibold">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
+                    </div>
+                    <p className="text-xs text-slate-500 mb-3 leading-relaxed">
+                      {tr(
+                        '考場上唔使寫足證明 —— 呢招專為 MC 而設，秒級攞分。',
+                        'No full proof needed in the exam — this is the MC-only quick kill.',
+                      )}
+                    </p>
+                    <div className="text-sm text-slate-200 leading-relaxed border-t border-indigo-500/15 pt-3">
+                      <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
+                    </div>
+                  </div>
+                )}
 
-            {/* Next button */}
-            <button
-              onClick={next}
-              className="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2"
-            >
-              {current + 1 >= totalQ ? t.practice.seeResult : (
-                <>{t.practice.next} <ChevronRight size={18} /></>
-              )}
-            </button>
+                {/* Next button */}
+                <button
+                  onClick={next}
+                  className="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2"
+                >
+                  {current + 1 >= totalQ ? t.practice.seeResult : (
+                    <>{t.practice.next} <ChevronRight size={18} /></>
+                  )}
+                </button>
+              </>
+            )}
           </div>
         )}
 

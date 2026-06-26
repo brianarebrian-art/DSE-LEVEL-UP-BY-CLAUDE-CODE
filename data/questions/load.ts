@@ -19,8 +19,10 @@ type Loader = () => Promise<Question[]>
 const loaders: Record<string, Loader> = {
   // Maths merges its hand-authored bank with the offline-generated, judge-verified extras.
   math: async () => {
-    const [base, gen] = await Promise.all([import('./math'), import('./math-generated')])
-    return [...base.mathQuestions, ...gen.mathGeneratedQuestions]
+    const [base, gen, param] = await Promise.all([
+      import('./math'), import('./math-generated'), import('./math-parametric'),
+    ])
+    return [...base.mathQuestions, ...gen.mathGeneratedQuestions, ...param.mathParametricQuestions]
   },
   m1: async () => (await import('./m1')).m1Questions,
   m2: async () => (await import('./m2')).m2Questions,

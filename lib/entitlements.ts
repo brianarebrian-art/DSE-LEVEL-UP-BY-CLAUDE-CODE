@@ -44,8 +44,10 @@ export const PREMIUM_SESSION_SIZE = 20
 export const FREE_ATTEMPTS_TOTAL = 10
 
 // Subscription prices, in HKD. Adjust to taste.
-export const PREMIUM_PRICE_MONTHLY_HKD = 38
-export const PREMIUM_PRICE_YEARLY_HKD = 388
+// Positioned as a serious DSE prep tool (low price reads as "no value"): monthly
+// HK$188, annual HK$1,880 = pay for 10 months, get 12 (≈ 2 months free).
+export const PREMIUM_PRICE_MONTHLY_HKD = 188
+export const PREMIUM_PRICE_YEARLY_HKD = 1880
 
 /** What the annual plan saves versus paying monthly for a year (HKD). */
 export function yearlySavingHkd(): number {
