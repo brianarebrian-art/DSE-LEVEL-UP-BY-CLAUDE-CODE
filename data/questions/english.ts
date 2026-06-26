@@ -16,6 +16,7 @@ const T = {
   genre:      { id: 'genre_tone',     zh: 'Genre, Tone & Register', en: 'Genre, Tone & Register' },
   integrated: { id: 'integrated',     zh: 'Integrated Skills', en: 'Integrated Skills' },
   cloze:      { id: 'cloze',          zh: 'Cloze & Usage',    en: 'Cloze & Usage' },
+  paper1:     { id: 'paper1_reading', zh: 'DSE Paper 1 Reading', en: 'DSE Paper 1 Reading' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -420,9 +421,76 @@ const cloze: Question[] = [
     m('"No sooner" requires past perfect inversion: "had the bell rung ... than". "Has" is present perfect, "did" needs a base verb, and "was" does not form the perfect with "rung".')),
 ]
 
+// ═══════════════════════════════════════════════════════════════════════════
+// DSE Paper 1 Reading skill-drills — modelled on the 2023 paper's THREE sections
+// but built from 100% ORIGINAL short passages (NOT reproductions of the copyrighted
+// HKEAA texts, which are not in the workspace):
+//   • Part A skills — narrative / flash fiction: dramatic irony, character inference, tone
+//   • Part B1 skills — factual & persuasive (assistance dogs / accessibility): detail,
+//     vocabulary-in-context, writer's purpose, fact vs opinion
+//   • Part B2 skills — reflective memoir / autobiography: figurative language, attitude,
+//     the function of an anecdote
+// Each item is self-contained (short excerpt + question) to suit random 20-Q sampling.
+// ═══════════════════════════════════════════════════════════════════════════
+const paper1: Question[] = [
+  // ── Part A: narrative / dramatic irony / inference ──
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
+    m('Read this excerpt: "Mara beamed as the judges praised her \'bold artistic choice\' — the upside-down painting had, in fact, been hung the wrong way up by a tired volunteer." The humour here comes mainly from —'),
+    [m('the reader knowing the "artistic choice" was an accident that Mara is unaware of'), m('Mara\'s months of careful planning finally paying off'), m('the judges deliberately deceiving the audience'), m('a vivid description of the painting\'s colours')],
+    m('This is dramatic irony: the reader knows something a character does not. We know the inverted painting was a volunteer\'s mistake, while Mara accepts the praise as deserved — the gap between her understanding and ours creates the comedy.')),
+  q(id('p1'), T.paper1, FW.reading, 'hard', 2023, 1,
+    m('Read this excerpt: "When his name was called, Daniel\'s smile froze for half a second before he stood, smoothing a speech he had folded and refolded all morning." The detail of the "folded and refolded" speech most strongly suggests that Daniel —'),
+    [m('had been nervous and rehearsing while he waited'), m('had forgotten that he was a finalist'), m('strongly disliked entering competitions'), m('had written his speech only minutes earlier')],
+    m('Repeatedly folding the speech "all morning", together with the smile that "froze", shows anxious anticipation rather than carelessness or forgetfulness. The writer shows his state of mind through action instead of stating it — a classic inference question.')),
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2022, 1,
+    m('Read this sentence: "The science-fair banner sagged, one corner held up by a single stubborn piece of tape that had clearly decided this was its final act." The tone of the sentence is best described as —'),
+    [m('lightly humorous'), m('deeply tragic'), m('coldly formal'), m('angry and bitter')],
+    m('Personifying the tape as having "decided this was its final act" is a gentle, comic exaggeration. The playful image signals a light, humorous tone rather than tragedy, formality or anger.')),
+  q(id('p1'), T.paper1, FW.reading, 'hard', 2023, 1,
+    m('Read this sentence: "Theo had spent weeks on a model rocket that never left the launchpad; he won first prize anyway, for \'restraint\'." The quotation marks around "restraint" signal that the narrator finds Theo\'s victory —'),
+    [m('ironic, since the prize rewards a failure as though it were a deliberate choice'), m('completely deserved and well earned'), m('clearly the result of cheating'), m('deeply distressing for Theo himself')],
+    m('The scare-quotes distance the narrator from the judges\' word: a rocket that "never left the launchpad" is praised as deliberate "restraint". The prize therefore rewards an accident, and the quotation marks flag the narrator\'s irony.')),
+
+  // ── Part B1: factual & persuasive (assistance dogs / accessibility) ──
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
+    m('Read this passage: "A guide dog typically begins formal training at around 14 months and is matched with a handler only after passing a final assessment." According to the passage, a guide dog is paired with its handler —'),
+    [m('after it has passed a final assessment'), m('as soon as it is born'), m('at exactly 14 months of age'), m('before any training has begun')],
+    m('The text states matching happens "only after passing a final assessment". The figure "14 months" marks when training begins, not when matching occurs — a scanning trap that punishes readers who grab the first number they see.')),
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
+    m('Read this sentence: "For many handlers, the dog provides not just mobility but a sense of independence they had thought was lost for good." In this context, "mobility" most nearly means —'),
+    [m('the ability to move around freely'), m('social popularity'), m('a mobile phone'), m('emotional warmth')],
+    m('Paired with "independence" and the role of a guide dog, "mobility" here means freedom of movement. The everyday "mobile phone" sense is a distractor that ignores the surrounding context — vocabulary-in-context demands you read the whole clause.')),
+  q(id('p1'), T.paper1, FW.reading, 'hard', 2023, 1,
+    m('Read this opening: "Think of the curb you stepped off this morning without a second thought. Now imagine meeting it in total darkness." The writer addresses the reader directly as "you" mainly in order to —'),
+    [m('help sighted readers empathise with the daily challenges blind people face'), m('give technical instructions on how to cross a road'), m('criticise readers for being careless in traffic'), m('describe the writer\'s own morning routine')],
+    m('The shift to "you" and the invitation to "imagine" is a persuasive empathy device: it asks sighted readers to feel an everyday obstacle from a blind person\'s perspective. The purpose is rhetorical engagement, not literal instruction or criticism.')),
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2022, 1,
+    m('Read this sentence: "Guide dogs can cost over HK\\$200,000 to train — surely a price worth every cent." Which part of the sentence is opinion rather than fact?'),
+    [m('"surely a price worth every cent"'), m('"Guide dogs can cost over HK\\$200,000 to train"'), m('"to train"'), m('"Guide dogs"')],
+    m('The cost figure is a verifiable, factual claim. "Surely a price worth every cent" is the writer\'s value judgement — an opinion. Separating a checkable fact from the writer\'s evaluation of it is a core Part B1 skill.')),
+
+  // ── Part B2: reflective memoir / figurative language / attitude ──
+  q(id('p1'), T.paper1, FW.reading, 'hard', 2023, 1,
+    m('Read this excerpt: "Every time I sat at the piano I felt a stubborn spark in my chest — not talent, exactly, but a refusal to stop." The "stubborn spark in my chest" is best understood as —'),
+    [m('the writer\'s inner determination to keep going'), m('a literal fire somewhere near the piano'), m('a sudden, effortless gift for music'), m('a feeling of anger toward the teacher')],
+    m('The writer immediately redefines the "spark" as "a refusal to stop" and explicitly rules out talent. It is a metaphor for inner drive and persistence, not a literal fire or natural ability — recognising the figurative meaning from the surrounding words is the skill.')),
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
+    m('Read this reflection: "Looking back, I am almost grateful for those clumsy early lessons; they taught me that progress is mostly stubbornness." The tone of the reflection is best described as —'),
+    [m('warmly reflective and accepting'), m('resentful and bitter'), m('anxious and fearful'), m('coldly indifferent')],
+    m('"Almost grateful" and the fond acceptance of "clumsy early lessons" create a warm, retrospective tone. The writer reframes early struggle as valuable rather than something to resent or fear.')),
+  q(id('p1'), T.paper1, FW.reading, 'hard', 2022, 1,
+    m('Read this excerpt: "My mother never praised a good result, only the hours behind it. At the time it stung; now I copy her without thinking." The writer\'s attitude toward her mother\'s approach has —'),
+    [m('shifted from hurt to acceptance, and even to imitation'), m('remained resentful into adulthood'), m('always been one of complete agreement'), m('grown steadily more angry over time')],
+    m('"At the time it stung; now I copy her without thinking" charts a change across time: childhood hurt has become adult endorsement, as the writer now values effort over results. Tracking how an attitude shifts is the inference being tested.')),
+  q(id('p1'), T.paper1, FW.reading, 'medium', 2023, 1,
+    m('Read this excerpt: "I still remember dropping a whole tray of glasses on my first shift — and the manager who simply handed me a broom and said, \'Day one.\'" The writer most likely includes this memory to illustrate —'),
+    [m('how a small act of patience encouraged her to keep trying'), m('that she was completely unsuited to the job'), m('the importance of carrying trays carefully'), m('her lasting dislike of the manager')],
+    m('The manager\'s calm "Day one" and the broom — not blame — model encouragement after a mistake. In a reflective memoir the anecdote is included to make a point: patience helped the writer persevere, which is its purpose here.')),
+]
+
 export const englishQuestions: Question[] = [
   ...grammar, ...tenses, ...vocab, ...wordform,
-  ...reading, ...genre, ...integrated, ...cloze,
+  ...reading, ...genre, ...integrated, ...cloze, ...paper1,
 ]
 
 export const englishTopics: Topic[] = topicList([
@@ -434,4 +502,5 @@ export const englishTopics: Topic[] = topicList([
   { topic: T.genre,      fw: FW.writing, count: genre.length },
   { topic: T.integrated, fw: FW.writing, count: integrated.length },
   { topic: T.cloze,      fw: FW.reading, count: cloze.length },
+  { topic: T.paper1,     fw: FW.reading, count: paper1.length },
 ])

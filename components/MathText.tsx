@@ -25,28 +25,37 @@ function escapeHtml(s: string): string {
     .replace(/'/g, '&#39;')
 }
 
+// Render one KaTeX segment (inline or display). displayMode emits a
+// `<span class="katex-display">` (centred block), which nests validly in our span.
+function renderTex(tex: string, displayMode: boolean): string {
+  try {
+    return katex.renderToString(tex.split(ESC).join('\\$'), {
+      throwOnError: false,
+      output: 'html',
+      displayMode,
+    })
+  } catch {
+    return escapeHtml(tex.split(ESC).join('$'))
+  }
+}
+
 function renderMathText(text: string): string {
-  // Protect escaped dollars (currency like \$1600) before splitting on $...$ delimiters.
+  // Protect escaped dollars (currency like \$1600) before splitting on math delimiters.
   const protectedText = text.replace(/\\\$/g, ESC)
 
-  // Split into alternating literal-text / math segments (the capturing group keeps the
-  // math content). Even indices = literal text (escaped); odd indices = math (KaTeX).
-  const parts = protectedText.split(/\$([^$]+)\$/g)
+  // Tokenise on $$...$$ (display) OR $...$ (inline). The capturing group keeps the
+  // delimited tokens; everything else is literal text. Display is tried first via
+  // alternation order so $$ is never mis-parsed as two empty inline spans.
+  const parts = protectedText.split(/(\$\$[^$]+\$\$|\$[^$]+\$)/g)
   let out = ''
-  for (let i = 0; i < parts.length; i++) {
-    if (i % 2 === 1) {
-      // Math span -> KaTeX. Restore $ as KaTeX's escaped \$ so it renders a literal "$".
-      try {
-        out += katex.renderToString(parts[i].split(ESC).join('\\$'), {
-          throwOnError: false,
-          output: 'html',
-        })
-      } catch {
-        out += escapeHtml(parts[i].split(ESC).join('$'))
-      }
+  for (const part of parts) {
+    if (part.length > 4 && part.startsWith('$$') && part.endsWith('$$')) {
+      out += renderTex(part.slice(2, -2), true)
+    } else if (part.length > 2 && part.startsWith('$') && part.endsWith('$')) {
+      out += renderTex(part.slice(1, -1), false)
     } else {
       // Literal text -> MUST be HTML-escaped before it goes into innerHTML.
-      out += escapeHtml(parts[i].split(ESC).join('$'))
+      out += escapeHtml(part.split(ESC).join('$'))
     }
   }
   return out

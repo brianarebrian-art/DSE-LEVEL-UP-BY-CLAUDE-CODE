@@ -13,7 +13,8 @@ import { incrementGlobalAttemptsUsed } from '@/lib/freeUsage'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, XCircle, ChevronRight, Clock, Brain } from 'lucide-react'
+import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap } from 'lucide-react'
+import DifficultyBadge from '@/components/DifficultyBadge'
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -127,6 +128,22 @@ function buildPool(
 
 type AnswerState = { selectedZh: string; isCorrect: boolean } | null
 
+// Per-tier tally (L2–3 / L4 / L5+) powering the result page's diagnostic warning:
+// scoring 100% on L2–3 yet missing any L4/L5+ question is the "執分位 ≠ 5**" trap.
+export type DifficultyResults = Record<Difficulty, { correct: number; total: number }>
+function buildDifficultyResults(qs: PreparedQuestion[], ans: AnswerState[]): DifficultyResults {
+  const out: DifficultyResults = {
+    easy: { correct: 0, total: 0 },
+    medium: { correct: 0, total: 0 },
+    hard: { correct: 0, total: 0 },
+  }
+  qs.forEach((q, i) => {
+    out[q.difficulty].total++
+    if (ans[i]?.isCorrect) out[q.difficulty].correct++
+  })
+  return out
+}
+
 function buildTopicResults(qs: PreparedQuestion[], ans: AnswerState[]) {
   const map: Record<string, { topic: string; correct: number; total: number }> = {}
   qs.forEach((q, i) => {
@@ -222,6 +239,7 @@ export default function PracticeSession({
       const score = newAnswers.filter((a) => a?.isCorrect).length
       const subjectName = subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : tr('練習', 'Practice')
       const topicResults = buildTopicResults(questions, newAnswers)
+      const difficultyResults = buildDifficultyResults(questions, newAnswers)
       const elapsed = Math.floor((Date.now() - startTime) / 1000)
       const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId)).grade
       const resultData = {
@@ -231,6 +249,7 @@ export default function PracticeSession({
         subjectName,
         topicFilter: topicFilter ?? null,
         topicResults,
+        difficultyResults,
         elapsed,
       }
       localStorage.setItem('dse_result', JSON.stringify(resultData))
@@ -321,7 +340,8 @@ export default function PracticeSession({
         {/* Question card */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-4 animate-slide-up">
           {/* Meta */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-2 flex-wrap mb-6">
+            <DifficultyBadge difficulty={currentQ.difficulty} locale={locale === 'en' ? 'en' : 'zh'} />
             <span className="inline-flex items-center gap-1.5 text-xs text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full">
               <span>{currentQ.frameworkEmoji}</span>
               {tr(currentQ.frameworkZh, currentQ.frameworkEn)}
@@ -416,6 +436,26 @@ export default function PracticeSession({
                 <div className="text-sm text-slate-300 leading-relaxed border-t border-amber-500/15 pt-3">
                   <span className="text-amber-400 text-xs font-bold mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
                   <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                </div>
+              </div>
+            )}
+
+            {/* Path B — 名師速解 / MC Hack (the exam shortcut, distinct from the
+                formal Path A reasoning above). Shown whenever the question carries one. */}
+            {currentQ.mcHack && (
+              <div className="rounded-2xl p-5 mb-4 border bg-indigo-500/10 border-indigo-500/30">
+                <div className="flex items-center gap-2 mb-2">
+                  <Zap size={18} className="text-indigo-300" />
+                  <span className="text-indigo-200 font-semibold">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
+                </div>
+                <p className="text-xs text-slate-500 mb-3 leading-relaxed">
+                  {tr(
+                    '考場上唔使寫足證明 —— 呢招專為 MC 而設，秒級攞分。',
+                    'No full proof needed in the exam — this is the MC-only quick kill.',
+                  )}
+                </p>
+                <div className="text-sm text-slate-200 leading-relaxed border-t border-indigo-500/15 pt-3">
+                  <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
                 </div>
               </div>
             )}

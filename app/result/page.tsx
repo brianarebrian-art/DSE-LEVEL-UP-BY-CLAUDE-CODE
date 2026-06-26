@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Share2, RotateCcw } from 'lucide-react'
+import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
 import { predictGrade, gradeColors, gradeBgColors, type GradeResult } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
@@ -14,6 +14,9 @@ interface TopicResult {
   total: number
 }
 
+type TierKey = 'easy' | 'medium' | 'hard'
+type DifficultyResults = Record<TierKey, { correct: number; total: number }>
+
 interface StoredResult {
   score: number
   total: number
@@ -21,6 +24,7 @@ interface StoredResult {
   subjectName?: string
   topicFilter?: string | null
   topicResults: TopicResult[]
+  difficultyResults?: DifficultyResults
   elapsed: number
 }
 
@@ -47,6 +51,7 @@ export default function ResultPage() {
   const [gradeResult, setGradeResult] = useState<GradeResult | null>(null)
   const [showBadge, setShowBadge] = useState(false)
   const [shared, setShared] = useState(false)
+  const [reportCopied, setReportCopied] = useState(false)
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
@@ -85,6 +90,57 @@ export default function ResultPage() {
   const subjName = subjMeta
     ? (locale === 'en' ? subjMeta.nameEn : subjMeta.name)
     : (result.subjectName ?? r.defaultSubject)
+
+  // 中文科診斷警示：在 L2–3 基礎鞏固題全對（100%），卻在任何 L4/L5+ 題失手時觸發。
+  // 戳破「答對基礎題 ≠ 5**」的錯覺；文意推論措辭只適用於中文閱讀，故僅限中文科。
+  const dr = result.difficultyResults
+  const baseAllCorrect = !!dr && dr.easy.total > 0 && dr.easy.correct === dr.easy.total
+  const higherHasMiss =
+    !!dr && (dr.medium.correct < dr.medium.total || dr.hard.correct < dr.hard.total)
+  const showChineseWarning = result.subjectId === 'chinese' && baseAllCorrect && higherHasMiss
+
+  // ── LHYMSS teacher hand-in report (Action 3). Fills the fixed template with
+  // real diagnostic data; Name/Class stay as blanks for the student to complete.
+  const buildTeacherReport = (): string => {
+    const divider = '-'.repeat(50)
+    const pct = Math.round((result.score / result.total) * 100)
+    const date = new Date().toISOString().slice(0, 10)
+    const ranked = [...result.topicResults].sort(
+      (a, b) => a.correct / a.total - b.correct / b.total
+    )
+    const weak = ranked.filter((tr) => tr.correct / tr.total < 1)
+    const weakLines = (weak.length ? weak : ranked).slice(0, 2)
+    const weaknesses = weakLines.length
+      ? weakLines.map((tr) => `- ${tr.topic} (${tr.correct}/${tr.total})`).join('\n')
+      : '- None — consistent accuracy across all topics'
+    const topWeak = weakLines[0]?.topic
+    const actions = topWeak
+      ? `Prioritise targeted drilling on ${weakLines.map((w) => w.topic).join(' and ')}; review the Path A worked solutions, then re-attempt the L5+ 拔尖挑戰 set to convert recognition into mastery.`
+      : 'Maintain momentum: advance to full timed past-paper sets to consolidate exam pacing.'
+    return [
+      '【DSE Level Up V1.0 — LHYMSS Student Report】',
+      divider,
+      'Student Name: ____________________',
+      'Class & No.: ____________________',
+      `Date: ${date}`,
+      `Subject Evaluated: ${subjName}`,
+      divider,
+      `Diagnostic Level: ${gradeResult.grade}`,
+      `Accuracy Rate: ${result.score}/${result.total} (${pct}%)`,
+      'Core Weaknesses Identified:',
+      weaknesses,
+      `Recommended Actions: ${actions}`,
+      divider,
+      '*Generated under LHYMSS DSE prep standards.',
+    ].join('\n')
+  }
+
+  const copyTeacherReport = () => {
+    navigator.clipboard.writeText(buildTeacherReport()).then(() => {
+      setReportCopied(true)
+      setTimeout(() => setReportCopied(false), 2000)
+    })
+  }
 
   return (
     <div className="min-h-screen px-4 py-10">
@@ -140,6 +196,19 @@ export default function ResultPage() {
             </div>
           )}
         </div>
+
+        {/* 中文科診斷警示 — 基礎全對但高階失手：戳破「執分位 ≠ 5**」的錯覺 */}
+        {showChineseWarning && (
+          <div className="bg-rose-500/10 border border-rose-500/30 rounded-2xl p-5">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-rose-300 text-lg">⚠️</span>
+              <span className="text-rose-200 font-semibold text-sm">拔尖診斷警示</span>
+            </div>
+            <p className="text-sm text-rose-100/90 leading-relaxed">
+              你在基礎鞏固題得分率為 100%，但在高階文意推論題中仍有不足。在真實 DSE 中，簡單題目僅為『執分位』，若要穩奪 Level 4 或以上，必須克服拔尖挑戰題。答對基礎題絕不代表能在文憑試中取得 5**。
+            </p>
+          </div>
+        )}
 
         {/* Grade bar */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
@@ -218,8 +287,19 @@ export default function ResultPage() {
           })()}
         </div>
 
+        {/* LHYMSS teacher hand-in tool — copies the fixed report template to clipboard */}
+        <button
+          onClick={copyTeacherReport}
+          className="no-print w-full flex items-center justify-center gap-2 bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/30 text-indigo-200 font-semibold py-3.5 rounded-xl transition-all"
+        >
+          {reportCopied ? <ClipboardCheck size={16} className="text-emerald-300" /> : <ClipboardCopy size={16} />}
+          {reportCopied
+            ? (locale === 'en' ? 'Report copied — paste to your teacher' : '已複製報告 —— 貼給老師即可')
+            : (locale === 'en' ? 'Copy Report to Teacher' : '複製成績報告給老師')}
+        </button>
+
         {/* Action buttons */}
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="no-print grid sm:grid-cols-2 gap-3">
           <Link
             href={`/practice?subject=${result.subjectId ?? 'math'}`}
             className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 rounded-xl transition-all"
@@ -246,7 +326,7 @@ export default function ResultPage() {
               setTimeout(() => setShared(false), 1800)
             }
           }}
-          className="w-full flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 border border-slate-800 py-3 rounded-xl transition-all text-sm"
+          className="no-print w-full flex items-center justify-center gap-2 text-slate-500 hover:text-slate-300 border border-slate-800 py-3 rounded-xl transition-all text-sm"
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>

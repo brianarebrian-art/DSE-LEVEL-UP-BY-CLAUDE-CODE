@@ -60,3 +60,88 @@ html {
 
 /* Calm, sober feedback only — the gamification layer (flame / combo / shake /
    jackpot / rank shimmer / gacha cyber theme) was removed in the deep-work pivot. */
+
+/* ───────────────────────────────────────────────────────────────────────────
+   PRINT — clean A4 report for physical submission (LHYMSS teacher hand-in).
+   Strips every screen-only wrapper (nav bar, footer, buttons, dev tools) and
+   flattens the dark theme into bordered white blocks with black text so the
+   diagnostic report / writing draft prints legibly. Opt out with `.print-keep`.
+   ─────────────────────────────────────────────────────────────────────────── */
+@media print {
+  /* 1 — hide site chrome & all interactive controls */
+  nav,
+  footer,
+  button:not(.print-keep),
+  .no-print,
+  nextjs-portal {
+    display: none !important;
+  }
+
+  /* 2 — white A4 surface, black ink */
+  html,
+  body {
+    background: #ffffff !important;
+  }
+  body,
+  body * {
+    color: #0f172a !important;
+    text-shadow: none !important;
+  }
+
+  /* 3 — flatten dark cards into bordered white blocks */
+  [class*="bg-slate-9"],
+  [class*="bg-slate-8"],
+  [class*="bg-amber-5"],
+  [class*="bg-rose-5"],
+  [class*="bg-indigo-5"],
+  [class*="bg-green-5"],
+  [class*="bg-emerald-5"] {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: none !important;
+  }
+
+  /* 4 — A4 geometry: generous margins, no clipped cards across page breaks */
+  @page {
+    size: A4;
+    margin: 1.6cm;
+  }
+  .rounded-2xl,
+  .rounded-xl {
+    break-inside: avoid;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   V1.0 HELL-MODE difficulty badges (see lib/difficulty.ts + DifficultyBadge.tsx)
+   「閃爍」is deliberately a SLOW pulse / neon breathe (~1.6–1.8s per cycle, well
+   under 3 flashes/sec) so it reads as menacing WITHOUT the photosensitive-seizure
+   risk of a hard strobe. prefers-reduced-motion disables it entirely.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* 💀 地獄十八層 — bright-red pulse */
+@keyframes hell-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); opacity: 1; }
+  50%      { box-shadow: 0 0 12px 2px rgba(220, 38, 38, 0.6); opacity: 0.9; }
+}
+.animate-hell-pulse { animation: hell-pulse 1.6s ease-in-out infinite; }
+
+/* 👁️ 地獄中之地獄 — blood-red neon breathe around the black/gold badge */
+@keyframes hell-neon {
+  0%, 100% { box-shadow: 0 0 6px rgba(220, 38, 38, 0.6), inset 0 0 4px rgba(220, 38, 38, 0.4); }
+  50%      { box-shadow: 0 0 18px rgba(239, 68, 68, 0.95), inset 0 0 8px rgba(239, 68, 68, 0.6); }
+}
+.animate-hell-neon { animation: hell-neon 1.8s ease-in-out infinite; }
+
+/* 深黑背景 / 血紅霓虹邊框 / 燙金文字 */
+.hell-of-hell {
+  background: #0a0a0a;
+  border-color: #ef4444;
+  color: #f5d061;
+  text-shadow: 0 0 6px rgba(245, 208, 97, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hell-pulse,
+  .animate-hell-neon { animation: none; }
+}

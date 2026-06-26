@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, Lock, Sparkles } from 'lucide-react'
+import { ArrowRight, Lock, Sparkles, PenLine } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
@@ -131,6 +131,27 @@ export default function SubjectDetailView({
             </Link>
           )}
         </div>
+
+        {/* English-only: Paper 2 Writing Studio entry */}
+        {meta.id === 'english' && (
+          <Link
+            href="/writing"
+            className="group bg-gradient-to-r from-indigo-500/10 to-indigo-500/5 hover:from-indigo-500/20 border border-indigo-500/25 hover:border-indigo-500/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <PenLine size={20} className="text-indigo-300 shrink-0" />
+              <div>
+                <div className="font-bold text-slate-100">{en ? 'Paper 2 · Writing Studio' : '卷二・寫作工作室'}</div>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  {en
+                    ? 'Drafting canvas + HKEAA 7-point self-assessment rubric (2023 "Poems & Songs" theme).'
+                    : '草稿區 + HKEAA 7 分制自評量表（2023「Poems & Songs」主題）。'}
+                </p>
+              </div>
+            </div>
+            <ArrowRight size={16} className="text-indigo-300 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        )}
 
         {/* Topic list */}
         <h2 className="text-lg font-bold mb-4 text-slate-300">{sd.byTopic}</h2>

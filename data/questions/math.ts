@@ -22,6 +22,10 @@ const T = {
   percentage: { id: 'percentage', zh: '百分數與利率', en: 'Percentages & Interest' },
   coordinate: { id: 'coordinate_geometry', zh: '坐標幾何', en: 'Coordinate Geometry' },
   inequalities: { id: 'inequalities', zh: '不等式', en: 'Inequalities' },
+  circles: { id: 'circles', zh: '圓的幾何特性', en: 'Properties of Circles' },
+  trig3d: { id: 'trig_3d', zh: '三維三角學', en: '3D Trigonometry' },
+  permcomb: { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations' },
+  locus: { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates' },
 } as const
 
 const FW = {
@@ -41,6 +45,7 @@ type FwMeta = (typeof FW)[keyof typeof FW]
 function q(
   id: string, topic: TopicMeta, fw: FwMeta, difficulty: 'easy' | 'medium' | 'hard',
   year: number, marks: number, content: Pair, opts: Pair[], explanation: Pair,
+  mcHack?: Pair,
 ): Question {
   return {
     id, type: 'mc', subject: 'math',
@@ -51,6 +56,7 @@ function q(
     options: opts.map((o) => o[0]), optionsEn: opts.map((o) => o[1]),
     correctIndex: 0,
     explanation: explanation[0], explanationEn: explanation[1],
+    mcHack: mcHack?.[0], mcHackEn: mcHack?.[1],
     marks,
   }
 }
@@ -470,9 +476,170 @@ const ineqParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
 ]
 const ineqQs = ineqParams.map(([a, b, y, d], i) => ineq(i + 1, a, b, y, d))
 
+// ═══════════════════════════════════════════════════════════════════════════
+// L5+ KILLER SET — hand-authored Paper-2 拔尖 questions, every figure verified.
+// Each carries TWO explanation paths:
+//   • explanation = Path A  → rigorous HKEAA marking-scheme reasoning ($$ display)
+//   • mcHack       = Path B  → quick-kill MC shortcut (speed over rigour)
+// All distractors are "致命陷阱": each is the answer of one specific, common error.
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ── Properties of Circles（圓的幾何特性）──────────────────────────────────────
+const circleQs: Question[] = [
+  q('math_circle_1', T.circles, FW.geometry, 'hard', 2023, 1,
+    [String.raw`由圓外一點 $P$ 向圓心為 $O$ 的圓引兩條切線，分別切於 $A$、$B$。已知 $\angle APB = 50^\circ$，$C$ 為優弧 $AB$ 上一點。求 $\angle ACB$。`,
+     String.raw`From an external point $P$, two tangents touch a circle (centre $O$) at $A$ and $B$. Given $\angle APB = 50^\circ$ and $C$ is a point on the major arc $AB$, find $\angle ACB$.`],
+    [
+      [String.raw`$65^\circ$`, String.raw`$65^\circ$`],
+      [String.raw`$50^\circ$`, String.raw`$50^\circ$`],
+      [String.raw`$130^\circ$`, String.raw`$130^\circ$`],
+      [String.raw`$25^\circ$`, String.raw`$25^\circ$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】切線垂直於過切點的半徑，故 $\angle OAP=\angle OBP=90^\circ$。四邊形 $PAOB$ 的內角和為 $360^\circ$：$$\angle AOB = 360^\circ-90^\circ-90^\circ-50^\circ = 130^\circ.$$ $\angle AOB$ 是劣弧 $AB$ 所對的圓心角。由「圓心角 $=2\times$ 圓周角」（$\angle$ at centre $=2\,\angle$ at circumference），優弧上的 $C$ 對劣弧 $AB$：$$\angle ACB = \tfrac{1}{2}\angle AOB = \tfrac{1}{2}(130^\circ)=65^\circ.$$ 陷阱：$130^\circ$ 是圓心角本身（漏除以 $2$）；$25^\circ$ 是 $\tfrac{1}{2}\angle APB$；$50^\circ$ 直接抄題目。`,
+     String.raw`【Marking Scheme】Tangent $\perp$ radius at contact, so $\angle OAP=\angle OBP=90^\circ$. Angle sum of quadrilateral $PAOB=360^\circ$: $$\angle AOB = 360^\circ-90^\circ-90^\circ-50^\circ = 130^\circ.$$ $\angle AOB$ is the central angle on minor arc $AB$; by "angle at centre $=2\times$ angle at circumference", $$\angle ACB = \tfrac{1}{2}(130^\circ)=65^\circ.$$ Traps: $130^\circ$ forgets the $\tfrac12$; $25^\circ=\tfrac12\angle APB$; $50^\circ$ just copies the question.`],
+    [String.raw`兩切線夾角與遠側圓周角有固定關係：$$\angle ACB = 90^\circ-\tfrac{1}{2}\angle APB.$$ 直接代入 $90^\circ-25^\circ=65^\circ$，免畫圖三秒鎖定。`,
+     String.raw`The two-tangent angle and the far circumference angle obey $$\angle ACB = 90^\circ-\tfrac{1}{2}\angle APB.$$ Plug in: $90^\circ-25^\circ=65^\circ$ — no diagram, three seconds.`]),
+
+  q('math_circle_2', T.circles, FW.geometry, 'hard', 2022, 1,
+    [String.raw`圓內一條弦長 $16$，其與圓心的距離為 $6$。求圓的半徑。`,
+     String.raw`A chord of a circle has length $16$ and is at a distance $6$ from the centre. Find the radius.`],
+    [
+      [String.raw`$10$`, String.raw`$10$`],
+      [String.raw`$14$`, String.raw`$14$`],
+      [String.raw`$\sqrt{292}$`, String.raw`$\sqrt{292}$`],
+      [String.raw`$2\sqrt{7}$`, String.raw`$2\sqrt{7}$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】由圓心向弦作垂線，垂足平分該弦（垂直於弦的直徑平分弦），故半弦長 $=\tfrac{16}{2}=8$。此半弦、圓心距與半徑構成直角三角形：$$r^2 = 8^2 + 6^2 = 64+36 = 100 \Rightarrow r = 10.$$ 陷阱：$\sqrt{292}=\sqrt{16^2+6^2}$ 是「忘記把弦折半」；$2\sqrt7=\sqrt{64-36}$ 是「相減而非相加」；$14=8+6$ 是「直接相加」。`,
+     String.raw`【Marking Scheme】The perpendicular from the centre bisects the chord, so the half-chord $=\tfrac{16}{2}=8$. Half-chord, centre-distance and radius form a right triangle: $$r^2 = 8^2+6^2 = 100 \Rightarrow r=10.$$ Traps: $\sqrt{292}=\sqrt{16^2+6^2}$ forgets to halve the chord; $2\sqrt7=\sqrt{64-36}$ subtracts; $14=8+6$ just adds.`],
+    [String.raw`認出 $6\text{–}8\text{–}10$ 畢氏三元組（$3\text{–}4\text{–}5$ 的兩倍）：半弦 $8$、距離 $6$ $\Rightarrow$ 半徑 $10$，毋須開方。`,
+     String.raw`Spot the $6\text{–}8\text{–}10$ Pythagorean triple (double of $3\text{–}4\text{–}5$): half-chord $8$, distance $6$ $\Rightarrow$ radius $10$ — no surd needed.`]),
+
+  q('math_circle_3', T.circles, FW.geometry, 'hard', 2021, 1,
+    [String.raw`$ABCD$ 為圓內接四邊形，$AB=AD$ 且 $\angle ABD = 50^\circ$。求 $\angle BCD$。`,
+     String.raw`$ABCD$ is a cyclic quadrilateral with $AB=AD$ and $\angle ABD = 50^\circ$. Find $\angle BCD$.`],
+    [
+      [String.raw`$100^\circ$`, String.raw`$100^\circ$`],
+      [String.raw`$80^\circ$`, String.raw`$80^\circ$`],
+      [String.raw`$130^\circ$`, String.raw`$130^\circ$`],
+      [String.raw`$50^\circ$`, String.raw`$50^\circ$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】$\triangle ABD$ 中 $AB=AD$，故底角相等：$\angle ADB=\angle ABD=50^\circ$。三角形內角和：$$\angle BAD = 180^\circ-50^\circ-50^\circ = 80^\circ.$$ 圓內接四邊形對角互補（opp. $\angle$s, cyclic quad.）：$$\angle BCD = 180^\circ-\angle BAD = 180^\circ-80^\circ = 100^\circ.$$ 陷阱：$80^\circ$ 是 $\angle BAD$ 本身（忘了取補角）；$130^\circ=180^\circ-50^\circ$ 用錯了角；$50^\circ$ 抄題目。`,
+     String.raw`【Marking Scheme】In $\triangle ABD$, $AB=AD$ so base angles are equal: $\angle ADB=\angle ABD=50^\circ$. Angle sum: $$\angle BAD = 180^\circ-100^\circ = 80^\circ.$$ Opposite angles of a cyclic quadrilateral are supplementary: $$\angle BCD = 180^\circ-80^\circ = 100^\circ.$$ Traps: $80^\circ$ is $\angle BAD$ (forgot to take the supplement); $130^\circ=180^\circ-50^\circ$ uses the wrong angle; $50^\circ$ copies the question.`],
+    [String.raw`等腰加圓內接可一步合併：$\angle BCD = 180^\circ-(180^\circ-2\times50^\circ)=2\angle ABD$。故 $\angle BCD = 2\times50^\circ = 100^\circ$。`,
+     String.raw`Isosceles + cyclic collapses to one step: $\angle BCD = 180^\circ-(180^\circ-2\times50^\circ)=2\angle ABD$. So $\angle BCD = 2\times50^\circ = 100^\circ$.`]),
+]
+
+// ── 3D Trigonometry（三維三角學）──────────────────────────────────────────────
+const trig3dQs: Question[] = [
+  q('math_trig3d_1', T.trig3d, FW.geometry, 'hard', 2023, 1,
+    [String.raw`長方體 $ABCD\text{-}EFGH$ 的底面 $ABCD$ 長 $8$、闊 $6$，高 $10$（$G$ 在 $C$ 正上方）。求空間對角線 $AG$ 與底面 $ABCD$ 所成的角（準至最接近的度）。`,
+     String.raw`In a cuboid $ABCD\text{-}EFGH$ the base $ABCD$ is $8$ by $6$ and the height is $10$ ($G$ directly above $C$). Find the angle between the space diagonal $AG$ and the base $ABCD$ (to the nearest degree).`],
+    [
+      [String.raw`$45^\circ$`, String.raw`$45^\circ$`],
+      [String.raw`$51^\circ$`, String.raw`$51^\circ$`],
+      [String.raw`$39^\circ$`, String.raw`$39^\circ$`],
+      [String.raw`$50^\circ$`, String.raw`$50^\circ$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】$G$ 在底面的投影為 $C$，故 $AG$ 與底面的夾角即 $\angle GAC$。先求底面對角線：$$AC = \sqrt{8^2+6^2} = \sqrt{100} = 10.$$ $\triangle GAC$ 中 $GC\perp$ 底面，$GC=10$：$$\tan\angle GAC = \frac{GC}{AC} = \frac{10}{10} = 1 \Rightarrow \angle GAC = 45^\circ.$$ 陷阱：$51^\circ=\tan^{-1}\!\frac{10}{8}$ 誤用「邊長 $8$」作鄰邊；$39^\circ=\tan^{-1}\!\frac{8}{10}$ 把對邊鄰邊倒轉；$50^\circ$ 是胡亂約整。`,
+     String.raw`【Marking Scheme】The projection of $G$ on the base is $C$, so the required angle is $\angle GAC$. Base diagonal: $$AC=\sqrt{8^2+6^2}=10.$$ In $\triangle GAC$, $GC\perp$ base and $GC=10$: $$\tan\angle GAC=\frac{GC}{AC}=\frac{10}{10}=1 \Rightarrow \angle GAC=45^\circ.$$ Traps: $51^\circ=\tan^{-1}\frac{10}{8}$ uses an edge as the adjacent side; $39^\circ=\tan^{-1}\frac{8}{10}$ flips opposite/adjacent; $50^\circ$ is loose rounding.`],
+    [String.raw`致命關鍵：鄰邊一定是「底面對角線」而非任何一條邊。先算對角線 $\sqrt{8^2+6^2}=10$，剛好等於高 $10$ $\Rightarrow \tan=1 \Rightarrow 45^\circ$，秒選。`,
+     String.raw`Killer point: the adjacent side is the BASE DIAGONAL, never an edge. Diagonal $\sqrt{8^2+6^2}=10$ equals the height $10$ $\Rightarrow \tan=1 \Rightarrow 45^\circ$ instantly.`]),
+
+  q('math_trig3d_2', T.trig3d, FW.geometry, 'hard', 2022, 1,
+    [String.raw`正四棱錐 $V\text{-}ABCD$ 的底為邊長 $6$ 的正方形，頂點 $V$ 在底面中心 $O$ 的正上方，高 $VO=4$。求側面與底面所成的二面角（準至最接近的度）。`,
+     String.raw`A right pyramid $V\text{-}ABCD$ has a square base of side $6$; the apex $V$ is directly above the centre $O$ with $VO=4$. Find the dihedral angle between a slant face and the base (to the nearest degree).`],
+    [
+      [String.raw`$53^\circ$`, String.raw`$53^\circ$`],
+      [String.raw`$37^\circ$`, String.raw`$37^\circ$`],
+      [String.raw`$43^\circ$`, String.raw`$43^\circ$`],
+      [String.raw`$45^\circ$`, String.raw`$45^\circ$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】設 $M$ 為一底邊的中點。二面角的量度為 $\angle VMO$（$VM\perp$ 底邊、$OM\perp$ 底邊）。$O$ 到邊中點的距離（邊心距）為 $$OM=\tfrac{6}{2}=3.$$ $\triangle VOM$ 中 $VO\perp OM$，$VO=4$：$$\tan\angle VMO = \frac{VO}{OM} = \frac{4}{3} \Rightarrow \angle VMO \approx 53^\circ.$$ 陷阱：$37^\circ=\tan^{-1}\frac34$ 把對鄰倒轉；$43^\circ$ 誤用半對角線 $3\sqrt2$ 作鄰邊（$\tan^{-1}\frac{4}{3\sqrt2}$）；$45^\circ$ 漫無根據。`,
+     String.raw`【Marking Scheme】Let $M$ be the midpoint of a base edge. The dihedral angle is $\angle VMO$. The apothem is $$OM=\tfrac{6}{2}=3.$$ In $\triangle VOM$, $VO\perp OM$ with $VO=4$: $$\tan\angle VMO=\frac{VO}{OM}=\frac{4}{3} \Rightarrow \angle VMO\approx 53^\circ.$$ Traps: $37^\circ=\tan^{-1}\frac34$ flips the ratio; $43^\circ$ wrongly uses the half-diagonal $3\sqrt2$ as adjacent; $45^\circ$ is a guess.`],
+    [String.raw`又是 $3\text{–}4\text{–}5$！邊心距 $OM=3$、高 $4$ $\Rightarrow \tan=\tfrac43 \Rightarrow 53^\circ$。切忌把「邊心距 $3$」與「半對角線 $3\sqrt2$」混淆——二面角沿邊，用的是邊心距。`,
+     String.raw`Another $3\text{–}4\text{–}5$! Apothem $OM=3$, height $4$ $\Rightarrow \tan=\tfrac43 \Rightarrow 53^\circ$. Never confuse the apothem $3$ with the half-diagonal $3\sqrt2$ — a dihedral along an edge uses the apothem.`]),
+]
+
+// ── Permutations & Combinations（排列與組合）──────────────────────────────────
+const pcQs: Question[] = [
+  q('math_pc_1', T.permcomb, FW.decompose, 'hard', 2023, 1,
+    [String.raw`$4$ 名男生與 $3$ 名女生排成一行，要求任何兩名女生都不相鄰。共有多少種排法？`,
+     String.raw`$4$ boys and $3$ girls stand in a row so that no two girls are adjacent. How many arrangements are there?`],
+    [
+      [String.raw`$1440$`, String.raw`$1440$`],
+      [String.raw`$5040$`, String.raw`$5040$`],
+      [String.raw`$144$`, String.raw`$144$`],
+      [String.raw`$720$`, String.raw`$720$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】先排 $4$ 名男生：$4!=24$ 種。男生之間及兩端共有 $5$ 個空位 $\_\,B\,\_\,B\,\_\,B\,\_\,B\,\_$。將 $3$ 名女生放入不同空位（保證互不相鄰）為有序選位：$$P(5,3)=5\times4\times3=60.$$ 由乘法原理：$$24\times60 = 1440.$$ 陷阱：$5040=7!$ 是「忽略限制」；$720=6!$ 或 $144=4!\times6$ 是「分組方法用錯」。`,
+     String.raw`【Marking Scheme】Arrange the $4$ boys: $4!=24$. This creates $5$ gaps $\_\,B\,\_\,B\,\_\,B\,\_\,B\,\_$. Place the $3$ girls into distinct gaps (so none are adjacent), an ordered selection: $$P(5,3)=5\times4\times3=60.$$ By the multiplication principle: $$24\times60=1440.$$ Traps: $5040=7!$ ignores the restriction; $720=6!$ and $144$ are mis-applied grouping.`],
+    [String.raw`「插空法」(gap method)：先放沒限制的男生 ($4!$)，再把女生塞進 $5$ 個空隙 ($P(5,3)$)。$24\times60=1440$。凡見「不相鄰」即用插空。`,
+     String.raw`Gap method: place the unconstrained boys first ($4!$), then slot girls into the $5$ gaps ($P(5,3)$). $24\times60=1440$. "Not adjacent" $\Rightarrow$ always use gaps.`]),
+
+  q('math_pc_2', T.permcomb, FW.decompose, 'hard', 2022, 1,
+    [String.raw`從 $5$ 名男生及 $4$ 名女生中隨機選出 $3$ 人。求所選 $3$ 人中至少有 $1$ 名女生的概率。`,
+     String.raw`$3$ people are chosen at random from $5$ boys and $4$ girls. Find the probability that at least $1$ girl is chosen.`],
+    [
+      [String.raw`$\dfrac{37}{42}$`, String.raw`$\dfrac{37}{42}$`],
+      [String.raw`$\dfrac{5}{42}$`, String.raw`$\dfrac{5}{42}$`],
+      [String.raw`$\dfrac{1}{2}$`, String.raw`$\dfrac{1}{2}$`],
+      [String.raw`$\dfrac{4}{9}$`, String.raw`$\dfrac{4}{9}$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】用「補集」最快。總選法 $$C_3^9=\binom{9}{3}=84.$$ 「沒有女生」（全男生）的選法 $$C_3^5=\binom{5}{3}=10.$$ 故 $$P(\text{無女生})=\frac{10}{84}=\frac{5}{42},$$ $$P(\text{至少 1 女})=1-\frac{5}{42}=\frac{37}{42}.$$ 陷阱：$\frac{5}{42}$ 是補事件本身（漏了 $1-$）；$\frac12$、$\frac49$ 是估錯比例。`,
+     String.raw`【Marking Scheme】Use the complement. Total $$\binom{9}{3}=84.$$ All-boys (no girl) $$\binom{5}{3}=10,$$ so $$P(\text{no girl})=\frac{10}{84}=\frac{5}{42}, \quad P(\ge 1\text{ girl})=1-\frac{5}{42}=\frac{37}{42}.$$ Traps: $\frac{5}{42}$ is the complement itself (forgot $1-$); $\frac12,\frac49$ are wrong ratios.`],
+    [String.raw`見「至少一個」即用補集：$1-P(\text{一個都沒有})$。直接數 $1,2,3$ 名女生會做三次組合，慢且易錯。$1-\frac{10}{84}=\frac{37}{42}$。`,
+     String.raw`"At least one" $\Rightarrow$ complement: $1-P(\text{none})$. Counting $1,2,3$ girls separately is three combinations — slow and error-prone. $1-\frac{10}{84}=\frac{37}{42}$.`]),
+
+  q('math_pc_3', T.permcomb, FW.decompose, 'hard', 2021, 1,
+    [String.raw`$4$ 名男生與 $3$ 名女生排成一行，要求 $3$ 名女生必須全部相鄰（坐在一起）。共有多少種排法？`,
+     String.raw`$4$ boys and $3$ girls stand in a row with all $3$ girls together. How many arrangements are there?`],
+    [
+      [String.raw`$720$`, String.raw`$720$`],
+      [String.raw`$5040$`, String.raw`$5040$`],
+      [String.raw`$144$`, String.raw`$144$`],
+      [String.raw`$240$`, String.raw`$240$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】把 $3$ 名女生「綑綁」成一個整體，與 $4$ 名男生合共 $5$ 個單位排列：$$5!=120.$$ 整體內部 $3$ 名女生可互換：$$3!=6.$$ 由乘法原理：$$120\times6 = 720.$$ 陷阱：$5040=7!$ 是「忽略相鄰限制」；$240$、$144$ 是單位數或內部數算錯。`,
+     String.raw`【Marking Scheme】Bind the $3$ girls into one block; with the $4$ boys that is $5$ units: $$5!=120.$$ Inside the block the girls permute: $$3!=6.$$ Hence $$120\times6=720.$$ Traps: $5040=7!$ ignores the "together" condition; $240,144$ miscount the units or the internal order.`],
+    [String.raw`「綑綁法」(block method)：女生黐成一「超級人」，先排 $5$ 個單位 ($5!$)，再乘女生內部 $3!$。$120\times6=720$。它與 math_pc_1 的插空法剛好相反——相鄰用綑綁，不相鄰用插空。`,
+     String.raw`Block method: glue the girls into one "super-person", arrange $5$ units ($5!$), then $\times 3!$ inside. $120\times6=720$. It is the mirror of the gap method — "together" $\Rightarrow$ glue, "apart" $\Rightarrow$ gaps.`]),
+]
+
+// ── Locus & Coordinates（軌跡與坐標）──────────────────────────────────────────
+const locusQs: Question[] = [
+  q('math_locus_1', T.locus, FW.geometry, 'hard', 2023, 1,
+    [String.raw`動點 $P$ 與兩定點 $A(1,2)$、$B(5,6)$ 保持等距。求 $P$ 的軌跡方程。`,
+     String.raw`A moving point $P$ is equidistant from the fixed points $A(1,2)$ and $B(5,6)$. Find the equation of the locus of $P$.`],
+    [
+      [String.raw`$x+y-7=0$`, String.raw`$x+y-7=0$`],
+      [String.raw`$y=x+1$`, String.raw`$y=x+1$`],
+      [String.raw`$x+y-1=0$`, String.raw`$x+y-1=0$`],
+      [String.raw`$x+y+7=0$`, String.raw`$x+y+7=0$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】與兩定點等距的軌跡是線段 $AB$ 的垂直平分線。中點 $$M=\left(\tfrac{1+5}{2},\tfrac{2+6}{2}\right)=(3,4).$$ $AB$ 的斜率 $$m_{AB}=\frac{6-2}{5-1}=1,$$ 故垂直平分線斜率為 $-1$。過 $M(3,4)$：$$y-4=-1(x-3) \Rightarrow x+y-7=0.$$ 陷阱：$y=x+1$ 正是直線 $AB$ 本身（忘了取垂直）；$x+y-1=0$ 用錯中點/符號；$x+y+7=0$ 是常數項符號錯。`,
+     String.raw`【Marking Scheme】The locus equidistant from two points is the perpendicular bisector of $AB$. Midpoint $$M=(3,4).$$ Slope $$m_{AB}=\frac{6-2}{5-1}=1,$$ so the bisector has slope $-1$. Through $M(3,4)$: $$y-4=-1(x-3) \Rightarrow x+y-7=0.$$ Traps: $y=x+1$ is line $AB$ itself (forgot perpendicular); $x+y-1=0$ mishandles the midpoint/sign; $x+y+7=0$ has a sign error.`],
+    [String.raw`距離平方法直接夾死：$PA^2=PB^2$ $\Rightarrow (x-1)^2+(y-2)^2=(x-5)^2+(y-6)^2$。$x^2,y^2$ 自動消去，餘 $$-2x-4y+5=-10x-12y+61 \Rightarrow x+y-7=0.$$ 完全免求斜率。`,
+     String.raw`Squared-distance shortcut: $PA^2=PB^2 \Rightarrow (x-1)^2+(y-2)^2=(x-5)^2+(y-6)^2$. The $x^2,y^2$ cancel, leaving $$-2x-4y+5=-10x-12y+61 \Rightarrow x+y-7=0.$$ No slope needed.`]),
+
+  q('math_locus_2', T.locus, FW.geometry, 'hard', 2022, 1,
+    [String.raw`動點 $P$ 與定點 $F(0,2)$ 的距離，恆等於 $P$ 與直線 $y=-2$ 的距離。求 $P$ 的軌跡方程。`,
+     String.raw`A moving point $P$ keeps its distance from the fixed point $F(0,2)$ equal to its distance from the line $y=-2$. Find the equation of the locus of $P$.`],
+    [
+      [String.raw`$x^2=8y$`, String.raw`$x^2=8y$`],
+      [String.raw`$x^2=-8y$`, String.raw`$x^2=-8y$`],
+      [String.raw`$y^2=8x$`, String.raw`$y^2=8x$`],
+      [String.raw`$x^2=4y$`, String.raw`$x^2=4y$`],
+    ],
+    [String.raw`【標準證明 Marking Scheme】設 $P=(x,y)$。$P$ 到 $F$ 的距離 $=\sqrt{x^2+(y-2)^2}$；$P$ 到直線 $y=-2$ 的距離 $=|y+2|$。令兩者相等並平方：$$x^2+(y-2)^2=(y+2)^2.$$ 展開：$$x^2+y^2-4y+4=y^2+4y+4 \Rightarrow x^2=8y.$$ 陷阱：$x^2=-8y$ 開口方向相反（符號錯）；$y^2=8x$ 把軸搞反；$x^2=4y$ 漏了因子。`,
+     String.raw`【Marking Scheme】Let $P=(x,y)$. Distance to $F=\sqrt{x^2+(y-2)^2}$; distance to $y=-2$ is $|y+2|$. Equate and square: $$x^2+(y-2)^2=(y+2)^2.$$ Expand: $$x^2+y^2-4y+4=y^2+4y+4 \Rightarrow x^2=8y.$$ Traps: $x^2=-8y$ opens the wrong way; $y^2=8x$ swaps the axis; $x^2=4y$ drops a factor.`],
+    [String.raw`認出這是拋物線的定義：焦點 $F(0,2)$、準線 $y=-2$。標準式 $x^2=4py$，其中 $p=2$（焦點到頂點距離）$\Rightarrow x^2=8y$，毋須展開。`,
+     String.raw`Recognise the parabola definition: focus $F(0,2)$, directrix $y=-2$. Standard form $x^2=4py$ with $p=2$ $\Rightarrow x^2=8y$ — no expansion needed.`]),
+]
+
 export const mathQuestions: Question[] = [
   ...quadQs, ...derivQs, ...probQs, ...funcQs, ...trigQs, ...statQs,
   ...logQs, ...seqQs, ...pctQs, ...coordQs, ...ineqQs,
+  ...circleQs, ...trig3dQs, ...pcQs, ...locusQs,
 ]
 
 export const mathTopics: Topic[] = [
@@ -487,4 +654,8 @@ export const mathTopics: Topic[] = [
   { id: 'percentage', zh: '百分數與利率', en: 'Percentages & Interest', framework: '建模能力', frameworkEn: 'Modelling', emoji: '🏗️', count: 11 },
   { id: 'coordinate_geometry', zh: '坐標幾何', en: 'Coordinate Geometry', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 11 },
   { id: 'inequalities', zh: '不等式', en: 'Inequalities', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 11 },
+  { id: 'circles', zh: '圓的幾何特性', en: 'Properties of Circles', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 3 },
+  { id: 'trig_3d', zh: '三維三角學', en: '3D Trigonometry', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 2 },
+  { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 3 },
+  { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 2 },
 ]
