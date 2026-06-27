@@ -2,6 +2,8 @@ import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 
 // HKDSE Business, Accounting & Financial Studies — 120 bilingual.
+import { bafsHellQuestions, bafsHellTopics } from './bafs-hell'
+
 const q = makeQ('bafs')
 
 const T = {
@@ -714,6 +716,7 @@ const personal: Question[] = [
 
 export const bafsQuestions: Question[] = [
   ...env, ...mgmt, ...acct, ...fin, ...personal,
+  ...bafsHellQuestions, // ratio/costing/depreciation 5★★ hell set
 ]
 
 export const bafsTopics: Topic[] = topicList([
@@ -723,3 +726,4 @@ export const bafsTopics: Topic[] = topicList([
   { topic: T.fin, fw: FW.calc, count: fin.length },
   { topic: T.personal, fw: FW.concept, count: personal.length },
 ])
+bafsTopics.push(...bafsHellTopics)

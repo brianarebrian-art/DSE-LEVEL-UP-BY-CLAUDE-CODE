@@ -13,11 +13,8 @@ import {
 import { getSubject } from '@/data/subjects'
 import { gradeBgColors } from '@/lib/grading'
 import { useLocale } from '@/lib/i18n'
-import { usePlan } from '@/lib/usePlan'
-import { FREE_ATTEMPTS_TOTAL } from '@/lib/entitlements'
 import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
-import UpgradeModal from '@/components/UpgradeModal'
 import SyncStatus from '@/components/SyncStatus'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
@@ -38,11 +35,9 @@ export default function DashboardPage() {
   const d = t.dashboard
   const en = locale === 'en'
   const router = useRouter()
-  const { isPremium, signedIn } = usePlan()
   const { version } = useSync() // re-read local progress after a cloud pull/merge
   const [stats, setStats] = useState<ProgressStats | null>(null)
   const [topics, setTopics] = useState<TopicStatEntry[]>([])
-  const [modalOpen, setModalOpen] = useState(false)
   const [confirmReset, setConfirmReset] = useState(false)
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
@@ -97,11 +92,8 @@ export default function DashboardPage() {
   // ROI: topics the user has a solid grip on (≥70% win rate over a real sample).
   const conquered = topics.filter((e) => e.total >= 4 && winRate(e) >= 0.7).length
   const onRepair = () => {
-    if (!isPremium) {
-      setModalOpen(true)
-      return
-    }
-    // Target the subject of the single weakest topic (fallback: most-practised).
+    // Free for everyone: target the subject of the single weakest topic
+    // (fallback: most-practised).
     const weak = weakestTopics({ min: 1, limit: 1 })[0]
     const sid = weak?.subjectId ?? stats.subjects[0]?.subjectId
     if (sid) router.push(`/practice?subject=${sid}&mode=weakness`)
@@ -117,22 +109,6 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        {/* LHYMSS V1.0 exclusive banner */}
-        <div className="mb-6 bg-gradient-to-r from-red-950/50 to-amber-500/10 border border-red-800/50 rounded-2xl px-5 py-3 flex items-center gap-3">
-          <span className="text-xl shrink-0">🔥</span>
-          <div className="min-w-0">
-            <div className="font-bold text-slate-100 text-sm">
-              DSE Level Up V1.0 ·{' '}
-              {locale === 'en' ? 'Exclusive for LHYMSS' : '嶺南衡怡紀念中學專屬備考版'}
-            </div>
-            <p className="text-xs text-red-300/70 mt-0.5">
-              {locale === 'en'
-                ? 'Unofficial DSE Hell Training Ground — for LHYMSS students & teachers.'
-                : '非官方 DSE 地獄極限修煉場 — 專為嶺南衡怡師生而設。'}
-            </p>
-          </div>
-        </div>
-
         {/* Header */}
         <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
           <div>
@@ -232,9 +208,6 @@ export default function DashboardPage() {
               >
                 <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '智能生成：專屬弱項修復卷'}
               </button>
-              {!isPremium && (
-                <p className="text-[11px] text-slate-500 mt-2">{en ? 'Premium feature' : 'Premium 專屬功能'}</p>
-              )}
             </div>
           </div>
         </div>
@@ -350,20 +323,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {modalOpen && (
-        <UpgradeModal
-          cap={FREE_ATTEMPTS_TOTAL}
-          signedIn={signedIn}
-          onClose={() => setModalOpen(false)}
-          kicker={en ? 'Locked' : '未解鎖'}
-          title={en ? 'Premium feature' : 'Premium 專屬功能'}
-          body={
-            en
-              ? 'The weakness repair worksheet is Premium-only. Sign in with a school / registered email, or upgrade, to unlock adaptive drills.'
-              : '弱項修復卷係 Premium 專屬功能。用學校／已登記電郵登入，或升級 Premium，即可解鎖自適應特訓。'
-          }
-        />
-      )}
     </div>
   )
 }

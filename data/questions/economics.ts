@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { economicsHellQuestions, economicsHellTopics } from './economics-hell'
 
 // HKDSE Economics (Micro + Macro) — 120 bilingual, application/analysis level.
 const q = makeQ('economics')
@@ -755,6 +756,7 @@ trade.push(
 
 export const economicsQuestions: Question[] = [
   ...basic, ...ppf, ...ds, ...elas, ...firm, ...structure, ...failure, ...macro, ...trade,
+  ...economicsHellQuestions, // multi-step calculation/analysis hell set (5★★)
 ]
 
 export const economicsTopics: Topic[] = topicList([
@@ -768,3 +770,4 @@ export const economicsTopics: Topic[] = topicList([
   { topic: T.macro, fw: FW.market, count: macro.length },
   { topic: T.trade, fw: FW.intl, count: trade.length },
 ])
+economicsTopics.push(...economicsHellTopics)

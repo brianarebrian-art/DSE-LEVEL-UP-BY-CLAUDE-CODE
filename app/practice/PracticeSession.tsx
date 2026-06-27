@@ -9,13 +9,24 @@ import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
-import { incrementGlobalAttemptsUsed } from '@/lib/freeUsage'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 import { useLocale } from '@/lib/i18n'
 import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock } from 'lucide-react'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
+import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
+
+// The forced-lock countdown (seconds) after a wrong answer on a HARD question.
+const LOCKOUT_SECONDS = 60
+
+// A lockout follow-up prepared for display: options shuffled, correct tracked by text.
+interface PreparedLockout {
+  prompt: LPair
+  options: LPair[]
+  correctZh: string
+  explain: LPair
+}
 
 // 三維逆向錯因 (the forced self-diagnosis behind the "答錯即鎖死" lockout). The student
 // must own WHICH underlying trap caught them before the Marking Scheme unlocks.
@@ -195,7 +206,6 @@ interface SessionProps {
   subjectId: string
   topicFilter: string | null
   sessionSize: number
-  countsAgainstFreeQuota: boolean
   mode?: 'normal' | 'weakness'
 }
 
@@ -208,7 +218,6 @@ export default function PracticeSession({
   subjectId,
   topicFilter,
   sessionSize,
-  countsAgainstFreeQuota,
   mode = 'normal',
 }: SessionProps) {
   const router = useRouter()
@@ -223,6 +232,11 @@ export default function PracticeSession({
   // Which reverse-cause the student admitted to for the current wrong answer.
   // While null on a WRONG answer, the lockout overlay hides the Marking Scheme.
   const [diagnosed, setDiagnosed] = useState<ReverseCause | null>(null)
+  // 60-second forced lockout (HARD wrong answers only): a metacognition follow-up
+  // about the chosen error cause + a countdown that both must clear before "Next".
+  const [followup, setFollowup] = useState<PreparedLockout | null>(null)
+  const [followupPick, setFollowupPick] = useState<string | null>(null)
+  const [lockSecs, setLockSecs] = useState(0)
   const [elapsed, setElapsed] = useState(0)
 
   // Show the English string when the UI is in English and a translation exists;
@@ -246,6 +260,10 @@ export default function PracticeSession({
   const currentQ = questions[current]
   const totalQ = questions.length
   const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
+  // The "Next" button is held while the forced lock is active: until the follow-up
+  // is answered correctly AND the countdown has run out.
+  const followupCorrect = followup !== null && followupPick === followup.correctZh
+  const lockHeld = followup !== null && (lockSecs > 0 || !followupCorrect)
 
   const selectOption = useCallback(
     (zh: string) => {
@@ -270,15 +288,38 @@ export default function PracticeSession({
         correct: currentQ.correctZh,
         ts: Date.now(),
       })
+      // HARD questions: arm the 60-second forced-reflection lock with a follow-up
+      // logic question about this error cause. Easy/medium keep the lighter flow.
+      if (currentQ.difficulty === 'hard') {
+        const lq = pickLockoutQuestion(cause)
+        setFollowup({
+          prompt: lq.prompt,
+          options: shuffle(lq.options),
+          correctZh: lq.options[0][0],
+          explain: lq.explain,
+        })
+        setFollowupPick(null)
+        setLockSecs(LOCKOUT_SECONDS)
+      }
     },
     [currentQ, answerState, subjectId]
   )
+
+  // Tick the forced-lock countdown down to zero (one decrement per second).
+  useEffect(() => {
+    if (lockSecs <= 0) return
+    const id = setTimeout(() => setLockSecs((s) => Math.max(0, s - 1)), 1000)
+    return () => clearTimeout(id)
+  }, [lockSecs])
 
   const next = useCallback(() => {
     const newAnswers = [...answers, answerState]
     setAnswers(newAnswers)
     setAnswerState(null)
     setDiagnosed(null)
+    setFollowup(null)
+    setFollowupPick(null)
+    setLockSecs(0)
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -312,13 +353,11 @@ export default function PracticeSession({
       })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
-      // Free users: a completed run counts against their platform-wide quota.
-      if (countsAgainstFreeQuota) incrementGlobalAttemptsUsed()
       router.push('/result')
     } else {
       setCurrent((c) => c + 1)
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, countsAgainstFreeQuota, tr])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr])
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 
@@ -386,7 +425,7 @@ export default function PracticeSession({
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 mb-4 animate-slide-up">
           {/* Meta */}
           <div className="flex items-center gap-2 flex-wrap mb-6">
-            <DifficultyBadge difficulty={currentQ.difficulty} locale={locale === 'en' ? 'en' : 'zh'} />
+            <DifficultyBadge difficulty={currentQ.difficulty} />
             <span className="inline-flex items-center gap-1.5 text-xs text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full">
               <span>{currentQ.frameworkEmoji}</span>
               {tr(currentQ.frameworkZh, currentQ.frameworkEn)}
@@ -546,12 +585,78 @@ export default function PracticeSession({
                   </div>
                 )}
 
-                {/* Next button */}
+                {/* 60-second forced reflection lock (HARD wrong answers): read the
+                    breakdown above, answer the cause follow-up correctly, AND wait out
+                    the countdown before "Next" unlocks. No skipping. */}
+                {followup && (
+                  <div className="rounded-2xl p-5 mb-4 border-2 border-red-700/70 bg-black/70">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="flex items-center gap-2 text-red-400 font-extrabold text-sm uppercase tracking-wide">
+                        <Lock size={16} /> {tr('強制反思鎖 · 60 秒', 'Forced reflection lock · 60s')}
+                      </span>
+                      <span className={`text-sm font-mono font-bold ${lockSecs > 0 ? 'text-red-400' : 'text-green-400'}`}>
+                        {lockSecs > 0 ? `00:${String(lockSecs).padStart(2, '0')}` : '00:00 ✓'}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mb-3 leading-relaxed">
+                      {tr('讀完上面嘅錯因拆解，答對以下反思題，並等倒數完結，先可以解鎖下一題。',
+                          'Read the breakdown above, answer the reflection question correctly, and wait out the countdown to unlock the next question.')}
+                    </p>
+                    <p className="text-sm font-semibold text-slate-200 mb-3">{tr(followup.prompt[0], followup.prompt[1])}</p>
+                    <div className="space-y-2">
+                      {followup.options.map((o, i) => {
+                        const picked = followupPick === o[0]
+                        const isCorrectOpt = o[0] === followup.correctZh
+                        let st = 'border-slate-700 bg-slate-800/40 hover:border-slate-500 cursor-pointer'
+                        if (followupPick !== null) {
+                          if (isCorrectOpt) st = 'border-green-500 bg-green-500/10'
+                          else if (picked) st = 'border-red-500 bg-red-500/10'
+                          else st = 'border-slate-800 bg-slate-800/20 opacity-50'
+                        }
+                        return (
+                          <button
+                            key={i}
+                            disabled={followupCorrect}
+                            onClick={() => setFollowupPick(o[0])}
+                            className={`w-full text-left text-sm border rounded-xl px-4 py-2.5 transition-all ${st}`}
+                          >
+                            {tr(o[0], o[1])}
+                          </button>
+                        )
+                      })}
+                    </div>
+                    {followupPick !== null && !followupCorrect && (
+                      <p className="text-xs text-red-400 mt-2">
+                        {tr('再諗深一層 —— 揀返最能根治呢個錯因嘅做法。',
+                            'Think again — pick the approach that actually fixes this error type.')}
+                      </p>
+                    )}
+                    {followupCorrect && (
+                      <p className="text-xs text-slate-400 mt-3 leading-relaxed border-t border-slate-700/50 pt-2">
+                        <span className="text-green-400 font-bold">✓ </span>
+                        {tr(followup.explain[0], followup.explain[1])}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Next button — disabled while the forced lock is held. */}
                 <button
                   onClick={next}
-                  className="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2"
+                  disabled={lockHeld}
+                  className={`w-full font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
+                    lockHeld
+                      ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                      : 'bg-amber-500 hover:bg-amber-400 text-black'
+                  }`}
                 >
-                  {current + 1 >= totalQ ? t.practice.seeResult : (
+                  {lockHeld ? (
+                    <>
+                      <Lock size={16} />
+                      {tr(`解鎖中…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`,
+                          `Locked…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`)}
+                    </>
+                  ) : current + 1 >= totalQ ? t.practice.seeResult : (
                     <>{t.practice.next} <ChevronRight size={18} /></>
                   )}
                 </button>

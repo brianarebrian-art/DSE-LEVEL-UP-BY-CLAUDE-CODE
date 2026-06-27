@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { chemistryHellQuestions, chemistryHellTopics } from './chemistry-hell'
 
 // HKDSE Chemistry — 120-question bilingual bank. Mole/concentration/gas-volume
 // generators (answers code-computed) + curated conceptual items.
@@ -557,6 +558,7 @@ const organic: Question[] = [
 
 export const chemistryQuestions: Question[] = [
   ...mole, ...acids, ...redox, ...rates, ...bonding, ...periodic, ...organic,
+  ...chemistryHellQuestions, // multi-step calculation hell set (5★★)
 ]
 
 export const chemistryTopics: Topic[] = topicList([
@@ -568,3 +570,4 @@ export const chemistryTopics: Topic[] = topicList([
   { topic: T.periodic_table, fw: FW.structure, count: periodic.length },
   { topic: T.organic, fw: FW.carbon, count: organic.length },
 ])
+chemistryTopics.push(...chemistryHellTopics)

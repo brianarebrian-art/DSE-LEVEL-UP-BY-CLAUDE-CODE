@@ -3,6 +3,8 @@ import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_bui
 
 // HKDSE 公民與社會發展科 (Citizenship & Social Development) — 120 bilingual.
 // EDB 三大主題：①「一國兩制」下的香港 ②改革開放以來的國家 ③互聯相依的當代世界。
+import { csdHellQuestions, csdHellTopics } from './csd-hell'
+
 const q = makeQ('csd')
 
 const T = {
@@ -900,6 +902,7 @@ const sustain: Question[] = [
 
 export const csdQuestions: Question[] = [
   ...octs, ...law, ...society, ...reform, ...tech, ...global, ...interdep, ...sustain,
+  ...csdHellQuestions, // 資料回應地獄卷（真・5★★）
 ]
 
 export const csdTopics: Topic[] = topicList([
@@ -912,3 +915,4 @@ export const csdTopics: Topic[] = topicList([
   { topic: T.interdep, fw: FW.analysis, count: interdep.length },
   { topic: T.sustain, fw: FW.concept, count: sustain.length },
 ])
+csdTopics.push(...csdHellTopics)

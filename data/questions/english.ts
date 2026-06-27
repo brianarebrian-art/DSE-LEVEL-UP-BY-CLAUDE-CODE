@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { englishHellQuestions, englishHellTopics } from './english-hell'
 
 // English Language (language subject, English only) — 120 Qs, 8 topics × 15.
 // Aligned to the DSE emphasis: Paper 1 Reading + Paper 3 Integrated Skills + Genre/Tone/Audience,
@@ -491,6 +492,7 @@ const paper1: Question[] = [
 export const englishQuestions: Question[] = [
   ...grammar, ...tenses, ...vocab, ...wordform,
   ...reading, ...genre, ...integrated, ...cloze, ...paper1,
+  ...englishHellQuestions, // Paper 1 Reading hell set (genuine 5★★)
 ]
 
 export const englishTopics: Topic[] = topicList([
@@ -504,3 +506,4 @@ export const englishTopics: Topic[] = topicList([
   { topic: T.cloze,      fw: FW.reading, count: cloze.length },
   { topic: T.paper1,     fw: FW.reading, count: paper1.length },
 ])
+englishTopics.push(...englishHellTopics)

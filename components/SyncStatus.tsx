@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { LogIn, LogOut, Loader2, CloudOff, Cloud, BadgeCheck } from 'lucide-react'
+import { LogIn, LogOut, Loader2, CloudOff, Cloud } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { useSync } from '@/components/SyncProvider'
 
@@ -77,8 +77,6 @@ export default function SyncStatus() {
         ? '🟢 Progress safely synced'
         : '🟢 進度已安全同步'
 
-  const isPremium = Boolean(session.user.isPremium)
-
   return (
     <div
       className={`rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap border ${
@@ -96,21 +94,9 @@ export default function SyncStatus() {
           )}
           <span className={error ? 'text-red-300' : 'text-slate-300'}>{label}</span>
         </span>
-        {/* Identity + plan tier. Doubles as the support line: if a tester reports
-            Premium isn't working, this shows the EXACT email Google reported and
-            whether the server resolved them to Premium or Free — instantly telling
-            apart an email mismatch, a stale token, or an env/redeploy miss. */}
+        {/* Identity — the signed-in account whose progress is being synced. */}
         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
           <span className="text-xs text-slate-500 break-all">{session.user.email}</span>
-          {isPremium ? (
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
-              <BadgeCheck size={11} /> Premium
-            </span>
-          ) : (
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 bg-slate-700/40 border border-slate-600/40 px-2 py-0.5 rounded-full">
-              {en ? 'Free plan' : '免費版'}
-            </span>
-          )}
         </div>
       </div>
       <button

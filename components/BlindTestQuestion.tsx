@@ -34,7 +34,6 @@ export default function BlindTestQuestion() {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <span className="text-red-400 font-extrabold tracking-wide text-sm uppercase">🩻 Blind Test · 盲測黑題</span>
-        <span className="text-[10px] text-slate-500 border border-slate-700 rounded px-2 py-0.5">👁️ HELL OF HELL</span>
       </div>
 
       {/* Figure — two tangents from an external point P to a circle */}

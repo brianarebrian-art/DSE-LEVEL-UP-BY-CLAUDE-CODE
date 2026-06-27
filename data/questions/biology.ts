@@ -3,6 +3,8 @@ import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta, type Difficul
 
 // HKDSE Biology — 120-question bilingual bank. Concept/understanding items +
 // genetics ratio reasoning. Curated bilingual pools.
+import { biologyHellQuestions, biologyHellTopics } from './biology-hell'
+
 const q = makeQ('biology')
 
 const T = {
@@ -505,6 +507,7 @@ const digestion: Question[] = [
 
 export const biologyQuestions: Question[] = [
   ...cells, ...genetics, ...human, ...coord, ...enzymes, ...photo, ...ecology, ...digestion,
+  ...biologyHellQuestions, // genetics/physiology/ecology 5★★ hell set
 ]
 
 export const biologyTopics: Topic[] = topicList([
@@ -517,3 +520,4 @@ export const biologyTopics: Topic[] = topicList([
   { topic: T.ecology, fw: FW.energy, count: ecology.length },
   { topic: T.digestion, fw: FW.structure, count: digestion.length },
 ])
+biologyTopics.push(...biologyHellTopics)

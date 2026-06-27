@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { physicsHellQuestions, physicsHellTopics } from './physics-hell'
 
 // HKDSE Physics — 120-question bilingual bank. Parametrised numeric generators
 // (answers code-computed) + curated conceptual items. Units are language-neutral.
@@ -329,6 +330,7 @@ radio.push(
 
 export const physicsQuestions: Question[] = [
   ...mech, ...elec, ...heat, ...waves, ...optics, ...radio,
+  ...physicsHellQuestions, // multi-step calculation hell set (5★★)
 ]
 
 export const physicsTopics: Topic[] = topicList([
@@ -339,3 +341,4 @@ export const physicsTopics: Topic[] = topicList([
   { topic: T.optics, fw: FW.light, count: optics.length },
   { topic: T.radioactivity, fw: FW.decay, count: radio.length },
 ])
+physicsTopics.push(...physicsHellTopics)

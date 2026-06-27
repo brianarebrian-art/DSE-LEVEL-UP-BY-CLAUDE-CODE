@@ -2,6 +2,8 @@ import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
 
 // HKDSE Information & Communication Technology — 120 bilingual.
+import { ictHellQuestions, ictHellTopics } from './ict-hell'
+
 const q = makeQ('ict')
 
 const T = {
@@ -779,6 +781,7 @@ const web: Question[] = [
 
 export const ictQuestions: Question[] = [
   ...data, ...systems, ...network, ...programming, ...database, ...security, ...web,
+  ...ictHellQuestions, // representation/logic/network 5★★ hell set
 ]
 
 export const ictTopics: Topic[] = topicList([
@@ -790,3 +793,4 @@ export const ictTopics: Topic[] = topicList([
   { topic: T.security, fw: FW.concept, count: security.length },
   { topic: T.web, fw: FW.concept, count: web.length },
 ])
+ictTopics.push(...ictHellTopics)

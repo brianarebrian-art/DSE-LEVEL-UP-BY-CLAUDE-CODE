@@ -27,15 +27,6 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
         >
           {initial}
         </div>
-        {session.user.isPremium ? (
-          <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">
-            {t.premium.badgePremium}
-          </span>
-        ) : (
-          <span className="text-[10px] text-slate-400 bg-slate-800 border border-slate-700 px-2 py-0.5 rounded-full">
-            {t.premium.badgeFree}
-          </span>
-        )}
         <button
           onClick={() => {
             onAction?.()
