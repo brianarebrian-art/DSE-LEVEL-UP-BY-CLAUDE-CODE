@@ -55,7 +55,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="mailto:brianarebrian@gmail.com" className="hover:text-slate-300 transition-colors">
+                <a href="mailto:dselevelup@gmail.com" className="hover:text-slate-300 transition-colors">
                   {t.footer.contact}
                 </a>
               </li>

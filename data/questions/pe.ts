@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { peHellQuestions, peHellTopics } from './pe-hell'
 
 // HKDSE Physical Education (Paper 1 MCQ knowledge) — 120 bilingual.
 const q = makeQ('pe')
@@ -899,6 +900,7 @@ const society: Question[] = [
 
 export const peQuestions: Question[] = [
   ...anatomy, ...physiology, ...biomechanics, ...fitness, ...nutrition, ...injuries, ...psychology, ...society,
+  ...peHellQuestions, // 5★★ hell set
 ]
 
 export const peTopics: Topic[] = topicList([
@@ -911,3 +913,4 @@ export const peTopics: Topic[] = topicList([
   { topic: T.psychology, fw: FW.concept, count: psychology.length },
   { topic: T.society, fw: FW.concept, count: society.length },
 ])
+peTopics.push(...peHellTopics)

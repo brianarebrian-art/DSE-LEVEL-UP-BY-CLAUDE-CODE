@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { historyHellQuestions, historyHellTopics } from './history-hell'
 
 // HKDSE History (modern world history) — 120 bilingual, causation/analysis level.
 const q = makeQ('history')
@@ -899,6 +900,7 @@ const region: Question[] = [
 
 export const historyQuestions: Question[] = [
   ...ww1, ...ww2, ...cold, ...dictators, ...intl, ...china, ...japan, ...region,
+  ...historyHellQuestions, // 5★★ hell set
 ]
 
 export const historyTopics: Topic[] = topicList([
@@ -911,3 +913,4 @@ export const historyTopics: Topic[] = topicList([
   { topic: T.japan, fw: FW.cause, count: japan.length },
   { topic: T.region, fw: FW.evaluate, count: region.length },
 ])
+historyTopics.push(...historyHellTopics)

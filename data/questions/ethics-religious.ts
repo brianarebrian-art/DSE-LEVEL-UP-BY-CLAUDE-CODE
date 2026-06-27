@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { ethicsReligiousHellQuestions, ethicsReligiousHellTopics } from './ethics-religious-hell'
 
 // 倫理與宗教 Ethics & Religious Studies — 120 bilingual MC questions, 8 topics × 15.
 const q = makeQ('ethics-religious')
@@ -903,6 +904,7 @@ const society: Question[] = [
 export const ethicsReligiousQuestions: Question[] = [
   ...theories, ...applied, ...concepts, ...christ,
   ...buddhism, ...philosophy, ...relethics, ...society,
+  ...ethicsReligiousHellQuestions, // 5★★ hell set
 ]
 
 export const ethicsReligiousTopics: Topic[] = topicList([
@@ -915,3 +917,4 @@ export const ethicsReligiousTopics: Topic[] = topicList([
   { topic: T.relethics,  fw: FW.tradition,  count: relethics.length },
   { topic: T.society,    fw: FW.society,    count: society.length },
 ])
+ethicsReligiousTopics.push(...ethicsReligiousHellTopics)

@@ -124,10 +124,10 @@ export default function AboutPage() {
               : '發現題目有錯，或想我們優先處理某一科？歡迎告訴我們——準確度全靠大家把關。'}
           </p>
           <a
-            href="mailto:brianarebrian@gmail.com"
+            href="mailto:dselevelup@gmail.com"
             className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl text-sm transition-all"
           >
-            <Mail size={16} className="text-amber-400" /> brianarebrian@gmail.com
+            <Mail size={16} className="text-amber-400" /> dselevelup@gmail.com
           </a>
         </div>
 

@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { musicHellQuestions, musicHellTopics } from './music-hell'
 
 // HKDSE Music — 120 bilingual (grounded in EDB Music C&A Guide, Listening AoS).
 const q = makeQ('music')
@@ -897,6 +898,7 @@ const creating: Question[] = [
 
 export const musicQuestions: Question[] = [
   ...elements, ...theory, ...form, ...western, ...chinese, ...instruments, ...listening, ...creating,
+  ...musicHellQuestions, // 5★★ hell set
 ]
 
 export const musicTopics: Topic[] = topicList([
@@ -909,3 +911,4 @@ export const musicTopics: Topic[] = topicList([
   { topic: T.listening, fw: FW.listen, count: listening.length },
   { topic: T.creating, fw: FW.apply, count: creating.length },
 ])
+musicTopics.push(...musicHellTopics)

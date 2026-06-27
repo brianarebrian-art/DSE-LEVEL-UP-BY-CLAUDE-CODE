@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { technologyLivingHellQuestions, technologyLivingHellTopics } from './technology-living-hell'
 
 // 科技與生活 Technology and Living — 120 bilingual MC questions, 8 topics × 15.
 // Food science strand + fashion/textiles strand, per EDB C&A Guide.
@@ -902,6 +903,7 @@ const consumer: Question[] = [
 export const technologyLivingQuestions: Question[] = [
   ...nutrition, ...lifecycle, ...meal, ...foodsci,
   ...foodsafe, ...fibres, ...fashion, ...consumer,
+  ...technologyLivingHellQuestions, // 5★★ hell set
 ]
 
 export const technologyLivingTopics: Topic[] = topicList([
@@ -914,3 +916,4 @@ export const technologyLivingTopics: Topic[] = topicList([
   { topic: T.fashion,   fw: FW.textile,  count: fashion.length },
   { topic: T.consumer,  fw: FW.consumer, count: consumer.length },
 ])
+technologyLivingTopics.push(...technologyLivingHellTopics)

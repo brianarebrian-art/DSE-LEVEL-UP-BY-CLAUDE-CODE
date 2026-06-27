@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { chineseLiteratureHellQuestions, chineseLiteratureHellTopics } from './chinese-literature-hell'
 
 // 中國文學（語言科，全卷中文，不設英文版）— 120 題，8 範疇 × 15。
 const q = makeQ('chinese-literature')
@@ -420,6 +421,7 @@ const appreciation: Question[] = [
 export const chineseLiteratureQuestions: Question[] = [
   ...ancient, ...tang, ...song, ...yuan,
   ...fiction, ...genres, ...techniques, ...appreciation,
+  ...chineseLiteratureHellQuestions, // 5★★ hell set
 ]
 
 export const chineseLiteratureTopics: Topic[] = topicList([
@@ -432,3 +434,4 @@ export const chineseLiteratureTopics: Topic[] = topicList([
   { topic: T.techniques,   fw: FW.craft,   count: techniques.length },
   { topic: T.appreciation, fw: FW.craft,   count: appreciation.length },
 ])
+chineseLiteratureTopics.push(...chineseLiteratureHellTopics)

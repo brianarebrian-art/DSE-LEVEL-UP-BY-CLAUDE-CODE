@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { m2HellQuestions, m2HellTopics } from './m2-hell'
 
 // HKDSE Mathematics Extended Module 2 (Algebra & Calculus) — 120 bilingual.
 const q = makeQ('m2')
@@ -466,6 +467,7 @@ const binomial: Question[] = [
 
 export const m2Questions: Question[] = [
   ...diff, ...integ, ...limits, ...matrices, ...vectors, ...induction, ...binomial, ...calcapp,
+  ...m2HellQuestions, // 5★★ hell set
 ]
 
 export const m2Topics: Topic[] = topicList([
@@ -478,3 +480,4 @@ export const m2Topics: Topic[] = topicList([
   { topic: T.binomial, fw: FW.decompose, count: binomial.length },
   { topic: T.calcapp, fw: FW.model, count: calcapp.length },
 ])
+m2Topics.push(...m2HellTopics)

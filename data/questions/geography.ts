@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { geographyHellQuestions, geographyHellTopics } from './geography-hell'
 
 // HKDSE Geography — 120 bilingual, concept/analysis level.
 const q = makeQ('geography')
@@ -896,6 +897,7 @@ const climate: Question[] = [
 
 export const geographyQuestions: Question[] = [
   ...hazards, ...rivers, ...weather, ...urban, ...industry, ...food, ...rainforest, ...climate,
+  ...geographyHellQuestions, // 5★★ hell set
 ]
 
 export const geographyTopics: Topic[] = topicList([
@@ -908,3 +910,4 @@ export const geographyTopics: Topic[] = topicList([
   { topic: T.rainforest, fw: FW.process, count: rainforest.length },
   { topic: T.climate, fw: FW.manage, count: climate.length },
 ])
+geographyTopics.push(...geographyHellTopics)

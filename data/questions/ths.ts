@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { thsHellQuestions, thsHellTopics } from './ths-hell'
 
 // HKDSE Tourism & Hospitality Studies — 120 bilingual.
 const q = makeQ('ths')
@@ -899,6 +900,7 @@ const impact: Question[] = [
 
 export const thsQuestions: Question[] = [
   ...intro, ...service, ...dest, ...accom, ...fnb, ...trade, ...sustain, ...impact,
+  ...thsHellQuestions, // 5★★ hell set
 ]
 
 export const thsTopics: Topic[] = topicList([
@@ -911,3 +913,4 @@ export const thsTopics: Topic[] = topicList([
   { topic: T.sustain, fw: FW.analysis, count: sustain.length },
   { topic: T.impact, fw: FW.analysis, count: impact.length },
 ])
+thsTopics.push(...thsHellTopics)

@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { healthManagementHellQuestions, healthManagementHellTopics } from './health-management-hell'
 
 // HKDSE Health Management & Social Care — 120 bilingual.
 const q = makeQ('health-management')
@@ -899,6 +900,7 @@ const skills: Question[] = [
 
 export const healthManagementQuestions: Question[] = [
   ...concept, ...lifespan, ...systems, ...promote, ...community, ...publichealth, ...ethics, ...skills,
+  ...healthManagementHellQuestions, // 5★★ hell set
 ]
 
 export const healthManagementTopics: Topic[] = topicList([
@@ -911,3 +913,4 @@ export const healthManagementTopics: Topic[] = topicList([
   { topic: T.ethics, fw: FW.concept, count: ethics.length },
   { topic: T.skills, fw: FW.apply, count: skills.length },
 ])
+healthManagementTopics.push(...healthManagementHellTopics)

@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { englishLiteratureHellQuestions, englishLiteratureHellTopics } from './english-literature-hell'
 
 // Literature in English (language subject, English only) — 120 Qs, 8 topics × 15.
 const q = makeQ('english-literature')
@@ -420,6 +421,7 @@ const criticism: Question[] = [
 export const englishLiteratureQuestions: Question[] = [
   ...poetry, ...drama, ...prose, ...devices,
   ...character, ...themes, ...shakespeare, ...criticism,
+  ...englishLiteratureHellQuestions, // 5★★ hell set
 ]
 
 export const englishLiteratureTopics: Topic[] = topicList([
@@ -432,3 +434,4 @@ export const englishLiteratureTopics: Topic[] = topicList([
   { topic: T.shakespeare, fw: FW.analysis, count: shakespeare.length },
   { topic: T.criticism,   fw: FW.analysis, count: criticism.length },
 ])
+englishLiteratureTopics.push(...englishLiteratureHellTopics)

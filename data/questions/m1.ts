@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { m1HellQuestions, m1HellTopics } from './m1-hell'
 
 // HKDSE Mathematics Extended Module 1 (Calculus & Statistics) — 120 bilingual.
 const q = makeQ('m1')
@@ -453,6 +454,7 @@ const stats: Question[] = [
 
 export const m1Questions: Question[] = [
   ...perm, ...binom, ...explog, ...calcapp, ...calcConcept, ...probdist, ...normal, ...stats,
+  ...m1HellQuestions, // 5★★ hell set
 ]
 
 export const m1Topics: Topic[] = topicList([
@@ -464,3 +466,4 @@ export const m1Topics: Topic[] = topicList([
   { topic: T.normal, fw: FW.model, count: normal.length },
   { topic: T.stats, fw: FW.model, count: stats.length },
 ])
+m1Topics.push(...m1HellTopics)

@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { designTechHellQuestions, designTechHellTopics } from './design-tech-hell'
 
 // HKDSE Design & Applied Technology — 120 bilingual.
 const q = makeQ('design-tech')
@@ -900,6 +901,7 @@ const ergonomics: Question[] = [
 
 export const designTechQuestions: Question[] = [
   ...process, ...elements, ...materials, ...structures, ...manufacturing, ...cadcam, ...ergonomics, ...sustainability,
+  ...designTechHellQuestions, // 5★★ hell set
 ]
 
 export const designTechTopics: Topic[] = topicList([
@@ -912,3 +914,4 @@ export const designTechTopics: Topic[] = topicList([
   { topic: T.ergonomics, fw: FW.concept, count: ergonomics.length },
   { topic: T.sustainability, fw: FW.evaluate, count: sustainability.length },
 ])
+designTechTopics.push(...designTechHellTopics)

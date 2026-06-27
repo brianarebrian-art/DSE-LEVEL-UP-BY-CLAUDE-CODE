@@ -1,5 +1,6 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_builder'
+import { visualArtsHellQuestions, visualArtsHellTopics } from './visual-arts-hell'
 
 // HKDSE Visual Arts — 120 bilingual. (Real DSE assessment is appreciation essays
 // + portfolio; these MC build concept/appreciation knowledge as a study aid.)
@@ -901,6 +902,7 @@ const design: Question[] = [
 
 export const visualArtsQuestions: Question[] = [
   ...appreciation, ...elements, ...western, ...chinese, ...media, ...modern, ...design, ...context,
+  ...visualArtsHellQuestions, // 5★★ hell set
 ]
 
 export const visualArtsTopics: Topic[] = topicList([
@@ -913,3 +915,4 @@ export const visualArtsTopics: Topic[] = topicList([
   { topic: T.design, fw: FW.concept, count: design.length },
   { topic: T.context, fw: FW.interpret, count: context.length },
 ])
+visualArtsTopics.push(...visualArtsHellTopics)
