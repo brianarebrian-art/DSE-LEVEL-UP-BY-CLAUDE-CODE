@@ -22,21 +22,6 @@ export default function AboutPage() {
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-2xl mx-auto">
 
-        {/* LHYMSS edition banner */}
-        <div className="mb-8 bg-gradient-to-r from-indigo-500/15 to-amber-500/10 border border-indigo-500/30 rounded-2xl p-5 flex items-start gap-3">
-          <span className="text-2xl shrink-0">📐</span>
-          <div>
-            <div className="font-bold text-slate-100">
-              {en ? 'Lingnan Hang Yee Memorial Secondary School · V1.0 Edition' : '嶺南衡怡紀念中學 · LHYMSS V1.0 教學版'}
-            </div>
-            <p className="text-sm text-slate-400 mt-0.5">
-              {en
-                ? 'A DSE diagnostic practice platform prepared to LHYMSS classroom standards.'
-                : '依嶺南衡怡紀念中學課堂標準打造的 DSE 應試診斷練習平台。'}
-            </p>
-          </div>
-        </div>
-
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-4">
@@ -82,8 +67,8 @@ export default function AboutPage() {
             </div>
             <p className="text-slate-400 text-sm mb-4">
               {en
-                ? 'Every item shipped to LHYMSS classrooms passes these non-negotiable checks:'
-                : '每一條送進 LHYMSS 課堂的題目，都通過以下不可妥協的把關：'}
+                ? 'Every question on the platform passes these non-negotiable checks:'
+                : '每一條題目，都通過以下不可妥協的把關：'}
             </p>
             <div className="space-y-2.5">
               {QC_ITEMS.map((item, i) => (

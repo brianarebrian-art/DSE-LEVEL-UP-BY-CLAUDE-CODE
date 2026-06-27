@@ -19,6 +19,7 @@ const T = {
   locus: { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates' },
   quadratic: { id: 'quadratic_equations', zh: '二次方程', en: 'Quadratic Equations' },
   logarithms: { id: 'logarithms', zh: '對數與指數', en: 'Logarithms & Exponents' },
+  inequalities: { id: 'inequalities', zh: '不等式', en: 'Inequalities' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -220,5 +221,59 @@ function countNumbers(digits: number[], pred: (num: number, ds: number[]) => boo
       [`比例距離（$k\\ne1$）軌跡係圓：開 $PA^2=4PB^2$，平方項唔抵消（係數變 $3$），整理即得 $${eqn(D, E, F)}$。`,
        `A ratio distance ($k\\ne1$) gives a circle: $PA^2=4PB^2$, the squares don't cancel ⇒ $${eqn(D, E, F)}$.`]))
   })
+
+// ═══════════════════════════════════════════════════════════════════════════
+// K8 — Line ∩ circle CHORD MIDPOINT via the perpendicular-from-centre shortcut.
+// Circle written as 3x²+3y²+… (must divide by 3 first — the bait). The midpoint
+// of a chord is the foot of the perpendicular from the centre, so M is chosen by
+// construction and the question is exact (no Δ-bashing). (Cx,Cy,Mx,My,r)
+// ═══════════════════════════════════════════════════════════════════════════
+;([[0, 0, 2, 1, 5], [0, 0, 1, 2, 5], [1, 1, 3, 2, 4], [2, 0, 4, 1, 5], [0, 0, 3, 1, 4], [0, 0, 2, 2, 4], [-1, 0, 1, 1, 4], [0, 2, 2, 3, 4], [1, 0, 3, 1, 5], [0, 0, 1, 3, 5]] as const)
+  .forEach(([cx, cy, mx, my, r], i) => {
+    const dx = mx - cx, dy = my - cy
+    const rhs = dx * mx + dy * my
+    const lt = (v: number, s: string, first: boolean) =>
+      v === 0 ? '' : `${first ? (v < 0 ? '-' : '') : v < 0 ? ' - ' : ' + '}${Math.abs(v) === 1 ? '' : Math.abs(v)}${s}`
+    const line = `${lt(dx, 'x', true)}${lt(dy, 'y', false)} = ${rhs}`
+    const D = -6 * cx, E = -6 * cy, F = 3 * (cx * cx + cy * cy - r * r)
+    const circle = `3x^2 + 3y^2${lt(D, 'x', false)}${lt(E, 'y', false)}${F === 0 ? '' : `${F < 0 ? ' - ' : ' + '}${Math.abs(F)}`} = 0`
+    const pt = (x: number, y: number) => `$(${x}, ${y})$`
+    out.push(pq(`mp_k8_${i}`, T.circles, FW.geometry, yr(i),
+      [`直線 $${line}$ 與圓 $C:\\ ${circle}$ 相交於兩點。求該弦的中點坐標。`,
+       `The line $${line}$ cuts the circle $C:\\ ${circle}$ at two points. Find the midpoint of the chord.`],
+      [n(pt(mx, my)), n(pt(cx, cy)), n(pt(2 * cx - mx, 2 * cy - my)), n(pt(2 * mx - cx, 2 * my - cy))],
+      [`先將圓方程**除以 3**，得圓心 $(${cx},${cy})$、半徑 $${r}$（係數陷阱：唔除 3 就攞錯圓心）。弦的中點 $M$ 就係圓心到直線的**垂足**（圓心至弦中點連線 $\\perp$ 弦），由 $\\perp$ 關係解得 $M = ${pt(mx, my).replace(/\$/g, '')}$。陷阱：$${pt(cx, cy).replace(/\$/g, '')}$ 係圓心本身；其餘係對稱點。`,
+       `First **divide the circle by 3** ⇒ centre $(${cx},${cy})$, radius $${r}$ (the coefficient trap). The chord midpoint $M$ is the foot of the perpendicular from the centre (centre-to-midpoint $\\perp$ chord), giving $M = ${pt(mx, my).replace(/\$/g, '')}$. Trap: $${pt(cx, cy).replace(/\$/g, '')}$ is the centre itself.`],
+      [`唔好解聯立 + $\\Delta$！弦中點 = 圓心到直線嘅垂足，一條垂直關係即秒殺 $M = ${pt(mx, my).replace(/\$/g, '')}$。`,
+       `Don't solve simultaneously with $\\Delta$ — the midpoint is the foot of the perpendicular from the centre ⇒ $M = ${pt(mx, my).replace(/\$/g, '')}$.`]))
+  })
+
+// ═══════════════════════════════════════════════════════════════════════════
+// K9 — Sign of a coefficient combination of a line Ax+By+C=0 (B>0) given its
+// orientation. The classic 5★★ bait: forgetting to flip the sign on transposing.
+// [slopeZh, slopeEn, yintZh, yintEn, exprLatex, answerSign]
+// ═══════════════════════════════════════════════════════════════════════════
+;([
+  ['正', 'positive', '正', 'positive', '\\frac{B-A}{C}', '< 0'],
+  ['正', 'positive', '負', 'negative', '\\frac{B-A}{C}', '> 0'],
+  ['正', 'positive', '正', 'positive', '\\frac{A-B}{C}', '> 0'],
+  ['正', 'positive', '負', 'negative', '\\frac{A-B}{C}', '< 0'],
+  ['正', 'positive', '正', 'positive', 'AC', '> 0'],
+  ['負', 'negative', '正', 'positive', 'AC', '< 0'],
+  ['負', 'negative', '負', 'negative', 'AC', '> 0'],
+  ['正', 'positive', '負', 'negative', 'AC', '< 0'],
+  ['正', 'positive', '正', 'positive', '\\frac{A}{C}', '> 0'],
+  ['負', 'negative', '正', 'positive', '\\frac{A}{C}', '< 0'],
+] as const).forEach(([slZh, slEn, yiZh, yiEn, expr, ans], i) => {
+  const opp = ans === '> 0' ? '< 0' : '> 0'
+  out.push(pq(`mp_k9_${i}`, T.inequalities, FW.transform, yr(i),
+    [`直線 $Ax + By + C = 0$（其中 $B > 0$）的斜率為${slZh}，$y$-截距為${yiZh}。試判斷 $${expr}$ 的正負。`,
+     `A line $Ax + By + C = 0$ (with $B > 0$) has a ${slEn} slope and a ${yiEn} $y$-intercept. Determine the sign of $${expr}$.`],
+    [n(`$${ans}$`), n(`$${opp}$`), n('$= 0$'), ['無法判斷', 'Cannot be determined']],
+    [`由 $B>0$：斜率 $=-\\dfrac{A}{B}$ 為${slZh} ⇒ $A$ 為${slZh === '正' ? '負' : '正'}；$y$-截距 $=-\\dfrac{C}{B}$ 為${yiZh} ⇒ $C$ 為${yiZh === '正' ? '負' : '正'}。代入符號運算得 $${expr} ${ans}$。致命陷阱：$${opp}$ 正正係「斜率／截距 $\\to$ 係數時忘記轉號」嘅典型錯誤；$=0$ 同「無法判斷」忽略咗符號其實已被完全鎖定。`,
+     `Since $B>0$: slope $=-\\dfrac{A}{B}$ is ${slEn} ⇒ $A$ is ${slEn === 'positive' ? 'negative' : 'positive'}; $y$-intercept $=-\\dfrac{C}{B}$ is ${yiEn} ⇒ $C$ is ${yiEn === 'positive' ? 'negative' : 'positive'}. Hence $${expr} ${ans}$. Trap: $${opp}$ is the classic "forgot to flip the sign" error.`],
+    [`設 $B>0$ 做基準，由斜率 $-A/B$、截距 $-C/B$ 反推 $A$、$C$ 嘅符號，再做符號乘除 ⇒ $${expr} ${ans}$。轉號係生死位。`,
+     `Fix $B>0$, deduce the signs of $A,C$ from slope $-A/B$ and intercept $-C/B$, then do sign arithmetic ⇒ $${expr} ${ans}$.`]))
+})
 
 export const mathParametricQuestions: Question[] = out
