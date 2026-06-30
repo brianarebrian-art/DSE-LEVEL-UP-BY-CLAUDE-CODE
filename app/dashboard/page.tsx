@@ -151,7 +151,7 @@ export default function DashboardPage() {
         </div>
 
         {/* 高效 ROI — replaces the EXP/rank vanity meter with honest money-and-time
-            framing tied to the 每日一蚊 mission (no fabricated peer percentiles). */}
+            framing tied to the free-for-everyone mission (no fabricated peer percentiles). */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-10">
           <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
             <div>

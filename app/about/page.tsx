@@ -20,8 +20,8 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '有教無類',
     enTitle: 'Education for everyone',
     quote: '有教無類',
-    zh: '打破名校與貴族對資源的壟斷。不分貧富貴賤、不問出身學校，只要有心向學，任何人都可以免費用到最極致的訓練。沒有付費牆、沒有白名單、沒有「專屬版」——全站功能，無條件對所有人開放。',
-    en: 'We break the monopoly elite schools hold over resources. Regardless of wealth or background, anyone willing to learn gets the most demanding training, free. No paywall, no whitelist, no “exclusive edition” — every feature is unconditionally open to all.',
+    zh: '打破名校與貴族對資源的壟斷。不分貧富貴賤、不問出身學校，只要有心向學，任何人都可以免費用到最極致的訓練。沒有門檻、沒有白名單、沒有分級版本——全站功能，永久無條件對所有人免費開放。',
+    en: 'We break the monopoly elite schools hold over resources. Regardless of wealth or background, anyone willing to learn gets the most demanding training, free. No barriers, no whitelist, no tiered editions — every feature is unconditionally and permanently free for all.',
   },
   {
     icon: '💡',
@@ -56,8 +56,8 @@ export default function AboutPage() {
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed">
             {en
-              ? 'A 100% free DSE practice platform for every Hong Kong student — built on a simple, old idea: that real teaching adapts to the learner, and that no one should be priced out of it.'
-              : '一個 100% 全免費、面向全港考生的 DSE 練習平台。它建基於一個古老而簡單的信念：真正的教育因人而異，而沒有人應該因為負擔不起而被拒諸門外。'}
+              ? 'A 100% free DSE practice platform for every Hong Kong student — built on a simple, old idea: that real teaching adapts to the learner, and that no one should ever be shut out of it.'
+              : '一個 100% 全免費、面向全港考生的 DSE 練習平台。它建基於一個古老而簡單的信念：真正的教育因人而異，而沒有人應該被拒諸門外。'}
           </p>
           <p className="text-slate-500 text-sm mt-4 leading-relaxed">
             {en

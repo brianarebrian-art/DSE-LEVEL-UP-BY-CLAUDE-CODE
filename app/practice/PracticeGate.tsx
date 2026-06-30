@@ -8,7 +8,7 @@ import { loadSubjectQuestions } from '@/data/questions/load'
 import type { Question } from '@/data/questions'
 
 // Client-only quiz runner (uses Math.random/localStorage). The platform is 100%
-// free, so there is no wall, cap or premium check here any more — we simply load
+// free, so there is no wall, cap or tier check here any more — we simply load
 // the subject's question bank (its own lazy chunk) and run.
 const PracticeSession = dynamic(() => import('./PracticeSession'), {
   ssr: false,

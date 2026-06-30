@@ -198,8 +198,8 @@ export default function HomePage() {
           </h2>
           <p className="text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
             {locale === 'en'
-              ? 'A cram-school lesson runs HK$200+. Real exam skill should not sit behind that wall — so we rebuilt it and opened it free to every student.'
-              : '補習社一堂收你 HK$200 起跳。攞分嘅真功夫，唔應該被呢道牆擋住 —— 所以我哋重新砌返，免費開放俾每一個學生。'}
+              ? 'Real exam skill should never sit behind a wall — so we built it and opened it free, unconditionally, to every student.'
+              : '攞分嘅真功夫，唔應該被任何一道牆擋住 —— 所以我哋重新砌返，無條件免費開放俾每一個學生。'}
           </p>
           <div className="grid sm:grid-cols-3 gap-4 text-left">
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
@@ -225,8 +225,8 @@ export default function HomePage() {
               <div className="font-bold mb-1">{locale === 'en' ? 'For your family' : '利他'}</div>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {locale === 'en'
-                  ? 'The thousands you save on tutoring stay home with your family. That is the whole point.'
-                  : '慳返嗰幾千蚊補習費，留返喺屋企。呢個先係我哋嘅初心。'}
+                  ? 'Whatever you’d have spent on tutoring stays home with your family. That is the whole point.'
+                  : '本來要使喺補習嘅，留返喺屋企。呢個先係我哋嘅初心。'}
               </p>
             </div>
           </div>

@@ -37,7 +37,7 @@ export default function SubjectsView() {
   const desc = (s: SubjectMeta) => (locale === 'en' ? s.descriptionEn : s.description)
   const en = locale === 'en'
 
-  // Search / category / sort — filter WITHIN the existing Free/Premium zones.
+  // Search / category / sort — over the single free, open subject grid.
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<'all' | 'core' | 'extended' | 'elective'>('all')
   const [sort, setSort] = useState<'default' | 'az' | 'live'>('default')
