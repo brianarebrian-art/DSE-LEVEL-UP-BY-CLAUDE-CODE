@@ -1,20 +1,21 @@
 'use client'
 
-import { SessionProvider } from 'next-auth/react'
 import { LanguageProvider } from '@/lib/i18n'
 import SyncProvider from '@/components/SyncProvider'
+import { AuthProvider } from '@/lib/auth/session'
 
 // LanguageProvider wraps everything so the whole UI can switch 中/EN client-side.
-// SessionProvider always wraps too, so useSession()/usePlan() are safe everywhere;
-// when auth is disabled it simply yields no session and the app treats everyone as
-// having full access (see lib/usePlan.ts). Login UI stays opt-in via the
-// NEXT_PUBLIC_AUTH_ENABLED flag inside AuthButton.
+// AuthProvider is the backend-agnostic seam: it mounts the active auth bridge (Auth.js
+// by default, Better Auth once NEXT_PUBLIC_AUTH_BACKEND=better-auth) and exposes one
+// useAuthSession() everywhere, so useAuthSession()/usePlan() are safe app-wide. When
+// auth is disabled it yields no session and everyone has full access (lib/usePlan.ts).
+// Login UI stays opt-in via the NEXT_PUBLIC_AUTH_ENABLED flag inside AuthButton.
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <LanguageProvider>
-      <SessionProvider>
+      <AuthProvider>
         <SyncProvider>{children}</SyncProvider>
-      </SessionProvider>
+      </AuthProvider>
     </LanguageProvider>
   )
 }

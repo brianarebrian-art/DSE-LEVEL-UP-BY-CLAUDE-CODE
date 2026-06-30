@@ -161,7 +161,7 @@ export default function DashboardPage() {
               </div>
             </div>
             <span className="inline-flex items-center gap-1.5 text-xs text-emerald-300 bg-emerald-400/10 border border-emerald-400/20 px-3 py-1.5 rounded-full">
-              <Coins size={13} /> {en ? '≈ HK$1 / day · vs cram HK$200+/lesson' : '每日 ≈ HK$1 · 補習社一堂 HK$200+'}
+              <Coins size={13} /> {en ? '100% free · no tutoring fees' : '完全免費 · 慳返補習費'}
             </span>
           </div>
 

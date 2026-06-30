@@ -1,11 +1,11 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
+import { useAuthSession } from '@/lib/auth/session'
 
-// Google sign-in is OPTIONAL and only powers cross-device progress sync — it
-// unlocks nothing (the whole platform is free). This hook just reports whether a
-// user is signed in, for the sync UI. SessionProvider always wraps the app (see
-// components/Providers.tsx), so calling useSession() here is always safe.
+// Sign-in is OPTIONAL and only powers cross-device progress sync — it unlocks nothing
+// (the whole platform is free). This hook just reports whether a user is signed in,
+// for the sync UI. AuthProvider always wraps the app (see components/Providers.tsx),
+// so calling useAuthSession() here is always safe regardless of the auth backend.
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 
 export interface PlanState {
@@ -16,7 +16,7 @@ export interface PlanState {
 }
 
 export function usePlan(): PlanState {
-  const { status } = useSession()
+  const { status } = useAuthSession()
   if (!AUTH_ENABLED) return { signedIn: false, loading: false }
   return {
     signedIn: status === 'authenticated',

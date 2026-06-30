@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { auth } from '@/auth'
+import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 
 // Per-user, request-time only — never cached or prerendered.
@@ -7,11 +7,11 @@ export const dynamic = 'force-dynamic'
 
 const TABLE = 'user_progress'
 
-// Identity comes from the EXISTING Auth.js session (Option 1: Supabase is the DB
-// only). `session.user.id` is the stable Google `sub` (set in auth.ts) — the row key.
+// Identity is resolved by the backend-agnostic helper (Auth.js today, Better Auth once
+// flipped). It returns the stable Google `sub` either way, so the row key — and thus
+// every user's existing synced progress — is preserved across the cutover.
 async function currentUserId(): Promise<string | null> {
-  const session = await auth()
-  return session?.user?.id ?? null
+  return getSyncUserId()
 }
 
 // GET — pull this user's cloud progress (null if they have none yet).

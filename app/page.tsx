@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Brain, Zap } from 'lucide-react'
 import MathText from '@/components/MathText'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
+import CountdownBanner from '@/components/CountdownBanner'
 import { subjects, getActiveSubjects } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 
@@ -25,6 +26,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
 
+      <CountdownBanner />
+
       {/* ── HERO ── */}
       <section className="relative pt-20 pb-24 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial from-amber-500/8 via-transparent to-transparent pointer-events-none" />
@@ -32,12 +35,12 @@ export default function HomePage() {
 
         <div className="max-w-5xl mx-auto text-center relative z-10">
 
-          {/* 非官方 DSE 地獄極限修煉場 — Hell-mode positioning slogan */}
-          <div className="inline-flex items-center gap-2 bg-red-950/50 border border-red-800/60 rounded-full px-4 py-2 mb-8 text-sm font-bold text-red-300">
-            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse inline-block" />
+          {/* 因材施教 · 有教無類 — gentle, free positioning slogan */}
+          <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-8 text-sm font-bold text-amber-300">
+            <span className="w-2 h-2 bg-amber-400 rounded-full inline-block" />
             {locale === 'en'
-              ? '🔥 The Unofficial DSE Hell Training Ground'
-              : '🔥 非官方 DSE 地獄極限修煉場'}
+              ? '📚 Personalised · For every student · 100% free'
+              : '📚 因材施教 · 有教無類 · 完全免費'}
           </div>
 
           {/* Main headline */}
@@ -53,10 +56,10 @@ export default function HomePage() {
             {h.subhead}
           </p>
 
-          <p className="text-sm text-red-300/70 mb-3 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-slate-500 mb-3 max-w-2xl mx-auto leading-relaxed">
             {locale === 'en'
-              ? 'Built by hand by ex-DSE top scorers — a dark defensive weapon forged purely to crack the examiners’ hidden traps.'
-              : '純粹由舊生學霸人手建立，專門用嚟攻破官方考評陷阱嘅暗黑防禦武器。'}
+              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind past-paper traps, one question at a time.'
+              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解歷屆試題陷阱背後嘅核心邏輯。'}
           </p>
 
           <div className="flex items-center justify-center gap-4 text-sm text-slate-600 mb-10">
@@ -92,8 +95,8 @@ export default function HomePage() {
           </h2>
           <p className="text-slate-500 text-center text-sm mb-7">
             {locale === 'en'
-              ? 'Numbers blacked out. Only the logic remains. This is hardcore.'
-              : '數字全部塗黑，淨返邏輯。呢個先叫硬核。'}
+              ? 'Numbers blacked out — only the logic remains. See through it, don’t memorise.'
+              : '數字全部塗黑，淨返邏輯。睇穿佢，唔使死記硬背。'}
           </p>
           <BlindTestQuestion />
         </div>
@@ -185,18 +188,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── MISSION: anti-cram, 每日一蚊, education equity ──
+      {/* ── MISSION: anti-cram, completely free, education equity ──
           Replaces invented testimonials (Marco L. etc.) with the real reason the
           product exists — no fabricated names, grades, or social proof. */}
       <section className="py-16 px-4 bg-slate-900/30">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-            {locale === 'en' ? 'Why we only charge HK$1 a day' : '點解我哋淨係收每日一蚊'}
+            {locale === 'en' ? 'Why it’s completely free' : '點解完全免費'}
           </h2>
           <p className="text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
             {locale === 'en'
-              ? 'A cram-school lesson runs HK$200+. Real exam skill should not be locked behind that wall — so we rebuilt it for the price of a sweet.'
-              : '補習社一堂收你 HK$200 起跳。攞分嘅真功夫，唔應該被呢道牆擋住 —— 所以我哋用一粒糖嘅價錢，重新砌返俾你。'}
+              ? 'A cram-school lesson runs HK$200+. Real exam skill should not sit behind that wall — so we rebuilt it and opened it free to every student.'
+              : '補習社一堂收你 HK$200 起跳。攞分嘅真功夫，唔應該被呢道牆擋住 —— 所以我哋重新砌返，免費開放俾每一個學生。'}
           </p>
           <div className="grid sm:grid-cols-3 gap-4 text-left">
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
@@ -213,8 +216,8 @@ export default function HomePage() {
               <div className="font-bold mb-1">{locale === 'en' ? 'Fair' : '公平'}</div>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {locale === 'en'
-                  ? 'HK$1 a day. Every student — not only the ones who can afford star tutors — gets the same edge.'
-                  : '每日一蚊。唔止俾得起補習天王嘅人 —— 係每一個學生，都攞到同一個籌碼。'}
+                  ? 'Completely free. Every student — not only the ones who can afford star tutors — gets the same edge.'
+                  : '完全免費。唔止俾得起補習天王嘅人 —— 係每一個學生，都攞到同一個籌碼。'}
               </p>
             </div>
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">

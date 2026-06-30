@@ -16,6 +16,7 @@ import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock } from 'luc
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
+import { startServerLockout, verifyServerUnlock } from '@/lib/lockout/client'
 
 // The forced-lock countdown (seconds) after a wrong answer on a HARD question.
 const LOCKOUT_SECONDS = 60
@@ -238,6 +239,9 @@ export default function PracticeSession({
   const [followupPick, setFollowupPick] = useState<string | null>(null)
   const [lockSecs, setLockSecs] = useState(0)
   const [elapsed, setElapsed] = useState(0)
+  // Optional server-signed lockout token (defence-in-depth; null = client timer only).
+  const [lockToken, setLockToken] = useState<string | null>(null)
+  const [verifying, setVerifying] = useState(false)
 
   // Show the English string when the UI is in English and a translation exists;
   // otherwise fall back to the Chinese original (so untranslated subjects still work).
@@ -300,6 +304,12 @@ export default function PracticeSession({
         })
         setFollowupPick(null)
         setLockSecs(LOCKOUT_SECONDS)
+        // Defence-in-depth: also register a server-signed lock (no-op unless enabled).
+        setLockToken(null)
+        const qid = currentQ.id
+        void startServerLockout(qid).then((r) => {
+          if (r) setLockToken(r.token)
+        })
       }
     },
     [currentQ, answerState, subjectId]
@@ -320,6 +330,7 @@ export default function PracticeSession({
     setFollowup(null)
     setFollowupPick(null)
     setLockSecs(0)
+    setLockToken(null)
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -358,6 +369,24 @@ export default function PracticeSession({
       setCurrent((c) => c + 1)
     }
   }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr])
+
+  // Proceed past a question. When a server-signed lock exists, do a final server check
+  // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
+  // returns OK, so a student is never wrongly stuck. A genuine "not expired" reply
+  // re-holds the client lock for a few seconds.
+  const proceed = useCallback(async () => {
+    if (lockHeld || verifying) return
+    if (lockToken) {
+      setVerifying(true)
+      const ok = await verifyServerUnlock(lockToken)
+      setVerifying(false)
+      if (!ok) {
+        setLockSecs(3)
+        return
+      }
+    }
+    next()
+  }, [lockHeld, verifying, lockToken, next])
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 
@@ -640,17 +669,17 @@ export default function PracticeSession({
                   </div>
                 )}
 
-                {/* Next button — disabled while the forced lock is held. */}
+                {/* Next button — disabled while the forced lock is held or verifying. */}
                 <button
-                  onClick={next}
-                  disabled={lockHeld}
+                  onClick={proceed}
+                  disabled={lockHeld || verifying}
                   className={`w-full font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
-                    lockHeld
+                    lockHeld || verifying
                       ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
                       : 'bg-amber-500 hover:bg-amber-400 text-black'
                   }`}
                 >
-                  {lockHeld ? (
+                  {lockHeld || verifying ? (
                     <>
                       <Lock size={16} />
                       {tr(`解鎖中…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`,

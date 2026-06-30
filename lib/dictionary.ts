@@ -54,7 +54,7 @@ const zh = {
     minutesUnit: '分鐘',
   },
   home: {
-    liveBadge: '每日一蚊 · 拆邏輯，唔係背答案',
+    liveBadge: '完全免費 · 拆邏輯，唔係背答案',
     headline1: '身為考過 DSE 嘅中學生，',
     headline2: '我想幫你用最輕鬆嘅方法溫書',
     subhead: '掌握邏輯，唔係背答案。無論出乜題，你都識答。',
@@ -440,7 +440,7 @@ const en: typeof zh = {
     minutesUnit: 'min',
   },
   home: {
-    liveBadge: 'HK$1 a day · master the logic, not the answers',
+    liveBadge: '100% free · master the logic, not the answers',
     headline1: 'As a secondary student who’s sat the DSE,',
     headline2: 'I want to help you revise the easy way',
     subhead: 'Master the logic, don’t memorise answers. Whatever they ask, you’ll know how.',

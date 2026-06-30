@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { useSession } from 'next-auth/react'
+import { useAuthSession } from '@/lib/auth/session'
 import {
   snapshotLocal,
   applyLocal,
@@ -41,8 +41,8 @@ const DEBOUNCE_MS = 2500 // 防線 D: cap cloud writes to ~one per burst of acti
 // useSession() is available. Reads the Auth.js login state; when authenticated it
 // pulls + smart-merges the cloud row, then debounce-pushes local changes up.
 export default function SyncProvider({ children }: { children: React.ReactNode }) {
-  const { data: session, status: authStatus } = useSession()
-  const userId = session?.user?.id ?? null
+  const { user, status: authStatus } = useAuthSession()
+  const userId = user?.id ?? null
   const [status, setStatus] = useState<SyncStatus>('idle')
   const [version, setVersion] = useState(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -143,6 +143,14 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
       window.removeEventListener('offline', onOffline)
     }
   }, [authStatus, pullMerge])
+
+  // Clear any pending debounced push on unmount (no dangling setTimeout → no
+  // setState-after-unmount). debounceRef is also cleared on every reschedule.
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current)
+    }
+  }, [])
 
   return <SyncContext.Provider value={{ status, version }}>{children}</SyncContext.Provider>
 }
