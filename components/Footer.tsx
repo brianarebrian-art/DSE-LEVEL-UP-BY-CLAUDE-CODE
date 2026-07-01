@@ -55,6 +55,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/transparency" className="hover:text-slate-300 transition-colors">
+                  {t.footer.transparency}
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:dselevelup@gmail.com" className="hover:text-slate-300 transition-colors">
                   {t.footer.contact}
                 </a>

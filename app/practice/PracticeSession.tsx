@@ -521,31 +521,31 @@ export default function PracticeSession({
         {answerState !== null && (
           <div className="animate-slide-up">
             {!answerState.isCorrect && diagnosed === null ? (
-              /* 答錯即鎖死 (Heinz visual hammer): a wrong answer LOCKS the solution
-                 behind a forced 3-way reverse-cause self-diagnosis. Black/red, severe. */
-              <div className="rounded-2xl p-6 mb-4 border-2 border-red-600 bg-black animate-hell-pulse">
+              /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
+                 3-way reverse-cause self-diagnosis. Calm amber, reflective (因材施教). */
+              <div className="rounded-2xl p-6 mb-4 border border-amber-500/40 bg-amber-500/5">
                 <div className="flex items-center gap-2 mb-1">
-                  <Lock size={18} className="text-red-500" />
-                  <span className="text-red-500 font-extrabold tracking-wide text-sm uppercase">
-                    🔒 Access Locked
+                  <Lock size={18} className="text-amber-400" />
+                  <span className="text-amber-300 font-bold tracking-wide text-sm">
+                    ✋ {tr('停一停，諗一諗', 'Pause & reflect')}
                   </span>
                 </div>
-                <p className="text-red-300/90 text-xs font-bold mb-1">
-                  {tr('你已墮入考評局陷阱 — ACCUSED OF FALLING INTO HKEAA TRAP',
-                      "You've fallen into an HKEAA trap — ACCESS LOCKED")}
+                <p className="text-slate-300 text-xs font-semibold mb-1">
+                  {tr('答錯唔緊要 —— 一齊搵出今次嘅錯因，跟住就解鎖詳解。',
+                      'A wrong answer is fine — let’s find what tripped you up, then the solution unlocks.')}
                 </p>
                 <p className="text-slate-500 text-xs mb-4 leading-relaxed">
-                  {tr('解鎖詳解前，必須誠實面對：你今次中咗邊一種底層陷阱？',
-                      'Before the solution unlocks, own it honestly — which underlying trap caught you?')}
+                  {tr('誠實諗諗：你今次主要中咗邊一種底層陷阱？',
+                      'Honestly: which underlying trap caught you this time?')}
                 </p>
                 <div className="space-y-2">
                   {REVERSE_CAUSES.map((c) => (
                     <button
                       key={c.key}
                       onClick={() => chooseCause(c.key)}
-                      className="w-full text-left flex items-start gap-3 border border-red-900/60 bg-red-950/30 hover:bg-red-900/40 hover:border-red-500 rounded-xl px-4 py-3 transition-all"
+                      className="w-full text-left flex items-start gap-3 border border-slate-700 bg-slate-800/40 hover:bg-slate-800/70 hover:border-amber-500/50 rounded-xl px-4 py-3 transition-all"
                     >
-                      <span className="shrink-0 w-7 h-7 rounded-lg bg-red-900/70 text-red-200 flex items-center justify-center text-sm font-extrabold">
+                      <span className="shrink-0 w-7 h-7 rounded-lg bg-slate-700 text-amber-300 flex items-center justify-center text-sm font-extrabold">
                         {c.key}
                       </span>
                       <span className="min-w-0">

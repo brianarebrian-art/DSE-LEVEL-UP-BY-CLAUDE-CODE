@@ -49,8 +49,14 @@ create policy "service_role_full_access"
   with check (true);
 
 -- ── Keep updated_at fresh on every update ────────────────────────────────────
+-- `set search_path = ''` pins a fixed (empty) search_path so the function can't be
+-- hijacked via a caller's mutable path (Supabase linter 0011). now() lives in
+-- pg_catalog and is always resolvable, so an empty path is safe here.
 create or replace function public.touch_updated_at()
-returns trigger language plpgsql as $$
+returns trigger
+language plpgsql
+set search_path = ''
+as $$
 begin
   new.updated_at = now();
   return new;

@@ -16,6 +16,8 @@ import { useLocale } from '@/lib/i18n'
 import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
 import SyncStatus from '@/components/SyncStatus'
+import ErrorDNA from '@/components/ErrorDNA'
+import DailyPlan from '@/components/DailyPlan'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
 
@@ -150,6 +152,9 @@ export default function DashboardPage() {
           ))}
         </div>
 
+        {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
+        <DailyPlan />
+
         {/* 高效 ROI — replaces the EXP/rank vanity meter with honest money-and-time
             framing tied to the free-for-everyone mission (no fabricated peer percentiles). */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-10">
@@ -211,6 +216,9 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+
+        {/* Error DNA — distribution of self-diagnosed error causes */}
+        <ErrorDNA />
 
         {/* Per-subject performance */}
         <h2 className="text-lg font-bold mb-4 text-slate-300">{d.perSubject}</h2>
