@@ -30,7 +30,10 @@ const loaders: Record<string, Loader> = {
       ...pbank.mathBankQuestions,
     ]
   },
-  m1: async () => (await import('./m1')).m1Questions,
+  m1: async () => {
+    const [base, mbank] = await Promise.all([import('./m1'), import('./m1-bank')])
+    return [...base.m1Questions, ...mbank.m1BankQuestions]
+  },
   m2: async () => (await import('./m2')).m2Questions,
   physics: async () => {
     const [base, pbank] = await Promise.all([import('./physics'), import('./physics-bank')])

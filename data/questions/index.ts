@@ -5,6 +5,7 @@ import { mathParametricQuestions } from './math-parametric'
 import { mathImportedQuestions } from './math-imported'
 import { mathBankQuestions } from './math-bank'
 import { m1Questions, m1Topics } from './m1'
+import { m1BankQuestions } from './m1-bank'
 import { m2Questions, m2Topics } from './m2'
 import { physicsQuestions, physicsTopics } from './physics'
 import { physicsBankQuestions } from './physics-bank'
@@ -42,7 +43,7 @@ interface SubjectBank {
 const banks: Record<string, SubjectBank> = {
   // Hand-authored 120 + offline AI-generated (gate + LLM-judge verified) extras.
   math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions], topics: mathTopics },
-  m1: { questions: m1Questions, topics: m1Topics },
+  m1: { questions: [...m1Questions, ...m1BankQuestions], topics: m1Topics },
   m2: { questions: m2Questions, topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions], topics: chemistryTopics },

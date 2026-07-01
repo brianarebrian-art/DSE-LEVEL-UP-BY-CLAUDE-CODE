@@ -71,10 +71,11 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
 }
 
-// DSE difficulty mix served per run: 20% 補底(easy) / 50% 普通(medium) / 30% 拔尖(hard).
-// This is the owner-mandated 30/50/20 target (拔尖/普通/補底). pickByDifficulty tops up
-// from whatever's left if a bank is thin on a tier, so it never returns fewer than it can.
-const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.2, medium: 0.5, hard: 0.3 }
+// DSE difficulty mix served per run: 30% 基礎(easy) / 50% 普通(medium) / 20% 拔尖(hard).
+// Owner-mandated target = 300/500/200 per 1,000-question subject bank (the standard
+// foundation-weighted pyramid). pickByDifficulty tops up from whatever's left if a bank
+// is thin on a tier, so it never returns fewer than it can.
+const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.3, medium: 0.5, hard: 0.2 }
 
 // Pick `size` questions from a recency-ordered pool honouring the 3:5:2 mix.
 // `ordered` is already in preference order (unseen first, then longest-ago-seen);
