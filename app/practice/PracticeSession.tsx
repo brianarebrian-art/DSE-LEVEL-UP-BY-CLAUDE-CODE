@@ -71,10 +71,10 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
 }
 
-// 地獄模式 difficulty mix: 10% easy / 40% medium / 50% hard — biased toward each
-// bank's hardest questions (pickByDifficulty tops up from what's left if a bank is
-// thin on hard ones, so it never returns fewer than it can).
-const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.1, medium: 0.4, hard: 0.5 }
+// DSE difficulty mix served per run: 20% 補底(easy) / 50% 普通(medium) / 30% 拔尖(hard).
+// This is the owner-mandated 30/50/20 target (拔尖/普通/補底). pickByDifficulty tops up
+// from whatever's left if a bank is thin on a tier, so it never returns fewer than it can.
+const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.2, medium: 0.5, hard: 0.3 }
 
 // Pick `size` questions from a recency-ordered pool honouring the 3:5:2 mix.
 // `ordered` is already in preference order (unseen first, then longest-ago-seen);
@@ -128,17 +128,16 @@ function buildPool(
   mode: 'normal' | 'weakness',
 ): PreparedQuestion[] {
   const scoped = topicFilter ? bank.filter((q) => q.topic === topicFilter) : bank
-  // 拔尖 MODE: this platform serves ONLY 5★★ (hard) questions — we target students
-  // pushing for the top, not remedial drilling. Fall back to the full scope only if
-  // a subject/topic genuinely lacks enough hard items to fill a run.
-  const hardOnly = scoped.filter((q) => q.difficulty === 'hard')
-  const base = hardOnly.length >= sessionSize ? hardOnly : scoped
+  // Serve the full 30/50/20 mix (補底/普通/拔尖) — pickByDifficulty stratifies below.
+  // (Superseded the old 拔尖 hard-only serving so every tier surfaces per the mandate.)
+  const base = scoped
 
   let ordered: Question[]
   if (mode === 'weakness') {
     // Repair worksheet: surface the user's weakest topics (lowest win-rate) first,
     // padded by the rest so a 20-Q run can still fill. Stratification below is
     // unchanged, so the 3:5:2 mix still holds within the weakness slice.
+    // (Stratification below is unchanged, so the 30/50/20 mix still holds within the slice.)
     const weak = new Set(weakestTopics({ subjectId, min: 1, limit: 4 }).map((e) => e.topic))
     const weakQs = shuffle(base.filter((q) => weak.has(q.topic)))
     const rest = shuffle(base.filter((q) => !weak.has(q.topic)))
@@ -156,7 +155,7 @@ function buildPool(
     ordered = [...unseen, ...seenOldestFirst]
   }
 
-  // Stratify to the DSE 3:5:2 mix, then shuffle so difficulties aren't clustered.
+  // Stratify to the DSE 30/50/20 mix, then shuffle so difficulties aren't clustered.
   return shuffle(pickByDifficulty(ordered, sessionSize)).map(prepareQuestion)
 }
 
