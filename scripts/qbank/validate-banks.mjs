@@ -37,6 +37,9 @@ const BANKS = [
   { subject: 'physics', file: 'data/questions/physics-bank.ts', exportName: 'physicsBankQuestions' },
   { subject: 'chemistry', file: 'data/questions/chemistry-bank.ts', exportName: 'chemistryBankQuestions' },
   { subject: 'm1', file: 'data/questions/m1-bank.ts', exportName: 'm1BankQuestions' },
+  { subject: 'm2', file: 'data/questions/m2-bank.ts', exportName: 'm2BankQuestions' },
+  { subject: 'economics', file: 'data/questions/economics-bank.ts', exportName: 'economicsBankQuestions' },
+  { subject: 'bafs', file: 'data/questions/bafs-bank.ts', exportName: 'bafsBankQuestions' },
 ]
 
 const RATIO = { easy: 0.3, medium: 0.5, hard: 0.2 } // 300 / 500 / 200 per 1,000
@@ -123,9 +126,11 @@ for (const b of banks) {
     const errs = checkQuestion(q, seenIds)
     if (q.id) seenIds.add(q.id)
     if (q.difficulty in by) by[q.difficulty]++
-    // near-duplicate stem across all banks
-    const key = normStem(q.content).slice(0, 40)
-    if (key && stems.has(key)) errs.push(`near-duplicate stem of ${stems.get(key)}`)
+    // exact-duplicate stem across all banks (full normalised content; parametric
+    // families legitimately reuse a scenario for a different skill, so only an
+    // IDENTICAL stem is a real duplicate — a 40-char prefix over-flags).
+    const key = normStem(q.content)
+    if (key && stems.has(key)) errs.push(`duplicate stem of ${stems.get(key)}`)
     else if (key) stems.set(key, `${b.subject}/${q.id}`)
     if (errs.length) {
       bankErrs += errs.length

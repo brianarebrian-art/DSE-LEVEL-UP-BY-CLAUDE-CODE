@@ -34,7 +34,10 @@ const loaders: Record<string, Loader> = {
     const [base, mbank] = await Promise.all([import('./m1'), import('./m1-bank')])
     return [...base.m1Questions, ...mbank.m1BankQuestions]
   },
-  m2: async () => (await import('./m2')).m2Questions,
+  m2: async () => {
+    const [base, mbank] = await Promise.all([import('./m2'), import('./m2-bank')])
+    return [...base.m2Questions, ...mbank.m2BankQuestions]
+  },
   physics: async () => {
     const [base, pbank] = await Promise.all([import('./physics'), import('./physics-bank')])
     return [...base.physicsQuestions, ...pbank.physicsBankQuestions]
@@ -47,8 +50,14 @@ const loaders: Record<string, Loader> = {
   english: async () => (await import('./english')).englishQuestions,
   ict: async () => (await import('./ict')).ictQuestions,
   chinese: async () => (await import('./chinese')).chineseQuestions,
-  bafs: async () => (await import('./bafs')).bafsQuestions,
-  economics: async () => (await import('./economics')).economicsQuestions,
+  bafs: async () => {
+    const [base, bbank] = await Promise.all([import('./bafs'), import('./bafs-bank')])
+    return [...base.bafsQuestions, ...bbank.bafsBankQuestions]
+  },
+  economics: async () => {
+    const [base, ebank] = await Promise.all([import('./economics'), import('./economics-bank')])
+    return [...base.economicsQuestions, ...ebank.economicsBankQuestions]
+  },
   geography: async () => (await import('./geography')).geographyQuestions,
   history: async () => (await import('./history')).historyQuestions,
   'chinese-history': async () => (await import('./chinese-history')).chineseHistoryQuestions,

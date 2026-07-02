@@ -7,6 +7,7 @@ import { mathBankQuestions } from './math-bank'
 import { m1Questions, m1Topics } from './m1'
 import { m1BankQuestions } from './m1-bank'
 import { m2Questions, m2Topics } from './m2'
+import { m2BankQuestions } from './m2-bank'
 import { physicsQuestions, physicsTopics } from './physics'
 import { physicsBankQuestions } from './physics-bank'
 import { chemistryQuestions, chemistryTopics } from './chemistry'
@@ -17,6 +18,8 @@ import { ictQuestions, ictTopics } from './ict'
 import { chineseQuestions, chineseTopics } from './chinese'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
+import { economicsBankQuestions } from './economics-bank'
+import { bafsBankQuestions } from './bafs-bank'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
@@ -44,15 +47,15 @@ const banks: Record<string, SubjectBank> = {
   // Hand-authored 120 + offline AI-generated (gate + LLM-judge verified) extras.
   math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions], topics: mathTopics },
   m1: { questions: [...m1Questions, ...m1BankQuestions], topics: m1Topics },
-  m2: { questions: m2Questions, topics: m2Topics },
+  m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions], topics: chemistryTopics },
   biology: { questions: biologyQuestions, topics: biologyTopics },
   english: { questions: englishQuestions, topics: englishTopics },
   ict: { questions: ictQuestions, topics: ictTopics },
   chinese: { questions: chineseQuestions, topics: chineseTopics },
-  bafs: { questions: bafsQuestions, topics: bafsTopics },
-  economics: { questions: economicsQuestions, topics: economicsTopics },
+  bafs: { questions: [...bafsQuestions, ...bafsBankQuestions], topics: bafsTopics },
+  economics: { questions: [...economicsQuestions, ...economicsBankQuestions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
   history: { questions: historyQuestions, topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },

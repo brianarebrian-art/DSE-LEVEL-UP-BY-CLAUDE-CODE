@@ -139,7 +139,7 @@ for (let b = -6; b <= 6; b++) {
   for (let c = -6; c <= 6; c++) {
     if (b === 0 || c === 0) continue
     if (b * b - 4 * c <= 0) continue // ensure two real roots (a genuine quadratic scenario)
-    const sgn = (v: number, s: string) => (v < 0 ? ` - ${Math.abs(v)}${s}` : ` + ${v}${s}`)
+    const sgn = (v: number, s: string) => (v < 0 ? ` - ${Math.abs(v) === 1 && s ? '' : Math.abs(v)}${s}` : ` + ${Math.abs(v) === 1 && s ? '' : v}${s}`)
     const eq = `x^2${sgn(b, 'x')}${sgn(c, '')} = 0`
     add(`mb_m1_${b + 7}_${c + 7}`, T.quadratic, FW.algebra, 'medium',
       [`設 $\\alpha$、$\\beta$ 為方程 $${eq}$ 的兩根，求 $\\alpha + \\beta$。`,
@@ -238,7 +238,7 @@ for (let a = 1; a <= 4; a++) {
     for (const q of [1, 2, 3]) {
       if (p === 0) continue
       const R = a * a + p * a + q
-      const psgn = (v: number) => (v < 0 ? ` - ${Math.abs(v)}x` : ` + ${v}x`)
+      const psgn = (v: number) => (v < 0 ? ` - ${Math.abs(v) === 1 ? '' : Math.abs(v)}x` : ` + ${v === 1 ? '' : v}x`)
       add(`mb_m8_${a}_${p + 4}_${q}`, T.polynomial, FW.algebra, 'medium',
         [`設 $f(x) = x^2${psgn(p)} + ${q}$。求 $f(x)$ 除以 $(x - ${a})$ 的餘數。`,
          `Let $f(x) = x^2${psgn(p)} + ${q}$. Find the remainder when $f(x)$ is divided by $(x - ${a})$.`],
@@ -259,7 +259,7 @@ for (let b = -7; b <= 7; b++) {
     if (b === 0 || c === 0) continue
     if (b * b - 4 * c <= 0) continue
     const s2 = b * b - 2 * c // α²+β² = (α+β)² − 2αβ = b² − 2c
-    const sgn = (v: number, x: string) => (v < 0 ? ` - ${Math.abs(v)}${x}` : ` + ${v}${x}`)
+    const sgn = (v: number, x: string) => (v < 0 ? ` - ${Math.abs(v) === 1 && x ? '' : Math.abs(v)}${x}` : ` + ${Math.abs(v) === 1 && x ? '' : v}${x}`)
     const eq = `x^2${sgn(b, 'x')}${sgn(c, '')} = 0`
     add(`mb_h1_${b + 8}_${c + 6}`, T.quadratic, FW.algebra, 'hard',
       [`設 $\\alpha$、$\\beta$ 為 $${eq}$ 的兩根，求 $\\alpha^2 + \\beta^2$。`,
@@ -277,7 +277,7 @@ for (let b = -5; b <= 5; b++) {
     if (b * b - 4 * c <= 0) continue
     const sum = -b, prod = c
     const s3 = sum * sum * sum - 3 * prod * sum // α³+β³ = (α+β)³ − 3αβ(α+β)
-    const sgn = (v: number, x: string) => (v < 0 ? ` - ${Math.abs(v)}${x}` : ` + ${v}${x}`)
+    const sgn = (v: number, x: string) => (v < 0 ? ` - ${Math.abs(v) === 1 && x ? '' : Math.abs(v)}${x}` : ` + ${Math.abs(v) === 1 && x ? '' : v}${x}`)
     const eq = `x^2${sgn(b, 'x')}${sgn(c, '')} = 0`
     add(`mb_h2_${b + 6}_${c + 3}`, T.quadratic, FW.algebra, 'hard',
       [`設 $\\alpha$、$\\beta$ 為 $${eq}$ 的兩根，求 $\\alpha^3 + \\beta^3$。`,
