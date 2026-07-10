@@ -114,7 +114,7 @@ for (const P of [200, 300, 400, 500, 600, 800]) {
     add(`mb_e3_${P}_${r}`, T.percentage, FW.compute, 'easy',
       [`某商品原價 $\\$${P}$，加價 $${r}\\%$ 後的售價是多少？`, `An item priced $\\$${P}$ rises by $${r}\\%$. Find the new price.`],
       [n(`$\\$${up}$`), n(`$\\$${down}$`), n(`$\\$${P + r}$`), n(`$\\$${P * (1 + r)}$`)],
-      [`加價 $${r}\\%$：新價 $= ${P} \\times (1 + ${r}\\%) = ${P} \\times ${(100 + r) / 100} = ${up}$。陷阱：$\\$${down}$ 做咗減價；$\\$${P + r}$ 直接加咗 $${r}$ 而唔係 $${r}\\%$。`,
+      [`加價 $${r}\\%$：新價 $= ${P} \\times (1 + ${r}\\%) = ${P} \\times ${(100 + r) / 100} = ${up}$。陷阱：$\\$${down}$ 做了減價；$\\$${P + r}$ 直接加了 $${r}$ 而非 $${r}\\%$。`,
        `New price $= ${P}\\times(1+${r}\\%) = ${up}$. Trap: $\\$${down}$ decreases instead.`])
   }
 }
@@ -126,7 +126,7 @@ for (const P of [200, 300, 400, 500, 600, 800]) {
     add(`mb_e4_${i}`, T.factors, FW.compute, 'easy',
       [`求 $${A}$ 與 $${B}$ 的最大公因數 (H.C.F.)。`, `Find the H.C.F. of $${A}$ and $${B}$.`],
       [n(`$${h}$`), n(`$${l}$`), n(`$${A}$`), n(`$${B}$`)],
-      [`$${A} = ${h} \\times ${A / h}$、$${B} = ${h} \\times ${B / h}$，公有最大因數為 $${h}$。陷阱：$${l}$ 係最小公倍數 (L.C.M.)，唔好撈亂。`,
+      [`$${A} = ${h} \\times ${A / h}$、$${B} = ${h} \\times ${B / h}$，公有最大因數為 $${h}$。陷阱：$${l}$ 是最小公倍數 (L.C.M.)，不可混淆。`,
        `$${A}$ and $${B}$ share the largest factor $${h}$. Trap: $${l}$ is the L.C.M., not the H.C.F.`])
   })
 
@@ -145,7 +145,7 @@ for (let b = -6; b <= 6; b++) {
       [`設 $\\alpha$、$\\beta$ 為方程 $${eq}$ 的兩根，求 $\\alpha + \\beta$。`,
        `Let $\\alpha,\\beta$ be the roots of $${eq}$. Find $\\alpha + \\beta$.`],
       [n(`$${-b}$`), n(`$${b}$`), n(`$${c}$`), n(`$${-c}$`)],
-      [`韋達定理：首項係數為 $1$，$\\alpha + \\beta = -\\dfrac{b}{a} = -(${b}) = ${-b}$。陷阱：$${b}$ 漏咗負號；$${c}$ 係兩根之積 $\\alpha\\beta$。`,
+      [`韋達定理：首項係數為 $1$，$\\alpha + \\beta = -\\dfrac{b}{a} = -(${b}) = ${-b}$。陷阱：$${b}$ 漏了負號；$${c}$ 是兩根之積 $\\alpha\\beta$。`,
        `Vieta: $\\alpha+\\beta = -b = ${-b}$. Trap: $${c}$ is the product $\\alpha\\beta$, not the sum.`])
   }
 }
@@ -159,7 +159,7 @@ for (let a = 1; a <= 8; a++) {
         [`一等差數列首項為 $${a}$，公差為 $${d}$。求第 $${nn}$ 項。`,
          `An arithmetic sequence has first term $${a}$ and common difference $${d}$. Find the $${nn}$th term.`],
         [n(`$${Tn}$`), n(`$${a + nn * d}$`), n(`$${a * nn}$`), n(`$${nn * d}$`)],
-        [`$T_n = a + (n-1)d = ${a} + (${nn}-1)\\times${d} = ${a} + ${(nn - 1) * d} = ${Tn}$。陷阱：$${a + nn * d}$ 用咗 $n$ 而唔係 $n-1$（off-by-one）。`,
+        [`$T_n = a + (n-1)d = ${a} + (${nn}-1)\\times${d} = ${a} + ${(nn - 1) * d} = ${Tn}$。陷阱：$${a + nn * d}$ 用了 $n$ 而非 $n-1$（off-by-one）。`,
          `$T_n = a+(n-1)d = ${Tn}$. Trap: $${a + nn * d}$ uses $n$ instead of $n-1$.`])
     }
   }
@@ -174,7 +174,7 @@ for (let a = 1; a <= 4; a++) {
         [`一等比數列首項為 $${a}$，公比為 $${r}$。求第 $${nn}$ 項。`,
          `A geometric sequence has first term $${a}$ and common ratio $${r}$. Find the $${nn}$th term.`],
         [n(`$${Tn}$`), n(`$${a * Math.pow(r, nn)}$`), n(`$${a * r * (nn - 1)}$`), n(`$${a * nn * r}$`)],
-        [`$T_n = a r^{\\,n-1} = ${a}\\times ${r}^{${nn - 1}} = ${a}\\times ${Math.pow(r, nn - 1)} = ${Tn}$。陷阱：$${a * Math.pow(r, nn)}$ 用咗 $r^{n}$（漏減一）。`,
+        [`$T_n = a r^{\\,n-1} = ${a}\\times ${r}^{${nn - 1}} = ${a}\\times ${Math.pow(r, nn - 1)} = ${Tn}$。陷阱：$${a * Math.pow(r, nn)}$ 用了 $r^{n}$（漏減一）。`,
          `$T_n = a r^{n-1} = ${Tn}$. Trap: $${a * Math.pow(r, nn)}$ uses $r^{n}$.`])
     }
   }
@@ -188,7 +188,7 @@ for (let a = 1; a <= 4; a++) {
       [`兩點 $A(0,0)$ 及 $B(${dx},${dy})$，求 $AB$ 的距離。`,
        `Find the distance $AB$ where $A(0,0)$ and $B(${dx},${dy})$.`],
       [n(`$${dist}$`), n(`$${dx * dx + dy * dy}$`), n(`$${dx + dy}$`), n(`$${Math.abs(dx - dy)}$`)],
-      [`$AB = \\sqrt{(${dx})^2 + (${dy})^2} = \\sqrt{${dx * dx} + ${dy * dy}} = \\sqrt{${dx * dx + dy * dy}} = ${dist}$。陷阱：$${dx * dx + dy * dy}$ 漏咗開方；$${dx + dy}$ 直接加咗坐標差。`,
+      [`$AB = \\sqrt{(${dx})^2 + (${dy})^2} = \\sqrt{${dx * dx} + ${dy * dy}} = \\sqrt{${dx * dx + dy * dy}} = ${dist}$。陷阱：$${dx * dx + dy * dy}$ 漏了開方；$${dx + dy}$ 直接加了坐標差。`,
        `$AB=\\sqrt{${dx}^2+${dy}^2}=${dist}$. Trap: $${dx * dx + dy * dy}$ forgets the square root.`])
   })
 
@@ -200,7 +200,7 @@ for (let a = 1; a <= 4; a++) {
       [`求連接 $A(${x1},${y1})$ 及 $B(${x2},${y2})$ 的線段的中點坐標。`,
        `Find the midpoint of the segment joining $A(${x1},${y1})$ and $B(${x2},${y2})$.`],
       [n(`$(${mx}, ${my})$`), n(`$(${(x2 - x1) / 2}, ${(y2 - y1) / 2})$`), n(`$(${x1 + x2}, ${y1 + y2})$`), n(`$(${my}, ${mx})$`)],
-      [`中點 $= \\left(\\dfrac{${x1}+${x2}}{2}, \\dfrac{${y1}+${y2}}{2}\\right) = (${mx}, ${my})$。陷阱：$(${x1 + x2}, ${y1 + y2})$ 漏咗除以 $2$。`,
+      [`中點 $= \\left(\\dfrac{${x1}+${x2}}{2}, \\dfrac{${y1}+${y2}}{2}\\right) = (${mx}, ${my})$。陷阱：$(${x1 + x2}, ${y1 + y2})$ 漏了除以 $2$。`,
        `Midpoint $= \\left(\\frac{${x1}+${x2}}{2},\\frac{${y1}+${y2}}{2}\\right)=(${mx},${my})$. Trap: forgetting to halve.`])
   })
 
@@ -214,7 +214,7 @@ for (let dx = 1; dx <= 4; dx++) {
         [`求通過 $A(${x1},${y1})$ 及 $B(${x2},${y2})$ 的直線的斜率。`,
          `Find the slope of the line through $A(${x1},${y1})$ and $B(${x2},${y2})$.`],
         [n(`$${slope}$`), n(`$${frac(dx, slope * dx)}$`), n(`$${-slope}$`), n(`$${frac(-dx, slope * dx)}$`)],
-        [`斜率 $= \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{${y2}-${y1}}{${x2}-${x1}} = \\dfrac{${y2 - y1}}{${x2 - x1}} = ${slope}$。陷阱：$${frac(dx, slope * dx)}$ 將 $\\Delta x$ 同 $\\Delta y$ 上下倒轉（用咗 $\\frac{\\Delta x}{\\Delta y}$）；$${-slope}$ 符號搞錯。`,
+        [`斜率 $= \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{${y2}-${y1}}{${x2}-${x1}} = \\dfrac{${y2 - y1}}{${x2 - x1}} = ${slope}$。陷阱：$${frac(dx, slope * dx)}$ 將 $\\Delta x$ 同 $\\Delta y$ 上下倒轉（用了 $\\frac{\\Delta x}{\\Delta y}$）；$${-slope}$ 符號弄錯。`,
          `Slope $= \\frac{y_2-y_1}{x_2-x_1} = ${slope}$. Trap: $${frac(dx, slope * dx)}$ swaps $\\Delta x$ and $\\Delta y$.`])
     }
   }
@@ -227,7 +227,7 @@ for (const b of [2, 3, 5, 10]) {
     add(`mb_m7_${b}_${k}`, T.logs, FW.algebra, 'medium',
       [`求 $\\log_{${b}} ${N}$ 的值。`, `Evaluate $\\log_{${b}} ${N}$.`],
       [n(`$${k}$`), n(`$${b}$`), n(`$${N / b}$`), n(`$${k * b}$`)],
-      [`$${N} = ${b}^{${k}}$，故 $\\log_{${b}} ${N} = ${k}$。陷阱：$${N / b}$ 係 $${b}^{${k - 1}}$；$${b}$ 誤答成底數。`,
+      [`$${N} = ${b}^{${k}}$，故 $\\log_{${b}} ${N} = ${k}$。陷阱：$${N / b}$ 是 $${b}^{${k - 1}}$；$${b}$ 誤答成底數。`,
        `$${N}=${b}^{${k}}$ ⇒ $\\log_{${b}}${N}=${k}$. Trap: $${b}$ is just the base.`])
   }
 }
@@ -243,7 +243,7 @@ for (let a = 1; a <= 4; a++) {
         [`設 $f(x) = x^2${psgn(p)} + ${q}$。求 $f(x)$ 除以 $(x - ${a})$ 的餘數。`,
          `Let $f(x) = x^2${psgn(p)} + ${q}$. Find the remainder when $f(x)$ is divided by $(x - ${a})$.`],
         [n(`$${R}$`), n(`$${a * a - p * a + q}$`), n(`$${p * a + q}$`), n(`$${a * a + p * a - q}$`)],
-        [`餘式定理：餘數 $= f(${a}) = ${a}^2 ${p < 0 ? '-' : '+'} ${Math.abs(p)}(${a}) + ${q} = ${a * a} ${p < 0 ? '-' : '+'} ${Math.abs(p * a)} + ${q} = ${R}$。陷阱：$${a * a - p * a + q}$ 代咗 $x=-${a}$（除式是 $x-${a}$，應代 $+${a}$）。`,
+        [`餘式定理：餘數 $= f(${a}) = ${a}^2 ${p < 0 ? '-' : '+'} ${Math.abs(p)}(${a}) + ${q} = ${a * a} ${p < 0 ? '-' : '+'} ${Math.abs(p * a)} + ${q} = ${R}$。陷阱：$${a * a - p * a + q}$ 誤代 $x=-${a}$（除式是 $x-${a}$，應代 $+${a}$）。`,
          `Remainder theorem: remainder $= f(${a}) = ${R}$. Trap: $${a * a - p * a + q}$ substitutes $x=-${a}$.`])
     }
   }
@@ -265,7 +265,7 @@ for (let b = -7; b <= 7; b++) {
       [`設 $\\alpha$、$\\beta$ 為 $${eq}$ 的兩根，求 $\\alpha^2 + \\beta^2$。`,
        `Let $\\alpha,\\beta$ be the roots of $${eq}$. Find $\\alpha^2 + \\beta^2$.`],
       [n(`$${s2}$`), n(`$${b * b}$`), n(`$${b * b + 2 * c}$`), n(`$${b * b - c}$`)],
-      [`韋達：$\\alpha+\\beta = ${-b}$、$\\alpha\\beta = ${c}$。恆等式 $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = ${b * b} - 2(${c}) = ${s2}$。陷阱：$${b * b}$ 漏咗 $-2\\alpha\\beta$；$${b * b + 2 * c}$ 加錯符號。`,
+      [`韋達：$\\alpha+\\beta = ${-b}$、$\\alpha\\beta = ${c}$。恆等式 $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = ${b * b} - 2(${c}) = ${s2}$。陷阱：$${b * b}$ 漏了 $-2\\alpha\\beta$；$${b * b + 2 * c}$ 加錯符號。`,
        `Vieta then identity: $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=${b * b}-2(${c})=${s2}$. Trap: $${b * b}$ drops the $-2\\alpha\\beta$.`])
   }
 }
@@ -299,7 +299,7 @@ for (let a = 2; a <= 9; a++) {
       [`一等比數列首項為 $${a}$，公比為 $\\dfrac{1}{${m}}$，求其無窮項之和。`,
        `A geometric series has first term $${a}$ and common ratio $\\frac{1}{${m}}$. Find its sum to infinity.`],
       [n(`$${frac(num, den)}$`), n(`$${frac(swapNum, swapDen)}$`), n(`$${a * m}$`), n(`$${frac(a, m)}$`)],
-      [`$|r| = \\dfrac{1}{${m}} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{${a}}{1 - \\frac{1}{${m}}} = \\dfrac{${a}}{\\frac{${den}}{${m}}} = ${frac(num, den)}$。陷阱：$${frac(swapNum, swapDen)}$ 用咗 $1+r$（符號錯）；$${frac(a, m)}$ 只算咗第二項。`,
+      [`$|r| = \\dfrac{1}{${m}} < 1$，$S_\\infty = \\dfrac{a}{1-r} = \\dfrac{${a}}{1 - \\frac{1}{${m}}} = \\dfrac{${a}}{\\frac{${den}}{${m}}} = ${frac(num, den)}$。陷阱：$${frac(swapNum, swapDen)}$ 用了 $1+r$（符號錯）；$${frac(a, m)}$ 只算了第二項。`,
        `$S_\\infty = \\frac{a}{1-r} = ${frac(num, den)}$. Trap: $${frac(swapNum, swapDen)}$ uses $1+r$.`])
     void swap
   }

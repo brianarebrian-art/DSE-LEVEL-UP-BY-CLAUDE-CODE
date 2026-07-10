@@ -32,6 +32,8 @@ export default function ErrorDNA() {
   const en = locale === 'en'
   const [counts, setCounts] = useState<Record<ReverseCause, number>>({ A: 0, B: 0, C: 0 })
   const [total, setTotal] = useState(0)
+  // 連續同類錯因偵測（Ethan/數據）：最近 N 次全同一錯因 ⇒ 惡性循環警示。
+  const [streak, setStreak] = useState<{ cause: ReverseCause; len: number } | null>(null)
 
   useEffect(() => {
     const log = getReverseLog()
@@ -39,6 +41,13 @@ export default function ErrorDNA() {
     for (const e of log) if (e.cause === 'A' || e.cause === 'B' || e.cause === 'C') c[e.cause]++
     setCounts(c)
     setTotal(log.length)
+    // log 係新→舊：由頭數起，連續同 cause 達 3 次即警示
+    if (log.length >= 3) {
+      const head = log[0].cause
+      let len = 0
+      for (const e of log) { if (e.cause === head) len++; else break }
+      setStreak(len >= 3 ? { cause: head, len } : null)
+    }
   }, [])
 
   const top = ORDER.reduce((a, b) => (counts[b] > counts[a] ? b : a), 'A' as ReverseCause)
@@ -87,6 +96,18 @@ export default function ErrorDNA() {
               </div>
             ))}
           </div>
+
+          {/* 連續同類錯因警示（≥3 次） */}
+          {streak && (
+            <div className="bg-red-500/5 rounded-xl px-4 py-3 border-l-2 border-red-500/50 mb-3">
+              <div className="text-xs text-red-400 font-bold mb-1">{en ? 'Repeat-pattern alert' : '重複模式警示'}</div>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                {en
+                  ? `Your last ${streak.len} errors were all “${CAUSE[streak.cause].en}”. Stop drilling for a moment and fix the root cause first — otherwise the loop repeats.`
+                  : `你最近 ${streak.len} 次錯誤全部係「${CAUSE[streak.cause].zh}」。停一停，先處理呢個根源再操卷 —— 唔係嘅話個循環會一直重複。`}
+              </p>
+            </div>
+          )}
 
           {/* Diagnosis on the top cause */}
           <div className="bg-slate-800/40 rounded-xl px-4 py-3 border-l-2 border-amber-500/60">

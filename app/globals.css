@@ -130,3 +130,11 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .animate-hell-pulse { animation: none; }
 }
+
+/* 易讀字體（SEN，Emma/UDL）：html.font-easy 時改用 BDA（英國讀寫障礙協會）
+   風格指引推薦的系統無襯線堆疊 —— 零下載、零 CSP 例外。KaTeX 數式不受影響
+   （.katex 自身 font-family 規則更具體）。 */
+html.font-easy body {
+  font-family: Verdana, Tahoma, 'Trebuchet MS', 'Comic Sans MS', 'PingFang TC', 'Microsoft JhengHei', sans-serif !important;
+  letter-spacing: 0.015em;
+}

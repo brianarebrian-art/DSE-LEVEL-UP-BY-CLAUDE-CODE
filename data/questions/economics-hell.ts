@@ -13,8 +13,8 @@ const opt = (zh: string, en: string): Pair => [zh, en]
 const C = (zh: string, en: string): Pair => [zh, en]
 
 const T = {
-  micro: { id: 'econ_micro_calc', zh: '微觀計算殺著', en: 'Microeconomics — calculation' },
-  macro: { id: 'econ_macro_calc', zh: '宏觀計算殺著', en: 'Macroeconomics — calculation' },
+  micro: { id: 'econ_micro_calc', zh: '微觀計算（高階）', en: 'Microeconomics — calculation' },
+  macro: { id: 'econ_macro_calc', zh: '宏觀計算（高階）', en: 'Macroeconomics — calculation' },
   trade: { id: 'econ_trade_failure', zh: '貿易與市場失靈', en: 'Trade & market failure' },
 } satisfies Record<string, TopicMeta>
 
@@ -40,7 +40,7 @@ const micro: Question[] = [
         'quantity falls 10% and total revenue is unchanged'),
       opt('需求量上升 4%，總收益上升',
         'quantity rises 4% and total revenue rises')],
-    C('PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%。總收益變動 ≈ %ΔP + %ΔQ = +10% − 4% = +6% > 0。需求缺乏彈性（<1）時，加價令總收益上升——這正是「彈性決定加價得失」的核心。\n\n【陷阱】「總收益下跌」誤用了富彈性的結論；「跌 10%」把彈性當 1；「需求量上升」搞錯了需求定律方向。',
+    C('PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%。總收益變動 ≈ %ΔP + %ΔQ = +10% − 4% = +6% > 0。需求缺乏彈性（<1）時，加價令總收益上升——這正是「彈性決定加價得失」的核心。\n\n【陷阱】「總收益下跌」誤用了富彈性的結論；「跌 10%」把彈性當 1；「需求量上升」弄錯了需求定律方向。',
       'PED = %ΔQ ÷ %ΔP ⇒ %ΔQ = 0.4 × (−10%) = −4%. %ΔTR ≈ %ΔP + %ΔQ = +10% − 4% = +6% > 0. When demand is inelastic (<1), a price rise raises total revenue.\n\n【Trap】 “TR falls” applies the elastic-case result; “falls 10%” treats PED as 1; “quantity rises” reverses the law of demand.')),
 
   q(id('mi'), T.micro, FW.market, 'hard', 2023, 3,
@@ -54,7 +54,7 @@ const micro: Question[] = [
         'keep producing to spread the fixed cost'),
       opt('正在賺取正常利潤，無須改變',
         'it is earning normal profit, so do nothing')],
-    C('短期停產法則：當 P < AVC，繼續生產的虧損比停產（只蝕固定成本）更大，故應停產。此處 P=\\$8 < AVC=\\$9 ⇒ 停產。\n\n【陷阱】用「P < AC」判停產係最常見錯誤——P<AC 只代表蝕本，只要 P≥AVC 仍應繼續以減少損失；「攤分固定成本」在 P<AVC 時反而蝕更多；P<AC 不可能是正常利潤。',
+    C('短期停產法則：當 P < AVC，繼續生產的虧損比停產（只蝕固定成本）更大，故應停產。此處 P=\\$8 < AVC=\\$9 ⇒ 停產。\n\n【陷阱】用「P < AC」判停產是最常見錯誤——P<AC 只代表蝕本，只要 P≥AVC 仍應繼續以減少損失；「攤分固定成本」在 P<AVC 時反而蝕更多；P<AC 不可能是正常利潤。',
       'Short-run shut-down rule: shut down when P < AVC, because the loss from producing then exceeds the fixed-cost-only loss from stopping. Here P=\\$8 < AVC=\\$9 ⇒ shut down.\n\n【Trap】 Using “P < AC” to decide shut-down is the classic error — P<AC only means a loss; as long as P≥AVC the firm should keep going to reduce losses; “spreading fixed cost” loses more when P<AVC.')),
 
   q(id('mi'), T.micro, FW.market, 'hard', 2023, 3,
@@ -101,7 +101,7 @@ const macro: Question[] = [
       opt('\\$726 百萬', '\\$726 million'),
       opt('\\$550 百萬', '\\$550 million'),
       opt('\\$660 百萬', '\\$660 million')],
-    C('實質 GDP = 名義 GDP ÷ 平減指數 × 100 = 660 ÷ 110 × 100 = \\$600M。物價較基年上升，實質產出應低於名義值。\n\n【陷阱】\\$726M = 660×1.1（方向反了，乘咗物價）；\\$550M = 660 − 110 算法錯誤；\\$660M 忽略了物價變動。',
+    C('實質 GDP = 名義 GDP ÷ 平減指數 × 100 = 660 ÷ 110 × 100 = \\$600M。物價較基年上升，實質產出應低於名義值。\n\n【陷阱】\\$726M = 660×1.1（方向反了，乘了物價）；\\$550M = 660 − 110 算法錯誤；\\$660M 忽略了物價變動。',
       'Real GDP = nominal ÷ deflator × 100 = 660 ÷ 110 × 100 = \\$600M. With prices above the base year, real output is below nominal.\n\n【Trap】 \\$726M = 660×1.1 (wrong direction); \\$550M mis-subtracts; \\$660M ignores the price change.')),
 
   q(id('ma'), T.macro, FW.macro, 'hard', 2022, 3,
@@ -111,7 +111,7 @@ const macro: Question[] = [
       opt('上升約 3%', 'rises by about 3%'),
       opt('上升約 13%', 'rises by about 13%'),
       opt('維持不變', 'is unchanged')],
-    C('實質工資變動 ≈ 名義工資變動 − 物價變動 = 5% − 8% = −3%，即購買力下降約 3%。\n\n【陷阱】「上升 3%」搞錯了相減方向；「升 13%」誤把兩者相加；「不變」忽略了物價升幅高於工資。',
+    C('實質工資變動 ≈ 名義工資變動 − 物價變動 = 5% − 8% = −3%，即購買力下降約 3%。\n\n【陷阱】「上升 3%」弄錯了相減方向；「升 13%」誤把兩者相加；「不變」忽略了物價升幅高於工資。',
       'Change in real wage ≈ nominal-wage change − inflation = 5% − 8% = −3%, i.e. purchasing power falls about 3%.\n\n【Trap】 “Rises 3%” reverses the subtraction; “rises 13%” adds them; “unchanged” ignores that inflation exceeds the wage rise.')),
 ]
 
@@ -128,7 +128,7 @@ const trade: Question[] = [
         'B has the comparative advantage in cloth'),
       opt('兩國均不能從貿易中得益',
         'neither country can gain from trade')],
-    C('機會成本：造 1 匹布——甲 = 12/6 = 2 桶酒，乙 = 4/1 = 4 桶酒 ⇒ 甲布的機會成本較低，甲有比較優勢；造 1 桶酒——甲 = 6/12 = 0.5 匹布，乙 = 1/4 = 0.25 匹布 ⇒ 乙酒的機會成本較低。故甲產布、乙產酒，再貿易雙贏。\n\n【陷阱】「甲樣樣較高產就唔使貿易」混淆了絕對優勢與比較優勢——即使甲絕對優勢樣樣勝，按機會成本分工仍對雙方有利；其餘兩項與機會成本計算相反。',
+    C('機會成本：造 1 匹布——甲 = 12/6 = 2 桶酒，乙 = 4/1 = 4 桶酒 ⇒ 甲布的機會成本較低，甲有比較優勢；造 1 桶酒——甲 = 6/12 = 0.5 匹布，乙 = 1/4 = 0.25 匹布 ⇒ 乙酒的機會成本較低。故甲產布、乙產酒，再貿易雙贏。\n\n【陷阱】「甲樣樣較高產就毋須貿易」混淆了絕對優勢與比較優勢——即使甲絕對優勢樣樣勝，按機會成本分工仍對雙方有利；其餘兩項與機會成本計算相反。',
       'Opportunity cost of 1 cloth: A = 12/6 = 2 wine; B = 4/1 = 4 wine ⇒ A’s cloth is cheaper, so A has the comparative advantage. Opportunity cost of 1 wine: A = 0.5 cloth; B = 0.25 cloth ⇒ B has it in wine. So A makes cloth, B makes wine, and both gain from trade.\n\n【Trap】 “A is best at everything so needn’t trade” confuses absolute with comparative advantage — specialising by opportunity cost still benefits both; the other two reverse the computation.')),
 
   q(id('tr'), T.trade, FW.market, 'hard', 2023, 3,

@@ -44,11 +44,11 @@ const data: Question[] = [
       'Two variables moving together is correlation/co-occurrence, not causation. Many factors drive the Gini (technology, tax, education…), so the data cannot pin inequality on openness alone. The key higher-order skill is separating what the data shows from what it cannot establish.\n\n【Trap】 “Directly caused” commits the correlation-as-causation error; “narrowed” contradicts the data; “no relationship” ignores the co-trend — all overreach the data.')),
 
   q(id('da'), T.data, FW.data, 'hard', 2023, 3,
-    C('【示意個案】某市人口 10,000，其中 9,000 人已接種疫苗、1,000 人未接種。某病爆發，共 100 宗病例，當中 60 宗為已接種者、40 宗為未接種者。有人說：「六成病例都打咗針，可見疫苗無效。」\n問：這個說法的最主要謬誤是？',
+    C('【示意個案】某市人口 10,000，其中 9,000 人已接種疫苗、1,000 人未接種。某病爆發，共 100 宗病例，當中 60 宗為已接種者、40 宗為未接種者。有人說：「六成病例都已接種疫苗，可見疫苗無效。」\n問：這個說法的最主要謬誤是？',
       '【Illustrative case】A town of 10,000: 9,000 vaccinated, 1,000 not. An outbreak yields 100 cases — 60 among the vaccinated, 40 among the unvaccinated. Someone says: “60% of cases were vaccinated, so the vaccine doesn’t work.”\nQ: The main flaw in this claim is that it?'),
     [opt('只比較病例的原始數目，忽略基數：已接種者發病率 60/9000≈0.67%，遠低於未接種者 40/1000=4%',
         'compares raw case counts and ignores the base rate: 60/9000≈0.67% among the vaccinated vs 40/1000=4% among the unvaccinated — far lower among the vaccinated'),
-      opt('證明咗疫苗確實無效',
+      opt('證明了疫苗確實無效',
         'correctly shows the vaccine is ineffective'),
       opt('證明未接種者比較安全',
         'shows the unvaccinated are safer'),
@@ -113,7 +113,7 @@ const evaluate: Question[] = [
         'support it unconditionally with no discussion of costs'),
       opt('只羅列事實，拒絕作任何判斷',
         'just list facts and refuse to make any judgement')],
-    C('評鑑（evaluate）的核心是「在證據與多方考量之上，作出有理據的判斷」。只列事實不下判斷，或無條件支持/反對，都未達評鑑層次。\n\n【陷阱拆解】「某群體唔鍾意就反對」屬訴諸群體；「無條件支持」缺乏代價衡量；「只列事實」停留在描述，缺少判斷——三者都不是評鑑。',
+    C('評鑑（evaluate）的核心是「在證據與多方考量之上，作出有理據的判斷」。只列事實不下判斷，或無條件支持/反對，都未達評鑑層次。\n\n【陷阱拆解】「某群體不喜歡就反對」屬訴諸群體；「無條件支持」缺乏代價衡量；「只列事實」停留在描述，缺少判斷——三者都不是評鑑。',
       'Evaluation means reaching a reasoned judgement on top of evidence and multiple considerations. Merely listing facts, or backing/opposing unconditionally, falls short of evaluation.\n\n【Trap】 “Oppose because a group dislikes it” is appeal to a group; “unconditional support” lacks cost-weighing; “just list facts” stays at description — none is evaluation.')),
 ]
 

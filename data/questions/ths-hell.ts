@@ -26,7 +26,7 @@ const calc: Question[] = [
      opt('入住率 84%，ADR = \\$700', 'occupancy 84%, ADR = \\$700'),
      opt('入住率 70%，ADR = \\$700', 'occupancy 70%, ADR = \\$700'),
      opt('入住率 120%，ADR = \\$1,000', 'occupancy 120%, ADR = \\$1,000')],
-    C('入住率 = 售出 ÷ 可售房 = 84 ÷ 120 = 70%。ADR = 房間收入 ÷ 售出房數 = 84,000 ÷ 84 = \\$1,000。\n\n【陷阱】84% 把售出數當百分比；ADR \\$700 用咗總房數作分母（應用「售出」房數）；120% 把分子分母倒轉。',
+    C('入住率 = 售出 ÷ 可售房 = 84 ÷ 120 = 70%。ADR = 房間收入 ÷ 售出房數 = 84,000 ÷ 84 = \\$1,000。\n\n【陷阱】84% 把售出數當百分比；ADR \\$700 用了總房數作分母（應用「售出」房數）；120% 把分子分母倒轉。',
       'Occupancy = rooms sold ÷ rooms available = 84 ÷ 120 = 70%. ADR = room revenue ÷ rooms SOLD = 84,000 ÷ 84 = \\$1,000.\n\n【Trap】 84% treats rooms sold as the percentage; ADR \\$700 uses total rooms as the denominator (it should be rooms SOLD); 120% inverts the ratio.')),
 ]
 

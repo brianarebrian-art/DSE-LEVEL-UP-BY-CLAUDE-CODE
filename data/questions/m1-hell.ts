@@ -10,7 +10,7 @@ const optm = (v: string): Pair => [`$${v}$`, `$${v}$`]
 const C = (zh: string, en: string): Pair => [zh, en]
 
 const T = {
-  dist: { id: 'm1_distributions', zh: '概率分佈殺著', en: 'Probability distributions' },
+  dist: { id: 'm1_distributions', zh: '概率分佈（高階）', en: 'Probability distributions' },
   normal: { id: 'm1_normal_calc', zh: '常態分佈計算', en: 'Normal distribution — calculation' },
 } satisfies Record<string, TopicMeta>
 const FW = {
@@ -25,7 +25,7 @@ const dist: Question[] = [
     C('設隨機變量 $X \\sim B(5, 0.2)$（二項分佈，$n=5$，$p=0.2$）。求 $P(X=2)$。',
       'Let $X \\sim B(5, 0.2)$ (binomial, $n=5$, $p=0.2$). Find $P(X=2)$.'),
     [optm('0.2048'), optm('0.0512'), optm('0.4'), optm('0.04')],
-    C('$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$。\n\n【陷阱】0.0512 漏咗組合數 $\\binom{5}{2}=10$；0.4 用咗 $np$ 而非概率；0.04 只計咗 $(0.2)^2$。',
+    C('$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$。\n\n【陷阱】0.0512 漏了組合數 $\\binom{5}{2}=10$；0.4 用了 $np$ 而非概率；0.04 只計了 $(0.2)^2$。',
       '$P(X=2)=\\binom{5}{2}(0.2)^2(0.8)^3 = 10 \\times 0.04 \\times 0.512 = 0.2048$.\n\n【Trap】 0.0512 drops the coefficient $\\binom{5}{2}=10$; 0.4 uses $np$ instead of a probability; 0.04 is only $(0.2)^2$.')),
 
   q(id('di'), T.dist, FW.model, 'hard', 2023, 2,

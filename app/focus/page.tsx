@@ -4,6 +4,7 @@ import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Play, Pause, RotateCcw, Share2, MessageCircle, Users, Award } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import BreathingExercise from '@/components/BreathingExercise'
 
 const FOCUS_MIN = 25
 const BREAK_MIN = 5
@@ -277,6 +278,9 @@ function FocusRoom() {
             <MessageCircle size={18} /> {en ? 'Send report to parents' : '一鍵發送家長戰報'}
           </a>
         </div>
+
+        {/* 情緒急救：4-7-8 呼吸練習（小休或攰嘅時候用） */}
+        <BreathingExercise />
       </div>
     </div>
   )

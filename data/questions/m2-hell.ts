@@ -24,7 +24,7 @@ const vectors: Question[] = [
     C('設三維向量 $\\mathbf{a}=(1, 2, 2)$。其大小（模）$|\\mathbf{a}|$ 為？',
       'Let the 3-D vector $\\mathbf{a}=(1, 2, 2)$. Its magnitude $|\\mathbf{a}|$ is?'),
     [optm('3'), optm('5'), optm('9'), optm('\\sqrt{5}')],
-    C('$|\\mathbf{a}|=\\sqrt{1^2+2^2+2^2}=\\sqrt{1+4+4}=\\sqrt{9}=3$。\n\n【陷阱】9 漏咗開方（停喺平方和）；5 把分量相加（1+2+2）；$\\sqrt5$ 漏咗其中一個分量。',
+    C('$|\\mathbf{a}|=\\sqrt{1^2+2^2+2^2}=\\sqrt{1+4+4}=\\sqrt{9}=3$。\n\n【陷阱】9 漏了開方（停在平方和）；5 把分量相加（1+2+2）；$\\sqrt5$ 漏了其中一個分量。',
       '$|\\mathbf{a}|=\\sqrt{1^2+2^2+2^2}=\\sqrt{1+4+4}=\\sqrt{9}=3$.\n\n【Trap】 9 forgets the square root (stops at the sum of squares); 5 adds the components (1+2+2); $\\sqrt5$ drops a component.')),
 
   q(id('ve'), T.vectors, FW.decompose, 'hard', 2023, 2,
@@ -47,7 +47,7 @@ const algebra: Question[] = [
     C('設複數 $z = 3 + 4i$。其模 $|z|$ 為？',
       'Let the complex number $z = 3 + 4i$. Its modulus $|z|$ is?'),
     [optm('5'), optm('7'), optm('25'), optm('\\sqrt{7}')],
-    C('$|z|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$。\n\n【陷阱】7 把實部虛部相加（3+4）；25 漏咗開方；$\\sqrt7$ 把平方當相加。',
+    C('$|z|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$。\n\n【陷阱】7 把實部虛部相加（3+4）；25 漏了開方；$\\sqrt7$ 把平方當相加。',
       '$|z|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$.\n\n【Trap】 7 adds real and imaginary parts (3+4); 25 forgets the square root; $\\sqrt7$ adds instead of squaring.')),
 ]
 

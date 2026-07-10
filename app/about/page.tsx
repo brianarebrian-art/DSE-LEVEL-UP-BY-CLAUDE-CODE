@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight, Mail, ShieldCheck } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import FAQSection from '@/components/FAQSection'
 
 // Four classical-Confucian cores the platform is built on. Quotes are from the
 // Analects (公有領域 — over two millennia old). Kept plain and human, no fanfare.
@@ -114,6 +115,9 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+
+        {/* FAQ（精選 8 條；完整 20 條見 content/community/faq.md） */}
+        <FAQSection />
 
         {/* Contact */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mt-5">

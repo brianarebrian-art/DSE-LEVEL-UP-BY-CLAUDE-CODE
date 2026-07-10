@@ -40,7 +40,7 @@ const mech: Question[] = [
         'have unchanged speed and torque'),
       opt('轉速為 3 倍，扭力亦增大 3 倍',
         'rotate 3× faster and output 3× the torque')],
-    C('齒輪比 = 從動 ÷ 主動 = 60/20 = 3。齒數多的從動輪轉得慢（1/3 速），但扭力相應增大約 3 倍（功率守恆，速度↓則扭力↑）。\n\n【陷阱】「轉速 3 倍」搞反了大齒輪轉慢的關係；「都不變」忽略齒數比；末項違反速度與扭力此消彼長。',
+    C('齒輪比 = 從動 ÷ 主動 = 60/20 = 3。齒數多的從動輪轉得慢（1/3 速），但扭力相應增大約 3 倍（功率守恆，速度↓則扭力↑）。\n\n【陷阱】「轉速 3 倍」弄反了大齒輪轉慢的關係；「都不變」忽略齒數比；末項違反速度與扭力此消彼長。',
       'Gear ratio = driven ÷ driver = 60/20 = 3. The larger driven gear turns slower (1/3 speed) but its torque rises ~3× (power is conserved: lower speed ⇒ higher torque).\n\n【Trap】 “3× faster” reverses the big-gear-turns-slower relation; “unchanged” ignores the ratio; the last breaks the speed-torque trade-off.')),
 
   q(id('me'), T.mech, FW.apply, 'hard', 2024, 2,

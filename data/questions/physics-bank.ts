@@ -38,7 +38,7 @@ for (let v = 2; v <= 7; v++) {
     add(`pb_e1_${v}_${t}`, T.kinematics, FW.formula, 'easy',
       [`一物體 $${t}$ 秒內行走 $${d}$ 米，求其速率。`, `An object travels $${d}$ m in $${t}$ s. Find its speed.`],
       [n(`$${v}$ m/s`), n(`$${d * t}$ m/s`), n(`$${d + t}$ m/s`), n(`$${round(t / d, 3)}$ m/s`)],
-      [`速率 $= \\dfrac{\\text{距離}}{\\text{時間}} = \\dfrac{${d}}{${t}} = ${v}$ m/s。陷阱：$${d * t}$ 用咗乘法；$${round(t / d, 3)}$ 上下倒轉。`,
+      [`速率 $= \\dfrac{\\text{距離}}{\\text{時間}} = \\dfrac{${d}}{${t}} = ${v}$ m/s。陷阱：$${d * t}$ 用了乘法；$${round(t / d, 3)}$ 上下倒轉。`,
        `Speed $= \\frac{d}{t} = \\frac{${d}}{${t}} = ${v}$ m/s. Trap: $${d * t}$ multiplies instead of dividing.`])
   }
 }
@@ -59,7 +59,7 @@ for (let m = 2; m <= 20; m += 2) {
   add(`pb_e3_${m}`, T.forces, FW.formula, 'easy',
     [`一物體質量 $${m}$ kg，求其重量（$g = 10$ N/kg）。`, `An object has mass $${m}$ kg. Find its weight ($g = 10$ N/kg).`],
     [n(`$${m * G}$ N`), n(`$${m}$ N`), n(`$${round(m / G, 2)}$ N`), n(`$${m + G}$ N`)],
-    [`$W = mg = ${m} \\times 10 = ${m * G}$ N。陷阱：$${m}$ 漏咗 $\\times g$；$${round(m / G, 2)}$ 錯用了除法。`,
+    [`$W = mg = ${m} \\times 10 = ${m * G}$ N。陷阱：$${m}$ 漏了 $\\times g$；$${round(m / G, 2)}$ 錯用了除法。`,
      `$W = mg = ${m * G}$ N. Trap: $${m}$ forgets to multiply by $g$.`])
 }
 
@@ -88,7 +88,7 @@ for (let u = 0; u <= 8; u += 2) {
         [`物體初速 $${u}$ m/s，加速度 $${a}$ m/s²，經過 $${t}$ s 後的速度是多少？`,
          `An object starts at $${u}$ m/s with acceleration $${a}$ m/s². Find its velocity after $${t}$ s.`],
         [n(`$${v}$ m/s`), n(`$${u - a * t}$ m/s`), n(`$${a * t}$ m/s`), n(`$${u + a}$ m/s`)],
-        [`$v = u + at = ${u} + ${a}\\times${t} = ${u} + ${a * t} = ${v}$ m/s。陷阱：$${a * t}$ 漏咗初速 $u$；$${u + a}$ 漏咗 $\\times t$。`,
+        [`$v = u + at = ${u} + ${a}\\times${t} = ${u} + ${a * t} = ${v}$ m/s。陷阱：$${a * t}$ 漏了初速 $u$；$${u + a}$ 漏了 $\\times t$。`,
          `$v = u + at = ${v}$ m/s. Trap: $${a * t}$ drops the initial velocity $u$.`])
     }
   }
@@ -101,7 +101,7 @@ for (let m = 2; m <= 10; m += 2) {
     add(`pb_m2_${m}_${v}`, T.energy, FW.energy, 'medium',
       [`質量 $${m}$ kg 的物體以 $${v}$ m/s 運動，求其動能。`, `A $${m}$ kg object moves at $${v}$ m/s. Find its kinetic energy.`],
       [n(`$${ke}$ J`), n(`$${m * v * v}$ J`), n(`$${0.5 * m * v}$ J`), n(`$${m * v}$ J`)],
-      [`$E_k = \\tfrac12 mv^2 = \\tfrac12 \\times ${m} \\times ${v}^2 = ${ke}$ J。陷阱：$${m * v * v}$ 漏咗 $\\tfrac12$；$${0.5 * m * v}$ 漏咗平方。`,
+      [`$E_k = \\tfrac12 mv^2 = \\tfrac12 \\times ${m} \\times ${v}^2 = ${ke}$ J。陷阱：$${m * v * v}$ 漏了 $\\tfrac12$；$${0.5 * m * v}$ 漏了平方。`,
        `$E_k = \\frac12 mv^2 = ${ke}$ J. Trap: $${m * v * v}$ drops the $\\frac12$; $${0.5 * m * v}$ forgets to square $v$.`])
   }
 }
@@ -114,7 +114,7 @@ for (let m = 2; m <= 10; m += 2) {
       [`質量 $${m}$ kg 的物體升高 $${h}$ m，求其增加的重力勢能（$g = 10$）。`,
        `A $${m}$ kg object is raised by $${h}$ m. Find the gain in gravitational PE ($g = 10$).`],
       [n(`$${pe}$ J`), n(`$${m * h}$ J`), n(`$${0.5 * m * G * h}$ J`), n(`$${m + G + h}$ J`)],
-      [`$E_p = mgh = ${m}\\times10\\times${h} = ${pe}$ J。陷阱：$${m * h}$ 漏咗 $g$；$${0.5 * m * G * h}$ 誤加咗 $\\tfrac12$（嗰個係動能公式）。`,
+      [`$E_p = mgh = ${m}\\times10\\times${h} = ${pe}$ J。陷阱：$${m * h}$ 漏了 $g$；$${0.5 * m * G * h}$ 誤加了 $\\tfrac12$（那個是動能公式）。`,
        `$E_p = mgh = ${pe}$ J. Trap: $${m * h}$ drops $g$; $${0.5 * m * G * h}$ wrongly adds a $\\frac12$.`])
   }
 }
@@ -136,7 +136,7 @@ for (let m = 2; m <= 12; m += 2) {
     add(`pb_m5_${m}_${v}`, T.forces, FW.motion, 'medium',
       [`質量 $${m}$ kg 的物體以 $${v}$ m/s 運動，求其動量。`, `A $${m}$ kg object moves at $${v}$ m/s. Find its momentum.`],
       [n(`$${m * v}$ kg·m/s`), n(`$${m + v}$ kg·m/s`), n(`$${0.5 * m * v}$ kg·m/s`), n(`$${round(m / v, 3)}$ kg·m/s`)],
-      [`$p = mv = ${m}\\times${v} = ${m * v}$ kg·m/s。陷阱：$${0.5 * m * v}$ 誤加 $\\tfrac12$（嗰個係動能）；$${round(m / v, 3)}$ 用咗除法。`,
+      [`$p = mv = ${m}\\times${v} = ${m * v}$ kg·m/s。陷阱：$${0.5 * m * v}$ 誤加 $\\tfrac12$（那個是動能）；$${round(m / v, 3)}$ 用了除法。`,
        `$p = mv = ${m * v}$ kg·m/s. Trap: $${0.5 * m * v}$ wrongly halves it.`])
   }
 }
@@ -148,7 +148,7 @@ for (let A = 2; A <= 6; A++) {
     add(`pb_m6_${A}_${p}`, T.pressure, FW.formula, 'medium',
       [`力 $${F}$ N 均勻作用於 $${A}$ m² 的面積上，求壓強。`, `A force of $${F}$ N acts over $${A}$ m². Find the pressure.`],
       [n(`$${p}$ Pa`), n(`$${F * A}$ Pa`), n(`$${round(A / F, 3)}$ Pa`), n(`$${F + A}$ Pa`)],
-      [`$P = \\dfrac{F}{A} = \\dfrac{${F}}{${A}} = ${p}$ Pa。陷阱：$${F * A}$ 用咗乘法；$${round(A / F, 3)}$ 上下倒轉。`,
+      [`$P = \\dfrac{F}{A} = \\dfrac{${F}}{${A}} = ${p}$ Pa。陷阱：$${F * A}$ 用了乘法；$${round(A / F, 3)}$ 上下倒轉。`,
        `$P = \\frac{F}{A} = ${p}$ Pa. Trap: $${F * A}$ multiplies instead.`])
   }
 }
@@ -159,7 +159,7 @@ for (let A = 2; A <= 6; A++) {
     add(`pb_m7_${i}`, T.electricity, FW.circuit, 'medium',
       [`兩個電阻 $${r1}$ Ω 及 $${r2}$ Ω 串聯，求總電阻。`, `Two resistors $${r1}$ Ω and $${r2}$ Ω are in series. Find the total resistance.`],
       [n(`$${r1 + r2}$ Ω`), n(`$${round((r1 * r2) / (r1 + r2), 2)}$ Ω`), n(`$${r1 * r2}$ Ω`), n(`$${round((r1 + r2) / 2, 2)}$ Ω`)],
-      [`串聯：$R = R_1 + R_2 = ${r1} + ${r2} = ${r1 + r2}$ Ω。陷阱：$${round((r1 * r2) / (r1 + r2), 2)}$ 係並聯公式；$${round((r1 + r2) / 2, 2)}$ 係取平均。`,
+      [`串聯：$R = R_1 + R_2 = ${r1} + ${r2} = ${r1 + r2}$ Ω。陷阱：$${round((r1 * r2) / (r1 + r2), 2)}$ 是並聯公式；$${round((r1 + r2) / 2, 2)}$ 是取平均。`,
        `Series: $R = R_1 + R_2 = ${r1 + r2}$ Ω. Trap: $${round((r1 * r2) / (r1 + r2), 2)}$ is the parallel value.`])
   })
 
@@ -178,7 +178,7 @@ for (const u of [0, 4, 6]) {
         [`物體初速 $${u}$ m/s，以 $${a}$ m/s² 加速走了 $${s}$ m，求末速（$v^2 = u^2 + 2as$）。`,
          `An object starts at $${u}$ m/s, accelerates at $${a}$ m/s² over $${s}$ m. Find the final speed ($v^2 = u^2 + 2as$).`],
         [n(`$${v}$ m/s`), n(`$${v2}$ m/s`), n(`$${u + 2 * a * s}$ m/s`), n(`$${u + a * s}$ m/s`)],
-        [`$v = \\sqrt{u^2 + 2as} = \\sqrt{${u * u} + ${2 * a * s}} = \\sqrt{${v2}} = ${v}$ m/s。陷阱：$${v2}$ 漏咗開方；$${u + a * s}$ 亂套 $u+as$。`,
+        [`$v = \\sqrt{u^2 + 2as} = \\sqrt{${u * u} + ${2 * a * s}} = \\sqrt{${v2}} = ${v}$ m/s。陷阱：$${v2}$ 漏了開方；$${u + a * s}$ 誤套 $u+as$。`,
          `$v = \\sqrt{u^2 + 2as} = ${v}$ m/s. Trap: $${v2}$ forgets the square root.`])
     }
   }
@@ -205,7 +205,7 @@ for (const m of [1, 2, 3]) {
         [`$${m}$ kg 物質（比熱容 $${c}$ J/(kg·°C)）升溫 $${dT}$ °C，求吸收的熱量。`,
          `$${m}$ kg of a substance (specific heat $${c}$ J/(kg·°C)) is heated by $${dT}$ °C. Find the heat absorbed.`],
         [n(`$${Q}$ J`), n(`$${m * c}$ J`), n(`$${c * dT}$ J`), n(`$${m * dT}$ J`)],
-        [`$Q = mc\\Delta T = ${m}\\times${c}\\times${dT} = ${Q}$ J。陷阱：$${m * c}$ 漏咗 $\\Delta T$；$${c * dT}$ 漏咗質量 $m$。`,
+        [`$Q = mc\\Delta T = ${m}\\times${c}\\times${dT} = ${Q}$ J。陷阱：$${m * c}$ 漏了 $\\Delta T$；$${c * dT}$ 漏了質量 $m$。`,
          `$Q = mc\\Delta T = ${Q}$ J. Trap: $${m * c}$ drops $\\Delta T$; $${c * dT}$ drops the mass.`])
     }
   }
@@ -235,7 +235,7 @@ for (const h of [5, 20, 45, 80, 125, 180, 245, 320, 500]) {
     [`物體由靜止自由下墜 $${h}$ m，求下墜所需時間（$g = 10$，$h = \\tfrac12 g t^2$）。`,
      `An object falls from rest through $${h}$ m. Find the time taken ($g = 10$, $h = \\frac12 g t^2$).`],
     [n(`$${t}$ s`), n(`$${round((2 * h) / G, 2)}$ s`), n(`$${round(h / G, 2)}$ s`), n(`$${round(Math.sqrt(h / G), 2)}$ s`)],
-    [`$h = \\tfrac12 g t^2$ ⇒ $t = \\sqrt{\\dfrac{2h}{g}} = \\sqrt{\\dfrac{${2 * h}}{10}} = ${t}$ s。陷阱：$${round((2 * h) / G, 2)}$ 漏咗開方；$${round(Math.sqrt(h / G), 2)}$ 漏咗個 $2$。`,
+    [`$h = \\tfrac12 g t^2$ ⇒ $t = \\sqrt{\\dfrac{2h}{g}} = \\sqrt{\\dfrac{${2 * h}}{10}} = ${t}$ s。陷阱：$${round((2 * h) / G, 2)}$ 漏了開方；$${round(Math.sqrt(h / G), 2)}$ 漏了係數 $2$。`,
      `$t = \\sqrt{\\frac{2h}{g}} = ${t}$ s. Trap: $${round((2 * h) / G, 2)}$ forgets the square root.`])
 }
 
@@ -247,7 +247,7 @@ for (const total of [200, 400, 500, 800, 1000]) {
       [`一部機器輸入 $${total}$ J，有用輸出 $${useful}$ J，求其效率。`,
        `A machine takes in $${total}$ J and gives $${useful}$ J useful output. Find its efficiency.`],
       [n(`$${pct}\\%$`), n(`$${100 - pct}\\%$`), n(`$${round(useful / total, 2)}$`), n(`$${round(total / useful, 2)}$`)],
-      [`效率 $= \\dfrac{\\text{有用輸出}}{\\text{總輸入}} \\times 100\\% = \\dfrac{${useful}}{${total}} \\times 100\\% = ${pct}\\%$。陷阱：$${100 - pct}\\%$ 係損耗百分比；$${round(useful / total, 2)}$ 漏咗 $\\times 100\\%$。`,
+      [`效率 $= \\dfrac{\\text{有用輸出}}{\\text{總輸入}} \\times 100\\% = \\dfrac{${useful}}{${total}} \\times 100\\% = ${pct}\\%$。陷阱：$${100 - pct}\\%$ 是損耗百分比；$${round(useful / total, 2)}$ 漏了 $\\times 100\\%$。`,
        `Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = ${pct}\\%$. Trap: $${100 - pct}\\%$ is the wasted fraction.`])
   }
 }

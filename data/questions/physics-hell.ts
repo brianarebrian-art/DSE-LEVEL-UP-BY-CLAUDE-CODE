@@ -14,9 +14,9 @@ const opt = (v: string): Pair => [`$${v}$`, `$${v}$`]
 const C = (zh: string, en: string): Pair => [zh, en]
 
 const T = {
-  mech: { id: 'phys_hell_mechanics',    zh: '多步殺著・力學',       en: 'Multi-step — Mechanics' },
-  ec:   { id: 'phys_hell_elec_heat',    zh: '多步殺著・電與熱',     en: 'Multi-step — Electricity & Heat' },
-  wo:   { id: 'phys_hell_wave_optics',  zh: '多步殺著・波動光學放射', en: 'Multi-step — Waves, Optics & Radioactivity' },
+  mech: { id: 'phys_hell_mechanics',    zh: '多步計算・力學',       en: 'Multi-step — Mechanics' },
+  ec:   { id: 'phys_hell_elec_heat',    zh: '多步計算・電與熱',     en: 'Multi-step — Electricity & Heat' },
+  wo:   { id: 'phys_hell_wave_optics',  zh: '多步計算・波動光學放射', en: 'Multi-step — Waves, Optics & Radioactivity' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -41,14 +41,14 @@ const mech: Question[] = [
     C('質量 $2\\,\\text{kg}$、速度 $3\\,\\text{m/s}$ 的小車撞向靜止的 $4\\,\\text{kg}$ 小車並黏在一起。碰撞中損失的動能是？',
       'A $2\\,\\text{kg}$ trolley at $3\\,\\text{m/s}$ hits a stationary $4\\,\\text{kg}$ trolley and they stick together. The kinetic energy lost in the collision is?'),
     [opt('6\\,\\text{J}'), opt('0\\,\\text{J}'), opt('9\\,\\text{J}'), opt('3\\,\\text{J}')],
-    C('動量守恆求共速：$v = (2\\times3)/(2+4) = 1\\,\\text{m/s}$。撞前 $KE = \\tfrac12(2)(3^2) = 9\\,\\text{J}$；撞後 $KE = \\tfrac12(6)(1^2) = 3\\,\\text{J}$；損失 $= 9 - 3 = 6\\,\\text{J}$。\n\n【陷阱】$0\\,\\text{J}$ 誤以為動能守恆——非彈性碰撞動量守恆但動能不守恆，正是此題殺著；$9$、$3$ 分別只取撞前／撞後。',
+    C('動量守恆求共速：$v = (2\\times3)/(2+4) = 1\\,\\text{m/s}$。撞前 $KE = \\tfrac12(2)(3^2) = 9\\,\\text{J}$；撞後 $KE = \\tfrac12(6)(1^2) = 3\\,\\text{J}$；損失 $= 9 - 3 = 6\\,\\text{J}$。\n\n【陷阱】$0\\,\\text{J}$ 誤以為動能守恆——非彈性碰撞動量守恆但動能不守恆，正是此題的關鍵陷阱；$9$、$3$ 分別只取撞前／撞後。',
       'Momentum conservation: $v = (2\\times3)/6 = 1\\,\\text{m/s}$. Before: $KE = \\tfrac12(2)(9) = 9\\,\\text{J}$; after: $KE = \\tfrac12(6)(1) = 3\\,\\text{J}$; lost $= 6\\,\\text{J}$.\n\n【Trap】 $0\\,\\text{J}$ wrongly assumes KE is conserved — in an inelastic collision momentum is conserved but KE is NOT; $9$/$3$ take only before/after.')),
 
   q(id('me'), T.mech, FW.conserve, 'hard', 2024, 2,
     C('一物體由 $5\\,\\text{m}$ 高、無摩擦的斜面靜止滑下，到達底部時的速率是？（$g=10\\,\\text{m/s}^2$）',
       'An object slides from rest down a frictionless incline of height $5\\,\\text{m}$. Its speed at the bottom is? ($g=10\\,\\text{m/s}^2$)'),
     [opt('10\\,\\text{m/s}'), C('依物體質量而定', 'depends on the object’s mass'), opt('5\\,\\text{m/s}'), opt('50\\,\\text{m/s}')],
-    C('能量守恆：$mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{2(10)(5)} = \\sqrt{100} = 10\\,\\text{m/s}$。質量 $m$ 兩邊消去，與質量無關。\n\n【陷阱】「依質量而定」正是此題殺著——$m$ 消去故無關；$5$ 漏開方／係數；$50 = 2gh$ 漏開方。',
+    C('能量守恆：$mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{2(10)(5)} = \\sqrt{100} = 10\\,\\text{m/s}$。質量 $m$ 兩邊消去，與質量無關。\n\n【陷阱】「依質量而定」正是此題的關鍵陷阱——$m$ 消去故無關；$5$ 漏開方／係數；$50 = 2gh$ 漏開方。',
       'Energy conservation: $mgh = \\tfrac12 mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{100} = 10\\,\\text{m/s}$. The mass cancels.\n\n【Trap】 “Depends on mass” is the killer — $m$ cancels; $5$ drops the root/factor; $50=2gh$ forgets the square root.')),
 ]
 
@@ -58,7 +58,7 @@ const ec: Question[] = [
     C('一個電動勢 $12\\,\\text{V}$、內阻 $1\\,\\Omega$ 的電池接上 $5\\,\\Omega$ 的外電阻。電池的端電壓是？',
       'A battery of emf $12\\,\\text{V}$ and internal resistance $1\\,\\Omega$ is connected to an external resistor of $5\\,\\Omega$. The terminal voltage is?'),
     [opt('10\\,\\text{V}'), opt('12\\,\\text{V}'), opt('2\\,\\text{V}'), opt('11\\,\\text{V}')],
-    C('電流 $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{5+1} = 2\\,\\text{A}$。端電壓 $= IR = 2\\times5 = 10\\,\\text{V}$（亦即 $\\varepsilon - Ir = 12 - 2 = 10\\,\\text{V}$）。\n\n【陷阱】$12\\,\\text{V}$ 忽略了內阻的電壓降——這正是內阻題的殺著；$2\\,\\text{V}$ 是內阻上的電壓；$11$ 用錯電流。',
+    C('電流 $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{5+1} = 2\\,\\text{A}$。端電壓 $= IR = 2\\times5 = 10\\,\\text{V}$（亦即 $\\varepsilon - Ir = 12 - 2 = 10\\,\\text{V}$）。\n\n【陷阱】$12\\,\\text{V}$ 忽略了內阻的電壓降——這正是內阻題的關鍵陷阱；$2\\,\\text{V}$ 是內阻上的電壓；$11$ 用錯電流。',
       'Current $I = \\dfrac{\\varepsilon}{R+r} = \\dfrac{12}{6} = 2\\,\\text{A}$. Terminal voltage $= IR = 10\\,\\text{V}$ (or $\\varepsilon - Ir = 12 - 2 = 10\\,\\text{V}$).\n\n【Trap】 $12\\,\\text{V}$ ignores the internal-resistance drop — the classic internal-resistance trap; $2\\,\\text{V}$ is the drop across $r$; $11$ uses the wrong current.')),
 
   q(id('ec'), T.ec, FW.circuit, 'hard', 2023, 3,
@@ -72,7 +72,7 @@ const ec: Question[] = [
     C('把 $0.2\\,\\text{kg}$、$80°\\text{C}$ 的水與 $0.3\\,\\text{kg}$、$30°\\text{C}$ 的水混合（忽略容器及散熱）。最終溫度是？',
       'Mix $0.2\\,\\text{kg}$ of water at $80°\\text{C}$ with $0.3\\,\\text{kg}$ at $30°\\text{C}$ (ignore the container and heat loss). The final temperature is?'),
     [opt('50°\\text{C}'), opt('55°\\text{C}'), opt('45°\\text{C}'), opt('60°\\text{C}')],
-    C('熱平衡：熱水放熱 = 冷水吸熱（$c$ 相同可消去）：$0.2(80-T) = 0.3(T-30)$。$16 - 0.2T = 0.3T - 9 \\Rightarrow 25 = 0.5T \\Rightarrow T = 50°\\text{C}$。\n\n【陷阱】$55°\\text{C}$ 是簡單平均 $(80+30)/2$——忽略了兩者質量不等，正是此題殺著；$45$、$60$ 為配比算錯。',
+    C('熱平衡：熱水放熱 = 冷水吸熱（$c$ 相同可消去）：$0.2(80-T) = 0.3(T-30)$。$16 - 0.2T = 0.3T - 9 \\Rightarrow 25 = 0.5T \\Rightarrow T = 50°\\text{C}$。\n\n【陷阱】$55°\\text{C}$ 是簡單平均 $(80+30)/2$——忽略了兩者質量不等，正是此題的關鍵陷阱；$45$、$60$ 為配比算錯。',
       'Heat balance: heat lost by hot = heat gained by cold (equal $c$ cancels): $0.2(80-T) = 0.3(T-30)$. $16 - 0.2T = 0.3T - 9 \\Rightarrow 25 = 0.5T \\Rightarrow T = 50°\\text{C}$.\n\n【Trap】 $55°\\text{C}$ is the simple average $(80+30)/2$ — it ignores the unequal masses, the killer here; $45$/$60$ mis-weight.')),
 ]
 
@@ -82,7 +82,7 @@ const wo: Question[] = [
     C('一列波在介質一中頻率 $50\\,\\text{Hz}$、波長 $0.4\\,\\text{m}$。它進入介質二後波速減半。在介質二中的波長是？',
       'A wave in medium 1 has frequency $50\\,\\text{Hz}$ and wavelength $0.4\\,\\text{m}$. On entering medium 2 its speed halves. Its wavelength in medium 2 is?'),
     [opt('0.2\\,\\text{m}'), opt('0.4\\,\\text{m}'), opt('0.8\\,\\text{m}'), opt('0.1\\,\\text{m}')],
-    C('介質一波速 $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$。折射時頻率不變（仍 $50\\,\\text{Hz}$），$v_2 = 10\\,\\text{m/s}$，故 $\\lambda_2 = v_2/f = 10/50 = 0.2\\,\\text{m}$。\n\n【陷阱】$0.4\\,\\text{m}$ 以為波長不變；$0.8$ 把波速與波長關係搞反；$0.1$ 誤改頻率——折射時改變的是波速與波長，頻率不變，正是此題殺著。',
+    C('介質一波速 $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$。折射時頻率不變（仍 $50\\,\\text{Hz}$），$v_2 = 10\\,\\text{m/s}$，故 $\\lambda_2 = v_2/f = 10/50 = 0.2\\,\\text{m}$。\n\n【陷阱】$0.4\\,\\text{m}$ 以為波長不變；$0.8$ 把波速與波長關係弄反；$0.1$ 誤改頻率——折射時改變的是波速與波長，頻率不變，正是此題的關鍵陷阱。',
       'In medium 1, $v_1 = f\\lambda_1 = 50\\times0.4 = 20\\,\\text{m/s}$. On refraction frequency is unchanged ($50\\,\\text{Hz}$), $v_2 = 10\\,\\text{m/s}$, so $\\lambda_2 = v_2/f = 10/50 = 0.2\\,\\text{m}$.\n\n【Trap】 $0.4$ assumes wavelength is unchanged; $0.8$ inverts the relation; $0.1$ wrongly changes frequency — on refraction speed and wavelength change, frequency does not.')),
 
   q(id('wo'), T.wo, FW.wave, 'hard', 2023, 2,

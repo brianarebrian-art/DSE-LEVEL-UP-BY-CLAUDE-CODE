@@ -31,7 +31,7 @@ for (const P of [5, 8, 10, 12, 15, 20]) {
     add(`ec_e1_${P}_${Q}`, T.demandSupply, FW.quant, 'easy',
       [`某商品價格 ${P} 元，銷量 ${Q} 件，求總收入。`, `A good sells at $${P} each, quantity ${Q}. Find total revenue.`],
       [n(`${P * Q} 元`), n(`${P + Q} 元`), n(`${P * Q + P} 元`), n(`${Q - P} 元`)],
-      [`總收入 = 價格 × 銷量 = ${P} × ${Q} = ${P * Q} 元。陷阱：${P + Q} 元係相加（唔係相乘）。`,
+      [`總收入 = 價格 × 銷量 = ${P} × ${Q} = ${P * Q} 元。陷阱：${P + Q} 元是相加（並非相乘）。`,
        `TR = P × Q = ${P * Q}. Trap: ${P + Q} adds instead of multiplying.`])
   }
 }
@@ -79,7 +79,7 @@ for (const Q of [4, 5, 8, 10, 20]) {
     add(`ec_m2_${i}`, T.macro, FW.macro, 'medium',
       [`邊際消費傾向 (MPC) = ${mpc}，求支出乘數。`, `MPC = ${mpc}. Find the spending multiplier.`],
       [n(`${mult}`), n(`${round(1 / mpc, 2)}`), n(`${round(mpc, 2)}`), n(`${round(1 - mpc, 2)}`)],
-      [`支出乘數 = 1 / (1 − MPC) = 1 / (1 − ${mpc}) = 1 / ${round(1 - mpc, 3)} = ${mult}。陷阱：${round(1 / mpc, 2)} 用咗 1/MPC；${round(1 - mpc, 2)} 只計咗 MPS。`,
+      [`支出乘數 = 1 / (1 − MPC) = 1 / (1 − ${mpc}) = 1 / ${round(1 - mpc, 3)} = ${mult}。陷阱：${round(1 / mpc, 2)} 用了 1/MPC；${round(1 - mpc, 2)} 只計了 MPS。`,
        `Multiplier = 1/(1−MPC) = ${mult}. Trap: ${round(1 / mpc, 2)} uses 1/MPC; ${round(1 - mpc, 2)} is only the MPS.`])
   })
 
@@ -90,7 +90,7 @@ for (const TR of [100, 150, 200, 250, 300]) {
     add(`ec_m3_${TR}_${TC}`, T.firm, FW.quant, 'medium',
       [`總收入 ${TR} 元，總成本 ${TC} 元，求利潤。`, `Total revenue $${TR}, total cost $${TC}. Find profit.`],
       [n(`${TR - TC} 元`), n(`${TR + TC} 元`), n(`${round(TR / TC, 2)} 元`), n(`${TC - TR} 元`)],
-      [`利潤 = 總收入 − 總成本 = ${TR} − ${TC} = ${TR - TC} 元。陷阱：${TR + TC} 元加咗；${TC - TR} 元符號反。`,
+      [`利潤 = 總收入 − 總成本 = ${TR} − ${TC} = ${TR - TC} 元。陷阱：${TR + TC} 元加了；${TC - TR} 元符號反。`,
        `Profit = TR − TC = ${TR - TC}. Trap: ${TC - TR} has the sign reversed.`])
   }
 }
@@ -103,7 +103,7 @@ for (const TR of [100, 150, 200, 250, 300]) {
       [`已知 C=${C}、I=${I}、G=${G}、出口 X=${X}、進口 M=${M}（億元），求 GDP。`,
        `Given C=${C}, I=${I}, G=${G}, exports X=${X}, imports M=${M}. Find GDP.`],
       [n(`${Y} 億元`), n(`${C + I + G + X + M} 億元`), n(`${C + I + G} 億元`), n(`${C + I + G + (M - X)} 億元`)],
-      [`GDP = C + I + G + (X − M) = ${C}+${I}+${G}+(${X}−${M}) = ${Y} 億元。陷阱：${C + I + G + X + M} 億元加埋咗進口（應該減）。`,
+      [`GDP = C + I + G + (X − M) = ${C}+${I}+${G}+(${X}−${M}) = ${Y} 億元。陷阱：${C + I + G + X + M} 億元誤加了進口（應為減去）。`,
        `GDP = C+I+G+(X−M) = ${Y}. Trap: adding imports instead of subtracting gives ${C + I + G + X + M}.`])
   })
 
@@ -120,7 +120,7 @@ for (const TR of [100, 150, 200, 250, 300]) {
       [`價格由 ${P1} 元降至 ${P2} 元，需求量由 ${Q1} 升至 ${Q2}。求需求價格彈性（絕對值，用原點百分比法）。`,
        `Price falls from $${P1} to $${P2}; quantity rises from ${Q1} to ${Q2}. Find |PED| (using base-value % method).`],
       [n(`${ped}`), n(`${round(Math.abs(pctP / pctQ), 2)}`), n(`${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)}`), n(`${round(pedNum * 2, 2)}`)],
-      [`%ΔQ = (${Q2}−${Q1})/${Q1} = ${round(pctQ, 1)}%；%ΔP = (${P2}−${P1})/${P1} = ${round(pctP, 1)}%。|PED| = |${round(pctQ, 1)} / ${round(pctP, 1)}| = ${ped}。陷阱：${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)} 用咗絕對變化（唔係百分比）。`,
+      [`%ΔQ = (${Q2}−${Q1})/${Q1} = ${round(pctQ, 1)}%；%ΔP = (${P2}−${P1})/${P1} = ${round(pctP, 1)}%。|PED| = |${round(pctQ, 1)} / ${round(pctP, 1)}| = ${ped}。陷阱：${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)} 用了絕對變化（並非百分比）。`,
        `%ΔQ=${round(pctQ, 1)}%, %ΔP=${round(pctP, 1)}% ⇒ |PED|=${ped}. Trap: using raw changes gives ${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)}.`])
   })
 
@@ -133,7 +133,7 @@ for (const TR of [100, 150, 200, 250, 300]) {
       [`MPC = ${mpc}，政府開支增加 ${dSpend} 億元，求 GDP 最終變化。`,
        `MPC = ${mpc}; government spending rises by ${dSpend}. Find the final change in GDP.`],
       [n(`${dGDP} 億元`), n(`${dSpend} 億元`), n(`${round(dSpend / (1 - mpc) / 10, 2)} 億元`), n(`${round(dSpend * mpc, 1)} 億元`)],
-      [`乘數 = 1/(1−${mpc}) = ${round(mult, 2)}，ΔGDP = 乘數 × Δ開支 = ${round(mult, 2)} × ${dSpend} = ${dGDP} 億元。陷阱：${dSpend} 億元漏咗乘數效應。`,
+      [`乘數 = 1/(1−${mpc}) = ${round(mult, 2)}，ΔGDP = 乘數 × Δ開支 = ${round(mult, 2)} × ${dSpend} = ${dGDP} 億元。陷阱：${dSpend} 億元漏了乘數效應。`,
        `Multiplier = ${round(mult, 2)}, ΔGDP = ${dGDP}. Trap: ${dSpend} ignores the multiplier effect.`])
   })
 
@@ -145,7 +145,7 @@ for (const TR of [100, 150, 200, 250, 300]) {
       [`線性需求下，最高願付價 ${pmax} 元，市價 ${price} 元，成交量 ${Q}。求消費者剩餘。`,
        `Linear demand: max willingness-to-pay $${pmax}, market price $${price}, quantity ${Q}. Find consumer surplus.`],
       [n(`${cs} 元`), n(`${(pmax - price) * Q} 元`), n(`${round(0.5 * Q * pmax, 1)} 元`), n(`${(pmax - price)} 元`)],
-      [`消費者剩餘 = ½ × 成交量 × (最高願付價 − 市價) = ½ × ${Q} × (${pmax}−${price}) = ${cs} 元。陷阱：${(pmax - price) * Q} 元漏咗 ½（當成長方形）。`,
+      [`消費者剩餘 = ½ × 成交量 × (最高願付價 − 市價) = ½ × ${Q} × (${pmax}−${price}) = ${cs} 元。陷阱：${(pmax - price) * Q} 元漏了 ½（當成長方形）。`,
        `CS = ½ × Q × (Pmax − P) = ${cs}. Trap: ${(pmax - price) * Q} drops the ½ (treats it as a rectangle).`])
   })
 

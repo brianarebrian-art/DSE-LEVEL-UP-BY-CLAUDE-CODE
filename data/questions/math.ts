@@ -79,7 +79,7 @@ function quad(n: number, r1: number, r2: number, year: number, diff: 'easy' | 'm
       [`$${root(r1)}$ 或 $${root(-r2)}$`, `$${root(r1)}$ or $${root(-r2)}$`],
       [`$${root(-r1)}$ 或 $${root(r2)}$`, `$${root(-r1)}$ or $${root(r2)}$`],
     ],
-    [`因式分解為 $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$。陷阱：由 $(x${cTerm(-r1)}) = 0$ 移項，$x = ${r1}$（要變號），唔係 $${-r1}$。故 $x = ${r1}$ 或 $x = ${r2}$ —— 四個選項全部係符號陷阱，要逐個根驗清楚。`,
+    [`因式分解為 $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$。陷阱：由 $(x${cTerm(-r1)}) = 0$ 移項，$x = ${r1}$（要變號），並非 $${-r1}$。故 $x = ${r1}$ 或 $x = ${r2}$ —— 四個選項全部是符號陷阱，要逐個根驗清楚。`,
       `Factorise as $(x${cTerm(-r1)})(x${cTerm(-r2)}) = 0$. Trap: $(x${cTerm(-r1)}) = 0$ gives $x = ${r1}$ (flip the sign as you move it across), NOT $${-r1}$. So $x = ${r1}$ or $x = ${r2}$ — every distractor here is a sign trap, so check each root.`])
 }
 const quadParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
@@ -630,7 +630,7 @@ const locusQs: Question[] = [
       [String.raw`$y^2=8x$`, String.raw`$y^2=8x$`],
       [String.raw`$x^2=4y$`, String.raw`$x^2=4y$`],
     ],
-    [String.raw`【標準證明 Marking Scheme】設 $P=(x,y)$。$P$ 到 $F$ 的距離 $=\sqrt{x^2+(y-2)^2}$；$P$ 到直線 $y=-2$ 的距離 $=|y+2|$。令兩者相等並平方：$$x^2+(y-2)^2=(y+2)^2.$$ 展開：$$x^2+y^2-4y+4=y^2+4y+4 \Rightarrow x^2=8y.$$ 陷阱：$x^2=-8y$ 開口方向相反（符號錯）；$y^2=8x$ 把軸搞反；$x^2=4y$ 漏了因子。`,
+    [String.raw`【標準證明 Marking Scheme】設 $P=(x,y)$。$P$ 到 $F$ 的距離 $=\sqrt{x^2+(y-2)^2}$；$P$ 到直線 $y=-2$ 的距離 $=|y+2|$。令兩者相等並平方：$$x^2+(y-2)^2=(y+2)^2.$$ 展開：$$x^2+y^2-4y+4=y^2+4y+4 \Rightarrow x^2=8y.$$ 陷阱：$x^2=-8y$ 開口方向相反（符號錯）；$y^2=8x$ 把軸弄反；$x^2=4y$ 漏了因子。`,
      String.raw`【Marking Scheme】Let $P=(x,y)$. Distance to $F=\sqrt{x^2+(y-2)^2}$; distance to $y=-2$ is $|y+2|$. Equate and square: $$x^2+(y-2)^2=(y+2)^2.$$ Expand: $$x^2+y^2-4y+4=y^2+4y+4 \Rightarrow x^2=8y.$$ Traps: $x^2=-8y$ opens the wrong way; $y^2=8x$ swaps the axis; $x^2=4y$ drops a factor.`],
     [String.raw`認出這是拋物線的定義：焦點 $F(0,2)$、準線 $y=-2$。標準式 $x^2=4py$，其中 $p=2$（焦點到頂點距離）$\Rightarrow x^2=8y$，毋須展開。`,
      String.raw`Recognise the parabola definition: focus $F(0,2)$, directrix $y=-2$. Standard form $x^2=4py$ with $p=2$ $\Rightarrow x^2=8y$ — no expansion needed.`]),

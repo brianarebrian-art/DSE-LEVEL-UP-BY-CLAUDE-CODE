@@ -82,7 +82,7 @@ const physio: Question[] = [
         'no net movement'),
       opt('水由低水勢流向高水勢',
         'water moves from lower to higher water potential')],
-    C('水經滲透由「較高（較不負）」水勢流向「較低（較負）」水勢。溶液 −400 kPa 較高，細胞 −800 kPa 較低，故水淨入細胞，細胞趨向膨脹。\n\n【陷阱】「流出」搞反方向；「無移動」只在兩者水勢相等時成立；「低→高」違反滲透定義（注意 −400 > −800）。',
+    C('水經滲透由「較高（較不負）」水勢流向「較低（較負）」水勢。溶液 −400 kPa 較高，細胞 −800 kPa 較低，故水淨入細胞，細胞趨向膨脹。\n\n【陷阱】「流出」弄反方向；「無移動」只在兩者水勢相等時成立；「低→高」違反滲透定義（注意 −400 > −800）。',
       'Osmosis moves water from higher (less negative) to lower (more negative) Ψ. The solution at −400 kPa is higher than the cell at −800 kPa, so water moves into the cell, which tends to become turgid.\n\n【Trap】 “Out of the cell” reverses it; “no movement” needs equal Ψ; “low→high” violates osmosis (note −400 > −800).')),
 
   q(id('ph'), T.physio, FW.regulation, 'hard', 2023, 2,
@@ -110,7 +110,7 @@ const physio: Question[] = [
         'glucose rises → insulin secreted → glycogen broken down → glucose rises'),
       opt('血糖下降 → 胰島素分泌 → 血糖回升',
         'glucose falls → insulin secreted → glucose rises')],
-    C('餐後血糖升 → 胰島 β 細胞分泌「胰島素」→ 促進肝把葡萄糖儲為糖原、並促進組織攝取葡萄糖 → 血糖回落，是負反饋。\n\n【陷阱】升糖素方向相反（升血糖）；「胰島素 → 糖原分解」把胰島素作用搞反（應為合成糖原）；末項把胰島素的觸發條件搞錯（胰島素應對「升」非「降」）。',
+    C('餐後血糖升 → 胰島 β 細胞分泌「胰島素」→ 促進肝把葡萄糖儲為糖原、並促進組織攝取葡萄糖 → 血糖回落，是負反饋。\n\n【陷阱】升糖素方向相反（升血糖）；「胰島素 → 糖原分解」把胰島素作用弄反（應為合成糖原）；末項把胰島素的觸發條件弄錯（胰島素應對「升」非「降」）。',
       'After a meal, glucose rises → pancreatic β-cells secrete INSULIN → liver stores glucose as glycogen and tissues take up glucose → glucose falls — negative feedback.\n\n【Trap】 Glucagon does the opposite (raises glucose); “insulin → glycogen breakdown” reverses insulin’s action (it promotes synthesis); the last option mistakes insulin’s trigger (it responds to a RISE, not a fall).')),
 ]
 

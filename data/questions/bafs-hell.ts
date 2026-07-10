@@ -14,7 +14,7 @@ const opt = (zh: string, en: string): Pair => [zh, en]
 const C = (zh: string, en: string): Pair => [zh, en]
 
 const T = {
-  ratios: { id: 'bafs_ratio_analysis', zh: '比率分析殺著', en: 'Ratio analysis' },
+  ratios: { id: 'bafs_ratio_analysis', zh: '比率分析（高階）', en: 'Ratio analysis' },
   cost:   { id: 'bafs_costing_pricing', zh: '成本・定價・回本', en: 'Costing, pricing & payback' },
   dep:    { id: 'bafs_depreciation',    zh: '折舊計算',     en: 'Depreciation' },
 } satisfies Record<string, TopicMeta>
@@ -69,7 +69,7 @@ const cost: Question[] = [
       opt('3,000 件', '3,000 units'),
       opt('5,000 件', '5,000 units'),
       opt('12,000 件', '12,000 units')],
-    C('單位貢獻 = 售價 − 單位變動成本 = 20 − 12 = \\$8。收支平衡銷量 = 固定成本 ÷ 單位貢獻 = 60,000 ÷ 8 = 7,500 件。\n\n【陷阱】3,000 = 60,000 ÷ 20（用咗售價而非貢獻）；5,000 = 60,000 ÷ 12（用咗變動成本）；12,000 用咗錯誤基數。貢獻＝售價減「變動」成本，這是 break-even 的核心。',
+    C('單位貢獻 = 售價 − 單位變動成本 = 20 − 12 = \\$8。收支平衡銷量 = 固定成本 ÷ 單位貢獻 = 60,000 ÷ 8 = 7,500 件。\n\n【陷阱】3,000 = 60,000 ÷ 20（用了售價而非貢獻）；5,000 = 60,000 ÷ 12（用了變動成本）；12,000 用了錯誤基數。貢獻＝售價減「變動」成本，這是 break-even 的核心。',
       'Unit contribution = price − unit variable cost = 20 − 12 = \\$8. Break-even units = fixed costs ÷ contribution = 60,000 ÷ 8 = 7,500.\n\n【Trap】 3,000 = 60,000 ÷ 20 (uses price, not contribution); 5,000 = 60,000 ÷ 12 (uses variable cost); 12,000 uses a wrong base. Contribution = price − VARIABLE cost is the heart of break-even.')),
 
   q(id('co'), T.cost, FW.calc, 'hard', 2023, 3,

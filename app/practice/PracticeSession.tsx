@@ -242,6 +242,18 @@ export default function PracticeSession({
   // Optional server-signed lockout token (defence-in-depth; null = client timer only).
   const [lockToken, setLockToken] = useState<string | null>(null)
   const [verifying, setVerifying] = useState(false)
+  // 柔和計時（Emma/UDL 焦慮模式）：60 秒反思鎖照樣執行，但以進度條代替紅色
+  // 數字倒數、以暖色代替紅黑 —— 只改呈現，不改教學法。設定存 localStorage。
+  const [calmLock, setCalmLock] = useState(false)
+  useEffect(() => {
+    try { setCalmLock(localStorage.getItem('dse_calm_lock') === '1') } catch { /* ignore */ }
+  }, [])
+  const toggleCalmLock = useCallback(() => {
+    setCalmLock((v) => {
+      try { localStorage.setItem('dse_calm_lock', v ? '0' : '1') } catch { /* ignore */ }
+      return !v
+    })
+  }, [])
 
   // Show the English string when the UI is in English and a translation exists;
   // otherwise fall back to the Chinese original (so untranslated subjects still work).
@@ -618,13 +630,32 @@ export default function PracticeSession({
                     breakdown above, answer the cause follow-up correctly, AND wait out
                     the countdown before "Next" unlocks. No skipping. */}
                 {followup && (
-                  <div className="rounded-2xl p-5 mb-4 border-2 border-red-700/70 bg-black/70">
+                  <div className={`rounded-2xl p-5 mb-4 border-2 ${calmLock ? 'border-slate-600 bg-slate-900/80' : 'border-red-700/70 bg-black/70'}`}>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="flex items-center gap-2 text-red-400 font-extrabold text-sm uppercase tracking-wide">
+                      <span className={`flex items-center gap-2 font-extrabold text-sm uppercase tracking-wide ${calmLock ? 'text-amber-300' : 'text-red-400'}`}>
                         <Lock size={16} /> {tr('強制反思鎖 · 60 秒', 'Forced reflection lock · 60s')}
                       </span>
-                      <span className={`text-sm font-mono font-bold ${lockSecs > 0 ? 'text-red-400' : 'text-green-400'}`}>
-                        {lockSecs > 0 ? `00:${String(lockSecs).padStart(2, '0')}` : '00:00 ✓'}
+                      <span className="flex items-center gap-2">
+                        {calmLock ? (
+                          /* 柔和模式：進度條代替數字倒數（進度行完 = 解鎖） */
+                          <span className="w-24 h-2 rounded-full bg-slate-800 overflow-hidden inline-block" aria-label={tr('反思進度', 'Reflection progress')}>
+                            <span
+                              className={`block h-full rounded-full transition-all duration-1000 ${lockSecs > 0 ? 'bg-amber-400/70' : 'bg-green-400'}`}
+                              style={{ width: `${(100 * (LOCKOUT_SECONDS - lockSecs)) / LOCKOUT_SECONDS}%` }}
+                            />
+                          </span>
+                        ) : (
+                          <span className={`text-sm font-mono font-bold ${lockSecs > 0 ? 'text-red-400' : 'text-green-400'}`}>
+                            {lockSecs > 0 ? `00:${String(lockSecs).padStart(2, '0')}` : '00:00 ✓'}
+                          </span>
+                        )}
+                        <button
+                          onClick={toggleCalmLock}
+                          title={tr('柔和計時：以進度條代替倒數數字', 'Calm timer: progress bar instead of countdown digits')}
+                          className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-amber-500/40 text-amber-300 bg-amber-500/10' : 'border-slate-700 text-slate-500 hover:text-slate-300'}`}
+                        >
+                          {tr('柔和', 'Calm')}
+                        </button>
                       </span>
                     </div>
                     <p className="text-xs text-slate-500 mb-3 leading-relaxed">

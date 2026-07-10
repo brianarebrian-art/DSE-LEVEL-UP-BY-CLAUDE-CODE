@@ -47,7 +47,7 @@ for (let a = 2; a <= 6; a++) {
     add(`m1_e1_${a}_${p}`, T.diff, FW.calc, 'easy',
       [`求 $\\dfrac{d}{dx}(${pw(a, p)})$。`, `Find $\\dfrac{d}{dx}(${pw(a, p)})$.`],
       [n(`$${pw(a * p, p - 1)}$`), n(`$${pw(a, p - 1)}$`), n(`$${pw(a * p, p)}$`), n(`$${pw(p, p - 1)}$`)],
-      [`冪法則：$\\dfrac{d}{dx}(ax^n) = an\\,x^{n-1} = ${pw(a * p, p - 1)}$。陷阱：$${pw(a, p - 1)}$ 漏咗 $\\times n$；$${pw(a * p, p)}$ 漏咗指數減一。`,
+      [`冪法則：$\\dfrac{d}{dx}(ax^n) = an\\,x^{n-1} = ${pw(a * p, p - 1)}$。陷阱：$${pw(a, p - 1)}$ 漏了 $\\times n$；$${pw(a * p, p)}$ 漏了指數減一。`,
        `Power rule: $\\frac{d}{dx}(ax^n)=an\\,x^{n-1}=${pw(a * p, p - 1)}$. Trap: $${pw(a, p - 1)}$ forgets $\\times n$.`])
   }
 }
@@ -59,7 +59,7 @@ for (let p = 1; p <= 5; p++) {
     add(`m1_e2_${p}_${k}`, T.integ, FW.calc, 'easy',
       [`求 $\\displaystyle\\int ${pw(a, p)}\\,dx$。`, `Find $\\displaystyle\\int ${pw(a, p)}\\,dx$.`],
       [n(`$${pw(k, p + 1)} + C$`), n(`$${pw(a, p + 1)} + C$`), n(`$${pw(a * (p + 1), p + 1)} + C$`), n(`$${pw(k, p - 1)} + C$`)],
-      [`冪的積分：$\\int ax^n\\,dx = \\dfrac{a}{n+1}x^{n+1}+C = ${pw(k, p + 1)}+C$。陷阱：$${pw(a, p + 1)}+C$ 漏咗除以 $(n+1)$。`,
+      [`冪的積分：$\\int ax^n\\,dx = \\dfrac{a}{n+1}x^{n+1}+C = ${pw(k, p + 1)}+C$。陷阱：$${pw(a, p + 1)}+C$ 漏了除以 $(n+1)$。`,
        `$\\int ax^n\\,dx = \\frac{a}{n+1}x^{n+1}+C = ${pw(k, p + 1)}+C$. Trap: $${pw(a, p + 1)}+C$ forgets $\\div(n+1)$.`])
   }
 }
@@ -70,7 +70,7 @@ for (let m = 4; m <= 8; m++) {
     add(`m1_e3_${m}_${r}`, T.binomialThm, FW.stats, 'easy',
       [`求 $\\binom{${m}}{${r}}$（即 $C^{${m}}_{${r}}$）的值。`, `Find $\\binom{${m}}{${r}}$ (i.e. $C^{${m}}_{${r}}$).`],
       [n(`$${nCr(m, r)}$`), n(`$${nPr(m, r)}$`), n(`$${nCr(m, r) * 2}$`), n(`$${m * r}$`)],
-      [`$\\binom{${m}}{${r}} = \\dfrac{${m}!}{${r}!(${m}-${r})!} = ${nCr(m, r)}$。陷阱：$${nPr(m, r)}$ 係排列 $P^{${m}}_{${r}}$（冇除 $r!$）。`,
+      [`$\\binom{${m}}{${r}} = \\dfrac{${m}!}{${r}!(${m}-${r})!} = ${nCr(m, r)}$。陷阱：$${nPr(m, r)}$ 是排列 $P^{${m}}_{${r}}$（沒有除 $r!$）。`,
        `$\\binom{${m}}{${r}} = ${nCr(m, r)}$. Trap: $${nPr(m, r)}$ is the permutation $P^{${m}}_{${r}}$ (missing $\\div r!$).`])
   }
 }
@@ -83,7 +83,7 @@ for (let m = 5; m <= 20; m += 5) {
     add(`m1_e4_${m}_${pn}_${pd}`, T.binomialDist, FW.stats, 'easy',
       [`$X \\sim B(${m}, ${frac(pn, pd)})$，求 $X$ 的期望值 $E(X)$。`, `$X \\sim B(${m}, ${frac(pn, pd)})$. Find $E(X)$.`],
       [n(`$${mean}$`), n(`$${round(m * pn / pd * (1 - pn / pd), 2)}$`), n(`$${m + round(pn / pd, 2)}$`), n(`$${round(pn / pd, 2)}$`)],
-      [`二項分佈 $E(X) = np = ${m} \\times ${frac(pn, pd)} = ${mean}$。陷阱：$${round(m * pn / pd * (1 - pn / pd), 2)}$ 係方差 $np(1-p)$。`,
+      [`二項分佈 $E(X) = np = ${m} \\times ${frac(pn, pd)} = ${mean}$。陷阱：$${round(m * pn / pd * (1 - pn / pd), 2)}$ 是方差 $np(1-p)$。`,
        `Binomial $E(X)=np=${mean}$. Trap: $${round(m * pn / pd * (1 - pn / pd), 2)}$ is the variance $np(1-p)$.`])
   }
 }
@@ -99,7 +99,7 @@ for (let p = 2; p <= 4; p++) {
     add(`m1_m1_${p}_${k}`, T.diff, FW.calc, 'medium',
       [`設 $f(x) = x^{${p}}$，求 $f'(${k})$。`, `Let $f(x) = x^{${p}}$. Find $f'(${k})$.`],
       [n(`$${val}$`), n(`$${Math.pow(k, p)}$`), n(`$${p * Math.pow(k, p)}$`), n(`$${Math.pow(k, p - 1)}$`)],
-      [`$f'(x) = ${p}x^{${p - 1}}$，故 $f'(${k}) = ${p}\\times${k}^{${p - 1}} = ${val}$。陷阱：$${Math.pow(k, p)}$ 冇求導（係 $f(${k})$）。`,
+      [`$f'(x) = ${p}x^{${p - 1}}$，故 $f'(${k}) = ${p}\\times${k}^{${p - 1}} = ${val}$。陷阱：$${Math.pow(k, p)}$ 沒有求導（是 $f(${k})$）。`,
        `$f'(x)=${p}x^{${p - 1}}$ ⇒ $f'(${k})=${val}$. Trap: $${Math.pow(k, p)}$ is $f(${k})$, not $f'(${k})$.`])
   }
 }
@@ -109,7 +109,7 @@ for (let a = 2; a <= 15; a++) {
   add(`m1_m2_${a}`, T.diff, FW.calc, 'medium',
     [`求 $\\dfrac{d}{dx}(e^{${a}x})$。`, `Find $\\dfrac{d}{dx}(e^{${a}x})$.`],
     [n(`$${a}e^{${a}x}$`), n(`$e^{${a}x}$`), n(`$${a}xe^{${a}x}$`), n(`$${a}e^{${a - 1 === 1 ? '' : a - 1}x}$`)],
-    [`鏈式法則：$\\dfrac{d}{dx}(e^{ax}) = a\\,e^{ax} = ${a}e^{${a}x}$。陷阱：$e^{${a}x}$ 漏咗 $\\times a$；$${a}xe^{${a}x}$ 誤當冪函數。`,
+    [`鏈式法則：$\\dfrac{d}{dx}(e^{ax}) = a\\,e^{ax} = ${a}e^{${a}x}$。陷阱：$e^{${a}x}$ 漏了 $\\times a$；$${a}xe^{${a}x}$ 誤當冪函數。`,
      `Chain rule: $\\frac{d}{dx}(e^{ax})=a\\,e^{ax}=${a}e^{${a}x}$. Trap: $e^{${a}x}$ forgets $\\times a$.`])
 }
 
@@ -122,7 +122,7 @@ for (let p = 1; p <= 3; p++) {
     add(`m1_m3_${p}_${b}`, T.integ, FW.calc, 'medium',
       [`求 $\\displaystyle\\int_{0}^{${b}} ${pw(a, p)}\\,dx$。`, `Find $\\displaystyle\\int_{0}^{${b}} ${pw(a, p)}\\,dx$.`],
       [n(`$${val}$`), n(`$${noDiv}$`), n(`$${a * Math.pow(b, p)}$`), n(`$${round(val / 2, 2)}$`)],
-      [`$\\int_0^{${b}} ${pw(a, p)}\\,dx = \\left[${pw(1, p + 1)}\\right]_0^{${b}} = ${b}^{${p + 1}} = ${val}$。陷阱：$${noDiv}$ 漏咗除以 $(n+1)$。`,
+      [`$\\int_0^{${b}} ${pw(a, p)}\\,dx = \\left[${pw(1, p + 1)}\\right]_0^{${b}} = ${b}^{${p + 1}} = ${val}$。陷阱：$${noDiv}$ 漏了除以 $(n+1)$。`,
        `$\\int_0^{${b}} ${pw(a, p)}\\,dx = ${val}$. Trap: $${noDiv}$ forgets $\\div(n+1)$.`])
   }
 }
@@ -147,7 +147,7 @@ for (const mu of [50, 60, 100]) {
       add(`m1_m5_${mu}_${sigma}_${dz}`, T.normal, FW.stats, 'medium',
         [`$X \\sim N(${mu}, ${sigma}^2)$，求 $X = ${x}$ 的標準分數 $z$。`, `$X \\sim N(${mu}, ${sigma}^2)$. Find the $z$-score of $X = ${x}$.`],
         [n(`$${dz}$`), n(`$${round((x - mu) / (sigma * sigma), 3)}$`), n(`$${x - mu}$`), n(`$${round((x + mu) / sigma, 2)}$`)],
-        [`$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{${x} - ${mu}}{${sigma}} = ${dz}$。陷阱：$${round((x - mu) / (sigma * sigma), 3)}$ 誤除以方差 $\\sigma^2$；$${x - mu}$ 漏咗除以 $\\sigma$。`,
+        [`$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{${x} - ${mu}}{${sigma}} = ${dz}$。陷阱：$${round((x - mu) / (sigma * sigma), 3)}$ 誤除以方差 $\\sigma^2$；$${x - mu}$ 漏了除以 $\\sigma$。`,
          `$z = \\frac{x-\\mu}{\\sigma} = ${dz}$. Trap: dividing by the variance $\\sigma^2$ gives $${round((x - mu) / (sigma * sigma), 3)}$.`])
     }
   }
@@ -166,7 +166,7 @@ for (let a = 2; a <= 5; a++) {
        n(`$${a}${pw(p, p - 1)}e^{${a}x}$`),
        n(`$e^{${a}x}(${pw(a, p)} - ${pw(p, p - 1)})$`),
        n(`$${pw(p, p - 1)}e^{${a}x}$`)],
-      [`乘積法則：$(uv)' = u'v + uv'$，$u=x^{${p}}$、$v=e^{${a}x}$ ⇒ $\\dfrac{d}{dx} = ${pw(p, p - 1)}e^{${a}x} + x^{${p}}\\cdot${a}e^{${a}x} = e^{${a}x}(${pw(a, p)} + ${pw(p, p - 1)})$。陷阱：$${pw(p, p - 1)}e^{${a}x}$ 淨係求咗 $x^{${p}}$ 個項，漏咗 $e^{${a}x}$ 求導。`,
+      [`乘積法則：$(uv)' = u'v + uv'$，$u=x^{${p}}$、$v=e^{${a}x}$ ⇒ $\\dfrac{d}{dx} = ${pw(p, p - 1)}e^{${a}x} + x^{${p}}\\cdot${a}e^{${a}x} = e^{${a}x}(${pw(a, p)} + ${pw(p, p - 1)})$。陷阱：$${pw(p, p - 1)}e^{${a}x}$ 只求了 $x^{${p}}$ 一項，漏了 $e^{${a}x}$ 求導。`,
        `Product rule ⇒ $e^{${a}x}(${pw(a, p)} + ${pw(p, p - 1)})$. Trap: $${pw(p, p - 1)}e^{${a}x}$ differentiates only $x^{${p}}$.`])
   }
 }
@@ -183,7 +183,7 @@ for (let a = 1; a <= 3; a++) {
       add(`m1_h2_${a}_${b + 8}_${c}`, T.diff, FW.calc, 'hard',
         [`求函數 $f(x) = ${eq}$ 的最小值。`, `Find the minimum value of $f(x) = ${eq}$.`],
         [n(`$${minVal}$`), n(`$${c}$`), n(`$${c + (b * b) / (4 * a)}$`), n(`$${round(-b / (2 * a), 2)}$`)],
-        [`$f'(x) = ${2 * a}x ${b < 0 ? '-' : '+'} ${Math.abs(b)} = 0$ ⇒ $x = ${frac(-b, 2 * a)}$，代回 $f = c - \\dfrac{b^2}{4a} = ${c} - ${(b * b) / (4 * a)} = ${minVal}$。陷阱：$${round(-b / (2 * a), 2)}$ 係取得最小值嘅 $x$，唔係最小值本身。`,
+        [`$f'(x) = ${2 * a}x ${b < 0 ? '-' : '+'} ${Math.abs(b)} = 0$ ⇒ $x = ${frac(-b, 2 * a)}$，代回 $f = c - \\dfrac{b^2}{4a} = ${c} - ${(b * b) / (4 * a)} = ${minVal}$。陷阱：$${round(-b / (2 * a), 2)}$ 是取得最小值的 $x$，並非最小值本身。`,
          `Stationary at $x=${frac(-b, 2 * a)}$; min $= c-\\frac{b^2}{4a} = ${minVal}$. Trap: $${round(-b / (2 * a), 2)}$ is the $x$-value, not the minimum.`])
     }
   }
@@ -195,7 +195,7 @@ for (let m = 3; m <= 7; m++) {
   add(`m1_h3_${m}`, T.binomialDist, FW.stats, 'hard',
     [`$X \\sim B(${m}, \\tfrac12)$，求 $P(X \\ge 1)$。`, `$X \\sim B(${m}, \\tfrac12)$. Find $P(X \\ge 1)$.`],
     [n(`$${frac(den - 1, den)}$`), n(`$${frac(1, den)}$`), n(`$${frac(m, den)}$`), n(`$${frac(den - 1, Math.pow(2, m - 1))}$`)],
-    [`用補集：$P(X\\ge1) = 1 - P(X=0) = 1 - \\left(\\tfrac12\\right)^{${m}} = 1 - \\dfrac{1}{2^{${m}}} = ${frac(den - 1, den)}$。陷阱：$${frac(1, den)}$ 係 $P(X=0)$ 本身（未用補集）。`,
+    [`用補集：$P(X\\ge1) = 1 - P(X=0) = 1 - \\left(\\tfrac12\\right)^{${m}} = 1 - \\dfrac{1}{2^{${m}}} = ${frac(den - 1, den)}$。陷阱：$${frac(1, den)}$ 是 $P(X=0)$ 本身（未用補集）。`,
      `Complement: $P(X\\ge1)=1-\\left(\\tfrac12\\right)^{${m}}=${frac(den - 1, den)}$. Trap: $${frac(1, den)}$ is $P(X=0)$ itself.`])
 }
 

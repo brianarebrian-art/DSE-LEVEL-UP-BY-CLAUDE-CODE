@@ -7,6 +7,7 @@ import { predictGrade, gradeColors, gradeBgColors, type GradeResult } from '@/li
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+import EncouragementWall from '@/components/EncouragementWall'
 
 interface TopicResult {
   topic: string
@@ -330,6 +331,9 @@ export default function ResultPage() {
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
+
+        {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
+        <EncouragementWall />
 
         {/* Disclaimer */}
         <p className="text-xs text-slate-700 text-center">

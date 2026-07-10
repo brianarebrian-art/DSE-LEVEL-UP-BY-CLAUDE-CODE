@@ -9,7 +9,10 @@
     "lint": "eslint",
     "test": "npx --yes tsx@4.19.2 --test data/questions/__tests__/*.test.mts",
     "scan:questions": "npx --yes tsx@4.19.2 ./_scan.mts",
-    "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts"
+    "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts",
+    "qa": "node scripts/qbank/term-guard.mjs && node scripts/qbank/validate-banks.mjs",
+    "qa:budget": "node scripts/budget-guard.mjs",
+    "qa:intel": "node scripts/hkeaa-monitor.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

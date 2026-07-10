@@ -45,7 +45,7 @@ for (let a = 2; a <= 4; a++) {
         [`求行列式 $\\begin{vmatrix} ${a} & ${b} \\\\ ${c} & ${d} \\end{vmatrix}$。`,
          `Evaluate $\\begin{vmatrix} ${a} & ${b} \\\\ ${c} & ${d} \\end{vmatrix}$.`],
         [n(`$${det}$`), n(`$${a * d + b * c}$`), n(`$${a * c - b * d}$`), n(`$${a * d}$`)],
-        [`$2\\times2$ 行列式 $= ad - bc = (${a})(${d}) - (${b})(${c}) = ${a * d} - ${b * c} = ${det}$。陷阱：$${a * d + b * c}$ 加咗（符號錯）；$${a * d}$ 漏咗 $-bc$。`,
+        [`$2\\times2$ 行列式 $= ad - bc = (${a})(${d}) - (${b})(${c}) = ${a * d} - ${b * c} = ${det}$。陷阱：$${a * d + b * c}$ 加了（符號錯）；$${a * d}$ 漏了 $-bc$。`,
          `$\\det = ad-bc = ${det}$. Trap: $${a * d + b * c}$ adds instead of subtracts.`])
     }
   }
@@ -58,7 +58,7 @@ for (let a = 2; a <= 4; a++) {
     add(`m2_e2_${i}`, T.complex, FW.algebra, 'easy',
       [`求複數 $${cplx(a, b)}$ 的模 $|z|$。`, `Find the modulus $|z|$ of $${cplx(a, b)}$.`],
       [n(`$${mod}$`), n(`$${a * a + b * b}$`), n(`$${a + b}$`), n(`$${Math.abs(a - b)}$`)],
-      [`$|a+bi| = \\sqrt{a^2+b^2} = \\sqrt{${a * a}+${b * b}} = \\sqrt{${a * a + b * b}} = ${mod}$。陷阱：$${a * a + b * b}$ 漏咗開方；$${a + b}$ 直接相加。`,
+      [`$|a+bi| = \\sqrt{a^2+b^2} = \\sqrt{${a * a}+${b * b}} = \\sqrt{${a * a + b * b}} = ${mod}$。陷阱：$${a * a + b * b}$ 漏了開方；$${a + b}$ 直接相加。`,
        `$|z| = \\sqrt{a^2+b^2} = ${mod}$. Trap: $${a * a + b * b}$ forgets the square root.`])
   })
 
@@ -71,7 +71,7 @@ for (let a1 = 1; a1 <= 4; a1++) {
       [`設 $\\mathbf{a} = (${a1}, ${a2})$、$\\mathbf{b} = (${b1}, ${b2})$，求 $\\mathbf{a} \\cdot \\mathbf{b}$。`,
        `Given $\\mathbf{a} = (${a1}, ${a2})$, $\\mathbf{b} = (${b1}, ${b2})$, find $\\mathbf{a} \\cdot \\mathbf{b}$.`],
       [n(`$${dot}$`), n(`$${a1 * b1}$`), n(`$${a1 * a2 + b1 * b2}$`), n(`$${a1 + a2 + b1 + b2}$`)],
-      [`點積 $= a_1b_1 + a_2b_2 = (${a1})(${b1}) + (${a2})(${b2}) = ${a1 * b1} + ${a2 * b2} = ${dot}$。陷阱：$${a1 * b1}$ 淨計咗第一項。`,
+      [`點積 $= a_1b_1 + a_2b_2 = (${a1})(${b1}) + (${a2})(${b2}) = ${a1 * b1} + ${a2 * b2} = ${dot}$。陷阱：$${a1 * b1}$ 只計了第一項。`,
        `Dot product $= a_1b_1+a_2b_2 = ${dot}$. Trap: $${a1 * b1}$ is only the first term.`])
   }
 }
@@ -89,7 +89,7 @@ for (let x = 1; x <= 4; x++) {
       [`設 $A = \\begin{pmatrix} ${a11} & ${a12} \\\\ 1 & 1 \\end{pmatrix}$、$B = \\begin{pmatrix} ${b11} & ${b12} \\\\ ${b21} & ${b22} \\end{pmatrix}$，求 $AB$ 的第 $(1,1)$ 項。`,
        `Given $A = \\begin{pmatrix} ${a11} & ${a12} \\\\ 1 & 1 \\end{pmatrix}$, $B = \\begin{pmatrix} ${b11} & ${b12} \\\\ ${b21} & ${b22} \\end{pmatrix}$, find the $(1,1)$ entry of $AB$.`],
       [n(`$${c11}$`), n(`$${a11 * b11}$`), n(`$${a11 * b11 + a12 * b22}$`), n(`$${a11 * b12 + a12 * b22}$`)],
-      [`$(1,1)$ 項 $= a_{11}b_{11} + a_{12}b_{21} = (${a11})(${b11}) + (${a12})(${b21}) = ${a11 * b11} + ${a12 * b21} = ${c11}$。陷阱：$${a11 * b11}$ 漏咗第二項；$${a11 * b11 + a12 * b22}$ 用錯咗 $b_{22}$。`,
+      [`$(1,1)$ 項 $= a_{11}b_{11} + a_{12}b_{21} = (${a11})(${b11}) + (${a12})(${b21}) = ${a11 * b11} + ${a12 * b21} = ${c11}$。陷阱：$${a11 * b11}$ 漏了第二項；$${a11 * b11 + a12 * b22}$ 用錯了 $b_{22}$。`,
        `$(1,1) = a_{11}b_{11}+a_{12}b_{21} = ${c11}$. Trap: $${a11 * b11}$ drops the second term.`])
   }
 }
@@ -102,7 +102,7 @@ for (let a = 1; a <= 4; a++) {
     add(`m2_m2_${a}_${b}`, T.complex, FW.algebra, 'medium',
       [`求 $(${cplx(a, b)})(${cplx(c, d)})$ 的實部。`, `Find the real part of $(${cplx(a, b)})(${cplx(c, d)})$.`],
       [n(`$${re}$`), n(`$${a * c + b * d}$`), n(`$${a * c}$`), n(`$${a * d + b * c}$`)],
-      [`$(a+bi)(c+di) = (ac - bd) + (ad + bc)i$，實部 $= ac - bd = (${a})(${c}) - (${b})(${d}) = ${a * c} - ${b * d} = ${re}$。陷阱：$${a * c + b * d}$ 漏咗 $i^2 = -1$（加咗）；$${a * d + b * c}$ 係虛部。`,
+      [`$(a+bi)(c+di) = (ac - bd) + (ad + bc)i$，實部 $= ac - bd = (${a})(${c}) - (${b})(${d}) = ${a * c} - ${b * d} = ${re}$。陷阱：$${a * c + b * d}$ 漏了 $i^2 = -1$（加了）；$${a * d + b * c}$ 是虛部。`,
        `Re $= ac-bd = ${re}$. Trap: $${a * c + b * d}$ forgets $i^2=-1$; $${a * d + b * c}$ is the imaginary part.`])
   }
 }
@@ -113,7 +113,7 @@ for (let a = 2; a <= 22; a++) {
     [`求 $\\displaystyle\\lim_{x \\to ${a}} \\dfrac{x^2 - ${a * a}}{x - ${a}}$。`,
      `Find $\\displaystyle\\lim_{x \\to ${a}} \\dfrac{x^2 - ${a * a}}{x - ${a}}$.`],
     [n(`$${2 * a}$`), n(`$${a}$`), n(`$${a * a}$`), n(`$0$`)],
-    [`因式分解：$\\dfrac{x^2 - ${a * a}}{x - ${a}} = \\dfrac{(x-${a})(x+${a})}{x-${a}} = x + ${a}$，代 $x = ${a}$ 得 $${2 * a}$。陷阱：$0$ 誤以為 $\\tfrac00$ 無定義；$${a}$ 漏咗加 $a$。`,
+    [`因式分解：$\\dfrac{x^2 - ${a * a}}{x - ${a}} = \\dfrac{(x-${a})(x+${a})}{x-${a}} = x + ${a}$，代 $x = ${a}$ 得 $${2 * a}$。陷阱：$0$ 誤以為 $\\tfrac00$ 無定義；$${a}$ 漏了加 $a$。`,
      `Factor: $\\frac{(x-${a})(x+${a})}{x-${a}} = x+${a} \\to ${2 * a}$. Trap: $0$ assumes $\\frac00$ is undefined.`])
 }
 
@@ -127,7 +127,7 @@ for (let a1 = 1; a1 <= 4; a1++) {
       [`設 $\\mathbf{a} = (${a1}, ${a2})$、$\\mathbf{b} = (${b1}, ${b2})$，求以兩者為鄰邊的平行四邊形面積。`,
        `Given $\\mathbf{a} = (${a1}, ${a2})$, $\\mathbf{b} = (${b1}, ${b2})$, find the area of the parallelogram they span.`],
       [n(`$${area}$`), n(`$${a1 * b2 + a2 * b1}$`), n(`$${a1 * b1 + a2 * b2}$`), n(`$${Math.abs(a1 * a2 - b1 * b2)}$`)],
-      [`面積 $= |a_1b_2 - a_2b_1| = |(${a1})(${b2}) - (${a2})(${b1})| = |${a1 * b2} - ${a2 * b1}| = ${area}$。陷阱：$${a1 * b1 + a2 * b2}$ 係點積（唔係面積）。`,
+      [`面積 $= |a_1b_2 - a_2b_1| = |(${a1})(${b2}) - (${a2})(${b1})| = |${a1 * b2} - ${a2 * b1}| = ${area}$。陷阱：$${a1 * b1 + a2 * b2}$ 是點積（並非面積）。`,
        `Area $= |a_1b_2 - a_2b_1| = ${area}$. Trap: $${a1 * b1 + a2 * b2}$ is the dot product.`])
   }
 }
@@ -149,7 +149,7 @@ for (let x0 = 1; x0 <= 5; x0++) {
       [`解方程組 $\\begin{cases} 2x + y = ${c1} \\\\ x + 3y = ${c2} \\end{cases}$，求 $x$。`,
        `Solve $\\begin{cases} 2x + y = ${c1} \\\\ x + 3y = ${c2} \\end{cases}$ for $x$.`],
       [n(`$${x0}$`), n(`$${y0}$`), n(`$${x0 + y0}$`), n(`$${-x0}$`)],
-      [`克拉瑪法則：$\\Delta = ${a1}\\cdot${b2} - ${b1}\\cdot${a2} = ${det}$，$x = \\dfrac{\\begin{vmatrix} ${c1} & ${b1} \\\\ ${c2} & ${b2} \\end{vmatrix}}{\\Delta} = \\dfrac{${c1 * b2 - b1 * c2}}{${det}} = ${x0}$。陷阱：$${y0}$ 係 $y$ 的解，唔係 $x$。`,
+      [`克拉瑪法則：$\\Delta = ${a1}\\cdot${b2} - ${b1}\\cdot${a2} = ${det}$，$x = \\dfrac{\\begin{vmatrix} ${c1} & ${b1} \\\\ ${c2} & ${b2} \\end{vmatrix}}{\\Delta} = \\dfrac{${c1 * b2 - b1 * c2}}{${det}} = ${x0}$。陷阱：$${y0}$ 是 $y$ 的解，並非 $x$。`,
        `Cramer: $x = \\frac{c_1b_2 - b_1c_2}{\\Delta} = ${x0}$. Trap: $${y0}$ is $y$, not $x$.`])
   }
 }
@@ -166,7 +166,7 @@ for (let x0 = 1; x0 <= 5; x0++) {
       [`求行列式 $\\begin{vmatrix} ${a} & ${b} & ${c} \\\\ ${d} & ${e} & ${f} \\\\ ${g} & ${h} & ${k} \\end{vmatrix}$。`,
        `Evaluate $\\begin{vmatrix} ${a} & ${b} & ${c} \\\\ ${d} & ${e} & ${f} \\\\ ${g} & ${h} & ${k} \\end{vmatrix}$.`],
       [n(`$${det}$`), n(`$${wrongSign}$`), n(`$${a * e * k}$`), n(`$${det + 1}$`)],
-      [`沿第一行餘因子展開：$${a}(${e}\\cdot${k}-${f}\\cdot${h}) - ${b}(${d}\\cdot${k}-${f}\\cdot${g}) + ${c}(${d}\\cdot${h}-${e}\\cdot${g}) = ${det}$。陷阱：$${wrongSign}$ 漏咗中間項嘅負號；$${a * e * k}$ 淨乘咗對角線。`,
+      [`沿第一行餘因子展開：$${a}(${e}\\cdot${k}-${f}\\cdot${h}) - ${b}(${d}\\cdot${k}-${f}\\cdot${g}) + ${c}(${d}\\cdot${h}-${e}\\cdot${g}) = ${det}$。陷阱：$${wrongSign}$ 漏了中間項的負號；$${a * e * k}$ 只乘了對角線。`,
        `Cofactor expansion along row 1 $= ${det}$. Trap: $${wrongSign}$ drops the alternating sign; $${a * e * k}$ multiplies only the diagonal.`])
   })
 
@@ -179,7 +179,7 @@ for (let x0 = 1; x0 <= 5; x0++) {
       [`設 $z_1 = ${cplx(a, b)}$、$z_2 = ${cplx(c, d)}$，求 $|z_1 z_2|$。`,
        `Given $z_1 = ${cplx(a, b)}$, $z_2 = ${cplx(c, d)}$, find $|z_1 z_2|$.`],
       [n(`$${prod}$`), n(`$${m1 + m2}$`), n(`$${prod * prod}$`), n(`$${Math.abs(m1 - m2)}$`)],
-      [`$|z_1 z_2| = |z_1||z_2| = ${m1} \\times ${m2} = ${prod}$（$|z_1| = \\sqrt{${a * a}+${b * b}} = ${m1}$、$|z_2| = ${m2}$）。陷阱：$${m1 + m2}$ 加咗模；$${prod * prod}$ 漏咗開方。`,
+      [`$|z_1 z_2| = |z_1||z_2| = ${m1} \\times ${m2} = ${prod}$（$|z_1| = \\sqrt{${a * a}+${b * b}} = ${m1}$、$|z_2| = ${m2}$）。陷阱：$${m1 + m2}$ 加了模；$${prod * prod}$ 漏了開方。`,
        `$|z_1 z_2| = |z_1||z_2| = ${prod}$. Trap: $${m1 + m2}$ adds the moduli.`])
   })
 
