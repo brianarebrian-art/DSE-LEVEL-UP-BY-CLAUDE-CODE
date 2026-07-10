@@ -1,0 +1,28 @@
+{
+  "updated": "2026-07-10T20:56:13.095Z",
+  "health": "green",
+  "gates": [
+    {
+      "line": "題目生產線",
+      "name": "term-guard（術語+課綱+書面語）",
+      "pass": true
+    },
+    {
+      "line": "題目生產線",
+      "name": "validate-banks（格式+去重+難度）",
+      "pass": true
+    },
+    {
+      "line": "營運質檢線",
+      "name": "budget-guard（$0 紅線）",
+      "pass": true
+    },
+    {
+      "line": "營運質檢線",
+      "name": "hkeaa-monitor（課綱時效）",
+      "pass": true
+    }
+  ],
+  "manual_review_count": 0,
+  "reports_count": 3
+}

@@ -1,0 +1,24 @@
+{
+  "loop": "chinese_concept_batch",
+  "date": "2026-07-11",
+  "goal": "以 docs/concept_network.json 概念組合生成 10 條（5 MC + 5 長答），質檢入庫",
+  "generated_mc": 5,
+  "approved_mc": 5,
+  "manual_review_count": 0,
+  "combinations_used": [
+    "魚我所欲也（比喻論證）× 師說（對比論證）— 手法配對",
+    "逍遙遊（有所待）× 勸學（善假於物）— 同一事實相反價值判斷（5** 級）",
+    "論仁論孝論君子（克己）× 廉頗藺相如列傳（引車避匿）— 理想人格落地",
+    "山居秋暝（以動襯靜）× 青玉案・元夕（繁華反襯）— 襯托方式辨析",
+    "出師表（直接進言）× 六國論（借古諷今）— 進言方式比較"
+  ],
+  "checks": {
+    "kelly_format": "PASS（tsc via next build；4 選項；正解置首由 q() 保證）",
+    "oscar_language": "PASS（標準書面語；純漢字簡體掃描零檢出）",
+    "luna_copyright": "PASS（引文為公有領域文言原句節錄；分析全原創；每條引文不超過必要範圍）",
+    "amity_academic": "逐條核對文本：三組對比（師說）、海運培風（逍遙遊）、假輿馬（勸學）、先國家之急（廉藺）、竹喧蓮動（山居秋暝）、燈火闌珊（青玉案）、開張聖聽（出師表）、弊在賂秦（六國論）——全部與原文相符；陷阱三型（過度推論/半對半錯/張冠李戴）每條齊備"
+  },
+  "long_answer_status": "唔做（有解釋）：MC 平台無長答判分 UI；marking_scheme 無承載。長答功能立項後，concept_network.json 節點可直接復用。",
+  "iterations": { "max_allowed": 3, "used": 1 },
+  "output": "data/questions/chinese.ts（zh_fx_* 第二批；中文科跨篇比較題累計 10 條）"
+}

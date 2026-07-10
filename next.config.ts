@@ -20,7 +20,8 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   `connect-src 'self' https://*.supabase.co https://accounts.google.com${isDev ? ' ws:' : ''}`,
-  "frame-src 'self' https://accounts.google.com",
+  // youtube-nocookie: Relax Zone 的官方 Lo-fi iframe embed（只在用戶點播時載入）
+  "frame-src 'self' https://accounts.google.com https://www.youtube-nocookie.com",
   "form-action 'self' https://accounts.google.com",
 ].join('; ')
 

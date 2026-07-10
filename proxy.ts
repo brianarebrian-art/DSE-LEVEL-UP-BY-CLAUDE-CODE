@@ -31,8 +31,12 @@ function allow(key: string, windowMs: number, limit: number): boolean {
 
 export function proxy(request: NextRequest) {
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon'
-  const isAuth = request.nextUrl.pathname.startsWith('/api/auth')
-  const ok = isAuth ? allow(`a:${ip}`, AUTH_WINDOW_MS, LIMIT_AUTH) : allow(`g:${ip}`, WINDOW_MS, LIMIT_GENERAL)
+  // 嚴格桶只覆蓋暴力破解面（signin/callback）。/api/auth/session 係 SessionProvider
+  // 每次導航都會 poll 嘅廉價讀取 —— 掟入嚴格桶會 429 斷正常用戶登入狀態
+  //（2026-07-11 preview 實測發現並修正），所以行一般桶。
+  const { pathname } = request.nextUrl
+  const isAuthSensitive = pathname.startsWith('/api/auth/signin') || pathname.startsWith('/api/auth/callback')
+  const ok = isAuthSensitive ? allow(`a:${ip}`, AUTH_WINDOW_MS, LIMIT_AUTH) : allow(`g:${ip}`, WINDOW_MS, LIMIT_GENERAL)
   if (!ok) {
     return NextResponse.json(
       { error: 'Too many requests, please slow down.', code: 'RATE_LIMITED' },

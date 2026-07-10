@@ -43,6 +43,11 @@ export default function Footer() {
                   {t.footer.linkLeaderboard}
                 </Link>
               </li>
+              <li>
+                <Link href="/relax" className="hover:text-slate-300 transition-colors">
+                  {t.footer.linkRelax}
+                </Link>
+              </li>
             </ul>
           </div>
 

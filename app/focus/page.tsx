@@ -281,6 +281,14 @@ function FocusRoom() {
 
         {/* 情緒急救：4-7-8 呼吸練習（小休或攰嘅時候用） */}
         <BreathingExercise />
+
+        {/* 化城避風港入口 */}
+        <a
+          href="/relax"
+          className="block text-center text-sm text-slate-500 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 rounded-xl py-3 transition-all"
+        >
+          🏮 今日真係好攰？入化城避風港唞返夠先 →
+        </a>
       </div>
     </div>
   )

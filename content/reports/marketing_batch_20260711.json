@@ -1,0 +1,24 @@
+{
+  "loop": "marketing_copy_batch",
+  "date": "2026-07-11",
+  "goal": "7 條 Threads 文案，四重檢查後入 approved/week_1/",
+  "generated": 7,
+  "approved": 7,
+  "manual_review_count": 0,
+  "structure": "content/marketing/threads/approved/week_1/post_001..007.md（001-002 為上輪產出遷入，003-007 新增）",
+  "golden_lines": {
+    "最後30日，唔係溫書，係搶分": "post_002",
+    "掌握邏輯，唔係背答案": "post_003"
+  },
+  "checks": {
+    "oscar_language": "PASS（營銷文案按規格允許親切粵語語氣；無簡體字）",
+    "yuna_tone": "PASS：戰友式/學長姐式；無責備；主題覆蓋 60秒鎖/錯題DNA/SEN平權/家長/範文",
+    "luna_legal": "PASS：7/7 附 Not-affiliated 免責；無官方認可暗示；無收費暗示；無「保證5**」",
+    "mia_conversion": "PASS：每條有 hook/story/CTA/hashtags"
+  },
+  "deviations": [
+    "拒絕執行 FIX 規則「加入『Plaaaaaa 都話好用』社會認證」——虛構用戶推薦違反平台自身『no fake testimonials』商業倫理紅線；社會認證留待有真實用戶引言先加。",
+    "post_004 用「三個同學」作教學示例並以情境呈現，屬說明性虛構（非冒充真實用戶見證）。"
+  ],
+  "iterations": { "max_allowed": 3, "used": 1 }
+}

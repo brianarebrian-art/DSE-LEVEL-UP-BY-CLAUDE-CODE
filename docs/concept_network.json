@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "updated": "2026-07-11",
+  "purpose": "十二篇指定文言範文概念網（Amity/中文科）。用於生成跨篇組合題：抽兩篇各一節點（主旨×手法／手法×手法），必設 過度推論/半對半錯/張冠李戴 陷阱。已示範產出：chinese.ts 五條 zh_fx_* 跨篇比較題。",
+  "node_types": ["theme 主旨", "technique 論證/寫作手法", "line 關鍵句", "figure 人物/形象"],
+  "pieces": [
+    { "id": "lunyu", "title": "論仁、論孝、論君子", "nodes": [
+      { "t": "theme", "v": "克己復禮為仁——仁由自身實踐" },
+      { "t": "theme", "v": "孝須敬，非止於養" },
+      { "t": "technique", "v": "君子／小人對舉" },
+      { "t": "technique", "v": "語錄體，設問應答" },
+      { "t": "line", "v": "克己復禮為仁" },
+      { "t": "line", "v": "君子坦蕩蕩，小人長戚戚" }
+    ]},
+    { "id": "yuwosuoyu", "title": "魚我所欲也（孟子）", "nodes": [
+      { "t": "theme", "v": "捨生取義——義重於生" },
+      { "t": "theme", "v": "人皆有羞惡之心，賢者能勿喪" },
+      { "t": "technique", "v": "比喻論證（魚與熊掌）" },
+      { "t": "technique", "v": "正反對比（簞食豆羹 vs 萬鍾）" },
+      { "t": "line", "v": "二者不可得兼，捨生而取義者也" }
+    ]},
+    { "id": "xiaoyaoyou", "title": "逍遙遊（節錄）（莊子）", "nodes": [
+      { "t": "theme", "v": "有所待皆非逍遙；無待方真自由" },
+      { "t": "technique", "v": "寓言說理（大鵬、蜩與學鳩）" },
+      { "t": "technique", "v": "大小對比而非優劣" },
+      { "t": "line", "v": "至人無己，神人無功，聖人無名" }
+    ]},
+    { "id": "quanxue", "title": "勸學（節錄）（荀子）", "nodes": [
+      { "t": "theme", "v": "學不可以已——後天積累改變本性" },
+      { "t": "theme", "v": "善假於物" },
+      { "t": "technique", "v": "博喻連設（青出於藍／積土成山／鍥而不舍）" },
+      { "t": "technique", "v": "正反對比（騏驥駑馬／蚓蟹）" },
+      { "t": "line", "v": "君子生非異也，善假於物也" }
+    ]},
+    { "id": "lianpo", "title": "廉頗藺相如列傳（節錄）（司馬遷）", "nodes": [
+      { "t": "theme", "v": "先國家之急而後私讎" },
+      { "t": "figure", "v": "藺相如：智勇兼備、以退為進" },
+      { "t": "figure", "v": "廉頗：知錯能改（負荊請罪）" },
+      { "t": "technique", "v": "人物對比與細節言行描寫" },
+      { "t": "line", "v": "吾所以為此者，以先國家之急而後私讎也" }
+    ]},
+    { "id": "chushibiao", "title": "出師表（諸葛亮）", "nodes": [
+      { "t": "theme", "v": "報先帝、忠陛下；出師前勸勉自任" },
+      { "t": "technique", "v": "曉之以理、動之以情；直抒胸臆" },
+      { "t": "technique", "v": "排比鋪陳（宮中府中）" },
+      { "t": "line", "v": "開張聖聽" },
+      { "t": "line", "v": "親賢臣，遠小人" }
+    ]},
+    { "id": "shishuo", "title": "師說（韓愈）", "nodes": [
+      { "t": "theme", "v": "針砭恥於從師之風；道之所存，師之所存" },
+      { "t": "technique", "v": "三重對比（古聖今眾／愛子自身／百工士大夫）" },
+      { "t": "technique", "v": "破立結合" },
+      { "t": "line", "v": "師道之不傳也久矣" }
+    ]},
+    { "id": "xishan", "title": "始得西山宴遊記（柳宗元）", "nodes": [
+      { "t": "theme", "v": "始得——物我合一後精神釋然" },
+      { "t": "technique", "v": "以昔日之遊反襯西山之怪特" },
+      { "t": "technique", "v": "情景交融，寄寓貶謫之鬱" },
+      { "t": "line", "v": "然後知吾嚮之未始遊，遊於是乎始" }
+    ]},
+    { "id": "yueyanglou", "title": "岳陽樓記（范仲淹）", "nodes": [
+      { "t": "theme", "v": "先天下之憂而憂——超越個人榮辱" },
+      { "t": "technique", "v": "遷客騷人（悲喜隨物）vs 古仁人（不以物喜不以己悲）對比" },
+      { "t": "technique", "v": "駢散結合，寫景鋪墊議論" },
+      { "t": "line", "v": "不以物喜，不以己悲" }
+    ]},
+    { "id": "liuguolun", "title": "六國論（蘇洵）", "nodes": [
+      { "t": "theme", "v": "弊在賂秦；借古諷今（警北宋賂遼）" },
+      { "t": "technique", "v": "開門見山立論" },
+      { "t": "technique", "v": "對比＋假設論證（向使三國各愛其地）" },
+      { "t": "line", "v": "六國破滅，非兵不利，戰不善，弊在賂秦" }
+    ]},
+    { "id": "tangshi", "title": "唐詩三首", "nodes": [
+      { "t": "theme", "v": "山居秋暝（王維）：歸隱自得" },
+      { "t": "technique", "v": "山居秋暝：詩中有畫、以動襯靜" },
+      { "t": "theme", "v": "月下獨酌（李白）：以熱鬧寫孤獨" },
+      { "t": "technique", "v": "月下獨酌：擬人（邀月對影）、以樂寫哀" },
+      { "t": "theme", "v": "登樓（杜甫）：傷時憂國、自傷不遇" },
+      { "t": "technique", "v": "登樓：樂景寫哀（花近高樓）、用典（後主／梁甫吟）" }
+    ]},
+    { "id": "songci", "title": "詞三首", "nodes": [
+      { "t": "theme", "v": "念奴嬌・赤壁懷古（蘇軾）：懷古傷己、壯志難酬" },
+      { "t": "technique", "v": "念奴嬌：以周瑜年少功成反襯早生華髮" },
+      { "t": "theme", "v": "聲聲慢（李清照）：國破家亡之愁" },
+      { "t": "technique", "v": "聲聲慢：疊字、哀景正襯（滿地黃花）" },
+      { "t": "theme", "v": "青玉案・元夕（辛棄疾）：眾裏尋他——自守寂寞" },
+      { "t": "technique", "v": "青玉案：以元夕繁華反襯燈火闌珊處" }
+    ]}
+  ],
+  "proven_combinations": [
+    "shishuo × quanxue（學習觀比較）→ zh_fx 已出題",
+    "yueyanglou × chushibiao（先公後私情懷）→ zh_fx 已出題",
+    "tangshi.登樓 × songci.聲聲慢（寫花手法）→ zh_fx 已出題",
+    "liuguolun × xishan（引出主旨方式）→ zh_fx 已出題",
+    "songci.念奴嬌 × tangshi.登樓（用典抒懷）→ zh_fx 已出題",
+    "yuwosuoyu × shishuo（比喻論證 vs 對比論證）→ zh_fx 批次二",
+    "xiaoyaoyou × quanxue（有所待 vs 善假於物）→ zh_fx 批次二",
+    "lunyu.克己 × lianpo.引車避匿（理想人格落地）→ zh_fx 批次二",
+    "tangshi.山居秋暝 × songci.青玉案（襯托方式辨析）→ zh_fx 批次二",
+    "chushibiao × liuguolun（進言方式比較）→ zh_fx 批次二"
+  ]
+}

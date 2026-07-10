@@ -1,0 +1,20 @@
+{
+  "loop": "econ_mc_batch",
+  "date": "2026-07-11",
+  "goal": "10 條 DSE Econ MC（供需與價格彈性），3:5:2，四重質檢後入庫",
+  "adaptation_note": "按 repo 紅線：新題直接寫入已接線 TS bank（data/questions/economics.ts 之 ds/elas 陣列，附 Agentic Loop batch 標記），非散裝 JSON——散裝 JSON 係冇接線嘅死內容。",
+  "generated": 10,
+  "approved": 10,
+  "manual_review_count": 0,
+  "difficulty_mix": { "easy_L4": 3, "medium_L5": 5, "hard_L5ss": 2 },
+  "topics": { "demand_supply": 6, "elasticity": 4 },
+  "checks": {
+    "kelly_format": "PASS（validate/term-guard 兩 gate + tsc via next build）",
+    "oscar_terms_register": "1 違規被捕獲後修正：初稿含「搞反」（俗語），改為「弄反」——即 v3 嘅 FIX 循環，1 次迭代通過",
+    "luna_copyright": "PASS：全部原創情境（智能手機/颱風菜園/現金津貼/供需表），無 HKEAA 試題對應，無慣用人名",
+    "emma_tone": "PASS：解析全部指向錯因根源（陷阱剖析式），無責備語氣",
+    "carson_academic": "逐條人手驗算：中點法 |PED|=100/350 ÷ 5/22.5 ≈ 1.29 ✓；供需表均衡 $12、$14 下限過剩 60−40=20 件 ✓；彈性×稅負四個方向逐一核對 ✓；全部限於課綱內（弧彈性；不含收入/交叉/點彈性）"
+  },
+  "iterations": { "max_allowed": 3, "used": 2 },
+  "output": "data/questions/economics.ts（econ_lb_* ids，經濟科題數 +10）"
+}
