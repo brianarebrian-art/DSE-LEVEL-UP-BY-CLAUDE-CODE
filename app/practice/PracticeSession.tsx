@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import MathText from '@/components/MathText'
+import EmotionTags from '@/components/EmotionTags'
 import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
@@ -603,6 +604,8 @@ export default function PracticeSession({
                       <span className="text-amber-400 text-xs font-bold mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
                       <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
                     </div>
+                    {/* F01 錯題情緒標籤（key 按題重置） */}
+                    <EmotionTags key={currentQ.id} />
                   </div>
                 )}
 

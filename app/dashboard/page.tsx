@@ -302,6 +302,33 @@ export default function DashboardPage() {
           })}
         </div>
 
+        {/* 社群卡：IG Group 影子溫書室（學生自發管理，唔係官方 — /relax/group 有清楚聲明） */}
+        <Link
+          href="/relax/group"
+          className="group block bg-slate-900 hover:bg-slate-800/70 border border-pink-500/20 rounded-2xl p-5 mb-10 transition-all"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0"
+                style={{ background: 'linear-gradient(135deg, #833AB4, #FD1D1D, #F77737)' }}
+                aria-hidden
+              >
+                📷
+              </div>
+              <div>
+                <div className="text-sm font-bold">{en ? 'Shadow Study Room' : '影子溫書室'}</div>
+                <div className="text-xs text-slate-500 mt-0.5">
+                  {en ? 'IG Group · run by fellow students' : 'IG Group · 同路人管理'}
+                </div>
+              </div>
+            </div>
+            <span className="text-xs text-pink-400 shrink-0 group-hover:translate-x-0.5 transition-transform">
+              {en ? 'Join the chat →' : '加入傾偈 →'}
+            </span>
+          </div>
+        </Link>
+
         {/* Reset */}
         <div className="text-center">
           {confirmReset ? (

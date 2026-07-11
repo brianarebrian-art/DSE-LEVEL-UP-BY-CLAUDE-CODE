@@ -26,6 +26,7 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const DIR = fileURLToPath(new URL('../../data/questions/', import.meta.url))
+const ROOT = fileURLToPath(new URL('../../', import.meta.url))
 
 // (1) wrong terms — banned everywhere (HKEAA official terms on the right)
 const BANNED_GLOBAL = [
@@ -65,9 +66,27 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
   })
 }
 
+// ── (4) 無紅字掃描（TOP20 #14，Kelly/Emma 情緒安全）：app/ + components/ 嘅
+// 用戶可見文案禁止出現羞辱/罪疚字眼。名單收窄至高信度詞，避免誤傷代碼註解。
+const RED_WORDS = /(?<![A-Za-z])FAIL(?![A-Za-z])|錯晒|廢柴|失敗者|你唔夠努力|你好廢|冇希望/
+function scanUiDir(dir) {
+  for (const entry of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
+    const rel = `${dir}/${entry.name}`
+    if (entry.isDirectory()) { scanUiDir(rel); continue }
+    if (!entry.name.endsWith('.tsx')) continue
+    readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((line, i) => {
+      const t = line.trim()
+      if (t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) return // 技術註解豁免（spec 白名單）
+      if (RED_WORDS.test(line)) report(rel, i + 1, '情緒安全 — 用戶文案禁止羞辱/罪疚字眼', line)
+    })
+  }
+}
+scanUiDir('app')
+scanUiDir('components')
+
 console.log(`${'─'.repeat(70)}`)
 if (violations === 0) {
-  console.log(`  ✅ TERM GUARD PASSED — terminology and register are HKEAA-clean.`)
+  console.log(`  ✅ TERM GUARD PASSED — terminology, register and emotional-safety scans are clean.`)
 } else {
   console.log(`  ❌ ${violations} violation(s) — fix before shipping.`)
 }

@@ -828,6 +828,53 @@ elas.push(
     ['需求富彈性時，消費者對加價反應大：均衡數量大幅下跌，課稅基礎縮小，稅收較少；同時消費者較易迴避，承擔比例較小、價格升幅亦較小。想以徵稅增加收入，應選需求乏彈性的物品（如燃油、煙草）。', 'With elastic demand buyers react strongly: quantity falls a lot, shrinking the tax base and revenue; consumers bear less and the price rises less. Revenue-raising taxes belong on inelastic goods.']),
 )
 
+// ── F02 共用品陷阱題（TOP20 #02，Carson）：專攻三大誤區 ——
+// 「免費＝共用品」「政府提供＝共用品」「只記單一條件」。全部以雙條件（非排他＋非競爭）判別。
+failure.push(
+  q(id('pg'), T.failure, FW.efficiency, 'easy', 2024, 2,
+    ['判斷一件物品是否「共用品」，須同時滿足哪兩個條件？', 'Which TWO conditions must a good satisfy simultaneously to be a public good?'],
+    [opt('非排他性與非競爭性', 'non-excludability and non-rivalry'),
+      opt('免費提供與政府生產', 'provided free and produced by the government'),
+      opt('需求龐大與價格低廉', 'large demand and a low price'),
+      opt('非排他性與需求龐大', 'non-excludability and large demand')],
+    ['共用品的定義只繫於兩個特性：無法排除他人使用（非排他），且一人使用不減少他人可用量（非競爭）——兩者缺一不可。「免費」「政府提供」「需求大」都不是定義條件，正是最常見的三個混淆位。', 'A public good is defined ONLY by non-excludability and non-rivalry — both required. “Free”, “government-provided” and “high demand” are none of them.']),
+  q(id('pg'), T.failure, FW.efficiency, 'medium', 2023, 3,
+    ['政府免費提供的公立醫院病床，屬於哪一類物品？', 'A public hospital bed provided free by the government is best classified as?'],
+    [opt('私用品——具競爭性亦可排他，免費提供不改變其性質', 'a private good — rival and excludable; free provision does not change its nature'),
+      opt('共用品，因為它是免費的', 'a public good, because it is free'),
+      opt('共用品，因為由政府提供', 'a public good, because the government provides it'),
+      opt('共用品，因為人人都有需要', 'a public good, because everyone needs it')],
+    ['一張病床同一時間只能一人使用（競爭性），醫院亦可拒絕收症（排他性）——雙條件均不符，故屬私用品。物品的分類取決於其本身特性，與「誰提供」「收不收費」無關；「免費＝共用品」正是最典型的陷阱。', 'A bed is rival (one patient at a time) and excludable (admission can be refused) — a private good. Classification depends on the good’s properties, never on who provides it or whether it is free.']),
+  q(id('pg'), T.failure, FW.efficiency, 'medium', 2025, 3,
+    ['維多利亞港上空的煙花匯演，最接近哪一類物品？', 'A fireworks display over Victoria Harbour is closest to which type of good?'],
+    [opt('共用品——難以排除觀賞者，一人觀看亦不減少他人所見', 'a public good — viewers can hardly be excluded and one person’s viewing does not reduce another’s'),
+      opt('私用品，因為匯演由贊助商付費', 'a private good, because a sponsor paid for it'),
+      opt('私用品，因為企業可以停辦匯演', 'a private good, because the organiser can cancel the show'),
+      opt('共用品，因為觀賞是免費的', 'a public good, because watching is free')],
+    ['煙花在空中綻放，要向個別觀賞者收費並排除不付費者，成本近乎不可行（非排他）；多一人觀看無損他人觀賞（非競爭）——雙條件俱備。判別理由必須是這兩個特性：「有人付費」或「免費觀看」都不是分類準則。', 'Excluding non-payers from a sky-borne display is practically impossible and viewing is non-rival — both conditions hold. Who paid, or that it is free to watch, is irrelevant to the classification.']),
+  q(id('pg'), T.failure, FW.efficiency, 'medium', 2022, 3,
+    ['加密收費電視廣播與免費公共電視廣播，下列分類何者正確？', 'Encrypted pay-TV broadcasts vs free-to-air public broadcasts — which classification is correct?'],
+    [opt('兩者皆非競爭，但加密廣播具排他性，故只有免費公共廣播接近共用品', 'both are non-rival, but encryption makes pay-TV excludable — only the free-to-air broadcast is close to a public good'),
+      opt('兩者都是共用品，因為都是電視廣播', 'both are public goods, because both are broadcasts'),
+      opt('加密廣播是共用品，因為訊號非競爭', 'pay-TV is a public good, because its signal is non-rival'),
+      opt('免費公共廣播是私用品，因為節目有製作成本', 'free-to-air TV is a private good, because programmes cost money to make')],
+    ['兩種訊號都非競爭（多一人收看不減他人），但加密技術令不付費者無法收看——具排他性，不符共用品的雙條件。只符合「非競爭」一項並不足夠；「有製作成本」與分類無關（共用品同樣有生產成本）。', 'Both signals are non-rival, but encryption excludes non-payers — pay-TV fails non-excludability. Meeting one condition is not enough; production cost is irrelevant to the classification.']),
+  q(id('pg'), T.failure, FW.efficiency, 'hard', 2024, 4,
+    ['一條不收費的公路，行車暢通時與繁忙擠塞時，其物品性質有何分別？', 'How does the nature of a toll-free road differ between free-flowing and congested hours?'],
+    [opt('暢通時近乎非競爭，接近共用品；擠塞時多一車即減他人路面空間，具競爭性，不再符合共用品條件', 'when clear it is nearly non-rival, close to a public good; when congested each extra car reduces road space for others — rival, so it no longer qualifies'),
+      opt('任何時候都是共用品，因為不收費', 'always a public good, because no toll is charged'),
+      opt('任何時候都是私用品，因為由政府出資興建', 'always a private good, because the government built it'),
+      opt('擠塞時變成共用品，因為使用的人更多', 'it becomes a public good when congested, because more people use it')],
+    ['物品性質取決於當下是否符合雙條件，可以隨情況改變：暢通時多一輛車幾乎不影響他人（近乎非競爭）；擠塞時每輛車都佔用他人路面（競爭性出現），即使仍難排他，已不符「非競爭」一項。「不收費」與「政府興建」都不是判別準則。', 'Classification follows the two conditions at the time: an empty road is nearly non-rival; congestion makes each car rival even though exclusion stays impractical. Tolls and government funding are irrelevant.']),
+  q(id('pg'), T.failure, FW.efficiency, 'hard', 2023, 4,
+    ['共用品往往須由政府提供，主要原因是？', 'Public goods usually have to be provided by the government mainly because?'],
+    [opt('非排他性引致「免費搭便車」，私人企業難以向使用者收費獲利', 'non-excludability invites free-riding, so private firms cannot charge users profitably'),
+      opt('政府的生產成本必然較私人企業低', 'the government always produces at lower cost than private firms'),
+      opt('共用品的需求太大，私人企業無力生產', 'demand for public goods is too large for private firms to satisfy'),
+      opt('法例禁止私人企業提供共用品', 'the law forbids private provision of public goods')],
+    ['因為無法排除不付費者，人人都傾向等他人付費而自己免費享用（搭便車），私人企業收不到錢、無利可圖，市場供應不足——這是市場失靈，故由政府以稅收提供。與政府成本高低、需求大小或法例禁止無關。', 'Since non-payers cannot be excluded, everyone waits to free-ride; firms cannot collect revenue, so the market under-provides — a market failure remedied by tax-funded provision. Cost advantage, demand size and legal bans are not the reason.']),
+)
+
 export const economicsQuestions: Question[] = [
   ...basic, ...ppf, ...ds, ...elas, ...firm, ...structure, ...failure, ...macro, ...trade,
   ...economicsHellQuestions, // multi-step calculation/analysis hell set (5★★)

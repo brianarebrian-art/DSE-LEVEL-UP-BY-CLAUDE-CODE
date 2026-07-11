@@ -29,7 +29,7 @@ Better Auth 有根據，毋須遷移，兩者並存）。
 | 12 | Sarah (社工) | ✅ | `BreathingExercise.tsx`（4-7-8，/focus 頁，preview 實證 phase machine 行到「呼氣 8 秒」）＋`EncouragementWall.tsx`（/result 頁，8 條學長姐留言每日輪 3）＋醫療免責＋撒瑪利亞會熱線。 |
 | 13 | Ethan (數據) | ⚠️ 大部分已存在 | `lib/grading.ts` predictGrade＋cutoffs（等級估算）同 `ErrorDNA.tsx`（錯因編碼 A/B/C ≡ 佢嘅 CMT/TMR/MEC）**都已上線**。❌ jupas_recommender：需要各院校**真實收生數據**，AI 生成收生中位數＝呃考生前途 — 等創辦人提供官方數據表即可動工。 |
 | 14 | Kate (UI/UX) | ⚠️ 部分＋否決 | RadarChart **已存在**；卡片設計語彙已有。❌ 暗黑賽博 token（#0F0F1A＋霓虹）：同已確立嘅 gentle brand 牴觸（地獄紅黑早前已被否決）— 品牌方向要創辦人拍板先可以推翻。 |
-| 15 | Jack (客戶體驗) | ✅ | `content/community/`：discord_rules（含危機處理指引）、faq（20 條）、ticket_template（48 小時承諾＋報錯核實流程）。FAQSection UI 唔重複建：/transparency＋/methodology 已承擔此角色。 |
+| 15 | Jack (客戶體驗) | ✅ | `content/community/`：ig_group_rules（含危機處理指引；社群平台後定為 Instagram Group）、faq（20 條）、ticket_template（48 小時承諾＋報錯核實流程）。FAQSection UI 唔重複建：/transparency＋/methodology 已承擔此角色。 |
 | 16 | Kelly (QA) | ✅ | 佢要嘅 qa_validator＋term_guard = `validate-banks.mjs`（欄位/4選項/難度/去重）＋`term-guard.mjs`（禁語+課綱+書面語），兩個 gate 均 CI-ready、運行全綠。Python→Node。 |
 | 17 | Leo (前端) | ⚠️ 部分 | LockScreen（60秒鎖）**已存在**；✅ `ReadingRuler.tsx` 新增並 preview 實證（toggle/overlay/S-M-L）。❌ TimerHidden：練習模式無倒數計時器可隱藏，且同 60 秒鎖矛盾（同 Emma）。 |
 | 18 | Alan (後端) | ❌ 不適用 | Drizzle schema/seed/索引**全部建基於唔存在嘅技術棧**。真實後端：Supabase 單表 per-user JSONB，PK 已索引，query 封裝在 `lib/sync.ts`＋`/api/progress`。冇嘢需要遷移。 |

@@ -15,6 +15,6 @@
 
 ## 下週候選
 
-- Discord 開 server（規則/FAQ/工單已備妥 content/community/）
+- ~~社群開通~~ ✅ IG Group「影子溫書室」已上線（ig.me 真連結，/relax/group；規則/FAQ/工單已備妥 content/community/）
 - Threads 帳號開通 + 發第一炮（文案已備妥 content/marketing/）
 - 學校提案發出（content/b2b/school_proposal.md）

@@ -29,7 +29,7 @@
 1. 將本季內容修正推送至生產環境
 2. 人文科目題庫擴充（規模視乎生成預算決策）
 3. 升學導航模組（JUPAS／ASSO／VTC 資訊，數據以官方公布為準）
-4. 社群啟動（Discord + Threads）
+4. 社群啟動（Instagram Group + Threads）
 
 ---
 *© DSE Level Up 2026. Not affiliated with HKEAA. 本文件不構成任何投資要約或成績承諾。*
