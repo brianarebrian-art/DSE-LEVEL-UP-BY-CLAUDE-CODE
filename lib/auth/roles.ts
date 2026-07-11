@@ -1,6 +1,7 @@
 import 'server-only'
 import { getServiceSupabase } from '@/utils/supabase/server'
-import { getSyncUserId } from '@/lib/auth/server'
+import { getSyncUserId, getSyncUserEmail } from '@/lib/auth/server'
+import { isLHYMSSTeacher, isTeacherOverride } from '@/lib/lhymss-verification'
 
 // Teacher Radar — role source of truth (Phase 0 foundation).
 //
@@ -40,13 +41,25 @@ export async function getCurrentProfile(): Promise<CurrentProfile | null> {
       .eq('user_id', userId)
       .maybeSingle()
     if (error) throw error
+    // An EXISTING row is authoritative — this is what lets an admin promote/demote via
+    // set-role and have it stick, overriding the domain heuristic below.
     if (data?.role) return { userId, role: normaliseRole(data.role) }
 
-    // First authenticated visit — provision a least-privilege profile. Ignore a
-    // duplicate race (23505): another request created it first; treat as 'student'.
-    const { error: insErr } = await supabase.from('profiles').insert({ user_id: userId })
-    if (insErr && insErr.code !== '23505') throw insErr
-    return { userId, role: 'student' }
+    // First authenticated visit — provision the initial role from the verified school
+    // email. @lhymss.net with no digit → teacher (school convention); everyone else →
+    // student. See lib/lhymss-verification.ts for the escalation caveat + backstops.
+    const email = await getSyncUserEmail()
+    const initial: Role = isLHYMSSTeacher(email ?? '') || isTeacherOverride(email) ? 'teacher' : 'student'
+    const { error: insErr } = await supabase.from('profiles').insert({ user_id: userId, role: initial })
+    if (insErr) {
+      // Lost a create race — re-read the authoritative row rather than guessing.
+      if (insErr.code === '23505') {
+        const { data: again } = await supabase.from('profiles').select('role').eq('user_id', userId).maybeSingle()
+        return { userId, role: normaliseRole(again?.role ?? 'student') }
+      }
+      throw insErr
+    }
+    return { userId, role: initial }
   } catch (e) {
     // Pre-migration / no-Supabase / transient error → safe least-privilege fallback.
     console.error('[roles.getCurrentProfile] falling back to student:', e)

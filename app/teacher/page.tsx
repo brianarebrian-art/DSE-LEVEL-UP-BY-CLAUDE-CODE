@@ -1,7 +1,9 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import Link from 'next/link'
 import { useAuthSession, authSignInGoogle } from '@/lib/auth/session'
+import { isLHYMSSStudent } from '@/lib/lhymss-verification'
 
 // Teacher Radar — Phase 1b teacher surface (slate theme, NOT the vetoed neon).
 // Lists the signed-in teacher's own classes and creates new ones. All data comes from
@@ -18,10 +20,10 @@ interface ClassRow {
   created_at?: string
 }
 
-type View = 'loading' | 'signin' | 'forbidden' | 'ready' | 'error'
+type View = 'loading' | 'signin' | 'forbidden' | 'student' | 'ready' | 'error'
 
 export default function TeacherPage() {
-  const { status } = useAuthSession()
+  const { status, user } = useAuthSession()
   const [view, setView] = useState<View>('loading')
   const [classes, setClasses] = useState<ClassRow[]>([])
   const [name, setName] = useState('')
@@ -31,7 +33,7 @@ export default function TeacherPage() {
   const load = useCallback(async () => {
     try {
       const res = await fetch('/api/teacher/classes')
-      if (res.status === 403) return setView('forbidden')
+      if (res.status === 403) return setView(isLHYMSSStudent(user?.email ?? '') ? 'student' : 'forbidden')
       if (!res.ok) return setView('error')
       const data = await res.json()
       setClasses(data.classes ?? [])
@@ -39,7 +41,7 @@ export default function TeacherPage() {
     } catch {
       setView('error')
     }
-  }, [])
+  }, [user?.email])
 
   useEffect(() => {
     if (status === 'loading') return
@@ -95,6 +97,22 @@ export default function TeacherPage() {
               老師權限只可以由管理員開通（唔可以自助升級）。如果你係老師，請聯絡管理員，
               並提供你登入用嘅 Google 帳戶。
             </p>
+          </div>
+        )}
+
+        {view === 'student' && (
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
+            <div className="text-4xl mb-3" aria-hidden>📚</div>
+            <p className="text-slate-100 font-bold mb-2">呢度係老師專區</p>
+            <p className="text-slate-400 text-sm leading-relaxed mb-5">
+              你嘅帳戶係學生身分。老師專區係俾老師睇班級數據嘅，你可以去練習區操卷、睇返自己嘅進度。
+            </p>
+            <Link
+              href="/subjects"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all"
+            >
+              去練習區
+            </Link>
           </div>
         )}
 

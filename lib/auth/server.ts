@@ -38,3 +38,15 @@ export async function getSyncUserId(): Promise<string | null> {
   const session = await nextAuth()
   return session?.user?.id ?? null
 }
+
+// The signed-in user's verified email (both backends expose it on session.user). Used
+// for the LHYMSS domain role signal (lib/lhymss-verification.ts). Null when signed out.
+export async function getSyncUserEmail(): Promise<string | null> {
+  if (betterAuthEnabled && betterAuthServer) {
+    const hdrs = await headers()
+    const session = await betterAuthServer.api.getSession({ headers: hdrs })
+    return session?.user?.email ?? null
+  }
+  const session = await nextAuth()
+  return session?.user?.email ?? null
+}

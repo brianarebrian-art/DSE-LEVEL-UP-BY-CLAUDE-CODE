@@ -6,7 +6,9 @@ import { useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
 import LanguageToggle from '@/components/LanguageToggle'
-import { useT } from '@/lib/i18n'
+import { useT, useLocale } from '@/lib/i18n'
+import { useAuthSession } from '@/lib/auth/session'
+import { isLHYMSSTeacher } from '@/lib/lhymss-verification'
 
 const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'leaderboard' | 'about' }[] = [
   { href: '/subjects', key: 'subjects' },
@@ -20,6 +22,12 @@ export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const t = useT()
+  const { locale } = useLocale()
+  const { user } = useAuthSession()
+  // 老師專區 shows only for LHYMSS teacher-signal accounts. This is a HINT — /teacher is
+  // still gated server-side (requireRole → 403), so a wrongly-shown button leaks nothing.
+  const showTeacher = !!user?.email && isLHYMSSTeacher(user.email)
+  const teacherLabel = locale === 'en' ? 'Teachers' : '老師專區'
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80 bg-[#080C14]/90 backdrop-blur-md">
@@ -36,6 +44,17 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
+          {/* 老師專區 — left of 科目; year-friendly: larger, high-contrast yellow, text only */}
+          {showTeacher && (
+            <Link
+              href="/teacher"
+              className={`text-base font-bold underline underline-offset-4 transition-colors ${
+                pathname === '/teacher' ? 'text-amber-300' : 'text-amber-400 hover:text-amber-300'
+              }`}
+            >
+              {teacherLabel}
+            </Link>
+          )}
           {navLinks.map((l) => (
             <Link
               key={l.href}
@@ -73,6 +92,15 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-slate-800 bg-[#080C14] px-4 pb-4 pt-2 flex flex-col gap-3">
+          {showTeacher && (
+            <Link
+              href="/teacher"
+              onClick={() => setOpen(false)}
+              className="py-2 text-base font-bold text-amber-400 underline underline-offset-4"
+            >
+              {teacherLabel}
+            </Link>
+          )}
           {navLinks.map((l) => (
             <Link
               key={l.href}
