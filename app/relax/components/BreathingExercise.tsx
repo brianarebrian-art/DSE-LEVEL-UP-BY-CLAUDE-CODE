@@ -94,7 +94,7 @@ export default function BreathingExercise() {
         </div>
       </div>
 
-      <p className="text-[13px] text-white/60 mb-1">4-7-8 呼吸法 · 跟住個圈{reduced ? '（已按系統設定停用動畫）' : ''}</p>
+      <p className="text-[13px] text-white/60 mb-1">🌬️ 4-7-8 回藥術 · 跟住個圈{reduced ? '（已按系統設定停用動畫）' : ''}</p>
       <p className="text-xs text-white/50 mb-8 text-center max-w-xs leading-relaxed">
         如有呼吸系統疾病（如哮喘），請改為自然呼吸，唔好強迫深呼吸。
       </p>

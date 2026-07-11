@@ -41,10 +41,14 @@ export function determineLHYMSSRole(email: string | null | undefined): LHYMSSRol
   return isLHYMSSTeacher(email) ? 'teacher' : 'student'
 }
 
-// Founder override for edge cases (e.g. a teacher whose email does carry a digit). Kept
-// empty by design — the primary, authoritative override is an admin using set-role. Add
-// full email addresses here only with the school's confirmation.
-const TEACHER_WHITELIST = new Set<string>([])
+// Founder / explicitly-authorised teacher accounts. These are NOT @lhymss.net, so the
+// domain heuristic won't cover them — the whitelist is the intended path for founder and
+// other confirmed teacher accounts. The authoritative override remains admin set-role.
+// (Added on the founders' own instruction, 2026-07-12.)
+const TEACHER_WHITELIST = new Set<string>([
+  'brianarebrian@gmail.com',
+  'yunawong0128@gmail.com',
+])
 
 export function isTeacherOverride(email: string | null | undefined): boolean {
   return email ? TEACHER_WHITELIST.has(normalise(email)) : false

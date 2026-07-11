@@ -74,7 +74,7 @@ export default function TeacherPage() {
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-2xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-extrabold">{en ? 'Teacher Area · Teacher Radar' : '老師專區 · Teacher Radar'}</h1>
+          <h1 className="text-2xl sm:text-3xl font-extrabold">{en ? 'Teacher Analytics · Teacher Radar' : '老師大數據平台 · Teacher Radar'}</h1>
           <p className="text-slate-500 text-sm mt-1">
             {en ? 'Create classes and share join codes with your students.' : '建立班別，把加入代碼分享給學生。'}
           </p>

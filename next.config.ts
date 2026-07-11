@@ -20,7 +20,8 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   `connect-src 'self' https://*.supabase.co https://accounts.google.com${isDev ? ' ws:' : ''}`,
-  // youtube-nocookie: Relax Zone 的官方 Lo-fi iframe embed（只在用戶點播時載入）
+  // youtube-nocookie: Relax Zone 官方電台 iframe（只在用戶點播時載入，私隱優先）。
+  // 用「常規上載影片」ID（非直播）—— 直播 ID 會輪替、結束後變成無法嵌入嘅錄影存檔。
   "frame-src 'self' https://accounts.google.com https://www.youtube-nocookie.com",
   "form-action 'self' https://accounts.google.com",
 ].join('; ')
