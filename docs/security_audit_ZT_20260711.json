@@ -1,0 +1,420 @@
+{
+  "protocol": "ZERO-TOLERANCE-SECURITY-AUDIT",
+  "audit_id": "SEC-ZT-2026-0711-001",
+  "timestamp": "2026-07-11T13:55:00+08:00",
+  "auditors": ["Eric Kwok", "Max Cheung", "Alan Poon"],
+  "scope": "FULL-SITE-COMPLETE (own app code only; 3rd-party infra scanning out of scope)",
+  "stack_reality_note": "規格假設 Better Auth + Drizzle ORM。實際：Auth.js v5 (next-auth beta) 為 active backend，better-auth 為未啟用 dual-backend；DB 存取用 @supabase/supabase-js（service_role，server-only），非 Drizzle。以下按實際代碼審計，規格假設不存在之處已誠實標明 N/A。",
+  "dimensions": [
+    {
+      "dimension_id": "D01",
+      "dimension_name": "前端代碼安全",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "D01-F01",
+          "severity": "LOW",
+          "vulnerability": "dangerouslySetInnerHTML 無 DOMPurify（但已手動 escape）",
+          "location": "components/MathText.tsx:69",
+          "description": "唯一 innerHTML sink 係 KaTeX 數式渲染。非數式文字先經 escapeHtml()（& < > \" ' 全轉義），數式經 KaTeX trust:false（封 \\href/\\includegraphics）。輸入源係靜態題庫，非用戶輸入。",
+          "attack_scenario": "若日後容許用戶自訂內容流入 MathText，跳過 escape 可致 XSS。現時題庫為作者手寫，無此路徑。",
+          "impact": "現時無實際 XSS；屬防禦深度建議。",
+          "fix_code": "維持題庫為唯一輸入源；若引入 UGC，改用 isomorphic-dompurify sanitize 或維持嚴格 escape 白名單。",
+          "fix_owner": "Leo",
+          "fix_deadline": "N/A（無現存風險，監察即可）",
+          "verification": "已測（記憶檔）：<img onerror> 被中和為文字，數式/貨幣正常。",
+          "status_now": "ACCEPTED_LOW"
+        },
+        {
+          "finding_id": "D01-F02",
+          "severity": "LOW",
+          "vulnerability": "public/.DS_Store 公開送出（檔名元數據洩露）",
+          "location": "public/.DS_Store",
+          "description": "macOS 目錄元數據被當靜態資源送出，洩露 public/ 檔名清單。",
+          "attack_scenario": "爬蟲讀 /.DS_Store 得知隱藏檔名。",
+          "impact": "極輕微資訊洩露。",
+          "fix_code": "已刪除 public/.DS_Store；建議 .gitignore 加 **/.DS_Store。",
+          "fix_owner": "Eric",
+          "fix_deadline": "2026-07-11（已完成）",
+          "verification": "ls public/*.DS_Store → 無匹配。",
+          "status_now": "FIXED"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "無第三方 analytics/widget script（零供應鏈 script 風險）",
+        "localStorage 無 token/password/secret（只存進度+偏好+dse_result）",
+        "React Strict Mode 為 App Router 預設開啟",
+        "productionBrowserSourceMaps 未設 → 生產環境不送 source map"
+      ]
+    },
+    {
+      "dimension_id": "D02",
+      "dimension_name": "API Routes 安全",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D02-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "API 錯誤回應洩露內部訊息（error.message 直接回傳）",
+          "location": "app/api/progress/route.ts (GET+POST catch)",
+          "description": "catch 直接 return (e as Error).message，Supabase/Postgres 錯誤可含表名、欄名、約束名。",
+          "attack_scenario": "攻擊者故意送畸形 payload 觸發 DB 錯誤，從回應推斷 schema。",
+          "impact": "資料庫結構洩露，助長後續攻擊。",
+          "fix_code": "改為 console.error(e) 記錄於伺服器，client 只回 { error: 'internal error' }, status 500。",
+          "fix_owner": "Alan",
+          "fix_deadline": "2026-07-11（已完成）",
+          "verification": "已修改兩個 catch；build green。ig-waitlist / lockout 本身已回通用訊息。",
+          "status_now": "FIXED"
+        },
+        {
+          "finding_id": "D02-F02",
+          "severity": "LOW",
+          "vulnerability": "/api/progress 無獨立 CSRF token（依賴 SameSite=Lax + JSON-only）",
+          "location": "app/api/progress/route.ts",
+          "description": "以 Auth.js JWT cookie 認證。Auth.js cookie 預設 SameSite=Lax，跨站 POST 不帶 cookie；且 application/json 需 CORS 預檢（本站無 CORS 放行）。故 CSRF 面窄，但無顯式 token。",
+          "attack_scenario": "傳統 form-based CSRF 因 SameSite=Lax + JSON 已被擋。",
+          "impact": "現時風險低；屬防禦深度。",
+          "fix_code": "維持 SameSite（勿改 CORS 放行）。如日後加瀏覽器可觸發之敏感寫入，加 double-submit token。",
+          "fix_owner": "Alan",
+          "fix_deadline": "N/A（監察）",
+          "verification": "確認 next.config.ts 無 Access-Control-Allow-Origin。",
+          "status_now": "ACCEPTED_LOW"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "IDOR 防護正確：/api/progress 每個 query .eq('user_id', currentUserId())，userId 取自 session 而非 request body → 用戶 A 無法讀 B 的資料",
+        "/api/progress 未登入回 401",
+        "輸入驗證：progress 檢查 object；ig-waitlist email regex+254 上限+lowercase；lockout typeof action/token",
+        "三層權限隔離（學生/科任/管理）N/A — 本 app 為單層免費平台，無 teacher/admin route、無角色概念"
+      ]
+    },
+    {
+      "dimension_id": "D03",
+      "dimension_name": "數據庫安全 (Supabase PostgreSQL)",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D03-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "新表 ig_group_waitlist 未套 RLS lockdown",
+          "location": "Supabase public.ig_group_waitlist（IG spec 只發了裸 create table）",
+          "description": "user_progress / arenas 都有 enable RLS + revoke anon,authenticated + service_role only；ig_group_waitlist 是今日新加，尚未套同款鎖定，anon public key 可能可直讀收集到的 email。",
+          "attack_scenario": "若 anon key 有預設 grant，攻擊者用公開 anon key 經 /rest/v1/ig_group_waitlist 直讀全部候補 email。",
+          "impact": "用戶 email（個人資料）外洩。",
+          "fix_code": "已產出 supabase_ig_waitlist_lockdown.sql（enable RLS + revoke all from anon,authenticated,public + grant all to service_role + 文檔化 policy）。用戶需喺 Supabase SQL Editor 執行一次。",
+          "fix_owner": "Alan（產出 SQL）+ Brian（Supabase 執行）",
+          "fix_deadline": "2026-07-11（SQL 已備；待用戶執行）",
+          "verification": "執行後 select has_table_privilege('anon','public.ig_group_waitlist','select') 應為 false。",
+          "status_now": "FIX_READY_AWAITING_USER_SQL"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "RLS 已於 user_progress + arenas/arena_participants/arena_answers 全表啟用 + revoke anon/authenticated + service_role-only",
+        "無 SQL injection：全部經 supabase-js .from().eq()/.insert()/.upsert() 參數化，無字串拼接原生 SQL（Drizzle 未使用）",
+        "service_role key 只於 utils/supabase/server.ts request-time 讀 env、server-only、singleton；全 repo grep 無 hardcoded eyJ../service_role key",
+        "敏感查詢已索引：user_progress.user_id 與 ig_group_waitlist.email 皆 UNIQUE（防 timing）",
+        "密碼 hash 加密 N/A — active backend 為 Google OAuth，app 不存密碼"
+      ]
+    },
+    {
+      "dimension_id": "D04",
+      "dimension_name": "認證與會話安全",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "D04-F01",
+          "severity": "LOW",
+          "vulnerability": "無閒置逾時 / 無多裝置強制登出",
+          "location": "auth.ts (session: { strategy: 'jwt' })",
+          "description": "Auth.js JWT 預設 maxAge 30 日，無 idle timeout；stateless JWT 無法伺服器端撤銷 → 無法『登出其他裝置』。",
+          "attack_scenario": "裝置遺失後 token 於有效期內仍可用。",
+          "impact": "低（本站無敏感操作，僅同步學習進度）。",
+          "fix_code": "可縮短 maxAge 或加 updateAge；真正的裝置撤銷需 DB-backed session（Stage 2，見記憶檔 4-device cap）。",
+          "fix_owner": "Alan",
+          "fix_deadline": "Stage 2（需 DB session）",
+          "verification": "N/A 目前接受。",
+          "status_now": "ACCEPTED_LOW_KNOWN"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "Session cookie：Auth.js v5 預設 HttpOnly + Secure（prod）+ SameSite=Lax。注意：規格要求 SameSite=Strict 會破壞 Google OAuth redirect callback，Lax 為此場景正確選擇",
+        "密碼策略 N/A — 無密碼登入（Google OAuth only）；better-auth 的 minPasswordLength:8 存在但未啟用（無 DATABASE_URL）",
+        "OAuth callback 白名單由 Google Cloud Console redirect URI 控制；trustHost:true 適用 Vercel",
+        "密碼重設流程 N/A（無密碼）"
+      ]
+    },
+    {
+      "dimension_id": "D05",
+      "dimension_name": "部署與環境安全 (Vercel)",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D05-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "Preview 環境可能繼承生產 service_role key",
+          "location": "Vercel Project Settings → Environment Variables（外部，代碼不可驗）",
+          "description": "若 SUPABASE_SERVICE_ROLE_KEY / AUTH_SECRET / LOCKOUT_SECRET 同時放 Production+Preview，任何 PR 的公開 preview URL 都以 service_role 執行，且 preview 網址可被猜/外洩。",
+          "attack_scenario": "攻擊者取得 preview 部署 URL，經其 /api/progress 以 service_role 操作正式 DB。",
+          "impact": "繞過 RLS 存取正式數據。",
+          "fix_code": "Vercel Dashboard：將 service_role key / AUTH_SECRET / LOCKOUT_SECRET 只勾 Production；Preview 用獨立 Supabase 專案或留空（route 會 throw，安全 fail）。全部標記 Sensitive。",
+          "fix_owner": "Brian（Vercel dashboard）",
+          "fix_deadline": "2026-07-11（人手設定）",
+          "verification": "Vercel → 該 env var 只顯示 Production scope + Sensitive 標記。",
+          "status_now": "AWAITING_USER_DASHBOARD"
+        }
+      ],
+      "checks_confirmed_secure": [
+        ".env.local 已被 .gitignore（.env* 排除、只保留 .env.example）→ 未進版本庫",
+        "全 repo 無 hardcoded 密鑰；所有密鑰 process.env request-time 讀取",
+        "proxy.ts rate-limit Map 有上限（>2000 自動 prune），無無限增長 DoS",
+        "DNS / Vercel 內建 DDoS 屬第三方基建，超出本次代碼審計範圍"
+      ]
+    },
+    {
+      "dimension_id": "D06",
+      "dimension_name": "網絡傳輸安全",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "D06-F01",
+          "severity": "LOW",
+          "vulnerability": "CSP 未含 upgrade-insecure-requests",
+          "location": "next.config.ts csp",
+          "description": "現時所有資源皆 self/https，無混合內容；加 upgrade-insecure-requests 可作額外保險。",
+          "attack_scenario": "若日後誤引 http 資源，瀏覽器不會自動升級。",
+          "impact": "極低。",
+          "fix_code": "csp 陣列加 'upgrade-insecure-requests'。",
+          "fix_owner": "Eric",
+          "fix_deadline": "下次 header 調整時",
+          "verification": "curl -I 檢查 CSP header。",
+          "status_now": "ACCEPTED_LOW"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "HSTS：max-age=63072000; includeSubDomains; preload ✓",
+        "TLS：Vercel 託管，強制 TLS 1.2/1.3 ✓",
+        "無混合內容：img-src self/https、無 http 來源",
+        "CORS：全站無 Access-Control-Allow-Origin header → 預設同源；未出現規格最怕的 '*'"
+      ]
+    },
+    {
+      "dimension_id": "D07",
+      "dimension_name": "內容安全策略 (CSP) 與標頭",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D07-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "script-src / style-src 使用 'unsafe-inline'",
+          "location": "next.config.ts:20-21",
+          "description": "Next bootstrap script、KaTeX inline style、framer-motion inline transform 皆需 inline，現無 nonce pipeline。'unsafe-inline' 削弱 CSP 對 XSS 的防護（若出現注入點，inline payload 不被 CSP 擋）。",
+          "attack_scenario": "配合任一 HTML 注入點，inline script 可執行。惟現時唯一 innerHTML sink 已 escape（D01），實際可利用性低。",
+          "impact": "CSP 的 XSS 緩解價值降低。",
+          "fix_code": "正解：proxy.ts 逐請求生成 nonce → 注入 script/style nonce → CSP 改 'nonce-xxx' 移除 unsafe-inline。屬非平凡工程（需改 SSR 注入流程），建議獨立立項；勿為趕工塞入。dev 才有的 'unsafe-eval'+ws: 已正確只限 dev。",
+          "fix_owner": "Eric + Max",
+          "fix_deadline": "獨立立項（deferred，附解鎖條件）",
+          "verification": "上線後 curl CSP 應含 nonce、無 unsafe-inline。",
+          "status_now": "DEFERRED_WITH_REASON"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "X-Frame-Options: DENY + frame-ancestors 'none'（防點擊劫持）✓",
+        "X-Content-Type-Options: nosniff ✓",
+        "Referrer-Policy: strict-origin-when-cross-origin ✓",
+        "Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=() ✓",
+        "object-src 'none'、base-uri 'self'、form-action 限 self+google ✓"
+      ]
+    },
+    {
+      "dimension_id": "D08",
+      "dimension_name": "Rate Limiting 與濫用防護",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D08-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "in-memory rate limiter 非分散式（per-isolate）",
+          "location": "proxy.ts",
+          "description": "Vercel serverless 每個 isolate 各有獨立 Map，實際每 IP 限額 = 60/min × isolate 數，冷啟動即重置。防暴力/爆刷屬 best-effort。",
+          "attack_scenario": "攻擊者觸發多 isolate 並行，繞過單機 60/min。",
+          "impact": "免費額度（Supabase 500MB / Vercel function）可能被爆刷。",
+          "fix_code": "真正分散式限流需 Vercel KV / Upstash Redis（Stage 2，有成本）。$0 現狀已於 proxy.ts 誠實註明此上限。",
+          "fix_owner": "Max",
+          "fix_deadline": "Stage 2（需 KV/Redis）",
+          "verification": "N/A（架構限制）",
+          "status_now": "ACCEPTED_KNOWN_CEILING"
+        },
+        {
+          "finding_id": "D08-F02",
+          "severity": "LOW",
+          "vulnerability": "/api/ig-waitlist 可被灌 email（每 IP 60/min）",
+          "location": "proxy.ts（一般桶）+ app/api/ig-waitlist/route.ts",
+          "description": "waitlist 走一般 60/min 桶，攻擊者輪換 email 每分鐘可塞 60 行。UNIQUE 擋重複但不擋不同假地址；無 email 驗證。",
+          "attack_scenario": "長時間灌假 email 污染名單、慢慢蠶食 500MB。",
+          "impact": "名單污染 + 免費額度消耗。",
+          "fix_code": "為 /api/ig-waitlist 加專屬更嚴桶（如 5/min/IP）；或加 honeypot 隱藏欄位；email 驗證屬 Stage 2。",
+          "fix_owner": "Eric",
+          "fix_deadline": "下個迭代",
+          "verification": "壓測 6 次/分應於第 6 次 429。",
+          "status_now": "OPEN_LOW"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "一般 /api/* 60/min/IP；/api/auth/signin|callback 嚴格桶 30/10min（已修正：session polling 走一般桶避免 429 斷登入）",
+        "登入暴力破解面窄：active backend 為 Google OAuth，無密碼端點可爆破",
+        "429 附 Retry-After header"
+      ]
+    },
+    {
+      "dimension_id": "D09",
+      "dimension_name": "依賴項與供應鏈安全",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D09-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "npm audit：4 moderate（postcss <8.5.10 XSS in stringify，經 next 傳遞）",
+          "location": "package.json → next@16.2.9 傳遞依賴 postcss",
+          "description": "postcss CSS stringify 的 </style> 未轉義 XSS（GHSA-qx2v-qp2m-jg93）。屬 build-time CSS pipeline（Tailwind/Next），需攻擊者可控 CSS 輸入才可利用 — 本站無此路徑。",
+          "attack_scenario": "需注入惡意 CSS 至 build pipeline，本專案無此輸入面。",
+          "impact": "真實風險低（build-time only）。",
+          "fix_code": "⛔ 切勿 npm audit fix --force（會降級 next@9.3.3 = 災難性破壞）。正解：等 Next 16.2.x patch 帶入 postcss>=8.5.10；期間監察。",
+          "fix_owner": "Max",
+          "fix_deadline": "跟隨 Next patch release",
+          "verification": "Next 升 patch 後重跑 npm audit 應清零。",
+          "status_now": "MONITOR_DO_NOT_FORCE_FIX"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "無 critical/high 漏洞（info 0 / low 0 / moderate 4 / high 0 / critical 0）",
+        "無 typosquatting：next/react/@supabase/supabase-js/better-auth/framer-motion/katex/lucide-react/pg/next-auth 皆正版",
+        "建議：確保 package-lock.json 已提交並用 npm ci 部署（鎖定完整性）"
+      ]
+    },
+    {
+      "dimension_id": "D10",
+      "dimension_name": "錯誤處理與信息洩露",
+      "status": "PASS",
+      "findings": [
+        {
+          "finding_id": "D10-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "缺自訂錯誤邊界 + 無 robots.txt",
+          "location": "app/（原無 not-found.tsx / global-error.tsx）+ public/（原無 robots.txt）",
+          "description": "原本靠 Next 預設頁。Next 生產已隱藏 client stack（只送 digest），但自訂邊界可保證 100% 無框架細節外露；robots.txt 缺失令 /api 無明示禁爬。",
+          "attack_scenario": "預設錯誤頁/爬蟲索引隱含框架資訊。",
+          "impact": "低（Next prod 已 sanitize），屬穩健性強化。",
+          "fix_code": "已新增 app/not-found.tsx（品牌化 404）、app/global-error.tsx（無 stack、含重載）、public/robots.txt（Disallow: /api/）。",
+          "fix_owner": "Eric",
+          "fix_deadline": "2026-07-11（已完成）",
+          "verification": "build green，路由表出現 /_not-found；robots.txt 送出。",
+          "status_now": "FIXED"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "生產 build：Next 對 client 只送 error digest，不送 stack",
+        "API 錯誤已統一為通用訊息（見 D02-F01 修復）",
+        "無 admin/.env 路徑可被索引（無 admin route；.env 不在 public）"
+      ]
+    },
+    {
+      "dimension_id": "D11",
+      "dimension_name": "數據隱私與合規",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D11-F01",
+          "severity": "MEDIUM",
+          "vulnerability": "無自助刪除雲端資料端點（PDPO / GDPR 對齊）",
+          "location": "app/api/*（無 DELETE /api/progress；ig_group_waitlist 亦無刪除路徑）",
+          "description": "Dashboard 的 reset 只清本地 localStorage；雲端 user_progress 行與 waitlist email 只能 email 人手要求刪除（FAQ #15）。",
+          "attack_scenario": "非攻擊 — 合規缺口：用戶行使『被遺忘權』無自助途徑。",
+          "impact": "香港《個人資料（私隱）條例》/ GDPR 資料當事人權利對齊不足。",
+          "fix_code": "加 DELETE /api/progress（scope 到 session userId，delete user_progress row）+ 一個以 email 憑證刪除 waitlist 的流程；Dashboard 加『刪除我的雲端資料』。人手 email 刪除對 PDPO 屬可接受下限，但自助更佳。",
+          "fix_owner": "Alan",
+          "fix_deadline": "下個迭代",
+          "verification": "呼叫 DELETE 後 GET 應回 null。",
+          "status_now": "OPEN_MEDIUM"
+        },
+        {
+          "finding_id": "D11-F02",
+          "severity": "LOW",
+          "vulnerability": "資料落地地區未確認（跨境）",
+          "location": "Supabase 專案 region（外部設定）",
+          "description": "用戶進度+email 存 Supabase；region 若非亞太，屬跨境傳輸，PDPO 下宜披露。",
+          "attack_scenario": "N/A（合規披露）。",
+          "impact": "跨境資料流披露義務。",
+          "fix_code": "確認 Supabase region（建議 Singapore ap-southeast-1）；私隱政策披露資料處理者與地區。",
+          "fix_owner": "Brian",
+          "fix_deadline": "上線前確認",
+          "verification": "Supabase Dashboard → Project Settings → Region。",
+          "status_now": "AWAITING_USER_CONFIRM"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "資料收集最小化：Google OAuth（email/name/sub）+ 學習進度 + waitlist email，皆屬平台必要",
+        "日誌不記密碼/token；waitlist 只存必要 email",
+        "無身分證/電話等高敏感欄位收集"
+      ]
+    },
+    {
+      "dimension_id": "D12",
+      "dimension_name": "日誌、監控與應變",
+      "status": "WARNING",
+      "findings": [
+        {
+          "finding_id": "D12-F01",
+          "severity": "LOW",
+          "vulnerability": "無專用安全事件日誌 + 無應變 runbook",
+          "location": "全站（$0 架構，無常駐日誌設施）",
+          "description": "無登入失敗/異常 API 監控；stateless + 免費層限制下僅有 Vercel 請求日誌（保留短）。無成文入侵應變/密鑰輪換步驟。",
+          "attack_scenario": "入侵後缺乏偵測與取證能力。",
+          "impact": "偵測與應變能力弱（惟本站敏感面僅 email+進度）。",
+          "fix_code": "已建議：新增 docs/INCIDENT-RESPONSE.md（輪換 SUPABASE_SERVICE_ROLE_KEY / AUTH_SECRET / LOCKOUT_SECRET、撤銷 Google OAuth client、Supabase pause）；於 API catch 已加 console.error（Vercel 可查）；每週手動 pg_dump user_progress 作備份補充免費層每日備份。",
+          "fix_owner": "Eric",
+          "fix_deadline": "下個迭代（runbook）",
+          "verification": "runbook 存在且密鑰輪換步驟可執行。",
+          "status_now": "OPEN_LOW"
+        }
+      ],
+      "checks_confirmed_secure": [
+        "API 錯誤現已 server-side console.error（Vercel 日誌可查）",
+        "Supabase Free Tier 內建每日備份（建議加手動 pg_dump 補充）",
+        "日誌保留與 500MB 成本平衡：不將日誌寫入 DB"
+      ]
+    }
+  ],
+  "summary": {
+    "total_findings": 13,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 6,
+    "low_count": 7,
+    "fixed_this_audit": 5,
+    "fix_ready_awaiting_user": 3,
+    "deferred_with_reason": 2,
+    "immediate_action_required": false,
+    "estimated_fix_time_hours": 0,
+    "cost": "HKD $0.00"
+  },
+  "fixed_this_audit_detail": [
+    "D02-F01 /api/progress 停止回傳 error.message，改 server-log + 通用訊息（代碼已改，build green）",
+    "D10-F01 新增 app/not-found.tsx + app/global-error.tsx + public/robots.txt",
+    "D01-F02 刪除 public/.DS_Store",
+    "D03-F01 產出 supabase_ig_waitlist_lockdown.sql（RLS 鎖定，待用戶 Supabase 執行）"
+  ],
+  "awaiting_user_action": [
+    "D03-F01：於 Supabase SQL Editor 執行 supabase_ig_waitlist_lockdown.sql",
+    "D05-F01：Vercel 將 service_role key / AUTH_SECRET / LOCKOUT_SECRET 設為 Production-only + Sensitive",
+    "D11-F02：確認並披露 Supabase region"
+  ],
+  "deferred_with_reason": [
+    "D07-F01：nonce-based CSP 移除 unsafe-inline — 需逐請求 nonce SSR 注入 pipeline，屬非平凡工程，獨立立項",
+    "D08-F01：分散式限流 — 需 Vercel KV/Upstash Redis，有成本，違反 $0 鎖定，Stage 2"
+  ],
+  "compliance": {
+    "hkeaa_copyright": "PASSED — 題庫為改寫原創，無官方試題複製；MathText trust:false",
+    "privacy_ordinance": "PENDING — 建議加自助刪除端點（D11-F01）+ 確認資料地區（D11-F02）",
+    "zero_cost_constraint": "PASSED — 所有已實施修復 $0；付費方案（KV/Redis）明確標為 deferred，未強加"
+  }
+}

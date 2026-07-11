@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Server-only + privileged surfaces — nothing here is meant to be crawled or indexed.
+Disallow: /api/
+Disallow: /teacher/
+Disallow: /admin/
+
+Sitemap: https://dse-level-up.vercel.app/sitemap.xml

@@ -10,6 +10,7 @@ const WINDOW_MS = 60_000
 const LIMIT_GENERAL = 60 // per IP per minute across /api/*
 const AUTH_WINDOW_MS = 10 * 60_000
 const LIMIT_AUTH = 30 // per IP per 10 min on /api/auth/* (OAuth needs a handful; brute force needs hundreds)
+const LIMIT_TEACHER = 40 // per IP per minute on /api/teacher/* + /api/admin/* (dashboard reads a few; scripts hammer)
 
 const hits = new Map<string, number[]>()
 
@@ -36,7 +37,13 @@ export function proxy(request: NextRequest) {
   //（2026-07-11 preview 實測發現並修正），所以行一般桶。
   const { pathname } = request.nextUrl
   const isAuthSensitive = pathname.startsWith('/api/auth/signin') || pathname.startsWith('/api/auth/callback')
-  const ok = isAuthSensitive ? allow(`a:${ip}`, AUTH_WINDOW_MS, LIMIT_AUTH) : allow(`g:${ip}`, WINDOW_MS, LIMIT_GENERAL)
+  // Teacher/admin surfaces read privileged data → tighter bucket to blunt script abuse.
+  const isTeacherSurface = pathname.startsWith('/api/teacher') || pathname.startsWith('/api/admin')
+  const ok = isAuthSensitive
+    ? allow(`a:${ip}`, AUTH_WINDOW_MS, LIMIT_AUTH)
+    : isTeacherSurface
+      ? allow(`t:${ip}`, WINDOW_MS, LIMIT_TEACHER)
+      : allow(`g:${ip}`, WINDOW_MS, LIMIT_GENERAL)
   if (!ok) {
     return NextResponse.json(
       { error: 'Too many requests, please slow down.', code: 'RATE_LIMITED' },

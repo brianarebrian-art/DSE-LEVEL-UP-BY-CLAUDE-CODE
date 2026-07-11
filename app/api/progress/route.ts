@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
+import { safeLog } from '@/lib/safeLog'
 
 // Per-user, request-time only — never cached or prerendered.
 export const dynamic = 'force-dynamic'
@@ -32,7 +33,10 @@ export async function GET() {
       updated_at: data?.updated_at ?? null,
     })
   } catch (e) {
-    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
+    // Never echo the raw error to the client — a Supabase/Postgres message can leak
+    // table/column names or constraint details. Log server-side, return a generic body.
+    safeLog('error', 'api/progress GET', e)
+    return NextResponse.json({ error: 'internal error' }, { status: 500 })
   }
 }
 
@@ -63,6 +67,7 @@ export async function POST(request: Request) {
     if (error) throw error
     return NextResponse.json({ ok: true, updated_at })
   } catch (e) {
-    return NextResponse.json({ error: (e as Error).message }, { status: 500 })
+    safeLog('error', 'api/progress POST', e)
+    return NextResponse.json({ error: 'internal error' }, { status: 500 })
   }
 }

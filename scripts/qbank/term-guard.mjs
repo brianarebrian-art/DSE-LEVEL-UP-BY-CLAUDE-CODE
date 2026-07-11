@@ -68,7 +68,7 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
 
 // ── (4) 無紅字掃描（TOP20 #14，Kelly/Emma 情緒安全）：app/ + components/ 嘅
 // 用戶可見文案禁止出現羞辱/罪疚字眼。名單收窄至高信度詞，避免誤傷代碼註解。
-const RED_WORDS = /(?<![A-Za-z])FAIL(?![A-Za-z])|錯晒|廢柴|失敗者|你唔夠努力|你好廢|冇希望/
+const RED_WORDS = /(?<![A-Za-z])FAIL(?![A-Za-z])|錯晒|廢柴|失敗者|你唔夠努力|你好廢|冇希望|差勁|無藥可救|冇得救/
 function scanUiDir(dir) {
   for (const entry of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
     const rel = `${dir}/${entry.name}`
