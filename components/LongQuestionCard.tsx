@@ -34,7 +34,7 @@ export default function LongQuestionCard({
     onResult?.(l)
   }
 
-  const reportHref = `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(`[題目回報] ${q.id}`)}`
+  const reportHref = `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(`[${en ? 'Question report' : '題目回報'}] ${q.id}`)}`
 
   const levels: { key: Level; zh: string; en: string; cls: string }[] = [
     { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-green-500/40 bg-green-500/10 text-green-300' },

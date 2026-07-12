@@ -33,7 +33,7 @@ export default function BlindTestQuestion() {
     <div className="bg-black border-2 border-red-700/70 rounded-2xl p-5 sm:p-6 shadow-[0_0_25px_rgba(220,38,38,0.25)]">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <span className="text-red-400 font-extrabold tracking-wide text-sm uppercase">🩻 Blind Test · 盲測黑題</span>
+        <span className="text-red-400 font-extrabold tracking-wide text-sm uppercase">🩻 {tr('盲測黑題', 'Blind Test')}</span>
       </div>
 
       {/* Figure — two tangents from an external point P to a circle */}

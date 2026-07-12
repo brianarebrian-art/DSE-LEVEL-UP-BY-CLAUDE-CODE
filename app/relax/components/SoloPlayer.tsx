@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { useLocale } from '@/lib/i18n'
 import { loadSensoryPref } from './SensoryMenu'
 import NowPlayingBar from './NowPlayingBar'
 
@@ -32,6 +33,8 @@ const YT: Record<'lofi' | 'rain', { src: string; open: string; thumb?: string }>
 }
 
 export default function SoloPlayer() {
+  const { locale } = useLocale()
+  const en = locale === 'en'
   const [playing, setPlaying] = useState<TrackId | null>(null)
   const [quietMode, setQuietMode] = useState(false)
   const [showTime, setShowTime] = useState(false)
@@ -149,28 +152,28 @@ export default function SoloPlayer() {
     setPlaying(id)
   }
 
-  const TRACKS: { id: TrackId; emoji: string; tint: string; name: string; desc: string }[] = [
-    { id: 'lofi', emoji: '🎹', tint: 'bg-[#00F5D4]/15', name: '深夜 Lo-fi 電台', desc: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）' },
-    { id: 'rain', emoji: '🌧️', tint: 'bg-emerald-400/15', name: '落雨白噪音 · 回藍', desc: '真實雨聲 · 做完卷減壓（官方長時影片）' },
-    { id: 'binaural', emoji: '🧘', tint: 'bg-[#9B5DE5]/15', name: '低頻專注 Buff（雙耳節拍）', desc: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）' },
-    { id: 'pomodoro', emoji: '⏳', tint: 'bg-[#FF006E]/15', name: '25 分鐘專注 combo（番茄鐘）', desc: '輕音樂漸弱提醒 · 唔使驚倒數壓力' },
+  const TRACKS: { id: TrackId; emoji: string; tint: string; nameZh: string; nameEn: string; descZh: string; descEn: string }[] = [
+    { id: 'lofi', emoji: '🎹', tint: 'bg-[#00F5D4]/15', nameZh: '深夜 Lo-fi 電台', nameEn: 'Late-night Lo-fi radio', descZh: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）', descEn: 'Piano + rain · calm your mind before revising (official Lofi Girl video)' },
+    { id: 'rain', emoji: '🌧️', tint: 'bg-emerald-400/15', nameZh: '落雨白噪音 · 回藍', nameEn: 'Rain white noise · refill MP', descZh: '真實雨聲 · 做完卷減壓（官方長時影片）', descEn: 'Real rain sounds · de-stress after a paper (official long-form video)' },
+    { id: 'binaural', emoji: '🧘', tint: 'bg-[#9B5DE5]/15', nameZh: '低頻專注 Buff（雙耳節拍）', nameEn: 'Low-freq focus buff (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
+    { id: 'pomodoro', emoji: '⏳', tint: 'bg-[#FF006E]/15', nameZh: '25 分鐘專注 combo（番茄鐘）', nameEn: '25-min focus combo (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
   ]
 
-  const names: Record<TrackId, string> = {
-    lofi: '深夜 Lo-fi 電台', rain: '落雨白噪音 · 回藍', binaural: '低頻專注 Buff', pomodoro: '25 分鐘專注 combo',
-  }
+  const names: Record<TrackId, string> = en
+    ? { lofi: 'Late-night Lo-fi radio', rain: 'Rain white noise', binaural: 'Low-freq focus buff', pomodoro: '25-min focus combo' }
+    : { lofi: '深夜 Lo-fi 電台', rain: '落雨白噪音 · 回藍', binaural: '低頻專注 Buff', pomodoro: '25 分鐘專注 combo' }
 
   if (quietMode) {
     return (
       <div className="text-center py-10">
         <div className="text-2xl mb-3" aria-hidden>🔇</div>
-        <p className="text-[#E8E8EC] mb-2">你揀咗「安靜模式」，呢度唔會有任何聲音。</p>
-        <p className="text-sm text-[#8B8B96] mb-6">可以試下純文字嘅回藥術（呼吸練習），或者返主頁改返感官偏好。</p>
+        <p className="text-[#E8E8EC] mb-2">{en ? 'You chose quiet mode, so there’s no sound here.' : '你揀咗「安靜模式」，呢度唔會有任何聲音。'}</p>
+        <p className="text-sm text-[#8B8B96] mb-6">{en ? 'You can try the text-only recovery breath (breathing exercise), or head back to the main page to change your sensory preferences.' : '可以試下純文字嘅回藥術（呼吸練習），或者返主頁改返感官偏好。'}</p>
         <Link
           href="/relax/breathing"
           className="inline-flex min-h-11 items-center rounded-[10px] border border-[#00F5D4]/30 text-[#00F5D4] text-sm px-5 py-3 hover:bg-[#00F5D4]/10 transition-colors"
         >
-          🌬️ 靜音回藥術
+          🌬️ {en ? 'Silent recovery breath' : '靜音回藥術'}
         </Link>
       </div>
     )
@@ -189,6 +192,7 @@ export default function SoloPlayer() {
         {TRACKS.map((t) => {
           const on = playing === t.id
           const isYt = t.id === 'lofi' || t.id === 'rain'
+          const trackName = en ? t.nameEn : t.nameZh
           return (
             <div key={t.id} className={`rounded-xl bg-[#14141B] border transition-colors ${on ? 'border-[#00F5D4]/50' : 'border-white/10'}`}>
               <button
@@ -207,10 +211,10 @@ export default function SoloPlayer() {
                   <span className={`w-10 h-10 rounded-lg ${t.tint} flex items-center justify-center text-lg shrink-0`} aria-hidden>{t.emoji}</span>
                 )}
                 <span className="flex-1">
-                  <span className="block text-sm font-medium text-[#E8E8EC]">{t.name}</span>
-                  <span className="block text-xs text-[#8B8B96] mt-0.5">{t.desc}</span>
+                  <span className="block text-sm font-medium text-[#E8E8EC]">{trackName}</span>
+                  <span className="block text-xs text-[#8B8B96] mt-0.5">{en ? t.descEn : t.descZh}</span>
                 </span>
-                <span className="text-xs text-[#00F5D4] shrink-0">{on ? '停止' : '播放'}</span>
+                <span className="text-xs text-[#00F5D4] shrink-0">{on ? (en ? 'Stop' : '停止') : en ? 'Play' : '播放'}</span>
               </button>
 
               {/* YT：播放時載入官方 iframe + 「喺 YouTube 開」後備（萬一嵌入播唔到） */}
@@ -219,7 +223,7 @@ export default function SoloPlayer() {
                   <iframe
                     className="w-full aspect-video rounded-lg border border-white/10"
                     src={YT[t.id as 'lofi' | 'rain'].src}
-                    title={t.name}
+                    title={trackName}
                     allow="autoplay; encrypted-media"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
@@ -230,7 +234,7 @@ export default function SoloPlayer() {
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-xs text-[#8B8B96] hover:text-[#00F5D4] underline underline-offset-2"
                   >
-                    ▶ 播唔到？喺 YouTube 開
+                    ▶ {en ? "Won't play? Open on YouTube" : '播唔到？喺 YouTube 開'}
                   </a>
                 </div>
               )}
@@ -239,7 +243,7 @@ export default function SoloPlayer() {
               {t.id === 'binaural' && on && (
                 <div className="px-4 pb-4">
                   {!stereoOk && (
-                    <p className="text-xs text-amber-300/80 mb-2">此裝置似乎只有單聲道輸出——請使用耳機以獲得雙耳節拍效果。</p>
+                    <p className="text-xs text-amber-300/80 mb-2">{en ? 'This device seems to output mono only — use headphones for the binaural-beat effect.' : '此裝置似乎只有單聲道輸出——請使用耳機以獲得雙耳節拍效果。'}</p>
                   )}
                   <div className="flex items-end justify-center gap-1 h-10 mb-3" aria-hidden>
                     {[0.5, 0.9, 0.4, 1, 0.6, 0.85, 0.45, 0.75, 0.55].map((h, i) => (
@@ -250,11 +254,11 @@ export default function SoloPlayer() {
                       />
                     ))}
                   </div>
-                  <label className="block text-[11px] text-[#8B8B96] mb-1">音量 · {binauralVol}%</label>
+                  <label className="block text-[11px] text-[#8B8B96] mb-1">{en ? 'Volume' : '音量'} · {binauralVol}%</label>
                   <input
                     type="range" min={0} max={12} step={1} value={binauralVol}
                     onChange={(e) => setVol(Number(e.target.value))}
-                    aria-label="雙耳節拍音量"
+                    aria-label={en ? 'Binaural beat volume' : '雙耳節拍音量'}
                     className="w-full accent-[#FF006E] rounded-full"
                     style={{ background: 'linear-gradient(90deg,#00F5D4,#FF006E,#9B5DE5)' }}
                   />
@@ -270,9 +274,9 @@ export default function SoloPlayer() {
                     />
                   </div>
                   <div className="flex items-center justify-between text-xs text-[#8B8B96]">
-                    <span>{showTime ? `剩餘 ${Math.floor(pomodoroLeft / 60)}:${String(pomodoroLeft % 60).padStart(2, '0')}` : '進行中 · 唔使數住時間'}</span>
+                    <span>{showTime ? `${en ? '' : '剩餘 '}${Math.floor(pomodoroLeft / 60)}:${String(pomodoroLeft % 60).padStart(2, '0')}${en ? ' left' : ''}` : en ? 'In progress · no need to watch the clock' : '進行中 · 唔使數住時間'}</span>
                     <button onClick={() => setShowTime((v) => !v)} className="min-h-11 px-2 underline underline-offset-2 hover:text-[#E8E8EC]">
-                      {showTime ? '隱藏剩餘時間' : '顯示剩餘時間'}
+                      {showTime ? (en ? 'Hide time left' : '隱藏剩餘時間') : en ? 'Show time left' : '顯示剩餘時間'}
                     </button>
                   </div>
                 </div>

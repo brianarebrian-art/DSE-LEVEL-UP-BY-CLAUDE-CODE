@@ -12,7 +12,7 @@ import type { Metadata } from 'next'
 //   1. robots noindex —— 老師專區係 privileged surface，唔應該俾搜尋引擎索引。
 //   2. 正式標題 —— 分頁／書籤顯示「老師大數據平台」。
 export const metadata: Metadata = {
-  title: '老師大數據平台 · DSE Level Up',
+  title: '老師大數據平台 · DSE Level Up', // i18n-exempt: 靜態 SEO <title>（robots noindex 專區）
   robots: { index: false, follow: false },
 }
 

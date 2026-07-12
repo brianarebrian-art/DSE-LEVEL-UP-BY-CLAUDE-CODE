@@ -287,7 +287,7 @@ function FocusRoom() {
           href="/relax"
           className="block text-center text-sm text-slate-500 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 rounded-xl py-3 transition-all"
         >
-          🏮 今日真係好攰？入化城避風港唞返夠先 →
+          🏮 {en ? 'Really wiped today? Head into the Buff Station and rest up →' : '今日真係好攰？入化城避風港唞返夠先 →'}
         </a>
       </div>
     </div>

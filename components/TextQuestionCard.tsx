@@ -31,7 +31,7 @@ export default function TextQuestionCard({
   }
 
   const reportHref = `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(
-    `[題目回報] ${q.id}`,
+    `[${en ? 'Question report' : '題目回報'}] ${q.id}`,
   )}&body=${encodeURIComponent(en ? 'I disagree with the reference answer because:\n' : '我唔同意呢題嘅參考答案，因為：\n')}`
 
   return (

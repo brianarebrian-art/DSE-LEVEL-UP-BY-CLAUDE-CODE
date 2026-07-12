@@ -15,7 +15,7 @@ export async function generateMetadata({
 }) {
   const { subject } = await params
   const meta = getSubject(subject)
-  if (!meta) return { title: '科目 | DSE Level Up' }
+  if (!meta) return { title: '科目 | DSE Level Up' } // i18n-exempt: 靜態 SEO <title> fallback（generateMetadata 唔跟 client locale）
   return {
     title: `${meta.name} | DSE Level Up`,
     description: meta.description,
