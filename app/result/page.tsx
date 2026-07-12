@@ -8,6 +8,8 @@ import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 import EncouragementWall from '@/components/EncouragementWall'
+import ShareStatsCardButton from '@/components/ShareStatsCardButton'
+import { type DailyStatsCardData } from '@/components/DailyStatsCard'
 
 interface TopicResult {
   topic: string
@@ -53,10 +55,12 @@ export default function ResultPage() {
   const [showBadge, setShowBadge] = useState(false)
   const [shared, setShared] = useState(false)
   const [reportCopied, setReportCopied] = useState(false)
+  const [siteHost, setSiteHost] = useState('')
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
   useEffect(() => {
+    setSiteHost(window.location.host)
     const raw = localStorage.getItem('dse_result')
     if (!raw) return
     const data: StoredResult = JSON.parse(raw)
@@ -99,6 +103,34 @@ export default function ResultPage() {
   const higherHasMiss =
     !!dr && (dr.medium.correct < dr.medium.total || dr.hard.correct < dr.hard.total)
   const showChineseWarning = result.subjectId === 'chinese' && baseAllCorrect && higherHasMiss
+
+  // 戰績卡真數據 —— 只用 REAL session 數據；無虛構 JUPAS/搶分數/streak。
+  const tierMeta: { key: TierKey; label: string; color: string }[] = [
+    { key: 'easy', label: '補底', color: '#34D399' },
+    { key: 'medium', label: '普通', color: '#FEE440' },
+    { key: 'hard', label: '拔尖', color: '#9B5DE5' },
+  ]
+  const cardTiers = dr
+    ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ label: m.label, correct: dr[m.key].correct, total: dr[m.key].total, color: m.color }))
+    : []
+  const ratioSorted = [...result.topicResults].filter((tt) => tt.total > 0).sort((a, b) => b.correct / b.total - a.correct / a.total)
+  const bestTopic = ratioSorted[0]
+  const worstTopic = ratioSorted[ratioSorted.length - 1]
+  const cardData: DailyStatsCardData = {
+    date: new Date().toLocaleDateString('zh-HK'),
+    subject: subjName,
+    questionsDone: result.total,
+    accuracy: Math.round((result.score / result.total) * 100),
+    correctCount: result.score,
+    totalCount: result.total,
+    timeSpent: formatTime(result.elapsed),
+    avgPerQuestion: formatTime(Math.round(result.elapsed / Math.max(1, result.total))),
+    tiers: cardTiers,
+    strengthTopic: bestTopic && bestTopic.correct === bestTopic.total && bestTopic.topic !== worstTopic?.topic ? bestTopic.topic : undefined,
+    focusTopic: worstTopic && worstTopic.correct < worstTopic.total ? worstTopic.topic : undefined,
+    igLink: 'ig.me/j/AbYCy6ZUDR-yWVPN',
+    siteUrl: siteHost || 'dse-level-up-by-claude-code.vercel.app',
+  }
 
   // ── Teacher hand-in report. Fills the fixed template with real diagnostic data;
   // Name/Class stay as blanks for the student to complete.
@@ -305,6 +337,9 @@ export default function ResultPage() {
             ? (locale === 'en' ? 'Report copied — paste to your teacher' : '已複製報告 —— 貼給老師即可')
             : (locale === 'en' ? 'Copy Report to Teacher' : '複製成績報告給老師')}
         </button>
+
+        {/* 分享戰績卡到 IG Story（誠實版：真數據 only，html2canvas 客戶端）*/}
+        <ShareStatsCardButton data={cardData} en={locale === 'en'} />
 
         {/* Action buttons */}
         <div className="no-print grid sm:grid-cols-2 gap-3">
