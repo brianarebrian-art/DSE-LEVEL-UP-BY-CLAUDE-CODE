@@ -106,9 +106,9 @@ export default function ResultPage() {
 
   // 戰績卡真數據 —— 只用 REAL session 數據；無虛構 JUPAS/搶分數/streak。
   const tierMeta: { key: TierKey; label: string; color: string }[] = [
-    { key: 'easy', label: '補底', color: '#34D399' },
-    { key: 'medium', label: '普通', color: '#FEE440' },
-    { key: 'hard', label: '拔尖', color: '#9B5DE5' },
+    { key: 'easy', label: locale === 'en' ? 'Foundation' : '補底', color: '#34D399' },
+    { key: 'medium', label: locale === 'en' ? 'Standard' : '普通', color: '#FEE440' },
+    { key: 'hard', label: locale === 'en' ? 'Top-tier' : '拔尖', color: '#9B5DE5' },
   ]
   const cardTiers = dr
     ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ label: m.label, correct: dr[m.key].correct, total: dr[m.key].total, color: m.color }))
@@ -117,7 +117,7 @@ export default function ResultPage() {
   const bestTopic = ratioSorted[0]
   const worstTopic = ratioSorted[ratioSorted.length - 1]
   const cardData: DailyStatsCardData = {
-    date: new Date().toLocaleDateString('zh-HK'),
+    date: new Date().toLocaleDateString(locale === 'en' ? 'en-GB' : 'zh-HK'),
     subject: subjName,
     questionsDone: result.total,
     accuracy: Math.round((result.score / result.total) * 100),

@@ -25,7 +25,7 @@ export default function ShareStatsCardButton({ data, en = false }: { data: Daily
       const canvas = await html2canvas(cardRef.current, { backgroundColor: '#0A0A0F', scale: 1, logging: false, useCORS: true })
       const blob: Blob | null = await new Promise((res) => canvas.toBlob((b) => res(b), 'image/png'))
       if (!blob) throw new Error('no blob')
-      const file = new File([blob], `dse-level-up-戰績-${Date.now()}.png`, { type: 'image/png' })
+      const file = new File([blob], `dse-level-up-stats-${Date.now()}.png`, { type: 'image/png' })
 
       // 手機：Web Share（可揀 IG Story）；否則下載。
       const nav = navigator as Navigator & { canShare?: (d: { files: File[] }) => boolean }
@@ -63,7 +63,7 @@ export default function ShareStatsCardButton({ data, en = false }: { data: Daily
       {/* off-screen 全尺寸卡（html2canvas 影呢個）。用 left:-99999 藏起 —— 不可用 opacity:0，
           因為 html2canvas 會尊重 opacity 而影出空白。aria-hidden 唔影響無障礙。 */}
       <div aria-hidden style={{ position: 'fixed', left: -99999, top: 0, pointerEvents: 'none' }}>
-        <DailyStatsCard ref={cardRef} data={data} />
+        <DailyStatsCard ref={cardRef} data={data} en={en} />
       </div>
     </>
   )
