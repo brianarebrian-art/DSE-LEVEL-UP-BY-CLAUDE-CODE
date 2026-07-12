@@ -4,7 +4,6 @@ import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useT } from '@/lib/i18n'
 import PracticeGate from './PracticeGate'
-import ReadingRuler from '@/components/ReadingRuler'
 import PracticeSupport from '@/components/PracticeSupport'
 
 function LoadingScreen() {
@@ -36,9 +35,7 @@ export default function PracticePage() {
       <Suspense fallback={<LoadingScreen />}>
         <PracticeRouter />
       </Suspense>
-      {/* SEN 閱讀輔助：防跳行閱讀尺（自帶開關，預設關閉） */}
-      <ReadingRuler />
-      {/* 支援小隊：唞一唞（4-7-8 呼吸）+ 易讀字體切換 */}
+      {/* 支援小隊：唞一唞（4-7-8 呼吸）+ 易讀字體切換。防跳行閱讀尺已改為全站常駐（見 layout） */}
       <PracticeSupport />
     </>
   )

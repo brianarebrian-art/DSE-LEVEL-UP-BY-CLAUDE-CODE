@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "subject": "chinese",
+    "chapter": "魚我所欲也",
+    "source": "《孟子·告子上》",
+    "status": "DRAFT — 由 Claude 起草，未經人手核實。上線前必須經 Amity／中文老師逐題審批（review-drafts → promote-drafts）。",
+    "note": "只收錄 MC 型、答案不受變量影響或每題自帶答案的題；長答題(type:long)工廠會跳過（練習引擎暫只支援 MC）。"
+  },
+
+  "nodes": [
+    { "id": "author_mencius", "name": "作者孟子", "category": "文學常識", "difficulty": 1 },
+    { "id": "source_gaozi", "name": "出處《孟子·告子上》", "category": "文學常識", "difficulty": 1 },
+    { "id": "theme_sacrifice", "name": "捨生取義（中心思想）", "category": "思想內容", "difficulty": 3 },
+    { "id": "metaphor_fish", "name": "以魚喻生、以熊掌喻義", "category": "論證手法", "difficulty": 2 },
+    { "id": "argument_metaphor", "name": "比喻論證（設喻）", "category": "論證手法", "difficulty": 2 },
+    { "id": "word_jian", "name": "『兼』字解釋", "category": "字詞解釋", "difficulty": 1 },
+    { "id": "word_she", "name": "『捨』字解釋", "category": "字詞解釋", "difficulty": 1 }
+  ],
+
+  "templates": [
+    {
+      "template_id": "metaphor-id",
+      "combination": ["metaphor_fish", "argument_metaphor"],
+      "topic": "論證手法",
+      "type": "mc",
+      "difficulty": "intermediate",
+      "stem": "《魚我所欲也》以「{quote}」帶出主旨，作者主要運用了哪一種論證手法？",
+      "options": ["比喻論證（借魚與熊掌設喻）", "引用論證（引用名人言論）", "舉例論證（列舉真實事例）", "數據論證（引用統計數字）"],
+      "correctIndex": 0,
+      "explanation": "作者以「魚」比喻「生（生命）」、以「熊掌」比喻「義（道義）」，藉魚與熊掌不可兼得，說明生與義不可兼得時應捨生取義，屬比喻論證（設喻）。",
+      "items": [
+        { "vars": { "quote": "魚，我所欲也；熊掌，亦我所欲也" } },
+        { "vars": { "quote": "二者不可得兼，舍魚而取熊掌者也" } },
+        { "vars": { "quote": "魚與熊掌不可兼得" } }
+      ]
+    },
+
+    {
+      "template_id": "knowledge",
+      "combination": ["author_mencius", "source_gaozi", "theme_sacrifice", "metaphor_fish"],
+      "topic": "文學常識與思想",
+      "type": "mc",
+      "difficulty": "basic",
+      "stem": "{q}",
+      "items": [
+        { "vars": { "q": "《魚我所欲也》的作者是誰？" }, "options": ["孟子", "孔子", "荀子", "莊子"], "correctIndex": 0, "explanation": "《魚我所欲也》選自《孟子·告子上》，作者為戰國時期的孟子（孟軻）。" },
+        { "vars": { "q": "《魚我所欲也》出自下列哪一部典籍？" }, "options": ["《孟子》", "《論語》", "《荀子》", "《禮記》"], "correctIndex": 0, "explanation": "本篇選自《孟子·告子上》。" },
+        { "vars": { "q": "《魚我所欲也》的中心思想是甚麼？" }, "options": ["捨生取義", "明哲保身", "及時行樂", "知足常樂"], "correctIndex": 0, "explanation": "全文論證當生命與道義不可兼得時，應捨棄生命以成全道義，即「捨生取義」。" },
+        { "vars": { "q": "文中以「魚」比喻甚麼？" }, "options": ["生命", "財富", "名譽", "親情"], "correctIndex": 0, "explanation": "作者以魚比喻「生（生命）」，以熊掌比喻「義」，魚不及熊掌珍貴，猶如生命不及道義重要。" },
+        { "vars": { "q": "文中以「熊掌」比喻甚麼？" }, "options": ["道義", "權力", "地位", "學問"], "correctIndex": 0, "explanation": "熊掌較魚珍貴，作者以之比喻「義（道義）」，說明義重於生。" }
+      ]
+    },
+
+    {
+      "template_id": "lexis",
+      "combination": ["word_jian", "word_she"],
+      "topic": "字詞解釋",
+      "type": "mc",
+      "difficulty": "basic",
+      "stem": "{q}",
+      "items": [
+        { "vars": { "q": "「二者不可得兼」的「兼」，意思最接近下列哪一項？" }, "options": ["同時擁有", "兼併土地", "兼任職務", "謙讓"], "correctIndex": 0, "explanation": "「兼」指同時得到、兼有；「不可得兼」即不能同時擁有兩者。" },
+        { "vars": { "q": "「捨生取義」的「捨」，意思最接近下列哪一項？" }, "options": ["捨棄", "施捨", "房舍", "捨不得"], "correctIndex": 0, "explanation": "「捨」意為捨棄、放棄；「捨生取義」即放棄生命以取道義。" }
+      ]
+    },
+
+    {
+      "template_id": "long-sacrifice",
+      "combination": ["metaphor_fish", "theme_sacrifice"],
+      "topic": "論證分析",
+      "type": "long",
+      "difficulty": "hard",
+      "stem": "孟子以「魚」與「熊掌」設喻，試分析他如何藉此論證「捨生取義」。",
+      "marking_scheme": [
+        { "point_id": "p1", "marks": 1, "description": "指出比喻對象", "keywords": ["魚喻生", "熊掌喻義"], "match_type": "any" },
+        { "point_id": "p2", "marks": 2, "description": "分析設喻效果", "keywords": ["具體", "形象", "淺白", "說服力"], "match_type": "any" },
+        { "point_id": "p3", "marks": 1, "description": "點出中心思想", "keywords": ["捨生取義", "義重於生"], "match_type": "any" }
+      ],
+      "note": "長答題：練習引擎暫只支援 MC，工廠會跳過，保留於此待日後長答 UI。"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "id": "demo-add",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "basic",
+    "question": "【示範題·僅測試流水線】2 + 3 = ?",
+    "options": ["4", "5", "6", "7"],
+    "correctIndex": 1,
+    "explanation": "【示範題】2 加 3 等於 5，正確答案係 5。此題只為示範人手覆核流程，非真實出題。"
+  },
+  {
+    "id": "demo-area",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "intermediate",
+    "question": "【示範題·僅測試流水線】長 5、闊 4 的長方形，面積是多少？",
+    "options": ["9", "20", "18", "1"],
+    "correctIndex": 1,
+    "explanation": "【示範題】長方形面積 = 長 × 闊 = 5 × 4 = 20。此題只為示範流程。"
+  },
+  {
+    "id": "demo-pct",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "hard",
+    "question": "【示範題·僅測試流水線】80 的 25% 是多少？",
+    "options": ["20", "25", "16", "40"],
+    "correctIndex": 0,
+    "explanation": "【示範題】80 × 25% = 80 × 0.25 = 20。此題只為示範流程。"
+  },
+  {
+    "id": "demo-badopts",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "basic",
+    "question": "【示範·應被剷走】此題兩個選項重複",
+    "options": ["5", "5", "6", "7"],
+    "correctIndex": 0,
+    "explanation": "此題故意有重複選項，應被機器客觀閘自動退回。"
+  },
+  {
+    "id": "demo-allabove",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "basic",
+    "question": "【示範·應被剷走】此題用了『以上皆是』",
+    "options": ["4", "5", "6", "以上皆是"],
+    "correctIndex": 3,
+    "explanation": "此題故意用被禁選項『以上皆是』，應被自動退回。"
+  },
+  {
+    "id": "demo-shortexp",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "basic",
+    "question": "【示範·應被剷走】此題解釋太短",
+    "options": ["1", "2", "3", "4"],
+    "correctIndex": 0,
+    "explanation": "短"
+  },
+  {
+    "id": "demo-term",
+    "type": "mc",
+    "subject": "math",
+    "topic": "算術示範",
+    "difficulty": "basic",
+    "question": "【示範·應被剷走】此題含術語紅線詞：公共財",
+    "options": ["1", "2", "3", "4"],
+    "correctIndex": 0,
+    "explanation": "此題故意寫『公共財』(應為『共用品』)，應被術語紅線自動退回。"
+  }
+]

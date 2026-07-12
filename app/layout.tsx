@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Providers from '@/components/Providers'
 import GlobalA11y from '@/components/GlobalA11y'
+import A11yPanel from '@/components/A11yPanel'
+import ReadingRuler from '@/components/ReadingRuler'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +31,9 @@ export default function RootLayout({
           <Footer />
           {/* 全站無障礙層：字級/易讀字體全站套用 + 「我唔開心」SOS（/relax 內自動隱藏） */}
           <GlobalA11y />
+          {/* SEN 無障礙工具（全站常駐）：字級／易讀字體面板 + 防跳行閱讀尺 */}
+          <A11yPanel />
+          <ReadingRuler />
         </Providers>
       </body>
     </html>

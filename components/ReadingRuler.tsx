@@ -63,7 +63,7 @@ export default function ReadingRuler() {
         </div>
       )}
 
-      <div className="fixed bottom-4 left-4 z-50 no-print flex items-center gap-2">
+      <div className="fixed bottom-4 left-20 z-50 no-print flex items-center gap-2">
         <button
           onClick={() => { setOn(!on); persist(!on, hIdx) }}
           aria-pressed={on}

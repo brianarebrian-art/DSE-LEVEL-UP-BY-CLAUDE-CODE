@@ -131,10 +131,26 @@ html {
   .animate-hell-pulse { animation: none; }
 }
 
-/* 易讀字體（SEN，Emma/UDL）：html.font-easy 時改用 BDA（英國讀寫障礙協會）
-   風格指引推薦的系統無襯線堆疊 —— 零下載、零 CSP 例外。KaTeX 數式不受影響
-   （.katex 自身 font-family 規則更具體）。 */
+/* 易讀字體（SEN，Emma/UDL）：html.font-easy 時改用讀寫障礙友善字體 + BDA（英國讀寫
+   障礙協會）風格指引推薦的間距。KaTeX 數式不受影響（.katex 自身規則更具體）。
+   OpenDyslexic：若 public/fonts/OpenDyslexic-Regular.woff2 存在就自動採用（見該資料夾
+   README）；否則靜靜 fallback 落 BDA 系統無襯線堆疊 —— 零下載、零 CSP 例外都用得。 */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 html.font-easy body {
-  font-family: Verdana, Tahoma, 'Trebuchet MS', 'Comic Sans MS', 'PingFang TC', 'Microsoft JhengHei', sans-serif !important;
-  letter-spacing: 0.015em;
+  font-family: 'OpenDyslexic', Verdana, Tahoma, 'Trebuchet MS', 'Comic Sans MS', 'PingFang TC', 'Microsoft JhengHei', sans-serif !important;
+  /* BDA 建議：加寬字距、詞距、行距，降低擠迫感、減少跳行 */
+  letter-spacing: 0.035em;
+  word-spacing: 0.06em;
+  line-height: 1.7;
+}
+/* BDA 建議：正文左對齊（唔用兩端對齊），令每行開端對齊、更易逐行追讀 */
+html.font-easy p,
+html.font-easy li {
+  text-align: left;
 }

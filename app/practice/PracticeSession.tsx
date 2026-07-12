@@ -256,6 +256,16 @@ export default function PracticeSession({
     })
   }, [])
 
+  // 隱藏練習計時器（SEN／焦慮友善）：A11yPanel 寫入 dse_hide_timer 並派 `dse-a11y` 事件，
+  // 練習頁即時套用。只影響顯示 —— elapsed 照計，結果頁時間統計不受影響。
+  const [hideTimer, setHideTimer] = useState(false)
+  useEffect(() => {
+    const read = () => { try { setHideTimer(localStorage.getItem('dse_hide_timer') === '1') } catch { /* ignore */ } }
+    read()
+    window.addEventListener('dse-a11y', read)
+    return () => window.removeEventListener('dse-a11y', read)
+  }, [])
+
   // Show the English string when the UI is in English and a translation exists;
   // otherwise fall back to the Chinese original (so untranslated subjects still work).
   const tr = useCallback(
@@ -451,9 +461,11 @@ export default function PracticeSession({
             <span>
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
             </span>
-            <span className="flex items-center gap-1">
-              <Clock size={13} /> {formatTime(elapsed)}
-            </span>
+            {!hideTimer && (
+              <span className="flex items-center gap-1">
+                <Clock size={13} /> {formatTime(elapsed)}
+              </span>
+            )}
           </div>
           <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
             <div

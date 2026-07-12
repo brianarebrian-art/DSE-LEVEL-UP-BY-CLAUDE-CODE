@@ -7,10 +7,10 @@ import { LifeBuoy, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 
 // 全站無障礙 + 情緒安全層（root layout 掛載）：
-// 1. F10 全局字級：開機時將 localStorage `dse_font_size`（12–24px）套落 <html>
-//    —— Tailwind 文字全部係 rem 基準，一改 html font-size 全站生效。
-// 2. 易讀字體 class 全站套用（原本只喺練習頁 mount 先生效）。
-// 3. F13「我唔開心」SOS 掣：全站常駐（/relax 內除外，嗰度已有熱線橫幅），
+// 1. 開機套用：將 localStorage `dse_font_size`（12–24px）套落 <html> font-size，
+//    並套用易讀字體 class `font-easy` —— Tailwind 文字全部 rem 基準，一改全站生效。
+//    （可見開關喺 A11yPanel，全站常駐左下角；閱讀尺喺隔籬 ReadingRuler。）
+// 2.「我唔開心」SOS 掣：全站常駐（/relax 內除外，嗰度已有熱線橫幅），
 //    modal = 呼吸 + 避風港 + 熱線。溫和脈動，respect prefers-reduced-motion。
 
 export const FONT_KEY = 'dse_font_size'
