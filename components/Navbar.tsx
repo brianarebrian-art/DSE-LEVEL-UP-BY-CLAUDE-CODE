@@ -7,8 +7,6 @@ import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
 import LanguageToggle from '@/components/LanguageToggle'
 import { useT, useLocale } from '@/lib/i18n'
-import { useAuthSession } from '@/lib/auth/session'
-import { isLHYMSSTeacher, isTeacherOverride } from '@/lib/lhymss-verification'
 
 const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'leaderboard' | 'about' }[] = [
   { href: '/subjects', key: 'subjects' },
@@ -23,11 +21,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const t = useT()
   const { locale } = useLocale()
-  const { user } = useAuthSession()
-  // 老師專區 shows for LHYMSS teacher-signal accounts OR whitelisted founder/teacher
-  // accounts. This is a HINT — /teacher is still gated server-side (requireRole → 403),
-  // so a wrongly-shown button leaks nothing.
-  const showTeacher = !!user?.email && (isLHYMSSTeacher(user.email) || isTeacherOverride(user.email))
+  // 老師大數據平台 入口對所有人可見（方案 A）：老師未登入都見到、知道有呢個功能；學生／訪客
+  // 見到但入唔到 —— /teacher 同 /api/teacher 已 server-side 鎖死（requireRole → 403），頁面亦會
+  // 友善提示（請登入／你係學生，去練習區）。純 UI 提示，唔洩漏任何資料。
   const teacherLabel = locale === 'en' ? 'Teacher Analytics' : '老師大數據平台'
 
   return (
@@ -57,9 +53,9 @@ export default function Navbar() {
               >
                 {t.nav[l.key]}
               </Link>
-              {/* 老師大數據平台 — 插喺「科目」同「我的進度」之間；年長老師易睇：大字、高對比黃、有 📊
-                  icon。只係提示 —— /teacher 仍然 server-side 守衛（API requireRole → 403），錯誤顯示唔洩漏任何嘢。 */}
-              {l.href === '/subjects' && showTeacher && (
+              {/* 老師大數據平台 — 插喺「科目」同「我的進度」之間；對所有人可見（方案 A）。年長老師
+                  易睇：大字、高對比黃、有 📊 icon。/teacher 仍然 server-side 守衛（requireRole → 403）。 */}
+              {l.href === '/subjects' && (
                 <Link
                   href="/teacher"
                   className={`flex items-center gap-1.5 text-base font-bold transition-colors ${
@@ -107,7 +103,7 @@ export default function Navbar() {
               >
                 {t.nav[l.key]}
               </Link>
-              {l.href === '/subjects' && showTeacher && (
+              {l.href === '/subjects' && (
                 <Link
                   href="/teacher"
                   onClick={() => setOpen(false)}
