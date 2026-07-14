@@ -51,7 +51,7 @@ invocations — at this project's target traffic that threatens the $0/month con
 next-intl would duplicate a working system, add locale-routing middleware, and force a
 full-site rewrite from `useT()`/`en ? …` to `t('key')` — high regression risk, no user gain.
 New pages should use the existing pattern: `useT()` for dictionary strings, or inline
-`en ? 'English' : '中文'` via `useLocale()` (as used across the app and the Teacher Radar pages).
+`en ? 'English' : '中文'` via `useLocale()` (as used across the app).
 
 ## On 少數族裔 / Race Discrimination Ordinance
 

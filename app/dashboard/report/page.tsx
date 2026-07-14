@@ -7,6 +7,7 @@ import RadarChart, { type RadarAxis } from '@/components/RadarChart'
 import ErrorDNA from '@/components/ErrorDNA'
 import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
 import { getReverseLog } from '@/lib/reverseLog'
+import { loadAttempts } from '@/lib/progress'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { useLocale } from '@/lib/i18n'
@@ -26,6 +27,44 @@ interface StoredResult {
   elapsed: number
 }
 
+// 逐課題溫習建議（盲點卡用）。key = 真實題庫 topic id；搵唔到就按 label 關鍵字 fallback，
+// 再唔係就用 default。內容對齊 HKEAA 術語（共用品，非公共財）。
+const SUGGESTIONS: { match: (id: string, label: string) => boolean; zh: string; en: string }[] = [
+  {
+    match: (id, l) => id.includes('quadratic') || l.includes('二次'),
+    zh: '重溫求根公式同判別式嘅應用場景。',
+    en: 'Revisit the quadratic formula and where the discriminant applies.',
+  },
+  {
+    match: (id, l) => id === 'market_failure' || l.includes('共用品') || l.includes('市場失靈'),
+    zh: '再睇一次「共用品」嘅兩大特徵：非排他性同非競爭性。',
+    en: 'Re-check the two defining features of a public good: non-excludability and non-rivalry.',
+  },
+  {
+    match: (id, l) => id === 'demand_supply' || l.includes('供求') || l.includes('需求'),
+    zh: '畫多幾次供求曲線，留意價格同數量變動方向。',
+    en: 'Sketch the demand–supply curves a few more times; watch which way price and quantity move.',
+  },
+  {
+    match: (id, l) => id === 'probability' || l.includes('概率') || l.includes('機率'),
+    zh: '溫習條件概率同樹形圖嘅畫法。',
+    en: 'Review conditional probability and how to draw tree diagrams.',
+  },
+  {
+    match: (id, l) => ['mechanics', 'force_motion', 'kinematics'].includes(id) || l.includes('力學'),
+    zh: '力學圖要標晒所有力，包括摩擦力同支持力。',
+    en: 'Label every force on your mechanics diagrams — friction and the normal force included.',
+  },
+]
+
+function suggestionFor(id: string, label: string, en: boolean): string {
+  const hit = SUGGESTIONS.find((s) => s.match(id, label))
+  if (hit) return en ? hit.en : hit.zh
+  return en
+    ? 'Do 5 more variant questions on this topic, then reread the full solution.'
+    : '針對呢個課題多做 5 題變體練習，再細讀詳解。'
+}
+
 interface ReportData {
   generatedAt: string
   lastGrade: string | null
@@ -36,6 +75,14 @@ interface ReportData {
   blindSpots: TopicStatEntry[]
   dna: { concept: number; trap: number; careless: number }
   nextSteps: string[]
+  // 近 30 日真・軌跡（由 dse_progress 練習史計，唔係虛構 trendSlope）；<4 次練習就唔顯示
+  trend: {
+    runs: number
+    earlyPct: number
+    latePct: number
+    status: 'up' | 'steady' | 'building'
+    points: { t: number; pct: number }[]
+  } | null
 }
 
 export default function ReportPage() {
@@ -72,11 +119,35 @@ export default function ReportPage() {
 
     const blind = weakestTopics({ min: 2, limit: 3 }).filter((e) => winRate(e) < 1)
 
-    const log = getReverseLog()
+    // 錯題 DNA：近 50 條錯因自診（log 新喺頭，slice 即最近 50）
+    const log = getReverseLog().slice(0, 50)
     const dna = {
       concept: log.filter((e) => e.cause === 'A').length,
       trap: log.filter((e) => e.cause === 'B').length,
       careless: log.filter((e) => e.cause === 'C').length,
+    }
+
+    // 近 30 日進步軌跡：真練習史（dse_progress），前半 vs 後半平均準確率。
+    // ≥4 次先有統計意義；下行用「蓄力中」正向措辭（大愛紅線：無「退步/落後」）。
+    let trend: ReportData['trend'] = null
+    const cutoff = Date.now() - 30 * 24 * 60 * 60 * 1000
+    const recent = loadAttempts()
+      .filter((a) => a.timestamp >= cutoff && a.total > 0)
+      .sort((a, b) => a.timestamp - b.timestamp)
+    if (recent.length >= 4) {
+      const half = Math.floor(recent.length / 2)
+      const pct = (list: typeof recent) =>
+        Math.round((list.reduce((s, a) => s + a.score, 0) / list.reduce((s, a) => s + a.total, 0)) * 100)
+      const earlyPct = pct(recent.slice(0, half))
+      const latePct = pct(recent.slice(half))
+      const delta = latePct - earlyPct
+      trend = {
+        runs: recent.length,
+        earlyPct,
+        latePct,
+        status: delta >= 3 ? 'up' : delta <= -3 ? 'building' : 'steady',
+        points: recent.map((a) => ({ t: a.timestamp, pct: Math.round((a.score / a.total) * 100) })),
+      }
     }
 
     // 下一步建議（規則式，全部由真數據推）
@@ -112,6 +183,7 @@ export default function ReportPage() {
       blindSpots: blind,
       nextSteps: steps,
       dna,
+      trend,
     })
   }, [en])
 
@@ -126,7 +198,7 @@ export default function ReportPage() {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = `dse-level-up-溫書地圖-${Date.now()}.png`
+      a.download = `DSE_LevelUp_Report_${new Date().toISOString().slice(0, 10)}.png`
       a.click()
       URL.revokeObjectURL(url)
     } finally {
@@ -148,7 +220,7 @@ export default function ReportPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-slate-950 px-4 text-center">
         <div className="text-5xl" aria-hidden>🗺️</div>
-        <p className="text-slate-300 font-bold">{en ? 'No practice data yet' : '仲未有練習記錄'}</p>
+        <p className="text-slate-300 font-bold">{en ? 'Not enough data yet — do a few questions first!' : '仲未有足夠數據，做幾題先！'}</p>
         <p className="text-slate-500 text-sm max-w-sm">
           {en ? 'Do a few questions first — your study map is built from your real practice.' : '先做幾條題目 —— 溫書地圖係由你嘅真實練習記錄生成。'}
         </p>
@@ -177,7 +249,7 @@ export default function ReportPage() {
           <button
             onClick={downloadPng}
             disabled={downloading}
-            className="inline-flex items-center gap-2 border border-[#00F5D4]/40 text-[#00F5D4] hover:bg-[#00F5D4]/10 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold disabled:opacity-50"
+            className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-xl transition-all text-sm font-bold disabled:opacity-50"
           >
             <ImageDown size={15} /> {downloading ? (en ? 'Exporting…' : '導出緊…') : en ? 'Download PNG' : '下載 PNG'}
           </button>
@@ -201,6 +273,65 @@ export default function ReportPage() {
             ))}
           </div>
 
+          {/* 近 30 日進步軌跡：真練習史（dse_progress），純 SVG 折線（零圖表庫）。
+              每點 = 一次練習嘅準確率；<4 次未夠統計意義，顯示鼓勵文案。 */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h2 className="text-sm font-bold text-slate-300">{en ? 'Progress (last 30 days)' : '進步軌跡（近 30 日）'}</h2>
+              {report.trend && (
+                <span
+                  className="text-sm font-bold"
+                  style={{ color: report.trend.status === 'up' ? '#00F5D4' : report.trend.status === 'steady' ? '#FEE440' : '#9B5DE5' }}
+                >
+                  {report.trend.runs} {en ? 'runs' : '次練習'} · {report.trend.earlyPct}% → {report.trend.latePct}%{' '}
+                  {report.trend.status === 'up'
+                    ? en ? '↗ Rising' : '↗ 上升'
+                    : report.trend.status === 'steady'
+                      ? en ? '→ Steady' : '→ 平穩'
+                      : en ? '🌱 Building up' : '🌱 蓄力中'}
+                </span>
+              )}
+            </div>
+            {report.trend ? (
+              (() => {
+                const pts = report.trend.points
+                const t0 = pts[0].t
+                const t1 = pts[pts.length - 1].t
+                const x = (t: number) => (t1 === t0 ? 300 : 20 + ((t - t0) / (t1 - t0)) * 560)
+                const y = (pct: number) => 140 - pct * 1.2
+                const line = pts.map((p) => `${x(p.t).toFixed(1)},${y(p.pct).toFixed(1)}`).join(' ')
+                const md = (t: number) => { const d = new Date(t); return `${d.getMonth() + 1}/${d.getDate()}` }
+                return (
+                  <svg viewBox="0 0 600 168" className="w-full h-auto" role="img" aria-label={en ? 'Accuracy over time' : '準確率走勢'}>
+                    <defs>
+                      <linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.22" />
+                        <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    {[0, 50, 100].map((g) => (
+                      <g key={g}>
+                        <line x1="20" x2="580" y1={y(g)} y2={y(g)} stroke="#1e293b" strokeWidth="1" />
+                        <text x="583" y={y(g) + 3} fontSize="9" fill="#475569">{g}%</text>
+                      </g>
+                    ))}
+                    <polygon points={`20,${y(0)} ${line} ${x(t1).toFixed(1)},${y(0)}`} fill="url(#trendFill)" />
+                    <polyline points={line} fill="none" stroke="#22d3ee" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+                    {pts.map((p, i) => (
+                      <circle key={i} cx={x(p.t)} cy={y(p.pct)} r="3" fill="#22d3ee" />
+                    ))}
+                    <text x="20" y="162" fontSize="10" fill="#64748b">{md(t0)}</text>
+                    <text x="580" y="162" fontSize="10" fill="#64748b" textAnchor="end">{md(t1)}</text>
+                  </svg>
+                )
+              })()
+            ) : (
+              <p className="text-slate-400 text-sm text-center py-6">
+                {en ? 'Do a few more questions and your progress line will appear!' : '做多幾題，進步軌跡就會出現！'}
+              </p>
+            )}
+          </div>
+
           {/* 能力雷達 */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
             <h2 className="text-sm font-bold text-slate-300 mb-4">{en ? 'Ability radar (mastery by topic)' : '能力雷達（逐課題掌握度）'}</h2>
@@ -217,8 +348,17 @@ export default function ReportPage() {
                     <div className="text-rose-300 font-bold text-sm">{b.label}</div>
                     <div className="text-slate-400 text-xs mt-1">{en ? 'Mastery' : '掌握度'} {Math.round(winRate(b) * 100)}%</div>
                     <div className="text-slate-500 text-xs mt-2 leading-relaxed">
-                      {en ? 'Room to grow — redo the variants and reread the full solution.' : '進步空間 —— 重做變體題，再細讀詳解。'}
+                      {suggestionFor(b.topic, b.label, en)}
                     </div>
+                    {/* 即刻溫呢度 → 直入該科該課題操練（practice 需要 subject+topic 兩個參數）。
+                        data-html2canvas-ignore：下載 PNG 時唔會影埋個掣落報告圖。 */}
+                    <Link
+                      href={`/practice?subject=${encodeURIComponent(b.subjectId)}&topic=${encodeURIComponent(b.topic)}`}
+                      data-html2canvas-ignore
+                      className="mt-3 inline-flex items-center justify-center w-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 rounded-lg py-2 text-xs font-semibold transition-all"
+                    >
+                      {en ? 'Practise this now' : '即刻溫呢度'}
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -236,7 +376,7 @@ export default function ReportPage() {
             <ul className="space-y-2">
               {report.nextSteps.map((s, i) => (
                 <li key={i} className="text-sm text-slate-300 flex gap-2">
-                  <span style={{ color: '#00F5D4' }}>{i + 1}.</span> {s}
+                  <span style={{ color: '#00F5D4' }}>▸</span> {s}
                 </li>
               ))}
             </ul>
