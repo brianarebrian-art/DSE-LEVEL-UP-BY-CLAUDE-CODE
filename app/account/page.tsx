@@ -6,7 +6,7 @@ import { useAuthSession, authSignInGoogle } from '@/lib/auth/session'
 import { useLocale } from '@/lib/i18n'
 
 // Account settings — the PDPO one-click erasure (bilingual via useLocale). Deletes the
-// user's server-side data (cloud progress + any Teacher Radar rows) and clears local data.
+// user's server-side data (cloud progress) and clears local data.
 export default function AccountPage() {
   const { status } = useAuthSession()
   const { locale } = useLocale()
@@ -49,8 +49,8 @@ export default function AccountPage() {
             <p className="text-slate-100 font-bold mb-2">{en ? 'Your data has been deleted' : '已刪除你的資料'}</p>
             <p className="text-slate-400 text-sm leading-relaxed mb-5">
               {en
-                ? 'Your cloud progress, classes and related records have been removed, and local data has been cleared.'
-                : '你的雲端進度、班級與相關記錄已經清除，本機資料亦已清空。'}
+                ? 'Your cloud progress has been removed, and local data has been cleared.'
+                : '你的雲端進度已經清除，本機資料亦已清空。'}
             </p>
             <Link href="/" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all">
               {en ? 'Back to home' : '返回首頁'}
@@ -71,8 +71,8 @@ export default function AccountPage() {
             <h2 className="text-base font-bold text-slate-100 mb-2">{en ? 'Delete my data' : '刪除我的資料'}</h2>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
               {en
-                ? 'This permanently deletes your cloud learning progress and, if any, your classes, enrolments and practice data. Your browser data is cleared too. This cannot be undone.'
-                : '此操作會永久刪除你儲存在雲端的學習進度，以及（如有）你的班級、加入記錄和練習數據。本機瀏覽器的資料亦會一併清除。此操作無法復原。'}
+                ? 'This permanently deletes your cloud learning progress. Your browser data is cleared too. This cannot be undone.'
+                : '此操作會永久刪除你儲存在雲端的學習進度。本機瀏覽器的資料亦會一併清除。此操作無法復原。'}
             </p>
             {error && <p className="text-amber-400/90 text-sm mb-3">{error}</p>}
             {confirming ? (

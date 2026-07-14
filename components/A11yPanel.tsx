@@ -1,7 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { Accessibility, Clock, Minus, Plus, Type, X } from 'lucide-react'
+import Image from 'next/image'
+import { Clock, Minus, Plus, Type, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { applyFontSize, FONT_KEY } from '@/components/GlobalA11y'
 
@@ -85,11 +86,13 @@ export default function A11yPanel() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        aria-label={en ? 'Accessibility options' : '無障礙設定'}
         title={en ? 'Accessibility · text size & easy-read font' : '無障礙 · 字級同易讀字體'}
-        className="no-print fixed bottom-4 left-4 z-50 min-h-11 min-w-11 w-11 h-11 rounded-full bg-slate-900/85 border border-amber-500/40 text-amber-300 flex items-center justify-center hover:bg-amber-500/15 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
+        className="no-print fixed bottom-4 left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center hover:bg-slate-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
       >
-        <Accessibility size={20} />
+        {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
+            OG 圖，SVG 重繪先有真透明背景）。alt 係呢個掣嘅無障礙名稱（button 冇另設
+            aria-label，避免螢幕閱讀器重複讀兩次）。unoptimized：SVG 不經 next 優化器。 */}
+        <Image src="/icons/accessibility.svg" alt={en ? 'Accessibility settings' : '無障礙設定'} width={26} height={26} className="object-contain" unoptimized />
       </button>
 
       {open && (
@@ -100,7 +103,7 @@ export default function A11yPanel() {
         >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2 text-slate-100 font-bold text-sm">
-              <Accessibility size={16} className="text-amber-400" />
+              <Image src="/icons/accessibility.svg" alt="" aria-hidden width={20} height={20} className="object-contain" unoptimized />
               {en ? 'Accessibility' : '無障礙設定'}
             </div>
             <button

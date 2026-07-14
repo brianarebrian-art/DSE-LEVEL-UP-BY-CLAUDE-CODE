@@ -4,9 +4,10 @@ import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
 
 // PDPO erasure right — the signed-in user deletes their OWN server-side data. Scoped
-// entirely to the caller's id (never another user's). Deleting the profiles row cascades
-// (ON DELETE CASCADE) their classes → enrollments → question_events; user_progress has no
-// FK so it is deleted explicitly. Requires an explicit { confirm: true } to avoid misfires.
+// entirely to the caller's id (never another user's). Server-side data = cloud progress
+// (user_progress) + the profiles row if one exists (legacy; harmless no-op otherwise —
+// supabase-js returns errors rather than throwing, and we deliberately don't fail the
+// erasure on it). Requires an explicit { confirm: true } to avoid misfires.
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
     const supabase = getServiceSupabase()
     // Cloud progress (standalone table, no cascade).
     await supabase.from('user_progress').delete().eq('user_id', userId)
-    // Profile row → cascades classes/enrollments/question_events tied to this user.
+    // Legacy profiles row (if the table exists) — tolerated as a no-op otherwise.
     await supabase.from('profiles').delete().eq('user_id', userId)
     return NextResponse.json({ ok: true })
   } catch (e) {

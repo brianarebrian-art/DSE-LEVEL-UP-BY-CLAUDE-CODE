@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 通用無障礙符號（照用戶提供嘅參考圖重繪：藍 #007AFF、透明背景）。
+       原上載檔係 1200x630 OG 圖、實色淺灰底，無透明度可保留，故以向量重繪。 -->
+  <circle cx="32" cy="32" r="28.5" fill="none" stroke="#007AFF" stroke-width="5"/>
+  <circle cx="32" cy="17" r="5.4" fill="#007AFF"/>
+  <g stroke="#007AFF" stroke-width="6.2" stroke-linecap="round" fill="none">
+    <path d="M14 28.5 Q32 23.5 50 28.5"/>
+    <path d="M32 26 V38"/>
+    <path d="M32 38 L25 52.5"/>
+    <path d="M32 38 L39 52.5"/>
+  </g>
+</svg>

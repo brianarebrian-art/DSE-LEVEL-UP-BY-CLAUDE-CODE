@@ -121,6 +121,12 @@ export default function DashboardPage() {
           </div>
           <div className="flex items-center gap-2">
             <Link
+              href="/dashboard/report"
+              className="inline-flex items-center gap-2 border border-[#00F5D4]/40 text-[#00F5D4] hover:bg-[#00F5D4]/10 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
+            >
+              📋 {en ? 'Generate report' : '生成報告'}
+            </Link>
+            <Link
               href="/focus"
               className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl transition-all text-sm"
             >
