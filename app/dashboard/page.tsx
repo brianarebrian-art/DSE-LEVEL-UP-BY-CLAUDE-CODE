@@ -20,6 +20,12 @@ import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
+// F-NTM: 今晚唔溫得（本地 until-04:00 開關）
+import { isNotTonight, setNotTonight } from '@/lib/notTonight'
+// F-PRG / F-DNA / F-REV: 學習光譜 + 錯因雷達 + 重溫排程（全部純本地數據）
+import DailySpectrum from '@/components/DailySpectrum'
+import ErrorRadar from '@/components/ErrorRadar'
+import ReviewScheduler from '@/components/ReviewScheduler'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -41,6 +47,8 @@ export default function DashboardPage() {
   const [stats, setStats] = useState<ProgressStats | null>(null)
   const [topics, setTopics] = useState<TopicStatEntry[]>([])
   const [confirmReset, setConfirmReset] = useState(false)
+  // F-NTM: 今晚唔溫得 — 開啟時 Dashboard 收起所有推送／計數，只顯示休息畫面
+  const [ntm, setNtm] = useState(false)
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
@@ -48,9 +56,45 @@ export default function DashboardPage() {
     setTopics(getTopicStats())
   }, [version])
 
+  // F-NTM: 讀取 + 監聽開關（setNotTonight 會派 dse-ntm 事件）
+  useEffect(() => {
+    const read = () => setNtm(isNotTonight())
+    read()
+    window.addEventListener('dse-ntm', read)
+    return () => window.removeEventListener('dse-ntm', read)
+  }, [])
+
   if (!stats) {
     return (
       <div className="min-h-screen flex items-center justify-center text-slate-500">{t.common.loading}</div>
+    )
+  }
+
+  // F-NTM: 休息畫面 — 無題目、無計數、無「落後」暗示；/relax 照常開放；04:00 自動失效
+  if (ntm) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center">
+        <div className="text-6xl" aria-hidden>🌙</div>
+        <h1 className="text-2xl font-extrabold">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
+        <p className="text-slate-300 leading-relaxed">
+          {en ? 'Rest well tonight. See you tomorrow.' : '今晚好好休息。聽日再見。'}
+          <br />
+          {en ? 'Your progress has been saved automatically.' : '你嘅進度已自動儲存。'}
+        </p>
+        <Link
+          href="/relax"
+          className="min-h-11 inline-flex items-center bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 rounded-xl px-6 py-3 font-semibold transition-all"
+        >
+          🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
+        </Link>
+        <button
+          onClick={() => setNotTonight(false)}
+          className="min-h-11 text-sm text-slate-400 hover:text-slate-200 underline underline-offset-4 transition-colors"
+        >
+          {en ? 'Turn off early' : '提早關閉呢個模式'}
+        </button>
+        <p className="text-xs text-slate-500">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
+      </div>
     )
   }
 
@@ -132,6 +176,14 @@ export default function DashboardPage() {
             >
               🍅 {en ? 'Focus' : '番茄鐘'}
             </Link>
+            {/* F-NTM: 今晚唔溫得開關（柔和款式，唔搶眼） */}
+            <button
+              onClick={() => setNotTonight(true)}
+              title={en ? 'Hide all nudges and counters until 04:00' : '收起所有題目推送同計數，到 04:00 自動恢復'}
+              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-cyan-400 px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
+            >
+              🌙 {en ? 'Not tonight' : '今晚唔溫得'}
+            </button>
             <Link
               href="/subjects"
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all text-sm"
@@ -158,8 +210,16 @@ export default function DashboardPage() {
           ))}
         </div>
 
+        {/* F-PRG: 今日學習光譜（3:5:2 建議節奏，真實作答數據） */}
+        <DailySpectrum />
+
         {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
         <DailyPlan />
+
+        {/* F-REV: 錯題重溫智能排程（艾賓浩斯 1/3/7/14/30 日，本地數據） */}
+        <div className="mb-10">
+          <ReviewScheduler />
+        </div>
 
         {/* 高效 ROI — replaces the EXP/rank vanity meter with honest money-and-time
             framing tied to the free-for-everyone mission (no fabricated peer percentiles). */}
@@ -225,6 +285,11 @@ export default function DashboardPage() {
 
         {/* Error DNA — distribution of self-diagnosed error causes */}
         <ErrorDNA />
+
+        {/* F-DNA: 錯題 DNA 雷達（30 日三軸分佈 + 規則式洞察） */}
+        <div className="mt-6 mb-10">
+          <ErrorRadar />
+        </div>
 
         {/* Per-subject performance */}
         <h2 className="text-lg font-bold mb-4 text-slate-300">{d.perSubject}</h2>

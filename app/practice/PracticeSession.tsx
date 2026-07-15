@@ -18,6 +18,11 @@ import DifficultyBadge from '@/components/DifficultyBadge'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
 import { startServerLockout, verifyServerUnlock } from '@/lib/lockout/client'
+// F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
+import EmotionThermometer from '@/components/EmotionThermometer'
+import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
+// F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
+import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
 
 // The forced-lock countdown (seconds) after a wrong answer on a HARD question.
 const LOCKOUT_SECONDS = 60
@@ -292,12 +297,36 @@ export default function PracticeSession({
   const followupCorrect = followup !== null && followupPick === followup.correctZh
   const lockHeld = followup !== null && (lockSecs > 0 || !followupCorrect)
 
+  // F-EMO: 情緒溫度計狀態。gentleLock = 揀咗「有啲失落」→ 反思鎖轉柔和呈現 + 溫和標題
+  const [emoOpen, setEmoOpen] = useState(false)
+  const [gentleLock, setGentleLock] = useState(false)
+
   const selectOption = useCallback(
     (zh: string) => {
       if (answerState !== null || !currentQ) return
-      setAnswerState({ selectedZh: zh, isCorrect: zh === currentQ.correctZh })
+      const isCorrect = zh === currentQ.correctZh
+      setAnswerState({ selectedZh: zh, isCorrect })
+      // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
+      recordSpectrumAnswer(currentQ.difficulty)
+      // F-EMO: 拉分難度（hard = 5** 級）答錯 → 60 秒鎖之前先問感受
+      if (!isCorrect && currentQ.difficulty === 'hard') setEmoOpen(true)
     },
     [answerState, currentQ]
+  )
+
+  // F-EMO: 情緒選擇處理 — 記錄純本地（隱私紅線：永不入報告／排行榜）。
+  // 「好慌」= 跳過鎖死，直接導航去呼吸空間（Sarah 安全網優先於教學法）。
+  const pickEmotion = useCallback(
+    (tag: EmotionTag) => {
+      logEmotion(tag, subjectId)
+      setEmoOpen(false)
+      if (tag === 'anxious') {
+        router.push('/relax')
+        return
+      }
+      if (tag === 'neutral') setGentleLock(true)
+    },
+    [router, subjectId]
   )
 
   // Student completes the forced 3-way self-diagnosis → record the reverse cause
@@ -310,6 +339,7 @@ export default function PracticeSession({
         subjectId,
         questionId: currentQ.id,
         topic: currentQ.topicZh,
+        topicId: currentQ.topic, // F-REV: 畀重溫排程砌返正確嘅 ?topic= 連結
         cause,
         selected: answerState.selectedZh,
         correct: currentQ.correctZh,
@@ -354,6 +384,7 @@ export default function PracticeSession({
     setFollowupPick(null)
     setLockSecs(0)
     setLockToken(null)
+    setGentleLock(false) // F-EMO: 柔和呈現只限本題
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -645,13 +676,18 @@ export default function PracticeSession({
                     breakdown above, answer the cause follow-up correctly, AND wait out
                     the countdown before "Next" unlocks. No skipping. */}
                 {followup && (
-                  <div className={`rounded-2xl p-5 mb-4 border-2 ${calmLock ? 'border-slate-600 bg-slate-900/80' : 'border-red-700/70 bg-black/70'}`}>
+                  /* F-EMO: gentleLock（揀咗「有啲失落」）⇒ 強制柔和呈現 + 溫和標題，
+                     教學法不變（60 秒 + 反思題照舊），只改語氣同色調 */
+                  <div className={`rounded-2xl p-5 mb-4 border-2 ${(calmLock || gentleLock) ? 'border-slate-600 bg-slate-900/80' : 'border-red-700/70 bg-black/70'}`}>
                     <div className="flex items-center justify-between mb-3">
-                      <span className={`flex items-center gap-2 font-extrabold text-sm uppercase tracking-wide ${calmLock ? 'text-amber-300' : 'text-red-400'}`}>
-                        <Lock size={16} /> {tr('強制反思鎖 · 60 秒', 'Forced reflection lock · 60s')}
+                      <span className={`flex items-center gap-2 font-extrabold text-sm tracking-wide ${(calmLock || gentleLock) ? 'text-amber-300' : 'text-red-400 uppercase'}`}>
+                        <Lock size={16} />{' '}
+                        {gentleLock
+                          ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
+                          : tr('強制反思鎖 · 60 秒', 'Forced reflection lock · 60s')}
                       </span>
                       <span className="flex items-center gap-2">
-                        {calmLock ? (
+                        {(calmLock || gentleLock) ? (
                           /* 柔和模式：進度條代替數字倒數（進度行完 = 解鎖） */
                           <span className="w-24 h-2 rounded-full bg-slate-800 overflow-hidden inline-block" aria-label={tr('反思進度', 'Reflection progress')}>
                             <span
@@ -753,6 +789,9 @@ export default function PracticeSession({
           })}
         </div>
       </div>
+
+      {/* F-EMO: 情緒溫度計 — 拉分題答錯後、反思鎖之前先問感受 */}
+      {emoOpen && <EmotionThermometer onPick={pickEmotion} />}
     </div>
   )
 }

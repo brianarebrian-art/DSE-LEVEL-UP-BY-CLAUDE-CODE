@@ -10,6 +10,9 @@ export interface ReverseLogEntry {
   subjectId: string
   questionId: string
   topic: string
+  // F-REV: 題庫 topic id（practice ?topic= filter 食 id 唔食標籤）。
+  // optional：舊記錄冇呢欄，重溫排程會 fallback 去科目層級連結。
+  topicId?: string
   cause: ReverseCause
   selected: string
   correct: string

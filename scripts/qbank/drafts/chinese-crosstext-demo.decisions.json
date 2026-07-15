@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "source": "chinese-crosstext-demo.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ctx-demo-1": "pending",
+    "ctx-demo-2": "pending"
+  }
+}
