@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import SensoryMenu, { DEFAULT_PREF, loadSensoryPref, saveSensoryPref, type SensoryPref } from './components/SensoryMenu'
 import RelaxLanding from './components/RelaxLanding'
 
-// /relax — ⚡ Buff 補給艙主頁：首次進入先過感官菜單（Emma），之後直入主選擇。
+// /relax — 🫁 呼吸空間主頁：首次進入先過感官菜單（Emma），之後直入主選擇。
 export default function RelaxPage() {
   const [pref, setPref] = useState<SensoryPref>(DEFAULT_PREF)
   const [menuOpen, setMenuOpen] = useState(false)

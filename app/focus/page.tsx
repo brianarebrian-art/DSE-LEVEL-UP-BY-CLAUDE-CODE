@@ -282,12 +282,12 @@ function FocusRoom() {
         {/* 情緒急救：4-7-8 呼吸練習（小休或攰嘅時候用） */}
         <BreathingExercise />
 
-        {/* 化城避風港入口 */}
+        {/* FIX: [A1][A2] 呼吸空間入口（原「化城避風港」）；[B5] slate-500 → slate-400 提升對比 */}
         <a
           href="/relax"
-          className="block text-center text-sm text-slate-500 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 rounded-xl py-3 transition-all"
+          className="block text-center text-sm text-slate-400 hover:text-sky-300 border border-slate-800 hover:border-sky-500/40 rounded-xl py-3 min-h-11 transition-all"
         >
-          🏮 {en ? 'Really wiped today? Head into the Buff Station and rest up →' : '今日真係好攰？入化城避風港唞返夠先 →'}
+          🌬️ {en ? 'Really wiped today? Go to the Breathing Space and rest up →' : '今日真係好攰？去呼吸空間唞一唞 →'}
         </a>
       </div>
     </div>

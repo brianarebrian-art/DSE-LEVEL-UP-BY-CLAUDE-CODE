@@ -30,6 +30,22 @@ export default function ReadingRuler() {
 
   const persist = useCallback((nextOn: boolean, nextH: number) => {
     try { localStorage.setItem(KEY, JSON.stringify({ on: nextOn, hIdx: nextH })) } catch { /* ignore */ }
+    // 廣播畀 A11yPanel（一鍵舒適模式）同步顯示最新開關狀態
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [])
+
+  // A11yPanel 嘅「一鍵舒適模式」會直接寫同一個 KEY 再廣播 dse-a11y；
+  // 收到就重讀 storage，令呢把尺即時開／關，唔使學生再撳多次
+  useEffect(() => {
+    const sync = () => {
+      try {
+        const saved = JSON.parse(localStorage.getItem(KEY) ?? 'null')
+        setOn(!!saved?.on)
+        if (saved) setHIdx(Number(saved.hIdx) % HEIGHTS.length || 0)
+      } catch { /* ignore */ }
+    }
+    window.addEventListener('dse-a11y', sync)
+    return () => window.removeEventListener('dse-a11y', sync)
   }, [])
 
   useEffect(() => {
@@ -63,7 +79,8 @@ export default function ReadingRuler() {
         </div>
       )}
 
-      <div className="fixed bottom-4 left-20 z-50 no-print flex items-center gap-2">
+      {/* FIX: [B8] safe-area — iPhone Home Indicator 唔遮擋 */}
+      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-20 z-50 no-print flex items-center gap-2">
         <button
           onClick={() => { setOn(!on); persist(!on, hIdx) }}
           aria-pressed={on}

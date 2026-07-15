@@ -17,7 +17,7 @@ const zh = {
     linkMath: '數學',
     linkMethodology: '方法論',
     linkLeaderboard: '排行榜',
-    linkRelax: '化城避風港',
+    linkRelax: '呼吸空間', // FIX: [A1] CEO 命名修訂 2026-07-15
     aboutHeading: '關於',
     aboutUs: '關於我們',
     transparency: '透明度',
@@ -346,7 +346,7 @@ const en: typeof zh = {
     linkMath: 'Mathematics',
     linkMethodology: 'Method',
     linkLeaderboard: 'Leaderboard',
-    linkRelax: 'Relax Zone',
+    linkRelax: 'Breathing Space', // FIX: [A1] CEO 命名修訂 2026-07-15
     aboutHeading: 'About',
     aboutUs: 'About Us',
     transparency: 'Transparency',

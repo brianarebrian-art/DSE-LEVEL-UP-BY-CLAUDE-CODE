@@ -61,9 +61,17 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <div className="md:hidden flex items-center gap-3">
+          {/* FIX: [C12類] icon-only 掣冇無障礙名，VoiceOver/TalkBack 用戶開唔到選單；
+              順手補 44px 觸控目標（B10 標準）+ aria-expanded */}
           <button
-            className="text-slate-400 hover:text-slate-100"
+            className="min-h-11 min-w-11 flex items-center justify-center text-slate-400 hover:text-slate-100"
             onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-label={
+              locale === 'en'
+                ? open ? 'Close menu' : 'Open menu'
+                : open ? '關閉選單' : '開啟選單'
+            }
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>

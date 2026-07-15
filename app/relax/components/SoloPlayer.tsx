@@ -6,7 +6,7 @@ import { useLocale } from '@/lib/i18n'
 import { loadSensoryPref } from './SensoryMenu'
 import NowPlayingBar from './NowPlayingBar'
 
-// 🎧 單排補 MP — 官方 YouTube 電台（Lo-fi／落雨）+ Web Audio 雙耳節拍 + 番茄鐘。
+// 🎧 獨處充電 — 官方 YouTube 電台（Lo-fi／落雨）+ Web Audio 雙耳節拍 + 番茄鐘。
 // 版權紅線：除官方 YouTube-nocookie iframe 外，所有聲音一律程序生成（原創、零檔案，
 // 無本地 MP3、無第三方 CDN 音頻）。全部淡入，冇突發聲響（SEN）。同一時間只播一段；
 // 離開頁面自動停。誠實聲明：雙耳節拍效果因人而異，文案唔會作醫療級聲稱。
@@ -154,26 +154,28 @@ export default function SoloPlayer() {
 
   const TRACKS: { id: TrackId; emoji: string; tint: string; nameZh: string; nameEn: string; descZh: string; descEn: string }[] = [
     { id: 'lofi', emoji: '🎹', tint: 'bg-[#00F5D4]/15', nameZh: '深夜 Lo-fi 電台', nameEn: 'Late-night Lo-fi radio', descZh: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）', descEn: 'Piano + rain · calm your mind before revising (official Lofi Girl video)' },
-    { id: 'rain', emoji: '🌧️', tint: 'bg-emerald-400/15', nameZh: '落雨白噪音 · 回藍', nameEn: 'Rain white noise · refill MP', descZh: '真實雨聲 · 做完卷減壓（官方長時影片）', descEn: 'Real rain sounds · de-stress after a paper (official long-form video)' },
-    { id: 'binaural', emoji: '🧘', tint: 'bg-[#9B5DE5]/15', nameZh: '低頻專注 Buff（雙耳節拍）', nameEn: 'Low-freq focus buff (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
-    { id: 'pomodoro', emoji: '⏳', tint: 'bg-[#FF006E]/15', nameZh: '25 分鐘專注 combo（番茄鐘）', nameEn: '25-min focus combo (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
+    // FIX: [A3] 遊戲術語清除：「回藍／refill MP」「Buff」「combo」→ 中性描述
+    { id: 'rain', emoji: '🌧️', tint: 'bg-emerald-400/15', nameZh: '落雨白噪音', nameEn: 'Rain white noise', descZh: '真實雨聲 · 做完卷減壓（官方長時影片）', descEn: 'Real rain sounds · de-stress after a paper (official long-form video)' },
+    { id: 'binaural', emoji: '🧘', tint: 'bg-[#9B5DE5]/15', nameZh: '低頻專注（雙耳節拍）', nameEn: 'Low-freq focus (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
+    { id: 'pomodoro', emoji: '⏳', tint: 'bg-[#FF006E]/15', nameZh: '25 分鐘專注（番茄鐘）', nameEn: '25-min focus (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
   ]
 
   const names: Record<TrackId, string> = en
-    ? { lofi: 'Late-night Lo-fi radio', rain: 'Rain white noise', binaural: 'Low-freq focus buff', pomodoro: '25-min focus combo' }
-    : { lofi: '深夜 Lo-fi 電台', rain: '落雨白噪音 · 回藍', binaural: '低頻專注 Buff', pomodoro: '25 分鐘專注 combo' }
+    ? { lofi: 'Late-night Lo-fi radio', rain: 'Rain white noise', binaural: 'Low-freq focus', pomodoro: '25-min focus' }
+    : { lofi: '深夜 Lo-fi 電台', rain: '落雨白噪音', binaural: '低頻專注', pomodoro: '25 分鐘專注' }
 
   if (quietMode) {
     return (
       <div className="text-center py-10">
         <div className="text-2xl mb-3" aria-hidden>🔇</div>
         <p className="text-[#E8E8EC] mb-2">{en ? 'You chose quiet mode, so there’s no sound here.' : '你揀咗「安靜模式」，呢度唔會有任何聲音。'}</p>
-        <p className="text-sm text-[#8B8B96] mb-6">{en ? 'You can try the text-only recovery breath (breathing exercise), or head back to the main page to change your sensory preferences.' : '可以試下純文字嘅回藥術（呼吸練習），或者返主頁改返感官偏好。'}</p>
+        {/* FIX: [A3] 「回藥術」（遊戲術語）→「呼吸練習」；[B5] 對比度提升 */}
+        <p className="text-sm text-[#C2C2CC] mb-6">{en ? 'You can try the text-only breathing exercise, or head back to the main page to change your sensory preferences.' : '可以試下純文字嘅呼吸練習，或者返主頁改返感官偏好。'}</p>
         <Link
           href="/relax/breathing"
           className="inline-flex min-h-11 items-center rounded-[10px] border border-[#00F5D4]/30 text-[#00F5D4] text-sm px-5 py-3 hover:bg-[#00F5D4]/10 transition-colors"
         >
-          🌬️ {en ? 'Silent recovery breath' : '靜音回藥術'}
+          🌬️ {en ? 'Silent breathing exercise' : '靜音呼吸練習'}
         </Link>
       </div>
     )

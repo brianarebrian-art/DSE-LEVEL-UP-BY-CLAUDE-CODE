@@ -9,7 +9,7 @@ import { loadSensoryPref } from './SensoryMenu'
 // - 語音：跟 locale 揀 en-* 或 zh-HK → zh-TW → zh，rate 0.8 / pitch 0.9，一掣靜音，不支援即降級純文字
 // - prefers-reduced-motion：停用圓圈縮放，只顯示文字指示
 // - SEN：無圈數統計、無成就、無壓力；醫療提示（哮喘）常駐
-// 註：呢個係避風港嘅全屏版；/focus 卡片版（components/BreathingExercise.tsx）照舊。
+// 註：呢個係呼吸空間嘅全屏版；/focus 卡片版（components/BreathingExercise.tsx）照舊。
 
 type Phase = 'in' | 'hold' | 'out'
 const PHASE_MS: Record<Phase, number> = { in: 4000, hold: 7000, out: 8000 }
@@ -101,7 +101,8 @@ export default function BreathingExercise() {
       </div>
 
       <p className="text-[13px] text-white/60 mb-1">
-        🌬️ {en ? '4-7-8 recovery breath · follow the circle' : '4-7-8 回藥術 · 跟住個圈'}
+        {/* FIX: [A3] 「回藥術」（遊戲術語）→「呼吸」 */}
+        🌬️ {en ? '4-7-8 breathing · follow the circle' : '4-7-8 呼吸 · 跟住個圈'}
         {reduced ? (en ? ' (animation off per your system setting)' : '（已按系統設定停用動畫）') : ''}
       </p>
       <p className="text-xs text-white/50 mb-8 text-center max-w-xs leading-relaxed">

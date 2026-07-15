@@ -76,7 +76,8 @@ export default function PracticeSupport() {
 
   return (
     <>
-      <div className="fixed bottom-16 left-4 z-50 no-print flex flex-col items-start gap-2">
+      {/* FIX: [B8] safe-area — 工具角喺 iPhone 上唔會俾 Home Indicator 遮擋 */}
+      <div className="fixed bottom-[max(4rem,calc(env(safe-area-inset-bottom)+3rem))] left-4 z-50 no-print flex flex-col items-start gap-2">
         <button
           onClick={() => { setFontPanel((v) => !v) }}
           aria-expanded={fontPanel}
@@ -129,10 +130,11 @@ export default function PracticeSupport() {
       {breathing && (
         <div className="fixed inset-0 z-[60] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="w-full max-w-md relative">
+            {/* FIX: [B10] 關閉掣觸控區擴大至 ≥44×44px */}
             <button
               onClick={() => setBreathing(false)}
               aria-label={en ? 'Close' : '關閉'}
-              className="absolute -top-3 -right-3 z-10 bg-slate-800 border border-slate-600 text-slate-300 hover:text-white rounded-full p-2 transition-all"
+              className="absolute -top-3 -right-3 z-10 min-h-11 min-w-11 flex items-center justify-center bg-slate-800 border border-slate-600 text-slate-300 hover:text-white rounded-full transition-all"
             >
               <X size={16} />
             </button>

@@ -16,8 +16,11 @@ export default function EmergencyBanner() {
         {' | '}{en ? 'Suicide Prevention: ' : '生命熱線：'}
         <a href="tel:23820000" className="text-[#00F5D4] underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2382 0000</a>
       </p>
-      <p className="text-xs text-white/50 mt-1">
-        {en ? 'In an emergency, call 999 immediately or go to the nearest A&E.' : '如情況緊急，請立即致電 999 或前往就近急症室。'}
+      {/* FIX: [C14] 加醫療免責聲明；[B5] white/50（對比臨界）→ white/70 */}
+      <p className="text-xs text-white/70 mt-1 leading-relaxed">
+        {en
+          ? 'This platform is not a professional medical service; the information above is for reference only. In an emergency, call 999 immediately or go to the nearest A&E.'
+          : '本平台非專業醫療機構，以上資訊僅供參考。如情況緊急，請立即致電 999 或前往就近急症室。'}
       </p>
     </div>
   )

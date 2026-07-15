@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 
-// IG Group email 後備通道（化城避風港 3.0）— 連結失效／資源通知用。
+// IG Group email 後備通道（呼吸空間）— 連結失效／資源通知用。
 // 用返全站唯一嘅 server-only Supabase client（service key 只喺 request 時讀 env，
 // 永不落 bundle）。無需登入：/relax 對所有人開放，收 email 唔應該加登入牆。
 // 濫用防線：proxy.ts 全域 /api/* 60次/分/IP 已覆蓋 + 格式/長度驗證 + unique 去重。

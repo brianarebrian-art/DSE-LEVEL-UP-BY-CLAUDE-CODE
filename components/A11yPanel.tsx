@@ -15,6 +15,7 @@ import { applyFontSize, FONT_KEY } from '@/components/GlobalA11y'
 
 const EASY_KEY = 'dse_easy_font'
 const HIDE_TIMER_KEY = 'dse_hide_timer'
+const RULER_KEY = 'dse_reading_ruler' // 同 ReadingRuler.tsx 共用
 const MIN = 12
 const MAX = 24
 const STEP = 2
@@ -26,6 +27,7 @@ export default function A11yPanel() {
   const [size, setSize] = useState(16)
   const [easy, setEasy] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
+  const [ruler, setRuler] = useState(false)
 
   // 讀返裝置上已存嘅設定（client-only，避免 hydration mismatch）
   useEffect(() => {
@@ -34,9 +36,28 @@ export default function A11yPanel() {
       if (s >= MIN && s <= MAX) setSize(s)
       setEasy(localStorage.getItem(EASY_KEY) === '1')
       setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
+      const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
+      setRuler(!!r?.on)
     } catch {
       /* ignore */
     }
+  }, [])
+
+  // 閱讀尺自己顆 📏 掣改狀態時會廣播 dse-a11y；收到就重讀 storage，
+  // 令「一鍵舒適模式」嘅開／關顯示永遠反映真實狀態
+  useEffect(() => {
+    const sync = () => {
+      try {
+        setEasy(localStorage.getItem(EASY_KEY) === '1')
+        setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
+        const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
+        setRuler(!!r?.on)
+      } catch {
+        /* ignore */
+      }
+    }
+    window.addEventListener('dse-a11y', sync)
+    return () => window.removeEventListener('dse-a11y', sync)
   }, [])
 
   // Esc 一鍵關閉（SEN／鍵盤使用者）
@@ -81,23 +102,49 @@ export default function A11yPanel() {
     })
   }, [])
 
+  // 一鍵舒適模式：三項支援（易讀字體＋閱讀尺＋隱藏計時器）一掣齊開／齊關。
+  // 無痕設計（Emma/UDL）：UI 只描述功能，唔出任何診斷標籤字眼。
+  // 狀態由三個子開關推導 —— 學生逐個微調後，總掣自動反映真實組合。
+  const comfortOn = easy && hideTimer && ruler
+  const toggleComfort = useCallback(() => {
+    const next = !(easy && hideTimer && ruler)
+    document.documentElement.classList.toggle('font-easy', next)
+    try {
+      localStorage.setItem(EASY_KEY, next ? '1' : '0')
+      localStorage.setItem(HIDE_TIMER_KEY, next ? '1' : '0')
+      const saved = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
+      // 保留學生揀開嘅尺帶高度，只改 on/off
+      localStorage.setItem(RULER_KEY, JSON.stringify({ on: next, hIdx: Number(saved?.hIdx) || 0 }))
+    } catch {
+      /* ignore */
+    }
+    setEasy(next)
+    setHideTimer(next)
+    setRuler(next)
+    // ReadingRuler 同 PracticeSession 都聽 dse-a11y，即時生效
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [easy, hideTimer, ruler])
+
   return (
     <>
+      {/* FIX: [C12] button 明確 aria-label（img alt 改為裝飾性，避免重複朗讀）
+          FIX: [B8] bottom-4 → safe-area max()，iPhone Home Indicator 唔遮擋 */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
+        aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
         title={en ? 'Accessibility · text size & easy-read font' : '無障礙 · 字級同易讀字體'}
-        className="no-print fixed bottom-4 left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center hover:bg-slate-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
+        className="no-print fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center hover:bg-slate-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
       >
         {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
-            OG 圖，SVG 重繪先有真透明背景）。alt 係呢個掣嘅無障礙名稱（button 冇另設
-            aria-label，避免螢幕閱讀器重複讀兩次）。unoptimized：SVG 不經 next 優化器。 */}
-        <Image src="/icons/accessibility.svg" alt={en ? 'Accessibility settings' : '無障礙設定'} width={26} height={26} className="object-contain" unoptimized />
+            OG 圖，SVG 重繪先有真透明背景）。無障礙名稱由 button aria-label 提供。
+            unoptimized：SVG 不經 next 優化器。 */}
+        <Image src="/icons/accessibility.svg" alt="" aria-hidden width={26} height={26} className="object-contain" unoptimized />
       </button>
 
       {open && (
         <div
-          className="no-print fixed bottom-[4.5rem] left-4 z-50 w-72 max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-2xl p-4 shadow-xl"
+          className="no-print fixed bottom-[max(4.5rem,calc(env(safe-area-inset-bottom)+3.5rem))] left-4 z-50 w-72 max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-2xl p-4 shadow-xl"
           role="dialog"
           aria-label={en ? 'Accessibility options' : '無障礙設定'}
         >
@@ -114,6 +161,31 @@ export default function A11yPanel() {
               <X size={16} />
             </button>
           </div>
+
+          {/* 一鍵舒適模式（總掣）：易讀字體＋閱讀尺＋隱藏計時器一次過開 */}
+          <button
+            onClick={toggleComfort}
+            aria-pressed={comfortOn}
+            className={`w-full min-h-11 mb-4 flex items-center justify-between rounded-xl border px-4 py-2.5 transition-colors ${
+              comfortOn
+                ? 'bg-cyan-500/15 border-cyan-400/50 text-cyan-200'
+                : 'bg-slate-800 border-slate-600 text-slate-200 hover:bg-slate-700'
+            }`}
+          >
+            <span className="text-left">
+              <span className="block text-sm font-bold">✨ {en ? 'Comfort mode (one tap)' : '一鍵舒適模式'}</span>
+              <span className="block text-[11px] text-slate-500">
+                {en ? 'Easy font + reading ruler + timer off' : '易讀字體＋閱讀尺＋隱藏計時器'}
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                comfortOn ? 'bg-cyan-400 text-black' : 'bg-slate-700 text-slate-400'
+              }`}
+            >
+              {comfortOn ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
 
           {/* 字級 A− / A+ */}
           <div className="mb-4">
