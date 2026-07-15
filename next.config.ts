@@ -4,10 +4,9 @@ import type { NextConfig } from 'next'
 // loads: self-hosted next/font (Inter) + bundled KaTeX CSS (no font CDN), Google
 // avatars over https, and Google OAuth (redirect-based). Supabase is server-only.
 //
-// CSP keeps 'unsafe-inline' for script/style — Next's bootstrap scripts, KaTeX's
-// inline math styles and framer-motion's inline transforms all need it (no nonce
-// pipeline here). In dev we additionally allow 'unsafe-eval' + ws: so webpack HMR
-// keeps working; production drops both.
+// CSP keeps 'unsafe-inline' for script/style — Next's bootstrap scripts and KaTeX's
+// inline math styles need it (no nonce pipeline here). In dev we additionally allow
+// 'unsafe-eval' + ws: so webpack HMR keeps working; production drops both.
 const isDev = process.env.NODE_ENV !== 'production'
 
 const csp = [

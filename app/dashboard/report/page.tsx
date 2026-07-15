@@ -210,7 +210,7 @@ export default function ReportPage() {
   if (report === null) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <p className="text-slate-400 animate-pulse">{en ? 'Building your study map…' : '生成緊你嘅溫書地圖...'}</p>
+        <p className="text-slate-400 animate-pulse motion-reduce:animate-none">{en ? 'Building your study map…' : '生成緊你嘅溫書地圖...'}</p>
       </div>
     )
   }
@@ -243,13 +243,13 @@ export default function ReportPage() {
       <div className="max-w-3xl mx-auto">
         {/* 頂部操作列（no-print，唔會入 PNG 截圖之外嘅嘢） */}
         <div className="no-print flex items-center justify-between mb-6 gap-3 flex-wrap">
-          <Link href="/dashboard" className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm transition-colors">
+          <Link href="/dashboard" className="inline-flex items-center gap-2 min-h-11 text-slate-400 hover:text-slate-200 text-sm transition-colors">
             <ArrowLeft size={15} /> {en ? 'Back to dashboard' : '返回我的進度'}
           </Link>
           <button
             onClick={downloadPng}
             disabled={downloading}
-            className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-xl transition-all text-sm font-bold disabled:opacity-50"
+            className="inline-flex items-center gap-2 min-h-11 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-xl transition-all text-sm font-bold disabled:opacity-50"
           >
             <ImageDown size={15} /> {downloading ? (en ? 'Exporting…' : '導出緊…') : en ? 'Download PNG' : '下載 PNG'}
           </button>
@@ -260,7 +260,7 @@ export default function ReportPage() {
           <header className="text-center mb-8">
             <div className="text-sm font-bold tracking-widest" style={{ color: '#00F5D4' }}>DSE LEVEL UP</div>
             <h1 className="text-3xl font-extrabold mt-2">{en ? 'My Study Map' : '我嘅溫書地圖'}</h1>
-            <p className="text-slate-500 text-xs mt-2">{report.generatedAt}</p>
+            <p className="text-slate-400 text-xs mt-2">{report.generatedAt}</p>
           </header>
 
           {/* 統計卡 ×4 */}
@@ -268,7 +268,7 @@ export default function ReportPage() {
             {stat.map((c) => (
               <div key={c.label} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-center">
                 <div className="text-3xl font-extrabold" style={{ color: c.accent }}>{c.value}</div>
-                <div className="text-xs text-slate-500 mt-2">{c.label}</div>
+                <div className="text-xs text-slate-400 mt-2">{c.label}</div>
               </div>
             ))}
           </div>
@@ -312,7 +312,7 @@ export default function ReportPage() {
                     {[0, 50, 100].map((g) => (
                       <g key={g}>
                         <line x1="20" x2="580" y1={y(g)} y2={y(g)} stroke="#1e293b" strokeWidth="1" />
-                        <text x="583" y={y(g) + 3} fontSize="9" fill="#475569">{g}%</text>
+                        <text x="583" y={y(g) + 3} fontSize="9" fill="#94a3b8">{g}%</text>
                       </g>
                     ))}
                     <polygon points={`20,${y(0)} ${line} ${x(t1).toFixed(1)},${y(0)}`} fill="url(#trendFill)" />
@@ -320,8 +320,8 @@ export default function ReportPage() {
                     {pts.map((p, i) => (
                       <circle key={i} cx={x(p.t)} cy={y(p.pct)} r="3" fill="#22d3ee" />
                     ))}
-                    <text x="20" y="162" fontSize="10" fill="#64748b">{md(t0)}</text>
-                    <text x="580" y="162" fontSize="10" fill="#64748b" textAnchor="end">{md(t1)}</text>
+                    <text x="20" y="162" fontSize="10" fill="#94a3b8">{md(t0)}</text>
+                    <text x="580" y="162" fontSize="10" fill="#94a3b8" textAnchor="end">{md(t1)}</text>
                   </svg>
                 )
               })()
@@ -347,7 +347,7 @@ export default function ReportPage() {
                   <div key={`${b.subjectId}-${b.topic}`} className="bg-slate-900 border border-rose-500/20 rounded-xl p-4">
                     <div className="text-rose-300 font-bold text-sm">{b.label}</div>
                     <div className="text-slate-400 text-xs mt-1">{en ? 'Mastery' : '掌握度'} {Math.round(winRate(b) * 100)}%</div>
-                    <div className="text-slate-500 text-xs mt-2 leading-relaxed">
+                    <div className="text-slate-400 text-xs mt-2 leading-relaxed">
                       {suggestionFor(b.topic, b.label, en)}
                     </div>
                     {/* 即刻溫呢度 → 直入該科該課題操練（practice 需要 subject+topic 兩個參數）。
@@ -355,7 +355,7 @@ export default function ReportPage() {
                     <Link
                       href={`/practice?subject=${encodeURIComponent(b.subjectId)}&topic=${encodeURIComponent(b.topic)}`}
                       data-html2canvas-ignore
-                      className="mt-3 inline-flex items-center justify-center w-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 rounded-lg py-2 text-xs font-semibold transition-all"
+                      className="mt-3 inline-flex items-center justify-center w-full min-h-11 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 rounded-lg py-2 text-xs font-semibold transition-all"
                     >
                       {en ? 'Practise this now' : '即刻溫呢度'}
                     </Link>
@@ -382,7 +382,7 @@ export default function ReportPage() {
             </ul>
           </div>
 
-          <footer className="text-center text-[11px] text-slate-600 leading-relaxed">
+          <footer className="text-center text-[11px] text-slate-400 leading-relaxed">
             © DSE Level Up 2026. {en ? 'Data is for personal study reference only; official results are as published by the HKEAA.' : '數據僅供個人學習參考，最終成績以 HKEAA 公布為準。'}
           </footer>
         </div>

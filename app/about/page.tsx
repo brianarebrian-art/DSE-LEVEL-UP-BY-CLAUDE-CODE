@@ -13,7 +13,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '因材施教',
     enTitle: 'Teach to the learner',
     quote: '夫子教人，各因其材',
-    zh: '我們拒絕麥當勞式、倒模般的公式教育。系統會記住你每一條答錯的題、每一種思維陷阱，按你真實的弱項砌出專屬的逆向清錯策略——你補的是你自己的洞，而不是別人的範本。',
+    zh: '我們拒絕麥當勞式、倒模般的公式教育。系統會記住你每一條答錯的題、每一種思維陷阱，按你真實的盲點砌出專屬的逆向清錯策略——你補的是你自己的洞，而不是別人的範本。',
     en: 'We refuse one-size-fits-all, assembly-line teaching. The system remembers every question you miss and every trap you fall for, then builds a reverse error-clearing path around your real weaknesses — you patch your own gaps, not someone else’s template.',
   },
   {

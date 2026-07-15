@@ -450,7 +450,7 @@ export default function PracticeSession({
           )}
           {mode === 'weakness' && (
             <span className="inline-flex items-center gap-1 text-xs text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">
-              🛠️ {tr('弱項修復卷', 'Repair worksheet')}
+              🛠️ {tr('盲點修復卷', 'Repair worksheet')}
             </span>
           )}
         </div>

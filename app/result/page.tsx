@@ -165,7 +165,7 @@ export default function ResultPage() {
       divider,
       `${en ? 'Diagnostic Level' : '診斷等級'}: ${gradeResult.grade}`,
       `${en ? 'Accuracy Rate' : '準確率'}: ${result.score}/${result.total} (${pct}%)`,
-      en ? 'Core Weaknesses Identified:' : '已識別核心弱項：',
+      en ? 'Core Blind Spots Identified:' : '已識別核心盲點：',
       weaknesses,
       `${en ? 'Recommended Actions' : '建議行動'}: ${actions}`,
       divider,

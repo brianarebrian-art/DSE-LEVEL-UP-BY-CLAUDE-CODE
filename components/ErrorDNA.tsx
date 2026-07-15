@@ -56,7 +56,7 @@ export default function ErrorDNA() {
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-10">
       <div className="flex items-center gap-2.5 mb-1">
         <Fingerprint size={18} className="text-amber-400 shrink-0" />
-        <h3 className="text-lg font-bold text-slate-100">{en ? 'Your error DNA' : '你嘅錯題 DNA'}</h3>
+        <h3 className="text-lg font-bold text-slate-100">{en ? 'Your error fingerprint' : '你嘅錯題指紋'}</h3>
       </div>
       <p className="text-slate-500 text-sm mb-4">
         {en ? 'Every self-diagnosed mistake builds your pattern.' : '每次錯因自診都會砌出你獨有嘅錯誤模式。'}
@@ -65,8 +65,8 @@ export default function ErrorDNA() {
       {total === 0 ? (
         <p className="text-sm text-slate-500 bg-slate-800/40 rounded-xl px-4 py-6 text-center">
           {en
-            ? 'Practise and run the reverse-cause check after a wrong answer — your error DNA will appear here.'
-            : '開始練習，答錯後做錯因自診，你嘅錯題 DNA 就會喺度顯示。'}
+            ? 'Practise and run the reverse-cause check after a wrong answer — your error fingerprint will appear here.'
+            : '開始練習，答錯後做錯因自診，你嘅錯題指紋就會喺度顯示。'}
         </p>
       ) : (
         <>

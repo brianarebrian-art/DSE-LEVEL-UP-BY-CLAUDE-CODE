@@ -207,7 +207,7 @@ export default function DashboardPage() {
               )}
             </div>
             <div className="text-center sm:text-left">
-              <h3 className="font-bold text-lg mb-1">🛠️ {en ? 'Weakness Repair Worksheet' : '弱項修復卷'}</h3>
+              <h3 className="font-bold text-lg mb-1">🛠️ {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}</h3>
               <p className="text-sm text-slate-400 mb-4">
                 {en
                   ? 'Auto-build a 20-question drill from your lowest win-rate topics.'
@@ -217,7 +217,7 @@ export default function DashboardPage() {
                 onClick={onRepair}
                 className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-3 rounded-xl transition-all"
               >
-                <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '智能生成：專屬弱項修復卷'}
+                <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '一鍵生成：專屬盲點修復卷'}
               </button>
             </div>
           </div>

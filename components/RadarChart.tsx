@@ -30,7 +30,7 @@ export default function RadarChart({
   const valuePoly = axes.map((ax, i) => point(i, clamp(ax.value) * R).join(',')).join(' ')
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-[280px] mx-auto" role="img" aria-label={'弱項雷達圖 / weakness radar' /* i18n-exempt: 一次過雙語 aria-label；純 SVG 共用組件，無 locale context */}>
+    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-[280px] mx-auto" role="img" aria-label={'能力雷達圖 / ability radar' /* i18n-exempt: 一次過雙語 aria-label；純 SVG 共用組件，無 locale context */}>
       {rings.map((r) => (
         <polygon
           key={r}
