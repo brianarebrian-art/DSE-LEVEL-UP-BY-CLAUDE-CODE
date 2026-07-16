@@ -154,3 +154,35 @@ html.font-easy p,
 html.font-easy li {
   text-align: left;
 }
+
+/* P1-3 WCAG（Leo/Kate 2026-07-16）：跳至主要內容連結。
+   預設以 clip 完全隱藏（螢幕閱讀器照讀到），鍵盤第一下 Tab focus 即以
+   琥珀色藥丸現身左上角。用自訂 class 唔用 focus:not-sr-only ——
+   Tailwind v4 嘅 not-* variant 會同 not-sr-only utility 撞解析，實測唔生效。 */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.625rem 1rem;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  background: #f59e0b;
+  color: #000;
+  font-weight: 700;
+  border-radius: 0.75rem;
+}

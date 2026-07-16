@@ -32,7 +32,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
             onAction?.()
             authSignOut()
           }}
-          className="text-sm text-slate-400 hover:text-slate-100 flex items-center gap-1"
+          className="min-h-11 text-sm text-slate-400 hover:text-slate-100 flex items-center gap-1 px-1"
         >
           <LogOut size={14} /> {t.auth.signOut}
         </button>
@@ -46,7 +46,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
         onAction?.()
         authSignInGoogle()
       }}
-      className="flex items-center gap-2 text-sm border border-slate-700 hover:border-slate-500 text-slate-200 rounded-lg px-3 py-1.5 transition-colors"
+      className="min-h-11 flex items-center gap-2 text-sm border border-slate-700 hover:border-slate-500 text-slate-200 rounded-lg px-3 py-1.5 transition-colors"
     >
       <LogIn size={14} /> {t.auth.signIn}
     </button>

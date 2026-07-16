@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg">
+          <Link href="/" className="min-h-11 flex items-center gap-2 font-bold text-lg">
             <BookOpen size={22} className="text-amber-400" />
             <span>
               DSE <span className="text-amber-400">Level Up</span>
@@ -36,11 +36,12 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
+          {/* P1-3 WCAG：導航鏈接補 44px 觸控高度（navbar 容器 64px 高，視覺不變） */}
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm transition-colors ${
+              className={`text-sm transition-colors min-h-11 inline-flex items-center px-1 ${
                 pathname === l.href
                   ? 'text-amber-400'
                   : 'text-slate-400 hover:text-slate-100'
@@ -51,7 +52,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/subjects/math"
-            className="ml-2 bg-amber-500 hover:bg-amber-400 text-black font-semibold text-sm px-4 py-2 rounded-lg transition-colors"
+            className="ml-2 min-h-11 inline-flex items-center bg-amber-500 hover:bg-amber-400 text-black font-semibold text-sm px-4 py-2 rounded-lg transition-colors"
           >
             {t.nav.startPractice}
           </Link>

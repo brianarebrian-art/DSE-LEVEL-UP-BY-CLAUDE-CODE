@@ -31,9 +31,14 @@ export default function RootLayout({
   return (
     <html lang="zh-HK" className="h-full">
       <body className={`${inter.className} min-h-screen bg-[#080C14] text-slate-100`}>
+        {/* P1-3 WCAG：跳至主要內容連結（鍵盤/螢幕閱讀器用戶第一下 Tab 就見到，
+            滑鼠用戶完全睇唔到）。Server component 冇 locale hook，雙語並列。 */}
+        <a href="#main-content" className="skip-link">
+          跳至主要內容 · Skip to main content{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}
+        </a>
         <Providers>
           <Navbar />
-          <main className="pt-16">{children}</main>
+          <main id="main-content" className="pt-16">{children}</main>
           <Footer />
           {/* 全站無障礙層：字級/易讀字體全站套用 + 「我唔開心」SOS（/relax 內自動隱藏） */}
           <GlobalA11y />

@@ -5,6 +5,8 @@ import { useSearchParams } from 'next/navigation'
 import { useT } from '@/lib/i18n'
 import PracticeGate from './PracticeGate'
 import PracticeSupport from '@/components/PracticeSupport'
+// NTM 溫柔二次確認：開咗「今晚唔溫得」入嚟會先問一次（零強制，確認即放行）
+import NotTonightGate from '@/components/NotTonightGate'
 
 function LoadingScreen() {
   const t = useT()
@@ -33,7 +35,9 @@ export default function PracticePage() {
   return (
     <>
       <Suspense fallback={<LoadingScreen />}>
-        <PracticeRouter />
+        <NotTonightGate>
+          <PracticeRouter />
+        </NotTonightGate>
       </Suspense>
       {/* 支援小隊：唞一唞（4-7-8 呼吸）+ 易讀字體切換。防跳行閱讀尺已改為全站常駐（見 layout） */}
       <PracticeSupport />

@@ -13,8 +13,10 @@ export interface DaySpectrum {
 
 const KEY = 'dse_daily_spectrum'
 
+// 「一日」嘅界線 = 04:00（同「今晚唔溫得」對齊）：凌晨 00:30 溫書仍計作前一晚，
+// 唔會過咗午夜就無情歸零 —— 深夜溫書係 DSE 考生真實場景。
 function todayStr(): string {
-  return new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
+  return new Date(Date.now() - 4 * 60 * 60 * 1000).toLocaleDateString('en-CA') // YYYY-MM-DD
 }
 
 export function getTodaySpectrum(): DaySpectrum {

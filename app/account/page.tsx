@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useAuthSession, authSignInGoogle } from '@/lib/auth/session'
 import { useLocale } from '@/lib/i18n'
+// 進度檔案導出／導入 —— 刻意放喺登入牆之外（服務對象正正係唔想登入嘅學生）
+import DataPortability from '@/components/DataPortability'
 
 // Account settings — the PDPO one-click erasure (bilingual via useLocale). Deletes the
 // user's server-side data (cloud progress) and clears local data.
@@ -42,6 +44,9 @@ export default function AccountPage() {
     <div className="min-h-screen px-4 py-16">
       <div className="max-w-lg mx-auto">
         <h1 className="text-2xl font-extrabold mb-6">{en ? 'Account settings' : '帳戶設定'}</h1>
+
+        {/* $0 跨裝置：導出／導入進度檔案（毋須登入） */}
+        {!done && <DataPortability />}
 
         {done ? (
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
