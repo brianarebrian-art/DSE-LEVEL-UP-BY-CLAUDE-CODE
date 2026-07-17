@@ -1,0 +1,78 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · economics · econ-market-structure-mc-10.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">economics</span></h1>
+<div class="sub">來源 econ-market-structure-mc-10.json · 共 10 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">10</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"econ-ms-mc-0","topic":"完全競爭市場的特徵","difficulty":"basic","question":"下列哪一項是完全競爭市場的特徵？","options":["市場上有眾多買家與賣家，個別廠商是價格接受者","廠商透過產品差異吸引顧客，各自擁有一批忠實客源","市場只有一個賣家，並設有極高的進入障礙","廠商數目不多，彼此相互依存，決策時須顧及對手的反應"],"correctIndex":0,"explanation":"完全競爭的核心特徵是廠商與顧客數目眾多、產品同質、資訊流通且可自由進出市場，個別廠商的產量相對市場微不足道，只能接受市場價格，屬價格接受者。「透過產品差異吸引顧客」是壟斷性競爭的特徵；「只有一個賣家並設有極高進入障礙」描述的是壟斷；「廠商數目不多、彼此相互依存」則是寡頭壟斷的特徵——三者皆把其他市場結構的特徵誤植到完全競爭之上。","trapTypes":["correct","concept_swap","concept_swap","concept_swap"],"dnaTag":"CMT","mother":"ms-perfect-comp-features"},{"id":"econ-ms-mc-1","topic":"壟斷市場的辨認","difficulty":"basic","question":"某產品的市場只有一個賣家，並因受專利權保護，令其他廠商難以進入。這屬於哪一種市場結構？","options":["壟斷","完全競爭","壟斷性競爭","寡頭壟斷"],"correctIndex":0,"explanation":"單一賣家加上難以逾越的進入障礙（如專利權），是壟斷市場的定義特徵，該廠商即整個行業。「完全競爭」的賣家眾多且可自由進出，與題意完全相反；「壟斷性競爭」雖有價格制定能力，但賣家眾多、進入障礙低；「寡頭壟斷」是由少數而非單一廠商支配——三者的賣家數目皆與「只有一個賣家」不符。","trapTypes":["correct","concept_reversal","concept_swap","concept_swap"],"dnaTag":"CMT","mother":"ms-monopoly-identify"},{"id":"econ-ms-mc-2","topic":"壟斷性競爭與完全競爭的分別","difficulty":"basic","question":"壟斷性競爭與完全競爭最主要的分別在於哪一點？","options":["壟斷性競爭的廠商出售有差異的產品，而完全競爭的產品同質","壟斷性競爭只有少數幾間廠商，而完全競爭廠商眾多","壟斷性競爭設有很高的進入障礙，而完全競爭可自由進出","壟斷性競爭的廠商是價格接受者，而完全競爭則是價格制定者"],"correctIndex":0,"explanation":"兩者同樣有眾多廠商並可自由進出，關鍵分野在於產品性質：壟斷性競爭出售有差異的產品，因而擁有少許價格制定能力；完全競爭的產品同質，廠商只能接受市場價格。「只有少數幾間廠商」誤把寡頭壟斷的特徵套到壟斷性競爭；「設有很高進入障礙」與壟斷性競爭進入障礙低的事實相反；「壟斷性競爭是價格接受者、完全競爭是價格制定者」則把兩者的價格角色完全調轉。","trapTypes":["correct","concept_swap","concept_reversal","concept_reversal"],"dnaTag":"CMT","mother":"ms-moncomp-vs-perfect"},{"id":"econ-ms-mc-3","topic":"完全競爭的長期均衡","difficulty":"intermediate","question":"在長期均衡下，完全競爭市場中一個代表廠商的處境，下列哪一項描述最準確？","options":["只賺取正常利潤，在平均總成本最低點生產，並達致配置效率（價格等於邊際成本）","賺取超正常利潤，因為市場競爭激烈迫使廠商不斷提高效率","售價高於邊際成本，出現配置不效率，與壟斷者無異","因無法收回成本而必然出現虧損，最終被迫退出市場"],"correctIndex":0,"explanation":"完全競爭長期均衡有三個並存的結果：自由進出令超正常利潤與虧損消失，只餘正常利潤；廠商在平均總成本最低點生產，達生產效率；價格等於邊際成本，達配置效率。「賺取超正常利潤」錯在忽略自由進入會侵蝕利潤，長期不能持續；「售價高於邊際成本、配置不效率」是壟斷的結果，並非完全競爭；「必然虧損退出」則忽略了退出會令留下來的廠商回復正常利潤，長期不會人人虧損。","trapTypes":["correct","concept_reversal","concept_swap","over_interpretation"],"dnaTag":"CMT","mother":"ms-perfect-longrun"},{"id":"econ-ms-mc-4","topic":"壟斷者的利潤最大化與定價","difficulty":"intermediate","question":"壟斷者按利潤最大化原則決定產量後，其定價有何特點？","options":["產量定於邊際收益等於邊際成本之處，售價則沿需求曲線讀取，高於邊際成本，造成配置不效率","售價等於邊際成本，與完全競爭廠商的定價方式相同","售價等於邊際收益，因為壟斷者的售價與邊際收益兩者相等","由於是市場上唯一的賣家，售價可定於任意高的水平而不受任何限制"],"correctIndex":0,"explanation":"壟斷者同樣按邊際收益等於邊際成本決定利潤最大化產量，但因需求曲線向右下傾斜，該產量對應的需求價格高於邊際收益，也高於邊際成本，故售價高於邊際成本，造成配置不效率。「售價等於邊際成本」是完全競爭的結果，並非壟斷；「售價等於邊際收益」混淆了兩者——壟斷下售價一直高於邊際收益；「可定於任意高的水平」忽略了需求曲線的約束，定價過高會令銷量大跌，未必有利可圖。","trapTypes":["correct","concept_swap","half_right","over_interpretation"],"dnaTag":"MEC","mother":"ms-monopoly-pricing"},{"id":"econ-ms-mc-5","topic":"寡頭壟斷的價格僵化","difficulty":"intermediate","question":"以拗折需求曲線解釋寡頭壟斷市場，價格傾向僵化的原因是甚麼？","options":["若某廠商減價，對手會跟隨減價；若加價，對手卻不跟隨，故單方面改價皆不利，價格因而穩定","若某廠商加價，對手會跟隨加價；若減價，對手卻不跟隨，故加價對該廠商有利","政府對寡頭行業實施嚴格的價格管制，令價格在法律上不得變動","寡頭廠商出售的產品完全同質，市場競爭令價格必然統一於同一水平"],"correctIndex":0,"explanation":"拗折需求曲線假設對手「跟跌不跟升」：某廠商減價，對手為保市場佔有率會一同減價，銷量增幅有限；某廠商加價，對手按兵不動，該廠商會流失大量顧客。兩個方向的改價都不利，故廠商傾向維持原價，形成價格僵化。「加價對手跟隨、減價不跟隨」把對手的反應方向完全調轉；「政府價格管制」與拗折需求曲線的解釋無關；「產品完全同質令價格統一」既非拗折曲線的邏輯，寡頭產品亦往往有差異。","trapTypes":["correct","concept_reversal","irrelevant","concept_swap"],"dnaTag":"CMT","mother":"ms-oligopoly-kinked"},{"id":"econ-ms-mc-6","topic":"壟斷性競爭的長期均衡","difficulty":"intermediate","question":"壟斷性競爭市場在長期均衡時，一個代表廠商的狀況是怎樣？","options":["新廠商進入令個別廠商的需求減少，最終只賺取正常利潤，且不在平均總成本最低點生產，存在過剩產能","由於產品有差異，個別廠商長期可持續賺取超正常利潤","廠商在平均總成本最低點生產，達致生產效率，與完全競爭無異","因產品差異微不足道，市場長期必然演變為完全競爭"],"correctIndex":0,"explanation":"壟斷性競爭進入障礙低：短期的超正常利潤會吸引新廠商加入，令個別廠商的需求減少並向左移，直至只餘正常利潤為止。由於需求曲線向右下傾斜，均衡點落在平均總成本最低點的左方，廠商並未用盡產能，存在過剩產能，故達不到完全競爭的生產效率。「長期持續賺取超正常利潤」忽略了自由進入的侵蝕；「在平均總成本最低點生產」正是壟斷性競爭達不到的；「必然演變為完全競爭」則過度推論——產品差異令價格制定能力得以保留，市場結構不會消失。","trapTypes":["correct","concept_reversal","concept_swap","over_interpretation"],"dnaTag":"CMT","mother":"ms-moncomp-longrun"},{"id":"econ-ms-mc-7","topic":"需求曲線形狀與市場力量","difficulty":"intermediate","question":"個別廠商所面對的需求曲線形狀，反映其市場力量。下列配對哪一項正確？","options":["完全競爭廠商面對水平（完全彈性）的需求曲線，是價格接受者；壟斷者面對向右下傾斜的需求曲線，具價格制定能力","完全競爭廠商面對向右下傾斜的需求曲線，壟斷者則面對水平的需求曲線","兩者面對的需求曲線皆向右下傾斜，只是壟斷者的較為陡峭","需求曲線的形狀由政府規管決定，與市場結構本身無關"],"correctIndex":0,"explanation":"廠商面對的需求曲線形狀反映其定價能力：完全競爭廠商是價格接受者，只能按市場價出售，其需求曲線在市場價水平呈水平（完全彈性）；壟斷者是價格制定者，面對整個市場向右下傾斜的需求曲線，減價才能增加銷量。「兩者調轉」把價格接受者與制定者的需求曲線完全對調；「兩者皆向右下傾斜」忽略了完全競爭廠商需求曲線水平這一關鍵特徵；「由政府規管決定」則錯把外在管制當成需求曲線形狀的成因，實際成因是市場結構與廠商的相對規模。","trapTypes":["correct","concept_reversal","half_right","irrelevant"],"dnaTag":"TMR","mother":"ms-demand-curve-power"},{"id":"econ-ms-mc-8","topic":"壟斷與完全競爭的比較","difficulty":"hard","question":"假設某行業原為完全競爭，其後被一間廠商收購所有對手而成為壟斷，行業的成本結構與市場需求維持不變。與原來的完全競爭相比，壟斷後的結果最可能是甚麼？","options":["產量減少、售價上升，且售價高於邊際成本，社會出現配置不效率（無謂損失）","售價上升、產量減少，但由於只剩一個賣家，生產效率必然提升，社會整體反而得益","產量增加、售價下降，因為壟斷者可憑規模擴張造福消費者","售價會不斷上升至消費者完全無法負擔，市場最終因無人購買而消失"],"correctIndex":0,"explanation":"由完全競爭轉為壟斷後，廠商由價格接受者變成價格制定者，會按邊際收益等於邊際成本減產抬價，使售價高於邊際成本，原本互利的交易未能達成，社會出現配置不效率（無謂損失）。「生產效率必然提升、社會得益」半對半錯——即使成本相同，減產抬價帶來的無謂損失令社會整體受損，而非得益；「產量增加、售價下降」把壟斷的效果完全調轉；「售價升至無人負擔、市場消失」屬過度推論，壟斷者受需求曲線約束，會選擇利潤最大化的價量組合而非趕絕顧客。","trapTypes":["correct","half_right","concept_reversal","over_interpretation"],"dnaTag":"MEC","mother":"ms-monopoly-vs-perfect"},{"id":"econ-ms-mc-9","topic":"市場結構的效率與利潤判斷","difficulty":"hard","question":"某壟斷者在利潤最大化產量下，售價為每件 \\$20，邊際成本為 \\$12，平均總成本為 \\$15。下列判斷哪一項正確？","options":["售價高於邊際成本，存在配置不效率；同時售價高於平均總成本，廠商賺取超正常利潤，每件 \\$5","售價高於邊際成本，存在配置不效率；但售價等於平均總成本，廠商只賺取正常利潤","售價高於平均總成本，故已達配置效率，並同時賺取超正常利潤","由於邊際成本低於售價，廠商應無限增產，直至賺取最大利潤為止"],"correctIndex":0,"explanation":"配置效率的條件是售價等於邊際成本；此處售價 \\$20 高於邊際成本 \\$12，故存在配置不效率。利潤方面，售價 \\$20 高於平均總成本 \\$15，每件賺取超正常利潤 \\$20 − \\$15 = \\$5。「售價等於平均總成本、只賺正常利潤」與 \\$20 高於 \\$15 的數據不符；「售價高於平均總成本即達配置效率」混淆了兩個概念——配置效率看的是售價與邊際成本的關係，不是與平均總成本；「應無限增產」錯在利潤最大化產量已定於邊際收益等於邊際成本之處，再增產會令邊際成本高於邊際收益，反而蝕本。","trapTypes":["correct","calculation_slip","concept_swap","over_interpretation"],"dnaTag":"MEC","mother":"ms-efficiency-profit-judge"}];
+const SUBJECT = "economics";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  <ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  const out = { _meta: { source: "econ-market-structure-mc-10.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Date().toISOString().slice(0,10) }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "econ-market-structure-mc-10.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
