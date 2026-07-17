@@ -9,6 +9,14 @@
 - **驗收**：qa 三綠 + build 綠（`/admin`、`/api/admin` 以 ƒ dynamic 註冊）+ E2E：未登入 `/admin` → 302 返首頁（實測 path=/）、`/api/admin` → 403；pull 腳本無 env 時安全拒絕。**面板要生效需**：行 0004 SQL + 喺 .env.local 同 Vercel 設 `ADMIN_EMAILS`。
 - 順手清咗 `.env.example` 嘅免費化殘留（ALLOWED_EMAILS/PREMIUM_EMAILS，code 零引用）＋補 Supabase env 說明。
 
+## 2026-07-17f — Admin 審核面板 /admin（瀏覽器逐題 A/R/P，Task #95）
+
+- `/admin`（server component + `ReviewPanel` client）：Google 登入 + `ADMIN_EMAILS` 白名單閘，非 admin `redirect('/')`（唔透露頁面存在）。實時統計卡（Live/簽名/覆蓋率/待審由真題庫計，零寫死）+ 待審隊列（讀 `scripts/qbank/drafts/*.json`）+ 雲端審核歷史。
+- `/api/admin` GET/POST：reviewer 一律取自 session（唔信 client 自報），寫入 Supabase `review_decisions`（migration `0004`）。`lib/auth/adminAllowlist.ts` backend-agnostic（Auth.js 今日 / Better Auth 之後）。
+- `scripts/qbank/pull-decisions.mjs`：雲端決定拉返 repo 生成 `<batch>.decisions.json` → 照行 `promote-drafts.mjs`。**入庫唯一路徑仍然係本地 promote + 人手 wire + git push —— 面板只記錄決定，機器永不自動入庫。**
+- 修正原 spec 4 位（已提報）：RLS 開而零 policy（本 stack 用 service role 唔用 Supabase Auth，原 `auth.jwt()` policy 係死码）；admin email 入 env 唔寫死喺公開 repo；唔重引 `profiles.role`/teacher 詞彙（0003 已剷）；`next.config` 加 `outputFileTracingIncludes` 令 Vercel serverless 讀到 drafts。
+- 驗收：qa 三綠 + build 綠（`/admin`、`/api/admin` 皆 ƒ 動態路由）。**啟用步驟（人手）：Supabase 跑 0004 + Vercel 設 `ADMIN_EMAILS` + push。**
+
 ## 2026-07-17e — F-CTX 跨篇對決首批 2 題入庫（中文科首批人手核對題）
 
 - Brian 實名簽批 2/2（魚我所欲也×岳陽樓記／六國論×出師表）→ `promote-drafts.mjs` 出 `data/questions/chinese-reviewed.ts` → wire `load.ts` + `index.ts`。跨篇對決功能由「草稿」正式變「有 live 內容」。
