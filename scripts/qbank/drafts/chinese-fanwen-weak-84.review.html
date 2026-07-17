@@ -1,0 +1,78 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chinese · chinese-fanwen-weak-84.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chinese</span></h1>
+<div class="sub">來源 chinese-fanwen-weak-84.json · 共 10 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">10</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"art-chinese-lrxj-lexis-0","topic":"字詞解釋","difficulty":"basic","question":"「君子坦蕩蕩，小人長戚戚」的「戚戚」，意思最接近下列哪一項？","options":["憂愁不安","哀傷哭泣","親屬眾多","拘謹恭順"],"correctIndex":0,"explanation":"「戚戚」指憂懼不安：小人斤斤計較利害得失，故終日憂慮；與「坦蕩蕩」的心境寬廣平正相對。「哀傷哭泣」半對半錯——「戚」字確有悲哀一義（如「哀戚」），但本章對舉的是心境寬窄而非哀樂，語境不合；「親屬眾多」是由「親戚」一詞產生的字面聯想，與心境無關；「拘謹恭順」描述的是行為態度，以態度偷換心境，且與「長戚戚」的貶義語氣不符。","trapTypes":["correct","half_right","irrelevant","concept_swap"],"dnaTag":"CMT","mother":"lrxj-lexis"},{"id":"art-chinese-lrxj-comp-1","topic":"內容理解","difficulty":"basic","question":"「今之孝者，是謂能養。至於犬馬，皆能有養；不敬，何以別乎？」孔子在本章提及「犬馬」，用意是甚麼？","options":["指出若只供養父母而不存敬意，便與飼養犬馬無所分別，強調孝必須以敬為本","以犬馬比喻孝子，勸勉世人應如犬馬般忠心地服侍父母","慨嘆世人飼養犬馬勝於奉養父母，藉此諷刺世風日下","說明家境貧困的人難以同時兼顧供養與敬意"],"correctIndex":0,"explanation":"孔子指出世人以為「能養」便是孝，但犬馬同樣得到飼養——若對父母沒有敬意，「養父母」與「養犬馬」便無從分別，可見孝的本質在敬而不在養。以犬馬比喻孝子屬審題錯誤：句中犬馬是「被養」的對象，不是「事親」的主體，此選項恰恰把比喻對象讀反；「諷刺世人厚待犬馬」屬過度推論，原文只作類比，並無比較世人待犬馬與待父母孰厚；「家貧難兼顧」文中全無涉及，與章旨無關。","trapTypes":["correct","keyword_misread","over_interpretation","irrelevant"],"dnaTag":"TMR","mother":"lrxj-comp"},{"id":"art-chinese-lrxj-comp-2","topic":"內容理解","difficulty":"intermediate","question":"「志士仁人，無求生以害仁，有殺身以成仁。」下列對「殺身成仁」的理解，何者最準確？","options":["當生命與仁德不可兩全時，志士仁人寧可犧牲生命，也要成全仁德","仁德必須以犧牲性命換取，未曾捨命的人不可能成就仁德","志士仁人輕視生命，認為肉身存亡無足輕重","為保全個人名節，君子應在受辱之前自我了斷"],"correctIndex":0,"explanation":"本章說明仁德是最高的價值取捨：志士仁人不會為求活命而損害仁德，在兩者不能並存的極端處境下，寧捨生命以成全仁德。「必須捨命方能成仁」屬過度推論——「有殺身以成仁」說的是極端情況下的抉擇，並非成仁的必要條件，日常踐仁不必以死為代價；「輕視生命」半對半錯——仁人重義過於重生，但並非視生命如無物，否則「無求生以害仁」的掙扎便無意義；「為名節自盡」以「名」偷換「仁」，孔子所論是內在德性而非外在聲名。","trapTypes":["correct","over_interpretation","half_right","concept_swap"],"dnaTag":"CMT","mother":"lrxj-comp"},{"id":"art-chinese-lrxj-comp-3","topic":"內容理解","difficulty":"intermediate","question":"「事父母幾諫。見志不從，又敬不違，勞而不怨。」下列何者最符合本章對「諫親」的主張？","options":["見父母有過應委婉勸止；父母不接納時，仍須恭敬而不冒犯，內心憂勞而不怨恨","父母有過而不聽勸，子女應直言力爭，堅持到父母改正為止","「幾諫」即多次反覆勸諫——「幾」解作「多次」，強調勸親貴在堅持","子女應順從父母的一切決定，不宜提出任何異議"],"correctIndex":0,"explanation":"「幾」解作輕微、委婉，「幾諫」即婉轉勸諫；父母不從，子女仍當恭敬不觸犯（又敬不違），憂心操勞而不生怨懟（勞而不怨）——既盡規勸之責，亦全孝敬之道。「直言力爭到底」正好違背「又敬不違」，把章旨推向一個極端；「幾解作多次」半對半錯——主張勸諫是對的，但「幾」字訓詁錯誤，這是本章最常見的字詞陷阱；「順從一切、不提異議」把章旨推向另一極端，與章首「幾諫」的前提直接矛盾，孔子明言子女見親有過應當勸諫，並非愚孝。兩個極端選項夾着中道的正解，正是本章「諫而不違」分寸感的考核核心。","trapTypes":["correct","concept_reversal","half_right","concept_reversal"],"dnaTag":"TMR","mother":"lrxj-comp"},{"id":"art-chinese-lrxj-comp-4","topic":"內容理解","difficulty":"intermediate","question":"綜合「君子求諸己，小人求諸人」與「君子病無能焉，不病人之不知己也」兩章，下列對君子處世態度的概括，何者最準確？","options":["君子遇事先要求自己、憂慮自身才能不足，而不苛責他人，亦不計較別人是否賞識自己","君子凡事親力親為，從不接受他人的協助","君子確實嚴於律己，因此不屑與才能不及自己的人交往","君子淡泊名利，故應隱居避世，不求聞達於世"],"correctIndex":0,"explanation":"兩章互相發明：「求諸己」指遇事反求自身、責己不責人；「病無能焉」指君子只憂慮自己沒有才能，不憂慮別人不了解自己——重點都在向內自省、修己自立。「從不接受協助」屬過度推論，「求諸己」論的是責任歸屬與自我要求，不是拒絕合作；「不屑與才能不及者交往」半對半錯——前半「嚴於律己」正確，後半嫁接了對「無友不如己者」的常見誤讀，且與「求諸己」無涉；「隱居避世」與兩章無關，君子不計較人知與否，但仍積極修德用世，並非遁世。","trapTypes":["correct","over_interpretation","half_right","irrelevant"],"dnaTag":"CMT","mother":"lrxj-comp"},{"id":"art-chinese-lrxj-synthesis-5","topic":"論仁綜合分析","difficulty":"hard","question":"綜合「不仁者不可以久處約，不可以長處樂。仁者安仁，知者利仁」與「君子無終食之間違仁，造次必於是，顛沛必於是」兩章，下列對「仁與處境」關係的分析，何者最準確？","options":["不仁者無論久處困約或安樂都不能自處，君子則連倉卒顛沛之際都不離棄仁——可見仁是安身立命的內在依據，不隨外在處境轉移","兩章說明環境決定品德：人久處困約或安樂，自然會逐漸喪失仁德","「造次必於是」的「是」指安穩的生活，說明君子必定為自己謀求安樂的處境","孔子認為只有身處貧困的人才能成就仁德，富貴者必然遠離仁"],"correctIndex":0,"explanation":"前章從反面立論：不仁者沒有內在依據，久困則為非，久樂則驕淫，可見其心隨境轉；「仁者安仁」則以仁為安宅，不待外求。後章從正面立論：君子連一頓飯的工夫都不違仁，倉卒（造次）、困頓（顛沛）之際必定依於仁。兩章合觀，仁是不隨處境轉移的內在依據。「環境決定品德」恰好把因果讀反——章旨是有仁德者不被環境左右，而非環境塑造品德，屬概念顛倒的陷阱；「是」指仁而非安樂生活，此選項在關鍵代詞上設審題陷阱，一旦誤讀，全句意思即反；「唯貧者能仁」屬過度推論，孔子只說不仁者兩種處境都不能自處，從未把仁與貧富綁定。","trapTypes":["correct","concept_reversal","keyword_misread","over_interpretation"],"dnaTag":"CMT","mother":"lrxj-synthesis"},{"id":"art-chinese-yxdz-content-0","topic":"內容理解","difficulty":"basic","question":"「舉杯邀明月，對影成三人。」句中「三人」指的是甚麼？","options":["詩人自己、天上的明月，以及詩人的身影","詩人與兩位一同飲酒的友人","詩人、明月與手中的酒壺","泛指眾多前來共飲的賓客，形容場面熱鬧"],"correctIndex":0,"explanation":"詩人獨酌無伴，於是舉杯邀月，加上月光映照下自己的身影，湊成「三人」——以物為伴，正見其孤獨。「兩位友人」與開篇「獨酌無相親」直接矛盾，全詩根本無他人在場；「酒壺」半對半錯——三者確有明月，但第三者是「影」而非壺，「對影」二字已明言；「眾多賓客、場面熱鬧」屬過度推論，把詩人以孤寂自遣的想像誤讀成真實的熱鬧場面，恰恰讀反了詩意。","trapTypes":["correct","concept_reversal","half_right","over_interpretation"],"dnaTag":"TMR","mother":"yxdz-content"},{"id":"art-chinese-yxdz-technique-1","topic":"表達手法","difficulty":"intermediate","question":"「我歌月徘徊，我舞影零亂。」下列對這兩句手法與作用的分析，何者最準確？","options":["運用擬人，寫月因詩人歌聲而徘徊不去、影隨舞步而零亂，把無情之物寫成有情的伴侶，反襯詩人無人共飲的孤獨","運用對偶，上句寫歌、下句寫舞，句式工整，目的在鋪陳宴會的熱鬧氣氛","運用誇張，極言歌聲響亮、舞姿狂放，表現詩人豪邁不羈的性格","運用白描，如實記錄月亮移動與樹影搖曳的眼前實景"],"correctIndex":0,"explanation":"月「徘徊」、影「零亂」，是把月與影寫成似解人意、與詩人共歌共舞的伴侶，屬擬人；愈寫月影殷勤相伴，愈見身邊無一知己，樂景之下孤獨更深。「對偶」半對半錯——兩句確屬對偶，但「鋪陳宴會熱鬧」誤讀了作用，詩中並無宴會，只有詩人一人；「誇張、豪邁不羈」屬概念偷換，手法認錯之餘，亦把借歌舞自遣的孤獨錯讀成豪情；「白描實景」與句意無關——月徘徊、影零亂是詩人情感投射下的想像，並非客觀記錄。","trapTypes":["correct","half_right","concept_swap","irrelevant"],"dnaTag":"CMT","mother":"yxdz-technique"},{"id":"art-chinese-yxdz-technique-2","topic":"表達手法","difficulty":"intermediate","question":"綜觀全詩，下列對詩人情感變化的描述，何者最準確？","options":["由獨酌無親的冷清，到邀月對影、歌舞自遣的短暫歡愉，結尾相期於雲漢——以曠達語作結，孤獨之情反而更深一層","由開篇的孤獨逐步轉為真正的快樂，結尾詩人已徹底擺脫寂寞","全詩情感一味悲苦，由始至終未見任何自遣解嘲之筆","詩人藉醉酒抒發對朝廷不用賢才的憤慨，全詩情感以怨憤為主"],"correctIndex":0,"explanation":"全詩情感三折：「獨酌無相親」是孤獨的起點；「舉杯邀明月」至「我舞影零亂」借想像自遣，營造熱鬧的表象；「醒時同交歡，醉後各分散」點破月影終非真伴，結尾「永結無情遊，相期邈雲漢」以曠達語收束，表面灑脫，實則人間無可與遊，孤獨更深。「徹底擺脫寂寞」半對半錯——詩中確有「行樂」的表象，但結尾的寄託恰恰證明現實中無人可親；「一味悲苦、無自遣之筆」與「暫伴月將影，行樂須及春」等句直接矛盾；「怨憤朝廷」屬過度推論——縱使背景上或與詩人失意有關，詩句本身並無一字涉及朝政，考核以文本為據。","trapTypes":["correct","half_right","concept_reversal","over_interpretation"],"dnaTag":"CMT","mother":"yxdz-technique"},{"id":"art-chinese-yxdz-diction-3","topic":"煉字與主旨","difficulty":"hard","question":"「永結無情遊，相期邈雲漢。」下列對「無情」一詞的分析，何者最準確？","options":["指月與影本是無知無情之物，與之結遊即超脫世俗人情的糾葛；唯其只能與「無情」者為伴，反見詩人在人間知音難求之痛","指詩人決意斷絕一切情感，從此冷漠處世，不再與人交往","「無情」確指月影無知無感，但句意是慨嘆月影無情、不足為伴，故詩人最終放棄與它們交遊","指已經亡故的友人再無情感，無法與詩人重聚共飲"],"correctIndex":0,"explanation":"「無情」指月與影非人、不涉世情：與無情之物結成超然物外之遊，擺脫人間聚散炎涼——正因人間找不到有情的知己，詩人才要「永結」無情之遊、相期於高遠的銀河，曠達的字面下是加倍的孤獨。「斷絕一切情感、冷漠處世」屬過度推論，把「無情」的對象由月影錯移到詩人自身的處世態度；第三項前半解對「無情」，後半卻與「永結」「相期」直接矛盾——詩人是要永遠結伴、相約重聚，不是放棄；「亡故的友人」於詩中全無根據，屬無中生有的聯想。","trapTypes":["correct","over_interpretation","half_right","irrelevant"],"dnaTag":"TMR","mother":"yxdz-diction"}];
+const SUBJECT = "chinese";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  <ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  const out = { _meta: { source: "chinese-fanwen-weak-84.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Date().toISOString().slice(0,10) }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chinese-fanwen-weak-84.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

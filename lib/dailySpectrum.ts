@@ -4,8 +4,10 @@
 // 誠實原則：只記真實作答（唔靠估算），冇歷史數據嗰日就由 0 開始。
 // 3:5:2 目標（3 基礎／5 核心／2 進階）只係當日建議節奏，唔係壓力指標。
 
+import { hkDayString } from '@/lib/hkTime'
+
 export interface DaySpectrum {
-  date: string // YYYY-MM-DD（學生裝置時區）
+  date: string // YYYY-MM-DD（HKT，04:00 日界線 — 見 lib/hkTime.ts）
   easy: number
   medium: number
   hard: number
@@ -13,10 +15,11 @@ export interface DaySpectrum {
 
 const KEY = 'dse_daily_spectrum'
 
-// 「一日」嘅界線 = 04:00（同「今晚唔溫得」對齊）：凌晨 00:30 溫書仍計作前一晚，
-// 唔會過咗午夜就無情歸零 —— 深夜溫書係 DSE 考生真實場景。
+// 「一日」嘅界線 = 04:00 HKT（同「今晚唔溫得」對齊）：凌晨 00:30 溫書仍計作前
+// 一晚，唔會過咗午夜就無情歸零 —— 深夜溫書係 DSE 考生真實場景。
+// 憲章 v3.2 §1.4：以香港時間計，唔跟裝置時區（每日重置全港一致）。
 function todayStr(): string {
-  return new Date(Date.now() - 4 * 60 * 60 * 1000).toLocaleDateString('en-CA') // YYYY-MM-DD
+  return hkDayString()
 }
 
 export function getTodaySpectrum(): DaySpectrum {

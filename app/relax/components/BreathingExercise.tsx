@@ -86,7 +86,7 @@ export default function BreathingExercise() {
       {/* 呼吸圈（reduced-motion 時唔縮放，只轉文字） */}
       <div className="flex items-center justify-center h-64 mb-6">
         <div
-          className="w-20 h-20 rounded-full border-[3px] border-[#00F5D4] flex items-center justify-center"
+          className="w-20 h-20 rounded-full border-[3px] border-neon-cyan flex items-center justify-center"
           style={
             reduced
               ? undefined
@@ -131,7 +131,7 @@ export default function BreathingExercise() {
             }}
             aria-pressed={muted}
             className={`min-h-11 px-5 py-2.5 rounded-[10px] border text-[13px] transition-colors ${
-              muted ? 'border-white/20 text-white/50' : 'border-[#00F5D4]/50 text-[#00F5D4]'
+              muted ? 'border-white/20 text-white/50' : 'border-neon-cyan/50 text-neon-cyan'
             }`}
           >
             {muted ? (en ? '🔇 Muted' : '🔇 已靜音') : en ? '🫁 Voice guiding' : '🫁 語音引導中'}
@@ -148,9 +148,9 @@ export default function BreathingExercise() {
           所以喺 overlay 內再現一次，確保呼吸頁都「見到」 */}
       <p className="absolute bottom-4 left-4 right-4 text-center text-[11px] text-white/45 leading-relaxed">
         {en ? 'Feeling overwhelmed? The Samaritans 24hr: ' : '覺得頂唔順？撒瑪利亞會 24hr：'}
-        <a href="tel:28960000" className="text-[#00F5D4]/80 underline underline-offset-2">2896 0000</a>
+        <a href="tel:28960000" className="text-neon-cyan/80 underline underline-offset-2">2896 0000</a>
         {' · '}{en ? 'Suicide Prevention: ' : '生命熱線：'}
-        <a href="tel:23820000" className="text-[#00F5D4]/80 underline underline-offset-2">2382 0000</a>
+        <a href="tel:23820000" className="text-neon-cyan/80 underline underline-offset-2">2382 0000</a>
         {' · '}{en ? 'In an emergency call 999' : '緊急請致電 999'}
       </p>
     </div>

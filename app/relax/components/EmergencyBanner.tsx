@@ -12,9 +12,9 @@ export default function EmergencyBanner() {
     <div className="mt-8 p-4 rounded-xl border border-red-500/10 bg-red-500/5 text-center">
       <p className="text-sm text-white/80 leading-relaxed">
         {en ? "Feeling overwhelmed? You're not alone. The Samaritans 24hr hotline: " : '覺得頂唔順？你唔係一個人。撒瑪利亞會 24hr 熱線：'}
-        <a href="tel:28960000" className="text-[#00F5D4] underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2896 0000</a>
+        <a href="tel:28960000" className="text-neon-cyan underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2896 0000</a>
         {' | '}{en ? 'Suicide Prevention: ' : '生命熱線：'}
-        <a href="tel:23820000" className="text-[#00F5D4] underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2382 0000</a>
+        <a href="tel:23820000" className="text-neon-cyan underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2382 0000</a>
       </p>
       {/* FIX: [C14] 加醫療免責聲明；[B5] white/50（對比臨界）→ white/70 */}
       <p className="text-xs text-white/70 mt-1 leading-relaxed">

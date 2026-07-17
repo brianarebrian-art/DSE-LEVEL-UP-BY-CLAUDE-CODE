@@ -10,9 +10,9 @@ import { useLocale } from '@/lib/i18n'
 // 大愛紅線：無 XP／升級／通關／血量字眼；未完成唔會顯示任何「落後」暗示。
 
 const TIERS = [
-  { key: 'easy' as const, target: 3, color: '#00F5D4', zh: '基礎', en: 'Foundation' },
-  { key: 'medium' as const, target: 5, color: '#FEE440', zh: '核心', en: 'Core' },
-  { key: 'hard' as const, target: 2, color: '#FF006E', zh: '進階', en: 'Advanced' },
+  { key: 'easy' as const, target: 3, color: 'var(--color-neon-cyan)', zh: '基礎', en: 'Foundation' },
+  { key: 'medium' as const, target: 5, color: 'var(--color-neon-yellow)', zh: '核心', en: 'Core' },
+  { key: 'hard' as const, target: 2, color: 'var(--color-neon-pink)', zh: '進階', en: 'Advanced' },
 ]
 
 export default function DailySpectrum() {
@@ -33,7 +33,7 @@ export default function DailySpectrum() {
       <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
         <h2 className="font-bold">🌈 {en ? "Today's study spectrum" : '今日學習光譜'}</h2>
         {complete && (
-          <span className="text-sm font-bold" style={{ color: '#00F5D4' }}>
+          <span className="text-sm font-bold" style={{ color: 'var(--color-neon-cyan)' }}>
             ✨ {en ? 'Spectrum complete — mastery +1' : '今日光譜完成，掌握度 +1'}
           </span>
         )}

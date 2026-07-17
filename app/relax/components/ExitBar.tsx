@@ -14,7 +14,7 @@ export default function ExitBar() {
           text-sm + 品牌霓虹 #00F5D4 + hover:underline，觸控區 min-h-11 保留 */}
       <Link
         href="/dashboard"
-        className="text-sm text-[#00F5D4] hover:text-[#7FFAE8] hover:underline underline-offset-4 transition-colors min-h-11 inline-flex items-center px-2"
+        className="text-sm text-neon-cyan hover:text-[#7FFAE8] hover:underline underline-offset-4 transition-colors min-h-11 inline-flex items-center px-2"
       >
         {en ? 'Leave the Breathing Space →' : '離開呼吸空間 →'}
       </Link>

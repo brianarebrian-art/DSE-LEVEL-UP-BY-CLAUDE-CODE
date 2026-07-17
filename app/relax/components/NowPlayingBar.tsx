@@ -9,7 +9,7 @@ export default function NowPlayingBar({ name, onStop }: { name: string | null; o
   if (!name) return null
   return (
     <div className="sticky bottom-4 rounded-xl bg-[#14141B] border border-white/10 px-4 py-3 flex items-center gap-3">
-      <span className="w-2 h-2 rounded-full bg-[#00F5D4] animate-pulse motion-reduce:animate-none shrink-0" aria-hidden />
+      <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse motion-reduce:animate-none shrink-0" aria-hidden />
       <span className="flex-1 text-sm text-[#E8E8EC] truncate">{en ? 'Now playing: ' : '正在播放：'}{name}</span>
       <button
         onClick={onStop}

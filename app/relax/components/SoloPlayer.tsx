@@ -153,11 +153,11 @@ export default function SoloPlayer() {
   }
 
   const TRACKS: { id: TrackId; emoji: string; tint: string; nameZh: string; nameEn: string; descZh: string; descEn: string }[] = [
-    { id: 'lofi', emoji: '🎹', tint: 'bg-[#00F5D4]/15', nameZh: '深夜 Lo-fi 電台', nameEn: 'Late-night Lo-fi radio', descZh: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）', descEn: 'Piano + rain · calm your mind before revising (official Lofi Girl video)' },
+    { id: 'lofi', emoji: '🎹', tint: 'bg-neon-cyan/15', nameZh: '深夜 Lo-fi 電台', nameEn: 'Late-night Lo-fi radio', descZh: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）', descEn: 'Piano + rain · calm your mind before revising (official Lofi Girl video)' },
     // FIX: [A3] 遊戲術語清除：「回藍／refill MP」「Buff」「combo」→ 中性描述
     { id: 'rain', emoji: '🌧️', tint: 'bg-emerald-400/15', nameZh: '落雨白噪音', nameEn: 'Rain white noise', descZh: '真實雨聲 · 做完卷減壓（官方長時影片）', descEn: 'Real rain sounds · de-stress after a paper (official long-form video)' },
-    { id: 'binaural', emoji: '🧘', tint: 'bg-[#9B5DE5]/15', nameZh: '低頻專注（雙耳節拍）', nameEn: 'Low-freq focus (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
-    { id: 'pomodoro', emoji: '⏳', tint: 'bg-[#FF006E]/15', nameZh: '25 分鐘專注（番茄鐘）', nameEn: '25-min focus (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
+    { id: 'binaural', emoji: '🧘', tint: 'bg-neon-purple/15', nameZh: '低頻專注（雙耳節拍）', nameEn: 'Low-freq focus (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
+    { id: 'pomodoro', emoji: '⏳', tint: 'bg-neon-pink/15', nameZh: '25 分鐘專注（番茄鐘）', nameEn: '25-min focus (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
   ]
 
   const names: Record<TrackId, string> = en
@@ -173,7 +173,7 @@ export default function SoloPlayer() {
         <p className="text-sm text-[#C2C2CC] mb-6">{en ? 'You can try the text-only breathing exercise, or head back to the main page to change your sensory preferences.' : '可以試下純文字嘅呼吸練習，或者返主頁改返感官偏好。'}</p>
         <Link
           href="/relax/breathing"
-          className="inline-flex min-h-11 items-center rounded-[10px] border border-[#00F5D4]/30 text-[#00F5D4] text-sm px-5 py-3 hover:bg-[#00F5D4]/10 transition-colors"
+          className="inline-flex min-h-11 items-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm px-5 py-3 hover:bg-neon-cyan/10 transition-colors"
         >
           🌬️ {en ? 'Silent breathing exercise' : '靜音呼吸練習'}
         </Link>
@@ -196,11 +196,11 @@ export default function SoloPlayer() {
           const isYt = t.id === 'lofi' || t.id === 'rain'
           const trackName = en ? t.nameEn : t.nameZh
           return (
-            <div key={t.id} className={`rounded-xl bg-[#14141B] border transition-colors ${on ? 'border-[#00F5D4]/50' : 'border-white/10'}`}>
+            <div key={t.id} className={`rounded-xl bg-[#14141B] border transition-colors ${on ? 'border-neon-cyan/50' : 'border-white/10'}`}>
               <button
                 onClick={() => select(t.id)}
                 aria-pressed={on}
-                className="w-full min-h-11 flex items-center gap-3 text-left p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00F5D4] rounded-xl"
+                className="w-full min-h-11 flex items-center gap-3 text-left p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan rounded-xl"
               >
                 {/* 有固定 video ID 嘅 YT 曲目顯示官方縮圖；頻道跟隨／生成類曲目用霓虹色塊 */}
                 {isYt && YT[t.id as 'lofi' | 'rain'].thumb ? (
@@ -216,7 +216,7 @@ export default function SoloPlayer() {
                   <span className="block text-sm font-medium text-[#E8E8EC]">{trackName}</span>
                   <span className="block text-xs text-[#8B8B96] mt-0.5">{en ? t.descEn : t.descZh}</span>
                 </span>
-                <span className="text-xs text-[#00F5D4] shrink-0">{on ? (en ? 'Stop' : '停止') : en ? 'Play' : '播放'}</span>
+                <span className="text-xs text-neon-cyan shrink-0">{on ? (en ? 'Stop' : '停止') : en ? 'Play' : '播放'}</span>
               </button>
 
               {/* YT：播放時載入官方 iframe + 「喺 YouTube 開」後備（萬一嵌入播唔到） */}
@@ -234,7 +234,7 @@ export default function SoloPlayer() {
                     href={YT[t.id as 'lofi' | 'rain'].open}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block mt-2 text-xs text-[#8B8B96] hover:text-[#00F5D4] underline underline-offset-2"
+                    className="inline-block mt-2 text-xs text-[#8B8B96] hover:text-neon-cyan underline underline-offset-2"
                   >
                     ▶ {en ? "Won't play? Open on YouTube" : '播唔到？喺 YouTube 開'}
                   </a>
@@ -251,7 +251,7 @@ export default function SoloPlayer() {
                     {[0.5, 0.9, 0.4, 1, 0.6, 0.85, 0.45, 0.75, 0.55].map((h, i) => (
                       <span
                         key={i}
-                        className="buff-eq-bar w-1.5 rounded-full bg-gradient-to-t from-[#00F5D4] to-[#9B5DE5]"
+                        className="buff-eq-bar w-1.5 rounded-full bg-gradient-to-t from-neon-cyan to-neon-purple"
                         style={{ height: `${h * 100}%`, animationDelay: `${i * 90}ms` }}
                       />
                     ))}
@@ -261,8 +261,8 @@ export default function SoloPlayer() {
                     type="range" min={0} max={12} step={1} value={binauralVol}
                     onChange={(e) => setVol(Number(e.target.value))}
                     aria-label={en ? 'Binaural beat volume' : '雙耳節拍音量'}
-                    className="w-full accent-[#FF006E] rounded-full"
-                    style={{ background: 'linear-gradient(90deg,#00F5D4,#FF006E,#9B5DE5)' }}
+                    className="w-full accent-neon-pink rounded-full"
+                    style={{ background: 'linear-gradient(90deg,var(--color-neon-cyan),var(--color-neon-pink),var(--color-neon-purple))' }}
                   />
                 </div>
               )}
@@ -271,7 +271,7 @@ export default function SoloPlayer() {
                 <div className="px-4 pb-4">
                   <div className="h-1.5 rounded-full bg-white/10 overflow-hidden mb-2">
                     <div
-                      className="h-full bg-[#9B5DE5]/70 rounded-full transition-all duration-1000"
+                      className="h-full bg-neon-purple/70 rounded-full transition-all duration-1000"
                       style={{ width: `${(100 * (POMODORO_MIN * 60 - pomodoroLeft)) / (POMODORO_MIN * 60)}%` }}
                     />
                   </div>

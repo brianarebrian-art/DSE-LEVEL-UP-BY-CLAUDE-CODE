@@ -30,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-HK" className="h-full">
-      <body className={`${inter.className} min-h-screen bg-[#080C14] text-slate-100`}>
+      <body className={`${inter.className} min-h-screen bg-bg-dark text-slate-100`}>
         {/* P1-3 WCAG：跳至主要內容連結（鍵盤/螢幕閱讀器用戶第一下 Tab 就見到，
             滑鼠用戶完全睇唔到）。Server component 冇 locale hook，雙語並列。 */}
         <a href="#main-content" className="skip-link">

@@ -22,7 +22,7 @@ export default function Navbar() {
   const t = useT()
   const { locale } = useLocale()
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80 bg-[#080C14]/90 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/80 bg-bg-dark/90 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-slate-800 bg-[#080C14] px-4 pb-4 pt-2 flex flex-col gap-3">
+        <div className="md:hidden border-t border-slate-800 bg-bg-dark px-4 pb-4 pt-2 flex flex-col gap-3">
           {navLinks.map((l) => (
             <Link
               key={l.href}

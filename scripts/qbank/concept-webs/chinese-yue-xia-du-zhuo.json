@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "subject": "chinese",
+    "chapter": "月下獨酌（其一）",
+    "source": "李白（十二篇範文）",
+    "status": "DRAFT — 由 Claude（Amity 產線）起草，未經人手核實。上線前必須經 Brian/Yuna 實名逐題審批（review-drafts → decisions.json → promote-drafts）。",
+    "note": "#84 範文薄弱篇批次（v2026.07.16-FINAL-QUALITY 質量標準）：trapTypes 標選項陷阱角色（correct/half_right/over_interpretation/irrelevant/concept_swap/concept_reversal/keyword_misread），dnaTag 標錯因 DNA（CMT/TMR/MEC，對應自診 A/B/C）。correctIndex 一律 0（前端洗牌）。原詩：花間一壺酒，獨酌無相親。舉杯邀明月，對影成三人。月既不解飲，影徒隨我身。暫伴月將影，行樂須及春。我歌月徘徊，我舞影零亂。醒時同交歡，醉後各分散。永結無情遊，相期邈雲漢。"
+  },
+
+  "nodes": [
+    { "id": "sanren", "name": "「對影成三人」的三人所指", "category": "內容理解", "difficulty": 1 },
+    { "id": "personify", "name": "擬人（邀月／月徘徊／影零亂）", "category": "表達手法", "difficulty": 2 },
+    { "id": "joy_masks_loneliness", "name": "以樂寫哀、反襯孤獨", "category": "情感脈絡", "difficulty": 2 },
+    { "id": "wuqing_you", "name": "「無情遊」的深意", "category": "煉字與主旨", "difficulty": 3 }
+  ],
+
+  "templates": [
+    {
+      "template_id": "yxdz-content",
+      "combination": ["sanren"],
+      "topic": "內容理解",
+      "type": "mc",
+      "difficulty": "basic",
+      "stem": "{q}",
+      "items": [
+        {
+          "vars": { "q": "「舉杯邀明月，對影成三人。」句中「三人」指的是甚麼？" },
+          "options": [
+            "詩人自己、天上的明月，以及詩人的身影",
+            "詩人與兩位一同飲酒的友人",
+            "詩人、明月與手中的酒壺",
+            "泛指眾多前來共飲的賓客，形容場面熱鬧"
+          ],
+          "correctIndex": 0,
+          "explanation": "詩人獨酌無伴，於是舉杯邀月，加上月光映照下自己的身影，湊成「三人」——以物為伴，正見其孤獨。「兩位友人」與開篇「獨酌無相親」直接矛盾，全詩根本無他人在場；「酒壺」半對半錯——三者確有明月，但第三者是「影」而非壺，「對影」二字已明言；「眾多賓客、場面熱鬧」屬過度推論，把詩人以孤寂自遣的想像誤讀成真實的熱鬧場面，恰恰讀反了詩意。",
+          "trapTypes": ["correct", "concept_reversal", "half_right", "over_interpretation"],
+          "dnaTag": "TMR"
+        }
+      ]
+    },
+
+    {
+      "template_id": "yxdz-technique",
+      "combination": ["personify", "joy_masks_loneliness"],
+      "topic": "表達手法",
+      "type": "mc",
+      "difficulty": "intermediate",
+      "stem": "{q}",
+      "items": [
+        {
+          "vars": { "q": "「我歌月徘徊，我舞影零亂。」下列對這兩句手法與作用的分析，何者最準確？" },
+          "options": [
+            "運用擬人，寫月因詩人歌聲而徘徊不去、影隨舞步而零亂，把無情之物寫成有情的伴侶，反襯詩人無人共飲的孤獨",
+            "運用對偶，上句寫歌、下句寫舞，句式工整，目的在鋪陳宴會的熱鬧氣氛",
+            "運用誇張，極言歌聲響亮、舞姿狂放，表現詩人豪邁不羈的性格",
+            "運用白描，如實記錄月亮移動與樹影搖曳的眼前實景"
+          ],
+          "correctIndex": 0,
+          "explanation": "月「徘徊」、影「零亂」，是把月與影寫成似解人意、與詩人共歌共舞的伴侶，屬擬人；愈寫月影殷勤相伴，愈見身邊無一知己，樂景之下孤獨更深。「對偶」半對半錯——兩句確屬對偶，但「鋪陳宴會熱鬧」誤讀了作用，詩中並無宴會，只有詩人一人；「誇張、豪邁不羈」屬概念偷換，手法認錯之餘，亦把借歌舞自遣的孤獨錯讀成豪情；「白描實景」與句意無關——月徘徊、影零亂是詩人情感投射下的想像，並非客觀記錄。",
+          "trapTypes": ["correct", "half_right", "concept_swap", "irrelevant"],
+          "dnaTag": "CMT"
+        },
+        {
+          "vars": { "q": "綜觀全詩，下列對詩人情感變化的描述，何者最準確？" },
+          "options": [
+            "由獨酌無親的冷清，到邀月對影、歌舞自遣的短暫歡愉，結尾相期於雲漢——以曠達語作結，孤獨之情反而更深一層",
+            "由開篇的孤獨逐步轉為真正的快樂，結尾詩人已徹底擺脫寂寞",
+            "全詩情感一味悲苦，由始至終未見任何自遣解嘲之筆",
+            "詩人藉醉酒抒發對朝廷不用賢才的憤慨，全詩情感以怨憤為主"
+          ],
+          "correctIndex": 0,
+          "explanation": "全詩情感三折：「獨酌無相親」是孤獨的起點；「舉杯邀明月」至「我舞影零亂」借想像自遣，營造熱鬧的表象；「醒時同交歡，醉後各分散」點破月影終非真伴，結尾「永結無情遊，相期邈雲漢」以曠達語收束，表面灑脫，實則人間無可與遊，孤獨更深。「徹底擺脫寂寞」半對半錯——詩中確有「行樂」的表象，但結尾的寄託恰恰證明現實中無人可親；「一味悲苦、無自遣之筆」與「暫伴月將影，行樂須及春」等句直接矛盾；「怨憤朝廷」屬過度推論——縱使背景上或與詩人失意有關，詩句本身並無一字涉及朝政，考核以文本為據。",
+          "trapTypes": ["correct", "half_right", "concept_reversal", "over_interpretation"],
+          "dnaTag": "CMT"
+        }
+      ]
+    },
+
+    {
+      "template_id": "yxdz-diction",
+      "combination": ["wuqing_you", "joy_masks_loneliness"],
+      "topic": "煉字與主旨",
+      "type": "mc",
+      "difficulty": "hard",
+      "stem": "{q}",
+      "items": [
+        {
+          "vars": { "q": "「永結無情遊，相期邈雲漢。」下列對「無情」一詞的分析，何者最準確？" },
+          "options": [
+            "指月與影本是無知無情之物，與之結遊即超脫世俗人情的糾葛；唯其只能與「無情」者為伴，反見詩人在人間知音難求之痛",
+            "指詩人決意斷絕一切情感，從此冷漠處世，不再與人交往",
+            "「無情」確指月影無知無感，但句意是慨嘆月影無情、不足為伴，故詩人最終放棄與它們交遊",
+            "指已經亡故的友人再無情感，無法與詩人重聚共飲"
+          ],
+          "correctIndex": 0,
+          "explanation": "「無情」指月與影非人、不涉世情：與無情之物結成超然物外之遊，擺脫人間聚散炎涼——正因人間找不到有情的知己，詩人才要「永結」無情之遊、相期於高遠的銀河，曠達的字面下是加倍的孤獨。「斷絕一切情感、冷漠處世」屬過度推論，把「無情」的對象由月影錯移到詩人自身的處世態度；第三項前半解對「無情」，後半卻與「永結」「相期」直接矛盾——詩人是要永遠結伴、相約重聚，不是放棄；「亡故的友人」於詩中全無根據，屬無中生有的聯想。",
+          "trapTypes": ["correct", "over_interpretation", "half_right", "irrelevant"],
+          "dnaTag": "TMR"
+        }
+      ]
+    }
+  ]
+}

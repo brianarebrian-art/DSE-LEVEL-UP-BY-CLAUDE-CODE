@@ -66,12 +66,12 @@ export default function GroupCommunity() {
 
       {/* 狀態列（霓虹，誠實文案 —— 唔用作假嘅在線／打卡數字） */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-5 text-xs">
-        <span className="text-[#FF006E]">🔥 {en ? 'Late-night squad HQ · anonymous group study' : '深夜戰友集結區 · 匿名組隊溫書'}</span>
-        <span className="text-[#00F5D4]">📍 {en ? 'Just showing up makes you one of us' : '入到嚟就已經係一分子'}</span>
+        <span className="text-neon-pink">🔥 {en ? 'Late-night squad HQ · anonymous group study' : '深夜戰友集結區 · 匿名組隊溫書'}</span>
+        <span className="text-neon-cyan">📍 {en ? 'Just showing up makes you one of us' : '入到嚟就已經係一分子'}</span>
       </div>
 
       {/* 公會招募令：玻璃擬態 + 霓虹邊框發光，hover 上浮 + 發光增強 */}
-      <div className="rounded-xl bg-white/5 backdrop-blur-md border border-[#FF006E]/40 p-5 mb-4 transition-all hover:-translate-y-0.5 hover:border-[#FF006E]/70 hover:shadow-[0_0_28px_rgba(255,0,110,0.3)]">
+      <div className="rounded-xl bg-white/5 backdrop-blur-md border border-neon-pink/40 p-5 mb-4 transition-all hover:-translate-y-0.5 hover:border-neon-pink/70 hover:shadow-[0_0_28px_rgba(255,0,110,0.3)]">
         <div className="flex items-center gap-3 mb-4">
           <div
             className="w-11 h-11 rounded-xl flex items-center justify-center text-white text-xl shrink-0"
@@ -95,7 +95,7 @@ export default function GroupCommunity() {
 
         <div className="flex flex-wrap gap-2 mb-5">
           {TAGS.map((tag) => (
-            <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-[#FF006E]/40 bg-[#FF006E]/10 text-[#FF006E]">
+            <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-neon-pink/40 bg-neon-pink/10 text-neon-pink">
               {en ? tag.en : tag.zh}
             </span>
           ))}
@@ -106,7 +106,7 @@ export default function GroupCommunity() {
           target="_blank"
           rel="noopener noreferrer"
           className="block w-full text-center min-h-11 py-3 rounded-[10px] text-white font-bold text-sm transition-all active:scale-[0.98] hover:shadow-[0_0_28px_rgba(155,93,229,0.5)]"
-          style={{ background: 'linear-gradient(90deg, #FF006E, #9B5DE5)' }}
+          style={{ background: 'linear-gradient(90deg, var(--color-neon-pink), var(--color-neon-purple))' }}
         >
           {en ? 'Team up now →' : '立即組隊 →'}
         </a>
@@ -156,7 +156,7 @@ export default function GroupCommunity() {
         </p>
 
         {submitted ? (
-          <p className="text-sm text-[#00F5D4]">{en ? "✓ Saved — we'll let you know when there's news" : '✓ 已記錄，有消息會通知你'}</p>
+          <p className="text-sm text-neon-cyan">{en ? "✓ Saved — we'll let you know when there's news" : '✓ 已記錄，有消息會通知你'}</p>
         ) : (
           <>
             <div className="flex gap-2">
@@ -167,12 +167,12 @@ export default function GroupCommunity() {
                 onKeyDown={(e) => { if (e.key === 'Enter') void handleNotify() }}
                 placeholder="your@email.com"
                 aria-label="Email"
-                className="flex-1 min-w-0 px-3 py-2.5 min-h-11 bg-[#0A0A0F] border border-white/10 rounded-[10px] text-sm text-[#E8E8EC] placeholder-[#8B8B96] focus:border-[#FF006E]/50 focus:outline-none"
+                className="flex-1 min-w-0 px-3 py-2.5 min-h-11 bg-[#0A0A0F] border border-white/10 rounded-[10px] text-sm text-[#E8E8EC] placeholder-[#8B8B96] focus:border-neon-pink/50 focus:outline-none"
               />
               <button
                 onClick={() => void handleNotify()}
                 disabled={!email.trim().includes('@') || sending}
-                className="px-4 py-2.5 min-h-11 bg-[#14141B] border border-[#FF006E]/30 rounded-[10px] text-sm text-[#FF006E] disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
+                className="px-4 py-2.5 min-h-11 bg-[#14141B] border border-neon-pink/30 rounded-[10px] text-sm text-neon-pink disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
               >
                 {sending ? (en ? 'Saving…' : '記錄中…') : en ? 'Notify me' : '通知我'}
               </button>

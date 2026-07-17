@@ -72,9 +72,9 @@ export default function SensoryMenu({
                 key={o.key}
                 onClick={() => toggle(o.key)}
                 aria-pressed={on}
-                className={`w-full min-h-11 flex items-center gap-3 text-left rounded-[10px] border px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00F5D4] ${
+                className={`w-full min-h-11 flex items-center gap-3 text-left rounded-[10px] border px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${
                   on
-                    ? 'border-[#00F5D4]/60 bg-[#00F5D4]/10 text-[#E8E8EC]'
+                    ? 'border-neon-cyan/60 bg-neon-cyan/10 text-[#E8E8EC]'
                     : 'border-white/10 bg-transparent text-[#8B8B96] hover:border-white/25'
                 }`}
               >
@@ -83,7 +83,7 @@ export default function SensoryMenu({
                   <span className="block text-sm font-medium">{en ? o.labelEn : o.labelZh}</span>
                   <span className="block text-xs opacity-70">{en ? o.hintEn : o.hintZh}</span>
                 </span>
-                <span className={`text-xs ${on ? 'text-[#00F5D4]' : 'opacity-40'}`}>{on ? (en ? 'Selected' : '已選') : ''}</span>
+                <span className={`text-xs ${on ? 'text-neon-cyan' : 'opacity-40'}`}>{on ? (en ? 'Selected' : '已選') : ''}</span>
               </button>
             )
           })}
@@ -91,7 +91,7 @@ export default function SensoryMenu({
 
         <button
           onClick={onDone}
-          className="w-full min-h-11 rounded-[10px] bg-[#00F5D4]/15 border border-[#00F5D4]/40 text-[#00F5D4] font-medium py-3 hover:bg-[#00F5D4]/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00F5D4]"
+          className="w-full min-h-11 rounded-[10px] bg-neon-cyan/15 border border-neon-cyan/40 text-neon-cyan font-medium py-3 hover:bg-neon-cyan/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
         >
           {en ? 'Enter' : '入去先'}
         </button>

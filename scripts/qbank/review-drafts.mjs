@@ -87,6 +87,10 @@ function renderHtml(rows, subject, srcName) {
   const cards = rows.map((r) => ({
     id: r.id.trim(), topic: r.topic, difficulty: r.difficulty,
     question: r.question, options: r.options, correctIndex: r.correctIndex, explanation: r.explanation,
+    // v2026.07.16-FINAL-QUALITY 覆核元數據（如有）：干擾項設計理由 + 錯因 DNA
+    trapTypes: Array.isArray(r.trapTypes) ? r.trapTypes : null,
+    dnaTag: typeof r.dnaTag === 'string' ? r.dnaTag : null,
+    mother: typeof r._mother === 'string' ? r._mother : null,
   }))
   const data = JSON.stringify(cards).replace(/</g, '\\u003c')
   return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -132,12 +136,18 @@ const DATA = ${data};
 const SUBJECT = ${JSON.stringify(subject)};
 const state = {}; DATA.forEach(d => state[d.id] = 'pending');
 const list = document.getElementById('list');
-const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**' };
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
 DATA.forEach((d, i) => {
   const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
-  el.innerHTML = \`<div class="meta"><span class="badge">#\${i+1}</span><span class="badge">\${d.id}</span><span class="badge">\${d.topic}</span><span class="badge">\${diffZh[d.difficulty]||d.difficulty}</span></div>
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? \` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">\${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>\`
+    : '';
+  el.innerHTML = \`<div class="meta"><span class="badge">#\${i+1}</span><span class="badge">\${d.id}</span><span class="badge">\${d.topic}</span><span class="badge">\${diffZh[d.difficulty]||d.difficulty}</span>\${d.dnaTag?\`<span class="badge" style="color:var(--wait)">\${dnaZh[d.dnaTag]||d.dnaTag}</span>\`:''}\${d.mother?\`<span class="badge">模板 \${escape(d.mother)}</span>\`:''}</div>
   <div class="q">\${escape(d.question)}</div>
-  <ul>\${d.options.map((o,oi)=>\`<li class="\${oi===d.correctIndex?'correct':''}">\${escape(o)}</li>\`).join('')}</ul>
+  <ul>\${d.options.map((o,oi)=>\`<li class="\${oi===d.correctIndex?'correct':''}">\${escape(o)}\${trapTag(oi)}</li>\`).join('')}</ul>
   <div class="exp">💡 \${escape(d.explanation)}</div>
   <div class="acts"><button class="a" onclick="mark(\${i},'approved')">✅ 通過</button><button class="r" onclick="mark(\${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(\${i},'pending')">⏳ 待定</button></div>\`;
   list.appendChild(el);

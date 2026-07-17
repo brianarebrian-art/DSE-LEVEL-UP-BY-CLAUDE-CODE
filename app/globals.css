@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #080C14;
-  --card: #0F172A;
+/* P1-7-R1（Leo/Kate 2026-07-16）：霓虹色統一入 Tailwind v4 @theme ——
+   自動生成 text-neon-cyan / bg-neon-pink/15 等 utilities，同時以 --color-*
+   變數暴露畀 inline style 用（var(--color-neon-cyan)）。日後 P2-1 UDL 模式
+   （焦慮／抑鬱／高對比）只需喺對應 html class 下重寫呢批變數，全站跟住變。
+   刻意保留字面 hex 嘅例外（唔好「順手」遷移）：
+   • DailyStatsCard／溫書地圖報告卡（result/page tierMeta 都係餵佢）——
+     html2canvas 導出面鎖定標準色版，唔跟用戶 A11y 變數走（P3-2 規格）
+   • GroupCommunity f.color —— 以 `${hex}1f` 拼 alpha，var() 會整爛佢
+   • ErrorRadar —— SVG presentation attribute（fill="…"）按規範唔食 var()，
+     而且被溫書地圖報告導出重用 */
+@theme {
+  --color-neon-cyan: #00F5D4;
+  --color-neon-pink: #FF006E;
+  --color-neon-yellow: #FEE440;
+  --color-neon-purple: #9B5DE5;
+  --color-bg-dark: #080C14;
+  --color-bg-dark-2: #0B1120;
+  --color-text-primary: #E2E8F0; /* = slate-200；正文繼續用 slate utilities */
+  --color-text-secondary: #94A3B8; /* = slate-400 */
 }
 
 body {
-  background-color: #080C14;
+  background-color: var(--color-bg-dark);
   color: #f1f5f9;
   -webkit-font-smoothing: antialiased;
 }
@@ -30,9 +46,13 @@ html {
   border-radius: 3px;
 }
 
+/* P1-7-R2（Leo 2026-07-16）：全站過渡規範。
+   曲線：標準 = cubic-bezier(0.4,0,0.2,1)（Tailwind transition-* 預設已係佢）；
+   進場 = cubic-bezier(0,0,0.2,1)；離場 = cubic-bezier(0.4,0,1,1)。
+   時長層次：微交互 150ms／組件狀態 200ms／彈窗 250ms／頁面切換 300ms。
+   禁止 bounce／elastic —— pop-in 舊有嘅 1.1 過衝（back 曲線）已移除。 */
 @keyframes pop-in {
-  0% { transform: scale(0.5); opacity: 0; }
-  70% { transform: scale(1.1); }
+  0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
@@ -47,15 +67,15 @@ html {
 }
 
 .animate-pop-in {
-  animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: pop-in 0.25s cubic-bezier(0, 0, 0.2, 1) forwards;
 }
 
 .animate-slide-up {
-  animation: slide-up 0.4s ease forwards;
+  animation: slide-up 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
 }
 
 .grade-bar-fill {
-  animation: fill-bar 1.2s ease-out forwards;
+  animation: fill-bar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Calm, sober feedback only — the gamification layer (flame / combo / shake /
@@ -185,4 +205,45 @@ html.font-easy li {
   color: #000;
   font-weight: 700;
   border-radius: 0.75rem;
+}
+
+/* P1-6-R2（Leo 2026-07-16）：HKEAA 指令字高亮 —— 只喺學生自診「審題陷阱」後
+   先出現（唔預設亮，避免提示過度）。0.3s fade-in 進場，無閃爍、無彈跳。
+   <mark> 預設 UA 樣式係黃底黑字，要 color: inherit 蓋返。 */
+@keyframes cmd-hl-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.cmd-hl {
+  background: rgba(254, 228, 64, 0.15);
+  box-shadow: inset 0 -2px 0 var(--color-neon-yellow);
+  border-radius: 2px;
+  padding: 0 1px;
+  color: inherit;
+  animation: cmd-hl-in 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+/* 柔和變體（calmLock／gentleLock）：降飽和度、減對比 */
+.cmd-hl-soft {
+  background: rgba(254, 228, 64, 0.08);
+  box-shadow: inset 0 -2px 0 rgba(254, 228, 64, 0.45);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmd-hl { animation: none; }
+}
+
+/* P1-6-R1（Leo 2026-07-16）：沙漏落沙流 —— 虛線向下流動。柔和模式速度減半
+   （視覺更靜），prefers-reduced-motion 完全停（沙面／沙堆位置照樣逐秒更新，
+   計時功能不受影響）。0.9s／1.8s 週期遠低於 3Hz 閃爍上限（癲癇安全）。 */
+@keyframes sand-stream {
+  to { stroke-dashoffset: -16; }
+}
+.hourglass-stream {
+  stroke-dasharray: 3 5;
+  animation: sand-stream 0.9s linear infinite;
+}
+.hourglass-soft .hourglass-stream {
+  animation-duration: 1.8s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hourglass-stream { animation: none; }
 }

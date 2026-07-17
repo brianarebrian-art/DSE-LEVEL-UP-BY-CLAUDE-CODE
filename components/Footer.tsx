@@ -7,7 +7,7 @@ import { useT } from '@/lib/i18n'
 export default function Footer() {
   const t = useT()
   return (
-    <footer className="border-t border-slate-800 bg-[#080C14] mt-20">
+    <footer className="border-t border-slate-800 bg-bg-dark mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
         <div className="grid sm:grid-cols-3 gap-8 mb-10">
           {/* Brand */}

@@ -1,9 +1,17 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import MathText from '@/components/MathText'
+// P1-6-R2: 指令字高亮 — 自診「審題陷阱」後題幹指令字先亮
+import CommandWordText from '@/components/CommandWordText'
+// P1-6-R1: 沙漏 SVG 取代數字倒數
+import HourglassTimer from '@/components/HourglassTimer'
+// P1-6-R3: 鎖尾 5 秒溫和提示音（程序化生成，靜默降級）
+import { playLockChime } from '@/lib/lockChime'
+// #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
+import CalcTipCard from '@/components/CalcTipCard'
 import EmotionTags from '@/components/EmotionTags'
 import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
@@ -244,6 +252,11 @@ export default function PracticeSession({
   const [followup, setFollowup] = useState<PreparedLockout | null>(null)
   const [followupPick, setFollowupPick] = useState<string | null>(null)
   const [lockSecs, setLockSecs] = useState(0)
+  // P1-6-R1: 鎖嘅絕對死線（timestamp）。剩餘秒由死線倒推 —— 逐秒 setTimeout 鏈
+  // 會累積漂移，60 秒尾誤差可以超過 100ms；deadline 制冇呢個問題。
+  const lockDeadlineRef = useRef<number | null>(null)
+  // P1-6-R3: 每次上鎖只響一次（server re-hold 跳返 3 秒都唔會重複響）
+  const chimeFiredRef = useRef(false)
   const [elapsed, setElapsed] = useState(0)
   // Optional server-signed lockout token (defence-in-depth; null = client timer only).
   const [lockToken, setLockToken] = useState<string | null>(null)
@@ -356,6 +369,8 @@ export default function PracticeSession({
           explain: lq.explain,
         })
         setFollowupPick(null)
+        lockDeadlineRef.current = Date.now() + LOCKOUT_SECONDS * 1000
+        chimeFiredRef.current = false
         setLockSecs(LOCKOUT_SECONDS)
         // Defence-in-depth: also register a server-signed lock (no-op unless enabled).
         setLockToken(null)
@@ -368,12 +383,27 @@ export default function PracticeSession({
     [currentQ, answerState, subjectId]
   )
 
-  // Tick the forced-lock countdown down to zero (one decrement per second).
+  // Tick the forced-lock countdown from its absolute deadline (P1-6-R1: the old
+  // per-second setTimeout chain accumulated drift; 250ms polls off a timestamp
+  // keep the 60s total accurate to well under 100ms).
+  const lockActive = lockSecs > 0
   useEffect(() => {
-    if (lockSecs <= 0) return
-    const id = setTimeout(() => setLockSecs((s) => Math.max(0, s - 1)), 1000)
-    return () => clearTimeout(id)
-  }, [lockSecs])
+    if (!lockActive) return
+    const id = setInterval(() => {
+      const dl = lockDeadlineRef.current
+      setLockSecs(dl === null ? 0 : Math.max(0, Math.ceil((dl - Date.now()) / 1000)))
+    }, 250)
+    return () => clearInterval(id)
+  }, [lockActive])
+
+  // P1-6-R3: 鎖尾 5 秒溫和提示音（每次上鎖只響一次；柔和模式降頻減音量）
+  useEffect(() => {
+    if (followup === null) return
+    if (lockSecs > 0 && lockSecs <= 5 && !chimeFiredRef.current) {
+      chimeFiredRef.current = true
+      playLockChime(calmLock || gentleLock)
+    }
+  }, [lockSecs, followup, calmLock, gentleLock])
 
   const next = useCallback(() => {
     const newAnswers = [...answers, answerState]
@@ -382,6 +412,7 @@ export default function PracticeSession({
     setDiagnosed(null)
     setFollowup(null)
     setFollowupPick(null)
+    lockDeadlineRef.current = null
     setLockSecs(0)
     setLockToken(null)
     setGentleLock(false) // F-EMO: 柔和呈現只限本題
@@ -435,6 +466,7 @@ export default function PracticeSession({
       const ok = await verifyServerUnlock(lockToken)
       setVerifying(false)
       if (!ok) {
+        lockDeadlineRef.current = Date.now() + 3000
         setLockSecs(3)
         return
       }
@@ -523,9 +555,16 @@ export default function PracticeSession({
             </span>
           </div>
 
-          {/* Content */}
+          {/* Content — P1-6-R2: 自診咗「B. 審題陷阱」先高亮題幹指令字 */}
           <p className="text-lg leading-relaxed mb-8 text-slate-100">
-            <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
+            {diagnosed === 'B' && answerState !== null && !answerState.isCorrect ? (
+              <CommandWordText
+                text={tr(currentQ.content, currentQ.contentEn)}
+                soft={calmLock || gentleLock}
+              />
+            ) : (
+              <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
+            )}
           </p>
 
           {/* Options */}
@@ -672,6 +711,9 @@ export default function PracticeSession({
                   </div>
                 )}
 
+                {/* #83 計數機貼士卡 — 解析底部折疊區（按 topic 命中；未驗證卡 production 隱藏） */}
+                <CalcTipCard topicId={currentQ.topic} />
+
                 {/* 60-second forced reflection lock (HARD wrong answers): read the
                     breakdown above, answer the cause follow-up correctly, AND wait out
                     the countdown before "Next" unlocks. No skipping. */}
@@ -684,31 +726,38 @@ export default function PracticeSession({
                         <Lock size={16} />{' '}
                         {gentleLock
                           ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
-                          : tr('強制反思鎖 · 60 秒', 'Forced reflection lock · 60s')}
+                          : tr('60 秒冷靜艙', '60-second calm capsule')}
                       </span>
-                      <span className="flex items-center gap-2">
-                        {(calmLock || gentleLock) ? (
-                          /* 柔和模式：進度條代替數字倒數（進度行完 = 解鎖） */
-                          <span className="w-24 h-2 rounded-full bg-slate-800 overflow-hidden inline-block" aria-label={tr('反思進度', 'Reflection progress')}>
-                            <span
-                              className={`block h-full rounded-full transition-all duration-1000 ${lockSecs > 0 ? 'bg-amber-400/70' : 'bg-green-400'}`}
-                              style={{ width: `${(100 * (LOCKOUT_SECONDS - lockSecs)) / LOCKOUT_SECONDS}%` }}
-                            />
-                          </span>
-                        ) : (
-                          <span className={`text-sm font-mono font-bold ${lockSecs > 0 ? 'text-red-400' : 'text-green-400'}`}>
-                            {lockSecs > 0 ? `00:${String(lockSecs).padStart(2, '0')}` : '00:00 ✓'}
-                          </span>
-                        )}
-                        <button
-                          onClick={toggleCalmLock}
-                          title={tr('柔和計時：以進度條代替倒數數字', 'Calm timer: progress bar instead of countdown digits')}
-                          className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-amber-500/40 text-amber-300 bg-amber-500/10' : 'border-slate-700 text-slate-500 hover:text-slate-300'}`}
-                        >
-                          {tr('柔和', 'Calm')}
-                        </button>
-                      </span>
+                      <button
+                        onClick={toggleCalmLock}
+                        title={tr('柔和模式：沙漏放慢、色調更靜', 'Calm mode: slower hourglass, softer tones')}
+                        className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-amber-500/40 text-amber-300 bg-amber-500/10' : 'border-slate-700 text-slate-500 hover:text-slate-300'}`}
+                      >
+                        {tr('柔和', 'Calm')}
+                      </button>
                     </div>
+                    {/* P1-6-R1: 沙漏 SVG 取代數字倒數 —— 非線性沙流（前快後慢），
+                        柔和／情緒柔和模式下減速降飽和。準確計時由 deadline 效應負責。 */}
+                    <div className="flex justify-center mb-4">
+                      <HourglassTimer
+                        remaining={lockSecs}
+                        total={LOCKOUT_SECONDS}
+                        soft={calmLock || gentleLock}
+                        label={
+                          gentleLock
+                            ? tr('唞一唞，你發現咗新盲點💡', 'Take a breather — you found a new blind spot 💡')
+                            : calmLock
+                              ? tr('慢啲嚟，發現盲點💡', 'Slow down — a blind spot found 💡')
+                              : tr('診斷緊你嘅錯因 DNA', 'Diagnosing your error DNA')
+                        }
+                        ariaLabel={tr('60 秒冷靜艙，請診斷錯因', '60-second calm capsule — diagnose your error cause')}
+                      />
+                    </div>
+                    {/* 憲章 v3.0 §1.2 失敗學定稿文案：做錯 ≠ 失敗，由呢一瞬間開始 */}
+                    <p className="text-xs text-slate-500 text-center mb-3 leading-relaxed">
+                      {tr('過去係過去，未來係未來。由呢一瞬間開始。',
+                          'The past is the past, the future is the future. Start from this very moment.')}
+                    </p>
                     <p className="text-xs text-slate-500 mb-3 leading-relaxed">
                       {tr('讀完上面嘅錯因拆解，答對以下反思題，並等倒數完結，先可以解鎖下一題。',
                           'Read the breakdown above, answer the reflection question correctly, and wait out the countdown to unlock the next question.')}

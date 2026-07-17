@@ -27,9 +27,9 @@ export default function EmotionThermometer({
   }, [onPick])
 
   const options: { tag: EmotionTag; emoji: string; zh: string; en: string; border: string }[] = [
-    { tag: 'happy', emoji: '😊', zh: '我 OK，想繼續', en: "I'm OK — keep going", border: 'border-[#00F5D4]/40 hover:bg-[#00F5D4]/10' },
-    { tag: 'neutral', emoji: '😐', zh: '有啲失落，但我得嘅', en: 'A bit down, but I can do this', border: 'border-[#FEE440]/40 hover:bg-[#FEE440]/10' },
-    { tag: 'anxious', emoji: '😰', zh: '好慌，想停一停', en: 'Panicking — I need to pause', border: 'border-[#9B5DE5]/40 hover:bg-[#9B5DE5]/10' },
+    { tag: 'happy', emoji: '😊', zh: '我 OK，想繼續', en: "I'm OK — keep going", border: 'border-neon-cyan/40 hover:bg-neon-cyan/10' },
+    { tag: 'neutral', emoji: '😐', zh: '有啲失落，但我得嘅', en: 'A bit down, but I can do this', border: 'border-neon-yellow/40 hover:bg-neon-yellow/10' },
+    { tag: 'anxious', emoji: '😰', zh: '好慌，想停一停', en: 'Panicking — I need to pause', border: 'border-neon-purple/40 hover:bg-neon-purple/10' },
   ]
 
   return (
@@ -53,7 +53,7 @@ export default function EmotionThermometer({
               key={o.tag}
               onClick={() => onPick(o.tag)}
               autoFocus={i === 0}
-              className={`w-full min-h-11 flex items-center gap-3 text-left rounded-xl border bg-slate-800/60 px-4 py-3 text-sm text-slate-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00F5D4] ${o.border}`}
+              className={`w-full min-h-11 flex items-center gap-3 text-left rounded-xl border bg-slate-800/60 px-4 py-3 text-sm text-slate-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${o.border}`}
             >
               <span className="text-2xl" aria-hidden>{o.emoji}</span>
               {en ? o.en : o.zh}

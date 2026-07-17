@@ -65,6 +65,11 @@ for (const t of templates) {
     const correctIndex = it.correctIndex ?? t.correctIndex
     const explanation = it.explanation ?? t.explanation
     const difficulty = it.difficulty ?? t.difficulty
+    // v2026.07.16-FINAL-QUALITY 質量憲章元數據（item → template fallback）：
+    // trapTypes = 每個選項嘅陷阱角色（四陷阱），dnaTag = 錯因 DNA（CMT/TMR/MEC，
+    // 對應現有 A/B/C 自診）。純 reviewer 參考 —— 唔影響 gate、promote 唔會帶入庫。
+    const trapTypes = it.trapTypes ?? t.trapTypes
+    const dnaTag = it.dnaTag ?? t.dnaTag
     const row = {
       id: `art-${subject}-${t.template_id}-${seq}`,
       type: 'mc',
@@ -75,6 +80,8 @@ for (const t of templates) {
       options,
       correctIndex,
       explanation,
+      ...(Array.isArray(trapTypes) ? { trapTypes } : {}),
+      ...(typeof dnaTag === 'string' ? { dnaTag } : {}),
       // provenance so a reviewer can trace a variant back to its mother template
       _mother: t.template_id,
     }

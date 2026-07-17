@@ -170,12 +170,12 @@ export default function DataPortability() {
       )}
 
       {status === 'exported' && (
-        <p className="text-sm mt-3" style={{ color: '#00F5D4' }}>
+        <p className="text-sm mt-3" style={{ color: 'var(--color-neon-cyan)' }}>
           ✓ {en ? 'Progress file downloaded — keep it somewhere safe.' : '進度檔案已下載，記得好好保管。'}
         </p>
       )}
       {status === 'imported' && (
-        <p className="text-sm mt-3" style={{ color: '#00F5D4' }}>
+        <p className="text-sm mt-3" style={{ color: 'var(--color-neon-cyan)' }}>
           ✓ {en ? 'Imported! Refreshing…' : '導入成功！刷新緊頁面…'}
         </p>
       )}

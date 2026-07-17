@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "chinese-fanwen-weak-84.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "art-chinese-lrxj-lexis-0": "pending",
+    "art-chinese-lrxj-comp-1": "pending",
+    "art-chinese-lrxj-comp-2": "pending",
+    "art-chinese-lrxj-comp-3": "pending",
+    "art-chinese-lrxj-comp-4": "pending",
+    "art-chinese-lrxj-synthesis-5": "pending",
+    "art-chinese-yxdz-content-0": "pending",
+    "art-chinese-yxdz-technique-1": "pending",
+    "art-chinese-yxdz-technique-2": "pending",
+    "art-chinese-yxdz-diction-3": "pending"
+  }
+}
