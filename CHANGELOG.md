@@ -9,6 +9,14 @@
 - **驗收**：qa 三綠 + build 綠（`/admin`、`/api/admin` 以 ƒ dynamic 註冊）+ E2E：未登入 `/admin` → 302 返首頁（實測 path=/）、`/api/admin` → 403；pull 腳本無 env 時安全拒絕。**面板要生效需**：行 0004 SQL + 喺 .env.local 同 Vercel 設 `ADMIN_EMAILS`。
 - 順手清咗 `.env.example` 嘅免費化殘留（ALLOWED_EMAILS/PREMIUM_EMAILS，code 零引用）＋補 Supabase env 說明。
 
+## 2026-07-18 — Admin 面板 UX：審完自動跳下一題 + 快捷鍵
+
+- `ReviewPanel.tsx`：狀態上移到父層集中管理，加「活躍卡」概念 —— 提交成功後顯示「✓ 已記錄，載入下一題…」800ms，再自動遞進至下一條 pending（跨批次繞行），平滑捲入畫面中央，全程唔 reload。
+- 快捷鍵（只喺活躍卡生效，一次只一個 listener）：`A/R/P` 或 `1/2/3` = 通過/退回/暫緩，`Enter` = 提交。**打緊備註（input focus）時自動唔搶鍵**（原 spec 冇呢個防呆，打「1」會誤觸通過）；`Cmd/Ctrl/Alt` 組合鍵放行（唔搶 Cmd+R）。頂部進度條 + 「本節已記錄 N · 待審 X/Y」。
+- 誠實修正：原 spec 完成畫面寫「累積簽名 22 → 22+N」——（1）22 係虛構數（實際 12）；（2）更關鍵，喺面板撳「通過」只係【記錄決定】入 Supabase，唔等於入題庫。改用「本節已記錄 N 條決定」+ 明寫「⚠️ 記錄 ≠ 入庫，仍需本地 pull→promote→wire→push」。
+- 對齊實際組件：原 spec code 針對幻想結構（DraftQueue/DraftReviewCard、question_text、A/R/P），實接真組件（ReviewPanel、question、approved/rejected/pending）。
+- 驗收：qa 三綠 + build 綠（/admin、/api/admin 皆 ƒ）；瀏覽器實測未登入 `/admin` 正確 redirect 返首頁（安全閘生效）。面板內部 UX 需登入 admin session 先睇到（Google 登入不可代做）。
+
 ## 2026-07-17f — Admin 審核面板 /admin（瀏覽器逐題 A/R/P，Task #95）
 
 - `/admin`（server component + `ReviewPanel` client）：Google 登入 + `ADMIN_EMAILS` 白名單閘，非 admin `redirect('/')`（唔透露頁面存在）。實時統計卡（Live/簽名/覆蓋率/待審由真題庫計，零寫死）+ 待審隊列（讀 `scripts/qbank/drafts/*.json`）+ 雲端審核歷史。

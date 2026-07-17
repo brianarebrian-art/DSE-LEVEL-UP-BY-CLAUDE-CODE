@@ -1,10 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 // Admin 審核面板互動層（中文單語內部工具，i18n-exempt 全檔適用）。
-// 每撳一次「提交」即 POST 一筆去 /api/admin；狀態就地更新，唔會 reload 成頁
-//（原 spec 嘅 window.location.reload() 會令審到一半嘅捲動位/展開狀態全失）。
+// 每撳「提交」即 POST 一筆去 /api/admin，成功後 800ms 自動跳去下一條待審題
+// （唔 reload 成頁 —— 保住捲動位同已展開狀態）。
+//
+// 誠實界線：喺呢個面板撳「通過」只係【記錄一個決定】入 Supabase，唔等於題目
+// 已入題庫。入庫仍需本地 pull-decisions → promote-drafts → 人手 wire → push。
+// 所以計數一律叫「已記錄決定」，唔會顯示「累積簽名 +N」呢類會令人誤會即時入庫嘅字眼。
 
 export interface BatchRow {
   id: string
@@ -38,23 +42,122 @@ export interface HistoryRow {
   created_at: string
 }
 
+type Decision = 'approved' | 'rejected' | 'pending'
+
 // 草稿銀碼以 \$ 逃逸（LaTeX 閘要求）；顯示層還原做 $，唔郁底層數據。
 const unesc = (s: string) => s.replace(/\\\$/g, '$')
 
 const DIFF_ZH: Record<string, string> = { basic: '基礎', intermediate: '核心', hard: '進階' } // i18n-exempt: admin
 const STATUS_ZH: Record<string, string> = { pending: '待審', approved: '已通過', rejected: '已退回' } // i18n-exempt: admin
 
+const keyOf = (batch: string, id: string) => `${batch}::${id}` // 全 ASCII，可安全做 DOM id
+
 export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; history: HistoryRow[]; dbOk: boolean }) {
+  // 扁平化：跨批次嘅有序題目清單，供「下一條」遞進用。
+  const flat = useMemo(
+    () => batches.flatMap((b) => b.rows.map((row) => ({ batch: b.batch, row }))),
+    [batches],
+  )
+
+  // 逐題狀態集中喺父層管理（提交後就地更新，唔重載頁）。
+  const [statuses, setStatuses] = useState<Record<string, string>>(() => {
+    const m: Record<string, string> = {}
+    for (const { batch, row } of flat) m[keyOf(batch, row.id)] = row.status
+    return m
+  })
+  const [activeKey, setActiveKey] = useState<string | null>(() => {
+    const first = flat.find(({ batch, row }) => row.status === 'pending')
+    return first ? keyOf(first.batch, first.row.id) : null
+  })
+  const [recorded, setRecorded] = useState(0) // 本節已記錄決定數
+
+  // activeKey 一變就將該卡捲入畫面中央。
+  useEffect(() => {
+    if (!activeKey) return
+    document.getElementById(`card-${activeKey}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [activeKey])
+
+  // 由 fromKey 之後搵下一條 pending；搵唔到就繞返頭搵最早一條；再冇就 null。
+  const nextPending = useCallback(
+    (statusMap: Record<string, string>, fromKey: string): string | null => {
+      const idx = flat.findIndex(({ batch, row }) => keyOf(batch, row.id) === fromKey)
+      for (let i = idx + 1; i < flat.length; i++) {
+        const k = keyOf(flat[i].batch, flat[i].row.id)
+        if (statusMap[k] === 'pending') return k
+      }
+      for (let i = 0; i < idx; i++) {
+        const k = keyOf(flat[i].batch, flat[i].row.id)
+        if (statusMap[k] === 'pending') return k
+      }
+      return null
+    },
+    [flat],
+  )
+
+  const onDecided = useCallback(
+    (key: string, decision: Decision) => {
+      setStatuses((prev) => {
+        const updated = { ...prev, [key]: decision }
+        setActiveKey(nextPending(updated, key))
+        return updated
+      })
+      setRecorded((n) => n + 1)
+    },
+    [nextPending],
+  )
+
+  const total = flat.length
+  const decidedCount = Object.values(statuses).filter((s) => s !== 'pending').length
+  const pendingCount = total - decidedCount
+  const allDone = total > 0 && pendingCount === 0
+
   return (
     <div>
       <section className="mb-10">
-        <h2 className="mb-4 text-lg font-semibold text-neon-cyan">📋 待審隊列{/* i18n-exempt: admin */}</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-neon-cyan">📋 待審隊列{/* i18n-exempt: admin */}</h2>
+          {total > 0 && (
+            <span className="text-sm text-text-secondary">
+              本節已記錄 {recorded} · 待審 {pendingCount} / {total}{/* i18n-exempt: admin */}
+            </span>
+          )}
+        </div>
+
+        {total > 0 && (
+          <div className="mb-6 h-2 w-full overflow-hidden rounded-full bg-white/10">
+            <div className="h-full rounded-full bg-neon-cyan transition-all duration-300" style={{ width: `${(decidedCount / total) * 100}%` }} />
+          </div>
+        )}
+
         {batches.length === 0 && (
           <p className="text-sm text-text-secondary">而家冇任何草稿批次 —— 出咗新草稿先會喺度出現。{/* i18n-exempt: admin */}</p>
         )}
+
+        {allDone && (
+          <div className="mb-6 rounded-2xl border border-neon-cyan/30 bg-neon-cyan/5 p-8 text-center">
+            <div className="mb-2 text-4xl">🎉</div>
+            <h3 className="mb-1 text-xl font-bold text-neon-cyan">隊列清空！{/* i18n-exempt: admin */}</h3>
+            <p className="text-sm text-text-secondary">本節已記錄 {recorded} 條決定。{/* i18n-exempt: admin */}</p>
+            <p className="mx-auto mt-3 max-w-md text-xs text-text-secondary">
+              ⚠️ 記錄決定 ≠ 入題庫。呢啲決定要喺本地行 pull-decisions → promote-drafts → 人手 wire → push 先正式入庫並顯示「人手核對題」badge。{/* i18n-exempt: admin */}
+            </p>
+          </div>
+        )}
+
         {batches.map((b) => (
-          <BatchBlock key={b.batch} batch={b} dbOk={dbOk} />
+          <BatchBlock key={b.batch} batch={b} statuses={statuses} activeKey={activeKey} onActivate={setActiveKey} onDecided={onDecided} dbOk={dbOk} />
         ))}
+
+        {!dbOk && total > 0 && (
+          <p className="mt-4 text-xs text-neon-yellow">
+            ⚠️ Supabase 未連通，暫時淨係睇得、記錄唔到 —— 撳鍵可以預選決定，但「提交」要等資料庫接通。{/* i18n-exempt: admin */}
+          </p>
+        )}
+        {dbOk && total > 0 && (
+          <p className="mt-4 text-xs text-text-secondary">
+            ⌨️ 快捷鍵：A / R / P（或 1 / 2 / 3）= 通過 / 退回 / 暫緩 · Enter = 提交（打緊備註時唔會觸發）。{/* i18n-exempt: admin */}
+          </p>
+        )}
       </section>
 
       <section>
@@ -92,8 +195,22 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
   )
 }
 
-function BatchBlock({ batch, dbOk }: { batch: Batch; dbOk: boolean }) {
-  const pending = batch.rows.filter((r) => r.status === 'pending').length
+function BatchBlock({
+  batch,
+  statuses,
+  activeKey,
+  onActivate,
+  onDecided,
+  dbOk,
+}: {
+  batch: Batch
+  statuses: Record<string, string>
+  activeKey: string | null
+  onActivate: (key: string) => void
+  onDecided: (key: string, decision: Decision) => void
+  dbOk: boolean
+}) {
+  const pending = batch.rows.filter((r) => statuses[keyOf(batch.batch, r.id)] === 'pending').length
   return (
     <div className="mb-6 rounded-2xl border border-white/10 bg-bg-dark-2/60 p-4">
       <h3 className="mb-3 font-semibold">
@@ -102,24 +219,53 @@ function BatchBlock({ batch, dbOk }: { batch: Batch; dbOk: boolean }) {
           {batch.subject} · {batch.rows.length} 題 · 待審 {pending}{/* i18n-exempt: admin */}
         </span>
       </h3>
-      {batch.rows.map((r) => (
-        <ReviewCard key={r.id} batchName={batch.batch} row={r} dbOk={dbOk} />
-      ))}
+      {batch.rows.map((r) => {
+        const key = keyOf(batch.batch, r.id)
+        return (
+          <ReviewCard
+            key={key}
+            cardKey={key}
+            batchName={batch.batch}
+            row={r}
+            status={statuses[key] ?? 'pending'}
+            isActive={activeKey === key}
+            onActivate={onActivate}
+            onDecided={onDecided}
+            dbOk={dbOk}
+          />
+        )
+      })}
     </div>
   )
 }
 
-function ReviewCard({ batchName, row, dbOk }: { batchName: string; row: BatchRow; dbOk: boolean }) {
-  const [status, setStatus] = useState(row.status)
-  const [decidedBy, setDecidedBy] = useState(row.decidedBy)
-  const [choice, setChoice] = useState<'approved' | 'rejected' | 'pending' | null>(null)
+function ReviewCard({
+  cardKey,
+  batchName,
+  row,
+  status,
+  isActive,
+  onActivate,
+  onDecided,
+  dbOk,
+}: {
+  cardKey: string
+  batchName: string
+  row: BatchRow
+  status: string
+  isActive: boolean
+  onActivate: (key: string) => void
+  onDecided: (key: string, decision: Decision) => void
+  dbOk: boolean
+}) {
+  const [choice, setChoice] = useState<Decision | null>(null)
   const [comment, setComment] = useState('')
   const [busy, setBusy] = useState(false)
+  const [flash, setFlash] = useState(false) // 提交成功後短暫「已記錄，載入下一題…」
   const [err, setErr] = useState('')
-  const [open, setOpen] = useState(row.status === 'pending')
 
-  async function submit() {
-    if (!choice || busy) return
+  const submit = useCallback(async () => {
+    if (!choice || busy || !dbOk) return
     setBusy(true)
     setErr('')
     try {
@@ -129,30 +275,48 @@ function ReviewCard({ batchName, row, dbOk }: { batchName: string; row: BatchRow
         body: JSON.stringify({ batch: batchName, draft_id: row.id, subject: row.subject, topic: row.topic, decision: choice, comment }),
       })
       if (!res.ok) throw new Error(String(res.status))
-      setStatus(choice)
-      setDecidedBy('你') // i18n-exempt: admin
-      setOpen(false)
+      setFlash(true)
+      // 畀 800ms 睇到「已記錄」狀態，再通知父層更新狀態 + 遞進下一題。
+      setTimeout(() => onDecided(cardKey, choice), 800)
     } catch {
       setErr('提交失敗 —— 檢查網絡或 Supabase 配置後再試。') // i18n-exempt: admin
-    } finally {
       setBusy(false)
     }
-  }
+  }, [choice, busy, dbOk, batchName, row.id, row.subject, row.topic, comment, cardKey, onDecided])
 
+  // 快捷鍵只喺「活躍卡」生效（同一時間只有一張活躍 → 只有一個 listener）。
+  useEffect(() => {
+    if (!isActive || flash) return
+    function onKey(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      const el = document.activeElement
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) return // 打緊備註，唔搶鍵
+      switch (e.key.toLowerCase()) {
+        case 'a': case '1': setChoice('approved'); e.preventDefault(); break
+        case 'r': case '2': setChoice('rejected'); e.preventDefault(); break
+        case 'p': case '3': setChoice('pending'); e.preventDefault(); break
+        case 'enter': if (choice) { e.preventDefault(); void submit() } break
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isActive, flash, choice, submit])
+
+  const expanded = isActive
   const statusChip =
     status === 'approved' ? 'text-green-400 border-green-400/40' : status === 'rejected' ? 'text-neon-pink border-neon-pink/40' : 'text-neon-yellow border-neon-yellow/40'
 
   return (
-    <div className="mb-3 rounded-xl border border-white/10 bg-bg-dark p-4">
-      <button type="button" onClick={() => setOpen(!open)} className="flex w-full items-center gap-2 text-left">
+    <div id={`card-${cardKey}`} className={`mb-3 rounded-xl border bg-bg-dark p-4 ${isActive ? 'border-neon-cyan/40' : 'border-white/10'}`}>
+      <button type="button" onClick={() => onActivate(cardKey)} className="flex w-full items-center gap-2 text-left">
         <span className={`rounded-full border px-2 py-0.5 text-xs ${statusChip}`}>{STATUS_ZH[status] ?? status}</span>
         {row.difficulty && <span className="rounded bg-white/5 px-2 py-0.5 text-xs text-text-secondary">{DIFF_ZH[row.difficulty] ?? row.difficulty}</span>}
         {row.dnaTag && <span className="rounded bg-white/5 px-2 py-0.5 text-xs text-text-secondary">🧠 {row.dnaTag}</span>}
         <span className="min-w-0 flex-1 truncate text-sm">{row.id} · {unesc(row.question)}</span>
-        <span className="text-text-secondary">{open ? '▾' : '▸'}</span>
+        <span className="text-text-secondary">{expanded ? '▾' : '▸'}</span>
       </button>
 
-      {open && (
+      {expanded && (
         <div className="mt-3">
           <p className="mb-3 leading-relaxed">{unesc(row.question)}</p>
           <div className="mb-3 space-y-2">
@@ -171,7 +335,9 @@ function ReviewCard({ batchName, row, dbOk }: { batchName: string; row: BatchRow
             {unesc(row.explanation)}
           </div>
 
-          {status === 'pending' ? (
+          {flash ? (
+            <p className="text-sm font-semibold text-green-400">✓ 已記錄，載入下一題…{/* i18n-exempt: admin */}</p>
+          ) : (
             <div className="flex flex-wrap items-center gap-2">
               <DecisionBtn label="✅ 通過" /* i18n-exempt: admin */ active={choice === 'approved'} activeCls="bg-green-600 text-white" onClick={() => setChoice('approved')} />
               <DecisionBtn label="❌ 退回" /* i18n-exempt: admin */ active={choice === 'rejected'} activeCls="bg-neon-pink text-white" onClick={() => setChoice('rejected')} />
@@ -185,21 +351,15 @@ function ReviewCard({ batchName, row, dbOk }: { batchName: string; row: BatchRow
               />
               <button
                 type="button"
-                onClick={submit}
+                onClick={() => void submit()}
                 disabled={!choice || busy || !dbOk}
                 className="rounded-lg bg-neon-cyan px-5 py-2 text-sm font-bold text-black disabled:cursor-not-allowed disabled:opacity-30"
               >
                 {busy ? '提交中…' : '提交決定'}{/* i18n-exempt: admin */}
               </button>
+              {status !== 'pending' && <span className="text-xs text-text-secondary">（已裁決過，可再提交覆蓋）{/* i18n-exempt: admin */}</span>}
               {err && <span className="text-xs text-neon-pink">{err}</span>}
             </div>
-          ) : (
-            <p className="flex items-center gap-3 text-sm text-text-secondary">
-              <span>已由 {decidedBy || '本地審批'} 裁決。{/* i18n-exempt: admin */}</span>
-              <button type="button" onClick={() => setStatus('pending')} className="rounded-lg bg-white/5 px-3 py-1 text-xs hover:bg-white/10">
-                🔄 重新裁決（新決定取最新）{/* i18n-exempt: admin */}
-              </button>
-            </p>
           )}
         </div>
       )}
