@@ -55,8 +55,10 @@ const loaders: Record<string, Loader> = {
     return [...base.bafsQuestions, ...bbank.bafsBankQuestions]
   },
   economics: async () => {
-    const [base, ebank] = await Promise.all([import('./economics'), import('./economics-bank')])
-    return [...base.economicsQuestions, ...ebank.economicsBankQuestions]
+    const [base, ebank, reviewed] = await Promise.all([
+      import('./economics'), import('./economics-bank'), import('./economics-reviewed'),
+    ])
+    return [...base.economicsQuestions, ...ebank.economicsBankQuestions, ...reviewed.economicsReviewedQuestions]
   },
   geography: async () => (await import('./geography')).geographyQuestions,
   history: async () => (await import('./history')).historyQuestions,

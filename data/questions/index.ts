@@ -19,6 +19,7 @@ import { chineseQuestions, chineseTopics } from './chinese'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
+import { economicsReviewedQuestions } from './economics-reviewed'
 import { bafsBankQuestions } from './bafs-bank'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
@@ -55,7 +56,7 @@ const banks: Record<string, SubjectBank> = {
   ict: { questions: ictQuestions, topics: ictTopics },
   chinese: { questions: chineseQuestions, topics: chineseTopics },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions], topics: bafsTopics },
-  economics: { questions: [...economicsQuestions, ...economicsBankQuestions], topics: economicsTopics },
+  economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
   history: { questions: historyQuestions, topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },

@@ -2,19 +2,19 @@
   "_meta": {
     "source": "econ-supply-demand-mc-10.json",
     "subject": "economics",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "brian",
+    "reviewedAt": "2026-07-17"
   },
   "decisions": {
-    "econ-sd-mc-0": "pending",
-    "econ-sd-mc-1": "pending",
-    "econ-sd-mc-2": "pending",
-    "econ-sd-mc-3": "pending",
-    "econ-sd-mc-4": "pending",
-    "econ-sd-mc-5": "pending",
-    "econ-sd-mc-6": "pending",
-    "econ-sd-mc-7": "pending",
-    "econ-sd-mc-8": "pending",
-    "econ-sd-mc-9": "pending"
+    "econ-sd-mc-0": "approved",
+    "econ-sd-mc-1": "approved",
+    "econ-sd-mc-2": "approved",
+    "econ-sd-mc-3": "approved",
+    "econ-sd-mc-4": "approved",
+    "econ-sd-mc-5": "approved",
+    "econ-sd-mc-6": "approved",
+    "econ-sd-mc-7": "approved",
+    "econ-sd-mc-8": "approved",
+    "econ-sd-mc-9": "approved"
   }
 }
