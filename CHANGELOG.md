@@ -2,6 +2,12 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-17e — F-CTX 跨篇對決首批 2 題入庫（中文科首批人手核對題）
+
+- Brian 實名簽批 2/2（魚我所欲也×岳陽樓記／六國論×出師表）→ `promote-drafts.mjs` 出 `data/questions/chinese-reviewed.ts` → wire `load.ts` + `index.ts`。跨篇對決功能由「草稿」正式變「有 live 內容」。
+- 驗收：qa 三綠 + build 綠 + E2E（`?topic=跨篇比較示範` 出 2/2、✅ badge、答對後深解析完整渲染、console 零 error）。中文 155→157。
+- ⚠️ 管線備忘：promote 按科目覆寫 `<科>-reviewed.ts` —— #84 範文批次簽批後，必須將兩份 drafts+decisions 合併再 promote，否則會冚走本批 2 題（負責人：Claude，唔使人手記）。
+
 ## 2026-07-17d — Econ 供需 MC 10 題：首批人手核對題入庫（Task #94）
 
 - **人手審批管線首次全程走通（非語文科首例）**：草稿（carson-econ-chief 規範，3:5:2，每題 trapTypes+dnaTag+深解析）→ `_gate.mjs` 機器閘（`\$` 銀碼逃逸修正後 10/10）→ 驗收報告修正（「每爐」→「每批次」；另 6 項口語指控核實為 chat 轉述、不在檔案）→ **Brian 實名簽批 10/10 approved（2026-07-17）** → `promote-drafts.mjs` 產出 `data/questions/economics-reviewed.ts`（reviewer 蓋印）→ 人手 wire 入 `load.ts` + `index.ts`。

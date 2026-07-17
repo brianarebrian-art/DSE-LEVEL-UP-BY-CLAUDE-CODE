@@ -2,11 +2,11 @@
   "_meta": {
     "source": "chinese-crosstext-demo.json",
     "subject": "chinese",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "brian",
+    "reviewedAt": "2026-07-17"
   },
   "decisions": {
-    "ctx-demo-1": "pending",
-    "ctx-demo-2": "pending"
+    "ctx-demo-1": "approved",
+    "ctx-demo-2": "approved"
   }
 }

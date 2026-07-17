@@ -49,7 +49,10 @@ const loaders: Record<string, Loader> = {
   biology: async () => (await import('./biology')).biologyQuestions,
   english: async () => (await import('./english')).englishQuestions,
   ict: async () => (await import('./ict')).ictQuestions,
-  chinese: async () => (await import('./chinese')).chineseQuestions,
+  chinese: async () => {
+    const [base, reviewed] = await Promise.all([import('./chinese'), import('./chinese-reviewed')])
+    return [...base.chineseQuestions, ...reviewed.chineseReviewedQuestions]
+  },
   bafs: async () => {
     const [base, bbank] = await Promise.all([import('./bafs'), import('./bafs-bank')])
     return [...base.bafsQuestions, ...bbank.bafsBankQuestions]

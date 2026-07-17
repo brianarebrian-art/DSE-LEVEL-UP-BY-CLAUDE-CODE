@@ -16,6 +16,7 @@ import { biologyQuestions, biologyTopics } from './biology'
 import { englishQuestions, englishTopics } from './english'
 import { ictQuestions, ictTopics } from './ict'
 import { chineseQuestions, chineseTopics } from './chinese'
+import { chineseReviewedQuestions } from './chinese-reviewed'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
@@ -54,7 +55,7 @@ const banks: Record<string, SubjectBank> = {
   biology: { questions: biologyQuestions, topics: biologyTopics },
   english: { questions: englishQuestions, topics: englishTopics },
   ict: { questions: ictQuestions, topics: ictTopics },
-  chinese: { questions: chineseQuestions, topics: chineseTopics },
+  chinese: { questions: [...chineseQuestions, ...chineseReviewedQuestions], topics: chineseTopics },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
