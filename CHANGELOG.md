@@ -2,6 +2,13 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-17f — Admin 審核面板 /admin（Task #95）
+
+- **新增**：`/admin`（server 頁，ADMIN_EMAILS env 白名單 + Auth.js session 閘，唔夠身份即彈返首頁）＋ `/api/admin`（GET 歷史/POST 決定，reviewer 一律取自 session）＋ `ReviewPanel` client（逐題 A/R/P、備註、就地更新唔 reload、重新裁決）＋ `0004_review_decisions.sql`（**用戶要落 Supabase SQL editor 行**）＋ `scripts/qbank/pull-decisions.mjs`（雲端決定拉返 repo 生成 decisions.json → 照行 promote）。統計卡實時由真題庫計（唔寫死數字）。
+- **同原 spec 刻意唔同（已提報）**：①冇 `profiles.role` 欄——admin=env 白名單，唔重引 teacher 詞彙；②admin email 唔寫死喺公開 repo 源碼——用 `ADMIN_EMAILS` env；③RLS 改「開 RLS 零 policy」——原 spec 嘅 `auth.jwt()` policy 假設 Supabase Auth，本 stack（Auth.js + service role）永不 match；④9pt 字體規格不採納（Leo 紅線）；⑤冇 `promoted_at/by` 欄——promote 審計軌跡在 reviewed.ts 檔頭+git，唔兩處記錄；⑥spec 漏咗「回程路」，pull-decisions.mjs 補上（含「雲端空+本地已簽」拒覆寫護欄）。
+- **驗收**：qa 三綠 + build 綠（`/admin`、`/api/admin` 以 ƒ dynamic 註冊）+ E2E：未登入 `/admin` → 302 返首頁（實測 path=/）、`/api/admin` → 403；pull 腳本無 env 時安全拒絕。**面板要生效需**：行 0004 SQL + 喺 .env.local 同 Vercel 設 `ADMIN_EMAILS`。
+- 順手清咗 `.env.example` 嘅免費化殘留（ALLOWED_EMAILS/PREMIUM_EMAILS，code 零引用）＋補 Supabase env 說明。
+
 ## 2026-07-17e — F-CTX 跨篇對決首批 2 題入庫（中文科首批人手核對題）
 
 - Brian 實名簽批 2/2（魚我所欲也×岳陽樓記／六國論×出師表）→ `promote-drafts.mjs` 出 `data/questions/chinese-reviewed.ts` → wire `load.ts` + `index.ts`。跨篇對決功能由「草稿」正式變「有 live 內容」。

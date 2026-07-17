@@ -35,6 +35,11 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
+  // /admin 隊列喺 request time 用 fs 讀草稿檔 —— 呢啲檔冇被 import，
+  // Vercel file tracing 唔會自動打包，要明示 include。
+  outputFileTracingIncludes: {
+    '/admin': ['./scripts/qbank/drafts/*.json'],
+  },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }]
   },
