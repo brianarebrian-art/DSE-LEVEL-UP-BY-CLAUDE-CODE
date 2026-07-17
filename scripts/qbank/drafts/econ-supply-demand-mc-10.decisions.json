@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "econ-supply-demand-mc-10.json",
+    "subject": "economics",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "econ-sd-mc-0": "pending",
+    "econ-sd-mc-1": "pending",
+    "econ-sd-mc-2": "pending",
+    "econ-sd-mc-3": "pending",
+    "econ-sd-mc-4": "pending",
+    "econ-sd-mc-5": "pending",
+    "econ-sd-mc-6": "pending",
+    "econ-sd-mc-7": "pending",
+    "econ-sd-mc-8": "pending",
+    "econ-sd-mc-9": "pending"
+  }
+}
