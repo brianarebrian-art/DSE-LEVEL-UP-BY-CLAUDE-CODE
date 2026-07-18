@@ -11,7 +11,7 @@ export default function LanguageToggle() {
     <button
       onClick={toggle}
       aria-label={locale === 'zh' ? 'Switch to English' : '切換至中文'}
-      className="min-h-11 min-w-11 flex items-center justify-center gap-1.5 text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors"
+      className="min-h-11 min-w-11 flex items-center justify-center gap-1.5 text-sm font-medium text-[#6B6B6B] hover:text-[#008B84] transition-colors"
     >
       <Languages size={16} />
       {locale === 'zh' ? 'EN' : '中'}

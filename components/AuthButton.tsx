@@ -13,7 +13,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
   const t = useT()
 
   if (status === 'loading') {
-    return <div className="w-7 h-7 rounded-full bg-slate-800 animate-pulse" />
+    return <div className="w-7 h-7 rounded-full bg-black/10 animate-pulse" />
   }
 
   if (user) {
@@ -22,7 +22,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
     return (
       <div className="flex items-center gap-2">
         <div
-          className="w-7 h-7 rounded-full bg-amber-500 text-black grid place-items-center text-xs font-bold"
+          className="w-7 h-7 rounded-full bg-[#00726C] text-white grid place-items-center text-xs font-medium"
           title={user.email ?? label}
         >
           {initial}
@@ -32,7 +32,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
             onAction?.()
             authSignOut()
           }}
-          className="min-h-11 text-sm text-slate-400 hover:text-slate-100 flex items-center gap-1 px-1"
+          className="min-h-11 text-sm text-[#6B6B6B] hover:text-[#008B84] flex items-center gap-1 px-1"
         >
           <LogOut size={14} /> {t.auth.signOut}
         </button>
@@ -46,7 +46,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
         onAction?.()
         authSignInGoogle()
       }}
-      className="min-h-11 flex items-center gap-2 text-sm border border-slate-700 hover:border-slate-500 text-slate-200 rounded-lg px-3 py-1.5 transition-colors"
+      className="min-h-11 flex items-center gap-2 text-sm border border-black/[0.12] hover:border-[#008B84] text-[#2D2D2D] hover:text-[#008B84] rounded-lg px-3 py-1.5 transition-colors"
     >
       <LogIn size={14} /> {t.auth.signIn}
     </button>

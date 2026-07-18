@@ -9,6 +9,14 @@
 - **驗收**：qa 三綠 + build 綠（`/admin`、`/api/admin` 以 ƒ dynamic 註冊）+ E2E：未登入 `/admin` → 302 返首頁（實測 path=/）、`/api/admin` → 403；pull 腳本無 env 時安全拒絕。**面板要生效需**：行 0004 SQL + 喺 .env.local 同 Vercel 設 `ADMIN_EMAILS`。
 - 順手清咗 `.env.example` 嘅免費化殘留（ALLOWED_EMAILS/PREMIUM_EMAILS，code 零引用）＋補 Supabase env 說明。
 
+## 2026-07-18 — Light-first Phase 1：landing 轉「清晨圖書館」淺色（UI/UX 憲章 §3）
+
+- **決策背景**：憲章要全站 light-first，但實掃有 **53 檔硬編碼 dark-only class**（text-white/bg-slate-9…）—— 一鍵翻變數會白字白底爆版。故分階段：Phase 1 = landing（旗艦面）自足淺色；Phase 2 = inner 面逐檔 migrate 後先翻全域 default。
+- **app/page.tsx 全面轉 light-first**：暖白底 #FAFAF8／卡片白／降飽和青 #00A8A0（取代 amber）／暗金 #D4A017；字重只用 400/500；純 CSS + Intersection Observer 進場動畫 + 大數字 count-up（globals.css 加 `.animate-on-scroll`，尊重 prefers-reduced-motion）。**自足淺色，唔郁全域 body → inner 暗色頁零影響、零爆版。** 盲測黑題卡刻意保留深色做「終端」對比。
+- **誠實修正憲章筆誤**：規格牆數字用真實 **25 科**（憲章 §4 寫「4科」係筆誤）；**冇宣傳計數機/醫療級**（前者草稿未上線、後者 overclaim）。
+- 驗收：qa 三綠 + build 綠 + 瀏覽器實測（hero/count-up/科目格/盲測卡全部渲染、真數字、console 零 error）。
+- **未做（Phase 2，task #97）**：全域 ThemeToggle + Navbar/Footer/practice/dashboard/admin 等 ~52 檔 migrate；全部核心面 theme-agnostic 後先將 default 由 dark 翻 light。頂部 Navbar 現仍暗色（淺頁深導覽，可接受，Phase 2 統一）。
+
 ## 2026-07-18 — Admin 面板 UX：審完自動跳下一題 + 快捷鍵
 
 - `ReviewPanel.tsx`：狀態上移到父層集中管理，加「活躍卡」概念 —— 提交成功後顯示「✓ 已記錄，載入下一題…」800ms，再自動遞進至下一條 pending（跨批次繞行），平滑捲入畫面中央，全程唔 reload。
