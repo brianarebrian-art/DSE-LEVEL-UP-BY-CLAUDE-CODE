@@ -36,24 +36,24 @@ export default function RadarChart({
           key={r}
           points={axes.map((_, i) => point(i, r * R).join(',')).join(' ')}
           fill="none"
-          stroke="#1e293b"
+          stroke="rgba(0,0,0,0.10)"
           strokeWidth={1}
         />
       ))}
       {axes.map((_, i) => {
         const [x, y] = point(i, R)
-        return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="#1e293b" strokeWidth={1} />
+        return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="rgba(0,0,0,0.10)" strokeWidth={1} />
       })}
-      <polygon points={valuePoly} fill="rgba(245,158,11,0.22)" stroke="#f59e0b" strokeWidth={2} />
+      <polygon points={valuePoly} fill="rgba(0,139,132,0.15)" stroke="#008B84" strokeWidth={2} />
       {axes.map((ax, i) => {
         const [x, y] = point(i, clamp(ax.value) * R)
-        return <circle key={i} cx={x} cy={y} r={3.5} fill="#f59e0b" />
+        return <circle key={i} cx={x} cy={y} r={3.5} fill="#008B84" />
       })}
       {axes.map((ax, i) => {
         const [x, y] = point(i, R + 20)
         const short = ax.label.length > 6 ? ax.label.slice(0, 6) : ax.label
         return (
-          <text key={i} x={x} y={y} fontSize={10} fill="#94a3b8" textAnchor="middle" dominantBaseline="middle">
+          <text key={i} x={x} y={y} fontSize={10} fill="#6B6B6B" textAnchor="middle" dominantBaseline="middle">
             {short}
           </text>
         )

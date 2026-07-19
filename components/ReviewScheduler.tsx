@@ -6,7 +6,7 @@ import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 
-// F-REV: 錯題重溫智能排程 (Max + Ethan)
+// F-REV: 錯題重溫智能排程 (Max + Ethan) — light-first 版（憲章 §3）
 // 艾賓浩斯遺忘曲線：錯誤後第 1／3／7／14／30 日到期重溫。
 // 數據 100% 本地（lib/reverseLog 有 questionId + topic + ts）——
 // 冇 server 表（question_events 已剷、隱私紅線），完成記錄存 dse_review_done。
@@ -18,9 +18,9 @@ const INTERVALS = [1, 3, 7, 14, 30]
 const DONE_KEY = 'dse_review_done'
 
 const CAUSE_TAG: Record<ReverseCause, { zh: string; en: string; cls: string }> = {
-  A: { zh: '概念盲區', en: 'Concept', cls: 'bg-rose-500/15 text-rose-300 border-rose-500/30' },
-  B: { zh: '審題陷阱', en: 'Trap', cls: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
-  C: { zh: '運算粗心', en: 'Careless', cls: 'bg-sky-500/15 text-sky-300 border-sky-500/30' },
+  A: { zh: '概念盲區', en: 'Concept', cls: 'bg-[#C2185B]/[0.10] text-[#C2185B] border-[#C2185B]/30' },
+  B: { zh: '審題陷阱', en: 'Trap', cls: 'bg-[#B8860B]/[0.10] text-[#B8860B] border-[#B8860B]/30' },
+  C: { zh: '運算粗心', en: 'Careless', cls: 'bg-[#008B84]/[0.10] text-[#008B84] border-[#008B84]/30' },
 }
 
 interface DueItem {
@@ -81,16 +81,16 @@ export default function ReviewScheduler() {
   if (!due) return null
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-      <h2 className="font-bold mb-1">📖 {en ? "Today's review suggestions" : '今日建議重溫'}</h2>
-      <p className="text-xs text-slate-400 mb-4">
+    <div className="bg-white border border-black/[0.06] rounded-2xl p-6">
+      <h2 className="font-medium mb-1 text-[#1A1A1A]">📖 {en ? "Today's review suggestions" : '今日建議重溫'}</h2>
+      <p className="text-xs text-[#6B6B6B] mb-4">
         {en
           ? 'Spaced repetition (day 1 / 3 / 7 / 14 / 30 after a slip) — revisiting is how knowing becomes mastery.'
           : '溫故知新 —— 按遺忘曲線（錯後第 1／3／7／14／30 日）排程，呢啲概念值得再鞏固。'}
       </p>
 
       {due.length === 0 ? (
-        <p className="text-sm text-slate-400 py-4 text-center">
+        <p className="text-sm text-[#6B6B6B] py-4 text-center">
           {en ? 'No reviews due today — take it easy.' : '今日冇重溫任務，休息吓啦。'}
         </p>
       ) : (
@@ -99,12 +99,12 @@ export default function ReviewScheduler() {
             const subj = getSubject(d.subjectId)
             const tag = CAUSE_TAG[d.cause]
             return (
-              <div key={d.questionId} className="flex flex-wrap items-center gap-3 bg-slate-800/50 border border-slate-700/60 rounded-xl px-4 py-3">
+              <div key={d.questionId} className="flex flex-wrap items-center gap-3 bg-[#F5F5F0] border border-black/[0.06] rounded-xl px-4 py-3">
                 <div className="flex-1 min-w-[10rem]">
-                  <div className="text-sm text-slate-200 font-medium">
+                  <div className="text-sm text-[#1A1A1A] font-medium">
                     {subj ? (en ? subj.nameEn : subj.name) : d.subjectId} · {d.topic}
                   </div>
-                  <div className="flex items-center gap-2 mt-1 text-xs text-slate-400">
+                  <div className="flex items-center gap-2 mt-1 text-xs text-[#6B6B6B]">
                     <span className={`px-2 py-0.5 rounded-full border text-[11px] ${tag.cls}`}>{en ? tag.en : tag.zh}</span>
                     {en ? `Slipped here ${d.daysAgo} day${d.daysAgo > 1 ? 's' : ''} ago · due today` : `上次喺呢度跌倒係 ${d.daysAgo} 日前 · 建議今日重溫`}
                   </div>
@@ -115,7 +115,7 @@ export default function ReviewScheduler() {
                     ? `/practice?subject=${encodeURIComponent(d.subjectId)}&topic=${encodeURIComponent(d.topicId)}`
                     : `/practice?subject=${encodeURIComponent(d.subjectId)}`}
                   onClick={() => markDone(d.questionId)}
-                  className="min-h-11 inline-flex items-center bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 rounded-lg px-4 py-2 text-sm font-semibold transition-all"
+                  className="min-h-11 inline-flex items-center bg-[#008B84]/10 text-[#008B84] border border-[#008B84]/30 hover:bg-[#008B84]/20 rounded-lg px-4 py-2 text-sm font-medium transition-all"
                 >
                   {en ? 'Review this topic' : '開始重溫'}
                 </Link>

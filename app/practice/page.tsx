@@ -11,7 +11,7 @@ import NotTonightGate from '@/components/NotTonightGate'
 function LoadingScreen() {
   const t = useT()
   return (
-    <div className="min-h-screen flex items-center justify-center text-slate-500">{t.common.loading}</div>
+    <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] text-[#6B6B6B]">{t.common.loading}</div>
   )
 }
 

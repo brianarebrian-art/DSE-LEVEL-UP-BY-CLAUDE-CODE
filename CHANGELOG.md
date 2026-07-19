@@ -2,12 +2,39 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-19b — Light-first Phase 2：/practice + /subjects 轉淺色（Task #99）
+
+- **`/practice` 做題引擎（`PracticeSession.tsx` 846 行）全轉淺色**：題卡白底、選項 `#F5F5F0`；狀態語意色 —— **答啱=青 `#008B84`、答錯=玫 `#C2185B`（避鮮紅 §4.1）**、反思/提示=金 `#B8860B`、主 CTA=實心青 `#00726C`、MC Hack=紫 `#7C3AED`；weight 收 400-500。
+- **順手修 2 條憲章違規**：①60 秒反思鎖預設模式原本 `bg-black/70`+`border-red-700`（黑底鮮紅）—— 違 §4.4「奶油白遮罩、非黑」+ §4.1 禁鮮紅，改兩種模式都用暖淺色（`#FDFBF8`／`#FDFCF8`）；②鎖標題原有 `uppercase`（違 §3.3 禁 ALL CAPS）已剷。
+- **支援組件 migrate**：`PracticeSupport`（無障礙工具角浮動白藥丸 + 白卡 modal + 淡黑 scrim；字級 range accent 青）、`NotTonightGate`（白卡確認框）、`PracticeGate`/`page.tsx` loading。
+- **`/subjects`**：`SubjectsView`（白卡 grid + 青「已上線」章 + 青 CTA + 青 roadmap 進度 + 青 chips + 白搜尋/排序；**保留每科 hover accentRing 色彩編碼**）、`SubjectDetailView`（青 quick-start banner + 實心青「立即開始」+ 白課題卡 + 英文科寫作/閱讀入口轉紫）。
+- **驗收**：tsc 非測試 0 error、殘留暗 token 0；瀏覽器 E2E —— /subjects grid 淺色、/subjects/economics 詳情頁、/practice 實測答錯流程（選項玫框+青正解 → 停一停反思面板金 → 揀錯因 → 思維逆襲解密 → 實心青「下一題」）、console 零 error。
+- ⚠️ 60 秒鎖 hard-only，未經 hard 題實機觸發（純色替換，tsc 綠）；剩 Phase 2：其餘內頁（result/methodology/leaderboard/focus/relax/writing/reading/about…）、ThemeToggle、body flip。
+
+## 2026-07-19 — Light-first Phase 2：Dashboard 轉淺色 + 精進軌跡（計劃A 藍圖 / Task #98）
+
+- **背景**：用戶貼「計劃A：外觀大改造」（暗底霓虹 `#0B0F19`+`#00F5D4` 賽博朋克 Landing+Dashboard）—— 同前一 message 剛裝嘅晨曦憲章 §3 Light-first + 已 ship 嘅淺色 landing/Navbar/Footer **正面對撞**。同時計劃A §4/§9 復活多條紅線（醫療級、🔥streak、長答 Regex 批改、404 路由 /exam·/review·/dna、假數「6+ 科」實際 25 科）。**已核實並提報**；用戶拍板「Light-first 做準，計劃A 當 Dashboard 藍圖」。
+- **`app/dashboard/page.tsx` 全頁轉淺色**：`#FAFAF8` 底 / 白卡 / `#008B84`·`#B8860B`·`#C2185B` 三強調 / weight 收至 400-500（§3.3）。**去 gamification**：🔥 火焰 streak 改中性 `CalendarCheck`＋青（保留「連續打卡」習慣數值，剷 §2 禁嘅火焰符號）。reset 用玫 `#C2185B` 非鮮紅。全部連結指真路由（無 404）。
+- **新增 `components/ProgressTrajectory.tsx`**（計劃A §5.6 唯一真新組件）：純 SVG 每日正確率精進軌跡，數據 100% 由 `loadAttempts()` 逐日聚合（真 localStorage，零虛構曲線），<2 活躍日顯示溫和佔位。
+- **6 個內頁子組件 migrate 淺色**：`DailySpectrum`（三段神經色→青/金/玫 on-white）、`ErrorDNA`（DNA 條避鮮紅）、`ErrorRadar`（青邊紫填）、`ReviewScheduler`（錯因 tag 三色）、`DailyPlan`、`SyncStatus`（狀態色避鮮紅）＋ `RadarChart`（硬編碼 `#1e293b`/amber→中性+青）。
+- **修全站 Footer 暗縫**：`Footer.tsx` 剷 `mt-20`——透明 margin 原本露出仍暗嘅 `body.bg-bg-dark`，喺淺色 Dashboard 底變黑帶；改為 footer 淺底直貼（暗頁本身睇唔到嗰 gap，中性）。**未 flip 全站 body 底色**（係 Phase 2 最後一步，會令未 migrate 暗頁反爆縫）。
+- **驗收**：tsc --noEmit 非測試 0 error；瀏覽器（seed 6 日作答＋7 錯因）—— landing→Navbar→Dashboard→Footer 全程融合淺色、軌跡圖真數據渲染、DNA/雷達/重溫三色讀得清、暗帶消除、console 零 error；seed 已清。
+- ⚠️ 剩 Phase 2：其餘 ~50 內頁組件（practice/subjects/focus…）仍暗、ThemeToggle（P2）、45 分鐘溫柔提醒、導航審計、WCAG 全掃；全站 body flip 待內頁清完先做。
+
 ## 2026-07-17f — Admin 審核面板 /admin（Task #95）
 
 - **新增**：`/admin`（server 頁，ADMIN_EMAILS env 白名單 + Auth.js session 閘，唔夠身份即彈返首頁）＋ `/api/admin`（GET 歷史/POST 決定，reviewer 一律取自 session）＋ `ReviewPanel` client（逐題 A/R/P、備註、就地更新唔 reload、重新裁決）＋ `0004_review_decisions.sql`（**用戶要落 Supabase SQL editor 行**）＋ `scripts/qbank/pull-decisions.mjs`（雲端決定拉返 repo 生成 decisions.json → 照行 promote）。統計卡實時由真題庫計（唔寫死數字）。
 - **同原 spec 刻意唔同（已提報）**：①冇 `profiles.role` 欄——admin=env 白名單，唔重引 teacher 詞彙；②admin email 唔寫死喺公開 repo 源碼——用 `ADMIN_EMAILS` env；③RLS 改「開 RLS 零 policy」——原 spec 嘅 `auth.jwt()` policy 假設 Supabase Auth，本 stack（Auth.js + service role）永不 match；④9pt 字體規格不採納（Leo 紅線）；⑤冇 `promoted_at/by` 欄——promote 審計軌跡在 reviewed.ts 檔頭+git，唔兩處記錄；⑥spec 漏咗「回程路」，pull-decisions.mjs 補上（含「雲端空+本地已簽」拒覆寫護欄）。
 - **驗收**：qa 三綠 + build 綠（`/admin`、`/api/admin` 以 ƒ dynamic 註冊）+ E2E：未登入 `/admin` → 302 返首頁（實測 path=/）、`/api/admin` → 403；pull 腳本無 env 時安全拒絕。**面板要生效需**：行 0004 SQL + 喺 .env.local 同 Vercel 設 `ADMIN_EMAILS`。
 - 順手清咗 `.env.example` 嘅免費化殘留（ALLOWED_EMAILS/PREMIUM_EMAILS，code 零引用）＋補 Supabase env 說明。
+
+## 2026-07-18 — Light-first Phase 2 P0：Navbar + Footer 轉淺色（晨曦行動 Task 1-2）
+
+- **kate-uiux skill 升級 v-FINAL「晨曦行動」**（取代 v-B，v-B 封存 `SKILL.md.bak.v-B-2026-07-18`）：§1 blocklist 補齊「虛擬 persona 當真人導師」「假 SOS 熱線」兩紅線。裝前修咗作者又漏 patch 嘅 §15 英文科「Tone & Register 雙重批改／嚴打盲抄」（同 §1 blocklist 打對台，第三次），已剷。
+- **Task 1 Navbar（`Navbar.tsx` + `LanguageToggle.tsx` + `AuthButton.tsx`）**：純白底 + #1A1A1A 文字 + #008B84 accent + #00726C 實心掣（WCAG AA）。**保留全部真結構**（5 條 i18n 連結 subjects/dashboard/methodology/leaderboard/about + LanguageToggle + AuthButton + mobile aria）—— prompt 範例會刪 3 條連結兼寫死中文破 i18n，冇照抄。
+- **Task 2 Footer（`Footer.tsx`）**：light-first 三層（Doormat 導航 / Trust 信任+HKEAA 免責 / Compliance 合規）。**拒紅線**：唔列 Carson/Amity/Victor 為真人導師、無真熱線就唔放假號、只連真實路由（/transparency，唔整 /privacy /terms 404）。i18n 全沿用。
+- 驗收：qa 三綠 + build 綠 + 瀏覽器（landing 融合、Footer 三層渲染、console 零 error）。
+- ⚠️ 過渡接縫：白 Navbar/淺 Footer 現夾住仍暗色嘅內頁（practice/dashboard/methodology…）—— 預期，Phase 2 剩餘 task（內頁 ~50 檔 + ThemeToggle + 45 分鐘提醒 + 導航審計 + WCAG 全掃）migrate 完先消除。
 
 ## 2026-07-18 — Light-first Phase 1：landing 轉「清晨圖書館」淺色（UI/UX 憲章 §3）
 
