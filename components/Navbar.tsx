@@ -12,11 +12,12 @@ import { useT, useLocale } from '@/lib/i18n'
 // + #008B84 accent（WCAG AA 4.6:1）；實心青掣用 #00726C（白字 4.9:1）。保留全部真結構
 // （5 條 i18n 連結 + LanguageToggle + AuthButton + mobile aria）—— 只轉色，唔動導航內容。
 
-const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'leaderboard' | 'about' }[] = [
+// 排行榜 (leaderboard) removed 2026-07-20 — it was a fabricated-student gamification
+// leaderboard (fake ranks + 🔥streak + fake stats), a §禁 gamification + §禁虛構 red line.
+const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'about' }[] = [
   { href: '/subjects', key: 'subjects' },
   { href: '/dashboard', key: 'progress' },
   { href: '/methodology', key: 'methodology' },
-  { href: '/leaderboard', key: 'leaderboard' },
   { href: '/about', key: 'about' },
 ]
 

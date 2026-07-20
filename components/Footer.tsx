@@ -45,11 +45,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/leaderboard" className="hover:text-[#008B84] transition-colors">
-                  {t.footer.linkLeaderboard}
-                </Link>
-              </li>
-              <li>
                 <Link href="/relax" className="hover:text-[#008B84] transition-colors">
                   {t.footer.linkRelax}
                 </Link>

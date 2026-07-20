@@ -2,6 +2,33 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-20b — Light-first Phase 2：/methodology + /focus 轉淺色 + 🚨 /leaderboard 紅線（Task #102）
+
+- **背景**：用戶貼「REVISED FINAL PROMPT」——**已吸納全部提報**（dark neon→light、9pt→16px、`auth.uid()`→`ADMIN_EMAILS`、migration→0005、顧問→mailto-only、剷重複功能、OpenDyslexic 狀態校正、typo 修正、剷壞 metric）。乾淨，故執行 Week 1 淺色遷移。
+- **`app/methodology/page.tsx` 轉淺色**：白卡 + 金 badge + 青標題 accent + 官方/分析/改寫三欄（金/青 tint）+ 實心青 CTA。weight 400-500。
+- **`app/focus/page.tsx`（番茄鐘）轉淺色**：白計時卡 + 金/青模式 pill + 實心青掣 + 青 tally + 自律房間；WhatsApp 掣保留品牌綠 `#128C7E`。
+- **🚨 `/leaderboard` = 活紅線 → 用戶決定「刪整頁」**：`mockLeaderboard` 有 **8 個虛構學生**（Marco L. 等）+ 排名 🥇🥈🥉 + 🔥streak + 假「342 today／23% above 5」。踩 §禁 gamification（排行榜/火焰）+ §禁虛構（假用戶/假統計）——task #12 漏咗佢。**已 `rm -rf app/leaderboard/` + 除 Navbar & Footer「排行榜」連結**（type union 亦清）。i18n `t.nav.leaderboard`/`t.footer.linkLeaderboard`/`t.leaderboard.*` key 留住但已無引用（無害）。
+- **⚠️ `/focus` 自律勳章 = §2 灰區 → 用戶決定「de-gamify」**：「🏅解鎖自律勳章」= 成就徽章 + 解鎖機制。**已改為中性功能閘**：`Award` trophy icon → `Send`；文案「🏅解鎖自律勳章」→「家長戰報 · 3/4」+「完成 4 個番茄鐘就可以發送」（無獎勵/解鎖/成就框架）。家長戰報功能本身不變。
+- **驗收**：tsc 非測試 0 error、殘留暗 token 0；瀏覽器（methodology 手風琴 + focus 計時卡全淺色）、console 零 error。
+- Light-first Phase 2 進度：**10 面已淺色**（+methodology +focus）；剩 writing · reading · about + leaderboard（待決定）+ ThemeToggle + body flip。
+
+## 2026-07-20 — Light-first Phase 2：/result 轉淺色（Task #101）
+
+- **背景**：用戶貼「ULTIMATE FINAL PROMPT」（10 feature + 5 improvement + 90 日路線圖，自稱 FINAL）。核實提報後只執行 Phase 1 Week 1 頭項（/result 淺色）——但做 **light-first**（淺色默認，同已 ship 5 面一致），**唔跟 doc 嘅「dark 默認 + toggle」**（嗰個推翻你鎖死嘅「全站 light-first」）。
+- **`app/result/page.tsx` 全頁轉淺色**：白卡 / 青金玫狀態色。題目分析條 green/amber/red → **青 `#008B84` / 金 `#B8860B` / 玫 `#C2185B`**（避鮮紅）；中文科拔尖診斷警示 rose-tint（非鮮紅）；老師報告掣紫 `#7C3AED`；主 CTA 實心青 `#00726C`；weight 收 400-500。等級 badge/分數保留 `gradeColors` 語意色。戰績卡（IG story 下載圖）保留自身 `#FEE440/#9B5DE5` 調（唔係頁面 chrome）。
+- **`EncouragementWall`**（過來人打氣牆，inline on /result）順手 migrate 淺色（白卡 + 金左框）。
+- **驗收**：tsc 非測試 0 error、殘留暗 token 0；瀏覽器（seed 中文 13/20 mixed → 觸發拔尖診斷警示 + 題目條金/玫 + 老師報告紫 + 實心青 CTA + 打氣牆 + footer 全淺色）、console 零 error；seed 已清。
+- **「FINAL」doc 拒/緩**：§1.9 賽博朋克暗底霓虹 + Feature 1 dark 默認（撞 light-first）、§1.9 Body 9pt/Caption 7pt（踩 SEN 可讀性紅線）、Feature 4/10 `auth.uid()`/`profiles.role` RLS（Auth.js 非 Supabase-Auth，第 4 次）、顧問存 Supabase（撞 mailto-only 決定）、`0003_community_and_sync`（0003 已被佔）、Feature 7/8/10 + Improvement 4（DNA/season/sync/艾賓浩斯 全已做）、Improvement 5 localStorage 量度註冊數（技術壞）、「今日能打開嚟已經好參」typo。OpenDyslexic：易讀字體 MODE live（BDA fallback），但 .woff2 檔缺（doc 稱「FULLY DEPLOYED」半真）。
+- ⚠️ 剩 Phase 2：methodology/leaderboard/focus/relax/writing/reading/about… + ThemeToggle + 全站 body flip（最後）。
+
+## 2026-07-19c — Q3-Q4 綠區：季節性 Hero + 靜態 /waiting（Task #100）
+
+- **背景**：用戶貼「2026 Q3-Q4 大整改 v2.1」（5 頁 + Supabase UGC/PII 平台，自估 8-10h）。**核實提報**：①§0 自禁「新 dep >50KB」但 §5 強推 **jsPDF (~350KB)** —— 自相矛盾，**拒**（用返已裝嘅 html2canvas／print-to-PDF）；②`/journey` ≈ 已存在嘅 `/dashboard/report` + 新 `ProgressTrajectory`，重複；③RLS `auth.uid()`/`auth.role()`/`role=admin`/`REFERENCES auth.users(id)` 全部假設 **Supabase Auth**（實為 Auth.js v5 + ADMIN_EMAILS，`lib/auth/adminAllowlist.ts`）—— 復發 stack 錯；④熱線 `2389 2222` vs 站內已驗證 `2896 0000`／`2382 0000`。用戶三項決定：**社群 UGC = 完整 + 人手審核**、**顧問申請 = 只 mailto 零儲存（剷 PII/成績單/PDPO 風險）**、**即做綠區**。
+- **方向一 季節性 Hero**：新 `utils/season.ts`（按月 golden/stable/sprint/peak/transition/anxiety）+ `data/heroContent.ts`（6 季雙語文案，CTA 純文字配 lucide `ArrowRight`、唔用 emoji 作功能圖標 §1）。`app/page.tsx` Hero 用 `getSeasonalHero(...)` 換 badge/標題/副標/雙 CTA，**light-first + IO/count-up 全保留**；deterministic 按月 → 無 hydration mismatch。今日 7 月 = `anxiety` → 實測「放榜前，我哋陪你」+ CTA 導向 `/waiting`。
+- **方向二（靜態）`/waiting`**：新 `app/waiting/page.tsx`（light）= 🫂 hero + `DailyQuote`（新 `components/waiting/DailyQuote.tsx` + `data/quotes.ts` **24 句雙語、憲章核過**：無虛構統計/gamification/醫療級/壓力語，date-of-month 日換 + 「換一句」+ localStorage 去重）+ 復用 `BreathingExercise`（順手 migrate 淺色 —— 只 PracticeSupport 暗 scrim overlay 用，`/relax` 另有 copy，零副作用）+ **真危機熱線信號牌**（reuse 站內已驗證 2896 0000／2382 0000 + 醫療免責 + 999）+ **社群互助牆 dashed 預留位**（明示「帖子經真人審核先公開」，未開匿名公開發帖 —— Luna/Sarah 紅線）。
+- **拒建**：`advisor_applications`／成績單上傳／`/admin/advisors` 後台／jsPDF（未成年 PII + 新 dep + Supabase-Auth 假設）。UGC 牆完整版（人手審核）留作下一 build。
+- **驗收**：tsc 非測試 0 error；瀏覽器 /waiting（金句/呼吸/預留位/熱線/footer 全淺色）+ 首頁季節 Hero（anxiety 文案 + /waiting CTA）+ console 零 error。
+
 ## 2026-07-19b — Light-first Phase 2：/practice + /subjects 轉淺色（Task #99）
 
 - **`/practice` 做題引擎（`PracticeSession.tsx` 846 行）全轉淺色**：題卡白底、選項 `#F5F5F0`；狀態語意色 —— **答啱=青 `#008B84`、答錯=玫 `#C2185B`（避鮮紅 §4.1）**、反思/提示=金 `#B8860B`、主 CTA=實心青 `#00726C`、MC Hack=紫 `#7C3AED`；weight 收 400-500。

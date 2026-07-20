@@ -8,6 +8,9 @@ import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
 import { subjects, getActiveSubjects } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+// 方向一：季節性 Hero（純前端按月切換文案；light-first 不變）
+import { getCurrentSeason } from '@/utils/season'
+import { getSeasonalHero } from '@/data/heroContent'
 
 // UI/UX 憲章 §3「清晨圖書館」light-first 首階段：landing 自足淺色（自帶背景，
 // 唔郁全域 body），故內頁暗色維持不變、零爆版。全域 toggle + 內頁 migrate = Phase 2。
@@ -24,6 +27,8 @@ export default function HomePage() {
   const { t, locale } = useLocale()
   const h = t.home
   const rootRef = useRef<HTMLDivElement>(null)
+  // 季節性 Hero 文案（按月份，deterministic → SSR/CSR 一致，無 hydration mismatch）
+  const hero = getSeasonalHero(getCurrentSeason(), locale === 'en')
 
   const stats = [
     { num: statNums[0], unit: locale === 'en' ? '' : '年', label: h.statsItems[0].label },
@@ -76,16 +81,16 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto max-w-5xl text-center">
           <div className="animate-on-scroll mb-8 inline-flex items-center gap-2 rounded-full border border-[#00A8A0]/25 bg-[#00A8A0]/[0.07] px-4 py-2 text-sm font-medium text-[#00877F]">
             <span className="inline-block h-2 w-2 rounded-full bg-[#00A8A0]" />
-            {locale === 'en' ? '📚 Personalised · For every student · 100% free' : '📚 因材施教 · 有教無類 · 完全免費'}
+            {hero.badge}
           </div>
 
           <h1 className="animate-on-scroll stagger-1 mb-6 text-4xl font-medium leading-[1.1] tracking-tight text-[#1A1A1A] sm:text-5xl md:text-6xl">
-            {h.headline1}
+            {hero.headline1}
             <br />
-            <span className="bg-gradient-to-r from-[#00A8A0] to-[#00877F] bg-clip-text text-transparent">{h.headline2}</span>
+            <span className="bg-gradient-to-r from-[#00A8A0] to-[#00877F] bg-clip-text text-transparent">{hero.headline2}</span>
           </h1>
 
-          <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-xl text-[#6B6B6B]">{h.subhead}</p>
+          <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-xl text-[#6B6B6B]">{hero.subhead}</p>
 
           <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-[#9CA3AF]">
             {locale === 'en'
@@ -103,16 +108,16 @@ export default function HomePage() {
 
           <div className="animate-on-scroll stagger-4 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/subjects"
+              href={hero.ctaStartHref}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00726C] px-8 py-4 text-base font-medium text-white transition-all duration-200 hover:bg-[#005F5A] hover:-translate-y-0.5"
             >
-              {h.ctaStart} <ArrowRight size={18} />
+              {hero.ctaStartLabel} <ArrowRight size={18} />
             </Link>
             <Link
-              href="/methodology"
+              href={hero.ctaSecHref}
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-black/[0.08] bg-white px-8 py-4 text-base font-medium text-[#2D2D2D] transition-all duration-200 hover:border-[#00A8A0]/30 hover:-translate-y-0.5"
             >
-              <Brain size={18} className="text-[#00A8A0]" /> {h.ctaMethod}
+              <Brain size={18} className="text-[#00A8A0]" /> {hero.ctaSecLabel}
             </Link>
           </div>
         </div>
