@@ -1,0 +1,32 @@
+name: Night Agent — DSE Level Up Automation
+
+on:
+  schedule:
+    - cron: '0 18 * * *'
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-night-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Trigger Night Agent API
+        run: |
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST "https://dse-level-up-by-claude-code.vercel.app/api/night-agent" \
+            -H "Authorization: Bearer ${{ secrets.AGENT_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"batch":"nightly","trigger":"github-actions"}')
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          
+          echo "HTTP Status: $HTTP_CODE"
+          echo "Response: $BODY"
+          
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "Night Agent failed with status $HTTP_CODE"
+            exit 1
+          fi
