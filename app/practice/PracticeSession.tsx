@@ -298,6 +298,9 @@ export default function PracticeSession({
   // B2「一鍵休息模式」：休息期間所有計時停低。收工時將暫停咗嘅毫秒數同時加落
   // startTime（練習計時）同反思鎖死線 —— 唞得幾耐，兩邊就順延幾耐，
   // 所以「休息」對成績同鎖時長零影響，學生唔使為咗唞而有心理負擔。
+  // C6「只做 1 題」做完後嘅溫暖收結（唔跳 /result，見 next() 入面嘅理由）
+  const [justOneDone, setJustOneDone] = useState(false)
+
   const [restOpen, setRestOpen] = useState(false)
   const closeRest = useCallback((pausedMs: number) => {
     setRestOpen(false)
@@ -456,6 +459,25 @@ export default function PracticeSession({
       const topicResults = buildTopicResults(questions, newAnswers)
       const difficultyResults = buildDifficultyResults(questions, newAnswers)
       const elapsed = Math.floor((Date.now() - startTime) / 1000)
+
+      // C6「只做 1 題」收結：一題係出唔到有意義嘅等級嘅，硬計出嚟就係
+      // 憑一個數據點貼標籤（違憲章 #2 零標籤傷害）。所以呢條路：
+      //   • grade 記做 '—'，唔會喺進度頁扮成一次「Level X」
+      //   • 唔寫 dse_result —— 嗰個 key 代表「最近一份完整卷」，一題唔算
+      //     （亦令 /result 同溫書地圖報告完全唔使改）
+      //   • 唔跳頁，就地出一個溫暖收結畫面
+      if (totalQ === 1) {
+        recordAttempt({
+          subjectId, subjectName, topicFilter: topicFilter ?? null,
+          score, total: 1, grade: '—', topicResults, elapsed, timestamp: Date.now(),
+        })
+        recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
+        clearActiveSession()
+        notifyProgressChanged()
+        setJustOneDone(true)
+        return
+      }
+
       const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId)).grade
       const resultData = {
         score,
@@ -553,6 +575,42 @@ export default function PracticeSession({
   }, [])
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
+
+  // C6「只做 1 題」收結。刻意冇分數、冇等級、冇「你仲有 19 題未做」——
+  // 呢個入口係畀低動機／焦慮嘅學生，收結唯一嘅任務係肯定佢今日打開咗個網。
+  // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
+  if (justOneDone) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#FAFAF8] text-[#2D2D2D]">
+        <div className="w-full max-w-md bg-white border border-black/[0.06] rounded-2xl p-7 text-center">
+          <div className="text-3xl mb-3" aria-hidden>🌱</div>
+          <h2 className="text-lg font-medium text-[#1A1A1A] mb-2">
+            {tr('你今日打開咗嚟，已經好叻。', 'You showed up today. That already counts.')}
+          </h2>
+          <p className="text-sm text-[#6B6B6B] leading-relaxed mb-6">
+            {tr(
+              '做完 1 題就夠喇。想再做就再做，唔想就收工 —— 兩樣都冇問題。',
+              'One question is enough. Do another if you feel like it, or stop here — both are fine.',
+            )}
+          </p>
+          <div className="flex flex-col gap-2.5">
+            <button
+              onClick={() => window.location.reload()}
+              className="w-full min-h-11 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-colors"
+            >
+              {tr('再做多 1 題', 'One more question')}
+            </button>
+            <Link
+              href="/dashboard"
+              className="w-full min-h-11 flex items-center justify-center bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#6B6B6B] px-6 py-3 rounded-xl transition-colors text-sm"
+            >
+              {tr('今日就到呢度', "That's it for today")}
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   // v3.0 F1: an unfinished run is waiting (this device, or synced from another one).
   // Never auto-applied — the student chooses. Light-first tokens, no pressure language.
@@ -945,6 +1003,9 @@ export default function PracticeSession({
                       {tr(`解鎖中…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`,
                           `Locked…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`)}
                     </>
+                  ) : totalQ === 1 ? (
+                    // C6：1 題卷冇結果頁，亦唔應該喺啱啱答錯之後彈「🎉」。
+                    tr('做完喇', 'Done')
                   ) : current + 1 >= totalQ ? t.practice.seeResult : (
                     <>{t.practice.next} <ChevronRight size={18} /></>
                   )}

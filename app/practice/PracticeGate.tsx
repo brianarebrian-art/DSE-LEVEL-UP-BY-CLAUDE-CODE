@@ -28,10 +28,13 @@ export default function PracticeGate({
   subjectId,
   topicFilter,
   mode = 'normal',
+  sessionSize,
 }: {
   subjectId: string
   topicFilter: string | null
   mode?: 'normal' | 'weakness'
+  /** C6「只做 1 題」會傳 1；其餘一律用標準卷長。 */
+  sessionSize?: number
 }) {
   // The subject's question bank, lazily fetched as its own chunk.
   const [questions, setQuestions] = useState<Question[] | null>(null)
@@ -50,11 +53,11 @@ export default function PracticeGate({
 
   return (
     <PracticeSession
-      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode}
+      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (sessionSize ?? '')}
       bank={questions}
       subjectId={subjectId}
       topicFilter={topicFilter}
-      sessionSize={SESSION_SIZE}
+      sessionSize={sessionSize ?? SESSION_SIZE}
       mode={mode}
     />
   )

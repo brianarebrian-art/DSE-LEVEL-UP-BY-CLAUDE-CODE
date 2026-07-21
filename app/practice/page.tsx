@@ -20,13 +20,17 @@ function PracticeRouter() {
   const subjectId = params.get('subject') ?? 'math'
   const topicFilter = params.get('topic')
   const mode = params.get('mode') === 'weakness' ? 'weakness' : 'normal'
+  // C6「只做 1 題」：唯一支援嘅細卷尺寸。刻意唔開放任意數字 ——
+  // 呢個入口存在嘅意義係「門檻低到冇得再低」，唔係一個自訂長度功能。
+  const size = params.get('size') === '1' ? 1 : undefined
   // Re-mount the gate (and the session beneath it) whenever subject/topic/mode changes.
   return (
     <PracticeGate
-      key={`${subjectId}|${topicFilter ?? ''}|${mode}`}
+      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${size ?? ''}`}
       subjectId={subjectId}
       topicFilter={topicFilter}
       mode={mode}
+      sessionSize={size}
     />
   )
 }

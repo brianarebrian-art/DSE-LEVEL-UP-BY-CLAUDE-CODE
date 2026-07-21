@@ -18,6 +18,7 @@ import RadarChart from '@/components/RadarChart'
 import SyncStatus from '@/components/SyncStatus'
 import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
+import JustOneCard from '@/components/JustOneCard'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
 // F-NTM: 今晚唔溫得（本地 until-04:00 開關）
@@ -127,6 +128,8 @@ export default function DashboardPage() {
               {d.emptyCta} <ArrowRight size={16} />
             </Link>
           </div>
+          {/* C6：對住「開始第一份練習」都撳唔落手嗰個，先係最需要呢個入口嗰個 */}
+          <JustOneCard stack className="mt-8 text-left" />
         </div>
       </div>
     )
@@ -219,6 +222,9 @@ export default function DashboardPage() {
 
         {/* F-PRG: 今日學習光譜（3:5:2 建議節奏，真實作答數據） */}
         <DailySpectrum />
+
+        {/* C6：擺喺「今日計劃」之前 —— 見到成個計劃就無力嗰日，起碼仲有呢條路 */}
+        <JustOneCard className="mb-6" />
 
         {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
         <DailyPlan />
