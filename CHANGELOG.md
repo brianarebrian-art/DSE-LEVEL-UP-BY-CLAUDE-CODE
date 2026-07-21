@@ -2,6 +2,16 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-22 — v5.0 ULTIMATE 審核 + B1 可調行距／字間距（SEN）
+
+- **背景**：用戶貼 v5.0。呢份**收錄晒噚日全部實測**（§3 直接寫入 `auth.users=0`／Realtime=none／RLS service_role only／0003 已執行／arena 孤兒表／`rls_auto_enable` 風險，連「AI admin 通道 ≠ 學生瀏覽器」個概念更正都寫咗）。技術現實部分**唔使再拗**。
+- **核實 §7.1 剩低嘅唔準**：① **OpenDyslexic `.woff2` 仍然缺**（`public/fonts/` 得 README；`@font-face` 已寫定，放檔即生效 —— 你嗰邊嘅 task）；② B1 只做咗一半 —— `A11yPanel` 早有字級（12–24px）+ 易讀字體，但**完全冇行距、冇字間距**。
+- **執行 B1 真缺口**：`GlobalA11y` 新增 `applyTextSpacing()` + `LINE_HEIGHT_KEY`／`LETTER_SPACING_KEY`（行距 1.2–2.0 每 0.1；字間距 normal/wide/extra-wide = 0/0.05em/0.1em），開機自動套用；`globals.css` 新增 `html.a11y-spacing` 規則（落點跟 `html.font-easy` 一致，body + 段落層，唔用 `*` 免搞亂圖標）；`A11yPanel` 加滑桿 + 三檔掣 + **即時預覽**（拖動即見疏密度）。**刻意設計：停留喺預設（1.6 / normal）就唔掛 class → 未調校過嘅用戶排版 100% 不變、零視覺回歸**（已實測）。
+- **🐞 debug 記錄（值得記低）**：改完 CSS 一直唔生效，查到最後**唔係我段 CSS 有錯，係 `.next` build cache 石化咗** —— 服務嘅 `layout.css` 凍結喺 155584 bytes，`touch`、改註解、甚至**重啟 dev server 兩次都照舊**。決定性證據：同一個檔嘅 `font-easy`（3 次）同**排喺我規則之後**嘅 `skip-link`（2 次）都在，唯獨 `a11y-spacing` 係 0 → 證明唔係解析壞咗、係舊 artifact。`rm -rf .next` + 重啟後即刻變 145084 bytes、`a11y-spacing` ×5 ✅。**教訓：CSS 改咗唔生效，第一步應該 curl 實際 served CSS 對比 marker，唔好只係睇 computed style 或者狂重啟。**
+- **驗收（實測）**：tsc 非測試 0 error；預設態 `letter-spacing: normal` / `line-height: 24px` **完全冇變**；撳到行距 2.0 + 字間距最闊後，**真實題目段落** = `line-height: 36px`、`letter-spacing: 1.8px`（18px 字 × 2.0／0.1em），localStorage 正確持久化；測試狀態已清乾淨。
+- **拒建（v5 仍殘留、其中 3 項撞 doc 自己）**：**D1–D4 老師工具**（D2「班級弱項總覽」要班級數據 = 我噚日先 drop 咗嘅表，直撞 §2「B2B 老師平台已徹底刪除」；§4.1 仲當「老師/SENCO 班級洞察」係 Supabase 價值點）、**C25 證明式思考題 + §15「批改引擎」**（長答自動出分，**第 10 次**）、**§2 禁「社群功能（WhatsApp 連結）」**（會剷埋你 2026-07-21 明確決定保留嘅自律房間 study-together 邀請 + IG 社群 —— **唔執行**）、**§5 AES-256-GCM**（你已揀 Stack-相容版，金鑰風險理由不變）、**§14 #11「所有功能裝置 B 3 秒內可見」**（冇 Realtime 做唔到字面標準，現為回前台即拉取）、**§9 字體表仍寫 Caption 7pt／H2 11pt**（H2 細過 Body 14–16px，自相矛盾，未跟）。
+- **F1 狀態更正**：v5 §5 當多裝置同步係「核心新增」，但**噚日已 ship**（`lib/sessionResume.ts` + snapshot 整合 + 回前台拉取 + 續做卡，實測 reload 後可續做第 2 題）。真正未做嘅只剩 offline queue／device_id／衝突 UI。
+
 ## 2026-07-21e — Supabase MCP 實測：F1 §5.3 證實不可行 + 老師平台表（一直未刪）正式清走
 
 - **背景**：用戶貼「v3.1 SUPABASE_CONNECTED」，同時 Supabase MCP 接通。**第一次可以查真 DB 而唔係靠推論。** 項目 = `aegekxapxgcfdrkzisis` (DSE-LEVEL-UP, ap-northeast-1, PG 17.6)。

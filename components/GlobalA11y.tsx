@@ -14,12 +14,42 @@ import { useLocale } from '@/lib/i18n'
 //    modal = 呼吸 + 呼吸空間 + 熱線。溫和脈動，respect prefers-reduced-motion。
 
 export const FONT_KEY = 'dse_font_size'
+export const LINE_HEIGHT_KEY = 'dse_line_height'
+export const LETTER_SPACING_KEY = 'dse_letter_spacing'
 
 export function applyFontSize(px: number) {
   const v = Math.min(24, Math.max(12, px))
   document.documentElement.style.fontSize = `${v}px`
   try { localStorage.setItem(FONT_KEY, String(v)) } catch { /* ignore */ }
   return v
+}
+
+export type LetterSpacing = 'normal' | 'wide' | 'extra-wide'
+
+/** 預設＝現行排版；停留喺呢組值時唔會掛 class，全站渲染同今日一模一樣。 */
+export const DEFAULT_LINE_HEIGHT = 1.6
+const LETTER_SPACING_EM: Record<LetterSpacing, string> = {
+  normal: 'normal',
+  wide: '0.05em',
+  'extra-wide': '0.1em',
+}
+
+/**
+ * B1（Emma/UDL 2026-07-22）：行距／字間距獨立可調。BDA 對讀寫障礙嘅核心建議之一，
+ * 但刻意同「易讀字體」分開 —— 好多學生只想鬆行距，唔想連字體都換。
+ * 只有偏離預設先至加 `a11y-spacing` class，所以未調校過嘅用戶零影響、零視覺回歸。
+ */
+export function applyTextSpacing(lineHeight: number, letterSpacing: LetterSpacing) {
+  const lh = Math.min(2, Math.max(1.2, Number(lineHeight) || DEFAULT_LINE_HEIGHT))
+  const root = document.documentElement
+  root.style.setProperty('--dse-line-height', String(lh))
+  root.style.setProperty('--dse-letter-spacing', LETTER_SPACING_EM[letterSpacing])
+  root.classList.toggle('a11y-spacing', !(lh === DEFAULT_LINE_HEIGHT && letterSpacing === 'normal'))
+  try {
+    localStorage.setItem(LINE_HEIGHT_KEY, String(lh))
+    localStorage.setItem(LETTER_SPACING_KEY, letterSpacing)
+  } catch { /* ignore */ }
+  return { lineHeight: lh, letterSpacing }
 }
 
 export default function GlobalA11y() {
@@ -33,6 +63,12 @@ export default function GlobalA11y() {
       const saved = Number(localStorage.getItem(FONT_KEY))
       if (saved >= 12 && saved <= 24 && saved !== 16) document.documentElement.style.fontSize = `${saved}px`
       if (localStorage.getItem('dse_easy_font') === '1') document.documentElement.classList.add('font-easy')
+      // B1: 開機套用已存嘅行距／字間距（同字級一樣，只喺有偏好時先郁）
+      const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
+      const ls = localStorage.getItem(LETTER_SPACING_KEY) as LetterSpacing | null
+      if ((lh >= 1.2 && lh <= 2) || ls) {
+        applyTextSpacing(lh >= 1.2 && lh <= 2 ? lh : DEFAULT_LINE_HEIGHT, ls ?? 'normal')
+      }
     } catch { /* ignore */ }
   }, [])
 

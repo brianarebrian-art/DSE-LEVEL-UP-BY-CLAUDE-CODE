@@ -196,6 +196,19 @@ html.font-easy li {
   text-align: left;
 }
 
+/* B1（Emma/Kate 2026-07-22）：可調行距同字間距，同易讀字體獨立。
+   由 A11yPanel 滑桿寫入 CSS 變數；只有偏離預設（行距 1.6 + 字間距 normal）
+   先至由 applyTextSpacing 掛上 a11y-spacing class，所以未調校過嘅用戶
+   排版 100% 不變、零視覺回歸。落點跟 html.font-easy 一致（body + 段落層）。 */
+html.a11y-spacing body,
+html.a11y-spacing p,
+html.a11y-spacing li,
+html.a11y-spacing label,
+html.a11y-spacing button {
+  line-height: var(--dse-line-height, normal);
+  letter-spacing: var(--dse-letter-spacing, normal);
+}
+
 /* P1-3 WCAG（Leo/Kate 2026-07-16）：跳至主要內容連結。
    預設以 clip 完全隱藏（螢幕閱讀器照讀到），鍵盤第一下 Tab focus 即以
    琥珀色藥丸現身左上角。用自訂 class 唔用 focus:not-sr-only ——

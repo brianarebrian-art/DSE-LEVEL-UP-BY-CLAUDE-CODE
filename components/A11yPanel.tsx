@@ -2,9 +2,23 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Clock, Minus, Plus, Type, X } from 'lucide-react'
+import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
-import { applyFontSize, FONT_KEY } from '@/components/GlobalA11y'
+import {
+  applyFontSize,
+  applyTextSpacing,
+  FONT_KEY,
+  LINE_HEIGHT_KEY,
+  LETTER_SPACING_KEY,
+  DEFAULT_LINE_HEIGHT,
+  type LetterSpacing,
+} from '@/components/GlobalA11y'
+
+const LETTER_SPACING_PREVIEW: Record<LetterSpacing, string> = {
+  normal: 'normal',
+  wide: '0.05em',
+  'extra-wide': '0.1em',
+}
 
 // 全站無障礙控制面板（Leo/前端 + Emma/UDL — SEN 支援）。
 // 補回一直缺失嘅「可見開關」：GlobalA11y 只喺開機時套用已存嘅字級／易讀字體，
@@ -28,6 +42,9 @@ export default function A11yPanel() {
   const [easy, setEasy] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
   const [ruler, setRuler] = useState(false)
+  // B1（2026-07-22）：行距／字間距，同字級一樣即時生效 + 存 localStorage
+  const [lineH, setLineH] = useState(DEFAULT_LINE_HEIGHT)
+  const [letterSp, setLetterSp] = useState<LetterSpacing>('normal')
 
   // 讀返裝置上已存嘅設定（client-only，避免 hydration mismatch）
   useEffect(() => {
@@ -38,6 +55,10 @@ export default function A11yPanel() {
       setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
       const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       setRuler(!!r?.on)
+      const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
+      if (lh >= 1.2 && lh <= 2) setLineH(lh)
+      const ls = localStorage.getItem(LETTER_SPACING_KEY)
+      if (ls === 'normal' || ls === 'wide' || ls === 'extra-wide') setLetterSp(ls)
     } catch {
       /* ignore */
     }
@@ -213,6 +234,73 @@ export default function A11yPanel() {
                 <span className="text-base ml-1">A</span>
               </button>
             </div>
+          </div>
+
+          {/* B1 行距（1.2–2.0，每 0.1 一級） */}
+          <div className="mb-4">
+            <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
+              <span className="flex items-center gap-1.5">
+                <AlignJustify size={13} /> {en ? 'Line spacing' : '行距'}
+              </span>
+              <span className="tabular-nums text-slate-300">{lineH.toFixed(1)}</span>
+            </div>
+            <input
+              type="range"
+              min={1.2}
+              max={2}
+              step={0.1}
+              value={lineH}
+              onChange={(e) => {
+                const v = Number(e.target.value)
+                setLineH(v)
+                applyTextSpacing(v, letterSp)
+              }}
+              aria-label={en ? 'Line spacing' : '行距'}
+              className="w-full accent-amber-400 cursor-pointer"
+            />
+          </div>
+
+          {/* B1 字間距（三檔） */}
+          <div className="mb-4">
+            <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-2">
+              <MoveHorizontal size={13} /> {en ? 'Letter spacing' : '字間距'}
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {(['normal', 'wide', 'extra-wide'] as LetterSpacing[]).map((v) => (
+                <button
+                  key={v}
+                  onClick={() => {
+                    setLetterSp(v)
+                    applyTextSpacing(lineH, v)
+                  }}
+                  aria-pressed={letterSp === v}
+                  className={`min-h-11 rounded-xl border text-xs transition-colors ${
+                    letterSp === v
+                      ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
+                      : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                  }`}
+                >
+                  {v === 'normal'
+                    ? en ? 'Normal' : '正常'
+                    : v === 'wide'
+                      ? en ? 'Wide' : '闊'
+                      : en ? 'Extra' : '最闊'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* B1 即時預覽：拖動滑桿時即刻見到疏密度，唔使閂 panel 去試 */}
+          <div className="mb-4 rounded-xl border border-slate-700 bg-slate-800/60 p-3">
+            <div className="text-[11px] text-slate-500 mb-1">{en ? 'Preview' : '即時預覽'}</div>
+            <p
+              className="text-sm text-slate-200"
+              style={{ lineHeight: lineH, letterSpacing: LETTER_SPACING_PREVIEW[letterSp] }}
+            >
+              {en
+                ? 'When price rises, the quantity supplied rises too. Read these two lines and see whether the spacing feels comfortable to you.'
+                : '價格上升，供應量亦隨之上升。讀一讀呢兩行字，睇下而家嘅疏密度你自己舒唔舒服。'}
+            </p>
           </div>
 
           {/* 易讀字體開關 */}
