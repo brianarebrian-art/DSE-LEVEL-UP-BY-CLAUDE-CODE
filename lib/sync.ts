@@ -7,6 +7,8 @@
 //   dse_synced_at  — set once this device has merged with the cloud at least once
 // All access is guarded by `typeof window` so it never runs during SSR (防線 B).
 
+import { ACTIVE_SESSION_KEY, type ActiveSession } from '@/lib/sessionResume'
+
 const KEYS = {
   progress: 'dse_progress',
   counter: 'dse_free_attempts_total',
@@ -47,6 +49,8 @@ export interface Snapshot {
   dse_progress: unknown[]
   dse_free_attempts_total: number
   dse_topic_stats: Record<string, unknown>
+  /** The IN-PROGRESS run, so another device can offer「繼續進度」(v3.0 F1). */
+  dse_active_session?: ActiveSession | null
   updatedAt: number | null // last local change (device wall-clock ms)
   syncedAt: number | null // last cloud merge on THIS device
 }
@@ -62,6 +66,7 @@ export function snapshotLocal(): Snapshot {
     dse_progress: readJSON<unknown[]>(KEYS.progress, []),
     dse_free_attempts_total: readNum(KEYS.counter) ?? 0,
     dse_topic_stats: readJSON<Record<string, unknown>>(KEYS.topicStats, {}),
+    dse_active_session: readJSON<ActiveSession | null>(ACTIVE_SESSION_KEY, null),
     updatedAt: readNum(UPDATED_AT),
     syncedAt: readNum(SYNCED_AT),
   }
@@ -109,6 +114,14 @@ export function applyLocal(s: Snapshot): void {
     localStorage.setItem(KEYS.progress, JSON.stringify(s.dse_progress ?? []))
     localStorage.setItem(KEYS.counter, String(Number(s.dse_free_attempts_total) || 0))
     localStorage.setItem(KEYS.topicStats, JSON.stringify(s.dse_topic_stats ?? {}))
+    // In-progress run: adopt the winner's. An explicit null means the run was finished
+    // (or abandoned) on the winning device, so clear it here too. `undefined` means the
+    // snapshot predates this field — leave whatever this device has untouched.
+    if (s.dse_active_session) {
+      localStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(s.dse_active_session))
+    } else if (s.dse_active_session === null) {
+      localStorage.removeItem(ACTIVE_SESSION_KEY)
+    }
     const now = Date.now()
     localStorage.setItem(UPDATED_AT, String(now))
     localStorage.setItem(SYNCED_AT, String(now))
@@ -123,6 +136,7 @@ export function emptySnapshot(): Snapshot {
     dse_progress: [],
     dse_free_attempts_total: 0,
     dse_topic_stats: {},
+    dse_active_session: null,
     updatedAt: null,
     syncedAt: null,
   }

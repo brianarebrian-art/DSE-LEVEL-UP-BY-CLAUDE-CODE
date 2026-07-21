@@ -2,6 +2,54 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-21e — Supabase MCP 實測：F1 §5.3 證實不可行 + 老師平台表（一直未刪）正式清走
+
+- **背景**：用戶貼「v3.1 SUPABASE_CONNECTED」，同時 Supabase MCP 接通。**第一次可以查真 DB 而唔係靠推論。** 項目 = `aegekxapxgcfdrkzisis` (DSE-LEVEL-UP, ap-northeast-1, PG 17.6)。
+- **§5.3 schema 實測不可行（唔係「唔理想」，係硬壞）**：
+  - `auth.users` = **0 行** → `auth.uid()` 永遠 NULL → RLS `USING (auth.uid() = user_id)` **永久拒絕所有人**。
+  - `user_progress.user_id` = **TEXT**、24 行、**冇一個存在於 auth.users** → `REFERENCES auth.users(id)` 會拒絕晒現有 24 個用戶。
+  - Realtime publication (`supabase_realtime`) = **(none)**，冇任何表開過 Realtime。
+  - `pg_policies`：**全部 policy 都係 `{service_role}` only**，零 anon／authenticated → 瀏覽器 client 乜都讀寫唔到。
+  - **概念錯**：「Claude Code 已連接 Supabase」＝ AI 嘅 admin/dev 通道，**唔等於學生部機個瀏覽器連到 Supabase**。§2.1「已連接 → 可直接用 Realtime」係推論謬誤。
+  - → 2026-07-21d 嘅 **Stack-相容版（focus-pull + 搭現有 server-only /api/progress）獲實測背書**，維持不變。
+- **🚨 老師平台表根本從未刪除**：所有 doc（同我份記憶）都寫「已徹底刪除」，但實測 `classes` **1 行**（name "A", join_code 8RTNHZ）、`profiles` **6 行（3 個 teacher）**、`enrollments`/`question_events` 0 行；`profiles.role` CHECK 仍容許 `'teacher'` —— **鐵證 `0003_drop_teacher_platform.sql` 從未執行**。Code 早已剷清（只剩註解）→ 屬孤兒資料。
+- **用戶決定：先備份，再跑 0003**。① 導出 4 張表全部現有行至 `supabase/backups/2026-07-21_pre-0003_teacher_platform.json`；② `apply_migration drop_teacher_platform`（**略去檔尾 `VACUUM`** —— migration 包 transaction，VACUUM 唔可以喺 transaction 入面行，且只係回收空間，可日後手動跑）。
+- **驗收（實測，非勾紙）**：`classes`/`enrollments`/`question_events` → `to_regclass` 全部 **null**（已 drop）；`profiles` 保留 6 行，**teacher 剩 0**、student 6（3 個已降級）；role CHECK 現為 `('student','admin')`；**`user_progress` 24 行完全冇受影響**。
+- **順帶發現孤兒表**：`arenas`/`arena_participants`/`arena_answers`（來自 `0001_arena.sql`，有 invite_code／score／earned_points／time_limit ＝ 競技對戰，gamification 味）—— 0 行、零 code 引用（只有 TextQuestionCard 一句註解）。用戶今次揀咗保留，**留待日後決定**。
+- **Security advisor（DDL 後例行跑，以下全部係先前已存在、非本次造成）**：⚠️ `public.rls_auto_enable()` 係 **SECURITY DEFINER 且 anon／authenticated 都可經 `/rest/v1/rpc/rls_auto_enable` 調用** —— 值得收緊（revoke EXECUTE 或改 SECURITY INVOKER）；⚠️ `handle_updated_at` search_path 可變；ℹ️ `review_decisions` 有 RLS 但無 policy（service_role 照樣 bypass，與現行模式一致）。**未擅自改動，待你決定。**
+
+## 2026-07-21d — v3.0 F1：中途續做（stack-相容跨裝置同步）
+
+- **背景**：用戶貼「Loop Prompt v3.0 ULTIMATE」。呢份**已吸納我全部提報**（憲章 #7 改 Light-First、§2.1 禁 WhatsApp 家長戰報、§0「與已 ship 現實衝突以已 ship 為準」、新增 §3 保留清單）—— 到目前最負責任嘅一份。
+- **§3「已 ship 清單」核查，3 項唔準**：① **ThemeToggle 根本唔存在**（零 component、零 `dse-theme` wiring）—— doc 當佢 ship 咗；② OpenDyslexic「本地 .woff2」**檔案仍然缺**（`public/fonts/` 得 README，mode + fallback 先係 live）；③ F36「k-anonymity 已 ship」**假**（隨老師平台一刀斬清走，零殘留）。
+- **F1 唔係「未規劃」**：`lib/sync.ts` + `SyncProvider` + `/api/progress` 早已運作（三情境 smart-merge、debounce push、offline 復原、多用戶防污染）。**真正缺口係「做緊嘅 session」冇持久化** —— `PracticeSession` 只喺完成時寫 `dse_result`，中途 refresh 都會全部消失。
+- **用戶決定（AskUserQuestion）= Stack-相容版**，實作：
+  - **新 `lib/sessionResume.ts`**：`dse_active_session`（題目 ID 序列 + answers + current + elapsed + 7 日 staleness + shape-guard，localStorage 係用戶可改，唔信任輸入）。
+  - **`lib/sync.ts`**：Snapshot 加 `dse_active_session` → **免費搭現有 server-only `/api/progress` 順風車上雲，API 零改動**；`applyLocal` 分清 `null`（別機做完 → 清走）同 `undefined`（舊 row → 唔郁）。
+  - **`SyncProvider`**：加 `visibilitychange`/`focus` **節流 10s** pull → 另一部機一開頁就攞到最新。
+  - **`PracticeSession`**：`next()` 每題 checkpoint + 完成時 `clearActiveSession()` + 補 `notifyProgressChanged()`（因 `recordAttempt` 嘅 notify 喺 clear **之前**行，唔補會 push 到舊狀態）；mount 見未完成 run → 彈「繼續／重新開始」卡（**唔會自動套用**）。續做用 ID 序列重建同一批題，`startTime` 回撥 elapsed 秒 → 下游所有時間計算原封不動。
+- **拒建（doc 自撞 or 紅線）**：**F34–F37 老師工具**（F35「老師輸入班級代碼」= 已刪 `classes`/`enrollments`，直撞 doc 自己 §2.1）、**F31 長答關鍵字批改**（**第 9 次**復發，MC-only）、**F32 jsPDF**（未裝、>50KB 禁；html2canvas 已裝）、**F11 顯示「Level 3」**（撞 doc 自己憲章 #2 零標籤）、**F15 壓力詞掃描炸 build**（詞庫含「錯」會即炸，產品核心詞就係**錯**題 DNA）、**F33 無痕但上傳**（違反無痕預期）。
+- **拒用原文機制**：client-side **Supabase Realtime**（要喺瀏覽器曝 anon key + 靠 RLS，但 Auth.js v5 冇 `auth.uid()`，兼撞 doc 憲章 #6 server-only）、**AES-256-GCM**（原 schema 明文欄位同 `encrypted_blob` 並存＝加密無意義；金鑰一失＝進度永久救唔返；傳輸本身已 TLS + row 只 server 可達）。
+- **驗收**（實測，非勾紙）：tsc 非測試 0 error；瀏覽器 economics 做第 1 題 → checkpoint 寫入正確（`current:1`、答案以**文字**錨定 `{selectedZh:"6 元",isCorrect:true}`、20 條 ID、elapsed 31s）→ **reload → 彈「已經做咗 1/20 題・繼續做第 2 題」** → 撳繼續 → 回到第 2 題、計時 0:35 **接住計冇 reset**、題目 = `questionIds[1]`（`econ_profit_55`）**完全同一批**；跨科守衛：math 頁唔會offer 經濟 run；console 零 error。
+- **我驗證唔到、冇當通過**：§4.3 #2（100 次跨裝置）、#4（雙裝置同時衝突）、#5（攔截傳輸驗加密）、#6（5 萬用戶容量）、§4.5 Step 5（真手機+iPad）—— 得一個瀏覽器 preview，唔會假報。
+
+## 2026-07-21c — 「Claude Code Loop Prompt FINAL」審核：拒 dark-only 回滾 + 剷 /focus WhatsApp 家長戰報
+
+- **背景**：用戶貼「DSE_Level_Up_Claude_Code_Loop_Prompt_FINAL v1.0」（自稱立即執行 Sprint 1）。**未郁 code 先審**，發現最大撞牆 = **憲章 #7「暗黑模式唯一」+ §3.1 禁亮色切換 + §5.1 `#0f0f1a` 暗色碼 + §9 VERIFY「有無白底？」**——直接推翻用戶親自鎖死、已 ship 13+ 面嘅 light-first（第 4 份試 dark-only 回滾嘅 doc）。**冇執行 Sprint 1、冇 revert。**
+- **用戶兩項決定（AskUserQuestion）**：① 主題 =「**維持 light-first**」→ doc §7 / §3.1 亮色禁令 / §5.1 暗色碼全部當 **stale**；② 已 ship 功能剷邊啲 = 只揀「**WhatsApp 家長戰報**」（IG 社群 / Supabase 跨機同步 / 呼吸語音全部保留）。
+- **`app/focus/page.tsx` 剷 WhatsApp 家長戰報**：移除整個「家長戰報」卡（Send icon + `一鍵發送家長戰報` WhatsApp link）+ 死碼 `GOAL_POMODOROS`/`unlocked`/`reportText`/`Send` import；今日 tally 番茄鐘去埋「/4」目標（門檻只為戰報而設）。**保留**：番茄鐘計時、自律房間（含 study-together WhatsApp 邀請 `inviteText`）、4-7-8 呼吸、呼吸空間入口。撞 doc §3.1 禁 WhatsApp + 家長專區傾向，剷得合理。
+- **其餘 doc 提報（flag 未執行）**：§5.2 Body 9pt/Caption 7pt（自撞 §5.3 18px min + SEN 紅線）、§7.2 中文 Regex 長答批改（**第 8 次**復發，已記）、§3.1 禁 IG 社群/Supabase 同步/呼吸語音（撞已 ship，用戶決定保留）、§5.3 OpenDyslexic「via Google Fonts」（唔存在，OpenDyslexic 唔喺 GF）、§4 五層隱性適配（Apex 20 秒倒數壓力 timer + 連對 combo 撞 §3 情緒安全 + §5.3 隱藏倒數；30 任務撞憲章 #8 一人軍隊）。
+- **驗收**：tsc 非測試 0 error、無死碼引用；瀏覽器 /focus 實測（家長戰報卡消失、自律房間直接接 4-7-8 呼吸、番茄鐘 tally 無「/4」、全淺色）、console 零 error。
+
+## 2026-07-21b — SEN-07 靜態安全網：5-4-3-2-1 落地練習（創辦人拍板 · /brian-ceo 過閘）
+
+- **背景**：54-Idea v2 §41.7 SEN-07 BPD 要求「自傷 NLP 偵測 + crisis 自動介入 + Sarah 社工即時介入 + Supabase 存 `bpd_crisis_level` PII」。**拒建 spec 原版**（Sarah = 虛擬 persona，向危機學生承諾假真人介入＝危險兼不誠實；靜默失敗嘅偵測器會漏真危機；心理健康 PII 撞「數據 100% localStorage」）。用戶 AskUserQuestion 揀「**靜態安全網**」。CEO 三關過閘（大愛/常不輕菩薩 ✓、$0 純 CSS ✓、零偵測/零 PII/零假介入 ✓）。
+- **`app/relax/components/GroundingExercise.tsx`（新）**：5-4-3-2-1 五官落地練習——看 5／聽 4／掂 3／聞 2／呼吸 1，逐步自定步速（**冇倒數、冇壓力、冇評分**），收結安定語「你係安全嘅，你係而家呢一刻。」。**純 component state：唔記錄、唔上傳、唔 localStorage、唔追蹤**。尊重 `loadSensoryPref` + reduced-motion（關動畫）。深空黑霓虹配色（match /relax）。
+- **`app/relax/grounding/page.tsx`（新）** = `<GroundingExercise />`；`/relax/layout.tsx` 已常駐 `ExitBar` + `EmergencyBanner`（真熱線 2896 0000／2382 0000 + 醫療免責 + 999），故 grounding 頁自動有安全網、**唔重複紅調元素**。
+- **`RelaxLanding.tsx`**：4-7-8 呼吸掣下新增 🧭「5-4-3-2-1 落地練習 · 拉自己返到當下」入口。
+- **驗收**：tsc 非測試 0 error；瀏覽器實測 5→4→3→2→1→🕊️收結全流程 + 返上一步 + 再嚟一次 + 熱線常駐 + landing 兩個入口、console 零 error。
+- **明確冇做（紅線）**：自傷關鍵詞 NLP、crisis 三層自動介入、`selfHarmRadar`/`splittingProtocol`、`user_accessibility_preferences`/`bpd_anonymous_patterns` Supabase 表、任何「Sarah 介入」。責任版就係「學生自己撳、自己做、平台唔監聽」。
+
 ## 2026-07-21 — Light-first Phase 2 收官：/writing + /reading + /about + FAQSection 轉淺色（Task #97）
 
 - **背景**：用戶貼「54 Idea Loop Prompt ULTIMATE v2」（系統級 Loop Prompt，多為既有憲章複述，但**重新引入多項與已 ship 決定相撞／踩紅線嘅嘢**——詳見 audit）。本批只執行乾淨、已鎖死、in-flight 嘅淺色收尾 3 面（正正係 doc §48 Phase 1 自己要嘅「完成 Phase 2 淺色遷移」）。

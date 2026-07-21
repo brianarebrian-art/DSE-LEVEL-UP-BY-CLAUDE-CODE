@@ -78,6 +78,14 @@ export default function RelaxLanding({
         🌬️ {en ? 'Let me do a 4-7-8 breath first (1 min)' : '我先做個 4-7-8 呼吸（1 分鐘）'}
       </Link>
 
+      {/* 5-4-3-2-1 落地練習（SEN-07 靜態安全網）：慌／解離感時用五官拉返當下 */}
+      <Link
+        href="/relax/grounding"
+        className="block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 mt-3 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+      >
+        🧭 {en ? '5-4-3-2-1 grounding · pull myself back to now' : '5-4-3-2-1 落地練習 · 拉自己返到當下'}
+      </Link>
+
       {/* FIX: [A3][B5] 「補 1 格 MP 都得」→「唞 1 分鐘都得」；提升對比度 */}
       <p className="text-xs text-[#C2C2CC] text-center mt-4">
         {en ? "Even one minute counts. Skip it if you're not up for it — no one will blame you." : '唞 1 分鐘都得。唔想做就唔做，冇人會怪你。'}

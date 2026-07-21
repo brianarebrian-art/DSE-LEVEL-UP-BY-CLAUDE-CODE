@@ -2,13 +2,14 @@
 
 import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Play, Pause, RotateCcw, Share2, MessageCircle, Users, Send } from 'lucide-react'
+import { Play, Pause, RotateCcw, Share2, MessageCircle, Users } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import BreathingExercise from '@/components/BreathingExercise'
 
+// WhatsApp 家長戰報已移除（創辦人 2026-07-21 決定）：撞 doc §3.1 禁 WhatsApp + 家長專區傾向。
+// 番茄鐘計時、今日 tally、自律房間（含 study-together WhatsApp 邀請）全部保留。
 const FOCUS_MIN = 25
 const BREAK_MIN = 5
-const GOAL_POMODOROS = 4 // 4 × 25 = 100 min deep focus → parent report becomes sendable
 
 interface FocusToday {
   date: string
@@ -123,14 +124,9 @@ function FocusRoom() {
   const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
   const total = (mode === 'focus' ? FOCUS_MIN : BREAK_MIN) * 60
   const pct = total > 0 ? ((total - secondsLeft) / total) * 100 : 0
-  const unlocked = pomodoros >= GOAL_POMODOROS
-
   const inviteText = en
     ? `Studying together on DSE Level Up 🍅 Join my focus room: ${shareUrl}`
     : `一齊喺 DSE Level Up 自律操卷 🍅 入嚟我個專注房間：${shareUrl}`
-  const reportText = en
-    ? `📚 Self-discipline report: I focused ${minutes} min (${pomodoros} pomodoros) today on DSE Level Up — helping mum save the tutoring fees 💪 ${shareUrl}`
-    : `📚 自律戰報：我今日喺 DSE Level Up 專注咗 ${minutes} 分鐘（${pomodoros} 個番茄鐘），幫阿媽慳返私補堂費 💪 ${shareUrl}`
 
   const copyLink = async () => {
     try {
@@ -200,7 +196,6 @@ function FocusRoom() {
           <div className="bg-white border border-black/[0.06] rounded-2xl p-4 text-center">
             <div className="text-2xl font-medium text-[#008B84]" style={{ fontVariantNumeric: 'tabular-nums' }}>
               {pomodoros}
-              <span className="text-sm text-[#9CA3AF] font-normal"> / {GOAL_POMODOROS}</span>
             </div>
             <div className="text-xs text-[#6B6B6B] mt-1">{en ? 'Pomodoros' : '番茄鐘'}</div>
           </div>
@@ -234,45 +229,6 @@ function FocusRoom() {
               <MessageCircle size={15} /> WhatsApp
             </a>
           </div>
-        </div>
-
-        {/* 家長戰報：做夠 100 分鐘（4 個番茄鐘）即可一鍵發送。純功能性門檻 ——
-            冇「勳章／解鎖／成就」等 gamification 框架（憲章 §2）；只係一個「做夠先報」嘅合理閘。 */}
-        <div
-          className={`rounded-2xl p-5 border text-center transition-all ${
-            unlocked ? 'bg-[#008B84]/[0.08] border-[#008B84]/40' : 'bg-white border-black/[0.06] opacity-80'
-          }`}
-        >
-          <Send size={22} className={`mx-auto mb-2 ${unlocked ? 'text-[#008B84]' : 'text-[#9CA3AF]'}`} />
-          <div className="font-medium mb-1 text-[#1A1A1A]">
-            {en ? 'Parent report' : '家長戰報'}
-            <span className="text-[#6B6B6B] font-normal"> · {pomodoros}/{GOAL_POMODOROS}</span>
-          </div>
-          <p className="text-xs text-[#6B6B6B] mb-4">
-            {unlocked
-              ? en
-                ? '100 minutes done — send today’s focus report to your parents in one tap.'
-                : '做夠 100 分鐘啦，一鍵將今日專注戰報發俾家長。'
-              : en
-                ? `Complete ${GOAL_POMODOROS} pomodoros (100 min) and you can send the parent report.`
-                : `完成 ${GOAL_POMODOROS} 個番茄鐘（100 分鐘），就可以發送家長戰報。`}
-          </p>
-          <a
-            href={unlocked ? `https://wa.me/?text=${encodeURIComponent(reportText)}` : undefined}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-disabled={!unlocked}
-            onClick={(e) => {
-              if (!unlocked) e.preventDefault()
-            }}
-            className={`inline-flex items-center justify-center gap-2 font-medium px-6 py-3 rounded-xl transition-all w-full ${
-              unlocked
-                ? 'bg-[#128C7E] hover:bg-[#0e6f64] text-white'
-                : 'bg-[#F5F5F0] text-[#9CA3AF] cursor-not-allowed'
-            }`}
-          >
-            <MessageCircle size={18} /> {en ? 'Send report to parents' : '一鍵發送家長戰報'}
-          </a>
         </div>
 
         {/* 情緒急救：4-7-8 呼吸練習（小休或攰嘅時候用） */}

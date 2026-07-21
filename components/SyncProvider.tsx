@@ -36,6 +36,7 @@ export function useSync(): SyncContextValue {
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 const DEBOUNCE_MS = 2500 // 防線 D: cap cloud writes to ~one per burst of activity
+const FOREGROUND_PULL_MS = 10_000 // v3.0 F1: min gap between foreground refresh pulls
 
 // Drives cross-device sync for the whole app. Mounted inside SessionProvider so
 // useSession() is available. Reads the Auth.js login state; when authenticated it
@@ -46,6 +47,7 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
   const [status, setStatus] = useState<SyncStatus>('idle')
   const [version, setVersion] = useState(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const lastPullRef = useRef(0) // throttles the foreground refresh below
 
   const bump = useCallback(() => setVersion((v) => v + 1), [])
 
@@ -141,6 +143,29 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
     return () => {
       window.removeEventListener('online', onOnline)
       window.removeEventListener('offline', onOffline)
+    }
+  }, [authStatus, pullMerge])
+
+  // v3.0 F1「多裝置」: refresh when this tab comes back to the foreground, so picking up
+  // another device shows its in-progress run without a manual reload. Throttled so a
+  // user flicking between tabs can't hammer the route. This replaces the spec's
+  // client-side Supabase Realtime, which would need an anon key in the browser + RLS —
+  // impossible on Auth.js v5 (no `auth.uid()`) and against the charter's server-only rule.
+  useEffect(() => {
+    if (!AUTH_ENABLED) return
+    const onForeground = () => {
+      if (authStatus !== 'authenticated') return
+      if (document.visibilityState !== 'visible') return
+      const now = Date.now()
+      if (now - lastPullRef.current < FOREGROUND_PULL_MS) return
+      lastPullRef.current = now
+      void pullMerge()
+    }
+    document.addEventListener('visibilitychange', onForeground)
+    window.addEventListener('focus', onForeground)
+    return () => {
+      document.removeEventListener('visibilitychange', onForeground)
+      window.removeEventListener('focus', onForeground)
     }
   }, [authStatus, pullMerge])
 

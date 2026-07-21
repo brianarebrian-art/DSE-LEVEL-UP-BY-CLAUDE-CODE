@@ -1,6 +1,16 @@
 'use client'
 
 import { useState, useEffect, useCallback, useRef } from 'react'
+import {
+  loadActiveSession,
+  saveActiveSession,
+  clearActiveSession,
+  isResumable,
+  type ActiveSession,
+} from '@/lib/sessionResume'
+// recordAttempt() notifies on completion, but that fires BEFORE we clear the active
+// session — so we re-stamp afterwards to push the cleared state up too.
+import { notifyProgressChanged } from '@/lib/sync'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import MathText from '@/components/MathText'
@@ -239,10 +249,17 @@ export default function PracticeSession({
   const { locale, t } = useLocale()
   const subjectMeta = getSubject(subjectId)
 
-  const [questions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode))
-  const [startTime] = useState(() => Date.now())
+  const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode))
+  const [startTime, setStartTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
+  // v3.0 F1「多裝置續做」: an unfinished run for this exact subject/topic/mode — from this
+  // device, or pulled from another one via the synced snapshot. Offered as a card the
+  // student chooses, never silently auto-applied.
+  const [resumeOffer, setResumeOffer] = useState<ActiveSession | null>(() => {
+    const saved = loadActiveSession()
+    return isResumable(saved, subjectId, topicFilter, mode) ? saved : null
+  })
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   // Which reverse-cause the student admitted to for the current wrong answer.
   // While null on a WRONG answer, the lockout overlay hides the Marking Scheme.
@@ -449,11 +466,27 @@ export default function PracticeSession({
       })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
+      clearActiveSession() // run finished — nothing left to resume, here or on any device
+      notifyProgressChanged() // push the cleared state up so other devices stop offering it
       router.push('/result')
     } else {
       setCurrent((c) => c + 1)
+      // v3.0 F1: checkpoint the run so a refresh, a closed tab, or another device can
+      // pick it up at exactly this question. Rides the existing synced snapshot.
+      saveActiveSession({
+        v: 1,
+        subjectId,
+        topicFilter: topicFilter ?? null,
+        mode,
+        questionIds: questions.map((q) => q.id),
+        answers: newAnswers.map((a) => (a ? { selectedZh: a.selectedZh, isCorrect: a.isCorrect } : null)),
+        current: current + 1,
+        elapsed: Math.floor((Date.now() - startTime) / 1000),
+        updatedAt: Date.now(),
+      })
+      notifyProgressChanged()
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode])
 
   // Proceed past a question. When a server-signed lock exists, do a final server check
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
@@ -474,7 +507,76 @@ export default function PracticeSession({
     next()
   }, [lockHeld, verifying, lockToken, next])
 
+  // Rebuild the exact run from the saved question IDs. Grading is anchored to option
+  // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
+  // not-yet-seen questions changes nothing. Shifting `startTime` back by the elapsed
+  // seconds keeps every existing elapsed calculation correct without touching them.
+  const acceptResume = useCallback(() => {
+    if (!resumeOffer) return
+    const byId = new Map(bank.map((q) => [q.id, q]))
+    const restored = resumeOffer.questionIds
+      .map((id) => byId.get(id))
+      .filter((q): q is Question => Boolean(q))
+    if (restored.length !== resumeOffer.questionIds.length) {
+      // The bank changed under us — start clean rather than resume a mismatched set.
+      clearActiveSession()
+      setResumeOffer(null)
+      return
+    }
+    setQuestions(restored.map(prepareQuestion))
+    setAnswers(resumeOffer.answers as AnswerState[])
+    setCurrent(resumeOffer.current)
+    setStartTime(Date.now() - resumeOffer.elapsed * 1000)
+    setResumeOffer(null)
+  }, [resumeOffer, bank])
+
+  const declineResume = useCallback(() => {
+    clearActiveSession()
+    notifyProgressChanged()
+    setResumeOffer(null)
+  }, [])
+
   const formatTime = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
+
+  // v3.0 F1: an unfinished run is waiting (this device, or synced from another one).
+  // Never auto-applied — the student chooses. Light-first tokens, no pressure language.
+  if (resumeOffer) {
+    const doneCount = resumeOffer.current
+    const totalCount = resumeOffer.questionIds.length
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#FAFAF8] text-[#2D2D2D]">
+        <div className="w-full max-w-md bg-white border border-black/[0.06] rounded-2xl p-7 text-center">
+          <div className="text-3xl mb-3" aria-hidden>📍</div>
+          <h2 className="text-lg font-medium text-[#1A1A1A] mb-2">
+            {tr('你有份未做完嘅練習', 'You have an unfinished run')}
+          </h2>
+          <p className="text-sm text-[#6B6B6B] leading-relaxed mb-1">
+            {tr(
+              `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經做咗 ${doneCount} / ${totalCount} 題`,
+              `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
+            )}
+          </p>
+          <p className="text-xs text-[#9CA3AF] leading-relaxed mb-6">
+            {tr('喺邊部機做都好，接返落去就得。', 'Pick up right where you left off, on any device.')}
+          </p>
+          <div className="flex flex-col gap-2.5">
+            <button
+              onClick={acceptResume}
+              className="w-full min-h-11 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-colors"
+            >
+              {tr(`繼續做第 ${doneCount + 1} 題`, `Continue from question ${doneCount + 1}`)}
+            </button>
+            <button
+              onClick={declineResume}
+              className="w-full min-h-11 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#6B6B6B] px-6 py-3 rounded-xl transition-colors text-sm"
+            >
+              {tr('重新開始一份', 'Start a fresh one')}
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
