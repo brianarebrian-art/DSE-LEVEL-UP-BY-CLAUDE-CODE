@@ -31,7 +31,9 @@ import { recordAttempt } from '@/lib/progress'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock } from 'lucide-react'
+import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock, Coffee } from 'lucide-react'
+// B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
+import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
@@ -293,6 +295,20 @@ export default function PracticeSession({
 
   // 隱藏練習計時器（SEN／焦慮友善）：A11yPanel 寫入 dse_hide_timer 並派 `dse-a11y` 事件，
   // 練習頁即時套用。只影響顯示 —— elapsed 照計，結果頁時間統計不受影響。
+  // B2「一鍵休息模式」：休息期間所有計時停低。收工時將暫停咗嘅毫秒數同時加落
+  // startTime（練習計時）同反思鎖死線 —— 唞得幾耐，兩邊就順延幾耐，
+  // 所以「休息」對成績同鎖時長零影響，學生唔使為咗唞而有心理負擔。
+  const [restOpen, setRestOpen] = useState(false)
+  const closeRest = useCallback((pausedMs: number) => {
+    setRestOpen(false)
+    if (pausedMs <= 0) return
+    setStartTime((t) => t + pausedMs)
+    if (lockDeadlineRef.current !== null) {
+      lockDeadlineRef.current += pausedMs
+      setLockSecs(Math.max(0, Math.ceil((lockDeadlineRef.current - Date.now()) / 1000)))
+    }
+  }, [])
+
   const [hideTimer, setHideTimer] = useState(false)
   useEffect(() => {
     const read = () => { try { setHideTimer(localStorage.getItem('dse_hide_timer') === '1') } catch { /* ignore */ } }
@@ -626,11 +642,21 @@ export default function PracticeSession({
             <span>
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
             </span>
-            {!hideTimer && (
-              <span className="flex items-center gap-1">
-                <Clock size={13} /> {formatTime(elapsed)}
-              </span>
-            )}
+            <span className="flex items-center gap-3">
+              {!hideTimer && (
+                <span className="flex items-center gap-1">
+                  <Clock size={13} /> {formatTime(elapsed)}
+                </span>
+              )}
+              {/* B2: 休息入口 —— 放喺計時器隔籬而唔係再開一個浮動掣（右下角已有情緒
+                  支援掣、左下角有無障礙面板）。撳完計時停低，返嚟自動順延。 */}
+              <button
+                onClick={() => setRestOpen(true)}
+                className="inline-flex items-center gap-1 min-h-11 px-2 -my-2 text-[#6B6B6B] hover:text-[#00726C] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#008B84] rounded-lg"
+              >
+                <Coffee size={13} /> {tr('休息吓', 'Rest')}
+              </button>
+            </span>
           </div>
           <div className="h-1.5 bg-black/[0.06] rounded-full overflow-hidden">
             <div
@@ -944,6 +970,9 @@ export default function PracticeSession({
 
       {/* F-EMO: 情緒溫度計 — 拉分題答錯後、反思鎖之前先問感受 */}
       {emoOpen && <EmotionThermometer onPick={pickEmotion} />}
+
+      {/* B2: 一鍵休息 —— 反思鎖期間一樣開得，死線會一齊順延 */}
+      <RestMode open={restOpen} onClose={closeRest} />
     </div>
   )
 }

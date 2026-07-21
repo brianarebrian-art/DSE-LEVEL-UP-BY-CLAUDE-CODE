@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { CloudFog, Moon, Type, X } from 'lucide-react'
+import { Moon, Type } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
-import BreathingExercise from '@/components/BreathingExercise'
 import { applyFontSize, FONT_KEY } from '@/components/GlobalA11y'
 import { getReverseLog } from '@/lib/reverseLog'
 
 // 練習頁支援小隊（Yuna/Sarah/Emma/Leo）：
-// 1. 「唞一唞」—— 隨時打開 4-7-8 呼吸 overlay（唔影響 60 秒鎖）
-// 2. 「易讀字體」—— BDA 風格指引推薦嘅系統無襯線堆疊（零下載）
-// 3. F10 字級調節 —— 12–24px，經 <html> font-size 全站生效（rem 基準）
-// 4. F09 「今日夠了」—— 零罪疚收工：溫柔提示 + 輕柔和音 + 返 dashboard
+// 1. 「易讀字體」—— BDA 風格指引推薦嘅系統無襯線堆疊（零下載）
+// 2. F10 字級調節 —— 12–24px，經 <html> font-size 全站生效（rem 基準）
+// 3. F09 「今日夠了」—— 零罪疚收工：溫柔提示 + 輕柔和音 + 返 dashboard
+// B2（2026-07-22）：舊「唞一唞」呼吸掣已由 PracticeSession 內嘅 RestMode 取代 ——
+// 呢度喺 session 外層，停唔到練習計時同反思鎖，所以「休息」變咗鐘照行；
+// RestMode 喺 session 內，唞幾耐就順延幾耐，先至係真・休息。唔留兩個入口。
 // 位置：bottom-16 left-4（閱讀尺開關上方），組成無障礙工具角。
 // Light-first（憲章 §3）：白色浮動藥丸 + 白卡；scrim 用淡黑遮罩。
 
@@ -40,7 +41,6 @@ function playSoftChime() {
 export default function PracticeSupport() {
   const { locale } = useLocale()
   const en = locale === 'en'
-  const [breathing, setBreathing] = useState(false)
   const [easyFont, setEasyFont] = useState(false)
   const [fontPx, setFontPx] = useState(16)
   const [fontPanel, setFontPanel] = useState(false)
@@ -113,13 +113,6 @@ export default function PracticeSupport() {
           <Type size={13} /> {en ? 'Easy font' : '易讀字體'}
         </button>
         <button
-          onClick={() => setBreathing(true)}
-          title={en ? 'Feeling overwhelmed? Take a breather.' : '邊題卡住、心跳加速？唞一唞先。'}
-          className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-white/90 border-black/[0.10] text-[#6B6B6B] hover:text-[#008B84] hover:border-[#008B84]/40 shadow-sm transition-all"
-        >
-          <CloudFog size={13} /> {en ? 'Breathe' : '唞一唞'}
-        </button>
-        <button
           onClick={enoughForToday}
           title={en ? 'Done for today — no guilt, see you tomorrow.' : '今日夠了 —— 收工冇罪疚，聽日再戰。'}
           className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-white/90 border-black/[0.10] text-[#6B6B6B] hover:text-[#B8860B] hover:border-[#B8860B]/40 shadow-sm transition-all"
@@ -127,22 +120,6 @@ export default function PracticeSupport() {
           <Moon size={13} /> {en ? 'Enough today' : '今日夠了'}
         </button>
       </div>
-
-      {breathing && (
-        <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-md relative">
-            {/* FIX: [B10] 關閉掣觸控區擴大至 ≥44×44px */}
-            <button
-              onClick={() => setBreathing(false)}
-              aria-label={en ? 'Close' : '關閉'}
-              className="absolute -top-3 -right-3 z-10 min-h-11 min-w-11 flex items-center justify-center bg-white border border-black/[0.12] text-[#6B6B6B] hover:text-[#2D2D2D] shadow rounded-full transition-all"
-            >
-              <X size={16} />
-            </button>
-            <BreathingExercise />
-          </div>
-        </div>
-      )}
 
       {/* F09 今日夠了 —— 零罪疚、零「你仲有 X 題未做」 */}
       {doneToday && (

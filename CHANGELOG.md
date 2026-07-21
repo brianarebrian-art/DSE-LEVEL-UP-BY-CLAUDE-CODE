@@ -2,6 +2,32 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-22b — v6.0 FINAL 審核 + B2 一鍵休息模式（真・停錶版）
+
+- **背景**：用戶貼 v6.0 FINAL。**目前為止最準確嘅一份** —— §3 技術現實逐格對；§2 首次明文寫「保留而非禁止：自律房間 WhatsApp 邀請、IG 社群、Web Speech TTS」（我上次嘅反對意見被收納）；§5 亦更正咗「3 秒」為「通常 1-5 秒，非硬性保證」；§7.1 如實標 B1 已交付、OpenDyslexic 待放檔。
+- **執行 B2（Phase 1 #2，§7.2 標 🔴 P0）**：新增 `components/RestMode.tsx` + 接入 `PracticeSession`。
+  - **核心決定：休息真係要停錶。** 關閉時回報實際暫停毫秒數，`startTime` **同** `lockDeadlineRef`（60 秒反思鎖死線）一齊順延 → 唞幾耐就順延幾耐，成績同鎖時長零影響。實測：開休息前 0:13 → 唞 56 秒 → 返嚟仍然係 0:13。
+  - 內容：4-7-8 呼吸圓（CSS transition，`motion-reduce` 下唔縮放）、休息 1 分鐘／5 分鐘／我準備好繼續、倒數由死線倒推、最後 10 秒**只係溫柔提示**、**0:00 唔會自動彈返做題頁**（實測 0:00 後遮罩仍在，等你撳）、Esc 隨時走得甩。
+  - **偏離 spec（有理由）**：spec 要「右下角 48px 浮動圓掣」—— 但右下角已有情緒支援掣、左下角有無障礙工具角，再加一個會撞埋。入口改為**做題頁計時器隔籬**（`min-h-11` 觸控區）。
+  - **順手清重複**：`PracticeSupport` 原有嘅「唞一唞」呼吸掣**已移除**。佢喺 session 外層，**停唔到練習計時同反思鎖**（原註解自己寫住「唔影響 60 秒鎖」）—— 一個會停錶、一個唔會嘅兩個「休息」入口會令人混淆。`components/BreathingExercise` 本身照舊畀 `/focus` 同 `/waiting` 用。
+  - z-[70]：蓋過工具角（z-50）同其彈窗（z-[60]），休息中唔會仲見到一堆浮動掣。
+- **驗收（實測）**：tsc 非測試 0 error、eslint 0（`react-hooks/purity` 要求 `start` 包 `useCallback`）、`next build --webpack` 綠、term-guard 通過、console 0 error、375px 無裁切、測試狀態已清。
+- **未做（spec 寫住但唔可驗證）**：B2 完成基準嘅「ADHD 用戶測試：10 人中有 8 人認為幫到專注返」—— 冇用戶測試就唔會當佢已達標。
+- **拒建 / 攔截（v6 仍殘留，其中 5 項撞 doc 自己）**：
+  - **§10 Amity「批改引擎對齊真實考評局給分，誤差 <1 分」+ Arthur「Tone & Register 雙重語義批改」「嚴打 Blind Copying」** = 長答自動批改，**第 11 次復發**，而 §2 同一份文件先啱啱寫「C25 永久禁止」。
+  - **§6 五層系統多處撞 §2 gamification 禁令**：Apex 觸發用「連續登入 >5 日」、Steady 用「登入 3-5 日」（連續登入係 §2 明文禁項）；**C16 文案「你離 Level 5 只差一步」直撞 §1 #2「絕不出現 Level 等身份標籤」**；C18「最後 14 日，唔係溫書，係搶分」撞 §2「壓力式倒數」。
+  - **§5 AES-256-GCM 客戶端加密**（金鑰唯有放喺 client = 加密劇場；而且會令 §4.1「匿名化學習數據面板／聚合查詢」同時做唔到 —— 兩條 spec 互斥）。
+  - **§7.2 B5 無痕模式「但錯題 DNA 仍匿名上傳」** = 講住無痕、實際照上傳，暗黑模式，唔做。
+  - **§7.2 B4 壓力詞過濾器「發現禁用詞則 build 失敗」+「24 小時內更新詞庫」** 撞 §1 #8 一人軍隊；而 §13 又將「壓力詞過濾器通過」列為**每個功能**嘅 VERIFY 閘 —— 但 B4 自己排 P2 未上線，呢個閘現時邏輯上行唔到。
+  - **§9 字體表**：Display 20pt / H1 14pt / **H2 14pt** —— H1 = H2，層級冇分別，而且 pt 同 px 混用。未跟。
+- **📕 更正 v6 §16 陷阱表（佢寫錯咗我嘅 debug 結論）**：#2 同 #4 話「CSS 註解含 emoji（⚠️ U+FE0F）會令 parser 中斷」—— **假**。我噚日**實測過**：拎走 emoji 冇任何變化，真兇由頭到尾**淨係 `.next` cache 石化**。CSS 檔案係 UTF-8，註解入面嘅 emoji 完全合法。呢條「教訓」留喺度只會令下次誤診。#1 嘅預防「任何 CSS 改動後先 `rm -rf .next`」亦過火（殺死 HMR、每次重編）—— 正確做法係**改完唔生效先** curl 實際 served CSS 對 marker，確認係 stale 至清 cache。
+- **🐞 順帶發現 → 已修**：`npm run qa` **由 2026-07-19 起一直行唔到** —— script 呼叫 `scripts/i18n-guard.mjs`，但個檔喺 commit `dd4b658`（「嗰個嘅 UI 而家進行一個大整改」）被**誤刪**。同一 commit 順手刪埋 `README.md`、AlipayHK QR 圖同三個 review HTML，`package.json` 卻照樣引用住個 guard —— 明顯係清理時掃過龍，唔係有心移除。
+  - **已由 git history 原檔還原**（`git show dd4b658^:scripts/i18n-guard.mjs`，90 行，冇改過一個字）。
+  - **自測過先當佢有效**：臨時放一個違規檔（硬編碼中文 + `['中文選項','English option']` tuple）→ 兩處都捉到、exit 1；加返同行 `// i18n-exempt:` → 0 flag、exit 0；測試檔已刪。
+  - `npm run qa` 三個 guard 全綠（term-guard ✅ / validate-banks 1735 題 ✅ / i18n-guard 0 漏譯 ✅），`npm run qa:i18n` exit 0。
+  - **注意**：即係話 07-19 之後嗰三日嘅 UI 大整改（連 light-first 遷移）**從來未經 i18n 閘**。今次補跑結果 = 0 漏譯，所以冇積落嘅債。
+  - **未處理**：同一 commit 誤刪嘅 `README.md` 仍然缺（`git show dd4b658^:README.md` 可還原）—— 等你決定要唔要照舊版還原定重寫。
+
 ## 2026-07-22 — v5.0 ULTIMATE 審核 + B1 可調行距／字間距（SEN）
 
 - **背景**：用戶貼 v5.0。呢份**收錄晒噚日全部實測**（§3 直接寫入 `auth.users=0`／Realtime=none／RLS service_role only／0003 已執行／arena 孤兒表／`rls_auto_enable` 風險，連「AI admin 通道 ≠ 學生瀏覽器」個概念更正都寫咗）。技術現實部分**唔使再拗**。
