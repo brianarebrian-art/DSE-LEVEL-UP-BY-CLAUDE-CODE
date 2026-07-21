@@ -2,6 +2,7 @@
 
 import { LanguageProvider } from '@/lib/i18n'
 import SyncProvider from '@/components/SyncProvider'
+import SettingsSync from '@/components/SettingsSync'
 import { AuthProvider } from '@/lib/auth/session'
 
 // LanguageProvider wraps everything so the whole UI can switch 中/EN client-side.
@@ -14,7 +15,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <LanguageProvider>
       <AuthProvider>
-        <SyncProvider>{children}</SyncProvider>
+        {/* SyncProvider = 進度／做緊嘅卷（/api/progress snapshot）
+            SettingsSync = SEN 偏好設定（/api/sync/settings）—— 兩者數據唔重疊，
+            所以唔會出現「兩條通道爭同一份數據」嘅時間戳競賽。 */}
+        <SyncProvider>
+          <SettingsSync>{children}</SettingsSync>
+        </SyncProvider>
       </AuthProvider>
     </LanguageProvider>
   )

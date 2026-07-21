@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import OfflineBadge from '@/components/OfflineBadge'
 import {
   applyFontSize,
   applyTextSpacing,
@@ -354,9 +355,13 @@ export default function A11yPanel() {
 
           <p className="text-[11px] text-slate-600 mt-3 leading-relaxed">
             {en
-              ? 'Reading ruler is the 📏 button next to this one. Settings are saved on this device.'
-              : '防跳行閱讀尺喺隔籬顆 📏 掣。設定會記喺呢部裝置。'}
+              ? 'Reading ruler is the 📏 button next to this one.'
+              : '防跳行閱讀尺喺隔籬顆 📏 掣。'}
           </p>
+          {/* v8 UI1：溫和同步狀態。放喺設定區底部，唔會喺做題途中彈出打斷心流。 */}
+          <div className="mt-2">
+            <OfflineBadge />
+          </div>
         </div>
       )}
     </>
