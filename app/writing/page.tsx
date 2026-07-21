@@ -12,6 +12,10 @@ import { useLocale } from '@/lib/i18n'
 // contest). The actual HKEAA passage/question paper is NOT reproduced (it is not in
 // the workspace and is copyrighted); this is an original practice task on the same
 // theme, plus the public 7-point assessment criteria and a vocabulary booster.
+//
+// Light-first migration (Kate/Leo 2026-07-21, task #97): 清晨圖書館 palette.
+// English-subject accent = purple #7C3AED; gold #B8860B highlights; teal #008B84
+// for the "on target" word count. Weight 400/500 only, no font-extrabold.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const DRAFT_KEY = 'dse_writing_draft'
@@ -93,18 +97,18 @@ export default function WritingPage() {
     : 0
 
   return (
-    <div className="min-h-screen px-4 py-12">
+    <div className="min-h-screen px-4 py-12 bg-[#FAFAF8] text-[#2D2D2D]">
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-xs text-indigo-300 bg-indigo-500/10 border border-indigo-500/25 px-3 py-1 rounded-full mb-3">
+          <div className="inline-flex items-center gap-2 text-xs text-[#7C3AED] bg-[#7C3AED]/[0.08] border border-[#7C3AED]/25 px-3 py-1 rounded-full mb-3">
             <PenLine size={13} /> {tr('英文卷二・寫作工作室', 'English Paper 2 · Writing Studio')}
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold mb-2">
+          <h1 className="text-2xl sm:text-3xl font-medium text-[#1A1A1A] mb-2">
             {tr('AI 作曲爭議', 'The AI Music Contest Controversy')}
           </h1>
-          <p className="text-slate-400 text-sm leading-relaxed">
+          <p className="text-[#6B6B6B] text-sm leading-relaxed">
             {tr(
               '取材自 2023 DSE 英文卷二「Poems & Songs」主題的原創練習題（非 HKEAA 官方試題複本）。',
               'An original practice task on the 2023 DSE English Paper 2 "Poems & Songs" theme (not a reproduction of the HKEAA paper).',
@@ -113,9 +117,9 @@ export default function WritingPage() {
         </div>
 
         {/* Prompt */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
-          <h2 className="font-bold mb-2 text-slate-200">{tr('題目', 'The Task')}</h2>
-          <p className="text-slate-300 text-sm leading-relaxed">
+        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mb-6">
+          <h2 className="font-medium mb-2 text-[#1A1A1A]">{tr('題目', 'The Task')}</h2>
+          <p className="text-[#2D2D2D] text-sm leading-relaxed">
             {tr(
               '一個地區音樂比賽爆出爭議：一首由人工智能創作的參賽作品奪得冠軍。有人視之為創新，有人認為它違背了比賽的初衷。試撰寫一篇文章，論述應否容許 AI 創作的音樂與真人音樂家同場競技。（約 400 字）',
               'A regional music contest has been thrown into controversy after an AI-composed entry won first prize. Some hail it as innovation; others say it betrays the spirit of the competition. Write an article arguing whether AI-composed music should be allowed to compete alongside human musicians. (~400 words)',
@@ -124,36 +128,36 @@ export default function WritingPage() {
         </div>
 
         {/* Vocabulary booster */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
+        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mb-6">
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles size={16} className="text-amber-400" />
-            <h2 className="font-bold text-slate-200">{tr('5 個高分詞組 Vocabulary Booster', '5 Vocabulary Boosters')}</h2>
+            <Sparkles size={16} className="text-[#B8860B]" />
+            <h2 className="font-medium text-[#1A1A1A]">{tr('5 個高分詞組 Vocabulary Booster', '5 Vocabulary Boosters')}</h2>
           </div>
           <div className="space-y-3">
             {VOCAB.map((v) => (
               <button
                 key={v.phrase}
                 onClick={() => setDraft((d) => (d.trimEnd() + (d.trim() ? ' ' : '') + v.phrase + ' ').replace(/^ /, ''))}
-                className="w-full text-left group bg-slate-800/40 hover:bg-slate-800/80 border border-slate-700/60 hover:border-indigo-500/40 rounded-xl px-4 py-3 transition-all"
+                className="w-full text-left group bg-[#F5F5F0] hover:bg-[#EDEDE8] border border-black/[0.06] hover:border-[#7C3AED]/40 rounded-xl px-4 py-3 transition-all"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-semibold text-indigo-200 text-sm">{v.phrase}</span>
-                  <span className="text-[11px] text-slate-500 group-hover:text-indigo-300 shrink-0 inline-flex items-center gap-0.5">
+                  <span className="font-medium text-[#7C3AED] text-sm">{v.phrase}</span>
+                  <span className="text-[11px] text-[#9CA3AF] group-hover:text-[#7C3AED] shrink-0 inline-flex items-center gap-0.5">
                     {tr('插入', 'Insert')} <ChevronRight size={12} />
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1">{v.meaning}</p>
-                <p className="text-xs text-slate-500 italic mt-1">“{v.example}”</p>
+                <p className="text-xs text-[#6B6B6B] mt-1">{v.meaning}</p>
+                <p className="text-xs text-[#9CA3AF] italic mt-1">“{v.example}”</p>
               </button>
             ))}
           </div>
         </div>
 
         {/* Drafting canvas */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
+        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mb-6">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-bold text-slate-200">{tr('草稿區', 'Drafting Canvas')}</h2>
-            <span className={`text-xs ${wordCount >= 380 ? 'text-emerald-400' : 'text-slate-500'}`}>
+            <h2 className="font-medium text-[#1A1A1A]">{tr('草稿區', 'Drafting Canvas')}</h2>
+            <span className={`text-xs ${wordCount >= 380 ? 'text-[#008B84]' : 'text-[#9CA3AF]'}`}>
               {wordCount} {tr('字', 'words')}
             </span>
           </div>
@@ -162,18 +166,18 @@ export default function WritingPage() {
             onChange={(e) => setDraft(e.target.value)}
             rows={14}
             placeholder={tr('在此開始你的文章……', 'Start writing your article here…')}
-            className="w-full bg-slate-950/60 border border-slate-700 rounded-xl p-4 text-sm text-slate-100 leading-relaxed resize-y focus:outline-none focus:border-indigo-500/60"
+            className="w-full bg-[#FAFAF8] border border-black/[0.12] rounded-xl p-4 text-sm text-[#1A1A1A] leading-relaxed resize-y focus:outline-none focus:border-[#7C3AED]/60"
           />
           <div className="no-print flex flex-wrap gap-3 mt-3">
             <button
               onClick={() => window.print()}
-              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-sm font-medium px-4 py-2.5 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 bg-[#F5F5F0] hover:bg-[#EDEDE8] border border-black/[0.10] text-[#2D2D2D] text-sm font-medium px-4 py-2.5 rounded-xl transition-all"
             >
               <Printer size={15} /> {tr('列印 / 匯出 A4', 'Print / Export A4')}
             </button>
             <button
               onClick={() => { if (draft) { setDraft(''); localStorage.removeItem(DRAFT_KEY) } }}
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-300 text-sm px-3 py-2.5 transition-all"
+              className="inline-flex items-center gap-2 text-[#9CA3AF] hover:text-[#6B6B6B] text-sm px-3 py-2.5 transition-all"
             >
               <RotateCcw size={14} /> {tr('清空', 'Clear')}
             </button>
@@ -181,9 +185,9 @@ export default function WritingPage() {
         </div>
 
         {/* Self-assessment rubric */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-          <h2 className="font-bold text-slate-200 mb-1">{tr('自評量表（HKEAA 7 分制）', 'Self-Assessment (HKEAA 7-point scale)')}</h2>
-          <p className="text-xs text-slate-500 mb-5">
+        <div className="bg-white border border-black/[0.06] rounded-2xl p-6">
+          <h2 className="font-medium text-[#1A1A1A] mb-1">{tr('自評量表（HKEAA 7 分制）', 'Self-Assessment (HKEAA 7-point scale)')}</h2>
+          <p className="text-xs text-[#9CA3AF] mb-5">
             {tr('按三大範疇為自己的文章評分（1 = 最弱，7 = 最強）。', 'Rate your own writing on the three domains (1 = weakest, 7 = strongest).')}
           </p>
 
@@ -191,9 +195,9 @@ export default function WritingPage() {
             {DOMAINS.map((d) => (
               <div key={d.key}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-200 text-sm">{tr(d.zh, d.en)}</span>
+                  <span className="font-medium text-[#1A1A1A] text-sm">{tr(d.zh, d.en)}</span>
                   {scores[d.key] > 0 && (
-                    <span className="text-xs text-indigo-300 font-bold">{scores[d.key]} / 7</span>
+                    <span className="text-xs text-[#7C3AED] font-medium">{scores[d.key]} / 7</span>
                   )}
                 </div>
                 <div className="grid grid-cols-7 gap-1.5 mb-2">
@@ -201,19 +205,19 @@ export default function WritingPage() {
                     <button
                       key={band}
                       onClick={() => setScores((s) => ({ ...s, [d.key]: band }))}
-                      className={`py-2 rounded-lg text-sm font-bold border transition-all ${
+                      className={`py-2 rounded-lg text-sm font-medium border transition-all ${
                         scores[d.key] === band
-                          ? 'bg-indigo-500 border-indigo-400 text-white'
-                          : 'bg-slate-800/50 border-slate-700 text-slate-400 hover:border-slate-500'
+                          ? 'bg-[#7C3AED] border-[#7C3AED] text-white'
+                          : 'bg-[#F5F5F0] border-black/[0.10] text-[#6B6B6B] hover:border-black/[0.25]'
                       }`}
                     >
                       {band}
                     </button>
                   ))}
                 </div>
-                <ul className="text-[11px] text-slate-500 space-y-0.5">
+                <ul className="text-[11px] text-[#9CA3AF] space-y-0.5">
                   {d.anchors.map((a) => (
-                    <li key={a.band}><span className="text-slate-400 font-semibold">{a.band}:</span> {a.en}</li>
+                    <li key={a.band}><span className="text-[#6B6B6B] font-medium">{a.band}:</span> {a.en}</li>
                   ))}
                 </ul>
               </div>
@@ -222,14 +226,14 @@ export default function WritingPage() {
 
           {/* Overall band */}
           {avg > 0 && (
-            <div className="mt-6 p-4 bg-indigo-500/10 border border-indigo-500/25 rounded-xl text-center">
-              <div className="text-xs text-slate-400 mb-1">{tr('綜合自評', 'Overall self-assessment')}</div>
-              <div className="text-2xl font-extrabold text-indigo-200">{avg.toFixed(1)} / 7</div>
-              <div className="text-sm text-indigo-300/90 mt-1">{bandLabel(avg, en)}</div>
+            <div className="mt-6 p-4 bg-[#7C3AED]/[0.06] border border-[#7C3AED]/25 rounded-xl text-center">
+              <div className="text-xs text-[#6B6B6B] mb-1">{tr('綜合自評', 'Overall self-assessment')}</div>
+              <div className="text-2xl font-medium text-[#7C3AED]">{avg.toFixed(1)} / 7</div>
+              <div className="text-sm text-[#7C3AED] mt-1">{bandLabel(avg, en)}</div>
             </div>
           )}
           {rated > 0 && rated < 3 && (
-            <p className="mt-4 text-xs text-slate-500 text-center">
+            <p className="mt-4 text-xs text-[#9CA3AF] text-center">
               {tr('為三個範疇都評分後即顯示綜合等級。', 'Rate all three domains to see your overall band.')}
             </p>
           )}
@@ -237,7 +241,7 @@ export default function WritingPage() {
 
         {/* Back link */}
         <div className="no-print mt-8">
-          <Link href="/subjects/english" className="text-indigo-300 hover:text-indigo-200 text-sm inline-flex items-center gap-1">
+          <Link href="/subjects/english" className="text-[#7C3AED] hover:text-[#6D28D9] text-sm inline-flex items-center gap-1">
             {tr('← 返回英文科', '← Back to English')}
           </Link>
         </div>

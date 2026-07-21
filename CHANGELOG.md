@@ -2,6 +2,18 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-21 — Light-first Phase 2 收官：/writing + /reading + /about + FAQSection 轉淺色（Task #97）
+
+- **背景**：用戶貼「54 Idea Loop Prompt ULTIMATE v2」（系統級 Loop Prompt，多為既有憲章複述，但**重新引入多項與已 ship 決定相撞／踩紅線嘅嘢**——詳見 audit）。本批只執行乾淨、已鎖死、in-flight 嘅淺色收尾 3 面（正正係 doc §48 Phase 1 自己要嘅「完成 Phase 2 淺色遷移」）。
+- **`app/writing/page.tsx`（英文卷二寫作室）轉淺色**：白卡；英文科 accent = 紫 `#7C3AED`（badge / 詞組 / 7 分制選中態 / 返回連結）；金 `#B8860B` Sparkles；字數達標 `#008B84`；草稿 textarea 淺底；weight 400/500。7 分制自評選中態實測顯示紫「7 / 7」。
+- **`app/reading/page.tsx`（英文卷一閱讀）轉淺色**：白卡；甲/乙部 badge 金、技能 badge 紫；選項對 = 青 `#008B84` + CheckCircle、錯 = 玫 `#C2185B` + XCircle（**非鮮紅**）、其餘 dimmed `#F5F5F0`；解析框金 tint。實測揀錯 → A 玫叉、D 青勾、解析金框。
+- **`app/about/page.tsx`（孔子四理念）轉淺色**：金 `#B8860B` 品牌字/引文；白 core 卡；承諾勾青 `#008B84`；聯絡 mailto 淺掣 + 金 Mail；免責 `#F5F5F0` tint；CTA 由金實心 → **統一實心青 `#00726C`**（同 methodology 一致）。
+- **`components/FAQSection.tsx`（/about 用）轉淺色**：白卡 + 青 HelpCircle + `#2D2D2D` 問 + `#6B6B6B` 答 + `#9CA3AF` ＋ 掣（原生 `<details>` 無障礙不變）。
+- **修正**：3 面 `min-h-screen` wrapper 原本無自身 background → 露出仍為暗色嘅全站 `<body>`（body flip 屬未做嘅 ThemeToggle 任務）；補 `bg-[#FAFAF8] text-[#2D2D2D]`（同 dashboard/result/methodology 一致慣例）。
+- **驗收**：tsc 非測試 0 error、殘留暗 token 0（僅註解提及「font-extrabold」）；瀏覽器實測 3 面全淺色 + 互動態（寫作 7 分制紫、閱讀青勾/玫叉/金解析、about 手風琴 + 實心青 CTA）、console 零 error。
+- **Light-first Phase 2 = 13 面已淺色**（+writing +reading +about）。**剩：ThemeToggle（light/dark/system + `dse-theme`）+ 全站 `<body>` flip**——須全部 surface theme-aware 後一次過做（現為硬 light hex）。
+- **54-Idea v2 charter 提報（拒/緩/需決定，未執行）**：§四 賽博朋克暗底霓虹設計系統（撞已鎖死 light-first，**stale**）、ADHD `dopamineEngine`（streak/badge/隨機驚喜 = §3.2 禁 gamification，task #12 已剷）、「醫療級」情緒安全網（法務/安全過大聲明，一路降為「情緒安全網 UDL」）、中文長答 Regex 批改（**第 7 次**復發，平台 MC-only）、jsPDF（§39，>50KB 禁 dep，已用 html2canvas PNG）、等級預測顯示「Band ABC 機率」（撞自己 §3.2 禁 JUPAS 預測器）、P4 老師大數據儀表板 + `roles.ts` TEACHER（撞自己 §3.2「老師平台已刪」）、**SEN-07 BPD 自傷 NLP 偵測 + crisis 自動介入 + 「Sarah 社工即時介入」（Sarah 係虛擬 persona，非真社工）+ Supabase 存 `bpd_crisis_level` 心理健康 PII**（最敏感，需創辦人決定 + 大幅重構為靜態常駐熱線信號牌）。
+
 ## 2026-07-20b — Light-first Phase 2：/methodology + /focus 轉淺色 + 🚨 /leaderboard 紅線（Task #102）
 
 - **背景**：用戶貼「REVISED FINAL PROMPT」——**已吸納全部提報**（dark neon→light、9pt→16px、`auth.uid()`→`ADMIN_EMAILS`、migration→0005、顧問→mailto-only、剷重複功能、OpenDyslexic 狀態校正、typo 修正、剷壞 metric）。乾淨，故執行 Week 1 淺色遷移。

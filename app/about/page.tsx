@@ -7,6 +7,8 @@ import FAQSection from '@/components/FAQSection'
 
 // Four classical-Confucian cores the platform is built on. Quotes are from the
 // Analects (公有領域 — over two millennia old). Kept plain and human, no fanfare.
+// Light-first migration (2026-07-21, task #97): 清晨圖書館 — 白卡、金 #B8860B 強調、
+// 青 #008B84 承諾勾、實心青 CTA #00726C。weight 400/500，無 font-extrabold。
 const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh: string; en: string }[] = [
   {
     icon: '🎯',
@@ -47,20 +49,20 @@ export default function AboutPage() {
   const en = locale === 'en'
 
   return (
-    <div className="min-h-screen px-4 py-12">
+    <div className="min-h-screen px-4 py-12 bg-[#FAFAF8] text-[#2D2D2D]">
       <div className="max-w-2xl mx-auto">
 
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4">
-            {en ? 'About ' : '關於 '}<span className="text-amber-400">DSE Level Up</span>
+          <h1 className="text-3xl sm:text-4xl font-medium text-[#1A1A1A] mb-4">
+            {en ? 'About ' : '關於 '}<span className="text-[#B8860B]">DSE Level Up</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed">
+          <p className="text-[#6B6B6B] text-lg leading-relaxed">
             {en
               ? 'A 100% free DSE practice platform for every Hong Kong student — built on a simple, old idea: that real teaching adapts to the learner, and that no one should ever be shut out of it.'
               : '一個 100% 全免費、面向全港考生的 DSE 練習平台。它建基於一個古老而簡單的信念：真正的教育因人而異，而沒有人應該被拒諸門外。'}
           </p>
-          <p className="text-slate-500 text-sm mt-4 leading-relaxed">
+          <p className="text-[#6B6B6B] text-sm mt-4 leading-relaxed">
             {en
               ? 'We turn four ideas from Confucius into the platform’s engineering: 因材施教 (teach to the learner), 有教無類 (education for all), 啟發式教學 (learning through struggle), and 仁 (benevolence).'
               : '我們把孔子的四個教育理念，寫進平台的底層：因材施教、有教無類、啟發式教學，與仁。'}
@@ -70,17 +72,17 @@ export default function AboutPage() {
         {/* Four cores */}
         <div className="space-y-5">
           {CORES.map((c, i) => (
-            <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div key={i} className="bg-white border border-black/[0.06] rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-2xl">{c.icon}</span>
                 <div>
-                  <h2 className="font-bold text-lg leading-tight">
+                  <h2 className="font-medium text-lg leading-tight text-[#1A1A1A]">
                     {en ? c.enTitle : c.zhTitle}
                   </h2>
-                  <p className="text-amber-400/80 text-xs mt-0.5 tracking-wide">「{c.quote}」</p>
+                  <p className="text-[#B8860B] text-xs mt-0.5 tracking-wide">「{c.quote}」</p>
                 </div>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mt-3">
+              <p className="text-[#2D2D2D] text-sm leading-relaxed mt-3">
                 {en ? c.en : c.zh}
               </p>
             </div>
@@ -88,12 +90,12 @@ export default function AboutPage() {
         </div>
 
         {/* Promise — quality control */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mt-5">
+        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mt-5">
           <div className="flex items-center gap-2 mb-3">
-            <ShieldCheck size={20} className="text-emerald-400" />
-            <h2 className="font-bold text-lg">{en ? 'Our promise' : '我們的承諾'}</h2>
+            <ShieldCheck size={20} className="text-[#008B84]" />
+            <h2 className="font-medium text-lg text-[#1A1A1A]">{en ? 'Our promise' : '我們的承諾'}</h2>
           </div>
-          <div className="space-y-2.5 text-sm text-slate-400">
+          <div className="space-y-2.5 text-sm text-[#2D2D2D]">
             {[
               en
                 ? 'Academic precision is the red line: every answer and explanation is hand-verified.'
@@ -109,7 +111,7 @@ export default function AboutPage() {
                 : '永遠免費，對所有人——這裏沒有任何嘢要你買。',
             ].map((line, i) => (
               <div key={i} className="flex items-start gap-2">
-                <span className="text-emerald-400 mt-0.5 shrink-0">✓</span>
+                <span className="text-[#008B84] mt-0.5 shrink-0">✓</span>
                 <span>{line}</span>
               </div>
             ))}
@@ -120,24 +122,24 @@ export default function AboutPage() {
         <FAQSection />
 
         {/* Contact */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mt-5">
-          <h2 className="font-bold text-lg mb-3">{en ? 'Get in touch' : '聯絡我們'}</h2>
-          <p className="text-slate-400 mb-4 text-sm leading-relaxed">
+        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mt-5">
+          <h2 className="font-medium text-lg mb-3 text-[#1A1A1A]">{en ? 'Get in touch' : '聯絡我們'}</h2>
+          <p className="text-[#6B6B6B] mb-4 text-sm leading-relaxed">
             {en
               ? 'Spotted a mistake in a question, or want a subject prioritised? Tell us — accuracy depends on it.'
               : '發現題目有錯，或想我們優先處理某一科？歡迎告訴我們——準確度全靠大家把關。'}
           </p>
           <a
             href="mailto:dselevelup@gmail.com"
-            className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-4 py-2.5 rounded-xl text-sm transition-all"
+            className="inline-flex items-center gap-2 bg-[#F5F5F0] hover:bg-[#EDEDE8] border border-black/[0.10] px-4 py-2.5 rounded-xl text-sm text-[#2D2D2D] transition-all"
           >
-            <Mail size={16} className="text-amber-400" /> dselevelup@gmail.com
+            <Mail size={16} className="text-[#B8860B]" /> dselevelup@gmail.com
           </a>
         </div>
 
         {/* Legal */}
-        <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 text-xs text-slate-600 leading-relaxed mt-5">
-          <strong className="text-slate-500">{en ? 'Disclaimer: ' : '免責聲明：'}</strong>
+        <div className="bg-[#F5F5F0] border border-black/[0.06] rounded-2xl p-5 text-xs text-[#9CA3AF] leading-relaxed mt-5">
+          <strong className="text-[#6B6B6B] font-medium">{en ? 'Disclaimer: ' : '免責聲明：'}</strong>
           {en
             ? 'All questions are independently rewritten practice items, not official HKEAA papers. Grade predictions are indicative only; final results are determined by the HKEAA.'
             : '本平台所有試題均為獨立改寫版本，並非香港考試及評核局（HKEAA）官方試題。等級預測僅供參考，最終成績以 HKEAA 公布為準。'}
@@ -147,7 +149,7 @@ export default function AboutPage() {
         <div className="mt-10">
           <Link
             href="/practice"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all"
+            className="inline-flex items-center gap-2 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-all"
           >
             {en ? 'Start practising' : '開始練習'} <ArrowRight size={16} />
           </Link>
