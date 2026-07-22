@@ -1,0 +1,32 @@
+[
+  {
+    "id": "agent-smoke-economics-1",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "機會成本",
+    "difficulty": "basic",
+    "question": "小晴收到 80 元利是。她可選擇購買一本溫習筆記（售價 50 元），或與朋友觀看一場電影（票價 80 元）。若她最終選擇觀看電影，則此選擇的機會成本最接近下列何者？",
+    "options": [
+      "放棄了的那本溫習筆記",
+      "電影票的 80 元",
+      "手上的 80 元現金",
+      "沒有任何機會成本"
+    ],
+    "correctIndex": 0,
+    "explanation": "機會成本指作出選擇時所放棄的、價值最高的替代選項。小晴選擇觀看電影，所放棄的最佳替代選項是那本溫習筆記，因此機會成本最接近溫習筆記本身；電影票的金額屬直接支出，並非機會成本。",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "archetype_masking": true,
+      "ref_years": [
+        2023,
+        2024,
+        2025
+      ],
+      "frequency": "High",
+      "trap_level": 2,
+      "bilingual": true,
+      "source": "agentic-harness-v5-smoke"
+    }
+  }
+]
