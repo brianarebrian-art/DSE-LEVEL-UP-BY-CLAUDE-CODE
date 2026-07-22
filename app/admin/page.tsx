@@ -123,39 +123,43 @@ export default async function AdminPage() {
   const pct = liveTotal > 0 ? ((reviewedTotal / liveTotal) * 100).toFixed(2) : '0'
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
-      <header className="mb-8">
-        <h1 className="text-2xl font-bold text-neon-yellow">🔒 審核面板{/* i18n-exempt: admin 內部工具，只限創辦人 */}</h1>
-        <p className="mt-1 text-sm text-text-secondary">
-          {admin.name}（{admin.email}）{/* i18n-exempt: admin */}
-        </p>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <StatCard label="全站 Live 題數" /* i18n-exempt: admin */ value={liveTotal.toLocaleString()} className="text-neon-cyan" />
-          <StatCard label="人手簽名題數" /* i18n-exempt: admin */ value={reviewedTotal.toLocaleString()} className="text-neon-pink" />
-          <StatCard label="覆蓋率" /* i18n-exempt: admin */ value={`${pct}%`} className="text-neon-purple" />
-          <StatCard label="待審題數" /* i18n-exempt: admin */ value={pendingCount.toLocaleString()} className="text-neon-yellow" />
-        </div>
-        {!dbOk && (
-          <p className="mt-3 rounded-lg border border-neon-yellow/40 bg-neon-yellow/10 p-3 text-sm text-neon-yellow">
-            ⚠️ Supabase 未連通 —— 決定暫時冇得喺網上儲存，隊列狀態只反映 repo 內本地 decisions。{/* i18n-exempt: admin */}
+    // Light-first（憲章 §3，2026-07-22 遷移）：/admin 係最後一個仍為深色霓虹嘅內部工具，
+    // 依 dashboard/result 慣例補 bg-[#FAFAF8] text-[#2D2D2D]（<body> 仍暗色，唔補就穿底）。
+    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+      <div className="mx-auto max-w-5xl px-4 py-8">
+        <header className="mb-8">
+          <h1 className="text-2xl font-medium text-[#1A1A1A]">🔒 審核面板{/* i18n-exempt: admin 內部工具，只限創辦人 */}</h1>
+          <p className="mt-1 text-sm text-[#6B6B6B]">
+            {admin.name}（{admin.email}）{/* i18n-exempt: admin */}
           </p>
-        )}
-      </header>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <StatCard label="全站 Live 題數" /* i18n-exempt: admin */ value={liveTotal.toLocaleString()} className="text-[#008B84]" />
+            <StatCard label="人手簽名題數" /* i18n-exempt: admin */ value={reviewedTotal.toLocaleString()} className="text-[#7C3AED]" />
+            <StatCard label="覆蓋率" /* i18n-exempt: admin */ value={`${pct}%`} className="text-[#B8860B]" />
+            <StatCard label="待審題數" /* i18n-exempt: admin */ value={pendingCount.toLocaleString()} className="text-[#C2185B]" />
+          </div>
+          {!dbOk && (
+            <p className="mt-3 rounded-lg border border-[#B8860B]/30 bg-[#B8860B]/10 p-3 text-sm text-[#8a6608]">
+              ⚠️ Supabase 未連通 —— 決定暫時冇得喺網上儲存，隊列狀態只反映 repo 內本地 decisions。{/* i18n-exempt: admin */}
+            </p>
+          )}
+        </header>
 
-      <ReviewPanel batches={batches} history={history} dbOk={dbOk} />
+        <ReviewPanel batches={batches} history={history} dbOk={dbOk} />
 
-      <p className="mt-10 text-xs text-text-secondary">
-        入庫唯一路徑：pull-decisions → promote-drafts（本地）→ 人手 wire → push。呢個面板只記錄決定，唔會自動改題庫。{/* i18n-exempt: admin */}
-      </p>
+        <p className="mt-10 text-xs text-[#6B6B6B]">
+          入庫唯一路徑：pull-decisions → promote-drafts（本地）→ 人手 wire → push。呢個面板只記錄決定，唔會自動改題庫。{/* i18n-exempt: admin */}
+        </p>
+      </div>
     </div>
   )
 }
 
 function StatCard({ label, value, className }: { label: string; value: string; className: string }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-bg-dark-2 px-4 py-3">
-      <div className={`text-2xl font-bold ${className}`}>{value}</div>
-      <div className="text-xs text-text-secondary">{label}</div>
+    <div className="rounded-xl border border-black/[0.08] bg-white px-4 py-3">
+      <div className={`text-2xl font-semibold ${className}`}>{value}</div>
+      <div className="text-xs text-[#6B6B6B]">{label}</div>
     </div>
   )
 }

@@ -47,6 +47,9 @@ type Decision = 'approved' | 'rejected' | 'pending'
 // 草稿銀碼以 \$ 逃逸（LaTeX 閘要求）；顯示層還原做 $，唔郁底層數據。
 const unesc = (s: string) => s.replace(/\\\$/g, '$')
 
+// Light-first（憲章 §3，2026-07-22）：全檔由深色霓虹遷移為淺色 token。
+// 決定色語意：通過=青 #008B84 / 退回=玫 #C2185B（非鮮紅）/ 暫緩=金 #B8860B。
+// 互動邏輯（掃描、快捷鍵、自動跳題、Supabase 寫入）一律不變。
 const DIFF_ZH: Record<string, string> = { basic: '基礎', intermediate: '核心', hard: '進階' } // i18n-exempt: admin
 const STATUS_ZH: Record<string, string> = { pending: '待審', approved: '已通過', rejected: '已退回' } // i18n-exempt: admin
 
@@ -115,30 +118,30 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
     <div>
       <section className="mb-10">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-neon-cyan">📋 待審隊列{/* i18n-exempt: admin */}</h2>
+          <h2 className="text-lg font-medium text-[#00726C]">📋 待審隊列{/* i18n-exempt: admin */}</h2>
           {total > 0 && (
-            <span className="text-sm text-text-secondary">
+            <span className="text-sm text-[#6B6B6B]">
               本節已記錄 {recorded} · 待審 {pendingCount} / {total}{/* i18n-exempt: admin */}
             </span>
           )}
         </div>
 
         {total > 0 && (
-          <div className="mb-6 h-2 w-full overflow-hidden rounded-full bg-white/10">
-            <div className="h-full rounded-full bg-neon-cyan transition-all duration-300" style={{ width: `${(decidedCount / total) * 100}%` }} />
+          <div className="mb-6 h-2 w-full overflow-hidden rounded-full bg-black/[0.06]">
+            <div className="h-full rounded-full bg-[#00726C] transition-all duration-300" style={{ width: `${(decidedCount / total) * 100}%` }} />
           </div>
         )}
 
         {batches.length === 0 && (
-          <p className="text-sm text-text-secondary">而家冇任何草稿批次 —— 出咗新草稿先會喺度出現。{/* i18n-exempt: admin */}</p>
+          <p className="text-sm text-[#6B6B6B]">而家冇任何草稿批次 —— 出咗新草稿先會喺度出現。{/* i18n-exempt: admin */}</p>
         )}
 
         {allDone && (
-          <div className="mb-6 rounded-2xl border border-neon-cyan/30 bg-neon-cyan/5 p-8 text-center">
+          <div className="mb-6 rounded-2xl border border-[#008B84]/30 bg-[#008B84]/5 p-8 text-center">
             <div className="mb-2 text-4xl">🎉</div>
-            <h3 className="mb-1 text-xl font-bold text-neon-cyan">隊列清空！{/* i18n-exempt: admin */}</h3>
-            <p className="text-sm text-text-secondary">本節已記錄 {recorded} 條決定。{/* i18n-exempt: admin */}</p>
-            <p className="mx-auto mt-3 max-w-md text-xs text-text-secondary">
+            <h3 className="mb-1 text-xl font-medium text-[#00726C]">隊列清空！{/* i18n-exempt: admin */}</h3>
+            <p className="text-sm text-[#6B6B6B]">本節已記錄 {recorded} 條決定。{/* i18n-exempt: admin */}</p>
+            <p className="mx-auto mt-3 max-w-md text-xs text-[#6B6B6B]">
               ⚠️ 記錄決定 ≠ 入題庫。呢啲決定要喺本地行 pull-decisions → promote-drafts → 人手 wire → push 先正式入庫並顯示「人手核對題」badge。{/* i18n-exempt: admin */}
             </p>
           </div>
@@ -149,25 +152,25 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
         ))}
 
         {!dbOk && total > 0 && (
-          <p className="mt-4 text-xs text-neon-yellow">
+          <p className="mt-4 text-xs text-[#8a6608]">
             ⚠️ Supabase 未連通，暫時淨係睇得、記錄唔到 —— 撳鍵可以預選決定，但「提交」要等資料庫接通。{/* i18n-exempt: admin */}
           </p>
         )}
         {dbOk && total > 0 && (
-          <p className="mt-4 text-xs text-text-secondary">
+          <p className="mt-4 text-xs text-[#6B6B6B]">
             ⌨️ 快捷鍵：A / R / P（或 1 / 2 / 3）= 通過 / 退回 / 暫緩 · Enter = 提交（打緊備註時唔會觸發）。{/* i18n-exempt: admin */}
           </p>
         )}
       </section>
 
       <section>
-        <h2 className="mb-4 text-lg font-semibold text-neon-purple">📜 審核歷史（雲端最新 200 筆）{/* i18n-exempt: admin */}</h2>
+        <h2 className="mb-4 text-lg font-medium text-[#7C3AED]">📜 審核歷史（雲端最新 200 筆）{/* i18n-exempt: admin */}</h2>
         {history.length === 0 ? (
-          <p className="text-sm text-text-secondary">未有雲端紀錄。{/* i18n-exempt: admin */}</p>
+          <p className="text-sm text-[#6B6B6B]">未有雲端紀錄。{/* i18n-exempt: admin */}</p>
         ) : (
-          <div className="overflow-x-auto rounded-xl border border-white/10">
+          <div className="overflow-x-auto rounded-xl border border-black/[0.10]">
             <table className="w-full text-left text-sm">
-              <thead className="bg-bg-dark-2 text-xs text-text-secondary">
+              <thead className="bg-[#F5F5F0] text-xs text-[#6B6B6B]">
                 <tr>
                   <th className="px-3 py-2">時間{/* i18n-exempt: admin */}</th>
                   <th className="px-3 py-2">批次 / 題目{/* i18n-exempt: admin */}</th>
@@ -178,12 +181,12 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
               </thead>
               <tbody>
                 {history.map((h, i) => (
-                  <tr key={i} className="border-t border-white/5">
-                    <td className="whitespace-nowrap px-3 py-2 text-xs text-text-secondary">{h.created_at?.slice(0, 16).replace('T', ' ')}</td>
+                  <tr key={i} className="border-t border-black/[0.06]">
+                    <td className="whitespace-nowrap px-3 py-2 text-xs text-[#6B6B6B]">{h.created_at?.slice(0, 16).replace('T', ' ')}</td>
                     <td className="px-3 py-2">{h.batch} · {h.draft_id}</td>
                     <td className="px-3 py-2">{STATUS_ZH[h.decision] ?? h.decision}</td>
                     <td className="px-3 py-2">{h.reviewer_name ?? '—'}</td>
-                    <td className="px-3 py-2 text-xs text-text-secondary">{h.comment ?? ''}</td>
+                    <td className="px-3 py-2 text-xs text-[#6B6B6B]">{h.comment ?? ''}</td>
                   </tr>
                 ))}
               </tbody>
@@ -212,10 +215,10 @@ function BatchBlock({
 }) {
   const pending = batch.rows.filter((r) => statuses[keyOf(batch.batch, r.id)] === 'pending').length
   return (
-    <div className="mb-6 rounded-2xl border border-white/10 bg-bg-dark-2/60 p-4">
+    <div className="mb-6 rounded-2xl border border-black/[0.10] bg-[#F5F5F0] p-4">
       <h3 className="mb-3 font-semibold">
         {batch.batch}
-        <span className="ml-2 text-sm text-text-secondary">
+        <span className="ml-2 text-sm text-[#6B6B6B]">
           {batch.subject} · {batch.rows.length} 題 · 待審 {pending}{/* i18n-exempt: admin */}
         </span>
       </h3>
@@ -304,16 +307,16 @@ function ReviewCard({
 
   const expanded = isActive
   const statusChip =
-    status === 'approved' ? 'text-green-400 border-green-400/40' : status === 'rejected' ? 'text-neon-pink border-neon-pink/40' : 'text-neon-yellow border-neon-yellow/40'
+    status === 'approved' ? 'text-[#008B84] border-[#008B84]/40' : status === 'rejected' ? 'text-[#C2185B] border-[#C2185B]/40' : 'text-[#B8860B] border-[#B8860B]/40'
 
   return (
-    <div id={`card-${cardKey}`} className={`mb-3 rounded-xl border bg-bg-dark p-4 ${isActive ? 'border-neon-cyan/40' : 'border-white/10'}`}>
+    <div id={`card-${cardKey}`} className={`mb-3 rounded-xl border bg-white p-4 ${isActive ? 'border-[#008B84]/50' : 'border-black/[0.10]'}`}>
       <button type="button" onClick={() => onActivate(cardKey)} className="flex w-full items-center gap-2 text-left">
         <span className={`rounded-full border px-2 py-0.5 text-xs ${statusChip}`}>{STATUS_ZH[status] ?? status}</span>
-        {row.difficulty && <span className="rounded bg-white/5 px-2 py-0.5 text-xs text-text-secondary">{DIFF_ZH[row.difficulty] ?? row.difficulty}</span>}
-        {row.dnaTag && <span className="rounded bg-white/5 px-2 py-0.5 text-xs text-text-secondary">🧠 {row.dnaTag}</span>}
+        {row.difficulty && <span className="rounded bg-[#F5F5F0] px-2 py-0.5 text-xs text-[#6B6B6B]">{DIFF_ZH[row.difficulty] ?? row.difficulty}</span>}
+        {row.dnaTag && <span className="rounded bg-[#F5F5F0] px-2 py-0.5 text-xs text-[#6B6B6B]">🧠 {row.dnaTag}</span>}
         <span className="min-w-0 flex-1 truncate text-sm">{row.id} · {unesc(row.question)}</span>
-        <span className="text-text-secondary">{expanded ? '▾' : '▸'}</span>
+        <span className="text-[#6B6B6B]">{expanded ? '▾' : '▸'}</span>
       </button>
 
       {expanded && (
@@ -321,44 +324,44 @@ function ReviewCard({
           <p className="mb-3 leading-relaxed">{unesc(row.question)}</p>
           <div className="mb-3 space-y-2">
             {row.options.map((opt, i) => (
-              <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-green-500/50 bg-green-500/10' : 'border-white/10'}`}>
+              <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-[#008B84]/50 bg-[#008B84]/10' : 'border-black/[0.10]'}`}>
                 {unesc(opt)}
-                {i === row.correctIndex && <span className="ml-2 text-xs text-green-400">✓ 正解{/* i18n-exempt: admin */}</span>}
+                {i === row.correctIndex && <span className="ml-2 text-xs font-medium text-[#008B84]">✓ 正解{/* i18n-exempt: admin */}</span>}
                 {row.trapTypes[i] && row.trapTypes[i] !== 'correct' && (
-                  <span className="ml-2 rounded bg-white/5 px-1.5 py-0.5 text-xs text-text-secondary">{row.trapTypes[i]}</span>
+                  <span className="ml-2 rounded bg-[#F5F5F0] px-1.5 py-0.5 text-xs text-[#6B6B6B]">{row.trapTypes[i]}</span>
                 )}
               </div>
             ))}
           </div>
-          <div className="mb-4 rounded-lg border border-white/10 bg-bg-dark-2/60 p-3 text-sm leading-relaxed">
-            <span className="mb-1 block text-xs text-text-secondary">解析{/* i18n-exempt: admin */}</span>
+          <div className="mb-4 rounded-lg border border-black/[0.10] bg-[#F5F5F0] p-3 text-sm leading-relaxed">
+            <span className="mb-1 block text-xs text-[#6B6B6B]">解析{/* i18n-exempt: admin */}</span>
             {unesc(row.explanation)}
           </div>
 
           {flash ? (
-            <p className="text-sm font-semibold text-green-400">✓ 已記錄，載入下一題…{/* i18n-exempt: admin */}</p>
+            <p className="text-sm font-medium text-[#008B84]">✓ 已記錄，載入下一題…{/* i18n-exempt: admin */}</p>
           ) : (
             <div className="flex flex-wrap items-center gap-2">
-              <DecisionBtn label="✅ 通過" /* i18n-exempt: admin */ active={choice === 'approved'} activeCls="bg-green-600 text-white" onClick={() => setChoice('approved')} />
-              <DecisionBtn label="❌ 退回" /* i18n-exempt: admin */ active={choice === 'rejected'} activeCls="bg-neon-pink text-white" onClick={() => setChoice('rejected')} />
-              <DecisionBtn label="⏸️ 暫緩" /* i18n-exempt: admin */ active={choice === 'pending'} activeCls="bg-neon-yellow text-black" onClick={() => setChoice('pending')} />
+              <DecisionBtn label="✅ 通過" /* i18n-exempt: admin */ active={choice === 'approved'} activeCls="bg-[#00726C] text-white" onClick={() => setChoice('approved')} />
+              <DecisionBtn label="❌ 退回" /* i18n-exempt: admin */ active={choice === 'rejected'} activeCls="bg-[#C2185B] text-white" onClick={() => setChoice('rejected')} />
+              <DecisionBtn label="⏸️ 暫緩" /* i18n-exempt: admin */ active={choice === 'pending'} activeCls="bg-[#B8860B] text-white" onClick={() => setChoice('pending')} />
               <input
                 type="text"
                 placeholder="備註（可選）" // i18n-exempt: admin
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                className="min-w-40 flex-1 rounded-lg border border-white/10 bg-bg-dark-2 px-3 py-2 text-sm"
+                className="min-w-40 flex-1 rounded-lg border border-black/[0.10] bg-[#F5F5F0] px-3 py-2 text-sm"
               />
               <button
                 type="button"
                 onClick={() => void submit()}
                 disabled={!choice || busy || !dbOk}
-                className="rounded-lg bg-neon-cyan px-5 py-2 text-sm font-bold text-black disabled:cursor-not-allowed disabled:opacity-30"
+                className="rounded-lg bg-[#00726C] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-[#005F5A] disabled:cursor-not-allowed disabled:opacity-30"
               >
                 {busy ? '提交中…' : '提交決定'}{/* i18n-exempt: admin */}
               </button>
-              {status !== 'pending' && <span className="text-xs text-text-secondary">（已裁決過，可再提交覆蓋）{/* i18n-exempt: admin */}</span>}
-              {err && <span className="text-xs text-neon-pink">{err}</span>}
+              {status !== 'pending' && <span className="text-xs text-[#6B6B6B]">（已裁決過，可再提交覆蓋）{/* i18n-exempt: admin */}</span>}
+              {err && <span className="text-xs text-[#C2185B]">{err}</span>}
             </div>
           )}
         </div>
@@ -372,7 +375,7 @@ function DecisionBtn({ label, active, activeCls, onClick }: { label: string; act
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-lg px-4 py-2 text-sm font-bold transition-colors duration-200 ${active ? activeCls : 'bg-white/5 text-text-secondary hover:bg-white/10'}`}
+      className={`rounded-lg px-4 py-2 text-sm font-bold transition-colors duration-200 ${active ? activeCls : 'bg-[#F5F5F0] text-[#6B6B6B] hover:bg-black/[0.06]'}`}
     >
       {label}
     </button>
