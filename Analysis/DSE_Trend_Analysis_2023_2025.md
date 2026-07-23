@@ -91,6 +91,29 @@
 
 **頻率（質性）**：跨課題綜合題 = **High**；單位／粗心失分 = **High（最普遍）**；純單一課題直算 = **Med**。
 
+#### 1.3a 官方公開表現數據（誠實對標 · hkeaa-trend-analyzer）
+
+> **誠實聲明**：逐課題 facility index（得分率）僅載於 HKEAA【付費】《Examination Report》，非免費公開來源；下表 `facility_index` 一律 `null`，**不虛構**（§8）。免費公開的只有**科目層級**成績等級分佈（Level distribution，見 data.gov.hk）。以下三項雷區源自公開《考生表現評論》與導師層面公開評語，屬教學通則，非任何試卷原文。完整結構化數據見 `Analysis/hkeaa-math-weakness-2023-2025.json`。
+
+| topic_code | facility_index | 常犯錯誤（避坑） | 考評局建議（應做） | root cause |
+|---|---|---|---|---|
+| 圓的性質／演繹幾何 | null（未公開） | 對圖形擅自假設：未說明卻當作直徑／切線 | 嚴按給定條件推理；證明逐步列明定理 | 審題疏忽／概念混淆 |
+| 方程與不等式（多部分跟進） | null（未公開） | 漏答跟進小題：求得 x 範圍後未進一步求最大值 | 逐一完成每個跟進要求，答完看清下一步 | 完成度／審題疏忽 |
+| 代數運算與化簡 | null（未公開） | 答案未化至最簡：分數未約簡、同類項未合併 | 遞交前檢查已化至最簡、表達規範 | 計算／表達不規範 |
+
+**餵入 Evaluator 的元數據格式**（每條原創題可掛上官方雷區對標，令生成與評估對齊考評局公開評語；`facility_index` 有真數才填，否則 `null`）：
+
+```json
+"_officialWeaknessRef": {
+  "subject": "math",
+  "topic_code": "Equations & Inequalities (multi-part follow-up)",
+  "facility_index": null,
+  "facility_index_status": "not_publicly_disclosed",
+  "root_cause": "Misread",
+  "examiner_insight_ref": "Analysis/hkeaa-math-weakness-2023-2025.json"
+}
+```
+
 ---
 
 ### 1.4 經濟（Economics，選修）

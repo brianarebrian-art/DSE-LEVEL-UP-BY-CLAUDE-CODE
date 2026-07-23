@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "subject": "Mathematics",
+    "paper": "Compulsory Part",
+    "years": [2023, 2024, 2025],
+    "generated": "2026-07-23",
+    "generator": "hkeaa-trend-analyzer (compliant)",
+    "compliance": "零試題原文；只用公開評語／統計；facility_index 一律不虛構（§8）"
+  },
+  "data_provenance": {
+    "public_qualitative": "官方及導師層面公開的《考生表現評論 / Comments on Candidates' Performance》與常犯錯誤（見 sources）。屬教學層面通則，非任何試卷原文。",
+    "public_statistics_available": "HKEAA 免費公開的是【科目層級】成績等級分佈（Level distribution — Mathematics Compulsory Part）於 data.gov.hk 及 HKEAA 統計頁；並非逐課題得分率。",
+    "facility_index_note": "逐課題 facility index（得分率）僅載於【付費】的《Examination Report》，非免費公開來源。本檔一律標記為 null / not_publicly_disclosed，絕不虛構數字。若需真實逐課題數值，須由具備該付費報告的人手（David 考評監察）核入。",
+    "difficulty_tier_note": "任務定義 difficulty_tier 以 facility_index 界定（High <40% 等）。因缺公開 facility_index，本檔 difficulty_tier 亦標 null，改以 qualitative_difficulty（質性，基於公開評語）表達，並明確標示其非統計排名。",
+    "sources": [
+      "https://www.hkeaa.edu.hk/en/hkdse/assessment/exam_reports/exam_stat/",
+      "https://www.hkeaa.edu.hk/en/hkdse/assessment/exam_reports/",
+      "https://data.gov.hk/en-data/dataset/hkeaa-hkdesstat-result-table3-2025",
+      "https://www.scmp.com/yp/learn/learning-resources/exam-tips/article/3257464/dse-2024-dont-make-assumptions-mathematics-exam-top-tutor-warns"
+    ]
+  },
+  "topics": [
+    {
+      "topic_code": "Properties of Circles / Deductive Geometry",
+      "topic_zh": "圓的性質與演繹幾何",
+      "topic_en": "Properties of Circles / Deductive Geometry",
+      "facility_index": null,
+      "facility_index_status": "not_publicly_disclosed",
+      "qualitative_difficulty": "high",
+      "qualitative_basis": "公開考生表現評論指出『對圖形擅自假設』類錯誤高發；非 facility-index 排名。",
+      "common_mistakes": [
+        "對圖形擅自假設：題目未說明，卻當作某線為直徑或切線",
+        "幾何證明理據不全、跳步，未逐步列明所用定理"
+      ],
+      "common_mistakes_en": [
+        "Making unstated assumptions from a diagram — treating a line as a diameter or tangent when it is not stated",
+        "Incomplete deductive proofs — skipping steps without citing the theorem used"
+      ],
+      "root_cause_taxonomies": ["Misread (審題疏忽)", "Conceptual (概念混淆)"],
+      "examiner_insights": "須嚴格按題目給定的條件推理，不得憑圖形外觀假設；幾何證明須逐步列明每步所依據的性質或定理。",
+      "examiner_insights_en": "Reason strictly from the stated conditions; do not assume from how a diagram looks. In deductive proofs, state the property or theorem used at each step."
+    },
+    {
+      "topic_code": "Equations & Inequalities (multi-part follow-up)",
+      "topic_zh": "方程與不等式（多部分跟進題）",
+      "topic_en": "Equations & Inequalities (multi-part follow-up)",
+      "facility_index": null,
+      "facility_index_status": "not_publicly_disclosed",
+      "qualitative_difficulty": "medium",
+      "qualitative_basis": "公開評論指出考生常『漏答跟進小題』（如求得 x 範圍後未進一步求最大值）；非統計排名。",
+      "common_mistakes": [
+        "漏答跟進小題：求得未知數範圍後，未按要求進一步求最大／最小值",
+        "只完成第一部分便跳去下一題，忽略同題的後續要求"
+      ],
+      "common_mistakes_en": [
+        "Skipping follow-up parts — finding the range of x but not proceeding to the required maximum/minimum value",
+        "Answering only the first part and moving on, ignoring later requirements of the same question"
+      ],
+      "root_cause_taxonomies": ["Technical/Formatting (完成度不足)", "Misread (審題疏忽)"],
+      "examiner_insights": "多部分題須逐一完成每個跟進要求；答完一部分先看清下一步要求（如『求最大值』）再作答。",
+      "examiner_insights_en": "Complete every follow-up requirement in multi-part questions; after each part, re-read the next instruction (e.g. 'find the maximum value') before moving on."
+    },
+    {
+      "topic_code": "Algebraic Manipulation & Simplification",
+      "topic_zh": "代數運算與化簡",
+      "topic_en": "Algebraic Manipulation & Simplification",
+      "facility_index": null,
+      "facility_index_status": "not_publicly_disclosed",
+      "qualitative_difficulty": "medium",
+      "qualitative_basis": "公開評論指出考生常『答案未化至最簡』；屬表達規範問題，非統計排名。",
+      "common_mistakes": [
+        "答案未化至最簡：分數未約簡、同類項未合併",
+        "表達不規範，影響最後一步得分"
+      ],
+      "common_mistakes_en": [
+        "Not simplifying to final form — fractions not reduced, like terms not combined",
+        "Non-standard presentation costing the final mark"
+      ],
+      "root_cause_taxonomies": ["Technical/Formatting (計算/表達不規範)"],
+      "examiner_insights": "遞交前檢查答案是否已化至最簡（約簡分數、合併同類項），並確認表達規範。",
+      "examiner_insights_en": "Before submitting, check the answer is in simplest form (reduce fractions, combine like terms) and presented conventionally."
+    }
+  ]
+}
