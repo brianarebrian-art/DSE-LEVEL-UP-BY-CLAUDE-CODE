@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "purpose": "出題時 distractor 嘅來源庫：選定 subject + units → filter 相關錯誤 → 改寫成情境化 distractor。令 distractor 唔再靠臨場靈感，而係抽取真實錯誤模式。純 JSON、零依賴、零成本。授權 aid（唔係 app 載入嘅資料），故放喺 scripts/qbank/ 而非 data/。",
+    "honesty_rules": [
+      "source 只可寫【可追溯嘅真嘢】：邊條 draft 用咗（draft:<id>），或【真人核對過】嘅真實文件（要寫報告名+年份+頁）。嚴禁塞入未核實嘅『HKEAA XX 報告』或虛擬 persona『改卷實錄』。",
+      "verified_by 只可係真人（Brian / Yuna）。虛擬 persona（Carson/Amity/Victor/Arthur/Fiona）只提供【視角】，永不做 verifier。未經真人核對 = 留空。",
+      "frequency_estimate 係【估計】唔係實測（平台 localStorage-first，冇追蹤學生答案），故命名帶 estimate；唔可以當成量度數據。",
+      "status=ai_proposed 代表 AI 由現有題目抽出、待真人核實；human_verified 代表真人核對過 + 填咗真 source/verified_by。出題可用 ai_proposed 做靈感，但入庫題目本身仍走正常人手審批。"
+    ],
+    "status_values": ["ai_proposed", "human_verified"],
+    "trap_types": ["concept_confusion", "half_right", "over_inference", "wrong_direction", "omission", "wrong_denominator", "wrong_formula_input"],
+    "chief_lens_not_signature": "各科首席 skill 只係填充時嘅【規範視角/checklist】，真正填 + 核實嘅係真人。下表 target 係人手 curation 目標，非 AI 自動生成。",
+    "curation_targets": { "economics": 30, "chinese": 20, "mathematics": 25, "english": 15, "bafs": 20 },
+    "last_updated": "2026-07-24"
+  },
+  "errors": [
+    {
+      "id": "econ-err-01", "subject": "economics", "units": ["unemployment", "labour_market"], "difficulty": "intermediate", "trap_type": "concept_confusion",
+      "distractor_template": "把結構性失業誤認為摩擦性失業（以為兩者都只係『技能不符』）",
+      "why_students_choose": "只記住『技能不符』一句，忽略結構性＝長期產業／科技轉型，摩擦性＝轉工過渡期的短期失業",
+      "correct_concept": "結構性失業：產業結構改變致技能長期不符；摩擦性失業：轉工期間的短期失業；週期性失業：經濟衰退所致",
+      "frequency_estimate": "high", "source": "draft:econ-cu-01", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-02", "subject": "economics", "units": ["marginal_analysis", "production_cost"], "difficulty": "intermediate", "trap_type": "omission",
+      "distractor_template": "只見新增成本就話『增加開支、不應做』，冇同節省／收益作邊際比較",
+      "why_students_choose": "把單一數字（機器成本）當作決策依據，未學會『比較增量成本與增量收益』",
+      "correct_concept": "決策看淨邊際效果：增量節省／收益 − 增量成本；淨正才值得做",
+      "frequency_estimate": "high", "source": "draft:econ-cu-01", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-03", "subject": "economics", "units": ["taxation", "supply_demand"], "difficulty": "hard", "trap_type": "concept_confusion",
+      "distractor_template": "把『對賣方徵稅』誤當令需求曲線移動（其實移供給）",
+      "why_students_choose": "見到『價／量下跌』就直覺想到需求減少，忽略稅加喺賣方成本→供給左移",
+      "correct_concept": "從量稅加喺賣方＝供給曲線上移約稅額；均衡價升、量跌",
+      "frequency_estimate": "high", "source": "draft:econ-cu-02", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-04", "subject": "economics", "units": ["taxation", "tax_incidence"], "difficulty": "hard", "trap_type": "wrong_direction",
+      "distractor_template": "把稅負轉嫁方向計反：以為需求較無彈性一方承擔較【細】部分",
+      "why_students_choose": "記錯『無彈性＝影響細』，其實無彈性代表對價格不敏感、走唔甩，要承擔較【大】部分",
+      "correct_concept": "相對無彈性一方承擔較大部分稅款；需求較無彈性→消費者承擔較多",
+      "frequency_estimate": "medium", "source": "draft:econ-cu-02", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-05", "subject": "economics", "units": ["public_goods", "market_failure"], "difficulty": "intermediate", "trap_type": "concept_confusion",
+      "distractor_template": "把共用品（public good）同有價值物品（merit good）或私人物品混淆",
+      "why_students_choose": "三個概念都涉及『政府介入』，學生憑印象亂配，未扣緊『非競爭＋非排他』定義",
+      "correct_concept": "共用品＝非競爭＋非排他，市場因免費騎士問題供給不足；merit good 是市場低估其效益的物品；出資來源不決定物品性質",
+      "frequency_estimate": "high", "source": "draft:econ-cu-03", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-06", "subject": "economics", "units": ["public_goods"], "difficulty": "intermediate", "trap_type": "half_right",
+      "distractor_template": "『屬共用品，因為免費開放，所以具競爭性』——前半啱、後半錯",
+      "why_students_choose": "把『免費』同『競爭性』混為一談；共用品定義正正是非競爭",
+      "correct_concept": "共用品是非競爭性（一人享用不減他人份量），與是否免費無關",
+      "frequency_estimate": "medium", "source": "draft:econ-cu-03", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-07", "subject": "economics", "units": ["comparative_advantage", "opportunity_cost"], "difficulty": "hard", "trap_type": "concept_confusion",
+      "distractor_template": "絕對優勢謬誤：因某地某產品產量絕對較高，就話應由該地生產一切",
+      "why_students_choose": "直覺用『邊個產得多』分工，未用機會成本（比較優勢）分析",
+      "correct_concept": "按比較優勢（較低機會成本）分工，即使一方有絕對優勢，貿易仍可增加總產出",
+      "frequency_estimate": "high", "source": "draft:econ-cu-04", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-08", "subject": "economics", "units": ["opportunity_cost"], "difficulty": "hard", "trap_type": "wrong_direction",
+      "distractor_template": "把機會成本方向計反（例：算成 1 布 = 2 米 較低，其實 2 米 > 1 米 較高）",
+      "why_students_choose": "分子分母倒轉，未清楚『放棄咗幾多另一種貨品』",
+      "correct_concept": "生產 1 單位 X 的機會成本 = 放棄的 Y 數量；數值較細者機會成本較低",
+      "frequency_estimate": "medium", "source": "draft:econ-cu-04", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "econ-err-09", "subject": "economics", "units": ["inflation", "nominal_real"], "difficulty": "intermediate", "trap_type": "wrong_formula_input",
+      "distractor_template": "把名義工資變動與通脹率相【加】（5%+8%=13%）而非相減",
+      "why_students_choose": "計數機／心算按錯符號，未理解實質＝名義扣除物價影響",
+      "correct_concept": "實質工資變動 ≈ 名義工資變動 − 通脹率；5% − 8% = −3%，購買力下跌",
+      "frequency_estimate": "high", "source": "draft:econ-cu-05", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "bafs-err-01", "subject": "bafs", "units": ["partnership", "appropriation"], "difficulty": "intermediate", "trap_type": "omission",
+      "distractor_template": "計合夥人應分利潤時，漏計自己嘅薪金或資本利息",
+      "why_students_choose": "只記『剩餘按比例分』，忘記薪金／利息要先分撥再加返自己嗰份",
+      "correct_concept": "合夥人總分得 = 自己薪金 + 自己資本利息 + 按比例分得的剩餘利潤",
+      "frequency_estimate": "high", "source": "draft:bafs-07", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "bafs-err-02", "subject": "bafs", "units": ["partnership", "revaluation"], "difficulty": "hard", "trap_type": "omission",
+      "distractor_template": "計重估損益時漏咗扣『呆帳準備增加』（只用資產升值）",
+      "why_students_choose": "只留意資產升值嘅利好，忽略準備增加是一項損失要淨扣",
+      "correct_concept": "重估損益 = 資產升值 − 準備／負債增加；再按舊比例分予各合夥人",
+      "frequency_estimate": "medium", "source": "draft:bafs-08", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "bafs-err-03", "subject": "bafs", "units": ["bank_reconciliation"], "difficulty": "intermediate", "trap_type": "wrong_direction",
+      "distractor_template": "更正現金簿時把『銀行代收利息』當扣減；或用未過帳支票／在途存款去更正現金簿",
+      "why_students_choose": "混淆『更正現金簿』與『調節至銀行結單』兩步；符號方向記反",
+      "correct_concept": "只有現金簿未入帳項目更正現金簿（利息加、手續費/自動轉帳扣）；未過帳支票與在途存款只出現在調節表，不改現金簿",
+      "frequency_estimate": "high", "source": "draft:bafs-09", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "bafs-err-04", "subject": "bafs", "units": ["cost_accounting", "shutdown_decision"], "difficulty": "hard", "trap_type": "concept_confusion",
+      "distractor_template": "停產決策用『總固定成本』（含不可避免折舊）去比較，得出虧損就停產",
+      "why_students_choose": "未區分可避免與不可避免固定成本；把停產都要付的折舊納入比較",
+      "correct_concept": "短期停產只比較邊際貢獻與【可避免】固定成本；貢獻 > 可避免固定成本則繼續",
+      "frequency_estimate": "high", "source": "draft:bafs-11", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "bafs-err-05", "subject": "bafs", "units": ["cost_accounting", "cvp"], "difficulty": "intermediate", "trap_type": "wrong_denominator",
+      "distractor_template": "算目標利潤銷量時漏咗目標利潤（只計打和）；或用售價／變動成本做分母而非每單位貢獻",
+      "why_students_choose": "混淆打和與目標利潤公式；未緊記分母是『每單位邊際貢獻』",
+      "correct_concept": "所需銷量 = (固定成本 + 目標利潤) ÷ 每單位貢獻；貢獻 = 售價 − 變動成本",
+      "frequency_estimate": "high", "source": "draft:bafs-12", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    }
+  ]
+}
