@@ -2,19 +2,20 @@
   "_meta": {
     "source": "chinese-fanwen-weak-84.json",
     "subject": "chinese",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "望咩望,未見過海綿寶寶咩?",
+    "reviewedAt": "2026-07-17",
+    "pulledFrom": "supabase:review_decisions"
   },
   "decisions": {
-    "art-chinese-lrxj-lexis-0": "pending",
-    "art-chinese-lrxj-comp-1": "pending",
-    "art-chinese-lrxj-comp-2": "pending",
-    "art-chinese-lrxj-comp-3": "pending",
-    "art-chinese-lrxj-comp-4": "pending",
-    "art-chinese-lrxj-synthesis-5": "pending",
-    "art-chinese-yxdz-content-0": "pending",
-    "art-chinese-yxdz-technique-1": "pending",
-    "art-chinese-yxdz-technique-2": "pending",
-    "art-chinese-yxdz-diction-3": "pending"
+    "art-chinese-lrxj-lexis-0": "approved",
+    "art-chinese-lrxj-comp-1": "approved",
+    "art-chinese-lrxj-comp-2": "approved",
+    "art-chinese-lrxj-comp-3": "approved",
+    "art-chinese-lrxj-comp-4": "approved",
+    "art-chinese-lrxj-synthesis-5": "approved",
+    "art-chinese-yxdz-content-0": "approved",
+    "art-chinese-yxdz-technique-1": "approved",
+    "art-chinese-yxdz-technique-2": "approved",
+    "art-chinese-yxdz-diction-3": "approved"
   }
 }

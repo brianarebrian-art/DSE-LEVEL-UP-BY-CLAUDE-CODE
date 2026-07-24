@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "source": "bafs-batch.json",
+    "subject": "bafs",
+    "reviewer": "望咩望,未見過海綿寶寶咩?",
+    "reviewedAt": "2026-07-23",
+    "pulledFrom": "supabase:review_decisions"
+  },
+  "decisions": {
+    "bafs-01": "approved",
+    "bafs-02": "approved",
+    "bafs-03": "approved",
+    "bafs-04": "approved",
+    "bafs-05": "approved",
+    "bafs-06": "approved"
+  }
+}

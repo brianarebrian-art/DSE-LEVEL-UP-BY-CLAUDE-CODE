@@ -47,15 +47,18 @@ const loaders: Record<string, Loader> = {
     return [...base.chemistryQuestions, ...cbank.chemistryBankQuestions]
   },
   biology: async () => (await import('./biology')).biologyQuestions,
-  english: async () => (await import('./english')).englishQuestions,
+  english: async () => {
+    const [base, reviewed] = await Promise.all([import('./english'), import('./english-reviewed')])
+    return [...base.englishQuestions, ...reviewed.englishReviewedQuestions]
+  },
   ict: async () => (await import('./ict')).ictQuestions,
   chinese: async () => {
     const [base, reviewed] = await Promise.all([import('./chinese'), import('./chinese-reviewed')])
     return [...base.chineseQuestions, ...reviewed.chineseReviewedQuestions]
   },
   bafs: async () => {
-    const [base, bbank] = await Promise.all([import('./bafs'), import('./bafs-bank')])
-    return [...base.bafsQuestions, ...bbank.bafsBankQuestions]
+    const [base, bbank, reviewed] = await Promise.all([import('./bafs'), import('./bafs-bank'), import('./bafs-reviewed')])
+    return [...base.bafsQuestions, ...bbank.bafsBankQuestions, ...reviewed.bafsReviewedQuestions]
   },
   economics: async () => {
     const [base, ebank, reviewed] = await Promise.all([

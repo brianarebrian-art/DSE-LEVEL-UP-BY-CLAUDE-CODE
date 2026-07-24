@@ -5,19 +5,19 @@
     "subject": "bafs",
     "topic": "折舊（直線法）",
     "difficulty": "basic",
-    "question": "某公司於年初以 $120,000 購入一部機器，估計可用 5 年，殘值為 $20,000。若採用直線法計算折舊，每年的折舊費用為多少？",
-    "questionEn": "A company buys a machine for $120,000 at the start of the year, with an estimated useful life of 5 years and a residual value of $20,000. Using the straight-line method, what is the annual depreciation expense?",
+    "question": "某公司於年初以 \\$120,000 購入一部機器，估計可用 5 年，殘值為 \\$20,000。若採用直線法計算折舊，每年的折舊費用為多少？",
+    "questionEn": "A company buys a machine for \\$120,000 at the start of the year, with an estimated useful life of 5 years and a residual value of \\$20,000. Using the straight-line method, what is the annual depreciation expense?",
     "options": [
-      "$20,000",
-      "$24,000",
-      "$100,000",
-      "$4,000"
+      "\\$20,000",
+      "\\$24,000",
+      "\\$100,000",
+      "\\$4,000"
     ],
     "optionsEn": [
-      "$20,000",
-      "$24,000",
-      "$100,000",
-      "$4,000"
+      "\\$20,000",
+      "\\$24,000",
+      "\\$100,000",
+      "\\$4,000"
     ],
     "correctIndex": 0,
     "explanation": "直線法每年折舊 = （成本 − 殘值）÷ 可用年期 =（120,000 − 20,000）÷ 5 = 20,000。常見扣分陷阱：忘記先扣減殘值（誤算 120,000 ÷ 5 = 24,000），或把總折舊 100,000 當作每年折舊。",
@@ -77,19 +77,19 @@
     "subject": "bafs",
     "topic": "流動比率",
     "difficulty": "basic",
-    "question": "某公司流動資產為 $180,000，流動負債為 $90,000。其流動比率（current ratio）為多少？",
-    "questionEn": "A company has current assets of $180,000 and current liabilities of $90,000. What is its current ratio?",
+    "question": "某公司流動資產為 \\$180,000，流動負債為 \\$90,000。其流動比率（current ratio）為多少？",
+    "questionEn": "A company has current assets of \\$180,000 and current liabilities of \\$90,000. What is its current ratio?",
     "options": [
       "2 : 1",
       "0.5 : 1",
       "1 : 2",
-      "$90,000"
+      "\\$90,000"
     ],
     "optionsEn": [
       "2 : 1",
       "0.5 : 1",
       "1 : 2",
-      "$90,000"
+      "\\$90,000"
     ],
     "correctIndex": 0,
     "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 180,000 ÷ 90,000 = 2，即 2 : 1。常見扣分陷阱：把分子分母倒轉（0.5 : 1），或誤把兩者之差當成比率。",
@@ -149,19 +149,19 @@
     "subject": "bafs",
     "topic": "呆帳準備",
     "difficulty": "intermediate",
-    "question": "某公司應收帳款為 $200,000，管理層估計其中 3% 可能無法收回，須設立呆帳準備（provision for doubtful debts）。應設立的呆帳準備金額為多少？",
-    "questionEn": "A company has trade receivables of $200,000. Management estimates 3% may be uncollectible and sets up a provision for doubtful debts. What is the amount of the provision?",
+    "question": "某公司應收帳款為 \\$200,000，管理層估計其中 3% 可能無法收回，須設立呆帳準備（provision for doubtful debts）。應設立的呆帳準備金額為多少？",
+    "questionEn": "A company has trade receivables of \\$200,000. Management estimates 3% may be uncollectible and sets up a provision for doubtful debts. What is the amount of the provision?",
     "options": [
-      "$6,000",
-      "$60,000",
-      "$194,000",
-      "$200,000"
+      "\\$6,000",
+      "\\$60,000",
+      "\\$194,000",
+      "\\$200,000"
     ],
     "optionsEn": [
-      "$6,000",
-      "$60,000",
-      "$194,000",
-      "$200,000"
+      "\\$6,000",
+      "\\$60,000",
+      "\\$194,000",
+      "\\$200,000"
     ],
     "correctIndex": 0,
     "explanation": "呆帳準備 = 應收帳款 × 估計不能收回比率 = 200,000 × 3% = 6,000。這是對應收帳款的估計減值，並非直接註銷整筆帳款。常見扣分陷阱：把整筆 200,000 當壞帳註銷，或百分比小數點計錯（60,000）。",
