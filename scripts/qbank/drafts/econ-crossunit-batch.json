@@ -1,0 +1,177 @@
+[
+  {
+    "id": "econ-cu-01",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "跨單元（生產成本・邊際分析・失業類型）",
+    "difficulty": "intermediate",
+    "question": "一間茶餐廳因法定最低工資上調，考慮引入自助點餐機。點餐機每月租金及維護共 \\$8,000，可取代 2 名兼職收銀（每人每月工資 \\$9,000）。就此決定及其對勞工市場的影響，下列何者最準確？",
+    "questionEn": "Facing a rise in the statutory minimum wage, a cha chaan teng considers installing a self-order kiosk. The kiosk costs \\$8,000 a month to rent and maintain, and replaces 2 part-time cashiers (each paid \\$9,000 a month). Which statement about the decision and its labour-market effect is most accurate?",
+    "options": [
+      "不應引入：機器成本 \\$8,000 係額外開支，會增加總成本",
+      "應引入；被取代的工人屬摩擦性失業",
+      "應引入：每月節省工資 \\$18,000 超過機器成本 \\$8,000；被取代的工人屬結構性失業",
+      "應引入；被取代的工人屬週期性失業"
+    ],
+    "optionsEn": [
+      "Do not install: the \\$8,000 machine cost is an extra expense that raises total cost",
+      "Install; the displaced workers face frictional unemployment",
+      "Install: monthly wage saving \\$18,000 exceeds the \\$8,000 machine cost; the displaced workers face structural unemployment",
+      "Install; the displaced workers face cyclical unemployment"
+    ],
+    "correctIndex": 2,
+    "explanation": "邊際比較：引入機器每月節省工資 2 × \\$9,000 = \\$18,000，高於機器成本 \\$8,000，淨節省 \\$10,000，故有經濟誘因引入。工人因科技／技能需求轉變而被取代，屬「結構性失業」。常見扣分陷阱：只見機器成本 \\$8,000 就話「增加開支」而唔同節省比較；或失業類型判斷錯——摩擦性失業指轉工過渡期，週期性失業源於經濟衰退，兩者都唔切合科技取代。",
+    "explanationEn": "Marginal comparison: installing saves 2 × \\$9,000 = \\$18,000 a month, above the \\$8,000 cost, a net \\$10,000 — so there is an incentive. Workers replaced by a shift in technology/skills demand face structural unemployment. Traps: seeing only the \\$8,000 cost without comparing the saving; or mislabelling the unemployment (frictional = job-search transition, cyclical = recession).",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Original cross-unit item written from DSE syllabus concepts; scenario/numbers fresh, no external stats asserted as official.",
+      "cross_unit": ["production cost", "marginal analysis", "unemployment"],
+      "bilingual": true,
+      "trap_level": 4,
+      "source": "econ-crossunit-topic-sourced"
+    }
+  },
+  {
+    "id": "econ-cu-02",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "跨單元（從量稅・供求均衡・稅負轉嫁）",
+    "difficulty": "hard",
+    "question": "政府對每支含糖飲品徵收 \\$2 從量稅（specific tax）。若該飲品的需求較供給無彈性，徵稅後市場會如何變化？",
+    "questionEn": "The government levies a \\$2 specific tax on each sugary drink. If demand for the drink is less elastic than supply, what happens in the market after the tax?",
+    "options": [
+      "供給曲線向上移約 \\$2，均衡價上升但升幅少於 \\$2；因需求較無彈性，消費者承擔較大部分稅款",
+      "需求曲線向左移，均衡價下跌",
+      "均衡價正好上升 \\$2，稅款全數由消費者承擔",
+      "供給曲線向上移，但因需求無彈性，消費者只承擔較細部分稅款"
+    ],
+    "optionsEn": [
+      "Supply shifts up by about \\$2; equilibrium price rises by less than \\$2; as demand is less elastic, consumers bear the larger share of the tax",
+      "Demand shifts left and the equilibrium price falls",
+      "Equilibrium price rises by exactly \\$2 and consumers pay all of the tax",
+      "Supply shifts up, but because demand is inelastic consumers bear the smaller share"
+    ],
+    "correctIndex": 0,
+    "explanation": "從量稅加在賣方，令供給曲線向上移約稅額 \\$2，均衡價上升、數量下跌；升幅少於 \\$2，因買賣雙方分擔稅款。相對無彈性的一方承擔較大部分——需求較無彈性，故消費者承擔較多。常見扣分陷阱：把徵稅誤當令「需求」移動（其實移供給）；以為價格必升足 \\$2 由消費者全付（只有需求完全無彈性才成立）；或搞錯轉嫁方向（無彈性一方應承擔較大而非較細）。",
+    "explanationEn": "A specific tax on sellers shifts supply up by about \\$2; equilibrium price rises and quantity falls, with the price rising by less than \\$2 as the burden is shared. The relatively less elastic side bears more — here demand — so consumers bear the larger share. Traps: thinking the tax shifts demand (it shifts supply); assuming price rises the full \\$2 onto consumers (only if demand is perfectly inelastic); or reversing the incidence.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Original cross-unit item written from DSE syllabus concepts; uses price-elasticity incidence (in-scope; income/cross/point elasticity avoided).",
+      "cross_unit": ["taxation", "supply & demand", "tax incidence"],
+      "bilingual": true,
+      "trap_level": 4,
+      "source": "econ-crossunit-topic-sourced"
+    }
+  },
+  {
+    "id": "econ-cu-03",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "跨單元（共用品・市場失靈・政府角色）",
+    "difficulty": "intermediate",
+    "question": "政府舉辦的除夕煙花匯演，任何人在維港兩岸都可觀賞，且一人觀賞不會減少他人可觀賞的份量。就其經濟性質，下列何者最準確？",
+    "questionEn": "A government New Year fireworks display can be watched by anyone along the harbour, and one person watching does not reduce what others can watch. Which best describes its economic nature?",
+    "options": [
+      "屬私人物品：因為由政府用公帑舉辦",
+      "屬共用品：兼具非競爭性與非排他性，市場因免費騎士問題而供給不足",
+      "屬共用品：因為免費開放，所以具競爭性",
+      "屬有價值物品（merit good）：政府鼓勵市民觀賞"
+    ],
+    "optionsEn": [
+      "A private good, because the government funds it with public money",
+      "A public good: both non-rival and non-excludable, so the market under-provides it due to the free-rider problem",
+      "A public good, and because it is free to watch it is therefore rival",
+      "A merit good the government encourages people to consume"
+    ],
+    "correctIndex": 1,
+    "explanation": "非競爭性（一人觀賞不減他人份量）加非排他性（難阻止未付費者觀賞）＝共用品。因人人可免費享用，出現免費騎士問題，市場供給不足，故多由政府提供。常見扣分陷阱：以為「出資者是政府」就等於私人物品（出資來源不決定物品性質）；半對半錯——共用品是「非競爭」而非「有競爭」；或把共用品與有價值物品（merit good）概念混淆。",
+    "explanationEn": "Non-rivalry (one person's viewing doesn't reduce others') plus non-excludability (hard to stop non-payers) = a public good. Free access creates the free-rider problem, so the market under-provides and government typically supplies it. Traps: assuming public funding makes it a private good (the funder doesn't define the good); the half-true 'rival' claim (public goods are non-rival); or confusing a public good with a merit good.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Original cross-unit item; term 共用品 enforced (not 公共財).",
+      "cross_unit": ["public goods", "market failure", "role of government"],
+      "bilingual": true,
+      "trap_level": 3,
+      "source": "econ-crossunit-topic-sourced"
+    }
+  },
+  {
+    "id": "econ-cu-04",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "跨單元（機會成本・比較優勢・貿易得益）",
+    "difficulty": "hard",
+    "question": "甲、乙兩地各用相同資源，每日最多可生產：甲地 —— 米 20 單位 或 布 10 單位；乙地 —— 米 12 單位 或 布 12 單位。就專業化與貿易，下列何者正確？",
+    "questionEn": "Using the same resources per day, Land A can make either 20 units of rice or 10 units of cloth; Land B can make either 12 units of rice or 12 units of cloth. Regarding specialisation and trade, which is correct?",
+    "options": [
+      "甲地米產量較高，應由甲地同時生產米和布",
+      "乙地應專門生產米，因為米較有價值",
+      "甲地生產布的機會成本（1 布 = 2 米）較乙地（1 布 = 1 米）低",
+      "甲地專門生產米、乙地專門生產布，按比較優勢貿易可增加總產出"
+    ],
+    "optionsEn": [
+      "Land A makes more rice, so Land A should make both rice and cloth",
+      "Land B should specialise in rice because rice is more valuable",
+      "Land A's opportunity cost of cloth (1 cloth = 2 rice) is lower than Land B's (1 cloth = 1 rice)",
+      "Land A specialises in rice and Land B in cloth; trading by comparative advantage raises total output"
+    ],
+    "correctIndex": 3,
+    "explanation": "機會成本：甲地 1 布 = 2 米（20÷10），乙地 1 布 = 1 米（12÷12）——乙地生產布的機會成本較低，應專門生產布。反過來，甲地 1 米 = 0.5 布，乙地 1 米 = 1 布——甲地生產米的機會成本較低，應專門生產米。各自按比較優勢專業化再貿易，總產出增加。常見扣分陷阱：以「絕對產量」判斷（絕對優勢謬誤）；用主觀「價值」決定分工；或把機會成本方向計反（甲地生產布的機會成本其實較高）。",
+    "explanationEn": "Opportunity cost: Land A, 1 cloth = 2 rice (20÷10); Land B, 1 cloth = 1 rice (12÷12) — B's opportunity cost of cloth is lower, so B makes cloth. Conversely A's opportunity cost of rice (0.5 cloth) is below B's (1 cloth), so A makes rice. Specialising by comparative advantage then trading raises total output. Traps: judging by absolute output (absolute-advantage fallacy); using subjective 'value'; or reversing the opportunity-cost comparison.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Original cross-unit item; numbers chosen so comparative advantage differs from absolute advantage.",
+      "cross_unit": ["opportunity cost", "comparative advantage", "gains from trade"],
+      "bilingual": true,
+      "trap_level": 4,
+      "source": "econ-crossunit-topic-sourced"
+    }
+  },
+  {
+    "id": "econ-cu-05",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "跨單元（通脹・名義與實質・購買力）",
+    "difficulty": "intermediate",
+    "question": "阿強今年的名義工資上升 5%，但同期通脹率為 8%。就他的實質工資與購買力，下列何者正確？",
+    "questionEn": "Keung's nominal wage rose 5% this year, while inflation over the same period was 8%. Which is correct about his real wage and purchasing power?",
+    "options": [
+      "實質工資下跌約 3%，購買力減弱",
+      "實質工資上升 5%，購買力增強",
+      "實質工資上升約 13%",
+      "名義工資上升即代表生活水平改善"
+    ],
+    "optionsEn": [
+      "Real wage falls by about 3%; purchasing power weakens",
+      "Real wage rises 5%; purchasing power strengthens",
+      "Real wage rises by about 13%",
+      "A higher nominal wage means living standards have improved"
+    ],
+    "correctIndex": 0,
+    "explanation": "實質工資變動 ≈ 名義工資變動 − 通脹率 = 5% − 8% = −3%，即購買力下跌約 3%。常見扣分陷阱：只看名義工資升 5% 就以為購買力增強；把兩個百分比相加（5% + 8% = 13%）而非相減；或以為名義工資上升就必然代表生活水平改善，忽略物價變化。",
+    "explanationEn": "Change in real wage ≈ change in nominal wage − inflation = 5% − 8% = −3%, so purchasing power falls about 3%. Traps: reading only the 5% nominal rise; adding the two percentages (5% + 8% = 13%) instead of subtracting; or assuming a higher nominal wage must mean a better living standard, ignoring prices.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Original cross-unit item written from DSE syllabus concepts; percentages internal to the problem, not asserted official statistics.",
+      "cross_unit": ["inflation", "nominal vs real", "purchasing power"],
+      "bilingual": true,
+      "trap_level": 3,
+      "source": "econ-crossunit-topic-sourced"
+    }
+  }
+]
