@@ -1,0 +1,156 @@
+[
+  {
+    "id": "bafs-07",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "合夥會計（盈利分撥）",
+    "difficulty": "intermediate",
+    "question": "阿明與阿珊合夥經營一間網店，本年度淨利潤為 \\$150,000。分撥協議：阿明可獲年薪 \\$20,000（阿珊無薪金）；雙方按年初資本 10% 計資本利息（阿明資本 \\$150,000、阿珊資本 \\$100,000）；剩餘利潤由兩人平均分配。阿明本年度合共應分得多少？",
+    "questionEn": "Ming and Shan run an online shop as partners. Net profit for the year is \\$150,000. Under the agreement: Ming gets a salary of \\$20,000 (Shan none); both earn 10% interest on opening capital (Ming \\$150,000, Shan \\$100,000); the remaining profit is shared equally. What is Ming's total share for the year?",
+    "options": ["\\$67,500", "\\$72,500", "\\$87,500", "\\$75,000"],
+    "optionsEn": ["\\$67,500", "\\$72,500", "\\$87,500", "\\$75,000"],
+    "correctIndex": 2,
+    "explanation": "先扣薪金同資本利息，再分剩餘。資本利息：阿明 \\$150,000×10% = \\$15,000、阿珊 \\$100,000×10% = \\$10,000。剩餘 = 150,000 − 20,000 − 15,000 − 10,000 = \\$105,000，平分後每人 \\$52,500。阿明 = 薪金 20,000 + 利息 15,000 + 剩餘 52,500 = \\$87,500。常見扣分陷阱：漏計自己嘅薪金（得 \\$67,500）、漏計自己嘅資本利息（得 \\$72,500），或索性將淨利潤直接平分（\\$75,000），忽略薪金同利息要先分撥。",
+    "explanationEn": "Deduct salary and interest on capital first, then split the residue. Interest: Ming \\$150,000×10% = \\$15,000; Shan \\$100,000×10% = \\$10,000. Residue = 150,000 − 20,000 − 15,000 − 10,000 = \\$105,000, i.e. \\$52,500 each. Ming = salary 20,000 + interest 15,000 + share 52,500 = \\$87,500. Common traps: omitting one's own salary (\\$67,500) or interest (\\$72,500), or simply halving the net profit (\\$75,000).",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Topic identified from user-supplied mock papers; scenario/numbers/names written fresh from DSE syllabus (topic-sourced, NOT transformed from source problems).",
+      "bilingual": true,
+      "trap_level": 3,
+      "source": "bafs-batch-2-topic-sourced"
+    }
+  },
+  {
+    "id": "bafs-08",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "合夥會計（退伙・重估）",
+    "difficulty": "hard",
+    "question": "陳、李、黃三人合夥，損益分配比例為 3 : 2 : 1。黃君退伙時，資產重估：土地價值上升 \\$40,000，同時呆帳準備需增加 \\$4,000。重估損益按舊比例分配。黃君從今次重估中應分得多少？",
+    "questionEn": "Chan, Lee and Wong are partners sharing profits and losses 3 : 2 : 1. On Wong's retirement, assets are revalued: land rises by \\$40,000 and the provision for doubtful debts must increase by \\$4,000. The revaluation result is shared in the old ratio. What is Wong's share of this revaluation?",
+    "options": ["\\$6,000", "\\$6,667", "\\$36,000", "\\$12,000"],
+    "optionsEn": ["\\$6,000", "\\$6,667", "\\$36,000", "\\$12,000"],
+    "correctIndex": 0,
+    "explanation": "重估損益 = 土地升值 \\$40,000 − 呆帳準備增加 \\$4,000 = \\$36,000（呆帳準備增加係一項損失，要扣）。按舊比例 3 : 2 : 1，黃君佔 1/6，即 36,000 × 1/6 = \\$6,000。常見扣分陷阱：漏咗扣呆帳準備、淨用 40,000 × 1/6 = \\$6,667；將成筆 \\$36,000 全歸退伙人；或錯將重估利潤除以「3 個人」（\\$12,000）而非按比例。",
+    "explanationEn": "Revaluation result = land gain \\$40,000 − increase in provision for doubtful debts \\$4,000 = \\$36,000 (the higher provision is a loss). In the old ratio 3 : 2 : 1, Wong takes 1/6 = 36,000 × 1/6 = \\$6,000. Common traps: ignoring the provision and using 40,000 × 1/6 = \\$6,667; giving the whole \\$36,000 to the retiree; or dividing by 3 partners (\\$12,000) instead of by ratio.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Topic identified from user-supplied mock papers; scenario/numbers/names written fresh from DSE syllabus (topic-sourced, NOT transformed from source problems).",
+      "bilingual": true,
+      "trap_level": 4,
+      "source": "bafs-batch-2-topic-sourced"
+    }
+  },
+  {
+    "id": "bafs-09",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "銀行往來調節表",
+    "difficulty": "intermediate",
+    "question": "某小店現金簿的銀行結餘為借方 \\$18,000。核對銀行月結單後，發現以下項目尚未在現金簿入帳：銀行手續費 \\$200、自動轉帳繳付水電費 \\$800、銀行代收利息 \\$500。更正後的現金簿結餘應為多少？",
+    "questionEn": "A shop's cash book shows a debit bank balance of \\$18,000. On checking the bank statement, these items have not yet been recorded in the cash book: bank charges \\$200, a direct debit for utilities \\$800, and interest collected by the bank \\$500. What is the corrected cash book balance?",
+    "options": ["\\$16,500", "\\$17,500", "\\$18,300", "\\$17,000"],
+    "optionsEn": ["\\$16,500", "\\$17,500", "\\$18,300", "\\$17,000"],
+    "correctIndex": 1,
+    "explanation": "只有「現金簿未入帳」嘅項目先更正現金簿：扣手續費 \\$200、扣自動轉帳 \\$800、加代收利息 \\$500，即 18,000 − 200 − 800 + 500 = \\$17,500。常見扣分陷阱：將代收利息當扣減（得 \\$16,500）；漏咗自動轉帳（得 \\$18,300）；或漏咗代收利息（得 \\$17,000）。留意：未過帳支票同在途存款只影響「現金簿 vs 銀行結單」嘅調節，唔會更正現金簿本身。",
+    "explanationEn": "Only items not yet in the cash book adjust it: less charges \\$200, less direct debit \\$800, add interest \\$500 = 18,000 − 200 − 800 + 500 = \\$17,500. Common traps: treating interest as a deduction (\\$16,500); missing the direct debit (\\$18,300); or missing the interest (\\$17,000). Note: unpresented cheques and uncredited deposits belong to the bank reconciliation, not to correcting the cash book.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Topic identified from user-supplied mock papers; scenario/numbers/names written fresh from DSE syllabus (topic-sourced, NOT transformed from source problems).",
+      "bilingual": true,
+      "trap_level": 3,
+      "source": "bafs-batch-2-topic-sourced"
+    }
+  },
+  {
+    "id": "bafs-10",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "存貨計價（正常損耗）",
+    "difficulty": "intermediate",
+    "question": "一間便利店購入某貨品 1,000 件，每件成本 \\$50。存放期間預期有 5% 屬正常損耗（自然揮發／破損）。若正常損耗的成本由完好存貨吸收，則每件完好存貨的成本約為多少？",
+    "questionEn": "A convenience store buys 1,000 units of a product at \\$50 each. A 5% normal loss (evaporation/breakage) is expected in storage. If the cost of the normal loss is absorbed by the good units, what is the cost per good unit (to the nearest cent)?",
+    "options": ["\\$50.00", "\\$52.50", "\\$47.50", "\\$52.63"],
+    "optionsEn": ["\\$50.00", "\\$52.50", "\\$47.50", "\\$52.63"],
+    "correctIndex": 3,
+    "explanation": "總成本 = 1,000 × \\$50 = \\$50,000。正常損耗 5% = 50 件，完好存貨 = 950 件。正常損耗成本攤入完好存貨：50,000 ÷ 950 = \\$52.63。常見扣分陷阱：完全唔攤分（仍用 \\$50.00）；誤用「成本 × 1.05」得 \\$52.50；或掉轉方向用「成本 × 0.95」得 \\$47.50。正常損耗屬生產／存貨的無可避免成本，應由完好單位承擔。",
+    "explanationEn": "Total cost = 1,000 × \\$50 = \\$50,000. Normal loss 5% = 50 units, so good units = 950. Absorbing the loss: 50,000 ÷ 950 = \\$52.63. Common traps: no absorption (\\$50.00); using cost × 1.05 (\\$52.50); or cost × 0.95 in the wrong direction (\\$47.50). Normal loss is an unavoidable cost borne by the good units.",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Topic identified from user-supplied mock papers; scenario/numbers/names written fresh from DSE syllabus (topic-sourced, NOT transformed from source problems).",
+      "bilingual": true,
+      "trap_level": 3,
+      "source": "bafs-batch-2-topic-sourced"
+    }
+  },
+  {
+    "id": "bafs-11",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "成本會計（停產決策・邊際成本）",
+    "difficulty": "hard",
+    "question": "某工廠一條生產線每月：售價 \\$100／件、變動成本 \\$75／件、銷量 600 件。該線每月固定成本 \\$20,000，其中 \\$8,000 為不可避免的廠房折舊（即使停產仍要承擔），其餘 \\$12,000 為可避免固定成本。就短期而言，應如何決策？",
+    "questionEn": "A production line each month: selling price \\$100/unit, variable cost \\$75/unit, sales 600 units. Its monthly fixed cost is \\$20,000, of which \\$8,000 is unavoidable depreciation (incurred even if shut) and \\$12,000 is avoidable. In the short run, what should be decided?",
+    "options": [
+      "繼續營運：邊際貢獻 \\$15,000 高於可避免固定成本 \\$12,000，淨保留 \\$3,000",
+      "停止營運：計入總固定成本 \\$20,000 後錄得 \\$5,000 虧損",
+      "停止營運：邊際貢獻只有 \\$15,000，唔足以打和",
+      "繼續營運：因為售價 \\$100 高於變動成本 \\$75"
+    ],
+    "optionsEn": [
+      "Keep running: contribution \\$15,000 exceeds avoidable fixed cost \\$12,000, keeping \\$3,000",
+      "Shut down: after total fixed cost \\$20,000 there is a \\$5,000 loss",
+      "Shut down: contribution of only \\$15,000 cannot break even",
+      "Keep running: because price \\$100 is above variable cost \\$75"
+    ],
+    "correctIndex": 0,
+    "explanation": "邊際貢獻 = (100 − 75) × 600 = \\$15,000。短期停產決策只比較貢獻同「可避免」固定成本：15,000 > 12,000，繼續營運可淨保留 \\$3,000（用嚟抵銷不可避免折舊）。常見扣分陷阱：用「總固定成本 \\$20,000」計出 \\$5,000 虧損就話停產——但 \\$8,000 折舊停產都要俾，唔應納入比較；亦有人結論啱（繼續）但理由錯，只講「售價高於變動成本」而漏咗固定成本分析。",
+    "explanationEn": "Contribution = (100 − 75) × 600 = \\$15,000. A short-run shutdown decision compares contribution only with AVOIDABLE fixed cost: 15,000 > 12,000, so keep running and retain \\$3,000 toward the unavoidable depreciation. Traps: using total fixed \\$20,000 to show a \\$5,000 loss and shutting — but the \\$8,000 depreciation is incurred regardless; or reaching the right conclusion for the wrong reason (price > variable cost, ignoring fixed costs).",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Topic identified from user-supplied mock papers; scenario/numbers/names written fresh from DSE syllabus (topic-sourced, NOT transformed from source problems).",
+      "bilingual": true,
+      "trap_level": 4,
+      "source": "bafs-batch-2-topic-sourced"
+    }
+  },
+  {
+    "id": "bafs-12",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "成本會計（本量利・目標利潤）",
+    "difficulty": "intermediate",
+    "question": "一間手工皂網店：每件售價 \\$80、變動成本 \\$30，每月固定成本 \\$40,000。若店主希望每月達到目標利潤 \\$10,000，需售出多少件？",
+    "questionEn": "A handmade-soap online shop: price \\$80/unit, variable cost \\$30/unit, monthly fixed cost \\$40,000. To reach a monthly target profit of \\$10,000, how many units must be sold?",
+    "options": ["800 件", "625 件", "1,000 件", "1,667 件"],
+    "optionsEn": ["800 units", "625 units", "1,000 units", "1,667 units"],
+    "correctIndex": 2,
+    "explanation": "每件邊際貢獻 = 80 − 30 = \\$50。所需銷量 = (固定成本 + 目標利潤) ÷ 每件貢獻 = (40,000 + 10,000) ÷ 50 = 1,000 件。常見扣分陷阱：只計打和點漏咗目標利潤（40,000 ÷ 50 = 800 件）；用售價 \\$80 而非貢獻 \\$50 做分母（50,000 ÷ 80 ≈ 625 件）；或用變動成本 \\$30 做分母（50,000 ÷ 30 ≈ 1,667 件）。",
+    "explanationEn": "Contribution per unit = 80 − 30 = \\$50. Required sales = (fixed cost + target profit) ÷ contribution = (40,000 + 10,000) ÷ 50 = 1,000 units. Common traps: ignoring the target profit and finding only break-even (40,000 ÷ 50 = 800); dividing by price \\$80 instead of contribution \\$50 (≈ 625); or dividing by variable cost \\$30 (≈ 1,667).",
+    "_agentMeta": {
+      "status": "draft",
+      "pending_human_review": true,
+      "original_authored": true,
+      "not_copied_from_reference": true,
+      "reference_note": "Topic identified from user-supplied mock papers; scenario/numbers/names written fresh from DSE syllabus (topic-sourced, NOT transformed from source problems).",
+      "bilingual": true,
+      "trap_level": 3,
+      "source": "bafs-batch-2-topic-sourced"
+    }
+  }
+]

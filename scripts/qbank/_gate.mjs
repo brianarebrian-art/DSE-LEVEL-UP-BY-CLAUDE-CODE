@@ -38,6 +38,16 @@ function unbalancedDollars(s) {
   return (stripped.match(/\$/g) || []).length % 2 !== 0
 }
 
+// Subjects that use `$` ONLY as a currency sign and NEVER as a LaTeX math delimiter.
+// For these, ANY bare (unescaped) `$` is a bug: KaTeX would enter math mode on it and
+// mangle the text (e.g. "$120,000 … $45" is balanced yet renders the middle as math).
+// So we require `\$` for every currency sign. (Control point — remove a subject here
+// the day it legitimately needs inline `$…$` math.)
+const CURRENCY_ONLY_SUBJECTS = new Set(['bafs', 'economics'])
+function hasBareDollar(s) {
+  return /(?<!\\)\$/.test(String(s))
+}
+
 // The OBJECTIVE gate for one raw draft row. Returns an array of hard errors; empty
 // array = the row is well-formed and compliant enough to be shown to a human for the
 // (subjective) correctness call. Non-empty = auto-rejected, never reaches a human.
@@ -66,9 +76,17 @@ export function gateRow(row, subject) {
   for (const r of TERM_REDLINES) if (r.re.test(blob)) e.push(r.msg)
   if (subject === 'economics') for (const r of ECON_REDLINES) if (r.re.test(blob)) e.push(r.msg)
 
-  // LaTeX hygiene
+  // LaTeX hygiene — every subject: `$…$` math must be balanced
   if (typeof row?.question === 'string' && unbalancedDollars(row.question)) e.push('unbalanced `$` in question (LaTeX)')
   if (Array.isArray(opts)) opts.forEach((o, i) => { if (typeof o === 'string' && unbalancedDollars(o)) e.push(`unbalanced \`$\` in option ${i}`) })
+
+  // Currency-only subjects: forbid ANY bare `$` (must be `\$`) so KaTeX never math-modes money
+  if (CURRENCY_ONLY_SUBJECTS.has(subject)) {
+    const fields = [['question', row?.question], ...(Array.isArray(opts) ? opts.map((o, i) => [`option ${i}`, o]) : []), ['explanation', row?.explanation]]
+    for (const [where, val] of fields) {
+      if (typeof val === 'string' && hasBareDollar(val)) e.push(`unescaped currency \`$\` in ${where} — use \`\\$\` (${subject} has no LaTeX math)`)
+    }
+  }
 
   return e
 }
