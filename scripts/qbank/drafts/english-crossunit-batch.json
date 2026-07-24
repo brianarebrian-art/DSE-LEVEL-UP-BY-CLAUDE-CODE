@@ -1,0 +1,67 @@
+[
+  {
+    "id": "eng-cu-01",
+    "type": "mc",
+    "subject": "english",
+    "topic": "Reading — vocabulary in context + inference",
+    "difficulty": "intermediate",
+    "question": "Read the sentence: “Although the start-up had burned through most of its funding, the founders remained sanguine, confident that the next investor pitch would turn things around.” What does “sanguine” most likely mean here?",
+    "options": ["Angry and bitter", "Exhausted and defeated", "Optimistic and hopeful", "Secretive and guarded"],
+    "correctIndex": 2,
+    "explanation": "「sanguine」要靠上下文推斷：雖然「burned through most of its funding」係負面，但緊接「remained … confident that … would turn things around」顯示創辦人仍然樂觀，故 sanguine = 樂觀、有信心。常見扣分陷阱：被前半句嘅負面詞牽住，揀「exhausted and defeated」，忽略咗「confident」呢個轉折線索——上下文推斷要睇埋 contrast 詞（Although）之後嘅正向描述。",
+    "explanationEn": "“Sanguine” is inferred from context: despite the negative “burned through most of its funding”, the follow-up “remained … confident that … would turn things around” signals optimism, so sanguine = optimistic/hopeful. Trap: being pulled by the earlier negative wording into “exhausted and defeated”, ignoring the “confident” cue — context inference must weigh what follows the contrast word (Although).",
+    "_agentMeta": { "status": "draft", "pending_human_review": true, "original_authored": true, "not_copied_from_reference": true, "cross_unit": ["vocabulary in context", "inference"], "bilingual": true, "trap_level": 3, "source": "english-crossunit-topic-sourced" }
+  },
+  {
+    "id": "eng-cu-02",
+    "type": "mc",
+    "subject": "english",
+    "topic": "Reading — tone / attitude",
+    "difficulty": "hard",
+    "question": "Read the extract: “Yet another ‘revolutionary’ gadget promises to change our lives — just like the last dozen did. One wonders how many more world-changing inventions the world can survive.” The writer's tone is best described as:",
+    "options": ["Sarcastic and sceptical", "Enthusiastic and admiring", "Neutral and factual", "Anxious and fearful"],
+    "correctIndex": 0,
+    "explanation": "語氣線索：把「revolutionary」用引號框住（暗示唔信）、「just like the last dozen did」帶挖苦、反問句「how many more … can survive」屬諷刺誇張 → 語氣係諷刺而懷疑。常見扣分陷阱：把反問句「survive」讀成真係「anxious and fearful」（過度推論），其實作者係借誇張表達不以為然，並非真正恐懼。",
+    "explanationEn": "Tone cues: the scare quotes around “revolutionary” (signalling disbelief), the jab “just like the last dozen did”, and the rhetorical “how many more … can survive” — all sarcastic and sceptical. Trap: reading “survive” literally as “anxious and fearful” (over-inference); the writer is using hyperbole to dismiss the hype, not expressing real fear.",
+    "_agentMeta": { "status": "draft", "pending_human_review": true, "original_authored": true, "not_copied_from_reference": true, "cross_unit": ["tone", "rhetorical device", "inference"], "bilingual": true, "trap_level": 4, "source": "english-crossunit-topic-sourced" }
+  },
+  {
+    "id": "eng-cu-03",
+    "type": "mc",
+    "subject": "english",
+    "topic": "Reading — main idea vs supporting detail",
+    "difficulty": "intermediate",
+    "question": "Read the passage: “A recent study followed 500 teenagers over two years. Those who slept at least eight hours scored higher in memory tests. The researchers concluded that adequate sleep, more than extra study hours, best supports exam performance.” Which of the following is the MAIN idea?",
+    "options": ["The study followed 500 teenagers over two years", "Sleeping eight hours improves memory test scores", "Teenagers generally do not study enough", "Adequate sleep supports exam performance more than extra study hours"],
+    "correctIndex": 3,
+    "explanation": "主旨通常係作者/研究得出嘅「結論」，即最後一句：足夠睡眠比額外溫習時間更有助考試表現。常見扣分陷阱：揀「500 名青少年、兩年」或「睡八小時提升記憶測試分數」——呢啲係支持細節（method / evidence），唔係主旨；「青少年普遍溫得唔夠」則係文中冇提及嘅過度推論。分辨主旨 vs 細節：問「呢段最想我記住咩」。",
+    "explanationEn": "The main idea is usually the writer's/researchers' conclusion — the last sentence: adequate sleep supports exam performance more than extra study hours. Traps: choosing “500 teenagers over two years” or “eight hours improves memory scores” — these are supporting details (method/evidence), not the main idea; “teenagers don't study enough” is an over-inference not stated. To separate main idea from detail, ask “what does the passage most want me to take away?”",
+    "_agentMeta": { "status": "draft", "pending_human_review": true, "original_authored": true, "not_copied_from_reference": true, "cross_unit": ["main idea", "supporting detail"], "bilingual": true, "trap_level": 3, "source": "english-crossunit-topic-sourced" }
+  },
+  {
+    "id": "eng-cu-04",
+    "type": "mc",
+    "subject": "english",
+    "topic": "Reading — reference / cohesion",
+    "difficulty": "intermediate",
+    "question": "Read the extract: “The committee rejected the first proposal but revised the second. This surprised many observers, who had expected the opposite.” What does “This” refer to?",
+    "options": ["The first proposal only", "The committee's rejecting the first proposal and revising the second", "The observers' expectations", "The second proposal being rejected"],
+    "correctIndex": 1,
+    "explanation": "指代詞「This」通常指代前一句嘅整個動作／情況：委員會「否決第一份、修訂第二份」。常見扣分陷阱：揀「第二份被否決」——但原文係第二份被「修訂（revised）」而非否決，屬誤讀；亦有人把 This 錯配去「觀察者嘅預期」（下一 clause，唔係 This 指代對象）。解 reference：問「This 令觀察者驚訝——驚訝嘅係邊件事」。",
+    "explanationEn": "The reference word “This” usually points to the whole action/situation in the previous sentence: the committee rejecting the first and revising the second. Trap: choosing “the second proposal being rejected” — but the text says the second was revised, not rejected (a misreading); or mis-attaching “This” to the observers' expectations (which follow, not the referent). To resolve reference, ask “what exactly surprised the observers?”",
+    "_agentMeta": { "status": "draft", "pending_human_review": true, "original_authored": true, "not_copied_from_reference": true, "cross_unit": ["reference", "cohesion", "close reading"], "bilingual": true, "trap_level": 3, "source": "english-crossunit-topic-sourced" }
+  },
+  {
+    "id": "eng-cu-05",
+    "type": "mc",
+    "subject": "english",
+    "topic": "Reading — function of a sentence",
+    "difficulty": "hard",
+    "question": "Read the extract: “Public transport in this city is efficient and affordable. (Compare this with cities where a single taxi ride can cost a day's wage.)” Why does the writer include the sentence in brackets?",
+    "options": ["To criticise taxi drivers", "To suggest the city should raise fares", "To emphasise the city's advantage by contrast", "To share a personal anecdote"],
+    "correctIndex": 2,
+    "explanation": "括號句嘅功能係「對比」：舉出計程車貴到「一日人工」嘅城市，反襯本市交通嘅價廉，從而強調本市優勢。常見扣分陷阱：把它讀成「批評司機」或「建議加價」（過度推論，文中無此意圖）；判斷句子功能要問「作者放呢句落去，係為咗達到咩效果」。",
+    "explanationEn": "The bracketed sentence functions as a contrast: citing cities where a taxi ride costs a day's wage sets off, by comparison, how affordable this city's transport is — emphasising its advantage. Traps: reading it as “criticising taxi drivers” or “suggesting a fare rise” (over-inference, not the writer's intent). To judge a sentence's function, ask “what effect does the writer want by putting it here?”",
+    "_agentMeta": { "status": "draft", "pending_human_review": true, "original_authored": true, "not_copied_from_reference": true, "cross_unit": ["function of a sentence", "contrast", "authorial purpose"], "bilingual": true, "trap_level": 4, "source": "english-crossunit-topic-sourced" }
+  }
+]

@@ -111,6 +111,76 @@
       "why_students_choose": "混淆打和與目標利潤公式；未緊記分母是『每單位邊際貢獻』",
       "correct_concept": "所需銷量 = (固定成本 + 目標利潤) ÷ 每單位貢獻；貢獻 = 售價 − 變動成本",
       "frequency_estimate": "high", "source": "draft:bafs-12", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "math-err-01", "subject": "math", "units": ["quadratic_function", "optimisation"], "difficulty": "hard", "trap_type": "concept_confusion",
+      "distractor_template": "靠牆圍長方形時，把周長當成四邊都要圍（2(長+闊)=定值），漏咗靠牆嗰邊唔使圍",
+      "why_students_choose": "套用『周長固定求最大面積』的熟練題型，冇留意題目講明一邊靠牆",
+      "correct_concept": "先按題意列面積函數（如 A=x(40−2x)），再用頂點 x=−b/(2a) 求最值",
+      "frequency_estimate": "medium", "source": "draft:math-cu-01", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "math-err-02", "subject": "math", "units": ["percentage_change", "area"], "difficulty": "intermediate", "trap_type": "wrong_formula_input",
+      "distractor_template": "長、闊各增 a% 時，把面積變化當成 a%+a%（相加）而非相乘",
+      "why_students_choose": "誤以為百分變化可疊加，忽略面積 = 長 × 闊，兩個因子要相乘",
+      "correct_concept": "面積變化因子 = (1+a%)×(1+a%)；增幅 = 該因子 − 1",
+      "frequency_estimate": "high", "source": "draft:math-cu-02", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "math-err-03", "subject": "math", "units": ["geometric_sequence"], "difficulty": "intermediate", "trap_type": "wrong_formula_input",
+      "distractor_template": "等比數列次方數 off-by-one（如求 4 小時後用 r³ 或 r⁵ 而非 r⁴）",
+      "why_students_choose": "混淆『第 n 項』與『n 段變化』，或起始項算入次方",
+      "correct_concept": "t 段變化後 = 首項 × r^t；t=0 即首項本身",
+      "frequency_estimate": "medium", "source": "draft:math-cu-03", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "math-err-04", "subject": "math", "units": ["trigonometry", "heights_and_distances"], "difficulty": "hard", "trap_type": "omission",
+      "distractor_template": "兩仰角高度題唔聯立兩條 tan 方程，直接用單一算式（如 20√3）",
+      "why_students_choose": "只用其中一個三角關係，未設未知水平距離聯立求解",
+      "correct_concept": "設高 h 與距離 x，列 tan 兩式聯立；或用 h=d÷(cotα−cotβ)",
+      "frequency_estimate": "medium", "source": "draft:math-cu-04", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "math-err-05", "subject": "math", "units": ["exponential_decay", "percentage"], "difficulty": "intermediate", "trap_type": "concept_confusion",
+      "distractor_template": "複合折舊當直線折舊：把每年 20% 三年當成一次過減 60%",
+      "why_students_choose": "把逐年按當前值計的複合變化，誤當成固定金額／固定百分比累加",
+      "correct_concept": "複合折舊 = 原值 ×(1−r)^t；每年基數是上一年結餘，非原值",
+      "frequency_estimate": "high", "source": "draft:math-cu-05", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "eng-err-01", "subject": "english", "units": ["vocabulary_in_context", "inference"], "difficulty": "intermediate", "trap_type": "over_inference",
+      "distractor_template": "推斷生字意思時被前半句負面詞牽走，忽略 contrast 詞（Although/but）之後的正向線索",
+      "why_students_choose": "只捉住句子開頭的負面情境，冇讀完轉折後的實際語意",
+      "correct_concept": "上下文推斷要衡量對比連接詞之後的描述，鎖定與生字相配的線索",
+      "frequency_estimate": "high", "source": "draft:eng-cu-01", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "eng-err-02", "subject": "english", "units": ["tone", "inference"], "difficulty": "hard", "trap_type": "over_inference",
+      "distractor_template": "把諷刺／誇張的反問句（如 how many … can survive）讀成字面，判成 anxious/fearful",
+      "why_students_choose": "忽略引號、反問、誇張等諷刺信號，只看個別負面字眼的字面義",
+      "correct_concept": "語氣判斷要綜合 scare quotes、反問、誇張等修辭信號，分辨諷刺 vs 真實情緒",
+      "frequency_estimate": "high", "source": "draft:eng-cu-02", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "eng-err-03", "subject": "english", "units": ["main_idea", "supporting_detail"], "difficulty": "intermediate", "trap_type": "concept_confusion",
+      "distractor_template": "把支持細節（樣本數、單一證據）當成主旨，而非作者的結論句",
+      "why_students_choose": "揀咗最具體、最易認的數字細節，未辨識段落的中心結論",
+      "correct_concept": "主旨通常是作者／研究得出的結論；細節是支撐它的方法與證據",
+      "frequency_estimate": "high", "source": "draft:eng-cu-03", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "eng-err-04", "subject": "english", "units": ["reference", "close_reading"], "difficulty": "intermediate", "trap_type": "wrong_direction",
+      "distractor_template": "解指代詞時誤讀原文動作（如把 revised 讀成 rejected），或錯配去後一 clause",
+      "why_students_choose": "冇仔細核對前句每個動作對應邊個對象，憑印象配對",
+      "correct_concept": "指代詞多指前句整個動作／情況；要逐字核對原文，勿把 revised 當 rejected",
+      "frequency_estimate": "medium", "source": "draft:eng-cu-04", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
+    },
+    {
+      "id": "eng-err-05", "subject": "english", "units": ["authorial_purpose", "function_of_sentence"], "difficulty": "hard", "trap_type": "over_inference",
+      "distractor_template": "判斷句子功能時過度推論成『批評某群體』或『提出建議』，超出作者意圖",
+      "why_students_choose": "見到具體例子就聯想到立場主張，忽略該句其實只作對比／舉例",
+      "correct_concept": "判斷功能要問『作者放呢句想達到咩效果』——常見為對比、舉例、強調，而非表態",
+      "frequency_estimate": "medium", "source": "draft:eng-cu-05", "status": "ai_proposed", "verified_by": "", "date_added": "2026-07-24"
     }
   ]
 }
