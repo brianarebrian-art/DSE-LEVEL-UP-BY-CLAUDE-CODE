@@ -8,6 +8,7 @@ const zh = {
     methodology: '方法論',
     leaderboard: '排行榜',
     about: '關於我們',
+    wall: '影子溫書室',
     startPractice: '開始練習',
   },
   footer: {
@@ -337,6 +338,7 @@ const en: typeof zh = {
     methodology: 'Method',
     leaderboard: 'Leaderboard',
     about: 'About',
+    wall: 'Study Wall',
     startPractice: 'Start Practice',
   },
   footer: {
