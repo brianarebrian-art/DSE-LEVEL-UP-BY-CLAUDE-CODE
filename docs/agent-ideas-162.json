@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "version": "1.0",
+    "generated": "2026-07-23",
+    "companion_doc": "docs/AGENT-IDEAS-162.md",
+    "purpose": "供 Claude Code 讀取並據以改善網站內容的工作項 backlog",
+    "roster_note": "依 dse-level-up-subjects v3.0 名冊按崗位點算；名冊宣稱 162 崗位，實際具名為 160（含 George Au-Yeung 兼任 CSD 與地理首席）。不虛構員工湊數。",
+    "pain_points": {
+      "P1": "內容不足：變體少、步驟淺、marking scheme 粗糙",
+      "P2": "超綱／失準：大學層級概念、非香港術語、與考評框架脫節"
+    }
+  },
+  "hard_constraints": {
+    "never_auto_commit": "所有題目產出一律寫入 scripts/qbank/drafts/；只有真人經 promote-drafts.mjs 方可入庫",
+    "zero_copyright_infringement": "禁複製或微調任何歷屆試題；一律 Archetype Masking 原創改寫；禁『年份+卷別+題號』組合",
+    "terminology_redlines": {
+      "economics": { "must": ["共用品", "企業家職能"], "banned": ["公共財", "公共物品", "企業家才能", "創業精神", "收入彈性", "交叉彈性", "點彈性"] },
+      "physics": { "rule": "g = 10 m/s²（DSE 慣例）", "banned_pattern": "9.8/9.81 掛加速度單位出現" },
+      "chemistry": { "rule": "RTP 摩爾體積 24 dm³/mol", "banned_pattern": "22.4 掛體積單位出現" },
+      "bafs": { "rule": "2026 起一律直式 Vertical Form 財務報表", "banned": ["T-form", "橫式報表"] },
+      "maths": { "banned": ["偏微分", "洛必達法則", "多重積分"] }
+    },
+    "language_layers": {
+      "academic": "100% 標準書面語或專業英文；禁港式口語",
+      "ui": "可用廣東話，但禁『FAIL』『錯』等打擊字眼"
+    },
+    "difficulty_distribution": "3:5:2（基礎 30% / 中等 50% / 困難 20%）",
+    "no_fabricated_statistics": "禁生成『X% 考生失分』類數據；引用須標明模擬",
+    "explanation_rule": "選項會洗牌，解析一律引內容不引字母（A/B/C/D）",
+    "cost": "守閘／腳本／規則層一律 $0；付費 LLM 生成須人手 gate"
+  },
+  "workflow": [
+    "選定工作項 ID",
+    "讀 target_files 與 acceptance",
+    "實作",
+    "若產出題目 → 寫入 scripts/qbank/drafts/*.json",
+    "跑 npm run qa（term-guard + validate-banks + i18n-guard）",
+    "人手 review-drafts.mjs → promote-drafts.mjs 方可入庫",
+    "更新 status"
+  ],
+  "reusable_assets": {
+    "term_guard": "scripts/qbank/term-guard.mjs",
+    "format_guard": "scripts/qbank/validate-banks.mjs",
+    "objective_gate": "scripts/qbank/_gate.mjs",
+    "i18n_guard": "scripts/i18n-guard.mjs",
+    "agent_evaluator": "lib/agents/evaluator.ts",
+    "agent_generator": "lib/agents/generator.ts",
+    "question_types": "data/questions/types.ts",
+    "parametric_engine": "data/questions/_parametric.ts",
+    "draft_pipeline": ["scripts/qbank/review-drafts.mjs", "scripts/qbank/promote-drafts.mjs"],
+    "official_weakness_data": "Analysis/hkeaa-math-weakness-2023-2025.json"
+  },
+  "priority_work_items": [
+    {
+      "id": "G-01",
+      "title": "科目常數與術語規則抽成共用 rules.json，令 evaluator.ts 與 term-guard.mjs 同步",
+      "pain_point": "P2",
+      "coverage": "全科",
+      "rationale": "目前 BAFS 直式、物理 g=10、化學 24 dm³/mol 等規則只存在於 term-guard.mjs（CI 層），lib/agents/evaluator.ts 未鏡射，兩處 source of truth 造成維護面（憲章 #8）",
+      "target_files": ["scripts/qbank/rules.json", "scripts/qbank/term-guard.mjs", "lib/agents/evaluator.ts"],
+      "acceptance": "同一違規題目在 CI 與 agent 側皆被攔截；規則只需改一處",
+      "effort": "M",
+      "status": "pending"
+    },
+    {
+      "id": "G-02",
+      "title": "干擾項分析卡：每個錯誤選項附成因標籤",
+      "pain_point": "P1",
+      "coverage": "全 MC 科目",
+      "target_files": ["data/questions/types.ts", "components/BlindTestQuestion.tsx", "app/practice/PracticeSession.tsx"],
+      "acceptance": "MC 題可為每個錯誤選項儲存 cause 標籤，並於解析階段顯示",
+      "effort": "M",
+      "status": "pending"
+    },
+    {
+      "id": "G-03",
+      "title": "解析強制欄位 commonPitfalls（常見扣分陷阱）",
+      "pain_point": "P1",
+      "coverage": "全科",
+      "target_files": ["data/questions/types.ts", "scripts/qbank/_gate.mjs"],
+      "acceptance": "缺 commonPitfalls 的題目被客觀閘退回",
+      "effort": "S",
+      "status": "pending"
+    },
+    {
+      "id": "G-04",
+      "title": "M/A/C/L/pp 分項評分結構化",
+      "pain_point": "P1",
+      "coverage": "長題／結構式",
+      "target_files": ["data/questions/types.ts", "components/LongQuestionCard.tsx"],
+      "acceptance": "markingScheme 可拆分為具名分項並於 UI 分項顯示",
+      "effort": "M",
+      "status": "pending"
+    },
+    {
+      "id": "G-05",
+      "title": "母題參數化引擎擴展（correct-by-construction）",
+      "pain_point": "P1",
+      "coverage": "數學／物理／化學／BAFS",
+      "target_files": ["data/questions/_parametric.ts", "data/questions/__tests__/parametric-correctness.test.mts"],
+      "acceptance": "每條母題可生成 ≥8 變體，全部通過反向驗算",
+      "effort": "L",
+      "status": "pending"
+    },
+    {
+      "id": "G-06",
+      "title": "盲抄／原句重疊度偵測",
+      "pain_point": "P1",
+      "coverage": "英文 Paper 3、中文卷三",
+      "target_files": ["lib/grading/overlap.ts", "lib/grading.ts"],
+      "acceptance": "可計算學生輸出與資料檔案的重疊比率並於解析提示改寫",
+      "effort": "M",
+      "status": "pending"
+    },
+    {
+      "id": "G-07",
+      "title": "難度 3:5:2 批次守閘",
+      "pain_point": "P1",
+      "coverage": "全科",
+      "target_files": ["scripts/qbank/rebalancer.mjs"],
+      "acceptance": "批次難度分佈偏離 ±5% 即拒收",
+      "effort": "S",
+      "status": "pending"
+    },
+    {
+      "id": "G-08",
+      "title": "官方公開雷區元數據 _officialWeaknessRef 接入 drafts",
+      "pain_point": "P2",
+      "coverage": "全科",
+      "target_files": ["Analysis/hkeaa-math-weakness-2023-2025.json", "scripts/qbank/drafts/"],
+      "acceptance": "每條 draft 可掛官方公開雷區引用；facility_index 未公開者維持 null，不虛構",
+      "effort": "S",
+      "status": "pending"
+    }
+  ],
+  "subject_index": [
+    { "code": "EXE", "name": "行政管理層", "positions": 2, "batch": 1 },
+    { "code": "CHI", "name": "中國語文", "positions": 13, "batch": 1 },
+    { "code": "ENG", "name": "英國語文", "positions": 11, "batch": 1 },
+    { "code": "MAT", "name": "數學（必修 + M1/M2）", "positions": 10, "batch": 1 },
+    { "code": "CSD", "name": "公民與社會發展", "positions": 4, "batch": 1 },
+    { "code": "CHIS", "name": "中國歷史", "positions": 6, "batch": 2 },
+    { "code": "WHIS", "name": "世界歷史", "positions": 5, "batch": 2 },
+    { "code": "GEO", "name": "地理", "positions": 6, "batch": 2 },
+    { "code": "ECON", "name": "經濟", "positions": 7, "batch": 2 },
+    { "code": "CLIT", "name": "中國文學", "positions": 6, "batch": 2 },
+    { "code": "ELIT", "name": "英語文學", "positions": 7, "batch": 2 },
+    { "code": "ERS", "name": "倫理與宗教", "positions": 5, "batch": 2 },
+    { "code": "THS", "name": "旅遊與款待", "positions": 6, "batch": 2 },
+    { "code": "PHY", "name": "物理", "positions": 7, "batch": 3 },
+    { "code": "CHEM", "name": "化學", "positions": 7, "batch": 3 },
+    { "code": "BIO", "name": "生物", "positions": 7, "batch": 3 },
+    { "code": "SCI", "name": "科學（組合／綜合）", "positions": 6, "batch": 3 },
+    { "code": "BAFS", "name": "企業、會計與財務概論", "positions": 8, "batch": 4 },
+    { "code": "ICT", "name": "資訊及通訊科技", "positions": 8, "batch": 4 },
+    { "code": "DAT", "name": "設計與應用科技", "positions": 6, "batch": 4 },
+    { "code": "TL", "name": "科技與生活", "positions": 7, "batch": 4 },
+    { "code": "VA", "name": "視覺藝術", "positions": 5, "batch": 4 },
+    { "code": "MUS", "name": "音樂", "positions": 6, "batch": 4 },
+    { "code": "PE", "name": "體育", "positions": 6, "batch": 4 }
+  ],
+  "id_convention": {
+    "pattern": "[SUBJECT]-[LEVEL][N][IDEA]",
+    "level": { "C": "科目首席", "P": "卷別助手", "Q": "題型助理" },
+    "idea": { "A": "Idea 1 內容不足", "B": "Idea 2 超綱失準", "C": "Idea 3 題型機制" },
+    "example": "CHI-P1A = 中文卷一助手 Idea 1"
+  },
+  "totals": {
+    "positions_named": 161,
+    "ideas": 483,
+    "batches": 4,
+    "reconciliation": "名冊宣稱 162 崗位（23 首席 + 53 卷別 + 86 題型）；逐一列名點算得 161 個具名崗位（含 George Au-Yeung 兼任 CSD 與地理首席，以崗位計為二、以自然人計為一）。差額 1 源於名冊內部分類計法，未虛構員工湊數。"
+  }
+}
