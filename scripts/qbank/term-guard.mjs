@@ -15,6 +15,16 @@
 //       subjects (chinese*, english*, which legitimately quote colloquial or
 //       literary usage): Cantonese colloquial markers and slang must not
 //       appear in question content.
+//   (4) Subject-scoped term + out-of-syllabus red lines consolidated from the
+//       162-staff content roadmap (2026-07-26). ONLY unambiguous wrong→right
+//       pairs whose wrong form has 0 legitimate use, each scoped to its subject
+//       file so existing correct content never trips (verified against banks):
+//         econ:        公共物品  ✗ → 共用品   ⭕ (Public Good; 公共財 already global)
+//         geography:   天氣化    ✗ → 風化作用 ⭕ (Weathering — not a literal 天氣 rendering)
+//         math/M1/M2:  洛必達 (L'Hôpital) / 偏微分 (partial differentiation) ✗ — out of DSE syllabus
+//       (Terms like MICE / Limited Liability / CAD-CAM in the roadmap name a
+//        correct term but no unambiguous wrong form, so they are NOT gated here —
+//        a ban that false-positives on correct content is worse than no ban.)
 //
 // Usage (from the project root):
 //   node scripts/qbank/term-guard.mjs
@@ -36,11 +46,14 @@ const BANNED_GLOBAL = [
   { re: /期會成本/, fix: '機會成本 (typo)' },
 ]
 
-// (2) out-of-syllabus elasticity — banned in economics files (EDB C&A: NOT required)
+// (2) econ-scoped — out-of-syllabus elasticity (EDB C&A: NOT required) + HK term
 const BANNED_ECON = [
   { re: /收入(需求)?彈性|income[ -]elasticity|income elasticity/i, fix: 'remove — income elasticity is NOT in the DSE Economics syllabus' },
   { re: /交叉彈性|cross[ -](price )?elasticity/i, fix: 'remove — cross elasticity is NOT in the DSE Economics syllabus' },
   { re: /點彈性|point elasticity/i, fix: 'remove — point elasticity is NOT in the DSE Economics syllabus' },
+  // 162-roadmap L28 (Yuna)：Public Good 官方譯「共用品」，唔可以寫「公共物品」
+  //（「公共財」已由 BANNED_GLOBAL 全域攔截）。收窄至 econ 檔，免誤傷他科泛指「公共物品」。
+  { re: /公共物品/, fix: '共用品 (HKEAA term for Public Good — 公共物品 is not the DSE term)' },
 ]
 
 // (3) Cantonese colloquial markers / slang — banned outside the language subjects.
@@ -68,6 +81,17 @@ const BANNED_ECON_BARE_QIYE = {
   re: /(要素[^。]*(?<!家)企業(?!家))|((?<!家)企業(?!家)[^。]*要素)/,
   fix: '生產要素請寫「企業家職能」，唔可以淨寫「企業」',
 }
+// 地理：Weathering 官方譯「風化作用」，嚴禁直譯「天氣化」(162-roadmap L424, Ursula)。
+// 「天氣化」無任何正當用法 → 安全 ban；scope 至 geography 檔。
+const BANNED_GEOGRAPHY = [
+  { re: /天氣化/, fix: '風化作用 (Weathering — 「天氣化」係字面誤譯，非 HKEAA 術語)' },
+]
+// 數學/M1/M2：超綱解法。洛必達法則、偏微分唔喺 DSE 課程 (162-roadmap L218, Victor)。
+// 同 econ 超綱彈性一樣做法：呢啲詞喺 DSE 範圍內無正當出現，安全 ban。
+const BANNED_MATH = [
+  { re: /洛必達|羅必達|l['']?h[oô]pital/i, fix: "remove — L'Hôpital's rule is NOT in the DSE Mathematics syllabus" },
+  { re: /偏微分|偏導(數|函數)|partial (differentiation|derivative)/i, fix: 'remove — partial differentiation is NOT in the DSE Mathematics/M1/M2 syllabus' },
+]
 
 const isLanguageBank = (name) => /^(chinese|english)/.test(name)
 
@@ -86,6 +110,8 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
   const isPhysics = /^physics/.test(file)
   const isChemistry = /^chemistry/.test(file)
   const isBafs = /^bafs/.test(file)
+  const isGeography = /^geography/.test(file)
+  const isMath = /^(math|m1|m2)/.test(file)
   lines.forEach((line, i) => {
     for (const { re, fix } of BANNED_GLOBAL) if (re.test(line)) report(file, i + 1, `banned term → use ${fix}`, line)
     if (isEcon) {
@@ -95,6 +121,8 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
     if (isPhysics) for (const { re, fix } of BANNED_PHYSICS) if (re.test(line)) report(file, i + 1, fix, line)
     if (isChemistry) for (const { re, fix } of BANNED_CHEMISTRY) if (re.test(line)) report(file, i + 1, fix, line)
     if (isBafs) for (const { re, fix } of BANNED_BAFS) if (re.test(line)) report(file, i + 1, fix, line)
+    if (isGeography) for (const { re, fix } of BANNED_GEOGRAPHY) if (re.test(line)) report(file, i + 1, fix, line)
+    if (isMath) for (const { re, fix } of BANNED_MATH) if (re.test(line)) report(file, i + 1, fix, line)
     if (!isLanguageBank(file) && COLLOQUIAL.test(line)) report(file, i + 1, '口語/俗語 — question content must be 標準書面語', line)
   })
 }
