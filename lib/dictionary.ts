@@ -10,6 +10,7 @@ const zh = {
     about: '關於我們',
     wall: '影子溫書室',
     paper: '紙筆戰士',
+    notes: '知識凝結',
     startPractice: '開始練習',
   },
   footer: {
@@ -341,6 +342,7 @@ const en: typeof zh = {
     about: 'About',
     wall: 'Study Wall',
     paper: 'Paper Warrior',
+    notes: 'Notes',
     startPractice: 'Start Practice',
   },
   footer: {
