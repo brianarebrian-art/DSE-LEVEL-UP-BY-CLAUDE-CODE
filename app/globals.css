@@ -123,6 +123,15 @@ html {
   body {
     background: #ffffff !important;
   }
+  /* Light-first（2026-07-22 §3 遷移）之後每頁自己包一層 `min-h-screen bg-[#FAFAF8]`
+     外殼 —— 呢條 print reset 原本淨係識暗色時代嘅 class，漏咗佢。用戶一剔「背景圖形」
+     就成張 A4 印住米色底（嘥墨 + 唔專業）。全頁外殼喺紙上一律純白。
+     ⚠️ 唔可以寫 `[class*="bg-[#FAFAF8]"]` —— Tailwind v4 嘅 Lightning CSS 頂唔順
+     attribute selector 內嵌套方括號，會【靜靜雞掉走成條規則】（實測 served CSS 少咗
+     一條 class*= selector）。用冇方括號嘅 class selector 先穩陣。 */
+  .min-h-screen {
+    background: #ffffff !important;
+  }
   body,
   body * {
     color: #0f172a !important;
