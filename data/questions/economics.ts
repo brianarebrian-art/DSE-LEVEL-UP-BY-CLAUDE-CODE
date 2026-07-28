@@ -1,6 +1,7 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 import { economicsHellQuestions, economicsHellTopics } from './economics-hell'
+import { economicsBankTopics } from './economics-bank'
 
 // HKDSE Economics (Micro + Macro) — 120 bilingual, application/analysis level.
 const q = makeQ('economics')
@@ -892,3 +893,5 @@ export const economicsTopics: Topic[] = topicList([
   { topic: T.trade, fw: FW.intl, count: trade.length },
 ])
 economicsTopics.push(...economicsHellTopics)
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+economicsTopics.push(...economicsBankTopics)

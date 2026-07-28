@@ -91,5 +91,17 @@ export interface Topic {
   framework: string
   frameworkEn?: string // English framework label (falls back to framework when absent)
   emoji: string
+  /**
+   * 該課題的真實題數。
+   *
+   * ⚠️ 此數值由 `getSubjectTopics()` 於讀取時【按真實題庫即時計算】；curated
+   * `*Topics` 陣列中所寫的值一律被覆蓋、不具效力，毋須人手維護。
+   *
+   * 理由：此數字為【用戶可見】內容（/subjects/[subject] 及 /paper-warrior 均有
+   * 顯示），而人手維護的數值早已與題庫脫節 —— 2026-07-28 稽核發現 13 項不符，
+   * 其中 math quadratic_equations 宣告 22 而實際為 278。向學生顯示失實數字
+   * 有違「不虛構數據」原則，故改為衍生，恆常準確，新增試題亦無須另行修改。
+   * （執行 `node scripts/qbank/topic-coverage.mjs` 可查看實況。）
+   */
   count: number
 }

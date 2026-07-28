@@ -3,6 +3,7 @@ import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from '.
 
 // HKDSE Business, Accounting & Financial Studies — 120 bilingual.
 import { bafsHellQuestions, bafsHellTopics } from './bafs-hell'
+import { bafsBankTopics } from './bafs-bank'
 
 const q = makeQ('bafs')
 
@@ -727,3 +728,5 @@ export const bafsTopics: Topic[] = topicList([
   { topic: T.personal, fw: FW.concept, count: personal.length },
 ])
 bafsTopics.push(...bafsHellTopics)
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+bafsTopics.push(...bafsBankTopics)

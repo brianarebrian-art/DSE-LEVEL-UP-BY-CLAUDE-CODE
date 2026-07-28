@@ -1,6 +1,7 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 import { physicsHellQuestions, physicsHellTopics } from './physics-hell'
+import { physicsBankTopics } from './physics-bank'
 
 // HKDSE Physics — 120-question bilingual bank. Parametrised numeric generators
 // (answers code-computed) + curated conceptual items. Units are language-neutral.
@@ -342,3 +343,5 @@ export const physicsTopics: Topic[] = topicList([
   { topic: T.radioactivity, fw: FW.decay, count: radio.length },
 ])
 physicsTopics.push(...physicsHellTopics)
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+physicsTopics.push(...physicsBankTopics)

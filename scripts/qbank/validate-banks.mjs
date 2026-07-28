@@ -52,9 +52,18 @@ function transpile(absPath) {
   }).outputText
 }
 async function loadBank(file, exportName) {
-  // _parametric is the shared runtime dep; transpile it once next to the bank.
-  writeFileSync(join(TMP, '_parametric.mjs'), transpile(join(ROOT, 'data/questions/_parametric.ts')))
-  const js = transpile(join(ROOT, file)).replace(/from ['"]\.\/_parametric['"]/g, "from './_parametric.mjs'")
+  // Shared runtime deps of a bank file; transpile them once next to the bank.
+  //   _parametric — createBank / formatting helpers (every bank)
+  //   _builder    — topicList, used since 2026-07-28 so each bank exports its own
+  //                 課題清單 (see the topic-coverage audit); without this the
+  //                 import would dangle and every bank "failed to load".
+  for (const dep of ['_parametric', '_builder']) {
+    writeFileSync(join(TMP, `${dep}.mjs`), transpile(join(ROOT, `data/questions/${dep}.ts`)))
+  }
+  const js = transpile(join(ROOT, file)).replace(
+    /from ['"]\.\/(_parametric|_builder)['"]/g,
+    "from './$1.mjs'",
+  )
   const out = join(TMP, file.replace(/[/.]/g, '_') + '.mjs')
   writeFileSync(out, js)
   const mod = await import('file://' + out)

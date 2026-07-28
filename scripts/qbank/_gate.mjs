@@ -56,6 +56,15 @@ export function gateRow(row, subject) {
   if (typeof row?.id !== 'string' || !row.id.trim()) e.push('missing/blank id')
   if (row?.type !== 'mc') e.push(`type must be "mc" (got ${JSON.stringify(row?.type)})`)
   if (typeof row?.topic !== 'string' || !row.topic.trim()) e.push('missing/blank topic')
+  // NOTE（2026-07-28 稽核）：`topic` 喺草稿入面一直係【人類可讀標籤】（例如
+  // 「需求變動 vs 需求量變動」），promote 時由 slug() 變成 topic id。中文標籤
+  // slug 完唔會 match 任何已宣告 id ⇒ 條題目變成「孤兒課題」，學生用課題入口
+  // 永遠篩唔到（實測 58 條）。
+  //
+  // 呢度【刻意唔加格式閘】：全部現有草稿（連 21 條等緊人手審嘅）都係用標籤，
+  // 一加就會全部誤殺。正確做法係喺 promote 嗰刻先解析＋驗證 topic id
+  // （見 promote-drafts.mjs），因為嗰刻先係「入庫」。
+  // 實況：node scripts/qbank/topic-coverage.mjs
   if (!(row?.difficulty in DIFFICULTY_MAP)) e.push(`difficulty must be basic|intermediate|hard (got ${JSON.stringify(row?.difficulty)})`)
   if (typeof row?.question !== 'string' || row.question.trim().length < MIN_QUESTION_LEN) e.push('question too short / missing')
 

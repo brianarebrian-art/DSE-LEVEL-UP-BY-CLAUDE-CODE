@@ -1,6 +1,7 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 import { m2HellQuestions, m2HellTopics } from './m2-hell'
+import { m2BankTopics } from './m2-bank'
 
 // HKDSE Mathematics Extended Module 2 (Algebra & Calculus) — 120 bilingual.
 const q = makeQ('m2')
@@ -481,3 +482,5 @@ export const m2Topics: Topic[] = topicList([
   { topic: T.calcapp, fw: FW.model, count: calcapp.length },
 ])
 m2Topics.push(...m2HellTopics)
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+m2Topics.push(...m2BankTopics)

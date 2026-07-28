@@ -1,6 +1,7 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 import { chemistryHellQuestions, chemistryHellTopics } from './chemistry-hell'
+import { chemistryBankTopics } from './chemistry-bank'
 
 // HKDSE Chemistry — 120-question bilingual bank. Mole/concentration/gas-volume
 // generators (answers code-computed) + curated conceptual items.
@@ -571,3 +572,5 @@ export const chemistryTopics: Topic[] = topicList([
   { topic: T.organic, fw: FW.carbon, count: organic.length },
 ])
 chemistryTopics.push(...chemistryHellTopics)
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+chemistryTopics.push(...chemistryBankTopics)

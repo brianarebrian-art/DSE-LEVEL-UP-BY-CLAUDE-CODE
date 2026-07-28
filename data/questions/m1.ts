@@ -1,6 +1,7 @@
 import type { Question, Topic } from './types'
 import { makeQ, topicList, rnd, type Pair, type TopicMeta, type FwMeta } from './_builder'
 import { m1HellQuestions, m1HellTopics } from './m1-hell'
+import { m1BankTopics } from './m1-bank'
 
 // HKDSE Mathematics Extended Module 1 (Calculus & Statistics) — 120 bilingual.
 const q = makeQ('m1')
@@ -467,3 +468,5 @@ export const m1Topics: Topic[] = topicList([
   { topic: T.stats, fw: FW.model, count: stats.length },
 ])
 m1Topics.push(...m1HellTopics)
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+m1Topics.push(...m1BankTopics)

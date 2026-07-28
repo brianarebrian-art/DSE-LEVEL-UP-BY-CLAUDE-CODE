@@ -78,8 +78,24 @@ export function getSubjectQuestions(subjectId: string): Question[] {
   return banks[subjectId]?.questions ?? []
 }
 
+// 課題清單 —— `count` 於此按真實題庫即時計算，覆蓋 curated 陣列中人手維護、
+// 已與題庫脫節的數值（見 types.ts `Topic.count` 的說明）。
+// 每科只計算一次並快取：題庫為靜態 import，同一 process 內不會變動。
+const topicCache = new Map<string, Topic[]>()
+
 export function getSubjectTopics(subjectId: string): Topic[] {
-  return banks[subjectId]?.topics ?? []
+  const cached = topicCache.get(subjectId)
+  if (cached) return cached
+
+  const bank = banks[subjectId]
+  if (!bank) return []
+
+  const counts = new Map<string, number>()
+  for (const q of bank.questions) counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
+
+  const withRealCounts = bank.topics.map((t) => ({ ...t, count: counts.get(t.id) ?? 0 }))
+  topicCache.set(subjectId, withRealCounts)
+  return withRealCounts
 }
 
 export function hasQuestions(subjectId: string): boolean {

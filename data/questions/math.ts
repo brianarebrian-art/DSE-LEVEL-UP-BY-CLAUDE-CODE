@@ -1,4 +1,5 @@
 import type { Question, Topic } from './types'
+import { mathBankTopics } from './math-bank'
 
 // ───────────────────────────────────────────────────────────────────────────
 // HKDSE Mathematics（必修部分）— 120-question bilingual bank.
@@ -659,3 +660,5 @@ export const mathTopics: Topic[] = [
   { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 23 },
   { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 12 },
 ]
+// 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
+mathTopics.push(...mathBankTopics)

@@ -1,3 +1,5 @@
+import type { Topic } from './types'
+import { topicList } from './_builder'
 import type { Question } from './types'
 import { createBank, n, round, type TopicMeta, type FwMeta } from './_parametric'
 
@@ -184,3 +186,15 @@ for (let x0 = 1; x0 <= 5; x0++) {
   })
 
 export const m2BankQuestions: Question[] = bank
+
+// ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
+// 本題庫所用的 topic id 從未登記於科目的 *Topics 清單，令相關試題雖然存在於
+// 題庫，學生卻無法經課題入口（/practice?topic=、/subjects 課題標籤、/notes）
+// 篩選得到。現依 *-hell.ts 的既有慣例，由題庫自行匯出課題，再於科目檔案
+// push 併入：T/FW 已在上方定義，毋須兩處重複維護，日後新增題目族亦自動登記。
+// `count` 於 getSubjectTopics() 讀取時按真實題數計算，此處填 0 僅作佔位
+// （見 types.ts 的說明）。
+export const m2BankTopics: Topic[] = topicList([
+  { topic: T.complex, fw: FW.algebra, count: 0 },
+  { topic: T.systems, fw: FW.algebra, count: 0 },
+])
