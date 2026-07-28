@@ -9,6 +9,7 @@ const zh = {
     leaderboard: '排行榜',
     about: '關於我們',
     wall: '影子溫書室',
+    paper: '紙筆戰士',
     startPractice: '開始練習',
   },
   footer: {
@@ -339,6 +340,7 @@ const en: typeof zh = {
     leaderboard: 'Leaderboard',
     about: 'About',
     wall: 'Study Wall',
+    paper: 'Paper Warrior',
     startPractice: 'Start Practice',
   },
   footer: {

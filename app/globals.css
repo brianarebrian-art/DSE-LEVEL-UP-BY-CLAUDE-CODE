@@ -151,6 +151,18 @@ html {
   .rounded-xl {
     break-inside: avoid;
   }
+
+  /* 5 — 紙筆戰士（/paper-warrior）：卷面本身唔要螢幕上嗰個卡片外框／內距，
+     等 A4 邊距由 @page 話事；每題唔准跨頁斷開，作答欄先唔會同題目分家。 */
+  .paper-sheet {
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  .paper-q {
+    break-inside: avoid;
+  }
 }
 
 /* ───────────────────────────────────────────────────────────────────────────

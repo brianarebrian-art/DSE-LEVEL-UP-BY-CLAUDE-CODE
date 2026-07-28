@@ -14,10 +14,11 @@ import { useT, useLocale } from '@/lib/i18n'
 
 // 排行榜 (leaderboard) removed 2026-07-20 — it was a fabricated-student gamification
 // leaderboard (fake ranks + 🔥streak + fake stats), a §禁 gamification + §禁虛構 red line.
-const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'about' | 'wall' }[] = [
+const navLinks: { href: string; key: 'subjects' | 'progress' | 'methodology' | 'about' | 'wall' | 'paper' }[] = [
   { href: '/subjects', key: 'subjects' },
   { href: '/dashboard', key: 'progress' },
   { href: '/methodology', key: 'methodology' },
+  { href: '/paper-warrior', key: 'paper' },
   { href: '/about', key: 'about' },
   { href: '/wall', key: 'wall' },
 ]
