@@ -2,16 +2,22 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
 import LanguageToggle from '@/components/LanguageToggle'
 import { useT, useLocale } from '@/lib/i18n'
 
 // Phase 2 Task 1（Kate/Leo 2026-07-18）：light-first 清晨圖書館。純白底 + #1A1A1A 文字
-// + #008B84 accent（WCAG AA 4.6:1）；實心青掣用 #00726C（白字 4.9:1）。保留全部真結構
-// （5 條 i18n 連結 + LanguageToggle + AuthButton + mobile aria）—— 只轉色，唔動導航內容。
-
+// + #008B84 accent（WCAG AA 4.6:1）；實心青掣用 #00726C（白字 4.9:1）。
+//
+// 2026-07-28 響應式統一（手機 / 平板 / 電腦一套內容）：
+// 橫向導航條由 `md`(768px) 改為 `xl`(1280px) 先顯示。實測natural 闊度——
+// 中文 1,059px、英文 1,210px（7 條連結 + 開始練習 + 語言 + 登入）——所以喺舊
+// 斷點下，768–1210px 之間（即係【全部平板】同細 mon 手提電腦）啲中文標籤會斷成
+// 兩行（「我的進 度」「影子溫書 室」），排版爛晒。而家凡係唔夠位就一律出漢堡選單，
+// 而選單內容同橫向條【完全一樣】：7 條連結 + 開始練習 + 語言切換 + Google 登入。
+//
 // 排行榜 (leaderboard) removed 2026-07-20 — it was a fabricated-student gamification
 // leaderboard (fake ranks + 🔥streak + fake stats), a §禁 gamification + §禁虛構 red line.
 const navLinks: {
@@ -32,6 +38,23 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const t = useT()
   const { locale } = useLocale()
+  const en = locale === 'en'
+
+  // 轉頁自動收埋（比逐個 Link onClick 可靠：瀏覽器上一頁／程式導航都收到）
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
+  // Esc 收選單（鍵盤用戶要有路出去）
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.06] bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
@@ -39,23 +62,21 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-[#1A1A1A]">
             <BookOpen size={22} className="text-[#008B84]" />
-            <span>
+            <span className="whitespace-nowrap">
               DSE <span className="text-[#008B84]">Level Up</span>
             </span>
           </Link>
         </div>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
+        <div className="hidden xl:flex items-center gap-6">
           {/* P1-3 WCAG：導航鏈接補 44px 觸控高度（navbar 容器 64px 高，視覺不變） */}
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm transition-colors min-h-11 inline-flex items-center px-1 ${
-                pathname === l.href
-                  ? 'text-[#008B84]'
-                  : 'text-[#6B6B6B] hover:text-[#008B84]'
+              className={`text-sm whitespace-nowrap transition-colors min-h-11 inline-flex items-center px-1 ${
+                pathname === l.href ? 'text-[#008B84]' : 'text-[#6B6B6B] hover:text-[#008B84]'
               }`}
             >
               {t.nav[l.key]}
@@ -63,7 +84,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/subjects/math"
-            className="ml-2 min-h-11 inline-flex items-center bg-[#00726C] hover:bg-[#005F5A] text-white font-medium text-sm px-4 py-2 rounded-lg transition-colors"
+            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-[#00726C] hover:bg-[#005F5A] text-white font-medium text-sm px-4 py-2 rounded-lg transition-colors"
           >
             {t.nav.startPractice}
           </Link>
@@ -71,50 +92,60 @@ export default function Navbar() {
           <AuthButton />
         </div>
 
-        {/* Mobile hamburger */}
-        <div className="md:hidden flex items-center gap-3">
+        {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
+        <div className="xl:hidden flex items-center">
           {/* FIX: [C12類] icon-only 掣冇無障礙名，VoiceOver/TalkBack 用戶開唔到選單；
-              順手補 44px 觸控目標（B10 標準）+ aria-expanded */}
+              順手補 44px 觸控目標（B10 標準）+ aria-expanded + aria-controls */}
           <button
-            className="min-h-11 min-w-11 flex items-center justify-center text-[#6B6B6B] hover:text-[#1A1A1A]"
+            className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-[#2D2D2D] hover:text-[#008B84] hover:bg-black/[0.04] transition-colors"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
-            aria-label={
-              locale === 'en'
-                ? open ? 'Close menu' : 'Open menu'
-                : open ? '關閉選單' : '開啟選單'
-            }
+            aria-controls="site-menu"
+            aria-label={en ? (open ? 'Close menu' : 'Open menu') : open ? '關閉選單' : '開啟選單'}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* 選單面板 —— 內容同橫向條完全一致。手機單欄、平板雙欄（唔會拉到成版咁長）。 */}
       {open && (
-        <div className="md:hidden border-t border-black/[0.06] bg-white px-4 pb-4 pt-2 flex flex-col gap-3">
-          {navLinks.map((l) => (
+        <div
+          id="site-menu"
+          className="xl:hidden border-t border-black/[0.06] bg-white px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
+        >
+          <div className="mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+              {navLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={`min-h-11 flex items-center border-b border-black/[0.04] text-sm ${
+                    pathname === l.href ? 'text-[#008B84] font-medium' : 'text-[#2D2D2D] hover:text-[#008B84]'
+                  }`}
+                >
+                  {t.nav[l.key]}
+                </Link>
+              ))}
+            </div>
+
             <Link
-              key={l.href}
-              href={l.href}
+              href="/subjects/math"
               onClick={() => setOpen(false)}
-              className={`py-2 text-sm ${
-                pathname === l.href ? 'text-[#008B84]' : 'text-[#2D2D2D]'
-              }`}
+              className="mt-4 min-h-11 flex items-center justify-center bg-[#00726C] hover:bg-[#005F5A] text-white font-medium text-sm py-2.5 rounded-lg transition-colors"
             >
-              {t.nav[l.key]}
+              {t.nav.startPractice}
             </Link>
-          ))}
-          <Link
-            href="/subjects/math"
-            onClick={() => setOpen(false)}
-            className="bg-[#00726C] text-white font-medium text-sm text-center py-2 rounded-lg"
-          >
-            {t.nav.startPractice}
-          </Link>
-          <div className="pt-1 flex items-center justify-between">
-            <LanguageToggle />
-            <AuthButton onAction={() => setOpen(false)} />
+
+            {/* 語言切換同登入 —— 手機／平板一樣搵得到（之前橫向條斷行時就係呢兩樣最易失蹤） */}
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] pt-2">
+              <div className="flex items-center gap-1">
+                <span className="text-xs text-[#9CA3AF]">{en ? 'Language' : '語言'}</span>
+                <LanguageToggle />
+              </div>
+              <AuthButton onAction={() => setOpen(false)} />
+            </div>
           </div>
         </div>
       )}
