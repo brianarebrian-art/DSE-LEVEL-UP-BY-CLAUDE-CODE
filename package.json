@@ -11,6 +11,7 @@
     "scan:questions": "npx --yes tsx@4.19.2 ./_scan.mts",
     "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts",
     "qa": "node scripts/qbank/term-guard.mjs && node scripts/qbank/validate-banks.mjs && node scripts/i18n-guard.mjs",
+    "term-guard": "node scripts/qbank/term-guard.mjs",
     "qa:i18n": "node scripts/i18n-guard.mjs",
     "qa:budget": "node scripts/budget-guard.mjs",
     "qa:intel": "node scripts/hkeaa-monitor.mjs"
