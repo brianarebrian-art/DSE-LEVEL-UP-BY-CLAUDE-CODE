@@ -46,7 +46,9 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
         onAction?.()
         authSignInGoogle()
       }}
-      className="min-h-11 flex items-center gap-2 text-sm border border-black/[0.12] hover:border-[#008B84] text-[#2D2D2D] hover:text-[#008B84] rounded-lg px-3 py-1.5 transition-colors"
+      // whitespace-nowrap：橫向導航條擠迫時「Google 登入」會斷成兩行，令掣高度
+      // 不一致。同 2026-07-28 導航條修正一致，一律唔准喺條 bar 入面斷行。
+      className="min-h-11 flex items-center gap-2 text-sm whitespace-nowrap border border-black/[0.12] hover:border-[#008B84] text-[#2D2D2D] hover:text-[#008B84] rounded-lg px-3 py-1.5 transition-colors"
     >
       <LogIn size={14} /> {t.auth.signIn}
     </button>

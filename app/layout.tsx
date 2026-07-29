@@ -108,8 +108,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-HK" className="h-full">
-      <body className={`${inter.className} min-h-screen bg-bg-dark text-slate-100`}>
+    // suppressHydrationWarning：下方防閃爍腳本會喺 React 水合之前改 data-theme，
+    // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
+    <html lang="zh-HK" className="h-full" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-surface text-ink`}>
+        {/* 防閃爍：必須喺任何內容繪製之前決定主題，否則深色用戶會見到一下白閃。
+            內容與 lib/theme.ts 同一條日出方程 —— 呢度係鏡像副本，因為 inline
+            script 用唔到 import。兩者若有偏差，ThemeProvider 會喺 mount 後以
+            lib/theme.ts 為準覆寫，最多差一格畫面，唔會停留喺錯誤狀態。 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var k='dse-theme',p=localStorage.getItem(k);if(p!=='light'&&p!=='cyber'&&p!=='auto')p='auto';var t=p;if(p==='auto'){var o=new Date(),hk=new Date(o.getTime()+(480+o.getTimezoneOffset())*6e4),s=Date.UTC(hk.getUTCFullYear(),0,0),n=Math.floor((hk.getTime()-s)/864e5),R=Math.PI/180,d=-23.44*Math.cos(R*(360/365)*(n+10)),b=R*(360/364)*(n-81),e=9.87*Math.sin(2*b)-7.53*Math.cos(b)-1.5*Math.sin(b),c=-Math.tan(R*22.3019)*Math.tan(R*d),w=c>1?0:c<-1?180:Math.acos(c)/R,m=12-e/60+(120-114.1742)/15,h=hk.getHours()+hk.getMinutes()/60;t=(h>=m-w/15&&h<m+w/15)?'light':'cyber'}document.documentElement.setAttribute('data-theme',t)}catch(_){document.documentElement.setAttribute('data-theme','light')}})()`,
+          }}
+        />
         {/* 知識圖譜。放於 <body> 起首，令爬蟲毋須等待水合即可讀取。 */}
         <script
           type="application/ld+json"

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
 import LanguageToggle from '@/components/LanguageToggle'
+import ThemeToggle from '@/components/ThemeToggle'
 import { useT, useLocale } from '@/lib/i18n'
 
 // Phase 2 Task 1（Kate/Leo 2026-07-18）：light-first 清晨圖書館。純白底 + #1A1A1A 文字
@@ -88,6 +89,8 @@ export default function Navbar() {
           >
             {t.nav.startPractice}
           </Link>
+          {/* compact 單掣：三段式會令英文版超出 xl 斷點，重新出現標籤斷行 */}
+          <ThemeToggle compact />
           <LanguageToggle />
           <AuthButton />
         </div>
@@ -145,6 +148,13 @@ export default function Navbar() {
                 <LanguageToggle />
               </div>
               <AuthButton onAction={() => setOpen(false)} />
+            </div>
+
+            {/* 主題：選單內出完整三段式（自動／淺色／深色），選項一目了然。
+                同語言切換分開兩行，避免學生以為兩者相關。 */}
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] pt-2">
+              <span className="text-xs text-[#9CA3AF]">{en ? 'Theme' : '主題'}</span>
+              <ThemeToggle />
             </div>
           </div>
         </div>

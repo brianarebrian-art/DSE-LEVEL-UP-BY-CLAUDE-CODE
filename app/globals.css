@@ -19,11 +19,57 @@
   --color-bg-dark-2: #0B1120;
   --color-text-primary: #E2E8F0; /* = slate-200；正文繼續用 slate utilities */
   --color-text-secondary: #94A3B8; /* = slate-400 */
+
+  /* ── 語意主題 token（2026-07-29，Brian 拍板：Light／Cyber 雙主題）──────────
+     全部 utilities 自動生成：bg-surface、text-ink、border-line 等。
+     此處的值 = Light 主題；Cyber 於下方 [data-theme="cyber"] 覆寫同名變數。
+     由於 Tailwind v4 的 arbitrary value（如 bg-[#FAFAF8]）會編譯成字面色碼、
+     無法被變數覆寫，各頁必須改用下列 token 才切換得到（分批遷移中）。 */
+  --color-surface: #FAFAF8;        /* 頁面底色 */
+  --color-surface-raised: #FFFFFF; /* 卡片／浮起面 */
+  --color-surface-sunken: #F5F5F0; /* 凹陷區／次級面 */
+  --color-ink: #1A1A1A;            /* 正文 */
+  --color-ink-soft: #2D2D2D;       /* 次級正文 */
+  --color-ink-muted: #6B6B6B;      /* 輔助說明 */
+  --color-ink-faint: #9CA3AF;      /* 最弱：時間戳、頁尾細字 */
+  --color-accent: #008B84;         /* 連結／強調字 */
+  --color-accent-strong: #00726C;  /* 實心掣底色 */
+  --color-accent-hover: #005F5A;
+  --color-on-accent: #FFFFFF;      /* 實心掣上的字 */
+  --color-line: rgba(0, 0, 0, 0.06);
+  --color-line-strong: rgba(0, 0, 0, 0.12);
+}
+
+/* ── Cyber 主題（深夜霓虹）────────────────────────────────────────────────
+   全部組合實測通過 WCAG AA，正文級別更達 AAA。逐項對比度（vs 底 #0B1120）：
+     ink       #E8ECF4 → 15.90:1  AAA
+     ink-soft  #D4DAE6 → 13.42:1  AAA
+     ink-muted #9CA3AF →  7.42:1  AAA   ← Light 的 #6B6B6B 落深底只有 3.53:1，
+                                          內文不合格，故 Cyber 必須換色
+     accent    #00F5D4 → 13.46:1  AAA
+   ⚠️ 實心掣刻意用【深色字】on 霓虹青（13.46:1）。白字 on #00F5D4 只有 1.40:1，
+      等同睇唔到 —— 呢個係最易踩的陷阱，改色前必須重新計算。
+   霓虹粉 #FF006E（4.91:1）與紫 #9B5DE5（4.56:1）僅達 AA 下限，只可用於大字、
+   圖示與裝飾，不得用作長段正文。 */
+:root[data-theme='cyber'] {
+  --color-surface: #0B1120;
+  --color-surface-raised: #131C2E;
+  --color-surface-sunken: #080C14;
+  --color-ink: #E8ECF4;
+  --color-ink-soft: #D4DAE6;
+  --color-ink-muted: #9CA3AF;
+  --color-ink-faint: #8B94A6;
+  --color-accent: #00F5D4;
+  --color-accent-strong: #00F5D4;
+  --color-accent-hover: #5CFFE4;
+  --color-on-accent: #08121A;
+  --color-line: rgba(255, 255, 255, 0.10);
+  --color-line-strong: rgba(255, 255, 255, 0.18);
 }
 
 body {
-  background-color: var(--color-bg-dark);
-  color: #f1f5f9;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
 }
 
