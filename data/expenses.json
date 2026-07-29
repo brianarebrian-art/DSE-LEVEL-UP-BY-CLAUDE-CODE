@@ -1,5 +1,6 @@
 {
-  "monthly_cap_hkd": 180.81,
-  "note": "只記錄真實已發生支出。現時經常性成本為零：Vercel Hobby (free) + Supabase Free + Google OAuth (free)。",
+  "monthly_cap_usd": 200,
+  "note": "上限由 HK$180.81 改為 US$200（Brian 2026-07-29 拍板）。理由：Vercel／Supabase 免費額度受查詢率限制，一旦超額需升級付費方案，故預留空間。現時經常性成本仍為零：Vercel Hobby (free) + Supabase Free + Google OAuth (free)。只記錄真實已發生支出，不記錄預算或預估。",
+  "scope_note": "此上限屬【平台營運成本】。與憲章「絕對免費原則」並無衝突——該原則管的是不得向學生收費（無付費牆、無 Premium、無學生訂閱制）。升級 Vercel 或 Supabase 付費方案屬支出側，不得據此引入任何學生端收費。",
   "expenses": []
 }

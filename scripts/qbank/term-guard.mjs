@@ -91,6 +91,11 @@ const BANNED_GEOGRAPHY = [
 const BANNED_MATH = [
   { re: /洛必達|羅必達|l['']?h[oô]pital/i, fix: "remove — L'Hôpital's rule is NOT in the DSE Mathematics syllabus" },
   { re: /偏微分|偏導(數|函數)|partial (differentiation|derivative)/i, fix: 'remove — partial differentiation is NOT in the DSE Mathematics/M1/M2 syllabus' },
+  // 2026-07-29 譯名紅線：normal distribution 一律譯「正態分佈」。
+  // 依據：教育局課程發展議會與香港考試及評核局聯合編訂《數學課程及評估指引（中四至中六）》
+  // （2015）—— 全文 145 頁，「正態」見於 6 頁（M1 學習單位 18 至 20），另一譯法 0 頁。
+  // 統一前題庫兩種譯法並存，介面出現兩個意義相同的課題入口。
+  { re: /常態分佈|常態分布|常態變量/, fix: '正態分佈 (normal distribution — 教育局／考評局《數學課程及評估指引》採「正態」，「常態」非香港課程用語)' },
 ]
 
 const isLanguageBank = (name) => /^(chinese|english)/.test(name)

@@ -1,7 +1,11 @@
 // ============================================================================
-// budget-guard.mjs — 預算監控（Benjamin/CFO，$0 紅線）(plain Node ESM, zero dep)
+// budget-guard.mjs — 平台營運成本監控 (plain Node ESM, zero dep)
 // ----------------------------------------------------------------------------
-// 1. 讀取 data/expenses.json（{date, category, amount_hkd}[]），計算本月累計支出：
+// 2026-07-29：上限由 HK$180.81 改為 US$200（Brian 拍板）。Vercel／Supabase 免費額度
+// 受查詢率限制，超額須升級付費方案，故預留空間。此上限屬【支出側】——
+// 憲章「絕對免費原則」管的是不得向學生收費，兩者互不衝突，不得據此引入學生端收費。
+// ----------------------------------------------------------------------------
+// 1. 讀取 data/expenses.json（{date, category, amount_usd}[]），計算本月累計支出：
 //      ≥80% 上限 → ⚠️ 警告；≥100% → 🚨 封殺令（exit 1）
 // 2. 掃描 package.json dependencies，檢查有無已知「付費服務」SDK（Stripe、
 //    SendGrid、AWS、Twilio 等）——發現即紅色警報（exit 1）。
@@ -13,7 +17,7 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
-const { monthly_cap_hkd: CAP, expenses } = JSON.parse(readFileSync(ROOT + 'data/expenses.json', 'utf8'))
+const { monthly_cap_usd: CAP, expenses } = JSON.parse(readFileSync(ROOT + 'data/expenses.json', 'utf8'))
 const pkg = JSON.parse(readFileSync(ROOT + 'package.json', 'utf8'))
 
 const now = new Date()
@@ -21,11 +25,11 @@ const thisMonth = (d) => {
   const x = new Date(d)
   return x.getFullYear() === now.getFullYear() && x.getMonth() === now.getMonth()
 }
-const spent = expenses.filter((e) => thisMonth(e.date)).reduce((s, e) => s + Number(e.amount_hkd || 0), 0)
+const spent = expenses.filter((e) => thisMonth(e.date)).reduce((s, e) => s + Number(e.amount_usd || 0), 0)
 const pct = CAP > 0 ? (100 * spent) / CAP : 0
 
 console.log(`\n${'═'.repeat(60)}\n  Budget Guard — ${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}\n${'═'.repeat(60)}`)
-console.log(`  本月支出：HK$${spent.toFixed(2)} / 上限 HK$${CAP.toFixed(2)}（${pct.toFixed(2)}%）`)
+console.log(`  本月支出：US$${spent.toFixed(2)} / 上限 US$${CAP.toFixed(2)}（${pct.toFixed(2)}%）`)
 
 let fail = 0
 if (pct >= 100) { console.log('  🚨 封殺令：本月支出已達上限，停止一切新增開支！'); fail++ }

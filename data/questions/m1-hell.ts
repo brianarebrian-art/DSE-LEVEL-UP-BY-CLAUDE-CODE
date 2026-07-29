@@ -11,7 +11,7 @@ const C = (zh: string, en: string): Pair => [zh, en]
 
 const T = {
   dist: { id: 'm1_distributions', zh: '概率分佈（高階）', en: 'Probability distributions' },
-  normal: { id: 'm1_normal_calc', zh: '常態分佈計算', en: 'Normal distribution — calculation' },
+  normal: { id: 'm1_normal_calc', zh: '正態分佈計算', en: 'Normal distribution — calculation' },
 } satisfies Record<string, TopicMeta>
 const FW = {
   decompose: { id: 'condition_decomposition', zh: '條件分解', en: 'Condition Decomposition', emoji: '🎯' },
@@ -46,7 +46,7 @@ const dist: Question[] = [
 
 const normal: Question[] = [
   q(id('no'), T.normal, FW.model, 'hard', 2024, 2,
-    C('設 $X \\sim N(50, 10^2)$（常態分佈，平均 50，標準差 10）。已知 $P(Z>1.5)=0.0668$，求 $P(X>65)$。',
+    C('設 $X \\sim N(50, 10^2)$（正態分佈，平均 50，標準差 10）。已知 $P(Z>1.5)=0.0668$，求 $P(X>65)$。',
       'Let $X \\sim N(50, 10^2)$ (normal, mean 50, s.d. 10). Given $P(Z>1.5)=0.0668$, find $P(X>65)$.'),
     [optm('0.0668'), optm('0.9332'), optm('0.5'), optm('0.1587')],
     C('標準化：$Z=\\dfrac{65-50}{10}=1.5$，故 $P(X>65)=P(Z>1.5)=0.0668$。\n\n【陷阱】0.9332 是 $P(Z<1.5)$（互補）；0.5 忽略了標準化；0.1587 對應 $Z=1$（標準差用錯）。',
