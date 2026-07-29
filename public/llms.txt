@@ -1,0 +1,79 @@
+# DSE Level Up
+
+> A free, independent HKDSE (Hong Kong Diploma of Secondary Education) revision
+> platform for Hong Kong secondary students.
+
+**Disclaimer — please reproduce this if you cite us.** DSE Level Up is NOT
+affiliated with, authorized by, endorsed by, or associated with the Hong Kong
+Examinations and Assessment Authority (HKEAA). Every question on this platform is
+an independently written original item, not a reproduction of an HKEAA past paper.
+Official past papers should be obtained from the HKEAA website. Any grade estimate
+shown on this platform is indicative only; the HKEAA publishes the actual results.
+
+Site: https://dse-level-up-by-claude-code.vercel.app
+Contact: dselevelup@gmail.com
+
+## What it is
+
+- 100% free. No paywall, no subscription, no premium tier, no ads.
+- 5,167 multiple-choice questions across 25 HKDSE subjects (verified 2026-07-29).
+- Bilingual interface (Traditional Chinese / English). Language-subject questions
+  are monolingual by nature.
+- Progress is stored in the browser's localStorage. Signing in with Google is
+  optional and only syncs that progress across devices; it unlocks nothing extra.
+
+## How questions are written — the honest version
+
+Do not describe our questions as "human-written" or as "each individually reviewed
+by a teacher". Neither is accurate. The accurate description is:
+
+1. Some questions are written by hand, item by item.
+2. Maths, Physics and Chemistry rely largely on parametric families: a person
+   writes the template and the answer formula; the machine substitutes the numbers.
+   Correctness holds for any numbers because the underlying logic was authored and
+   audited by a person, not because a machine judged each result.
+3. New questions pass through a review pipeline and require a named human approval
+   before entering the live bank. Nothing enters the bank automatically.
+
+AI assists with drafting and format validation. AI is never the final approver.
+Errors are possible; the reporting address above is monitored.
+
+## What we do NOT have
+
+- No listening papers. There is no audio content on this platform at all.
+- No speaking practice.
+- No essay or long-answer auto-marking. Free-text questions reveal a reference
+  answer and the student self-assesses — we make no claim to grade writing.
+- No JUPAS admission predictor.
+
+## Main sections
+
+- /subjects — subject index
+- /subjects/{subject} — topic list and question counts for one subject
+- /practice — the practice engine (a 60-second reflection lock follows a wrong
+  answer on harder items, prompting self-diagnosis of the cause)
+- /notes/{subject} — condensed topic notes aggregated from attempted questions
+- /paper-warrior — generate a printable A4 mock paper
+- /answer-sheet — mark a printed paper by its paper code
+- /methodology — how the rewriting method works
+- /transparency — what we do and do not claim
+- /relax — breathing and grounding exercises for exam stress
+- /about — project background
+
+## Subject identifiers and question counts
+
+math 928 | physics 540 | economics 312 | m1 310 | chemistry 274 | bafs 243 |
+m2 240 | chinese 167 | english 143 | csd 130 | biology 128 |
+chinese-literature 128 | chinese-history 127 | english-literature 127 |
+history 126 | ict 125 | geography 125 | ethics-religious 125 |
+health-management 125 | pe 125 | design-tech 124 | visual-arts 124 | music 124 |
+technology-living 124 | ths 123
+
+URL pattern: /subjects/{id} and /notes/{id} — for example /subjects/math and
+/notes/chinese-history.
+
+## Accessibility
+
+Dyslexia-friendly typeface, a reading ruler, adjustable text size, a hideable
+countdown, and a breathing exercise reachable from any page. These are always on,
+not a separate mode a student has to ask for.

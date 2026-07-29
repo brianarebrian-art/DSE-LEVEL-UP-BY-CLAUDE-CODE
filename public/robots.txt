@@ -1,9 +1,47 @@
+# DSE Level Up — 爬蟲政策
+#
+# 2026-07-29 修正（Brian 拍板）：
+#   舊值 `Sitemap: https://dse-level-up.vercel.app/sitemap.xml` 有兩個問題 ——
+#   ① 網域有誤（實際部署域為 dse-level-up-by-claude-code.vercel.app）；
+#   ② 指向一個當時並不存在的檔案。
+#   域名 dselevelup.hk 尚未購入，故一律沿用現行 Vercel 部署域。
+#   同時移除 `Disallow: /teacher/` —— 老師平台已於 2026-07-14 刪除，路由不再存在。
+#
+# 注意：robots.txt 的 User-agent 群組並不繼承 —— 具名爬蟲只讀屬於自己的群組，
+# 不會套用 `*` 的規則。故下方每個具名群組均自行重複一次 Disallow 清單，
+# 否則具名爬蟲反而會取得比一般爬蟲更寬的存取權。
+
 User-agent: *
 Allow: /
-
-# Server-only + privileged surfaces — nothing here is meant to be crawled or indexed.
 Disallow: /api/
-Disallow: /teacher/
 Disallow: /admin/
+Disallow: /account
+Disallow: /sign-in
+Disallow: /sign-up
 
-Sitemap: https://dse-level-up.vercel.app/sitemap.xml
+# 生成式 AI／答案引擎：明確容許索引，另設 /llms.txt 提供平台摘要。
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /account
+Disallow: /sign-in
+Disallow: /sign-up
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /account
+Disallow: /sign-in
+Disallow: /sign-up
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /account
+Disallow: /sign-in
+Disallow: /sign-up
+
+Sitemap: https://dse-level-up-by-claude-code.vercel.app/sitemap.xml

@@ -5,7 +5,7 @@
       "name": "dse-level-up",
       "runtimeExecutable": "/Users/yunawong0128/Downloads/EdwardAI-Skills-Pack/.node-local/bin/npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "port": 3001
     }
   ]
 }
