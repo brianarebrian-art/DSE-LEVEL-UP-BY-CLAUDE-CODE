@@ -92,13 +92,18 @@ const quadQs = quadParams.map(([r1, r2, y, d], i) => quad(i + 1, r1, r2, y, d))
 
 // ── Topic 2: Calculus — differentiation (power rule, code-built) ─────────────
 // y = a x^3 + b x^2 + c x + d  ⇒  dy/dx = 3a x^2 + 2b x + c
+// 係數格式化：1 與 -1 不應印成「1x^3」「-1x^2」——數學上並無此寫法，
+// 學生會視為題目粗疏。（validate-banks.mjs 的 COSMETIC 規則正是攔截此寫法，
+// 惟該 gate 現時只覆蓋 7 個 parametric bank，並不包括本檔。）
+const coef = (k: number) => (k === 1 ? '' : k === -1 ? '-' : String(k))
+
 function deriv(n: number, a: number, b: number, c: number, year: number, diff: 'easy' | 'medium' | 'hard'): Question {
-  const poly = `${a}x^3${b > 0 ? ` + ${b}x^2` : b < 0 ? ` - ${-b}x^2` : ''}${xTerm(c)}`
+  const poly = `${coef(a)}x^3${b > 0 ? ` + ${coef(b)}x^2` : b < 0 ? ` - ${coef(-b)}x^2` : ''}${xTerm(c)}`
   const d3 = 3 * a, d2 = 2 * b
-  const dy = `${d3}x^2${d2 > 0 ? ` + ${d2}x` : d2 < 0 ? ` - ${-d2}x` : ''}${cTerm(c)}`
-  const wrongA = `${a}x^2${d2 > 0 ? ` + ${d2}x` : d2 < 0 ? ` - ${-d2}x` : ''}${cTerm(c)}`
-  const wrongB = `${d3}x^2${b > 0 ? ` + ${b}x` : b < 0 ? ` - ${-b}x` : ''}${cTerm(c)}`
-  const wrongC = `${d3}x^2${d2 > 0 ? ` + ${d2}x` : d2 < 0 ? ` - ${-d2}x` : ''}`
+  const dy = `${coef(d3)}x^2${d2 > 0 ? ` + ${coef(d2)}x` : d2 < 0 ? ` - ${coef(-d2)}x` : ''}${cTerm(c)}`
+  const wrongA = `${coef(a)}x^2${d2 > 0 ? ` + ${coef(d2)}x` : d2 < 0 ? ` - ${coef(-d2)}x` : ''}${cTerm(c)}`
+  const wrongB = `${coef(d3)}x^2${b > 0 ? ` + ${coef(b)}x` : b < 0 ? ` - ${coef(-b)}x` : ''}${cTerm(c)}`
+  const wrongC = `${coef(d3)}x^2${d2 > 0 ? ` + ${coef(d2)}x` : d2 < 0 ? ` - ${coef(-d2)}x` : ''}`
   return q(`math_deriv_${n}`, T.calculus, FW.rate, diff, year, 1,
     [`設 $y = ${poly}$，求 $\\frac{dy}{dx}$。`, `Let $y = ${poly}$. Find $\\frac{dy}{dx}$.`],
     [
