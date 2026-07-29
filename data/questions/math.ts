@@ -13,7 +13,7 @@ type Pair = [zh: string, en: string]
 
 const T = {
   quadratic: { id: 'quadratic_equations', zh: '二次方程', en: 'Quadratic Equations' },
-  calculus: { id: 'calculus', zh: '微積分', en: 'Calculus' },
+  // `calculus` 已於 2026-07-29 移除 —— 微積分不屬必修部分，見上文 Topic 2 的說明。
   probability: { id: 'probability', zh: '概率', en: 'Probability' },
   functions: { id: 'functions', zh: '函數與建模', en: 'Functions & Modelling' },
   trigonometry: { id: 'trigonometry', zh: '三角函數', en: 'Trigonometry' },
@@ -90,36 +90,16 @@ const quadParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
 ]
 const quadQs = quadParams.map(([r1, r2, y, d], i) => quad(i + 1, r1, r2, y, d))
 
-// ── Topic 2: Calculus — differentiation (power rule, code-built) ─────────────
-// y = a x^3 + b x^2 + c x + d  ⇒  dy/dx = 3a x^2 + 2b x + c
-// 係數格式化：1 與 -1 不應印成「1x^3」「-1x^2」——數學上並無此寫法，
-// 學生會視為題目粗疏。（validate-banks.mjs 的 COSMETIC 規則正是攔截此寫法，
-// 惟該 gate 現時只覆蓋 7 個 parametric bank，並不包括本檔。）
-const coef = (k: number) => (k === 1 ? '' : k === -1 ? '-' : String(k))
-
-function deriv(n: number, a: number, b: number, c: number, year: number, diff: 'easy' | 'medium' | 'hard'): Question {
-  const poly = `${coef(a)}x^3${b > 0 ? ` + ${coef(b)}x^2` : b < 0 ? ` - ${coef(-b)}x^2` : ''}${xTerm(c)}`
-  const d3 = 3 * a, d2 = 2 * b
-  const dy = `${coef(d3)}x^2${d2 > 0 ? ` + ${coef(d2)}x` : d2 < 0 ? ` - ${coef(-d2)}x` : ''}${cTerm(c)}`
-  const wrongA = `${coef(a)}x^2${d2 > 0 ? ` + ${coef(d2)}x` : d2 < 0 ? ` - ${coef(-d2)}x` : ''}${cTerm(c)}`
-  const wrongB = `${coef(d3)}x^2${b > 0 ? ` + ${coef(b)}x` : b < 0 ? ` - ${coef(-b)}x` : ''}${cTerm(c)}`
-  const wrongC = `${coef(d3)}x^2${d2 > 0 ? ` + ${coef(d2)}x` : d2 < 0 ? ` - ${coef(-d2)}x` : ''}`
-  return q(`math_deriv_${n}`, T.calculus, FW.rate, diff, year, 1,
-    [`設 $y = ${poly}$，求 $\\frac{dy}{dx}$。`, `Let $y = ${poly}$. Find $\\frac{dy}{dx}$.`],
-    [
-      [`$${dy}$`, `$${dy}$`], [`$${wrongA}$`, `$${wrongA}$`],
-      [`$${wrongB}$`, `$${wrongB}$`], [`$${wrongC}$`, `$${wrongC}$`],
-    ],
-    [`用冪法則 $\\frac{d}{dx}x^n = n x^{n-1}$，逐項求導得 $${dy}$。常數項求導為 0。`,
-      `By the power rule $\\frac{d}{dx}x^n = n x^{n-1}$, differentiating term by term gives $${dy}$. The constant term differentiates to 0.`])
-}
-const derivParams: [number, number, number, number, 'easy' | 'medium' | 'hard'][] = [
-  [1, -3, 4, 2023, 'medium'], [2, -6, 3, 2022, 'medium'], [1, 2, -5, 2021, 'medium'], [3, -1, 2, 2023, 'medium'],
-  [2, 5, -1, 2020, 'medium'], [1, -4, -7, 2019, 'medium'], [4, 3, 6, 2022, 'medium'], [2, -7, 1, 2021, 'medium'],
-  [3, 2, -4, 2020, 'medium'], [1, -5, 8, 2023, 'medium'],
-]
-const derivQs = derivParams.map(([a, b, c, y, d], i) => deriv(i + 1, a, b, c, y, d))
-
+// ── Topic 2（已遷出）：微積分 ────────────────────────────────────────────────
+// 2026-07-29：原本此處有 10 條以冪法則求導的試題（`math_deriv_1` 至 `math_deriv_10`），
+// 課題標為「微積分」。此屬課程範圍錯置 —— HKDSE 數學【必修部分】的範圍為
+// 數與代數、度量圖形與空間、數據處理，並不包含微積分；求導屬【延伸部分】M1／M2。
+//
+// 此問題由用戶 atee6_pv7003 於 Threads 指出，經核實後成立。
+// 十條試題已整批遷往 `m1.ts`，歸入 M1 現有課題 `differentiation`（微分）。
+// 試題 id 一律保留原值，未有改名 —— 學生本機的錯題重溫排程（`dse_review_done`）
+// 與錯因記錄（reverseLog）均以 id 為鍵，改名會令既有紀錄失效。
+//
 // ── Topic 3: Probability (explicit, hand-verified) ───────────────────────────
 const probQs: Question[] = [
   q('math_prob_1', T.probability, FW.decompose, 'medium', 2023, 1,
@@ -643,14 +623,13 @@ const locusQs: Question[] = [
 ]
 
 export const mathQuestions: Question[] = [
-  ...quadQs, ...derivQs, ...probQs, ...funcQs, ...trigQs, ...statQs,
+  ...quadQs, ...probQs, ...funcQs, ...trigQs, ...statQs,
   ...logQs, ...seqQs, ...pctQs, ...coordQs, ...ineqQs,
   ...circleQs, ...trig3dQs, ...pcQs, ...locusQs,
 ]
 
 export const mathTopics: Topic[] = [
   { id: 'quadratic_equations', zh: '二次方程', en: 'Quadratic Equations', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 22 },
-  { id: 'calculus', zh: '微積分', en: 'Calculus', framework: '變化率直覺', frameworkEn: 'Rate-of-change Intuition', emoji: '📈', count: 10 },
   { id: 'probability', zh: '概率', en: 'Probability', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 11 },
   { id: 'functions', zh: '函數與建模', en: 'Functions & Modelling', framework: '建模能力', frameworkEn: 'Modelling', emoji: '🏗️', count: 10 },
   { id: 'trigonometry', zh: '三角函數', en: 'Trigonometry', framework: '轉化思維', frameworkEn: 'Transformative Thinking', emoji: '🔄', count: 11 },
