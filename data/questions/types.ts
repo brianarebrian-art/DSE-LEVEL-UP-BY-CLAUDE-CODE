@@ -77,12 +77,25 @@ export interface LongQuestion {
   marks: number
 }
 
-// The static subject banks stay MC-only, so `Question` is unchanged — the existing
-// practice engine, loaders and grading keep compiling untouched. Mixed-type surfaces
-// (the new answer cards, the arena) opt in to the wider `AnyQuestion` union.
+// `Question` 為 MC 的別名，保留給明確只處理客觀題的呼叫點（練習流程、答題卡、
+// 卷霸模擬卷、批改與等級預測）。
+//
+// 2026-07-31 更新：題庫本身已放寬為混合題型 —— `getSubjectQuestions()` 現時回傳
+// `AnyQuestion[]`。原註釋所寫「static subject banks stay MC-only」及所提及的
+// 「arena」（該功能連同 arenas／arena_participants／arena_answers 三表已刪除）
+// 均已過時，故一併更正。需要只取 MC 者，請用 `getSubjectMCQuestions()`。
 export type Question = MCQuestion
 export type AnyQuestion = MCQuestion | TextQuestion | LongQuestion
 export type SelfAssessment = 'correct' | 'wrong' | 'full' | 'partial' | 'none'
+
+// 「書寫題」指沒有客觀對錯、由學生自評的題型。之所以獨立命名，是因為全站有一條
+// 硬性規則隨此型別而行：**書寫題永不由機器批改，亦不計入客觀準確率與等級預測**
+// （2026-07-31 Brian 拍板決策 ①）。凡出現此型別，即屬「主觀自評」範疇。
+export type WrittenQuestion = TextQuestion | LongQuestion
+
+export const isMCQuestion = (q: AnyQuestion): q is MCQuestion => q.type === 'mc'
+export const isWrittenQuestion = (q: AnyQuestion): q is WrittenQuestion =>
+  q.type === 'text' || q.type === 'long'
 
 export interface Topic {
   id: string

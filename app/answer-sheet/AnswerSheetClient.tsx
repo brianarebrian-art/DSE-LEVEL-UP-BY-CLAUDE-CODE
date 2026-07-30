@@ -7,7 +7,7 @@ import { ClipboardCheck, Lightbulb, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
-import { getSubjectQuestions, getQuestionsByTopic } from '@/data/questions'
+import { getSubjectMCQuestions, getQuestionsByTopic } from '@/data/questions'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { buildPaper, decodePaperCode, LETTERS, type PaperItem, type PaperSpec } from '@/lib/paper/paper'
 
@@ -51,7 +51,8 @@ export default function AnswerSheetClient() {
       setPaper(null)
       return
     }
-    const pool = spec.topic ? getQuestionsByTopic(spec.subject, spec.topic) : getSubjectQuestions(spec.subject)
+    // 只取 MC：答題卡係客觀批改流程，書寫題（自評制）唔屬於呢個入口
+    const pool = spec.topic ? getQuestionsByTopic(spec.subject, spec.topic) : getSubjectMCQuestions(spec.subject)
     const items = buildPaper(spec, pool)
     if (items.length === 0) {
       setError(true)

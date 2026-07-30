@@ -87,6 +87,12 @@ function renderHtml(rows, subject, srcName) {
   const cards = rows.map((r) => ({
     id: r.id.trim(), topic: r.topic, difficulty: r.difficulty,
     question: r.question, options: r.options, correctIndex: r.correctIndex, explanation: r.explanation,
+    // 非 MC 題型（2026-07-31）：覆核人要睇到參考答案同評分準則先批得落手 ——
+    // 呢兩樣就係學生提交後見到、用嚟自評嘅材料。冇得睇就等於盲批。
+    type: r.type ?? 'mc',
+    referenceAnswer: typeof r.referenceAnswer === 'string' ? r.referenceAnswer : null,
+    markingScheme: typeof r.markingScheme === 'string' ? r.markingScheme : null,
+    suggestedMinutes: Number.isInteger(r.suggestedMinutes) ? r.suggestedMinutes : null,
     // v2026.07.16-FINAL-QUALITY 覆核元數據（如有）：干擾項設計理由 + 錯因 DNA
     trapTypes: Array.isArray(r.trapTypes) ? r.trapTypes : null,
     dnaTag: typeof r.dnaTag === 'string' ? r.dnaTag : null,
@@ -145,9 +151,21 @@ DATA.forEach((d, i) => {
   const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
     ? \` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">\${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>\`
     : '';
-  el.innerHTML = \`<div class="meta"><span class="badge">#\${i+1}</span><span class="badge">\${d.id}</span><span class="badge">\${d.topic}</span><span class="badge">\${diffZh[d.difficulty]||d.difficulty}</span>\${d.dnaTag?\`<span class="badge" style="color:var(--wait)">\${dnaZh[d.dnaTag]||d.dnaTag}</span>\`:''}\${d.mother?\`<span class="badge">模板 \${escape(d.mother)}</span>\`:''}</div>
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = \`<div class="meta"><span class="badge">#\${i+1}</span><span class="badge">\${d.id}</span><span class="badge">\${d.topic}</span><span class="badge">\${diffZh[d.difficulty]||d.difficulty}</span>\${d.type!=='mc'?\`<span class="badge" style="color:var(--accent)">\${typeZh[d.type]||d.type}</span>\`:''}\${d.dnaTag?\`<span class="badge" style="color:var(--wait)">\${dnaZh[d.dnaTag]||d.dnaTag}</span>\`:''}\${d.mother?\`<span class="badge">模板 \${escape(d.mother)}</span>\`:''}</div>
   <div class="q">\${escape(d.question)}</div>
-  <ul>\${d.options.map((o,oi)=>\`<li class="\${oi===d.correctIndex?'correct':''}">\${escape(o)}\${trapTag(oi)}</li>\`).join('')}</ul>
+  \${d.type === 'mc'
+    ? \`<ul>\${d.options.map((o,oi)=>\`<li class="\${oi===d.correctIndex?'correct':''}">\${escape(o)}\${trapTag(oi)}</li>\`).join('')}</ul>\`
+    : \`<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         \${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       \${d.markingScheme ? \`<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>\${escape(d.markingScheme)}</div>\` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ \${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。\${d.suggestedMinutes ? \` · 建議用時 \${d.suggestedMinutes} 分鐘\` : ''}
+       </div>\`}
   <div class="exp">💡 \${escape(d.explanation)}</div>
   <div class="acts"><button class="a" onclick="mark(\${i},'approved')">✅ 通過</button><button class="r" onclick="mark(\${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(\${i},'pending')">⏳ 待定</button></div>\`;
   list.appendChild(el);

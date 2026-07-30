@@ -14,7 +14,7 @@
 //
 // 冇數據就老實講「仲未有」，唔會砌假數。
 
-import type { Question, MCQuestion } from '@/data/questions/types'
+import type { AnyQuestion, MCQuestion } from '@/data/questions/types'
 import type { ReverseLogEntry } from '@/lib/reverseLog'
 import type { TopicStatEntry } from '@/lib/topicStats'
 
@@ -74,7 +74,9 @@ export function trapShape(text: string): string {
     .replace(/\s+/g, '')
 }
 
-function isMC(q: Question): q is MCQuestion {
+// 本檔一早已經有呢個守衛（`Question = MCQuestion` 年代嘅前瞻寫法），
+// 2026-07-31 題庫真正變成混合型之後，佢由「防禦性」變成「必要」。
+function isMC(q: AnyQuestion): q is MCQuestion {
   return q.type === 'mc'
 }
 
@@ -86,7 +88,7 @@ export function buildTopicNote(
   topicId: string,
   label: string,
   emoji: string,
-  questions: Question[],
+  questions: AnyQuestion[],
   reverseLog: ReverseLogEntry[],
   stat: TopicStatEntry | undefined,
 ): TopicNote {

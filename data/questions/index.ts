@@ -1,4 +1,4 @@
-import type { Question, Topic } from './types'
+import type { AnyQuestion, MCQuestion, Question, Topic, WrittenQuestion } from './types'
 import { mathQuestions, mathTopics } from './math'
 import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
@@ -37,10 +37,20 @@ import { csdQuestions, csdTopics } from './csd'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
 
-export type { Question, MCQuestion, Topic, Difficulty } from './types'
+export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
+// 2026-07-31（非 MC 題型接線 Phase 2）：題庫由純 MC 放寬為混合題型。
+//
+// 三個出口，用途不可混淆：
+//   getSubjectQuestions()   —— 全部題目（混合題型）。用於題數統計、課題覆蓋率、SEO 文案。
+//   getSubjectMCQuestions() —— 只取 MC。現有 20 題練習流程專用；該流程讀取 options 與
+//                              correctIndex，混入書寫題會即時出錯。
+//   getWrittenQuestions()   —— 只取 text／long。獨立 ?mode=long 練習專用（決策 ②）。
+//
+// 為何不將 getSubjectQuestions 一律收窄為 MC：題數與課題覆蓋率屬於「共有多少題」的
+// 統計問題，答案應涵蓋所有題型，否則長題目入庫後全站題數會低報。
 interface SubjectBank {
-  questions: Question[]
+  questions: AnyQuestion[]
   topics: Topic[]
 }
 
@@ -74,8 +84,32 @@ const banks: Record<string, SubjectBank> = {
   'technology-living': { questions: technologyLivingQuestions, topics: technologyLivingTopics },
 }
 
-export function getSubjectQuestions(subjectId: string): Question[] {
+/** 該科全部題目（MC + 書寫題）。計數／課題統計用。 */
+export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
   return banks[subjectId]?.questions ?? []
+}
+
+/**
+ * 只取 MC。現有 20 題練習流程（PracticeSession）專用：該流程讀取 `options` 與
+ * `correctIndex`，一旦混入書寫題即會出錯，故於入口先行篩選。
+ */
+export function getSubjectMCQuestions(subjectId: string): MCQuestion[] {
+  return getSubjectQuestions(subjectId).filter((q): q is MCQuestion => q.type === 'mc')
+}
+
+/**
+ * 只取書寫題（text／long）。獨立 `?mode=long` 練習專用。
+ * 此類題目【永不由機器批改】，亦不計入客觀準確率與等級預測（決策 ①）。
+ */
+export function getWrittenQuestions(subjectId: string): WrittenQuestion[] {
+  return getSubjectQuestions(subjectId).filter(
+    (q): q is WrittenQuestion => q.type === 'text' || q.type === 'long',
+  )
+}
+
+/** 該科是否設有書寫題 —— 決定介面是否顯示「長題目練習」入口。 */
+export function hasWrittenQuestions(subjectId: string): boolean {
+  return getWrittenQuestions(subjectId).length > 0
 }
 
 // 課題清單 —— `count` 於此按真實題庫即時計算，覆蓋 curated 陣列中人手維護、
@@ -102,6 +136,10 @@ export function hasQuestions(subjectId: string): boolean {
   return (banks[subjectId]?.questions.length ?? 0) > 0
 }
 
-export function getQuestionsByTopic(subjectId: string, topicId: string): Question[] {
-  return getSubjectQuestions(subjectId).filter((q) => q.topic === topicId)
+/**
+ * 按課題取 MC 題。刻意【只返 MC】：所有呼叫點（練習、答題卡、卷霸）都係走
+ * 客觀批改流程。書寫題要按課題取就用 getWrittenQuestions() 再 filter。
+ */
+export function getQuestionsByTopic(subjectId: string, topicId: string): MCQuestion[] {
+  return getSubjectMCQuestions(subjectId).filter((q) => q.topic === topicId)
 }

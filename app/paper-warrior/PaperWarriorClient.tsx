@@ -6,7 +6,7 @@ import { Printer, FileText, RefreshCw, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
-import { getSubjectQuestions, getSubjectTopics, getQuestionsByTopic } from '@/data/questions'
+import { getSubjectMCQuestions, getSubjectTopics, getQuestionsByTopic } from '@/data/questions'
 import {
   buildPaper,
   encodePaperCode,
@@ -46,7 +46,8 @@ export default function PaperWarriorClient() {
 
   const generate = useCallback(() => {
     const spec: PaperSpec = { subject, topic, size, seed: newSeed() }
-    const pool = topic ? getQuestionsByTopic(subject, topic) : getSubjectQuestions(subject)
+    // 只取 MC：卷霸模擬卷按客觀分數評級，書寫題（自評制）唔計入
+    const pool = topic ? getQuestionsByTopic(subject, topic) : getSubjectMCQuestions(subject)
     const items = buildPaper(spec, pool)
     setPaper(items.length > 0 ? { spec, items } : null)
   }, [subject, topic, size])
