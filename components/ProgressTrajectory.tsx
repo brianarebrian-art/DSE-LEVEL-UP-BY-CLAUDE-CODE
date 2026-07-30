@@ -56,21 +56,21 @@ export default function ProgressTrajectory() {
     : '唔係分數比較，係你自己嘅進步曲線'
 
   return (
-    <section className="rounded-2xl border border-black/[0.06] bg-white p-6 mb-10">
+    <section className="rounded-2xl border border-line bg-surface-raised p-6 mb-10">
       <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
         <div>
-          <div className="text-xs text-[#6B6B6B] mb-1">{title}</div>
-          <div className="text-lg font-medium text-[#1A1A1A]">{subtitle}</div>
+          <div className="text-xs text-ink-muted mb-1">{title}</div>
+          <div className="text-lg font-medium text-ink">{subtitle}</div>
         </div>
         {pts && pts.length >= 2 && (
-          <span className="inline-flex items-center rounded-full border border-[#008B84]/25 bg-[#008B84]/[0.07] px-3 py-1.5 text-xs font-medium text-[#00877F]">
+          <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/[0.07] px-3 py-1.5 text-xs font-medium text-accent">
             {en ? `Last ${pts.length} active days` : `過去 ${pts.length} 個活躍日`}
           </span>
         )}
       </div>
 
       {!pts || pts.length < 2 ? (
-        <div className="py-12 text-center text-sm text-[#6B6B6B]">
+        <div className="py-12 text-center text-sm text-ink-muted">
           {en
             ? 'Practise on two or more days to see your trajectory take shape.'
             : '再多操幾日，你嘅進步曲線就會浮現出嚟。'}

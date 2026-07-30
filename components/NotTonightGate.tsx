@@ -27,18 +27,18 @@ export default function NotTonightGate({ children }: { children: React.ReactNode
   if (asking) {
     const hhmm = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
     return (
-      <div className="min-h-screen flex items-center justify-center px-4 bg-[#FAFAF8]">
+      <div className="min-h-screen flex items-center justify-center px-4 bg-surface">
         <div
           role="dialog"
           aria-modal="true"
           aria-labelledby="ntm-gate-title"
-          className="w-full max-w-sm bg-white border border-black/[0.08] shadow-xl rounded-2xl p-6 text-center"
+          className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center"
         >
           <div className="text-4xl mb-3" aria-hidden>🌙</div>
-          <h1 id="ntm-gate-title" className="text-lg font-medium text-[#1A1A1A] mb-2">
+          <h1 id="ntm-gate-title" className="text-lg font-medium text-ink mb-2">
             {en ? 'Not-tonight mode is on' : '你開咗「今晚唔溫得」'}
           </h1>
-          <p className="text-sm text-[#2D2D2D] leading-relaxed mb-5">
+          <p className="text-sm text-ink-soft leading-relaxed mb-5">
             {en
               ? `It's ${hhmm} — your body needs rest. Sure you want to keep going?`
               : `而家係 ${hhmm}，身體需要休息。確定要繼續？`}
@@ -47,13 +47,13 @@ export default function NotTonightGate({ children }: { children: React.ReactNode
             <button
               onClick={() => router.push('/relax')}
               autoFocus
-              className="w-full min-h-11 bg-[#008B84]/10 text-[#008B84] border border-[#008B84]/30 hover:bg-[#008B84]/20 rounded-xl px-4 py-3 text-sm font-medium transition-all"
+              className="w-full min-h-11 bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 rounded-xl px-4 py-3 text-sm font-medium transition-all"
             >
               {en ? 'Take a break — see you tomorrow' : '唞一唞，聽日再戰'}
             </button>
             <button
               onClick={() => setAsking(false)}
-              className="w-full min-h-11 border border-black/[0.12] text-[#2D2D2D] hover:text-[#008B84] rounded-xl px-4 py-3 text-sm transition-all"
+              className="w-full min-h-11 border border-line-strong text-ink-soft hover:text-accent rounded-xl px-4 py-3 text-sm transition-all"
             >
               {en ? 'I know — keep going' : '我知，繼續溫'}
             </button>

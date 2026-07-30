@@ -21,10 +21,10 @@ export default function OfflineBadge({ className = '' }: { className?: string })
     if (state !== 'synced') return null
     return (
       <span
-        className={`inline-flex items-center gap-1.5 text-xs text-[#9CA3AF] ${className}`}
+        className={`inline-flex items-center gap-1.5 text-xs text-ink-faint ${className}`}
         aria-live="off"
       >
-        <Check size={12} className="text-[#008B84]" />
+        <Check size={12} className="text-accent" />
         {en ? 'Settings synced' : '設定已同步'}
       </span>
     )
@@ -33,7 +33,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
   if (state === 'syncing') {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 text-xs text-[#9CA3AF] ${className}`}
+        className={`inline-flex items-center gap-1.5 text-xs text-ink-faint ${className}`}
         aria-live="off"
       >
         <Loader2 size={12} className="animate-spin motion-reduce:animate-none" />
@@ -45,7 +45,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
   if (state === 'pending') {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 rounded-full border border-black/[0.10] bg-[#F5F5F0] px-3 py-1 text-xs text-[#6B6B6B] ${className}`}
+        className={`inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-surface-sunken px-3 py-1 text-xs text-ink-muted ${className}`}
       >
         <CloudOff size={12} />
         {en
@@ -58,7 +58,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
   // anonymous —— 邀請，唔係要脅。做唔做題完全唔受影響。
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-black/[0.10] bg-[#F5F5F0] px-3 py-1 text-xs text-[#6B6B6B] ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-surface-sunken px-3 py-1 text-xs text-ink-muted ${className}`}
     >
       <Cloud size={12} />
       {en

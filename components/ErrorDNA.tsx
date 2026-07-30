@@ -54,17 +54,17 @@ export default function ErrorDNA() {
   const top = ORDER.reduce((a, b) => (counts[b] > counts[a] ? b : a), 'A' as ReverseCause)
 
   return (
-    <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mb-10">
+    <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
       <div className="flex items-center gap-2.5 mb-1">
-        <Fingerprint size={18} className="text-[#B8860B] shrink-0" />
-        <h3 className="text-lg font-medium text-[#1A1A1A]">{en ? 'Your error fingerprint' : '你嘅錯題指紋'}</h3>
+        <Fingerprint size={18} className="text-gold shrink-0" />
+        <h3 className="text-lg font-medium text-ink">{en ? 'Your error fingerprint' : '你嘅錯題指紋'}</h3>
       </div>
-      <p className="text-[#6B6B6B] text-sm mb-4">
+      <p className="text-ink-muted text-sm mb-4">
         {en ? 'Every self-diagnosed mistake builds your pattern.' : '每次錯因自診都會砌出你獨有嘅錯誤模式。'}
       </p>
 
       {total === 0 ? (
-        <p className="text-sm text-[#6B6B6B] bg-[#F5F5F0] rounded-xl px-4 py-6 text-center">
+        <p className="text-sm text-ink-muted bg-surface-sunken rounded-xl px-4 py-6 text-center">
           {en
             ? 'Practise and run the reverse-cause check after a wrong answer — your error fingerprint will appear here.'
             : '開始練習，答錯後做錯因自診，你嘅錯題指紋就會喺度顯示。'}
@@ -72,7 +72,7 @@ export default function ErrorDNA() {
       ) : (
         <>
           {/* DNA stripes — proportion of each cause */}
-          <div className="h-8 flex rounded-full overflow-hidden mb-4 bg-[#F5F5F0]">
+          <div className="h-8 flex rounded-full overflow-hidden mb-4 bg-surface-sunken">
             {ORDER.map((k) => {
               const pct = (counts[k] / total) * 100
               if (pct === 0) return null
@@ -90,19 +90,19 @@ export default function ErrorDNA() {
           {/* Legend */}
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4">
             {ORDER.map((k) => (
-              <div key={k} className="flex items-center gap-1.5 text-xs text-[#6B6B6B]">
+              <div key={k} className="flex items-center gap-1.5 text-xs text-ink-muted">
                 <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: CAUSE[k].color }} />
                 <span>{CAUSE[k].emoji} {en ? CAUSE[k].en : CAUSE[k].zh}</span>
-                <span className="text-[#9CA3AF]">({counts[k]})</span>
+                <span className="text-ink-faint">({counts[k]})</span>
               </div>
             ))}
           </div>
 
           {/* 連續同類錯因警示（≥3 次） */}
           {streak && (
-            <div className="bg-[#C2185B]/[0.06] rounded-xl px-4 py-3 border-l-2 border-[#C2185B]/50 mb-3">
-              <div className="text-xs text-[#C2185B] font-medium mb-1">{en ? 'Repeat-pattern alert' : '重複模式警示'}</div>
-              <p className="text-sm text-[#2D2D2D] leading-relaxed">
+            <div className="bg-rose/[0.06] rounded-xl px-4 py-3 border-l-2 border-rose/50 mb-3">
+              <div className="text-xs text-rose font-medium mb-1">{en ? 'Repeat-pattern alert' : '重複模式警示'}</div>
+              <p className="text-sm text-ink-soft leading-relaxed">
                 {en
                   ? `Your last ${streak.len} errors were all “${CAUSE[streak.cause].en}”. Stop drilling for a moment and fix the root cause first — otherwise the loop repeats.`
                   : `你最近 ${streak.len} 次錯誤全部係「${CAUSE[streak.cause].zh}」。停一停，先處理呢個根源再操卷 —— 唔係嘅話個循環會一直重複。`}
@@ -111,9 +111,9 @@ export default function ErrorDNA() {
           )}
 
           {/* Diagnosis on the top cause */}
-          <div className="bg-[#F5F5F0] rounded-xl px-4 py-3 border-l-2 border-[#B8860B]/60">
-            <div className="text-xs text-[#B8860B] font-medium mb-1">{en ? 'Pattern read' : '模式診斷'}</div>
-            <p className="text-sm text-[#2D2D2D] leading-relaxed">{en ? CAUSE[top].adviceEn : CAUSE[top].adviceZh}</p>
+          <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-2 border-gold/60">
+            <div className="text-xs text-gold font-medium mb-1">{en ? 'Pattern read' : '模式診斷'}</div>
+            <p className="text-sm text-ink-soft leading-relaxed">{en ? CAUSE[top].adviceEn : CAUSE[top].adviceZh}</p>
           </div>
         </>
       )}

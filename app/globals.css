@@ -38,6 +38,18 @@
   --color-on-accent: #FFFFFF;      /* 實心掣上的字 */
   --color-line: rgba(0, 0, 0, 0.06);
   --color-line-strong: rgba(0, 0, 0, 0.12);
+
+  /* 三個輔助色族。Light 沿用現行值，Cyber 值全部經對比度實測（見下方）。 */
+  --color-gold: #B8860B;          /* 年份／次要標記 */
+  --color-gold-soft: #D4A017;
+  --color-gold-strong: #8A6608;
+  --color-violet: #7C3AED;        /* 課題／框架標記 */
+  --color-violet-strong: #6D28D9;
+  --color-rose: #C2185B;          /* 提醒。憲章禁大紅，故用玫紅而非正紅 */
+  --color-rose-strong: #9D1449;
+  /* 紫色實心底上的字。同 --color-on-accent 同一個道理：Light 下 violet 係深紫用白字，
+     Cyber 下 violet 變淺紫（#B98CF5），白字對比只有 1.6:1，必須反過來用深字。 */
+  --color-on-violet: #FFFFFF;
 }
 
 /* ── Cyber 主題（深夜霓虹）────────────────────────────────────────────────
@@ -65,6 +77,19 @@
   --color-on-accent: #08121A;
   --color-line: rgba(255, 255, 255, 0.10);
   --color-line-strong: rgba(255, 255, 255, 0.18);
+
+  /* 輔助色族的 Cyber 值。Light 原值落深底全部唔合格，必須換色 ——
+     實測（vs #0B1120）：#B8860B 5.79 只達 AA；#7C3AED 3.30【不合格】；
+     #C2185B 3.21【不合格】。以下換值全部 ≥7:1（AAA），因為此三色多用於
+     文字（violet text:26、rose text:23、gold text:45），AA 下限唔夠穩。 */
+  --color-gold: #E8B93A;          /* 10.25:1 AAA */
+  --color-gold-soft: #F5C542;     /* 11.61:1 AAA */
+  --color-gold-strong: #D4A017;   /*  7.93:1 AAA */
+  --color-violet: #B98CF5;        /*  7.29:1 AAA */
+  --color-violet-strong: #9B5DE5; /*  4.56:1 —— 僅 AA，只用於底色／邊框，唔用於正文 */
+  --color-rose: #FF87B8;          /*  8.44:1 AAA */
+  --color-rose-strong: #FF5C9E;   /*  6.52:1 AA —— 同上，非正文用 */
+  --color-on-violet: #1A1024;     /* 深字 on #B98CF5 = 6.6:1 AA（白字只有 1.6:1） */
 }
 
 body {

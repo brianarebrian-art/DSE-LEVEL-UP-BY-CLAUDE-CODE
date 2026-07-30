@@ -581,13 +581,13 @@ export default function PracticeSession({
   // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
   if (justOneDone) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#FAFAF8] text-[#2D2D2D]">
-        <div className="w-full max-w-md bg-white border border-black/[0.06] rounded-2xl p-7 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
+        <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
           <div className="text-3xl mb-3" aria-hidden>🌱</div>
-          <h2 className="text-lg font-medium text-[#1A1A1A] mb-2">
+          <h2 className="text-lg font-medium text-ink mb-2">
             {tr('你今日打開咗嚟，已經好叻。', 'You showed up today. That already counts.')}
           </h2>
-          <p className="text-sm text-[#6B6B6B] leading-relaxed mb-6">
+          <p className="text-sm text-ink-muted leading-relaxed mb-6">
             {tr(
               '做完 1 題就夠喇。想再做就再做，唔想就收工 —— 兩樣都冇問題。',
               'One question is enough. Do another if you feel like it, or stop here — both are fine.',
@@ -596,13 +596,13 @@ export default function PracticeSession({
           <div className="flex flex-col gap-2.5">
             <button
               onClick={() => window.location.reload()}
-              className="w-full min-h-11 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-colors"
+              className="w-full min-h-11 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
             >
               {tr('再做多 1 題', 'One more question')}
             </button>
             <Link
               href="/dashboard"
-              className="w-full min-h-11 flex items-center justify-center bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#6B6B6B] px-6 py-3 rounded-xl transition-colors text-sm"
+              className="w-full min-h-11 flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
             >
               {tr('今日就到呢度', "That's it for today")}
             </Link>
@@ -618,31 +618,31 @@ export default function PracticeSession({
     const doneCount = resumeOffer.current
     const totalCount = resumeOffer.questionIds.length
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-[#FAFAF8] text-[#2D2D2D]">
-        <div className="w-full max-w-md bg-white border border-black/[0.06] rounded-2xl p-7 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
+        <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
           <div className="text-3xl mb-3" aria-hidden>📍</div>
-          <h2 className="text-lg font-medium text-[#1A1A1A] mb-2">
+          <h2 className="text-lg font-medium text-ink mb-2">
             {tr('你有份未做完嘅練習', 'You have an unfinished run')}
           </h2>
-          <p className="text-sm text-[#6B6B6B] leading-relaxed mb-1">
+          <p className="text-sm text-ink-muted leading-relaxed mb-1">
             {tr(
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經做咗 ${doneCount} / ${totalCount} 題`,
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
             )}
           </p>
-          <p className="text-xs text-[#9CA3AF] leading-relaxed mb-6">
+          <p className="text-xs text-ink-faint leading-relaxed mb-6">
             {tr('喺邊部機做都好，接返落去就得。', 'Pick up right where you left off, on any device.')}
           </p>
           <div className="flex flex-col gap-2.5">
             <button
               onClick={acceptResume}
-              className="w-full min-h-11 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-colors"
+              className="w-full min-h-11 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
             >
               {tr(`繼續做第 ${doneCount + 1} 題`, `Continue from question ${doneCount + 1}`)}
             </button>
             <button
               onClick={declineResume}
-              className="w-full min-h-11 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#6B6B6B] px-6 py-3 rounded-xl transition-colors text-sm"
+              className="w-full min-h-11 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
             >
               {tr('重新開始一份', 'Start a fresh one')}
             </button>
@@ -655,14 +655,14 @@ export default function PracticeSession({
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-[#FAFAF8] text-[#2D2D2D]">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
         <div className="text-5xl">{subjectMeta?.emoji ?? '📝'}</div>
-        <p className="text-[#6B6B6B]">
+        <p className="text-ink-muted">
           {subjectMeta
             ? t.practice.notLive.replace('{subject}', tr(subjectMeta.name, subjectMeta.nameEn))
             : t.practice.notLiveGeneric}
         </p>
-        <Link href="/subjects" className="text-[#008B84] hover:text-[#00726C] underline">
+        <Link href="/subjects" className="text-accent hover:text-accent-strong underline">
           {t.practice.otherSubjects}
         </Link>
       </div>
@@ -671,12 +671,12 @@ export default function PracticeSession({
 
   if (!currentQ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] text-[#6B6B6B]">{t.practice.loading}</div>
+      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
     )
   }
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto">
 
         {/* Subject label + weakness badge */}
@@ -684,11 +684,11 @@ export default function PracticeSession({
           {subjectMeta && (
             <>
               <span>{subjectMeta.emoji}</span>
-              <span className="text-[#2D2D2D] font-medium">{tr(subjectMeta.name, subjectMeta.nameEn)}</span>
+              <span className="text-ink-soft font-medium">{tr(subjectMeta.name, subjectMeta.nameEn)}</span>
             </>
           )}
           {mode === 'weakness' && (
-            <span className="inline-flex items-center gap-1 text-xs text-[#B8860B] bg-[#B8860B]/10 border border-[#B8860B]/20 px-2 py-0.5 rounded-full">
+            <span className="inline-flex items-center gap-1 text-xs text-gold bg-gold/10 border border-gold/20 px-2 py-0.5 rounded-full">
               🛠️ {tr('盲點修復卷', 'Repair worksheet')}
             </span>
           )}
@@ -696,7 +696,7 @@ export default function PracticeSession({
 
         {/* Progress bar */}
         <div className="mb-6">
-          <div className="flex justify-between text-sm text-[#6B6B6B] mb-2">
+          <div className="flex justify-between text-sm text-ink-muted mb-2">
             <span>
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
             </span>
@@ -710,39 +710,39 @@ export default function PracticeSession({
                   支援掣、左下角有無障礙面板）。撳完計時停低，返嚟自動順延。 */}
               <button
                 onClick={() => setRestOpen(true)}
-                className="inline-flex items-center gap-1 min-h-11 px-2 -my-2 text-[#6B6B6B] hover:text-[#00726C] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#008B84] rounded-lg"
+                className="inline-flex items-center gap-1 min-h-11 px-2 -my-2 text-ink-muted hover:text-accent-strong transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent rounded-lg"
               >
                 <Coffee size={13} /> {tr('休息吓', 'Rest')}
               </button>
             </span>
           </div>
-          <div className="h-1.5 bg-black/[0.06] rounded-full overflow-hidden">
+          <div className="h-1.5 bg-line rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#00726C] rounded-full transition-all duration-500"
+              className="h-full bg-accent-strong rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
         {/* Question card */}
-        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 sm:p-8 mb-4 animate-slide-up">
+        <div className="bg-surface-raised border border-line rounded-2xl p-6 sm:p-8 mb-4 animate-slide-up">
           {/* Meta */}
           <div className="flex items-center gap-2 flex-wrap mb-6">
             <DifficultyBadge difficulty={currentQ.difficulty} />
-            <span className="inline-flex items-center gap-1.5 text-xs text-[#B8860B] bg-[#B8860B]/10 px-3 py-1 rounded-full">
+            <span className="inline-flex items-center gap-1.5 text-xs text-gold bg-gold/10 px-3 py-1 rounded-full">
               <span>{currentQ.frameworkEmoji}</span>
               {tr(currentQ.frameworkZh, currentQ.frameworkEn)}
             </span>
-            <span className="text-xs text-[#6B6B6B] bg-[#F5F5F0] px-3 py-1 rounded-full">
+            <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full">
               {tr(currentQ.topicZh, currentQ.topicEn)}
             </span>
-            <span className="text-xs text-[#6B6B6B] bg-[#F5F5F0] px-3 py-1 rounded-full ml-auto">
+            <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
               {currentQ.year}
             </span>
           </div>
 
           {/* Content — P1-6-R2: 自診咗「B. 審題陷阱」先高亮題幹指令字 */}
-          <p className="text-lg leading-relaxed mb-8 text-[#1A1A1A]">
+          <p className="text-lg leading-relaxed mb-8 text-ink">
             {diagnosed === 'B' && answerState !== null && !answerState.isCorrect ? (
               <CommandWordText
                 text={tr(currentQ.content, currentQ.contentEn)}
@@ -761,15 +761,15 @@ export default function PracticeSession({
                 answerState !== null && opt.zh === answerState.selectedZh && !answerState.isCorrect
 
               let style =
-                'border-black/[0.10] bg-[#F5F5F0] hover:bg-[#EDEDE8] hover:border-[#008B84]/40 cursor-pointer'
+                'border-line-strong bg-surface-sunken hover:bg-surface-sunken hover:border-accent/40 cursor-pointer'
 
               if (answerState !== null) {
                 if (isCorrectOpt) {
-                  style = 'border-[#008B84] bg-[#008B84]/[0.10] cursor-default'
+                  style = 'border-accent bg-accent/[0.10] cursor-default'
                 } else if (isSelectedWrong) {
-                  style = 'border-[#C2185B] bg-[#C2185B]/[0.10] cursor-default'
+                  style = 'border-rose bg-rose/[0.10] cursor-default'
                 } else {
-                  style = 'border-black/[0.06] bg-[#F5F5F0] opacity-50 cursor-default'
+                  style = 'border-line bg-surface-sunken opacity-50 cursor-default'
                 }
               }
 
@@ -780,17 +780,17 @@ export default function PracticeSession({
                   disabled={answerState !== null}
                   className={`w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all option-btn ${style}`}
                 >
-                  <span className="shrink-0 w-7 h-7 rounded-lg bg-[#EDEDE8] flex items-center justify-center text-sm font-medium text-[#6B6B6B] mt-0.5">
+                  <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
                     {optionLetters[idx]}
                   </span>
-                  <span className="leading-relaxed text-sm sm:text-base text-[#2D2D2D]">
+                  <span className="leading-relaxed text-sm sm:text-base text-ink-soft">
                     <MathText>{tr(opt.zh, opt.en)}</MathText>
                   </span>
                   {answerState !== null && isCorrectOpt && (
-                    <CheckCircle size={18} className="text-[#008B84] ml-auto shrink-0 mt-0.5" />
+                    <CheckCircle size={18} className="text-accent ml-auto shrink-0 mt-0.5" />
                   )}
                   {isSelectedWrong && (
-                    <XCircle size={18} className="text-[#C2185B] ml-auto shrink-0 mt-0.5" />
+                    <XCircle size={18} className="text-rose ml-auto shrink-0 mt-0.5" />
                   )}
                 </button>
               )
@@ -804,18 +804,18 @@ export default function PracticeSession({
             {!answerState.isCorrect && diagnosed === null ? (
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
                  3-way reverse-cause self-diagnosis. Calm gold, reflective (因材施教). */
-              <div className="rounded-2xl p-6 mb-4 border border-[#B8860B]/40 bg-[#B8860B]/[0.06]">
+              <div className="rounded-2xl p-6 mb-4 border border-gold/40 bg-gold/[0.06]">
                 <div className="flex items-center gap-2 mb-1">
-                  <Lock size={18} className="text-[#B8860B]" />
-                  <span className="text-[#B8860B] font-medium tracking-wide text-sm">
+                  <Lock size={18} className="text-gold" />
+                  <span className="text-gold font-medium tracking-wide text-sm">
                     ✋ {tr('停一停，諗一諗', 'Pause & reflect')}
                   </span>
                 </div>
-                <p className="text-[#2D2D2D] text-xs font-medium mb-1">
+                <p className="text-ink-soft text-xs font-medium mb-1">
                   {tr('答錯唔緊要 —— 一齊搵出今次嘅錯因，跟住就解鎖詳解。',
                       'A wrong answer is fine — let’s find what tripped you up, then the solution unlocks.')}
                 </p>
-                <p className="text-[#6B6B6B] text-xs mb-4 leading-relaxed">
+                <p className="text-ink-muted text-xs mb-4 leading-relaxed">
                   {tr('誠實諗諗：你今次主要中咗邊一種底層陷阱？',
                       'Honestly: which underlying trap caught you this time?')}
                 </p>
@@ -824,14 +824,14 @@ export default function PracticeSession({
                     <button
                       key={c.key}
                       onClick={() => chooseCause(c.key)}
-                      className="w-full text-left flex items-start gap-3 border border-black/[0.10] bg-[#F5F5F0] hover:bg-[#EDEDE8] hover:border-[#B8860B]/50 rounded-xl px-4 py-3 transition-all"
+                      className="w-full text-left flex items-start gap-3 border border-line-strong bg-surface-sunken hover:bg-surface-sunken hover:border-gold/50 rounded-xl px-4 py-3 transition-all"
                     >
-                      <span className="shrink-0 w-7 h-7 rounded-lg bg-[#EDEDE8] text-[#B8860B] flex items-center justify-center text-sm font-medium">
+                      <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken text-gold flex items-center justify-center text-sm font-medium">
                         {c.key}
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-sm font-medium text-[#1A1A1A]">{c.emoji} {tr(c.zh, c.en)}</span>
-                        <span className="block text-xs text-[#6B6B6B] mt-0.5 leading-relaxed">{tr(c.zhDesc, c.enDesc)}</span>
+                        <span className="block text-sm font-medium text-ink">{c.emoji} {tr(c.zh, c.en)}</span>
+                        <span className="block text-xs text-ink-muted mt-0.5 leading-relaxed">{tr(c.zhDesc, c.enDesc)}</span>
                       </span>
                     </button>
                   ))}
@@ -841,35 +841,35 @@ export default function PracticeSession({
               <>
                 {answerState.isCorrect ? (
                   /* Correct — calm acknowledgement, no fanfare. */
-                  <div className="rounded-2xl p-5 mb-4 border bg-[#008B84]/[0.10] border-[#008B84]/30">
+                  <div className="rounded-2xl p-5 mb-4 border bg-accent/[0.10] border-accent/30">
                     <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle size={18} className="text-[#008B84]" />
-                      <span className="text-[#008B84] font-medium">{t.practice.correct}</span>
+                      <CheckCircle size={18} className="text-accent" />
+                      <span className="text-accent font-medium">{t.practice.correct}</span>
                     </div>
-                    <div className="flex items-start gap-1.5 text-sm text-[#2D2D2D] leading-relaxed">
-                      <Brain size={14} className="text-[#B8860B] shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-1.5 text-sm text-ink-soft leading-relaxed">
+                      <Brain size={14} className="text-gold shrink-0 mt-0.5" />
                       <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
                     </div>
                   </div>
                 ) : (
                   /* Wrong → unlocked after self-diagnosis: the error IS the lesson. */
-                  <div className="rounded-2xl p-5 mb-4 border bg-[#B8860B]/[0.10] border-[#B8860B]/30">
+                  <div className="rounded-2xl p-5 mb-4 border bg-gold/[0.10] border-gold/30">
                     <div className="flex items-center gap-2 mb-1">
-                      <Brain size={18} className="text-[#B8860B]" />
-                      <span className="text-[#B8860B] font-medium">{tr('🔍 思維逆襲解密', '🔍 Mind-flip decode')}</span>
+                      <Brain size={18} className="text-gold" />
+                      <span className="text-gold font-medium">{tr('🔍 思維逆襲解密', '🔍 Mind-flip decode')}</span>
                     </div>
                     {(() => {
                       const c = REVERSE_CAUSES.find((x) => x.key === diagnosed)
                       return (
-                        <p className="text-xs text-[#C2185B] mb-3 leading-relaxed">
+                        <p className="text-xs text-rose mb-3 leading-relaxed">
                           {tr('已記錄錯因：', 'Logged cause: ')}
                           <strong>{c ? `${c.emoji} ${tr(c.zh, c.en)}` : ''}</strong>
                           {tr(' → 已寫入逆向錯題本。', ' → saved to your reverse error log.')}
                         </p>
                       )
                     })()}
-                    <div className="text-sm text-[#2D2D2D] leading-relaxed border-t border-[#B8860B]/15 pt-3">
-                      <span className="text-[#B8860B] text-xs font-medium mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
+                    <div className="text-sm text-ink-soft leading-relaxed border-t border-gold/15 pt-3">
+                      <span className="text-gold text-xs font-medium mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
                       <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
                     </div>
                     {/* F01 錯題情緒標籤（key 按題重置） */}
@@ -880,18 +880,18 @@ export default function PracticeSession({
                 {/* Path B — 名師速解 / MC Hack (the exam shortcut, distinct from the
                     formal Path A reasoning above). Shown whenever the question carries one. */}
                 {currentQ.mcHack && (
-                  <div className="rounded-2xl p-5 mb-4 border bg-[#7C3AED]/[0.08] border-[#7C3AED]/30">
+                  <div className="rounded-2xl p-5 mb-4 border bg-violet/[0.08] border-violet/30">
                     <div className="flex items-center gap-2 mb-2">
-                      <Zap size={18} className="text-[#7C3AED]" />
-                      <span className="text-[#7C3AED] font-medium">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
+                      <Zap size={18} className="text-violet" />
+                      <span className="text-violet font-medium">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
                     </div>
-                    <p className="text-xs text-[#6B6B6B] mb-3 leading-relaxed">
+                    <p className="text-xs text-ink-muted mb-3 leading-relaxed">
                       {tr(
                         '考場上唔使寫足證明 —— 呢招專為 MC 而設，秒級攞分。',
                         'No full proof needed in the exam — this is the MC-only quick kill.',
                       )}
                     </p>
-                    <div className="text-sm text-[#2D2D2D] leading-relaxed border-t border-[#7C3AED]/15 pt-3">
+                    <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">
                       <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
                     </div>
                   </div>
@@ -907,9 +907,9 @@ export default function PracticeSession({
                 {followup && (
                   /* F-EMO: gentleLock（揀咗「有啲失落」）⇒ 強制柔和呈現 + 溫和標題，
                      教學法不變（60 秒 + 反思題照舊），只改語氣同色調 */
-                  <div className={`rounded-2xl p-5 mb-4 border-2 ${(calmLock || gentleLock) ? 'border-[#B8860B]/40 bg-[#FDFCF8]' : 'border-[#C2185B]/45 bg-[#FDFBF8]'}`}>
+                  <div className={`rounded-2xl p-5 mb-4 border-2 ${(calmLock || gentleLock) ? 'border-gold/40 bg-surface' : 'border-rose/45 bg-surface'}`}>
                     <div className="flex items-center justify-between mb-3">
-                      <span className={`flex items-center gap-2 font-medium text-sm tracking-wide ${(calmLock || gentleLock) ? 'text-[#B8860B]' : 'text-[#C2185B]'}`}>
+                      <span className={`flex items-center gap-2 font-medium text-sm tracking-wide ${(calmLock || gentleLock) ? 'text-gold' : 'text-rose'}`}>
                         <Lock size={16} />{' '}
                         {gentleLock
                           ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
@@ -918,7 +918,7 @@ export default function PracticeSession({
                       <button
                         onClick={toggleCalmLock}
                         title={tr('柔和模式：沙漏放慢、色調更靜', 'Calm mode: slower hourglass, softer tones')}
-                        className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-[#B8860B]/40 text-[#B8860B] bg-[#B8860B]/10' : 'border-black/[0.12] text-[#6B6B6B] hover:text-[#2D2D2D]'}`}
+                        className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-gold/40 text-gold bg-gold/10' : 'border-line-strong text-ink-muted hover:text-ink-soft'}`}
                       >
                         {tr('柔和', 'Calm')}
                       </button>
@@ -941,31 +941,31 @@ export default function PracticeSession({
                       />
                     </div>
                     {/* 憲章 v3.0 §1.2 失敗學定稿文案：做錯 ≠ 失敗，由呢一瞬間開始 */}
-                    <p className="text-xs text-[#6B6B6B] text-center mb-3 leading-relaxed">
+                    <p className="text-xs text-ink-muted text-center mb-3 leading-relaxed">
                       {tr('過去係過去，未來係未來。由呢一瞬間開始。',
                           'The past is the past, the future is the future. Start from this very moment.')}
                     </p>
-                    <p className="text-xs text-[#6B6B6B] mb-3 leading-relaxed">
+                    <p className="text-xs text-ink-muted mb-3 leading-relaxed">
                       {tr('讀完上面嘅錯因拆解，答對以下反思題，並等倒數完結，先可以解鎖下一題。',
                           'Read the breakdown above, answer the reflection question correctly, and wait out the countdown to unlock the next question.')}
                     </p>
-                    <p className="text-sm font-medium text-[#1A1A1A] mb-3">{tr(followup.prompt[0], followup.prompt[1])}</p>
+                    <p className="text-sm font-medium text-ink mb-3">{tr(followup.prompt[0], followup.prompt[1])}</p>
                     <div className="space-y-2">
                       {followup.options.map((o, i) => {
                         const picked = followupPick === o[0]
                         const isCorrectOpt = o[0] === followup.correctZh
-                        let st = 'border-black/[0.10] bg-[#F5F5F0] hover:border-[#008B84]/40 cursor-pointer'
+                        let st = 'border-line-strong bg-surface-sunken hover:border-accent/40 cursor-pointer'
                         if (followupPick !== null) {
-                          if (isCorrectOpt) st = 'border-[#008B84] bg-[#008B84]/[0.10]'
-                          else if (picked) st = 'border-[#C2185B] bg-[#C2185B]/[0.10]'
-                          else st = 'border-black/[0.06] bg-[#F5F5F0] opacity-50'
+                          if (isCorrectOpt) st = 'border-accent bg-accent/[0.10]'
+                          else if (picked) st = 'border-rose bg-rose/[0.10]'
+                          else st = 'border-line bg-surface-sunken opacity-50'
                         }
                         return (
                           <button
                             key={i}
                             disabled={followupCorrect}
                             onClick={() => setFollowupPick(o[0])}
-                            className={`w-full text-left text-sm text-[#2D2D2D] border rounded-xl px-4 py-2.5 transition-all ${st}`}
+                            className={`w-full text-left text-sm text-ink-soft border rounded-xl px-4 py-2.5 transition-all ${st}`}
                           >
                             {tr(o[0], o[1])}
                           </button>
@@ -973,14 +973,14 @@ export default function PracticeSession({
                       })}
                     </div>
                     {followupPick !== null && !followupCorrect && (
-                      <p className="text-xs text-[#C2185B] mt-2">
+                      <p className="text-xs text-rose mt-2">
                         {tr('再諗深一層 —— 揀返最能根治呢個錯因嘅做法。',
                             'Think again — pick the approach that actually fixes this error type.')}
                       </p>
                     )}
                     {followupCorrect && (
-                      <p className="text-xs text-[#2D2D2D] mt-3 leading-relaxed border-t border-black/[0.10] pt-2">
-                        <span className="text-[#008B84] font-medium">✓ </span>
+                      <p className="text-xs text-ink-soft mt-3 leading-relaxed border-t border-line-strong pt-2">
+                        <span className="text-accent font-medium">✓ </span>
                         {tr(followup.explain[0], followup.explain[1])}
                       </p>
                     )}
@@ -993,8 +993,8 @@ export default function PracticeSession({
                   disabled={lockHeld || verifying}
                   className={`w-full font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
                     lockHeld || verifying
-                      ? 'bg-[#F5F5F0] text-[#9CA3AF] cursor-not-allowed'
-                      : 'bg-[#00726C] hover:bg-[#005F5A] text-white'
+                      ? 'bg-surface-sunken text-ink-faint cursor-not-allowed'
+                      : 'bg-accent-strong hover:bg-accent-hover text-on-accent'
                   }`}
                 >
                   {lockHeld || verifying ? (
@@ -1018,11 +1018,11 @@ export default function PracticeSession({
         {/* Score tracker */}
         <div className="mt-6 flex justify-center gap-2 flex-wrap">
           {Array.from({ length: totalQ }).map((_, i) => {
-            let color = 'bg-black/[0.08]'
+            let color = 'bg-line'
             if (i < answers.length) {
-              color = answers[i]?.isCorrect ? 'bg-[#008B84]' : 'bg-[#C2185B]'
+              color = answers[i]?.isCorrect ? 'bg-accent' : 'bg-rose'
             } else if (i === current) {
-              color = 'bg-[#00726C]'
+              color = 'bg-accent-strong'
             }
             return <div key={i} className={`w-3 h-3 rounded-full ${color} transition-colors`} />
           })}

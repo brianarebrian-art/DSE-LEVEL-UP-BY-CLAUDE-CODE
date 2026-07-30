@@ -57,14 +57,14 @@ export default function Navbar() {
   }, [open])
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.06] bg-white">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-line bg-surface-raised">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-[#1A1A1A]">
-            <BookOpen size={22} className="text-[#008B84]" />
+          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-ink">
+            <BookOpen size={22} className="text-accent" />
             <span className="whitespace-nowrap">
-              DSE <span className="text-[#008B84]">Level Up</span>
+              DSE <span className="text-accent">Level Up</span>
             </span>
           </Link>
         </div>
@@ -77,7 +77,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               className={`text-sm whitespace-nowrap transition-colors min-h-11 inline-flex items-center px-1 ${
-                pathname === l.href ? 'text-[#008B84]' : 'text-[#6B6B6B] hover:text-[#008B84]'
+                pathname === l.href ? 'text-accent' : 'text-ink-muted hover:text-accent'
               }`}
             >
               {t.nav[l.key]}
@@ -85,7 +85,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/subjects/math"
-            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-[#00726C] hover:bg-[#005F5A] text-white font-medium text-sm px-4 py-2 rounded-lg transition-colors"
+            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-colors"
           >
             {t.nav.startPractice}
           </Link>
@@ -100,7 +100,7 @@ export default function Navbar() {
           {/* FIX: [C12類] icon-only 掣冇無障礙名，VoiceOver/TalkBack 用戶開唔到選單；
               順手補 44px 觸控目標（B10 標準）+ aria-expanded + aria-controls */}
           <button
-            className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-[#2D2D2D] hover:text-[#008B84] hover:bg-black/[0.04] transition-colors"
+            className="min-h-11 min-w-11 flex items-center justify-center rounded-lg text-ink-soft hover:text-accent hover:bg-line transition-colors"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-controls="site-menu"
@@ -115,7 +115,7 @@ export default function Navbar() {
       {open && (
         <div
           id="site-menu"
-          className="xl:hidden border-t border-black/[0.06] bg-white px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="xl:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
           <div className="mx-auto max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
@@ -124,8 +124,8 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`min-h-11 flex items-center border-b border-black/[0.04] text-sm ${
-                    pathname === l.href ? 'text-[#008B84] font-medium' : 'text-[#2D2D2D] hover:text-[#008B84]'
+                  className={`min-h-11 flex items-center border-b border-line text-sm ${
+                    pathname === l.href ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
                   }`}
                 >
                   {t.nav[l.key]}
@@ -136,15 +136,15 @@ export default function Navbar() {
             <Link
               href="/subjects/math"
               onClick={() => setOpen(false)}
-              className="mt-4 min-h-11 flex items-center justify-center bg-[#00726C] hover:bg-[#005F5A] text-white font-medium text-sm py-2.5 rounded-lg transition-colors"
+              className="mt-4 min-h-11 flex items-center justify-center bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm py-2.5 rounded-lg transition-colors"
             >
               {t.nav.startPractice}
             </Link>
 
             {/* 語言切換同登入 —— 手機／平板一樣搵得到（之前橫向條斷行時就係呢兩樣最易失蹤） */}
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] pt-2">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
               <div className="flex items-center gap-1">
-                <span className="text-xs text-[#9CA3AF]">{en ? 'Language' : '語言'}</span>
+                <span className="text-xs text-ink-faint">{en ? 'Language' : '語言'}</span>
                 <LanguageToggle />
               </div>
               <AuthButton onAction={() => setOpen(false)} />
@@ -152,8 +152,8 @@ export default function Navbar() {
 
             {/* 主題：選單內出完整三段式（自動／淺色／深色），選項一目了然。
                 同語言切換分開兩行，避免學生以為兩者相關。 */}
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] pt-2">
-              <span className="text-xs text-[#9CA3AF]">{en ? 'Theme' : '主題'}</span>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
+              <span className="text-xs text-ink-faint">{en ? 'Theme' : '主題'}</span>
               <ThemeToggle />
             </div>
           </div>

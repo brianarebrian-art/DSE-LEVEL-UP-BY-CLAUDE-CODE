@@ -4,7 +4,7 @@ import PaperWarriorClient from './PaperWarriorClient'
 // <body> 係暗色，本頁跟 light-first 慣例補底色。
 export default function PaperWarriorPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen bg-surface text-ink-soft">
       <PaperWarriorClient />
     </div>
   )

@@ -31,16 +31,16 @@ export default function EncouragementWall() {
   if (picks.length === 0) return null
 
   return (
-    <div className="bg-white border border-black/[0.06] rounded-2xl p-5">
-      <div className="flex items-center gap-2 text-[#2D2D2D] font-medium mb-3">
-        <HeartHandshake size={16} className="text-[#B8860B]" />
+    <div className="bg-surface-raised border border-line rounded-2xl p-5">
+      <div className="flex items-center gap-2 text-ink-soft font-medium mb-3">
+        <HeartHandshake size={16} className="text-gold" />
         {en ? 'From those who walked this road' : '過來人打氣牆'}
       </div>
       <ul className="space-y-2">
         {picks.map((msg, i) => (
-          <li key={i} className="text-sm text-[#6B6B6B] leading-relaxed border-l-2 border-[#B8860B]/30 pl-3">
+          <li key={i} className="text-sm text-ink-muted leading-relaxed border-l-2 border-gold/30 pl-3">
             {en ? msg.en : msg.zh}
-            <span className="text-[#9CA3AF] text-xs ml-2">{en ? '— an anonymous senior' : '—— 匿名學長姐'}</span>
+            <span className="text-ink-faint text-xs ml-2">{en ? '— an anonymous senior' : '—— 匿名學長姐'}</span>
           </li>
         ))}
       </ul>

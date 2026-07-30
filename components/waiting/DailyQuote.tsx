@@ -47,15 +47,15 @@ export default function DailyQuote() {
   const q = idx === null ? null : quotes[idx]
 
   return (
-    <div className="bg-white border border-black/[0.06] rounded-2xl p-8 text-center">
-      <QuoteIcon size={22} className="mx-auto mb-4 text-[#008B84]" aria-hidden />
-      <p className="min-h-[3.5rem] text-xl leading-relaxed text-[#1A1A1A]">
+    <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
+      <QuoteIcon size={22} className="mx-auto mb-4 text-accent" aria-hidden />
+      <p className="min-h-[3.5rem] text-xl leading-relaxed text-ink">
         {q ? (en ? q.en : q.zh) : ' '}
       </p>
-      <p className="mt-3 text-sm text-[#9CA3AF]">— DSE LEVEL UP</p>
+      <p className="mt-3 text-sm text-ink-faint">— DSE LEVEL UP</p>
       <button
         onClick={shuffle}
-        className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#008B84]/30 bg-white px-5 py-2.5 text-sm font-medium text-[#008B84] transition-all hover:bg-[#008B84]/[0.06]"
+        className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface-raised px-5 py-2.5 text-sm font-medium text-accent transition-all hover:bg-accent/[0.06]"
       >
         <RefreshCw size={15} /> {en ? 'Another one' : '換一句'}
       </button>

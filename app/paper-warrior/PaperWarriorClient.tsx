@@ -56,11 +56,11 @@ export default function PaperWarriorClient() {
       {/* ── 設定區（打印時隱藏）───────────────────────────────────────── */}
       <div className="no-print">
         <header className="mb-6">
-          <h1 className="flex items-center gap-2 text-2xl font-medium text-[#1A1A1A]">
-            <FileText size={22} className="text-[#008B84]" />
+          <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
+            <FileText size={22} className="text-accent" />
             {tr('紙筆戰士', 'Paper Warrior')}
           </h1>
-          <p className="mt-1 text-sm text-[#6B6B6B]">
+          <p className="mt-1 text-sm text-ink-muted">
             {tr(
               '印一份出嚟，用紙同筆好好咁做一次。做完返嚟對答案，錯嘅照樣入錯題紀錄。',
               'Print a set, work through it on paper, then come back to check — your mistakes still feed your error log.',
@@ -68,10 +68,10 @@ export default function PaperWarriorClient() {
           </p>
         </header>
 
-        <div className="rounded-2xl border border-black/[0.06] bg-white p-5">
+        <div className="rounded-2xl border border-line bg-surface-raised p-5">
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-[#2D2D2D]">{tr('科目', 'Subject')}</span>
+              <span className="mb-1.5 block text-sm font-medium text-ink-soft">{tr('科目', 'Subject')}</span>
               <select
                 value={subject}
                 onChange={(e) => {
@@ -79,7 +79,7 @@ export default function PaperWarriorClient() {
                   setTopic('')
                   setPaper(null)
                 }}
-                className="min-h-11 w-full rounded-lg border border-black/[0.12] bg-[#FAFAF8] px-3 text-sm text-[#2D2D2D] focus:border-[#008B84] focus:outline-none"
+                className="min-h-11 w-full rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft focus:border-accent focus:outline-none"
               >
                 {activeSubjects.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -90,14 +90,14 @@ export default function PaperWarriorClient() {
             </label>
 
             <label className="block">
-              <span className="mb-1.5 block text-sm font-medium text-[#2D2D2D]">{tr('課題', 'Topic')}</span>
+              <span className="mb-1.5 block text-sm font-medium text-ink-soft">{tr('課題', 'Topic')}</span>
               <select
                 value={topic}
                 onChange={(e) => {
                   setTopic(e.target.value)
                   setPaper(null)
                 }}
-                className="min-h-11 w-full rounded-lg border border-black/[0.12] bg-[#FAFAF8] px-3 text-sm text-[#2D2D2D] focus:border-[#008B84] focus:outline-none"
+                className="min-h-11 w-full rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft focus:border-accent focus:outline-none"
               >
                 <option value="">{tr('全部課題', 'All topics')}</option>
                 {topics.map((t) => (
@@ -110,7 +110,7 @@ export default function PaperWarriorClient() {
           </div>
 
           <div className="mt-4">
-            <span className="mb-1.5 block text-sm font-medium text-[#2D2D2D]">{tr('題數', 'Questions')}</span>
+            <span className="mb-1.5 block text-sm font-medium text-ink-soft">{tr('題數', 'Questions')}</span>
             <div className="flex flex-wrap gap-2">
               {PAPER_SIZES.map((n) => (
                 <button
@@ -121,8 +121,8 @@ export default function PaperWarriorClient() {
                   }}
                   className={`min-h-11 rounded-lg px-4 text-sm transition-colors ${
                     size === n
-                      ? 'bg-[#008B84]/12 text-[#00726C] ring-1 ring-[#008B84]/40'
-                      : 'bg-black/[0.04] text-[#6B6B6B] hover:bg-black/[0.07]'
+                      ? 'bg-accent/12 text-accent-strong ring-1 ring-accent/40'
+                      : 'bg-line text-ink-muted hover:bg-line'
                   }`}
                 >
                   {n}
@@ -136,11 +136,11 @@ export default function PaperWarriorClient() {
               type="checkbox"
               checked={withExplain}
               onChange={(e) => setWithExplain(e.target.checked)}
-              className="h-4 w-4 accent-[#00726C]"
+              className="h-4 w-4 accent-accent-strong"
             />
-            <span className="text-sm text-[#2D2D2D]">
+            <span className="text-sm text-ink-soft">
               {tr('連答案同解析一齊印（練習用）', 'Include answers and explanations (practice mode)')}
-              <span className="ml-1 text-xs text-[#9CA3AF]">
+              <span className="ml-1 text-xs text-ink-faint">
                 {tr('唔剔＝純題目，當模擬考', 'Unchecked = questions only, like a real exam')}
               </span>
             </span>
@@ -149,14 +149,14 @@ export default function PaperWarriorClient() {
           <div className="mt-5 flex flex-wrap gap-2">
             <button
               onClick={generate}
-              className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-[#00726C] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#005F5A]"
+              className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-accent-strong px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
             >
               <RefreshCw size={15} /> {paper ? tr('換一份', 'Regenerate') : tr('生成試卷', 'Generate paper')}
             </button>
             {paper && (
               <button
                 onClick={() => window.print()}
-                className="min-h-11 inline-flex items-center gap-2 rounded-lg border border-[#008B84]/40 px-4 py-2 text-sm font-medium text-[#00726C] transition-colors hover:bg-[#008B84]/[0.06]"
+                className="min-h-11 inline-flex items-center gap-2 rounded-lg border border-accent/40 px-4 py-2 text-sm font-medium text-accent-strong transition-colors hover:bg-accent/[0.06]"
               >
                 <Printer size={15} /> {tr('打印 / 儲存做 PDF', 'Print / Save as PDF')}
               </button>
@@ -164,7 +164,7 @@ export default function PaperWarriorClient() {
           </div>
 
           {paper && (
-            <div className="mt-4 rounded-xl border border-[#008B84]/25 bg-[#008B84]/[0.06] p-3 text-sm text-[#00635E]">
+            <div className="mt-4 rounded-xl border border-accent/25 bg-accent/[0.06] p-3 text-sm text-accent-strong">
               <p>
                 {tr(
                   `已生成 ${paper.items.length} 題。「打印」個窗入面揀「另存為 PDF」就有電子檔。`,
@@ -182,7 +182,7 @@ export default function PaperWarriorClient() {
           )}
 
           {paper === null && (
-            <p className="mt-4 text-xs text-[#9CA3AF]">
+            <p className="mt-4 text-xs text-ink-faint">
               {tr('撳「生成試卷」就會即刻喺下面出現預覽。', 'Press “Generate paper” and a preview appears below.')}
             </p>
           )}
@@ -191,12 +191,12 @@ export default function PaperWarriorClient() {
 
       {/* ── A4 卷面（螢幕預覽 + 打印本體）───────────────────────────── */}
       {paper && (
-        <article className="paper-sheet mt-8 rounded-2xl border border-black/[0.08] bg-white p-8 text-[#1A1A1A]">
-          <header className="mb-5 border-b border-black/15 pb-3">
+        <article className="paper-sheet mt-8 rounded-2xl border border-line bg-surface-raised p-8 text-ink">
+          <header className="mb-5 border-b border-line-strong pb-3">
             <h2 className="text-lg font-semibold">
               DSE Level Up — {tr('紙筆戰士', 'Paper Warrior')}
             </h2>
-            <p className="mt-0.5 text-xs text-[#4A4A4A]">
+            <p className="mt-0.5 text-xs text-ink-soft">
               {tr('科目', 'Subject')}：{en ? subjectMeta?.nameEn : subjectMeta?.name}
               {' ｜ '}
               {tr('題數', 'Questions')}：{paper.items.length}
@@ -204,7 +204,7 @@ export default function PaperWarriorClient() {
               {tr('模式', 'Mode')}：
               {withExplain ? tr('連解析', 'With explanations') : tr('純題目', 'Questions only')}
             </p>
-            <p className="mt-0.5 text-xs text-[#4A4A4A]">
+            <p className="mt-0.5 text-xs text-ink-soft">
               {tr('姓名', 'Name')}：____________________　{tr('日期', 'Date')}：____________________
             </p>
           </header>
@@ -223,7 +223,7 @@ export default function PaperWarriorClient() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-1.5 pl-5 text-sm tracking-wide text-[#4A4A4A]">
+                <p className="mt-1.5 pl-5 text-sm tracking-wide text-ink-soft">
                   {tr('作答', 'Answer')}：
                   {item.options.map((_, oi) => (
                     <span key={oi} className="mr-3">
@@ -233,14 +233,14 @@ export default function PaperWarriorClient() {
                 </p>
 
                 {withExplain && (
-                  <div className="mt-2 ml-5 border-l-2 border-[#008B84]/40 pl-3 text-xs leading-relaxed text-[#4A4A4A]">
+                  <div className="mt-2 ml-5 border-l-2 border-accent/40 pl-3 text-xs leading-relaxed text-ink-soft">
                     <p>
-                      <span className="font-medium text-[#00635E]">{tr('答案', 'Answer')}：</span>
+                      <span className="font-medium text-accent-strong">{tr('答案', 'Answer')}：</span>
                       {/* 引選項內容，唔淨係引字母 —— 對答案時唔會撈亂 */}
                       <MathText>{en ? item.optionsEn[item.answerIndex] : item.options[item.answerIndex]}</MathText>
                     </p>
                     <p className="mt-1">
-                      <span className="font-medium text-[#00635E]">{tr('解析', 'Why')}：</span>
+                      <span className="font-medium text-accent-strong">{tr('解析', 'Why')}：</span>
                       <MathText>
                         {tr(item.question.explanation, item.question.explanationEn ?? item.question.explanation)}
                       </MathText>
@@ -251,7 +251,7 @@ export default function PaperWarriorClient() {
             ))}
           </ol>
 
-          <footer className="mt-6 border-t border-black/15 pt-3 text-xs text-[#4A4A4A]">
+          <footer className="mt-6 border-t border-line-strong pt-3 text-xs text-ink-soft">
             <p className="font-medium">
               {tr('卷號', 'Paper code')}：<span className="tracking-wider">{encodePaperCode(paper.spec)}</span>
             </p>
@@ -261,7 +261,7 @@ export default function PaperWarriorClient() {
                 'To check your answers: open “Paper Warrior → Answer sheet” on DSE Level Up and enter the paper code above.',
               )}
             </p>
-            <p className="mt-1.5 text-[#6B6B6B]">
+            <p className="mt-1.5 text-ink-muted">
               {tr(
                 '本平台試題為獨立改寫版本，並非香港考試及評核局（HKEAA）官方試題。',
                 'Questions are independently rewritten and are not HKEAA official exam papers.',
@@ -272,13 +272,13 @@ export default function PaperWarriorClient() {
       )}
 
       {paper === null && (
-        <div className="no-print mt-8 rounded-2xl border border-black/[0.06] bg-white p-8 text-center text-sm text-[#6B6B6B]">
+        <div className="no-print mt-8 rounded-2xl border border-line bg-surface-raised p-8 text-center text-sm text-ink-muted">
           {tr('仲未有卷。撳上面「生成試卷」開始。', 'No paper yet — press “Generate paper” above to start.')}
         </div>
       )}
 
       <p className="no-print mt-6 text-center text-sm">
-        <Link href="/answer-sheet" className="inline-flex min-h-11 items-center gap-1.5 text-[#00726C] hover:underline">
+        <Link href="/answer-sheet" className="inline-flex min-h-11 items-center gap-1.5 text-accent-strong hover:underline">
           {tr('已經做完紙筆？去對答案', 'Already finished on paper? Check your answers')} <ArrowRight size={15} />
         </Link>
       </p>

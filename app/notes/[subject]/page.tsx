@@ -37,7 +37,7 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
   const total = getSubjectQuestions(subject).length
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen bg-surface text-ink-soft">
       <div className="sr-only">
         <h1>{meta.name}知識凝結筆記 · {meta.name} revision notes{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
         <p>本頁按課題整理{meta.name}的重點與常見陷阱，題庫現有 {total} 條獨立改寫題目，分為 {topics.length} 個課題。所有題目均為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>

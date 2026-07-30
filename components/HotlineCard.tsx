@@ -11,22 +11,22 @@ export default function HotlineCard({ emphasis = false }: { emphasis?: boolean }
   return (
     <div
       className={`rounded-xl border p-4 ${
-        emphasis ? 'border-[#C2185B]/30 bg-[#C2185B]/[0.06]' : 'border-[#B8860B]/25 bg-[#B8860B]/[0.06]'
+        emphasis ? 'border-rose/30 bg-rose/[0.06]' : 'border-gold/25 bg-gold/[0.06]'
       }`}
     >
-      <p className="text-sm leading-relaxed text-[#4A4A4A]">
+      <p className="text-sm leading-relaxed text-ink-soft">
         {en ? "Feeling overwhelmed? You're not alone. " : '覺得頂唔順？你唔係一個人。'}
         {en ? 'The Samaritans (24 hr): ' : '撒瑪利亞會 24 小時熱線：'}
-        <a href="tel:28960000" className="min-h-11 inline-flex items-center px-1 font-medium text-[#00726C] underline underline-offset-2">
+        <a href="tel:28960000" className="min-h-11 inline-flex items-center px-1 font-medium text-accent-strong underline underline-offset-2">
           2896 0000
         </a>
         {' · '}
         {en ? 'Suicide Prevention Services: ' : '生命熱線：'}
-        <a href="tel:23820000" className="min-h-11 inline-flex items-center px-1 font-medium text-[#00726C] underline underline-offset-2">
+        <a href="tel:23820000" className="min-h-11 inline-flex items-center px-1 font-medium text-accent-strong underline underline-offset-2">
           2382 0000
         </a>
       </p>
-      <p className="mt-1 text-xs leading-relaxed text-[#8A8A8A]">
+      <p className="mt-1 text-xs leading-relaxed text-ink-muted">
         {en
           ? 'This platform is not a professional medical service; the information above is for reference only. In an emergency, call 999 or go to the nearest A&E.'
           : '本平台非專業醫療機構，以上資訊僅供參考。如情況緊急，請立即致電 999 或前往就近急症室。'}

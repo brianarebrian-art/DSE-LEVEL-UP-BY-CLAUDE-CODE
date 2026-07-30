@@ -83,21 +83,21 @@ export default function PracticeSupport() {
           onClick={() => { setFontPanel((v) => !v) }}
           aria-expanded={fontPanel}
           title={en ? 'Font size' : '字級調節（12–24px，全站生效）'}
-          className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-white/90 border-black/[0.10] text-[#6B6B6B] hover:text-[#2D2D2D] shadow-sm transition-all"
+          className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-surface-raised/90 border-line-strong text-ink-muted hover:text-ink-soft shadow-sm transition-all"
         >
           <span className="text-[10px]" aria-hidden>A</span><span aria-hidden>A</span> {en ? 'Size' : '字級'}
         </button>
         {fontPanel && (
-          <div className="flex items-center gap-2 bg-white border border-black/[0.10] shadow-sm rounded-full px-3 py-2">
-            <button onClick={() => setSize(fontPx - 2)} disabled={fontPx <= 12} className="min-w-8 min-h-8 text-[#2D2D2D] disabled:text-[#C7C7C0] text-sm" aria-label={en ? 'Smaller' : '縮細'}>−</button>
+          <div className="flex items-center gap-2 bg-surface-raised border border-line-strong shadow-sm rounded-full px-3 py-2">
+            <button onClick={() => setSize(fontPx - 2)} disabled={fontPx <= 12} className="min-w-8 min-h-8 text-ink-soft disabled:text-ink-faint text-sm" aria-label={en ? 'Smaller' : '縮細'}>−</button>
             <input
               type="range" min={12} max={24} step={1} value={fontPx}
               onChange={(e) => setSize(Number(e.target.value))}
-              className="w-24 accent-[#008B84]"
+              className="w-24 accent-accent"
               aria-label={en ? 'Font size' : '字級'}
             />
-            <button onClick={() => setSize(fontPx + 2)} disabled={fontPx >= 24} className="min-w-8 min-h-8 text-[#2D2D2D] disabled:text-[#C7C7C0] text-sm" aria-label={en ? 'Larger' : '放大'}>＋</button>
-            <span className="text-[10px] text-[#6B6B6B] w-9">{fontPx}px</span>
+            <button onClick={() => setSize(fontPx + 2)} disabled={fontPx >= 24} className="min-w-8 min-h-8 text-ink-soft disabled:text-ink-faint text-sm" aria-label={en ? 'Larger' : '放大'}>＋</button>
+            <span className="text-[10px] text-ink-muted w-9">{fontPx}px</span>
           </div>
         )}
         <button
@@ -106,8 +106,8 @@ export default function PracticeSupport() {
           title={en ? 'Dyslexia-friendly font (BDA-style system stack)' : '易讀字體（讀寫障礙友善）'}
           className={`flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border shadow-sm transition-all ${
             easyFont
-              ? 'bg-[#008B84]/12 border-[#008B84]/40 text-[#008B84]'
-              : 'bg-white/90 border-black/[0.10] text-[#6B6B6B] hover:text-[#2D2D2D]'
+              ? 'bg-accent/12 border-accent/40 text-accent'
+              : 'bg-surface-raised/90 border-line-strong text-ink-muted hover:text-ink-soft'
           }`}
         >
           <Type size={13} /> {en ? 'Easy font' : '易讀字體'}
@@ -115,7 +115,7 @@ export default function PracticeSupport() {
         <button
           onClick={enoughForToday}
           title={en ? 'Done for today — no guilt, see you tomorrow.' : '今日夠了 —— 收工冇罪疚，聽日再戰。'}
-          className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-white/90 border-black/[0.10] text-[#6B6B6B] hover:text-[#B8860B] hover:border-[#B8860B]/40 shadow-sm transition-all"
+          className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-surface-raised/90 border-line-strong text-ink-muted hover:text-gold hover:border-gold/40 shadow-sm transition-all"
         >
           <Moon size={13} /> {en ? 'Enough today' : '今日夠了'}
         </button>
@@ -124,10 +124,10 @@ export default function PracticeSupport() {
       {/* F09 今日夠了 —— 零罪疚、零「你仲有 X 題未做」 */}
       {doneToday && (
         <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-sm bg-white border border-black/[0.08] shadow-xl rounded-2xl p-6 text-center">
+          <div className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
             <div className="text-3xl mb-3" aria-hidden>🌙</div>
-            <p className="text-[#1A1A1A] font-medium mb-2">{en ? 'You did enough today.' : '你已經好叻，聽日再戰。'}</p>
-            <p className="text-sm text-[#6B6B6B] mb-5 leading-relaxed">
+            <p className="text-ink font-medium mb-2">{en ? 'You did enough today.' : '你已經好叻，聽日再戰。'}</p>
+            <p className="text-sm text-ink-muted mb-5 leading-relaxed">
               {blindSpotsToday > 0
                 ? en
                   ? `You uncovered ${blindSpotsToday} blind spot${blindSpotsToday > 1 ? 's' : ''} today — each one is a mark saved in the exam.`
@@ -139,13 +139,13 @@ export default function PracticeSupport() {
             <div className="space-y-2">
               <Link
                 href="/dashboard"
-                className="block min-h-11 rounded-[10px] bg-[#00726C] hover:bg-[#005F5A] text-white text-sm px-4 py-3 transition-colors"
+                className="block min-h-11 rounded-[10px] bg-accent-strong hover:bg-accent-hover text-on-accent text-sm px-4 py-3 transition-colors"
               >
                 {en ? 'Back to dashboard' : '返回我的進度'}
               </Link>
               <button
                 onClick={() => setDoneToday(false)}
-                className="block w-full min-h-11 rounded-[10px] border border-black/[0.12] text-[#6B6B6B] text-sm px-4 py-3 hover:text-[#2D2D2D] transition-colors"
+                className="block w-full min-h-11 rounded-[10px] border border-line-strong text-ink-muted text-sm px-4 py-3 hover:text-ink-soft transition-colors"
               >
                 {en ? 'Actually, one more' : '諗返轉頭，再做多陣'}
               </button>

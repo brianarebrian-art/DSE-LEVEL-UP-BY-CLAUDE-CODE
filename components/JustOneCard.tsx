@@ -44,17 +44,17 @@ export default function JustOneCard({
 
   return (
     <div
-      className={`bg-white border border-black/[0.06] rounded-2xl p-6 flex flex-col gap-4 ${
+      className={`bg-surface-raised border border-line rounded-2xl p-6 flex flex-col gap-4 ${
         stack ? '' : 'sm:flex-row sm:items-center'
       } ${className}`}
     >
       <div className="flex items-start gap-3 flex-1">
-        <Sprout size={20} className="text-[#008B84] shrink-0 mt-0.5" aria-hidden />
+        <Sprout size={20} className="text-accent shrink-0 mt-0.5" aria-hidden />
         <div>
-          <p className="text-[#1A1A1A] font-medium mb-1">
+          <p className="text-ink font-medium mb-1">
             {en ? 'Only got it in you for one? That works.' : '今日只做 1 題都得。'}
           </p>
-          <p className="text-sm text-[#6B6B6B] leading-relaxed">
+          <p className="text-sm text-ink-muted leading-relaxed">
             {en
               ? 'No timer pressure, no score, no streak. Just one question — then stop whenever you want.'
               : '冇計分、冇壓力。做 1 題就得，之後想幾時收工都得。'}
@@ -63,7 +63,7 @@ export default function JustOneCard({
       </div>
       <Link
         href={`/practice?subject=${encodeURIComponent(subjectId)}&size=1`}
-        className="shrink-0 min-h-11 inline-flex items-center justify-center bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-5 py-3 rounded-xl transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#008B84]"
+        className="shrink-0 min-h-11 inline-flex items-center justify-center bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         {subjectName
           ? en

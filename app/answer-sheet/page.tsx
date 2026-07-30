@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function AnswerSheetPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen bg-surface text-ink-soft">
       <div className="sr-only">
         <h1>紙筆對答案 · Paper answer sheet{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
         <p>輸入「紙筆戰士」列印卷上的卷號，系統會以同一組亂數重建完全相同的試卷。逐題輸入你在紙上的答案，即時揭曉對錯，並可就答錯的題目自我診斷錯因（概念盲區、審題陷阱、運算粗心），記錄會併入你的錯因雷達。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
@@ -32,7 +32,7 @@ export default function AnswerSheetPage() {
 
       <Suspense
         fallback={
-          <div className="mx-auto max-w-2xl px-4 py-8 text-sm text-[#6B6B6B]">
+          <div className="mx-auto max-w-2xl px-4 py-8 text-sm text-ink-muted">
             載入中… · Loading…{/* i18n-exempt: 雙語已並列（Suspense fallback 喺 server component 內，冇 locale） */}
           </div>
         }

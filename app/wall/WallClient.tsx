@@ -137,8 +137,8 @@ export default function WallClient() {
   const composer = useMemo(() => {
     if (!open) {
       return (
-        <div className="rounded-2xl border border-black/[0.06] bg-white p-6 text-center text-sm text-[#6B6B6B]">
-          <Lock size={18} className="mx-auto mb-2 text-[#B8860B]" />
+        <div className="rounded-2xl border border-line bg-surface-raised p-6 text-center text-sm text-ink-muted">
+          <Lock size={18} className="mx-auto mb-2 text-gold" />
           {en
             ? 'The wall is paused for now. The reflections below are still here for you.'
             : '個牆暫時休息緊。下面嘅留言仲喺度陪住你。'}
@@ -146,17 +146,17 @@ export default function WallClient() {
       )
     }
     if (status === 'loading') {
-      return <div className="h-32 rounded-2xl border border-black/[0.06] bg-white animate-pulse" />
+      return <div className="h-32 rounded-2xl border border-line bg-surface-raised animate-pulse" />
     }
     if (!user) {
       return (
-        <div className="rounded-2xl border border-black/[0.06] bg-white p-6 text-center">
-          <p className="text-sm text-[#6B6B6B]">
+        <div className="rounded-2xl border border-line bg-surface-raised p-6 text-center">
+          <p className="text-sm text-ink-muted">
             {en ? 'Sign in to leave an anonymous message. You will show up only as “Student #XXXX”.' : '登入就可以匿名留言。你只會顯示為「考生 #XXXX」。'}
           </p>
           <button
             onClick={() => authSignInGoogle('/wall')}
-            className="mt-3 min-h-11 inline-flex items-center gap-2 rounded-lg bg-[#00726C] px-4 py-2 text-sm font-medium text-white hover:bg-[#005F5A] transition-colors"
+            className="mt-3 min-h-11 inline-flex items-center gap-2 rounded-lg bg-accent-strong px-4 py-2 text-sm font-medium text-on-accent hover:bg-accent-hover transition-colors"
           >
             {en ? 'Sign in with Google' : 'Google 登入'}
           </button>
@@ -164,13 +164,13 @@ export default function WallClient() {
       )
     }
     return (
-      <div className="rounded-2xl border border-black/[0.06] bg-white p-4">
+      <div className="rounded-2xl border border-line bg-surface-raised p-4">
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value.slice(0, MAX))}
           rows={3}
           placeholder={en ? 'Write how you feel tonight…' : '寫低你今晚嘅心情…'}
-          className="w-full resize-none rounded-lg border border-black/[0.08] bg-[#FAFAF8] p-3 text-sm text-[#2D2D2D] placeholder:text-[#9CA3AF] focus:border-[#008B84] focus:outline-none"
+          className="w-full resize-none rounded-lg border border-line bg-surface p-3 text-sm text-ink-soft placeholder:text-ink-faint focus:border-accent focus:outline-none"
         />
         <div className="mt-2 flex flex-wrap gap-1.5">
           {WALL_TAG_KEYS.map((k) => {
@@ -180,7 +180,7 @@ export default function WallClient() {
                 key={k}
                 onClick={() => toggleTag(k)}
                 className={`min-h-9 rounded-full px-3 py-1 text-xs transition-colors ${
-                  on ? 'bg-[#008B84]/12 text-[#00726C] ring-1 ring-[#008B84]/40' : 'bg-black/[0.04] text-[#6B6B6B] hover:bg-black/[0.07]'
+                  on ? 'bg-accent/12 text-accent-strong ring-1 ring-accent/40' : 'bg-line text-ink-muted hover:bg-line'
                 }`}
               >
                 {WALL_TAG_EMOJI[k]} {en ? TAG_LABEL[k].en : TAG_LABEL[k].zh}
@@ -189,18 +189,18 @@ export default function WallClient() {
           })}
         </div>
         <div className="mt-2 flex items-center justify-between">
-          <span className={`text-xs ${remaining < 0 ? 'text-[#C2185B]' : 'text-[#9CA3AF]'}`}>
+          <span className={`text-xs ${remaining < 0 ? 'text-rose' : 'text-ink-faint'}`}>
             {content.length} / {MAX}
           </span>
           <button
             onClick={submit}
             disabled={!canSubmit}
-            className="min-h-11 inline-flex items-center gap-1.5 rounded-lg bg-[#00726C] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#005F5A] disabled:cursor-not-allowed disabled:opacity-40"
+            className="min-h-11 inline-flex items-center gap-1.5 rounded-lg bg-accent-strong px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
             <Send size={14} /> {en ? 'Post' : '發布'}
           </button>
         </div>
-        <p className="mt-2 text-xs leading-relaxed text-[#9CA3AF]">
+        <p className="mt-2 text-xs leading-relaxed text-ink-faint">
           {en
             ? 'Every post is read by a real person before it goes public — this keeps everyone safe, so it may take a little while to appear.'
             : '每一則留言都會由真人睇過先公開 —— 為咗大家安全，可能要等一陣先出現。'}
@@ -212,11 +212,11 @@ export default function WallClient() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
       <header className="mb-5">
-        <h1 className="flex items-center gap-2 text-2xl font-medium text-[#1A1A1A]">
-          <Moon size={22} className="text-[#7C3AED]" />
+        <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
+          <Moon size={22} className="text-violet" />
           {en ? 'Shadow Study Room' : '影子溫書室'}
         </h1>
-        <p className="mt-1 text-sm text-[#6B6B6B]">
+        <p className="mt-1 text-sm text-ink-muted">
           {en ? 'An anonymous space to cheer each other on. Be kind — be safe.' : '匿名打氣互助牆 · 一齊撐住 · 安全空間'}
         </p>
       </header>
@@ -233,8 +233,8 @@ export default function WallClient() {
         <div
           className={`mt-3 rounded-xl border p-3 text-sm ${
             notice === 'pending'
-              ? 'border-[#008B84]/25 bg-[#008B84]/[0.06] text-[#00635E]'
-              : 'border-[#B8860B]/30 bg-[#B8860B]/10 text-[#8a6608]'
+              ? 'border-accent/25 bg-accent/[0.06] text-accent-strong'
+              : 'border-gold/30 bg-gold/10 text-gold-strong'
           }`}
         >
           {notice === 'pending' && (en ? 'Thank you for sharing 💜 Your message is with a real person for review and will appear once approved.' : '多謝你嘅分享 💜 你嘅留言已交俾真人審核，通過後就會出現。')}
@@ -247,7 +247,7 @@ export default function WallClient() {
       {/* 發帖者本人撞到危機詞 → 溫柔多提一次熱線（唔 block 佢個帖） */}
       {hotline && (
         <div className="mt-3">
-          <p className="mb-1.5 text-sm text-[#4A4A4A]">
+          <p className="mb-1.5 text-sm text-ink-soft">
             {en ? 'It sounds like tonight is heavy. Please talk to someone — you matter.' : '聽落今晚好沉重。搵個人傾下好嗎？你好重要。'}
           </p>
           <HotlineCard emphasis />
@@ -257,25 +257,25 @@ export default function WallClient() {
       {/* Feed */}
       <div className="mt-6 space-y-3">
         {loading ? (
-          <div className="h-24 rounded-2xl border border-black/[0.06] bg-white animate-pulse" />
+          <div className="h-24 rounded-2xl border border-line bg-surface-raised animate-pulse" />
         ) : posts.length === 0 ? (
-          <div className="rounded-2xl border border-black/[0.06] bg-white p-8 text-center text-sm text-[#6B6B6B]">
+          <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center text-sm text-ink-muted">
             {en ? 'No messages yet — be the first to leave a little light. 🌙' : '仲未有留言 —— 你可以係第一個留低一點光嘅人。🌙'}
           </div>
         ) : (
           posts.map((p) => (
-            <article key={p.id} className="rounded-2xl border border-black/[0.06] bg-white p-4">
-              <div className="mb-2 flex items-center gap-2 text-xs text-[#9CA3AF]">
-                <span className="font-medium text-[#7C3AED]">🌙 {p.author_hash}</span>
+            <article key={p.id} className="rounded-2xl border border-line bg-surface-raised p-4">
+              <div className="mb-2 flex items-center gap-2 text-xs text-ink-faint">
+                <span className="font-medium text-violet">🌙 {p.author_hash}</span>
                 <span>·</span>
                 <span>{timeAgo(p.created_at, en)}</span>
               </div>
-              <p className="whitespace-pre-wrap text-sm leading-relaxed text-[#2D2D2D]">{p.content}</p>
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink-soft">{p.content}</p>
               {p.tags.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {p.tags.map((t) =>
                     WALL_TAG_KEYS.includes(t as WallTagKey) ? (
-                      <span key={t} className="rounded-full bg-black/[0.04] px-2 py-0.5 text-xs text-[#6B6B6B]">
+                      <span key={t} className="rounded-full bg-line px-2 py-0.5 text-xs text-ink-muted">
                         {WALL_TAG_EMOJI[t as WallTagKey]} {en ? TAG_LABEL[t as WallTagKey].en : TAG_LABEL[t as WallTagKey].zh}
                       </span>
                     ) : null,
@@ -286,12 +286,12 @@ export default function WallClient() {
                 <button
                   onClick={() => like(p.id)}
                   className={`min-h-11 inline-flex items-center gap-1.5 text-sm transition-colors ${
-                    p.liked ? 'text-[#C2185B]' : 'text-[#9CA3AF] hover:text-[#C2185B]'
+                    p.liked ? 'text-rose' : 'text-ink-faint hover:text-rose'
                   }`}
                   aria-pressed={p.liked}
                   aria-label={en ? 'Cheer this on' : '為佢打氣'}
                 >
-                  <Heart size={16} className={p.liked ? 'fill-[#C2185B]' : ''} /> {p.likes_count}
+                  <Heart size={16} className={p.liked ? 'fill-rose' : ''} /> {p.likes_count}
                 </button>
               </div>
             </article>

@@ -16,15 +16,15 @@ export default function WaitingPage() {
   const en = locale === 'en'
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen bg-surface text-ink-soft">
       <div className="mx-auto max-w-2xl px-4 py-12">
         {/* Hero */}
         <div className="mb-10 text-center">
           <div className="mb-4 text-5xl" aria-hidden>🫂</div>
-          <h1 className="mb-3 text-3xl font-medium text-[#1A1A1A] sm:text-4xl">
+          <h1 className="mb-3 text-3xl font-medium text-ink sm:text-4xl">
             {en ? 'Before results day, we’re with you' : '放榜前，我哋陪你'}
           </h1>
-          <p className="mx-auto max-w-xl text-[#6B6B6B] leading-relaxed">
+          <p className="mx-auto max-w-xl text-ink-muted leading-relaxed">
             {en
               ? 'The waiting can feel heavy. Take a slow breath — whatever the result, you deserve respect.'
               : '等待嘅日子可能好難捱。深呼吸，無論結果點，你都值得被尊重。'}
@@ -38,7 +38,7 @@ export default function WaitingPage() {
 
         {/* 4-7-8 呼吸法 */}
         <section className="mb-8">
-          <h2 className="mb-3 text-lg font-medium text-[#1A1A1A]">
+          <h2 className="mb-3 text-lg font-medium text-ink">
             {en ? 'Take a breather' : '唞一唞'}
           </h2>
           <BreathingExercise />
@@ -46,17 +46,17 @@ export default function WaitingPage() {
 
         {/* 社群互助牆 —— 預留位（完整版＝人手審核 UGC，尚未上線） */}
         <section className="mb-8">
-          <h2 className="mb-3 text-lg font-medium text-[#1A1A1A]">
+          <h2 className="mb-3 text-lg font-medium text-ink">
             {en ? 'Community wall' : '社群互助牆'}
           </h2>
-          <div className="rounded-2xl border border-dashed border-black/[0.12] bg-white p-8 text-center">
-            <Users size={22} className="mx-auto mb-3 text-[#9CA3AF]" aria-hidden />
-            <p className="text-sm text-[#6B6B6B] leading-relaxed">
+          <div className="rounded-2xl border border-dashed border-line-strong bg-surface-raised p-8 text-center">
+            <Users size={22} className="mx-auto mb-3 text-ink-faint" aria-hidden />
+            <p className="text-sm text-ink-muted leading-relaxed">
               {en
                 ? 'An anonymous support wall is on the way — with real human review before anything goes public, so it stays a safe space.'
                 : '匿名打氣互助牆準備緊 —— 帖子會經真人審核先公開，確保呢度係一個安全嘅空間。'}
             </p>
-            <p className="mt-2 text-xs text-[#9CA3AF]">
+            <p className="mt-2 text-xs text-ink-faint">
               {en ? 'Coming soon' : '即將推出'}
             </p>
           </div>
@@ -64,15 +64,15 @@ export default function WaitingPage() {
 
         {/* 危機熱線信號牌 —— 真實已驗證號碼（撒瑪利亞會 / 生命熱線）+ 醫療免責 */}
         <section className="mb-10">
-          <div className="rounded-2xl border border-[#C2185B]/15 bg-[#C2185B]/[0.04] p-5 text-center">
-            <p className="text-sm leading-relaxed text-[#2D2D2D]">
+          <div className="rounded-2xl border border-rose/15 bg-rose/[0.04] p-5 text-center">
+            <p className="text-sm leading-relaxed text-ink-soft">
               {en ? 'Feeling overwhelmed? You’re not alone. The Samaritans 24-hr hotline: ' : '覺得頂唔順？你唔係一個人。撒瑪利亞會 24 小時熱線：'}
-              <a href="tel:28960000" className="mx-1 inline-flex min-h-11 items-center font-medium text-[#008B84] underline underline-offset-2">2896 0000</a>
+              <a href="tel:28960000" className="mx-1 inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-2">2896 0000</a>
               {' | '}
               {en ? 'Suicide Prevention Services: ' : '生命熱線：'}
-              <a href="tel:23820000" className="mx-1 inline-flex min-h-11 items-center font-medium text-[#008B84] underline underline-offset-2">2382 0000</a>
+              <a href="tel:23820000" className="mx-1 inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-2">2382 0000</a>
             </p>
-            <p className="mt-1 text-xs leading-relaxed text-[#9CA3AF]">
+            <p className="mt-1 text-xs leading-relaxed text-ink-faint">
               {en
                 ? 'This platform is not a professional medical service; the above is for reference only. In an emergency, call 999 immediately or go to the nearest A&E.'
                 : '本平台非專業醫療機構，以上資訊僅供參考。如情況緊急，請立即致電 999 或前往就近急症室。'}
@@ -84,7 +84,7 @@ export default function WaitingPage() {
         <div className="text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-[#6B6B6B] transition-colors hover:text-[#008B84]"
+            className="inline-flex items-center gap-2 text-sm text-ink-muted transition-colors hover:text-accent"
           >
             <ArrowLeft size={15} /> {en ? 'Back to home' : '返回首頁'}
           </Link>

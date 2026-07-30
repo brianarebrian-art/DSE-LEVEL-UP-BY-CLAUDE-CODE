@@ -4,7 +4,7 @@ import NotesOverview from './NotesOverview'
 // 冇 AI 摘要、冇生成內容（見 lib/notes/notes.ts 檔頭）。
 export default function NotesPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen bg-surface text-ink-soft">
       <NotesOverview />
     </div>
   )

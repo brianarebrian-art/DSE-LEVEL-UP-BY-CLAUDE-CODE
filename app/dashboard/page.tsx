@@ -69,34 +69,34 @@ export default function DashboardPage() {
 
   if (!stats) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] text-[#6B6B6B]">{t.common.loading}</div>
+      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.common.loading}</div>
     )
   }
 
   // F-NTM: 休息畫面 — 無題目、無計數、無「落後」暗示；/relax 照常開放；04:00 自動失效
   if (ntm) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-[#FAFAF8] text-[#2D2D2D]">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
         <div className="text-6xl" aria-hidden>🌙</div>
-        <h1 className="text-2xl font-medium text-[#1A1A1A]">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
-        <p className="text-[#6B6B6B] leading-relaxed">
+        <h1 className="text-2xl font-medium text-ink">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
+        <p className="text-ink-muted leading-relaxed">
           {en ? 'Rest well tonight. See you tomorrow.' : '今晚好好休息。聽日再見。'}
           <br />
           {en ? 'Your progress has been saved automatically.' : '你嘅進度已自動儲存。'}
         </p>
         <Link
           href="/relax"
-          className="min-h-11 inline-flex items-center bg-[#008B84]/10 text-[#008B84] border border-[#008B84]/30 hover:bg-[#008B84]/20 rounded-xl px-6 py-3 font-medium transition-all"
+          className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 rounded-xl px-6 py-3 font-medium transition-all"
         >
           🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
         <button
           onClick={() => setNotTonight(false)}
-          className="min-h-11 text-sm text-[#6B6B6B] hover:text-[#008B84] underline underline-offset-4 transition-colors"
+          className="min-h-11 text-sm text-ink-muted hover:text-accent underline underline-offset-4 transition-colors"
         >
           {en ? 'Turn off early' : '提早關閉呢個模式'}
         </button>
-        <p className="text-xs text-[#9CA3AF]">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
+        <p className="text-xs text-ink-faint">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
       </div>
     )
   }
@@ -111,19 +111,19 @@ export default function DashboardPage() {
   // Empty state — no practice yet.
   if (stats.totalAttempts === 0) {
     return (
-      <div className="min-h-screen px-4 py-20 bg-[#FAFAF8] text-[#2D2D2D]">
+      <div className="min-h-screen px-4 py-20 bg-surface text-ink-soft">
         <div className="max-w-md mx-auto">
           {/* Even with zero history, let new users bind Google to sync */}
           <SyncStatus />
           <div className="text-center">
             <div className="text-6xl mb-6">📊</div>
-            <h1 className="text-3xl font-medium mb-3 text-[#1A1A1A]">{d.title}</h1>
-            <p className="text-[#6B6B6B] mb-8">
+            <h1 className="text-3xl font-medium mb-3 text-ink">{d.title}</h1>
+            <p className="text-ink-muted mb-8">
               {d.emptyBody}
             </p>
             <Link
               href="/subjects"
-              className="inline-flex items-center gap-2 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-all"
             >
               {d.emptyCta} <ArrowRight size={16} />
             </Link>
@@ -153,33 +153,33 @@ export default function DashboardPage() {
   // 統計徽章：連續溫習係個人習慣指標，唔係競賽 gamification —— 憲章 §2 禁「火焰」符號，
   // 故保留數值但用中性 CalendarCheck + 主色青，唔用 🔥/橙。
   const statCards = [
-    { icon: CalendarCheck, label: d.statStreak, value: `${stats.currentStreak}`, unit: d.statStreakUnit, accent: 'text-[#008B84]' },
-    { icon: BookOpen, label: d.statQuestions, value: `${stats.totalQuestions}`, unit: d.statQuestionsUnit, accent: 'text-[#008B84]' },
-    { icon: Target, label: d.statAccuracy, value: `${accuracyPct}`, unit: '%', accent: 'text-[#008B84]' },
-    { icon: TrendingUp, label: d.statAttempts, value: `${stats.totalAttempts}`, unit: d.statAttemptsUnit, accent: 'text-[#B8860B]' },
+    { icon: CalendarCheck, label: d.statStreak, value: `${stats.currentStreak}`, unit: d.statStreakUnit, accent: 'text-accent' },
+    { icon: BookOpen, label: d.statQuestions, value: `${stats.totalQuestions}`, unit: d.statQuestionsUnit, accent: 'text-accent' },
+    { icon: Target, label: d.statAccuracy, value: `${accuracyPct}`, unit: '%', accent: 'text-accent' },
+    { icon: TrendingUp, label: d.statAttempts, value: `${stats.totalAttempts}`, unit: d.statAttemptsUnit, accent: 'text-gold' },
   ]
 
   return (
-    <div className="min-h-screen px-4 py-12 bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
           <div>
-            <h1 className="text-3xl sm:text-4xl font-medium mb-1 text-[#1A1A1A]">{d.title}</h1>
-            <p className="text-[#6B6B6B] text-sm">
+            <h1 className="text-3xl sm:text-4xl font-medium mb-1 text-ink">{d.title}</h1>
+            <p className="text-ink-muted text-sm">
               {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
             </p>
           </div>
           <div className="flex items-center gap-2">
             <Link
               href="/dashboard/report"
-              className="inline-flex items-center gap-2 bg-white border border-[#008B84]/30 text-[#008B84] hover:bg-[#008B84]/[0.06] px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
+              className="inline-flex items-center gap-2 bg-surface-raised border border-accent/30 text-accent hover:bg-accent/[0.06] px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
             >
               📋 {en ? 'Generate report' : '生成報告'}
             </Link>
             <Link
               href="/focus"
-              className="inline-flex items-center gap-2 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#2D2D2D] px-4 py-2.5 rounded-xl transition-all text-sm"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-all text-sm"
             >
               🍅 {en ? 'Focus' : '番茄鐘'}
             </Link>
@@ -187,13 +187,13 @@ export default function DashboardPage() {
             <button
               onClick={() => setNotTonight(true)}
               title={en ? 'Hide all nudges and counters until 04:00' : '收起所有題目推送同計數，到 04:00 自動恢復'}
-              className="inline-flex items-center gap-2 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#008B84] px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-accent px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
             >
               🌙 {en ? 'Not tonight' : '今晚唔溫得'}
             </button>
             <Link
               href="/subjects"
-              className="inline-flex items-center gap-2 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-5 py-2.5 rounded-xl transition-all text-sm"
+              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-all text-sm"
             >
               {d.continueP} <ArrowRight size={15} />
             </Link>
@@ -206,13 +206,13 @@ export default function DashboardPage() {
         {/* Stat cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
           {statCards.map((c) => (
-            <div key={c.label} className="bg-white border border-black/[0.06] rounded-2xl p-5">
+            <div key={c.label} className="bg-surface-raised border border-line rounded-2xl p-5">
               <c.icon size={18} className={`${c.accent} mb-3`} />
-              <div className="text-2xl font-medium text-[#1A1A1A]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
                 {c.value}
-                <span className="text-sm text-[#9CA3AF] font-normal ml-1">{c.unit}</span>
+                <span className="text-sm text-ink-faint font-normal ml-1">{c.unit}</span>
               </div>
-              <div className="text-xs text-[#6B6B6B] mt-1">{c.label}</div>
+              <div className="text-xs text-ink-muted mt-1">{c.label}</div>
             </div>
           ))}
         </div>
@@ -236,34 +236,34 @@ export default function DashboardPage() {
 
         {/* 高效 ROI — replaces the EXP/rank vanity meter with honest money-and-time
             framing tied to the free-for-everyone mission (no fabricated peer percentiles). */}
-        <div className="bg-white border border-black/[0.06] rounded-2xl p-6 mb-10">
+        <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
           <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
             <div>
-              <div className="text-xs text-[#6B6B6B] mb-1">{en ? 'Efficiency ROI' : '高效溫習 ROI'}</div>
-              <div className="text-xl font-medium text-[#1A1A1A]">
+              <div className="text-xs text-ink-muted mb-1">{en ? 'Efficiency ROI' : '高效溫習 ROI'}</div>
+              <div className="text-xl font-medium text-ink">
                 {en ? 'Every drill, a real return' : '每一卷，都係實打實嘅回報'}
               </div>
             </div>
-            <span className="inline-flex items-center gap-1.5 text-xs text-[#008B84] bg-[#008B84]/[0.08] border border-[#008B84]/20 px-3 py-1.5 rounded-full">
+            <span className="inline-flex items-center gap-1.5 text-xs text-accent bg-accent/[0.08] border border-accent/20 px-3 py-1.5 rounded-full">
               <Coins size={13} /> {en ? '100% free · no tutoring fees' : '完全免費 · 慳返補習費'}
             </span>
           </div>
 
           <div className="grid grid-cols-3 gap-3 mb-6">
-            <div className="bg-[#F5F5F0] rounded-xl p-4 text-center">
-              <Crosshair size={16} className="text-[#B8860B] mx-auto mb-2" />
-              <div className="text-2xl font-medium text-[#1A1A1A]" style={{ fontVariantNumeric: 'tabular-nums' }}>{conquered}</div>
-              <div className="text-[11px] text-[#6B6B6B] mt-1">{en ? 'Blind spots conquered' : '攻克思維盲點'}</div>
+            <div className="bg-surface-sunken rounded-xl p-4 text-center">
+              <Crosshair size={16} className="text-gold mx-auto mb-2" />
+              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{conquered}</div>
+              <div className="text-[11px] text-ink-muted mt-1">{en ? 'Blind spots conquered' : '攻克思維盲點'}</div>
             </div>
-            <div className="bg-[#F5F5F0] rounded-xl p-4 text-center">
-              <BookOpen size={16} className="text-[#008B84] mx-auto mb-2" />
-              <div className="text-2xl font-medium text-[#1A1A1A]" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.totalQuestions}</div>
-              <div className="text-[11px] text-[#6B6B6B] mt-1">{en ? 'Questions drilled' : '已操練題數'}</div>
+            <div className="bg-surface-sunken rounded-xl p-4 text-center">
+              <BookOpen size={16} className="text-accent mx-auto mb-2" />
+              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.totalQuestions}</div>
+              <div className="text-[11px] text-ink-muted mt-1">{en ? 'Questions drilled' : '已操練題數'}</div>
             </div>
-            <div className="bg-[#F5F5F0] rounded-xl p-4 text-center">
-              <CalendarCheck size={16} className="text-[#008B84] mx-auto mb-2" />
-              <div className="text-2xl font-medium text-[#1A1A1A]" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.activeDays}</div>
-              <div className="text-[11px] text-[#6B6B6B] mt-1">{en ? 'Days invested' : '自主溫習日數'}</div>
+            <div className="bg-surface-sunken rounded-xl p-4 text-center">
+              <CalendarCheck size={16} className="text-accent mx-auto mb-2" />
+              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.activeDays}</div>
+              <div className="text-[11px] text-ink-muted mt-1">{en ? 'Days invested' : '自主溫習日數'}</div>
             </div>
           </div>
 
@@ -272,7 +272,7 @@ export default function DashboardPage() {
               {radarAxes.length >= 3 ? (
                 <RadarChart axes={radarAxes} />
               ) : (
-                <div className="text-center text-sm text-[#6B6B6B] py-12">
+                <div className="text-center text-sm text-ink-muted py-12">
                   {en
                     ? 'Practise a few more topics to unlock your ability radar.'
                     : '再操多幾個唔同課題，就會解鎖你嘅能力雷達圖。'}
@@ -280,15 +280,15 @@ export default function DashboardPage() {
               )}
             </div>
             <div className="text-center sm:text-left">
-              <h3 className="font-medium text-lg mb-1 text-[#1A1A1A]">🛠️ {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}</h3>
-              <p className="text-sm text-[#6B6B6B] mb-4">
+              <h3 className="font-medium text-lg mb-1 text-ink">🛠️ {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}</h3>
+              <p className="text-sm text-ink-muted mb-4">
                 {en
                   ? 'Auto-build a 20-question drill from your lowest win-rate topics.'
                   : '自動由你勝率最低嘅課題，砌一份 20 題專屬特訓卷。'}
               </p>
               <button
                 onClick={onRepair}
-                className="inline-flex items-center gap-2 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-5 py-3 rounded-xl transition-all"
+                className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-all"
               >
                 <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '一鍵生成：專屬盲點修復卷'}
               </button>
@@ -305,7 +305,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Per-subject performance */}
-        <h2 className="text-lg font-medium mb-4 text-[#1A1A1A]">{d.perSubject}</h2>
+        <h2 className="text-lg font-medium mb-4 text-ink">{d.perSubject}</h2>
         <div className="space-y-3 mb-10">
           {stats.subjects.map((s) => {
             const meta = getSubject(s.subjectId)
@@ -314,28 +314,28 @@ export default function DashboardPage() {
               <Link
                 key={s.subjectId}
                 href={`/subjects/${s.subjectId}`}
-                className="block bg-white hover:bg-[#F5F5F0] border border-black/[0.06] rounded-xl p-4 transition-all"
+                className="block bg-surface-raised hover:bg-surface-sunken border border-line rounded-xl p-4 transition-all"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2 font-medium text-[#1A1A1A]">
+                  <div className="flex items-center gap-2 font-medium text-ink">
                     <span>{meta?.emoji ?? '📘'}</span>
                     {subjName(s.subjectId, s.subjectName)}
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-[#9CA3AF]">{s.questions}{d.questionsUnit}</span>
+                    <span className="text-xs text-ink-faint">{s.questions}{d.questionsUnit}</span>
                     <span className={`text-xs font-medium text-black px-2 py-0.5 rounded ${gradeBgColors[s.bestGrade] ?? 'bg-slate-400'}`}>
                       {d.bestPrefix}{s.bestGrade}
                     </span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="flex-1 h-2 bg-black/[0.06] rounded-full overflow-hidden">
+                  <div className="flex-1 h-2 bg-line rounded-full overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#008B84] to-[#7C3AED]"
+                      className="h-full rounded-full bg-gradient-to-r from-accent to-violet"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
-                  <span className="text-sm text-[#6B6B6B] w-10 text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>{pct}%</span>
+                  <span className="text-sm text-ink-muted w-10 text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>{pct}%</span>
                 </div>
               </Link>
             )
@@ -345,13 +345,13 @@ export default function DashboardPage() {
         {/* Weak topics */}
         {stats.weakTopics.length > 0 && (
           <>
-            <h2 className="text-lg font-medium mb-4 text-[#1A1A1A]">{d.weakTitle}</h2>
-            <div className="bg-[#B8860B]/[0.06] border border-[#B8860B]/25 rounded-2xl p-5 mb-10">
+            <h2 className="text-lg font-medium mb-4 text-ink">{d.weakTitle}</h2>
+            <div className="bg-gold/[0.06] border border-gold/25 rounded-2xl p-5 mb-10">
               <div className="space-y-3">
                 {stats.weakTopics.map((wt) => (
                   <div key={wt.topic} className="flex items-center justify-between text-sm">
-                    <span className="text-[#2D2D2D]">💡 {wt.topic}</span>
-                    <span className="text-[#B8860B]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                    <span className="text-ink-soft">💡 {wt.topic}</span>
+                    <span className="text-gold" style={{ fontVariantNumeric: 'tabular-nums' }}>
                       {wt.correct}/{wt.total}{d.weakCorrectA}{Math.round(wt.accuracy * 100)}%{d.weakCorrectB}
                     </span>
                   </div>
@@ -362,8 +362,8 @@ export default function DashboardPage() {
         )}
 
         {/* Recent attempts */}
-        <h2 className="text-lg font-medium mb-4 text-[#1A1A1A]">{d.recentTitle}</h2>
-        <div className="bg-white border border-black/[0.06] rounded-2xl divide-y divide-black/[0.06] mb-10">
+        <h2 className="text-lg font-medium mb-4 text-ink">{d.recentTitle}</h2>
+        <div className="bg-surface-raised border border-line rounded-2xl divide-y divide-line mb-10">
           {stats.recent.map((a, i) => {
             const meta = getSubject(a.subjectId)
             return (
@@ -371,12 +371,12 @@ export default function DashboardPage() {
                 <div className="flex items-center gap-3">
                   <span className="text-xl">{meta?.emoji ?? '📘'}</span>
                   <div>
-                    <div className="text-sm font-medium text-[#1A1A1A]">{subjName(a.subjectId, a.subjectName)}</div>
-                    <div className="text-xs text-[#9CA3AF]">{relativeTime(a.timestamp, d)}</div>
+                    <div className="text-sm font-medium text-ink">{subjName(a.subjectId, a.subjectName)}</div>
+                    <div className="text-xs text-ink-faint">{relativeTime(a.timestamp, d)}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-[#6B6B6B]" style={{ fontVariantNumeric: 'tabular-nums' }}>{a.score}/{a.total}</span>
+                  <span className="text-sm text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>{a.score}/{a.total}</span>
                   <span className={`text-xs font-medium text-black px-2 py-0.5 rounded ${gradeBgColors[a.grade] ?? 'bg-slate-400'}`}>
                     {a.grade}
                   </span>
@@ -389,7 +389,7 @@ export default function DashboardPage() {
         {/* 社群卡：IG Group 影子溫書室（學生自發管理，唔係官方 — /relax/group 有清楚聲明） */}
         <Link
           href="/relax/group"
-          className="group block bg-white hover:bg-[#F5F5F0] border border-black/[0.06] rounded-2xl p-5 mb-10 transition-all"
+          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-all"
         >
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -401,13 +401,13 @@ export default function DashboardPage() {
                 📷
               </div>
               <div>
-                <div className="text-sm font-medium text-[#1A1A1A]">{en ? 'Shadow Study Room' : '影子溫書室'}</div>
-                <div className="text-xs text-[#6B6B6B] mt-0.5">
+                <div className="text-sm font-medium text-ink">{en ? 'Shadow Study Room' : '影子溫書室'}</div>
+                <div className="text-xs text-ink-muted mt-0.5">
                   {en ? 'IG Group · run by fellow students' : 'IG Group · 同路人管理'}
                 </div>
               </div>
             </div>
-            <span className="text-xs text-[#C2185B] shrink-0 group-hover:translate-x-0.5 transition-transform">
+            <span className="text-xs text-rose shrink-0 group-hover:translate-x-0.5 transition-transform">
               {en ? 'Join the chat →' : '加入傾偈 →'}
             </span>
           </div>
@@ -417,16 +417,16 @@ export default function DashboardPage() {
         <div className="text-center">
           {confirmReset ? (
             <div className="inline-flex items-center gap-3 text-xs flex-wrap justify-center">
-              <span className="text-[#6B6B6B]">{d.resetConfirm}</span>
+              <span className="text-ink-muted">{d.resetConfirm}</span>
               <button
                 onClick={() => { clearProgress(); setStats(computeStats([])); setConfirmReset(false) }}
-                className="font-medium text-[#C2185B] hover:text-[#A01450]"
+                className="font-medium text-rose hover:text-rose-strong"
               >
                 {en ? 'Confirm reset' : '確定清除'}
               </button>
               <button
                 onClick={() => setConfirmReset(false)}
-                className="text-[#9CA3AF] hover:text-[#6B6B6B]"
+                className="text-ink-faint hover:text-ink-muted"
               >
                 {en ? 'Cancel' : '取消'}
               </button>
@@ -434,7 +434,7 @@ export default function DashboardPage() {
           ) : (
             <button
               onClick={() => setConfirmReset(true)}
-              className="inline-flex items-center gap-2 text-xs text-[#9CA3AF] hover:text-[#6B6B6B] transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-ink-faint hover:text-ink-muted transition-colors"
             >
               <RotateCcw size={13} /> {d.resetBtn}
             </button>

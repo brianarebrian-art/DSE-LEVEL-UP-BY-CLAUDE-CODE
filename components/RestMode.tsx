@@ -95,20 +95,20 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
       role="dialog"
       aria-modal="true"
       aria-labelledby="rest-title"
-      className="fixed inset-0 z-[70] bg-[#FAFAF8]/97 backdrop-blur-sm flex items-center justify-center p-6"
+      className="fixed inset-0 z-[70] bg-surface/97 backdrop-blur-sm flex items-center justify-center p-6"
     >
       <div className="w-full max-w-sm text-center">
-        <p id="rest-title" className="text-xl text-[#1A1A1A] font-medium mb-1">
+        <p id="rest-title" className="text-xl text-ink font-medium mb-1">
           {en ? 'You are doing well. Take a rest.' : '你做得好，休息吓。'}
         </p>
-        <p className="text-sm text-[#6B6B6B] mb-8">
+        <p className="text-sm text-ink-muted mb-8">
           {en ? 'The timer is paused. Nothing is being lost.' : '計時已經停低咗，你冇蝕到任何嘢。'}
         </p>
 
         {/* 呼吸圓 —— 進出以 CSS transition 驅動，reduced-motion 下唔縮放 */}
         <div className="flex items-center justify-center h-56 mb-6" aria-hidden="true">
           <div
-            className="rounded-full bg-[#008B84]/10 border border-[#008B84]/30 flex items-center justify-center motion-reduce:!scale-100 motion-reduce:!transition-none"
+            className="rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center motion-reduce:!scale-100 motion-reduce:!transition-none"
             style={{
               width: 168,
               height: 168,
@@ -116,7 +116,7 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
               transition: `transform ${PHASE_MS[phase]}ms cubic-bezier(0.4, 0, 0.2, 1)`,
             }}
           >
-            <span className="text-[#00726C] text-sm">{phaseLabel}</span>
+            <span className="text-accent-strong text-sm">{phaseLabel}</span>
           </div>
         </div>
 
@@ -126,22 +126,22 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
               <button
                 key={d}
                 onClick={() => start(d)}
-                className="w-full min-h-11 rounded-xl border border-black/[0.10] bg-white text-[#2D2D2D] text-sm px-4 py-3 hover:border-[#008B84]/40 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#008B84]"
+                className="w-full min-h-11 rounded-xl border border-line-strong bg-surface-raised text-ink-soft text-sm px-4 py-3 hover:border-accent/40 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
               >
                 {en ? `Rest for ${d / 60} minute${d > 60 ? 's' : ''}` : `休息 ${d / 60} 分鐘`}
               </button>
             ))}
             <button
               onClick={close}
-              className="w-full min-h-11 rounded-xl bg-[#00726C] text-white text-sm px-4 py-3 hover:bg-[#005F5A] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#008B84]"
+              className="w-full min-h-11 rounded-xl bg-accent-strong text-on-accent text-sm px-4 py-3 hover:bg-accent-hover transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
               {en ? 'I am ready to carry on' : '我準備好繼續'}
             </button>
           </div>
         ) : (
           <div className="space-y-3">
-            <p className="text-2xl text-[#2D2D2D] tabular-nums" aria-live="off">{mmss(left)}</p>
-            <p className="text-sm text-[#6B6B6B] min-h-5">
+            <p className="text-2xl text-ink-soft tabular-nums" aria-live="off">{mmss(left)}</p>
+            <p className="text-sm text-ink-muted min-h-5">
               {done
                 ? (en ? 'Rest is over — come back whenever you are ready. No rush.' : '休息完喇 —— 準備好先返嚟，唔急。')
                 : soon
@@ -150,10 +150,10 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
             </p>
             <button
               onClick={close}
-              className={`w-full min-h-11 rounded-xl text-sm px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#008B84] ${
+              className={`w-full min-h-11 rounded-xl text-sm px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
                 done
-                  ? 'bg-[#00726C] text-white hover:bg-[#005F5A]'
-                  : 'border border-black/[0.10] bg-white text-[#2D2D2D] hover:border-[#008B84]/40'
+                  ? 'bg-accent-strong text-on-accent hover:bg-accent-hover'
+                  : 'border border-line-strong bg-surface-raised text-ink-soft hover:border-accent/40'
               }`}
             >
               {en ? 'I am ready to carry on' : '我準備好繼續'}

@@ -29,7 +29,7 @@ export default function WeaknessInsightCard({ data, en: enProp }: { data: Weakne
 
   return (
     <article
-      className="rounded-xl border border-slate-200/60 bg-white p-5 shadow-sm transition-colors duration-150 ease-out hover:border-slate-300 focus-within:border-slate-300"
+      className="rounded-xl border border-slate-200/60 bg-surface-raised p-5 shadow-sm transition-colors duration-150 ease-out hover:border-slate-300 focus-within:border-slate-300"
       aria-label={en ? `Weak-spot insight: ${data.topicEn}` : `考生雷區：${data.topicZh}`}
     >
       <div className="flex items-start justify-between gap-3">

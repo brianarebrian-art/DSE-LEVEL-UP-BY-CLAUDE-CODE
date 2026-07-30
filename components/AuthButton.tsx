@@ -22,7 +22,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
     return (
       <div className="flex items-center gap-2">
         <div
-          className="w-7 h-7 rounded-full bg-[#00726C] text-white grid place-items-center text-xs font-medium"
+          className="w-7 h-7 rounded-full bg-accent-strong text-on-accent grid place-items-center text-xs font-medium"
           title={user.email ?? label}
         >
           {initial}
@@ -32,7 +32,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
             onAction?.()
             authSignOut()
           }}
-          className="min-h-11 text-sm text-[#6B6B6B] hover:text-[#008B84] flex items-center gap-1 px-1"
+          className="min-h-11 text-sm text-ink-muted hover:text-accent flex items-center gap-1 px-1"
         >
           <LogOut size={14} /> {t.auth.signOut}
         </button>
@@ -48,7 +48,7 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
       }}
       // whitespace-nowrap：橫向導航條擠迫時「Google 登入」會斷成兩行，令掣高度
       // 不一致。同 2026-07-28 導航條修正一致，一律唔准喺條 bar 入面斷行。
-      className="min-h-11 flex items-center gap-2 text-sm whitespace-nowrap border border-black/[0.12] hover:border-[#008B84] text-[#2D2D2D] hover:text-[#008B84] rounded-lg px-3 py-1.5 transition-colors"
+      className="min-h-11 flex items-center gap-2 text-sm whitespace-nowrap border border-line-strong hover:border-accent text-ink-soft hover:text-accent rounded-lg px-3 py-1.5 transition-colors"
     >
       <LogIn size={14} /> {t.auth.signIn}
     </button>

@@ -12,19 +12,19 @@ import { useT } from '@/lib/i18n'
 export default function Footer() {
   const t = useT()
   return (
-    <footer className="border-t border-black/[0.06] bg-[#FAFAF8]">
+    <footer className="border-t border-line bg-surface">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
         {/* Layer 1：Doormat 二級導航 */}
         <div className="grid sm:grid-cols-3 gap-8 mb-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 font-medium text-lg mb-3 text-[#1A1A1A]">
-              <BookOpen size={20} className="text-[#008B84]" />
+            <div className="flex items-center gap-2 font-medium text-lg mb-3 text-ink">
+              <BookOpen size={20} className="text-accent" />
               <span>
-                DSE <span className="text-[#008B84]">Level Up</span>
+                DSE <span className="text-accent">Level Up</span>
               </span>
             </div>
-            <p className="text-[#6B6B6B] text-sm leading-relaxed">
+            <p className="text-ink-muted text-sm leading-relaxed">
               {t.footer.tagline1}
               <br />{t.footer.tagline2}
             </p>
@@ -32,20 +32,20 @@ export default function Footer() {
 
           {/* 練習 */}
           <div>
-            <div className="text-[#1A1A1A] font-medium mb-3">{t.footer.practiceHeading}</div>
-            <ul className="space-y-2 text-sm text-[#6B6B6B]">
+            <div className="text-ink font-medium mb-3">{t.footer.practiceHeading}</div>
+            <ul className="space-y-2 text-sm text-ink-muted">
               <li>
-                <Link href="/subjects/math" className="hover:text-[#008B84] transition-colors">
+                <Link href="/subjects/math" className="hover:text-accent transition-colors">
                   {t.footer.linkMath}
                 </Link>
               </li>
               <li>
-                <Link href="/methodology" className="hover:text-[#008B84] transition-colors">
+                <Link href="/methodology" className="hover:text-accent transition-colors">
                   {t.footer.linkMethodology}
                 </Link>
               </li>
               <li>
-                <Link href="/relax" className="hover:text-[#008B84] transition-colors">
+                <Link href="/relax" className="hover:text-accent transition-colors">
                   {t.footer.linkRelax}
                 </Link>
               </li>
@@ -54,20 +54,20 @@ export default function Footer() {
 
           {/* 關於 / 支援 */}
           <div>
-            <div className="text-[#1A1A1A] font-medium mb-3">{t.footer.aboutHeading}</div>
-            <ul className="space-y-2 text-sm text-[#6B6B6B]">
+            <div className="text-ink font-medium mb-3">{t.footer.aboutHeading}</div>
+            <ul className="space-y-2 text-sm text-ink-muted">
               <li>
-                <Link href="/about" className="hover:text-[#008B84] transition-colors">
+                <Link href="/about" className="hover:text-accent transition-colors">
                   {t.footer.aboutUs}
                 </Link>
               </li>
               <li>
-                <Link href="/transparency" className="hover:text-[#008B84] transition-colors">
+                <Link href="/transparency" className="hover:text-accent transition-colors">
                   {t.footer.transparency}
                 </Link>
               </li>
               <li>
-                <a href="mailto:dselevelup@gmail.com" className="hover:text-[#008B84] transition-colors">
+                <a href="mailto:dselevelup@gmail.com" className="hover:text-accent transition-colors">
                   {t.footer.contact}
                 </a>
               </li>
@@ -76,16 +76,16 @@ export default function Footer() {
         </div>
 
         {/* Layer 2：Trust 信任標誌 + HKEAA 免責（Luna §17 必須顯示） */}
-        <div className="border-t border-black/[0.06] pt-6 text-xs text-[#9CA3AF] leading-relaxed">
+        <div className="border-t border-line pt-6 text-xs text-ink-faint leading-relaxed">
           <p className="mb-2">
-            <span className="text-[#6B6B6B] font-medium">{t.footer.disclaimerLabel}</span>
+            <span className="text-ink-muted font-medium">{t.footer.disclaimerLabel}</span>
             {t.footer.disclaimerBody}
           </p>
           {/* Layer 3：Compliance —— 只連真實存在路由（/transparency），唔整 404 */}
-          <p className="text-[#9CA3AF]">
+          <p className="text-ink-faint">
             {t.footer.copyright}
             <span className="mx-2">·</span>
-            <Link href="/transparency" className="underline hover:text-[#008B84] transition-colors">
+            <Link href="/transparency" className="underline hover:text-accent transition-colors">
               {t.footer.transparency}
             </Link>
           </p>

@@ -4,7 +4,7 @@ import WallClient from './WallClient'
 // <body> 係暗色霓虹，本頁跟 dashboard/result/admin 慣例補 light-first 底色，唔穿底。
 export default function WallPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen bg-surface text-ink-soft">
       <WallClient />
     </div>
   )

@@ -36,11 +36,11 @@ export default function SyncStatus() {
   // Auth disabled, or pre-hydration → keep the original on-device teaser.
   if (!AUTH_ENABLED || !mounted || authStatus === 'loading') {
     return (
-      <div className="bg-white border border-black/[0.06] rounded-2xl p-4 mb-8 flex items-center gap-3 text-sm">
-        <Cloud size={18} className="text-[#9CA3AF] shrink-0" />
-        <span className="text-[#6B6B6B]">
+      <div className="bg-surface-raised border border-line rounded-2xl p-4 mb-8 flex items-center gap-3 text-sm">
+        <Cloud size={18} className="text-ink-faint shrink-0" />
+        <span className="text-ink-muted">
           {t.dashboard.loginTeaserA}
-          <span className="text-[#2D2D2D]">{t.dashboard.loginTeaserGoogle}</span>
+          <span className="text-ink-soft">{t.dashboard.loginTeaserGoogle}</span>
           {t.dashboard.loginTeaserB}
         </span>
       </div>
@@ -50,8 +50,8 @@ export default function SyncStatus() {
   // State 1 — not signed in: bind Google (disabled + spinner during redirect).
   if (!user) {
     return (
-      <div className="bg-white border border-[#B8860B]/30 rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap">
-        <span className="text-sm text-[#6B6B6B]">
+      <div className="bg-surface-raised border border-gold/30 rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap">
+        <span className="text-sm text-ink-muted">
           {en
             ? 'Progress is saved on this device. Bind a Google account to sync across devices.'
             : '進度暫存喺呢部裝置。綁定 Google 帳戶即可跨裝置同步。'}
@@ -62,7 +62,7 @@ export default function SyncStatus() {
             authSignInGoogle()
           }}
           disabled={binding}
-          className="inline-flex items-center gap-2 bg-[#00726C] hover:bg-[#005F5A] disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium px-4 py-2 rounded-xl transition-all text-sm shrink-0"
+          className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover disabled:opacity-60 disabled:cursor-not-allowed text-on-accent font-medium px-4 py-2 rounded-xl transition-all text-sm shrink-0"
         >
           {binding ? <Loader2 size={15} className="animate-spin" /> : <LogIn size={15} />}
           {binding ? (en ? 'Redirecting…' : '跳轉中…') : en ? '🔓 Bind Google' : '🔓 綁定 Google 帳戶'}
@@ -106,27 +106,27 @@ export default function SyncStatus() {
   return (
     <div
       className={`rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap border ${
-        error ? 'bg-[#C2185B]/[0.06] border-[#C2185B]/30' : 'bg-white border-black/[0.06]'
+        error ? 'bg-rose/[0.06] border-rose/30' : 'bg-surface-raised border-line'
       }`}
     >
       <div className="min-w-0">
         <span className="flex items-center gap-2 text-sm">
           {error ? (
-            <CloudOff size={18} className="text-[#C2185B] shrink-0" />
+            <CloudOff size={18} className="text-rose shrink-0" />
           ) : syncing ? (
-            <Loader2 size={18} className="text-[#B8860B] shrink-0 animate-spin" />
+            <Loader2 size={18} className="text-gold shrink-0 animate-spin" />
           ) : synced ? (
-            <Cloud size={18} className="text-[#008B84] shrink-0" />
+            <Cloud size={18} className="text-accent shrink-0" />
           ) : (
-            <Cloud size={18} className="text-[#9CA3AF] shrink-0" />
+            <Cloud size={18} className="text-ink-faint shrink-0" />
           )}
-          <span className={error ? 'text-[#C2185B]' : 'text-[#2D2D2D]'}>{label}</span>
+          <span className={error ? 'text-rose' : 'text-ink-soft'}>{label}</span>
         </span>
         {/* Identity — the signed-in account whose progress is being synced. */}
         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-          <span className="text-xs text-[#9CA3AF] break-all">{user.email}</span>
+          <span className="text-xs text-ink-faint break-all">{user.email}</span>
           {lastSyncedLabel && (
-            <span className="text-xs text-[#9CA3AF]">
+            <span className="text-xs text-ink-faint">
               · {en ? `Last synced ${lastSyncedLabel}` : `最後同步 ${lastSyncedLabel}`}
             </span>
           )}
@@ -134,7 +134,7 @@ export default function SyncStatus() {
       </div>
       <button
         onClick={() => authSignOut()}
-        className="inline-flex items-center gap-1.5 text-sm text-[#6B6B6B] hover:text-[#008B84] border border-black/[0.12] hover:border-[#008B84] rounded-lg px-3 py-1.5 transition-colors shrink-0"
+        className="inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-accent border border-line-strong hover:border-accent rounded-lg px-3 py-1.5 transition-colors shrink-0"
       >
         <LogOut size={14} /> {en ? '🚪 Sign out' : '🚪 登出'}
       </button>

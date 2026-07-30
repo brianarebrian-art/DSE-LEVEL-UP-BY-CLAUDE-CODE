@@ -60,11 +60,11 @@ export default function NotesOverview() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <header className="mb-6">
-        <h1 className="flex items-center gap-2 text-2xl font-medium text-[#1A1A1A]">
-          <Gem size={22} className="text-[#7C3AED]" />
+        <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
+          <Gem size={22} className="text-violet" />
           {tr('知識凝結', 'Condensed Notes')}
         </h1>
-        <p className="mt-1 text-sm text-[#6B6B6B]">
+        <p className="mt-1 text-sm text-ink-muted">
           {tr(
             '做題沉澱出嚟嘅筆記，唔係要你額外背多份嘢。',
             'Notes that settle out of the practice you have already done — not one more thing to memorise.',
@@ -73,7 +73,7 @@ export default function NotesOverview() {
       </header>
 
       {/* 誠實說明：呢度冇 AI 摘要 */}
-      <p className="mb-5 rounded-xl border border-black/[0.06] bg-white p-3 text-xs leading-relaxed text-[#6B6B6B]">
+      <p className="mb-5 rounded-xl border border-line bg-surface-raised p-3 text-xs leading-relaxed text-ink-muted">
         {tr(
           '每篇筆記都係由真實題庫同你自己嘅練習紀錄整理出嚟 —— 解析係原文，陷阱係出題時標註低嘅，冇任何機器改寫。',
           'Every note is assembled from the real question bank and your own practice record — explanations are quoted as written and pitfalls are the ones flagged at authoring time. Nothing is machine-rewritten.',
@@ -81,7 +81,7 @@ export default function NotesOverview() {
       </p>
 
       {totalAttempted === 0 && (
-        <p className="mb-5 rounded-xl border border-[#B8860B]/25 bg-[#B8860B]/[0.06] p-3 text-sm text-[#8a6608]">
+        <p className="mb-5 rounded-xl border border-gold/25 bg-gold/[0.06] p-3 text-sm text-gold-strong">
           {tr(
             '你仲未做過練習，所以暫時淨係見到每個課題有幾多題。做多幾份，呢度就會開始顯示你自己嘅盲點。',
             'You have not practised yet, so for now these only show how many questions each topic holds. Do a few sets and your own blind spots will start appearing here.',
@@ -94,27 +94,27 @@ export default function NotesOverview() {
           <Link
             key={r.id}
             href={`/notes/${r.id}`}
-            className="group rounded-2xl border border-black/[0.06] bg-white p-4 transition-colors hover:border-[#7C3AED]/40"
+            className="group rounded-2xl border border-line bg-surface-raised p-4 transition-colors hover:border-violet/40"
           >
             <div className="flex items-start justify-between gap-2">
-              <span className="text-sm font-medium text-[#1A1A1A]">
+              <span className="text-sm font-medium text-ink">
                 {r.emoji} {en ? r.nameEn : r.name}
               </span>
-              <ArrowRight size={16} className="mt-0.5 shrink-0 text-[#9CA3AF] transition-colors group-hover:text-[#7C3AED]" />
+              <ArrowRight size={16} className="mt-0.5 shrink-0 text-ink-faint transition-colors group-hover:text-violet" />
             </div>
-            <p className="mt-1.5 text-xs text-[#6B6B6B]">
+            <p className="mt-1.5 text-xs text-ink-muted">
               {tr(`${r.topics} 個課題 · ${r.questions} 題`, `${r.topics} topics · ${r.questions} questions`)}
             </p>
             <p className="mt-1 text-xs">
               {r.attempted > 0 ? (
-                <span className="text-[#00635E]">
+                <span className="text-accent-strong">
                   {tr(
                     `你做過 ${r.attempted} 題，錯咗 ${r.wrong} 題`,
                     `You have done ${r.attempted}, missed ${r.wrong}`,
                   )}
                 </span>
               ) : (
-                <span className="text-[#9CA3AF]">{tr('仲未做過', 'Not practised yet')}</span>
+                <span className="text-ink-faint">{tr('仲未做過', 'Not practised yet')}</span>
               )}
             </p>
           </Link>

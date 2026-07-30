@@ -139,33 +139,33 @@ function FocusRoom() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-12 bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-2 text-4xl">🍅</div>
-        <h1 className="text-2xl font-medium text-center mb-1 text-[#1A1A1A]">
+        <h1 className="text-2xl font-medium text-center mb-1 text-ink">
           {en ? 'Focus Room' : '自律番茄鐘'}
         </h1>
-        <p className="text-center text-[#6B6B6B] text-sm mb-8">
+        <p className="text-center text-ink-muted text-sm mb-8">
           {en ? '25 min focus · 5 min break' : '專注 25 分鐘 · 休息 5 分鐘'}
         </p>
 
         {/* Timer card */}
-        <div className="bg-white border border-black/[0.06] rounded-3xl p-8 mb-5 text-center">
+        <div className="bg-surface-raised border border-line rounded-3xl p-8 mb-5 text-center">
           <div
             className={`inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full mb-5 ${
               mode === 'focus'
-                ? 'text-[#B8860B] bg-[#B8860B]/10 border border-[#B8860B]/20'
-                : 'text-[#008B84] bg-[#008B84]/10 border border-[#008B84]/20'
+                ? 'text-gold bg-gold/10 border border-gold/20'
+                : 'text-accent bg-accent/10 border border-accent/20'
             }`}
           >
             {mode === 'focus' ? (en ? '🎯 Focus' : '🎯 專注中') : en ? '☕ Break' : '☕ 小休'}
           </div>
 
-          <div className="text-6xl font-medium tabular-nums mb-5 tracking-tight text-[#1A1A1A]">{fmt(secondsLeft)}</div>
+          <div className="text-6xl font-medium tabular-nums mb-5 tracking-tight text-ink">{fmt(secondsLeft)}</div>
 
-          <div className="h-1.5 bg-black/[0.06] rounded-full overflow-hidden mb-6">
+          <div className="h-1.5 bg-line rounded-full overflow-hidden mb-6">
             <div
-              className={`h-full rounded-full transition-all duration-500 ${mode === 'focus' ? 'bg-[#B8860B]' : 'bg-[#008B84]'}`}
+              className={`h-full rounded-full transition-all duration-500 ${mode === 'focus' ? 'bg-gold' : 'bg-accent'}`}
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -173,14 +173,14 @@ function FocusRoom() {
           <div className="flex items-center justify-center gap-3">
             <button
               onClick={() => setRunning((r) => !r)}
-              className="inline-flex items-center gap-2 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium px-6 py-3 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-all"
             >
               {running ? <Pause size={18} /> : <Play size={18} />}
               {running ? (en ? 'Pause' : '暫停') : en ? 'Start' : '開始'}
             </button>
             <button
               onClick={reset}
-              className="inline-flex items-center gap-2 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#2D2D2D] px-4 py-3 rounded-xl transition-all text-sm"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-3 rounded-xl transition-all text-sm"
             >
               <RotateCcw size={16} /> {en ? 'Reset' : '重設'}
             </button>
@@ -189,26 +189,26 @@ function FocusRoom() {
 
         {/* Today's tally */}
         <div className="grid grid-cols-2 gap-3 mb-5">
-          <div className="bg-white border border-black/[0.06] rounded-2xl p-4 text-center">
-            <div className="text-2xl font-medium text-[#008B84]" style={{ fontVariantNumeric: 'tabular-nums' }}>{minutes}</div>
-            <div className="text-xs text-[#6B6B6B] mt-1">{en ? 'Focus min today' : '今日專注（分鐘）'}</div>
+          <div className="bg-surface-raised border border-line rounded-2xl p-4 text-center">
+            <div className="text-2xl font-medium text-accent" style={{ fontVariantNumeric: 'tabular-nums' }}>{minutes}</div>
+            <div className="text-xs text-ink-muted mt-1">{en ? 'Focus min today' : '今日專注（分鐘）'}</div>
           </div>
-          <div className="bg-white border border-black/[0.06] rounded-2xl p-4 text-center">
-            <div className="text-2xl font-medium text-[#008B84]" style={{ fontVariantNumeric: 'tabular-nums' }}>
+          <div className="bg-surface-raised border border-line rounded-2xl p-4 text-center">
+            <div className="text-2xl font-medium text-accent" style={{ fontVariantNumeric: 'tabular-nums' }}>
               {pomodoros}
             </div>
-            <div className="text-xs text-[#6B6B6B] mt-1">{en ? 'Pomodoros' : '番茄鐘'}</div>
+            <div className="text-xs text-ink-muted mt-1">{en ? 'Pomodoros' : '番茄鐘'}</div>
           </div>
         </div>
 
         {/* Room — URL-based "study together", honest about no real-time sync */}
-        <div className="bg-white border border-black/[0.06] rounded-2xl p-5 mb-5">
+        <div className="bg-surface-raised border border-line rounded-2xl p-5 mb-5">
           <div className="flex items-center gap-2 mb-2">
-            <Users size={16} className="text-[#008B84]" />
-            <span className="font-medium text-sm text-[#1A1A1A]">{en ? 'Study room' : '自律房間'}</span>
-            <span className="ml-auto font-mono text-[#008B84] text-lg tracking-widest">{room || '····'}</span>
+            <Users size={16} className="text-accent" />
+            <span className="font-medium text-sm text-ink">{en ? 'Study room' : '自律房間'}</span>
+            <span className="ml-auto font-mono text-accent text-lg tracking-widest">{room || '····'}</span>
           </div>
-          <p className="text-[11px] text-[#6B6B6B] mb-4 leading-relaxed">
+          <p className="text-[11px] text-ink-muted mb-4 leading-relaxed">
             {en
               ? 'Share the link so classmates join the same room code. Each person keeps their own timer (no server / no live sync) — it’s a shared commitment, not a video call.'
               : 'share 條 link 俾同學，大家入同一個房號一齊溫。各自計時（純前端、冇即時同步）—— 係一種互相監督嘅約定，唔係視像通話。'}
@@ -216,7 +216,7 @@ function FocusRoom() {
           <div className="flex gap-2">
             <button
               onClick={copyLink}
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#2D2D2D] px-4 py-2.5 rounded-xl transition-all text-sm"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-all text-sm"
             >
               <Share2 size={15} /> {copied ? (en ? 'Copied!' : '已複製！') : en ? 'Copy link' : '複製連結'}
             </button>
@@ -224,7 +224,7 @@ function FocusRoom() {
               href={`https://wa.me/?text=${encodeURIComponent(inviteText)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-[#128C7E] hover:bg-[#0e6f64] text-white font-medium px-4 py-2.5 rounded-xl transition-all text-sm"
+              className="flex-1 inline-flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-strong text-on-accent font-medium px-4 py-2.5 rounded-xl transition-all text-sm"
             >
               <MessageCircle size={15} /> WhatsApp
             </a>
@@ -239,7 +239,7 @@ function FocusRoom() {
         {/* 呼吸空間入口 */}
         <a
           href="/relax"
-          className="mt-5 block text-center text-sm text-[#6B6B6B] hover:text-[#008B84] border border-black/[0.10] hover:border-[#008B84]/40 rounded-xl py-3 min-h-11 transition-all"
+          className="mt-5 block text-center text-sm text-ink-muted hover:text-accent border border-line-strong hover:border-accent/40 rounded-xl py-3 min-h-11 transition-all"
         >
           🌬️ {en ? 'Really wiped today? Go to the Breathing Space and rest up →' : '今日真係好攰？去呼吸空間唞一唞 →'}
         </a>
@@ -250,7 +250,7 @@ function FocusRoom() {
 
 export default function FocusPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] text-[#6B6B6B]">…</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">…</div>}>
       <FocusRoom />
     </Suspense>
   )

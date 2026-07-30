@@ -78,9 +78,9 @@ export default function ResultPage() {
 
   if (!result || !gradeResult) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-[#FAFAF8] text-[#2D2D2D]">
-        <p className="text-[#6B6B6B]">{r.notFound}</p>
-        <Link href="/practice" className="text-[#008B84] underline">{r.backToPractice}</Link>
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface text-ink-soft">
+        <p className="text-ink-muted">{r.notFound}</p>
+        <Link href="/practice" className="text-accent underline">{r.backToPractice}</Link>
       </div>
     )
   }
@@ -181,18 +181,18 @@ export default function ResultPage() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-[#FAFAF8] text-[#2D2D2D]">
+    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto space-y-6">
 
         {/* Subject context */}
         {(result.subjectName || subjMeta) && (
-          <div className="text-center text-sm text-[#6B6B6B]">
+          <div className="text-center text-sm text-ink-muted">
             {subjName}{r.mixedResult}
           </div>
         )}
 
         {/* Grade badge + Score */}
-        <div className="bg-white border border-black/[0.06] rounded-2xl p-8 text-center">
+        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
           {showBadge && (
             <div
               className="inline-block text-6xl mb-4 animate-pop-in"
@@ -209,11 +209,11 @@ export default function ResultPage() {
           <div className="text-5xl sm:text-6xl font-medium mb-1" style={{ color }}>
             {displayScore} / {result.total}
           </div>
-          <div className="text-[#6B6B6B] mb-4" style={{ fontVariantNumeric: 'tabular-nums' }}>{displayPct}%</div>
+          <div className="text-ink-muted mb-4" style={{ fontVariantNumeric: 'tabular-nums' }}>{displayPct}%</div>
 
           {/* Predicted grade */}
           <div className="mb-4">
-            <span className="text-[#6B6B6B] text-sm">{r.predictedGrade}</span>
+            <span className="text-ink-muted text-sm">{r.predictedGrade}</span>
             <div
               className={`inline-block ml-2 px-4 py-1 rounded-full text-black font-medium text-lg ${bgColor}`}
             >
@@ -221,13 +221,13 @@ export default function ResultPage() {
             </div>
           </div>
 
-          <p className="text-[#6B6B6B] text-sm mb-6">
+          <p className="text-ink-muted text-sm mb-6">
             {r.gradeMessages[gradeResult.grade]}
           </p>
 
           {/* Marks to next grade */}
           {gradeResult.marksToNextGrade !== null && gradeResult.nextGrade && (
-            <div className="inline-flex items-center gap-2 text-sm text-[#B8860B] bg-[#B8860B]/10 border border-[#B8860B]/20 rounded-full px-4 py-2">
+            <div className="inline-flex items-center gap-2 text-sm text-gold bg-gold/10 border border-gold/20 rounded-full px-4 py-2">
               {r.marksToNext
                 .replace('{grade}', gradeResult.nextGrade)
                 .replace('{marks}', String(gradeResult.marksToNextGrade))}
@@ -237,12 +237,12 @@ export default function ResultPage() {
 
         {/* 中文科診斷警示 — 基礎全對但高階失手：戳破「執分位 ≠ 5**」的錯覺 */}
         {showChineseWarning && (
-          <div className="bg-[#C2185B]/[0.06] border border-[#C2185B]/25 rounded-2xl p-5">
+          <div className="bg-rose/[0.06] border border-rose/25 rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-[#C2185B] text-lg">⚠️</span>
-              <span className="text-[#C2185B] font-medium text-sm">{locale === 'en' ? 'Top-tier diagnostic alert' : '拔尖診斷警示'}</span>
+              <span className="text-rose text-lg">⚠️</span>
+              <span className="text-rose font-medium text-sm">{locale === 'en' ? 'Top-tier diagnostic alert' : '拔尖診斷警示'}</span>
             </div>
-            <p className="text-sm text-[#2D2D2D] leading-relaxed">
+            <p className="text-sm text-ink-soft leading-relaxed">
               {locale === 'en'
                 ? 'You scored 100% on the foundation-consolidation questions, but still fell short on the higher-order inference questions. In the real DSE, easy questions are only “marks to bank” — to reliably secure Level 4 or above you must conquer the top-tier challenge questions. Getting the basics right is never proof you can reach 5** in the exam.'
                 : '你在基礎鞏固題得分率為 100%，但在高階文意推論題中仍有不足。在真實 DSE 中，簡單題目僅為『執分位』，若要穩奪 Level 4 或以上，必須克服拔尖挑戰題。答對基礎題絕不代表能在文憑試中取得 5**。'}
@@ -251,12 +251,12 @@ export default function ResultPage() {
         )}
 
         {/* Grade bar */}
-        <div className="bg-white border border-black/[0.06] rounded-2xl p-6">
-          <div className="text-sm font-medium text-[#1A1A1A] mb-4">{r.gradePosition}</div>
+        <div className="bg-surface-raised border border-line rounded-2xl p-6">
+          <div className="text-sm font-medium text-ink mb-4">{r.gradePosition}</div>
 
           {/* Grade scale */}
           <div className="relative">
-            <div className="h-3 bg-black/[0.06] rounded-full overflow-hidden mb-2">
+            <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
               <div
                 className="h-full rounded-full transition-all"
                 style={{
@@ -269,7 +269,7 @@ export default function ResultPage() {
             </div>
 
             {/* Grade markers */}
-            <div className="flex justify-between text-xs text-[#9CA3AF] mt-1">
+            <div className="flex justify-between text-xs text-ink-faint mt-1">
               <span>0</span>
               {['1', '2', '3', '4', '5', '5*', '5**'].map((g) => (
                 <span key={g} style={{ color: gradeColors[g] }}>
@@ -280,30 +280,30 @@ export default function ResultPage() {
             </div>
           </div>
 
-          <div className="mt-4 text-xs text-[#9CA3AF] text-center">
+          <div className="mt-4 text-xs text-ink-faint text-center">
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
         </div>
 
         {/* Topic breakdown */}
-        <div className="bg-white border border-black/[0.06] rounded-2xl p-6">
-          <div className="text-sm font-medium text-[#1A1A1A] mb-4">{r.topicAnalysis}</div>
+        <div className="bg-surface-raised border border-line rounded-2xl p-6">
+          <div className="text-sm font-medium text-ink mb-4">{r.topicAnalysis}</div>
           <div className="space-y-3">
             {result.topicResults.map((tr) => {
               const pct = Math.round((tr.correct / tr.total) * 100)
               return (
                 <div key={tr.topic}>
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-[#2D2D2D]">{tr.topic}</span>
+                    <span className="text-ink-soft">{tr.topic}</span>
                     <span
-                      className={pct >= 80 ? 'text-[#008B84]' : pct >= 50 ? 'text-[#B8860B]' : 'text-[#C2185B]'}
+                      className={pct >= 80 ? 'text-accent' : pct >= 50 ? 'text-gold' : 'text-rose'}
                     >
                       {tr.correct}/{tr.total}
                     </span>
                   </div>
-                  <div className="h-1.5 bg-black/[0.06] rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-line rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full ${pct >= 80 ? 'bg-[#008B84]' : pct >= 50 ? 'bg-[#B8860B]' : 'bg-[#C2185B]'}`}
+                      className={`h-full rounded-full ${pct >= 80 ? 'bg-accent' : pct >= 50 ? 'bg-gold' : 'bg-rose'}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -319,7 +319,7 @@ export default function ResultPage() {
             )[0]
             if (weak && weak.correct / weak.total < 0.8) {
               return (
-                <div className="mt-4 p-3 bg-[#B8860B]/10 border border-[#B8860B]/20 rounded-xl text-sm text-[#B8860B]">
+                <div className="mt-4 p-3 bg-gold/10 border border-gold/20 rounded-xl text-sm text-gold">
                   {r.weakAdviceA}<strong>{weak.topic}</strong>{r.weakAdviceB}{weak.correct}/{weak.total}{r.weakAdviceC}
                 </div>
               )
@@ -330,9 +330,9 @@ export default function ResultPage() {
         {/* Teacher hand-in tool — copies the fixed report template to clipboard */}
         <button
           onClick={copyTeacherReport}
-          className="no-print w-full flex items-center justify-center gap-2 bg-[#7C3AED]/10 hover:bg-[#7C3AED]/20 border border-[#7C3AED]/30 text-[#7C3AED] font-medium py-3.5 rounded-xl transition-all"
+          className="no-print w-full flex items-center justify-center gap-2 bg-violet/10 hover:bg-violet/20 border border-violet/30 text-violet font-medium py-3.5 rounded-xl transition-all"
         >
-          {reportCopied ? <ClipboardCheck size={16} className="text-[#008B84]" /> : <ClipboardCopy size={16} />}
+          {reportCopied ? <ClipboardCheck size={16} className="text-accent" /> : <ClipboardCopy size={16} />}
           {reportCopied
             ? (locale === 'en' ? 'Report copied — paste to your teacher' : '已複製報告 —— 貼給老師即可')
             : (locale === 'en' ? 'Copy Report to Teacher' : '複製成績報告給老師')}
@@ -345,13 +345,13 @@ export default function ResultPage() {
         <div className="no-print grid sm:grid-cols-2 gap-3">
           <Link
             href={`/practice?subject=${result.subjectId ?? 'math'}`}
-            className="flex items-center justify-center gap-2 bg-[#00726C] hover:bg-[#005F5A] text-white font-medium py-4 rounded-xl transition-all"
+            className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-4 rounded-xl transition-all"
           >
             <RotateCcw size={16} /> {r.retry}
           </Link>
           <Link
             href={`/subjects/${result.subjectId ?? 'math'}`}
-            className="flex items-center justify-center gap-2 bg-white hover:bg-[#F5F5F0] border border-black/[0.12] text-[#2D2D2D] py-4 rounded-xl transition-all"
+            className="flex items-center justify-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-4 rounded-xl transition-all"
           >
             {r.pickTopic} <ArrowRight size={16} />
           </Link>
@@ -369,7 +369,7 @@ export default function ResultPage() {
               setTimeout(() => setShared(false), 1800)
             }
           }}
-          className="no-print w-full flex items-center justify-center gap-2 text-[#6B6B6B] hover:text-[#008B84] border border-black/[0.10] py-3 rounded-xl transition-all text-sm"
+          className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-all text-sm"
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
@@ -378,7 +378,7 @@ export default function ResultPage() {
         <EncouragementWall />
 
         {/* Disclaimer */}
-        <p className="text-xs text-[#9CA3AF] text-center">
+        <p className="text-xs text-ink-faint text-center">
           {r.disclaimer}
         </p>
       </div>
