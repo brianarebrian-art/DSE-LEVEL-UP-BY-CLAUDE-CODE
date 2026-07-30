@@ -110,7 +110,7 @@ function Inner({ subjectId }: { subjectId: string }) {
                   )}
                 </span>
               ) : (
-                <span className="text-ink-faint">
+                <span className="text-ink-muted">
                   {tr('呢個課題你仲未做過 —— 下面係出題時標低嘅陷阱，可以先睇。', 'Not practised yet — the pitfalls below were flagged when these questions were written.')}
                 </span>
               )}
@@ -162,7 +162,7 @@ function Inner({ subjectId }: { subjectId: string }) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-2.5 text-xs text-ink-faint">
+              <p className="mt-2.5 text-xs text-ink-muted">
                 {tr('以上每句都係出題時逐題標低嘅，冇經任何改寫。', 'Each line was flagged question-by-question at authoring time, quoted unchanged.')}
               </p>
             </section>

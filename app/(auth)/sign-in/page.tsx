@@ -58,7 +58,7 @@ export default function SignInPage() {
           <>
             <div className="flex items-center gap-3 my-5">
               <span className="h-px flex-1 bg-slate-800" />
-              <span className="text-xs text-slate-500">{en ? 'or' : '或'}</span>
+              <span className="text-xs text-slate-400">{en ? 'or' : '或'}</span>
               <span className="h-px flex-1 bg-slate-800" />
             </div>
 

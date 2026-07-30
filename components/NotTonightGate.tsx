@@ -47,7 +47,7 @@ export default function NotTonightGate({ children }: { children: React.ReactNode
             <button
               onClick={() => router.push('/relax')}
               autoFocus
-              className="w-full min-h-11 bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 rounded-xl px-4 py-3 text-sm font-medium transition-all"
+              className="w-full min-h-11 bg-accent/10 text-accent border border-accent/30 hover:bg-accent/15 rounded-xl px-4 py-3 text-sm font-medium transition-all"
             >
               {en ? 'Take a break — see you tomorrow' : '唞一唞，聽日再戰'}
             </button>

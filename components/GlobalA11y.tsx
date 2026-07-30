@@ -108,7 +108,7 @@ export default function GlobalA11y() {
             <button
               onClick={() => setSosOpen(false)}
               aria-label={en ? 'Close' : '關閉'}
-              className="absolute top-3 right-3 min-h-11 min-w-11 flex items-center justify-center text-slate-500 hover:text-slate-200 transition-colors"
+              className="absolute top-3 right-3 min-h-11 min-w-11 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
             >
               <X size={18} />
             </button>

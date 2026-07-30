@@ -87,7 +87,7 @@ export default function ResultPage() {
 
   const barWidth = Math.round((result.score / result.total) * 100)
   const color = gradeColors[gradeResult.grade] ?? '#64748B'
-  const bgColor = gradeBgColors[gradeResult.grade] ?? 'bg-slate-400'
+  const bgColor = gradeBgColors[gradeResult.grade] ?? 'bg-slate-500 text-white'
   const formatTime = (s: number) => `${Math.floor(s / 60)}${r.timeMin}${s % 60}${r.timeSec}`
 
   // Subject name in the active locale (falls back to the stored name).
@@ -215,7 +215,7 @@ export default function ResultPage() {
           <div className="mb-4">
             <span className="text-ink-muted text-sm">{r.predictedGrade}</span>
             <div
-              className={`inline-block ml-2 px-4 py-1 rounded-full text-black font-medium text-lg ${bgColor}`}
+              className={`inline-block ml-2 px-4 py-1 rounded-full font-medium text-lg ${bgColor}`}
             >
               {gradeResult.grade}
             </div>
@@ -269,7 +269,7 @@ export default function ResultPage() {
             </div>
 
             {/* Grade markers */}
-            <div className="flex justify-between text-xs text-ink-faint mt-1">
+            <div className="flex justify-between text-xs text-ink-muted mt-1">
               <span>0</span>
               {['1', '2', '3', '4', '5', '5*', '5**'].map((g) => (
                 <span key={g} style={{ color: gradeColors[g] }}>
@@ -280,7 +280,7 @@ export default function ResultPage() {
             </div>
           </div>
 
-          <div className="mt-4 text-xs text-ink-faint text-center">
+          <div className="mt-4 text-xs text-ink-muted text-center">
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
         </div>
@@ -378,7 +378,7 @@ export default function ResultPage() {
         <EncouragementWall />
 
         {/* Disclaimer */}
-        <p className="text-xs text-ink-faint text-center">
+        <p className="text-xs text-ink-muted text-center">
           {r.disclaimer}
         </p>
       </div>

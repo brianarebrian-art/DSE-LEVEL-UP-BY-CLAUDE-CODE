@@ -76,13 +76,13 @@ export default function Footer() {
         </div>
 
         {/* Layer 2：Trust 信任標誌 + HKEAA 免責（Luna §17 必須顯示） */}
-        <div className="border-t border-line pt-6 text-xs text-ink-faint leading-relaxed">
+        <div className="border-t border-line pt-6 text-xs text-ink-muted leading-relaxed">
           <p className="mb-2">
             <span className="text-ink-muted font-medium">{t.footer.disclaimerLabel}</span>
             {t.footer.disclaimerBody}
           </p>
           {/* Layer 3：Compliance —— 只連真實存在路由（/transparency），唔整 404 */}
-          <p className="text-ink-faint">
+          <p className="text-ink-muted">
             {t.footer.copyright}
             <span className="mx-2">·</span>
             <Link href="/transparency" className="underline hover:text-accent transition-colors">

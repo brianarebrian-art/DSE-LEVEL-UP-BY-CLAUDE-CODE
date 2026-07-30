@@ -84,7 +84,7 @@ export default function WallModeration({ reviewer }: { reviewer: string }) {
             const flagged = shouldSurfaceHotline(p.content)
             return (
               <div key={p.id} className="rounded-xl border border-line bg-surface-raised p-4">
-                <div className="mb-2 flex items-center gap-2 text-xs text-ink-faint">
+                <div className="mb-2 flex items-center gap-2 text-xs text-ink-muted">
                   <span className="font-medium text-violet">{p.author_hash}</span>
                   <span>·</span>
                   <span>{new Date(p.created_at).toLocaleString('zh-HK', { hour12: false })}</span>

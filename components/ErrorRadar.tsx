@@ -10,7 +10,7 @@ import { useLocale } from '@/lib/i18n'
 // spec 嘅 MEC「方法錯誤」對應現有 C 軸，唔另起爐灶以免同已記錄數據脫節。
 // 洞察文案：規則式、只描述唔批評、絕不同其他學生比較。載入時由中心展開 800ms
 //（respect prefers-reduced-motion）。
-// 色彩：白底用青邊框（#008B84）＋紫填充（#7C3AED），軸線／標籤降至中性淺色。
+// 色彩：白底用青邊框（#006B65）＋紫填充（#7C3AED），軸線／標籤降至中性淺色。
 
 const AXES: { cause: ReverseCause; zh: string; en: string }[] = [
   { cause: 'A', zh: '概念盲區', en: 'Concept blind spot' },
@@ -105,14 +105,14 @@ export default function ErrorRadar() {
   const poly = AXES.map((a, i) => point(i, (R * (scores[a.cause] / 100)) * scale).join(',')).join(' ')
 
   return (
-    <div className="bg-white border border-black/[0.06] rounded-2xl p-6">
-      <h2 className="font-medium mb-1 text-[#1A1A1A]">🧬 {en ? 'Error DNA radar (last 30 days)' : '錯題 DNA 雷達（最近 30 日）'}</h2>
-      <p className="text-xs text-[#6B6B6B] mb-3">
+    <div className="bg-surface-raised border border-line rounded-2xl p-6">
+      <h2 className="font-medium mb-1 text-ink">🧬 {en ? 'Error DNA radar (last 30 days)' : '錯題 DNA 雷達（最近 30 日）'}</h2>
+      <p className="text-xs text-ink-muted mb-3">
         {en ? 'Share of each self-diagnosed error cause' : '三維錯因自診分佈（各軸 = 佔錯誤百分比）'}
       </p>
 
       {total < 5 ? (
-        <p className="text-sm text-[#6B6B6B] py-6 text-center">
+        <p className="text-sm text-ink-muted py-6 text-center">
           {en ? 'Building up data — keep practising and this analysis gets sharper.' : '數據累積中，繼續做題會令分析更準確。'}
         </p>
       ) : (
@@ -124,29 +124,29 @@ export default function ErrorRadar() {
             {/* 背景同心三角 + 軸線 */}
             {[1, 2 / 3, 1 / 3].map((f) => (
               <polygon key={f} points={AXES.map((_, i) => point(i, R * f).join(',')).join(' ')}
-                fill="none" stroke="rgba(0,0,0,0.10)" strokeWidth="1" />
+                fill="none" className="stroke-line-strong" strokeWidth="1" />
             ))}
             {AXES.map((_, i) => {
               const [x, y] = point(i, R)
-              return <line key={i} x1={CX} y1={CY} x2={x} y2={y} stroke="rgba(0,0,0,0.10)" strokeWidth="1" />
+              return <line key={i} x1={CX} y1={CY} x2={x} y2={y} className="stroke-line-strong" strokeWidth="1" />
             })}
             {/* 數據多邊形：紫填充 + 青邊框（憲章進度漸變同色系） */}
-            <polygon points={poly} fill="#7C3AED" fillOpacity="0.18" stroke="#008B84" strokeWidth="2" strokeLinejoin="round" />
+            <polygon points={poly} className="fill-violet stroke-accent" fillOpacity="0.18" strokeWidth="2" strokeLinejoin="round" />
             {AXES.map((a, i) => {
               const [x, y] = point(i, (R * (scores[a.cause] / 100)) * scale)
-              return <circle key={a.cause} cx={x} cy={y} r="3.5" fill="#008B84" />
+              return <circle key={a.cause} cx={x} cy={y} r="3.5" className="fill-accent" />
             })}
             {/* 軸標籤 + 百分比 */}
             {AXES.map((a, i) => {
               const [x, y] = point(i, R + 16)
               return (
-                <text key={a.cause} x={x} y={y + (i === 0 ? -2 : 8)} fontSize="10.5" fill="#6B6B6B" textAnchor="middle">
+                <text key={a.cause} x={x} y={y + (i === 0 ? -2 : 8)} fontSize="10.5" className="fill-ink-muted" textAnchor="middle">
                   {en ? a.en : a.zh} {scores[a.cause]}%
                 </text>
               )
             })}
           </svg>
-          {insight && <p className="text-sm text-[#2D2D2D] leading-relaxed mt-3">{insight}</p>}
+          {insight && <p className="text-sm text-ink-soft leading-relaxed mt-3">{insight}</p>}
         </>
       )}
     </div>

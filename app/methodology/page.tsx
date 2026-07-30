@@ -73,7 +73,7 @@ export default function MethodologyPage() {
                 </div>
                 <span className="text-[11px] text-ink-muted leading-tight">{step.label}</span>
               </div>
-              {i < arr.length - 1 && <ArrowRight className="text-ink-faint shrink-0" size={16} />}
+              {i < arr.length - 1 && <ArrowRight className="text-ink-muted shrink-0" size={16} />}
             </Fragment>
           ))}
         </div>
@@ -104,7 +104,7 @@ export default function MethodologyPage() {
                   </div>
                   <ChevronDown
                     size={18}
-                    className={`text-ink-faint shrink-0 ml-2 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                    className={`text-ink-muted shrink-0 ml-2 transition-transform ${isOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
 
@@ -119,18 +119,18 @@ export default function MethodologyPage() {
                     <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-line">
                       {/* Official */}
                       <div className="p-5">
-                        <div className="text-xs text-ink-faint uppercase tracking-wide mb-3 font-medium">{m.officialLabel}</div>
+                        <div className="text-xs text-ink-muted uppercase tracking-wide mb-3 font-medium">{m.officialLabel}</div>
                         <p className="text-ink-soft text-sm leading-relaxed mb-3">
                           <MathText>{f.content}</MathText>
                         </p>
-                        <div className="text-xs text-ink-faint">
+                        <div className="text-xs text-ink-muted">
                           {m.answerLabel}<MathText>{f.answer}</MathText>
                         </div>
                       </div>
 
                       {/* Analysis */}
                       <div className="p-5 bg-gold/[0.05]">
-                        <div className="text-xs text-ink-faint uppercase tracking-wide mb-3 font-medium">{m.analysisLabel}</div>
+                        <div className="text-xs text-ink-muted uppercase tracking-wide mb-3 font-medium">{m.analysisLabel}</div>
                         <p className="text-ink-muted text-sm leading-relaxed">
                           <MathText>{f.analysis}</MathText>
                         </p>
@@ -138,16 +138,16 @@ export default function MethodologyPage() {
 
                       {/* Rewritten */}
                       <div className="p-5 bg-accent/[0.05]">
-                        <div className="text-xs text-ink-faint uppercase tracking-wide mb-3 font-medium">{m.rewrittenLabel}</div>
+                        <div className="text-xs text-ink-muted uppercase tracking-wide mb-3 font-medium">{m.rewrittenLabel}</div>
                         <p className="text-ink-soft text-sm leading-relaxed mb-3">
                           <MathText>{f.rwContent}</MathText>
                         </p>
-                        <div className="text-xs text-ink-faint mb-4">
+                        <div className="text-xs text-ink-muted mb-4">
                           {m.answerLabel}<MathText>{f.rwAnswer}</MathText>
                         </div>
                         <Link
                           href="/practice"
-                          className="text-xs text-accent bg-accent/10 hover:bg-accent/20 border border-accent/20 px-3 py-1.5 rounded-lg transition-all inline-block"
+                          className="text-xs text-accent bg-accent/10 hover:bg-accent/15 border border-accent/20 px-3 py-1.5 rounded-lg transition-all inline-block"
                         >
                           {m.practiseSimilar}
                         </Link>

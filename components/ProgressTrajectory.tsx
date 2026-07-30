@@ -117,8 +117,8 @@ function Chart({ pts, en }: { pts: DayPoint[]; en: boolean }) {
       >
         <defs>
           <linearGradient id="trajArea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#008B84" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="#008B84" stopOpacity="0" />
+            <stop offset="0%" className="[stop-color:var(--color-accent)]" stopOpacity="0.18" />
+            <stop offset="100%" className="[stop-color:var(--color-accent)]" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -132,10 +132,10 @@ function Chart({ pts, en }: { pts: DayPoint[]; en: boolean }) {
                 y1={gy}
                 x2={W - padR}
                 y2={gy}
-                stroke="rgba(0,0,0,0.07)"
+                className="stroke-line"
                 strokeDasharray="4 4"
               />
-              <text x={W - padR} y={gy - 3} textAnchor="end" fontSize="10" fill="#9CA3AF">
+              <text x={W - padR} y={gy - 3} textAnchor="end" fontSize="10" className="fill-ink-muted">
                 {Math.round(g * 100)}%
               </text>
             </g>
@@ -144,20 +144,19 @@ function Chart({ pts, en }: { pts: DayPoint[]; en: boolean }) {
 
         {/* Area + line */}
         <path d={areaPath} fill="url(#trajArea)" />
-        <path d={linePath} fill="none" stroke="#008B84" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+        <path d={linePath} fill="none" className="stroke-accent" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
 
         {/* Points */}
         {pts.map((p, i) => {
           const isLast = i === n - 1
           return (
             <g key={i}>
-              {isLast && <circle cx={x(i)} cy={y(p.accuracy)} r={7} fill="#B8860B" fillOpacity="0.15" />}
+              {isLast && <circle cx={x(i)} cy={y(p.accuracy)} r={7} className="fill-gold" fillOpacity="0.15" />}
               <circle
                 cx={x(i)}
                 cy={y(p.accuracy)}
                 r={isLast ? 4.5 : 3}
-                fill="#FFFFFF"
-                stroke={isLast ? '#B8860B' : '#008B84'}
+                className={`fill-surface-raised ${isLast ? 'stroke-gold' : 'stroke-accent'}`}
                 strokeWidth="2"
               />
               {isLast && (
@@ -167,7 +166,7 @@ function Chart({ pts, en }: { pts: DayPoint[]; en: boolean }) {
                   textAnchor="middle"
                   fontSize="12"
                   fontWeight="500"
-                  fill="#1A1A1A"
+                  className="fill-ink"
                   style={{ fontVariantNumeric: 'tabular-nums' }}
                 >
                   {Math.round(p.accuracy * 100)}%
@@ -175,7 +174,7 @@ function Chart({ pts, en }: { pts: DayPoint[]; en: boolean }) {
               )}
               {/* Endpoint x-labels only, to avoid crowding */}
               {(i === 0 || isLast) && (
-                <text x={x(i)} y={H - 10} textAnchor={i === 0 ? 'start' : 'end'} fontSize="10" fill="#9CA3AF">
+                <text x={x(i)} y={H - 10} textAnchor={i === 0 ? 'start' : 'end'} fontSize="10" className="fill-ink-muted">
                   {i === 0 ? (en ? 'start' : '起步') : en ? 'today' : '今日'}
                 </text>
               )}

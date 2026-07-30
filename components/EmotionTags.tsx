@@ -6,6 +6,11 @@ import { useLocale } from '@/lib/i18n'
 // 錯題情緒標籤（F01，Emma — 腦震盪 5 票冠軍）。答錯後三個情緒掣，
 // 按選擇回應唔同語氣；記錄入 localStorage `dse_emotion_log`（本地，供將來
 // 壓力指數分析用）。以 key={question.id} 掛載，每題自動重置。零罪疚語言。
+//
+// 2026-07-30 對比度修正：本組件係 light-first 遷移漏網。淺色主題下 bg-slate-800/40
+// 疊落淺色卡會合成中灰 #9B9C9E，而 text-slate-300 落上去只有 1.85:1 ——
+// 三個情緒掣嘅字實際上睇唔到。情緒安全網係大愛憲章核心，唔可以有睇唔到嘅字，
+// 故全部改用主題 token。
 
 type Emotion = 'upset' | 'neutral' | 'curious'
 const KEY = 'dse_emotion_log'
@@ -47,16 +52,16 @@ export default function EmotionTags() {
   const [picked, setPicked] = useState<Emotion | null>(null)
 
   return (
-    <div className="border-t border-amber-500/15 pt-3 mt-3">
+    <div className="border-t border-gold/20 pt-3 mt-3">
       {picked === null ? (
         <>
-          <p className="text-xs text-slate-500 mb-2">{en ? 'How does this one feel?' : '呢題答完，你而家感覺係？'}</p>
+          <p className="text-xs text-ink-muted mb-2">{en ? 'How does this one feel?' : '呢題答完，你而家感覺係？'}</p>
           <div className="flex flex-wrap gap-2">
             {TAGS.map((t) => (
               <button
                 key={t.key}
                 onClick={() => { setPicked(t.key); logEmotion(t.key) }}
-                className="min-h-11 px-3 py-2 rounded-[10px] border border-slate-700 bg-slate-800/40 text-xs text-slate-300 hover:border-amber-500/40 hover:text-amber-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
+                className="min-h-11 px-3 py-2 rounded-[10px] border border-line-strong bg-surface-sunken text-xs text-ink-soft hover:border-gold/50 hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
               >
                 {t.emoji} {en ? t.en : t.zh}
               </button>
@@ -64,7 +69,7 @@ export default function EmotionTags() {
           </div>
         </>
       ) : (
-        <p className="text-xs text-slate-300 leading-relaxed bg-slate-800/40 rounded-[10px] px-3 py-2.5">
+        <p className="text-xs text-ink-soft leading-relaxed bg-surface-sunken rounded-[10px] px-3 py-2.5">
           {en ? REPLY[picked].en : REPLY[picked].zh}
         </p>
       )}

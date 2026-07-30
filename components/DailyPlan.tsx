@@ -34,7 +34,7 @@ export default function DailyPlan() {
           <h3 className="text-lg font-medium text-ink">{en ? 'Today’s plan' : '今日溫習計劃'}</h3>
         </div>
         {items.length > 0 && (
-          <span className="text-xs text-ink-faint">
+          <span className="text-xs text-ink-muted">
             {en ? `≈ ${items.length * PER_TOPIC_MIN} min` : `約 ${items.length * PER_TOPIC_MIN} 分鐘`}
           </span>
         )}
@@ -75,7 +75,7 @@ export default function DailyPlan() {
                   <span className="text-xl shrink-0">{meta?.emoji ?? '📘'}</span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-sm font-medium text-ink truncate">{it.label}</span>
-                    <span className="block text-xs text-ink-faint">
+                    <span className="block text-xs text-ink-muted">
                       {meta ? (en ? meta.nameEn : meta.name) : it.subjectId}
                       {' · '}
                       <span className={pct < 60 ? 'text-rose' : 'text-gold'}>
@@ -83,7 +83,7 @@ export default function DailyPlan() {
                       </span>
                     </span>
                   </span>
-                  <ArrowRight size={16} className="text-ink-faint group-hover:text-gold shrink-0" />
+                  <ArrowRight size={16} className="text-ink-muted group-hover:text-gold shrink-0" />
                 </Link>
               )
             })}

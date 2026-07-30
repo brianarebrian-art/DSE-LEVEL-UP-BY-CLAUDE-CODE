@@ -16,12 +16,12 @@ const CAUSE: Record<ReverseCause, { emoji: string; zh: string; en: string; color
     adviceEn: 'Your weak point is concept blind spots — revisit a topic’s definitions and conditions before drilling.',
   },
   B: {
-    emoji: '🎯', zh: '審題陷阱', en: 'Misreading the question', color: '#B8860B',
+    emoji: '🎯', zh: '審題陷阱', en: 'Misreading the question', color: '#7E5D07',
     adviceZh: '你最常「睇漏關鍵字」—— 答題前強迫自己圈起「最多／至少／除咗」等字眼。',
     adviceEn: 'You most often misread the prompt — circle keywords like “at least / except / not” before answering.',
   },
   C: {
-    emoji: '🧮', zh: '運算粗心', en: 'Careless calculation', color: '#008B84',
+    emoji: '🧮', zh: '運算粗心', en: 'Careless calculation', color: '#006B65',
     adviceZh: '你最常「識做但計錯」—— 養成做完即驗算嘅習慣。',
     adviceEn: 'You know the method but slip on arithmetic — build a habit of checking every result.',
   },
@@ -93,7 +93,7 @@ export default function ErrorDNA() {
               <div key={k} className="flex items-center gap-1.5 text-xs text-ink-muted">
                 <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: CAUSE[k].color }} />
                 <span>{CAUSE[k].emoji} {en ? CAUSE[k].en : CAUSE[k].zh}</span>
-                <span className="text-ink-faint">({counts[k]})</span>
+                <span className="text-ink-muted">({counts[k]})</span>
               </div>
             ))}
           </div>

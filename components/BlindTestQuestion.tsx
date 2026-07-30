@@ -6,6 +6,10 @@ import { useLocale } from '@/lib/i18n'
 // 盲測黑題目 (Blind Test) — a screenshot-ready hardcore showcase for the landing
 // page / IG Reels. Key numbers and keywords are blacked out so only the FIGURE,
 // the four options and the 三大逆向錯因診斷欄 remain. Click a black block to peek.
+//
+// 2026-07-30 對比度修正：本卡刻意永遠黑底（截圖用），但灰字級數太低 ——
+// slate-500 落黑底 4.36:1、落 slate-800 選項徽章只有 3.07:1，slate-600 落純黑更只有
+// 2.77:1，全部未達 AA。一律升至 slate-400（黑底 8.3:1）。黑色遮蓋塊本身係功能，保留。
 export default function BlindTestQuestion() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -70,10 +74,10 @@ export default function BlindTestQuestion() {
       <div className="grid grid-cols-2 gap-2 mb-5">
         {[tr('六十五', '65'), tr('五十', '50'), tr('一三〇', '130'), tr('二十五', '25')].map((v, i) => (
           <div key={i} className="flex items-center gap-2 border border-slate-800 bg-slate-900/60 rounded-lg px-3 py-2 text-sm">
-            <span className="w-5 h-5 rounded bg-slate-800 text-slate-500 text-xs font-bold flex items-center justify-center">
+            <span className="w-5 h-5 rounded bg-slate-800 text-slate-400 text-xs font-bold flex items-center justify-center">
               {['A', 'B', 'C', 'D'][i]}
             </span>
-            <Black>{v}</Black><span className="text-slate-500">°</span>
+            <Black>{v}</Black><span className="text-slate-400">°</span>
           </div>
         ))}
       </div>
@@ -88,13 +92,13 @@ export default function BlindTestQuestion() {
             <div key={c.zh} className="border border-red-900/50 bg-red-950/30 rounded-lg px-2 py-2 text-center">
               <div className="text-base leading-none mb-1">{c.emoji}</div>
               <div className="text-[11px] font-bold text-slate-200 leading-tight">{tr(c.zh, c.en)}</div>
-              <div className="text-[10px] text-slate-500 mt-0.5 leading-tight">{tr(c.dZh, c.dEn)}</div>
+              <div className="text-[10px] text-slate-400 mt-0.5 leading-tight">{tr(c.dZh, c.dEn)}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <p className="text-[10px] text-slate-600 text-center mt-3">
+      <p className="text-[10px] text-slate-400 text-center mt-3">
         {tr('黑色係考評局陷阱位 — 撳一下偷睇。喺 DSE Level Up，你要睇穿，唔係背答案。',
             'The black blocks are the examiner’s traps — tap to peek. On DSE Level Up you see through them, you don’t memorise.')}
       </p>

@@ -70,7 +70,7 @@ export default function BreathingExercise() {
 
       <p className="text-ink-soft mb-1 min-h-6">{label}</p>
       {rounds > 0 && (
-        <p className="text-xs text-ink-faint mb-3">
+        <p className="text-xs text-ink-muted mb-3">
           {en ? `Completed ${rounds} round${rounds > 1 ? 's' : ''}` : `已完成 ${rounds} 個循環`}
         </p>
       )}
@@ -78,7 +78,7 @@ export default function BreathingExercise() {
       {phase === 'idle' ? (
         <button
           onClick={() => setPhase('in')}
-          className="bg-accent/10 hover:bg-accent/20 text-accent border border-accent/30 font-medium px-6 py-2.5 rounded-xl transition-all"
+          className="bg-accent/10 hover:bg-accent/15 text-accent border border-accent/30 font-medium px-6 py-2.5 rounded-xl transition-all"
         >
           {en ? 'Start' : '開始'}
         </button>
@@ -91,7 +91,7 @@ export default function BreathingExercise() {
         </button>
       )}
 
-      <p className="text-[11px] text-ink-faint mt-4 leading-relaxed">
+      <p className="text-[11px] text-ink-muted mt-4 leading-relaxed">
         {en
           ? 'This is a simple relaxation exercise, not a medical or counselling service. If distress persists, talk to your school social worker, or call The Samaritans 24-hour hotline: 2896 0000.'
           : '本功能只係簡單放鬆練習，並非醫療或心理輔導服務。如情緒持續困擾，請搵學校社工傾傾，或致電撒瑪利亞會 24 小時熱線 2896 0000。'}

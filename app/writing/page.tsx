@@ -142,12 +142,12 @@ export default function WritingPage() {
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-medium text-violet text-sm">{v.phrase}</span>
-                  <span className="text-[11px] text-ink-faint group-hover:text-violet shrink-0 inline-flex items-center gap-0.5">
+                  <span className="text-[11px] text-ink-muted group-hover:text-violet shrink-0 inline-flex items-center gap-0.5">
                     {tr('插入', 'Insert')} <ChevronRight size={12} />
                   </span>
                 </div>
                 <p className="text-xs text-ink-muted mt-1">{v.meaning}</p>
-                <p className="text-xs text-ink-faint italic mt-1">“{v.example}”</p>
+                <p className="text-xs text-ink-muted italic mt-1">“{v.example}”</p>
               </button>
             ))}
           </div>
@@ -157,7 +157,7 @@ export default function WritingPage() {
         <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-6">
           <div className="flex items-center justify-between mb-3">
             <h2 className="font-medium text-ink">{tr('草稿區', 'Drafting Canvas')}</h2>
-            <span className={`text-xs ${wordCount >= 380 ? 'text-accent' : 'text-ink-faint'}`}>
+            <span className={`text-xs ${wordCount >= 380 ? 'text-accent' : 'text-ink-muted'}`}>
               {wordCount} {tr('字', 'words')}
             </span>
           </div>
@@ -177,7 +177,7 @@ export default function WritingPage() {
             </button>
             <button
               onClick={() => { if (draft) { setDraft(''); localStorage.removeItem(DRAFT_KEY) } }}
-              className="inline-flex items-center gap-2 text-ink-faint hover:text-ink-muted text-sm px-3 py-2.5 transition-all"
+              className="inline-flex items-center gap-2 text-ink-muted hover:text-ink-soft text-sm px-3 py-2.5 transition-all"
             >
               <RotateCcw size={14} /> {tr('清空', 'Clear')}
             </button>
@@ -187,7 +187,7 @@ export default function WritingPage() {
         {/* Self-assessment rubric */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
           <h2 className="font-medium text-ink mb-1">{tr('自評量表（HKEAA 7 分制）', 'Self-Assessment (HKEAA 7-point scale)')}</h2>
-          <p className="text-xs text-ink-faint mb-5">
+          <p className="text-xs text-ink-muted mb-5">
             {tr('按三大範疇為自己的文章評分（1 = 最弱，7 = 最強）。', 'Rate your own writing on the three domains (1 = weakest, 7 = strongest).')}
           </p>
 
@@ -215,7 +215,7 @@ export default function WritingPage() {
                     </button>
                   ))}
                 </div>
-                <ul className="text-[11px] text-ink-faint space-y-0.5">
+                <ul className="text-[11px] text-ink-muted space-y-0.5">
                   {d.anchors.map((a) => (
                     <li key={a.band}><span className="text-ink-muted font-medium">{a.band}:</span> {a.en}</li>
                   ))}
@@ -233,7 +233,7 @@ export default function WritingPage() {
             </div>
           )}
           {rated > 0 && rated < 3 && (
-            <p className="mt-4 text-xs text-ink-faint text-center">
+            <p className="mt-4 text-xs text-ink-muted text-center">
               {tr('為三個範疇都評分後即顯示綜合等級。', 'Rate all three domains to see your overall band.')}
             </p>
           )}

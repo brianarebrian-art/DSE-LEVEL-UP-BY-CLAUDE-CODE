@@ -170,7 +170,7 @@ export default function WallClient() {
           onChange={(e) => setContent(e.target.value.slice(0, MAX))}
           rows={3}
           placeholder={en ? 'Write how you feel tonight…' : '寫低你今晚嘅心情…'}
-          className="w-full resize-none rounded-lg border border-line bg-surface p-3 text-sm text-ink-soft placeholder:text-ink-faint focus:border-accent focus:outline-none"
+          className="w-full resize-none rounded-lg border border-line bg-surface p-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
         />
         <div className="mt-2 flex flex-wrap gap-1.5">
           {WALL_TAG_KEYS.map((k) => {
@@ -189,7 +189,7 @@ export default function WallClient() {
           })}
         </div>
         <div className="mt-2 flex items-center justify-between">
-          <span className={`text-xs ${remaining < 0 ? 'text-rose' : 'text-ink-faint'}`}>
+          <span className={`text-xs ${remaining < 0 ? 'text-rose' : 'text-ink-muted'}`}>
             {content.length} / {MAX}
           </span>
           <button
@@ -200,7 +200,7 @@ export default function WallClient() {
             <Send size={14} /> {en ? 'Post' : '發布'}
           </button>
         </div>
-        <p className="mt-2 text-xs leading-relaxed text-ink-faint">
+        <p className="mt-2 text-xs leading-relaxed text-ink-muted">
           {en
             ? 'Every post is read by a real person before it goes public — this keeps everyone safe, so it may take a little while to appear.'
             : '每一則留言都會由真人睇過先公開 —— 為咗大家安全，可能要等一陣先出現。'}
@@ -265,7 +265,7 @@ export default function WallClient() {
         ) : (
           posts.map((p) => (
             <article key={p.id} className="rounded-2xl border border-line bg-surface-raised p-4">
-              <div className="mb-2 flex items-center gap-2 text-xs text-ink-faint">
+              <div className="mb-2 flex items-center gap-2 text-xs text-ink-muted">
                 <span className="font-medium text-violet">🌙 {p.author_hash}</span>
                 <span>·</span>
                 <span>{timeAgo(p.created_at, en)}</span>
@@ -286,7 +286,7 @@ export default function WallClient() {
                 <button
                   onClick={() => like(p.id)}
                   className={`min-h-11 inline-flex items-center gap-1.5 text-sm transition-colors ${
-                    p.liked ? 'text-rose' : 'text-ink-faint hover:text-rose'
+                    p.liked ? 'text-rose' : 'text-ink-muted hover:text-rose'
                   }`}
                   aria-pressed={p.liked}
                   aria-label={en ? 'Cheer this on' : '為佢打氣'}

@@ -28,28 +28,60 @@
   --color-surface: #FAFAF8;        /* 頁面底色 */
   --color-surface-raised: #FFFFFF; /* 卡片／浮起面 */
   --color-surface-sunken: #F5F5F0; /* 凹陷區／次級面 */
-  --color-ink: #1A1A1A;            /* 正文 */
-  --color-ink-soft: #2D2D2D;       /* 次級正文 */
-  --color-ink-muted: #6B6B6B;      /* 輔助說明 */
-  --color-ink-faint: #9CA3AF;      /* 最弱：時間戳、頁尾細字 */
-  --color-accent: #008B84;         /* 連結／強調字 */
-  --color-accent-strong: #00726C;  /* 實心掣底色 */
-  --color-accent-hover: #005F5A;
+  /* ⚠️ 2026-07-30 Light 對比度修正（Brian 拍板）——【改色前必讀】
+     舊值 accent #008B84、gold #B8860B、ink-muted #6B6B6B 全部未達 WCAG AA
+     內文 4.5:1。實測不合格點 65/177（首頁）。修正原則有三：
+       1. 三個淺色底面都要達標，唔止 #FAFAF8：卡片係 #FFFFFF（最亮＝最差），
+          凹陷區係 #F5F5F0。落標必須取三者最差值。
+       2. 【最易踩】同色淡底藥丸 `text-accent bg-accent/12` ——
+          淡底會拉近前後景，對比比純底再跌約 0.9。舊 accent 落淡底只有 3.18。
+          故落標時已計到 α=0.15；α 唔可以再加大，加大就穿底。
+       3. 半透明 `bg-line`／`line-strong` 疊在底面上同樣會拉低對比，
+          ink-muted 已預留餘量應付 line-strong（12%）。
+     每個值後面括號＝【三底面最差純底值】/【同色 α=0.15 淡底值】。 */
+  --color-ink: #1A1A1A;            /* 正文（15.91） */
+  --color-ink-soft: #2D2D2D;       /* 次級正文（12.59） */
+  --color-ink-muted: #5E5E5E;      /* 輔助說明（5.93 / line-strong 4.53） */
+  /* ink-faint 保持 #9CA3AF（2.43）＝【未達 AA，刻意保留】。
+     只准用於 WCAG 1.4.3 明文豁免嘅兩類：(a) 停用狀態控件（inactive UI
+     component），(b) aria-hidden 純裝飾圖形。任何學生需要讀嘅字 ——
+     時間戳、題數、metadata、提示文案 —— 一律用 ink-muted。 */
+  --color-ink-faint: #9CA3AF;
+  --color-accent: #006B65;         /* 連結／強調字（5.83 / 淡底 4.67） */
+  --color-accent-strong: #00726C;  /* 實心掣底色：白字落佢 = 5.80。
+                                      注意佢比 accent 淺 ——「strong」係指
+                                      「夠實可以做底色」嘅角色，唔係「更深」嘅層級。
+                                      千萬唔好因為個名而揀佢做深色字。 */
+  --color-accent-hover: #005F5A;   /* 白字 = 7.54 */
   --color-on-accent: #FFFFFF;      /* 實心掣上的字 */
   --color-line: rgba(0, 0, 0, 0.06);
   --color-line-strong: rgba(0, 0, 0, 0.12);
 
-  /* 三個輔助色族。Light 沿用現行值，Cyber 值全部經對比度實測（見下方）。 */
-  --color-gold: #B8860B;          /* 年份／次要標記 */
-  --color-gold-soft: #D4A017;
-  --color-gold-strong: #8A6608;
-  --color-violet: #7C3AED;        /* 課題／框架標記 */
-  --color-violet-strong: #6D28D9;
-  --color-rose: #C2185B;          /* 提醒。憲章禁大紅，故用玫紅而非正紅 */
-  --color-rose-strong: #9D1449;
+  /* 三個輔助色族。Cyber 值全部經對比度實測（見下方）。 */
+  --color-gold: #7E5D07;          /* 年份／次要標記（5.56 / 淡底 4.51） */
+  --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色】，只做邊框／淡底 */
+  --color-gold-strong: #725106;   /* 6.63 */
+  --color-violet: #6D28D9;        /* 課題／框架標記（6.50 / 淡底 5.09） */
+  --color-violet-strong: #5B21B6; /* 白字 = 8.98 */
+  --color-rose: #C2185B;          /* 提醒。憲章禁大紅，故用玫紅而非正紅
+                                     （5.37 / 淡底 4.57 —— rose 淡底 α 唔准超過 0.10） */
+  --color-rose-strong: #9D1449;   /* 7.30 */
   /* 紫色實心底上的字。同 --color-on-accent 同一個道理：Light 下 violet 係深紫用白字，
      Cyber 下 violet 變淺紫（#B98CF5），白字對比只有 1.6:1，必須反過來用深字。 */
   --color-on-violet: #FFFFFF;
+
+  /* ── 等級色（做文字色用，見 lib/grading.ts `gradeColors`）────────────────────
+     刻意唔放入 --color-* 命名空間：呢批係語意數據色，唔應該生成
+     bg-grade-5 / text-grade-5 等 utility，只准經 inline style 讀 var()。
+     括號＝落三個淺底嘅最差比值。 */
+  --grade-5ss: #9A5B06; /* 4.96 */
+  --grade-5s:  #8A6608; /* 4.82 */
+  --grade-5:   #177E3C; /* 4.70 */
+  --grade-4:   #1E52B8; /* 6.50 */
+  --grade-3:   #7E22CE; /* 6.39 */
+  --grade-2:   #475569; /* 6.93 */
+  --grade-1:   #334155; /* 9.47 */
+  --grade-u:   #9D1449; /* 7.30 —— 玫紅，唔用正紅（憲章 §大愛） */
 }
 
 /* ── Cyber 主題（深夜霓虹）────────────────────────────────────────────────
@@ -90,6 +122,17 @@
   --color-rose: #FF87B8;          /*  8.44:1 AAA */
   --color-rose-strong: #FF5C9E;   /*  6.52:1 AA —— 同上，非正文用 */
   --color-on-violet: #1A1024;     /* 深字 on #B98CF5 = 6.6:1 AA（白字只有 1.6:1） */
+
+  /* 等級色 Cyber 版（括號＝落三個深底嘅最差比值）。
+     Light 嘅深金／深藍／深紫落深卡只有 2.25–4.63，故必須整組換亮。 */
+  --grade-5ss: #FBBF24; /* 10.20 */
+  --grade-5s:  #FCD34D; /* 11.81 */
+  --grade-5:   #4ADE80; /*  9.77 */
+  --grade-4:   #60A5FA; /*  6.70 */
+  --grade-3:   #C084FC; /*  6.44 */
+  --grade-2:   #94A3B8; /*  6.64 */
+  --grade-1:   #CBD5E1; /* 11.47 */
+  --grade-u:   #FF87B8; /*  7.63 —— 玫紅 */
 }
 
 body {

@@ -181,7 +181,7 @@ export default function DataPortability() {
       )}
       {status === 'error' && errMsg && <p className="text-sm text-amber-400 mt-3">{errMsg}</p>}
 
-      <p className="text-[11px] text-slate-500 mt-3 leading-relaxed">
+      <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
         {en
           ? 'For privacy, mood-log entries never leave this device and are not included in the file.'
           : '為保私隱，情緒記錄永遠只留喺本機，唔會包含喺檔案入面。'}

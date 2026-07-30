@@ -57,26 +57,48 @@ export function predictGrade(score: number, table: CutoffTable): GradeResult {
   }
 }
 
+// 等級色（做【文字色】用，例如 /result 嘅等級刻度同大字等級）。
+//
+// 2026-07-30 對比度修正：原本係一組固定亮色，兩個主題都有唔合格 ——
+//   Light（落白卡）：5** 1.96 · 5* 1.53 · 5 2.08 · 4 3.36 · 3 3.62 · 2 4.35
+//   Cyber（落深卡）：1 2.25 · 2 3.58 · 3 4.30 · 4 4.63
+// 亦即學生睇自己攞幾級嗰一刻，個等級色本身係睇唔清嘅。改為主題變數（見
+// globals.css `--grade-*`），Light 全部 ≥4.58、Cyber 全部 ≥6.44。
+//
+// ⚠️ WCAG 1.4.1：等級【唔可以只靠顏色分辨】。Light 下 5** 與 5* 同屬深金褐、
+// 色相接近，分辨主要靠字面「5**」／「5*」本身 —— 呢個係正確做法，唔好為咗
+// 拉開色相而犧牲對比度。
 export const gradeColors: Record<string, string> = {
-  '5**': '#F59E0B',
-  '5*': '#FBBF24',
-  '5': '#22C55E',
-  '4': '#3B82F6',
-  '3': '#A855F7',
-  '2': '#64748B',
-  '1': '#475569',
-  U: '#EF4444',
+  '5**': 'var(--grade-5ss)',
+  '5*': 'var(--grade-5s)',
+  '5': 'var(--grade-5)',
+  '4': 'var(--grade-4)',
+  '3': 'var(--grade-3)',
+  '2': 'var(--grade-2)',
+  '1': 'var(--grade-1)',
+  U: 'var(--grade-u)',
 }
 
+// 等級徽章（實心底＋字）。底色刻意【主題無關】——兩個主題渲染一樣，所以呢批值
+// 保持字面色而唔用 token。正因為底色固定，字色必須逐個等級配對：深底配白字、
+// 亮底配深字。舊版全部硬套 `text-black`，深藍灰底只有 2.35:1（第 1 級）／
+// 3.74:1（第 2 級），兩者皆不合格。
+//
+// 實測（Tailwind v4 oklch 實際渲染值，非 v3 hex）：
+//   amber-500 #FE9A00 深字 8.35 · amber-400 #FFB900 深字 10.35 · green-500 #00C950 深字 8.04
+//   blue-500  #2B7FFF 深字 4.74 · slate-500 #62748E 白字 4.76 · slate-600 #45556C 白字 7.58
+// ⚠️ purple-500 #AD46FF 係陷阱：深字 4.33、白字 4.12，【兩邊都唔夠】，
+//    故第 3 級改用固定深紫 #6D28D9（白字 7.10）。
+// U 級用玫紅 #9D1449（白字 7.30）而唔用 red-500：憲章禁大紅。
 export const gradeBgColors: Record<string, string> = {
-  '5**': 'bg-amber-500',
-  '5*': 'bg-amber-400',
-  '5': 'bg-green-500',
-  '4': 'bg-blue-500',
-  '3': 'bg-purple-500',
-  '2': 'bg-slate-500',
-  '1': 'bg-slate-600',
-  U: 'bg-red-500',
+  '5**': 'bg-amber-500 text-slate-900',
+  '5*': 'bg-amber-400 text-slate-900',
+  '5': 'bg-green-500 text-slate-900',
+  '4': 'bg-blue-500 text-slate-900',
+  '3': 'bg-[#6D28D9] text-white',
+  '2': 'bg-slate-500 text-white',
+  '1': 'bg-slate-600 text-white',
+  U: 'bg-[#9D1449] text-white',
 }
 
 export const gradeMessages: Record<string, string> = {

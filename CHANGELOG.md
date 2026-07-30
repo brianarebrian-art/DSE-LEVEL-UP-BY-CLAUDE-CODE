@@ -2,6 +2,18 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-30 — 雙主題對比度全站達標（Brian 拍板選項 (b)）
+
+- **背景**：Loop Engine 拍板：ink-faint 收窄用途（選項 b）、accent／gold 提升、改完跑雙主題稽核。執行途中發現問題範圍遠大於原本三個 token。
+- **原判斷已更正**：Loop 指定 `accent → #00807A（4.60）`。實測 #00807A 落**卡片白底**只有 4.81、落**凹陷面 #F5F5F0** 只有 4.40 —— **仍然不合格**。落標必須取三個淺底最差值，而唔係只計 #FAFAF8。最終用 `#006B65`（最差 5.83；同色淡底 α=0.15 仍有 4.67）。
+- **稽核工具本身有三個 bug，先修工具再信數字**（詳見 `docs/TROUBLESHOOTING.md` §4）：唔合成半透明底色會高估對比；`canvas.fillStyle` 讀唔到 Tailwind v4 嘅 `oklch()` 會令整層底色被跳過（11 個假陽性）；喺 console 翻 `data-theme` 唔 reload 會讀到兩個主題嘅混合值（曾令 /practice 5 項虛報成 15 項）。工具已入庫 `scripts/contrast-audit.js`。
+- **Token 修正**（每個值都附三底面最差實測比值，寫入 `app/globals.css`）：`accent` 4.00→5.83、`gold` 3.11→5.56、`ink-muted` 4.87→5.93、`violet`／`rose`／`gold-strong` 同步落標。`ink-faint`（2.43）**值不變**，但只准用於 WCAG 1.4.3 明文豁免嘅兩類：停用態控件、`aria-hidden` 純裝飾圖形 —— 全站只剩 4 行。
+- **`ink-faint` 收窄遷移**：75 行 → `ink-muted`，由 `scripts/inkfaint-migrate.mjs` 執行（可重複跑，豁免清單同代碼脫節會自動 fail）。
+- **一類反覆出現嘅真 bug：token 底 ＋ 寫死字色**。凡係卡底跟主題而文字唔跟（或反過來），就必然有一個主題睇唔到字。已修：`CountdownBanner`（首頁倒數日數，淺色下 **1.33:1**）、`EmotionTags`（三個情緒掣，**1.85:1**，屬情緒安全網）、`DifficultyBadge`「進階」（**1.30:1**）、`ReadingRuler` 開啟態（**1.24:1**）、A11y 面板字級 −／＋ 掣（**1.19:1**）、`/dashboard/report` 標題（**1.16:1**）、`ProgressTrajectory`／`RadarChart`／`ErrorRadar`／`DailySpectrum` 圖表軸標籤。
+- **等級色整組換**：`gradeColors` 原本 Light 最低 1.53、Cyber 最低 2.25，改為主題變數 `--grade-*`（Light ≥4.58／Cyber ≥6.44）。`gradeBgColors` 原本全部硬套 `text-black`，深藍灰底只有 2.35 —— 改為逐級配對字色；purple-500 深字 4.33／白字 4.12 **兩邊都唔夠**，第 3 級改深紫 #6D28D9；U 級由 red-500 改玫紅（憲章禁大紅）。
+- **`RadarChart` 加 `tone` prop**：同一組件出現喺跟主題嘅卡同永遠深色嘅報告頁，寫死一組色兩邊都唔合格。
+- **驗收（每個都係 reload 後實測渲染色，非 token 值）**：`/`、`/practice`（未答／已答／自診三態）、`/dashboard`、`/result`、`/subjects`、`/subjects/math`、`/notes`、`/methodology`、`/about`、`/wall`、`/paper-warrior`、`/answer-sheet`、`/writing`、`/reading`、`/waiting`、`/focus`、`/relax`、`/account`、`/dashboard/report`，加 A11y 面板／閱讀尺開關態／SOS 對話框 —— **兩個主題全部 0 不合格**。`npm run qa` 綠、`npm test` 42/42、`npm run build` 綠。
+
 ## 2026-07-22b — v6.0 FINAL 審核 + B2 一鍵休息模式（真・停錶版）
 
 - **背景**：用戶貼 v6.0 FINAL。**目前為止最準確嘅一份** —— §3 技術現實逐格對；§2 首次明文寫「保留而非禁止：自律房間 WhatsApp 邀請、IG 社群、Web Speech TTS」（我上次嘅反對意見被收納）；§5 亦更正咗「3 秒」為「通常 1-5 秒，非硬性保證」；§7.1 如實標 B1 已交付、OpenDyslexic 待放檔。

@@ -37,7 +37,7 @@ export default function SyncStatus() {
   if (!AUTH_ENABLED || !mounted || authStatus === 'loading') {
     return (
       <div className="bg-surface-raised border border-line rounded-2xl p-4 mb-8 flex items-center gap-3 text-sm">
-        <Cloud size={18} className="text-ink-faint shrink-0" />
+        <Cloud size={18} className="text-ink-muted shrink-0" />
         <span className="text-ink-muted">
           {t.dashboard.loginTeaserA}
           <span className="text-ink-soft">{t.dashboard.loginTeaserGoogle}</span>
@@ -118,15 +118,15 @@ export default function SyncStatus() {
           ) : synced ? (
             <Cloud size={18} className="text-accent shrink-0" />
           ) : (
-            <Cloud size={18} className="text-ink-faint shrink-0" />
+            <Cloud size={18} className="text-ink-muted shrink-0" />
           )}
           <span className={error ? 'text-rose' : 'text-ink-soft'}>{label}</span>
         </span>
         {/* Identity — the signed-in account whose progress is being synced. */}
         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-          <span className="text-xs text-ink-faint break-all">{user.email}</span>
+          <span className="text-xs text-ink-muted break-all">{user.email}</span>
           {lastSyncedLabel && (
-            <span className="text-xs text-ink-faint">
+            <span className="text-xs text-ink-muted">
               · {en ? `Last synced ${lastSyncedLabel}` : `最後同步 ${lastSyncedLabel}`}
             </span>
           )}

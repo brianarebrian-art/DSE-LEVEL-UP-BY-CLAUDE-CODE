@@ -86,7 +86,7 @@ export default function DashboardPage() {
         </p>
         <Link
           href="/relax"
-          className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 rounded-xl px-6 py-3 font-medium transition-all"
+          className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/15 rounded-xl px-6 py-3 font-medium transition-all"
         >
           🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
@@ -96,7 +96,7 @@ export default function DashboardPage() {
         >
           {en ? 'Turn off early' : '提早關閉呢個模式'}
         </button>
-        <p className="text-xs text-ink-faint">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
+        <p className="text-xs text-ink-muted">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
       </div>
     )
   }
@@ -210,7 +210,7 @@ export default function DashboardPage() {
               <c.icon size={18} className={`${c.accent} mb-3`} />
               <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
                 {c.value}
-                <span className="text-sm text-ink-faint font-normal ml-1">{c.unit}</span>
+                <span className="text-sm text-ink-muted font-normal ml-1">{c.unit}</span>
               </div>
               <div className="text-xs text-ink-muted mt-1">{c.label}</div>
             </div>
@@ -322,8 +322,9 @@ export default function DashboardPage() {
                     {subjName(s.subjectId, s.subjectName)}
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-ink-faint">{s.questions}{d.questionsUnit}</span>
-                    <span className={`text-xs font-medium text-black px-2 py-0.5 rounded ${gradeBgColors[s.bestGrade] ?? 'bg-slate-400'}`}>
+                    <span className="text-xs text-ink-muted">{s.questions}{d.questionsUnit}</span>
+                    {/* 字色由 gradeBgColors 逐級配對（深底白字／亮底深字），唔可以喺此硬套 text-black */}
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${gradeBgColors[s.bestGrade] ?? 'bg-slate-500 text-white'}`}>
                       {d.bestPrefix}{s.bestGrade}
                     </span>
                   </div>
@@ -372,12 +373,12 @@ export default function DashboardPage() {
                   <span className="text-xl">{meta?.emoji ?? '📘'}</span>
                   <div>
                     <div className="text-sm font-medium text-ink">{subjName(a.subjectId, a.subjectName)}</div>
-                    <div className="text-xs text-ink-faint">{relativeTime(a.timestamp, d)}</div>
+                    <div className="text-xs text-ink-muted">{relativeTime(a.timestamp, d)}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>{a.score}/{a.total}</span>
-                  <span className={`text-xs font-medium text-black px-2 py-0.5 rounded ${gradeBgColors[a.grade] ?? 'bg-slate-400'}`}>
+                  <span className={`text-xs font-medium px-2 py-0.5 rounded ${gradeBgColors[a.grade] ?? 'bg-slate-500 text-white'}`}>
                     {a.grade}
                   </span>
                 </div>
@@ -426,7 +427,7 @@ export default function DashboardPage() {
               </button>
               <button
                 onClick={() => setConfirmReset(false)}
-                className="text-ink-faint hover:text-ink-muted"
+                className="text-ink-muted hover:text-ink-soft"
               >
                 {en ? 'Cancel' : '取消'}
               </button>
@@ -434,7 +435,7 @@ export default function DashboardPage() {
           ) : (
             <button
               onClick={() => setConfirmReset(true)}
-              className="inline-flex items-center gap-2 text-xs text-ink-faint hover:text-ink-muted transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-ink-muted hover:text-ink-soft transition-colors"
             >
               <RotateCcw size={13} /> {d.resetBtn}
             </button>

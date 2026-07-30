@@ -130,7 +130,7 @@ export default function AnswerSheetClient() {
               onChange={(e) => setCode(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && load(code)}
               placeholder="math~all~20~k3q7"
-              className="min-h-11 flex-1 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-faint focus:border-accent focus:outline-none"
+              className="min-h-11 flex-1 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
             />
             <button
               onClick={() => load(code)}
@@ -146,7 +146,7 @@ export default function AnswerSheetClient() {
           </p>
         )}
         {!paper && !error && (
-          <p className="mt-3 text-xs text-ink-faint">
+          <p className="mt-3 text-xs text-ink-muted">
             {tr('未有卷？', 'No paper yet?')}{' '}
             <Link href="/paper-warrior" className="text-accent-strong underline underline-offset-2">
               {tr('去紙筆戰士印一份', 'Print one in Paper Warrior')}

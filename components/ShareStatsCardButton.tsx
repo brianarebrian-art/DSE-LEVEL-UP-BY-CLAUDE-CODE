@@ -53,12 +53,12 @@ export default function ShareStatsCardButton({ data, en = false }: { data: Daily
       <button
         onClick={handleShare}
         disabled={busy}
-        className="no-print w-full flex items-center justify-center gap-2 border border-neon-cyan/40 text-neon-cyan font-semibold py-3.5 rounded-xl transition-all hover:bg-neon-cyan/10 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="no-print w-full flex items-center justify-center gap-2 border border-accent/40 text-accent font-semibold py-3.5 rounded-xl transition-all hover:bg-accent/10 disabled:opacity-50 disabled:cursor-not-allowed"
         style={{ boxShadow: '0 0 20px rgba(0,245,212,0.12)' }}
       >
         <ImageDown size={16} /> {busy ? (en ? 'Generating…' : '生成緊戰績卡…') : en ? 'Share stats card to IG Story' : '分享戰績卡到 IG Story'}
       </button>
-      {err && <p className="no-print text-xs text-amber-400/90 mt-2 text-center">{err}</p>}
+      {err && <p className="no-print text-xs text-gold mt-2 text-center">{err}</p>}
 
       {/* off-screen 全尺寸卡（html2canvas 影呢個）。用 left:-99999 藏起 —— 不可用 opacity:0，
           因為 html2canvas 會尊重 opacity 而影出空白。aria-hidden 唔影響無障礙。 */}

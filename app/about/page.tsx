@@ -138,7 +138,7 @@ export default function AboutPage() {
         </div>
 
         {/* Legal */}
-        <div className="bg-surface-sunken border border-line rounded-2xl p-5 text-xs text-ink-faint leading-relaxed mt-5">
+        <div className="bg-surface-sunken border border-line rounded-2xl p-5 text-xs text-ink-muted leading-relaxed mt-5">
           <strong className="text-ink-muted font-medium">{en ? 'Disclaimer: ' : '免責聲明：'}</strong>
           {en
             ? 'All questions are independently rewritten practice items, not official HKEAA papers. Grade predictions are indicative only; final results are determined by the HKEAA.'

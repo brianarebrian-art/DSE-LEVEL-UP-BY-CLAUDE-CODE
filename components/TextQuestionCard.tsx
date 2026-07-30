@@ -41,7 +41,7 @@ export default function TextQuestionCard({
         <span className="text-[11px] font-bold tracking-wide text-amber-300 bg-amber-500/10 border border-amber-500/30 rounded-full px-2.5 py-1">
           {en ? 'Text answer' : '文字題'}
         </span>
-        <span className="text-xs text-slate-500">{q.frameworkEmoji} {tr(q.frameworkZh, q.frameworkEn)}</span>
+        <span className="text-xs text-slate-400">{q.frameworkEmoji} {tr(q.frameworkZh, q.frameworkEn)}</span>
       </div>
 
       <div className="text-sm sm:text-base text-slate-100 leading-relaxed mb-4">
@@ -68,7 +68,7 @@ export default function TextQuestionCard({
       ) : (
         <>
           {/* Student's answer echo */}
-          <div className="text-xs text-slate-500 mb-1">{en ? 'Your answer' : '你嘅答案'}</div>
+          <div className="text-xs text-slate-400 mb-1">{en ? 'Your answer' : '你嘅答案'}</div>
           <div className="text-sm text-slate-300 bg-slate-800/50 rounded-lg px-3 py-2 mb-4 whitespace-pre-wrap break-words">
             {value}
           </div>

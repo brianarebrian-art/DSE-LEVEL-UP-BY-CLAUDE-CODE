@@ -21,7 +21,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
     if (state !== 'synced') return null
     return (
       <span
-        className={`inline-flex items-center gap-1.5 text-xs text-ink-faint ${className}`}
+        className={`inline-flex items-center gap-1.5 text-xs text-ink-muted ${className}`}
         aria-live="off"
       >
         <Check size={12} className="text-accent" />
@@ -33,7 +33,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
   if (state === 'syncing') {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 text-xs text-ink-faint ${className}`}
+        className={`inline-flex items-center gap-1.5 text-xs text-ink-muted ${className}`}
         aria-live="off"
       >
         <Loader2 size={12} className="animate-spin motion-reduce:animate-none" />

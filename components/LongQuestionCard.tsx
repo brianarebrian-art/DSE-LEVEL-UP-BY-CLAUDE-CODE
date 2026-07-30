@@ -50,7 +50,7 @@ export default function LongQuestionCard({
           {en ? 'Long response' : '長題目'}
         </span>
         {q.suggestedMinutes ? (
-          <span className="inline-flex items-center gap-1 text-xs text-slate-500">
+          <span className="inline-flex items-center gap-1 text-xs text-slate-400">
             <Clock size={12} /> {en ? `~${q.suggestedMinutes} min` : `建議用時 ${q.suggestedMinutes} 分鐘`}
           </span>
         ) : null}
@@ -88,7 +88,7 @@ export default function LongQuestionCard({
         </>
       ) : (
         <>
-          <div className="text-xs text-slate-500 mb-1">{en ? 'Your working' : '你嘅作答'}</div>
+          <div className="text-xs text-slate-400 mb-1">{en ? 'Your working' : '你嘅作答'}</div>
           <div className="text-sm text-slate-300 bg-slate-800/50 rounded-lg px-3 py-2 mb-4 whitespace-pre-wrap break-words">
             <MathText>{value}</MathText>
           </div>

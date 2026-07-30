@@ -79,7 +79,7 @@ export default function SubjectDetailView({
             <p className="text-ink-muted text-sm">
               {questionsCount}{sd.quickDescA}{topics.length}{sd.quickDescB}
             </p>
-            <div className="flex gap-3 mt-2 text-xs text-ink-faint flex-wrap">
+            <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
               <span>{sd.minutesAbout}{Math.max(5, Math.round(questionsCount * 1.5))}{sd.minutesUnit}</span>
               <span>·</span>
               <span>{sd.gradePredict}</span>
@@ -158,7 +158,7 @@ export default function SubjectDetailView({
                 </div>
               </div>
               <svg
-                className="w-4 h-4 text-ink-faint group-hover:text-accent transition-colors"
+                className="w-4 h-4 text-ink-muted group-hover:text-accent transition-colors"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

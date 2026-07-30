@@ -140,7 +140,7 @@ export default function PaperWarriorClient() {
             />
             <span className="text-sm text-ink-soft">
               {tr('連答案同解析一齊印（練習用）', 'Include answers and explanations (practice mode)')}
-              <span className="ml-1 text-xs text-ink-faint">
+              <span className="ml-1 text-xs text-ink-muted">
                 {tr('唔剔＝純題目，當模擬考', 'Unchecked = questions only, like a real exam')}
               </span>
             </span>
@@ -182,7 +182,7 @@ export default function PaperWarriorClient() {
           )}
 
           {paper === null && (
-            <p className="mt-4 text-xs text-ink-faint">
+            <p className="mt-4 text-xs text-ink-muted">
               {tr('撳「生成試卷」就會即刻喺下面出現預覽。', 'Press “Generate paper” and a preview appears below.')}
             </p>
           )}

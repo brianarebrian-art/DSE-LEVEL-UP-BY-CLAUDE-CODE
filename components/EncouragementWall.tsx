@@ -40,7 +40,7 @@ export default function EncouragementWall() {
         {picks.map((msg, i) => (
           <li key={i} className="text-sm text-ink-muted leading-relaxed border-l-2 border-gold/30 pl-3">
             {en ? msg.en : msg.zh}
-            <span className="text-ink-faint text-xs ml-2">{en ? '— an anonymous senior' : '—— 匿名學長姐'}</span>
+            <span className="text-ink-muted text-xs ml-2">{en ? '— an anonymous senior' : '—— 匿名學長姐'}</span>
           </li>
         ))}
       </ul>

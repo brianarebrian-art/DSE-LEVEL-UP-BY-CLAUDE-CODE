@@ -100,7 +100,7 @@ export default function NotesOverview() {
               <span className="text-sm font-medium text-ink">
                 {r.emoji} {en ? r.nameEn : r.name}
               </span>
-              <ArrowRight size={16} className="mt-0.5 shrink-0 text-ink-faint transition-colors group-hover:text-violet" />
+              <ArrowRight size={16} className="mt-0.5 shrink-0 text-ink-muted transition-colors group-hover:text-violet" />
             </div>
             <p className="mt-1.5 text-xs text-ink-muted">
               {tr(`${r.topics} 個課題 · ${r.questions} 題`, `${r.topics} topics · ${r.questions} questions`)}
@@ -114,7 +114,7 @@ export default function NotesOverview() {
                   )}
                 </span>
               ) : (
-                <span className="text-ink-faint">{tr('仲未做過', 'Not practised yet')}</span>
+                <span className="text-ink-muted">{tr('仲未做過', 'Not practised yet')}</span>
               )}
             </p>
           </Link>

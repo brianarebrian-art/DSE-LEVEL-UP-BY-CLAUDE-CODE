@@ -10,7 +10,12 @@ import ThemeToggle from '@/components/ThemeToggle'
 import { useT, useLocale } from '@/lib/i18n'
 
 // Phase 2 Task 1（Kate/Leo 2026-07-18）：light-first 清晨圖書館。純白底 + #1A1A1A 文字
-// + #008B84 accent（WCAG AA 4.6:1）；實心青掣用 #00726C（白字 4.9:1）。
+// + 青色 accent；實心青掣用 accent-strong。
+//
+// 2026-07-30 更正：原註釋寫「#008B84 accent（WCAG AA 4.6:1）」，兩處都錯 ——
+// #008B84 實測只有 4.00:1（vs #FAFAF8）／4.18:1（vs 白卡），內文未達 AA；
+// 白字落 #00726C 係 5.80:1 而非 4.9:1。accent 已改為 #006B65。
+// 色值一律唔好喺組件註釋寫死，改睇 globals.css 的 token 定義（每個值都附實測比值）。
 //
 // 2026-07-28 響應式統一（手機 / 平板 / 電腦一套內容）：
 // 橫向導航條由 `md`(768px) 改為 `xl`(1280px) 先顯示。實測natural 闊度——
@@ -144,7 +149,7 @@ export default function Navbar() {
             {/* 語言切換同登入 —— 手機／平板一樣搵得到（之前橫向條斷行時就係呢兩樣最易失蹤） */}
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
               <div className="flex items-center gap-1">
-                <span className="text-xs text-ink-faint">{en ? 'Language' : '語言'}</span>
+                <span className="text-xs text-ink-muted">{en ? 'Language' : '語言'}</span>
                 <LanguageToggle />
               </div>
               <AuthButton onAction={() => setOpen(false)} />
@@ -153,7 +158,7 @@ export default function Navbar() {
             {/* 主題：選單內出完整三段式（自動／淺色／深色），選項一目了然。
                 同語言切換分開兩行，避免學生以為兩者相關。 */}
             <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
-              <span className="text-xs text-ink-faint">{en ? 'Theme' : '主題'}</span>
+              <span className="text-xs text-ink-muted">{en ? 'Theme' : '主題'}</span>
               <ThemeToggle />
             </div>
           </div>

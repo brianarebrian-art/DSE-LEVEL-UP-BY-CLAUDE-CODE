@@ -37,16 +37,20 @@ export default function CountdownBanner() {
         : '最後衝刺，每日少少，積少成多。'
 
   return (
-    <div className="border-b border-amber-500/20 bg-amber-500/[0.06]">
+    // 2026-07-30 對比度修正：本組件係 light-first 遷移漏網（仍用 slate/amber 深色系）。
+    // 淺色主題下，amber/6% 淡底會合成成米白 #FAF4E9，而 text-slate-300 落上去只有
+    // 1.36:1、text-amber-300 更只有 1.33:1 —— 即係首頁頂第一眼睇到嘅倒數日數
+    // 【實際上係睇唔到】。已全部改用主題 token，兩個主題都達 AA。
+    <div className="border-b border-gold/25 bg-gold/[0.06]">
       <div className="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-center gap-3 text-sm flex-wrap">
-        <CalendarDays size={15} className="text-amber-400 shrink-0" />
-        <span className="text-slate-300">
+        <CalendarDays size={15} className="text-gold shrink-0" />
+        <span className="text-ink-soft">
           {en ? 'About ' : '距 '}
-          <span className="font-bold text-amber-300">{days}</span>
+          <span className="font-bold text-gold">{days}</span>
           {en ? ' days to HKDSE 2027' : ' 日 · 2027 DSE 開考'}
         </span>
-        <span className="text-slate-500 hidden sm:inline">·</span>
-        <span className="text-slate-500">{note}</span>
+        <span className="text-ink-muted hidden sm:inline">·</span>
+        <span className="text-ink-muted">{note}</span>
       </div>
     </div>
   )

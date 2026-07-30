@@ -115,7 +115,7 @@ export default function ReviewScheduler() {
                     ? `/practice?subject=${encodeURIComponent(d.subjectId)}&topic=${encodeURIComponent(d.topicId)}`
                     : `/practice?subject=${encodeURIComponent(d.subjectId)}`}
                   onClick={() => markDone(d.questionId)}
-                  className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 rounded-lg px-4 py-2 text-sm font-medium transition-all"
+                  className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/15 rounded-lg px-4 py-2 text-sm font-medium transition-all"
                 >
                   {en ? 'Review this topic' : '開始重溫'}
                 </Link>

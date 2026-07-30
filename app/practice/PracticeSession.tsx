@@ -630,7 +630,7 @@ export default function PracticeSession({
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
             )}
           </p>
-          <p className="text-xs text-ink-faint leading-relaxed mb-6">
+          <p className="text-xs text-ink-muted leading-relaxed mb-6">
             {tr('喺邊部機做都好，接返落去就得。', 'Pick up right where you left off, on any device.')}
           </p>
           <div className="flex flex-col gap-2.5">

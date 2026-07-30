@@ -4,6 +4,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { Ruler } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 
+// 2026-07-30 對比度修正：呢兩粒掣係【浮喺頁面之上】，所以底色會同主題底疊合，
+// 唔可以寫死深色系。原本開啟態 text-amber-300 落 amber-500/15 淡底，喺淺色主題
+// 合成米黃 #FBECD3，只有 1.24:1 —— 即係開咗閱讀尺之後，粒掣自己反而睇唔到。
+// 兩態一律改用主題 token。（清晰帶本身嘅遮罩同幼邊框係裝飾層，維持原值。）
+//
 // 防跳行閱讀尺（Leo/前端 + Emma/UDL — SEN 支援）。開啟後，一條半透明清晰帶
 // 跟隨滑鼠/觸控移動，帶外上下輕微調暗，幫助讀寫障礙／專注力弱嘅同學逐行閱讀。
 // 高度三段可調；設定存 localStorage。純 overlay（pointer-events-none），不影響作答。
@@ -87,8 +92,8 @@ export default function ReadingRuler() {
           title={en ? 'Reading ruler (focus aid)' : '閱讀尺（防跳行輔助）'}
           className={`flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border transition-all ${
             on
-              ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
-              : 'bg-slate-900/80 border-slate-700 text-slate-500 hover:text-slate-300'
+              ? 'bg-gold/15 border-gold/50 text-gold'
+              : 'bg-surface-raised border-line-strong text-ink-muted hover:text-accent'
           }`}
         >
           <Ruler size={13} /> {en ? 'Ruler' : '閱讀尺'}
@@ -96,7 +101,7 @@ export default function ReadingRuler() {
         {on && (
           <button
             onClick={() => { const n = (hIdx + 1) % HEIGHTS.length; setHIdx(n); persist(on, n) }}
-            className="text-xs px-2.5 py-2 rounded-full border bg-slate-900/80 border-slate-700 text-slate-500 hover:text-slate-300 transition-all"
+            className="text-xs px-2.5 py-2 rounded-full border bg-surface-raised border-line-strong text-ink-muted hover:text-accent transition-all"
             title={en ? 'Band height' : '調整高度'}
           >
             {['S', 'M', 'L'][hIdx]}

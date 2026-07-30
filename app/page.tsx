@@ -92,13 +92,13 @@ export default function HomePage() {
 
           <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-xl text-ink-muted">{hero.subhead}</p>
 
-          <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-faint">
+          <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             {locale === 'en'
               ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind past-paper traps, one question at a time.'
               : '由 DSE 舊生 + AI 協作，免費同你逐題拆解歷屆試題陷阱背後嘅核心邏輯。'}
           </p>
 
-          <div className="animate-on-scroll stagger-3 mb-10 flex items-center justify-center gap-4 text-sm text-ink-faint">
+          <div className="animate-on-scroll stagger-3 mb-10 flex items-center justify-center gap-4 text-sm text-ink-muted">
             <span>{h.trust1}</span>
             <span>·</span>
             <span>{h.trust2}</span>
@@ -148,13 +148,13 @@ export default function HomePage() {
             <div className="animate-on-scroll stagger-1 rounded-2xl border border-line bg-surface-raised p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
               <div className="mb-4 flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-surface-sunken text-xs font-medium text-ink-muted">1</span>
-                <span className="text-xs font-medium uppercase tracking-wide text-ink-faint">{h.step1Label}</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{h.step1Label}</span>
               </div>
               <div className="mb-3 font-mono text-xs text-accent">2023 DSE Math Paper 1 Q1</div>
               <p className="text-sm leading-relaxed text-ink-soft">
                 {h.demoSolve}<MathText>$2x^2 + 3x - 5 = 0$</MathText>{h.demoFind}<MathText>$x$</MathText>{h.demoValueEnd}
               </p>
-              <div className="mt-4 border-t border-line pt-4 text-xs text-ink-faint">
+              <div className="mt-4 border-t border-line pt-4 text-xs text-ink-muted">
                 {h.demoAnswer}<MathText>{'$x = 1$'}</MathText>{h.demoOr}<MathText>{'$x = -\\frac{5}{2}$'}</MathText>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function HomePage() {
             <div className="animate-on-scroll stagger-2 rounded-2xl border border-accent/25 bg-surface-raised p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
               <div className="mb-4 flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-xs font-medium text-accent">2</span>
-                <span className="text-xs font-medium uppercase tracking-wide text-ink-faint">{h.step2Label}</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{h.step2Label}</span>
               </div>
               <div className="mb-3 flex items-center gap-2">
                 <span className="text-lg">🔄</span>
@@ -174,7 +174,7 @@ export default function HomePage() {
             <div className="animate-on-scroll stagger-3 rounded-2xl border border-gold-soft/30 bg-surface-raised p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
               <div className="mb-4 flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-soft/15 text-xs font-medium text-gold">3</span>
-                <span className="text-xs font-medium uppercase tracking-wide text-ink-faint">{h.step3Label}</span>
+                <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{h.step3Label}</span>
               </div>
               <div className="mb-3 flex items-center gap-2">
                 <Zap size={14} className="text-gold" />
@@ -192,7 +192,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <p className="animate-on-scroll mt-6 text-center text-sm text-ink-faint">{h.demoNote}</p>
+          <p className="animate-on-scroll mt-6 text-center text-sm text-ink-muted">{h.demoNote}</p>
         </div>
       </section>
 
@@ -286,7 +286,7 @@ export default function HomePage() {
           >
             {h.ctaBtn} <ArrowRight size={22} />
           </Link>
-          <p className="animate-on-scroll stagger-3 mt-4 text-sm text-ink-faint">{h.ctaNote}</p>
+          <p className="animate-on-scroll stagger-3 mt-4 text-sm text-ink-muted">{h.ctaNote}</p>
         </div>
       </section>
     </div>

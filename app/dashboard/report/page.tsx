@@ -221,7 +221,7 @@ export default function ReportPage() {
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-slate-950 px-4 text-center">
         <div className="text-5xl" aria-hidden>🗺️</div>
         <p className="text-slate-300 font-bold">{en ? 'Not enough data yet — do a few questions first!' : '仲未有足夠數據，做幾題先！'}</p>
-        <p className="text-slate-500 text-sm max-w-sm">
+        <p className="text-slate-400 text-sm max-w-sm">
           {en ? 'Do a few questions first — your study map is built from your real practice.' : '先做幾條題目 —— 溫書地圖係由你嘅真實練習記錄生成。'}
         </p>
         <Link href="/subjects" className="mt-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all">
@@ -234,7 +234,8 @@ export default function ReportPage() {
   const stat = [
     { label: en ? 'Latest practice level' : '最近練習等級', value: report.lastGrade ?? '—', accent: '#00F5D4' },
     { label: en ? 'Overall accuracy' : '整體準確率', value: `${report.accuracy}%`, accent: '#FEE440' },
-    { label: en ? 'Questions attempted' : '已做題數', value: `${report.attempts}`, accent: '#9B5DE5' },
+    // 霓虹紫 #9B5DE5 落 slate-900 只有 4.32:1（14px 粗體需 4.5），改用淺一級 #B98CF5（≈7.1）
+    { label: en ? 'Questions attempted' : '已做題數', value: `${report.attempts}`, accent: '#B98CF5' },
     { label: en ? 'Topics mastered' : '已攻克課題', value: `${report.masteredCount}`, accent: '#00F5D4' },
   ]
 
@@ -259,7 +260,9 @@ export default function ReportPage() {
         <div ref={areaRef} className="bg-slate-950 rounded-2xl p-5 sm:p-8">
           <header className="text-center mb-8">
             <div className="text-sm font-bold tracking-widest" style={{ color: '#00F5D4' }}>DSE LEVEL UP</div>
-            <h1 className="text-3xl font-extrabold mt-2">{en ? 'My Study Map' : '我嘅溫書地圖'}</h1>
+            {/* 本頁底色永遠固定深色（導出 PNG 鎖 #020617），故【唔可以】靠 body 繼承
+              主題 text-ink —— 淺色主題下標題會變深字落深底，只有 1.16:1。 */}
+            <h1 className="text-3xl font-extrabold mt-2 text-slate-100">{en ? 'My Study Map' : '我嘅溫書地圖'}</h1>
             <p className="text-slate-400 text-xs mt-2">{report.generatedAt}</p>
           </header>
 
@@ -281,7 +284,7 @@ export default function ReportPage() {
               {report.trend && (
                 <span
                   className="text-sm font-bold"
-                  style={{ color: report.trend.status === 'up' ? '#00F5D4' : report.trend.status === 'steady' ? '#FEE440' : '#9B5DE5' }}
+                  style={{ color: report.trend.status === 'up' ? '#00F5D4' : report.trend.status === 'steady' ? '#FEE440' : '#B98CF5' }}
                 >
                   {report.trend.runs} {en ? 'runs' : '次練習'} · {report.trend.earlyPct}% → {report.trend.latePct}%{' '}
                   {report.trend.status === 'up'
@@ -335,7 +338,8 @@ export default function ReportPage() {
           {/* 能力雷達 */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
             <h2 className="text-sm font-bold text-slate-300 mb-4">{en ? 'Ability radar (mastery by topic)' : '能力雷達（逐課題掌握度）'}</h2>
-            <RadarChart axes={report.radarAxes} />
+            {/* tone="dark"：報告頁永遠深底（導出 PNG 鎖 #020617），標籤要淺灰先讀得到 */}
+            <RadarChart axes={report.radarAxes} tone="dark" />
           </div>
 
           {/* 發現盲點 */}

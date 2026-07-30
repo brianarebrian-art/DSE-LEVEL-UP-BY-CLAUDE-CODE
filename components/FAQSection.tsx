@@ -64,7 +64,7 @@ export default function FAQSection() {
           <details key={i} className="group py-2.5">
             <summary className="cursor-pointer list-none flex items-start justify-between gap-3 text-sm font-medium text-ink-soft hover:text-ink transition-colors">
               <span>{en ? f.qEn : f.qZh}</span>
-              <span className="text-ink-faint group-open:rotate-45 transition-transform shrink-0 mt-0.5">＋</span>
+              <span className="text-ink-muted group-open:rotate-45 transition-transform shrink-0 mt-0.5">＋</span>
             </summary>
             <p className="text-sm text-ink-muted leading-relaxed mt-2 pr-6">{en ? f.aEn : f.aZh}</p>
           </details>

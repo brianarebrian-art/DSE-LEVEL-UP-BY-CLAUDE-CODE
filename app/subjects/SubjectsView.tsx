@@ -76,13 +76,13 @@ export default function SubjectsView() {
   const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
     <div className="relative bg-surface border border-line rounded-xl p-5 opacity-80">
       <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1 text-[10px] text-ink-faint bg-surface-sunken px-2 py-0.5 rounded-full">
+        <span className="inline-flex items-center gap-1 text-[10px] text-ink-muted bg-surface-sunken px-2 py-0.5 rounded-full">
           <Lock size={10} /> {s.launchDate ?? t.common.comingSoon}
         </span>
       </div>
       <div className="text-3xl mb-3 grayscale opacity-80">{s.emoji}</div>
       <div className="font-medium mb-1 text-ink-muted">{name(s)}</div>
-      <div className="text-xs text-ink-faint leading-relaxed">{desc(s)}</div>
+      <div className="text-xs text-ink-muted leading-relaxed">{desc(s)}</div>
     </div>
   )
 
@@ -117,7 +117,7 @@ export default function SubjectsView() {
               style={{ width: `${(activeCount / subjects.length) * 100}%` }}
             />
           </div>
-          <p className="text-xs text-ink-faint mt-3">
+          <p className="text-xs text-ink-muted mt-3">
             {tl.strategy}
           </p>
         </div>
@@ -125,12 +125,12 @@ export default function SubjectsView() {
         {/* Controls: search + sort */}
         <div className="flex flex-col sm:flex-row gap-3 mb-4">
           <div className="relative flex-1">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-faint" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted" />
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={en ? 'Search subjects…' : '搜尋科目…'}
-              className="w-full bg-surface-raised border border-line-strong rounded-xl pl-9 pr-3 py-2.5 text-sm text-ink-soft placeholder-ink-faint focus:border-accent/50 focus:outline-none"
+              className="w-full bg-surface-raised border border-line-strong rounded-xl pl-9 pr-3 py-2.5 text-sm text-ink-soft placeholder-ink-muted focus:border-accent/50 focus:outline-none"
             />
           </div>
           <select

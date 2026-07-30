@@ -52,7 +52,7 @@ export default function DailyQuote() {
       <p className="min-h-[3.5rem] text-xl leading-relaxed text-ink">
         {q ? (en ? q.en : q.zh) : ' '}
       </p>
-      <p className="mt-3 text-sm text-ink-faint">— DSE LEVEL UP</p>
+      <p className="mt-3 text-sm text-ink-muted">— DSE LEVEL UP</p>
       <button
         onClick={shuffle}
         className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface-raised px-5 py-2.5 text-sm font-medium text-accent transition-all hover:bg-accent/[0.06]"

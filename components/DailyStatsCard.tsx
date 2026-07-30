@@ -31,7 +31,7 @@ export interface DailyStatsCardData {
 
 const C = {
   cyan: '#00F5D4', pink: '#FF006E', yellow: '#FEE440', purple: '#9B5DE5',
-  bg: '#0A0A0F', card: '#12121A', ink: '#E8E8EC', sub: '#8A8A96', faint: '#5A5A64',
+  bg: '#0A0A0F', card: '#12121A', ink: '#E8E8EC', sub: '#8A8A96', faint: '#9A9AA6',
 }
 
 const Bento = ({ children, border, full }: { children: React.ReactNode; border: string; full?: boolean }) => (

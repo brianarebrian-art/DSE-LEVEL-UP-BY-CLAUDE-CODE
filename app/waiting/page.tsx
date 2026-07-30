@@ -56,7 +56,7 @@ export default function WaitingPage() {
                 ? 'An anonymous support wall is on the way — with real human review before anything goes public, so it stays a safe space.'
                 : '匿名打氣互助牆準備緊 —— 帖子會經真人審核先公開，確保呢度係一個安全嘅空間。'}
             </p>
-            <p className="mt-2 text-xs text-ink-faint">
+            <p className="mt-2 text-xs text-ink-muted">
               {en ? 'Coming soon' : '即將推出'}
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function WaitingPage() {
               {en ? 'Suicide Prevention Services: ' : '生命熱線：'}
               <a href="tel:23820000" className="mx-1 inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-2">2382 0000</a>
             </p>
-            <p className="mt-1 text-xs leading-relaxed text-ink-faint">
+            <p className="mt-1 text-xs leading-relaxed text-ink-muted">
               {en
                 ? 'This platform is not a professional medical service; the above is for reference only. In an emergency, call 999 immediately or go to the nearest A&E.'
                 : '本平台非專業醫療機構，以上資訊僅供參考。如情況緊急，請立即致電 999 或前往就近急症室。'}

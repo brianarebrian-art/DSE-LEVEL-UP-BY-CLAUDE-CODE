@@ -27,6 +27,11 @@ const LETTER_SPACING_PREVIEW: Record<LetterSpacing, string> = {
 //   • 放大／縮細字級（12–24px，即時生效，重用 GlobalA11y 匯出嘅 applyFontSize，存 dse_font_size）
 //   • 一撳切換易讀字體（BDA 友善無襯線堆疊，存 dse_easy_font，即時切換 html.font-easy）
 // 純前端、零成本、零新依賴。防跳行閱讀尺喺左下另一顆 📏 掣（ReadingRuler，全站掛載）。
+//
+// 2026-07-30 對比度修正：本面板永遠深底（兩個主題一樣），所以【唔可以】靠 body
+// 繼承主題 text-ink —— 淺色主題下 −／＋ 掣嘅「A」會變 #1A1A1A 落 slate-800，
+// 只有 1.19:1。同時 text-slate-600 註腳落 slate-900 只有 2.35:1，text-slate-500
+// 亦只有 3.74:1，全部升至 slate-400／slate-100。SEN 面板本身睇唔到字係最唔應該。
 
 const EASY_KEY = 'dse_easy_font'
 const HIDE_TIMER_KEY = 'dse_hide_timer'
@@ -178,7 +183,7 @@ export default function A11yPanel() {
             <button
               onClick={() => setOpen(false)}
               aria-label={en ? 'Close' : '關閉'}
-              className="min-h-11 min-w-11 flex items-center justify-center text-slate-500 hover:text-slate-200 transition-colors -mr-2 -mt-2"
+              className="min-h-11 min-w-11 flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors -mr-2 -mt-2"
             >
               <X size={16} />
             </button>
@@ -196,13 +201,13 @@ export default function A11yPanel() {
           >
             <span className="text-left">
               <span className="block text-sm font-bold">✨ {en ? 'Comfort mode (one tap)' : '一鍵舒適模式'}</span>
-              <span className="block text-[11px] text-slate-500">
+              <span className="block text-[11px] text-slate-400">
                 {en ? 'Easy font + reading ruler + timer off' : '易讀字體＋閱讀尺＋隱藏計時器'}
               </span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                comfortOn ? 'bg-cyan-400 text-black' : 'bg-slate-700 text-slate-400'
+                comfortOn ? 'bg-cyan-400 text-black' : 'bg-slate-700 text-slate-200'
               }`}
             >
               {comfortOn ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
@@ -219,7 +224,7 @@ export default function A11yPanel() {
                 onClick={() => setFont(size - STEP)}
                 disabled={size <= MIN}
                 aria-label={en ? 'Smaller text' : '縮細字'}
-                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-100 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <Minus size={15} />
                 <span className="text-sm ml-1">A</span>
@@ -229,7 +234,7 @@ export default function A11yPanel() {
                 onClick={() => setFont(size + STEP)}
                 disabled={size >= MAX}
                 aria-label={en ? 'Larger text' : '放大字'}
-                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-100 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <Plus size={15} />
                 <span className="text-base ml-1">A</span>
@@ -293,7 +298,7 @@ export default function A11yPanel() {
 
           {/* B1 即時預覽：拖動滑桿時即刻見到疏密度，唔使閂 panel 去試 */}
           <div className="mb-4 rounded-xl border border-slate-700 bg-slate-800/60 p-3">
-            <div className="text-[11px] text-slate-500 mb-1">{en ? 'Preview' : '即時預覽'}</div>
+            <div className="text-[11px] text-slate-400 mb-1">{en ? 'Preview' : '即時預覽'}</div>
             <p
               className="text-sm text-slate-200"
               style={{ lineHeight: lineH, letterSpacing: LETTER_SPACING_PREVIEW[letterSp] }}
@@ -316,11 +321,11 @@ export default function A11yPanel() {
           >
             <span className="text-left">
               <span className="block text-sm">{en ? 'Easy-read font' : '易讀字體'}</span>
-              <span className="block text-[11px] text-slate-500">{en ? 'Dyslexia-friendly' : '讀寫障礙友善'}</span>
+              <span className="block text-[11px] text-slate-400">{en ? 'Dyslexia-friendly' : '讀寫障礙友善'}</span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                easy ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-400'
+                easy ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
               }`}
             >
               {easy ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
@@ -341,19 +346,19 @@ export default function A11yPanel() {
               <Clock size={14} className="shrink-0" />
               <span>
                 <span className="block text-sm">{en ? 'Hide practice timer' : '隱藏練習計時器'}</span>
-                <span className="block text-[11px] text-slate-500">{en ? 'Less time pressure' : '減低時間壓力'}</span>
+                <span className="block text-[11px] text-slate-400">{en ? 'Less time pressure' : '減低時間壓力'}</span>
               </span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                hideTimer ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-400'
+                hideTimer ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
               }`}
             >
               {hideTimer ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
 
-          <p className="text-[11px] text-slate-600 mt-3 leading-relaxed">
+          <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
             {en
               ? 'Reading ruler is the 📏 button next to this one.'
               : '防跳行閱讀尺喺隔籬顆 📏 掣。'}
