@@ -1,4 +1,4 @@
-import type { Question } from './types'
+import type { AnyQuestion, MCQuestion, Question, WrittenQuestion } from './types'
 
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
 // The eager barrel in ./index.ts statically imports ALL 25 banks. That is fine on
@@ -14,7 +14,7 @@ import type { Question } from './types'
 //   1. create data/questions/<x>-generated.ts (the generator does this), and
 //   2. merge it in X's loader below (see `math` for the pattern).
 
-type Loader = () => Promise<Question[]>
+type Loader = () => Promise<AnyQuestion[]>
 
 const loaders: Record<string, Loader> = {
   // Maths merges its hand-authored bank with the offline-generated, judge-verified extras.
@@ -85,9 +85,31 @@ const loaders: Record<string, Loader> = {
 /**
  * Load one subject's question bank on demand (its own chunk). Returns [] for an
  * unknown subject. Use this from CLIENT components instead of the eager barrel.
+ *
+ * 回傳混合題型（MC + 書寫題）。呼叫者一般應使用下方兩個收窄版本之一 ——
+ * 直接取用全部題目通常並不正確，因為兩類題目走完全不同的批改流程。
  */
-export async function loadSubjectQuestions(subjectId: string): Promise<Question[]> {
+export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuestion[]> {
   const loader = loaders[subjectId]
   if (!loader) return []
   return loader()
 }
+
+/** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */
+export async function loadSubjectMCQuestions(subjectId: string): Promise<MCQuestion[]> {
+  return (await loadSubjectQuestions(subjectId)).filter((q): q is MCQuestion => q.type === 'mc')
+}
+
+/**
+ * 只取書寫題（text／long）。獨立 `?mode=long` 練習專用。
+ * 此類題目【永不由機器批改】，亦不計入客觀準確率與等級預測（決策 ①）。
+ */
+export async function loadWrittenQuestions(subjectId: string): Promise<WrittenQuestion[]> {
+  return (await loadSubjectQuestions(subjectId)).filter(
+    (q): q is WrittenQuestion => q.type === 'text' || q.type === 'long',
+  )
+}
+
+// `Question` 仍由上方 loaders 的回傳值隱式使用（各 bank 檔導出 Question[]），
+// 故保留該 import；此行僅為避免日後讀者誤以為它是無用 import。
+export type { Question }

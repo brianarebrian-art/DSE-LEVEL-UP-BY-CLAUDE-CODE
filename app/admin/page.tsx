@@ -18,8 +18,13 @@ interface DraftRow {
   topic?: string
   difficulty?: string
   question: string
-  options: string[]
-  correctIndex: number
+  // 混合題型（2026-07-31）：MC 有 options／correctIndex，
+  // 書寫題（text／long）改為 referenceAnswer（＋ long 可有 markingScheme）。
+  type?: 'mc' | 'text' | 'long'
+  options?: string[]
+  correctIndex?: number
+  referenceAnswer?: string
+  markingScheme?: string
   explanation: string
   trapTypes?: string[]
   dnaTag?: string
@@ -57,8 +62,11 @@ function loadBatches(): Batch[] {
           topic: r.topic ?? '',
           difficulty: r.difficulty ?? '',
           question: r.question,
+          type: r.type ?? 'mc',
           options: r.options,
           correctIndex: r.correctIndex,
+          referenceAnswer: r.referenceAnswer,
+          markingScheme: r.markingScheme,
           explanation: r.explanation,
           trapTypes: r.trapTypes ?? [],
           dnaTag: r.dnaTag ?? '',

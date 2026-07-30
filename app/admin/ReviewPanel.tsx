@@ -16,8 +16,14 @@ export interface BatchRow {
   topic: string
   difficulty: string
   question: string
-  options: string[]
-  correctIndex: number
+  // 2026-07-31：題庫已放寬至混合題型。MC 有 options／correctIndex；
+  // 書寫題（text／long）冇，改為 referenceAnswer（＋ long 可有 markingScheme）。
+  // 兩組欄位都設為選填，覆核面板按 `type` 分流顯示。
+  type?: 'mc' | 'text' | 'long'
+  options?: string[]
+  correctIndex?: number
+  referenceAnswer?: string
+  markingScheme?: string
   explanation: string
   trapTypes: string[]
   dnaTag: string
@@ -315,6 +321,9 @@ function ReviewCard({
         <span className={`rounded-full border px-2 py-0.5 text-xs ${statusChip}`}>{STATUS_ZH[status] ?? status}</span>
         {row.difficulty && <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">{DIFF_ZH[row.difficulty] ?? row.difficulty}</span>}
         {row.dnaTag && <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">🧠 {row.dnaTag}</span>}
+        {row.type && row.type !== 'mc' && (
+          <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-accent">{row.type === 'long' ? '長題目' : '文字題'}{/* i18n-exempt: admin */}</span>
+        )}
         <span className="min-w-0 flex-1 truncate text-sm">{row.id} · {unesc(row.question)}</span>
         <span className="text-ink-muted">{expanded ? '▾' : '▸'}</span>
       </button>
@@ -322,17 +331,37 @@ function ReviewCard({
       {expanded && (
         <div className="mt-3">
           <p className="mb-3 leading-relaxed">{unesc(row.question)}</p>
-          <div className="mb-3 space-y-2">
-            {row.options.map((opt, i) => (
-              <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-accent/50 bg-accent/10' : 'border-line-strong'}`}>
-                {unesc(opt)}
-                {i === row.correctIndex && <span className="ml-2 text-xs font-medium text-accent">✓ 正解{/* i18n-exempt: admin */}</span>}
-                {row.trapTypes[i] && row.trapTypes[i] !== 'correct' && (
-                  <span className="ml-2 rounded bg-surface-sunken px-1.5 py-0.5 text-xs text-ink-muted">{row.trapTypes[i]}</span>
-                )}
+          {(row.type ?? 'mc') === 'mc' ? (
+            <div className="mb-3 space-y-2">
+              {(row.options ?? []).map((opt, i) => (
+                <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-accent/50 bg-accent/10' : 'border-line-strong'}`}>
+                  {unesc(opt)}
+                  {i === row.correctIndex && <span className="ml-2 text-xs font-medium text-accent">✓ 正解{/* i18n-exempt: admin */}</span>}
+                  {row.trapTypes[i] && row.trapTypes[i] !== 'correct' && (
+                    <span className="ml-2 rounded bg-surface-sunken px-1.5 py-0.5 text-xs text-ink-muted">{row.trapTypes[i]}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* 書寫題：冇選項可揀，覆核人要睇嘅係「參考答案本身啱唔啱、
+               夠唔夠學生自己對照判斷」。冇得睇就等於盲批。 */
+            <div className="mb-3 space-y-2">
+              <div className="rounded-lg border border-accent/40 bg-accent/10 p-3 text-sm leading-relaxed">
+                <span className="mb-1 block text-xs font-medium text-accent">參考答案（學生提交後見到，用作自評）{/* i18n-exempt: admin */}</span>
+                {unesc(row.referenceAnswer ?? '（缺失 —— 呢條唔應該過到閘，請退回）')}
               </div>
-            ))}
-          </div>
+              {row.markingScheme && (
+                <div className="rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
+                  <span className="mb-1 block text-xs text-ink-muted">評分準則 / 步驟分{/* i18n-exempt: admin */}</span>
+                  {unesc(row.markingScheme)}
+                </div>
+              )}
+              <p className="text-xs leading-relaxed text-gold">
+                ⚠️ {row.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。{/* i18n-exempt: admin */}
+              </p>
+            </div>
+          )}
           <div className="mb-4 rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
             <span className="mb-1 block text-xs text-ink-muted">解析{/* i18n-exempt: admin */}</span>
             {unesc(row.explanation)}
