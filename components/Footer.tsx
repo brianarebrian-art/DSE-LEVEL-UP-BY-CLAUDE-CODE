@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { BookOpen } from 'lucide-react'
 import { useT } from '@/lib/i18n'
+import GuardianCredits from '@/components/GuardianCredits'
 
 // Phase 2 Task 2（Kate/Leo 2026-07-18）：light-first 三層頁尾安全網（憲章 §10）。
 // 三層 = ① Doormat 二級導航 ② Trust 信任標誌（版權＋HKEAA 免責）③ Compliance 合規入口。
@@ -74,6 +75,13 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* 守護者致謝名單 —— 錨點係 Brand 欄嘅 tagline2「由 2026 DSE 考生製作。」。
+            規格原文寫「插入喺 tagline 下面、練習連結上面」，但真實 Footer 係三欄
+            grid（Brand｜練習｜關於），啲連結係喺 tagline【隔籬】而唔係下面，
+            而規格禁令 #6 亦明文唔准移動現有連結。故放喺整個 doormat grid 之後、
+            Trust 層之前 —— 即真實版面上最接近「tagline 下面」嘅位置，且零改動現有連結。 */}
+        <GuardianCredits />
 
         {/* Layer 2：Trust 信任標誌 + HKEAA 免責（Luna §17 必須顯示） */}
         <div className="border-t border-line pt-6 text-xs text-ink-muted leading-relaxed">
