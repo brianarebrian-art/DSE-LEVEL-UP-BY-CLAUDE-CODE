@@ -349,7 +349,7 @@ function ReviewCard({
             <div className="mb-3 space-y-2">
               <div className="rounded-lg border border-accent/40 bg-accent/10 p-3 text-sm leading-relaxed">
                 <span className="mb-1 block text-xs font-medium text-accent">參考答案（學生提交後見到，用作自評）{/* i18n-exempt: admin */}</span>
-                {unesc(row.referenceAnswer ?? '（缺失 —— 呢條唔應該過到閘，請退回）')}
+                {unesc(row.referenceAnswer ?? '（缺失 —— 呢條唔應該過到閘，請退回）') /* i18n-exempt: admin 覆核面板，只有實名審批人見到 */}
               </div>
               {row.markingScheme && (
                 <div className="rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">

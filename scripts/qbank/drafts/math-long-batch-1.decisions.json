@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "math-long-batch-1.json",
+    "subject": "math",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "math_long_b1_01": "pending",
+    "math_long_b1_02": "pending",
+    "math_long_b1_03": "pending",
+    "math_long_b1_04": "pending",
+    "math_long_b1_05": "pending",
+    "math_long_b1_06": "pending",
+    "math_long_b1_07": "pending",
+    "math_long_b1_08": "pending",
+    "math_long_b1_09": "pending",
+    "math_long_b1_10": "pending"
+  }
+}

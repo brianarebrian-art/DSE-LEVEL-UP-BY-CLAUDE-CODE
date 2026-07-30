@@ -155,12 +155,28 @@ export function gateRow(row, subject) {
 // (keeps it assignable to Question[] with no excess-property errors).
 export function toReviewedQuestion(row, subject) {
   const type = row.type ?? 'mc'
+  // 課題 id 解析（2026-07-31）：
+  //
+  // 舊行為 —— `topic: slug(row.topic)`。草稿嘅 `topic` 一直係人類可讀標籤
+  // （例如「二次方程」），slug 完仍然係中文，match 唔到任何已宣告 topic id
+  // （例如 quadratic_equations），於是條題目變成孤兒課題，學生用課題入口
+  // 永遠篩唔到（實測已造成 58 條）。
+  //
+  // 新增【可選】欄位 `topicId`：作者可以明確寫低真實 id，同時用 `topicZh`
+  // （或 `topic`）做顯示標籤。純加法 —— 冇填 `topicId` 嘅現有草稿行為逐字不變，
+  // 一條都唔會受影響。新草稿建議一律填，唔好再製造孤兒。
+  const topicId = typeof row.topicId === 'string' && row.topicId.trim()
+    ? row.topicId.trim()
+    : slug(row.topic)
+  const topicLabel = typeof row.topicZh === 'string' && row.topicZh.trim()
+    ? row.topicZh.trim()
+    : row.topic.trim()
   const base = {
     id: row.id.trim(),
     type,
     subject,
-    topic: slug(row.topic),
-    topicZh: row.topic.trim(),
+    topic: topicId,
+    topicZh: topicLabel,
     framework: 'reviewed',
     frameworkZh: '人手核對題',
     frameworkEmoji: '✅',
