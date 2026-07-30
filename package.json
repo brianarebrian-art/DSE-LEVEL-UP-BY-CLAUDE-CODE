@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
+    "clean": "rm -rf .next",
+    "dev:clean": "npm run clean && npm run dev",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
