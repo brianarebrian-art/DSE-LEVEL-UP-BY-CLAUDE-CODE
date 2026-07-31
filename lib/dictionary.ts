@@ -6,7 +6,6 @@ const zh = {
     subjects: '科目',
     progress: '我的進度',
     methodology: '方法論',
-    leaderboard: '排行榜',
     about: '關於我們',
     wall: '影子溫書室',
     paper: '紙筆戰士',
@@ -19,7 +18,6 @@ const zh = {
     practiceHeading: '練習',
     linkMath: '數學',
     linkMethodology: '方法論',
-    linkLeaderboard: '排行榜',
     linkRelax: '呼吸空間', // FIX: [A1] CEO 命名修訂 2026-07-15
     aboutHeading: '關於',
     aboutUs: '關於我們',
@@ -227,17 +225,9 @@ const zh = {
     timeHrAgo: ' 小時前',
     timeDayAgo: ' 日前',
   },
-  leaderboard: {
-    title: '今日排行榜',
-    subtitle: '數學綜合練習 · 匿名排名',
-    statToday: '今日參與',
-    statAvg: '平均分',
-    statAbove5: '5 級以上',
-    tableTitle: '本週最高分',
-    streakSuffix: ' 日連續',
-    cta: '完成練習，上榜！',
-    startPractice: '開始練習',
-  },
+  // 排行榜字典已於 2026-07-31 刪除。頁面本身在 2026-07-20 (3c7a811) 移除，
+  // 但字典區塊遺留下來，仍隨 bundle 送到瀏覽器 —— 內含「今日參與」等虛構在線
+  // 人數文案（憲章 §8 禁虛構統計）及連續天數後綴（禁 gamification）。
   about: {
     titlePrefix: '關於 ',
     intro: '一個 2026 DSE 考生，一個問題：點樣真係考好 DSE？',
@@ -338,7 +328,6 @@ const en: typeof zh = {
     subjects: 'Subjects',
     progress: 'My Progress',
     methodology: 'Method',
-    leaderboard: 'Leaderboard',
     about: 'About',
     wall: 'Study Wall',
     paper: 'Paper Warrior',
@@ -351,7 +340,6 @@ const en: typeof zh = {
     practiceHeading: 'Practice',
     linkMath: 'Mathematics',
     linkMethodology: 'Method',
-    linkLeaderboard: 'Leaderboard',
     linkRelax: 'Breathing Space', // FIX: [A1] CEO 命名修訂 2026-07-15
     aboutHeading: 'About',
     aboutUs: 'About Us',
@@ -559,17 +547,7 @@ const en: typeof zh = {
     timeHrAgo: ' h ago',
     timeDayAgo: ' d ago',
   },
-  leaderboard: {
-    title: 'Today’s Leaderboard',
-    subtitle: 'Maths mixed practice · anonymous ranking',
-    statToday: 'Today’s players',
-    statAvg: 'Average',
-    statAbove5: 'Level 5+',
-    tableTitle: 'Top scores this week',
-    streakSuffix: '-day streak',
-    cta: 'Finish a session to make the board!',
-    startPractice: 'Start practice',
-  },
+  // 見上方中文字典同位置的說明：排行榜字典已於 2026-07-31 一併刪除。
   about: {
     titlePrefix: 'About ',
     intro: 'One 2026 DSE candidate, one question: how do you really do well in the DSE?',

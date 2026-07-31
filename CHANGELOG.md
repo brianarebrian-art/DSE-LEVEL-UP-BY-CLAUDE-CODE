@@ -10,7 +10,18 @@
 - **文案**：`statStreak/statStreakUnit` → `statRecentDays/statRecentDaysUnit`（「近 30 日練習 / 日」、`Practised (last 30d) / days`）。`dashboard.emptyBody` 兩個語言原本都寫住「連續打卡 / your streak」，一併改為「練習日數 / practice days」。
 - **同 `activeDays` 唔重複**：`activeDays`（全期活躍日數）仍然喺副標題同下方「自主溫習日數」使用，兩個數字語意唔同。
 - **驗收（實測渲染）**：種入「今日同尋日都冇練」嘅數據（-2/-5/-8/-20/-40 日），舊 streak 邏輯會回 **0**，新卡顯示 **「4 日 · 近 30 日練習」**（-40 日超出窗口，正確排除），英文版 **「4 days · Practised (last 30d)」**；同頁「自主溫習日數」仍為 5，未受影響。全站 `currentStreak`／`statStreak` 引用歸零。`npm test` 67/67、`npm run qa` 綠、`npm run build --webpack` 綠。
-- **順帶記錄（未處理）**：`lib/dictionary.ts` 嘅 `lb`（排行榜）區塊自 2026-07-20 移除排行榜之後已成死碼，`streakSuffix` 亦喺其中；branch `claude/focused-heisenberg-2b1410` 仍留住 `app/leaderboard/page.tsx`（虛構學生名 + 🔥 streak），**未 merge 入 main**，若日後合併會一次過復活「虛構數據」同「gamification」兩條紅線。
+- **排行榜殘留同批清走**（見下一節）。
+
+## 2026-07-31b — 清走排行榜殘留（順帶更正「定時炸彈」誤判）
+
+- **先更正一個誤判**：外部覆核報告指 branch `claude/focused-heisenberg-2b1410` 入面嘅 `app/leaderboard/page.tsx`（虛構學生名 + 🔥 streak）係「定時炸彈，一旦誤 merge 會復活兩條紅線」。**實測唔成立**：
+  - `git rev-list --left-right --count` = **0 ahead / 86 behind**；`merge-base` 就係 branch tip 自己 → branch tip 係 main 嘅**祖先**，`merge-tree` 模擬結果完全空白。merge 一個祖先係 no-op，物理上復活唔到任何嘢。
+  - 而且個檔案**本來就喺 main 自己嘅歷史**（`ea77b48` 2026-06-18 加入 → `3c7a811` 2026-07-20 刪除）。刪 branch 移除唔到任何嘢。
+  - 「標記 branch 為永久不 merge」呢個機制喺 git 唔存在。
+- **真正成本細但真實**：個 worktree 係一個完整嘅 2026-07-02 checkout，會被全 repo grep 掃到，已經令覆核者誤判過一次。故清走（`git worktree remove` + `git branch -D`；`1e859ee` 仍係 main 祖先，零 object 遺失，還原用 `git worktree add <path> 1e859ee`）。
+- **真正仲喺 live bundle 入面嘅先係問題**：`lib/dictionary.ts` 嘅 `leaderboard` 字典區塊（中英各一）自 2026-07-20 頁面移除之後從未清走，仍隨 bundle 送落瀏覽器，內含 `statToday: '今日參與'`（虛構在線人數，憲章 §8 禁虛構統計）同 `streakSuffix: ' 日連續'`（禁 gamification）。連同 `nav.leaderboard`、`footer.linkLeaderboard` 一併刪除 —— 四處全部零引用（grep 確認）。
+- **驗收**：`tsc` app 檔 0 error、`npm test` 67/67、`npm run qa` 三閘綠、`next build --webpack` 綠；首頁 footer 實測仍為「數學／方法論／呼吸空間／關於我們／透明度／聯絡我們」，無 `undefined`，console 無新錯誤。
+- **一個虛驚**：驗證途中見到 `ReviewScheduler` 報 React key 警告。追查後確認係**我自己種入嘅畸形測試資料**所致 —— `ReverseLogEntry.questionId` 係必填欄位且自 `73abd22` 起一直存在，正常寫入永遠有值。非生產缺陷，不作修改。
 
 ## 2026-07-30 — 雙主題對比度全站達標（Brian 拍板選項 (b)）
 
