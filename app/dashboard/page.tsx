@@ -29,6 +29,7 @@ import ErrorRadar from '@/components/ErrorRadar'
 import ReviewScheduler from '@/components/ReviewScheduler'
 // 計劃A §5.6：精進軌跡（純 SVG，真實 localStorage 數據）— light-first
 import ProgressTrajectory from '@/components/ProgressTrajectory'
+import TodayNote from '@/components/TodayNote'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -202,6 +203,11 @@ export default function DashboardPage() {
 
         {/* Cross-device sync status (replaces the old on-device teaser) */}
         <SyncStatus />
+
+        {/* 今日提示（藍圖 02 每日溫習信 + 06 錯題溫和提醒，合併為單一提示位）。
+            擺喺數據卡之前：一打開就見到「今日做啲乜」，正正針對 ADHD 嘅啟動困難。
+            冇提示時組件自行回傳 null，唔會留低空殼。 */}
+        <TodayNote className="mb-10" />
 
         {/* Stat cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">

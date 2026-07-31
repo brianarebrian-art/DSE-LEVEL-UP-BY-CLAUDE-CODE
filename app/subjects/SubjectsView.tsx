@@ -8,6 +8,7 @@ import {
   type SubjectMeta,
 } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+import { bestSimilarity, FUZZY_THRESHOLD } from '@/lib/fuzzy'
 
 // Tailwind needs literal class names, so map accents explicitly.
 // Light-first（憲章 §3）：每科保留自己嘅 hover accent 作色彩編碼（hover-only 淡色調，on-white 讀得清）。
@@ -43,9 +44,15 @@ export default function SubjectsView() {
   const [category, setCategory] = useState<'all' | 'core' | 'extended' | 'elective'>('all')
   const [sort, setSort] = useState<'default' | 'az' | 'live'>('default')
 
-  const q = query.trim().toLowerCase()
+  // 2026-07-31：由「精確 includes」改為錯字容忍比對（藍圖功能 09 的前端版）。
+  //
+  // 原本打錯一個字就會得出「搵唔到符合嘅科目」—— 讀寫障礙學生往往因此以為
+  // 平台冇呢一科而放棄。現時「數學」打成「數学」、「economics」打漏一個字母
+  // 一樣搵得到。實作見 lib/fuzzy.ts（純函數、11 個測試覆蓋、零依賴）。
+  const q = query.trim()
+  const searchable = (s: SubjectMeta) => [s.name, s.nameEn, s.short, s.shortEn]
   const matches = (s: SubjectMeta) =>
-    (!q || [s.name, s.nameEn, s.short, s.shortEn].some((v) => v.toLowerCase().includes(q))) &&
+    (!q || bestSimilarity(q, searchable(s)) >= FUZZY_THRESHOLD) &&
     (category === 'all' || s.category === category)
   const sortGroup = (group: SubjectMeta[]) => {
     if (sort === 'az') return [...group].sort((a, b) => name(a).localeCompare(name(b)))
