@@ -151,10 +151,11 @@ export default function DashboardPage() {
     if (sid) router.push(`/practice?subject=${sid}&mode=weakness`)
   }
 
-  // 統計徽章：連續溫習係個人習慣指標，唔係競賽 gamification —— 憲章 §2 禁「火焰」符號，
-  // 故保留數值但用中性 CalendarCheck + 主色青，唔用 🔥/橙。
+  // 統計徽章：第一格顯示「近 30 日練習日數」，而非「連續打卡」。
+  // 連續計數中斷一日即歸零，等同宣告過往努力作廢，屬壓力來源（憲章 §7 大愛設計）；
+  // 窗口計數則休息一日只少一，習慣回饋仍在。火焰符號與橙色早前已按憲章 §8 移除。
   const statCards = [
-    { icon: CalendarCheck, label: d.statStreak, value: `${stats.currentStreak}`, unit: d.statStreakUnit, accent: 'text-accent' },
+    { icon: CalendarCheck, label: d.statRecentDays, value: `${stats.recentActiveDays}`, unit: d.statRecentDaysUnit, accent: 'text-accent' },
     { icon: BookOpen, label: d.statQuestions, value: `${stats.totalQuestions}`, unit: d.statQuestionsUnit, accent: 'text-accent' },
     { icon: Target, label: d.statAccuracy, value: `${accuracyPct}`, unit: '%', accent: 'text-accent' },
     { icon: TrendingUp, label: d.statAttempts, value: `${stats.totalAttempts}`, unit: d.statAttemptsUnit, accent: 'text-gold' },

@@ -2,6 +2,16 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-07-31 — 「連續打卡」改為「近 30 日練習」（Yuna 拍板：換成唔會歸零嘅指標）
+
+- **背景**：dashboard 第一格統計卡一直顯示 `stats.currentStreak`。2026-07-20 已經審過一次，當時剷咗 🔥 同橙色、換成中性 `CalendarCheck` + 主色青（理由寫喺 `app/dashboard/page.tsx` 原註解）。今次覆檢認為**符號唔係問題所在**。
+- **真正問題係 `computeStreak()` 斷一日即歸零**：學生休息一日，畫面就將過往累積一次抹走，等同宣告「之前嘅努力白費」。對焦慮傾向學生係純壓力源；對 ADHD 學生，歸零之後重新啟動嘅門檻反而更高（憲章 §7 大愛設計）。
+- **改動**：`computeStreak()` → `computeRecentActiveDays()`（`lib/progress.ts`，窗口 `RECENT_WINDOW_DAYS = 30`）。`ProgressStats.currentStreak` → `recentActiveDays`。休息一日只會少一，唔會清零。
+- **文案**：`statStreak/statStreakUnit` → `statRecentDays/statRecentDaysUnit`（「近 30 日練習 / 日」、`Practised (last 30d) / days`）。`dashboard.emptyBody` 兩個語言原本都寫住「連續打卡 / your streak」，一併改為「練習日數 / practice days」。
+- **同 `activeDays` 唔重複**：`activeDays`（全期活躍日數）仍然喺副標題同下方「自主溫習日數」使用，兩個數字語意唔同。
+- **驗收（實測渲染）**：種入「今日同尋日都冇練」嘅數據（-2/-5/-8/-20/-40 日），舊 streak 邏輯會回 **0**，新卡顯示 **「4 日 · 近 30 日練習」**（-40 日超出窗口，正確排除），英文版 **「4 days · Practised (last 30d)」**；同頁「自主溫習日數」仍為 5，未受影響。全站 `currentStreak`／`statStreak` 引用歸零。`npm test` 67/67、`npm run qa` 綠、`npm run build --webpack` 綠。
+- **順帶記錄（未處理）**：`lib/dictionary.ts` 嘅 `lb`（排行榜）區塊自 2026-07-20 移除排行榜之後已成死碼，`streakSuffix` 亦喺其中；branch `claude/focused-heisenberg-2b1410` 仍留住 `app/leaderboard/page.tsx`（虛構學生名 + 🔥 streak），**未 merge 入 main**，若日後合併會一次過復活「虛構數據」同「gamification」兩條紅線。
+
 ## 2026-07-30 — 雙主題對比度全站達標（Brian 拍板選項 (b)）
 
 - **背景**：Loop Engine 拍板：ink-faint 收窄用途（選項 b）、accent／gold 提升、改完跑雙主題稽核。執行途中發現問題範圍遠大於原本三個 token。

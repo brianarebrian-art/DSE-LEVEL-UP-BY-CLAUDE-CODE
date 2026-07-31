@@ -73,7 +73,7 @@ export interface ProgressStats {
   totalQuestions: number
   totalCorrect: number
   overallAccuracy: number // 0–1
-  currentStreak: number // consecutive days up to today/yesterday
+  recentActiveDays: number // distinct practice days inside the trailing window
   activeDays: number
   subjects: SubjectStat[]
   weakTopics: TopicStat[]
@@ -91,21 +91,33 @@ function dayKey(ts: number): string {
   return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
 }
 
-function computeStreak(attempts: AttemptRecord[]): number {
+/** 近期活躍窗口（日）。 */
+export const RECENT_WINDOW_DAYS = 30
+
+/**
+ * 最近 `RECENT_WINDOW_DAYS` 日之內，有練習的日數（去重）。
+ *
+ * 此函數取代了原本的「連續打卡」（consecutive-day streak）。連續計數的問題不在於
+ * 使用了火焰符號，而在於【中斷一日即歸零】：學生休息一天，畫面就把過往的累積一次
+ * 抹掉，等同宣告「之前的努力白費」。對焦慮傾向的學生而言，這是純粹的壓力來源；
+ * 對 ADHD 學生而言，歸零之後重新開始的門檻反而更高。
+ *
+ * 改為窗口計數之後，休息一天只會令數字少一，不會清零，習慣回饋仍然保留。
+ */
+function computeRecentActiveDays(attempts: AttemptRecord[], windowDays = RECENT_WINDOW_DAYS): number {
   if (attempts.length === 0) return 0
-  const days = new Set(attempts.map((a) => dayKey(a.timestamp)))
-  let streak = 0
-  const cursor = new Date()
-  // Allow the streak to count from today; if nothing today, start from yesterday.
-  if (!days.has(dayKey(cursor.getTime()))) {
-    cursor.setDate(cursor.getDate() - 1)
-    if (!days.has(dayKey(cursor.getTime()))) return 0
+  // 以本地日界切界：窗口起點為「今日零時」往前推 windowDays - 1 日，
+  // 使「今日」本身計入窗口之內。
+  const start = new Date()
+  start.setHours(0, 0, 0, 0)
+  start.setDate(start.getDate() - (windowDays - 1))
+  const from = start.getTime()
+  const days = new Set<string>()
+  for (const a of attempts) {
+    if (typeof a?.timestamp !== 'number' || a.timestamp < from) continue
+    days.add(dayKey(a.timestamp))
   }
-  while (days.has(dayKey(cursor.getTime()))) {
-    streak++
-    cursor.setDate(cursor.getDate() - 1)
-  }
-  return streak
+  return days.size
 }
 
 export function computeStats(attempts: AttemptRecord[]): ProgressStats {
@@ -166,7 +178,7 @@ export function computeStats(attempts: AttemptRecord[]): ProgressStats {
     totalQuestions,
     totalCorrect,
     overallAccuracy: totalQuestions > 0 ? totalCorrect / totalQuestions : 0,
-    currentStreak: computeStreak(attempts),
+    recentActiveDays: computeRecentActiveDays(attempts),
     activeDays,
     subjects,
     weakTopics,
