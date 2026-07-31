@@ -29,7 +29,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'DSE Level Up' }],
   creator: 'DSE Level Up',
   publisher: 'DSE Level Up',
-  alternates: { canonical: '/' },
+  // 【刻意不在根 layout 設 alternates.canonical】
+  // 根 layout 的 metadata 會被【全站每一頁】繼承。曾設為 `{ canonical: '/' }`，
+  // 結果 25 個科目頁、/subjects、/methodology、/practice 等全部向搜尋引擎宣告
+  // 「本頁是首頁的複製品」，等同要求不要收錄自己（實測 curl 每頁均輸出
+  // `<link rel="canonical" href="…vercel.app">`）。
+  // 需要 canonical 的頁面各自於 page.tsx 宣告；未宣告者由搜尋引擎以該 URL 自身
+  // 為準，此即正確預設。
   robots: {
     index: true,
     follow: true,

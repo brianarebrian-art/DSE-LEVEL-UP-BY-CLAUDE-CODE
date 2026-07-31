@@ -19,6 +19,9 @@ export async function generateMetadata({
   return {
     title: `${meta.name} | DSE Level Up`,
     description: meta.description,
+    // 每科自報 canonical，令 25 個科目頁各自獨立收錄（此前繼承根 layout 的
+    // `canonical: '/'`，等同全部指向首頁）。
+    alternates: { canonical: `/subjects/${subject}` },
   }
 }
 
