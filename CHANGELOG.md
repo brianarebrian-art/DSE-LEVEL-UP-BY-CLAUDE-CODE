@@ -2,6 +2,34 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-08-05c — A：等級預測 + 進度統計補測試（並揪出上一輪修補嘅漏網一半）
+
+### A.1 `lib/grading.ts` — 25 條測試
+
+外部 spec 列嘅 `calculateGrade` / `predictLevel` / `getCutoff` / `linearInterpolate` **四個函數喺本 repo 全部唔存在**；cut-off 亦唔係按年份查表，而係 `getPracticeCutoffs(total)` 按題數即時計。測試按真簽名 `predictGrade(score, table, subjectSlug?)` 重寫，覆蓋：7 級逐個踩線、差一分跌級、零分／滿分、`gradePosition` 全域 0–1、**分數升等級唔會跌（單調性）**、`marksToNextGrade` 加返上去真係升級、公社科二元制全掃、其餘 24 科零回歸、兩張唔同總分嘅真表（20 題練習 / 105 分數學卷一）。另加憲章 §7 閘：三張查表冇窿、訊息無打擊自信字眼、不達標唔用紅。
+
+### A.2 `lib/progress.ts` — ⚠️ 上一輪嘅修補只做啱咗一半
+
+2026-08-04b 我報告過「`betterGrade` 嘅 `indexOf → -1` 已修好」。**單元層面啱，真路徑仍然壞**：`computeStats` 用 `bestGrade: 'U'` 做種子值，而 `'U'` 屬 1–5** 制，一落到「跨制式保留 `a`」嗰條分支就永遠贏過「達標」——公社科嘅 bestGrade 一世卡死喺 `'U'`。即係 bug 嘅**外觀完全冇變**，只係成因由 `indexOf` 變成種子值。
+
+寫整合測試（經 `computeStats` 而唔係淨測 helper）第一次跑就 4 條紅，先揭到。
+
+修法：種子值改為空字串代表「未有成績」，`betterGrade` 開頭處理空值，輸出時 `|| 'U'` 兜底保持 `SubjectStat.bestGrade` 一定非空。`betterGrade` 順帶 export 出嚟（純為可測性）。
+
+**影響範圍：查過生產 DB，`dse_progress` 入面帶「達標／不達標」嘅 attempt 係 0 條** —— 公社科等級尋日先上線，雲端未有任何一份。零真實用戶受影響。
+
+19 條測試，其中 5 條係整合層（經 `computeStats`），迴歸鎖住呢個「helper 啱但真路徑錯」嘅組合。另補：加權準確率唔係卷數平均、活躍日去重、窗口外唔計、弱項門檻同排序、空輸入唔出 NaN。
+
+`npm test` 111 → **155**（+44）。qa 三閘綠、tsc 0、build 綠 81/81。
+
+### B `user_sessions` 接前端 —— 未做，有硬證據話唔應該照做
+
+詳見報告。摘要：`user_sessions` 唔係「未接線嘅新功能」，而係**一個已經上線並有 42 個真實用戶正在使用嘅功能嘅第二套實作**。做緊嘅卷（subject／題目 id／答案／進度／用時）一直經 `/api/progress` snapshot 同步，`lib/sync.ts` 嘅 `Snapshot.dse_active_session` + 防線 E 三段合併政策已經處理緊。生產 DB：`user_progress` 133 行，111 行帶 `dse_active_session` key，**42 行有真實未完成嘅卷**。
+
+照 spec 接多一條 `/api/sync/session` 線 = 同一份狀態兩個 writer，一個係 last-write-wins upsert，一個係按完整度／時間戳嘅防線 E 合併 —— 會喺「跨裝置續做」呢件事上互相蓋走，而防線 E 本身就係為咗防呢件事而寫。
+
+另外 spec 嘅欄位（`started_at` / `ended_at` / `duration_seconds` / `questions_attempted` / `correct_count`）喺真表**一個都冇**；真表係 `question_ids` / `answers` / `current_index` / `time_spent` / `error_dna`。spec 描述嗰個「溫習時長分析」係另一件事，而嗰啲數據 `dse_progress` 嘅 `AttemptRecord` 本身已經齊（`elapsed` / `timestamp` / `score` / `total`），唔使新表亦唔使接線。
+
 ## 2026-08-05b — 技術債清理（Brian CEO 決策 v1.0）
 
 ### 已執行

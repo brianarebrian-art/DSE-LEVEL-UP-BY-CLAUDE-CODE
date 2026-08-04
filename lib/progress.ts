@@ -87,7 +87,20 @@ const GRADE_RANK = ['U', '1', '2', '3', '4', '5', '5*', '5**']
 // 避免「達標」被當成低過「1」（indexOf 回 -1）而靜靜雞蓋走學生嘅最佳成績。
 const CSD_GRADES = ['達標', '不達標']
 
-function betterGrade(a: string, b: string): string {
+/**
+ * 兩個等級之間保留「較好」嗰個。`a` = 累積落嚟嘅最佳值，`b` = 今次新成績。
+ *
+ * 跨制式（一邊 1–5**、一邊達標制）時一律 **保留 `a`** —— 同一科唔會有兩種制式，
+ * 所以跨制式比較本身就代表數據唔乾淨；呢個情況下保住已累積嘅值，好過用一個
+ * 唔可比嘅新值去蓋。export 出嚟純為咗測試呢條邊界。
+ */
+export function betterGrade(a: string, b: string): string {
+  // 「未有任何成績」用空字串表示，唔可以用某一制式嘅最低級（例如 'U'）做種子值：
+  // 'U' 屬 1–5** 制，落到下面嘅跨制式分支就會永遠贏過「達標」，令公社科嘅
+  // bestGrade 一世卡死喺 'U'。呢個係 2026-08-04b 修補漏咗嘅一半。
+  if (!a) return b
+  if (!b) return a
+
   const aCsd = CSD_GRADES.includes(a)
   const bCsd = CSD_GRADES.includes(b)
   if (aCsd !== bCsd) return a
@@ -147,7 +160,7 @@ export function computeStats(attempts: AttemptRecord[]): ProgressStats {
         questions: 0,
         correct: 0,
         accuracy: 0,
-        bestGrade: 'U',
+        bestGrade: '', // 「未有成績」——唔可以用 'U'，見 betterGrade 註釋
       }
       subjMap.set(a.subjectId, s)
     }
@@ -170,6 +183,9 @@ export function computeStats(attempts: AttemptRecord[]): ProgressStats {
   const subjects = [...subjMap.values()].map((s) => ({
     ...s,
     accuracy: s.questions > 0 ? s.correct / s.questions : 0,
+    // 每份 attempt 都帶 grade，所以正常情況下空字串唔會流出去；
+    // 萬一數據殘缺就退回 'U'，維持 SubjectStat.bestGrade 一定係非空字串。
+    bestGrade: s.bestGrade || 'U',
   }))
   subjects.sort((a, b) => b.questions - a.questions)
 
