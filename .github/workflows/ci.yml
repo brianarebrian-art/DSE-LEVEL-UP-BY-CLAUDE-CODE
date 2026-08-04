@@ -15,3 +15,13 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npm test
+
+      # 憲章 §15 三閘：term-guard（術語＋書面語）／validate-banks（題庫結構）／
+      # i18n-guard（漏譯）。以前只有本地手動跑，push 上嚟係冇人守。
+      - name: QA gates (term-guard / validate-banks / i18n-guard)
+        run: npm run qa
+
+      # 實測過：唔帶任何 env 都 build 得綠（SSG 唔喺 build time 讀 Supabase／Auth
+      # 密鑰），所以 CI 唔使配 secrets。
+      - name: Build check
+        run: npm run build

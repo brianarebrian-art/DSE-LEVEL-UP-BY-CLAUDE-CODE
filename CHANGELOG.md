@@ -2,6 +2,43 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-08-05b — 技術債清理（Brian CEO 決策 v1.0）
+
+### 已執行
+
+| 項目 | 結果 |
+|---|---|
+| P0.1 刪 night-agent workflow | ✅ 每日 2 次打 404 嘅 cron 已剷 |
+| P0.2 打氣牆上線 | ✅ apply 真 0008，牆已開（**唔照 spec 嘅實作**，見下） |
+| P3.2 刪 agentic harness | ✅ `app/api/agent/` + `lib/agents/` + 3 張表 |
+| P1.1 CI 加閘 | ✅ `npm run qa` + `npm run build` |
+| P1.2 TS5097 | ✅ `allowImportingTsExtensions`，tsc 由 12 個錯 → 0 |
+| P2.3 孤兒模組 | ✅ 6 個檔（251 行）+ `_scan.mts` |
+
+- **`_scan.mts` 唔止係一個孤兒檔** —— 佢係 `npm run scan:questions` 嘅入口（`package.json:13`）。淨係 `rm` 會留低一條指住空氣嘅 script。已一併移除 script 同 `app/layout.tsx` 嘅註釋引用。
+- **CI 唔跟 spec 附嘅參考 yml**：嗰份會將 `node-version` 由 22 降到 20、又將 trigger 由 `push: branches:[main]` 改成 `[push, pull_request]`。只加兩步，其餘不動。另實測「唔帶任何 env 都 build 得綠」，所以 CI 唔使配 secrets。
+- **0009 cleanup migration** 存檔記錄 drop 三張 agent 表。執行前三度確認 0 行。`escalation_queue` 係 agent loop 熔斷佇列，**唔係** SEN 自殘升級佇列 —— 已寫入 migration 註釋防日後誤讀。
+
+### 打氣牆：採納決策，唔採納 spec 嘅實作
+
+spec 假設個牆未起。實際**全套已經起好**：`app/api/wall/{route,like,moderate}`（POST 已存在）、`app/wall/WallClient.tsx`（已有發帖表單）、`app/admin/wall/WallModeration.tsx`（真人審批台）、`lib/wall/{identity,safety,tags}.ts`。所以只需 apply migration，唔使寫任何新 route 或表單。
+
+spec 嗰版 SQL／表單會拆走三重未成年保護：
+
+| spec | 真 0008 | 後果 |
+|---|---|---|
+| `is_approved BOOLEAN DEFAULT true` + §2.5「所有帖子直接 true（信任機制）」 | `status DEFAULT 'pending'` | **未成年 UGC auto-publish**。真 0008 檔頭明寫呢點「已向創辦人提報」後被否決 |
+| 無登入、`author_name` 用戶自填 | `user_id`（Auth.js sub，問責用）+ `author_hash`（每日輪換匿名編號） | 冇問責錨點；12–18 歲用戶自填真名落公開牆 |
+| seed 4 條假帖，2 條署名「匿名戰友」「學長」 | — | **假用戶見證**，憲章 §8 明禁 |
+
+另有三處對唔上真 repo：`@/lib/supabase/server-only`（真路徑 `@/utils/supabase/server`）、新開 `/api/wall/post`（現有 route 已有 POST）、表單硬編碼 `bg-[#1A1A1A] text-white` 且零 i18n（會直接令 i18n-guard 紅）。
+
+**做法**：apply 真 0008（prompt §1.4 自己都寫「只需 apply，唔算新增」），保留登入 + 真人審批 + 匿名編號，**零 seed 假帖** —— 個牆以空狀態上線，文案係「仲未有留言 —— 你可以係第一個留低一點光嘅人。🌙」。
+
+**驗收（生產 DB 實測，探針已刪）**：插入一條 → 預設 `pending` → 公開 feed 仍然 `[]`；approve 後 → feed 出到；回傳 payload 只有 `author_hash`，**冇 `user_id`**。頁面頂部熱線卡常駐。
+
+⚠️ **要你落 Vercel 設一個 `WALL_SALT`**。而家 fallback 去 `AUTH_SECRET`，再唔係就用源碼入面嘅公開常數 —— 知道某個 Google sub 就推得返佢每日編號。`.env.example` 已補說明。
+
 ## 2026-08-05 — 任務 B：逆向錯因真相引擎（`lib/truth-engine.ts`）
 
 學生揀完三維錯因之後，由歷史記錄推斷「今次錯誤真正嘅成因」，喺「🔍 思維逆襲解密」卡加一句可執行建議（🧭 錯因真相）。純本地、零新依賴、零 API。

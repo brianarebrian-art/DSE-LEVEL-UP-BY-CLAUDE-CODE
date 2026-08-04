@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 // 知識圖譜（JSON-LD）。全部以英文撰寫 —— 此段並非使用者可見文案，而是給搜尋引擎
 // 與答案引擎讀的結構化資料，英文可獲最廣泛的解析支援。
 //
-// 誠實紅線：`description` 只寫查證得到的事實（題數由 `_scan` 實測 5,167、25 科），
+// 誠實紅線：`description` 只寫查證得到的事實（題數實測 5,167、25 科），
 // 且明文載明與 HKEAA 無從屬關係 —— 與頁尾免責聲明、/llms.txt 三處一致。
 const jsonLd = {
   '@context': 'https://schema.org',
