@@ -1,0 +1,65 @@
+/* layout.css — 頂部欄、分頁切換、底部導航 */
+
+.topbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0;
+  background: linear-gradient(var(--bg-deep) 78%, transparent);
+}
+
+.search {
+  flex: 1; min-height: var(--tap);
+  padding: 8px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.search::placeholder { color: var(--text-muted); }
+
+.coin-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: var(--tap); padding: 6px 12px;
+  border: 1px solid rgba(254, 228, 64, 0.4);
+  background: rgba(254, 228, 64, 0.08);
+  border-radius: 999px;
+  color: var(--neon-yellow); font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* 分類 chip 橫向捲（ADHD：一眼睇晒，唔使揭頁） */
+.chips {
+  display: flex; gap: 8px; overflow-x: auto;
+  padding: 4px 0 10px; scrollbar-width: none;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex: 0 0 auto; min-height: var(--tap);
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--text-secondary);
+  font-size: var(--font-caption); white-space: nowrap;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.chip[aria-pressed='true'] {
+  border-color: rgba(0, 245, 212, 0.6);
+  background: rgba(0, 245, 212, 0.1);
+  color: var(--neon-cyan);
+}
+
+/* 底部導航 —— 位置固定（泛自閉症：可預測，唔會跳位） */
+.bottombar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  display: flex; gap: 8px; justify-content: center;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(13, 13, 15, 0.94);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.bottombar .btn { flex: 1; max-width: 220px; text-align: center; }
+
+.page-head { text-align: center; padding: 10px 0 18px; }
+.page-head .icon { font-size: 34px; line-height: 1; }
+.page-head h1 { margin-top: 6px; }
+.page-head .lede { color: var(--neon-cyan); font-size: var(--font-caption); margin-top: 6px; }
+.page-head p.sub { color: var(--text-secondary); font-size: var(--font-caption); margin-top: 4px; }
+
+.empty { text-align: center; padding: 48px 12px; color: var(--text-secondary); }

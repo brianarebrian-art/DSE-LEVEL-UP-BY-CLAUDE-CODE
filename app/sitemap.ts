@@ -38,6 +38,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/relax/grounding', priority: 0.4, freq: 'yearly' },
   { path: '/relax/solo', priority: 0.4, freq: 'yearly' },
   { path: '/relax/group', priority: 0.4, freq: 'yearly' },
+  { path: '/relax/virtual-supermarket', priority: 0.4, freq: 'yearly' },
   { path: '/waiting', priority: 0.4, freq: 'yearly' },
 ]
 

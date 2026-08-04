@@ -1,0 +1,103 @@
+/* delivery.css — 速遞場景：城市剪影、道路、速遞員、進度條
+ * 全部純 CSS 幾何繪製，零圖片、零外部資源。 */
+
+.delivery {
+  position: relative;
+  height: 260px;
+  margin: 12px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, #101018 0%, #0b0b10 70%);
+}
+
+/* 霓虹城市剪影（clip-path 建築物），緩慢向左飄 = 視差 */
+.city {
+  position: absolute; left: 0; bottom: 58px;
+  width: 200%; height: 120px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(155, 93, 229, 0.22) 0 26px,
+    transparent 26px 34px,
+    rgba(0, 245, 212, 0.16) 34px 54px,
+    transparent 54px 66px,
+    rgba(255, 0, 110, 0.14) 66px 92px,
+    transparent 92px 108px
+  );
+  clip-path: polygon(
+    0 100%, 0 55%, 6% 55%, 6% 30%, 13% 30%, 13% 62%, 21% 62%, 21% 18%,
+    28% 18%, 28% 48%, 36% 48%, 36% 68%, 44% 68%, 44% 26%, 51% 26%, 51% 58%,
+    59% 58%, 59% 38%, 66% 38%, 66% 70%, 74% 70%, 74% 22%, 81% 22%, 81% 52%,
+    89% 52%, 89% 34%, 96% 34%, 96% 64%, 100% 64%, 100% 100%
+  );
+  animation: city-drift 26s linear infinite;
+}
+
+.road {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 58px;
+  background: linear-gradient(180deg, #1a1a22 0%, #0e0e13 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.road::after {
+  content: ''; position: absolute; left: 0; right: 0; top: 26px; height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(254, 228, 64, 0.5) 0 22px, transparent 22px 46px);
+  animation: road-dash 1.4s linear infinite;
+}
+
+/* 速遞員：圓頭 + 方身 + 兩條擺動嘅腿，全部 CSS 盒 */
+.courier {
+  position: absolute; bottom: 40px; left: 0;
+  width: 34px; height: 54px;
+  animation: courier-walk var(--walk-dur, 30s) linear forwards;
+}
+.courier .head {
+  position: absolute; top: 0; left: 8px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--neon-cyan);
+}
+.courier .body {
+  position: absolute; top: 18px; left: 5px;
+  width: 24px; height: 22px; border-radius: 5px;
+  background: var(--neon-purple);
+}
+.courier .parcel {
+  position: absolute; top: 21px; left: 26px;
+  width: 13px; height: 13px; border-radius: 2px;
+  background: var(--neon-yellow);
+}
+.courier .leg {
+  position: absolute; top: 40px; width: 6px; height: 14px; border-radius: 3px;
+  background: #d8d8e0; transform-origin: top center;
+}
+.courier .leg.l { left: 9px;  animation: step-a 0.52s ease-in-out infinite; }
+.courier .leg.r { left: 19px; animation: step-b 0.52s ease-in-out infinite; }
+
+.bubble {
+  position: absolute; bottom: 100px; left: 0;
+  padding: 6px 12px; border-radius: 12px;
+  background: var(--bg-raise); border: 1px solid var(--line);
+  font-size: var(--font-caption); white-space: nowrap;
+  animation: courier-walk var(--walk-dur, 30s) linear forwards;
+}
+
+.progress-wrap { padding: 0 4px; }
+.progress {
+  height: 8px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08); overflow: hidden;
+}
+.progress > i {
+  display: block; height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: inherit;
+  transition: width 0.3s linear;
+}
+.progress-text {
+  text-align: center; color: var(--text-secondary);
+  font-size: var(--font-caption); margin-top: 10px; min-height: 1.6em;
+}
+
+.delivered-card { text-align: center; }
+.delivered-card .tick {
+  font-size: 52px; line-height: 1;
+  animation: pop-in 0.45s var(--ease) both;
+}

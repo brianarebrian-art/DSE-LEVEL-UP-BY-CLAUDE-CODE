@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>🛒 虛擬超市 | DSE Level Up</title>
+<meta name="description" content="溫書溫到攰，入嚟行陣、買嘢、砌屋，充電後再出發。所有貨幣同貨品均為虛擬。">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/layout.css">
+<link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/delivery.css">
+<link rel="stylesheet" href="./css/home.css">
+<link rel="stylesheet" href="./css/cha.css">
+<link rel="stylesheet" href="./css/animations.css">
+<link rel="stylesheet" href="./css/sen-mode.css">
+</head>
+<body>
+
+<main class="shell">
+  <header class="topbar">
+    <label class="sr-only" for="search">搵商品</label>
+    <input id="search" class="search" type="search" placeholder="搵下…" autocomplete="off">
+    <span id="coins" class="coin-badge" role="status" aria-label="溫習幣餘額">🪙 0</span>
+    <button id="nav-settings" class="btn" aria-label="設定">⚙️</button>
+  </header>
+
+  <section id="view" aria-live="polite"></section>
+
+  <!-- 緊急熱線：呢個獨立靜態頁唔經 app/relax/layout.tsx，所以自行帶住。
+       號碼為公開官方熱線，同 EmergencyBanner 一致。 -->
+  <aside class="hotline">
+    覺得頂唔順？你唔係一個人。撒瑪利亞會 24hr 熱線：
+    <a href="tel:28960000">2896 0000</a> ｜ 生命熱線：<a href="tel:23820000">2382 0000</a>
+    <br>本平台非專業醫療機構，以上資訊僅供參考。如情況緊急，請立即致電 999 或前往就近急症室。
+  </aside>
+
+  <footer class="legal">
+    © DSE Level Up 2026. Not affiliated with HKEAA.<br>
+    虛擬超市為獨立設計之減壓功能，所有貨幣均為虛擬，不可兌換真實貨幣，亦不可充值。<br>
+    本頁所有商品名稱、圖像與音效均為原創或通用描述，100% 零版權侵犯。
+  </footer>
+</main>
+
+<nav class="bottombar" aria-label="主導航">
+  <button id="nav-shop" class="btn">🛒 超市</button>
+  <button id="nav-cart" class="btn">🧺 購物車</button>
+  <button id="nav-home" class="btn">🏠 屋企</button>
+  <button id="nav-diy" class="btn" aria-label="DIY 工作台">🔨</button>
+  <button id="nav-cha" class="btn" aria-label="溫馨家協會評分">🏡</button>
+</nav>
+
+<div id="modal-root" hidden></div>
+<div id="toast" class="idle-nudge" role="status" hidden></div>
+<div id="idle" class="idle-nudge" role="status" hidden>慢慢嚟，你嘅小窩永遠等你。</div>
+
+<script>window.SM = {};</script>
+<script src="./js/products.js"></script>
+<script src="./js/storage.js"></script>
+<script src="./js/economy.js"></script>
+<script src="./js/audio.js"></script>
+<script src="./js/fengshui.js"></script>
+<script src="./js/cha.js"></script>
+<script src="./js/shop.js"></script>
+<script src="./js/delivery.js"></script>
+<script src="./js/home.js"></script>
+<script src="./js/diy.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>

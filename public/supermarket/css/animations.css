@@ -1,0 +1,75 @@
+/* animations.css — 全部 @keyframes 集中於此（spec §5.5）
+ * 純 CSS，零 JS 逐幀計算，零動畫套件。 */
+
+@keyframes city-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes road-dash {
+  from { background-position-x: 0; }
+  to   { background-position-x: -46px; }
+}
+
+/* 速遞員由左至右橫穿畫面（spec §4.2.3 Step 3） */
+@keyframes courier-walk {
+  from { transform: translateX(-40px); }
+  to   { transform: translateX(calc(100vw - 20px)); }
+}
+
+@keyframes step-a {
+  0%, 100% { transform: rotate(18deg); }
+  50%      { transform: rotate(-18deg); }
+}
+@keyframes step-b {
+  0%, 100% { transform: rotate(-18deg); }
+  50%      { transform: rotate(18deg); }
+}
+
+/* 家具落地：輕輕彈一彈（spec §4.4「砌屋滿足感」） */
+@keyframes drop-in {
+  from { transform: rotateZ(45deg) rotateX(-55deg) translateZ(14px) translateY(-10px); opacity: 0; }
+  to   { transform: rotateZ(45deg) rotateX(-55deg) translateZ(14px) translateY(0);     opacity: 1; }
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.4); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes badge-in {
+  from { transform: rotate(-14deg) scale(0.5); opacity: 0; }
+  to   { transform: rotate(0)      scale(1);   opacity: 1; }
+}
+
+@keyframes coin-bump {
+  0%, 100% { transform: scale(1); }
+  40%      { transform: scale(1.16); }
+}
+.coin-badge.bump { animation: coin-bump 0.42s var(--ease); }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.idle-nudge {
+  position: fixed; right: 14px; bottom: 84px; z-index: 45;
+  max-width: 240px; padding: 10px 14px;
+  background: var(--bg-raise); border: 1px solid var(--line);
+  border-radius: 10px; font-size: var(--font-caption);
+  color: var(--text-secondary);
+  animation: fade-in 0.5s var(--ease) both;
+}
+
+@keyframes dim-out { to { opacity: 0; } }
+.leaving { animation: dim-out 0.6s var(--ease) forwards; }
+
+/* 減少動態偏好：一律靜止。速遞員直接停喺終點，唔會卡住流程。 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .city, .road::after { animation: none; }
+}

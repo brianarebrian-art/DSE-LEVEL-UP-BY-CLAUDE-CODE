@@ -1,0 +1,115 @@
+/* base.css — 變數、重置、字體
+ *
+ * ⚠️ 字級同 spec §3.3 有一處刻意偏離：原文寫 --font-body: 9px（≈ 6.75pt）。
+ * 9px 正文喺手機上大部分人都睇唔清，同 §3.2「讀寫障礙友善」同 §5.4「WCAG AA」
+ * 直接矛盾。此處採用 15px 作基準（SEN 模式 18px），其餘層級按比例收窄。
+ * 呢個係可還原嘅單點改動，如要跟返原值改呢一行即可。
+ */
+
+:root {
+  --bg-deep: #0d0d0f;
+  --bg-card: #17171c;
+  --bg-raise: #1f1f26;
+  --line: rgba(255, 255, 255, 0.1);
+
+  --neon-cyan: #00f5d4;
+  --neon-pink: #ff006e;
+  --neon-yellow: #fee440;
+  --neon-purple: #9b5de5;
+
+  --text-primary: #ecedf0;
+  --text-secondary: #c2c2cc; /* 落 --bg-deep 對比 11.6:1 */
+  --text-muted: #9a9aa6;
+
+  --font-display: 26px;
+  --font-h1: 20px;
+  --font-h2: 17px;
+  --font-body: 15px;
+  --font-caption: 13px;
+
+  --tap: 44px; /* 最小觸控目標 */
+  --radius: 12px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font: var(--font-body)/1.65 system-ui, -apple-system, "Segoe UI", "PingFang HK",
+        "Noto Sans HK", "Microsoft JhengHei", sans-serif;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+input  { font: inherit; color: inherit; }
+
+:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 2px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.shell { max-width: 720px; margin: 0 auto; padding: 0 14px 96px; }
+
+h1 { font-size: var(--font-h1); }
+h2 { font-size: var(--font-h2); }
+.caption { font-size: var(--font-caption); color: var(--text-secondary); }
+.muted { color: var(--text-muted); }
+
+/* 通用按鈕 */
+.btn {
+  min-height: var(--tap);
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.btn:hover { border-color: rgba(255, 255, 255, 0.28); }
+.btn-primary { border-color: rgba(0, 245, 212, 0.45); color: var(--neon-cyan); background: rgba(0, 245, 212, 0.1); }
+.btn-primary:hover { background: rgba(0, 245, 212, 0.2); }
+.btn-pink { border-color: rgba(255, 0, 110, 0.45); color: var(--neon-pink); background: rgba(255, 0, 110, 0.1); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn:disabled:hover { border-color: var(--line); }
+
+/* 對話框 */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(6, 6, 8, 0.9);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px; overflow-y: auto;
+}
+.modal {
+  width: 100%; max-width: 420px;
+  max-height: calc(100dvh - 32px); overflow-y: auto;
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px;
+}
+.modal h2 { margin-bottom: 8px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+.modal-actions .btn { flex: 1; }
+
+[hidden] { display: none !important; }
+
+footer.legal {
+  border-top: 1px solid var(--line);
+  margin-top: 40px; padding: 18px 0 8px;
+  font-size: var(--font-caption); color: var(--text-secondary);
+  text-align: center; line-height: 1.8;
+}
+
+/* 緊急熱線 —— 同 app/relax/layout.tsx 嘅 EmergencyBanner 一致。
+ * 呢個獨立靜態頁唔經 React layout，所以必須自行帶住。號碼為公開官方熱線。 */
+.hotline {
+  margin-top: 28px; padding: 14px;
+  border: 1px solid rgba(239, 68, 68, 0.12);
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: var(--radius); text-align: center;
+  font-size: var(--font-caption); color: var(--text-secondary); line-height: 1.8;
+}
+.hotline a { color: var(--neon-cyan); }

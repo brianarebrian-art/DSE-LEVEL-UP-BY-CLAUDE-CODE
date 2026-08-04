@@ -86,6 +86,14 @@ export default function RelaxLanding({
         🧭 {en ? '5-4-3-2-1 grounding · pull myself back to now' : '5-4-3-2-1 落地練習 · 拉自己返到當下'}
       </Link>
 
+      {/* 🛒 虛擬超市：純瀏覽減壓，零貨幣零結帳零計時（2026-08-04） */}
+      <Link
+        href="/relax/virtual-supermarket"
+        className="block w-full text-center rounded-[10px] border border-neon-pink/30 text-neon-pink text-sm py-3 min-h-11 mt-3 hover:bg-neon-pink/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-pink"
+      >
+        🛒 {en ? 'Wander a virtual supermarket · nothing to buy' : '行下虛擬超市 · 冇嘢要買'}
+      </Link>
+
       {/* FIX: [A3][B5] 「補 1 格 MP 都得」→「唞 1 分鐘都得」；提升對比度 */}
       <p className="text-xs text-[#C2C2CC] text-center mt-4">
         {en ? "Even one minute counts. Skip it if you're not up for it — no one will blame you." : '唞 1 分鐘都得。唔想做就唔做，冇人會怪你。'}

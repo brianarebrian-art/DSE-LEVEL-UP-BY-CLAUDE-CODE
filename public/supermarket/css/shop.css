@@ -1,0 +1,66 @@
+/* shop.css — 商品網格、商品卡、詳情、購物車 */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 560px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+.card {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  min-height: var(--tap);
+  padding: 14px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.card:hover { border-color: rgba(0, 245, 212, 0.4); }
+.card .glyph { font-size: 32px; line-height: 1.1; }
+.card .name { font-size: var(--font-caption); font-weight: 600; }
+.card .desc {
+  font-size: var(--font-caption); color: var(--text-secondary);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card .price {
+  margin-top: 2px; color: var(--neon-yellow);
+  font-size: var(--font-caption); font-variant-numeric: tabular-nums;
+}
+.card .owned {
+  font-size: var(--font-caption); color: var(--neon-cyan);
+}
+
+/* 商品詳情 */
+.detail-glyph { font-size: 64px; text-align: center; line-height: 1.1; }
+.detail-price {
+  text-align: center; color: var(--neon-yellow);
+  font-size: var(--font-h2); margin: 8px 0 4px; font-variant-numeric: tabular-nums;
+}
+.detail-desc { text-align: center; color: var(--text-secondary); }
+.detail-meta { text-align: center; font-size: var(--font-caption); color: var(--text-muted); margin-top: 6px; }
+
+/* 購物車 */
+.cart-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.cart-row .glyph { font-size: 26px; }
+.cart-row .info { flex: 1; min-width: 0; }
+.cart-row .info .name { font-size: var(--font-caption); font-weight: 600; }
+.cart-row .info .unit { font-size: var(--font-caption); color: var(--neon-yellow); }
+.qty { display: flex; align-items: center; gap: 6px; }
+.qty button {
+  width: var(--tap); height: var(--tap);
+  border: 1px solid var(--line); border-radius: 8px;
+  font-size: var(--font-h2); line-height: 1;
+}
+.qty span { min-width: 26px; text-align: center; font-variant-numeric: tabular-nums; }
+
+.cart-total {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0 6px; font-size: var(--font-h2);
+}
+.cart-total .amount { color: var(--neon-yellow); font-variant-numeric: tabular-nums; }
+.cart-note { font-size: var(--font-caption); color: var(--text-secondary); text-align: center; padding-bottom: 8px; }

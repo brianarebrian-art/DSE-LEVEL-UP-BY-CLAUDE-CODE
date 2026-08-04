@@ -1,0 +1,61 @@
+/* sen-mode.css — SEN 專注模式 + 高對比模式覆蓋（spec §5.4）
+ * 由 <html> 上嘅 class 觸發，設定存 localStorage。 */
+
+/* SEN 專注模式：放大字體、加大觸控區、減慢動畫 */
+html.sen {
+  --font-display: 30px;
+  --font-h1: 23px;
+  --font-h2: 19px;
+  --font-body: 18px;
+  --font-caption: 16px;
+  --tap: 52px;
+}
+html.sen .card { padding: 18px 12px; }
+html.sen .card .desc { -webkit-line-clamp: 3; }
+html.sen .chip { padding: 8px 18px; }
+html.sen * { animation-duration: 1.6s !important; }
+html.sen .courier,
+html.sen .bubble { animation-duration: var(--walk-dur, 30s) !important; }
+html.sen .city,
+html.sen .road::after { animation: none; }
+
+/* 易讀字體堆疊（同主平台 html.font-easy 同一套 BDA 友善無襯線） */
+html.sen body {
+  font-family: "Atkinson Hyperlegible", "OpenDyslexic", Verdana, Tahoma,
+               "PingFang HK", "Noto Sans HK", sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 1.85;
+}
+
+/* 高對比模式：加深底色、拉高文字亮度、加粗邊界 */
+html.hc {
+  --bg-deep: #000000;
+  --bg-card: #0d0d0d;
+  --bg-raise: #161616;
+  --line: rgba(255, 255, 255, 0.34);
+  --text-primary: #ffffff;
+  --text-secondary: #e6e6ea;
+  --text-muted: #cfcfd6;
+}
+html.hc .card,
+html.hc .slot,
+html.hc .modal { border-width: 2px; }
+html.hc .chip[aria-pressed='true'] { background: rgba(0, 245, 212, 0.24); }
+
+/* 設定面板 */
+.settings-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line);
+}
+.settings-row .label { font-size: var(--font-caption); }
+.settings-row .label small { display: block; color: var(--text-secondary); }
+.toggle {
+  min-width: 74px; min-height: var(--tap);
+  border: 1px solid var(--line); border-radius: 999px;
+  font-size: var(--font-caption); color: var(--text-secondary);
+}
+.toggle[aria-pressed='true'] {
+  border-color: rgba(0, 245, 212, 0.6);
+  background: rgba(0, 245, 212, 0.12);
+  color: var(--neon-cyan);
+}
