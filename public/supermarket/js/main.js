@@ -227,6 +227,12 @@
   });
 
   // ── 入場 ─────────────────────────────────────────────────────────────────
+  // 嵌喺 /relax/virtual-supermarket 嘅 iframe 入面時，外殼已經有主站 Navbar、
+  // 「離開呼吸空間」同緊急熱線 —— 標記出嚟避免重複顯示返回掣同第二份熱線。
+  var embedded = false;
+  try { embedded = window.self !== window.top; } catch (e) { embedded = true; }
+  document.documentElement.classList.toggle('embedded', embedded);
+
   applySettings();
   resetIdle();
 

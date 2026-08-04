@@ -103,6 +103,7 @@ export default function AnswerSheetClient() {
       selected: sel !== undefined ? item.options[sel] : '',
       correct: item.options[item.answerIndex],
       ts: Date.now(),
+      difficulty: item.question.difficulty, // 真相引擎：分辨基礎盲點 vs 進階未消化
     })
   }
 

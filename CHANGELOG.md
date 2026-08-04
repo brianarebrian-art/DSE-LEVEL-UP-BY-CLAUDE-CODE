@@ -2,6 +2,60 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-08-05 — 任務 B：逆向錯因真相引擎（`lib/truth-engine.ts`）
+
+學生揀完三維錯因之後，由歷史記錄推斷「今次錯誤真正嘅成因」，喺「🔍 思維逆襲解密」卡加一句可執行建議（🧭 錯因真相）。純本地、零新依賴、零 API。
+
+### 對住真題庫核實：spec 有三條真相係死碼
+
+| 真相 | spec 用嘅訊號 | 真題庫實情 | 本次改用 |
+|---|---|---|---|
+| 5 指定範文 | `topic.includes('岳陽樓記')` 等 12 個篇名 | 中文 topic 標籤係「指定範文・內容／字詞／名句手法」，**冇一個係篇名** → 155 條中文題一條都唔會中 | `topicId.startsWith('fanwen_')`（舊記錄退回標籤含「指定範文」） |
+| 6 計數機程序 | `topic.includes('程序')` / `includes('program')` | 數學 14 個 topic 冇一個含呢兩個字，全 bank 零個「計數機」字眼 → 永遠唔會中 | `data/calcTips.ts` 對應表，**再收窄到 `verified:true`** |
+| 8 Integrated Skills | `topic === 'Integrated Skills'` | ✅ 真係啱（topic id `integrated`） | 照用，另加 topicId 比對 |
+
+- spec 附嘅 `CHINESE_SET_TEXTS` 12 篇清單本身亦錯：漏咗《逍遙遊》，又將《唐詩三首》《詞三首》拆成《登樓》《青玉案·元夕》《聲聲慢·秋情》。權威來源係 `docs/concept_network.json`。**呢個清單最後冇寫入代碼** —— 因為真訊號係 topic id 而唔係篇名，寫咗只會係第二份會走樣嘅副本。
+- **真相 6 現時靜止**：5 張貼士卡全部 `verified:false`，喺 production 唔會 render。如果真相照出，學生會見到一句叫佢「對住程式清單逐行核」、但根本冇清單可對嘅提示。#83 有真人簽名驗證嗰一刻，真相同貼士卡自動同步上線，唔使再改代碼。
+
+### 修好 v3 嘅 off-by-one
+
+v3 將當前記錄計入 `allLogs` 再用 `>= 2`，令「30 日內第二次錯」實際上要**第三次**先觸發 —— 即係 v2 聲稱修好嘅「第三次」語意原封不動咁翻生，仲配住寫住「又一次」嘅文案。今次改為 `inferTruth(entry, priorLogs, now)`，`priorLogs` **明確唔含當前記錄**，數「之前有幾多次」再用 `>= 1`，語意冇得誤讀。真相 3（同課題 7 日內運算失手）同樣處理。瀏覽器實測：seed 一條 5 日前嘅同題錯誤，下一次錯即刻出真相 7。
+
+### 其他對真 schema 嘅修正
+
+- **`ReverseLogEntry` 加 `difficulty?: Difficulty`（純附加，向後兼容）**。原 schema 冇難度，spec 靠 `(entry as any).difficulty = ...` 喺呼叫方物件上偷偷掛屬性 —— 咁樣真相 1／2 對歷史記錄永遠分唔開，錯題 DNA 指紋亦永遠係 `A-?→B-?`。三個寫入點（`PracticeSession`、`LongPracticeSession`、`AnswerSheetClient`）一併補傳。舊記錄冇呢欄，顯示為 `?`，**當作未知而唔係當作某個難度**。
+- **真相 9 喺 spec 入面行唔到**：佢排喺三個 cause 分支之後，但 cause 只有 A/B/C 而三個分支都 `return`。改為獨立 `cumulativeReviewNote()`，同主真相**一齊顯示**（補充，唔係取代）。數字係去重後嘅實數，零虛構；少過 2 個課題唔出（學生啱啱先錯完唯一嗰題，再話佢知「你有 1 個課題等緊重溫」係廢話）。
+- **`id` 唔夠用**：spec 將「審題陷阱」同「運算粗心」兩條唔同訊息同時編做 id 4。加咗穩定字串 `key`（`question-trap` / `careless` …），UI 一律用 `key` 分流，`id` 只保留對得返 spec 編號。
+- **唔加 `lockDuration`**：spec 畀真相 7 帶 `lockDuration: 60`。60 秒鎖死時長由 `PracticeSession` 嘅 `LOCKOUT_SECONDS` 單一持有，而且只喺 hard 題觸發；畀引擎另開一個時長來源＝兩個真相源，而改動鎖死教學法屬創辦人決策。只保留 `lockReason`（顯示文字）。
+- **唔重新定義 storage**：寫入一律經 `lib/reverseLog.ts`。瀏覽器 helper `diagnoseAfterLogging()` 靠 `getReverseLog().slice(1)` 撇走啱啱寫入嗰條 —— `logReverseError` 做嘅係 `unshift`，所以 index 0 一定係自己，唔使靠 id/ts 比對。storage 寫唔入（無痕／爆 quota）時降級為「第一次錯」。
+
+### 驗收
+
+- `npm test` **111/111**（新增 44 條，全部注入陣列、零 localStorage 依賴 —— Node 入面 `window` 係 undefined，靠 storage 嘅測試必然全綠變全紅）。當中包括三條**對住真題庫**嘅斷言：`fanwen_` topic 存在、`integrated` topic 存在、數學零個 topic 含「程序／program」。
+- `npm run qa` 三閘綠（i18n-guard 0 漏譯）、`npx tsc --noEmit` 零錯誤、`npm run build --webpack` 綠 81/81。
+- **瀏覽器實測**：經濟 medium + 概念盲區 → 真相 1；同題再錯 → 真相 7 + lockReason；中文 `fanwen_lines`（揀「運算粗心」）→ 真相 5 正確覆蓋 cause；英文 `integrated` → 真相 8；累積提示顯示實數「3 個課題」，全部同一課題時正確唔顯示；切英文介面全部出英文、零中文洩漏；console 零錯誤。
+
+### 未做（講明）
+
+真相 6 靜止（等 #83 真人驗證）。`/answer-sheet` 同長題目卷只補咗 `difficulty` 寫入，未接真相顯示 —— 佢哋冇「思維逆襲解密」呢張卡，要另設呈現位。
+
+## 2026-08-04b — 公社科改為「達標／不達標」＋ 已取消卷別 skill 清理
+
+### 任務 A — 公民與社會發展科等級修正（真 bug）
+
+- **問題**：`lib/grading.ts` 對 `subject` 嘅命中次數係 **0** —— `predictGrade()` 對全部 25 科一視同仁出 1–5**。但公社科官方**只有達標／不達標**，冇等級制。即係公社科考生做完 20 題，結果頁會俾佢一個佢張成績單上唔會存在嘅等級。
+- **改法（只加分支，唔改回傳型別）**：`predictGrade(score, table, subjectSlug?)` 加第三個 optional 參數；`csd` 行前置分支返 `達標／不達標`，`marksToNextGrade` 同 `nextGrade` 為 `null`。**其餘 24 科嘅邏輯一行都冇改**，`GradeResult` 形狀不變，`CutoffTable` 照 import 唔重新定義。三個呼叫點（`/result`、`/dashboard/report`、`PracticeSession`）補傳 slug。
+- **達標線誠實標示**：考評局從未公布過達標分數，所以 `CSD_PASS_RATIO = 0.5` **係平台自訂嘅練習參考值**。結果頁明文寫「此處採用的分界線為本平台自訂的練習參考值，並非考評局公布的標準」—— 唔可以扮官方。
+- **配套**：`gradeColors`／`gradeBgColors`／`gradeMessages` 補兩個等級（**達標用青、不達標用 gold，唔用紅** —— 憲章 §7 禁大紅／打擊自信元素，「未達標」係狀態唔係責備）；`lib/dictionary.ts` 中英各補兩句；「等級位置」刻度條喺公社科改為只標「達標參考線」，唔再顯示 1–5** 階梯。
+- **順帶修好一個潛在資料錯**：`lib/progress.ts` 嘅 `betterGrade()` 用 `GRADE_RANK.indexOf()` 比較，「達標」唔喺個陣列度會回 `-1`，即係會被當成低過「U」而靜靜雞蓋走學生嘅最佳成績。改為兩種制式分開比較，跨制式一律保留原有嗰個。
+- **驗收（瀏覽器實測）**：公社科 7/20 → **不達標** + 免責聲明 + 刻度顯示「達標參考線 10」；公社科 14/20 → 達標；**數學科 14/20 → 等級「5」、完整 1–5\*\* 刻度、無公社科免責、「距離下一級」照舊**（零回歸）。`npm test` 67/67、`npm run qa` 綠（i18n-guard 0 漏譯）、`npx tsc --noEmit` 零錯誤、`npm run build --webpack` 綠 81/81。
+
+### 任務 D — 刪除已取消卷別嘅 10 個 skill
+
+- 中文科**卷三（聆聽及綜合能力）同卷四（說話）自 2024 年起已取消**，但 `.claude/skills/` 仍然留住 10 個對應 skill：`chinese-paper-{3,4}-{assistant,fill-in-secretary,long-secretary,mc-secretary,short-secretary}`。全部刪除。
+- ⚠️ 之前版本嘅指令列出嘅 10 個檔名（`chinese-paper-3-listening` / `-practice` / `-mock` / `-tips` 等）**一個都唔存在**，而且路徑寫成 `app/skills/`（真實係 `.claude/skills/`）—— 照嗰個做會刪 0 個檔然後 grep 返 0 結果，報「✅ 完成」。呢次用真路徑真檔名。
+- **清埋殘留引用**：`amity-chinese-chief/SKILL.md` 仲指住兩個已刪 skill。順帶修好同一個檔嘅另外兩處：概念網節點數由 **29 改為 58**（權威來源 `docs/concept_network.json`，之前已更正過兩次），以及**四處長答題關鍵字自動批改措辭**（「Regex 批改引擎架構師」「長答題設必中關鍵字同加分關鍵字」「批改引擎對齊考評局給分誤差小於 1 分」KPI）—— 呢類指標隱含機器出分，同「書寫題永不由機器批改」嘅硬規則衝突，已降級為「參考關鍵詞供學生自我對照」。同時寫明 12 篇清單以 `concept_network.json` 為準（含《逍遙遊》，《唐詩三首》《詞三首》各算一篇）。
+
 ## 2026-08-04 — 呼吸空間新增「虛擬超市」（遊戲化生活模擬減壓區 v2.0）
 
 - **憲章修訂前提**：`supermarket.md` v2.0 標題列明「已核准（核心憲章修訂：允許虛擬貨幣經濟、進度評分、完成度機制）」，Brian(CEO)／Yuna(COO) 簽署。此前 task #12 嘅「去 gamification」決定就虛擬貨幣一項【已被正式推翻】，故本次落地溫習幣經濟。其餘已否決項目（真實貨幣／收費／排行榜／PVP／強制登入）維持攔截。

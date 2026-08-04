@@ -1,6 +1,8 @@
 import type { CutoffTable } from '@/data/cutoffs'
 
-export type Grade = '5**' | '5*' | '5' | '4' | '3' | '2' | '1' | 'U'
+// 公民與社會發展科（csd）唔設 1–5** 等級 —— 官方只有「達標／不達標」二元評級。
+// 其餘 24 科維持原有等級制。
+export type Grade = '5**' | '5*' | '5' | '4' | '3' | '2' | '1' | 'U' | '達標' | '不達標'
 
 export interface GradeResult {
   grade: Grade
@@ -14,9 +16,28 @@ export interface GradeResult {
 
 const gradeOrder: Grade[] = ['5**', '5*', '5', '4', '3', '2', '1']
 
-export function predictGrade(score: number, table: CutoffTable): GradeResult {
+// 公社科達標參考線。考評局從未公布過達標分數，所以呢個數【係平台自訂嘅練習
+// 參考值，唔係官方線】—— UI 必須明講，唔可以扮成官方標準。
+export const CSD_PASS_RATIO = 0.5
+
+export function predictGrade(score: number, table: CutoffTable, subjectSlug?: string): GradeResult {
   const { totalMarks, cutoffs } = table
   const percentage = Math.round((score / totalMarks) * 100)
+
+  // 公社科分支：只回達標／不達標，冇「距離下一級」概念，故 next 相關欄位為 null。
+  // 其餘 24 科完全行返落面原有邏輯，一行都冇改。
+  if (subjectSlug === 'csd') {
+    const passed = score >= totalMarks * CSD_PASS_RATIO
+    return {
+      grade: passed ? '達標' : '不達標',
+      score,
+      totalMarks,
+      percentage,
+      marksToNextGrade: null,
+      nextGrade: null,
+      gradePosition: passed ? 1 : Math.max(0, Math.min(1, score / (totalMarks * CSD_PASS_RATIO))),
+    }
+  }
 
   let grade: Grade = 'U'
   let nextGrade: Grade | null = null
@@ -77,6 +98,10 @@ export const gradeColors: Record<string, string> = {
   '2': 'var(--grade-2)',
   '1': 'var(--grade-1)',
   U: 'var(--grade-u)',
+  // 公社科：達標用主色青（同 accent 一致），不達標用 gold 而【唔用紅】—— 憲章 §7
+  // 禁大紅／打擊自信元素，「未達標」係一個狀態，唔係一個責備。
+  達標: 'var(--color-accent)',
+  不達標: 'var(--color-gold)',
 }
 
 // 等級徽章（實心底＋字）。底色刻意【主題無關】——兩個主題渲染一樣，所以呢批值
@@ -99,6 +124,8 @@ export const gradeBgColors: Record<string, string> = {
   '2': 'bg-slate-500 text-white',
   '1': 'bg-slate-600 text-white',
   U: 'bg-[#9D1449] text-white',
+  達標: 'bg-emerald-600 text-white',
+  不達標: 'bg-slate-600 text-white',
 }
 
 export const gradeMessages: Record<string, string> = {
@@ -110,4 +137,6 @@ export const gradeMessages: Record<string, string> = {
   '2': '需要加油，多做練習！',
   '1': '基礎需要鞏固！',
   U: '繼續努力，你可以的！',
+  達標: '已達參考水平！繼續保持這個節奏。',
+  不達標: '距離參考水平還差一點，再練幾組就補得回來。',
 }

@@ -1,4 +1,26 @@
-/* layout.css — 頂部欄、分頁切換、底部導航 */
+/* layout.css — 平台識別列、頂部欄、分頁切換、底部導航 */
+
+/* 平台識別列：令人一眼睇到「呢度係 DSE Level Up 入面」，唔係第三方頁。
+   顏色同主站 Navbar 一致（青色 wordmark + 深底）。 */
+.brandbar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  min-height: var(--tap);
+  padding: 10px 2px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary); text-decoration: none;
+  font-size: var(--font-caption);
+}
+.brandbar .mark { font-size: 18px; line-height: 1; }
+.brandbar .wordmark { color: var(--neon-cyan); font-weight: 600; letter-spacing: 0.01em; }
+.brandbar .wordmark b { font-weight: 800; }
+.brandbar .crumb { color: var(--text-muted); }
+.brandbar .back { margin-left: auto; color: var(--neon-cyan); }
+.brandbar:hover .back { text-decoration: underline; text-underline-offset: 4px; }
+
+/* 喺 iframe 入面時，外殼已經有主站 Navbar 同「離開呼吸空間」，
+   所以識別列收細為一行麵包屑，唔重複顯示返回掣。 */
+html.embedded .brandbar .back { display: none; }
+
 
 .topbar {
   position: sticky; top: 0; z-index: 30;

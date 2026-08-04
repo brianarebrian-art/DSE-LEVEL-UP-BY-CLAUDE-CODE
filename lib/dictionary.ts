@@ -192,6 +192,9 @@ const zh = {
       '2': '需要加油，多做練習！',
       '1': '基礎需要鞏固！',
       U: '繼續努力，你可以的！',
+      // 公民與社會發展科：官方只有達標／不達標，冇 1–5** 等級
+      達標: '已達參考水平！繼續保持這個節奏。',
+      不達標: '距離參考水平還差一點，再練幾組就補得回來。',
     },
   },
   dashboard: {
@@ -514,6 +517,9 @@ const en: typeof zh = {
       '2': 'Push on — more practice will help!',
       '1': 'Solidify the basics!',
       U: 'Keep going — you can do this!',
+      // Citizenship & Social Development is reported as met / not-yet-met only
+      達標: 'You have reached the reference level — keep this rhythm going.',
+      不達標: 'A little short of the reference level — a few more sets will close it.',
     },
   },
   dashboard: {

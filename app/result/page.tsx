@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
-import { predictGrade, gradeColors, gradeBgColors, type GradeResult } from '@/lib/grading'
+import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
@@ -64,7 +64,7 @@ export default function ResultPage() {
     const raw = localStorage.getItem('dse_result')
     if (!raw) return
     const data: StoredResult = JSON.parse(raw)
-    const gr = predictGrade(data.score, getPracticeCutoffs(data.total, data.subjectId ?? 'practice'))
+    const gr = predictGrade(data.score, getPracticeCutoffs(data.total, data.subjectId ?? 'practice'), data.subjectId)
     setResult(data)
     setGradeResult(gr)
     setTimeout(() => setShowBadge(true), 1600)
@@ -86,6 +86,9 @@ export default function ResultPage() {
   }
 
   const barWidth = Math.round((result.score / result.total) * 100)
+  // 公社科用二元評級。呢兩個係【等級值】而唔係顯示文字，故豁免雙語檢查。
+  const isBinaryGrade = gradeResult.grade === '達標' || gradeResult.grade === '不達標' // i18n-exempt: 等級值比較，非 UI 文字
+  const passLineColor = gradeColors['達標'] // i18n-exempt: 等級值做 key，非 UI 文字
   const color = gradeColors[gradeResult.grade] ?? '#64748B'
   const bgColor = gradeBgColors[gradeResult.grade] ?? 'bg-slate-500 text-white'
   const formatTime = (s: number) => `${Math.floor(s / 60)}${r.timeMin}${s % 60}${r.timeSec}`
@@ -225,6 +228,16 @@ export default function ResultPage() {
             {r.gradeMessages[gradeResult.grade]}
           </p>
 
+          {/* 公社科：官方只有達標／不達標，冇 1–5** 等級。而考評局從未公布達標分數，
+              所以呢條線係平台自訂嘅練習參考值 —— 必須明講，唔可以扮官方標準。 */}
+          {isBinaryGrade && (
+            <p className="text-ink-muted text-xs leading-relaxed mb-6 max-w-md mx-auto">
+              {locale === 'en'
+                ? 'Citizenship & Social Development is reported as met / not-yet-met only — there are no 1–5** levels. The threshold used here is our own practice reference, not an HKEAA figure.'
+                : '公民與社會發展科官方只設「達標／不達標」，並無 1–5** 等級。此處採用的分界線為本平台自訂的練習參考值，並非考評局公布的標準。'}
+            </p>
+          )}
+
           {/* Marks to next grade */}
           {gradeResult.marksToNextGrade !== null && gradeResult.nextGrade && (
             <div className="inline-flex items-center gap-2 text-sm text-gold bg-gold/10 border border-gold/20 rounded-full px-4 py-2">
@@ -268,14 +281,22 @@ export default function ResultPage() {
               />
             </div>
 
-            {/* Grade markers */}
+            {/* Grade markers —— 公社科唔存在 1–5** 階梯，改為只標達標參考線。 */}
             <div className="flex justify-between text-xs text-ink-muted mt-1">
               <span>0</span>
-              {['1', '2', '3', '4', '5', '5*', '5**'].map((g) => (
-                <span key={g} style={{ color: gradeColors[g] }}>
-                  {g}
+              {isBinaryGrade ? (
+                <span style={{ color: passLineColor }}>
+                  {locale === 'en' ? 'reference line' : '達標參考線'}
+                  {' '}
+                  {Math.ceil(result.total * CSD_PASS_RATIO)}
                 </span>
-              ))}
+              ) : (
+                ['1', '2', '3', '4', '5', '5*', '5**'].map((g) => (
+                  <span key={g} style={{ color: gradeColors[g] }}>
+                    {g}
+                  </span>
+                ))
+              )}
               <span>{result.total}</span>
             </div>
           </div>

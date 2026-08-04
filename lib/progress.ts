@@ -82,7 +82,16 @@ export interface ProgressStats {
 
 const GRADE_RANK = ['U', '1', '2', '3', '4', '5', '5*', '5**']
 
+// 公社科用「達標／不達標」，同 1–5** 唔喺同一把尺上，故【唔可以】直接比較。
+// 兩者混入同一組 attempts 時，只喺同制式之間比；跨制式一律保留原有嗰個，
+// 避免「達標」被當成低過「1」（indexOf 回 -1）而靜靜雞蓋走學生嘅最佳成績。
+const CSD_GRADES = ['達標', '不達標']
+
 function betterGrade(a: string, b: string): string {
+  const aCsd = CSD_GRADES.includes(a)
+  const bCsd = CSD_GRADES.includes(b)
+  if (aCsd !== bCsd) return a
+  if (aCsd && bCsd) return a === '達標' ? a : b
   return GRADE_RANK.indexOf(a) >= GRADE_RANK.indexOf(b) ? a : b
 }
 

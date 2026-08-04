@@ -16,8 +16,9 @@ export default function SupermarketFrame() {
         title={en ? 'Virtual Supermarket' : '虛擬超市'}
         // 同源但仍然收窄能力：唔畀彈窗、唔畀 top-level 導航、唔畀下載。
         sandbox="allow-scripts allow-same-origin allow-modals"
-        className="w-full rounded-xl border border-white/10 bg-[#0d0d0f]"
-        style={{ height: 'min(78dvh, 900px)' }}
+        // 無邊框、無圓角：超市係呼吸空間嘅一部分，唔應該睇落似嵌入嘅第三方元件。
+        className="block w-full border-0 bg-transparent"
+        style={{ height: 'min(82dvh, 960px)' }}
       />
       <p className="mt-3 text-center text-xs leading-relaxed text-[#C2C2CC]">
         {en

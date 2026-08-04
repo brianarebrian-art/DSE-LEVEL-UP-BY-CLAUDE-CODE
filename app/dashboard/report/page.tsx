@@ -107,7 +107,7 @@ export default function ReportPage() {
       const raw = localStorage.getItem('dse_result')
       if (raw) {
         const r: StoredResult = JSON.parse(raw)
-        lastGrade = predictGrade(r.score, getPracticeCutoffs(r.total, r.subjectId ?? 'practice')).grade
+        lastGrade = predictGrade(r.score, getPracticeCutoffs(r.total, r.subjectId ?? 'practice'), r.subjectId).grade
       }
     } catch { /* ignore */ }
 

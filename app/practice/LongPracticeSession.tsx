@@ -108,6 +108,7 @@ export default function LongPracticeSession({
       selected: tr('（書寫題自評）', '(written self-assessment)'),
       correct: q.referenceAnswer.slice(0, 120),
       ts: Date.now(),
+      difficulty: q.difficulty, // 真相引擎：分辨基礎盲點 vs 進階未消化
     })
     advance()
   }

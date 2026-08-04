@@ -103,6 +103,11 @@ footer.legal {
   text-align: center; line-height: 1.8;
 }
 
+/* 嵌入模式：外殼（app/relax/layout.tsx）已經渲染緊熱線橫幅，
+ * 唔好喺 iframe 入面再出多一次 —— 重複只會分散注意力。
+ * 直連 /supermarket/index.html 時 html 冇 .embedded，熱線照常顯示。 */
+html.embedded .hotline { display: none; }
+
 /* 緊急熱線 —— 同 app/relax/layout.tsx 嘅 EmergencyBanner 一致。
  * 呢個獨立靜態頁唔經 React layout，所以必須自行帶住。號碼為公開官方熱線。 */
 .hotline {

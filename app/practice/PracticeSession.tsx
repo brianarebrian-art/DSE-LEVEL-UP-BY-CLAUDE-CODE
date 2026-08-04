@@ -36,6 +36,8 @@ import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock, Coffee } f
 import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
+// 真相引擎：由歷史錯誤記錄推斷「今次錯誤真正嘅成因」，喺解密卡加一句可執行建議
+import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
 import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
 import { startServerLockout, verifyServerUnlock } from '@/lib/lockout/client'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
@@ -266,6 +268,8 @@ export default function PracticeSession({
   // Which reverse-cause the student admitted to for the current wrong answer.
   // While null on a WRONG answer, the lockout overlay hides the Marking Scheme.
   const [diagnosed, setDiagnosed] = useState<ReverseCause | null>(null)
+  // 真相引擎輸出（揀完錯因即時算，純本地）
+  const [truth, setTruth] = useState<DiagnoseResult | null>(null)
   // 60-second forced lockout (HARD wrong answers only): a metacognition follow-up
   // about the chosen error cause + a countdown that both must clear before "Next".
   const [followup, setFollowup] = useState<PreparedLockout | null>(null)
@@ -384,7 +388,7 @@ export default function PracticeSession({
     (cause: ReverseCause) => {
       if (!currentQ || answerState === null) return
       setDiagnosed(cause)
-      logReverseError({
+      const logEntry = {
         subjectId,
         questionId: currentQ.id,
         topic: currentQ.topicZh,
@@ -393,7 +397,11 @@ export default function PracticeSession({
         selected: answerState.selectedZh,
         correct: currentQ.correctZh,
         ts: Date.now(),
-      })
+        difficulty: currentQ.difficulty, // 真相引擎：分辨基礎盲點 vs 進階未消化
+      }
+      logReverseError(logEntry)
+      // 必須喺 logReverseError 之後即刻叫 —— helper 靠 slice(1) 撇走啱啱寫入嗰條
+      setTruth(diagnoseAfterLogging(logEntry))
       // HARD questions: arm the 60-second forced-reflection lock with a follow-up
       // logic question about this error cause. Easy/medium keep the lighter flow.
       if (currentQ.difficulty === 'hard') {
@@ -446,6 +454,7 @@ export default function PracticeSession({
     setAnswers(newAnswers)
     setAnswerState(null)
     setDiagnosed(null)
+    setTruth(null)
     setFollowup(null)
     setFollowupPick(null)
     lockDeadlineRef.current = null
@@ -478,7 +487,7 @@ export default function PracticeSession({
         return
       }
 
-      const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId)).grade
+      const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId), subjectId).grade
       const resultData = {
         score,
         total: totalQ,
@@ -872,6 +881,30 @@ export default function PracticeSession({
                       <span className="text-gold text-xs font-medium mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
                       <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
                     </div>
+
+                    {/* 真相引擎 —— 由歷史錯誤記錄推斷成因，畀一句可執行嘅補救建議。
+                        同「正解思路」分開：上面講呢題點解，呢度講「你嘅錯法」點解。 */}
+                    {truth && (
+                      <div className="mt-3 border-t border-gold/15 pt-3">
+                        <p className="text-sm text-ink-soft leading-relaxed">
+                          <span className="text-accent text-xs font-medium mr-1">
+                            🧭 {tr('錯因真相：', 'What this error means: ')}
+                          </span>
+                          {tr(truth.truth.message[0], truth.truth.message[1])}
+                        </p>
+                        {truth.truth.lockReason && (
+                          <p className="mt-1.5 text-xs text-ink-muted leading-relaxed">
+                            {tr(truth.truth.lockReason[0], truth.truth.lockReason[1])}
+                          </p>
+                        )}
+                        {truth.cumulative && (
+                          <p className="mt-2 text-xs text-ink-muted leading-relaxed">
+                            📚 {tr(truth.cumulative.message[0], truth.cumulative.message[1])}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
                     {/* F01 錯題情緒標籤（key 按題重置） */}
                     <EmotionTags key={currentQ.id} />
                   </div>

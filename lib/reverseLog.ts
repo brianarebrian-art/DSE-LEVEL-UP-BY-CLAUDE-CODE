@@ -4,6 +4,8 @@
 // option (the 三維錯因自診 of the "答錯即鎖死" lockout), powering a reverse error
 // notebook. Pure localStorage, capped, best-effort (never throws into the UI).
 
+import type { Difficulty } from '@/data/questions'
+
 export type ReverseCause = 'A' | 'B' | 'C'
 
 export interface ReverseLogEntry {
@@ -17,6 +19,9 @@ export interface ReverseLogEntry {
   selected: string
   correct: string
   ts: number
+  // 真相引擎：分辨「基礎概念盲點」（easy/medium）同「進階概念未消化」（hard）。
+  // optional 且純附加 —— 舊記錄冇呢欄，引擎會當作未知並歸去進階分支。
+  difficulty?: Difficulty
 }
 
 const KEY = 'dse_reverse_log'
