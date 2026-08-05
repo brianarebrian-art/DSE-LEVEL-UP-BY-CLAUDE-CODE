@@ -29,7 +29,12 @@ interface StoredResult {
   topicResults: TopicResult[]
   difficultyResults?: DifficultyResults
   elapsed: number
+  /** 覆核用逐題答案。舊記錄冇呢欄，覆核就靜靜跳過。 */
+  submitted?: { questionId: string; selectedZh: string | null }[]
 }
+
+/** 服務端覆核狀態。null = 未覆核／覆核唔到（一律靜靜收起，唔嘈學生）。 */
+type VerifyState = { ok: true } | { ok: false; score: number; total: number } | null
 
 function useCountUp(target: number, duration = 1500) {
   const [val, setVal] = useState(0)
@@ -52,6 +57,7 @@ export default function ResultPage() {
   const r = t.result
   const [result, setResult] = useState<StoredResult | null>(null)
   const [gradeResult, setGradeResult] = useState<GradeResult | null>(null)
+  const [verify, setVerify] = useState<VerifyState>(null)
   const [showBadge, setShowBadge] = useState(false)
   const [shared, setShared] = useState(false)
   const [reportCopied, setReportCopied] = useState(false)
@@ -68,6 +74,40 @@ export default function ResultPage() {
     setResult(data)
     setGradeResult(gr)
     setTimeout(() => setShowBadge(true), 1600)
+
+    // 服務端覆核：用答案庫重批一次對數。背景進行，唔阻塞結果畫面，
+    // 離線／失敗一律靜靜跳過（憲章：網絡問題唔可以變成學生見到嘅錯誤）。
+    if (!data.submitted?.length || !data.subjectId) return
+    const ctrl = new AbortController()
+    fetch('/api/result/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subjectId: data.subjectId, answers: data.submitted }),
+      signal: ctrl.signal,
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((v: { verified?: boolean; score?: number; total?: number } | null) => {
+        if (!v?.verified || typeof v.score !== 'number' || typeof v.total !== 'number') return
+        if (v.score === data.score && v.total === data.total) {
+          setVerify({ ok: true })
+          return
+        }
+        // 唔一致：既然文案講「以伺服器為準」，畫面就要真係跟伺服器 ——
+        // 大字留住舊數、細字話你聽真數，等於同一版嘢自己講兩個答案。
+        setVerify({ ok: false, score: v.score, total: v.total })
+        setResult({ ...data, score: v.score, total: v.total })
+        setGradeResult(
+          predictGrade(
+            v.score,
+            getPracticeCutoffs(v.total, data.subjectId ?? 'practice'),
+            data.subjectId,
+          ),
+        )
+      })
+      .catch(() => {
+        /* 離線／中斷 —— 覆核係額外保障，唔係必要條件 */
+      })
+    return () => ctrl.abort()
   }, [])
 
   const displayScore = useCountUp(result?.score ?? 0, 1400)
@@ -235,6 +275,21 @@ export default function ResultPage() {
               {locale === 'en'
                 ? 'Citizenship & Social Development is reported as met / not-yet-met only — there are no 1–5** levels. The threshold used here is our own practice reference, not an HKEAA figure.'
                 : '公民與社會發展科官方只設「達標／不達標」，並無 1–5** 等級。此處採用的分界線為本平台自訂的練習參考值，並非考評局公布的標準。'}
+            </p>
+          )}
+
+          {/* 服務端覆核結果。語氣係【安心】唔係【監察】—— 呢個數係核對過嘅，
+              你可以信。對唔上時亦唔指控學生（答案庫本身就喺瀏覽器，覆核擋唔到
+              有心人），只講「以覆核為準」，最常見成因其實係舊 bundle 或者題庫更新。 */}
+          {verify !== null && (
+            <p className="text-ink-muted text-xs leading-relaxed mb-4">
+              {verify.ok
+                ? locale === 'en'
+                  ? '✓ Re-marked against the question bank on our server — same result.'
+                  : '✓ 已用伺服器上嘅答案庫重批一次，結果一樣。'
+                : locale === 'en'
+                  ? `Re-marked against the bank on our server — the figure above is the server's (${verify.score}/${verify.total}). Usually this just means the question bank was updated since your page loaded.`
+                  : `已用伺服器上嘅答案庫重批，上面顯示嘅係伺服器嘅結果（${verify.score}/${verify.total}）。通常只係題庫喺你開頁之後更新過。`}
             </p>
           )}
 

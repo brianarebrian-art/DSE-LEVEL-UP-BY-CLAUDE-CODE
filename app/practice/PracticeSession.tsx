@@ -497,6 +497,13 @@ export default function PracticeSession({
         topicResults,
         difficultyResults,
         elapsed,
+        // 覆核用：逐題「題目 id + 揀咗邊個選項文字」。/result 會 POST 去
+        // /api/result/verify 由服務端用答案庫重批一次對數。純本地＋一次過，
+        // 唔存 server。用選項文字而唔用 index —— 選項每次 render 都洗牌。
+        submitted: questions.map((q, i) => ({
+          questionId: q.id,
+          selectedZh: newAnswers[i]?.selectedZh ?? null,
+        })),
       }
       localStorage.setItem('dse_result', JSON.stringify(resultData))
       // Persist to the long-term progress log (powers the dashboard / streaks).

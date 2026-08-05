@@ -2,6 +2,40 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-08-05e — 結果服務端覆核（C-Strict 唯一保留嘅一項）
+
+`app/api/result/verify`（一條 route）+ `lib/verifyResult.ts`（純函數）+ `/result` 背景呼叫。**唔使登入、零儲存、零新表、零新套件。**
+
+### 先講佢做唔到啲乜
+
+**呢個唔係防作弊。** 實測確認：答案原文本身就喺 client bundle（`.next/static/chunks/7569-*.js` 搵到正解字串，`correctZh` 出現 7 次）—— 而且必須咁樣，因為離線批改係硬需求。一個真心想改自己分數嘅學生讀 bundle 就得，覆核攔唔到。任何將佢包裝成「防 F12 篡改」嘅講法都係安全劇場。
+
+佢真正擋到兩件事，兩件都值得擋：
+1. `dse_result` 被直接改（改個 key 就算，唔重做卷）—— 一覆核即刻對唔上。
+2. **前後端批改不一致**。選項每次 render 都 Fisher-Yates 洗牌，前端按選項文字批。洗牌邏輯出錯、題庫正解改咗、或者學生揸緊舊 bundle，兩邊就會計出唔同分 —— 呢個係真 bug 訊號，唔係學生問題。
+
+### 寫嘅過程捉到兩個真問題
+
+- **`correctZh` 唔係一個儲存欄位。** Route 初版照 spec 寫 `q.correctZh`，但 `MCQuestion` 只有 `correctIndex` + `options[]`（實測：經濟科 148/148 條都冇 `correctZh`）。即係答案表全部 `undefined`、每條 id 都當「唔認識」、`total` 永遠 0、端點永遠靜靜回 `verified:false` —— 一個睇落有做嘢、實際乜都冇驗嘅 route。正解要同前端 `prepareQuestion()` 一樣由 `options[correctIndex]` 導出。已加迴歸測試釘死。
+- **term-guard 攔咗我一句文案**：原本寫「通常係你嘅版本落後咗題庫更新」，「落後」中咗羞辱／罪疚字眼閘。改為「題庫喺你開頁之後更新過」—— 同一個事實，冇咗個指責。
+
+### 設計取捨（每條都刻意）
+
+- **唔要求登入**：全站免費、唔使登入就做得題。呢個 route 唔讀唔寫用戶數據，冇身份可洩，加登入閘只會擋住未登入嘅學生。
+- **零儲存**：唔寫 Supabase、唔記 IP。入面係「學生答錯咗啲乜」，對 12–18 歲平台嚟講唔存落 server 就冇得洩。
+- **只回匯總，唔回逐題對錯**：答案雖然已喺 bundle，但冇必要親手造多一個乾淨嘅答案 oracle。
+- **冇 rate limit**：Vercel serverless 每個 instance 記憶體獨立，in-memory 限流形同虛設（呢個係 C-Strict 方案嘅實際錯誤之一）。純運算 + 零儲存 + 答案已公開，唔值得為佢加外部 store。
+- **對唔上時，畫面真係跟伺服器**：初版大字留住本地數、細字先講「以伺服器為準」，等於同一版嘢自己講兩個答案。改為連 `score`／`grade`／刻度／課題分析一齊重算。
+- **離線／失敗一律靜默**：`AbortController` + `.catch()` 吞低，覆核係額外保障唔係必要條件。
+
+### 驗收
+
+15 條單元測試（`npm test` 175 → **190**）。Route 端到端實測 6 個情況：全對 4/4→5**、全錯 0/4、假題目 id→`no_matching_questions`、未知科目→`unknown_subject`、畸形 payload→400、201 條→400。瀏覽器實測：誠實 14/20 → 「✓ 結果一樣」；將 `dse_result` 改成 20/20 → 畫面重算返 14/20 · 70% · 等級 5 · 「距離 5* 只差 3 分」。qa 三閘綠、tsc 0、build 綠 81/81。
+
+### 順帶記低一個既有現象（未改）
+
+`getPracticeCutoffs` 喺極細張卷（1–4 題）會令等級界線塌埋一齊 —— 0/4 都可以計出「3 級」。前後端用同一條函數所以唔會唔一致，而 UI 上 1 題卷根本唔會寫 `dse_result`，所以實際觸發唔到。但如果日後開放細張卷，呢度要處理。
+
 ## 2026-08-05d — 溫習時長分析（B 嘅第三條路：零新表、零新線）
 
 `lib/studyTime.ts`（純函數）+ `components/StudyTimeInsight.tsx`（純 SVG）+ 接入 `/dashboard`。數據源 100% 係 `dse_progress` 已有欄位 `elapsed`／`timestamp`／`score`／`total` —— 呢啲欄位一直寫緊，亦一直經 `/api/progress` snapshot 同步，所以「幾時溫、溫幾耐、邊個時段最有狀態」本來就算得返出嚟。**零新 Supabase 表、零新 API route、零新 npm 套件、零圖表庫。**
