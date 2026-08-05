@@ -29,6 +29,7 @@ import ErrorRadar from '@/components/ErrorRadar'
 import ReviewScheduler from '@/components/ReviewScheduler'
 // 計劃A §5.6：精進軌跡（純 SVG，真實 localStorage 數據）— light-first
 import ProgressTrajectory from '@/components/ProgressTrajectory'
+import StudyTimeInsight from '@/components/StudyTimeInsight'
 import TodayNote from '@/components/TodayNote'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
@@ -229,6 +230,9 @@ export default function DashboardPage() {
 
         {/* F-PRG: 今日學習光譜（3:5:2 建議節奏，真實作答數據） */}
         <DailySpectrum />
+
+        {/* 溫習節奏：時長 + 時段狀態。純本地計算，數據源係 dse_progress 已有欄位 */}
+        <StudyTimeInsight />
 
         {/* C6：擺喺「今日計劃」之前 —— 見到成個計劃就無力嗰日，起碼仲有呢條路 */}
         <JustOneCard className="mb-6" />
