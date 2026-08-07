@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "source": "chinese-fanwen-long-batch1.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh_long_b1_01": "pending",
+    "zh_long_b1_02": "pending",
+    "zh_long_b1_03": "pending",
+    "zh_long_b1_04": "pending",
+    "zh_long_b1_05": "pending",
+    "zh_long_b1_06": "pending",
+    "zh_long_b1_07": "pending",
+    "zh_long_b1_08": "pending",
+    "zh_long_b1_09": "pending",
+    "zh_long_b1_10": "pending",
+    "zh_long_b1_11": "pending",
+    "zh_long_b1_12": "pending",
+    "zh_long_b1_13": "pending",
+    "zh_long_b1_14": "pending",
+    "zh_long_b1_15": "pending",
+    "zh_long_b1_16": "pending",
+    "zh_long_b1_17": "pending",
+    "zh_long_b1_18": "pending",
+    "zh_long_b1_19": "pending",
+    "zh_long_b1_20": "pending"
+  }
+}
