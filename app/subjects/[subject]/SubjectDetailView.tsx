@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, PenLine, BookOpenCheck } from 'lucide-react'
+import { ArrowRight, PenLine, BookOpenCheck, FileText } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
@@ -9,10 +9,13 @@ import { useLocale } from '@/lib/i18n'
 export default function SubjectDetailView({
   meta,
   questionsCount,
+  writtenCount,
   topics,
 }: {
   meta: SubjectMeta
   questionsCount: number
+  /** 書寫題（text／long）條數。0 亦照樣顯示入口 —— 見下方長題目卡的註釋。 */
+  writtenCount: number
   topics: Topic[]
 }) {
   const { t, locale } = useLocale()
@@ -96,6 +99,54 @@ export default function SubjectDetailView({
             </Link>
           )}
         </div>
+
+        {/* 長題目入口 —— 每一科都有，唔止 MC。
+            `?mode=long` 的 runner（LongPracticeSession）一直存在，但此前全站冇任何
+            科目頁連去嗰度，學生實際上只做得到選擇題。此卡就是缺失的入口。
+            writtenCount === 0 時仍然顯示並可點擊：runner 本身有誠實的空狀態
+            （「呢科暫時未有長題目」＋ 說明人手審批流程 ＋ 回退去選擇題），
+            比隱藏入口更好 —— 學生至少知道呢個題型存在、亦知道點解未有。 */}
+        <Link
+          href={`/practice?subject=${meta.id}&mode=long`}
+          className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-all ${
+            writtenCount > 0
+              ? 'bg-accent/[0.06] hover:bg-accent/[0.10] border-accent/25 hover:border-accent/40'
+              : 'bg-ink/[0.03] hover:bg-ink/[0.05] border-ink/10 hover:border-ink/20'
+          }`}
+        >
+          <div className="flex items-center gap-3">
+            <FileText
+              size={20}
+              className={`shrink-0 ${writtenCount > 0 ? 'text-accent' : 'text-ink-muted'}`}
+            />
+            <div>
+              <div className="font-medium text-ink">
+                {en ? 'Written Paper · Long Questions' : '書寫卷・長題目'}
+                {writtenCount > 0 && (
+                  <span className="ml-2 text-xs font-normal text-ink-muted">
+                    {writtenCount}
+                    {en ? ' available' : ' 題'}
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-ink-muted mt-0.5 leading-relaxed">
+                {writtenCount > 0
+                  ? en
+                    ? 'Write your own answer, then self-assess against the reference answer and marking scheme. Never machine-marked.'
+                    : '自己寫答案，交卷後對照參考答案同評分準則自評。機器永不批改。'
+                  : en
+                    ? 'Coming soon — every written question is approved by a human one by one, so they arrive slowly.'
+                    : '準備中 —— 長題目要逐條經真人審批先會上線，所以出得慢。'}
+              </p>
+            </div>
+          </div>
+          <ArrowRight
+            size={16}
+            className={`shrink-0 group-hover:translate-x-0.5 transition-transform ${
+              writtenCount > 0 ? 'text-accent' : 'text-ink-muted'
+            }`}
+          />
+        </Link>
 
         {/* English-only: Paper 2 Writing Studio entry */}
         {meta.id === 'english' && (
