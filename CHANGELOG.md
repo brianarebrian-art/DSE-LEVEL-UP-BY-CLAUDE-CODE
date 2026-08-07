@@ -2,6 +2,51 @@
 
 依藍圖 v2026.07.16-FINAL 執行規範第 15 條，由 2026-07-16 起記錄。更早嘅歷史見 git log。
 
+## 2026-08-07 — 書寫題管道開鎖 + 修好一個令稽核少報 12 題嘅註冊漏洞
+
+外部《題庫實況稽核報告》嘅 P0 技術清單，對真 codebase diff 之後，五項只有兩項真未做（其餘兩項七月已做、一項前提錯誤）。本次做齊四項實際欠缺嘅嘢。
+
+### ① `data/questions/index.ts` — 12 條題目對所有稽核工具隱形
+
+題庫有兩個入口：`load.ts`（app 真正供應予學生）同 `index.ts`（barrel，所有 QA 工具與稽核統計讀取）。兩邊各自列自己嘅組成檔案，而 **`english-reviewed` 與 `bafs-reviewed` 一直只列於 `load.ts`**。
+
+後果：`eng-idiom-01`–`06` 同 `bafs-01`–`06` 共 12 條已審核題目一直供應予學生，卻對 `topic-coverage.mjs` 及任何全量稽核完全不可見。外部稽核報告因此報 5,166，而實際供應量為 5,178 —— 一份自稱「機器全量統計、非抽樣」嘅報告少報咗 12 題而毫無警示。
+
+補兩行 import 後，`topic-coverage.mjs` 由 5,166 → **5,178**，與 loader 一致。
+
+新增 `data/questions/__tests__/loader-parity.test.mts`（4 條）作迴歸鎖：逐科比對兩條路徑嘅題目 id 集合、總數一致、全庫 id 唯一、無空科目。日後漏註冊會直接紅測試，唔使等半年後有人數漏先發現。
+
+### ② `_builder.ts` — 新增 `makeText()` / `makeLong()`
+
+原本 25 科全部經 `makeQ()` 產生，而該函式硬編碼 `type: 'mc'`，即現行出題管道**結構上無法產出非選擇題**。這是書寫題 0 題的根本原因（管道早已建成：型別、資料出口、惰性載入、`?mode=long` 練習流程、兩張答題卡、開發預覽全部就緒，`hasWrittenQuestions()` 對 25 科全部回 `false`）。
+
+- **`makeQ()` 一行未改**（驗收條件），唯一刪除行係 import 語句。
+- Build-time 守衛：空 `referenceAnswer`、空 `referenceAnswerEn`、非正數 `marks`、單語 `markingScheme`、非正數 `suggestedMinutes` 一律拋錯。
+- 兩個工廠**強制**中英參考答案 —— 型別上 `referenceAnswerEn` 係 optional（舊記錄相容），但入口處收窄好過事後追。
+- ⚠️ 明文記於檔內：呢兩個工廠**唔會**令書寫題變成可自動批改。`referenceAnswer` 係交卷後攤畀學生對照嘅參考，唔係 keyword 比對嘅答案 key。
+
+10 條守衛測試，含 `makeQ` 零回歸斷言（`type=mc`、`correctIndex=0`、重複選項與少於兩個選項照樣拋錯）。
+
+### ③ `scripts/qbank/_gate.mjs` — 書寫題雙語檢查
+
+原指令要求喺 `i18n-guard.mjs` 加 `referenceAnswerEn` 檢查，**前提錯誤**：`i18n-guard.mjs` 嘅 `ROOTS = ['app', 'components']`，係 UI 文案工具，從不讀取 `data/questions/`。正確位置係 `_gate.mjs`（`review-drafts` 與 `promote-drafts` 共用嘅草稿閘），而該處原本**完全冇任何英文欄檢查**。
+
+新增：`referenceAnswerEn` 必填；`markingScheme` 與 `markingSchemeEn` 必須成對出現。語言科慣例係英文欄重複同一串（`m(s)=[s,s]`），故只驗「存在且非空」，25 科一致適用，無需豁免名單。
+
+實測四種情況：齊料放行、缺英文參考答案攔截、評分準則只有中文攔截、只有英文亦攔截。
+
+### ④ `/methodology` 與 `/transparency` — 自評誠實披露
+
+兩頁均加中英文說明：書寫題永不機器批改，學生對住參考答案三級自評，而**自評結果不計入準確率、不影響等級預測** —— 該兩個數字只由選擇題得出。`/methodology` 的段落刻意置於 CTA 之前，學生按去練習之前就應知道，而非做完才發現。
+
+### 過程中被自己嘅閘攔咗一次
+
+初稿在 `data/questions/` 的註釋用咗廣東話，`term-guard` 報 14 處違規（憲章 §5：題庫檔註釋必須書面語或英文）。`_builder.ts` 原有註釋為英文，故改為英文；`index.ts` 改為書面語。閘做啱嘢。
+
+### 驗收
+
+`npm test` 190 → **204**（+14）。qa 三閘綠、`tsc --noEmit` 零錯誤、`build --webpack` 綠 81/81。`topic-coverage.mjs` 由 5,166 → 5,178。瀏覽器實測兩頁文案已顯示。
+
 ## 2026-08-05e — 結果服務端覆核（C-Strict 唯一保留嘅一項）
 
 `app/api/result/verify`（一條 route）+ `lib/verifyResult.ts`（純函數）+ `/result` 背景呼叫。**唔使登入、零儲存、零新表、零新套件。**

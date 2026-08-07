@@ -95,6 +95,21 @@ export function gateRow(row, subject) {
     if (typeof row?.referenceAnswer !== 'string' || row.referenceAnswer.trim().length < MIN_REFERENCE_LEN) {
       e.push(`referenceAnswer too short / missing —— ${type} 題冇參考答案，學生就冇嘢對照，自評做唔到`)
     }
+    // 雙語：全站中英切換，英文介面嘅學生自評時見到中文參考答案＝冇得對照。
+    // 型別上 `referenceAnswerEn` 係 optional（舊 MC 記錄相容），但書寫題入庫必須有。
+    // 語言科（中文／英文／中國文學／英語文學）慣例係 En 欄重複同一串（`m(s)=[s,s]`），
+    // 所以呢度只驗「存在且非空」，唔驗「同中文唔同」—— 25 科一致適用，唔使豁免名單。
+    if (typeof row?.referenceAnswerEn !== 'string' || row.referenceAnswerEn.trim().length < MIN_REFERENCE_LEN) {
+      e.push(`referenceAnswerEn too short / missing —— 英文介面嘅學生自評時會冇參考答案可對`)
+    }
+    // 有中文評分準則就一定要有英文版，反之亦然 —— 攤開一半空白比冇更差。
+    if (typeof row?.markingScheme === 'string' && row.markingScheme.trim()) {
+      if (typeof row?.markingSchemeEn !== 'string' || !row.markingSchemeEn.trim()) {
+        e.push('markingScheme 有中文但冇英文（markingSchemeEn）')
+      }
+    } else if (typeof row?.markingSchemeEn === 'string' && row.markingSchemeEn.trim()) {
+      e.push('markingSchemeEn 有英文但冇中文（markingScheme）')
+    }
     // 反向閘：唔准偷偷帶 MC 欄位扮客觀題。一旦帶咗，前端就可能誤當 MC render，
     // 甚至有人日後接上自動批改 —— 呢個係憲章紅線（長答案禁機器批改）嘅守門位。
     if (opts !== undefined) e.push(`${type} 題唔可以帶 \`options\`（呢個題型冇選項）`)

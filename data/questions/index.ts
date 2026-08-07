@@ -21,6 +21,12 @@ import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
 import { economicsReviewedQuestions } from './economics-reviewed'
+// 2026-08-07 補漏：以下兩個 reviewed bank 一直列於 load.ts（即一直供應予學生），
+// 卻從未接入本 barrel。後果是 12 條已審核題目對所有經 index.ts 讀取的工具
+// （topic-coverage、全量稽核統計）完全不可見。
+// 迴歸鎖：data/questions/__tests__/loader-parity.test.mts
+import { englishReviewedQuestions } from './english-reviewed'
+import { bafsReviewedQuestions } from './bafs-reviewed'
 import { bafsBankQuestions } from './bafs-bank'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
@@ -63,10 +69,10 @@ const banks: Record<string, SubjectBank> = {
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions], topics: chemistryTopics },
   biology: { questions: biologyQuestions, topics: biologyTopics },
-  english: { questions: englishQuestions, topics: englishTopics },
+  english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
   ict: { questions: ictQuestions, topics: ictTopics },
   chinese: { questions: [...chineseQuestions, ...chineseReviewedQuestions], topics: chineseTopics },
-  bafs: { questions: [...bafsQuestions, ...bafsBankQuestions], topics: bafsTopics },
+  bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
   history: { questions: historyQuestions, topics: historyTopics },

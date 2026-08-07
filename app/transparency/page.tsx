@@ -50,11 +50,13 @@ export default function TransparencyPage() {
         ? [
             'These are rewritten practice questions, not official papers. For real past papers, go to the HKEAA website.',
             'Grade prediction is based on your answers and is indicative only — the HKEAA result is the only one that counts.',
+            'Written questions (short answers, long/structured responses) are never machine-marked. You compare your work against a reference answer and mark yourself. Nothing you self-mark counts towards the accuracy figure or the predicted grade — those come from multiple-choice answers only.',
             'AI-assisted writing can occasionally slip; if something looks off, please report it.',
           ]
         : [
             '呢啲係改寫練習題，唔係官方試題。要官方歷屆試題，請去 HKEAA 網站。',
             '等級預測根據你嘅作答表現計算，僅供參考 —— 最終成績以 HKEAA 公布為準。',
+            '書寫題（短答、長題／結構式）永遠唔會由機器批改。你對住參考答案自己評，而自評結果【唔會計入】準確率同等級預測 —— 嗰兩個數字只由選擇題得出。',
             'AI 協作或會偶有手民之誤；見到有問題，麻煩話我哋知。',
           ],
     },
