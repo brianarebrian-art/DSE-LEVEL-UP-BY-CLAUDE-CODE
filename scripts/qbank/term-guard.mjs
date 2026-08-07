@@ -98,6 +98,16 @@ const BANNED_MATH = [
   { re: /常態分佈|常態分布|常態變量/, fix: '正態分佈 (normal distribution — 教育局／考評局《數學課程及評估指引》採「正態」，「常態」非香港課程用語)' },
 ]
 
+// ICT：normalisation 官方譯「規範化」。依據：教育局《資訊及通訊科技科常用英漢辭彙》
+//（technology-edu/resources/computer-edu/ICT_glossary.pdf，2023 年 1 月更新）——
+// 「normalisation → 規範化；規格化」，全表無「正規化」。「正規化」屬台灣／內地譯法。
+// 加閘前已量影響範圍：修正 ict.ts 兩處後，data/questions/ 餘下 0 處，故零遷移成本。
+// ⚠️ 同一份辭彙表列明 1NF/2NF/3NF 官方譯「第一／第二／第三範式」，**不是**「正規形」。
+// 切勿反向加閘：chinese.ts 亦有一處「正確範式」屬一般用法，任何「範式」規則都會誤殺。
+const BANNED_ICT = [
+  { re: /正規化/, fix: '規範化 (normalisation — 教育局《ICT 常用英漢辭彙》採「規範化；規格化」)' },
+]
+
 const isLanguageBank = (name) => /^(chinese|english)/.test(name)
 
 let violations = 0
@@ -117,6 +127,7 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
   const isBafs = /^bafs/.test(file)
   const isGeography = /^geography/.test(file)
   const isMath = /^(math|m1|m2)/.test(file)
+  const isIct = /^ict/.test(file)
   lines.forEach((line, i) => {
     for (const { re, fix } of BANNED_GLOBAL) if (re.test(line)) report(file, i + 1, `banned term → use ${fix}`, line)
     if (isEcon) {
@@ -128,6 +139,7 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
     if (isBafs) for (const { re, fix } of BANNED_BAFS) if (re.test(line)) report(file, i + 1, fix, line)
     if (isGeography) for (const { re, fix } of BANNED_GEOGRAPHY) if (re.test(line)) report(file, i + 1, fix, line)
     if (isMath) for (const { re, fix } of BANNED_MATH) if (re.test(line)) report(file, i + 1, fix, line)
+    if (isIct) for (const { re, fix } of BANNED_ICT) if (re.test(line)) report(file, i + 1, fix, line)
     if (!isLanguageBank(file) && COLLOQUIAL.test(line)) report(file, i + 1, '口語/俗語 — question content must be 標準書面語', line)
   })
 }

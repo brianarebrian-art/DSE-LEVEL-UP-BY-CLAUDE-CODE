@@ -223,8 +223,16 @@ for (let dx = 1; dx <= 4; dx++) {
 }
 
 // M7 — Evaluate a logarithm  log_b(bᵏ) = k
+// (b,k) pairs already covered by hand-written questions in math.ts are skipped:
+// math_log_1 = log₂8, math_log_2 = log₁₀1000, math_log_4 = log₃81. Those carry a
+// year tag and a curated explanation, so the generated twin is the one to drop —
+// otherwise one session can sample both and show the student the same question
+// twice. The stems differ only as `\log_2` vs `\log_{2}`, so an exact-string
+// duplicate check does not catch this; compare with the braces normalised away.
+const M7_COVERED_BY_MATH_TS = new Set(['2_3', '3_4', '10_3'])
 for (const b of [2, 3, 5, 10]) {
   for (let k = 2; k <= 5; k++) {
+    if (M7_COVERED_BY_MATH_TS.has(`${b}_${k}`)) continue
     const N = Math.pow(b, k)
     add(`mb_m7_${b}_${k}`, T.logs, FW.algebra, 'medium',
       [`求 $\\log_{${b}} ${N}$ 的值。`, `Evaluate $\\log_{${b}} ${N}$.`],

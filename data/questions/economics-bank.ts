@@ -31,7 +31,7 @@ const { bank, add } = createBank('economics')
 for (const P of [5, 8, 10, 12, 15, 20]) {
   for (const Q of [20, 30, 50, 100]) {
     add(`ec_e1_${P}_${Q}`, T.demandSupply, FW.quant, 'easy',
-      [`某商品價格 ${P} 元，銷量 ${Q} 件，求總收入。`, `A good sells at $${P} each, quantity ${Q}. Find total revenue.`],
+      [`某商品價格 ${P} 元，銷量 ${Q} 件，求總收入。`, `A good sells at \\$${P} each, quantity ${Q}. Find total revenue.`],
       [n(`${P * Q} 元`), n(`${P + Q} 元`), n(`${P * Q + P} 元`), n(`${Q - P} 元`)],
       [`總收入 = 價格 × 銷量 = ${P} × ${Q} = ${P * Q} 元。陷阱：${P + Q} 元是相加（並非相乘）。`,
        `TR = P × Q = ${P * Q}. Trap: ${P + Q} adds instead of multiplying.`])
@@ -43,7 +43,7 @@ for (const P of [5, 8, 10, 12, 15, 20]) {
   .forEach(([a, b], i) => {
     const pct = round(((b - a) / a) * 100, 1)
     add(`ec_e2_${i}`, T.demandSupply, FW.quant, 'easy',
-      [`價格由 ${a} 元升至 ${b} 元，求價格變幅（百分比）。`, `Price rises from $${a} to $${b}. Find the percentage change.`],
+      [`價格由 ${a} 元升至 ${b} 元，求價格變幅（百分比）。`, `Price rises from \\$${a} to \\$${b}. Find the percentage change.`],
       [n(`+${pct}%`), n(`+${round(((b - a) / b) * 100, 1)}%`), n(`+${b - a}%`), n(`+${round((b / a) * 100, 1)}%`)],
       [`變幅 = (新－舊)/舊 × 100% = (${b}−${a})/${a} × 100% = ${pct}%。陷阱：除以新價得 ${round(((b - a) / b) * 100, 1)}%（分母錯）。`,
        `Change = (new−old)/old × 100% = ${pct}%. Trap: dividing by the new price is wrong.`])
@@ -54,7 +54,7 @@ for (const Q of [4, 5, 8, 10, 20]) {
   for (const ac of [3, 6, 9, 12]) {
     const TC = Q * ac
     add(`ec_e3_${Q}_${ac}`, T.firm, FW.quant, 'easy',
-      [`總成本 ${TC} 元，產量 ${Q} 單位，求平均成本。`, `Total cost $${TC}, output ${Q} units. Find average cost.`],
+      [`總成本 ${TC} 元，產量 ${Q} 單位，求平均成本。`, `Total cost \\$${TC}, output ${Q} units. Find average cost.`],
       [n(`${ac} 元`), n(`${TC * Q} 元`), n(`${round(Q / TC, 2)} 元`), n(`${TC - Q} 元`)],
       [`平均成本 = 總成本 / 產量 = ${TC} / ${Q} = ${ac} 元。陷阱：${round(Q / TC, 2)} 元上下倒轉。`,
        `AC = TC/Q = ${ac}. Trap: ${round(Q / TC, 2)} inverts the ratio.`])
@@ -90,7 +90,7 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
   for (const TC of [60, 90, 120, 180]) {
     if (TR === TC) continue
     add(`ec_m3_${TR}_${TC}`, T.firm, FW.quant, 'medium',
-      [`總收入 ${TR} 元，總成本 ${TC} 元，求利潤。`, `Total revenue $${TR}, total cost $${TC}. Find profit.`],
+      [`總收入 ${TR} 元，總成本 ${TC} 元，求利潤。`, `Total revenue \\$${TR}, total cost \\$${TC}. Find profit.`],
       [n(`${TR - TC} 元`), n(`${TR + TC} 元`), n(`${round(TR / TC, 2)} 元`), n(`${TC - TR} 元`)],
       [`利潤 = 總收入 − 總成本 = ${TR} − ${TC} = ${TR - TC} 元。陷阱：${TR + TC} 元加了；${TC - TR} 元符號反。`,
        `Profit = TR − TC = ${TR - TC}. Trap: ${TC - TR} has the sign reversed.`])
@@ -120,7 +120,7 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
     const ped = round(pedNum, 2)
     add(`ec_h1_${i}`, T.elasticity, FW.quant, 'hard',
       [`價格由 ${P1} 元降至 ${P2} 元，需求量由 ${Q1} 升至 ${Q2}。求需求價格彈性（絕對值，用原點百分比法）。`,
-       `Price falls from $${P1} to $${P2}; quantity rises from ${Q1} to ${Q2}. Find |PED| (using base-value % method).`],
+       `Price falls from \\$${P1} to \\$${P2}; quantity rises from ${Q1} to ${Q2}. Find |PED| (using base-value % method).`],
       [n(`${ped}`), n(`${round(Math.abs(pctP / pctQ), 2)}`), n(`${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)}`), n(`${round(pedNum * 2, 2)}`)],
       [`%ΔQ = (${Q2}−${Q1})/${Q1} = ${round(pctQ, 1)}%；%ΔP = (${P2}−${P1})/${P1} = ${round(pctP, 1)}%。|PED| = |${round(pctQ, 1)} / ${round(pctP, 1)}| = ${ped}。陷阱：${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)} 用了絕對變化（並非百分比）。`,
        `%ΔQ=${round(pctQ, 1)}%, %ΔP=${round(pctP, 1)}% ⇒ |PED|=${ped}. Trap: using raw changes gives ${round(Math.abs((Q2 - Q1) / (P2 - P1)), 2)}.`])
@@ -145,7 +145,7 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
     const cs = round(0.5 * Q * (pmax - price), 1)
     add(`ec_h3_${i}`, T.market, FW.quant, 'hard',
       [`線性需求下，最高願付價 ${pmax} 元，市價 ${price} 元，成交量 ${Q}。求消費者剩餘。`,
-       `Linear demand: max willingness-to-pay $${pmax}, market price $${price}, quantity ${Q}. Find consumer surplus.`],
+       `Linear demand: max willingness-to-pay \\$${pmax}, market price \\$${price}, quantity ${Q}. Find consumer surplus.`],
       [n(`${cs} 元`), n(`${(pmax - price) * Q} 元`), n(`${round(0.5 * Q * pmax, 1)} 元`), n(`${(pmax - price)} 元`)],
       [`消費者剩餘 = ½ × 成交量 × (最高願付價 − 市價) = ½ × ${Q} × (${pmax}−${price}) = ${cs} 元。陷阱：${(pmax - price) * Q} 元漏了 ½（當成長方形）。`,
        `CS = ½ × Q × (Pmax − P) = ${cs}. Trap: ${(pmax - price) * Q} drops the ½ (treats it as a rectangle).`])

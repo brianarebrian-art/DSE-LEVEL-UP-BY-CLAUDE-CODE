@@ -22,6 +22,37 @@ the EDB Economics C&A supplementary document.
 > and income elasticity NOT required."* — enforced by term-guard (收入/交叉/點彈性 banned in
 > `data/questions/economics*.ts`).
 
+## Science / ICT — verified against the EDB official glossaries (2026-08-07)
+
+Source of truth for these is the EDB **《常用英漢辭彙》** series (not the C&A Guides — the
+guides state learning objectives and do **not** contain these terms at all; both `限制因子`
+and `限制因素` return 0 hits in the Biology C&A Guide).
+
+| English | 中文（官方） | app id | Enforced |
+|---|---|---|---|
+| normalisation | 規範化；規格化 | `ict` | ✅ term-guard（`正規化` banned in `data/questions/ict*.ts`）|
+| First / Second / Third Normal Form | 第一／第二／第三**範式** | `ict` | — |
+| data redundancy | 數據冗餘度；數據冗餘性 | `ict` | — |
+
+### ⚠️ Terms with TWO official renderings — do NOT "standardise" these
+
+The glossaries list comma-separated alternatives, and **both sides are correct**. A gate that
+forces one of them would flag correct content:
+
+| English | 官方列出 | Where it appears |
+|---|---|---|
+| specific heat capacity | 比熱容量**，**比熱容 | physics bank uses 比熱容 ×40 — all valid |
+| limiting factor | 限制因素**，**限制因子 | biology bank uses both (3 : 3) — all valid |
+
+`latent heat` = 潛熱 and `specific latent heat` = 比潛熱 are **different quantities**, not a
+long/short form of one term: a question asking "熔化時吸收的熱量稱為？" is correctly answered
+「潛熱」, and rewriting it to 「比潛熱」 would make it wrong.
+
+**Sources** (fetched and text-extracted 2026-08-07):
+- Physics — https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/ref-and-resources/PhyGlossary_2020.pdf （p.102, p.63）
+- Biology — https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/ref-and-resources/Biology_Glossary_2020.pdf （p.89）
+- ICT — https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/technology-edu/resources/computer-edu/ICT_glossary.pdf
+
 ## Emotional-safety phrasing (Kelly / Emma — 大愛精神)
 
 The platform never shames. These phrasings are the standard across both languages:
