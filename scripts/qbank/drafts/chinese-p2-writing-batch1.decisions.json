@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "source": "chinese-p2-writing-batch1.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh_p2_b1_01": "pending",
+    "zh_p2_b1_02": "pending",
+    "zh_p2_b1_03": "pending",
+    "zh_p2_b1_04": "pending",
+    "zh_p2_b1_05": "pending",
+    "zh_p2_b1_06": "pending"
+  }
+}
