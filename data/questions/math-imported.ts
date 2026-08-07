@@ -8,6 +8,14 @@
 // ② 重複 —— M1 已有一條考核相同概念的試題（同為經驗法則 68%，四個選項相同），
 //    遷入只會產生重複題，故直接移除而非搬遷。
 // 來源檔 `math-p2-verified.json` 已不存在，本檔無法重新生成，此手動編輯不會被覆蓋。
+//
+// 【2026-08-07 補譯】原有 25 條僅具中文欄位，英文介面的學生會看到中文題目。
+// 由 scripts/qbank/apply-translations.mjs 補入 contentEn / optionsEn / explanationEn：
+//   譯稿 : scripts/qbank/drafts/en-backfill-51.json
+//   覆核 : scripts/qbank/drafts/en-backfill-51.decisions.json（reviewer brian，逐條 approved）
+// 選項多為純 LaTeX，兩種語言共用（與 bafs.ts 的 optm 約定一致）；僅 math_imp_052
+// 的「沒有最大值」屬中文，另譯為 "No maximum value"。
+// 中文內容、選項次序、correctIndex 一律零改動（腳本內設逐欄斷言把關）。
 import type { Question } from './types'
 
 export const mathImportedQuestions: Question[] = [
@@ -23,7 +31,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "將 $0.050678$ 捨入至 3 個有效數字。",
+    "contentEn": "Round $0.050678$ to 3 significant figures.",
     "options": [
+      "$0.050$",
+      "$0.0506$",
+      "$0.0507$",
+      "$0.051$"
+    ],
+    "optionsEn": [
       "$0.050$",
       "$0.0506$",
       "$0.0507$",
@@ -31,6 +46,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "有效數字由左邊第一個非零數字起計，即由 5 起：5、0、6 為頭三位。下一位是 7（≥5）要進位，6 進成 7，得 $0.0507$。",
+    "explanationEn": "Significant figures are counted from the first non-zero digit on the left, that is from 5: the first three are 5, 0 and 6. The next digit is 7 ($\\ge 5$), so round up and 6 becomes 7, giving $0.0507$.",
     "marks": 1
   },
   {
@@ -45,7 +61,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "下列何者必定是無理數？",
+    "contentEn": "Which of the following must be an irrational number?",
     "options": [
+      "$\\pi-1$",
+      "$\\frac{22}{7}$",
+      "$1.\\dot{4}\\dot{5}$",
+      "$\\sqrt{16}$"
+    ],
+    "optionsEn": [
       "$\\pi-1$",
       "$\\frac{22}{7}$",
       "$1.\\dot{4}\\dot{5}$",
@@ -53,6 +76,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "$\\frac{22}{7}$ 是分數（有理數）；$1.\\dot{4}\\dot{5}$ 是循環小數（有理數）；$\\sqrt{16}=4$ 是整數。$\\pi$ 是無理數，減去有理數 1 仍為無理數。",
+    "explanationEn": "$\\frac{22}{7}$ is a fraction (rational); $1.\\dot{4}\\dot{5}$ is a recurring decimal (rational); $\\sqrt{16}=4$ is an integer. $\\pi$ is irrational, and subtracting the rational number 1 leaves it irrational.",
     "marks": 1
   },
   {
@@ -67,7 +91,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "若正方形面積增加 $44\\%$，則其每條邊長增加：",
+    "contentEn": "If the area of a square increases by $44\\%$, then each side increases by:",
     "options": [
+      "$10\\%$",
+      "$20\\%$",
+      "$22\\%$",
+      "$44\\%$"
+    ],
+    "optionsEn": [
       "$10\\%$",
       "$20\\%$",
       "$22\\%$",
@@ -75,6 +106,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "面積比等於邊長比的平方。新面積是原來的 $1.44$ 倍，故新邊長 $=\\sqrt{1.44}=1.2$ 倍，即增加 $20\\%$。",
+    "explanationEn": "The ratio of areas equals the square of the ratio of sides. The new area is $1.44$ times the original, so the new side is $\\sqrt{1.44}=1.2$ times the original, an increase of $20\\%$.",
     "marks": 1
   },
   {
@@ -89,7 +121,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "若 $f(x)=x^2-2x$，則 $f(x+1)-f(x)=$",
+    "contentEn": "If $f(x)=x^2-2x$, then $f(x+1)-f(x)=$",
     "options": [
+      "$2x-1$",
+      "$2x+1$",
+      "$1$",
+      "$2x$"
+    ],
+    "optionsEn": [
       "$2x-1$",
       "$2x+1$",
       "$1$",
@@ -97,6 +136,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "$f(x+1)=(x+1)^2-2(x+1)=x^2-1$。相減：$(x^2-1)-(x^2-2x)=2x-1$。",
+    "explanationEn": "$f(x+1)=(x+1)^2-2(x+1)=x^2-1$. Subtracting: $(x^2-1)-(x^2-2x)=2x-1$.",
     "marks": 1
   },
   {
@@ -111,7 +151,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "若方程 $2x^2+kx+8=0$ 有兩個相等實根，正數 $k$ 為：",
+    "contentEn": "If the equation $2x^2+kx+8=0$ has two equal real roots, the positive value of $k$ is:",
     "options": [
+      "$4$",
+      "$8$",
+      "$16$",
+      "$64$"
+    ],
+    "optionsEn": [
       "$4$",
       "$8$",
       "$16$",
@@ -119,6 +166,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "相等實根 $\\Rightarrow$ 判別式 $\\Delta=k^2-4(2)(8)=0 \\Rightarrow k^2=64 \\Rightarrow k=8$（取正值）。",
+    "explanationEn": "Equal real roots $\\Rightarrow$ discriminant $\\Delta=k^2-4(2)(8)=0 \\Rightarrow k^2=64 \\Rightarrow k=8$ (taking the positive value).",
     "marks": 1
   },
   {
@@ -133,7 +181,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $\\alpha,\\beta$ 為 $x^2-5x+3=0$ 的根。求 $\\frac{1}{\\alpha}+\\frac{1}{\\beta}$。",
+    "contentEn": "Let $\\alpha,\\beta$ be the roots of $x^2-5x+3=0$. Find $\\frac{1}{\\alpha}+\\frac{1}{\\beta}$.",
     "options": [
+      "$\\frac{5}{3}$",
+      "$-\\frac{5}{3}$",
+      "$\\frac{3}{5}$",
+      "$-\\frac{3}{5}$"
+    ],
+    "optionsEn": [
       "$\\frac{5}{3}$",
       "$-\\frac{5}{3}$",
       "$\\frac{3}{5}$",
@@ -141,6 +196,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "$\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}$。由根與係數關係 $\\alpha+\\beta=5$、$\\alpha\\beta=3$，得 $\\frac{5}{3}$。",
+    "explanationEn": "$\\frac{1}{\\alpha}+\\frac{1}{\\beta}=\\frac{\\alpha+\\beta}{\\alpha\\beta}$. From the relations between roots and coefficients, $\\alpha+\\beta=5$ and $\\alpha\\beta=3$, giving $\\frac{5}{3}$.",
     "marks": 1
   },
   {
@@ -155,7 +211,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "簡化 $\\log 81-\\log 9+\\log 3$。",
+    "contentEn": "Simplify $\\log 81-\\log 9+\\log 3$.",
     "options": [
+      "$\\log 75$",
+      "$\\log 27$",
+      "$3$",
+      "$\\log 3$"
+    ],
+    "optionsEn": [
       "$\\log 75$",
       "$\\log 27$",
       "$3$",
@@ -163,6 +226,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "$\\log\\left(\\frac{81}{9}\\times 3\\right)=\\log(9\\times 3)=\\log 27$。",
+    "explanationEn": "$\\log\\left(\\frac{81}{9}\\times 3\\right)=\\log(9\\times 3)=\\log 27$.",
     "marks": 1
   },
   {
@@ -177,7 +241,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "若 $2^x\\cdot 3^y=108$ 且 $3^x\\cdot 2^y=72$，求 $x+y$。",
+    "contentEn": "If $2^x\\cdot 3^y=108$ and $3^x\\cdot 2^y=72$, find $x+y$.",
     "options": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "optionsEn": [
       "$3$",
       "$4$",
       "$5$",
@@ -185,6 +256,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "兩式相乘：$(2^x 3^x)(2^y 3^y)=108\\times 72=7776$，即 $6^{x+y}=6^5$，故 $x+y=5$。",
+    "explanationEn": "Multiplying the two equations: $(2^x 3^x)(2^y 3^y)=108\\times 72=7776$, that is $6^{x+y}=6^5$, so $x+y=5$.",
     "marks": 1
   },
   {
@@ -199,7 +271,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "一個數列首 $n$ 項和為 $S_n=n^2+4n$。第 10 項為：",
+    "contentEn": "The sum of the first $n$ terms of a sequence is $S_n=n^2+4n$. The 10th term is:",
     "options": [
+      "$140$",
+      "$23$",
+      "$19$",
+      "$130$"
+    ],
+    "optionsEn": [
       "$140$",
       "$23$",
       "$19$",
@@ -207,6 +286,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "$T_{10}=S_{10}-S_{9}=(100+40)-(81+36)=140-117=23$。",
+    "explanationEn": "$T_{10}=S_{10}-S_{9}=(100+40)-(81+36)=140-117=23$.",
     "marks": 1
   },
   {
@@ -221,14 +301,22 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "函數 $y=-3(x-2)^2-5$ 的最大值為：",
+    "contentEn": "The maximum value of the function $y=-3(x-2)^2-5$ is:",
     "options": [
       "$2$",
       "$5$",
       "$-5$",
       "沒有最大值"
     ],
+    "optionsEn": [
+      "$2$",
+      "$5$",
+      "$-5$",
+      "No maximum value"
+    ],
     "correctIndex": 2,
     "explanation": "開口向下（係數 $-3<0$），頂點為 $(2,-5)$，故最大值 $y=-5$。",
+    "explanationEn": "The parabola opens downward (the coefficient $-3<0$) and the vertex is $(2,-5)$, so the maximum value is $y=-5$.",
     "marks": 1
   },
   {
@@ -243,7 +331,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "下列哪個是 $2x^2+5x-12$ 的因式？",
+    "contentEn": "Which of the following is a factor of $2x^2+5x-12$?",
     "options": [
+      "$(x-4)$",
+      "$(2x-3)$",
+      "$(2x+3)$",
+      "$(x-3)$"
+    ],
+    "optionsEn": [
       "$(x-4)$",
       "$(2x-3)$",
       "$(2x+3)$",
@@ -251,6 +346,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "$2x^2+5x-12=(2x-3)(x+4)$，故 $(2x-3)$ 是其因式。",
+    "explanationEn": "$2x^2+5x-12=(2x-3)(x+4)$, so $(2x-3)$ is a factor.",
     "marks": 1
   },
   {
@@ -265,7 +361,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "若 $\\log_2(\\log_3 x)=1$，求 $x$。",
+    "contentEn": "If $\\log_2(\\log_3 x)=1$, find $x$.",
     "options": [
+      "$8$",
+      "$9$",
+      "$6$",
+      "$27$"
+    ],
+    "optionsEn": [
       "$8$",
       "$9$",
       "$6$",
@@ -273,6 +376,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "由外層 $\\log_3 x=2^1=2$，再由內層 $x=3^2=9$。",
+    "explanationEn": "From the outer logarithm, $\\log_3 x=2^1=2$; then from the inner one, $x=3^2=9$.",
     "marks": 1
   },
   {
@@ -287,7 +391,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "圓內同弧所對的圓心角為 $120^\\circ$，其對應的圓周角為：",
+    "contentEn": "In a circle, the angle at the centre subtended by an arc is $120^\\circ$. The corresponding angle at the circumference is:",
     "options": [
+      "$60^\\circ$",
+      "$120^\\circ$",
+      "$240^\\circ$",
+      "$30^\\circ$"
+    ],
+    "optionsEn": [
       "$60^\\circ$",
       "$120^\\circ$",
       "$240^\\circ$",
@@ -295,6 +406,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "圓心角等於兩倍圓周角，故圓周角 $=\\frac{120^\\circ}{2}=60^\\circ$。",
+    "explanationEn": "The angle at the centre is twice the angle at the circumference, so the angle at the circumference $=\\frac{120^\\circ}{2}=60^\\circ$.",
     "marks": 1
   },
   {
@@ -309,7 +421,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求原點至點 $(-5,12)$ 的距離。",
+    "contentEn": "Find the distance from the origin to the point $(-5,12)$.",
     "options": [
+      "$11$",
+      "$13$",
+      "$17$",
+      "$7$"
+    ],
+    "optionsEn": [
       "$11$",
       "$13$",
       "$17$",
@@ -317,6 +436,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "距離 $=\\sqrt{(-5)^2+12^2}=\\sqrt{25+144}=\\sqrt{169}=13$（5-12-13 畢氏三元數）。",
+    "explanationEn": "Distance $=\\sqrt{(-5)^2+12^2}=\\sqrt{25+144}=\\sqrt{169}=13$ (the 5-12-13 Pythagorean triple).",
     "marks": 1
   },
   {
@@ -331,7 +451,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "點 $P(7,1)$ 至圓 $x^2+y^2=25$ 的切線長度為：",
+    "contentEn": "The length of the tangent from the point $P(7,1)$ to the circle $x^2+y^2=25$ is:",
     "options": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$\\sqrt{50}$"
+    ],
+    "optionsEn": [
       "$3$",
       "$4$",
       "$5$",
@@ -339,6 +466,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "$OP=\\sqrt{7^2+1^2}=\\sqrt{50}$，半徑 $r=5$。切線長 $=\\sqrt{OP^2-r^2}=\\sqrt{50-25}=5$。",
+    "explanationEn": "$OP=\\sqrt{7^2+1^2}=\\sqrt{50}$ and the radius $r=5$. Tangent length $=\\sqrt{OP^2-r^2}=\\sqrt{50-25}=5$.",
     "marks": 1
   },
   {
@@ -353,7 +481,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "兩個相似圓柱體的表面積比為 $16:25$，其體積比為：",
+    "contentEn": "Two similar cylinders have surface areas in the ratio $16:25$. Their volumes are in the ratio:",
     "options": [
+      "$4:5$",
+      "$16:25$",
+      "$64:125$",
+      "$256:625$"
+    ],
+    "optionsEn": [
       "$4:5$",
       "$16:25$",
       "$64:125$",
@@ -361,6 +496,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "邊長比 $=\\sqrt{16}:\\sqrt{25}=4:5$，體積比為邊長比的立方 $=4^3:5^3=64:125$。",
+    "explanationEn": "The ratio of lengths $=\\sqrt{16}:\\sqrt{25}=4:5$, and the ratio of volumes is the cube of the ratio of lengths $=4^3:5^3=64:125$.",
     "marks": 1
   },
   {
@@ -375,7 +511,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "邊長為 $3,4,5$ 的三角形，其內切圓半徑為：",
+    "contentEn": "For a triangle with sides $3,4,5$, the radius of its inscribed circle is:",
     "options": [
+      "$0.5$",
+      "$1$",
+      "$1.5$",
+      "$2$"
+    ],
+    "optionsEn": [
       "$0.5$",
       "$1$",
       "$1.5$",
@@ -383,6 +526,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "面積 $=\\frac{1}{2}(3)(4)=6$；半周長 $s=\\frac{3+4+5}{2}=6$。由 $\\text{面積}=rs$：$6=r\\times 6 \\Rightarrow r=1$。",
+    "explanationEn": "Area $=\\frac{1}{2}(3)(4)=6$; semi-perimeter $s=\\frac{3+4+5}{2}=6$. From $\\text{Area}=rs$: $6=r\\times 6 \\Rightarrow r=1$.",
     "marks": 1
   },
   {
@@ -397,7 +541,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個正十邊形的每一個外角大小為：",
+    "contentEn": "The size of each exterior angle of a regular decagon is:",
     "options": [
+      "$36^\\circ$",
+      "$144^\\circ$",
+      "$360^\\circ$",
+      "$18^\\circ$"
+    ],
+    "optionsEn": [
       "$36^\\circ$",
       "$144^\\circ$",
       "$360^\\circ$",
@@ -405,6 +556,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "多邊形外角和恆為 $360^\\circ$，每個外角 $=\\frac{360^\\circ}{10}=36^\\circ$。",
+    "explanationEn": "The exterior angles of a polygon always sum to $360^\\circ$, so each exterior angle $=\\frac{360^\\circ}{10}=36^\\circ$.",
     "marks": 1
   },
   {
@@ -419,7 +571,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "直線 $ax+2y-1=0$ 與 $x-3y+2=0$ 垂直，求 $a$。",
+    "contentEn": "The lines $ax+2y-1=0$ and $x-3y+2=0$ are perpendicular. Find $a$.",
     "options": [
+      "$6$",
+      "$-6$",
+      "$1.5$",
+      "$-1.5$"
+    ],
+    "optionsEn": [
       "$6$",
       "$-6$",
       "$1.5$",
@@ -427,6 +586,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "explanation": "兩線斜率分別為 $-\\frac{a}{2}$ 與 $\\frac{1}{3}$。垂直 $\\Rightarrow -\\frac{a}{2}\\times\\frac{1}{3}=-1 \\Rightarrow a=6$。",
+    "explanationEn": "The slopes are $-\\frac{a}{2}$ and $\\frac{1}{3}$ respectively. Perpendicular $\\Rightarrow -\\frac{a}{2}\\times\\frac{1}{3}=-1 \\Rightarrow a=6$.",
     "marks": 1
   },
   {
@@ -441,7 +601,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$\\triangle ABC$ 中 $a=3,\\,b=5,\\,\\angle C=60^\\circ$。求 $c$。",
+    "contentEn": "In $\\triangle ABC$, $a=3,\\,b=5,\\,\\angle C=60^\\circ$. Find $c$.",
     "options": [
+      "$4$",
+      "$\\sqrt{19}$",
+      "$\\sqrt{34}$",
+      "$6$"
+    ],
+    "optionsEn": [
       "$4$",
       "$\\sqrt{19}$",
       "$\\sqrt{34}$",
@@ -449,6 +616,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "$c^2=a^2+b^2-2ab\\cos C=9+25-2(15)(0.5)=34-15=19$，故 $c=\\sqrt{19}$。",
+    "explanationEn": "$c^2=a^2+b^2-2ab\\cos C=9+25-2(15)(0.5)=34-15=19$, so $c=\\sqrt{19}$.",
     "marks": 1
   },
   {
@@ -463,7 +631,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "弦 $AB$、$CD$ 於圓內相交於 $P$。$AP=4,\\,PB=6,\\,CP=3$。求 $CD$ 總長。",
+    "contentEn": "Chords $AB$ and $CD$ intersect inside a circle at $P$, with $AP=4,\\,PB=6,\\,CP=3$. Find the total length of $CD$.",
     "options": [
+      "$8$",
+      "$11$",
+      "$12$",
+      "$14$"
+    ],
+    "optionsEn": [
       "$8$",
       "$11$",
       "$12$",
@@ -471,6 +646,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "相交弦定理：$AP\\cdot PB=CP\\cdot PD \\Rightarrow 4\\times 6=3\\times PD \\Rightarrow PD=8$。$CD=CP+PD=3+8=11$。",
+    "explanationEn": "Intersecting chords theorem: $AP\\cdot PB=CP\\cdot PD \\Rightarrow 4\\times 6=3\\times PD \\Rightarrow PD=8$. Hence $CD=CP+PD=3+8=11$.",
     "marks": 1
   },
   {
@@ -485,7 +661,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "數據：$2,3,3,5,7,7,7,9$。中位數是：",
+    "contentEn": "Data: $2,3,3,5,7,7,7,9$. The median is:",
     "options": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$5.5$"
+    ],
+    "optionsEn": [
       "$5$",
       "$6$",
       "$7$",
@@ -493,6 +676,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "共 8 個數據，中位數為第 4 及第 5 項的平均：$\\frac{5+7}{2}=6$。",
+    "explanationEn": "There are 8 data values, so the median is the mean of the 4th and 5th terms: $\\frac{5+7}{2}=6$.",
     "marks": 1
   },
   {
@@ -507,7 +691,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "隨機在圓內取一點，該點與圓心距離小於半徑一半的概率為：",
+    "contentEn": "A point is chosen at random inside a circle. The probability that it lies less than half a radius from the centre is:",
     "options": [
+      "$0.5$",
+      "$0.25$",
+      "$0.125$",
+      "$0.75$"
+    ],
+    "optionsEn": [
       "$0.5$",
       "$0.25$",
       "$0.125$",
@@ -515,6 +706,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "概率等於面積比。目標區域是半徑 $\\frac{r}{2}$ 的圓，面積 $\\pi(\\frac{r}{2})^2=\\frac{1}{4}\\pi r^2$；大圓面積 $\\pi r^2$。概率 $=\\frac{1}{4}=0.25$。",
+    "explanationEn": "The probability equals the ratio of areas. The target region is a circle of radius $\\frac{r}{2}$ with area $\\pi(\\frac{r}{2})^2=\\frac{1}{4}\\pi r^2$, while the large circle has area $\\pi r^2$. The probability $=\\frac{1}{4}=0.25$.",
     "marks": 1
   },
   {
@@ -529,7 +721,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "5 個數的平均為 10，加入 $x$ 後平均變為 12，求 $x$。",
+    "contentEn": "The mean of 5 numbers is 10. After adding $x$, the mean becomes 12. Find $x$.",
     "options": [
+      "$12$",
+      "$14$",
+      "$22$",
+      "$20$"
+    ],
+    "optionsEn": [
       "$12$",
       "$14$",
       "$22$",
@@ -537,6 +736,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "explanation": "原總和 $=5\\times 10=50$；新總和 $=6\\times 12=72$。故 $x=72-50=22$。",
+    "explanationEn": "Original sum $=5\\times 10=50$; new sum $=6\\times 12=72$. Hence $x=72-50=22$.",
     "marks": 1
   },
   {
@@ -551,7 +751,14 @@ export const mathImportedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "測驗佔 $40\\%$，考試佔 $60\\%$。小明測驗 80 分，考試 90 分。總成績為：",
+    "contentEn": "A test carries $40\\%$ and an examination carries $60\\%$. Siu Ming scores 80 in the test and 90 in the examination. His overall mark is:",
     "options": [
+      "$85$",
+      "$86$",
+      "$84$",
+      "$88$"
+    ],
+    "optionsEn": [
       "$85$",
       "$86$",
       "$84$",
@@ -559,6 +766,7 @@ export const mathImportedQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "explanation": "加權平均 $=80\\times 0.4+90\\times 0.6=32+54=86$。",
+    "explanationEn": "Weighted mean $=80\\times 0.4+90\\times 0.6=32+54=86$.",
     "marks": 1
   }
 ]

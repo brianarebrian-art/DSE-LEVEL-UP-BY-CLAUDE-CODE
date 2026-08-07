@@ -6,6 +6,14 @@
 //   source   : econ-combined.json
 //   approved : 20  (easy 6 / medium 10 / hard 4)
 // Do NOT hand-edit — re-run the pipeline instead. NOT yet live until wired into load.ts.
+//
+// 【2026-08-07 補譯】原有 20 條僅具中文欄位，英文介面的學生會看到中文題目。
+// 由 scripts/qbank/apply-translations.mjs 補入 contentEn / optionsEn / explanationEn：
+//   譯稿 : scripts/qbank/drafts/en-backfill-51.json
+//   覆核 : scripts/qbank/drafts/en-backfill-51.decisions.json（reviewer brian，逐條 approved）
+// 中文內容、選項次序、correctIndex 一律零改動（腳本內設逐欄斷言把關）。
+// 如需再行補譯或修訂譯文，請循同一流程：修改譯稿 → review-translations.mjs
+// → 真人逐條審批 → apply-translations.mjs。
 import type { Question } from './types'
 
 export const economicsReviewedQuestions: Question[] = [
@@ -21,14 +29,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "下列哪一項變動會令香港樽裝檸檬茶的需求增加？",
+    "contentEn": "Which of the following changes would increase the demand for bottled lemon tea in Hong Kong?",
     "options": [
       "其替代品（如樽裝烏龍茶）的價格上升",
       "樽裝檸檬茶的價格下跌",
       "製造商引入自動化生產線，降低生產成本",
       "政府向樽裝檸檬茶的賣方徵收從量稅"
     ],
+    "optionsEn": [
+      "A rise in the price of its substitute (e.g. bottled oolong tea)",
+      "A fall in the price of bottled lemon tea",
+      "Manufacturers introducing an automated production line that lowers production costs",
+      "The government imposing a unit tax on sellers of bottled lemon tea"
+    ],
     "correctIndex": 0,
     "explanation": "替代品價格上升，消費者轉而購買相對便宜的檸檬茶，需求曲線右移，屬需求增加。「樽裝檸檬茶的價格下跌」只會令需求量沿原有需求曲線增加，需求本身（整條曲線）不變——「需求」與「需求量」的區分正是本題考核重點。「引入自動化生產線」與「向賣方徵收從量稅」均作用於供應一方：前者令供應增加，後者令供應減少，兩者都不會移動需求曲線。",
+    "explanationEn": "When the price of a substitute rises, consumers switch to the relatively cheaper lemon tea; the demand curve shifts rightward, which is an increase in demand. \"A fall in the price of bottled lemon tea\" only raises the quantity demanded along the existing demand curve — demand itself (the whole curve) is unchanged, and this distinction between demand and quantity demanded is exactly what the question tests. \"An automated production line\" and \"a unit tax on sellers\" both act on the supply side: the former increases supply and the latter decreases it, and neither shifts the demand curve.",
     "marks": 1
   },
   {
@@ -43,14 +59,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "下列哪一項變動會令市場上菠蘿包的供應減少？",
+    "contentEn": "Which of the following changes would decrease the supply of pineapple buns in the market?",
     "options": [
       "麵粉價格上升",
       "菠蘿包的市價下跌",
       "消費者偏好轉向較健康的包點",
       "新式焗爐令每批次產量倍增"
     ],
+    "optionsEn": [
+      "A rise in the price of flour",
+      "A fall in the market price of pineapple buns",
+      "Consumer tastes shifting towards healthier buns",
+      "A new type of oven that doubles the output per batch"
+    ],
     "correctIndex": 0,
     "explanation": "麵粉是生產菠蘿包的生產要素，其價格上升令每一產量水平的生產成本增加，供應曲線左移，供應減少。「菠蘿包的市價下跌」令供應量沿原有供應曲線減少，並非供應（整條曲線）減少。「消費者偏好轉向較健康的包點」影響的是需求一方，令需求減少，與供應無關。「新式焗爐令每批次產量倍增」屬技術進步，效果方向剛好相反——供應會增加而非減少。",
+    "explanationEn": "Flour is a factor of production for pineapple buns; a rise in its price raises the cost of production at every output level, shifting the supply curve leftward, so supply decreases. \"A fall in the market price of pineapple buns\" reduces the quantity supplied along the existing supply curve, not supply (the whole curve). \"Consumer tastes shifting towards healthier buns\" affects the demand side, decreasing demand, and is unrelated to supply. \"A new type of oven that doubles the output per batch\" is technological progress, and its effect runs in exactly the opposite direction — supply would increase, not decrease.",
     "marks": 1
   },
   {
@@ -65,14 +89,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某街市雞蛋的每日需求及供應如下——價格（\\$/打）：10、12、14、16；需求量（打）：500、440、380、320；供應量（打）：260、320、380、440。若現時市價為每打 \\$12，下列哪一項正確描述市場情況？",
+    "contentEn": "The daily demand and supply of eggs in a wet market are as follows — Price (\\$/dozen): 10, 12, 14, 16; Quantity demanded (dozens): 500, 440, 380, 320; Quantity supplied (dozens): 260, 320, 380, 440. If the current market price is \\$12 per dozen, which of the following correctly describes the market situation?",
     "options": [
       "出現 120 打短缺，價格將會趨升",
       "出現 120 打過剩，價格將會趨跌",
       "出現 60 打短缺，價格將會趨升",
       "市場已處於均衡，價格不會變動"
     ],
+    "optionsEn": [
+      "There is a shortage of 120 dozens and the price will tend to rise",
+      "There is a surplus of 120 dozens and the price will tend to fall",
+      "There is a shortage of 60 dozens and the price will tend to rise",
+      "The market is already in equilibrium and the price will not change"
+    ],
     "correctIndex": 0,
     "explanation": "市價 \\$12 時需求量為 440 打、供應量為 320 打，需求量大於供應量，短缺 = 440 − 320 = 120 打；買方之間的競爭會推高價格，直至 \\$14 時需求量與供應量同為 380 打，市場回復均衡。「出現 120 打過剩」把短缺與過剩的方向調轉——只有當市價高於均衡價格（例如 \\$16）才會出現過剩。「出現 60 打短缺」屬計算錯誤，多數源於錯誤取用相鄰行的數字（例如以 \\$12 的需求量減 \\$14 的供應量）。「市場已處於均衡」不成立，因為 \\$12 時需求量與供應量並不相等。",
+    "explanationEn": "At a price of \\$12 the quantity demanded is 440 dozens and the quantity supplied is 320 dozens; quantity demanded exceeds quantity supplied, so the shortage = 440 − 320 = 120 dozens. Competition among buyers pushes the price up until, at \\$14, quantity demanded and quantity supplied are both 380 dozens and the market returns to equilibrium. \"A surplus of 120 dozens\" reverses the direction of shortage and surplus — a surplus arises only when the market price is above the equilibrium price (for example \\$16). \"A shortage of 60 dozens\" is a computational error, usually caused by taking figures from adjacent rows (for example subtracting the quantity supplied at \\$14 from the quantity demanded at \\$12). \"The market is already in equilibrium\" does not hold, because quantity demanded and quantity supplied are not equal at \\$12.",
     "marks": 1
   },
   {
@@ -87,14 +119,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "政府向電動車買家提供購買資助，同一時間電池成本大幅下跌。若其他因素不變，電動車的均衡價格及均衡數量會如何變動？",
+    "contentEn": "The government offers a purchase subsidy to buyers of electric vehicles, and at the same time battery costs fall substantially. Other things being equal, how will the equilibrium price and equilibrium quantity of electric vehicles change?",
     "options": [
       "均衡數量必定上升；均衡價格可升可跌",
       "均衡數量必定上升；均衡價格必定下跌",
       "均衡數量必定上升；均衡價格必定上升",
       "均衡價格及均衡數量的變動方向均不能確定"
     ],
+    "optionsEn": [
+      "The equilibrium quantity must rise; the equilibrium price may rise or fall",
+      "The equilibrium quantity must rise; the equilibrium price must fall",
+      "The equilibrium quantity must rise; the equilibrium price must rise",
+      "The direction of change of both the equilibrium price and the equilibrium quantity is indeterminate"
+    ],
     "correctIndex": 0,
     "explanation": "購買資助令需求增加（需求曲線右移），電池成本下跌令供應增加（供應曲線右移）。兩股力量都推高成交數量，故均衡數量必定上升；但需求增加會推高價格、供應增加會壓低價格，最終價格變動取決於兩者移動幅度的相對大小，故方向不能確定。「均衡價格必定下跌」與「均衡價格必定上升」各自只看到其中一條曲線的移動，忽略了另一邊的反向拉力。「均衡價格及均衡數量的變動方向均不能確定」則錯把價格的不確定性套用到數量上——數量在兩股同向力量下必定上升，是可以確定的。",
+    "explanationEn": "The purchase subsidy increases demand (the demand curve shifts rightward) and the fall in battery costs increases supply (the supply curve shifts rightward). Both forces raise the quantity traded, so the equilibrium quantity must rise; but an increase in demand pushes the price up while an increase in supply pushes it down, so the final change in price depends on the relative sizes of the two shifts and its direction is indeterminate. \"The equilibrium price must fall\" and \"the equilibrium price must rise\" each look at only one of the two curves and ignore the opposing pull from the other. \"Both are indeterminate\" wrongly extends the indeterminacy of the price to the quantity — under two forces acting in the same direction, the quantity must rise, and that is determinate.",
     "marks": 1
   },
   {
@@ -109,14 +149,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "一間快餐店把招牌套餐的售價由 \\$45 減至 \\$40 後，套餐的總收益不跌反升。在該價格範圍內，套餐的需求屬於哪一種彈性？",
+    "contentEn": "After a fast-food shop cut the price of its signature set meal from \\$45 to \\$40, total revenue from the set meal rose rather than fell. Over this price range, what is the elasticity of demand for the set meal?",
     "options": [
       "富有彈性，因為需求量增加的百分比大於價格下跌的百分比",
       "缺乏彈性，因為價格下跌會令每份套餐的收入減少",
       "單位彈性，因為總收益的變動與價格變動互相抵銷",
       "不能判斷，因為總收益與需求彈性沒有關係"
     ],
+    "optionsEn": [
+      "Elastic, because the percentage increase in quantity demanded is greater than the percentage fall in price",
+      "Inelastic, because a price cut reduces the revenue earned from each set meal",
+      "Unit elastic, because the change in total revenue exactly offsets the change in price",
+      "Indeterminate, because total revenue is unrelated to the elasticity of demand"
+    ],
     "correctIndex": 0,
     "explanation": "減價後總收益上升，表示需求量增加的百分比大於價格下跌的百分比，即需求價格彈性大於一，屬富有彈性。「缺乏彈性」的推論剛好相反——若需求缺乏彈性，減價後需求量的增幅不足以抵銷價格的跌幅，總收益應下跌而非上升。「單位彈性」意味着總收益維持不變，與題目所述「總收益不跌反升」矛盾。「總收益與需求彈性沒有關係」不成立——價格變動後總收益的變動方向，正是判斷需求彈性的常用方法。",
+    "explanationEn": "Total revenue rose after the price cut, which means the percentage increase in quantity demanded is greater than the percentage fall in price, so the price elasticity of demand is greater than one and demand is elastic. The \"inelastic\" reasoning runs in exactly the opposite direction — if demand were inelastic, the rise in quantity demanded after the price cut would not offset the fall in price and total revenue would fall rather than rise. \"Unit elastic\" implies total revenue stays unchanged, which contradicts the statement that total revenue rose. \"Total revenue is unrelated to the elasticity of demand\" is false — the direction in which total revenue moves after a price change is a standard way of judging the elasticity of demand.",
     "marks": 1
   },
   {
@@ -131,14 +179,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "政府為紓緩基層生活負擔，對某糧油食品實施有效的價格上限（上限低於原有均衡價格）。下列哪一項描述最可能出現的市場結果？",
+    "contentEn": "To ease the burden on low-income households, the government imposes an effective price ceiling (a ceiling below the original equilibrium price) on a certain food staple. Which of the following best describes the likely market outcome?",
     "options": [
       "需求量大於供應量，出現短缺，並可能衍生輪候、抽籤等非價格分配方式",
       "供應量大於需求量，出現過剩，商戶需要減價促銷",
       "市場價格最終會回落至新的均衡水平，短缺自動消失",
       "成交價格下跌至上限水平後，需求量與供應量自動相等"
     ],
+    "optionsEn": [
+      "Quantity demanded exceeds quantity supplied, a shortage appears, and non-price rationing such as queuing or balloting may emerge",
+      "Quantity supplied exceeds quantity demanded, a surplus appears, and shops must cut prices to clear stock",
+      "The market price will eventually settle at a new equilibrium level and the shortage will disappear on its own",
+      "Once the transaction price falls to the ceiling, quantity demanded and quantity supplied become equal automatically"
+    ],
     "correctIndex": 0,
     "explanation": "有效的價格上限把成交價格壓在均衡價格之下：較低的價格令需求量增加、供應量減少，需求量大於供應量，形成短缺；由於價格被法例封頂，不能再擔當分配資源的角色，市場往往改以輪候、抽籤、按人限購等非價格方式分配。「出現過剩」把方向調轉——過剩是價格高於均衡水平（例如有效價格下限）的結果。「價格回落至新的均衡水平」忽略了上限的約束力：價格不得高於上限，市場無法自行調節回均衡，短缺會持續存在。「需求量與供應量自動相等」錯在成交價受限於上限後，兩個數量並不相等——實際成交量只等於較小的供應量，其餘需求無法獲得滿足。",
+    "explanationEn": "An effective price ceiling holds the transaction price below the equilibrium price: the lower price raises quantity demanded and lowers quantity supplied, so quantity demanded exceeds quantity supplied and a shortage forms. Because the price is capped by law it can no longer perform its rationing role, and the market often turns to non-price methods such as queuing, balloting or purchase limits. \"A surplus appears\" reverses the direction — a surplus is the result of a price held above the equilibrium level (for example an effective price floor). \"The price will settle at a new equilibrium\" ignores the binding nature of the ceiling: the price may not exceed the ceiling, so the market cannot adjust back to equilibrium and the shortage persists. \"Quantity demanded and quantity supplied become equal automatically\" is wrong because once the price is capped the two quantities are not equal — the quantity actually traded equals the smaller quantity supplied, and the remaining demand goes unmet.",
     "marks": 1
   },
   {
@@ -153,14 +209,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "下列哪一種物品的需求價格彈性，最可能是四者之中最高？",
+    "contentEn": "Which of the following goods most likely has the highest price elasticity of demand among the four?",
     "options": [
       "某一品牌的樽裝蒸餾水",
       "所有類別的飲品",
       "食鹽",
       "住宅用電"
     ],
+    "optionsEn": [
+      "One particular brand of bottled distilled water",
+      "Beverages of all kinds",
+      "Table salt",
+      "Residential electricity"
+    ],
     "correctIndex": 0,
     "explanation": "需求價格彈性的高低主要取決於替代品的多寡與接近程度：某一品牌的樽裝蒸餾水有大量其他品牌以至其他飲品作為緊密替代品，價格稍升消費者便會轉買其他選擇，需求量反應極大，彈性最高。「所有類別的飲品」的定義範圍極廣，範圍以外幾乎沒有緊密替代品，彈性遠低於單一品牌的產品。「食鹽」與「住宅用電」同屬開支佔收入比例小、短期內難以替代的必需品，價格變動對需求量的影響輕微，需求缺乏彈性。",
+    "explanationEn": "The price elasticity of demand depends mainly on the number and closeness of substitutes: one particular brand of bottled distilled water has many other brands, and indeed other beverages, as close substitutes, so a slight rise in price sends consumers to other choices, the response in quantity demanded is very large and elasticity is the highest. \"Beverages of all kinds\" is defined so broadly that almost no close substitute lies outside the category, so its elasticity is far lower than that of a single brand. \"Table salt\" and \"residential electricity\" are both necessities that take up a small share of income and are hard to replace in the short run, so a change in price has little effect on quantity demanded and demand is inelastic.",
     "marks": 1
   },
   {
@@ -175,14 +239,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "戲院因租金上升而調高戲票價格。若其他因素不變，戲院爆谷（通常與看戲一同消費）及家中串流平台訂閱（看戲的替代選擇）的市場會受到甚麼影響？",
+    "contentEn": "A cinema raises ticket prices because of a rent increase. Other things being equal, how will the markets for cinema popcorn (usually consumed together with watching a film) and home streaming subscriptions (an alternative to watching a film at the cinema) be affected?",
     "options": [
       "爆谷的需求減少；串流平台訂閱的需求增加",
       "爆谷的需求增加；串流平台訂閱的需求減少",
       "爆谷的需求量減少，但爆谷的需求不變",
       "爆谷及串流平台訂閱的需求同時減少"
     ],
+    "optionsEn": [
+      "Demand for popcorn decreases; demand for streaming subscriptions increases",
+      "Demand for popcorn increases; demand for streaming subscriptions decreases",
+      "Quantity demanded of popcorn decreases, but demand for popcorn is unchanged",
+      "Demand for both popcorn and streaming subscriptions decreases"
+    ],
     "correctIndex": 0,
     "explanation": "戲票價格上升令看戲的需求量減少；爆谷與看戲屬互補品，入場人次下跌令爆谷的需求（整條需求曲線）減少；串流平台訂閱是看戲的替代品，部分消費者轉向在家觀影，其需求增加。「爆谷的需求增加；串流平台訂閱的需求減少」把互補品與替代品的效果方向調轉。「爆谷的需求量減少，但爆谷的需求不變」混淆了兩個概念——價格變動的是戲票而非爆谷本身，爆谷是在自身價格不變的情況下銷量下跌，屬需求（曲線）減少，而非沿曲線的需求量變動。「需求同時減少」忽略了替代關係——看戲成本上升正是串流平台訂閱吸引力上升的原因。",
+    "explanationEn": "A rise in ticket prices lowers the quantity demanded of cinema visits. Popcorn is a complement to watching a film, so fewer admissions reduce the demand for popcorn (the whole demand curve). Streaming subscriptions are a substitute for going to the cinema, so some consumers switch to watching at home and demand for subscriptions increases. \"Demand for popcorn increases; demand for streaming subscriptions decreases\" reverses the effects of complements and substitutes. \"Quantity demanded of popcorn decreases, but demand for popcorn is unchanged\" confuses the two concepts — what changed is the price of tickets, not the price of popcorn, so popcorn sales fall while its own price is unchanged, which is a decrease in demand (the curve), not a movement along it. \"Demand for both decreases\" ignores the substitute relationship — the higher cost of a cinema visit is precisely what makes streaming subscriptions more attractive.",
     "marks": 1
   },
   {
@@ -197,14 +269,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "某外賣飯盒市場原本的均衡價格為每盒 \\$8，均衡數量為每日 600 盒。政府向賣方徵收每盒 \\$3 從量稅後，買方支付的價格升至 \\$10，每日成交量跌至 400 盒。下列哪一項正確？",
+    "contentEn": "The equilibrium price of takeaway lunch boxes was originally \\$8 each with an equilibrium quantity of 600 boxes per day. After the government imposes a unit tax of \\$3 per box on sellers, the price paid by buyers rises to \\$10 and the quantity traded falls to 400 boxes per day. Which of the following is correct?",
     "options": [
       "政府每日稅收為 \\$1,200；買方每盒負擔 \\$2，賣方每盒負擔 \\$1",
       "政府每日稅收為 \\$1,800；買方每盒負擔 \\$2，賣方每盒負擔 \\$1",
       "政府每日稅收為 \\$1,200；稅款全數由賣方負擔，因為稅是向賣方徵收",
       "政府每日稅收為 \\$1,200；買方每盒負擔 \\$1，賣方每盒負擔 \\$2"
     ],
+    "optionsEn": [
+      "Daily tax revenue is \\$1,200; buyers bear \\$2 and sellers bear \\$1 per box",
+      "Daily tax revenue is \\$1,800; buyers bear \\$2 and sellers bear \\$1 per box",
+      "Daily tax revenue is \\$1,200; the whole tax is borne by sellers because the tax is levied on sellers",
+      "Daily tax revenue is \\$1,200; buyers bear \\$1 and sellers bear \\$2 per box"
+    ],
     "correctIndex": 0,
     "explanation": "稅收 = 每盒稅款 \\$3 × 徵稅後成交量 400 盒 = \\$1,200。買方支付的價格由 \\$8 升至 \\$10，每盒負擔 \\$2；賣方收取的淨價格 = \\$10 − \\$3 = \\$7，較原先的 \\$8 少 \\$1，故每盒負擔 \\$1，兩者合計正好等於 \\$3 稅款。「稅收 \\$1,800」錯用了徵稅前的 600 盒計算——從量稅只能按實際成交量徵收，徵稅後成交量已跌至 400 盒。「稅款全數由賣方負擔」把法定繳稅人與實際負擔者混為一談：稅雖向賣方徵收，但賣方可透過提高售價把部分稅款轉嫁給買方，實際分擔比例由供需雙方的彈性決定。「買方每盒負擔 \\$1，賣方每盒負擔 \\$2」把兩者的負擔調轉，與題中的價格數據不符。",
+    "explanationEn": "Tax revenue = tax per box \\$3 × quantity traded after the tax, 400 boxes = \\$1,200. The price paid by buyers rises from \\$8 to \\$10, so buyers bear \\$2 per box; the net price received by sellers = \\$10 − \\$3 = \\$7, which is \\$1 less than the original \\$8, so sellers bear \\$1 per box, and the two together are exactly the \\$3 tax. \"Tax revenue \\$1,800\" wrongly uses the pre-tax quantity of 600 boxes — a unit tax can only be levied on the quantity actually traded, which has already fallen to 400 boxes. \"The whole tax is borne by sellers\" confuses the party legally liable to pay with the party who actually bears the burden: although the tax is levied on sellers, they can shift part of it to buyers by raising the price, and the actual split is determined by the elasticities of demand and supply. \"Buyers bear \\$1 and sellers bear \\$2\" reverses the two burdens and does not match the price data given.",
     "marks": 1
   },
   {
@@ -219,14 +299,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "政府對某種入口水果實施入口配額，配額數量低於自由市場下的均衡成交量。下列哪一項正確描述配額對該市場的影響？",
+    "contentEn": "The government imposes an import quota on a certain fruit, with the quota set below the quantity traded in a free market. Which of the following correctly describes the effect of the quota on this market?",
     "options": [
       "市價上升，成交量下跌，社會總盈餘減少",
       "市價上升，但消費者的損失全數轉化為持牌入口商的利益，社會總盈餘不變",
       "供應受限但需求不變，市價與成交量的變動方向均不能確定",
       "配額與有效價格上限一樣，會令市場出現持續短缺"
     ],
+    "optionsEn": [
+      "The market price rises, the quantity traded falls, and total social surplus decreases",
+      "The market price rises, but the consumers’ loss is transferred in full to licensed importers, so total social surplus is unchanged",
+      "Supply is restricted but demand is unchanged, so the direction of change of price and quantity traded is indeterminate",
+      "Like an effective price ceiling, a quota causes a persistent shortage in the market"
+    ],
     "correctIndex": 0,
     "explanation": "配額把成交量限制在均衡數量以下；在既定需求下，數量減少令市價沿需求曲線上升至對應配額量的水平。成交量下跌意味着一些「買方願付價格高於賣方成本」的互利交易無法進行，這部分消失了的盈餘不會轉移給任何人，故社會總盈餘減少，出現效率損失。「消費者的損失全數轉化為持牌入口商的利益」只說中了一部分——價格上升確實令部分消費者盈餘轉移至持牌入口商，但因成交量下跌而消失的盈餘並無承接者，總盈餘仍然下跌。「變動方向均不能確定」不成立：配額既定，成交量必定下跌，價格必定上升，方向十分明確。「會令市場出現持續短缺」混淆了配額與價格上限——配額下價格可以自由上升以結清市場，在較高價格下需求量回落至配額水平，不會出現持續短缺；持續短缺是價格被壓住不能調整（價格上限）的特徵。",
+    "explanationEn": "The quota restricts the quantity traded below the equilibrium quantity; given demand, the smaller quantity raises the market price along the demand curve to the level corresponding to the quota. The fall in quantity traded means that some mutually beneficial trades, in which the buyer’s willingness to pay exceeds the seller’s cost, can no longer take place; this lost surplus is not transferred to anyone, so total social surplus decreases and an efficiency loss arises. \"The consumers’ loss is transferred in full to licensed importers\" is only half right — the higher price does transfer part of consumer surplus to licensed importers, but the surplus lost through the fall in quantity traded has no recipient, so total surplus still falls. \"The direction of change is indeterminate\" does not hold: with the quota fixed, the quantity traded must fall and the price must rise, and both directions are perfectly clear. \"A persistent shortage\" confuses a quota with a price ceiling — under a quota the price is free to rise to clear the market, and at the higher price quantity demanded falls back to the quota level, so no persistent shortage arises; a persistent shortage is the hallmark of a price that is held down and cannot adjust (a price ceiling).",
     "marks": 1
   },
   {
@@ -241,14 +329,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "下列哪一項是完全競爭市場的特徵？",
+    "contentEn": "Which of the following is a characteristic of a perfectly competitive market?",
     "options": [
       "市場上有眾多買家與賣家，個別廠商是價格接受者",
       "廠商透過產品差異吸引顧客，各自擁有一批忠實客源",
       "市場只有一個賣家，並設有極高的進入障礙",
       "廠商數目不多，彼此相互依存，決策時須顧及對手的反應"
     ],
+    "optionsEn": [
+      "There are many buyers and sellers, and the individual firm is a price taker",
+      "Firms attract customers through product differentiation and each has its own loyal clientele",
+      "There is only one seller and there are very high barriers to entry",
+      "There are only a few firms, they are interdependent, and each must consider its rivals’ reactions"
+    ],
     "correctIndex": 0,
     "explanation": "完全競爭的核心特徵是廠商與顧客數目眾多、產品同質、資訊流通且可自由進出市場，個別廠商的產量相對市場微不足道，只能接受市場價格，屬價格接受者。「透過產品差異吸引顧客」是壟斷性競爭的特徵；「只有一個賣家並設有極高進入障礙」描述的是壟斷；「廠商數目不多、彼此相互依存」則是寡頭壟斷的特徵——三者皆把其他市場結構的特徵誤植到完全競爭之上。",
+    "explanationEn": "The core features of perfect competition are a large number of firms and customers, homogeneous products, free flow of information and free entry and exit. The output of an individual firm is negligible relative to the market, so it can only accept the market price and is a price taker. \"Product differentiation\" is a feature of monopolistic competition; \"only one seller with very high barriers to entry\" describes monopoly; and \"a few interdependent firms\" is a feature of oligopoly — all three transplant the characteristics of other market structures onto perfect competition.",
     "marks": 1
   },
   {
@@ -263,14 +359,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某產品的市場只有一個賣家，並因受專利權保護，令其他廠商難以進入。這屬於哪一種市場結構？",
+    "contentEn": "The market for a product has only one seller, and patent protection makes it difficult for other firms to enter. Which market structure is this?",
     "options": [
       "壟斷",
       "完全競爭",
       "壟斷性競爭",
       "寡頭壟斷"
     ],
+    "optionsEn": [
+      "Monopoly",
+      "Perfect competition",
+      "Monopolistic competition",
+      "Oligopoly"
+    ],
     "correctIndex": 0,
     "explanation": "單一賣家加上難以逾越的進入障礙（如專利權），是壟斷市場的定義特徵，該廠商即整個行業。「完全競爭」的賣家眾多且可自由進出，與題意完全相反；「壟斷性競爭」雖有價格制定能力，但賣家眾多、進入障礙低；「寡頭壟斷」是由少數而非單一廠商支配——三者的賣家數目皆與「只有一個賣家」不符。",
+    "explanationEn": "A single seller together with insurmountable barriers to entry (such as a patent) is the defining feature of a monopoly, where the firm is the whole industry. Perfect competition has many sellers with free entry and exit, the exact opposite of the situation described; monopolistic competition does give a firm some price-setting power, but sellers are numerous and barriers to entry are low; and an oligopoly is dominated by a few firms rather than a single one — in all three the number of sellers is inconsistent with \"only one seller\".",
     "marks": 1
   },
   {
@@ -285,14 +389,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "壟斷性競爭與完全競爭最主要的分別在於哪一點？",
+    "contentEn": "What is the main difference between monopolistic competition and perfect competition?",
     "options": [
       "壟斷性競爭的廠商出售有差異的產品，而完全競爭的產品同質",
       "壟斷性競爭只有少數幾間廠商，而完全競爭廠商眾多",
       "壟斷性競爭設有很高的進入障礙，而完全競爭可自由進出",
       "壟斷性競爭的廠商是價格接受者，而完全競爭則是價格制定者"
     ],
+    "optionsEn": [
+      "Firms in monopolistic competition sell differentiated products, whereas products in perfect competition are homogeneous",
+      "Monopolistic competition has only a few firms, whereas perfect competition has many",
+      "Monopolistic competition has very high barriers to entry, whereas perfect competition allows free entry and exit",
+      "Firms in monopolistic competition are price takers, whereas those in perfect competition are price makers"
+    ],
     "correctIndex": 0,
     "explanation": "兩者同樣有眾多廠商並可自由進出，關鍵分野在於產品性質：壟斷性競爭出售有差異的產品，因而擁有少許價格制定能力；完全競爭的產品同質，廠商只能接受市場價格。「只有少數幾間廠商」誤把寡頭壟斷的特徵套到壟斷性競爭；「設有很高進入障礙」與壟斷性競爭進入障礙低的事實相反；「壟斷性競爭是價格接受者、完全競爭是價格制定者」則把兩者的價格角色完全調轉。",
+    "explanationEn": "Both have many firms and free entry and exit; the key distinction lies in the nature of the product. Monopolistic competition sells differentiated products and therefore has some price-setting power, while perfect competition sells homogeneous products so firms can only accept the market price. \"Only a few firms\" wrongly applies a feature of oligopoly to monopolistic competition; \"very high barriers to entry\" contradicts the fact that barriers in monopolistic competition are low; and \"monopolistic competition is a price taker while perfect competition is a price maker\" reverses the two pricing roles entirely.",
     "marks": 1
   },
   {
@@ -307,14 +419,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "在長期均衡下，完全競爭市場中一個代表廠商的處境，下列哪一項描述最準確？",
+    "contentEn": "In long-run equilibrium, which of the following best describes the position of a representative firm in a perfectly competitive market?",
     "options": [
       "只賺取正常利潤，在平均總成本最低點生產，並達致配置效率（價格等於邊際成本）",
       "賺取超正常利潤，因為市場競爭激烈迫使廠商不斷提高效率",
       "售價高於邊際成本，出現配置不效率，與壟斷者無異",
       "因無法收回成本而必然出現虧損，最終被迫退出市場"
     ],
+    "optionsEn": [
+      "It earns only normal profit, produces at the minimum point of average total cost, and achieves allocative efficiency (price equals marginal cost)",
+      "It earns supernormal profit, because fierce competition forces firms to keep improving efficiency",
+      "Price is above marginal cost, so there is allocative inefficiency, just as under monopoly",
+      "It must make a loss because costs cannot be recovered, and is eventually forced to leave the market"
+    ],
     "correctIndex": 0,
     "explanation": "完全競爭長期均衡有三個並存的結果：自由進出令超正常利潤與虧損消失，只餘正常利潤；廠商在平均總成本最低點生產，達生產效率；價格等於邊際成本，達配置效率。「賺取超正常利潤」錯在忽略自由進入會侵蝕利潤，長期不能持續；「售價高於邊際成本、配置不效率」是壟斷的結果，並非完全競爭；「必然虧損退出」則忽略了退出會令留下來的廠商回復正常利潤，長期不會人人虧損。",
+    "explanationEn": "Long-run equilibrium under perfect competition brings three results together: free entry and exit eliminate supernormal profit and losses, leaving only normal profit; the firm produces at the minimum point of average total cost, achieving productive efficiency; and price equals marginal cost, achieving allocative efficiency. \"Earns supernormal profit\" ignores the fact that free entry erodes profit, which cannot persist in the long run; \"price above marginal cost with allocative inefficiency\" is the outcome under monopoly, not perfect competition; and \"must make a loss and exit\" ignores that exit restores normal profit for the firms that remain, so not everyone makes a loss in the long run.",
     "marks": 1
   },
   {
@@ -329,14 +449,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "壟斷者按利潤最大化原則決定產量後，其定價有何特點？",
+    "contentEn": "After a monopolist has chosen its output according to the profit-maximising rule, what is the characteristic of its pricing?",
     "options": [
       "產量定於邊際收益等於邊際成本之處，售價則沿需求曲線讀取，高於邊際成本，造成配置不效率",
       "售價等於邊際成本，與完全競爭廠商的定價方式相同",
       "售價等於邊際收益，因為壟斷者的售價與邊際收益兩者相等",
       "由於是市場上唯一的賣家，售價可定於任意高的水平而不受任何限制"
     ],
+    "optionsEn": [
+      "Output is set where marginal revenue equals marginal cost, the price is read off the demand curve and is above marginal cost, causing allocative inefficiency",
+      "Price equals marginal cost, the same pricing rule as a perfectly competitive firm",
+      "Price equals marginal revenue, because for a monopolist the two are equal",
+      "As the only seller in the market, it can set the price arbitrarily high without any constraint"
+    ],
     "correctIndex": 0,
     "explanation": "壟斷者同樣按邊際收益等於邊際成本決定利潤最大化產量，但因需求曲線向右下傾斜，該產量對應的需求價格高於邊際收益，也高於邊際成本，故售價高於邊際成本，造成配置不效率。「售價等於邊際成本」是完全競爭的結果，並非壟斷；「售價等於邊際收益」混淆了兩者——壟斷下售價一直高於邊際收益；「可定於任意高的水平」忽略了需求曲線的約束，定價過高會令銷量大跌，未必有利可圖。",
+    "explanationEn": "A monopolist also chooses the profit-maximising output where marginal revenue equals marginal cost, but because the demand curve slopes downward the demand price at that output is above marginal revenue and therefore above marginal cost, so price exceeds marginal cost and allocative inefficiency arises. \"Price equals marginal cost\" is the outcome of perfect competition, not monopoly; \"price equals marginal revenue\" confuses the two — under monopoly price is always above marginal revenue; and \"can set the price arbitrarily high\" ignores the constraint of the demand curve, since pricing too high causes sales to collapse and may not be profitable.",
     "marks": 1
   },
   {
@@ -351,14 +479,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "以拗折需求曲線解釋寡頭壟斷市場，價格傾向僵化的原因是甚麼？",
+    "contentEn": "Using the kinked demand curve to explain an oligopolistic market, why do prices tend to be rigid?",
     "options": [
       "若某廠商減價，對手會跟隨減價；若加價，對手卻不跟隨，故單方面改價皆不利，價格因而穩定",
       "若某廠商加價，對手會跟隨加價；若減價，對手卻不跟隨，故加價對該廠商有利",
       "政府對寡頭行業實施嚴格的價格管制，令價格在法律上不得變動",
       "寡頭廠商出售的產品完全同質，市場競爭令價格必然統一於同一水平"
     ],
+    "optionsEn": [
+      "If a firm cuts its price rivals follow, but if it raises its price rivals do not, so a unilateral price change is unfavourable either way and the price stays stable",
+      "If a firm raises its price rivals follow, but if it cuts its price rivals do not, so raising the price benefits that firm",
+      "The government imposes strict price controls on oligopolistic industries, so prices are legally barred from changing",
+      "Oligopolistic firms sell completely homogeneous products, and competition forces prices to converge to the same level"
+    ],
     "correctIndex": 0,
     "explanation": "拗折需求曲線假設對手「跟跌不跟升」：某廠商減價，對手為保市場佔有率會一同減價，銷量增幅有限；某廠商加價，對手按兵不動，該廠商會流失大量顧客。兩個方向的改價都不利，故廠商傾向維持原價，形成價格僵化。「加價對手跟隨、減價不跟隨」把對手的反應方向完全調轉；「政府價格管制」與拗折需求曲線的解釋無關；「產品完全同質令價格統一」既非拗折曲線的邏輯，寡頭產品亦往往有差異。",
+    "explanationEn": "The kinked demand curve assumes rivals \"follow a cut but not a rise\": if a firm cuts its price, rivals cut theirs to protect market share and the gain in sales is limited; if a firm raises its price, rivals stand still and that firm loses many customers. A price change in either direction is unfavourable, so firms tend to keep the existing price and prices become rigid. \"Rivals follow a rise but not a cut\" reverses the assumed reactions entirely; \"government price controls\" has nothing to do with the kinked demand curve explanation; and \"homogeneous products force prices to converge\" is neither the logic of the kinked curve nor accurate, since oligopolistic products are often differentiated.",
     "marks": 1
   },
   {
@@ -373,14 +509,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "壟斷性競爭市場在長期均衡時，一個代表廠商的狀況是怎樣？",
+    "contentEn": "In long-run equilibrium under monopolistic competition, what is the position of a representative firm?",
     "options": [
       "新廠商進入令個別廠商的需求減少，最終只賺取正常利潤，且不在平均總成本最低點生產，存在過剩產能",
       "由於產品有差異，個別廠商長期可持續賺取超正常利潤",
       "廠商在平均總成本最低點生產，達致生產效率，與完全競爭無異",
       "因產品差異微不足道，市場長期必然演變為完全競爭"
     ],
+    "optionsEn": [
+      "Entry of new firms reduces the demand facing each firm until only normal profit remains, and the firm does not produce at the minimum point of average total cost, so excess capacity exists",
+      "Because products are differentiated, an individual firm can earn supernormal profit in the long run",
+      "The firm produces at the minimum point of average total cost, achieving productive efficiency just as in perfect competition",
+      "Because product differentiation is negligible, the market must eventually become perfectly competitive"
+    ],
     "correctIndex": 0,
     "explanation": "壟斷性競爭進入障礙低：短期的超正常利潤會吸引新廠商加入，令個別廠商的需求減少並向左移，直至只餘正常利潤為止。由於需求曲線向右下傾斜，均衡點落在平均總成本最低點的左方，廠商並未用盡產能，存在過剩產能，故達不到完全競爭的生產效率。「長期持續賺取超正常利潤」忽略了自由進入的侵蝕；「在平均總成本最低點生產」正是壟斷性競爭達不到的；「必然演變為完全競爭」則過度推論——產品差異令價格制定能力得以保留，市場結構不會消失。",
+    "explanationEn": "Barriers to entry under monopolistic competition are low: short-run supernormal profit attracts new firms, which reduces and shifts leftward the demand facing each existing firm until only normal profit remains. Because the demand curve slopes downward, the equilibrium point lies to the left of the minimum point of average total cost, so the firm does not use its capacity fully, excess capacity exists, and the productive efficiency of perfect competition is not attained. \"Supernormal profit in the long run\" ignores the erosion caused by free entry; \"producing at the minimum point of average total cost\" is precisely what monopolistic competition fails to achieve; and \"must become perfectly competitive\" over-infers — product differentiation preserves price-setting power, so the market structure does not disappear.",
     "marks": 1
   },
   {
@@ -395,14 +539,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "個別廠商所面對的需求曲線形狀，反映其市場力量。下列配對哪一項正確？",
+    "contentEn": "The shape of the demand curve facing an individual firm reflects its market power. Which of the following pairings is correct?",
     "options": [
       "完全競爭廠商面對水平（完全彈性）的需求曲線，是價格接受者；壟斷者面對向右下傾斜的需求曲線，具價格制定能力",
       "完全競爭廠商面對向右下傾斜的需求曲線，壟斷者則面對水平的需求曲線",
       "兩者面對的需求曲線皆向右下傾斜，只是壟斷者的較為陡峭",
       "需求曲線的形狀由政府規管決定，與市場結構本身無關"
     ],
+    "optionsEn": [
+      "A perfectly competitive firm faces a horizontal (perfectly elastic) demand curve and is a price taker; a monopolist faces a downward-sloping demand curve and has price-setting power",
+      "A perfectly competitive firm faces a downward-sloping demand curve, while a monopolist faces a horizontal one",
+      "Both face downward-sloping demand curves, except that the monopolist’s is steeper",
+      "The shape of the demand curve is determined by government regulation and is unrelated to market structure"
+    ],
     "correctIndex": 0,
     "explanation": "廠商面對的需求曲線形狀反映其定價能力：完全競爭廠商是價格接受者，只能按市場價出售，其需求曲線在市場價水平呈水平（完全彈性）；壟斷者是價格制定者，面對整個市場向右下傾斜的需求曲線，減價才能增加銷量。「兩者調轉」把價格接受者與制定者的需求曲線完全對調；「兩者皆向右下傾斜」忽略了完全競爭廠商需求曲線水平這一關鍵特徵；「由政府規管決定」則錯把外在管制當成需求曲線形狀的成因，實際成因是市場結構與廠商的相對規模。",
+    "explanationEn": "The shape of the demand curve facing a firm reflects its pricing power: a perfectly competitive firm is a price taker and can only sell at the market price, so its demand curve is horizontal (perfectly elastic) at that price; a monopolist is a price maker facing the whole downward-sloping market demand curve, and must cut the price to sell more. \"Both reversed\" swaps the demand curves of the price taker and the price maker; \"both downward-sloping\" ignores the key feature that the demand curve facing a perfectly competitive firm is horizontal; and \"determined by government regulation\" mistakes external regulation for the cause, when the actual cause is the market structure and the relative size of the firm.",
     "marks": 1
   },
   {
@@ -417,14 +569,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "假設某行業原為完全競爭，其後被一間廠商收購所有對手而成為壟斷，行業的成本結構與市場需求維持不變。與原來的完全競爭相比，壟斷後的結果最可能是甚麼？",
+    "contentEn": "Suppose an industry was originally perfectly competitive and is then monopolised when one firm buys out all its rivals, while the cost structure of the industry and market demand remain unchanged. Compared with the original perfect competition, what is the most likely outcome under monopoly?",
     "options": [
       "產量減少、售價上升，且售價高於邊際成本，社會出現配置不效率（無謂損失）",
       "售價上升、產量減少，但由於只剩一個賣家，生產效率必然提升，社會整體反而得益",
       "產量增加、售價下降，因為壟斷者可憑規模擴張造福消費者",
       "售價會不斷上升至消費者完全無法負擔，市場最終因無人購買而消失"
     ],
+    "optionsEn": [
+      "Output falls and price rises, price is above marginal cost, and allocative inefficiency (deadweight loss) arises for society",
+      "Price rises and output falls, but with only one seller left productive efficiency must improve, so society is better off overall",
+      "Output rises and price falls, because the monopolist can expand its scale to the benefit of consumers",
+      "Price keeps rising until consumers cannot afford it at all, and the market eventually disappears for want of buyers"
+    ],
     "correctIndex": 0,
     "explanation": "由完全競爭轉為壟斷後，廠商由價格接受者變成價格制定者，會按邊際收益等於邊際成本減產抬價，使售價高於邊際成本，原本互利的交易未能達成，社會出現配置不效率（無謂損失）。「生產效率必然提升、社會得益」半對半錯——即使成本相同，減產抬價帶來的無謂損失令社會整體受損，而非得益；「產量增加、售價下降」把壟斷的效果完全調轉；「售價升至無人負擔、市場消失」屬過度推論，壟斷者受需求曲線約束，會選擇利潤最大化的價量組合而非趕絕顧客。",
+    "explanationEn": "Once perfect competition becomes monopoly, the firm changes from a price taker to a price maker and cuts output and raises price at the point where marginal revenue equals marginal cost, so price exceeds marginal cost, mutually beneficial trades fail to take place, and allocative inefficiency (deadweight loss) arises. \"Productive efficiency must improve and society is better off\" is half right and half wrong — even with identical costs, the deadweight loss from restricting output and raising price leaves society worse off, not better. \"Output rises and price falls\" reverses the effect of monopoly entirely. \"Price rises until nobody can afford it and the market disappears\" over-infers: the monopolist is constrained by the demand curve and chooses the profit-maximising price-quantity combination rather than driving customers away.",
     "marks": 1
   },
   {
@@ -439,14 +599,22 @@ export const economicsReviewedQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "某壟斷者在利潤最大化產量下，售價為每件 \\$20，邊際成本為 \\$12，平均總成本為 \\$15。下列判斷哪一項正確？",
+    "contentEn": "At its profit-maximising output a monopolist charges \\$20 per unit, with marginal cost \\$12 and average total cost \\$15. Which of the following judgements is correct?",
     "options": [
       "售價高於邊際成本，存在配置不效率；同時售價高於平均總成本，廠商賺取超正常利潤，每件 \\$5",
       "售價高於邊際成本，存在配置不效率；但售價等於平均總成本，廠商只賺取正常利潤",
       "售價高於平均總成本，故已達配置效率，並同時賺取超正常利潤",
       "由於邊際成本低於售價，廠商應無限增產，直至賺取最大利潤為止"
     ],
+    "optionsEn": [
+      "Price is above marginal cost, so allocative inefficiency exists; price is also above average total cost, so the firm earns supernormal profit of \\$5 per unit",
+      "Price is above marginal cost, so allocative inefficiency exists; but price equals average total cost, so the firm earns only normal profit",
+      "Price is above average total cost, so allocative efficiency is achieved and supernormal profit is earned at the same time",
+      "Since marginal cost is below price, the firm should expand output without limit until profit is maximised"
+    ],
     "correctIndex": 0,
     "explanation": "配置效率的條件是售價等於邊際成本；此處售價 \\$20 高於邊際成本 \\$12，故存在配置不效率。利潤方面，售價 \\$20 高於平均總成本 \\$15，每件賺取超正常利潤 \\$20 − \\$15 = \\$5。「售價等於平均總成本、只賺正常利潤」與 \\$20 高於 \\$15 的數據不符；「售價高於平均總成本即達配置效率」混淆了兩個概念——配置效率看的是售價與邊際成本的關係，不是與平均總成本；「應無限增產」錯在利潤最大化產量已定於邊際收益等於邊際成本之處，再增產會令邊際成本高於邊際收益，反而蝕本。",
+    "explanationEn": "The condition for allocative efficiency is that price equals marginal cost; here the price of \\$20 is above the marginal cost of \\$12, so allocative inefficiency exists. As for profit, the price of \\$20 is above the average total cost of \\$15, so supernormal profit of \\$20 − \\$15 = \\$5 is earned per unit. \"Price equals average total cost with only normal profit\" does not match the data, since \\$20 is above \\$15; \"price above average total cost means allocative efficiency\" confuses two concepts — allocative efficiency concerns the relationship between price and marginal cost, not average total cost; and \"expand output without limit\" is wrong because the profit-maximising output is already set where marginal revenue equals marginal cost, and producing more would push marginal cost above marginal revenue and cause a loss.",
     "marks": 1
   }
 ]
