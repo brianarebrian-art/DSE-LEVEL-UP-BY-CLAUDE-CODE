@@ -218,8 +218,19 @@ export function toReviewedQuestion(row, subject) {
     // 長題目按實際分值計；文字題維持 1 分（同 MC 一致）。
     marks: type === 'long' ? (Number.isInteger(row.marks) ? row.marks : 1) : 1,
   }
+  // 2026-08-07 修正：英文欄一直被丟棄。上方閘明明【要求】referenceAnswerEn 必須
+  // 存在（否則英文介面嘅學生自評時冇嘢對照），但此處從未 copy 出去 —— 閘同
+  // promoter 兩邊講唔同嘢，驗完就掉。首批長題入庫時實測 0/20 帶到英文欄。
+  if (typeof row.referenceAnswerEn === 'string' && row.referenceAnswerEn.trim()) {
+    out.referenceAnswerEn = row.referenceAnswerEn.trim()
+  }
+  if (typeof row.questionEn === 'string' && row.questionEn.trim()) out.contentEn = row.questionEn.trim()
+  if (typeof row.explanationEn === 'string' && row.explanationEn.trim()) out.explanationEn = row.explanationEn.trim()
   if (type === 'long') {
     if (typeof row.markingScheme === 'string') out.markingScheme = row.markingScheme.trim()
+    if (typeof row.markingSchemeEn === 'string' && row.markingSchemeEn.trim()) {
+      out.markingSchemeEn = row.markingSchemeEn.trim()
+    }
     if (Number.isInteger(row.suggestedMinutes)) out.suggestedMinutes = row.suggestedMinutes
   }
   return out

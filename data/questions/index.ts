@@ -17,6 +17,10 @@ import { englishQuestions, englishTopics } from './english'
 import { ictQuestions, ictTopics } from './ict'
 import { chineseQuestions, chineseTopics } from './chinese'
 import { chineseReviewedQuestions } from './chinese-reviewed'
+// 書寫題批次亦必須註冊入 barrel —— barrel 是所有 QA 工具與稽核統計的讀取路徑，
+// 只註冊入 load.ts 會令題目對統計隱形（2026-08-07 已因此少報 12 題）。
+import { chineseP2WritingQuestions } from './chinese-p2-writing'
+import { chineseFanwenLongQuestions } from './chinese-fanwen-long'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
@@ -71,7 +75,15 @@ const banks: Record<string, SubjectBank> = {
   biology: { questions: biologyQuestions, topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
   ict: { questions: ictQuestions, topics: ictTopics },
-  chinese: { questions: [...chineseQuestions, ...chineseReviewedQuestions], topics: chineseTopics },
+  chinese: {
+    questions: [
+      ...chineseQuestions,
+      ...chineseReviewedQuestions,
+      ...chineseP2WritingQuestions,
+      ...chineseFanwenLongQuestions,
+    ],
+    topics: chineseTopics,
+  },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },

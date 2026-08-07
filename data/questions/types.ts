@@ -73,6 +73,11 @@ export interface LongQuestion {
   referenceAnswerEn?: string
   markingScheme?: string // step marks / rubric (collapsible)
   markingSchemeEn?: string
+  // 解題思路 —— 與 markingScheme 分工：評分準則說明如何給分，解題思路說明何以如此推想。
+  // `TextQuestion` 一直設有此欄位，`LongQuestion` 遺漏，令首批長題入庫時 tsc 報錯
+  // （promote 產出的物件帶有此欄，型別卻未宣告）。現補上，並於 LongQuestionCard 渲染。
+  explanation?: string
+  explanationEn?: string
   suggestedMinutes?: number
   marks: number
 }

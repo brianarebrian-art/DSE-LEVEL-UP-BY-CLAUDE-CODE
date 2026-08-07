@@ -53,8 +53,21 @@ const loaders: Record<string, Loader> = {
   },
   ict: async () => (await import('./ict')).ictQuestions,
   chinese: async () => {
-    const [base, reviewed] = await Promise.all([import('./chinese'), import('./chinese-reviewed')])
-    return [...base.chineseQuestions, ...reviewed.chineseReviewedQuestions]
+    // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
+    // 多個批次必須以 `--out` 分檔，否則後一批會覆蓋前一批（2026-08-07 實際發生過）。
+    // 新增書寫題批次時：此處要加，`index.ts` 亦要加，否則 loader-parity 測試會失敗。
+    const [base, reviewed, p2, fanwenLong] = await Promise.all([
+      import('./chinese'),
+      import('./chinese-reviewed'),
+      import('./chinese-p2-writing'),
+      import('./chinese-fanwen-long'),
+    ])
+    return [
+      ...base.chineseQuestions,
+      ...reviewed.chineseReviewedQuestions,
+      ...p2.chineseP2WritingQuestions,
+      ...fanwenLong.chineseFanwenLongQuestions,
+    ]
   },
   bafs: async () => {
     const [base, bbank, reviewed] = await Promise.all([import('./bafs'), import('./bafs-bank'), import('./bafs-reviewed')])

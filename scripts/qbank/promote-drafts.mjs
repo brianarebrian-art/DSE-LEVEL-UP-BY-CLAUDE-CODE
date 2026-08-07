@@ -30,8 +30,16 @@ const arg = (n, d = null) => { const i = args.indexOf(`--${n}`); return i >= 0 &
 const IN = arg('in')
 const SUBJECT = arg('subject')
 const DEC = arg('decisions')
+// 輸出檔名（唔連副檔名），預設 `<subject>-reviewed`。
+//
+// ⚠️ 點解要有呢個選項：本腳本係【覆寫】唔係追加（見下方 writeFileSync）。
+// 未有 `--out` 之前，同一科第二次 promote 會靜靜冚走第一批 —— 冇警告、冇備份，
+// 只有 git 追返。2026-08-07 實際踩過：中文卷二 6 條 promote 完之後再 promote
+// 範文長題 20 條，前者連同該檔原有 12 條舊題一併消失。
+// 所以：一科有多批已審核題目時，每批各自 `--out` 一個檔，再逐個 wire 入 load.ts。
+const OUT = arg('out')
 if (!IN || !SUBJECT || !DEC) {
-  console.error('usage: node scripts/qbank/promote-drafts.mjs --in <drafts.json> --subject <id> --decisions <decisions.json>')
+  console.error('usage: node scripts/qbank/promote-drafts.mjs --in <drafts.json> --subject <id> --decisions <decisions.json> [--out <basename>]')
   process.exit(2)
 }
 
@@ -78,9 +86,12 @@ if (!reviewer) {
 }
 
 // ── write the stamped, typed bank ───────────────────────────────────────────
-const camel = SUBJECT.replace(/[-_](.)/g, (_, c) => c.toUpperCase())
-const exportName = `${camel}ReviewedQuestions`
-const outFile = fileURLToPath(new URL(`../../data/questions/${SUBJECT}-reviewed.ts`, import.meta.url))
+// 匯出名跟住檔名走，令兩個檔唔會匯出同一個識別符而互相衝突。
+// 預設情況逐字不變：`chinese-reviewed` → `chineseReviewedQuestions`（同加 --out 之前一樣）。
+// 加 --out 時：`chinese-fanwen-long` → `chineseFanwenLongQuestions`。
+const base = OUT || `${SUBJECT}-reviewed`
+const exportName = `${base.replace(/[-_](.)/g, (_, c) => c.toUpperCase())}Questions`
+const outFile = fileURLToPath(new URL(`../../data/questions/${base}.ts`, import.meta.url))
 const diff = approved.reduce((a, q) => ((a[q.difficulty] = (a[q.difficulty] || 0) + 1), a), {})
 const byType = approved.reduce((a, q) => ((a[q.type] = (a[q.type] || 0) + 1), a), {})
 // 出口型別按實際內容決定：全 MC 就照舊寫 `Question[]`（同以往逐字一致，
@@ -106,7 +117,7 @@ import type { ${bankType} } from './types'
 export const ${exportName}: ${bankType}[] = `
 writeFileSync(outFile, header + JSON.stringify(approved, null, 2) + '\n')
 
-console.log(`\n✓ promoted ${approved.length} human-approved question(s) → data/questions/${SUBJECT}-reviewed.ts`)
+console.log(`\n✓ promoted ${approved.length} human-approved question(s) → data/questions/${base}.ts`)
 console.log(`  reviewer: ${reviewer} · ${reviewedAt}`)
 console.log(`\n  NEXT (manual — a second human gate; this script will NOT do it for you):`)
 console.log(`  1. In data/questions/load.ts, merge into the "${SUBJECT}" loader:`)

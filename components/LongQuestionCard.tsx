@@ -35,6 +35,7 @@ export default function LongQuestionCard({
   const [level, setLevel] = useState<Level | null>(null)
   const [showAnswer, setShowAnswer] = useState(true)
   const [showScheme, setShowScheme] = useState(false)
+  const [showWhy, setShowWhy] = useState(false)
 
   const pick = (l: Level) => {
     if (level) return
@@ -129,6 +130,24 @@ export default function LongQuestionCard({
               {showScheme && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2">
                   <MathText>{tr(q.markingScheme, q.markingSchemeEn)}</MathText>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* 解題思路（collapsible）—— 同評分準則分開：準則答「點畀分」，思路答「點解要咁諗」。 */}
+          {q.explanation && (
+            <>
+              <button
+                onClick={() => setShowWhy((s) => !s)}
+                className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
+              >
+                <span className="text-xs text-ink-soft font-bold">{en ? 'How to think about it' : '解題思路'}</span>
+                <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showWhy ? 'rotate-180' : ''}`} />
+              </button>
+              {showWhy && (
+                <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2">
+                  <MathText>{tr(q.explanation, q.explanationEn)}</MathText>
                 </div>
               )}
             </>
