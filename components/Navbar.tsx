@@ -88,8 +88,10 @@ export default function Navbar() {
               {t.nav[l.key]}
             </Link>
           ))}
+          {/* 全科入口 —— 2026-08-09 由 /subjects/math 改為 /subjects：「開始練習」
+              屬通用行動呼籲，直接導向數學科等於代學生選定科目。路由為複數。 */}
           <Link
-            href="/subjects/math"
+            href="/subjects"
             className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-colors"
           >
             {t.nav.startPractice}
@@ -138,8 +140,9 @@ export default function Navbar() {
               ))}
             </div>
 
+            {/* 漢堡選單內容須與橫向條完全一致 —— 連目標路由亦然。 */}
             <Link
-              href="/subjects/math"
+              href="/subjects"
               onClick={() => setOpen(false)}
               className="mt-4 min-h-11 flex items-center justify-center bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm py-2.5 rounded-lg transition-colors"
             >
