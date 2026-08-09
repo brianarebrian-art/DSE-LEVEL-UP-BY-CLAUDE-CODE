@@ -36,7 +36,9 @@ export interface HeroCopy {
 function championCore(en: boolean) {
   return {
     badge: en ? '📚 DSE LEVEL UP · Master the logic' : '📚 DSE LEVEL UP · 掌握邏輯',
-    headline1: en ? 'Master the logic,' : '掌握邏輯，',
+    // 中文上行不設逗號：兩行之間本已有換行分隔，逗號在行末會多出一段視覺留白。
+    // 英文保留逗號 —— 'Master the logic, not the answers' 屬同位語，缺逗號即不合文法。
+    headline1: en ? 'Master the logic,' : '掌握邏輯',
     headline2: en ? 'not the answers' : '唔係背答案',
     subhead: en
       ? "However the numbers change, you'll still know the answer. You are not alone on the DSE battlefield."
