@@ -22,6 +22,15 @@ export interface MCQuestion {
   explanationEn?: string
   mcHack?: string // Path B — optional "名師速解 / MC Hack" exam shortcut
   mcHackEn?: string
+  // 逐步拆解（#54）—— 真正分好步的解題過程，一步一步揭。
+  //
+  // ⚠️ 刻意設為 optional 且【不得由 explanation 自動切分】：現行 5,201 條題目的
+  // explanation 全部是散文（math 914 條之中 0 條含換行、0 條含編號步驟），按句號
+  // 斬開再標「第一步／第二步」只會製造假結構 —— 句子邊界不等於解題步驟。
+  // 未有此欄位者，StagedExplanation 會退回「先揭首句提示、再揭全部」的誠實呈現，
+  // 措辭不會出現「第 N 步」。新出題目可自行提供真步驟以啟用完整逐步模式。
+  steps?: string[]
+  stepsEn?: string[]
   marks: number
 }
 

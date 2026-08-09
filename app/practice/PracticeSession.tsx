@@ -23,6 +23,8 @@ import { playLockChime } from '@/lib/lockChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
 import CalcTipCard from '@/components/CalcTipCard'
 import EmotionTags from '@/components/EmotionTags'
+import BookmarkButton from '@/components/BookmarkButton'
+import StagedExplanation from '@/components/StagedExplanation'
 import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
@@ -862,9 +864,16 @@ export default function PracticeSession({
                       <CheckCircle size={18} className="text-accent" />
                       <span className="text-accent font-medium">{t.practice.correct}</span>
                     </div>
-                    <div className="flex items-start gap-1.5 text-sm text-ink-soft leading-relaxed">
-                      <Brain size={14} className="text-gold shrink-0 mt-0.5" />
-                      <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                    {/* #54 逐步拆解：先出首句（或真步驟第一步），逼多諗一步先揭全部。
+                        學生可一次過選擇「以後直接睇晒」，之後唔會再問。 */}
+                    <div className="flex items-start gap-1.5">
+                      <Brain size={14} className="text-gold shrink-0 mt-1" />
+                      <div className="min-w-0 flex-1">
+                        <StagedExplanation
+                          text={tr(currentQ.explanation, currentQ.explanationEn)}
+                          steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
+                        />
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -884,9 +893,16 @@ export default function PracticeSession({
                         </p>
                       )
                     })()}
-                    <div className="text-sm text-ink-soft leading-relaxed border-t border-gold/15 pt-3">
-                      <span className="text-gold text-xs font-medium mr-1">💡 {tr('正解思路：', 'Reasoning: ')}</span>
-                      <MathText>{tr(currentQ.explanation, currentQ.explanationEn)}</MathText>
+                    <div className="border-t border-gold/15 pt-3">
+                      <StagedExplanation
+                        text={tr(currentQ.explanation, currentQ.explanationEn)}
+                        steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
+                        label={
+                          <span className="text-gold text-xs font-medium mr-1">
+                            💡 {tr('正解思路：', 'Reasoning: ')}
+                          </span>
+                        }
+                      />
                     </div>
 
                     {/* 真相引擎 —— 由歷史錯誤記錄推斷成因，畀一句可執行嘅補救建議。
@@ -939,6 +955,15 @@ export default function PracticeSession({
 
                 {/* #83 計數機貼士卡 — 解析底部折疊區（按 topic 命中；未驗證卡 production 隱藏） */}
                 <CalcTipCard topicId={currentQ.topic} />
+
+                {/* #106 收藏 —— 擺喺解析【之後】：先睇明先決定值唔值得收，
+                    而唔係一見到題就收埋一堆自己都唔知點解要收嘅嘢。 */}
+                <BookmarkButton
+                  subjectId={subjectId}
+                  questionId={currentQ.id}
+                  topic={tr(currentQ.topicZh, currentQ.topicEn)}
+                  className="mb-4"
+                />
 
                 {/* 60-second forced reflection lock (HARD wrong answers): read the
                     breakdown above, answer the cause follow-up correctly, AND wait out
