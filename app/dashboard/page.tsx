@@ -19,6 +19,7 @@ import SyncStatus from '@/components/SyncStatus'
 import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
 import JustOneCard from '@/components/JustOneCard'
+import GoodTodayCard from '@/components/GoodTodayCard'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
 // F-NTM: 今晚唔溫得（本地 until-04:00 開關）
@@ -132,6 +133,10 @@ export default function DashboardPage() {
           </div>
           {/* C6：對住「開始第一份練習」都撳唔落手嗰個，先係最需要呢個入口嗰個 */}
           <JustOneCard stack className="mt-8 text-left" />
+
+          {/* 空狀態【必須】有呢張卡 —— 一題都未做過嗰個學生，正正最需要聽到
+              「你有嚟過已經算數」。只放喺有數據嗰個分支等於淨係恭喜已經做緊嘅人。 */}
+          <GoodTodayCard className="mt-4 text-left" />
         </div>
       </div>
     )
@@ -236,6 +241,10 @@ export default function DashboardPage() {
 
         {/* C6：擺喺「今日計劃」之前 —— 見到成個計劃就無力嗰日，起碼仲有呢條路 */}
         <JustOneCard className="mb-6" />
+
+        {/* 「今日已經好叻」+ 自訂鼓勵語。緊接 JustOneCard 之後：連「只做 1 題」都
+            做唔到嗰日，呢張卡係最後一級台階 —— 唔要求任何產出，淨係認低你有嚟過。 */}
+        <GoodTodayCard className="mb-6" />
 
         {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
         <DailyPlan />
