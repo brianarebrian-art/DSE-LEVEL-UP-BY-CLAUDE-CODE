@@ -20,6 +20,7 @@ import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
 import JustOneCard from '@/components/JustOneCard'
 import GoodTodayCard from '@/components/GoodTodayCard'
+import { DashboardSkeleton } from '@/components/Skeleton'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
 // F-NTM: 今晚唔溫得（本地 until-04:00 開關）
@@ -70,9 +71,14 @@ export default function DashboardPage() {
     return () => window.removeEventListener('dse-ntm', read)
   }, [])
 
+  // #117：進度全部住喺 localStorage，只可以 mount 之後先讀，所以呢一格必然出現。
+  // 原本得一句置中「載入中」，慢機上係一閃而過嘅空白；改為骨架屏，版面唔會跳。
   if (!stats) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.common.loading}</div>
+      <div aria-busy="true">
+        <span className="sr-only">{t.common.loading}</span>
+        <DashboardSkeleton />
+      </div>
     )
   }
 
@@ -184,6 +190,14 @@ export default function DashboardPage() {
               className="inline-flex items-center gap-2 bg-surface-raised border border-accent/30 text-accent hover:bg-accent/[0.06] px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
             >
               📋 {en ? 'Generate report' : '生成報告'}
+            </Link>
+            {/* #106 收藏頁入口。刻意唔入 Navbar —— 橫向條 7 條連結已迫到盡（見
+                Navbar 檔頭實測寬度），第 8 條會喺 1280px 斷點爆版。 */}
+            <Link
+              href="/bookmarks"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
+            >
+              🔖 {en ? 'Saved' : '我嘅收藏'}
             </Link>
             <Link
               href="/focus"

@@ -6,6 +6,7 @@ import { useT } from '@/lib/i18n'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
+import { PracticeSkeleton } from '@/components/Skeleton'
 
 // Client-only quiz runner (uses Math.random/localStorage). The platform is 100%
 // free, so there is no wall, cap or tier check here any more — we simply load
@@ -23,11 +24,17 @@ const LongPracticeSession = dynamic(() => import('./LongPracticeSession'), {
   loading: () => <Loading />,
 })
 
+// #117 骨架屏取代原本得一句置中「載入中」。題庫係 lazy chunk，慢網絡下呢一刻
+// 可以係幾秒空白畫面。畫返題目卡輪廓，等待感細好多。
+//
+// 讀屏用戶：骨架本身 aria-hidden（純視覺），故此另設一個 sr-only 的載入文字，
+// 保留原本 `t.common.loading` 嘅語意，唔會因為改視覺而失去無障礙訊息。
 function Loading() {
   const t = useT()
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">
-      {t.common.loading}
+    <div aria-busy="true">
+      <span className="sr-only">{t.common.loading}</span>
+      <PracticeSkeleton />
     </div>
   )
 }

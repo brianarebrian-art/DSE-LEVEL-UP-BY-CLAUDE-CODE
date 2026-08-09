@@ -307,6 +307,26 @@ html {
   .animate-hell-pulse { animation: none; }
 }
 
+/* 骨架屏（載入佔位）。純 CSS，零套件。
+   用途：慢網絡下唔好淨係得「載入中」三個字 —— 見到內容輪廓，等待焦慮細好多，
+   對 ADHD／焦慮考生尤其重要（憲章 §7）。
+   刻意用【極慢、極低對比】嘅呼吸式明暗（唔用掃光 shimmer）：掃光係高頻橫向
+   移動，對前庭敏感同注意力障礙用戶係干擾源。prefers-reduced-motion 下完全靜止，
+   仍然保留輪廓。 */
+@keyframes skeleton-breathe {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 0.75; }
+}
+.skeleton {
+  background-color: var(--color-line);
+  border-radius: 0.5rem;
+  animation: skeleton-breathe 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; opacity: 0.55; }
+}
+
 /* 易讀字體（SEN，Emma/UDL）：html.font-easy 時改用讀寫障礙友善字體 + BDA（英國讀寫
    障礙協會）風格指引推薦的間距。KaTeX 數式不受影響（.katex 自身規則更具體）。
    OpenDyslexic：若 public/fonts/OpenDyslexic-Regular.woff2 存在就自動採用（見該資料夾
