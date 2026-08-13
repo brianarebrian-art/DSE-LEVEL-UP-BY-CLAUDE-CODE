@@ -60,6 +60,43 @@ const BANNED_ECON = [
 // Single chars that exist ONLY in colloquial Cantonese, plus slang phrases.
 const COLLOQUIAL = /[嘅噉冇嘢咗唔喺睇啲乜諗畀嗰嘥攞]|咁樣|秒殺|殺著|撈亂|搞反|搞錯|點樣|而家|依家|好似|邊個/
 
+// 口語 → 書面語建議對照（Oscar 2026-08-13）。
+//
+// 原本 COLLOQUIAL 命中只印一句通用訊息「question content must be 標準書面語」，
+// 唔會講應該改成乜。BANNED_* 各表一直都帶 `fix` 欄，口語表獨缺，令改稿者要自己
+// 逐個查。此表補回同一種提示，命中時直接印出建議寫法。
+//
+// ⚠️ 只收【單向明確】嘅對照。一詞多義者一律留空（回退通用訊息），寧可少提示，
+// 唔好提示錯：例如「好似」可解「猶如」亦可解「例如」，「睇」可解「觀察」「閱讀」
+// 「診斷」，按上下文而定，機器判斷唔到就唔應該亂建議。
+const COLLOQUIAL_FIX = [
+  [/而家|依家/, '現時／目前'],
+  [/點樣/, '如何'],
+  [/邊個/, '哪一個'],
+  [/咁樣|噉/, '這樣'],
+  [/秒殺|殺著/, '快速解法（避免誇張語）'],
+  [/撈亂/, '混淆'],
+  [/搞反/, '顛倒'],
+  [/搞錯/, '誤解'],
+  [/嘥/, '浪費'],
+  [/冇/, '沒有'],
+  [/唔/, '不'],
+  [/喺/, '在'],
+  [/嘅/, '的'],
+  [/咗/, '了'],
+  [/嘢/, '事物'],
+  [/啲/, '些'],
+  [/乜/, '什麼'],
+  [/嗰/, '那'],
+  [/諗/, '思考'],
+  [/畀/, '給予'],
+  [/攞/, '取得'],
+]
+const colloquialHint = (line) => {
+  const hits = COLLOQUIAL_FIX.filter(([re]) => re.test(line)).map(([, fix]) => fix)
+  return hits.length ? ` → 建議：${[...new Set(hits)].join('、')}` : ''
+}
+
 // ── P1-4 科目常數/格式鎖（Oscar 2026-07-16）。全部「單位錨定」以防誤殺
 // 計算結果啱好等於嗰個數字嘅正常選項（例如 49÷5=9.8 作為長度）。
 // 物理：DSE 慣例 g = 10 m/s²，禁 9.8/9.81 掛住加速度單位出現
@@ -140,7 +177,8 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
     if (isGeography) for (const { re, fix } of BANNED_GEOGRAPHY) if (re.test(line)) report(file, i + 1, fix, line)
     if (isMath) for (const { re, fix } of BANNED_MATH) if (re.test(line)) report(file, i + 1, fix, line)
     if (isIct) for (const { re, fix } of BANNED_ICT) if (re.test(line)) report(file, i + 1, fix, line)
-    if (!isLanguageBank(file) && COLLOQUIAL.test(line)) report(file, i + 1, '口語/俗語 — question content must be 標準書面語', line)
+    if (!isLanguageBank(file) && COLLOQUIAL.test(line))
+      report(file, i + 1, `口語/俗語 — question content must be 標準書面語${colloquialHint(line)}`, line)
   })
 }
 
@@ -149,20 +187,34 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
 // 2026-07-15 加「弱項/落後/成績單」（設計規範文案紅線：→ 發現盲點/進步空間/溫書地圖）。
 // 「排名/輸/差過」冇加：排行榜功能合法用「排名」，「輸/差」單字誤傷太多（輸入/差異）。
 const RED_WORDS = /(?<![A-Za-z])FAIL(?![A-Za-z])|錯晒|廢柴|失敗者|你唔夠努力|你好廢|冇希望|差勁|無藥可救|冇得救|弱項|落後|成績單/
+const scanCopyFile = (rel) => {
+  readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((line, i) => {
+    const t = line.trim()
+    if (t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) return // 技術註解豁免（spec 白名單）
+    if (RED_WORDS.test(line)) report(rel, i + 1, '情緒安全 — 用戶文案禁止羞辱/罪疚字眼', line)
+  })
+}
 function scanUiDir(dir) {
   for (const entry of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
     const rel = `${dir}/${entry.name}`
     if (entry.isDirectory()) { scanUiDir(rel); continue }
-    if (!entry.name.endsWith('.tsx')) continue
-    readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((line, i) => {
-      const t = line.trim()
-      if (t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) return // 技術註解豁免（spec 白名單）
-      if (RED_WORDS.test(line)) report(rel, i + 1, '情緒安全 — 用戶文案禁止羞辱/罪疚字眼', line)
-    })
+    // 2026-08-13 由 .tsx 擴至 .ts：文案唔止住喺 component 入面，route handler
+    // 同 metadata 檔（.ts）一樣會出用戶可見字句。
+    if (!entry.name.endsWith('.tsx') && !entry.name.endsWith('.ts')) continue
+    scanCopyFile(rel)
   }
 }
 scanUiDir('app')
 scanUiDir('components')
+
+// ── 情緒安全掃描：app/ + components/ 以外嘅【文案來源檔】────────────────────
+// 2026-08-13 補漏。原本 scanUiDir 只行 app/ 同 components/，於是全站兩大文案
+// 集中地反而完全冇受檢：
+//   lib/dictionary.ts   —— 全站中英對照字串表（footer 免責聲明亦喺此）
+//   lib/i18n.tsx        —— locale provider，亦夾雜少量字串
+//   data/heroContent.ts —— 主頁 hero 六季文案，係最多人見到嘅一段字
+// 呢幾個檔一旦寫入羞辱/罪疚字眼，會直接出現喺首屏，卻唔會被任何閘攔住。
+for (const rel of ['lib/dictionary.ts', 'lib/i18n.tsx', 'data/heroContent.ts']) scanCopyFile(rel)
 
 console.log(`${'─'.repeat(70)}`)
 if (violations === 0) {
