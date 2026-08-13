@@ -37,8 +37,32 @@ export function round(x: number, dp = 2): string {
   return String(Number(x.toFixed(dp)))
 }
 
+/** 一個被丟棄的參數組合。丟棄本身正確，但必須留下紀錄。 */
+export interface Drop {
+  subject: string
+  id: string
+  reason: 'not-4-options' | 'duplicate-options'
+  options: string[]
+}
+
+// ── 丟棄登記冊（2026-08-13）────────────────────────────────────────────────
+// `add()` 一直會靜默丟棄退化的參數組合。丟棄本身正確 —— 寧可少出一題，也不能
+// 向學生送出一題含有兩個相同選項的 MC。問題在於全程沒有任何提示。
+//
+// 實測：使用本工廠的 6 科合共丟棄 182 個參數組合，出題者收不到任何訊號。作者
+// 以為寫出 40 個變體，實際入庫 28 個，差額無人知悉。此即「無限變體生成器」的
+// 真正缺口 —— 並非生成不到，而是損耗看不見。
+//
+// 登記冊置於 module level：各 bank 於 import 時求值，故任何已 import 相關 bank
+// 的工具或測試，均可事後讀取全量損耗。
+const dropRegistry: Drop[] = []
+/** 讀取各 bank 於載入期間被丟棄的參數組合（須先 import 相關 bank）。 */
+export const getParametricDrops = (): readonly Drop[] => dropRegistry
+
 export interface Bank {
   bank: Question[]
+  /** 本 bank 被丟棄的參數組合（登記冊之中屬於本 subject 的部分）。 */
+  drops: Drop[]
   add: (
     id: string, topic: TopicMeta, fw: FwMeta, difficulty: Difficulty,
     content: Pair, opts: Pair[], explanation: Pair,
@@ -47,10 +71,17 @@ export interface Bank {
 
 export function createBank(subject: string): Bank {
   const bank: Question[] = []
+  const drops: Drop[] = []
+  const drop = (id: string, reason: Drop['reason'], options: string[]) => {
+    const d: Drop = { subject, id, reason, options }
+    drops.push(d)
+    dropRegistry.push(d)
+  }
   const add: Bank['add'] = (id, topic, fw, difficulty, content, opts, explanation) => {
-    if (opts.length !== 4) return
+    if (opts.length !== 4) return drop(id, 'not-4-options', opts.map((o) => o[0]))
     const zh = opts.map((o) => o[0])
-    if (new Set(zh).size !== 4) return // degenerate parameters → drop, never ship an ambiguous item
+    // degenerate parameters → drop, never ship an ambiguous item（同時登記，不再靜默）
+    if (new Set(zh).size !== 4) return drop(id, 'duplicate-options', zh)
     bank.push({
       id, type: 'mc', subject,
       topic: topic.id, topicZh: topic.zh, topicEn: topic.en,
@@ -63,5 +94,5 @@ export function createBank(subject: string): Bank {
       marks: difficulty === 'hard' ? 2 : 1,
     })
   }
-  return { bank, add }
+  return { bank, drops, add }
 }
