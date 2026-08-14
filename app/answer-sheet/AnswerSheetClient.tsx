@@ -7,13 +7,14 @@ import { ClipboardCheck, Lightbulb, ArrowRight, Check, RotateCcw, Save } from 'l
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
-import { getSubjectMCQuestions, getQuestionsByTopic } from '@/data/questions'
+import { getSubjectMCQuestions, getQuestionsByTopic, getWrittenQuestions } from '@/data/questions'
+import type { SelfAssessment, WrittenQuestion } from '@/data/questions/types'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { recordAttempt } from '@/lib/progress'
 import { recordTopicOutcomes } from '@/lib/topicStats'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
-import { buildPaper, decodePaperCode, type PaperItem, type PaperSpec } from '@/lib/paper/paper'
+import { buildPaper, buildWrittenSection, decodePaperCode, type PaperItem, type PaperSpec } from '@/lib/paper/paper'
 
 // 紙筆對答案 —— 一入嚟就係一份【答案紙】。
 //
@@ -43,6 +44,21 @@ const REVERSE_CAUSES: {
 
 type Mark = 'right' | 'wrong'
 
+// `react-hooks/purity` 唔准喺 component body 內直接叫 Date.now()。時間戳確實要
+// 喺事件發生嗰刻先取（唔可以喺 render 期預先算），所以抽去 module scope。
+const nowMs = () => Date.now()
+
+// 乙部自評三級 → 課題掌握度權重。同 LongPracticeSession 嘅 CREDIT 一致：
+// 「部分明白」記半分而非 0 —— 寫得出部分步驟同完全唔識唔應該當同一件事。
+const WRITTEN_CREDIT: Record<WrittenLevel, number> = { full: 1, partial: 0.5, none: 0 }
+type WrittenLevel = Extract<SelfAssessment, 'full' | 'partial' | 'none'>
+
+const WRITTEN_LEVELS: { key: WrittenLevel; zh: string; en: string; cls: string }[] = [
+  { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-accent/50 bg-accent/15 text-accent-strong' },
+  { key: 'partial', zh: '部分明白', en: 'Partly', cls: 'border-gold/50 bg-gold/15 text-gold-strong' },
+  { key: 'none', zh: '仲未掌握', en: 'Not yet', cls: 'border-line-strong bg-line text-ink-soft' },
+]
+
 export default function AnswerSheetClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -50,7 +66,10 @@ export default function AnswerSheetClient() {
   const params = useSearchParams()
 
   const [code, setCode] = useState('')
-  const [paper, setPaper] = useState<{ spec: PaperSpec; items: PaperItem[] } | null>(null)
+  const [paper, setPaper] = useState<
+    { spec: PaperSpec; items: PaperItem[]; writtenItems: WrittenQuestion[] } | null
+  >(null)
+  const [writtenLevels, setWrittenLevels] = useState<Record<string, WrittenLevel>>({})
   const [error, setError] = useState(false)
   const [marks, setMarks] = useState<Record<string, Mark>>({})
   const [causes, setCauses] = useState<Record<string, ReverseCause>>({})
@@ -76,10 +95,13 @@ export default function AnswerSheetClient() {
     setError(false)
     setMarks({})
     setCauses({})
+    setWrittenLevels({})
     setScoreInput('')
     setMinutesInput('')
     setSaved(null)
-    setPaper({ spec, items })
+    // 乙部：卷號第 5 段有幾多就重建幾多（冇第 5 段即 0，舊卷號行為不變）
+    const writtenItems = buildWrittenSection(spec, spec.written ? getWrittenQuestions(spec.subject) : [])
+    setPaper({ spec, items, writtenItems })
   }, [])
 
   // 由 URL ?p= 自動開卷（紙上印咗 QR 同卷號）
@@ -112,8 +134,43 @@ export default function AnswerSheetClient() {
       // 紙筆流程冇收集學生實際揀咗邊個選項（佢張紙先有），故留空而唔係老作一個
       selected: '',
       correct: item.options[item.answerIndex],
-      ts: Date.now(),
+      ts: nowMs(),
       difficulty: item.question.difficulty,
+    })
+  }
+
+  /**
+   * 乙部自評 —— 跟足 2026-07-31 Brian 拍板嘅規則（見 LongPracticeSession 檔頭）：
+   * 只寫 topicStats（同 reverseLog，若學生肯揀錯因），**唔會**入 recordAttempt，
+   * 所以唔會流入甲部成績、整體準確率或等級預測。自評係學生自己講嘅嘢，
+   * 混入客觀指標就等於把主觀數據當客觀分展示。
+   */
+  function assessWritten(q: WrittenQuestion, level: WrittenLevel) {
+    if (!paper || writtenLevels[q.id]) return // 一題只計一次，防止重複疊加課題掌握度
+    setWrittenLevels((prev) => ({ ...prev, [q.id]: level }))
+    recordTopicOutcomes(paper.spec.subject, [
+      {
+        topic: q.topic,
+        label: en ? (q.topicEn ?? q.topicZh) : q.topicZh,
+        correct: WRITTEN_CREDIT[level],
+        total: 1,
+      },
+    ])
+  }
+
+  function logWrittenCause(q: WrittenQuestion, cause: ReverseCause) {
+    if (!paper) return
+    setCauses((prev) => ({ ...prev, [q.id]: cause }))
+    logReverseError({
+      subjectId: paper.spec.subject,
+      questionId: q.id,
+      topic: en ? (q.topicEn ?? q.topicZh) : q.topicZh,
+      topicId: q.topic,
+      cause,
+      selected: tr('（書寫題自評）', '(written self-assessment)'),
+      correct: q.referenceAnswer.slice(0, 120),
+      ts: nowMs(),
+      difficulty: q.difficulty,
     })
   }
 
@@ -336,6 +393,115 @@ export default function AnswerSheetClient() {
               )
             })}
           </ol>
+
+          {paper.writtenItems.length > 0 && (
+            <section className="mt-8">
+              <h2 className="text-base font-medium text-ink">{tr('乙部 · 書寫題', 'Section B · Written')}</h2>
+              <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+                {tr(
+                  '書寫題永遠唔會由機器批改。下面出參考答案同評分準則，你自己對住張紙評 —— 呢部分唔會計入上面個成績同等級，只會餵你嘅課題掌握度。',
+                  'Written questions are never machine-marked. Below is a model answer and marking scheme for you to judge your own work — this section never counts toward the score or grade above; it only feeds your topic mastery.',
+                )}
+              </p>
+
+              <ol className="mt-4 space-y-3">
+                {paper.writtenItems.map((q, i) => {
+                  const level = writtenLevels[q.id]
+                  return (
+                    <li key={q.id} className="rounded-2xl border border-line bg-surface-raised p-4">
+                      <div className="text-sm font-medium leading-relaxed text-ink">
+                        {paper.items.length + i + 1}.{' '}
+                        <MathText>{tr(q.content, q.contentEn ?? q.content)}</MathText>
+                        <span className="ml-1 text-xs font-normal text-ink-muted">
+                          （{q.marks} {tr('分', q.marks === 1 ? 'mark' : 'marks')}）
+                        </span>
+                      </div>
+
+                      <div className="mt-2.5 rounded-xl border border-accent/25 bg-accent/[0.05] p-3">
+                        <p className="text-xs font-medium text-accent-strong">{tr('參考答案', 'Model answer')}</p>
+                        <div className="mt-1 text-sm leading-relaxed text-ink-soft">
+                          <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn ?? q.referenceAnswer)}</MathText>
+                        </div>
+                      </div>
+
+                      {/* 評分準則只有 LongQuestion 先有；TextQuestion（短答）冇呢欄 */}
+                      {q.type === 'long' && q.markingScheme && (
+                        <details className="mt-2 rounded-xl border border-line bg-surface p-3">
+                          <summary className="cursor-pointer text-xs font-medium text-ink-soft">
+                            {tr('評分準則', 'Marking scheme')}
+                          </summary>
+                          <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
+                            <MathText>{tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme)}</MathText>
+                          </div>
+                        </details>
+                      )}
+
+                      {q.explanation && (
+                        <details className="mt-2 rounded-xl border border-line bg-surface p-3">
+                          <summary className="cursor-pointer text-xs font-medium text-ink-soft">
+                            {tr('解題思路', 'How to approach it')}
+                          </summary>
+                          <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
+                            <MathText>{tr(q.explanation, q.explanationEn ?? q.explanation)}</MathText>
+                          </div>
+                        </details>
+                      )}
+
+                      <p className="mt-3 text-xs text-ink-muted">
+                        {tr('對住你張紙，你覺得自己寫成點？', 'Comparing with your paper, how did you do?')}
+                      </p>
+                      <div className="mt-1.5 flex flex-wrap gap-2">
+                        {WRITTEN_LEVELS.map((l) => (
+                          <button
+                            key={l.key}
+                            onClick={() => assessWritten(q, l.key)}
+                            disabled={!!level}
+                            aria-pressed={level === l.key}
+                            className={`min-h-11 rounded-xl border px-3 text-sm font-medium transition-colors disabled:opacity-60 ${
+                              level === l.key ? l.cls : 'border-line bg-surface text-ink-muted hover:border-accent/40'
+                            }`}
+                          >
+                            {tr(l.zh, l.en)}
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* 未完全掌握先出錯因【邀請】。刻意唔強制：唔記錄好過捏造一個 cause。 */}
+                      {level && level !== 'full' && (
+                        <div className="mt-3 rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
+                          <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
+                            <Lightbulb size={15} /> {tr('想記低係邊種盲點？（唔想就跳過）', 'Want to log the kind of gap? (skip if you prefer)')}
+                          </p>
+                          <div className="mt-2 space-y-1.5">
+                            {REVERSE_CAUSES.map((c) => {
+                              const chosen = causes[q.id] === c.key
+                              return (
+                                <button
+                                  key={c.key}
+                                  onClick={() => logWrittenCause(q, c.key)}
+                                  className={`flex w-full items-start gap-2 rounded-lg border p-2 text-left transition-colors ${
+                                    chosen ? 'border-accent/50 bg-accent/[0.08]' : 'border-line bg-surface-raised hover:border-accent/40'
+                                  }`}
+                                >
+                                  <span className="text-sm">{c.emoji}</span>
+                                  <span className="min-w-0">
+                                    <span className="block text-sm font-medium text-ink">{tr(c.zh, c.en)}</span>
+                                    <span className="mt-0.5 block text-xs leading-relaxed text-ink-muted">
+                                      {tr(c.zhDesc, c.enDesc)}
+                                    </span>
+                                  </span>
+                                </button>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
+              </ol>
+            </section>
+          )}
 
           {/* 成績存檔 */}
           <div className="mt-6 rounded-2xl border border-line bg-surface-raised p-5">

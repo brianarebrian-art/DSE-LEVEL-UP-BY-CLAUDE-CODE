@@ -6,13 +6,22 @@ import { Printer, FileText, RefreshCw, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
-import { getSubjectMCQuestions, getSubjectTopics, getQuestionsByTopic } from '@/data/questions'
+import {
+  getSubjectMCQuestions,
+  getSubjectTopics,
+  getQuestionsByTopic,
+  getWrittenQuestions,
+  hasWrittenQuestions,
+} from '@/data/questions'
+import type { WrittenQuestion } from '@/data/questions/types'
 import QRCode from '@/components/QRCode'
 import {
   answerSheetUrl,
   buildPaper,
+  buildWrittenSection,
   encodePaperCode,
   newSeed,
+  WRITTEN_SIZES,
   LETTERS,
   PAPER_SIZES,
   type PaperItem,
@@ -33,8 +42,21 @@ export default function PaperWarriorClient() {
   const [subject, setSubject] = useState(activeSubjects[0]?.id ?? 'math')
   const [topic, setTopic] = useState('')
   const [size, setSize] = useState<number>(20)
+  const [written, setWritten] = useState<number>(0)
   const [withExplain, setWithExplain] = useState(false)
-  const [paper, setPaper] = useState<{ spec: PaperSpec; items: PaperItem[] } | null>(null)
+  const [paper, setPaper] = useState<
+    { spec: PaperSpec; items: PaperItem[]; writtenItems: WrittenQuestion[] } | null
+  >(null)
+
+  // 乙部只喺真係有書寫題嘅科目出現（現時只有中文科 26 條 long）。
+  // 冇題就連個控制項都唔顯示 —— 好過畀人揀完先話「呢科冇」。
+  const subjectHasWritten = useMemo(() => {
+    try {
+      return hasWrittenQuestions(subject)
+    } catch {
+      return false
+    }
+  }, [subject])
 
   const topics = useMemo(() => {
     try {
@@ -47,12 +69,15 @@ export default function PaperWarriorClient() {
   const subjectMeta = activeSubjects.find((s) => s.id === subject)
 
   const generate = useCallback(() => {
-    const spec: PaperSpec = { subject, topic, size, seed: newSeed() }
-    // 只取 MC：卷霸模擬卷按客觀分數評級，書寫題（自評制）唔計入
+    const wanted = subjectHasWritten ? written : 0
+    const spec: PaperSpec = { subject, topic, size, seed: newSeed(), ...(wanted > 0 && { written: wanted }) }
+    // 甲部只取 MC：客觀分數評級嗰部分，書寫題（自評制）唔計入
     const pool = topic ? getQuestionsByTopic(subject, topic) : getSubjectMCQuestions(subject)
     const items = buildPaper(spec, pool)
-    setPaper(items.length > 0 ? { spec, items } : null)
-  }, [subject, topic, size])
+    // 乙部由全科書寫題抽（唔跟課題篩選 —— 長題目本身就跨課題，26 條再篩就幾乎抽唔到）
+    const writtenItems = buildWrittenSection(spec, wanted > 0 ? getWrittenQuestions(subject) : [])
+    setPaper(items.length > 0 ? { spec, items, writtenItems } : null)
+  }, [subject, topic, size, written, subjectHasWritten])
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -133,6 +158,38 @@ export default function PaperWarriorClient() {
               ))}
             </div>
           </div>
+
+          {subjectHasWritten && (
+            <div className="mt-4">
+              <span className="mb-1.5 block text-sm font-medium text-ink-soft">
+                {tr('乙部 · 書寫題', 'Section B · written')}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {WRITTEN_SIZES.map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => {
+                      setWritten(n)
+                      setPaper(null)
+                    }}
+                    className={`min-h-11 rounded-lg px-4 text-sm transition-colors ${
+                      written === n
+                        ? 'bg-accent/12 text-accent-strong ring-1 ring-accent/40'
+                        : 'bg-line text-ink-muted hover:bg-line'
+                    }`}
+                  >
+                    {n === 0 ? tr('唔要', 'None') : n}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-1.5 text-xs leading-relaxed text-ink-muted">
+                {tr(
+                  '書寫題冇客觀對錯，對答案時出參考答案同評分準則畀你自評，唔會計入上面嗰個分數同等級。',
+                  'Written questions have no objective right answer: the answer sheet shows a model answer and marking scheme for you to self-assess. They never count toward the score or grade above.',
+                )}
+              </p>
+            </div>
+          )}
 
           <label className="mt-4 flex min-h-11 items-center gap-2.5">
             <input
@@ -253,6 +310,44 @@ export default function PaperWarriorClient() {
               </li>
             ))}
           </ol>
+
+          {paper.writtenItems.length > 0 && (
+            <section className="mt-8">
+              <h2 className="border-t border-line-strong pt-4 text-sm font-medium text-ink">
+                {tr('乙部 · 書寫題', 'Section B · Written')}
+              </h2>
+              <p className="mt-1 text-xs leading-relaxed text-ink-soft">
+                {tr(
+                  '書寫題冇客觀對錯。做完之後喺對答案頁對住參考答案同評分準則自評，唔會計入甲部分數。',
+                  'Written questions have no objective right answer. Compare with the model answer and marking scheme on the answer sheet; they do not count toward the Section A score.',
+                )}
+              </p>
+              <ol className="mt-4 space-y-6">
+                {paper.writtenItems.map((q, i) => (
+                  <li key={q.id} className="paper-q break-inside-avoid">
+                    <div className="text-sm font-medium leading-relaxed">
+                      {paper.items.length + i + 1}.{' '}
+                      <MathText>{tr(q.content, q.contentEn ?? q.content)}</MathText>
+                      <span className="ml-1 text-xs font-normal text-ink-soft">
+                        （{q.marks} {tr('分', q.marks === 1 ? 'mark' : 'marks')}
+                        {q.type === 'long' && q.suggestedMinutes
+                          ? tr(`．建議 ${q.suggestedMinutes} 分鐘`, `, ~${q.suggestedMinutes} min`)
+                          : ''}
+                        ）
+                      </span>
+                    </div>
+                    {/* 作答空間：高度按分數走（每分約 26px），設上下限令一題唔會
+                        自己霸咗成版、亦唔會細到寫唔落。虛線框喺列印時保留。 */}
+                    <div
+                      className="paper-write-space mt-2 rounded-lg border border-dashed border-line-strong"
+                      style={{ minHeight: `${Math.min(360, Math.max(110, q.marks * 26))}px` }}
+                      aria-hidden
+                    />
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
 
           {/* print-keep：呢個係卷面自己嘅頁腳，唔係網站頁腳。冇呢個 class 就會被
               print CSS 嘅 `footer` 規則一併隱藏，連卷號同免責聲明都印唔到。 */}

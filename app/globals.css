@@ -291,6 +291,12 @@ html {
   .paper-q {
     break-inside: avoid;
   }
+  /* 乙部作答框：紙上一定要睇得見條虛線同界線。螢幕用嘅 border token 喺白紙上
+     太淺（幾乎睇唔到），所以列印時寫死一個中灰。背景保持純白唔嘥墨。 */
+  .paper-write-space {
+    border: 1px dashed #94a3b8 !important;
+    background: #ffffff !important;
+  }
 }
 
 /* ───────────────────────────────────────────────────────────────────────────
