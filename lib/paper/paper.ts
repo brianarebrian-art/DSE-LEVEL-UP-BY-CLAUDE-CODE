@@ -10,13 +10,22 @@
 //
 // 選項次序都要由 seed 決定 —— 唔係嘅話印出嚟嗰張紙嘅 A/B/C/D 會同對答案頁唔同。
 
-import type { Question, MCQuestion } from '@/data/questions/types'
+import type { Question, MCQuestion, AnyQuestion, WrittenQuestion } from '@/data/questions/types'
+import { isWrittenQuestion } from '@/data/questions/types'
+import { SITE_ORIGIN } from '@/lib/site'
 
 export interface PaperSpec {
   subject: string
   topic: string // '' = 全部課題
   size: number
   seed: string // base36
+  /**
+   * 乙部書寫題數目（0 或省略 = 冇乙部）。
+   *
+   * 卷號第 5 段【只喺 > 0 先出現】，寫成 `w2` 咁樣自我描述。咁樣 2026-08-14
+   * 之前印出嘅四段式卷號逐字不變，張紙照樣開得返同一份卷。
+   */
+  written?: number
 }
 
 export interface PaperItem {
@@ -29,6 +38,11 @@ export interface PaperItem {
 const SEP = '~'
 export const PAPER_SIZES = [10, 20, 30, 40] as const
 const MAX_SIZE = 40
+
+// 乙部書寫題。上限 3 條，同 `DEFAULT_LONG_SESSION` 一致 —— 一條長題目建議用時
+// 5–15 分鐘，四條以上就唔再係「一份可以坐低做完嘅卷」。
+export const WRITTEN_SIZES = [0, 1, 2, 3] as const
+const MAX_WRITTEN = 3
 
 // ── 確定性 PRNG（mulberry32）——同一 seed 永遠同一序列，跨裝置一致。
 function rngFrom(seedStr: string): () => number {
@@ -62,16 +76,39 @@ export function newSeed(): string {
 
 // ── code ⇄ spec。code 印喺紙上，學生打得返、掃得返，唔含任何個人資料。
 export function encodePaperCode(spec: PaperSpec): string {
-  return [spec.subject, spec.topic || 'all', String(spec.size), spec.seed].join(SEP)
+  const parts = [spec.subject, spec.topic || 'all', String(spec.size), spec.seed]
+  // 第 5 段只喺有乙部先加，冇乙部嘅卷號同舊格式逐字相同（見 PaperSpec.written）。
+  if (spec.written && spec.written > 0) parts.push(`w${Math.min(spec.written, MAX_WRITTEN)}`)
+  return parts.join(SEP)
+}
+
+/**
+ * 對答案深連結 —— 印喺卷上供掃描。
+ *
+ * 只含公開卷號，冇任何個人資料，所以同檔頭嗰個「QR 唔可以載 session key」嘅
+ * 決定冇衝突：被否決嘅係「QR 內含 localStorage session key」，唔係掃描本身。
+ * 用正式網域而唔用 `location.origin`：張紙印出嚟之後就離開咗當時個 session，
+ * 喺 localhost 印就會印低一條開發機網址，張紙一出到街即刻係死連結。
+ */
+export function answerSheetUrl(spec: PaperSpec): string {
+  return `${SITE_ORIGIN}/answer-sheet?p=${encodeURIComponent(encodePaperCode(spec))}`
 }
 
 export function decodePaperCode(code: string): PaperSpec | null {
   const parts = String(code ?? '').trim().toLowerCase().split(SEP)
-  if (parts.length !== 4) return null
-  const [subject, topic, sizeRaw, seed] = parts
+  if (parts.length !== 4 && parts.length !== 5) return null
+  const [subject, topic, sizeRaw, seed, writtenRaw] = parts
   const size = Number(sizeRaw)
   if (!subject || !seed || !Number.isInteger(size) || size < 1 || size > MAX_SIZE) return null
-  return { subject, topic: topic === 'all' ? '' : topic, size, seed }
+
+  const base = { subject, topic: topic === 'all' ? '' : topic, size, seed }
+  if (parts.length === 4) return base // 四段式 = 冇乙部，`written` 索性唔出現
+
+  const m = /^w(\d+)$/.exec(writtenRaw ?? '')
+  if (!m) return null
+  const written = Number(m[1])
+  if (written < 1 || written > MAX_WRITTEN) return null
+  return { ...base, written }
 }
 
 // ── 3:5:2 分層抽題。刻意【唔】用 localStorage 嘅「做過未」排序（practice 先要），
@@ -117,6 +154,22 @@ function pickByDifficulty(ordered: MCQuestion[], size: number): MCQuestion[] {
  * 由 spec + 題庫重建一份卷。純函數：同樣輸入 ⇒ 同樣輸出（跨裝置一致）。
  * pool 由 caller 傳入（getSubjectQuestions / getQuestionsByTopic），方便 code-split。
  */
+/**
+ * 抽乙部書寫題。同 `buildPaper` 一樣係純函數，同一 spec 跨裝置重建到同一批題。
+ *
+ * ⚠️ 刻意用【獨立 seed 流】（`${seed}|written|…`），唔可以把 `written` 併入
+ * `buildPaper` 嗰條 rng 字串 —— 一併就會令加乙部連甲部 MC 都換咗一批，
+ * 舊卷號重建唔到原本嗰份卷。兩部各行各路，加乙部對甲部零影響。
+ */
+export function buildWrittenSection(spec: PaperSpec, pool: AnyQuestion[]): WrittenQuestion[] {
+  const n = Math.min(spec.written ?? 0, MAX_WRITTEN)
+  if (n <= 0) return []
+  const written = pool.filter(isWrittenQuestion)
+  if (written.length === 0) return []
+  const rnd = rngFrom(`${spec.seed}|written|${spec.subject}|${spec.topic}`)
+  return shuffled(written, rnd).slice(0, n)
+}
+
 export function buildPaper(spec: PaperSpec, pool: Question[]): PaperItem[] {
   const mc = pool.filter((q): q is MCQuestion => q.type === 'mc')
   const rnd = rngFrom(`${spec.subject}|${spec.topic}|${spec.size}|${spec.seed}`)

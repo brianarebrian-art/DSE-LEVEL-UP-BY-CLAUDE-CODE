@@ -17,7 +17,8 @@ import { getActiveSubjects } from '@/data/subjects'
 // ④ `/admin`、`/sign-in`、`/sign-up`：權限頁，robots.txt 已明文 Disallow。
 //
 // 網域：dselevelup.hk 尚未購入，一律使用現行 Vercel 部署域（Brian 2026-07-29 拍板）。
-const DOMAIN = 'https://dse-level-up-by-claude-code.vercel.app'
+// 2026-08-14 收攏為單一來源，理由見 lib/site.ts。
+import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
 
 // 公開靜態頁。順序即優先級由高至低。
 const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [

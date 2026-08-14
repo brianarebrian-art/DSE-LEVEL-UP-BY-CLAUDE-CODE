@@ -12,8 +12,10 @@ import ReadingRuler from '@/components/ReadingRuler'
 const inter = Inter({ subsets: ['latin'] })
 
 // 部署網域。dselevelup.hk 尚未購入，一律沿用現行 Vercel 域（Brian 2026-07-29 拍板）。
-// robots.txt 與 app/sitemap.ts 使用同一個值，三處必須一致。
-const SITE_URL = 'https://dse-level-up-by-claude-code.vercel.app'
+// 2026-08-14：原本此處與 app/sitemap.ts 各有一份字面值，靠註釋提醒「三處必須一致」。
+// 紙筆戰士把對答案網址印上實體試卷後，寫錯即無法補救，故改為單一來源匯入。
+// （public/robots.txt 為靜態檔，無法匯入，由 lib/__tests__/site-origin.test.mts 核對。）
+import { SITE_ORIGIN as SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
