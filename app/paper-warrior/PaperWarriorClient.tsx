@@ -7,7 +7,9 @@ import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
 import { getSubjectMCQuestions, getSubjectTopics, getQuestionsByTopic } from '@/data/questions'
+import QRCode from '@/components/QRCode'
 import {
+  answerSheetUrl,
   buildPaper,
   encodePaperCode,
   newSeed,
@@ -252,14 +254,20 @@ export default function PaperWarriorClient() {
             ))}
           </ol>
 
-          <footer className="mt-6 border-t border-line-strong pt-3 text-xs text-ink-soft">
+          {/* print-keep：呢個係卷面自己嘅頁腳，唔係網站頁腳。冇呢個 class 就會被
+              print CSS 嘅 `footer` 規則一併隱藏，連卷號同免責聲明都印唔到。 */}
+          <footer className="print-keep mt-6 flex items-start gap-4 border-t border-line-strong pt-3 text-xs text-ink-soft">
+            {/* QR：掃一次就開對答案頁並自動填卷號，唔使人手抄 `~` 分隔符（手機鍵盤
+                要切兩次符號版先打到）。內容只係公開卷號深連結，冇任何個人資料。 */}
+            <QRCode value={answerSheetUrl(paper.spec)} size={84} className="shrink-0 rounded" />
+            <div className="min-w-0">
             <p className="font-medium">
               {tr('卷號', 'Paper code')}：<span className="tracking-wider">{encodePaperCode(paper.spec)}</span>
             </p>
             <p className="mt-0.5">
               {tr(
-                '做完想對答案：喺 DSE Level Up 開「紙筆戰士 → 對答案」，打返上面個卷號就會重開同一份卷。',
-                'To check your answers: open “Paper Warrior → Answer sheet” on DSE Level Up and enter the paper code above.',
+                '做完想對答案：掃左邊個 QR 碼就會即刻開對答案頁；冇相機都得，喺 DSE Level Up 開「紙筆戰士 → 對答案」，打返上面個卷號一樣重開到同一份卷。',
+                'To check your answers: scan the QR code on the left to open the answer sheet directly. No camera? Open “Paper Warrior → Answer sheet” on DSE Level Up and enter the paper code above.',
               )}
             </p>
             <p className="mt-1.5 text-ink-muted">
@@ -268,6 +276,7 @@ export default function PaperWarriorClient() {
                 'Questions are independently rewritten and are not HKEAA official exam papers.',
               )}
             </p>
+            </div>
           </footer>
         </article>
       )}

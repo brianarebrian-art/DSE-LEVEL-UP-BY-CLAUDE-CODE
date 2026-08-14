@@ -223,9 +223,14 @@ html {
    diagnostic report / writing draft prints legibly. Opt out with `.print-keep`.
    ─────────────────────────────────────────────────────────────────────────── */
 @media print {
-  /* 1 — hide site chrome & all interactive controls */
+  /* 1 — hide site chrome & all interactive controls
+     ⚠️ `footer` 必須寫 `:not(.print-keep)`。原本淨係寫 `footer`，一併殺埋紙筆戰士
+     卷面【自己嗰個】頁腳 —— 而卷號、對答案指示、HKEAA 免責聲明全部喺入面。
+     即係印出嚟嘅試卷一直冇卷號（「打返卷號重開同一份卷」喺實體紙上根本行唔通）
+     亦冇免責聲明（憲章 §4 要求每頁顯示）。2026-08-14 加 QR 時用瀏覽器實測揭發。
+     `.print-keep` 呢個逃生門本身已存在（見同一條規則嘅 button），沿用即可。 */
   nav,
-  footer,
+  footer:not(.print-keep),
   button:not(.print-keep),
   .no-print,
   nextjs-portal {

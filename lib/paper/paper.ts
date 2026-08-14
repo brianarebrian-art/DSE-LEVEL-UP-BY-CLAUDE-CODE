@@ -11,6 +11,7 @@
 // 選項次序都要由 seed 決定 —— 唔係嘅話印出嚟嗰張紙嘅 A/B/C/D 會同對答案頁唔同。
 
 import type { Question, MCQuestion } from '@/data/questions/types'
+import { SITE_ORIGIN } from '@/lib/site'
 
 export interface PaperSpec {
   subject: string
@@ -63,6 +64,18 @@ export function newSeed(): string {
 // ── code ⇄ spec。code 印喺紙上，學生打得返、掃得返，唔含任何個人資料。
 export function encodePaperCode(spec: PaperSpec): string {
   return [spec.subject, spec.topic || 'all', String(spec.size), spec.seed].join(SEP)
+}
+
+/**
+ * 對答案深連結 —— 印喺卷上供掃描。
+ *
+ * 只含公開卷號，冇任何個人資料，所以同檔頭嗰個「QR 唔可以載 session key」嘅
+ * 決定冇衝突：被否決嘅係「QR 內含 localStorage session key」，唔係掃描本身。
+ * 用正式網域而唔用 `location.origin`：張紙印出嚟之後就離開咗當時個 session，
+ * 喺 localhost 印就會印低一條開發機網址，張紙一出到街即刻係死連結。
+ */
+export function answerSheetUrl(spec: PaperSpec): string {
+  return `${SITE_ORIGIN}/answer-sheet?p=${encodeURIComponent(encodePaperCode(spec))}`
 }
 
 export function decodePaperCode(code: string): PaperSpec | null {
