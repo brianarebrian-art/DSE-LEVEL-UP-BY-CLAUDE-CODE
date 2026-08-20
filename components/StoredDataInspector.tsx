@@ -55,6 +55,7 @@ const LABELS: Record<string, { zh: string; en: string }> = {
   dse_active_session: { zh: '未做完嗰份卷（供續做）', en: 'An unfinished set, so you can resume' },
   dse_reverse_log: { zh: '錯題同你自己揀嘅錯因', en: 'Wrong answers and the causes you picked' },
   dse_bookmarks: { zh: '你收藏咗嘅題目', en: 'Questions you bookmarked' },
+  dse_capsule: { zh: '你封存喺時間囊入面嘅字', en: 'What you sealed in a time capsule' },
   dse_result: { zh: '最近一次練習結果', en: 'Your most recent result' },
   dse_review_done: { zh: '複習排程進度', en: 'Spaced-review progress' },
   dse_daily_spectrum: { zh: '每日難度分佈', en: 'Daily difficulty spread' },

@@ -66,8 +66,8 @@ export default function PrivacyClient() {
       <Section title={en ? 'What is stored on your own device' : '存喺你自己部機嘅嘢'}>
         <p>
           {en
-            ? 'By default everything lives in your browser’s local storage: your scores, which topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your mood log, and your writing drafts.'
-            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你邊啲課題易錯、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅心情記錄，同埋你嘅寫作草稿。'}
+            ? 'By default everything lives in your browser’s local storage: your scores, which topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your mood log, your writing drafts, and anything you sealed in a time capsule.'
+            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你邊啲課題易錯、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅心情記錄、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
         </p>
         <p>
           {en ? 'You can see the exact list, on your own device, at ' : '你可以喺你自己部機睇到完整清單：'}
@@ -106,8 +106,8 @@ export default function PrivacyClient() {
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'Deliberately NOT synced, even when you are signed in: your mood log, your error-diagnosis notes, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. Your mood log in particular is never uploaded — a record of how you were feeling is not something we want to hold.'
-            : '就算你登入咗，以下都【刻意唔會】上傳：你嘅心情記錄、你嘅錯因自診紀錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。特別係心情記錄 —— 我哋唔想手上有一份「你嗰陣心情點」嘅紀錄。'}
+            ? 'Deliberately NOT synced, even when you are signed in: your time capsules, your mood log, your error-diagnosis notes, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. Your capsules and your mood log in particular are never uploaded — those are words you wrote to yourself, and they are not something we want to hold.'
+            : '就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅心情記錄、你嘅錯因自診紀錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。特別係時間囊同心情記錄 —— 嗰啲係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 
@@ -160,16 +160,18 @@ export default function PrivacyClient() {
         </p>
       </Section>
 
-      <Section title={en ? 'The wall: what “anonymous” actually means' : '互助牆：「匿名」實際係咩意思'}>
+      <Section title={en ? 'No user content, so nothing about you is public' : '冇用戶內容，所以冇任何關於你嘅嘢係公開嘅'}>
         <p>
           {en
-            ? 'Other students only ever see “Student #XXXX”, and that number is regenerated daily, so nobody can link your posts across days.'
-            : '其他同學只會見到「考生 #XXXX」，而個號碼每日重新產生，所以冇人可以將你唔同日嘅留言串埋一齊。'}
+            ? 'This site has no messaging, no posts, no comments and no likes — nothing you do here is visible to another user. The anonymous encouragement wall that used to exist was removed on 21 August 2026, along with everything it stored.'
+            : '本站冇訊息、冇留言、冇回覆、冇心心 —— 你喺呢度做嘅嘢，冇一樣係另一個用戶睇得到。以前嗰個匿名打氣互助牆已經喺 2026 年 8 月 21 日移除，連同佢儲存過嘅嘢一齊。'}
         </p>
         <p>
-          {en
-            ? 'It does not mean we know nothing. Your post is stored with your account identifier so a real person can review it before it goes public, and so we can act if somebody is being harmed. We never show that identifier to other users. Every post is reviewed by a human — nothing is auto-published.'
-            : '但佢唔等於我哋乜都唔知。你嘅留言會連同你嘅帳戶識別碼一齊儲存，等真人可以喺公開之前審核，亦等有人受到傷害時我哋處理得到。我哋唔會將呢個識別碼展示畀其他用戶。每一則留言都由真人審核 —— 冇任何嘢係自動公開嘅。'}
+          {en ? 'Why, and what took its place: see ' : '點解，同埋用咩接住：見'}
+          <Link href="/community-safety" className="font-medium text-accent-strong underline underline-offset-2">
+            {en ? 'student safety' : '學生安全'}
+          </Link>
+          {en ? '.' : '。'}
         </p>
       </Section>
 

@@ -12,8 +12,8 @@ import { getActiveSubjects } from '@/data/subjects'
 // ② 個人化頁（`/dashboard`、`/dashboard/report`、`/result`、`/account`）：內容
 //    全部由 localStorage 於客戶端產生，伺服器端渲染為空殼。收錄只會令爬蟲取得
 //    一批空白頁，拖低整站品質評分。待各頁補上伺服器端內容後方可加入。
-// ③ `/wall`（影子溫書室）：功能尚未上線 —— migration `0008_shadow_study_room.sql`
-//    未套用，`wall_posts` 資料表並不存在。
+// ③ 舊「影子溫書室」（`/wall`）已於 2026-08-21 整個移除 —— 見 docs/DECISION-no-interaction.md。
+//    本站【永久】唔提供任何用戶對用戶互動，所以呢度亦唔會再出現社群類路由。
 // ④ `/admin`、`/sign-in`、`/sign-up`：權限頁，robots.txt 已明文 Disallow。
 //
 // 網域：dselevelup.hk 尚未購入，一律使用現行 Vercel 部署域（Brian 2026-07-29 拍板）。
@@ -34,6 +34,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/transparency', priority: 0.6, freq: 'monthly' },
   { path: '/privacy', priority: 0.6, freq: 'monthly' },
   { path: '/community-safety', priority: 0.6, freq: 'monthly' },
+  { path: '/capsule', priority: 0.5, freq: 'monthly' },
   { path: '/reading', priority: 0.6, freq: 'monthly' },
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },

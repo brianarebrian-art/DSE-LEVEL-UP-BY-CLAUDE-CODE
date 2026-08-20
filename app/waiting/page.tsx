@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, Users } from 'lucide-react'
+import { ArrowLeft, Lock } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import DailyQuote from '@/components/waiting/DailyQuote'
 import BreathingExercise from '@/components/BreathingExercise'
@@ -44,22 +44,30 @@ export default function WaitingPage() {
           <BreathingExercise />
         </section>
 
-        {/* 社群互助牆 —— 預留位（完整版＝人手審核 UGC，尚未上線） */}
+        {/* 時間囊 —— 取代已刪除嘅「社群互助牆」預留位。
+            舊位寫住「匿名打氣互助牆準備緊 · 即將推出」，但該功能已於 2026-08-21
+            決定永久唔做（見 docs/DECISION-no-interaction.md）。留住一個唔會兌現嘅
+            「即將推出」，係一個細但真實嘅失信。 */}
         <section className="mb-8">
           <h2 className="mb-3 text-lg font-medium text-ink">
-            {en ? 'Community wall' : '社群互助牆'}
+            {en ? 'Write to a later you' : '寫畀之後嘅自己'}
           </h2>
-          <div className="rounded-2xl border border-dashed border-line-strong bg-surface-raised p-8 text-center">
-            <Users size={22} className="mx-auto mb-3 text-ink-faint" aria-hidden />
-            <p className="text-sm text-ink-muted leading-relaxed">
+          <Link
+            href="/capsule"
+            className="block rounded-2xl border border-line bg-surface-raised p-6 transition-colors hover:border-accent/40"
+          >
+            <Lock size={20} className="mb-3 text-accent" aria-hidden />
+            <p className="text-sm leading-relaxed text-ink-soft">
               {en
-                ? 'An anonymous support wall is on the way — with real human review before anything goes public, so it stays a safe space.'
-                : '匿名打氣互助牆準備緊 —— 帖子會經真人審核先公開，確保呢度係一個安全嘅空間。'}
+                ? 'Waiting is its own kind of hard. Write down where you are right now, seal it, and pick a day to read it back.'
+                : '等，本身都係一種難捱。寫低你而家喺邊個位置，封存佢，揀一日開返嚟睇。'}
             </p>
             <p className="mt-2 text-xs text-ink-muted">
-              {en ? 'Coming soon' : '即將推出'}
+              {en
+                ? 'Stays on your device · nobody else can read it →'
+                : '留喺你部機 · 冇其他人睇得到 →'}
             </p>
-          </div>
+          </Link>
         </section>
 
         {/* 危機熱線信號牌 —— 真實已驗證號碼（撒瑪利亞會 / 生命熱線）+ 醫療免責 */}
