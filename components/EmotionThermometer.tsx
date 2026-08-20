@@ -38,12 +38,12 @@ export default function EmotionThermometer({
         role="dialog"
         aria-modal="true"
         aria-labelledby="emotion-title"
-        className="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl p-6"
+        className="w-full max-w-sm bg-surface-raised border border-line-strong rounded-2xl p-6"
       >
         <h2 id="emotion-title" className="text-lg font-bold text-white mb-1">
           {en ? 'How are you feeling right now?' : '而家感覺點？'}
         </h2>
-        <p className="text-sm text-slate-300 mb-5">
+        <p className="text-sm text-ink-soft mb-5">
           {en ? 'Pick whatever is closest to how you feel — no one is rushing you.' : '揀選最貼近你而家嘅狀態，冇人會催促你。'}
         </p>
 
@@ -53,7 +53,7 @@ export default function EmotionThermometer({
               key={o.tag}
               onClick={() => onPick(o.tag)}
               autoFocus={i === 0}
-              className={`w-full min-h-11 flex items-center gap-3 text-left rounded-xl border bg-slate-800/60 px-4 py-3 text-sm text-slate-100 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${o.border}`}
+              className={`w-full min-h-11 flex items-center gap-3 text-left rounded-xl border bg-surface-sunken/60 px-4 py-3 text-sm text-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${o.border}`}
             >
               <span className="text-2xl" aria-hidden>{o.emoji}</span>
               {en ? o.en : o.zh}

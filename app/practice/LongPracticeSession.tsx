@@ -36,6 +36,11 @@ const CREDIT: Record<SelfAssessment, number> = {
   correct: 1, full: 1, partial: 0.5, wrong: 0, none: 0,
 }
 
+// 同 AnswerSheetClient 一致：`Date.now()` 唔可以喺 component body 直接叫，
+// react-hooks 嘅純度規則證明唔到嗰個函數唔會喺 render 期間執行。抽上 module
+// scope 之後，呼叫點就明確唔屬於 render。
+const nowMs = () => Date.now()
+
 const CAUSES: { key: ReverseCause; emoji: string; zh: string; en: string }[] = [
   { key: 'A', emoji: '🧠', zh: '概念盲區', en: 'Conceptual blind spot' },
   { key: 'B', emoji: '🎯', zh: '審題陷阱', en: 'Misread the question' },
@@ -107,7 +112,7 @@ export default function LongPracticeSession({
       cause,
       selected: tr('（書寫題自評）', '(written self-assessment)'),
       correct: q.referenceAnswer.slice(0, 120),
-      ts: Date.now(),
+      ts: nowMs(),
       difficulty: q.difficulty, // 真相引擎：分辨基礎盲點 vs 進階未消化
     })
     advance()

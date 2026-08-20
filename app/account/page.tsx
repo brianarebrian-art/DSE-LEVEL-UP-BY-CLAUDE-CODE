@@ -49,10 +49,10 @@ export default function AccountPage() {
         {!done && <DataPortability />}
 
         {done ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
+          <div className="bg-surface-raised border border-line rounded-2xl p-6 text-center">
             <div className="text-4xl mb-3" aria-hidden>🧹</div>
-            <p className="text-slate-100 font-bold mb-2">{en ? 'Your data has been deleted' : '已刪除你的資料'}</p>
-            <p className="text-slate-400 text-sm leading-relaxed mb-5">
+            <p className="text-ink font-bold mb-2">{en ? 'Your data has been deleted' : '已刪除你的資料'}</p>
+            <p className="text-ink-muted text-sm leading-relaxed mb-5">
               {en
                 ? 'Your cloud progress has been removed, and local data has been cleared.'
                 : '你的雲端進度已經清除，本機資料亦已清空。'}
@@ -62,8 +62,8 @@ export default function AccountPage() {
             </Link>
           </div>
         ) : status === 'unauthenticated' ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
-            <p className="text-slate-300 mb-4">{en ? 'Please sign in to manage your account data.' : '請先登入，才能管理你的帳戶資料。'}</p>
+          <div className="bg-surface-raised border border-line rounded-2xl p-6 text-center">
+            <p className="text-ink-soft mb-4">{en ? 'Please sign in to manage your account data.' : '請先登入，才能管理你的帳戶資料。'}</p>
             <button
               onClick={() => authSignInGoogle('/account')}
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all"
@@ -72,17 +72,17 @@ export default function AccountPage() {
             </button>
           </div>
         ) : (
-          <div className="bg-slate-900 border border-red-500/20 rounded-2xl p-6">
-            <h2 className="text-base font-bold text-slate-100 mb-2">{en ? 'Delete my data' : '刪除我的資料'}</h2>
-            <p className="text-sm text-slate-400 leading-relaxed mb-4">
+          <div className="bg-surface-raised border border-red-500/20 rounded-2xl p-6">
+            <h2 className="text-base font-bold text-ink mb-2">{en ? 'Delete my data' : '刪除我的資料'}</h2>
+            <p className="text-sm text-ink-muted leading-relaxed mb-4">
               {en
                 ? 'This permanently deletes your cloud learning progress. Your browser data is cleared too. This cannot be undone.'
                 : '此操作會永久刪除你儲存在雲端的學習進度。本機瀏覽器的資料亦會一併清除。此操作無法復原。'}
             </p>
-            {error && <p className="text-amber-400/90 text-sm mb-3">{error}</p>}
+            {error && <p className="text-gold/90 text-sm mb-3">{error}</p>}
             {confirming ? (
               <div className="flex flex-wrap items-center gap-3">
-                <span className="text-sm text-slate-300">{en ? 'Permanently delete?' : '確定要永久刪除嗎？'}</span>
+                <span className="text-sm text-ink-soft">{en ? 'Permanently delete?' : '確定要永久刪除嗎？'}</span>
                 <button
                   onClick={del}
                   disabled={busy}
@@ -93,7 +93,7 @@ export default function AccountPage() {
                 <button
                   onClick={() => setConfirming(false)}
                   disabled={busy}
-                  className="text-slate-400 hover:text-slate-200 text-sm"
+                  className="text-ink-muted hover:text-ink text-sm"
                 >
                   {en ? 'Cancel' : '取消'}
                 </button>
@@ -101,7 +101,7 @@ export default function AccountPage() {
             ) : (
               <button
                 onClick={() => setConfirming(true)}
-                className="border border-red-500/40 text-red-300 hover:bg-red-500/10 font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
+                className="border border-red-500/40 text-rose hover:bg-red-500/10 font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
               >
                 {en ? 'Delete my data' : '刪除我的資料'}
               </button>

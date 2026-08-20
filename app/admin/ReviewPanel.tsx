@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 // Admin 審核面板互動層（中文單語內部工具，i18n-exempt 全檔適用）。
 // 每撳「提交」即 POST 一筆去 /api/admin，成功後 800ms 自動跳去下一條待審題
@@ -75,7 +75,7 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
     return m
   })
   const [activeKey, setActiveKey] = useState<string | null>(() => {
-    const first = flat.find(({ batch, row }) => row.status === 'pending')
+    const first = flat.find(({ row }) => row.status === 'pending')
     return first ? keyOf(first.batch, first.row.id) : null
   })
   const [recorded, setRecorded] = useState(0) // 本節已記錄決定數

@@ -1,4 +1,4 @@
-import type { AnyQuestion, MCQuestion, Question, Topic, WrittenQuestion } from './types'
+import type { AnyQuestion, MCQuestion, Topic, WrittenQuestion } from './types'
 import { mathQuestions, mathTopics } from './math'
 import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'

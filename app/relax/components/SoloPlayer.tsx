@@ -47,13 +47,6 @@ export default function SoloPlayer() {
   const pomodoroTimer = useRef<ReturnType<typeof setInterval> | null>(null)
   const binauralGainRef = useRef<GainNode | null>(null)
 
-  useEffect(() => {
-    const p = loadSensoryPref()
-    if (p && (p.quiet || !p.sound)) setQuietMode(true)
-    return () => stopAll() // 離開頁面即停
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   function ensureCtx(): AudioContext {
     if (!ctxRef.current) {
       ctxRef.current = new AudioContext()
@@ -72,6 +65,19 @@ export default function SoloPlayer() {
     setPomodoroLeft(POMODORO_MIN * 60)
     setPlaying(null)
   }
+
+  // 刻意擺喺 `stopAll` 宣告【之後】。函數宣告本身會 hoist，所以放前面 runtime
+  // 一樣行到，但 source order 上就係「用咗個未宣告嘅名」，lint 會當 error。
+  // 本組件由頭到尾只有呢一個 useEffect，其餘 hooks 全部喺更上面，中間再無 hook，
+  // 所以搬落嚟【唔會】改變 hook 呼叫次序。
+  useEffect(() => {
+    const p = loadSensoryPref()
+    if (p && (p.quiet || !p.sound)) setQuietMode(true)
+    return () => stopAll() // 離開頁面即停
+    // deps 刻意留空：本 effect 只負責「入場讀一次偏好、離場停一次音訊」。若把
+    // stopAll 放入 deps，佢每次 render 都係新函數，cleanup 就會每次 render 都跑，
+    // 播緊嗰陣會無故截停音訊。
+  }, [])
 
   function fadeOutStop(ctx: AudioContext, gain: GainNode, stops: (() => void)[]) {
     const t = ctx.currentTime

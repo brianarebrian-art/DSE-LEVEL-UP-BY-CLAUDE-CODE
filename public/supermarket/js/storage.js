@@ -58,7 +58,7 @@
         settings: Object.assign({}, base.settings, p.settings || {}),
         log: Object.assign({}, base.log, p.log || {}),
       };
-    } catch (e) {
+    } catch {
       return base;
     }
   }
@@ -66,7 +66,7 @@
   function save(state) {
     try {
       localStorage.setItem(KEY, JSON.stringify(state));
-    } catch (e) {
+    } catch {
       /* 配額滿：靜默降級。呢度係減壓區，唔應該彈錯誤嚇親人。 */
     }
   }
@@ -75,14 +75,14 @@
   function exportCode(state) {
     try {
       return btoa(unescape(encodeURIComponent(JSON.stringify(state))));
-    } catch (e) { return ''; }
+    } catch { return ''; }
   }
   function importCode(code) {
     try {
       var json = decodeURIComponent(escape(atob(String(code).trim())));
       var parsed = JSON.parse(json);
       return parsed && typeof parsed === 'object' ? parsed : null;
-    } catch (e) { return null; }
+    } catch { return null; }
   }
 
   window.SMStore = {

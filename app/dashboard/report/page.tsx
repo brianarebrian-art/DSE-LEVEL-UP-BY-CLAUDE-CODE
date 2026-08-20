@@ -209,8 +209,8 @@ export default function ReportPage() {
   // Loading
   if (report === null) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <p className="text-slate-400 animate-pulse motion-reduce:animate-none">{en ? 'Building your study map…' : '生成緊你嘅溫書地圖...'}</p>
+      <div className="min-h-screen flex items-center justify-center bg-surface-sunken">
+        <p className="text-ink-muted animate-pulse motion-reduce:animate-none">{en ? 'Building your study map…' : '生成緊你嘅溫書地圖...'}</p>
       </div>
     )
   }
@@ -218,10 +218,10 @@ export default function ReportPage() {
   // 未有數據
   if (report === 'empty') {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-slate-950 px-4 text-center">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface-sunken px-4 text-center">
         <div className="text-5xl" aria-hidden>🗺️</div>
-        <p className="text-slate-300 font-bold">{en ? 'Not enough data yet — do a few questions first!' : '仲未有足夠數據，做幾題先！'}</p>
-        <p className="text-slate-400 text-sm max-w-sm">
+        <p className="text-ink-soft font-bold">{en ? 'Not enough data yet — do a few questions first!' : '仲未有足夠數據，做幾題先！'}</p>
+        <p className="text-ink-muted text-sm max-w-sm">
           {en ? 'Do a few questions first — your study map is built from your real practice.' : '先做幾條題目 —— 溫書地圖係由你嘅真實練習記錄生成。'}
         </p>
         <Link href="/subjects" className="mt-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all">
@@ -240,11 +240,11 @@ export default function ReportPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-950 px-4 py-10">
+    <div className="min-h-screen bg-surface-sunken px-4 py-10">
       <div className="max-w-3xl mx-auto">
         {/* 頂部操作列（no-print，唔會入 PNG 截圖之外嘅嘢） */}
         <div className="no-print flex items-center justify-between mb-6 gap-3 flex-wrap">
-          <Link href="/dashboard" className="inline-flex items-center gap-2 min-h-11 text-slate-400 hover:text-slate-200 text-sm transition-colors">
+          <Link href="/dashboard" className="inline-flex items-center gap-2 min-h-11 text-ink-muted hover:text-ink text-sm transition-colors">
             <ArrowLeft size={15} /> {en ? 'Back to dashboard' : '返回我的進度'}
           </Link>
           <button
@@ -257,30 +257,30 @@ export default function ReportPage() {
         </div>
 
         {/* ===== 報告區（PNG 會影呢個範圍） ===== */}
-        <div ref={areaRef} className="bg-slate-950 rounded-2xl p-5 sm:p-8">
+        <div ref={areaRef} className="bg-surface-sunken rounded-2xl p-5 sm:p-8">
           <header className="text-center mb-8">
             <div className="text-sm font-bold tracking-widest" style={{ color: '#00F5D4' }}>DSE LEVEL UP</div>
             {/* 本頁底色永遠固定深色（導出 PNG 鎖 #020617），故【唔可以】靠 body 繼承
               主題 text-ink —— 淺色主題下標題會變深字落深底，只有 1.16:1。 */}
-            <h1 className="text-3xl font-extrabold mt-2 text-slate-100">{en ? 'My Study Map' : '我嘅溫書地圖'}</h1>
-            <p className="text-slate-400 text-xs mt-2">{report.generatedAt}</p>
+            <h1 className="text-3xl font-extrabold mt-2 text-ink">{en ? 'My Study Map' : '我嘅溫書地圖'}</h1>
+            <p className="text-ink-muted text-xs mt-2">{report.generatedAt}</p>
           </header>
 
           {/* 統計卡 ×4 */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
             {stat.map((c) => (
-              <div key={c.label} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-center">
+              <div key={c.label} className="bg-surface-raised border border-line rounded-2xl p-5 text-center">
                 <div className="text-3xl font-extrabold" style={{ color: c.accent }}>{c.value}</div>
-                <div className="text-xs text-slate-400 mt-2">{c.label}</div>
+                <div className="text-xs text-ink-muted mt-2">{c.label}</div>
               </div>
             ))}
           </div>
 
           {/* 近 30 日進步軌跡：真練習史（dse_progress），純 SVG 折線（零圖表庫）。
               每點 = 一次練習嘅準確率；<4 次未夠統計意義，顯示鼓勵文案。 */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
+          <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-8">
             <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-              <h2 className="text-sm font-bold text-slate-300">{en ? 'Progress (last 30 days)' : '進步軌跡（近 30 日）'}</h2>
+              <h2 className="text-sm font-bold text-ink-soft">{en ? 'Progress (last 30 days)' : '進步軌跡（近 30 日）'}</h2>
               {report.trend && (
                 <span
                   className="text-sm font-bold"
@@ -329,15 +329,15 @@ export default function ReportPage() {
                 )
               })()
             ) : (
-              <p className="text-slate-400 text-sm text-center py-6">
+              <p className="text-ink-muted text-sm text-center py-6">
                 {en ? 'Do a few more questions and your progress line will appear!' : '做多幾題，進步軌跡就會出現！'}
               </p>
             )}
           </div>
 
           {/* 能力雷達 */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8">
-            <h2 className="text-sm font-bold text-slate-300 mb-4">{en ? 'Ability radar (mastery by topic)' : '能力雷達（逐課題掌握度）'}</h2>
+          <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-8">
+            <h2 className="text-sm font-bold text-ink-soft mb-4">{en ? 'Ability radar (mastery by topic)' : '能力雷達（逐課題掌握度）'}</h2>
             {/* tone="dark"：報告頁永遠深底（導出 PNG 鎖 #020617），標籤要淺灰先讀得到 */}
             <RadarChart axes={report.radarAxes} tone="dark" />
           </div>
@@ -345,13 +345,13 @@ export default function ReportPage() {
           {/* 發現盲點 */}
           {report.blindSpots.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-sm font-bold text-slate-300 mb-3">{en ? 'Blind spots discovered 💡' : '發現盲點 💡'}</h2>
+              <h2 className="text-sm font-bold text-ink-soft mb-3">{en ? 'Blind spots discovered 💡' : '發現盲點 💡'}</h2>
               <div className="grid sm:grid-cols-3 gap-3">
                 {report.blindSpots.map((b) => (
-                  <div key={`${b.subjectId}-${b.topic}`} className="bg-slate-900 border border-rose-500/20 rounded-xl p-4">
-                    <div className="text-rose-300 font-bold text-sm">{b.label}</div>
-                    <div className="text-slate-400 text-xs mt-1">{en ? 'Mastery' : '掌握度'} {Math.round(winRate(b) * 100)}%</div>
-                    <div className="text-slate-400 text-xs mt-2 leading-relaxed">
+                  <div key={`${b.subjectId}-${b.topic}`} className="bg-surface-raised border border-rose-500/20 rounded-xl p-4">
+                    <div className="text-rose font-bold text-sm">{b.label}</div>
+                    <div className="text-ink-muted text-xs mt-1">{en ? 'Mastery' : '掌握度'} {Math.round(winRate(b) * 100)}%</div>
+                    <div className="text-ink-muted text-xs mt-2 leading-relaxed">
                       {suggestionFor(b.topic, b.label, en)}
                     </div>
                     {/* 即刻溫呢度 → 直入該科該課題操練（practice 需要 subject+topic 兩個參數）。
@@ -359,7 +359,7 @@ export default function ReportPage() {
                     <Link
                       href={`/practice?subject=${encodeURIComponent(b.subjectId)}&topic=${encodeURIComponent(b.topic)}`}
                       data-html2canvas-ignore
-                      className="mt-3 inline-flex items-center justify-center w-full min-h-11 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 rounded-lg py-2 text-xs font-semibold transition-all"
+                      className="mt-3 inline-flex items-center justify-center w-full min-h-11 bg-cyan-500/10 text-accent border border-cyan-500/30 hover:bg-cyan-500/20 rounded-lg py-2 text-xs font-semibold transition-all"
                     >
                       {en ? 'Practise this now' : '即刻溫呢度'}
                     </Link>
@@ -375,18 +375,18 @@ export default function ReportPage() {
           </div>
 
           {/* 下一步建議 */}
-          <div className="rounded-2xl p-6 mb-8 border border-slate-800" style={{ background: 'linear-gradient(135deg, rgba(0,245,212,0.10), rgba(155,93,229,0.10))' }}>
-            <h2 className="text-sm font-bold text-slate-200 mb-3">{en ? 'Next steps' : '下一步建議'}</h2>
+          <div className="rounded-2xl p-6 mb-8 border border-line" style={{ background: 'linear-gradient(135deg, rgba(0,245,212,0.10), rgba(155,93,229,0.10))' }}>
+            <h2 className="text-sm font-bold text-ink mb-3">{en ? 'Next steps' : '下一步建議'}</h2>
             <ul className="space-y-2">
               {report.nextSteps.map((s, i) => (
-                <li key={i} className="text-sm text-slate-300 flex gap-2">
+                <li key={i} className="text-sm text-ink-soft flex gap-2">
                   <span style={{ color: '#00F5D4' }}>▸</span> {s}
                 </li>
               ))}
             </ul>
           </div>
 
-          <footer className="text-center text-[11px] text-slate-400 leading-relaxed">
+          <footer className="text-center text-[11px] text-ink-muted leading-relaxed">
             © DSE Level Up 2026. {en ? 'Data is for personal study reference only; official results are as published by the HKEAA.' : '數據僅供個人學習參考，最終成績以 HKEAA 公布為準。'}
           </footer>
         </div>

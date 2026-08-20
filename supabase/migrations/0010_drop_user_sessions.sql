@@ -1,0 +1,22 @@
+-- 0010: 移除 user_sessions（2026-08-20）
+--
+-- 事實依據（執行前實測，非引述）：
+--   • user_sessions 表 0 行 —— 由 0006 建立至今從未寫入過一筆。
+--   • 唯一寫入者係 app/api/sync/session/route.ts（154 行），而全 repo
+--     【零呼叫】該 endpoint（grep "sync/session" 確認）。
+--   • 設計已被取代：lib/studyTime.ts 檔頭明文記錄「唔使加 user_sessions
+--     呢類 server-side 追蹤」，改由 dse_progress 現有欄位（elapsed／
+--     timestamp／score／total）即時算出溫習時長分析。該決定見 CHANGELOG
+--     2026-08-05c。即係 user_sessions 係已被取代設計嘅遺留物。
+--
+-- ⚠️ 唔好混淆：lib/sessionResume.ts【仍然活躍】，由 PracticeSession.tsx 同
+--    lib/sync.ts 使用，係純 localStorage 嘅「續做未完成嘅卷」功能。本 migration
+--    只刪 server 端嗰張從未用過嘅表，唔影響續做功能。
+--
+-- 私隱角度：刪走一個從未被呼叫、但仍然對外開放嘅寫入 endpoint（連同其表），
+-- 同時縮減攻擊面 —— 一個冇人用嘅寫入口係純負債。
+--
+-- 0006_cloud_first_sessions_and_settings.sql 保留唔刪，作為歷史記錄。
+-- （該 migration 同時建立 user_settings，該表【有 114 行，正常使用中】，不受影響。）
+
+DROP TABLE IF EXISTS user_sessions;

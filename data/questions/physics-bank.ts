@@ -1,7 +1,7 @@
 import type { Topic } from './types'
 import { topicList } from './_builder'
 import type { Question } from './types'
-import { createBank, n, frac, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, n, round, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // PHYSICS — PARAMETRIC BANK (Mode A, correct-by-construction, 3-tier)

@@ -15,7 +15,7 @@
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) return null;
       ctx = new AC();
-    } catch (e) { ctx = null; }
+    } catch { ctx = null; }
     return ctx;
   }
 
@@ -36,7 +36,7 @@
       osc.connect(g).connect(c.destination);
       osc.start(t0);
       osc.stop(t0 + dur + 0.02);
-    } catch (e) { /* 靜默 */ }
+    } catch { /* 靜默 */ }
   }
 
   window.SMAudio = {
