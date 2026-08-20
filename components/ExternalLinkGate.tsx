@@ -117,7 +117,11 @@ export default function ExternalLinkGate({
               <Link href="/privacy" className="font-medium text-accent-strong underline underline-offset-2">
                 {en ? 'privacy policy' : '私隱政策'}
               </Link>
-              {en ? ' does not apply once you are there.' : '就唔再適用。'}
+              {en ? ' and our ' : '同'}
+              <Link href="/community-safety" className="font-medium text-accent-strong underline underline-offset-2">
+                {en ? 'community guidelines' : '社群安全守則'}
+              </Link>
+              {en ? ' do not apply once you are there.' : '就唔再適用。'}
             </p>
 
             {extraWarning && (

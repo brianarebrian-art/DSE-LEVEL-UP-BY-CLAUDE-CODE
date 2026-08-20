@@ -1,7 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Heart, Moon, Send, Lock } from 'lucide-react'
+import Link from 'next/link'
+import { Heart, Moon, Send, Lock, Flag } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { useAuthSession, authSignInGoogle } from '@/lib/auth/session'
 import HotlineCard from '@/components/HotlineCard'
@@ -36,6 +37,31 @@ function timeAgo(iso: string, en: boolean): string {
   if (h < 24) return en ? `${h} hr ago` : `${h} 小時前`
   const d = Math.floor(h / 24)
   return en ? `${d} day${d > 1 ? 's' : ''} ago` : `${d} 日前`
+}
+
+/** 舉報信 —— 主旨帶住帖 id 頭 8 碼，等我哋喺 queue 度搵得返係邊條。跟用戶語言。 */
+function reportMailto(postId: string, en: boolean): string {
+  const subject = en
+    ? `[DSE Level Up] Report post ${postId.slice(0, 8)}`
+    : `[DSE Level Up] 舉報留言 ${postId.slice(0, 8)}`
+  const body = (
+    en
+      ? [
+          `Post reference: ${postId}`,
+          '',
+          'I would like to report this post because:',
+          '',
+          '(Please say briefly what happened. If you or somebody else is in danger right now, please do not wait for our reply — call 999, or the Samaritans on 2896 0000 / Suicide Prevention Services on 2382 0000.)',
+        ]
+      : [
+          `帖編號：${postId}`,
+          '',
+          '我想舉報呢則留言，因為：',
+          '',
+          '（請簡單講吓發生咩事。如果你或者其他人而家有即時危險，請唔好等我哋回覆 —— 即刻致電 999，或者撒瑪利亞會 2896 0000 / 生命熱線 2382 0000。）',
+        ]
+  ).join('\n')
+  return `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 export default function WallClient() {
@@ -257,6 +283,12 @@ export default function WallClient() {
             ? 'This wall is not a crisis service and we are not counsellors. If you or someone else is in danger right now, call 999 or one of the hotlines above.'
             : '呢個牆唔係危機支援服務，我哋亦唔係輔導員。如果你或者其他人而家有即時危險，請致電 999 或者上面嘅熱線。'}
         </p>
+
+        <p className="mt-2 text-xs leading-relaxed">
+          <Link href="/community-safety" className="font-medium text-accent-strong underline underline-offset-2">
+            {en ? 'Full community safety guidelines →' : '完整社群安全守則 →'}
+          </Link>
+        </p>
       </details>
 
       {composer}
@@ -315,7 +347,7 @@ export default function WallClient() {
                   )}
                 </div>
               )}
-              <div className="mt-3">
+              <div className="mt-3 flex items-center gap-4">
                 <button
                   onClick={() => like(p.id)}
                   className={`min-h-11 inline-flex items-center gap-1.5 text-sm transition-colors ${
@@ -326,6 +358,18 @@ export default function WallClient() {
                 >
                   <Heart size={16} className={p.liked ? 'fill-rose' : ''} /> {p.likes_count}
                 </button>
+
+                {/* 舉報。刻意用 mailto 而唔係一個 /api/wall/report ——
+                    後者要新表、要 migration、要創辦人批；而「有個掣但寫入唔到」
+                    比冇掣更差（見 /relax/group 個 email 表單：寫入一張從未存在
+                    嘅表，由第一日起每個學生撳完都見到「未能記錄」）。
+                    mailto 唔靚，但今日真係到得到人手上，而且 $0。 */}
+                <a
+                  href={reportMailto(p.id, en)}
+                  className="min-h-11 inline-flex items-center gap-1 text-xs text-ink-muted transition-colors hover:text-accent-strong"
+                >
+                  <Flag size={13} aria-hidden /> {en ? 'Report' : '舉報'}
+                </a>
               </div>
             </article>
           ))
