@@ -41,7 +41,7 @@
       if (!raw) return [];
       var arr = JSON.parse(raw);
       return Array.isArray(arr) ? arr : [];
-    } catch (e) { return []; }
+    } catch { return []; }
   }
 
   /**
