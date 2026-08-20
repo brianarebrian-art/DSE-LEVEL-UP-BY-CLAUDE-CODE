@@ -217,7 +217,9 @@ export default function WallClient() {
           {en ? 'Shadow Study Room' : '影子溫書室'}
         </h1>
         <p className="mt-1 text-sm text-ink-muted">
-          {en ? 'An anonymous space to cheer each other on. Be kind — be safe.' : '匿名打氣互助牆 · 一齊撐住 · 安全空間'}
+          {en
+            ? 'An anonymous space to cheer each other on. Every post is read by a real person before it appears.'
+            : '匿名打氣互助牆 · 一齊撐住 · 每一則都由真人睇過先出現'}
         </p>
       </header>
 
@@ -225,6 +227,37 @@ export default function WallClient() {
       <div className="mb-5">
         <HotlineCard />
       </div>
+
+      {/* 社群守則 + 匿名嘅實際含義。
+          放喺 composer【上面】—— 同 /relax/group 個免責一樣嘅道理：規則要喺行動之前
+          出現先有用。「安全空間」四隻字守唔守得住，睇嘅係下面呢啲具體嘢，唔係口號。
+          「匿名」呢段【必須照實寫】：wall_posts 每行實際存住 user_id（見
+          app/api/wall/route.ts:96），只係唔出街。講到似「我哋乜都唔知」就係講大話。 */}
+      <details className="mb-5 rounded-2xl border border-line bg-surface-raised p-4">
+        <summary className="cursor-pointer list-none text-sm font-medium text-ink-soft">
+          🛡️ {en ? 'House rules & what “anonymous” actually means' : '呢度嘅規矩 · 同埋「匿名」實際係咩意思'}
+        </summary>
+
+        <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-ink-muted">
+          <li>{en ? '· Never post your phone number, address, school or photos — yours or anyone else’s.' : '· 唔好貼電話、地址、就讀學校或者相片 —— 你自己嘅同人哋嘅都唔好。'}</li>
+          <li>{en ? '· Don’t ask anyone here for contact details, photos, or to move to private chat.' : '· 唔好喺呢度問人攞聯絡方法、相片，或者叫人私下傾。'}</li>
+          <li>{en ? '· No bullying, harassment or discrimination.' : '· 唔准欺凌、騷擾、歧視。'}</li>
+          <li>{en ? '· Nothing sexual, violent, or that encourages self-harm.' : '· 唔准性、暴力，或者鼓勵自我傷害嘅內容。'}</li>
+          <li>{en ? '· If a post breaks these, it simply never goes public. Repeatedly doing it means posting gets paused for that account.' : '· 違規嘅留言唔會公開。重複違規嘅帳戶會被暫停發帖。'}</li>
+        </ul>
+
+        <p className="mt-3 text-xs leading-relaxed text-ink-muted">
+          {en
+            ? '“Anonymous” means other students only ever see “Student #XXXX”, and that number changes every day so nobody can link your posts together. It does not mean we know nothing: your post is stored with your account id so that a real person can review it and so we can act if someone is being harmed. We do not show it to other users.'
+            : '「匿名」係指其他同學只會見到「考生 #XXXX」，而且個號碼每日都會變，所以冇人可以將你唔同日嘅留言串埋一齊。但佢唔等於我哋乜都唔知：你嘅留言會連同你嘅帳戶編號一齊儲存，好讓真人可以審核，亦好讓有人受到傷害時我哋處理得到。我哋唔會將佢展示畀其他用戶。'}
+        </p>
+
+        <p className="mt-2 text-xs leading-relaxed text-ink-muted">
+          {en
+            ? 'This wall is not a crisis service and we are not counsellors. If you or someone else is in danger right now, call 999 or one of the hotlines above.'
+            : '呢個牆唔係危機支援服務，我哋亦唔係輔導員。如果你或者其他人而家有即時危險，請致電 999 或者上面嘅熱線。'}
+        </p>
+      </details>
 
       {composer}
 

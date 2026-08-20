@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { AlertTriangle, ArrowRight, ExternalLink } from 'lucide-react'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
 import type { SourceLabEntry, SourceRef } from '@/data/history-sources'
 import { RELIABILITY_LABEL } from '@/data/history-sources'
 import { useLocale } from '@/lib/i18n'
@@ -45,15 +46,16 @@ function SourceLine({ src, en }: { src: SourceRef; en: boolean }) {
         {en ? label.en : label.zh}
       </span>
       {src.url ? (
-        <a
+        // 引註連結指向外部檔案館／出版社，目的地隨資料而變 —— 閘門會由 href 即時
+        // 解析真實 host 顯示畀學生，唔靠人手填名。
+        <ExternalLinkGate
           href={src.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          platform={en ? 'external source' : '外部資料來源'}
           className="inline-flex items-center gap-1 text-accent hover:text-accent-strong underline underline-offset-2"
         >
           {cite}
           <ExternalLink size={10} aria-hidden="true" />
-        </a>
+        </ExternalLinkGate>
       ) : (
         <span className="italic">{cite}</span>
       )}

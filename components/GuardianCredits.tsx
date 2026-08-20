@@ -1,6 +1,7 @@
 'use client'
 
 import { ExternalLink } from 'lucide-react'
+import ExternalLinkGate from './ExternalLinkGate'
 import { useLocale } from '@/lib/i18n'
 
 // 守護者致謝名單（2026-07-30）。調性：謙遜、社群感 —— 唔係「贊助商名單」，
@@ -75,10 +76,9 @@ export default function GuardianCredits() {
             ))}
           </ul>
           <p className="text-sm text-ink-muted italic mb-3">「{g.quoteZh}」</p>
-          <a
+          <ExternalLinkGate
             href={g.github}
-            target="_blank"
-            rel="noopener noreferrer"
+            platform="GitHub"
             className="min-h-11 inline-flex items-center gap-1 text-sm text-accent hover:underline"
           >
             {/* 規格寫用 lucide 嘅 `Github` icon —— 本 repo lucide-react 1.20.0 冇呢個
@@ -86,7 +86,7 @@ export default function GuardianCredits() {
                 圖示）。用 ExternalLink 代替：既存在，語意亦準確（開新分頁去外站）。 */}
             <ExternalLink size={14} aria-hidden />
             {g.githubLabel}
-          </a>
+          </ExternalLinkGate>
         </div>
       ))}
 

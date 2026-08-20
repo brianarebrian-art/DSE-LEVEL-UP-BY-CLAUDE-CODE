@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Play, Pause, RotateCcw, Share2, MessageCircle, Users } from 'lucide-react'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { useLocale } from '@/lib/i18n'
 import BreathingExercise from '@/components/BreathingExercise'
 
@@ -220,14 +221,13 @@ function FocusRoom() {
             >
               <Share2 size={15} /> {copied ? (en ? 'Copied!' : '已複製！') : en ? 'Copy link' : '複製連結'}
             </button>
-            <a
+            <ExternalLinkGate
               href={`https://wa.me/?text=${encodeURIComponent(inviteText)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              platform="WhatsApp"
               className="flex-1 inline-flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-strong text-on-accent font-medium px-4 py-2.5 rounded-xl transition-all text-sm"
             >
               <MessageCircle size={15} /> WhatsApp
-            </a>
+            </ExternalLinkGate>
           </div>
         </div>
 

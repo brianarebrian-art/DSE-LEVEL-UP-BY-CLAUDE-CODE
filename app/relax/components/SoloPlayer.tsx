@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { loadSensoryPref } from './SensoryMenu'
 import NowPlayingBar from './NowPlayingBar'
 
@@ -18,17 +19,19 @@ const POMODORO_MIN = 25
 // 官方影片嵌入（YouTube-nocookie，rel=0，只在播放時載入 iframe，私隱優先）。
 // ⚠️ 一定要用「常規上載影片」ID，唔好用直播（live）—— 直播 ID 會輪替，結束後變成無法
 // 嵌入嘅「錄影存檔」（就係之前 Lo-fi 播唔到嘅原因）。以下兩條都係長青上載片，ID 穩定。
-const YT: Record<'lofi' | 'rain', { src: string; open: string; thumb?: string }> = {
+// 2026-08-20 私隱：原本每個 track 有 `thumb: 'https://i.ytimg.com/…'`，而 <img> 係喺
+// 曲目【清單】度渲染 —— 即係學生一入 /relax/solo，未撳過任何嘢，Google 已經收到佢個
+// IP。一個減壓頁唔應該有無聲嘅第三方請求，所以縮圖剷走，改用本地霓虹色塊（else 分支
+// 本身已經存在）。iframe 維持只喺【按下播放之後】先載入，嗰個係用戶明示嘅選擇。
+const YT: Record<'lofi' | 'rain', { src: string; open: string }> = {
   lofi: {
     // Lofi Girl「1 A.M Study Session」—— 經典上載片（非直播），ID 穩定、可嵌入。
     src: 'https://www.youtube-nocookie.com/embed/lTRiuFIWV54?autoplay=1&rel=0',
     open: 'https://www.youtube.com/watch?v=lTRiuFIWV54',
-    thumb: 'https://i.ytimg.com/vi/lTRiuFIWV54/hqdefault.jpg',
   },
   rain: {
     src: 'https://www.youtube-nocookie.com/embed/nMfPqeZjc2c?autoplay=1&rel=0',
     open: 'https://www.youtube.com/watch?v=nMfPqeZjc2c',
-    thumb: 'https://i.ytimg.com/vi/nMfPqeZjc2c/hqdefault.jpg',
   },
 }
 
@@ -208,16 +211,8 @@ export default function SoloPlayer() {
                 aria-pressed={on}
                 className="w-full min-h-11 flex items-center gap-3 text-left p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan rounded-xl"
               >
-                {/* 有固定 video ID 嘅 YT 曲目顯示官方縮圖；頻道跟隨／生成類曲目用霓虹色塊 */}
-                {isYt && YT[t.id as 'lofi' | 'rain'].thumb ? (
-                  <span className="w-14 h-10 rounded-lg overflow-hidden shrink-0 border border-white/10 relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={YT[t.id as 'lofi' | 'rain'].thumb} alt="" className="w-full h-full object-cover" />
-                    {!on && <span className="absolute inset-0 flex items-center justify-center bg-black/30 text-white text-sm" aria-hidden>▶</span>}
-                  </span>
-                ) : (
-                  <span className={`w-10 h-10 rounded-lg ${t.tint} flex items-center justify-center text-lg shrink-0`} aria-hidden>{t.emoji}</span>
-                )}
+                {/* 全部曲目一律用本地霓虹色塊 —— 見 YT 常數上面關於遠端縮圖嘅註解 */}
+                <span className={`w-10 h-10 rounded-lg ${t.tint} flex items-center justify-center text-lg shrink-0`} aria-hidden>{t.emoji}</span>
                 <span className="flex-1">
                   <span className="block text-sm font-medium text-[#E8E8EC]">{trackName}</span>
                   <span className="block text-xs text-[#8B8B96] mt-0.5">{en ? t.descEn : t.descZh}</span>
@@ -236,14 +231,13 @@ export default function SoloPlayer() {
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                   />
-                  <a
+                  <ExternalLinkGate
                     href={YT[t.id as 'lofi' | 'rain'].open}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    platform="YouTube"
                     className="inline-block mt-2 text-xs text-[#8B8B96] hover:text-neon-cyan underline underline-offset-2"
                   >
                     ▶ {en ? "Won't play? Open on YouTube" : '播唔到？喺 YouTube 開'}
-                  </a>
+                  </ExternalLinkGate>
                 </div>
               )}
 

@@ -2,11 +2,20 @@
 
 import { useState } from 'react'
 import { useLocale } from '@/lib/i18n'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
 import BackButton from './BackButton'
 
 // 👥 戰友集結區 — Instagram Group 影子溫書室（00 後遊戲化包裝，IG 最終版 spec）。
 // 真實連結已開通，由 school.q.1（學生自發）管理 —— 唔係官方頻道，卡片內有清楚聲明
 // （法律免責內容原封不動，只加英文對照）。後備通道：email waitlist（/api/ig-waitlist）。
+//
+// 2026-08-20 安全化（信譽審核 §1）—— 三項結構改動，全部可 revert：
+//  ① 免責由頁底搬到 CTA【上面】。舊版次序係「立即組隊」大按鈕 → …… → 「唔係官方
+//     頻道」。學生撳完就已經離開，先至有機會碌到嗰段字。免責喺點擊之後出現＝冇免責。
+//  ② 刪走「1對1 戰友傾偈（私訊樹洞）」同「群組語音房」兩張宣傳卡。呢兩項唔係
+//     「有呢個功能」，係我哋喺一個心理支援脈絡度【主動推銷未成年人同陌生人私訊／
+//     語音】。群組本身保留（真實學生社群，加閘門就夠），但呢句唔應該由我哋講。
+//  ③ email 收集點補《私隱條例》DPP1(3) 式告知：邊個收、做乜、點刪除。
 const INSTAGRAM_GROUP_LINK = 'https://ig.me/j/AbYCy6ZUDR-yWVPN/'
 const IG_GROUP_NAME = 'DSE LEVEL UP 影子溫書室' // i18n-exempt: IG 群組真實名稱（專有名詞）；英文另有 gloss
 const IG_GROUP_ADMIN = 'school.q.1'
@@ -17,15 +26,12 @@ const IG_GROUP_ADMIN = 'school.q.1'
 const IG_FEATURES = [
   { icon: '📸', titleZh: '每日心情記錄', titleEn: 'Daily mood log', descZh: '深夜溫書記錄心情，互相打氣唔孤單', descEn: 'Log your mood on late-night study sessions — keep each other going', color: '#00F5D4' },
   { icon: '💬', titleZh: '科目戰術討論區', titleEn: 'Subject tactics board', descZh: 'Econ／中文／英文／數學互助', descEn: 'Econ / Chinese / English / Maths — help each other out', color: '#FF006E' },
-  { icon: '🕳️', titleZh: '1對1 戰友傾偈', titleEn: '1-on-1 buddy chat', descZh: '私訊樹洞，講完就算，冇人會 judge', descEn: 'A private vent space — say it and let it go, no judgement', color: '#9B5DE5' },
   { icon: '📌', titleZh: '精選攻略', titleEn: 'Curated guides', descZh: '溫書資源、錯題整理、考試貼士', descEn: 'Study resources, mistake logs, exam tips', color: '#FEE440' },
-  { icon: '🎙️', titleZh: '群組語音房（安靜模式）', titleEn: 'Group voice room (quiet mode)', descZh: '偶爾開群組語音，一齊溫書', descEn: 'Occasional group voice sessions — study together', color: '#00F5D4' },
 ]
 
 const TAGS = [
   { zh: '🌙 深夜溫書記錄心情', en: '🌙 Late-night mood logs' },
   { zh: '📚 科目互助', en: '📚 Subject help' },
-  { zh: '🫂 樹洞傾偈', en: '🫂 Vent & chat' },
 ]
 
 export default function GroupCommunity() {
@@ -93,7 +99,7 @@ export default function GroupCommunity() {
             : '一個冇壓力嘅空間。你可以問 Econ 點解，可以呻中文範文太難，可以純粹講「今日好攰」。同路人罩住你，唔單打獨鬥。'}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-5">
+        <div className="flex flex-wrap gap-2 mb-4">
           {TAGS.map((tag) => (
             <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-neon-pink/40 bg-neon-pink/10 text-neon-pink">
               {en ? tag.en : tag.zh}
@@ -101,15 +107,40 @@ export default function GroupCommunity() {
           ))}
         </div>
 
-        <a
+        {/* 關於管理員 — 學生自發，唔係官方（法律免責內容，NON-NEGOTIABLE，中文原文不變）。
+            2026-08-20：由頁底搬到【CTA 上面】，令學生喺撳走之前一定睇得到。 */}
+        <div className="rounded-xl bg-black/30 border border-white/10 p-4 mb-4">
+          <div className="flex items-start gap-3">
+            <span className="text-lg" aria-hidden>👤</span>
+            <div>
+              <div className="text-sm font-medium text-[#E8E8EC]">{en ? 'Before you join' : '入群之前'}</div>
+              <div className="text-xs text-[#8B8B96] leading-relaxed mt-1">
+                {en
+                  ? `This group is created and run by ${IG_GROUP_ADMIN}, a student-led study space — not an official DSE LEVEL UP channel. For any issues, please contact the group admin directly.`
+                  : `呢個群組由 ${IG_GROUP_ADMIN} 開設同管理，係學生自發嘅溫書空間，唔係 DSE LEVEL UP 官方頻道。如有問題，請直接聯絡群組管理員。`}
+              </div>
+              <ul className="text-xs text-[#8B8B96] leading-relaxed mt-2 space-y-1 list-disc pl-4">
+                <li>{en ? 'Never share your phone number, address, school or photos with people you don’t know.' : '唔好向唔認識嘅人畀電話、地址、就讀學校或者相片。'}</li>
+                <li>{en ? 'If anyone asks to move to private chat, asks for photos, or makes you uncomfortable — leave and tell an adult you trust.' : '如果有人要求私下傾、要相，或者令你唔舒服 —— 離開，並且話畀你信得過嘅大人知。'}</li>
+                <li>{en ? 'We cannot moderate that group and cannot see what happens in it.' : '我哋無法審核嗰個群組，亦睇唔到入面發生咩事。'}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <ExternalLinkGate
           href={INSTAGRAM_GROUP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
+          platform="Instagram"
+          extraWarning={
+            en
+              ? 'This group is student-run, not an official DSE LEVEL UP channel — we cannot moderate its content or direct messages. Never share your phone number, address, school or photos with strangers.'
+              : '呢個群組由學生自發開設，唔係 DSE LEVEL UP 官方頻道，我哋無法審核入面嘅內容或者私訊。唔好同陌生人分享電話、地址、學校或者相片。'
+          }
           className="block w-full text-center min-h-11 py-3 rounded-[10px] text-white font-bold text-sm transition-all active:scale-[0.98] hover:shadow-[0_0_28px_rgba(155,93,229,0.5)]"
           style={{ background: 'linear-gradient(90deg, var(--color-neon-pink), var(--color-neon-purple))' }}
         >
           {en ? 'Team up now →' : '立即組隊 →'}
-        </a>
+        </ExternalLinkGate>
       </div>
 
       {/* 功能一覽：Bento Box 網格，每張獨立霓虹色 icon + hover 動畫 */}
@@ -131,21 +162,6 @@ export default function GroupCommunity() {
             <div className="text-xs text-[#8B8B96] mt-0.5">{en ? f.descEn : f.descZh}</div>
           </div>
         ))}
-      </div>
-
-      {/* 關於管理員 — 學生自發，唔係官方（法律免責內容，NON-NEGOTIABLE，中文原文不變，加英文對照） */}
-      <div className="rounded-xl bg-[#14141B] border border-white/5 p-4 mb-4">
-        <div className="flex items-start gap-3">
-          <span className="text-lg" aria-hidden>👤</span>
-          <div>
-            <div className="text-sm font-medium text-[#E8E8EC]">{en ? 'About the admin' : '關於管理員'}</div>
-            <div className="text-xs text-[#8B8B96] leading-relaxed mt-1">
-              {en
-                ? `This group is created and run by ${IG_GROUP_ADMIN}, a student-led study space — not an official DSE LEVEL UP channel. For any issues, please contact the group admin directly.`
-                : `呢個群組由 ${IG_GROUP_ADMIN} 開設同管理，係學生自發嘅溫書空間，唔係 DSE LEVEL UP 官方頻道。如有問題，請直接聯絡群組管理員。`}
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* 後備通道：email 通知（連結失效／資源更新） */}
@@ -178,6 +194,13 @@ export default function GroupCommunity() {
               </button>
             </div>
             {error && <p className="text-xs text-amber-400/90 mt-2">{error}</p>}
+            {/* 收集點告知（《個人資料（私隱）條例》DPP1(3)：喺收集時或之前講清楚）。
+                唔可以淨係喺私隱政策頁寫 —— 學生係喺呢度打 email，就要喺呢度睇到。 */}
+            <p className="text-[11px] text-[#8B8B96] leading-relaxed mt-3">
+              {en
+                ? 'Collected by DSE Level Up and stored on our database. Used only to notify you if the group link changes or when new free study resources are out — never sold, never used for ads. Providing it is optional. To have it deleted, email us and we will remove it.'
+                : '由 DSE Level Up 收集並存放喺我哋嘅資料庫。只會用嚟通知你群組連結變更或者新嘅免費溫書資源，唔會出售，亦唔會用作廣告。填唔填係自願嘅。想刪除，電郵我哋就會移除。'}
+            </p>
           </>
         )}
       </div>
