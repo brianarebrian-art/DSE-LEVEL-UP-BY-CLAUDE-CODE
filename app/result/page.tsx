@@ -4,6 +4,12 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
 import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
+import { gradeRange } from '@/lib/gradeConfidence'
+
+/** 佔位符替換。字典行文如 '以呢 {n} 題計'；同 marksToNext 沿用嘅 .replace 做法一致，
+ *  只係抽成一個函數，免得多個佔位符時串成一長串 .replace()。 */
+const fmt = (tpl: string, vars: Record<string, string>) =>
+  Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(v), tpl)
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
@@ -39,15 +45,34 @@ type VerifyState = { ok: true } | { ok: false; score: number; total: number } | 
 function useCountUp(target: number, duration = 1500) {
   const [val, setVal] = useState(0)
   useEffect(() => {
+    // ⚠️ 滾動計數【只係裝飾】，個數字本身係事實 —— 唔可以因為動畫冇行完而顯示錯。
+    //
+    // 2026-08-20 實測到嘅缺陷：requestAnimationFrame 喺分頁隱藏時完全唔會 fire，
+    // 而最終值以前只由動畫最後一幀寫入。所以學生做完卷、結果頁一載入就切走去覆
+    // message，返嚟會見到「0 / 20．0%」—— 一個話佢攞零分嘅結果頁。
+    //
+    // 三重保障：① 隱藏分頁直接落最終值，唔開動畫；② 尊重減少動態偏好（同
+    // globals.css 嘅 prefers-reduced-motion 一致，亦係 SEN 要求）；③ 就算動畫
+    // 中途被節流，到期一定用 setTimeout 落定最終值。
+    if (typeof window === 'undefined') { setVal(target); return }
+
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches
+    if (reduceMotion || document.hidden) { setVal(target); return }
+
+    let raf = 0
     let start: number | null = null
     const step = (ts: number) => {
-      if (!start) start = ts
+      if (start === null) start = ts
       const progress = Math.min((ts - start) / duration, 1)
       setVal(Math.round(progress * target))
-      if (progress < 1) requestAnimationFrame(step)
+      if (progress < 1) raf = requestAnimationFrame(step)
     }
-    const id = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(id)
+    raf = requestAnimationFrame(step)
+
+    // 保險網：setTimeout 喺隱藏分頁只會被節流，唔會完全唔行。
+    const settle = setTimeout(() => setVal(target), duration + 250)
+
+    return () => { cancelAnimationFrame(raf); clearTimeout(settle) }
   }, [target, duration])
   return val
 }
@@ -129,6 +154,12 @@ export default function ResultPage() {
   // 公社科用二元評級。呢兩個係【等級值】而唔係顯示文字，故豁免雙語檢查。
   const isBinaryGrade = gradeResult.grade === '達標' || gradeResult.grade === '不達標' // i18n-exempt: 等級值比較，非 UI 文字
   const passLineColor = gradeColors['達標'] // i18n-exempt: 等級值做 key，非 UI 文字
+  // 等級區間 —— 公社科係二元評級，冇「相鄰等級」概念，故排除。
+  // 呢個係 A 選項（對內信心）嘅核心：與其畀一個假精確嘅數，不如講清楚
+  // 呢個數撐得起幾多，同埋點樣可以令佢更可信。
+  const range = isBinaryGrade
+    ? null
+    : gradeRange(result.score, result.total, getPracticeCutoffs(result.total, result.subjectId ?? 'practice'))
   const color = gradeColors[gradeResult.grade] ?? '#64748B'
   const bgColor = gradeBgColors[gradeResult.grade] ?? 'bg-slate-500 text-white'
   const formatTime = (s: number) => `${Math.floor(s / 60)}${r.timeMin}${s % 60}${r.timeSec}`
@@ -264,9 +295,32 @@ export default function ResultPage() {
             </div>
           </div>
 
-          <p className="text-ink-muted text-sm mb-6">
+          <p className="text-ink-muted text-sm mb-4">
             {r.gradeMessages[gradeResult.grade]}
           </p>
+
+          {/* 誠實區間。放喺等級正下方而唔係頁尾細字 —— 一個要 scroll 落去先睇到嘅
+              但書，等於冇講。 */}
+          {range && (
+            <div className="max-w-md mx-auto mb-6 text-left bg-surface-raised border border-line rounded-2xl p-4">
+              <p className="text-sm text-ink-soft leading-relaxed">
+                {range.isSingle
+                  ? fmt(r.rangeSingle, { n: String(range.n), low: range.low })
+                  : fmt(r.rangeSpan, { n: String(range.n), low: range.low, high: range.high })}
+              </p>
+              {!range.isSingle && (
+                <p className="text-xs text-ink-muted leading-relaxed mt-2">
+                  {fmt(r.rangeWhy, { n: String(range.n) })}{' '}
+                  {range.questionsToNarrow
+                    ? fmt(r.rangeNarrow, { m: String(range.questionsToNarrow) })
+                    : r.rangeNarrowUnknown}
+                </p>
+              )}
+              <p className="text-[11px] text-ink-muted leading-relaxed mt-3 pt-3 border-t border-line">
+                {r.cutoffOrigin}
+              </p>
+            </div>
+          )}
 
           {/* 公社科：官方只有達標／不達標，冇 1–5** 等級。而考評局從未公布達標分數，
               所以呢條線係平台自訂嘅練習參考值 —— 必須明講，唔可以扮官方標準。 */}
