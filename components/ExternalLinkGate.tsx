@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 
 // 第三方出口閘門。
@@ -111,8 +112,12 @@ export default function ExternalLinkGate({
 
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               {en
-                ? 'Accounts, direct messages, content rules and privacy on that site are managed by them, not by us. Our community guidelines and our privacy policy do not apply once you are there.'
-                : '該平台嘅帳戶、私訊、內容規則同私隱政策由對方管理，唔受我哋控制。你一離開，我哋嘅社群守則同私隱政策就唔再適用。'}
+                ? 'Accounts, direct messages, content rules and privacy on that site are managed by them, not by us. Our '
+                : '該平台嘅帳戶、私訊、內容規則同私隱政策由對方管理，唔受我哋控制。你一離開，我哋嘅'}
+              <Link href="/privacy" className="font-medium text-accent-strong underline underline-offset-2">
+                {en ? 'privacy policy' : '私隱政策'}
+              </Link>
+              {en ? ' does not apply once you are there.' : '就唔再適用。'}
             </p>
 
             {extraWarning && (

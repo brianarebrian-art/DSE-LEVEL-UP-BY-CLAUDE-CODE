@@ -22,6 +22,7 @@ const zh = {
     aboutHeading: '關於',
     aboutUs: '關於我們',
     transparency: '透明度',
+    privacy: '私隱政策',
     contact: '聯絡我們',
     disclaimerLabel: '免責聲明：',
     disclaimerBody:
@@ -347,6 +348,7 @@ const en: typeof zh = {
     aboutHeading: 'About',
     aboutUs: 'About Us',
     transparency: 'Transparency',
+    privacy: 'Privacy',
     contact: 'Contact',
     disclaimerLabel: 'Disclaimer:',
     disclaimerBody:

@@ -68,6 +68,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/privacy" className="hover:text-accent transition-colors">
+                  {t.footer.privacy}
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:dselevelup@gmail.com" className="hover:text-accent transition-colors">
                   {t.footer.contact}
                 </a>
@@ -95,6 +100,10 @@ export default function Footer() {
             <span className="mx-2">·</span>
             <Link href="/transparency" className="underline hover:text-accent transition-colors">
               {t.footer.transparency}
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/privacy" className="underline hover:text-accent transition-colors">
+              {t.footer.privacy}
             </Link>
           </p>
         </div>

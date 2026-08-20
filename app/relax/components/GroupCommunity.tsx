@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import BackButton from './BackButton'
 
 // 👥 戰友集結區 — Instagram Group 影子溫書室（00 後遊戲化包裝，IG 最終版 spec）。
 // 真實連結已開通，由 school.q.1（學生自發）管理 —— 唔係官方頻道，卡片內有清楚聲明
-// （法律免責內容原封不動，只加英文對照）。後備通道：email waitlist（/api/ig-waitlist）。
+// （法律免責內容原封不動，只加英文對照）。
 //
 // 2026-08-20 安全化（信譽審核 §1）—— 三項結構改動，全部可 revert：
 //  ① 免責由頁底搬到 CTA【上面】。舊版次序係「立即組隊」大按鈕 → …… → 「唔係官方
@@ -15,7 +14,11 @@ import BackButton from './BackButton'
 //  ② 刪走「1對1 戰友傾偈（私訊樹洞）」同「群組語音房」兩張宣傳卡。呢兩項唔係
 //     「有呢個功能」，係我哋喺一個心理支援脈絡度【主動推銷未成年人同陌生人私訊／
 //     語音】。群組本身保留（真實學生社群，加閘門就夠），但呢句唔應該由我哋講。
-//  ③ email 收集點補《私隱條例》DPP1(3) 式告知：邊個收、做乜、點刪除。
+//  ③ 移除「留低聯絡」email 表單。原因唔係文案問題 —— 佢寫入嘅 `ig_group_waitlist`
+//     表【喺任何 schema 都唔存在，亦冇任何 migration 建過佢】，所以由第一日起每個
+//     學生撳「通知我」都只會見到「未能記錄」。即係我哋喺度問未成年人攞 email，
+//     而個嘢根本冇運作過。零收集 → 移除冇損失。要恢復嘅話係產品決定：需要一個
+//     migration，同埋一個「值唔值得為咗連結失效通知而儲未成年人 email」嘅答案。
 const INSTAGRAM_GROUP_LINK = 'https://ig.me/j/AbYCy6ZUDR-yWVPN/'
 const IG_GROUP_NAME = 'DSE LEVEL UP 影子溫書室' // i18n-exempt: IG 群組真實名稱（專有名詞）；英文另有 gloss
 const IG_GROUP_ADMIN = 'school.q.1'
@@ -37,31 +40,6 @@ const TAGS = [
 export default function GroupCommunity() {
   const { locale } = useLocale()
   const en = locale === 'en'
-  const [email, setEmail] = useState('')
-  const [sending, setSending] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const handleNotify = async () => {
-    const trimmed = email.trim()
-    if (!trimmed || !trimmed.includes('@') || sending) return
-    setSending(true)
-    setError(null)
-    try {
-      const res = await fetch('/api/ig-waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed }),
-      })
-      if (!res.ok) throw new Error('bad status')
-      setSubmitted(true)
-    } catch {
-      setError(en ? 'Couldn’t save that — try again shortly, or reach the admin directly on IG.' : '未能記錄，請過一陣再試，或者直接喺 IG 搵管理員。')
-    } finally {
-      setSending(false)
-    }
-  }
-
   return (
     <div>
       <BackButton />
@@ -164,46 +142,6 @@ export default function GroupCommunity() {
         ))}
       </div>
 
-      {/* 後備通道：email 通知（連結失效／資源更新） */}
-      <div className="rounded-xl bg-[#14141B] border border-white/5 p-5">
-        <h3 className="text-sm font-medium mb-2 text-[#E8E8EC]">📧 {en ? 'Leave your contact' : '留低聯絡'}</h3>
-        <p className="text-xs text-[#8B8B96] mb-3">
-          {en ? "In case the IG group link stops working, or you'd like updates on new study resources." : '如果 IG Group 連結失效，或者你想收到最新溫書資源通知。'}
-        </p>
-
-        {submitted ? (
-          <p className="text-sm text-neon-cyan">{en ? "✓ Saved — we'll let you know when there's news" : '✓ 已記錄，有消息會通知你'}</p>
-        ) : (
-          <>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(e) => { if (e.key === 'Enter') void handleNotify() }}
-                placeholder="your@email.com"
-                aria-label="Email"
-                className="flex-1 min-w-0 px-3 py-2.5 min-h-11 bg-[#0A0A0F] border border-white/10 rounded-[10px] text-sm text-[#E8E8EC] placeholder-[#8B8B96] focus:border-neon-pink/50 focus:outline-none"
-              />
-              <button
-                onClick={() => void handleNotify()}
-                disabled={!email.trim().includes('@') || sending}
-                className="px-4 py-2.5 min-h-11 bg-[#14141B] border border-neon-pink/30 rounded-[10px] text-sm text-neon-pink disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
-              >
-                {sending ? (en ? 'Saving…' : '記錄中…') : en ? 'Notify me' : '通知我'}
-              </button>
-            </div>
-            {error && <p className="text-xs text-amber-400/90 mt-2">{error}</p>}
-            {/* 收集點告知（《個人資料（私隱）條例》DPP1(3)：喺收集時或之前講清楚）。
-                唔可以淨係喺私隱政策頁寫 —— 學生係喺呢度打 email，就要喺呢度睇到。 */}
-            <p className="text-[11px] text-[#8B8B96] leading-relaxed mt-3">
-              {en
-                ? 'Collected by DSE Level Up and stored on our database. Used only to notify you if the group link changes or when new free study resources are out — never sold, never used for ads. Providing it is optional. To have it deleted, email us and we will remove it.'
-                : '由 DSE Level Up 收集並存放喺我哋嘅資料庫。只會用嚟通知你群組連結變更或者新嘅免費溫書資源，唔會出售，亦唔會用作廣告。填唔填係自願嘅。想刪除，電郵我哋就會移除。'}
-            </p>
-          </>
-        )}
-      </div>
     </div>
   )
 }
