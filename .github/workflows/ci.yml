@@ -16,10 +16,18 @@ jobs:
       - run: npm ci
       - run: npm test
 
-      # 憲章 §15 三閘：term-guard（術語＋書面語）／validate-banks（題庫結構）／
-      # i18n-guard（漏譯）。以前只有本地手動跑，push 上嚟係冇人守。
-      - name: QA gates (term-guard / validate-banks / i18n-guard)
+      # 憲章 §15 四閘：term-guard（術語＋書面語）／validate-banks（題庫結構）／
+      # i18n-guard（漏譯）／contrast-guard（淺字疊淺底）。
+      # 以前只有本地手動跑，push 上嚟係冇人守。
+      - name: QA gates (term-guard / validate-banks / i18n-guard / contrast-guard)
         run: npm run qa
+
+      # 2026-08-20 補上：CI 由開波以嚟【從來冇跑過 eslint】，所以 3 個
+      # react-hooks correctness error（喺 render 期間建立組件、喺 render 期間叫
+      # 不純函數、用咗未宣告嘅變量）可以長期積落嚟冇人發現。修完之後喺呢度落閘，
+      # 唔准再積返。warnings 唔阻 CI，只有 error 先會 fail。
+      - name: Lint (errors block, warnings do not)
+        run: npx eslint . --max-warnings=-1
 
       # 實測過：唔帶任何 env 都 build 得綠（SSG 唔喺 build time 讀 Supabase／Auth
       # 密鑰），所以 CI 唔使配 secrets。
