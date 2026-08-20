@@ -19,6 +19,7 @@ import { getActiveSubjects } from '@/data/subjects'
 // 網域：dselevelup.hk 尚未購入，一律使用現行 Vercel 部署域（Brian 2026-07-29 拍板）。
 // 2026-08-14 收攏為單一來源，理由見 lib/site.ts。
 import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
+import { sourceLabEntries } from '@/data/history-sources'
 
 // 公開靜態頁。順序即優先級由高至低。
 const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
@@ -32,6 +33,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/about', priority: 0.6, freq: 'monthly' },
   { path: '/transparency', priority: 0.6, freq: 'monthly' },
   { path: '/reading', priority: 0.6, freq: 'monthly' },
+  { path: '/source-lab', priority: 0.6, freq: 'monthly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },
   { path: '/focus', priority: 0.5, freq: 'monthly' },
   { path: '/relax', priority: 0.5, freq: 'monthly' },
@@ -69,6 +71,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
+    })),
+    // 史料判讀室條目。同科目頁一樣由資料衍生，唔硬編 —— 硬編清單同真實 id
+    // 脫節時會產生一批 404。
+    ...sourceLabEntries.map((e) => ({
+      url: `${DOMAIN}/source-lab/${e.id}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     })),
   ]
 }

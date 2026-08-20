@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, PenLine, BookOpenCheck, FileText } from 'lucide-react'
+import { ArrowRight, PenLine, BookOpenCheck, FileText, Search } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
@@ -187,6 +187,27 @@ export default function SubjectDetailView({
               </div>
             </div>
             <ArrowRight size={16} className="text-violet shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        )}
+
+        {/* History-only: 史料判讀室（卷一資料題訓練）。中史科目前未有條目，故只掛歷史科。 */}
+        {meta.id === 'history' && (
+          <Link
+            href="/source-lab"
+            className="group bg-gold/[0.06] hover:bg-gold/[0.10] border border-gold/25 hover:border-gold/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <Search size={20} className="text-gold shrink-0" />
+              <div>
+                <div className="font-medium text-ink">{en ? 'Paper 1 · Source Lab' : '卷一・史料判讀室'}</div>
+                <p className="text-xs text-ink-muted mt-0.5">
+                  {en
+                    ? 'Fact / interpretation / position separated, each with a named citation and reliability grade.'
+                    : '事實層、詮釋層、立場層分離陳列，逐項附具名引用與可靠性等級。'}
+                </p>
+              </div>
+            </div>
+            <ArrowRight size={16} className="text-gold shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         )}
 
