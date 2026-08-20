@@ -7,6 +7,7 @@ import MathText from '@/components/MathText'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
 import { subjects, getActiveSubjects } from '@/data/subjects'
+import { getSubjectQuestions } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
 // 方向一：季節性 Hero（純前端按月切換文案；light-first 不變）
 import { getCurrentSeason } from '@/utils/season'
@@ -21,7 +22,15 @@ const activeSubjects = getActiveSubjects()
 const totalSubjects = subjects.length
 
 // 真實數字（憲章 §4 規格牆；「4科」是憲章筆誤，實為 25 科）。
-const statNums = ['10', '120+', '25']
+// 首頁三個大數字。
+//
+// 2026-08-20 修正兩個問題：
+// ① 題數硬編咗「120+」，實際題庫有 5,201 條 —— 首頁同 /practice 對唔上，
+//    係最容易被截圖質疑嗰種矛盾。改為即時由題庫算，唔會再過時。
+// ② 三個數本身無來源。「10 年」對應年份分析 2014–2023（真實範圍），
+//    「核心思維框架」對應現有科目數。全部由資料衍生或有明確定義。
+const TOTAL_QUESTIONS = activeSubjects.reduce((n, s) => n + getSubjectQuestions(s.id).length, 0)
+const statNums = ['10', String(TOTAL_QUESTIONS), String(activeSubjects.length)]
 
 export default function HomePage() {
   const { t, locale } = useLocale()
@@ -54,13 +63,21 @@ export default function HomePage() {
           entry.target.querySelectorAll<HTMLElement>('[data-count]').forEach((counter) => {
             const target = parseInt(counter.getAttribute('data-count') || '0', 10)
             const suffix = counter.getAttribute('data-suffix') || ''
+            // 由 0 數上去係【裝飾】。真數已經喺 SSR 出咗，所以動畫中途改寫成
+            // 細數之後，一定要保證回得返真數 —— 用 setTimeout 兜底：rAF 喺隱藏
+            // 分頁完全唔行，setTimeout 只會被節流。缺咗呢個保險，用戶喺動畫途中
+            // 切走再返嚟，就會永遠停喺一個中途數字。
+            const settle = () => { counter.textContent = String(target) + suffix }
             const start = performance.now()
             const step = (now: number) => {
               const p = Math.min((now - start) / 1400, 1)
               counter.textContent = Math.floor(p * target).toString() + (p >= 1 ? suffix : '')
               if (p < 1) requestAnimationFrame(step)
             }
-            requestAnimationFrame(step)
+            if (document.hidden) { settle() } else {
+              requestAnimationFrame(step)
+              setTimeout(settle, 1400 + 250)
+            }
           })
           io.unobserve(entry.target)
         }
@@ -207,7 +224,10 @@ export default function HomePage() {
               return (
                 <div key={i} className={`animate-on-scroll stagger-${i + 1}`}>
                   <div className="mb-1 text-4xl font-medium text-accent tabular-nums sm:text-5xl">
-                    <span data-count={target} data-suffix={numSuffix}>0</span>
+                    {/* SSR 初始值必須係【真數】而唔係 0：requestAnimationFrame 喺隱藏分頁
+                        完全唔 fire，動畫唔行嗰陣呢個值就係學生（同搜尋引擎、社交預覽）
+                        見到嘅嘢。以前寫死 0，即係首頁隨時顯示「0 年 0 題 0 個」。 */}
+                    <span data-count={target} data-suffix={numSuffix}>{target}{numSuffix}</span>
                     <span className="text-2xl">{s.unit}</span>
                   </div>
                   <div className="text-sm text-ink-muted">{s.label}</div>

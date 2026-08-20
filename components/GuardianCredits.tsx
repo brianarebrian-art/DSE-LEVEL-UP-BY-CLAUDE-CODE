@@ -90,6 +90,15 @@ export default function GuardianCredits() {
         </div>
       ))}
 
+      {/* 免責 —— 「協助驗證 Supabase 性能架構」「提出 localStorage 篡改防禦方案」
+          呢類字眼好容易被讀成第三方資安審計或品質認證。呢度係致謝，唔係認證，
+          必須喺名單緊接住講清楚，唔可以留白等人自己詮釋。 */}
+      <p className="text-xs text-ink-muted leading-relaxed mb-6 border border-line rounded-xl p-3 bg-surface-sunken">
+        {en
+          ? 'This list is a thank-you, not an endorsement. It does not represent a third-party audit, a security certification, or any warranty as to the accuracy of the content. Everyone above contributed voluntarily in their own time, and none of them is responsible for the platform as a whole.'
+          : '以上名單純屬感謝，並非背書。它不代表第三方審計、資訊保安認證，亦不構成對內容準確性的任何保證。各位均為義務貢獻，不對平台整體承擔責任。'}
+      </p>
+
       <p className="text-sm text-ink-muted leading-relaxed">
         {en
           ? 'If you have found a bug, a vulnerability or anything that worries you security-wise, do get in touch. We have no bug bounty, no cash prize and no swag — but we would like to offer you one thing: a permanent, public place on this Guardians list.'
