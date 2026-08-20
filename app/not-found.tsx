@@ -13,7 +13,8 @@ export default function NotFound() {
       <div>
         <div className="text-6xl mb-4" aria-hidden>🧭</div>
         <h1 className="text-2xl font-extrabold mb-2">{en ? 'Page not found' : '搵唔到呢一頁'}</h1>
-        <p className="text-slate-400 mb-6 text-sm">
+        {/* light-first 遷移漏網：text-slate-400 落 #FAFAF8 只有 2.52:1，未過 AA。 */}
+        <p className="text-ink-muted mb-6 text-sm">
           {en ? 'The link may have changed, or the address was mistyped.' : '連結可能已經改咗，或者你打錯咗網址。'}
         </p>
         <Link

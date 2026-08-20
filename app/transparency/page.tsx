@@ -67,7 +67,10 @@ export default function TransparencyPage() {
       <h1 className="text-3xl sm:text-4xl font-extrabold mb-3">
         {en ? 'Transparency' : '透明度報告'}
       </h1>
-      <p className="text-slate-400 mb-10 leading-relaxed">
+      {/* light-first 遷移漏網：實測 text-slate-400 落 #FAFAF8 得 2.52:1。
+          呢段係全頁引言，改用 --color-ink-soft（12.59）而非 ink-muted —— 佢係正文，
+          唔係註腳。頁內嗰幾張 bg-slate-900 深色卡本身對比正常（12–16），另行處理。 */}
+      <p className="text-ink-soft mb-10 leading-relaxed">
         {en
           ? 'We’d rather be honest about how this is built than oversell it. Here’s exactly how the questions are made, how your data is handled, and where the limits are.'
           : '我哋寧願老老實實講清楚係點整出嚟，都唔想誇大。以下係題目點樣製作、你嘅數據點樣處理、同埋邊度有限制。'}

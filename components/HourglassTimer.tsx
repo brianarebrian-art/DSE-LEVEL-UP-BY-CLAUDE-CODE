@@ -114,7 +114,11 @@ export default function HourglassTimer({ remaining, total, soft, label, ariaLabe
           <path d="M22 12 H98 L64 96 V104 L98 188 H22 L56 104 V96 Z" />
         </g>
       </svg>
-      <p className="text-sm text-slate-300 text-center leading-relaxed">{label}</p>
+      {/* 2026-08-20 light-first 遷移漏網：本組件唯一嘅容器（PracticeSession 反思鎖）
+          兩個分支都係 `bg-surface`（#FAFAF8），而 text-slate-300 落上去只有約 1.5:1，
+          即係學生啱啱答錯難題、最需要睇嗰句指示嗰陣，個標籤近乎隱形。
+          改用 --color-ink-muted（5.93，過 AA）。 */}
+      <p className="text-sm text-ink-muted text-center leading-relaxed">{label}</p>
     </div>
   )
 }

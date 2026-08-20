@@ -74,9 +74,9 @@ export default function SoloPlayer() {
     const p = loadSensoryPref()
     if (p && (p.quiet || !p.sound)) setQuietMode(true)
     return () => stopAll() // 離開頁面即停
-    // stopAll 每次 render 都係新函數，放入 deps 會令 cleanup 每次 render 都跑一次，
-    // 反而會喺播緊嘅時候無故截停音訊。此處刻意只跑一次。
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // deps 刻意留空：本 effect 只負責「入場讀一次偏好、離場停一次音訊」。若把
+    // stopAll 放入 deps，佢每次 render 都係新函數，cleanup 就會每次 render 都跑，
+    // 播緊嗰陣會無故截停音訊。
   }, [])
 
   function fadeOutStop(ctx: AudioContext, gain: GainNode, stops: (() => void)[]) {
