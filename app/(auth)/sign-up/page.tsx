@@ -41,11 +41,11 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-[70vh] grid place-items-center px-4">
-      <div className="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-2xl p-6">
-        <h1 className="text-xl font-bold text-slate-100 mb-1">
+      <div className="w-full max-w-sm bg-surface-raised border border-line rounded-2xl p-6">
+        <h1 className="text-xl font-bold text-ink mb-1">
           {en ? 'Create account' : '建立帳戶'}
         </h1>
-        <p className="text-sm text-slate-400 mb-5">
+        <p className="text-sm text-ink-muted mb-5">
           {en
             ? 'Create a free account to sync your progress across devices.'
             : '建立免費帳戶，跨裝置同步你嘅進度。'}
@@ -53,7 +53,7 @@ export default function SignUpPage() {
 
         <button
           onClick={() => authSignInGoogle()}
-          className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-4 py-2.5 rounded-xl transition-colors"
+          className="w-full inline-flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-4 py-2.5 rounded-xl transition-colors"
         >
           <LogIn size={16} /> {en ? 'Continue with Google' : '用 Google 繼續'}
         </button>
@@ -61,9 +61,9 @@ export default function SignUpPage() {
         {emailEnabled && (
           <>
             <div className="flex items-center gap-3 my-5">
-              <span className="h-px flex-1 bg-slate-800" />
-              <span className="text-xs text-slate-400">{en ? 'or' : '或'}</span>
-              <span className="h-px flex-1 bg-slate-800" />
+              <span className="h-px flex-1 bg-line-strong" />
+              <span className="text-xs text-ink-muted">{en ? 'or' : '或'}</span>
+              <span className="h-px flex-1 bg-line-strong" />
             </div>
 
             <form onSubmit={onSubmit} className="space-y-3">
@@ -74,7 +74,7 @@ export default function SignUpPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={en ? 'Name' : '名稱'}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-500 outline-none rounded-xl px-3 py-2.5 text-sm text-slate-100"
+                className="w-full bg-surface-sunken border border-line-strong focus:border-accent outline-none rounded-xl px-3 py-2.5 text-sm text-ink"
               />
               <input
                 type="email"
@@ -83,7 +83,7 @@ export default function SignUpPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={en ? 'Email' : '電郵'}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-500 outline-none rounded-xl px-3 py-2.5 text-sm text-slate-100"
+                className="w-full bg-surface-sunken border border-line-strong focus:border-accent outline-none rounded-xl px-3 py-2.5 text-sm text-ink"
               />
               <input
                 type="password"
@@ -92,22 +92,22 @@ export default function SignUpPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder={en ? 'Password (min 8 chars)' : '密碼（最少 8 字元）'}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-500 outline-none rounded-xl px-3 py-2.5 text-sm text-slate-100"
+                className="w-full bg-surface-sunken border border-line-strong focus:border-accent outline-none rounded-xl px-3 py-2.5 text-sm text-ink"
               />
-              {error && <p className="text-sm text-red-400">{error}</p>}
+              {error && <p className="text-sm text-rose">{error}</p>}
               <button
                 type="submit"
                 disabled={busy}
-                className="w-full inline-flex items-center justify-center gap-2 border border-slate-700 hover:border-slate-500 disabled:opacity-60 text-slate-100 px-4 py-2.5 rounded-xl transition-colors text-sm"
+                className="w-full inline-flex items-center justify-center gap-2 border border-line-strong hover:border-accent disabled:opacity-60 text-ink px-4 py-2.5 rounded-xl transition-colors text-sm"
               >
                 {busy && <Loader2 size={15} className="animate-spin" />}
                 {en ? 'Create account' : '建立帳戶'}
               </button>
             </form>
 
-            <p className="text-sm text-slate-400 mt-4 text-center">
+            <p className="text-sm text-ink-muted mt-4 text-center">
               {en ? 'Already have an account? ' : '已有帳戶？'}
-              <Link href="/sign-in" className="text-amber-400 hover:underline">
+              <Link href="/sign-in" className="text-accent hover:underline">
                 {en ? 'Sign in' : '登入'}
               </Link>
             </p>

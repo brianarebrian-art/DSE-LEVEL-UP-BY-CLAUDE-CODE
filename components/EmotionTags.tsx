@@ -7,8 +7,8 @@ import { useLocale } from '@/lib/i18n'
 // 按選擇回應唔同語氣；記錄入 localStorage `dse_emotion_log`（本地，供將來
 // 壓力指數分析用）。以 key={question.id} 掛載，每題自動重置。零罪疚語言。
 //
-// 2026-07-30 對比度修正：本組件係 light-first 遷移漏網。淺色主題下 bg-slate-800/40
-// 疊落淺色卡會合成中灰 #9B9C9E，而 text-slate-300 落上去只有 1.85:1 ——
+// 2026-07-30 對比度修正：本組件係 light-first 遷移漏網。淺色主題下 bg-surface-sunken
+// 疊落淺色卡會合成中灰 #9B9C9E，而 text-ink-soft 落上去只有 1.85:1 ——
 // 三個情緒掣嘅字實際上睇唔到。情緒安全網係大愛憲章核心，唔可以有睇唔到嘅字，
 // 故全部改用主題 token。
 

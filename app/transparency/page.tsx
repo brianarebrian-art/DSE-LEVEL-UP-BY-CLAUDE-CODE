@@ -67,9 +67,9 @@ export default function TransparencyPage() {
       <h1 className="text-3xl sm:text-4xl font-extrabold mb-3">
         {en ? 'Transparency' : '透明度報告'}
       </h1>
-      {/* light-first 遷移漏網：實測 text-slate-400 落 #FAFAF8 得 2.52:1。
+      {/* light-first 遷移漏網：實測 text-ink-muted 落 #FAFAF8 得 2.52:1。
           呢段係全頁引言，改用 --color-ink-soft（12.59）而非 ink-muted —— 佢係正文，
-          唔係註腳。頁內嗰幾張 bg-slate-900 深色卡本身對比正常（12–16），另行處理。 */}
+          唔係註腳。頁內嗰幾張 bg-surface-raised 深色卡本身對比正常（12–16），另行處理。 */}
       <p className="text-ink-soft mb-10 leading-relaxed">
         {en
           ? 'We’d rather be honest about how this is built than oversell it. Here’s exactly how the questions are made, how your data is handled, and where the limits are.'
@@ -82,16 +82,16 @@ export default function TransparencyPage() {
           return (
             <section
               key={s.title}
-              className="bg-slate-900 border border-slate-800 rounded-2xl p-6"
+              className="bg-surface-raised border border-line rounded-2xl p-6"
             >
               <div className="flex items-center gap-2.5 mb-4">
-                <Icon size={20} className="text-amber-400 shrink-0" />
-                <h2 className="text-lg font-bold text-slate-100">{s.title}</h2>
+                <Icon size={20} className="text-gold shrink-0" />
+                <h2 className="text-lg font-bold text-ink">{s.title}</h2>
               </div>
               <ul className="space-y-2.5">
                 {s.points.map((p, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
-                    <span className="text-amber-400/70 mt-0.5 shrink-0">•</span>
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-ink-soft leading-relaxed">
+                    <span className="text-gold/70 mt-0.5 shrink-0">•</span>
                     <span>{p}</span>
                   </li>
                 ))}

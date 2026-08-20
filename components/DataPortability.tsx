@@ -107,11 +107,11 @@ export default function DataPortability() {
   }
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
-      <h2 className="text-base font-bold text-slate-100 mb-2">
+    <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-6">
+      <h2 className="text-base font-bold text-ink mb-2">
         {en ? 'Move my progress between devices' : '跨裝置搬遷我的進度'}
       </h2>
-      <p className="text-sm text-slate-300 leading-relaxed mb-4">
+      <p className="text-sm text-ink-soft leading-relaxed mb-4">
         {en
           ? 'Prefer not to sign in with Google? Export your progress as a file on this device, then import it on another. The file stays with you — nothing is uploaded.'
           : '唔想用 Google 登入？可以喺呢部裝置導出進度檔案，再喺另一部裝置導入。檔案由你自己保管，唔會上傳到任何伺服器。'}
@@ -120,13 +120,13 @@ export default function DataPortability() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={exportFile}
-          className="inline-flex items-center gap-2 min-h-11 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 bg-cyan-500/10 text-accent border border-cyan-500/30 hover:bg-cyan-500/20 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
         >
           <Download size={15} /> {en ? 'Export progress file' : '導出進度檔案'}
         </button>
         <button
           onClick={() => fileRef.current?.click()}
-          className="inline-flex items-center gap-2 min-h-11 bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 bg-surface-sunken border border-line-strong text-ink hover:bg-slate-700 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
         >
           <Upload size={15} /> {en ? 'Import progress file' : '導入進度檔案'}
         </button>
@@ -147,7 +147,7 @@ export default function DataPortability() {
       {/* 導入覆蓋二次確認 */}
       {confirmImport && (
         <div className="mt-4 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
-          <p className="text-sm text-amber-200 leading-relaxed mb-3">
+          <p className="text-sm text-gold leading-relaxed mb-3">
             {en
               ? 'Importing will overwrite the progress currently on this device. Continue?'
               : '導入會覆蓋呢部裝置上而家嘅進度記錄。確定要繼續？'}
@@ -161,7 +161,7 @@ export default function DataPortability() {
             </button>
             <button
               onClick={() => setConfirmImport(null)}
-              className="min-h-11 border border-slate-700 text-slate-300 hover:text-slate-100 px-4 py-2 rounded-xl transition-all text-sm"
+              className="min-h-11 border border-line-strong text-ink-soft hover:text-ink px-4 py-2 rounded-xl transition-all text-sm"
             >
               {en ? 'Cancel' : '取消'}
             </button>
@@ -179,9 +179,9 @@ export default function DataPortability() {
           ✓ {en ? 'Imported! Refreshing…' : '導入成功！刷新緊頁面…'}
         </p>
       )}
-      {status === 'error' && errMsg && <p className="text-sm text-amber-400 mt-3">{errMsg}</p>}
+      {status === 'error' && errMsg && <p className="text-sm text-gold mt-3">{errMsg}</p>}
 
-      <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
+      <p className="text-[11px] text-ink-muted mt-3 leading-relaxed">
         {en
           ? 'For privacy, mood-log entries never leave this device and are not included in the file.'
           : '為保私隱，情緒記錄永遠只留喺本機，唔會包含喺檔案入面。'}
