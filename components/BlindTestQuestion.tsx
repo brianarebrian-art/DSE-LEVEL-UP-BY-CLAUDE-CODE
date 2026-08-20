@@ -10,15 +10,21 @@ import { useLocale } from '@/lib/i18n'
 // 2026-07-30 對比度修正：本卡刻意永遠黑底（截圖用），但灰字級數太低 ——
 // slate-500 落黑底 4.36:1、落 slate-800 選項徽章只有 3.07:1，slate-600 落純黑更只有
 // 2.77:1，全部未達 AA。一律升至 slate-400（黑底 8.3:1）。黑色遮蓋塊本身係功能，保留。
-export default function BlindTestQuestion() {
-  const { locale } = useLocale()
-  const en = locale === 'en'
-  const tr = (zh: string, eng: string) => (en ? eng : zh)
-  const [revealed, setRevealed] = useState(false)
-
-  const Black = ({ children }: { children: React.ReactNode }) => (
+// 遮蓋塊。必須留喺 module scope —— 定義喺 render function 入面嘅話，每次
+// `revealed` 一變，React 就會當佢係一個【全新嘅組件類型】，將所有遮蓋塊 unmount
+// 再 remount（同時觸發 react-hooks 嘅 "Cannot create components during render"）。
+function Black({
+  children,
+  revealed,
+  onReveal,
+}: {
+  children: React.ReactNode
+  revealed: boolean
+  onReveal: () => void
+}) {
+  return (
     <span
-      onClick={() => setRevealed(true)}
+      onClick={onReveal}
       className={`inline-block rounded px-1 mx-0.5 align-middle transition-colors ${
         revealed ? 'bg-amber-500/15 text-amber-300' : 'bg-black text-black cursor-pointer select-none'
       }`}
@@ -26,6 +32,14 @@ export default function BlindTestQuestion() {
       {children}
     </span>
   )
+}
+
+export default function BlindTestQuestion() {
+  const { locale } = useLocale()
+  const en = locale === 'en'
+  const tr = (zh: string, eng: string) => (en ? eng : zh)
+  const [revealed, setRevealed] = useState(false)
+  const reveal = () => setRevealed(true)
 
   const causes = [
     { emoji: '🧠', zh: '概念盲區', en: 'Conceptual Blindspot', dZh: '忽略定理前提', dEn: 'Missed a premise' },
@@ -66,7 +80,7 @@ export default function BlindTestQuestion() {
       <p className="text-sm leading-relaxed text-slate-200 mb-4">
         {tr('由圓外一點 P 引兩條切線，', 'From external point P two tangents are drawn; ')}
         {tr('已知 ∠APB = ', '∠APB = ')}
-        <Black>{tr('五十', 'fifty')}</Black>
+        <Black revealed={revealed} onReveal={reveal}>{tr('五十', 'fifty')}</Black>
         {tr('°，C 為優弧上一點，求 ∠ACB。', '°, with C on the major arc. Find ∠ACB.')}
       </p>
 
@@ -77,7 +91,7 @@ export default function BlindTestQuestion() {
             <span className="w-5 h-5 rounded bg-slate-800 text-slate-400 text-xs font-bold flex items-center justify-center">
               {['A', 'B', 'C', 'D'][i]}
             </span>
-            <Black>{v}</Black><span className="text-slate-400">°</span>
+            <Black revealed={revealed} onReveal={reveal}>{v}</Black><span className="text-slate-400">°</span>
           </div>
         ))}
       </div>
