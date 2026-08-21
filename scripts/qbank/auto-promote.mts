@@ -57,7 +57,13 @@ const rows: Row[] = JSON.parse(readFileSync(IN, 'utf8'))
 if (!Array.isArray(rows)) { console.error(`✗ ${IN} must be a JSON array`); process.exit(1) }
 
 // ── 對比材料：現有 live 題庫 + 已註冊課題 ──────────────────────────────────
-const existing = (await loadSubjectQuestions(SUBJECT)) as { id: string; content: string; options?: string[]; correctIndex?: number }[]
+// 對比材料要剔走【本科自己的 auto bank】。否則同一批草稿重跑第二次時，
+// 每一行都會與上一次自己入庫的那一行 100% 相同而被踢走，令這條通道變成
+// 一次性 —— 補寫、改錯、重新生成檔頭全部做不到。合併本身是按 id 覆寫的，
+// 所以剔走之後仍然不會產生重複記錄。
+const existing = ((await loadSubjectQuestions(SUBJECT)) as {
+  id: string; content: string; framework?: string; options?: string[]; correctIndex?: number
+}[]).filter((q) => q.framework !== 'auto')
 const validTopics = new Set(getSubjectTopics(SUBJECT).map((t) => t.id))
 const existingIds = new Set(existing.map((e) => e.id))
 
@@ -163,15 +169,16 @@ const mixed = merged.some((q) => (q as { type: string }).type !== 'mc')
 const bankType = mixed ? 'AnyQuestion' : 'Question'
 
 const header = `// AUTO-GATED question bank —— 由 scripts/qbank/auto-promote.mts 自動入庫。
-// 【呢啲題冇經真人逐題審批。】機器只驗得到客觀嘢：格式、選項、術語紅線、
-// LaTeX、對現有題庫嘅重複度、topic id 是否已註冊。答案學術上啱唔啱唔喺閘嘅
-// 能力範圍之內 —— 故此出題端必須 correct-by-construction 或引可查證原文。
-// 前端 QuestionProvenance 會照實向學生顯示「經自動檢查 …未有實名逐題審批紀錄」。
+// 【本檔題目未經真人逐題審批。】機器只能檢驗客觀項目：格式、選項、術語紅線、
+// LaTeX、與現有題庫的重複度、topic id 是否已註冊。答案在學術上是否正確，
+// 並不在此閘的能力範圍之內 —— 故出題端必須 correct-by-construction，或引用
+// 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
+// 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : ${SUBJECT}
 //   count    : ${merged.length}  (easy ${diff.easy || 0} / medium ${diff.medium || 0} / hard ${diff.hard || 0})
 //   types    : mc ${byType.mc || 0} / text ${byType.text || 0} / long ${byType.long || 0}
 //   updated  : ${new Date().toISOString().slice(0, 10)}
-// Do NOT hand-edit —— 改咗會被下次 auto-promote 覆寫。
+// 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { ${bankType} } from './types'
 
 export const ${exportName}: ${bankType}[] = `

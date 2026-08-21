@@ -1,13 +1,14 @@
 // AUTO-GATED question bank —— 由 scripts/qbank/auto-promote.mts 自動入庫。
-// 【呢啲題冇經真人逐題審批。】機器只驗得到客觀嘢：格式、選項、術語紅線、
-// LaTeX、對現有題庫嘅重複度、topic id 是否已註冊。答案學術上啱唔啱唔喺閘嘅
-// 能力範圍之內 —— 故此出題端必須 correct-by-construction 或引可查證原文。
-// 前端 QuestionProvenance 會照實向學生顯示「經自動檢查 …未有實名逐題審批紀錄」。
+// 【本檔題目未經真人逐題審批。】機器只能檢驗客觀項目：格式、選項、術語紅線、
+// LaTeX、與現有題庫的重複度、topic id 是否已註冊。答案在學術上是否正確，
+// 並不在此閘的能力範圍之內 —— 故出題端必須 correct-by-construction，或引用
+// 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
+// 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : history
 //   count    : 37  (easy 37 / medium 0 / hard 0)
 //   types    : mc 37 / text 0 / long 0
 //   updated  : 2026-08-21
-// Do NOT hand-edit —— 改咗會被下次 auto-promote 覆寫。
+// 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
 export const historyAutoQuestions: Question[] = [

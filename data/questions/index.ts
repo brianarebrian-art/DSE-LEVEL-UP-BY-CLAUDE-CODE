@@ -53,6 +53,8 @@ import { englishLiteratureAutoQuestions } from './english-literature-auto'
 import { technologyLivingAutoQuestions } from './technology-living-auto'
 import { ethicsReligiousAutoQuestions } from './ethics-religious-auto'
 import { geographyAutoQuestions } from './geography-auto'
+import { englishAutoQuestions } from './english-auto'
+import { chineseAutoQuestions } from './chinese-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
@@ -110,10 +112,12 @@ const banks: Record<string, SubjectBank> = {
 }
 
 // ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
-// 對應 load.ts 嘅 autoLoaders。barrel 同 loader 必須同步 —— barrel 係所有 QA
-// 工具同稽核統計嘅讀取路徑，只註冊一邊會令題目對統計隱形（2026-08-07 因此
-// 少報過 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
+// 對應 load.ts 的 autoLoaders。barrel 與 loader 必須同步 —— barrel 是所有 QA
+// 工具及稽核統計的讀取路徑，只註冊其中一邊會令題目對統計隱形
+// （2026-08-07 曾因此少報 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
 const autoBanks: Record<string, AnyQuestion[]> = {
+  'chinese': chineseAutoQuestions,
+  'english': englishAutoQuestions,
   'geography': geographyAutoQuestions,
   'ethics-religious': ethicsReligiousAutoQuestions,
   'technology-living': technologyLivingAutoQuestions,

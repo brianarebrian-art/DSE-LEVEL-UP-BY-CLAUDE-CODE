@@ -96,18 +96,20 @@ const loaders: Record<string, Loader> = {
 }
 
 // ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
-// 由 scripts/qbank/auto-promote.mts 自動入庫嘅批次，逐科一個檔。
+// 由 scripts/qbank/auto-promote.mts 自動入庫的批次，每科一個檔案。
 //
-// 點解唔直接寫入上面每科嘅 loader：上面每個 loader 嘅寫法都唔同（有單行、有
-// Promise.all 區塊、有四個 bank 合併），腳本每次都要對唔同形狀做手術，改壞
-// 一次就成科題目消失。呢度改為一個獨立註冊表 —— 新一批只需插一行，
-// 上面嘅 loader 一隻字都唔使郁。
+// 為何不直接寫進上方各科的 loader：上方每個 loader 的寫法並不一致（有單行式、
+// 有 Promise.all 區塊、有四個 bank 合併），腳本每次都要針對不同形狀動手術，
+// 改錯一次即會令整科題目消失。此處改為獨立註冊表 —— 新增批次只需插入一行，
+// 上方的 loader 完全不必改動。
 //
-// ⚠️ 呢啲題【冇實名逐題審批紀錄】。前端 QuestionProvenance 會照實顯示
-//    「經自動檢查 …本題未有實名逐題審批紀錄」，唔會扮人審。
-//    真人審批過嘅批次行嘅係另一條路（promote-drafts.mjs → *-reviewed.ts），
-//    兩條路唔可以混。
+// ⚠️ 此類題目【並無實名逐題審批紀錄】。前端 QuestionProvenance 會如實顯示
+//    「經自動檢查 …本題未有實名逐題審批紀錄」，不會假稱經人手審批。
+//    經真人審批的批次走的是另一條路（promote-drafts.mjs → *-reviewed.ts），
+//    兩條路不可混用。
 const autoLoaders: Record<string, Loader> = {
+  'chinese': async () => (await import('./chinese-auto')).chineseAutoQuestions,
+  'english': async () => (await import('./english-auto')).englishAutoQuestions,
   'geography': async () => (await import('./geography-auto')).geographyAutoQuestions,
   'ethics-religious': async () => (await import('./ethics-religious-auto')).ethicsReligiousAutoQuestions,
   'technology-living': async () => (await import('./technology-living-auto')).technologyLivingAutoQuestions,
