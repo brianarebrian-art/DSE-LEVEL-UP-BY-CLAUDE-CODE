@@ -85,32 +85,6 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "math_imp_096": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "math_imp_098": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "math_imp_100": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
-  "zh_long_b1_01": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_02": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_03": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_04": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_05": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_06": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_07": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_08": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_09": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_10": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_11": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_12": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_13": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_14": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_15": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_16": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_17": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_18": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_19": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_long_b1_20": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-fanwen-long-batch1" },
-  "zh_p2_b1_01": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-p2-writing-batch1" },
-  "zh_p2_b1_02": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-p2-writing-batch1" },
-  "zh_p2_b1_03": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-p2-writing-batch1" },
-  "zh_p2_b1_04": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-p2-writing-batch1" },
-  "zh_p2_b1_05": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-p2-writing-batch1" },
-  "zh_p2_b1_06": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", batch: "chinese-p2-writing-batch1" },
 }
 
 export interface ReviewBatch {
@@ -125,9 +99,7 @@ export interface ReviewBatch {
 export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "bafs-batch", subject: "bafs", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
   { batch: "chinese-crosstext-demo", subject: "chinese", reviewer: "brian", reviewedAt: "2026-07-17", approved: 2 },
-  { batch: "chinese-fanwen-long-batch1", subject: "chinese", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", approved: 20 },
   { batch: "chinese-fanwen-weak-84", subject: "chinese", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-17", approved: 10 },
-  { batch: "chinese-p2-writing-batch1", subject: "chinese", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-08-07", approved: 6 },
   { batch: "econ-market-structure-mc-10", subject: "economics", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-18", approved: 10 },
   { batch: "econ-supply-demand-mc-10", subject: "economics", reviewer: "brian", reviewedAt: "2026-07-17", approved: 10 },
   { batch: "en-backfill-51", subject: "translation", reviewer: "brian", reviewedAt: "2026-08-07", approved: 51 },
@@ -135,7 +107,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 95
+export const REVIEWED_COUNT = 69
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>

@@ -14,6 +14,14 @@ const T = {
   china: { id: 'china_mod', zh: '中國現代化', en: 'Modernisation of China' },
   japan: { id: 'japan_mod', zh: '日本現代化', en: 'Modernisation of Japan' },
   region: { id: 'hk_seasia', zh: '香港與東南亞', en: 'Hong Kong & Southeast Asia' },
+  // ── 2026-08-21：按 EDB《歷史科課程及評估指引》課程架構補上的單元 ───────────
+  // 原有 `hk_seasia` 將主題甲(1)香港與主題甲(3)(ii)東南亞合併為一個課題，
+  // 但兩者在課程之中屬各自獨立的單元；而東南亞與 (4)(iii)b 戰後衝突
+  // 更經官方註明【只在卷二考核】。卷二論述題草稿須用到此三個 id，
+  // 故先行登記，promote 之後方不致成為孤兒課題。
+  hkMod: { id: 'hk_mod', zh: '香港的現代化與蛻變', en: 'Modernisation and Transformation of Hong Kong' },
+  seasia: { id: 'seasia', zh: '東南亞：由殖民地到獨立國家', en: 'Southeast Asia: From Colonies to Independent Countries' },
+  postwar: { id: 'postwar_conflicts', zh: '戰後衝突與聯合國', en: 'Post-war Conflicts and the United Nations' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -912,5 +920,9 @@ export const historyTopics: Topic[] = topicList([
   { topic: T.china, fw: FW.cause, count: china.length },
   { topic: T.japan, fw: FW.cause, count: japan.length },
   { topic: T.region, fw: FW.evaluate, count: region.length },
+  // 尚未有 MC，暫時不會在課題 chips 出現（見 SubjectDetailView 的 mcCount 過濾）。
+  { topic: T.hkMod, fw: FW.evaluate, count: 0 },
+  { topic: T.seasia, fw: FW.cause, count: 0 },
+  { topic: T.postwar, fw: FW.evaluate, count: 0 },
 ])
 historyTopics.push(...historyHellTopics)

@@ -143,9 +143,17 @@ export function getSubjectTopics(subjectId: string): Topic[] {
   if (!bank) return []
 
   const counts = new Map<string, number>()
-  for (const q of bank.questions) counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
+  const mcCounts = new Map<string, number>()
+  for (const q of bank.questions) {
+    counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
+    if (q.type === 'mc') mcCounts.set(q.topic, (mcCounts.get(q.topic) ?? 0) + 1)
+  }
 
-  const withRealCounts = bank.topics.map((t) => ({ ...t, count: counts.get(t.id) ?? 0 }))
+  const withRealCounts = bank.topics.map((t) => ({
+    ...t,
+    count: counts.get(t.id) ?? 0,
+    mcCount: mcCounts.get(t.id) ?? 0,
+  }))
   topicCache.set(subjectId, withRealCounts)
   return withRealCounts
 }

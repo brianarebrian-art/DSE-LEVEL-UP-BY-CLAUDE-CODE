@@ -19,6 +19,14 @@ const T = {
   lexis:     { id: 'classical_lexis',  zh: '文言實詞・一詞多義', en: '文言實詞・一詞多義' },
   structure: { id: 'paragraph_function', zh: '段落結構與作用', en: '段落結構與作用' },
   argument:  { id: 'argument_essay',   zh: '論說文・思辨立意', en: '論說文・思辨立意' },
+  // ── 2026-08-21：卷二寫作的其餘文類 ────────────────────────────────────────
+  // 原本僅有 `argument_essay` 一項 —— 但真實卷二乙部並不限於論說，甲部更屬
+  // 完全另一類（實用寫作，佔全卷 30%）。卷二寫作第二批草稿須用到此四個 id，
+  // 故先行登記，promote 之後方不致成為孤兒課題。
+  narrative:  { id: 'narrative_essay',   zh: '命題寫作・記敘抒情', en: '命題寫作・記敘抒情' },
+  descriptive:{ id: 'descriptive_essay', zh: '命題寫作・描寫',     en: '命題寫作・描寫' },
+  mixed:      { id: 'mixed_essay',       zh: '命題寫作・綜合',     en: '命題寫作・綜合' },
+  practical:  { id: 'practical_writing', zh: '實用寫作',           en: '實用寫作' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -26,6 +34,7 @@ const FW = {
   classic: { id: 'classic', zh: '文言閱讀',     en: '文言閱讀',     emoji: '🏯' },
   read:    { id: 'read',    zh: '閱讀理解',     en: '閱讀理解',     emoji: '📖' },
   lang:    { id: 'lang',    zh: '語文運用',     en: '語文運用',     emoji: '✍️' },
+  write:   { id: 'write',   zh: '寫作能力',     en: '寫作能力',     emoji: '🖋️' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0
@@ -571,6 +580,11 @@ export const chineseTopics: Topic[] = topicList([
   { topic: T.lexis,     fw: FW.classic, count: lexis.length },
   { topic: T.structure, fw: FW.read,    count: structure.length },
   { topic: T.argument,  fw: FW.read,    count: argument.length },
+  // 尚未有 MC，暫時不會在課題 chips 出現（見 SubjectDetailView 的 mcCount 過濾）。
+  { topic: T.narrative,   fw: FW.write, count: 0 },
+  { topic: T.descriptive, fw: FW.write, count: 0 },
+  { topic: T.mixed,       fw: FW.write, count: 0 },
+  { topic: T.practical,   fw: FW.write, count: 0 },
 ])
 
 // 課外文言地獄卷的 topics 已是 Topic[]，直接附加（勿再經 topicList 二次包裝）。

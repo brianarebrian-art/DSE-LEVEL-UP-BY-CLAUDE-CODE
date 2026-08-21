@@ -213,8 +213,12 @@ export default function SubjectDetailView({
 
         {/* Topic list */}
         <h2 className="text-lg font-medium mb-4 text-ink">{sd.byTopic}</h2>
+        {/* 只列出【有 MC】嘅課題 —— 呢啲 chips 全部連去 /practice?topic=，
+            而嗰條路只服務客觀題（getQuestionsByTopic 只返 MC）。題庫自 2026-07-31
+            起收 text／long，於是可以出現「有題但一條 MC 都冇」嘅課題；唔隔走，
+            學生撳入去就會見到一份空白練習。書寫題有自己嘅入口（?mode=long）。 */}
         <div className="grid sm:grid-cols-2 gap-3 mb-12">
-          {topics.map((topic) => (
+          {topics.filter((t) => (t.mcCount ?? t.count) > 0).map((topic) => (
             <Link
               key={topic.id}
               href={`/practice?subject=${meta.id}&topic=${topic.id}`}
