@@ -10,6 +10,12 @@ const zh = {
     paper: '紙筆戰士',
     notes: '知識凝結',
     startPractice: '開始練習',
+    // 手機底欄：刻意沿用各頁自己嘅叫法，唔另創「今日／回顧／我的」一套新詞 ——
+    // 掣寫「今日」但撳落去個頁面寫「我的進度」，只會令學生要記兩套名。
+    tabPractice: '練習',
+    tabProgress: '進度',
+    tabSaved: '收藏',
+    tabAccount: '帳戶',
   },
   footer: {
     tagline1: '改寫版歷屆試題，掌握核心邏輯。',
@@ -339,6 +345,10 @@ const en: typeof zh = {
     paper: 'Paper Warrior',
     notes: 'Notes',
     startPractice: 'Start Practice',
+    tabPractice: 'Practise',
+    tabProgress: 'Progress',
+    tabSaved: 'Saved',
+    tabAccount: 'Account',
   },
   footer: {
     tagline1: 'Rewritten past-paper questions — master the core logic.',

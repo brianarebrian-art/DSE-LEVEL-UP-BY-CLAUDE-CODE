@@ -57,3 +57,35 @@ test('loading.tsx 只准出現喺動態路由（靜態路由加咗會製造閃�
       '（先睇 app/README-loading.md 嘅實測數據；要加就先確認嗰條路由 build 標記係 ƒ）',
   )
 })
+
+// ── 手機底部導航 ────────────────────────────────────────────────────────────
+test('底欄高度只喺一個地方定義，浮動掣一律靠變數讓位', () => {
+  const css = readFileSync(new URL('../../app/globals.css', import.meta.url).pathname, 'utf8')
+  assert.ok(/--bottom-nav-h/.test(css), 'globals.css 冇定義 --bottom-nav-h')
+  // 底欄係 md:hidden；變數必須跟返同一個斷點，否則桌面會為咗一條睇唔見嘅欄讓位。
+  assert.ok(
+    /@media\s*\(min-width:\s*768px\)[\s\S]{0,160}--bottom-nav-h:\s*0/.test(css),
+    '桌面斷點冇把 --bottom-nav-h 歸零 —— 浮動掣會為咗一條 display:none 嘅底欄讓出 3.5rem',
+  )
+  // 浮動掣唔准再硬編 bottom：硬編就唔會跟住底欄郁。
+  for (const f of ['A11yPanel', 'GlobalA11y', 'ReadingRuler', 'PracticeSupport']) {
+    const src = readFileSync(new URL(`../${f}.tsx`, import.meta.url).pathname, 'utf8')
+    assert.ok(
+      !/bottom-\[max\(/.test(src),
+      `${f}.tsx 仲有硬編 bottom-[max(…)]，應改用 .floating-bottom* —— 否則底欄一出就會壓住佢`,
+    )
+    assert.ok(/floating-bottom/.test(src), `${f}.tsx 冇用 .floating-bottom*`)
+  }
+})
+
+test('底欄四個入口指向真實路由，並且喺沉浸式模式收起', () => {
+  const src = readFileSync(new URL('../BottomNav.tsx', import.meta.url).pathname, 'utf8')
+  for (const href of ['/subjects', '/dashboard', '/bookmarks', '/account']) {
+    assert.ok(src.includes(`'${href}'`), `底欄冇 ${href}`)
+  }
+  // /bookmarks 本來喺全站導覽入面完全冇入口 —— 呢個係底欄補返嘅實際缺口，唔好又剷走。
+  assert.ok(/IMMERSIVE/.test(src), '冇沉浸式路由名單')
+  assert.ok(/'\/practice'/.test(src), '練習頁應收起底欄，否則會食走垂直空間兼易誤撳')
+  assert.ok(/aria-current/.test(src), '冇標示當前分頁')
+  assert.ok(/md:hidden/.test(src), '底欄唔應該喺桌面出現')
+})

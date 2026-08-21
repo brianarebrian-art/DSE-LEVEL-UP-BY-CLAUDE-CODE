@@ -88,7 +88,7 @@ export default function GlobalA11y() {
         onClick={() => setSosOpen(true)}
         title={en ? 'Feeling down? We are here.' : '我唔開心 —— 你唔係一個人，我哋喺度。'}
         // FIX: [B8] safe-area — iPhone Home Indicator 唔會遮擋（root layout 已設 viewport-fit=cover）
-        className="no-print fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 w-12 h-12 rounded-full bg-surface-raised/90 border border-sky-500/40 text-accent flex items-center justify-center hover:bg-sky-500/15 transition-colors animate-pulse motion-reduce:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
+        className="no-print fixed floating-bottom right-4 z-40 w-12 h-12 rounded-full bg-surface-raised/90 border border-sky-500/40 text-accent flex items-center justify-center hover:bg-sky-500/15 transition-colors animate-pulse motion-reduce:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
         style={{ animationDuration: '3s' }}
         aria-label={en ? 'Emotional support' : '情緒支援'}
       >

@@ -161,7 +161,7 @@ export default function A11yPanel() {
         aria-expanded={open}
         aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
         title={en ? 'Accessibility · text size & easy-read font' : '無障礙 · 字級同易讀字體'}
-        className="no-print fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center hover:bg-slate-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
+        className="no-print fixed floating-bottom left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center hover:bg-slate-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
       >
         {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
             OG 圖，SVG 重繪先有真透明背景）。無障礙名稱由 button aria-label 提供。
@@ -171,7 +171,7 @@ export default function A11yPanel() {
 
       {open && (
         <div
-          className="no-print fixed bottom-[max(4.5rem,calc(env(safe-area-inset-bottom)+3.5rem))] left-4 z-50 w-72 max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-2xl p-4 shadow-xl"
+          className="no-print fixed floating-bottom-3 left-4 z-50 w-72 max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-2xl p-4 shadow-xl"
           role="dialog"
           aria-label={en ? 'Accessibility options' : '無障礙設定'}
         >

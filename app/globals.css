@@ -447,3 +447,36 @@ html.a11y-spacing button {
 @media (prefers-reduced-motion: reduce) {
   .hourglass-stream { animation: none; }
 }
+
+/* ── 手機底部導航：一個高度、一處定義 ─────────────────────────────────────
+   全站左右下角本身已經企滿咗浮動掣（無障礙面板、閱讀尺、情緒支援、
+   練習頁工具角），底欄一出就會壓住佢哋。與其喺五個元件各自硬編一個新數字，
+   不如把底欄高度變成一個變數，浮動掣一律靠 `.floating-bottom` 讀佢。
+   底欄唔顯示（桌面、或沉浸式路由）時變數係 0，浮動掣自動落返原位。
+
+   `data-bottomnav` 由 BottomNav 自己掛落 <html>，唔會出現「底欄收起咗但
+   浮動掣仲浮喺半空」嘅狀態。 */
+:root {
+  --bottom-nav-h: 0px;
+}
+html[data-bottomnav='on'] {
+  --bottom-nav-h: 3.5rem;
+}
+/* 底欄本身係 `md:hidden`（Tailwind v4 md = 768px）。變數必須跟返同一個斷點，
+   否則桌面會出現「底欄睇唔見，但浮動掣仍然為咗佢讓出 3.5rem」——
+   實測 1008px 下三個浮動掣被無端推高 72px。 */
+@media (min-width: 768px) {
+  html[data-bottomnav='on'] {
+    --bottom-nav-h: 0px;
+  }
+}
+.floating-bottom {
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--bottom-nav-h));
+}
+/* 疊喺 `.floating-bottom` 之上嘅第二層（例如無障礙面板彈出、練習頁工具角） */
+.floating-bottom-2 {
+  bottom: calc(max(4rem, calc(env(safe-area-inset-bottom) + 3rem)) + var(--bottom-nav-h));
+}
+.floating-bottom-3 {
+  bottom: calc(max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) + var(--bottom-nav-h));
+}
