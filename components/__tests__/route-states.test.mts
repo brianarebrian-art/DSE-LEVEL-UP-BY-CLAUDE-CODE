@@ -89,3 +89,35 @@ test('底欄四個入口指向真實路由，並且喺沉浸式模式收起', ()
   assert.ok(/aria-current/.test(src), '冇標示當前分頁')
   assert.ok(/md:hidden/.test(src), '底欄唔應該喺桌面出現')
 })
+
+// ── 導覽收斂（2026-08-21）──────────────────────────────────────────────────
+test('頂部導覽收成四條內容入口，並且 /bookmarks 有咗入口', () => {
+  const src = readFileSync(new URL('../Navbar.tsx', import.meta.url).pathname, 'utf8')
+  // 由 `}[] = [` 之後先開始切 —— 唔可以用第一個 `]`，嗰個係型別註釋 `}[]` 嘅。
+  const start = src.indexOf('}[] = [', src.indexOf('const navLinks'))
+  const block = src.slice(start, src.indexOf('\n]', start))
+  const hrefs = [...block.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
+  assert.deepEqual(hrefs, ['/subjects', '/dashboard', '/bookmarks', '/notes'])
+  // /bookmarks 本來喺全站導覽入面一個入口都冇 —— 唔好又剷走。
+  assert.ok(hrefs.includes('/bookmarks'), '/bookmarks 又冇咗導覽入口')
+})
+
+test('橫向導覽條喺 lg(1024px) 出，唔係 xl(1280px)', () => {
+  const src = readFileSync(new URL('../Navbar.tsx', import.meta.url).pathname, 'utf8')
+  // 實測：六條連結時連結組 natural 闊度 1,020px，要 xl 先擺得落 ——
+  // 即係全部平板同細 mon 手提電腦都淨係得漢堡選單。收成四條之後 815px，
+  // 1024px 下兩種語言都唔會斷行（實測 getClientRects().length === 1）。
+  assert.ok(!/\bxl:(flex|hidden)\b/.test(src), 'Navbar 仲有 xl 斷點 —— 平板會冇咗橫向導航')
+  assert.ok(/\blg:flex\b/.test(src) && /\blg:hidden\b/.test(src), '橫向條／漢堡掣應該用 lg 斷點')
+})
+
+test('紙筆戰士降級之後仍然有唔止一個入口', () => {
+  const places = [
+    ['../../app/subjects/SubjectsView.tsx', '科目總覽頁'],
+    ['../Footer.tsx', 'Footer'],
+  ]
+  for (const [rel, name] of places) {
+    const src = readFileSync(new URL(rel, import.meta.url).pathname, 'utf8')
+    assert.ok(/\/paper-warrior/.test(src), `${name} 冇紙筆戰士入口 —— 由導覽降級落嚟就唔可以兩邊都冇`)
+  }
+})

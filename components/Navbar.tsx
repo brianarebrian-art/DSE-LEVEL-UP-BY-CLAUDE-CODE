@@ -26,16 +26,34 @@ import { useT, useLocale } from '@/lib/i18n'
 //
 // 排行榜 (leaderboard) removed 2026-07-20 — it was a fabricated-student gamification
 // leaderboard (fake ranks + 🔥streak + fake stats), a §禁 gamification + §禁虛構 red line.
+// ── 2026-08-21 導覽收斂（UI／UX 方案 §4.1）─────────────────────────────────
+// 由六條平排連結收成四條內容入口。收斂嘅理由唔係「方案叫收就收」，係量出嚟嘅：
+//
+// 舊狀態：連結組 natural 闊度中文 1,020px（實測），加埋 logo／開始練習／
+// 主題／語言／登入之後，橫向條要 `xl`(1280px) 先擺得落。即係話
+// 【全部平板同細 mon 手提電腦】見到嘅都係漢堡選單 —— 橫向導航等於得桌面大 mon 先有。
+// 收成四條之後擺得落 `lg`(1024px)，多咗一整個裝置級別攞返真正嘅導航。
+//
+// 邊三條降級、點解：
+//   · /methodology、/about —— 本來已經喺 Footer，剷出導覽零成本
+//   · /paper-warrior（紙筆戰士）—— 佢係一種【練習模式】，唔係「進度」「收藏」
+//     嘅同級物。結構上屬於練習之下。降級唔等於收埋：已經同時擺入
+//     科目總覽頁同 Footer「練習」欄，兩個入口都搵得返。
+//
+// 升上嚟嘅係 /bookmarks（收藏）—— 佢本來喺全站導覽入面【一個入口都冇】，
+// 學生淨係由進度頁入得去。
+//
+// 同手機底欄嘅關係：三條相同（練習／進度／收藏），第四條刻意唔同 ——
+// 桌面第四條係「筆記」，手機係「帳戶」。因為桌面右上角已經有 Google 登入掣，
+// 再放「帳戶」係重複；手機底欄嗰四格拇指夠得到嘅位置就冇登入掣，所以要有。
 const navLinks: {
   href: string
-  key: 'subjects' | 'progress' | 'notes' | 'methodology' | 'about' | 'paper'
+  key: 'subjects' | 'progress' | 'tabSaved' | 'notes'
 }[] = [
   { href: '/subjects', key: 'subjects' },
   { href: '/dashboard', key: 'progress' },
+  { href: '/bookmarks', key: 'tabSaved' },
   { href: '/notes', key: 'notes' },
-  { href: '/paper-warrior', key: 'paper' },
-  { href: '/methodology', key: 'methodology' },
-  { href: '/about', key: 'about' },
 ]
 
 export default function Navbar() {
@@ -74,7 +92,7 @@ export default function Navbar() {
         </div>
 
         {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
-        <div className="hidden xl:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-6">
           {/* P1-3 WCAG：導航鏈接補 44px 觸控高度（navbar 容器 64px 高，視覺不變） */}
           {navLinks.map((l) => (
             <Link
@@ -102,7 +120,7 @@ export default function Navbar() {
         </div>
 
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
-        <div className="xl:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           {/* FIX: [C12類] icon-only 掣冇無障礙名，VoiceOver/TalkBack 用戶開唔到選單；
               順手補 44px 觸控目標（B10 標準）+ aria-expanded + aria-controls */}
           <button
@@ -121,7 +139,7 @@ export default function Navbar() {
       {open && (
         <div
           id="site-menu"
-          className="xl:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="lg:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
           <div className="mx-auto max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">

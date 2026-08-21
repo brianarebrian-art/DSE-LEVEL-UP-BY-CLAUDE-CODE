@@ -41,6 +41,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/paper-warrior" className="hover:text-accent transition-colors">
+                  {t.nav.paper}
+                </Link>
+              </li>
+              <li>
                 <Link href="/methodology" className="hover:text-accent transition-colors">
                   {t.footer.linkMethodology}
                 </Link>
