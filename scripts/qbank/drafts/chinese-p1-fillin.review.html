@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chinese · chinese-p1-fillin.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chinese</span></h1>
+<div class="sub">來源 chinese-p1-fillin.json · 共 16 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">16</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"zh_p1_fill_01","topic":"指定範文・字詞","difficulty":"basic","question":"〔卷一・字詞解釋〕\n\n《論仁、論孝、論君子》：「君子**坦蕩蕩**，小人長戚戚。」\n\n試解釋「坦蕩蕩」一詞在文中的意思。","explanation":"「坦」為平坦，「蕩蕩」為寬廣貌，疊詞加強其開闊之感。答題時須扣緊「心境」而非「性格」—— 此句與下文「長戚戚」（時常憂懼）相對，對比的是兩種心理狀態。凡答「為人正直」「光明磊落」者，方向雖近而未貼原意：原句所寫是內心的安然，不是德行的評語。","type":"text","referenceAnswer":"心胸寬廣、平坦開闊，安然而無所憂懼。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_02","topic":"指定範文・字詞","difficulty":"basic","question":"〔卷一・字詞解釋〕\n\n《魚我所欲也》：「二者不可得兼，**舍**生而取義者也。」\n\n試解釋「舍」字在文中的意思。","explanation":"此處「舍」通「捨」，與下文「取」相對成文：一舍一取，正是本篇論證的核心動作。留意本字在文言中另有「房舍」「止息」二義（如「舍於城外」），必須按上下文判別 —— 本句與「取」對舉，故只能取「捨棄」義。","type":"text","referenceAnswer":"捨棄、放棄。（「舍」為「捨」的古字。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_03","topic":"指定範文・內容","difficulty":"intermediate","question":"〔卷一・語譯〕\n\n《魚我所欲也》：「非獨賢者有是心也，人皆有之，賢者能勿喪耳。」\n\n試語譯此句。","explanation":"此句有三個必須譯出的點：一、「非獨……也」為「不只是……」的固定結構；二、「是心」的「是」是指示代詞「這」，不可譯作判斷動詞；三、句末「耳」為限制語氣詞，相當於「罷了」，語譯時若略去，孟子那種「賢人並無特殊之處，只是守得住」的語氣便消失，而這正是全句的重心所在。","type":"text","referenceAnswer":"不只是賢人才有這種心，人人都有，只是賢人能夠不喪失它罷了。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_04","topic":"指定範文・字詞","difficulty":"intermediate","question":"〔卷一・字詞解釋〕\n\n《勸學》：「假輿馬者，非利足也，而**致**千里。」\n\n試解釋「致」字在文中的意思。","explanation":"「致」在此為動詞，解「到達」，與上文「假輿馬」（借助車馬）構成因果：並非腳程快，而是憑藉外物而能到達千里。此字常被誤解為「導致」或「極致」—— 兩者皆為後起的常用義，放回本句則句意不通。荀子此段連舉數例，全部落在「善假於物」四字，語譯時須守住這條主線。","type":"text","referenceAnswer":"到達、達至。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_05","topic":"指定範文・字詞","difficulty":"basic","question":"〔卷一・字詞解釋〕\n\n《出師表》：「先帝不以臣**卑鄙**，猥自枉屈，三顧臣於草廬之中。」\n\n試解釋「卑鄙」一詞在文中的意思。","explanation":"本題是古今異義的典型。今日「卑鄙」指品格惡劣，屬貶義；文中則為諸葛亮的自謙之辭，說的是出身與見識，並無品德之義。若按今義理解，「先帝不以臣品格惡劣」在文意上完全講不通 —— 這正是判別古今異義的方法：先按今義代入，看句子是否還成立。","type":"text","referenceAnswer":"地位低微、見識淺陋。（「卑」指身分低，「鄙」指見聞淺。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_06","topic":"指定範文・內容","difficulty":"intermediate","question":"〔卷一・語譯〕\n\n《師說》：「是故無貴無賤，無長無少，道之所存，師之所存也。」\n\n試語譯此句。","explanation":"兩個「無」字並非否定詞，而是「無論」，此為本句最易失分之處。句末「道之所存，師之所存也」為判斷句，「之所存」是「所」字結構，須譯出「……的地方」。全句以否定身分差異開首，再以判斷句收束，韓愈的立論由此確立：從師的依據在道而不在人。","type":"text","referenceAnswer":"因此無論地位高低，無論年紀長幼，道理存在的地方，就是老師存在的地方。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_07","topic":"指定範文・字詞","difficulty":"intermediate","question":"〔卷一・字詞解釋〕\n\n《岳陽樓記》：「予嘗求古仁人之心，或**異**二者之為。」\n\n試解釋「異」字在文中的意思及其詞性。","explanation":"本題同時考詞義與詞性。「異」在此非形容詞「奇異」，而是動詞「不同於」，後帶賓語。判別方法：其後緊接名詞性成分「二者之為」，形容詞不能直接帶賓語，故必為動詞。「二者」回指上文所寫的兩種覽物之情 —— 認清這個指代，下文「不以物喜，不以己悲」的轉折才接得上。","type":"text","referenceAnswer":"不同於（動詞，此處帶賓語「二者之為」）。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_08","topic":"文言實詞・一詞多義","difficulty":"hard","question":"〔卷一・虛詞辨析〕\n\n試分別解釋以下三句中「之」字的用法：\n(一)《師說》：「古之學者必有師。」\n(二)《魚我所欲也》：「人皆有之。」\n(三)《六國論》：「秦之所大欲，諸侯之所大患。」","explanation":"「之」是文言最常考的虛詞，三種用法的判別靠位置：夾在名詞與名詞之間多為「的」；置於動詞之後多為代詞；夾在主語與謂語之間而全句作更大句子的成分時，則屬取消獨立性，語譯時不必譯出。第三種最易失分 —— 學生往往硬譯成「的」，令句子變成「秦的所大欲」而不成話。","type":"text","referenceAnswer":"(一) 結構助詞，相當於「的」。\n(二) 代詞，指代上文所說的「是心」。\n(三) 結構助詞，用於主謂之間，取消句子的獨立性，不譯。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_09","topic":"段落結構與作用","difficulty":"intermediate","question":"〔卷一・填表〕\n\n《六國論》的論證結構如下表。試填寫甲、乙、丙三處。\n\n┌──────┬────────────────────────┐\n│ 位置  │ 內容                     │\n├──────┼────────────────────────┤\n│ 首段  │ 甲：（提出全篇的中心論點）│\n│ 中段  │ 乙：（分述兩類國家的情況）│\n│ 末段  │ 丙：（借古論今的用意）    │\n└──────┴────────────────────────┘","explanation":"填表題考的是全篇結構的掌握，而非局部記誦。《六國論》屬典型的「開門見山—分論—引申」結構：首段即立論，中段分兩類展開，末段由史論轉入現實。答題時三格須各守其位 —— 若把末段的用意寫進甲格，等於未辨清立論與引申的分別。","type":"text","referenceAnswer":"甲：六國破滅並非兵器不利、作戰不力，弊病在於以土地賄賂秦國。\n乙：一類是直接賂秦而力虧者；另一類是不曾賂秦，卻因失去強援而不能獨自保全者。\n丙：以六國為鑑，警戒當世不可重蹈以賄賂求苟安的覆轍。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_10","topic":"指定範文・字詞","difficulty":"hard","question":"〔卷一・字詞解釋〕\n\n《廉頗藺相如列傳》：「相如引車避匿……卒相與**驩**，為刎頸之交。」\n\n試解釋「驩」字在文中的意思。","explanation":"本題考通假。「驩」本為馬名，此處通「歡」，指二人終於和好。判別通假的線索有二：一是本義代入不通（馬名在此句完全無法解釋），二是上下文已提供方向（「相與」「為刎頸之交」皆指向和好）。文言遇上本義講不通的字，第一步就是試通假，而非強解。","type":"text","referenceAnswer":"歡好、和好。（「驩」通「歡」。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_11","topic":"指定範文・內容","difficulty":"hard","question":"〔卷一・語譯〕\n\n《逍遙遊》：「若夫乘天地之正，而御六氣之辯，以遊無窮者，彼且惡乎待哉！」\n\n試語譯此句。","explanation":"此句是全篇的收束，須譯出三個關鍵：一、「正」指天地的本然常道，不可譯作「正確」；二、「辯」通「變」，指六氣的變化；三、句末「惡乎待哉」為反問，「惡」音「烏」，即「何」，「待」即「有所依待」，反問的答案是「無所待」—— 而「無待」正是莊子所謂逍遙的定義。語譯若把反問改成陳述，全句的力量便失去。","type":"text","referenceAnswer":"至於順應天地的本然，駕馭陰陽風雨晦明六氣的變化，而遨遊於無窮境界的人，他還需要依待甚麼呢！","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_12","topic":"文言實詞・一詞多義","difficulty":"intermediate","question":"〔卷一・句式〕\n\n試指出以下兩句的句式，並各以現代漢語語譯：\n(一)《廉頗藺相如列傳》：「求人可使報秦者。」\n(二)《岳陽樓記》：「微斯人，吾誰與歸？」","explanation":"文言特殊句式最常考定語後置與賓語前置。(一) 中「可使報秦者」本應在「人」之前作定語，後置以突出條件，語譯時須還原詞序。(二) 中「誰」是疑問代詞作「與」的賓語，文言此類句子必前置，語譯時須改回「與誰」。判別方法相同：先按現代語序還原，還原之後句子通順，即可確認為倒裝。","type":"text","referenceAnswer":"(一) 定語後置句。語譯：尋找一個可以出使回覆秦國的人。\n(二) 賓語前置句（疑問代詞作賓語前置）。語譯：沒有這種人，我還能同誰在一起呢？","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_13","topic":"指定範文・字詞","difficulty":"basic","question":"〔卷一・字詞解釋〕\n\n《始得西山宴遊記》：「悠悠乎與顥氣俱，而莫得其**涯**。」\n\n試解釋「涯」字在文中的意思。","explanation":"「涯」本義為水邊，引申為邊際。此句寫作者登西山後與天地元氣相接，遼闊而不見盡頭。答題時宜答引申義「邊際」而非本義「水邊」—— 判別的依據是搭配：「莫得其涯」的主語是那種遼闊的感受，而非一片水域。文言字詞解釋，永遠先看它在句中與甚麼搭配。","type":"text","referenceAnswer":"邊際、盡頭。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_14","topic":"段落結構與作用","difficulty":"hard","question":"〔卷一・填表〕\n\n《岳陽樓記》以兩段對比的覽物之情，帶出末段的議論。試填寫下表甲、乙、丙三處。\n\n┌──────────┬──────────────┬──────────────┐\n│ 段落      │ 所寫景象      │ 所生之情      │\n├──────────┼──────────────┼──────────────┤\n│ 陰雨一段  │ 甲：          │ 去國懷鄉，憂讒畏譏 │\n│ 春和一段  │ 乙：          │ 心曠神怡，寵辱偕忘 │\n│ 末段議論  │ ——            │ 丙：          │\n└──────────┴──────────────┴──────────────┘","explanation":"本題考的是「以景生情、由情入議」的整體佈局。兩段景物一陰一晴、一悲一喜，正是為了替末段的轉折鋪路 —— 古仁人之心，恰恰不隨這兩種景象而動。填表時若把丙格只填「先憂後樂」而略去「不以物喜，不以己悲」，便斷了與前兩段的連繫：後者才是直接回應對比的一句。","type":"text","referenceAnswer":"甲：淫雨霏霏，連月不開；陰風怒號，濁浪排空。（日星隱曜，山岳潛形，商旅不行。）\n乙：春和景明，波瀾不驚；上下天光，一碧萬頃。（沙鷗翔集，錦鱗游泳。）\n丙：不以物喜，不以己悲；先天下之憂而憂，後天下之樂而樂。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_15","topic":"文言實詞・一詞多義","difficulty":"hard","question":"〔卷一・虛詞辨析〕\n\n試分別解釋以下三句中「而」字所表示的關係：\n(一)《勸學》：「青，取之於藍，而青於藍。」\n(二)《師說》：「惑而不從師，其為惑也終不解矣。」\n(三)《魚我所欲也》：「舍生而取義者也。」","explanation":"「而」的用法判別，不靠記憶而靠前後兩項的語意關係：前後相反則為轉折；前項為條件、後項為結果則為假設；前後為先後相承的動作則為順承。(二) 最易誤判為轉折 —— 「有疑惑卻不從師」表面通順，但下句「其為惑也終不解矣」是結果句，可見上句實為條件，故應作假設解。","type":"text","referenceAnswer":"(一) 轉折關係，相當於「卻」。\n(二) 假設關係，相當於「如果」。\n(三) 順承關係，表示前後相承，可不譯。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_p1_fill_16","topic":"課外文言・篇章精讀","difficulty":"intermediate","question":"〔卷一・語譯〕\n\n《六國論》：「以地事秦，猶抱薪救火，薪不盡，火不滅。」\n\n(一) 試語譯此句。\n(二) 此句運用了甚麼論證手法？","explanation":"(一) 語譯的關鍵在「事」為動詞「事奉」，以及「猶」為「好比」。(二) 蘇洵以抱薪救火設喻，把抽象的外交策略化為可以想見的畫面，並藉喻體本身的荒謬性，顯出賂秦策略的自相矛盾 —— 救火而添柴，動作與目的相反。答比喻論證時，宜同時指出其效果（化抽象為具體、以喻體的荒謬凸顯本體的錯誤），只答手法名稱者，得分有限。","type":"text","referenceAnswer":"(一) 用土地來事奉秦國，好比抱著柴草去救火，柴草不燒完，火就不會熄滅。\n(二) 比喻論證（設喻說理）。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chinese";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  const out = { _meta: { source: "chinese-p1-fillin.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Date().toISOString().slice(0,10) }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chinese-p1-fillin.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

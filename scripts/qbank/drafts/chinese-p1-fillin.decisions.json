@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "source": "chinese-p1-fillin.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh_p1_fill_01": "pending",
+    "zh_p1_fill_02": "pending",
+    "zh_p1_fill_03": "pending",
+    "zh_p1_fill_04": "pending",
+    "zh_p1_fill_05": "pending",
+    "zh_p1_fill_06": "pending",
+    "zh_p1_fill_07": "pending",
+    "zh_p1_fill_08": "pending",
+    "zh_p1_fill_09": "pending",
+    "zh_p1_fill_10": "pending",
+    "zh_p1_fill_11": "pending",
+    "zh_p1_fill_12": "pending",
+    "zh_p1_fill_13": "pending",
+    "zh_p1_fill_14": "pending",
+    "zh_p1_fill_15": "pending",
+    "zh_p1_fill_16": "pending"
+  }
+}
