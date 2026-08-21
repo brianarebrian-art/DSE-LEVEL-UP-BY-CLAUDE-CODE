@@ -7,6 +7,7 @@ import {
   subjects,
   type SubjectMeta,
 } from '@/data/subjects'
+import { getSubjectQuestions } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
 import { bestSimilarity, FUZZY_THRESHOLD } from '@/lib/fuzzy'
 
@@ -66,14 +67,21 @@ export default function SubjectsView() {
       href={`/subjects/${s.id}`}
       className={`group relative bg-surface-raised border border-line rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}
     >
+      {/* 2026-08-21：呢度本來係一個「✓ 已上線」徽章。信譽審核 §5 指出「已上線」
+          會被理解成全題型覆蓋 —— 而實情係 MC 有、書寫／口試／實作冇。
+          改為顯示【真實題數】：一個具體數字唔會被過度詮釋，而且加減題會自動跟。 */}
       <div className="absolute top-4 right-4">
         <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full">
-          <CheckCircle2 size={10} /> {t.common.live}
+          <CheckCircle2 size={10} /> {getSubjectQuestions(s.id).length}
+          {en ? ' MC' : ' 條 MC'}
         </span>
       </div>
       <div className="text-3xl mb-3">{s.emoji}</div>
       <div className="font-medium mb-1 text-ink">{name(s)}</div>
-      <div className="text-xs text-ink-muted mb-3 leading-relaxed">{desc(s)}</div>
+      <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
+      <div className="text-[11px] text-ink-muted mb-3">
+        {en ? 'Written / oral / practical: not covered' : '書寫、口試、實作：未涵蓋'}
+      </div>
       <div className="flex items-center gap-1 text-sm text-accent font-medium">
         {tl.startPractice} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
       </div>

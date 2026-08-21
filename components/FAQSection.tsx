@@ -15,8 +15,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '題目係咪抄歷屆試題？', qEn: 'Are the questions copied from past papers?',
-    aZh: '唔係。所有題目都係對照課程及評估指引獨立改寫嘅原創題。歷屆試題版權屬 HKEAA，官方試題請到 HKEAA 網站。',
-    aEn: 'No. Every question is independently written against the C&A guides. Past papers are HKEAA copyright — get the official ones from HKEAA.',
+    aZh: '唔係。所有題目都係對照課程及評估指引獨立改寫嘅原創題。歷屆試題版權屬 HKEAA，官方試題請到 HKEAA 網站。唔使淨係信我哋 —— 透明度頁列咗每一批經真人逐題審批嘅紀錄，連審批人同日期，數字亦係即時由題庫算出，唔係寫死。',
+    aEn: 'No. Every item is an original rewrite aligned to the syllabus and assessment guide. Past papers are HKEAA copyright — get those from the HKEAA site. You do not have to take our word for it: the transparency page lists every named, dated review batch, and the figures are computed live from the bank rather than hard-coded.',
   },
   {
     qZh: '點解答錯會鎖 60 秒？', qEn: 'Why am I locked for 60 seconds after a wrong answer?',
@@ -40,8 +40,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '等級預測準唔準？', qEn: 'How accurate is the level estimate?',
-    aZh: '只係按你喺本平台表現嘅自我評估參考，並非官方預測，亦唔構成任何成績保證。最終成績以 HKEAA 公布為準。',
-    aEn: 'It is a self-assessment reference based on your practice here — not an official prediction and never a guarantee.',
+    aZh: '只係按你喺本平台表現嘅自我評估參考，並非官方預測，亦唔構成任何成績保證。結果頁會直接寫出範圍同埋點解會咁闊 —— 20 題嘅樣本分辨唔到相鄰等級，我哋唔會扮分辨到。最終成績以 HKEAA 公布為準。',
+    aEn: 'It is a self-assessment reference based on your practice here — not an official prediction and never a guarantee. The result page states the range and why it is wide: twenty questions cannot separate neighbouring levels, and we will not pretend otherwise.',
   },
   {
     qZh: 'SEN 同學有咩支援？', qEn: 'What support is there for SEN students?',

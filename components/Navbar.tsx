@@ -28,7 +28,7 @@ import { useT, useLocale } from '@/lib/i18n'
 // leaderboard (fake ranks + 🔥streak + fake stats), a §禁 gamification + §禁虛構 red line.
 const navLinks: {
   href: string
-  key: 'subjects' | 'progress' | 'notes' | 'methodology' | 'about' | 'wall' | 'paper'
+  key: 'subjects' | 'progress' | 'notes' | 'methodology' | 'about' | 'paper'
 }[] = [
   { href: '/subjects', key: 'subjects' },
   { href: '/dashboard', key: 'progress' },
@@ -36,7 +36,6 @@ const navLinks: {
   { href: '/paper-warrior', key: 'paper' },
   { href: '/methodology', key: 'methodology' },
   { href: '/about', key: 'about' },
-  { href: '/wall', key: 'wall' },
 ]
 
 export default function Navbar() {

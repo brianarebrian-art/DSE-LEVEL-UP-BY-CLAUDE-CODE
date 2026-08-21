@@ -63,8 +63,32 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/trust" className="font-medium hover:text-accent transition-colors">
+                  {t.footer.trust}
+                </Link>
+              </li>              <li>
                 <Link href="/transparency" className="hover:text-accent transition-colors">
                   {t.footer.transparency}
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-accent transition-colors">
+                  {t.footer.privacy}
+                </Link>
+              </li>
+              <li>
+                <Link href="/community-safety" className="hover:text-accent transition-colors">
+                  {t.footer.communitySafety}
+                </Link>
+              </li>
+              <li>
+                <Link href="/prediction-method" className="hover:text-accent transition-colors">
+                  {t.footer.predictionMethod}
+                </Link>
+              </li>
+              <li>
+                <Link href="/accessibility" className="hover:text-accent transition-colors">
+                  {t.footer.accessibility}
                 </Link>
               </li>
               <li>
@@ -95,6 +119,14 @@ export default function Footer() {
             <span className="mx-2">·</span>
             <Link href="/transparency" className="underline hover:text-accent transition-colors">
               {t.footer.transparency}
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/privacy" className="underline hover:text-accent transition-colors">
+              {t.footer.privacy}
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/community-safety" className="underline hover:text-accent transition-colors">
+              {t.footer.communitySafety}
             </Link>
           </p>
         </div>

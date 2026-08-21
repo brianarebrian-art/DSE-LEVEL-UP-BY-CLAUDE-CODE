@@ -22,6 +22,7 @@ import HourglassTimer from '@/components/HourglassTimer'
 import { playLockChime } from '@/lib/lockChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
 import CalcTipCard from '@/components/CalcTipCard'
+import QuestionProvenance from '@/components/QuestionProvenance'
 import EmotionTags from '@/components/EmotionTags'
 import BookmarkButton from '@/components/BookmarkButton'
 import StagedExplanation from '@/components/StagedExplanation'
@@ -873,6 +874,9 @@ export default function PracticeSession({
                           text={tr(currentQ.explanation, currentQ.explanationEn)}
                           steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         />
+                        {/* 答啱一樣要出來源披露 —— 兩條分支都要，否則答啱嘅學生
+                            永遠見唔到，個披露就變成「淨係錯先話你知」。 */}
+                        <QuestionProvenance questionId={currentQ.id} />
                       </div>
                     </div>
                   </div>
@@ -904,6 +908,10 @@ export default function PracticeSession({
                         }
                       />
                     </div>
+
+                    {/* 來源披露 —— 呢條題點嚟、經過咩把關。放喺解析內、答完先出現，
+                        唔會喺答題時分散注意力。 */}
+                    <QuestionProvenance questionId={currentQ.id} />
 
                     {/* 真相引擎 —— 由歷史錯誤記錄推斷成因，畀一句可執行嘅補救建議。
                         同「正解思路」分開：上面講呢題點解，呢度講「你嘅錯法」點解。 */}

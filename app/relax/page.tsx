@@ -1,41 +1,13 @@
-'use client'
+import type { Metadata } from 'next'
+import RelaxPageClient from './RelaxPageClient'
 
-import { useEffect, useState } from 'react'
-import SensoryMenu, { DEFAULT_PREF, loadSensoryPref, saveSensoryPref, type SensoryPref } from './components/SensoryMenu'
-import RelaxLanding from './components/RelaxLanding'
+// 拆殼原因見 app/about/page.tsx —— Next.js 只認 server component 嘅 `metadata`。
+export const metadata: Metadata = {
+  title: '呼吸空間 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
+  // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
+  description: '考試壓力大嗰陣嘅緩衝區：呼吸、接地、獨處充電。純本機，唔會儲存你嘅情緒紀錄。', // i18n-exempt
+}
 
-// /relax — 🫁 呼吸空間主頁：首次進入先過感官菜單（Emma），之後直入主選擇。
-export default function RelaxPage() {
-  const [pref, setPref] = useState<SensoryPref>(DEFAULT_PREF)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    const saved = loadSensoryPref()
-    if (saved) {
-      setPref(saved)
-      setMenuOpen(false)
-    } else {
-      setMenuOpen(true) // 第一次入場：先揀感官偏好
-    }
-    setReady(true)
-  }, [])
-
-  if (!ready) return <div className="min-h-[40vh]" />
-
-  return (
-    <>
-      {menuOpen && (
-        <SensoryMenu
-          pref={pref}
-          onChange={setPref}
-          onDone={() => {
-            saveSensoryPref(pref)
-            setMenuOpen(false)
-          }}
-        />
-      )}
-      <RelaxLanding pref={pref} onReopenMenu={() => setMenuOpen(true)} />
-    </>
-  )
+export default function Page() {
+  return <RelaxPageClient />
 }

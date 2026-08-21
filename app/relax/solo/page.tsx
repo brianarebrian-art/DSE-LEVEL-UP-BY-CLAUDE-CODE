@@ -1,24 +1,13 @@
-'use client'
+import type { Metadata } from 'next'
+import SoloPageClient from './SoloPageClient'
 
-import { useLocale } from '@/lib/i18n'
-import BackButton from '../components/BackButton'
-import SoloPlayer from '../components/SoloPlayer'
+// 拆殼原因見 app/about/page.tsx —— Next.js 只認 server component 嘅 `metadata`。
+export const metadata: Metadata = {
+  title: '獨處充電 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
+  // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
+  description: 'Lo-fi 電台、雨聲白噪音、雙耳節拍同番茄鐘。效果因人而異，唔會作任何醫療聲稱。', // i18n-exempt
+}
 
-// /relax/solo — 🎧 獨處充電：官方 YouTube 電台（Lo-fi／落雨）+ Web Audio 雙耳節拍。
-export default function RelaxSoloPage() {
-  const { locale } = useLocale()
-  const en = locale === 'en'
-  return (
-    <div>
-      <BackButton />
-      <div className="mt-4 mb-6">
-        {/* FIX: [A3] 「單排補 MP」→「獨處充電」 */}
-        <h1 className="text-xl font-bold text-[#E8E8EC]">🎧 {en ? 'Solo Recharge' : '獨處充電'}</h1>
-        <p className="text-sm text-[#8B8B96] mt-1">
-          {en ? 'Pick a sound, close your eyes, rest a while. Even one track counts.' : '揀首聲音，閉埋眼，抖一陣。聽 1 首都得。'}
-        </p>
-      </div>
-      <SoloPlayer />
-    </div>
-  )
+export default function Page() {
+  return <SoloPageClient />
 }
