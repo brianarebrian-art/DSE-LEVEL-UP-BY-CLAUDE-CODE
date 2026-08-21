@@ -22,13 +22,42 @@ function isBrowser() {
   return typeof window !== 'undefined'
 }
 
+/**
+ * 一筆記錄夠唔夠完整可以攞去用。
+ *
+ * 2026-08-21：驗證儀表板嗰陣寫錯咗一筆測試資料（少咗 `topicResults`），
+ * 成個 /dashboard 即刻 crash —— `a.topicResults is not iterable`。
+ * 舊寫法係 `parsed as AttemptRecord[]`：只驗咗外層係咪陣列，
+ * 每一筆入面有咩就當佢啱，一筆壞就冧成版。
+ *
+ * localStorage 唔係我哋控制得到嘅地方：寫到一半冇電、配額爆滿被截斷、
+ * 擴充功能、學生自己開 devtools 貼嘢，都會整壞。一個學生嘅練習紀錄
+ * 唔應該因為其中一筆爛咗就成個進度頁見唔到。
+ *
+ * 故此改為逐筆驗，爛嗰筆丟走，其餘照用。
+ */
+function isUsableAttempt(a: unknown): a is AttemptRecord {
+  if (typeof a !== 'object' || a === null) return false
+  const r = a as Record<string, unknown>
+  return (
+    typeof r.subjectId === 'string' &&
+    typeof r.score === 'number' &&
+    typeof r.total === 'number' &&
+    typeof r.timestamp === 'number' &&
+    Array.isArray(r.topicResults)
+  )
+}
+
 export function loadAttempts(): AttemptRecord[] {
   if (!isBrowser()) return []
   try {
     const raw = localStorage.getItem(KEY)
     if (!raw) return []
     const parsed = JSON.parse(raw)
-    return Array.isArray(parsed) ? (parsed as AttemptRecord[]) : []
+    if (!Array.isArray(parsed)) return []
+    // 靜靜哋隔走爛記錄：學生見到嘅只係少咗嗰一次紀錄，
+    // 而唔係成個進度頁冧咗。
+    return parsed.filter(isUsableAttempt)
   } catch {
     return []
   }
