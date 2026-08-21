@@ -1,0 +1,913 @@
+// AUTO-GATED question bank —— 由 scripts/qbank/auto-promote.mts 自動入庫。
+// 【呢啲題冇經真人逐題審批。】機器只驗得到客觀嘢：格式、選項、術語紅線、
+// LaTeX、對現有題庫嘅重複度、topic id 是否已註冊。答案學術上啱唔啱唔喺閘嘅
+// 能力範圍之內 —— 故此出題端必須 correct-by-construction 或引可查證原文。
+// 前端 QuestionProvenance 會照實向學生顯示「經自動檢查 …未有實名逐題審批紀錄」。
+//   subject  : ethics-religious
+//   count    : 29  (easy 29 / medium 0 / hard 0)
+//   types    : mc 29 / text 0 / long 0
+//   updated  : 2026-08-21
+// Do NOT hand-edit —— 改咗會被下次 auto-promote 覆寫。
+import type { Question } from './types'
+
+export const ethicsReligiousAutoQuestions: Question[] = [
+  {
+    "id": "eth_floor_01",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "ethical_theories",
+    "topicZh": "倫理學理論",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "倫理學可粗略分為描述倫理學、規範倫理學與後設倫理學。效益主義、義務論與德性倫理學同屬規範倫理學，它們共同要回答的是哪一類問題？",
+    "explanation": "三個分支的分工要記牢：描述倫理學報告「事實上人們持甚麼道德觀」，屬社會科學的工作；後設倫理學追問「道德語言與道德判斷本身是甚麼」，例如「善」是否指涉客觀性質；規範倫理學則直接回答「應該怎樣」，並為答案提出理由。答題時混淆三者，往往令論述離題 —— 被問「應否」卻答「事實上很多人認為」，正是最常見的一種。",
+    "options": [
+      "一個行為應該怎樣做，或一個人應該成為怎樣的人",
+      "某個社會實際上流行着哪些道德規範",
+      "道德詞語的意義，以及道德判斷的性質",
+      "某條法律條文在現行制度下的實際效力"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Ethics is often divided into descriptive, normative and meta-ethics. Utilitarianism, deontology and virtue ethics all belong to normative ethics. What kind of question do they all set out to answer?",
+    "optionsEn": [
+      "how one ought to act, or what kind of person one ought to become",
+      "which moral norms a particular society actually holds",
+      "what moral words mean, and what kind of thing a moral judgement is",
+      "what force a particular legal provision actually has in the present system"
+    ],
+    "explanationEn": "The division of labour matters. Descriptive ethics reports what moral views people in fact hold, which is a task for the social sciences. Meta-ethics asks what moral language and moral judgement themselves are — whether “good”, for instance, picks out an objective property. Normative ethics answers the question of what one ought to do and gives reasons for the answer. Confusing the three commonly derails an answer: being asked whether something ought to be done and replying that many people think so is the most familiar case.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_02",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "ethical_theories",
+    "topicZh": "倫理學理論",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "義務論與後果論在判斷行為對錯時，着眼點的根本分別是甚麼？",
+    "explanation": "兩者的分歧在於「甚麼使一個行為成為對的」：義務論認為某些行為本身就是應為或不應為的，即使結果不利；後果論則認為對錯完全取決於結果的好壞。故此在「可否說謊以救無辜者」一類處境上，兩者會給出相反答案。留意三項常見誤解：兩種理論都適用於個人與公共層面；兩者都有宗教與世俗的版本；而且兩者至今仍在並行爭論，並非誰取代誰。",
+    "options": [
+      "義務論較古老，後果論較新，後者已取代前者",
+      "義務論着眼行為本身是否合乎道德規則，後果論着眼行為所產生的結果",
+      "義務論只適用於個人行為，後果論只適用於政府政策",
+      "義務論出自宗教傳統，後果論出自科學方法"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "What is the fundamental difference in focus between deontology and consequentialism when judging an action?",
+    "optionsEn": [
+      "deontology is older and consequentialism newer, the latter having replaced it",
+      "deontology looks at whether the act itself conforms to a moral rule; consequentialism looks at the outcomes it produces",
+      "deontology applies only to individuals, consequentialism only to government policy",
+      "deontology comes out of religious tradition, consequentialism out of scientific method"
+    ],
+    "explanationEn": "The disagreement is over what makes an act right. Deontology holds that certain acts are required or forbidden in themselves, even when the results are unfavourable; consequentialism holds that rightness turns entirely on how good the results are. That is why the two give opposite answers on a case such as lying to save an innocent person. Note three common errors: both theories apply at the personal and the public level, both have religious and secular versions, and both remain live positions rather than one having superseded the other.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_03",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "ethical_theories",
+    "topicZh": "倫理學理論",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "關於道德與法律的關係，下列哪一項描述最準確？",
+    "explanation": "法律往往體現社會的道德共識，但兩者的界線並不重合。對朋友刻薄、對承諾失信，多數不違法，卻可受道德批評；反過來，歷史上的種族隔離法例合法而不義，正是道德批判法律的典型例子。至於「見死不救」是否應入法，各地規定不同，這正說明道德要求並非自動成為法律義務。答應用倫理題時分清「這是否應該做」與「這是否應該立法強制」，論述才會清晰。",
+    "options": [
+      "凡道德上應做的事，都已經寫進法律成為義務",
+      "兩者完全無關，各自處理不同範疇的問題",
+      "兩者有重疊但並不等同：有不道德而合法的行為，也有被批評為不義的法律",
+      "凡合法的行為必定合乎道德，因為法律以道德為依據"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Which statement most accurately describes the relationship between morality and law?",
+    "optionsEn": [
+      "whatever is morally required has already been written into law as a duty",
+      "the two are entirely unrelated and deal with quite separate matters",
+      "they overlap but are not identical: some legal acts are immoral, and some laws are criticised as unjust",
+      "whatever is legal must be moral, because law is founded on morality"
+    ],
+    "explanationEn": "Law often expresses a society’s moral consensus, but the two do not coincide. Being unkind to a friend or breaking a promise is usually not illegal yet is open to moral criticism; conversely, historical segregation laws were legal and unjust, the standard case of morality passing judgement on law. Whether failing to help someone in danger should be an offence is settled differently in different places, which shows that a moral requirement does not automatically become a legal duty. Separating “ought this to be done” from “ought this to be legally compelled” keeps an applied-ethics answer clear.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_04",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "applied_ethics",
+    "topicZh": "應用倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "討論一個具體的道德爭議（例如安樂死應否合法化）時，合理的第一步是甚麼？",
+    "explanation": "爭議之所以持續，往往並非因為一方不講理，而是雙方各自看重不同的價值 —— 安樂死的爭論就是「生命的價值」與「個人自主」之間的張力。若連事實（病人的病況、是否有替代的紓緩治療、法例如何界定）與價值都未釐清，論述只會停留在立場的重複。留意兩項常見謬誤：多數人贊成不等於正確（訴諸群眾），現行法律怎樣規定亦不等於應該怎樣（把「是」當作「應該」）。",
+    "options": [
+      "先統計贊成與反對的人數，以多數的一方為準",
+      "先查明現行法律的規定，並以法律作為道德標準",
+      "先判斷哪一方的情緒較強烈，以此推斷誰較有理",
+      "弄清爭議中的關鍵事實，以及各方所訴諸的價值"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "What is a sound first step in discussing a concrete moral controversy, such as whether euthanasia should be legalised?",
+    "optionsEn": [
+      "counting how many are for and against, and going with the majority",
+      "checking what the current law says and taking the law as the moral standard",
+      "judging which side feels more strongly and inferring who is right from that",
+      "establishing the key facts of the case and the values each side appeals to"
+    ],
+    "explanationEn": "A controversy usually persists not because one side is being unreasonable but because the two sides weight different values — the euthanasia debate turns on the tension between the value of life and personal autonomy. Until both the facts (the patient’s condition, whether palliative alternatives exist, how the statute defines things) and the values are set out, an answer will only restate positions. Note two familiar fallacies: that most people agree does not make a view correct, and what the law currently provides does not settle what ought to be the case.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_05",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "applied_ethics",
+    "topicZh": "應用倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "環境倫理中「可持續發展」的基本主張是甚麼？",
+    "explanation": "這個定義的關鍵在於「跨世代」：今日的資源使用不能把成本推給尚未出生、無法為自己發言的人，這正是代際公義的核心。留意它並非要求停止發展 —— 「發展」二字仍在，只是發展的方式須受條件約束。至於責任如何在國與國之間分配，是另一層爭議（涉及歷史排放與現時能力），不能與定義本身混為一談。",
+    "options": [
+      "滿足當代人的需要，同時不損害後代滿足其需要的能力",
+      "停止一切經濟發展，以徹底保護自然環境",
+      "只要維持經濟增長，環境問題自然會得到解決",
+      "由發達國家承擔全部責任，發展中國家毋須減排"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "What is the basic claim of “sustainable development” in environmental ethics?",
+    "optionsEn": [
+      "meeting the needs of the present without compromising the ability of future generations to meet theirs",
+      "halting all economic development in order to protect the natural environment completely",
+      "keeping economic growth going, on the view that environmental problems will then solve themselves",
+      "placing the whole responsibility on developed countries, with none on developing ones"
+    ],
+    "explanationEn": "The definition turns on the intergenerational point: today’s use of resources must not push the cost onto people not yet born, who cannot speak for themselves — which is the heart of intergenerational justice. Note that it does not call for development to stop; the word “development” remains, and it is the manner of development that is constrained. How responsibility is distributed between countries, which involves historical emissions and present capacity, is a further dispute and should not be folded into the definition itself.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_06",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "applied_ethics",
+    "topicZh": "應用倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "醫療倫理常引用四項原則。其中「不傷害原則」(non-maleficence) 指甚麼？",
+    "explanation": "四項原則各有分工：自主原則保障病人的知情選擇，行善原則要求主動謀求病人福祉，公義原則處理資源分配，不傷害原則則是底線 —— 任何介入都有風險，故必須衡量益處是否值得承受該風險。四者在實際個案中經常互相拉扯，例如一項有效但風險高的治療，行善與不傷害就會指向不同方向；能指出張力在哪裡，正是論述題的得分位。",
+    "options": [
+      "醫護人員應主動為病人謀求最大的福祉",
+      "首先不要造成傷害，並須衡量治療的益處與風險",
+      "病人有權在知情下自行決定接受何種治療",
+      "醫療資源應按公平的準則在病人之間分配"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Medical ethics commonly appeals to four principles. What does the principle of non-maleficence require?",
+    "optionsEn": [
+      "health professionals should actively seek the patient’s greatest good",
+      "first, do no harm — and weigh the benefits of a treatment against its risks",
+      "the patient has the right to decide, when informed, what treatment to accept",
+      "medical resources should be distributed among patients on fair criteria"
+    ],
+    "explanationEn": "Each of the four does a different job: autonomy protects the patient’s informed choice, beneficence requires actively pursuing the patient’s good, justice governs the distribution of resources, and non-maleficence sets the floor — every intervention carries risk, so the benefit must be weighed against it. In real cases the four pull against one another: an effective but risky treatment sets beneficence and non-maleficence in opposite directions. Being able to say where the tension lies is what earns marks in an essay.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_07",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "applied_ethics",
+    "topicZh": "應用倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "反對死刑的其中一項常見理據是甚麼？",
+    "explanation": "「不可逆轉」是反對方最強的一項論據：其他刑罰若日後發現錯判尚可補救，死刑則不能。留意另外三項的問題：執行成本高低是經驗爭議且各地數據不一，並非反對的理由；阻嚇力至今並無一致的實證結論，把爭議說成已有定論是誇大證據；而受害者家屬的立場各有不同，以「一律」概括既不準確，亦不能代替論證。答應用倫理題時，理據要分清哪些屬原則、哪些屬經驗事實。",
+    "options": [
+      "死刑對嚴重罪行的阻嚇力已獲一致的實證支持",
+      "受害者家屬一律反對死刑，故不應保留",
+      "司法可能出錯，而死刑一旦執行便無法糾正",
+      "死刑的執行成本一般低於終身監禁的開支"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "What is one commonly advanced argument against capital punishment?",
+    "optionsEn": [
+      "the deterrent effect of the death penalty on serious crime is agreed and established",
+      "victims’ families are unanimously opposed to it, so it should not be retained",
+      "the courts can err, and once carried out an execution cannot be put right",
+      "carrying out an execution generally costs less than life imprisonment"
+    ],
+    "explanationEn": "Irreversibility is the strongest card the opposing side holds: other punishments can be remedied if a conviction later proves wrong, an execution cannot. Note the trouble with the other three. Relative cost is an empirical dispute on which the figures differ by jurisdiction, and it is not a reason of principle. The evidence on deterrence remains inconclusive, so presenting it as settled overstates what is known. And victims’ families in fact hold varying views, so “unanimously” is both inaccurate and no substitute for an argument. In applied ethics, keep reasons of principle apart from claims of empirical fact.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_08",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "moral_concepts",
+    "topicZh": "道德概念",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "「事實判斷」與「價值判斷」的分別是甚麼？",
+    "explanation": "「這條村的人均收入是三千元」可以查證，「這樣的收入分配並不公義」則不能單憑觀察決定 —— 後者需要理由與論證。留意價值判斷雖不能靠觀察定案，卻不等於無法討論：我們仍可追問其理由是否一致、是否顧及所有相關者，這正是倫理學可以進行的原因。此外事實與價值並非全然分家，價值判斷往往以事實為前提，故事實錯了，判斷亦難以成立。",
+    "options": [
+      "前者是客觀的，後者純屬個人喜好，無法討論",
+      "前者屬科學範疇，後者屬宗教範疇，兩者互不相干",
+      "兩者其實相同，只是使用了不同的說法",
+      "前者陳述事情是怎樣，可用觀察或證據查證；後者評價事情應該怎樣"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "What is the difference between a judgement of fact and a judgement of value?",
+    "optionsEn": [
+      "the first is objective, while the second is mere personal taste and cannot be discussed",
+      "the first belongs to science and the second to religion, and they have nothing to do with each other",
+      "the two are really the same thing, expressed in different words",
+      "the first states how things are and can be checked by observation or evidence; the second evaluates how things ought to be"
+    ],
+    "explanationEn": "That the average income in a village is three thousand dollars can be checked; that such a distribution of income is unjust cannot be settled by observation and requires reasons and argument. Note that a value judgement, though not settled by observation, is not therefore beyond discussion: one can still ask whether its reasons are consistent and whether they take all affected parties into account, which is precisely what makes ethics possible. Fact and value are also not wholly separate — value judgements usually rest on factual premises, so if the facts are wrong the judgement is hard to sustain.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_09",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "moral_concepts",
+    "topicZh": "道德概念",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "有人主張：「只要結果好，行為就是好的，動機並不重要。」這個主張會遇到甚麼困難？",
+    "explanation": "設想一人為陷害同事而舉報一項工程，結果意外揭發真實的安全隱患並救了人。單看後果，這是好事；但多數人仍不願稱該人為有德之人。這正是後果論面對的典型反例，也是義務論與德性倫理學各自的切入點 —— 前者看行為是否合乎應盡的義務，後者看行為是否出自穩定的良好品格。留意這只是「難題」而非「否證」：後果論者仍可回應，例如指出惡意的動機長遠而言會帶來更差的後果。",
+    "options": [
+      "出於惡意而碰巧帶來好結果的行為，也會算作好行為",
+      "後果的多寡無法計算，理論因而完全無法運用",
+      "人會因為害怕後果而不敢作出任何行動",
+      "道德判斷會變得比一般人所接受的更為嚴格"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Someone claims: “So long as the outcome is good the act is good; the motive does not matter.” What difficulty does this claim run into?",
+    "optionsEn": [
+      "an act done from ill will that happens to turn out well would still count as a good act",
+      "consequences cannot be quantified at all, so the theory becomes unusable",
+      "people would become too afraid of consequences to act at all",
+      "moral judgement would become stricter than people generally accept"
+    ],
+    "explanationEn": "Imagine someone reporting a construction project in order to harm a colleague, and the report happens to uncover a genuine safety defect and saves lives. Judged by outcome alone this is good, yet most people would still hesitate to call the person virtuous. This is the standard counter-case that consequentialism must answer, and it is where deontology and virtue ethics each enter — the first asking whether the act met a duty, the second whether it flowed from settled good character. Note that this is a difficulty rather than a refutation: a consequentialist can reply, for instance, that malicious motives produce worse outcomes over time.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_10",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "moral_concepts",
+    "topicZh": "道德概念",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "「尊重」作為一種道德態度，其基本要求是甚麼？",
+    "explanation": "尊重與同意是兩回事。認真聆聽對方的理由、指出自己不同意之處並說明原因，本身就是把對方當作可以講理的主體看待；相反，敷衍附和或避而不談，反而是不把對方的判斷力當一回事。康德式的表述是：人永遠同時是目的，不可【只】被當作工具。留意這裏並非說不可互相利用 —— 僱傭關係就有工具的一面 —— 而是不可【只】當作工具，即不可無視其自身的意志與價值。",
+    "options": [
+      "盡量避免與他人發生任何形式的衝突",
+      "把他人視為有其自身價值的主體，而非只是達成自己目的的工具",
+      "同意對方的一切想法，不作任何反對或質疑",
+      "對地位或年齡比自己高的人保持客氣的態度"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "What does respect, understood as a moral attitude, basically require?",
+    "optionsEn": [
+      "avoiding conflict with others in any form so far as possible",
+      "treating others as having worth in themselves, and not merely as a means to one’s own ends",
+      "agreeing with everything the other person thinks, without objection or question",
+      "being polite to those older or of higher standing than oneself"
+    ],
+    "explanationEn": "Respect and agreement are different things. Listening carefully to someone’s reasons, saying where you differ and explaining why, itself treats them as capable of reasoning; nodding along or avoiding the subject, by contrast, declines to take their judgement seriously. The Kantian formulation is that a person is always at the same time an end and must never be treated **merely** as a means. Note that this does not forbid people making use of one another — employment has an instrumental side — but forbids treating someone **only** so, that is, disregarding their own will and worth.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_11",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "moral_concepts",
+    "topicZh": "道德概念",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "「良心會不會出錯」這個問題，較合理的看法是甚麼？",
+    "explanation": "歷史上不少人在良心上安然地參與了今日公認為不義的制度 —— 這說明良心的判斷會受所處環境的觀念塑造。承認良心可能出錯，並不是要否定良心的權威，而是指出它需要被教育：透過認識事實、聆聽受影響者、檢查自己的理由是否一致。多數宗教傳統與倫理學派同樣持此立場，即良心應予尊重，但同時須不斷培養。",
+    "options": [
+      "不會，因為良心的內容直接來自社會的共識",
+      "這個問題無法討論，因為良心純屬個人感受",
+      "會，良心受成長環境與所接受的觀念影響，故需要反省與教育",
+      "不會，良心是與生俱來的直覺，絕對可靠"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "What is the more reasonable view on the question of whether conscience can be mistaken?",
+    "optionsEn": [
+      "it cannot, because the content of conscience comes straight from social consensus",
+      "the question cannot be discussed, because conscience is purely a personal feeling",
+      "it can: conscience is shaped by upbringing and received ideas, and so needs reflection and education",
+      "it cannot: conscience is an innate intuition and is absolutely reliable"
+    ],
+    "explanationEn": "Many people in history took part with an easy conscience in institutions now widely judged unjust, which shows that the verdicts of conscience are shaped by the ideas of the setting in which they form. To grant that conscience can err is not to deny its authority but to point out that it needs educating — through learning the facts, listening to those affected, and checking one’s reasons for consistency. Most religious traditions and ethical schools hold much the same position: conscience is to be respected and at the same time continually formed.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_12",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "christianity",
+    "topicZh": "基督宗教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "基督宗教的經典《聖經》，一般分為哪兩大部分？",
+    "explanation": "《聖經》的最大分界是舊約與新約：前者為基督宗教承接自猶太傳統的經典，後者記載耶穌及初期教會。其餘三項全部真實存在，但屬於更小的分類：福音書與書信是【新約】之內的類別，律法書與先知書是【舊約】之內的類別，而次經則是不同教會傳統之間收錄範圍有異的一組書卷。答宗教傳統題時，先分清層級，才不會把小類當作大類。",
+    "options": [
+      "福音書與書信",
+      "律法書與先知書",
+      "正典與次經",
+      "舊約與新約"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Into which two main parts is the Christian Bible generally divided?",
+    "optionsEn": [
+      "the Gospels and the Epistles",
+      "the Law and the Prophets",
+      "the canon and the deuterocanonical books",
+      "the Old Testament and the New Testament"
+    ],
+    "explanationEn": "The primary division of the Bible is between the Old and the New Testament: the first is the scripture Christianity inherits from the Jewish tradition, the second records Jesus and the early Church. The other three all genuinely exist but belong to smaller divisions: the Gospels and the Epistles are categories **within** the New Testament, the Law and the Prophets categories **within** the Old, and the deuterocanonical books a group whose inclusion differs between church traditions. Sorting the levels first prevents a subdivision being mistaken for the main division.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_13",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "christianity",
+    "topicZh": "基督宗教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "基督宗教《新約》中的「四福音書」，記載的主要內容是甚麼？",
+    "explanation": "四福音書即《馬太福音》、《馬可福音》、《路加福音》及《約翰福音》，各自從不同角度記述耶穌。其餘三項亦真實存在於《聖經》，但屬別的書卷：出埃及與律法屬《出埃及記》，初期教會屬《使徒行傳》，終末異象屬《啟示錄》。把內容與書卷對上號，是答基督宗教題目的基本功。",
+    "options": [
+      "耶穌的生平、言行與教訓",
+      "以色列人出埃及的經過與律法的頒布",
+      "初期教會的建立、傳教與擴展",
+      "關於世界終末的異象與啟示"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "What do the four Gospels of the Christian New Testament mainly record?",
+    "optionsEn": [
+      "the life, words, deeds and teaching of Jesus",
+      "the exodus of the Israelites from Egypt and the giving of the Law",
+      "the founding, mission and spread of the early Church",
+      "visions and revelations concerning the end of the world"
+    ],
+    "explanationEn": "The four Gospels are Matthew, Mark, Luke and John, each recounting Jesus from its own angle. The other three are also genuinely in the Bible but belong to different books: the exodus and the Law to Exodus, the early Church to Acts, and the visions of the end to Revelation. Matching content to book is basic to answering on the Christian tradition.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_14",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "christianity",
+    "topicZh": "基督宗教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "在基督宗教的理解中，「罪」(sin) 一般指甚麼？",
+    "explanation": "基督宗教傳統把罪理解為關係層面的破損：既指具體的行為，亦指使人偏離應有關係的傾向，故懺悔與寬恕在此傳統中佔重要位置。留意三項常見誤解：罪與犯法不重合，許多罪不違法，亦有法律被視為不義；身體與欲望本身在主流神學中並非罪，關鍵在於是否失序；而禮儀錯誤屬另一層次的問題。理解「罪」的範圍，才能理解該傳統為何如此重視寬恕。",
+    "options": [
+      "專指在宗教崇拜中所犯的禮儀錯誤",
+      "人與神、與人之間關係的破裂，並不限於觸犯法律的行為",
+      "專指刑事法律所禁止並會受刑罰的行為",
+      "專指身體上的欲望，例如飲食與情慾"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "In Christian understanding, what does “sin” generally refer to?",
+    "optionsEn": [
+      "specifically errors of ritual committed in an act of worship",
+      "a rupture in one’s relationship with God and with other people, not confined to breaches of law",
+      "specifically those acts prohibited by criminal law and liable to punishment",
+      "specifically bodily appetites such as those for food and sex"
+    ],
+    "explanationEn": "The Christian tradition understands sin as damage at the level of relationship: it names both particular acts and the disposition that turns a person away from right relationship, which is why repentance and forgiveness occupy so large a place in it. Note three common errors. Sin and illegality do not coincide: much that is sin is not illegal, and some laws are held to be unjust. The body and its appetites are not in mainstream theology sinful in themselves, the question being whether they are disordered. And ritual error belongs to a different order of question. Grasping the scope of the term explains why the tradition places such weight on forgiveness.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_15",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "christianity",
+    "topicZh": "基督宗教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "基督宗教的「三位一體」教義，其內容是甚麼？",
+    "explanation": "這是基督宗教主流傳統的核心教義之一：一位神，三個位格，既非三位神，亦非同一位格輪流換上三副面孔。餘下三項在教會歷史上都曾出現並被主流傳統判定為偏離：主張三位獨立者近於多神論，主張先後顯現者即所謂形態論，主張神與世界合一者則近於泛神論。本題只描述該傳統自身的理解，不涉及其真偽的判斷。",
+    "options": [
+      "神在不同時期先後以三種身分顯現，並非同時",
+      "神、人與世界三者最終合而為一",
+      "聖父、聖子、聖靈為同一位神的三個位格",
+      "聖父、聖子、聖靈是三位各自獨立的神"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "What is the content of the Christian doctrine of the Trinity?",
+    "optionsEn": [
+      "God appears successively in three roles at different periods, not at once",
+      "God, humanity and the world are ultimately merged into one",
+      "Father, Son and Holy Spirit are three persons of one and the same God",
+      "Father, Son and Holy Spirit are three separate and independent gods"
+    ],
+    "explanationEn": "This is one of the central doctrines of the mainstream Christian tradition: one God in three persons — neither three gods, nor one person wearing three faces in turn. The other three positions all appeared in church history and were judged by the mainstream tradition to depart from it: three independent beings tends towards polytheism, successive appearances is what is called modalism, and the merging of God and world approaches pantheism. This question describes only how the tradition understands itself and makes no judgement about whether it is true.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_16",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "buddhism",
+    "topicZh": "佛教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "佛教「四聖諦」是指哪四項？",
+    "explanation": "四聖諦的結構近似診症：苦諦指出問題（生命中的不圓滿），集諦指出病因（貪愛與執取），滅諦指出病可痊癒（苦可止息），道諦則開出藥方（八正道）。其餘三項全部是佛教真實的名相，但屬於別的組別：戒定慧是三學，貪嗔痴是三毒，生老病死是苦的具體樣態。同一傳統之內的名相互相混淆，是本科最常見的失分位。",
+    "options": [
+      "戒、定、慧",
+      "貪、嗔、痴",
+      "生、老、病、死",
+      "苦、集、滅、道"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "What are the Four Noble Truths of Buddhism?",
+    "optionsEn": [
+      "moral discipline, meditative concentration, and wisdom",
+      "greed, hatred, and delusion",
+      "birth, ageing, sickness, and death",
+      "suffering, its origin, its cessation, and the path"
+    ],
+    "explanationEn": "The four truths are structured like a diagnosis: the first states the problem, the unsatisfactoriness in life; the second the cause, craving and clinging; the third that the condition can be ended; and the fourth prescribes the remedy, the Eightfold Path. The other three are all genuine Buddhist terms belonging to other sets: discipline, concentration and wisdom are the three trainings; greed, hatred and delusion the three poisons; birth, ageing, sickness and death particular forms that suffering takes. Mixing up sets within one tradition is the commonest way to lose marks in this subject.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_17",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "buddhism",
+    "topicZh": "佛教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "佛教「八正道」屬於四聖諦之中的哪一諦？",
+    "explanation": "四諦之中，前三諦說明處境（有苦、苦有因、苦可滅），第四諦則交代實踐的方法，而八正道正是這一諦的具體內容：正見、正思維、正語、正業、正命、正精進、正念、正定。留意「八正道」與「滅諦」的分別：滅諦說的是可以達到的目標，道諦說的是通往該目標的路。把目標與方法對調，是本課常見的錯。",
+    "options": [
+      "道諦 —— 止息苦的方法",
+      "苦諦 —— 生命的不圓滿",
+      "集諦 —— 苦的成因",
+      "滅諦 —— 苦的止息狀態"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "The Buddhist Eightfold Path belongs to which of the Four Noble Truths?",
+    "optionsEn": [
+      "the truth of the path — the way to the cessation of suffering",
+      "the truth of suffering — the unsatisfactoriness of life",
+      "the truth of origin — the cause of suffering",
+      "the truth of cessation — the state in which suffering ends"
+    ],
+    "explanationEn": "Of the four, the first three set out the situation — there is suffering, it has a cause, it can be ended — while the fourth gives the method, and the Eightfold Path is what that fourth truth contains: right view, intention, speech, action, livelihood, effort, mindfulness and concentration. Note the difference between the path and the third truth: the third names the goal that can be reached, the fourth the road to it. Swapping goal for method is a common slip here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_18",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "buddhism",
+    "topicZh": "佛教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "佛教「三法印」中的「諸行無常」，指的是甚麼？",
+    "explanation": "無常說的是「變」，不是「無」：事物確實存在，只是不能以固定不變的方式存在。這一點常被誤讀為虛無主義，繼而推論「既然一切都假，做甚麼都無所謂」—— 恰恰相反，正因為事物由因緣構成、可以改變，修行與行善才有意義，苦亦才有止息的可能。此外佛教並不以神明主宰世事解釋變化，而以因緣法解釋。",
+    "options": [
+      "世事的變化由某位神明所主宰和安排",
+      "一切因緣和合而生的事物都在變化，沒有恆常不變的狀態",
+      "一切事物都是虛假的，實際上並不存在",
+      "人生必然充滿痛苦，而且無法改變"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "What does “all conditioned things are impermanent”, one of the Buddhist three marks of existence, mean?",
+    "optionsEn": [
+      "the changes of the world are governed and arranged by a deity",
+      "everything that arises from conditions is in change; no state remains permanently as it is",
+      "everything is illusory and does not in fact exist at all",
+      "human life is necessarily full of pain, and this cannot be altered"
+    ],
+    "explanationEn": "Impermanence asserts change, not non-existence: things do exist, only not in a fixed and unchanging way. This is often misread as nihilism, from which people go on to infer that since everything is unreal nothing matters — the opposite of the point. It is precisely because things are made of conditions and can change that practice and moral effort have any purchase, and that the ending of suffering is possible at all. Nor does Buddhism explain change by the rule of a deity; it explains it by conditioned arising.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_19",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "buddhism",
+    "topicZh": "佛教",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "佛教以「佛、法、僧」合稱「三寶」。其中「法」(Dharma) 指甚麼？",
+    "explanation": "三寶各有所指：佛是覺悟者，法是其所教導的內容與方法，僧是依此修行的群體。三者構成「誰教、教甚麼、與誰一同實踐」的完整結構，故皈依三寶是佛教徒身分的起點。留意「法」指的是教理本身，而非承載教理的紙本經書 —— 經書是法的載體，兩者不可等同。",
+    "options": [
+      "覺悟真理的佛陀本人",
+      "寺院中所收藏的經典實物",
+      "佛陀所教導的真理與修行的方法",
+      "依教奉行、共同修行的僧團"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Buddhism speaks of the Three Jewels: the Buddha, the Dharma and the Sangha. What is the Dharma?",
+    "optionsEn": [
+      "the Buddha himself, the one who awakened to the truth",
+      "the physical scriptures kept in a monastery",
+      "the truth the Buddha taught and the method of practice",
+      "the community of those who practise together"
+    ],
+    "explanationEn": "Each of the Three Jewels names something distinct: the Buddha is the one who awakened, the Dharma is what he taught and the method he set out, the Sangha the community that practises accordingly. Together they answer who teaches, what is taught, and with whom it is practised, which is why taking refuge in the three marks the beginning of Buddhist identity. Note that the Dharma is the teaching itself, not the printed volumes that carry it; the books are its vehicle, and the two are not the same.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_20",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_philosophy",
+    "topicZh": "宗教哲學",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "宗教哲學的工作，與宗教信仰本身的分別在哪裡？",
+    "explanation": "宗教哲學不站在「護教」或「反教」任何一邊，而是把宗教所提出的主張 —— 神是否存在、惡如何與全善全能相容、宗教語言是否有意義 —— 當作可以分析與論證的問題來處理。故信徒與非信徒都可以研究宗教哲學，並且可能在論證的評估上得出相同結論而在信仰上仍有分歧。分清「這個論證是否成立」與「我是否相信」，是本課最基本的訓練。",
+    "options": [
+      "宗教哲學的目的，是為某一宗教提供最終的證明",
+      "宗教哲學的目的，是駁倒一切宗教信仰",
+      "兩者其實是同一回事，只是名稱不同",
+      "宗教哲學以理性方法檢視宗教的主張與論證，不預設該宗教為真"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "How does the work of philosophy of religion differ from religious faith itself?",
+    "optionsEn": [
+      "its purpose is to supply a final proof of some particular religion",
+      "its purpose is to refute religious belief of every kind",
+      "the two are really the same activity under different names",
+      "philosophy of religion examines religious claims and arguments by reason, without presupposing that the religion is true"
+    ],
+    "explanationEn": "Philosophy of religion takes neither an apologetic nor an anti-religious side. It treats the claims religion advances — whether God exists, how evil is compatible with omnipotence and perfect goodness, whether religious language means anything — as questions open to analysis and argument. Believers and non-believers alike can therefore pursue it, and may reach the same verdict on an argument while still differing in belief. Keeping “does this argument work” apart from “do I believe it” is the most basic discipline in this topic.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_21",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_philosophy",
+    "topicZh": "宗教哲學",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "在宗教哲學的討論中，「論證有效」與「結論為真」是兩回事。這一分別提醒我們甚麼？",
+    "explanation": "有效只保證「若前提為真，結論必為真」，它管的是形式而非內容。故評估一個論證要做兩件事：先看推論是否有效，再逐一檢查前提是否可接受。這正是「宇宙論證」、「設計論證」等有神論論證的爭論焦點所在 —— 反對者多半並非指其推論混亂，而是質疑其中某項前提。留意「訴諸權威」不能代替上述兩步。",
+    "options": [
+      "即使推論的形式正確，若前提不成立，結論仍未必為真",
+      "只要結論確實為真，該論證就必定是有效的",
+      "只要論證形式有效，就不必再檢查它的前提",
+      "論證是否成立，取決於提出者的身分與權威"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "In philosophy of religion a valid argument is one thing and a true conclusion another. What does this distinction remind us of?",
+    "optionsEn": [
+      "even if the reasoning is formally correct, the conclusion need not be true if a premise fails",
+      "so long as the conclusion is in fact true, the argument must be valid",
+      "so long as the form is valid, the premises need not be examined",
+      "whether an argument holds depends on the standing and authority of whoever advances it"
+    ],
+    "explanationEn": "Validity guarantees only that if the premises are true the conclusion must be; it governs form, not content. Assessing an argument therefore takes two steps: check whether the inference is valid, then examine each premise for acceptability. This is exactly where the dispute lies over theistic arguments such as the cosmological and the design argument — objectors rarely claim the reasoning is muddled, but rather challenge one of the premises. Note that appeal to authority is no substitute for either step.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_22",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_philosophy",
+    "topicZh": "宗教哲學",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "從宗教哲學的角度，「信仰」與「迷信」較合理的區分在哪裡？",
+    "explanation": "以人數或官方承認作準，會得出荒謬結論 —— 一個信念不會因為信的人多了或少了而由迷信變成信仰。較站得住腳的區分在於態度：成熟的信仰傳統本身就有神學、註釋與辯論的傳統，容許甚至鼓勵追問；而拒絕任何檢視、以恐嚇或功利誘因維持的信念，則無論屬於哪個傳統，都難以稱為信仰。留意這個區分適用於所有傳統，並非用來貶抑某一宗教。",
+    "options": [
+      "兩者其實沒有分別，只是稱呼上的差異",
+      "前者容許提問與反省，願意與理性對話；後者拒絕檢視",
+      "前者屬信眾人數多的宗教，後者屬人數少的宗教",
+      "前者已獲政府正式承認，後者則未獲承認"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "From the standpoint of philosophy of religion, what is the more defensible way to distinguish faith from superstition?",
+    "optionsEn": [
+      "there is really no difference, only a difference in what they are called",
+      "the first admits questions and reflection and engages with reason; the second refuses examination",
+      "the first belongs to religions with many adherents, the second to those with few",
+      "the first has official government recognition and the second has not"
+    ],
+    "explanationEn": "Taking numbers or official recognition as the criterion yields absurd results — a belief does not turn from superstition into faith because more or fewer people come to hold it. The more defensible distinction lies in attitude: mature religious traditions carry their own theology, commentary and debate, and permit or even encourage questioning, whereas a belief that refuses all examination and is sustained by fear or by promised advantage is hard to call faith, whatever tradition it belongs to. Note that the distinction applies across all traditions and is not a device for disparaging any one of them.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_23",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_ethics",
+    "topicZh": "宗教與倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "宗教倫理與世俗倫理之間的一項共通點是甚麼？",
+    "explanation": "兩者的最終根據確有不同 —— 一者可訴諸啟示與傳統，一者則不 —— 但在公共討論中，雙方同樣需要說明「為甚麼」：宗教傳統內部同樣有神學論證、註釋傳統與長期辯論，並非只憑一句「這是規定」。認清共通點，才能明白為何宗教倫理可以與世俗倫理在同一場討論中對話，而不是各說各話。",
+    "options": [
+      "兩者都主張道德標準因時因地而異，並無定準",
+      "兩者都不容許他人對其主張提出質疑",
+      "兩者都須為自己的道德主張提出理由，並可就理由展開討論",
+      "兩者都以神的命令作為道德的最終根據"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "What is one thing religious ethics and secular ethics have in common?",
+    "optionsEn": [
+      "both hold that moral standards vary with time and place and are never fixed",
+      "neither allows its claims to be questioned by anyone else",
+      "both must give reasons for their moral claims, and those reasons can be discussed",
+      "both take divine command as the ultimate ground of morality"
+    ],
+    "explanationEn": "Their ultimate grounds do differ — one may appeal to revelation and tradition, the other does not — but in public discussion both alike have to say why: religious traditions themselves carry theological argument, a commentarial tradition and centuries of debate, and do not rest on a bare “because it is laid down”. Recognising what they share explains how religious and secular ethics can address one another in a single conversation rather than talking past each other.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_24",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_ethics",
+    "topicZh": "宗教與倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "「神聖命令論」(Divine Command Theory) 主張甚麼？",
+    "explanation": "神聖命令論把神的意志放在道德之先：善之所以為善，在於神如此命令。留意第二個選項並非同一主張，而是與之相對的另一立場 —— 這一組對立正是《游敘弗倫》所提出的難題：虔敬之為虔敬，是因為神所喜愛，還是神喜愛它因為它虔敬？前者面對「若神命令殘忍，殘忍豈非為善」的質疑，後者則似乎令道德標準獨立於神。至於社會約定屬約定論，由自然秩序推知則屬自然法，兩者都不以神的命令為根據。",
+    "options": [
+      "神之所以命令某行為，是因為該行為本身為善",
+      "道德規範由人類社會共同約定而成",
+      "道德可由理性從自然秩序之中推知",
+      "一個行為之所以為善，是因為神命令它"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "What does Divine Command Theory claim?",
+    "optionsEn": [
+      "God commands an act because the act is good in itself",
+      "moral norms are established by agreement within human society",
+      "morality can be worked out by reason from the natural order",
+      "an act is good because God commands it"
+    ],
+    "explanationEn": "Divine Command Theory places the will of God prior to morality: what makes the good good is that God commands it. Note that the second option is not the same claim but the opposing one, and that this pair is precisely the dilemma posed in the Euthyphro — is the pious pious because the gods love it, or do they love it because it is pious? The first horn faces the objection that if God commanded cruelty, cruelty would be good; the second appears to leave the moral standard independent of God. Social agreement, meanwhile, is conventionalism, and derivation from the natural order is natural law; neither rests on divine command.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_25",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_ethics",
+    "topicZh": "宗教與倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "儒家倫理中「仁」與「禮」的關係，一般理解為甚麼？",
+    "explanation": "孔子既重禮，亦追問「人而不仁，如之何禮」—— 意即若無內在的仁，禮就只剩空殼。故兩者是內外相成的關係：仁需要禮作為具體的實踐方式，禮則需要仁作為它的內在依據，否則便流於形式。留意這一組關係常被誤讀為對立，繼而把儒家說成只重繁文縟節，這與其經典的自述並不相符。",
+    "options": [
+      "仁是內在的德性，禮是仁的外在表現與實踐方式",
+      "禮是內在的德性，仁則是外在的儀節規範",
+      "兩者互相對立，行禮必然妨礙仁的實現",
+      "兩者完全相同，只是不同時代的不同稱呼"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "How is the relationship between ren (humaneness) and li (rites) in Confucian ethics generally understood?",
+    "optionsEn": [
+      "ren is the inner virtue, and li is how it is expressed and practised outwardly",
+      "li is the inner virtue, and ren the outward code of ceremony",
+      "the two stand opposed, and observing the rites necessarily obstructs ren",
+      "the two are the same thing under names from different periods"
+    ],
+    "explanationEn": "Confucius valued the rites and at the same time asked what the rites amount to in a person without ren — that is, without the inner virtue, li is left an empty shell. The two are therefore complementary, inner and outer: ren needs li as its concrete form of practice, and li needs ren as its inner ground, failing which it lapses into mere formality. Note that this pairing is often misread as an opposition, and Confucianism then described as a matter of elaborate ceremony alone, which does not match what its own classics say.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_26",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_ethics",
+    "topicZh": "宗教與倫理",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "伊斯蘭教的「五功」（五柱）之中，包括以下哪一項？",
+    "explanation": "五功為念（作信仰宣告）、禮（每日五次禮拜）、齋（萊麥丹月封齋）、課（天課，按規定比例施捨）、朝（有能力者一生一次朝覲），構成該傳統日常實踐的基本框架。其餘三項分別屬於基督宗教（主日崇拜、洗禮）與佛教（皈依三寶）。跨傳統比較時先確認每項實踐屬於哪個傳統，論述才不會張冠李戴。",
+    "options": [
+      "皈依佛、法、僧三寶",
+      "每日五次的禮拜",
+      "每週一次的主日崇拜",
+      "以水施行的洗禮"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Which of the following is one of the Five Pillars of Islam?",
+    "optionsEn": [
+      "taking refuge in the Buddha, Dharma and Sangha",
+      "the five daily prayers",
+      "weekly Sunday worship",
+      "baptism with water"
+    ],
+    "explanationEn": "The Five Pillars are the declaration of faith, the five daily prayers, the fast of Ramadan, the prescribed alms known as zakat, and the pilgrimage undertaken once in a lifetime by those able to do so; together they frame the tradition’s daily practice. The other three options belong to Christianity — Sunday worship and baptism — and to Buddhism, in taking refuge in the Three Jewels. When comparing traditions, establishing which practice belongs to which keeps an answer from attributing one tradition’s observance to another.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_27",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_society",
+    "topicZh": "宗教與社會",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "「宗教自由」作為一項基本人權，一般包括哪些內容？",
+    "explanation": "宗教自由的內容有三層：相信與否的自由、改變或放棄信仰的自由，以及在私人與公共場合表達及實踐的自由；不信與離教同樣受保障，這一點常被忽略。至於界線：自由的行使不得侵害他人的同等權利，故「要求他人接受」並不屬於宗教自由，反而是對他人同一權利的侵犯。分清「我有權相信並表達」與「他人有義務接受」，是這一課的關鍵。",
+    "options": [
+      "只包括內心相信的自由，不包括公開表達",
+      "包括要求他人接受自己信仰的自由",
+      "信或不信的自由、改變信仰的自由，以及表達與實踐信仰的自由",
+      "只包括在指定宗教場所之內進行崇拜的自由"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "What does freedom of religion, as a basic human right, generally include?",
+    "optionsEn": [
+      "only the freedom to believe inwardly, and not to express that belief",
+      "the freedom to require others to accept one’s own belief",
+      "the freedom to believe or not, to change one’s belief, and to express and practise it",
+      "only the freedom to worship inside designated religious premises"
+    ],
+    "explanationEn": "The right has three layers: the freedom to believe or not, the freedom to change or abandon a belief, and the freedom to express and practise it in private and in public. That non-belief and leaving a religion are equally protected is often overlooked. As for the limit: exercising the freedom must not invade the equal rights of others, so requiring others to accept one’s belief is no part of religious freedom but an infringement of the same right in them. Separating “I may believe and say so” from “others must accept it” is the key to this topic.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_28",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_society",
+    "topicZh": "宗教與社會",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "在宗教議題上，為甚麼特別需要警惕「刻板印象」？",
+    "explanation": "宗教群體內部往往差異甚大，同一傳統之內既有不同宗派，亦有立場相去甚遠的個人。以個別事件概括整個群體，在邏輯上是以偏概全，在後果上則可能導致就業、居住及日常相處中的實際歧視 —— 故此並非只是「印象」問題。留意刻板印象並非只由傳媒造成，日常語言、教育內容及既有社群經驗同樣有份；亦不限於少數群體，多數群體同樣可能被簡化。",
+    "options": [
+      "刻板印象一律來自傳媒報道，與其他因素無關",
+      "刻板印象只會影響信眾人數較少的宗教",
+      "刻板印象只是印象問題，與現實生活無關",
+      "把個別人士的行為推及整個宗教群體，會造成不公平的標籤"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Why is it especially important to be wary of stereotyping on religious questions?",
+    "optionsEn": [
+      "stereotypes always come from media reporting and from nothing else",
+      "stereotypes affect only religions with smaller numbers of adherents",
+      "a stereotype is a matter of impression only, with no bearing on real life",
+      "it extends the acts of individuals to a whole religious community, producing an unfair label"
+    ],
+    "explanationEn": "Religious communities are internally varied: one tradition contains different schools and individuals whose positions are far apart. Generalising from a particular incident to a whole community is a hasty generalisation in logic, and in its effects can produce real discrimination in employment, housing and everyday dealings — so it is not merely a matter of impression. Note too that stereotypes are not produced by the media alone; ordinary language, the content of education and existing community experience all contribute, and they are not confined to minority groups, since majorities can be flattened just as easily.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "eth_floor_29",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "religion_society",
+    "topicZh": "宗教與社會",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "閱讀傳媒有關宗教議題的報道時，讀者應留意甚麼？",
+    "explanation": "新聞價值傾向罕見與衝突，故宗教報道容易偏重極端個案，令讀者以少數推斷全體。查看消息來源是否包括該傳統內部的聲音，是最直接的校正方法。留意最後一項是典型的確認偏誤 —— 以「是否合乎我原有的看法」判斷報道可信與否，等於只讓自己聽到已相信的東西，這在任何議題上都會削弱判斷力，在宗教議題上尤甚。",
+    "options": [
+      "報道是否只呈現極端個案，以及消息來源是否包括該傳統本身",
+      "報道所用的標題是否吸引，能否引起討論",
+      "該宗教在本地的信眾人數是否足夠眾多",
+      "該報道的立場是否與讀者本人的信仰一致"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "What should a reader watch for in media reporting on religious matters?",
+    "optionsEn": [
+      "whether only extreme cases are presented, and whether the sources include the tradition itself",
+      "whether the headline is eye-catching and likely to prompt discussion",
+      "whether the religion has a large enough local following",
+      "whether the report’s stance agrees with the reader’s own beliefs"
+    ],
+    "explanationEn": "News value favours the rare and the conflictual, so religious coverage tends to over-represent extreme cases and invites readers to infer the whole from a few. Checking whether the sources include voices from within the tradition is the most direct correction. Note that the last option is textbook confirmation bias: judging a report’s reliability by whether it matches what one already thinks means hearing only what one already believes, which weakens judgement on any subject and on this one especially.",
+    "frameworkEn": "Auto-gated"
+  }
+]

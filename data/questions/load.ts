@@ -95,6 +95,28 @@ const loaders: Record<string, Loader> = {
   'technology-living': async () => (await import('./technology-living')).technologyLivingQuestions,
 }
 
+// ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
+// 由 scripts/qbank/auto-promote.mts 自動入庫嘅批次，逐科一個檔。
+//
+// 點解唔直接寫入上面每科嘅 loader：上面每個 loader 嘅寫法都唔同（有單行、有
+// Promise.all 區塊、有四個 bank 合併），腳本每次都要對唔同形狀做手術，改壞
+// 一次就成科題目消失。呢度改為一個獨立註冊表 —— 新一批只需插一行，
+// 上面嘅 loader 一隻字都唔使郁。
+//
+// ⚠️ 呢啲題【冇實名逐題審批紀錄】。前端 QuestionProvenance 會照實顯示
+//    「經自動檢查 …本題未有實名逐題審批紀錄」，唔會扮人審。
+//    真人審批過嘅批次行嘅係另一條路（promote-drafts.mjs → *-reviewed.ts），
+//    兩條路唔可以混。
+const autoLoaders: Record<string, Loader> = {
+  'geography': async () => (await import('./geography-auto')).geographyAutoQuestions,
+  'ethics-religious': async () => (await import('./ethics-religious-auto')).ethicsReligiousAutoQuestions,
+  'technology-living': async () => (await import('./technology-living-auto')).technologyLivingAutoQuestions,
+  'english-literature': async () => (await import('./english-literature-auto')).englishLiteratureAutoQuestions,
+  'history': async () => (await import('./history-auto')).historyAutoQuestions,
+  'chinese-literature': async () => (await import('./chinese-literature-auto')).chineseLiteratureAutoQuestions,
+  'chinese-history': async () => (await import('./chinese-history-auto')).chineseHistoryAutoQuestions,
+}
+
 /**
  * Load one subject's question bank on demand (its own chunk). Returns [] for an
  * unknown subject. Use this from CLIENT components instead of the eager barrel.
@@ -104,8 +126,10 @@ const loaders: Record<string, Loader> = {
  */
 export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuestion[]> {
   const loader = loaders[subjectId]
-  if (!loader) return []
-  return loader()
+  const auto = autoLoaders[subjectId]
+  if (!loader && !auto) return []
+  const [base, extra] = await Promise.all([loader ? loader() : [], auto ? auto() : []])
+  return extra.length ? [...base, ...extra] : base
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */

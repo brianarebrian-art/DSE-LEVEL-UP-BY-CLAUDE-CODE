@@ -46,6 +46,13 @@ import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { csdQuestions, csdTopics } from './csd'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
+import { chineseHistoryAutoQuestions } from './chinese-history-auto'
+import { chineseLiteratureAutoQuestions } from './chinese-literature-auto'
+import { historyAutoQuestions } from './history-auto'
+import { englishLiteratureAutoQuestions } from './english-literature-auto'
+import { technologyLivingAutoQuestions } from './technology-living-auto'
+import { ethicsReligiousAutoQuestions } from './ethics-religious-auto'
+import { geographyAutoQuestions } from './geography-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
@@ -102,9 +109,25 @@ const banks: Record<string, SubjectBank> = {
   'technology-living': { questions: technologyLivingQuestions, topics: technologyLivingTopics },
 }
 
+// ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
+// 對應 load.ts 嘅 autoLoaders。barrel 同 loader 必須同步 —— barrel 係所有 QA
+// 工具同稽核統計嘅讀取路徑，只註冊一邊會令題目對統計隱形（2026-08-07 因此
+// 少報過 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
+const autoBanks: Record<string, AnyQuestion[]> = {
+  'geography': geographyAutoQuestions,
+  'ethics-religious': ethicsReligiousAutoQuestions,
+  'technology-living': technologyLivingAutoQuestions,
+  'english-literature': englishLiteratureAutoQuestions,
+  'history': historyAutoQuestions,
+  'chinese-literature': chineseLiteratureAutoQuestions,
+  'chinese-history': chineseHistoryAutoQuestions,
+}
+
 /** 該科全部題目（MC + 書寫題）。計數／課題統計用。 */
 export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
-  return banks[subjectId]?.questions ?? []
+  const base = banks[subjectId]?.questions ?? []
+  const extra = autoBanks[subjectId]
+  return extra?.length ? [...base, ...extra] : base
 }
 
 /**
