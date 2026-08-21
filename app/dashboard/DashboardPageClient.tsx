@@ -3,7 +3,10 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair } from 'lucide-react'
+import {
+  CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
+  FileText, Bookmark, Timer, Moon, Wrench,
+} from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -189,7 +192,7 @@ export default function DashboardPageClient() {
               href="/dashboard/report"
               className="inline-flex items-center gap-2 bg-surface-raised border border-accent/30 text-accent hover:bg-accent/[0.06] px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
             >
-              📋 {en ? 'Generate report' : '生成報告'}
+              <FileText size={15} aria-hidden /> {en ? 'Generate report' : '生成報告'}
             </Link>
             {/* #106 收藏頁入口。刻意唔入 Navbar —— 橫向條 7 條連結已迫到盡（見
                 Navbar 檔頭實測寬度），第 8 條會喺 1280px 斷點爆版。 */}
@@ -197,13 +200,13 @@ export default function DashboardPageClient() {
               href="/bookmarks"
               className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
             >
-              🔖 {en ? 'Saved' : '我嘅收藏'}
+              <Bookmark size={15} aria-hidden /> {en ? 'Saved' : '我嘅收藏'}
             </Link>
             <Link
               href="/focus"
               className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-all text-sm"
             >
-              🍅 {en ? 'Focus' : '番茄鐘'}
+              <Timer size={15} aria-hidden /> {en ? 'Focus' : '番茄鐘'}
             </Link>
             {/* F-NTM: 今晚唔溫得開關（柔和款式，唔搶眼） */}
             <button
@@ -211,7 +214,7 @@ export default function DashboardPageClient() {
               title={en ? 'Hide all nudges and counters until 04:00' : '收起所有題目推送同計數，到 04:00 自動恢復'}
               className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-accent px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
             >
-              🌙 {en ? 'Not tonight' : '今晚唔溫得'}
+              <Moon size={15} aria-hidden /> {en ? 'Not tonight' : '今晚唔溫得'}
             </button>
             <Link
               href="/subjects"
@@ -314,7 +317,10 @@ export default function DashboardPageClient() {
               )}
             </div>
             <div className="text-center sm:text-left">
-              <h3 className="font-medium text-lg mb-1 text-ink">🛠️ {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}</h3>
+              <h3 className="mb-1 flex items-center gap-2 text-lg font-medium text-ink">
+                <Wrench size={17} aria-hidden className="shrink-0 text-ink-muted" />
+                {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}
+              </h3>
               <p className="text-sm text-ink-muted mb-4">
                 {en
                   ? 'Auto-build a 20-question drill from your lowest win-rate topics.'
