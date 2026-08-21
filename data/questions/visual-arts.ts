@@ -359,7 +359,7 @@ const western: Question[] = [
 const chinese: Question[] = [
   q(id('ch'), T.chinese, FW.concept, 'medium', 2023, 2,
     ['中國畫中「工筆」與「寫意」的分別是？', 'In Chinese painting, gongbi differs from xieyi in that gongbi is?'],
-    [opt('工筆細緻嚴謹，寫意率性concise', 'meticulous and precise, while xieyi is free and concise'),
+    [opt('工筆細緻嚴謹，寫意率性簡練', 'meticulous and precise, while xieyi is free and concise'),
       opt('兩者完全相同', 'identical to xieyi'),
       opt('工筆最隨意', 'the most spontaneous style'),
       opt('與筆法無關', 'unrelated to brushwork')],

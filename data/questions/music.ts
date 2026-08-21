@@ -133,7 +133,7 @@ const elements: Question[] = [
       opt('短促分離地演奏', 'played short and detached'),
       opt('速度更快', 'always faster'),
       opt('音量更大', 'always louder')],
-    ['Legato 音與音連貫圓滑；staccato 則短促分離，斷開each音。', 'Legato connects notes smoothly; staccato detaches them into short, separated sounds.']),
+    ['Legato 音與音連貫圓滑；staccato 則短促分離，把每一個音斷開。', 'Legato connects notes smoothly; staccato detaches them into short, separated sounds.']),
 ]
 
 // ── Theory & notation (15) ───────────────────────────────────────────────────
@@ -503,7 +503,7 @@ const chinese: Question[] = [
       opt('用弓拉奏', 'bowing the strings'),
       opt('吹氣發聲', 'blowing air'),
       opt('敲擊', 'striking it')],
-    ['古箏為彈撥樂器，以義甲撥弦，並以左手按弦producing吟揉滑音。', 'The guzheng is plucked with picks, the left hand pressing strings for bends and vibrato.']),
+    ['古箏為彈撥樂器，以義甲撥弦，並以左手按弦造出吟揉滑音。', 'The guzheng is plucked with picks, the left hand pressing strings for bends and vibrato.']),
   q(id('cn'), T.chinese, FW.concept, 'easy', 2021, 2,
     ['「鑼」與「鈸」屬於哪類樂器？', 'Gongs and cymbals belong to which class?'],
     [opt('打擊樂器', 'percussion'),
