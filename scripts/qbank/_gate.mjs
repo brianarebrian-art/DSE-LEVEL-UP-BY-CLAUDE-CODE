@@ -118,8 +118,21 @@ export function gateRow(row, subject) {
     if (row?.markingScheme !== undefined && (typeof row.markingScheme !== 'string' || !row.markingScheme.trim())) {
       e.push('markingScheme 如提供則不可為空')
     }
-    if (row?.suggestedMinutes !== undefined && (!Number.isInteger(row.suggestedMinutes) || row.suggestedMinutes < 1 || row.suggestedMinutes > 60)) {
-      e.push('suggestedMinutes 如提供須為 1..60 的整數')
+    // 上限 2026-08-21 由 60 放寬至 150。
+    //
+    // 點解要改：中國語文卷二整卷 2 小時 15 分（135 分鐘），其中乙部命題寫作
+    // 佔全卷 70%，實際作答時間約 90 分鐘。舊上限 60 之下，一條真實長度的
+    // 作文題根本入唔到庫 —— 唔係題目有問題，係個閘當初只見過 45 分鐘以內
+    // 嘅題目。若為遷就個閘而填 60，等於向學生講一個假時限。
+    //
+    // 影響統計（憲章 §6 —— 改閘前必須先查）：改動前全部草稿及題庫嘅
+    // suggestedMinutes 值為 5/6/8/9/10/11/12/15/40/45，最大 45。呢個係
+    // 【放寬】，數學上唔可能有任何一行由「過」變「唔過」。
+    //
+    // 150 而唔係無上限：仍然要捉得住手民之誤（例如 900 當 90）。
+    // 150 分鐘已覆蓋現行最長嘅單卷（中文卷二 135 分鐘）。
+    if (row?.suggestedMinutes !== undefined && (!Number.isInteger(row.suggestedMinutes) || row.suggestedMinutes < 1 || row.suggestedMinutes > 150)) {
+      e.push('suggestedMinutes 如提供須為 1..150 的整數')
     }
     if (type === 'text' && row?.markingScheme !== undefined) e.push('text 題唔設 markingScheme（步驟分屬 long 題）')
   }
