@@ -173,6 +173,69 @@ export default function MethodologyClient() {
           </p>
         </div>
 
+        {/* 適用範圍與限制 —— 信譽審核明確要求：「/methodology 不應只解釋『為何有效』，
+            更要解釋『在哪些情況未必有效』。」
+
+            一版只講自己方法幾好嘅方法論頁，讀落同宣傳單張冇分別。老師同家長評估
+            一個平台嗰陣，最想知嘅正正係「佢做唔到啲乜」—— 因為肯講嗰啲，先信得過
+            佢講做得到嘅嘢。 */}
+        <div className="mt-16 rounded-2xl border border-line bg-surface-raised p-6">
+          <h2 className="text-base font-medium text-ink mb-3">
+            🎯 {locale === 'en' ? 'What this method does and does not cover' : '呢套方法涵蓋到咩、涵蓋唔到咩'}
+          </h2>
+
+          <p className="text-sm text-ink-soft leading-relaxed mb-4">
+            {locale === 'en' ? 'Rewritten MC practice trains a specific and narrow set of things well:' : '改寫 MC 練習訓練到嘅嘢好specific，亦都好窄：'}
+          </p>
+          <ul className="text-sm text-ink-muted leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+            <li>{locale === 'en' ? 'Recognising a question type fast, and knowing which method it wants' : '快速認出題型，知道佢想你用邊個方法'}</li>
+            <li>{locale === 'en' ? 'Spotting the trap wording that distinguishes near-identical options' : '睇穿分辨相近選項嗰個陷阱字眼'}</li>
+            <li>{locale === 'en' ? 'Getting the arithmetic right under time pressure' : '喺時間壓力下計得啱'}</li>
+            <li>{locale === 'en' ? 'Finding out which concepts you only think you understand' : '搵出邊啲概念你只係以為自己識'}</li>
+          </ul>
+
+          <p className="text-sm text-ink-soft leading-relaxed mb-4">
+            {locale === 'en' ? 'It does not train these at all, and no amount of MC practice will:' : '佢完全訓練唔到以下呢啲，而且做幾多 MC 都訓練唔到：'}
+          </p>
+          <ul className="text-sm text-ink-muted leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+            <li>
+              {locale === 'en'
+                ? 'Building an argument across several paragraphs — essays, DBQ answers, extended responses'
+                : '喺幾段之內砌一個論證 —— 作文、資料題長答、論述題'}
+            </li>
+            <li>{locale === 'en' ? 'Speaking: fluency, turn-taking, responding to what someone just said' : '口試：流暢度、輪流發言、接住對方啱啱講嗰句'}</li>
+            <li>{locale === 'en' ? 'Practical and lab work, fieldwork, and coursework' : '實驗、實地考察同校本評核'}</li>
+            <li>{locale === 'en' ? 'Handwriting speed and managing a three-hour paper' : '寫字速度，同埋捱三個鐘一份卷嘅節奏'}</li>
+          </ul>
+
+          <p className="text-sm text-ink-soft leading-relaxed mb-2">
+            {locale === 'en' ? 'So for those, use something else:' : '所以嗰啲要用第二啲方法：'}
+          </p>
+          <ul className="text-sm text-ink-muted leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+            <li>
+              {locale === 'en'
+                ? 'Written papers: write full answers by hand, timed, then compare against a marking scheme — a teacher or a study partner reading it is worth more than any tool.'
+                : '書寫卷：計時、手寫足本答案，之後對評分準則。搵老師或者同學睇一睇，價值高過任何工具。'}
+            </li>
+            <li>
+              {locale === 'en'
+                ? 'Speaking: practise out loud with other people. There is no substitute.'
+                : '口試：同真人出聲練。冇替代品。'}
+            </li>
+            <li>
+              {locale === 'en'
+                ? 'Past papers: the HKEAA’s own papers are the real thing. We are practice between them, not a replacement for them.'
+                : '歷屆試題：考評局自己嗰啲先係真嘢。我哋係佢哋之間嘅練習，唔係佢哋嘅替代品。'}
+            </li>
+          </ul>
+
+          <p className="text-sm text-ink-soft leading-relaxed border-t border-line pt-4">
+            {locale === 'en'
+              ? 'And on the human/AI line: AI drafts and classifies; a person decides what goes live. Today 1.83% of live questions carry a named line-by-line approval record — we show that figure on every question rather than rounding it up.'
+              : '至於人同 AI 嘅分工：AI 出初稿同分類，出唔出街由人決定。今日 live 題目入面有 1.83% 帶實名逐題審批紀錄 —— 我哋喺每條題目下面照寫呢個數，唔會四捨五入上去。'}
+          </p>
+        </div>
+
         {/* CTA */}
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-medium mb-4 text-ink">{m.ctaTitle}</h2>

@@ -63,6 +63,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/trust" className="font-medium hover:text-accent transition-colors">
+                  {t.footer.trust}
+                </Link>
+              </li>              <li>
                 <Link href="/transparency" className="hover:text-accent transition-colors">
                   {t.footer.transparency}
                 </Link>

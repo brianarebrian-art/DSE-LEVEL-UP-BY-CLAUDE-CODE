@@ -52,6 +52,9 @@ const MUST_CATCH: [label: string, sentence: string][] = [
   ['暗示官方背書', '考評局認可嘅練習題庫'],
   ['成績保證', '保證你升一個 Grade'],
   ['虛構社會證明', '已經有 50000 個學生用緊'],
+  // 呢兩條抄自 components/EncouragementWall.tsx 2026-08-21 之前嘅真實文案。
+  ['假見證落款', '錯題係寶藏 —— 匿名學長姐'],
+  ['假見證第一人稱', '我當年都係 Band 3，而家讀緊 U。'],
 ]
 
 for (const [label, sentence] of MUST_CATCH) {
@@ -66,6 +69,8 @@ const MUST_PASS: [label: string, sentence: string][] = [
   ['如實免責聲明', '並非香港考試及評核局（HKEAA）官方試題。'],
   ['誠實私隱描述', '唔使登入都用得，登入淨係為咗跨機同步進度。'],
   ['機制描述而非承諾', '幫你搵出最常錯嘅位。'],
+  // 改寫之後嘅版本必須放得過 —— 否則等於逼人再寫返假嘢。
+  ['去咗假託嘅打氣說話', 'Mock 嘅分數唔係判詞。由 Mock 到正式考仲有好多時間。'],
 ]
 
 for (const [label, sentence] of MUST_PASS) {

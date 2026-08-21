@@ -20,6 +20,7 @@ const zh = {
     linkRelax: '呼吸空間', // FIX: [A1] CEO 命名修訂 2026-07-15
     aboutHeading: '關於',
     aboutUs: '關於我們',
+    trust: '信任中心',
     transparency: '透明度',
     privacy: '私隱政策',
     communitySafety: '社群安全',
@@ -348,6 +349,7 @@ const en: typeof zh = {
     linkRelax: 'Breathing Space', // FIX: [A1] CEO 命名修訂 2026-07-15
     aboutHeading: 'About',
     aboutUs: 'About Us',
+    trust: 'Trust centre',
     transparency: 'Transparency',
     privacy: 'Privacy',
     communitySafety: 'Community safety',

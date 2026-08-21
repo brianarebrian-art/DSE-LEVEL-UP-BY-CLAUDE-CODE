@@ -36,6 +36,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/community-safety', priority: 0.6, freq: 'monthly' },
   { path: '/capsule', priority: 0.5, freq: 'monthly' },
   { path: '/prediction-method', priority: 0.6, freq: 'monthly' },
+  { path: '/trust', priority: 0.7, freq: 'monthly' },
   { path: '/accessibility', priority: 0.6, freq: 'monthly' },
   { path: '/reading', priority: 0.6, freq: 'monthly' },
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
