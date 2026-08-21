@@ -1,0 +1,974 @@
+[
+  {
+    "id": "elit_floor_01",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Poetry",
+    "topicId": "poetry",
+    "topicZh": "Poetry",
+    "topicEn": "Poetry",
+    "difficulty": "basic",
+    "question": "“The harbour lights came on at seven, / the ferry pulled against the tide, / my mother said we’d wait till eleven, / and watched the water from my side.”\n\nWhat is the rhyme scheme of this stanza?",
+    "questionEn": "“The harbour lights came on at seven, / the ferry pulled against the tide, / my mother said we’d wait till eleven, / and watched the water from my side.”\n\nWhat is the rhyme scheme of this stanza?",
+    "options": [
+      "ABAB",
+      "AABB",
+      "ABBA",
+      "ABCB"
+    ],
+    "optionsEn": [
+      "ABAB",
+      "AABB",
+      "ABBA",
+      "ABCB"
+    ],
+    "correctIndex": 0,
+    "explanation": "Match the end words in order: “seven” and “eleven” rhyme, and so do “tide” and “side”. The rhyming pairs alternate — first with third, second with fourth — which is written ABAB. AABB would need the rhymes to fall in adjacent pairs, and ABBA would need the outer two lines to rhyme with each other while the inner two rhyme separately. Always letter the end words before choosing; guessing from the look of the stanza is where marks go.",
+    "explanationEn": "Match the end words in order: “seven” and “eleven” rhyme, and so do “tide” and “side”. The rhyming pairs alternate — first with third, second with fourth — which is written ABAB. AABB would need the rhymes to fall in adjacent pairs, and ABBA would need the outer two lines to rhyme with each other while the inner two rhyme separately. Always letter the end words before choosing; guessing from the look of the stanza is where marks go."
+  },
+  {
+    "id": "elit_floor_02",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Poetry",
+    "topicId": "poetry",
+    "topicZh": "Poetry",
+    "topicEn": "Poetry",
+    "difficulty": "basic",
+    "question": "“Wait, he said. Wait. / And I waited, and the light went, and still: wait.”\n\nWhich feature of these lines is most prominent, and what does it convey?",
+    "questionEn": "“Wait, he said. Wait. / And I waited, and the light went, and still: wait.”\n\nWhich feature of these lines is most prominent, and what does it convey?",
+    "options": [
+      "a simile comparing the fading light to the act of waiting",
+      "repetition of “wait”, which stretches out how long the waiting felt",
+      "alliteration on the letter w, which makes the speaker sound harsh",
+      "rhyme between the two lines, which gives them a song-like lilt"
+    ],
+    "optionsEn": [
+      "a simile comparing the fading light to the act of waiting",
+      "repetition of “wait”, which stretches out how long the waiting felt",
+      "alliteration on the letter w, which makes the speaker sound harsh",
+      "rhyme between the two lines, which gives them a song-like lilt"
+    ],
+    "correctIndex": 1,
+    "explanation": "The word “wait” returns four times in two lines, and each return leaves the speaker where they were — that is what makes the waiting feel long. The other three can be checked against the text and ruled out: “wait” and “went” alone are too few for alliteration to be the point, the line endings do not rhyme, and no comparison is made using “like” or “as”. Name the feature only after you have found it on the page.",
+    "explanationEn": "The word “wait” returns four times in two lines, and each return leaves the speaker where they were — that is what makes the waiting feel long. The other three can be checked against the text and ruled out: “wait” and “went” alone are too few for alliteration to be the point, the line endings do not rhyme, and no comparison is made using “like” or “as”. Name the feature only after you have found it on the page."
+  },
+  {
+    "id": "elit_floor_03",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Poetry",
+    "topicId": "poetry",
+    "topicZh": "Poetry",
+    "topicEn": "Poetry",
+    "difficulty": "basic",
+    "question": "“The bread had gone hard; the kitchen smelled of yesterday’s rain.”\n\nThe imagery in this line appeals mainly to which senses?",
+    "questionEn": "“The bread had gone hard; the kitchen smelled of yesterday’s rain.”\n\nThe imagery in this line appeals mainly to which senses?",
+    "options": [
+      "hearing and taste",
+      "sight only",
+      "touch and smell",
+      "sight and hearing"
+    ],
+    "optionsEn": [
+      "hearing and taste",
+      "sight only",
+      "touch and smell",
+      "sight and hearing"
+    ],
+    "correctIndex": 2,
+    "explanation": "“Gone hard” is something you register by touching, and “smelled” names the sense outright. Note the common assumption that imagery must be visual — it is not: writers reach for smell and touch precisely because those senses carry memory. Nothing here is heard, and while bread suggests taste, the line never describes a flavour.",
+    "explanationEn": "“Gone hard” is something you register by touching, and “smelled” names the sense outright. Note the common assumption that imagery must be visual — it is not: writers reach for smell and touch precisely because those senses carry memory. Nothing here is heard, and while bread suggests taste, the line never describes a flavour."
+  },
+  {
+    "id": "elit_floor_04",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Poetry",
+    "topicId": "poetry",
+    "topicZh": "Poetry",
+    "topicEn": "Poetry",
+    "difficulty": "basic",
+    "question": "“She opened the letter and read that her son / was coming home.”\n\nThe sentence runs over the line ending. What does that break do?",
+    "questionEn": "“She opened the letter and read that her son / was coming home.”\n\nThe sentence runs over the line ending. What does that break do?",
+    "options": [
+      "it shows the poet ran out of room at the end of the line",
+      "it marks the end of the stanza and the start of a new one",
+      "it instructs the reader to pause and take a breath there",
+      "it holds the reader for a moment before the news arrives"
+    ],
+    "optionsEn": [
+      "it shows the poet ran out of room at the end of the line",
+      "it marks the end of the stanza and the start of a new one",
+      "it instructs the reader to pause and take a breath there",
+      "it holds the reader for a moment before the news arrives"
+    ],
+    "correctIndex": 3,
+    "explanation": "Breaking after “her son” suspends the sentence at its most uncertain point, so “was coming home” lands with weight when it finally comes. Line endings in verse are chosen, not forced — the page has room for more words, and the poet declined to use it. Note also that a run-on line does the opposite of asking for a pause: the sense pulls the reader across the gap.",
+    "explanationEn": "Breaking after “her son” suspends the sentence at its most uncertain point, so “was coming home” lands with weight when it finally comes. Line endings in verse are chosen, not forced — the page has room for more words, and the poet declined to use it. Note also that a run-on line does the opposite of asking for a pause: the sense pulls the reader across the gap."
+  },
+  {
+    "id": "elit_floor_05",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Poetry",
+    "topicId": "poetry",
+    "topicZh": "Poetry",
+    "topicEn": "Poetry",
+    "difficulty": "basic",
+    "question": "“They called it a garden. Four pots on a fire escape.”\n\nWhat does the second sentence do to the first?",
+    "questionEn": "“They called it a garden. Four pots on a fire escape.”\n\nWhat does the second sentence do to the first?",
+    "options": [
+      "it undercuts it, showing the “garden” is far smaller than the word suggests",
+      "it expands it, adding further detail about how large the garden was",
+      "it confirms it, showing that the speaker admires the garden greatly",
+      "it relocates it, showing that the poem is set in the countryside"
+    ],
+    "optionsEn": [
+      "it undercuts it, showing the “garden” is far smaller than the word suggests",
+      "it expands it, adding further detail about how large the garden was",
+      "it confirms it, showing that the speaker admires the garden greatly",
+      "it relocates it, showing that the poem is set in the countryside"
+    ],
+    "correctIndex": 0,
+    "explanation": "The gap between the word “garden” and the four pots that answer it is the whole point; the speaker never says “it was not really a garden” because the second sentence has already said it. This is irony working through arrangement rather than through any single word, and the distance between “they called it” and what it actually was is where the feeling sits.",
+    "explanationEn": "The gap between the word “garden” and the four pots that answer it is the whole point; the speaker never says “it was not really a garden” because the second sentence has already said it. This is irony working through arrangement rather than through any single word, and the distance between “they called it” and what it actually was is where the feeling sits."
+  },
+  {
+    "id": "elit_floor_06",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Drama",
+    "topicId": "drama",
+    "topicZh": "Drama",
+    "topicEn": "Drama",
+    "difficulty": "basic",
+    "question": "MEI: (not looking up) It’s fine. Take it.\n\nWhat does the stage direction add to the spoken line?",
+    "questionEn": "MEI: (not looking up) It’s fine. Take it.\n\nWhat does the stage direction add to the spoken line?",
+    "options": [
+      "it is a note for the printer and not part of the play to analyse",
+      "it shows Mei’s words and her manner do not match, so “fine” may not be meant",
+      "it tells the actor to raise the volume of the line when speaking it",
+      "it explains an event that happened before this scene began"
+    ],
+    "optionsEn": [
+      "it is a note for the printer and not part of the play to analyse",
+      "it shows Mei’s words and her manner do not match, so “fine” may not be meant",
+      "it tells the actor to raise the volume of the line when speaking it",
+      "it explains an event that happened before this scene began"
+    ],
+    "correctIndex": 1,
+    "explanation": "On the page the words say one thing and the body says another, and that gap is where the meaning of the moment sits. Stage directions are written by the playwright and belong to the text — treating them as if only the director need read them throws away evidence you are entitled to quote in Paper 1. Nothing here concerns volume or earlier events.",
+    "explanationEn": "On the page the words say one thing and the body says another, and that gap is where the meaning of the moment sits. Stage directions are written by the playwright and belong to the text — treating them as if only the director need read them throws away evidence you are entitled to quote in Paper 1. Nothing here concerns volume or earlier events."
+  },
+  {
+    "id": "elit_floor_07",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Drama",
+    "topicId": "drama",
+    "topicZh": "Drama",
+    "topicEn": "Drama",
+    "difficulty": "basic",
+    "question": "LAM: (to the audience) He has already spent the money. / CHAN: You look pale. Sit down.\n\nWhich statement about Lam’s line is correct?",
+    "questionEn": "LAM: (to the audience) He has already spent the money. / CHAN: You look pale. Sit down.\n\nWhich statement about Lam’s line is correct?",
+    "options": [
+      "it is spoken by a narrator standing outside the action",
+      "it is a stage direction rather than a line of dialogue",
+      "Chan does not hear it; it is directed to the audience alone",
+      "Chan hears it clearly and chooses to say nothing about it"
+    ],
+    "optionsEn": [
+      "it is spoken by a narrator standing outside the action",
+      "it is a stage direction rather than a line of dialogue",
+      "Chan does not hear it; it is directed to the audience alone",
+      "Chan hears it clearly and chooses to say nothing about it"
+    ],
+    "correctIndex": 2,
+    "explanation": "The bracketed instruction fixes who is being addressed, and Chan’s reply shows no sign of having heard: he responds to how Lam looks, not to what Lam has just said. A remark of this kind lets a character tell the audience something the others on stage do not know — which is exactly how a playwright builds a gap between what we know and what they know.",
+    "explanationEn": "The bracketed instruction fixes who is being addressed, and Chan’s reply shows no sign of having heard: he responds to how Lam looks, not to what Lam has just said. A remark of this kind lets a character tell the audience something the others on stage do not know — which is exactly how a playwright builds a gap between what we know and what they know."
+  },
+  {
+    "id": "elit_floor_08",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Drama",
+    "topicId": "drama",
+    "topicZh": "Drama",
+    "topicEn": "Drama",
+    "difficulty": "basic",
+    "question": "The audience has just watched Tsang hide a letter. Wong now enters and says: “Nobody has touched anything in this room.”\n\nWhat does the audience’s extra knowledge create at this moment?",
+    "questionEn": "The audience has just watched Tsang hide a letter. Wong now enters and says: “Nobody has touched anything in this room.”\n\nWhat does the audience’s extra knowledge create at this moment?",
+    "options": [
+      "verbal irony — Wong means the opposite of the words he speaks",
+      "suspense — the audience is waiting to learn what the letter says",
+      "nothing yet — the audience must be told before any effect can arise",
+      "dramatic irony — we know Wong is wrong, and we watch him act on it"
+    ],
+    "optionsEn": [
+      "verbal irony — Wong means the opposite of the words he speaks",
+      "suspense — the audience is waiting to learn what the letter says",
+      "nothing yet — the audience must be told before any effect can arise",
+      "dramatic irony — we know Wong is wrong, and we watch him act on it"
+    ],
+    "correctIndex": 3,
+    "explanation": "The distinction turns on who knows what. Wong believes what he says, so he is not being ironic; the irony belongs to the audience, who saw the letter hidden. Verbal irony would require Wong himself to intend the opposite of his words. Mixing up these two is one of the commonest errors in writing about drama, and it changes the whole reading of the scene.",
+    "explanationEn": "The distinction turns on who knows what. Wong believes what he says, so he is not being ironic; the irony belongs to the audience, who saw the letter hidden. Verbal irony would require Wong himself to intend the opposite of his words. Mixing up these two is one of the commonest errors in writing about drama, and it changes the whole reading of the scene."
+  },
+  {
+    "id": "elit_floor_09",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Drama",
+    "topicId": "drama",
+    "topicZh": "Drama",
+    "topicEn": "Drama",
+    "difficulty": "basic",
+    "question": "YIU: I could take the job in Shenzhen. / YIU: (pause) And leave her here alone.\n\nWhat kind of conflict do these two lines present?",
+    "questionEn": "YIU: I could take the job in Shenzhen. / YIU: (pause) And leave her here alone.\n\nWhat kind of conflict do these two lines present?",
+    "options": [
+      "internal conflict, between two things Yiu wants at the same time",
+      "external conflict, between Yiu and another character on stage",
+      "external conflict, between Yiu and a force of nature",
+      "no conflict at all, because nobody is arguing with anyone"
+    ],
+    "optionsEn": [
+      "internal conflict, between two things Yiu wants at the same time",
+      "external conflict, between Yiu and another character on stage",
+      "external conflict, between Yiu and a force of nature",
+      "no conflict at all, because nobody is arguing with anyone"
+    ],
+    "correctIndex": 0,
+    "explanation": "Both lines are Yiu’s, and the pause between them is where the pull happens: the job draws one way, the person left behind draws the other. Note that conflict in drama does not require a quarrel — the fact that no one raises their voice here is precisely what makes the moment work. A scene with a single character on stage can carry as much conflict as a scene with six.",
+    "explanationEn": "Both lines are Yiu’s, and the pause between them is where the pull happens: the job draws one way, the person left behind draws the other. Note that conflict in drama does not require a quarrel — the fact that no one raises their voice here is precisely what makes the moment work. A scene with a single character on stage can carry as much conflict as a scene with six."
+  },
+  {
+    "id": "elit_floor_10",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Drama",
+    "topicId": "drama",
+    "topicZh": "Drama",
+    "topicEn": "Drama",
+    "difficulty": "basic",
+    "question": "FATHER: Did you pass? / (Long silence.) / FATHER: Right.\n\nWhat does the silence do here?",
+    "questionEn": "FATHER: Did you pass? / (Long silence.) / FATHER: Right.\n\nWhat does the silence do here?",
+    "options": [
+      "it signals that the scene has finished and the lights will go down",
+      "it answers the question, and the father’s “Right” shows he has understood",
+      "it shows that the actor has forgotten the next line of the script",
+      "it gives the audience a moment to look through the programme"
+    ],
+    "optionsEn": [
+      "it signals that the scene has finished and the lights will go down",
+      "it answers the question, and the father’s “Right” shows he has understood",
+      "it shows that the actor has forgotten the next line of the script",
+      "it gives the audience a moment to look through the programme"
+    ],
+    "correctIndex": 1,
+    "explanation": "The father asks, receives no words, and replies as though he has been told — because he has. A silence written into the script is a piece of dialogue: it is chosen, timed and placed, and it can carry what a character cannot bring themselves to say. Quote it as evidence exactly as you would quote a line.",
+    "explanationEn": "The father asks, receives no words, and replies as though he has been told — because he has. A silence written into the script is a piece of dialogue: it is chosen, timed and placed, and it can carry what a character cannot bring themselves to say. Quote it as evidence exactly as you would quote a line."
+  },
+  {
+    "id": "elit_floor_11",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Prose Fiction",
+    "topicId": "prose_fiction",
+    "topicZh": "Prose Fiction",
+    "topicEn": "Prose Fiction",
+    "difficulty": "basic",
+    "question": "“I did not tell them about the phone call. I told myself there would be a better moment.”\n\nWhich point of view is used, and what follows from it?",
+    "questionEn": "“I did not tell them about the phone call. I told myself there would be a better moment.”\n\nWhich point of view is used, and what follows from it?",
+    "options": [
+      "third-person limited — we follow one character from the outside",
+      "second person — the narrator is addressing the reader directly",
+      "first person — we are given only what this narrator chooses to tell",
+      "third-person omniscient — we are given every character’s thoughts"
+    ],
+    "optionsEn": [
+      "third-person limited — we follow one character from the outside",
+      "second person — the narrator is addressing the reader directly",
+      "first person — we are given only what this narrator chooses to tell",
+      "third-person omniscient — we are given every character’s thoughts"
+    ],
+    "correctIndex": 2,
+    "explanation": "The pronoun “I” settles the point of view, but the useful half of the answer is what it costs us: everything reaches the reader through one person, including the silence about the phone call. That is not a flaw to complain about — it is the writer choosing what we may and may not see, and it is worth saying so in an essay.",
+    "explanationEn": "The pronoun “I” settles the point of view, but the useful half of the answer is what it costs us: everything reaches the reader through one person, including the silence about the phone call. That is not a flaw to complain about — it is the writer choosing what we may and may not see, and it is worth saying so in an essay."
+  },
+  {
+    "id": "elit_floor_12",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Prose Fiction",
+    "topicId": "prose_fiction",
+    "topicZh": "Prose Fiction",
+    "topicEn": "Prose Fiction",
+    "difficulty": "basic",
+    "question": "“I only borrowed it. She would have said yes. She always says yes.”\n\nWhat does the repetition in these lines suggest about the narrator?",
+    "questionEn": "“I only borrowed it. She would have said yes. She always says yes.”\n\nWhat does the repetition in these lines suggest about the narrator?",
+    "options": [
+      "the narrator is stating settled facts and is entirely certain of them",
+      "the narrator is addressing a crowd and repeating for their benefit",
+      "the narrator has a weak memory and repeats things by accident",
+      "the narrator is arguing with themself, so the claim should not be taken at face value"
+    ],
+    "optionsEn": [
+      "the narrator is stating settled facts and is entirely certain of them",
+      "the narrator is addressing a crowd and repeating for their benefit",
+      "the narrator has a weak memory and repeats things by accident",
+      "the narrator is arguing with themself, so the claim should not be taken at face value"
+    ],
+    "correctIndex": 3,
+    "explanation": "Nobody restates a permission they are sure of. Each sentence reaches for firmer ground than the one before — “only borrowed”, then “would have”, then “always” — and the reaching is what gives the narrator away. Reading a first-person narrator means weighing what they say against how they say it, not simply accepting the account.",
+    "explanationEn": "Nobody restates a permission they are sure of. Each sentence reaches for firmer ground than the one before — “only borrowed”, then “would have”, then “always” — and the reaching is what gives the narrator away. Reading a first-person narrator means weighing what they say against how they say it, not simply accepting the account."
+  },
+  {
+    "id": "elit_floor_13",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Prose Fiction",
+    "topicId": "prose_fiction",
+    "topicZh": "Prose Fiction",
+    "topicEn": "Prose Fiction",
+    "difficulty": "basic",
+    "question": "“The flat had been repainted, but the smell of the old tenants’ cooking came back every time it rained.”\n\nWhat is the setting doing here, beyond telling us where the story takes place?",
+    "questionEn": "“The flat had been repainted, but the smell of the old tenants’ cooking came back every time it rained.”\n\nWhat is the setting doing here, beyond telling us where the story takes place?",
+    "options": [
+      "suggesting that what came before has not really been covered over",
+      "supplying factual background only, with no bearing on the meaning",
+      "establishing the exact year in which the events are taking place",
+      "showing that the narrator dislikes the smell of other people’s food"
+    ],
+    "optionsEn": [
+      "suggesting that what came before has not really been covered over",
+      "supplying factual background only, with no bearing on the meaning",
+      "establishing the exact year in which the events are taking place",
+      "showing that the narrator dislikes the smell of other people’s food"
+    ],
+    "correctIndex": 0,
+    "explanation": "Fresh paint over a smell that keeps returning is a physical fact doing a second job. Note the assumption to avoid: description is not neutral scene-setting that can be skimmed on the way to the plot. When a detail is given room, ask what it is placed there to carry.",
+    "explanationEn": "Fresh paint over a smell that keeps returning is a physical fact doing a second job. Note the assumption to avoid: description is not neutral scene-setting that can be skimmed on the way to the plot. When a detail is given room, ask what it is placed there to carry."
+  },
+  {
+    "id": "elit_floor_14",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Prose Fiction",
+    "topicId": "prose_fiction",
+    "topicZh": "Prose Fiction",
+    "topicEn": "Prose Fiction",
+    "difficulty": "basic",
+    "question": "“He signed the form. Twenty years earlier, in a room like this one, his mother had signed another.”\n\nWhat does the second sentence do?",
+    "questionEn": "“He signed the form. Twenty years earlier, in a room like this one, his mother had signed another.”\n\nWhat does the second sentence do?",
+    "options": [
+      "it shows the narrator has lost track of the order of the events",
+      "it moves back in time, setting the present act against an earlier one",
+      "it moves forward in time, predicting what will happen after this",
+      "it shows that the two signings are happening at the same moment"
+    ],
+    "optionsEn": [
+      "it shows the narrator has lost track of the order of the events",
+      "it moves back in time, setting the present act against an earlier one",
+      "it moves forward in time, predicting what will happen after this",
+      "it shows that the two signings are happening at the same moment"
+    ],
+    "correctIndex": 1,
+    "explanation": "“Twenty years earlier” fixes the direction of the move, and the past-perfect “had signed” confirms it. The reason for the jump matters as much as the jump: placing the mother’s signature beside the son’s invites us to read one through the other. When you meet a shift in time, ask what the two moments are being made to say about each other.",
+    "explanationEn": "“Twenty years earlier” fixes the direction of the move, and the past-perfect “had signed” confirms it. The reason for the jump matters as much as the jump: placing the mother’s signature beside the son’s invites us to read one through the other. When you meet a shift in time, ask what the two moments are being made to say about each other."
+  },
+  {
+    "id": "elit_floor_15",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Prose Fiction",
+    "topicId": "prose_fiction",
+    "topicZh": "Prose Fiction",
+    "topicEn": "Prose Fiction",
+    "difficulty": "basic",
+    "question": "Two versions of the same moment — (i) “She was nervous.” (ii) “She checked the lock, walked to the lift, then came back and checked it again.”\n\nWhat is the difference between the two versions?",
+    "questionEn": "Two versions of the same moment — (i) “She was nervous.” (ii) “She checked the lock, walked to the lift, then came back and checked it again.”\n\nWhat is the difference between the two versions?",
+    "options": [
+      "the first is stronger because it is direct and cannot be misunderstood",
+      "the second is weaker because it never actually names the feeling at all",
+      "the first tells the reader the feeling; the second shows it and lets us conclude",
+      "the second is simply longer and carries exactly the same information"
+    ],
+    "optionsEn": [
+      "the first is stronger because it is direct and cannot be misunderstood",
+      "the second is weaker because it never actually names the feeling at all",
+      "the first tells the reader the feeling; the second shows it and lets us conclude",
+      "the second is simply longer and carries exactly the same information"
+    ],
+    "correctIndex": 2,
+    "explanation": "The second version never uses the word “nervous”, yet the returning to the lock puts the reader in the position of noticing it — and a reader who notices is more convinced than a reader who is told. This is why quoting an action often makes better evidence in an essay than quoting a stated feeling: the action is what the writer built, and it can be analysed.",
+    "explanationEn": "The second version never uses the word “nervous”, yet the returning to the lock puts the reader in the position of noticing it — and a reader who notices is more convinced than a reader who is told. This is why quoting an action often makes better evidence in an essay than quoting a stated feeling: the action is what the writer built, and it can be analysed."
+  },
+  {
+    "id": "elit_floor_16",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Literary Devices",
+    "topicId": "devices",
+    "topicZh": "Literary Devices",
+    "topicEn": "Literary Devices",
+    "difficulty": "basic",
+    "question": "“The exam paper stared back at me.”\n\nThe device here is personification. What does it achieve?",
+    "questionEn": "“The exam paper stared back at me.”\n\nThe device here is personification. What does it achieve?",
+    "options": [
+      "it states a plain fact about how the printed paper looked on the desk",
+      "it compares the paper to a person by means of the word “like” or “as”",
+      "it exaggerates the situation for a comic effect the reader will smile at",
+      "it makes the paper feel active and confronting, conveying the candidate’s dread"
+    ],
+    "optionsEn": [
+      "it states a plain fact about how the printed paper looked on the desk",
+      "it compares the paper to a person by means of the word “like” or “as”",
+      "it exaggerates the situation for a comic effect the reader will smile at",
+      "it makes the paper feel active and confronting, conveying the candidate’s dread"
+    ],
+    "correctIndex": 3,
+    "explanation": "Giving the paper the power to stare turns the candidate from the one doing the looking into the one being looked at, and the reversal is the feeling. Naming the device earns little on its own; the marks are in what it does to the reader. Note that a comparison using “like” or “as” would be a simile, and deliberate overstatement would be hyperbole — different devices, different effects.",
+    "explanationEn": "Giving the paper the power to stare turns the candidate from the one doing the looking into the one being looked at, and the reversal is the feeling. Naming the device earns little on its own; the marks are in what it does to the reader. Note that a comparison using “like” or “as” would be a simile, and deliberate overstatement would be hyperbole — different devices, different effects."
+  },
+  {
+    "id": "elit_floor_17",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Literary Devices",
+    "topicId": "devices",
+    "topicZh": "Literary Devices",
+    "topicEn": "Literary Devices",
+    "difficulty": "basic",
+    "question": "“A thousand small delays, and then the year was over.”\n\nWhich device is used, and what is its effect?",
+    "questionEn": "“A thousand small delays, and then the year was over.”\n\nWhich device is used, and what is its effect?",
+    "options": [
+      "hyperbole — the overstatement conveys how relentless the delays felt",
+      "understatement — the phrasing plays down how much time was lost",
+      "simile — the year is directly compared to a thousand small delays",
+      "onomatopoeia — the words imitate the sound of time passing by"
+    ],
+    "optionsEn": [
+      "hyperbole — the overstatement conveys how relentless the delays felt",
+      "understatement — the phrasing plays down how much time was lost",
+      "simile — the year is directly compared to a thousand small delays",
+      "onomatopoeia — the words imitate the sound of time passing by"
+    ],
+    "correctIndex": 0,
+    "explanation": "“A thousand” is not a count; it is a way of saying the delays were beyond counting, and the exaggeration carries the exhaustion that a precise number would not. Understatement would work in the opposite direction, a simile would need “like” or “as”, and onomatopoeia requires words that imitate sounds. Say which device, then say what the exaggeration is for.",
+    "explanationEn": "“A thousand” is not a count; it is a way of saying the delays were beyond counting, and the exaggeration carries the exhaustion that a precise number would not. Understatement would work in the opposite direction, a simile would need “like” or “as”, and onomatopoeia requires words that imitate sounds. Say which device, then say what the exaggeration is for."
+  },
+  {
+    "id": "elit_floor_18",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Literary Devices",
+    "topicId": "devices",
+    "topicZh": "Literary Devices",
+    "topicEn": "Literary Devices",
+    "difficulty": "basic",
+    "question": "“The wedding photographs were still on the wall. The suitcases were by the door.”\n\nHow do the two sentences work together?",
+    "questionEn": "“The wedding photographs were still on the wall. The suitcases were by the door.”\n\nHow do the two sentences work together?",
+    "options": [
+      "they are unrelated details of the room and carry no particular meaning",
+      "they are set side by side so that the contrast between them does the work",
+      "the second sentence restates the first one using a different set of words",
+      "the second sentence is a simile that stands as an image for the first"
+    ],
+    "optionsEn": [
+      "they are unrelated details of the room and carry no particular meaning",
+      "they are set side by side so that the contrast between them does the work",
+      "the second sentence restates the first one using a different set of words",
+      "the second sentence is a simile that stands as an image for the first"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nothing is explained: the photographs point back, the suitcases point away, and the reader supplies the marriage in between. Placing two things together and refusing to comment is itself a technique — and in an essay it is worth saying that the writer withholds the explanation, because the withholding is part of the effect.",
+    "explanationEn": "Nothing is explained: the photographs point back, the suitcases point away, and the reader supplies the marriage in between. Placing two things together and refusing to comment is itself a technique — and in an essay it is worth saying that the writer withholds the explanation, because the withholding is part of the effect."
+  },
+  {
+    "id": "elit_floor_19",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Characterisation",
+    "topicId": "characterisation",
+    "topicZh": "Characterisation",
+    "topicEn": "Characterisation",
+    "difficulty": "basic",
+    "question": "“Ho paid for the tea before anyone else reached for a wallet, and did not mention it again.”\n\nWhat does this sentence show about Ho, and by what means?",
+    "questionEn": "“Ho paid for the tea before anyone else reached for a wallet, and did not mention it again.”\n\nWhat does this sentence show about Ho, and by what means?",
+    "options": [
+      "that Ho is wealthy, which is the only conclusion the sentence supports",
+      "nothing at all, since the writer has not told us what Ho is like",
+      "that Ho is generous and does not seek credit — shown indirectly, through action",
+      "that Ho is generous — stated directly, because the writer says so outright"
+    ],
+    "optionsEn": [
+      "that Ho is wealthy, which is the only conclusion the sentence supports",
+      "nothing at all, since the writer has not told us what Ho is like",
+      "that Ho is generous and does not seek credit — shown indirectly, through action",
+      "that Ho is generous — stated directly, because the writer says so outright"
+    ],
+    "correctIndex": 2,
+    "explanation": "Two actions are given and no trait is named: paying first, and then letting it drop. The second half is what makes the reading precise — many people pay, fewer say nothing afterwards. Note the assumption to resist: character is not confined to what the narrator states. Most of what you can prove about a character in an essay comes from what they do.",
+    "explanationEn": "Two actions are given and no trait is named: paying first, and then letting it drop. The second half is what makes the reading precise — many people pay, fewer say nothing afterwards. Note the assumption to resist: character is not confined to what the narrator states. Most of what you can prove about a character in an essay comes from what they do."
+  },
+  {
+    "id": "elit_floor_20",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Characterisation",
+    "topicId": "characterisation",
+    "topicZh": "Characterisation",
+    "topicEn": "Characterisation",
+    "difficulty": "basic",
+    "question": "“How was it?” / “Fine.” / “And the interview?” / “I said fine.”\n\nWhat does the second speaker’s manner suggest?",
+    "questionEn": "“How was it?” / “Fine.” / “And the interview?” / “I said fine.”\n\nWhat does the second speaker’s manner suggest?",
+    "options": [
+      "that they were pleased with the interview and are being modest about it",
+      "that they did not hear the second question and are answering the first",
+      "that they are speaking to a stranger and so are being careful and polite",
+      "that they do not want to talk about it, and are closing the subject down"
+    ],
+    "optionsEn": [
+      "that they were pleased with the interview and are being modest about it",
+      "that they did not hear the second question and are answering the first",
+      "that they are speaking to a stranger and so are being careful and polite",
+      "that they do not want to talk about it, and are closing the subject down"
+    ],
+    "correctIndex": 3,
+    "explanation": "“I said fine” refuses the second question by pointing back at the first — a reply that answers nothing while sounding like an answer. The length of the replies is evidence too: two words against a question that invited more. In drama and fiction alike, how little a character says can carry as much as what they say.",
+    "explanationEn": "“I said fine” refuses the second question by pointing back at the first — a reply that answers nothing while sounding like an answer. The length of the replies is evidence too: two words against a question that invited more. In drama and fiction alike, how little a character says can carry as much as what they say."
+  },
+  {
+    "id": "elit_floor_21",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Characterisation",
+    "topicId": "characterisation",
+    "topicZh": "Characterisation",
+    "topicEn": "Characterisation",
+    "difficulty": "basic",
+    "question": "“Ka-yan checks the timetable three times before leaving. Her brother has never once known which platform he needs.”\n\nWhy might a writer place these two characters side by side?",
+    "questionEn": "“Ka-yan checks the timetable three times before leaving. Her brother has never once known which platform he needs.”\n\nWhy might a writer place these two characters side by side?",
+    "options": [
+      "so that each throws the other into relief and the contrast sharpens both",
+      "to establish that the brother is the more important of the two characters",
+      "to fill the space with detail before the main action of the story begins",
+      "because two characters described together must later become enemies"
+    ],
+    "optionsEn": [
+      "so that each throws the other into relief and the contrast sharpens both",
+      "to establish that the brother is the more important of the two characters",
+      "to fill the space with detail before the main action of the story begins",
+      "because two characters described together must later become enemies"
+    ],
+    "correctIndex": 0,
+    "explanation": "Set against her brother, Ka-yan’s checking looks like anxiety rather than mere habit; set against her, his vagueness looks like ease rather than carelessness. Neither reading is available from one character alone. When two characters are introduced in the same breath, ask what each lets you see in the other.",
+    "explanationEn": "Set against her brother, Ka-yan’s checking looks like anxiety rather than mere habit; set against her, his vagueness looks like ease rather than carelessness. Neither reading is available from one character alone. When two characters are introduced in the same breath, ask what each lets you see in the other."
+  },
+  {
+    "id": "elit_floor_22",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Characterisation",
+    "topicId": "characterisation",
+    "topicZh": "Characterisation",
+    "topicEn": "Characterisation",
+    "difficulty": "basic",
+    "question": "“Sum returned the wallet, then stood outside the shop for a while before going in.”\n\nWhich question asks about Sum’s motivation?",
+    "questionEn": "“Sum returned the wallet, then stood outside the shop for a while before going in.”\n\nWhich question asks about Sum’s motivation?",
+    "options": [
+      "When did Sum finally go inside the shop that day?",
+      "Why did Sum wait outside before going into the shop?",
+      "What was the object that Sum returned to the shop?",
+      "Where was Sum standing before entering the shop?"
+    ],
+    "optionsEn": [
+      "When did Sum finally go inside the shop that day?",
+      "Why did Sum wait outside before going into the shop?",
+      "What was the object that Sum returned to the shop?",
+      "Where was Sum standing before entering the shop?"
+    ],
+    "correctIndex": 1,
+    "explanation": "Motivation is the reason behind an action, so it is reached by asking why. What, where and when recover the events, and an essay that answers only those has retold the story rather than examined it. The waiting is the detail worth asking about: the wallet was already returned, so something else kept Sum outside.",
+    "explanationEn": "Motivation is the reason behind an action, so it is reached by asking why. What, where and when recover the events, and an essay that answers only those has retold the story rather than examined it. The waiting is the detail worth asking about: the wallet was already returned, so something else kept Sum outside."
+  },
+  {
+    "id": "elit_floor_23",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Characterisation",
+    "topicId": "characterisation",
+    "topicZh": "Characterisation",
+    "topicEn": "Characterisation",
+    "difficulty": "basic",
+    "question": "In the first chapter Wai refuses to speak in class. By the final chapter she is the one asking the questions.\n\nWhat does this tell us about Wai as a character?",
+    "questionEn": "In the first chapter Wai refuses to speak in class. By the final chapter she is the one asking the questions.\n\nWhat does this tell us about Wai as a character?",
+    "options": [
+      "she is a character defined throughout by a single trait",
+      "the writer has been inconsistent in describing her",
+      "she is a character who changes over the course of the story",
+      "she is a minor character with little bearing on the plot"
+    ],
+    "optionsEn": [
+      "she is a character defined throughout by a single trait",
+      "the writer has been inconsistent in describing her",
+      "she is a character who changes over the course of the story",
+      "she is a minor character with little bearing on the plot"
+    ],
+    "correctIndex": 2,
+    "explanation": "The two chapters are being compared for a reason: the same situation, the opposite behaviour. A character who ends elsewhere from where they began gives an essay its natural shape — you can trace the turning. Note that a change of this kind is not an inconsistency to be corrected; it is usually the point of the book.",
+    "explanationEn": "The two chapters are being compared for a reason: the same situation, the opposite behaviour. A character who ends elsewhere from where they began gives an essay its natural shape — you can trace the turning. Note that a change of this kind is not an inconsistency to be corrected; it is usually the point of the book."
+  },
+  {
+    "id": "elit_floor_24",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Themes",
+    "topicId": "themes",
+    "topicZh": "Themes",
+    "topicEn": "Themes",
+    "difficulty": "basic",
+    "question": "A novel follows two brothers who stop speaking to each other after their father’s shop closes down.\n\nWhich of these is a statement of theme rather than a subject?",
+    "questionEn": "A novel follows two brothers who stop speaking to each other after their father’s shop closes down.\n\nWhich of these is a statement of theme rather than a subject?",
+    "options": [
+      "Family relationships between brothers in a Hong Kong setting.",
+      "The closing down of the father’s shop and what followed.",
+      "Two brothers who stop speaking to each other for years.",
+      "Shared loss can drive people apart as easily as it can draw them together."
+    ],
+    "optionsEn": [
+      "Family relationships between brothers in a Hong Kong setting.",
+      "The closing down of the father’s shop and what followed.",
+      "Two brothers who stop speaking to each other for years.",
+      "Shared loss can drive people apart as easily as it can draw them together."
+    ],
+    "correctIndex": 3,
+    "explanation": "A subject can be named in a phrase; a theme has to be said in a sentence, because it makes a claim. “Family” tells a reader what the book is about, not what the book holds to be true about it. When you write a theme statement, check that it could be argued with — if nobody could disagree, it is a subject.",
+    "explanationEn": "A subject can be named in a phrase; a theme has to be said in a sentence, because it makes a claim. “Family” tells a reader what the book is about, not what the book holds to be true about it. When you write a theme statement, check that it could be argued with — if nobody could disagree, it is a subject."
+  },
+  {
+    "id": "elit_floor_25",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Themes",
+    "topicId": "themes",
+    "topicZh": "Themes",
+    "topicEn": "Themes",
+    "difficulty": "basic",
+    "question": "Throughout a story, a character keeps a broken watch in her pocket and refuses to have it mended.\n\nWhat is the most reasonable way to read the watch?",
+    "questionEn": "Throughout a story, a character keeps a broken watch in her pocket and refuses to have it mended.\n\nWhat is the most reasonable way to read the watch?",
+    "options": [
+      "as a symbol whose meaning comes from the way this story uses it",
+      "as a symbol carrying one fixed meaning that all watches carry",
+      "as a realistic detail that carries no significance whatsoever",
+      "as foreshadowing, since it predicts a later event exactly"
+    ],
+    "optionsEn": [
+      "as a symbol whose meaning comes from the way this story uses it",
+      "as a symbol carrying one fixed meaning that all watches carry",
+      "as a realistic detail that carries no significance whatsoever",
+      "as foreshadowing, since it predicts a later event exactly"
+    ],
+    "correctIndex": 0,
+    "explanation": "The refusal to mend it is what makes the watch mean anything; a working watch in a pocket would pass unnoticed. Note both errors to avoid: symbols do not come with fixed meanings looked up from a list, and not every object in a story is one. Evidence for a symbolic reading is the text’s own insistence — it keeps coming back.",
+    "explanationEn": "The refusal to mend it is what makes the watch mean anything; a working watch in a pocket would pass unnoticed. Note both errors to avoid: symbols do not come with fixed meanings looked up from a list, and not every object in a story is one. Evidence for a symbolic reading is the text’s own insistence — it keeps coming back."
+  },
+  {
+    "id": "elit_floor_26",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Themes",
+    "topicId": "themes",
+    "topicZh": "Themes",
+    "topicEn": "Themes",
+    "difficulty": "basic",
+    "question": "In six different chapters of a novel, doors are described as closed, locked or jammed.\n\nWhat is this recurring detail called, and what does it do?",
+    "questionEn": "In six different chapters of a novel, doors are described as closed, locked or jammed.\n\nWhat is this recurring detail called, and what does it do?",
+    "options": [
+      "a coincidence — repeated details in fiction are accidental",
+      "a motif — its repetition accumulates and builds towards a theme",
+      "a symbol — a single object standing for one particular idea",
+      "a subplot — a separate strand of story running alongside"
+    ],
+    "optionsEn": [
+      "a coincidence — repeated details in fiction are accidental",
+      "a motif — its repetition accumulates and builds towards a theme",
+      "a symbol — a single object standing for one particular idea",
+      "a subplot — a separate strand of story running alongside"
+    ],
+    "correctIndex": 1,
+    "explanation": "One locked door is an event; six across a book is a pattern, and patterns in fiction are placed. The distinction from a symbol is repetition: a motif works by recurring until the reader begins to expect it. Note that nothing in a finished novel is accidental in this sense — the writer chose to describe the doors that way each time.",
+    "explanationEn": "One locked door is an event; six across a book is a pattern, and patterns in fiction are placed. The distinction from a symbol is repetition: a motif works by recurring until the reader begins to expect it. Note that nothing in a finished novel is accidental in this sense — the writer chose to describe the doors that way each time."
+  },
+  {
+    "id": "elit_floor_27",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Themes",
+    "topicId": "themes",
+    "topicZh": "Themes",
+    "topicEn": "Themes",
+    "difficulty": "basic",
+    "question": "A student writes: “This story is about how ambition isolates people.”\n\nWhat must the student do next in an essay?",
+    "questionEn": "A student writes: “This story is about how ambition isolates people.”\n\nWhat must the student do next in an essay?",
+    "options": [
+      "summarise the events of the whole story in the order they occur",
+      "explain what the author intended the reader to feel while reading",
+      "point to places in the text where ambition leads the character away from others",
+      "state the same claim again in stronger and more confident wording"
+    ],
+    "optionsEn": [
+      "summarise the events of the whole story in the order they occur",
+      "explain what the author intended the reader to feel while reading",
+      "point to places in the text where ambition leads the character away from others",
+      "state the same claim again in stronger and more confident wording"
+    ],
+    "correctIndex": 2,
+    "explanation": "The claim is a good one, and a claim without textual evidence earns little however good it is. Note two familiar detours: restating a point more loudly does not support it, and retelling the plot shows only that the book has been read. What the author intended is unknowable and, in any case, not what is being marked — the text is.",
+    "explanationEn": "The claim is a good one, and a claim without textual evidence earns little however good it is. Note two familiar detours: restating a point more loudly does not support it, and retelling the plot shows only that the book has been read. What the author intended is unknowable and, in any case, not what is being marked — the text is."
+  },
+  {
+    "id": "elit_floor_28",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Themes",
+    "topicId": "themes",
+    "topicZh": "Themes",
+    "topicEn": "Themes",
+    "difficulty": "basic",
+    "question": "A short story is titled “The Spare Key”. The key itself is mentioned only twice.\n\nWhat does the title suggest about how the story should be read?",
+    "questionEn": "A short story is titled “The Spare Key”. The key itself is mentioned only twice.\n\nWhat does the title suggest about how the story should be read?",
+    "options": [
+      "that the key is unimportant, since it appears only twice in the whole story",
+      "that the title is a mistake, because a title should name the main character",
+      "that the title is there to tell the reader which genre the story belongs to",
+      "that the key matters more than its two mentions would suggest on their own"
+    ],
+    "optionsEn": [
+      "that the key is unimportant, since it appears only twice in the whole story",
+      "that the title is a mistake, because a title should name the main character",
+      "that the title is there to tell the reader which genre the story belongs to",
+      "that the key matters more than its two mentions would suggest on their own"
+    ],
+    "correctIndex": 3,
+    "explanation": "A title is the one piece of the text the writer places outside the story to point back at it, so a title naming an object that barely appears is an instruction to look harder at that object. Frequency is a poor guide to importance: a detail mentioned twice at the right two moments can carry the whole story.",
+    "explanationEn": "A title is the one piece of the text the writer places outside the story to point back at it, so a title naming an object that barely appears is an instruction to look harder at that object. Frequency is a poor guide to importance: a detail mentioned twice at the right two moments can carry the whole story."
+  },
+  {
+    "id": "elit_floor_29",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Shakespeare",
+    "topicId": "shakespeare",
+    "topicZh": "Shakespeare",
+    "topicEn": "Shakespeare",
+    "difficulty": "basic",
+    "question": "【Romeo and Juliet】 “O Romeo, Romeo! wherefore art thou Romeo?”\n\nWhat does “wherefore” mean in this line?",
+    "questionEn": "【Romeo and Juliet】 “O Romeo, Romeo! wherefore art thou Romeo?”\n\nWhat does “wherefore” mean in this line?",
+    "options": [
+      "“why” — for what reason",
+      "“where” — in what place",
+      "“whether” — if or not",
+      "“therefore” — for that reason"
+    ],
+    "optionsEn": [
+      "“why” — for what reason",
+      "“where” — in what place",
+      "“whether” — if or not",
+      "“therefore” — for that reason"
+    ],
+    "correctIndex": 0,
+    "explanation": "Juliet is not looking for Romeo — she knows he is a Montague and is asking why he has to be one. Reading “wherefore” as “where” turns a speech about the trap of family names into a search for someone in the dark, which is the single most common misreading of the play. The “-fore” ending is the same as in “therefore”, meaning “for what reason”.",
+    "explanationEn": "Juliet is not looking for Romeo — she knows he is a Montague and is asking why he has to be one. Reading “wherefore” as “where” turns a speech about the trap of family names into a search for someone in the dark, which is the single most common misreading of the play. The “-fore” ending is the same as in “therefore”, meaning “for what reason”."
+  },
+  {
+    "id": "elit_floor_30",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Shakespeare",
+    "topicId": "shakespeare",
+    "topicZh": "Shakespeare",
+    "topicEn": "Shakespeare",
+    "difficulty": "basic",
+    "question": "【Hamlet】 “I am thy father’s spirit.”\n\nIn Shakespeare’s English, what does “thy” mean here?",
+    "questionEn": "【Hamlet】 “I am thy father’s spirit.”\n\nIn Shakespeare’s English, what does “thy” mean here?",
+    "options": [
+      "“their” — belonging to more than one person",
+      "“your” — belonging to the person being spoken to",
+      "“my” — belonging to the speaker of the line",
+      "“his” — belonging to some third person"
+    ],
+    "optionsEn": [
+      "“their” — belonging to more than one person",
+      "“your” — belonging to the person being spoken to",
+      "“my” — belonging to the speaker of the line",
+      "“his” — belonging to some third person"
+    ],
+    "correctIndex": 1,
+    "explanation": "“Thy” is the possessive belonging with “thou” and “thee”, so it means “your” when addressing one person. Setting these out once saves trouble in the exam: thou = you (as subject), thee = you (as object), thy or thine = your. The Ghost is telling Hamlet whose spirit it is, which only makes sense if the word points to Hamlet, not to the speaker.",
+    "explanationEn": "“Thy” is the possessive belonging with “thou” and “thee”, so it means “your” when addressing one person. Setting these out once saves trouble in the exam: thou = you (as subject), thee = you (as object), thy or thine = your. The Ghost is telling Hamlet whose spirit it is, which only makes sense if the word points to Hamlet, not to the speaker."
+  },
+  {
+    "id": "elit_floor_31",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Shakespeare",
+    "topicId": "shakespeare",
+    "topicZh": "Shakespeare",
+    "topicEn": "Shakespeare",
+    "difficulty": "basic",
+    "question": "On the page, a character’s lines each begin with a capital letter and stop well short of the right-hand margin, while another character’s lines run right across the page.\n\nWhat does this difference in layout tell you?",
+    "questionEn": "On the page, a character’s lines each begin with a capital letter and stop well short of the right-hand margin, while another character’s lines run right across the page.\n\nWhat does this difference in layout tell you?",
+    "options": [
+      "the first passage is a stage direction and the second is dialogue",
+      "the first passage is a song and is meant to be sung by the actor",
+      "the first character is speaking in verse and the second in prose",
+      "the first character is whispering and the second is speaking aloud"
+    ],
+    "optionsEn": [
+      "the first passage is a stage direction and the second is dialogue",
+      "the first passage is a song and is meant to be sung by the actor",
+      "the first character is speaking in verse and the second in prose",
+      "the first character is whispering and the second is speaking aloud"
+    ],
+    "correctIndex": 2,
+    "explanation": "Verse is set out in measured lines, so it ends where the metre ends rather than where the page does; prose runs on to the margin like ordinary writing. This is worth noticing before reading a word, because Shakespeare moves between the two, and a character shifting from verse to prose — or the reverse — is doing something the layout announces.",
+    "explanationEn": "Verse is set out in measured lines, so it ends where the metre ends rather than where the page does; prose runs on to the margin like ordinary writing. This is worth noticing before reading a word, because Shakespeare moves between the two, and a character shifting from verse to prose — or the reverse — is doing something the layout announces."
+  },
+  {
+    "id": "elit_floor_32",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Shakespeare",
+    "topicId": "shakespeare",
+    "topicZh": "Shakespeare",
+    "topicEn": "Shakespeare",
+    "difficulty": "basic",
+    "question": "【Romeo and Juliet】 “’Tis but thy name that is my enemy.”\n\nWhat does “but” mean in this line?",
+    "questionEn": "【Romeo and Juliet】 “’Tis but thy name that is my enemy.”\n\nWhat does “but” mean in this line?",
+    "options": [
+      "“however” — introducing a contrast",
+      "“except for” — leaving that aside",
+      "“almost” — very nearly but not quite",
+      "“only” — nothing more than that"
+    ],
+    "optionsEn": [
+      "“however” — introducing a contrast",
+      "“except for” — leaving that aside",
+      "“almost” — very nearly but not quite",
+      "“only” — nothing more than that"
+    ],
+    "correctIndex": 3,
+    "explanation": "The sense is “it is only your name that is my enemy” — Juliet is narrowing the quarrel down to a single thing, not raising an objection. “But” meaning “only” is everywhere in Shakespeare, and reading it as the modern contrast word turns clear lines into confusing ones. When “but” appears where a contrast makes no sense, try “only” first.",
+    "explanationEn": "The sense is “it is only your name that is my enemy” — Juliet is narrowing the quarrel down to a single thing, not raising an objection. “But” meaning “only” is everywhere in Shakespeare, and reading it as the modern contrast word turns clear lines into confusing ones. When “but” appears where a contrast makes no sense, try “only” first."
+  },
+  {
+    "id": "elit_floor_33",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Shakespeare",
+    "topicId": "shakespeare",
+    "topicZh": "Shakespeare",
+    "topicEn": "Shakespeare",
+    "difficulty": "basic",
+    "question": "Shakespeare’s plays were performed in the open air, in daylight, with almost no scenery on the stage.\n\nWhich consequence follows for the language of the plays?",
+    "questionEn": "Shakespeare’s plays were performed in the open air, in daylight, with almost no scenery on the stage.\n\nWhich consequence follows for the language of the plays?",
+    "options": [
+      "the characters’ own words must tell the audience the place and the time of day",
+      "the plays have to be considerably shorter than plays written for modern stages",
+      "the plays contain no description of setting, since there was nothing to describe",
+      "the audience had to read the script in advance to follow what was happening"
+    ],
+    "optionsEn": [
+      "the characters’ own words must tell the audience the place and the time of day",
+      "the plays have to be considerably shorter than plays written for modern stages",
+      "the plays contain no description of setting, since there was nothing to describe",
+      "the audience had to read the script in advance to follow what was happening"
+    ],
+    "correctIndex": 0,
+    "explanation": "With no lighting to darken the stage and no set to build a castle, a line such as one telling us the night is cold does the work that scenery and lighting do today. This is why the verse is so full of place and weather and hour — those passages are not decoration, they are the set. Reading them as spare description misses what they were for.",
+    "explanationEn": "With no lighting to darken the stage and no set to build a castle, a line such as one telling us the night is cold does the work that scenery and lighting do today. This is why the verse is so full of place and weather and hour — those passages are not decoration, they are the set. Reading them as spare description misses what they were for."
+  },
+  {
+    "id": "elit_floor_34",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Criticism",
+    "topicId": "criticism",
+    "topicZh": "Criticism",
+    "topicEn": "Criticism",
+    "difficulty": "basic",
+    "question": "A student writes: “The writer uses a metaphor: ‘Her patience was a thin rope.’ This is very effective.”\n\nWhat is the main weakness of this comment?",
+    "questionEn": "A student writes: “The writer uses a metaphor: ‘Her patience was a thin rope.’ This is very effective.”\n\nWhat is the main weakness of this comment?",
+    "options": [
+      "metaphors are not a suitable subject for discussion in a literary essay",
+      "it names the device and quotes it, but never explains how the metaphor works",
+      "the quotation chosen is far too short to serve as evidence in an essay",
+      "the student should have found a simile to write about instead of this"
+    ],
+    "optionsEn": [
+      "metaphors are not a suitable subject for discussion in a literary essay",
+      "it names the device and quotes it, but never explains how the metaphor works",
+      "the quotation chosen is far too short to serve as evidence in an essay",
+      "the student should have found a simile to write about instead of this"
+    ],
+    "correctIndex": 1,
+    "explanation": "Everything is in place except the analysis: a rope that is thin can still hold, but only for a while and only under so much weight — and that is what the sentence says about her patience. Naming plus quoting plus “effective” is the most common shape of a low-scoring paragraph. Make the last step the longest one: say what the words do.",
+    "explanationEn": "Everything is in place except the analysis: a rope that is thin can still hold, but only for a while and only under so much weight — and that is what the sentence says about her patience. Naming plus quoting plus “effective” is the most common shape of a low-scoring paragraph. Make the last step the longest one: say what the words do."
+  },
+  {
+    "id": "elit_floor_35",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Criticism",
+    "topicId": "criticism",
+    "topicZh": "Criticism",
+    "topicEn": "Criticism",
+    "difficulty": "basic",
+    "question": "Four sentences taken from students’ essays on the same chapter.\n\nWhich sentence is analysis rather than retelling?",
+    "questionEn": "Four sentences taken from students’ essays on the same chapter.\n\nWhich sentence is analysis rather than retelling?",
+    "options": [
+      "After the argument the two of them do not speak for the rest of the chapter.",
+      "The chapter opens in the kitchen and closes outside the building at night.",
+      "The short, unfinished sentences slow the scene and hold us in her hesitation.",
+      "The character walks to the door, stops, and then returns to the table again."
+    ],
+    "optionsEn": [
+      "After the argument the two of them do not speak for the rest of the chapter.",
+      "The chapter opens in the kitchen and closes outside the building at night.",
+      "The short, unfinished sentences slow the scene and hold us in her hesitation.",
+      "The character walks to the door, stops, and then returns to the table again."
+    ],
+    "correctIndex": 2,
+    "explanation": "Three of these report what happens; one reports what the writing does to the reader, and names the feature responsible. The test is simple: if a sentence would still be true for someone who had only been told the plot, it is retelling. Analysis has to point at the words on the page.",
+    "explanationEn": "Three of these report what happens; one reports what the writing does to the reader, and names the feature responsible. The test is simple: if a sentence would still be true for someone who had only been told the plot, it is retelling. Analysis has to point at the words on the page."
+  },
+  {
+    "id": "elit_floor_36",
+    "type": "mc",
+    "subject": "english-literature",
+    "topic": "Criticism",
+    "topicId": "criticism",
+    "topicZh": "Criticism",
+    "topicEn": "Criticism",
+    "difficulty": "basic",
+    "question": "“How generous of you to remember me — only eight months late.”\n\nWhat is the tone of this remark?",
+    "questionEn": "“How generous of you to remember me — only eight months late.”\n\nWhat is the tone of this remark?",
+    "options": [
+      "sincere — the speaker is warmly grateful for being remembered",
+      "neutral — the speaker is simply recording when the message came",
+      "anxious — the speaker is worried about what the delay may mean",
+      "ironic — the praise is shaped to sting rather than to thank"
+    ],
+    "optionsEn": [
+      "sincere — the speaker is warmly grateful for being remembered",
+      "neutral — the speaker is simply recording when the message came",
+      "anxious — the speaker is worried about what the delay may mean",
+      "ironic — the praise is shaped to sting rather than to thank"
+    ],
+    "correctIndex": 3,
+    "explanation": "The compliment and the complaint sit in one sentence, and the dash is where it turns: “generous” cannot survive “only eight months late”. Tone is the attitude the words take up towards their subject, and it is often carried by exactly this kind of collision. Reading the first half alone would give the opposite answer — always read to the end of the sentence.",
+    "explanationEn": "The compliment and the complaint sit in one sentence, and the dash is where it turns: “generous” cannot survive “only eight months late”. Tone is the attitude the words take up towards their subject, and it is often carried by exactly this kind of collision. Reading the first half alone would give the opposite answer — always read to the end of the sentence."
+  }
+]
