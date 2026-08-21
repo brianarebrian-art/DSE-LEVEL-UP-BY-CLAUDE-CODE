@@ -11,7 +11,12 @@
 //
 // 1. 卷面題型真實度 —— 對住 data/dse-paper-formats.ts（逐科核過官方大綱）。
 //    有 10 科真實 DSE 卷面根本冇 MC，佢哋嘅 MC 只可以當「知識檢查」。
-// 2. 難度可達性 —— 一節 20 題要 6 易 / 10 中 / 4 難（3:5:2）。夠唔夠貨？
+// 2. 難度可達性 —— 一節 20 題要 6 易 / 10 中 / 4 難。夠唔夠貨？
+//    ⚠️ 更正（2026-08-21）：3:5:2 係【本平台憲章自己訂嘅抽樣規則】，
+//    唔係考評局標準。考評局並無公布任何易／中／難百分比 —— 難度由審題委員會
+//    按 specification grid 控制，成績以水平參照方式匯報。本報告第一版把 3:5:2
+//    當成「DSE 難度要求」講，係我寫錯咗，現更正。
+//    官方真正明文寫低嘅係【按卷別分段嘅範圍梯度】，記錄喺 data/dse-paper-formats.ts。
 // 3. 模板複製率 —— 將數字抽走之後，有幾多題其實係同一條題目換個數。
 // 4. 題幹實質度 —— DSE MC 題幹通常帶情境／數據；一行 recall 唔係 DSE。
 // 5. 孤兒 topic id —— 中文字做 id 嘅 ad-hoc topic（唔會出現喺主題篩選）。
@@ -45,6 +50,7 @@ const bad = (s: string) => { problems.push(s) }
 
 console.log('='.repeat(78))
 console.log('DSE 卷面真實度審核 —— 對比香港考試及評核局評核大綱（2026-08-21 逐科下載核對）')
+console.log('注意：考評局【並無】公布易／中／難百分比。凡本報告提到 3:5:2，均指本平台憲章嘅抽樣規則。')
 console.log('='.repeat(78))
 
 // ── 1. 卷面題型真實度 ───────────────────────────────────────────────────────
@@ -69,8 +75,24 @@ if (noMCSubjects.length) {
   console.log('  ✅ 全部科目嘅 MC 都對應真實卷面題型')
 }
 
+// ── 1b. MC 覆蓋率 —— 學生淨係做 MC，練到全科幾多分？ ──────────────────────
+console.log('\n【1b】分數覆蓋率 —— 一個淨係做 MC 嘅學生，練到全科幾多分？\n')
+console.log('  （MC 佔全科總分嘅百分比，由官方大綱原文核出。剩低嘅分數要靠短題、結構題、')
+console.log('   論述題、實作 —— 呢啲題型喺本平台嘅覆蓋情況見第 6 節。）\n')
+const weighted = DSE_PAPER_FORMATS.filter((f) => typeof f.mcWeightPct === 'number')
+  .sort((a, b) => (a.mcWeightPct ?? 0) - (b.mcWeightPct ?? 0))
+for (const f of weighted) {
+  const bar = '█'.repeat(Math.round((f.mcWeightPct ?? 0) / 2))
+  console.log(`  ${f.subject.padEnd(14)} ${String(f.mcWeightPct).padStart(3)}%  ${bar}`)
+}
+console.log('\n  即係：一個物理考生就算做曬我哋 540 條 MC，練到嘅只係全科 21% 嘅分數。')
+console.log('  化學同生物各 18%。呢個唔係題庫唔夠大，係題型單一。')
+
 // ── 2. 難度可達性 ──────────────────────────────────────────────────────────
-console.log(`\n【2】難度可達性 —— 一節 ${SESSION} 題要 ${TARGET.easy} 易 / ${TARGET.medium} 中 / ${TARGET.hard} 難（憲章 3:5:2）\n`)
+console.log(`\n【2】難度可達性 —— 一節 ${SESSION} 題要 ${TARGET.easy} 易 / ${TARGET.medium} 中 / ${TARGET.hard} 難\n`)
+console.log('    ⚠️ 3:5:2 係本平台憲章自己訂嘅抽樣規則，唔係考評局標準。')
+console.log('    考評局並無公布任何易／中／難百分比。呢一節量度嘅係「抽樣派唔派得出」，')
+console.log('    唔係「符唔符合 DSE」。真實 DSE 難度梯度按卷別分段，見 data/dse-paper-formats.ts。\n')
 console.log('  科目'.padEnd(24) + '易'.padStart(6) + '中'.padStart(6) + '難'.padStart(6) + '   一節實際可派')
 let diffFail = 0
 for (const s of getActiveSubjects()) {
@@ -85,7 +107,7 @@ for (const s of getActiveSubjects()) {
   }
 }
 if (diffFail === 0) console.log('  ✅ 每一科都派得出 3:5:2')
-else { bad(`${diffFail} 科派唔出 3:5:2 難度組合`); console.log(`\n  ⚠️  ${diffFail} 科派唔出憲章要求嘅難度組合。`) }
+else { bad(`${diffFail} 科派唔出憲章嘅 3:5:2 抽樣組合（非考評局標準）`); console.log(`\n  ⚠️  ${diffFail} 科派唔出憲章要求嘅難度組合。`) }
 
 // 主題層 —— 主題篩選練習（?topic=）係真實用戶流程
 console.log('\n  主題層（≥10 題而全部同一難度 = 該主題練習會係一面倒）：')

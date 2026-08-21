@@ -37,6 +37,25 @@ export interface SubjectPaperFormat {
   subject: string
   /** 真實公開試卷面【有冇】多項選擇題 */
   hasMC: boolean
+  /**
+   * 多項選擇題佔【全科總分】的百分比（不是佔該卷的百分比）。
+   *
+   * 之所以記錄：學生用本平台練 MC，練到的是這個比例的分數，其餘要靠別的題型。
+   * 例如物理 MC 只佔全科 21%、化學與生物各 18% —— 一個只做 MC 的物理考生，
+   * 練習覆蓋的分數不足全科四分之一。
+   */
+  mcWeightPct?: number
+  /**
+   * 官方大綱對難度／範圍梯度的明文說明。
+   *
+   * ⚠️ 香港考試及評核局【並無】公布任何「易／中／難」的固定百分比。
+   *    難度由審題委員會按 specification grid 控制，成績以水平參照方式匯報，
+   *    每年按考生表現與試卷難易調整臨界分數。任何「DSE 難度比例是 x:y:z」
+   *    的說法，都不是官方標準。
+   *
+   * 官方真正寫得明白的，是【按卷別分段的範圍與難度梯度】—— 記錄於此。
+   */
+  difficultyGradient?: string
   /** 真實卷面出現過嘅題型（唔包括校本評核） */
   formats: PaperFormat[]
   /** 一句講清楚卷面結構 —— 顯示畀學生睇，必須同官方大綱一致 */
@@ -50,67 +69,78 @@ export interface SubjectPaperFormat {
 export const DSE_PAPER_FORMATS: SubjectPaperFormat[] = [
   // ── 真實卷面【有】MC ────────────────────────────────────────────────────
   {
-    subject: 'math', hasMC: true, formats: ['mc', 'long'],
+    subject: 'math', hasMC: true, mcWeightPct: 35,
+    difficultyGradient: '卷二全卷 MC：甲部佔該卷 2/3 分數，【只考必修部分的基礎課題 + 中一至中三基礎課題】；乙部佔 1/3，涵蓋必修部分連同中一至中三的基礎與非基礎課題。卷一亦分三段：甲部(1) 35 分為 8–11 條「淺易題」(elementary)，甲部(2) 35 分為 4–7 條「較難題」(harder)，乙部 35 分為 4–7 條。', formats: ['mc', 'long'],
     papersZh: '卷一 傳統題 65%（2¼ 小時）；卷二 全卷多項選擇題 35%（1¼ 小時）',
     papersEn: 'Paper 1 conventional questions 65% (2¼ h); Paper 2 all multiple-choice 35% (1¼ h)',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'physics', hasMC: true, formats: ['mc', 'structured', 'long'],
+    subject: 'physics', hasMC: true, mcWeightPct: 21,
+    difficultyGradient: '大綱未就 MC 內部再分難度段；卷一甲部 MC 佔全科 21%，乙部短題／結構題／論述題佔 39%。', formats: ['mc', 'structured', 'long'],
     papersZh: '卷一 甲部 多項選擇題、乙部 結構式問題；卷二 選修部分（含多項選擇題與結構式問題）',
     papersEn: 'Paper 1 Section A multiple-choice + Section B structured; Paper 2 electives (MC + structured)',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'chemistry', hasMC: true, formats: ['mc', 'structured', 'long'],
+    subject: 'chemistry', hasMC: true, mcWeightPct: 18,
+    difficultyGradient: '卷一甲、乙兩部各再分 Part I（主要考課題 I–VIII）與 Part II（主要考課題 IX–XII）—— 分段依課程範圍而非難度。MC 佔全科 18%。', formats: ['mc', 'structured', 'long'],
     papersZh: '卷一 甲部 多項選擇題、乙部 結構式及論述題；卷二 選修部分',
     papersEn: 'Paper 1 Section A multiple-choice + Section B structured/essay; Paper 2 electives',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'biology', hasMC: true, formats: ['mc', 'structured', 'long'],
+    subject: 'biology', hasMC: true, mcWeightPct: 18,
+    difficultyGradient: '大綱未就 MC 內部再分難度段；卷一甲部 MC 佔全科 18%，乙部短題／結構題／論述題佔 42%。', formats: ['mc', 'structured', 'long'],
     papersZh: '卷一 甲部 多項選擇題、乙部 短題目及論述題；卷二 選修部分',
     papersEn: 'Paper 1 Section A multiple-choice + Section B short/essay; Paper 2 electives',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'economics', hasMC: true, formats: ['mc', 'short', 'structured', 'essay'],
+    subject: 'economics', hasMC: true, mcWeightPct: 30,
+    difficultyGradient: '大綱未就 MC 內部再分難度段，但明文要求試題兼顧「基礎與選定範疇的知識及分析能力」與「高階思維技巧」。卷一全卷 MC 佔全科 30%。', formats: ['mc', 'short', 'structured', 'essay'],
     papersZh: '卷一 全卷多項選擇題 30%；卷二 甲部 短題目、乙部 結構式／論述題',
     papersEn: 'Paper 1 all multiple-choice 30%; Paper 2 Section A short questions + Section B structured/essay',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'bafs', hasMC: true, formats: ['mc', 'short', 'structured', 'long'],
+    subject: 'bafs', hasMC: true, mcWeightPct: 17,
+    difficultyGradient: '卷一甲部 24 條 MC 佔全科 17%，乙部 3 條短題佔 8%；會計與商業管理兩個選修組別的共同課題會出同一批題目。', formats: ['mc', 'short', 'structured', 'long'],
     papersZh: '卷一 24 條多項選擇題及短題目；卷二 選修部分（會計／商業管理）結構式及長題目',
     papersEn: 'Paper 1 24 multiple-choice + short questions; Paper 2 elective (Accounting / Business Mgmt) structured & long',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'ict', hasMC: true, formats: ['mc', 'short', 'structured'],
+    subject: 'ict', hasMC: true, mcWeightPct: 22,
+    difficultyGradient: '卷一甲部 MC 佔全科 22%，乙部短題與結構題佔 33%；MC 只考必修部分。', formats: ['mc', 'short', 'structured'],
     papersZh: '卷一 甲部 多項選擇題、乙部 短題目及結構式問題；卷二 選修單元',
     papersEn: 'Paper 1 Section A multiple-choice + Section B short/structured; Paper 2 elective module',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'geography', hasMC: true, formats: ['mc', 'structured', 'essay'],
+    subject: 'geography', hasMC: true,
+    difficultyGradient: '卷一甲部 MC 涵蓋必修部分【任何】課題，建議作答時間約 30 分鐘；其餘為實地考察題、資料／技能題及短論述題。', formats: ['mc', 'structured', 'essay'],
     papersZh: '卷一 甲部 多項選擇題（涵蓋必修任何課題）、乙部 資料回應及結構式問題；卷二 選修議題',
     papersEn: 'Paper 1 Section A multiple-choice (any compulsory topic) + Section B data-response/structured; Paper 2 elective issues',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'pe', hasMC: true, formats: ['mc', 'structured', 'essay'],
+    subject: 'pe', hasMC: true,
+    difficultyGradient: '卷一甲部 MC、乙部短題；卷二為 3 條長題目選答 2 條；卷三為實習考試。', formats: ['mc', 'structured', 'essay'],
     papersZh: '卷一 甲部 多項選擇題、乙部 結構式問題；卷二 選修部分',
     papersEn: 'Paper 1 Section A multiple-choice + Section B structured; Paper 2 electives',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'ths', hasMC: true, formats: ['mc', 'structured'],
+    subject: 'ths', hasMC: true,
+    difficultyGradient: '卷一甲部為 MC、乙部為資料回應題（3 選 2），卷一合共佔全科 45%；卷二為 5 條論述題選答 3 條，佔 55%。', formats: ['mc', 'structured'],
     papersZh: '卷一 甲部 多項選擇題、乙部 資料回應題（3 選 2）',
     papersEn: 'Paper 1 Section A multiple-choice + Section B data-based (answer 2 of 3)',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'technology-living', hasMC: true, formats: ['mc', 'short', 'structured'],
+    subject: 'technology-living', hasMC: true,
+    difficultyGradient: '卷一分三部：甲部 MC 15 分、乙部設計題 25 分、丙部結構題 30 分 —— MC 只佔卷一約五分之一。', formats: ['mc', 'short', 'structured'],
     papersZh: '卷一 必修部分：甲部 多項選擇題（佔卷一 15%）、乙部及丙部 短題目與結構式問題；卷二 選修部分',
     papersEn: 'Paper 1 compulsory: Section A multiple-choice (15% of paper) + Sections B/C short & structured; Paper 2 elective',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
@@ -122,19 +152,22 @@ export const DSE_PAPER_FORMATS: SubjectPaperFormat[] = [
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'csd', hasMC: true, formats: ['mc', 'short', 'essay', 'structured'],
+    subject: 'csd', hasMC: true,
+    difficultyGradient: '只設一卷資料回應題，可用多種題型（多項選擇題、短題目、短文論述題）。成績只分「達標／未達標」。', formats: ['mc', 'short', 'essay', 'structured'],
     papersZh: '設不同題型，包括多項選擇題、短題目、短文論述題等',
     papersEn: 'Various question types are set, including multiple-choice, short questions and short essay questions',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'chinese', hasMC: true, formats: ['mc', 'short', 'fill_in', 'essay'],
+    subject: 'chinese', hasMC: true,
+    difficultyGradient: '卷一閱讀能力：甲部指定文言經典佔全卷 30%、乙部課外篇章佔 70%；設題方式包括問答、選擇、填表、填充 —— 選擇題只是其中一種。', formats: ['mc', 'short', 'fill_in', 'essay'],
     papersZh: '卷一 閱讀能力 40%：甲部 指定文言經典（佔全卷 30%）、乙部 課外篇章（70%）；設題方式包括問答、選擇、填表、填充。卷二 寫作能力 45%：甲部 實用寫作（佔全卷 30%）、乙部 命題寫作（70%）',
     papersEn: 'Paper 1 Reading 40%: Part A set classical texts (30% of paper), Part B unseen passages (70%); question types include short answer, multiple-choice, table completion and gap filling. Paper 2 Writing 45%: Part A practical writing (30%), Part B essay writing (70%)',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
   },
   {
-    subject: 'english', hasMC: true, formats: ['mc', 'short', 'essay', 'listening', 'oral'],
+    subject: 'english', hasMC: true,
+    difficultyGradient: 'Paper 1 Reading 分 Part A（必答）與 Part B1／B2 二擇一：**B1 較淺、B2 較深**，只做 A+B1 者最高只能取得第 4 級。這是全 DSE 之中最明文的難度分流設計。', formats: ['mc', 'short', 'essay', 'listening', 'oral'],
     papersZh: 'Paper 1 閱讀 20%（Part A 必答；Part B1 較淺 / B2 較深二選一）；Paper 2 寫作 25%；Paper 3 聆聽及綜合能力 30%；Paper 4 說話 10%',
     papersEn: 'Paper 1 Reading 20% (Part A compulsory; choose Part B1 easier or B2 harder); Paper 2 Writing 25%; Paper 3 Listening & Integrated Skills 30%; Paper 4 Speaking 10%',
     verifiedOn: '2026-08-21', frameworkYear: 2026,
