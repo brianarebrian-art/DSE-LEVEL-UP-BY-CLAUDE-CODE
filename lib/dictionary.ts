@@ -24,6 +24,7 @@ const zh = {
     privacy: '私隱政策',
     communitySafety: '社群安全',
     predictionMethod: '表現等級點計',
+    accessibility: '無障礙自評',
     contact: '聯絡我們',
     disclaimerLabel: '免責聲明：',
     disclaimerBody:
@@ -351,6 +352,7 @@ const en: typeof zh = {
     privacy: 'Privacy',
     communitySafety: 'Community safety',
     predictionMethod: 'How levels are worked out',
+    accessibility: 'Accessibility',
     contact: 'Contact',
     disclaimerLabel: 'Disclaimer:',
     disclaimerBody:

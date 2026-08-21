@@ -83,6 +83,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/accessibility" className="hover:text-accent transition-colors">
+                  {t.footer.accessibility}
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:dselevelup@gmail.com" className="hover:text-accent transition-colors">
                   {t.footer.contact}
                 </a>
