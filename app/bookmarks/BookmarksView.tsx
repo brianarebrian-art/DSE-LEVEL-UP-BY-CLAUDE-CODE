@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, BookmarkX, FolderPen, Check, X } from 'lucide-react'
 import MathText from '@/components/MathText'
+import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
 import { getSubject } from '@/data/subjects'
 import { loadSubjectQuestions } from '@/data/questions/load'
@@ -197,12 +198,17 @@ export default function BookmarksView() {
                         <div className="text-sm leading-relaxed text-ink">
                           <MathText>{en && q.contentEn ? q.contentEn : q.content}</MathText>
                         </div>
-                        <Link
-                          href={`/practice?subject=${bm.subjectId}&topic=${encodeURIComponent(q.topic)}`}
-                          className="mt-3 inline-flex min-h-11 items-center text-xs text-accent transition-colors hover:text-accent-strong"
-                        >
-                          {en ? 'Practise this topic →' : '練返呢個課題 →'}
-                        </Link>
+                        {/* 重溫嗰陣先發現題目有問題，係好常見嘅事 —— 練習頁有報錯入口，
+                            呢度亦要有，否則學生要記住題號返去練習頁先報得到。 */}
+                        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+                          <Link
+                            href={`/practice?subject=${bm.subjectId}&topic=${encodeURIComponent(q.topic)}`}
+                            className="inline-flex min-h-11 items-center text-xs text-accent transition-colors hover:text-accent-strong"
+                          >
+                            {en ? 'Practise this topic →' : '練返呢個課題 →'}
+                          </Link>
+                          <ReportQuestionButton questionId={q.id} variant="standalone" />
+                        </div>
                       </>
                     ) : (
                       <p className="text-sm text-ink-muted">
