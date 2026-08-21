@@ -186,7 +186,18 @@ export default function WritingClient() {
 
         {/* Self-assessment rubric */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
-          <h2 className="font-medium text-ink mb-1">{tr('自評量表（HKEAA 7 分制）', 'Self-Assessment (HKEAA 7-point scale)')}</h2>
+          {/* 2026-08-21：原本寫「自評量表（HKEAA 7 分制）」，讀落似係考評局本身嘅
+              評分表。實際係我哋參照【公開】評核概念自行設計嘅自評工具 —— 官方評卷
+              參考受版權保護，我哋冇引用亦唔可以引用。標題必須講返佢實際係咩。 */}
+          <h2 className="font-medium text-ink mb-1">
+            {tr('自評量表（參照公開評核概念設計）', 'Self-assessment (designed from publicly available assessment concepts)')}
+          </h2>
+          <p className="text-xs text-ink-muted mb-2">
+            {tr(
+              '呢個係我哋自己設計嘅自評工具，並非香港考試及評核局嘅官方評分表，亦唔代表官方會點評你嘅文章。',
+              'This is our own self-assessment tool. It is not the HKEAA’s official marking rubric and does not represent how the HKEAA would mark your writing.',
+            )}
+          </p>
           <p className="text-xs text-ink-muted mb-5">
             {tr('按三大範疇為自己的文章評分（1 = 最弱，7 = 最強）。', 'Rate your own writing on the three domains (1 = weakest, 7 = strongest).')}
           </p>

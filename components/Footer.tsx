@@ -78,6 +78,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/prediction-method" className="hover:text-accent transition-colors">
+                  {t.footer.predictionMethod}
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:dselevelup@gmail.com" className="hover:text-accent transition-colors">
                   {t.footer.contact}
                 </a>

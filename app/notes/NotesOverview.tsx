@@ -72,11 +72,15 @@ export default function NotesOverview() {
         </p>
       </header>
 
-      {/* 誠實說明：呢度冇 AI 摘要 */}
+      {/* AI 參與範圍 —— 2026-08-21 重寫。
+          原文寫「冇任何機器改寫」／「Nothing is machine-rewritten」，而首頁同透明度頁
+          寫住「DSE 舊生 + AI 協作」。兩句都係真嘅（AI 參與嘅係出題階段，唔係你打開
+          筆記嗰刻），但擺埋一齊讀落好似互相矛盾。含糊嘅澄清等於冇澄清，所以呢度直接
+          講明 AI 參與到邊一步、唔參與到邊一步。 */}
       <p className="mb-5 rounded-xl border border-line bg-surface-raised p-3 text-xs leading-relaxed text-ink-muted">
         {tr(
-          '每篇筆記都係由真實題庫同你自己嘅練習紀錄整理出嚟 —— 解析係原文，陷阱係出題時標註低嘅，冇任何機器改寫。',
-          'Every note is assembled from the real question bank and your own practice record — explanations are quoted as written and pitfalls are the ones flagged at authoring time. Nothing is machine-rewritten.',
+          '每篇筆記都係由真實題庫同你自己嘅練習紀錄整理出嚟。AI 有參與題目初稿同分類；呢度顯示嘅係經覆核之後嘅解析原文，唔會喺你打開嗰刻由 AI 即時改寫。',
+          'Every note is assembled from the real question bank and your own practice record. AI takes part in drafting and classifying questions; what you see here is the reviewed explanation as written, not something an AI rewrites at the moment you open the page.',
         )}
       </p>
 

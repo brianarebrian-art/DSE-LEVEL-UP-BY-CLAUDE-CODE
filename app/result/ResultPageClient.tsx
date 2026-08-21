@@ -317,7 +317,12 @@ export default function ResultPageClient() {
                 </p>
               )}
               <p className="text-[11px] text-ink-muted leading-relaxed mt-3 pt-3 border-t border-line">
-                {r.cutoffOrigin}
+                {r.cutoffOrigin}{' '}
+                {/* 2026-08-21：短一句免責唔夠 —— 學生睇完仍然唔知個數憑咩嚟。
+                    /prediction-method 貼晒實際分界線同用邊條區間公式，佢自己計得返。 */}
+                <Link href="/prediction-method" className="text-accent underline underline-offset-2">
+                  {locale === 'en' ? 'How this is worked out' : '呢個數點計出嚟'}
+                </Link>
               </p>
             </div>
           )}
