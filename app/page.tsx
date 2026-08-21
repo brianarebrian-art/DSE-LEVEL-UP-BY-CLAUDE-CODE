@@ -140,6 +140,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── 信任列 ──
+          Hero 之後第一件事就係講清楚邊界。呢條列唔賣任何嘢，佢答緊訪客第一個
+          真正嘅問題：「呢個係咩嚟？可唔可以信？」
+
+          三個數全部即時由題庫算（同 /trust、/transparency 同一個來源）——
+          硬編一個「5,201」落去，加減題嗰日呢度就會靜靜哋講錯，而首頁係最多人
+          睇、最少人記得更新嗰版。今年 8 月首頁三個數顯示成 0 就係咁樣嚟。 */}
+      <section className="border-y border-line bg-surface-sunken px-4 py-4">
+        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-center text-xs text-ink-muted">
+          <span>
+            {TOTAL_QUESTIONS.toLocaleString()}
+            {locale === 'en' ? ' rewritten MC questions' : ' 條改寫 MC 題'}
+          </span>
+          <span aria-hidden className="text-ink-faint">·</span>
+          <span>
+            {activeSubjects.length}
+            {locale === 'en' ? ' subjects' : ' 科'}
+          </span>
+          <span aria-hidden className="text-ink-faint">·</span>
+          <span>{locale === 'en' ? 'Written papers not covered' : '書寫卷未涵蓋'}</span>
+          <span aria-hidden className="text-ink-faint">·</span>
+          <span>{locale === 'en' ? 'Not affiliated with the HKEAA' : '與考評局無從屬關係'}</span>
+          <span aria-hidden className="text-ink-faint">·</span>
+          <Link href="/trust" className="font-medium text-accent-strong underline underline-offset-2">
+            {locale === 'en' ? 'Check any of this' : '逐項查得到'}
+          </Link>
+        </div>
+      </section>
+
       {/* ── 盲測黑題 —— 深色「終端」卡刻意做淺底對比 ── */}
       <section className="bg-surface-raised px-4 py-14">
         <div className="mx-auto max-w-md">
