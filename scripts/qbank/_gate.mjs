@@ -215,12 +215,32 @@ export function toReviewedQuestion(row, subject) {
   }
 
   if (type === 'mc') {
-    return {
+    const mc = {
       ...base,
       options: row.options.map((o) => String(o).trim()),
       correctIndex: row.correctIndex,
       marks: 1,
     }
+    // 2026-08-21 修正：MC 嘅英文欄一直被丟棄。
+    //
+    // 下面 text／long 嘅英文欄早喺 2026-08-07 補過（見該處註釋），但 MC 呢個
+    // 分支喺補之前已經 `return`，所以由頭到尾冇 copy 過。實測影響：89 條 MC 草稿
+    // 之中有 39 條帶住英文欄，promote 之後全部變成得中文；已入庫嘅 18 條人手核對
+    // MC（english 6、chinese 12）現時亦冇 contentEn。
+    //
+    // 25 科入面 20 科係雙語題庫，一條冇英文嘅 MC 喺英文介面會顯示中文原文 ——
+    // 對只讀英文卷嘅考生等於一條做唔到嘅題。
+    //
+    // 影響統計（憲章 §6）：純加法 —— 只係把本來就存在而被丟棄嘅 optional 欄
+    // 帶埋出去，冇任何一行會由「過」變「唔過」，亦唔會改動已入庫檔案（除非重跑
+    // promote）。
+    if (typeof row.questionEn === 'string' && row.questionEn.trim()) mc.contentEn = row.questionEn.trim()
+    if (Array.isArray(row.optionsEn) && row.optionsEn.length === mc.options.length
+        && row.optionsEn.every((o) => typeof o === 'string' && o.trim())) {
+      mc.optionsEn = row.optionsEn.map((o) => String(o).trim())
+    }
+    if (typeof row.explanationEn === 'string' && row.explanationEn.trim()) mc.explanationEn = row.explanationEn.trim()
+    return mc
   }
 
   // text／long：刻意【唔輸出】options／correctIndex。呢兩個欄位一旦存在，
