@@ -55,6 +55,8 @@ import { ethicsReligiousAutoQuestions } from './ethics-religious-auto'
 import { geographyAutoQuestions } from './geography-auto'
 import { englishAutoQuestions } from './english-auto'
 import { chineseAutoQuestions } from './chinese-auto'
+import { chemistryAutoQuestions } from './chemistry-auto'
+import { economicsAutoQuestions } from './economics-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
@@ -116,6 +118,8 @@ const banks: Record<string, SubjectBank> = {
 // 工具及稽核統計的讀取路徑，只註冊其中一邊會令題目對統計隱形
 // （2026-08-07 曾因此少報 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
 const autoBanks: Record<string, AnyQuestion[]> = {
+  'economics': economicsAutoQuestions,
+  'chemistry': chemistryAutoQuestions,
   'chinese': chineseAutoQuestions,
   'english': englishAutoQuestions,
   'geography': geographyAutoQuestions,

@@ -1,0 +1,2270 @@
+[
+  {
+    "id": "econ_rep_0001",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 5 單位產品，平均成本為每單位 \\$12。求其總成本。",
+    "questionEn": "A firm produces 5 units at an average cost of \\$12 per unit. Find its total cost.",
+    "options": [
+      "\\$60",
+      "\\$2.40",
+      "\\$12",
+      "\\$55"
+    ],
+    "optionsEn": [
+      "\\$60",
+      "\\$2.40",
+      "\\$12",
+      "\\$55"
+    ],
+    "correctIndex": 0,
+    "explanation": "平均成本是總成本攤分到每一單位之後的數值，故總成本 = 平均成本 × 產量 = 12 × 5 = \\$60。把兩者相除得 \\$2.40，是把「平均成本 = 總成本 ÷ 產量」這條式倒轉使用的結果；由定義可以立即察覺不對，因為總成本必定不小於平均成本。答 \\$12 的學生把「每單位成本」直接當作總成本，等於當作只生產了一單位。餘下一項多減了一次產量，並無對應的經濟意義。",
+    "explanationEn": "Average cost is total cost spread over each unit, so total cost = average cost × output = 12 × 5 = \\$60. Dividing instead gives \\$2.40, which inverts the definition — total cost can never be smaller than average cost. Choosing \\$12 treats the per-unit figure as the total, i.e. assumes only one unit was made. The remaining option subtracts the output once more, which has no economic meaning."
+  },
+  {
+    "id": "econ_rep_0002",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 12 單位產品，平均成本為每單位 \\$8。求其總成本。",
+    "questionEn": "A firm produces 12 units at an average cost of \\$8 per unit. Find its total cost.",
+    "options": [
+      "\\$84",
+      "\\$96",
+      "\\$0.67",
+      "\\$8"
+    ],
+    "optionsEn": [
+      "\\$84",
+      "\\$96",
+      "\\$0.67",
+      "\\$8"
+    ],
+    "correctIndex": 1,
+    "explanation": "平均成本是總成本攤分到每一單位之後的數值，故總成本 = 平均成本 × 產量 = 8 × 12 = \\$96。把兩者相除得 \\$0.67，是把「平均成本 = 總成本 ÷ 產量」這條式倒轉使用的結果；由定義可以立即察覺不對，因為總成本必定不小於平均成本。答 \\$8 的學生把「每單位成本」直接當作總成本，等於當作只生產了一單位。餘下一項多減了一次產量，並無對應的經濟意義。",
+    "explanationEn": "Average cost is total cost spread over each unit, so total cost = average cost × output = 8 × 12 = \\$96. Dividing instead gives \\$0.67, which inverts the definition — total cost can never be smaller than average cost. Choosing \\$8 treats the per-unit figure as the total, i.e. assumes only one unit was made. The remaining option subtracts the output once more, which has no economic meaning."
+  },
+  {
+    "id": "econ_rep_0003",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 4 單位產品，平均成本為每單位 \\$25。求其總成本。",
+    "questionEn": "A firm produces 4 units at an average cost of \\$25 per unit. Find its total cost.",
+    "options": [
+      "\\$25",
+      "\\$96",
+      "\\$100",
+      "\\$6.25"
+    ],
+    "optionsEn": [
+      "\\$25",
+      "\\$96",
+      "\\$100",
+      "\\$6.25"
+    ],
+    "correctIndex": 2,
+    "explanation": "平均成本是總成本攤分到每一單位之後的數值，故總成本 = 平均成本 × 產量 = 25 × 4 = \\$100。把兩者相除得 \\$6.25，是把「平均成本 = 總成本 ÷ 產量」這條式倒轉使用的結果；由定義可以立即察覺不對，因為總成本必定不小於平均成本。答 \\$25 的學生把「每單位成本」直接當作總成本，等於當作只生產了一單位。餘下一項多減了一次產量，並無對應的經濟意義。",
+    "explanationEn": "Average cost is total cost spread over each unit, so total cost = average cost × output = 25 × 4 = \\$100. Dividing instead gives \\$6.25, which inverts the definition — total cost can never be smaller than average cost. Choosing \\$25 treats the per-unit figure as the total, i.e. assumes only one unit was made. The remaining option subtracts the output once more, which has no economic meaning."
+  },
+  {
+    "id": "econ_rep_0004",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 30 單位產品，平均成本為每單位 \\$6。求其總成本。",
+    "questionEn": "A firm produces 30 units at an average cost of \\$6 per unit. Find its total cost.",
+    "options": [
+      "\\$0.20",
+      "\\$6",
+      "\\$150",
+      "\\$180"
+    ],
+    "optionsEn": [
+      "\\$0.20",
+      "\\$6",
+      "\\$150",
+      "\\$180"
+    ],
+    "correctIndex": 3,
+    "explanation": "平均成本是總成本攤分到每一單位之後的數值，故總成本 = 平均成本 × 產量 = 6 × 30 = \\$180。把兩者相除得 \\$0.20，是把「平均成本 = 總成本 ÷ 產量」這條式倒轉使用的結果；由定義可以立即察覺不對，因為總成本必定不小於平均成本。答 \\$6 的學生把「每單位成本」直接當作總成本，等於當作只生產了一單位。餘下一項多減了一次產量，並無對應的經濟意義。",
+    "explanationEn": "Average cost is total cost spread over each unit, so total cost = average cost × output = 6 × 30 = \\$180. Dividing instead gives \\$0.20, which inverts the definition — total cost can never be smaller than average cost. Choosing \\$6 treats the per-unit figure as the total, i.e. assumes only one unit was made. The remaining option subtracts the output once more, which has no economic meaning."
+  },
+  {
+    "id": "econ_rep_0005",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 8 單位產品，平均成本為每單位 \\$15。求其總成本。",
+    "questionEn": "A firm produces 8 units at an average cost of \\$15 per unit. Find its total cost.",
+    "options": [
+      "\\$120",
+      "\\$1.88",
+      "\\$15",
+      "\\$112"
+    ],
+    "optionsEn": [
+      "\\$120",
+      "\\$1.88",
+      "\\$15",
+      "\\$112"
+    ],
+    "correctIndex": 0,
+    "explanation": "平均成本是總成本攤分到每一單位之後的數值，故總成本 = 平均成本 × 產量 = 15 × 8 = \\$120。把兩者相除得 \\$1.88，是把「平均成本 = 總成本 ÷ 產量」這條式倒轉使用的結果；由定義可以立即察覺不對，因為總成本必定不小於平均成本。答 \\$15 的學生把「每單位成本」直接當作總成本，等於當作只生產了一單位。餘下一項多減了一次產量，並無對應的經濟意義。",
+    "explanationEn": "Average cost is total cost spread over each unit, so total cost = average cost × output = 15 × 8 = \\$120. Dividing instead gives \\$1.88, which inverts the definition — total cost can never be smaller than average cost. Choosing \\$15 treats the per-unit figure as the total, i.e. assumes only one unit was made. The remaining option subtracts the output once more, which has no economic meaning."
+  },
+  {
+    "id": "econ_rep_0006",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 3 單位產品，平均成本為每單位 \\$40。求其總成本。",
+    "questionEn": "A firm produces 3 units at an average cost of \\$40 per unit. Find its total cost.",
+    "options": [
+      "\\$117",
+      "\\$120",
+      "\\$13.33",
+      "\\$40"
+    ],
+    "optionsEn": [
+      "\\$117",
+      "\\$120",
+      "\\$13.33",
+      "\\$40"
+    ],
+    "correctIndex": 1,
+    "explanation": "平均成本是總成本攤分到每一單位之後的數值，故總成本 = 平均成本 × 產量 = 40 × 3 = \\$120。把兩者相除得 \\$13.33，是把「平均成本 = 總成本 ÷ 產量」這條式倒轉使用的結果；由定義可以立即察覺不對，因為總成本必定不小於平均成本。答 \\$40 的學生把「每單位成本」直接當作總成本，等於當作只生產了一單位。餘下一項多減了一次產量，並無對應的經濟意義。",
+    "explanationEn": "Average cost is total cost spread over each unit, so total cost = average cost × output = 40 × 3 = \\$120. Dividing instead gives \\$13.33, which inverts the definition — total cost can never be smaller than average cost. Choosing \\$40 treats the per-unit figure as the total, i.e. assumes only one unit was made. The remaining option subtracts the output once more, which has no economic meaning."
+  },
+  {
+    "id": "econ_rep_0007",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 4 單位時總成本為 \\$60；產量增至 6 單位時總成本為 \\$96。求這段增產的邊際成本（每單位）。",
+    "questionEn": "A firm's total cost is \\$60 at 4 units and \\$96 at 6 units. Find the marginal cost per unit over this range.",
+    "options": [
+      "\\$16",
+      "\\$6",
+      "\\$18",
+      "\\$36"
+    ],
+    "optionsEn": [
+      "\\$16",
+      "\\$6",
+      "\\$18",
+      "\\$36"
+    ],
+    "correctIndex": 2,
+    "explanation": "邊際成本是每【增加一單位】產量所引致的總成本增量，故要把成本的增量除以產量的增量：(96 − 60) ÷ (6 − 4) = \\$18。答 \\$36 的學生只求了成本增量而忘記除以增加的單位數，當產量只增加一單位時兩者恰好相同，因而容易養成錯誤習慣。\\$16 求的是新產量下的平均成本，與邊際成本並非同一概念。最後一項除以總產量而非產量的增量。",
+    "explanationEn": "Marginal cost is the rise in total cost per *additional* unit, so divide the change in cost by the change in output: (96 − 60) ÷ (6 − 4) = \\$18. Answering \\$36 stops at the cost increase and forgets the division — the two coincide only when output rises by exactly one unit, which is how the habit forms. \\$16 is the average cost at the new output, a different concept. The last option divides by total output rather than the change in output."
+  },
+  {
+    "id": "econ_rep_0008",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 8 單位時總成本為 \\$200；產量增至 10 單位時總成本為 \\$260。求這段增產的邊際成本（每單位）。",
+    "questionEn": "A firm's total cost is \\$200 at 8 units and \\$260 at 10 units. Find the marginal cost per unit over this range.",
+    "options": [
+      "\\$60",
+      "\\$26",
+      "\\$6",
+      "\\$30"
+    ],
+    "optionsEn": [
+      "\\$60",
+      "\\$26",
+      "\\$6",
+      "\\$30"
+    ],
+    "correctIndex": 3,
+    "explanation": "邊際成本是每【增加一單位】產量所引致的總成本增量，故要把成本的增量除以產量的增量：(260 − 200) ÷ (10 − 8) = \\$30。答 \\$60 的學生只求了成本增量而忘記除以增加的單位數，當產量只增加一單位時兩者恰好相同，因而容易養成錯誤習慣。\\$26 求的是新產量下的平均成本，與邊際成本並非同一概念。最後一項除以總產量而非產量的增量。",
+    "explanationEn": "Marginal cost is the rise in total cost per *additional* unit, so divide the change in cost by the change in output: (260 − 200) ÷ (10 − 8) = \\$30. Answering \\$60 stops at the cost increase and forgets the division — the two coincide only when output rises by exactly one unit, which is how the habit forms. \\$26 is the average cost at the new output, a different concept. The last option divides by total output rather than the change in output."
+  },
+  {
+    "id": "econ_rep_0009",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 2 單位時總成本為 \\$30；產量增至 4 單位時總成本為 \\$54。求這段增產的邊際成本（每單位）。",
+    "questionEn": "A firm's total cost is \\$30 at 2 units and \\$54 at 4 units. Find the marginal cost per unit over this range.",
+    "options": [
+      "\\$12",
+      "\\$24",
+      "\\$13.50",
+      "\\$6"
+    ],
+    "optionsEn": [
+      "\\$12",
+      "\\$24",
+      "\\$13.50",
+      "\\$6"
+    ],
+    "correctIndex": 0,
+    "explanation": "邊際成本是每【增加一單位】產量所引致的總成本增量，故要把成本的增量除以產量的增量：(54 − 30) ÷ (4 − 2) = \\$12。答 \\$24 的學生只求了成本增量而忘記除以增加的單位數，當產量只增加一單位時兩者恰好相同，因而容易養成錯誤習慣。\\$13.50 求的是新產量下的平均成本，與邊際成本並非同一概念。最後一項除以總產量而非產量的增量。",
+    "explanationEn": "Marginal cost is the rise in total cost per *additional* unit, so divide the change in cost by the change in output: (54 − 30) ÷ (4 − 2) = \\$12. Answering \\$24 stops at the cost increase and forgets the division — the two coincide only when output rises by exactly one unit, which is how the habit forms. \\$13.50 is the average cost at the new output, a different concept. The last option divides by total output rather than the change in output."
+  },
+  {
+    "id": "econ_rep_0010",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 6 單位時總成本為 \\$150；產量增至 8 單位時總成本為 \\$190。求這段增產的邊際成本（每單位）。",
+    "questionEn": "A firm's total cost is \\$150 at 6 units and \\$190 at 8 units. Find the marginal cost per unit over this range.",
+    "options": [
+      "\\$5",
+      "\\$20",
+      "\\$40",
+      "\\$23.75"
+    ],
+    "optionsEn": [
+      "\\$5",
+      "\\$20",
+      "\\$40",
+      "\\$23.75"
+    ],
+    "correctIndex": 1,
+    "explanation": "邊際成本是每【增加一單位】產量所引致的總成本增量，故要把成本的增量除以產量的增量：(190 − 150) ÷ (8 − 6) = \\$20。答 \\$40 的學生只求了成本增量而忘記除以增加的單位數，當產量只增加一單位時兩者恰好相同，因而容易養成錯誤習慣。\\$23.75 求的是新產量下的平均成本，與邊際成本並非同一概念。最後一項除以總產量而非產量的增量。",
+    "explanationEn": "Marginal cost is the rise in total cost per *additional* unit, so divide the change in cost by the change in output: (190 − 150) ÷ (8 − 6) = \\$20. Answering \\$40 stops at the cost increase and forgets the division — the two coincide only when output rises by exactly one unit, which is how the habit forms. \\$23.75 is the average cost at the new output, a different concept. The last option divides by total output rather than the change in output."
+  },
+  {
+    "id": "econ_rep_0011",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 1 單位時總成本為 \\$20；產量增至 3 單位時總成本為 \\$44。求這段增產的邊際成本（每單位）。",
+    "questionEn": "A firm's total cost is \\$20 at 1 units and \\$44 at 3 units. Find the marginal cost per unit over this range.",
+    "options": [
+      "\\$14.67",
+      "\\$8",
+      "\\$12",
+      "\\$24"
+    ],
+    "optionsEn": [
+      "\\$14.67",
+      "\\$8",
+      "\\$12",
+      "\\$24"
+    ],
+    "correctIndex": 2,
+    "explanation": "邊際成本是每【增加一單位】產量所引致的總成本增量，故要把成本的增量除以產量的增量：(44 − 20) ÷ (3 − 1) = \\$12。答 \\$24 的學生只求了成本增量而忘記除以增加的單位數，當產量只增加一單位時兩者恰好相同，因而容易養成錯誤習慣。\\$14.67 求的是新產量下的平均成本，與邊際成本並非同一概念。最後一項除以總產量而非產量的增量。",
+    "explanationEn": "Marginal cost is the rise in total cost per *additional* unit, so divide the change in cost by the change in output: (44 − 20) ÷ (3 − 1) = \\$12. Answering \\$24 stops at the cost increase and forgets the division — the two coincide only when output rises by exactly one unit, which is how the habit forms. \\$14.67 is the average cost at the new output, a different concept. The last option divides by total output rather than the change in output."
+  },
+  {
+    "id": "econ_rep_0012",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某廠商生產 10 單位時總成本為 \\$300；產量增至 12 單位時總成本為 \\$336。求這段增產的邊際成本（每單位）。",
+    "questionEn": "A firm's total cost is \\$300 at 10 units and \\$336 at 12 units. Find the marginal cost per unit over this range.",
+    "options": [
+      "\\$36",
+      "\\$28",
+      "\\$3",
+      "\\$18"
+    ],
+    "optionsEn": [
+      "\\$36",
+      "\\$28",
+      "\\$3",
+      "\\$18"
+    ],
+    "correctIndex": 3,
+    "explanation": "邊際成本是每【增加一單位】產量所引致的總成本增量，故要把成本的增量除以產量的增量：(336 − 300) ÷ (12 − 10) = \\$18。答 \\$36 的學生只求了成本增量而忘記除以增加的單位數，當產量只增加一單位時兩者恰好相同，因而容易養成錯誤習慣。\\$28 求的是新產量下的平均成本，與邊際成本並非同一概念。最後一項除以總產量而非產量的增量。",
+    "explanationEn": "Marginal cost is the rise in total cost per *additional* unit, so divide the change in cost by the change in output: (336 − 300) ÷ (12 − 10) = \\$18. Answering \\$36 stops at the cost increase and forgets the division — the two coincide only when output rises by exactly one unit, which is how the habit forms. \\$28 is the average cost at the new output, a different concept. The last option divides by total output rather than the change in output."
+  },
+  {
+    "id": "econ_rep_0013",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "陳先生辭去年薪 \\$90 的工作，自行開設小店。該店一年的收入為 \\$500，需要以現金支付的各項開支為 \\$320。\n\n求該店一年的經濟利潤。",
+    "questionEn": "Mr Chan gave up a job paying \\$90 a year to open a shop. In one year the shop takes in \\$500 and pays out \\$320 in cash expenses.\n\nFind the shop's economic profit for the year.",
+    "options": [
+      "\\$90",
+      "\\$180",
+      "\\$410",
+      "\\$270"
+    ],
+    "optionsEn": [
+      "\\$90",
+      "\\$180",
+      "\\$410",
+      "\\$270"
+    ],
+    "correctIndex": 0,
+    "explanation": "經濟利潤除了明確支付的成本之外，還要扣除隱含成本 —— 即把資源投入本業而放棄的最高代價。此處放棄的年薪 \\$90 正是隱含成本，故經濟利潤 = 500 − 320 − 90 = \\$90。答 \\$180 的是會計利潤，只計現金開支，這是本題最主要的失分位。\\$410 漏了現金開支。最後一項把放棄的年薪當作收入加回去，方向剛好相反。",
+    "explanationEn": "Economic profit deducts implicit cost — the best alternative given up — as well as explicit cost. The \\$90 salary forgone is that implicit cost, so economic profit = 500 − 320 − 90 = \\$90. Answering \\$180 gives accounting profit, which counts cash outlays only; this is the main trap. \\$410 omits the cash expenses. The last option adds the forgone salary as if it were revenue, reversing its sign."
+  },
+  {
+    "id": "econ_rep_0014",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "陳先生辭去年薪 \\$250 的工作，自行開設小店。該店一年的收入為 \\$1200，需要以現金支付的各項開支為 \\$800。\n\n求該店一年的經濟利潤。",
+    "questionEn": "Mr Chan gave up a job paying \\$250 a year to open a shop. In one year the shop takes in \\$1200 and pays out \\$800 in cash expenses.\n\nFind the shop's economic profit for the year.",
+    "options": [
+      "\\$650",
+      "\\$150",
+      "\\$400",
+      "\\$950"
+    ],
+    "optionsEn": [
+      "\\$650",
+      "\\$150",
+      "\\$400",
+      "\\$950"
+    ],
+    "correctIndex": 1,
+    "explanation": "經濟利潤除了明確支付的成本之外，還要扣除隱含成本 —— 即把資源投入本業而放棄的最高代價。此處放棄的年薪 \\$250 正是隱含成本，故經濟利潤 = 1200 − 800 − 250 = \\$150。答 \\$400 的是會計利潤，只計現金開支，這是本題最主要的失分位。\\$950 漏了現金開支。最後一項把放棄的年薪當作收入加回去，方向剛好相反。",
+    "explanationEn": "Economic profit deducts implicit cost — the best alternative given up — as well as explicit cost. The \\$250 salary forgone is that implicit cost, so economic profit = 1200 − 800 − 250 = \\$150. Answering \\$400 gives accounting profit, which counts cash outlays only; this is the main trap. \\$950 omits the cash expenses. The last option adds the forgone salary as if it were revenue, reversing its sign."
+  },
+  {
+    "id": "econ_rep_0015",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "陳先生辭去年薪 \\$60 的工作，自行開設小店。該店一年的收入為 \\$260，需要以現金支付的各項開支為 \\$140。\n\n求該店一年的經濟利潤。",
+    "questionEn": "Mr Chan gave up a job paying \\$60 a year to open a shop. In one year the shop takes in \\$260 and pays out \\$140 in cash expenses.\n\nFind the shop's economic profit for the year.",
+    "options": [
+      "\\$200",
+      "\\$180",
+      "\\$60",
+      "\\$120"
+    ],
+    "optionsEn": [
+      "\\$200",
+      "\\$180",
+      "\\$60",
+      "\\$120"
+    ],
+    "correctIndex": 2,
+    "explanation": "經濟利潤除了明確支付的成本之外，還要扣除隱含成本 —— 即把資源投入本業而放棄的最高代價。此處放棄的年薪 \\$60 正是隱含成本，故經濟利潤 = 260 − 140 − 60 = \\$60。答 \\$120 的是會計利潤，只計現金開支，這是本題最主要的失分位。\\$200 漏了現金開支。最後一項把放棄的年薪當作收入加回去，方向剛好相反。",
+    "explanationEn": "Economic profit deducts implicit cost — the best alternative given up — as well as explicit cost. The \\$60 salary forgone is that implicit cost, so economic profit = 260 − 140 − 60 = \\$60. Answering \\$120 gives accounting profit, which counts cash outlays only; this is the main trap. \\$200 omits the cash expenses. The last option adds the forgone salary as if it were revenue, reversing its sign."
+  },
+  {
+    "id": "econ_rep_0016",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "陳先生辭去年薪 \\$400 的工作，自行開設小店。該店一年的收入為 \\$900，需要以現金支付的各項開支為 \\$600。\n\n求該店一年的經濟利潤。",
+    "questionEn": "Mr Chan gave up a job paying \\$400 a year to open a shop. In one year the shop takes in \\$900 and pays out \\$600 in cash expenses.\n\nFind the shop's economic profit for the year.",
+    "options": [
+      "\\$300",
+      "\\$500",
+      "\\$700",
+      "\\$-100"
+    ],
+    "optionsEn": [
+      "\\$300",
+      "\\$500",
+      "\\$700",
+      "\\$-100"
+    ],
+    "correctIndex": 3,
+    "explanation": "經濟利潤除了明確支付的成本之外，還要扣除隱含成本 —— 即把資源投入本業而放棄的最高代價。此處放棄的年薪 \\$400 正是隱含成本，故經濟利潤 = 900 − 600 − 400 = \\$-100。答 \\$300 的是會計利潤，只計現金開支，這是本題最主要的失分位。\\$500 漏了現金開支。最後一項把放棄的年薪當作收入加回去，方向剛好相反。",
+    "explanationEn": "Economic profit deducts implicit cost — the best alternative given up — as well as explicit cost. The \\$400 salary forgone is that implicit cost, so economic profit = 900 − 600 − 400 = \\$-100. Answering \\$300 gives accounting profit, which counts cash outlays only; this is the main trap. \\$500 omits the cash expenses. The last option adds the forgone salary as if it were revenue, reversing its sign."
+  },
+  {
+    "id": "econ_rep_0017",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "陳先生辭去年薪 \\$25 的工作，自行開設小店。該店一年的收入為 \\$75，需要以現金支付的各項開支為 \\$40。\n\n求該店一年的經濟利潤。",
+    "questionEn": "Mr Chan gave up a job paying \\$25 a year to open a shop. In one year the shop takes in \\$75 and pays out \\$40 in cash expenses.\n\nFind the shop's economic profit for the year.",
+    "options": [
+      "\\$10",
+      "\\$35",
+      "\\$50",
+      "\\$60"
+    ],
+    "optionsEn": [
+      "\\$10",
+      "\\$35",
+      "\\$50",
+      "\\$60"
+    ],
+    "correctIndex": 0,
+    "explanation": "經濟利潤除了明確支付的成本之外，還要扣除隱含成本 —— 即把資源投入本業而放棄的最高代價。此處放棄的年薪 \\$25 正是隱含成本，故經濟利潤 = 75 − 40 − 25 = \\$10。答 \\$35 的是會計利潤，只計現金開支，這是本題最主要的失分位。\\$50 漏了現金開支。最後一項把放棄的年薪當作收入加回去，方向剛好相反。",
+    "explanationEn": "Economic profit deducts implicit cost — the best alternative given up — as well as explicit cost. The \\$25 salary forgone is that implicit cost, so economic profit = 75 − 40 − 25 = \\$10. Answering \\$35 gives accounting profit, which counts cash outlays only; this is the main trap. \\$50 omits the cash expenses. The last option adds the forgone salary as if it were revenue, reversing its sign."
+  },
+  {
+    "id": "econ_rep_0018",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "陳先生辭去年薪 \\$300 的工作，自行開設小店。該店一年的收入為 \\$2000，需要以現金支付的各項開支為 \\$1500。\n\n求該店一年的經濟利潤。",
+    "questionEn": "Mr Chan gave up a job paying \\$300 a year to open a shop. In one year the shop takes in \\$2000 and pays out \\$1500 in cash expenses.\n\nFind the shop's economic profit for the year.",
+    "options": [
+      "\\$800",
+      "\\$200",
+      "\\$500",
+      "\\$1700"
+    ],
+    "optionsEn": [
+      "\\$800",
+      "\\$200",
+      "\\$500",
+      "\\$1700"
+    ],
+    "correctIndex": 1,
+    "explanation": "經濟利潤除了明確支付的成本之外，還要扣除隱含成本 —— 即把資源投入本業而放棄的最高代價。此處放棄的年薪 \\$300 正是隱含成本，故經濟利潤 = 2000 − 1500 − 300 = \\$200。答 \\$500 的是會計利潤，只計現金開支，這是本題最主要的失分位。\\$1700 漏了現金開支。最後一項把放棄的年薪當作收入加回去，方向剛好相反。",
+    "explanationEn": "Economic profit deducts implicit cost — the best alternative given up — as well as explicit cost. The \\$300 salary forgone is that implicit cost, so economic profit = 2000 − 1500 − 300 = \\$200. Answering \\$500 gives accounting profit, which counts cash outlays only; this is the main trap. \\$1700 omits the cash expenses. The last option adds the forgone salary as if it were revenue, reversing its sign."
+  },
+  {
+    "id": "econ_rep_0019",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商目前售價為每件 \\$18，平均可變成本為 \\$20，平均固定成本為 \\$6。\n\n就短期而言，該廠商應否繼續生產？",
+    "questionEn": "A firm currently sells at \\$18 per unit, with average variable cost \\$20 and average fixed cost \\$6.\n\nIn the short run, should it keep producing?",
+    "options": [
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損",
+      "應繼續生產，因為售價高於平均固定成本"
+    ],
+    "optionsEn": [
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損",
+      "應繼續生產，因為售價高於平均固定成本"
+    ],
+    "correctIndex": 2,
+    "explanation": "短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$18 低於 平均可變成本 \\$20，所以應停止生產 —— 每多賣一件連可變成本也收不回，虧損比停業時更大。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。",
+    "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$18 is below the average variable cost of \\$20, so the firm should shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement."
+  },
+  {
+    "id": "econ_rep_0020",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商目前售價為每件 \\$25，平均可變成本為 \\$22，平均固定成本為 \\$5。\n\n就短期而言，該廠商應否繼續生產？",
+    "questionEn": "A firm currently sells at \\$25 per unit, with average variable cost \\$22 and average fixed cost \\$5.\n\nIn the short run, should it keep producing?",
+    "options": [
+      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損",
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻"
+    ],
+    "optionsEn": [
+      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損",
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻"
+    ],
+    "correctIndex": 3,
+    "explanation": "短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$25 不低於 平均可變成本 \\$22，所以應繼續生產 —— 每賣一件所得可抵回可變成本並有餘額貼補固定成本，虧損比停業時為小。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。",
+    "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$25 is not below the average variable cost of \\$22, so the firm should keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement."
+  },
+  {
+    "id": "econ_rep_0021",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商目前售價為每件 \\$9，平均可變成本為 \\$12，平均固定成本為 \\$4。\n\n就短期而言，該廠商應否繼續生產？",
+    "questionEn": "A firm currently sells at \\$9 per unit, with average variable cost \\$12 and average fixed cost \\$4.\n\nIn the short run, should it keep producing?",
+    "options": [
+      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損",
+      "應繼續生產，因為售價高於平均固定成本",
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量"
+    ],
+    "optionsEn": [
+      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損",
+      "應繼續生產，因為售價高於平均固定成本",
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量"
+    ],
+    "correctIndex": 0,
+    "explanation": "短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$9 低於 平均可變成本 \\$12，所以應停止生產 —— 每多賣一件連可變成本也收不回，虧損比停業時更大。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。",
+    "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$9 is below the average variable cost of \\$12, so the firm should shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement."
+  },
+  {
+    "id": "econ_rep_0022",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商目前售價為每件 \\$40，平均可變成本為 \\$35，平均固定成本為 \\$10。\n\n就短期而言，該廠商應否繼續生產？",
+    "questionEn": "A firm currently sells at \\$40 per unit, with average variable cost \\$35 and average fixed cost \\$10.\n\nIn the short run, should it keep producing?",
+    "options": [
+      "無法判斷，因為題目沒有提供產量",
+      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻",
+      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損",
+      "應停止生產，因為固定成本在短期內仍須繳付"
+    ],
+    "optionsEn": [
+      "無法判斷，因為題目沒有提供產量",
+      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻",
+      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損",
+      "應停止生產，因為固定成本在短期內仍須繳付"
+    ],
+    "correctIndex": 1,
+    "explanation": "短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$40 不低於 平均可變成本 \\$35，所以應繼續生產 —— 每賣一件所得可抵回可變成本並有餘額貼補固定成本，虧損比停業時為小。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。",
+    "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$40 is not below the average variable cost of \\$35, so the firm should keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement."
+  },
+  {
+    "id": "econ_rep_0023",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商目前售價為每件 \\$14，平均可變成本為 \\$14，平均固定成本為 \\$3。\n\n就短期而言，該廠商應否繼續生產？",
+    "questionEn": "A firm currently sells at \\$14 per unit, with average variable cost \\$14 and average fixed cost \\$3.\n\nIn the short run, should it keep producing?",
+    "options": [
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻",
+      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損"
+    ],
+    "optionsEn": [
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻",
+      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損"
+    ],
+    "correctIndex": 2,
+    "explanation": "短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$14 不低於 平均可變成本 \\$14，所以應繼續生產 —— 每賣一件所得可抵回可變成本並有餘額貼補固定成本，虧損比停業時為小。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。",
+    "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$14 is not below the average variable cost of \\$14, so the firm should keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement."
+  },
+  {
+    "id": "econ_rep_0024",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商目前售價為每件 \\$7，平均可變成本為 \\$9，平均固定成本為 \\$2。\n\n就短期而言，該廠商應否繼續生產？",
+    "questionEn": "A firm currently sells at \\$7 per unit, with average variable cost \\$9 and average fixed cost \\$2.\n\nIn the short run, should it keep producing?",
+    "options": [
+      "應繼續生產，因為售價高於平均固定成本",
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損"
+    ],
+    "optionsEn": [
+      "應繼續生產，因為售價高於平均固定成本",
+      "應停止生產，因為固定成本在短期內仍須繳付",
+      "無法判斷，因為題目沒有提供產量",
+      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損"
+    ],
+    "correctIndex": 3,
+    "explanation": "短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$7 低於 平均可變成本 \\$9，所以應停止生產 —— 每多賣一件連可變成本也收不回，虧損比停業時更大。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。",
+    "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$7 is below the average variable cost of \\$9, so the firm should shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement."
+  },
+  {
+    "id": "econ_rep_0025",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某工場每月的固定成本為 \\$600，每生產一件產品的可變成本為 \\$12。該月生產了 40 件。\n\n求該月的總成本。",
+    "questionEn": "A workshop has monthly fixed cost \\$600 and variable cost \\$12 per unit. It produced 40 units this month.\n\nFind the total cost for the month.",
+    "options": [
+      "\\$1080",
+      "\\$480",
+      "\\$612",
+      "\\$24480"
+    ],
+    "optionsEn": [
+      "\\$1080",
+      "\\$480",
+      "\\$612",
+      "\\$24480"
+    ],
+    "correctIndex": 0,
+    "explanation": "總成本 = 固定成本 + 可變成本總額 = 600 + 12 × 40 = \\$1080。可變成本要先乘產量才是總額，這一步不可省。答 \\$480 漏了固定成本 —— 固定成本雖然不隨產量改變，但仍然是成本。\\$612 只把單位可變成本加了一次，等於當作只生產了一件。最後一項把固定成本也乘上產量，等於當作每生產一件就要重新支付一次固定成本，與「固定」的定義相違。",
+    "explanationEn": "Total cost = fixed cost + total variable cost = 600 + 12 × 40 = \\$1080. The per-unit variable cost must be multiplied by output first. Answering \\$480 drops the fixed cost, which does not vary with output but is a cost nonetheless. \\$612 adds the variable cost only once, as if a single unit were made. The last option multiplies fixed cost by output too, implying it is paid afresh for every unit — which contradicts the meaning of \"fixed\"."
+  },
+  {
+    "id": "econ_rep_0026",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某工場每月的固定成本為 \\$1500，每生產一件產品的可變成本為 \\$8。該月生產了 100 件。\n\n求該月的總成本。",
+    "questionEn": "A workshop has monthly fixed cost \\$1500 and variable cost \\$8 per unit. It produced 100 units this month.\n\nFind the total cost for the month.",
+    "options": [
+      "\\$150800",
+      "\\$2300",
+      "\\$800",
+      "\\$1508"
+    ],
+    "optionsEn": [
+      "\\$150800",
+      "\\$2300",
+      "\\$800",
+      "\\$1508"
+    ],
+    "correctIndex": 1,
+    "explanation": "總成本 = 固定成本 + 可變成本總額 = 1500 + 8 × 100 = \\$2300。可變成本要先乘產量才是總額，這一步不可省。答 \\$800 漏了固定成本 —— 固定成本雖然不隨產量改變，但仍然是成本。\\$1508 只把單位可變成本加了一次，等於當作只生產了一件。最後一項把固定成本也乘上產量，等於當作每生產一件就要重新支付一次固定成本，與「固定」的定義相違。",
+    "explanationEn": "Total cost = fixed cost + total variable cost = 1500 + 8 × 100 = \\$2300. The per-unit variable cost must be multiplied by output first. Answering \\$800 drops the fixed cost, which does not vary with output but is a cost nonetheless. \\$1508 adds the variable cost only once, as if a single unit were made. The last option multiplies fixed cost by output too, implying it is paid afresh for every unit — which contradicts the meaning of \"fixed\"."
+  },
+  {
+    "id": "econ_rep_0027",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某工場每月的固定成本為 \\$250，每生產一件產品的可變成本為 \\$15。該月生產了 20 件。\n\n求該月的總成本。",
+    "questionEn": "A workshop has monthly fixed cost \\$250 and variable cost \\$15 per unit. It produced 20 units this month.\n\nFind the total cost for the month.",
+    "options": [
+      "\\$265",
+      "\\$5300",
+      "\\$550",
+      "\\$300"
+    ],
+    "optionsEn": [
+      "\\$265",
+      "\\$5300",
+      "\\$550",
+      "\\$300"
+    ],
+    "correctIndex": 2,
+    "explanation": "總成本 = 固定成本 + 可變成本總額 = 250 + 15 × 20 = \\$550。可變成本要先乘產量才是總額，這一步不可省。答 \\$300 漏了固定成本 —— 固定成本雖然不隨產量改變，但仍然是成本。\\$265 只把單位可變成本加了一次，等於當作只生產了一件。最後一項把固定成本也乘上產量，等於當作每生產一件就要重新支付一次固定成本，與「固定」的定義相違。",
+    "explanationEn": "Total cost = fixed cost + total variable cost = 250 + 15 × 20 = \\$550. The per-unit variable cost must be multiplied by output first. Answering \\$300 drops the fixed cost, which does not vary with output but is a cost nonetheless. \\$265 adds the variable cost only once, as if a single unit were made. The last option multiplies fixed cost by output too, implying it is paid afresh for every unit — which contradicts the meaning of \"fixed\"."
+  },
+  {
+    "id": "econ_rep_0028",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某工場每月的固定成本為 \\$900，每生產一件產品的可變成本為 \\$5。該月生產了 60 件。\n\n求該月的總成本。",
+    "questionEn": "A workshop has monthly fixed cost \\$900 and variable cost \\$5 per unit. It produced 60 units this month.\n\nFind the total cost for the month.",
+    "options": [
+      "\\$300",
+      "\\$905",
+      "\\$54300",
+      "\\$1200"
+    ],
+    "optionsEn": [
+      "\\$300",
+      "\\$905",
+      "\\$54300",
+      "\\$1200"
+    ],
+    "correctIndex": 3,
+    "explanation": "總成本 = 固定成本 + 可變成本總額 = 900 + 5 × 60 = \\$1200。可變成本要先乘產量才是總額，這一步不可省。答 \\$300 漏了固定成本 —— 固定成本雖然不隨產量改變，但仍然是成本。\\$905 只把單位可變成本加了一次，等於當作只生產了一件。最後一項把固定成本也乘上產量，等於當作每生產一件就要重新支付一次固定成本，與「固定」的定義相違。",
+    "explanationEn": "Total cost = fixed cost + total variable cost = 900 + 5 × 60 = \\$1200. The per-unit variable cost must be multiplied by output first. Answering \\$300 drops the fixed cost, which does not vary with output but is a cost nonetheless. \\$905 adds the variable cost only once, as if a single unit were made. The last option multiplies fixed cost by output too, implying it is paid afresh for every unit — which contradicts the meaning of \"fixed\"."
+  },
+  {
+    "id": "econ_rep_0029",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某工場每月的固定成本為 \\$400，每生產一件產品的可變成本為 \\$20。該月生產了 15 件。\n\n求該月的總成本。",
+    "questionEn": "A workshop has monthly fixed cost \\$400 and variable cost \\$20 per unit. It produced 15 units this month.\n\nFind the total cost for the month.",
+    "options": [
+      "\\$700",
+      "\\$300",
+      "\\$420",
+      "\\$6300"
+    ],
+    "optionsEn": [
+      "\\$700",
+      "\\$300",
+      "\\$420",
+      "\\$6300"
+    ],
+    "correctIndex": 0,
+    "explanation": "總成本 = 固定成本 + 可變成本總額 = 400 + 20 × 15 = \\$700。可變成本要先乘產量才是總額，這一步不可省。答 \\$300 漏了固定成本 —— 固定成本雖然不隨產量改變，但仍然是成本。\\$420 只把單位可變成本加了一次，等於當作只生產了一件。最後一項把固定成本也乘上產量，等於當作每生產一件就要重新支付一次固定成本，與「固定」的定義相違。",
+    "explanationEn": "Total cost = fixed cost + total variable cost = 400 + 20 × 15 = \\$700. The per-unit variable cost must be multiplied by output first. Answering \\$300 drops the fixed cost, which does not vary with output but is a cost nonetheless. \\$420 adds the variable cost only once, as if a single unit were made. The last option multiplies fixed cost by output too, implying it is paid afresh for every unit — which contradicts the meaning of \"fixed\"."
+  },
+  {
+    "id": "econ_rep_0030",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "basic",
+    "question": "某工場每月的固定成本為 \\$3000，每生產一件產品的可變成本為 \\$30。該月生產了 50 件。\n\n求該月的總成本。",
+    "questionEn": "A workshop has monthly fixed cost \\$3000 and variable cost \\$30 per unit. It produced 50 units this month.\n\nFind the total cost for the month.",
+    "options": [
+      "\\$151500",
+      "\\$4500",
+      "\\$1500",
+      "\\$3030"
+    ],
+    "optionsEn": [
+      "\\$151500",
+      "\\$4500",
+      "\\$1500",
+      "\\$3030"
+    ],
+    "correctIndex": 1,
+    "explanation": "總成本 = 固定成本 + 可變成本總額 = 3000 + 30 × 50 = \\$4500。可變成本要先乘產量才是總額，這一步不可省。答 \\$1500 漏了固定成本 —— 固定成本雖然不隨產量改變，但仍然是成本。\\$3030 只把單位可變成本加了一次，等於當作只生產了一件。最後一項把固定成本也乘上產量，等於當作每生產一件就要重新支付一次固定成本，與「固定」的定義相違。",
+    "explanationEn": "Total cost = fixed cost + total variable cost = 3000 + 30 × 50 = \\$4500. The per-unit variable cost must be multiplied by output first. Answering \\$1500 drops the fixed cost, which does not vary with output but is a cost nonetheless. \\$3030 adds the variable cost only once, as if a single unit were made. The last option multiplies fixed cost by output too, implying it is paid afresh for every unit — which contradicts the meaning of \"fixed\"."
+  },
+  {
+    "id": "econ_rep_0031",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商生產 25 單位時，總成本為 \\$800，其中固定成本為 \\$200。求其平均可變成本。",
+    "questionEn": "At an output of 25 units a firm's total cost is \\$800, of which \\$200 is fixed cost. Find its average variable cost.",
+    "options": [
+      "\\$8",
+      "\\$600",
+      "\\$24",
+      "\\$32"
+    ],
+    "optionsEn": [
+      "\\$8",
+      "\\$600",
+      "\\$24",
+      "\\$32"
+    ],
+    "correctIndex": 2,
+    "explanation": "先把可變成本總額分離出來：800 − 200 = \\$600，再除以產量 25，得平均可變成本 \\$24。答 \\$32 求的是平均總成本，未有先扣除固定成本 —— 這是本題最主要的失分位，兩者只在固定成本為零時才相等。\\$8 求的是平均固定成本。最後一項停在可變成本總額，忘記除以產量，由「平均」二字即可察覺尚欠一步。",
+    "explanationEn": "First isolate total variable cost: 800 − 200 = \\$600, then divide by output 25 to get \\$24. Answering \\$32 gives average *total* cost, skipping the deduction of fixed cost — the main trap, since the two coincide only when fixed cost is zero. \\$8 is average fixed cost, and the last option stops at total variable cost; the word \"average\" signals that a division is still outstanding."
+  },
+  {
+    "id": "econ_rep_0032",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商生產 40 單位時，總成本為 \\$1000，其中固定成本為 \\$400。求其平均可變成本。",
+    "questionEn": "At an output of 40 units a firm's total cost is \\$1000, of which \\$400 is fixed cost. Find its average variable cost.",
+    "options": [
+      "\\$25",
+      "\\$10",
+      "\\$600",
+      "\\$15"
+    ],
+    "optionsEn": [
+      "\\$25",
+      "\\$10",
+      "\\$600",
+      "\\$15"
+    ],
+    "correctIndex": 3,
+    "explanation": "先把可變成本總額分離出來：1000 − 400 = \\$600，再除以產量 40，得平均可變成本 \\$15。答 \\$25 求的是平均總成本，未有先扣除固定成本 —— 這是本題最主要的失分位，兩者只在固定成本為零時才相等。\\$10 求的是平均固定成本。最後一項停在可變成本總額，忘記除以產量，由「平均」二字即可察覺尚欠一步。",
+    "explanationEn": "First isolate total variable cost: 1000 − 400 = \\$600, then divide by output 40 to get \\$15. Answering \\$25 gives average *total* cost, skipping the deduction of fixed cost — the main trap, since the two coincide only when fixed cost is zero. \\$10 is average fixed cost, and the last option stops at total variable cost; the word \"average\" signals that a division is still outstanding."
+  },
+  {
+    "id": "econ_rep_0033",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商生產 30 單位時，總成本為 \\$540，其中固定成本為 \\$60。求其平均可變成本。",
+    "questionEn": "At an output of 30 units a firm's total cost is \\$540, of which \\$60 is fixed cost. Find its average variable cost.",
+    "options": [
+      "\\$16",
+      "\\$18",
+      "\\$2",
+      "\\$480"
+    ],
+    "optionsEn": [
+      "\\$16",
+      "\\$18",
+      "\\$2",
+      "\\$480"
+    ],
+    "correctIndex": 0,
+    "explanation": "先把可變成本總額分離出來：540 − 60 = \\$480，再除以產量 30，得平均可變成本 \\$16。答 \\$18 求的是平均總成本，未有先扣除固定成本 —— 這是本題最主要的失分位，兩者只在固定成本為零時才相等。\\$2 求的是平均固定成本。最後一項停在可變成本總額，忘記除以產量，由「平均」二字即可察覺尚欠一步。",
+    "explanationEn": "First isolate total variable cost: 540 − 60 = \\$480, then divide by output 30 to get \\$16. Answering \\$18 gives average *total* cost, skipping the deduction of fixed cost — the main trap, since the two coincide only when fixed cost is zero. \\$2 is average fixed cost, and the last option stops at total variable cost; the word \"average\" signals that a division is still outstanding."
+  },
+  {
+    "id": "econ_rep_0034",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商生產 50 單位時，總成本為 \\$2400，其中固定成本為 \\$900。求其平均可變成本。",
+    "questionEn": "At an output of 50 units a firm's total cost is \\$2400, of which \\$900 is fixed cost. Find its average variable cost.",
+    "options": [
+      "\\$1500",
+      "\\$30",
+      "\\$48",
+      "\\$18"
+    ],
+    "optionsEn": [
+      "\\$1500",
+      "\\$30",
+      "\\$48",
+      "\\$18"
+    ],
+    "correctIndex": 1,
+    "explanation": "先把可變成本總額分離出來：2400 − 900 = \\$1500，再除以產量 50，得平均可變成本 \\$30。答 \\$48 求的是平均總成本，未有先扣除固定成本 —— 這是本題最主要的失分位，兩者只在固定成本為零時才相等。\\$18 求的是平均固定成本。最後一項停在可變成本總額，忘記除以產量，由「平均」二字即可察覺尚欠一步。",
+    "explanationEn": "First isolate total variable cost: 2400 − 900 = \\$1500, then divide by output 50 to get \\$30. Answering \\$48 gives average *total* cost, skipping the deduction of fixed cost — the main trap, since the two coincide only when fixed cost is zero. \\$18 is average fixed cost, and the last option stops at total variable cost; the word \"average\" signals that a division is still outstanding."
+  },
+  {
+    "id": "econ_rep_0035",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "廠商與生產",
+    "topicId": "firm_production",
+    "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
+    "difficulty": "intermediate",
+    "question": "某廠商生產 12 單位時，總成本為 \\$350，其中固定成本為 \\$110。求其平均可變成本。",
+    "questionEn": "At an output of 12 units a firm's total cost is \\$350, of which \\$110 is fixed cost. Find its average variable cost.",
+    "options": [
+      "\\$9.17",
+      "\\$240",
+      "\\$20",
+      "\\$29.17"
+    ],
+    "optionsEn": [
+      "\\$9.17",
+      "\\$240",
+      "\\$20",
+      "\\$29.17"
+    ],
+    "correctIndex": 2,
+    "explanation": "先把可變成本總額分離出來：350 − 110 = \\$240，再除以產量 12，得平均可變成本 \\$20。答 \\$29.17 求的是平均總成本，未有先扣除固定成本 —— 這是本題最主要的失分位，兩者只在固定成本為零時才相等。\\$9.17 求的是平均固定成本。最後一項停在可變成本總額，忘記除以產量，由「平均」二字即可察覺尚欠一步。",
+    "explanationEn": "First isolate total variable cost: 350 − 110 = \\$240, then divide by output 12 to get \\$20. Answering \\$29.17 gives average *total* cost, skipping the deduction of fixed cost — the main trap, since the two coincide only when fixed cost is zero. \\$9.17 is average fixed cost, and the last option stops at total variable cost; the word \"average\" signals that a division is still outstanding."
+  },
+  {
+    "id": "econ_rep_0036",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "在價格為 \\$6 時，某商品的需求量為 90 件，供給量為 50 件。\n\n此時市場的狀況及價格的變動趨勢是甚麼？",
+    "questionEn": "At a price of \\$6, quantity demanded of a good is 90 units and quantity supplied is 50 units.\n\nWhat is the market condition and the likely movement of price?",
+    "options": [
+      "出現過剩 40 件，價格將趨向下跌",
+      "出現過剩 140 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡",
+      "出現短缺 40 件，價格將趨向上升"
+    ],
+    "optionsEn": [
+      "出現過剩 40 件，價格將趨向下跌",
+      "出現過剩 140 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡",
+      "出現短缺 40 件，價格將趨向上升"
+    ],
+    "correctIndex": 3,
+    "explanation": "比較同一價格下的兩個數量：供給量 50 件、需求量 90 件，求過於供，短缺 40 件；買方競相出價，故價格趨升。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 50, demand 90. Demand exceeds supply by 40 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+  },
+  {
+    "id": "econ_rep_0037",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "在價格為 \\$12 時，某商品的需求量為 40 件，供給量為 70 件。\n\n此時市場的狀況及價格的變動趨勢是甚麼？",
+    "questionEn": "At a price of \\$12, quantity demanded of a good is 40 units and quantity supplied is 70 units.\n\nWhat is the market condition and the likely movement of price?",
+    "options": [
+      "出現過剩 30 件，價格將趨向下跌",
+      "出現短缺 30 件，價格將趨向上升",
+      "出現過剩 110 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡"
+    ],
+    "optionsEn": [
+      "出現過剩 30 件，價格將趨向下跌",
+      "出現短缺 30 件，價格將趨向上升",
+      "出現過剩 110 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡"
+    ],
+    "correctIndex": 0,
+    "explanation": "比較同一價格下的兩個數量：供給量 70 件、需求量 40 件，供過於求，過剩 30 件；賣方為清貨而減價，故價格趨跌。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 70, demand 40. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+  },
+  {
+    "id": "econ_rep_0038",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "在價格為 \\$3 時，某商品的需求量為 200 件，供給量為 120 件。\n\n此時市場的狀況及價格的變動趨勢是甚麼？",
+    "questionEn": "At a price of \\$3, quantity demanded of a good is 200 units and quantity supplied is 120 units.\n\nWhat is the market condition and the likely movement of price?",
+    "options": [
+      "需求曲線將向左移動，直至市場回復均衡",
+      "出現短缺 80 件，價格將趨向上升",
+      "出現過剩 80 件，價格將趨向下跌",
+      "出現過剩 320 件，價格將趨向下跌"
+    ],
+    "optionsEn": [
+      "需求曲線將向左移動，直至市場回復均衡",
+      "出現短缺 80 件，價格將趨向上升",
+      "出現過剩 80 件，價格將趨向下跌",
+      "出現過剩 320 件，價格將趨向下跌"
+    ],
+    "correctIndex": 1,
+    "explanation": "比較同一價格下的兩個數量：供給量 120 件、需求量 200 件，求過於供，短缺 80 件；買方競相出價，故價格趨升。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 120, demand 200. Demand exceeds supply by 80 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+  },
+  {
+    "id": "econ_rep_0039",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "在價格為 \\$20 時，某商品的需求量為 55 件，供給量為 85 件。\n\n此時市場的狀況及價格的變動趨勢是甚麼？",
+    "questionEn": "At a price of \\$20, quantity demanded of a good is 55 units and quantity supplied is 85 units.\n\nWhat is the market condition and the likely movement of price?",
+    "options": [
+      "出現過剩 140 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡",
+      "出現過剩 30 件，價格將趨向下跌",
+      "出現短缺 30 件，價格將趨向上升"
+    ],
+    "optionsEn": [
+      "出現過剩 140 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡",
+      "出現過剩 30 件，價格將趨向下跌",
+      "出現短缺 30 件，價格將趨向上升"
+    ],
+    "correctIndex": 2,
+    "explanation": "比較同一價格下的兩個數量：供給量 85 件、需求量 55 件，供過於求，過剩 30 件；賣方為清貨而減價，故價格趨跌。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 85, demand 55. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+  },
+  {
+    "id": "econ_rep_0040",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "在價格為 \\$8 時，某商品的需求量為 64 件，供給量為 64 件。\n\n此時市場的狀況及價格的變動趨勢是甚麼？",
+    "questionEn": "At a price of \\$8, quantity demanded of a good is 64 units and quantity supplied is 64 units.\n\nWhat is the market condition and the likely movement of price?",
+    "options": [
+      "出現短缺 64 件，價格將趨向上升",
+      "出現過剩 128 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡",
+      "市場處於均衡，價格沒有變動的壓力"
+    ],
+    "optionsEn": [
+      "出現短缺 64 件，價格將趨向上升",
+      "出現過剩 128 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡",
+      "市場處於均衡，價格沒有變動的壓力"
+    ],
+    "correctIndex": 3,
+    "explanation": "比較同一價格下的兩個數量：供給量 64 件、需求量 64 件，兩者相等，市場已在均衡，價格沒有變動的壓力。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 64, demand 64. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+  },
+  {
+    "id": "econ_rep_0041",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "在價格為 \\$15 時，某商品的需求量為 30 件，供給量為 30 件。\n\n此時市場的狀況及價格的變動趨勢是甚麼？",
+    "questionEn": "At a price of \\$15, quantity demanded of a good is 30 units and quantity supplied is 30 units.\n\nWhat is the market condition and the likely movement of price?",
+    "options": [
+      "市場處於均衡，價格沒有變動的壓力",
+      "出現短缺 30 件，價格將趨向上升",
+      "出現過剩 60 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡"
+    ],
+    "optionsEn": [
+      "市場處於均衡，價格沒有變動的壓力",
+      "出現短缺 30 件，價格將趨向上升",
+      "出現過剩 60 件，價格將趨向下跌",
+      "需求曲線將向左移動，直至市場回復均衡"
+    ],
+    "correctIndex": 0,
+    "explanation": "比較同一價格下的兩個數量：供給量 30 件、需求量 30 件，兩者相等，市場已在均衡，價格沒有變動的壓力。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 30, demand 30. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+  },
+  {
+    "id": "econ_rep_0042",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "其他情況不變下，生產該商品所需的原料價格上升。\n\n這對該商品的市場有甚麼影響？",
+    "questionEn": "Other things being equal, the price of a raw material used to make the good rises.\n\nWhat effect does this have on the market for the good?",
+    "options": [
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加"
+    ],
+    "optionsEn": [
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加"
+    ],
+    "correctIndex": 1,
+    "explanation": "分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。本題所述屬價格以外影響賣方成本或生產條件的因素，故影響供給：整條供給曲線向左移，均衡價格上升、成交量減少。把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。",
+    "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant."
+  },
+  {
+    "id": "econ_rep_0043",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "其他情況不變下，生產技術改良，令每單位生產成本下降。\n\n這對該商品的市場有甚麼影響？",
+    "questionEn": "Other things being equal, better technology lowers the unit cost of production.\n\nWhat effect does this have on the market for the good?",
+    "options": [
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加"
+    ],
+    "optionsEn": [
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加"
+    ],
+    "correctIndex": 2,
+    "explanation": "分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。本題所述屬價格以外影響賣方成本或生產條件的因素，故影響供給：整條供給曲線向右移，均衡價格下跌、成交量增加。把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。",
+    "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant."
+  },
+  {
+    "id": "econ_rep_0044",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "其他情況不變下，該商品本身的市場價格下跌。\n\n這對該商品的市場有甚麼影響？",
+    "questionEn": "Other things being equal, the market price of the good itself falls.\n\nWhat effect does this have on the market for the good?",
+    "options": [
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "需求量沿原有的需求曲線增加；需求曲線本身並不移位，均衡點只是沿曲線滑動"
+    ],
+    "optionsEn": [
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "需求量沿原有的需求曲線增加；需求曲線本身並不移位，均衡點只是沿曲線滑動"
+    ],
+    "correctIndex": 3,
+    "explanation": "分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。本題所述正是商品本身的價格變動，故只有需求量沿曲線改變 —— 把它說成「需求增加」，是「需求量變動」與「需求變動」混淆的典型例子，亦是本課題最集中的失分位。把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。",
+    "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here it is the good’s own price that changes, so only quantity demanded moves along the curve. Calling this \"an increase in demand\" is the classic confusion between a change in quantity demanded and a change in demand, and the heaviest loss of marks on this topic. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant."
+  },
+  {
+    "id": "econ_rep_0045",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "其他情況不變下，政府向該商品的生產者徵收從量稅。\n\n這對該商品的市場有甚麼影響？",
+    "questionEn": "Other things being equal, the government imposes a per-unit tax on producers of the good.\n\nWhat effect does this have on the market for the good?",
+    "options": [
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變"
+    ],
+    "optionsEn": [
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
+      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變"
+    ],
+    "correctIndex": 0,
+    "explanation": "分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。本題所述屬價格以外影響賣方成本或生產條件的因素，故影響供給：整條供給曲線向左移，均衡價格上升、成交量減少。把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。",
+    "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant."
+  },
+  {
+    "id": "econ_rep_0046",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "其他情況不變下，政府按產量向該商品的生產者發放補貼。\n\n這對該商品的市場有甚麼影響？",
+    "questionEn": "Other things being equal, the government pays producers a per-unit subsidy.\n\nWhat effect does this have on the market for the good?",
+    "options": [
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少"
+    ],
+    "optionsEn": [
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
+      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少"
+    ],
+    "correctIndex": 1,
+    "explanation": "分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。本題所述屬價格以外影響賣方成本或生產條件的因素，故影響供給：整條供給曲線向右移，均衡價格下跌、成交量增加。把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。",
+    "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant."
+  },
+  {
+    "id": "econ_rep_0047",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "basic",
+    "question": "其他情況不變下，該區人口增長，購買該商品的消費者人數上升。\n\n這對該商品的市場有甚麼影響？",
+    "questionEn": "Other things being equal, population growth raises the number of consumers buying the good.\n\nWhat effect does this have on the market for the good?",
+    "options": [
+      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加"
+    ],
+    "optionsEn": [
+      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
+      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
+      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
+      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加"
+    ],
+    "correctIndex": 2,
+    "explanation": "分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。本題所述屬價格以外影響買方的因素（買家人數），故影響需求：整條需求曲線向右移，均衡價格上升、成交量增加。把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。",
+    "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting buyers (the number of consumers) changes, so demand shifts and both equilibrium price and quantity move with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant."
+  },
+  {
+    "id": "econ_rep_0048",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "intermediate",
+    "question": "某商品市場同時出現以下兩項變化：需求增加，同時供給減少。\n\n均衡價格與均衡交易量會怎樣變動？",
+    "questionEn": "In the market for a good, demand rises while supply falls.\n\nHow do the equilibrium price and quantity change?",
+    "options": [
+      "均衡價格上升，均衡交易量增加",
+      "均衡價格上升，均衡交易量減少",
+      "均衡價格與均衡交易量的變動方向均不能確定",
+      "均衡價格必定上升，但均衡交易量的變動方向不能確定"
+    ],
+    "optionsEn": [
+      "均衡價格上升，均衡交易量增加",
+      "均衡價格上升，均衡交易量減少",
+      "均衡價格與均衡交易量的變動方向均不能確定",
+      "均衡價格必定上升，但均衡交易量的變動方向不能確定"
+    ],
+    "correctIndex": 3,
+    "explanation": "兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。本題之中，需求與供給對價格的影響同向（兩者都把價格推高），故價格上升是確定的；但兩者對交易量的影響相反 —— 一邊把交易量推上，一邊把它推落，最終方向取決於哪一邊的移幅較大，而題幹並無交代，故交易量【不能確定】。此處硬答一個方向，是本課題最典型的失分位：能確定的只有一項，答兩項就等於憑空補上了題目沒有給的資料。\n            最穩妥的做法是動手畫圖：把兩次移動分開畫，逐次觀察交點的位置，比死記結論可靠。",
+    "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push price the same way, so the price direction is certain; but they push quantity in opposite directions, and which wins depends on the relative sizes of the shifts, which the question does not state. Quantity is therefore indeterminate. Forcing a direction anyway is the classic error on this topic — only one variable can be pinned down, and answering both invents information the question never supplied. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions."
+  },
+  {
+    "id": "econ_rep_0049",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "intermediate",
+    "question": "某商品市場同時出現以下兩項變化：需求減少，同時供給增加。\n\n均衡價格與均衡交易量會怎樣變動？",
+    "questionEn": "In the market for a good, demand falls while supply rises.\n\nHow do the equilibrium price and quantity change?",
+    "options": [
+      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格下跌，均衡交易量減少",
+      "均衡價格與均衡交易量的變動方向均不能確定"
+    ],
+    "optionsEn": [
+      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格下跌，均衡交易量減少",
+      "均衡價格與均衡交易量的變動方向均不能確定"
+    ],
+    "correctIndex": 0,
+    "explanation": "兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。本題之中，需求與供給對價格的影響同向（兩者都把價格推低），故價格下跌是確定的；但兩者對交易量的影響相反 —— 一邊把交易量推上，一邊把它推落，最終方向取決於哪一邊的移幅較大，而題幹並無交代，故交易量【不能確定】。此處硬答一個方向，是本課題最典型的失分位：能確定的只有一項，答兩項就等於憑空補上了題目沒有給的資料。\n            最穩妥的做法是動手畫圖：把兩次移動分開畫，逐次觀察交點的位置，比死記結論可靠。",
+    "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push price the same way, so the price direction is certain; but they push quantity in opposite directions, and which wins depends on the relative sizes of the shifts, which the question does not state. Quantity is therefore indeterminate. Forcing a direction anyway is the classic error on this topic — only one variable can be pinned down, and answering both invents information the question never supplied. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions."
+  },
+  {
+    "id": "econ_rep_0050",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "intermediate",
+    "question": "某商品市場同時出現以下兩項變化：需求與供給同時增加，而需求的增幅較大。\n\n均衡價格與均衡交易量會怎樣變動？",
+    "questionEn": "In the market for a good, both rise, with demand rising by more.\n\nHow do the equilibrium price and quantity change?",
+    "options": [
+      "均衡價格必定上升，但均衡交易量的變動方向不能確定",
+      "均衡價格上升，均衡交易量增加",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格上升，均衡交易量減少"
+    ],
+    "optionsEn": [
+      "均衡價格必定上升，但均衡交易量的變動方向不能確定",
+      "均衡價格上升，均衡交易量增加",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格上升，均衡交易量減少"
+    ],
+    "correctIndex": 1,
+    "explanation": "兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。本題之中，兩者對交易量的影響同向，故交易量增加是確定的；價格方面兩者相反，但題幹已交代哪一邊的移幅較大，由較大的一邊主導，故價格上升。若題幹沒有交代移幅大小，價格的方向便無法確定。\n            最穩妥的做法是動手畫圖：把兩次移動分開畫，逐次觀察交點的位置，比死記結論可靠。",
+    "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions."
+  },
+  {
+    "id": "econ_rep_0051",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "intermediate",
+    "question": "某商品市場同時出現以下兩項變化：需求與供給同時增加，而供給的增幅較大。\n\n均衡價格與均衡交易量會怎樣變動？",
+    "questionEn": "In the market for a good, both rise, with supply rising by more.\n\nHow do the equilibrium price and quantity change?",
+    "options": [
+      "均衡價格下跌，均衡交易量減少",
+      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格上升，均衡交易量增加"
+    ],
+    "optionsEn": [
+      "均衡價格下跌，均衡交易量減少",
+      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格上升，均衡交易量增加"
+    ],
+    "correctIndex": 2,
+    "explanation": "兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。本題之中，兩者對交易量的影響同向，故交易量增加是確定的；價格方面兩者相反，但題幹已交代哪一邊的移幅較大，由較大的一邊主導，故價格下跌。若題幹沒有交代移幅大小，價格的方向便無法確定。\n            最穩妥的做法是動手畫圖：把兩次移動分開畫，逐次觀察交點的位置，比死記結論可靠。",
+    "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions."
+  },
+  {
+    "id": "econ_rep_0052",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "intermediate",
+    "question": "某商品市場同時出現以下兩項變化：需求與供給同時減少，而需求的減幅較大。\n\n均衡價格與均衡交易量會怎樣變動？",
+    "questionEn": "In the market for a good, both fall, with demand falling by more.\n\nHow do the equilibrium price and quantity change?",
+    "options": [
+      "均衡價格上升，均衡交易量減少",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
+      "均衡價格下跌，均衡交易量減少"
+    ],
+    "optionsEn": [
+      "均衡價格上升，均衡交易量減少",
+      "均衡價格下跌，均衡交易量增加",
+      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
+      "均衡價格下跌，均衡交易量減少"
+    ],
+    "correctIndex": 3,
+    "explanation": "兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。本題之中，兩者對交易量的影響同向，故交易量減少是確定的；價格方面兩者相反，但題幹已交代哪一邊的移幅較大，由較大的一邊主導，故價格下跌。若題幹沒有交代移幅大小，價格的方向便無法確定。\n            最穩妥的做法是動手畫圖：把兩次移動分開畫，逐次觀察交點的位置，比死記結論可靠。",
+    "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions."
+  },
+  {
+    "id": "econ_rep_0053",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "需求與供給",
+    "topicId": "demand_supply",
+    "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
+    "difficulty": "intermediate",
+    "question": "某商品市場同時出現以下兩項變化：需求與供給同時減少，而供給的減幅較大。\n\n均衡價格與均衡交易量會怎樣變動？",
+    "questionEn": "In the market for a good, both fall, with supply falling by more.\n\nHow do the equilibrium price and quantity change?",
+    "options": [
+      "均衡價格上升，均衡交易量減少",
+      "均衡價格下跌，均衡交易量減少",
+      "均衡價格上升，均衡交易量增加",
+      "均衡價格必定上升，但均衡交易量的變動方向不能確定"
+    ],
+    "optionsEn": [
+      "均衡價格上升，均衡交易量減少",
+      "均衡價格下跌，均衡交易量減少",
+      "均衡價格上升，均衡交易量增加",
+      "均衡價格必定上升，但均衡交易量的變動方向不能確定"
+    ],
+    "correctIndex": 0,
+    "explanation": "兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。本題之中，兩者對交易量的影響同向，故交易量減少是確定的；價格方面兩者相反，但題幹已交代哪一邊的移幅較大，由較大的一邊主導，故價格上升。若題幹沒有交代移幅大小，價格的方向便無法確定。\n            最穩妥的做法是動手畫圖：把兩次移動分開畫，逐次觀察交點的位置，比死記結論可靠。",
+    "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions."
+  },
+  {
+    "id": "econ_rep_0054",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "basic",
+    "question": "某商品的價格上升 10%，其需求量隨之下降 25%。\n\n該商品的需求價格彈性屬於哪一類？",
+    "questionEn": "The price of a good rises by 10% and the quantity demanded falls by 25%.\n\nHow is the price elasticity of demand best described?",
+    "options": [
+      "完全有彈性（彈性值趨於無限大）",
+      "富有彈性（彈性值 2.5，大於 1）",
+      "缺乏彈性（彈性值 0.4，小於 1）",
+      "完全無彈性（彈性值 0）"
+    ],
+    "optionsEn": [
+      "完全有彈性（彈性值趨於無限大）",
+      "富有彈性（彈性值 2.5，大於 1）",
+      "缺乏彈性（彈性值 0.4，小於 1）",
+      "完全無彈性（彈性值 0）"
+    ],
+    "correctIndex": 1,
+    "explanation": "需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ 25% ÷ 10% ＝ 2.5，大於 1，故富有彈性。把分子分母對調得 0.4，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。",
+    "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 25% ÷ 10% = 2.5, which is greater than 1, so demand is elastic. Swapping numerator and denominator gives 0.4 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given."
+  },
+  {
+    "id": "econ_rep_0055",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "basic",
+    "question": "某商品的價格上升 20%，其需求量隨之下降 10%。\n\n該商品的需求價格彈性屬於哪一類？",
+    "questionEn": "The price of a good rises by 20% and the quantity demanded falls by 10%.\n\nHow is the price elasticity of demand best described?",
+    "options": [
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）",
+      "缺乏彈性（彈性值 0.5，小於 1）",
+      "富有彈性（彈性值 2，大於 1）"
+    ],
+    "optionsEn": [
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）",
+      "缺乏彈性（彈性值 0.5，小於 1）",
+      "富有彈性（彈性值 2，大於 1）"
+    ],
+    "correctIndex": 2,
+    "explanation": "需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ 10% ÷ 20% ＝ 0.5，小於 1，故缺乏彈性。把分子分母對調得 2，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。",
+    "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 10% ÷ 20% = 0.5, which is less than 1, so demand is inelastic. Swapping numerator and denominator gives 2 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given."
+  },
+  {
+    "id": "econ_rep_0056",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "basic",
+    "question": "某商品的價格上升 5%，其需求量隨之下降 15%。\n\n該商品的需求價格彈性屬於哪一類？",
+    "questionEn": "The price of a good rises by 5% and the quantity demanded falls by 15%.\n\nHow is the price elasticity of demand best described?",
+    "options": [
+      "缺乏彈性（彈性值 0.3333，小於 1）",
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）",
+      "富有彈性（彈性值 3，大於 1）"
+    ],
+    "optionsEn": [
+      "缺乏彈性（彈性值 0.3333，小於 1）",
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）",
+      "富有彈性（彈性值 3，大於 1）"
+    ],
+    "correctIndex": 3,
+    "explanation": "需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ 15% ÷ 5% ＝ 3，大於 1，故富有彈性。把分子分母對調得 0.3333，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。",
+    "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 15% ÷ 5% = 3, which is greater than 1, so demand is elastic. Swapping numerator and denominator gives 0.3333 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given."
+  },
+  {
+    "id": "econ_rep_0057",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "basic",
+    "question": "某商品的價格上升 12%，其需求量隨之下降 3%。\n\n該商品的需求價格彈性屬於哪一類？",
+    "questionEn": "The price of a good rises by 12% and the quantity demanded falls by 3%.\n\nHow is the price elasticity of demand best described?",
+    "options": [
+      "缺乏彈性（彈性值 0.25，小於 1）",
+      "富有彈性（彈性值 4，大於 1）",
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）"
+    ],
+    "optionsEn": [
+      "缺乏彈性（彈性值 0.25，小於 1）",
+      "富有彈性（彈性值 4，大於 1）",
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）"
+    ],
+    "correctIndex": 0,
+    "explanation": "需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ 3% ÷ 12% ＝ 0.25，小於 1，故缺乏彈性。把分子分母對調得 4，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。",
+    "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 3% ÷ 12% = 0.25, which is less than 1, so demand is inelastic. Swapping numerator and denominator gives 4 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given."
+  },
+  {
+    "id": "econ_rep_0058",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "basic",
+    "question": "某商品的價格上升 8%，其需求量隨之下降 2%。\n\n該商品的需求價格彈性屬於哪一類？",
+    "questionEn": "The price of a good rises by 8% and the quantity demanded falls by 2%.\n\nHow is the price elasticity of demand best described?",
+    "options": [
+      "完全有彈性（彈性值趨於無限大）",
+      "缺乏彈性（彈性值 0.25，小於 1）",
+      "富有彈性（彈性值 4，大於 1）",
+      "完全無彈性（彈性值 0）"
+    ],
+    "optionsEn": [
+      "完全有彈性（彈性值趨於無限大）",
+      "缺乏彈性（彈性值 0.25，小於 1）",
+      "富有彈性（彈性值 4，大於 1）",
+      "完全無彈性（彈性值 0）"
+    ],
+    "correctIndex": 1,
+    "explanation": "需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ 2% ÷ 8% ＝ 0.25，小於 1，故缺乏彈性。把分子分母對調得 4，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。",
+    "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 2% ÷ 8% = 0.25, which is less than 1, so demand is inelastic. Swapping numerator and denominator gives 4 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given."
+  },
+  {
+    "id": "econ_rep_0059",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "basic",
+    "question": "某商品的價格上升 4%，其需求量隨之下降 12%。\n\n該商品的需求價格彈性屬於哪一類？",
+    "questionEn": "The price of a good rises by 4% and the quantity demanded falls by 12%.\n\nHow is the price elasticity of demand best described?",
+    "options": [
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）",
+      "富有彈性（彈性值 3，大於 1）",
+      "缺乏彈性（彈性值 0.3333，小於 1）"
+    ],
+    "optionsEn": [
+      "完全無彈性（彈性值 0）",
+      "完全有彈性（彈性值趨於無限大）",
+      "富有彈性（彈性值 3，大於 1）",
+      "缺乏彈性（彈性值 0.3333，小於 1）"
+    ],
+    "correctIndex": 2,
+    "explanation": "需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ 12% ÷ 4% ＝ 3，大於 1，故富有彈性。把分子分母對調得 0.3333，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。",
+    "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 12% ÷ 4% = 3, which is greater than 1, so demand is elastic. Swapping numerator and denominator gives 0.3333 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given."
+  },
+  {
+    "id": "econ_rep_0060",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "已知某商品的需求價格彈性（絕對值）為 0.4。若該商品的售價上升，\n\n在其他情況不變下，賣方的總收入會怎樣變動？",
+    "questionEn": "The price elasticity of demand for a good is 0.4 in absolute value. If its price is raised,\n\nother things being equal, how does the seller's total revenue change?",
+    "options": [
+      "總收入減少",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入增加"
+    ],
+    "optionsEn": [
+      "總收入減少",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入增加"
+    ],
+    "correctIndex": 3,
+    "explanation": "總收入 ＝ 價格 × 銷量，價格升時銷量必定跌，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 0.4 小於 1，代表銷量的變動幅度小於價格，價格的一方主導，所以總收入增加。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。",
+    "explanationEn": "Total revenue = price × quantity, and a rise in price always brings a fall in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 0.4 is below 1, so quantity moves proportionally less and price dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction."
+  },
+  {
+    "id": "econ_rep_0061",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "已知某商品的需求價格彈性（絕對值）為 2.5。若該商品的售價上升，\n\n在其他情況不變下，賣方的總收入會怎樣變動？",
+    "questionEn": "The price elasticity of demand for a good is 2.5 in absolute value. If its price is raised,\n\nother things being equal, how does the seller's total revenue change?",
+    "options": [
+      "總收入減少",
+      "總收入增加",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量"
+    ],
+    "optionsEn": [
+      "總收入減少",
+      "總收入增加",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量"
+    ],
+    "correctIndex": 0,
+    "explanation": "總收入 ＝ 價格 × 銷量，價格升時銷量必定跌，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 2.5 大於 1，代表銷量的變動幅度大於價格，銷量的一方主導，所以總收入減少。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。",
+    "explanationEn": "Total revenue = price × quantity, and a rise in price always brings a fall in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 2.5 is above 1, so quantity moves proportionally more and dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction."
+  },
+  {
+    "id": "econ_rep_0062",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "已知某商品的需求價格彈性（絕對值）為 1.6。若該商品的售價下調，\n\n在其他情況不變下，賣方的總收入會怎樣變動？",
+    "questionEn": "The price elasticity of demand for a good is 1.6 in absolute value. If its price is lowered,\n\nother things being equal, how does the seller's total revenue change?",
+    "options": [
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入增加",
+      "總收入減少",
+      "總收入維持不變"
+    ],
+    "optionsEn": [
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入增加",
+      "總收入減少",
+      "總收入維持不變"
+    ],
+    "correctIndex": 1,
+    "explanation": "總收入 ＝ 價格 × 銷量，價格跌時銷量必定升，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 1.6 大於 1，代表銷量的變動幅度大於價格，銷量的一方主導，所以總收入增加。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。",
+    "explanationEn": "Total revenue = price × quantity, and a fall in price always brings a rise in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 1.6 is above 1, so quantity moves proportionally more and dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction."
+  },
+  {
+    "id": "econ_rep_0063",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "已知某商品的需求價格彈性（絕對值）為 0.25。若該商品的售價下調，\n\n在其他情況不變下，賣方的總收入會怎樣變動？",
+    "questionEn": "The price elasticity of demand for a good is 0.25 in absolute value. If its price is lowered,\n\nother things being equal, how does the seller's total revenue change?",
+    "options": [
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入減少",
+      "總收入增加"
+    ],
+    "optionsEn": [
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入減少",
+      "總收入增加"
+    ],
+    "correctIndex": 2,
+    "explanation": "總收入 ＝ 價格 × 銷量，價格跌時銷量必定升，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 0.25 小於 1，代表銷量的變動幅度小於價格，價格的一方主導，所以總收入減少。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。",
+    "explanationEn": "Total revenue = price × quantity, and a fall in price always brings a rise in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 0.25 is below 1, so quantity moves proportionally less and price dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction."
+  },
+  {
+    "id": "econ_rep_0064",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "已知某商品的需求價格彈性（絕對值）為 3。若該商品的售價上升，\n\n在其他情況不變下，賣方的總收入會怎樣變動？",
+    "questionEn": "The price elasticity of demand for a good is 3 in absolute value. If its price is raised,\n\nother things being equal, how does the seller's total revenue change?",
+    "options": [
+      "總收入增加",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入減少"
+    ],
+    "optionsEn": [
+      "總收入增加",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量",
+      "總收入減少"
+    ],
+    "correctIndex": 3,
+    "explanation": "總收入 ＝ 價格 × 銷量，價格升時銷量必定跌，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 3 大於 1，代表銷量的變動幅度大於價格，銷量的一方主導，所以總收入減少。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。",
+    "explanationEn": "Total revenue = price × quantity, and a rise in price always brings a fall in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 3 is above 1, so quantity moves proportionally more and dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction."
+  },
+  {
+    "id": "econ_rep_0065",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "已知某商品的需求價格彈性（絕對值）為 0.5。若該商品的售價下調，\n\n在其他情況不變下，賣方的總收入會怎樣變動？",
+    "questionEn": "The price elasticity of demand for a good is 0.5 in absolute value. If its price is lowered,\n\nother things being equal, how does the seller's total revenue change?",
+    "options": [
+      "總收入減少",
+      "總收入增加",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量"
+    ],
+    "optionsEn": [
+      "總收入減少",
+      "總收入增加",
+      "總收入維持不變",
+      "無法判斷，因為題目沒有提供原來的價格與銷量"
+    ],
+    "correctIndex": 0,
+    "explanation": "總收入 ＝ 價格 × 銷量，價格跌時銷量必定升，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 0.5 小於 1，代表銷量的變動幅度小於價格，價格的一方主導，所以總收入減少。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。",
+    "explanationEn": "Total revenue = price × quantity, and a fall in price always brings a rise in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 0.5 is below 1, so quantity moves proportionally less and price dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction."
+  },
+  {
+    "id": "econ_rep_0066",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "某商品的價格上升 10%，其供給量隨之增加 30%。求該商品的供給價格彈性。",
+    "questionEn": "When the price of a good rises by 10%, the quantity supplied rises by 30%. Find the price elasticity of supply.",
+    "options": [
+      "20",
+      "3",
+      "0.3333",
+      "-3"
+    ],
+    "optionsEn": [
+      "20",
+      "3",
+      "0.3333",
+      "-3"
+    ],
+    "correctIndex": 1,
+    "explanation": "供給價格彈性 ＝ 供給量變動百分比 ÷ 價格變動百分比 ＝ 30% ÷ 10% ＝ 3。與需求彈性不同的是，供給彈性【本身就是正數】：價格上升，供給量亦上升，兩者同向，故不需要另加絕對值。答 -3 的學生把需求彈性習慣性加上的負號搬了過來，是本題最主要的失分位。0.3333 把分子分母對調。最後一項把兩個百分比相減而非相除 —— 彈性是比率，不是差額。",
+    "explanationEn": "Price elasticity of supply = % change in quantity supplied ÷ % change in price = 30% ÷ 10% = 3. Unlike demand elasticity, this figure is *naturally positive*: price and quantity supplied move together, so no absolute value is needed. Answering -3 carries over the minus sign that belongs to demand elasticity — the main trap here. 0.3333 inverts the ratio, and the last option subtracts the percentages instead of dividing; elasticity is a ratio, not a difference."
+  },
+  {
+    "id": "econ_rep_0067",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "某商品的價格上升 20%，其供給量隨之增加 30%。求該商品的供給價格彈性。",
+    "questionEn": "When the price of a good rises by 20%, the quantity supplied rises by 30%. Find the price elasticity of supply.",
+    "options": [
+      "-1.5",
+      "10",
+      "1.5",
+      "0.6667"
+    ],
+    "optionsEn": [
+      "-1.5",
+      "10",
+      "1.5",
+      "0.6667"
+    ],
+    "correctIndex": 2,
+    "explanation": "供給價格彈性 ＝ 供給量變動百分比 ÷ 價格變動百分比 ＝ 30% ÷ 20% ＝ 1.5。與需求彈性不同的是，供給彈性【本身就是正數】：價格上升，供給量亦上升，兩者同向，故不需要另加絕對值。答 -1.5 的學生把需求彈性習慣性加上的負號搬了過來，是本題最主要的失分位。0.6667 把分子分母對調。最後一項把兩個百分比相減而非相除 —— 彈性是比率，不是差額。",
+    "explanationEn": "Price elasticity of supply = % change in quantity supplied ÷ % change in price = 30% ÷ 20% = 1.5. Unlike demand elasticity, this figure is *naturally positive*: price and quantity supplied move together, so no absolute value is needed. Answering -1.5 carries over the minus sign that belongs to demand elasticity — the main trap here. 0.6667 inverts the ratio, and the last option subtracts the percentages instead of dividing; elasticity is a ratio, not a difference."
+  },
+  {
+    "id": "econ_rep_0068",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "某商品的價格上升 5%，其供給量隨之增加 20%。求該商品的供給價格彈性。",
+    "questionEn": "When the price of a good rises by 5%, the quantity supplied rises by 20%. Find the price elasticity of supply.",
+    "options": [
+      "0.25",
+      "-4",
+      "15",
+      "4"
+    ],
+    "optionsEn": [
+      "0.25",
+      "-4",
+      "15",
+      "4"
+    ],
+    "correctIndex": 3,
+    "explanation": "供給價格彈性 ＝ 供給量變動百分比 ÷ 價格變動百分比 ＝ 20% ÷ 5% ＝ 4。與需求彈性不同的是，供給彈性【本身就是正數】：價格上升，供給量亦上升，兩者同向，故不需要另加絕對值。答 -4 的學生把需求彈性習慣性加上的負號搬了過來，是本題最主要的失分位。0.25 把分子分母對調。最後一項把兩個百分比相減而非相除 —— 彈性是比率，不是差額。",
+    "explanationEn": "Price elasticity of supply = % change in quantity supplied ÷ % change in price = 20% ÷ 5% = 4. Unlike demand elasticity, this figure is *naturally positive*: price and quantity supplied move together, so no absolute value is needed. Answering -4 carries over the minus sign that belongs to demand elasticity — the main trap here. 0.25 inverts the ratio, and the last option subtracts the percentages instead of dividing; elasticity is a ratio, not a difference."
+  },
+  {
+    "id": "econ_rep_0069",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "彈性",
+    "topicId": "elasticity",
+    "topicZh": "彈性",
+    "topicEn": "Elasticity",
+    "difficulty": "intermediate",
+    "question": "某商品的價格上升 25%，其供給量隨之增加 5%。求該商品的供給價格彈性。",
+    "questionEn": "When the price of a good rises by 25%, the quantity supplied rises by 5%. Find the price elasticity of supply.",
+    "options": [
+      "0.2",
+      "5",
+      "-0.2",
+      "-20"
+    ],
+    "optionsEn": [
+      "0.2",
+      "5",
+      "-0.2",
+      "-20"
+    ],
+    "correctIndex": 0,
+    "explanation": "供給價格彈性 ＝ 供給量變動百分比 ÷ 價格變動百分比 ＝ 5% ÷ 25% ＝ 0.2。與需求彈性不同的是，供給彈性【本身就是正數】：價格上升，供給量亦上升，兩者同向，故不需要另加絕對值。答 -0.2 的學生把需求彈性習慣性加上的負號搬了過來，是本題最主要的失分位。5 把分子分母對調。最後一項把兩個百分比相減而非相除 —— 彈性是比率，不是差額。",
+    "explanationEn": "Price elasticity of supply = % change in quantity supplied ÷ % change in price = 5% ÷ 25% = 0.2. Unlike demand elasticity, this figure is *naturally positive*: price and quantity supplied move together, so no absolute value is needed. Answering -0.2 carries over the minus sign that belongs to demand elasticity — the main trap here. 5 inverts the ratio, and the last option subtracts the percentages instead of dividing; elasticity is a ratio, not a difference."
+  },
+  {
+    "id": "econ_rep_0070",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "basic",
+    "question": "某地的勞動人口為 4000 萬人，其中失業人數為 200 萬人。求該地的失業率。",
+    "questionEn": "An economy has a labour force of 4000 thousand, of whom 200 thousand are unemployed. Find the unemployment rate.",
+    "options": [
+      "2000%",
+      "5%",
+      "5.2632%",
+      "95%"
+    ],
+    "optionsEn": [
+      "2000%",
+      "5%",
+      "5.2632%",
+      "95%"
+    ],
+    "correctIndex": 1,
+    "explanation": "失業率 ＝ 失業人數 ÷ 勞動人口 × 100% ＝ 200 ÷ 4000 × 100% ＝ 5%。分母是【整個勞動人口】，即就業與失業人數之和，而非只計就業人數；用 4000 − 200 作分母會得出 5.2632%，是本題最主要的失分位。95% 求的是就業率，剛好是失業率的補數。最後一項把分子分母對調，所得數值大於 100%，僅憑常識即可排除。",
+    "explanationEn": "Unemployment rate = unemployed ÷ labour force × 100% = 200 ÷ 4000 × 100% = 5%. The denominator is the *whole* labour force — employed plus unemployed — not the employed alone; using 4000 − 200 gives 5.2632%, the main trap here. 95% is the employment rate, the complement of the answer. The last option inverts the ratio and exceeds 100%, which common sense alone rules out."
+  },
+  {
+    "id": "econ_rep_0071",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "basic",
+    "question": "某地的勞動人口為 3800 萬人，其中失業人數為 152 萬人。求該地的失業率。",
+    "questionEn": "An economy has a labour force of 3800 thousand, of whom 152 thousand are unemployed. Find the unemployment rate.",
+    "options": [
+      "96%",
+      "2500%",
+      "4%",
+      "4.1667%"
+    ],
+    "optionsEn": [
+      "96%",
+      "2500%",
+      "4%",
+      "4.1667%"
+    ],
+    "correctIndex": 2,
+    "explanation": "失業率 ＝ 失業人數 ÷ 勞動人口 × 100% ＝ 152 ÷ 3800 × 100% ＝ 4%。分母是【整個勞動人口】，即就業與失業人數之和，而非只計就業人數；用 3800 − 152 作分母會得出 4.1667%，是本題最主要的失分位。96% 求的是就業率，剛好是失業率的補數。最後一項把分子分母對調，所得數值大於 100%，僅憑常識即可排除。",
+    "explanationEn": "Unemployment rate = unemployed ÷ labour force × 100% = 152 ÷ 3800 × 100% = 4%. The denominator is the *whole* labour force — employed plus unemployed — not the employed alone; using 3800 − 152 gives 4.1667%, the main trap here. 96% is the employment rate, the complement of the answer. The last option inverts the ratio and exceeds 100%, which common sense alone rules out."
+  },
+  {
+    "id": "econ_rep_0072",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "basic",
+    "question": "某地的勞動人口為 5000 萬人，其中失業人數為 350 萬人。求該地的失業率。",
+    "questionEn": "An economy has a labour force of 5000 thousand, of whom 350 thousand are unemployed. Find the unemployment rate.",
+    "options": [
+      "7.5269%",
+      "93%",
+      "1428.5714%",
+      "7%"
+    ],
+    "optionsEn": [
+      "7.5269%",
+      "93%",
+      "1428.5714%",
+      "7%"
+    ],
+    "correctIndex": 3,
+    "explanation": "失業率 ＝ 失業人數 ÷ 勞動人口 × 100% ＝ 350 ÷ 5000 × 100% ＝ 7%。分母是【整個勞動人口】，即就業與失業人數之和，而非只計就業人數；用 5000 − 350 作分母會得出 7.5269%，是本題最主要的失分位。93% 求的是就業率，剛好是失業率的補數。最後一項把分子分母對調，所得數值大於 100%，僅憑常識即可排除。",
+    "explanationEn": "Unemployment rate = unemployed ÷ labour force × 100% = 350 ÷ 5000 × 100% = 7%. The denominator is the *whole* labour force — employed plus unemployed — not the employed alone; using 5000 − 350 gives 7.5269%, the main trap here. 93% is the employment rate, the complement of the answer. The last option inverts the ratio and exceeds 100%, which common sense alone rules out."
+  },
+  {
+    "id": "econ_rep_0073",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "basic",
+    "question": "某地的勞動人口為 2500 萬人，其中失業人數為 75 萬人。求該地的失業率。",
+    "questionEn": "An economy has a labour force of 2500 thousand, of whom 75 thousand are unemployed. Find the unemployment rate.",
+    "options": [
+      "3%",
+      "3.0928%",
+      "97%",
+      "3333.3333%"
+    ],
+    "optionsEn": [
+      "3%",
+      "3.0928%",
+      "97%",
+      "3333.3333%"
+    ],
+    "correctIndex": 0,
+    "explanation": "失業率 ＝ 失業人數 ÷ 勞動人口 × 100% ＝ 75 ÷ 2500 × 100% ＝ 3%。分母是【整個勞動人口】，即就業與失業人數之和，而非只計就業人數；用 2500 − 75 作分母會得出 3.0928%，是本題最主要的失分位。97% 求的是就業率，剛好是失業率的補數。最後一項把分子分母對調，所得數值大於 100%，僅憑常識即可排除。",
+    "explanationEn": "Unemployment rate = unemployed ÷ labour force × 100% = 75 ÷ 2500 × 100% = 3%. The denominator is the *whole* labour force — employed plus unemployed — not the employed alone; using 2500 − 75 gives 3.0928%, the main trap here. 97% is the employment rate, the complement of the answer. The last option inverts the ratio and exceeds 100%, which common sense alone rules out."
+  },
+  {
+    "id": "econ_rep_0074",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "basic",
+    "question": "某地的勞動人口為 6400 萬人，其中失業人數為 448 萬人。求該地的失業率。",
+    "questionEn": "An economy has a labour force of 6400 thousand, of whom 448 thousand are unemployed. Find the unemployment rate.",
+    "options": [
+      "1428.5714%",
+      "7%",
+      "7.5269%",
+      "93%"
+    ],
+    "optionsEn": [
+      "1428.5714%",
+      "7%",
+      "7.5269%",
+      "93%"
+    ],
+    "correctIndex": 1,
+    "explanation": "失業率 ＝ 失業人數 ÷ 勞動人口 × 100% ＝ 448 ÷ 6400 × 100% ＝ 7%。分母是【整個勞動人口】，即就業與失業人數之和，而非只計就業人數；用 6400 − 448 作分母會得出 7.5269%，是本題最主要的失分位。93% 求的是就業率，剛好是失業率的補數。最後一項把分子分母對調，所得數值大於 100%，僅憑常識即可排除。",
+    "explanationEn": "Unemployment rate = unemployed ÷ labour force × 100% = 448 ÷ 6400 × 100% = 7%. The denominator is the *whole* labour force — employed plus unemployed — not the employed alone; using 6400 − 448 gives 7.5269%, the main trap here. 93% is the employment rate, the complement of the answer. The last option inverts the ratio and exceeds 100%, which common sense alone rules out."
+  },
+  {
+    "id": "econ_rep_0075",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "basic",
+    "question": "某地的勞動人口為 1200 萬人，其中失業人數為 60 萬人。求該地的失業率。",
+    "questionEn": "An economy has a labour force of 1200 thousand, of whom 60 thousand are unemployed. Find the unemployment rate.",
+    "options": [
+      "95%",
+      "2000%",
+      "5%",
+      "5.2632%"
+    ],
+    "optionsEn": [
+      "95%",
+      "2000%",
+      "5%",
+      "5.2632%"
+    ],
+    "correctIndex": 2,
+    "explanation": "失業率 ＝ 失業人數 ÷ 勞動人口 × 100% ＝ 60 ÷ 1200 × 100% ＝ 5%。分母是【整個勞動人口】，即就業與失業人數之和，而非只計就業人數；用 1200 − 60 作分母會得出 5.2632%，是本題最主要的失分位。95% 求的是就業率，剛好是失業率的補數。最後一項把分子分母對調，所得數值大於 100%，僅憑常識即可排除。",
+    "explanationEn": "Unemployment rate = unemployed ÷ labour force × 100% = 60 ÷ 1200 × 100% = 5%. The denominator is the *whole* labour force — employed plus unemployed — not the employed alone; using 1200 − 60 gives 5.2632%, the main trap here. 95% is the employment rate, the complement of the answer. The last option inverts the ratio and exceeds 100%, which common sense alone rules out."
+  },
+  {
+    "id": "econ_rep_0076",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "intermediate",
+    "question": "某年某地的名義工資上升 5%，同期的通脹率為 3%。\n\n該地工人的實質工資有何變動？",
+    "questionEn": "In one year nominal wages in an economy rise by 5% while the inflation rate is 3%.\n\nWhat happens to workers' real wages?",
+    "options": [
+      "實質工資上升約 8%，因為兩項升幅應該相加",
+      "實質工資上升 5%，通脹率並不影響實質工資",
+      "實質工資下跌約 8%",
+      "實質工資上升約 2%，購買力提高"
+    ],
+    "optionsEn": [
+      "實質工資上升約 8%，因為兩項升幅應該相加",
+      "實質工資上升 5%，通脹率並不影響實質工資",
+      "實質工資下跌約 8%",
+      "實質工資上升約 2%，購買力提高"
+    ],
+    "correctIndex": 3,
+    "explanation": "實質變動 ≈ 名義變動 − 通脹率 ＝ 5% − 3% ＝ 2%，故實質工資上升，工人的購買力確有提高。把兩者相加是本題最主要的錯誤：通脹侵蝕購買力，方向與加薪相反，故應相減。至於「通脹率並不影響實質工資」，正好違反了實質與名義的分別 —— 兩者的分別就在於有沒有把物價的變動剔除。",
+    "explanationEn": "Real change ≈ nominal change − inflation = 5% − 3% = 2%, so real wages rise and purchasing power genuinely improves. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out."
+  },
+  {
+    "id": "econ_rep_0077",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "intermediate",
+    "question": "某年某地的名義工資上升 2%，同期的通脹率為 4.5%。\n\n該地工人的實質工資有何變動？",
+    "questionEn": "In one year nominal wages in an economy rise by 2% while the inflation rate is 4.5%.\n\nWhat happens to workers' real wages?",
+    "options": [
+      "實質工資下跌約 2.5%，購買力反而下降",
+      "實質工資上升約 6.5%，因為兩項升幅應該相加",
+      "實質工資上升 2%，通脹率並不影響實質工資",
+      "實質工資上升約 7%"
+    ],
+    "optionsEn": [
+      "實質工資下跌約 2.5%，購買力反而下降",
+      "實質工資上升約 6.5%，因為兩項升幅應該相加",
+      "實質工資上升 2%，通脹率並不影響實質工資",
+      "實質工資上升約 7%"
+    ],
+    "correctIndex": 0,
+    "explanation": "實質變動 ≈ 名義變動 − 通脹率 ＝ 2% − 4.5% ＝ -2.5%，故實質工資下跌 —— 名義工資雖然加了，但物價升得更快，實際能買到的東西反而少了。把兩者相加是本題最主要的錯誤：通脹侵蝕購買力，方向與加薪相反，故應相減。至於「通脹率並不影響實質工資」，正好違反了實質與名義的分別 —— 兩者的分別就在於有沒有把物價的變動剔除。",
+    "explanationEn": "Real change ≈ nominal change − inflation = 2% − 4.5% = -2.5%, so real wages fall — the pay rise is outpaced by prices, so workers can buy less than before. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out."
+  },
+  {
+    "id": "econ_rep_0078",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "intermediate",
+    "question": "某年某地的名義工資上升 8%，同期的通脹率為 2.5%。\n\n該地工人的實質工資有何變動？",
+    "questionEn": "In one year nominal wages in an economy rise by 8% while the inflation rate is 2.5%.\n\nWhat happens to workers' real wages?",
+    "options": [
+      "實質工資下跌約 10.5%",
+      "實質工資上升約 5.5%，購買力提高",
+      "實質工資上升約 10.5%，因為兩項升幅應該相加",
+      "實質工資上升 8%，通脹率並不影響實質工資"
+    ],
+    "optionsEn": [
+      "實質工資下跌約 10.5%",
+      "實質工資上升約 5.5%，購買力提高",
+      "實質工資上升約 10.5%，因為兩項升幅應該相加",
+      "實質工資上升 8%，通脹率並不影響實質工資"
+    ],
+    "correctIndex": 1,
+    "explanation": "實質變動 ≈ 名義變動 − 通脹率 ＝ 8% − 2.5% ＝ 5.5%，故實質工資上升，工人的購買力確有提高。把兩者相加是本題最主要的錯誤：通脹侵蝕購買力，方向與加薪相反，故應相減。至於「通脹率並不影響實質工資」，正好違反了實質與名義的分別 —— 兩者的分別就在於有沒有把物價的變動剔除。",
+    "explanationEn": "Real change ≈ nominal change − inflation = 8% − 2.5% = 5.5%, so real wages rise and purchasing power genuinely improves. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out."
+  },
+  {
+    "id": "econ_rep_0079",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "intermediate",
+    "question": "某年某地的名義工資上升 6%，同期的通脹率為 6%。\n\n該地工人的實質工資有何變動？",
+    "questionEn": "In one year nominal wages in an economy rise by 6% while the inflation rate is 6%.\n\nWhat happens to workers' real wages?",
+    "options": [
+      "實質工資上升 6%，通脹率並不影響實質工資",
+      "實質工資下跌約 12%",
+      "實質工資維持不變，購買力沒有改變",
+      "實質工資上升約 12%，因為兩項升幅應該相加"
+    ],
+    "optionsEn": [
+      "實質工資上升 6%，通脹率並不影響實質工資",
+      "實質工資下跌約 12%",
+      "實質工資維持不變，購買力沒有改變",
+      "實質工資上升約 12%，因為兩項升幅應該相加"
+    ],
+    "correctIndex": 2,
+    "explanation": "實質變動 ≈ 名義變動 − 通脹率 ＝ 6% − 6% ＝ 0%，故實質工資不變，名義上的加幅剛好被物價抵銷。把兩者相加是本題最主要的錯誤：通脹侵蝕購買力，方向與加薪相反，故應相減。至於「通脹率並不影響實質工資」，正好違反了實質與名義的分別 —— 兩者的分別就在於有沒有把物價的變動剔除。",
+    "explanationEn": "Real change ≈ nominal change − inflation = 6% − 6% = 0%, so real wages are unchanged, the rise being exactly offset by prices. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out."
+  },
+  {
+    "id": "econ_rep_0080",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀經濟",
+    "topicId": "macroeconomics",
+    "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
+    "difficulty": "intermediate",
+    "question": "某年某地的名義工資上升 1.5%，同期的通脹率為 3.5%。\n\n該地工人的實質工資有何變動？",
+    "questionEn": "In one year nominal wages in an economy rise by 1.5% while the inflation rate is 3.5%.\n\nWhat happens to workers' real wages?",
+    "options": [
+      "實質工資上升約 5%，因為兩項升幅應該相加",
+      "實質工資上升 1.5%，通脹率並不影響實質工資",
+      "實質工資上升約 5.5%",
+      "實質工資下跌約 2%，購買力反而下降"
+    ],
+    "optionsEn": [
+      "實質工資上升約 5%，因為兩項升幅應該相加",
+      "實質工資上升 1.5%，通脹率並不影響實質工資",
+      "實質工資上升約 5.5%",
+      "實質工資下跌約 2%，購買力反而下降"
+    ],
+    "correctIndex": 3,
+    "explanation": "實質變動 ≈ 名義變動 − 通脹率 ＝ 1.5% − 3.5% ＝ -2%，故實質工資下跌 —— 名義工資雖然加了，但物價升得更快，實際能買到的東西反而少了。把兩者相加是本題最主要的錯誤：通脹侵蝕購買力，方向與加薪相反，故應相減。至於「通脹率並不影響實質工資」，正好違反了實質與名義的分別 —— 兩者的分別就在於有沒有把物價的變動剔除。",
+    "explanationEn": "Real change ≈ nominal change − inflation = 1.5% − 3.5% = -2%, so real wages fall — the pay rise is outpaced by prices, so workers can buy less than before. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out."
+  },
+  {
+    "id": "econ_rep_0081",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "市場效率",
+    "topicId": "market",
+    "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
+    "difficulty": "intermediate",
+    "question": "某商品的供給曲線為一直線。當市價為 \\$10 時成交量為 30 件；供給曲線與縱軸相交於 \\$4，即賣方願意供應第一件的最低價格。\n\n求生產者剩餘。",
+    "questionEn": "The supply curve for a good is a straight line. At a market price of \\$10, 30 units are traded; the supply curve meets the vertical axis at \\$4, the lowest price at which the first unit would be supplied.\n\nFind the producer surplus.",
+    "options": [
+      "\\$90",
+      "\\$180",
+      "\\$150",
+      "\\$6"
+    ],
+    "optionsEn": [
+      "\\$90",
+      "\\$180",
+      "\\$150",
+      "\\$6"
+    ],
+    "correctIndex": 0,
+    "explanation": "生產者剩餘是市價與供給曲線之間、成交量以左的面積。供給曲線既為直線，該面積是一個三角形：底為成交量 30，高為 10 − 4 ＝ \\$6，故剩餘 ＝ 30 × 6 ÷ 2 ＝ \\$90。忘記除以 2 得 \\$180，即把三角形當作長方形，是本題最主要的失分位。\\$150 用了市價本身作高，等於把供給曲線的起點誤當作零。最後一項只求了高度而未乘底。",
+    "explanationEn": "Producer surplus is the area between the market price and the supply curve, to the left of the quantity traded. With a straight-line supply curve that area is a triangle: base 30, height 10 − 4 = \\$6, so the surplus is 30 × 6 ÷ 2 = \\$90. Omitting the division by 2 gives \\$180 and treats the triangle as a rectangle — the main trap. \\$150 uses the market price itself as the height, i.e. assumes the supply curve starts at zero. The last option gives the height alone, without multiplying by the base."
+  },
+  {
+    "id": "econ_rep_0082",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "市場效率",
+    "topicId": "market",
+    "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
+    "difficulty": "intermediate",
+    "question": "某商品的供給曲線為一直線。當市價為 \\$25 時成交量為 12 件；供給曲線與縱軸相交於 \\$15，即賣方願意供應第一件的最低價格。\n\n求生產者剩餘。",
+    "questionEn": "The supply curve for a good is a straight line. At a market price of \\$25, 12 units are traded; the supply curve meets the vertical axis at \\$15, the lowest price at which the first unit would be supplied.\n\nFind the producer surplus.",
+    "options": [
+      "\\$10",
+      "\\$60",
+      "\\$120",
+      "\\$150"
+    ],
+    "optionsEn": [
+      "\\$10",
+      "\\$60",
+      "\\$120",
+      "\\$150"
+    ],
+    "correctIndex": 1,
+    "explanation": "生產者剩餘是市價與供給曲線之間、成交量以左的面積。供給曲線既為直線，該面積是一個三角形：底為成交量 12，高為 25 − 15 ＝ \\$10，故剩餘 ＝ 12 × 10 ÷ 2 ＝ \\$60。忘記除以 2 得 \\$120，即把三角形當作長方形，是本題最主要的失分位。\\$150 用了市價本身作高，等於把供給曲線的起點誤當作零。最後一項只求了高度而未乘底。",
+    "explanationEn": "Producer surplus is the area between the market price and the supply curve, to the left of the quantity traded. With a straight-line supply curve that area is a triangle: base 12, height 25 − 15 = \\$10, so the surplus is 12 × 10 ÷ 2 = \\$60. Omitting the division by 2 gives \\$120 and treats the triangle as a rectangle — the main trap. \\$150 uses the market price itself as the height, i.e. assumes the supply curve starts at zero. The last option gives the height alone, without multiplying by the base."
+  },
+  {
+    "id": "econ_rep_0083",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "市場效率",
+    "topicId": "market",
+    "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
+    "difficulty": "intermediate",
+    "question": "某商品的供給曲線為一直線。當市價為 \\$6 時成交量為 50 件；供給曲線與縱軸相交於 \\$2，即賣方願意供應第一件的最低價格。\n\n求生產者剩餘。",
+    "questionEn": "The supply curve for a good is a straight line. At a market price of \\$6, 50 units are traded; the supply curve meets the vertical axis at \\$2, the lowest price at which the first unit would be supplied.\n\nFind the producer surplus.",
+    "options": [
+      "\\$150",
+      "\\$4",
+      "\\$100",
+      "\\$200"
+    ],
+    "optionsEn": [
+      "\\$150",
+      "\\$4",
+      "\\$100",
+      "\\$200"
+    ],
+    "correctIndex": 2,
+    "explanation": "生產者剩餘是市價與供給曲線之間、成交量以左的面積。供給曲線既為直線，該面積是一個三角形：底為成交量 50，高為 6 − 2 ＝ \\$4，故剩餘 ＝ 50 × 4 ÷ 2 ＝ \\$100。忘記除以 2 得 \\$200，即把三角形當作長方形，是本題最主要的失分位。\\$150 用了市價本身作高，等於把供給曲線的起點誤當作零。最後一項只求了高度而未乘底。",
+    "explanationEn": "Producer surplus is the area between the market price and the supply curve, to the left of the quantity traded. With a straight-line supply curve that area is a triangle: base 50, height 6 − 2 = \\$4, so the surplus is 50 × 4 ÷ 2 = \\$100. Omitting the division by 2 gives \\$200 and treats the triangle as a rectangle — the main trap. \\$150 uses the market price itself as the height, i.e. assumes the supply curve starts at zero. The last option gives the height alone, without multiplying by the base."
+  },
+  {
+    "id": "econ_rep_0084",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "市場效率",
+    "topicId": "market",
+    "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
+    "difficulty": "intermediate",
+    "question": "某商品的供給曲線為一直線。當市價為 \\$40 時成交量為 8 件；供給曲線與縱軸相交於 \\$10，即賣方願意供應第一件的最低價格。\n\n求生產者剩餘。",
+    "questionEn": "The supply curve for a good is a straight line. At a market price of \\$40, 8 units are traded; the supply curve meets the vertical axis at \\$10, the lowest price at which the first unit would be supplied.\n\nFind the producer surplus.",
+    "options": [
+      "\\$240",
+      "\\$160",
+      "\\$30",
+      "\\$120"
+    ],
+    "optionsEn": [
+      "\\$240",
+      "\\$160",
+      "\\$30",
+      "\\$120"
+    ],
+    "correctIndex": 3,
+    "explanation": "生產者剩餘是市價與供給曲線之間、成交量以左的面積。供給曲線既為直線，該面積是一個三角形：底為成交量 8，高為 40 − 10 ＝ \\$30，故剩餘 ＝ 8 × 30 ÷ 2 ＝ \\$120。忘記除以 2 得 \\$240，即把三角形當作長方形，是本題最主要的失分位。\\$160 用了市價本身作高，等於把供給曲線的起點誤當作零。最後一項只求了高度而未乘底。",
+    "explanationEn": "Producer surplus is the area between the market price and the supply curve, to the left of the quantity traded. With a straight-line supply curve that area is a triangle: base 8, height 40 − 10 = \\$30, so the surplus is 8 × 30 ÷ 2 = \\$120. Omitting the division by 2 gives \\$240 and treats the triangle as a rectangle — the main trap. \\$160 uses the market price itself as the height, i.e. assumes the supply curve starts at zero. The last option gives the height alone, without multiplying by the base."
+  }
+]
