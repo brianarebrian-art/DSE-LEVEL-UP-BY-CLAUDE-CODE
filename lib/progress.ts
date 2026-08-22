@@ -14,6 +14,13 @@ export interface AttemptRecord {
   topicResults: { topic: string; correct: number; total: number }[]
   elapsed: number
   timestamp: number // epoch ms
+  /**
+   * 逐難度層作答統計。掌握度階梯（lib/mastery.ts）要嘅係【跨節累計】嘅逐層
+   * 數字 —— 單一節出唔到等級（Level 3 已經要 t1≥10 且 t2≥15，即超過 20 題）。
+   * 練習頁本來就已經算好呢個物件寫入 `dse_result`，此處只係順手一併存落長期
+   * 紀錄。optional：2026-08-23 之前嘅記錄冇呢欄，估算會自動跳過嗰啲節。
+   */
+  difficultyResults?: Record<'easy' | 'medium' | 'hard', { correct: number; total: number }>
 }
 
 const KEY = 'dse_progress'

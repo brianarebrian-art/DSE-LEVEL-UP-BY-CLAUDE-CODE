@@ -537,6 +537,7 @@ export default function PracticeSession({
         topicResults,
         elapsed,
         timestamp: Date.now(),
+        difficultyResults,
       })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
