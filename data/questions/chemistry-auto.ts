@@ -7,7 +7,7 @@
 //   subject  : chemistry
 //   count    : 22  (easy 9 / medium 13 / hard 0)
 //   types    : mc 22 / text 0 / long 0
-//   updated  : 2026-08-21
+//   updated  : 2026-08-22
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -629,7 +629,7 @@ export const chemistryAutoQuestions: Question[] = [
       "$0.2222$ mol/dm³",
       "$0.2$ mol/dm³"
     ],
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted **to** $0.5$ dm³\" as \"$0.5$ dm³ of water **added**\", which is a different final volume.",
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -660,7 +660,7 @@ export const chemistryAutoQuestions: Question[] = [
       "$5$ mol/dm³",
       "$0.0556$ mol/dm³"
     ],
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{2} = 0.05$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $50$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted **to** $2$ dm³\" as \"$2$ dm³ of water **added**\", which is a different final volume.",
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{2} = 0.05$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $50$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $2$ dm³\" as \"$2$ dm³ of water added\", which is a different final volume.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -691,7 +691,7 @@ export const chemistryAutoQuestions: Question[] = [
       "$200$ mol/dm³",
       "$80$ mol/dm³"
     ],
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted **to** $0.5$ dm³\" as \"$0.5$ dm³ of water **added**\", which is a different final volume.",
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume.",
     "frameworkEn": "Auto-gated"
   }
 ]

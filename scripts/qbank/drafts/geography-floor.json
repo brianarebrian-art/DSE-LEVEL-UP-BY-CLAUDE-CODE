@@ -24,7 +24,7 @@
     ],
     "correctIndex": 0,
     "explanation": "三類邊界各有其地貌與災害：分離型板塊互相拉開，形成中洋脊與裂谷；聚合型互相擠壓，形成海溝、褶皺山脈與火山；平移（轉形）型互相錯動，多發生淺源地震。留意「侵蝕、搬運、沉積」是【河流及海岸作用】的三分法，屬另一課題，兩者常被混淆 —— 前者由板塊內部熱力驅動，後者由地表的水流與波浪造成。",
-    "explanationEn": "Each kind of boundary has its own landforms and hazards. At divergent boundaries the plates pull apart, producing mid-ocean ridges and rift valleys; at convergent boundaries they press together, producing trenches, fold mountains and volcanoes; at transform boundaries they slide past one another, giving mostly shallow-focus earthquakes. Note that erosion, transport and deposition are the threefold division of **river and coastal processes**, a different topic altogether — the first set is driven by heat within the Earth, the second by surface water and waves."
+    "explanationEn": "Each kind of boundary has its own landforms and hazards. At divergent boundaries the plates pull apart, producing mid-ocean ridges and rift valleys; at convergent boundaries they press together, producing trenches, fold mountains and volcanoes; at transform boundaries they slide past one another, giving mostly shallow-focus earthquakes. Note that erosion, transport and deposition are the threefold division of river and coastal processes, a different topic altogether — the first set is driven by heat within the Earth, the second by surface water and waves."
   },
   {
     "id": "geo_floor_02",
@@ -105,7 +105,7 @@
     ],
     "correctIndex": 3,
     "explanation": "等高線連接高度相同的各點，相鄰兩條之間的高差固定。若兩線在圖上距離很近，即代表在很短的水平距離內已上升或下降了同樣的高度，故坡度必然陡峭；反之等高線疏落即代表坡度平緩。留意密集與否只反映【坡度】，與海拔高低無關 —— 高原上可以有平緩處，低地亦可以有陡崖。答資料題時先看等高線間距，再讀數值，兩步不可合併。",
-    "explanationEn": "Contour lines join points of equal height, and the difference in height between adjacent lines is fixed. If two lines are close together on the map, the same rise or fall has been achieved over a very short horizontal distance, so the slope must be steep; widely spaced contours mean a gentle slope. Note that spacing reflects **gradient** alone and says nothing about elevation — a plateau can have gentle ground and a lowland can have a steep cliff. In a data-response question, read the spacing first and the values second, and do not run the two steps together."
+    "explanationEn": "Contour lines join points of equal height, and the difference in height between adjacent lines is fixed. If two lines are close together on the map, the same rise or fall has been achieved over a very short horizontal distance, so the slope must be steep; widely spaced contours mean a gentle slope. Note that spacing reflects gradient alone and says nothing about elevation — a plateau can have gentle ground and a lowland can have a steep cliff. In a data-response question, read the spacing first and the values second, and do not run the two steps together."
   },
   {
     "id": "geo_floor_05",
@@ -186,7 +186,7 @@
     ],
     "correctIndex": 2,
     "explanation": "海岸侵蝕地貌有一條清晰的發展次序：崖腳的裂隙先被擴大成海蝕洞；洞若貫穿岬角兩側則成海蝕拱門；拱頂坍塌後留下孤立的柱體，即海蝕柱；柱再被侵蝕矮化便成海蝕殘餘。故海蝕柱是這條序列的後段而非開端。至於沙嘴與沙洲屬【沉積】地貌，由沿岸漂移搬運沉積物堆積而成，與侵蝕作用方向相反，不應混入同一序列。",
-    "explanationEn": "Coastal erosional landforms follow a clear sequence: a crack at the foot of the cliff is widened into a sea cave; if the cave cuts right through a headland it becomes an arch; when the roof of the arch collapses an isolated pillar, the stack, is left; and further erosion reduces the stack to a stump. The stack therefore belongs late in the sequence, not at its start. A spit and a sandbar, meanwhile, are **depositional** landforms built by longshore drift, working in the opposite direction, and do not belong in the same sequence."
+    "explanationEn": "Coastal erosional landforms follow a clear sequence: a crack at the foot of the cliff is widened into a sea cave; if the cave cuts right through a headland it becomes an arch; when the roof of the arch collapses an isolated pillar, the stack, is left; and further erosion reduces the stack to a stump. The stack therefore belongs late in the sequence, not at its start. A spit and a sandbar, meanwhile, are depositional landforms built by longshore drift, working in the opposite direction, and do not belong in the same sequence."
   },
   {
     "id": "geo_floor_08",
@@ -240,7 +240,7 @@
     ],
     "correctIndex": 0,
     "explanation": "季風的成因在於海陸比熱差異：夏季大陸增溫快、氣壓較低，風由海洋吹向陸地，帶來水汽與雨；冬季大陸降溫快、氣壓較高，風由陸地吹向海洋，天氣乾冷。留意海陸風的成因原理相近但【周期為一日】而非一年，範圍亦只及沿岸；焚風是氣流越山後下沉增溫變乾的現象；信風則是低緯度常年穩定吹向赤道的風。四者的分別在於時間尺度與成因，宜一併記牢。",
-    "explanationEn": "The monsoon arises from the difference in heat capacity between land and sea: in summer the continent warms quickly, pressure over it falls, and wind blows from ocean to land bringing moisture and rain; in winter the continent cools quickly, pressure rises, and wind blows from land to ocean, dry and cold. Note that land and sea breezes work on a similar principle but on a **daily** rather than annual cycle and only near the coast; the föhn is air warming and drying as it descends the lee of a mountain; and the trade winds blow steadily towards the equator in low latitudes all year. The four differ in time scale and in cause, and are best learned together."
+    "explanationEn": "The monsoon arises from the difference in heat capacity between land and sea: in summer the continent warms quickly, pressure over it falls, and wind blows from ocean to land bringing moisture and rain; in winter the continent cools quickly, pressure rises, and wind blows from land to ocean, dry and cold. Note that land and sea breezes work on a similar principle but on a daily rather than annual cycle and only near the coast; the föhn is air warming and drying as it descends the lee of a mountain; and the trade winds blow steadily towards the equator in low latitudes all year. The four differ in time scale and in cause, and are best learned together."
   },
   {
     "id": "geo_floor_10",
@@ -306,7 +306,7 @@
     "topicEn": "Urban Development",
     "difficulty": "basic",
     "question": "大量鄉村人口遷往城市，對【鄉村地區】可能造成甚麼影響？",
-    "questionEn": "When large numbers move from the countryside to the city, what may follow for the **rural** area?",
+    "questionEn": "When large numbers move from the countryside to the city, what may follow for the rural area?",
     "options": [
       "人口密度顯著上升，居住環境變得擠迫",
       "農地不足，須大規模開發新的耕地",
@@ -321,7 +321,7 @@
     ],
     "correctIndex": 3,
     "explanation": "遷移的多為適齡工作的青壯年，故鄉村留下的以老幼為主：耕作勞動力減少，部分農地拋荒，學校與診所因使用者不足而縮減甚至關閉，形成惡性循環。留意其餘三項所描述的，正是【城市】一端所面對的問題（密度上升、土地不足、服務需求急增）—— 遷移是一個過程的兩端，答題時必須看清問的是遷出地還是遷入地。",
-    "explanationEn": "Those who move are mostly working-age adults, so the countryside is left with the old and the young: labour for farming falls, some fields go out of use, and schools and clinics contract or close for want of users, which feeds the cycle further. Note that the other three describe what happens at the **urban** end — rising density, shortage of land, sharply increased demand for services. Migration has two ends, and an answer must be clear about whether the question asks about the place people leave or the place they arrive."
+    "explanationEn": "Those who move are mostly working-age adults, so the countryside is left with the old and the young: labour for farming falls, some fields go out of use, and schools and clinics contract or close for want of users, which feeds the cycle further. Note that the other three describe what happens at the urban end — rising density, shortage of land, sharply increased demand for services. Migration has two ends, and an answer must be clear about whether the question asks about the place people leave or the place they arrive."
   },
   {
     "id": "geo_floor_13",

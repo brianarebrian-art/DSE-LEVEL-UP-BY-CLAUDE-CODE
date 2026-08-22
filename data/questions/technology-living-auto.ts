@@ -7,7 +7,7 @@
 //   subject  : technology-living
 //   count    : 35  (easy 35 / medium 0 / hard 0)
 //   types    : mc 35 / text 0 / long 0
-//   updated  : 2026-08-21
+//   updated  : 2026-08-22
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -226,7 +226,7 @@ export const technologyLivingAutoQuestions: Question[] = [
       "the sense of thirst weakens with age, so they may not feel thirsty even when short of water",
       "their body temperature is higher, so water evaporates especially quickly"
     ],
-    "explanationEn": "Thirst is the body’s warning signal, and in older people that signal becomes blunted, so waiting until one feels thirsty is not a safe rule. The proportion of water in the body in fact **falls** with age rather than rising, leaving a smaller reserve, so any loss causes trouble sooner. When caring for an older person, offer drinks at set times, and remember that soup, congee and fruit are sources of fluid too.",
+    "explanationEn": "Thirst is the body’s warning signal, and in older people that signal becomes blunted, so waiting until one feels thirsty is not a safe rule. The proportion of water in the body in fact falls with age rather than rising, leaving a smaller reserve, so any loss causes trouble sooner. When caring for an older person, offer drinks at set times, and remember that soup, congee and fruit are sources of fluid too.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -505,7 +505,7 @@ export const technologyLivingAutoQuestions: Question[] = [
       "the food neither browns nor heats up at all",
       "the food takes up more oil and turns out greasy rather than crisp"
     ],
-    "explanationEn": "When the oil is hot enough, moisture at the surface of the food turns to steam at once, and that outward flow of steam keeps oil from soaking in while the surface dries and crisps. If the oil is too cool the moisture leaves slowly, oil has time to penetrate, and the result is greasy. The opposite problems — a burnt outside with a raw centre, or oil smoking and catching fire — are signs of oil that is too **hot**, and the remedies are opposite, so the two must not be confused.",
+    "explanationEn": "When the oil is hot enough, moisture at the surface of the food turns to steam at once, and that outward flow of steam keeps oil from soaking in while the surface dries and crisps. If the oil is too cool the moisture leaves slowly, oil has time to penetrate, and the result is greasy. The opposite problems — a burnt outside with a raw centre, or oil smoking and catching fire — are signs of oil that is too hot, and the remedies are opposite, so the two must not be confused.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -536,7 +536,7 @@ export const technologyLivingAutoQuestions: Question[] = [
       "to wash off every trace of pesticide residue from the surface",
       "to raise the total vitamin content of the vegetables"
     ],
-    "explanationEn": "Vegetables carry residual heat after they leave the pot, and if left to cool by themselves the cooking does not actually stop: the colour shifts from bright green towards yellow-green and the texture softens. Iced water brings the core temperature down fast, fixing the cooking at exactly the right moment. Note that cooking can only reduce or preserve nutrients, never create them, and that pesticide residues are dealt with **before** cooking, by thorough washing under running water.",
+    "explanationEn": "Vegetables carry residual heat after they leave the pot, and if left to cool by themselves the cooking does not actually stop: the colour shifts from bright green towards yellow-green and the texture softens. Iced water brings the core temperature down fast, fixing the cooking at exactly the right moment. Note that cooking can only reduce or preserve nutrients, never create them, and that pesticide residues are dealt with before cooking, by thorough washing under running water.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -629,7 +629,7 @@ export const technologyLivingAutoQuestions: Question[] = [
       "between 15 °C and 20 °C",
       "4 °C or below"
     ],
-    "explanationEn": "Bacteria multiply fastest between about 4 °C and 60 °C, so the chill compartment must be held at 4 °C or below to keep that multiplication down. Note that −18 °C is the standard for the **freezer**, and the two must not be confused: chilling slows bacterial growth while freezing all but halts it, but neither kills the bacteria already present. A refrigerator should also not be overpacked, or cold air cannot circulate and the real temperature rises above the setting.",
+    "explanationEn": "Bacteria multiply fastest between about 4 °C and 60 °C, so the chill compartment must be held at 4 °C or below to keep that multiplication down. Note that −18 °C is the standard for the freezer, and the two must not be confused: chilling slows bacterial growth while freezing all but halts it, but neither kills the bacteria already present. A refrigerator should also not be overpacked, or cold air cannot circulate and the real temperature rises above the setting.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -660,7 +660,7 @@ export const technologyLivingAutoQuestions: Question[] = [
       "cover it, return it to where it was and keep it until the date on the pack",
       "freeze it solid and thaw it again whenever it is wanted"
     ],
-    "explanationEn": "An intact rind or a sealed pack is itself a barrier; once the food is cut or opened, its surface is exposed to micro-organisms from the air, the knife and the hands, and the printed date no longer applies — that date was set for the **unopened** state. So refrigerate immediately after opening and finish within a day or two depending on the food, rather than relying on the original marking.",
+    "explanationEn": "An intact rind or a sealed pack is itself a barrier; once the food is cut or opened, its surface is exposed to micro-organisms from the air, the knife and the hands, and the printed date no longer applies — that date was set for the unopened state. So refrigerate immediately after opening and finish within a day or two depending on the food, rather than relying on the original marking.",
     "frameworkEn": "Auto-gated"
   },
   {

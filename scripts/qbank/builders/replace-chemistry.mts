@@ -152,7 +152,7 @@ const archs: Arch[] = [
         ],
         e: [
           `稀釋只加水，溶質的物質的量不變：$n = ${c1} \\times \\dfrac{${v1}}{1000} = ${num((c1 * v1) / 1000)}$ mol。稀釋後濃度為 $\\dfrac{${num((c1 * v1) / 1000)}}{${V2}} = ${num(ans)}$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $${num((c1 * v1) / V2)}$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $${V2}$ dm³」誤讀成「加入 $${V2}$ dm³ 的水」，兩者的分別在於前者是最終總體積。`,
-          `Dilution adds only water, so the amount of solute is unchanged: $n = ${c1} \\times \\dfrac{${v1}}{1000} = ${num((c1 * v1) / 1000)}$ mol, and the new molarity is $\\dfrac{${num((c1 * v1) / 1000)}}{${V2}} = ${num(ans)}$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $${num((c1 * v1) / V2)}$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads "diluted **to** $${V2}$ dm³" as "$${V2}$ dm³ of water **added**", which is a different final volume.`,
+          `Dilution adds only water, so the amount of solute is unchanged: $n = ${c1} \\times \\dfrac{${v1}}{1000} = ${num((c1 * v1) / 1000)}$ mol, and the new molarity is $\\dfrac{${num((c1 * v1) / 1000)}}{${V2}} = ${num(ans)}$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $${num((c1 * v1) / V2)}$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads "diluted to $${V2}$ dm³" as "$${V2}$ dm³ of water added", which is a different final volume.`,
         ],
       }
     },

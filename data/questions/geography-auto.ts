@@ -7,7 +7,7 @@
 //   subject  : geography
 //   count    : 22  (easy 22 / medium 0 / hard 0)
 //   types    : mc 22 / text 0 / long 0
-//   updated  : 2026-08-21
+//   updated  : 2026-08-22
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -40,7 +40,7 @@ export const geographyAutoQuestions: Question[] = [
       "erosion, transport and deposition",
       "warming, cooling and remaining constant"
     ],
-    "explanationEn": "Each kind of boundary has its own landforms and hazards. At divergent boundaries the plates pull apart, producing mid-ocean ridges and rift valleys; at convergent boundaries they press together, producing trenches, fold mountains and volcanoes; at transform boundaries they slide past one another, giving mostly shallow-focus earthquakes. Note that erosion, transport and deposition are the threefold division of **river and coastal processes**, a different topic altogether — the first set is driven by heat within the Earth, the second by surface water and waves.",
+    "explanationEn": "Each kind of boundary has its own landforms and hazards. At divergent boundaries the plates pull apart, producing mid-ocean ridges and rift valleys; at convergent boundaries they press together, producing trenches, fold mountains and volcanoes; at transform boundaries they slide past one another, giving mostly shallow-focus earthquakes. Note that erosion, transport and deposition are the threefold division of river and coastal processes, a different topic altogether — the first set is driven by heat within the Earth, the second by surface water and waves.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -133,7 +133,7 @@ export const geographyAutoQuestions: Question[] = [
       "a river must be flowing through it",
       "the slope is steep"
     ],
-    "explanationEn": "Contour lines join points of equal height, and the difference in height between adjacent lines is fixed. If two lines are close together on the map, the same rise or fall has been achieved over a very short horizontal distance, so the slope must be steep; widely spaced contours mean a gentle slope. Note that spacing reflects **gradient** alone and says nothing about elevation — a plateau can have gentle ground and a lowland can have a steep cliff. In a data-response question, read the spacing first and the values second, and do not run the two steps together.",
+    "explanationEn": "Contour lines join points of equal height, and the difference in height between adjacent lines is fixed. If two lines are close together on the map, the same rise or fall has been achieved over a very short horizontal distance, so the slope must be steep; widely spaced contours mean a gentle slope. Note that spacing reflects gradient alone and says nothing about elevation — a plateau can have gentle ground and a lowland can have a steep cliff. In a data-response question, read the spacing first and the values second, and do not run the two steps together.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -226,7 +226,7 @@ export const geographyAutoQuestions: Question[] = [
       "a sea cave",
       "a sea stack"
     ],
-    "explanationEn": "Coastal erosional landforms follow a clear sequence: a crack at the foot of the cliff is widened into a sea cave; if the cave cuts right through a headland it becomes an arch; when the roof of the arch collapses an isolated pillar, the stack, is left; and further erosion reduces the stack to a stump. The stack therefore belongs late in the sequence, not at its start. A spit and a sandbar, meanwhile, are **depositional** landforms built by longshore drift, working in the opposite direction, and do not belong in the same sequence.",
+    "explanationEn": "Coastal erosional landforms follow a clear sequence: a crack at the foot of the cliff is widened into a sea cave; if the cave cuts right through a headland it becomes an arch; when the roof of the arch collapses an isolated pillar, the stack, is left; and further erosion reduces the stack to a stump. The stack therefore belongs late in the sequence, not at its start. A spit and a sandbar, meanwhile, are depositional landforms built by longshore drift, working in the opposite direction, and do not belong in the same sequence.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -288,7 +288,7 @@ export const geographyAutoQuestions: Question[] = [
       "the föhn wind",
       "the trade winds"
     ],
-    "explanationEn": "The monsoon arises from the difference in heat capacity between land and sea: in summer the continent warms quickly, pressure over it falls, and wind blows from ocean to land bringing moisture and rain; in winter the continent cools quickly, pressure rises, and wind blows from land to ocean, dry and cold. Note that land and sea breezes work on a similar principle but on a **daily** rather than annual cycle and only near the coast; the föhn is air warming and drying as it descends the lee of a mountain; and the trade winds blow steadily towards the equator in low latitudes all year. The four differ in time scale and in cause, and are best learned together.",
+    "explanationEn": "The monsoon arises from the difference in heat capacity between land and sea: in summer the continent warms quickly, pressure over it falls, and wind blows from ocean to land bringing moisture and rain; in winter the continent cools quickly, pressure rises, and wind blows from land to ocean, dry and cold. Note that land and sea breezes work on a similar principle but on a daily rather than annual cycle and only near the coast; the föhn is air warming and drying as it descends the lee of a mountain; and the trade winds blow steadily towards the equator in low latitudes all year. The four differ in time scale and in cause, and are best learned together.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -374,14 +374,14 @@ export const geographyAutoQuestions: Question[] = [
     ],
     "correctIndex": 3,
     "marks": 1,
-    "contentEn": "When large numbers move from the countryside to the city, what may follow for the **rural** area?",
+    "contentEn": "When large numbers move from the countryside to the city, what may follow for the rural area?",
     "optionsEn": [
       "a marked rise in population density and more crowded living conditions",
       "a shortage of farmland, forcing large-scale opening of new fields",
       "a large expansion of public services to meet increased demand",
       "a loss of young adults, leaving a shortage of labour and an ageing population"
     ],
-    "explanationEn": "Those who move are mostly working-age adults, so the countryside is left with the old and the young: labour for farming falls, some fields go out of use, and schools and clinics contract or close for want of users, which feeds the cycle further. Note that the other three describe what happens at the **urban** end — rising density, shortage of land, sharply increased demand for services. Migration has two ends, and an answer must be clear about whether the question asks about the place people leave or the place they arrive.",
+    "explanationEn": "Those who move are mostly working-age adults, so the countryside is left with the old and the young: labour for farming falls, some fields go out of use, and schools and clinics contract or close for want of users, which feeds the cycle further. Note that the other three describe what happens at the urban end — rising density, shortage of land, sharply increased demand for services. Migration has two ends, and an answer must be clear about whether the question asks about the place people leave or the place they arrive.",
     "frameworkEn": "Auto-gated"
   },
   {

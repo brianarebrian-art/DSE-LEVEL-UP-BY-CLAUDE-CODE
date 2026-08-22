@@ -152,6 +152,33 @@ export function gateRow(row, subject) {
   for (const r of TERM_REDLINES) if (r.re.test(blob)) e.push(r.msg)
   if (subject === 'economics') for (const r of ECON_REDLINES) if (r.re.test(blob)) e.push(r.msg)
 
+  // ── Markdown 粗體 `**…**` ────────────────────────────────────────────────
+  // 題庫格式【從來冇聲明支援 markdown】。MathText 只處理 KaTeX `$…$`，其餘
+  // 文字一律 HTML-escape 之後照字面出，所以 `**偶數**` 喺畫面上就係一堆星號。
+  // 2026-08-22 實測：54 條 live 題目中招（math 30／history 9／geography 5／
+  // technology-living 5／chemistry 3／ethics-religious 2），其中 24 條係
+  // 機器閘批次自己帶入去嘅 —— 出題端寫 markdown 係手指習慣，唔會自己察覺。
+  //
+  // 亦【唔應該】改為支援 markdown 粗體：本平台已有經深思嘅強調機制
+  // CommandWordText（HKEAA 指令字高亮），而它刻意設計成【學生自診「審題陷阱」
+  // 之後先亮】，為咗避免提示過度。題幹入面永久粗體嘅考點正正就係嗰條規則
+  // 想避免嘅嘢。故此喺入庫前攔截，唔喺 renderer 度遷就。
+  //
+  // 影響統計（憲章 §6 —— 加閘前必查）：加入本閘時 live 題目 0 條、
+  // 等審草稿 0 條會 fail，屬純新增防線，不會令任何現有資料失效。
+  const visible = [
+    row?.question, row?.questionEn,
+    ...(Array.isArray(opts) ? opts : []),
+    ...(Array.isArray(row?.optionsEn) ? row.optionsEn : []),
+    row?.explanation, row?.explanationEn,
+    row?.referenceAnswer, row?.referenceAnswerEn,
+    row?.markingScheme, row?.markingSchemeEn,
+  ].filter((x) => typeof x === 'string').join('\n')
+  const bold = visible.match(/\*\*[^*\n]{1,80}\*\*/)
+  if (bold) {
+    e.push(`字面 markdown 粗體「${bold[0].slice(0, 40)}」—— 題庫唔支援 markdown，學生會見到星號本身`)
+  }
+
   // LaTeX hygiene — every subject: `$…$` math must be balanced
   if (typeof row?.question === 'string' && unbalancedDollars(row.question)) e.push('unbalanced `$` in question (LaTeX)')
   if (Array.isArray(opts)) opts.forEach((o, i) => { if (typeof o === 'string' && unbalancedDollars(o)) e.push(`unbalanced \`$\` in option ${i}`) })

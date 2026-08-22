@@ -7,7 +7,7 @@
 //   subject  : history
 //   count    : 37  (easy 37 / medium 0 / hard 0)
 //   types    : mc 37 / text 0 / long 0
-//   updated  : 2026-08-21
+//   updated  : 2026-08-22
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -71,7 +71,7 @@ export const historyAutoQuestions: Question[] = [
       "the Triple Alliance was formed by Britain, France and Russia",
       "the Triple Entente was formed by Germany, Japan and Italy"
     ],
-    "explanationEn": "The Triple Alliance was Germany, Austria-Hungary and Italy; the Triple Entente was Britain, France and Russia. Note two traps: Italy, though in the Alliance, changed sides after the war began; and the Germany–Japan–Italy grouping belongs to the **Second** World War, more than twenty years later. Mismatching camps and periods is the commonest error here.",
+    "explanationEn": "The Triple Alliance was Germany, Austria-Hungary and Italy; the Triple Entente was Britain, France and Russia. Note two traps: Italy, though in the Alliance, changed sides after the war began; and the Germany–Japan–Italy grouping belongs to the Second World War, more than twenty years later. Mismatching camps and periods is the commonest error here.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -102,7 +102,7 @@ export const historyAutoQuestions: Question[] = [
       "settling the position of the defeated states and reordering the post-war international system",
       "coordinating resistance to Soviet expansion"
     ],
-    "explanationEn": "The conference dealt with the defeated states, redrew borders, fixed reparations and created the **League of Nations**. Note that the United Nations and its Security Council came after the **Second** World War, more than twenty years later, while the partition of Africa belongs mainly to the Berlin Conference of the late nineteenth century. Keeping straight which conference did what is basic to this topic.",
+    "explanationEn": "The conference dealt with the defeated states, redrew borders, fixed reparations and created the League of Nations. Note that the United Nations and its Security Council came after the Second World War, more than twenty years later, while the partition of Africa belongs mainly to the Berlin Conference of the late nineteenth century. Keeping straight which conference did what is basic to this topic.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -133,7 +133,7 @@ export const historyAutoQuestions: Question[] = [
       "it dealt only with economic questions and not with peace",
       "it had no enforcement force of its own; sanctions depended on members’ voluntary compliance"
     ],
-    "explanationEn": "The League had no standing force, so whether sanctions bit depended entirely on members’ willingness to bear the cost; and with several major powers never joining or later withdrawing, its deterrent weight was thinner still. Note its seat was **Geneva**, not the United States — which, though its president had proposed the body, never joined, itself one of the weaknesses.",
+    "explanationEn": "The League had no standing force, so whether sanctions bit depended entirely on members’ willingness to bear the cost; and with several major powers never joining or later withdrawing, its deterrent weight was thinner still. Note its seat was Geneva, not the United States — which, though its president had proposed the body, never joined, itself one of the weaknesses.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -195,7 +195,7 @@ export const historyAutoQuestions: Question[] = [
       "Germany, Austria-Hungary and Italy",
       "Britain, France and the United States"
     ],
-    "explanationEn": "The Axis powers were Germany, Italy and Japan, opposed by the Allies, chiefly Britain, the United States, the Soviet Union and China. Note that the Germany–Austria-Hungary–Italy grouping belongs to the Triple Alliance of the **First** World War, more than twenty years earlier, and confusing the two is the commonest chronological slip in this topic; while the United States, Britain and the Soviet Union were the core of the Allies, on the opposite side. Establish which war is being asked about before naming any camp.",
+    "explanationEn": "The Axis powers were Germany, Italy and Japan, opposed by the Allies, chiefly Britain, the United States, the Soviet Union and China. Note that the Germany–Austria-Hungary–Italy grouping belongs to the Triple Alliance of the First World War, more than twenty years earlier, and confusing the two is the commonest chronological slip in this topic; while the United States, Britain and the Soviet Union were the core of the Allies, on the opposite side. Establish which war is being asked about before naming any camp.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -319,7 +319,7 @@ export const historyAutoQuestions: Question[] = [
       "a principal line of fortifications built within a country’s own borders",
       "the border along which two belligerents were actually in contact"
     ],
-    "explanationEn": "Modern war consumes enormously, and whether the front can be sustained depends on whether the rear can keep supplying it. States therefore rationed food and materials, brought women into the factories, and controlled news and production, drawing the whole of society into the war effort — that is what the home front means. It is a concept of **social mobilisation**, not a line on a map. Grasping this is what makes the description of the Second World War as total war intelligible.",
+    "explanationEn": "Modern war consumes enormously, and whether the front can be sustained depends on whether the rear can keep supplying it. States therefore rationed food and materials, brought women into the factories, and controlled news and production, drawing the whole of society into the war effort — that is what the home front means. It is a concept of social mobilisation, not a line on a map. Grasping this is what makes the description of the Second World War as total war intelligible.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -443,7 +443,7 @@ export const historyAutoQuestions: Question[] = [
       "the Cuban Missile Crisis",
       "the outbreak of the Korean War"
     ],
-    "explanationEn": "The dissolution of the Soviet Union marks the end of the bipolar structure. All three distractors are important events **within** the Cold War at different points: the Marshall Plan was an early economic instrument, the Korean War an early proxy conflict, and the Cuban Missile Crisis the peak of confrontation. Ordering the beginning, middle and end of the Cold War is a basic requirement of this topic.",
+    "explanationEn": "The dissolution of the Soviet Union marks the end of the bipolar structure. All three distractors are important events within the Cold War at different points: the Marshall Plan was an early economic instrument, the Korean War an early proxy conflict, and the Cuban Missile Crisis the peak of confrontation. Ordering the beginning, middle and end of the Cold War is a basic requirement of this topic.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -629,7 +629,7 @@ export const historyAutoQuestions: Question[] = [
       "the United Nations designating members and compelling them to join",
       "starting with joint management of particular industries and extending outward step by step"
     ],
-    "explanationEn": "Integration proceeded from small to large: first placing the industries most likely to cause conflict under joint management, then extending to a customs union, a common market and deeper policy coordination. The advantage of this order is that each step rests on the results of the last, letting cooperation accumulate. Note that a single currency came **late**, not at the beginning.",
+    "explanationEn": "Integration proceeded from small to large: first placing the industries most likely to cause conflict under joint management, then extending to a customs union, a common market and deeper policy coordination. The advantage of this order is that each step rests on the results of the last, letting cooperation accumulate. Note that a single currency came late, not at the beginning.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -815,7 +815,7 @@ export const historyAutoQuestions: Question[] = [
       "setting up people’s communes to collectivise agricultural production",
       "launching the First Five-Year Plan to concentrate on heavy industry"
     ],
-    "explanationEn": "All three distractors are real policies, but all belong to the period **before** 1978: the First Five-Year Plan to the 1950s, and the communes and the Great Leap to the end of that decade. Placing the measures of reform in correct sequence against the earlier planned-economy measures is basic here — get the chronology wrong and the causal analysis must follow.",
+    "explanationEn": "All three distractors are real policies, but all belong to the period before 1978: the First Five-Year Plan to the 1950s, and the communes and the Great Leap to the end of that decade. Placing the measures of reform in correct sequence against the earlier planned-economy measures is basic here — get the chronology wrong and the causal analysis must follow.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -1156,7 +1156,7 @@ export const historyAutoQuestions: Question[] = [
       "calling on all states to disband their armed forces and disarm completely",
       "calling for the United Nations to command the armed forces of all states"
     ],
-    "explanationEn": "Most participants were newly independent states in Asia and Africa which, having just emerged from colonial rule, were unwilling to attach themselves to either side of the new bipolar order, and so held to non-alignment as a way of keeping their autonomy while speaking together in international forums on colonialism and development. Note that non-alignment is not neutral silence, nor does it mean giving up defence; it is a stance in **foreign policy** — declining to tie one’s security and diplomacy to either superpower.",
+    "explanationEn": "Most participants were newly independent states in Asia and Africa which, having just emerged from colonial rule, were unwilling to attach themselves to either side of the new bipolar order, and so held to non-alignment as a way of keeping their autonomy while speaking together in international forums on colonialism and development. Note that non-alignment is not neutral silence, nor does it mean giving up defence; it is a stance in foreign policy — declining to tie one’s security and diplomacy to either superpower.",
     "frameworkEn": "Auto-gated"
   }
 ]

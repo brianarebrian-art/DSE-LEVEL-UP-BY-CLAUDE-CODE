@@ -537,7 +537,7 @@
     ],
     "correctIndex": 3,
     "explanation": "稀釋只加水，溶質的物質的量不變：$n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $200$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $0.5$ dm³」誤讀成「加入 $0.5$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted **to** $0.5$ dm³\" as \"$0.5$ dm³ of water **added**\", which is a different final volume."
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume."
   },
   {
     "id": "chem_rep_0021",
@@ -564,7 +564,7 @@
     ],
     "correctIndex": 0,
     "explanation": "稀釋只加水，溶質的物質的量不變：$n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{2} = 0.05$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $50$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $2$ dm³」誤讀成「加入 $2$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{2} = 0.05$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $50$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted **to** $2$ dm³\" as \"$2$ dm³ of water **added**\", which is a different final volume."
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{2} = 0.05$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $50$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $2$ dm³\" as \"$2$ dm³ of water added\", which is a different final volume."
   },
   {
     "id": "chem_rep_0022",
@@ -591,6 +591,6 @@
     ],
     "correctIndex": 1,
     "explanation": "稀釋只加水，溶質的物質的量不變：$n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $200$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $0.5$ dm³」誤讀成「加入 $0.5$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted **to** $0.5$ dm³\" as \"$0.5$ dm³ of water **added**\", which is a different final volume."
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume."
   }
 ]

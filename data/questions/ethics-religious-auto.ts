@@ -7,7 +7,7 @@
 //   subject  : ethics-religious
 //   count    : 29  (easy 29 / medium 0 / hard 0)
 //   types    : mc 29 / text 0 / long 0
-//   updated  : 2026-08-21
+//   updated  : 2026-08-22
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -319,7 +319,7 @@ export const ethicsReligiousAutoQuestions: Question[] = [
       "agreeing with everything the other person thinks, without objection or question",
       "being polite to those older or of higher standing than oneself"
     ],
-    "explanationEn": "Respect and agreement are different things. Listening carefully to someone’s reasons, saying where you differ and explaining why, itself treats them as capable of reasoning; nodding along or avoiding the subject, by contrast, declines to take their judgement seriously. The Kantian formulation is that a person is always at the same time an end and must never be treated **merely** as a means. Note that this does not forbid people making use of one another — employment has an instrumental side — but forbids treating someone **only** so, that is, disregarding their own will and worth.",
+    "explanationEn": "Respect and agreement are different things. Listening carefully to someone’s reasons, saying where you differ and explaining why, itself treats them as capable of reasoning; nodding along or avoiding the subject, by contrast, declines to take their judgement seriously. The Kantian formulation is that a person is always at the same time an end and must never be treated merely as a means. Note that this does not forbid people making use of one another — employment has an instrumental side — but forbids treating someone only so, that is, disregarding their own will and worth.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -381,7 +381,7 @@ export const ethicsReligiousAutoQuestions: Question[] = [
       "the canon and the deuterocanonical books",
       "the Old Testament and the New Testament"
     ],
-    "explanationEn": "The primary division of the Bible is between the Old and the New Testament: the first is the scripture Christianity inherits from the Jewish tradition, the second records Jesus and the early Church. The other three all genuinely exist but belong to smaller divisions: the Gospels and the Epistles are categories **within** the New Testament, the Law and the Prophets categories **within** the Old, and the deuterocanonical books a group whose inclusion differs between church traditions. Sorting the levels first prevents a subdivision being mistaken for the main division.",
+    "explanationEn": "The primary division of the Bible is between the Old and the New Testament: the first is the scripture Christianity inherits from the Jewish tradition, the second records Jesus and the early Church. The other three all genuinely exist but belong to smaller divisions: the Gospels and the Epistles are categories within the New Testament, the Law and the Prophets categories within the Old, and the deuterocanonical books a group whose inclusion differs between church traditions. Sorting the levels first prevents a subdivision being mistaken for the main division.",
     "frameworkEn": "Auto-gated"
   },
   {

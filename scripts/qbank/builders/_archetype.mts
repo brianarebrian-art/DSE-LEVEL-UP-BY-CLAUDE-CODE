@@ -62,7 +62,12 @@ const rotate = <X,>(arr: X[], k: number) =>
   arr.slice(-k % arr.length || arr.length).concat(arr.slice(0, -k % arr.length || arr.length))
 
 export function emit(subject: string, prefix: string, archs: Arch[], outPath: string) {
-  const live = getSubjectQuestions(subject) as { content: string }[]
+  // 對比材料要剔走【本科自己的 auto bank】。呢批題一旦入咗庫，再跑同一個
+  // builder（改錯字、補料、重新生成）就會每一條都同上一次嘅自己 100% 撞骨架，
+  // 全批被拒 —— 等於個 builder 變成一次性。auto-promote.mts 亦曾踩過同一個坑，
+  // 兩邊修法一致：入庫本身係按 id 覆寫，剔走之後唔會產生重複記錄。
+  const live = (getSubjectQuestions(subject) as { content: string; framework?: string }[])
+    .filter((q) => q.framework !== 'auto')
   const liveSkel = new Set(live.map((q) => skeleton(q.content)))
   const seenSkel = new Map<string, string>()
   const rows: unknown[] = []
