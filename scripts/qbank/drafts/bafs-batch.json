@@ -33,7 +33,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-bafs"
-    }
+    },
+    "topicZh": "折舊（直線法）",
+    "topicId": "depreciation",
+    "topicEn": "Depreciation — Straight-Line Method"
   },
   {
     "id": "bafs-02",
@@ -69,7 +72,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-bafs"
-    }
+    },
+    "topicZh": "存貨估值",
+    "topicId": "accounting",
+    "topicEn": "Inventory Valuation"
   },
   {
     "id": "bafs-03",
@@ -105,7 +111,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-bafs"
-    }
+    },
+    "topicZh": "流動比率",
+    "topicId": "ratios",
+    "topicEn": "Current Ratio"
   },
   {
     "id": "bafs-04",
@@ -141,7 +150,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-bafs"
-    }
+    },
+    "topicZh": "財務狀況表分類（直式）",
+    "topicId": "financial_statements",
+    "topicEn": "Statement of Financial Position — Vertical Form"
   },
   {
     "id": "bafs-05",
@@ -177,7 +189,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-bafs"
-    }
+    },
+    "topicZh": "呆帳準備",
+    "topicId": "accounting",
+    "topicEn": "Provision for Doubtful Debts"
   },
   {
     "id": "bafs-06",
@@ -213,6 +228,9 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-bafs"
-    }
+    },
+    "topicZh": "有限公司融資（債權證）",
+    "topicId": "financial_mgmt",
+    "topicEn": "Company Financing — Debentures"
   }
 ]

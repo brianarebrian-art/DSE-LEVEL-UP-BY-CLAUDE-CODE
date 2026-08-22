@@ -21,7 +21,9 @@
       "concept_swap"
     ],
     "dnaTag": "CMT",
-    "_mother": "lrxj-lexis"
+    "_mother": "lrxj-lexis",
+    "topicZh": "字詞解釋",
+    "topicId": "fanwen_diction"
   },
   {
     "id": "art-chinese-lrxj-comp-1",
@@ -45,7 +47,9 @@
       "irrelevant"
     ],
     "dnaTag": "TMR",
-    "_mother": "lrxj-comp"
+    "_mother": "lrxj-comp",
+    "topicZh": "內容理解",
+    "topicId": "fanwen_content"
   },
   {
     "id": "art-chinese-lrxj-comp-2",
@@ -69,7 +73,9 @@
       "concept_swap"
     ],
     "dnaTag": "CMT",
-    "_mother": "lrxj-comp"
+    "_mother": "lrxj-comp",
+    "topicZh": "內容理解",
+    "topicId": "fanwen_content"
   },
   {
     "id": "art-chinese-lrxj-comp-3",
@@ -93,7 +99,9 @@
       "concept_reversal"
     ],
     "dnaTag": "TMR",
-    "_mother": "lrxj-comp"
+    "_mother": "lrxj-comp",
+    "topicZh": "內容理解",
+    "topicId": "fanwen_content"
   },
   {
     "id": "art-chinese-lrxj-comp-4",
@@ -117,7 +125,9 @@
       "irrelevant"
     ],
     "dnaTag": "CMT",
-    "_mother": "lrxj-comp"
+    "_mother": "lrxj-comp",
+    "topicZh": "內容理解",
+    "topicId": "fanwen_content"
   },
   {
     "id": "art-chinese-lrxj-synthesis-5",
@@ -141,7 +151,9 @@
       "over_interpretation"
     ],
     "dnaTag": "CMT",
-    "_mother": "lrxj-synthesis"
+    "_mother": "lrxj-synthesis",
+    "topicZh": "論仁綜合分析",
+    "topicId": "fanwen_content"
   },
   {
     "id": "art-chinese-yxdz-content-0",
@@ -165,7 +177,9 @@
       "over_interpretation"
     ],
     "dnaTag": "TMR",
-    "_mother": "yxdz-content"
+    "_mother": "yxdz-content",
+    "topicZh": "內容理解",
+    "topicId": "fanwen_content"
   },
   {
     "id": "art-chinese-yxdz-technique-1",
@@ -189,7 +203,9 @@
       "irrelevant"
     ],
     "dnaTag": "CMT",
-    "_mother": "yxdz-technique"
+    "_mother": "yxdz-technique",
+    "topicZh": "表達手法",
+    "topicId": "fanwen_lines"
   },
   {
     "id": "art-chinese-yxdz-technique-2",
@@ -213,7 +229,9 @@
       "over_interpretation"
     ],
     "dnaTag": "CMT",
-    "_mother": "yxdz-technique"
+    "_mother": "yxdz-technique",
+    "topicZh": "表達手法",
+    "topicId": "fanwen_lines"
   },
   {
     "id": "art-chinese-yxdz-diction-3",
@@ -237,6 +255,8 @@
       "irrelevant"
     ],
     "dnaTag": "TMR",
-    "_mother": "yxdz-diction"
+    "_mother": "yxdz-diction",
+    "topicZh": "煉字與主旨",
+    "topicId": "fanwen_diction"
   }
 ]

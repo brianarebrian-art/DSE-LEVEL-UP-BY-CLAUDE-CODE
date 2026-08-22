@@ -30,7 +30,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-english-idioms"
-    }
+    },
+    "topicZh": "Idiom in context",
+    "topicId": "vocabulary",
+    "topicEn": "Idioms in Context"
   },
   {
     "id": "eng-idiom-02",
@@ -63,7 +66,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-english-idioms"
-    }
+    },
+    "topicZh": "Choosing the right idiom",
+    "topicId": "vocabulary",
+    "topicEn": "Choosing the Right Idiom"
   },
   {
     "id": "eng-idiom-03",
@@ -96,7 +102,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-english-idioms"
-    }
+    },
+    "topicZh": "Idiom meaning",
+    "topicId": "vocabulary",
+    "topicEn": "Idiom Meaning"
   },
   {
     "id": "eng-idiom-04",
@@ -129,7 +138,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-english-idioms"
-    }
+    },
+    "topicZh": "Academic register (opening phrase)",
+    "topicId": "genre_tone",
+    "topicEn": "Academic Register — Opening Phrases"
   },
   {
     "id": "eng-idiom-05",
@@ -162,7 +174,10 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-english-idioms"
-    }
+    },
+    "topicZh": "Function of a phrase",
+    "topicId": "reading",
+    "topicEn": "Function of a Phrase in a Paragraph"
   },
   {
     "id": "eng-idiom-06",
@@ -195,6 +210,9 @@
       "frequency": "High",
       "trap_level": 3,
       "source": "agentic-harness-v5-english-idioms"
-    }
+    },
+    "topicZh": "Choosing a formal register",
+    "topicId": "genre_tone",
+    "topicEn": "Choosing a Formal Register"
   }
 ]
