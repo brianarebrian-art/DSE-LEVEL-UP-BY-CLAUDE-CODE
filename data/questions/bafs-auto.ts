@@ -1,0 +1,1720 @@
+// AUTO-GATED question bank —— 由 scripts/qbank/auto-promote.mts 自動入庫。
+// 【本檔題目未經真人逐題審批。】機器只能檢驗客觀項目：格式、選項、術語紅線、
+// LaTeX、與現有題庫的重複度、topic id 是否已註冊。答案在學術上是否正確，
+// 並不在此閘的能力範圍之內 —— 故出題端必須 correct-by-construction，或引用
+// 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
+// 「經自動檢查 …本題未有實名逐題審批紀錄」。
+//   subject  : bafs
+//   count    : 55  (easy 19 / medium 35 / hard 1)
+//   types    : mc 55 / text 0 / long 0
+//   updated  : 2026-08-22
+// 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
+import type { Question } from './types'
+
+export const bafsAutoQuestions: Question[] = [
+  {
+    "id": "bafs_rep_0001",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業年結時的流動資產為 \\$240，流動負債為 \\$96。求其流動比率。",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 240 ÷ 96 = 2.5，習慣寫成 2.5 : 1，即每 \\$1 流動負債有 \\$2.5 流動資產支持。把分子分母對調得 0.4 : 1，比率隨即失去意義 —— 記法是：能償還的東西在上，要償還的在下。\\$144 是營運資金，兩者用同一組數字但答的是不同問題：營運資金是【差額】，比率是【倍數】，差額回答「夠不夠」，比率回答「寬裕到甚麼程度」。最後一項把比率誤作百分比表達，流動比率按慣例不用百分號。",
+    "options": [
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$144",
+      "250%"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "At the year end a business has current assets of \\$240 and current liabilities of \\$96. Find its current ratio.",
+    "optionsEn": [
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$144",
+      "250%"
+    ],
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 240 ÷ 96 = 2.5, conventionally written 2.5 : 1 — that is, \\$2.5 of current assets backs every \\$1 of current liabilities. Inverting gives 0.4 : 1 and destroys the meaning; remember that what can pay goes on top. \\$144 is working capital: same figures, different question. Working capital is a *difference* answering \"is there enough\"; the ratio is a *multiple* answering \"how comfortably\". The last option expresses the ratio as a percentage, which is not the convention here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0002",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業年結時的流動資產為 \\$500，流動負債為 \\$200。求其流動比率。",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 500 ÷ 200 = 2.5，習慣寫成 2.5 : 1，即每 \\$1 流動負債有 \\$2.5 流動資產支持。把分子分母對調得 0.4 : 1，比率隨即失去意義 —— 記法是：能償還的東西在上，要償還的在下。\\$300 是營運資金，兩者用同一組數字但答的是不同問題：營運資金是【差額】，比率是【倍數】，差額回答「夠不夠」，比率回答「寬裕到甚麼程度」。最後一項把比率誤作百分比表達，流動比率按慣例不用百分號。",
+    "options": [
+      "250%",
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$300"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "At the year end a business has current assets of \\$500 and current liabilities of \\$200. Find its current ratio.",
+    "optionsEn": [
+      "250%",
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$300"
+    ],
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 500 ÷ 200 = 2.5, conventionally written 2.5 : 1 — that is, \\$2.5 of current assets backs every \\$1 of current liabilities. Inverting gives 0.4 : 1 and destroys the meaning; remember that what can pay goes on top. \\$300 is working capital: same figures, different question. Working capital is a *difference* answering \"is there enough\"; the ratio is a *multiple* answering \"how comfortably\". The last option expresses the ratio as a percentage, which is not the convention here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0003",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業年結時的流動資產為 \\$135，流動負債為 \\$90。求其流動比率。",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 135 ÷ 90 = 1.5，習慣寫成 1.5 : 1，即每 \\$1 流動負債有 \\$1.5 流動資產支持。把分子分母對調得 0.6667 : 1，比率隨即失去意義 —— 記法是：能償還的東西在上，要償還的在下。\\$45 是營運資金，兩者用同一組數字但答的是不同問題：營運資金是【差額】，比率是【倍數】，差額回答「夠不夠」，比率回答「寬裕到甚麼程度」。最後一項把比率誤作百分比表達，流動比率按慣例不用百分號。",
+    "options": [
+      "\\$45",
+      "150%",
+      "1.5 : 1",
+      "0.6667 : 1"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "At the year end a business has current assets of \\$135 and current liabilities of \\$90. Find its current ratio.",
+    "optionsEn": [
+      "\\$45",
+      "150%",
+      "1.5 : 1",
+      "0.6667 : 1"
+    ],
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 135 ÷ 90 = 1.5, conventionally written 1.5 : 1 — that is, \\$1.5 of current assets backs every \\$1 of current liabilities. Inverting gives 0.6667 : 1 and destroys the meaning; remember that what can pay goes on top. \\$45 is working capital: same figures, different question. Working capital is a *difference* answering \"is there enough\"; the ratio is a *multiple* answering \"how comfortably\". The last option expresses the ratio as a percentage, which is not the convention here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0004",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業年結時的流動資產為 \\$840，流動負債為 \\$240。求其流動比率。",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 840 ÷ 240 = 3.5，習慣寫成 3.5 : 1，即每 \\$1 流動負債有 \\$3.5 流動資產支持。把分子分母對調得 0.2857 : 1，比率隨即失去意義 —— 記法是：能償還的東西在上，要償還的在下。\\$600 是營運資金，兩者用同一組數字但答的是不同問題：營運資金是【差額】，比率是【倍數】，差額回答「夠不夠」，比率回答「寬裕到甚麼程度」。最後一項把比率誤作百分比表達，流動比率按慣例不用百分號。",
+    "options": [
+      "0.2857 : 1",
+      "\\$600",
+      "350%",
+      "3.5 : 1"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "At the year end a business has current assets of \\$840 and current liabilities of \\$240. Find its current ratio.",
+    "optionsEn": [
+      "0.2857 : 1",
+      "\\$600",
+      "350%",
+      "3.5 : 1"
+    ],
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 840 ÷ 240 = 3.5, conventionally written 3.5 : 1 — that is, \\$3.5 of current assets backs every \\$1 of current liabilities. Inverting gives 0.2857 : 1 and destroys the meaning; remember that what can pay goes on top. \\$600 is working capital: same figures, different question. Working capital is a *difference* answering \"is there enough\"; the ratio is a *multiple* answering \"how comfortably\". The last option expresses the ratio as a percentage, which is not the convention here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0005",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業年結時的流動資產為 \\$320，流動負債為 \\$128。求其流動比率。",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 320 ÷ 128 = 2.5，習慣寫成 2.5 : 1，即每 \\$1 流動負債有 \\$2.5 流動資產支持。把分子分母對調得 0.4 : 1，比率隨即失去意義 —— 記法是：能償還的東西在上，要償還的在下。\\$192 是營運資金，兩者用同一組數字但答的是不同問題：營運資金是【差額】，比率是【倍數】，差額回答「夠不夠」，比率回答「寬裕到甚麼程度」。最後一項把比率誤作百分比表達，流動比率按慣例不用百分號。",
+    "options": [
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$192",
+      "250%"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "At the year end a business has current assets of \\$320 and current liabilities of \\$128. Find its current ratio.",
+    "optionsEn": [
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$192",
+      "250%"
+    ],
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 320 ÷ 128 = 2.5, conventionally written 2.5 : 1 — that is, \\$2.5 of current assets backs every \\$1 of current liabilities. Inverting gives 0.4 : 1 and destroys the meaning; remember that what can pay goes on top. \\$192 is working capital: same figures, different question. Working capital is a *difference* answering \"is there enough\"; the ratio is a *multiple* answering \"how comfortably\". The last option expresses the ratio as a percentage, which is not the convention here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0006",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業年結時的流動資產為 \\$990，流動負債為 \\$396。求其流動比率。",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 990 ÷ 396 = 2.5，習慣寫成 2.5 : 1，即每 \\$1 流動負債有 \\$2.5 流動資產支持。把分子分母對調得 0.4 : 1，比率隨即失去意義 —— 記法是：能償還的東西在上，要償還的在下。\\$594 是營運資金，兩者用同一組數字但答的是不同問題：營運資金是【差額】，比率是【倍數】，差額回答「夠不夠」，比率回答「寬裕到甚麼程度」。最後一項把比率誤作百分比表達，流動比率按慣例不用百分號。",
+    "options": [
+      "250%",
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$594"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "At the year end a business has current assets of \\$990 and current liabilities of \\$396. Find its current ratio.",
+    "optionsEn": [
+      "250%",
+      "2.5 : 1",
+      "0.4 : 1",
+      "\\$594"
+    ],
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 990 ÷ 396 = 2.5, conventionally written 2.5 : 1 — that is, \\$2.5 of current assets backs every \\$1 of current liabilities. Inverting gives 0.4 : 1 and destroys the meaning; remember that what can pay goes on top. \\$594 is working capital: same figures, different question. Working capital is a *difference* answering \"is there enough\"; the ratio is a *multiple* answering \"how comfortably\". The last option expresses the ratio as a percentage, which is not the convention here.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0007",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業的流動資產為 \\$300，其中存貨佔 \\$120；流動負債為 \\$90。求其速動比率。",
+    "explanation": "速動比率把【存貨】剔出流動資產之外：(300 − 120) ÷ 90 = 2，即 2 : 1。點解要剔走存貨：存貨要先賣出、再收到錢，變現最慢，遇上急需還債時未必幫得上。忘記扣除存貨得 3.3333 : 1，那是流動比率，是本題最主要的失分位。1.3333 : 1 只用了存貨本身，方向剛好相反。最後一項把分子分母對調。",
+    "options": [
+      "1.3333 : 1",
+      "0.5 : 1",
+      "2 : 1",
+      "3.3333 : 1"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A business has current assets of \\$300, of which \\$120 is inventory, and current liabilities of \\$90. Find its quick ratio.",
+    "optionsEn": [
+      "1.3333 : 1",
+      "0.5 : 1",
+      "2 : 1",
+      "3.3333 : 1"
+    ],
+    "explanationEn": "The quick ratio strips *inventory* out of current assets: (300 − 120) ÷ 90 = 2, i.e. 2 : 1. Inventory is excluded because it must first be sold and then collected, making it the slowest current asset to turn into cash — of little help when debts fall due suddenly. Forgetting to deduct it gives 3.3333 : 1, which is the current ratio and the main trap here. 1.3333 : 1 uses only the inventory, the opposite of what is required, and the last option inverts the ratio.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0008",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業的流動資產為 \\$450，其中存貨佔 \\$150；流動負債為 \\$100。求其速動比率。",
+    "explanation": "速動比率把【存貨】剔出流動資產之外：(450 − 150) ÷ 100 = 3，即 3 : 1。點解要剔走存貨：存貨要先賣出、再收到錢，變現最慢，遇上急需還債時未必幫得上。忘記扣除存貨得 4.5 : 1，那是流動比率，是本題最主要的失分位。1.5 : 1 只用了存貨本身，方向剛好相反。最後一項把分子分母對調。",
+    "options": [
+      "4.5 : 1",
+      "1.5 : 1",
+      "0.3333 : 1",
+      "3 : 1"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A business has current assets of \\$450, of which \\$150 is inventory, and current liabilities of \\$100. Find its quick ratio.",
+    "optionsEn": [
+      "4.5 : 1",
+      "1.5 : 1",
+      "0.3333 : 1",
+      "3 : 1"
+    ],
+    "explanationEn": "The quick ratio strips *inventory* out of current assets: (450 − 150) ÷ 100 = 3, i.e. 3 : 1. Inventory is excluded because it must first be sold and then collected, making it the slowest current asset to turn into cash — of little help when debts fall due suddenly. Forgetting to deduct it gives 4.5 : 1, which is the current ratio and the main trap here. 1.5 : 1 uses only the inventory, the opposite of what is required, and the last option inverts the ratio.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0009",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業的流動資產為 \\$260，其中存貨佔 \\$60；流動負債為 \\$80。求其速動比率。",
+    "explanation": "速動比率把【存貨】剔出流動資產之外：(260 − 60) ÷ 80 = 2.5，即 2.5 : 1。點解要剔走存貨：存貨要先賣出、再收到錢，變現最慢，遇上急需還債時未必幫得上。忘記扣除存貨得 3.25 : 1，那是流動比率，是本題最主要的失分位。0.75 : 1 只用了存貨本身，方向剛好相反。最後一項把分子分母對調。",
+    "options": [
+      "2.5 : 1",
+      "3.25 : 1",
+      "0.75 : 1",
+      "0.4 : 1"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A business has current assets of \\$260, of which \\$60 is inventory, and current liabilities of \\$80. Find its quick ratio.",
+    "optionsEn": [
+      "2.5 : 1",
+      "3.25 : 1",
+      "0.75 : 1",
+      "0.4 : 1"
+    ],
+    "explanationEn": "The quick ratio strips *inventory* out of current assets: (260 − 60) ÷ 80 = 2.5, i.e. 2.5 : 1. Inventory is excluded because it must first be sold and then collected, making it the slowest current asset to turn into cash — of little help when debts fall due suddenly. Forgetting to deduct it gives 3.25 : 1, which is the current ratio and the main trap here. 0.75 : 1 uses only the inventory, the opposite of what is required, and the last option inverts the ratio.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0010",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業的流動資產為 \\$720，其中存貨佔 \\$220；流動負債為 \\$125。求其速動比率。",
+    "explanation": "速動比率把【存貨】剔出流動資產之外：(720 − 220) ÷ 125 = 4，即 4 : 1。點解要剔走存貨：存貨要先賣出、再收到錢，變現最慢，遇上急需還債時未必幫得上。忘記扣除存貨得 5.76 : 1，那是流動比率，是本題最主要的失分位。1.76 : 1 只用了存貨本身，方向剛好相反。最後一項把分子分母對調。",
+    "options": [
+      "0.25 : 1",
+      "4 : 1",
+      "5.76 : 1",
+      "1.76 : 1"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A business has current assets of \\$720, of which \\$220 is inventory, and current liabilities of \\$125. Find its quick ratio.",
+    "optionsEn": [
+      "0.25 : 1",
+      "4 : 1",
+      "5.76 : 1",
+      "1.76 : 1"
+    ],
+    "explanationEn": "The quick ratio strips *inventory* out of current assets: (720 − 220) ÷ 125 = 4, i.e. 4 : 1. Inventory is excluded because it must first be sold and then collected, making it the slowest current asset to turn into cash — of little help when debts fall due suddenly. Forgetting to deduct it gives 5.76 : 1, which is the current ratio and the main trap here. 1.76 : 1 uses only the inventory, the opposite of what is required, and the last option inverts the ratio.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0011",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業的流動資產為 \\$180，其中存貨佔 \\$80；流動負債為 \\$50。求其速動比率。",
+    "explanation": "速動比率把【存貨】剔出流動資產之外：(180 − 80) ÷ 50 = 2，即 2 : 1。點解要剔走存貨：存貨要先賣出、再收到錢，變現最慢，遇上急需還債時未必幫得上。忘記扣除存貨得 3.6 : 1，那是流動比率，是本題最主要的失分位。1.6 : 1 只用了存貨本身，方向剛好相反。最後一項把分子分母對調。",
+    "options": [
+      "1.6 : 1",
+      "0.5 : 1",
+      "2 : 1",
+      "3.6 : 1"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A business has current assets of \\$180, of which \\$80 is inventory, and current liabilities of \\$50. Find its quick ratio.",
+    "optionsEn": [
+      "1.6 : 1",
+      "0.5 : 1",
+      "2 : 1",
+      "3.6 : 1"
+    ],
+    "explanationEn": "The quick ratio strips *inventory* out of current assets: (180 − 80) ÷ 50 = 2, i.e. 2 : 1. Inventory is excluded because it must first be sold and then collected, making it the slowest current asset to turn into cash — of little help when debts fall due suddenly. Forgetting to deduct it gives 3.6 : 1, which is the current ratio and the main trap here. 1.6 : 1 uses only the inventory, the opposite of what is required, and the last option inverts the ratio.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0012",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某企業的流動資產為 \\$640，其中存貨佔 \\$240；流動負債為 \\$160。求其速動比率。",
+    "explanation": "速動比率把【存貨】剔出流動資產之外：(640 − 240) ÷ 160 = 2.5，即 2.5 : 1。點解要剔走存貨：存貨要先賣出、再收到錢，變現最慢，遇上急需還債時未必幫得上。忘記扣除存貨得 4 : 1，那是流動比率，是本題最主要的失分位。1.5 : 1 只用了存貨本身，方向剛好相反。最後一項把分子分母對調。",
+    "options": [
+      "4 : 1",
+      "1.5 : 1",
+      "0.4 : 1",
+      "2.5 : 1"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A business has current assets of \\$640, of which \\$240 is inventory, and current liabilities of \\$160. Find its quick ratio.",
+    "optionsEn": [
+      "4 : 1",
+      "1.5 : 1",
+      "0.4 : 1",
+      "2.5 : 1"
+    ],
+    "explanationEn": "The quick ratio strips *inventory* out of current assets: (640 − 240) ÷ 160 = 2.5, i.e. 2.5 : 1. Inventory is excluded because it must first be sold and then collected, making it the slowest current asset to turn into cash — of little help when debts fall due suddenly. Forgetting to deduct it gives 4 : 1, which is the current ratio and the main trap here. 1.5 : 1 uses only the inventory, the opposite of what is required, and the last option inverts the ratio.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0013",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商本年度的銷貨成本為 \\$480。期初存貨為 \\$60，期末存貨為 \\$100。求其存貨周轉率（次）。",
+    "explanation": "存貨周轉率 = 銷貨成本 ÷ 平均存貨。平均存貨 = (60 + 100) ÷ 2 = \\$80，故周轉率 = 480 ÷ 80 = 6 次，即該年存貨平均換手 6 次。只用期末存貨作分母得 4.8 次 —— 期末數字只代表年結一刻的水平，遇上季節性生意會嚴重失真，故要取平均。把兩期存貨【相加】而不除以二得 3 次，分母大了一倍。最後一項把分子分母對調，所得是周轉一次所需的年數而非次數。",
+    "options": [
+      "6 次",
+      "4.8 次",
+      "3 次",
+      "0.1667 次"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A retailer's cost of goods sold for the year is \\$480. Opening inventory was \\$60 and closing inventory \\$100. Find the inventory turnover (times).",
+    "optionsEn": [
+      "6 次",
+      "4.8 次",
+      "3 次",
+      "0.1667 次"
+    ],
+    "explanationEn": "Inventory turnover = cost of goods sold ÷ average inventory. Average inventory = (60 + 100) ÷ 2 = \\$80, so turnover = 480 ÷ 80 = 6 times — stock turned over 6 times during the year. Using closing inventory alone gives 4.8 times, but a year-end figure reflects one instant and distorts badly in a seasonal trade, which is why the average is used. Adding the two figures without halving them gives 3 times, doubling the denominator. The last option inverts the ratio, giving years per turn rather than turns per year.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0014",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商本年度的銷貨成本為 \\$900。期初存貨為 \\$120，期末存貨為 \\$180。求其存貨周轉率（次）。",
+    "explanation": "存貨周轉率 = 銷貨成本 ÷ 平均存貨。平均存貨 = (120 + 180) ÷ 2 = \\$150，故周轉率 = 900 ÷ 150 = 6 次，即該年存貨平均換手 6 次。只用期末存貨作分母得 5 次 —— 期末數字只代表年結一刻的水平，遇上季節性生意會嚴重失真，故要取平均。把兩期存貨【相加】而不除以二得 3 次，分母大了一倍。最後一項把分子分母對調，所得是周轉一次所需的年數而非次數。",
+    "options": [
+      "0.1667 次",
+      "6 次",
+      "5 次",
+      "3 次"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A retailer's cost of goods sold for the year is \\$900. Opening inventory was \\$120 and closing inventory \\$180. Find the inventory turnover (times).",
+    "optionsEn": [
+      "0.1667 次",
+      "6 次",
+      "5 次",
+      "3 次"
+    ],
+    "explanationEn": "Inventory turnover = cost of goods sold ÷ average inventory. Average inventory = (120 + 180) ÷ 2 = \\$150, so turnover = 900 ÷ 150 = 6 times — stock turned over 6 times during the year. Using closing inventory alone gives 5 times, but a year-end figure reflects one instant and distorts badly in a seasonal trade, which is why the average is used. Adding the two figures without halving them gives 3 times, doubling the denominator. The last option inverts the ratio, giving years per turn rather than turns per year.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0015",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商本年度的銷貨成本為 \\$350。期初存貨為 \\$40，期末存貨為 \\$60。求其存貨周轉率（次）。",
+    "explanation": "存貨周轉率 = 銷貨成本 ÷ 平均存貨。平均存貨 = (40 + 60) ÷ 2 = \\$50，故周轉率 = 350 ÷ 50 = 7 次，即該年存貨平均換手 7 次。只用期末存貨作分母得 5.8333 次 —— 期末數字只代表年結一刻的水平，遇上季節性生意會嚴重失真，故要取平均。把兩期存貨【相加】而不除以二得 3.5 次，分母大了一倍。最後一項把分子分母對調，所得是周轉一次所需的年數而非次數。",
+    "options": [
+      "3.5 次",
+      "0.1429 次",
+      "7 次",
+      "5.8333 次"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A retailer's cost of goods sold for the year is \\$350. Opening inventory was \\$40 and closing inventory \\$60. Find the inventory turnover (times).",
+    "optionsEn": [
+      "3.5 次",
+      "0.1429 次",
+      "7 次",
+      "5.8333 次"
+    ],
+    "explanationEn": "Inventory turnover = cost of goods sold ÷ average inventory. Average inventory = (40 + 60) ÷ 2 = \\$50, so turnover = 350 ÷ 50 = 7 times — stock turned over 7 times during the year. Using closing inventory alone gives 5.8333 times, but a year-end figure reflects one instant and distorts badly in a seasonal trade, which is why the average is used. Adding the two figures without halving them gives 3.5 times, doubling the denominator. The last option inverts the ratio, giving years per turn rather than turns per year.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0016",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商本年度的銷貨成本為 \\$1440。期初存貨為 \\$200，期末存貨為 \\$280。求其存貨周轉率（次）。",
+    "explanation": "存貨周轉率 = 銷貨成本 ÷ 平均存貨。平均存貨 = (200 + 280) ÷ 2 = \\$240，故周轉率 = 1440 ÷ 240 = 6 次，即該年存貨平均換手 6 次。只用期末存貨作分母得 5.1429 次 —— 期末數字只代表年結一刻的水平，遇上季節性生意會嚴重失真，故要取平均。把兩期存貨【相加】而不除以二得 3 次，分母大了一倍。最後一項把分子分母對調，所得是周轉一次所需的年數而非次數。",
+    "options": [
+      "5.1429 次",
+      "3 次",
+      "0.1667 次",
+      "6 次"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A retailer's cost of goods sold for the year is \\$1440. Opening inventory was \\$200 and closing inventory \\$280. Find the inventory turnover (times).",
+    "optionsEn": [
+      "5.1429 次",
+      "3 次",
+      "0.1667 次",
+      "6 次"
+    ],
+    "explanationEn": "Inventory turnover = cost of goods sold ÷ average inventory. Average inventory = (200 + 280) ÷ 2 = \\$240, so turnover = 1440 ÷ 240 = 6 times — stock turned over 6 times during the year. Using closing inventory alone gives 5.1429 times, but a year-end figure reflects one instant and distorts badly in a seasonal trade, which is why the average is used. Adding the two figures without halving them gives 3 times, doubling the denominator. The last option inverts the ratio, giving years per turn rather than turns per year.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0017",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "ratios",
+    "topicZh": "財務比率",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商本年度的銷貨成本為 \\$600。期初存貨為 \\$90，期末存貨為 \\$110。求其存貨周轉率（次）。",
+    "explanation": "存貨周轉率 = 銷貨成本 ÷ 平均存貨。平均存貨 = (90 + 110) ÷ 2 = \\$100，故周轉率 = 600 ÷ 100 = 6 次，即該年存貨平均換手 6 次。只用期末存貨作分母得 5.4545 次 —— 期末數字只代表年結一刻的水平，遇上季節性生意會嚴重失真，故要取平均。把兩期存貨【相加】而不除以二得 3 次，分母大了一倍。最後一項把分子分母對調，所得是周轉一次所需的年數而非次數。",
+    "options": [
+      "6 次",
+      "5.4545 次",
+      "3 次",
+      "0.1667 次"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A retailer's cost of goods sold for the year is \\$600. Opening inventory was \\$90 and closing inventory \\$110. Find the inventory turnover (times).",
+    "optionsEn": [
+      "6 次",
+      "5.4545 次",
+      "3 次",
+      "0.1667 次"
+    ],
+    "explanationEn": "Inventory turnover = cost of goods sold ÷ average inventory. Average inventory = (90 + 110) ÷ 2 = \\$100, so turnover = 600 ÷ 100 = 6 times — stock turned over 6 times during the year. Using closing inventory alone gives 5.4545 times, but a year-end figure reflects one instant and distorts badly in a seasonal trade, which is why the average is used. Adding the two figures without halving them gives 3 times, doubling the denominator. The last option inverts the ratio, giving years per turn rather than turns per year.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0018",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某商號本年度期初存貨 \\$40，年內購貨 \\$260，期末存貨 \\$50。求本年度的銷貨成本。",
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 40 + 260 − 50 = \\$250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$350，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$260 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "options": [
+      "\\$260",
+      "\\$250",
+      "\\$350",
+      "\\$270"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A trader had opening inventory of \\$40, purchases of \\$260 during the year and closing inventory of \\$50. Find the cost of goods sold.",
+    "optionsEn": [
+      "\\$260",
+      "\\$250",
+      "\\$350",
+      "\\$270"
+    ],
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 40 + 260 − 50 = \\$250. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$350 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$260 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0019",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某商號本年度期初存貨 \\$120，年內購貨 \\$700，期末存貨 \\$180。求本年度的銷貨成本。",
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 120 + 700 − 180 = \\$640。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$1000，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$700 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "options": [
+      "\\$760",
+      "\\$700",
+      "\\$640",
+      "\\$1000"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A trader had opening inventory of \\$120, purchases of \\$700 during the year and closing inventory of \\$180. Find the cost of goods sold.",
+    "optionsEn": [
+      "\\$760",
+      "\\$700",
+      "\\$640",
+      "\\$1000"
+    ],
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 120 + 700 − 180 = \\$640. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$1000 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$700 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0020",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某商號本年度期初存貨 \\$25，年內購貨 \\$160，期末存貨 \\$35。求本年度的銷貨成本。",
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 25 + 160 − 35 = \\$150。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$220，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$160 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "options": [
+      "\\$220",
+      "\\$170",
+      "\\$160",
+      "\\$150"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A trader had opening inventory of \\$25, purchases of \\$160 during the year and closing inventory of \\$35. Find the cost of goods sold.",
+    "optionsEn": [
+      "\\$220",
+      "\\$170",
+      "\\$160",
+      "\\$150"
+    ],
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 25 + 160 − 35 = \\$150. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$220 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$160 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0021",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某商號本年度期初存貨 \\$300，年內購貨 \\$1200，期末存貨 \\$250。求本年度的銷貨成本。",
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 300 + 1200 − 250 = \\$1250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$1750，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$1200 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "options": [
+      "\\$1250",
+      "\\$1750",
+      "\\$1150",
+      "\\$1200"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A trader had opening inventory of \\$300, purchases of \\$1200 during the year and closing inventory of \\$250. Find the cost of goods sold.",
+    "optionsEn": [
+      "\\$1250",
+      "\\$1750",
+      "\\$1150",
+      "\\$1200"
+    ],
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 300 + 1200 − 250 = \\$1250. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$1750 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$1200 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0022",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某商號本年度期初存貨 \\$90，年內購貨 \\$410，期末存貨 \\$100。求本年度的銷貨成本。",
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 90 + 410 − 100 = \\$400。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$600，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$410 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "options": [
+      "\\$410",
+      "\\$400",
+      "\\$600",
+      "\\$420"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A trader had opening inventory of \\$90, purchases of \\$410 during the year and closing inventory of \\$100. Find the cost of goods sold.",
+    "optionsEn": [
+      "\\$410",
+      "\\$400",
+      "\\$600",
+      "\\$420"
+    ],
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 90 + 410 − 100 = \\$400. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$600 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$410 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0023",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某商號本年度期初存貨 \\$55，年內購貨 \\$345，期末存貨 \\$60。求本年度的銷貨成本。",
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 55 + 345 − 60 = \\$340。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$460，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$345 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "options": [
+      "\\$350",
+      "\\$345",
+      "\\$340",
+      "\\$460"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A trader had opening inventory of \\$55, purchases of \\$345 during the year and closing inventory of \\$60. Find the cost of goods sold.",
+    "optionsEn": [
+      "\\$350",
+      "\\$345",
+      "\\$340",
+      "\\$460"
+    ],
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 55 + 345 − 60 = \\$340. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$460 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$345 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0024",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某獨資企業的資產總額為 \\$500，負債總額為 \\$180。求東主資本。",
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 500 − 180 = \\$320。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$680，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$500 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "options": [
+      "\\$680",
+      "\\$-320",
+      "\\$500",
+      "\\$320"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A sole trader has total assets of \\$500 and total liabilities of \\$180. Find the owner's capital.",
+    "optionsEn": [
+      "\\$680",
+      "\\$-320",
+      "\\$500",
+      "\\$320"
+    ],
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 500 − 180 = \\$320. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$680 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$500 ignores liabilities; capital equals assets only when the business owes nothing.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0025",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某獨資企業的資產總額為 \\$1200，負債總額為 \\$750。求東主資本。",
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 1200 − 750 = \\$450。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$1950，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$1200 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "options": [
+      "\\$450",
+      "\\$1950",
+      "\\$-450",
+      "\\$1200"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A sole trader has total assets of \\$1200 and total liabilities of \\$750. Find the owner's capital.",
+    "optionsEn": [
+      "\\$450",
+      "\\$1950",
+      "\\$-450",
+      "\\$1200"
+    ],
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 1200 − 750 = \\$450. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$1950 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$1200 ignores liabilities; capital equals assets only when the business owes nothing.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0026",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某獨資企業的資產總額為 \\$860，負債總額為 \\$260。求東主資本。",
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 860 − 260 = \\$600。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$1120，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$860 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "options": [
+      "\\$860",
+      "\\$600",
+      "\\$1120",
+      "\\$-600"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A sole trader has total assets of \\$860 and total liabilities of \\$260. Find the owner's capital.",
+    "optionsEn": [
+      "\\$860",
+      "\\$600",
+      "\\$1120",
+      "\\$-600"
+    ],
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 860 − 260 = \\$600. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$1120 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$860 ignores liabilities; capital equals assets only when the business owes nothing.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0027",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某獨資企業的資產總額為 \\$2400，負債總額為 \\$900。求東主資本。",
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 2400 − 900 = \\$1500。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$3300，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$2400 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "options": [
+      "\\$-1500",
+      "\\$2400",
+      "\\$1500",
+      "\\$3300"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A sole trader has total assets of \\$2400 and total liabilities of \\$900. Find the owner's capital.",
+    "optionsEn": [
+      "\\$-1500",
+      "\\$2400",
+      "\\$1500",
+      "\\$3300"
+    ],
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 2400 − 900 = \\$1500. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$3300 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$2400 ignores liabilities; capital equals assets only when the business owes nothing.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0028",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某獨資企業的資產總額為 \\$340，負債總額為 \\$115。求東主資本。",
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 340 − 115 = \\$225。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$455，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$340 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "options": [
+      "\\$455",
+      "\\$-225",
+      "\\$340",
+      "\\$225"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A sole trader has total assets of \\$340 and total liabilities of \\$115. Find the owner's capital.",
+    "optionsEn": [
+      "\\$455",
+      "\\$-225",
+      "\\$340",
+      "\\$225"
+    ],
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 340 − 115 = \\$225. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$455 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$340 ignores liabilities; capital equals assets only when the business owes nothing.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0029",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某獨資企業的資產總額為 \\$1750，負債總額為 \\$1250。求東主資本。",
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 1750 − 1250 = \\$500。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$3000，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$1750 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "options": [
+      "\\$500",
+      "\\$3000",
+      "\\$-500",
+      "\\$1750"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A sole trader has total assets of \\$1750 and total liabilities of \\$1250. Find the owner's capital.",
+    "optionsEn": [
+      "\\$500",
+      "\\$3000",
+      "\\$-500",
+      "\\$1750"
+    ],
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 1750 − 1250 = \\$500. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$3000 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$1750 ignores liabilities; capital equals assets only when the business owes nothing.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0030",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "在財務狀況表中，下列項目應歸入哪一類？\n\n「欠供應商的貨款，須於三個月內清還」",
+    "explanation": "分類只需連問兩條：第一，這是企業【擁有】的資源，還是【欠人】的責任？前者是資產，後者是負債。第二，它會在【一年之內】變現或清償嗎？會的是流動，不會的是非流動。本項為「欠供應商的貨款，須於三個月內清還」，故屬流動負債。考生最常在第二問失手：把用足幾年的設備當成流動資產，或把三個月內到期的欠款當成非流動負債 —— 判斷的是【時間】，不是金額大小。",
+    "options": [
+      "非流動負債",
+      "流動負債",
+      "流動資產",
+      "非流動資產"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Under which heading should the following appear in a statement of financial position?\n\n\"money owed to a supplier, due within three months\"",
+    "optionsEn": [
+      "非流動負債",
+      "流動負債",
+      "流動資產",
+      "非流動資產"
+    ],
+    "explanationEn": "Classification needs two questions in order. First: is this something the business *owns* or something it *owes*? Owned items are assets, owed items liabilities. Second: will it be turned into cash or settled *within one year*? If yes it is current, if no it is non-current. Here the item is \"money owed to a supplier, due within three months\", so it belongs under Current liability. Most marks are lost on the second question — treating equipment used for years as current, or a debt due in three months as non-current. What decides it is the *timing*, not the size of the amount.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0031",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "在財務狀況表中，下列項目應歸入哪一類？\n\n「公司持有並用於送貨的貨車」",
+    "explanation": "分類只需連問兩條：第一，這是企業【擁有】的資源，還是【欠人】的責任？前者是資產，後者是負債。第二，它會在【一年之內】變現或清償嗎？會的是流動，不會的是非流動。本項為「公司持有並用於送貨的貨車」，故屬非流動資產。考生最常在第二問失手：把用足幾年的設備當成流動資產，或把三個月內到期的欠款當成非流動負債 —— 判斷的是【時間】，不是金額大小。",
+    "options": [
+      "流動負債",
+      "非流動負債",
+      "非流動資產",
+      "流動資產"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Under which heading should the following appear in a statement of financial position?\n\n\"a delivery van owned and used by the business\"",
+    "optionsEn": [
+      "流動負債",
+      "非流動負債",
+      "非流動資產",
+      "流動資產"
+    ],
+    "explanationEn": "Classification needs two questions in order. First: is this something the business *owns* or something it *owes*? Owned items are assets, owed items liabilities. Second: will it be turned into cash or settled *within one year*? If yes it is current, if no it is non-current. Here the item is \"a delivery van owned and used by the business\", so it belongs under Non-current asset. Most marks are lost on the second question — treating equipment used for years as current, or a debt due in three months as non-current. What decides it is the *timing*, not the size of the amount.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0032",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "financial_statements",
+    "topicZh": "財務報表",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "在財務狀況表中，下列項目應歸入哪一類？\n\n「客戶尚未支付的賒銷貨款」",
+    "explanation": "分類只需連問兩條：第一，這是企業【擁有】的資源，還是【欠人】的責任？前者是資產，後者是負債。第二，它會在【一年之內】變現或清償嗎？會的是流動，不會的是非流動。本項為「客戶尚未支付的賒銷貨款」，故屬流動資產。考生最常在第二問失手：把用足幾年的設備當成流動資產，或把三個月內到期的欠款當成非流動負債 —— 判斷的是【時間】，不是金額大小。",
+    "options": [
+      "非流動資產",
+      "流動負債",
+      "非流動負債",
+      "流動資產"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Under which heading should the following appear in a statement of financial position?\n\n\"amounts owed by credit customers\"",
+    "optionsEn": [
+      "非流動資產",
+      "流動負債",
+      "非流動負債",
+      "流動資產"
+    ],
+    "explanationEn": "Classification needs two questions in order. First: is this something the business *owns* or something it *owes*? Owned items are assets, owed items liabilities. Second: will it be turned into cash or settled *within one year*? If yes it is current, if no it is non-current. Here the item is \"amounts owed by credit customers\", so it belongs under Current asset. Most marks are lost on the second question — treating equipment used for years as current, or a debt due in three months as non-current. What decides it is the *timing*, not the size of the amount.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0033",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某筆存款按單利計息，年利率 5%，存滿 2 年後共得利息 \\$150。求原本的本金。",
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 150 ÷ (5% × 2) = \\$1500。可以代回檢查：1500 × 5% × 2 = \\$150，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "options": [
+      "\\$1500",
+      "\\$3000",
+      "\\$15",
+      "\\$300"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A deposit earns simple interest at 5% a year. After 2 years the interest received totals \\$150. Find the original principal.",
+    "optionsEn": [
+      "\\$1500",
+      "\\$3000",
+      "\\$15",
+      "\\$300"
+    ],
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 150 ÷ (5% × 2) = \\$1500. Check by substituting back: 1500 × 5% × 2 = \\$150, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0034",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某筆存款按單利計息，年利率 3%，存滿 2 年後共得利息 \\$90。求原本的本金。",
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 90 ÷ (3% × 2) = \\$1500。可以代回檢查：1500 × 3% × 2 = \\$90，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "options": [
+      "\\$180",
+      "\\$1500",
+      "\\$3000",
+      "\\$5.40"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A deposit earns simple interest at 3% a year. After 2 years the interest received totals \\$90. Find the original principal.",
+    "optionsEn": [
+      "\\$180",
+      "\\$1500",
+      "\\$3000",
+      "\\$5.40"
+    ],
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 90 ÷ (3% × 2) = \\$1500. Check by substituting back: 1500 × 3% × 2 = \\$90, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0035",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某筆存款按單利計息，年利率 4%，存滿 3 年後共得利息 \\$480。求原本的本金。",
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 480 ÷ (4% × 3) = \\$4000。可以代回檢查：4000 × 4% × 3 = \\$480，與題目相符。漏了年期得 \\$12000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "options": [
+      "\\$57.60",
+      "\\$1440",
+      "\\$4000",
+      "\\$12000"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A deposit earns simple interest at 4% a year. After 3 years the interest received totals \\$480. Find the original principal.",
+    "optionsEn": [
+      "\\$57.60",
+      "\\$1440",
+      "\\$4000",
+      "\\$12000"
+    ],
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 480 ÷ (4% × 3) = \\$4000. Check by substituting back: 4000 × 4% × 3 = \\$480, which matches. Omitting the number of years gives \\$12000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0036",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某筆存款按單利計息，年利率 2%，存滿 3 年後共得利息 \\$60。求原本的本金。",
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 60 ÷ (2% × 3) = \\$1000。可以代回檢查：1000 × 2% × 3 = \\$60，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "options": [
+      "\\$3000",
+      "\\$3.60",
+      "\\$180",
+      "\\$1000"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A deposit earns simple interest at 2% a year. After 3 years the interest received totals \\$60. Find the original principal.",
+    "optionsEn": [
+      "\\$3000",
+      "\\$3.60",
+      "\\$180",
+      "\\$1000"
+    ],
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 60 ÷ (2% × 3) = \\$1000. Check by substituting back: 1000 × 2% × 3 = \\$60, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0037",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某筆存款按單利計息，年利率 7%，存滿 2 年後共得利息 \\$700。求原本的本金。",
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 700 ÷ (7% × 2) = \\$5000。可以代回檢查：5000 × 7% × 2 = \\$700，與題目相符。漏了年期得 \\$10000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "options": [
+      "\\$5000",
+      "\\$10000",
+      "\\$98",
+      "\\$1400"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A deposit earns simple interest at 7% a year. After 2 years the interest received totals \\$700. Find the original principal.",
+    "optionsEn": [
+      "\\$5000",
+      "\\$10000",
+      "\\$98",
+      "\\$1400"
+    ],
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 700 ÷ (7% × 2) = \\$5000. Check by substituting back: 5000 × 7% × 2 = \\$700, which matches. Omitting the number of years gives \\$10000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0038",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某筆存款按單利計息，年利率 6%，存滿 4 年後共得利息 \\$240。求原本的本金。",
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 240 ÷ (6% × 4) = \\$1000。可以代回檢查：1000 × 6% × 4 = \\$240，與題目相符。漏了年期得 \\$4000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "options": [
+      "\\$960",
+      "\\$1000",
+      "\\$4000",
+      "\\$57.60"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A deposit earns simple interest at 6% a year. After 4 years the interest received totals \\$240. Find the original principal.",
+    "optionsEn": [
+      "\\$960",
+      "\\$1000",
+      "\\$4000",
+      "\\$57.60"
+    ],
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 240 ÷ (6% × 4) = \\$1000. Check by substituting back: 1000 × 6% × 4 = \\$240, which matches. Omitting the number of years gives \\$4000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0039",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "本金 \\$1000，年利率 10%，存 2 年。若改用【每年複利】而非單利計息，2 年後所得利息會多出多少？",
+    "explanation": "分兩邊計，再相減。複利利息 = 1000 × (1 + 10%)^2 − 1000 = \\$210；單利利息 = 1000 × 10% × 2 = \\$200。差額 = \\$10。多出來的部分，來源是複利之下【上一年的利息本身也會生息】，而單利永遠只以原本金計算。答 \\$210 的停在複利利息本身，未有作差；答 \\$1210 的更連本金也算了進去 —— 那是本利和而非利息。最後一項答的是單利利息。題目問「多出多少」，答案必定是一個差額。",
+    "options": [
+      "\\$1210",
+      "\\$200",
+      "\\$10",
+      "\\$210"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "\\$1000 is invested for 2 years at 10% a year. How much more interest is earned under *annual compounding* than under simple interest?",
+    "optionsEn": [
+      "\\$1210",
+      "\\$200",
+      "\\$10",
+      "\\$210"
+    ],
+    "explanationEn": "Work out both sides, then subtract. Compound interest = 1000 × (1 + 10%)^2 − 1000 = \\$210; simple interest = 1000 × 10% × 2 = \\$200. The difference is \\$10. The extra arises because under compounding *the previous year's interest itself earns interest*, whereas simple interest is always computed on the original principal alone. Answering \\$210 stops at the compound interest without subtracting; \\$1210 also includes the principal and is the amount, not the interest. The last option gives the simple interest. The question asks \"how much more\", so the answer must be a difference.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0040",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "本金 \\$5000，年利率 8%，存 2 年。若改用【每年複利】而非單利計息，2 年後所得利息會多出多少？",
+    "explanation": "分兩邊計，再相減。複利利息 = 5000 × (1 + 8%)^2 − 5000 = \\$832；單利利息 = 5000 × 8% × 2 = \\$800。差額 = \\$32。多出來的部分，來源是複利之下【上一年的利息本身也會生息】，而單利永遠只以原本金計算。答 \\$832 的停在複利利息本身，未有作差；答 \\$5832 的更連本金也算了進去 —— 那是本利和而非利息。最後一項答的是單利利息。題目問「多出多少」，答案必定是一個差額。",
+    "options": [
+      "\\$832",
+      "\\$5832",
+      "\\$800",
+      "\\$32"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "\\$5000 is invested for 2 years at 8% a year. How much more interest is earned under *annual compounding* than under simple interest?",
+    "optionsEn": [
+      "\\$832",
+      "\\$5832",
+      "\\$800",
+      "\\$32"
+    ],
+    "explanationEn": "Work out both sides, then subtract. Compound interest = 5000 × (1 + 8%)^2 − 5000 = \\$832; simple interest = 5000 × 8% × 2 = \\$800. The difference is \\$32. The extra arises because under compounding *the previous year's interest itself earns interest*, whereas simple interest is always computed on the original principal alone. Answering \\$832 stops at the compound interest without subtracting; \\$5832 also includes the principal and is the amount, not the interest. The last option gives the simple interest. The question asks \"how much more\", so the answer must be a difference.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0041",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "本金 \\$2000，年利率 5%，存 3 年。若改用【每年複利】而非單利計息，3 年後所得利息會多出多少？",
+    "explanation": "分兩邊計，再相減。複利利息 = 2000 × (1 + 5%)^3 − 2000 = \\$315.25；單利利息 = 2000 × 5% × 3 = \\$300。差額 = \\$15.25。多出來的部分，來源是複利之下【上一年的利息本身也會生息】，而單利永遠只以原本金計算。答 \\$315.25 的停在複利利息本身，未有作差；答 \\$2315.25 的更連本金也算了進去 —— 那是本利和而非利息。最後一項答的是單利利息。題目問「多出多少」，答案必定是一個差額。",
+    "options": [
+      "\\$15.25",
+      "\\$315.25",
+      "\\$2315.25",
+      "\\$300"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "\\$2000 is invested for 3 years at 5% a year. How much more interest is earned under *annual compounding* than under simple interest?",
+    "optionsEn": [
+      "\\$15.25",
+      "\\$315.25",
+      "\\$2315.25",
+      "\\$300"
+    ],
+    "explanationEn": "Work out both sides, then subtract. Compound interest = 2000 × (1 + 5%)^3 − 2000 = \\$315.25; simple interest = 2000 × 5% × 3 = \\$300. The difference is \\$15.25. The extra arises because under compounding *the previous year's interest itself earns interest*, whereas simple interest is always computed on the original principal alone. Answering \\$315.25 stops at the compound interest without subtracting; \\$2315.25 also includes the principal and is the amount, not the interest. The last option gives the simple interest. The question asks \"how much more\", so the answer must be a difference.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0042",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "interest",
+    "topicZh": "利息",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "本金 \\$800，年利率 12%，存 2 年。若改用【每年複利】而非單利計息，2 年後所得利息會多出多少？",
+    "explanation": "分兩邊計，再相減。複利利息 = 800 × (1 + 12%)^2 − 800 = \\$203.52；單利利息 = 800 × 12% × 2 = \\$192。差額 = \\$11.52。多出來的部分，來源是複利之下【上一年的利息本身也會生息】，而單利永遠只以原本金計算。答 \\$203.52 的停在複利利息本身，未有作差；答 \\$1003.52 的更連本金也算了進去 —— 那是本利和而非利息。最後一項答的是單利利息。題目問「多出多少」，答案必定是一個差額。",
+    "options": [
+      "\\$192",
+      "\\$11.52",
+      "\\$203.52",
+      "\\$1003.52"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "\\$800 is invested for 2 years at 12% a year. How much more interest is earned under *annual compounding* than under simple interest?",
+    "optionsEn": [
+      "\\$192",
+      "\\$11.52",
+      "\\$203.52",
+      "\\$1003.52"
+    ],
+    "explanationEn": "Work out both sides, then subtract. Compound interest = 800 × (1 + 12%)^2 − 800 = \\$203.52; simple interest = 800 × 12% × 2 = \\$192. The difference is \\$11.52. The extra arises because under compounding *the previous year's interest itself earns interest*, whereas simple interest is always computed on the original principal alone. Answering \\$203.52 stops at the compound interest without subtracting; \\$1003.52 also includes the principal and is the amount, not the interest. The last option gives the simple interest. The question asks \"how much more\", so the answer must be a difference.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0043",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某機器成本 \\$50000，按【遞減餘額法】以每年 20% 計提折舊。求第一年的折舊額。",
+    "explanation": "遞減餘額法首年以【成本】為基數：50000 × 20% = \\$10000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$8000 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$40000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
+    "options": [
+      "\\$8000",
+      "\\$40000",
+      "\\$10000",
+      "\\$2500"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A machine costing \\$50000 is depreciated by the *reducing balance* method at 20% a year. Find the depreciation for the first year.",
+    "optionsEn": [
+      "\\$8000",
+      "\\$40000",
+      "\\$10000",
+      "\\$2500"
+    ],
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 50000 × 20% = \\$10000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$8000 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$40000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0044",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某機器成本 \\$12000，按【遞減餘額法】以每年 25% 計提折舊。求第一年的折舊額。",
+    "explanation": "遞減餘額法首年以【成本】為基數：12000 × 25% = \\$3000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$2250 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$9000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
+    "options": [
+      "\\$480",
+      "\\$2250",
+      "\\$9000",
+      "\\$3000"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A machine costing \\$12000 is depreciated by the *reducing balance* method at 25% a year. Find the depreciation for the first year.",
+    "optionsEn": [
+      "\\$480",
+      "\\$2250",
+      "\\$9000",
+      "\\$3000"
+    ],
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 12000 × 25% = \\$3000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$2250 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$9000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0045",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某機器成本 \\$80000，按【遞減餘額法】以每年 15% 計提折舊。求第一年的折舊額。",
+    "explanation": "遞減餘額法首年以【成本】為基數：80000 × 15% = \\$12000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$10200 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$68000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
+    "options": [
+      "\\$12000",
+      "\\$5333.33",
+      "\\$10200",
+      "\\$68000"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A machine costing \\$80000 is depreciated by the *reducing balance* method at 15% a year. Find the depreciation for the first year.",
+    "optionsEn": [
+      "\\$12000",
+      "\\$5333.33",
+      "\\$10200",
+      "\\$68000"
+    ],
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 80000 × 15% = \\$12000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$10200 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$68000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0046",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某機器成本 \\$36000，按【遞減餘額法】以每年 30% 計提折舊。求第一年的折舊額。",
+    "explanation": "遞減餘額法首年以【成本】為基數：36000 × 30% = \\$10800。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$7560 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$25200 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
+    "options": [
+      "\\$25200",
+      "\\$10800",
+      "\\$1200",
+      "\\$7560"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A machine costing \\$36000 is depreciated by the *reducing balance* method at 30% a year. Find the depreciation for the first year.",
+    "optionsEn": [
+      "\\$25200",
+      "\\$10800",
+      "\\$1200",
+      "\\$7560"
+    ],
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 36000 × 30% = \\$10800. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$7560 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$25200 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0047",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某機器成本 \\$24000，按【遞減餘額法】以每年 5% 計提折舊。求第一年的折舊額。",
+    "explanation": "遞減餘額法首年以【成本】為基數：24000 × 5% = \\$1200。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$1140 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$22800 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
+    "options": [
+      "\\$1140",
+      "\\$22800",
+      "\\$1200",
+      "\\$4800"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A machine costing \\$24000 is depreciated by the *reducing balance* method at 5% a year. Find the depreciation for the first year.",
+    "optionsEn": [
+      "\\$1140",
+      "\\$22800",
+      "\\$1200",
+      "\\$4800"
+    ],
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 24000 × 5% = \\$1200. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$1140 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$22800 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0048",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某機器成本 \\$60000，按【遞減餘額法】以每年 40% 計提折舊。求第一年的折舊額。",
+    "explanation": "遞減餘額法首年以【成本】為基數：60000 × 40% = \\$24000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$14400 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$36000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
+    "options": [
+      "\\$1500",
+      "\\$14400",
+      "\\$36000",
+      "\\$24000"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A machine costing \\$60000 is depreciated by the *reducing balance* method at 40% a year. Find the depreciation for the first year.",
+    "optionsEn": [
+      "\\$1500",
+      "\\$14400",
+      "\\$36000",
+      "\\$24000"
+    ],
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 60000 × 40% = \\$24000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$14400 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$36000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0049",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "depreciation",
+    "topicZh": "折舊",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "某公司於年度開始後第 5 個月購入一部設備，成本 \\$96000，估計殘值 \\$6000，可用年期 5 年，按直線法折舊。該設備於【購入當年】只持有 8 個月。\n\n求該公司於購入當年應為此設備計提的折舊額。",
+    "explanation": "分兩步。先求全年折舊：(96000 − 6000) ÷ 5 = \\$18000。再按實際持有月數比例分攤：18000 × 8 ÷ 12 = \\$12000。兩個關卡缺一不可 —— 忘記按月分攤得 \\$18000，等於當作年初已購入，是本題最主要的失分位；忘記扣除殘值則得 \\$12800，因為直線法攤分的是【可折舊金額】而非成本全數。第三項把月數當成除數，把折舊額愈算愈細，方向完全相反。實務上此類題目亦可能改為「按整月計，購入當月計一個月」，作答時應留意題目對月份的界定。",
+    "options": [
+      "\\$12000",
+      "\\$18000",
+      "\\$12800",
+      "\\$2250"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A company bought equipment in month 5 of its financial year: cost \\$96000, residual value \\$6000, useful life 5 years, straight-line basis. It was therefore held for only 8 months in the year of purchase.\n\nFind the depreciation to be charged in that year.",
+    "optionsEn": [
+      "\\$12000",
+      "\\$18000",
+      "\\$12800",
+      "\\$2250"
+    ],
+    "explanationEn": "Two steps. First the full-year charge: (96000 − 6000) ÷ 5 = \\$18000. Then pro-rate by months held: 18000 × 8 ÷ 12 = \\$12000. Both gates matter — omitting the pro-rating gives \\$18000 and assumes the asset was owned from day one, the main trap here; omitting the residual value gives \\$12800, since the straight-line method spreads the *depreciable amount*, not the full cost. The third option divides by the months instead of multiplying, driving the charge the wrong way entirely. In practice a question may instead say \"count the month of purchase as a full month\", so always check how the months are defined.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0050",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "costing",
+    "topicZh": "成本與定價",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某商品的成本為 \\$160，售價為 \\$200。求其加成率（以成本為基數的百分比）。",
+    "explanation": "加成率以【成本】為基數：(200 − 160) ÷ 160 × 100% = 25%。第一個干擾項 20% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "options": [
+      "80%",
+      "25%",
+      "20%",
+      "125%"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A product costs \\$160 and sells for \\$200. Find the mark-up rate (as a percentage of cost).",
+    "optionsEn": [
+      "80%",
+      "25%",
+      "20%",
+      "125%"
+    ],
+    "explanationEn": "Mark-up is measured against *cost*: (200 − 160) ÷ 160 × 100% = 25%. The first distractor, 20%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0051",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "costing",
+    "topicZh": "成本與定價",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某商品的成本為 \\$250，售價為 \\$325。求其加成率（以成本為基數的百分比）。",
+    "explanation": "加成率以【成本】為基數：(325 − 250) ÷ 250 × 100% = 30%。第一個干擾項 23.0769% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "options": [
+      "130%",
+      "76.9231%",
+      "30%",
+      "23.0769%"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A product costs \\$250 and sells for \\$325. Find the mark-up rate (as a percentage of cost).",
+    "optionsEn": [
+      "130%",
+      "76.9231%",
+      "30%",
+      "23.0769%"
+    ],
+    "explanationEn": "Mark-up is measured against *cost*: (325 − 250) ÷ 250 × 100% = 30%. The first distractor, 23.0769%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0052",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "costing",
+    "topicZh": "成本與定價",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某商品的成本為 \\$480，售價為 \\$600。求其加成率（以成本為基數的百分比）。",
+    "explanation": "加成率以【成本】為基數：(600 − 480) ÷ 480 × 100% = 25%。第一個干擾項 20% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "options": [
+      "20%",
+      "125%",
+      "80%",
+      "25%"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A product costs \\$480 and sells for \\$600. Find the mark-up rate (as a percentage of cost).",
+    "optionsEn": [
+      "20%",
+      "125%",
+      "80%",
+      "25%"
+    ],
+    "explanationEn": "Mark-up is measured against *cost*: (600 − 480) ÷ 480 × 100% = 25%. The first distractor, 20%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0053",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "costing",
+    "topicZh": "成本與定價",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某商品的成本為 \\$90，售價為 \\$126。求其加成率（以成本為基數的百分比）。",
+    "explanation": "加成率以【成本】為基數：(126 − 90) ÷ 90 × 100% = 40%。第一個干擾項 28.5714% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "options": [
+      "40%",
+      "28.5714%",
+      "140%",
+      "71.4286%"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A product costs \\$90 and sells for \\$126. Find the mark-up rate (as a percentage of cost).",
+    "optionsEn": [
+      "40%",
+      "28.5714%",
+      "140%",
+      "71.4286%"
+    ],
+    "explanationEn": "Mark-up is measured against *cost*: (126 − 90) ÷ 90 × 100% = 40%. The first distractor, 28.5714%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0054",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "costing",
+    "topicZh": "成本與定價",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商一律按成本加成 40% 定價。求該商品的毛利率（即毛利佔售價的百分比）。",
+    "explanation": "設成本為 100，則售價為 140，毛利為 40。毛利率以售價為基數：40 ÷ 140 × 100% = 28.5714%。換言之，加成率 40% 對應的毛利率必定【細過】40%，因為分母由成本 100 換成了售價 140。直接答 40% 是把加成率當成毛利率，是本題設下的主要陷阱。140% 是售價相對成本的百分比，並非任何一種利潤率。最後一項 71.4286% 是成本佔售價的比例，剛好是毛利率的補數 —— 兩者相加為 100%，可用作檢查。",
+    "options": [
+      "71.4286%",
+      "28.5714%",
+      "40%",
+      "140%"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A retailer prices all goods at cost plus 40%. Find the gross profit margin (gross profit as a percentage of selling price).",
+    "optionsEn": [
+      "71.4286%",
+      "28.5714%",
+      "40%",
+      "140%"
+    ],
+    "explanationEn": "Take cost as 100; then selling price is 140 and gross profit is 40. Margin is measured on selling price: 40 ÷ 140 × 100% = 28.5714%. So a mark-up of 40% always corresponds to a *smaller* margin, because the denominator moves from cost 100 to price 140. Answering 40% treats mark-up as margin and is the main trap. 140% expresses price as a percentage of cost and is neither profit measure. The last option, 71.4286%, is cost as a percentage of sales — the complement of the margin, and the two sum to 100%, which makes a useful check.",
+    "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "bafs_rep_0055",
+    "type": "mc",
+    "subject": "bafs",
+    "topic": "costing",
+    "topicZh": "成本與定價",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某零售商一律按成本加成 25% 定價。求該商品的毛利率（即毛利佔售價的百分比）。",
+    "explanation": "設成本為 100，則售價為 125，毛利為 25。毛利率以售價為基數：25 ÷ 125 × 100% = 20%。換言之，加成率 25% 對應的毛利率必定【細過】25%，因為分母由成本 100 換成了售價 125。直接答 25% 是把加成率當成毛利率，是本題設下的主要陷阱。125% 是售價相對成本的百分比，並非任何一種利潤率。最後一項 80% 是成本佔售價的比例，剛好是毛利率的補數 —— 兩者相加為 100%，可用作檢查。",
+    "options": [
+      "125%",
+      "80%",
+      "20%",
+      "25%"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A retailer prices all goods at cost plus 25%. Find the gross profit margin (gross profit as a percentage of selling price).",
+    "optionsEn": [
+      "125%",
+      "80%",
+      "20%",
+      "25%"
+    ],
+    "explanationEn": "Take cost as 100; then selling price is 125 and gross profit is 25. Margin is measured on selling price: 25 ÷ 125 × 100% = 20%. So a mark-up of 25% always corresponds to a *smaller* margin, because the denominator moves from cost 100 to price 125. Answering 25% treats mark-up as margin and is the main trap. 125% expresses price as a percentage of cost and is neither profit measure. The last option, 80%, is cost as a percentage of sales — the complement of the margin, and the two sum to 100%, which makes a useful check.",
+    "frameworkEn": "Auto-gated"
+  }
+]

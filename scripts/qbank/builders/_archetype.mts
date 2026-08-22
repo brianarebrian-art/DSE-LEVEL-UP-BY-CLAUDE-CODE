@@ -36,6 +36,16 @@ export interface Inst {
   ans: string
   wrong: [string, string, string]
   e: [zh: string, en: string]
+  /**
+   * 選項的英文版（可選）。
+   *
+   * 數理科的選項多數係純數式或數值（`$12$`、`0.4 mol/dm³`），中英一樣，
+   * 唔使填。但文字型選項（例如「$BA$ 沒有定義」「有唯一解」）唔填就會令
+   * 英文介面嘅學生見到中文 —— 25 科入面有 20 科係雙語題庫，呢個唔係小事。
+   * 填咗就要連 `wrongEn` 一齊填，順序同 `wrong` 對應。
+   */
+  ansEn?: string
+  wrongEn?: [string, string, string]
 }
 export interface Arch {
   key: string
@@ -84,7 +94,10 @@ export function emit(subject: string, prefix: string, archs: Arch[], outPath: st
       if (bad !== undefined) { errs.push(`${a.key}#${i}: 選項無效「${bad}」`); continue }
       if (new Set(opts).size !== 4) { errs.push(`${a.key}#${i}: 四個選項並非互異 → ${opts.join(' | ')}`); continue }
       if (!inst.q[0]?.trim() || !inst.q[1]?.trim()) { errs.push(`${a.key}#${i}: 題幹缺中文或英文`); continue }
-      if (/NaN|undefined/.test(inst.q[0] + inst.q[1] + inst.e[0] + inst.e[1])) { errs.push(`${a.key}#${i}: 題幹或解析含 NaN／undefined`); continue }
+      // 散文只捉 NaN 同 [object Object]。刻意【唔捉】"undefined" ——
+      // 佢喺英文入面係正當數學術語（"$BA$ is undefined"），2026-08-22 實測
+      // 誤殺咗 m2 五條題。插值失敗嘅情況由下面選項嗰個嚴格檢查兜住。
+      if (/NaN|\[object Object\]/.test(inst.q[0] + inst.q[1] + inst.e[0] + inst.e[1])) { errs.push(`${a.key}#${i}: 題幹或解析含 NaN／[object Object]`); continue }
 
       const sk = skeleton(inst.q[0])
       if (i === 0) {
@@ -96,6 +109,8 @@ export function emit(subject: string, prefix: string, archs: Arch[], outPath: st
 
       const k = seq % 4
       seq++
+      const optsEn = inst.ansEn && inst.wrongEn ? [inst.ansEn, ...inst.wrongEn] : opts
+      if (inst.ansEn && new Set(optsEn).size !== 4) { errs.push(`${a.key}#${i}: 英文選項並非互異`); continue }
       rows.push({
         id: `${prefix}_${String(seq).padStart(4, '0')}`,
         type: 'mc',
@@ -103,7 +118,7 @@ export function emit(subject: string, prefix: string, archs: Arch[], outPath: st
         topic: a.topicZh, topicId: a.topic, topicZh: a.topicZh, topicEn: a.topicEn,
         difficulty: a.diff,
         question: inst.q[0], questionEn: inst.q[1],
-        options: rotate(opts, k), optionsEn: rotate(opts, k),
+        options: rotate(opts, k), optionsEn: rotate(optsEn, k),
         correctIndex: k,
         explanation: inst.e[0], explanationEn: inst.e[1],
       })
