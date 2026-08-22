@@ -13,7 +13,18 @@ import assert from 'node:assert/strict'
 
 const { predictGrade, CSD_PASS_RATIO, gradeColors, gradeBgColors, gradeMessages } =
   await import('../grading.ts')
-const { getPracticeCutoffs, mathPaper1Cutoffs } = await import('../../data/cutoffs.ts')
+const { getPracticeCutoffs } = await import('../../data/cutoffs.ts')
+import type { CutoffTable } from '../../data/cutoffs.ts'
+
+// 一張【非 20 題制】嘅表，用嚟證明評級邏輯唔係寫死 20 題。
+// 呢個係測試 fixture，唔係任何官方分數線 —— 考評局從來冇公布過分數線，
+// 所以呢啲數字唔可以搬返入 data/ 扮成真值（原 `mathPaper1Cutoffs` 就係
+// 咁樣被標成「Official」，已於 2026-08-23 移除）。
+const FIXTURE_105: CutoffTable = {
+  subject: 'fixture_105_marks',
+  totalMarks: 105,
+  cutoffs: { '5**': 93, '5*': 83, '5': 72, '4': 56, '3': 40, '2': 24, '1': 12 },
+}
 
 // 20 題練習卷（SESSION_SIZE），全站最常見嘅情境。
 const T20 = getPracticeCutoffs(20, 'math')
@@ -148,10 +159,10 @@ test('唔存在嘅 slug 唔會 crash，照行 1–5**', () => {
   assert.equal(predictGrade(14, T20, 'nonexistent-subject').grade, '5')
 })
 
-// ── 另一張真表（官方數學卷一近似值），證明唔係寫死 20 題 ──────────────
+// ── 另一張表（105 分制 fixture），證明唔係寫死 20 題 ──────────────────
 
-test('數學卷一 105 分制：邊界照樣成立', () => {
-  const M = mathPaper1Cutoffs
+test('105 分制查表：邊界照樣成立', () => {
+  const M = FIXTURE_105
   assert.equal(predictGrade(M.cutoffs['5'], M).grade, '5')
   assert.equal(predictGrade(M.cutoffs['5'] - 1, M).grade, '4')
   assert.equal(predictGrade(M.totalMarks, M).grade, '5**')
@@ -159,7 +170,7 @@ test('數學卷一 105 分制：邊界照樣成立', () => {
 })
 
 test('percentage 按 totalMarks 計，唔係當 100 分制', () => {
-  assert.equal(predictGrade(21, mathPaper1Cutoffs).percentage, 20) // 21/105
+  assert.equal(predictGrade(21, FIXTURE_105).percentage, 20) // 21/105
   assert.equal(predictGrade(10, T20).percentage, 50) // 10/20
 })
 
@@ -185,4 +196,21 @@ test('不達標唔用紅色（憲章 §7 禁大紅）', () => {
   // 用主題 token，唔係 red-*；「未達標」係狀態唔係責備。
   assert.ok(!/red|#f?f?0000|rose/i.test(gradeColors['不達標']))
   assert.ok(!/\bred-/.test(gradeBgColors['不達標']))
+})
+
+// ── 憲章 §8 / 等級預測 v3 §11：唔准聲稱任何分數線係官方嘅 ────────────────
+//
+// 2026-08-23：`data/cutoffs.ts` 曾經有一個 `mathPaper1Cutoffs`，註釋寫住
+// 「Official DSE Math Paper 1 cutoffs」。考評局從來冇公布過任何一科嘅分數線，
+// 所以嗰句係一句冇來源嘅權威聲稱。已移除；呢條測試防止佢以任何形式返嚟。
+test('data/cutoffs.ts 唔可以聲稱任何分界線係考評局官方嘅', async () => {
+  const { readFileSync } = await import('node:fs')
+  const src = readFileSync(new URL('../../data/cutoffs.ts', import.meta.url), 'utf8')
+  // 只查「Official/官方」同「cutoff/分數線/分界」出現喺同一行 —— 檔頭
+  // 澄清呢件事嘅說明文字本身一定會提到呢兩個詞，唔可以連佢一齊誤報。
+  const offenders = src.split('\n').filter((line) => {
+    if (/唔係|從來冇|並非|已移除|not official|never published/i.test(line)) return false
+    return /official|官方/i.test(line) && /cut ?off|分數線|分界/i.test(line)
+  })
+  assert.deepEqual(offenders, [], `見到聲稱官方分數線嘅字句：\n  ${offenders.join('\n  ')}`)
 })
