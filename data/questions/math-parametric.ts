@@ -52,6 +52,8 @@ function pq(
 
 // ── helpers ─────────────────────────────────────────────────────────────────
 const n = (s: string): Pair => [s, s]
+/** 兩個根並列的選項：連接詞須分語言書寫。 */
+const nOr = (a: string, b: string): Pair => [`${a} 或 ${b}`, `${a} or ${b}`]
 const deg = (x: number): Pair => n(`$${x}^\\circ$`)
 const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
 const fact = (k: number): number => (k <= 1 ? 1 : k * fact(k - 1))
@@ -137,7 +139,7 @@ const out: Question[] = []
     out.push(pq(`mp_k4_${i}`, T.logarithms, FW.transform, yr(i),
       [`解方程 $\\log_{${b}} x + \\log_{${b}} (x - ${d}) = ${k}$。`,
        `Solve $\\log_{${b}} x + \\log_{${b}} (x - ${d}) = ${k}$.`],
-      [n(`$x = ${p}$`), n(`$x = ${q}$`), n(`$x = ${p}$ 或 $x = ${-q}$`), n(`$x = ${bk}$`)],
+      [n(`$x = ${p}$`), n(`$x = ${q}$`), nOr(`$x = ${p}$`, `$x = ${-q}$`), n(`$x = ${bk}$`)],
       [`合併對數：$\\log_{${b}}[x(x-${d})] = ${k}$ ⇒ $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2 - ${d}x - ${bk} = 0$ ⇒ $(x - ${p})(x + ${q}) = 0$ ⇒ $x = ${p}$ 或 $x = ${-q}$。但 $\\log$ 要求 $x>0$ 且 $x-${d}>0$，故 $x=${-q}$ 不合，捨去，只取 $x = ${p}$。致命陷阱：$x=${q}$／$x=${-q}$ 正是那條要捨去的根。`,
        `Combine logs: $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2-${d}x-${bk}=0$ ⇒ $(x-${p})(x+${q})=0$. Domain needs $x>0$ and $x-${d}>0$, so $x=${-q}$ is rejected; only $x=${p}$. Trap: the rejected root is the bait.`],
       [`對數合併後 $x(x-${d})=${bk}$，因式分解取兩根，用定義域 $x-${d}>0$ 捨負根 ⇒ $x=${p}$。`,

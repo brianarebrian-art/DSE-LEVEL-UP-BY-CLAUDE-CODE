@@ -1,7 +1,7 @@
 import type { Topic } from './types'
 import { topicList } from './_builder'
 import type { Question } from './types'
-import { createBank, n, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, money, n, qty, round, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // BAFS — PARAMETRIC BANK (Mode A, correct-by-construction; NUMERIC items)
@@ -32,7 +32,7 @@ for (const sales of [100, 150, 200, 250, 300]) {
   for (const cogs of [60, 90, 120]) {
     add(`bf_e1_${sales}_${cogs}`, T.statements, FW.acct, 'easy',
       [`銷貨 ${sales} 元，銷貨成本 ${cogs} 元，求毛利。`, `Sales \\$${sales}, cost of goods sold \\$${cogs}. Find gross profit.`],
-      [n(`${sales - cogs} 元`), n(`${sales + cogs} 元`), n(`${cogs - sales} 元`), n(`${round(sales / cogs, 2)} 元`)],
+      [money(sales - cogs), money(sales + cogs), money(cogs - sales), money(round(sales / cogs, 2))],
       [`毛利 = 銷貨 − 銷貨成本 = ${sales} − ${cogs} = ${sales - cogs} 元。陷阱：${sales + cogs} 元加了；${cogs - sales} 元符號反。`,
        `Gross profit = sales − COGS = ${sales - cogs}. Trap: ${sales + cogs} adds instead.`])
   }
@@ -43,7 +43,7 @@ for (const ca of [80, 120, 160, 200]) {
   for (const cl of [40, 60, 100]) {
     add(`bf_e2_${ca}_${cl}`, T.ratios, FW.acct, 'easy',
       [`流動資產 ${ca} 元，流動負債 ${cl} 元，求營運資金。`, `Current assets \\$${ca}, current liabilities \\$${cl}. Find working capital.`],
-      [n(`${ca - cl} 元`), n(`${ca + cl} 元`), n(`${round(ca / cl, 2)}`), n(`${cl - ca} 元`)],
+      [money(ca - cl), money(ca + cl), n(`${round(ca / cl, 2)}`), money(cl - ca)],
       [`營運資金 = 流動資產 − 流動負債 = ${ca} − ${cl} = ${ca - cl} 元。陷阱：${round(ca / cl, 2)} 是流動比率（並非營運資金）。`,
        `Working capital = CA − CL = ${ca - cl}. Trap: ${round(ca / cl, 2)} is the current ratio, not working capital.`])
   }
@@ -54,7 +54,7 @@ for (const gp of [100, 150, 200, 250]) {
   for (const exp of [30, 50, 80]) {
     add(`bf_e3_${gp}_${exp}`, T.statements, FW.acct, 'easy',
       [`毛利 ${gp} 元，營業費用 ${exp} 元，求淨利。`, `Gross profit \\$${gp}, expenses \\$${exp}. Find net profit.`],
-      [n(`${gp - exp} 元`), n(`${gp + exp} 元`), n(`${exp - gp} 元`), n(`${round(gp / exp, 2)} 元`)],
+      [money(gp - exp), money(gp + exp), money(exp - gp), money(round(gp / exp, 2))],
       [`淨利 = 毛利 − 費用 = ${gp} − ${exp} = ${gp - exp} 元。陷阱：${gp + exp} 元加了費用（應該減）。`,
        `Net profit = gross profit − expenses = ${gp - exp}. Trap: ${gp + exp} adds expenses.`])
   }
@@ -80,7 +80,7 @@ for (const gp of [100, 150, 200, 250]) {
     add(`bf_m2_${i}`, T.depreciation, FW.acct, 'medium',
       [`資產成本 ${cost} 元，殘值 ${res} 元，可用 ${life} 年，求每年直線折舊。`,
        `Asset cost \\$${cost}, residual \\$${res}, useful life ${life} years. Find the annual straight-line depreciation.`],
-      [n(`${dep} 元`), n(`${round(cost / life, 1)} 元`), n(`${round((cost + res) / life, 1)} 元`), n(`${round((cost - res) * life, 0)} 元`)],
+      [money(dep), money(round(cost / life, 1)), money(round((cost + res) / life, 1)), money(round((cost - res) * life, 0))],
       [`直線折舊 = (成本 − 殘值) / 年限 = (${cost} − ${res}) / ${life} = ${dep} 元。陷阱：${round(cost / life, 1)} 元漏了減殘值。`,
        `Depreciation = (cost − residual)/life = ${dep}. Trap: ${round(cost / life, 1)} forgets to deduct the residual.`])
   })
@@ -91,7 +91,7 @@ for (const gp of [100, 150, 200, 250]) {
     const si = round((P * r * t) / 100, 1)
     add(`bf_m3_${i}`, T.interest, FW.finance, 'medium',
       [`本金 ${P} 元，年利率 ${r}%，存 ${t} 年，求單利利息。`, `Principal \\$${P}, rate ${r}% p.a., ${t} years. Find the simple interest.`],
-      [n(`${si} 元`), n(`${round(P * r * t, 0)} 元`), n(`${round((P * r) / 100, 1)} 元`), n(`${round((P + r * t) / 100, 1)} 元`)],
+      [money(si), money(round(P * r * t, 0)), money(round((P * r) / 100, 1)), money(round((P + r * t) / 100, 1))],
       [`單利 = 本金 × 利率 × 年期 / 100 = ${P} × ${r} × ${t} / 100 = ${si} 元。陷阱：${round((P * r) / 100, 1)} 元漏了年期 t。`,
        `SI = Prt/100 = ${si}. Trap: ${round((P * r) / 100, 1)} drops the time t.`])
   })
@@ -102,7 +102,7 @@ for (const gp of [100, 150, 200, 250]) {
     const price = round(cost * (1 + mk / 100), 1)
     add(`bf_m4_${i}`, T.costing, FW.finance, 'medium',
       [`成本 ${cost} 元，加成 ${mk}%，求售價。`, `Cost \\$${cost}, markup ${mk}%. Find the selling price.`],
-      [n(`${price} 元`), n(`${round(cost * (1 - mk / 100), 1)} 元`), n(`${cost + mk} 元`), n(`${round(cost * mk / 100, 1)} 元`)],
+      [money(price), money(round(cost * (1 - mk / 100), 1)), money(cost + mk), money(round(cost * mk / 100, 1))],
       [`售價 = 成本 × (1 + 加成%) = ${cost} × (1 + ${mk}%) = ${price} 元。陷阱：${cost + mk} 元直接加了 ${mk}（並非 ${mk}%）。`,
        `Price = cost × (1 + markup%) = ${price}. Trap: ${cost + mk} adds ${mk} directly, not ${mk}%.`])
   })
@@ -117,7 +117,7 @@ for (const gp of [100, 150, 200, 250]) {
     add(`bf_h1_${i}`, T.costing, FW.finance, 'hard',
       [`固定成本 ${fc} 元，售價 ${price} 元/件，單位變動成本 ${vc} 元，求收支平衡銷量（件）。`,
        `Fixed cost \\$${fc}, price \\$${price}/unit, variable cost \\$${vc}/unit. Find the break-even quantity (units).`],
-      [n(`${be} 件`), n(`${round(fc / price, 1)} 件`), n(`${round(fc / vc, 1)} 件`), n(`${round(fc / (price + vc), 1)} 件`)],
+      [qty(be, '件', 'units'), qty(round(fc / price, 1), '件', 'units'), qty(round(fc / vc, 1), '件', 'units'), qty(round(fc / (price + vc), 1), '件', 'units')],
       [`每件貢獻 = 售價 − 變動成本 = ${price} − ${vc} = ${cm} 元；收支平衡 = 固定成本 / 貢獻 = ${fc} / ${cm} = ${be} 件。陷阱：${round(fc / price, 1)} 件用了售價（漏減變動成本）。`,
        `Contribution = ${price}−${vc} = ${cm}; break-even = FC/contribution = ${be}. Trap: using price gives ${round(fc / price, 1)}.`])
   })
@@ -129,7 +129,7 @@ for (const gp of [100, 150, 200, 250]) {
     add(`bf_h2_${i}`, T.interest, FW.finance, 'hard',
       [`本金 ${P} 元，年利率 ${r}%，每年複利，${t} 年後的本利和是多少？`,
        `Principal \\$${P}, ${r}% p.a. compounded yearly. Find the amount after ${t} years.`],
-      [n(`${amt} 元`), n(`${simple} 元`), n(`${round((P * r * t) / 100, 2)} 元`), n(`${round(P * r / 100, 2)} 元`)],
+      [money(amt), money(simple), money(round((P * r * t) / 100, 2)), money(round(P * r / 100, 2))],
       [`本利和 = 本金 × (1 + 利率)^年期 = ${P} × (1 + ${r}%)^${t} = ${amt} 元。陷阱：${simple} 元用了單利（沒有複利效應）。`,
        `Amount = P(1 + r)^t = ${amt}. Trap: ${simple} uses simple interest (no compounding).`])
   })

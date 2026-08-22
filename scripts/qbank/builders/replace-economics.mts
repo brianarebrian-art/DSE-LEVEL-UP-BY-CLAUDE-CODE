@@ -132,6 +132,14 @@ const archs: Arch[] = [
           '應停止生產，因為固定成本在短期內仍須繳付',
           '無法判斷，因為題目沒有提供產量',
         ],
+        ansEn: en,
+        wrongEn: [
+          cont
+            ? 'Shut down: price is below average total cost, so producing must run at a loss'
+            : 'Keep producing: price is above average fixed cost',
+          'Shut down: fixed cost still has to be paid in the short run',
+          'Cannot be determined: the question gives no level of output',
+        ],
         e: [`短期的停業準則只比較售價與【平均可變成本】：固定成本在短期內無論生產與否都要繳付，故不影響這個決定。此處售價 \\$${p} ${cont ? '不低於' : '低於'} 平均可變成本 \\$${avc}，所以${cont ? '應繼續生產 —— 每賣一件所得可抵回可變成本並有餘額貼補固定成本，虧損比停業時為小' : '應停止生產 —— 每多賣一件連可變成本也收不回，虧損比停業時更大'}。用平均總成本作準則的干擾項是最常見的錯誤：售價低於平均總成本只代表有虧損，並不代表應該停業。至於固定成本一項，正因它無論如何都要付，才【不應】納入短期決定。產量並非判斷所需的資料。`,
             `The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$${p} is ${cont ? 'not below' : 'below'} the average variable cost of \\$${avc}, so the firm should ${cont ? 'keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down' : 'shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down'}. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.`],
       }
@@ -185,6 +193,12 @@ const archs: Arch[] = [
           gap !== 0 ? `出現過剩 ${qs + qd} 件，價格將趨向下跌` : `出現過剩 ${qs + qd} 件，價格將趨向下跌`,
           '需求曲線將向左移動，直至市場回復均衡',
         ],
+        ansEn: en,
+        wrongEn: [
+          gap > 0 ? `a shortage of ${gap} units; price will tend to rise` : gap < 0 ? `a surplus of ${-gap} units; price will tend to fall` : `a shortage of ${qd} units; price will tend to rise`,
+          `a surplus of ${qs + qd} units; price will tend to fall`,
+          'the demand curve will shift left until the market returns to equilibrium',
+        ],
         e: [`比較同一價格下的兩個數量：供給量 ${qs} 件、需求量 ${qd} 件，${gap > 0 ? `供過於求，過剩 ${gap} 件；賣方為清貨而減價，故價格趨跌` : gap < 0 ? `求過於供，短缺 ${-gap} 件；買方競相出價，故價格趨升` : '兩者相等，市場已在均衡，價格沒有變動的壓力'}。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。`,
             `Compare the two quantities at the same price: supply ${qs}, demand ${qd}. ${gap > 0 ? `Supply exceeds demand by ${gap} units, so sellers cut price to clear stock and price tends to fall.` : gap < 0 ? `Demand exceeds supply by ${-gap} units, so buyers bid price up and price tends to rise.` : 'They are equal, so the market is already in equilibrium and there is no pressure on price.'} Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.`],
       }
@@ -202,6 +216,15 @@ const archs: Arch[] = [
       const zh = side === 'q'
         ? '需求量沿原有的需求曲線增加；需求曲線本身並不移位，均衡點只是沿曲線滑動'
         : `${curve}${qDir}：整條${curve}曲線向${move}移，均衡價格${pDir}而均衡成交量${qDir}`
+      // 英文版逐項對應：曲線名稱、移動方向、價量方向都要按同一組條件生成，
+      // 否則兩種介面會描述不同的情況。
+      const curveEn = side === 'd' ? 'demand' : 'supply'
+      const otherEn = side === 'd' ? 'supply' : 'demand'
+      const moveEn = dir > 0 ? 'right' : 'left'
+      const verbEn = dir > 0 ? 'increases' : 'decreases'
+      const pDirEn = pDir === '上升' ? 'rises' : 'falls'
+      const qDirEn = dir > 0 ? 'rises' : 'falls'
+      const cap = (w: string) => w[0].toUpperCase() + w.slice(1)
       return {
         q: [`其他情況不變下，${z}。\n\n這對該商品的市場有甚麼影響？`,
             `Other things being equal, ${zEn}.\n\nWhat effect does this have on the market for the good?`],
@@ -214,6 +237,18 @@ const archs: Arch[] = [
             ? '供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少'
             : `${curve}${dir > 0 ? '減少' : '增加'}：整條${curve}曲線向${dir > 0 ? '左' : '右'}移，均衡價格${pDir === '上升' ? '下跌' : '上升'}而均衡成交量${dir > 0 ? '減少' : '增加'}`,
           '需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變',
+        ],
+        ansEn: side === 'q'
+          ? 'Quantity demanded increases along the existing demand curve; the curve itself does not shift, the equilibrium point merely slides along it'
+          : `${cap(curveEn)} ${verbEn}: the whole ${curveEn} curve shifts ${moveEn}, so equilibrium price ${pDirEn} and equilibrium quantity ${qDirEn}`,
+        wrongEn: [
+          side === 'q'
+            ? 'Demand increases: the whole demand curve shifts right, so equilibrium price rises and equilibrium quantity rises'
+            : `${cap(otherEn)} ${verbEn}: the whole ${otherEn} curve shifts ${moveEn}, so equilibrium price ${side === 'd' ? (dir > 0 ? 'falls' : 'rises') : (dir > 0 ? 'rises' : 'falls')} and equilibrium quantity ${qDirEn}`,
+          side === 'q'
+            ? 'Supply decreases: the whole supply curve shifts left, so equilibrium price rises and equilibrium quantity falls'
+            : `${cap(curveEn)} ${dir > 0 ? 'decreases' : 'increases'}: the whole ${curveEn} curve shifts ${dir > 0 ? 'left' : 'right'}, so equilibrium price ${pDirEn === 'rises' ? 'falls' : 'rises'} and equilibrium quantity ${dir > 0 ? 'falls' : 'rises'}`,
+          'The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged',
         ],
         e: [`分辨的關鍵只有一條：改變的是【該商品本身的價格】，還是【價格以外】的因素。前者令數量沿原有曲線滑動，曲線本身不動；後者才會令整條曲線移位。${side === 'q' ? '本題所述正是商品本身的價格變動，故只有需求量沿曲線改變 —— 把它說成「需求增加」，是「需求量變動」與「需求變動」混淆的典型例子，亦是本課題最集中的失分位。' : side === 'd' ? `本題所述屬價格以外影響買方的因素（買家人數），故影響需求：整條需求曲線向${move}移，均衡價格${pDir}、成交量${qDir}。` : `本題所述屬價格以外影響賣方成本或生產條件的因素，故影響供給：整條供給曲線向${move}移，均衡價格${pDir}、成交量${qDir}。`}把受影響的一方認錯（供給當作需求，或相反），是另一個常見錯誤；判斷方法是問：這件事直接改變的，是買方的購買意願，還是賣方的生產條件。最後一項假設兩條曲線同時移動而互相抵銷，但題幹已訂明其他情況不變，只有一項因素改變。`,
             `The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. ${side === 'q' ? 'Here it is the good\u2019s own price that changes, so only quantity demanded moves along the curve. Calling this "an increase in demand" is the classic confusion between a change in quantity demanded and a change in demand, and the heaviest loss of marks on this topic.' : side === 'd' ? 'Here a non-price factor affecting buyers (the number of consumers) changes, so demand shifts and both equilibrium price and quantity move with it.' : 'Here a non-price factor affecting sellers\u2019 costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it.'} Attributing the effect to the wrong side is the other common error \u2014 ask whether the event directly changes buyers\u2019 willingness or sellers\u2019 conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.`],
@@ -240,6 +275,10 @@ const archs: Arch[] = [
       const ans = amb
         ? `均衡價格必定${c.p}，但均衡交易量的變動方向不能確定`
         : `均衡價格${c.p}，均衡交易量${c.q}`
+      const pEn = (x: string) => (x === '上升' ? 'rises' : 'falls')
+      const qEn = (x: string) => (x === '增加' ? 'rises' : 'falls')
+      // 情態動詞 must 之後要用原形：must fall，不是 must falls。
+      const pBare = (x: string) => (x === '上升' ? 'rise' : 'fall')
       return {
         q: [`某商品市場同時出現以下兩項變化：${c.zh}。\n\n均衡價格與均衡交易量會怎樣變動？`,
             `In the market for a good, ${c.en}.\n\nHow do the equilibrium price and quantity change?`],
@@ -249,6 +288,16 @@ const archs: Arch[] = [
           : [`均衡價格${flipP}，均衡交易量${c.q}`,
              `均衡價格${c.p}，均衡交易量${c.q === '增加' ? '減少' : '增加'}`,
              `均衡價格必定${c.p}，但均衡交易量的變動方向不能確定`],
+        ansEn: amb
+          ? `Equilibrium price must ${pBare(c.p)}, but the direction of equilibrium quantity cannot be determined`
+          : `Equilibrium price ${pEn(c.p)} and equilibrium quantity ${qEn(c.q)}`,
+        wrongEn: amb
+          ? [`Equilibrium price ${pEn(c.p)} and equilibrium quantity rises`,
+             `Equilibrium price ${pEn(c.p)} and equilibrium quantity falls`,
+             'Neither the direction of equilibrium price nor that of equilibrium quantity can be determined']
+          : [`Equilibrium price ${pEn(flipP)} and equilibrium quantity ${qEn(c.q)}`,
+             `Equilibrium price ${pEn(c.p)} and equilibrium quantity ${c.q === '增加' ? 'falls' : 'rises'}`,
+             `Equilibrium price must ${pBare(c.p)}, but the direction of equilibrium quantity cannot be determined`],
         e: [`兩條曲線同時移動時，必須逐項判斷：某一項的方向，只有在兩條曲線【推同一個方向】時才能確定。${amb
               ? `本題之中，需求與供給對價格的影響同向（兩者都把價格推${c.p === '上升' ? '高' : '低'}），故價格${c.p}是確定的；但兩者對交易量的影響相反 —— 一邊把交易量推上，一邊把它推落，最終方向取決於哪一邊的移幅較大，而題幹並無交代，故交易量【不能確定】。此處硬答一個方向，是本課題最典型的失分位：能確定的只有一項，答兩項就等於憑空補上了題目沒有給的資料。`
               : `本題之中，兩者對交易量的影響同向，故交易量${c.q}是確定的；價格方面兩者相反，但題幹已交代哪一邊的移幅較大，由較大的一邊主導，故價格${c.p}。若題幹沒有交代移幅大小，價格的方向便無法確定。`}
@@ -276,6 +325,14 @@ const archs: Arch[] = [
           `完全無彈性（彈性值 0）`,
           `完全有彈性（彈性值趨於無限大）`,
         ],
+        ansEn: e > 1 ? `Elastic (elasticity ${num(e)}, greater than 1)`
+          : e < 1 ? `Inelastic (elasticity ${num(e)}, less than 1)`
+            : `Unit elastic (elasticity ${num(e)}, equal to 1)`,
+        wrongEn: [
+          e > 1 ? `Inelastic (elasticity ${num(dp / dq)}, less than 1)` : `Elastic (elasticity ${num(dp / dq)}, greater than 1)`,
+          'Perfectly inelastic (elasticity 0)',
+          'Perfectly elastic (elasticity tending to infinity)',
+        ],
         e: [`需求價格彈性（取絕對值）＝ 需求量變動百分比 ÷ 價格變動百分比 ＝ ${dq}% ÷ ${dp}% ＝ ${num(e)}，${e > 1 ? '大於 1，故富有彈性' : e < 1 ? '小於 1，故缺乏彈性' : '等於 1，故屬單位彈性'}。把分子分母對調得 ${num(dp / dq)}，分類隨即倒轉，這是最常見的錯誤；記法是：彈性量度的是【量】對價的反應，故量在上。完全無彈性指價格無論怎樣變動，需求量都不變；完全有彈性指價格稍有變動，需求量即由零跳至無限大 —— 兩者都是極端情況，與本題所給的有限百分比不符。`,
             `Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = ${dq}% ÷ ${dp}% = ${num(e)}, which is ${e > 1 ? 'greater than 1, so demand is elastic' : e < 1 ? 'less than 1, so demand is inelastic' : 'equal to 1, so demand is unit elastic'}. Swapping numerator and denominator gives ${num(dp / dq)} and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.`],
       }
@@ -292,6 +349,12 @@ const archs: Arch[] = [
             `The price elasticity of demand for a good is ${e} in absolute value. If its price is ${up ? 'raised' : 'lowered'},\n\nother things being equal, how does the seller's total revenue change?`],
         ans: zh,
         wrong: [rise ? '總收入減少' : '總收入增加', '總收入維持不變', `無法判斷，因為題目沒有提供原來的價格與銷量`],
+        ansEn: e === 1 ? 'Total revenue is unchanged' : rise ? 'Total revenue rises' : 'Total revenue falls',
+        wrongEn: [
+          rise ? 'Total revenue falls' : 'Total revenue rises',
+          'Total revenue is unchanged',
+          'Cannot be determined, because the original price and quantity are not given',
+        ],
         e: [`總收入 ＝ 價格 × 銷量，價格${up ? '升' : '跌'}時銷量必定${up ? '跌' : '升'}，故勝負取決於兩者的變動幅度，而彈性正是量度這個比較。彈性 ${e} ${e > 1 ? '大於 1，代表銷量的變動幅度大於價格，銷量的一方主導' : e < 1 ? '小於 1，代表銷量的變動幅度小於價格，價格的一方主導' : '等於 1，代表兩者的變動幅度相同，剛好抵銷'}，所以${zh}。一句記法：缺乏彈性時加價得益，富有彈性時減價得益。至於「無法判斷」一項 —— 由於比較的是變動【百分比】，原來的價格與銷量並不影響方向，故資料已經足夠。`,
             `Total revenue = price × quantity, and a ${up ? 'rise' : 'fall'} in price always brings a ${up ? 'fall' : 'rise'} in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of ${e} is ${e > 1 ? 'above 1, so quantity moves proportionally more and dominates' : e < 1 ? 'below 1, so quantity moves proportionally less and price dominates' : 'equal to 1, so the two exactly offset'}, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. "Cannot be determined" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.`],
       }
@@ -343,6 +406,14 @@ const archs: Arch[] = [
           `實質工資上升約 ${num(nom + inf)}%，因為兩項升幅應該相加`,
           `實質工資上升 ${nom}%，通脹率並不影響實質工資`,
           ans >= 0 ? `實質工資下跌約 ${num(nom + inf)}%` : `實質工資上升約 ${num(inf - ans)}%`,
+        ],
+        ansEn: ans > 0 ? `Real wages rise by about ${num(ans)}%, so purchasing power improves`
+          : ans < 0 ? `Real wages fall by about ${num(-ans)}%, so purchasing power actually declines`
+            : 'Real wages are unchanged, so purchasing power is unaffected',
+        wrongEn: [
+          `Real wages rise by about ${num(nom + inf)}%, because the two increases should be added`,
+          `Real wages rise by ${nom}%, because inflation does not affect real wages`,
+          ans >= 0 ? `Real wages fall by about ${num(nom + inf)}%` : `Real wages rise by about ${num(inf - ans)}%`,
         ],
         e: [`實質變動 ≈ 名義變動 − 通脹率 ＝ ${nom}% − ${inf}% ＝ ${num(ans)}%，故${ans > 0 ? '實質工資上升，工人的購買力確有提高' : ans < 0 ? '實質工資下跌 —— 名義工資雖然加了，但物價升得更快，實際能買到的東西反而少了' : '實質工資不變，名義上的加幅剛好被物價抵銷'}。把兩者相加是本題最主要的錯誤：通脹侵蝕購買力，方向與加薪相反，故應相減。至於「通脹率並不影響實質工資」，正好違反了實質與名義的分別 —— 兩者的分別就在於有沒有把物價的變動剔除。`,
             `Real change ≈ nominal change − inflation = ${nom}% − ${inf}% = ${num(ans)}%, so ${ans > 0 ? 'real wages rise and purchasing power genuinely improves' : ans < 0 ? 'real wages fall — the pay rise is outpaced by prices, so workers can buy less than before' : 'real wages are unchanged, the rise being exactly offset by prices'}. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out.`],

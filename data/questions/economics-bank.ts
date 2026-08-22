@@ -1,7 +1,7 @@
 import type { Topic } from './types'
 import { topicList } from './_builder'
 import type { Question } from './types'
-import { createBank, n, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, hkBillion, money, n, round, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // ECONOMICS — PARAMETRIC BANK (Mode A, correct-by-construction; NUMERIC items)
@@ -32,7 +32,7 @@ for (const P of [5, 8, 10, 12, 15, 20]) {
   for (const Q of [20, 30, 50, 100]) {
     add(`ec_e1_${P}_${Q}`, T.demandSupply, FW.quant, 'easy',
       [`某商品價格 ${P} 元，銷量 ${Q} 件，求總收入。`, `A good sells at \\$${P} each, quantity ${Q}. Find total revenue.`],
-      [n(`${P * Q} 元`), n(`${P + Q} 元`), n(`${P * Q + P} 元`), n(`${Q - P} 元`)],
+      [money(P * Q), money(P + Q), money(P * Q + P), money(Q - P)],
       [`總收入 = 價格 × 銷量 = ${P} × ${Q} = ${P * Q} 元。陷阱：${P + Q} 元是相加（並非相乘）。`,
        `TR = P × Q = ${P * Q}. Trap: ${P + Q} adds instead of multiplying.`])
   }
@@ -55,7 +55,7 @@ for (const Q of [4, 5, 8, 10, 20]) {
     const TC = Q * ac
     add(`ec_e3_${Q}_${ac}`, T.firm, FW.quant, 'easy',
       [`總成本 ${TC} 元，產量 ${Q} 單位，求平均成本。`, `Total cost \\$${TC}, output ${Q} units. Find average cost.`],
-      [n(`${ac} 元`), n(`${TC * Q} 元`), n(`${round(Q / TC, 2)} 元`), n(`${TC - Q} 元`)],
+      [money(ac), money(TC * Q), money(round(Q / TC, 2)), money(TC - Q)],
       [`平均成本 = 總成本 / 產量 = ${TC} / ${Q} = ${ac} 元。陷阱：${round(Q / TC, 2)} 元上下倒轉。`,
        `AC = TC/Q = ${ac}. Trap: ${round(Q / TC, 2)} inverts the ratio.`])
   }
@@ -91,7 +91,7 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
     if (TR === TC) continue
     add(`ec_m3_${TR}_${TC}`, T.firm, FW.quant, 'medium',
       [`總收入 ${TR} 元，總成本 ${TC} 元，求利潤。`, `Total revenue \\$${TR}, total cost \\$${TC}. Find profit.`],
-      [n(`${TR - TC} 元`), n(`${TR + TC} 元`), n(`${round(TR / TC, 2)} 元`), n(`${TC - TR} 元`)],
+      [money(TR - TC), money(TR + TC), money(round(TR / TC, 2)), money(TC - TR)],
       [`利潤 = 總收入 − 總成本 = ${TR} − ${TC} = ${TR - TC} 元。陷阱：${TR + TC} 元加了；${TC - TR} 元符號反。`,
        `Profit = TR − TC = ${TR - TC}. Trap: ${TC - TR} has the sign reversed.`])
   }
@@ -103,8 +103,8 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
     const Y = C + I + G + (X - M)
     add(`ec_m4_${i}`, T.macro, FW.macro, 'medium',
       [`已知 C=${C}、I=${I}、G=${G}、出口 X=${X}、進口 M=${M}（億元），求 GDP。`,
-       `Given C=${C}, I=${I}, G=${G}, exports X=${X}, imports M=${M}. Find GDP.`],
-      [n(`${Y} 億元`), n(`${C + I + G + X + M} 億元`), n(`${C + I + G} 億元`), n(`${C + I + G + (M - X)} 億元`)],
+       `Given C=${C}, I=${I}, G=${G}, exports X=${X}, imports M=${M} (all figures in \\$100 million). Find GDP.`],
+      [hkBillion(Y), hkBillion(C + I + G + X + M), hkBillion(C + I + G), hkBillion(C + I + G + (M - X))],
       [`GDP = C + I + G + (X − M) = ${C}+${I}+${G}+(${X}−${M}) = ${Y} 億元。陷阱：${C + I + G + X + M} 億元誤加了進口（應為減去）。`,
        `GDP = C+I+G+(X−M) = ${Y}. Trap: adding imports instead of subtracting gives ${C + I + G + X + M}.`])
   })
@@ -133,8 +133,8 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
     const dGDP = round(mult * dSpend, 1)
     add(`ec_h2_${i}`, T.macro, FW.macro, 'hard',
       [`MPC = ${mpc}，政府開支增加 ${dSpend} 億元，求 GDP 最終變化。`,
-       `MPC = ${mpc}; government spending rises by ${dSpend}. Find the final change in GDP.`],
-      [n(`${dGDP} 億元`), n(`${dSpend} 億元`), n(`${round(dSpend / (1 - mpc) / 10, 2)} 億元`), n(`${round(dSpend * mpc, 1)} 億元`)],
+       `MPC = ${mpc}; government spending rises by ${dSpend} (in \\$100 million). Find the final change in GDP.`],
+      [hkBillion(dGDP), hkBillion(dSpend), hkBillion(round(dSpend / (1 - mpc) / 10, 2)), hkBillion(round(dSpend * mpc, 1))],
       [`乘數 = 1/(1−${mpc}) = ${round(mult, 2)}，ΔGDP = 乘數 × Δ開支 = ${round(mult, 2)} × ${dSpend} = ${dGDP} 億元。陷阱：${dSpend} 億元漏了乘數效應。`,
        `Multiplier = ${round(mult, 2)}, ΔGDP = ${dGDP}. Trap: ${dSpend} ignores the multiplier effect.`])
   })
@@ -146,7 +146,7 @@ for (const TR of [100, 150, 200, 250, 300, 120, 225]) {
     add(`ec_h3_${i}`, T.market, FW.quant, 'hard',
       [`線性需求下，最高願付價 ${pmax} 元，市價 ${price} 元，成交量 ${Q}。求消費者剩餘。`,
        `Linear demand: max willingness-to-pay \\$${pmax}, market price \\$${price}, quantity ${Q}. Find consumer surplus.`],
-      [n(`${cs} 元`), n(`${(pmax - price) * Q} 元`), n(`${round(0.5 * Q * pmax, 1)} 元`), n(`${(pmax - price)} 元`)],
+      [money(cs), money((pmax - price) * Q), money(round(0.5 * Q * pmax, 1)), money((pmax - price))],
       [`消費者剩餘 = ½ × 成交量 × (最高願付價 − 市價) = ½ × ${Q} × (${pmax}−${price}) = ${cs} 元。陷阱：${(pmax - price) * Q} 元漏了 ½（當成長方形）。`,
        `CS = ½ × Q × (Pmax − P) = ${cs}. Trap: ${(pmax - price) * Q} drops the ½ (treats it as a rectangle).`])
   })

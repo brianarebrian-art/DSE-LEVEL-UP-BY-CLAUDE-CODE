@@ -21,6 +21,9 @@ const MIN_QUESTION_LEN = 5
 const MIN_EXPLANATION_LEN = 10
 const MIN_REFERENCE_LEN = 4
 const BANNED_OPTION_PATTERNS = [/以上皆[是非]/, /all of the above/i, /none of the above/i]
+const HAS_CJK = /[\u4e00-\u9fff]/
+// 五科語言科目的選項本身就是考核對象，中文選項為刻意設計，不受英文選項檢查所限。
+const LANGUAGE_SUBJECTS = new Set(['chinese', 'chinese-history', 'chinese-literature', 'english', 'english-literature'])
 
 // HKEAA terminology / syllabus-scope red lines (mirror scripts/qbank/term-guard.mjs).
 // A draft that trips one of these is auto-rejected — it must never reach a human
@@ -179,6 +182,32 @@ export function gateRow(row, subject) {
     e.push(`字面 markdown 粗體「${bold[0].slice(0, 40)}」—— 題庫唔支援 markdown，學生會見到星號本身`)
   }
 
+  // ── 雙語題的英文選項不得夾雜中文 ─────────────────────────────────────────
+  // 一條題目只要有 `questionEn`，英文介面的學生就會讀到它。若 `optionsEn` 仍是
+  // 中文，該學生會看見英文題幹配中文選項 —— 題目變成無法作答，而非只是不美觀。
+  //
+  // 2026-08-22 實測：387 條 live 題目中招（economics 141／bafs 100／
+  // chemistry 80／m1 33／m2 16／math 10／physics 4／visual-arts 2／ict 1）。
+  // 成因有三：其一，以 `中文 / english` 單一字串書寫選項再交給 `[v, v]`；
+  // 其二，把「40 元」交給只適用於純數值的 `n()`；其三，出題端只填了 `ans`
+  // 而漏了 `ansEn`。三者在源碼上都看不出異樣，唯有在入庫時攔截。
+  //
+  // 五科語言科目不在此列：中文科、中國歷史、中國文學、英文科、英國文學的
+  // 選項本身就是考核對象，中文選項是刻意的。
+  //
+  // 影響統計（憲章 §6 —— 加閘前必查）：加入本閘時 live 題目 0 條、
+  // 等審草稿 927 條之中 0 條會 fail，屬純新增防線，不會令任何現有資料失效。
+  if (!LANGUAGE_SUBJECTS.has(subject) && typeof row?.questionEn === 'string' && row.questionEn.trim()) {
+    const en = Array.isArray(row?.optionsEn) ? row.optionsEn : opts
+    if (Array.isArray(en)) {
+      en.forEach((o, i) => {
+        if (typeof o === 'string' && HAS_CJK.test(o)) {
+          e.push(`optionsEn[${i}] 仍是中文「${o.slice(0, 24)}」—— 英文介面的學生會見到英文題幹配中文選項，無法作答`)
+        }
+      })
+    }
+  }
+
   // LaTeX hygiene — every subject: `$…$` math must be balanced
   if (typeof row?.question === 'string' && unbalancedDollars(row.question)) e.push('unbalanced `$` in question (LaTeX)')
   if (Array.isArray(opts)) opts.forEach((o, i) => { if (typeof o === 'string' && unbalancedDollars(o)) e.push(`unbalanced \`$\` in option ${i}`) })
@@ -226,12 +255,20 @@ export function toReviewedQuestion(row, subject) {
   const topicLabel = typeof row.topicZh === 'string' && row.topicZh.trim()
     ? row.topicZh.trim()
     : row.topic.trim()
+  // 2026-08-22 修正：`topicEn` 一直被丟棄。成因與 2026-08-21 修好的 MC 英文欄
+  // 同出一轍 —— 草稿明明帶住這一欄，promoter 從未 copy 出去。實測影響：已入庫
+  // 的 648 條機器閘題目全部無 topicEn，英文介面的課題標籤一律顯示中文。
+  //
+  // 影響統計（憲章 §6）：純加法，只是把本已存在而被丟棄的 optional 欄帶出去，
+  // 沒有任何一行會由「過」變「不過」，亦不會改動已入庫檔案（除非重跑 promote）。
+  const topicLabelEn = typeof row.topicEn === 'string' && row.topicEn.trim() ? row.topicEn.trim() : undefined
   const base = {
     id: row.id.trim(),
     type,
     subject,
     topic: topicId,
     topicZh: topicLabel,
+    ...(topicLabelEn ? { topicEn: topicLabelEn } : {}),
     framework: 'reviewed',
     frameworkZh: '人手核對題',
     frameworkEmoji: '✅',

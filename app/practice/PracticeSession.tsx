@@ -772,9 +772,14 @@ export default function PracticeSession({
             <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full">
               {tr(currentQ.topicZh, currentQ.topicEn)}
             </span>
-            <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
-              {currentQ.year}
-            </span>
+            {/* 機器閘題目為原創改寫，並無對應年份，入庫時記為 0 —— 不可以憑空填一個
+                年份充當「歷屆」（憲章 §8 禁止虛構數據），故 0 直接不顯示，
+                而非印出一個「0」。 */}
+            {currentQ.year ? (
+              <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
+                {currentQ.year}
+              </span>
+            ) : null}
           </div>
 
           {/* Content — P1-6-R2: 自診咗「B. 審題陷阱」先高亮題幹指令字 */}

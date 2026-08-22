@@ -7,7 +7,7 @@
 //   subject  : economics
 //   count    : 84  (easy 42 / medium 42 / hard 0)
 //   types    : mc 84 / text 0 / long 0
-//   updated  : 2026-08-21
+//   updated  : 2026-08-22
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -18,6 +18,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -49,6 +50,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -80,6 +82,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -111,6 +114,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -142,6 +146,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -173,6 +178,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -204,6 +210,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -235,6 +242,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -266,6 +274,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -297,6 +306,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -328,6 +338,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -359,6 +370,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -390,6 +402,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -421,6 +434,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -452,6 +466,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -483,6 +498,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -514,6 +530,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -545,6 +562,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -576,6 +594,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -593,10 +612,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "A firm currently sells at \\$18 per unit, with average variable cost \\$20 and average fixed cost \\$6.\n\nIn the short run, should it keep producing?",
     "optionsEn": [
-      "應停止生產，因為固定成本在短期內仍須繳付",
-      "無法判斷，因為題目沒有提供產量",
-      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損",
-      "應繼續生產，因為售價高於平均固定成本"
+      "Shut down: fixed cost still has to be paid in the short run",
+      "Cannot be determined: the question gives no level of output",
+      "Shut down: price is below average variable cost, so each extra unit widens the loss",
+      "Keep producing: price is above average fixed cost"
     ],
     "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$18 is below the average variable cost of \\$20, so the firm should shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.",
     "frameworkEn": "Auto-gated"
@@ -607,6 +626,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -624,10 +644,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "A firm currently sells at \\$25 per unit, with average variable cost \\$22 and average fixed cost \\$5.\n\nIn the short run, should it keep producing?",
     "optionsEn": [
-      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損",
-      "應停止生產，因為固定成本在短期內仍須繳付",
-      "無法判斷，因為題目沒有提供產量",
-      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻"
+      "Shut down: price is below average total cost, so producing must run at a loss",
+      "Shut down: fixed cost still has to be paid in the short run",
+      "Cannot be determined: the question gives no level of output",
+      "Keep producing: price is not below average variable cost, so each unit still contributes towards fixed cost"
     ],
     "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$25 is not below the average variable cost of \\$22, so the firm should keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.",
     "frameworkEn": "Auto-gated"
@@ -638,6 +658,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -655,10 +676,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "A firm currently sells at \\$9 per unit, with average variable cost \\$12 and average fixed cost \\$4.\n\nIn the short run, should it keep producing?",
     "optionsEn": [
-      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損",
-      "應繼續生產，因為售價高於平均固定成本",
-      "應停止生產，因為固定成本在短期內仍須繳付",
-      "無法判斷，因為題目沒有提供產量"
+      "Shut down: price is below average variable cost, so each extra unit widens the loss",
+      "Keep producing: price is above average fixed cost",
+      "Shut down: fixed cost still has to be paid in the short run",
+      "Cannot be determined: the question gives no level of output"
     ],
     "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$9 is below the average variable cost of \\$12, so the firm should shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.",
     "frameworkEn": "Auto-gated"
@@ -669,6 +690,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -686,10 +708,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "A firm currently sells at \\$40 per unit, with average variable cost \\$35 and average fixed cost \\$10.\n\nIn the short run, should it keep producing?",
     "optionsEn": [
-      "無法判斷，因為題目沒有提供產量",
-      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻",
-      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損",
-      "應停止生產，因為固定成本在短期內仍須繳付"
+      "Cannot be determined: the question gives no level of output",
+      "Keep producing: price is not below average variable cost, so each unit still contributes towards fixed cost",
+      "Shut down: price is below average total cost, so producing must run at a loss",
+      "Shut down: fixed cost still has to be paid in the short run"
     ],
     "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$40 is not below the average variable cost of \\$35, so the firm should keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.",
     "frameworkEn": "Auto-gated"
@@ -700,6 +722,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -717,10 +740,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "A firm currently sells at \\$14 per unit, with average variable cost \\$14 and average fixed cost \\$3.\n\nIn the short run, should it keep producing?",
     "optionsEn": [
-      "應停止生產，因為固定成本在短期內仍須繳付",
-      "無法判斷，因為題目沒有提供產量",
-      "應繼續生產，因為售價不低於平均可變成本，每賣一件仍能為固定成本作出貢獻",
-      "應停止生產，因為售價低於平均總成本，繼續生產必定虧損"
+      "Shut down: fixed cost still has to be paid in the short run",
+      "Cannot be determined: the question gives no level of output",
+      "Keep producing: price is not below average variable cost, so each unit still contributes towards fixed cost",
+      "Shut down: price is below average total cost, so producing must run at a loss"
     ],
     "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$14 is not below the average variable cost of \\$14, so the firm should keep producing — each unit covers its variable cost and leaves something towards fixed cost, giving a smaller loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.",
     "frameworkEn": "Auto-gated"
@@ -731,6 +754,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -748,10 +772,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "A firm currently sells at \\$7 per unit, with average variable cost \\$9 and average fixed cost \\$2.\n\nIn the short run, should it keep producing?",
     "optionsEn": [
-      "應繼續生產，因為售價高於平均固定成本",
-      "應停止生產，因為固定成本在短期內仍須繳付",
-      "無法判斷，因為題目沒有提供產量",
-      "應停止生產，因為售價低於平均可變成本，每多賣一件反而擴大虧損"
+      "Keep producing: price is above average fixed cost",
+      "Shut down: fixed cost still has to be paid in the short run",
+      "Cannot be determined: the question gives no level of output",
+      "Shut down: price is below average variable cost, so each extra unit widens the loss"
     ],
     "explanationEn": "The short-run shutdown rule compares price with *average variable cost* only: fixed cost must be paid whether or not the firm produces, so it cannot affect the decision. Here \\$7 is below the average variable cost of \\$9, so the firm should shut down — each extra unit fails even to cover its variable cost, giving a larger loss than shutting down. Using average total cost is the commonest error: a price below average total cost means a loss, not a reason to shut. Fixed cost is excluded precisely because it is payable either way, and output is not needed for this judgement.",
     "frameworkEn": "Auto-gated"
@@ -762,6 +786,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -793,6 +818,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -824,6 +850,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -855,6 +882,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -886,6 +914,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -917,6 +946,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -948,6 +978,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -979,6 +1010,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1010,6 +1042,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1041,6 +1074,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1072,6 +1106,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "firm_production",
     "topicZh": "廠商與生產",
+    "topicEn": "The Firm and Production",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1103,6 +1138,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1120,10 +1156,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "At a price of \\$6, quantity demanded of a good is 90 units and quantity supplied is 50 units.\n\nWhat is the market condition and the likely movement of price?",
     "optionsEn": [
-      "出現過剩 40 件，價格將趨向下跌",
-      "出現過剩 140 件，價格將趨向下跌",
-      "需求曲線將向左移動，直至市場回復均衡",
-      "出現短缺 40 件，價格將趨向上升"
+      "a surplus of 40 units; price will tend to fall",
+      "a surplus of 140 units; price will tend to fall",
+      "the demand curve will shift left until the market returns to equilibrium",
+      "a shortage of 40 units; price will tend to rise"
     ],
     "explanationEn": "Compare the two quantities at the same price: supply 50, demand 90. Demand exceeds supply by 40 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.",
     "frameworkEn": "Auto-gated"
@@ -1134,6 +1170,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1151,10 +1188,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "At a price of \\$12, quantity demanded of a good is 40 units and quantity supplied is 70 units.\n\nWhat is the market condition and the likely movement of price?",
     "optionsEn": [
-      "出現過剩 30 件，價格將趨向下跌",
-      "出現短缺 30 件，價格將趨向上升",
-      "出現過剩 110 件，價格將趨向下跌",
-      "需求曲線將向左移動，直至市場回復均衡"
+      "a surplus of 30 units; price will tend to fall",
+      "a shortage of 30 units; price will tend to rise",
+      "a surplus of 110 units; price will tend to fall",
+      "the demand curve will shift left until the market returns to equilibrium"
     ],
     "explanationEn": "Compare the two quantities at the same price: supply 70, demand 40. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.",
     "frameworkEn": "Auto-gated"
@@ -1165,6 +1202,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1182,10 +1220,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "At a price of \\$3, quantity demanded of a good is 200 units and quantity supplied is 120 units.\n\nWhat is the market condition and the likely movement of price?",
     "optionsEn": [
-      "需求曲線將向左移動，直至市場回復均衡",
-      "出現短缺 80 件，價格將趨向上升",
-      "出現過剩 80 件，價格將趨向下跌",
-      "出現過剩 320 件，價格將趨向下跌"
+      "the demand curve will shift left until the market returns to equilibrium",
+      "a shortage of 80 units; price will tend to rise",
+      "a surplus of 80 units; price will tend to fall",
+      "a surplus of 320 units; price will tend to fall"
     ],
     "explanationEn": "Compare the two quantities at the same price: supply 120, demand 200. Demand exceeds supply by 80 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.",
     "frameworkEn": "Auto-gated"
@@ -1196,6 +1234,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1213,10 +1252,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "At a price of \\$20, quantity demanded of a good is 55 units and quantity supplied is 85 units.\n\nWhat is the market condition and the likely movement of price?",
     "optionsEn": [
-      "出現過剩 140 件，價格將趨向下跌",
-      "需求曲線將向左移動，直至市場回復均衡",
-      "出現過剩 30 件，價格將趨向下跌",
-      "出現短缺 30 件，價格將趨向上升"
+      "a surplus of 140 units; price will tend to fall",
+      "the demand curve will shift left until the market returns to equilibrium",
+      "a surplus of 30 units; price will tend to fall",
+      "a shortage of 30 units; price will tend to rise"
     ],
     "explanationEn": "Compare the two quantities at the same price: supply 85, demand 55. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.",
     "frameworkEn": "Auto-gated"
@@ -1227,6 +1266,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1244,10 +1284,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "At a price of \\$8, quantity demanded of a good is 64 units and quantity supplied is 64 units.\n\nWhat is the market condition and the likely movement of price?",
     "optionsEn": [
-      "出現短缺 64 件，價格將趨向上升",
-      "出現過剩 128 件，價格將趨向下跌",
-      "需求曲線將向左移動，直至市場回復均衡",
-      "市場處於均衡，價格沒有變動的壓力"
+      "a shortage of 64 units; price will tend to rise",
+      "a surplus of 128 units; price will tend to fall",
+      "the demand curve will shift left until the market returns to equilibrium",
+      "the market is in equilibrium; there is no pressure on price"
     ],
     "explanationEn": "Compare the two quantities at the same price: supply 64, demand 64. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.",
     "frameworkEn": "Auto-gated"
@@ -1258,6 +1298,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1275,10 +1316,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "At a price of \\$15, quantity demanded of a good is 30 units and quantity supplied is 30 units.\n\nWhat is the market condition and the likely movement of price?",
     "optionsEn": [
-      "市場處於均衡，價格沒有變動的壓力",
-      "出現短缺 30 件，價格將趨向上升",
-      "出現過剩 60 件，價格將趨向下跌",
-      "需求曲線將向左移動，直至市場回復均衡"
+      "the market is in equilibrium; there is no pressure on price",
+      "a shortage of 30 units; price will tend to rise",
+      "a surplus of 60 units; price will tend to fall",
+      "the demand curve will shift left until the market returns to equilibrium"
     ],
     "explanationEn": "Compare the two quantities at the same price: supply 30, demand 30. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change.",
     "frameworkEn": "Auto-gated"
@@ -1289,6 +1330,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1306,10 +1348,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "Other things being equal, the price of a raw material used to make the good rises.\n\nWhat effect does this have on the market for the good?",
     "optionsEn": [
-      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
-      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
-      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
-      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加"
+      "The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged",
+      "Supply decreases: the whole supply curve shifts left, so equilibrium price rises and equilibrium quantity falls",
+      "Demand decreases: the whole demand curve shifts left, so equilibrium price falls and equilibrium quantity falls",
+      "Supply increases: the whole supply curve shifts right, so equilibrium price falls and equilibrium quantity rises"
     ],
     "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.",
     "frameworkEn": "Auto-gated"
@@ -1320,6 +1362,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1337,10 +1380,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "Other things being equal, better technology lowers the unit cost of production.\n\nWhat effect does this have on the market for the good?",
     "optionsEn": [
-      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
-      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
-      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
-      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加"
+      "Supply decreases: the whole supply curve shifts left, so equilibrium price rises and equilibrium quantity falls",
+      "The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged",
+      "Supply increases: the whole supply curve shifts right, so equilibrium price falls and equilibrium quantity rises",
+      "Demand increases: the whole demand curve shifts right, so equilibrium price rises and equilibrium quantity rises"
     ],
     "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.",
     "frameworkEn": "Auto-gated"
@@ -1351,6 +1394,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1368,10 +1412,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "Other things being equal, the market price of the good itself falls.\n\nWhat effect does this have on the market for the good?",
     "optionsEn": [
-      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
-      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
-      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
-      "需求量沿原有的需求曲線增加；需求曲線本身並不移位，均衡點只是沿曲線滑動"
+      "Demand increases: the whole demand curve shifts right, so equilibrium price rises and equilibrium quantity rises",
+      "Supply decreases: the whole supply curve shifts left, so equilibrium price rises and equilibrium quantity falls",
+      "The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged",
+      "Quantity demanded increases along the existing demand curve; the curve itself does not shift, the equilibrium point merely slides along it"
     ],
     "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here it is the good’s own price that changes, so only quantity demanded moves along the curve. Calling this \"an increase in demand\" is the classic confusion between a change in quantity demanded and a change in demand, and the heaviest loss of marks on this topic. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.",
     "frameworkEn": "Auto-gated"
@@ -1382,6 +1426,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1399,10 +1444,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "Other things being equal, the government imposes a per-unit tax on producers of the good.\n\nWhat effect does this have on the market for the good?",
     "optionsEn": [
-      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少",
-      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
-      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
-      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變"
+      "Supply decreases: the whole supply curve shifts left, so equilibrium price rises and equilibrium quantity falls",
+      "Demand decreases: the whole demand curve shifts left, so equilibrium price falls and equilibrium quantity falls",
+      "Supply increases: the whole supply curve shifts right, so equilibrium price falls and equilibrium quantity rises",
+      "The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged"
     ],
     "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.",
     "frameworkEn": "Auto-gated"
@@ -1413,6 +1458,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1430,10 +1476,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "Other things being equal, the government pays producers a per-unit subsidy.\n\nWhat effect does this have on the market for the good?",
     "optionsEn": [
-      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
-      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加",
-      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
-      "供給減少：整條供給曲線向左移，均衡價格上升而均衡成交量減少"
+      "The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged",
+      "Supply increases: the whole supply curve shifts right, so equilibrium price falls and equilibrium quantity rises",
+      "Demand increases: the whole demand curve shifts right, so equilibrium price rises and equilibrium quantity rises",
+      "Supply decreases: the whole supply curve shifts left, so equilibrium price rises and equilibrium quantity falls"
     ],
     "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting sellers’ costs or production conditions changes, so supply shifts; equilibrium price moves opposite to the shift while quantity moves with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.",
     "frameworkEn": "Auto-gated"
@@ -1444,6 +1490,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1461,10 +1508,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "Other things being equal, population growth raises the number of consumers buying the good.\n\nWhat effect does this have on the market for the good?",
     "optionsEn": [
-      "需求減少：整條需求曲線向左移，均衡價格下跌而均衡成交量減少",
-      "需求曲線與供給曲線同時向右移，均衡價格因兩者互相抵銷而維持不變",
-      "需求增加：整條需求曲線向右移，均衡價格上升而均衡成交量增加",
-      "供給增加：整條供給曲線向右移，均衡價格下跌而均衡成交量增加"
+      "Demand decreases: the whole demand curve shifts left, so equilibrium price falls and equilibrium quantity falls",
+      "The demand and supply curves both shift right, and the two effects cancel so equilibrium price is unchanged",
+      "Demand increases: the whole demand curve shifts right, so equilibrium price rises and equilibrium quantity rises",
+      "Supply increases: the whole supply curve shifts right, so equilibrium price falls and equilibrium quantity rises"
     ],
     "explanationEn": "The test is single: has the price of the good itself changed, or something other than price? The former slides quantity along an unchanged curve; only the latter shifts the whole curve. Here a non-price factor affecting buyers (the number of consumers) changes, so demand shifts and both equilibrium price and quantity move with it. Attributing the effect to the wrong side is the other common error — ask whether the event directly changes buyers’ willingness or sellers’ conditions. The final option assumes both curves move and cancel out, but the question holds all other factors constant.",
     "frameworkEn": "Auto-gated"
@@ -1475,6 +1522,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1492,10 +1540,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In the market for a good, demand rises while supply falls.\n\nHow do the equilibrium price and quantity change?",
     "optionsEn": [
-      "均衡價格上升，均衡交易量增加",
-      "均衡價格上升，均衡交易量減少",
-      "均衡價格與均衡交易量的變動方向均不能確定",
-      "均衡價格必定上升，但均衡交易量的變動方向不能確定"
+      "Equilibrium price rises and equilibrium quantity rises",
+      "Equilibrium price rises and equilibrium quantity falls",
+      "Neither the direction of equilibrium price nor that of equilibrium quantity can be determined",
+      "Equilibrium price must rise, but the direction of equilibrium quantity cannot be determined"
     ],
     "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push price the same way, so the price direction is certain; but they push quantity in opposite directions, and which wins depends on the relative sizes of the shifts, which the question does not state. Quantity is therefore indeterminate. Forcing a direction anyway is the classic error on this topic — only one variable can be pinned down, and answering both invents information the question never supplied. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions.",
     "frameworkEn": "Auto-gated"
@@ -1506,6 +1554,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1523,10 +1572,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In the market for a good, demand falls while supply rises.\n\nHow do the equilibrium price and quantity change?",
     "optionsEn": [
-      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
-      "均衡價格下跌，均衡交易量增加",
-      "均衡價格下跌，均衡交易量減少",
-      "均衡價格與均衡交易量的變動方向均不能確定"
+      "Equilibrium price must fall, but the direction of equilibrium quantity cannot be determined",
+      "Equilibrium price falls and equilibrium quantity rises",
+      "Equilibrium price falls and equilibrium quantity falls",
+      "Neither the direction of equilibrium price nor that of equilibrium quantity can be determined"
     ],
     "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push price the same way, so the price direction is certain; but they push quantity in opposite directions, and which wins depends on the relative sizes of the shifts, which the question does not state. Quantity is therefore indeterminate. Forcing a direction anyway is the classic error on this topic — only one variable can be pinned down, and answering both invents information the question never supplied. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions.",
     "frameworkEn": "Auto-gated"
@@ -1537,6 +1586,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1554,10 +1604,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In the market for a good, both rise, with demand rising by more.\n\nHow do the equilibrium price and quantity change?",
     "optionsEn": [
-      "均衡價格必定上升，但均衡交易量的變動方向不能確定",
-      "均衡價格上升，均衡交易量增加",
-      "均衡價格下跌，均衡交易量增加",
-      "均衡價格上升，均衡交易量減少"
+      "Equilibrium price must rise, but the direction of equilibrium quantity cannot be determined",
+      "Equilibrium price rises and equilibrium quantity rises",
+      "Equilibrium price falls and equilibrium quantity rises",
+      "Equilibrium price rises and equilibrium quantity falls"
     ],
     "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions.",
     "frameworkEn": "Auto-gated"
@@ -1568,6 +1618,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1585,10 +1636,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In the market for a good, both rise, with supply rising by more.\n\nHow do the equilibrium price and quantity change?",
     "optionsEn": [
-      "均衡價格下跌，均衡交易量減少",
-      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
-      "均衡價格下跌，均衡交易量增加",
-      "均衡價格上升，均衡交易量增加"
+      "Equilibrium price falls and equilibrium quantity falls",
+      "Equilibrium price must fall, but the direction of equilibrium quantity cannot be determined",
+      "Equilibrium price falls and equilibrium quantity rises",
+      "Equilibrium price rises and equilibrium quantity rises"
     ],
     "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions.",
     "frameworkEn": "Auto-gated"
@@ -1599,6 +1650,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1616,10 +1668,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In the market for a good, both fall, with demand falling by more.\n\nHow do the equilibrium price and quantity change?",
     "optionsEn": [
-      "均衡價格上升，均衡交易量減少",
-      "均衡價格下跌，均衡交易量增加",
-      "均衡價格必定下跌，但均衡交易量的變動方向不能確定",
-      "均衡價格下跌，均衡交易量減少"
+      "Equilibrium price rises and equilibrium quantity falls",
+      "Equilibrium price falls and equilibrium quantity rises",
+      "Equilibrium price must fall, but the direction of equilibrium quantity cannot be determined",
+      "Equilibrium price falls and equilibrium quantity falls"
     ],
     "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions.",
     "frameworkEn": "Auto-gated"
@@ -1630,6 +1682,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "demand_supply",
     "topicZh": "需求與供給",
+    "topicEn": "Demand and Supply",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1647,10 +1700,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In the market for a good, both fall, with supply falling by more.\n\nHow do the equilibrium price and quantity change?",
     "optionsEn": [
-      "均衡價格上升，均衡交易量減少",
-      "均衡價格下跌，均衡交易量減少",
-      "均衡價格上升，均衡交易量增加",
-      "均衡價格必定上升，但均衡交易量的變動方向不能確定"
+      "Equilibrium price rises and equilibrium quantity falls",
+      "Equilibrium price falls and equilibrium quantity falls",
+      "Equilibrium price rises and equilibrium quantity rises",
+      "Equilibrium price must rise, but the direction of equilibrium quantity cannot be determined"
     ],
     "explanationEn": "When both curves move, judge each variable separately: a direction is determinate only where the two shifts push the same way. Here both shifts push quantity the same way, so quantity is determinate; price is pushed in opposite directions, but the question states which shift is larger, and the larger one decides. Without that information the price direction would be indeterminate. The safest method is to draw it: shift one curve at a time and watch where the intersection lands, rather than memorising conclusions.",
     "frameworkEn": "Auto-gated"
@@ -1661,6 +1714,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1678,10 +1732,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price of a good rises by 10% and the quantity demanded falls by 25%.\n\nHow is the price elasticity of demand best described?",
     "optionsEn": [
-      "完全有彈性（彈性值趨於無限大）",
-      "富有彈性（彈性值 2.5，大於 1）",
-      "缺乏彈性（彈性值 0.4，小於 1）",
-      "完全無彈性（彈性值 0）"
+      "Perfectly elastic (elasticity tending to infinity)",
+      "Elastic (elasticity 2.5, greater than 1)",
+      "Inelastic (elasticity 0.4, less than 1)",
+      "Perfectly inelastic (elasticity 0)"
     ],
     "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 25% ÷ 10% = 2.5, which is greater than 1, so demand is elastic. Swapping numerator and denominator gives 0.4 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.",
     "frameworkEn": "Auto-gated"
@@ -1692,6 +1746,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1709,10 +1764,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price of a good rises by 20% and the quantity demanded falls by 10%.\n\nHow is the price elasticity of demand best described?",
     "optionsEn": [
-      "完全無彈性（彈性值 0）",
-      "完全有彈性（彈性值趨於無限大）",
-      "缺乏彈性（彈性值 0.5，小於 1）",
-      "富有彈性（彈性值 2，大於 1）"
+      "Perfectly inelastic (elasticity 0)",
+      "Perfectly elastic (elasticity tending to infinity)",
+      "Inelastic (elasticity 0.5, less than 1)",
+      "Elastic (elasticity 2, greater than 1)"
     ],
     "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 10% ÷ 20% = 0.5, which is less than 1, so demand is inelastic. Swapping numerator and denominator gives 2 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.",
     "frameworkEn": "Auto-gated"
@@ -1723,6 +1778,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1740,10 +1796,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price of a good rises by 5% and the quantity demanded falls by 15%.\n\nHow is the price elasticity of demand best described?",
     "optionsEn": [
-      "缺乏彈性（彈性值 0.3333，小於 1）",
-      "完全無彈性（彈性值 0）",
-      "完全有彈性（彈性值趨於無限大）",
-      "富有彈性（彈性值 3，大於 1）"
+      "Inelastic (elasticity 0.3333, less than 1)",
+      "Perfectly inelastic (elasticity 0)",
+      "Perfectly elastic (elasticity tending to infinity)",
+      "Elastic (elasticity 3, greater than 1)"
     ],
     "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 15% ÷ 5% = 3, which is greater than 1, so demand is elastic. Swapping numerator and denominator gives 0.3333 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.",
     "frameworkEn": "Auto-gated"
@@ -1754,6 +1810,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1771,10 +1828,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price of a good rises by 12% and the quantity demanded falls by 3%.\n\nHow is the price elasticity of demand best described?",
     "optionsEn": [
-      "缺乏彈性（彈性值 0.25，小於 1）",
-      "富有彈性（彈性值 4，大於 1）",
-      "完全無彈性（彈性值 0）",
-      "完全有彈性（彈性值趨於無限大）"
+      "Inelastic (elasticity 0.25, less than 1)",
+      "Elastic (elasticity 4, greater than 1)",
+      "Perfectly inelastic (elasticity 0)",
+      "Perfectly elastic (elasticity tending to infinity)"
     ],
     "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 3% ÷ 12% = 0.25, which is less than 1, so demand is inelastic. Swapping numerator and denominator gives 4 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.",
     "frameworkEn": "Auto-gated"
@@ -1785,6 +1842,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1802,10 +1860,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price of a good rises by 8% and the quantity demanded falls by 2%.\n\nHow is the price elasticity of demand best described?",
     "optionsEn": [
-      "完全有彈性（彈性值趨於無限大）",
-      "缺乏彈性（彈性值 0.25，小於 1）",
-      "富有彈性（彈性值 4，大於 1）",
-      "完全無彈性（彈性值 0）"
+      "Perfectly elastic (elasticity tending to infinity)",
+      "Inelastic (elasticity 0.25, less than 1)",
+      "Elastic (elasticity 4, greater than 1)",
+      "Perfectly inelastic (elasticity 0)"
     ],
     "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 2% ÷ 8% = 0.25, which is less than 1, so demand is inelastic. Swapping numerator and denominator gives 4 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.",
     "frameworkEn": "Auto-gated"
@@ -1816,6 +1874,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1833,10 +1892,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price of a good rises by 4% and the quantity demanded falls by 12%.\n\nHow is the price elasticity of demand best described?",
     "optionsEn": [
-      "完全無彈性（彈性值 0）",
-      "完全有彈性（彈性值趨於無限大）",
-      "富有彈性（彈性值 3，大於 1）",
-      "缺乏彈性（彈性值 0.3333，小於 1）"
+      "Perfectly inelastic (elasticity 0)",
+      "Perfectly elastic (elasticity tending to infinity)",
+      "Elastic (elasticity 3, greater than 1)",
+      "Inelastic (elasticity 0.3333, less than 1)"
     ],
     "explanationEn": "Price elasticity of demand (absolute value) = % change in quantity ÷ % change in price = 12% ÷ 4% = 3, which is greater than 1, so demand is elastic. Swapping numerator and denominator gives 0.3333 and reverses the classification — remember that elasticity measures how *quantity* responds to price, so quantity goes on top. Perfectly inelastic means quantity never changes whatever the price; perfectly elastic means quantity jumps from zero to unlimited at the slightest change. Both are extremes and neither fits the finite percentages given.",
     "frameworkEn": "Auto-gated"
@@ -1847,6 +1906,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1864,10 +1924,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price elasticity of demand for a good is 0.4 in absolute value. If its price is raised,\n\nother things being equal, how does the seller's total revenue change?",
     "optionsEn": [
-      "總收入減少",
-      "總收入維持不變",
-      "無法判斷，因為題目沒有提供原來的價格與銷量",
-      "總收入增加"
+      "Total revenue falls",
+      "Total revenue is unchanged",
+      "Cannot be determined, because the original price and quantity are not given",
+      "Total revenue rises"
     ],
     "explanationEn": "Total revenue = price × quantity, and a rise in price always brings a fall in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 0.4 is below 1, so quantity moves proportionally less and price dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.",
     "frameworkEn": "Auto-gated"
@@ -1878,6 +1938,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1895,10 +1956,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price elasticity of demand for a good is 2.5 in absolute value. If its price is raised,\n\nother things being equal, how does the seller's total revenue change?",
     "optionsEn": [
-      "總收入減少",
-      "總收入增加",
-      "總收入維持不變",
-      "無法判斷，因為題目沒有提供原來的價格與銷量"
+      "Total revenue falls",
+      "Total revenue rises",
+      "Total revenue is unchanged",
+      "Cannot be determined, because the original price and quantity are not given"
     ],
     "explanationEn": "Total revenue = price × quantity, and a rise in price always brings a fall in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 2.5 is above 1, so quantity moves proportionally more and dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.",
     "frameworkEn": "Auto-gated"
@@ -1909,6 +1970,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1926,10 +1988,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price elasticity of demand for a good is 1.6 in absolute value. If its price is lowered,\n\nother things being equal, how does the seller's total revenue change?",
     "optionsEn": [
-      "無法判斷，因為題目沒有提供原來的價格與銷量",
-      "總收入增加",
-      "總收入減少",
-      "總收入維持不變"
+      "Cannot be determined, because the original price and quantity are not given",
+      "Total revenue rises",
+      "Total revenue falls",
+      "Total revenue is unchanged"
     ],
     "explanationEn": "Total revenue = price × quantity, and a fall in price always brings a rise in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 1.6 is above 1, so quantity moves proportionally more and dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.",
     "frameworkEn": "Auto-gated"
@@ -1940,6 +2002,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1957,10 +2020,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price elasticity of demand for a good is 0.25 in absolute value. If its price is lowered,\n\nother things being equal, how does the seller's total revenue change?",
     "optionsEn": [
-      "總收入維持不變",
-      "無法判斷，因為題目沒有提供原來的價格與銷量",
-      "總收入減少",
-      "總收入增加"
+      "Total revenue is unchanged",
+      "Cannot be determined, because the original price and quantity are not given",
+      "Total revenue falls",
+      "Total revenue rises"
     ],
     "explanationEn": "Total revenue = price × quantity, and a fall in price always brings a rise in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 0.25 is below 1, so quantity moves proportionally less and price dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.",
     "frameworkEn": "Auto-gated"
@@ -1971,6 +2034,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -1988,10 +2052,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price elasticity of demand for a good is 3 in absolute value. If its price is raised,\n\nother things being equal, how does the seller's total revenue change?",
     "optionsEn": [
-      "總收入增加",
-      "總收入維持不變",
-      "無法判斷，因為題目沒有提供原來的價格與銷量",
-      "總收入減少"
+      "Total revenue rises",
+      "Total revenue is unchanged",
+      "Cannot be determined, because the original price and quantity are not given",
+      "Total revenue falls"
     ],
     "explanationEn": "Total revenue = price × quantity, and a rise in price always brings a fall in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 3 is above 1, so quantity moves proportionally more and dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.",
     "frameworkEn": "Auto-gated"
@@ -2002,6 +2066,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2019,10 +2084,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "The price elasticity of demand for a good is 0.5 in absolute value. If its price is lowered,\n\nother things being equal, how does the seller's total revenue change?",
     "optionsEn": [
-      "總收入減少",
-      "總收入增加",
-      "總收入維持不變",
-      "無法判斷，因為題目沒有提供原來的價格與銷量"
+      "Total revenue falls",
+      "Total revenue rises",
+      "Total revenue is unchanged",
+      "Cannot be determined, because the original price and quantity are not given"
     ],
     "explanationEn": "Total revenue = price × quantity, and a fall in price always brings a rise in quantity, so the outcome turns on which moves proportionally more — which is exactly what elasticity measures. An elasticity of 0.5 is below 1, so quantity moves proportionally less and price dominates, giving the answer above. As a rule: raise price when demand is inelastic, cut price when it is elastic. \"Cannot be determined\" fails because the comparison is between *percentage* changes, so the original price and quantity do not affect the direction.",
     "frameworkEn": "Auto-gated"
@@ -2033,6 +2098,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2064,6 +2130,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2095,6 +2162,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2126,6 +2194,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "elasticity",
     "topicZh": "彈性",
+    "topicEn": "Elasticity",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2157,6 +2226,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2188,6 +2258,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2219,6 +2290,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2250,6 +2322,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2281,6 +2354,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2312,6 +2386,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2343,6 +2418,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2360,10 +2436,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In one year nominal wages in an economy rise by 5% while the inflation rate is 3%.\n\nWhat happens to workers' real wages?",
     "optionsEn": [
-      "實質工資上升約 8%，因為兩項升幅應該相加",
-      "實質工資上升 5%，通脹率並不影響實質工資",
-      "實質工資下跌約 8%",
-      "實質工資上升約 2%，購買力提高"
+      "Real wages rise by about 8%, because the two increases should be added",
+      "Real wages rise by 5%, because inflation does not affect real wages",
+      "Real wages fall by about 8%",
+      "Real wages rise by about 2%, so purchasing power improves"
     ],
     "explanationEn": "Real change ≈ nominal change − inflation = 5% − 3% = 2%, so real wages rise and purchasing power genuinely improves. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out.",
     "frameworkEn": "Auto-gated"
@@ -2374,6 +2450,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2391,10 +2468,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In one year nominal wages in an economy rise by 2% while the inflation rate is 4.5%.\n\nWhat happens to workers' real wages?",
     "optionsEn": [
-      "實質工資下跌約 2.5%，購買力反而下降",
-      "實質工資上升約 6.5%，因為兩項升幅應該相加",
-      "實質工資上升 2%，通脹率並不影響實質工資",
-      "實質工資上升約 7%"
+      "Real wages fall by about 2.5%, so purchasing power actually declines",
+      "Real wages rise by about 6.5%, because the two increases should be added",
+      "Real wages rise by 2%, because inflation does not affect real wages",
+      "Real wages rise by about 7%"
     ],
     "explanationEn": "Real change ≈ nominal change − inflation = 2% − 4.5% = -2.5%, so real wages fall — the pay rise is outpaced by prices, so workers can buy less than before. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out.",
     "frameworkEn": "Auto-gated"
@@ -2405,6 +2482,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2422,10 +2500,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In one year nominal wages in an economy rise by 8% while the inflation rate is 2.5%.\n\nWhat happens to workers' real wages?",
     "optionsEn": [
-      "實質工資下跌約 10.5%",
-      "實質工資上升約 5.5%，購買力提高",
-      "實質工資上升約 10.5%，因為兩項升幅應該相加",
-      "實質工資上升 8%，通脹率並不影響實質工資"
+      "Real wages fall by about 10.5%",
+      "Real wages rise by about 5.5%, so purchasing power improves",
+      "Real wages rise by about 10.5%, because the two increases should be added",
+      "Real wages rise by 8%, because inflation does not affect real wages"
     ],
     "explanationEn": "Real change ≈ nominal change − inflation = 8% − 2.5% = 5.5%, so real wages rise and purchasing power genuinely improves. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out.",
     "frameworkEn": "Auto-gated"
@@ -2436,6 +2514,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2453,10 +2532,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In one year nominal wages in an economy rise by 6% while the inflation rate is 6%.\n\nWhat happens to workers' real wages?",
     "optionsEn": [
-      "實質工資上升 6%，通脹率並不影響實質工資",
-      "實質工資下跌約 12%",
-      "實質工資維持不變，購買力沒有改變",
-      "實質工資上升約 12%，因為兩項升幅應該相加"
+      "Real wages rise by 6%, because inflation does not affect real wages",
+      "Real wages fall by about 12%",
+      "Real wages are unchanged, so purchasing power is unaffected",
+      "Real wages rise by about 12%, because the two increases should be added"
     ],
     "explanationEn": "Real change ≈ nominal change − inflation = 6% − 6% = 0%, so real wages are unchanged, the rise being exactly offset by prices. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out.",
     "frameworkEn": "Auto-gated"
@@ -2467,6 +2546,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "macroeconomics",
     "topicZh": "宏觀經濟",
+    "topicEn": "Macroeconomics",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2484,10 +2564,10 @@ export const economicsAutoQuestions: Question[] = [
     "marks": 1,
     "contentEn": "In one year nominal wages in an economy rise by 1.5% while the inflation rate is 3.5%.\n\nWhat happens to workers' real wages?",
     "optionsEn": [
-      "實質工資上升約 5%，因為兩項升幅應該相加",
-      "實質工資上升 1.5%，通脹率並不影響實質工資",
-      "實質工資上升約 5.5%",
-      "實質工資下跌約 2%，購買力反而下降"
+      "Real wages rise by about 5%, because the two increases should be added",
+      "Real wages rise by 1.5%, because inflation does not affect real wages",
+      "Real wages rise by about 5.5%",
+      "Real wages fall by about 2%, so purchasing power actually declines"
     ],
     "explanationEn": "Real change ≈ nominal change − inflation = 1.5% − 3.5% = -2%, so real wages fall — the pay rise is outpaced by prices, so workers can buy less than before. Adding the two is the main error: inflation erodes purchasing power and works against the pay rise, so it must be subtracted. The option denying any effect contradicts the very distinction between real and nominal, which is precisely whether price changes have been stripped out.",
     "frameworkEn": "Auto-gated"
@@ -2498,6 +2578,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "market",
     "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2529,6 +2610,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "market",
     "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2560,6 +2642,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "market",
     "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",
@@ -2591,6 +2674,7 @@ export const economicsAutoQuestions: Question[] = [
     "subject": "economics",
     "topic": "market",
     "topicZh": "市場效率",
+    "topicEn": "Market Efficiency",
     "framework": "auto",
     "frameworkZh": "機器閘放行題",
     "frameworkEmoji": "⚙️",

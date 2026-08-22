@@ -26,6 +26,8 @@ const FW = {
 } satisfies Record<string, FwMeta>
 
 const opt = (v: string): Pair => [`$${v}$`, `$${v}$`]
+/** 帶單位的數值選項：中文單位與英文單位分開書寫。 */
+const optu = (v: string | number, zh: string, en: string): Pair => [`$${v}\\,\\text{${zh}}$`, `$${v}\\,\\text{${en}}$`]
 let uid = 0
 const id = (p: string) => `phy_${p}_${++uid}`
 
@@ -297,7 +299,7 @@ const radio: Question[] = []
   radio.push(q(id('hltime'), T.radioactivity, FW.decay, 'medium', 2021 + (i % 3), 1,
     [`某同位素半衰期為 $${hl}$ 天，經過 $${n}$ 個半衰期共需多少天？`,
       `An isotope has a half-life of $${hl}$ days. How many days are $${n}$ half-lives?`],
-    [opt(`${total}\\,\\text{天 / days}`), opt(`${hl + n}\\,\\text{天 / days}`), opt(`${rnd(hl / n)}\\,\\text{天 / days}`), opt(`${total * 2}\\,\\text{天 / days}`)],
+    [optu(total, '天', 'days'), optu(hl + n, '天', 'days'), optu(rnd(hl / n), '天', 'days'), optu(total * 2, '天', 'days')],
     [`總時間 $= ${hl}\\times${n} = ${total}$ 天。`, `Total time $= ${hl}\\times${n} = ${total}$ days.`])))
 // conceptual radioactivity
 radio.push(

@@ -408,7 +408,7 @@ const chinese: Question[] = [
     ['水墨畫以墨加水調出濃淡乾濕層次，於宣紙上表現豐富變化。', 'Ink-wash painting varies ink with water for tonal and textural range on absorbent paper.']),
   q(id('ch'), T.chinese, FW.interpret, 'hard', 2020, 3,
     ['中國山水畫常表現「可遊可居」的意境，反映的思想是？', 'Chinese landscape painting often evokes a world to "roam and dwell in", reflecting which idea?'],
-    [opt('人與自然和諧、寄情山水的哲思', 'harmony between人 and nature and finding solace in landscape'),
+    [opt('人與自然和諧、寄情山水的哲思', 'harmony between humanity and nature, finding solace in the landscape'),
       opt('征服自然', 'conquering nature'),
       opt('純粹地理記錄', 'purely geographic record'),
       opt('與哲思無關', 'nothing philosophical')],

@@ -104,6 +104,8 @@ const archs: Arch[] = [
             `A retailer's cost of goods sold for the year is \\$${cogs}. Opening inventory was \\$${o} and closing inventory \\$${c}. Find the inventory turnover (times).`],
         ans: `${num(ans)} 次`,
         wrong: [`${num(cogs / c)} 次`, `${num(cogs / (o + c))} 次`, `${num(avg / cogs)} 次`],
+        ansEn: `${num(ans)} times`,
+        wrongEn: [`${num(cogs / c)} times`, `${num(cogs / (o + c))} times`, `${num(avg / cogs)} times`],
         e: [`存貨周轉率 = 銷貨成本 ÷ 平均存貨。平均存貨 = (${o} + ${c}) ÷ 2 = \\$${money(avg)}，故周轉率 = ${cogs} ÷ ${money(avg)} = ${num(ans)} 次，即該年存貨平均換手 ${num(ans)} 次。只用期末存貨作分母得 ${num(cogs / c)} 次 —— 期末數字只代表年結一刻的水平，遇上季節性生意會嚴重失真，故要取平均。把兩期存貨【相加】而不除以二得 ${num(cogs / (o + c))} 次，分母大了一倍。最後一項把分子分母對調，所得是周轉一次所需的年數而非次數。`,
             `Inventory turnover = cost of goods sold ÷ average inventory. Average inventory = (${o} + ${c}) ÷ 2 = \\$${money(avg)}, so turnover = ${cogs} ÷ ${money(avg)} = ${num(ans)} times — stock turned over ${num(ans)} times during the year. Using closing inventory alone gives ${num(cogs / c)} times, but a year-end figure reflects one instant and distorts badly in a seasonal trade, which is why the average is used. Adding the two figures without halving them gives ${num(cogs / (o + c))} times, doubling the denominator. The last option inverts the ratio, giving years per turn rather than turns per year.`],
       }
@@ -146,11 +148,18 @@ const archs: Arch[] = [
     gen: (i) => {
       const { item, itemEn, ans, ansEn } = F3[i]
       const all = ['流動資產', '非流動資產', '流動負債', '非流動負債']
+      const allEn: Record<string, string> = {
+        流動資產: 'Current asset', 非流動資產: 'Non-current asset',
+        流動負債: 'Current liability', 非流動負債: 'Non-current liability',
+      }
+      const wrongZh = all.filter((x) => x !== ans).slice(0, 3) as [string, string, string]
       return {
         q: [`在財務狀況表中，下列項目應歸入哪一類？\n\n「${item}」`,
             `Under which heading should the following appear in a statement of financial position?\n\n"${itemEn}"`],
         ans,
-        wrong: all.filter((x) => x !== ans).slice(0, 3) as [string, string, string],
+        wrong: wrongZh,
+        ansEn,
+        wrongEn: wrongZh.map((x) => allEn[x]) as [string, string, string],
         e: [`分類只需連問兩條：第一，這是企業【擁有】的資源，還是【欠人】的責任？前者是資產，後者是負債。第二，它會在【一年之內】變現或清償嗎？會的是流動，不會的是非流動。本項為「${item}」，故屬${ans}。考生最常在第二問失手：把用足幾年的設備當成流動資產，或把三個月內到期的欠款當成非流動負債 —— 判斷的是【時間】，不是金額大小。`,
             `Classification needs two questions in order. First: is this something the business *owns* or something it *owes*? Owned items are assets, owed items liabilities. Second: will it be turned into cash or settled *within one year*? If yes it is current, if no it is non-current. Here the item is "${itemEn}", so it belongs under ${ansEn}. Most marks are lost on the second question — treating equipment used for years as current, or a debt due in three months as non-current. What decides it is the *timing*, not the size of the amount.`],
       }
