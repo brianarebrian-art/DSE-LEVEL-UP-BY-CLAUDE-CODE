@@ -37,6 +37,9 @@ import ReviewScheduler from '@/components/ReviewScheduler'
 import ProgressTrajectory from '@/components/ProgressTrajectory'
 import StudyTimeInsight from '@/components/StudyTimeInsight'
 import TodayNote from '@/components/TodayNote'
+// SPEC-GAMIFY-P1 §MVP P0：儀表板頂部「最近足跡」橫向列 + 邏輯家園入口。
+// 兩者都由既有 localStorage 導出，練習頁零改動（見 lib/logicLog.ts 檔首）。
+import TrailStrip from '@/components/TrailStrip'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -256,6 +259,10 @@ export default function DashboardPageClient() {
 
         {/* 溫習節奏：時長 + 時段狀態。純本地計算，數據源係 dse_progress 已有欄位 */}
         <StudyTimeInsight />
+
+        {/* 最近足跡 + 家園入口。擺喺 JustOneCard 之前：足跡講嘅係「你去過邊」，
+            係回顧；之後嗰幾張卡先開始講「今日做啲乜」。 */}
+        <TrailStrip className="mb-6" />
 
         {/* C6：擺喺「今日計劃」之前 —— 見到成個計劃就無力嗰日，起碼仲有呢條路 */}
         <JustOneCard className="mb-6" />
