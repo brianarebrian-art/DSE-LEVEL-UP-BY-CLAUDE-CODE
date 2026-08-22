@@ -814,7 +814,7 @@ export default function PracticeSession({
                   key={idx}
                   onClick={() => selectOption(opt.zh, idx)}
                   disabled={answerState !== null}
-                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all option-btn ${style}`}
+                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}`}
                 >
                   {shockIdx === idx && (
                     <span
