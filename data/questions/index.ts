@@ -59,6 +59,7 @@ import { chemistryAutoQuestions } from './chemistry-auto'
 import { economicsAutoQuestions } from './economics-auto'
 import { bafsAutoQuestions } from './bafs-auto'
 import { m2AutoQuestions } from './m2-auto'
+import { m1AutoQuestions } from './m1-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
@@ -120,6 +121,7 @@ const banks: Record<string, SubjectBank> = {
 // 工具及稽核統計的讀取路徑，只註冊其中一邊會令題目對統計隱形
 // （2026-08-07 曾因此少報 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
 const autoBanks: Record<string, AnyQuestion[]> = {
+  'm1': m1AutoQuestions,
   'm2': m2AutoQuestions,
   'bafs': bafsAutoQuestions,
   'economics': economicsAutoQuestions,
