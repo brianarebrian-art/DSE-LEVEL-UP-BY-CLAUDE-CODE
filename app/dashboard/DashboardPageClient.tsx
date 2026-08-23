@@ -16,8 +16,10 @@ import {
 import { getSubject } from '@/data/subjects'
 import { gradeBgColors } from '@/lib/grading'
 import { useLocale } from '@/lib/i18n'
-import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
+import { getTopicStats, weakestTopics, winRate, topicLabel, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
+// 第 1 週 · 引擎二：課題掌握度圓環（純 SVG，只顯示百分比，無等級）
+import MasteryRing from '@/components/MasteryRing'
 import SyncStatus from '@/components/SyncStatus'
 import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
@@ -159,7 +161,11 @@ export default function DashboardPageClient() {
   const radarAxes = [...topics]
     .sort((a, b) => b.total - a.total)
     .slice(0, 6)
-    .map((e) => ({ label: e.label, value: winRate(e) }))
+    .map((e) => ({ label: topicLabel(e, en), value: winRate(e) }))
+  // 第 1 週 · 引擎二：掌握度圓環取練得最多嘅 8 個課題。
+  // 上限 8 個係為咗唔好一次過鋪成一版數字牆 —— 資訊過載本身就係壓力源。
+  const masteryTopics = [...topics].sort((a, b) => b.total - a.total).slice(0, 8)
+
   // ROI: topics the user has a solid grip on (≥70% win rate over a real sample).
   const conquered = topics.filter((e) => e.total >= 4 && winRate(e) >= 0.7).length
   const onRepair = () => {
@@ -344,6 +350,44 @@ export default function DashboardPageClient() {
             </div>
           </div>
         </div>
+
+        {/* ── 第 1 週 · 引擎二：課題掌握度圓環 ────────────────────────────
+            規格書 §4.3。資料源 100% 本機 localStorage（lib/topicStats），
+            冇新增任何數據表，亦冇任何跨用戶數據。
+            排序用「已答題數」而非勝率 —— 用勝率排會令做得最差嘅課題永遠置頂，
+            每次開儀表板都被迎面撞一次，違反憲章第 7 條。 */}
+        {masteryTopics.length > 0 && (
+          <>
+            <h2 className="text-lg font-medium mb-1 text-ink">
+              {en ? 'Topic mastery' : '課題掌握度'}
+            </h2>
+            <p className="text-xs text-ink-muted mb-4">
+              {en
+                ? 'Your own record only — nobody else’s numbers appear here.'
+                : '只計你自己嘅紀錄 —— 呢度唔會出現其他人嘅數字。'}
+            </p>
+            <div className="bg-surface-raised border border-line rounded-2xl p-5 mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-6">
+                {masteryTopics.map((e) => (
+                  <MasteryRing
+                    /* key 用 `${subjectId}::${topicId}` 複合鍵 —— 同一個 topic id
+                       可以喺唔同科目重複出現（例：math 同 m1 都有「概率」）。 */
+                    key={e.key}
+                    label={topicLabel(e, en)}
+                    correct={e.total - e.wrong}
+                    total={e.total}
+                  />
+                ))}
+              </div>
+              {/* 規格書 §4.3：唔出「未完成」標記，用「持續進步中」代替 */}
+              <p className="text-[11px] text-ink-muted mt-5 text-center leading-relaxed">
+                {en
+                  ? 'Still growing — every attempt moves a ring.'
+                  : '持續進步中 —— 每答一題，就有一個圓環會郁。'}
+              </p>
+            </div>
+          </>
+        )}
 
         {/* Error DNA — distribution of self-diagnosed error causes */}
         <ErrorDNA />

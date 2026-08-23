@@ -20,6 +20,8 @@ import CommandWordText from '@/components/CommandWordText'
 import HourglassTimer from '@/components/HourglassTimer'
 // P1-6-R3: 鎖尾 5 秒溫和提示音（程序化生成，靜默降級）
 import { playLockChime } from '@/lib/lockChime'
+// 第 1 週 · 引擎一：答對輕柔提示音（預設關閉，A11yPanel 可開）
+import { playCorrectChime } from '@/lib/answerChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
 import CalcTipCard from '@/components/CalcTipCard'
 import QuestionProvenance from '@/components/QuestionProvenance'
@@ -34,7 +36,7 @@ import { recordAttempt } from '@/lib/progress'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock, Coffee } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, Clock, Brain, Zap, Lock, Coffee } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
@@ -221,9 +223,14 @@ function buildTopicResults(qs: PreparedQuestion[], ans: AnswerState[]) {
 
 // Per-topic outcomes keyed by topic ID (+ display label) for the weakness tally.
 function buildTopicOutcomes(qs: PreparedQuestion[], ans: AnswerState[]) {
-  const map: Record<string, { topic: string; label: string; correct: number; total: number }> = {}
+  // labelEn 一併存低 —— 儀表板嘅英文介面先至有課題名睇（非華語考生）
+  const map: Record<
+    string,
+    { topic: string; label: string; labelEn?: string; correct: number; total: number }
+  > = {}
   qs.forEach((q, i) => {
-    const e = map[q.topic] ?? { topic: q.topic, label: q.topicZh, correct: 0, total: 0 }
+    const e =
+      map[q.topic] ?? { topic: q.topic, label: q.topicZh, labelEn: q.topicEn, correct: 0, total: 0 }
     e.total++
     if (ans[i]?.isCorrect) e.correct++
     map[q.topic] = e
@@ -379,6 +386,10 @@ export default function PracticeSession({
       setShockIdx(idx)
       if (shockTimer.current) clearTimeout(shockTimer.current)
       shockTimer.current = setTimeout(() => setShockIdx(null), 600)
+      // 第 1 週 · 引擎一：答對輕柔「叮」聲。設定預設關閉，playCorrectChime 內部
+      // 自行檢查，關閉時直接 return。答錯【刻意不設任何音效】——
+      // 用聲音標示答錯等於把錯誤變成一個可聽見的判決，違反憲章第 7 條。
+      if (isCorrect) playCorrectChime()
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
       // F-EMO: 拉分難度（hard = 5** 級）答錯 → 60 秒鎖之前先問感受
@@ -809,23 +820,31 @@ export default function PracticeSession({
                 if (isCorrectOpt) {
                   style = 'border-accent bg-accent/[0.10] cursor-default'
                 } else if (isSelectedWrong) {
-                  style = 'border-rose bg-rose/[0.10] cursor-default'
+                  // 規格書 §4.2：答錯【不出現紅色】。金色 = 「發現盲點」的語意，
+                  // 與 60 秒冷靜艙、盲點修復卷一致；玫紅保留給系統級提醒。
+                  style = 'border-gold bg-gold/[0.08] cursor-default'
                 } else {
                   style = 'border-line bg-surface-sunken opacity-50 cursor-default'
                 }
               }
+
+              // 第 1 週 · 引擎一：答對時正確選項輕柔綠色脈衝（600ms，與答錯衝擊波同長）
+              const pulse =
+                answerState !== null && answerState.isCorrect && isCorrectOpt && shockIdx === idx
+                  ? ' pulse-correct'
+                  : ''
 
               return (
                 <button
                   key={idx}
                   onClick={() => selectOption(opt.zh, idx)}
                   disabled={answerState !== null}
-                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}`}
+                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}${pulse}`}
                 >
                   {shockIdx === idx && (
                     <span
                       aria-hidden
-                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-pink' : ''}`}
+                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-gold' : ''}`}
                     />
                   )}
                   <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
@@ -837,8 +856,10 @@ export default function PracticeSession({
                   {answerState !== null && isCorrectOpt && (
                     <CheckCircle size={18} className="text-accent ml-auto shrink-0 mt-0.5" />
                   )}
+                  {/* 規格書 §4.2 + 憲章第 7 條：答錯【不用大紅交叉】。
+                      燈泡 = 「你發現咗一個新盲點」，同一個符號貫穿全站錯題語境。 */}
                   {isSelectedWrong && (
-                    <XCircle size={18} className="text-rose ml-auto shrink-0 mt-0.5" />
+                    <Lightbulb size={18} className="text-gold ml-auto shrink-0 mt-0.5" />
                   )}
                 </button>
               )
@@ -853,6 +874,11 @@ export default function PracticeSession({
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
                  3-way reverse-cause self-diagnosis. Calm gold, reflective (因材施教). */
               <div className="rounded-2xl p-6 mb-4 border border-gold/40 bg-gold/[0.06]">
+                {/* 規格書 §4.2：答錯的第一句【不是】「錯咗」，而是「發現咗盲點」。
+                    400ms 淡入，無縮放無過衝 —— 過衝曲線讀落似慶祝，語意不符。 */}
+                <p className="blindspot-in text-gold font-medium text-base mb-3">
+                  {tr('你發現咗一個新盲點💡', 'You just found a new blind spot 💡')}
+                </p>
                 <div className="flex items-center gap-2 mb-1">
                   <Lock size={18} className="text-gold" />
                   <span className="text-gold font-medium tracking-wide text-sm">
@@ -919,7 +945,9 @@ export default function PracticeSession({
                     {(() => {
                       const c = REVERSE_CAUSES.find((x) => x.key === diagnosed)
                       return (
-                        <p className="text-xs text-rose mb-3 leading-relaxed">
+                        /* 規格書 §4.2：呢句係「已記錄」嘅確認訊息，唔係警示。
+                           原本用玫紅，喺答錯回饋鏈入面讀落似再責備多一次；改金色。 */
+                        <p className="text-xs text-gold mb-3 leading-relaxed">
                           {tr('已記錄錯因：', 'Logged cause: ')}
                           <strong>{c ? `${c.emoji} ${tr(c.zh, c.en)}` : ''}</strong>
                           {tr(' → 已寫入逆向錯題本。', ' → saved to your reverse error log.')}
@@ -1009,9 +1037,12 @@ export default function PracticeSession({
                 {followup && (
                   /* F-EMO: gentleLock（揀咗「有啲失落」）⇒ 強制柔和呈現 + 溫和標題，
                      教學法不變（60 秒 + 反思題照舊），只改語氣同色調 */
-                  <div className={`rounded-2xl p-5 mb-4 border-2 ${(calmLock || gentleLock) ? 'border-gold/40 bg-surface' : 'border-rose/45 bg-surface'}`}>
+                  /* 規格書 §4.2：60 秒冷靜艙屬答錯回饋鏈的一環，同樣【不出現紅色】。
+                     原本非柔和模式用 border-rose/45 + text-rose，已統一為金色。
+                     柔和模式（calmLock／gentleLock）保留較淡的邊框，只差飽和度。 */
+                  <div className={`rounded-2xl p-5 mb-4 border-2 bg-surface ${(calmLock || gentleLock) ? 'border-gold/40' : 'border-gold/60'}`}>
                     <div className="flex items-center justify-between mb-3">
-                      <span className={`flex items-center gap-2 font-medium text-sm tracking-wide ${(calmLock || gentleLock) ? 'text-gold' : 'text-rose'}`}>
+                      <span className="flex items-center gap-2 font-medium text-sm tracking-wide text-gold">
                         <Lock size={16} />{' '}
                         {gentleLock
                           ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
@@ -1059,7 +1090,8 @@ export default function PracticeSession({
                         let st = 'border-line-strong bg-surface-sunken hover:border-accent/40 cursor-pointer'
                         if (followupPick !== null) {
                           if (isCorrectOpt) st = 'border-accent bg-accent/[0.10]'
-                          else if (picked) st = 'border-rose bg-rose/[0.10]'
+                          // 規格書 §4.2：自診反思題揀錯同樣【不出現紅色】，統一金色
+                          else if (picked) st = 'border-gold bg-gold/[0.08]'
                           else st = 'border-line bg-surface-sunken opacity-50'
                         }
                         return (
@@ -1075,7 +1107,8 @@ export default function PracticeSession({
                       })}
                     </div>
                     {followupPick !== null && !followupCorrect && (
-                      <p className="text-xs text-rose mt-2">
+                      /* 規格書 §4.2：重試提示唔可以用紅色 —— 呢句係邀請再試，唔係判錯。 */
+                      <p className="text-xs text-gold mt-2">
                         {tr('再諗深一層 —— 揀返最能根治呢個錯因嘅做法。',
                             'Think again — pick the approach that actually fixes this error type.')}
                       </p>
@@ -1122,7 +1155,9 @@ export default function PracticeSession({
           {Array.from({ length: totalQ }).map((_, i) => {
             let color = 'bg-line'
             if (i < answers.length) {
-              color = answers[i]?.isCorrect ? 'bg-accent' : 'bg-rose'
+              // 規格書 §4.2 + 憲章第 7 條：一行紅點就係一行判決。
+              // 答錯改用金色（發現盲點），同答啱嘅青色一樣清晰可辨，但唔帶責備。
+              color = answers[i]?.isCorrect ? 'bg-accent' : 'bg-gold'
             } else if (i === current) {
               color = 'bg-accent-strong'
             }

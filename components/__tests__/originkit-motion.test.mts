@@ -4,8 +4,8 @@
 // 動畫本身壞咗，眼見得到；下面呢四樣壞咗係【睇唔出】嘅，所以要用測試鎖住。
 //
 //   1. 答錯唔可以比答啱「大聲」。憲章 §7 禁止一切打擊自信嘅元素，規格書 §0
-//      亦明訂「答錯無震屏、無負面驚嚇回饋」。青色同粉色衝擊波必須同一時長、
-//      同一尺寸 —— 有人日後「順手」把粉色改快或改大，呢條就會紅。
+//      亦明訂「答錯無震屏、無負面驚嚇回饋」。青色同金色衝擊波必須同一時長、
+//      同一尺寸 —— 有人日後「順手」把答錯版本改快或改大，呢條就會紅。
 //   2. 三重降級必須齊全：prefers-reduced-motion／SEN(font-easy)／Light 主題。
 //      SEN 之下裝飾層要【整層隱藏】而唔係調慢 —— 調慢對讀寫障礙同注意力障礙
 //      用戶一樣係干擾源。
@@ -32,16 +32,19 @@ function ruleBody(selector: string): string {
   return CSS.slice(open + 1, close)
 }
 
-test('答錯嘅衝擊波唔可以比答啱大聲 —— 粉色版本只准換色，唔准改時長或尺寸', () => {
+// 2026-08-23（第 1 週 · 引擎一）：答錯版本由 .shockwave-pink 改為 .shockwave-gold。
+// 規格書 §4.2 要求答錯【不出現紅色】，霓虹粉 rgba(255,0,110) 讀落係紅系。
+// 「只准換色、唔准加碼」呢個核心斷言完全不變，只係換咗對象選擇器。
+test('答錯嘅衝擊波唔可以比答啱大聲 —— 金色版本只准換色，唔准改時長或尺寸', () => {
   const base = ruleBody('.shockwave {')
-  const pink = ruleBody('.shockwave-pink {')
+  const wrong = ruleBody('.shockwave-gold {')
   // 基礎版必須訂明 600ms
   assert.match(base, /animation:\s*shockwave-expand\s+600ms/, '.shockwave 應為 600ms')
-  // 粉色版【只准】覆寫 background —— 一旦出現 animation／width／height／transform 就係在加碼
+  // 答錯版【只准】覆寫 background —— 一旦出現 animation／width／height／transform 就係在加碼
   for (const forbidden of ['animation', 'width', 'height', 'transform', 'box-shadow']) {
     assert.ok(
-      !new RegExp(`(^|;)\\s*${forbidden}\\s*:`, 'm').test(pink),
-      `.shockwave-pink 唔可以覆寫 ${forbidden} —— 答錯嘅回饋必須同答啱一致（憲章 §7）`,
+      !new RegExp(`(^|;)\\s*${forbidden}\\s*:`, 'm').test(wrong),
+      `.shockwave-gold 唔可以覆寫 ${forbidden} —— 答錯嘅回饋必須同答啱一致（憲章 §7）`,
     )
   }
   // 全份 CSS 唔可以有針對答錯嘅震動關鍵幀
@@ -89,7 +92,8 @@ test('規格書明訂嘅數值唔可以飄走：×5 連擊 5s、焦慮 40s', () 
 test('練習頁真係用緊衝擊波 —— 唔可以淨係有 CSS 冇接線（憲章 §4）', () => {
   const src = readFileSync(new URL('../../app/practice/PracticeSession.tsx', import.meta.url).pathname, 'utf8')
   assert.match(src, /className=\{`shockwave\$\{/, 'PracticeSession 未 render 衝擊波')
-  assert.match(src, /shockwave-pink/, 'PracticeSession 未接答錯嘅粉色版本')
+  assert.match(src, /shockwave-gold/, 'PracticeSession 未接答錯嘅金色版本')
+  assert.ok(!/shockwave-pink/.test(src), '答錯唔可以用返霓虹粉（規格書 §4.2：答錯無紅色）')
   assert.match(src, /relative overflow-hidden/, '選項掣缺 relative／overflow-hidden，衝擊波會定位錯')
   // 600ms 之後要拆走節點，唔好長期留喺 DOM
   assert.match(src, /setShockIdx\(null\)\s*\}?,\s*600\s*\)/, '衝擊波節點應於 600ms 後移除')

@@ -537,8 +537,10 @@ html[data-bottomnav='on'] {
 }
 
 /* ── §2.5 答題衝擊波 ────────────────────────────────────────────────────
-   由掣中心擴散。答錯用霓虹粉，力度同答啱【一致】—— 規格書 §0 明訂
-   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。 */
+   由掣中心擴散。力度同答啱【一致】—— 規格書 §0 明訂
+   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。
+   2026-08-23：答錯版本由霓虹粉（.shockwave-pink）改為金色（.shockwave-gold），
+   見下方「第 1 週 · 引擎一」段落 —— 規格書 §4.2 要求答錯【不出現紅色】。 */
 .shockwave {
   position: absolute;
   left: 50%;
@@ -551,12 +553,64 @@ html[data-bottomnav='on'] {
   background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, transparent 70%);
   animation: shockwave-expand 600ms ease-out forwards;
 }
-.shockwave-pink {
-  background: radial-gradient(circle, rgba(255, 0, 110, 0.4) 0%, transparent 70%);
-}
 @keyframes shockwave-expand {
   from { width: 0; height: 0; opacity: 1; }
   to { width: 300px; height: 300px; opacity: 0; }
+}
+
+/* ── 第 1 週 · 引擎一：溫暖即時反饋 ──────────────────────────────────────
+   規格書 §4.2。三條規則貫穿以下所有動畫：
+     1. 答錯【不出現紅色】—— 答錯的衝擊波由霓虹粉改為金色（.shockwave-gold），
+        與「發現盲點」的金色語意一致；紅色只保留給真正的系統錯誤提示。
+     2. 答錯與答對的動畫【時長、幅度、緩動曲線完全相同】—— 憲章第 7 條要求
+        答錯的回饋力度與答對一致，故此處刻意沒有 shake、沒有加速、沒有放大。
+     3. 全部動畫均在 prefers-reduced-motion 及一鍵舒適模式下靜止（見文末降級層）。 */
+
+/* 答對：輕柔綠色脈衝。用 box-shadow 擴散，不改動 layout，不觸發 reflow。
+   峰值透明度 0.30 —— 屬「察覺得到但不奪目」的層級，非慶祝式閃光。 */
+.pulse-correct {
+  animation: pulse-correct 600ms ease-out forwards;
+}
+@keyframes pulse-correct {
+  0% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.30); }
+  100% { box-shadow: 0 0 0 12px rgba(0, 245, 212, 0); }
+}
+
+/* 答錯：金色衝擊波，時長與 .shockwave 完全相同（600ms ease-out）。 */
+.shockwave-gold {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.4) 0%, transparent 70%);
+}
+
+/* 「你發現咗一個新盲點💡」淡入。只有透明度與 4px 上移，
+   沒有縮放及過衝 —— 過衝曲線會讀成慶祝，語意不符。 */
+.blindspot-in {
+  animation: blindspot-in 400ms ease-out both;
+}
+@keyframes blindspot-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 第 1 週 · 引擎二：個人微進度 ───────────────────────────────────────
+   掌握度圓環由 0 描到目標值。stroke-dashoffset 由 inline style 提供終值，
+   動畫只負責由「空環」過渡到該終值，故此處用 CSS 變數接力。 */
+.ring-draw {
+  animation: ring-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes ring-draw {
+  from { stroke-dashoffset: var(--ring-circumference); }
+}
+
+/* 能力雷達圖：多邊形由中心展開。transform-box: fill-box 令 SVG 內部
+   的 transform-origin 以圖形自身為準，而非整個 viewport。 */
+.radar-grow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: radar-grow 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes radar-grow {
+  from { transform: scale(0.2); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 /* ── §2.6 連擊火焰條 ────────────────────────────────────────────────────
@@ -637,6 +691,18 @@ html.font-easy .carousel-card {
 }
 html.font-easy .shockwave { display: none !important; }
 
+/* 第 1 週新增動畫同樣受一鍵舒適模式管轄 —— 整層關掉，唔係調慢（憲章第 7 條）。
+   圓環／雷達圖保留最終狀態，資訊唔可以因為關動畫而消失。 */
+html.font-easy .pulse-correct,
+html.font-easy .blindspot-in,
+html.font-easy .ring-draw,
+html.font-easy .radar-grow {
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 1;
+}
+
 /* ── 降級 3：prefers-reduced-motion —— 一切靜止，保留最終狀態 ────────── */
 @media (prefers-reduced-motion: reduce) {
   .particle-bg,
@@ -652,4 +718,15 @@ html.font-easy .shockwave { display: none !important; }
   .achievement-pop { transform: none; opacity: 1; }
   .carousel-card:hover { transform: none; }
   .shockwave { display: none !important; }
+
+  /* 第 1 週新增動畫：一律靜止，保留最終狀態。 */
+  .pulse-correct,
+  .blindspot-in,
+  .ring-draw,
+  .radar-grow {
+    animation: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 1;
+  }
 }

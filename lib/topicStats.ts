@@ -16,6 +16,12 @@ interface Row {
   subjectId: string
   topic: string // topic id
   label: string // display label (topicZh)
+  /**
+   * English display label (topicEn). Optional on purpose: rows written before
+   * 2026-08-23 have no such field, and an existing tally must never be
+   * invalidated by a schema addition (charter §6). Readers fall back to `label`.
+   */
+  labelEn?: string
   total: number
   wrong: number
 }
@@ -48,7 +54,7 @@ export interface TopicStatEntry extends Row {
 /** Fold one finished run's per-topic outcomes into the tally. */
 export function recordTopicOutcomes(
   subjectId: string,
-  rows: { topic: string; label: string; correct: number; total: number }[],
+  rows: { topic: string; label: string; labelEn?: string; correct: number; total: number }[],
 ): void {
   if (!isBrowser() || !rows.length) return
   const s = load()
@@ -59,6 +65,8 @@ export function recordTopicOutcomes(
     e.total += r.total
     e.wrong += Math.max(0, r.total - r.correct)
     e.label = r.label || e.label
+    // 補回英文課題名（非華語考生）。舊 row 一答新題就會補到，唔使 migration。
+    if (r.labelEn) e.labelEn = r.labelEn
     s[k] = e
   }
   save(s)
@@ -67,6 +75,14 @@ export function recordTopicOutcomes(
 
 export function getTopicStats(): TopicStatEntry[] {
   return Object.entries(load()).map(([key, v]) => ({ key, ...v }))
+}
+
+/**
+ * 按語言取課題顯示名。英文介面之下，舊紀錄（未有 labelEn）會回落中文名 ——
+ * 顯示中文名總好過顯示 topic id 或者空白。
+ */
+export function topicLabel(e: { label: string; labelEn?: string }, en: boolean): string {
+  return en ? (e.labelEn || e.label) : e.label
 }
 
 export function winRate(e: { total: number; wrong: number }): number {

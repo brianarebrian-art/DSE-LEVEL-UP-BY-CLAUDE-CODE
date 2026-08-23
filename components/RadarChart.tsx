@@ -58,11 +58,18 @@ export default function RadarChart({
         const [x, y] = point(i, R)
         return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke={gridStroke} strokeWidth={1} />
       })}
-      <polygon points={valuePoly} className={markCls} fillOpacity={0.15} strokeWidth={2} />
-      {axes.map((ax, i) => {
-        const [x, y] = point(i, clamp(ax.value) * R)
-        return <circle key={i} cx={x} cy={y} r={3.5} className={markCls} />
-      })}
+      {/* 第 1 週 · 引擎二：數據變動時由中心展開重畫。
+          key 綁定 valuePoly —— 數值一改，React 重掛載節點，動畫重新播放，
+          令「我進步咗」這件事在視覺上被看見，而不只是靜態換一個形狀。
+          動畫在 prefers-reduced-motion 及一鍵舒適模式下靜止（globals.css 降級層），
+          靜止時仍保留最終形狀，資訊不會消失。 */}
+      <g key={valuePoly} className="radar-grow">
+        <polygon points={valuePoly} className={markCls} fillOpacity={0.15} strokeWidth={2} />
+        {axes.map((ax, i) => {
+          const [x, y] = point(i, clamp(ax.value) * R)
+          return <circle key={i} cx={x} cy={y} r={3.5} className={markCls} />
+        })}
+      </g>
       {axes.map((ax, i) => {
         const [x, y] = point(i, R + 20)
         const short = ax.label.length > 6 ? ax.label.slice(0, 6) : ax.label
