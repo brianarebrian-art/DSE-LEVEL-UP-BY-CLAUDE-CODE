@@ -18,6 +18,23 @@ import type { Question, Difficulty } from './types'
 export type Pair = [zh: string, en: string]
 export const n = (s: string): Pair => [s, s] // language-free (numbers / LaTeX)
 
+// ── 帶單位的選項 ────────────────────────────────────────────────────────────
+// `n()` 只適用於真正與語言無關的字串（純數字、LaTeX）。一旦寫成
+// `n(`${x} 元`)`，中文量詞就會原封不動流入 `optionsEn`，英文介面的學生會見到
+// 「40 元」。以下三個輔助函數把單位分語言書寫。
+
+/** 貨幣金額。BAFS 與經濟科屬 currency-only 科目：英文一律用轉義的 `\$`，不用 LaTeX 數學模式。 */
+export const money = (v: string | number): Pair => {
+  const s = String(v)
+  return [`${s} 元`, s.startsWith('-') ? `-\\$${s.slice(1)}` : `\\$${s}`]
+}
+
+/** 帶量詞的數量（件、次、天…）：中文量詞與英文名詞分開書寫。 */
+export const qty = (v: string | number, zh: string, en: string): Pair => [`${v} ${zh}`, `${v} ${en}`]
+
+/** 以「億元」為單位的宏觀數值。英文卷面於題幹統一標明單位，選項只列數值。 */
+export const hkBillion = (v: string | number): Pair => [`${v} 億元`, `${v}`]
+
 export interface TopicMeta { id: string; zh: string; en: string }
 export interface FwMeta { id: string; zh: string; en: string; emoji: string }
 

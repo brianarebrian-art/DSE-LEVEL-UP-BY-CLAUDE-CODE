@@ -78,7 +78,7 @@ export default function PracticeSupport() {
   return (
     <>
       {/* FIX: [B8] safe-area — 工具角喺 iPhone 上唔會俾 Home Indicator 遮擋 */}
-      <div className="fixed bottom-[max(4rem,calc(env(safe-area-inset-bottom)+3rem))] left-4 z-50 no-print flex flex-col items-start gap-2">
+      <div className="fixed floating-bottom-2 left-4 z-50 no-print flex flex-col items-start gap-2">
         <button
           onClick={() => { setFontPanel((v) => !v) }}
           aria-expanded={fontPanel}

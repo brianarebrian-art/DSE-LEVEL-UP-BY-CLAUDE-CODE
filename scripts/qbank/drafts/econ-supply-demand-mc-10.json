@@ -21,7 +21,10 @@
       "irrelevant"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-demand-shift"
+    "_mother": "sd-demand-shift",
+    "topicZh": "需求變動 vs 需求量變動",
+    "topicId": "demand_supply",
+    "topicEn": "Change in Demand vs Change in Quantity Demanded"
   },
   {
     "id": "econ-sd-mc-1",
@@ -45,7 +48,10 @@
       "concept_reversal"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-supply-shift"
+    "_mother": "sd-supply-shift",
+    "topicZh": "供應變動 vs 供應量變動",
+    "topicId": "demand_supply",
+    "topicEn": "Change in Supply vs Change in Quantity Supplied"
   },
   {
     "id": "econ-sd-mc-2",
@@ -69,7 +75,10 @@
       "keyword_misread"
     ],
     "dnaTag": "MEC",
-    "_mother": "sd-equilibrium-table"
+    "_mother": "sd-equilibrium-table",
+    "topicZh": "市場均衡與短缺",
+    "topicId": "demand_supply",
+    "topicEn": "Market Equilibrium and Shortage"
   },
   {
     "id": "econ-sd-mc-3",
@@ -93,7 +102,10 @@
       "over_interpretation"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-double-shift"
+    "_mother": "sd-double-shift",
+    "topicZh": "供需同時移動",
+    "topicId": "demand_supply",
+    "topicEn": "Simultaneous Shifts in Demand and Supply"
   },
   {
     "id": "econ-sd-mc-4",
@@ -117,7 +129,10 @@
       "over_interpretation"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-elasticity-tr"
+    "_mother": "sd-elasticity-tr",
+    "topicZh": "彈性與總收益",
+    "topicId": "elasticity",
+    "topicEn": "Elasticity and Total Revenue"
   },
   {
     "id": "econ-sd-mc-5",
@@ -141,7 +156,10 @@
       "half_right"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-price-ceiling"
+    "_mother": "sd-price-ceiling",
+    "topicZh": "價格管制（價格上限）",
+    "topicId": "market",
+    "topicEn": "Price Control — Price Ceiling"
   },
   {
     "id": "econ-sd-mc-6",
@@ -165,7 +183,10 @@
       "concept_swap"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-elasticity-determinants"
+    "_mother": "sd-elasticity-determinants",
+    "topicZh": "需求彈性的決定因素",
+    "topicId": "elasticity",
+    "topicEn": "Determinants of Price Elasticity of Demand"
   },
   {
     "id": "econ-sd-mc-7",
@@ -189,7 +210,10 @@
       "half_right"
     ],
     "dnaTag": "TMR",
-    "_mother": "sd-related-goods"
+    "_mother": "sd-related-goods",
+    "topicZh": "相關物品（互補品與替代品）",
+    "topicId": "demand_supply",
+    "topicEn": "Related Goods — Complements and Substitutes"
   },
   {
     "id": "econ-sd-mc-8",
@@ -213,7 +237,10 @@
       "concept_reversal"
     ],
     "dnaTag": "MEC",
-    "_mother": "sd-tax-incidence"
+    "_mother": "sd-tax-incidence",
+    "topicZh": "從量稅與稅務負擔",
+    "topicId": "market",
+    "topicEn": "Specific Tax and Tax Incidence"
   },
   {
     "id": "econ-sd-mc-9",
@@ -237,6 +264,9 @@
       "concept_swap"
     ],
     "dnaTag": "CMT",
-    "_mother": "sd-quota-efficiency"
+    "_mother": "sd-quota-efficiency",
+    "topicZh": "配額與市場效率",
+    "topicId": "trade",
+    "topicEn": "Import Quota and Market Efficiency"
   }
 ]

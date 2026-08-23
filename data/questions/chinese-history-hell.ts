@@ -9,15 +9,16 @@ import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_bui
 const q = makeQ('chinese-history')
 const m = (s: string): Pair => [s, s]
 
+// 英文名於 2026-08-23 補回，與本科主檔同一批（只譯導覽層）。
 const T = {
-  ancient: { id: 'chist_ancient_institution', zh: '古代制度・因果', en: '古代制度・因果' },
-  modern:  { id: 'chist_modern_causation',     zh: '近現代變局・評價', en: '近現代變局・評價' },
+  ancient: { id: 'chist_ancient_institution', zh: '古代制度・因果', en: 'Ancient Institutions — Cause & Effect' },
+  modern:  { id: 'chist_modern_causation',     zh: '近現代變局・評價', en: 'Modern Upheavals — Evaluation' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
-  ancient: { id: 'ancient', zh: '古代史', en: '古代史', emoji: '🏛️' },
-  modern:  { id: 'modern',  zh: '近代史', en: '近代史', emoji: '⚔️' },
-  contemp: { id: 'contemp', zh: '現代史', en: '現代史', emoji: '🚩' },
+  ancient: { id: 'ancient', zh: '古代史', en: 'Ancient History', emoji: '🏛️' },
+  modern:  { id: 'modern',  zh: '近代史', en: 'Modern History', emoji: '⚔️' },
+  contemp: { id: 'contemp', zh: '現代史', en: 'Contemporary History', emoji: '🚩' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0

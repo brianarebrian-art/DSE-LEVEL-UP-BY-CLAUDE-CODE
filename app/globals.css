@@ -447,3 +447,209 @@ html.a11y-spacing button {
 @media (prefers-reduced-motion: reduce) {
   .hourglass-stream { animation: none; }
 }
+
+/* ── 手機底部導航：一個高度、一處定義 ─────────────────────────────────────
+   全站左右下角本身已經企滿咗浮動掣（無障礙面板、閱讀尺、情緒支援、
+   練習頁工具角），底欄一出就會壓住佢哋。與其喺五個元件各自硬編一個新數字，
+   不如把底欄高度變成一個變數，浮動掣一律靠 `.floating-bottom` 讀佢。
+   底欄唔顯示（桌面、或沉浸式路由）時變數係 0，浮動掣自動落返原位。
+
+   `data-bottomnav` 由 BottomNav 自己掛落 <html>，唔會出現「底欄收起咗但
+   浮動掣仲浮喺半空」嘅狀態。 */
+:root {
+  --bottom-nav-h: 0px;
+}
+html[data-bottomnav='on'] {
+  --bottom-nav-h: 3.5rem;
+}
+/* 底欄本身係 `md:hidden`（Tailwind v4 md = 768px）。變數必須跟返同一個斷點，
+   否則桌面會出現「底欄睇唔見，但浮動掣仍然為咗佢讓出 3.5rem」——
+   實測 1008px 下三個浮動掣被無端推高 72px。 */
+@media (min-width: 768px) {
+  html[data-bottomnav='on'] {
+    --bottom-nav-h: 0px;
+  }
+}
+.floating-bottom {
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--bottom-nav-h));
+}
+/* 疊喺 `.floating-bottom` 之上嘅第二層（例如無障礙面板彈出、練習頁工具角） */
+.floating-bottom-2 {
+  bottom: calc(max(4rem, calc(env(safe-area-inset-bottom) + 3rem)) + var(--bottom-nav-h));
+}
+.floating-bottom-3 {
+  bottom: calc(max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) + var(--bottom-nav-h));
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ORIGINKIT 動態劇場底層（2026-08-22，Yuna 交付；CEO 拍板保留遊戲化）
+   --------------------------------------------------------------------------
+   全部純 CSS。零 JS 動畫庫、零新套件、零 Canvas／WebGL（憲章 §5 成本死鎖）。
+
+   ── 三重降級（次序由外到內）────────────────────────────────────────────
+   1. `prefers-reduced-motion: reduce` —— 一切動畫靜止，只保留最終狀態。
+   2. `html.font-easy`（＝一鍵舒適模式／SEN）—— 裝飾層【整層隱藏】，
+      唔係調慢。粒子、火焰、散點入場對讀寫障礙同注意力障礙用戶係干擾源。
+   3. `[data-theme='light']` —— 霓虹裝飾層不套用。Originkit 係【暗色主題
+      嘅表達】，Light 主題（kate-uiux 晨曦圖書館）維持原狀，兩者並存。
+
+   ── 底色刻意【唔跟】規格書 §1.1 嘅 --bg-primary #0A0A0F ────────────────
+   規格書同一節寫住「現行實測對比度（globals.css:88-97）為基準，不可破壞」，
+   兩句互相矛盾。以「不可破壞」為準，故保留 --color-surface #0B1120，
+   上方 88-97 行嗰批實測數字（ink 15.90:1 等）繼續逐項成立，唔使重算。
+
+   ── 效能護欄 ────────────────────────────────────────────────────────────
+   只動 background-position／opacity／transform／box-shadow —— 全部
+   GPU 可加速，唔會觸發 layout。嚴禁改 width／height／margin／padding。
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── §2.1 粒子場（點陣流動）────────────────────────────────────────────
+   用 background-image 畫點陣、動 background-position 造流動感，
+   一個元素、零 DOM 節點。速度用變數控，連擊時由呼叫端覆寫。 */
+.particle-bg {
+  --particle-speed: 20s;
+  --particle-alpha: 0.15;
+  background-image: radial-gradient(circle, rgba(0, 245, 212, var(--particle-alpha)) 1px, transparent 1px);
+  background-size: 24px 24px;
+  animation: particle-drift var(--particle-speed) linear infinite;
+}
+@keyframes particle-drift {
+  from { background-position: 0 0; }
+  to { background-position: 24px 24px; }
+}
+/* 連擊加速（由 ComboFlame 或練習頁掛 class）。規格書 §2.1：×5 連擊 → 5s。 */
+.particle-combo-1 { --particle-speed: 12s; }
+.particle-combo-2 { --particle-speed: 8s; }
+.particle-combo-3 { --particle-speed: 5s; }
+/* 學生【自己標記】焦慮之後（EmotionTags，非機器推論）：放慢兼調淡。
+   規格書 §6.3 明訂無自動情緒偵測，故此 class 只可由學生行為觸發。 */
+.particle-calm { --particle-speed: 40s; --particle-alpha: 0.05; }
+
+/* ── §1.2 散點文字劇場 ──────────────────────────────────────────────────
+   只可用於標題（hero／升級橫幅／連擊公告／Boss 擊破）。
+   嚴禁用喺正文或題目內容 —— 字距動畫期間可讀性等於零。 */
+.scatter-title {
+  animation: scatter-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes scatter-in {
+  from { letter-spacing: 2em; opacity: 0; filter: blur(4px); }
+  to { letter-spacing: normal; opacity: 1; filter: blur(0); }
+}
+
+/* ── §2.5 答題衝擊波 ────────────────────────────────────────────────────
+   由掣中心擴散。答錯用霓虹粉，力度同答啱【一致】—— 規格書 §0 明訂
+   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。 */
+.shockwave {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, transparent 70%);
+  animation: shockwave-expand 600ms ease-out forwards;
+}
+.shockwave-pink {
+  background: radial-gradient(circle, rgba(255, 0, 110, 0.4) 0%, transparent 70%);
+}
+@keyframes shockwave-expand {
+  from { width: 0; height: 0; opacity: 1; }
+  to { width: 300px; height: 300px; opacity: 0; }
+}
+
+/* ── §2.6 連擊火焰條 ────────────────────────────────────────────────────
+   用 box-shadow 造光暈，唔用額外圖層。 */
+.combo-flame {
+  --flame-rgb: 0, 245, 212;
+  --flame-speed: 1.5s;
+  box-shadow:
+    0 -4px 20px rgba(var(--flame-rgb), 0.3),
+    0 -8px 40px rgba(var(--flame-rgb), 0.2);
+  animation: flame-pulse var(--flame-speed) ease-in-out infinite;
+}
+.combo-flame-yellow { --flame-rgb: 254, 228, 64; }
+.combo-flame-pink { --flame-rgb: 255, 0, 110; --flame-speed: 0.75s; }
+@keyframes flame-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ── §2.2 3D 卡片轉盤 ───────────────────────────────────────────────────
+   純 CSS perspective + preserve-3d，唔用 Three.js（規格書 §8 明文禁止）。 */
+.carousel-3d { perspective: 1000px; }
+.carousel-card {
+  transform-style: preserve-3d;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel-card:hover { transform: rotateY(-5deg) translateZ(20px); }
+.carousel-card[aria-current='true'] { transform: rotateY(0deg) scale(1.05); }
+
+/* ── §2.3 金屬環徽章 ────────────────────────────────────────────────────
+   SVG 由 React 組件出，此處只負責轉動。 */
+.ring-rotate { animation: ring-rotate 8s linear infinite; transform-origin: center; }
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── §1.4 成就彈窗（唯一獲准使用 back 曲線嘅位置）──────────────────────
+   ⚠️ globals.css 上方 P1-7-R2（Leo 2026-07-16）訂明【全站禁止 bounce／
+      elastic】，pop-in 嘅 1.1 過衝當時已刻意剷走。規格書 §1.4 要求成就彈窗
+      用 cubic-bezier(0.34,1.56,0.64,1)，正正就係被禁嗰種過衝曲線。
+      CEO 2026-08-22 拍板保留遊戲化，故此處【只為成就／升級彈窗一處】破例，
+      唔解禁全站；其餘一切過渡仍受 P1-7-R2 管轄。
+      reduced-motion 與 SEN 之下照樣殺掉（見下方降級區）。 */
+.achievement-pop {
+  animation: achievement-pop 600ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes achievement-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ── 降級 1：Light 主題不套用霓虹裝飾層 ────────────────────────────────
+   Originkit 係暗色主題嘅表達；Light（晨曦圖書館）維持原有觀感。
+   互動性組件（轉盤、環）保留，純裝飾層（粒子、火焰）關掉。 */
+:root[data-theme='light'] .particle-bg,
+:root[data-theme='light'] .combo-flame {
+  background-image: none;
+  box-shadow: none;
+  animation: none;
+}
+
+/* ── 降級 2：SEN／一鍵舒適模式 —— 裝飾層整層隱藏，唔係調慢 ──────────── */
+html.font-easy .particle-bg,
+html.font-easy .combo-flame {
+  display: none !important;
+}
+html.font-easy .scatter-title,
+html.font-easy .achievement-pop,
+html.font-easy .shockwave,
+html.font-easy .ring-rotate,
+html.font-easy .carousel-card {
+  animation: none !important;
+  transition: none !important;
+  filter: none !important;
+  letter-spacing: normal !important;
+  opacity: 1;
+}
+html.font-easy .shockwave { display: none !important; }
+
+/* ── 降級 3：prefers-reduced-motion —— 一切靜止，保留最終狀態 ────────── */
+@media (prefers-reduced-motion: reduce) {
+  .particle-bg,
+  .combo-flame,
+  .scatter-title,
+  .achievement-pop,
+  .ring-rotate,
+  .carousel-card {
+    animation: none !important;
+    transition: none !important;
+  }
+  .scatter-title { letter-spacing: normal; opacity: 1; filter: none; }
+  .achievement-pop { transform: none; opacity: 1; }
+  .carousel-card:hover { transform: none; }
+  .shockwave { display: none !important; }
+}

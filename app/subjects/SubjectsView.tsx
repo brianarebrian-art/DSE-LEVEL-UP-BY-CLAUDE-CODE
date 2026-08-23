@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Lock, CheckCircle2, Search } from 'lucide-react'
+import { ArrowRight, Lock, CheckCircle2, Search, Printer } from 'lucide-react'
 import {
   subjects,
   type SubjectMeta,
@@ -116,6 +116,16 @@ export default function SubjectsView() {
             {tl.introA}
             <span className="text-accent">{activeCount}{tl.introLiveA}</span>{tl.introB}
           </p>
+          {/* 紙筆戰士 2026-08-21 由頂部導覽降級落嚟。佢係一種【練習模式】
+              （生成可打印 A4 卷），結構上屬於呢個 hub，唔係「進度」「收藏」嘅同級物。
+              降級唔等於收埋 —— 呢度同 Footer 練習欄各有一個入口。 */}
+          <Link
+            href="/paper-warrior"
+            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-strong bg-surface-raised px-4 text-sm text-ink-soft transition-colors hover:border-accent/40 hover:text-accent"
+          >
+            <Printer size={15} aria-hidden />
+            {t.nav.paper}
+          </Link>
         </div>
 
         {/* Roadmap progress bar */}

@@ -79,7 +79,7 @@ const env: Question[] = [
     ['全球化擴大市場同時引入外來競爭，中小企或受價格與規模壓力。', 'Globalisation opens markets but brings foreign competition, pressuring SMEs on price and scale.']),
   q(id('env'), T.env, FW.concept, 'medium', 2020, 2,
     ['企業的「微觀環境」一般指？', 'A firm’s micro-environment generally refers to?'],
-    [opt('與企業直接互動的factors（顧客、供應商、競爭者）', 'factors the firm interacts with directly (customers, suppliers, competitors)'),
+    [opt('與企業直接互動的因素（顧客、供應商、競爭者）', 'factors the firm interacts with directly (customers, suppliers, competitors)'),
       opt('全球氣候', 'the global climate'),
       opt('國家貨幣政策', 'national monetary policy'),
       opt('人口老化趨勢', 'population ageing trends')],

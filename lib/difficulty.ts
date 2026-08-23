@@ -5,14 +5,25 @@ import type { Difficulty } from '@/data/questions'
 // The question data keeps its original 'easy' | 'medium' | 'hard' enum; this is
 // the single source that maps each key to its (minimal) on-screen label.
 //
-//   easy   → 基礎
-//   medium → 進階
+//   easy   → 基礎 / Foundation
+//   medium → 進階 / Advanced
 //   hard   → (no label) — the hardest core is felt through the question itself,
 //            not announced. `label: null` ⇒ DifficultyBadge renders nothing.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface DifficultyTier {
+  /** 中文標籤；`null` = 唔顯示徽章。 */
   label: string | null
+  /**
+   * 英文標籤。
+   *
+   * 2026-08-23 補回：呢兩個標籤一直只有中文，於是英文介面每一科、每一條題目
+   * 都出住「基礎」「進階」。i18n-guard 掃唔到 —— 佢只掃 app/ 同 components/
+   * 嘅 .tsx，而呢個常數喺 lib/ 嘅 .ts 入面。
+   *
+   * 同中文科課題名同一個決策（創辦人 2026-08-23）：非華語考生要讀得明導覽層。
+   */
+  labelEn: string | null
   badgeClass: string
 }
 
@@ -22,15 +33,18 @@ export interface DifficultyTier {
 export const DIFFICULTY_TIERS: Record<Difficulty, DifficultyTier> = {
   easy: {
     label: '基礎',
+    labelEn: 'Foundation',
     badgeClass: 'text-ink-muted bg-surface-sunken border-line-strong',
   },
   medium: {
     label: '進階',
+    labelEn: 'Advanced',
     badgeClass: 'text-gold bg-gold/10 border-gold/30',
   },
   hard: {
     // Invisible hardest core: no badge at all.
     label: null,
+    labelEn: null,
     badgeClass: '',
   },
 }

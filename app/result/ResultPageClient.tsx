@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
 import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
 import { gradeRange } from '@/lib/gradeConfidence'
+import MasteryEstimate from '@/components/MasteryEstimate'
 
 /** 佔位符替換。字典行文如 '以呢 {n} 題計'；同 marksToNext 沿用嘅 .replace 做法一致，
  *  只係抽成一個函數，免得多個佔位符時串成一長串 .replace()。 */
@@ -419,6 +420,10 @@ export default function ResultPageClient() {
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
         </div>
+
+        {/* 累積掌握度估算（等級預測 v3）。擺喺本節成績之下、課題分析之上：
+            本節成績講「今次」，掌握度講「至今」，兩者要分得開。 */}
+        {result.subjectId && <MasteryEstimate subjectId={result.subjectId} />}
 
         {/* Topic breakdown */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">

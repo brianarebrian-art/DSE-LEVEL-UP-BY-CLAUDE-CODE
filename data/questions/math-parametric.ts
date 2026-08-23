@@ -52,6 +52,8 @@ function pq(
 
 // ── helpers ─────────────────────────────────────────────────────────────────
 const n = (s: string): Pair => [s, s]
+/** 兩個根並列的選項：連接詞須分語言書寫。 */
+const nOr = (a: string, b: string): Pair => [`${a} 或 ${b}`, `${a} or ${b}`]
 const deg = (x: number): Pair => n(`$${x}^\\circ$`)
 const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
 const fact = (k: number): number => (k <= 1 ? 1 : k * fact(k - 1))
@@ -137,10 +139,10 @@ const out: Question[] = []
     out.push(pq(`mp_k4_${i}`, T.logarithms, FW.transform, yr(i),
       [`解方程 $\\log_{${b}} x + \\log_{${b}} (x - ${d}) = ${k}$。`,
        `Solve $\\log_{${b}} x + \\log_{${b}} (x - ${d}) = ${k}$.`],
-      [n(`$x = ${p}$`), n(`$x = ${q}$`), n(`$x = ${p}$ 或 $x = ${-q}$`), n(`$x = ${bk}$`)],
-      [`合併對數：$\\log_{${b}}[x(x-${d})] = ${k}$ ⇒ $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2 - ${d}x - ${bk} = 0$ ⇒ $(x - ${p})(x + ${q}) = 0$ ⇒ $x = ${p}$ 或 $x = ${-q}$。但 $\\log$ 要求 $x>0$ 且 $x-${d}>0$，故 **$x=${-q}$ 不合，捨去**，只取 $x = ${p}$。致命陷阱：$x=${q}$／$x=${-q}$ 正是那條要捨去的根。`,
-       `Combine logs: $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2-${d}x-${bk}=0$ ⇒ $(x-${p})(x+${q})=0$. Domain needs $x>0$ and $x-${d}>0$, so $x=${-q}$ is **rejected**; only $x=${p}$. Trap: the rejected root is the bait.`],
-      [`對數合併後 $x(x-${d})=${bk}$，因式分解取兩根，**用定義域 $x-${d}>0$ 捨負根** ⇒ $x=${p}$。`,
+      [n(`$x = ${p}$`), n(`$x = ${q}$`), nOr(`$x = ${p}$`, `$x = ${-q}$`), n(`$x = ${bk}$`)],
+      [`合併對數：$\\log_{${b}}[x(x-${d})] = ${k}$ ⇒ $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2 - ${d}x - ${bk} = 0$ ⇒ $(x - ${p})(x + ${q}) = 0$ ⇒ $x = ${p}$ 或 $x = ${-q}$。但 $\\log$ 要求 $x>0$ 且 $x-${d}>0$，故 $x=${-q}$ 不合，捨去，只取 $x = ${p}$。致命陷阱：$x=${q}$／$x=${-q}$ 正是那條要捨去的根。`,
+       `Combine logs: $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2-${d}x-${bk}=0$ ⇒ $(x-${p})(x+${q})=0$. Domain needs $x>0$ and $x-${d}>0$, so $x=${-q}$ is rejected; only $x=${p}$. Trap: the rejected root is the bait.`],
+      [`對數合併後 $x(x-${d})=${bk}$，因式分解取兩根，用定義域 $x-${d}>0$ 捨負根 ⇒ $x=${p}$。`,
        `After combining, factor $x(x-${d})=${bk}$ and reject the root failing $x-${d}>0$ ⇒ $x=${p}$.`]))
   })
 
@@ -187,7 +189,7 @@ function countNumbers(digits: number[], pred: (num: number, ds: number[]) => boo
     const ignoreRange = countNumbers(digits, (num, ds) => ds[3] % 2 === 0)
     const total = m * (m - 1) * (m - 2) * (m - 3)
     out.push(pq(`mp_k6_${i}`, T.permcomb, FW.decompose, yr(i),
-      [`用數字 $1$ 至 $${m}$（每個數字最多用一次）組成介乎 $${lo}$ 與 $${hi}$ 之間的**偶數**四位數，共有多少個？`,
+      [`用數字 $1$ 至 $${m}$（每個數字最多用一次）組成介乎 $${lo}$ 與 $${hi}$ 之間的偶數四位數，共有多少個？`,
        `Using the digits $1$ to $${m}$ at most once each, how many even four-digit numbers strictly between $${lo}$ and $${hi}$ can be formed?`],
       [n(`$${ans}$`), n(`$${ignoreEven}$`), n(`$${ignoreRange}$`), n(`$${total}$`)],
       [`兩個限制同時滿足，須分類討論：個位為偶數（${digits.filter((x) => x % 2 === 0).join(',')}），千位令數值落在 $(${lo},${hi})$，再乘中間兩位的排列，且不重複。準確計數 $= ${ans}$。陷阱：$${ignoreEven}$ 漏了「偶數」；$${ignoreRange}$ 漏了範圍限制；$${total}$ 是完全無限制的 $P(${m},4)$。`,
@@ -242,8 +244,8 @@ function countNumbers(digits: number[], pred: (num: number, ds: number[]) => boo
       [`直線 $${line}$ 與圓 $C:\\ ${circle}$ 相交於兩點。求該弦的中點坐標。`,
        `The line $${line}$ cuts the circle $C:\\ ${circle}$ at two points. Find the midpoint of the chord.`],
       [n(pt(mx, my)), n(pt(cx, cy)), n(pt(2 * cx - mx, 2 * cy - my)), n(pt(2 * mx - cx, 2 * my - cy))],
-      [`先將圓方程**除以 3**，得圓心 $(${cx},${cy})$、半徑 $${r}$（係數陷阱：不除 3 就取錯圓心）。弦的中點 $M$ 就是圓心到直線的**垂足**（圓心至弦中點連線 $\\perp$ 弦），由 $\\perp$ 關係解得 $M = ${pt(mx, my).replace(/\$/g, '')}$。陷阱：$${pt(cx, cy).replace(/\$/g, '')}$ 是圓心本身；其餘是對稱點。`,
-       `First **divide the circle by 3** ⇒ centre $(${cx},${cy})$, radius $${r}$ (the coefficient trap). The chord midpoint $M$ is the foot of the perpendicular from the centre (centre-to-midpoint $\\perp$ chord), giving $M = ${pt(mx, my).replace(/\$/g, '')}$. Trap: $${pt(cx, cy).replace(/\$/g, '')}$ is the centre itself.`],
+      [`先將圓方程除以 3，得圓心 $(${cx},${cy})$、半徑 $${r}$（係數陷阱：不除 3 就取錯圓心）。弦的中點 $M$ 就是圓心到直線的垂足（圓心至弦中點連線 $\\perp$ 弦），由 $\\perp$ 關係解得 $M = ${pt(mx, my).replace(/\$/g, '')}$。陷阱：$${pt(cx, cy).replace(/\$/g, '')}$ 是圓心本身；其餘是對稱點。`,
+       `First divide the circle by 3 ⇒ centre $(${cx},${cy})$, radius $${r}$ (the coefficient trap). The chord midpoint $M$ is the foot of the perpendicular from the centre (centre-to-midpoint $\\perp$ chord), giving $M = ${pt(mx, my).replace(/\$/g, '')}$. Trap: $${pt(cx, cy).replace(/\$/g, '')}$ is the centre itself.`],
       [`不必解聯立 + $\\Delta$！弦中點 = 圓心到直線的垂足，一條垂直關係即可直接求得 $M = ${pt(mx, my).replace(/\$/g, '')}$。`,
        `Don't solve simultaneously with $\\Delta$ — the midpoint is the foot of the perpendicular from the centre ⇒ $M = ${pt(mx, my).replace(/\$/g, '')}$.`]))
   })

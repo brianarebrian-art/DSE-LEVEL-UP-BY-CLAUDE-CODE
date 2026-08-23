@@ -12,8 +12,15 @@ export interface CutoffTable {
   }
 }
 
-// Percentage boundaries for a generic MC practice session.
-// Approximates typical DSE grade distributions; scales to any question count.
+// 練習卷嘅百分比分界線。
+//
+// ⚠️ 呢組數字係【平台自訂】嘅，唔係考評局公布嘅分數線 —— 考評局從來冇公布過。
+// 任何顯示呢組數字嘅畫面，都必須同時講明佢係平台自訂（見 components/
+// MasteryEstimate.tsx 同 /methodology）。
+//
+// 亦因為冇真值可以對，呢組數字【校準唔到】。等級預測 v3 嘅做法係離開分數
+// 空間，改用逐層掌握度（lib/mastery.ts）；呢個表保留係因為結果頁仍然要出
+// 「本節成績」，而嗰個係一個描述性數字，唔係一個預測。
 const practicePercentages: Record<keyof CutoffTable['cutoffs'], number> = {
   '5**': 0.92,
   '5*': 0.83,
@@ -44,17 +51,14 @@ export function getPracticeCutoffs(total: number, subject = 'practice'): CutoffT
 // Convenience default for the 12-question math综合 practice.
 export const practiceCutoffs: CutoffTable = getPracticeCutoffs(12, 'math')
 
-// Official DSE Math Paper 1 cutoffs (2018–2023 average approximation)
-export const mathPaper1Cutoffs: CutoffTable = {
-  subject: 'math_paper1',
-  totalMarks: 105,
-  cutoffs: {
-    '5**': 93,
-    '5*': 83,
-    '5': 72,
-    '4': 56,
-    '3': 40,
-    '2': 24,
-    '1': 12,
-  },
-}
+// ── 2026-08-23：已移除 `mathPaper1Cutoffs`（原註釋寫「Official DSE Math
+//    Paper 1 cutoffs」）──────────────────────────────────────────────────
+//
+// 考評局從來冇公布過任何一科嘅分數線。DSE 用水平參照，分數線每年按評卷結果
+// 訂立，本身就唔係一個固定數字，亦從來冇對外公開過。把一組平台自行推算嘅
+// 數字標成「Official」，係一句冇來源嘅聲稱，而且係最難被學生察覺嗰種 ——
+// 佢會用「官方」兩個字借走一份我哋冇嘅權威。
+//
+// 該常數喺 app 入面從未被使用（只有自己嘅測試引用過），故直接移除，
+// 而唔係改個名留低。測試需要一張「非 20 題制」嘅表去證明評級邏輯唔係寫死
+// 20 題，嗰張表已改為喺測試檔內自建並明確標示為 fixture。

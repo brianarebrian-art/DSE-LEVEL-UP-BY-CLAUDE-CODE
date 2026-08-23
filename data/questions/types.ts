@@ -119,6 +119,16 @@ export interface Topic {
   frameworkEn?: string // English framework label (falls back to framework when absent)
   emoji: string
   /**
+   * 該課題【只計 MC】的題數。
+   *
+   * 何以須與 `count` 分開：課題入口 `/practice?subject=X&topic=Y` 走的是客觀題
+   * 流程（見 `getQuestionsByTopic()` 只返 MC）。題庫自 2026-07-31 起收 text／long，
+   * 於是可能出現「`count` 大於零、但並無任何 MC」的課題 —— 學生點入之後只會
+   * 見到一份空白練習。故顯示課題 chips 時須以本欄判斷，而非 `count`。
+   * 同樣由 `getSubjectTopics()` 即時計算。
+   */
+  mcCount?: number
+  /**
    * 該課題的真實題數。
    *
    * ⚠️ 此數值由 `getSubjectTopics()` 於讀取時【按真實題庫即時計算】；curated

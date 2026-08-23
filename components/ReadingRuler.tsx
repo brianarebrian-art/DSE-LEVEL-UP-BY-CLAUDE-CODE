@@ -85,7 +85,7 @@ export default function ReadingRuler() {
       )}
 
       {/* FIX: [B8] safe-area — iPhone Home Indicator 唔遮擋 */}
-      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-20 z-50 no-print flex items-center gap-2">
+      <div className="fixed floating-bottom left-20 z-50 no-print flex items-center gap-2">
         <button
           onClick={() => { setOn(!on); persist(!on, hIdx) }}
           aria-pressed={on}

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { getReviewRecord } from '@/data/provenance'
 import { useLocale } from '@/lib/i18n'
+import ReportQuestionButton from './ReportQuestionButton'
 
 // 題目來源披露 —— 答完之後喺解析區底部出現。
 //
@@ -21,38 +22,9 @@ import { useLocale } from '@/lib/i18n'
 // 「你可以查我哋」講完之後，跟住一定要有「你可以話我哋知我哋錯咗」，否則個披露
 // 就只係單向嘅。舊嘅報錯入口喺已刪除嘅影子溫書室裏面，隨個牆一齊冇咗。
 //
-// 刻意用 mailto 而唔係 /api/question/report：後者要新表、要 migration、要創辦人批，
-// 而「有個掣但寫入唔到」比冇掣更差 —— /relax/group 個 email 表單就係寫入一張從未
-// 存在嘅表，由第一日起每個學生撳完都見到「未能記錄」。mailto 唔靚，但真係到得到
-// 人手上，$0，而且今日就行得通。
-/** 報錯信 —— 主旨帶題號，等我哋喺題庫搵得返係邊條。跟用戶語言。 */
-function reportMailto(questionId: string, en: boolean): string {
-  const subject = en
-    ? `[DSE Level Up] Question issue: ${questionId}`
-    : `[DSE Level Up] 題目問題：${questionId}`
-  const body = (
-    en
-      ? [
-          `Question ID: ${questionId}`,
-          '',
-          'What kind of issue? (delete the ones that do not apply)',
-          '  answer / wording / formatting / difficulty / copyright / other',
-          '',
-          'What did you notice?',
-          '',
-        ]
-      : [
-          `題號：${questionId}`,
-          '',
-          '係邊一類問題？（刪走唔啱嗰啲）',
-          '  答案有疑問 ／ 題目寫得唔清楚 ／ 排版 ／ 難度標錯 ／ 版權 ／ 其他',
-          '',
-          '你發現咗咩？', // i18n-exempt: 同一個三元式上面有英文版 'What did you notice?'
-          '',
-        ]
-  ).join('\n')
-  return `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-}
+// 同日稍後：報錯由呢度嘅一條 mailto 連結抽成 `ReportQuestionButton` ——
+// 原因係 mailto 喺冇設定郵件程式嘅裝置上完全靜默，撳落去乜都唔會發生。
+// 新元件永遠攤開報告全文，加埋分類同複製退路，而且標記／錯題頁一樣用得。
 
 export default function QuestionProvenance({ questionId }: { questionId: string }) {
   const { locale } = useLocale()
@@ -90,9 +62,7 @@ export default function QuestionProvenance({ questionId }: { questionId: string 
         <span className="mx-1.5 text-ink-faint" aria-hidden>
           ·
         </span>
-        <a href={reportMailto(questionId, en)} className="text-accent hover:underline">
-          {en ? 'Something wrong with this question?' : '呢條題有問題？話我哋知'}
-        </a>
+        <ReportQuestionButton questionId={questionId} />
       </p>
     </div>
   )

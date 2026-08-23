@@ -21,6 +21,9 @@ const MIN_QUESTION_LEN = 5
 const MIN_EXPLANATION_LEN = 10
 const MIN_REFERENCE_LEN = 4
 const BANNED_OPTION_PATTERNS = [/以上皆[是非]/, /all of the above/i, /none of the above/i]
+const HAS_CJK = /[\u4e00-\u9fff]/
+// 五科語言科目的選項本身就是考核對象，中文選項為刻意設計，不受英文選項檢查所限。
+const LANGUAGE_SUBJECTS = new Set(['chinese', 'chinese-history', 'chinese-literature', 'english', 'english-literature'])
 
 // HKEAA terminology / syllabus-scope red lines (mirror scripts/qbank/term-guard.mjs).
 // A draft that trips one of these is auto-rejected — it must never reach a human
@@ -152,6 +155,59 @@ export function gateRow(row, subject) {
   for (const r of TERM_REDLINES) if (r.re.test(blob)) e.push(r.msg)
   if (subject === 'economics') for (const r of ECON_REDLINES) if (r.re.test(blob)) e.push(r.msg)
 
+  // ── Markdown 粗體 `**…**` ────────────────────────────────────────────────
+  // 題庫格式【從來冇聲明支援 markdown】。MathText 只處理 KaTeX `$…$`，其餘
+  // 文字一律 HTML-escape 之後照字面出，所以 `**偶數**` 喺畫面上就係一堆星號。
+  // 2026-08-22 實測：54 條 live 題目中招（math 30／history 9／geography 5／
+  // technology-living 5／chemistry 3／ethics-religious 2），其中 24 條係
+  // 機器閘批次自己帶入去嘅 —— 出題端寫 markdown 係手指習慣，唔會自己察覺。
+  //
+  // 亦【唔應該】改為支援 markdown 粗體：本平台已有經深思嘅強調機制
+  // CommandWordText（HKEAA 指令字高亮），而它刻意設計成【學生自診「審題陷阱」
+  // 之後先亮】，為咗避免提示過度。題幹入面永久粗體嘅考點正正就係嗰條規則
+  // 想避免嘅嘢。故此喺入庫前攔截，唔喺 renderer 度遷就。
+  //
+  // 影響統計（憲章 §6 —— 加閘前必查）：加入本閘時 live 題目 0 條、
+  // 等審草稿 0 條會 fail，屬純新增防線，不會令任何現有資料失效。
+  const visible = [
+    row?.question, row?.questionEn,
+    ...(Array.isArray(opts) ? opts : []),
+    ...(Array.isArray(row?.optionsEn) ? row.optionsEn : []),
+    row?.explanation, row?.explanationEn,
+    row?.referenceAnswer, row?.referenceAnswerEn,
+    row?.markingScheme, row?.markingSchemeEn,
+  ].filter((x) => typeof x === 'string').join('\n')
+  const bold = visible.match(/\*\*[^*\n]{1,80}\*\*/)
+  if (bold) {
+    e.push(`字面 markdown 粗體「${bold[0].slice(0, 40)}」—— 題庫唔支援 markdown，學生會見到星號本身`)
+  }
+
+  // ── 雙語題的英文選項不得夾雜中文 ─────────────────────────────────────────
+  // 一條題目只要有 `questionEn`，英文介面的學生就會讀到它。若 `optionsEn` 仍是
+  // 中文，該學生會看見英文題幹配中文選項 —— 題目變成無法作答，而非只是不美觀。
+  //
+  // 2026-08-22 實測：387 條 live 題目中招（economics 141／bafs 100／
+  // chemistry 80／m1 33／m2 16／math 10／physics 4／visual-arts 2／ict 1）。
+  // 成因有三：其一，以 `中文 / english` 單一字串書寫選項再交給 `[v, v]`；
+  // 其二，把「40 元」交給只適用於純數值的 `n()`；其三，出題端只填了 `ans`
+  // 而漏了 `ansEn`。三者在源碼上都看不出異樣，唯有在入庫時攔截。
+  //
+  // 五科語言科目不在此列：中文科、中國歷史、中國文學、英文科、英國文學的
+  // 選項本身就是考核對象，中文選項是刻意的。
+  //
+  // 影響統計（憲章 §6 —— 加閘前必查）：加入本閘時 live 題目 0 條、
+  // 等審草稿 927 條之中 0 條會 fail，屬純新增防線，不會令任何現有資料失效。
+  if (!LANGUAGE_SUBJECTS.has(subject) && typeof row?.questionEn === 'string' && row.questionEn.trim()) {
+    const en = Array.isArray(row?.optionsEn) ? row.optionsEn : opts
+    if (Array.isArray(en)) {
+      en.forEach((o, i) => {
+        if (typeof o === 'string' && HAS_CJK.test(o)) {
+          e.push(`optionsEn[${i}] 仍是中文「${o.slice(0, 24)}」—— 英文介面的學生會見到英文題幹配中文選項，無法作答`)
+        }
+      })
+    }
+  }
+
   // LaTeX hygiene — every subject: `$…$` math must be balanced
   if (typeof row?.question === 'string' && unbalancedDollars(row.question)) e.push('unbalanced `$` in question (LaTeX)')
   if (Array.isArray(opts)) opts.forEach((o, i) => { if (typeof o === 'string' && unbalancedDollars(o)) e.push(`unbalanced \`$\` in option ${i}`) })
@@ -199,12 +255,20 @@ export function toReviewedQuestion(row, subject) {
   const topicLabel = typeof row.topicZh === 'string' && row.topicZh.trim()
     ? row.topicZh.trim()
     : row.topic.trim()
+  // 2026-08-22 修正：`topicEn` 一直被丟棄。成因與 2026-08-21 修好的 MC 英文欄
+  // 同出一轍 —— 草稿明明帶住這一欄，promoter 從未 copy 出去。實測影響：已入庫
+  // 的 648 條機器閘題目全部無 topicEn，英文介面的課題標籤一律顯示中文。
+  //
+  // 影響統計（憲章 §6）：純加法，只是把本已存在而被丟棄的 optional 欄帶出去，
+  // 沒有任何一行會由「過」變「不過」，亦不會改動已入庫檔案（除非重跑 promote）。
+  const topicLabelEn = typeof row.topicEn === 'string' && row.topicEn.trim() ? row.topicEn.trim() : undefined
   const base = {
     id: row.id.trim(),
     type,
     subject,
     topic: topicId,
     topicZh: topicLabel,
+    ...(topicLabelEn ? { topicEn: topicLabelEn } : {}),
     framework: 'reviewed',
     frameworkZh: '人手核對題',
     frameworkEmoji: '✅',
@@ -215,12 +279,32 @@ export function toReviewedQuestion(row, subject) {
   }
 
   if (type === 'mc') {
-    return {
+    const mc = {
       ...base,
       options: row.options.map((o) => String(o).trim()),
       correctIndex: row.correctIndex,
       marks: 1,
     }
+    // 2026-08-21 修正：MC 嘅英文欄一直被丟棄。
+    //
+    // 下面 text／long 嘅英文欄早喺 2026-08-07 補過（見該處註釋），但 MC 呢個
+    // 分支喺補之前已經 `return`，所以由頭到尾冇 copy 過。實測影響：89 條 MC 草稿
+    // 之中有 39 條帶住英文欄，promote 之後全部變成得中文；已入庫嘅 18 條人手核對
+    // MC（english 6、chinese 12）現時亦冇 contentEn。
+    //
+    // 25 科入面 20 科係雙語題庫，一條冇英文嘅 MC 喺英文介面會顯示中文原文 ——
+    // 對只讀英文卷嘅考生等於一條做唔到嘅題。
+    //
+    // 影響統計（憲章 §6）：純加法 —— 只係把本來就存在而被丟棄嘅 optional 欄
+    // 帶埋出去，冇任何一行會由「過」變「唔過」，亦唔會改動已入庫檔案（除非重跑
+    // promote）。
+    if (typeof row.questionEn === 'string' && row.questionEn.trim()) mc.contentEn = row.questionEn.trim()
+    if (Array.isArray(row.optionsEn) && row.optionsEn.length === mc.options.length
+        && row.optionsEn.every((o) => typeof o === 'string' && o.trim())) {
+      mc.optionsEn = row.optionsEn.map((o) => String(o).trim())
+    }
+    if (typeof row.explanationEn === 'string' && row.explanationEn.trim()) mc.explanationEn = row.explanationEn.trim()
+    return mc
   }
 
   // text／long：刻意【唔輸出】options／correctIndex。呢兩個欄位一旦存在，

@@ -95,6 +95,36 @@ const loaders: Record<string, Loader> = {
   'technology-living': async () => (await import('./technology-living')).technologyLivingQuestions,
 }
 
+// ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
+// 由 scripts/qbank/auto-promote.mts 自動入庫的批次，每科一個檔案。
+//
+// 為何不直接寫進上方各科的 loader：上方每個 loader 的寫法並不一致（有單行式、
+// 有 Promise.all 區塊、有四個 bank 合併），腳本每次都要針對不同形狀動手術，
+// 改錯一次即會令整科題目消失。此處改為獨立註冊表 —— 新增批次只需插入一行，
+// 上方的 loader 完全不必改動。
+//
+// ⚠️ 此類題目【並無實名逐題審批紀錄】。前端 QuestionProvenance 會如實顯示
+//    「經自動檢查 …本題未有實名逐題審批紀錄」，不會假稱經人手審批。
+//    經真人審批的批次走的是另一條路（promote-drafts.mjs → *-reviewed.ts），
+//    兩條路不可混用。
+const autoLoaders: Record<string, Loader> = {
+  'physics': async () => (await import('./physics-auto')).physicsAutoQuestions,
+  'm1': async () => (await import('./m1-auto')).m1AutoQuestions,
+  'm2': async () => (await import('./m2-auto')).m2AutoQuestions,
+  'bafs': async () => (await import('./bafs-auto')).bafsAutoQuestions,
+  'economics': async () => (await import('./economics-auto')).economicsAutoQuestions,
+  'chemistry': async () => (await import('./chemistry-auto')).chemistryAutoQuestions,
+  'chinese': async () => (await import('./chinese-auto')).chineseAutoQuestions,
+  'english': async () => (await import('./english-auto')).englishAutoQuestions,
+  'geography': async () => (await import('./geography-auto')).geographyAutoQuestions,
+  'ethics-religious': async () => (await import('./ethics-religious-auto')).ethicsReligiousAutoQuestions,
+  'technology-living': async () => (await import('./technology-living-auto')).technologyLivingAutoQuestions,
+  'english-literature': async () => (await import('./english-literature-auto')).englishLiteratureAutoQuestions,
+  'history': async () => (await import('./history-auto')).historyAutoQuestions,
+  'chinese-literature': async () => (await import('./chinese-literature-auto')).chineseLiteratureAutoQuestions,
+  'chinese-history': async () => (await import('./chinese-history-auto')).chineseHistoryAutoQuestions,
+}
+
 /**
  * Load one subject's question bank on demand (its own chunk). Returns [] for an
  * unknown subject. Use this from CLIENT components instead of the eager barrel.
@@ -104,8 +134,10 @@ const loaders: Record<string, Loader> = {
  */
 export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuestion[]> {
   const loader = loaders[subjectId]
-  if (!loader) return []
-  return loader()
+  const auto = autoLoaders[subjectId]
+  if (!loader && !auto) return []
+  const [base, extra] = await Promise.all([loader ? loader() : [], auto ? auto() : []])
+  return extra.length ? [...base, ...extra] : base
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */

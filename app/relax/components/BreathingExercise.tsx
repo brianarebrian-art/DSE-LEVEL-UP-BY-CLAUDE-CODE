@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLocale } from '@/lib/i18n'
+import { Volume2, VolumeX } from 'lucide-react'
 import { loadSensoryPref } from './SensoryMenu'
 import {
   PATTERNS,
@@ -214,7 +215,12 @@ export default function BreathingExercise() {
                   muted ? 'border-white/20 text-white/50' : 'border-neon-cyan/50 text-neon-cyan'
                 }`}
               >
-                {muted ? (en ? '🔇 Muted' : '🔇 已靜音') : en ? '🫁 Voice guiding' : '🫁 語音引導中'}
+                {/* 靜音／語音引導係【狀態指示】，唔屬憲章 §7 嘅情感層。
+                    🔇 同 🫁 喺唔同平台字型差異好大，而狀態要一眼認得出。 */}
+                <span className="inline-flex items-center gap-1.5">
+                  {muted ? <VolumeX size={14} aria-hidden /> : <Volume2 size={14} aria-hidden />}
+                  {muted ? (en ? 'Muted' : '已靜音') : en ? 'Voice guiding' : '語音引導中'}
+                </span>
               </button>
             )}
           </div>

@@ -46,6 +46,21 @@ import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { csdQuestions, csdTopics } from './csd'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
+import { chineseHistoryAutoQuestions } from './chinese-history-auto'
+import { chineseLiteratureAutoQuestions } from './chinese-literature-auto'
+import { historyAutoQuestions } from './history-auto'
+import { englishLiteratureAutoQuestions } from './english-literature-auto'
+import { technologyLivingAutoQuestions } from './technology-living-auto'
+import { ethicsReligiousAutoQuestions } from './ethics-religious-auto'
+import { geographyAutoQuestions } from './geography-auto'
+import { englishAutoQuestions } from './english-auto'
+import { chineseAutoQuestions } from './chinese-auto'
+import { chemistryAutoQuestions } from './chemistry-auto'
+import { economicsAutoQuestions } from './economics-auto'
+import { bafsAutoQuestions } from './bafs-auto'
+import { m2AutoQuestions } from './m2-auto'
+import { m1AutoQuestions } from './m1-auto'
+import { physicsAutoQuestions } from './physics-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
@@ -102,9 +117,33 @@ const banks: Record<string, SubjectBank> = {
   'technology-living': { questions: technologyLivingQuestions, topics: technologyLivingTopics },
 }
 
+// ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
+// 對應 load.ts 的 autoLoaders。barrel 與 loader 必須同步 —— barrel 是所有 QA
+// 工具及稽核統計的讀取路徑，只註冊其中一邊會令題目對統計隱形
+// （2026-08-07 曾因此少報 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
+const autoBanks: Record<string, AnyQuestion[]> = {
+  'physics': physicsAutoQuestions,
+  'm1': m1AutoQuestions,
+  'm2': m2AutoQuestions,
+  'bafs': bafsAutoQuestions,
+  'economics': economicsAutoQuestions,
+  'chemistry': chemistryAutoQuestions,
+  'chinese': chineseAutoQuestions,
+  'english': englishAutoQuestions,
+  'geography': geographyAutoQuestions,
+  'ethics-religious': ethicsReligiousAutoQuestions,
+  'technology-living': technologyLivingAutoQuestions,
+  'english-literature': englishLiteratureAutoQuestions,
+  'history': historyAutoQuestions,
+  'chinese-literature': chineseLiteratureAutoQuestions,
+  'chinese-history': chineseHistoryAutoQuestions,
+}
+
 /** 該科全部題目（MC + 書寫題）。計數／課題統計用。 */
 export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
-  return banks[subjectId]?.questions ?? []
+  const base = banks[subjectId]?.questions ?? []
+  const extra = autoBanks[subjectId]
+  return extra?.length ? [...base, ...extra] : base
 }
 
 /**
@@ -143,9 +182,17 @@ export function getSubjectTopics(subjectId: string): Topic[] {
   if (!bank) return []
 
   const counts = new Map<string, number>()
-  for (const q of bank.questions) counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
+  const mcCounts = new Map<string, number>()
+  for (const q of bank.questions) {
+    counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
+    if (q.type === 'mc') mcCounts.set(q.topic, (mcCounts.get(q.topic) ?? 0) + 1)
+  }
 
-  const withRealCounts = bank.topics.map((t) => ({ ...t, count: counts.get(t.id) ?? 0 }))
+  const withRealCounts = bank.topics.map((t) => ({
+    ...t,
+    count: counts.get(t.id) ?? 0,
+    mcCount: mcCounts.get(t.id) ?? 0,
+  }))
   topicCache.set(subjectId, withRealCounts)
   return withRealCounts
 }

@@ -357,11 +357,28 @@ export default function PracticeSession({
   const [emoOpen, setEmoOpen] = useState(false)
   const [gentleLock, setGentleLock] = useState(false)
 
+  // §2.5 答題衝擊波：記住啱啱撳咗邊個選項，由該掣中心擴散一次。
+  //
+  // 呢個平台係【揀即等於交】，冇獨立提交掣，所以規格書講嘅「由提交掣中心擴散」
+  // 落到呢度即係「由選項掣中心擴散」——唔為咗遷就動畫而加一個多餘嘅提交步驟。
+  //
+  // 答錯用霓虹粉，但力度、大小、時長同答啱【完全一致】：規格書 §0 明訂
+  // 「答錯無震屏、無負面驚嚇回饋」，憲章 §7 亦禁止任何打擊自信嘅元素。
+  // 純 CSS 動畫（.shockwave），SEN 同 reduced-motion 之下由 globals.css 直接
+  // display:none，唔使喺呢度再判斷一次。
+  const [shockIdx, setShockIdx] = useState<number | null>(null)
+  const shockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => () => { if (shockTimer.current) clearTimeout(shockTimer.current) }, [])
+
   const selectOption = useCallback(
-    (zh: string) => {
+    (zh: string, idx: number) => {
       if (answerState !== null || !currentQ) return
       const isCorrect = zh === currentQ.correctZh
       setAnswerState({ selectedZh: zh, isCorrect })
+      // 衝擊波：600ms 之後拆走個節點，唔留喺 DOM 度
+      setShockIdx(idx)
+      if (shockTimer.current) clearTimeout(shockTimer.current)
+      shockTimer.current = setTimeout(() => setShockIdx(null), 600)
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
       // F-EMO: 拉分難度（hard = 5** 級）答錯 → 60 秒鎖之前先問感受
@@ -520,6 +537,7 @@ export default function PracticeSession({
         topicResults,
         elapsed,
         timestamp: Date.now(),
+        difficultyResults,
       })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
@@ -755,9 +773,14 @@ export default function PracticeSession({
             <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full">
               {tr(currentQ.topicZh, currentQ.topicEn)}
             </span>
-            <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
-              {currentQ.year}
-            </span>
+            {/* 機器閘題目為原創改寫，並無對應年份，入庫時記為 0 —— 不可以憑空填一個
+                年份充當「歷屆」（憲章 §8 禁止虛構數據），故 0 直接不顯示，
+                而非印出一個「0」。 */}
+            {currentQ.year ? (
+              <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
+                {currentQ.year}
+              </span>
+            ) : null}
           </div>
 
           {/* Content — P1-6-R2: 自診咗「B. 審題陷阱」先高亮題幹指令字 */}
@@ -795,10 +818,16 @@ export default function PracticeSession({
               return (
                 <button
                   key={idx}
-                  onClick={() => selectOption(opt.zh)}
+                  onClick={() => selectOption(opt.zh, idx)}
                   disabled={answerState !== null}
-                  className={`w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all option-btn ${style}`}
+                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}`}
                 >
+                  {shockIdx === idx && (
+                    <span
+                      aria-hidden
+                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-pink' : ''}`}
+                    />
+                  )}
                   <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
                     {optionLetters[idx]}
                   </span>

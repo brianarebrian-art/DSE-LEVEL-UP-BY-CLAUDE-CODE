@@ -359,7 +359,7 @@ const western: Question[] = [
 const chinese: Question[] = [
   q(id('ch'), T.chinese, FW.concept, 'medium', 2023, 2,
     ['中國畫中「工筆」與「寫意」的分別是？', 'In Chinese painting, gongbi differs from xieyi in that gongbi is?'],
-    [opt('工筆細緻嚴謹，寫意率性concise', 'meticulous and precise, while xieyi is free and concise'),
+    [opt('工筆細緻嚴謹，寫意率性簡練', 'meticulous and precise, while xieyi is free and concise'),
       opt('兩者完全相同', 'identical to xieyi'),
       opt('工筆最隨意', 'the most spontaneous style'),
       opt('與筆法無關', 'unrelated to brushwork')],
@@ -408,7 +408,7 @@ const chinese: Question[] = [
     ['水墨畫以墨加水調出濃淡乾濕層次，於宣紙上表現豐富變化。', 'Ink-wash painting varies ink with water for tonal and textural range on absorbent paper.']),
   q(id('ch'), T.chinese, FW.interpret, 'hard', 2020, 3,
     ['中國山水畫常表現「可遊可居」的意境，反映的思想是？', 'Chinese landscape painting often evokes a world to "roam and dwell in", reflecting which idea?'],
-    [opt('人與自然和諧、寄情山水的哲思', 'harmony between人 and nature and finding solace in landscape'),
+    [opt('人與自然和諧、寄情山水的哲思', 'harmony between humanity and nature, finding solace in the landscape'),
       opt('征服自然', 'conquering nature'),
       opt('純粹地理記錄', 'purely geographic record'),
       opt('與哲思無關', 'nothing philosophical')],

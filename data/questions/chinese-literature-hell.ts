@@ -10,14 +10,15 @@ import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_bui
 const q = makeQ('chinese-literature')
 const m = (s: string): Pair => [s, s]
 
+// 英文名於 2026-08-23 補回，與本科主檔同一批（只譯導覽層）。
 const T = {
-  poetry: { id: 'clit_poetry_appreciation', zh: '詩詞鑑賞・手法與意境', en: '詩詞鑑賞・手法與意境' },
-  craft:  { id: 'clit_craft_compare',       zh: '風格比較・婉約與豪放', en: '風格比較・婉約與豪放' },
+  poetry: { id: 'clit_poetry_appreciation', zh: '詩詞鑑賞・手法與意境', en: 'Poetry Appreciation — Devices & Imagery' },
+  craft:  { id: 'clit_craft_compare',       zh: '風格比較・婉約與豪放', en: 'Comparing Styles — Wanyue and Haofang' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
-  poetry: { id: 'poetry', zh: '詩詞曲', en: '詩詞曲', emoji: '🎴' },
-  craft:  { id: 'craft',  zh: '文學鑑賞', en: '文學鑑賞', emoji: '🖌️' },
+  poetry: { id: 'poetry', zh: '詩詞曲', en: 'Poetry, Ci and Qu', emoji: '🎴' },
+  craft:  { id: 'craft',  zh: '文學鑑賞', en: 'Literary Appreciation', emoji: '🖌️' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0

@@ -14,9 +14,17 @@
     ],
     "correctIndex": 0,
     "explanation": "完全競爭的核心特徵是廠商與顧客數目眾多、產品同質、資訊流通且可自由進出市場，個別廠商的產量相對市場微不足道，只能接受市場價格，屬價格接受者。「透過產品差異吸引顧客」是壟斷性競爭的特徵；「只有一個賣家並設有極高進入障礙」描述的是壟斷；「廠商數目不多、彼此相互依存」則是寡頭壟斷的特徵——三者皆把其他市場結構的特徵誤植到完全競爭之上。",
-    "trapTypes": ["correct", "concept_swap", "concept_swap", "concept_swap"],
+    "trapTypes": [
+      "correct",
+      "concept_swap",
+      "concept_swap",
+      "concept_swap"
+    ],
     "dnaTag": "CMT",
-    "_mother": "ms-perfect-comp-features"
+    "_mother": "ms-perfect-comp-features",
+    "topicZh": "完全競爭市場的特徵",
+    "topicId": "market_structure",
+    "topicEn": "Features of Perfect Competition"
   },
   {
     "id": "econ-ms-mc-1",
@@ -33,9 +41,17 @@
     ],
     "correctIndex": 0,
     "explanation": "單一賣家加上難以逾越的進入障礙（如專利權），是壟斷市場的定義特徵，該廠商即整個行業。「完全競爭」的賣家眾多且可自由進出，與題意完全相反；「壟斷性競爭」雖有價格制定能力，但賣家眾多、進入障礙低；「寡頭壟斷」是由少數而非單一廠商支配——三者的賣家數目皆與「只有一個賣家」不符。",
-    "trapTypes": ["correct", "concept_reversal", "concept_swap", "concept_swap"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "concept_swap",
+      "concept_swap"
+    ],
     "dnaTag": "CMT",
-    "_mother": "ms-monopoly-identify"
+    "_mother": "ms-monopoly-identify",
+    "topicZh": "壟斷市場的辨認",
+    "topicId": "market_structure",
+    "topicEn": "Identifying a Monopoly"
   },
   {
     "id": "econ-ms-mc-2",
@@ -52,9 +68,17 @@
     ],
     "correctIndex": 0,
     "explanation": "兩者同樣有眾多廠商並可自由進出，關鍵分野在於產品性質：壟斷性競爭出售有差異的產品，因而擁有少許價格制定能力；完全競爭的產品同質，廠商只能接受市場價格。「只有少數幾間廠商」誤把寡頭壟斷的特徵套到壟斷性競爭；「設有很高進入障礙」與壟斷性競爭進入障礙低的事實相反；「壟斷性競爭是價格接受者、完全競爭是價格制定者」則把兩者的價格角色完全調轉。",
-    "trapTypes": ["correct", "concept_swap", "concept_reversal", "concept_reversal"],
+    "trapTypes": [
+      "correct",
+      "concept_swap",
+      "concept_reversal",
+      "concept_reversal"
+    ],
     "dnaTag": "CMT",
-    "_mother": "ms-moncomp-vs-perfect"
+    "_mother": "ms-moncomp-vs-perfect",
+    "topicZh": "壟斷性競爭與完全競爭的分別",
+    "topicId": "market_structure",
+    "topicEn": "Monopolistic Competition vs Perfect Competition"
   },
   {
     "id": "econ-ms-mc-3",
@@ -71,9 +95,17 @@
     ],
     "correctIndex": 0,
     "explanation": "完全競爭長期均衡有三個並存的結果：自由進出令超正常利潤與虧損消失，只餘正常利潤；廠商在平均總成本最低點生產，達生產效率；價格等於邊際成本，達配置效率。「賺取超正常利潤」錯在忽略自由進入會侵蝕利潤，長期不能持續；「售價高於邊際成本、配置不效率」是壟斷的結果，並非完全競爭；「必然虧損退出」則忽略了退出會令留下來的廠商回復正常利潤，長期不會人人虧損。",
-    "trapTypes": ["correct", "concept_reversal", "concept_swap", "over_interpretation"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "concept_swap",
+      "over_interpretation"
+    ],
     "dnaTag": "CMT",
-    "_mother": "ms-perfect-longrun"
+    "_mother": "ms-perfect-longrun",
+    "topicZh": "完全競爭的長期均衡",
+    "topicId": "market_structure",
+    "topicEn": "Long-Run Equilibrium under Perfect Competition"
   },
   {
     "id": "econ-ms-mc-4",
@@ -90,9 +122,17 @@
     ],
     "correctIndex": 0,
     "explanation": "壟斷者同樣按邊際收益等於邊際成本決定利潤最大化產量，但因需求曲線向右下傾斜，該產量對應的需求價格高於邊際收益，也高於邊際成本，故售價高於邊際成本，造成配置不效率。「售價等於邊際成本」是完全競爭的結果，並非壟斷；「售價等於邊際收益」混淆了兩者——壟斷下售價一直高於邊際收益；「可定於任意高的水平」忽略了需求曲線的約束，定價過高會令銷量大跌，未必有利可圖。",
-    "trapTypes": ["correct", "concept_swap", "half_right", "over_interpretation"],
+    "trapTypes": [
+      "correct",
+      "concept_swap",
+      "half_right",
+      "over_interpretation"
+    ],
     "dnaTag": "MEC",
-    "_mother": "ms-monopoly-pricing"
+    "_mother": "ms-monopoly-pricing",
+    "topicZh": "壟斷者的利潤最大化與定價",
+    "topicId": "market_structure",
+    "topicEn": "Profit Maximisation and Pricing by a Monopolist"
   },
   {
     "id": "econ-ms-mc-5",
@@ -109,9 +149,17 @@
     ],
     "correctIndex": 0,
     "explanation": "拗折需求曲線假設對手「跟跌不跟升」：某廠商減價，對手為保市場佔有率會一同減價，銷量增幅有限；某廠商加價，對手按兵不動，該廠商會流失大量顧客。兩個方向的改價都不利，故廠商傾向維持原價，形成價格僵化。「加價對手跟隨、減價不跟隨」把對手的反應方向完全調轉；「政府價格管制」與拗折需求曲線的解釋無關；「產品完全同質令價格統一」既非拗折曲線的邏輯，寡頭產品亦往往有差異。",
-    "trapTypes": ["correct", "concept_reversal", "irrelevant", "concept_swap"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "irrelevant",
+      "concept_swap"
+    ],
     "dnaTag": "CMT",
-    "_mother": "ms-oligopoly-kinked"
+    "_mother": "ms-oligopoly-kinked",
+    "topicZh": "寡頭壟斷的價格僵化",
+    "topicId": "market_structure",
+    "topicEn": "Price Rigidity under Oligopoly"
   },
   {
     "id": "econ-ms-mc-6",
@@ -128,9 +176,17 @@
     ],
     "correctIndex": 0,
     "explanation": "壟斷性競爭進入障礙低：短期的超正常利潤會吸引新廠商加入，令個別廠商的需求減少並向左移，直至只餘正常利潤為止。由於需求曲線向右下傾斜，均衡點落在平均總成本最低點的左方，廠商並未用盡產能，存在過剩產能，故達不到完全競爭的生產效率。「長期持續賺取超正常利潤」忽略了自由進入的侵蝕；「在平均總成本最低點生產」正是壟斷性競爭達不到的；「必然演變為完全競爭」則過度推論——產品差異令價格制定能力得以保留，市場結構不會消失。",
-    "trapTypes": ["correct", "concept_reversal", "concept_swap", "over_interpretation"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "concept_swap",
+      "over_interpretation"
+    ],
     "dnaTag": "CMT",
-    "_mother": "ms-moncomp-longrun"
+    "_mother": "ms-moncomp-longrun",
+    "topicZh": "壟斷性競爭的長期均衡",
+    "topicId": "market_structure",
+    "topicEn": "Long-Run Equilibrium under Monopolistic Competition"
   },
   {
     "id": "econ-ms-mc-7",
@@ -147,9 +203,17 @@
     ],
     "correctIndex": 0,
     "explanation": "廠商面對的需求曲線形狀反映其定價能力：完全競爭廠商是價格接受者，只能按市場價出售，其需求曲線在市場價水平呈水平（完全彈性）；壟斷者是價格制定者，面對整個市場向右下傾斜的需求曲線，減價才能增加銷量。「兩者調轉」把價格接受者與制定者的需求曲線完全對調；「兩者皆向右下傾斜」忽略了完全競爭廠商需求曲線水平這一關鍵特徵；「由政府規管決定」則錯把外在管制當成需求曲線形狀的成因，實際成因是市場結構與廠商的相對規模。",
-    "trapTypes": ["correct", "concept_reversal", "half_right", "irrelevant"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "half_right",
+      "irrelevant"
+    ],
     "dnaTag": "TMR",
-    "_mother": "ms-demand-curve-power"
+    "_mother": "ms-demand-curve-power",
+    "topicZh": "需求曲線形狀與市場力量",
+    "topicId": "market_structure",
+    "topicEn": "Shape of the Demand Curve and Market Power"
   },
   {
     "id": "econ-ms-mc-8",
@@ -166,9 +230,17 @@
     ],
     "correctIndex": 0,
     "explanation": "由完全競爭轉為壟斷後，廠商由價格接受者變成價格制定者，會按邊際收益等於邊際成本減產抬價，使售價高於邊際成本，原本互利的交易未能達成，社會出現配置不效率（無謂損失）。「生產效率必然提升、社會得益」半對半錯——即使成本相同，減產抬價帶來的無謂損失令社會整體受損，而非得益；「產量增加、售價下降」把壟斷的效果完全調轉；「售價升至無人負擔、市場消失」屬過度推論，壟斷者受需求曲線約束，會選擇利潤最大化的價量組合而非趕絕顧客。",
-    "trapTypes": ["correct", "half_right", "concept_reversal", "over_interpretation"],
+    "trapTypes": [
+      "correct",
+      "half_right",
+      "concept_reversal",
+      "over_interpretation"
+    ],
     "dnaTag": "MEC",
-    "_mother": "ms-monopoly-vs-perfect"
+    "_mother": "ms-monopoly-vs-perfect",
+    "topicZh": "壟斷與完全競爭的比較",
+    "topicId": "market_structure",
+    "topicEn": "Monopoly Compared with Perfect Competition"
   },
   {
     "id": "econ-ms-mc-9",
@@ -185,8 +257,16 @@
     ],
     "correctIndex": 0,
     "explanation": "配置效率的條件是售價等於邊際成本；此處售價 \\$20 高於邊際成本 \\$12，故存在配置不效率。利潤方面，售價 \\$20 高於平均總成本 \\$15，每件賺取超正常利潤 \\$20 − \\$15 = \\$5。「售價等於平均總成本、只賺正常利潤」與 \\$20 高於 \\$15 的數據不符；「售價高於平均總成本即達配置效率」混淆了兩個概念——配置效率看的是售價與邊際成本的關係，不是與平均總成本；「應無限增產」錯在利潤最大化產量已定於邊際收益等於邊際成本之處，再增產會令邊際成本高於邊際收益，反而蝕本。",
-    "trapTypes": ["correct", "calculation_slip", "concept_swap", "over_interpretation"],
+    "trapTypes": [
+      "correct",
+      "calculation_slip",
+      "concept_swap",
+      "over_interpretation"
+    ],
     "dnaTag": "MEC",
-    "_mother": "ms-efficiency-profit-judge"
+    "_mother": "ms-efficiency-profit-judge",
+    "topicZh": "市場結構的效率與利潤判斷",
+    "topicId": "market_structure",
+    "topicEn": "Efficiency and Profit across Market Structures"
   }
 ]

@@ -364,7 +364,7 @@ const programming: Question[] = [
     ['XOR 在兩輸入相同時輸出 0，相異時輸出 1。', 'XOR outputs 0 when inputs are equal, 1 when they differ.']),
   q(id('bool'), T.programming, FW.logic, 'medium', 2023, 2,
     ['$1 \\text{ AND } 0 \\text{ OR } 1$（先 AND 後 OR）等於？', 'What is $1 \\text{ AND } 0 \\text{ OR } 1$ (AND before OR)?'],
-    [optm('1'), optm('0'), optm('2'), optm('未定義 / undefined')],
+    [optm('1'), optm('0'), optm('2'), opt('未定義', 'Undefined')],
     ['先算 $1\\text{ AND }0 = 0$，再 $0\\text{ OR }1 = 1$。', 'First $1\\text{ AND }0 = 0$, then $0\\text{ OR }1 = 1$.']),
   q(id('bool'), T.programming, FW.logic, 'hard', 2022, 3,
     ['NAND 閘的輸出等於？', 'A NAND gate output equals?'],

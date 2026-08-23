@@ -643,6 +643,22 @@ export const mathTopics: Topic[] = [
   { id: 'trig_3d', zh: '三維三角學', en: '3D Trigonometry', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 12 },
   { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations', framework: '條件分解', frameworkEn: 'Condition Decomposition', emoji: '🎯', count: 23 },
   { id: 'locus', zh: '軌跡與坐標', en: 'Locus & Coordinates', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 12 },
+  // ── 2026-08-21：課程之內有、題庫一直缺席的單元 ────────────────────────────
+  // 此三項均為數學必修部分的正式課題，惟題庫至今 0 條 MC。先行登記 id，
+  // 是為了卷一長題目草稿（scripts/qbank/drafts/math-p1-long.json）promote 之後
+  // 不致成為孤兒課題 —— 此問題過往已造成 58 條無法經課題入口篩選的試題。
+  // 在未有 MC 之前，不會在課題 chips 出現（見 SubjectDetailView 的 mcCount 過濾）。
+  { id: 'polygons', zh: '多邊形與角', en: 'Polygons & Angles', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 0 },
+  { id: 'similar_solids', zh: '相似形與相似立體', en: 'Similar Figures & Solids', framework: '幾何直覺', frameworkEn: 'Geometric Intuition', emoji: '📐', count: 0 },
+  { id: 'variation', zh: '變分', en: 'Variation', framework: '建模能力', frameworkEn: 'Modelling', emoji: '🏗️', count: 0 },
+  // ── 2026-08-23：補登兩個「數與代數」範疇的正式課題 ────────────────────────
+  // 兩者均屬數學必修部分課程指引之內（近似值與誤差、實數系），惟註冊表一直
+  // 缺席，於是 math-imported.ts 兩條題目（捨入至 3 個有效數字、判別無理數）
+  // 的 topic 一直是中文標籤，學生由課題入口永遠篩不到。
+  // 框架沿用 math-bank.ts 的「基礎運算」—— 兩者考的都是數感與運算規則本身，
+  // 而非轉化或建模。
+  { id: 'approximation', zh: '近似與誤差', en: 'Approximation & Error', framework: '基礎運算', frameworkEn: 'Foundation Computation', emoji: '🧮', count: 0 },
+  { id: 'number_systems', zh: '數系', en: 'Number Systems', framework: '基礎運算', frameworkEn: 'Foundation Computation', emoji: '🧮', count: 0 },
 ]
 // 參數化題庫的課題（2026-07-28 稽核：此前從未登記，相關試題無法經課題入口篩選）
 mathTopics.push(...mathBankTopics)

@@ -1,0 +1,525 @@
+{
+  "note": "孤兒課題修正表。每條的 topicId 必須是該科【已註冊】的 topic id —— 本表不新增任何課題，applier 會逐條核對，對不上即中止。topicEn 是現有細標籤（topicZh）的英文對應，granularity 與 topicZh 一致，並非套用註冊表那個較粗的科目層標籤。 英文科 6 條（english-idioms-batch）同屬呢個病，只係草稿嘅人類可讀標籤本身係英文（Idiom_in_context），所以掃中文字元嗰陣捉唔到 —— 真正嘅判準係『topic id 有冇註冊』，唔係『有冇中文』。 2026-08-23：創辦人拍板為數學科新增 approximation（近似與誤差）同 number_systems（數系）兩個課題 —— 兩者本來就喺必修部分課程指引之內，只係註冊表一直缺席。 中文科另有 26 條（卷二寫作 6、範文長題 20）topic id 本來就啱，只係缺 topicEn；一併由本表補上註冊表的英文課題名。",
+  "reason": "這些題目的 topic 欄一直是中文標籤（草稿的人類可讀欄位在 promote 時被 slug() 原樣帶入）。科目頁的課題 chip 連去 /practice?topic=<已註冊 id>，而 buildPool 以 q.topic === topicFilter 篩選，故這些題目在任何入口都篩不到。",
+  "notFixed": [],
+  "pendingDecision": "已解決（2026-08-23 創辦人拍板）：中文科整體補回英文課題名，理由是非華語（NCS）考生一樣要應考中國語文，導覽層讀不懂等於整個課題入口用不到。只譯導覽層 —— 題目正文、選項、解析一律維持中文。",
+  "fixes": [
+    {
+      "file": "data/questions/economics-reviewed.ts",
+      "subject": "economics",
+      "rows": [
+        {
+          "id": "econ-sd-mc-0",
+          "topicId": "demand_supply",
+          "topicEn": "Change in Demand vs Change in Quantity Demanded"
+        },
+        {
+          "id": "econ-sd-mc-1",
+          "topicId": "demand_supply",
+          "topicEn": "Change in Supply vs Change in Quantity Supplied"
+        },
+        {
+          "id": "econ-sd-mc-2",
+          "topicId": "demand_supply",
+          "topicEn": "Market Equilibrium and Shortage"
+        },
+        {
+          "id": "econ-sd-mc-3",
+          "topicId": "demand_supply",
+          "topicEn": "Simultaneous Shifts in Demand and Supply"
+        },
+        {
+          "id": "econ-sd-mc-4",
+          "topicId": "elasticity",
+          "topicEn": "Elasticity and Total Revenue"
+        },
+        {
+          "id": "econ-sd-mc-5",
+          "topicId": "market",
+          "topicEn": "Price Control — Price Ceiling"
+        },
+        {
+          "id": "econ-sd-mc-6",
+          "topicId": "elasticity",
+          "topicEn": "Determinants of Price Elasticity of Demand"
+        },
+        {
+          "id": "econ-sd-mc-7",
+          "topicId": "demand_supply",
+          "topicEn": "Related Goods — Complements and Substitutes"
+        },
+        {
+          "id": "econ-sd-mc-8",
+          "topicId": "market",
+          "topicEn": "Specific Tax and Tax Incidence"
+        },
+        {
+          "id": "econ-sd-mc-9",
+          "topicId": "trade",
+          "topicEn": "Import Quota and Market Efficiency"
+        },
+        {
+          "id": "econ-ms-mc-0",
+          "topicId": "market_structure",
+          "topicEn": "Features of Perfect Competition"
+        },
+        {
+          "id": "econ-ms-mc-1",
+          "topicId": "market_structure",
+          "topicEn": "Identifying a Monopoly"
+        },
+        {
+          "id": "econ-ms-mc-2",
+          "topicId": "market_structure",
+          "topicEn": "Monopolistic Competition vs Perfect Competition"
+        },
+        {
+          "id": "econ-ms-mc-3",
+          "topicId": "market_structure",
+          "topicEn": "Long-Run Equilibrium under Perfect Competition"
+        },
+        {
+          "id": "econ-ms-mc-4",
+          "topicId": "market_structure",
+          "topicEn": "Profit Maximisation and Pricing by a Monopolist"
+        },
+        {
+          "id": "econ-ms-mc-5",
+          "topicId": "market_structure",
+          "topicEn": "Price Rigidity under Oligopoly"
+        },
+        {
+          "id": "econ-ms-mc-6",
+          "topicId": "market_structure",
+          "topicEn": "Long-Run Equilibrium under Monopolistic Competition"
+        },
+        {
+          "id": "econ-ms-mc-7",
+          "topicId": "market_structure",
+          "topicEn": "Shape of the Demand Curve and Market Power"
+        },
+        {
+          "id": "econ-ms-mc-8",
+          "topicId": "market_structure",
+          "topicEn": "Monopoly Compared with Perfect Competition"
+        },
+        {
+          "id": "econ-ms-mc-9",
+          "topicId": "market_structure",
+          "topicEn": "Efficiency and Profit across Market Structures"
+        }
+      ]
+    },
+    {
+      "file": "data/questions/bafs-reviewed.ts",
+      "subject": "bafs",
+      "rows": [
+        {
+          "id": "bafs-01",
+          "topicId": "depreciation",
+          "topicEn": "Depreciation — Straight-Line Method"
+        },
+        {
+          "id": "bafs-02",
+          "topicId": "accounting",
+          "topicEn": "Inventory Valuation"
+        },
+        {
+          "id": "bafs-03",
+          "topicId": "ratios",
+          "topicEn": "Current Ratio"
+        },
+        {
+          "id": "bafs-04",
+          "topicId": "financial_statements",
+          "topicEn": "Statement of Financial Position — Vertical Form"
+        },
+        {
+          "id": "bafs-05",
+          "topicId": "accounting",
+          "topicEn": "Provision for Doubtful Debts"
+        },
+        {
+          "id": "bafs-06",
+          "topicId": "financial_mgmt",
+          "topicEn": "Company Financing — Debentures"
+        }
+      ]
+    },
+    {
+      "file": "data/questions/math-imported.ts",
+      "subject": "math",
+      "rows": [
+        {
+          "id": "math_imp_031",
+          "topicId": "approximation",
+          "topicEn": "Rounding to Significant Figures"
+        },
+        {
+          "id": "math_imp_033",
+          "topicId": "number_systems",
+          "topicEn": "Rational and Irrational Numbers"
+        },
+        {
+          "id": "math_imp_035",
+          "topicId": "percentage",
+          "topicEn": "Compound Percentage Change"
+        },
+        {
+          "id": "math_imp_039",
+          "topicId": "functions",
+          "topicEn": "Function Substitution"
+        },
+        {
+          "id": "math_imp_041",
+          "topicId": "quadratic_equations",
+          "topicEn": "Equal Roots and the Discriminant"
+        },
+        {
+          "id": "math_imp_042",
+          "topicId": "quadratic_equations",
+          "topicEn": "Relations between Roots and Coefficients"
+        },
+        {
+          "id": "math_imp_044",
+          "topicId": "logarithms",
+          "topicEn": "Simplifying Logarithms"
+        },
+        {
+          "id": "math_imp_045",
+          "topicId": "indices",
+          "topicEn": "Simultaneous Exponential Equations"
+        },
+        {
+          "id": "math_imp_048",
+          "topicId": "arithmetic_sequence",
+          "topicEn": "Finding a Term from the Sum of n Terms"
+        },
+        {
+          "id": "math_imp_052",
+          "topicId": "quadratic_equations",
+          "topicEn": "Maximum of a Quadratic Function"
+        },
+        {
+          "id": "math_imp_058",
+          "topicId": "polynomials",
+          "topicEn": "Factorising a Quadratic"
+        },
+        {
+          "id": "math_imp_060",
+          "topicId": "logarithms",
+          "topicEn": "Nested Logarithms"
+        },
+        {
+          "id": "math_imp_061",
+          "topicId": "circles",
+          "topicEn": "Angle at the Centre and at the Circumference"
+        },
+        {
+          "id": "math_imp_062",
+          "topicId": "coordinate_geometry",
+          "topicEn": "Distance Formula"
+        },
+        {
+          "id": "math_imp_063",
+          "topicId": "circles",
+          "topicEn": "Length of a Tangent to a Circle"
+        },
+        {
+          "id": "math_imp_064",
+          "topicId": "similar_solids",
+          "topicEn": "Similar Solids — Area and Volume Ratios"
+        },
+        {
+          "id": "math_imp_066",
+          "topicId": "circles",
+          "topicEn": "Incircle of a Triangle"
+        },
+        {
+          "id": "math_imp_067",
+          "topicId": "polygons",
+          "topicEn": "Exterior Angle of a Regular Polygon"
+        },
+        {
+          "id": "math_imp_068",
+          "topicId": "coordinate_geometry",
+          "topicEn": "Slopes of Perpendicular Lines"
+        },
+        {
+          "id": "math_imp_072",
+          "topicId": "trigonometry",
+          "topicEn": "Cosine Rule"
+        },
+        {
+          "id": "math_imp_082",
+          "topicId": "circles",
+          "topicEn": "Intersecting Chords Theorem"
+        },
+        {
+          "id": "math_imp_086",
+          "topicId": "statistics",
+          "topicEn": "Median"
+        },
+        {
+          "id": "math_imp_096",
+          "topicId": "probability",
+          "topicEn": "Geometric Probability"
+        },
+        {
+          "id": "math_imp_098",
+          "topicId": "statistics",
+          "topicEn": "Solving for a Value from a Mean"
+        },
+        {
+          "id": "math_imp_100",
+          "topicId": "statistics",
+          "topicEn": "Weighted Mean"
+        }
+      ]
+    },
+    {
+      "file": "data/questions/chinese-reviewed.ts",
+      "subject": "chinese",
+      "rows": [
+        {
+          "id": "ctx-demo-1",
+          "topicId": "fanwen_content",
+          "topicEn": "Cross-Text Comparison"
+        },
+        {
+          "id": "ctx-demo-2",
+          "topicId": "fanwen_content",
+          "topicEn": "Cross-Text Comparison"
+        },
+        {
+          "id": "art-chinese-lrxj-lexis-0",
+          "topicId": "fanwen_diction",
+          "topicEn": "Word Meaning"
+        },
+        {
+          "id": "art-chinese-lrxj-comp-1",
+          "topicId": "fanwen_content",
+          "topicEn": "Content Comprehension"
+        },
+        {
+          "id": "art-chinese-lrxj-comp-2",
+          "topicId": "fanwen_content",
+          "topicEn": "Content Comprehension"
+        },
+        {
+          "id": "art-chinese-lrxj-comp-3",
+          "topicId": "fanwen_content",
+          "topicEn": "Content Comprehension"
+        },
+        {
+          "id": "art-chinese-lrxj-comp-4",
+          "topicId": "fanwen_content",
+          "topicEn": "Content Comprehension"
+        },
+        {
+          "id": "art-chinese-lrxj-synthesis-5",
+          "topicId": "fanwen_content",
+          "topicEn": "Synthesis — The Analects on Ren"
+        },
+        {
+          "id": "art-chinese-yxdz-content-0",
+          "topicId": "fanwen_content",
+          "topicEn": "Content Comprehension"
+        },
+        {
+          "id": "art-chinese-yxdz-technique-1",
+          "topicId": "fanwen_lines",
+          "topicEn": "Expressive Technique"
+        },
+        {
+          "id": "art-chinese-yxdz-technique-2",
+          "topicId": "fanwen_lines",
+          "topicEn": "Expressive Technique"
+        },
+        {
+          "id": "art-chinese-yxdz-diction-3",
+          "topicId": "fanwen_diction",
+          "topicEn": "Word Choice & Central Idea"
+        }
+      ]
+    },
+    {
+      "file": "data/questions/english-reviewed.ts",
+      "subject": "english",
+      "rows": [
+        {
+          "id": "eng-idiom-01",
+          "topicId": "vocabulary",
+          "topicEn": "Idioms in Context"
+        },
+        {
+          "id": "eng-idiom-02",
+          "topicId": "vocabulary",
+          "topicEn": "Choosing the Right Idiom"
+        },
+        {
+          "id": "eng-idiom-03",
+          "topicId": "vocabulary",
+          "topicEn": "Idiom Meaning"
+        },
+        {
+          "id": "eng-idiom-04",
+          "topicId": "genre_tone",
+          "topicEn": "Academic Register — Opening Phrases"
+        },
+        {
+          "id": "eng-idiom-05",
+          "topicId": "reading",
+          "topicEn": "Function of a Phrase in a Paragraph"
+        },
+        {
+          "id": "eng-idiom-06",
+          "topicId": "genre_tone",
+          "topicEn": "Choosing a Formal Register"
+        }
+      ]
+    },
+    {
+      "file": "data/questions/chinese-p2-writing.ts",
+      "subject": "chinese",
+      "rows": [
+        {
+          "id": "zh_p2_b1_01",
+          "topicId": "argument_essay",
+          "topicEn": "Argumentative Writing — Thesis & Reasoning"
+        },
+        {
+          "id": "zh_p2_b1_02",
+          "topicId": "argument_essay",
+          "topicEn": "Argumentative Writing — Thesis & Reasoning"
+        },
+        {
+          "id": "zh_p2_b1_03",
+          "topicId": "argument_essay",
+          "topicEn": "Argumentative Writing — Thesis & Reasoning"
+        },
+        {
+          "id": "zh_p2_b1_04",
+          "topicId": "argument_essay",
+          "topicEn": "Argumentative Writing — Thesis & Reasoning"
+        },
+        {
+          "id": "zh_p2_b1_05",
+          "topicId": "argument_essay",
+          "topicEn": "Argumentative Writing — Thesis & Reasoning"
+        },
+        {
+          "id": "zh_p2_b1_06",
+          "topicId": "argument_essay",
+          "topicEn": "Argumentative Writing — Thesis & Reasoning"
+        }
+      ]
+    },
+    {
+      "file": "data/questions/chinese-fanwen-long.ts",
+      "subject": "chinese",
+      "rows": [
+        {
+          "id": "zh_long_b1_01",
+          "topicId": "fanwen_diction",
+          "topicEn": "Set Texts — Diction"
+        },
+        {
+          "id": "zh_long_b1_02",
+          "topicId": "fanwen_diction",
+          "topicEn": "Set Texts — Diction"
+        },
+        {
+          "id": "zh_long_b1_03",
+          "topicId": "fanwen_diction",
+          "topicEn": "Set Texts — Diction"
+        },
+        {
+          "id": "zh_long_b1_04",
+          "topicId": "fanwen_content",
+          "topicEn": "Set Texts — Content"
+        },
+        {
+          "id": "zh_long_b1_05",
+          "topicId": "fanwen_diction",
+          "topicEn": "Set Texts — Diction"
+        },
+        {
+          "id": "zh_long_b1_06",
+          "topicId": "fanwen_content",
+          "topicEn": "Set Texts — Content"
+        },
+        {
+          "id": "zh_long_b1_07",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_08",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_09",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_10",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_11",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_12",
+          "topicId": "fanwen_content",
+          "topicEn": "Set Texts — Content"
+        },
+        {
+          "id": "zh_long_b1_13",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_14",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_15",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_16",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_17",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_18",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_19",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        },
+        {
+          "id": "zh_long_b1_20",
+          "topicId": "fanwen_lines",
+          "topicEn": "Set Texts — Key Lines & Devices"
+        }
+      ]
+    }
+  ]
+}

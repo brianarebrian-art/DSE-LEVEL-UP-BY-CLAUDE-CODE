@@ -7,25 +7,44 @@ import { chineseHellQuestions, chineseHellTopics } from './chinese-hell'
 const q = makeQ('chinese')
 const m = (s: string): Pair => [s, s] // 單語：中英欄同為中文
 
+// ── 2026-08-23：課題與框架補回英文名 ──────────────────────────────────────
+// 此前中文科每一個課題的 `en` 欄都是中文原文，於是英文介面的課題 chip 全部
+// 顯示中文。決策依據（創辦人 2026-08-23）：非華語（NCS）考生一樣要應考中國
+// 語文，導覽層讀不懂等於整個課題入口用不到。
+//
+// 譯法原則：用香港考評文件慣用的英文說法（set texts / classical Chinese /
+// practical writing），不用拼音，亦不逐字直譯 —— 對象是要用得到這個入口的
+// 考生，不是要一份對照表。
+// ⚠️ 只譯【導覽層】。題目正文、選項、解析一律維持中文 —— 中國語文科考的就是
+//    中文本身，把試題譯成英文會令這一科失去意義。
 const T = {
-  fwContent: { id: 'fanwen_content',   zh: '指定範文・內容', en: '指定範文・內容' },
-  fwDiction: { id: 'fanwen_diction',   zh: '指定範文・字詞', en: '指定範文・字詞' },
-  fwLines:   { id: 'fanwen_lines',     zh: '指定範文・名句手法', en: '指定範文・名句手法' },
-  classical: { id: 'classical',        zh: '課外文言閱讀', en: '課外文言閱讀' },
-  reading:   { id: 'comprehension',    zh: '白話閱讀理解', en: '白話閱讀理解' },
-  rhetoric:  { id: 'rhetoric',         zh: '修辭手法',     en: '修辭手法' },
-  idioms:    { id: 'idioms_vocab',     zh: '成語與詞語',   en: '成語與詞語' },
-  chars:     { id: 'chars_errors',     zh: '字音字形與病句', en: '字音字形與病句' },
-  lexis:     { id: 'classical_lexis',  zh: '文言實詞・一詞多義', en: '文言實詞・一詞多義' },
-  structure: { id: 'paragraph_function', zh: '段落結構與作用', en: '段落結構與作用' },
-  argument:  { id: 'argument_essay',   zh: '論說文・思辨立意', en: '論說文・思辨立意' },
+  fwContent: { id: 'fanwen_content',   zh: '指定範文・內容', en: 'Set Texts — Content' },
+  fwDiction: { id: 'fanwen_diction',   zh: '指定範文・字詞', en: 'Set Texts — Diction' },
+  fwLines:   { id: 'fanwen_lines',     zh: '指定範文・名句手法', en: 'Set Texts — Key Lines & Devices' },
+  classical: { id: 'classical',        zh: '課外文言閱讀', en: 'Unseen Classical Chinese' },
+  reading:   { id: 'comprehension',    zh: '白話閱讀理解', en: 'Modern Chinese Comprehension' },
+  rhetoric:  { id: 'rhetoric',         zh: '修辭手法',     en: 'Rhetorical Devices' },
+  idioms:    { id: 'idioms_vocab',     zh: '成語與詞語',   en: 'Idioms & Vocabulary' },
+  chars:     { id: 'chars_errors',     zh: '字音字形與病句', en: 'Characters, Sounds & Sentence Errors' },
+  lexis:     { id: 'classical_lexis',  zh: '文言實詞・一詞多義', en: 'Classical Vocabulary — Multiple Meanings' },
+  structure: { id: 'paragraph_function', zh: '段落結構與作用', en: 'Paragraph Structure & Function' },
+  argument:  { id: 'argument_essay',   zh: '論說文・思辨立意', en: 'Argumentative Writing — Thesis & Reasoning' },
+  // ── 2026-08-21：卷二寫作的其餘文類 ────────────────────────────────────────
+  // 原本僅有 `argument_essay` 一項 —— 但真實卷二乙部並不限於論說，甲部更屬
+  // 完全另一類（實用寫作，佔全卷 30%）。卷二寫作第二批草稿須用到此四個 id，
+  // 故先行登記，promote 之後方不致成為孤兒課題。
+  narrative:  { id: 'narrative_essay',   zh: '命題寫作・記敘抒情', en: 'Set-Topic Writing — Narrative & Reflective' },
+  descriptive:{ id: 'descriptive_essay', zh: '命題寫作・描寫',     en: 'Set-Topic Writing — Descriptive' },
+  mixed:      { id: 'mixed_essay',       zh: '命題寫作・綜合',     en: 'Set-Topic Writing — Mixed Modes' },
+  practical:  { id: 'practical_writing', zh: '實用寫作',           en: 'Practical Writing' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
-  fanwen:  { id: 'fanwen',  zh: '指定文言範文', en: '指定文言範文', emoji: '📜' },
-  classic: { id: 'classic', zh: '文言閱讀',     en: '文言閱讀',     emoji: '🏯' },
-  read:    { id: 'read',    zh: '閱讀理解',     en: '閱讀理解',     emoji: '📖' },
-  lang:    { id: 'lang',    zh: '語文運用',     en: '語文運用',     emoji: '✍️' },
+  fanwen:  { id: 'fanwen',  zh: '指定文言範文', en: 'Prescribed Classical Texts', emoji: '📜' },
+  classic: { id: 'classic', zh: '文言閱讀',     en: 'Classical Chinese Reading',  emoji: '🏯' },
+  read:    { id: 'read',    zh: '閱讀理解',     en: 'Reading Comprehension',      emoji: '📖' },
+  lang:    { id: 'lang',    zh: '語文運用',     en: 'Language Use',               emoji: '✍️' },
+  write:   { id: 'write',   zh: '寫作能力',     en: 'Writing',                    emoji: '🖋️' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0
@@ -571,6 +590,11 @@ export const chineseTopics: Topic[] = topicList([
   { topic: T.lexis,     fw: FW.classic, count: lexis.length },
   { topic: T.structure, fw: FW.read,    count: structure.length },
   { topic: T.argument,  fw: FW.read,    count: argument.length },
+  // 尚未有 MC，暫時不會在課題 chips 出現（見 SubjectDetailView 的 mcCount 過濾）。
+  { topic: T.narrative,   fw: FW.write, count: 0 },
+  { topic: T.descriptive, fw: FW.write, count: 0 },
+  { topic: T.mixed,       fw: FW.write, count: 0 },
+  { topic: T.practical,   fw: FW.write, count: 0 },
 ])
 
 // 課外文言地獄卷的 topics 已是 Topic[]，直接附加（勿再經 topicList 二次包裝）。

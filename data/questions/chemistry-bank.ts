@@ -11,7 +11,12 @@ import { createBank, n, round, type TopicMeta, type FwMeta } from './_parametric
 // ═══════════════════════════════════════════════════════════════════════════
 
 const T = {
-  mole: { id: 'mole_concept', zh: '摩爾概念', en: 'The Mole' },
+  // 2026-08-23：id 由 'mole_concept' 改為 'mole'。
+  // chemistry.ts 早已註冊 `mole`（摩爾概念 / The Mole Concept），本檔卻另立
+  // 一個 'mole_concept'，令 29 條題目掛在一個【未註冊】的課題之上。科目頁的
+  // 課題 chip 只列已註冊課題，故學生由課題入口永遠篩不到這 29 條。
+  // 英文名一併對齊註冊表（The Mole → The Mole Concept）。
+  mole: { id: 'mole', zh: '摩爾概念', en: 'The Mole Concept' },
   formula: { id: 'formula_mass', zh: '化學式與式量', en: 'Formulae & Formula Mass' },
   concentration: { id: 'concentration', zh: '濃度', en: 'Concentration' },
   stoichiometry: { id: 'stoichiometry', zh: '化學計量', en: 'Stoichiometry' },

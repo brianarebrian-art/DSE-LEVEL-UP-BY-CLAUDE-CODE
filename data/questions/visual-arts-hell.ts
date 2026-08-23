@@ -67,7 +67,7 @@ const history: Question[] = [
     C('比較傳統「中國山水畫」與「西方文藝復興繪畫」在空間表現上的根本分別，正確的是？',
       'Comparing traditional Chinese landscape painting with Western Renaissance painting in their handling of space, which is correct?'),
     [opt('中國山水多用「散點透視」與「留白」，視點流動、虛實相生；西方多用「線性（單點）透視」，從固定視點再現逼真景深',
-        'Chinese landscape often uses shifting (multiple) perspective and empty space (留白), with a roving viewpoint; Western painting often uses single-point linear perspective for realistic depth from a fixed viewpoint'),
+        'Chinese landscape often uses shifting (multiple) perspective and empty space (liubai), with a roving viewpoint; Western painting often uses single-point linear perspective for realistic depth from a fixed viewpoint'),
       opt('兩者都嚴格使用單點線性透視',
         'both strictly use single-point linear perspective'),
       opt('中國山水從不留白，畫面必定填滿',
@@ -75,7 +75,7 @@ const history: Question[] = [
       opt('西方繪畫從不講求景深',
         'Western painting never cares about depth')],
     C('中國山水以散點透視讓視點隨卷軸移動，並以留白營造虛實與意境；西方文藝復興則以固定視點的線性透視追求逼真景深。兩者體現不同的空間觀與美學。\n\n【陷阱】「兩者都用單點透視」「中國從不留白」「西方不講景深」均與兩種傳統的特徵相反。',
-      'Chinese landscape uses shifting perspective so the viewpoint roves across the scroll, and uses empty space (留白) to balance solid and void and evoke mood; Western Renaissance painting pursues realistic depth via fixed-viewpoint linear perspective. They embody different conceptions of space.\n\n【Trap】 “Both single-point”, “Chinese never leaves space” and “Western never cares about depth” contradict the two traditions.')),
+      'Chinese landscape uses shifting perspective so the viewpoint roves across the scroll, and uses empty space (liubai) to balance solid and void and evoke mood; Western Renaissance painting pursues realistic depth via fixed-viewpoint linear perspective. They embody different conceptions of space.\n\n【Trap】 “Both single-point”, “Chinese never leaves space” and “Western never cares about depth” contradict the two traditions.')),
 ]
 
 export const visualArtsHellQuestions: Question[] = [...formal, ...history]

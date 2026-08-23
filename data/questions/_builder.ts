@@ -131,3 +131,29 @@ export function topicList(
 export const sx = (b: number, v = 'x') => b === 0 ? '' : b === 1 ? ` + ${v}` : b === -1 ? ` - ${v}` : b > 0 ? ` + ${b}${v}` : ` - ${-b}${v}`
 export const sc = (c: number) => c === 0 ? '' : c > 0 ? ` + ${c}` : ` - ${-c}`
 export const rnd = (n: number, dp = 2) => Number.isInteger(n) ? `${n}` : `${parseFloat(n.toFixed(dp))}`
+
+// ── 雙語選項拆分 ────────────────────────────────────────────────────────────
+//
+// 部分題庫檔案以單一字串 `中文 / english` 書寫選項，再交給 `[v, v]` 形式的
+// 輔助函數。結果是兩種介面都看到同一串混合文字：英文介面的學生見到中文，
+// 中文介面的學生見到多餘的英文。`bi()` 把該字串拆回一對，讓每種介面只顯示
+// 自己的語言。
+//
+// 分割點取「右邊不含中文、左邊含中文」的最後一個斜線，因此
+// `奇異（不可逆）/ singular (non-invertible)` 與
+// `驗證 $n=1$ 成立 / verify it for $n=1$` 都能正確拆開，而
+// `mol/dm³`、`0.5 mol/L` 等單位內的斜線不會被誤判。
+export function bi(v: string): Pair {
+  for (let i = v.length - 1; i >= 0; i--) {
+    if (v[i] !== '/') continue
+    const zh = v.slice(0, i).trim()
+    const en = v.slice(i + 1).trim()
+    if (!zh || !en) continue
+    if (!HAS_CJK.test(zh)) continue
+    if (HAS_CJK.test(en)) continue
+    return [zh, en]
+  }
+  throw new Error(`bi(): no bilingual split point in ${JSON.stringify(v)}`)
+}
+
+const HAS_CJK = /[一-鿿㐀-䶿]/

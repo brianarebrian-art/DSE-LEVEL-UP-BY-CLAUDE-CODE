@@ -6,21 +6,24 @@ import { chineseHistoryHellQuestions, chineseHistoryHellTopics } from './chinese
 const q = makeQ('chinese-history')
 const m = (s: string): Pair => [s, s]
 
+// 英文名於 2026-08-23 補回，與中國語文科同一批。理由見 chinese.ts：
+// 英文介面的課題 chip 此前全部顯示中文，導覽層讀不懂等於整個課題入口
+// 用不到。⚠️ 只譯導覽層 —— 題目正文、選項、解析一律維持中文。
 const T = {
-  preqin:  { id: 'preqin_polity',  zh: '先秦政治',     en: '先秦政治' },
-  qinhan:  { id: 'qinhan_tang',    zh: '秦漢至隋唐制度', en: '秦漢至隋唐制度' },
-  songqing:{ id: 'song_qing',      zh: '宋元明清',     en: '宋元明清' },
-  lateqing:{ id: 'late_qing',      zh: '晚清變局',     en: '晚清變局' },
-  revolution:{ id: 'revolution',   zh: '辛亥革命',     en: '辛亥革命' },
-  republic:{ id: 'republic',       zh: '民國發展',     en: '民國發展' },
-  prc:     { id: 'prc',            zh: '中共建國至改革', en: '中共建國至改革' },
-  hktaiwan:{ id: 'hk_taiwan',      zh: '香港與兩岸',   en: '香港與兩岸' },
+  preqin:  { id: 'preqin_polity',  zh: '先秦政治',     en: 'Pre-Qin Statecraft' },
+  qinhan:  { id: 'qinhan_tang',    zh: '秦漢至隋唐制度', en: 'Institutions: Qin–Han to Sui–Tang' },
+  songqing:{ id: 'song_qing',      zh: '宋元明清',     en: 'Song, Yuan, Ming & Qing' },
+  lateqing:{ id: 'late_qing',      zh: '晚清變局',     en: 'Upheaval in the Late Qing' },
+  revolution:{ id: 'revolution',   zh: '辛亥革命',     en: 'The 1911 Revolution' },
+  republic:{ id: 'republic',       zh: '民國發展',     en: 'The Republican Era' },
+  prc:     { id: 'prc',            zh: '中共建國至改革', en: 'The PRC: Founding to Reform' },
+  hktaiwan:{ id: 'hk_taiwan',      zh: '香港與兩岸',   en: 'Hong Kong and Cross-Strait Relations' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
-  ancient: { id: 'ancient', zh: '古代史', en: '古代史', emoji: '🏛️' },
-  modern:  { id: 'modern',  zh: '近代史', en: '近代史', emoji: '⚔️' },
-  contemp: { id: 'contemp', zh: '現代史', en: '現代史', emoji: '🚩' },
+  ancient: { id: 'ancient', zh: '古代史', en: 'Ancient History', emoji: '🏛️' },
+  modern:  { id: 'modern',  zh: '近代史', en: 'Modern History', emoji: '⚔️' },
+  contemp: { id: 'contemp', zh: '現代史', en: 'Contemporary History', emoji: '🚩' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0
