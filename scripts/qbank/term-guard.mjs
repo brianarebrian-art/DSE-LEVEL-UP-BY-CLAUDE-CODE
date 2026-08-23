@@ -216,6 +216,33 @@ scanUiDir('components')
 // 呢幾個檔一旦寫入羞辱/罪疚字眼，會直接出現喺首屏，卻唔會被任何閘攔住。
 for (const rel of ['lib/dictionary.ts', 'lib/i18n.tsx', 'data/heroContent.ts']) scanCopyFile(rel)
 
+// ── 2026-08-23 再補漏（第 4 週情緒安全審核）─────────────────────────────────
+// 上面嗰行係逐個檔寫死嘅白名單，所以每次有新嘅文案來源檔就會再漏一次 ——
+// 實測 lib/ 入面有 10 個檔帶用戶可見文案（arena / breathingPatterns / conceptNet /
+// gentleSuggestions / stepHints / homestead / lockoutQuestions / truth-engine …），
+// 全部從來冇受過情緒安全檢查。改為整個 lib/ 遞迴掃，唔再靠人手維護名單。
+//
+// 影響評估（憲章第 6 條，落閘前先量）：
+//   lib/ 53 個檔（已排除 __tests__ 同上面已掃嗰兩個）→ 命中 0 處，
+//   即係唔會令任何現有檔案失效，無須 migration。
+//   刻意【唔】擴去 data/questions/：嗰邊命中 8 處，全部係正當學術內容
+//   （「中國逐漸落後於世界潮流」「科技太落後」「粗放農業」），
+//   紅字表係為 UI 回饋文案而校準，唔適用於科目內容。題庫自有上面嘅術語掃描。
+function scanLibDir(dir) {
+  for (const entry of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
+    const rel = `${dir}/${entry.name}`
+    if (entry.isDirectory()) {
+      if (entry.name === '__tests__') continue
+      scanLibDir(rel)
+      continue
+    }
+    if (!entry.name.endsWith('.ts') && !entry.name.endsWith('.tsx')) continue
+    if (rel === 'lib/dictionary.ts' || rel === 'lib/i18n.tsx') continue // 上面已掃
+    scanCopyFile(rel)
+  }
+}
+scanLibDir('lib')
+
 console.log(`${'─'.repeat(70)}`)
 if (violations === 0) {
   console.log(`  ✅ TERM GUARD PASSED — terminology, register and emotional-safety scans are clean.`)

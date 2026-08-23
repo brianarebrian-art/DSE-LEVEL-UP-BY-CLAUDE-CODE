@@ -363,17 +363,23 @@ export default function ResultPageClient() {
           )}
         </div>
 
-        {/* 中文科診斷警示 — 基礎全對但高階失手：戳破「執分位 ≠ 5**」的錯覺 */}
+        {/* 中文科高階提示 — 基礎全對但高階未穩：講清楚「執分位 ≠ 5**」。
+            2026-08-23 第 4 週情緒安全審核改寫：原版用紅色 ⚠️「警示」，
+            對一個基礎題啱晒嘅學生講「仍有不足」「絕不代表」——
+            教學點啱，但呈現方式正正係憲章第 7 條禁嘅打擊自信元素。
+            學術內容一個字冇改（執分位 ≠ 5**、要攻高階題），
+            改嘅係：紅色→金色、⚠️→💡、「警示」→「下一步」、
+            由「你唔夠」改成「你已經拿穩咗乜、跟住攻乜」。 */}
         {showChineseWarning && (
-          <div className="bg-rose/[0.06] border border-rose/25 rounded-2xl p-5">
+          <div className="bg-gold/[0.06] border border-gold/25 rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-rose text-lg">⚠️</span>
-              <span className="text-rose font-medium text-sm">{locale === 'en' ? 'Top-tier diagnostic alert' : '拔尖診斷警示'}</span>
+              <span className="text-gold text-lg">💡</span>
+              <span className="text-gold font-medium text-sm">{locale === 'en' ? 'Where the next marks are' : '下一段分數喺邊'}</span>
             </div>
             <p className="text-sm text-ink-soft leading-relaxed">
               {locale === 'en'
-                ? 'You scored 100% on the foundation-consolidation questions, but still fell short on the higher-order inference questions. In the real DSE, easy questions are only “marks to bank” — to reliably secure Level 4 or above you must conquer the top-tier challenge questions. Getting the basics right is never proof you can reach 5** in the exam.'
-                : '你在基礎鞏固題得分率為 100%，但在高階文意推論題中仍有不足。在真實 DSE 中，簡單題目僅為『執分位』，若要穩奪 Level 4 或以上，必須克服拔尖挑戰題。答對基礎題絕不代表能在文憑試中取得 5**。'}
+                ? 'Your foundation questions came out clean — that base is now yours to keep. The marks that separate Level 4 and above sit in the higher-order inference questions, and those are a different skill, not a harder version of the same one. Foundation marks are the marks you bank; the inference questions are the ones you go and take next.'
+                : '你的基礎鞏固題全部答對，這一層已經穩住了。分開 Level 4 或以上的分數，落在高階文意推論題那一邊——它考的是另一種能力，而不是同一種能力的加強版。基礎題是穩守的分，高階推論題就是下一段要去攻的分。'}
             </p>
           </div>
         )}

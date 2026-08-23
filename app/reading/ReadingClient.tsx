@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import { BookOpenCheck, CheckCircle, XCircle, Brain } from 'lucide-react'
+import { BookOpenCheck, CheckCircle, Lightbulb, Brain } from 'lucide-react'
 import { readingPassages } from '@/data/reading'
 import { useLocale } from '@/lib/i18n'
 
@@ -102,7 +102,10 @@ export default function ReadingClient() {
                           let style = 'border-line-strong bg-surface-raised hover:bg-surface-sunken cursor-pointer'
                           if (answered) {
                             if (opt.correct) style = 'border-accent bg-accent/[0.10]'
-                            else if (opt.text === chosen) style = 'border-rose bg-rose/[0.10]'
+                            // 2026-08-23 第 4 週情緒安全審核：呢版係另一個練習介面，
+                            // 第 1 週改答錯回饋嗰陣淨係改咗 /practice，漏咗呢度。
+                            // 憲章第 7 條禁大紅交叉，規格書 §4.2 要求答錯不出現紅色。
+                            else if (opt.text === chosen) style = 'border-gold bg-gold/[0.08]'
                             else style = 'border-line bg-surface-sunken opacity-60'
                           }
                           return (
@@ -117,7 +120,7 @@ export default function ReadingClient() {
                               </span>
                               <span className="text-sm leading-relaxed text-ink-soft">{opt.text}</span>
                               {answered && opt.correct && <CheckCircle size={16} className="text-accent ml-auto shrink-0 mt-1" />}
-                              {answered && !opt.correct && opt.text === chosen && <XCircle size={16} className="text-rose ml-auto shrink-0 mt-1" />}
+                              {answered && !opt.correct && opt.text === chosen && <Lightbulb size={16} className="text-gold ml-auto shrink-0 mt-1" />}
                             </button>
                           )
                         })}

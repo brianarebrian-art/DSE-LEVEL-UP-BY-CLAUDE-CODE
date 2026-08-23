@@ -703,6 +703,21 @@ html.font-easy .radar-grow {
   opacity: 1;
 }
 
+/* 2026-08-23 第 4 週 SEN 審核補漏：入場動畫、骨架呼吸、指令字淡入。
+   憲章 §8.1 約束 4 要求一鍵舒適模式將裝飾層【整層關掉】，唔係調慢。
+   .cmd-hl 只係熄咗個淡入 —— 高亮本身係資訊（指令字），要留低；
+   熄嘅只係佢點樣出現。
+   刻意【唔】收 .hourglass-stream：沙漏個沙流係 60 秒鎖嘅時間讀數，
+   凍住佢等於攞走一個功能性指示，唔屬於裝飾層。 */
+html.font-easy .animate-slide-up,
+html.font-easy .animate-pop-in,
+html.font-easy .skeleton,
+html.font-easy .cmd-hl {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1;
+}
+
 /* ── 降級 3：prefers-reduced-motion —— 一切靜止，保留最終狀態 ────────── */
 @media (prefers-reduced-motion: reduce) {
   .particle-bg,
@@ -728,5 +743,19 @@ html.font-easy .radar-grow {
     transform: none !important;
     box-shadow: none !important;
     opacity: 1;
+  }
+
+  /* ── 2026-08-23 第 4 週 SEN 審核補漏 ──────────────────────────────────
+     .animate-slide-up 同 .animate-pop-in 由一開始就冇納入呢個區塊，
+     但佢哋係全站用得最多嘅入場動畫 —— 答題回饋面板就係用 slide-up。
+     即係話：開咗系統「減少動態效果」嘅前庭敏感用戶，每答一題都照樣
+     見到成塊面板由下面 20px 掹上嚟。呢個係最應該由呢個設定擋住嘅嘢。
+     兩個 keyframes 嘅起點都係 opacity 0，所以要明確寫返 opacity 1，
+     唔係就會變成成塊嘢消失。 */
+  .animate-slide-up,
+  .animate-pop-in {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }

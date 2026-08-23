@@ -94,6 +94,17 @@ export default function RelaxLanding({
         🛒 {en ? 'Wander a virtual supermarket · nothing to buy' : '行下虛擬超市 · 冇嘢要買'}
       </Link>
 
+      {/* 放榜前緩衝空間（第 4 週端到端 QA 發現）：/waiting 一直喺 sitemap 入面，
+          但全站冇任何一條連結指過去 —— 即係只有由搜尋引擎入嚟先搵得到。
+          嗰版有每日一句、呼吸、時間囊同真實求助熱線，係做完晒之後嗰段最難捱嘅
+          日子先用得着，所以擺喺呼吸空間落面，唔擺喺練習流程入面。 */}
+      <Link
+        href="/waiting"
+        className="block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 mt-3 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+      >
+        🕯️ {en ? 'Before results day · a slower place to wait' : '放榜前 · 一個慢啲嘅地方等'}
+      </Link>
+
       {/* FIX: [A3][B5] 「補 1 格 MP 都得」→「唞 1 分鐘都得」；提升對比度 */}
       <p className="text-xs text-[#C2C2CC] text-center mt-4">
         {en ? "Even one minute counts. Skip it if you're not up for it — no one will blame you." : '唞 1 分鐘都得。唔想做就唔做，冇人會怪你。'}
