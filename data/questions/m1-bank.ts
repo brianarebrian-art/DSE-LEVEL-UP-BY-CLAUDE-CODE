@@ -13,7 +13,14 @@ import { createBank, n, frac, round, type TopicMeta, type FwMeta } from './_para
 const T = {
   diff: { id: 'differentiation', zh: '微分', en: 'Differentiation' },
   integ: { id: 'integration', zh: '積分', en: 'Integration' },
-  binomialThm: { id: 'binomial_theorem', zh: '二項式定理', en: 'Binomial Theorem' },
+  // 2026-08-23：id 由 'binomial_theorem' 改為 'binomial'。
+  // m1.ts 早已註冊 'binomial'（二項式定理），本檔卻另立一個 'binomial_theorem'，
+  // 令 10 條題目掛在一個【未註冊】的課題之上，學生由課題入口永遠篩不到。
+  // 與 chemistry-bank.ts 的 'mole_concept' 屬同一個病：code-generated bank 的
+  // T map 自行開了一個與註冊表不同的 id。
+  // ⚠️ m2.ts 同樣使用 'binomial_theorem'，但該 id 在 m2 是【已註冊】的，
+  //    故不可一併改動 —— 兩科的註冊表本來就不同。
+  binomialThm: { id: 'binomial', zh: '二項式定理', en: 'Binomial Theorem' },
   binomialDist: { id: 'binomial_distribution', zh: '二項分佈', en: 'Binomial Distribution' },
   poisson: { id: 'poisson_distribution', zh: '泊松分佈', en: 'Poisson Distribution' },
   normal: { id: 'normal_distribution', zh: '正態分佈', en: 'Normal Distribution' },

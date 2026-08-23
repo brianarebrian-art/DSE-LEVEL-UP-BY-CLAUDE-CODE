@@ -32,12 +32,15 @@ const { getActiveSubjects } = await import('../../subjects.ts')
  * 刪走（測試會因為「少咗一個預期孤兒」而紅，逼人更新，唔會靜靜過關）。
  */
 const KNOWN_ORPHANS: Record<string, number> = {
-  // M1 唯一嘅孤兒課題。已另開單處理（正確嘅已註冊 id 係 'binomial'）。
+  // 2026-08-23：全部接返曬。
   //
-  // 2026-08-23：math 嘅「有效數字」「數系判別」已經修好 —— 創辦人拍板為數學科
-  // 新增 approximation（近似與誤差）同 number_systems（數系）兩個課題，兩者
-  // 本來就喺必修部分課程指引之內，只係註冊表一直缺席。
-  'm1 / binomial_theorem': 10,
+  // · math 嘅「有效數字」「數系判別」—— 創辦人拍板為數學科新增
+  //   approximation（近似與誤差）同 number_systems（數系）兩個課題。
+  // · m1 嘅 binomial_theorem —— m1-bank.ts 個 T map 自行開咗個同註冊表唔同
+  //   嘅 id（m1.ts 註冊嘅係 'binomial'）。同 chemistry-bank.ts 嘅
+  //   'mole_concept' 屬同一個病。
+  //
+  // 呢個表而家係空嘅。任何一條新孤兒都會令測試紅 —— 呢個就係佢嘅用途。
 }
 
 test('每一條題目嘅 topic 都要係該科已註冊嘅課題 id', () => {
