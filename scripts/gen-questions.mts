@@ -77,7 +77,7 @@ const MONO_LANG: Record<string, 'zh' | 'en'> = {
   'english-literature': 'en',
 }
 // Subjects whose questions are naturally quantitative → instruct $...$ LaTeX.
-const QUANTITATIVE = new Set(['math', 'physics', 'chemistry'])
+const QUANTITATIVE = new Set(['math', 'm1', 'm2', 'physics', 'chemistry'])
 
 const camel = (id: string) => id.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
 

@@ -30,6 +30,14 @@ const loaders: Record<string, Loader> = {
       ...pbank.mathBankQuestions,
     ]
   },
+  m1: async () => {
+    const [base, mbank] = await Promise.all([import('./m1'), import('./m1-bank')])
+    return [...base.m1Questions, ...mbank.m1BankQuestions]
+  },
+  m2: async () => {
+    const [base, mbank] = await Promise.all([import('./m2'), import('./m2-bank')])
+    return [...base.m2Questions, ...mbank.m2BankQuestions]
+  },
   physics: async () => {
     const [base, pbank] = await Promise.all([import('./physics'), import('./physics-bank')])
     return [...base.physicsQuestions, ...pbank.physicsBankQuestions]
@@ -101,6 +109,8 @@ const loaders: Record<string, Loader> = {
 //    兩條路不可混用。
 const autoLoaders: Record<string, Loader> = {
   'physics': async () => (await import('./physics-auto')).physicsAutoQuestions,
+  'm1': async () => (await import('./m1-auto')).m1AutoQuestions,
+  'm2': async () => (await import('./m2-auto')).m2AutoQuestions,
   'bafs': async () => (await import('./bafs-auto')).bafsAutoQuestions,
   'economics': async () => (await import('./economics-auto')).economicsAutoQuestions,
   'chemistry': async () => (await import('./chemistry-auto')).chemistryAutoQuestions,

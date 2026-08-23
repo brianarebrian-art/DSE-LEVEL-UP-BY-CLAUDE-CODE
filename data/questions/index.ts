@@ -4,6 +4,10 @@ import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
 import { mathImportedQuestions } from './math-imported'
 import { mathBankQuestions } from './math-bank'
+import { m1Questions, m1Topics } from './m1'
+import { m1BankQuestions } from './m1-bank'
+import { m2Questions, m2Topics } from './m2'
+import { m2BankQuestions } from './m2-bank'
 import { physicsQuestions, physicsTopics } from './physics'
 import { physicsBankQuestions } from './physics-bank'
 import { chemistryQuestions, chemistryTopics } from './chemistry'
@@ -54,6 +58,8 @@ import { chineseAutoQuestions } from './chinese-auto'
 import { chemistryAutoQuestions } from './chemistry-auto'
 import { economicsAutoQuestions } from './economics-auto'
 import { bafsAutoQuestions } from './bafs-auto'
+import { m2AutoQuestions } from './m2-auto'
+import { m1AutoQuestions } from './m1-auto'
 import { physicsAutoQuestions } from './physics-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
@@ -77,6 +83,8 @@ interface SubjectBank {
 const banks: Record<string, SubjectBank> = {
   // Hand-authored 120 + offline AI-generated (gate + LLM-judge verified) extras.
   math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions], topics: mathTopics },
+  m1: { questions: [...m1Questions, ...m1BankQuestions], topics: m1Topics },
+  m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions], topics: chemistryTopics },
   biology: { questions: biologyQuestions, topics: biologyTopics },
@@ -115,6 +123,8 @@ const banks: Record<string, SubjectBank> = {
 // （2026-08-07 曾因此少報 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
 const autoBanks: Record<string, AnyQuestion[]> = {
   'physics': physicsAutoQuestions,
+  'm1': m1AutoQuestions,
+  'm2': m2AutoQuestions,
   'bafs': bafsAutoQuestions,
   'economics': economicsAutoQuestions,
   'chemistry': chemistryAutoQuestions,
