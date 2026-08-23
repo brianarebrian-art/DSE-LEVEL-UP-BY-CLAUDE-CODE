@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useLocale } from '@/lib/i18n'
 import { getSubjectMastery, levelLabel, MIN_SECONDS_PER_QUESTION, type SubjectMastery } from '@/lib/mastery'
+import { shareAtOrAbove, subjectDistribution, DISTRIBUTION_YEAR } from '@/lib/levelDistribution'
 
 // 掌握度階梯估算（等級預測 v3 §4.5 輸出格式）。
 //
@@ -24,6 +25,10 @@ export default function MasteryEstimate({ subjectId, className = '' }: { subject
   if (m === null) return null
   if (m.sessions === 0 && m.legacy === 0) return null
 
+  const dist = subjectDistribution(subjectId)
+  const lowShare = m.low !== null ? shareAtOrAbove(subjectId, m.low) : null
+  const highShare = m.high !== null ? shareAtOrAbove(subjectId, m.high) : null
+
   const band = m.low !== null && m.high !== null
     ? (en ? `Level ${levelLabel(m.low)}–${levelLabel(m.high)}` : `${levelLabel(m.low)} 至 ${levelLabel(m.high)} 級`)
     : null
@@ -42,6 +47,23 @@ export default function MasteryEstimate({ subjectId, className = '' }: { subject
               ? `Based on ${m.sessions} valid session${m.sessions === 1 ? '' : 's'} in this subject, judged tier by tier rather than on a single percentage.`
               : `按本科 ${m.sessions} 節有效練習，逐個難度層睇，唔係睇一個百分比。`}
           </p>
+
+          {/* 有出處嘅參考線（規格書 §4.5）。講嘅係【同科人群】——「經濟科考生
+              入面嘅前 17.3%」。⛔ 永遠唔跨科比較：M2 有 34.4% 達 5 級、體育
+              3.6%，但兩科報考人群結構完全唔同，講「邊科易攞 5 級」會令學生
+              轉錯科，係實質傷害。 */}
+          {dist && lowShare !== null && (
+            <p className="text-sm text-ink-muted mt-3 leading-relaxed">
+              {en
+                ? `For reference: in ${DISTRIBUTION_YEAR}, ${lowShare}% of day-school candidates in this subject were awarded Level ${levelLabel(m.low!)} or above${highShare !== null && m.high !== m.low ? `, and ${highShare}% Level ${levelLabel(m.high!)} or above` : ''}.`
+                : `參考：${DISTRIBUTION_YEAR} 年本科日校考生入面，${lowShare}% 攞到 ${levelLabel(m.low!)} 級或以上${highShare !== null && m.high !== m.low ? `，${highShare}% 攞到 ${levelLabel(m.high!)} 級或以上` : ''}。`}
+              {dist.smallSample && (
+                en
+                  ? ` Only ${dist.sat} candidates sat this subject, so those shares move by whole percentage points on one or two people — read them loosely.`
+                  : `該科全港只有 ${dist.sat} 人應考，一兩個考生就能移動幾個百分點，呢兩個數要鬆手睇。`
+              )}
+            </p>
+          )}
         </>
       ) : (
         <p className="text-sm text-ink-muted mt-2">
