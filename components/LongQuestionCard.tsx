@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { ChevronDown, Flag, Clock } from 'lucide-react'
 import MathText from '@/components/MathText'
+// 第 3 週 · 引擎五之三：分步提示（只俾方向，唔收學生嘅字，結構上做唔到自動評分）
+import StepHints from '@/components/StepHints'
 import { useLocale } from '@/lib/i18n'
 import type { LongQuestion, SelfAssessment } from '@/data/questions/types'
 
@@ -71,6 +73,11 @@ export default function LongQuestionCard({
 
       {!submitted ? (
         <>
+          {/* 分步提示擺喺輸入框【之上】：學生卡住嗰陣係落筆之前，唔係寫完之後。
+              預設收埋成一行細字，唔會搶走空白紙嘅位置。 */}
+          <div className="mb-3">
+            <StepHints subjectId={q.subject} />
+          </div>
           <textarea
             rows={7}
             value={value}

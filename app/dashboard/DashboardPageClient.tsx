@@ -25,6 +25,8 @@ import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
 // 第 2 週 · 引擎四：今日學習光譜（溫柔每日建議，每日最多 3 條，逐條可撳走）
 import GentleSuggestions from '@/components/GentleSuggestions'
+// 第 3 週 · 引擎二之二：個人進度時間軸（只同自己上一段時間比）
+import PersonalTimeline from '@/components/PersonalTimeline'
 import JustOneCard from '@/components/JustOneCard'
 import GoodTodayCard from '@/components/GoodTodayCard'
 import ArenaCard from '@/components/ArenaCard'
@@ -423,6 +425,10 @@ export default function DashboardPageClient() {
             </span>
           </div>
         </Link>
+
+        {/* 第 3 週 · 引擎二之二：個人進度時間軸。擺喺課題掌握度同錯題指紋之間 ——
+            掌握度講「而家點」，時間軸講「同上一段時間比點」，錯題指紋講「點解」。 */}
+        <PersonalTimeline />
 
         {/* Error DNA — distribution of self-diagnosed error causes */}
         <ErrorDNA />

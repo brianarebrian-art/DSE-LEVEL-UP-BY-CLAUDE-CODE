@@ -38,10 +38,11 @@ import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, Lightbulb, ChevronRight, Clock, Brain, Zap, Lock, Coffee } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, Clock, Brain, Zap, Lock, Coffee, Timer } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
+import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 // 真相引擎：由歷史錯誤記錄推斷「今次錯誤真正嘅成因」，喺解密卡加一句可執行建議
 import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
@@ -52,6 +53,13 @@ import EmotionThermometer from '@/components/EmotionThermometer'
 import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
+// 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
+import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState } from '@/lib/adaptiveOrder'
+// 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
+import {
+  getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
+  TIMER_OPTIONS, type TimerOption,
+} from '@/lib/questionTimer'
 
 // The forced-lock countdown (seconds) after a wrong answer on a HARD question.
 const LOCKOUT_SECONDS = 60
@@ -276,6 +284,11 @@ export default function PracticeSession({
   const subjectMeta = getSubject(subjectId)
 
   const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode))
+  // 第 3 週 · 引擎五：連續答對／答錯狀態。純 session 內存 ——
+  // 唔寫 localStorage：呢個係「今日呢一刻嘅節奏」，唔應該變成一個跟住學生走嘅標籤。
+  const [streak, setStreak] = useState<StreakState>(EMPTY_STREAK)
+  // 學生手動揀嘅層級。有值就永遠蓋過自適應（規格書 §4.6：始終保留手動選擇權）。
+  const [manualTier, setManualTier] = useState<Difficulty | null>(null)
   const [startTime, setStartTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
@@ -364,6 +377,31 @@ export default function PracticeSession({
     return () => clearInterval(id)
   }, [startTime])
 
+  // ── 第 3 週 · 引擎五之二：可選逐題計時 ──────────────────────────────────
+  // 每條題目自己一個計時器。到零【唔會】自動交、唔會跳題、唔會扣任何嘢 ——
+  // 只係出一句「時間到，休息一下」。RestMode 停低幾耐就順延幾耐（同總計時一致）。
+  const [perQTimer, setPerQTimer] = useState<TimerOption>(0)
+  const [qStart, setQStart] = useState(() => Date.now())
+  const [qSpent, setQSpent] = useState(0)
+  useEffect(() => {
+    setPerQTimer(getQuestionTimer())
+  }, [])
+  // 換題就重新計。答咗之後停低 —— 睇解析唔應該計入答題時間。
+  useEffect(() => {
+    setQStart(Date.now())
+    setQSpent(0)
+  }, [current])
+  useEffect(() => {
+    if (perQTimer === 0 || answerState !== null) return
+    const id = setInterval(() => setQSpent(Math.floor((Date.now() - qStart) / 1000)), 1000)
+    return () => clearInterval(id)
+  }, [perQTimer, qStart, answerState])
+  // hideTimer 蓋過計時模式：一句「時間到」本身就係時間壓力，
+  // 藏起數字而留低嗰句等於冇藏過（見 lib/questionTimer 檔頭）。
+  const timerVisible = perQTimer !== 0 && !hideTimer
+  const qLeft = remainingSeconds(perQTimer, qSpent)
+  const qTimeUp = timerVisible && answerState === null && isTimeUp(perQTimer, qSpent)
+
   const currentQ = questions[current]
   const totalQ = questions.length
   const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
@@ -394,6 +432,10 @@ export default function PracticeSession({
       if (answerState !== null || !currentQ) return
       const isCorrect = zh === currentQ.correctZh
       setAnswerState({ selectedZh: zh, isCorrect })
+      // 第 3 週 · 引擎五：更新連續狀態。刻意冇任何 UI 反映呢個數 ——
+      // 「你連續答啱 3 題」睇落係鼓勵，但佢同時令中斷嗰下變成一件事，
+      // 憲章第 7 條唔准出現咁樣嘅懲罰性回饋。所以連續數永遠唔顯示。
+      setStreak((prev) => advanceStreak(prev, isCorrect))
       // 衝擊波：600ms 之後拆走個節點，唔留喺 DOM 度
       setShockIdx(idx)
       if (shockTimer.current) clearTimeout(shockTimer.current)
@@ -571,6 +613,23 @@ export default function PracticeSession({
       notifyProgressChanged() // push the cleared state up so other devices stop offering it
       router.push('/result')
     } else {
+      // ── 第 3 週 · 引擎五：無聲難度自適應 ────────────────────────────────
+      // 只喺【未做嗰截】入面換位，做完嗰截原封不動，所以 answers[i] 同
+      // questions[i] 永遠對得返。題目集合由頭到尾唔變 → 3:5:2 分毫不變。
+      const nextStreak = advanceStreak(streak, answerState?.isCorrect ?? false)
+      const want = preferredTier(currentQ.difficulty, nextStreak, manualTier)
+      let ordered = questions
+      if (want) {
+        const tail = questions.slice(current + 1)
+        const pick = nextIndex(tail.map((q) => q.difficulty), want)
+        if (pick > 0) {
+          const swapped = [...questions]
+          const at = current + 1
+          ;[swapped[at], swapped[at + pick]] = [swapped[at + pick], swapped[at]]
+          ordered = swapped
+          setQuestions(swapped)
+        }
+      }
       setCurrent((c) => c + 1)
       // v3.0 F1: checkpoint the run so a refresh, a closed tab, or another device can
       // pick it up at exactly this question. Rides the existing synced snapshot.
@@ -579,7 +638,8 @@ export default function PracticeSession({
         subjectId,
         topicFilter: topicFilter ?? null,
         mode,
-        questionIds: questions.map((q) => q.id),
+        // 用重排之後嘅次序 —— 唔係嘅話，refresh 返嚟會見到另一條題
+        questionIds: ordered.map((q) => q.id),
         answers: newAnswers.map((a) => (a ? { selectedZh: a.selectedZh, isCorrect: a.isCorrect } : null)),
         current: current + 1,
         elapsed: Math.floor((Date.now() - startTime) / 1000),
@@ -587,7 +647,7 @@ export default function PracticeSession({
       })
       notifyProgressChanged()
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, manualTier, currentQ])
 
   // Proceed past a question. When a server-signed lock exists, do a final server check
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
@@ -769,6 +829,47 @@ export default function PracticeSession({
                   <Clock size={13} /> {formatTime(elapsed)}
                 </span>
               )}
+              {/* ── 第 3 週 · 引擎五之二：逐題計時（可選，預設關閉）──────────
+                  一粒掣循環 關 → 60 秒 → 90 秒 → 關。刻意做成一粒細掣而唔係
+                  一版設定：計時模式應該一撳就開、一撳就熄，唔使入設定搵。
+                  隱藏計時器開咗就成粒掣都唔出 —— 唔應該喺嗰個模式下再提時間。 */}
+              {!hideTimer && (
+                <span className="flex items-center gap-1.5">
+                  {perQTimer !== 0 && (
+                    <span
+                      className={qLeft === 0 ? 'text-gold' : 'text-ink-muted'}
+                      style={{ fontVariantNumeric: 'tabular-nums' }}
+                    >
+                      {formatTime(qLeft)}
+                    </span>
+                  )}
+                  <button
+                    onClick={() => {
+                      const i = TIMER_OPTIONS.indexOf(perQTimer)
+                      const nextOpt = TIMER_OPTIONS[(i + 1) % TIMER_OPTIONS.length]
+                      setPerQTimer(nextOpt)
+                      setQuestionTimer(nextOpt)
+                      setQStart(Date.now())
+                      setQSpent(0)
+                    }}
+                    aria-label={
+                      perQTimer === 0
+                        ? tr('開啟逐題計時（可選）', 'Turn on the optional per-question timer')
+                        : tr(`逐題計時 ${perQTimer} 秒，撳一下換設定`, `Per-question timer ${perQTimer}s — tap to change`)
+                    }
+                    title={tr('逐題計時：關 / 60 秒 / 90 秒。時間到唔會強制結束。',
+                              'Per-question timer: off / 60s / 90s. Time-up never ends anything.')}
+                    className={`inline-flex items-center gap-1 min-h-11 px-2 -my-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
+                      perQTimer === 0 ? 'text-ink-faint hover:text-ink-muted' : 'text-accent'
+                    }`}
+                  >
+                    <Timer size={13} aria-hidden />
+                    <span className="text-[11px]">
+                      {perQTimer === 0 ? tr('計時', 'Timer') : `${perQTimer}s`}
+                    </span>
+                  </button>
+                </span>
+              )}
               {/* B2: 休息入口 —— 放喺計時器隔籬而唔係再開一個浮動掣（右下角已有情緒
                   支援掣、左下角有無障礙面板）。撳完計時停低，返嚟自動順延。 */}
               <button
@@ -820,6 +921,17 @@ export default function PracticeSession({
               <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
             )}
           </p>
+
+          {/* ── 第 3 週 · 引擎五之二：時間到 ──────────────────────────────
+              規格書 §4.9：「時間到，休息一下」。到此為止 —— 唔會自動交、
+              唔會跳題、唔會封住選項、唔會記低你超時。學生想繼續就繼續。
+              金色（發現／提醒），唔用紅色。 */}
+          {qTimeUp && (
+            <p className="blindspot-in mb-4 text-sm text-gold">
+              {tr('時間到 —— 唞一唞都得，想繼續就繼續，冇嘢會因為咁而改變。',
+                  'Time’s up — take a breather if you like. Carry on whenever; nothing changes because of it.')}
+            </p>
+          )}
 
           {/* Options */}
           <div className="space-y-3">
@@ -1160,6 +1272,40 @@ export default function PracticeSession({
                     <>{t.practice.next} <ChevronRight size={18} /></>
                   )}
                 </button>
+
+                {/* ── 第 3 週 · 引擎五：手動選擇下一題層級 ──────────────────────
+                    規格書 §4.6 設計原則：始終保留手動選擇權。
+                    刻意擺喺「下一題」掣【之後】，而且只喺答咗之後先出現 ——
+                    題目仲喺度嗰陣多一行控制項，係搶緊專注度（憲章 §8.1 約束 3：
+                    遊戲化層唔可以侵蝕練習流程）。
+                    亦刻意唔顯示自適應而家想俾你邊個層級 —— 顯示咗就唔再係「無聲」。 */}
+                {current + 1 < totalQ && (
+                  <div className="mt-3 flex items-center justify-center gap-1.5 flex-wrap text-[11px]">
+                    <span className="text-ink-muted">{tr('下一題想要：', 'Next one:')}</span>
+                    {([null, 'easy', 'medium', 'hard'] as const).map((tier) => {
+                      const on = manualTier === tier
+                      // 字直接由 lib/difficulty 攞 —— 唔可以喺呢度另開一套叫法，
+                      // 否則同一個層級喺徽章同選擇器會有兩個名。
+                      const label = tier === null
+                        ? tr('跟我節奏', 'My pace')
+                        : tr(TIER_REQUEST_LABELS[tier].zh, TIER_REQUEST_LABELS[tier].en)
+                      return (
+                        <button
+                          key={tier ?? 'auto'}
+                          onClick={() => setManualTier(tier)}
+                          aria-pressed={on}
+                          className={`px-2.5 py-1 rounded-full border transition-colors ${
+                            on
+                              ? 'border-accent/50 text-accent bg-accent/[0.10]'
+                              : 'border-line text-ink-muted hover:text-ink-soft'
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
               </>
             )}
           </div>

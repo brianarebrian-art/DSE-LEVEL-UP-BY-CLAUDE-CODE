@@ -52,3 +52,21 @@ export const DIFFICULTY_TIERS: Record<Difficulty, DifficultyTier> = {
 export function difficultyTier(d: Difficulty): DifficultyTier {
   return DIFFICULTY_TIERS[d]
 }
+
+/**
+ * 「下一題想要邊個層級」選擇器用嘅字（第 3 週 · 引擎五，規格書 §4.6）。
+ *
+ * 點解唔直接用 DIFFICULTY_TIERS 嘅 label？因為 hard 嘅 label 係 `null` ——
+ * 上面嗰句「Invisible hardest core: no badge at all」係刻意設計：最深嗰層
+ * 由題目本身講，唔用一個徽章去宣告。呢個決定喺【徽章】上維持不變。
+ *
+ * 但選擇器係另一回事：學生要主動揀一樣嘢，總要有個名叫得出。
+ * 所以 hard 喺呢度用「再深入啲」而唔係「拔尖」—— 佢係一個請求，唔係一個評級，
+ * 亦唔會令題目上面出返個徽章。easy／medium 直接沿用徽章嘅字，
+ * 免得同一個層級喺兩個地方兩個叫法。
+ */
+export const TIER_REQUEST_LABELS: Record<Difficulty, { zh: string; en: string }> = {
+  easy: { zh: DIFFICULTY_TIERS.easy.label ?? '基礎', en: DIFFICULTY_TIERS.easy.labelEn ?? 'Foundation' },
+  medium: { zh: DIFFICULTY_TIERS.medium.label ?? '進階', en: DIFFICULTY_TIERS.medium.labelEn ?? 'Advanced' },
+  hard: { zh: '再深入啲', en: 'Go deeper' },
+}
