@@ -12,10 +12,44 @@ import { useLocale } from '@/lib/i18n'
 
 const LETTERS = ['A', 'B', 'C', 'D']
 
-function shuffle<T>(arr: T[]): T[] {
+// ── 2026-08-23 第 4 週端到端 QA 修正：hydration 不匹配 ──────────────────────
+//
+// 原本用 Math.random() 洗牌，而呢個係一個【會喺伺服器渲染一次】嘅 client component，
+// 於是伺服器洗出一個次序、瀏覽器洗出另一個次序，React hydration 直接失敗：
+//   "Hydration failed because the server rendered text didn't match the client"
+// 後果係成棵樹喺客戶端重繪一次 —— 用戶會見到選項跳一跳，而 console 每次都報錯。
+//
+// 改為【由題目 key 導出嘅決定性洗牌】：同一條題永遠洗出同一個次序，
+// 所以兩邊一定一致，唔會有不匹配，亦唔會有「先出原次序再跳」嘅閃動。
+//
+// 決定性洗牌喺呢度係合適嘅：本頁得三篇固定文章，正確答案喺資料入面永遠係
+// options[0]，洗牌只係為咗唔好次次都揀 A。次序穩定反而令學生重做嗰陣
+// 唔使重新搵返自己上次揀邊個。
+//
+// （/practice 唔會撞到呢個問題 —— 佢經 next/dynamic ssr:false 純客戶端載入。）
+function hashSeed(key: string): number {
+  // FNV-1a：短、無依賴、分佈夠散
+  let h = 0x811c9dc5
+  for (let i = 0; i < key.length; i++) {
+    h ^= key.charCodeAt(i)
+    h = Math.imul(h, 0x01000193)
+  }
+  return h >>> 0
+}
+
+function seededShuffle<T>(arr: T[], key: string): T[] {
   const a = [...arr]
+  let s = hashSeed(key)
+  const next = () => {
+    // mulberry32
+    s |= 0
+    s = (s + 0x6d2b79f5) | 0
+    let t = Math.imul(s ^ (s >>> 15), 1 | s)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
   for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
+    const j = Math.floor(next() * (i + 1))
     ;[a[i], a[j]] = [a[j], a[i]]
   }
   return a
@@ -36,7 +70,8 @@ export default function ReadingClient() {
     const map: Record<string, Prepared['options']> = {}
     for (const p of readingPassages) {
       p.questions.forEach((q, i) => {
-        map[`${p.id}-${i}`] = shuffle(q.options.map((text, idx) => ({ text, correct: idx === 0 })))
+        const key = `${p.id}-${i}`
+        map[key] = seededShuffle(q.options.map((text, idx) => ({ text, correct: idx === 0 })), key)
       })
     }
     return map
