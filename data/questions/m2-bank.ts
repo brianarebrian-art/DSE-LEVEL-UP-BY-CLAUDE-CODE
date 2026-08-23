@@ -5,6 +5,19 @@ import { createBank, n, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // M2 (Algebra & Calculus) — PARAMETRIC BANK (Mode A, correct-by-construction)
+//
+// ── 2026-08-23：移除複數（complex_numbers）30 條 ──────────────────────────
+// 創辦人拍板剷走。HKDSE 數學延伸部分單元二（代數與微積分）的課程範圍為
+// 三個範疇：基礎知識（根式、數學歸納法、二項式定理、三角函數、常數 e）、
+// 代數（矩陣、線性方程組、向量）、微積分（極限、微分法、積分法）。
+// 複數並不在其中 —— 它屬於【必修部分】的方程與代數範疇。
+//
+// 移除的是三組生成器：E2（模，10 條易）、M2（乘積實部，12 條中）、
+// H3（模的乘積，8 條難），連同 T.complex、m2BankTopics 的登記項，
+// 以及只服務這三組的 cplx() 輔助函數。
+// 影響（憲章 §6 —— 動數據前必查）：m2 由 308 條減至 278 條，難度分佈
+// 由 28/50/22 變 27/51/22，仍然貼近 3:5:2，亦遠高於任何下限。
+// 無測試、無 cap-plan、無其他科目引用此課題。
 // PROPER M2 content: matrices/determinants, vectors, complex numbers, limits.
 // Every answer + distractor computed by formula; shared add() drops non-4-distinct.
 // ═══════════════════════════════════════════════════════════════════════════
@@ -12,7 +25,6 @@ import { createBank, n, type TopicMeta, type FwMeta } from './_parametric'
 const T = {
   matrices: { id: 'matrices', zh: '矩陣與行列式', en: 'Matrices & Determinants' },
   vectors: { id: 'vectors', zh: '向量', en: 'Vectors' },
-  complex: { id: 'complex_numbers', zh: '複數', en: 'Complex Numbers' },
   limits: { id: 'limits', zh: '極限', en: 'Limits' },
   systems: { id: 'linear_systems', zh: '線性方程組', en: 'Systems of Linear Equations' },
 } satisfies Record<string, TopicMeta>
@@ -24,14 +36,6 @@ const FW = {
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('m2')
-
-// complex-number formatter: drops ±1 coefficient on i, handles signs
-const cplx = (a: number, b: number): string => {
-  if (b === 0) return `${a}`
-  const im = b === 1 ? 'i' : b === -1 ? '-i' : `${b}i`
-  if (a === 0) return im
-  return b > 0 ? `${a} + ${b === 1 ? '' : b}i` : `${a} - ${b === -1 ? '' : Math.abs(b)}i`
-}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // 補底 (easy)
@@ -52,17 +56,6 @@ for (let a = 2; a <= 4; a++) {
     }
   }
 }
-
-// E2 — modulus of a complex number: |a+bi| = √(a²+b²) (Pythagorean → integer)
-;([[3, 4], [6, 8], [5, 12], [8, 15], [9, 12], [7, 24], [20, 21], [12, 16], [8, 6], [24, 7]] as const)
-  .forEach(([a, b], i) => {
-    const mod = Math.round(Math.hypot(a, b))
-    add(`m2_e2_${i}`, T.complex, FW.algebra, 'easy',
-      [`求複數 $${cplx(a, b)}$ 的模 $|z|$。`, `Find the modulus $|z|$ of $${cplx(a, b)}$.`],
-      [n(`$${mod}$`), n(`$${a * a + b * b}$`), n(`$${a + b}$`), n(`$${Math.abs(a - b)}$`)],
-      [`$|a+bi| = \\sqrt{a^2+b^2} = \\sqrt{${a * a}+${b * b}} = \\sqrt{${a * a + b * b}} = ${mod}$。陷阱：$${a * a + b * b}$ 漏了開方；$${a + b}$ 直接相加。`,
-       `$|z| = \\sqrt{a^2+b^2} = ${mod}$. Trap: $${a * a + b * b}$ forgets the square root.`])
-  })
 
 // E3 — dot product: a·b = a₁b₁ + a₂b₂
 for (let a1 = 1; a1 <= 4; a1++) {
@@ -93,19 +86,6 @@ for (let x = 1; x <= 4; x++) {
       [n(`$${c11}$`), n(`$${a11 * b11}$`), n(`$${a11 * b11 + a12 * b22}$`), n(`$${a11 * b12 + a12 * b22}$`)],
       [`$(1,1)$ 項 $= a_{11}b_{11} + a_{12}b_{21} = (${a11})(${b11}) + (${a12})(${b21}) = ${a11 * b11} + ${a12 * b21} = ${c11}$。陷阱：$${a11 * b11}$ 漏了第二項；$${a11 * b11 + a12 * b22}$ 用錯了 $b_{22}$。`,
        `$(1,1) = a_{11}b_{11}+a_{12}b_{21} = ${c11}$. Trap: $${a11 * b11}$ drops the second term.`])
-  }
-}
-
-// M2 — complex multiplication, real part: Re[(a+bi)(c+di)] = ac − bd
-for (let a = 1; a <= 4; a++) {
-  for (let b = 1; b <= 4; b++) {
-    const c = 2, d = 3
-    const re = a * c - b * d
-    add(`m2_m2_${a}_${b}`, T.complex, FW.algebra, 'medium',
-      [`求 $(${cplx(a, b)})(${cplx(c, d)})$ 的實部。`, `Find the real part of $(${cplx(a, b)})(${cplx(c, d)})$.`],
-      [n(`$${re}$`), n(`$${a * c + b * d}$`), n(`$${a * c}$`), n(`$${a * d + b * c}$`)],
-      [`$(a+bi)(c+di) = (ac - bd) + (ad + bc)i$，實部 $= ac - bd = (${a})(${c}) - (${b})(${d}) = ${a * c} - ${b * d} = ${re}$。陷阱：$${a * c + b * d}$ 漏了 $i^2 = -1$（加了）；$${a * d + b * c}$ 是虛部。`,
-       `Re $= ac-bd = ${re}$. Trap: $${a * c + b * d}$ forgets $i^2=-1$; $${a * d + b * c}$ is the imaginary part.`])
   }
 }
 
@@ -172,19 +152,6 @@ for (let x0 = 1; x0 <= 5; x0++) {
        `Cofactor expansion along row 1 $= ${det}$. Trap: $${wrongSign}$ drops the alternating sign; $${a * e * k}$ multiplies only the diagonal.`])
   })
 
-// H3 — modulus of a product: |z₁z₂| = |z₁||z₂| (Pythagorean parts → integer)
-;([[3, 4, 5, 12], [6, 8, 8, 15], [5, 12, 20, 21], [3, 4, 24, 7], [8, 15, 9, 12], [5, 12, 8, 6], [3, 4, 6, 8], [7, 24, 3, 4]] as const)
-  .forEach(([a, b, c, d], i) => {
-    const m1 = Math.round(Math.hypot(a, b)), m2 = Math.round(Math.hypot(c, d))
-    const prod = m1 * m2
-    add(`m2_h3_${i}`, T.complex, FW.algebra, 'hard',
-      [`設 $z_1 = ${cplx(a, b)}$、$z_2 = ${cplx(c, d)}$，求 $|z_1 z_2|$。`,
-       `Given $z_1 = ${cplx(a, b)}$, $z_2 = ${cplx(c, d)}$, find $|z_1 z_2|$.`],
-      [n(`$${prod}$`), n(`$${m1 + m2}$`), n(`$${prod * prod}$`), n(`$${Math.abs(m1 - m2)}$`)],
-      [`$|z_1 z_2| = |z_1||z_2| = ${m1} \\times ${m2} = ${prod}$（$|z_1| = \\sqrt{${a * a}+${b * b}} = ${m1}$、$|z_2| = ${m2}$）。陷阱：$${m1 + m2}$ 加了模；$${prod * prod}$ 漏了開方。`,
-       `$|z_1 z_2| = |z_1||z_2| = ${prod}$. Trap: $${m1 + m2}$ adds the moduli.`])
-  })
-
 export const m2BankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
@@ -195,6 +162,5 @@ export const m2BankQuestions: Question[] = bank
 // `count` 於 getSubjectTopics() 讀取時按真實題數計算，此處填 0 僅作佔位
 // （見 types.ts 的說明）。
 export const m2BankTopics: Topic[] = topicList([
-  { topic: T.complex, fw: FW.algebra, count: 0 },
   { topic: T.systems, fw: FW.algebra, count: 0 },
 ])

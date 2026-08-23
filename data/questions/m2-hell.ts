@@ -10,7 +10,11 @@ const C = (zh: string, en: string): Pair => [zh, en]
 
 const T = {
   vectors: { id: 'm2_vectors_3d', zh: '三維向量', en: '3-D vectors' },
-  algebra: { id: 'm2_matrix_complex', zh: '矩陣與複數', en: 'Matrices & complex numbers' },
+  // 2026-08-23：原為 'm2_matrix_complex'（矩陣與複數），底下兩條題目一條考
+  // 行列式、一條考複數模長。複數不屬 M2 課程範圍（見 m2-bank.ts 檔頭），
+  // 複數那條已移除；餘下的行列式題直接併入既有的 'matrices' 課題，不另設
+  // 一個同名課題 —— 否則科目頁會出現兩個都叫「矩陣與行列式」的入口。
+  algebra: { id: 'matrices', zh: '矩陣與行列式', en: 'Matrices & Determinants' },
 } satisfies Record<string, TopicMeta>
 const FW = {
   model: { id: 'modelling', zh: '建模能力', en: 'Modelling', emoji: '🏗️' },
@@ -43,16 +47,12 @@ const algebra: Question[] = [
     C('$\\det = ad-bc = (2)(4)-(3)(1) = 8-3 = 5$。\n\n【陷阱】11 計成 $ad+bc$；$-5$ 把 $bc-ad$ 倒轉；8 只取 $ad$。',
       '$\\det = ad-bc = (2)(4)-(3)(1) = 8-3 = 5$.\n\n【Trap】 11 computes $ad+bc$; $-5$ inverts to $bc-ad$; 8 keeps only $ad$.')),
 
-  q(id('al'), T.algebra, FW.model, 'hard', 2023, 2,
-    C('設複數 $z = 3 + 4i$。其模 $|z|$ 為？',
-      'Let the complex number $z = 3 + 4i$. Its modulus $|z|$ is?'),
-    [optm('5'), optm('7'), optm('25'), optm('\\sqrt{7}')],
-    C('$|z|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$。\n\n【陷阱】7 把實部虛部相加（3+4）；25 漏了開方；$\\sqrt7$ 把平方當相加。',
-      '$|z|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$.\n\n【Trap】 7 adds real and imaginary parts (3+4); 25 forgets the square root; $\\sqrt7$ adds instead of squaring.')),
 ]
 
 export const m2HellQuestions: Question[] = [...vectors, ...algebra]
+// ⚠️ T.algebra 【不再】在此登記：它現在指向 'matrices'，而該課題已由
+// m2.ts / m2-bank.ts 登記。兩處同時登記會令科目頁出現兩個一模一樣的
+// 「矩陣與行列式」入口。題目本身照樣掛在 'matrices' 之下，篩得到。
 export const m2HellTopics: Topic[] = topicList([
-  { topic: T.vectors, fw: FW.model,     count: vectors.length },
-  { topic: T.algebra, fw: FW.decompose, count: algebra.length },
+  { topic: T.vectors, fw: FW.model, count: vectors.length },
 ])

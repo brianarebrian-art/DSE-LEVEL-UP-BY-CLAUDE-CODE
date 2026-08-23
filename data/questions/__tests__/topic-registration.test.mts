@@ -147,3 +147,34 @@ test('中文科嘅題目正文維持中文 —— 只譯導覽層，唔譯試題
     `${translated.length} 條中國語文科試題被譯成純英文 —— 呢一科考嘅就係中文本身，譯咗就冇意思。`,
   )
 })
+
+// ── 一個課題唔可以登記兩次 ──────────────────────────────────────────────
+//
+// 2026-08-23：m2-hell.ts 把 T.algebra 指向 'matrices' 之後，同時仲喺自己嘅
+// m2HellTopics 登記多次，於是科目頁出現兩個一模一樣嘅「矩陣與行列式」入口。
+// 一個科目檔案 + 一個 hell／bank 檔案分開登記同一個 id 係好易犯嘅錯，
+// 而且喺代碼上完全睇唔出 —— 要行 runtime 先見到。
+test('每一個課題 id 喺一科之內只可以登記一次', () => {
+  const bad: string[] = []
+  for (const s of getActiveSubjects()) {
+    const seen = new Map<string, number>()
+    for (const t of getSubjectTopics(s.id)) seen.set(t.id, (seen.get(t.id) ?? 0) + 1)
+    for (const [id, n] of seen) if (n > 1) bad.push(`${s.id}/${id} 登記咗 ${n} 次`)
+  }
+  assert.deepEqual(bad, [], `重複登記會令科目頁出現重複入口：\n  ${bad.join('\n  ')}`)
+})
+
+// ── M2 唔可以再有複數 ──────────────────────────────────────────────────
+//
+// 複數屬【必修部分】嘅方程與代數範疇，唔喺數學延伸部分單元二（代數與微積分）
+// 嘅三個範疇之內。2026-08-23 創辦人拍板剷走 31 條（bank 30 + hell 1）。
+test('M2 唔可以有複數題目 —— 唔喺該單元嘅課程範圍', () => {
+  const hit = (getSubjectQuestions('m2') as unknown as Record<string, unknown>[]).filter((q) => {
+    const blob = [q.content, q.contentEn, q.topicZh, q.topicEn].filter((x) => typeof x === 'string').join(' ')
+    return /複數|complex number/i.test(blob)
+  })
+  assert.deepEqual(
+    hit.map((q) => String(q.id)), [],
+    '複數屬必修部分，唔喺 M2 課程範圍 —— 呢啲題應該擺喺 math，唔係 m2',
+  )
+})
