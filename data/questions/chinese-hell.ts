@@ -14,14 +14,15 @@ import { makeQ, topicList, type Pair, type TopicMeta, type FwMeta } from './_bui
 const q = makeQ('chinese')
 const m = (s: string): Pair => [s, s] // 語言科：中英欄同為中文
 
+// 英文名同 chinese.ts 一併於 2026-08-23 補回（NCS 考生的導覽層）。
 const T = {
-  infer:   { id: 'classical_moral_infer', zh: '課外文言・寓意推論', en: '課外文言・寓意推論' },
-  read:    { id: 'classical_passage_read', zh: '課外文言・篇章精讀', en: '課外文言・篇章精讀' },
-  compare: { id: 'classical_compare',      zh: '課外文言・比較閱讀', en: '課外文言・比較閱讀' },
+  infer:   { id: 'classical_moral_infer', zh: '課外文言・寓意推論', en: 'Unseen Classical — Inferring the Moral' },
+  read:    { id: 'classical_passage_read', zh: '課外文言・篇章精讀', en: 'Unseen Classical — Close Reading' },
+  compare: { id: 'classical_compare',      zh: '課外文言・比較閱讀', en: 'Unseen Classical — Comparative Reading' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
-  classic: { id: 'classic', zh: '文言閱讀', en: '文言閱讀', emoji: '🏯' },
+  classic: { id: 'classic', zh: '文言閱讀', en: 'Classical Chinese Reading', emoji: '🏯' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0

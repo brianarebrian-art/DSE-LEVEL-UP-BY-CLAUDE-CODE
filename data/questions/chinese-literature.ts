@@ -6,21 +6,24 @@ import { chineseLiteratureHellQuestions, chineseLiteratureHellTopics } from './c
 const q = makeQ('chinese-literature')
 const m = (s: string): Pair => [s, s]
 
+// 英文名於 2026-08-23 補回，與中國語文科同一批。理由見 chinese.ts：
+// 英文介面的課題 chip 此前全部顯示中文，導覽層讀不懂等於整個課題入口
+// 用不到。⚠️ 只譯導覽層 —— 題目正文、選項、解析一律維持中文。
 const T = {
-  ancient:  { id: 'pre_qin_han',   zh: '先秦兩漢文學', en: '先秦兩漢文學' },
-  tang:     { id: 'tang_poetry',   zh: '唐詩',        en: '唐詩' },
-  song:     { id: 'song_ci',       zh: '宋詞',        en: '宋詞' },
-  yuan:     { id: 'yuan_drama',    zh: '元曲戲劇',    en: '元曲戲劇' },
-  fiction:  { id: 'ming_qing',     zh: '明清小說',    en: '明清小說' },
-  genres:   { id: 'genres',        zh: '文學體裁',    en: '文學體裁' },
-  techniques:{ id: 'techniques',   zh: '寫作手法',    en: '寫作手法' },
-  appreciation:{ id: 'appreciation', zh: '文學鑑賞',  en: '文學鑑賞' },
+  ancient:  { id: 'pre_qin_han',   zh: '先秦兩漢文學', en: 'Pre-Qin and Han Literature' },
+  tang:     { id: 'tang_poetry',   zh: '唐詩',        en: 'Tang Poetry' },
+  song:     { id: 'song_ci',       zh: '宋詞',        en: 'Song Ci Lyrics' },
+  yuan:     { id: 'yuan_drama',    zh: '元曲戲劇',    en: 'Yuan Qu and Drama' },
+  fiction:  { id: 'ming_qing',     zh: '明清小說',    en: 'Ming and Qing Fiction' },
+  genres:   { id: 'genres',        zh: '文學體裁',    en: 'Literary Genres' },
+  techniques:{ id: 'techniques',   zh: '寫作手法',    en: 'Writing Techniques' },
+  appreciation:{ id: 'appreciation', zh: '文學鑑賞',  en: 'Literary Appreciation' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
-  classic: { id: 'classic', zh: '古典文學', en: '古典文學', emoji: '📜' },
-  poetry:  { id: 'poetry',  zh: '詩詞曲',   en: '詩詞曲',   emoji: '🎴' },
-  craft:   { id: 'craft',   zh: '文學鑑賞', en: '文學鑑賞', emoji: '🖌️' },
+  classic: { id: 'classic', zh: '古典文學', en: 'Classical Literature', emoji: '📜' },
+  poetry:  { id: 'poetry',  zh: '詩詞曲',   en: 'Poetry, Ci and Qu', emoji: '🎴' },
+  craft:   { id: 'craft',   zh: '文學鑑賞', en: 'Literary Appreciation', emoji: '🖌️' },
 } satisfies Record<string, FwMeta>
 
 let uid = 0

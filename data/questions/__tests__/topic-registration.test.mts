@@ -32,11 +32,11 @@ const { getActiveSubjects } = await import('../../subjects.ts')
  * 刪走（測試會因為「少咗一個預期孤兒」而紅，逼人更新，唔會靜靜過關）。
  */
 const KNOWN_ORPHANS: Record<string, number> = {
-  // 數學科註冊表冇「近似與誤差」「數系」一類課題。硬塞入 percentage 或 indices
-  // 都係作假 —— 要新增課題定係保留孤兒，屬創辦人決定。
-  'math / 有效數字': 1,
-  'math / 數系判別': 1,
   // M1 唯一嘅孤兒課題。已另開單處理（正確嘅已註冊 id 係 'binomial'）。
+  //
+  // 2026-08-23：math 嘅「有效數字」「數系判別」已經修好 —— 創辦人拍板為數學科
+  // 新增 approximation（近似與誤差）同 number_systems（數系）兩個課題，兩者
+  // 本來就喺必修部分課程指引之內，只係註冊表一直缺席。
   'm1 / binomial_theorem': 10,
 }
 
@@ -95,4 +95,52 @@ test('修正表列出嘅題目，實際 topic 已經係表上嗰個 id', async (
     }
   }
   assert.deepEqual(bad, [], `修正表同 live 題庫對唔上（apply-topic-ids.mts 未跑？）：\n  ${bad.join('\n  ')}`)
+})
+
+// ── 憲章：全站雙語 ────────────────────────────────────────────────────────
+//
+// 2026-08-23：中文科、中國歷史、中國文學三科嘅課題註冊表，英文欄一直填住
+// 中文原文（例如 argument_essay 嘅 en 係「論說文・思辨立意」），於是英文介面
+// 嘅課題 chip 全部顯示中文。決策依據（創辦人 2026-08-23）：非華語（NCS）考生
+// 一樣要應考中國語文，導覽層讀唔明等於成個課題入口用唔到。
+//
+// ⚠️ 只譯【導覽層】。題目正文、選項、解析一律維持中文 —— 中國語文科考嘅就係
+//    中文本身，把試題譯成英文會令呢一科失去意義。呢條測試只掃註冊表。
+test('每一科嘅課題註冊表都要有真正嘅英文名，唔可以填返中文', () => {
+  const CJK = /[一-鿿]/
+  const bad: string[] = []
+  for (const s of getActiveSubjects()) {
+    for (const t of getSubjectTopics(s.id)) {
+      if (CJK.test(String(t.en ?? ''))) bad.push(`${s.id}/${t.id} en=「${t.en}」`)
+      if (CJK.test(String(t.frameworkEn ?? ''))) bad.push(`${s.id}/${t.id} frameworkEn=「${t.frameworkEn}」`)
+    }
+  }
+  assert.deepEqual(bad, [], `${bad.length} 個課題／框架嘅英文欄仍然係中文：\n  ${bad.slice(0, 12).join('\n  ')}`)
+})
+
+// 註冊表啱唔代表畫面啱：逐題嘅 `topicEn` 係獨立欄位，練習頁嘅課題 chip 讀嘅
+// 係佢，唔係註冊表。2026-08-23 實測：中文科 40 條機器閘題目嘅 topicEn 由草稿
+// 帶住中文入庫（「範文名句」「錯別字」…），註冊表補完英文之後畫面依然出中文。
+// 所以呢一條要分開驗。
+test('每一條題目嘅 topicEn 都要有，而且唔可以係中文', () => {
+  const CJK = /[一-鿿]/
+  const bad: string[] = []
+  for (const s of getActiveSubjects()) {
+    for (const q of getSubjectQuestions(s.id) as unknown as Record<string, unknown>[]) {
+      const en = q.topicEn
+      if (typeof en !== 'string' || !en.trim()) { bad.push(`${s.id}/${String(q.id)} 冇 topicEn`); continue }
+      if (CJK.test(en)) bad.push(`${s.id}/${String(q.id)} topicEn=「${en}」`)
+    }
+  }
+  assert.deepEqual(bad, [], `${bad.length} 條題目嘅課題標籤喺英文介面出唔到英文：\n  ${bad.slice(0, 12).join('\n  ')}`)
+})
+
+test('中文科嘅題目正文維持中文 —— 只譯導覽層，唔譯試題', () => {
+  const CJK = /[一-鿿]/
+  const zh = getSubjectQuestions('chinese') as unknown as Record<string, unknown>[]
+  const translated = zh.filter((q) => typeof q.contentEn === 'string' && !CJK.test(q.contentEn as string))
+  assert.equal(
+    translated.length, 0,
+    `${translated.length} 條中國語文科試題被譯成純英文 —— 呢一科考嘅就係中文本身，譯咗就冇意思。`,
+  )
 })
