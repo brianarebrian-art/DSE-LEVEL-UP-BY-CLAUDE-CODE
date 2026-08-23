@@ -15,6 +15,11 @@ export interface ReverseLogEntry {
   // F-REV: 題庫 topic id（practice ?topic= filter 食 id 唔食標籤）。
   // optional：舊記錄冇呢欄，重溫排程會 fallback 去科目層級連結。
   topicId?: string
+  /**
+   * 英文課題名。optional：2026-08-23 之前嘅記錄冇呢欄，讀取端回落中文。
+   * 加呢欄係為咗非華語考生 —— 英文介面之下重溫建議唔應該淨係得中文課題名。
+   */
+  topicEn?: string
   cause: ReverseCause
   selected: string
   correct: string

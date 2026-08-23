@@ -35,6 +35,8 @@ import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
+// 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
+import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
 import { CheckCircle, Lightbulb, ChevronRight, Clock, Brain, Zap, Lock, Coffee } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
@@ -238,6 +240,16 @@ function buildTopicOutcomes(qs: PreparedQuestion[], ans: AnswerState[]) {
   return Object.values(map)
 }
 
+// 第 2 週 · 引擎三：一節練習之中，逐題推導佢觸及邊幾篇指定文言範文。
+// 只喺中文科行 —— 概念網目前只覆蓋十二篇，其他科跑呢段純粹係浪費。
+// 篇名由題幹原文辨認（lib/conceptNet），唔靠人手標註，所以題庫加題唔使改呢度。
+function buildConceptRows(qs: PreparedQuestion[], ans: AnswerState[]) {
+  return qs.map((q, i) => ({
+    texts: textsInQuestion(q.content, q.topicZh),
+    correct: !!ans[i]?.isCorrect,
+  }))
+}
+
 const optionLetters = ['A', 'B', 'C', 'D']
 
 interface SessionProps {
@@ -423,6 +435,7 @@ export default function PracticeSession({
         subjectId,
         questionId: currentQ.id,
         topic: currentQ.topicZh,
+        topicEn: currentQ.topicEn, // 非華語考生：英文介面嘅重溫建議要有英文課題名
         topicId: currentQ.topic, // F-REV: 畀重溫排程砌返正確嘅 ?topic= 連結
         cause,
         selected: answerState.selectedZh,
@@ -512,6 +525,7 @@ export default function PracticeSession({
           score, total: 1, grade: '—', topicResults, elapsed, timestamp: Date.now(),
         })
         recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
+        if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
         clearActiveSession()
         notifyProgressChanged()
         setJustOneDone(true)
@@ -552,6 +566,7 @@ export default function PracticeSession({
       })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
+      if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
       clearActiveSession() // run finished — nothing left to resume, here or on any device
       notifyProgressChanged() // push the cleared state up so other devices stop offering it
       router.push('/result')

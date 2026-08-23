@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  FileText, Bookmark, Timer, Moon, Wrench,
+  FileText, Bookmark, Timer, Moon, Wrench, Network,
 } from 'lucide-react'
 import {
   loadAttempts,
@@ -23,6 +23,8 @@ import MasteryRing from '@/components/MasteryRing'
 import SyncStatus from '@/components/SyncStatus'
 import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
+// 第 2 週 · 引擎四：今日學習光譜（溫柔每日建議，每日最多 3 條，逐條可撳走）
+import GentleSuggestions from '@/components/GentleSuggestions'
 import JustOneCard from '@/components/JustOneCard'
 import GoodTodayCard from '@/components/GoodTodayCard'
 import ArenaCard from '@/components/ArenaCard'
@@ -278,6 +280,11 @@ export default function DashboardPageClient() {
         <ArenaCard className="mb-6" />
         <GoodTodayCard className="mb-6" />
 
+        {/* 第 2 週 · 引擎四：溫柔每日建議。擺喺「今日計劃」之前 ——
+            計劃係一張要做嘅清單，建議係可以撳走嘅一句說話；
+            先出可以撳走嗰樣，個節奏先至係「你揀」而唔係「你欠」。 */}
+        <GentleSuggestions />
+
         {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
         <DailyPlan />
 
@@ -388,6 +395,34 @@ export default function DashboardPageClient() {
             </div>
           </>
         )}
+
+        {/* 第 2 週 · 引擎三：知識概念網入口（中文指定文言範文十二篇）。
+            唔喺 Navbar —— 橫向條實測已迫到 1,024px 斷點。 */}
+        <Link
+          href="/concept-net"
+          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-all"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="w-11 h-11 rounded-xl bg-accent/[0.10] border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
+                <Network size={20} className="text-accent" />
+              </span>
+              <div>
+                <div className="text-sm font-medium text-ink">
+                  {en ? 'Concept map' : '知識概念網'}
+                </div>
+                <div className="text-xs text-ink-muted mt-0.5">
+                  {en
+                    ? 'Chinese · the twelve prescribed classical texts'
+                    : '中國語文 · 指定文言範文十二篇'}
+                </div>
+              </div>
+            </div>
+            <span className="text-xs text-accent shrink-0 group-hover:translate-x-0.5 transition-transform">
+              {en ? 'Open the map →' : '睇版圖 →'}
+            </span>
+          </div>
+        </Link>
 
         {/* Error DNA — distribution of self-diagnosed error causes */}
         <ErrorDNA />

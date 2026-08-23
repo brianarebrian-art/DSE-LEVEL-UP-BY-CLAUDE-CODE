@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
+import { type ReverseCause } from '@/lib/reverseLog'
+// 排程邏輯 2026-08-23 抽咗去 lib/reviewSchedule —— 溫柔每日建議都要用同一套間隔，
+// 兩邊各寫一次遲早會漂走（見該檔案頂註）。
+import { dueReviews, markReviewDone, type DueItem } from '@/lib/reviewSchedule'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 
@@ -14,37 +17,10 @@ import { useLocale } from '@/lib/i18n'
 // 唔係重播一模一樣嗰條題目 —— 卡片文案照直講。
 // 大愛紅線：無「你仲錯／又錯」；用「溫故知新／值得再鞏固」。
 
-const INTERVALS = [1, 3, 7, 14, 30]
-const DONE_KEY = 'dse_review_done'
-
 const CAUSE_TAG: Record<ReverseCause, { zh: string; en: string; cls: string }> = {
   A: { zh: '概念盲區', en: 'Concept', cls: 'bg-rose/[0.10] text-rose border-rose/30' },
   B: { zh: '審題陷阱', en: 'Trap', cls: 'bg-gold/[0.10] text-gold border-gold/30' },
   C: { zh: '運算粗心', en: 'Careless', cls: 'bg-accent/[0.10] text-accent border-accent/30' },
-}
-
-interface DueItem {
-  questionId: string
-  subjectId: string
-  topic: string
-  topicId?: string
-  cause: ReverseCause
-  daysAgo: number
-}
-
-function todayStr(): string {
-  return new Date().toLocaleDateString('en-CA')
-}
-
-// 日曆日差（date-only，避免時分秒誤差）
-function daysBetween(ts: number): number {
-  const a = new Date(ts); a.setHours(0, 0, 0, 0)
-  const b = new Date(); b.setHours(0, 0, 0, 0)
-  return Math.round((b.getTime() - a.getTime()) / 86400000)
-}
-
-function loadDone(): Record<string, string> {
-  try { return JSON.parse(localStorage.getItem(DONE_KEY) ?? '{}') } catch { return {} }
 }
 
 export default function ReviewScheduler() {
@@ -53,30 +29,11 @@ export default function ReviewScheduler() {
   const [due, setDue] = useState<DueItem[] | null>(null)
 
   useEffect(() => {
-    const done = loadDone()
-    const seen = new Set<string>()
-    const items: DueItem[] = []
-    // reverseLog 新喺頭 → 每條題目只取最近一次錯誤
-    for (const e of getReverseLog()) {
-      if (seen.has(e.questionId)) continue
-      seen.add(e.questionId)
-      const days = daysBetween(e.ts)
-      // 到期 = 錯後日數啱好落喺艾賓浩斯間隔，且今日未重溫過
-      if (INTERVALS.includes(days) && done[e.questionId] !== todayStr()) {
-        items.push({ questionId: e.questionId, subjectId: e.subjectId, topic: e.topic, topicId: e.topicId, cause: e.cause, daysAgo: days })
-      }
-    }
-    setDue(items.slice(0, 5)) // 每日最多 5 張卡，避免壓力堆疊
+    setDue(dueReviews())
   }, [])
 
   // 撳「開始重溫」＝當日完成呢條嘅排程（直入該課題操練）
-  const markDone = (questionId: string) => {
-    try {
-      const done = loadDone()
-      done[questionId] = todayStr()
-      localStorage.setItem(DONE_KEY, JSON.stringify(done))
-    } catch { /* ignore */ }
-  }
+  const markDone = markReviewDone
 
   if (!due) return null
 
