@@ -36,9 +36,9 @@ const KNOWN_ORPHANS: Record<string, number> = {
   //
   // · math 嘅「有效數字」「數系判別」—— 創辦人拍板為數學科新增
   //   approximation（近似與誤差）同 number_systems（數系）兩個課題。
-  // · m1 嘅 binomial_theorem —— m1-bank.ts 個 T map 自行開咗個同註冊表唔同
-  //   嘅 id（m1.ts 註冊嘅係 'binomial'）。同 chemistry-bank.ts 嘅
-  //   'mole_concept' 屬同一個病。
+  // · （前 M1 嘅 binomial_theorem 個案已隨 M1 整科移除，2026-08-23）
+  // · chemistry-bank.ts 嘅 'mole_concept' —— 個 T map 自行開咗個同註冊表
+  //   唔同嘅 id，屬同一個病。
   //
   // 呢個表而家係空嘅。任何一條新孤兒都會令測試紅 —— 呢個就係佢嘅用途。
 }
@@ -150,10 +150,12 @@ test('中文科嘅題目正文維持中文 —— 只譯導覽層，唔譯試題
 
 // ── 一個課題唔可以登記兩次 ──────────────────────────────────────────────
 //
-// 2026-08-23：m2-hell.ts 把 T.algebra 指向 'matrices' 之後，同時仲喺自己嘅
-// m2HellTopics 登記多次，於是科目頁出現兩個一模一樣嘅「矩陣與行列式」入口。
+// 2026-08-23 首次觸發：某個 hell 檔案把 T.algebra 指向另一個 id 之後，同時仲喺
+// 自己嘅 topics 陣列重複登記，於是科目頁出現兩個一模一樣嘅入口。
 // 一個科目檔案 + 一個 hell／bank 檔案分開登記同一個 id 係好易犯嘅錯，
 // 而且喺代碼上完全睇唔出 —— 要行 runtime 先見到。
+//（觸發嗰科 M2 已於 2026-08-23 按創辦人科目名單整科移除，但呢條閘對
+//  其餘 23 科一樣生效，所以保留。）
 test('每一個課題 id 喺一科之內只可以登記一次', () => {
   const bad: string[] = []
   for (const s of getActiveSubjects()) {
@@ -164,17 +166,3 @@ test('每一個課題 id 喺一科之內只可以登記一次', () => {
   assert.deepEqual(bad, [], `重複登記會令科目頁出現重複入口：\n  ${bad.join('\n  ')}`)
 })
 
-// ── M2 唔可以再有複數 ──────────────────────────────────────────────────
-//
-// 複數屬【必修部分】嘅方程與代數範疇，唔喺數學延伸部分單元二（代數與微積分）
-// 嘅三個範疇之內。2026-08-23 創辦人拍板剷走 31 條（bank 30 + hell 1）。
-test('M2 唔可以有複數題目 —— 唔喺該單元嘅課程範圍', () => {
-  const hit = (getSubjectQuestions('m2') as unknown as Record<string, unknown>[]).filter((q) => {
-    const blob = [q.content, q.contentEn, q.topicZh, q.topicEn].filter((x) => typeof x === 'string').join(' ')
-    return /複數|complex number/i.test(blob)
-  })
-  assert.deepEqual(
-    hit.map((q) => String(q.id)), [],
-    '複數屬必修部分，唔喺 M2 課程範圍 —— 呢啲題應該擺喺 math，唔係 m2',
-  )
-})

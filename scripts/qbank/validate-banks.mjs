@@ -19,7 +19,7 @@
 //
 // Usage (from the project root):
 //   node scripts/qbank/validate-banks.mjs            # all live parametric banks
-//   node scripts/qbank/validate-banks.mjs math m1    # only these
+//   node scripts/qbank/validate-banks.mjs math physics    # only these
 // Exit code 1 on any hard failure (CI-friendly).
 // ============================================================================
 
@@ -36,8 +36,6 @@ const BANKS = [
   { subject: 'math', file: 'data/questions/math-bank.ts', exportName: 'mathBankQuestions' },
   { subject: 'physics', file: 'data/questions/physics-bank.ts', exportName: 'physicsBankQuestions' },
   { subject: 'chemistry', file: 'data/questions/chemistry-bank.ts', exportName: 'chemistryBankQuestions' },
-  { subject: 'm1', file: 'data/questions/m1-bank.ts', exportName: 'm1BankQuestions' },
-  { subject: 'm2', file: 'data/questions/m2-bank.ts', exportName: 'm2BankQuestions' },
   { subject: 'economics', file: 'data/questions/economics-bank.ts', exportName: 'economicsBankQuestions' },
   { subject: 'bafs', file: 'data/questions/bafs-bank.ts', exportName: 'bafsBankQuestions' },
 ]

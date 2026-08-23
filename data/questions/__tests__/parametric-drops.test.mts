@@ -18,7 +18,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
 // 必須先 import 各 bank：登記冊喺 bank 模組求值時填充。
-for (const f of ['physics-bank', 'chemistry-bank', 'm1-bank', 'm2-bank', 'economics-bank', 'bafs-bank']) {
+for (const f of ['physics-bank', 'chemistry-bank', 'economics-bank', 'bafs-bank']) {
   await import(`../${f}.ts`)
 }
 const { getParametricDrops } = await import('../_parametric.ts')

@@ -14,9 +14,8 @@
 // COVERAGE — this is a SAMPLE, not exhaustive. Covered: physics-bank.ts
 // (pb_e1/e2/e3, pb_m1/m2, pb_h2 — 6 of ~17 families), chemistry-bank.ts
 // (cb_e1, cb_m1, cb_h1, cb_h3 — 4 of ~9 families), math-bank.ts (mb_e1/e2/e3 —
-// 3 of 15 families), m1-bank.ts (m1_e3 content-parsed, m1_e4 id-parsed — 2 of
-// 12 families). NOT covered: the remaining families in these 4 banks, and
-// every other Mode A bank (m2, economics/bafs numeric, etc.) and the earlier
+// 3 of 15 families). NOT covered: the remaining families in these 3 banks, and
+// every other Mode A bank (economics/bafs numeric, etc.) and the earlier
 // math-parametric.ts / *-hell.ts generators. Extend this file's pattern
 // (regex the content, recompute independently, compare to options[0]) when
 // touching an uncovered family, rather than trusting `createBank`'s
@@ -31,7 +30,6 @@ import assert from 'node:assert/strict'
 const { physicsBankQuestions } = await import('../physics-bank.ts')
 const { chemistryBankQuestions } = await import('../chemistry-bank.ts')
 const { mathBankQuestions } = await import('../math-bank.ts')
-const { m1BankQuestions } = await import('../m1-bank.ts')
 
 /** First numeric token in a rendered option string, e.g. "$\frac{1}{2}$ V" mis-parses fractions — only used on options built from plain numbers. */
 function firstNumber(s: string): number {
@@ -188,33 +186,5 @@ test('math mb_e3: percentage increase', () => {
     assert.ok(m, `mb_e3 content format changed, can't parse: ${q.content}`)
     const [, P, r] = m.map(Number)
     closeTo(firstNumber(q.options[0]), (P * (100 + r)) / 100, q.id)
-  }
-})
-
-// ═══════════════════════════════════════════════════════════════════════════
-// m1-bank.ts
-// ═══════════════════════════════════════════════════════════════════════════
-
-test('m1 m1_e3: binomial coefficient C(m, r)', () => {
-  for (const q of byPrefix(m1BankQuestions, 'm1_e3_')) {
-    const m = q.content.match(/\\binom\{(\d+)\}\{(\d+)\}/)
-    assert.ok(m, `m1_e3 content format changed, can't parse: ${q.content}`)
-    const [, mm, r] = m.map(Number)
-    closeTo(firstNumber(q.options[0]), nCr(mm, r), q.id)
-  }
-})
-
-// m1_e4 (binomial mean E(X) = np) parsed from `id` instead of `content`: the
-// content embeds the probability as a LaTeX \frac{p}{q} produced by the same
-// `frac()` helper the bank imports, so parsing it independently would just be
-// re-deriving the bank's own formatting code. The id already encodes the raw
-// (m, pn, pd) generator params, e.g. "m1_e4_20_1_4", giving a genuinely
-// separate check.
-test('m1 m1_e4: binomial mean E(X) = n * p (parsed from id)', () => {
-  for (const q of byPrefix(m1BankQuestions, 'm1_e4_')) {
-    const m = q.id.match(/^m1_e4_(\d+)_(\d+)_(\d+)$/)
-    assert.ok(m, `m1_e4 id format changed, can't parse: ${q.id}`)
-    const [, n, pn, pd] = m.map(Number)
-    closeTo(firstNumber(q.options[0]), (n * pn) / pd, q.id)
   }
 })

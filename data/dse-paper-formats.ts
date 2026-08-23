@@ -175,18 +175,6 @@ export const DSE_PAPER_FORMATS: SubjectPaperFormat[] = [
 
   // ── 真實卷面【冇】MC ────────────────────────────────────────────────────
   {
-    subject: 'm1', hasMC: false, formats: ['long'],
-    papersZh: '單卷傳統題，佔本單元 100%（2½ 小時）—— 全卷冇多項選擇題',
-    papersEn: 'One paper of conventional questions, 100% (2½ h) — no multiple-choice at all',
-    verifiedOn: '2026-08-21', frameworkYear: 2026,
-  },
-  {
-    subject: 'm2', hasMC: false, formats: ['long'],
-    papersZh: '單卷傳統題，佔本單元 100%（2½ 小時）—— 全卷冇多項選擇題',
-    papersEn: 'One paper of conventional questions, 100% (2½ h) — no multiple-choice at all',
-    verifiedOn: '2026-08-21', frameworkYear: 2026,
-  },
-  {
     subject: 'history', hasMC: false, formats: ['structured', 'essay'],
     papersZh: '卷一 資料題 60%（2 小時，全部必答，資料包括文字、統計、地圖、漫畫、照片）；卷二 論述題 40%（1½ 小時，七題選答兩題）—— 全卷冇多項選擇題',
     papersEn: 'Paper 1 data-based questions 60% (2 h, all compulsory; written sources, statistics, maps, cartoons, photographs); Paper 2 seven essay-type questions, attempt any TWO, 40% (1½ h) — no multiple-choice at all',

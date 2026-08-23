@@ -1,5 +1,7 @@
 export type Priority = 'P0' | 'P1' | 'P2' | 'P3' | 'P4'
-export type SubjectCategory = 'core' | 'extended' | 'elective'
+// 'extended'（數學延伸部分 M1／M2）已於 2026-08-23 按創辦人科目名單移除，
+// 故 union 亦一併收窄 —— 留低一個冇成員嘅 category 只會令人以為仲有呢類科目。
+export type SubjectCategory = 'core' | 'elective'
 
 export interface SubjectMeta {
   id: string
@@ -34,36 +36,6 @@ export const subjects: SubjectMeta[] = [
     description: '最多考生、最易改寫、即時批改。10 年試卷提煉 12 個核心邏輯框架。',
     descriptionEn: 'Largest entry, easiest to rewrite, instant marking. 12 core logical frameworks distilled from 10 years of papers.',
     accent: 'amber',
-  },
-  {
-    id: 'm2',
-    name: '數學 M2（代數與微積分）',
-    nameEn: 'Mathematics Extended M2',
-    short: 'M2',
-    shortEn: 'M2',
-    emoji: '📐',
-    category: 'extended',
-    priority: 'P0',
-    hasMC: true,
-    isActive: true,
-    description: '高需求、邏輯清晰。微積分、矩陣、向量、數學歸納法。',
-    descriptionEn: 'High demand, clear logic. Calculus, matrices, vectors and mathematical induction.',
-    accent: 'cyan',
-  },
-  {
-    id: 'm1',
-    name: '數學 M1（微積分與統計）',
-    nameEn: 'Mathematics Extended M1',
-    short: 'M1',
-    shortEn: 'M1',
-    emoji: '📊',
-    category: 'extended',
-    priority: 'P0',
-    hasMC: true,
-    isActive: true,
-    description: '高需求、邏輯清晰。微積分應用、二項分佈、常態分佈。',
-    descriptionEn: 'High demand, clear logic. Applications of calculus, binomial and normal distributions.',
-    accent: 'sky',
   },
 
   // ── P1：理科核心 + 英文 ──
