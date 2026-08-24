@@ -77,29 +77,42 @@ export default function PracticeSupport() {
 
   return (
     <>
-      {/* FIX: [B8] safe-area — 工具角喺 iPhone 上唔會俾 Home Indicator 遮擋 */}
-      <div className="fixed floating-bottom-2 left-4 z-50 no-print flex flex-col items-start gap-2">
-        <button
-          onClick={() => { setFontPanel((v) => !v) }}
-          aria-expanded={fontPanel}
-          title={en ? 'Font size' : '字級調節（12–24px，全站生效）'}
-          className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-surface-raised/90 border-line-strong text-ink-muted hover:text-ink-soft shadow-sm transition-all"
-        >
-          <span className="text-[10px]" aria-hidden>A</span><span aria-hidden>A</span> {en ? 'Size' : '字級'}
-        </button>
-        {fontPanel && (
-          <div className="flex items-center gap-2 bg-surface-raised border border-line-strong shadow-sm rounded-full px-3 py-2">
-            <button onClick={() => setSize(fontPx - 2)} disabled={fontPx <= 12} className="min-w-8 min-h-8 text-ink-soft disabled:text-ink-faint text-sm" aria-label={en ? 'Smaller' : '縮細'}>−</button>
-            <input
-              type="range" min={12} max={24} step={1} value={fontPx}
-              onChange={(e) => setSize(Number(e.target.value))}
-              className="w-24 accent-accent"
-              aria-label={en ? 'Font size' : '字級'}
-            />
-            <button onClick={() => setSize(fontPx + 2)} disabled={fontPx >= 24} className="min-w-8 min-h-8 text-ink-soft disabled:text-ink-faint text-sm" aria-label={en ? 'Larger' : '放大'}>＋</button>
-            <span className="text-[10px] text-ink-muted w-9">{fontPx}px</span>
-          </div>
-        )}
+      {/* FIX: [B8] safe-area — 工具角喺 iPhone 上唔會俾 Home Indicator 遮擋
+
+          HOTFIX-0823：由直排（flex-col）改為橫排（flex-row）。
+          點解要改 —— 喺 iPhone SE（375×667）實測，直排三粒藥丸高 118px，
+          由下而上壓住答題區，四個選項之中【有三個】被遮住（B 19%、C 24%、
+          D 13%）。橫排之後高度由 118px 跌到 34px，選項遮蓋率全部歸零。
+          三個功能一個都冇收埋、冇多一下撳、冇減低可發現性 —— 純粹係
+          佔用形狀由「一條直柱」變成「一條橫帶」。
+          呢種【縱向遮擋】用 `scrollWidth === innerWidth` 係驗唔到嘅：
+          闊度一直都啱，出事嘅係高度。 */}
+      <div className="fixed floating-bottom-2 left-4 z-50 no-print flex flex-row flex-wrap items-center gap-2 max-w-[calc(100vw-2rem)]">
+        {/* relative wrapper：字級滑桿改為浮喺掣上面嘅 popover，唔再參與橫排流，
+            否則滑桿會將成條橫帶推到爆出畫面右邊。 */}
+        <div className="relative">
+          <button
+            onClick={() => { setFontPanel((v) => !v) }}
+            aria-expanded={fontPanel}
+            title={en ? 'Font size' : '字級調節（12–24px，全站生效）'}
+            className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border bg-surface-raised/90 border-line-strong text-ink-muted hover:text-ink-soft shadow-sm transition-all"
+          >
+            <span className="text-[10px]" aria-hidden>A</span><span aria-hidden>A</span> {en ? 'Size' : '字級'}
+          </button>
+          {fontPanel && (
+            <div className="absolute bottom-full left-0 mb-2 flex items-center gap-2 bg-surface-raised border border-line-strong shadow-sm rounded-full px-3 py-2">
+              <button onClick={() => setSize(fontPx - 2)} disabled={fontPx <= 12} className="min-w-8 min-h-8 text-ink-soft disabled:text-ink-faint text-sm" aria-label={en ? 'Smaller' : '縮細'}>−</button>
+              <input
+                type="range" min={12} max={24} step={1} value={fontPx}
+                onChange={(e) => setSize(Number(e.target.value))}
+                className="w-24 accent-accent"
+                aria-label={en ? 'Font size' : '字級'}
+              />
+              <button onClick={() => setSize(fontPx + 2)} disabled={fontPx >= 24} className="min-w-8 min-h-8 text-ink-soft disabled:text-ink-faint text-sm" aria-label={en ? 'Larger' : '放大'}>＋</button>
+              <span className="text-[10px] text-ink-muted w-9">{fontPx}px</span>
+            </div>
+          )}
+        </div>
         <button
           onClick={toggleFont}
           aria-pressed={easyFont}

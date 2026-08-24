@@ -8,7 +8,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 
-const { computeLogEntries, nodeTone, nodeSize, currentStreak, isConsecutive, MOOD_NOTE_MAX } =
+const { computeLogEntries, nodeTone, nodeSize, computeActiveDays, isConsecutive, MOOD_NOTE_MAX } =
   await import('../logicLog.ts')
 const { computeHomestead, ZONES, MAX_LEVEL } = await import('../homestead.ts')
 
@@ -72,17 +72,39 @@ test('節點顏色與大小照規格書分級', () => {
   assert.equal(nodeSize({ questionsCount: 31 }), 'lg')
 })
 
-test('連續日數：昨日做過都算未斷 —— 早上開頁不應見到 0', () => {
-  const entries = computeLogEntries([attempt(noon(1, NOW)), attempt(noon(2, NOW))], [], {}, 30, NOW)
-  assert.equal(currentStreak(entries, NOW), 2)
+test('時間軸連接線：相鄰日子先連，隔一日就唔連', () => {
   assert.equal(isConsecutive('2026-08-22', '2026-08-21'), true)
   assert.equal(isConsecutive('2026-08-22', '2026-08-20'), false)
 })
 
-test('休息幾日之後回來，舊足跡一條都不會消失', () => {
-  const entries = computeLogEntries([attempt(noon(10, NOW)), attempt(noon(11, NOW))], [], {}, 30, NOW)
-  assert.equal(entries.length, 2, '斷了 streak 不等於刪走歷史')
-  assert.equal(currentStreak(entries, NOW), 0, '斷咗就係 0，但呢個數字只用嚟加特效')
+test('累積制：同一日做幾多節都只計一日', () => {
+  const same = [attempt(noon(1, NOW)), attempt(noon(1, NOW)), attempt(noon(1, NOW))]
+  assert.deepEqual(computeActiveDays(same, NOW), { monthly: 1, total: 1 })
+})
+
+test('累積制：中間休息幾日，個數字唔會歸零 —— 呢個就係方案 B 嘅重點', () => {
+  // 第 1 日同第 11 日各做一節，中間斷咗九日。連續制會顯示 0，累積制顯示 2。
+  const gapped = [attempt(noon(1, NOW)), attempt(noon(11, NOW))]
+  assert.equal(computeActiveDays(gapped, NOW).total, 2, '休息唔可以取走已經走過嘅日子')
+})
+
+test('累積制：本月只計本月，總數計晒全部', () => {
+  // NOW = 2026-08-22。noon(40) 落喺 7 月，唔應該計入本月。
+  const spread = [attempt(noon(0, NOW)), attempt(noon(40, NOW))]
+  const out = computeActiveDays(spread, NOW)
+  assert.equal(out.monthly, 1, '上個月嗰日唔應該計入本月')
+  assert.equal(out.total, 2, '但總數要計')
+})
+
+test('累積制：爛時間戳直接略過，唔可以整出 NaN 或者假日數', () => {
+  const junk = [
+    attempt(NOW),
+    { ...attempt(NOW), timestamp: Number.NaN },
+    { ...attempt(NOW), timestamp: undefined as never },
+  ]
+  const out = computeActiveDays(junk, NOW)
+  assert.equal(out.total, 1)
+  assert.ok(Number.isFinite(out.monthly))
 })
 
 test('爛資料不可以令足跡出 NaN', () => {

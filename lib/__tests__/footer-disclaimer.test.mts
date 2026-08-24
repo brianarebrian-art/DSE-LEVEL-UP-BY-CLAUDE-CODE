@@ -47,6 +47,17 @@ test('中文免責聲明講齊「非官方試題」同「獨立改寫」', () =>
   assert.match(body, /等級預測僅供參考/, '憲章 §13 要求同時聲明等級預測只作參考')
 })
 
+// 2026-08-23 第 4 週憲章核對補漏：原本只驗中文版。
+// 非華語考生睇嘅係英文 footer —— 免責聲明對佢哋一樣具法律意義，
+// 唔可以得中文版齊備。
+test('英文免責聲明同中文版同樣完整', () => {
+  const dict = readFileSync(new URL('../dictionary.ts', import.meta.url).pathname, 'utf8')
+  const en = dict.slice(dict.indexOf("disclaimerLabel: 'Disclaimer:'"))
+  assert.match(en, /not official HKEAA papers/i, '英文版要講明並非考評局官方試題')
+  assert.match(en, /independently rewritten/i, '英文版要講明係獨立改寫')
+  assert.match(en, /for reference only/i, '英文版要講明等級預測只作參考')
+})
+
 test('英文免責聲明講齊同樣三件事', () => {
   const body = dictionary.en.footer.disclaimerBody
   assert.match(body, /HKEAA/)

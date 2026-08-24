@@ -20,6 +20,8 @@ import CommandWordText from '@/components/CommandWordText'
 import HourglassTimer from '@/components/HourglassTimer'
 // P1-6-R3: 鎖尾 5 秒溫和提示音（程序化生成，靜默降級）
 import { playLockChime } from '@/lib/lockChime'
+// 第 1 週 · 引擎一：答對輕柔提示音（預設關閉，A11yPanel 可開）
+import { playCorrectChime } from '@/lib/answerChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
 import CalcTipCard from '@/components/CalcTipCard'
 import QuestionProvenance from '@/components/QuestionProvenance'
@@ -33,11 +35,14 @@ import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
+// 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
+import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, XCircle, ChevronRight, Clock, Brain, Zap, Lock, Coffee } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, Clock, Brain, Zap, Lock, Coffee, Timer } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
+import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 // 真相引擎：由歷史錯誤記錄推斷「今次錯誤真正嘅成因」，喺解密卡加一句可執行建議
 import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
@@ -48,6 +53,13 @@ import EmotionThermometer from '@/components/EmotionThermometer'
 import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
+// 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
+import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState } from '@/lib/adaptiveOrder'
+// 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
+import {
+  getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
+  TIMER_OPTIONS, type TimerOption,
+} from '@/lib/questionTimer'
 
 // The forced-lock countdown (seconds) after a wrong answer on a HARD question.
 const LOCKOUT_SECONDS = 60
@@ -221,14 +233,29 @@ function buildTopicResults(qs: PreparedQuestion[], ans: AnswerState[]) {
 
 // Per-topic outcomes keyed by topic ID (+ display label) for the weakness tally.
 function buildTopicOutcomes(qs: PreparedQuestion[], ans: AnswerState[]) {
-  const map: Record<string, { topic: string; label: string; correct: number; total: number }> = {}
+  // labelEn 一併存低 —— 儀表板嘅英文介面先至有課題名睇（非華語考生）
+  const map: Record<
+    string,
+    { topic: string; label: string; labelEn?: string; correct: number; total: number }
+  > = {}
   qs.forEach((q, i) => {
-    const e = map[q.topic] ?? { topic: q.topic, label: q.topicZh, correct: 0, total: 0 }
+    const e =
+      map[q.topic] ?? { topic: q.topic, label: q.topicZh, labelEn: q.topicEn, correct: 0, total: 0 }
     e.total++
     if (ans[i]?.isCorrect) e.correct++
     map[q.topic] = e
   })
   return Object.values(map)
+}
+
+// 第 2 週 · 引擎三：一節練習之中，逐題推導佢觸及邊幾篇指定文言範文。
+// 只喺中文科行 —— 概念網目前只覆蓋十二篇，其他科跑呢段純粹係浪費。
+// 篇名由題幹原文辨認（lib/conceptNet），唔靠人手標註，所以題庫加題唔使改呢度。
+function buildConceptRows(qs: PreparedQuestion[], ans: AnswerState[]) {
+  return qs.map((q, i) => ({
+    texts: textsInQuestion(q.content, q.topicZh),
+    correct: !!ans[i]?.isCorrect,
+  }))
 }
 
 const optionLetters = ['A', 'B', 'C', 'D']
@@ -257,6 +284,11 @@ export default function PracticeSession({
   const subjectMeta = getSubject(subjectId)
 
   const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode))
+  // 第 3 週 · 引擎五：連續答對／答錯狀態。純 session 內存 ——
+  // 唔寫 localStorage：呢個係「今日呢一刻嘅節奏」，唔應該變成一個跟住學生走嘅標籤。
+  const [streak, setStreak] = useState<StreakState>(EMPTY_STREAK)
+  // 學生手動揀嘅層級。有值就永遠蓋過自適應（規格書 §4.6：始終保留手動選擇權）。
+  const [manualTier, setManualTier] = useState<Difficulty | null>(null)
   const [startTime, setStartTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
@@ -345,6 +377,31 @@ export default function PracticeSession({
     return () => clearInterval(id)
   }, [startTime])
 
+  // ── 第 3 週 · 引擎五之二：可選逐題計時 ──────────────────────────────────
+  // 每條題目自己一個計時器。到零【唔會】自動交、唔會跳題、唔會扣任何嘢 ——
+  // 只係出一句「時間到，休息一下」。RestMode 停低幾耐就順延幾耐（同總計時一致）。
+  const [perQTimer, setPerQTimer] = useState<TimerOption>(0)
+  const [qStart, setQStart] = useState(() => Date.now())
+  const [qSpent, setQSpent] = useState(0)
+  useEffect(() => {
+    setPerQTimer(getQuestionTimer())
+  }, [])
+  // 換題就重新計。答咗之後停低 —— 睇解析唔應該計入答題時間。
+  useEffect(() => {
+    setQStart(Date.now())
+    setQSpent(0)
+  }, [current])
+  useEffect(() => {
+    if (perQTimer === 0 || answerState !== null) return
+    const id = setInterval(() => setQSpent(Math.floor((Date.now() - qStart) / 1000)), 1000)
+    return () => clearInterval(id)
+  }, [perQTimer, qStart, answerState])
+  // hideTimer 蓋過計時模式：一句「時間到」本身就係時間壓力，
+  // 藏起數字而留低嗰句等於冇藏過（見 lib/questionTimer 檔頭）。
+  const timerVisible = perQTimer !== 0 && !hideTimer
+  const qLeft = remainingSeconds(perQTimer, qSpent)
+  const qTimeUp = timerVisible && answerState === null && isTimeUp(perQTimer, qSpent)
+
   const currentQ = questions[current]
   const totalQ = questions.length
   const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
@@ -375,10 +432,18 @@ export default function PracticeSession({
       if (answerState !== null || !currentQ) return
       const isCorrect = zh === currentQ.correctZh
       setAnswerState({ selectedZh: zh, isCorrect })
+      // 第 3 週 · 引擎五：更新連續狀態。刻意冇任何 UI 反映呢個數 ——
+      // 「你連續答啱 3 題」睇落係鼓勵，但佢同時令中斷嗰下變成一件事，
+      // 憲章第 7 條唔准出現咁樣嘅懲罰性回饋。所以連續數永遠唔顯示。
+      setStreak((prev) => advanceStreak(prev, isCorrect))
       // 衝擊波：600ms 之後拆走個節點，唔留喺 DOM 度
       setShockIdx(idx)
       if (shockTimer.current) clearTimeout(shockTimer.current)
       shockTimer.current = setTimeout(() => setShockIdx(null), 600)
+      // 第 1 週 · 引擎一：答對輕柔「叮」聲。設定預設關閉，playCorrectChime 內部
+      // 自行檢查，關閉時直接 return。答錯【刻意不設任何音效】——
+      // 用聲音標示答錯等於把錯誤變成一個可聽見的判決，違反憲章第 7 條。
+      if (isCorrect) playCorrectChime()
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
       // F-EMO: 拉分難度（hard = 5** 級）答錯 → 60 秒鎖之前先問感受
@@ -412,6 +477,7 @@ export default function PracticeSession({
         subjectId,
         questionId: currentQ.id,
         topic: currentQ.topicZh,
+        topicEn: currentQ.topicEn, // 非華語考生：英文介面嘅重溫建議要有英文課題名
         topicId: currentQ.topic, // F-REV: 畀重溫排程砌返正確嘅 ?topic= 連結
         cause,
         selected: answerState.selectedZh,
@@ -501,6 +567,7 @@ export default function PracticeSession({
           score, total: 1, grade: '—', topicResults, elapsed, timestamp: Date.now(),
         })
         recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
+        if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
         clearActiveSession()
         notifyProgressChanged()
         setJustOneDone(true)
@@ -541,10 +608,28 @@ export default function PracticeSession({
       })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
+      if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
       clearActiveSession() // run finished — nothing left to resume, here or on any device
       notifyProgressChanged() // push the cleared state up so other devices stop offering it
       router.push('/result')
     } else {
+      // ── 第 3 週 · 引擎五：無聲難度自適應 ────────────────────────────────
+      // 只喺【未做嗰截】入面換位，做完嗰截原封不動，所以 answers[i] 同
+      // questions[i] 永遠對得返。題目集合由頭到尾唔變 → 3:5:2 分毫不變。
+      const nextStreak = advanceStreak(streak, answerState?.isCorrect ?? false)
+      const want = preferredTier(currentQ.difficulty, nextStreak, manualTier)
+      let ordered = questions
+      if (want) {
+        const tail = questions.slice(current + 1)
+        const pick = nextIndex(tail.map((q) => q.difficulty), want)
+        if (pick > 0) {
+          const swapped = [...questions]
+          const at = current + 1
+          ;[swapped[at], swapped[at + pick]] = [swapped[at + pick], swapped[at]]
+          ordered = swapped
+          setQuestions(swapped)
+        }
+      }
       setCurrent((c) => c + 1)
       // v3.0 F1: checkpoint the run so a refresh, a closed tab, or another device can
       // pick it up at exactly this question. Rides the existing synced snapshot.
@@ -553,7 +638,8 @@ export default function PracticeSession({
         subjectId,
         topicFilter: topicFilter ?? null,
         mode,
-        questionIds: questions.map((q) => q.id),
+        // 用重排之後嘅次序 —— 唔係嘅話，refresh 返嚟會見到另一條題
+        questionIds: ordered.map((q) => q.id),
         answers: newAnswers.map((a) => (a ? { selectedZh: a.selectedZh, isCorrect: a.isCorrect } : null)),
         current: current + 1,
         elapsed: Math.floor((Date.now() - startTime) / 1000),
@@ -561,7 +647,7 @@ export default function PracticeSession({
       })
       notifyProgressChanged()
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, manualTier, currentQ])
 
   // Proceed past a question. When a server-signed lock exists, do a final server check
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
@@ -743,6 +829,47 @@ export default function PracticeSession({
                   <Clock size={13} /> {formatTime(elapsed)}
                 </span>
               )}
+              {/* ── 第 3 週 · 引擎五之二：逐題計時（可選，預設關閉）──────────
+                  一粒掣循環 關 → 60 秒 → 90 秒 → 關。刻意做成一粒細掣而唔係
+                  一版設定：計時模式應該一撳就開、一撳就熄，唔使入設定搵。
+                  隱藏計時器開咗就成粒掣都唔出 —— 唔應該喺嗰個模式下再提時間。 */}
+              {!hideTimer && (
+                <span className="flex items-center gap-1.5">
+                  {perQTimer !== 0 && (
+                    <span
+                      className={qLeft === 0 ? 'text-gold' : 'text-ink-muted'}
+                      style={{ fontVariantNumeric: 'tabular-nums' }}
+                    >
+                      {formatTime(qLeft)}
+                    </span>
+                  )}
+                  <button
+                    onClick={() => {
+                      const i = TIMER_OPTIONS.indexOf(perQTimer)
+                      const nextOpt = TIMER_OPTIONS[(i + 1) % TIMER_OPTIONS.length]
+                      setPerQTimer(nextOpt)
+                      setQuestionTimer(nextOpt)
+                      setQStart(Date.now())
+                      setQSpent(0)
+                    }}
+                    aria-label={
+                      perQTimer === 0
+                        ? tr('開啟逐題計時（可選）', 'Turn on the optional per-question timer')
+                        : tr(`逐題計時 ${perQTimer} 秒，撳一下換設定`, `Per-question timer ${perQTimer}s — tap to change`)
+                    }
+                    title={tr('逐題計時：關 / 60 秒 / 90 秒。時間到唔會強制結束。',
+                              'Per-question timer: off / 60s / 90s. Time-up never ends anything.')}
+                    className={`inline-flex items-center gap-1 min-h-11 px-2 -my-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
+                      perQTimer === 0 ? 'text-ink-faint hover:text-ink-muted' : 'text-accent'
+                    }`}
+                  >
+                    <Timer size={13} aria-hidden />
+                    <span className="text-[11px]">
+                      {perQTimer === 0 ? tr('計時', 'Timer') : `${perQTimer}s`}
+                    </span>
+                  </button>
+                </span>
+              )}
               {/* B2: 休息入口 —— 放喺計時器隔籬而唔係再開一個浮動掣（右下角已有情緒
                   支援掣、左下角有無障礙面板）。撳完計時停低，返嚟自動順延。 */}
               <button
@@ -795,6 +922,17 @@ export default function PracticeSession({
             )}
           </p>
 
+          {/* ── 第 3 週 · 引擎五之二：時間到 ──────────────────────────────
+              規格書 §4.9：「時間到，休息一下」。到此為止 —— 唔會自動交、
+              唔會跳題、唔會封住選項、唔會記低你超時。學生想繼續就繼續。
+              金色（發現／提醒），唔用紅色。 */}
+          {qTimeUp && (
+            <p className="blindspot-in mb-4 text-sm text-gold">
+              {tr('時間到 —— 唞一唞都得，想繼續就繼續，冇嘢會因為咁而改變。',
+                  'Time’s up — take a breather if you like. Carry on whenever; nothing changes because of it.')}
+            </p>
+          )}
+
           {/* Options */}
           <div className="space-y-3">
             {currentQ.shuffledOptions.map((opt, idx) => {
@@ -809,23 +947,31 @@ export default function PracticeSession({
                 if (isCorrectOpt) {
                   style = 'border-accent bg-accent/[0.10] cursor-default'
                 } else if (isSelectedWrong) {
-                  style = 'border-rose bg-rose/[0.10] cursor-default'
+                  // 規格書 §4.2：答錯【不出現紅色】。金色 = 「發現盲點」的語意，
+                  // 與 60 秒冷靜艙、盲點修復卷一致；玫紅保留給系統級提醒。
+                  style = 'border-gold bg-gold/[0.08] cursor-default'
                 } else {
                   style = 'border-line bg-surface-sunken opacity-50 cursor-default'
                 }
               }
+
+              // 第 1 週 · 引擎一：答對時正確選項輕柔綠色脈衝（600ms，與答錯衝擊波同長）
+              const pulse =
+                answerState !== null && answerState.isCorrect && isCorrectOpt && shockIdx === idx
+                  ? ' pulse-correct'
+                  : ''
 
               return (
                 <button
                   key={idx}
                   onClick={() => selectOption(opt.zh, idx)}
                   disabled={answerState !== null}
-                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}`}
+                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}${pulse}`}
                 >
                   {shockIdx === idx && (
                     <span
                       aria-hidden
-                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-pink' : ''}`}
+                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-gold' : ''}`}
                     />
                   )}
                   <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
@@ -837,8 +983,10 @@ export default function PracticeSession({
                   {answerState !== null && isCorrectOpt && (
                     <CheckCircle size={18} className="text-accent ml-auto shrink-0 mt-0.5" />
                   )}
+                  {/* 規格書 §4.2 + 憲章第 7 條：答錯【不用大紅交叉】。
+                      燈泡 = 「你發現咗一個新盲點」，同一個符號貫穿全站錯題語境。 */}
                   {isSelectedWrong && (
-                    <XCircle size={18} className="text-rose ml-auto shrink-0 mt-0.5" />
+                    <Lightbulb size={18} className="text-gold ml-auto shrink-0 mt-0.5" />
                   )}
                 </button>
               )
@@ -853,6 +1001,11 @@ export default function PracticeSession({
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
                  3-way reverse-cause self-diagnosis. Calm gold, reflective (因材施教). */
               <div className="rounded-2xl p-6 mb-4 border border-gold/40 bg-gold/[0.06]">
+                {/* 規格書 §4.2：答錯的第一句【不是】「錯咗」，而是「發現咗盲點」。
+                    400ms 淡入，無縮放無過衝 —— 過衝曲線讀落似慶祝，語意不符。 */}
+                <p className="blindspot-in text-gold font-medium text-base mb-3">
+                  {tr('你發現咗一個新盲點💡', 'You just found a new blind spot 💡')}
+                </p>
                 <div className="flex items-center gap-2 mb-1">
                   <Lock size={18} className="text-gold" />
                   <span className="text-gold font-medium tracking-wide text-sm">
@@ -919,7 +1072,9 @@ export default function PracticeSession({
                     {(() => {
                       const c = REVERSE_CAUSES.find((x) => x.key === diagnosed)
                       return (
-                        <p className="text-xs text-rose mb-3 leading-relaxed">
+                        /* 規格書 §4.2：呢句係「已記錄」嘅確認訊息，唔係警示。
+                           原本用玫紅，喺答錯回饋鏈入面讀落似再責備多一次；改金色。 */
+                        <p className="text-xs text-gold mb-3 leading-relaxed">
                           {tr('已記錄錯因：', 'Logged cause: ')}
                           <strong>{c ? `${c.emoji} ${tr(c.zh, c.en)}` : ''}</strong>
                           {tr(' → 已寫入逆向錯題本。', ' → saved to your reverse error log.')}
@@ -1009,9 +1164,12 @@ export default function PracticeSession({
                 {followup && (
                   /* F-EMO: gentleLock（揀咗「有啲失落」）⇒ 強制柔和呈現 + 溫和標題，
                      教學法不變（60 秒 + 反思題照舊），只改語氣同色調 */
-                  <div className={`rounded-2xl p-5 mb-4 border-2 ${(calmLock || gentleLock) ? 'border-gold/40 bg-surface' : 'border-rose/45 bg-surface'}`}>
+                  /* 規格書 §4.2：60 秒冷靜艙屬答錯回饋鏈的一環，同樣【不出現紅色】。
+                     原本非柔和模式用 border-rose/45 + text-rose，已統一為金色。
+                     柔和模式（calmLock／gentleLock）保留較淡的邊框，只差飽和度。 */
+                  <div className={`rounded-2xl p-5 mb-4 border-2 bg-surface ${(calmLock || gentleLock) ? 'border-gold/40' : 'border-gold/60'}`}>
                     <div className="flex items-center justify-between mb-3">
-                      <span className={`flex items-center gap-2 font-medium text-sm tracking-wide ${(calmLock || gentleLock) ? 'text-gold' : 'text-rose'}`}>
+                      <span className="flex items-center gap-2 font-medium text-sm tracking-wide text-gold">
                         <Lock size={16} />{' '}
                         {gentleLock
                           ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
@@ -1059,7 +1217,8 @@ export default function PracticeSession({
                         let st = 'border-line-strong bg-surface-sunken hover:border-accent/40 cursor-pointer'
                         if (followupPick !== null) {
                           if (isCorrectOpt) st = 'border-accent bg-accent/[0.10]'
-                          else if (picked) st = 'border-rose bg-rose/[0.10]'
+                          // 規格書 §4.2：自診反思題揀錯同樣【不出現紅色】，統一金色
+                          else if (picked) st = 'border-gold bg-gold/[0.08]'
                           else st = 'border-line bg-surface-sunken opacity-50'
                         }
                         return (
@@ -1075,7 +1234,8 @@ export default function PracticeSession({
                       })}
                     </div>
                     {followupPick !== null && !followupCorrect && (
-                      <p className="text-xs text-rose mt-2">
+                      /* 規格書 §4.2：重試提示唔可以用紅色 —— 呢句係邀請再試，唔係判錯。 */
+                      <p className="text-xs text-gold mt-2">
                         {tr('再諗深一層 —— 揀返最能根治呢個錯因嘅做法。',
                             'Think again — pick the approach that actually fixes this error type.')}
                       </p>
@@ -1112,6 +1272,40 @@ export default function PracticeSession({
                     <>{t.practice.next} <ChevronRight size={18} /></>
                   )}
                 </button>
+
+                {/* ── 第 3 週 · 引擎五：手動選擇下一題層級 ──────────────────────
+                    規格書 §4.6 設計原則：始終保留手動選擇權。
+                    刻意擺喺「下一題」掣【之後】，而且只喺答咗之後先出現 ——
+                    題目仲喺度嗰陣多一行控制項，係搶緊專注度（憲章 §8.1 約束 3：
+                    遊戲化層唔可以侵蝕練習流程）。
+                    亦刻意唔顯示自適應而家想俾你邊個層級 —— 顯示咗就唔再係「無聲」。 */}
+                {current + 1 < totalQ && (
+                  <div className="mt-3 flex items-center justify-center gap-1.5 flex-wrap text-[11px]">
+                    <span className="text-ink-muted">{tr('下一題想要：', 'Next one:')}</span>
+                    {([null, 'easy', 'medium', 'hard'] as const).map((tier) => {
+                      const on = manualTier === tier
+                      // 字直接由 lib/difficulty 攞 —— 唔可以喺呢度另開一套叫法，
+                      // 否則同一個層級喺徽章同選擇器會有兩個名。
+                      const label = tier === null
+                        ? tr('跟我節奏', 'My pace')
+                        : tr(TIER_REQUEST_LABELS[tier].zh, TIER_REQUEST_LABELS[tier].en)
+                      return (
+                        <button
+                          key={tier ?? 'auto'}
+                          onClick={() => setManualTier(tier)}
+                          aria-pressed={on}
+                          className={`px-2.5 py-1 rounded-full border transition-colors ${
+                            on
+                              ? 'border-accent/50 text-accent bg-accent/[0.10]'
+                              : 'border-line text-ink-muted hover:text-ink-soft'
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
               </>
             )}
           </div>
@@ -1122,7 +1316,9 @@ export default function PracticeSession({
           {Array.from({ length: totalQ }).map((_, i) => {
             let color = 'bg-line'
             if (i < answers.length) {
-              color = answers[i]?.isCorrect ? 'bg-accent' : 'bg-rose'
+              // 規格書 §4.2 + 憲章第 7 條：一行紅點就係一行判決。
+              // 答錯改用金色（發現盲點），同答啱嘅青色一樣清晰可辨，但唔帶責備。
+              color = answers[i]?.isCorrect ? 'bg-accent' : 'bg-gold'
             } else if (i === current) {
               color = 'bg-accent-strong'
             }

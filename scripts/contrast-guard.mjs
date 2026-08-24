@@ -179,7 +179,7 @@ function darkRanges(src) {
   return ranges
 }
 
-const ROOTS = ['app', 'components']
+const ROOTS = ['app', 'components', 'lib']
 const walk = (dir, out = []) => {
   if (!fs.existsSync(dir)) return out
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {

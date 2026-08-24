@@ -94,7 +94,10 @@ export default function HomePage() {
 
       {/* ── HERO ── */}
       <section className="relative px-4 pt-20 pb-24">
-        <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
+        {/* 裝飾光暈。w-full max-w-[560px]：以前寫死 w-[560px]，喺 375px 機上左右各爆 93px，
+            令 Chrome 將版面視窗由 375 撐大到 467（＝成頁自動縮細 20%，字細咗一圈，
+            對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
+        <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
           <div className="animate-on-scroll mb-8 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.07] px-4 py-2 text-sm font-medium text-accent">
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />

@@ -145,6 +145,48 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ───────────────────────────────────────────────────────────────────────────
+   橫向溢出保險（HOTFIX-0823 第三階段）
+   --------------------------------------------------------------------------
+   點解要有：手機 Chrome 遇到內容闊過視窗時，唔係出橫向捲軸，而係【自動撐大
+   版面視窗】—— 375px 機上量到 innerWidth 變 467，成頁跟住縮細到 80%。字細一
+   圈，對讀寫障礙、弱視同 SEN 考生直接就係無障礙倒退，而且 `scrollWidth ===
+   innerWidth` 呢個常見檢查【驗唔到】（兩邊一齊變大，永遠相等）。
+
+   用 clip 唔用 hidden：`overflow: hidden` 會令元素變成捲動容器，
+   `position: sticky` 嘅子元素（relax 頁 NowPlayingBar）會失效；`clip` 只裁剪、
+   唔建立捲動容器。先寫 hidden 做舊瀏覽器後備，再寫 clip 畀支援嘅覆蓋。
+
+   ⚠️ 呢層係安全網，唔係修理。真正嘅溢出要喺元件度解決 —— 靠呢度冚住會令問題
+   喺 iOS Safari 舊版走返出嚟。scripts/responsive-guard.mjs 會靜態攔截高風險寫法。
+   ─────────────────────────────────────────────────────────────────────────── */
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* 媒體元素永遠唔可以爆出容器（題目幾何圖、圖表、截圖） */
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+/* 長字串斷行：英文長詞、URL、化學式、DNA 編碼喺 375px 窄欄會撐爆容器。
+   用 overflow-wrap 唔用 `word-break: break-all` —— break-all 會喺中文同英文
+   單詞中間亂斷，反而更難讀。 */
+body {
+  overflow-wrap: break-word;
+}
+
 .katex {
   font-size: 1em;
 }
@@ -209,9 +251,6 @@ html {
   animation: slide-up 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
 }
 
-.grade-bar-fill {
-  animation: fill-bar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
 
 /* Calm, sober feedback only — the gamification layer (flame / combo / shake /
    jackpot / rank shimmer / gacha cyber theme) was removed in the deep-work pivot. */
@@ -297,25 +336,6 @@ html {
     border: 1px dashed #94a3b8 !important;
     background: #ffffff !important;
   }
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   Wrong-answer lockout overlay pulse (see PracticeSession.tsx)
-   「閃爍」is deliberately a SLOW pulse / neon breathe (~1.6–1.8s per cycle, well
-   under 3 flashes/sec) so it reads as menacing WITHOUT the photosensitive-seizure
-   risk of a hard strobe. prefers-reduced-motion disables it entirely.
-   ─────────────────────────────────────────────────────────────────────────── */
-
-/* Soft red pulse — used by the wrong-answer lockout overlay (NOT a hard strobe;
-   prefers-reduced-motion disables it). */
-@keyframes hell-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); opacity: 1; }
-  50%      { box-shadow: 0 0 12px 2px rgba(220, 38, 38, 0.6); opacity: 0.9; }
-}
-.animate-hell-pulse { animation: hell-pulse 1.6s ease-in-out infinite; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-hell-pulse { animation: none; }
 }
 
 /* 骨架屏（載入佔位）。純 CSS，零套件。
@@ -537,8 +557,10 @@ html[data-bottomnav='on'] {
 }
 
 /* ── §2.5 答題衝擊波 ────────────────────────────────────────────────────
-   由掣中心擴散。答錯用霓虹粉，力度同答啱【一致】—— 規格書 §0 明訂
-   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。 */
+   由掣中心擴散。力度同答啱【一致】—— 規格書 §0 明訂
+   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。
+   2026-08-23：答錯版本由霓虹粉（.shockwave-pink）改為金色（.shockwave-gold），
+   見下方「第 1 週 · 引擎一」段落 —— 規格書 §4.2 要求答錯【不出現紅色】。 */
 .shockwave {
   position: absolute;
   left: 50%;
@@ -551,12 +573,64 @@ html[data-bottomnav='on'] {
   background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, transparent 70%);
   animation: shockwave-expand 600ms ease-out forwards;
 }
-.shockwave-pink {
-  background: radial-gradient(circle, rgba(255, 0, 110, 0.4) 0%, transparent 70%);
-}
 @keyframes shockwave-expand {
   from { width: 0; height: 0; opacity: 1; }
   to { width: 300px; height: 300px; opacity: 0; }
+}
+
+/* ── 第 1 週 · 引擎一：溫暖即時反饋 ──────────────────────────────────────
+   規格書 §4.2。三條規則貫穿以下所有動畫：
+     1. 答錯【不出現紅色】—— 答錯的衝擊波由霓虹粉改為金色（.shockwave-gold），
+        與「發現盲點」的金色語意一致；紅色只保留給真正的系統錯誤提示。
+     2. 答錯與答對的動畫【時長、幅度、緩動曲線完全相同】—— 憲章第 7 條要求
+        答錯的回饋力度與答對一致，故此處刻意沒有 shake、沒有加速、沒有放大。
+     3. 全部動畫均在 prefers-reduced-motion 及一鍵舒適模式下靜止（見文末降級層）。 */
+
+/* 答對：輕柔綠色脈衝。用 box-shadow 擴散，不改動 layout，不觸發 reflow。
+   峰值透明度 0.30 —— 屬「察覺得到但不奪目」的層級，非慶祝式閃光。 */
+.pulse-correct {
+  animation: pulse-correct 600ms ease-out forwards;
+}
+@keyframes pulse-correct {
+  0% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.30); }
+  100% { box-shadow: 0 0 0 12px rgba(0, 245, 212, 0); }
+}
+
+/* 答錯：金色衝擊波，時長與 .shockwave 完全相同（600ms ease-out）。 */
+.shockwave-gold {
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.4) 0%, transparent 70%);
+}
+
+/* 「你發現咗一個新盲點💡」淡入。只有透明度與 4px 上移，
+   沒有縮放及過衝 —— 過衝曲線會讀成慶祝，語意不符。 */
+.blindspot-in {
+  animation: blindspot-in 400ms ease-out both;
+}
+@keyframes blindspot-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 第 1 週 · 引擎二：個人微進度 ───────────────────────────────────────
+   掌握度圓環由 0 描到目標值。stroke-dashoffset 由 inline style 提供終值，
+   動畫只負責由「空環」過渡到該終值，故此處用 CSS 變數接力。 */
+.ring-draw {
+  animation: ring-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes ring-draw {
+  from { stroke-dashoffset: var(--ring-circumference); }
+}
+
+/* 能力雷達圖：多邊形由中心展開。transform-box: fill-box 令 SVG 內部
+   的 transform-origin 以圖形自身為準，而非整個 viewport。 */
+.radar-grow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: radar-grow 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes radar-grow {
+  from { transform: scale(0.2); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 /* ── §2.6 連擊火焰條 ────────────────────────────────────────────────────
@@ -569,8 +643,6 @@ html[data-bottomnav='on'] {
     0 -8px 40px rgba(var(--flame-rgb), 0.2);
   animation: flame-pulse var(--flame-speed) ease-in-out infinite;
 }
-.combo-flame-yellow { --flame-rgb: 254, 228, 64; }
-.combo-flame-pink { --flame-rgb: 255, 0, 110; --flame-speed: 0.75s; }
 @keyframes flame-pulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
@@ -637,6 +709,33 @@ html.font-easy .carousel-card {
 }
 html.font-easy .shockwave { display: none !important; }
 
+/* 第 1 週新增動畫同樣受一鍵舒適模式管轄 —— 整層關掉，唔係調慢（憲章第 7 條）。
+   圓環／雷達圖保留最終狀態，資訊唔可以因為關動畫而消失。 */
+html.font-easy .pulse-correct,
+html.font-easy .blindspot-in,
+html.font-easy .ring-draw,
+html.font-easy .radar-grow {
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 1;
+}
+
+/* 2026-08-23 第 4 週 SEN 審核補漏：入場動畫、骨架呼吸、指令字淡入。
+   憲章 §8.1 約束 4 要求一鍵舒適模式將裝飾層【整層關掉】，唔係調慢。
+   .cmd-hl 只係熄咗個淡入 —— 高亮本身係資訊（指令字），要留低；
+   熄嘅只係佢點樣出現。
+   刻意【唔】收 .hourglass-stream：沙漏個沙流係 60 秒鎖嘅時間讀數，
+   凍住佢等於攞走一個功能性指示，唔屬於裝飾層。 */
+html.font-easy .animate-slide-up,
+html.font-easy .animate-pop-in,
+html.font-easy .skeleton,
+html.font-easy .cmd-hl {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1;
+}
+
 /* ── 降級 3：prefers-reduced-motion —— 一切靜止，保留最終狀態 ────────── */
 @media (prefers-reduced-motion: reduce) {
   .particle-bg,
@@ -652,4 +751,29 @@ html.font-easy .shockwave { display: none !important; }
   .achievement-pop { transform: none; opacity: 1; }
   .carousel-card:hover { transform: none; }
   .shockwave { display: none !important; }
+
+  /* 第 1 週新增動畫：一律靜止，保留最終狀態。 */
+  .pulse-correct,
+  .blindspot-in,
+  .ring-draw,
+  .radar-grow {
+    animation: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 1;
+  }
+
+  /* ── 2026-08-23 第 4 週 SEN 審核補漏 ──────────────────────────────────
+     .animate-slide-up 同 .animate-pop-in 由一開始就冇納入呢個區塊，
+     但佢哋係全站用得最多嘅入場動畫 —— 答題回饋面板就係用 slide-up。
+     即係話：開咗系統「減少動態效果」嘅前庭敏感用戶，每答一題都照樣
+     見到成塊面板由下面 20px 掹上嚟。呢個係最應該由呢個設定擋住嘅嘢。
+     兩個 keyframes 嘅起點都係 opacity 0，所以要明確寫返 opacity 1，
+     唔係就會變成成塊嘢消失。 */
+  .animate-slide-up,
+  .animate-pop-in {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  FileText, Bookmark, Timer, Moon, Wrench,
+  FileText, Bookmark, Timer, Moon, Wrench, Network,
 } from 'lucide-react'
 import {
   loadAttempts,
@@ -16,11 +16,17 @@ import {
 import { getSubject } from '@/data/subjects'
 import { gradeBgColors } from '@/lib/grading'
 import { useLocale } from '@/lib/i18n'
-import { getTopicStats, weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
+import { getTopicStats, weakestTopics, winRate, topicLabel, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
+// 第 1 週 · 引擎二：課題掌握度圓環（純 SVG，只顯示百分比，無等級）
+import MasteryRing from '@/components/MasteryRing'
 import SyncStatus from '@/components/SyncStatus'
 import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
+// 第 2 週 · 引擎四：今日學習光譜（溫柔每日建議，每日最多 3 條，逐條可撳走）
+import GentleSuggestions from '@/components/GentleSuggestions'
+// 第 3 週 · 引擎二之二：個人進度時間軸（只同自己上一段時間比）
+import PersonalTimeline from '@/components/PersonalTimeline'
 import JustOneCard from '@/components/JustOneCard'
 import GoodTodayCard from '@/components/GoodTodayCard'
 import ArenaCard from '@/components/ArenaCard'
@@ -159,7 +165,11 @@ export default function DashboardPageClient() {
   const radarAxes = [...topics]
     .sort((a, b) => b.total - a.total)
     .slice(0, 6)
-    .map((e) => ({ label: e.label, value: winRate(e) }))
+    .map((e) => ({ label: topicLabel(e, en), value: winRate(e) }))
+  // 第 1 週 · 引擎二：掌握度圓環取練得最多嘅 8 個課題。
+  // 上限 8 個係為咗唔好一次過鋪成一版數字牆 —— 資訊過載本身就係壓力源。
+  const masteryTopics = [...topics].sort((a, b) => b.total - a.total).slice(0, 8)
+
   // ROI: topics the user has a solid grip on (≥70% win rate over a real sample).
   const conquered = topics.filter((e) => e.total >= 4 && winRate(e) >= 0.7).length
   const onRepair = () => {
@@ -272,6 +282,11 @@ export default function DashboardPageClient() {
         <ArenaCard className="mb-6" />
         <GoodTodayCard className="mb-6" />
 
+        {/* 第 2 週 · 引擎四：溫柔每日建議。擺喺「今日計劃」之前 ——
+            計劃係一張要做嘅清單，建議係可以撳走嘅一句說話；
+            先出可以撳走嗰樣，個節奏先至係「你揀」而唔係「你欠」。 */}
+        <GentleSuggestions />
+
         {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
         <DailyPlan />
 
@@ -344,6 +359,76 @@ export default function DashboardPageClient() {
             </div>
           </div>
         </div>
+
+        {/* ── 第 1 週 · 引擎二：課題掌握度圓環 ────────────────────────────
+            規格書 §4.3。資料源 100% 本機 localStorage（lib/topicStats），
+            冇新增任何數據表，亦冇任何跨用戶數據。
+            排序用「已答題數」而非勝率 —— 用勝率排會令做得最差嘅課題永遠置頂，
+            每次開儀表板都被迎面撞一次，違反憲章第 7 條。 */}
+        {masteryTopics.length > 0 && (
+          <>
+            <h2 className="text-lg font-medium mb-1 text-ink">
+              {en ? 'Topic mastery' : '課題掌握度'}
+            </h2>
+            <p className="text-xs text-ink-muted mb-4">
+              {en
+                ? 'Your own record only — nobody else’s numbers appear here.'
+                : '只計你自己嘅紀錄 —— 呢度唔會出現其他人嘅數字。'}
+            </p>
+            <div className="bg-surface-raised border border-line rounded-2xl p-5 mb-10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-6">
+                {masteryTopics.map((e) => (
+                  <MasteryRing
+                    /* key 用 `${subjectId}::${topicId}` 複合鍵 —— 同一個 topic id
+                       可以喺唔同科目重複出現（例：math 同 m1 都有「概率」）。 */
+                    key={e.key}
+                    label={topicLabel(e, en)}
+                    correct={e.total - e.wrong}
+                    total={e.total}
+                  />
+                ))}
+              </div>
+              {/* 規格書 §4.3：唔出「未完成」標記，用「持續進步中」代替 */}
+              <p className="text-[11px] text-ink-muted mt-5 text-center leading-relaxed">
+                {en
+                  ? 'Still growing — every attempt moves a ring.'
+                  : '持續進步中 —— 每答一題，就有一個圓環會郁。'}
+              </p>
+            </div>
+          </>
+        )}
+
+        {/* 第 2 週 · 引擎三：知識概念網入口（中文指定文言範文十二篇）。
+            唔喺 Navbar —— 橫向條實測已迫到 1,024px 斷點。 */}
+        <Link
+          href="/concept-net"
+          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-all"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="w-11 h-11 rounded-xl bg-accent/[0.10] border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
+                <Network size={20} className="text-accent" />
+              </span>
+              <div>
+                <div className="text-sm font-medium text-ink">
+                  {en ? 'Concept map' : '知識概念網'}
+                </div>
+                <div className="text-xs text-ink-muted mt-0.5">
+                  {en
+                    ? 'Chinese · the twelve prescribed classical texts'
+                    : '中國語文 · 指定文言範文十二篇'}
+                </div>
+              </div>
+            </div>
+            <span className="text-xs text-accent shrink-0 group-hover:translate-x-0.5 transition-transform">
+              {en ? 'Open the map →' : '睇版圖 →'}
+            </span>
+          </div>
+        </Link>
+
+        {/* 第 3 週 · 引擎二之二：個人進度時間軸。擺喺課題掌握度同錯題指紋之間 ——
+            掌握度講「而家點」，時間軸講「同上一段時間比點」，錯題指紋講「點解」。 */}
+        <PersonalTimeline />
 
         {/* Error DNA — distribution of self-diagnosed error causes */}
         <ErrorDNA />

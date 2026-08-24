@@ -14,6 +14,14 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Offline tooling (gen-questions, _scan) — already excluded from the build typecheck.
     "**/*.mts",
+    // Agent scaffolding. `.claude/worktrees/` holds git worktrees checked out
+    // INSIDE the repo, i.e. entire duplicate copies of this codebase — without
+    // this, a bare `npx eslint` lints the copy too and reported 12,038 problems
+    // (2,237 errors) that do not exist in the real source. Nothing under
+    // `.claude/` ships; it currently holds only launch.json and worktrees/,
+    // so ignoring the whole directory costs no real coverage and also covers
+    // any worktree a future session creates.
+    ".claude/**",
   ]),
   {
     // This app deliberately hydrates localStorage in mount effects across many

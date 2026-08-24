@@ -2,9 +2,11 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, X } from 'lucide-react'
+import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, Volume2, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
+// 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
+import { ANSWER_SOUND_KEY, isAnswerSoundOn, playCorrectChime } from '@/lib/answerChime'
 import {
   applyFontSize,
   applyTextSpacing,
@@ -47,6 +49,7 @@ export default function A11yPanel() {
   const [size, setSize] = useState(16)
   const [easy, setEasy] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
+  const [sound, setSound] = useState(false)
   const [ruler, setRuler] = useState(false)
   // B1（2026-07-22）：行距／字間距，同字級一樣即時生效 + 存 localStorage
   const [lineH, setLineH] = useState(DEFAULT_LINE_HEIGHT)
@@ -59,6 +62,7 @@ export default function A11yPanel() {
       if (s >= MIN && s <= MAX) setSize(s)
       setEasy(localStorage.getItem(EASY_KEY) === '1')
       setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
+      setSound(isAnswerSoundOn())
       const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       setRuler(!!r?.on)
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
@@ -77,6 +81,7 @@ export default function A11yPanel() {
       try {
         setEasy(localStorage.getItem(EASY_KEY) === '1')
         setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
+        setSound(isAnswerSoundOn())
         const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
         setRuler(!!r?.on)
       } catch {
@@ -129,16 +134,37 @@ export default function A11yPanel() {
     })
   }, [])
 
+  // 第 1 週 · 引擎一：答對輕柔提示音。預設關閉，需學生主動開啟。
+  // 開啟時即時試播一次 —— 學生要聽得到自己開咗乜，先算真正做到「可選」。
+  const toggleSound = useCallback(() => {
+    setSound((prev) => {
+      const next = !prev
+      try {
+        localStorage.setItem(ANSWER_SOUND_KEY, next ? '1' : '0')
+      } catch {
+        /* ignore */
+      }
+      if (next) playCorrectChime()
+      return next
+    })
+  }, [])
+
   // 一鍵舒適模式：三項支援（易讀字體＋閱讀尺＋隱藏計時器）一掣齊開／齊關。
   // 無痕設計（Emma/UDL）：UI 只描述功能，唔出任何診斷標籤字眼。
   // 狀態由三個子開關推導 —— 學生逐個微調後，總掣自動反映真實組合。
-  const comfortOn = easy && hideTimer && ruler
+  //
+  // 第 1 週新增：答題提示音一併納入。憲章第 7 條約束 4 明訂一鍵舒適模式之下，
+  // 裝飾回饋層要【整層關掉，唔係調慢】—— 聲音屬裝飾回饋層，故開舒適模式即靜音。
+  // 學生之後仍可單獨開返聲音；此時總掣會顯示「關」，如實反映佢已經自行微調。
+  const comfortOn = easy && hideTimer && ruler && !sound
   const toggleComfort = useCallback(() => {
-    const next = !(easy && hideTimer && ruler)
+    const next = !(easy && hideTimer && ruler && !sound)
     document.documentElement.classList.toggle('font-easy', next)
     try {
       localStorage.setItem(EASY_KEY, next ? '1' : '0')
       localStorage.setItem(HIDE_TIMER_KEY, next ? '1' : '0')
+      // 開舒適模式 = 靜音；關舒適模式【唔會】自動開聲（聲音一律要主動開啟）
+      if (next) localStorage.setItem(ANSWER_SOUND_KEY, '0')
       const saved = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       // 保留學生揀開嘅尺帶高度，只改 on/off
       localStorage.setItem(RULER_KEY, JSON.stringify({ on: next, hIdx: Number(saved?.hIdx) || 0 }))
@@ -148,9 +174,10 @@ export default function A11yPanel() {
     setEasy(next)
     setHideTimer(next)
     setRuler(next)
+    if (next) setSound(false)
     // ReadingRuler 同 PracticeSession 都聽 dse-a11y，即時生效
     window.dispatchEvent(new Event('dse-a11y'))
-  }, [easy, hideTimer, ruler])
+  }, [easy, hideTimer, ruler, sound])
 
   return (
     <>
@@ -202,7 +229,7 @@ export default function A11yPanel() {
             <span className="text-left">
               <span className="block text-sm font-bold">✨ {en ? 'Comfort mode (one tap)' : '一鍵舒適模式'}</span>
               <span className="block text-[11px] text-slate-400">
-                {en ? 'Easy font + reading ruler + timer off' : '易讀字體＋閱讀尺＋隱藏計時器'}
+                {en ? 'Easy font + ruler + timer off + muted' : '易讀字體＋閱讀尺＋隱藏計時器＋靜音'}
               </span>
             </span>
             <span
@@ -355,6 +382,34 @@ export default function A11yPanel() {
               }`}
             >
               {hideTimer ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
+
+          {/* 答對輕柔提示音（第 1 週 · 引擎一）—— 預設關閉，答錯永遠無聲 */}
+          <button
+            onClick={toggleSound}
+            aria-pressed={sound}
+            className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+              sound
+                ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
+                : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+            }`}
+          >
+            <span className="text-left flex items-center gap-2">
+              <Volume2 size={14} className="shrink-0" />
+              <span>
+                <span className="block text-sm">{en ? 'Gentle chime on correct' : '答對輕柔提示音'}</span>
+                <span className="block text-[11px] text-slate-400">
+                  {en ? 'Off by default · never on wrong answers' : '預設關閉 · 答錯永遠無聲'}
+                </span>
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                sound ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
+              }`}
+            >
+              {sound ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
 
