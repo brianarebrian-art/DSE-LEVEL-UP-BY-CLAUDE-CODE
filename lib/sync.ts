@@ -48,8 +48,18 @@ function readNum(key: string): number | null {
 export interface Snapshot {
   dse_progress: unknown[]
   dse_free_attempts_total: number
-  dse_topic_stats: Record<string, unknown>
-  /** The IN-PROGRESS run, so another device can offer「繼續進度」(v3.0 F1). */
+  /**
+   * 逐課題累計（做過／錯咗）。
+   *
+   * 【2026-08-26 起唔再上傳】—— 見下方 snapshotLocal 嘅說明。
+   * 保留喺型別入面係為咗讀得返舊雲端列（舊列仲有呢個欄位）。
+   */
+  dse_topic_stats?: Record<string, unknown>
+  /**
+   * 未完成嗰節練習。
+   *
+   * 【2026-08-26 起唔再上傳】—— 見下方 snapshotLocal 嘅說明。
+   */
   dse_active_session?: ActiveSession | null
   updatedAt: number | null // last local change (device wall-clock ms)
   syncedAt: number | null // last cloud merge on THIS device
@@ -60,13 +70,41 @@ export interface CloudData {
   updated_at: string | null // server timestamptz of the cloud row
 }
 
-/** Snapshot the current local progress for upload / comparison. */
+/**
+ * Snapshot the current local progress for upload / comparison.
+ *
+ * ══ 2026-08-26 資料邊界修正（P0，Brian／Yuna 批准）══
+ *
+ * 【剔走 dse_active_session】——「答案原文」唔可以離開部機。
+ * 該物件嘅 `answers[].selectedZh` 係學生揀嗰個選項嘅【文字內容】，之前會連同
+ * user_id 一齊 upsert 入 Supabase `user_progress.progress_data`。三份安全文件
+ * 都明文禁止（「作答內容」「答案原文」「人工閱讀個人作答」）。
+ *
+ * 點解係整個剔走，而唔係淨係剝走 `selectedZh`：
+ *   · `answers[]` 入面【冇】questionId 欄位（題目 id 喺平行陣列 `questionIds`），
+ *     所以「只保留 questionId」呢個做法喺呢個結構度做唔到。
+ *   · `isCorrect` 剝唔得 —— PracticeSession.tsx:552 靠佢計分
+ *     （`newAnswers.filter(a => a?.isCorrect).length`）。剝咗，跨機續做嘅學生
+ *     會見到一個【靜靜計錯咗】嘅分數，比私隱問題更差。
+ *   · `selectedZh` 亦剝唔得 —— PracticeSession.tsx:592 喺節末要用佢砌
+ *     `/api/result/verify` 嘅覆核 payload；剝咗，之前答過嗰啲題會被當成冇作答。
+ *   → 所以唯一唔會整錯分數、又完全止血嘅做法，就係唔上傳。
+ *
+ * 犧牲咗嘅：喺【另一部機】接住做未完成嗰節。同一部機續做完全冇影響
+ * （localStorage 一個字都冇郁），做完嘅結果亦照樣經 `dse_progress` 同步。
+ *
+ * 【剔走 dse_topic_stats】—— 個人逐課題正確率屬「平台可讀」層（L2），
+ * 按 2026-08-25 裁決禁止上雲。佢本來就係 localStorage-first
+ * （見 lib/topicStats.ts），所以呢度唔上傳就已經完全喺本機。
+ * 犧牲咗嘅：換部機之後雷達圖要重新累積。
+ *
+ * 舊雲端列仍然帶住呢兩個欄位（按批准嘅選項 A，唔主動刪學生資料），
+ * 但 applyLocal 已經唔會再攞佢哋覆蓋本機。
+ */
 export function snapshotLocal(): Snapshot {
   return {
     dse_progress: readJSON<unknown[]>(KEYS.progress, []),
     dse_free_attempts_total: readNum(KEYS.counter) ?? 0,
-    dse_topic_stats: readJSON<Record<string, unknown>>(KEYS.topicStats, {}),
-    dse_active_session: readJSON<ActiveSession | null>(ACTIVE_SESSION_KEY, null),
     updatedAt: readNum(UPDATED_AT),
     syncedAt: readNum(SYNCED_AT),
   }
@@ -113,7 +151,12 @@ export function applyLocal(s: Snapshot): void {
   try {
     localStorage.setItem(KEYS.progress, JSON.stringify(s.dse_progress ?? []))
     localStorage.setItem(KEYS.counter, String(Number(s.dse_free_attempts_total) || 0))
-    localStorage.setItem(KEYS.topicStats, JSON.stringify(s.dse_topic_stats ?? {}))
+    // ⚠️ 唔可以寫成 `s.dse_topic_stats ?? {}` —— 而家 snapshotLocal 唔再帶呢個欄位，
+    // 一律 `?? {}` 會將本機累積咗嘅課題統計【洗成空白】。同 active session 一樣：
+    // 有值先覆蓋，`{}`（換用戶嘅乾淨石板）先清走，`undefined` 就唔郁。
+    if (s.dse_topic_stats) {
+      localStorage.setItem(KEYS.topicStats, JSON.stringify(s.dse_topic_stats))
+    }
     // In-progress run: adopt the winner's. An explicit null means the run was finished
     // (or abandoned) on the winning device, so clear it here too. `undefined` means the
     // snapshot predates this field — leave whatever this device has untouched.
