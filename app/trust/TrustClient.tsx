@@ -140,16 +140,6 @@ export default function TrustClient() {
           }
           cta={en ? 'Student safety' : '學生安全'}
         />
-        <Card
-          href="/accessibility"
-          q={en ? 'Does it work with assistive tools?' : '輔助工具用唔用得？'}
-          a={
-            en
-              ? 'Text sizing, dyslexia-friendly font, reading ruler, reduced motion, MathML for formulas. We also list what is missing and what we have not tested.'
-              : '字級調整、讀寫障礙友善字體、閱讀尺、減少動態、數式帶 MathML。我哋亦列明咗咩未做、咩未測試過。'
-          }
-          cta={en ? 'Accessibility self-assessment' : '無障礙自評'}
-        />
       </div>
 
       <div className="mt-8 rounded-2xl border border-line bg-surface-raised p-5">
