@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { ArrowLeft, Pencil, Check, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import {
-  buildLogEntries, currentStreak, isConsecutive, nodeSize, nodeTone, setMoodNote,
-  subjectLabel, LOG_WINDOW_DAYS, MOOD_NOTE_MAX, type LogEntry,
+  buildLogEntries, buildActiveDays, isConsecutive, nodeSize, nodeTone, setMoodNote,
+  subjectLabel, LOG_WINDOW_DAYS, MOOD_NOTE_MAX, type LogEntry, type ActiveDayCounts,
 } from '@/lib/logicLog'
 
 // 規格書 §模組一「方式 A：時間軸」。方式 B（邏輯地圖）屬 Phase 2，未做。
@@ -38,10 +38,14 @@ export default function LogicLogView() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [entries, setEntries] = useState<LogEntry[] | null>(null)
+  const [days, setDays] = useState<ActiveDayCounts>({ monthly: 0, total: 0 })
   const [editing, setEditing] = useState<string | null>(null)
   const [draft, setDraft] = useState('')
 
-  useEffect(() => { setEntries(buildLogEntries()) }, [])
+  useEffect(() => {
+    setEntries(buildLogEntries())
+    setDays(buildActiveDays())
+  }, [])
 
   const saveNote = (date: string) => {
     setMoodNote(date, draft)
@@ -52,8 +56,6 @@ export default function LogicLogView() {
   if (entries === null) {
     return <main className="min-h-screen px-4 py-12"><div className="max-w-2xl mx-auto h-64 rounded-2xl bg-surface-raised animate-pulse" /></main>
   }
-
-  const streak = currentStreak(entries)
 
   return (
     <main className="min-h-screen px-4 py-12">
@@ -72,16 +74,36 @@ export default function LogicLogView() {
             : `最近 ${LOG_WINDOW_DAYS} 日你走過的地方——做過哪些科、碰過哪些課題、認出過哪些陷阱。這裡不記分數。`}
         </p>
 
-        {streak >= 3 && (
-          <div className="achievement-pop mb-8 rounded-2xl border border-gold/30 bg-gold/[0.08] px-5 py-4">
-            <p className="text-ink font-medium">
-              {en ? `${streak} days in a row` : `連續 ${streak} 日有足跡`}
-            </p>
-            <p className="text-sm text-ink-muted mt-1">
-              {en
-                ? 'A rest day never removes anything you have already walked.'
-                : '休息一日不會取走你已經走過的路。'}
-            </p>
+        {/* 累積制（HOTFIX-0823 方案 B）——取代舊有的「連續 N 日」。
+            連續計數會因為休息一日而歸零，等同宣告之前的努力白費；累積制之下
+            休息一日只是今日沒有加一，走過的路一日都不會被收回（憲章 §7）。
+            375px 單欄堆疊，640px 起雙欄。 */}
+        {days.total > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            <div className="rounded-2xl border border-line bg-surface-raised p-5">
+              <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
+                <span aria-hidden>📅</span>
+                {en ? 'This month' : '本月溫習'}
+              </div>
+              <p className="text-3xl sm:text-4xl font-medium text-accent leading-tight">
+                {en ? `${days.monthly} ${days.monthly === 1 ? 'day' : 'days'}` : `${days.monthly} 日`}
+              </p>
+              <p className="text-sm text-ink-muted mt-1">
+                {en ? 'However many days it is, every one of them counts.' : '不論多少日，每一日都算數。'}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-line bg-surface-raised p-5">
+              <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
+                <span aria-hidden>🏆</span>
+                {en ? 'All time' : '總共溫習'}
+              </div>
+              <p className="text-3xl sm:text-4xl font-medium text-gold leading-tight">
+                {en ? `${days.total} ${days.total === 1 ? 'day' : 'days'}` : `${days.total} 日`}
+              </p>
+              <p className="text-sm text-ink-muted mt-1">
+                {en ? 'What accumulates is stronger than what must stay unbroken.' : '累積的力量，遠比連續更強。'}
+              </p>
+            </div>
           </div>
         )}
 

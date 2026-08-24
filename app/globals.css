@@ -145,6 +145,48 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ───────────────────────────────────────────────────────────────────────────
+   橫向溢出保險（HOTFIX-0823 第三階段）
+   --------------------------------------------------------------------------
+   點解要有：手機 Chrome 遇到內容闊過視窗時，唔係出橫向捲軸，而係【自動撐大
+   版面視窗】—— 375px 機上量到 innerWidth 變 467，成頁跟住縮細到 80%。字細一
+   圈，對讀寫障礙、弱視同 SEN 考生直接就係無障礙倒退，而且 `scrollWidth ===
+   innerWidth` 呢個常見檢查【驗唔到】（兩邊一齊變大，永遠相等）。
+
+   用 clip 唔用 hidden：`overflow: hidden` 會令元素變成捲動容器，
+   `position: sticky` 嘅子元素（relax 頁 NowPlayingBar）會失效；`clip` 只裁剪、
+   唔建立捲動容器。先寫 hidden 做舊瀏覽器後備，再寫 clip 畀支援嘅覆蓋。
+
+   ⚠️ 呢層係安全網，唔係修理。真正嘅溢出要喺元件度解決 —— 靠呢度冚住會令問題
+   喺 iOS Safari 舊版走返出嚟。scripts/responsive-guard.mjs 會靜態攔截高風險寫法。
+   ─────────────────────────────────────────────────────────────────────────── */
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* 媒體元素永遠唔可以爆出容器（題目幾何圖、圖表、截圖） */
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+/* 長字串斷行：英文長詞、URL、化學式、DNA 編碼喺 375px 窄欄會撐爆容器。
+   用 overflow-wrap 唔用 `word-break: break-all` —— break-all 會喺中文同英文
+   單詞中間亂斷，反而更難讀。 */
+body {
+  overflow-wrap: break-word;
+}
+
 .katex {
   font-size: 1em;
 }
@@ -209,9 +251,6 @@ html {
   animation: slide-up 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
 }
 
-.grade-bar-fill {
-  animation: fill-bar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
 
 /* Calm, sober feedback only — the gamification layer (flame / combo / shake /
    jackpot / rank shimmer / gacha cyber theme) was removed in the deep-work pivot. */
@@ -297,25 +336,6 @@ html {
     border: 1px dashed #94a3b8 !important;
     background: #ffffff !important;
   }
-}
-
-/* ───────────────────────────────────────────────────────────────────────────
-   Wrong-answer lockout overlay pulse (see PracticeSession.tsx)
-   「閃爍」is deliberately a SLOW pulse / neon breathe (~1.6–1.8s per cycle, well
-   under 3 flashes/sec) so it reads as menacing WITHOUT the photosensitive-seizure
-   risk of a hard strobe. prefers-reduced-motion disables it entirely.
-   ─────────────────────────────────────────────────────────────────────────── */
-
-/* Soft red pulse — used by the wrong-answer lockout overlay (NOT a hard strobe;
-   prefers-reduced-motion disables it). */
-@keyframes hell-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); opacity: 1; }
-  50%      { box-shadow: 0 0 12px 2px rgba(220, 38, 38, 0.6); opacity: 0.9; }
-}
-.animate-hell-pulse { animation: hell-pulse 1.6s ease-in-out infinite; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-hell-pulse { animation: none; }
 }
 
 /* 骨架屏（載入佔位）。純 CSS，零套件。
@@ -623,8 +643,6 @@ html[data-bottomnav='on'] {
     0 -8px 40px rgba(var(--flame-rgb), 0.2);
   animation: flame-pulse var(--flame-speed) ease-in-out infinite;
 }
-.combo-flame-yellow { --flame-rgb: 254, 228, 64; }
-.combo-flame-pink { --flame-rgb: 255, 0, 110; --flame-speed: 0.75s; }
 @keyframes flame-pulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }

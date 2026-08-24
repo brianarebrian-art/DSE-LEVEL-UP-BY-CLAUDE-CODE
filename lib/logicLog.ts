@@ -204,25 +204,54 @@ export function isConsecutive(newer: string, older: string): boolean {
   return a - b === 86400000
 }
 
-/**
- * 目前的連續足跡日數。
- *
- * 憲章 §7：這個數字【不會】因為休息一日而被顯示成「歸零」——呼叫端只用它
- * 來加特效，從不用它來扣減任何東西。詳見 lib/arena.ts 同一段說明。
- */
-export function currentStreak(entries: readonly LogEntry[], now: number = Date.now()): number {
-  if (entries.length === 0) return 0
-  const today = hkDayString(now)
-  const yesterday = hkDayString(now - 86400000)
-  // 今日未做題不算斷——由昨日起計，學生開早上的頁面時不會見到 0。
-  if (entries[0].date !== today && entries[0].date !== yesterday) return 0
-  let streak = 1
-  for (let i = 1; i < entries.length; i++) {
-    if (!isConsecutive(entries[i - 1].date, entries[i].date)) break
-    streak++
-  }
-  return streak
+// ── 累積制日數（HOTFIX-0823 方案 B）─────────────────────────────────────────
+
+export interface ActiveDayCounts {
+  /** 本月（HKT 曆月）有足跡的日數，同一日做幾多節都只計一日。 */
+  monthly: number
+  /** 有記錄以來總共有足跡的日數，同樣去重。 */
+  total: number
 }
+
+/**
+ * 累積制日數。取代舊有的「連續 N 日」顯示。
+ *
+ * 為何不用連續計數：這與 progress.ts 的 `computeRecentActiveDays` 是同一個理由——
+ * 連續計數的傷害不在符號，而在【中斷一日即歸零】。學生休息一日，畫面就把之前
+ * 的累積一次抹掉，等同宣告「之前的努力白費」。累積制之下，休息一日只是今日沒有
+ * 加一，已經走過的路一日都不會被收回。
+ *
+ * 為何在本機計算而不查伺服器：本站練習資料 100% 存於 localStorage，`question_events`
+ * 表已於 2026-07-14 移除。去重日數是一個對本機陣列的計數，無需任何伺服器往返，
+ * 亦因此離線可用、零成本（憲章 §5）。
+ *
+ * 純函數（`attempts` 與 `now` 皆由呼叫端傳入），故 SSR 與測試都不碰瀏覽器 API。
+ */
+export function computeActiveDays(
+  attempts: readonly AttemptRecord[],
+  now: number = Date.now(),
+): ActiveDayCounts {
+  const thisMonth = hkDayString(now).slice(0, 7) // YYYY-MM（HKT 曆月）
+  const all = new Set<string>()
+  const month = new Set<string>()
+  for (const a of attempts) {
+    if (typeof a?.timestamp !== 'number' || !Number.isFinite(a.timestamp)) continue
+    const day = hkDayString(a.timestamp)
+    all.add(day)
+    if (day.slice(0, 7) === thisMonth) month.add(day)
+  }
+  return { monthly: month.size, total: all.size }
+}
+
+/** 讀本機練習記錄並計出累積日數。SSR 之下 `loadAttempts()` 回 []，故安全。 */
+export function buildActiveDays(now: number = Date.now()): ActiveDayCounts {
+  return computeActiveDays(loadAttempts(), now)
+}
+
+// 【已移除】currentStreak（連續足跡日數）——HOTFIX-0823 創辦人拍板改用累積制，
+// 見上面 computeActiveDays。刻意連函數一併剷走而唔係淨係唔顯示：留住一個
+// 現成嘅 streak 函數，等於留住一個「接返落去」嘅邀請。
+// isConsecutive 保留 —— 佢淨係用嚟畫時間軸節點之間嘅連接線，唔係計分。
 
 /** 科目 id → 顯示標籤（找不到就原樣回傳，不可以因為科目改名而整頁報錯）。 */
 export function subjectLabel(id: string, en: boolean): string {

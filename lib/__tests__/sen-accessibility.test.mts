@@ -62,9 +62,11 @@ function reducedMotionBody(): string {
   return parts.join('\n')
 }
 
-// 唯一容許唔納入降級嘅：已經冇任何地方用緊嘅死 CSS。
-// 一旦有人接返佢入 UI，呢條測試就會要求佢同時做降級。
-const DEAD_CSS = ['.grade-bar-fill']
+// 豁免名單【現時係空嘅】—— HOTFIX-0823 第一階段已經將 .grade-bar-fill 由
+// globals.css 剷走，唔再需要豁免。名單保持空白＝任何動畫 class 都必須做
+// prefers-reduced-motion 降級，冇後門。要加返落去之前，先問點解要留一個
+// 有動畫但冇人用嘅 class。
+const DEAD_CSS: string[] = []
 
 // ── 一、減少動態效果：一個都唔准漏 ─────────────────────────────────────────
 test('每一個動畫 class 都要喺 prefers-reduced-motion 度靜止', () => {
