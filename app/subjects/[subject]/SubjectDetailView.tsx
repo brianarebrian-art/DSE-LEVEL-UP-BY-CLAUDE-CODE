@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, PenLine, BookOpenCheck, FileText, Search } from 'lucide-react'
+import { ArrowRight, PenLine, BookOpenCheck, FileText, Search, Sparkles } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
@@ -187,6 +187,30 @@ export default function SubjectDetailView({
               </div>
             </div>
             <ArrowRight size={16} className="text-violet shrink-0 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        )}
+
+        {/* SENSEI 零模型知識檢索。只掛喺已有卡片庫嘅四科 —— 掛喺冇卡嘅科目
+            只會令學生撳入去見到空白，反而似壞咗。
+            入口放喺科目頁而唔係頂部導覽：頂欄「收成四條」係刻意整合過嘅決定
+            （components/__tests__/route-states.test.mts 鎖住），唔應該為咗新 feature 推翻。 */}
+        {['chinese', 'english', 'math', 'economics'].includes(meta.id) && (
+          <Link
+            href="/sensei"
+            className="group bg-accent/[0.06] hover:bg-accent/[0.10] border border-accent/25 hover:border-accent/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <Sparkles size={20} className="text-accent shrink-0" />
+              <div>
+                <div className="font-medium text-ink">{en ? 'SENSEI · concept lookup' : 'SENSEI・概念檢索'}</div>
+                <p className="text-xs text-ink-muted mt-0.5">
+                  {en
+                    ? 'Ask about a concept and read a knowledge card a named person has checked. Nothing is generated — if there is no card, it says so.'
+                    : '問一個概念，讀一張具名真人審核過的知識卡。內容不會自行生成 —— 沒有卡片時會直接說沒有。'}
+                </p>
+              </div>
+            </div>
+            <ArrowRight size={16} className="text-accent shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         )}
 

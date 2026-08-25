@@ -89,6 +89,9 @@ for (const r of routes) {
     if (new RegExp(`href=["'\`]${r}(["'\`?#/])`).test(code)) linked++
     else if (new RegExp(`href=\\{\`${r}`).test(code)) linked++
     else if (new RegExp(`push\\(['"\`]${r}['"\`]`).test(code)) linked++
+    // 導覽陣列寫法：`{ href: '/sensei', key: 'sensei' }`，之後由 `href={l.href}` 渲染。
+    // 呢個係真實接線，但上面三個 pattern 全部睇唔到 —— 2026-08-25 誤報過一次。
+    else if (new RegExp(`href:\\s*['"\`]${r}['"\`]`).test(code)) linked++
   }
   if (linked === 0 && !(r in ALLOW_UNLINKED)) {
     findings.push([r, '路由全站冇任何連結指過去 —— 只有搜尋引擎入得到'])
