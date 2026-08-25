@@ -1,5 +1,5 @@
 // ============================================================================
-// arena.test.mts —— 競技場層嘅大愛設計紅線
+// practiceRank.test.mts —— 練習段位層嘅大愛設計紅線
 // ----------------------------------------------------------------------------
 // 遊戲化於 2026-08-22 解禁（憲章 §8.1），但解禁【唔等於】可以做懲罰性回饋。
 // 呢度鎖住四樣一旦壞咗就會直接傷到學生、而且喺畫面上唔一定睇得出嘅嘢。
@@ -9,7 +9,7 @@ import assert from 'node:assert/strict'
 
 import { readFileSync } from 'node:fs'
 
-const { computeArena, attemptExp, RANKS } = await import('../arena.ts')
+const { computePracticeRank, attemptExp, RANKS } = await import('../practiceRank.ts')
 
 type A = { subjectId: string; subjectName: string; topicFilter: null; score: number; total: number; grade: string; topicResults: []; elapsed: number; timestamp: number }
 const mk = (score: number, total: number, ts = Date.now()): A => ({
@@ -19,9 +19,9 @@ const mk = (score: number, total: number, ts = Date.now()): A => ({
 
 test('EXP 只加唔減，段位只升唔跌 —— 考得差唔可以令學生睇住個數字跌返落去', () => {
   const good = [mk(20, 20), mk(19, 20), mk(18, 20)]
-  const before = computeArena(good)
+  const before = computePracticeRank(good)
   // 之後連續三節考得極差
-  const after = computeArena([...good, mk(0, 20), mk(1, 20), mk(0, 20)])
+  const after = computePracticeRank([...good, mk(0, 20), mk(1, 20), mk(0, 20)])
   assert.ok(after.exp >= before.exp, 'EXP 跌咗 —— 憲章 §7 禁止倒扣式回饋')
   assert.ok(
     RANKS.indexOf(after.rank) >= RANKS.indexOf(before.rank),
@@ -55,7 +55,7 @@ test('爛資料唔可以令競技場層炒車或者派出 NaN', () => {
     { ...mk(0, 0), score: -50, total: -3 },
     { ...mk(0, 0), timestamp: Number.NaN },
   ] as A[]
-  const s = computeArena(junk)
+  const s = computePracticeRank(junk)
   for (const [k, v] of Object.entries(s)) {
     if (typeof v === 'number') assert.ok(Number.isFinite(v), `${k} 係 ${v}`)
   }
@@ -64,7 +64,7 @@ test('爛資料唔可以令競技場層炒車或者派出 NaN', () => {
 })
 
 test('空資料要派得出合理起始狀態，唔可以 crash', () => {
-  const s = computeArena([])
+  const s = computePracticeRank([])
   assert.equal(s.exp, 0)
   assert.equal(s.rank, RANKS[0])
   assert.equal(s.sessions, 0)
@@ -73,7 +73,7 @@ test('空資料要派得出合理起始狀態，唔可以 crash', () => {
 })
 
 test('競技場層唔可以自己寫儲存 —— 一有第二份數據就要練習頁負責同步', () => {
-  const src = readFileSync(new URL('../arena.ts', import.meta.url).pathname, 'utf8')
+  const src = readFileSync(new URL('../practiceRank.ts', import.meta.url).pathname, 'utf8')
   assert.ok(!/localStorage\.setItem|sessionStorage\.setItem/.test(src),
-    'arena.ts 寫咗儲存 —— 必須維持純導出值，否則就要改 PracticeSession')
+    'practiceRank.ts 寫咗儲存 —— 必須維持純導出值，否則就要改 PracticeSession')
 })

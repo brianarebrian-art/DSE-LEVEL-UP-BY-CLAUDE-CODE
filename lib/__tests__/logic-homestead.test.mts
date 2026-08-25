@@ -167,7 +167,7 @@ test('家園唔可以用等級預測做升級條件（憲章 §7 / §8）', () =
 })
 
 test('遊戲化層唔可以寫任何練習數據 —— 只准寫學生自己嘅備註', () => {
-  for (const f of ['../homestead.ts', '../arena.ts'] as const) {
+  for (const f of ['../homestead.ts', '../practiceRank.ts'] as const) {
     const src = readFileSync(new URL(f, import.meta.url), 'utf8')
     const code = src.replace(/\/\/[^\n]*/g, '').replace(/\/\*[\s\S]*?\*\//g, '')
     assert.ok(!code.includes('setItem'), `${f} 唔應該寫 localStorage`)
