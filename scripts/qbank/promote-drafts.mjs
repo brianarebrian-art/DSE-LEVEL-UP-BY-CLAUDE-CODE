@@ -24,6 +24,7 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gateRow, toReviewedQuestion, norm } from './_gate.mjs'
+import { assertReviewer } from './_reviewer-gate.mjs'
 
 const args = process.argv.slice(2)
 const arg = (n, d = null) => { const i = args.indexOf(`--${n}`); return i >= 0 && args[i + 1] ? args[i + 1] : d }
@@ -80,10 +81,9 @@ if (!approved.length) {
   console.error(`\n✗ 0 approved rows in ${basename(DEC)} — nothing to promote. (Approve some in the review sheet first.)\n`)
   process.exit(1)
 }
-if (!reviewer) {
-  console.error(`\n✗ decisions file has no reviewer name in _meta.reviewer — a 人手核對 bank must record who approved it. Add your name in the review sheet and re-export.\n`)
-  process.exit(1)
-}
+// 真人簽名閘 —— 邏輯搬咗去 _reviewer-gate.mjs 同 SENSEI 卡片管線共用。
+// 空白照舊停機，另加虛擬 persona 冒簽攔截（2026-08-25，對現有資料零影響）。
+assertReviewer(reviewer)
 
 // ── write the stamped, typed bank ───────────────────────────────────────────
 // 匯出名跟住檔名走，令兩個檔唔會匯出同一個識別符而互相衝突。
