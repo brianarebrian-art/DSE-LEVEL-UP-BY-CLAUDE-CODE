@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "batch1-writing.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh-w-shenti": "pending",
+    "zh-w-liyi": "pending",
+    "zh-w-jiegou": "pending",
+    "zh-w-lizheng": "pending",
+    "zh-w-juti": "pending"
+  }
+}
