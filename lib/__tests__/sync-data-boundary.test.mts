@@ -56,7 +56,7 @@ const FORBIDDEN_UPLOAD_KEYS = [
   'dse_reverse_log', // 錯因自診
   'dse_writing_draft', // 作文原文
   'dse_logic_log', // 心情備註
-  'dse_own_cheers', // 學生自己寫嘅鼓勵語
+  'dse_own_cheers', 'dse_sensei_prefs', // 學生自己寫嘅鼓勵語
 ]
 
 test('上傳 payload 只可以含白名單入面嘅鍵', () => {
