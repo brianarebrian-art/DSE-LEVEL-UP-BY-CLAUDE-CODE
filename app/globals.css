@@ -338,6 +338,32 @@ body {
   }
 }
 
+/* ───────────────────────────────────────────────────────────────────────────
+   手動「減少動態」（html.no-motion）—— 2026-08-27
+   --------------------------------------------------------------------------
+   點解要有：全站本來只跟系統嘅 `prefers-reduced-motion`。但一個用學校電腦、
+   或者唔識點改 iOS／Android／Windows 動態設定嘅學生，就完全冇得揀。前庭敏感、
+   自閉譜系、光敏性癲癇考生唔應該要先識改作業系統設定，先用得舒服。
+
+   用【通用選擇器】而唔係逐個 class 寫：逐個寫嘅話，下一個新動畫又會漏一次
+   —— 呢個 bug 2026-08-23 已經喺 prefers-reduced-motion 度發生過一次
+   （.animate-slide-up 由一開始就漏咗）。通用選擇器天生覆蓋將來所有新動畫。
+
+   用 0.01ms 而唔係 `animation: none`：入場動畫嘅 keyframes 由 opacity 0 起，
+   `none` 會令元素停喺基礎樣式（即係睇唔見）。0.01ms 會即刻行完並保留 forwards
+   嘅最終狀態 —— 靜止，但唔會剩返一片空白。
+   ─────────────────────────────────────────────────────────────────────────── */
+html.no-motion *,
+html.no-motion *::before,
+html.no-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+html.no-motion {
+  scroll-behavior: auto !important;
+}
+
 /* 骨架屏（載入佔位）。純 CSS，零套件。
    用途：慢網絡下唔好淨係得「載入中」三個字 —— 見到內容輪廓，等待焦慮細好多，
    對 ADHD／焦慮考生尤其重要（憲章 §7）。

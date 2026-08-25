@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, Volume2, X } from 'lucide-react'
+import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
@@ -37,6 +37,9 @@ const LETTER_SPACING_PREVIEW: Record<LetterSpacing, string> = {
 
 const EASY_KEY = 'dse_easy_font'
 const HIDE_TIMER_KEY = 'dse_hide_timer'
+// 手動「減少動態」。全站本來只跟系統 prefers-reduced-motion —— 用學校電腦、
+// 或者唔識改作業系統設定嘅學生，之前完全冇得揀。
+const NO_MOTION_KEY = 'dse_no_motion'
 const RULER_KEY = 'dse_reading_ruler' // 同 ReadingRuler.tsx 共用
 const MIN = 12
 const MAX = 24
@@ -50,6 +53,7 @@ export default function A11yPanel() {
   const [easy, setEasy] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
   const [sound, setSound] = useState(false)
+  const [noMotion, setNoMotion] = useState(false)
   const [ruler, setRuler] = useState(false)
   // B1（2026-07-22）：行距／字間距，同字級一樣即時生效 + 存 localStorage
   const [lineH, setLineH] = useState(DEFAULT_LINE_HEIGHT)
@@ -63,6 +67,7 @@ export default function A11yPanel() {
       setEasy(localStorage.getItem(EASY_KEY) === '1')
       setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
       setSound(isAnswerSoundOn())
+      setNoMotion(localStorage.getItem(NO_MOTION_KEY) === '1')
       const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       setRuler(!!r?.on)
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
@@ -134,6 +139,21 @@ export default function A11yPanel() {
     })
   }, [])
 
+  // 手動減少動態。即時 toggle <html> class，唔使 reload。
+  const toggleNoMotion = useCallback(() => {
+    setNoMotion((prev) => {
+      const next = !prev
+      document.documentElement.classList.toggle('no-motion', next)
+      try {
+        localStorage.setItem(NO_MOTION_KEY, next ? '1' : '0')
+      } catch {
+        /* ignore */
+      }
+      window.dispatchEvent(new Event('dse-a11y'))
+      return next
+    })
+  }, [])
+
   // 第 1 週 · 引擎一：答對輕柔提示音。預設關閉，需學生主動開啟。
   // 開啟時即時試播一次 —— 學生要聽得到自己開咗乜，先算真正做到「可選」。
   const toggleSound = useCallback(() => {
@@ -156,13 +176,15 @@ export default function A11yPanel() {
   // 第 1 週新增：答題提示音一併納入。憲章第 7 條約束 4 明訂一鍵舒適模式之下，
   // 裝飾回饋層要【整層關掉，唔係調慢】—— 聲音屬裝飾回饋層，故開舒適模式即靜音。
   // 學生之後仍可單獨開返聲音；此時總掣會顯示「關」，如實反映佢已經自行微調。
-  const comfortOn = easy && hideTimer && ruler && !sound
+  const comfortOn = easy && hideTimer && ruler && noMotion && !sound
   const toggleComfort = useCallback(() => {
-    const next = !(easy && hideTimer && ruler && !sound)
+    const next = !(easy && hideTimer && ruler && noMotion && !sound)
     document.documentElement.classList.toggle('font-easy', next)
+    document.documentElement.classList.toggle('no-motion', next)
     try {
       localStorage.setItem(EASY_KEY, next ? '1' : '0')
       localStorage.setItem(HIDE_TIMER_KEY, next ? '1' : '0')
+      localStorage.setItem(NO_MOTION_KEY, next ? '1' : '0')
       // 開舒適模式 = 靜音；關舒適模式【唔會】自動開聲（聲音一律要主動開啟）
       if (next) localStorage.setItem(ANSWER_SOUND_KEY, '0')
       const saved = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
@@ -174,10 +196,11 @@ export default function A11yPanel() {
     setEasy(next)
     setHideTimer(next)
     setRuler(next)
+    setNoMotion(next)
     if (next) setSound(false)
     // ReadingRuler 同 PracticeSession 都聽 dse-a11y，即時生效
     window.dispatchEvent(new Event('dse-a11y'))
-  }, [easy, hideTimer, ruler, sound])
+  }, [easy, hideTimer, ruler, noMotion, sound])
 
   return (
     <>
@@ -360,6 +383,33 @@ export default function A11yPanel() {
           </button>
 
           {/* 隱藏練習計時器（焦慮友善 — SEN） */}
+          <button
+            onClick={toggleNoMotion}
+            aria-pressed={noMotion}
+            className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+              noMotion
+                ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
+                : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+            }`}
+          >
+            <span className="text-left flex items-center gap-2">
+              <Wind size={14} className="shrink-0" />
+              <span>
+                <span className="block text-sm">{en ? 'Reduce motion' : '減少動態效果'}</span>
+                <span className="block text-[11px] text-slate-400">
+                  {en ? 'Stops animations without changing device settings' : '唔使改機身設定都停到動畫'}
+                </span>
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                noMotion ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
+              }`}
+            >
+              {noMotion ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
+
           <button
             onClick={toggleTimer}
             aria-pressed={hideTimer}

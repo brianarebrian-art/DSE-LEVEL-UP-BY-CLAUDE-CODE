@@ -63,6 +63,9 @@ export default function GlobalA11y() {
       const saved = Number(localStorage.getItem(FONT_KEY))
       if (saved >= 12 && saved <= 24 && saved !== 16) document.documentElement.style.fontSize = `${saved}px`
       if (localStorage.getItem('dse_easy_font') === '1') document.documentElement.classList.add('font-easy')
+      // 手動減少動態。同 font-easy 一樣要喺 mount 即刻套用 —— 遲一格畫面，
+      // 前庭敏感／光敏感用戶就已經見到咗一次動畫，防唔到佢想防嗰樣嘢。
+      if (localStorage.getItem('dse_no_motion') === '1') document.documentElement.classList.add('no-motion')
       // B1: 開機套用已存嘅行距／字間距（同字級一樣，只喺有偏好時先郁）
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
       const ls = localStorage.getItem(LETTER_SPACING_KEY) as LetterSpacing | null

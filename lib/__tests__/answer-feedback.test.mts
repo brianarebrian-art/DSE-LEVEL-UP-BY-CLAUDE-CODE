@@ -151,7 +151,7 @@ test('第 1 週每個動畫都要受一鍵舒適模式管轄', () => {
 })
 
 test('一鍵舒適模式要一併靜音（憲章 §8.1 約束 4）', () => {
-  assert.match(PANEL, /const comfortOn = easy && hideTimer && ruler && !sound/)
+  assert.match(PANEL, /const comfortOn = easy && hideTimer && ruler && noMotion && !sound/)
   assert.match(PANEL, /if \(next\) setSound\(false\)/)
 })
 
