@@ -31,7 +31,9 @@ const decisions = decDoc?.decisions || {}
 
 // ① 簽名閘 —— 同題庫共用同一段邏輯
 const reviewer = assertReviewer(decDoc?._meta?.reviewer)
-const reviewedAt = decDoc?._meta?.reviewedAt || new Date().toISOString().slice(0, 10)
+// 見 sensei-golive.mjs：簽名日期一律用香港時間，唔用 UTC。
+const hkDate = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Hong_Kong' }).format(new Date())
+const reviewedAt = decDoc?._meta?.reviewedAt || hkDate()
 
 // ② default-deny + 重新過客觀閘
 const approved = []

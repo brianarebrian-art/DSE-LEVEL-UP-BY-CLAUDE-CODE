@@ -2,19 +2,19 @@
   "_meta": {
     "source": "batch1-fanwen.json",
     "subject": "chinese",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "zh-lunren-li": "pending",
-    "zh-yuwo-benxin": "pending",
-    "zh-xiaoyaoyou-youdai": "pending",
-    "zh-quanxue-biyu": "pending",
-    "zh-lianpo-xianguo": "pending",
-    "zh-chushibiao-fencun": "pending",
-    "zh-shishuo-biaozhun": "pending",
-    "zh-yueyanglou-xianyou": "pending",
-    "zh-liuguolun-jiegu": "pending",
-    "zh-crosstext-kunjing": "pending"
+    "zh-lunren-li": "approved",
+    "zh-yuwo-benxin": "approved",
+    "zh-xiaoyaoyou-youdai": "approved",
+    "zh-quanxue-biyu": "approved",
+    "zh-lianpo-xianguo": "approved",
+    "zh-chushibiao-fencun": "approved",
+    "zh-shishuo-biaozhun": "approved",
+    "zh-yueyanglou-xianyou": "approved",
+    "zh-liuguolun-jiegu": "approved",
+    "zh-crosstext-kunjing": "approved"
   }
 }

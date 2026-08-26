@@ -2,19 +2,19 @@
   "_meta": {
     "source": "batch1-terms.json",
     "subject": "economics",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "ec-public-good": "pending",
-    "ec-free-rider": "pending",
-    "ec-entrepreneurship": "pending",
-    "ec-opportunity-cost": "pending",
-    "ec-marginal": "pending",
-    "ec-ppc": "pending",
-    "ec-price-elasticity": "pending",
-    "ec-surplus": "pending",
-    "ec-market-failure": "pending",
-    "ec-externality": "pending"
+    "ec-public-good": "approved",
+    "ec-free-rider": "approved",
+    "ec-entrepreneurship": "approved",
+    "ec-opportunity-cost": "approved",
+    "ec-marginal": "approved",
+    "ec-ppc": "approved",
+    "ec-price-elasticity": "approved",
+    "ec-surplus": "approved",
+    "ec-market-failure": "approved",
+    "ec-externality": "approved"
   }
 }

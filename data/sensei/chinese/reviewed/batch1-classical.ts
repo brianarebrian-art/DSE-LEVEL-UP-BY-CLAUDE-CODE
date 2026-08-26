@@ -1,0 +1,143 @@
+// 由 promote-sensei-cards.mjs 產生，請勿手動修改；如需更正請修改草稿並重新執行管線。
+// 以下每張卡片均由具名真人逐張批准：
+//   reviewer : Yuna
+//   date     : 2026-08-27
+//   source   : batch1-classical.json
+//   approved : 5  (basic 0 / intermediate 3 / hard 2)
+// ⚠️ 尚未生效：必須由人手在 ../index.ts 加入 import，才會在學生介面出現。
+import type { KnowledgeCard } from '../../types'
+
+export const chineseBatch1ClassicalCards: KnowledgeCard[] = [
+  {
+    "id": "zh-c-cilei",
+    "subject": "chinese",
+    "topic": "詞類活用",
+    "subTopic": "名詞與形容詞作動詞",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "文言中詞語的類別隨位置而變。一個名詞若出現在應該是動詞的位置上，它就臨時充當動詞；判斷依據是句子結構，不是這個字本身的常見用法。",
+    "example": "《師說》「吾師道也」的「師」本為名詞，此處帶賓語「道」，作動詞解為「學習」。《六國論》「義不賂秦」的「義」則是名詞作狀語。",
+    "examTechnique": "遇到解釋不通的字，先問它前後有沒有賓語。名詞之後直接接名詞而中間沒有虛詞，前一個多數已經活用為動詞。",
+    "commonTrap": "硬套字典的常見義項，得出「我的老師是道」這類不合語法的解釋。活用是由位置決定的，不能只查單字。",
+    "keywords": [
+      "詞類活用",
+      "文言",
+      "名詞作動詞",
+      "意動",
+      "使動",
+      "師說"
+    ],
+    "relatedTopics": [
+      "文言字詞與用法",
+      "課外文言閱讀"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "zh-c-jushi",
+    "subject": "chinese",
+    "topic": "文言特殊句式",
+    "subTopic": "判斷、被動、倒裝",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "文言句式與白話的差異集中在三類：判斷句多用「……者，……也」而不用「是」；被動句常以「為」「見」「於」標示；倒裝則包括賓語前置與定語後置。",
+    "example": "《師說》「師者，所以傳道受業解惑也」是判斷句；《廉頗藺相如列傳》「而君幸於趙王」以「於」表被動；「何陋之有」則是賓語前置。",
+    "examTechnique": "翻譯前先判斷句式，再逐字處理。句式判斷錯誤會令整句方向相反，尤其被動句誤作主動，主客便完全對調。",
+    "commonTrap": "見到「是」就當作判斷詞。文言的「是」多數解作「這」，例如「是又在六國下矣」的「是」指前文所說的情況。",
+    "keywords": [
+      "文言句式",
+      "判斷句",
+      "被動句",
+      "倒裝",
+      "賓語前置",
+      "翻譯"
+    ],
+    "relatedTopics": [
+      "文言字詞與用法",
+      "課外文言閱讀"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "zh-c-duoyi",
+    "subject": "chinese",
+    "topic": "一詞多義",
+    "subTopic": "以語境定義項",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "同一個文言字在不同句子中可以差別極大。決定義項的不是字本身，而是它在該句中承擔的語法角色與上下文的邏輯關係。",
+    "example": "「兵」可指兵器，如《六國論》「非兵不利」；亦可指軍隊或戰事。「謝」可解道歉，如「因賓客至藺相如門謝罪」；亦可解辭別或凋謝。",
+    "examTechnique": "先確定該字在句中是主語、謂語還是修飾語，再從常見義項中挑出語法角色相符的一個，最後代回全句檢查邏輯是否通順。",
+    "commonTrap": "把在某一篇背熟的義項搬到另一篇。同一個字換了語境往往換了意思，記義項而不記判斷方法，遇到課外篇章便無從入手。",
+    "keywords": [
+      "一詞多義",
+      "文言",
+      "語境",
+      "義項",
+      "兵",
+      "謝",
+      "字詞解釋"
+    ],
+    "relatedTopics": [
+      "文言詞義",
+      "課外文言閱讀"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "zh-c-xuci",
+    "subject": "chinese",
+    "topic": "文言虛詞",
+    "subTopic": "之、其、而、以",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "虛詞不表實義，卻決定句子的結構關係。「而」表順接還是轉折、「以」表憑藉還是目的，直接改變兩個分句之間的邏輯。",
+    "example": "《勸學》「登高而招」的「而」表順接，「青，取之於藍，而青於藍」的「而」表轉折。同一個字，前者說先後，後者說對比。",
+    "examTechnique": "翻譯時先把虛詞譯成一個現代連接詞，例如「而且」「但是」「用來」，再看整句是否通順。不通順多數是關係判斷錯了。",
+    "commonTrap": "把虛詞一律略去不譯。虛詞承擔的正是分句之間的邏輯，略去之後句子仍可讀，但因果與轉折的關係已經消失。",
+    "keywords": [
+      "虛詞",
+      "之",
+      "其",
+      "而",
+      "以",
+      "文言",
+      "翻譯"
+    ],
+    "relatedTopics": [
+      "文言字詞與用法",
+      "課外文言閱讀"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "zh-c-gujin",
+    "subject": "chinese",
+    "topic": "古今異義",
+    "subTopic": "雙音節詞的陷阱",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "文言以單音節詞為主，兩個字連在一起往往是兩個獨立的詞，而非現代漢語的雙音節詞。看成一個詞便會得出完全不同的意思。",
+    "example": "「妻子」在文言中是「妻」與「子」兩個詞；「地方」多指土地方圓；「可以」常是「可」與「以」，即「可以憑藉」。",
+    "examTechnique": "遇到與現代用法相同的雙音節詞，先試把它拆成兩個單字解釋。拆開後更通順，即屬古今異義。",
+    "commonTrap": "以今義代入而不自覺。這類錯誤特別隱蔽，因為代入之後句子依然讀得通，只是內容已經偏離原意。",
+    "keywords": [
+      "古今異義",
+      "文言",
+      "雙音節",
+      "妻子",
+      "地方",
+      "字詞解釋"
+    ],
+    "relatedTopics": [
+      "文言詞義",
+      "課外文言閱讀"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  }
+]

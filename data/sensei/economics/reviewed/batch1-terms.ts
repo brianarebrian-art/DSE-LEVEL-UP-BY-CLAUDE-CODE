@@ -1,0 +1,251 @@
+// 由 promote-sensei-cards.mjs 產生，請勿手動修改；如需更正請修改草稿並重新執行管線。
+// 以下每張卡片均由具名真人逐張批准：
+//   reviewer : Yuna
+//   date     : 2026-08-27
+//   source   : batch1-terms.json
+//   approved : 10  (basic 2 / intermediate 6 / hard 2)
+// ⚠️ 尚未生效：必須由人手在 ../index.ts 加入 import，才會在學生介面出現。
+import type { KnowledgeCard } from '../../types'
+
+export const economicsBatch1TermsCards: KnowledgeCard[] = [
+  {
+    "id": "ec-public-good",
+    "subject": "economics",
+    "topic": "共用品",
+    "subTopic": "兩項判斷準則",
+    "difficulty": "basic",
+    "source": "syllabus",
+    "concept": "共用品同時具備非排他性與非競爭性：無法阻止他人使用，而且一個人使用不會減少他人可用的數量。兩項缺一，便不是共用品。",
+    "example": "路燈符合兩項：無法阻止路人使用，多一人在燈下閱讀亦不會令他人光線減少。收費電視則兩項皆不符，屬私用品。",
+    "examTechnique": "作答時兩項特性各佔一半，只寫其中一項等於只答了一半。逐項扣回題目的物品，比背誦定義有效。",
+    "commonTrap": "把共用品等同政府提供的物品。提供者是誰並非判斷準則，判斷準則只有非排他性與非競爭性兩項。",
+    "keywords": [
+      "共用品",
+      "非排他性",
+      "非競爭性",
+      "私用品",
+      "路燈"
+    ],
+    "relatedTopics": [
+      "市場失靈"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-free-rider",
+    "subject": "economics",
+    "topic": "搭便車問題",
+    "subTopic": "由非排他性引致",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "搭便車問題源於非排他性：既然不付款也用得到，理性的個人便沒有付款誘因。結果是私人市場提供的數量低於社會需要。",
+    "example": "小區裝設閉路電視，人人受惠而無法排除不付款者，於是各家各戶都傾向等別人出錢，最終可能沒有人出錢。",
+    "examTechnique": "答題時要展示因果鏈：非排他性帶來不付款仍可享用，因而缺乏誘因，因而供應不足。缺了中間一步，論述便跳躍。",
+    "commonTrap": "把搭便車寫成「有人貪心」。它是制度誘因造成的結果，即使人人品格良好，只要不付款仍可享用，問題依然存在。",
+    "keywords": [
+      "搭便車",
+      "非排他性",
+      "誘因",
+      "供應不足",
+      "共用品"
+    ],
+    "relatedTopics": [
+      "市場失靈"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-entrepreneurship",
+    "subject": "economics",
+    "topic": "企業家職能",
+    "subTopic": "第四種生產要素",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "企業家職能指承擔不確定性並作出組合決策的功能，與土地、勞動、資本並列為生產要素，其報酬是利潤而非工資。",
+    "example": "同一批廠房與工人，由不同的人決定生產甚麼、產量多少、如何配置，結果可以是盈利或虧損。這個差異來自企業家職能。",
+    "examTechnique": "分辨四種要素時，先問報酬形式：地租、工資、利息、利潤。報酬是利潤的，便是企業家職能。",
+    "commonTrap": "把企業家職能簡稱為「企業」。企業是組織，企業家職能是功能，兩者並非同一概念，混用會令答案的層次錯位。",
+    "keywords": [
+      "企業家職能",
+      "生產要素",
+      "利潤",
+      "不確定性",
+      "決策"
+    ],
+    "relatedTopics": [
+      "生產要素"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-opportunity-cost",
+    "subject": "economics",
+    "topic": "機會成本",
+    "subTopic": "最高價值的放棄選項",
+    "difficulty": "basic",
+    "source": "syllabus",
+    "concept": "機會成本是放棄選項之中價值最高的那一個，而非所有放棄選項的總和，亦不等同金錢支出。沒有選擇，就沒有機會成本。",
+    "example": "以三小時溫習，放棄了兼職六百元與看電影。若兼職價值較高，機會成本是六百元，不是六百元加電影票價。",
+    "examTechnique": "先列出所有可行選項，剔除已選的一個，再從餘下的挑價值最高者。這個步驟寫出來，比直接給答案更能顯示理解。",
+    "commonTrap": "把所有放棄的選項加起來。同一時間只能選一項，其餘選項本身互相排斥，相加沒有意義。",
+    "keywords": [
+      "機會成本",
+      "選擇",
+      "稀缺",
+      "放棄",
+      "取捨"
+    ],
+    "relatedTopics": [
+      "基本經濟問題"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-marginal",
+    "subject": "economics",
+    "topic": "邊際與平均",
+    "subTopic": "決策看邊際",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "決策應比較邊際利益與邊際成本，而非平均值。平均值反映已發生的整體狀況，邊際值反映多做一單位的後果。",
+    "example": "食店平均每碟成本二十元，但多做一碟只需十二元材料。定價十五元一碟看似低於平均成本，實際上每碟仍增加利潤。",
+    "examTechnique": "凡見到「應否多做一件」「應否多聘一人」，一律轉為邊際比較；用平均數作答會得出相反結論。",
+    "commonTrap": "把已付出的固定成本攤入決策。已付出的部分無論做與不做都收不回，不應影響下一步的選擇。",
+    "keywords": [
+      "邊際",
+      "平均",
+      "邊際成本",
+      "邊際利益",
+      "決策"
+    ],
+    "relatedTopics": [
+      "生產與成本"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-ppc",
+    "subject": "economics",
+    "topic": "生產可能性曲線",
+    "subTopic": "曲線形狀的含義",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "生產可能性曲線向外凸，反映機會成本遞增：資源並非同樣適合兩種用途，愈是把不適合的資源調過來，代價愈大。",
+    "example": "把農地逐步改為工業用地，最初調用的是產出最低的農地，其後被迫調用肥沃農地，每多一單位工業品放棄的糧食愈來愈多。",
+    "examTechnique": "見到曲線形狀題，先答形狀反映甚麼，再答為何如此。只描述「向外凸」而不解釋資源適用性，答案缺了因由。",
+    "commonTrap": "把曲線上的點與曲線內的點混淆。曲線上代表資源用盡且有效率，曲線內代表未用盡或無效率，兩者的政策含義不同。",
+    "keywords": [
+      "生產可能性曲線",
+      "PPC",
+      "機會成本遞增",
+      "效率",
+      "稀缺"
+    ],
+    "relatedTopics": [
+      "基本經濟問題"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-price-elasticity",
+    "subject": "economics",
+    "topic": "需求價格彈性",
+    "subTopic": "決定因素",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "需求價格彈性量度需求量對價格變動的敏感程度。主要決定因素是替代品的多寡與接近程度、該項開支佔收入的比重，以及考慮的時間長短。",
+    "example": "某牌子汽水有大量近似替代品，彈性較高；食鹽開支佔收入極小且缺乏替代，彈性較低。同一商品在長期的彈性通常高於短期。",
+    "examTechnique": "答彈性高低必須指明理由來自哪一個決定因素，並扣回題目的具體商品；只寫「必需品彈性低」屬套語，未觸及原因。",
+    "commonTrap": "把「價格昂貴」當成彈性高的理由。彈性取決於有沒有替代選擇，與價格水平本身沒有必然關係。",
+    "keywords": [
+      "需求價格彈性",
+      "彈性",
+      "替代品",
+      "決定因素"
+    ],
+    "relatedTopics": [
+      "彈性"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-surplus",
+    "subject": "economics",
+    "topic": "消費者盈餘與生產者盈餘",
+    "subTopic": "圖上的位置",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "消費者盈餘是願意支付的價格與實際付出價格之間的差額，在圖上是需求曲線以下、價格線以上的面積；生產者盈餘則是價格線以下、供給曲線以上的面積。",
+    "example": "某人願意付五十元買一件商品，實際只付三十元，消費者盈餘為二十元。全體消費者的盈餘加起來，即為圖上該三角形的面積。",
+    "examTechnique": "計算盈餘變化時先畫出價格線，再逐塊標示面積增減；直接寫「盈餘減少」而不指出是哪一塊面積，難以說明幅度。",
+    "commonTrap": "把盈餘理解為利潤。消費者盈餘屬於買方的得益，與賣方的利潤是兩個不同概念，不可互換使用。",
+    "keywords": [
+      "消費者盈餘",
+      "生產者盈餘",
+      "面積",
+      "需求曲線",
+      "供給曲線"
+    ],
+    "relatedTopics": [
+      "市場均衡"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-market-failure",
+    "subject": "economics",
+    "topic": "市場失靈",
+    "subTopic": "四種主要成因",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "市場失靈指市場自行運作無法達致資源有效配置，主要成因包括外部性、共用品、壟斷力量與資訊不對稱。四者的機制各不相同。",
+    "example": "工廠排污屬外部成本；街燈屬共用品；獨市經營屬壟斷力量；二手車買賣中賣方比買方更清楚車況，屬資訊不對稱。",
+    "examTechnique": "先指明題目屬於哪一種成因，再解釋該成因如何導致偏離有效率的產量；先分類再說明，論述才有結構。",
+    "commonTrap": "把「價格昂貴」或「有人買不起」當成市場失靈。價格高低屬分配問題，市場失靈指的是效率問題，兩者不應混為一談。",
+    "keywords": [
+      "市場失靈",
+      "外部性",
+      "共用品",
+      "壟斷",
+      "資訊不對稱"
+    ],
+    "relatedTopics": [
+      "市場失靈",
+      "政府干預"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ec-externality",
+    "subject": "economics",
+    "topic": "外部性",
+    "subTopic": "私人成本與社會成本",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "外部成本存在時，社會成本高於私人成本，市場均衡產量高於社會最適產量；外部利益存在時則相反，市場產量低於社會最適產量。",
+    "example": "工廠不需承擔排污對居民的損害，故生產得比社會理想水平多。接種疫苗使他人也降低感染風險，故市場自行決定的接種量偏低。",
+    "examTechnique": "答題時先判斷是外部成本還是外部利益，再推出市場產量偏多還是偏少，最後才談政策。三步次序不可跳。",
+    "commonTrap": "見到外部性就一律答「產量過多」。外部利益的情況剛好相反，判斷方向錯了，後面的政策建議也會相反。",
+    "keywords": [
+      "外部性",
+      "外部成本",
+      "外部利益",
+      "社會成本",
+      "社會最適"
+    ],
+    "relatedTopics": [
+      "市場失靈"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  }
+]

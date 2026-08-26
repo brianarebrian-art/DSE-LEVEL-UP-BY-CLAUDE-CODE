@@ -2,14 +2,14 @@
   "_meta": {
     "source": "batch1-classical.json",
     "subject": "chinese",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "zh-c-cilei": "pending",
-    "zh-c-jushi": "pending",
-    "zh-c-duoyi": "pending",
-    "zh-c-xuci": "pending",
-    "zh-c-gujin": "pending"
+    "zh-c-cilei": "approved",
+    "zh-c-jushi": "approved",
+    "zh-c-duoyi": "approved",
+    "zh-c-xuci": "approved",
+    "zh-c-gujin": "approved"
   }
 }
