@@ -27,10 +27,19 @@ if (!BATCH) {
 }
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
-const DRAFTS = join(ROOT, 'scripts', 'qbank', 'drafts')
-const draftsPath = join(DRAFTS, `${BATCH}.json`)
+// 兩種批次：
+//   題目   —— `<stem>`                        → scripts/qbank/drafts/<stem>.json
+//   知識卡 —— `sensei/<科>/<stem>`            → data/sensei/<科>/drafts/<stem>.json
+// /admin 用同一條隊列、同一張 review_decisions 表，所以呢度靠批次名前綴分流。
+// 前綴唔可以省 —— 兩邊嘅 stem 有可能撞名，撞咗就會寫錯目錄。
+const senseiMatch = BATCH.match(/^sensei\/([a-z0-9-]+)\/(.+)$/)
+const DRAFTS = senseiMatch
+  ? join(ROOT, 'data', 'sensei', senseiMatch[1], 'drafts')
+  : join(ROOT, 'scripts', 'qbank', 'drafts')
+const STEM = senseiMatch ? senseiMatch[2] : BATCH
+const draftsPath = join(DRAFTS, `${STEM}.json`)
 if (!existsSync(draftsPath)) {
-  console.error(`✗ drafts file not found: scripts/qbank/drafts/${BATCH}.json`)
+  console.error(`✗ drafts file not found: ${senseiMatch ? `data/sensei/${senseiMatch[1]}/drafts` : 'scripts/qbank/drafts'}/${STEM}.json`)
   process.exit(1)
 }
 const rows = JSON.parse(readFileSync(draftsPath, 'utf8'))
@@ -68,7 +77,7 @@ const cloud = await res.json()
 const latest = new Map() // draft_id -> {decision, reviewer_name, created_at}
 for (const d of cloud) latest.set(d.draft_id, d)
 
-const decPath = join(DRAFTS, `${BATCH}.decisions.json`)
+const decPath = join(DRAFTS, `${STEM}.decisions.json`)
 if (latest.size === 0) {
   let hasLocal = false
   if (existsSync(decPath)) {
@@ -97,7 +106,7 @@ for (const row of rows) {
 
 const out = {
   _meta: {
-    source: `${BATCH}.json`,
+    source: `${STEM}.json`,
     subject,
     reviewer: [...reviewers].join(' + '),
     reviewedAt: latestAt.slice(0, 10),
@@ -107,7 +116,11 @@ const out = {
 }
 writeFileSync(decPath, JSON.stringify(out, null, 2) + '\n')
 
-console.log(`✓ pulled ${latest.size} cloud decision(s) → scripts/qbank/drafts/${BATCH}.decisions.json`)
+const relDir = senseiMatch ? `data/sensei/${senseiMatch[1]}/drafts` : 'scripts/qbank/drafts'
+console.log(`✓ pulled ${latest.size} cloud decision(s) → ${relDir}/${STEM}.decisions.json`)
 console.log(`  reviewer: ${out._meta.reviewer || '(missing!)'} · ${out._meta.reviewedAt}`)
 console.log(`  approved ${counts.approved} / rejected ${counts.rejected} / pending ${counts.pending}`)
-console.log(`\n  NEXT: node scripts/qbank/promote-drafts.mjs --in scripts/qbank/drafts/${BATCH}.json --subject ${subject} --decisions scripts/qbank/drafts/${BATCH}.decisions.json`)
+console.log(senseiMatch
+  ? `\n  NEXT: node scripts/qbank/promote-sensei-cards.mjs --in ${relDir}/${STEM}.json`
+    + `\n        （promote 完仲要人手 wire 入 data/sensei/${senseiMatch[1]}/index.ts）`
+  : `\n  NEXT: node scripts/qbank/promote-drafts.mjs --in ${relDir}/${STEM}.json --subject ${subject} --decisions ${relDir}/${STEM}.decisions.json`)

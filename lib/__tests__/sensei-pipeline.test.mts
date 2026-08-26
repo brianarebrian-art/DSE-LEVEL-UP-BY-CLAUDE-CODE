@@ -173,3 +173,34 @@ test('上線腳本產生嘅 index.ts 依然係明文 import，唔係 glob', () =
   assert.ok(!/readdirSync|import\.meta\.glob|require\.context/.test(written),
     '產生出嚟嘅 index.ts 唔可以自動掃 reviewed/ —— 憲章 §12')
 })
+
+test('/admin 同 pull-decisions 用同一套 sensei 批次名前綴', () => {
+  // 兩邊各自寫死一次前綴格式，一改一唔改就會靜靜寫錯目錄。
+  const page = stripComments(read('app/admin/page.tsx'))
+  const pull = stripComments(read('scripts/qbank/pull-decisions.mjs'))
+  assert.match(page, /`sensei\/\$\{subject\}\/\$\{stem\}`/, '/admin 要用 sensei/<科>/<批次> 做批次名')
+  assert.match(pull, /\^sensei\\\/\(\[a-z0-9-\]\+\)\\\/\(\.\+\)\$/, 'pull-decisions 要識返同一個前綴')
+})
+
+test('/admin 卡片渲染唔會出分數或正解', () => {
+  const src = read('app/admin/ReviewPanel.tsx')
+  const branch = src.slice(src.indexOf("row.type === 'card' ?"), src.indexOf("(row.type ?? 'mc') === 'mc' ?"))
+  assert.ok(branch.length > 100, '搵唔到卡片渲染分支')
+  // 只捉【真係渲染緊】正解／分數嘅嘢。呢度唔可以順手加「分數」兩個字落 regex ——
+  // 分支本身有一句警告寫住「亦唔會出任何分數」，會令斷言反過嚟捉住自己。
+  assert.ok(!/correctIndex|✓ 正解|row\.options|markingScheme/.test(branch),
+    '卡片分支唔可以渲染正解或分數 —— 憲章 §16.A')
+})
+
+test('Vercel 打包有 include SENSEI 草稿（唔 include 線上會靜靜空白）', () => {
+  // ⚠️ 呢度【刻意唔用 stripComments】。glob `sensei/*/drafts/*.json` 入面
+  // 個 `/*` 同 `*/` 會被區塊註釋 regex 當成一對註釋符剷走，令斷言永遠 false。
+  // 改為由 raw source 抽出 outputFileTracingIncludes 區塊再驗 —— 範圍夠窄，
+  // 唔會被附近嘅註釋誤中。
+  const raw = read('next.config.ts')
+  const i = raw.indexOf('outputFileTracingIncludes')
+  assert.ok(i > -1, 'next.config 冇 outputFileTracingIncludes')
+  const block = raw.slice(i, raw.indexOf('},', i))
+  assert.ok(block.includes('./data/sensei/*/drafts/*.json'), 'outputFileTracingIncludes 漏咗卡片草稿')
+  assert.ok(block.includes('./scripts/qbank/drafts/*.json'), '唔可以順手剷走題目草稿嘅 include')
+})

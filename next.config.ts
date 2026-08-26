@@ -38,7 +38,9 @@ const nextConfig: NextConfig = {
   // /admin 隊列喺 request time 用 fs 讀草稿檔 —— 呢啲檔冇被 import，
   // Vercel file tracing 唔會自動打包，要明示 include。
   outputFileTracingIncludes: {
-    '/admin': ['./scripts/qbank/drafts/*.json'],
+    // SENSEI 知識卡草稿一併 include —— 唔加嘅話 Vercel 上 /admin 只會見到
+    // 題目批次，卡片隊列會靜靜地空白（本地開發正常，所以最易走漏）。
+    '/admin': ['./scripts/qbank/drafts/*.json', './data/sensei/*/drafts/*.json'],
   },
   async headers() {
     return [
