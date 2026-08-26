@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "batch1-algebra.json",
+    "subject": "math",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ma-discriminant": "pending",
+    "ma-sum-product-roots": "pending",
+    "ma-complete-square": "pending",
+    "ma-quadratic-inequality": "pending",
+    "ma-identity-vs-equation": "pending",
+    "ma-factor-remainder": "pending",
+    "ma-log-laws": "pending",
+    "ma-transformations": "pending",
+    "ma-absolute-value": "pending",
+    "ma-substitution": "pending"
+  }
+}

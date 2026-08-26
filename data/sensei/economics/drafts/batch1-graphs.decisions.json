@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "batch1-graphs.json",
+    "subject": "economics",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ec-g-demand-shift": "pending",
+    "ec-g-supply-shift": "pending",
+    "ec-g-both-shift": "pending",
+    "ec-g-price-ceiling": "pending",
+    "ec-g-price-floor": "pending",
+    "ec-g-tax-incidence": "pending",
+    "ec-g-elasticity-revenue": "pending",
+    "ec-g-external-cost": "pending",
+    "ec-g-subsidy": "pending",
+    "ec-g-reading": "pending"
+  }
+}

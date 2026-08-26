@@ -32,7 +32,7 @@ data/sensei/<科>/drafts/<批次>.json          ← 出草稿（虛擬 persona �
 ## 卡片格式
 
 四段式：`concept`【概念】→ `example`【例子】→ `examTechnique`【考試技巧】→ `commonTrap`【常見陷阱】。
-每段 10–300 字。範本見 `economics/drafts/_demo.json`。
+每段 10–300 字。範本見 `chinese/drafts/batch1-fanwen.json`。
 
 ⚠️ **卡片沒有任何分數欄位，亦不可加入**（憲章 §16.A）。
 `_card-gate.mjs` 的 `STRICT_KEYS` 是白名單：任何 `score` / `marks` / `markingCriteria`
