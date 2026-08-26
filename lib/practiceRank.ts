@@ -1,5 +1,10 @@
 // ============================================================================
-// arena.ts —— 競技場狀態機（EXP／段位／連續練習）
+// practiceRank.ts —— 練習段位狀態機（EXP／段位／累積練習）
+//
+// 2026-08-26 由 arena.ts 改名（日次 4，Yuna 拍板）。純命名改動，行為零改變。
+// 點解要改：舊名「競技場」暗示同儕比較，同 2027 安全文件嘅「不可同儕比較」
+// 讀落好似撞。實情本模組【從來冇】任何同儕比較、排行榜或百分位 —— 學生見到
+// 嘅一直都係「練習段位」。改名係令個名對得返住個行為，唔係改行為。
 // ----------------------------------------------------------------------------
 // 憲章 §8.1（2026-08-22 解禁）之下嘅遊戲化層。
 //
@@ -67,7 +72,7 @@ export function attemptExp(a: Pick<AttemptRecord, 'score' | 'total'>): number {
   return score * 10 + total * 2
 }
 
-export interface ArenaState {
+export interface PracticeRankState {
   exp: number
   rank: Rank
   /** 下一段位；已到頂則為 null */
@@ -83,7 +88,7 @@ export interface ArenaState {
 }
 
 /** 由 attempts 導出競技場狀態。純函數 —— 方便測試，亦唔掂 localStorage。 */
-export function computeArena(attempts: AttemptRecord[]): ArenaState {
+export function computePracticeRank(attempts: AttemptRecord[]): PracticeRankState {
   let exp = 0
   const days = new Set<string>()
   for (const a of attempts) {
@@ -117,6 +122,6 @@ export function computeArena(attempts: AttemptRecord[]): ArenaState {
 }
 
 /** 讀本機進度並導出競技場狀態。SSR 之下 loadAttempts 回 []，故安全。 */
-export function getArena(): ArenaState {
-  return computeArena(loadAttempts())
+export function getPracticeRank(): PracticeRankState {
+  return computePracticeRank(loadAttempts())
 }

@@ -29,7 +29,7 @@ import GentleSuggestions from '@/components/GentleSuggestions'
 import PersonalTimeline from '@/components/PersonalTimeline'
 import JustOneCard from '@/components/JustOneCard'
 import GoodTodayCard from '@/components/GoodTodayCard'
-import ArenaCard from '@/components/ArenaCard'
+import PracticeRankCard from '@/components/PracticeRankCard'
 import { DashboardSkeleton } from '@/components/Skeleton'
 import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
@@ -279,7 +279,7 @@ export default function DashboardPageClient() {
 
         {/* 「今日已經好叻」+ 自訂鼓勵語。緊接 JustOneCard 之後：連「只做 1 題」都
             做唔到嗰日，呢張卡係最後一級台階 —— 唔要求任何產出，淨係認低你有嚟過。 */}
-        <ArenaCard className="mb-6" />
+        <PracticeRankCard className="mb-6" />
         <GoodTodayCard className="mb-6" />
 
         {/* 第 2 週 · 引擎四：溫柔每日建議。擺喺「今日計劃」之前 ——

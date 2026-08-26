@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "batch1-statistics.json",
+    "subject": "math",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ma-s-central": "pending",
+    "ma-s-sd": "pending",
+    "ma-s-sd-transform": "pending",
+    "ma-s-boxplot": "pending",
+    "ma-s-cumulative": "pending",
+    "ma-s-correlation": "pending",
+    "ma-s-sampling": "pending",
+    "ma-s-misleading": "pending",
+    "ma-s-mutually-exclusive": "pending",
+    "ma-s-conditional": "pending"
+  }
+}

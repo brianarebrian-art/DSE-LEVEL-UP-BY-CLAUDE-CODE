@@ -31,7 +31,7 @@
 // Exit code 1 on any violation (CI-friendly). Pairs with validate-banks.mjs.
 // ============================================================================
 
-import { readFileSync, readdirSync } from 'node:fs'
+import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -156,8 +156,36 @@ const report = (file, lineNo, rule, excerpt) => {
 
 console.log(`\n${'═'.repeat(70)}\n  DSE Level Up — terminology & register gate (term-guard)\n${'═'.repeat(70)}\n`)
 
-for (const file of readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort()) {
-  const lines = readFileSync(join(DIR, file), 'utf8').split('\n')
+// 掃描目標 = 題庫（平鋪）+ SENSEI 知識卡片庫（逐科子目錄）。
+// key 用「<科>/<檔名>」，令上面所有 /^economics/、/^(math|m1|m2)/、isLanguageBank
+// 之類嘅前綴判斷【原封不動】就命中卡片庫，唔使複製一套科目規則出嚟。
+// 加入卡片庫當日影響統計（憲章 §6）：data/sensei/ 命中 0 處。
+const SCAN = readdirSync(DIR).filter((f) => f.endsWith('.ts')).sort().map((f) => ({ key: f, abs: join(DIR, f) }))
+const SENSEI_DIR = fileURLToPath(new URL('../../data/sensei/', import.meta.url))
+if (existsSync(SENSEI_DIR)) {
+  for (const e of readdirSync(SENSEI_DIR, { withFileTypes: true })) {
+    // 根目錄嘅 .ts（types.ts / load.ts / index.ts）同題庫一樣要掃 ——
+    // 只掃子目錄會令共用型別檔變成一個唔受術語閘管嘅缺口。
+    if (e.isFile() && e.name.endsWith('.ts')) {
+      SCAN.push({ key: e.name, abs: join(SENSEI_DIR, e.name) })
+      continue
+    }
+    if (!e.isDirectory()) continue
+    // 遞歸 —— promote-sensei-cards.mjs 會寫入 <科>/reviewed/，只掃第一層
+    // 就會令【已批准嘅卡片】避開術語閘，即係最需要把關嗰批走甩咗。
+    const walkSubject = (rel) => {
+      for (const x of readdirSync(join(SENSEI_DIR, e.name, rel), { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+        const next = rel ? `${rel}/${x.name}` : x.name
+        if (x.isDirectory()) walkSubject(next)
+        else if (x.name.endsWith('.ts')) SCAN.push({ key: `${e.name}/${next}`, abs: join(SENSEI_DIR, e.name, next) })
+      }
+    }
+    walkSubject('')
+  }
+}
+
+for (const { key: file, abs } of SCAN) {
+  const lines = readFileSync(abs, 'utf8').split('\n')
   const isEcon = /^economics/.test(file)
   const isPhysics = /^physics/.test(file)
   const isChemistry = /^chemistry/.test(file)
@@ -218,7 +246,7 @@ for (const rel of ['lib/dictionary.ts', 'lib/i18n.tsx', 'data/heroContent.ts']) 
 
 // ── 2026-08-23 再補漏（第 4 週情緒安全審核）─────────────────────────────────
 // 上面嗰行係逐個檔寫死嘅白名單，所以每次有新嘅文案來源檔就會再漏一次 ——
-// 實測 lib/ 入面有 10 個檔帶用戶可見文案（arena / breathingPatterns / conceptNet /
+// 實測 lib/ 入面有 10 個檔帶用戶可見文案（practiceRank / breathingPatterns / conceptNet /
 // gentleSuggestions / stepHints / homestead / lockoutQuestions / truth-engine …），
 // 全部從來冇受過情緒安全檢查。改為整個 lib/ 遞迴掃，唔再靠人手維護名單。
 //

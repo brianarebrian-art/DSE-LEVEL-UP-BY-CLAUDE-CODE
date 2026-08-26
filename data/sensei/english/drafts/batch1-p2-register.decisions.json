@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "batch1-p2-register.json",
+    "subject": "english",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "en-reg-audience": "pending",
+    "en-reg-contractions": "pending",
+    "en-reg-phrasal": "pending",
+    "en-reg-hedging": "pending",
+    "en-reg-letter": "pending",
+    "en-reg-speech": "pending",
+    "en-reg-cohesion": "pending",
+    "en-reg-overgeneral": "pending",
+    "en-reg-variety": "pending",
+    "en-reg-mixed": "pending"
+  }
+}

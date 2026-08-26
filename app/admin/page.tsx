@@ -31,6 +31,78 @@ interface DraftRow {
 }
 
 const DRAFTS_DIR = join(process.cwd(), 'scripts', 'qbank', 'drafts')
+const SENSEI_DIR = join(process.cwd(), 'data', 'sensei')
+
+/** SENSEI 知識卡草稿。同題目共用同一個覆核面板，只係渲染分支唔同。 */
+interface CardRow {
+  id: string
+  subject: string
+  topic: string
+  subTopic?: string
+  difficulty?: string
+  concept: string
+  example: string
+  examTechnique: string
+  commonTrap: string
+  keywords?: string[]
+}
+
+/**
+ * 把 data/sensei/<科>/drafts/*.json 併入同一條覆核隊列。
+ *
+ * 點解唔另起一個面板：簽名紀律只應該有一套。多開一個介面，就會有第二套
+ * 「邊個批准過」嘅規則，兩套將來一定會分歧。批次名加 `sensei/` 前綴，
+ * pull-decisions.mjs 靠呢個前綴決定寫返邊個 decisions 檔。
+ */
+function loadSenseiBatches(): Batch[] {
+  const out: Batch[] = []
+  let subjectDirs: string[] = []
+  try {
+    subjectDirs = readdirSync(SENSEI_DIR, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name).sort()
+  } catch (e) {
+    safeLog('warn', 'admin: sensei dir unreadable', e)
+    return []
+  }
+  for (const subject of subjectDirs) {
+    const dir = join(SENSEI_DIR, subject, 'drafts')
+    if (!existsSync(dir)) continue
+    for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && !f.endsWith('.decisions.json')).sort()) {
+      const stem = file.replace(/\.json$/, '')
+      try {
+        const rows = JSON.parse(readFileSync(join(dir, file), 'utf8')) as CardRow[]
+        if (!Array.isArray(rows) || rows.length === 0) continue
+        let local: Record<string, string> = {}
+        const decPath = join(dir, `${stem}.decisions.json`)
+        if (existsSync(decPath)) local = (JSON.parse(readFileSync(decPath, 'utf8'))?.decisions ?? {}) as Record<string, string>
+        out.push({
+          batch: `sensei/${subject}/${stem}`,
+          subject,
+          rows: rows.map((r) => ({
+            id: r.id,
+            subject: r.subject,
+            topic: r.subTopic ? `${r.topic}・${r.subTopic}` : r.topic,
+            difficulty: r.difficulty ?? '',
+            // `question` 喺卡片語境即係卡片標題；面板用佢做每行嘅頭。
+            question: r.topic,
+            type: 'card' as const,
+            concept: r.concept,
+            example: r.example,
+            examTechnique: r.examTechnique,
+            commonTrap: r.commonTrap,
+            explanation: (r.keywords ?? []).join('、'), // i18n-exempt: admin 中文單語內部工具
+            trapTypes: [],
+            dnaTag: '',
+            status: local[r.id] === 'approved' || local[r.id] === 'rejected' ? local[r.id] : 'pending',
+            decidedBy: '',
+          })),
+        })
+      } catch (e) {
+        safeLog('warn', `admin: bad sensei drafts file ${subject}/${file}`, e)
+      }
+    }
+  }
+  return out
+}
 
 function loadBatches(): Batch[] {
   let files: string[] = []
@@ -95,7 +167,7 @@ export default async function AdminPage() {
   }
 
   // ── 隊列 + 歷史（Supabase 未配置時降級為「本地 decisions only」照用）────
-  const batches = loadBatches()
+  const batches = [...loadBatches(), ...loadSenseiBatches()]
   let history: HistoryRow[] = []
   let dbOk = true
   try {

@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "batch1-p3-integrated.json",
+    "subject": "english",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "en-int-why-copy-fails": "pending",
+    "en-int-paraphrase-structure": "pending",
+    "en-int-selecting": "pending",
+    "en-int-task-fulfilment": "pending",
+    "en-int-combining": "pending",
+    "en-int-format": "pending",
+    "en-int-word-limit": "pending",
+    "en-int-audience-purpose": "pending",
+    "en-int-trends": "pending",
+    "en-int-common-slips": "pending"
+  }
+}

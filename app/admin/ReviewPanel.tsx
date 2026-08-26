@@ -19,7 +19,13 @@ export interface BatchRow {
   // 2026-07-31：題庫已放寬至混合題型。MC 有 options／correctIndex；
   // 書寫題（text／long）冇，改為 referenceAnswer（＋ long 可有 markingScheme）。
   // 兩組欄位都設為選填，覆核面板按 `type` 分流顯示。
-  type?: 'mc' | 'text' | 'long'
+  // 2026-08-26：加 'card' —— SENSEI 知識卡共用同一條覆核隊列同同一套簽名紀律。
+  type?: 'mc' | 'text' | 'long' | 'card'
+  // 知識卡四段式（type === 'card' 時有）
+  concept?: string
+  example?: string
+  examTechnique?: string
+  commonTrap?: string
   options?: string[]
   correctIndex?: number
   referenceAnswer?: string
@@ -322,7 +328,7 @@ function ReviewCard({
         {row.difficulty && <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">{DIFF_ZH[row.difficulty] ?? row.difficulty}</span>}
         {row.dnaTag && <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">🧠 {row.dnaTag}</span>}
         {row.type && row.type !== 'mc' && (
-          <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-accent">{row.type === 'long' ? '長題目' : '文字題'}{/* i18n-exempt: admin */}</span>
+          <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-accent">{row.type === 'card' ? '知識卡' : row.type === 'long' ? '長題目' : '文字題'}{/* i18n-exempt: admin */}</span>
         )}
         <span className="min-w-0 flex-1 truncate text-sm">{row.id} · {unesc(row.question)}</span>
         <span className="text-ink-muted">{expanded ? '▾' : '▸'}</span>
@@ -331,7 +337,26 @@ function ReviewCard({
       {expanded && (
         <div className="mt-3">
           <p className="mb-3 leading-relaxed">{unesc(row.question)}</p>
-          {(row.type ?? 'mc') === 'mc' ? (
+          {row.type === 'card' ? (
+            /* SENSEI 知識卡：覆核人要睇嘅係四段內容本身啱唔啱、學生睇完會唔會誤解。
+               冇選項、冇正解、冇分數 —— 憲章 §16.A：卡片一分都唔出。 */
+            <div className="mb-3 space-y-2">
+              {([
+                ['概念', row.concept], // i18n-exempt: admin 中文單語內部工具
+                ['例子', row.example], // i18n-exempt: admin 中文單語內部工具
+                ['考試技巧', row.examTechnique], // i18n-exempt: admin 中文單語內部工具
+                ['常見陷阱', row.commonTrap], // i18n-exempt: admin 中文單語內部工具
+              ] as const).map(([label, body]) => (
+                <div key={label} className="rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
+                  <span className="mb-1 block text-xs font-medium text-accent">{label}{/* i18n-exempt: admin */}</span>
+                  {unesc(body ?? '（缺失 —— 呢張唔應該過到閘，請退回）') /* i18n-exempt: admin 覆核面板 */}
+                </div>
+              ))}
+              <p className="text-xs leading-relaxed text-gold">
+                ⚠️ 知識卡：SENSEI 只【檢索】呢啲內容，唔會自行生成，亦唔會出任何分數。{/* i18n-exempt: admin */}
+              </p>
+            </div>
+          ) : (row.type ?? 'mc') === 'mc' ? (
             <div className="mb-3 space-y-2">
               {(row.options ?? []).map((opt, i) => (
                 <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-accent/50 bg-accent/10' : 'border-line-strong'}`}>
@@ -363,7 +388,7 @@ function ReviewCard({
             </div>
           )}
           <div className="mb-4 rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
-            <span className="mb-1 block text-xs text-ink-muted">解析{/* i18n-exempt: admin */}</span>
+            <span className="mb-1 block text-xs text-ink-muted">{row.type === 'card' ? '檢索關鍵詞' : '解析'}{/* i18n-exempt: admin */}</span>
             {unesc(row.explanation)}
           </div>
 

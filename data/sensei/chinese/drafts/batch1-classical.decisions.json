@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "batch1-classical.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh-c-cilei": "pending",
+    "zh-c-jushi": "pending",
+    "zh-c-duoyi": "pending",
+    "zh-c-xuci": "pending",
+    "zh-c-gujin": "pending"
+  }
+}

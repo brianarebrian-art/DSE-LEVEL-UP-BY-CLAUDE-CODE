@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useLocale } from '@/lib/i18n'
-import { getArena, RANKS, type ArenaState } from '@/lib/arena'
+import { getPracticeRank, RANKS, type PracticeRankState } from '@/lib/practiceRank'
 
 // 競技場卡 —— 段位 + EXP 進度（憲章 §8.1，2026-08-22 遊戲化解禁）
 //
@@ -10,7 +10,7 @@ import { getArena, RANKS, type ArenaState } from '@/lib/arena'
 // · 唔顯示任何排名、他人成績或在線人數 —— 平台冇 user-to-user，
 //   而且憲章 §8 禁止虛構統計。一個「你贏過 73% 用戶」嘅數字係作出嚟嘅。
 // · 唔顯示「距離 5** 仲差幾多」—— 等級預測屬永久否決項目。
-// · 唔顯示倒扣、掉段、連續中斷 —— 見 lib/arena.ts 頂部關於大愛設計嘅註釋。
+// · 唔顯示倒扣、掉段、連續中斷 —— 見 lib/practiceRank.ts 頂部關於大愛設計嘅註釋。
 //
 // 金屬環（規格書 §2.3）用純 SVG + CSS `ring-rotate`；SEN 之下由 globals.css
 // 直接殺掉動畫，唔使喺呢度再判斷一次。
@@ -21,7 +21,7 @@ function MetallicRing({ progress, label }: { progress: number; label: string }) 
   return (
     <svg viewBox="0 0 80 80" className="w-20 h-20 shrink-0" role="img" aria-label={label}>
       <defs>
-        <linearGradient id="arena-ring" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id="rank-ring" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="var(--color-neon-cyan)" />
           <stop offset="100%" stopColor="var(--color-neon-purple)" />
         </linearGradient>
@@ -30,7 +30,7 @@ function MetallicRing({ progress, label }: { progress: number; label: string }) 
       <circle cx="40" cy="40" r={R} fill="none" stroke="currentColor" strokeWidth="3" className="text-line" />
       {/* 進度環 —— 由 12 點鐘開始順時針 */}
       <circle
-        cx="40" cy="40" r={R} fill="none" stroke="url(#arena-ring)" strokeWidth="3"
+        cx="40" cy="40" r={R} fill="none" stroke="url(#rank-ring)" strokeWidth="3"
         strokeLinecap="round" strokeDasharray={C}
         strokeDashoffset={C * (1 - progress)}
         transform="rotate(-90 40 40)"
@@ -38,20 +38,20 @@ function MetallicRing({ progress, label }: { progress: number; label: string }) 
       />
       {/* 裝飾外環（會轉，SEN／reduced-motion 之下停）*/}
       <circle
-        cx="40" cy="40" r="38" fill="none" stroke="url(#arena-ring)" strokeWidth="1"
+        cx="40" cy="40" r="38" fill="none" stroke="url(#rank-ring)" strokeWidth="1"
         strokeDasharray="4 10" opacity="0.5" className="ring-rotate"
       />
     </svg>
   )
 }
 
-export default function ArenaCard({ className = '' }: { className?: string }) {
+export default function PracticeRankCard({ className = '' }: { className?: string }) {
   const { locale } = useLocale()
   const en = locale === 'en'
-  const [a, setA] = useState<ArenaState | null>(null)
+  const [a, setA] = useState<PracticeRankState | null>(null)
 
   // 導出值，唔會寫任何嘢；掛喺 mount 之後避免 SSR／水合唔一致
-  useEffect(() => { setA(getArena()) }, [])
+  useEffect(() => { setA(getPracticeRank()) }, [])
   if (!a || a.sessions === 0) return null
 
   const tier = RANKS.indexOf(a.rank) + 1

@@ -39,6 +39,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/trust', priority: 0.7, freq: 'monthly' },
   { path: '/reading', priority: 0.6, freq: 'monthly' },
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
+  { path: '/sensei', priority: 0.7, freq: 'weekly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },
   { path: '/focus', priority: 0.5, freq: 'monthly' },
   { path: '/relax', priority: 0.5, freq: 'monthly' },

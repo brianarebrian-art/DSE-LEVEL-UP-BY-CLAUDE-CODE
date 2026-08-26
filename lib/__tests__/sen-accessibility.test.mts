@@ -92,11 +92,14 @@ test('入場動畫靜止之後要保留最終狀態 —— 唔可以剩返一片
 })
 
 // ── 二、一鍵舒適模式：整層關掉，唔係調慢 ───────────────────────────────────
-test('一鍵舒適模式 = 易讀字體 + 閱讀尺 + 隱藏計時器 + 靜音', () => {
-  assert.match(A11Y, /const comfortOn = easy && hideTimer && ruler && !sound/)
+test('一鍵舒適模式 = 易讀字體 + 閱讀尺 + 隱藏計時器 + 減少動態 + 靜音', () => {
+  // 2026-08-27 加入 noMotion（第五項）。呢條測試當時【接住咗】改動 —— 舊版
+  // 寫死四項，加第五項即刻紅。保持呢種寫死：舒適模式係憲章 §8.1 約束 4 嘅
+  // 落點，加減一項都應該要有人主動改測試，唔可以靜靜溜入去。
+  assert.match(A11Y, /const comfortOn = easy && hideTimer && ruler && noMotion && !sound/)
   assert.match(A11Y, /if \(next\) setSound\(false\)/)
-  // 四項都要真係寫落 storage
-  for (const key of ['EASY_KEY', 'HIDE_TIMER_KEY', 'RULER_KEY', 'ANSWER_SOUND_KEY']) {
+  // 五項都要真係寫落 storage
+  for (const key of ['EASY_KEY', 'HIDE_TIMER_KEY', 'RULER_KEY', 'NO_MOTION_KEY', 'ANSWER_SOUND_KEY']) {
     assert.ok(A11Y.includes(key), `一鍵舒適模式冇處理 ${key}`)
   }
 })
@@ -268,4 +271,140 @@ test('答錯嘅選項唔可以用玫紅底／邊 —— 系統錯誤訊息除外
     }
   }
   assert.deepEqual(bad, [], `答錯選項唔可以用玫紅：\n  ${bad.join('\n  ')}`)
+})
+
+// ── 光敏性癲癇：WCAG 2.3.1「三閃」門檻 ─────────────────────────────────────
+//
+// 呢個係本檔唯一一條【可能致命】嘅斷言。其餘幾條護嘅係舒適度同尊嚴；
+// 呢條護嘅係一個光敏性癲癇考生唔會喺溫書途中發作。
+//
+// WCAG 2.3.1（Level A）：任何一秒之內，閃爍唔可以超過三次。
+//
+// 點解只計【會重複】嘅動畫：一次性入場動畫（opacity 0→1 之後停低）閃爍次數
+// 係零，唔論佢幾快。實測 2026-08-27：如果唔分開一次性同無限循環，
+// .animate-pop-in（0.25s）會被誤報成 4Hz —— 一個成日誤報嘅閘，
+// 三個星期之後就會有人繞過佢。
+//
+// 保守之處：一個 cycle 入面有幾多次「明→暗→明」，用中間停靠點數目估。
+// 多峰 keyframes（例如 0% 25% 50% 75% 100% 交替明暗）會被當成多次閃爍，
+// 呢個方向嘅誤差係安全嘅。
+
+/** keyframes 名 → 內文。 */
+function keyframeBodies(): Map<string, string> {
+  const out = new Map<string, string>()
+  for (const m of LIVE.matchAll(/@keyframes\s+([\w-]+)\s*\{((?:[^{}]|\{[^}]*\})*)\}/g)) {
+    out.set(m[1], m[2])
+  }
+  return out
+}
+
+/** 會改變亮度／顏色嘅屬性 —— 只有呢啲先會造成「閃」。 */
+const LUMINANCE_PROPS = /opacity|background|box-shadow|filter|visibility|(?<![-\w])color\s*:/
+
+interface FlashRule {
+  selector: string
+  keyframes: string
+  seconds: number
+  peaks: number
+  hz: number
+}
+
+/** 掃所有【無限循環】而且會改亮度嘅動畫，計出閃爍頻率。 */
+function repeatingFlashRules(): FlashRule[] {
+  const kf = keyframeBodies()
+  const out: FlashRule[] = []
+  for (const m of LIVE.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    const decl = m[2]
+    const anim = decl.match(/animation\s*:\s*([\w-]+)\s+([\d.]+)(m?s)([^;}]*)/)
+    if (!anim) continue
+    // 只計無限循環。一次性動畫閃爍次數 = 0。
+    if (!/\binfinite\b/.test(anim[4])) continue
+    const body = kf.get(anim[1])
+    if (!body || !LUMINANCE_PROPS.test(body)) continue
+
+    const seconds = anim[3] === 'ms' ? Number(anim[2]) / 1000 : Number(anim[2])
+    // 中間停靠點（唔計 0% 同 100%）＝ 一個 cycle 入面嘅峰數，至少 1。
+    const stops = [...new Set([...body.matchAll(/(\d+)%/g)].map((s) => Number(s[1])))]
+    const peaks = Math.max(1, stops.filter((s) => s > 0 && s < 100).length)
+    out.push({
+      selector: m[1].trim().split('\n').pop()!.trim().slice(0, 40),
+      keyframes: anim[1],
+      seconds,
+      peaks,
+      hz: seconds > 0 ? peaks / seconds : Infinity,
+    })
+  }
+  return out
+}
+
+test('WCAG 2.3.1：冇任何循環動畫超過每秒三閃（光敏性癲癇）', () => {
+  const over = repeatingFlashRules().filter((r) => r.hz > 3)
+  assert.deepEqual(
+    over.map((r) => `${r.selector}（${r.keyframes}）${r.hz.toFixed(2)} 閃/秒`),
+    [],
+    '呢啲循環動畫閃得太快，光敏性癲癇考生有發作風險。' +
+      '拉長 animation-duration 至每個峰 ≥ 0.334 秒，或者剷走亮度變化。',
+  )
+})
+
+test('循環閃爍動畫必須喺 prefers-reduced-motion 停低 —— 呢層係最後防線', () => {
+  const rm = reducedMotionBody()
+  const unstopped = repeatingFlashRules()
+    .filter((r) => r.selector.startsWith('.'))
+    .filter((r) => !rm.includes(r.selector))
+    .map((r) => r.selector)
+  assert.deepEqual(
+    unstopped,
+    [],
+    `呢啲循環亮度動畫喺「減少動態效果」之下冇停：${unstopped.join(' ')}。` +
+      '就算頻率合格，光敏感用戶開咗系統設定就應該完全唔見到閃爍。',
+  )
+})
+
+test('3Hz 閘本身要驗到嘢 —— 唔可以因為分析唔到而靜靜放行', () => {
+  // 一個永遠回空陣列嘅閘同冇閘一樣。呢條確認個 parser 真係搵到循環動畫。
+  const rules = repeatingFlashRules()
+  assert.ok(
+    rules.length > 0,
+    'repeatingFlashRules() 搵唔到任何無限循環亮度動畫。' +
+      '如果全站真係一個都冇，請改寫本測試；否則就係個 parser 壞咗，' +
+      '而壞咗嘅 parser 會令上面兩條測試永遠綠色。',
+  )
+})
+
+// ── 手動「減少動態」（html.no-motion）─────────────────────────────────────
+// 全站本來只跟系統 prefers-reduced-motion。用學校電腦、或者唔識改
+// iOS／Android／Windows 動態設定嘅學生，之前完全冇得揀。
+
+test('手動減少動態用通用選擇器 —— 唔可以逐個 class 寫死', () => {
+  const rule = LIVE.match(/html\.no-motion\s*\*[^{]*\{[^}]*\}/)?.[0] ?? ''
+  assert.ok(rule.length > 0, '搵唔到 html.no-motion 嘅通用選擇器規則')
+  assert.match(rule, /animation-duration:\s*0\.01ms\s*!important/, '冇停低動畫')
+  assert.match(rule, /transition-duration:\s*0\.01ms\s*!important/, '冇停低過渡')
+  assert.match(rule, /animation-iteration-count:\s*1\s*!important/, '循環動畫冇截斷')
+})
+
+test('用 0.01ms 而唔用 animation:none —— 否則入場動畫會停喺 opacity 0', () => {
+  const rule = LIVE.match(/html\.no-motion\s*\*[^{]*\{[^}]*\}/)?.[0] ?? ''
+  assert.ok(
+    !/animation:\s*none/.test(rule),
+    'html.no-motion 用緊 `animation: none`。入場動畫嘅 keyframes 由 opacity 0 起，' +
+      'none 會令元素停喺基礎樣式（睇唔見）。要用 0.01ms 令佢即刻行完並保留 forwards 終態。',
+  )
+})
+
+test('減少動態要喺 mount 即刻套用 —— 遲一格畫面就已經閃咗一次', () => {
+  const boot = read('components/GlobalA11y.tsx')
+  // 用 [\s\S] 而唔用 `s` flag —— tsconfig target 唔支援 dotAll
+  assert.match(
+    boot.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/[^\n]*/g, '$1 '),
+    /dse_no_motion[\s\S]*classList\.add\('no-motion'\)/,
+    'GlobalA11y 開機冇套用 no-motion class',
+  )
+})
+
+test('一鍵舒適模式要包埋減少動態 —— 憲章 §8.1 約束 4：裝飾層整層關掉', () => {
+  const src = A11Y.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/[^\n]*/g, '$1 ')
+  const line = src.match(/const comfortOn =[^\n]*/)?.[0] ?? ''
+  assert.match(line, /noMotion/, `一鍵舒適模式冇計入 noMotion：${line}`)
 })
