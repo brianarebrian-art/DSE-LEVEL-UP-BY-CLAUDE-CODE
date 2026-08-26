@@ -152,3 +152,24 @@ test('KnowledgeCard 型別本身冇任何分數欄位', () => {
   const iface = src.slice(src.indexOf('interface KnowledgeCard'), src.indexOf('CardDraft'))
   assert.ok(!/\b(score|marks|grade|rubric|bandScore)\b/i.test(iface), 'KnowledgeCard 唔可以有分數欄位')
 })
+
+test('上線腳本唔可以繞過簽名閘', () => {
+  const src = stripComments(read('scripts/qbank/sensei-golive.mjs'))
+  assert.match(src, /_reviewer-gate\.mjs/, '上線腳本要 import 共用簽名閘')
+  assert.match(src, /assertReviewer\(/, '上線腳本要真係叫用 assertReviewer')
+  // 唔可以自己寫死一個預設名 —— 冇 --reviewer 就要停機，唔可以「幫手」填。
+  // 呢兩條斷言嘅寫法係實試過先定落嚟：第一版只睇 `reviewer = "名"`，
+  // 攔唔到 `assertReviewer(RAW || "yuna")` 呢種 fallback 寫法。
+  assert.match(src, /assertReviewer\(\s*RAW\s*\)/, 'reviewer 只可以由 --reviewer 而嚟')
+  assert.ok(!/assertReviewer\([^)]*(\|\||\?\?)/.test(src), 'assertReviewer 唔可以有 fallback 預設值')
+  assert.ok(!/reviewer\s*=\s*['"`][A-Za-z\u4e00-\u9fff]/.test(src), '上線腳本唔可以內置預設 reviewer 名')
+  assert.match(src, /RAW === null/, '冇 --reviewer 要停機')
+})
+
+test('上線腳本產生嘅 index.ts 依然係明文 import，唔係 glob', () => {
+  const src = stripComments(read('scripts/qbank/sensei-golive.mjs'))
+  // 腳本自己讀目錄係為咗搵草稿；但佢【寫出嚟】嗰個 index.ts 唔可以帶掃描邏輯。
+  const written = src.slice(src.indexOf('export const ${subject}SenseiCards'))
+  assert.ok(!/readdirSync|import\.meta\.glob|require\.context/.test(written),
+    '產生出嚟嘅 index.ts 唔可以自動掃 reviewed/ —— 憲章 §12')
+})
