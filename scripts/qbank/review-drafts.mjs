@@ -183,7 +183,9 @@ document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; 
   if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
   else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
 document.getElementById('exp').addEventListener('click', ()=>{
-  const out = { _meta: { source: ${JSON.stringify(srcName)}, subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Date().toISOString().slice(0,10) }, decisions: state };
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: ${JSON.stringify(srcName)}, subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()) }, decisions: state };
   const blob = new Blob([JSON.stringify(out,null,2)+'\\n'], {type:'application/json'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = ${JSON.stringify(base + '.decisions.json')}; a.click();
 });
