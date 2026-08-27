@@ -4,6 +4,8 @@ import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
 import { mathImportedQuestions } from './math-imported'
 import { mathBankQuestions } from './math-bank'
+import { mathP1LongQuestions } from './math-p1-long'
+import { mathLongB1Questions } from './math-long-b1'
 import { m1Questions, m1Topics } from './m1'
 import { m1BankQuestions } from './m1-bank'
 import { m2Questions, m2Topics } from './m2'
@@ -83,7 +85,7 @@ interface SubjectBank {
 // Registry of all subjects that have live question content
 const banks: Record<string, SubjectBank> = {
   // Hand-authored 120 + offline AI-generated (gate + LLM-judge verified) extras.
-  math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions], topics: mathTopics },
+  math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions, ...mathP1LongQuestions, ...mathLongB1Questions], topics: mathTopics },
   m1: { questions: [...m1Questions, ...m1BankQuestions], topics: m1Topics },
   m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },

@@ -125,6 +125,36 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "math_imp_096": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "math_imp_098": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "math_imp_100": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
+  "math_long_b1_01": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_02": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_03": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_04": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_05": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_06": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_07": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_08": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_09": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_long_b1_10": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-long-batch-1" },
+  "math_p1_01": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_02": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_03": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_04": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_05": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_06": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_07": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_08": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_09": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_10": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_11": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_12": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_13": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_14": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_15": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_16": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_17": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_18": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_19": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "math_p1_20": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
 }
 
 export interface ReviewBatch {
@@ -145,10 +175,12 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "econ-supply-demand-mc-10", subject: "economics", reviewer: "brian", reviewedAt: "2026-07-17", approved: 10 },
   { batch: "en-backfill-51", subject: "translation", reviewer: "brian", reviewedAt: "2026-08-07", approved: 51 },
   { batch: "english-idioms-batch", subject: "english", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
+  { batch: "math-long-batch-1", subject: "math", reviewer: "brian", reviewedAt: "2026-08-27", approved: 10 },
+  { batch: "math-p1-long", subject: "math", reviewer: "brian", reviewedAt: "2026-08-27", approved: 20 },
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 109
+export const REVIEWED_COUNT = 139
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>

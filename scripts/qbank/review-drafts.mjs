@@ -20,7 +20,7 @@
 // Output (next to the input file):  <name>.review.html   <name>.decisions.json
 // ============================================================================
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
 import { gateRow, norm } from './_gate.mjs'
 
@@ -71,6 +71,26 @@ const htmlPath = join(outDir, `${base}.review.html`)
 const decPath = join(outDir, `${base}.decisions.json`)
 
 // decisions.json template — all pending
+//
+// ⚠️ 唔可以冚走一份【已簽名】嘅審批紀錄。
+// 2026-08-27 實際踩過：brian 簽完 30 條書寫題、promote 完之後，為咗同步草稿改動
+// 再跑一次本腳本，10 條嘅 reviewer 由 `brian` 變返空白、10 條 approved 變返
+// pending —— 題庫檔已經生成咗，但【審批紀錄冇咗】，即係話個檔頭聲稱
+// 「approved question-by-question by a NAMED human」而 filesystem 已經冇證據。
+// 呢個同 promote-drafts.mjs 頂部記低嘅 2026-08-07 覆寫事故係同一類，
+// 分別係嗰次冚走題目，今次冚走簽名 —— 後者更難察覺，因為題庫睇落完全正常。
+//
+// 所以：見到已簽名嘅 decisions 檔就停機，要重出審批表就自己先改名／刪走。
+if (existsSync(decPath)) {
+  const prev = JSON.parse(readFileSync(decPath, 'utf8'))
+  const signedBy = (prev?._meta?.reviewer || '').trim()
+  if (signedBy) {
+    console.error(`\n✗ ${basename(decPath)} 已經由「${signedBy}」簽名（${prev._meta.reviewedAt || '冇記日期'}）。`)
+    console.error('  本腳本會把佢重置成全部 pending，即係抹走一份真人審批紀錄 —— 已停機。')
+    console.error('  真係要重出審批表：先改名／備份現有 decisions 檔，再跑。\n')
+    process.exit(1)
+  }
+}
 const decisions = { _meta: { source: basename(IN), subject: SUBJECT, reviewer: '', reviewedAt: '' }, decisions: {} }
 for (const r of survivors) decisions.decisions[r.id.trim()] = 'pending'
 writeFileSync(decPath, JSON.stringify(decisions, null, 2) + '\n')

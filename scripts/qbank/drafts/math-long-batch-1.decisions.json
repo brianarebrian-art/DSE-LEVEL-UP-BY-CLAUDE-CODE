@@ -2,19 +2,21 @@
   "_meta": {
     "source": "math-long-batch-1.json",
     "subject": "math",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "brian",
+    "reviewedAt": "2026-08-27",
+    "mode": "full",
+    "note": "逐題人手審批。審批台編號 21-30 對應本檔 10 條，全部批准，零駁回。"
   },
   "decisions": {
-    "math_long_b1_01": "pending",
-    "math_long_b1_02": "pending",
-    "math_long_b1_03": "pending",
-    "math_long_b1_04": "pending",
-    "math_long_b1_05": "pending",
-    "math_long_b1_06": "pending",
-    "math_long_b1_07": "pending",
-    "math_long_b1_08": "pending",
-    "math_long_b1_09": "pending",
-    "math_long_b1_10": "pending"
+    "math_long_b1_01": "approved",
+    "math_long_b1_02": "approved",
+    "math_long_b1_03": "approved",
+    "math_long_b1_04": "approved",
+    "math_long_b1_05": "approved",
+    "math_long_b1_06": "approved",
+    "math_long_b1_07": "approved",
+    "math_long_b1_08": "approved",
+    "math_long_b1_09": "approved",
+    "math_long_b1_10": "approved"
   }
 }

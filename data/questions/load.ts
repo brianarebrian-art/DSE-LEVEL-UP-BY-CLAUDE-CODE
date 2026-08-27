@@ -19,8 +19,10 @@ type Loader = () => Promise<AnyQuestion[]>
 const loaders: Record<string, Loader> = {
   // Maths merges its hand-authored bank with the offline-generated, judge-verified extras.
   math: async () => {
-    const [base, gen, param, imported, pbank] = await Promise.all([
+    const [base, gen, param, imported, pbank, p1long, longb1] = await Promise.all([
       import('./math'), import('./math-generated'), import('./math-parametric'), import('./math-imported'), import('./math-bank'),
+      // 卷一書寫題（long）—— brian 2026-08-27 逐題審批。數學科第一批非 MC 題目。
+      import('./math-p1-long'), import('./math-long-b1'),
     ])
     return [
       ...base.mathQuestions,
@@ -28,6 +30,8 @@ const loaders: Record<string, Loader> = {
       ...param.mathParametricQuestions,
       ...imported.mathImportedQuestions,
       ...pbank.mathBankQuestions,
+      ...p1long.mathP1LongQuestions,
+      ...longb1.mathLongB1Questions,
     ]
   },
   m1: async () => {
