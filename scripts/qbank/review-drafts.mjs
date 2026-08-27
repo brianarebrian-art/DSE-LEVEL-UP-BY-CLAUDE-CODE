@@ -141,6 +141,27 @@ function renderHtml(rows, subject, srcName) {
 const DATA = ${data};
 const SUBJECT = ${JSON.stringify(subject)};
 const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
 const list = document.getElementById('list');
 const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
 // 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
@@ -172,7 +193,7 @@ DATA.forEach((d, i) => {
 });
 function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 let cur = 0;
-function mark(i, v){ const d = DATA[i]; state[d.id] = v; const el = document.getElementById('c'+i);
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
   el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
   el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
   counts(); }
@@ -185,7 +206,7 @@ document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; 
 document.getElementById('exp').addEventListener('click', ()=>{
   // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
   // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
-  const out = { _meta: { source: ${JSON.stringify(srcName)}, subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()) }, decisions: state };
+  const out = { _meta: { source: ${JSON.stringify(srcName)}, subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
   const blob = new Blob([JSON.stringify(out,null,2)+'\\n'], {type:'application/json'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = ${JSON.stringify(base + '.decisions.json')}; a.click();
 });
