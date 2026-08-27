@@ -48,3 +48,28 @@ export function recordSeen(subjectId: string, ids: string[]): void {
     // storage unavailable (private mode / quota) — anti-repeat just no-ops
   }
 }
+
+/**
+ * 按「未見過優先、其次最耐冇見過」排序一批題目。
+ *
+ * 抽出嚟做純函數，係因為呢條規則就係「學生做唔做得曬成個題庫」嘅全部 ——
+ * 而佢之前喺兩個 runner 入面各寫一次，其中【書寫題嗰個根本冇寫】，
+ * 淨係 `shuffle(pool).slice(0, n)`。實測 30 條、每次 3 條：做勻平均要
+ * 38.9 個 session（有輪替係 10 個），做夠 30 條份量平均只見過 19.5 / 30。
+ * 冇人會為咗一個「感覺題目好似重複咗」嘅投訴去逐個 runner 睇一次，
+ * 所以要有一個地方、一條規則、一個測試（lib/__tests__/seen-window.test.mts）。
+ *
+ * 隨機性由呼叫方提供嘅 shuffle 保留：未見過嗰批照樣洗牌，背唔到次序。
+ */
+export function orderUnseenFirst<T extends { id: string }>(
+  pool: T[],
+  seen: string[],
+  shuffle: (a: T[]) => T[],
+): T[] {
+  const recency = new Map(seen.map((id, i) => [id, i]))
+  const unseen = shuffle(pool.filter((q) => !recency.has(q.id)))
+  const seenOldestFirst = pool
+    .filter((q) => recency.has(q.id))
+    .sort((a, b) => recency.get(b.id)! - recency.get(a.id)!)
+  return [...unseen, ...seenOldestFirst]
+}

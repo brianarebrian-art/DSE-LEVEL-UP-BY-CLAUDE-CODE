@@ -1,11 +1,12 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Brain } from 'lucide-react'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
 import { useLocale } from '@/lib/i18n'
+import { getSeen, orderUnseenFirst, recordSeen } from '@/lib/seen'
 import { recordTopicOutcomes } from '@/lib/topicStats'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import type { SelfAssessment, WrittenQuestion } from '@/data/questions/types'
@@ -71,10 +72,31 @@ export default function LongPracticeSession({
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
 
+  // 輪替名單同 MC 分開 —— 兩邊題型、節奏、session 大小都唔同，溝埋只會互相
+  // 食對方嘅名額。`ssr: false`（見 PracticeGate）所以喺 useMemo 讀 localStorage
+  // 安全，同本檔原本就喺 useMemo 度 shuffle 一樣。
+  const seenKey = `${subjectId}:long`
+
   const questions = useMemo(() => {
     const pool = topicFilter ? bank.filter((q) => q.topic === topicFilter) : bank
-    return shuffle(pool).slice(0, sessionSize)
-  }, [bank, topicFilter, sessionSize])
+    // 優先出未見過嘅，其次出最耐冇見過嘅 —— 同 MC 一致（PracticeSession.tsx）。
+    //
+    // 2026-08-27 之前呢度係 `shuffle(pool).slice(0, sessionSize)`：純隨機，
+    // 完全冇記住學生見過乜。實測 30 條、每次 3 條：
+    //   · 做勻 30 條平均要 38.9 個 session（有輪替嘅話係 10 個），最壞 129 個
+    //   · 做夠 10 個 session（即 30 條嘅份量）平均只見過 19.5 / 30 條
+    //   · 即係要做 117 條先見勻 30 條 —— 重複咗 87 條
+    // 學生會覺得「得嗰幾條」，但題目一直喺度，只係輪唔到。呢個同 2026-08-27
+    // 喺 MC 捉到嗰個「假題庫」bug 係同一類（見 lib/seen.ts 檔頭嘅實測數字）。
+    //
+    // 隨機性冇減：未見過嗰批照樣洗牌，所以背唔到出題次序。
+    return orderUnseenFirst(pool, getSeen(seenKey), shuffle).slice(0, sessionSize)
+  }, [bank, topicFilter, sessionSize, seenKey])
+
+  // 記低今次出過邊幾條，下一卷先避得開。
+  useEffect(() => {
+    recordSeen(seenKey, questions.map((q) => q.id))
+  }, [seenKey, questions])
 
   const [idx, setIdx] = useState(0)
   const [done, setDone] = useState(false)
