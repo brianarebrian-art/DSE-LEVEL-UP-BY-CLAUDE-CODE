@@ -84,7 +84,11 @@ const loaders: Record<string, Loader> = {
     return [...base.economicsQuestions, ...ebank.economicsBankQuestions, ...reviewed.economicsReviewedQuestions]
   },
   geography: async () => (await import('./geography')).geographyQuestions,
-  history: async () => (await import('./history')).historyQuestions,
+  history: async () => {
+    // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。
+    const [base, essays] = await Promise.all([import('./history'), import('./history-p2-essays')])
+    return [...base.historyQuestions, ...essays.historyP2EssaysQuestions]
+  },
   'chinese-history': async () => (await import('./chinese-history')).chineseHistoryQuestions,
   ths: async () => (await import('./ths')).thsQuestions,
   'health-management': async () => (await import('./health-management')).healthManagementQuestions,
