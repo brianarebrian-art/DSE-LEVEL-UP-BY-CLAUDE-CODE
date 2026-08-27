@@ -1,0 +1,1082 @@
+[
+ {
+  "id": "csd-b3-01",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "「一國兩制」與憲制秩序",
+  "difficulty": "basic",
+  "question": "《基本法》規定香港特別行政區享有高度自治權。就「高度自治」的來源而言，下列哪一項理解最為準確？",
+  "questionEn": "The Basic Law provides that the HKSAR enjoys a high degree of autonomy. Which understanding of the source of that autonomy is most accurate?",
+  "options": [
+   "高度自治權的範圍由特區自行界定",
+   "高度自治權由中央授予，並非特區固有的權力",
+   "高度自治權由《基本法》與國際條約共同賦予",
+   "高度自治權是特區成立時本身已經擁有的固有權力"
+  ],
+  "optionsEn": [
+   "Its scope is defined by the HKSAR itself",
+   "The high degree of autonomy is authorised by the Central Authorities; it is not an inherent power of the HKSAR",
+   "It is conferred jointly by the Basic Law and international treaties",
+   "It is an inherent power the HKSAR already possessed at its establishment"
+  ],
+  "correctIndex": 1,
+  "explanation": "單一制國家之下，地方行政區域的權力來自中央授權。特區的高度自治權由全國人民代表大會透過《基本法》授予，並非特區自身固有，亦不能由特區自行擴充。\n\n【干擾項剖析】「固有權力」把授權關係說成天然存在，屬概念倒置；「由國際條約共同賦予」混淆了《中英聯合聲明》的歷史背景與現行憲制依據；「範圍由特區自行界定」與授權關係直接矛盾——授權者才能界定授權範圍。",
+  "explanationEn": "Under a unitary state, the powers of a local administrative region derive from central authorisation. The HKSAR's high degree of autonomy is authorised by the National People's Congress through the Basic Law; it is neither inherent nor self-expanding.\n\n[Distractor analysis] Calling it inherent inverts the relationship of authorisation. Attributing it jointly to treaties confuses historical background with the present constitutional basis. Saying the HKSAR defines its own scope contradicts authorisation itself — the authorising body defines the scope.",
+  "topicId": "hk_constitution",
+  "topicZh": "「一國兩制」與憲制秩序",
+  "topicEn": "OCTS & Constitutional Order"
+ },
+ {
+  "id": "csd-b3-02",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "「一國兩制」與憲制秩序",
+  "difficulty": "intermediate",
+  "question": "有評論認為，行政長官既要向中央人民政府負責，亦要向香港特別行政區負責，此一「雙負責」安排會令問責變得含糊。就《基本法》的制度設計而言，下列哪一項回應最為恰當？",
+  "questionEn": "Some commentators argue that requiring the Chief Executive to be accountable both to the Central People's Government and to the HKSAR makes accountability ambiguous. Which response best reflects the institutional design of the Basic Law?",
+  "options": [
+   "兩重負責只是禮節性表述，不產生實際的制度要求",
+   "兩重負責必然衝突，因此實際上只有向中央負責一項生效",
+   "兩重負責針對不同事項，各有明確對象與範圍，並非同一事項的兩個標準",
+   "兩重負責意味行政長官可自行選擇向哪一方負責"
+  ],
+  "optionsEn": [
+   "They are merely ceremonial and impose no real institutional requirement",
+   "They necessarily conflict, so in practice only accountability to the Central Authorities operates",
+   "The two lines of accountability address different matters, each with a defined object and scope; they are not two standards for the same matter",
+   "The Chief Executive may choose which side to be accountable to"
+  ],
+  "correctIndex": 2,
+  "explanation": "行政長官向中央負責，主要涉及《基本法》所定屬於中央事權的事項，例如執行中央發出的指令、就特區整體施政向中央述職；向特區負責則體現於須向立法會作施政報告、答覆質詢及受監督。兩者對象與事項不同，屬分工而非同一事項的雙重標準。\n\n【干擾項剖析】「必然衝突」把制度分工誤讀為零和關係，屬過度推論；「只是禮節性表述」否定條文的規範效力，與述職、答覆質詢等具體安排不符；「可自行選擇」把制度義務說成個人裁量，屬張冠李戴。",
+  "explanationEn": "Accountability to the Central Authorities concerns matters falling within central powers under the Basic Law, such as implementing directives and reporting on the overall governance of the HKSAR. Accountability to the HKSAR is expressed through delivering policy addresses to the Legislative Council, answering questions and being subject to monitoring. The objects and matters differ; this is a division of functions, not two standards for one matter.\n\n[Distractor analysis] Claiming necessary conflict misreads a division of functions as zero-sum — an over-inference. Calling it ceremonial denies normative force and is inconsistent with duty visits and question sessions. Saying the office-holder may choose recasts an institutional duty as personal discretion.",
+  "topicId": "hk_constitution",
+  "topicZh": "「一國兩制」與憲制秩序",
+  "topicEn": "OCTS & Constitutional Order"
+ },
+ {
+  "id": "csd-b3-03",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "「一國兩制」與憲制秩序",
+  "difficulty": "intermediate",
+  "question": "全國人民代表大會常務委員會對《基本法》條文作出解釋後，香港法院在其後審理同類案件時應如何處理？",
+  "questionEn": "After the Standing Committee of the National People's Congress interprets a provision of the Basic Law, how should Hong Kong courts treat that interpretation in later cases on the same matter?",
+  "options": [
+   "須以該解釋為準，並按解釋適用於其後的案件",
+   "只適用於內地法院，對香港法院並無效力",
+   "只在中央另行發出指令時才須跟從",
+   "可自行決定是否採納，因司法獨立不受任何解釋約束"
+  ],
+  "optionsEn": [
+   "They must follow it and apply it to subsequent cases",
+   "It binds only Mainland courts and has no effect in Hong Kong",
+   "They need follow it only if the Central Authorities issue a further directive",
+   "They may decide whether to adopt it, since judicial independence is unconstrained by any interpretation"
+  ],
+  "correctIndex": 0,
+  "explanation": "《基本法》的解釋權屬於全國人民代表大會常務委員會。人大釋法一經作出，即構成條文含義的權威說明，香港法院在其後的案件中須以之為準。司法獨立指法院審判時不受干預，與條文由誰作最終解釋屬兩個不同層次的問題。\n\n【干擾項剖析】「可自行決定是否採納」把司法獨立擴大為不受任何規範約束，屬過度推論；「須另有指令才跟從」增添了條文並無的前提條件；「只適用於內地法院」直接與解釋權的憲制安排相悖。",
+  "explanationEn": "The power to interpret the Basic Law rests with the NPC Standing Committee. Once made, an interpretation is the authoritative statement of the provision's meaning, and Hong Kong courts must follow it in subsequent cases. Judicial independence concerns freedom from interference in adjudication; who gives the final interpretation is a distinct question.\n\n[Distractor analysis] Treating independence as freedom from all norms is an over-inference. Requiring a further directive adds a condition the text does not contain. Confining the effect to Mainland courts contradicts the constitutional arrangement for interpretation.",
+  "topicId": "hk_constitution",
+  "topicZh": "「一國兩制」與憲制秩序",
+  "topicEn": "OCTS & Constitutional Order"
+ },
+ {
+  "id": "csd-b3-04",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "「一國兩制」與憲制秩序",
+  "difficulty": "hard",
+  "question": "有意見認為，中央對特區的全面管治權與特區的高度自治權互相排斥，二者不可並存。就制度邏輯而言，下列哪一項評價最為合理？",
+  "questionEn": "Some argue that the Central Authorities' overall jurisdiction and the HKSAR's high degree of autonomy are mutually exclusive. Which evaluation is most defensible in terms of institutional logic?",
+  "options": [
+   "二者並存與否，取決於特區政府與中央的政治關係是否良好",
+   "二者屬平行而互不相干的兩套制度，各自運作",
+   "二者確實互相排斥，故實際運作中必有一方形同虛設",
+   "二者屬同一制度的兩個層次：全面管治權是授權的來源，高度自治權是授權的內容"
+  ],
+  "optionsEn": [
+   "Whether they coexist depends on the state of political relations between the HKSAR and the Centre",
+   "They are parallel systems that operate independently of each other",
+   "They are genuinely exclusive, so one must be nominal in practice",
+   "They are two levels of one system: overall jurisdiction is the source of the authorisation, and the high degree of autonomy is its content"
+  ],
+  "correctIndex": 3,
+  "explanation": "授權關係之下，授權者保有全面管治權，被授權者行使獲授的自治權，兩者是同一制度的上下兩層，而非互相競爭的兩種權力。若無授權主體，高度自治權便無從產生；若授權後不予落實，授權亦失去意義。\n\n【干擾項剖析】「必有一方形同虛設」把層次關係誤讀為此消彼長，屬過度推論；「取決於政治關係」把憲制安排說成情勢產物，混淆了規範與事實；「平行而互不相干」否定授權關係本身，與單一制國家結構不符。",
+  "explanationEn": "Under an authorising relationship the authorising body retains overall jurisdiction while the authorised body exercises the autonomy granted. These are upper and lower levels of one system, not competing powers. Without an authorising subject the autonomy could not arise; if the authorisation were not implemented it would be meaningless.\n\n[Distractor analysis] Claiming one must be nominal misreads a layered relationship as a trade-off. Making coexistence depend on political relations confuses norms with circumstances. Treating them as unrelated parallel systems denies the authorising relationship itself.",
+  "topicId": "hk_constitution",
+  "topicZh": "「一國兩制」與憲制秩序",
+  "topicEn": "OCTS & Constitutional Order"
+ },
+ {
+  "id": "csd-b3-05",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "法治、權利與責任",
+  "difficulty": "basic",
+  "question": "法治的層次由低至高可分為「有法可依」、「有法必依」、「以法限權」及「以法達義」。下列哪一項最能體現「以法限權」？",
+  "questionEn": "The levels of the rule of law run from 'laws exist', to 'laws are observed', to 'law limits power', to 'law achieves justice'. Which best exemplifies 'law limits power'?",
+  "options": [
+   "政府大量增聘執法人員以加強巡查",
+   "政府部門的決定可由法院覆核，越權者其決定會被撤銷",
+   "立法機關訂立條例，訂明各項罰則",
+   "市民違反交通規則會被檢控及罰款"
+  ],
+  "optionsEn": [
+   "The government hires many more enforcement officers to step up patrols",
+   "Decisions of government departments may be judicially reviewed and quashed if made beyond power",
+   "The legislature enacts ordinances setting out penalties",
+   "Citizens who breach traffic rules are prosecuted and fined"
+  ],
+  "correctIndex": 1,
+  "explanation": "「以法限權」的核心在於法律約束的對象是公權力本身。司法覆核容許法院審查行政決定是否越權，正是以法律限制政府權力的制度體現。\n\n【干擾項剖析】市民被檢控屬「有法必依」，約束對象是市民而非政府；訂立條例及罰則屬「有法可依」，只是規則的存在；增聘執法人員屬執行力度問題，與是否限制公權力無關。",
+  "explanationEn": "'Law limits power' means the object of legal restraint is public power itself. Judicial review, which allows courts to examine whether an administrative decision exceeded its powers, is the institutional expression of this.\n\n[Distractor analysis] Prosecuting citizens belongs to 'laws are observed', where the object of restraint is the citizen rather than the government. Enacting ordinances and penalties belongs to 'laws exist' — the mere presence of rules. Hiring more officers concerns enforcement capacity, not restraint of public power.",
+  "topicId": "hk_rule_of_law",
+  "topicZh": "法治、權利與責任",
+  "topicEn": "Rule of Law, Rights & Duties"
+ },
+ {
+  "id": "csd-b3-06",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "法治、權利與責任",
+  "difficulty": "intermediate",
+  "question": "有市民認為「我有言論自由，所以我發表任何內容都不應受法律追究」。就權利與責任的關係而言，此說的主要問題在於甚麼？",
+  "questionEn": "A citizen argues: 'I have freedom of speech, so nothing I publish should attract legal consequences.' What is the main flaw in this claim regarding rights and responsibilities?",
+  "options": [
+   "言論自由並非香港法律所保障的權利",
+   "混淆了權利受保障與權利不受任何限制，忽略行使權利時對他人權利的責任",
+   "言論自由只在私人場合適用，公開場合不受保障",
+   "權利只屬於成年人，未成年人不享有言論自由"
+  ],
+  "optionsEn": [
+   "Freedom of speech is not a right protected by Hong Kong law",
+   "It confuses being protected with being unlimited, ignoring the responsibility owed to others' rights when exercising a right",
+   "Freedom of speech applies only in private and is unprotected in public",
+   "Rights belong only to adults; minors do not enjoy freedom of speech"
+  ],
+  "correctIndex": 1,
+  "explanation": "權利受保障不等於權利絕對。行使言論自由時，若損害他人名譽、煽動他人犯罪或危害公共安全，仍須承擔相應法律責任。權利與責任並存，正是公民身分的基本內容。\n\n【干擾項剖析】「並非法律所保障」與《基本法》及相關人權條文不符，屬事實錯誤；「只屬於成年人」把權利主體任意收窄；「只在私人場合適用」把保障範圍倒轉——公開表達正是言論自由的典型情境。",
+  "explanationEn": "Protection is not the same as absence of limits. In exercising free speech, one remains legally responsible where reputation is harmed, crime is incited, or public safety is endangered. Rights coexisting with responsibilities is basic to citizenship.\n\n[Distractor analysis] Denying legal protection is factually wrong given the Basic Law and human-rights provisions. Restricting the right to adults arbitrarily narrows who holds it. Confining it to private settings inverts the position — public expression is the paradigm case.",
+  "topicId": "hk_rule_of_law",
+  "topicZh": "法治、權利與責任",
+  "topicEn": "Rule of Law, Rights & Duties"
+ },
+ {
+  "id": "csd-b3-07",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "法治、權利與責任",
+  "difficulty": "intermediate",
+  "question": "司法獨立的制度保障包括法官的任免程序、任期保障及薪酬不受隨意削減。這些安排的共同用意最能說明甚麼？",
+  "questionEn": "Institutional safeguards of judicial independence include appointment and removal procedures, security of tenure, and protection of remuneration from arbitrary reduction. What common purpose do these best illustrate?",
+  "options": [
+   "減少法官在審判時受外來壓力影響的可能",
+   "確保法官的判決與政府政策方向一致",
+   "令法官可自行決定審理哪些案件",
+   "提高司法機構的行政效率"
+  ],
+  "optionsEn": [
+   "Reducing the possibility that judges are subject to outside pressure when adjudicating",
+   "Ensuring judgments align with government policy directions",
+   "Allowing judges to choose which cases they hear",
+   "Improving the administrative efficiency of the judiciary"
+  ],
+  "correctIndex": 0,
+  "explanation": "上述安排均針對同一風險：若法官的職位或待遇可被任意處置，判決便可能因顧慮而傾斜。保障任期與薪酬，是為了令法官在裁決時無須考慮個人得失。\n\n【干擾項剖析】「與政策方向一致」正是司法獨立要避免的情況，屬概念倒置；「提高行政效率」與獨立性無關，屬張冠李戴；「自行決定審理哪些案件」涉及案件分配，並非獨立性的內容。",
+  "explanationEn": "All these safeguards address one risk: if a judge's position or remuneration could be dealt with arbitrarily, judgments might bend out of concern for consequences. Protecting tenure and pay frees judges from weighing personal cost when deciding.\n\n[Distractor analysis] Alignment with policy is precisely what independence guards against — an inversion. Administrative efficiency is unrelated. Choosing one's own cases concerns case allocation, not independence.",
+  "topicId": "hk_rule_of_law",
+  "topicZh": "法治、權利與責任",
+  "topicEn": "Rule of Law, Rights & Duties"
+ },
+ {
+  "id": "csd-b3-08",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "法治、權利與責任",
+  "difficulty": "hard",
+  "question": "某條例授權部門首長在「有需要時」限制某項活動，但未訂明何謂「有需要」，亦無覆核途徑。就法治原則而言，此一立法設計最值得關注之處是甚麼？",
+  "questionEn": "An ordinance empowers a department head to restrict an activity 'where necessary', without defining necessity or providing any review avenue. From a rule-of-law standpoint, what is most concerning about this design?",
+  "options": [
+   "權力範圍不確定且缺乏制衡，市民無法預知法律後果，亦難以挑戰決定",
+   "條例以中文訂立，因此適用範圍受限",
+   "條例並未訂明罰則，因此不具法律效力",
+   "條例授權的對象是部門首長而非法院，因此必然違憲"
+  ],
+  "optionsEn": [
+   "The scope of power is indeterminate and unchecked; citizens cannot foresee legal consequences nor readily challenge decisions",
+   "It is enacted in Chinese and so is limited in application",
+   "It sets no penalties and therefore has no legal effect",
+   "It empowers a department head rather than a court, and is therefore necessarily unconstitutional"
+  ],
+  "correctIndex": 0,
+  "explanation": "法治要求法律具備可預見性，並要求公權力受到制衡。條文以「有需要時」授權而不加界定，市民無從預知何種情況會受限制；同時欠缺覆核途徑，決定即使越權亦難以糾正。兩者結合，正是「以法限權」失效的典型情境。\n\n【干擾項剖析】「授權對象非法院即必然違憲」把行政授權一概否定，屬過度推論——行政機關獲授權本身並不違憲，問題在於界限與制衡；「無罰則即無效力」混淆了授權條文與罰則條文；「以中文訂立故適用受限」與法例的語文地位不符。",
+  "explanationEn": "The rule of law requires foreseeability and checks on public power. Authorising action 'where necessary' without definition leaves citizens unable to anticipate when restrictions apply, and the absence of review means even an excess of power is hard to correct. Together these are the classic failure of 'law limits power'.\n\n[Distractor analysis] Declaring any non-judicial delegation unconstitutional is an over-inference — delegation itself is not unconstitutional; the problem is boundaries and checks. Equating absence of penalties with absence of effect confuses empowering provisions with penal ones. The language of enactment does not limit application.",
+  "topicId": "hk_rule_of_law",
+  "topicZh": "法治、權利與責任",
+  "topicEn": "Rule of Law, Rights & Duties"
+ },
+ {
+  "id": "csd-b3-09",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "香港社會與參與",
+  "difficulty": "basic",
+  "question": "人口老化會同時影響勞動力供應與公共開支。就其對公共財政的影響而言，下列哪一項推論最為直接？",
+  "questionEn": "Population ageing affects both labour supply and public expenditure. Which inference about its impact on public finances is most direct?",
+  "options": [
+   "只有稅收下降，公共服務開支維持不變",
+   "納稅人口比例下降，而醫療及安老服務開支上升，收支壓力同時來自兩端",
+   "人口老化對公共財政並無實質影響",
+   "只有醫療開支上升，稅收不受影響"
+  ],
+  "optionsEn": [
+   "Only revenue falls; spending on public services stays the same",
+   "The proportion of taxpayers falls while spending on healthcare and elderly services rises, so pressure comes from both sides",
+   "Population ageing has no substantive impact on public finances",
+   "Only healthcare spending rises; revenue is unaffected"
+  ],
+  "correctIndex": 1,
+  "explanation": "人口老化的結構性影響是雙向的：勞動年齡人口比例下降令稅基收窄，而長者人口增加令醫療、安老及福利開支上升。分析公共財政壓力時，兩端須同時考慮，只計其一會低估影響。\n\n【干擾項剖析】「只有開支上升」與「只有稅收下降」各自只取一端，屬分析不完整；「並無實質影響」與人口結構同財政收支的關係不符。",
+  "explanationEn": "The structural effect runs both ways: a falling share of working-age population narrows the tax base, while a growing elderly population raises spending on healthcare, elderly care and welfare. Both sides must be considered; taking only one understates the impact.\n\n[Distractor analysis] Each single-sided option captures only half the effect. Denying any substantive impact is inconsistent with the link between demographic structure and fiscal balance.",
+  "topicId": "hk_society",
+  "topicZh": "香港社會與參與",
+  "topicEn": "Hong Kong Society & Participation"
+ },
+ {
+  "id": "csd-b3-10",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "香港社會與參與",
+  "difficulty": "basic",
+  "question": "公民參與可分為不同形式，例如投票、參與公眾諮詢、加入志願組織及向立法會議員反映意見。這些形式的共同特徵是甚麼？",
+  "questionEn": "Civic participation takes various forms: voting, joining public consultations, volunteering, and raising views with legislators. What do these forms have in common?",
+  "options": [
+   "均是在既定制度渠道之內，就公共事務表達意見或作出貢獻",
+   "均只能由已登記選民進行",
+   "均會直接改變政府的決定",
+   "均需要具備專業資格方可參與"
+  ],
+  "optionsEn": [
+   "Each expresses views on, or contributes to, public affairs through established institutional channels",
+   "Each is open only to registered electors",
+   "Each directly changes government decisions",
+   "Each requires professional qualifications"
+  ],
+  "correctIndex": 0,
+  "explanation": "上述活動的共通點在於：均屬制度容許的渠道，而參與者藉此就公共事務發聲或付出。參與門檻、參與者身分及成效各有不同，但性質一致。\n\n【干擾項剖析】「需具專業資格」與志願服務、公眾諮詢的開放性不符；「只限已登記選民」只適用於投票，屬以偏概全；「直接改變政府決定」誇大了參與的效果——參與提供意見與影響，並不等同決定權。",
+  "explanationEn": "What unites them is that each is an institutionally permitted channel through which participants voice views or contribute to public affairs. Thresholds, participants and effectiveness differ, but the nature is the same.\n\n[Distractor analysis] Requiring qualifications is inconsistent with the openness of volunteering and consultation. Restricting to registered electors applies only to voting — a hasty generalisation. Claiming direct change overstates participation, which supplies views and influence rather than decision-making power.",
+  "topicId": "hk_society",
+  "topicZh": "香港社會與參與",
+  "topicEn": "Hong Kong Society & Participation"
+ },
+ {
+  "id": "csd-b3-11",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "香港社會與參與",
+  "difficulty": "intermediate",
+  "question": "有研究指出，房屋負擔能力下降會同時影響青年的居住安排、成家時間及儲蓄模式。此一觀察最能說明社會議題的哪一項特性？",
+  "questionEn": "Research suggests declining housing affordability affects young people's living arrangements, timing of family formation and saving patterns. Which characteristic of social issues does this best illustrate?",
+  "options": [
+   "社會議題的成因必然只有一個",
+   "青年問題與房屋政策互不相干",
+   "單一議題往往牽連多個生活範疇，難以只用單一政策工具處理",
+   "社會議題的影響只會出現在經濟層面"
+  ],
+  "optionsEn": [
+   "Social issues necessarily have a single cause",
+   "Youth issues and housing policy are unrelated",
+   "A single issue often spans several domains of life and cannot be addressed with one policy instrument alone",
+   "The effects of social issues appear only in the economic domain"
+  ],
+  "correctIndex": 2,
+  "explanation": "房屋負擔能力屬經濟議題，但其影響延伸至居住、家庭與理財決定，跨越經濟、社會及人生規劃多個層面。這種連鎖性說明處理社會議題時，須考慮政策的跨範疇影響。\n\n【干擾項剖析】「成因必然只有一個」與題幹所示的多重影響相反，屬簡化推論；「互不相干」直接否定題幹所述的關聯；「只在經濟層面」忽略了成家時間等非經濟影響，屬半對半錯。",
+  "explanationEn": "Housing affordability is an economic issue, yet its effects extend to living arrangements, family and financial decisions, crossing economic, social and life-planning domains. This chain shows that policy responses must consider cross-domain effects.\n\n[Distractor analysis] A single cause contradicts the multiple effects described. Denying the link contradicts the stem. Confining effects to economics ignores non-economic outcomes such as timing of family formation.",
+  "topicId": "hk_society",
+  "topicZh": "香港社會與參與",
+  "topicEn": "Hong Kong Society & Participation"
+ },
+ {
+  "id": "csd-b3-12",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "香港社會與參與",
+  "difficulty": "intermediate",
+  "question": "政府就一項規劃方案進行公眾諮詢，收到大量意見後修訂了部分內容。有意見批評諮詢「只是形式」。要判斷此批評是否成立，最應該檢視下列哪一項？",
+  "questionEn": "After a public consultation on a planning proposal, the government revised parts of it. Critics say the consultation was 'a formality'. Which is most relevant to judging that criticism?",
+  "options": [
+   "諮詢期是否在假期之內進行",
+   "政府是否在諮詢前已擬備方案初稿",
+   "收集到的主要意見與最終修訂之間有否對應關係，以及未採納者有否交代理由",
+   "參與諮詢的人數是否超過某一數目"
+  ],
+  "optionsEn": [
+   "Whether the consultation period fell within a holiday season",
+   "Whether the government had prepared a draft before consulting",
+   "Whether the main views received correspond to the final revisions, and whether reasons were given for views not adopted",
+   "Whether the number of participants exceeded some threshold"
+  ],
+  "correctIndex": 2,
+  "explanation": "判斷諮詢是否流於形式，關鍵在於意見與結果之間有否可追溯的關係：哪些意見被採納、哪些未被採納及其理由。有此交代，諮詢便具實質作用；若結果與意見完全無關且不作說明，形式化的批評方能成立。\n\n【干擾項剖析】參與人數多寡不等於意見有否被考慮；諮詢期時間安排可能影響參與度，但屬程序便利問題，並非實質性的判準；諮詢前備有初稿屬正常做法，本身並不構成形式化。",
+  "explanationEn": "Whether a consultation is a formality turns on a traceable link between views and outcomes: which views were adopted, which were not, and why. With such an account the consultation has substance; if outcomes bear no relation to views and no explanation is given, the criticism holds.\n\n[Distractor analysis] Participant numbers do not show whether views were considered. Timing may affect turnout but is a matter of procedural convenience, not substance. Having a draft beforehand is normal practice and does not itself make a consultation a formality.",
+  "topicId": "hk_society",
+  "topicZh": "香港社會與參與",
+  "topicEn": "Hong Kong Society & Participation"
+ },
+ {
+  "id": "csd-b3-13",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "改革開放與國家發展",
+  "difficulty": "basic",
+  "question": "改革開放初期設立經濟特區，其主要作用最能以下列哪一項概括？",
+  "questionEn": "Establishing special economic zones early in the reform and opening-up period is best summarised by which function?",
+  "options": [
+   "在可控範圍內先行試驗新的經濟政策，取得經驗後再逐步推廣",
+   "把全國經濟政策一次過同步改變",
+   "取代原有的計劃經濟體制，即時全面市場化",
+   "專門用作吸納農村剩餘勞動力，並無政策試驗作用"
+  ],
+  "optionsEn": [
+   "Piloting new economic policies within a controllable scope, then extending them gradually once experience is gained",
+   "Changing national economic policy everywhere simultaneously",
+   "Replacing the planned economy with immediate, comprehensive marketisation",
+   "Serving solely to absorb surplus rural labour, with no policy-piloting function"
+  ],
+  "correctIndex": 0,
+  "explanation": "經濟特區的核心作用在於「先行先試」：在有限地域試行外資引進、企業管理及市場機制等新做法，觀察成效與問題後再決定是否推廣。這種漸進方式可控制改革風險。\n\n【干擾項剖析】「一次過同步改變」與設立特區的局部性直接矛盾；「即時全面市場化」誇大了初期改革的幅度；「並無政策試驗作用」否定了特區設立的主要目的，屬以次要功能取代主要功能。",
+  "explanationEn": "The core function was to pilot: to trial foreign investment, enterprise management and market mechanisms within a limited area, then decide on wider adoption after observing results and problems. This gradual approach contained the risks of reform.\n\n[Distractor analysis] Simultaneous nationwide change contradicts the localised nature of zones. Immediate comprehensive marketisation overstates the scale of early reform. Denying the piloting function substitutes a secondary effect for the primary purpose.",
+  "topicId": "china_reform",
+  "topicZh": "改革開放與國家發展",
+  "topicEn": "Reform & National Development"
+ },
+ {
+  "id": "csd-b3-14",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "改革開放與國家發展",
+  "difficulty": "intermediate",
+  "question": "國家推行區域協調發展策略，例如粵港澳大灣區建設。就「協調」二字的政策含義而言，下列哪一項理解最為準確？",
+  "questionEn": "The State pursues coordinated regional development, such as the Guangdong–Hong Kong–Macao Greater Bay Area. What does 'coordinated' most accurately mean in policy terms?",
+  "options": [
+   "各地取消自身產業，統一由中央安排",
+   "由單一城市主導，其餘城市依附發展",
+   "各地按自身優勢分工並加強互聯互通，以整體效益為目標，而非各自獨立發展",
+   "各地發展速度必須完全一致"
+  ],
+  "optionsEn": [
+   "Areas abolish their own industries and are assigned roles centrally",
+   "One city leads while the others develop as dependencies",
+   "Each area specialises according to its strengths and strengthens connectivity, aiming at overall benefit rather than developing in isolation",
+   "All areas must develop at exactly the same pace"
+  ],
+  "correctIndex": 2,
+  "explanation": "區域協調的重點在於分工與聯通：各地保留並發揮自身優勢，同時透過基礎設施、要素流動及制度銜接形成整體。目標是整體效益提升，而非速度劃一或角色取代。\n\n【干擾項剖析】「速度完全一致」把協調誤解為平均主義；「單一城市主導、其餘依附」與優勢互補的原則相反；「取消自身產業統一安排」與保留各地優勢的做法直接矛盾。",
+  "explanationEn": "Coordination centres on specialisation and connectivity: each area retains and exercises its strengths while infrastructure, factor flows and institutional alignment knit them into a whole. The aim is overall gain, not uniform pace or substituted roles.\n\n[Distractor analysis] Identical pace misreads coordination as levelling. One city with dependencies contradicts complementarity. Abolishing local industries contradicts retaining local strengths.",
+  "topicId": "china_reform",
+  "topicZh": "改革開放與國家發展",
+  "topicEn": "Reform & National Development"
+ },
+ {
+  "id": "csd-b3-15",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "改革開放與國家發展",
+  "difficulty": "intermediate",
+  "question": "評估脫貧政策的成效時，除了統計脫貧人數，還應考慮甚麼，方能判斷成果是否穩固？",
+  "questionEn": "In assessing poverty-alleviation policy, beyond counting people lifted out of poverty, what else must be considered to judge whether the results are durable?",
+  "options": [
+   "脫貧人口的收入來源是否穩定，以及有否防止返貧的後續支援",
+   "脫貧人數是否在單一年度內達到最高",
+   "政策文件的篇幅是否足夠詳盡",
+   "參與扶貧工作的官員人數是否足夠"
+  ],
+  "optionsEn": [
+   "Whether the income sources of those lifted out are stable, and whether follow-up support prevents relapse into poverty",
+   "Whether the number lifted out peaked within a single year",
+   "Whether the policy documents are sufficiently detailed",
+   "Whether enough officials were assigned to the work"
+  ],
+  "correctIndex": 0,
+  "explanation": "脫貧人數屬結果指標，但若收入來源不穩定或缺乏後續支援，已脫貧者可能因病、因災或因產業變動而返貧。判斷成果是否穩固，須看收入的持續性與防返貧機制，而非單一時點的數字。\n\n【干擾項剖析】文件篇幅與官員人數屬投入面，與成效並無必然關係；「單一年度達到最高」把短期峰值當成穩固，正是題目要求排除的判斷方式。",
+  "explanationEn": "The headcount is an outcome indicator, but if income sources are unstable or follow-up is absent, households may fall back into poverty through illness, disaster or industrial change. Durability depends on the persistence of income and anti-relapse mechanisms, not a single point-in-time figure.\n\n[Distractor analysis] Document length and staffing are inputs with no necessary link to outcomes. Treating a single-year peak as durable is precisely the reasoning the question asks us to reject.",
+  "topicId": "china_reform",
+  "topicZh": "改革開放與國家發展",
+  "topicEn": "Reform & National Development"
+ },
+ {
+  "id": "csd-b3-16",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "改革開放與國家發展",
+  "difficulty": "hard",
+  "question": "有意見認為，經濟增長速度放緩即代表發展政策失敗。就國家由高速增長轉向高質量發展的政策取向而言，此說的主要問題是甚麼？",
+  "questionEn": "Some argue that slower growth means development policy has failed. Given the shift from high-speed growth to high-quality development, what is the main flaw in that claim?",
+  "options": [
+   "增長速度放緩必然由外部因素造成",
+   "經濟增長速度在任何情況下都不重要",
+   "高質量發展必然帶來更高的增長速度",
+   "以單一速度指標評價一項目標已包含結構、環境與分配的政策，評價標準與政策目標不對應"
+  ],
+  "optionsEn": [
+   "Slower growth is necessarily caused by external factors",
+   "Growth rates never matter",
+   "High-quality development necessarily produces higher growth rates",
+   "It judges by a single speed indicator a policy whose goals include structure, environment and distribution; the yardstick does not match the objective"
+  ],
+  "correctIndex": 3,
+  "explanation": "高質量發展的目標包括產業結構升級、環境承載、區域協調及收入分配等多個面向，其中部分目標與短期增速之間存在取捨。以單一速度指標判斷成敗，等於用與政策目標不一致的標準作評價。\n\n【干擾項剖析】「任何情況下都不重要」把批評矯枉過正，增速仍是重要指標之一；「必然帶來更高增速」把兩者關係說成必然，屬過度推論；「必然由外部因素造成」把成因單一化，忽略了主動調整的可能。",
+  "explanationEn": "High-quality development targets industrial upgrading, environmental capacity, regional coordination and distribution, several of which involve trade-offs against short-run speed. Judging success by speed alone applies a yardstick inconsistent with the stated objective.\n\n[Distractor analysis] Saying speed never matters overcorrects; it remains one important indicator. Asserting necessarily higher growth is an over-inference. Attributing the slowdown necessarily to external factors reduces causation to a single source and ignores deliberate adjustment.",
+  "topicId": "china_reform",
+  "topicZh": "改革開放與國家發展",
+  "topicEn": "Reform & National Development"
+ },
+ {
+  "id": "csd-b3-17",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "科技創新與綜合國力",
+  "difficulty": "basic",
+  "question": "「創新驅動發展」強調由要素投入轉向創新推動。此一轉變的主要原因最能以下列哪一項說明？",
+  "questionEn": "'Innovation-driven development' shifts from factor inputs to innovation. Which best explains the main reason for the shift?",
+  "options": [
+   "單靠增加土地、勞動力及資本投入，長遠會遇到報酬遞減與資源約束",
+   "創新可以完全取代對資本的需求",
+   "要素投入在任何階段都不能帶來增長",
+   "創新驅動只適用於服務業，不適用於製造業"
+  ],
+  "optionsEn": [
+   "Relying on more land, labour and capital eventually meets diminishing returns and resource constraints",
+   "Innovation can wholly replace the need for capital",
+   "Factor inputs never produce growth at any stage",
+   "Innovation-driven development applies only to services, not manufacturing"
+  ],
+  "correctIndex": 0,
+  "explanation": "以要素投入推動增長，在發展初期成效明顯，但當土地、勞動力及資本的可增幅度受限，且邊際報酬下降時，增長便難以為繼。轉向創新，目的是提高同樣投入之下的產出效率。\n\n【干擾項剖析】「任何階段都不能帶來增長」與發展初期的實際情況不符；「完全取代對資本的需求」誇大了創新的作用——創新本身亦需投資；「只適用於服務業」與製造業技術升級的事實相反。",
+  "explanationEn": "Factor-driven growth works well early on, but when land, labour and capital can no longer expand much and marginal returns fall, growth becomes hard to sustain. Turning to innovation aims to raise output efficiency from the same inputs.\n\n[Distractor analysis] Denying that inputs ever generate growth contradicts early-stage experience. Claiming innovation replaces capital entirely overstates its role, since innovation itself requires investment. Confining it to services contradicts technological upgrading in manufacturing.",
+  "topicId": "china_tech_power",
+  "topicZh": "科技創新與綜合國力",
+  "topicEn": "Innovation & National Strength"
+ },
+ {
+  "id": "csd-b3-18",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "科技創新與綜合國力",
+  "difficulty": "intermediate",
+  "question": "綜合國力並非只由經濟規模決定，還包括科技水平、教育質素、文化影響力及國防能力等。此一概念設計的用意最能說明甚麼？",
+  "questionEn": "Comprehensive national strength is not determined by economic size alone; it also covers technology, education, cultural influence and defence. What does this conceptual design best indicate?",
+  "options": [
+   "綜合國力只能以軍事力量衡量",
+   "國家實力屬多維度概念，單一指標不足以反映整體狀況",
+   "各項組成部分的重要性完全相同",
+   "經濟規模與國家實力並無關係"
+  ],
+  "optionsEn": [
+   "It can only be measured by military power",
+   "National strength is multidimensional; no single indicator captures the overall position",
+   "Every component is of exactly equal importance",
+   "Economic size is unrelated to national strength"
+  ],
+  "correctIndex": 1,
+  "explanation": "綜合國力之所以稱為「綜合」，正因為國家實力由多個相互支撐的方面構成：經濟提供物質基礎，科技與教育決定長遠潛力，文化影響力與國防能力則涉及對外關係。只看其中一項，會得出片面結論。\n\n【干擾項剖析】「與經濟規模並無關係」把多維度誤解為排除經濟；「重要性完全相同」增添了概念本身並無的假設；「只能以軍事力量衡量」正是綜合國力概念要糾正的單一化理解。",
+  "explanationEn": "It is called 'comprehensive' because national strength rests on mutually supporting aspects: the economy provides the material base, technology and education determine long-run potential, and cultural influence and defence bear on external relations. Looking at one alone yields a partial conclusion.\n\n[Distractor analysis] Denying any relation to economic size misreads multidimensionality as exclusion. Equal weighting adds an assumption the concept does not make. Measuring by military power alone is exactly the reductive view the concept corrects.",
+  "topicId": "china_tech_power",
+  "topicZh": "科技創新與綜合國力",
+  "topicEn": "Innovation & National Strength"
+ },
+ {
+  "id": "csd-b3-19",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "科技創新與綜合國力",
+  "difficulty": "intermediate",
+  "question": "數字經濟發展同時帶來效率提升與新的治理課題，例如個人資料保障與平台市場地位。就政策取態而言，下列哪一項最能反映「發展與規範並重」？",
+  "questionEn": "The digital economy brings efficiency gains alongside new governance questions such as personal data protection and platform market power. Which best reflects a policy stance of 'development and regulation in parallel'?",
+  "options": [
+   "在鼓勵技術應用的同時，訂立資料使用與市場競爭的規則，令發展有可預期的邊界",
+   "先全面放任發展，待出現嚴重問題後才考慮規範",
+   "只訂立規則而不鼓勵任何新技術應用",
+   "暫停所有數字經濟活動，直至法規完備為止"
+  ],
+  "optionsEn": [
+   "Encouraging technological application while setting rules on data use and market competition, giving development predictable boundaries",
+   "Allowing wholly unrestrained development and considering rules only after serious problems appear",
+   "Setting rules while discouraging any new technological application",
+   "Suspending all digital-economy activity until regulation is complete"
+  ],
+  "correctIndex": 0,
+  "explanation": "「並重」指兩者同時進行而非先後取捨：規則提供可預期的邊界，令投資與應用有依據；發展則令規則有實際對象。兩者互為條件。\n\n【干擾項剖析】「暫停至法規完備」把並重變成先規範後發展；「先放任後規範」則變成先發展後規範；「只訂規則不鼓勵應用」放棄了發展一端。三者均為先後取捨，並非並重。",
+  "explanationEn": "'In parallel' means both at once rather than one before the other: rules provide predictable boundaries so investment and application have a basis, while development gives the rules a real subject. Each conditions the other.\n\n[Distractor analysis] Suspending until rules are complete puts regulation first. Unrestrained development puts regulation last. Rules without encouraging application abandons the development side. All three are sequential trade-offs, not parallelism.",
+  "topicId": "china_tech_power",
+  "topicZh": "科技創新與綜合國力",
+  "topicEn": "Innovation & National Strength"
+ },
+ {
+  "id": "csd-b3-20",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "科技創新與綜合國力",
+  "difficulty": "hard",
+  "question": "有評論以某國專利申請數量高於他國，直接推論該國創新能力較強。就指標運用而言，此推論最主要的漏洞是甚麼？",
+  "questionEn": "A commentator infers stronger innovation capability from one country having more patent applications than another. What is the principal weakness of this inference?",
+  "options": [
+   "只有發達國家的專利數據才可靠",
+   "專利數量與創新完全無關，不應作任何參考",
+   "專利申請數量必然與研發開支成正比",
+   "申請數量屬數量指標，未反映專利的質素、實際應用程度及對生產力的影響"
+  ],
+  "optionsEn": [
+   "Only patent data from developed economies are reliable",
+   "Patent counts are wholly unrelated to innovation and should never be referenced",
+   "Patent applications are necessarily proportional to research spending",
+   "Application counts are a quantity measure and say nothing about patent quality, actual deployment or productivity impact"
+  ],
+  "correctIndex": 3,
+  "explanation": "專利申請數量可反映創新活動的活躍程度，但同一數量之下，專利的技術含量、獲批比例、是否轉化為產品及對生產力的貢獻可以差距極大。以單一數量指標推論能力強弱，忽略了質的維度。\n\n【干擾項剖析】「完全無關」把批評推到另一極端，屬矯枉過正；「只有發達國家數據可靠」引入了與論證無關的前提；「必然與研發開支成正比」把兩個變項的關係說成必然，本身亦是同類的推論錯誤。",
+  "explanationEn": "Application counts can indicate how active innovation is, but for the same count the technical content, grant rate, commercialisation and productivity contribution can differ enormously. Inferring capability from a quantity measure alone omits the dimension of quality.\n\n[Distractor analysis] Declaring them wholly unrelated overcorrects. Restricting reliability to developed economies introduces an irrelevant premise. Asserting proportionality to research spending commits the same kind of inferential error.",
+  "topicId": "china_tech_power",
+  "topicZh": "科技創新與綜合國力",
+  "topicEn": "Innovation & National Strength"
+ },
+ {
+  "id": "csd-b3-21",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "經濟全球化",
+  "difficulty": "basic",
+  "question": "全球生產鏈是指一件產品的不同工序分散於多個國家或地區完成。此一安排的主要經濟誘因是甚麼？",
+  "questionEn": "Global production chains distribute the stages of making a product across several economies. What is the main economic incentive?",
+  "options": [
+   "各地按自身成本與技術優勢承擔不同工序，令整體生產成本下降",
+   "確保所有生產工序都集中在同一地點",
+   "令每個國家都能獨立生產整件產品",
+   "減少國際貿易的需要"
+  ],
+  "optionsEn": [
+   "Each location takes the stages suited to its cost and technological advantages, lowering overall production cost",
+   "Ensuring all stages are concentrated in one place",
+   "Enabling every country to make the whole product independently",
+   "Reducing the need for international trade"
+  ],
+  "correctIndex": 0,
+  "explanation": "分散工序的誘因在於比較優勢：勞動密集工序移向工資較低的地區，技術密集工序留在技術水平較高的地區，整體成本因而下降。\n\n【干擾項剖析】「各自獨立生產整件產品」正是全球生產鏈的相反做法；「集中在同一地點」與「分散於多個國家」的定義直接矛盾；「減少國際貿易的需要」推論倒轉——工序分散反而增加中間產品的跨境流動。",
+  "explanationEn": "The incentive is comparative advantage: labour-intensive stages move to lower-wage locations while technology-intensive stages stay where capability is higher, lowering total cost.\n\n[Distractor analysis] Independent whole-product manufacture is the opposite arrangement. Concentration in one place contradicts the definition of dispersal. Reducing trade inverts the inference — dispersing stages increases cross-border flows of intermediate goods.",
+  "topicId": "globalization",
+  "topicZh": "經濟全球化",
+  "topicEn": "Economic Globalisation"
+ },
+ {
+  "id": "csd-b3-22",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "經濟全球化",
+  "difficulty": "basic",
+  "question": "經濟全球化令各地經濟聯繫加深。就其影響而言，下列哪一項描述最為全面？",
+  "questionEn": "Economic globalisation deepens links between economies. Which description of its effects is most complete?",
+  "options": [
+   "只帶來經濟增長，並無任何負面影響",
+   "只帶來負面衝擊，並無任何得益",
+   "同時帶來機遇與風險：市場擴大與技術轉移之外，亦令外部衝擊更易傳導",
+   "只影響已發展經濟體，對發展中經濟體並無影響"
+  ],
+  "optionsEn": [
+   "It brings growth only, with no negative effects",
+   "It brings only harm, with no gains",
+   "It brings both opportunity and risk: alongside larger markets and technology transfer, external shocks transmit more readily",
+   "It affects only developed economies, not developing ones"
+  ],
+  "correctIndex": 2,
+  "explanation": "經濟聯繫加深是雙向的：出口市場擴大、資金與技術流入屬機遇；但同一條聯繫亦令外地的金融波動、需求萎縮或供應中斷更快傳到本地。全面的評價須同時包含兩面。\n\n【干擾項剖析】「只帶來增長」與「只帶來衝擊」各執一端，均屬片面；「只影響已發展經濟體」與發展中經濟體同樣參與全球生產鏈的事實不符。",
+  "explanationEn": "Deeper linkage cuts both ways: wider export markets and inflows of capital and technology are opportunities, but the same linkage transmits foreign financial volatility, demand contraction or supply disruption more quickly. A complete assessment must include both.\n\n[Distractor analysis] 'Growth only' and 'harm only' each take one side. Confining effects to developed economies contradicts developing economies' participation in global production chains.",
+  "topicId": "globalization",
+  "topicZh": "經濟全球化",
+  "topicEn": "Economic Globalisation"
+ },
+ {
+  "id": "csd-b3-23",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "經濟全球化",
+  "difficulty": "intermediate",
+  "question": "有意見認為，某經濟體因引入外資而出現本地傳統行業萎縮，故應全面限制外資。就政策評估而言，此一結論的主要不足是甚麼？",
+  "questionEn": "Some argue that because foreign investment coincided with decline in traditional local industries, foreign investment should be restricted outright. What is the main weakness of this conclusion?",
+  "options": [
+   "外資對任何經濟體都必然有害",
+   "傳統行業的萎縮必然與外資無關",
+   "只計算受影響行業的損失，未同時衡量新增就業、技術轉移及消費者得益等其他影響",
+   "政策評估不應考慮任何負面影響"
+  ],
+  "optionsEn": [
+   "Foreign investment is necessarily harmful to any economy",
+   "Decline in traditional industries is necessarily unrelated to foreign investment",
+   "It counts losses in affected industries without weighing new employment, technology transfer and consumer gains",
+   "Policy assessment should disregard negative effects"
+  ],
+  "correctIndex": 2,
+  "explanation": "政策評估須計算全部得失，並比較不同群體所受影響。只列出受損的一方而不計新增就業、技術外溢及價格下降的得益，會令結論偏向一邊。合理做法是同時評估，再考慮如何補償受影響者。\n\n【干擾項剖析】「必然有害」與「必然無關」都把複雜關係說成必然，屬過度推論；「不應考慮負面影響」把評估的另一半刪去，同樣片面。",
+  "explanationEn": "Policy assessment must count all gains and losses and compare effects across groups. Listing only the losing side, without new employment, technology spillovers or lower prices, biases the conclusion. The sound approach is to assess both, then consider how to compensate those affected.\n\n[Distractor analysis] 'Necessarily harmful' and 'necessarily unrelated' both turn a complex relationship into a certainty. Disregarding negative effects deletes the other half of the assessment.",
+  "topicId": "globalization",
+  "topicZh": "經濟全球化",
+  "topicEn": "Economic Globalisation"
+ },
+ {
+  "id": "csd-b3-24",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "經濟全球化",
+  "difficulty": "hard",
+  "question": "近年部分經濟體提高關稅並推動生產回流，同時亦繼續參與區域貿易協定。就此一現象，下列哪一項解讀最為謹慎？",
+  "questionEn": "Some economies have raised tariffs and promoted reshoring while continuing to join regional trade agreements. Which reading of this is most cautious?",
+  "options": [
+   "全球化已經完全終結，各國正回到自給自足",
+   "區域貿易協定的存在證明各國對貿易政策並無分歧",
+   "關稅措施只是象徵性的，對貿易格局並無影響",
+   "全球化並非單向推進或單向倒退，而是在不同領域與夥伴之間重新調整聯繫的深度"
+  ],
+  "optionsEn": [
+   "Globalisation has ended entirely and states are returning to self-sufficiency",
+   "Regional agreements prove there is no disagreement over trade policy",
+   "Tariff measures are symbolic and do not affect trade patterns",
+   "Globalisation is neither advancing nor retreating uniformly; linkages are being recalibrated across domains and partners"
+  ],
+  "correctIndex": 3,
+  "explanation": "同一經濟體既提高關稅又簽訂區域協定，說明其調整是有選擇性的：對某些產品或夥伴收緊，對另一些則加深合作。以「終結」或「無影響」概括，都忽略了這種選擇性。\n\n【干擾項剖析】「完全終結」與繼續參與區域協定的事實矛盾；「只是象徵性」低估了關稅對貿易流向的實際作用；「並無分歧」則忽略了關稅措施本身正正反映分歧。",
+  "explanationEn": "An economy that both raises tariffs and signs regional agreements is adjusting selectively: tightening for some products or partners while deepening cooperation with others. Describing this as 'the end' or as 'no effect' ignores that selectivity.\n\n[Distractor analysis] 'Ended entirely' contradicts continued participation in agreements. 'Symbolic only' understates tariffs' real effect on trade flows. 'No disagreement' ignores that the tariffs themselves express disagreement.",
+  "topicId": "globalization",
+  "topicZh": "經濟全球化",
+  "topicEn": "Economic Globalisation"
+ },
+ {
+  "id": "csd-b3-25",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "互聯相依的世界",
+  "difficulty": "basic",
+  "question": "傳染病可於短時間內跨境傳播。此一特性最能說明當代世界的哪一項特徵？",
+  "questionEn": "Infectious disease can spread across borders quickly. Which feature of the contemporary world does this best illustrate?",
+  "options": [
+   "各地在人員與貨物往來上高度連繫，一地的公共衞生狀況會影響其他地方",
+   "傳染病只會影響交通樞紐城市",
+   "各國的公共衞生問題互不相干",
+   "公共衞生純屬各國內政，不涉國際層面"
+  ],
+  "optionsEn": [
+   "Places are highly connected by movements of people and goods, so one place's public-health situation affects others",
+   "Infectious disease affects only transport-hub cities",
+   "States' public-health problems are unrelated to one another",
+   "Public health is purely a domestic matter with no international dimension"
+  ],
+  "correctIndex": 0,
+  "explanation": "跨境傳播之所以可能，正因為人員與貨物往來頻繁；連繫愈密，一地的疫情愈易影響他地。這說明公共衞生已不能只按國界處理。\n\n【干擾項剖析】「互不相干」與跨境傳播的事實直接矛盾；「只影響交通樞紐」把影響範圍任意收窄；「純屬內政」與需要國際通報及協作的做法不符。",
+  "explanationEn": "Cross-border spread is possible precisely because people and goods move frequently; the denser the links, the more readily one place's outbreak affects another. Public health can no longer be handled along national borders alone.\n\n[Distractor analysis] 'Unrelated' contradicts the fact of cross-border spread. 'Transport hubs only' arbitrarily narrows the scope. 'Purely domestic' is inconsistent with international notification and cooperation.",
+  "topicId": "interdependence",
+  "topicZh": "互聯相依的世界",
+  "topicEn": "An Interdependent World"
+ },
+ {
+  "id": "csd-b3-26",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "互聯相依的世界",
+  "difficulty": "intermediate",
+  "question": "國際組織在處理跨境議題時，其決議往往依賴成員國自願執行。此一制度特點對其成效的主要影響是甚麼？",
+  "questionEn": "International organisations often rely on voluntary implementation by member states. What is the main effect of this feature on their effectiveness?",
+  "options": [
+   "國際組織因此完全沒有作用",
+   "成員國必然會拒絕執行任何決議",
+   "決議必然得到全部成員國同等執行",
+   "成效取決於成員國的意願與能力，故同一決議在不同國家可能有不同落實程度"
+  ],
+  "optionsEn": [
+   "International organisations therefore have no effect at all",
+   "Members will necessarily refuse to implement any resolution",
+   "Resolutions are necessarily implemented equally by all members",
+   "Effectiveness depends on members' willingness and capacity, so the same resolution may be implemented to differing degrees"
+  ],
+  "correctIndex": 3,
+  "explanation": "缺乏強制執行機制之下，決議的落實依靠成員國自願配合。願意且有能力者落實較徹底，反之則可能流於形式。因此評估國際組織的成效，須逐個議題、逐個國家分析，而非一概而論。\n\n【干擾項剖析】「必然同等執行」忽略了自願性；「完全沒有作用」與制定標準、提供平台及協調資源等實際功能不符，屬矯枉過正；「必然拒絕執行」同樣把可能性說成必然。",
+  "explanationEn": "Without enforcement, implementation depends on voluntary cooperation. Those willing and able implement more fully; others may do so only nominally. Assessing effectiveness therefore requires issue-by-issue and country-by-country analysis rather than a blanket judgment.\n\n[Distractor analysis] 'Equally implemented' ignores voluntariness. 'No effect at all' overcorrects and is inconsistent with real functions such as standard-setting, convening and coordinating resources. 'Necessarily refuse' again turns possibility into certainty.",
+  "topicId": "interdependence",
+  "topicZh": "互聯相依的世界",
+  "topicEn": "An Interdependent World"
+ },
+ {
+  "id": "csd-b3-27",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "互聯相依的世界",
+  "difficulty": "intermediate",
+  "question": "某地依賴單一國家供應大部分能源。就風險管理而言，下列哪一項措施最能針對此一結構性弱點？",
+  "questionEn": "A place relies on a single country for most of its energy. Which measure best addresses this structural vulnerability?",
+  "options": [
+   "拓展供應來源並提高本地可再生能源比重，降低對單一來源的依賴",
+   "增加能源消耗以提高議價能力",
+   "與該供應國簽訂更長期的合約，維持現有依賴",
+   "停止一切能源進口"
+  ],
+  "optionsEn": [
+   "Diversifying supply sources and raising the share of local renewables to reduce reliance on one source",
+   "Consuming more energy to gain bargaining power",
+   "Signing a longer contract with the same supplier, maintaining the existing reliance",
+   "Halting all energy imports"
+  ],
+  "correctIndex": 0,
+  "explanation": "問題的根源在於「單一來源」而非「進口」本身。分散供應來源並發展本地可再生能源，直接降低單一中斷所造成的衝擊，屬對症下藥。\n\n【干擾項剖析】延長合約只是鎖定現狀，並未解除集中風險；「增加消耗提高議價能力」會加深依賴，方向相反；「停止一切進口」在本地供應不足時並不可行，屬極端而非對策。",
+  "explanationEn": "The root problem is single-source concentration, not importing as such. Diversifying sources and developing local renewables directly reduce the impact of a single disruption.\n\n[Distractor analysis] A longer contract locks in the status quo without removing concentration risk. Consuming more deepens reliance — the wrong direction. Halting all imports is not feasible where local supply is insufficient; it is an extreme, not a remedy.",
+  "topicId": "interdependence",
+  "topicZh": "互聯相依的世界",
+  "topicEn": "An Interdependent World"
+ },
+ {
+  "id": "csd-b3-28",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "互聯相依的世界",
+  "difficulty": "hard",
+  "question": "就跨境環境污染，甲國認為責任應按當前排放量分擔，乙國則認為應按歷史累積排放量分擔。此一分歧的性質最準確可描述為甚麼？",
+  "questionEn": "On cross-border pollution, State A holds that responsibility should be shared by current emissions, State B by cumulative historical emissions. How is this disagreement most accurately characterised?",
+  "options": [
+   "雙方對事實有分歧，只要公布準確數據即可解決",
+   "其中一方必然在說謊",
+   "雙方對「責任」的界定標準不同，故爭議不能單靠補充數據解決",
+   "此一爭議與環境問題無關，純屬經濟競爭"
+  ],
+  "optionsEn": [
+   "They disagree on facts; publishing accurate data would settle it",
+   "One side must be lying",
+   "The two use different criteria for defining responsibility, so more data alone cannot resolve it",
+   "The dispute is unrelated to the environment and is purely economic competition"
+  ],
+  "correctIndex": 2,
+  "explanation": "兩種主張各自建基於不同的分配原則：一以當前狀況為準，一以歷史責任為準。即使雙方接受同一套排放數據，仍會得出不同結論，因為分歧在於評價標準而非事實本身。\n\n【干擾項剖析】「公布數據即可解決」誤把價值分歧當成事實分歧；「必然有一方說謊」把立場差異說成誠信問題；「純屬經濟競爭」否定爭議的環境內容，屬過度化約。",
+  "explanationEn": "Each position rests on a different allocation principle: one on present circumstances, the other on historical responsibility. Even with agreed emissions data the two would reach different conclusions, because the disagreement is over criteria, not facts.\n\n[Distractor analysis] 'Publish data' mistakes a value disagreement for a factual one. 'One must be lying' recasts differing positions as dishonesty. 'Purely economic' denies the environmental content and over-reduces the dispute.",
+  "topicId": "interdependence",
+  "topicZh": "互聯相依的世界",
+  "topicEn": "An Interdependent World"
+ },
+ {
+  "id": "csd-b3-29",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "可持續發展與公共衞生",
+  "difficulty": "basic",
+  "question": "可持續發展要求在滿足當代需要的同時，不損害後代滿足其需要的能力。就此定義，下列哪一項做法最能體現此一原則？",
+  "questionEn": "Sustainable development means meeting present needs without compromising future generations' ability to meet theirs. Which practice best embodies this?",
+  "options": [
+   "完全停止使用任何自然資源",
+   "盡快用盡現有資源，以換取最高的當前產出",
+   "只考慮環境保護，不理會當代的基本需要",
+   "以不超過再生速度的方式使用可再生資源，令資源存量得以維持"
+  ],
+  "optionsEn": [
+   "Ceasing all use of natural resources",
+   "Exhausting available resources as fast as possible for maximum current output",
+   "Considering only environmental protection and disregarding present basic needs",
+   "Using renewable resources at or below their regeneration rate so that stocks are maintained"
+  ],
+  "correctIndex": 3,
+  "explanation": "定義中的兩個條件必須同時滿足：既要滿足當代需要，亦要保留後代的能力。以不超過再生速度的方式使用資源，正好同時做到兩者。\n\n【干擾項剖析】「盡快用盡」只顧當代，違反第二個條件；「完全停止使用」只顧後代，違反第一個條件；「不理會當代基本需要」同樣只取一端，三者均為單邊做法。",
+  "explanationEn": "The definition sets two conditions that must hold together: meeting present needs and preserving future capability. Using resources at or below the regeneration rate satisfies both.\n\n[Distractor analysis] Exhausting resources serves only the present and breaches the second condition. Ceasing all use serves only the future and breaches the first. Disregarding present needs likewise takes one side. All three are one-sided.",
+  "topicId": "sustainability",
+  "topicZh": "可持續發展與公共衞生",
+  "topicEn": "Sustainability & Public Health"
+ },
+ {
+  "id": "csd-b3-30",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "可持續發展與公共衞生",
+  "difficulty": "intermediate",
+  "question": "國家提出於二○三○年前達到碳達峰、二○六○年前實現碳中和。就兩個目標的關係而言，下列哪一項理解最為準確？",
+  "questionEn": "The State has set targets of peaking carbon emissions before 2030 and achieving carbon neutrality before 2060. Which understanding of the relationship between them is most accurate?",
+  "options": [
+   "碳中和指排放量降至零，故不需要任何吸收措施",
+   "碳達峰是排放量由升轉降的轉折點，碳中和則要求排放與吸收相抵，屬先後銜接的兩個階段",
+   "碳達峰要求排放量立即降至最低",
+   "兩個目標意思相同，只是年份不同"
+  ],
+  "optionsEn": [
+   "Neutrality means emissions fall to zero, so no absorption measures are needed",
+   "Peaking is the turning point from rising to falling emissions; neutrality requires emissions to be offset by absorption. They are two sequential stages",
+   "Peaking requires emissions to fall immediately to their lowest level",
+   "The two targets mean the same thing and differ only in year"
+  ],
+  "correctIndex": 1,
+  "explanation": "碳達峰指排放總量到達最高點之後開始回落，屬趨勢的轉折；碳中和則指餘下排放被林木、海洋及技術手段所吸收，淨排放為零。前者是後者的必要前提，兩者屬階段關係。\n\n【干擾項剖析】「意思相同」抹去了兩個階段的分別；「降至零故不需吸收」誤解了「中和」——中和容許有排放，但須被抵銷；「立即降至最低」把達峰誤解為即時大幅減排。",
+  "explanationEn": "Peaking means total emissions reach their maximum and then decline — a turning point in trend. Neutrality means remaining emissions are absorbed by forests, oceans and technology so that net emissions are zero. The former is a necessary precondition for the latter; they are sequential stages.\n\n[Distractor analysis] 'Same meaning' erases the distinction. 'Zero, so no absorption' misreads neutrality, which permits emissions provided they are offset. 'Immediately lowest' misreads peaking as immediate deep reduction.",
+  "topicId": "sustainability",
+  "topicZh": "可持續發展與公共衞生",
+  "topicEn": "Sustainability & Public Health"
+ },
+ {
+  "id": "csd-b3-31",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "可持續發展與公共衞生",
+  "difficulty": "intermediate",
+  "question": "評估一項環保政策時，若只計算其減排量而不計算執行成本與對低收入家庭的影響，此一評估的主要問題是甚麼？",
+  "questionEn": "If an environmental policy is assessed only by emissions reduced, without implementation cost or impact on low-income households, what is the main problem?",
+  "options": [
+   "只要能減排，任何成本都必然值得付出",
+   "只取單一維度，忽略了政策的成本承擔與分配後果，難以判斷整體是否值得推行",
+   "環保政策不應考慮任何經濟因素",
+   "減排量並非有效的評估指標"
+  ],
+  "optionsEn": [
+   "Any cost is necessarily worth paying so long as emissions fall",
+   "It takes a single dimension, ignoring who bears the cost and the distributional consequences, so overall desirability cannot be judged",
+   "Environmental policy should disregard economic factors",
+   "Emissions reduced is not a valid indicator"
+  ],
+  "correctIndex": 1,
+  "explanation": "政策評估通常須兼顧成效、成本與公平三方面。只計減排量，無法知道所付代價是否相稱，亦看不到成本是否不成比例地落在低收入家庭身上。\n\n【干擾項剖析】「並非有效指標」否定了減排量的價值，屬矯枉過正；「不應考慮經濟因素」刪去成本一環，正是題目指出的問題；「任何成本都必然值得」則預設了結論，迴避了評估本身。",
+  "explanationEn": "Assessment normally weighs effectiveness, cost and fairness. Emissions alone cannot show whether the price paid is proportionate, nor whether it falls disproportionately on low-income households.\n\n[Distractor analysis] Denying the indicator's validity overcorrects. Disregarding economics deletes the cost dimension — the very problem identified. Asserting any cost is worth paying presupposes the conclusion and avoids assessment.",
+  "topicId": "sustainability",
+  "topicZh": "可持續發展與公共衞生",
+  "topicEn": "Sustainability & Public Health"
+ },
+ {
+  "id": "csd-b3-32",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "可持續發展與公共衞生",
+  "difficulty": "hard",
+  "question": "某項公共衞生措施能顯著降低傳染風險，但同時限制部分個人活動。就政策取捨而言，下列哪一項分析框架最為合理？",
+  "questionEn": "A public-health measure substantially lowers infection risk but restricts some individual activities. Which analytical framework for the trade-off is most defensible?",
+  "options": [
+   "凡涉及限制個人活動的措施一律不應推行",
+   "應由受影響人數最多的一方單方面決定",
+   "凡能降低風險的措施一律應推行，不必考慮其他因素",
+   "比較措施的預期公共健康得益與所限制權利的程度，並檢視有否侵害較小而效果相若的替代方案"
+  ],
+  "optionsEn": [
+   "No measure restricting individual activity should ever be adopted",
+   "The group with the largest number affected should decide unilaterally",
+   "Any risk-reducing measure should be adopted regardless of other considerations",
+   "Comparing expected public-health gains against the extent of rights restricted, and examining whether a less intrusive measure of similar effect exists"
+  ],
+  "correctIndex": 3,
+  "explanation": "公共衞生措施的正當性通常按三點檢視：目的是否正當、手段與目的是否相稱、有否侵害較小而同樣有效的替代方案。此框架同時處理得益與代價，亦要求檢視替代選項，較單邊取態合理。\n\n【干擾項剖析】「一律不應推行」與「一律應推行」各自取消了取捨本身；「由人數最多一方決定」以多寡取代理據，忽略了少數群體所承受的代價。",
+  "explanationEn": "The legitimacy of public-health measures is usually examined on three points: whether the aim is legitimate, whether means are proportionate to the aim, and whether a less intrusive but equally effective alternative exists. This framework weighs both gains and costs and requires alternatives to be considered.\n\n[Distractor analysis] Blanket rejection and blanket adoption each abolish the trade-off. Deciding by headcount substitutes numbers for reasons and ignores costs borne by smaller groups.",
+  "topicId": "sustainability",
+  "topicZh": "可持續發展與公共衞生",
+  "topicEn": "Sustainability & Public Health"
+ },
+ {
+  "id": "csd-b3-33",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "difficulty": "basic",
+  "question": "下表為某虛構城市的假設數據：\n\n年份　　人均收入（指數）　　收入最高兩成與最低兩成的收入比\n2016　　100　　　　　　　　　6.2\n2021　　118　　　　　　　　　7.4\n\n單就上表所示，下列哪一項結論最為穩妥？",
+  "questionEn": "The table shows hypothetical data for a fictitious city:\n\nYear　Per-capita income (index)　Ratio of top to bottom income quintile\n2016　100　　　　　　　　　　　6.2\n2021　118　　　　　　　　　　　7.4\n\nBased on the table alone, which conclusion is safest?",
+  "options": [
+   "期內所有市民的收入都上升了百分之十八",
+   "期內低收入群組的收入下降了",
+   "期內人均收入上升，而高低收入群組之間的差距同時擴大",
+   "期內的收入差距擴大是由稅制改變造成"
+  ],
+  "optionsEn": [
+   "Every resident's income rose by 18 per cent",
+   "The income of the low-income group fell",
+   "Per-capita income rose over the period while the gap between high- and low-income groups widened",
+   "The widening gap was caused by changes to the tax system"
+  ],
+  "correctIndex": 2,
+  "explanation": "表中兩欄各自說明一件事：人均收入指數由 100 升至 118，屬總體上升；收入比由 6.2 升至 7.4，屬差距擴大。兩者可同時成立，故合併陳述最為穩妥。\n\n【干擾項剖析】「所有市民都上升百分之十八」把平均數當成每個人的數值，屬以偏概全；「低收入群組收入下降」無法由收入比推出——比率上升亦可能因高收入群組升幅較大所致；「由稅制改變造成」引入表中完全沒有的成因，屬過度推論。",
+  "explanationEn": "Each column states one thing: the per-capita index rose from 100 to 118 (aggregate increase), and the quintile ratio rose from 6.2 to 7.4 (widening gap). Both can hold simultaneously, so stating them together is safest.\n\n[Distractor analysis] Applying 18 per cent to everyone treats an average as an individual value. A fall in low-income earnings cannot be derived from a ratio — the ratio can rise because the top rose faster. Attributing the change to tax policy introduces a cause absent from the table.",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data"
+ },
+ {
+  "id": "csd-b3-34",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "difficulty": "intermediate",
+  "question": "一份報告以「受訪者中有七成支持該政策」作結論。要判斷此一數字能否代表全港意見，最應優先查明下列哪一項？",
+  "questionEn": "A report concludes that '70 per cent of respondents support the policy'. To judge whether this represents Hong Kong opinion, which should be checked first?",
+  "options": [
+   "報告的篇幅是否足夠詳細",
+   "受訪者如何抽選、樣本規模及回應率，即樣本能否代表整體",
+   "報告的出版日期是否在近期",
+   "支持比率是否高於五成"
+  ],
+  "optionsEn": [
+   "Whether the report is sufficiently detailed",
+   "How respondents were selected, the sample size and the response rate — that is, whether the sample represents the population",
+   "Whether the report was published recently",
+   "Whether the support rate exceeds 50 per cent"
+  ],
+  "correctIndex": 1,
+  "explanation": "由樣本推論整體是否成立，取決於抽樣方法：若受訪者並非隨機抽選，或回應率極低，比率再高亦不能代表全港。故應先查抽樣與樣本特性。\n\n【干擾項剖析】出版日期影響時效性，但不解決代表性；篇幅屬呈現方式，與推論效力無關；「是否高於五成」只是描述該數字本身，並未回答它能否代表整體。",
+  "explanationEn": "Whether a sample supports inference to the population depends on how it was drawn: if respondents were not randomly selected, or the response rate was very low, even a high percentage cannot represent Hong Kong. Sampling and sample characteristics come first.\n\n[Distractor analysis] Publication date affects currency but not representativeness. Length concerns presentation, not inferential strength. Whether the figure exceeds half merely describes the number without addressing representativeness.",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data"
+ },
+ {
+  "id": "csd-b3-35",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "difficulty": "intermediate",
+  "question": "某資料顯示，甲地的網絡使用率與其平均學歷同時上升。有評論據此推論「上網會令學歷提高」。此推論的主要問題是甚麼？",
+  "questionEn": "Data show that internet usage and average educational attainment both rose in Place A. A commentator infers that 'internet use raises attainment'. What is the main problem?",
+  "options": [
+   "只要兩項數據同時上升，因果關係即可成立",
+   "網絡使用率並非可以量度的指標",
+   "兩者同時上升只屬相關，未能確立因果，亦可能同受經濟發展等第三項因素影響",
+   "兩項數據不可能同時上升"
+  ],
+  "optionsEn": [
+   "Simultaneous rises are sufficient to establish causation",
+   "Internet usage is not a measurable indicator",
+   "Co-movement is correlation, not causation; both may be driven by a third factor such as economic development",
+   "The two cannot rise at the same time"
+  ],
+  "correctIndex": 2,
+  "explanation": "兩個變項同向變動只說明存在相關，未能說明何者導致何者，亦未排除第三因素同時推高兩者的可能。要確立因果，須另有證據處理時序與其他解釋。\n\n【干擾項剖析】「不可能同時上升」與資料相反；「並非可量度的指標」與使用率本身就是數據不符；「同時上升即可成立因果」正是題目要指出的錯誤推論。",
+  "explanationEn": "Two variables moving together shows correlation, not which causes which, and does not rule out a third factor driving both. Establishing causation requires further evidence on sequence and alternative explanations.\n\n[Distractor analysis] 'Cannot rise together' contradicts the data. 'Not measurable' contradicts the usage rate being data. 'Simultaneous rise establishes causation' is exactly the flawed inference in question.",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data"
+ },
+ {
+  "id": "csd-b3-36",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "difficulty": "hard",
+  "question": "兩份報告就同一議題得出相反結論。甲報告以全港隨機抽樣的問卷為據，乙報告以某網上論壇的留言分析為據。就資料可靠性而言，下列哪一項判斷最為合理？",
+  "questionEn": "Two reports reach opposite conclusions on the same issue. Report A uses a territory-wide random sample survey; Report B analyses posts on an online forum. Which judgment about reliability is most defensible?",
+  "options": [
+   "甲報告在代表性上較強，但仍須檢視問題措辭與回應率；乙報告反映論壇使用者的意見，不宜推及全港",
+   "凡結論相反的報告，必有一份是刻意造假",
+   "乙報告因樣本數量可能較多，故必然更可靠",
+   "兩份報告的可靠性完全相同，因為都有數據支持"
+  ],
+  "optionsEn": [
+   "A is stronger on representativeness but question wording and response rate still need checking; B reflects forum users and should not be generalised to the whole territory",
+   "Where conclusions conflict, one report must be deliberate falsification",
+   "B is necessarily more reliable because its sample may be larger",
+   "Both are equally reliable because both are backed by data"
+  ],
+  "correctIndex": 0,
+  "explanation": "隨機抽樣的目的正是令樣本結構接近整體，故甲報告在代表性上較強；但代表性並非唯一考慮，問題措辭與回應率同樣影響結果。乙報告的資料來自自我選擇的論壇使用者，只能反映該群體。\n\n【干擾項剖析】「數量較多必然更可靠」把樣本量當成唯一準則，忽略了抽樣方式；「完全相同」把「有數據」等同「同樣可靠」；「必有一份造假」把方法差異說成誠信問題，屬過度推論。",
+  "explanationEn": "Random sampling aims to make the sample resemble the population, so A is stronger on representativeness; but representativeness is not the only consideration — wording and response rate also matter. B draws on self-selected forum users and can speak only for that group.\n\n[Distractor analysis] Treating sample size as decisive ignores how the sample was drawn. 'Equally reliable' equates having data with being sound. 'One must be falsifying' recasts methodological difference as dishonesty.",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data"
+ },
+ {
+  "id": "csd-b3-37",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "多角度評鑑・持份者權衡",
+  "difficulty": "intermediate",
+  "question": "政府計劃在市區一幅土地上興建公共設施。居民、商戶、環保團體及使用者對方案各有不同關注。就多角度評鑑而言，下列哪一項做法最為恰當？",
+  "questionEn": "The government plans a public facility on an urban site. Residents, businesses, environmental groups and users each have different concerns. Which approach to multi-perspective evaluation is most appropriate?",
+  "options": [
+   "只考慮直接使用者的意見，因為只有他們受影響",
+   "避免提及任何反對意見，以免方案受阻",
+   "逐一列出各持份者的關注與理據，比較其影響程度，再說明取捨的理由",
+   "以支持人數最多的一方作準，其餘不予考慮"
+  ],
+  "optionsEn": [
+   "Considering only direct users, since only they are affected",
+   "Omitting objections so the proposal is not obstructed",
+   "Setting out each stakeholder's concerns and reasons, comparing the magnitude of impact, then explaining the reasons for the trade-off",
+   "Following whichever side has the most supporters and disregarding the rest"
+  ],
+  "correctIndex": 2,
+  "explanation": "多角度評鑑的要求是：識別各持份者、理解其理據、比較影響，並在無法兼顧時說明取捨依據。關鍵在於理據與影響程度，而非人數多寡或立場親疏。\n\n【干擾項剖析】「以人數最多為準」以數量取代理據；「只考慮直接使用者」錯誤地假設其他持份者不受影響；「避免提及反對意見」則放棄了評鑑本身，屬立場先行。",
+  "explanationEn": "Multi-perspective evaluation requires identifying stakeholders, understanding their reasons, comparing impacts, and — where all cannot be accommodated — explaining the basis of the trade-off. What matters is reasons and magnitude of impact, not headcount or affinity.\n\n[Distractor analysis] Deciding by headcount substitutes numbers for reasons. Considering only direct users wrongly assumes others are unaffected. Omitting objections abandons evaluation in favour of a predetermined position.",
+  "topicId": "csd_stakeholder_eval",
+  "topicZh": "多角度評鑑・持份者權衡",
+  "topicEn": "Multi-perspective · stakeholders"
+ },
+ {
+  "id": "csd-b3-38",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "多角度評鑑・持份者權衡",
+  "difficulty": "hard",
+  "question": "就一項發展方案，本地商戶關注短期營業損失，環保團體關注長期生態影響。有意見認為「兩者關注的時間尺度不同，故無法比較」。下列哪一項回應最為合理？",
+  "questionEn": "On a development proposal, local businesses focus on short-term revenue loss while environmental groups focus on long-term ecological impact. Some say the two 'operate on different time scales and therefore cannot be compared'. Which response is most defensible?",
+  "options": [
+   "短期影響必然比長期影響重要，因為較為確定",
+   "長期影響必然比短期影響重要，因為持續較久",
+   "既然無法比較，應直接擱置方案",
+   "時間尺度不同並不等於無法比較，可就影響的可逆轉程度、受影響範圍及可否補償等共通面向作衡量"
+  ],
+  "optionsEn": [
+   "Short-term impacts necessarily matter more because they are more certain",
+   "Long-term impacts necessarily matter more because they last longer",
+   "Since they cannot be compared, the proposal should simply be shelved",
+   "Different time scales do not preclude comparison; impacts can be weighed on shared dimensions such as reversibility, breadth of effect and whether compensation is possible"
+  ],
+  "correctIndex": 3,
+  "explanation": "時間尺度只是其中一個面向。即使長短不同，仍可就影響是否可逆、涉及範圍多廣、能否以補償處理等共通標準作比較。以此為基礎，取捨便有理據可循。\n\n【干擾項剖析】「無法比較故擱置」把方法困難當成結論；「短期必然較重要」與「長期必然較重要」各自把一個面向絕對化，同樣迴避了實質比較。",
+  "explanationEn": "Time scale is only one dimension. Even where horizons differ, impacts can be compared on shared criteria: reversibility, breadth of effect, and whether compensation can address them. On that basis a trade-off can be reasoned rather than asserted.\n\n[Distractor analysis] Shelving because comparison is hard turns a methodological difficulty into a conclusion. Declaring either horizon necessarily more important absolutises one dimension and avoids substantive comparison.",
+  "topicId": "csd_stakeholder_eval",
+  "topicZh": "多角度評鑑・持份者權衡",
+  "topicEn": "Multi-perspective · stakeholders"
+ },
+ {
+  "id": "csd-b3-39",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "概念應用・當代世界",
+  "difficulty": "basic",
+  "question": "「相互依存」指各方在資源、市場或技術上彼此需要。下列哪一項情境最能體現此一概念？",
+  "questionEn": "'Interdependence' means parties need one another for resources, markets or technology. Which situation best embodies it?",
+  "options": [
+   "甲地與乙地之間並無任何往來",
+   "甲地單方面向乙地提供援助，乙地並無任何回報",
+   "甲地自行生產並消費全部所需物品",
+   "甲地出口原材料至乙地加工，乙地製成品再銷回甲地市場"
+  ],
+  "optionsEn": [
+   "A and B have no dealings with each other",
+   "A gives aid to B unilaterally with nothing in return",
+   "A produces and consumes everything it needs by itself",
+   "A exports raw materials to B for processing, and B's finished goods are sold back into A's market"
+  ],
+  "correctIndex": 3,
+  "explanation": "相互依存的關鍵在於「相互」：雙方各有對方所需，關係是雙向的。原材料與市場互換，正是雙向需要的典型情境。\n\n【干擾項剖析】「自行生產並消費全部所需」屬自給自足，與依存相反；「單方面提供援助而無回報」只有單向關係；「並無任何往來」則連關係都不存在。",
+  "explanationEn": "The key word is 'mutual': each side has something the other needs, and the relationship runs both ways. Exchanging raw materials for market access is the paradigm case.\n\n[Distractor analysis] Producing and consuming everything oneself is self-sufficiency, the opposite of interdependence. Unilateral aid without return is one-directional. No dealings means no relationship at all.",
+  "topicId": "csd_concept_apply",
+  "topicZh": "概念應用・當代世界",
+  "topicEn": "Applying concepts · the contemporary world"
+ },
+ {
+  "id": "csd-b3-40",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "概念應用・當代世界",
+  "difficulty": "intermediate",
+  "question": "應用「持份者」概念分析一項公共政策時，最容易被忽略的通常是哪一類人？",
+  "questionEn": "When applying the concept of 'stakeholders' to a public policy, which group is most often overlooked?",
+  "options": [
+   "政策的主要倡議者",
+   "政策的直接執行部門",
+   "未有組織代表、發聲渠道較少，但實際受政策影響的群體",
+   "在傳媒上發表意見最多的一方"
+  ],
+  "optionsEn": [
+   "The main advocates of the policy",
+   "The department directly implementing the policy",
+   "Groups actually affected by the policy but lacking organised representation or channels to be heard",
+   "Whoever comments most in the media"
+  ],
+  "correctIndex": 2,
+  "explanation": "持份者分析的常見盲點在於：受影響程度與發聲能力並不對等。有組織、有渠道的一方容易被納入討論，而缺乏代表的群體即使受影響甚深，亦可能在分析中缺席。\n\n【干擾項剖析】執行部門、傳媒上活躍的一方及政策倡議者，均屬本身已有渠道進入討論的持份者，正正是最不容易被忽略的幾類。",
+  "explanationEn": "A common blind spot is that being affected and being able to speak are not the same. Organised parties with channels enter the discussion readily, while unrepresented groups may be absent from the analysis even where the impact on them is severe.\n\n[Distractor analysis] Implementing departments, media-active parties and policy advocates all already have channels into the discussion, and are therefore among the least likely to be overlooked.",
+  "topicId": "csd_concept_apply",
+  "topicZh": "概念應用・當代世界",
+  "topicEn": "Applying concepts · the contemporary world"
+ }
+]

@@ -29,7 +29,13 @@ const LANGUAGE_SUBJECTS = new Set(['chinese', 'chinese-history', 'chinese-litera
 // A draft that trips one of these is auto-rejected — it must never reach a human
 // reviewer as if it were shippable.
 const TERM_REDLINES = [
-  { re: /公共財/, msg: '術語紅線：「公共財」→ 應用「共用品」(Public Good)' },
+  // 2026-08-27：加負向斷言 `(?!政)`。原本 /公共財/ 會連「公共財政」（public
+  // finances）一齊捉 —— 嗰個係完全正確嘅中文，同 Public Good 冇關係。
+  // 影響統計（憲章 §6）：掃 89 個題庫檔，「公共財」命中 0 次，即係呢個誤報
+  // 從未喺 live 內容爆過；改動對現有題庫【零影響】，唔會令任何一條由過變唔過。
+  // 反方向亦驗過：_demo-math.json 嗰條故意寫「公共財」嘅示範題【仍然被攔住】，
+  // 即係閘冇因為呢次放寬而失去牙齒。
+  { re: /公共財(?!政)/, msg: '術語紅線：「公共財」→ 應用「共用品」(Public Good)' },
   { re: /企業家才能/, msg: '術語紅線：「企業家才能」→ 應用「企業家職能」(Entrepreneurship)' },
 ]
 // Economics-only scope red line (EDB C&A: point/cross/income elasticity NOT required).
