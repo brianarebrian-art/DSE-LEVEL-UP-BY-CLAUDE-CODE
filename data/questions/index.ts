@@ -44,6 +44,7 @@ import { chineseLiteratureQuestions, chineseLiteratureTopics } from './chinese-l
 import { englishLiteratureQuestions, englishLiteratureTopics } from './english-literature'
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { csdQuestions, csdTopics } from './csd'
+import { csdReviewedQuestions } from './csd-reviewed'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
 import { chineseHistoryAutoQuestions } from './chinese-history-auto'
@@ -112,7 +113,7 @@ const banks: Record<string, SubjectBank> = {
   'chinese-literature': { questions: chineseLiteratureQuestions, topics: chineseLiteratureTopics },
   'english-literature': { questions: englishLiteratureQuestions, topics: englishLiteratureTopics },
   'visual-arts': { questions: visualArtsQuestions, topics: visualArtsTopics },
-  csd: { questions: csdQuestions, topics: csdTopics },
+  csd: { questions: [...csdQuestions, ...csdReviewedQuestions], topics: csdTopics },
   'ethics-religious': { questions: ethicsReligiousQuestions, topics: ethicsReligiousTopics },
   'technology-living': { questions: technologyLivingQuestions, topics: technologyLivingTopics },
 }

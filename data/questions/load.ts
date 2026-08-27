@@ -90,7 +90,10 @@ const loaders: Record<string, Loader> = {
   'chinese-literature': async () => (await import('./chinese-literature')).chineseLiteratureQuestions,
   'english-literature': async () => (await import('./english-literature')).englishLiteratureQuestions,
   'visual-arts': async () => (await import('./visual-arts')).visualArtsQuestions,
-  csd: async () => (await import('./csd')).csdQuestions,
+  csd: async () => {
+    const [base, reviewed] = await Promise.all([import('./csd'), import('./csd-reviewed')])
+    return [...base.csdQuestions, ...reviewed.csdReviewedQuestions]
+  },
   'ethics-religious': async () => (await import('./ethics-religious')).ethicsReligiousQuestions,
   'technology-living': async () => (await import('./technology-living')).technologyLivingQuestions,
 }
