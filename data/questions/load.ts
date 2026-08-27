@@ -60,16 +60,20 @@ const loaders: Record<string, Loader> = {
     // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
     // 多個批次必須以 `--out` 分檔，否則後一批會覆蓋前一批（2026-08-07 實際發生過）。
     // 新增書寫題批次時：此處要加，`index.ts` 亦要加，否則 loader-parity 測試會失敗。
-    const [base, reviewed, p2, fanwenLong] = await Promise.all([
+    const [base, reviewed, p2, p2b2, p2b3, fanwenLong] = await Promise.all([
       import('./chinese'),
       import('./chinese-reviewed'),
       import('./chinese-p2-writing'),
+      import('./chinese-p2-writing-batch2'),
+      import('./chinese-p2-writing-batch3'),
       import('./chinese-fanwen-long'),
     ])
     return [
       ...base.chineseQuestions,
       ...reviewed.chineseReviewedQuestions,
       ...p2.chineseP2WritingQuestions,
+      ...p2b2.chineseP2WritingBatch2Questions,
+      ...p2b3.chineseP2WritingBatch3Questions,
       ...fanwenLong.chineseFanwenLongQuestions,
     ]
   },

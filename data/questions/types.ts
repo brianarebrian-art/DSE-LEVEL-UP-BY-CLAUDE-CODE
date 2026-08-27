@@ -129,6 +129,18 @@ export interface Topic {
    */
   mcCount?: number
   /**
+   * 該課題【只計書寫題（text／long）】的題數。
+   *
+   * 何以須要：`mcCount` 用以濾除「有題而並無 MC」的課題，避免學生點入後只見
+   * 空白練習。然而濾除之後，一個【僅有書寫題】的課題便完全失去入口 —— 題目
+   * 確在題庫之內，練習頁 `?mode=long&topic=` 亦能服務，只是科目頁並無任何
+   * 可供點擊之處。2026-08-27 中文科四個寫作課題共 46 題入庫後即時出現：
+   * 四個課題各有 10 題，而科目頁一個亦不顯示。故課題 chips 須同時參照
+   * `mcCount` 與本欄，由兩者決定該 chip 應連往 MC 卷（`?topic=`）抑或
+   * 書寫卷（`?topic=&mode=long`）。同樣由 `getSubjectTopics()` 即時計算。
+   */
+  writtenCount?: number
+  /**
    * 該課題的真實題數。
    *
    * ⚠️ 此數值由 `getSubjectTopics()` 於讀取時【按真實題庫即時計算】；curated

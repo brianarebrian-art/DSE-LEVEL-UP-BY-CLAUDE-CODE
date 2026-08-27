@@ -193,6 +193,52 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "math_p1_18": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
   "math_p1_19": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
   "math_p1_20": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "zh_p2b_11": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_12": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_13": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_14": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_15": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_16": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_17": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_18": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_19": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_20": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_21": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_22": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_23": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_24": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_25": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_26": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_27": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_28": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_31": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_32": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_33": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_34": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_35": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_36": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_37": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2b_38": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
+  "zh_p2c_01": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_02": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_03": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_04": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_05": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_06": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_07": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_08": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_09": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_10": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_11": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_12": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_13": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_14": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_15": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_16": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_17": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_18": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_19": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
+  "zh_p2c_20": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch3" },
 }
 
 export interface ReviewBatch {
@@ -208,6 +254,8 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "bafs-batch", subject: "bafs", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
   { batch: "chinese-crosstext-demo", subject: "chinese", reviewer: "brian", reviewedAt: "2026-07-17", approved: 2 },
   { batch: "chinese-fanwen-weak-84", subject: "chinese", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-17", approved: 10 },
+  { batch: "chinese-p2-writing-batch2", subject: "chinese", reviewer: "brian", reviewedAt: "2026-08-27", approved: 26 },
+  { batch: "chinese-p2-writing-batch3", subject: "chinese", reviewer: "brian", reviewedAt: "2026-08-27", approved: 20 },
   { batch: "csd-batch2", subject: "csd", reviewer: "brian", reviewedAt: "2026-08-27", approved: 40 },
   { batch: "econ-market-structure-mc-10", subject: "economics", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-18", approved: 10 },
   { batch: "econ-supply-demand-mc-10", subject: "economics", reviewer: "brian", reviewedAt: "2026-07-17", approved: 10 },
@@ -219,7 +267,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 177
+export const REVIEWED_COUNT = 223
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>

@@ -22,6 +22,8 @@ import { chineseReviewedQuestions } from './chinese-reviewed'
 // 書寫題批次亦必須註冊入 barrel —— barrel 是所有 QA 工具與稽核統計的讀取路徑，
 // 只註冊入 load.ts 會令題目對統計隱形（2026-08-07 已因此少報 12 題）。
 import { chineseP2WritingQuestions } from './chinese-p2-writing'
+import { chineseP2WritingBatch2Questions } from './chinese-p2-writing-batch2'
+import { chineseP2WritingBatch3Questions } from './chinese-p2-writing-batch3'
 import { chineseFanwenLongQuestions } from './chinese-fanwen-long'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
@@ -99,6 +101,8 @@ const banks: Record<string, SubjectBank> = {
       ...chineseQuestions,
       ...chineseReviewedQuestions,
       ...chineseP2WritingQuestions,
+      ...chineseP2WritingBatch2Questions,
+      ...chineseP2WritingBatch3Questions,
       ...chineseFanwenLongQuestions,
     ],
     topics: chineseTopics,
@@ -187,15 +191,18 @@ export function getSubjectTopics(subjectId: string): Topic[] {
 
   const counts = new Map<string, number>()
   const mcCounts = new Map<string, number>()
+  const writtenCounts = new Map<string, number>()
   for (const q of bank.questions) {
     counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
     if (q.type === 'mc') mcCounts.set(q.topic, (mcCounts.get(q.topic) ?? 0) + 1)
+    else writtenCounts.set(q.topic, (writtenCounts.get(q.topic) ?? 0) + 1)
   }
 
   const withRealCounts = bank.topics.map((t) => ({
     ...t,
     count: counts.get(t.id) ?? 0,
     mcCount: mcCounts.get(t.id) ?? 0,
+    writtenCount: writtenCounts.get(t.id) ?? 0,
   }))
   topicCache.set(subjectId, withRealCounts)
   return withRealCounts
