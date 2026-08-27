@@ -12,30 +12,36 @@ import path from 'node:path'
 // 放寬過頭，呢度就會即刻 fail。
 
 const GUARD = 'scripts/claims-guard.mjs'
-/** 掃描範圍之內、可以安全借用嚟做測試載體嘅檔。 */
-const CARRIER = 'app/about/page.tsx'
 
-/** 把一句文案暫時寫入掃描範圍內嘅檔，跑閘，然後無論成敗都還原。 */
+/**
+ * 把一句文案寫入一個【repo 以外】嘅臨時檔，交畀 claims-guard 一齊掃。
+ *
+ * 2026-08-27 之前呢度係暫時改寫 app/about/page.tsx 再喺 finally 還原。兩個問題：
+ *   ① `node --test` 逐個測試檔並行跑。載體檔「污糟」嗰陣（每次跑閘約
+ *      100–300ms × 15 句 ≈ 幾秒）任何一個掃 app/ 嘅測試檔讀到注入內容就會紅 ——
+ *      而下一次跑又綠，表現成間歇性 fail。實測：載體檔污糟期間跑本檔，
+ *      「現狀乾淨」同 5 條「唔可以誤報」全部紅。
+ *   ② 跑到一半撳 Ctrl-C，finally 唔會執行，一個已追蹤嘅原始碼檔就會留喺改壞咗
+ *      嘅狀態 —— 呢個比一次 fail 嚴重得多。
+ * 而家一個 repo 檔都唔會郁。
+ */
 function runWith(sentence: string | null): number {
-  const original = fs.readFileSync(CARRIER, 'utf8')
+  const args = [GUARD]
+  let dir: string | null = null
+  if (sentence !== null) {
+    dir = fs.mkdtempSync(path.join(os.tmpdir(), 'claims-probe-'))
+    const probe = path.join(dir, 'probe.tsx')
+    // 一句 JSX 文字節點，模擬真實文案（唔係註解 —— 註解會被剝走）。
+    fs.writeFileSync(probe, `export default function Probe() {\n  return <p>${sentence}</p>\n}\n`)
+    args.push(probe)
+  }
   try {
-    if (sentence !== null) {
-      // 放喺一句 JSX 文字節點入面，模擬真實文案（唔係註解 —— 註解會被剝走）。
-      const marker = '</main>'
-      const idx = original.lastIndexOf(marker)
-      const injected = idx >= 0
-        ? original.slice(0, idx) + `<p>${sentence}</p>` + original.slice(idx)
-        : original + `\n// carrier-fallback\nexport const __probe = '${sentence}'\n`
-      fs.writeFileSync(CARRIER, injected)
-    }
-    try {
-      execFileSync('node', [GUARD], { stdio: 'pipe' })
-      return 0
-    } catch (e) {
-      return (e as { status?: number }).status ?? 1
-    }
+    execFileSync('node', args, { stdio: 'pipe' })
+    return 0
+  } catch (e) {
+    return (e as { status?: number }).status ?? 1
   } finally {
-    fs.writeFileSync(CARRIER, original)
+    if (dir) fs.rmSync(dir, { recursive: true, force: true })
   }
 }
 

@@ -123,7 +123,20 @@ const walk = (dir, out = []) => {
   return out
 }
 
-const files = [...TARGET_DIRS.flatMap((d) => walk(d)), ...TARGET_FILES.filter((f) => fs.existsSync(f))]
+// 額外掃描目標由 argv 傳入。用途：claims-guard.test.mts 要驗證每條規則捉唔捉到，
+// 就要有一個載住違規句子嘅檔畀佢掃。原本嗰個做法係暫時改寫 app/about/page.tsx
+// 再喺 finally 還原 —— 兩個問題：① `node --test` 係逐個檔並行跑，載體檔「污糟」
+// 嗰幾秒期間，其他掃 app/ 嘅測試檔會讀到注入咗嘅內容；② 跑到一半撳 Ctrl-C，
+// 一個【已追蹤嘅原始碼檔】會被留喺改壞咗嘅狀態。
+// 改成傳一個 repo 以外嘅臨時檔入嚟，測試就完全唔使郁 repo。
+// 唔傳參數（`npm run qa:claims`、CI）行為完全不變。
+const EXTRA_FILES = process.argv.slice(2).filter((f) => fs.existsSync(f))
+
+const files = [
+  ...TARGET_DIRS.flatMap((d) => walk(d)),
+  ...TARGET_FILES.filter((f) => fs.existsSync(f)),
+  ...EXTRA_FILES,
+]
 
 const findings = []
 for (const file of files) {
