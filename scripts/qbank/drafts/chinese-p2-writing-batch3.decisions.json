@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "source": "chinese-p2-writing-batch3.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh_p2c_01": "pending",
+    "zh_p2c_02": "pending",
+    "zh_p2c_03": "pending",
+    "zh_p2c_04": "pending",
+    "zh_p2c_05": "pending",
+    "zh_p2c_06": "pending",
+    "zh_p2c_07": "pending",
+    "zh_p2c_08": "pending",
+    "zh_p2c_09": "pending",
+    "zh_p2c_10": "pending",
+    "zh_p2c_11": "pending",
+    "zh_p2c_12": "pending",
+    "zh_p2c_13": "pending",
+    "zh_p2c_14": "pending",
+    "zh_p2c_15": "pending",
+    "zh_p2c_16": "pending",
+    "zh_p2c_17": "pending",
+    "zh_p2c_18": "pending",
+    "zh_p2c_19": "pending",
+    "zh_p2c_20": "pending"
+  }
+}

@@ -34,6 +34,7 @@ const SUBJECT_OF: Record<string, string> = {
   'chinese-history-floor.json': 'chinese-history',
   'chinese-literature-floor.json': 'chinese-literature',
   'chinese-p2-writing-batch2.json': 'chinese',
+  'chinese-p2-writing-batch3.json': 'chinese',
   'chinese-p1-fillin.json': 'chinese',
   'math-p1-long.json': 'math',
 }
