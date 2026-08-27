@@ -21,6 +21,13 @@ export default function SubjectDetailView({
   const { t, locale } = useLocale()
   const sd = t.subjectDetail
   const en = locale === 'en'
+
+  // 「涵蓋全部 N 大課題」要數【真係有題】嘅課題，唔可以數已註冊課題數。
+  // 2026-08-27：中文科註冊 18 個課題，但命題寫作（記敘抒情／描寫／綜合）
+  // 同實用寫作四個係空嘅 —— 下面啲 chip 本來就已經隔走佢哋（mcCount > 0），
+  // 於是頁面一邊寫住「涵蓋全部 18 大課題」，一邊只顯示 14 個入口。
+  // 數字由實際有題嘅課題計出，往後補題或加課題都唔使記得返嚟改。
+  const coveredTopics = topics.filter((t) => (t.mcCount ?? t.count) > 0).length
   const name = en ? meta.nameEn : meta.name
   const short = en ? meta.shortEn : meta.short
   const description = en ? meta.descriptionEn : meta.description
@@ -80,7 +87,7 @@ export default function SubjectDetailView({
           <div>
             <div className="font-medium text-lg mb-1 text-ink">{sd.quickStartTitle}</div>
             <p className="text-ink-muted text-sm">
-              {questionsCount}{sd.quickDescA}{topics.length}{sd.quickDescB}
+              {questionsCount}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
             </p>
             <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
               <span>{sd.minutesAbout}{Math.max(5, Math.round(questionsCount * 1.5))}{sd.minutesUnit}</span>
