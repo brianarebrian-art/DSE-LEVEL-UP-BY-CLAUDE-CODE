@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · bafs · bafs-batch-2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">bafs</span></h1>
+<div class="sub">來源 bafs-batch-2.json · 共 6 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">6</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"bafs-07","topic":"合夥會計（盈利分撥）","difficulty":"intermediate","question":"阿明與阿珊合夥經營一間網店，本年度淨利潤為 \\$150,000。分撥協議：阿明可獲年薪 \\$20,000（阿珊無薪金）；雙方按年初資本 10% 計資本利息（阿明資本 \\$150,000、阿珊資本 \\$100,000）；剩餘利潤由兩人平均分配。阿明本年度合共應分得多少？","options":["\\$67,500","\\$72,500","\\$87,500","\\$75,000"],"correctIndex":2,"explanation":"先扣薪金同資本利息，再分剩餘。資本利息：阿明 \\$150,000×10% = \\$15,000、阿珊 \\$100,000×10% = \\$10,000。剩餘 = 150,000 − 20,000 − 15,000 − 10,000 = \\$105,000，平分後每人 \\$52,500。阿明 = 薪金 20,000 + 利息 15,000 + 剩餘 52,500 = \\$87,500。常見扣分陷阱：漏計自己嘅薪金（得 \\$67,500）、漏計自己嘅資本利息（得 \\$72,500），或索性將淨利潤直接平分（\\$75,000），忽略薪金同利息要先分撥。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs-08","topic":"合夥會計（退伙・重估）","difficulty":"hard","question":"陳、李、黃三人合夥，損益分配比例為 3 : 2 : 1。黃君退伙時，資產重估：土地價值上升 \\$40,000，同時呆帳準備需增加 \\$4,000。重估損益按舊比例分配。黃君從今次重估中應分得多少？","options":["\\$6,000","\\$6,667","\\$36,000","\\$12,000"],"correctIndex":0,"explanation":"重估損益 = 土地升值 \\$40,000 − 呆帳準備增加 \\$4,000 = \\$36,000（呆帳準備增加係一項損失，要扣）。按舊比例 3 : 2 : 1，黃君佔 1/6，即 36,000 × 1/6 = \\$6,000。常見扣分陷阱：漏咗扣呆帳準備、淨用 40,000 × 1/6 = \\$6,667；將成筆 \\$36,000 全歸退伙人；或錯將重估利潤除以「3 個人」（\\$12,000）而非按比例。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs-09","topic":"銀行往來調節表","difficulty":"intermediate","question":"某小店現金簿的銀行結餘為借方 \\$18,000。核對銀行月結單後，發現以下項目尚未在現金簿入帳：銀行手續費 \\$200、自動轉帳繳付水電費 \\$800、銀行代收利息 \\$500。更正後的現金簿結餘應為多少？","options":["\\$16,500","\\$17,500","\\$18,300","\\$17,000"],"correctIndex":1,"explanation":"只有「現金簿未入帳」嘅項目先更正現金簿：扣手續費 \\$200、扣自動轉帳 \\$800、加代收利息 \\$500，即 18,000 − 200 − 800 + 500 = \\$17,500。常見扣分陷阱：將代收利息當扣減（得 \\$16,500）；漏咗自動轉帳（得 \\$18,300）；或漏咗代收利息（得 \\$17,000）。留意：未過帳支票同在途存款只影響「現金簿 vs 銀行結單」嘅調節，唔會更正現金簿本身。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs-10","topic":"存貨計價（正常損耗）","difficulty":"intermediate","question":"一間便利店購入某貨品 1,000 件，每件成本 \\$50。存放期間預期有 5% 屬正常損耗（自然揮發／破損）。若正常損耗的成本由完好存貨吸收，則每件完好存貨的成本約為多少？","options":["\\$50.00","\\$52.50","\\$47.50","\\$52.63"],"correctIndex":3,"explanation":"總成本 = 1,000 × \\$50 = \\$50,000。正常損耗 5% = 50 件，完好存貨 = 950 件。正常損耗成本攤入完好存貨：50,000 ÷ 950 = \\$52.63。常見扣分陷阱：完全唔攤分（仍用 \\$50.00）；誤用「成本 × 1.05」得 \\$52.50；或掉轉方向用「成本 × 0.95」得 \\$47.50。正常損耗屬生產／存貨的無可避免成本，應由完好單位承擔。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs-11","topic":"成本會計（停產決策・邊際成本）","difficulty":"hard","question":"某工廠一條生產線每月：售價 \\$100／件、變動成本 \\$75／件、銷量 600 件。該線每月固定成本 \\$20,000，其中 \\$8,000 為不可避免的廠房折舊（即使停產仍要承擔），其餘 \\$12,000 為可避免固定成本。就短期而言，應如何決策？","options":["繼續營運：邊際貢獻 \\$15,000 高於可避免固定成本 \\$12,000，淨保留 \\$3,000","停止營運：計入總固定成本 \\$20,000 後錄得 \\$5,000 虧損","停止營運：邊際貢獻只有 \\$15,000，唔足以打和","繼續營運：因為售價 \\$100 高於變動成本 \\$75"],"correctIndex":0,"explanation":"邊際貢獻 = (100 − 75) × 600 = \\$15,000。短期停產決策只比較貢獻同「可避免」固定成本：15,000 > 12,000，繼續營運可淨保留 \\$3,000（用嚟抵銷不可避免折舊）。常見扣分陷阱：用「總固定成本 \\$20,000」計出 \\$5,000 虧損就話停產——但 \\$8,000 折舊停產都要俾，唔應納入比較；亦有人結論啱（繼續）但理由錯，只講「售價高於變動成本」而漏咗固定成本分析。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs-12","topic":"成本會計（本量利・目標利潤）","difficulty":"intermediate","question":"一間手工皂網店：每件售價 \\$80、變動成本 \\$30，每月固定成本 \\$40,000。若店主希望每月達到目標利潤 \\$10,000，需售出多少件？","options":["800 件","625 件","1,000 件","1,667 件"],"correctIndex":2,"explanation":"每件邊際貢獻 = 80 − 30 = \\$50。所需銷量 = (固定成本 + 目標利潤) ÷ 每件貢獻 = (40,000 + 10,000) ÷ 50 = 1,000 件。常見扣分陷阱：只計打和點漏咗目標利潤（40,000 ÷ 50 = 800 件）；用售價 \\$80 而非貢獻 \\$50 做分母（50,000 ÷ 80 ≈ 625 件）；或用變動成本 \\$30 做分母（50,000 ÷ 30 ≈ 1,667 件）。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "bafs";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "bafs-batch-2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "bafs-batch-2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

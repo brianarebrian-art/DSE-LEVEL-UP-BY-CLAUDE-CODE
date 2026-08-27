@@ -64,6 +64,34 @@ if (rejected.length) {
 }
 if (!survivors.length) { console.log('\n   nothing survived the objective gate — no review sheet written.\n'); process.exit(rejected.length ? 1 : 0) }
 
+// ── 形狀警示（唔會自動退回）────────────────────────────────────────────────
+//
+// 2026-08-27 發現：MC 題有一類缺陷，現有機器閘完全睇唔到 ——
+// 【正確答案係明顯最長嗰項】。學生唔使識，揀最長嗰個就得，成批題目因而
+// 失去鑑別力。呢個係出題人嘅自然習慣：正確答案寫得完整，干擾項求其一句掃走。
+// 當日一批 40 條公民科草稿，34 條中招；我自己逐條覆讀完全冇為意 ——
+// 因為覆讀嘅係內容，睇唔到形狀。
+//
+// ⚠️ 點解【唔】做自動退回（憲章 §6 落閘前先量影響）：
+// 實測全站 5,910 條 live MC 之中，1.8 倍門檻下有 2,149 條（36.4%）會 fail，
+// 3 倍門檻下仍有 783 條（13.2%）。做硬閘等於一次過令三分一題庫失效，
+// 正正就係 §6 禁止嘅「以 feature change 為由令現有數據集失效」。
+// 所以呢度只報數，唔攔 —— 新批次見到數字自然會改，舊題庫點處理係另一個決定。
+const shapeNorm = (t) => String(t).replace(/[，。？！、「」（）\s]/g, '')
+const shapeFlags = []
+for (const r of survivors) {
+  if (!Array.isArray(r.options) || r.options.length !== 4 || typeof r.correctIndex !== 'number') continue
+  const len = r.options.map((o) => shapeNorm(o).length)
+  const max = Math.max(...len), min = Math.min(...len)
+  if (len[r.correctIndex] === max && max > min * 1.8) shapeFlags.push({ id: r.id, max, min })
+}
+if (shapeFlags.length) {
+  console.log(`\n   ⚠️  形狀警示：${shapeFlags.length} / ${survivors.length} 條嘅正確答案係明顯最長嗰項`)
+  console.log('      （學生可憑長度猜中，唔使識。呢項唔會自動退回，但建議改長干擾項。）')
+  for (const f of shapeFlags.slice(0, 8)) console.log(`      ${f.id}  正確項 ${f.max} 字 vs 最短干擾項 ${f.min} 字`)
+  if (shapeFlags.length > 8) console.log(`      …… 另外 ${shapeFlags.length - 8} 條`)
+}
+
 // ── outputs ───────────────────────────────────────────────────────────────────
 const base = basename(IN).replace(/\.json$/i, '')
 const outDir = dirname(IN)

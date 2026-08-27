@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "source": "bafs-batch-2.json",
+    "subject": "bafs",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "bafs-07": "pending",
+    "bafs-08": "pending",
+    "bafs-09": "pending",
+    "bafs-10": "pending",
+    "bafs-11": "pending",
+    "bafs-12": "pending"
+  }
+}
