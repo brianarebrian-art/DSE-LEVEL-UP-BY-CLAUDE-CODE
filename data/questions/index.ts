@@ -15,6 +15,7 @@ import { physicsQuestions, physicsTopics } from './physics'
 import { physicsBankQuestions } from './physics-bank'
 import { chemistryQuestions, chemistryTopics } from './chemistry'
 import { chemistryBankQuestions } from './chemistry-bank'
+import { chemistryFloorBatch1Questions } from './chemistry-floor-batch1'
 import { biologyQuestions, biologyTopics } from './biology'
 import { englishQuestions, englishTopics } from './english'
 import { ictQuestions, ictTopics } from './ict'
@@ -99,7 +100,7 @@ const banks: Record<string, SubjectBank> = {
   m1: { questions: [...m1Questions, ...m1BankQuestions], topics: m1Topics },
   m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
-  chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions], topics: chemistryTopics },
+  chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
   biology: { questions: biologyQuestions, topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
   ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions], topics: ictTopics },

@@ -50,8 +50,10 @@ const loaders: Record<string, Loader> = {
     return [...base.physicsQuestions, ...pbank.physicsBankQuestions]
   },
   chemistry: async () => {
-    const [base, cbank] = await Promise.all([import('./chemistry'), import('./chemistry-bank')])
-    return [...base.chemistryQuestions, ...cbank.chemistryBankQuestions]
+    const [base, cbank, floor1] = await Promise.all([
+      import('./chemistry'), import('./chemistry-bank'), import('./chemistry-floor-batch1'),
+    ])
+    return [...base.chemistryQuestions, ...cbank.chemistryBankQuestions, ...floor1.chemistryFloorBatch1Questions]
   },
   biology: async () => (await import('./biology')).biologyQuestions,
   english: async () => {

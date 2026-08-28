@@ -32,6 +32,29 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "bafs-04": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "bafs-05": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "bafs-06": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
+  "chem_floor_01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_04": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_05": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_06": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_07": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_08": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_09": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_10": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_11": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_12": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_13": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_14": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_15": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_16": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_17": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_18": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_19": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_20": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_21": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_22": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
+  "chem_floor_23": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chemistry-floor" },
   "csd-b2-01": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "csd-batch2" },
   "csd-b2-02": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "csd-batch2" },
   "csd-b2-03": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "csd-batch2" },
@@ -438,6 +461,7 @@ export interface ReviewBatch {
 /** 逐批彙總，供透明度頁顯示。 */
 export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "bafs-batch", subject: "bafs", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
+  { batch: "chemistry-floor", subject: "chemistry", reviewer: "brian", reviewedAt: "2026-08-28", approved: 23 },
   { batch: "chinese-crosstext-demo", subject: "chinese", reviewer: "brian", reviewedAt: "2026-07-17", approved: 2 },
   { batch: "chinese-fanwen-weak-84", subject: "chinese", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-17", approved: 10 },
   { batch: "chinese-floor-batch1", subject: "chinese", reviewer: "brian", reviewedAt: "2026-08-28", approved: 23 },
@@ -460,7 +484,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 409
+export const REVIEWED_COUNT = 432
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>
