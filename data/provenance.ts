@@ -279,6 +279,29 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "math_p1_18": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
   "math_p1_19": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
   "math_p1_20": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "math-p1-long" },
+  "zh_fl_cc01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc04": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc05": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc06": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc07": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_cc08": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_lx01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_lx02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_lx03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_mi01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_mi02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_mi03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pf01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pf02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pf03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pf04": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pf05": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pr01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pr02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pr03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
+  "zh_fl_pr04": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "chinese-floor-batch1" },
   "zh_p2b_11": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
   "zh_p2b_12": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
   "zh_p2b_13": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "chinese-p2-writing-batch2" },
@@ -340,6 +363,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "bafs-batch", subject: "bafs", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
   { batch: "chinese-crosstext-demo", subject: "chinese", reviewer: "brian", reviewedAt: "2026-07-17", approved: 2 },
   { batch: "chinese-fanwen-weak-84", subject: "chinese", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-17", approved: 10 },
+  { batch: "chinese-floor-batch1", subject: "chinese", reviewer: "brian", reviewedAt: "2026-08-28", approved: 23 },
   { batch: "chinese-p2-writing-batch2", subject: "chinese", reviewer: "brian", reviewedAt: "2026-08-27", approved: 26 },
   { batch: "chinese-p2-writing-batch3", subject: "chinese", reviewer: "brian", reviewedAt: "2026-08-27", approved: 20 },
   { batch: "csd-batch2", subject: "csd", reviewer: "brian", reviewedAt: "2026-08-27", approved: 40 },
@@ -355,7 +379,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 309
+export const REVIEWED_COUNT = 332
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>

@@ -26,6 +26,7 @@ import { chineseP2WritingQuestions } from './chinese-p2-writing'
 import { chineseP2WritingBatch2Questions } from './chinese-p2-writing-batch2'
 import { chineseP2WritingBatch3Questions } from './chinese-p2-writing-batch3'
 import { chineseFanwenLongQuestions } from './chinese-fanwen-long'
+import { chineseFloorBatch1Questions } from './chinese-floor-batch1'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
@@ -106,6 +107,7 @@ const banks: Record<string, SubjectBank> = {
       ...chineseP2WritingBatch2Questions,
       ...chineseP2WritingBatch3Questions,
       ...chineseFanwenLongQuestions,
+      ...chineseFloorBatch1Questions,
     ],
     topics: chineseTopics,
   },
