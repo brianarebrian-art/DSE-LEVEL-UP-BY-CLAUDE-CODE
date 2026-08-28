@@ -1,7 +1,7 @@
 import type { Topic } from './types'
 import { topicList } from './_builder'
 import type { Question } from './types'
-import { createBank, n, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, n, round, gcd, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // CHEMISTRY — PARAMETRIC BANK (Mode A, correct-by-construction, 3-tier)
@@ -19,6 +19,15 @@ const T = {
   mole: { id: 'mole', zh: '摩爾概念', en: 'The Mole Concept' },
   formula: { id: 'formula_mass', zh: '化學式與式量', en: 'Formulae & Formula Mass' },
   concentration: { id: 'concentration', zh: '濃度', en: 'Concentration' },
+  // ── 2026-08-28 平均分佈補強 ────────────────────────────────────────────
+  // 實測化學 14 個課題全部低於平均值 71（總缺 675）。以下六個課題最薄
+  // （15–24 條）而且原本不在參數化題庫覆蓋範圍之內，故各加母模板。
+  acidsBases: { id: 'acids_bases', zh: '酸鹼', en: 'Acids & Bases' },
+  redox: { id: 'redox', zh: '氧化還原', en: 'Redox' },
+  ratesEnergy: { id: 'rates_energy', zh: '反應速率與能量', en: 'Reaction Rates & Energy' },
+  bonding: { id: 'bonding', zh: '化學鍵', en: 'Chemical Bonding' },
+  periodic: { id: 'periodic_table', zh: '週期表', en: 'The Periodic Table' },
+  organic: { id: 'organic', zh: '有機化學', en: 'Organic Chemistry' },
   stoichiometry: { id: 'stoichiometry', zh: '化學計量', en: 'Stoichiometry' },
   gas: { id: 'gas_volume', zh: '氣體體積', en: 'Gas Volume' },
 } satisfies Record<string, TopicMeta>
@@ -27,6 +36,11 @@ const FW = {
   quantity: { id: 'chemical_quantity', zh: '化學計量', en: 'Chemical Quantity', emoji: '⚗️' },
   calc: { id: 'formula_calc', zh: '公式運算', en: 'Formula Calculation', emoji: '🧪' },
   reaction: { id: 'reaction_analysis', zh: '反應分析', en: 'Reaction Analysis', emoji: '🔬' },
+  equilibrium: { id: 'equilibrium_concepts', zh: '平衡概念', en: 'Equilibrium Concepts', emoji: '⚗️' },
+  electron: { id: 'electron_transfer', zh: '電子轉移', en: 'Electron Transfer', emoji: '🔋' },
+  dynamics: { id: 'reaction_dynamics', zh: '反應動力', en: 'Reaction Dynamics', emoji: '🔥' },
+  structure: { id: 'structure_properties', zh: '結構與性質', en: 'Structure & Properties', emoji: '🔗' },
+  carbon: { id: 'carbon_compounds', zh: '碳化合物', en: 'Carbon Compounds', emoji: '🛢️' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('chemistry')
@@ -47,7 +61,7 @@ COMP.forEach((c, ci) => {
   for (let nn = 1; nn <= 2; nn++) {
     const m = nn * c.mr
     add(`cb_e1_${ci}_${nn}`, T.mole, FW.quantity, 'easy',
-      [`$${m}$ g $\\text{${c.f}}$（$M_r = ${c.mr}$）含有多少摩爾？`, `How many moles are in $${m}$ g of $\\text{${c.f}}$ ($M_r = ${c.mr}$)?`],
+      [`$${m}$ g $\\mathrm{${c.f}}$（$M_r = ${c.mr}$）含有多少摩爾？`, `How many moles are in $${m}$ g of $\\mathrm{${c.f}}$ ($M_r = ${c.mr}$)?`],
       [n(`$${nn}$ mol`), n(`$${m * c.mr}$ mol`), n(`$${round(c.mr / m, 3)}$ mol`), n(`$${m + c.mr}$ mol`)],
       [`$n = \\dfrac{m}{M} = \\dfrac{${m}}{${c.mr}} = ${nn}$ mol。陷阱：$${m * c.mr}$ 用了乘法；$${round(c.mr / m, 3)}$ 上下倒轉。`,
        `$n = \\frac{m}{M} = ${nn}$ mol. Trap: $${m * c.mr}$ multiplies instead of dividing.`])
@@ -59,7 +73,7 @@ COMP.forEach((c, ci) => {
   for (const nn of [3]) {
     const m = nn * c.mr
     add(`cb_e2_${ci}_${nn}`, T.mole, FW.quantity, 'easy',
-      [`$${nn}$ mol $\\text{${c.f}}$（$M_r = ${c.mr}$）的質量是多少？`, `What is the mass of $${nn}$ mol of $\\text{${c.f}}$ ($M_r = ${c.mr}$)?`],
+      [`$${nn}$ mol $\\mathrm{${c.f}}$（$M_r = ${c.mr}$）的質量是多少？`, `What is the mass of $${nn}$ mol of $\\mathrm{${c.f}}$ ($M_r = ${c.mr}$)?`],
       [n(`$${m}$ g`), n(`$${round(nn / c.mr, 3)}$ g`), n(`$${c.mr}$ g`), n(`$${nn + c.mr}$ g`)],
       [`$m = nM = ${nn} \\times ${c.mr} = ${m}$ g。陷阱：$${round(nn / c.mr, 3)}$ 用了除法；$${c.mr}$ 漏了 $\\times n$。`,
        `$m = nM = ${m}$ g. Trap: $${c.mr}$ forgets to multiply by $n$.`])
@@ -79,7 +93,7 @@ COMP.forEach((c, ci) => {
 ] as const).forEach((c, i) => {
   const pct = round((c.part / c.mr) * 100, 1)
   add(`cb_e3_${i}`, T.formula, FW.calc, 'easy',
-    [`求 $\\text{${c.f}}$（$M_r = ${c.mr}$）中${c.el[0]}的質量百分比。`, `Find the percentage by mass of ${c.el[1]} in $\\text{${c.f}}$ ($M_r = ${c.mr}$).`],
+    [`求 $\\mathrm{${c.f}}$（$M_r = ${c.mr}$）中${c.el[0]}的質量百分比。`, `Find the percentage by mass of ${c.el[1]} in $\\mathrm{${c.f}}$ ($M_r = ${c.mr}$).`],
     [n(`$${pct}\\%$`), n(`$${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$`), n(`$${round(c.part / c.mr, 3)}$`), n(`$${round(c.mr / c.part, 2)}$`)],
     [`質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{${c.part}}{${c.mr}} \\times 100\\% = ${pct}\\%$。陷阱：$${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$ 是其餘部分；$${round(c.part / c.mr, 3)}$ 漏了 $\\times 100\\%$。`,
      `% by mass $= \\frac{${c.part}}{${c.mr}} \\times 100\\% = ${pct}\\%$. Trap: the "rest" is $${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$.`])
@@ -109,8 +123,8 @@ COMP.filter((c) => c.mr <= 100).forEach((c, ci) => {
       const conc = nn / V
       // opts: correct n/V · mass/V (forgot ÷Mr) · n×V (×V not ÷V) · gave n as answer (forgot ÷V)
       add(`cb_m2_${ci}_${nn}_${V}`, T.concentration, FW.calc, 'medium',
-        [`把 $${m}$ g $\\text{${c.f}}$（$M_r = ${c.mr}$）溶於水配成 $${V}$ dm³ 溶液，求濃度。`,
-         `$${m}$ g of $\\text{${c.f}}$ ($M_r = ${c.mr}$) is dissolved to make $${V}$ dm³ of solution. Find the concentration.`],
+        [`把 $${m}$ g $\\mathrm{${c.f}}$（$M_r = ${c.mr}$）溶於水配成 $${V}$ dm³ 溶液，求濃度。`,
+         `$${m}$ g of $\\mathrm{${c.f}}$ ($M_r = ${c.mr}$) is dissolved to make $${V}$ dm³ of solution. Find the concentration.`],
         [n(`$${round(conc, 3)}$ mol/dm³`), n(`$${round(m / V, 3)}$ mol/dm³`), n(`$${round(nn * V, 3)}$ mol/dm³`), n(`$${nn}$ mol/dm³`)],
         [`先求摩爾：$n = \\dfrac{${m}}{${c.mr}} = ${nn}$ mol，再 $c = \\dfrac{n}{V} = \\dfrac{${nn}}{${V}} = ${round(conc, 3)}$ mol/dm³。陷阱：$${round(m / V, 3)}$ 用了質量而非摩爾；$${nn}$ 漏了 $\\div V$。`,
          `$n = \\frac{${m}}{${c.mr}} = ${nn}$ mol, then $c = \\frac{n}{V} = ${round(conc, 3)}$ mol/dm³. Trap: $${round(m / V, 3)}$ uses mass, not moles; $${nn}$ forgets $\\div V$.`])
@@ -139,8 +153,8 @@ for (const nn of [2, 3, 4, 5, 0.5]) {
       const m = nn * c.mr
       const V = 24 * nn
       add(`cb_h1_${ci}_${String(nn).replace('.', '_')}`, T.gas, FW.reaction, 'hard',
-        [`在室溫及壓力（rtp）下，$${m}$ g $\\text{${c.f}}$（$M_r = ${c.mr}$）氣體佔的體積是多少（$V_m = 24$ dm³/mol）？`,
-         `At rtp, what volume does $${m}$ g of $\\text{${c.f}}$ gas ($M_r = ${c.mr}$) occupy ($V_m = 24$ dm³/mol)?`],
+        [`在室溫及壓力（rtp）下，$${m}$ g $\\mathrm{${c.f}}$（$M_r = ${c.mr}$）氣體佔的體積是多少（$V_m = 24$ dm³/mol）？`,
+         `At rtp, what volume does $${m}$ g of $\\mathrm{${c.f}}$ gas ($M_r = ${c.mr}$) occupy ($V_m = 24$ dm³/mol)?`],
         [n(`$${round(V, 2)}$ dm³`), n(`$${nn}$ dm³`), n(`$${round(24 * m, 2)}$ dm³`), n(`$${round(24 / nn, 2)}$ dm³`)],
         [`先求摩爾 $n = \\dfrac{${m}}{${c.mr}} = ${nn}$ mol，再 $V = n \\times 24 = ${nn} \\times 24 = ${round(V, 2)}$ dm³。陷阱：$${nn}$ 漏了 $\\times 24$；$${round(24 * m, 2)}$ 用了質量而非摩爾。`,
          `$n = \\frac{${m}}{${c.mr}} = ${nn}$ mol, then $V = 24n = ${round(V, 2)}$ dm³. Trap: $${round(24 * m, 2)}$ uses mass instead of moles.`])
@@ -156,8 +170,8 @@ for (const ca of [1, 2, 3]) {
       const Vb = (ca * Va) / cb
       if (!Number.isInteger(Vb)) continue
       add(`cb_h2_${ca}_${cb}_${Va}`, T.stoichiometry, FW.reaction, 'hard',
-        [`用 $${cb}$ mol/dm³ NaOH 中和 $${Va}$ cm³ 的 $${ca}$ mol/dm³ HCl（$\\text{HCl}+\\text{NaOH}\\to\\text{NaCl}+\\text{H}_2\\text{O}$），需要多少 cm³ NaOH？`,
-         `What volume of $${cb}$ mol/dm³ NaOH neutralises $${Va}$ cm³ of $${ca}$ mol/dm³ HCl ($\\text{HCl}+\\text{NaOH}\\to\\text{NaCl}+\\text{H}_2\\text{O}$)?`],
+        [`用 $${cb}$ mol/dm³ NaOH 中和 $${Va}$ cm³ 的 $${ca}$ mol/dm³ HCl（$\\mathrm{HCl}+\\mathrm{NaOH}\\to\\mathrm{NaCl}+\\mathrm{H}_2\\mathrm{O}$），需要多少 cm³ NaOH？`,
+         `What volume of $${cb}$ mol/dm³ NaOH neutralises $${Va}$ cm³ of $${ca}$ mol/dm³ HCl ($\\mathrm{HCl}+\\mathrm{NaOH}\\to\\mathrm{NaCl}+\\mathrm{H}_2\\mathrm{O}$)?`],
         [n(`$${Vb}$ cm³`), n(`$${round((cb * Va) / ca, 2)}$ cm³`), n(`$${ca * Va}$ cm³`), n(`$${Va}$ cm³`)],
         [`酸鹼摩爾比 $1:1$：$c_aV_a = c_bV_b$ ⇒ $V_b = \\dfrac{c_aV_a}{c_b} = \\dfrac{${ca}\\times${Va}}{${cb}} = ${Vb}$ cm³。陷阱：$${round((cb * Va) / ca, 2)}$ 將兩個濃度倒轉；$${ca * Va}$ 漏了 $\\div c_b$；$${Va}$ 當兩者體積相等。`,
          `1:1 ratio: $c_aV_a=c_bV_b$ ⇒ $V_b = \\frac{c_aV_a}{c_b} = ${Vb}$ cm³. Trap: $${ca * Va}$ forgets $\\div c_b$; $${Va}$ assumes equal volumes.`])
@@ -170,11 +184,152 @@ for (const m of [25, 50, 75, 100, 125, 150, 175, 200, 250, 300]) {
   const cao = round((m * 56) / 100, 2)
   const co2 = round((m * 44) / 100, 2)
   add(`cb_h3_${m}`, T.stoichiometry, FW.reaction, 'hard',
-    [`完全分解 $${m}$ g $\\text{CaCO}_3$（$\\text{CaCO}_3 \\to \\text{CaO} + \\text{CO}_2$，$M_r$：$100 \\to 56$）可得多少 g CaO？`,
-     `Decomposing $${m}$ g of $\\text{CaCO}_3$ completely ($\\text{CaCO}_3 \\to \\text{CaO} + \\text{CO}_2$, $M_r$: $100 \\to 56$) gives how many g of CaO?`],
+    [`完全分解 $${m}$ g $\\mathrm{CaCO}_3$（$\\mathrm{CaCO}_3 \\to \\mathrm{CaO} + \\mathrm{CO}_2$，$M_r$：$100 \\to 56$）可得多少 g CaO？`,
+     `Decomposing $${m}$ g of $\\mathrm{CaCO}_3$ completely ($\\mathrm{CaCO}_3 \\to \\mathrm{CaO} + \\mathrm{CO}_2$, $M_r$: $100 \\to 56$) gives how many g of CaO?`],
     [n(`$${cao}$ g`), n(`$${co2}$ g`), n(`$${m}$ g`), n(`$${round((m * 100) / 56, 2)}$ g`)],
-    [`摩爾比 $1:1$。$n(\\text{CaCO}_3) = \\dfrac{${m}}{100}$，$m(\\text{CaO}) = n \\times 56 = \\dfrac{${m}\\times56}{100} = ${cao}$ g。陷阱：$${co2}$ 是放出的 $\\text{CO}_2$ 質量（$56+44=100$）；$${m}$ 當沒有質量損失。`,
-     `1:1 ratio ⇒ $m(\\text{CaO}) = \\frac{${m}\\times56}{100} = ${cao}$ g. Trap: $${co2}$ g is the CO₂ released; $${m}$ g assumes no mass loss.`])
+    [`摩爾比 $1:1$。$n(\\mathrm{CaCO}_3) = \\dfrac{${m}}{100}$，$m(\\mathrm{CaO}) = n \\times 56 = \\dfrac{${m}\\times56}{100} = ${cao}$ g。陷阱：$${co2}$ 是放出的 $\\mathrm{CO}_2$ 質量（$56+44=100$）；$${m}$ 當沒有質量損失。`,
+     `1:1 ratio ⇒ $m(\\mathrm{CaO}) = \\frac{${m}\\times56}{100} = ${cao}$ g. Trap: $${co2}$ g is the CO₂ released; $${m}$ g assumes no mass loss.`])
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 平均分佈補強 —— 六個最薄課題（2026-08-28）
+// 正解與三個干擾項全部由公式計出；每個干擾項模擬一個具名錯誤。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// AB1 — 由氫離子濃度求 pH：[H⁺] = 10⁻ⁿ ⇒ pH = n
+for (let k = 1; k <= 7; k++) {
+  for (const acid of ['鹽酸', '硝酸', '氫溴酸'] as const) {
+    add(`cb_ab1_${k}_${acid}`, T.acidsBases, FW.equilibrium, 'easy',
+      [`某${acid}溶液的氫離子濃度為 $10^{-${k}}$ M。其 pH 值是多少？`,
+       `A solution has a hydrogen ion concentration of $10^{-${k}}$ M. What is its pH?`],
+      [n(`$${k}$`), n(`$${-k}$`), n(`$${14 - k}$`), n(`$${k * 2}$`)],
+      [`pH $= -\\log[\\mathrm{H^+}]$。當 $[\\mathrm{H^+}] = 10^{-${k}}$ M 時，pH $= -\\log(10^{-${k}}) = ${k}$。陷阱：$${-k}$ 漏了負號（pH 在中學範圍內不會是負數）；$${14 - k}$ 是 pOH；$${k * 2}$ 把指數乘了 2。記住 pH 愈細酸性愈強，每差 1 個單位，氫離子濃度相差 10 倍。`,
+       `pH $= -\\log[\\mathrm{H^+}]$, so with $[\\mathrm{H^+}] = 10^{-${k}}$ M the pH is $-\\log(10^{-${k}}) = ${k}$. Traps: $${-k}$ drops the minus sign, and pH is not negative in the school range; $${14 - k}$ is the pOH; $${k * 2}$ doubles the exponent. Remember that a lower pH means a stronger acid, and each unit of pH is a tenfold change in hydrogen ion concentration.`])
+  }
+}
+
+// AB2 — 一元酸鹼中和：M₁V₁ = M₂V₂
+for (const Ma of [0.1, 0.2, 0.5]) {
+  for (const Va of [20, 25, 40, 50]) {
+    for (const Mb of [0.1, 0.2, 0.5]) {
+      const Vb = (Ma * Va) / Mb
+      if (!Number.isInteger(Vb) || Ma === Mb) continue
+      add(`cb_ab2_${String(Ma).replace('.', '')}_${Va}_${String(Mb).replace('.', '')}`, T.acidsBases, FW.equilibrium, 'medium',
+        [`用 $${Mb}$ M 氫氧化鈉溶液中和 $${Va}$ cm³ 的 $${Ma}$ M 鹽酸（兩者均為一元）。所需氫氧化鈉溶液的體積是多少？`,
+         `What volume of $${Mb}$ M sodium hydroxide is needed to neutralise $${Va}$ cm³ of $${Ma}$ M hydrochloric acid? (Both are monobasic.)`],
+        [n(`$${Vb}$ cm³`), n(`$${round(Mb * Va / Ma, 2)}$ cm³`), n(`$${round(Ma * Mb * Va, 2)}$ cm³`), n(`$${Va}$ cm³`)],
+        [`一元酸與一元鹼按 $1 : 1$ 反應，故 $M_aV_a = M_bV_b$。代入：$${Ma} \\times ${Va} = ${Mb} \\times V_b$，得 $V_b = ${Vb}$ cm³。陷阱：$${round(Mb * Va / Ma, 2)}$ cm³ 把兩個濃度調轉；$${round(Ma * Mb * Va, 2)}$ cm³ 用了相乘；$${Va}$ cm³ 以為體積必定相同——只有兩者濃度相等時才成立。`,
+         `A monobasic acid and a monoacidic base react $1 : 1$, so $M_aV_a = M_bV_b$. Substituting: $${Ma} \\times ${Va} = ${Mb} \\times V_b$, giving $V_b = ${Vb}$ cm³. Traps: $${round(Mb * Va / Ma, 2)}$ cm³ swaps the two concentrations; $${round(Ma * Mb * Va, 2)}$ cm³ multiplies; $${Va}$ cm³ assumes equal volumes, which holds only when the concentrations are equal.`])
+    }
+  }
+}
+
+// RX1 — 含氧酸中中心原子的氧化數：H_aXO_b ⇒ x = 2b − a
+for (const [a, b, f] of [[2, 4, 'H_2XO_4'], [1, 3, 'HXO_3'], [2, 3, 'H_2XO_3'], [1, 4, 'HXO_4'], [3, 4, 'H_3XO_4'], [1, 2, 'HXO_2'], [2, 7, 'H_2X_2O_7']] as [number, number, string][]) {
+  const x = f.includes('X_2') ? (2 * b - a) / 2 : 2 * b - a
+  if (!Number.isInteger(x) || x <= 0) continue
+  add(`cb_rx1_${a}_${b}`, T.redox, FW.electron, 'medium',
+    [`在化合物 $\\mathrm{${f}}$ 之中，元素 $\\mathrm{X}$ 的氧化數是多少？（$\\mathrm{H}$ 為 $+1$，$\\mathrm{O}$ 為 $-2$）`,
+     `What is the oxidation number of $\\mathrm{X}$ in $\\mathrm{${f}}$? (Take $\\mathrm{H}$ as $+1$ and $\\mathrm{O}$ as $-2$.)`],
+    [n(`$+${x}$`), n(`$-${x}$`), n(`$+${2 * b}$`), n(`$+${Math.abs(2 * b - a - 2)}$`)],
+    [`化合物中各原子氧化數的總和為 $0$。設 $\\mathrm{X}$ 為 $x$：${a} 個 $\\mathrm{H}$ 貢獻 $+${a}$，${b} 個 $\\mathrm{O}$ 貢獻 $-${2 * b}$，故 $x = ${2 * b} - ${a} = +${x}$。陷阱：$-${x}$ 正負號相反；$+${2 * b}$ 漏了氫的貢獻；$+${Math.abs(2 * b - a - 2)}$ 少算了一個氧。`,
+     `The oxidation numbers in a compound sum to $0$. Let $\\mathrm{X}$ be $x$: the ${a} hydrogens contribute $+${a}$ and the ${b} oxygens $-${2 * b}$, so $x = ${2 * b} - ${a} = +${x}$. Traps: $-${x}$ has the wrong sign; $+${2 * b}$ omits the hydrogen contribution; $+${Math.abs(2 * b - a - 2)}$ counts one oxygen too few.`])
+}
+
+// RE1 — 平均反應速率 = 變化量 ÷ 時間
+for (const dm of [12, 18, 24, 30, 36, 48]) {
+  for (const dt of [2, 3, 4, 6]) {
+    const rate = dm / dt
+    if (!Number.isInteger(rate)) continue
+    add(`cb_re1_${dm}_${dt}`, T.ratesEnergy, FW.dynamics, 'easy',
+      [`某反應在 $${dt}$ 分鐘內放出 $${dm}$ cm³ 氣體。其平均反應速率是多少？`,
+       `A reaction releases $${dm}$ cm³ of gas in $${dt}$ minutes. What is the average rate of reaction?`],
+      [n(`$${rate}$ cm³/min`), n(`$${round(dt / dm, 3)}$ cm³/min`), n(`$${dm * dt}$ cm³/min`), n(`$${dm}$ cm³/min`)],
+      [`平均反應速率 $=$ 變化量 $\\div$ 時間 $= ${dm} \\div ${dt} = ${rate}$ cm³/min。陷阱：$${round(dt / dm, 3)}$ 上下倒轉；$${dm * dt}$ 用了乘法；$${dm}$ 漏了除以時間。留意反應速率一般隨時間下降，因為反應物濃度不斷減少，所以「平均速率」與任何一刻的「瞬時速率」通常不同。`,
+       `Average rate = change ÷ time = $${dm} \\div ${dt} = ${rate}$ cm³/min. Traps: $${round(dt / dm, 3)}$ inverts the fraction; $${dm * dt}$ multiplies; $${dm}$ omits the division by time. Note that the rate generally falls over time as the reactants are used up, so an average rate usually differs from the instantaneous rate at any moment.`])
+  }
+}
+
+// RE2 — 由鍵能求焓變：ΔH = Σ(斷鍵) − Σ(成鍵)
+for (const broken of [800, 900, 1000, 1200, 1400]) {
+  for (const formed of [700, 850, 1100, 1300, 1500]) {
+    const dH = broken - formed
+    if (dH === 0) continue
+    add(`cb_re2_${broken}_${formed}`, T.ratesEnergy, FW.dynamics, 'medium',
+      [`某反應斷開舊鍵共需吸收 $${broken}$ kJ，形成新鍵共放出 $${formed}$ kJ。其焓變 $\\Delta H$ 是多少？該反應屬放熱還是吸熱？`,
+       `A reaction absorbs $${broken}$ kJ breaking bonds and releases $${formed}$ kJ forming bonds. What is $\\Delta H$, and is the reaction exothermic or endothermic?`],
+      [n(`$${dH > 0 ? '+' : ''}${dH}$ kJ，${dH > 0 ? '吸熱' : '放熱'}`),
+       n(`$${dH > 0 ? '-' : '+'}${Math.abs(dH)}$ kJ，${dH > 0 ? '放熱' : '吸熱'}`),
+       n(`$+${broken + formed}$ kJ，吸熱`), n(`$${formed - broken > 0 ? '+' : ''}${formed - broken}$ kJ，${formed - broken > 0 ? '吸熱' : '放熱'}`)],
+      [`$\\Delta H = $ 斷鍵吸收的能量 $-$ 成鍵放出的能量 $= ${broken} - ${formed} = ${dH > 0 ? '+' : ''}${dH}$ kJ。$\\Delta H$ 為${dH > 0 ? '正表示吸熱' : '負表示放熱'}。斷鍵永遠吸熱、成鍵永遠放熱，兩者相減決定整體方向。陷阱：$+${broken + formed}$ kJ 把兩者相加；另外兩項的正負號或方向弄反。`,
+       `$\\Delta H = $ energy absorbed breaking bonds $-$ energy released forming bonds $= ${broken} - ${formed} = ${dH > 0 ? '+' : ''}${dH}$ kJ, and a ${dH > 0 ? 'positive value means endothermic' : 'negative value means exothermic'}. Breaking bonds always absorbs energy and forming them always releases it; the difference sets the overall direction. Traps: $+${broken + formed}$ kJ adds the two; the others reverse the sign or the direction.`])
+  }
+}
+
+// BD1 — 離子化合物的化學式（由電荷交叉配平）
+// 干擾項設計：三個都必須恆與正解相異，否則 add() 會丟棄整組。
+//   w1 未交叉（直接把電荷數當下標）· w2 陽離子下標多一 · w3 陰離子下標多一
+// 電荷同為 1 的組合（如 Na⁺Cl⁻）會令 w1 等於正解，故一律跳過。
+// 元素符號直接列出，不由 LaTeX 字串反解 —— 反解會把 `\mathrm{Mg^{2+}}` 切成
+// `Mg}`（正則食到第一個右括號便停），令輸出的大括號不平衡。validate-banks
+// 只驗 `$` 配對而不驗括號配對，故此類錯誤能一路綠燈流到學生眼前。
+for (const [C2, cat, cc, A2, an, ac] of [
+  ['Mg', '\\mathrm{Mg^{2+}}', 2, 'Cl', '\\mathrm{Cl^-}', 1],
+  ['Al', '\\mathrm{Al^{3+}}', 3, 'Cl', '\\mathrm{Cl^-}', 1],
+  ['Na', '\\mathrm{Na^+}', 1, 'O', '\\mathrm{O^{2-}}', 2],
+  ['Mg', '\\mathrm{Mg^{2+}}', 2, 'O', '\\mathrm{O^{2-}}', 2],
+  ['Al', '\\mathrm{Al^{3+}}', 3, 'O', '\\mathrm{O^{2-}}', 2],
+  ['Ca', '\\mathrm{Ca^{2+}}', 2, 'N', '\\mathrm{N^{3-}}', 3],
+  ['K', '\\mathrm{K^+}', 1, 'S', '\\mathrm{S^{2-}}', 2],
+  ['Al', '\\mathrm{Al^{3+}}', 3, 'S', '\\mathrm{S^{2-}}', 2],
+  ['Ca', '\\mathrm{Ca^{2+}}', 2, 'Cl', '\\mathrm{Cl^-}', 1],
+  ['Li', '\\mathrm{Li^+}', 1, 'N', '\\mathrm{N^{3-}}', 3],
+  ['Ba', '\\mathrm{Ba^{2+}}', 2, 'Br', '\\mathrm{Br^-}', 1],
+  ['Fe', '\\mathrm{Fe^{3+}}', 3, 'O', '\\mathrm{O^{2-}}', 2],
+] as [string, string, number, string, string, number][]) {
+  if (cc === 1 && ac === 1) continue
+  const gg = gcd(cc, ac)
+  const nc = ac / gg, na = cc / gg
+  const sub = (e: string, k: number) => (k === 1 ? e : `${e}_${k}`)
+  const right = `\\mathrm{${sub(C2, nc)}${sub(A2, na)}}`
+  const w1 = `\\mathrm{${sub(C2, cc)}${sub(A2, ac)}}`
+  const w2 = `\\mathrm{${sub(C2, nc + 1)}${sub(A2, na)}}`
+  const w3 = `\\mathrm{${sub(C2, nc)}${sub(A2, na + 1)}}`
+  add(`cb_bd1_${C2}${A2}_${cc}${ac}`, T.bonding, FW.structure, 'medium',
+    [`由 $${cat}$ 與 $${an}$ 形成的離子化合物，其化學式是甚麼？`,
+     `What is the formula of the ionic compound formed from $${cat}$ and $${an}$?`],
+    [n(`$${right}$`), n(`$${w1}$`), n(`$${w2}$`), n(`$${w3}$`)],
+    [`離子化合物整體必須電中性，正負電荷總量要相等。$${cat}$ 帶 $${cc}$ 個正電、$${an}$ 帶 $${ac}$ 個負電；把電荷數交叉寫成對方的下標再約簡，得 $${right}$（$${nc} \\times ${cc} = ${na} \\times ${ac}$，正負相抵）。陷阱：$${w1}$ 把電荷數直接寫成自己的下標而未交叉；$${w2}$ 與 $${w3}$ 各有一個下標多算了一，代入檢查電荷即知不平衡。`,
+     `An ionic compound must be electrically neutral, so the total positive and negative charges must be equal. $${cat}$ carries $${cc}$ positive charges and $${an}$ carries $${ac}$ negative; crossing the charge numbers over as subscripts and simplifying gives $${right}$, since $${nc} \\times ${cc} = ${na} \\times ${ac}$ and the charges cancel. Traps: $${w1}$ uses each charge as its own subscript without crossing; $${w2}$ and $${w3}$ each have one subscript too many, which fails a charge check.`])
+}
+
+// PT1 — 由原子序推電子排布與週期／族（Z ≤ 20）
+for (const [Z, el, per, grp, cfg] of [
+  [3, 'Li', 2, 1, '2, 1'], [4, 'Be', 2, 2, '2, 2'], [6, 'C', 2, 14, '2, 4'], [7, 'N', 2, 15, '2, 5'],
+  [8, 'O', 2, 16, '2, 6'], [9, 'F', 2, 17, '2, 7'], [10, 'Ne', 2, 18, '2, 8'], [11, 'Na', 3, 1, '2, 8, 1'],
+  [12, 'Mg', 3, 2, '2, 8, 2'], [13, 'Al', 3, 13, '2, 8, 3'], [14, 'Si', 3, 14, '2, 8, 4'],
+  [15, 'P', 3, 15, '2, 8, 5'], [16, 'S', 3, 16, '2, 8, 6'], [17, 'Cl', 3, 17, '2, 8, 7'],
+  [18, 'Ar', 3, 18, '2, 8, 8'], [19, 'K', 4, 1, '2, 8, 8, 1'], [20, 'Ca', 4, 2, '2, 8, 8, 2'],
+] as [number, string, number, number, string][]) {
+  add(`cb_pt1_${Z}`, T.periodic, FW.structure, 'easy',
+    [`某元素的原子序為 $${Z}$。其電子排布是甚麼？`, `An element has atomic number $${Z}$. What is its electronic arrangement?`],
+    [n(`$${cfg}$`), n(`$${cfg.split(', ').reverse().join(', ')}$`), n(`$${Z}$`), n(`$2, ${Z - 2}$`)],
+    [`中性原子的電子數等於原子序，即 $${Z}$ 個。由內層向外填充，每層上限依次為 2、8、8，得 $${cfg}$。由此可讀出：電子層數 $= ${per}$，即位於第 ${per} 週期；最外層電子數決定族數。陷阱：$${cfg.split(', ').reverse().join(', ')}$ 把次序倒轉；$${Z}$ 直接寫了總數而未分層；$2, ${Z - 2}$ 忽略了第二層 8 個的上限。`,
+     `A neutral atom has as many electrons as its atomic number, that is $${Z}$. Filling from the inner shells outward with capacities 2, 8, 8 gives $${cfg}$. From this: the number of shells is ${per}, so the element lies in Period ${per}, and the outermost shell determines the group. Traps: $${cfg.split(', ').reverse().join(', ')}$ reverses the order; $${Z}$ gives the total without arranging it in shells; $2, ${Z - 2}$ ignores the eight-electron limit of the second shell.`])
+}
+
+// OR1 — 同系物通式代入：烷 CₙH₂ₙ₊₂、烯 CₙH₂ₙ、炔 CₙH₂ₙ₋₂
+for (let c = 2; c <= 8; c++) {
+  add(`cb_or1a_${c}`, T.organic, FW.carbon, 'easy',
+    [`含 $${c}$ 個碳原子的烯烴，其分子式是甚麼？`, `What is the molecular formula of the alkene with $${c}$ carbon atoms?`],
+    [n(`$\\mathrm{C_${c}H_{${2 * c}}}$`), n(`$\\mathrm{C_${c}H_{${2 * c + 2}}}$`), n(`$\\mathrm{C_${c}H_{${2 * c - 2}}}$`), n(`$\\mathrm{C_${c}H_${c}}$`)],
+    [`烯烴含一個碳碳雙鍵，通式為 $\\mathrm{C_nH_{2n}}$。代入 $n = ${c}$ 得 $\\mathrm{C_${c}H_{${2 * c}}}$。陷阱：$\\mathrm{C_${c}H_{${2 * c + 2}}}$ 是同碳數的烷烴（通式 $\\mathrm{C_nH_{2n+2}}$）；$\\mathrm{C_${c}H_{${2 * c - 2}}}$ 是炔烴；$\\mathrm{C_${c}H_${c}}$ 誤把氫碳比當成 $1 : 1$。三個通式相差的氫數反映不飽和度：每多一個雙鍵或一個環，就少 2 個氫。`,
+     `An alkene contains one carbon–carbon double bond and has the general formula $\\mathrm{C_nH_{2n}}$, so with $n = ${c}$ it is $\\mathrm{C_${c}H_{${2 * c}}}$. Traps: $\\mathrm{C_${c}H_{${2 * c + 2}}}$ is the alkane with the same carbon count ($\\mathrm{C_nH_{2n+2}}$); $\\mathrm{C_${c}H_{${2 * c - 2}}}$ is the alkyne; $\\mathrm{C_${c}H_${c}}$ assumes a $1 : 1$ ratio. The differences in hydrogen count reflect unsaturation: each extra double bond or ring costs two hydrogens.`])
+  add(`cb_or1b_${c}`, T.organic, FW.carbon, 'medium',
+    [`含 $${c}$ 個碳原子的飽和一元醇，其分子式是甚麼？`, `What is the molecular formula of the saturated alcohol with one hydroxyl group and $${c}$ carbon atoms?`],
+    [n(`$\\mathrm{C_${c}H_{${2 * c + 2}}O}$`), n(`$\\mathrm{C_${c}H_{${2 * c}}O}$`), n(`$\\mathrm{C_${c}H_{${2 * c + 2}}}$`), n(`$\\mathrm{C_${c}H_{${2 * c + 1}}O_2}$`)],
+    [`飽和一元醇可看成烷烴的一個氫被 $-\\mathrm{OH}$ 取代：$\\mathrm{C_nH_{2n+2}}$ 去掉一個 $\\mathrm{H}$ 再加上 $\\mathrm{OH}$，氫數不變而多一個氧，故通式為 $\\mathrm{C_nH_{2n+2}O}$。代入 $n = ${c}$ 得 $\\mathrm{C_${c}H_{${2 * c + 2}}O}$。陷阱：$\\mathrm{C_${c}H_{${2 * c}}O}$ 少算兩個氫；$\\mathrm{C_${c}H_{${2 * c + 2}}}$ 漏了氧；$\\mathrm{C_${c}H_{${2 * c + 1}}O_2}$ 多加一個氧。`,
+     `A saturated alcohol with one hydroxyl group is an alkane with one hydrogen replaced by $-\\mathrm{OH}$: removing one $\\mathrm{H}$ from $\\mathrm{C_nH_{2n+2}}$ and adding $\\mathrm{OH}$ leaves the hydrogen count unchanged and adds one oxygen, giving $\\mathrm{C_nH_{2n+2}O}$. With $n = ${c}$ this is $\\mathrm{C_${c}H_{${2 * c + 2}}O}$. Traps: $\\mathrm{C_${c}H_{${2 * c}}O}$ is two hydrogens short; $\\mathrm{C_${c}H_{${2 * c + 2}}}$ omits the oxygen; $\\mathrm{C_${c}H_{${2 * c + 1}}O_2}$ adds an extra oxygen.`])
 }
 
 export const chemistryBankQuestions: Question[] = bank

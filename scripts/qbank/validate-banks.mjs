@@ -7,7 +7,16 @@
 //   (1) MC integrity     — exactly 4 options, distinct by BOTH string AND numeric
 //                          normalisation (catches the number-vs-"string" dup class),
 //                          correctIndex in range, no NaN/undefined/Infinity/empty.
-//   (2) LaTeX hygiene     — balanced `$`, no `1x` / `e^{1x}` redundant coefficients.
+//   (2) LaTeX hygiene     — balanced `$`, no `1x` / `e^{1x}` redundant coefficients,
+//                          AND every `$…$` span actually parses under KaTeX.
+//
+//       ⚠️  2026-08-28：本檔原本只驗 `$` 配對，【不驗大括號配對】。實測後果：
+//       一個把 `\mathrm{Mg^{2+}}` 用正則切成 `Mg}` 的母模板，輸出
+//       `$\mathrm{Mg}Cl_2}$`（多一個右括號）而本閘一路綠燈。同時揭出
+//       chemistry-bank 有 73 條寫成 `\text{H_2O}` —— `\text{}` 會切去文字模式，
+//       底線不再是下標語法，KaTeX 直接 parse error，學生見到的是壞掉的公式。
+//       所以「$ 配對」這種淺層檢查不足夠：唯一可靠的驗證是【真的渲染一次】。
+//       加入本檢查時實測影響：修好那 73 條之後，七個題庫零條 fail。
 //   (3) Difficulty split  — per-bank easy/medium/hard vs the 30/50/20 target.
 //   + dedup (本檔範圍內)  — duplicate id / identical stem among the 7 parametric
 //                          banks listed in BANKS below.
@@ -41,6 +50,10 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
 const ts = (await import('typescript')).default
+// KaTeX 用於「真的渲染一次」檢查。載入失敗時降級為跳過並明示，不靜靜放行。
+let KATEX = null
+try { KATEX = (await import('katex')).default } catch { console.log('  ⚠️  katex 載入失敗 —— 已跳過渲染檢查（其餘檢查照跑）') }
+const _warn = console.warn; console.warn = () => {} // KaTeX 對 CJK 的 strict 警告與本檢查無關
 
 // The live parametric banks (never the hand-authored *.ts — those are separate).
 const BANKS = [
@@ -90,6 +103,32 @@ const normStem = (s) => String(s).replace(/\s+/g, '').replace(/[，。、！？,
 // Count `$` MATH DELIMITERS only — strip escaped `\$` (literal currency) first,
 // exactly like MathText does, so "某商品 $\$500$" (valid) isn't a false positive.
 const balancedDollars = (s) => ((String(s).replace(/\\\$/g, '').match(/\$/g) || []).length % 2 === 0)
+
+// ── 抽出所有數學區段 ────────────────────────────────────────────────────────
+// 逐字掃描：遇到反斜線就連下一個字一併跳過，所以數學模式內的 `\$`（金額）
+// 不會被誤當成分界符。用正則 /(?<!\\)\$([^$]+)\$/ 做這件事會在
+// `$\$200$` 上切出一個孤立的 `\`，製造 30 條假陽性（實測）。
+function mathSpans(str) {
+  const out = []
+  let i = 0, open = -1
+  const s = String(str)
+  while (i < s.length) {
+    if (s[i] === '\\') { i += 2; continue }
+    if (s[i] === '$') { if (open < 0) open = i; else { out.push(s.slice(open + 1, i)); open = -1 } }
+    i++
+  }
+  return out
+}
+
+/** 每個數學區段都要真的渲染得到。strict:false 對齊 MathText 的 live 行為。 */
+function katexErrors(katex, s) {
+  const errs = []
+  for (const span of mathSpans(s)) {
+    try { katex.renderToString(span, { throwOnError: true, strict: false }) }
+    catch (e) { errs.push(`KaTeX parse failed on "${span.slice(0, 32)}" — ${String(e.message).slice(0, 60)}`) }
+  }
+  return errs
+}
 const COSMETIC = /(?<![0-9])1x(\^|\b)|e\^\{1x\}|\{1\}x/
 
 function checkQuestion(q, seenIds) {
@@ -108,6 +147,10 @@ function checkQuestion(q, seenIds) {
   }
   if (!q.content || !String(q.content).trim()) errs.push('empty content')
   for (const f of ['content', 'explanation']) if (q[f] && !balancedDollars(q[f])) errs.push(`unbalanced $ in ${f}`)
+  if (KATEX) for (const f of ['content', 'contentEn', 'explanation', 'explanationEn']) {
+    if (q[f]) for (const e of katexErrors(KATEX, q[f])) errs.push(`${f}: ${e}`)
+  }
+  if (KATEX) for (const o of opts) for (const e of katexErrors(KATEX, o)) errs.push(`option: ${e}`)
   for (const s of [q.content, q.explanation, ...opts]) if (s && COSMETIC.test(String(s))) errs.push(`redundant coefficient (1x / e^{1x}) in "${String(s).slice(0, 40)}"`)
   if (!['easy', 'medium', 'hard'].includes(q.difficulty)) errs.push(`bad difficulty "${q.difficulty}"`)
   return errs
