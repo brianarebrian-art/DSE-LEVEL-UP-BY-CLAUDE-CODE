@@ -1,0 +1,218 @@
+[
+ {
+  "id": "floor2_tl_ft_01",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "basic",
+  "question": "烹煮肉類時，肉會由紅轉褐並且收縮變硬。這主要由於甚麼變化？",
+  "questionEn": "When meat is cooked it turns from red to brown and shrinks and firms. What change is chiefly responsible?",
+  "options": [
+   "蛋白質受熱變性，分子結構鬆開後重新聚集並釋出水分",
+   "蛋白質受熱分解成氨基酸，因而完全溶解於肉汁之中",
+   "肉中的脂肪受熱凝固，把肌肉纖維牢牢黏合在一起",
+   "肉中的碳水化合物受熱焦糖化，令整塊肉的體積縮小"
+  ],
+  "optionsEn": [
+   "heat denatures the proteins: their structure unfolds, re-aggregates and squeezes out water",
+   "heat breaks the proteins down into amino acids, which dissolve completely in the juices",
+   "the fat in the meat solidifies on heating and glues the muscle fibres together",
+   "the carbohydrate in the meat caramelises on heating and shrinks the whole piece"
+  ],
+  "correctIndex": 0,
+  "explanation": "肉的主要成分是蛋白質。受熱時蛋白質的三維結構鬆開（變性），隨後分子之間重新結合成較緊密的網絡，把原本鎖在纖維之間的水分擠出，肉因而收縮、變硬並流失肉汁 —— 這正是過度烹煮令肉柴的原因，亦解釋為何低溫慢煮能保留較多水分。顏色由紅轉褐則來自肌紅蛋白受熱變性。蛋白質變性並非分解成氨基酸；肉中脂肪受熱是【融化】而非凝固；而肉類的碳水化合物含量極低，焦糖化不足以解釋整體收縮。",
+  "explanationEn": "Meat is largely protein. Heat unfolds the three-dimensional protein structure — denaturation — after which the molecules re-associate into a tighter network that squeezes out water previously held between the fibres, so the meat shrinks, firms and loses juice. This is why overcooking makes meat tough and why low-temperature slow cooking retains more moisture. The colour change from red to brown comes from the denaturation of myoglobin. Denaturation is not breakdown into amino acids; fat MELTS on heating rather than solidifying; and meat contains very little carbohydrate, so caramelisation cannot account for the shrinkage."
+ },
+ {
+  "id": "floor2_tl_ft_02",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "intermediate",
+  "question": "製作麵包時加入酵母，麵糰會發脹。這是由於甚麼作用？",
+  "questionEn": "Yeast makes bread dough rise. What process is responsible?",
+  "options": [
+   "酵母進行發酵，分解糖分產生二氧化碳，氣體被麵筋網絡困住",
+   "酵母吸收麵糰中的水分而膨脹，體積因而由內向外把麵糰撐大",
+   "酵母與麵粉中的蛋白質反應生成氣泡，同時令麵糰的顏色變深",
+   "酵母釋出熱能令麵糰內的空氣受熱膨脹，因而體積顯著增加"
+  ],
+  "optionsEn": [
+   "yeast ferments sugars and produces carbon dioxide, which is trapped by the gluten network",
+   "yeast absorbs water from the dough and swells, pushing the dough outwards from within",
+   "yeast reacts with flour protein to form bubbles and darkens the dough at the same time",
+   "yeast releases heat that expands the air in the dough, greatly increasing its volume"
+  ],
+  "correctIndex": 0,
+  "explanation": "酵母是活的微生物，在麵糰中分解可發酵的糖分，產生二氧化碳與乙醇。麵粉中的麥穀蛋白與醇溶蛋白經搓揉後形成有彈性的麵筋網絡，能把二氧化碳氣泡困在麵糰之內，麵糰因而發脹。這解釋了兩件事：搓揉不足則麵筋不成網，氣體走掉而發不起；而高筋麵粉正因為蛋白質含量較高、麵筋較強，更適合做麵包。酵母吸水並不足以令體積倍增；酵母不與麵粉蛋白反應生成氣泡；發酵所釋放的熱能亦微不足道。",
+  "explanationEn": "Yeast is a living micro-organism that ferments the fermentable sugars in dough, producing carbon dioxide and ethanol. Kneading develops the flour's glutenin and gliadin into an elastic gluten network that traps the carbon dioxide bubbles inside the dough, so the dough rises. This explains two things: under-kneaded dough has no proper network, the gas escapes and the loaf fails to rise; and strong flour, higher in protein and forming stronger gluten, suits bread better. Yeast absorbing water could not double the volume; yeast does not react with flour protein to form bubbles; and the heat released by fermentation is negligible."
+ },
+ {
+  "id": "floor2_tl_ft_03",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "basic",
+  "question": "棉纖維與聚酯纖維（滌綸）相比，棉的一項主要特性是甚麼？",
+  "questionEn": "Compared with polyester, what is a key characteristic of cotton fibre?",
+  "options": [
+   "吸濕性強，能吸收汗水而穿着較為透氣舒適，但乾得較慢並容易起皺",
+   "吸濕性極低，汗水難以被吸收，因而穿着時常有黏膩焗促的感覺",
+   "彈性回復力極佳，拉長後能完全回復原狀，因此幾乎不會起皺",
+   "耐熱性極高，可以承受高溫熨燙而完全不會變形或熔化"
+  ],
+  "optionsEn": [
+   "it absorbs moisture well, so it breathes and feels comfortable, but dries slowly and creases easily",
+   "it absorbs almost no moisture, so sweat is not taken up and it feels clammy to wear",
+   "it recovers elastically and returns fully to shape after stretching, so it hardly creases",
+   "it withstands very high temperatures and can be ironed hot without deforming or melting"
+  ],
+  "correctIndex": 0,
+  "explanation": "棉是天然纖維素纖維，分子上有大量羥基，能與水分子形成氫鍵，因此吸濕性強：汗水被吸走後從布面蒸發，穿着較涼爽透氣。代價是吸水後乾得慢，而且纖維彈性回復力弱，容易起皺。聚酯是合成纖維，吸濕性低、快乾、抗皺、彈性佳，但透氣感較差 —— 兩者的特性幾乎互補，這正是棉滌混紡普遍的原因。第二、三項描述的其實是聚酯；第四項亦與事實不符，棉雖然比聚酯耐熱（不會熔化），但高溫仍會令它焦化變黃。",
+  "explanationEn": "Cotton is a natural cellulosic fibre whose many hydroxyl groups hydrogen-bond with water, giving it strong moisture absorbency: sweat is drawn away and evaporates from the fabric surface, so it wears cool and breathable. The price is slow drying once wet, and weak elastic recovery, so it creases readily. Polyester is synthetic, low in absorbency, quick-drying, crease-resistant and elastic, but less breathable — the two are almost complementary, which is why cotton-polyester blends are so common. The second and third options actually describe polyester; and the fourth is untrue, since cotton, though more heat-tolerant than polyester in that it does not melt, still scorches and yellows at high temperatures."
+ },
+ {
+  "id": "floor2_tl_ft_04",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "intermediate",
+  "question": "食物在攝氏 5 度至 60 度之間存放屬於「危險溫度範圍」。這是因為甚麼？",
+  "questionEn": "Food held between 5°C and 60°C is said to be in the danger zone. Why?",
+  "options": [
+   "這個範圍最適合致病細菌迅速繁殖，食物中毒的風險因而大幅上升",
+   "這個範圍會令食物中的維生素迅速氧化流失，營養價值顯著下降",
+   "這個範圍會令食物中的脂肪迅速酸敗，產生令人不適的異味",
+   "這個範圍會令食物中的水分迅速蒸發，令食物乾硬而不能食用"
+  ],
+  "optionsEn": [
+   "bacteria that cause illness multiply fastest in this range, so the risk of food poisoning rises sharply",
+   "vitamins oxidise and are lost rapidly in this range, markedly lowering nutritional value",
+   "fats turn rancid quickly in this range, producing unpleasant off-flavours",
+   "water evaporates rapidly in this range, leaving food dry, hard and inedible"
+  ],
+  "correctIndex": 0,
+  "explanation": "大部分致病細菌在接近人體體溫的環境繁殖得最快，在適宜條件下每約二十分鐘就可分裂一次；由攝氏 5 度至 60 度之間，繁殖速率足以在數小時內把菌數推高至危險水平。低於 5 度繁殖大幅減慢（但細菌並未死亡），高於 60 度則多數致病菌會被殺滅，因此安全守則是「熱食保持夠熱、冷食保持夠冷」，並縮短食物停留在此範圍的時間。營養流失、脂肪酸敗與水分蒸發都會發生，但它們影響的是品質，而「危險溫度範圍」這個名稱針對的是【食物安全】風險。",
+  "explanationEn": "Most pathogenic bacteria multiply fastest near human body temperature, dividing about every twenty minutes in favourable conditions; between 5°C and 60°C growth is fast enough to raise counts to dangerous levels within a few hours. Below 5°C growth slows greatly, though the bacteria are not killed, and above 60°C most pathogens are destroyed, so the rule is to keep hot food hot and cold food cold and to minimise time in the range. Nutrient loss, rancidity and moisture loss all occur too, but they affect quality, whereas the term danger zone refers specifically to FOOD SAFETY risk."
+ },
+ {
+  "id": "floor2_tl_ft_05",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "intermediate",
+  "question": "在衣物護理標籤上，若標明只可「乾洗」，通常是因為該衣物的纖維有甚麼特性？",
+  "questionEn": "When a care label specifies dry-clean only, what property of the fibre is usually behind it?",
+  "options": [
+   "纖維遇水會顯著收縮或變形，水洗時的機械作用亦容易令它受損",
+   "纖維遇水會迅速溶解，因此接觸清水便會令衣物完全破損",
+   "纖維本身帶有大量染料，水洗會令染料完全褪去而顏色盡失",
+   "纖維的導電性極高，浸水後會產生靜電而令衣物吸附塵埃"
+  ],
+  "optionsEn": [
+   "the fibre shrinks or distorts noticeably when wet, and the mechanical action of washing damages it",
+   "the fibre dissolves rapidly in water, so contact with water destroys the garment entirely",
+   "the fibre carries so much dye that washing removes the colour completely",
+   "the fibre conducts electricity so well that soaking generates static and attracts dust"
+  ],
+  "correctIndex": 0,
+  "explanation": "羊毛等動物纖維表面有鱗片結構，遇水加上搓揉與溫度變化時鱗片互相咬合，纖維糾纏收縮而無法回復，這就是「氈化」；絲則因水洗後光澤與手感受損。乾洗以有機溶劑代替水，避免纖維吸水膨脹，機械作用亦較溫和，因此能保護這類衣物。第二項誇大到不符事實 —— 沒有常見衣料會溶於水；第三項把個別染色問題當成乾洗標示的普遍原因；第四項與纖維性質不符，紡織纖維一般是絕緣體，而靜電恰恰在【乾燥】時才明顯。",
+  "explanationEn": "Animal fibres such as wool have scales on their surface; when wet and subjected to agitation and temperature change the scales interlock, and the fibres tangle and shrink irreversibly — felting. Silk, for its part, loses lustre and handle in water. Dry cleaning replaces water with an organic solvent, so the fibres do not swell and the mechanical action is gentler, protecting such garments. The second option exaggerates beyond fact, since no common textile dissolves in water; the third takes an occasional dye problem for the general reason behind the label; and the fourth misstates fibre properties, as textile fibres are generally insulators and static is in fact worst when DRY."
+ },
+ {
+  "id": "floor2_tl_ft_06",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "basic",
+  "question": "蔬菜長時間水煮後，維生素 C 大量流失。最主要的原因是甚麼？",
+  "questionEn": "Long boiling of vegetables causes heavy loss of vitamin C. What is the main reason?",
+  "options": [
+   "維生素 C 易溶於水且不耐熱，會溶入煮水並在加熱過程中被破壞",
+   "維生素 C 會與蔬菜中的纖維結合成不能被人體吸收的化合物",
+   "維生素 C 在高溫下會轉化為維生素 A，因而在檢測中無法被驗出",
+   "維生素 C 會隨水蒸氣一同揮發，因而在沸騰時大量離開鍋中"
+  ],
+  "optionsEn": [
+   "vitamin C is water-soluble and heat-sensitive, so it leaches into the water and is destroyed by heat",
+   "vitamin C binds with the vegetable's fibre into a compound the body cannot absorb",
+   "vitamin C converts into vitamin A at high temperature and so escapes detection",
+   "vitamin C evaporates with the steam and leaves the pan in quantity during boiling"
+  ],
+  "correctIndex": 0,
+  "explanation": "維生素 C 是水溶性維生素，同時對熱與氧氣都不穩定。長時間水煮令它一方面溶出到煮水中（若棄掉煮水便一併倒走），另一方面在高溫與溶氧的作用下被氧化破壞，雙重損失。因此保留維生素 C 的做法是縮短加熱時間、減少用水量，或改用蒸、快炒等方式，甚至保留煮汁一併食用。第二項並非維生素 C 的性質；第三項不成立，維生素之間不會互相轉化；第四項亦不成立，維生素 C 並非揮發性物質。",
+  "explanationEn": "Vitamin C is water-soluble and unstable to both heat and oxygen. Prolonged boiling leaches it into the cooking water — discarded along with the water — while heat and dissolved oxygen oxidise and destroy it, so the loss is twofold. Retaining vitamin C therefore means shortening cooking time, using less water, switching to steaming or quick stir-frying, or using the cooking liquid as well. The second option is not a property of vitamin C; the third is untenable, as vitamins do not convert into one another; and the fourth is also untenable, since vitamin C is not volatile."
+ },
+ {
+  "id": "floor2_tl_ft_07",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "hard",
+  "question": "兩件外觀相似的針織衫，一件是純羊毛，另一件是純腈綸（亞克力）。用燃燒法辨別時，主要根據甚麼？",
+  "questionEn": "Two similar-looking knitted garments: one pure wool, one pure acrylic. What does the burn test rely on?",
+  "options": [
+   "羊毛燃燒有燒毛髮氣味、灰燼呈易碎黑球；腈綸則熔化成硬珠並有刺鼻化學氣味",
+   "羊毛燃燒時完全沒有氣味、灰燼呈白色粉末；腈綸則燃燒後不留任何殘餘",
+   "羊毛遇火立即熔化並滴落；腈綸則不會熔化，只會慢慢碳化而變黑",
+   "兩者燃燒的現象完全相同，故燃燒法根本無法用以分辨這兩種纖維"
+  ],
+  "optionsEn": [
+   "wool smells of burning hair and leaves a brittle black bead; acrylic melts to a hard bead with an acrid chemical smell",
+   "wool burns without any smell and leaves white powder; acrylic leaves no residue at all",
+   "wool melts and drips immediately on contact with flame, while acrylic only chars slowly and blackens",
+   "the two behave identically, so the burn test cannot distinguish these fibres at all"
+  ],
+  "correctIndex": 0,
+  "explanation": "燃燒法的依據是纖維的化學組成。羊毛屬蛋白質纖維，含硫，燃燒時發出燒毛髮或燒羽毛的特徵氣味，離火自熄，灰燼是可用手指捏碎的黑色脆球。腈綸是合成的熱塑性纖維，遇火先熔化後燃燒，滴落並形成堅硬不易捏碎的塑膠珠，氣味刺鼻。第二、三項把兩者的表現對調或憑空杜撰 —— 熔化滴落是【合成】纖維的特徵，天然蛋白質纖維並不熔化；第四項與事實不符，燃燒法正正是紡織實驗室常用的初步鑑別手段。",
+  "explanationEn": "The burn test rests on chemical composition. Wool is a protein fibre containing sulphur: it burns with the characteristic smell of burning hair or feathers, self-extinguishes when removed from the flame, and leaves a black bead that crushes between the fingers. Acrylic is a synthetic thermoplastic: it melts before it burns, drips, and forms a hard plastic bead that resists crushing, with an acrid smell. The second and third options swap the behaviours or invent them — melting and dripping are characteristic of SYNTHETIC fibres, and natural protein fibres do not melt; and the fourth is untrue, as the burn test is a standard preliminary identification in textile laboratories."
+ },
+ {
+  "id": "floor2_tl_ft_08",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物與紡織科學",
+  "topicId": "tl_food_textile_sci",
+  "topicZh": "食物與紡織科學",
+  "topicEn": "Food & textile science",
+  "difficulty": "intermediate",
+  "question": "在食物標籤上，配料表的排列方式有甚麼規定？這對消費者有何用處？",
+  "questionEn": "How must the ingredient list on a food label be ordered, and how does that help consumers?",
+  "options": [
+   "按重量由多至少排列，故排在前面的配料在產品中所佔比例最高",
+   "按字母或筆劃次序排列，故消費者可以最快速度找到指定的配料",
+   "按營養價值由高至低排列，故排在前面的配料對健康最為有益",
+   "按加入生產工序的先後排列，故排在前面的配料是最早加入的"
+  ],
+  "optionsEn": [
+   "by weight from most to least, so ingredients listed first make up the largest share of the product",
+   "alphabetically or by stroke count, so consumers can locate a given ingredient fastest",
+   "by nutritional value from highest to lowest, so those listed first are the healthiest",
+   "in the order they enter the process, so those listed first are added earliest"
+  ],
+  "correctIndex": 0,
+  "explanation": "配料表按加入量的重量由多至少排列。這個規定讓消費者不必看到具體數字，也能判斷產品的大致構成：例如某「果汁飲品」若配料表以水和糖排頭、果汁排在後面，即代表果汁所佔比例不高；同理，若飽和脂肪或糖排在前列，便值得留意。這正是閱讀食物標籤時最實用的一項技巧。其餘三項都不是規定的排列依據 —— 尤其「按營養價值排列」會令人誤以為排頭的配料最健康，恰恰與事實相反。",
+  "explanationEn": "Ingredients are listed by weight from greatest to least. This lets consumers judge roughly what a product is made of without seeing any figures: if a fruit drink lists water and sugar first with juice further down, the juice content is low; equally, saturated fat or sugar near the top is worth noting. It is the single most useful skill in reading a food label. None of the other options is the basis for the order — and \"by nutritional value\" is particularly misleading, since it would suggest the first-listed ingredient is the healthiest, which is often the reverse of the truth."
+ }
+]

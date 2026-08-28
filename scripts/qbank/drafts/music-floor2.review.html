@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · music · music-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">music</span></h1>
+<div class="sub">來源 music-floor2.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor2_mus_hf_01","topic":"和聲・和弦與曲式","difficulty":"basic","question":"大三和弦由哪三個音程關係的音組成？","options":["根音、根音上方大三度、根音上方完全五度","根音、根音上方小三度、根音上方完全五度","根音、根音上方大三度、根音上方大六度","根音、根音上方完全四度、根音上方完全五度"],"correctIndex":0,"explanation":"三和弦由根音向上疊置兩個三度而成。大三和弦的下方三度是【大】三度（四個半音）、上方三度是小三度（三個半音），根音到五音合共七個半音，即完全五度。以 C 大三和弦為例，就是 C、E、G。第二項描述的是【小】三和弦（下方為小三度，如 C、E♭、G）—— 大小三和弦的唯一分別就在這個三音，而它決定了和弦是明亮還是暗淡，這正是本課題的核心。第三、四項所列的音程組合都不構成三度疊置的三和弦。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_02","topic":"和聲・和弦與曲式","difficulty":"basic","question":"在大調中，以第五級音為根音所建立的三和弦稱為甚麼？","options":["屬和弦（dominant），最常見的功能是解決到主和弦","主和弦（tonic），最常見的功能是確立全曲的調性中心","下屬和弦（subdominant），最常見的功能是離開主和弦","導音和弦（leading-tone），最常見的功能是作為經過和弦"],"correctIndex":0,"explanation":"大調音階上第五級所建的三和弦稱為屬和弦（V）。它包含導音（第七級），該音有強烈傾向上行半音解決到主音，因此屬和弦本身帶有明顯的張力，最典型的去向是 V → I，即完全終止。主和弦建於第一級，下屬和弦建於第四級，導音和弦建於第七級，三者的級數都與題目所問不符。掌握 I、IV、V 三個主要和弦的級數與功能，是理解和聲進行的起點。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_03","topic":"和聲・和弦與曲式","difficulty":"intermediate","question":"樂句以屬和弦進行到主和弦（V–I）作結，這種終止式稱為甚麼？","options":["完全終止（perfect cadence），予人明確結束的感覺","半終止（imperfect cadence），予人樂句未完待續的感覺","變格終止（plagal cadence），常用於聖詠的「阿們」處","假終止（interrupted cadence），予人意料之外的轉折感"],"correctIndex":0,"explanation":"終止式由樂句最後兩個和弦的關係界定。V–I 是完全終止：屬和弦的張力得到解決，聽感上最為完滿，因此常用於樂曲或段落的結束。半終止結束【於】V（如 I–V），張力未解決，聽起來像逗號而非句號；變格終止是 IV–I，聲響較柔和；假終止是 V–vi，本應解決到 I 卻轉去 vi，因而產生意外感。判斷終止式的方法固定：先找出最後兩個和弦的級數，再對照上述四種組合。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_04","topic":"和聲・和弦與曲式","difficulty":"intermediate","question":"三段體（ternary form）的結構是甚麼？","options":["ABA —— 呈示一個段落，轉入對比段落，再回到原段落","AB —— 呈示一個段落，然後轉入對比段落並就此結束","ABACA —— 主題段落與多個不同的對比段落交替出現","AAB —— 同一段落重複一次，然後轉入新的段落作結"],"correctIndex":0,"explanation":"三段體的核心是【再現】：A 段呈示主要素材，B 段以不同的調性、織體或情緒作對比，然後 A 段回歸，令樂曲首尾呼應而結構完整。這種「離開再回來」的原則是西方音樂結構最基本的一種。AB 是二段體，沒有再現；ABACA 是迴旋曲式，主題與【多個】不同插段交替；AAB 屬另一種結構（如巴洛克的某些歌曲形式）。辨認曲式的方法是先聽出各段的材料是否相同，再標記字母。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_05","topic":"和聲・和弦與曲式","difficulty":"intermediate","question":"和弦的「轉位」（inversion）指的是甚麼？","options":["和弦音的排列改變，令根音以外的音成為最低音","和弦的根音改變，令整個和弦移到另一個音高上","和弦由大和弦變成小和弦，因而聲響由明亮轉為暗淡","和弦的音數由三個增至四個，因而張力顯著增加"],"correctIndex":0,"explanation":"轉位只改變和弦音的【垂直排列】，不改變和弦的成分與名稱。以 C 大三和弦（C、E、G）為例：C 在最低是原位；E 在最低是第一轉位；G 在最低是第二轉位 —— 三者仍然是 C 大三和弦。轉位的作用在於令低音線條更流暢，避免低音大幅跳進。第二項描述的是移調；第三項描述的是改變和弦的三音（大小和弦的分別）；第四項描述的是加入七音構成七和弦，三者都不是轉位。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_06","topic":"和聲・和弦與曲式","difficulty":"hard","question":"在大調中，以第二、三、六級音為根音所建立的三和弦，其性質是甚麼？","options":["三者都是小三和弦，與建於一、四、五級的大三和弦形成對比","三者都是大三和弦，與建於一、四、五級的和弦性質相同","三者都是減三和弦，因而在大調中極少被使用","三者都是增三和弦，因而聲響帶有明顯的不穩定感"],"correctIndex":0,"explanation":"在大調中，各級三和弦的性質由音階本身的全音半音排列決定，結果固定為：I、IV、V 為大三和弦；ii、iii、vi 為小三和弦；vii° 為減三和弦。因此第二、三、六級所建的都是小三和弦 —— 這正是大調作品中能夠出現柔和暗淡色彩的來源，例如 vi 級常用作假終止的落腳點。第二、三項與上述固定排列不符；增三和弦並非自然大調音階內任何一級的原生和弦，須經變化音才能構成。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_07","topic":"和聲・和弦與曲式","difficulty":"hard","question":"一段音樂由 C 大調轉入 G 大調。這兩個調的關係是甚麼？","options":["G 大調是 C 大調的屬調，兩者的調號只差一個升號","G 大調是 C 大調的關係小調，兩者共用完全相同的調號","G 大調是 C 大調的同名調，兩者的主音完全相同","G 大調是 C 大調的下屬調，兩者的調號只差一個降號"],"correctIndex":0,"explanation":"G 是 C 上方的完全五度，因此 G 大調是 C 大調的屬調；在五度圈上相鄰一格，調號由零個升號變成一個升號（F♯）。轉入屬調是古典時期最常見的轉調方向，奏鳴曲式呈示部第二主題往往就在屬調上。第二項不成立 —— C 大調的關係小調是 A 小調（同為零升零降），而且關係調必為一大一小；第三項的同名調指主音相同（如 C 大調與 C 小調），G 與 C 主音不同；第四項方向倒轉，C 大調的下屬調是 F 大調（一個降號）。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_mus_hf_08","topic":"和聲・和弦與曲式","difficulty":"intermediate","question":"在樂曲中使用「持續低音」（pedal point）的常見效果是甚麼？","options":["低音長時間維持同一個音，上方和聲變化因而產生張力與期待","低音不斷快速跳動，因而令樂曲的節奏感顯著加強","低音完全消失一段時間，因而令織體變得輕盈通透","低音與旋律始終保持同度進行，因而令音響更為厚重"],"correctIndex":0,"explanation":"持續低音是低聲部持續維持同一個音（最常用主音或屬音），而上方各聲部的和聲繼續變化。由於上方和聲有時與這個持續音不協和，張力逐步累積，聽者會期待它最終解決 —— 因此屬持續音常見於樂段或全曲結束之前，用以蓄勢；主持續音則常用於確立調性中心。其餘三項所描述的低音行為（快速跳動、完全消失、與旋律同度）都不是持續低音，也不會產生上述的張力累積效果。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "music";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "music-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "music-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

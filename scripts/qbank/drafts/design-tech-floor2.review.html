@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · design-tech · design-tech-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">design-tech</span></h1>
+<div class="sub">來源 design-tech-floor2.json · 共 9 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">9</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor2_dat_mr_01","topic":"材料與結構・推理","difficulty":"basic","question":"設計一張需要承受人體重量的膠椅時，工程師選用了肋狀加強結構而非加厚整張椅面。這樣做的主要理由是甚麼？","options":["肋狀結構大幅提高抗彎剛度，同時只增加少量材料與重量","肋狀結構令椅子的外觀更加吸引，是純粹的裝飾考慮","肋狀結構可以令塑膠在注塑成型時流動得更慢而更均勻","肋狀結構能令椅子在受力時更容易變形，藉此吸收衝擊"],"correctIndex":0,"explanation":"抗彎剛度與截面的「深度」成三次方關係：把材料移離中性軸，剛度上升得遠比重量快。肋狀結構正是把少量材料放在最遠離中性軸的位置，因而以極小的重量代價換取大幅提升的剛度。若改為整體加厚，材料用量與重量會按比例上升，成本與注塑週期同時增加，塑膠件亦容易因壁厚不均而收縮變形。外觀並非主要考量；肋條反而會加快而非減慢熔膠流動；至於「更易變形」與承重的設計目標背道而馳。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_02","topic":"材料與結構・推理","difficulty":"basic","question":"在下列情況中，選用鋁合金而非鋼材作為主要材料，最主要的取捨是甚麼？","options":["以較低的密度換取較輕的重量，但一般強度與剛度均較鋼材為低","以較高的密度換取較大的強度，但重量會顯著增加","以較低的成本換取更佳的耐蝕性，但加工難度大幅上升","以更高的熔點換取更好的耐熱性，但材料價格會下降"],"correctIndex":0,"explanation":"鋁合金的密度約為鋼的三分之一，因此在同樣體積下輕得多，這是選用它的首要理由 —— 航空、單車、手提設備都看重這一點。代價是楊氏模量約為鋼的三分之一、強度亦一般較低，所以要達到相同剛度往往需要加厚截面，部分重量優勢會被抵銷。鋁的耐蝕性確實較佳（表面自然形成氧化層），但成本一般高於普通碳鋼；熔點方面鋁遠低於鋼，耐熱性是它的弱項而非優點。材料選擇題的做法是先問「這個應用最看重哪一項性質」，再看為此付出甚麼代價。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_03","topic":"材料與結構・推理","difficulty":"intermediate","question":"桁架結構（如天橋、起重機臂）廣泛採用三角形單元而非四邊形單元。原因是甚麼？","options":["三角形的形狀由邊長唯一決定，在接點可轉動的情況下仍然不會變形","三角形所用的桿件比四邊形少，因此可以節省材料與製造成本","三角形的接點數目較多，能把應力分散到更多位置而降低峰值","三角形結構在受力時較容易輕微變形，有助吸收風力與震動"],"correctIndex":0,"explanation":"三角形是唯一「邊長確定即形狀確定」的多邊形：三條邊的長度一經固定，內角便無法改變，即使接點是可自由轉動的鉸接也不會變成另一個形狀。四邊形則不然 —— 四條邊長度不變，它仍可以像平行四邊形一樣傾側坍塌，必須額外加對角斜撐（而加了斜撐，其實就是把它拆成兩個三角形）。桿件數目與接點數目都不是關鍵理由；至於「較易變形」正好與桁架追求的形狀穩定性相反。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_04","topic":"材料與結構・推理","difficulty":"intermediate","question":"一條懸臂樑（一端固定、另一端自由）在自由端受向下的力。樑的哪一部分承受最大的拉應力？","options":["固定端的上表面","固定端的下表面","自由端的上表面","整條樑的中性軸位置"],"correctIndex":0,"explanation":"懸臂樑受向下的力時向下彎曲，上表面被拉長、下表面被壓短，因此上表面受拉、下表面受壓。而彎矩由自由端向固定端遞增，在固定端達到最大值，故最大拉應力出現在【固定端的上表面】—— 這正是懸臂結構最常從根部斷裂的原因，亦解釋為何懸臂樑的根部通常做得最厚。下表面受的是壓應力而非拉應力；自由端的彎矩為零，應力最小；中性軸上的正應力恰好為零，那裏既不受拉也不受壓。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_05","topic":"材料與結構・推理","difficulty":"basic","question":"熱塑性塑膠與熱固性塑膠的關鍵分別是甚麼？","options":["熱塑性可反覆受熱軟化並重新塑形；熱固性一經硬化便無法再熔化重塑","熱塑性一經硬化便無法再熔化；熱固性可反覆受熱軟化並重新塑形","熱塑性只能用注塑成型；熱固性只能用吹塑成型，兩者的加工方法互不相通","熱塑性完全不導電；熱固性導電性良好，常用於製造電子零件的接點"],"correctIndex":0,"explanation":"分別在於分子結構。熱塑性塑膠的長鏈分子之間只靠較弱的分子間作用力連繫，受熱時這些作用力被克服，材料軟化而可重新塑形，冷卻後又固化，過程可以反覆進行 —— 因此熱塑性塑膠可以回收再造。熱固性塑膠在固化時，分子之間形成共價交聯鍵，構成一個立體網絡；再加熱只會令它焦化分解而不會軟化，所以無法重塑或以熔融方式回收。第二項把兩者完全對調；加工方法與導電性都不是兩類塑膠的定義性分別。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_06","topic":"材料與結構・推理","difficulty":"intermediate","question":"在產品設計中採用「模組化」設計的主要優點是甚麼？","options":["個別模組可獨立更換或升級，令維修更容易並延長產品壽命","整件產品的總零件數目必然減少，因此製造成本一定下降","產品的外觀必然更加統一美觀，因為所有模組尺寸完全相同","產品必然變得更輕更薄，因為模組之間可以完全緊密貼合"],"correctIndex":0,"explanation":"模組化把產品拆成若干功能獨立、介面標準化的單元。任何一個模組損壞或過時，只需更換該模組而不必棄置整件產品，維修成本與電子廢物同時減少，產品壽命得以延長；同一組模組亦可重新組合成不同型號，縮短開發時間。要留意其餘三項都用了「必然」這種絕對語氣：模組化為了保留介面，零件數目往往【增加】而非減少；外觀與厚薄取決於工業設計，與模組化沒有必然關係。見到「必然」「一定」而缺乏條件限定，通常就是過度推論的訊號。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_07","topic":"材料與結構・推理","difficulty":"hard","question":"兩根同樣材料、同樣截面積的樑，一根是實心圓棒，另一根是空心圓管。在抗彎方面，哪一項描述正確？","options":["空心圓管的抗彎剛度較高，因為材料分佈在離中性軸更遠的位置","實心圓棒的抗彎剛度較高，因為它的中心部分同樣參與抵抗彎曲","兩者的抗彎剛度完全相同，因為材料相同而截面積亦相同","兩者都不能抵抗彎曲，圓形截面只適合承受拉力與壓力"],"correctIndex":0,"explanation":"抗彎剛度取決於截面【二次矩】，而二次矩按材料與中性軸距離的平方加權。中性軸附近的材料距離接近零，對抵抗彎曲幾乎沒有貢獻；把同樣份量的材料移到外圍，二次矩顯著上升。空心圓管正是把材料集中在遠離軸心之處，因此在相同重量下抗彎剛度遠高於實心棒 —— 單車車架、旗桿、腳手架用管而不用實心棒，理由就在於此。第二項恰恰誤解了中心材料的作用；第三項忽略了截面積相同不代表分佈相同；第四項與事實不符。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_08","topic":"材料與結構・推理","difficulty":"intermediate","question":"設計一件產品時進行「使用者測試」（user testing）的主要目的是甚麼？","options":["觀察真實使用者操作原型時遇到的困難，據此修正設計上的假設","向潛在買家推廣產品，藉此在正式發售前先建立市場需求","確認生產線的良品率能否達到預設標準，以便安排量產時間表","證明設計團隊原先的構想正確無誤，藉此說服管理層批出資金"],"correctIndex":0,"explanation":"使用者測試的價值在於：設計者對「使用者會點用」的假設，往往與真實行為不符，而這些落差只有看住真人操作才會浮現 —— 例如按鈕位置被誤解、步驟次序不合直覺、標示文字有歧義。測試的目的是【發現問題】並據此修改，因此設計者要抱着「希望找到毛病」的心態。第四項正好把方向倒轉：抱着「證明自己啱」的心態去做測試，會不自覺地引導使用者、忽略負面訊號，測試便失去意義。推廣屬市場推廣範疇；良品率屬生產測試範疇，兩者都不是使用者測試。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_dat_mr_09","topic":"材料與結構・推理","difficulty":"hard","question":"一件金屬零件在遠低於其抗拉強度的反覆應力下，使用一段時間後突然斷裂。這最可能是甚麼現象？","options":["疲勞破壞 —— 微裂紋在反覆應力下逐次擴展，直至截面不足以承載","塑性變形 —— 材料在持續荷載下緩慢拉長，最終頸縮而斷裂","腐蝕破壞 —— 表面與空氣中的氧氣反應，截面因鏽蝕而逐漸減少","過載破壞 —— 某次施加的力超過了材料的抗拉強度而即時斷裂"],"correctIndex":0,"explanation":"疲勞的特徵正正是題幹描述的組合：應力遠低於抗拉強度、經過一段時間、然後【突然】斷裂。機制是應力集中處（缺口、孔洞、加工痕）萌生微裂紋，每一次應力循環令裂紋前進極小一段，累積數萬至數百萬次後，剩餘截面不足以承載，於是瞬間脆斷 —— 斷口通常一半光滑（裂紋緩慢擴展區）、一半粗糙（最終瞬斷區）。設計上以圓角取代尖角、避免表面刮痕，正是為了減少應力集中。塑性變形會有明顯的持續伸長作為先兆；腐蝕會有可見的鏽蝕；過載則是單次超過強度，與「遠低於抗拉強度」矛盾。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "design-tech";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "design-tech-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "design-tech-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

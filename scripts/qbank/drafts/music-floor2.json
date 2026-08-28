@@ -1,0 +1,218 @@
+[
+ {
+  "id": "floor2_mus_hf_01",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "basic",
+  "question": "大三和弦由哪三個音程關係的音組成？",
+  "questionEn": "A major triad is built from which combination of intervals above the root?",
+  "options": [
+   "根音、根音上方大三度、根音上方完全五度",
+   "根音、根音上方小三度、根音上方完全五度",
+   "根音、根音上方大三度、根音上方大六度",
+   "根音、根音上方完全四度、根音上方完全五度"
+  ],
+  "optionsEn": [
+   "the root, a major third above it, and a perfect fifth above it",
+   "the root, a minor third above it, and a perfect fifth above it",
+   "the root, a major third above it, and a major sixth above it",
+   "the root, a perfect fourth above it, and a perfect fifth above it"
+  ],
+  "correctIndex": 0,
+  "explanation": "三和弦由根音向上疊置兩個三度而成。大三和弦的下方三度是【大】三度（四個半音）、上方三度是小三度（三個半音），根音到五音合共七個半音，即完全五度。以 C 大三和弦為例，就是 C、E、G。第二項描述的是【小】三和弦（下方為小三度，如 C、E♭、G）—— 大小三和弦的唯一分別就在這個三音，而它決定了和弦是明亮還是暗淡，這正是本課題的核心。第三、四項所列的音程組合都不構成三度疊置的三和弦。",
+  "explanationEn": "A triad stacks two thirds above the root. In a major triad the lower third is MAJOR (four semitones) and the upper third minor (three semitones), making seven semitones from root to fifth — a perfect fifth. A C major triad is thus C, E and G. The second option describes the MINOR triad, whose lower third is minor (C, E flat, G); the third of the chord is the only difference between them and it is what makes the chord sound bright or dark, which is the heart of this topic. The intervals in the third and fourth options do not stack into thirds at all."
+ },
+ {
+  "id": "floor2_mus_hf_02",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "basic",
+  "question": "在大調中，以第五級音為根音所建立的三和弦稱為甚麼？",
+  "questionEn": "In a major key, what is the triad built on the fifth degree of the scale called?",
+  "options": [
+   "屬和弦（dominant），最常見的功能是解決到主和弦",
+   "主和弦（tonic），最常見的功能是確立全曲的調性中心",
+   "下屬和弦（subdominant），最常見的功能是離開主和弦",
+   "導音和弦（leading-tone），最常見的功能是作為經過和弦"
+  ],
+  "optionsEn": [
+   "the dominant, whose commonest function is to resolve to the tonic",
+   "the tonic, whose commonest function is to establish the key centre",
+   "the subdominant, whose commonest function is to move away from the tonic",
+   "the leading-tone chord, whose commonest function is to serve as a passing chord"
+  ],
+  "correctIndex": 0,
+  "explanation": "大調音階上第五級所建的三和弦稱為屬和弦（V）。它包含導音（第七級），該音有強烈傾向上行半音解決到主音，因此屬和弦本身帶有明顯的張力，最典型的去向是 V → I，即完全終止。主和弦建於第一級，下屬和弦建於第四級，導音和弦建於第七級，三者的級數都與題目所問不符。掌握 I、IV、V 三個主要和弦的級數與功能，是理解和聲進行的起點。",
+  "explanationEn": "The triad on the fifth degree of a major scale is the dominant (V). It contains the leading note, the seventh degree, which pulls strongly upwards by a semitone to the tonic, so the dominant carries marked tension and most characteristically moves V to I, a perfect cadence. The tonic is built on the first degree, the subdominant on the fourth, and the leading-tone chord on the seventh, so none matches the degree asked about. Knowing the degrees and functions of I, IV and V is the starting point for understanding harmonic progression."
+ },
+ {
+  "id": "floor2_mus_hf_03",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "intermediate",
+  "question": "樂句以屬和弦進行到主和弦（V–I）作結，這種終止式稱為甚麼？",
+  "questionEn": "A phrase ending with a dominant moving to the tonic (V–I) forms which cadence?",
+  "options": [
+   "完全終止（perfect cadence），予人明確結束的感覺",
+   "半終止（imperfect cadence），予人樂句未完待續的感覺",
+   "變格終止（plagal cadence），常用於聖詠的「阿們」處",
+   "假終止（interrupted cadence），予人意料之外的轉折感"
+  ],
+  "optionsEn": [
+   "a perfect cadence, giving a clear sense of conclusion",
+   "an imperfect cadence, leaving the phrase sounding unfinished",
+   "a plagal cadence, familiar from the Amen at the end of hymns",
+   "an interrupted cadence, producing an unexpected turn"
+  ],
+  "correctIndex": 0,
+  "explanation": "終止式由樂句最後兩個和弦的關係界定。V–I 是完全終止：屬和弦的張力得到解決，聽感上最為完滿，因此常用於樂曲或段落的結束。半終止結束【於】V（如 I–V），張力未解決，聽起來像逗號而非句號；變格終止是 IV–I，聲響較柔和；假終止是 V–vi，本應解決到 I 卻轉去 vi，因而產生意外感。判斷終止式的方法固定：先找出最後兩個和弦的級數，再對照上述四種組合。",
+  "explanationEn": "A cadence is defined by the relationship between the last two chords of a phrase. V–I is a perfect cadence: the dominant tension resolves and the effect is maximally conclusive, so it typically ends a piece or section. An imperfect cadence ends ON V, as in I–V, leaving the tension unresolved and sounding like a comma rather than a full stop; a plagal cadence is IV–I and sounds gentler; and an interrupted cadence is V–vi, turning to vi where I was expected and so surprising the ear. The method is always the same: identify the degrees of the last two chords and match them against these four patterns."
+ },
+ {
+  "id": "floor2_mus_hf_04",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "intermediate",
+  "question": "三段體（ternary form）的結構是甚麼？",
+  "questionEn": "What is the structure of ternary form?",
+  "options": [
+   "ABA —— 呈示一個段落，轉入對比段落，再回到原段落",
+   "AB —— 呈示一個段落，然後轉入對比段落並就此結束",
+   "ABACA —— 主題段落與多個不同的對比段落交替出現",
+   "AAB —— 同一段落重複一次，然後轉入新的段落作結"
+  ],
+  "optionsEn": [
+   "ABA — a section, a contrasting section, then a return to the first",
+   "AB — a section followed by a contrasting section, ending there",
+   "ABACA — a main section alternating with several different contrasting sections",
+   "AAB — a section repeated, then a new section to finish"
+  ],
+  "correctIndex": 0,
+  "explanation": "三段體的核心是【再現】：A 段呈示主要素材，B 段以不同的調性、織體或情緒作對比，然後 A 段回歸，令樂曲首尾呼應而結構完整。這種「離開再回來」的原則是西方音樂結構最基本的一種。AB 是二段體，沒有再現；ABACA 是迴旋曲式，主題與【多個】不同插段交替；AAB 屬另一種結構（如巴洛克的某些歌曲形式）。辨認曲式的方法是先聽出各段的材料是否相同，再標記字母。",
+  "explanationEn": "The essence of ternary form is RETURN: A presents the main material, B contrasts in key, texture or mood, and A comes back, so the piece rounds on itself and feels complete. This principle of departure and return is among the most basic structures in Western music. AB is binary form, with no return; ABACA is rondo, in which the theme alternates with SEVERAL different episodes; and AAB is a different scheme found in some Baroque song forms. Identifying form means listening for whether each section's material is the same and labelling accordingly."
+ },
+ {
+  "id": "floor2_mus_hf_05",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "intermediate",
+  "question": "和弦的「轉位」（inversion）指的是甚麼？",
+  "questionEn": "What does inversion of a chord mean?",
+  "options": [
+   "和弦音的排列改變，令根音以外的音成為最低音",
+   "和弦的根音改變，令整個和弦移到另一個音高上",
+   "和弦由大和弦變成小和弦，因而聲響由明亮轉為暗淡",
+   "和弦的音數由三個增至四個，因而張力顯著增加"
+  ],
+  "optionsEn": [
+   "the chord tones are rearranged so that a note other than the root becomes the lowest",
+   "the root of the chord changes, moving the whole chord to another pitch",
+   "the chord changes from major to minor, so its sound turns from bright to dark",
+   "a fourth note is added to the three, markedly increasing the tension"
+  ],
+  "correctIndex": 0,
+  "explanation": "轉位只改變和弦音的【垂直排列】，不改變和弦的成分與名稱。以 C 大三和弦（C、E、G）為例：C 在最低是原位；E 在最低是第一轉位；G 在最低是第二轉位 —— 三者仍然是 C 大三和弦。轉位的作用在於令低音線條更流暢，避免低音大幅跳進。第二項描述的是移調；第三項描述的是改變和弦的三音（大小和弦的分別）；第四項描述的是加入七音構成七和弦，三者都不是轉位。",
+  "explanationEn": "Inversion changes only the VERTICAL arrangement of the chord tones, not the chord's content or name. Take a C major triad — C, E, G: with C lowest it is in root position, with E lowest in first inversion, with G lowest in second inversion, and all three remain C major. Inversions exist to give the bass line a smoother shape and avoid large leaps. The second option describes transposition, the third describes altering the chord's third to change major into minor, and the fourth describes adding a seventh; none of them is inversion."
+ },
+ {
+  "id": "floor2_mus_hf_06",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "hard",
+  "question": "在大調中，以第二、三、六級音為根音所建立的三和弦，其性質是甚麼？",
+  "questionEn": "In a major key, what quality do the triads built on the second, third and sixth degrees have?",
+  "options": [
+   "三者都是小三和弦，與建於一、四、五級的大三和弦形成對比",
+   "三者都是大三和弦，與建於一、四、五級的和弦性質相同",
+   "三者都是減三和弦，因而在大調中極少被使用",
+   "三者都是增三和弦，因而聲響帶有明顯的不穩定感"
+  ],
+  "optionsEn": [
+   "all three are minor triads, contrasting with the major triads on degrees one, four and five",
+   "all three are major triads, the same quality as those on degrees one, four and five",
+   "all three are diminished triads and are therefore rarely used in a major key",
+   "all three are augmented triads, giving them a markedly unstable sound"
+  ],
+  "correctIndex": 0,
+  "explanation": "在大調中，各級三和弦的性質由音階本身的全音半音排列決定，結果固定為：I、IV、V 為大三和弦；ii、iii、vi 為小三和弦；vii° 為減三和弦。因此第二、三、六級所建的都是小三和弦 —— 這正是大調作品中能夠出現柔和暗淡色彩的來源，例如 vi 級常用作假終止的落腳點。第二、三項與上述固定排列不符；增三和弦並非自然大調音階內任何一級的原生和弦，須經變化音才能構成。",
+  "explanationEn": "In a major key the quality of each diatonic triad follows from the scale's pattern of tones and semitones, and the result is fixed: I, IV and V are major; ii, iii and vi are minor; and vii is diminished. The triads on the second, third and sixth degrees are therefore minor — the source of the softer, darker colours available within a major key, as when vi becomes the goal of an interrupted cadence. The second and third options contradict that fixed pattern, and an augmented triad is not native to any degree of the natural major scale and requires an altered note."
+ },
+ {
+  "id": "floor2_mus_hf_07",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "hard",
+  "question": "一段音樂由 C 大調轉入 G 大調。這兩個調的關係是甚麼？",
+  "questionEn": "A passage modulates from C major to G major. How are the two keys related?",
+  "options": [
+   "G 大調是 C 大調的屬調，兩者的調號只差一個升號",
+   "G 大調是 C 大調的關係小調，兩者共用完全相同的調號",
+   "G 大調是 C 大調的同名調，兩者的主音完全相同",
+   "G 大調是 C 大調的下屬調，兩者的調號只差一個降號"
+  ],
+  "optionsEn": [
+   "G major is the dominant key of C major, and their key signatures differ by one sharp",
+   "G major is the relative minor of C major, and the two share an identical key signature",
+   "G major is the parallel key of C major, sharing the same tonic",
+   "G major is the subdominant key of C major, and their signatures differ by one flat"
+  ],
+  "correctIndex": 0,
+  "explanation": "G 是 C 上方的完全五度，因此 G 大調是 C 大調的屬調；在五度圈上相鄰一格，調號由零個升號變成一個升號（F♯）。轉入屬調是古典時期最常見的轉調方向，奏鳴曲式呈示部第二主題往往就在屬調上。第二項不成立 —— C 大調的關係小調是 A 小調（同為零升零降），而且關係調必為一大一小；第三項的同名調指主音相同（如 C 大調與 C 小調），G 與 C 主音不同；第四項方向倒轉，C 大調的下屬調是 F 大調（一個降號）。",
+  "explanationEn": "G lies a perfect fifth above C, so G major is the dominant key of C major; adjacent on the circle of fifths, its signature moves from no sharps to one sharp, F sharp. Modulation to the dominant is the commonest direction in the Classical period, and the second subject of a sonata-form exposition typically appears in it. The second option fails because the relative minor of C major is A minor, with the same signature, and relative keys are always one major and one minor; the third refers to parallel keys sharing a tonic, such as C major and C minor, whereas G and C have different tonics; and the fourth reverses the direction, since the subdominant of C major is F major with one flat."
+ },
+ {
+  "id": "floor2_mus_hf_08",
+  "type": "mc",
+  "subject": "music",
+  "topic": "和聲・和弦與曲式",
+  "topicId": "mus_harmony_form",
+  "topicZh": "和聲・和弦與曲式",
+  "topicEn": "Harmony — chords & form",
+  "difficulty": "intermediate",
+  "question": "在樂曲中使用「持續低音」（pedal point）的常見效果是甚麼？",
+  "questionEn": "What is the usual effect of a pedal point in a piece of music?",
+  "options": [
+   "低音長時間維持同一個音，上方和聲變化因而產生張力與期待",
+   "低音不斷快速跳動，因而令樂曲的節奏感顯著加強",
+   "低音完全消失一段時間，因而令織體變得輕盈通透",
+   "低音與旋律始終保持同度進行，因而令音響更為厚重"
+  ],
+  "optionsEn": [
+   "a single bass note is sustained while the harmony above it changes, creating tension and expectation",
+   "the bass leaps rapidly and continuously, greatly strengthening the rhythmic drive",
+   "the bass drops out entirely for a time, making the texture light and transparent",
+   "the bass doubles the melody in unison throughout, thickening the sound"
+  ],
+  "correctIndex": 0,
+  "explanation": "持續低音是低聲部持續維持同一個音（最常用主音或屬音），而上方各聲部的和聲繼續變化。由於上方和聲有時與這個持續音不協和，張力逐步累積，聽者會期待它最終解決 —— 因此屬持續音常見於樂段或全曲結束之前，用以蓄勢；主持續音則常用於確立調性中心。其餘三項所描述的低音行為（快速跳動、完全消失、與旋律同度）都不是持續低音，也不會產生上述的張力累積效果。",
+  "explanationEn": "A pedal point sustains one note in the bass — most often the tonic or the dominant — while the harmony above continues to change. Because the upper harmonies are at times dissonant against the held note, tension accumulates and the listener anticipates its eventual resolution, which is why a dominant pedal so often precedes the end of a section or a whole work, building expectation, while a tonic pedal helps establish the key centre. The bass behaviours described in the other options — rapid leaping, dropping out, doubling the melody — are not pedal points and produce none of that accumulating tension."
+ }
+]
