@@ -208,6 +208,31 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "hist_p2_36": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "history-p2-essays" },
   "hist_p2_37": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "history-p2-essays" },
   "hist_p2_38": { reviewer: "brian", reviewedAt: "2026-08-27", batch: "history-p2-essays" },
+  "hm_floor_01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_04": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_05": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_06": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_07": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_08": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_09": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_10": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_11": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_12": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_13": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_14": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_15": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_16": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_17": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_18": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_19": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_20": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_21": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_22": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_23": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_24": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
+  "hm_floor_25": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "hmsc-floor" },
   "ict_floor_01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "ict-floor" },
   "ict_floor_02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "ict-floor" },
   "ict_floor_03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "ict-floor" },
@@ -427,6 +452,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "english-idioms-batch", subject: "english", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
   { batch: "history-floor-batch1", subject: "history", reviewer: "brian", reviewedAt: "2026-08-28", approved: 43 },
   { batch: "history-p2-essays", subject: "history", reviewer: "brian", reviewedAt: "2026-08-27", approved: 38 },
+  { batch: "hmsc-floor", subject: "health-management", reviewer: "brian", reviewedAt: "2026-08-28", approved: 25 },
   { batch: "ict-floor", subject: "ict", reviewer: "brian", reviewedAt: "2026-08-28", approved: 25 },
   { batch: "math-floor-batch1", subject: "math", reviewer: "brian", reviewedAt: "2026-08-28", approved: 43 },
   { batch: "math-long-batch-1", subject: "math", reviewer: "brian", reviewedAt: "2026-08-27", approved: 10 },
@@ -434,7 +460,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 384
+export const REVIEWED_COUNT = 409
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>

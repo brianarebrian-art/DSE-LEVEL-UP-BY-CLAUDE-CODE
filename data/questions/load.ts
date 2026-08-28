@@ -109,7 +109,12 @@ const loaders: Record<string, Loader> = {
   },
   'chinese-history': async () => (await import('./chinese-history')).chineseHistoryQuestions,
   ths: async () => (await import('./ths')).thsQuestions,
-  'health-management': async () => (await import('./health-management')).healthManagementQuestions,
+  'health-management': async () => {
+    const [base, floor1] = await Promise.all([
+      import('./health-management'), import('./health-management-floor-batch1'),
+    ])
+    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions]
+  },
   'design-tech': async () => (await import('./design-tech')).designTechQuestions,
   music: async () => (await import('./music')).musicQuestions,
   pe: async () => (await import('./pe')).peQuestions,

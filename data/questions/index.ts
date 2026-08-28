@@ -48,6 +48,7 @@ import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { thsQuestions, thsTopics } from './ths'
 import { healthManagementQuestions, healthManagementTopics } from './health-management'
+import { healthManagementFloorBatch1Questions } from './health-management-floor-batch1'
 import { designTechQuestions, designTechTopics } from './design-tech'
 import { musicQuestions, musicTopics } from './music'
 import { peQuestions, peTopics } from './pe'
@@ -120,7 +121,7 @@ const banks: Record<string, SubjectBank> = {
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },
   ths: { questions: thsQuestions, topics: thsTopics },
-  'health-management': { questions: healthManagementQuestions, topics: healthManagementTopics },
+  'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions], topics: healthManagementTopics },
   'design-tech': { questions: designTechQuestions, topics: designTechTopics },
   music: { questions: musicQuestions, topics: musicTopics },
   pe: { questions: peQuestions, topics: peTopics },
