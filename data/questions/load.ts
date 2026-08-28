@@ -58,7 +58,10 @@ const loaders: Record<string, Loader> = {
     const [base, reviewed] = await Promise.all([import('./english'), import('./english-reviewed')])
     return [...base.englishQuestions, ...reviewed.englishReviewedQuestions]
   },
-  ict: async () => (await import('./ict')).ictQuestions,
+  ict: async () => {
+    const [base, floor1] = await Promise.all([import('./ict'), import('./ict-floor-batch1')])
+    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions]
+  },
   chinese: async () => {
     // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
     // 多個批次必須以 `--out` 分檔，否則後一批會覆蓋前一批（2026-08-07 實際發生過）。
