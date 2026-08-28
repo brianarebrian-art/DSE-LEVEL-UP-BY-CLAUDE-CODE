@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "source": "hmsc-floor.json",
+    "subject": "health-management",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "hm_floor_01": "pending",
+    "hm_floor_02": "pending",
+    "hm_floor_03": "pending",
+    "hm_floor_04": "pending",
+    "hm_floor_05": "pending",
+    "hm_floor_06": "pending",
+    "hm_floor_07": "pending",
+    "hm_floor_08": "pending",
+    "hm_floor_09": "pending",
+    "hm_floor_10": "pending",
+    "hm_floor_11": "pending",
+    "hm_floor_12": "pending",
+    "hm_floor_13": "pending",
+    "hm_floor_14": "pending",
+    "hm_floor_15": "pending",
+    "hm_floor_16": "pending",
+    "hm_floor_17": "pending",
+    "hm_floor_18": "pending",
+    "hm_floor_19": "pending",
+    "hm_floor_20": "pending",
+    "hm_floor_21": "pending",
+    "hm_floor_22": "pending",
+    "hm_floor_23": "pending",
+    "hm_floor_24": "pending",
+    "hm_floor_25": "pending"
+  }
+}
