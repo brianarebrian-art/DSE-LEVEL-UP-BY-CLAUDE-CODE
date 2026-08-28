@@ -16,11 +16,20 @@ const T = {
   depreciation: { id: 'depreciation', zh: '折舊', en: 'Depreciation' },
   costing: { id: 'costing', zh: '成本與定價', en: 'Costing & Pricing' },
   interest: { id: 'interest', zh: '利息', en: 'Interest' },
+  // ── 2026-08-28 平均分佈補強 ────────────────────────────────────────────
+  // 實測企會財 13 個課題：ratios 已有 53 條，而 financial_mgmt 與
+  // personal_finance 各 21 條、business_env 24 條（平均目標 77）。
+  // bafs_depreciation / bafs_ratio_analysis / bafs_costing_pricing 三個課題
+  // 有一批 22 條人手草稿正在等審批，本節不觸碰，避免與之重疊。
+  finMgmt: { id: 'financial_mgmt', zh: '財務管理', en: 'Financial Management' },
+  personalFin: { id: 'personal_finance', zh: '個人理財', en: 'Personal Finance' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
   acct: { id: 'accounting', zh: '會計', en: 'Accounting', emoji: '📒' },
   finance: { id: 'finance', zh: '財務', en: 'Finance', emoji: '💰' },
+  quant: { id: 'quantitative_analysis', zh: '計算分析', en: 'Quantitative Analysis', emoji: '🧮' },
+  concepts: { id: 'concepts', zh: '概念理解', en: 'Concepts', emoji: '📘' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('bafs')
@@ -146,6 +155,67 @@ for (const gp of [100, 150, 200, 250]) {
       [`淨利 = ${sales} − ${cogs} − ${exp} = ${np} 元；淨利率 = ${np}/${sales} × 100% = ${margin}%。陷阱：${round(((sales - cogs) / sales) * 100, 1)}% 是毛利率（漏減費用）。`,
        `Net margin = (sales−COGS−expenses)/sales × 100% = ${margin}%. Trap: ${round(((sales - cogs) / sales) * 100, 1)}% is the gross margin.`])
   })
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 平均分佈補強 —— 兩個最薄課題（2026-08-28）
+// 只補 financial_mgmt 與 personal_finance；bafs_depreciation /
+// bafs_ratio_analysis / bafs_costing_pricing 三者有人手草稿在審，不重疊。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// FM1 — 營運資金 = 流動資產 − 流動負債
+for (const [ca, cl] of [[600000, 240000], [500000, 250000], [800000, 320000], [450000, 180000], [720000, 400000], [900000, 500000], [360000, 150000], [640000, 280000]] as [number, number][]) {
+  const wc = ca - cl
+  add(`bb_fm1_${ca}_${cl}`, T.finMgmt, FW.quant, 'easy',
+    [`某公司流動資產 \\$${ca.toLocaleString('en-US')}，流動負債 \\$${cl.toLocaleString('en-US')}。其營運資金是多少？`,
+     `A company has current assets of \\$${ca.toLocaleString('en-US')} and current liabilities of \\$${cl.toLocaleString('en-US')}. What is its working capital?`],
+    [money(wc.toLocaleString('en-US')), money((ca + cl).toLocaleString('en-US')), money(round(ca / cl, 2)), money(cl.toLocaleString('en-US'))],
+    [`營運資金 $=$ 流動資產 $-$ 流動負債 $= ${ca.toLocaleString('en-US')} - ${cl.toLocaleString('en-US')} = ${wc.toLocaleString('en-US')}$ 元。它是一個【金額】，量度企業償還短期債務之後尚餘多少短期資源。陷阱：${(ca + cl).toLocaleString('en-US')} 元用了加法；${round(ca / cl, 2)} 是流動比率——那是一個【比率】而非金額，兩者不可混用；${cl.toLocaleString('en-US')} 元只抄了流動負債。`,
+     `Working capital is current assets less current liabilities: ${ca.toLocaleString('en-US')} − ${cl.toLocaleString('en-US')} = ${wc.toLocaleString('en-US')}. It is an amount, measuring the short-term resources left after short-term debts are met. Traps: ${(ca + cl).toLocaleString('en-US')} adds; ${round(ca / cl, 2)} is the current ratio, which is a ratio rather than an amount and must not be confused with it; ${cl.toLocaleString('en-US')} merely copies the liabilities.`])
+}
+
+// FM2 — 存貨周轉率 = 銷貨成本 ÷ 平均存貨
+for (const [cogs, inv] of [[600000, 100000], [800000, 200000], [450000, 90000], [960000, 120000], [720000, 180000], [540000, 135000], [1200000, 300000], [640000, 160000]] as [number, number][]) {
+  const turn = cogs / inv
+  if (!Number.isInteger(turn)) continue
+  add(`bb_fm2_${cogs}_${inv}`, T.finMgmt, FW.quant, 'medium',
+    [`某商號的銷貨成本為 \\$${cogs.toLocaleString('en-US')}，平均存貨為 \\$${inv.toLocaleString('en-US')}。其存貨周轉率是多少？`,
+     `A business has cost of goods sold of \\$${cogs.toLocaleString('en-US')} and average inventory of \\$${inv.toLocaleString('en-US')}. What is its inventory turnover?`],
+    [qty(turn, '次', 'times'), qty(round(inv / cogs, 3), '次', 'times'), qty(round(365 / turn, 1), '次', 'times'), qty((cogs - inv).toLocaleString('en-US'), '次', 'times')],
+    [`存貨周轉率 $=$ 銷貨成本 $\\div$ 平均存貨 $= ${cogs.toLocaleString('en-US')} \\div ${inv.toLocaleString('en-US')} = ${turn}$ 次，表示一年內存貨平均售出並補充 ${turn} 次。周轉率愈高，一般代表存貨管理愈有效率、資金積壓愈少。陷阱：${round(inv / cogs, 3)} 次上下倒轉；${round(365 / turn, 1)} 是存貨周轉【天數】而非次數，兩者互為倒數關係；最後一項用了相減。`,
+     `Inventory turnover is cost of goods sold divided by average inventory: ${cogs.toLocaleString('en-US')} ÷ ${inv.toLocaleString('en-US')} = ${turn} times, meaning inventory is sold and replaced ${turn} times a year. A higher figure generally indicates more efficient inventory management and less capital tied up. Traps: ${round(inv / cogs, 3)} inverts the ratio; ${round(365 / turn, 1)} is the inventory turnover period in days rather than a number of times, the two being reciprocals; the last option subtracts.`])
+}
+
+// PF1 — 單利 I = P × r × t
+for (const P of [10000, 20000, 50000, 80000]) {
+  for (const r of [0.03, 0.05, 0.06]) {
+    for (const t of [2, 3, 5]) {
+      const I = P * r * t
+      if (!Number.isInteger(I)) continue
+      add(`bb_pf1_${P}_${String(r).replace('.', '')}_${t}`, T.personalFin, FW.concepts, 'easy',
+        [`把 \\$${P.toLocaleString('en-US')} 以年利率 ${r * 100}% 的【單利】存款 ${t} 年。所得利息是多少？`,
+         `\\$${P.toLocaleString('en-US')} is deposited at ${r * 100}% simple interest per year for ${t} years. How much interest is earned?`],
+        [money(I.toLocaleString('en-US')), money((P * r).toLocaleString('en-US')), money((P + I).toLocaleString('en-US')), money(round(P * ((1 + r) ** t - 1), 2))],
+        [`單利 $= P \\times r \\times t = ${P.toLocaleString('en-US')} \\times ${r} \\times ${t} = ${I.toLocaleString('en-US')}$ 元。單利每年只按【本金】計息，利息不會再生利息。陷阱：${(P * r).toLocaleString('en-US')} 元只計了一年；${(P + I).toLocaleString('en-US')} 元是本利和而非利息；最後一項用了複利公式——複利所得較多，因為利息會滾入本金再生息，兩者的分別隨年期拉長而擴大。`,
+         `Simple interest is $P \\times r \\times t = ${P.toLocaleString('en-US')} \\times ${r} \\times ${t} = ${I.toLocaleString('en-US')}$. Simple interest is charged on the principal alone each year, so interest never earns interest. Traps: ${(P * r).toLocaleString('en-US')} covers one year only; ${(P + I).toLocaleString('en-US')} is the total of principal and interest rather than the interest; the last option applies the compound formula, which gives more because interest is added to the principal and itself earns interest, the gap widening with time.`])
+    }
+  }
+}
+
+// PF2 — 複利本利和 A = P(1 + r)ᵗ
+for (const P of [10000, 20000, 50000]) {
+  for (const r of [0.05, 0.1, 0.2]) {
+    for (const t of [2, 3]) {
+      const A = P * (1 + r) ** t
+      if (!Number.isInteger(A)) continue
+      add(`bb_pf2_${P}_${String(r).replace('.', '')}_${t}`, T.personalFin, FW.concepts, 'medium',
+        [`把 \\$${P.toLocaleString('en-US')} 以年利率 ${r * 100}% 的【複利】存款 ${t} 年（每年結息一次）。到期本利和是多少？`,
+         `\\$${P.toLocaleString('en-US')} is deposited at ${r * 100}% compound interest per year for ${t} years, compounded annually. What is the amount at maturity?`],
+        [money(A.toLocaleString('en-US')), money((P * (1 + r * t)).toLocaleString('en-US')), money((A - P).toLocaleString('en-US')), money((P * r * t).toLocaleString('en-US'))],
+        [`複利本利和 $= P(1 + r)^{t} = ${P.toLocaleString('en-US')} \\times ${1 + r}^{${t}} = ${A.toLocaleString('en-US')}$ 元。陷阱：${(P * (1 + r * t)).toLocaleString('en-US')} 元用了單利公式；${(A - P).toLocaleString('en-US')} 元是【利息】而非本利和，題目問的是到期總額；${(P * r * t).toLocaleString('en-US')} 元是單利的利息。留意公式中的指數 ${t} 正是複利與單利的分別所在：複利是連乘，單利是連加。`,
+         `The compound amount is $P(1 + r)^{t} = ${P.toLocaleString('en-US')} \\times ${1 + r}^{${t}} = ${A.toLocaleString('en-US')}$. Traps: ${(P * (1 + r * t)).toLocaleString('en-US')} uses the simple interest formula; ${(A - P).toLocaleString('en-US')} is the interest rather than the amount, and the question asks for the total at maturity; ${(P * r * t).toLocaleString('en-US')} is the simple interest. The exponent ${t} is exactly where compound and simple interest part company: compounding multiplies where simple interest adds.`])
+    }
+  }
+}
 
 export const bafsBankQuestions: Question[] = bank
 
