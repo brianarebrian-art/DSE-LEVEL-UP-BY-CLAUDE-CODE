@@ -369,6 +369,172 @@ for (const nn of [5, 6, 7, 8, 9, 10, 12]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第三批母模板 —— 平均分佈補強（2026-08-28）
+// ---------------------------------------------------------------------------
+// 補強前實測 M1 十二個課題：微分 142 條，而概率分佈（高階）18 條、
+// 二項式定理 32 條、積分 35 條、統計推斷 36 條（平均目標 83），不均比 7.9×。
+// 依指示先補題數最少者；微分已遠高於平均，本節不動。
+//
+// 二項式定理與積分兩族刻意避開 m2-bank 已有的題幹形式（(1+x)^n 的 x^r 係數、
+// ∫₀^a xⁿ dx、∫₁^b (px+q) dx），改用項數、係數總和、對數與指數積分等切入點，
+// 免得兩科出現題幹完全相同的題目（全站撞題閘 global-dedup.test.mts 會攔）。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ── 概率分佈（高階）────────────────────────────────────────────────────────
+
+// PDH1 — 離散隨機變數的期望：E(X) = Σ x·P(x)
+for (const [p1, p2, p3] of [[1, 2, 7], [2, 3, 5], [1, 4, 5], [3, 3, 4], [2, 5, 3], [1, 1, 8],
+  [4, 4, 2], [2, 2, 6], [3, 5, 2], [1, 6, 3], [5, 3, 2], [2, 6, 2]] as [number, number, number][]) {
+  const num = 1 * p1 + 2 * p2 + 3 * p3
+  add(`m1c_pdh1_${p1}${p2}${p3}`, T.distHigh, FW.stats, 'medium',
+    [`隨機變數 $X$ 只取值 1、2、3，其概率分別為 $${frac(p1, 10)}$、$${frac(p2, 10)}$、$${frac(p3, 10)}$。求 $E(X)$。`,
+     `A random variable $X$ takes the values 1, 2 and 3 with probabilities $${frac(p1, 10)}$, $${frac(p2, 10)}$ and $${frac(p3, 10)}$ respectively. Find $E(X)$.`],
+    [n(`$${round(num / 10, 2)}$`), n('$2$'), n(`$${round((p1 + p2 + p3) / 10, 2)}$`), n(`$${round((1 + 2 + 3) / 3, 2)}$`)],
+    [`$E(X) = \\sum x P(x) = 1(${frac(p1, 10)}) + 2(${frac(p2, 10)}) + 3(${frac(p3, 10)}) = ${frac(num, 10)} = ${round(num / 10, 2)}$。期望值是以概率為權重的平均，並非各取值的簡單平均，亦不必等於任何一個可能取值。陷阱：$2$ 取了三個取值的中位數；$${round((p1 + p2 + p3) / 10, 2)}$ 只把概率相加（其和必為 1）；$${round((1 + 2 + 3) / 3, 2)}$ 是三個取值的簡單平均，忽略了概率。`,
+     `$E(X) = \\sum x P(x) = 1(${frac(p1, 10)}) + 2(${frac(p2, 10)}) + 3(${frac(p3, 10)}) = ${frac(num, 10)} = ${round(num / 10, 2)}$. The expectation is a probability-weighted mean, not a simple average of the values, and need not equal any attainable value. Traps: $2$ takes the median of the three values; $${round((p1 + p2 + p3) / 10, 2)}$ merely sums the probabilities, which is always 1; $${round((1 + 2 + 3) / 3, 2)}$ is the unweighted mean and ignores the probabilities.`])
+}
+
+// PDH2 — 方差：Var(X) = E(X²) − [E(X)]²
+for (const ex of [2, 3, 4, 5, 6]) {
+  for (const varv of [1, 2, 4, 6, 9]) {
+    const ex2 = varv + ex * ex
+    add(`m1c_pdh2_${ex}_${varv}`, T.distHigh, FW.stats, 'hard',
+      [`已知隨機變數 $X$ 的 $E(X) = ${ex}$、$E(X^2) = ${ex2}$。求 $\\operatorname{Var}(X)$。`,
+       `A random variable $X$ satisfies $E(X) = ${ex}$ and $E(X^2) = ${ex2}$. Find $\\operatorname{Var}(X)$.`],
+      [n(`$${varv}$`), n(`$${ex2 - ex}$`), n(`$${ex2}$`), n(`$${ex * ex}$`)],
+      [`$\\operatorname{Var}(X) = E(X^2) - [E(X)]^2 = ${ex2} - ${ex}^2 = ${ex2} - ${ex * ex} = ${varv}$。要減的是【期望的平方】而非期望本身，這是本公式最常見的失分位；方差必為非負，可用作即時驗算。陷阱：$${ex2 - ex}$ 減了 $E(X)$ 而非 $[E(X)]^2$；$${ex2}$ 忘記相減；$${ex * ex}$ 只計了 $[E(X)]^2$。`,
+       `$\\operatorname{Var}(X) = E(X^2) - [E(X)]^2 = ${ex2} - ${ex}^2 = ${ex2} - ${ex * ex} = ${varv}$. What is subtracted is the SQUARE of the expectation, not the expectation itself, which is where this formula is most often mishandled; a variance is never negative, which gives an immediate check. Traps: $${ex2 - ex}$ subtracts $E(X)$ instead of $[E(X)]^2$; $${ex2}$ omits the subtraction; $${ex * ex}$ gives only $[E(X)]^2$.`])
+  }
+}
+
+// PDH3 — 幾何分佈：首次成功的期望試驗次數 E(X) = 1/p
+for (const k of [2, 3, 4, 5, 6, 8, 10, 12, 20]) {
+  add(`m1c_pdh3_${k}`, T.distHigh, FW.stats, 'medium',
+    [`重複進行獨立試驗直至首次成功為止，每次成功的概率為 $${frac(1, k)}$。所需試驗次數的期望值是多少？`,
+     `Independent trials are repeated until the first success, each trial succeeding with probability $${frac(1, k)}$. What is the expected number of trials required?`],
+    [n(`$${k}$`), n(`$${frac(1, k)}$`), n(`$${k - 1}$`), n(`$${k * k}$`)],
+    [`幾何分佈的期望為 $E(X) = \\dfrac{1}{p}$。代入 $p = ${frac(1, k)}$ 得 $E(X) = ${k}$ 次。直觀理解：若每 ${k} 次試驗平均有一次成功，平均便要等 ${k} 次。陷阱：$${frac(1, k)}$ 直接抄了概率本身；$${k - 1}$ 是首次成功【之前】的失敗次數期望；$${k * k}$ 誤把倒數平方。`,
+     `For a geometric distribution $E(X) = \\frac{1}{p}$. With $p = ${frac(1, k)}$ this gives $E(X) = ${k}$ trials. Intuitively, if on average one trial in ${k} succeeds, the wait is ${k} trials. Traps: $${frac(1, k)}$ copies the probability itself; $${k - 1}$ is the expected number of FAILURES before the first success; $${k * k}$ squares the reciprocal.`])
+}
+
+// ── 二項式定理 ────────────────────────────────────────────────────────────
+
+// BT1 — 展開式的項數 = n + 1
+for (let nn = 3; nn <= 20; nn++) {
+  add(`m1c_bt1_${nn}`, T.binomialThm, FW.decompose, 'easy',
+    [`$(a + b)^{${nn}}$ 的展開式共有多少項（合併同類項後）？`,
+     `How many terms are there in the expansion of $(a + b)^{${nn}}$ after collecting like terms?`],
+    [n(`$${nn + 1}$`), n(`$${nn}$`), n(`$${2 * nn}$`), n(`$${2 ** nn}$`)],
+    [`$(a+b)^{n}$ 的一般項為 $\\binom{n}{r}a^{n-r}b^{r}$，其中 $r$ 由 0 數到 $n$，共 $n + 1$ 個值，故有 ${nn + 1} 項。陷阱：$${nn}$ 漏了 $r = 0$ 那一項（由 0 起數是本題的關鍵）；$${2 * nn}$ 把指數乘以 2；$${2 ** nn}$ 是所有二項式係數之【和】而非項數。`,
+     `The general term of $(a+b)^{n}$ is $\\binom{n}{r}a^{n-r}b^{r}$ with $r$ running from 0 to $n$, giving $n + 1$ values and hence ${nn + 1} terms. Traps: $${nn}$ omits the $r = 0$ term, and counting from zero is the whole point here; $${2 * nn}$ doubles the exponent; $${2 ** nn}$ is the SUM of the binomial coefficients, not the number of terms.`])
+}
+
+// BT2 — 二項式係數之和 = 2^n（以 x = 1 代入）
+for (let nn = 3; nn <= 14; nn++) {
+  add(`m1c_bt2_${nn}`, T.binomialThm, FW.decompose, 'medium',
+    [`求 $\\displaystyle\\sum_{r=0}^{${nn}} \\binom{${nn}}{r}$，即 $(1 + x)^{${nn}}$ 展開式中所有係數之和。`,
+     `Evaluate $\\displaystyle\\sum_{r=0}^{${nn}} \\binom{${nn}}{r}$, the sum of all coefficients in the expansion of $(1 + x)^{${nn}}$.`],
+    [n(`$${2 ** nn}$`), n(`$${nn + 1}$`), n(`$${2 * nn}$`), n(`$${nCr(nn, Math.floor(nn / 2))}$`)],
+    [`把 $x = 1$ 代入 $(1 + x)^{${nn}}$，左邊成為 $2^{${nn}} = ${2 ** nn}$，右邊則是所有係數之和，故兩者相等。以代入特定數值求係數和，是二項式定理最常用的一招。陷阱：$${nn + 1}$ 是項數而非係數和；$${2 * nn}$ 把底數與指數的角色調轉；$${nCr(nn, Math.floor(nn / 2))}$ 只是其中最大的一個係數。`,
+     `Substituting $x = 1$ into $(1 + x)^{${nn}}$ makes the left side $2^{${nn}} = ${2 ** nn}$ while the right side becomes the sum of all coefficients, so the two are equal. Substituting a convenient value is the standard technique for coefficient sums. Traps: $${nn + 1}$ is the number of terms; $${2 * nn}$ interchanges base and exponent; $${nCr(nn, Math.floor(nn / 2))}$ is merely the largest single coefficient.`])
+}
+
+// BT3 — 楊輝三角的遞推關係 C(n,r) = C(n−1,r−1) + C(n−1,r)
+for (let nn = 5; nn <= 12; nn++) {
+  for (let r = 2; r <= 4; r++) {
+    if (r >= nn) continue
+    add(`m1c_bt3_${nn}_${r}`, T.binomialThm, FW.decompose, 'hard',
+      [`已知 $\\binom{${nn - 1}}{${r - 1}} = ${nCr(nn - 1, r - 1)}$、$\\binom{${nn - 1}}{${r}} = ${nCr(nn - 1, r)}$。利用楊輝三角的遞推關係求 $\\binom{${nn}}{${r}}$。`,
+       `Given $\\binom{${nn - 1}}{${r - 1}} = ${nCr(nn - 1, r - 1)}$ and $\\binom{${nn - 1}}{${r}} = ${nCr(nn - 1, r)}$, use Pascal's rule to find $\\binom{${nn}}{${r}}$.`],
+      [n(`$${nCr(nn, r)}$`), n(`$${nCr(nn - 1, r - 1) * nCr(nn - 1, r)}$`), n(`$${Math.abs(nCr(nn - 1, r) - nCr(nn - 1, r - 1))}$`), n(`$${nCr(nn - 1, r)}$`)],
+      [`楊輝三角的遞推關係為 $\\binom{n}{r} = \\binom{n-1}{r-1} + \\binom{n-1}{r}$，即三角形中每一項等於其上方兩項之和。代入得 $${nCr(nn - 1, r - 1)} + ${nCr(nn - 1, r)} = ${nCr(nn, r)}$。陷阱：$${nCr(nn - 1, r - 1) * nCr(nn - 1, r)}$ 把兩項相乘；$${Math.abs(nCr(nn - 1, r) - nCr(nn - 1, r - 1))}$ 相減；$${nCr(nn - 1, r)}$ 只抄了其中一項。`,
+       `Pascal's rule states $\\binom{n}{r} = \\binom{n-1}{r-1} + \\binom{n-1}{r}$: each entry of the triangle is the sum of the two above it. Hence $${nCr(nn - 1, r - 1)} + ${nCr(nn - 1, r)} = ${nCr(nn, r)}$. Traps: $${nCr(nn - 1, r - 1) * nCr(nn - 1, r)}$ multiplies the two; $${Math.abs(nCr(nn - 1, r) - nCr(nn - 1, r - 1))}$ subtracts; $${nCr(nn - 1, r)}$ copies one of them.`])
+  }
+}
+
+// ── 積分 ──────────────────────────────────────────────────────────────────
+
+// IN1 — 對數積分：∫₁^b (a/x) dx = a ln b
+for (const a of [1, 2, 3, 4, 5]) {
+  for (const b of [2, 3, 5, 7, 10]) {
+    add(`m1c_in1_${a}_${b}`, T.integ, FW.calc, 'medium',
+      [`求 $\\displaystyle\\int_{1}^{${b}} \\frac{${a}}{x}\\,dx$。`,
+       `Evaluate $\\displaystyle\\int_{1}^{${b}} \\frac{${a}}{x}\\,dx$.`],
+      [n(`$${a === 1 ? '' : a}\\ln ${b}$`), n(`$${a}\\ln ${b} - ${a}$`), n(`$${frac(a, b)}$`), n(`$${a === 1 ? '' : a}\\ln ${b + 1}$`)],
+      [`$\\dfrac{1}{x}$ 的原函數是 $\\ln|x|$（並非 $\\dfrac{x^{0}}{0}$ —— 冪法則在指數為 $-1$ 時失效，這正是本題要考的例外）。故 $\\int_{1}^{${b}} \\dfrac{${a}}{x}dx = ${a === 1 ? '' : a}\\left[\\ln x\\right]_{1}^{${b}} = ${a === 1 ? '' : a}(\\ln ${b} - \\ln 1) = ${a === 1 ? '' : a}\\ln ${b}$。陷阱：$${a}\\ln ${b} - ${a}$ 誤以為 $\\ln 1 = 1$；$${frac(a, b)}$ 把被積函數當作常數代入；$${a === 1 ? '' : a}\\ln ${b + 1}$ 上限抄錯。`,
+       `The antiderivative of $\\frac{1}{x}$ is $\\ln|x|$, not $\\frac{x^{0}}{0}$ — the power rule fails at exponent $-1$, and that exception is exactly what this item tests. So $\\int_{1}^{${b}} \\frac{${a}}{x}dx = ${a === 1 ? '' : a}\\left[\\ln x\\right]_{1}^{${b}} = ${a === 1 ? '' : a}(\\ln ${b} - \\ln 1) = ${a === 1 ? '' : a}\\ln ${b}$. Traps: $${a}\\ln ${b} - ${a}$ assumes $\\ln 1 = 1$; $${frac(a, b)}$ substitutes into the integrand as if it were constant; $${a === 1 ? '' : a}\\ln ${b + 1}$ misreads the upper limit.`])
+  }
+}
+
+// IN2 — 指數積分：∫₀^t k·e^{kx} dx = e^{kt} − 1
+for (const k of [1, 2, 3, 4]) {
+  for (const t of [1, 2, 3]) {
+    add(`m1c_in2_${k}_${t}`, T.integ, FW.calc, 'hard',
+      [`求 $\\displaystyle\\int_{0}^{${t}} ${k === 1 ? '' : k}e^{${k === 1 ? '' : k}x}\\,dx$。`,
+       `Evaluate $\\displaystyle\\int_{0}^{${t}} ${k === 1 ? '' : k}e^{${k === 1 ? '' : k}x}\\,dx$.`],
+      [n(`$e^{${k * t}} - 1$`), n(`$e^{${k * t}}$`), n(`$${k}e^{${k * t}} - ${k}$`), n(`$${frac(1, k)}\\left(e^{${k * t}} - 1\\right)$`)],
+      [`$e^{${k === 1 ? '' : k}x}$ 的原函數為 $${frac(1, k)}e^{${k === 1 ? '' : k}x}$，乘上被積函數前的係數 $${k}$ 後恰好抵銷，得原函數 $e^{${k === 1 ? '' : k}x}$。代入上下限：$e^{${k * t}} - e^{0} = e^{${k * t}} - 1$。陷阱：$e^{${k * t}}$ 忘記減去下限的 $e^{0} = 1$；$${k}e^{${k * t}} - ${k}$ 漏了連鎖法則帶來的 $\\dfrac{1}{${k}}$；$${frac(1, k)}\\left(e^{${k * t}} - 1\\right)$ 把係數 $${k}$ 多除了一次。`,
+       `The antiderivative of $e^{${k === 1 ? '' : k}x}$ is $${frac(1, k)}e^{${k === 1 ? '' : k}x}$, and the leading coefficient $${k}$ cancels it exactly, leaving $e^{${k === 1 ? '' : k}x}$. Evaluating the limits gives $e^{${k * t}} - e^{0} = e^{${k * t}} - 1$. Traps: $e^{${k * t}}$ omits $e^{0} = 1$ at the lower limit; $${k}e^{${k * t}} - ${k}$ drops the $\\frac{1}{${k}}$ from the chain rule; $${frac(1, k)}\\left(e^{${k * t}} - 1\\right)$ divides by $${k}$ once too often.`])
+  }
+}
+
+// IN3 — 拋物線與 x 軸圍成的面積：∫₀^c x(c − x) dx = c³/6
+for (const c of [6, 12, 18, 24, 30, 36, 42, 48]) {
+  const area = (c ** 3) / 6
+  add(`m1c_in3_${c}`, T.integ, FW.modelling, 'hard',
+    [`求曲線 $y = x(${c} - x)$ 與 $x$ 軸所圍成的面積。`,
+     `Find the area enclosed between the curve $y = x(${c} - x)$ and the $x$-axis.`],
+    [n(`$${area}$`), n(`$${(c ** 3) / 2}$`), n(`$${(c ** 3) / 3}$`), n(`$${c * c}$`)],
+    [`先求交點：$x(${c} - x) = 0$ 得 $x = 0$ 及 $x = ${c}$，兩者就是積分的上下限（不先求交點是本類題最常見的失分位）。$\\int_{0}^{${c}} (${c}x - x^2)\\,dx = \\left[\\dfrac{${c}x^2}{2} - \\dfrac{x^3}{3}\\right]_{0}^{${c}} = ${(c ** 3) / 2} - ${(c ** 3) / 3} = ${area}$。陷阱：$${(c ** 3) / 2}$ 與 $${(c ** 3) / 3}$ 分別只算了其中一項；$${c * c}$ 把區間長度平方當成面積。`,
+     `First find the intercepts: $x(${c} - x) = 0$ gives $x = 0$ and $x = ${c}$, which are the limits of integration — failing to find them first is where this type of item is most often lost. Then $\\int_{0}^{${c}} (${c}x - x^2)\\,dx = \\left[\\frac{${c}x^2}{2} - \\frac{x^3}{3}\\right]_{0}^{${c}} = ${(c ** 3) / 2} - ${(c ** 3) / 3} = ${area}$. Traps: $${(c ** 3) / 2}$ and $${(c ** 3) / 3}$ each keep only one of the two terms; $${c * c}$ squares the width of the interval.`])
+}
+
+// ── 統計推斷 ──────────────────────────────────────────────────────────────
+
+// SI2 — 95% 置信區間的半寬 = 1.96σ/√n
+for (const sd of [10, 15, 20, 30, 40]) {
+  for (const nn of [4, 9, 16, 25, 100]) {
+    const se = sd / Math.sqrt(nn)
+    const half = 1.96 * se
+    add(`m1c_si2_${sd}_${nn}`, T.statInf, FW.stats, 'hard',
+      [`由一個母體標準差為 ${sd} 的正態母體抽出 ${nn} 個樣本。母體平均數的 95% 置信區間半寬約為多少？（取 $z = 1.96$）`,
+       `A sample of ${nn} observations is drawn from a normal population with standard deviation ${sd}. What is the half-width of the 95% confidence interval for the population mean, taking $z = 1.96$?`],
+      [n(`$${round(half, 2)}$`), n(`$${round(1.96 * sd, 2)}$`), n(`$${round(se, 2)}$`), n(`$${round((1.96 * sd) / nn, 2)}$`)],
+      [`置信區間半寬 $= z \\times \\dfrac{\\sigma}{\\sqrt{n}} = 1.96 \\times \\dfrac{${sd}}{\\sqrt{${nn}}} = 1.96 \\times ${round(se, 2)} = ${round(half, 2)}$。分母是 $\\sqrt{n}$ 而非 $n$：樣本量增至四倍，區間才收窄一半，這說明提高精確度的代價是遞增的。陷阱：$${round(1.96 * sd, 2)}$ 漏了除以 $\\sqrt{n}$；$${round(se, 2)}$ 是標準誤本身，未乘 $z$；$${round((1.96 * sd) / nn, 2)}$ 除了 $n$ 而非 $\\sqrt{n}$。`,
+       `The half-width is $z \\times \\frac{\\sigma}{\\sqrt{n}} = 1.96 \\times \\frac{${sd}}{\\sqrt{${nn}}} = 1.96 \\times ${round(se, 2)} = ${round(half, 2)}$. The denominator is $\\sqrt{n}$, not $n$: quadrupling the sample only halves the interval, so precision gets progressively more expensive. Traps: $${round(1.96 * sd, 2)}$ omits the division by $\\sqrt{n}$; $${round(se, 2)}$ is the standard error itself without the factor $z$; $${round((1.96 * sd) / nn, 2)}$ divides by $n$ rather than $\\sqrt{n}$.`])
+  }
+}
+
+// ── 二項分佈 ──────────────────────────────────────────────────────────────
+
+// BD2 — 二項分佈的方差 Var(X) = npq
+for (const nn of [10, 20, 25, 40, 50, 100]) {
+  for (const [pn, pd] of [[1, 2], [1, 4], [1, 5], [3, 10]] as [number, number][]) {
+    const varv = (nn * pn * (pd - pn)) / (pd * pd)
+    if (!Number.isInteger(varv)) continue
+    add(`m1c_bd2_${nn}_${pn}${pd}`, T.binomialDist, FW.stats, 'medium',
+      [`設 $X \\sim B(${nn},\\ ${frac(pn, pd)})$。求 $\\operatorname{Var}(X)$。`,
+       `Let $X \\sim B(${nn},\\ ${frac(pn, pd)})$. Find $\\operatorname{Var}(X)$.`],
+      [n(`$${varv}$`), n(`$${round((nn * pn) / pd, 2)}$`), n(`$${round((nn * pn * pn) / (pd * pd), 2)}$`), n(`$${round(Math.sqrt(varv), 3)}$`)],
+      [`二項分佈的方差為 $\\operatorname{Var}(X) = npq$，其中 $q = 1 - p = ${frac(pd - pn, pd)}$。代入得 $${nn} \\times ${frac(pn, pd)} \\times ${frac(pd - pn, pd)} = ${varv}$。陷阱：$${round((nn * pn) / pd, 2)}$ 是期望 $np$；$${round((nn * pn * pn) / (pd * pd), 2)}$ 把 $q$ 誤寫成 $p$；$${round(Math.sqrt(varv), 3)}$ 是標準差而非方差。`,
+       `For a binomial distribution $\\operatorname{Var}(X) = npq$ with $q = 1 - p = ${frac(pd - pn, pd)}$, giving $${nn} \\times ${frac(pn, pd)} \\times ${frac(pd - pn, pd)} = ${varv}$. Traps: $${round((nn * pn) / pd, 2)}$ is the mean $np$; $${round((nn * pn * pn) / (pd * pd), 2)}$ writes $p$ for $q$; $${round(Math.sqrt(varv), 3)}$ is the standard deviation rather than the variance.`])
+  }
+}
+
+// BD3 — 至少一次成功的概率 P(X ≥ 1) = 1 − qⁿ
+for (const nn of [2, 3, 4, 5]) {
+  for (const pd of [2, 3, 4, 5, 6]) {
+    const q = pd - 1
+    add(`m1c_bd3_${nn}_${pd}`, T.binomialDist, FW.decompose, 'hard',
+      [`某試驗每次成功的概率為 $${frac(1, pd)}$，獨立重複 ${nn} 次。至少成功一次的概率是多少？`,
+       `A trial succeeds with probability $${frac(1, pd)}$ and is repeated independently ${nn} times. What is the probability of at least one success?`],
+      [n(`$${frac(pd ** nn - q ** nn, pd ** nn)}$`), n(`$${frac(q ** nn, pd ** nn)}$`), n(`$${frac(nn, pd)}$`), n(`$${frac(1, pd ** nn)}$`)],
+      [`「至少一次」的對立事件是「一次都無」，用補事件計算遠比逐項相加簡單：$P(X \\geq 1) = 1 - P(X = 0) = 1 - \\left(${frac(q, pd)}\\right)^{${nn}} = 1 - ${frac(q ** nn, pd ** nn)} = ${frac(pd ** nn - q ** nn, pd ** nn)}$。陷阱：$${frac(q ** nn, pd ** nn)}$ 是「一次都無」的概率，忘記用 1 減；$${frac(nn, pd)}$ 把各次的概率直接相加（概率不能這樣疊加）；$${frac(1, pd ** nn)}$ 是「每次都成功」的概率。`,
+       `The complement of "at least one" is "none at all", and using the complement is far shorter than summing term by term: $P(X \\geq 1) = 1 - P(X = 0) = 1 - \\left(${frac(q, pd)}\\right)^{${nn}} = 1 - ${frac(q ** nn, pd ** nn)} = ${frac(pd ** nn - q ** nn, pd ** nn)}$. Traps: $${frac(q ** nn, pd ** nn)}$ is the probability of no success and omits the subtraction from 1; $${frac(nn, pd)}$ adds the individual probabilities, which is not how probabilities combine; $${frac(1, pd ** nn)}$ is the probability that every trial succeeds.`])
+  }
+}
+
 export const m1BankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
