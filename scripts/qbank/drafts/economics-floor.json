@@ -1,0 +1,731 @@
+[
+  {
+    "id": "econ_floor_01",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "basic",
+    "question": "一個經濟體的產量組合正好落在生產可能線之上（線上的任何一點），這代表甚麼？",
+    "questionEn": "An economy is producing at a combination that lies exactly on its production possibility frontier. What does this mean?",
+    "options": [
+      "現有資源已被充分而有效地運用",
+      "現有資源仍有一部分閒置未用",
+      "該經濟體並不需要付出機會成本",
+      "該經濟體的產量從此無法再增加"
+    ],
+    "optionsEn": [
+      "existing resources are fully and efficiently employed",
+      "some of the existing resources are still left idle",
+      "the economy does not have to bear any opportunity cost",
+      "the economy's output can never rise beyond this level"
+    ],
+    "correctIndex": 0,
+    "explanation": "生產可能線顯示在既有資源與技術之下，兩種產品所有可達到的最大產量組合。線上的點代表資源已全部投入而且沒有浪費；線內的點代表有資源閒置或效率不足；線外的點在現階段做不到。要留意「充分運用」並不等於「沒有機會成本」——正因為資源已經用盡，要多生產一種產品就必須減產另一種，機會成本正是這條線要表達的核心訊息。至於產量能否再增加，取決於資源或技術會否改變，那是整條線移不移動的問題，並非線上某一點本身可以決定。",
+    "explanationEn": "The production possibility frontier shows every maximum combination of two goods attainable from a given stock of resources and technology. A point on the curve means resources are fully employed with no waste; a point inside means idle resources or inefficiency; a point outside is unattainable for now. Note that being fully employed is not the same as facing no opportunity cost — precisely because resources are exhausted, producing more of one good requires producing less of the other, which is the central message of the curve. Whether output can rise further depends on whether resources or technology change, which is a question about the whole curve shifting, not about any single point on it."
+  },
+  {
+    "id": "econ_floor_02",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "basic",
+    "question": "一條呈直線的生產可能線，反映兩種產品之間的機會成本有甚麼特性？",
+    "questionEn": "A production possibility frontier drawn as a straight line tells us what about the opportunity cost between the two goods?",
+    "options": [
+      "隨其中一種產品增產而遞增",
+      "保持固定，不因產量組合改變",
+      "隨其中一種產品增產而遞減",
+      "在所有產量組合下都等於零"
+    ],
+    "optionsEn": [
+      "it rises as more of one good is produced",
+      "it stays constant whatever the output mix",
+      "it falls as more of one good is produced",
+      "it equals zero at every possible output mix"
+    ],
+    "correctIndex": 1,
+    "explanation": "生產可能線的斜率就是機會成本。直線的斜率處處相同，所以無論在哪一點多生產一單位某產品，須放棄的另一種產品數量都一樣。這隱含一個假設：資源可以在兩種用途之間完全互換。現實中資源多數各有專長，把本來適合種米的土地改去建廠房，效率會愈來愈差，所以典型的生產可能線是向原點凸出的曲線，機會成本遞增。直線只是一個簡化情況，不是常態。",
+    "explanationEn": "The slope of the frontier is the opportunity cost. A straight line has the same slope everywhere, so producing one more unit of a good costs the same amount of the other good at every point. This carries an assumption: resources are perfectly transferable between the two uses. In reality resources are usually specialised — land well suited to growing rice becomes less and less productive as it is converted to factory sites — so the typical frontier is concave to the origin and opportunity cost rises. The straight line is a simplified case, not the norm."
+  },
+  {
+    "id": "econ_floor_03",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "basic",
+    "question": "位於生產可能線以外（右上方）的產量組合，代表甚麼？",
+    "questionEn": "What does a combination lying outside (to the upper right of) the production possibility frontier represent?",
+    "options": [
+      "已經達到最有效率的生產點",
+      "資源運用未達最有效的水平",
+      "以現有資源與技術無法達到",
+      "只會在完全競爭市場中出現"
+    ],
+    "optionsEn": [
+      "a point at which production is already most efficient",
+      "a level at which resources are not used efficiently",
+      "unattainable with current resources and technology",
+      "something that occurs only under perfect competition"
+    ],
+    "correctIndex": 2,
+    "explanation": "生產可能線是一條界線：線上與線內是做得到的，線外是做不到的。線外的組合並非「效率低」，而是根本超出現有生產能力。要達到那一點，必須整條線先向外移動，即資源增加或技術進步。把「線外」與「線內」的意思調轉，是這一課最常見的失分位——線內是有能力做卻做不好，線外是想做也做不到，兩者性質完全不同。",
+    "explanationEn": "The frontier is a boundary: points on it and inside it are attainable, points beyond it are not. A combination outside the curve is not merely inefficient — it is beyond current productive capacity altogether. Reaching it requires the whole curve to shift outward, that is, more resources or better technology. Reversing the meanings of inside and outside is the most common way to lose marks here: inside means capable but performing poorly, outside means not capable at all. The two are entirely different situations."
+  },
+  {
+    "id": "econ_floor_04",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "intermediate",
+    "question": "某國只在稻米生產上取得重大技術突破，布匹的生產技術完全不變。該國的生產可能線會如何變動？",
+    "questionEn": "A country achieves a major technological breakthrough in rice production only; its technology for making cloth is unchanged. How does its production possibility frontier shift?",
+    "options": [
+      "整條線位置不變，只是沿線移動位置",
+      "布匹一端向外伸展，稻米一端維持原位",
+      "整條線平行向外移動，兩端同幅增加",
+      "稻米一端向外伸展，布匹一端維持原位"
+    ],
+    "optionsEn": [
+      "the curve does not move; the economy only slides along it",
+      "the cloth end extends outward while the rice end stays put",
+      "the whole curve shifts out in parallel, both ends rising equally",
+      "the rice end extends outward while the cloth end stays put"
+    ],
+    "correctIndex": 3,
+    "explanation": "生產可能線的兩個端點，分別代表把全部資源投入單一產品時的最大產量。稻米技術改良後，全力生產稻米的最大產量上升，所以稻米那一端向外伸展；布匹技術不變，全力生產布匹的最大產量不變，那一端維持原位。結果是整條線變得傾斜而非平行外移。只有當資源總量增加、或技術進步同時惠及兩種產品時，才會出現整條線平行外移。至於「沿線移動」是指在同一條線上改變產量組合，那是選擇問題，與技術改變無關。",
+    "explanationEn": "The two intercepts of the frontier show the maximum output of each good if all resources went into it. Better rice technology raises the maximum output of rice, so that intercept moves outward; cloth technology is unchanged, so that intercept stays where it is. The curve therefore pivots rather than shifting in parallel. A parallel outward shift occurs only when total resources grow, or when technical progress benefits both goods. Sliding along the curve, by contrast, means changing the output mix on the same curve — a matter of choice, unrelated to a change in technology."
+  },
+  {
+    "id": "econ_floor_05",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "intermediate",
+    "question": "某國的生產可能線上有兩點：甲點為 40 部電腦與 20 噸小麥，乙點為 25 部電腦與 50 噸小麥。由甲點移至乙點，每多生產一噸小麥的機會成本是多少部電腦？",
+    "questionEn": "Two points lie on a country's production possibility frontier: point A is 40 computers and 20 tonnes of wheat; point B is 25 computers and 50 tonnes of wheat. Moving from A to B, what is the opportunity cost, in computers, of each additional tonne of wheat?",
+    "options": [
+      "0.5 部電腦",
+      "2.0 部電腦",
+      "15 部電腦",
+      "30 部電腦"
+    ],
+    "optionsEn": [
+      "0.5 computers",
+      "2.0 computers",
+      "15 computers",
+      "30 computers"
+    ],
+    "correctIndex": 0,
+    "explanation": "機會成本等於放棄的數量除以得到的數量。由甲點到乙點，電腦由 40 部減至 25 部，即放棄 15 部；小麥由 20 噸增至 50 噸，即得到 30 噸。因此每多生產一噸小麥，須放棄 15 ÷ 30 = 0.5 部電腦。最常見的錯誤是把兩個數字倒轉相除，得出 2.0，但那是「每部電腦的機會成本為 2 噸小麥」，並非題目所問。讀題時應先確認要求的是哪一種產品的機會成本，該產品的增加量就是分母。至於 15 與 30 只是變動的總量，不是每一單位的機會成本。",
+    "explanationEn": "Opportunity cost equals the amount given up divided by the amount gained. Moving from A to B, computers fall from 40 to 25, so 15 are given up; wheat rises from 20 to 50, so 30 tonnes are gained. Each extra tonne of wheat therefore costs 15 ÷ 30 = 0.5 computers. The commonest error is to divide the other way round and get 2.0, but that says each computer costs 2 tonnes of wheat, which is not what was asked. Always identify which good the question asks about — the increase in that good is the denominator. The figures 15 and 30 are the total changes, not costs per unit."
+  },
+  {
+    "id": "econ_floor_06",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "intermediate",
+    "question": "生產可能線之所以存在，最根本的原因是甚麼？",
+    "questionEn": "What is the most fundamental reason a production possibility frontier exists at all?",
+    "options": [
+      "市場價格暫時定得太低而造成短缺",
+      "資源相對於人的慾望而言是稀缺的",
+      "政府對生產施加了各種法例的限制",
+      "生產者刻意減產以抬高市場的價格"
+    ],
+    "optionsEn": [
+      "prices are temporarily set too low, causing a shortage",
+      "resources are scarce relative to human wants",
+      "the government imposes various legal limits on production",
+      "producers deliberately cut output to push the price up"
+    ],
+    "correctIndex": 1,
+    "explanation": "稀缺是經濟學的起點：資源有限而慾望無限，所以必須取捨，生產可能線正是把這種取捨畫出來。稀缺與短缺是兩個不同概念，考試常混用：稀缺是永久狀態，任何價格下都存在；短缺則是價格低於均衡水平時，需求量超過供應量的暫時現象，價格上調即可消除。法例限制與生產者減產都只會令實際產量落在線內，或令整條線移動，並不能解釋這條線為何一開始就存在。",
+    "explanationEn": "Scarcity is the starting point of economics: resources are limited while wants are not, so choices must be made, and the frontier is simply a picture of that trade-off. Scarcity and shortage are distinct ideas that are often confused in examinations. Scarcity is permanent and exists at any price; a shortage is the temporary excess of quantity demanded over quantity supplied when price sits below equilibrium, and it disappears once price rises. Legal restrictions or deliberate output cuts only push actual production inside the curve, or shift the curve — neither explains why the curve exists in the first place."
+  },
+  {
+    "id": "econ_floor_07",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "生產可能線（PPF）",
+    "topicId": "ppf",
+    "topicZh": "生產可能線（PPF）",
+    "topicEn": "Production Possibility Frontier",
+    "difficulty": "hard",
+    "question": "甲、乙兩國的資源與技術本來完全相同。甲國把較大比例的資源用於生產資本財（機器、廠房），乙國則集中生產消費財。若其他條件不變，數年之後兩國的生產可能線最可能出現甚麼情況？",
+    "questionEn": "Countries A and B start with identical resources and technology. Country A devotes a larger share of resources to capital goods (machines, factories) while Country B concentrates on consumer goods. Other things equal, what is most likely to happen to their production possibility frontiers after several years?",
+    "options": [
+      "兩國的線外移幅度大致相同",
+      "乙國的線外移幅度大於甲國",
+      "甲國的線外移幅度大於乙國",
+      "兩國的線都會向內收縮回落"
+    ],
+    "optionsEn": [
+      "both curves shift out by roughly the same",
+      "B's curve shifts out by more than A's",
+      "A's curve shifts out by more than B's",
+      "both countries' curves contract inward"
+    ],
+    "correctIndex": 2,
+    "explanation": "資本財本身不供即時消費，但可以擴大日後的生產能力。甲國今日犧牲較多消費，換來的是數年後更多機器與廠房，可達到的最大產量組合整體上升，因此生產可能線外移較多。這正是這條線的跨期含意：今日在線上選擇哪一點，會影響明日這條線本身的位置。要補充的是，乙國並非做錯選擇——它以將來較慢的增長，換取今日較高的消費水平，這是一個取捨而非錯誤。答論述題時若寫成「乙國決策失誤」，會失去分析分。",
+    "explanationEn": "Capital goods are not consumed now, but they enlarge future productive capacity. By sacrificing more consumption today, Country A ends up several years later with more machines and factories, so the whole set of attainable output combinations rises and its frontier shifts out further. This is the intertemporal meaning of the curve: which point you choose on it today affects where the curve itself sits tomorrow. It should be added that Country B has not made a mistake — it has traded slower future growth for higher consumption today, which is a trade-off rather than an error. Writing that Country B decided wrongly would lose analysis marks in an essay."
+  },
+  {
+    "id": "econ_floor_08",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "basic",
+    "question": "某住戶的可支配收入由 \\$10,000 增加至 \\$12,000，同期消費開支由 \\$8,000 增加至 \\$9,600。其邊際消費傾向（MPC）是多少？",
+    "questionEn": "A household's disposable income rises from \\$10,000 to \\$12,000, while its consumption expenditure rises from \\$8,000 to \\$9,600. What is its marginal propensity to consume (MPC)?",
+    "options": [
+      "0.2",
+      "0.6",
+      "1.25",
+      "0.8"
+    ],
+    "optionsEn": [
+      "0.2",
+      "0.6",
+      "1.25",
+      "0.8"
+    ],
+    "correctIndex": 3,
+    "explanation": "邊際消費傾向等於消費的變動除以可支配收入的變動。消費增加 \\$9,600 − \\$8,000 = \\$1,600，收入增加 \\$12,000 − \\$10,000 = \\$2,000，所以 MPC = 1,600 ÷ 2,000 = 0.8。留意這裏用的是「變動量」而非「總量」：若誤用 \\$8,000 ÷ \\$10,000 = 0.8 雖然數值碰巧相同，計算的其實是平均消費傾向，遇上其他數字就會出錯。另一個常見錯誤是把分子分母倒轉，得出 1.25。餘下的 0.2 是邊際儲蓄傾向，即 1 − MPC。",
+    "explanationEn": "The marginal propensity to consume equals the change in consumption divided by the change in disposable income. Consumption rises by \\$9,600 − \\$8,000 = \\$1,600 and income by \\$12,000 − \\$10,000 = \\$2,000, so MPC = 1,600 ÷ 2,000 = 0.8. Note that changes are used, not totals: dividing \\$8,000 by \\$10,000 happens to give the same number here, but that is the average propensity to consume and will give a wrong answer with other figures. Another common slip is inverting the fraction to get 1.25. The remaining figure, 0.2, is the marginal propensity to save, which equals 1 − MPC."
+  },
+  {
+    "id": "econ_floor_09",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "basic",
+    "question": "在一個簡單封閉經濟中，邊際儲蓄傾向（MPS）為 0.25。其支出乘數是多少？",
+    "questionEn": "In a simple closed economy the marginal propensity to save (MPS) is 0.25. What is the expenditure multiplier?",
+    "options": [
+      "4",
+      "0.75",
+      "1.25",
+      "25"
+    ],
+    "optionsEn": [
+      "4",
+      "0.75",
+      "1.25",
+      "25"
+    ],
+    "correctIndex": 0,
+    "explanation": "在簡單封閉經濟中，乘數等於 1 ÷ MPS，也等於 1 ÷ (1 − MPC)。代入 MPS = 0.25，乘數 = 1 ÷ 0.25 = 4。0.75 其實是 MPC，即 1 − 0.25，是計算途中的一個中間值而非答案；1.25 是把 1 加上 0.25；25 則是把小數誤讀成百分比。理解乘數為何大於 1 比記公式重要：一筆新開支成為某人的收入，該人再花掉其中 75% 成為下一個人的收入，如此遞減下去，總增幅是原本注入的四倍。",
+    "explanationEn": "In a simple closed economy the multiplier equals 1 ÷ MPS, which is the same as 1 ÷ (1 − MPC). With MPS = 0.25 the multiplier is 1 ÷ 0.25 = 4. The figure 0.75 is the MPC, that is 1 − 0.25, an intermediate value rather than the answer; 1.25 comes from adding 0.25 to 1; and 25 comes from reading the decimal as a percentage. Understanding why the multiplier exceeds one matters more than memorising the formula: new spending becomes someone's income, that person spends 75% of it, which becomes the next person's income, and so on in a shrinking series whose total is four times the original injection."
+  },
+  {
+    "id": "econ_floor_10",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "basic",
+    "question": "某經濟體去年的名義本地生產總值為 \\$500 億，今年為 \\$540 億。名義本地生產總值的增長率是多少？",
+    "questionEn": "An economy's nominal gross domestic product was \\$50.0 billion last year and \\$54.0 billion this year. What is the growth rate of nominal GDP?",
+    "options": [
+      "7.4%",
+      "8%",
+      "40%",
+      "4%"
+    ],
+    "optionsEn": [
+      "7.4%",
+      "8%",
+      "40%",
+      "4%"
+    ],
+    "correctIndex": 1,
+    "explanation": "增長率等於變動量除以基期數值，再化成百分比。變動量為 \\$540 億 − \\$500 億 = \\$40 億，基期為去年的 \\$500 億，所以增長率 = 40 ÷ 500 = 8%。7.4% 是誤用今年的數值作分母（40 ÷ 540）；40% 是把變動的絕對數字直接當成百分比；4% 則是把 \\$40 億讀成百分比。凡計算增長率、通脹率或失業率的變動，分母一律是變動前的數值——這是同一個原則，記一次可以用在全卷。另外要留意，這條計算的是名義增長，未扣除物價變動，不能直接說生活水平上升了 8%。",
+    "explanationEn": "A growth rate is the change divided by the base-period value, expressed as a percentage. The change is \\$54.0bn − \\$50.0bn = \\$4.0bn and the base is last year's \\$50.0bn, so the growth rate is 4 ÷ 50 = 8%. The figure 7.4% comes from using this year's value as the denominator (4 ÷ 54); 40% treats the absolute change as a percentage; and 4% simply reads the change itself as a rate. Whenever a growth, inflation or unemployment change is calculated, the denominator is always the earlier value — one principle that serves for the whole paper. Note also that this is nominal growth, before any adjustment for prices, so it does not by itself show that living standards rose by 8%."
+  },
+  {
+    "id": "econ_floor_11",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某經濟體一年內的數據如下：私人消費 \\$400 億、投資 \\$120 億、政府開支 \\$180 億、出口 \\$260 億、進口 \\$210 億。以支出法計算，本地生產總值是多少？",
+    "questionEn": "An economy records the following in one year: private consumption \\$40.0bn, investment \\$12.0bn, government expenditure \\$18.0bn, exports \\$26.0bn, imports \\$21.0bn. Using the expenditure approach, what is gross domestic product?",
+    "options": [
+      "\\$700 億",
+      "\\$1,170 億",
+      "\\$750 億",
+      "\\$960 億"
+    ],
+    "optionsEn": [
+      "\\$70.0bn",
+      "\\$117.0bn",
+      "\\$75.0bn",
+      "\\$96.0bn"
+    ],
+    "correctIndex": 2,
+    "explanation": "支出法的公式是 GDP = C + I + G + (X − M)。代入數字：400 + 120 + 180 + (260 − 210) = 400 + 120 + 180 + 50 = \\$750 億。三個干擾項各對應一個常見錯誤：\\$1,170 億是把進口加上去而非減去；\\$960 億是漏了減進口；\\$700 億是把整項淨出口一併漏掉。進口之所以要減，是因為 C、I、G 之中已經包含了購買外國貨品的開支，而那些貨品並非本地生產，若不扣除便會高估本地產出。",
+    "explanationEn": "The expenditure approach is GDP = C + I + G + (X − M). Substituting: 40 + 12 + 18 + (26 − 21) = 40 + 12 + 18 + 5 = \\$75.0bn. Each distractor matches a common error: \\$117.0bn adds imports instead of subtracting them; \\$96.0bn omits the subtraction of imports; \\$70.0bn drops net exports entirely. Imports are deducted because C, I and G already include spending on foreign-made goods, and those goods were not produced domestically — leaving them in would overstate domestic output."
+  },
+  {
+    "id": "econ_floor_12",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某經濟體的消費物價指數由二零二四年的 120 升至二零二五年的 126。二零二五年的通脹率是多少？",
+    "questionEn": "An economy's consumer price index rises from 120 in 2024 to 126 in 2025. What is the inflation rate for 2025?",
+    "options": [
+      "26%",
+      "6%",
+      "4.8%",
+      "5%"
+    ],
+    "optionsEn": [
+      "26%",
+      "6%",
+      "4.8%",
+      "5%"
+    ],
+    "correctIndex": 3,
+    "explanation": "通脹率是物價指數的百分比變動，而非指數點數的變動。指數上升 126 − 120 = 6 點，以基期 120 為分母，通脹率 = 6 ÷ 120 = 5%。6% 是把 6 點直接當成百分比，這是最常見的陷阱：指數本身沒有單位，點數變動要除以基期才有意義。4.8% 是誤用 126 作分母。26% 則是把指數數值本身讀成通脹率，忘記了基年指數定為 100，126 代表物價比基年高 26%，那是累積的物價升幅，不是這一年的通脹率。",
+    "explanationEn": "Inflation is the percentage change in the price index, not the change in index points. The index rises by 126 − 120 = 6 points, and dividing by the base value of 120 gives 6 ÷ 120 = 5%. Answering 6% treats the point change as a percentage, which is the classic trap: index numbers are unitless, so a change in points means nothing until divided by the base. Using 126 as the denominator gives 4.8%. Reading 26% off the index itself forgets that the base year index is set at 100, so 126 means prices are 26% above the base year — a cumulative rise, not this year's inflation rate."
+  },
+  {
+    "id": "econ_floor_13",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某經濟體的勞動人口為 500 萬人，其中 480 萬人有工作。該經濟體的失業率是多少？",
+    "questionEn": "An economy has a labour force of 5.00 million, of whom 4.80 million are employed. What is the unemployment rate?",
+    "options": [
+      "4%",
+      "4.17%",
+      "20%",
+      "96%"
+    ],
+    "optionsEn": [
+      "4%",
+      "4.17%",
+      "20%",
+      "96%"
+    ],
+    "correctIndex": 0,
+    "explanation": "失業率等於失業人數除以勞動人口。失業人數 = 500 萬 − 480 萬 = 20 萬，失業率 = 20 ÷ 500 = 4%。4.17% 是誤用就業人數 480 萬作分母；20% 是把 20 萬直接當成百分比；96% 是就業率而非失業率。要特別留意分母是「勞動人口」而不是「總人口」——學生、退休人士、以及沒有找工作的人都不計入勞動人口，所以失業率的高低亦受誰被界定為勞動人口影響。一個放棄求職的人會從失業人數中消失，失業率反而下跌，但就業情況並無改善。",
+    "explanationEn": "The unemployment rate is the number unemployed divided by the labour force. The unemployed number 5.00m − 4.80m = 0.20m, so the rate is 0.20 ÷ 5.00 = 4%. Using employment of 4.80m as the denominator gives 4.17%; reading 0.20m directly as a percentage gives 20%; and 96% is the employment rate rather than the unemployment rate. Note carefully that the denominator is the labour force, not the total population — students, retirees and those not seeking work are excluded, so the measured rate depends on who counts as being in the labour force. Someone who gives up looking for work drops out of the unemployed count and the rate falls, even though employment has not improved."
+  },
+  {
+    "id": "econ_floor_14",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "宏觀計算（高階）",
+    "topicId": "econ_macro_calc",
+    "topicZh": "宏觀計算（高階）",
+    "topicEn": "Macroeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某簡單封閉經濟的消費函數為 C = 100 + 0.6Y（單位：億元），投資 I = 60 億元，並無政府部門。均衡國民收入 Y 是多少？",
+    "questionEn": "In a simple closed economy with no government sector, the consumption function is C = 100 + 0.6Y (in \\$ billion) and investment I = 60. What is equilibrium national income Y?",
+    "options": [
+      "\\$160 億",
+      "\\$400 億",
+      "\\$266.7 億",
+      "\\$640 億"
+    ],
+    "optionsEn": [
+      "\\$160bn",
+      "\\$400bn",
+      "\\$266.7bn",
+      "\\$640bn"
+    ],
+    "correctIndex": 1,
+    "explanation": "均衡的條件是總產出等於總開支，即 Y = C + I。代入消費函數：Y = 100 + 0.6Y + 60，整理得 Y − 0.6Y = 160，即 0.4Y = 160，所以 Y = 400。\\$160 億只是自主開支的總和（100 + 60），是計算途中的中間值；\\$266.7 億是誤把 160 除以 0.6；\\$640 億是把乘數 1 ÷ 0.4 = 2.5 誤算成 4 再乘以 160。另一條路徑是先求乘數 1 ÷ (1 − 0.6) = 2.5，再乘以自主開支 160，同樣得 400——兩條路徑必須一致，若不一致代表其中一步出錯，這是自我檢查的好方法。",
+    "explanationEn": "Equilibrium requires output to equal total expenditure, that is Y = C + I. Substituting the consumption function: Y = 100 + 0.6Y + 60, so Y − 0.6Y = 160, giving 0.4Y = 160 and Y = 400. The figure \\$160bn is merely total autonomous expenditure (100 + 60), an intermediate value; \\$266.7bn comes from dividing 160 by 0.6; \\$640bn comes from using a multiplier of 4 rather than 1 ÷ 0.4 = 2.5. An alternative route is to find the multiplier 1 ÷ (1 − 0.6) = 2.5 and multiply it by autonomous expenditure of 160, which also gives 400 — the two routes must agree, and checking that they do is a good way to catch a slip."
+  },
+  {
+    "id": "econ_floor_15",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "basic",
+    "question": "經濟學上的「共用品」具備以下哪一組特性？",
+    "questionEn": "Which pair of characteristics defines a public good in economics?",
+    "options": [
+      "非競爭性與排他性",
+      "競爭性與排他性",
+      "非競爭性與非排他性",
+      "競爭性與非排他性"
+    ],
+    "optionsEn": [
+      "non-rival but excludable",
+      "rival and excludable",
+      "non-rival and non-excludable",
+      "rival but non-excludable"
+    ],
+    "correctIndex": 2,
+    "explanation": "共用品有兩個必要特性。非競爭性指一個人享用不會減少其他人可享用的數量，例如國防或街燈的照明。非排他性指無法把不付錢的人排除在外。兩者同時成立，私人市場便難以收費，也就難以有足夠誘因去生產，這是市場失靈的一種，通常由政府提供。只有其中一項特性的，並非共用品：收費而又不擠迫的橋樑是非競爭但可排他，擠迫的公海漁場是競爭但難排他，兩者各有不同的政策問題。",
+    "explanationEn": "A public good must satisfy two conditions. Non-rivalry means one person's use does not reduce the amount available to others, as with national defence or the light from a street lamp. Non-excludability means those who do not pay cannot be kept out. When both hold, a private market can hardly charge for the good and therefore has too little incentive to supply it — one form of market failure, usually addressed by government provision. Goods with only one of the two features are not public goods: an uncongested toll bridge is non-rival but excludable, while an open-sea fishery is rival but hard to exclude from, and each raises a different policy problem."
+  },
+  {
+    "id": "econ_floor_16",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "basic",
+    "question": "市民接種疫苗，除保護自己之外，亦降低身邊其他人受感染的機會。這種落在第三者身上的好處，在經濟學上稱為甚麼？",
+    "questionEn": "When a person is vaccinated, they protect not only themselves but also lower the chance that others around them become infected. What is this benefit falling on third parties called in economics?",
+    "options": [
+      "生產者盈餘",
+      "外部成本",
+      "私人利益",
+      "外部利益"
+    ],
+    "optionsEn": [
+      "producer surplus",
+      "an external cost",
+      "a private benefit",
+      "an external benefit"
+    ],
+    "correctIndex": 3,
+    "explanation": "外部利益指某項行為為交易雙方以外的第三者帶來的好處。接種疫苗的人自己得到保護，那是私人利益；同時使他人染病機會下降，這部分好處並無反映在他所付的價格之中，屬於外部利益。由於決定接種與否時，個人只會考慮私人利益，社會整體的接種量會低於社會最適水平，這正是政府為疫苗提供資助或免費接種的理據。相對地，外部成本是加諸第三者的損害，例如工廠排污；生產者盈餘則是價格與供應價之間的差額，與第三者無關。",
+    "explanationEn": "An external benefit is a gain that falls on third parties outside the transaction. The vaccinated person gains protection, which is a private benefit; at the same time others face a lower chance of infection, and that part of the gain is not reflected in the price paid, so it is external. Because individuals weigh only the private benefit when deciding whether to be vaccinated, take-up falls short of the socially optimal level — which is the case for subsidising vaccines or providing them free. An external cost, by contrast, is harm imposed on third parties, such as factory pollution, while producer surplus is the gap between price and supply price and involves no third party at all."
+  },
+  {
+    "id": "econ_floor_17",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "basic",
+    "question": "政府對某入口商品徵收關稅，最直接的效果是甚麼？",
+    "questionEn": "What is the most direct effect of a government imposing a tariff on an imported good?",
+    "options": [
+      "該入口商品在本地的售價上升",
+      "該入口商品在本地的售價下跌",
+      "本地同類生產者的產量下降",
+      "本地消費者的選擇因此增加"
+    ],
+    "optionsEn": [
+      "the local price of the imported good rises",
+      "the local price of the imported good falls",
+      "local producers of the same good cut output",
+      "local consumers end up with more choice"
+    ],
+    "correctIndex": 0,
+    "explanation": "關稅是對入口商品徵收的稅，會推高該商品在本地市場的售價。價格上升之後，本地消費者購買量減少，本地同類生產者則因為競爭壓力減輕而增產——所以本地生產者的產量是上升而非下降。消費者的選擇亦會因入口減少而收窄。分析關稅時應按次序推：先看價格，再看買賣雙方的反應，最後才看政府收入與整體福利，不要一步跳到結論。",
+    "explanationEn": "A tariff is a tax on imports, and it pushes up the price of the good in the domestic market. With a higher price, local consumers buy less, while domestic producers of the same good face weaker competition and expand output — so their output rises rather than falls. Consumer choice narrows as imports shrink. When analysing a tariff, work in order: price first, then the responses of buyers and sellers, and only then government revenue and overall welfare, rather than jumping straight to a conclusion."
+  },
+  {
+    "id": "econ_floor_18",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "intermediate",
+    "question": "甲國生產任何一種產品所用的資源都少於乙國。根據國際貿易理論，下列哪項判斷最準確？",
+    "questionEn": "Country A uses fewer resources than Country B to produce every good. According to trade theory, which judgement is most accurate?",
+    "options": [
+      "甲國自行生產一切較為有利",
+      "兩國仍可按比較優勢分工並得益",
+      "乙國沒有可能從貿易中得益",
+      "貿易只會令甲國單方面受損"
+    ],
+    "optionsEn": [
+      "Country A is better off producing everything itself",
+      "both can still gain by specialising on comparative advantage",
+      "Country B cannot possibly gain from any trade",
+      "trade can only leave Country A worse off"
+    ],
+    "correctIndex": 1,
+    "explanation": "甲國在兩種產品上都有絕對優勢，但絕對優勢並非貿易的基礎。決定分工的是比較優勢，即機會成本較低的一方。即使乙國樣樣都較低效，它總有一種產品的機會成本相對較低，在那方面專業生產再與甲國交換，雙方都可以消費到超出各自生產可能線的組合。這是這一課最重要的一點：貿易的得益來自機會成本的差異，而非誰的生產力較高。只有當兩國的機會成本完全相同時，才沒有分工的空間。",
+    "explanationEn": "Country A holds an absolute advantage in both goods, but absolute advantage is not the basis of trade. Specialisation is determined by comparative advantage, that is, by whoever has the lower opportunity cost. Even if Country B is less efficient at everything, there will be some good in which its opportunity cost is relatively lower; specialising there and exchanging with Country A lets both consume combinations beyond their own production possibility frontiers. This is the key point of the topic: the gains from trade come from differences in opportunity cost, not from who is more productive. Only when the two countries' opportunity costs are identical does the scope for specialisation disappear."
+  },
+  {
+    "id": "econ_floor_19",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "intermediate",
+    "question": "一條鄉村的居民都希望村口有街燈，但各人都盤算由別人付錢，自己照樣享用。這種情況在經濟學上稱為甚麼？",
+    "questionEn": "Everyone in a village wants a street lamp at the entrance, but each person reckons that someone else will pay while they enjoy it anyway. What is this situation called in economics?",
+    "options": [
+      "邊際報酬遞減",
+      "價格分歧問題",
+      "免費乘車問題",
+      "規模經濟效益"
+    ],
+    "optionsEn": [
+      "diminishing marginal returns",
+      "price discrimination",
+      "the free-rider problem",
+      "economies of scale"
+    ],
+    "correctIndex": 2,
+    "explanation": "免費乘車問題源於共用品的非排他性：街燈一旦點亮，不付錢的人同樣照得到，沒有人能被排除。既然如此，每個居民的理性選擇都是不出錢，結果是雖然人人都想要，街燈卻無人肯付費而建不成。這說明市場在共用品上會失靈，需要由政府以稅收統一支付。要注意問題不在於居民自私或不合作，而在於物品本身的性質令個人理性與集體利益背道而馳——答題時指出這一點，比單純寫「大家都不肯付錢」更能拿到分析分。",
+    "explanationEn": "The free-rider problem arises from the non-excludability of a public good: once the lamp is lit, those who did not pay are lit up just the same and cannot be shut out. Given that, each villager's rational choice is to contribute nothing, and the lamp everyone wants never gets built. This is why markets fail for public goods and why governments fund them collectively through taxation. Note that the problem is not that villagers are selfish or uncooperative, but that the nature of the good sets individual rationality against the collective interest — making that point earns more analysis marks than simply writing that nobody will pay."
+  },
+  {
+    "id": "econ_floor_20",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "intermediate",
+    "question": "某工廠在生產過程中排放污染，造成外部成本。政府若要令產量回到社會最適水平，理論上應採取哪種做法？",
+    "questionEn": "A factory emits pollution in production, creating an external cost. In theory, what should a government do to bring output back to the socially optimal level?",
+    "options": [
+      "取消一切與該廠有關的稅項",
+      "按外部成本的大小向該廠津貼",
+      "規定該廠必須增加其產量",
+      "按外部成本的大小向該廠徵稅"
+    ],
+    "optionsEn": [
+      "abolish every tax that applies to the factory",
+      "subsidise the factory by the size of the external cost",
+      "require the factory to increase its output",
+      "tax the factory by the size of the external cost"
+    ],
+    "correctIndex": 3,
+    "explanation": "外部成本令私人成本低於社會成本，廠商只按私人成本決定產量，結果生產過多。若政府徵收相當於外部成本的稅項，廠商所面對的成本便會提高至社會成本的水平，它自行選擇的產量就會回落到社會最適水平——這就是把外部成本「內部化」。津貼的方向相反，只會令產量更高；規定增產同樣加劇問題；取消稅項則等於進一步壓低私人成本。要留意這是理論上的做法，實際困難在於外部成本的金額難以準確量度。",
+    "explanationEn": "An external cost makes private cost lower than social cost, and since the firm sets output by private cost alone, it produces too much. A tax equal to the external cost raises the cost the firm faces to the social cost level, so the output it chooses for itself falls back to the socially optimal level — this is what internalising an externality means. A subsidy works in the opposite direction and raises output further; requiring more output makes matters worse still; and abolishing taxes pushes private cost lower again. Note that this is the theoretical remedy — the practical difficulty is that the money value of the external cost is hard to measure accurately."
+  },
+  {
+    "id": "econ_floor_21",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "貿易與市場失靈",
+    "topicId": "econ_trade_failure",
+    "topicZh": "貿易與市場失靈",
+    "topicEn": "Trade & market failure",
+    "difficulty": "intermediate",
+    "question": "進口配額與關稅同樣可以限制入口數量，但兩者有一項重要分別。下列哪項描述正確？",
+    "questionEn": "An import quota and a tariff can both restrict imports, but they differ in one important respect. Which statement is correct?",
+    "options": [
+      "關稅為政府帶來收入，配額則不會",
+      "配額為政府帶來收入，關稅則不會",
+      "兩者都不會影響入口商品的售價",
+      "兩者都會令本地生產者減少產量"
+    ],
+    "optionsEn": [
+      "a tariff yields government revenue while a quota does not",
+      "a quota yields government revenue while a tariff does not",
+      "neither of them affects the price of the imported good",
+      "both of them cause domestic producers to cut output"
+    ],
+    "correctIndex": 0,
+    "explanation": "關稅按入口數量徵稅，每一單位入口都為政府帶來稅收。配額只是規定入口上限，政府並無收取款項；因供應受限而抬高的價格，其得益歸於獲配額的入口商，而非庫房。這是兩者最實在的分別。至於相同之處：兩者都會推高本地售價、減少入口，並令本地同類生產者增產而非減產。若配額以拍賣方式分配，政府亦可取得收入——但那是額外的制度安排，並非配額本身的特性。",
+    "explanationEn": "A tariff is charged per unit imported, so every unit brings revenue to the government. A quota merely caps the quantity admitted; the government collects nothing, and the higher price caused by the restricted supply accrues to whoever holds the quota rights rather than to the treasury. That is the most concrete difference between the two. As for similarities, both raise the domestic price, cut imports, and lead domestic producers of the same good to expand rather than cut output. If quota rights are auctioned the government can also raise revenue — but that is an extra administrative arrangement, not a feature of a quota as such."
+  },
+  {
+    "id": "econ_floor_22",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "微觀計算（高階）",
+    "topicId": "econ_micro_calc",
+    "topicZh": "微觀計算（高階）",
+    "topicEn": "Microeconomics — calculation",
+    "difficulty": "basic",
+    "question": "某商店以每件 \\$45 的價格售出 200 件貨品。其總收益是多少？",
+    "questionEn": "A shop sells 200 units of a good at \\$45 each. What is its total revenue?",
+    "options": [
+      "\\$4,500",
+      "\\$9,000",
+      "\\$245",
+      "\\$900"
+    ],
+    "optionsEn": [
+      "\\$4,500",
+      "\\$9,000",
+      "\\$245",
+      "\\$900"
+    ],
+    "correctIndex": 1,
+    "explanation": "總收益等於價格乘以銷售量，即 \\$45 × 200 = \\$9,000。\\$4,500 是誤乘 100；\\$245 是把價格與數量相加；\\$900 是漏了一個零。要留意總收益並非利潤——利潤要再減去總成本。試卷經常在同一條題目中同時給出價格、數量與成本數字，讀題時必須先確認所問的是收益、成本還是利潤，再選對應的公式。",
+    "explanationEn": "Total revenue equals price multiplied by quantity sold, that is \\$45 × 200 = \\$9,000. The figure \\$4,500 comes from multiplying by 100; \\$245 comes from adding price and quantity; \\$900 drops a zero. Note that total revenue is not profit — total cost must still be deducted. Examination questions often supply price, quantity and cost figures together, so read carefully to establish whether revenue, cost or profit is being asked for before choosing a formula."
+  },
+  {
+    "id": "econ_floor_23",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "微觀計算（高階）",
+    "topicId": "econ_micro_calc",
+    "topicZh": "微觀計算（高階）",
+    "topicEn": "Microeconomics — calculation",
+    "difficulty": "basic",
+    "question": "某廠商生產 250 單位產品，總成本為 \\$20,000。其平均成本是多少？",
+    "questionEn": "A firm produces 250 units at a total cost of \\$20,000. What is its average cost?",
+    "options": [
+      "\\$800",
+      "\\$8",
+      "\\$80",
+      "\\$12.5"
+    ],
+    "optionsEn": [
+      "\\$800",
+      "\\$8",
+      "\\$80",
+      "\\$12.5"
+    ],
+    "correctIndex": 2,
+    "explanation": "平均成本等於總成本除以產量，即 \\$20,000 ÷ 250 = \\$80。\\$12.5 是把分子分母倒轉（250 ÷ 20,000 × 1,000），\\$8 與 \\$800 則是小數點放錯位置。平均成本的用途在於與價格比較：價格高於平均成本代表有經濟利潤，低於平均成本代表虧損。但決定短期是否停產的界線並非平均成本，而是平均變動成本——這一點在計算題中經常被混淆，值得分開記清楚。",
+    "explanationEn": "Average cost equals total cost divided by output, that is \\$20,000 ÷ 250 = \\$80. The figure \\$12.5 comes from inverting the fraction (250 ÷ 20,000, scaled up), while \\$8 and \\$800 misplace the decimal point. Average cost matters because it is compared with price: a price above average cost means economic profit, a price below it means a loss. The short-run shutdown line, however, is not average cost but average variable cost — a distinction frequently confused in calculation questions and worth keeping separate."
+  },
+  {
+    "id": "econ_floor_24",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "微觀計算（高階）",
+    "topicId": "econ_micro_calc",
+    "topicZh": "微觀計算（高階）",
+    "topicEn": "Microeconomics — calculation",
+    "difficulty": "basic",
+    "question": "某廠商一年的總收益為 \\$150,000，總成本為 \\$118,000。其利潤是多少？",
+    "questionEn": "A firm's total revenue for the year is \\$150,000 and its total cost is \\$118,000. What is its profit?",
+    "options": [
+      "\\$150,000",
+      "\\$268,000",
+      "\\$118,000",
+      "\\$32,000"
+    ],
+    "optionsEn": [
+      "\\$150,000",
+      "\\$268,000",
+      "\\$118,000",
+      "\\$32,000"
+    ],
+    "correctIndex": 3,
+    "explanation": "利潤等於總收益減總成本，即 \\$150,000 − \\$118,000 = \\$32,000。\\$268,000 是把兩個數字相加；另外兩項則是把成本或收益本身當成利潤。要補充一點：經濟學所講的成本包括隱含成本，例如東主自己投入的時間與資金若用於其他用途本可賺取的回報。所以會計上有盈餘，經濟利潤仍可能是零甚至負數，這是經濟學與會計學在「成本」一詞上的關鍵分別。",
+    "explanationEn": "Profit equals total revenue minus total cost, that is \\$150,000 − \\$118,000 = \\$32,000. The figure \\$268,000 comes from adding the two together, while the other two simply restate cost or revenue as if it were profit. One point should be added: cost in economics includes implicit cost, such as the return the owner's own time and capital could have earned elsewhere. A business can therefore show an accounting surplus while its economic profit is zero or even negative — the key difference between the economic and accounting senses of the word cost."
+  },
+  {
+    "id": "econ_floor_25",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "微觀計算（高階）",
+    "topicId": "econ_micro_calc",
+    "topicZh": "微觀計算（高階）",
+    "topicEn": "Microeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某廠商生產 10 單位時總成本為 \\$800，生產 11 單位時總成本為 \\$860。第 11 單位的邊際成本是多少？",
+    "questionEn": "A firm's total cost is \\$800 at 10 units of output and \\$860 at 11 units. What is the marginal cost of the eleventh unit?",
+    "options": [
+      "\\$60",
+      "\\$80",
+      "\\$78.2",
+      "\\$860"
+    ],
+    "optionsEn": [
+      "\\$60",
+      "\\$80",
+      "\\$78.2",
+      "\\$860"
+    ],
+    "correctIndex": 0,
+    "explanation": "邊際成本是多生產一單位所引致的總成本增加，即 \\$860 − \\$800 = \\$60。\\$80 是產量 10 單位時的平均成本（800 ÷ 10）；\\$78.2 是產量 11 單位時的平均成本（860 ÷ 11）；\\$860 是總成本本身。三個干擾項都對應同一個誤解：把平均值當成邊際值。邊際看的是「多一單位帶來的變動」，平均看的是「攤分到每一單位」，兩者在數值上通常不同，只有在平均成本處於最低點時才相等。",
+    "explanationEn": "Marginal cost is the addition to total cost from producing one more unit, that is \\$860 − \\$800 = \\$60. The figure \\$80 is average cost at 10 units (800 ÷ 10); \\$78.2 is average cost at 11 units (860 ÷ 11); \\$860 is total cost itself. All three distractors reflect the same misunderstanding — treating an average as a marginal value. Marginal asks what one more unit changes, average asks how the total is spread over every unit, and the two normally differ, coinciding only where average cost is at its minimum."
+  },
+  {
+    "id": "econ_floor_26",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "微觀計算（高階）",
+    "topicId": "econ_micro_calc",
+    "topicZh": "微觀計算（高階）",
+    "topicEn": "Microeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某勞動市場的均衡工資為每小時 \\$40。政府訂立每小時 \\$55 的最低工資。在 \\$55 的水平，勞動需求量為 8,000 人，勞動供應量為 11,000 人。結果是甚麼？",
+    "questionEn": "The equilibrium wage in a labour market is \\$40 per hour. The government sets a minimum wage of \\$55 per hour. At \\$55 the quantity of labour demanded is 8,000 workers and the quantity supplied is 11,000. What is the outcome?",
+    "options": [
+      "出現 3,000 人的短缺",
+      "出現 3,000 人的過剩，即失業",
+      "出現 19,000 人的過剩",
+      "市場不會出現任何變化"
+    ],
+    "optionsEn": [
+      "a shortage of 3,000 workers",
+      "a surplus of 3,000 workers, that is, unemployment",
+      "a surplus of 19,000 workers",
+      "the market is left completely unchanged"
+    ],
+    "correctIndex": 1,
+    "explanation": "最低工資是價格下限，訂於均衡之上才會生效。在 \\$55 時，願意工作的有 11,000 人，僱主只願聘 8,000 人，供應量超過需求量 3,000 人，形成勞動市場的過剩，這 3,000 人便是失業。19,000 是把兩個數字相加而非相減。價格上限與價格下限的方向必須分清：上限訂於均衡之下會造成短缺，下限訂於均衡之上會造成過剩。同時要注意，最低工資對已受聘的 8,000 人是工資上升，得益與損失同時存在，答論述題時兩面都要交代。",
+    "explanationEn": "A minimum wage is a price floor and only bites when set above equilibrium. At \\$55, 11,000 workers are willing to work while employers want only 8,000, so quantity supplied exceeds quantity demanded by 3,000 — a surplus in the labour market, and those 3,000 are unemployed. The figure 19,000 comes from adding rather than subtracting. Keep the two directions straight: a ceiling set below equilibrium creates a shortage, a floor set above it creates a surplus. Note too that the 8,000 who remain employed receive a higher wage, so gains and losses occur together, and an essay answer should address both sides."
+  },
+  {
+    "id": "econ_floor_27",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "微觀計算（高階）",
+    "topicId": "econ_micro_calc",
+    "topicZh": "微觀計算（高階）",
+    "topicEn": "Microeconomics — calculation",
+    "difficulty": "intermediate",
+    "question": "某商品的價格由 \\$20 升至 \\$25，供應量由 400 件增至 500 件。以百分比法（以原值為基數）計算，供應價格彈性是多少？",
+    "questionEn": "When the price of a good rises from \\$20 to \\$25, the quantity supplied rises from 400 units to 500. Using the percentage method with original values as the base, what is the price elasticity of supply?",
+    "options": [
+      "4，富彈性",
+      "0.25，缺乏彈性",
+      "1，單位彈性",
+      "0.8，缺乏彈性"
+    ],
+    "optionsEn": [
+      "4, elastic",
+      "0.25, inelastic",
+      "1, unit elastic",
+      "0.8, inelastic"
+    ],
+    "correctIndex": 2,
+    "explanation": "供應價格彈性等於供應量的百分比變動除以價格的百分比變動。供應量變動 = (500 − 400) ÷ 400 = 25%；價格變動 = (25 − 20) ÷ 20 = 25%。兩者相除得 25% ÷ 25% = 1，屬單位彈性。0.25 是只計了其中一項的百分比變動；4 是把 100 除以 25；0.8 是誤用 400 ÷ 500。要留意供應彈性恆為正數，因為價格與供應量同向變動，這與需求彈性須取絕對值不同。彈性等於 1 是分界線：大於 1 為富彈性，小於 1 為缺乏彈性。",
+    "explanationEn": "Price elasticity of supply equals the percentage change in quantity supplied divided by the percentage change in price. Quantity changes by (500 − 400) ÷ 400 = 25%; price changes by (25 − 20) ÷ 20 = 25%. Dividing gives 25% ÷ 25% = 1, which is unit elastic. The figure 0.25 uses only one of the two percentage changes; 4 comes from dividing 100 by 25; 0.8 comes from using 400 ÷ 500. Note that supply elasticity is always positive because price and quantity supplied move in the same direction, unlike demand elasticity where an absolute value is taken. A value of 1 is the dividing line: above 1 is elastic, below 1 is inelastic."
+  }
+]

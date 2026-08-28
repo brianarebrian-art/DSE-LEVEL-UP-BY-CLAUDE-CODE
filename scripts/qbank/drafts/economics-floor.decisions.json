@@ -1,0 +1,37 @@
+{
+  "_meta": {
+    "source": "economics-floor.json",
+    "subject": "economics",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "econ_floor_01": "pending",
+    "econ_floor_02": "pending",
+    "econ_floor_03": "pending",
+    "econ_floor_04": "pending",
+    "econ_floor_05": "pending",
+    "econ_floor_06": "pending",
+    "econ_floor_07": "pending",
+    "econ_floor_08": "pending",
+    "econ_floor_09": "pending",
+    "econ_floor_10": "pending",
+    "econ_floor_11": "pending",
+    "econ_floor_12": "pending",
+    "econ_floor_13": "pending",
+    "econ_floor_14": "pending",
+    "econ_floor_15": "pending",
+    "econ_floor_16": "pending",
+    "econ_floor_17": "pending",
+    "econ_floor_18": "pending",
+    "econ_floor_19": "pending",
+    "econ_floor_20": "pending",
+    "econ_floor_21": "pending",
+    "econ_floor_22": "pending",
+    "econ_floor_23": "pending",
+    "econ_floor_24": "pending",
+    "econ_floor_25": "pending",
+    "econ_floor_26": "pending",
+    "econ_floor_27": "pending"
+  }
+}
