@@ -28,6 +28,11 @@ const T = {
   bonding: { id: 'bonding', zh: '化學鍵', en: 'Chemical Bonding' },
   periodic: { id: 'periodic_table', zh: '週期表', en: 'The Periodic Table' },
   organic: { id: 'organic', zh: '有機化學', en: 'Organic Chemistry' },
+  // 第二批：四個「高階」課題各僅 10 條，係全科最薄。
+  hellQuant: { id: 'chem_hell_quant', zh: '定量計算（高階）', en: 'Quantitative killers' },
+  hellRedox: { id: 'chem_hell_redox_equil', zh: '氧化還原與平衡', en: 'Redox & equilibrium' },
+  hellOrganic: { id: 'chem_hell_organic', zh: '有機化學（高階）', en: 'Organic killers' },
+  gasVolume: { id: 'gas_volume', zh: '氣體體積', en: 'Gas Volume' },
   stoichiometry: { id: 'stoichiometry', zh: '化學計量', en: 'Stoichiometry' },
   gas: { id: 'gas_volume', zh: '氣體體積', en: 'Gas Volume' },
 } satisfies Record<string, TopicMeta>
@@ -41,6 +46,7 @@ const FW = {
   dynamics: { id: 'reaction_dynamics', zh: '反應動力', en: 'Reaction Dynamics', emoji: '🔥' },
   structure: { id: 'structure_properties', zh: '結構與性質', en: 'Structure & Properties', emoji: '🔗' },
   carbon: { id: 'carbon_compounds', zh: '碳化合物', en: 'Carbon Compounds', emoji: '🛢️' },
+  quantReason: { id: 'quantitative_reasoning', zh: '定量推理', en: 'Quantitative Reasoning', emoji: '⚖️' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('chemistry')
@@ -330,6 +336,77 @@ for (let c = 2; c <= 8; c++) {
     [n(`$\\mathrm{C_${c}H_{${2 * c + 2}}O}$`), n(`$\\mathrm{C_${c}H_{${2 * c}}O}$`), n(`$\\mathrm{C_${c}H_{${2 * c + 2}}}$`), n(`$\\mathrm{C_${c}H_{${2 * c + 1}}O_2}$`)],
     [`飽和一元醇可看成烷烴的一個氫被 $-\\mathrm{OH}$ 取代：$\\mathrm{C_nH_{2n+2}}$ 去掉一個 $\\mathrm{H}$ 再加上 $\\mathrm{OH}$，氫數不變而多一個氧，故通式為 $\\mathrm{C_nH_{2n+2}O}$。代入 $n = ${c}$ 得 $\\mathrm{C_${c}H_{${2 * c + 2}}O}$。陷阱：$\\mathrm{C_${c}H_{${2 * c}}O}$ 少算兩個氫；$\\mathrm{C_${c}H_{${2 * c + 2}}}$ 漏了氧；$\\mathrm{C_${c}H_{${2 * c + 1}}O_2}$ 多加一個氧。`,
      `A saturated alcohol with one hydroxyl group is an alkane with one hydrogen replaced by $-\\mathrm{OH}$: removing one $\\mathrm{H}$ from $\\mathrm{C_nH_{2n+2}}$ and adding $\\mathrm{OH}$ leaves the hydrogen count unchanged and adds one oxygen, giving $\\mathrm{C_nH_{2n+2}O}$. With $n = ${c}$ this is $\\mathrm{C_${c}H_{${2 * c + 2}}O}$. Traps: $\\mathrm{C_${c}H_{${2 * c}}O}$ is two hydrogens short; $\\mathrm{C_${c}H_{${2 * c + 2}}}$ omits the oxygen; $\\mathrm{C_${c}H_{${2 * c + 1}}O_2}$ adds an extra oxygen.`])
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 化學第二批（2026-08-28）—— 四個「高階」課題各僅 10 條，全科最薄。
+// 高階題以【兩步串連】為特徵：中間值與最終值都由公式算出，
+// 干擾項模擬「停在第一步」或「第二步用錯關係」。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// HQ1 — 先由質量求摩爾，再由方程式係數求生成物摩爾
+// 係數比刻意【不取 1】：ratio = 1 時 out 等於 mol，干擾項「停在第一步」會與
+// 正解相同，add() 會丟棄整組（實測 8 組只剩 1 組）。
+for (const [m0, Mr, ratio, prod] of [[64, 32, 2, 'H_2O'], [128, 32, 2, 'H_2O'], [96, 32, 2, 'H_2O'], [56, 28, 2, 'NH_3'], [84, 28, 3, 'NH_3'], [100, 50, 2, 'SO_3'], [150, 50, 3, 'SO_3'], [80, 40, 2, 'MgO'], [120, 40, 3, 'MgO'], [90, 18, 2, 'H_2'], [54, 18, 3, 'H_2'], [200, 100, 2, 'CaO']] as [number, number, number, string][]) {
+  const mol = m0 / Mr, out = mol * ratio
+  if (!Number.isInteger(mol)) continue
+  add(`cb_hq1_${m0}_${Mr}_${prod.replace(/[_{}]/g, '')}`, T.hellQuant, FW.quantReason, 'hard',
+    [`$${m0}$ g 某反應物（$M_r = ${Mr}$）完全反應，按方程式每 $1$ mol 反應物生成 $${ratio}$ mol $\\mathrm{${prod}}$。可生成多少摩爾 $\\mathrm{${prod}}$？`,
+     `$${m0}$ g of a reactant ($M_r = ${Mr}$) reacts completely; the equation gives $${ratio}$ mol of $\\mathrm{${prod}}$ per mol of reactant. How many moles of $\\mathrm{${prod}}$ form?`],
+    [n(`$${out}$ mol`), n(`$${mol}$ mol`), n(`$${round(mol / ratio, 3)}$ mol`), n(`$${m0}$ mol`)],
+    [`第一步由質量求摩爾：$n = \\dfrac{m}{M_r} = \\dfrac{${m0}}{${Mr}} = ${mol}$ mol。第二步按方程式係數比 $1 : ${ratio}$ 換算：生成 $${mol} \\times ${ratio} = ${out}$ mol。${ratio === 1 ? '本題係數比為 $1 : 1$，兩步的數值相同，但步驟不可省 —— 換一條方程式便不同。' : ''}陷阱：$${mol}$ mol 停在第一步；$${round(mol / ratio, 3)}$ mol 把係數比倒轉；$${m0}$ mol 把質量當成摩爾。`,
+     `Step one converts mass to moles: $n = \\frac{m}{M_r} = \\frac{${m0}}{${Mr}} = ${mol}$ mol. Step two applies the coefficient ratio $1 : ${ratio}$: $${mol} \\times ${ratio} = ${out}$ mol.${ratio === 1 ? ' Here the ratio is $1 : 1$ so the two steps give the same number, but the step cannot be skipped — another equation would differ.' : ''} Traps: $${mol}$ mol stops at step one; $${round(mol / ratio, 3)}$ mol inverts the coefficient ratio; $${m0}$ mol treats mass as moles.`])
+}
+
+// HQ2 — 先由摩爾求體積（rtp），再求密度比較
+for (const mol of [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 4]) {
+  const V = mol * 24
+  add(`cb_hq2_${String(mol).replace('.', '')}`, T.hellQuant, FW.quantReason, 'hard',
+    [`在室溫及標準大氣壓下，$${mol}$ mol 任何氣體所佔的體積是多少？（莫耳體積 $= 24$ dm³ mol⁻¹）`,
+     `At room temperature and pressure, what volume does $${mol}$ mol of any gas occupy? (molar volume $= 24$ dm³ mol⁻¹)`],
+    [n(`$${V}$ dm³`), n(`$${round(mol / 24, 4)}$ dm³`), n(`$24$ dm³`), n(`$${mol}$ dm³`)],
+    [`氣體體積 $= n \\times V_m = ${mol} \\times 24 = ${V}$ dm³。重點在於莫耳體積與氣體【種類無關】—— 同溫同壓下，$${mol}$ mol 氧氣與 $${mol}$ mol 氫氣佔同一體積，儘管兩者質量相差 16 倍。這就是亞佛加德羅定律，亦是氣體反應可以直接用體積比代替摩爾比的理由。陷阱：$${round(mol / 24, 4)}$ dm³ 用了除法；$24$ dm³ 直接抄了莫耳體積；$${mol}$ dm³ 把摩爾當成體積。`,
+     `Gas volume is $n \\times V_m = ${mol} \\times 24 = ${V}$ dm³. The key point is that molar volume does not depend on the identity of the gas: at the same temperature and pressure, $${mol}$ mol of oxygen and $${mol}$ mol of hydrogen occupy the same volume despite a sixteenfold difference in mass. This is Avogadro's law, and it is why volume ratios can replace mole ratios in reactions between gases. Traps: $${round(mol / 24, 4)}$ dm³ divides; $24$ dm³ copies the molar volume; $${mol}$ dm³ treats moles as a volume.`])
+}
+
+// HR1 — 由氧化數變化求得失電子數
+for (const [from, to, el] of [[7, 2, 'Mn'], [6, 3, 'Cr'], [5, 2, 'N'], [4, 2, 'S'], [3, 0, 'Fe'], [2, 0, 'Cu'], [0, 2, 'Zn'], [0, 3, 'Al'], [6, 4, 'S'], [5, 3, 'N']] as [number, number, string][]) {
+  const change = Math.abs(to - from)
+  const gained = to < from
+  add(`cb_hr1_${el}_${from}_${to}`, T.hellRedox, FW.electron, 'hard',
+    [`元素 $\\mathrm{${el}}$ 的氧化數由 $${from > 0 ? '+' : ''}${from}$ 變為 $${to > 0 ? '+' : ''}${to}$。該元素每個原子${gained ? '得到' : '失去'}多少個電子？它被氧化還是被還原？`,
+     `The oxidation number of $\\mathrm{${el}}$ changes from $${from > 0 ? '+' : ''}${from}$ to $${to > 0 ? '+' : ''}${to}$. How many electrons does each atom ${gained ? 'gain' : 'lose'}, and is it oxidised or reduced?`],
+    [[`${change} 個，被${gained ? '還原' : '氧化'}`, `${change}, ${gained ? 'reduced' : 'oxidised'}`],
+     [`${change} 個，被${gained ? '氧化' : '還原'}`, `${change}, ${gained ? 'oxidised' : 'reduced'}`],
+     [`${from + to} 個，被${gained ? '還原' : '氧化'}`, `${from + to}, ${gained ? 'reduced' : 'oxidised'}`],
+     [`${change + 1} 個，被${gained ? '還原' : '氧化'}`, `${change + 1}, ${gained ? 'reduced' : 'oxidised'}`]],
+    [`氧化數的變化量即得失電子數：$|${to} - (${from})| = ${change}$ 個。氧化數${gained ? '下降表示得到電子，即被還原' : '上升表示失去電子，即被氧化'}。記法：氧化數升＝失電子＝被氧化；氧化數降＝得電子＝被還原。陷阱：方向相反的一項把氧化與還原調轉，是本課最常見的錯誤；$${from + to}$ 個把兩個氧化數相加而非相減。`,
+     `The change in oxidation number is the number of electrons transferred: $|${to} - (${from})| = ${change}$. A ${gained ? 'fall in oxidation number means electrons are gained, so the species is reduced' : 'rise in oxidation number means electrons are lost, so the species is oxidised'}. A useful phrasing: number up, electrons lost, oxidised; number down, electrons gained, reduced. Traps: the option with the opposite direction swaps oxidation and reduction, the commonest error here; ${from + to} adds the two oxidation numbers instead of subtracting.`])
+}
+
+// HO1 — 由分子式求不飽和度（環＋π鍵數）= (2C + 2 − H) / 2
+for (const [C1, H1] of [[4, 8], [5, 10], [6, 12], [4, 6], [5, 8], [6, 10], [6, 6], [7, 8], [3, 4], [8, 10]] as [number, number][]) {
+  const du = (2 * C1 + 2 - H1) / 2
+  if (!Number.isInteger(du) || du < 0) continue
+  add(`cb_ho1_${C1}_${H1}`, T.hellOrganic, FW.carbon, 'hard',
+    [`分子式為 $\\mathrm{C_${C1}H_{${H1}}}$ 的烴，其不飽和度（環與雙鍵的總數）是多少？`,
+     `A hydrocarbon has molecular formula $\\mathrm{C_${C1}H_{${H1}}}$. What is its degree of unsaturation (rings plus double bonds)?`],
+    [n(`$${du}$`), n(`$${du + 1}$`), n(`$${C1 - du}$`), n(`$0$`)],
+    [`不飽和度 $= \\dfrac{2C + 2 - H}{2} = \\dfrac{2(${C1}) + 2 - ${H1}}{2} = \\dfrac{${2 * C1 + 2 - H1}}{2} = ${du}$。它的意思是：相對於同碳數的飽和烷烴 $\\mathrm{C_${C1}H_{${2 * C1 + 2}}}$，本分子每少 2 個氫就多一個環或一個雙鍵（三鍵計作 2）。所以 $${du}$ 代表環與雙鍵合共 $${du}$ 個。陷阱：$${du + 1}$ 多計一個；$0$ 誤以為飽和；$${C1 - du}$ 用碳數相減。這個數字係推斷結構的第一步：知道不飽和度，就知道要畫幾多個環或雙鍵。`,
+     `The degree of unsaturation is $\\frac{2C + 2 - H}{2} = \\frac{2(${C1}) + 2 - ${H1}}{2} = \\frac{${2 * C1 + 2 - H1}}{2} = ${du}$. It means that relative to the saturated alkane with the same carbon count, $\\mathrm{C_${C1}H_{${2 * C1 + 2}}}$, every two hydrogens short corresponds to one ring or one double bond, with a triple bond counting as two. So ${du} means rings and double bonds total ${du}. Traps: ${du + 1} counts one too many; 0 assumes saturation; ${C1 - du} subtracts from the carbon count. This figure is the first step in deducing a structure: knowing the unsaturation tells you how many rings or double bonds to draw.`])
+}
+
+// GV1 — 氣體反應體積比 = 摩爾比（同溫同壓）
+for (const [va, ra, rb, ga, gb] of [[10, 1, 2, 'H_2', 'H_2O'], [20, 1, 2, 'H_2', 'H_2O'], [30, 1, 2, 'H_2', 'H_2O'], [10, 1, 3, 'N_2', 'NH_3'], [20, 1, 3, 'N_2', 'NH_3'], [15, 1, 2, 'O_2', 'SO_3'], [24, 2, 1, 'CO', 'CO_2'], [36, 2, 1, 'CO', 'CO_2']] as [number, number, number, string, string][]) {
+  const vb = (va / ra) * rb
+  if (!Number.isInteger(vb)) continue
+  add(`cb_gv1_${va}_${ra}_${rb}_${ga.replace(/[_{}]/g, '')}`, T.gasVolume, FW.reaction, 'medium',
+    [`某氣體反應中 $\\mathrm{${ga}}$ 與 $\\mathrm{${gb}}$ 的係數比為 $${ra} : ${rb}$。在同溫同壓下，$${va}$ cm³ 的 $\\mathrm{${ga}}$ 完全反應可生成多少 cm³ $\\mathrm{${gb}}$？`,
+     `In a gas reaction the coefficients of $\\mathrm{${ga}}$ and $\\mathrm{${gb}}$ are in the ratio $${ra} : ${rb}$. At the same temperature and pressure, what volume of $\\mathrm{${gb}}$ forms from $${va}$ cm³ of $\\mathrm{${ga}}$?`],
+    // 注意：va × ra × rb 在 ra = 1 時等於 vb，不可用作干擾項（實測 8 組全被丟棄）。
+    [n(`$${vb}$ cm³`), n(`$${va}$ cm³`), n(`$${round(va * ra / rb, 1)}$ cm³`), n(`$${va * (ra + rb)}$ cm³`)],
+    [`由亞佛加德羅定律，同溫同壓下氣體的體積比等於摩爾比，故可直接用係數比換算，毋須先求摩爾數：$${va} \\times \\dfrac{${rb}}{${ra}} = ${vb}$ cm³。陷阱：$${va}$ cm³ 以為體積不變；$${round(va * ra / rb, 1)}$ cm³ 把比例倒轉；$${va * (ra + rb)}$ cm³ 把兩個係數相加而非取比例。留意此捷徑【只適用於氣體】—— 固體與液體的體積與摩爾數並無這種簡單關係。`,
+     `By Avogadro's law, gas volumes at the same temperature and pressure are in the same ratio as the moles, so the coefficients can be applied directly without converting to moles: $${va} \\times \\frac{${rb}}{${ra}} = ${vb}$ cm³. Traps: $${va}$ cm³ assumes the volume is unchanged; $${round(va * ra / rb, 1)}$ cm³ inverts the ratio; $${va * (ra + rb)}$ cm³ adds the coefficients instead of taking their ratio. Note that this shortcut applies only to gases — solids and liquids have no such simple relation between volume and moles.`])
 }
 
 export const chemistryBankQuestions: Question[] = bank
