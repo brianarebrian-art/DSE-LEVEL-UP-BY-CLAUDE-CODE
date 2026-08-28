@@ -1,7 +1,7 @@
 import type { Topic } from './types'
 import { topicList } from './_builder'
 import type { Question } from './types'
-import { createBank, n, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, n, type TopicMeta, type FwMeta, round } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // M2 (Algebra & Calculus) — PARAMETRIC BANK (Mode A, correct-by-construction)
@@ -27,12 +27,22 @@ const T = {
   vectors: { id: 'vectors', zh: '向量', en: 'Vectors' },
   limits: { id: 'limits', zh: '極限', en: 'Limits' },
   systems: { id: 'linear_systems', zh: '線性方程組', en: 'Systems of Linear Equations' },
+  // ── 2026-08-28 平均分佈補強 ────────────────────────────────────────────
+  // 實測 M2 10 個課題：matrices 已有 79 條，而 m2_vectors_3d 僅 2 條、
+  // binomial_theorem 12 條（平均目標 100）。依指示先補題數最少者。
+  vec3d: { id: 'm2_vectors_3d', zh: '三維向量', en: '3-D vectors' },
+  binomial: { id: 'binomial_theorem', zh: '二項式定理', en: 'Binomial Theorem' },
+  induction: { id: 'mathematical_induction', zh: '數學歸納法', en: 'Mathematical Induction' },
+  integration: { id: 'integration', zh: '積分法', en: 'Integration' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
   algebra: { id: 'algebra', zh: '代數', en: 'Algebra', emoji: '🔢' },
   calc: { id: 'calculus', zh: '微積分', en: 'Calculus', emoji: '📈' },
   geom: { id: 'vector_geometry', zh: '向量幾何', en: 'Vector Geometry', emoji: '➡️' },
+  modelling: { id: 'modelling', zh: '建模能力', en: 'Modelling', emoji: '🏗️' },
+  decompose: { id: 'condition_decomposition', zh: '條件分解', en: 'Condition Decomposition', emoji: '🎯' },
+  transform: { id: 'transformative_thinking', zh: '轉化思維', en: 'Transformative Thinking', emoji: '🔄' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('m2')
@@ -151,6 +161,85 @@ for (let x0 = 1; x0 <= 5; x0++) {
       [`沿第一行餘因子展開：$${a}(${e}\\cdot${k}-${f}\\cdot${h}) - ${b}(${d}\\cdot${k}-${f}\\cdot${g}) + ${c}(${d}\\cdot${h}-${e}\\cdot${g}) = ${det}$。陷阱：$${wrongSign}$ 漏了中間項的負號；$${a * e * k}$ 只乘了對角線。`,
        `Cofactor expansion along row 1 $= ${det}$. Trap: $${wrongSign}$ drops the alternating sign; $${a * e * k}$ multiplies only the diagonal.`])
   })
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 平均分佈補強 —— 四個最薄課題（2026-08-28）
+// ═══════════════════════════════════════════════════════════════════════════
+
+const nCr = (nn: number, r: number): number => {
+  let v = 1
+  for (let i = 0; i < r; i++) v = (v * (nn - i)) / (i + 1)
+  return Math.round(v)
+}
+
+// V1 — 三維向量的模：|v| = √(a² + b² + c²)（只取完全平方，避免無理數）
+for (const [a, b, c] of [[1, 2, 2], [2, 3, 6], [1, 4, 8], [2, 6, 9], [4, 4, 7], [3, 4, 12], [2, 10, 11], [6, 6, 7], [4, 8, 19], [2, 5, 14], [1, 12, 12], [3, 12, 4]] as [number, number, number][]) {
+  const sq = a * a + b * b + c * c
+  const mag = Math.sqrt(sq)
+  if (!Number.isInteger(mag)) continue
+  add(`m2b_v1_${a}_${b}_${c}`, T.vec3d, FW.modelling, 'easy',
+    [`求三維向量 $\\mathbf{v} = (${a},\\ ${b},\\ ${c})$ 的模。`, `Find the magnitude of the 3-D vector $\\mathbf{v} = (${a},\\ ${b},\\ ${c})$.`],
+    [n(`$${mag}$`), n(`$${a + b + c}$`), n(`$${sq}$`), n(`$${round(Math.sqrt(a + b + c), 3)}$`)],
+    [`三維向量的模 $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{${a}^2 + ${b}^2 + ${c}^2} = \\sqrt{${sq}} = ${mag}$。陷阱：$${a + b + c}$ 直接把分量相加；$${sq}$ 停在平方和而未開方；$${round(Math.sqrt(a + b + c), 3)}$ 先加後開方，次序倒轉。`,
+     `The magnitude is $|\\mathbf{v}| = \\sqrt{a^2 + b^2 + c^2} = \\sqrt{${a}^2 + ${b}^2 + ${c}^2} = \\sqrt{${sq}} = ${mag}$. Traps: $${a + b + c}$ simply adds the components; $${sq}$ stops at the sum of squares without taking the root; $${round(Math.sqrt(a + b + c), 3)}$ adds before squaring, reversing the order.`])
+}
+
+// V2 — 三維向量點積 a·b = a₁b₁ + a₂b₂ + a₃b₃
+for (const [a1, a2, a3, b1, b2, b3] of [[1, 2, 3, 4, 5, 6], [2, 0, 1, 3, 4, 5], [1, 1, 1, 2, 3, 4], [3, 2, 1, 1, 2, 3], [2, 3, 4, 1, 0, 2], [5, 1, 2, 2, 3, 1], [1, 4, 2, 3, 1, 5], [2, 2, 3, 4, 1, 1]] as [number, number, number, number, number, number][]) {
+  const dot = a1 * b1 + a2 * b2 + a3 * b3
+  add(`m2b_v2_${a1}${a2}${a3}_${b1}${b2}${b3}`, T.vec3d, FW.modelling, 'medium',
+    [`設 $\\mathbf{a} = (${a1},\\ ${a2},\\ ${a3})$、$\\mathbf{b} = (${b1},\\ ${b2},\\ ${b3})$。求 $\\mathbf{a} \\cdot \\mathbf{b}$。`,
+     `Let $\\mathbf{a} = (${a1},\\ ${a2},\\ ${a3})$ and $\\mathbf{b} = (${b1},\\ ${b2},\\ ${b3})$. Find $\\mathbf{a} \\cdot \\mathbf{b}$.`],
+    [n(`$${dot}$`), n(`$${(a1 + b1) + (a2 + b2) + (a3 + b3)}$`), n(`$${a1 * b1}$`), n(`$${a1 * a2 * a3 + b1 * b2 * b3}$`)],
+    [`點積是對應分量相乘後相加：$${a1}(${b1}) + ${a2}(${b2}) + ${a3}(${b3}) = ${a1 * b1} + ${a2 * b2} + ${a3 * b3} = ${dot}$。點積的結果是一個純量而非向量，這是它與叉積最重要的分別。陷阱：$${(a1 + b1) + (a2 + b2) + (a3 + b3)}$ 把分量相加；$${a1 * b1}$ 只算了第一項。`,
+     `The dot product multiplies corresponding components and adds: $${a1}(${b1}) + ${a2}(${b2}) + ${a3}(${b3}) = ${a1 * b1} + ${a2 * b2} + ${a3 * b3} = ${dot}$. The result is a scalar rather than a vector, which is the key difference from the cross product. Traps: $${(a1 + b1) + (a2 + b2) + (a3 + b3)}$ adds the components; $${a1 * b1}$ takes only the first term.`])
+}
+
+// B1 — 二項式定理：(1+x)ⁿ 中 xʳ 的係數 = C(n, r)
+for (const nn of [5, 6, 7, 8, 9, 10]) {
+  for (const r of [2, 3, 4]) {
+    if (r >= nn) continue
+    const c = nCr(nn, r)
+    add(`m2b_b1_${nn}_${r}`, T.binomial, FW.decompose, 'medium',
+      [`在 $(1 + x)^{${nn}}$ 的展開式中，$x^{${r}}$ 的係數是多少？`,
+       `In the expansion of $(1 + x)^{${nn}}$, what is the coefficient of $x^{${r}}$?`],
+      [n(`$${c}$`), n(`$${nCr(nn, r + 1)}$`), n(`$${nn * r}$`), n(`$${nn}$`)],
+      [`由二項式定理，$(1+x)^{n}$ 中 $x^{r}$ 的係數為 $\\binom{n}{r}$。代入 $n = ${nn}$、$r = ${r}$：$\\binom{${nn}}{${r}} = ${c}$。陷阱：$${nCr(nn, r + 1)}$ 取錯了項（$r$ 差一，因為展開式由 $x^0$ 開始數，第 $k$ 項對應 $x^{k-1}$）；$${nn * r}$ 用了相乘；$${nn}$ 只抄了指數。`,
+       `By the binomial theorem the coefficient of $x^{r}$ in $(1+x)^{n}$ is $\\binom{n}{r}$. With $n = ${nn}$ and $r = ${r}$ this is $\\binom{${nn}}{${r}} = ${c}$. Traps: $${nCr(nn, r + 1)}$ takes the wrong term, since the expansion is counted from $x^0$ so the $k$-th term carries $x^{k-1}$; $${nn * r}$ multiplies; $${nn}$ copies the exponent.`])
+  }
+}
+
+// I1 — 定積分 ∫₀ᵃ xⁿ dx = a^{n+1}/(n+1)
+// 刻意用【定】積分而非不定積分：m1-bank 已有 ∫kxⁿ dx 一族，寫成不定積分
+// 會與之題幹完全相同（實測撞三條），而定積分本身亦更貼 M2 的卷面。
+// 只取 a^{n+1} 可被 (n+1) 整除的組合，令答案為整數。
+for (const [aa, nn] of [[3, 2], [4, 1], [2, 3], [6, 2], [6, 1], [5, 4], [4, 3], [9, 2], [10, 1], [6, 3], [2, 1], [8, 1], [12, 2], [3, 3]] as [number, number][]) {
+  const val = aa ** (nn + 1) / (nn + 1)
+  if (!Number.isInteger(val)) continue
+  add(`m2b_i1_${aa}_${nn}`, T.integration, FW.transform, 'medium',
+    [`求定積分 $\\displaystyle\\int_{0}^{${aa}} x^{${nn}}\\,dx$。`,
+     `Evaluate the definite integral $\\displaystyle\\int_{0}^{${aa}} x^{${nn}}\\,dx$.`],
+    [n(`$${val}$`), n(`$${aa ** (nn + 1)}$`), n(`$${round(aa ** nn / (nn + 1), 3)}$`), n(`$${nn * aa ** (nn - 1)}$`)],
+    [`先求原函數：$\\int x^{${nn}}\\,dx = \\dfrac{x^{${nn + 1}}}{${nn + 1}}$。再代入上下限：$\\left[\\dfrac{x^{${nn + 1}}}{${nn + 1}}\\right]_{0}^{${aa}} = \\dfrac{${aa}^{${nn + 1}}}{${nn + 1}} - 0 = \\dfrac{${aa ** (nn + 1)}}{${nn + 1}} = ${val}$。定積分的結果是一個數值，不需要積分常數 $C$——這是它與不定積分最基本的分別。陷阱：$${aa ** (nn + 1)}$ 漏了除以新指數；$${round(aa ** nn / (nn + 1), 3)}$ 指數未加一；$${nn * aa ** (nn - 1)}$ 做了微分。`,
+     `First find the antiderivative: $\\int x^{${nn}}\\,dx = \\frac{x^{${nn + 1}}}{${nn + 1}}$. Then substitute the limits: $\\left[\\frac{x^{${nn + 1}}}{${nn + 1}}\\right]_{0}^{${aa}} = \\frac{${aa}^{${nn + 1}}}{${nn + 1}} - 0 = \\frac{${aa ** (nn + 1)}}{${nn + 1}} = ${val}$. A definite integral evaluates to a number and needs no constant of integration $C$, which is the most basic difference from an indefinite integral. Traps: $${aa ** (nn + 1)}$ omits the division by the new exponent; $${round(aa ** nn / (nn + 1), 3)}$ fails to raise the exponent; $${nn * aa ** (nn - 1)}$ differentiates instead.`])
+}
+
+// MI1 — 數學歸納法常用求和公式
+for (const nn of [5, 6, 8, 10, 12, 15, 20]) {
+  const s1 = (nn * (nn + 1)) / 2, s2 = (nn * (nn + 1) * (2 * nn + 1)) / 6
+  add(`m2b_mi1a_${nn}`, T.induction, FW.decompose, 'easy',
+    [`由數學歸納法可證 $\\displaystyle\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$。求 $\\displaystyle\\sum_{k=1}^{${nn}} k$。`,
+     `Mathematical induction gives $\\displaystyle\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$. Evaluate $\\displaystyle\\sum_{k=1}^{${nn}} k$.`],
+    [n(`$${s1}$`), n(`$${nn * nn}$`), n(`$${(nn * (nn - 1)) / 2}$`), n(`$${nn * (nn + 1)}$`)],
+    [`代入 $n = ${nn}$：$\\dfrac{${nn}(${nn}+1)}{2} = \\dfrac{${nn} \\times ${nn + 1}}{2} = ${s1}$。陷阱：$${nn * (nn + 1)}$ 漏了除以 2；$${(nn * (nn - 1)) / 2}$ 把 $n+1$ 寫成 $n-1$；$${nn * nn}$ 誤用 $n^2$。`,
+     `With $n = ${nn}$: $\\frac{${nn}(${nn}+1)}{2} = \\frac{${nn} \\times ${nn + 1}}{2} = ${s1}$. Traps: $${nn * (nn + 1)}$ omits the division by 2; $${(nn * (nn - 1)) / 2}$ writes $n-1$ for $n+1$; $${nn * nn}$ uses $n^2$.`])
+  add(`m2b_mi1b_${nn}`, T.induction, FW.decompose, 'medium',
+    [`已知 $\\displaystyle\\sum_{k=1}^{n} k^2 = \\frac{n(n+1)(2n+1)}{6}$。求 $\\displaystyle\\sum_{k=1}^{${nn}} k^2$。`,
+     `Given $\\displaystyle\\sum_{k=1}^{n} k^2 = \\frac{n(n+1)(2n+1)}{6}$, evaluate $\\displaystyle\\sum_{k=1}^{${nn}} k^2$.`],
+    [n(`$${s2}$`), n(`$${s1 * s1}$`), n(`$${s1}$`), n(`$${(nn * (nn + 1) * (2 * nn + 1))}$`)],
+    [`代入 $n = ${nn}$：$\\dfrac{${nn} \\times ${nn + 1} \\times ${2 * nn + 1}}{6} = ${s2}$。陷阱：$${(nn * (nn + 1) * (2 * nn + 1))}$ 漏了除以 6；$${s1}$ 是 $\\sum k$ 而非 $\\sum k^2$；$${s1 * s1}$ 是 $\\left(\\sum k\\right)^2$ —— 留意 $\\sum k^2 \\neq \\left(\\sum k\\right)^2$，兩者絕不可互換。`,
+     `With $n = ${nn}$: $\\frac{${nn} \\times ${nn + 1} \\times ${2 * nn + 1}}{6} = ${s2}$. Traps: $${(nn * (nn + 1) * (2 * nn + 1))}$ omits the division by 6; $${s1}$ is $\\sum k$ rather than $\\sum k^2$; $${s1 * s1}$ is $\\left(\\sum k\\right)^2$ — note that $\\sum k^2 \\neq \\left(\\sum k\\right)^2$ and the two must never be interchanged.`])
+}
 
 export const m2BankQuestions: Question[] = bank
 

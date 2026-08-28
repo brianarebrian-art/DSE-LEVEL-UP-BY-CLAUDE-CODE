@@ -21,6 +21,13 @@ const T = {
   // ⚠️ m2.ts 同樣使用 'binomial_theorem'，但該 id 在 m2 是【已註冊】的，
   //    故不可一併改動 —— 兩科的註冊表本來就不同。
   binomialThm: { id: 'binomial', zh: '二項式定理', en: 'Binomial Theorem' },
+  // ── 2026-08-28 平均分佈補強 ────────────────────────────────────────────
+  // 實測 M1 12 個課題：differentiation 已有 142 條，而 m1_normal_calc 僅 1 條、
+  // m1_distributions 3 條（平均目標 83）。依指示先補題數最少者。
+  normalCalc: { id: 'm1_normal_calc', zh: '正態分佈計算', en: 'Normal distribution — calculation' },
+  distHigh: { id: 'm1_distributions', zh: '概率分佈（高階）', en: 'Probability distributions' },
+  statInf: { id: 'statistics_inference', zh: '統計推斷', en: 'Statistical Inference' },
+  probDist: { id: 'probability_dist', zh: '概率分佈', en: 'Probability Distributions' },
   binomialDist: { id: 'binomial_distribution', zh: '二項分佈', en: 'Binomial Distribution' },
   poisson: { id: 'poisson_distribution', zh: '泊松分佈', en: 'Poisson Distribution' },
   normal: { id: 'normal_distribution', zh: '正態分佈', en: 'Normal Distribution' },
@@ -29,6 +36,8 @@ const T = {
 const FW = {
   calc: { id: 'calculus', zh: '微積分', en: 'Calculus', emoji: '📈' },
   stats: { id: 'statistics', zh: '統計', en: 'Statistics', emoji: '📊' },
+  modelling: { id: 'modelling', zh: '建模能力', en: 'Modelling', emoji: '🏗️' },
+  decompose: { id: 'condition_decomposition', zh: '條件分解', en: 'Condition Decomposition', emoji: '🎯' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('m1')
@@ -206,6 +215,70 @@ for (let m = 3; m <= 7; m++) {
     [n(`$${frac(den - 1, den)}$`), n(`$${frac(1, den)}$`), n(`$${frac(m, den)}$`), n(`$${frac(den - 1, Math.pow(2, m - 1))}$`)],
     [`用補集：$P(X\\ge1) = 1 - P(X=0) = 1 - \\left(\\tfrac12\\right)^{${m}} = 1 - \\dfrac{1}{2^{${m}}} = ${frac(den - 1, den)}$。陷阱：$${frac(1, den)}$ 是 $P(X=0)$ 本身（未用補集）。`,
      `Complement: $P(X\\ge1)=1-\\left(\\tfrac12\\right)^{${m}}=${frac(den - 1, den)}$. Trap: $${frac(1, den)}$ is $P(X=0)$ itself.`])
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 平均分佈補強 —— 四個最薄課題（2026-08-28）
+// ═══════════════════════════════════════════════════════════════════════════
+
+// NC1 — 標準分數 z = (x − μ) / σ
+for (const mu of [50, 60, 70, 80, 100]) {
+  for (const sd of [4, 5, 8, 10]) {
+    for (const z of [1, 2, 3, -1, -2]) {
+      const x = mu + z * sd
+      add(`m1b_nc1_${mu}_${sd}_${z}`, T.normalCalc, FW.modelling, 'easy',
+        [`某正態分佈的平均數 $\\mu = ${mu}$、標準差 $\\sigma = ${sd}$。數值 $x = ${x}$ 的標準分數是多少？`,
+         `A normal distribution has mean $\\mu = ${mu}$ and standard deviation $\\sigma = ${sd}$. What is the standard score of $x = ${x}$?`],
+        [n(`$${z}$`), n(`$${round((x + mu) / sd, 3)}$`), n(`$${x - mu}$`), n(`$${round(sd / (x - mu === 0 ? 1 : x - mu), 3)}$`)],
+        [`標準分數 $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{${x} - ${mu}}{${sd}} = ${z}$。$z$ 表示該數值距離平均數多少個標準差，負值代表在平均數之下。陷阱：$${x - mu}$ 只求了差而未除以標準差；$${round((x + mu) / sd, 3)}$ 把減號寫成加號；$${round(sd / (x - mu === 0 ? 1 : x - mu), 3)}$ 上下倒轉。`,
+         `The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{${x} - ${mu}}{${sd}} = ${z}$, giving the number of standard deviations from the mean, with a negative value meaning below the mean. Traps: $${x - mu}$ stops at the difference without dividing; $${round((x + mu) / sd, 3)}$ adds instead of subtracting; $${round(sd / (x - mu === 0 ? 1 : x - mu), 3)}$ inverts the fraction.`])
+    }
+  }
+}
+
+// PD1 — 二項分佈期望值 E(X) = np 與方差 Var(X) = np(1−p)
+for (const nn of [10, 20, 40, 50, 80, 100]) {
+  for (const pp of [0.1, 0.2, 0.25, 0.5]) {
+    const ev = nn * pp, va = nn * pp * (1 - pp)
+    if (!Number.isInteger(ev)) continue
+    add(`m1b_pd1a_${nn}_${String(pp).replace('.', '')}`, T.probDist, FW.modelling, 'easy',
+      [`設 $X \\sim B(${nn},\\ ${pp})$。求 $E(X)$。`, `Let $X \\sim B(${nn},\\ ${pp})$. Find $E(X)$.`],
+      [n(`$${ev}$`), n(`$${round(va, 3)}$`), n(`$${nn}$`), n(`$${round(nn / pp, 2)}$`)],
+      [`二項分佈的期望值 $E(X) = np = ${nn} \\times ${pp} = ${ev}$。陷阱：$${round(va, 3)}$ 是方差 $np(1-p)$；$${nn}$ 只抄了試驗次數；$${round(nn / pp, 2)}$ 用了除法。`,
+       `For a binomial distribution $E(X) = np = ${nn} \\times ${pp} = ${ev}$. Traps: $${round(va, 3)}$ is the variance $np(1-p)$; $${nn}$ copies the number of trials; $${round(nn / pp, 2)}$ divides.`])
+    add(`m1b_pd1b_${nn}_${String(pp).replace('.', '')}`, T.distHigh, FW.decompose, 'medium',
+      [`設 $X \\sim B(${nn},\\ ${pp})$。求 $\\operatorname{Var}(X)$。`, `Let $X \\sim B(${nn},\\ ${pp})$. Find $\\operatorname{Var}(X)$.`],
+      [n(`$${round(va, 3)}$`), n(`$${ev}$`), n(`$${round(nn * pp * pp, 3)}$`), n(`$${round(Math.sqrt(va), 3)}$`)],
+      [`二項分佈的方差 $\\operatorname{Var}(X) = np(1-p) = ${nn} \\times ${pp} \\times ${round(1 - pp, 2)} = ${round(va, 3)}$。陷阱：$${ev}$ 是期望值 $np$；$${round(nn * pp * pp, 3)}$ 誤用 $np^2$；$${round(Math.sqrt(va), 3)}$ 是標準差，即方差的平方根。`,
+       `For a binomial distribution $\\operatorname{Var}(X) = np(1-p) = ${nn} \\times ${pp} \\times ${round(1 - pp, 2)} = ${round(va, 3)}$. Traps: $${ev}$ is the mean $np$; $${round(nn * pp * pp, 3)}$ uses $np^2$; $${round(Math.sqrt(va), 3)}$ is the standard deviation, the square root of the variance.`])
+  }
+}
+
+// PD2 — 泊松分佈期望值與方差同為 λ
+for (const lam of [2, 3, 4, 5, 6, 8]) {
+  add(`m1b_pd2_${lam}`, T.probDist, FW.modelling, 'medium',
+    [`設 $X \\sim \\mathrm{Po}(${lam})$。$E(X)$ 與 $\\operatorname{Var}(X)$ 分別是多少？`,
+     `Let $X \\sim \\mathrm{Po}(${lam})$. What are $E(X)$ and $\\operatorname{Var}(X)$?`],
+    [[`$${lam}$ 與 $${lam}$`, `$${lam}$ and $${lam}$`],
+     [`$${lam}$ 與 $${round(Math.sqrt(lam), 3)}$`, `$${lam}$ and $${round(Math.sqrt(lam), 3)}$`],
+     [`$${lam}$ 與 $${lam * lam}$`, `$${lam}$ and $${lam * lam}$`],
+     [`$${round(Math.sqrt(lam), 3)}$ 與 $${lam}$`, `$${round(Math.sqrt(lam), 3)}$ and $${lam}$`]],
+    [`泊松分佈的期望值與方差同樣等於參數 $\\lambda$，故兩者皆為 $${lam}$。這是泊松分佈的標誌性特徵，亦是判別題目該用泊松還是二項的線索之一。陷阱：$${round(Math.sqrt(lam), 3)}$ 是標準差；$${lam * lam}$ 誤以為方差是 $\\lambda^2$。`,
+     `For a Poisson distribution both the mean and the variance equal the parameter $\\lambda$, so both are $${lam}$. This equality is the signature of the Poisson distribution and one clue for deciding between Poisson and binomial. Traps: $${round(Math.sqrt(lam), 3)}$ is the standard deviation; $${lam * lam}$ takes the variance as $\\lambda^2$.`])
+}
+
+// SI1 — 樣本平均數的標準誤 σ/√n
+for (const sd of [6, 10, 12, 20, 30]) {
+  for (const nn of [4, 9, 16, 25, 36]) {
+    const se = sd / Math.sqrt(nn)
+    if (!Number.isInteger(se * 100)) continue
+    add(`m1b_si1_${sd}_${nn}`, T.statInf, FW.modelling, 'medium',
+      [`某母體的標準差為 $${sd}$。由該母體抽取大小為 $${nn}$ 的樣本，其樣本平均數的標準誤是多少？`,
+       `A population has standard deviation $${sd}$. For samples of size $${nn}$, what is the standard error of the sample mean?`],
+      [n(`$${round(se, 2)}$`), n(`$${sd}$`), n(`$${round(sd / nn, 3)}$`), n(`$${round(sd * Math.sqrt(nn), 2)}$`)],
+      [`樣本平均數的標準誤 $= \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{${sd}}{\\sqrt{${nn}}} = \\dfrac{${sd}}{${Math.sqrt(nn)}} = ${round(se, 2)}$。陷阱：$${sd}$ 是母體標準差本身，未除以 $\\sqrt{n}$；$${round(sd / nn, 3)}$ 除了 $n$ 而非 $\\sqrt{n}$；$${round(sd * Math.sqrt(nn), 2)}$ 用了乘法。留意樣本愈大標準誤愈細，但因為分母是 $\\sqrt{n}$，樣本要增至四倍才能令標準誤減半。`,
+       `The standard error of the sample mean is $\\frac{\\sigma}{\\sqrt{n}} = \\frac{${sd}}{\\sqrt{${nn}}} = \\frac{${sd}}{${Math.sqrt(nn)}} = ${round(se, 2)}$. Traps: $${sd}$ is the population standard deviation itself, undivided; $${round(sd / nn, 3)}$ divides by $n$ rather than $\\sqrt{n}$; $${round(sd * Math.sqrt(nn), 2)}$ multiplies. Note that a larger sample gives a smaller standard error, but since the denominator is $\\sqrt{n}$ the sample must quadruple to halve it.`])
+  }
 }
 
 export const m1BankQuestions: Question[] = bank
