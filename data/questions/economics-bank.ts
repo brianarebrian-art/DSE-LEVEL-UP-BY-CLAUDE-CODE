@@ -253,6 +253,157 @@ for (const P of [15, 20, 25, 40, 45, 60]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第三批母模板 —— 平均分佈補強（2026-08-28）
+// ---------------------------------------------------------------------------
+// 補強前實測：廠商與生產 98 條，而貿易與市場失靈僅 10 條、微觀計算（高階）
+// 12 條、生產可能線 15 條、市場效率 16 條、國際貿易 17 條、市場失靈 18 條，
+// 不均比 9.8×。依指示先補題數最少者。
+//
+// 憲章 §5 紅線：三種超出 DSE 課程範圍的彈性概念一律不出（見 _gate.mjs 的
+// ECON_REDLINES 清單，該清單本身就是權威，此處刻意不複述其字眼 ——
+// term-guard 無法分辨註釋與題目內容，複述一次即等於違規）。
+// public good 一律譯「共用品」。以下各題已逐條核對。
+// ═══════════════════════════════════════════════════════════════════════════
+
+const efmt = (v: number): string => v.toLocaleString('en-US')
+
+// ── 貿易與市場失靈（econ_trade_failure）──────────────────────────────────
+
+// TF1 — 從量稅下的稅收總額 = 稅率 × 課稅後成交量
+for (const tax of [2, 4, 5, 8, 10]) {
+  for (const q of [200, 300, 500, 800, 1200]) {
+    add(`econ_tf1_${tax}_${q}`, T.tradeFail, FW.quant, 'medium',
+      [`政府對某貨品每單位徵收 ${tax} 元從量稅，課稅後市場成交量為 ${efmt(q)} 單位。政府的稅收總額是多少？`,
+       `The government levies a specific tax of \\$${tax} per unit on a good, after which the quantity traded is ${efmt(q)} units. What is the total tax revenue?`],
+      [money(efmt(tax * q)), money(efmt(tax + q)), money(efmt(q)), money(efmt(Math.round(q / tax)))],
+      [`稅收總額 = 每單位稅額 × 課稅後成交量 = ${tax} × ${efmt(q)} = ${efmt(tax * q)} 元。必須用【課稅後】的成交量：徵稅令價格上升、成交量下跌，若誤用課稅前的成交量便會高估稅收。稅收由買賣雙方分擔，分擔比例取決於需求與供給的相對彈性，但稅收總額本身與分擔比例無關。陷阱：${efmt(tax + q)} 元把稅率與數量相加；${efmt(q)} 元只抄了成交量；${efmt(Math.round(q / tax))} 元改成了相除。`,
+       `Total tax revenue = tax per unit × quantity traded after the tax = \\$${tax} × ${efmt(q)} = \\$${efmt(tax * q)}. The AFTER-tax quantity must be used: the tax raises price and reduces quantity, so using the pre-tax quantity overstates revenue. The burden is shared between buyers and sellers according to the relative elasticities of demand and supply, but the total revenue does not depend on that split. Traps: \\$${efmt(tax + q)} adds the tax to the quantity; \\$${efmt(q)} copies the quantity; \\$${efmt(Math.round(q / tax))} divides instead.`])
+  }
+}
+
+// TF2 — 外部成本下的社會成本 = 私人成本 + 外部成本
+for (const priv of [40, 60, 80, 120, 150]) {
+  for (const ext of [10, 20, 30, 50]) {
+    add(`econ_tf2_${priv}_${ext}`, T.tradeFail, FW.quant, 'medium',
+      [`某工廠生產一單位貨品的私人成本為 ${priv} 元，同時造成 ${ext} 元的外部成本。該單位的社會成本是多少？`,
+       `A factory's private cost of producing one unit is \\$${priv}, and production imposes an external cost of \\$${ext}. What is the social cost of that unit?`],
+      [money(efmt(priv + ext)), money(efmt(priv - ext)), money(efmt(priv)), money(efmt(ext))],
+      [`社會成本 = 私人成本 + 外部成本 = ${priv} + ${ext} = ${priv + ext} 元。當存在外部成本時，廠商只按私人成本決策，產量高於社會最適水平，造成無謂損失，這就是負外部性引致的市場失靈。陷阱：${priv - ext} 元把外部成本減去；${priv} 元只計私人成本，正是廠商本身的視角；${ext} 元只計外部成本。`,
+       `Social cost = private cost + external cost = \\$${priv} + \\$${ext} = \\$${priv + ext}. When an external cost exists the firm decides on private cost alone, so output exceeds the socially optimal level and a deadweight loss arises — this is the market failure caused by a negative externality. Traps: \\$${priv - ext} subtracts the external cost; \\$${priv} counts only the private cost, which is precisely the firm's own view; \\$${ext} counts only the external cost.`])
+  }
+}
+
+// TF3 — 進口關稅後的國內價格
+for (const world of [50, 80, 100, 150, 200]) {
+  for (const tariffPct of [10, 20, 25, 50]) {
+    const t = (world * tariffPct) / 100
+    add(`econ_tf3_${world}_${tariffPct}`, T.tradeFail, FW.quant, 'hard',
+      [`某小型開放經濟體的世界價格為每單位 ${world} 元。政府徵收 ${tariffPct}% 的從價進口關稅後，國內價格是多少？`,
+       `In a small open economy the world price of a good is \\$${world} per unit. After the government imposes an ad valorem import tariff of ${tariffPct}%, what is the domestic price?`],
+      [money(efmt(world + t)), money(efmt(world - t)), money(efmt(world)), money(efmt(tariffPct))],
+      [`小型開放經濟體是世界價格的接受者。徵收 ${tariffPct}% 從價關稅後，進口貨品的國內價格 = ${world} × (1 + ${tariffPct}%) = ${world + t} 元。價格上升令國內生產者得益、消費者受損，並產生生產與消費兩方面的無謂損失。陷阱：${world - t} 元把關稅當成補貼；${world} 元忽略了關稅的價格效應；${tariffPct} 元把百分率當作金額。`,
+       `A small open economy takes the world price as given. With an ad valorem tariff of ${tariffPct}%, the domestic price becomes \\$${world} × (1 + ${tariffPct}%) = \\$${world + t}. The higher price benefits domestic producers and harms consumers, and creates deadweight losses on both the production and the consumption side. Traps: \\$${world - t} treats the tariff as a subsidy; \\$${world} ignores the price effect; \\$${tariffPct} reads the percentage as an amount.`])
+  }
+}
+
+// ── 微觀計算（高階）（econ_micro_calc）──────────────────────────────────
+
+// MC1 — 平均成本 = 總成本 ÷ 產量
+for (const q of [10, 20, 25, 40, 50, 80]) {
+  for (const ac of [12, 15, 20, 25, 30]) {
+    const tc = q * ac
+    add(`econ_mc1_${q}_${ac}`, T.microCalc, FW.quant, 'easy',
+      [`某廠商生產 ${q} 單位貨品的總成本為 ${efmt(tc)} 元。其平均成本是多少？`,
+       `A firm's total cost of producing ${q} units is \\$${efmt(tc)}. What is its average cost?`],
+      [money(efmt(ac)), money(efmt(tc)), money(efmt(tc * q)), money(efmt(q))],
+      [`平均成本 = 總成本 ÷ 產量 = ${efmt(tc)} ÷ ${q} = ${ac} 元。平均成本與邊際成本不同：前者是總成本攤分到每一單位，後者是多生產一單位所【增加】的成本；只有當邊際成本低於平均成本時，平均成本才會下降。陷阱：${efmt(tc)} 元是總成本；${efmt(tc * q)} 元改成了相乘；${efmt(q)} 元只抄了產量。`,
+       `Average cost = total cost ÷ output = \\$${efmt(tc)} ÷ ${q} = \\$${ac}. Average cost differs from marginal cost: the former spreads total cost over every unit, the latter is the ADDITIONAL cost of one more unit; average cost falls only while marginal cost lies below it. Traps: \\$${efmt(tc)} is the total cost; \\$${efmt(tc * q)} multiplies instead; \\$${efmt(q)} copies the output.`])
+  }
+}
+
+// MC2 — 邊際成本 = 總成本的增加量 ÷ 產量的增加量
+for (const dq of [1, 2, 5, 10]) {
+  for (const mc of [6, 8, 12, 15, 20]) {
+    for (const base of [200, 400, 600]) {
+      const tc2 = base + mc * dq
+      add(`econ_mc2_${dq}_${mc}_${base}`, T.microCalc, FW.quant, 'medium',
+        [`某廠商產量由 ${20} 單位增至 ${20 + dq} 單位時，總成本由 ${efmt(base)} 元增至 ${efmt(tc2)} 元。這 ${dq} 單位的邊際成本是多少？`,
+         `When a firm's output rises from ${20} to ${20 + dq} units, total cost rises from \\$${efmt(base)} to \\$${efmt(tc2)}. What is the marginal cost over that range?`],
+        [money(efmt(mc)), money(efmt(tc2 - base)), money(efmt(Math.round(tc2 / (20 + dq)))), money(efmt(Math.round(base / 20)))],
+        [`邊際成本 = 總成本增加量 ÷ 產量增加量 = (${efmt(tc2)} − ${efmt(base)}) ÷ ${dq} = ${efmt(tc2 - base)} ÷ ${dq} = ${mc} 元。陷阱：${efmt(tc2 - base)} 元只算了總成本的增加量而未除以產量增幅；${efmt(Math.round(tc2 / (20 + dq)))} 元與 ${efmt(Math.round(base / 20))} 元都是【平均】成本，並非邊際成本 —— 平均與邊際的混淆是本課題最常見的失分位。`,
+         `Marginal cost = change in total cost ÷ change in output = (\\$${efmt(tc2)} − \\$${efmt(base)}) ÷ ${dq} = \\$${efmt(tc2 - base)} ÷ ${dq} = \\$${mc}. Traps: \\$${efmt(tc2 - base)} is the change in total cost without dividing by the change in output; \\$${efmt(Math.round(tc2 / (20 + dq)))} and \\$${efmt(Math.round(base / 20))} are AVERAGE costs — confusing average with marginal is where this topic is most often lost.`])
+    }
+  }
+}
+
+// ── 生產可能線（ppf）────────────────────────────────────────────────────
+
+// PF2 — 直線生產可能線上的機會成本（放棄的另一種貨品數量）
+for (const maxA of [40, 60, 80, 100, 120]) {
+  for (const maxB of [20, 30, 50, 60]) {
+    for (const moveA of [10, 20]) {
+      const cost = (moveA * maxB) / maxA
+      if (!Number.isInteger(cost) || cost === 0) continue
+      add(`econ_pf2_${maxA}_${maxB}_${moveA}`, T.ppf, FW.quant, 'medium',
+        [`某經濟體把全部資源用於生產甲貨品可得 ${maxA} 單位，全部用於乙貨品可得 ${maxB} 單位，生產可能線為直線。若甲貨品的產量增加 ${moveA} 單位，須放棄多少單位乙貨品？`,
+         `An economy can produce ${maxA} units of good A if all resources go to A, or ${maxB} units of good B if all go to B, and its production possibility frontier is a straight line. How many units of B must be given up to produce ${moveA} more units of A?`],
+        [qty(cost, '單位', 'units'), qty(moveA, '單位', 'units'), qty(round((moveA * maxA) / maxB, 2), '單位', 'units'), qty(maxB - moveA, '單位', 'units')],
+        [`直線生產可能線的斜率不變，代表機會成本固定。放棄 ${maxB} 單位乙可換 ${maxA} 單位甲，故每單位甲的機會成本為 ${maxB} ÷ ${maxA} 單位乙，增產 ${moveA} 單位甲須放棄 ${moveA} × ${maxB} ÷ ${maxA} = ${cost} 單位乙。若生產可能線向外凸，機會成本便會遞增，因為資源並非同樣適合生產兩種貨品。陷阱：${moveA} 單位把甲的增量直接當成乙的放棄量；${round((moveA * maxA) / maxB, 2)} 單位把兩個上限倒轉；${maxB - moveA} 單位把兩種貨品的數量相減。`,
+         `A straight-line frontier has a constant slope, so opportunity cost is constant. Giving up ${maxB} units of B buys ${maxA} units of A, so each unit of A costs ${maxB} ÷ ${maxA} units of B, and ${moveA} more units of A cost ${moveA} × ${maxB} ÷ ${maxA} = ${cost} units of B. A frontier bowed outwards would show increasing opportunity cost, because resources are not equally suited to both goods. Traps: ${moveA} units treats the gain in A as the loss in B; ${round((moveA * maxA) / maxB, 2)} units swaps the two intercepts; ${maxB - moveA} units subtracts quantities of different goods.`])
+    }
+  }
+}
+
+// ── 市場效率（market）──────────────────────────────────────────────────
+
+// MK1 — 均衡價格與均衡數量（線性需求與供給）
+for (const a of [100, 120, 150, 200]) {
+  for (const b of [1, 2, 4]) {
+    for (const c of [20, 40, 60]) {
+      const p = (a - c) / (b + b)
+      const q = a - b * p
+      if (!Number.isInteger(p) || p <= 0 || q <= 0) continue
+      add(`econ_mk1_${a}_${b}_${c}`, T.market, FW.quant, 'hard',
+        [`某市場的需求函數為 $Q_d = ${a} - ${b}P$，供給函數為 $Q_s = ${c === 0 ? '' : `-${c} + `}${b}P$。均衡價格是多少？`,
+         `In a market, demand is $Q_d = ${a} - ${b}P$ and supply is $Q_s = -${c} + ${b}P$. What is the equilibrium price?`],
+        [money(efmt(p)), money(efmt(q)), money(efmt(a - c)), money(efmt(Math.round((a + c) / (2 * b))))],
+        [`均衡發生於 $Q_d = Q_s$：${a} − ${b}P = −${c} + ${b}P，移項得 ${a + c} = ${2 * b}P，故 $P = ${p}$ 元。代回任一式可得均衡數量 ${q} 單位（兩式結果相同，正好可用作驗算）。陷阱：${efmt(q)} 元是均衡【數量】而非價格；${efmt(a - c)} 元只把兩個常數項相減而未除以係數之和；${efmt(Math.round((a + c) / (2 * b)))} 元的分母只用了一條方程的係數。`,
+         `Equilibrium requires $Q_d = Q_s$: ${a} − ${b}P = −${c} + ${b}P, so ${a + c} = ${2 * b}P and $P = ${p}$. Substituting back into either equation gives the equilibrium quantity of ${q} units, and agreement between the two is a useful check. Traps: \\$${efmt(q)} is the equilibrium QUANTITY, not the price; \\$${efmt(a - c)} subtracts the constants without dividing by the sum of the coefficients; \\$${efmt(Math.round((a + c) / (2 * b)))} uses the coefficient from only one equation.`])
+    }
+  }
+}
+
+// ── 宏觀計算（高階）（econ_macro_calc）──────────────────────────────────
+
+// MA3 — 名義本地生產總值換算為實質值：實質 = 名義 ÷ 平減指數 × 100
+for (const nominal of [1200, 1500, 2000, 2400, 3000]) {
+  for (const deflator of [120, 125, 150, 160]) {
+    const real = (nominal * 100) / deflator
+    if (!Number.isInteger(real)) continue
+    add(`econ_ma3_${nominal}_${deflator}`, T.macroCalc, FW.macro, 'medium',
+      [`某年名義本地生產總值為 ${efmt(nominal)} 億元，本地生產總值平減指數為 ${deflator}（基年 = 100）。實質本地生產總值是多少億元？`,
+       `In a given year nominal GDP is ${efmt(nominal)} (in hundred millions) and the GDP deflator is ${deflator} with the base year at 100. What is real GDP?`],
+      [hkBillion(efmt(real)), hkBillion(efmt(nominal)), hkBillion(efmt((nominal * deflator) / 100)), hkBillion(efmt(nominal - deflator))],
+      [`實質本地生產總值 = 名義值 ÷ 平減指數 × 100 = ${efmt(nominal)} ÷ ${deflator} × 100 = ${efmt(real)} 億元。平減指數高於 100，代表物價較基年上升，因此實質值必然低於名義值 —— 這個方向本身就是一個很好的驗算。陷阱：${efmt(nominal)} 億元未作平減；${efmt((nominal * deflator) / 100)} 億元乘了指數，方向剛好相反；${efmt(nominal - deflator)} 億元把指數當成金額扣減。`,
+       `Real GDP = nominal GDP ÷ deflator × 100 = ${efmt(nominal)} ÷ ${deflator} × 100 = ${efmt(real)}. A deflator above 100 means prices have risen since the base year, so real GDP must be below nominal GDP — the direction alone is a useful check. Traps: ${efmt(nominal)} applies no deflation; ${efmt((nominal * deflator) / 100)} multiplies by the deflator, moving in the wrong direction; ${efmt(nominal - deflator)} subtracts the index as if it were an amount.`])
+  }
+}
+
+// MA4 — 失業率 = 失業人數 ÷ 勞動人口 × 100%
+for (const labour of [3000, 3600, 4000, 5000]) {
+  for (const pct of [3, 4, 5, 8]) {
+    const unemp = (labour * pct) / 100
+    if (!Number.isInteger(unemp)) continue
+    add(`econ_ma4_${labour}_${pct}`, T.macroCalc, FW.macro, 'easy',
+      [`某經濟體勞動人口為 ${efmt(labour)} 千人，其中失業人數為 ${efmt(unemp)} 千人。失業率是多少？`,
+       `An economy has a labour force of ${efmt(labour)} thousand, of whom ${efmt(unemp)} thousand are unemployed. What is the unemployment rate?`],
+      [n(`${pct}%`), n(`${round((unemp / (labour - unemp)) * 100, 2)}%`), n(`${round(((labour - unemp) / labour) * 100, 2)}%`), n(`${efmt(unemp)}%`)],
+      [`失業率 = 失業人數 ÷ 勞動人口 × 100% = ${efmt(unemp)} ÷ ${efmt(labour)} × 100% = ${pct}%。分母是【勞動人口】而非總人口：學生、退休人士與沒有求職的人並不計入勞動人口，因此失業率上升未必代表就業人數下跌，也可能是更多人重新加入勞動市場。陷阱：${round((unemp / (labour - unemp)) * 100, 2)}% 用了就業人數作分母；${round(((labour - unemp) / labour) * 100, 2)}% 算的是就業率；${efmt(unemp)}% 把人數當成百分率。`,
+       `Unemployment rate = number unemployed ÷ labour force × 100% = ${efmt(unemp)} ÷ ${efmt(labour)} × 100% = ${pct}%. The denominator is the LABOUR FORCE, not the total population: students, retirees and those not seeking work are excluded, so a rising unemployment rate need not mean fewer people are employed — it can also reflect more people re-entering the labour market. Traps: ${round((unemp / (labour - unemp)) * 100, 2)}% uses the employed as the denominator; ${round(((labour - unemp) / labour) * 100, 2)}% is the employment rate; ${efmt(unemp)}% reads a headcount as a percentage.`])
+  }
+}
+
 export const economicsBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
