@@ -40,6 +40,7 @@ import { bafsBankQuestions } from './bafs-bank'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
+import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { thsQuestions, thsTopics } from './ths'
 import { healthManagementQuestions, healthManagementTopics } from './health-management'
@@ -111,7 +112,7 @@ const banks: Record<string, SubjectBank> = {
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
-  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions], topics: historyTopics },
+  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },
   ths: { questions: thsQuestions, topics: thsTopics },
   'health-management': { questions: healthManagementQuestions, topics: healthManagementTopics },
