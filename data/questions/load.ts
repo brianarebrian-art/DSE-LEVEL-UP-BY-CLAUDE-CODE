@@ -55,7 +55,10 @@ const loaders: Record<string, Loader> = {
     ])
     return [...base.chemistryQuestions, ...cbank.chemistryBankQuestions, ...floor1.chemistryFloorBatch1Questions]
   },
-  biology: async () => (await import('./biology')).biologyQuestions,
+  biology: async () => {
+    const [base, bank] = await Promise.all([import('./biology'), import('./applied-banks')])
+    return [...base.biologyQuestions, ...bank.biologyBankQuestions]
+  },
   english: async () => {
     const [base, reviewed] = await Promise.all([import('./english'), import('./english-reviewed')])
     return [...base.englishQuestions, ...reviewed.englishReviewedQuestions]
@@ -110,16 +113,28 @@ const loaders: Record<string, Loader> = {
     return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions]
   },
   'chinese-history': async () => (await import('./chinese-history')).chineseHistoryQuestions,
-  ths: async () => (await import('./ths')).thsQuestions,
+  ths: async () => {
+    const [base, bank] = await Promise.all([import('./ths'), import('./applied-banks')])
+    return [...base.thsQuestions, ...bank.thsBankQuestions]
+  },
   'health-management': async () => {
     const [base, floor1] = await Promise.all([
       import('./health-management'), import('./health-management-floor-batch1'),
     ])
     return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions]
   },
-  'design-tech': async () => (await import('./design-tech')).designTechQuestions,
-  music: async () => (await import('./music')).musicQuestions,
-  pe: async () => (await import('./pe')).peQuestions,
+  'design-tech': async () => {
+    const [base, bank] = await Promise.all([import('./design-tech'), import('./applied-banks')])
+    return [...base.designTechQuestions, ...bank.designTechBankQuestions]
+  },
+  music: async () => {
+    const [base, bank] = await Promise.all([import('./music'), import('./applied-banks')])
+    return [...base.musicQuestions, ...bank.musicBankQuestions]
+  },
+  pe: async () => {
+    const [base, bank] = await Promise.all([import('./pe'), import('./applied-banks')])
+    return [...base.peQuestions, ...bank.peBankQuestions]
+  },
   'chinese-literature': async () => (await import('./chinese-literature')).chineseLiteratureQuestions,
   'english-literature': async () => (await import('./english-literature')).englishLiteratureQuestions,
   'visual-arts': async () => (await import('./visual-arts')).visualArtsQuestions,
@@ -128,7 +143,10 @@ const loaders: Record<string, Loader> = {
     return [...base.csdQuestions, ...reviewed.csdReviewedQuestions]
   },
   'ethics-religious': async () => (await import('./ethics-religious')).ethicsReligiousQuestions,
-  'technology-living': async () => (await import('./technology-living')).technologyLivingQuestions,
+  'technology-living': async () => {
+    const [base, bank] = await Promise.all([import('./technology-living'), import('./applied-banks')])
+    return [...base.technologyLivingQuestions, ...bank.technologyLivingBankQuestions]
+  },
 }
 
 // ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
