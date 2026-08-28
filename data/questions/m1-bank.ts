@@ -28,6 +28,9 @@ const T = {
   distHigh: { id: 'm1_distributions', zh: '概率分佈（高階）', en: 'Probability distributions' },
   statInf: { id: 'statistics_inference', zh: '統計推斷', en: 'Statistical Inference' },
   probDist: { id: 'probability_dist', zh: '概率分佈', en: 'Probability Distributions' },
+  expLog: { id: 'exp_log_calculus', zh: '指數對數微積分', en: 'Exponential & Logarithmic Calculus' },
+  calcApp: { id: 'calculus_app', zh: '微積分應用', en: 'Applications of Calculus' },
+  permComb: { id: 'permutation_combination', zh: '排列與組合', en: 'Permutations & Combinations' },
   binomialDist: { id: 'binomial_distribution', zh: '二項分佈', en: 'Binomial Distribution' },
   poisson: { id: 'poisson_distribution', zh: '泊松分佈', en: 'Poisson Distribution' },
   normal: { id: 'normal_distribution', zh: '正態分佈', en: 'Normal Distribution' },
@@ -38,6 +41,7 @@ const FW = {
   stats: { id: 'statistics', zh: '統計', en: 'Statistics', emoji: '📊' },
   modelling: { id: 'modelling', zh: '建模能力', en: 'Modelling', emoji: '🏗️' },
   decompose: { id: 'condition_decomposition', zh: '條件分解', en: 'Condition Decomposition', emoji: '🎯' },
+  rate: { id: 'rate_of_change', zh: '變化率直覺', en: 'Rate-of-change Intuition', emoji: '📈' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('m1')
@@ -278,6 +282,90 @@ for (const sd of [6, 10, 12, 20, 30]) {
       [n(`$${round(se, 2)}$`), n(`$${sd}$`), n(`$${round(sd / nn, 3)}$`), n(`$${round(sd * Math.sqrt(nn), 2)}$`)],
       [`樣本平均數的標準誤 $= \\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{${sd}}{\\sqrt{${nn}}} = \\dfrac{${sd}}{${Math.sqrt(nn)}} = ${round(se, 2)}$。陷阱：$${sd}$ 是母體標準差本身，未除以 $\\sqrt{n}$；$${round(sd / nn, 3)}$ 除了 $n$ 而非 $\\sqrt{n}$；$${round(sd * Math.sqrt(nn), 2)}$ 用了乘法。留意樣本愈大標準誤愈細，但因為分母是 $\\sqrt{n}$，樣本要增至四倍才能令標準誤減半。`,
        `The standard error of the sample mean is $\\frac{\\sigma}{\\sqrt{n}} = \\frac{${sd}}{\\sqrt{${nn}}} = \\frac{${sd}}{${Math.sqrt(nn)}} = ${round(se, 2)}$. Traps: $${sd}$ is the population standard deviation itself, undivided; $${round(sd / nn, 3)}$ divides by $n$ rather than $\\sqrt{n}$; $${round(sd * Math.sqrt(nn), 2)}$ multiplies. Note that a larger sample gives a smaller standard error, but since the denominator is $\\sqrt{n}$ the sample must quadruple to halve it.`])
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// M1 第二批平均分佈補強（2026-08-28）—— 三個最薄課題
+// differentiation 已有 142 條，不予改動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+const nCr1 = (nn: number, r: number): number => {
+  let v = 1
+  for (let i = 0; i < r; i++) v = (v * (nn - i)) / (i + 1)
+  return Math.round(v)
+}
+
+// EL1 — 指數函數微分 d/dx(e^{ax}) = a·e^{ax}
+// 指數的係數為 1 時必須省略：寫 e^{1x} 會被 validate-banks 的
+// redundant-coefficient 檢查攔下（a = 2 時干擾項的 a−1 剛好等於 1）。
+const ex1 = (k: number) => (k === 1 ? 'x' : `${k}x`)
+for (const a of [2, 3, 4, 5, 6, 7]) {
+  for (const k of [1, 2, 3, 5]) {
+    add(`m1b_el1_${a}_${k}`, T.expLog, FW.rate, 'medium',
+      [`求 $\\dfrac{d}{dx}\\left(${k === 1 ? '' : k}e^{${a}x}\\right)$。`,
+       `Differentiate $${k === 1 ? '' : k}e^{${a}x}$ with respect to $x$.`],
+      [n(`$${a * k}e^{${a}x}$`), n(`$${k === 1 ? '' : k}e^{${a}x}$`), n(`$${a * k}e^{${ex1(a - 1)}}$`), n(`$${k === 1 ? '' : k}e^{${a}x}/${a}$`)],
+      [`鏈式法則：$\\dfrac{d}{dx}e^{u} = e^{u}\\dfrac{du}{dx}$。此處 $u = ${a}x$，$\\dfrac{du}{dx} = ${a}$，故導數 $= ${a * k}e^{${a}x}$。陷阱：$${k === 1 ? '' : k}e^{${a}x}$ 漏了乘以內函數的導數（$e^x$ 的導數是自己，但 $e^{ax}$ 不是）；$${a * k}e^{${ex1(a - 1)}}$ 誤把指數當成冪函數而減一；最後一項用了除法。指數函數與冪函數的求導規則完全不同，混用是本課最常見的失分位。`,
+       `By the chain rule $\\frac{d}{dx}e^{u} = e^{u}\\frac{du}{dx}$. Here $u = ${a}x$ and $\\frac{du}{dx} = ${a}$, so the derivative is $${a * k}e^{${a}x}$. Traps: $${k === 1 ? '' : k}e^{${a}x}$ omits the derivative of the inner function — $e^x$ is its own derivative but $e^{ax}$ is not; $${a * k}e^{${ex1(a - 1)}}$ treats the exponential as a power and reduces the exponent; the last option divides. The rules for exponentials and powers are quite different, and confusing them is where marks are most often lost here.`])
+  }
+}
+
+// EL2 — 對數函數微分 d/dx(ln ax) = 1/x
+for (const a of [2, 3, 5, 7, 10]) {
+  for (const k of [1, 2, 4]) {
+    add(`m1b_el2_${a}_${k}`, T.expLog, FW.rate, 'medium',
+      [`求 $\\dfrac{d}{dx}\\left(${k === 1 ? '' : k}\\ln ${a}x\\right)$。`,
+       `Differentiate $${k === 1 ? '' : k}\\ln ${a}x$ with respect to $x$.`],
+      [n(`$\\dfrac{${k}}{x}$`), n(`$\\dfrac{${k}}{${a}x}$`), n(`$\\dfrac{${a * k}}{x}$`), n(`$${k === 1 ? '' : k}\\ln x$`)],
+      [`$\\ln ${a}x = \\ln ${a} + \\ln x$，而 $\\ln ${a}$ 是常數，導數為 $0$，故 $\\dfrac{d}{dx}\\ln ${a}x = \\dfrac{1}{x}$，乘以係數得 $\\dfrac{${k}}{x}$。留意答案與 $${a}$ 無關 —— 這是本題的考點。陷阱：$\\dfrac{${k}}{${a}x}$ 誤以為分母要保留 $${a}$；$\\dfrac{${a * k}}{x}$ 誤把 $${a}$ 乘到分子；最後一項根本未求導。`,
+       `Since $\\ln ${a}x = \\ln ${a} + \\ln x$ and $\\ln ${a}$ is a constant with zero derivative, $\\frac{d}{dx}\\ln ${a}x = \\frac{1}{x}$, and with the coefficient this is $\\frac{${k}}{x}$. Note that the answer does not involve $${a}$ at all, which is the point being tested. Traps: $\\frac{${k}}{${a}x}$ keeps $${a}$ in the denominator; $\\frac{${a * k}}{x}$ moves it to the numerator; the last option has not been differentiated.`])
+  }
+}
+
+// CA1 — 微積分應用：由位移函數求瞬時速度 v = ds/dt
+for (const a of [2, 3, 4, 5]) {
+  for (const b of [3, 5, 6, 8]) {
+    for (const tt of [2, 3, 4]) {
+      const v = 2 * a * tt + b
+      add(`m1b_ca1_${a}_${b}_${tt}`, T.calcApp, FW.modelling, 'medium',
+        [`一物體的位移函數為 $s(t) = ${a}t^2 + ${b}t$（米，$t$ 以秒計）。求 $t = ${tt}$ 秒時的瞬時速度。`,
+         `An object has displacement $s(t) = ${a}t^2 + ${b}t$ metres, with $t$ in seconds. Find its instantaneous velocity at $t = ${tt}$ s.`],
+        [n(`$${v}$ m/s`), n(`$${a * tt * tt + b * tt}$ m/s`), n(`$${2 * a}$ m/s`), n(`$${round((a * tt * tt + b * tt) / tt, 2)}$ m/s`)],
+        [`瞬時速度是位移對時間的導數：$v(t) = \\dfrac{ds}{dt} = ${2 * a}t + ${b}$。代入 $t = ${tt}$：$v = ${2 * a}(${tt}) + ${b} = ${v}$ m/s。陷阱：$${a * tt * tt + b * tt}$ m/s 是 $t = ${tt}$ 時的【位移】而非速度；$${2 * a}$ m/s 是加速度 $\\dfrac{d^2s}{dt^2}$；$${round((a * tt * tt + b * tt) / tt, 2)}$ m/s 是【平均】速度（位移÷時間），與瞬時速度不同。位移、速度、加速度三者相差一次求導，讀題時要看清楚問邊一個。`,
+         `Instantaneous velocity is the derivative of displacement: $v(t) = \\frac{ds}{dt} = ${2 * a}t + ${b}$. At $t = ${tt}$ this gives $v = ${2 * a}(${tt}) + ${b} = ${v}$ m/s. Traps: $${a * tt * tt + b * tt}$ m/s is the displacement at $t = ${tt}$, not the velocity; $${2 * a}$ m/s is the acceleration $\\frac{d^2s}{dt^2}$; $${round((a * tt * tt + b * tt) / tt, 2)}$ m/s is the average velocity, displacement over time, which differs from the instantaneous value. Displacement, velocity and acceleration are each one differentiation apart, so read carefully which is wanted.`])
+    }
+  }
+}
+
+// CA2 — 微積分應用：求二次函數的極值點
+for (const a of [1, 2, 3]) {
+  for (const b of [4, 8, 12, 16, 20, 24]) {
+    const xStar = b / (2 * a)
+    if (!Number.isInteger(xStar)) continue
+    const yStar = -a * xStar * xStar + b * xStar
+    add(`m1b_ca2_${a}_${b}`, T.calcApp, FW.modelling, 'medium',
+      [`某函數為 $y = -${a}x^2 + ${b}x$。求 $y$ 取得最大值時的 $x$ 值。`,
+       `A function is $y = -${a}x^2 + ${b}x$. Find the value of $x$ at which $y$ is a maximum.`],
+      [n(`$x = ${xStar}$`), n(`$x = ${b}$`), n(`$x = ${yStar}$`), n(`$x = ${round(b / a, 2)}$`)],
+      [`極值點出現在導數為零之處：$\\dfrac{dy}{dx} = -${2 * a}x + ${b} = 0$，解得 $x = \\dfrac{${b}}{${2 * a}} = ${xStar}$。由於 $x^2$ 的係數為負，二階導數 $-${2 * a} < 0$，該點確為【最大】值。陷阱：$x = ${b}$ 直接抄了一次項係數；$x = ${yStar}$ 是最大值 $y$ 本身而非對應的 $x$；$x = ${round(b / a, 2)}$ 漏了分母的 $2$。求極值必須做兩步：先解 $\\dfrac{dy}{dx} = 0$，再用二階導數的正負判斷是最大還是最小。`,
+       `A turning point occurs where the derivative vanishes: $\\frac{dy}{dx} = -${2 * a}x + ${b} = 0$, giving $x = \\frac{${b}}{${2 * a}} = ${xStar}$. Since the coefficient of $x^2$ is negative the second derivative is $-${2 * a} < 0$, confirming a maximum. Traps: $x = ${b}$ copies the linear coefficient; $x = ${yStar}$ is the maximum value of $y$ rather than the $x$ at which it occurs; $x = ${round(b / a, 2)}$ omits the 2 in the denominator. Finding an extremum takes two steps: solve $\\frac{dy}{dx} = 0$, then use the sign of the second derivative to decide maximum or minimum.`])
+  }
+}
+
+// PC1 — 組合數 C(n, r)
+for (const nn of [5, 6, 7, 8, 9, 10, 12]) {
+  for (const r of [2, 3, 4]) {
+    if (r >= nn) continue
+    const c = nCr1(nn, r)
+    let perm = 1
+    for (let i = 0; i < r; i++) perm *= nn - i
+    add(`m1b_pc1_${nn}_${r}`, T.permComb, FW.decompose, 'medium',
+      [`由 $${nn}$ 名學生之中選出 $${r}$ 名組成一個委員會（不分職位）。共有多少種選法？`,
+       `A committee of $${r}$ is chosen from $${nn}$ students, with no distinction of role. How many ways are there?`],
+      [n(`$${c}$`), n(`$${perm}$`), n(`$${nn * r}$`), n(`$${nn ** r}$`)],
+      [`委員會不分職位，即次序無關，屬【組合】：$\\binom{${nn}}{${r}} = ${c}$。陷阱：$${perm}$ 是【排列】 $P(${nn}, ${r})$，適用於職位有分別（例如選主席、秘書、司庫）的情況，數值大 $${r}!$ 倍；$${nn * r}$ 用了相乘；$${nn ** r}$ 是可重複選取的情況。判斷用排列還是組合，只需問一句：調換兩個被選者的次序，結果算不算同一種？算，就是組合。`,
+       `A committee with no distinction of role means order does not matter, so this is a combination: $\\binom{${nn}}{${r}} = ${c}$. Traps: $${perm}$ is the permutation $P(${nn}, ${r})$, which applies when the roles differ — chair, secretary, treasurer — and is larger by a factor of $${r}!$; $${nn * r}$ multiplies; $${nn ** r}$ allows repetition. To choose between permutation and combination, ask one question: if two chosen people swap places, is it the same outcome? If so, it is a combination.`])
   }
 }
 
