@@ -1,0 +1,14 @@
+{
+  "_meta": {
+    "purpose": "全域撞題基線（棘輪）。新入庫題目一條都唔准新增撞題；修好舊題之後 ceiling 只准調低，唔准調高。",
+    "rule": "重複 = 題幹相同【且】干擾項集合相同。題幹相同但干擾項不同（例如「Choose the correct sentence:」「下列哪一組詞語沒有錯別字？」）屬合法通用指示語，不計。",
+    "ceiling": 1,
+    "measuredAt": "2026-08-28",
+    "scannedQuestions": 6210,
+    "decidedBy": "yuna",
+    "note": "csd_rf_47 ≡ hist_cn_84：三個干擾項一字不差，正解只換語序。已裁決本輪暫列基線，下一階段清理歷史題庫時作學科差異化重寫（公社側重近十年發展，歷史側重 1980 年代改革開放時間軸），屆時 ceiling 調低至 0。"
+  },
+  "pairs": [
+    ["csd/csd_rf_47", "history/hist_cn_84"]
+  ]
+}

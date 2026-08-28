@@ -120,6 +120,7 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "econ_floor_25": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
   "econ_floor_26": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
   "econ_floor_27": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_28": { reviewer: "yuna", reviewedAt: "2026-08-28", batch: "economics-floor-b2" },
   "eng-idiom-01": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", batch: "english-idioms-batch" },
   "eng-idiom-02": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", batch: "english-idioms-batch" },
   "eng-idiom-03": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", batch: "english-idioms-batch" },
@@ -421,6 +422,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "econ-market-structure-mc-10", subject: "economics", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-18", approved: 10 },
   { batch: "econ-supply-demand-mc-10", subject: "economics", reviewer: "brian", reviewedAt: "2026-07-17", approved: 10 },
   { batch: "economics-floor", subject: "economics", reviewer: "brian", reviewedAt: "2026-08-28", approved: 26 },
+  { batch: "economics-floor-b2", subject: "economics", reviewer: "yuna", reviewedAt: "2026-08-28", approved: 1 },
   { batch: "en-backfill-51", subject: "translation", reviewer: "brian", reviewedAt: "2026-08-07", approved: 51 },
   { batch: "english-idioms-batch", subject: "english", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
   { batch: "history-floor-batch1", subject: "history", reviewer: "brian", reviewedAt: "2026-08-28", approved: 43 },
@@ -432,7 +434,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 383
+export const REVIEWED_COUNT = 384
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>
