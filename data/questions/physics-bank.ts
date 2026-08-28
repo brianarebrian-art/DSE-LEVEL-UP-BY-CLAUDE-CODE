@@ -550,6 +550,65 @@ for (const T12 of [3, 5, 8, 10]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// force_motion 與 heat 補強（2026-08-28）—— 兩者各 33 / 42 條，低於平均值 77。
+// 現有題型只有「重量 W=mg」「動量 p=mv」（力與運動）同「E=mcΔT」一族（熱學），
+// 故新模板刻意避開該兩類，改用摩擦力、合力、潛熱、溫標換算。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// FM1 — 摩擦力 f = μN，其中 N = mg（水平面）
+for (const mm of [2, 4, 5, 8, 10, 20]) {
+  for (const mu of [0.2, 0.25, 0.4, 0.5]) {
+    const N2 = mm * G, f = mu * N2
+    if (!Number.isInteger(f)) continue
+    add(`pb_fm1_${mm}_${String(mu).replace('.', '')}`, T.forces, FW.formula, 'medium',
+      [`一個質量 $${mm}$ kg 的物體靜止於水平面上，物體與面的動摩擦係數為 $${mu}$（$g = ${G}$ N/kg）。要令它以等速滑動，所需的水平推力是多少？`,
+       `A $${mm}$ kg block rests on a horizontal surface with coefficient of kinetic friction $${mu}$ ($g = ${G}$ N/kg). What horizontal push is needed to slide it at constant speed?`],
+      [n(`$${f}$ N`), n(`$${N2}$ N`), n(`$${round(mm * mu, 2)}$ N`), n(`$${round(N2 / mu, 2)}$ N`)],
+      [`等速滑動即合力為零，推力必須恰好抵銷摩擦力。先求正向力：水平面上 $N = mg = ${mm} \\times ${G} = ${N2}$ N。再求摩擦力：$f = \\mu N = ${mu} \\times ${N2} = ${f}$ N。陷阱：$${N2}$ N 是正向力（即重量）而非摩擦力；$${round(mm * mu, 2)}$ N 漏了乘以 $g$；$${round(N2 / mu, 2)}$ N 用了除法。留意摩擦力與接觸面積無關，只取決於正向力與摩擦係數。`,
+       `Constant speed means zero net force, so the push must exactly balance friction. First the normal force: on a horizontal surface $N = mg = ${mm} \\times ${G} = ${N2}$ N. Then friction: $f = \\mu N = ${mu} \\times ${N2} = ${f}$ N. Traps: $${N2}$ N is the normal force, that is the weight, not the friction; $${round(mm * mu, 2)}$ N omits $g$; $${round(N2 / mu, 2)}$ N divides. Note that friction does not depend on the contact area, only on the normal force and the coefficient.`])
+  }
+}
+
+// FM2 — 同一直線上兩力的合力
+for (const F1 of [12, 20, 25, 30, 40, 50]) {
+  for (const F2 of [5, 8, 15, 18]) {
+    if (F1 === F2) continue
+    add(`pb_fm2_${F1}_${F2}`, T.forces, FW.formula, 'easy',
+      [`一個物體同時受兩個方向【相反】的力作用：一個 $${F1}$ N 向右，一個 $${F2}$ N 向左。求合力的大小與方向。`,
+       `An object is acted on by two opposing forces: $${F1}$ N to the right and $${F2}$ N to the left. Find the magnitude and direction of the net force.`],
+      [[`$${F1 - F2}$ N，向右`, `$${F1 - F2}$ N to the right`],
+       [`$${F1 + F2}$ N，向右`, `$${F1 + F2}$ N to the right`],
+       [`$${F1 - F2}$ N，向左`, `$${F1 - F2}$ N to the left`],
+       [`$${F1 * F2}$ N，向右`, `$${F1 * F2}$ N to the right`]],
+      [`方向相反的兩力，合力大小為兩者之差，方向跟隨較大者：$${F1} - ${F2} = ${F1 - F2}$ N，向右。陷阱：$${F1 + F2}$ N 把方向相反的兩力相加（同向才可相加）；方向向左者誤判了哪一個力較大；$${F1 * F2}$ N 用了相乘。判斷合力時先定正方向，把反向的力寫成負數再相加，比記「同加異減」穩妥。`,
+       `For forces in opposite directions the net force is their difference, acting in the direction of the larger: $${F1} - ${F2} = ${F1 - F2}$ N to the right. Traps: $${F1 + F2}$ N adds opposing forces, which is only valid when they act the same way; the leftward option mistakes which force is larger; $${F1 * F2}$ N multiplies. Fixing a positive direction and writing opposing forces as negative before adding is safer than recalling a rule about adding and subtracting.`])
+  }
+}
+
+// HT1 — 潛熱 E = mL（熔化／汽化，不涉溫度變化）
+for (const mm of [2, 3, 5, 8, 10]) {
+  for (const [L, kind, kindEn] of [[334000, '熔化', 'melting'], [2260000, '汽化', 'vaporising']] as [number, string, string][]) {
+    const E = mm * L
+    add(`pb_ht1_${mm}_${L}`, T.heat, FW.formula, 'medium',
+      [`把 $${mm}$ kg 的水在其${kind === '熔化' ? '熔點' : '沸點'}完全${kind}，所需的熱量是多少？（比${kind === '熔化' ? '熔化' : '汽化'}潛熱 $= ${(L / 1000).toLocaleString('en-US')}$ kJ/kg）`,
+       `How much heat is needed to completely ${kindEn === 'melting' ? 'melt' : 'vaporise'} $${mm}$ kg of water at its ${kindEn === 'melting' ? 'melting' : 'boiling'} point? (specific latent heat $= ${(L / 1000).toLocaleString('en-US')}$ kJ/kg)`],
+      [n(`$${(E / 1000).toLocaleString('en-US')}$ kJ`), n(`$${(L / 1000).toLocaleString('en-US')}$ kJ`), n(`$${round(L / 1000 / mm, 1)}$ kJ`), n(`$${(mm * 4.2).toLocaleString('en-US')}$ kJ`)],
+      [`潛熱 $E = mL = ${mm} \\times ${(L / 1000).toLocaleString('en-US')} = ${(E / 1000).toLocaleString('en-US')}$ kJ。關鍵在於${kind}期間溫度【保持不變】——吸收的熱量全部用於改變物態而非升溫，所以這裏用 $E = mL$ 而不是 $E = mc\\Delta T$。陷阱：$${(L / 1000).toLocaleString('en-US')}$ kJ 只是每公斤的潛熱，未乘以質量；$${round(L / 1000 / mm, 1)}$ kJ 用了除法；$${(mm * 4.2).toLocaleString('en-US')}$ kJ 誤用了比熱容。`,
+       `Latent heat is $E = mL = ${mm} \\times ${(L / 1000).toLocaleString('en-US')} = ${(E / 1000).toLocaleString('en-US')}$ kJ. The essential point is that the temperature stays constant during ${kindEn}: all the heat absorbed changes the state rather than the temperature, which is why $E = mL$ applies here rather than $E = mc\\Delta T$. Traps: $${(L / 1000).toLocaleString('en-US')}$ kJ is the latent heat per kilogram without the mass; $${round(L / 1000 / mm, 1)}$ kJ divides; $${(mm * 4.2).toLocaleString('en-US')}$ kJ uses the specific heat capacity instead.`])
+  }
+}
+
+// HT2 — 攝氏與絕對溫標換算 T(K) = θ(°C) + 273
+for (const c of [-100, -40, 0, 25, 37, 100, 200, 300, 500]) {
+  const k = c + 273
+  add(`pb_ht2_${c}`, T.heat, FW.formula, 'easy',
+    [`$${c}$ °C 相當於絕對溫標的多少開爾文（K）？`, `What is $${c}$ °C on the absolute temperature scale, in kelvin?`],
+    [n(`$${k}$ K`), n(`$${c - 273}$ K`), n(`$${c}$ K`), n(`$${273 - c}$ K`)],
+    [`絕對溫標與攝氏溫標的刻度大小相同，只是零點不同：$T(\\mathrm{K}) = \\theta(°\\mathrm{C}) + 273$。故 $${c} + 273 = ${k}$ K。陷阱：$${c - 273}$ K 減了 273（方向相反）；$${c}$ K 直接抄了攝氏值；$${273 - c}$ K 把相減次序調轉。留意絕對零度 $0$ K $= -273$ °C 是理論上的最低溫，所以任何以 K 表示的溫度都不會是負數 —— 若計出負值，必定有一步出錯。`,
+     `The absolute and Celsius scales have the same size of degree but different zero points: $T(\\mathrm{K}) = \\theta(°\\mathrm{C}) + 273$, so $${c} + 273 = ${k}$ K. Traps: $${c - 273}$ K subtracts instead of adding; $${c}$ K copies the Celsius value; $${273 - c}$ K reverses the subtraction. Note that absolute zero, $0$ K $= -273$ °C, is the theoretical minimum, so no temperature in kelvin is ever negative — a negative result means a step has gone wrong.`])
+}
+
 export const physicsBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
