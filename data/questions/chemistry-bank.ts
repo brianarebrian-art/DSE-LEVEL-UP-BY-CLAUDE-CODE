@@ -409,6 +409,164 @@ for (const [va, ra, rb, ga, gb] of [[10, 1, 2, 'H_2', 'H_2O'], [20, 1, 2, 'H_2',
      `By Avogadro's law, gas volumes at the same temperature and pressure are in the same ratio as the moles, so the coefficients can be applied directly without converting to moles: $${va} \\times \\frac{${rb}}{${ra}} = ${vb}$ cm³. Traps: $${va}$ cm³ assumes the volume is unchanged; $${round(va * ra / rb, 1)}$ cm³ inverts the ratio; $${va * (ra + rb)}$ cm³ adds the coefficients instead of taking their ratio. Note that this shortcut applies only to gases — solids and liquids have no such simple relation between volume and moles.`])
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第三批母模板 —— 平均分佈補強（2026-08-28）
+// ---------------------------------------------------------------------------
+// 補強前實測化學 14 個課題：濃度 66、酸鹼 64，而化學式與式量僅 10 條、
+// 氧化還原與平衡 16 條、有機化學（高階）17 條、週期表 23 條（平均目標 71）。
+// 依指示先補題數最少者。
+//
+// 化學式一律用 \mathrm{}，不可用 \text{}：\text{} 會切換至文字模式，
+// 令下標語法 _ 失效，KaTeX 直接拋出解析錯誤（2026-08-27 曾有 73 條中招）。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ── 化學式與式量 ──────────────────────────────────────────────────────────
+
+// FM1 — 式量計算（二元化合物）
+;([['NaCl', 23, 35.5, 1, 1], ['MgO', 24, 16, 1, 1], ['CaO', 40, 16, 1, 1], ['KBr', 39, 80, 1, 1],
+  ['LiF', 7, 19, 1, 1], ['CaCl_2', 40, 35.5, 1, 2], ['MgCl_2', 24, 35.5, 1, 2], ['Na_2O', 23, 16, 2, 1],
+  ['K_2O', 39, 16, 2, 1], ['AlF_3', 27, 19, 1, 3], ['FeCl_3', 56, 35.5, 1, 3], ['CuO', 64, 16, 1, 1],
+  ['ZnO', 65, 16, 1, 1], ['BaCl_2', 137, 35.5, 1, 2], ['SrO', 88, 16, 1, 1], ['AgCl', 108, 35.5, 1, 1],
+  ['PbO', 207, 16, 1, 1], ['Li_2O', 7, 16, 2, 1]] as [string, number, number, number, number][])
+  .forEach(([f, ma, mb, ca, cb]) => {
+    const mr = ma * ca + mb * cb
+    add(`chemc_fm1_${f.replace(/[^A-Za-z0-9]/g, '')}`, T.formula, FW.calc, 'easy',
+      [`求 $\\mathrm{${f}}$ 的式量。（相對原子質量按題中所給：${ma}、${mb}）`,
+       `Find the formula mass of $\\mathrm{${f}}$, using the relative atomic masses ${ma} and ${mb} given.`],
+      [n(`$${round(mr, 1)}$`), n(`$${round(ma + mb, 1)}$`), n(`$${round(ma * ca * mb * cb, 1)}$`), n(`$${round(mr - mb, 1)}$`)],
+      [`式量為分子式中各原子相對原子質量之總和，下標代表該元素的原子數目，必須乘上：$${ma} \\times ${ca} + ${mb} \\times ${cb} = ${round(ma * ca, 1)} + ${round(mb * cb, 1)} = ${round(mr, 1)}$。陷阱：$${round(ma + mb, 1)}$ 忽略了下標，把每種原子當成只有一個；$${round(ma * ca * mb * cb, 1)}$ 把兩部分相乘而非相加；$${round(mr - mb, 1)}$ 少數了一個原子。`,
+       `The formula mass is the sum of the relative atomic masses of every atom in the formula; the subscripts give how many atoms of each element and must be applied: $${ma} \\times ${ca} + ${mb} \\times ${cb} = ${round(ma * ca, 1)} + ${round(mb * cb, 1)} = ${round(mr, 1)}$. Traps: $${round(ma + mb, 1)}$ ignores the subscripts and counts one atom of each; $${round(ma * ca * mb * cb, 1)}$ multiplies the two parts instead of adding; $${round(mr - mb, 1)}$ counts one atom too few.`])
+  })
+
+// FM2 — 元素的質量百分比
+;([['MgO', 24, 40], ['CaO', 40, 56], ['NaCl', 23, 58.5], ['CuO', 64, 80], ['ZnO', 65, 81],
+  ['H_2O', 16, 18], ['CO_2', 12, 44], ['SO_2', 32, 64], ['CH_4', 12, 16], ['NH_3', 14, 17],
+  ['FeO', 56, 72], ['Al_2O_3', 54, 102], ['SO_3', 32, 80], ['NO_2', 14, 46],
+  ['PbO', 207, 223], ['AgCl', 108, 143.5]] as [string, number, number][])
+  .forEach(([f, part, total]) => {
+    const pct = (part / total) * 100
+    add(`chemc_fm2_${f.replace(/[^A-Za-z0-9]/g, '')}`, T.formula, FW.calc, 'medium',
+      [`$\\mathrm{${f}}$ 的式量為 ${total}，其中指定元素在化合物中的總質量為 ${part}。該元素的質量百分比是多少？`,
+       `The formula mass of $\\mathrm{${f}}$ is ${total}, and the total mass of one specified element within it is ${part}. What is that element's percentage by mass?`],
+      [n(`${round(pct, 1)}%`), n(`${round((total / part) * 100, 1)}%`), n(`${round(((total - part) / total) * 100, 1)}%`), n(`${round(part, 1)}%`)],
+      [`質量百分比 = 該元素的總質量 ÷ 式量 × 100% = ${part} ÷ ${total} × 100% = ${round(pct, 1)}%。分子必須是該元素在【整條化學式】中的總質量，若元素出現多於一個原子便要先乘上原子數目。陷阱：${round((total / part) * 100, 1)}% 把分子分母倒轉；${round(((total - part) / total) * 100, 1)}% 算的是其餘元素的百分比；${round(part, 1)}% 把質量當成百分率。`,
+       `Percentage by mass = total mass of the element ÷ formula mass × 100% = ${part} ÷ ${total} × 100% = ${round(pct, 1)}%. The numerator must be the element's total mass across the WHOLE formula, so an element appearing more than once must first be multiplied by its subscript. Traps: ${round((total / part) * 100, 1)}% inverts the fraction; ${round(((total - part) / total) * 100, 1)}% is the percentage of everything else; ${round(part, 1)}% reads a mass as a percentage.`])
+  })
+
+// ── 週期表 ────────────────────────────────────────────────────────────────
+
+// PT2 — 由電子排布推出族數與週期
+;([['Li', 3, '2, 1', 1, 2], ['Be', 4, '2, 2', 2, 2], ['B', 5, '2, 3', 13, 2], ['C', 6, '2, 4', 14, 2],
+  ['N', 7, '2, 5', 15, 2], ['O', 8, '2, 6', 16, 2], ['F', 9, '2, 7', 17, 2], ['Ne', 10, '2, 8', 18, 2],
+  ['Na', 11, '2, 8, 1', 1, 3], ['Mg', 12, '2, 8, 2', 2, 3], ['Al', 13, '2, 8, 3', 13, 3],
+  ['Si', 14, '2, 8, 4', 14, 3], ['P', 15, '2, 8, 5', 15, 3], ['S', 16, '2, 8, 6', 16, 3],
+  ['Cl', 17, '2, 8, 7', 17, 3], ['Ar', 18, '2, 8, 8', 18, 3], ['K', 19, '2, 8, 8, 1', 1, 4],
+  ['Ca', 20, '2, 8, 8, 2', 2, 4]] as [string, number, string, number, number][])
+  .forEach(([sym, z, cfg, group, period]) => {
+    add(`chemc_pt2_${sym}`, T.periodic, FW.structure, 'medium',
+      [`某元素的原子序為 ${z}，電子排布為 ${cfg}。該元素位於週期表的第幾週期？`,
+       `An element has atomic number ${z} and electron arrangement ${cfg}. Which period of the periodic table does it belong to?`],
+      [[`第 ${period} 週期`, `Period ${period}`], [`第 ${group} 週期`, `Period ${group}`],
+       [`第 ${z} 週期`, `Period ${z}`], [`第 ${period + 1} 週期`, `Period ${period + 1}`]],
+      [`週期數等於【已佔用電子殼層的數目】。電子排布 ${cfg} 共有 ${period} 層，故該元素位於第 ${period} 週期；而最外層電子數則決定族數。陷阱：第 ${group} 週期把族數當成週期數，兩者由不同的資料決定（族看最外層電子，週期看殼層數目）；第 ${z} 週期把原子序當成週期數；第 ${period + 1} 週期多數了一層。`,
+       `The period number equals the NUMBER OF OCCUPIED ELECTRON SHELLS. The arrangement ${cfg} has ${period} shells, so the element lies in period ${period}; the number of outermost electrons determines the group instead. Traps: period ${group} confuses the group with the period, and the two come from different data (outer electrons versus shell count); period ${z} reads the atomic number as the period; period ${period + 1} counts one shell too many.`])
+    add(`chemc_pt2g_${sym}`, T.periodic, FW.structure, 'easy',
+      [`某元素的電子排布為 ${cfg}。該元素屬於週期表的哪一族？`,
+       `An element has the electron arrangement ${cfg}. To which group of the periodic table does it belong?`],
+      [[`第 ${group} 族`, `Group ${group}`], [`第 ${period} 族`, `Group ${period}`],
+       [`第 ${z} 族`, `Group ${z}`], [`第 ${group === 18 ? 17 : group + 1} 族`, `Group ${group === 18 ? 17 : group + 1}`]],
+      [`第 1、2 及 13 至 18 族的族數由最外層電子數決定：最外層有 1 至 2 個電子時，族數即該數目；有 3 至 8 個電子時，族數為該數目加 10。電子排布 ${cfg} 的最外層電子數對應第 ${group} 族。同族元素最外層電子數相同，化學性質因而相似 —— 這正是週期表按族排列的理由。陷阱：第 ${period} 族把週期數當成族數；第 ${z} 族用了原子序；第 ${group === 18 ? 17 : group + 1} 族數多或數少了一個電子。`,
+       `For groups 1, 2 and 13 to 18 the group number follows from the outermost electrons: with 1 or 2 outer electrons the group is that number; with 3 to 8 it is that number plus 10. The arrangement ${cfg} therefore gives group ${group}. Elements in the same group share the same number of outer electrons and hence similar chemistry, which is precisely why the table is arranged this way. Traps: group ${period} uses the period number; group ${z} uses the atomic number; group ${group === 18 ? 17 : group + 1} miscounts the outer electrons by one.`])
+  })
+
+// ── 氧化還原 ──────────────────────────────────────────────────────────────
+
+// RX2 — 由「氧化數總和 = 離子電荷」推算指定元素的氧化數
+;([['Fe_2O_3', 'Fe', 2, 3, 0], ['SO_2', 'S', 1, 2, 0], ['SO_3', 'S', 1, 3, 0], ['N_2O_5', 'N', 2, 5, 0],
+  ['P_2O_5', 'P', 2, 5, 0], ['Cl_2O_7', 'Cl', 2, 7, 0], ['MnO_4^{-}', 'Mn', 1, 4, -1],
+  ['Cr_2O_7^{2-}', 'Cr', 2, 7, -2], ['SO_4^{2-}', 'S', 1, 4, -2], ['NO_3^{-}', 'N', 1, 3, -1],
+  ['CO_3^{2-}', 'C', 1, 3, -2], ['ClO_3^{-}', 'Cl', 1, 3, -1], ['ClO^{-}', 'Cl', 1, 1, -1],
+  ['MnO_2', 'Mn', 1, 2, 0], ['Cu_2O', 'Cu', 2, 1, 0], ['Al_2O_3', 'Al', 2, 3, 0],
+  ['PbO_2', 'Pb', 1, 2, 0], ['V_2O_5', 'V', 2, 5, 0], ['CrO_4^{2-}', 'Cr', 1, 4, -2],
+  ['NO_2^{-}', 'N', 1, 2, -1]] as [string, string, number, number, number][])
+  .forEach(([f, sym, cx, nO, charge]) => {
+    const ox = (charge + 2 * nO) / cx
+    if (!Number.isInteger(ox)) return
+    add(`chemc_rx2_${sym}_${nO}_${charge < 0 ? `m${-charge}` : charge}`, T.redox, FW.electron, 'medium',
+      [`求 $\\mathrm{${f}}$ 中 ${sym} 的氧化數。`, `Find the oxidation number of ${sym} in $\\mathrm{${f}}$.`],
+      [n(`$+${ox}$`), n(`$-${ox}$`), n(`$+${nO}$`), n(`$+${2 * nO}$`)],
+      [`氧在化合物中的氧化數通常為 $-2$，而全部原子的氧化數總和必須等於該粒子的電荷（${charge === 0 ? '中性化合物為 0' : `此離子為 ${charge}`}）。設 ${sym} 的氧化數為 $x$：$${cx === 1 ? '' : cx}x + ${nO}(-2) = ${charge}$，解得 $x = +${ox}$。陷阱：$-${ox}$ 符號寫反；$+${nO}$ 直接抄了氧原子數目；$+${2 * nO}$ 忘記除以 ${sym} 的原子數 ${cx}。`,
+       `Oxygen is normally $-2$ in compounds, and the oxidation numbers of all atoms must sum to the charge on the species (${charge === 0 ? '0 for a neutral compound' : `${charge} for this ion`}). Letting $x$ be the oxidation number of ${sym}: $${cx === 1 ? '' : cx}x + ${nO}(-2) = ${charge}$, so $x = +${ox}$. Traps: $-${ox}$ has the wrong sign; $+${nO}$ copies the number of oxygen atoms; $+${2 * nO}$ omits the division by the ${cx} ${sym} atoms.`])
+  })
+
+// ── 化學鍵 ────────────────────────────────────────────────────────────────
+
+// BD2 — 由離子電荷推出離子化合物的化學式
+// 只取兩個電荷數【不相等】的組合：相等時交叉法的結果與「不交叉」「忽略電荷」
+// 三者會化簡成同一條化學式，四個選項不再相異，整組參數會被丟棄。
+;([['Mg', 2, 'Cl', 1], ['Al', 3, 'Cl', 1], ['Na', 1, 'O', 2], ['Al', 3, 'O', 2], ['Ca', 2, 'F', 1],
+  ['K', 1, 'S', 2], ['Ca', 2, 'N', 3], ['Mg', 2, 'N', 3], ['Li', 1, 'N', 3], ['Ba', 2, 'Br', 1],
+  ['Al', 3, 'S', 2], ['Li', 1, 'O', 2], ['Na', 1, 'S', 2], ['K', 1, 'N', 3],
+  ['Ca', 2, 'Cl', 1], ['Sr', 2, 'Cl', 1], ['Fe', 3, 'O', 2], ['Fe', 3, 'Cl', 1], ['Cu', 2, 'Cl', 1],
+  ['Cu', 2, 'N', 3], ['Ag', 1, 'O', 2], ['Zn', 2, 'Cl', 1], ['Ba', 2, 'N', 3],
+  ['Al', 3, 'Br', 1], ['Mg', 2, 'Br', 1]] as [string, number, string, number][])
+  .forEach(([cat, cv, an, av]) => {
+    const g = gcd(cv, av)
+    const nc = av / g, na = cv / g
+    const sub = (k: number) => (k === 1 ? '' : `_${k}`)
+    const ans = `\\mathrm{${cat}${sub(nc)}${an}${sub(na)}}`
+    add(`chemc_bd2_${cat}${cv}${an}${av}`, T.bonding, FW.structure, 'medium',
+      [`${cat} 形成 $${cv}+$ 的陽離子，${an} 形成 $${av}-$ 的陰離子。兩者形成的離子化合物的化學式是甚麼？`,
+       `${cat} forms a $${cv}+$ cation and ${an} forms an $${av}-$ anion. What is the formula of the ionic compound they form?`],
+      [n(`$${ans}$`), n(`$\\mathrm{${cat}${sub(na)}${an}${sub(nc)}}$`), n(`$\\mathrm{${cat}${an}}$`), n(`$\\mathrm{${cat}${an}${sub(cv + av)}}$`)],
+      [`離子化合物整體必須電中性，故正電荷總量要等於負電荷總量。$${cv}$ 與 $${av}$ 的最小公倍數為 ${(cv * av) / g}，需要 ${nc} 個 ${cat} 離子與 ${na} 個 ${an} 離子，化學式為 $${ans}$。留意下標是【對方】的電荷數再約簡，這就是交叉法。陷阱：把兩個下標對調；$\\mathrm{${cat}${an}}$ 忽略了電荷不相等；$\\mathrm{${cat}${an}${sub(cv + av)}}$ 把兩個電荷數相加當成下標。`,
+       `An ionic compound must be electrically neutral, so the total positive charge equals the total negative charge. The lowest common multiple of $${cv}$ and $${av}$ is ${(cv * av) / g}, requiring ${nc} ${cat} ions and ${na} ${an} ions, giving $${ans}$. Note that each subscript comes from the OTHER ion's charge, after cancelling — this is the crossover rule. Traps: the two subscripts are interchanged; $\\mathrm{${cat}${an}}$ ignores the unequal charges; $\\mathrm{${cat}${an}${sub(cv + av)}}$ adds the two charges and uses the sum as a subscript.`])
+  })
+
+// ── 氣體體積 ──────────────────────────────────────────────────────────────
+
+// GV2 — 摩爾體積換算（室溫及壓力下 24.0 dm³ mol⁻¹）
+for (const mol of [0.5, 1, 1.5, 2, 2.5, 3, 4, 5]) {
+  for (const mv of [24]) {
+    const vol = mol * mv
+    add(`chemc_gv2_${String(mol).replace('.', 'p')}`, T.gasVolume, FW.quantity, 'easy',
+      [`在室溫及壓力下，${mol} mol 氣體所佔的體積是多少？（氣體摩爾體積為 ${mv}.0 dm³ mol⁻¹）`,
+       `At room temperature and pressure, what volume is occupied by ${mol} mol of a gas? (Molar volume ${mv}.0 dm³ mol⁻¹.)`],
+      [n(`${round(vol, 1)} dm³`), n(`${round(mol / mv, 4)} dm³`), n(`${round(mv, 1)} dm³`), n(`${round(mol, 2)} dm³`)],
+      [`體積 = 摩爾數 × 氣體摩爾體積 = ${mol} × ${mv} = ${round(vol, 1)} dm³。氣體摩爾體積與氣體的種類無關 —— 相同溫度壓力下，等摩爾數的任何氣體佔相同體積（亞佛加德羅定律）。陷阱：${round(mol / mv, 4)} dm³ 改成了相除；${round(mv, 1)} dm³ 漏了乘摩爾數；${round(mol, 2)} dm³ 只抄了摩爾數。`,
+       `Volume = amount in moles × molar volume = ${mol} × ${mv} = ${round(vol, 1)} dm³. The molar volume does not depend on the identity of the gas: at the same temperature and pressure equal amounts of any gas occupy equal volumes (Avogadro's law). Traps: ${round(mol / mv, 4)} dm³ divides instead; ${round(mv, 1)} dm³ omits the amount; ${round(mol, 2)} dm³ copies the amount.`])
+  }
+}
+
+// ── 有機化學 ──────────────────────────────────────────────────────────────
+
+// OR2 — 烷烴完全燃燒所需的氧氣（取碳數為單數，使係數為整數）
+for (const nc of [1, 3, 5, 7, 9, 11]) {
+  const o2 = (3 * nc + 1) / 2
+  add(`chemc_or2_${nc}`, T.organic, FW.carbon, 'hard',
+    [`1 mol 烷烴 $\\mathrm{C_{${nc}}H_{${2 * nc + 2}}}$ 完全燃燒，需要多少 mol 氧氣？`,
+     `How many moles of oxygen are required for the complete combustion of 1 mol of the alkane $\\mathrm{C_{${nc}}H_{${2 * nc + 2}}}$?`],
+    [n(`$${o2}$`), n(`$${nc}$`), n(`$${nc + 1}$`), n(`$${3 * nc + 1}$`)],
+    [`完全燃燒的產物為 $\\mathrm{CO_2}$ 與 $\\mathrm{H_2O}$：$\\mathrm{C_{${nc}}H_{${2 * nc + 2}}} + ${o2}\\,\\mathrm{O_2} \\rightarrow ${nc}\\,\\mathrm{CO_2} + ${nc + 1}\\,\\mathrm{H_2O}$。氧原子數目：右方共 $2 \\times ${nc} + ${nc + 1} = ${2 * nc + nc + 1}$ 個，除以 2 得 $${o2}$ mol $\\mathrm{O_2}$。陷阱：$${nc}$ 是 $\\mathrm{CO_2}$ 的摩爾數；$${nc + 1}$ 是 $\\mathrm{H_2O}$ 的摩爾數；$${3 * nc + 1}$ 是氧【原子】數而非氧【分子】數，忘記除以 2。`,
+     `Complete combustion gives $\\mathrm{CO_2}$ and $\\mathrm{H_2O}$: $\\mathrm{C_{${nc}}H_{${2 * nc + 2}}} + ${o2}\\,\\mathrm{O_2} \\rightarrow ${nc}\\,\\mathrm{CO_2} + ${nc + 1}\\,\\mathrm{H_2O}$. Counting oxygen atoms on the right gives $2 \\times ${nc} + ${nc + 1} = ${2 * nc + nc + 1}$, and dividing by 2 gives $${o2}$ mol of $\\mathrm{O_2}$. Traps: $${nc}$ is the amount of $\\mathrm{CO_2}$; $${nc + 1}$ is the amount of $\\mathrm{H_2O}$; $${3 * nc + 1}$ counts oxygen ATOMS rather than molecules and omits the division by 2.`])
+}
+
+// ── 定量計算（高階）──────────────────────────────────────────────────────
+
+// HQ2 — 產率百分比 = 實際產量 ÷ 理論產量 × 100%
+for (const theo of [20, 25, 40, 50, 80, 100]) {
+  for (const pct of [40, 60, 75, 80, 90]) {
+    const act = (theo * pct) / 100
+    if (!Number.isInteger(act * 10)) continue
+    add(`chemc_hq2_${theo}_${pct}`, T.hellQuant, FW.quantReason, 'medium',
+      [`某反應的理論產量為 ${theo} g，實際得到 ${round(act, 1)} g 產物。產率百分比是多少？`,
+       `A reaction has a theoretical yield of ${theo} g and actually produces ${round(act, 1)} g. What is the percentage yield?`],
+      [n(`${pct}%`), n(`${round((theo / act) * 100, 1)}%`), n(`${round(((theo - act) / theo) * 100, 1)}%`), n(`${round(act, 1)}%`)],
+      [`產率百分比 = 實際產量 ÷ 理論產量 × 100% = ${round(act, 1)} ÷ ${theo} × 100% = ${pct}%。理論產量由限量反應物按化學計量算出，實際產量必然不高於它；產率低於 100% 的常見原因包括副反應、可逆反應未完全進行，以及過濾與轉移時的損耗。陷阱：${round((theo / act) * 100, 1)}% 把分子分母倒轉，會得出大於 100% 的荒謬結果；${round(((theo - act) / theo) * 100, 1)}% 算的是損失率；${round(act, 1)}% 把質量當成百分率。`,
+       `Percentage yield = actual yield ÷ theoretical yield × 100% = ${round(act, 1)} ÷ ${theo} × 100% = ${pct}%. The theoretical yield follows from the limiting reactant by stoichiometry, and the actual yield can never exceed it; yields fall below 100% because of side reactions, incomplete reversible reactions, and losses during filtration and transfer. Traps: ${round((theo / act) * 100, 1)}% inverts the fraction and gives an impossible value above 100%; ${round(((theo - act) / theo) * 100, 1)}% is the loss; ${round(act, 1)}% reads a mass as a percentage.`])
+  }
+}
+
 export const chemistryBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
