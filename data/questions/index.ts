@@ -31,6 +31,7 @@ import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
 import { economicsReviewedQuestions } from './economics-reviewed'
+import { economicsFloorBatch1Questions } from './economics-floor-batch1'
 // 2026-08-07 補漏：以下兩個 reviewed bank 一直列於 load.ts（即一直供應予學生），
 // 卻從未接入本 barrel。後果是 12 條已審核題目對所有經 index.ts 讀取的工具
 // （topic-coverage、全量稽核統計）完全不可見。
@@ -112,7 +113,7 @@ const banks: Record<string, SubjectBank> = {
     topics: chineseTopics,
   },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
-  economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
+  economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },

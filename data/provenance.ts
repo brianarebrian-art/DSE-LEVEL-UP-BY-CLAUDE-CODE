@@ -94,6 +94,32 @@ export const REVIEWED: Record<string, ReviewRecord> = {
   "econ-sd-mc-7": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "econ-sd-mc-8": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
   "econ-sd-mc-9": { reviewer: "brian", reviewedAt: "2026-08-07", batch: "en-backfill-51" },
+  "econ_floor_01": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_02": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_03": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_04": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_06": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_07": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_08": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_09": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_10": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_11": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_12": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_13": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_14": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_15": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_16": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_17": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_18": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_19": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_20": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_21": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_22": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_23": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_24": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_25": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_26": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
+  "econ_floor_27": { reviewer: "brian", reviewedAt: "2026-08-28", batch: "economics-floor" },
   "eng-idiom-01": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", batch: "english-idioms-batch" },
   "eng-idiom-02": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", batch: "english-idioms-batch" },
   "eng-idiom-03": { reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", batch: "english-idioms-batch" },
@@ -369,6 +395,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
   { batch: "csd-batch2", subject: "csd", reviewer: "brian", reviewedAt: "2026-08-27", approved: 40 },
   { batch: "econ-market-structure-mc-10", subject: "economics", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-18", approved: 10 },
   { batch: "econ-supply-demand-mc-10", subject: "economics", reviewer: "brian", reviewedAt: "2026-07-17", approved: 10 },
+  { batch: "economics-floor", subject: "economics", reviewer: "brian", reviewedAt: "2026-08-28", approved: 26 },
   { batch: "en-backfill-51", subject: "translation", reviewer: "brian", reviewedAt: "2026-08-07", approved: 51 },
   { batch: "english-idioms-batch", subject: "english", reviewer: "望咩望,未見過海綿寶寶咩?", reviewedAt: "2026-07-23", approved: 6 },
   { batch: "history-floor-batch1", subject: "history", reviewer: "brian", reviewedAt: "2026-08-28", approved: 43 },
@@ -379,7 +406,7 @@ export const REVIEW_BATCHES: ReviewBatch[] = [
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 332
+export const REVIEWED_COUNT = 358
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>
