@@ -1,0 +1,407 @@
+[
+ {
+  "id": "floor2_geo_pc_01",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "basic",
+  "question": "在乾旱地區，日夜溫差極大是岩石風化的主要原因之一。這種風化屬於哪一類？",
+  "questionEn": "In arid regions a large diurnal temperature range is a major cause of rock weathering. What type of weathering is this?",
+  "options": [
+   "物理風化 —— 岩石反覆熱脹冷縮而崩解",
+   "化學風化 —— 岩石與水起化學反應而溶解",
+   "生物風化 —— 植物根部撐裂岩石",
+   "侵蝕 —— 岩石被水流搬走"
+  ],
+  "optionsEn": [
+   "physical weathering — repeated expansion and contraction breaks the rock apart",
+   "chemical weathering — the rock dissolves by reacting with water",
+   "biological weathering — plant roots prise the rock apart",
+   "erosion — the rock is carried away by running water"
+  ],
+  "correctIndex": 0,
+  "explanation": "日間岩石受熱膨脹、夜間冷卻收縮，礦物顆粒的膨脹係數不同，反覆數千次後產生內部應力，岩石表層剝落崩解。整個過程只涉及物理力，岩石的化學成分並無改變，故屬物理（機械）風化。乾旱地區水分稀少，化學風化反而不活躍。要分清風化與侵蝕：風化是岩石【原地】分解，侵蝕則涉及物質被【搬離】原處，兩者是先後相接的兩個環節，不可混為一談。",
+  "explanationEn": "Rock heats and expands by day and cools and contracts by night, and because the mineral grains have different expansion coefficients, thousands of such cycles set up internal stresses until the outer layer flakes away. The process involves only physical forces and leaves the chemical composition unchanged, so it is physical (mechanical) weathering. Arid regions have little water, so chemical weathering is comparatively inactive there. Distinguish weathering from erosion: weathering breaks rock down IN PLACE, while erosion involves material being CARRIED AWAY, and the two are successive links in a chain rather than the same thing."
+ },
+ {
+  "id": "floor2_geo_pc_02",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "intermediate",
+  "question": "河流上游的坡度較陡，下游較平緩。這對河流的搬運與沉積有何影響？",
+  "questionEn": "A river's gradient is steep in its upper course and gentle in its lower course. How does this affect transport and deposition?",
+  "options": [
+   "上游流速快、搬運力強；下游流速減慢，較大顆粒先沉積",
+   "上游流速慢，沉積為主；下游流速快，侵蝕為主",
+   "上下游流速相同，沉積分佈平均",
+   "流速與顆粒沉積次序無關"
+  ],
+  "optionsEn": [
+   "the upper course flows fast and carries a heavy load; as the lower course slows, coarser particles settle first",
+   "the upper course is slow and depositional while the lower course is fast and erosional",
+   "velocity is the same throughout, so deposition is even",
+   "velocity has no bearing on the order in which particles settle"
+  ],
+  "correctIndex": 0,
+  "explanation": "坡度陡則重力分量大，流速快，河流的搬運能力（能搬多大顆粒）與搬運量同時提高，因此上游以侵蝕與搬運為主。進入下游後坡度變緩、流速下降，河流無力再托住較重的顆粒，於是按顆粒由大至小依次沉積 —— 這正是三角洲與氾濫平原沉積物由內向外逐漸變幼的成因。第二項把上下游的特徵完全倒轉；第三、四項與河流作用的基本原理相違。",
+  "explanationEn": "A steep gradient gives a larger downslope component of gravity and hence a faster flow, raising both competence (the largest particle the river can move) and capacity, so the upper course is dominated by erosion and transport. Downstream the gradient eases and velocity falls, the river can no longer hold the heavier particles, and they settle in order from coarsest to finest — which is why deltas and floodplains fine outwards. The second option reverses upper and lower course entirely, and the third and fourth contradict the basic principles of fluvial processes."
+ },
+ {
+  "id": "floor2_geo_pc_03",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "intermediate",
+  "question": "大量砍伐山坡上的森林後，該地區山泥傾瀉的風險上升。最直接的原因是甚麼？",
+  "questionEn": "After extensive deforestation of a hillside, the risk of landslides increases. What is the most direct reason?",
+  "options": [
+   "樹根不再固結土壤，且雨水直接沖刷坡面，土壤抗剪強度下降",
+   "樹木減少令地表蒸散作用減弱，當地降雨量因而大幅上升並沖垮坡面",
+   "砍伐令土壤中的礦物成分改變，岩石因此變軟而失去承托力",
+   "砍伐機械的重量壓實土層，令山坡的坡度在短期內明顯變陡"
+  ],
+  "optionsEn": [
+   "roots no longer bind the soil and rain strikes the slope directly, reducing the soil's shear strength",
+   "less transpiration greatly increases local rainfall, which then washes the slope away",
+   "felling changes the mineral composition of the soil, softening the rock so it can no longer bear load",
+   "the weight of felling machinery compacts the soil and visibly steepens the slope within a short time"
+  ],
+  "correctIndex": 0,
+  "explanation": "樹木對山坡的穩定有兩重作用：根系在土層中形成網狀結構，把鬆散土粒固結；樹冠則截留雨水，減慢雨滴打擊地面的力度並延緩入滲。砍伐後兩者同時失去，雨水直接沖刷坡面並大量入滲，土壤含水量上升、重量增加而抗剪強度下降，一旦超過臨界值即發生滑動。降雨量主要受大尺度氣候與地形控制，砍伐對本地降雨的影響遠不及上述機制直接；砍伐不會改變岩石礦物成分，亦不會改變坡度。",
+  "explanationEn": "Trees stabilise a slope in two ways: their roots form a network through the soil that binds loose particles, and their canopy intercepts rain, softening the impact of raindrops and slowing infiltration. Felling removes both at once, so rain strikes and infiltrates the slope directly, the soil becomes wetter and heavier while its shear strength falls, and once a threshold is passed the slope fails. Rainfall is governed mainly by large-scale climate and relief, so the effect of felling on local rainfall is far less direct than the mechanism above; felling changes neither the mineral composition of the rock nor the angle of the slope."
+ },
+ {
+  "id": "floor2_geo_pc_04",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "hard",
+  "question": "城市中心的氣溫常較周邊郊區為高，形成「城市熱島」。下列哪一條因果鏈最完整地解釋這個現象？",
+  "questionEn": "City centres are often warmer than the surrounding countryside, forming an urban heat island. Which causal chain explains this most completely?",
+  "options": [
+   "建築物與路面吸熱多、蒸發散熱少，加上人為排熱，令市區積聚並釋放更多熱能",
+   "市中心的海拔一般高於周邊郊區，氣溫因而隨着高度上升而變得較高",
+   "市區上空的雲量比郊區多，雲層把地面輻射反射回來，阻擋熱能向外散失",
+   "市區種植的樹木比郊區密集得多，植物呼吸作用所釋出的熱能令氣溫上升"
+  ],
+  "optionsEn": [
+   "buildings and paving absorb more heat and lose less by evaporation, and human activity adds waste heat, so the centre stores and re-radiates more energy",
+   "city centres generally stand at a higher elevation than the surrounding countryside, so temperature rises with height",
+   "there is more cloud over the city than the countryside, and it reflects surface radiation back and blocks heat from escaping",
+   "cities are planted far more densely than the countryside and heat released by plant respiration raises the temperature"
+  ],
+  "correctIndex": 0,
+  "explanation": "城市熱島由幾條機制疊加而成：混凝土與瀝青的熱容量大、顏色深，日間吸收並儲存大量太陽輻射，入夜緩慢釋放；不透水面令雨水迅速排走，缺乏植被與水體，蒸發散熱（潛熱）大幅減少；空調、車輛與工業排出人為熱；密集高樓形成「峽谷效應」，令輻射在建築之間反覆反射而難以散失。第二項與事實不符 —— 熱島與海拔無關；第三項因果倒轉，雲量並非熱島的成因；第四項在方向與量級上都不成立，市區植被通常較少，而植物呼吸產熱微不足道。",
+  "explanationEn": "The urban heat island arises from several mechanisms acting together: concrete and asphalt have high heat capacity and dark surfaces, absorbing and storing solar radiation by day and releasing it slowly at night; impermeable surfaces drain rain away quickly and vegetation and water bodies are scarce, so evaporative (latent heat) cooling is much reduced; air conditioning, vehicles and industry add waste heat; and dense tall buildings create a canyon effect in which radiation is reflected repeatedly and escapes poorly. The second option is simply untrue, as the effect is unrelated to elevation; the third reverses cause and effect, since cloud is not the origin of the island; and the fourth fails in both direction and magnitude, since cities generally have less vegetation and plant respiration produces negligible heat."
+ },
+ {
+  "id": "floor2_geo_pc_05",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "basic",
+  "question": "板塊互相碰撞的聚合型板塊邊界，最常出現下列哪一組地貌與現象？",
+  "questionEn": "Which combination of landforms and phenomena is most characteristic of a convergent plate boundary?",
+  "options": [
+   "褶皺山脈、海溝、地震與火山活動",
+   "中洋脊與新海洋地殼的形成",
+   "廣闊的平坦沖積平原",
+   "大規模的冰川侵蝕地貌"
+  ],
+  "optionsEn": [
+   "fold mountains, ocean trenches, earthquakes and volcanic activity",
+   "mid-ocean ridges and the creation of new oceanic crust",
+   "broad flat alluvial plains",
+   "large-scale glacial erosional landforms"
+  ],
+  "correctIndex": 0,
+  "explanation": "聚合型邊界上兩塊板塊相向移動：密度較大的海洋板塊俯衝至另一板塊之下形成海溝，俯衝板塊下沉時受熱熔融，岩漿上升形成火山；上覆地層受擠壓而褶皺隆起成山脈；板塊摩擦積聚的應力釋放時造成地震。中洋脊屬於【張裂型】邊界的特徵，方向剛好相反；沖積平原由河流沉積形成，冰川地貌由冰的侵蝕造成，兩者都與板塊邊界類型無直接關係。",
+  "explanationEn": "At a convergent boundary two plates move towards each other: the denser oceanic plate is subducted beneath the other, forming a trench; as the descending slab heats, magma rises and builds volcanoes; the overlying strata are compressed and folded into mountains; and stress released along the contact produces earthquakes. Mid-ocean ridges are characteristic of DIVERGENT boundaries, the opposite case; alluvial plains are built by river deposition and glacial landforms by ice erosion, and neither is tied to a particular plate boundary type."
+ },
+ {
+  "id": "floor2_geo_pc_06",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "intermediate",
+  "question": "熱帶雨林的土壤養分大部分儲存於植被而非土壤本身。砍伐後土地迅速失去生產力，最主要的原因是甚麼？",
+  "questionEn": "In tropical rainforest most nutrients are held in the vegetation rather than in the soil. Why does the land lose fertility so quickly after clearance?",
+  "options": [
+   "養分的主要儲存庫（植被）被移走，加上高溫多雨令表土養分迅速淋溶流失",
+   "砍伐令地面失去覆蓋，土壤溫度下降，分解者活動減慢而停止釋出養分",
+   "砍伐後土壤中的黏土含量上升，養分被黏土顆粒牢固吸附而無法被吸收",
+   "雨林土壤本身極為肥沃，砍伐令養分下沉並鎖在植物根系觸及不到的深層"
+  ],
+  "optionsEn": [
+   "the main nutrient store — the vegetation — is removed, and heavy rain with high temperatures leaches the topsoil rapidly",
+   "clearance exposes the ground, soil temperature falls, and decomposers slow down and stop releasing nutrients",
+   "the clay content of the soil rises after clearance and nutrients are held so tightly by clay particles that they cannot be taken up",
+   "rainforest soils are inherently very fertile, and clearance drives the nutrients down beyond the reach of roots"
+  ],
+  "correctIndex": 0,
+  "explanation": "雨林的養分循環非常緊密：落葉在高溫多濕下迅速被分解者分解，養分幾乎立即被密集的淺根系吸收回植體，因此養分主要「存」在生物量之中，土壤本身反而貧瘠。砍伐移走了這個儲存庫，同時失去樹冠遮擋，暴雨直接沖刷地面，可溶養分隨下滲水流被淋溶至深層而流失，數年之內即難以耕作。第二項方向寫反 —— 失去遮蔭後土壤溫度上升；第三、四項與雨林土壤（多為貧瘠的磚紅壤）的實況不符。",
+  "explanationEn": "Rainforest nutrient cycling is very tight: leaf litter is broken down rapidly by decomposers in the warm, damp conditions and the nutrients are taken straight back up by a dense mat of shallow roots, so the nutrients are held in the biomass while the soil itself is poor. Clearance removes that store and also the canopy, so heavy rain strikes the ground directly and soluble nutrients are leached downwards and lost, leaving land that is hard to farm within a few years. The second option has the direction wrong, since soil warms once shade is lost, and the third and fourth misdescribe rainforest soils, which are typically infertile ferrallitic soils."
+ },
+ {
+  "id": "floor2_geo_pc_07",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "地理過程・因果鏈",
+  "topicId": "geo_process_chain",
+  "topicZh": "地理過程・因果鏈",
+  "topicEn": "Geographical process chains",
+  "difficulty": "hard",
+  "question": "在河曲（曲流）的發育過程中，凹岸與凸岸分別發生甚麼作用？",
+  "questionEn": "In the development of a meander, what happens on the outer bank and the inner bank respectively?",
+  "options": [
+   "凹岸流速快、侵蝕形成陡崖；凸岸流速慢、沉積形成點沙洲",
+   "凹岸水流較慢而沉積成沙洲；凸岸水流較急而侵蝕成陡直的河崖",
+   "兩岸的流速相同，故同時受到側向侵蝕，河道因而不斷向兩邊變闊",
+   "兩岸的流速同樣緩慢，故同時發生沉積，河道因而不斷收窄以至淤塞"
+  ],
+  "optionsEn": [
+   "the outer bank flows faster and is eroded into a river cliff; the inner bank flows more slowly and builds a point bar",
+   "the outer bank flows slowly and builds a bar while the inner bank flows fast and is cut into a cliff",
+   "velocity is equal on both banks, so both are eroded laterally and the channel widens on both sides",
+   "velocity is equally slow on both banks, so both receive deposits and the channel narrows until it silts up"
+  ],
+  "correctIndex": 0,
+  "explanation": "水流進入彎道時，慣性把流速最快的主流帶向外側（凹岸），該處水深流急，側向侵蝕強烈，河岸被掏空後崩塌形成陡直的河崖。內側（凸岸）水淺流緩，河流無力再托住負載，於是沉積成弧形的點沙洲。兩岸一侵一積，令河曲的曲度不斷加大，最終可能截彎取直而形成牛軛湖。第二項把凹凸兩岸的作用完全倒轉 —— 這是本課題最常見的失分位；第三、四項忽略了同一斷面上流速分佈並不均勻，正是這個不均勻才造就曲流。",
+  "explanationEn": "As water enters a bend, inertia carries the fastest thread of flow to the outside of the curve, where the channel is deep and swift, lateral erosion is vigorous, and the undercut bank collapses into a steep river cliff. On the inside the water is shallow and slow, the river can no longer hold its load, and a curved point bar is deposited. Erosion on one bank and deposition on the other steadily increase the sinuosity, until the neck may be cut through to leave an oxbow lake. The second option reverses the two banks entirely, which is where this topic is most often lost; the third and fourth ignore that velocity is unevenly distributed across the channel, and it is precisely that unevenness which creates the meander."
+ },
+ {
+  "id": "floor2_geo_dm_01",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "basic",
+  "question": "某市過去十年的空氣質素健康指數（AQHI）由平均 6.2 降至 4.1。單憑這項數據，可以合理得出甚麼結論？",
+  "questionEn": "A city's mean Air Quality Health Index fell from 6.2 to 4.1 over ten years. What conclusion does this datum alone support?",
+  "options": [
+   "整體空氣質素有所改善，但未能判斷改善的成因",
+   "減排政策必然是這次改善的唯一成因，其他因素可以排除",
+   "該市的空氣污染問題已徹底解決，往後不必再作監測",
+   "該市的經濟活動必然已大幅萎縮，工業排放隨之停止"
+  ],
+  "optionsEn": [
+   "overall air quality improved, though the cause cannot be determined from this alone",
+   "emission-reduction policy must be the sole cause and other factors can be ruled out",
+   "the city's air pollution problem is now solved and further monitoring is unnecessary",
+   "the city's economic activity must have shrunk sharply and industrial emissions have ceased"
+  ],
+  "correctIndex": 0,
+  "explanation": "指數由 6.2 降至 4.1 只顯示【結果】，並未提供任何關於成因的資訊。改善可能來自減排政策，也可能來自產業結構轉變、鄰近地區排放下降、氣象條件差異，甚至監測站選址改動。數據回應題的紀律是：讀出數據支持得到的結論，不多不少。第二項把單一成因強加於數據之上；第三項過度推論 —— 指數下降不等於問題解決，4.1 仍屬中等水平；第四項則是把相關當作因果，且方向純屬臆測。",
+  "explanationEn": "A fall from 6.2 to 4.1 reports an OUTCOME and says nothing about its cause. The improvement could stem from emission controls, from a shift in industrial structure, from lower emissions in neighbouring areas, from differing weather, or even from a change in monitoring station locations. The discipline of data-response work is to state exactly what the data support, no more and no less. The second option imposes a single cause on the figures; the third over-infers, since a falling index does not mean the problem is solved and 4.1 is still moderate; and the fourth mistakes correlation for causation while speculating about direction."
+ },
+ {
+  "id": "floor2_geo_dm_02",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "intermediate",
+  "question": "一幅氣候圖顯示某地全年高溫，雨量集中於夏季，冬季近乎無雨。這最可能是哪一種氣候？",
+  "questionEn": "A climate graph shows consistently high temperatures with rainfall concentrated in summer and almost none in winter. Which climate is this most likely to be?",
+  "options": [
+   "熱帶季風氣候",
+   "熱帶雨林氣候",
+   "地中海式氣候",
+   "溫帶海洋性氣候"
+  ],
+  "optionsEn": [
+   "tropical monsoon",
+   "tropical rainforest",
+   "Mediterranean",
+   "temperate maritime"
+  ],
+  "correctIndex": 0,
+  "explanation": "判讀氣候圖要同時看兩條線索：溫度水平與雨量的【季節分配】。全年高溫排除了溫帶類型；雨量高度集中於夏季、冬季近乎無雨，是季風環流的典型特徵 —— 夏季風由海洋吹向陸地帶來大量水汽，冬季風由內陸吹出而乾燥。熱帶雨林氣候全年高溫【多雨】，並無明顯乾季；地中海式氣候的雨量集中於【冬】季，剛好相反，而且夏季炎熱乾燥；溫帶海洋性氣候全年溫和而雨量平均。",
+  "explanationEn": "Reading a climate graph means using two clues together: the temperature level and the SEASONAL DISTRIBUTION of rainfall. Year-round high temperatures rule out the temperate types; rainfall heavily concentrated in summer with a nearly dry winter is the signature of monsoon circulation, where summer winds blow from ocean to land carrying moisture while winter winds blow off a dry continental interior. Tropical rainforest climates are hot and WET all year with no marked dry season; Mediterranean climates concentrate rain in WINTER, the opposite pattern, with hot dry summers; and temperate maritime climates are mild with rainfall spread evenly."
+ },
+ {
+  "id": "floor2_geo_dm_03",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "intermediate",
+  "question": "推行「污者自付」原則（例如按垃圾量收費）的主要環境管理邏輯是甚麼？",
+  "questionEn": "What is the main environmental-management logic behind the polluter-pays principle, such as charging by volume of waste?",
+  "options": [
+   "把外部成本內部化，令排污者在決策時把環境代價計算在內",
+   "透過罰款懲罰市民的浪費行為，並藉此為政府庫房增加一筆穩定收入",
+   "把處理污染的責任完全轉移給私營廢物處理商，政府不再承擔任何角色",
+   "限制市民的消費自由，藉着壓抑整體經濟活動來間接減少廢物產生"
+  ],
+  "optionsEn": [
+   "it internalises the external cost so that polluters take environmental damage into account when deciding",
+   "to punish wasteful citizens with fines and provide the treasury with a steady stream of revenue",
+   "to transfer responsibility for pollution entirely to private waste contractors, leaving government no role",
+   "to restrict consumer freedom and cut waste indirectly by suppressing economic activity overall"
+  ],
+  "correctIndex": 0,
+  "explanation": "污染屬於典型的負外部性：排污者承擔的私人成本低於社會實際承受的成本，因此排污量高於社會最適水平。按量收費把處理與環境代價直接加到排污者身上，令私人成本貼近社會成本，排污者在決策時自然會減少產生廢物 —— 這就是「內部化」。增加收入是副產品而非目的；責任並非轉移給企業，而是落在實際製造污染的一方；限制消費自由亦非政策目標，市民仍可自由選擇，只是需為自己造成的代價付費。",
+  "explanationEn": "Pollution is a textbook negative externality: the private cost borne by the polluter is below the cost actually borne by society, so more pollution is produced than is socially optimal. Charging by volume places the disposal and environmental cost directly on the polluter, bringing private cost closer to social cost, so waste generation falls as a natural consequence of the polluter's own decisions — this is internalisation. Revenue is a by-product rather than the aim; responsibility is not transferred to firms but placed on whoever actually pollutes; and restricting consumer freedom is not the objective, since people remain free to choose and simply pay for the cost they impose."
+ },
+ {
+  "id": "floor2_geo_dm_04",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "hard",
+  "question": "兩個城市的人均碳排放相同，但甲市總排放遠高於乙市。這最可能反映甚麼？",
+  "questionEn": "Two cities have the same per-capita carbon emissions, yet City A's total emissions far exceed City B's. What does this most likely reflect?",
+  "options": [
+   "甲市人口遠多於乙市",
+   "甲市的能源效率遠低於乙市",
+   "甲市的工業比重遠高於乙市",
+   "甲市的統計方法有誤"
+  ],
+  "optionsEn": [
+   "City A has a much larger population",
+   "City A is far less energy-efficient than City B",
+   "City A has a much larger industrial sector",
+   "City A's statistics are mistaken"
+  ],
+  "correctIndex": 0,
+  "explanation": "總排放 = 人均排放 × 人口。既然兩市人均排放相同，總排放的差異只能來自人口規模，這是由定義直接推出的結論，無需任何額外假設。能源效率與工業比重確實會影響排放，但它們的影響已經反映在【人均】數字之中；人均既然相同，就不能再用來解釋差異。統計有誤是一個沒有證據支持的推測，而且在數據本身完全自洽的情況下並無提出的理由。人均與總量的分辨，是環境數據題最常設的陷阱。",
+  "explanationEn": "Total emissions = per-capita emissions × population. Since the per-capita figures are equal, the difference in totals can only come from population size, and this follows from the definition without further assumptions. Energy efficiency and industrial structure certainly affect emissions, but their influence is already contained in the PER-CAPITA figure; with that held equal they cannot explain the gap. A statistical error is speculation unsupported by evidence and there is no reason to invoke it when the data are internally consistent. Distinguishing per-capita from total is the classic trap in environmental data questions."
+ },
+ {
+  "id": "floor2_geo_dm_05",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "basic",
+  "question": "可持續發展要求同時兼顧三個面向。除環境保護與經濟發展外，第三個面向是甚麼？",
+  "questionEn": "Sustainable development requires balancing three dimensions. Besides environmental protection and economic development, what is the third?",
+  "options": [
+   "社會公平 —— 包括代際與代內的資源分配",
+   "軍事安全 —— 確保國家邊境與資源不受外來威脅",
+   "科技領先 —— 確保本國在關鍵技術上長期壓倒其他國家",
+   "人口增長 —— 確保勞動人口持續擴大以支撐經濟"
+  ],
+  "optionsEn": [
+   "social equity, including the distribution of resources within and between generations",
+   "military security — keeping borders and resources safe from external threat",
+   "technological leadership — staying ahead of other countries in key technologies",
+   "population growth — keeping the labour force expanding to support the economy"
+  ],
+  "correctIndex": 0,
+  "explanation": "可持續發展的經典定義是「既滿足當代人的需要，又不損害後代滿足其需要的能力」，其核心正是【代際公平】；而在同一代之內，資源與污染負擔應否公平分配，則是【代內公平】。三個面向（環境、經濟、社會）必須同時兼顧，只顧其一而犧牲其餘並不算可持續 —— 例如以嚴重污染換取經濟增長，或以剝奪基層生計的方式推行環保，兩者同樣不符合定義。其餘三項均非可持續發展框架的組成部分。",
+  "explanationEn": "The classic definition of sustainable development is meeting the needs of the present without compromising the ability of future generations to meet their own, and INTERGENERATIONAL equity sits at its heart; within a single generation, the fair distribution of resources and of pollution burdens is INTRAGENERATIONAL equity. All three dimensions — environmental, economic and social — must be held together, and pursuing one at the expense of the others is not sustainable: trading severe pollution for growth, or imposing environmental measures that destroy poorer people's livelihoods, both fail the definition equally. None of the other options belongs to the framework."
+ },
+ {
+  "id": "floor2_geo_dm_06",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "intermediate",
+  "question": "在解讀一幅只顯示絕對數值的環境污染分佈圖時，最需要補充哪一項資料才能作出公平比較？",
+  "questionEn": "When reading a map that shows only absolute pollution figures, which additional information is most needed for a fair comparison?",
+  "options": [
+   "各地區的面積或人口，以便換算成密度或人均數值",
+   "各地區的歷史名稱與行政沿革，以便追溯污染的長期來源",
+   "製圖者的姓名與所屬機構，以便評估這幅地圖是否可信",
+   "地圖所用的印刷顏色與圖例樣式，以便判斷閱讀是否清晰"
+  ],
+  "optionsEn": [
+   "the area or population of each region, so densities or per-capita values can be computed",
+   "the historical names and administrative history of each region, to trace long-term sources",
+   "the cartographer's name and institution, to judge whether the map is trustworthy",
+   "the printing colours and legend style, to judge whether the map reads clearly"
+  ],
+  "correctIndex": 0,
+  "explanation": "絕對數值不能直接比較大小懸殊的區域：一個面積或人口大十倍的地區，即使管理更佳，總量仍可能較高。要作公平比較，必須把絕對值換算為【相對】指標 —— 除以面積得污染密度，除以人口得人均排放，視乎所問的是環境負荷還是責任歸屬而定。這與上一條「人均與總量」屬同一個判讀原則。其餘三項與數據的可比性無關。",
+  "explanationEn": "Absolute figures cannot be compared directly across regions of very different size: a region ten times larger in area or population may show a higher total even if it is better managed. A fair comparison requires converting absolute values into RELATIVE measures — dividing by area gives pollution density, dividing by population gives per-capita emissions — and which to use depends on whether the question concerns environmental load or responsibility. This is the same principle as the per-capita versus total distinction above. None of the other options bears on comparability."
+ },
+ {
+  "id": "floor2_geo_dm_07",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "hard",
+  "question": "某項環境政策實施後，該地區的污染指數下降，但同期鄰近地區的污染指數上升。這最可能說明甚麼？",
+  "questionEn": "After an environmental policy is introduced, pollution falls in that region while rising in neighbouring areas over the same period. What does this most likely indicate?",
+  "options": [
+   "污染可能只是轉移到規管較寬鬆的地區，並未在整體上減少",
+   "該政策必定完全成功，鄰區的變化與本地政策並無任何關連",
+   "鄰近地區的居民必定較不重視環保，故其污染指數自然上升",
+   "兩地的數據必定互相矛盾，其中一方的監測結果應予推翻"
+  ],
+  "optionsEn": [
+   "the pollution may simply have shifted to areas with looser regulation rather than falling overall",
+   "the policy must have succeeded completely and the neighbouring change is unrelated to it",
+   "residents next door must care less about the environment, so their index naturally rose",
+   "the two data sets must contradict each other and one of them should be rejected"
+  ],
+  "correctIndex": 0,
+  "explanation": "這是環境管理上典型的「污染轉移」：規管收緊令高污染的生產活動遷往規管較寬鬆的地方，本地指數改善，但區域整體的排放未必下降，甚至可能因運輸增加而上升。評估政策成效因此必須看【適當的空間尺度】，只看行政區內的數字容易得出過於樂觀的結論。第二項忽略了同期鄰區惡化這項關鍵資料；第三項把結構性的產業轉移歸咎於居民態度，缺乏證據；第四項誤把「兩地變化方向相反」當成數據矛盾，但兩者其實可以同時為真，而且正好構成轉移的證據。",
+  "explanationEn": "This is the classic problem of pollution displacement: tighter regulation drives polluting activity to places where rules are looser, so the local index improves while regional emissions may not fall at all and can even rise through extra transport. Judging a policy therefore requires the APPROPRIATE SPATIAL SCALE, since looking only within administrative boundaries invites an over-optimistic conclusion. The second option ignores the key fact that neighbouring areas worsened over the same period; the third blames residents' attitudes for what is a structural relocation of industry, without evidence; and the fourth mistakes opposite trends for contradictory data, when both can be true at once and together constitute the evidence for displacement."
+ },
+ {
+  "id": "floor2_geo_dm_08",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "數據與環境管理",
+  "topicId": "geo_data_manage",
+  "topicZh": "數據與環境管理",
+  "topicEn": "Data & environmental management",
+  "difficulty": "intermediate",
+  "question": "在環境影響評估中，設立「基線調查」的主要目的是甚麼？",
+  "questionEn": "In an environmental impact assessment, what is the main purpose of a baseline survey?",
+  "options": [
+   "記錄工程開始前的環境狀況，作為日後判斷影響的比較基準",
+   "預先證明該工程在施工與運作期間不會造成任何環境影響",
+   "透過提交大量前期資料，加快主管當局對該工程的審批程序",
+   "計算工程的建造成本與日後的維修開支，以便評估財政可行性"
+  ],
+  "optionsEn": [
+   "to record environmental conditions before works begin, as a reference against which later impacts are judged",
+   "to demonstrate in advance that the works will cause no environmental impact at all",
+   "to speed up approval by submitting a large volume of preparatory material",
+   "to cost the construction and later maintenance so financial viability can be judged"
+  ],
+  "correctIndex": 0,
+  "explanation": "基線調查在工程動工前記錄空氣、水質、噪音、生態等各項指標的既有水平。有了這個參照點，日後的監測數據才能回答「變化了多少、是否由本工程造成」；若沒有基線，任何事後數字都無從判斷究竟是工程影響還是本來如此。基線調查的作用是【提供比較基準】，而非預先為工程背書 —— 把它當成「證明無影響」，正好顛倒了評估的方向。加快審批與計算成本均非其目的。",
+  "explanationEn": "A baseline survey records existing levels of air quality, water quality, noise, ecology and so on before construction starts. That reference point is what later monitoring data need in order to answer how much has changed and whether this project caused it; without a baseline, any subsequent figure leaves it unknowable whether the project is responsible or conditions were always so. The purpose is to PROVIDE A REFERENCE, not to endorse the project in advance — treating it as proof of no impact inverts the direction of the assessment. Speeding approval and costing the works are not its purpose either."
+ }
+]

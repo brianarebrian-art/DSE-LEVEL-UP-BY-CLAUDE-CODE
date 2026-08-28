@@ -1,0 +1,380 @@
+[
+ {
+  "id": "floor2_bio_gl_01",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "basic",
+  "question": "一對表現型正常的夫婦生下一名患白化病的子女。白化病由常染色體隱性基因控制。這對夫婦的基因型最可能是甚麼？",
+  "questionEn": "A phenotypically normal couple have a child with albinism, an autosomal recessive condition. What are the parents' most likely genotypes?",
+  "options": [
+   "兩人都是雜合子（Aa × Aa）",
+   "兩人都是純合顯性（AA × AA）",
+   "一人純合顯性、一人純合隱性（AA × aa）",
+   "兩人都是純合隱性（aa × aa）"
+  ],
+  "optionsEn": [
+   "both are heterozygous (Aa × Aa)",
+   "both are homozygous dominant (AA × AA)",
+   "one homozygous dominant and one homozygous recessive (AA × aa)",
+   "both are homozygous recessive (aa × aa)"
+  ],
+  "correctIndex": 0,
+  "explanation": "患病子女的基因型必為 aa，兩個隱性等位基因分別來自父與母，故雙親各自至少帶有一個 a。但雙親表現型正常，不可能是 aa，因此各自必為 Aa。AA × AA 的子代全部帶有顯性等位基因，不可能出現患者；AA × aa 的子代全為 Aa，同樣不會發病；aa × aa 的雙親自己就會發病，與題幹的「表現型正常」矛盾。這類題的解法固定：先由患者反推其基因型，再向上追溯雙親必須提供甚麼等位基因。",
+  "explanationEn": "The affected child must be aa, receiving one recessive allele from each parent, so each parent carries at least one a. Since both parents are phenotypically normal they cannot be aa, so each must be Aa. AA × AA gives every child a dominant allele and cannot produce an affected child; AA × aa gives all Aa offspring, again unaffected; aa × aa would mean the parents themselves were affected, contradicting the stem. The method is always the same: deduce the affected individual's genotype first, then work upwards to what each parent must have supplied."
+ },
+ {
+  "id": "floor2_bio_gl_02",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "intermediate",
+  "question": "兩隻雜合黑毛豚鼠（Bb）交配，黑色對白色為完全顯性。預期子代中黑毛與白毛的比例是多少？",
+  "questionEn": "Two heterozygous black guinea pigs (Bb) are crossed, with black completely dominant to white. What is the expected ratio of black to white offspring?",
+  "options": [
+   "3 : 1",
+   "1 : 1",
+   "2 : 1",
+   "1 : 2"
+  ],
+  "optionsEn": [
+   "3 : 1",
+   "1 : 1",
+   "2 : 1",
+   "1 : 2"
+  ],
+  "correctIndex": 0,
+  "explanation": "Bb × Bb 的旁氏表給出 1 BB : 2 Bb : 1 bb。由於黑色為完全顯性，BB 與 Bb 同樣表現黑毛，故表現型比例為 3 黑 : 1 白。要留意 1 : 2 : 1 是【基因型】比例，3 : 1 才是【表現型】比例，兩者混淆是本課題最常見的失分位。1 : 1 是測交（Bb × bb）的結果；2 : 1 只在某種基因型致死時才會出現，本題並無此條件。",
+  "explanationEn": "The Punnett square for Bb × Bb gives 1 BB : 2 Bb : 1 bb. Because black is completely dominant, BB and Bb both appear black, so the phenotypic ratio is 3 black : 1 white. Note that 1 : 2 : 1 is the GENOTYPIC ratio while 3 : 1 is the PHENOTYPIC one, and confusing the two is where this topic is most often lost. A 1 : 1 ratio comes from a test cross (Bb × bb); 2 : 1 arises only when one genotype is lethal, which is not stated here."
+ },
+ {
+  "id": "floor2_bio_gl_03",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "intermediate",
+  "question": "一名血型為 O 型的母親與一名 AB 型的父親生育。他們的子女可能出現哪些血型？",
+  "questionEn": "A mother with blood group O and a father with blood group AB have children. Which blood groups can their children have?",
+  "options": [
+   "只有 A 型與 B 型",
+   "只有 O 型與 AB 型",
+   "A、B、AB、O 四種都有可能",
+   "只有 AB 型"
+  ],
+  "optionsEn": [
+   "A and B only",
+   "O and AB only",
+   "all four: A, B, AB and O",
+   "AB only"
+  ],
+  "correctIndex": 0,
+  "explanation": "母親 O 型的基因型為 ii，只能提供 i；父親 AB 型的基因型為 I^A I^B，可提供 I^A 或 I^B。子代因此為 I^A i（A 型）或 I^B i（B 型），各佔一半。子代不可能是 O 型（需要兩個 i，但父親提供不到），亦不可能是 AB 型（需要同時得到 I^A 與 I^B，但母親提供不到）。ABO 血型同時涉及複等位基因與共顯性：I^A 與 I^B 互為共顯性，兩者對 i 均為顯性。",
+  "explanationEn": "The mother, group O, is ii and can only pass on i; the father, group AB, is I^A I^B and passes on either I^A or I^B. The children are therefore I^A i (group A) or I^B i (group B) in equal proportions. Group O is impossible because it needs two i alleles and the father has none, and AB is impossible because it needs both I^A and I^B and the mother has neither. The ABO system involves both multiple alleles and codominance: I^A and I^B are codominant with each other and both dominant to i."
+ },
+ {
+  "id": "floor2_bio_gl_04",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "hard",
+  "question": "某種植物的花色由一對等位基因控制，紅花（RR）與白花（rr）雜交，子一代全部為粉紅花。子一代自交，子二代的表現型比例是多少？",
+  "questionEn": "In a plant species flower colour is controlled by one gene pair. Red (RR) crossed with white (rr) gives an F1 generation that is entirely pink. When the F1 self-pollinates, what is the phenotypic ratio in F2?",
+  "options": [
+   "1 紅 : 2 粉紅 : 1 白",
+   "3 紅 : 1 白",
+   "1 紅 : 1 白",
+   "全部粉紅"
+  ],
+  "optionsEn": [
+   "1 red : 2 pink : 1 white",
+   "3 red : 1 white",
+   "1 red : 1 white",
+   "all pink"
+  ],
+  "correctIndex": 0,
+  "explanation": "子一代全為粉紅，代表這是【不完全顯性】：雜合子 Rr 的表現型介乎兩個純合子之間，而非與顯性純合子相同。Rr × Rr 的基因型比例為 1 RR : 2 Rr : 1 rr，由於三種基因型各有不同表現型，表現型比例同樣是 1 紅 : 2 粉紅 : 1 白。3 : 1 是完全顯性下的結果，與「子一代全為粉紅」直接矛盾；1 : 1 是測交結果；「全部粉紅」忽略了自交會令隱性等位基因重新配對。判斷關鍵在子一代：出現中間表現型即代表不完全顯性。",
+  "explanationEn": "An entirely pink F1 signals INCOMPLETE DOMINANCE: the heterozygote Rr shows a phenotype intermediate between the two homozygotes rather than matching the dominant one. Rr × Rr gives genotypes 1 RR : 2 Rr : 1 rr, and since each genotype has its own phenotype the phenotypic ratio is likewise 1 red : 2 pink : 1 white. A 3 : 1 ratio would require complete dominance, which contradicts the pink F1; 1 : 1 is a test cross; \"all pink\" ignores that selfing lets the recessive alleles pair up again. The F1 is the diagnostic step: an intermediate phenotype means incomplete dominance."
+ },
+ {
+  "id": "floor2_bio_gl_05",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "basic",
+  "question": "在人類中，男性的性染色體組合是 XY，女性是 XX。決定子女性別的是哪一方的配子？",
+  "questionEn": "In humans males have the sex chromosomes XY and females XX. Which parent's gamete determines the sex of the child?",
+  "options": [
+   "父親的精子，因為精子可帶 X 或 Y",
+   "母親的卵子，因為卵子可帶 X 或 Y",
+   "雙方各佔一半機會",
+   "由受精後的環境決定"
+  ],
+  "optionsEn": [
+   "the father's sperm, because sperm may carry X or Y",
+   "the mother's egg, because eggs may carry X or Y",
+   "both parents equally",
+   "the environment after fertilisation"
+  ],
+  "correctIndex": 0,
+  "explanation": "母親為 XX，減數分裂後所有卵子都帶 X；父親為 XY，精子有一半帶 X、一半帶 Y。因此子女得到 X 精子便是女性（XX），得到 Y 精子便是男性（XY），性別由精子決定。留意「由精子決定」與「男女出生比例約各半」並不矛盾：正因為 X 與 Y 精子各佔一半，比例才接近 1 : 1。至於環境決定性別的機制在部分爬行類存在，但人類並非如此。",
+  "explanationEn": "The mother is XX, so after meiosis every egg carries an X; the father is XY, so half his sperm carry X and half carry Y. A child receiving an X sperm is female (XX) and one receiving a Y sperm is male (XY), so the sperm decides. Note that \"the sperm decides\" is not in conflict with the roughly equal birth ratio: it is precisely because X and Y sperm occur in equal numbers that the ratio approaches 1 : 1. Environmental sex determination does occur in some reptiles but not in humans."
+ },
+ {
+  "id": "floor2_bio_gl_06",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "intermediate",
+  "question": "血友病是 X 染色體上的隱性遺傳病。一名帶因（攜帶者）母親與一名正常父親生育，他們的兒子患血友病的機會是多少？",
+  "questionEn": "Haemophilia is an X-linked recessive condition. A carrier mother and an unaffected father have children. What is the probability that a son is affected?",
+  "options": [
+   "二分之一",
+   "四分之一",
+   "零",
+   "全部"
+  ],
+  "optionsEn": [
+   "one half",
+   "one quarter",
+   "zero",
+   "all of them"
+  ],
+  "correctIndex": 0,
+  "explanation": "母親為 X^H X^h（帶因），兒子的 X 染色體必定來自母親，因此有一半機會得到 X^h 而發病（X^h Y）。父親只向兒子提供 Y，不影響結果。要分清問題問的是「兒子之中的比例」還是「全部子女之中的比例」：在【所有子女】之中患病的機會是四分之一，但題目限定於【兒子】，故為二分之一。X 連鎖隱性病在男性較常見，正因為男性只有一條 X，沒有另一條可作補償。",
+  "explanationEn": "The mother is X^H X^h, and a son's X chromosome must come from her, so there is a one-half chance he receives X^h and is affected (X^h Y). The father contributes only Y to a son and does not affect the outcome. Be careful whether the question asks about the proportion of SONS or of ALL children: among all children the probability is one quarter, but the stem restricts to sons, giving one half. X-linked recessive conditions are commoner in males precisely because males have only one X and no second copy to compensate."
+ },
+ {
+  "id": "floor2_bio_gl_07",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "hard",
+  "question": "研究人員讓一株高莖植物與一株矮莖植物雜交，子代中高莖與矮莖各佔約一半。若高莖對矮莖為完全顯性，該高莖親本的基因型是甚麼？",
+  "questionEn": "A tall plant is crossed with a short plant and about half the offspring are tall and half short. If tall is completely dominant to short, what is the genotype of the tall parent?",
+  "options": [
+   "雜合子（Tt）",
+   "純合顯性（TT）",
+   "純合隱性（tt）",
+   "無法判斷"
+  ],
+  "optionsEn": [
+   "heterozygous (Tt)",
+   "homozygous dominant (TT)",
+   "homozygous recessive (tt)",
+   "cannot be determined"
+  ],
+  "correctIndex": 0,
+  "explanation": "矮莖親本必為 tt，只能提供 t。子代出現矮莖（tt），代表高莖親本亦提供了一個 t，故高莖親本必為 Tt。若高莖親本是 TT，所有子代都會得到 T 而全為高莖，與觀察到的一半矮莖矛盾。這正是【測交】的原理：用純合隱性個體與待測個體雜交，由子代是否出現隱性表現型，即可判斷待測個體是純合還是雜合，是遺傳學上判定未知基因型的標準做法。「無法判斷」忽略了子代數據本身已提供足夠資訊。",
+  "explanationEn": "The short parent must be tt and can only pass on t. Short offspring (tt) appear, so the tall parent also contributed a t and must be Tt. Had the tall parent been TT every offspring would have received a T and all would be tall, contradicting the observed half that are short. This is exactly the logic of a TEST CROSS: crossing an unknown with a homozygous recessive reveals whether the unknown is homozygous or heterozygous from whether recessive offspring appear, and it is the standard method for determining an unknown genotype. \"Cannot be determined\" overlooks that the offspring data already settle the question."
+ },
+ {
+  "id": "floor2_bio_pc_01",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "basic",
+  "question": "劇烈運動時，呼吸速率會加快。觸發這個反應的直接刺激是甚麼？",
+  "questionEn": "During vigorous exercise the breathing rate increases. What is the direct stimulus that triggers this response?",
+  "options": [
+   "血液中二氧化碳濃度上升",
+   "血液中氧氣濃度上升",
+   "體溫下降",
+   "肌肉中肝醣含量上升"
+  ],
+  "optionsEn": [
+   "a rise in the carbon dioxide concentration of the blood",
+   "a rise in the oxygen concentration of the blood",
+   "a fall in body temperature",
+   "a rise in muscle glycogen"
+  ],
+  "correctIndex": 0,
+  "explanation": "運動時肌肉呼吸作用加劇，產生大量二氧化碳並釋入血液。二氧化碳溶於血漿形成碳酸，令血液 pH 下降；延髓的呼吸中樞對這個變化最為敏感，於是加快呼吸速率，把多餘的二氧化碳呼出。留意主要刺激是二氧化碳【上升】而非氧氣下降 —— 這是常見的直覺陷阱：身體監測的是廢物累積，不是燃料短缺，因為二氧化碳的變化更快、更靈敏。體溫在運動時上升而非下降；肌肉肝醣在運動時被消耗，含量下降。",
+  "explanationEn": "During exercise muscle respiration increases sharply, producing carbon dioxide that enters the blood. Dissolved carbon dioxide forms carbonic acid and lowers blood pH, and the respiratory centre in the medulla is most sensitive to this change, so breathing rate rises to expel the excess. Note that the main stimulus is a RISE in carbon dioxide rather than a fall in oxygen — a common intuitive trap: the body monitors waste accumulation rather than fuel shortage, because carbon dioxide changes faster and more sensitively. Body temperature rises during exercise, and muscle glycogen is consumed, not accumulated."
+ },
+ {
+  "id": "floor2_bio_pc_02",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "intermediate",
+  "question": "進食後血糖上升，胰島素分泌增加。胰島素令血糖下降的主要機制是甚麼？",
+  "questionEn": "After a meal blood glucose rises and insulin secretion increases. By what main mechanism does insulin lower blood glucose?",
+  "options": [
+   "促進肝細胞與肌肉細胞吸收葡萄糖並合成肝醣",
+   "促進肝細胞把儲存的肝醣分解為葡萄糖並釋入血液",
+   "抑制腎小管重吸收葡萄糖，令多餘的糖分隨尿液排出體外",
+   "加快小腸絨毛吸收葡萄糖的速率，令糖分更快進入血液循環"
+  ],
+  "optionsEn": [
+   "it promotes glucose uptake by liver and muscle cells and its conversion into glycogen",
+   "it makes liver cells break stored glycogen down into glucose and release it into the blood",
+   "it inhibits glucose reabsorption in the kidney tubule so surplus sugar leaves in the urine",
+   "it speeds up glucose absorption by the intestinal villi so sugar enters the circulation faster"
+  ],
+  "correctIndex": 0,
+  "explanation": "胰島素由胰島的 β 細胞分泌，作用是提高細胞膜對葡萄糖的通透性，令肝細胞與肌肉細胞加快吸收血中葡萄糖，並把它轉化為肝醣儲存，血糖因而回落 —— 這是一個典型的負回饋：血糖上升觸發胰島素，胰島素令血糖下降，血糖回落又令胰島素分泌減少。「促進肝醣分解」是升糖素的作用，方向剛好相反；抑制腎小管重吸收會令葡萄糖從尿液流失，那是糖尿病的病徵而非胰島素的正常作用；加快小腸吸收只會令血糖更高。",
+  "explanationEn": "Insulin is secreted by the β cells of the pancreatic islets and increases the permeability of cell membranes to glucose, so liver and muscle cells take up blood glucose faster and store it as glycogen, bringing the concentration back down. This is a textbook negative feedback loop: rising glucose triggers insulin, insulin lowers glucose, and falling glucose reduces insulin secretion. Promoting glycogen breakdown is the action of glucagon, which works in the opposite direction; inhibiting reabsorption in the kidney tubule would lose glucose in the urine, a symptom of diabetes rather than a normal insulin action; and faster intestinal absorption would raise blood glucose further."
+ },
+ {
+  "id": "floor2_bio_pc_03",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "intermediate",
+  "question": "天氣寒冷時，皮膚的血管會收縮。這個反應如何幫助維持體溫？",
+  "questionEn": "In cold weather the blood vessels in the skin constrict. How does this help maintain body temperature?",
+  "options": [
+   "減少流經皮膚表面的血量，降低輻射散熱",
+   "增加流經皮膚的血量，令皮膚保暖",
+   "令汗腺分泌更多汗液以隔熱",
+   "加快細胞呼吸作用直接產生熱能"
+  ],
+  "optionsEn": [
+   "it reduces blood flow near the skin surface and so cuts heat loss by radiation",
+   "it increases blood flow to the skin to keep the skin warm",
+   "it makes sweat glands secrete more sweat as insulation",
+   "it directly speeds up cellular respiration to generate heat"
+  ],
+  "correctIndex": 0,
+  "explanation": "血管收縮令流經皮膚表層微血管的血量減少，皮膚溫度隨之下降，皮膚與環境之間的溫差縮小，輻射與傳導散失的熱能因而減少，核心體溫得以維持。留意收縮的目的是【減少】而非增加皮膚血流；出汗會加快散熱，在寒冷時反而受抑制；至於加快呼吸作用產熱是另一條獨立的反應途徑（顫抖與代謝率上升），並非血管收縮本身的機制。這條因果鏈的每一環都要說清楚：血流減少 → 皮膚溫度下降 → 溫差縮小 → 散熱減少。",
+  "explanationEn": "Constriction reduces the volume of blood passing through the surface capillaries, so skin temperature falls, the temperature difference between skin and surroundings narrows, and less heat is lost by radiation and conduction, preserving core temperature. Note that the point is to REDUCE skin blood flow, not increase it; sweating accelerates heat loss and is suppressed in the cold; and increased respiratory heat production is a separate response pathway (shivering and a raised metabolic rate), not the mechanism of vasoconstriction itself. Every link in the chain must be stated: less blood flow → lower skin temperature → smaller gradient → less heat lost."
+ },
+ {
+  "id": "floor2_bio_pc_04",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "hard",
+  "question": "一名學生長時間沒有飲水。下列哪一條因果鏈最準確描述身體的反應？",
+  "questionEn": "A student goes a long time without drinking. Which causal chain most accurately describes the body's response?",
+  "options": [
+   "血液水勢下降 → 下視丘偵測 → 腦下垂體釋出抗利尿激素 → 腎小管重吸收更多水 → 尿量減少",
+   "血液水勢上升 → 下視丘偵測到變化 → 腦下垂體釋出更多抗利尿激素 → 腎小管重吸收增加 → 尿量減少",
+   "血液水勢下降 → 腎臟自行分泌抗利尿激素 → 腎小管重吸收減少 → 尿量增加而變稀",
+   "血液水勢下降 → 抗利尿激素分泌減少 → 腎小管對水的通透性下降 → 尿量反而減少"
+  ],
+  "optionsEn": [
+   "blood water potential falls → detected by the hypothalamus → the pituitary releases ADH → the kidney tubule reabsorbs more water → urine volume falls",
+   "blood water potential rises → the hypothalamus detects the change → the pituitary releases more ADH → reabsorption increases → urine volume falls",
+   "blood water potential falls → the kidney itself secretes ADH → tubular reabsorption decreases → urine volume rises and becomes dilute",
+   "blood water potential falls → ADH secretion decreases → the tubule becomes less permeable to water → urine volume nonetheless falls"
+  ],
+  "correctIndex": 0,
+  "explanation": "缺水令血液中溶質相對濃度上升、水勢下降。下視丘的滲透壓感受器偵測到這個變化，促使腦下垂體後葉釋出抗利尿激素；該激素令腎小管（尤其集尿管）對水的通透性提高，重吸收更多水回血液，尿液因而變少而濃。其餘三項各有一處斷裂：第二項的起點方向寫反；第三項把分泌器官錯配為腎臟，而且結論與抗利尿激素的作用矛盾；第四項在中段把激素方向寫反，卻仍得出尿量減少的結論 —— 前後不能自洽。答這類題要逐環檢查方向是否一致。",
+  "explanationEn": "Dehydration raises the relative solute concentration of the blood and lowers its water potential. Osmoreceptors in the hypothalamus detect this and cause the posterior pituitary to release ADH, which raises the permeability of the kidney tubule — especially the collecting duct — to water, so more water is reabsorbed into the blood and the urine becomes smaller in volume and more concentrated. Each of the other chains breaks somewhere: the second reverses the starting direction; the third puts secretion in the kidney and reaches a conclusion contradicting ADH's action; the fourth reverses the hormone direction midway yet still concludes that urine volume falls, so it is not self-consistent. These items are answered by checking that the direction of every link agrees."
+ },
+ {
+  "id": "floor2_bio_pc_05",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "basic",
+  "question": "小腸絨毛的表面有大量微絨毛。這個結構特徵的主要功能是甚麼？",
+  "questionEn": "The surface of the small intestinal villi bears large numbers of microvilli. What is the main function of this feature?",
+  "options": [
+   "大幅增加吸收養分的表面積",
+   "分泌消化酶以分解蛋白質",
+   "把食物向前推進",
+   "防止細菌進入血液"
+  ],
+  "optionsEn": [
+   "to greatly increase the surface area available for absorption",
+   "to secrete enzymes that digest protein",
+   "to push food along the gut",
+   "to stop bacteria entering the blood"
+  ],
+  "correctIndex": 0,
+  "explanation": "微絨毛是絨毛表面細胞膜的細小突起，令吸收表面積再增加約二十倍。表面積愈大，單位時間內能通過的養分分子愈多，吸收效率因而提高 —— 這是「結構配合功能」的典型例子，與肺泡、根毛的原理相同。推進食物靠腸壁的肌肉層作蠕動，並非微絨毛；消化酶由腺體及腸壁細胞分泌，微絨毛本身不是分泌結構；阻擋細菌主要靠黏液層與免疫細胞。",
+  "explanationEn": "Microvilli are minute projections of the cell membrane on the villus surface, multiplying the absorptive area roughly twentyfold. A larger surface area lets more nutrient molecules cross per unit time, raising absorptive efficiency — a classic case of structure matching function, on the same principle as alveoli and root hairs. Food is moved along by peristalsis of the muscle layers, not by microvilli; digestive enzymes come from glands and gut wall cells rather than from the microvilli themselves; and bacteria are held back chiefly by the mucus layer and immune cells."
+ },
+ {
+  "id": "floor2_bio_pc_06",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "intermediate",
+  "question": "劇烈運動後肌肉出現酸痛，與下列哪一項最直接相關？",
+  "questionEn": "Muscle soreness after vigorous exercise is most directly associated with which of the following?",
+  "options": [
+   "氧氣供應不足時進行無氧呼吸並積聚乳酸",
+   "肌肉細胞內二氧化碳完全耗盡",
+   "血液中葡萄糖濃度上升至異常水平",
+   "肌肉細胞停止進行細胞呼吸"
+  ],
+  "optionsEn": [
+   "anaerobic respiration when oxygen supply is insufficient, with lactic acid accumulating",
+   "complete depletion of carbon dioxide inside muscle cells",
+   "blood glucose rising to an abnormally high level",
+   "muscle cells ceasing respiration altogether"
+  ],
+  "correctIndex": 0,
+  "explanation": "劇烈運動時，循環系統供氧的速率追不上肌肉的需求，肌肉細胞在有氧呼吸之外同時進行無氧呼吸。無氧呼吸把葡萄糖分解為乳酸，每分子葡萄糖只釋出約 2 個 ATP，遠少於有氧呼吸，並且乳酸積聚令肌肉感到疲勞酸痛，形成所謂「氧債」，運動後需持續大口喘氣把乳酸氧化清除。二氧化碳在運動時是【產生】而非耗盡；血糖在運動時傾向下降；細胞呼吸若真的停止，肌肉便無法收縮。",
+  "explanationEn": "In vigorous exercise the circulation cannot deliver oxygen as fast as the muscles demand it, so muscle cells respire anaerobically alongside aerobic respiration. Anaerobic respiration converts glucose to lactic acid and releases only about 2 ATP per glucose, far less than the aerobic route, and the accumulating lactic acid produces fatigue and soreness — the so-called oxygen debt, repaid by continued deep breathing after exercise as the lactic acid is oxidised. Carbon dioxide is PRODUCED during exercise rather than depleted; blood glucose tends to fall; and if respiration truly stopped the muscle could not contract at all."
+ },
+ {
+  "id": "floor2_bio_pc_07",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "hard",
+  "question": "光照增強時，植物的光合作用速率上升，但升至某一點後不再增加。若此時提高二氧化碳濃度，速率再次上升。這說明了甚麼？",
+  "questionEn": "As light intensity rises the rate of photosynthesis increases but levels off beyond a certain point. Raising the carbon dioxide concentration at that point makes the rate rise again. What does this show?",
+  "options": [
+   "在該點之後，二氧化碳濃度成為限制因子",
+   "光照強度在該點之後仍然是唯一限制因子",
+   "光合作用不受二氧化碳濃度影響",
+   "該植物已達到其最大可能的光合作用速率"
+  ],
+  "optionsEn": [
+   "beyond that point carbon dioxide concentration is the limiting factor",
+   "light intensity remains the only limiting factor beyond that point",
+   "photosynthesis is unaffected by carbon dioxide concentration",
+   "the plant has reached its highest possible rate of photosynthesis"
+  ],
+  "correctIndex": 0,
+  "explanation": "限制因子的定義是：在眾多影響因素之中，數值最接近不足水平、因而決定整體速率的那一個。曲線平坦代表再增加光照也無濟於事，光已不再是限制因子；而一提高二氧化碳濃度速率便回升，正好證明此時是二氧化碳在拖住速率。第二項與觀察結果直接矛盾；第三項被實驗本身推翻；第四項亦被推翻 —— 速率既然能再上升，先前的平台便不是最大值。這個「換一個因子試試」的實驗設計，正是辨認限制因子的標準做法。",
+  "explanationEn": "A limiting factor is the one among several influences that is closest to being in short supply and therefore sets the overall rate. The plateau shows that adding more light no longer helps, so light is no longer limiting; and the fact that raising carbon dioxide immediately lifts the rate shows that carbon dioxide was holding it back. The second option contradicts the observation directly; the third is refuted by the experiment itself; and the fourth is refuted too, since a rate that can still rise was not a maximum. Changing one factor at a time in this way is the standard method for identifying a limiting factor."
+ }
+]

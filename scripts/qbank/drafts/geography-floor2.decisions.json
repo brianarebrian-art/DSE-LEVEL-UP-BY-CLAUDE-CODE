@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "source": "geography-floor2.json",
+    "subject": "geography",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor2_geo_pc_01": "pending",
+    "floor2_geo_pc_02": "pending",
+    "floor2_geo_pc_03": "pending",
+    "floor2_geo_pc_04": "pending",
+    "floor2_geo_pc_05": "pending",
+    "floor2_geo_pc_06": "pending",
+    "floor2_geo_pc_07": "pending",
+    "floor2_geo_dm_01": "pending",
+    "floor2_geo_dm_02": "pending",
+    "floor2_geo_dm_03": "pending",
+    "floor2_geo_dm_04": "pending",
+    "floor2_geo_dm_05": "pending",
+    "floor2_geo_dm_06": "pending",
+    "floor2_geo_dm_07": "pending",
+    "floor2_geo_dm_08": "pending"
+  }
+}
