@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "source": "economics-floor-b2.json",
+    "subject": "economics",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-08-28",
+    "note": "Yuna 於對話中批准（指令原文稱佢做 econ_recession_01，實際 id 為 econ_floor_28 —— 同一條，此處用實際 id）。"
+  },
+  "decisions": {
+    "econ_floor_28": "approved"
+  }
+}

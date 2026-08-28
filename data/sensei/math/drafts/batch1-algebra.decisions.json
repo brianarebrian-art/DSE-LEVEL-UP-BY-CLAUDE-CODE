@@ -2,19 +2,19 @@
   "_meta": {
     "source": "batch1-algebra.json",
     "subject": "math",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "ma-discriminant": "pending",
-    "ma-sum-product-roots": "pending",
-    "ma-complete-square": "pending",
-    "ma-quadratic-inequality": "pending",
-    "ma-identity-vs-equation": "pending",
-    "ma-factor-remainder": "pending",
-    "ma-log-laws": "pending",
-    "ma-transformations": "pending",
-    "ma-absolute-value": "pending",
-    "ma-substitution": "pending"
+    "ma-discriminant": "approved",
+    "ma-sum-product-roots": "approved",
+    "ma-complete-square": "approved",
+    "ma-quadratic-inequality": "approved",
+    "ma-identity-vs-equation": "approved",
+    "ma-factor-remainder": "approved",
+    "ma-log-laws": "approved",
+    "ma-transformations": "approved",
+    "ma-absolute-value": "approved",
+    "ma-substitution": "approved"
   }
 }

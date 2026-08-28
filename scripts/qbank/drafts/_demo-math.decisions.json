@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "source": "_demo-math.json",
+    "subject": "math",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "demo-add": "pending",
+    "demo-area": "pending",
+    "demo-pct": "pending"
+  }
+}

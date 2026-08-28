@@ -21,6 +21,13 @@ export default function SubjectDetailView({
   const { t, locale } = useLocale()
   const sd = t.subjectDetail
   const en = locale === 'en'
+
+  // 「涵蓋全部 N 大課題」要數【真係有題】嘅課題，唔可以數已註冊課題數。
+  // 2026-08-27：中文科註冊 18 個課題，但命題寫作（記敘抒情／描寫／綜合）
+  // 同實用寫作四個係空嘅 —— 下面啲 chip 本來就已經隔走佢哋（mcCount > 0），
+  // 於是頁面一邊寫住「涵蓋全部 18 大課題」，一邊只顯示 14 個入口。
+  // 數字由實際有題嘅課題計出，往後補題或加課題都唔使記得返嚟改。
+  const coveredTopics = topics.filter((t) => (t.mcCount ?? t.count) > 0 || (t.writtenCount ?? 0) > 0).length
   const name = en ? meta.nameEn : meta.name
   const short = en ? meta.shortEn : meta.short
   const description = en ? meta.descriptionEn : meta.description
@@ -80,7 +87,7 @@ export default function SubjectDetailView({
           <div>
             <div className="font-medium text-lg mb-1 text-ink">{sd.quickStartTitle}</div>
             <p className="text-ink-muted text-sm">
-              {questionsCount}{sd.quickDescA}{topics.length}{sd.quickDescB}
+              {questionsCount}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
             </p>
             <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
               <span>{sd.minutesAbout}{Math.max(5, Math.round(questionsCount * 1.5))}{sd.minutesUnit}</span>
@@ -237,23 +244,41 @@ export default function SubjectDetailView({
 
         {/* Topic list */}
         <h2 className="text-lg font-medium mb-4 text-ink">{sd.byTopic}</h2>
-        {/* 只列出【有 MC】嘅課題 —— 呢啲 chips 全部連去 /practice?topic=，
-            而嗰條路只服務客觀題（getQuestionsByTopic 只返 MC）。題庫自 2026-07-31
-            起收 text／long，於是可以出現「有題但一條 MC 都冇」嘅課題；唔隔走，
-            學生撳入去就會見到一份空白練習。書寫題有自己嘅入口（?mode=long）。 */}
+        {/* 每個課題都要有一個【去到有題嘅地方】嘅入口。
+            兩條路唔同：`?topic=` 走客觀題流程（getQuestionsByTopic 只返 MC），
+            `?topic=&mode=long` 走書寫題流程（LongPracticeSession 收 topicFilter）。
+            所以 chip 連去邊條路，由該課題實際有咩題型決定：
+              mcCount > 0                     → MC 卷
+              mcCount === 0 && written > 0    → 書寫卷（?mode=long）
+              兩者皆零                          → 唔顯示（撳入去係空白卷）
+            2026-08-27 之前呢度一律 `mcCount > 0`，於是一個【淨係有書寫題】嘅課題
+            會完全冇入口 —— 中文科四個寫作課題入庫 46 條之後即時發生：
+            四個課題各 10 條，練習頁 URL 亦服務得到，但科目頁一個都撳唔到。 */}
         <div className="grid sm:grid-cols-2 gap-3 mb-12">
-          {topics.filter((t) => (t.mcCount ?? t.count) > 0).map((topic) => (
+          {topics.filter((t) => (t.mcCount ?? t.count) > 0 || (t.writtenCount ?? 0) > 0).map((topic) => {
+            const mc = topic.mcCount ?? topic.count
+            const written = topic.writtenCount ?? 0
+            const writtenOnly = mc === 0 && written > 0
+            return (
             <Link
               key={topic.id}
-              href={`/practice?subject=${meta.id}&topic=${topic.id}`}
+              href={`/practice?subject=${meta.id}&topic=${topic.id}${writtenOnly ? '&mode=long' : ''}`}
               className="group bg-surface-raised hover:bg-surface-sunken border border-line hover:border-accent/40 rounded-xl p-5 transition-all flex items-center justify-between"
             >
               <div className="flex items-center gap-4">
                 <div className="text-2xl">{topic.emoji}</div>
                 <div>
-                  <div className="font-medium mb-0.5 text-ink">{en ? (topic.en ?? topic.zh) : topic.zh}</div>
+                  <div className="font-medium mb-0.5 text-ink flex items-center gap-2">
+                    <span>{en ? (topic.en ?? topic.zh) : topic.zh}</span>
+                    {writtenOnly && (
+                      <span className="text-[10px] font-normal px-1.5 py-0.5 rounded border border-gold/40 text-gold shrink-0">
+                        {sd.topicWrittenBadge}
+                      </span>
+                    )}
+                  </div>
                   <div className="text-xs text-ink-muted">
-                    {sd.topicFwPrefix}{en ? (topic.frameworkEn ?? topic.framework) : topic.framework}{sd.topicCountA}{topic.count}{sd.topicCountB}
+                    {sd.topicFwPrefix}{en ? (topic.frameworkEn ?? topic.framework) : topic.framework}{sd.topicCountA}
+                    {writtenOnly ? `${written}${sd.topicWrittenCountB}` : `${topic.count}${sd.topicCountB}`}
                   </div>
                 </div>
               </div>
@@ -266,7 +291,8 @@ export default function SubjectDetailView({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-          ))}
+            )
+          })}
         </div>
 
         {/* Cross-link to other subjects */}

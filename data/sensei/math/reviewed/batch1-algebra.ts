@@ -1,0 +1,253 @@
+// 由 promote-sensei-cards.mjs 產生，請勿手動修改；如需更正請修改草稿並重新執行管線。
+// 以下每張卡片均由具名真人逐張批准：
+//   reviewer : Yuna
+//   date     : 2026-08-27
+//   source   : batch1-algebra.json
+//   approved : 10  (basic 1 / intermediate 5 / hard 4)
+// ⚠️ 尚未生效：必須由人手在 ../index.ts 加入 import，才會在學生介面出現。
+import type { KnowledgeCard } from '../../types'
+
+export const mathBatch1AlgebraCards: KnowledgeCard[] = [
+  {
+    "id": "ma-discriminant",
+    "subject": "math",
+    "topic": "判別式",
+    "subTopic": "數值與圖像的對應",
+    "difficulty": "basic",
+    "source": "syllabus",
+    "concept": "判別式 b² − 4ac 決定二次方程實根的數目，同時決定拋物線與橫軸的位置關係：大於零為兩個交點，等於零為相切，小於零為不相交。",
+    "example": "x² − 2x − 2 = 0 的判別式為 12，大於零，故有兩個相異實根，圖像與橫軸有兩個交點；x² + 2x + 5 = 0 的判別式為 −16，圖像整條在橫軸之上。",
+    "examTechnique": "題目若問「有多少個交點」或「圖像是否與橫軸相交」，一律轉為判別式問題；兩種問法指向同一項計算。",
+    "commonTrap": "未把方程整理為一般式便讀出係數。例如 3x² = 2x + 5 必須先移項成 3x² − 2x − 5 = 0，否則 b 與 c 都會取錯。",
+    "keywords": [
+      "判別式",
+      "二次方程",
+      "實根",
+      "拋物線",
+      "交點"
+    ],
+    "relatedTopics": [
+      "二次方程"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-sum-product-roots",
+    "subject": "math",
+    "topic": "兩根之和與積",
+    "subTopic": "不解方程也能作答",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "對於 ax² + bx + c = 0，兩根之和為 −b/a，兩根之積為 c/a。凡題目只需要和或積的組合，便無須把根本身求出來。",
+    "example": "求 α² + β² 時，利用 α² + β² = (α + β)² − 2αβ，代入 −b/a 與 c/a 即可，毋須先求出 α 與 β 的數值。",
+    "examTechnique": "見到題目出現兩根的對稱式（和、積、平方和、倒數和），先嘗試化為 α + β 與 αβ 的組合，通常比直接求根快得多。",
+    "commonTrap": "漏了 a 而寫成兩根之和等於 −b。只有當 a 等於一時兩者才相同，係數不為一時會全題出錯。",
+    "keywords": [
+      "兩根之和",
+      "兩根之積",
+      "二次方程",
+      "對稱式",
+      "根與係數"
+    ],
+    "relatedTopics": [
+      "二次方程"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-complete-square",
+    "subject": "math",
+    "topic": "完成平方",
+    "subTopic": "頂點與最值",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "把二次函數寫成 a(x − h)² + k 之後，頂點為 (h, k)。當 a 大於零時 k 為最小值，a 小於零時 k 為最大值。",
+    "example": "y = x² − 6x + 5 改寫為 y = (x − 3)² − 4，可直接讀出頂點 (3, −4)，最小值為 −4，於 x = 3 時取得。",
+    "examTechnique": "凡題目問最大值、最小值或對稱軸，一律先完成平方；三個問題在完成平方之後都是直接讀出來的。",
+    "commonTrap": "把 (x − 3)² 的頂點橫坐標讀成 −3。括號內是 x 減 h，故 h 等於 3，符號在此最容易看錯。",
+    "keywords": [
+      "完成平方",
+      "頂點",
+      "最大值",
+      "最小值",
+      "對稱軸",
+      "二次函數"
+    ],
+    "relatedTopics": [
+      "二次函數"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-quadratic-inequality",
+    "subject": "math",
+    "topic": "二次不等式",
+    "subTopic": "先畫圖再讀區間",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "解二次不等式應先求出對應方程的根，再按開口方向判斷函數值在哪些區間為正或為負，而非死記符號規則。",
+    "example": "x² − x − 6 > 0 的根為 −2 與 3，開口向上，函數值在兩根之外為正，故解為 x < −2 或 x > 3。",
+    "examTechnique": "在草稿畫一條粗略的拋物線並標出兩根，再看題目要求高於還是低於橫軸，直接讀出區間，比背規則穩妥。",
+    "commonTrap": "把「兩根之外」與「兩根之間」調轉，或在開口向下時仍沿用開口向上的結論。開口方向必須先確定。",
+    "keywords": [
+      "二次不等式",
+      "區間",
+      "開口方向",
+      "拋物線",
+      "解不等式"
+    ],
+    "relatedTopics": [
+      "二次方程",
+      "不等式"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-identity-vs-equation",
+    "subject": "math",
+    "topic": "恆等式與方程",
+    "subTopic": "兩者的解法不同",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "方程只在特定的 x 值成立，恆等式則對所有 x 皆成立。恆等式可用比較係數法求未知常數，方程則不能這樣處理。",
+    "example": "若 x² + px + q ≡ (x + 2)² 對所有 x 成立，比較係數得 p = 4、q = 4；若只是方程，則 p 與 q 未必唯一確定。",
+    "examTechnique": "見到題目用「≡」或寫明「對所有 x 成立」，即用比較係數法；亦可代入若干個方便的 x 值建立聯立方程。",
+    "commonTrap": "把方程當作恆等式來比較係數，得出並不成立的關係式。判斷依據是題目有沒有說明對所有 x 成立。",
+    "keywords": [
+      "恆等式",
+      "方程",
+      "比較係數",
+      "identity",
+      "未知常數"
+    ],
+    "relatedTopics": [
+      "多項式"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-factor-remainder",
+    "subject": "math",
+    "topic": "因式定理與餘式定理",
+    "subTopic": "兩者的關係",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "多項式 f(x) 除以 (x − a) 的餘式為 f(a)，此為餘式定理；當 f(a) 等於零時 (x − a) 為 f(x) 的因式，此為因式定理，即餘式定理的特例。",
+    "example": "f(x) = x³ − 2x² − 5x + 6，代入 f(1) = 0，故 (x − 1) 是因式，其後可用長除法或比較係數求出其餘因式。",
+    "examTechnique": "找因式時由 c 的因數逐個試代，通常在頭數個之內命中；命中一個之後立即降次，餘下的用二次方程處理。",
+    "commonTrap": "除以 (x + 2) 時代入 x = 2。應代入使括號為零的值，即 x = −2，符號錯誤會令整題方向偏離。",
+    "keywords": [
+      "因式定理",
+      "餘式定理",
+      "多項式",
+      "長除法",
+      "降次"
+    ],
+    "relatedTopics": [
+      "多項式"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-log-laws",
+    "subject": "math",
+    "topic": "對數定律",
+    "subTopic": "不成立的三條",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "對數把乘除轉為加減：log(ab) = log a + log b，log(a/b) = log a − log b，log(aⁿ) = n log a。加法與減法本身不能拆開。",
+    "example": "log(a + b) 不等於 log a + log b；(log a)/(log b) 不等於 log(a/b)；(log a)ⁿ 不等於 n log a。三者都是常見的誤寫。",
+    "examTechnique": "每次動用定律前，先確認括號內是乘、除還是次方。是加減便不能拆，只能先計出括號內的值。",
+    "commonTrap": "把 log a − log b 與 (log a)/(log b) 混用。前者等於 log(a/b)，後者是換底公式的形式，兩者意義完全不同。",
+    "keywords": [
+      "對數",
+      "對數定律",
+      "log",
+      "換底",
+      "指數"
+    ],
+    "relatedTopics": [
+      "指數與對數"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-transformations",
+    "subject": "math",
+    "topic": "函數圖像變換",
+    "subTopic": "括號內外的分別",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "改動發生在括號內則影響橫向且方向相反：y = f(x − h) 是向右移 h。改動在括號外則影響縱向且方向直觀：y = f(x) + k 是向上移 k。",
+    "example": "由 y = x² 得 y = (x − 3)²，圖像向右移三個單位；得 y = x² + 3 則向上移三個單位。兩者的移動方向不同。",
+    "examTechnique": "先判斷改動在括號內還是括號外，再決定橫向或縱向；括號內一律記住方向與符號相反。",
+    "commonTrap": "把 y = f(x − 3) 當成向左移。括號內的減號對應向右，這一點與直覺相反，是本課題最常見的錯誤。",
+    "keywords": [
+      "圖像變換",
+      "平移",
+      "伸縮",
+      "函數",
+      "translation"
+    ],
+    "relatedTopics": [
+      "函數與圖像"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-absolute-value",
+    "subject": "math",
+    "topic": "絕對值方程",
+    "subTopic": "分情況處理",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "|x| = b 在 b 大於零時對應兩種情況：x = b 或 x = −b；b 等於零時只有一個解；b 小於零時無解。分情況之後必須驗算。",
+    "example": "|2x − 1| = 5 分為 2x − 1 = 5 與 2x − 1 = −5，得 x = 3 或 x = −2，兩者代回原方程皆成立。",
+    "examTechnique": "先檢查等號右邊是否為負；為負則直接答無解。其後才分兩種情況，並把兩個解都代回原式驗算。",
+    "commonTrap": "只寫其中一種情況便作結，或忘記在兩邊平方後檢驗增根。平方會引入原方程沒有的解，驗算不可省略。",
+    "keywords": [
+      "絕對值",
+      "方程",
+      "分情況",
+      "增根",
+      "驗算"
+    ],
+    "relatedTopics": [
+      "方程"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "ma-substitution",
+    "subject": "math",
+    "topic": "換元法",
+    "subTopic": "把高次化為二次",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "當方程中重複出現同一組式子，可設該組式子為新變數，把方程化為二次形式求解，最後必須換回原變數並檢查可行性。",
+    "example": "x⁴ − 5x² + 4 = 0 可設 u = x²，化為 u² − 5u + 4 = 0，得 u = 1 或 4，再回代得 x = ±1 或 ±2。",
+    "examTechnique": "見到指數呈倍數關係（四次與二次、2ˣ 與 4ˣ）便考慮換元；換元後記下 u 的取值範圍，回代時用得着。",
+    "commonTrap": "求出 u 之後便當作答案。u 不是原方程的解，必須回代；而且如 u = x² 時負值的 u 應予捨去。",
+    "keywords": [
+      "換元法",
+      "substitution",
+      "高次方程",
+      "二次形式",
+      "回代"
+    ],
+    "relatedTopics": [
+      "方程"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  }
+]

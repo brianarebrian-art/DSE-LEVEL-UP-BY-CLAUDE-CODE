@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "source": "ict-floor.json",
+    "subject": "ict",
+    "reviewer": "brian",
+    "reviewedAt": "2026-08-28"
+  },
+  "decisions": {
+    "ict_floor_01": "approved",
+    "ict_floor_02": "approved",
+    "ict_floor_03": "approved",
+    "ict_floor_04": "approved",
+    "ict_floor_05": "approved",
+    "ict_floor_06": "approved",
+    "ict_floor_07": "approved",
+    "ict_floor_08": "approved",
+    "ict_floor_09": "approved",
+    "ict_floor_10": "approved",
+    "ict_floor_11": "approved",
+    "ict_floor_12": "approved",
+    "ict_floor_13": "approved",
+    "ict_floor_14": "approved",
+    "ict_floor_15": "approved",
+    "ict_floor_16": "approved",
+    "ict_floor_17": "approved",
+    "ict_floor_18": "approved",
+    "ict_floor_19": "approved",
+    "ict_floor_20": "approved",
+    "ict_floor_21": "approved",
+    "ict_floor_22": "approved",
+    "ict_floor_23": "approved",
+    "ict_floor_24": "approved",
+    "ict_floor_25": "approved"
+  }
+}

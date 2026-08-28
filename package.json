@@ -18,7 +18,8 @@
     "qa:i18n": "node scripts/i18n-guard.mjs",
     "qa:budget": "node scripts/budget-guard.mjs",
     "qa:intel": "node scripts/hkeaa-monitor.mjs",
-    "qa:slowsql": "node scripts/db-slow-queries.mjs"
+    "qa:slowsql": "node scripts/db-slow-queries.mjs",
+    "baseline": "npx --yes tsx@4.19.2 scripts/qbank/baseline.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

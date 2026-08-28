@@ -12,6 +12,8 @@
 // Zero dependencies, plain Node ESM. Shared by review-drafts.mjs + promote-drafts.mjs.
 // ============================================================================
 
+import { readFileSync as fsReadFileSync } from 'node:fs'
+
 export const DIFFICULTY_MAP = { basic: 'easy', intermediate: 'medium', hard: 'hard' }
 // 三個題型。`text`／`long` 由 2026-07-31 接線 —— 兩者【永不機器批改】：
 // 提交後攤開參考答案（long 另加評分準則），由學生自評。閘只驗格式同材料齊備，
@@ -29,13 +31,64 @@ const LANGUAGE_SUBJECTS = new Set(['chinese', 'chinese-history', 'chinese-litera
 // A draft that trips one of these is auto-rejected — it must never reach a human
 // reviewer as if it were shippable.
 const TERM_REDLINES = [
-  { re: /公共財/, msg: '術語紅線：「公共財」→ 應用「共用品」(Public Good)' },
+  // 2026-08-27：加負向斷言 `(?!政)`。原本 /公共財/ 會連「公共財政」（public
+  // finances）一齊捉 —— 嗰個係完全正確嘅中文，同 Public Good 冇關係。
+  // 影響統計（憲章 §6）：掃 89 個題庫檔，「公共財」命中 0 次，即係呢個誤報
+  // 從未喺 live 內容爆過；改動對現有題庫【零影響】，唔會令任何一條由過變唔過。
+  // 反方向亦驗過：_demo-math.json 嗰條故意寫「公共財」嘅示範題【仍然被攔住】，
+  // 即係閘冇因為呢次放寬而失去牙齒。
+  { re: /公共財(?!政)/, msg: '術語紅線：「公共財」→ 應用「共用品」(Public Good)' },
   { re: /企業家才能/, msg: '術語紅線：「企業家才能」→ 應用「企業家職能」(Entrepreneurship)' },
 ]
 // Economics-only scope red line (EDB C&A: point/cross/income elasticity NOT required).
 const ECON_REDLINES = [
   { re: /收入彈性|交叉彈性|點彈性|income elasticity|cross elasticity|point elasticity/i, msg: '經濟科超綱：收入／交叉／點彈性 (income/cross/point elasticity) 不在課程範圍' },
 ]
+
+// ── 答案形狀：正確項唔可以明顯長過所有干擾項 ──────────────────────────────
+// 點解要有呢個閘：概念題／評價題嘅正確答案本身要有轉折（「A，同時亦 B」），
+// 而干擾項好容易寫成短促斷言（「消除了一切戰爭」）。結果係一批題目考緊
+// 「邊項寫得長啲」而唔係考科目 —— 學生一條都唔識，淨係揀最長嗰項就攞到高分。
+// 已經兩次實際發生：公社科第三批 34 條、歷史補底初稿 88%（36/43 觸發舊警示）。
+//
+// 兩個設計決定，都係量度過先決定：
+//
+// ① 用【視覺長度】而唔係字串長度。`$\frac{1}{9}$` 係 13 個字元，但畫出嚟
+//    比 `0.111` 仲短。用字串長度量，數學同 M1 會出現大量誤報 ——
+//    實測 math_log_10、m1_el_59 等正解全部係短分數，卻被判為「明顯最長」。
+//
+// ② 門檻取【視覺差 6 個字】。實測：live 5,996 條 MC 之中，差 ≥4 字佔 34%、
+//    ≥6 字佔 27%、≥8 字佔 20%；草稿 983 條之中分別為 23% / 17% / 12%。
+//    6 字係「肉眼一望就分得出」同「要逐個字數先知」之間嘅界線。
+const LATEX_TO_VISUAL = [
+  [/\\(?:d|t)?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '$1/$2'],
+  [/\\sqrt\s*\{([^{}]*)\}/g, '√$1'],
+  [/\\(?:text|mathrm|operatorname)\s*\{([^{}]*)\}/g, '$1'],
+  [/\\[a-zA-Z]+/g, 'x'],
+  [/[{}$^_\\]/g, ''],
+  [/\s+/g, ''],
+]
+/** 一個選項畫出嚟大約有幾闊 —— 剝走 LaTeX 標記之後嘅字數。 */
+export function visualLength(s) {
+  let out = String(s)
+  for (const [re, rep] of LATEX_TO_VISUAL) out = out.replace(re, rep)
+  return out.length
+}
+/** 正確項比【最長嘅干擾項】仲長幾多（視覺字數）。負數 = 有干擾項比正解長。 */
+export function answerShapeMargin(options, correctIndex) {
+  const v = options.map(visualLength)
+  const others = v.filter((_, i) => i !== correctIndex)
+  return v[correctIndex] - Math.max(...others)
+}
+export const SHAPE_MARGIN_LIMIT = 6
+
+// 祖父清單：閘生效之前已經存在嘅題目 id。憲章 §6 —— 新閘唔可以令現有數據集失效。
+const SHAPE_BASELINE = (() => {
+  try {
+    const p = new URL('./shape-baseline.json', import.meta.url)
+    return new Set(JSON.parse(fsReadFileSync(p, 'utf8')).ids)
+  } catch { return new Set() }
+})()
 
 export const norm = (s) => String(s).trim().replace(/\s+/g, ' ').toLowerCase()
 export const slug = (s) => String(s).trim().replace(/\s+/g, '_')
@@ -91,6 +144,19 @@ export function gateRow(row, subject) {
     }
 
     if (!Number.isInteger(row?.correctIndex) || row.correctIndex < 0 || row.correctIndex > 3) e.push('correctIndex must be an integer 0..3')
+
+    // 答案形狀：正確項唔可以明顯闊過所有干擾項（見檔頭 answerShapeMargin 註釋）。
+    // 祖父清單之內嘅舊題豁免；新題一律要過 —— 修法係改長干擾項，唔係加豁免。
+    if (Array.isArray(opts) && opts.length === 4 && Number.isInteger(row?.correctIndex)
+        && !SHAPE_BASELINE.has(row?.id)) {
+      const m = answerShapeMargin(opts, row.correctIndex)
+      if (m >= SHAPE_MARGIN_LIMIT) {
+        e.push(
+          `正確答案明顯最長（比最長干擾項闊 ${m} 個視覺字，上限 ${SHAPE_MARGIN_LIMIT}）——`
+          + ` 學生唔識都可以憑長度揀中。請把干擾項寫成同等份量嘅錯誤主張。`,
+        )
+      }
+    }
   } else {
     // ── text／long：無客觀答案，機器【永不】判對錯 ────────────────────────────
     // 呢兩個題型嘅設計就係：提交後攤開參考答案（long 再加評分準則），學生自評。

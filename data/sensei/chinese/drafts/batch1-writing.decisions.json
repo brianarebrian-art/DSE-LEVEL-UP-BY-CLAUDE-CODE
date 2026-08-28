@@ -2,14 +2,14 @@
   "_meta": {
     "source": "batch1-writing.json",
     "subject": "chinese",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "zh-w-shenti": "pending",
-    "zh-w-liyi": "pending",
-    "zh-w-jiegou": "pending",
-    "zh-w-lizheng": "pending",
-    "zh-w-juti": "pending"
+    "zh-w-shenti": "approved",
+    "zh-w-liyi": "approved",
+    "zh-w-jiegou": "approved",
+    "zh-w-lizheng": "approved",
+    "zh-w-juti": "approved"
   }
 }

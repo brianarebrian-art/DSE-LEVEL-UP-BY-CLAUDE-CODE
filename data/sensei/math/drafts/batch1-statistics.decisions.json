@@ -2,19 +2,19 @@
   "_meta": {
     "source": "batch1-statistics.json",
     "subject": "math",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "ma-s-central": "pending",
-    "ma-s-sd": "pending",
-    "ma-s-sd-transform": "pending",
-    "ma-s-boxplot": "pending",
-    "ma-s-cumulative": "pending",
-    "ma-s-correlation": "pending",
-    "ma-s-sampling": "pending",
-    "ma-s-misleading": "pending",
-    "ma-s-mutually-exclusive": "pending",
-    "ma-s-conditional": "pending"
+    "ma-s-central": "approved",
+    "ma-s-sd": "approved",
+    "ma-s-sd-transform": "approved",
+    "ma-s-boxplot": "approved",
+    "ma-s-cumulative": "approved",
+    "ma-s-correlation": "approved",
+    "ma-s-sampling": "approved",
+    "ma-s-misleading": "approved",
+    "ma-s-mutually-exclusive": "approved",
+    "ma-s-conditional": "approved"
   }
 }

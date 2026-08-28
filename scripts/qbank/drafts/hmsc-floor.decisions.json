@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "source": "hmsc-floor.json",
+    "subject": "health-management",
+    "reviewer": "brian",
+    "reviewedAt": "2026-08-28"
+  },
+  "decisions": {
+    "hm_floor_01": "approved",
+    "hm_floor_02": "approved",
+    "hm_floor_03": "approved",
+    "hm_floor_04": "approved",
+    "hm_floor_05": "approved",
+    "hm_floor_06": "approved",
+    "hm_floor_07": "approved",
+    "hm_floor_08": "approved",
+    "hm_floor_09": "approved",
+    "hm_floor_10": "approved",
+    "hm_floor_11": "approved",
+    "hm_floor_12": "approved",
+    "hm_floor_13": "approved",
+    "hm_floor_14": "approved",
+    "hm_floor_15": "approved",
+    "hm_floor_16": "approved",
+    "hm_floor_17": "approved",
+    "hm_floor_18": "approved",
+    "hm_floor_19": "approved",
+    "hm_floor_20": "approved",
+    "hm_floor_21": "approved",
+    "hm_floor_22": "approved",
+    "hm_floor_23": "approved",
+    "hm_floor_24": "approved",
+    "hm_floor_25": "approved"
+  }
+}

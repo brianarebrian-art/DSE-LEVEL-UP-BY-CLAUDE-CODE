@@ -2,19 +2,19 @@
   "_meta": {
     "source": "batch1-graphs.json",
     "subject": "economics",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "ec-g-demand-shift": "pending",
-    "ec-g-supply-shift": "pending",
-    "ec-g-both-shift": "pending",
-    "ec-g-price-ceiling": "pending",
-    "ec-g-price-floor": "pending",
-    "ec-g-tax-incidence": "pending",
-    "ec-g-elasticity-revenue": "pending",
-    "ec-g-external-cost": "pending",
-    "ec-g-subsidy": "pending",
-    "ec-g-reading": "pending"
+    "ec-g-demand-shift": "approved",
+    "ec-g-supply-shift": "approved",
+    "ec-g-both-shift": "approved",
+    "ec-g-price-ceiling": "approved",
+    "ec-g-price-floor": "approved",
+    "ec-g-tax-incidence": "approved",
+    "ec-g-elasticity-revenue": "approved",
+    "ec-g-external-cost": "approved",
+    "ec-g-subsidy": "approved",
+    "ec-g-reading": "approved"
   }
 }

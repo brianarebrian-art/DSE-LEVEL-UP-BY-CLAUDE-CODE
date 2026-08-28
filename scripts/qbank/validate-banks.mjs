@@ -9,7 +9,18 @@
 //                          correctIndex in range, no NaN/undefined/Infinity/empty.
 //   (2) LaTeX hygiene     — balanced `$`, no `1x` / `e^{1x}` redundant coefficients.
 //   (3) Difficulty split  — per-bank easy/medium/hard vs the 30/50/20 target.
-//   + GLOBAL dedup        — duplicate id AND near-duplicate stem across ALL banks.
+//   + dedup (本檔範圍內)  — duplicate id / identical stem among the 7 parametric
+//                          banks listed in BANKS below.
+//
+// ⚠️  本檔【唔係】全站檢查。BANKS 係一張寫死嘅 7 個 parametric bank 清單，
+//     掃到 1,762 條，而全站實有 6,210 條 —— 補底批次（*-floor-batch*.ts）
+//     同 *-auto.ts 全部唔喺呢度。2026-08-28 之前檔頭寫住「across ALL banks」，
+//     於是連續五個補底批次都報過「validate-banks 通過」，而佢一條都冇睇過。
+//
+//     全站撞題檢查而家喺 data/questions/__tests__/global-dedup.test.mts，
+//     行 `npm test` 必定會跑，唔使人記得。本檔保留原本職責：
+//     為【參數化題庫】做 MC 完整性、LaTeX 衞生同 30/50/20 難度比例。
+//     難度比例故意唔套落補底批次 —— 補底本來就係全淺題，套上去必紅。
 //
 // NOTE ON CORRECTNESS: answer-correctness for parametric banks is guaranteed by
 // *construction* (each ParametricFamily's answer + distractors are computed by the
@@ -111,7 +122,7 @@ const seenIds = new Set()
 const stems = new Map() // normStem -> "subject/id"
 let grandTotal = 0
 
-console.log(`\n${'═'.repeat(70)}\n  DSE Level Up — parametric bank validation gate\n${'═'.repeat(70)}`)
+console.log(`\n${'═'.repeat(70)}\n  DSE Level Up — parametric bank validation gate（7 個參數化題庫，非全站）\n${'═'.repeat(70)}`)
 
 for (const b of banks) {
   let qs
@@ -160,9 +171,10 @@ for (const b of banks) {
 }
 
 console.log(`\n${'─'.repeat(70)}`)
-console.log(`  Total: ${grandTotal} questions across ${banks.length} bank(s) | unique ids: ${seenIds.size}`)
+console.log(`  Total: ${grandTotal} questions across ${banks.length} parametric bank(s) | unique ids: ${seenIds.size}`)
+console.log(`  ⚠️  本檔唔掃補底批次同 *-auto.ts。全站撞題檢查行 npm test（global-dedup.test.mts）。`)
 if (hardFailures === 0) {
-  console.log(`  ✅ ALL CHECKS PASSED — safe to promote to live.`)
+  console.log(`  ✅ 參數化題庫檢查全部通過（唔代表全站 —— 全站撞題見 npm test）。`)
 } else {
   console.log(`  ❌ ${hardFailures} issue(s) — DO NOT promote until fixed.`)
 }

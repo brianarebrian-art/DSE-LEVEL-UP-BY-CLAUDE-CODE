@@ -34,13 +34,39 @@ const SUBJECT_OF: Record<string, string> = {
   'chinese-history-floor.json': 'chinese-history',
   'chinese-literature-floor.json': 'chinese-literature',
   'chinese-p2-writing-batch2.json': 'chinese',
+  'chinese-p2-writing-batch3.json': 'chinese',
   'chinese-p1-fillin.json': 'chinese',
   'math-p1-long.json': 'math',
 }
 
-const files = readdirSync(DRAFTS).filter(
-  (f) => f.endsWith('.json') && !f.endsWith('.decisions.json'),
-)
+// ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────
+// 呢個目錄同時放【草稿正本】同【由草稿正本衍生出嚟嘅檔】。派生檔全部帶固定後綴：
+//   .decisions.json  審批決定（review-drafts / sample-review / promote-drafts）
+//   .rejected.json   機器閘剔走嘅題（auto-promote.mts:140）
+//   .sample.json     抽樣覆核抽中嗰批（sample-review.mjs:65）
+//   .review.html     人手覆核頁（唔係 .json，本來就唔會入選）
+//
+// 2026-08-27：本閘原本淨係排除 .decisions.json，於是一個 .sample.json 出現
+// 就會被當成「一份未登記所屬科目嘅新草稿」而令下面條 test 紅。
+// 因為派生檔係跑工具嗰陣先出現、跑完可能又刪走，個 fail 表現成【間歇性】——
+// 跑一次紅、再跑一次綠，同測試碼本身完全無關。實測重現：drafts 目錄放一個
+// math-p1-long.sample.json 入去，`npm test` 即刻由 601 pass 變成 600 pass / 1 fail。
+//
+// 呢種紅最貴嘅唔係嗰一次 fail，係佢會訓練人「再跑一次睇下」—— 而呢個套件正正
+// 係題庫改動嘅閘門（loader-parity、topic 註冊、seen-window）。養成重跑習慣之後，
+// 一次真正嘅回歸就會被當成 flake 忽略。
+//
+// 修法係【補全派生後綴清單】，唔係收窄掃描範圍 —— 掃描係本閘嘅牙齒：
+// 一份真‧新草稿跌入呢個目錄，仍然必須令本閘紅（見下面「唔准靜靜繞過本閘」）。
+// .rejected.json 一直都喺呢個清單之外，之前冇爆純粹係好彩 —— 現有 rejected 檔
+// 啱好全部冇 long/text ＋ topicId 嘅組合；一個長題批次嘅 rejected 檔會一模一樣咁爆。
+const DERIVED_SUFFIXES = ['.decisions.json', '.rejected.json', '.sample.json']
+
+/** 只有草稿正本受本閘管；派生檔唔係草稿。 */
+const isSourceDraft = (name: string) =>
+  name.endsWith('.json') && !DERIVED_SUFFIXES.some((sfx) => name.endsWith(sfx))
+
+const files = readdirSync(DRAFTS).filter(isSourceDraft)
 
 for (const [file, subject] of Object.entries(SUBJECT_OF)) {
   test(`${file}：全部 topicId 都已喺 ${subject} 登記`, () => {
@@ -75,5 +101,39 @@ test('每個草稿檔都有登記所屬科目（唔准靜靜繞過本閘）', ()
     }),
     [],
     '有書寫題草稿用咗 topicId 但未喺 SUBJECT_OF 登記所屬科目',
+  )
+})
+
+// ── 防「間歇性紅」回歸 ──────────────────────────────────────────────────────
+
+test('派生檔唔會被當成草稿正本', () => {
+  for (const name of ['x.decisions.json', 'x.rejected.json', 'x.sample.json']) {
+    assert.equal(isSourceDraft(name), false, `${name} 係派生檔，唔應該當成草稿正本`)
+  }
+  assert.equal(isSourceDraft('x.review.html'), false, '.html 唔係草稿')
+  // 牙齒要留住：草稿正本必須照樣受閘管，唔可以為咗熄紅而一齊排除。
+  assert.equal(isSourceDraft('math-p1-long.json'), true)
+  assert.equal(isSourceDraft('chinese-ywsy.drafts.json'), true, '.drafts.json 係正本輸出，唔係派生檔')
+})
+
+test('工具寫嘅派生後綴全部已登記（新增一種就要喺呢度登記）', () => {
+  // 呢條 test 令上面條清單【自己會過期】：邊個喺 scripts/qbank/ 加一種新嘅派生檔
+  // （例如 .audit.json），呢度即刻紅，逼佢去 DERIVED_SUFFIXES 登記，
+  // 而唔係等半年後有人喺 CI 見到一次搞唔清嘅間歇性 fail。
+  const SCRIPTS = 'scripts/qbank'
+  // 正本輸出名，唔係派生檔 —— arts-variant-factory --out <name>.drafts.json
+  const SOURCE_OUTPUT_SUFFIXES = ['.drafts.json']
+  const found = new Set<string>()
+  for (const f of readdirSync(SCRIPTS).filter((n) => n.endsWith('.mjs') || n.endsWith('.mts'))) {
+    const src = readFileSync(`${SCRIPTS}/${f}`, 'utf8')
+    for (const m of src.matchAll(/\.[a-z][a-z0-9-]*\.json\b/g)) found.add(m[0])
+  }
+  const known = [...DERIVED_SUFFIXES, ...SOURCE_OUTPUT_SUFFIXES]
+  const unregistered = [...found].filter((sfx) => !known.includes(sfx)).sort()
+  assert.deepEqual(
+    unregistered, [],
+    `scripts/qbank/ 出現咗未登記嘅 *.json 派生後綴：${unregistered.join('、')}\n` +
+    '→ 如果佢係由草稿衍生出嚟嘅檔，加入 DERIVED_SUFFIXES；如果佢本身係草稿正本，' +
+    '加入 SOURCE_OUTPUT_SUFFIXES。唔登記嘅話，佢一出現就會令本檔嘅掃描閘間歇性紅。',
   )
 })

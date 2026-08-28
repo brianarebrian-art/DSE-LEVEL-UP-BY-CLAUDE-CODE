@@ -19,8 +19,12 @@ type Loader = () => Promise<AnyQuestion[]>
 const loaders: Record<string, Loader> = {
   // Maths merges its hand-authored bank with the offline-generated, judge-verified extras.
   math: async () => {
-    const [base, gen, param, imported, pbank] = await Promise.all([
+    const [base, gen, param, imported, pbank, p1long, longb1, floor1] = await Promise.all([
       import('./math'), import('./math-generated'), import('./math-parametric'), import('./math-imported'), import('./math-bank'),
+      // 卷一書寫題（long）—— brian 2026-08-27 逐題審批。數學科第一批非 MC 題目。
+      import('./math-p1-long'), import('./math-long-b1'),
+      // 補底 MC —— brian 2026-08-28 逐題審批。五個當時只得 1–2 條的課題各補至 10 條。
+      import('./math-floor-batch1'),
     ])
     return [
       ...base.mathQuestions,
@@ -28,6 +32,9 @@ const loaders: Record<string, Loader> = {
       ...param.mathParametricQuestions,
       ...imported.mathImportedQuestions,
       ...pbank.mathBankQuestions,
+      ...p1long.mathP1LongQuestions,
+      ...longb1.mathLongB1Questions,
+      ...floor1.mathFloorBatch1Questions,
     ]
   },
   m1: async () => {
@@ -51,22 +58,32 @@ const loaders: Record<string, Loader> = {
     const [base, reviewed] = await Promise.all([import('./english'), import('./english-reviewed')])
     return [...base.englishQuestions, ...reviewed.englishReviewedQuestions]
   },
-  ict: async () => (await import('./ict')).ictQuestions,
+  ict: async () => {
+    const [base, floor1] = await Promise.all([import('./ict'), import('./ict-floor-batch1')])
+    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions]
+  },
   chinese: async () => {
     // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
     // 多個批次必須以 `--out` 分檔，否則後一批會覆蓋前一批（2026-08-07 實際發生過）。
     // 新增書寫題批次時：此處要加，`index.ts` 亦要加，否則 loader-parity 測試會失敗。
-    const [base, reviewed, p2, fanwenLong] = await Promise.all([
+    const [base, reviewed, p2, p2b2, p2b3, fanwenLong, floor1] = await Promise.all([
       import('./chinese'),
       import('./chinese-reviewed'),
       import('./chinese-p2-writing'),
+      import('./chinese-p2-writing-batch2'),
+      import('./chinese-p2-writing-batch3'),
       import('./chinese-fanwen-long'),
+      // 補底 MC —— brian 2026-08-28 逐題審批。五個當時只得 2–7 條的課題各補至 10 條。
+      import('./chinese-floor-batch1'),
     ])
     return [
       ...base.chineseQuestions,
       ...reviewed.chineseReviewedQuestions,
       ...p2.chineseP2WritingQuestions,
+      ...p2b2.chineseP2WritingBatch2Questions,
+      ...p2b3.chineseP2WritingBatch3Questions,
       ...fanwenLong.chineseFanwenLongQuestions,
+      ...floor1.chineseFloorBatch1Questions,
     ]
   },
   bafs: async () => {
@@ -74,23 +91,40 @@ const loaders: Record<string, Loader> = {
     return [...base.bafsQuestions, ...bbank.bafsBankQuestions, ...reviewed.bafsReviewedQuestions]
   },
   economics: async () => {
-    const [base, ebank, reviewed] = await Promise.all([
+    const [base, ebank, reviewed, floor1, floor2] = await Promise.all([
       import('./economics'), import('./economics-bank'), import('./economics-reviewed'),
+      import('./economics-floor-batch1'), import('./economics-floor-batch2'),
     ])
-    return [...base.economicsQuestions, ...ebank.economicsBankQuestions, ...reviewed.economicsReviewedQuestions]
+    return [...base.economicsQuestions, ...ebank.economicsBankQuestions, ...reviewed.economicsReviewedQuestions,
+      ...floor1.economicsFloorBatch1Questions, ...floor2.economicsFloorBatch2Questions]
   },
   geography: async () => (await import('./geography')).geographyQuestions,
-  history: async () => (await import('./history')).historyQuestions,
+  history: async () => {
+    // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。
+    // 補底 MC —— brian 2026-08-28 逐題審批。六個當時只得 1–4 條的課題各補至 10 條。
+    const [base, essays, floor1] = await Promise.all([
+      import('./history'), import('./history-p2-essays'), import('./history-floor-batch1'),
+    ])
+    return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions]
+  },
   'chinese-history': async () => (await import('./chinese-history')).chineseHistoryQuestions,
   ths: async () => (await import('./ths')).thsQuestions,
-  'health-management': async () => (await import('./health-management')).healthManagementQuestions,
+  'health-management': async () => {
+    const [base, floor1] = await Promise.all([
+      import('./health-management'), import('./health-management-floor-batch1'),
+    ])
+    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions]
+  },
   'design-tech': async () => (await import('./design-tech')).designTechQuestions,
   music: async () => (await import('./music')).musicQuestions,
   pe: async () => (await import('./pe')).peQuestions,
   'chinese-literature': async () => (await import('./chinese-literature')).chineseLiteratureQuestions,
   'english-literature': async () => (await import('./english-literature')).englishLiteratureQuestions,
   'visual-arts': async () => (await import('./visual-arts')).visualArtsQuestions,
-  csd: async () => (await import('./csd')).csdQuestions,
+  csd: async () => {
+    const [base, reviewed] = await Promise.all([import('./csd'), import('./csd-reviewed')])
+    return [...base.csdQuestions, ...reviewed.csdReviewedQuestions]
+  },
   'ethics-religious': async () => (await import('./ethics-religious')).ethicsReligiousQuestions,
   'technology-living': async () => (await import('./technology-living')).technologyLivingQuestions,
 }

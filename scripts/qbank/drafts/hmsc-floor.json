@@ -1,0 +1,677 @@
+[
+  {
+    "id": "hm_floor_01",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "basic",
+    "question": "公共衞生的「一級預防」，其主要目標是甚麼？",
+    "questionEn": "What is the main aim of primary prevention in public health?",
+    "options": [
+      "在疾病發生之前減低患病的風險",
+      "在疾病早期階段及早發現並治療",
+      "在患病之後減少併發症與失能",
+      "為末期病人提供紓緩性的照顧"
+    ],
+    "optionsEn": [
+      "reducing the risk of disease before it occurs",
+      "detecting and treating disease at an early stage",
+      "reducing complications and disability after onset",
+      "providing palliative care for terminally ill patients"
+    ],
+    "correctIndex": 0,
+    "explanation": "三級預防按「疾病進程的哪一個階段」劃分。一級預防在疾病尚未發生時介入，目的是減低風險，例子有接種疫苗、健康教育、改善環境衞生。二級預防針對已經開始但尚未顯現症狀的疾病，透過篩查及早發現並治療。三級預防針對已確診的病人，目標是減少併發症與失能，例如中風後的康復治療。紓緩照顧一般歸入三級預防的範疇。分辨的關鍵不在於措施本身，而在於介入時病人處於哪一個階段——同一項措施用於不同對象，可以屬於不同級別。",
+    "explanationEn": "The three levels are defined by the stage of the disease process at which they act. Primary prevention intervenes before disease occurs and aims to reduce risk, as with vaccination, health education and improved environmental hygiene. Secondary prevention targets disease that has begun but is not yet symptomatic, using screening to detect and treat it early. Tertiary prevention applies to diagnosed patients and aims to limit complications and disability, as in rehabilitation after a stroke; palliative care is generally placed here as well. The distinguishing factor is not the measure itself but the stage the person is at — the same measure applied to different people can fall under different levels."
+  },
+  {
+    "id": "hm_floor_02",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "basic",
+    "question": "「二級預防」的核心工作是甚麼？",
+    "questionEn": "What is the core activity of secondary prevention?",
+    "options": [
+      "及早偵測尚未出現症狀的疾病",
+      "消除令人患病的環境風險因素",
+      "訓練已失能人士恢復生活自理",
+      "制訂全民適用的健康政策方針"
+    ],
+    "optionsEn": [
+      "detecting disease before symptoms appear",
+      "removing environmental risk factors for disease",
+      "training disabled people to regain independence",
+      "drawing up health policy for the whole population"
+    ],
+    "correctIndex": 0,
+    "explanation": "二級預防的重點是「早」——疾病其實已經開始，但病人自己未察覺，透過篩查在症狀出現之前發現它，此時治療的效果通常最好。常見例子有子宮頸細胞檢查、大腸癌篩查、定期血壓與血糖檢查。消除環境風險因素是在疾病未開始時介入，屬一級預防；訓練失能人士恢復自理是在確診之後，屬三級預防；制訂全民健康政策則多屬一級預防的層面。留意二級預防的前提是該疾病有一段可偵測而未有症狀的時期，並且早治療確實比遲治療有效——不符合這兩個條件的疾病，大規模篩查未必有益。",
+    "explanationEn": "Secondary prevention is about earliness: the disease has in fact begun but the person is unaware of it, and screening finds it before symptoms appear, when treatment usually works best. Common examples are cervical smear tests, bowel cancer screening, and regular blood pressure and glucose checks. Removing environmental risk factors acts before disease begins and is primary prevention; training disabled people to regain independence comes after diagnosis and is tertiary; drawing up population-wide health policy generally sits at the primary level. Note that secondary prevention presupposes a detectable pre-symptomatic phase and that earlier treatment genuinely helps — for diseases meeting neither condition, mass screening may not be beneficial."
+  },
+  {
+    "id": "hm_floor_03",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "basic",
+    "question": "為長期臥床的病人定時翻身、預防褥瘡，屬於哪一級預防？",
+    "questionEn": "Turning a bedridden patient regularly to prevent pressure sores is which level of prevention?",
+    "options": [
+      "三級預防",
+      "一級預防",
+      "二級預防",
+      "不屬於任何預防層級"
+    ],
+    "optionsEn": [
+      "tertiary prevention",
+      "primary prevention",
+      "secondary prevention",
+      "not a form of prevention at all"
+    ],
+    "correctIndex": 0,
+    "explanation": "病人已經確診並且長期臥床，介入的目的是減少因臥床而引致的併發症與進一步失能，因此屬三級預防。這一條容易答錯，是因為「預防褥瘡」四字之中有「預防」二字，令人直覺歸入一級。但判斷級別要看服務對象處於疾病進程的哪一階段，而不是看措施名稱有沒有「預防」。同一道理：為健康人士推廣運動是一級，為已確診糖尿病人做足部護理以防截肢是三級。答題時先問一句「這個人現在算病了沒有」，再決定級別，比記例子清單可靠。",
+    "explanationEn": "The patient is already diagnosed and bedridden, and the intervention aims to reduce complications and further disability arising from that condition, so it is tertiary prevention. This question is easy to get wrong because the word prevention appears in the phrase preventing pressure sores, which invites the answer primary. But the level is determined by where the person sits in the disease process, not by whether the measure is called prevention. By the same logic, promoting exercise among healthy people is primary, while foot care for a diagnosed diabetic to avoid amputation is tertiary. Asking first whether this person is currently ill is more reliable than memorising a list of examples."
+  },
+  {
+    "id": "hm_floor_04",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "intermediate",
+    "question": "衞生署為初生嬰兒安排接種疫苗，屬於哪一級預防？",
+    "questionEn": "The Department of Health arranging vaccination for newborns is which level of prevention?",
+    "options": [
+      "一級預防",
+      "二級預防",
+      "三級預防",
+      "二級與三級之間"
+    ],
+    "optionsEn": [
+      "primary prevention",
+      "secondary prevention",
+      "tertiary prevention",
+      "between secondary and tertiary"
+    ],
+    "correctIndex": 0,
+    "explanation": "接種對象是尚未患病的嬰兒，目的是令他們日後不會感染該疾病，即在疾病發生之前就把風險降低，屬典型的一級預防。要留意疫苗與篩查的分別：疫苗改變的是「會不會病」，篩查改變的是「幾時發現」，前者屬一級，後者屬二級。另外，即使疫苗保護率並非百分之百，仍然屬一級預防——級別的判定看介入的時機與目的，並不取決於成效的高低。這一點在答比較題時值得指出，可以顯示對分類原則的理解而非死記例子。",
+    "explanationEn": "The recipients are infants who are not yet ill, and the aim is that they should not contract the disease later — reducing risk before disease occurs, which is textbook primary prevention. Note the distinction between vaccination and screening: a vaccine changes whether you fall ill, while screening changes when it is found; the former is primary, the latter secondary. Note too that a vaccine remains primary prevention even though its protection is not total — the level depends on the timing and purpose of the intervention, not on how effective it is. Making this point in a comparison question shows an understanding of the classifying principle rather than memorised examples."
+  },
+  {
+    "id": "hm_floor_05",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "intermediate",
+    "question": "政府為五十歲以上市民提供免費大腸癌篩查，屬於哪一級預防？",
+    "questionEn": "A government programme offering free bowel cancer screening to people over 50 is which level of prevention?",
+    "options": [
+      "二級預防",
+      "一級預防",
+      "三級預防",
+      "一級與三級並重"
+    ],
+    "optionsEn": [
+      "secondary prevention",
+      "primary prevention",
+      "tertiary prevention",
+      "both primary and tertiary"
+    ],
+    "correctIndex": 0,
+    "explanation": "篩查的對象是沒有症狀的市民，目的是在病變未引起不適之前把它找出來，及早處理，這正是二級預防的定義。有學生會因為「參加篩查的人未病」而答一級，但一級預防要改變的是患病的風險本身，例如改善飲食或戒煙；篩查並不降低患癌的機會，它只令發現的時間提前。這個分別在答題時要講清楚：一級改變「會不會發生」，二級改變「幾時發現」，三級改變「發生之後有多嚴重」。三句話可以貫穿整個課題。",
+    "explanationEn": "Screening is offered to people without symptoms, and its purpose is to find changes before they cause discomfort so they can be dealt with early — precisely the definition of secondary prevention. Some students answer primary because participants are not yet ill, but primary prevention alters the risk of disease itself, through measures such as better diet or stopping smoking; screening does not lower the chance of developing cancer, it only brings forward the moment of detection. This distinction should be stated explicitly in an answer: primary changes whether it happens, secondary changes when it is found, tertiary changes how severe it becomes. Those three phrases cover the whole topic."
+  },
+  {
+    "id": "hm_floor_06",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "intermediate",
+    "question": "物理治療師為中風後的病人進行步行訓練，協助他重新自行外出，屬於哪一級預防？",
+    "questionEn": "A physiotherapist giving gait training to a patient after a stroke, so that they can go out unaided again, is which level of prevention?",
+    "options": [
+      "三級預防",
+      "一級預防",
+      "二級預防",
+      "康復治療不屬預防範疇"
+    ],
+    "optionsEn": [
+      "tertiary prevention",
+      "primary prevention",
+      "secondary prevention",
+      "rehabilitation is not prevention"
+    ],
+    "correctIndex": 0,
+    "explanation": "病人已經中風，介入的目標是減少殘留的失能、提升自理與生活質素，屬三級預防。康復治療經常被誤以為「不算預防」，但三級預防所預防的並非疾病本身，而是疾病帶來的失能與依賴——這正是它與一、二級的分別所在。從整全健康的角度看，這一項介入同時觸及身體（行動能力）與社交（能否外出與人接觸）兩個層面，答論述題時把兩者一併指出，比只寫「幫助康復」更能取分。",
+    "explanationEn": "The patient has already had a stroke, and the aim is to reduce residual disability and improve independence and quality of life, making this tertiary prevention. Rehabilitation is often mistakenly thought not to count as prevention, but what tertiary prevention prevents is not the disease itself — it is the disability and dependence the disease brings, which is exactly what distinguishes it from the first two levels. Seen through holistic health, this intervention touches both the physical dimension (mobility) and the social one (being able to go out and meet people), and pointing to both earns more marks in an essay than simply writing that it aids recovery."
+  },
+  {
+    "id": "hm_floor_07",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "intermediate",
+    "question": "在中學推行禁煙教育，同時為已吸煙的學生提供戒煙輔導。就三級預防而言，這項計劃的性質是甚麼？",
+    "questionEn": "A secondary school runs anti-smoking education while also offering cessation counselling to students who already smoke. In terms of levels of prevention, what is the nature of this programme?",
+    "options": [
+      "同時包含一級與二級預防的元素",
+      "純粹屬於一級預防，並無其他元素",
+      "純粹屬於二級預防，並無其他元素",
+      "三個預防級別的元素都沒有涉及"
+    ],
+    "optionsEn": [
+      "it contains both primary and secondary elements",
+      "it is purely primary prevention and nothing else",
+      "it is purely secondary prevention and nothing else",
+      "it involves none of the three prevention levels"
+    ],
+    "correctIndex": 0,
+    "explanation": "同一項計劃可以橫跨多於一個級別，判斷時要按服務對象分開來看。對未吸煙的學生而言，禁煙教育是在行為未開始前降低風險，屬一級預防；對已吸煙的學生而言，戒煙輔導是在健康損害尚未明顯之際及早介入，減低日後患病的機會，一般歸入二級預防的範疇。這一條的用意是打破「一項措施只對應一個級別」的直覺——實際的公共衞生計劃大多是多層並行的。答題時應先分清對象，再逐一判定級別，而不是為整個計劃硬套一個標籤。",
+    "explanationEn": "A single programme can span more than one level, and the way to judge it is to separate the groups it serves. For students who do not smoke, anti-smoking education lowers risk before the behaviour begins, which is primary prevention. For those who already smoke, cessation counselling intervenes before health damage becomes evident and reduces the chance of later disease, which is generally placed at the secondary level. The purpose of this question is to break the intuition that one measure corresponds to one level — real public health programmes usually operate on several levels at once. Identify the target group first, then assign a level to each, rather than forcing a single label onto the whole programme."
+  },
+  {
+    "id": "hm_floor_08",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "intermediate",
+    "question": "改善舊區的排水與垃圾收集系統，以減少蚊患及傳染病傳播，屬於哪一級預防？",
+    "questionEn": "Improving drainage and refuse collection in an old district to reduce mosquitoes and the spread of infectious disease is which level of prevention?",
+    "options": [
+      "一級預防",
+      "二級預防",
+      "三級預防",
+      "屬市政服務而非預防"
+    ],
+    "optionsEn": [
+      "primary prevention",
+      "secondary prevention",
+      "tertiary prevention",
+      "a municipal service rather than prevention"
+    ],
+    "correctIndex": 0,
+    "explanation": "改善環境是在疾病發生之前移除傳播的條件，令居民根本不會受感染，屬一級預防。這一條同時示範了一個重要觀念：預防未必以個人為單位。健康教育針對個人行為，環境改善針對整個社區所共處的條件，兩者同屬一級預防，但後者不需要每個居民各自作出改變便能生效，覆蓋面往往更廣。答論述題談公共衞生成效時，指出環境層面的介入不依賴個人自律這一點，是相當有力的分析。",
+    "explanationEn": "Improving the environment removes the conditions for transmission before disease occurs, so that residents do not become infected at all, making it primary prevention. This question also illustrates an important idea: prevention need not operate on individuals. Health education addresses personal behaviour, while environmental improvement addresses conditions the whole community shares; both are primary prevention, but the latter takes effect without requiring each resident to change anything and so usually reaches further. Noting that environmental intervention does not depend on individual self-discipline is a strong analytical point when discussing public health effectiveness in an essay."
+  },
+  {
+    "id": "hm_floor_09",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "三級預防分類",
+    "topicId": "hm_prevention_levels",
+    "topicZh": "三級預防分類",
+    "topicEn": "Levels of prevention",
+    "difficulty": "hard",
+    "question": "「定期量度血壓」這項行為，對甲（血壓正常的成年人）與乙（已確診高血壓並服藥的病人）而言，分別屬於哪一級預防？",
+    "questionEn": "Regular blood pressure measurement: for A, an adult with normal blood pressure, and for B, a patient already diagnosed with hypertension and on medication, which levels of prevention apply?",
+    "options": [
+      "對甲屬二級，對乙屬三級",
+      "對甲屬一級，對乙屬二級",
+      "對甲乙皆屬二級預防",
+      "對甲屬一級，對乙屬一級"
+    ],
+    "optionsEn": [
+      "secondary for A, tertiary for B",
+      "primary for A, secondary for B",
+      "secondary for both A and B",
+      "primary for A and primary for B"
+    ],
+    "correctIndex": 0,
+    "explanation": "同一項措施的級別取決於服務對象所處的階段，而非措施本身。對甲而言，他尚未確診，量血壓的作用是在高血壓引起症狀之前把它找出來，屬二級預防。對乙而言，他已確診並在治療之中，量血壓的作用是監察病情、調校藥物、減少中風與腎衰竭等併發症，屬三級預防。要留意甲的情況並非一級——一級預防要降低患高血壓的風險本身，例如減鹽、運動、控制體重；量度這個動作並不改變風險，只改變發現的時機。本題正是要檢驗這個分類原則有沒有真正掌握，而不是背例子。",
+    "explanationEn": "The level of any measure depends on the stage the person is at, not on the measure itself. For A, who is not yet diagnosed, taking blood pressure serves to find hypertension before it produces symptoms, which is secondary prevention. For B, who is diagnosed and under treatment, it serves to monitor the condition, adjust medication and reduce complications such as stroke and kidney failure, which is tertiary prevention. Note that A's case is not primary: primary prevention would lower the risk of developing hypertension in the first place, through less salt, exercise and weight control; measuring does not change the risk, only when it is found. The question tests whether the classifying principle is genuinely understood rather than the examples memorised."
+  },
+  {
+    "id": "hm_floor_10",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "basic",
+    "question": "世界衞生組織對「健康」的定義，包含哪三個方面的安寧？",
+    "questionEn": "The World Health Organization defines health as well-being in which three dimensions?",
+    "options": [
+      "身體、心理與社交",
+      "身體、經濟與教育",
+      "心理、社交與經濟",
+      "身體、心理與經濟"
+    ],
+    "optionsEn": [
+      "physical, mental and social",
+      "physical, economic and educational",
+      "mental, social and economic",
+      "physical, mental and economic"
+    ],
+    "correctIndex": 0,
+    "explanation": "世界衞生組織把健康界定為身體、心理及社交三方面的完全安寧，而不僅是沒有疾病或虛弱。這個定義的關鍵在於後半句：健康並非「沒有病」這個消極狀態，而是一個積極的、多維度的狀態。因此一個各項檢查都正常、卻長期孤獨或焦慮的人，按此定義並不算健康。經濟與教育並不是健康的組成部分，但它們是重要的「健康的社會決定因素」——影響一個人能否獲得健康的外在條件，這是另一個課題，答題時不要把兩者混為一談。",
+    "explanationEn": "The World Health Organization defines health as complete physical, mental and social well-being, and not merely the absence of disease or infirmity. The force of the definition lies in that second clause: health is not the negative state of being free of illness but a positive, multidimensional condition. A person whose tests are all normal but who is chronically lonely or anxious is therefore not healthy by this definition. Economic and educational factors are not components of health, but they are important social determinants of health — external conditions affecting whether a person can attain it, which is a separate topic and should not be conflated with the definition."
+  },
+  {
+    "id": "hm_floor_11",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "basic",
+    "question": "一名中六學生因為模擬試成績不理想而持續失眠、情緒低落。就整全健康而言，這主要屬於哪一個方面？",
+    "questionEn": "A Secondary 6 student has persistent insomnia and low mood after a disappointing mock examination. In holistic health terms, which dimension is chiefly affected?",
+    "options": [
+      "心理健康",
+      "社交健康",
+      "身體健康",
+      "與健康無關"
+    ],
+    "optionsEn": [
+      "mental health",
+      "social health",
+      "physical health",
+      "unrelated to health"
+    ],
+    "correctIndex": 0,
+    "explanation": "情緒低落與因壓力而起的失眠，主要反映心理健康的狀況。要補充的是，整全健康的三個方面互相影響而非各自獨立：長期失眠會削弱免疫力與專注力，屬身體層面的後果；情緒低落亦可能令人退出社交活動，屬社交層面的後果。答應用題時應先指出主要受影響的方面，再說明它如何牽動其餘兩方面——這種「主次分明兼顧關聯」的寫法，比單獨指出一個方面更能拿到分析分。",
+    "explanationEn": "Low mood and stress-related insomnia chiefly reflect the state of mental health. It should be added that the three dimensions interact rather than standing apart: prolonged insomnia weakens immunity and concentration, which is a physical consequence, while low mood may lead someone to withdraw from social activity, which is a social one. In an application question, identify the dimension chiefly affected first, then explain how it draws in the other two — this way of writing, clear about what is primary while still showing the connections, earns more analysis marks than naming a single dimension alone."
+  },
+  {
+    "id": "hm_floor_12",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "basic",
+    "question": "一名退休人士加入義工隊，每週與街坊一同探訪獨居長者。這主要促進了他健康的哪一方面？",
+    "questionEn": "A retiree joins a volunteer team and visits elderly people living alone with neighbours each week. Which dimension of their own health does this chiefly promote?",
+    "options": [
+      "社交健康",
+      "身體健康",
+      "僅對受訪長者有益",
+      "與自身健康無關"
+    ],
+    "optionsEn": [
+      "social health",
+      "physical health",
+      "it benefits only the elderly visited",
+      "it does not affect their own health"
+    ],
+    "correctIndex": 0,
+    "explanation": "社交健康指一個人與他人建立及維持關係、在群體中擔當角色的能力。參與義工隊令這名退休人士有穩定的人際接觸、有被需要的角色，正是社交健康的核心內容。退休往往同時帶來社會角色的失去，因此這類參與對長者的健康特別重要。要留意這項活動並非只令受訪者得益——這正是本題要指出的一點；同時探訪需要外出步行，亦附帶身體層面的好處，但那是次要的。",
+    "explanationEn": "Social health refers to a person's capacity to form and maintain relationships and to hold a role within a group. Joining a volunteer team gives this retiree steady human contact and a role in which they are needed, which is the core of social health. Retirement often brings the loss of a social role, so participation of this kind matters particularly for older people's health. Note that the activity does not benefit only those visited — that is the point the question is making; the walking involved brings incidental physical benefit as well, but that is secondary."
+  },
+  {
+    "id": "hm_floor_13",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "intermediate",
+    "question": "整全健康觀與傳統醫學模式的主要分別在於甚麼？",
+    "questionEn": "What is the main difference between a holistic view of health and the traditional medical model?",
+    "options": [
+      "前者視健康為多維度的積極狀態",
+      "前者主張毋須依賴任何醫療服務",
+      "前者只重視心理而不理會身體",
+      "兩者在本質上並無實際分別"
+    ],
+    "optionsEn": [
+      "the former treats health as a positive, multidimensional state",
+      "the former holds that medical services are unnecessary",
+      "the former attends to the mind and ignores the body",
+      "the two are not meaningfully different"
+    ],
+    "correctIndex": 0,
+    "explanation": "傳統醫學模式以疾病為中心，健康即是沒有病，介入的重點是診斷與治療。整全健康觀則把健康看成身體、心理與社交三方面的積極狀態，關注的不只是病人，也包括未病者的生活條件、心理狀況與社會連繫。要留意整全觀並不否定醫療的價值——它是把醫療放進一個更闊的框架之中，而非取代它。同樣，它亦不是重心理而輕身體，三個方面在整全觀之中地位相當。分辨這兩個模式時，問一句「這個框架關心的是疾病，還是人的整體狀態」，最能抓住重點。",
+    "explanationEn": "The traditional medical model is disease-centred: health means the absence of illness, and the focus of intervention is diagnosis and treatment. A holistic view treats health as a positive state across the physical, mental and social dimensions, and attends not only to patients but also to the living conditions, psychological state and social connections of those who are not ill. Note that the holistic view does not deny the value of medicine — it places medicine within a broader frame rather than replacing it. Nor does it favour the mind over the body; the three dimensions carry equal weight within it. Asking whether a framework is concerned with disease or with the whole state of a person is the quickest way to tell the two apart."
+  },
+  {
+    "id": "hm_floor_14",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "intermediate",
+    "question": "一名長者患有需長期服藥的慢性病，但情緒穩定、朋友眾多、每日仍能自理起居。就整全健康而言，對他最恰當的判斷是甚麼？",
+    "questionEn": "An older person has a chronic illness requiring long-term medication, yet is emotionally stable, has many friends and manages daily living unaided. What is the most appropriate holistic judgement?",
+    "options": [
+      "身體方面受限，心理與社交方面良好",
+      "因患有慢性病，故三方面皆不健康",
+      "因情緒與社交良好，故完全健康",
+      "慢性病人不適用整全健康的框架"
+    ],
+    "optionsEn": [
+      "limited physically, but sound mentally and socially",
+      "unhealthy in all three dimensions because of the illness",
+      "completely healthy, since mood and social life are good",
+      "the holistic framework does not apply to chronic illness"
+    ],
+    "correctIndex": 0,
+    "explanation": "整全健康的三個方面應分開評估，不應以其中一項概括全部。這名長者身體方面確有限制，但心理與社交狀況良好，整體上仍可過有質素的生活。這正是整全健康觀最實用的地方：慢性病無法治癒，若以「有病即不健康」來衡量，病人便永遠處於失敗的位置；而按三維度分別評估，照顧的目標便可以放在維持與提升仍然良好的方面。答論述題時，指出「健康是連續體而非有病無病的二分」，是這個課題的核心分析點。",
+    "explanationEn": "The three dimensions should be assessed separately rather than letting one stand for all. This person is indeed limited physically, but their mental and social condition is sound and they can still live well overall. This is where the holistic view is most useful in practice: a chronic illness cannot be cured, and judging by whether illness is present leaves the patient permanently in a position of failure, whereas assessing each dimension separately allows care to aim at maintaining and strengthening what remains sound. Stating in an essay that health is a continuum rather than a division into ill and not ill is the central analytical point of this topic."
+  },
+  {
+    "id": "hm_floor_15",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "intermediate",
+    "question": "「健康是一個連續體」這個說法，最主要的意思是甚麼？",
+    "questionEn": "What does the statement that health is a continuum chiefly mean?",
+    "options": [
+      "健康程度可以逐步移動而非二分",
+      "健康狀況一旦下降便無法回升",
+      "健康只有健康與患病兩種狀態",
+      "健康程度完全由遺傳因素決定"
+    ],
+    "optionsEn": [
+      "health can shift by degrees rather than being binary",
+      "once health declines it cannot be regained",
+      "there are only two states: healthy and ill",
+      "the level of health is determined entirely by genes"
+    ],
+    "correctIndex": 0,
+    "explanation": "把健康理解為連續體，意思是每個人在任何時刻都處於「極差」與「極佳」之間的某一點，並且這個位置會隨生活條件、照顧與自身努力而移動。這個觀念有兩個實際作用：其一，即使患病亦有改善的空間，照顧因此有意義；其二，即使未患病亦有提升的空間，健康促進因此有意義。若把健康看成有病與無病的二分，這兩件事都會失去理據。連續體的方向可以雙向移動，並非只降不升；而遺傳只是影響健康的因素之一，環境與生活方式同樣重要。",
+    "explanationEn": "Treating health as a continuum means that at any moment each person sits somewhere between very poor and very good, and that this position moves with living conditions, care and personal effort. The idea does two practical jobs: first, there is room for improvement even in illness, which is what makes care meaningful; second, there is room for improvement even without illness, which is what makes health promotion meaningful. Both lose their rationale if health is seen as a division into ill and not ill. Movement along the continuum runs in both directions, not downward only, and heredity is one influence among several, with environment and lifestyle mattering just as much."
+  },
+  {
+    "id": "hm_floor_16",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "intermediate",
+    "question": "社區中心為獨居長者同時安排定期覆診接送、興趣班及家居安全評估。這套服務最能體現甚麼？",
+    "questionEn": "A community centre arranges transport to medical appointments, interest classes, and home safety assessments for elderly people living alone. What does this best illustrate?",
+    "options": [
+      "兼顧身體、心理與社交的整全照顧",
+      "以治療疾病為唯一目標的醫療模式",
+      "集中處理長者的經濟困難",
+      "把照顧責任全數交回家人承擔"
+    ],
+    "optionsEn": [
+      "holistic care spanning physical, mental and social needs",
+      "a medical model aimed solely at treating disease",
+      "a focus on the financial difficulties of the elderly",
+      "returning all responsibility for care to the family"
+    ],
+    "correctIndex": 0,
+    "explanation": "三項服務各自對應不同的方面：覆診接送保障治療的延續，屬身體層面；興趣班提供人際接觸與生活內容，兼及心理與社交；家居安全評估減低跌倒風險，同時屬身體層面與環境層面的介入。三者合起來，正是整全照顧的具體做法——不只處理疾病，而是照顧一個人生活的整體。答應用題時逐項對應到相應的方面，比籠統地寫「服務全面」清楚得多，亦更容易取分。",
+    "explanationEn": "Each service addresses a different dimension: transport to appointments secures continuity of treatment and is physical; interest classes supply human contact and content to daily life, touching both the mental and social dimensions; home safety assessment lowers the risk of falls and is both a physical and an environmental intervention. Taken together they are holistic care in concrete form — not merely treating disease but attending to a person's life as a whole. Mapping each service to its dimension is far clearer than writing in general terms that the service is comprehensive, and it scores better."
+  },
+  {
+    "id": "hm_floor_17",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "整全健康・概念應用",
+    "topicId": "hm_holistic_concept",
+    "topicZh": "整全健康・概念應用",
+    "topicEn": "Holistic health — application",
+    "difficulty": "intermediate",
+    "question": "「健康促進」與「疾病治療」的主要分別在於甚麼？",
+    "questionEn": "What chiefly distinguishes health promotion from the treatment of disease?",
+    "options": [
+      "前者着眼於提升整體健康水平",
+      "前者只適用於已確診的病人",
+      "前者由醫生獨力負責推行",
+      "兩者的服務對象完全相同"
+    ],
+    "optionsEn": [
+      "the former aims to raise the overall level of health",
+      "the former applies only to diagnosed patients",
+      "the former is carried out by doctors alone",
+      "the two serve exactly the same group of people"
+    ],
+    "correctIndex": 0,
+    "explanation": "健康促進的目標是令人由「不算差」移向「更好」，對象包括未患病的人，手段涵蓋教育、環境改善與政策；疾病治療則針對已出現的病症，目標是消除或控制它。兩者的對象與時機都不同，但並非互相排斥——一個完整的健康系統兩者兼備。健康促進的推行亦不限於醫生，學校、社區組織、僱主以至政策制訂者都有角色，這一點在論述題中值得指出，因為它反映健康並非單靠醫療服務就能達致。",
+    "explanationEn": "Health promotion aims to move people from not bad towards better, addresses those who are not ill as well as those who are, and works through education, environmental improvement and policy. Treatment addresses symptoms that have already appeared and aims to remove or control them. The two differ in whom they serve and when they act, but they are not mutually exclusive — a complete health system contains both. Health promotion is also not carried out by doctors alone: schools, community organisations, employers and policymakers all have a part, a point worth making in an essay because it shows that health is not achieved through medical services alone."
+  },
+  {
+    "id": "hm_floor_18",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "basic",
+    "question": "照顧倫理中的「尊重自主」原則，主要指甚麼？",
+    "questionEn": "What does the principle of respect for autonomy in care ethics chiefly mean?",
+    "options": [
+      "尊重服務使用者為自己作決定的權利",
+      "照顧者可按專業判斷代為決定",
+      "服務使用者須自行承擔照顧責任",
+      "家屬的意願優先於使用者本人"
+    ],
+    "optionsEn": [
+      "respecting the user's right to decide for themselves",
+      "allowing carers to decide on professional grounds",
+      "making users responsible for their own care",
+      "giving the family's wishes priority over the user's"
+    ],
+    "correctIndex": 0,
+    "explanation": "尊重自主指服務使用者有權在充分知情的前提下，就自己的身體與照顧安排作決定，包括拒絕某項治療的權利。要留意「自主」並不等於「自己照顧自己」——一個需要別人協助起居的人，同樣可以自主地決定接受哪些協助。這個原則的落實依賴知情同意：先提供足夠而可理解的資訊，再由本人決定。當本人的決定與家屬意願或照顧者的專業判斷相左時，正是這個原則發揮作用的時刻；若一律以專業或家屬意見為準，原則便形同虛設。",
+    "explanationEn": "Respect for autonomy means that a service user has the right, once adequately informed, to make decisions about their own body and care arrangements, including the right to refuse a treatment. Note that autonomy is not the same as looking after oneself — someone who needs help with daily living can still decide autonomously which help to accept. The principle is realised through informed consent: sufficient and comprehensible information first, then the person's own decision. It matters most precisely when that decision conflicts with the family's wishes or the carer's professional judgement; if professional or family views always prevail, the principle is empty."
+  },
+  {
+    "id": "hm_floor_19",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "basic",
+    "question": "下列哪一項屬於「健康的社會決定因素」？",
+    "questionEn": "Which of the following is a social determinant of health?",
+    "options": [
+      "居住環境的擠迫與衞生狀況",
+      "個人的血型與遺傳基因",
+      "身體對藥物的代謝速度",
+      "先天的免疫系統強弱"
+    ],
+    "optionsEn": [
+      "overcrowding and sanitation in housing",
+      "a person's blood type and genes",
+      "the rate at which the body metabolises drugs",
+      "the inborn strength of the immune system"
+    ],
+    "correctIndex": 0,
+    "explanation": "健康的社會決定因素，指影響健康而本身屬社會條件的因素，例如收入、教育程度、就業狀況、居住環境與能否獲得醫療服務。居住環境的擠迫與衞生直接影響傳染病傳播與精神壓力，屬典型的社會決定因素。其餘三項均屬生物或生理層面的因素，雖然同樣影響健康，但並非社會條件。分辨的方法很直接：問一句「這項因素可否透過政策或社會資源分配去改變」——可以的，多屬社會決定因素。",
+    "explanationEn": "The social determinants of health are the social conditions that influence health, such as income, education, employment, housing and access to medical services. Overcrowding and poor sanitation in housing bear directly on the spread of infection and on mental strain, making them a textbook social determinant. The other three are biological or physiological factors: they affect health too, but they are not social conditions. A direct test is to ask whether the factor could be changed by policy or by the allocation of social resources — if so, it is usually a social determinant."
+  },
+  {
+    "id": "hm_floor_20",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "basic",
+    "question": "照顧倫理中的「不傷害」原則，其基本要求是甚麼？",
+    "questionEn": "What is the basic requirement of the principle of non-maleficence in care ethics?",
+    "options": [
+      "避免對服務使用者造成可預見的傷害",
+      "在任何情況下都不可施行入侵性程序",
+      "照顧者須為所有意外結果承擔法律責任",
+      "只要出於好意便毋須考慮後果"
+    ],
+    "optionsEn": [
+      "avoiding foreseeable harm to the service user",
+      "never carrying out any invasive procedure",
+      "holding carers legally liable for every mishap",
+      "good intentions removing the need to weigh outcomes"
+    ],
+    "correctIndex": 0,
+    "explanation": "不傷害原則要求照顧者避免造成可預見的傷害，並在無法完全避免時把傷害減至最低。它並非禁止一切具風險的程序——手術、注射本身有風險，但若預期利益明顯大於風險，仍然可以進行，這正是它與行善原則需要一併衡量的原因。要留意「出於好意」不足以構成理據：判斷的依據是後果的預期，而非動機的善惡。這個分別在討論強制餵食、約束衣等具爭議的照顧措施時尤其關鍵。",
+    "explanationEn": "Non-maleficence requires carers to avoid foreseeable harm and, where harm cannot be entirely avoided, to keep it to a minimum. It does not forbid every risky procedure — surgery and injections carry risk, yet may proceed where the expected benefit clearly outweighs it, which is why this principle must be weighed together with beneficence. Note that good intentions are not sufficient grounds: the judgement rests on expected outcomes rather than on the goodness of the motive. This distinction is especially important when discussing contested measures such as force-feeding or physical restraint."
+  },
+  {
+    "id": "hm_floor_21",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "intermediate",
+    "question": "一名意識清醒的長者拒絕接受醫生建議的手術，家人則堅持要做。就照顧倫理而言，處理這情況時應以甚麼為首要考慮？",
+    "questionEn": "A mentally competent older person refuses an operation their doctor recommends, while the family insists on it. In care ethics, what should be the primary consideration?",
+    "options": [
+      "長者本人在知情下所作的決定",
+      "家人所表達的一致意願",
+      "醫生的專業判斷應為最終標準",
+      "以少數服從多數的方式決定"
+    ],
+    "optionsEn": [
+      "the person's own decision, made with full information",
+      "the unanimous wishes expressed by the family",
+      "the doctor's professional judgement as final",
+      "deciding by majority among those involved"
+    ],
+    "correctIndex": 0,
+    "explanation": "長者意識清醒，具備作決定的能力，尊重自主原則要求以他本人在知情下的決定為首要考慮，包括拒絕治療的決定。這並不表示家人與醫生的意見沒有價值——醫生有責任充分說明手術的利弊與不做的後果，家人的關心亦應獲聆聽，但兩者的角色是提供資訊與支援，而非代為決定。要留意這個原則的前提是當事人有決定能力；若能力受損，處理方式便不同，須依循預設醫療指示或代作決定的機制。答題時先確認決定能力，再談原則，次序不能倒轉。",
+    "explanationEn": "The person is mentally competent and has the capacity to decide, so respect for autonomy requires that their own informed decision, including a refusal of treatment, be the primary consideration. This does not make the views of family and doctor worthless — the doctor has a duty to explain fully the benefits and risks of the operation and the consequences of declining it, and the family's concern deserves a hearing, but their role is to inform and support rather than to decide. Note that the principle presupposes decision-making capacity; where capacity is impaired the approach differs and advance directives or substitute decision-making mechanisms apply. Establish capacity first and then discuss the principle — the order cannot be reversed."
+  },
+  {
+    "id": "hm_floor_22",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "intermediate",
+    "question": "研究顯示，基層家庭兒童的蛀牙率明顯高於中產家庭。從健康決定因素的角度，最恰當的解釋是甚麼？",
+    "questionEn": "Studies show that children in low-income families have markedly higher rates of tooth decay than those in middle-class families. From a determinants-of-health perspective, what is the most appropriate explanation?",
+    "options": [
+      "經濟條件影響飲食選擇與牙科服務的可及性",
+      "基層家庭的家長普遍不重視子女健康",
+      "兩類家庭兒童的體質存在先天差異",
+      "數字差異只是統計上的偶然波動"
+    ],
+    "optionsEn": [
+      "income shapes diet choices and access to dental services",
+      "low-income parents generally neglect their children's health",
+      "the two groups differ in inborn physical constitution",
+      "the gap is merely random statistical fluctuation"
+    ],
+    "correctIndex": 0,
+    "explanation": "社會決定因素的分析要求先看結構性條件，再談個人行為。經濟條件透過幾條途徑影響蛀牙率：能否負擔定期牙科檢查與治療、能否選購較昂貴而含糖較少的食物、家長工時長短是否容許督促子女刷牙。把差異歸咎於家長不重視，是典型的「責備受害者」，它把結構問題誤讀為態度問題，亦令有效的政策介入無從談起。體質差異的說法缺乏證據支持；而群體之間持續而一致的差距，亦不能用偶然波動解釋。答論述題時能指出「責備受害者」這個陷阱，是本課題的關鍵分析點。",
+    "explanationEn": "Analysis of social determinants requires looking at structural conditions before individual behaviour. Income affects rates of decay through several routes: whether regular dental check-ups and treatment are affordable, whether costlier low-sugar foods can be bought, and whether parents' working hours leave time to supervise toothbrushing. Attributing the gap to parental neglect is a textbook case of blaming the victim: it reads a structural problem as a matter of attitude and leaves no room for effective policy. The suggestion of differing constitutions lacks evidence, and a persistent, consistent gap between groups cannot be explained as random fluctuation. Identifying the victim-blaming trap is the key analytical point in this topic."
+  },
+  {
+    "id": "hm_floor_23",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "intermediate",
+    "question": "「知情同意」要有效，必須具備哪些條件？",
+    "questionEn": "What conditions must be met for informed consent to be valid?",
+    "options": [
+      "資訊充分、當事人有能力、自願作出決定",
+      "只需當事人在同意書上簽署作實",
+      "只需家屬代為表示同意即可",
+      "只需醫護人員認為方案對當事人有利"
+    ],
+    "optionsEn": [
+      "adequate information, capacity, and a voluntary decision",
+      "a signature on a consent form is enough",
+      "consent given on the person's behalf by relatives",
+      "the staff judging the plan to be in the person's interest"
+    ],
+    "correctIndex": 0,
+    "explanation": "知情同意有三個必要條件，缺一不可。其一是資訊充分且可理解——包括方案的性質、預期效果、風險與可行的替代方案。其二是當事人具備決定能力，即能理解資訊並衡量後果。其三是自願，即決定不受壓力或誤導所左右。簽署同意書只是把同意記錄下來的形式，若當事人根本不明白內容，這份文件並不構成有效的同意。家屬代為同意僅在當事人欠缺決定能力時、按既定機制才適用；而照顧者認為有利，屬行善原則的考慮，不能取代當事人的意願。",
+    "explanationEn": "Informed consent has three necessary conditions, none of which can be omitted. The first is adequate and comprehensible information, covering the nature of the proposal, the expected benefit, the risks and the available alternatives. The second is capacity: the person can understand the information and weigh the consequences. The third is voluntariness: the decision is free of pressure or misleading influence. Signing a form merely records consent; where the person does not understand what it says, the document does not constitute valid consent. Consent by relatives applies only where the person lacks capacity, through established mechanisms; and a carer's belief that something is beneficial belongs to beneficence and cannot replace the person's own wishes."
+  },
+  {
+    "id": "hm_floor_24",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "intermediate",
+    "question": "照顧倫理中的「公義」原則，在資源分配上主要要求甚麼？",
+    "questionEn": "In the allocation of resources, what does the principle of justice in care ethics chiefly require?",
+    "options": [
+      "按需要公平分配，不因身分而有差別",
+      "一律平均分配予每一名服務使用者",
+      "優先照顧付款能力較高的使用者",
+      "由前線照顧者按個人喜好決定"
+    ],
+    "optionsEn": [
+      "fair allocation by need, without regard to status",
+      "an exactly equal share for every service user",
+      "priority for those able to pay more",
+      "frontline carers deciding by personal preference"
+    ],
+    "correctIndex": 0,
+    "explanation": "公義原則要求資源分配以需要為依據，並且不因性別、年齡、種族、經濟狀況或社會地位而有差別待遇。要留意「公平」與「平均」並不相同：需要程度不一的人若各得相同份額，結果反而不公平——需要多的人不足，需要少的人有餘。因此公義原則在實踐上常指向「按需分配」而非「人人一份」。以付款能力決定優次，違反不因經濟狀況差別待遇這一要求；而由前線照顧者按個人喜好決定，則缺乏可交代的準則，同樣不符合公義原則。",
+    "explanationEn": "The principle of justice requires that resources be allocated according to need, without differential treatment on grounds of sex, age, race, economic position or social status. Note that fair and equal are not the same: giving people with unequal needs identical shares produces an unfair result, leaving those with greater need short and those with less need with a surplus. In practice, therefore, justice points towards allocation by need rather than an equal share for all. Setting priority by ability to pay breaches the requirement not to discriminate on economic grounds, while leaving the decision to a frontline carer's personal preference provides no accountable criterion and fails the principle equally."
+  },
+  {
+    "id": "hm_floor_25",
+    "type": "mc",
+    "subject": "health-management",
+    "topic": "照顧倫理與健康決定因素",
+    "topicId": "hm_care_ethics_determinants",
+    "topicZh": "照顧倫理與健康決定因素",
+    "topicEn": "Care ethics & determinants",
+    "difficulty": "intermediate",
+    "question": "一名照顧者為方便管理，在未經評估的情況下為長者長期使用約束衣。這做法主要違反了哪些倫理原則？",
+    "questionEn": "For ease of management, a carer keeps an older person in physical restraints long-term without any assessment. Which ethical principles does this chiefly breach?",
+    "options": [
+      "尊重自主與不傷害",
+      "公義與保密",
+      "保密與行善",
+      "僅屬行政程序上的疏忽"
+    ],
+    "optionsEn": [
+      "respect for autonomy and non-maleficence",
+      "justice and confidentiality",
+      "confidentiality and beneficence",
+      "merely a lapse in administrative procedure"
+    ],
+    "correctIndex": 0,
+    "explanation": "長期約束在未經評估與同意之下施行，剝奪了長者對自己身體與行動的決定權，違反尊重自主；長期約束亦會帶來肌肉萎縮、關節僵硬、褥瘡與情緒困擾等可預見的傷害，違反不傷害。要留意「為方便管理」這個理由本身正是問題所在——它以照顧者的便利取代了使用者的利益，而倫理判斷的依據應是後者。保密涉及私隱資料的處理，公義涉及資源分配，兩者與本個案的核心無關。把這件事僅僅當作程序疏忽，會低估它對當事人造成的實質損害。",
+    "explanationEn": "Applying long-term restraint without assessment or consent removes the person's authority over their own body and movement, breaching respect for autonomy; prolonged restraint also brings foreseeable harm such as muscle wasting, joint stiffness, pressure sores and emotional distress, breaching non-maleficence. Note that the stated reason, ease of management, is itself the problem — it substitutes the carer's convenience for the user's interests, when ethical judgement should rest on the latter. Confidentiality concerns the handling of private information and justice concerns the allocation of resources; neither bears on the core of this case. Treating the matter as a mere procedural lapse understates the real harm done to the person concerned."
+  }
+]

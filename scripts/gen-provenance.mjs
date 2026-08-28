@@ -20,6 +20,7 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 const DRAFTS = 'scripts/qbank/drafts'
 const OUT = 'data/provenance.ts'
@@ -120,11 +121,25 @@ export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>
 `
 }
 
-const out = render(collect())
-const prev = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : ''
-if (prev === out) {
-  console.log('✅ data/provenance.ts 已係最新（無變更）')
-} else {
-  fs.writeFileSync(OUT, out)
-  console.log(`✅ 已生成 data/provenance.ts`)
+// ── 只有【直接執行】本腳本先會寫檔 ──────────────────────────────────────
+// 2026-08-28 之前呢段喺模組頂層無條件執行，於是任何人 `import` 佢都會寫檔 ——
+// 包括 lib/__tests__/trust-disclosure.test.mts 嗰條「provenance 生成檔冇過時」。
+// 後果係嗰條 test 【只可能紅一次】：
+//   第一次跑 → import 觸發寫檔，但 REVIEWED 早喺檔案頂部 import 咗（舊值）→ 紅
+//   第二次跑 → 檔案已經被上一次跑修好 → 綠
+// 即係話一條用嚟守審批紀錄嘅閘，自己把自己修好，仲要訓練人「再跑一次睇下」。
+// 實測：入完 43 條數學題之後跑 `npm test` 得 617/1 紅，緊接再跑就 618/0。
+//
+// 加咗守衛之後，條 test 會【一直紅】直到有人真係去跑 `node scripts/gen-provenance.mjs`
+// 並且 commit 生成檔 —— 呢個先係佢本來想做嘅事。
+const isDirectRun = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url
+if (isDirectRun) {
+  const out = render(collect())
+  const prev = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : ''
+  if (prev === out) {
+    console.log('✅ data/provenance.ts 已係最新（無變更）')
+  } else {
+    fs.writeFileSync(OUT, out)
+    console.log(`✅ 已生成 data/provenance.ts`)
+  }
 }

@@ -1,0 +1,252 @@
+// 由 promote-sensei-cards.mjs 產生，請勿手動修改；如需更正請修改草稿並重新執行管線。
+// 以下每張卡片均由具名真人逐張批准：
+//   reviewer : Yuna
+//   date     : 2026-08-27
+//   source   : batch1-p3-integrated.json
+//   approved : 10  (basic 4 / intermediate 5 / hard 1)
+// ⚠️ 尚未生效：必須由人手在 ../index.ts 加入 import，才會在學生介面出現。
+import type { KnowledgeCard } from '../../types'
+
+export const englishBatch1P3IntegratedCards: KnowledgeCard[] = [
+  {
+    "id": "en-int-why-copy-fails",
+    "subject": "english",
+    "topic": "Why copying source sentences falls short",
+    "subTopic": "抄原句為何幫不到自己",
+    "difficulty": "basic",
+    "source": "syllabus",
+    "concept": "整合題要求把資料轉化為新任務所需的內容。原封不動搬用來源句子，示範的是抄寫能力，未示範理解與轉化。",
+    "example": "來源寫 \"The scheme was suspended owing to insufficient funding\"，任務是寫給同學的通告，抄原句便與收件人不符；改寫為 \"The scheme has stopped for now because there isn't enough money\" 才切合。",
+    "examTechnique": "讀完來源後蓋住原文，用自己的話寫一次要點，再回頭核對事實有沒有走樣。蓋住這一步是關鍵。",
+    "commonTrap": "只把原句的個別字換成同義詞，句子結構原封不動。結構不變等於思路未經處理，讀起來仍是搬字過紙。",
+    "keywords": [
+      "copying",
+      "paraphrase",
+      "integrated skills",
+      "Paper 3",
+      "抄原句"
+    ],
+    "relatedTopics": [
+      "寫作手法"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-paraphrase-structure",
+    "subject": "english",
+    "topic": "Paraphrasing by changing structure",
+    "subTopic": "改結構而非只換字",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "有效的改寫改動句子結構：主動改被動、名詞化改動詞、把長句拆短、調換資訊次序。換同義詞只是最表層的一步。",
+    "example": "\"The committee's rejection of the proposal caused disappointment\" 可改為 \"Many people were disappointed when the committee turned down the proposal.\"",
+    "examTechnique": "先定出句子的主角是誰、做了甚麼，再用自己的次序重寫。由意思出發重建句子，比逐字替換自然。",
+    "commonTrap": "過度改寫以致原意走樣，例如把 \"may be considered\" 寫成 \"will happen\"。改寫的底線是事實不變。",
+    "keywords": [
+      "paraphrase",
+      "rewriting",
+      "structure",
+      "Paper 3",
+      "改寫"
+    ],
+    "relatedTopics": [
+      "寫作手法"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-selecting",
+    "subject": "english",
+    "topic": "Selecting relevant information",
+    "subTopic": "取捨比複述重要",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "來源資料通常多於任務所需。整合題考的是按任務目的挑選，而非把所有讀到的都寫出來。",
+    "example": "任務要求向家長解釋收費調整，來源中關於場地歷史的段落即使有趣，亦與目的無關，應予略去。",
+    "examTechnique": "先寫下任務的目的與讀者，再逐段問「這一段幫到這個目的嗎」。答不到便不寫，篇幅留給有用的部分。",
+    "commonTrap": "把來源由頭到尾複述一次。內容雖然齊全，卻沒有顯示判斷，而判斷正是整合題要看的東西。",
+    "keywords": [
+      "selection",
+      "relevance",
+      "purpose",
+      "integrated skills",
+      "Paper 3"
+    ],
+    "relatedTopics": [
+      "內容理解"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-task-fulfilment",
+    "subject": "english",
+    "topic": "Task fulfilment",
+    "subTopic": "每一項要求都要交代",
+    "difficulty": "basic",
+    "source": "syllabus",
+    "concept": "任務指示通常列出數項要求。漏做其中一項，即使其餘寫得出色，任務仍未完成，因為要求之間並非可以互相替代。",
+    "example": "指示要求「說明改動、解釋原因、提出兩項建議」，只寫前兩項便缺了三分之一，而這一項無法由前兩項補回。",
+    "examTechnique": "把指示中的動詞逐個抄在草稿頁邊，寫完一項劃走一項。完稿後草稿頁邊應該全部劃走。",
+    "commonTrap": "把最後一項要求寫成一句帶過。列為獨立要求的項目，通常需要與其他項目相若的篇幅。",
+    "keywords": [
+      "task fulfilment",
+      "instructions",
+      "requirements",
+      "Paper 3",
+      "審題"
+    ],
+    "relatedTopics": [
+      "寫作手法"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-combining",
+    "subject": "english",
+    "topic": "Combining two sources",
+    "subTopic": "整合而非並列",
+    "difficulty": "hard",
+    "source": "syllabus",
+    "concept": "當任務提供多於一份材料，通常需要把兩者關連起來：互相補充、互相矛盾，或一份解釋另一份。分開複述並非整合。",
+    "example": "資料一顯示參加人數下降，資料二提到收費上調。把兩者連起來寫成「人數下降可能與收費上調有關」，才是整合。",
+    "examTechnique": "先判斷兩份材料的關係屬於補充、對比還是因果，再用一句把關係寫出來，然後才展開細節。",
+    "commonTrap": "先寫一段資料一，再寫一段資料二，中間沒有任何連繫。這樣的結構顯示兩份材料是分開處理的。",
+    "keywords": [
+      "combining",
+      "two sources",
+      "synthesis",
+      "integrated skills",
+      "Paper 3"
+    ],
+    "relatedTopics": [
+      "內容理解"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-format",
+    "subject": "english",
+    "topic": "Format of common task types",
+    "subTopic": "格式屬於任務的一部分",
+    "difficulty": "basic",
+    "source": "syllabus",
+    "concept": "通告、電郵、報告、演講稿各有既定格式。格式並非額外裝飾，而是任務要求的一部分，錯了格式即是未按指示完成。",
+    "example": "報告需要標題與分節小標題；通告需要日期、對象與發出者；電郵需要主旨列。缺少這些，文體便不成立。",
+    "examTechnique": "動筆前先把格式框架寫在答題紙上（標題、小標題、署名），再填內容。框架先行可避免寫到最後才發現遺漏。",
+    "commonTrap": "把所有文體都寫成一篇文章。內容再好，若讀者看不出這是一份報告或一則通告，任務仍未達成。",
+    "keywords": [
+      "format",
+      "report",
+      "notice",
+      "email",
+      "text type",
+      "Paper 3"
+    ],
+    "relatedTopics": [
+      "文學體裁"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-word-limit",
+    "subject": "english",
+    "topic": "Working within a word limit",
+    "subTopic": "字數是分配問題",
+    "difficulty": "intermediate",
+    "source": "original",
+    "concept": "字數上限是一個分配問題：先按要求項目數目分配篇幅，再決定每項寫多少，而不是寫到哪裡算哪裡。",
+    "example": "限二百字而有四項要求，每項約五十字。若第一項已用去一百二十字，其餘三項必然被壓縮。",
+    "examTechnique": "在草稿旁寫下每項的目標字數，寫的時候大致依從。這比寫完再刪省時，因為刪減往往刪走了整段結構。",
+    "commonTrap": "在開場白與客套話上耗用大量篇幅。這些部分不承載任務要求，卻最容易不知不覺寫長。",
+    "keywords": [
+      "word limit",
+      "planning",
+      "allocation",
+      "Paper 3",
+      "字數"
+    ],
+    "relatedTopics": [
+      "寫作手法"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-audience-purpose",
+    "subject": "english",
+    "topic": "Reading the rubric for audience and purpose",
+    "subTopic": "指示中的兩個關鍵詞",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "指示中總會寫明「寫給誰」與「為甚麼寫」。這兩項決定語域、選材與篇幅分配，是整份答案的地基。",
+    "example": "同一批資料，寫給校長的報告需要建議與理據；寫給同學的通告則需要清楚的時間、地點與行動指示。",
+    "examTechnique": "把指示中的收件人與目的圈起來，寫在草稿頂端，全程可見。寫作途中偏離時，抬頭便看得見。",
+    "commonTrap": "只讀資料而略讀指示。資料決定寫甚麼，指示決定怎樣寫，後者被略過時，內容再豐富亦可能不切題。",
+    "keywords": [
+      "rubric",
+      "audience",
+      "purpose",
+      "instructions",
+      "Paper 3"
+    ],
+    "relatedTopics": [
+      "寫作手法"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-trends",
+    "subject": "english",
+    "topic": "Describing data and trends",
+    "subTopic": "描述變化的語言",
+    "difficulty": "intermediate",
+    "source": "syllabus",
+    "concept": "描述數據需要區分方向（rise / fall）、幅度（sharply / slightly）與時間（between 2019 and 2021）。三者齊備，描述才準確。",
+    "example": "\"Attendance fell sharply between March and May, then levelled off.\" 一句之內同時交代方向、幅度與時段。",
+    "examTechnique": "先挑出最值得說的兩三個特徵（最高點、最低點、轉折點），逐個用完整句子寫出，不要逐個數據複述。",
+    "commonTrap": "把圖表上的每一個數字都讀出來。這樣既用盡篇幅，又沒有指出趨勢，而趨勢才是描述數據的目的。",
+    "keywords": [
+      "data description",
+      "trends",
+      "graph",
+      "integrated skills",
+      "Paper 3"
+    ],
+    "relatedTopics": [
+      "內容理解"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  },
+  {
+    "id": "en-int-common-slips",
+    "subject": "english",
+    "topic": "Common slips in integrated tasks",
+    "subTopic": "最後三分鐘的檢查",
+    "difficulty": "basic",
+    "source": "original",
+    "concept": "整合題的失分常見於機械性的疏忽而非能力：漏了一項要求、格式不全、語域與收件人不符、日期或名稱抄錯。",
+    "example": "把來源中的機構名稱抄錯一個字母，或把日期由 3 May 寫成 5 March，內容再好亦影響資料的可信度。",
+    "examTechnique": "留最後三分鐘做四項檢查：要求齊否、格式齊否、語域一致否、專有名詞與日期抄對否。逐項用手指點過。",
+    "commonTrap": "把餘下時間全用來多寫幾句。多寫一段的作用，通常小於補回一項漏做的要求。",
+    "keywords": [
+      "proofreading",
+      "checklist",
+      "slips",
+      "integrated skills",
+      "Paper 3"
+    ],
+    "relatedTopics": [
+      "寫作手法"
+    ],
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
+  }
+]

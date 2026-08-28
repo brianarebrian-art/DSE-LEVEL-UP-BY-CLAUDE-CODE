@@ -1,13 +1,13 @@
 import type { KnowledgeCard } from '../types'
+import { economicsBatch1GraphsCards } from './reviewed/batch1-graphs'
+import { economicsBatch1TermsCards } from './reviewed/batch1-terms'
 
 // economics 科 SENSEI 知識卡片。
 //
-// ⚠️ 此陣列【只可以】由已簽署的 reviewed/ 檔案填充。憲章 §12 生產紀律：
-//    drafts → review-sensei-cards.mjs → 真人逐張審批 → promote-sensei-cards.mjs
-//    → reviewed/economics-cards.ts → 【人手】在此處 import
-//
-// 機器永不自動入庫。promote 產出檔案後，須由人親手在此加入 import，
-// 這是最後一道人手關卡，不應自動化。
-//
-// 現時：0 張（等待真人審批首批草稿）。
-export const economicsSenseiCards: KnowledgeCard[] = []
+// 本檔由 scripts/qbank/sensei-golive.mjs 產生，但【刻意保留明文 import】——
+// 並非以 glob 自動掃描 reviewed/ 目錄。因此新增一個已批准檔案並不會自動
+// 出現在學生面前，仍須有人再次執行上線指令。憲章 §12：機器永不自動入庫。
+export const economicsSenseiCards: KnowledgeCard[] = [
+  ...economicsBatch1GraphsCards,
+  ...economicsBatch1TermsCards,
+]

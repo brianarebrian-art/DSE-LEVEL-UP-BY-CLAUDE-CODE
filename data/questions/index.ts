@@ -4,6 +4,9 @@ import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
 import { mathImportedQuestions } from './math-imported'
 import { mathBankQuestions } from './math-bank'
+import { mathP1LongQuestions } from './math-p1-long'
+import { mathLongB1Questions } from './math-long-b1'
+import { mathFloorBatch1Questions } from './math-floor-batch1'
 import { m1Questions, m1Topics } from './m1'
 import { m1BankQuestions } from './m1-bank'
 import { m2Questions, m2Topics } from './m2'
@@ -15,16 +18,22 @@ import { chemistryBankQuestions } from './chemistry-bank'
 import { biologyQuestions, biologyTopics } from './biology'
 import { englishQuestions, englishTopics } from './english'
 import { ictQuestions, ictTopics } from './ict'
+import { ictFloorBatch1Questions } from './ict-floor-batch1'
 import { chineseQuestions, chineseTopics } from './chinese'
 import { chineseReviewedQuestions } from './chinese-reviewed'
 // 書寫題批次亦必須註冊入 barrel —— barrel 是所有 QA 工具與稽核統計的讀取路徑，
 // 只註冊入 load.ts 會令題目對統計隱形（2026-08-07 已因此少報 12 題）。
 import { chineseP2WritingQuestions } from './chinese-p2-writing'
+import { chineseP2WritingBatch2Questions } from './chinese-p2-writing-batch2'
+import { chineseP2WritingBatch3Questions } from './chinese-p2-writing-batch3'
 import { chineseFanwenLongQuestions } from './chinese-fanwen-long'
+import { chineseFloorBatch1Questions } from './chinese-floor-batch1'
 import { bafsQuestions, bafsTopics } from './bafs'
 import { economicsQuestions, economicsTopics } from './economics'
 import { economicsBankQuestions } from './economics-bank'
 import { economicsReviewedQuestions } from './economics-reviewed'
+import { economicsFloorBatch1Questions } from './economics-floor-batch1'
+import { economicsFloorBatch2Questions } from './economics-floor-batch2'
 // 2026-08-07 補漏：以下兩個 reviewed bank 一直列於 load.ts（即一直供應予學生），
 // 卻從未接入本 barrel。後果是 12 條已審核題目對所有經 index.ts 讀取的工具
 // （topic-coverage、全量稽核統計）完全不可見。
@@ -34,9 +43,12 @@ import { bafsReviewedQuestions } from './bafs-reviewed'
 import { bafsBankQuestions } from './bafs-bank'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
+import { historyP2EssaysQuestions } from './history-p2-essays'
+import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { thsQuestions, thsTopics } from './ths'
 import { healthManagementQuestions, healthManagementTopics } from './health-management'
+import { healthManagementFloorBatch1Questions } from './health-management-floor-batch1'
 import { designTechQuestions, designTechTopics } from './design-tech'
 import { musicQuestions, musicTopics } from './music'
 import { peQuestions, peTopics } from './pe'
@@ -44,6 +56,7 @@ import { chineseLiteratureQuestions, chineseLiteratureTopics } from './chinese-l
 import { englishLiteratureQuestions, englishLiteratureTopics } from './english-literature'
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { csdQuestions, csdTopics } from './csd'
+import { csdReviewedQuestions } from './csd-reviewed'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
 import { chineseHistoryAutoQuestions } from './chinese-history-auto'
@@ -82,37 +95,40 @@ interface SubjectBank {
 // Registry of all subjects that have live question content
 const banks: Record<string, SubjectBank> = {
   // Hand-authored 120 + offline AI-generated (gate + LLM-judge verified) extras.
-  math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions], topics: mathTopics },
+  math: { questions: [...mathQuestions, ...mathGeneratedQuestions, ...mathParametricQuestions, ...mathImportedQuestions, ...mathBankQuestions, ...mathP1LongQuestions, ...mathLongB1Questions, ...mathFloorBatch1Questions], topics: mathTopics },
   m1: { questions: [...m1Questions, ...m1BankQuestions], topics: m1Topics },
   m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions], topics: chemistryTopics },
   biology: { questions: biologyQuestions, topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
-  ict: { questions: ictQuestions, topics: ictTopics },
+  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions], topics: ictTopics },
   chinese: {
     questions: [
       ...chineseQuestions,
       ...chineseReviewedQuestions,
       ...chineseP2WritingQuestions,
+      ...chineseP2WritingBatch2Questions,
+      ...chineseP2WritingBatch3Questions,
       ...chineseFanwenLongQuestions,
+      ...chineseFloorBatch1Questions,
     ],
     topics: chineseTopics,
   },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
-  economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions], topics: economicsTopics },
+  economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
   geography: { questions: geographyQuestions, topics: geographyTopics },
-  history: { questions: historyQuestions, topics: historyTopics },
+  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },
   ths: { questions: thsQuestions, topics: thsTopics },
-  'health-management': { questions: healthManagementQuestions, topics: healthManagementTopics },
+  'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions], topics: healthManagementTopics },
   'design-tech': { questions: designTechQuestions, topics: designTechTopics },
   music: { questions: musicQuestions, topics: musicTopics },
   pe: { questions: peQuestions, topics: peTopics },
   'chinese-literature': { questions: chineseLiteratureQuestions, topics: chineseLiteratureTopics },
   'english-literature': { questions: englishLiteratureQuestions, topics: englishLiteratureTopics },
   'visual-arts': { questions: visualArtsQuestions, topics: visualArtsTopics },
-  csd: { questions: csdQuestions, topics: csdTopics },
+  csd: { questions: [...csdQuestions, ...csdReviewedQuestions], topics: csdTopics },
   'ethics-religious': { questions: ethicsReligiousQuestions, topics: ethicsReligiousTopics },
   'technology-living': { questions: technologyLivingQuestions, topics: technologyLivingTopics },
 }
@@ -181,17 +197,28 @@ export function getSubjectTopics(subjectId: string): Topic[] {
   const bank = banks[subjectId]
   if (!bank) return []
 
+  // ⚠️ 必須採用 getSubjectQuestions()（即 banks ＋ autoBanks），不可只取
+  // bank.questions。2026-08-28 之前此處僅統計 banks，機器入庫的一批
+  // （`*-auto.ts`）完全不計入課題題數 —— 實測 15 科共 101 個課題向學生少報，
+  // 例如物理 electricity 顯示 133 而實際有 213 條。
+  // 此數字屬【用戶可見】內容（科目頁課題卡、/paper-warrior），
+  // 顯示與題庫不符的數值，等同向學生提供錯誤資訊。
+  // 同時亦令覆蓋率報告（採用 getSubjectQuestions）與介面長期不一致，
+  // 補題時將依據一份錯誤的「最薄課題」清單進行。
   const counts = new Map<string, number>()
   const mcCounts = new Map<string, number>()
-  for (const q of bank.questions) {
+  const writtenCounts = new Map<string, number>()
+  for (const q of getSubjectQuestions(subjectId)) {
     counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
     if (q.type === 'mc') mcCounts.set(q.topic, (mcCounts.get(q.topic) ?? 0) + 1)
+    else writtenCounts.set(q.topic, (writtenCounts.get(q.topic) ?? 0) + 1)
   }
 
   const withRealCounts = bank.topics.map((t) => ({
     ...t,
     count: counts.get(t.id) ?? 0,
     mcCount: mcCounts.get(t.id) ?? 0,
+    writtenCount: writtenCounts.get(t.id) ?? 0,
   }))
   topicCache.set(subjectId, withRealCounts)
   return withRealCounts

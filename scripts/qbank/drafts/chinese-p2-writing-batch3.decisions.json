@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "source": "chinese-p2-writing-batch3.json",
+    "subject": "chinese",
+    "reviewer": "brian",
+    "reviewedAt": "2026-08-27",
+    "mode": "full",
+    "note": "逐題人手審批（合併審批台 ZH-P2-WRITE-B2B3，共 46 條）。審批台編號 27-46，全部批准，零駁回。"
+  },
+  "decisions": {
+    "zh_p2c_01": "approved",
+    "zh_p2c_02": "approved",
+    "zh_p2c_03": "approved",
+    "zh_p2c_04": "approved",
+    "zh_p2c_05": "approved",
+    "zh_p2c_06": "approved",
+    "zh_p2c_07": "approved",
+    "zh_p2c_08": "approved",
+    "zh_p2c_09": "approved",
+    "zh_p2c_10": "approved",
+    "zh_p2c_11": "approved",
+    "zh_p2c_12": "approved",
+    "zh_p2c_13": "approved",
+    "zh_p2c_14": "approved",
+    "zh_p2c_15": "approved",
+    "zh_p2c_16": "approved",
+    "zh_p2c_17": "approved",
+    "zh_p2c_18": "approved",
+    "zh_p2c_19": "approved",
+    "zh_p2c_20": "approved"
+  }
+}

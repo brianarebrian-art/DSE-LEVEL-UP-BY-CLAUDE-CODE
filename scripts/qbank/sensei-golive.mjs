@@ -42,7 +42,11 @@ if (RAW === null) {
 
 // 簽名閘：留白 或 虛擬 persona 冒簽 = 停機。
 const reviewer = assertReviewer(RAW)
-const reviewedAt = new Date().toISOString().slice(0, 10)
+// 簽名日期用【香港時間】，唔用 UTC。
+// 兩位創辦人喺香港，HKT 00:00–08:00 期間 toISOString() 仍然報前一日 ——
+// 簽名紀錄嘅日期同簽名嗰個人當日嘅日曆對唔上，係一個細但真實嘅失實。
+const hkDate = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Hong_Kong' }).format(new Date())
+const reviewedAt = hkDate()
 
 const subjects = readdirSync(SENSEI, { withFileTypes: true })
   .filter((e) => e.isDirectory())
@@ -107,8 +111,8 @@ ${imports}
 // ${subject} 科 SENSEI 知識卡片。
 //
 // 本檔由 scripts/qbank/sensei-golive.mjs 產生，但【刻意保留明文 import】——
-// 唔用 glob 自動掃 reviewed/，所以新增一個已批准檔案並【唔會】自動出現喺
-// 學生面前，仍然要有人再行一次上線指令。憲章 §12：機器永不自動入庫。
+// 並非以 glob 自動掃描 reviewed/ 目錄。因此新增一個已批准檔案並不會自動
+// 出現在學生面前，仍須有人再次執行上線指令。憲章 §12：機器永不自動入庫。
 export const ${subject}SenseiCards: KnowledgeCard[] = [
 ${merged}
 ]

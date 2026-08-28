@@ -2,19 +2,19 @@
   "_meta": {
     "source": "batch1-p2-register.json",
     "subject": "english",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "Yuna",
+    "reviewedAt": "2026-08-27"
   },
   "decisions": {
-    "en-reg-audience": "pending",
-    "en-reg-contractions": "pending",
-    "en-reg-phrasal": "pending",
-    "en-reg-hedging": "pending",
-    "en-reg-letter": "pending",
-    "en-reg-speech": "pending",
-    "en-reg-cohesion": "pending",
-    "en-reg-overgeneral": "pending",
-    "en-reg-variety": "pending",
-    "en-reg-mixed": "pending"
+    "en-reg-audience": "approved",
+    "en-reg-contractions": "approved",
+    "en-reg-phrasal": "approved",
+    "en-reg-hedging": "approved",
+    "en-reg-letter": "approved",
+    "en-reg-speech": "approved",
+    "en-reg-cohesion": "approved",
+    "en-reg-overgeneral": "approved",
+    "en-reg-variety": "approved",
+    "en-reg-mixed": "approved"
   }
 }

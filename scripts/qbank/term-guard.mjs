@@ -40,7 +40,13 @@ const ROOT = fileURLToPath(new URL('../../', import.meta.url))
 
 // (1) wrong terms — banned everywhere (HKEAA official terms on the right)
 const BANNED_GLOBAL = [
-  { re: /公共財/, fix: '共用品 (HKEAA term for Public Good)' },
+  // 2026-08-27：加負向斷言 `(?!政)`。原本 /公共財/ 會連「公共財政」（public
+  // finances）一齊捉 —— 嗰個係完全正確嘅中文，同 Public Good 冇關係。
+  // 影響統計（憲章 §6）：掃 89 個題庫檔，「公共財」命中 0 次，即係呢個誤報
+  // 從未喺 live 內容爆過；改動對現有題庫【零影響】，唔會令任何一條由過變唔過。
+  // 反方向亦驗過：_demo-math.json 嗰條故意寫「公共財」嘅示範題【仍然被攔住】，
+  // 即係閘冇因為呢次放寬而失去牙齒。
+  { re: /公共財(?!政)/, fix: '共用品 (HKEAA term for Public Good)' },
   { re: /企業家才能/, fix: '企業家職能 (Entrepreneurship as factor of production)' },
   // P1-4 (Oscar 2026-07-16)：常見錯字 —— 「機會成本」嘅手民之誤
   { re: /期會成本/, fix: '機會成本 (typo)' },
