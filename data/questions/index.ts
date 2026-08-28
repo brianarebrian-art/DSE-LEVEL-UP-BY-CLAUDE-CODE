@@ -191,10 +191,18 @@ export function getSubjectTopics(subjectId: string): Topic[] {
   const bank = banks[subjectId]
   if (!bank) return []
 
+  // ⚠️ 必須採用 getSubjectQuestions()（即 banks ＋ autoBanks），不可只取
+  // bank.questions。2026-08-28 之前此處僅統計 banks，機器入庫的一批
+  // （`*-auto.ts`）完全不計入課題題數 —— 實測 15 科共 101 個課題向學生少報，
+  // 例如物理 electricity 顯示 133 而實際有 213 條。
+  // 此數字屬【用戶可見】內容（科目頁課題卡、/paper-warrior），
+  // 顯示與題庫不符的數值，等同向學生提供錯誤資訊。
+  // 同時亦令覆蓋率報告（採用 getSubjectQuestions）與介面長期不一致，
+  // 補題時將依據一份錯誤的「最薄課題」清單進行。
   const counts = new Map<string, number>()
   const mcCounts = new Map<string, number>()
   const writtenCounts = new Map<string, number>()
-  for (const q of bank.questions) {
+  for (const q of getSubjectQuestions(subjectId)) {
     counts.set(q.topic, (counts.get(q.topic) ?? 0) + 1)
     if (q.type === 'mc') mcCounts.set(q.topic, (mcCounts.get(q.topic) ?? 0) + 1)
     else writtenCounts.set(q.topic, (writtenCounts.get(q.topic) ?? 0) + 1)

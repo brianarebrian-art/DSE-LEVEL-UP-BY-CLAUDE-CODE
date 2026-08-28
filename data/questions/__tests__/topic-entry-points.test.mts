@@ -28,6 +28,7 @@ import { readFileSync } from 'node:fs'
 const idx = await import('../index.ts').then((m) => ((m as { default?: unknown }).default ?? m) as {
   getSubjectTopics: (s: string) => { id: string; zh: string; count: number; mcCount?: number; writtenCount?: number }[]
   getWrittenQuestions: (s: string) => { topic: string }[]
+  getSubjectQuestions: (s: string) => { topic: string }[]
   getQuestionsByTopic: (s: string, t: string) => unknown[]
 })
 
@@ -121,4 +122,23 @@ test('科目頁嘅課題過濾要同時睇 mcCount 同 writtenCount', () => {
     '課題 chip 嘅連結唔會再帶 &mode=long —— 書寫題課題嘅 chip 會指返去 MC 卷（空白）。'
     + `\n  實際 href 尾段：${chipHref[1]}`,
   )
+})
+
+test('課題題數必須包含機器入庫嗰批（autoBanks）', () => {
+  // 2026-08-28 之前 getSubjectTopics() 只數 `banks`，唔數 `autoBanks`，
+  // 於是 15 科共 101 個課題向學生少報題數（物理 electricity 顯示 133、實際 213）。
+  // 呢個數字係用戶可見內容，顯示一個同題庫唔符嘅數等於向學生講錯嘢；
+  // 同時亦令覆蓋率報告（用 getSubjectQuestions）同介面永遠對唔上，
+  // 補題時會照住一張錯嘅「最薄課題」清單做 —— 實際發生過：
+  // 中文科介面顯示缺 27 條，真實缺口係 23 條。
+  const bad: string[] = []
+  for (const s of SUBJECT_IDS) {
+    const real = new Map<string, number>()
+    for (const q of idx.getSubjectQuestions(s)) real.set(q.topic, (real.get(q.topic) ?? 0) + 1)
+    for (const t of idx.getSubjectTopics(s)) {
+      const r = real.get(t.id) ?? 0
+      if (r !== t.count) bad.push(`${s}/${t.id}：顯示 ${t.count} · 實際 ${r}`)
+    }
+  }
+  assert.deepEqual(bad, [], `課題題數同真實題庫對唔上：\n  ${bad.slice(0, 12).join('\n  ')}`)
 })
