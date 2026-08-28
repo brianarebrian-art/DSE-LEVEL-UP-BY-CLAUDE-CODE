@@ -25,6 +25,12 @@ const T = {
   radioactivity: { id: 'radioactivity', zh: '放射現象', en: 'Radioactivity' },
   waves: { id: 'waves', zh: '波動', en: 'Waves' },
   mechanics: { id: 'mechanics', zh: '力學', en: 'Mechanics' },
+  // 三個「多步計算」課題各僅 3 條 —— 全科最薄。多步題正好適合參數化：
+  // 把兩條公式串連，中間值與最終值都由公式算出，干擾項模擬「只做了第一步」
+  // 或「第二步用錯公式」這類具名錯誤。
+  hellMech: { id: 'phys_hell_mechanics', zh: '多步計算・力學', en: 'Multi-step — mechanics' },
+  hellElec: { id: 'phys_hell_elec_heat', zh: '多步計算・電與熱', en: 'Multi-step — electricity & heat' },
+  hellWave: { id: 'phys_hell_wave_optics', zh: '多步計算・波動光學放射', en: 'Multi-step — waves, optics & radioactivity' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -439,6 +445,107 @@ for (const m1 of [2, 4, 6]) {
         [n(`$${vf}$ m/s`), n(`$${u1}$ m/s`), n(`$${round(u1 * m2 / (m1 + m2), 2)}$ m/s`), n(`$${round(u1 / 2, 2)}$ m/s`)],
         [`動量守恆：碰撞前總動量 $= ${m1} \\times ${u1} + ${m2} \\times 0 = ${m1 * u1}$ kg·m/s。碰撞後兩者合為一體，總質量 $= ${m1} + ${m2} = ${m1 + m2}$ kg，故共同速度 $= ${m1 * u1} \\div ${m1 + m2} = ${vf}$ m/s。陷阱：$${u1}$ m/s 以為速度不變；$${round(u1 * m2 / (m1 + m2), 2)}$ m/s 用錯了質量；$${round(u1 / 2, 2)}$ m/s 直接取一半，只在兩物質量相等時才成立。留意此類碰撞動量守恆而動能不守恆，部分動能轉為熱與聲。`,
          `Momentum is conserved: before the collision the total is $${m1} \\times ${u1} + ${m2} \\times 0 = ${m1 * u1}$ kg·m/s. Afterwards the combined mass is $${m1} + ${m2} = ${m1 + m2}$ kg, so the common velocity is $${m1 * u1} \\div ${m1 + m2} = ${vf}$ m/s. Traps: $${u1}$ m/s assumes the speed is unchanged; $${round(u1 * m2 / (m1 + m2), 2)}$ m/s uses the wrong mass; $${round(u1 / 2, 2)}$ m/s simply halves, which holds only when the masses are equal. Note that momentum is conserved in such a collision but kinetic energy is not, some of it becoming heat and sound.`])
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 多步計算三個課題（2026-08-28）—— 每題串連兩條公式
+// ═══════════════════════════════════════════════════════════════════════════
+
+// HM1 — 自由下落：先由高度求落地速率 v = √(2gh)，再求動能 ½mv²
+for (const h of [5, 20, 45, 80, 125, 180]) {
+  for (const mm of [2, 4, 5, 10]) {
+    const v = Math.sqrt(2 * G * h), ke = 0.5 * mm * v * v
+    if (!Number.isInteger(v)) continue
+    add(`pb_hm1_${h}_${mm}`, T.hellMech, FW.conserve, 'hard',
+      [`一個質量 $${mm}$ kg 的物體由 $${h}$ m 高處自由下落（$g = ${G}$ m/s²，忽略空氣阻力）。求它到達地面時的動能。`,
+       `An object of mass $${mm}$ kg falls freely from a height of $${h}$ m ($g = ${G}$ m/s², air resistance negligible). Find its kinetic energy on reaching the ground.`],
+      // 注意：mgh 不可用作干擾項 —— 由能量守恆 ½m(2gh) ≡ mgh，它恆等於正解，
+      // add() 會因四項不相異而丟棄整組（實測 24 組全滅）。改用其他具名錯誤。
+      [n(`$${ke}$ J`), n(`$${mm * v}$ J`), n(`$${v}$ J`), n(`$${2 * ke}$ J`)],
+      [`第一步求落地速率：$v = \\sqrt{2gh} = \\sqrt{2 \\times ${G} \\times ${h}} = ${v}$ m/s。第二步求動能：$E_k = \\frac{1}{2}mv^2 = \\frac{1}{2} \\times ${mm} \\times ${v}^2 = ${ke}$ J。核對：由能量守恆，落地動能應等於初始重力位能 $mgh = ${mm} \\times ${G} \\times ${h} = ${mm * G * h}$ J —— 兩條路徑一致（${ke === mm * G * h ? '本題兩者相等' : '若不一致代表某步出錯'}）。陷阱：$${mm * v}$ J 求了動量 $mv$ 而非動能；$${v}$ J 停在速率；$${2 * ke}$ J 漏了公式中的 $\\frac{1}{2}$。`,
+       `Step one gives the landing speed: $v = \\sqrt{2gh} = \\sqrt{2 \\times ${G} \\times ${h}} = ${v}$ m/s. Step two gives the kinetic energy: $E_k = \\frac{1}{2}mv^2 = \\frac{1}{2} \\times ${mm} \\times ${v}^2 = ${ke}$ J. Check by conservation of energy: the kinetic energy on landing should equal the initial gravitational potential energy $mgh = ${mm} \\times ${G} \\times ${h} = ${mm * G * h}$ J, and the two routes agree. Traps: $${mm * v}$ J computes the momentum $mv$ rather than the kinetic energy; $${v}$ J stops at the speed; $${2 * ke}$ J omits the factor of $\\frac{1}{2}$.`])
+  }
+}
+
+// HM2 — 先由 F = ma 求加速度，再由 v = u + at 求末速
+for (const F of [20, 30, 40, 60, 80]) {
+  for (const mm of [2, 4, 5, 10]) {
+    for (const tt of [3, 5]) {
+      const a = F / mm, v = a * tt
+      if (!Number.isInteger(a)) continue
+      add(`pb_hm2_${F}_${mm}_${tt}`, T.hellMech, FW.conserve, 'hard',
+        [`一個靜止的 $${mm}$ kg 物體受一個 $${F}$ N 的合力作用 $${tt}$ 秒。求 $${tt}$ 秒後的速率。`,
+         `A stationary $${mm}$ kg object is acted on by a net force of $${F}$ N for $${tt}$ s. Find its speed after $${tt}$ s.`],
+        [n(`$${v}$ m/s`), n(`$${a}$ m/s`), n(`$${F * tt}$ m/s`), n(`$${round(F * tt / mm / 2, 2)}$ m/s`)],
+        [`第一步由牛頓第二定律求加速度：$a = \\dfrac{F}{m} = \\dfrac{${F}}{${mm}} = ${a}$ m/s²。第二步由 $v = u + at$（初速 $u = 0$）：$v = 0 + ${a} \\times ${tt} = ${v}$ m/s。陷阱：$${a}$ m/s 停在加速度（而且單位錯，加速度是 m/s²）；$${F * tt}$ m/s 是衝量 $Ft$ 的數值，未除以質量；$${round(F * tt / mm / 2, 2)}$ m/s 多除了 2。`,
+         `Step one uses Newton's second law for the acceleration: $a = \\frac{F}{m} = \\frac{${F}}{${mm}} = ${a}$ m/s². Step two uses $v = u + at$ with $u = 0$: $v = 0 + ${a} \\times ${tt} = ${v}$ m/s. Traps: $${a}$ m/s stops at the acceleration and has the wrong unit, since acceleration is in m/s²; $${F * tt}$ m/s is the impulse $Ft$ without dividing by mass; $${round(F * tt / mm / 2, 2)}$ m/s halves it unnecessarily.`])
+    }
+  }
+}
+
+// HE1 — 先由 V = IR 求電流，再由 P = VI 求功率
+for (const V of [12, 24, 36, 48, 60]) {
+  for (const R of [2, 3, 4, 6, 12]) {
+    const I = V / R, P = V * I
+    if (!Number.isInteger(I)) continue
+    add(`pb_he1_${V}_${R}`, T.hellElec, FW.circuit, 'hard',
+      [`一個 $${R}\\ \\Omega$ 的電阻接上 $${V}$ V 電源。求該電阻所消耗的功率。`,
+       `A $${R}\\ \\Omega$ resistor is connected to a $${V}$ V supply. Find the power dissipated in it.`],
+      [n(`$${P}$ W`), n(`$${I}$ W`), n(`$${V * R}$ W`), n(`$${round(V / (R * R), 3)}$ W`)],
+      [`第一步由歐姆定律求電流：$I = \\dfrac{V}{R} = \\dfrac{${V}}{${R}} = ${I}$ A。第二步求功率：$P = VI = ${V} \\times ${I} = ${P}$ W。亦可一步到位用 $P = \\dfrac{V^2}{R} = \\dfrac{${V * V}}{${R}} = ${P}$ W —— 兩條路徑必須一致，這是最有效的自我檢查。陷阱：$${I}$ W 停在電流；$${V * R}$ W 把定律中的除法寫成乘法。`,
+       `Step one uses Ohm's law for the current: $I = \\frac{V}{R} = \\frac{${V}}{${R}} = ${I}$ A. Step two gives the power: $P = VI = ${V} \\times ${I} = ${P}$ W. The one-step route $P = \\frac{V^2}{R} = \\frac{${V * V}}{${R}} = ${P}$ W must agree, which is the most effective self-check. Traps: $${I}$ W stops at the current; $${V * R}$ W multiplies where Ohm's law divides.`])
+  }
+}
+
+// HE2 — 先由 E = Pt 求電能，再由 E = mcΔT 求溫升
+// 功率與時間刻意選成令 Pt 可被 m × 4200 整除（4200 = 2³·3·5²·7）——
+// 原先的 500/1000/1200/2000 W 配 60/120/300 s 沒有一個組合得出整數溫升，
+// 結果整組被 add() 丟棄。參數化題庫要先確認參數空間真係產得出題。
+for (const P of [700, 1400, 2100]) {
+  for (const tt of [30, 60, 120]) {
+    for (const mm of [1, 2, 4]) {
+      const E = P * tt, dT = E / (mm * 4200)
+      if (!Number.isInteger(dT)) continue
+      add(`pb_he2_${P}_${tt}_${mm}`, T.hellElec, FW.circuit, 'hard',
+        [`一個 $${P}$ W 的電熱水器加熱 $${mm}$ kg 水共 $${tt}$ 秒。假設所有電能轉為水的內能（水的比熱容 $= 4200$ J kg⁻¹ °C⁻¹），求水的溫度上升多少？`,
+         `A $${P}$ W heater warms $${mm}$ kg of water for $${tt}$ s. Assuming all the electrical energy goes into the water (specific heat capacity $= 4200$ J kg⁻¹ °C⁻¹), find the temperature rise.`],
+        [n(`$${dT}$ °C`), n(`$${E}$ °C`), n(`$${round(E / 4200, 2)}$ °C`), n(`$${round(P / (mm * 4200), 4)}$ °C`)],
+        [`第一步求電能：$E = Pt = ${P} \\times ${tt} = ${E}$ J。第二步由 $E = mc\\Delta T$ 求溫升：$\\Delta T = \\dfrac{E}{mc} = \\dfrac{${E}}{${mm} \\times 4200} = ${dT}$ °C。陷阱：$${E}$ °C 停在能量（單位亦錯）；$${round(E / 4200, 2)}$ °C 漏了除以質量；$${round(P / (mm * 4200), 4)}$ °C 漏了乘以時間。留意題目假設「所有電能轉為水的內能」——現實中必有熱量散失，實際溫升會較低，答論述題時值得指出這個假設。`,
+         `Step one gives the energy: $E = Pt = ${P} \\times ${tt} = ${E}$ J. Step two uses $E = mc\\Delta T$: $\\Delta T = \\frac{E}{mc} = \\frac{${E}}{${mm} \\times 4200} = ${dT}$ °C. Traps: $${E}$ °C stops at the energy and has the wrong unit; $${round(E / 4200, 2)}$ °C omits the mass; $${round(P / (mm * 4200), 4)}$ °C omits the time. Note the stated assumption that all the electrical energy reaches the water — in reality some is lost and the real rise is smaller, a point worth making in an extended answer.`])
+    }
+  }
+}
+
+// HW1 — 先由 v = fλ 求波速，再由 t = d/v 求傳播時間
+for (const f of [4, 5, 10, 20]) {
+  for (const lam of [3, 6, 15]) {
+    for (const d of [120, 300, 600]) {
+      const v = f * lam, tt = d / v
+      if (!Number.isInteger(tt)) continue
+      add(`pb_hw1_${f}_${lam}_${d}`, T.hellWave, FW.wave, 'hard',
+        [`一列波的頻率為 $${f}$ Hz、波長為 $${lam}$ m。求該波傳播 $${d}$ m 所需的時間。`,
+         `A wave has frequency $${f}$ Hz and wavelength $${lam}$ m. How long does it take to travel $${d}$ m?`],
+        [n(`$${tt}$ s`), n(`$${v}$ s`), n(`$${round(d / f, 2)}$ s`), n(`$${round(d / lam, 2)}$ s`)],
+        [`第一步求波速：$v = f\\lambda = ${f} \\times ${lam} = ${v}$ m/s。第二步求時間：$t = \\dfrac{d}{v} = \\dfrac{${d}}{${v}} = ${tt}$ s。陷阱：$${v}$ s 停在波速（單位亦錯）；$${round(d / f, 2)}$ s 用頻率作分母；$${round(d / lam, 2)}$ s 用波長作分母 —— 後兩者都跳過了求波速這一步。`,
+         `Step one gives the wave speed: $v = f\\lambda = ${f} \\times ${lam} = ${v}$ m/s. Step two gives the time: $t = \\frac{d}{v} = \\frac{${d}}{${v}} = ${tt}$ s. Traps: $${v}$ s stops at the speed and has the wrong unit; $${round(d / f, 2)}$ s divides by the frequency; $${round(d / lam, 2)}$ s divides by the wavelength — both skip the step of finding the speed.`])
+    }
+  }
+}
+
+// HW2 — 先數半衰期數目，再求剩餘活度
+for (const T12 of [3, 5, 8, 10]) {
+  for (let k = 2; k <= 5; k++) {
+    for (const A0 of [640, 1280, 3200]) {
+      const left = A0 / 2 ** k
+      if (!Number.isInteger(left)) continue
+      add(`pb_hw2_${T12}_${k}_${A0}`, T.hellWave, FW.decay, 'hard',
+        [`某放射源的半衰期為 $${T12}$ 天，初始活度為 $${A0}$ Bq。經過 $${T12 * k}$ 天之後，其活度是多少？`,
+         `A source has a half-life of $${T12}$ days and an initial activity of $${A0}$ Bq. What is its activity after $${T12 * k}$ days?`],
+        [n(`$${left}$ Bq`), n(`$${round(A0 / (2 * k), 1)}$ Bq`), n(`$${A0 - left}$ Bq`), n(`$${round(A0 / k, 1)}$ Bq`)],
+        [`第一步數半衰期數目：$${T12 * k} \\div ${T12} = ${k}$ 個。第二步求剩餘活度：每個半衰期活度減半，故 $${A0} \\div 2^{${k}} = ${left}$ Bq。陷阱：$${round(A0 / (2 * k), 1)}$ Bq 把「減半 ${k} 次」誤算成除以 $2 \\times ${k}$ —— 減半是連乘而非連加；$${A0 - left}$ Bq 是已衰變的部分；$${round(A0 / k, 1)}$ Bq 只除以半衰期數目。`,
+         `Step one counts the half-lives: $${T12 * k} \\div ${T12} = ${k}$. Step two applies them: the activity halves each time, so $${A0} \\div 2^{${k}} = ${left}$ Bq. Traps: $${round(A0 / (2 * k), 1)}$ Bq treats ${k} halvings as dividing by $2 \\times ${k}$, but halving compounds rather than adds; $${A0 - left}$ Bq is the portion that has decayed; $${round(A0 / k, 1)}$ Bq divides only by the number of half-lives.`])
     }
   }
 }
