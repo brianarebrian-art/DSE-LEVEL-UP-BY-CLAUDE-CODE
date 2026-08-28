@@ -37,12 +37,22 @@ const T = {
   coord: { id: 'coordinate_geometry', zh: '坐標幾何', en: 'Coordinate Geometry' },
   logs: { id: 'logarithms', zh: '對數', en: 'Logarithms' },
   polynomial: { id: 'polynomials', zh: '餘式與因式定理', en: 'Remainder & Factor Theorem' },
+  // ── 2026-08-28 平均分佈補強（Yuna 目標：每科 1,000 MC 且各課題均勻）──────
+  // 實測數學 25 個課題之中，19 個低於平均值 40 條（總缺 436），而
+  // quadratic_equations 一個課題已有 283 條。依指示：已達標者不予改動，先補題數最少者，
+  // 下列五個最薄課題（各僅 10–11 條）各加母模板。全部 correct-by-construction。
+  polygons: { id: 'polygons', zh: '多邊形與角', en: 'Polygons & Angles' },
+  similarSolids: { id: 'similar_solids', zh: '相似形與相似立體', en: 'Similar Figures & Solids' },
+  variation: { id: 'variation', zh: '變分', en: 'Variation' },
+  approximation: { id: 'approximation', zh: '近似與誤差', en: 'Approximation & Error' },
+  numberSystems: { id: 'number_systems', zh: '數系', en: 'Number Systems' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
   compute: { id: 'foundation_computation', zh: '基礎運算', en: 'Foundation Computation', emoji: '🧮' },
   algebra: { id: 'algebraic_thinking', zh: '代數思維', en: 'Algebraic Thinking', emoji: '🔢' },
   geometry: { id: 'geometric_intuition', zh: '幾何直覺', en: 'Geometric Intuition', emoji: '📐' },
+  modelling: { id: 'modelling', zh: '建模能力', en: 'Modelling', emoji: '🏗️' },
 } satisfies Record<string, FwMeta>
 
 const bank: Question[] = []
@@ -315,6 +325,120 @@ for (let a = 2; a <= 9; a++) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 平均分佈補強 —— 五個最薄課題（2026-08-28）
+// 每組母模板的正解與三個干擾項全部由公式計出，干擾項各自模擬一個具名錯誤。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// P1 — 多邊形內角和：(n − 2) × 180
+for (let nn = 3; nn <= 20; nn++) {
+  const sum = (nn - 2) * 180
+  add(`mb_p1_${nn}`, T.polygons, FW.geometry, 'easy',
+    [`一個 ${nn} 邊形的內角和是多少度？`, `What is the sum of the interior angles of a ${nn}-sided polygon?`],
+    [n(`$${sum}^\\circ$`), n(`$${nn * 180}^\\circ$`), n(`$${(nn - 1) * 180}^\\circ$`), n(`$${360}^\\circ$`)],
+    [`內角和公式為 $(n-2) \\times 180^\\circ$。代入 $n = ${nn}$：$(${nn}-2) \\times 180 = ${sum}^\\circ$。陷阱：$${nn * 180}^\\circ$ 漏減 2；$${(nn - 1) * 180}^\\circ$ 只減 1；$360^\\circ$ 是外角和，與邊數無關。`,
+     `The interior angle sum is $(n-2) \\times 180^\\circ$. With $n = ${nn}$: $(${nn}-2) \\times 180 = ${sum}^\\circ$. Traps: $${nn * 180}^\\circ$ omits the $-2$; $${(nn - 1) * 180}^\\circ$ subtracts only 1; $360^\\circ$ is the exterior angle sum, independent of the number of sides.`])
+}
+
+// P2 — 正多邊形每隻內角與外角（只取可整除的 n，避免小數）
+for (const nn of [3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24]) {
+  const ext = 360 / nn, int = 180 - ext
+  add(`mb_p2a_${nn}`, T.polygons, FW.geometry, 'easy',
+    [`一個正 ${nn} 邊形的每隻外角是多少度？`, `What is each exterior angle of a regular ${nn}-sided polygon?`],
+    [n(`$${ext}^\\circ$`), n(`$${int}^\\circ$`), n(`$${(nn - 2) * 180 / nn === int ? 360 - ext : 360 - ext}^\\circ$`), n(`$${180 / nn}^\\circ$`)],
+    [`正多邊形各外角相等，外角和恆為 $360^\\circ$，故每隻外角 $= 360 \\div ${nn} = ${ext}^\\circ$。陷阱：$${int}^\\circ$ 是每隻內角；$${180 / nn}^\\circ$ 誤用 $180$ 作分子。`,
+     `A regular polygon has equal exterior angles summing to $360^\\circ$, so each is $360 \\div ${nn} = ${ext}^\\circ$. Traps: $${int}^\\circ$ is each interior angle; $${180 / nn}^\\circ$ divides $180$ instead.`])
+  add(`mb_p2b_${nn}`, T.polygons, FW.geometry, 'medium',
+    [`一個正 ${nn} 邊形的每隻內角是多少度？`, `What is each interior angle of a regular ${nn}-sided polygon?`],
+    [n(`$${int}^\\circ$`), n(`$${ext}^\\circ$`), n(`$${(nn - 2) * 180}^\\circ$`), n(`$${180 - 360 / (nn + 1)}^\\circ$`)],
+    [`每隻內角 $= 180^\\circ -$ 每隻外角 $= 180 - ${ext} = ${int}^\\circ$；亦可用 $(n-2)\\times 180 \\div n = ${(nn - 2) * 180} \\div ${nn} = ${int}^\\circ$，兩條路徑必須一致。陷阱：$${ext}^\\circ$ 是外角；$${(nn - 2) * 180}^\\circ$ 是內角總和而非每隻。`,
+     `Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - ${ext} = ${int}^\\circ$; equivalently $(n-2)\\times 180 \\div n = ${(nn - 2) * 180} \\div ${nn} = ${int}^\\circ$, and the two routes must agree. Traps: $${ext}^\\circ$ is the exterior angle; $${(nn - 2) * 180}^\\circ$ is the total, not one angle.`])
+}
+
+// S1 — 相似立體：長度比 a : b ⇒ 面積比 a² : b²、體積比 a³ : b³
+for (const [a, b] of [[1, 2], [1, 3], [1, 4], [2, 3], [2, 5], [3, 4], [3, 5], [4, 5], [2, 7], [3, 7], [4, 7], [5, 6]] as [number, number][]) {
+  add(`mb_s1a_${a}_${b}`, T.similarSolids, FW.geometry, 'easy',
+    [`兩個相似立體的長度比為 $${a} : ${b}$。其表面積比是多少？`, `Two similar solids have lengths in the ratio $${a} : ${b}$. What is the ratio of their surface areas?`],
+    [n(`$${a * a} : ${b * b}$`), n(`$${a} : ${b}$`), n(`$${a * a * a} : ${b * b * b}$`), n(`$${a * 2} : ${b * 2}$`)],
+    [`相似立體的面積比等於長度比的平方：$${a}^2 : ${b}^2 = ${a * a} : ${b * b}$。陷阱：$${a} : ${b}$ 直接用長度比；$${a * a * a} : ${b * b * b}$ 用了立方（那是體積比）；$${a * 2} : ${b * 2}$ 誤把「平方」當成乘 2。`,
+     `Areas of similar solids are in the square of the length ratio: $${a}^2 : ${b}^2 = ${a * a} : ${b * b}$. Traps: $${a} : ${b}$ uses the length ratio itself; $${a * a * a} : ${b * b * b}$ cubes it (that is the volume ratio); $${a * 2} : ${b * 2}$ doubles instead of squaring.`])
+  add(`mb_s1b_${a}_${b}`, T.similarSolids, FW.geometry, 'medium',
+    [`兩個相似立體的長度比為 $${a} : ${b}$。其體積比是多少？`, `Two similar solids have lengths in the ratio $${a} : ${b}$. What is the ratio of their volumes?`],
+    [n(`$${a * a * a} : ${b * b * b}$`), n(`$${a * a} : ${b * b}$`), n(`$${a} : ${b}$`), n(`$${a * 3} : ${b * 3}$`)],
+    [`相似立體的體積比等於長度比的立方：$${a}^3 : ${b}^3 = ${a * a * a} : ${b * b * b}$。陷阱：$${a * a} : ${b * b}$ 是面積比；$${a} : ${b}$ 是長度比本身；$${a * 3} : ${b * 3}$ 誤把「立方」當成乘 3。`,
+     `Volumes of similar solids are in the cube of the length ratio: $${a}^3 : ${b}^3 = ${a * a * a} : ${b * b * b}$. Traps: $${a * a} : ${b * b}$ is the area ratio; $${a} : ${b}$ is the length ratio; $${a * 3} : ${b * 3}$ trebles instead of cubing.`])
+}
+
+// V1 — 正比變分：y = kx
+for (let k = 2; k <= 6; k++) {
+  for (let b = 2; b <= 4; b++) {
+    for (const c of [b + 2, b + 4]) {
+      const yOld = k * b, yNew = k * c
+      add(`mb_v1_${k}_${b}_${c}`, T.variation, FW.modelling, 'easy',
+        [`已知 $y$ 與 $x$ 成正比。當 $x = ${b}$ 時 $y = ${yOld}$。求當 $x = ${c}$ 時 $y$ 的值。`,
+         `$y$ varies directly as $x$. When $x = ${b}$, $y = ${yOld}$. Find $y$ when $x = ${c}$.`],
+        [n(`$${yNew}$`), n(`$${yOld + (c - b)}$`), n(`$${yOld * c}$`), n(`$${Math.round(yOld * b / c * 100) / 100}$`)],
+        [`正比即 $y = kx$。由 $x = ${b}$、$y = ${yOld}$ 得 $k = ${yOld} \\div ${b} = ${k}$。故 $x = ${c}$ 時 $y = ${k} \\times ${c} = ${yNew}$。陷阱：$${yOld + (c - b)}$ 誤當成加法關係；$${yOld * c}$ 漏了先求 $k$；$${Math.round(yOld * b / c * 100) / 100}$ 用了反比。`,
+         `Direct variation means $y = kx$. From $x = ${b}$, $y = ${yOld}$ we get $k = ${yOld} \\div ${b} = ${k}$, so at $x = ${c}$, $y = ${k} \\times ${c} = ${yNew}$. Traps: $${yOld + (c - b)}$ treats the relation as additive; $${yOld * c}$ skips finding $k$; $${Math.round(yOld * b / c * 100) / 100}$ uses inverse variation.`])
+    }
+  }
+}
+
+// V2 — 反比變分：xy = k（只取整除組合）
+for (const k of [24, 36, 48, 60]) {
+  for (const b of [2, 3, 4]) {
+    for (const c of [6, 8, 12]) {
+      if (b === c || k % b || k % c) continue
+      const yOld = k / b, yNew = k / c
+      add(`mb_v2_${k}_${b}_${c}`, T.variation, FW.modelling, 'medium',
+        [`已知 $y$ 與 $x$ 成反比。當 $x = ${b}$ 時 $y = ${yOld}$。求當 $x = ${c}$ 時 $y$ 的值。`,
+         `$y$ varies inversely as $x$. When $x = ${b}$, $y = ${yOld}$. Find $y$ when $x = ${c}$.`],
+        [n(`$${yNew}$`), n(`$${Math.round(yOld * c / b * 100) / 100}$`), n(`$${yOld - (c - b)}$`), n(`$${k}$`)],
+        [`反比即 $xy = k$（乘積不變）。由 $x = ${b}$、$y = ${yOld}$ 得 $k = ${b} \\times ${yOld} = ${k}$。故 $x = ${c}$ 時 $y = ${k} \\div ${c} = ${yNew}$。陷阱：$${Math.round(yOld * c / b * 100) / 100}$ 用了正比；$${yOld - (c - b)}$ 誤當成減法關係；$${k}$ 停在常數 $k$ 未除。`,
+         `Inverse variation means $xy = k$, a constant product. From $x = ${b}$, $y = ${yOld}$ we get $k = ${b} \\times ${yOld} = ${k}$, so at $x = ${c}$, $y = ${k} \\div ${c} = ${yNew}$. Traps: $${Math.round(yOld * c / b * 100) / 100}$ uses direct variation; $${yOld - (c - b)}$ treats it as subtraction; $${k}$ stops at the constant.`])
+    }
+  }
+}
+
+// A1 — 近似：準確至最接近 d，求上限 / 最大絕對誤差
+for (const L of [20, 25, 30, 40, 45, 50, 60, 75]) {
+  for (const d of [1, 2, 10]) {
+    const half = d / 2
+    add(`mb_a1_${L}_${d}`, T.approximation, FW.compute, 'easy',
+      [`某長度量得 $${L}$ cm，準確至最接近 $${d}$ cm。該長度的上限是多少？`,
+       `A length is measured as $${L}$ cm, correct to the nearest $${d}$ cm. What is its upper limit?`],
+      [n(`$${L + half}$ cm`), n(`$${L + d}$ cm`), n(`$${L - half}$ cm`), n(`$${L}$ cm`)],
+      [`準確至最接近 $${d}$ cm，表示真值與量得值相差不超過半個單位，即 $${d} \\div 2 = ${half}$ cm。上限 $= ${L} + ${half} = ${L + half}$ cm。陷阱：$${L + d}$ cm 加了整個單位；$${L - half}$ cm 是下限；$${L}$ cm 是量得值本身。`,
+       `Correct to the nearest $${d}$ cm means the true value differs by at most half a unit, that is $${d} \\div 2 = ${half}$ cm. The upper limit is $${L} + ${half} = ${L + half}$ cm. Traps: $${L + d}$ cm adds a whole unit; $${L - half}$ cm is the lower limit; $${L}$ cm is the measurement itself.`])
+  }
+}
+
+// A2 — 百分誤差 = |量得 − 真值| ÷ 真值 × 100%
+for (const A of [50, 80, 100, 200, 250]) {
+  for (const e of [2, 4, 5, 10]) {
+    const M = A * (1 + e / 100)
+    if (!Number.isInteger(M)) continue
+    add(`mb_a2_${A}_${e}`, T.approximation, FW.compute, 'medium',
+      [`某物件的真實質量為 $${A}$ g，量得 $${M}$ g。其百分誤差是多少？`,
+       `An object's true mass is $${A}$ g but it is measured as $${M}$ g. What is the percentage error?`],
+      [n(`$${e}\\%$`), n(`$${Math.round((M - A) / M * 10000) / 100}\\%$`), n(`$${M - A}\\%$`), n(`$${Math.round(M / A * 100)}\\%$`)],
+      [`百分誤差 $=$ 絕對誤差 $\\div$ 真值 $\\times 100\\%$。絕對誤差 $= ${M} - ${A} = ${M - A}$ g，故百分誤差 $= ${M - A} \\div ${A} \\times 100\\% = ${e}\\%$。陷阱：$${Math.round((M - A) / M * 10000) / 100}\\%$ 誤用量得值作分母；$${M - A}\\%$ 把絕對誤差直接當成百分率；$${Math.round(M / A * 100)}\\%$ 是量得值佔真值的比例。`,
+       `Percentage error is absolute error ÷ true value × 100%. The absolute error is $${M} - ${A} = ${M - A}$ g, so the percentage error is $${M - A} \\div ${A} \\times 100\\% = ${e}\\%$. Traps: $${Math.round((M - A) / M * 10000) / 100}\\%$ divides by the measurement; $${M - A}\\%$ reads the absolute error as a percentage; $${Math.round(M / A * 100)}\\%$ is the measurement as a proportion of the true value.`])
+  }
+}
+
+// N1 — 數系：化簡二次根式 √(a²b) = a√b
+for (let a = 2; a <= 6; a++) {
+  for (const b of [2, 3, 5, 6, 7, 10]) {
+    const inside = a * a * b
+    add(`mb_n1_${a}_${b}`, T.numberSystems, FW.compute, 'easy',
+      [`化簡 $\\sqrt{${inside}}$。`, `Simplify $\\sqrt{${inside}}$.`],
+      [n(`$${a}\\sqrt{${b}}$`), n(`$${a * a}\\sqrt{${b}}$`), n(`$${a}\\sqrt{${a * b}}$`), n(`$${b}\\sqrt{${a}}$`)],
+      [`把根號內的數分解出完全平方因子：$${inside} = ${a * a} \\times ${b}$，而 $\\sqrt{${a * a}} = ${a}$，故 $\\sqrt{${inside}} = ${a}\\sqrt{${b}}$。陷阱：$${a * a}\\sqrt{${b}}$ 把 $${a * a}$ 整個搬出根號而未開方；$${a}\\sqrt{${a * b}}$ 只抽走一個 $${a}$；$${b}\\sqrt{${a}}$ 把兩個因子的角色調轉。`,
+       `Extract the perfect-square factor: $${inside} = ${a * a} \\times ${b}$ and $\\sqrt{${a * a}} = ${a}$, so $\\sqrt{${inside}} = ${a}\\sqrt{${b}}$. Traps: $${a * a}\\sqrt{${b}}$ moves $${a * a}$ out without taking its root; $${a}\\sqrt{${a * b}}$ extracts only one factor of $${a}$; $${b}\\sqrt{${a}}$ swaps the two factors.`])
+  }
+}
+
 export const mathBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
@@ -331,4 +455,8 @@ export const mathBankTopics: Topic[] = topicList([
   { topic: T.arithSeq, fw: FW.algebra, count: 0 },
   { topic: T.geoSeq, fw: FW.algebra, count: 0 },
   { topic: T.polynomial, fw: FW.algebra, count: 0 },
+  // 註：polygons / similar_solids / variation / approximation / number_systems
+  // 五者【不在此登記】—— 它們已於 math.ts 的 mathTopics 登記，此處重複登記會
+  // 令科目頁出現兩個相同入口（已由 topic-registration.test.mts 攔截）。
+  // 母模板只負責產生題目，課題註冊沿用既有一處。
 ])
