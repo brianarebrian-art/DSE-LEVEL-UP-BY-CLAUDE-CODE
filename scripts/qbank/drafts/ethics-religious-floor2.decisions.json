@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "source": "ethics-religious-floor2.json",
+    "subject": "ethics-religious",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor3_eth_ta_01": "pending",
+    "floor3_eth_ta_02": "pending",
+    "floor3_eth_ta_03": "pending",
+    "floor3_eth_ta_04": "pending",
+    "floor3_eth_ta_05": "pending",
+    "floor3_eth_mr_01": "pending",
+    "floor3_eth_mr_02": "pending",
+    "floor3_eth_mr_03": "pending",
+    "floor3_eth_mr_04": "pending"
+  }
+}

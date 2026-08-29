@@ -1,0 +1,245 @@
+[
+ {
+  "id": "floor3_eth_ta_01",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "basic",
+  "question": "效益主義判斷一個行為是否道德，主要依據甚麼？",
+  "questionEn": "On what does utilitarianism principally judge whether an act is moral?",
+  "options": [
+   "該行為所帶來的整體後果，即為所有受影響者帶來的快樂與痛苦之總和",
+   "該行為是否符合一條可以毫無矛盾地普遍化的道德規則",
+   "該行為是否出於一個具備良好品格的人在該處境下會有的動機",
+   "該行為是否遵從所屬社群長期承襲下來的傳統與習俗規範"
+  ],
+  "optionsEn": [
+   "the overall consequences: the balance of pleasure and suffering for everyone affected",
+   "whether the act follows a moral rule that can be universalised without contradiction",
+   "whether it springs from the motive a person of good character would have in that situation",
+   "whether it conforms to the inherited traditions and customs of the community"
+  ],
+  "correctIndex": 0,
+  "explanation": "效益主義屬【後果論】：行為本身無所謂對錯，判準在於它實際造成甚麼後果，而衡量的尺度是受影響者整體的福祉。因此同一個行為在不同處境下可以有不同的道德評價。第二項是康德義務論的定言令式，屬【義務論】，判準在於行為所依據的規則本身；第三項是德性倫理學，關注的是行為者的品格而非行為或規則；第四項是習俗主義。分辨三大理論的關鍵，正是問「判準落在後果、規則，還是品格」。",
+  "explanationEn": "Utilitarianism is a CONSEQUENTIALIST theory: an act is not right or wrong in itself, and the test is what it actually brings about, measured by the overall welfare of those affected. The same act can therefore be judged differently in different circumstances. The second option states Kant's categorical imperative, a DEONTOLOGICAL test located in the rule the act follows; the third is virtue ethics, concerned with the agent's character rather than the act or the rule; the fourth is conventionalism. Telling the three families apart comes down to asking whether the test lies in consequences, in rules, or in character."
+ },
+ {
+  "id": "floor3_eth_ta_02",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "intermediate",
+  "question": "康德義務論認為，說謊即使能救人一命也是錯的。這個立場的核心理由是甚麼？",
+  "questionEn": "Kantian deontology holds that lying is wrong even to save a life. What is the core reasoning?",
+  "options": [
+   "道德判準在於行為所依據的規則能否普遍化，而非在於後果如何",
+   "救人一命所帶來的快樂總量，其實少於說謊所造成的痛苦總量",
+   "說謊者的品格必然敗壞，而品格敗壞的人所做的事一律不道德",
+   "社會長期以來禁止說謊，違反長期傳統的行為即屬不道德"
+  ],
+  "optionsEn": [
+   "the test is whether the rule the act follows can be universalised, not what follows from it",
+   "the pleasure of saving a life is in fact outweighed by the suffering caused by lying",
+   "a liar's character is necessarily corrupt, and nothing a corrupt person does is moral",
+   "society has long forbidden lying, and breaking a long tradition is immoral"
+  ],
+  "correctIndex": 0,
+  "explanation": "康德的定言令式要求：只按照那些你能同時願意它成為普遍法則的準則行事。「有需要時可以說謊」一旦普遍化，語言的可信性便自我瓦解 —— 若人人在有需要時都說謊，說謊本身也就失去作用，這條準則因而自相矛盾。關鍵在於：判準完全落在【規則的形式】，後果無論多好都不進入計算，這正是義務論與效益主義的分野。第二項用後果作計算，屬效益主義的推理方式；第三項屬德性倫理；第四項訴諸傳統。",
+  "explanationEn": "Kant's categorical imperative demands acting only on a maxim one could at the same time will to be a universal law. Universalise \"one may lie when it is convenient\" and the credibility of language collapses on itself: if everyone lied when it suited them, lying would no longer work at all, so the maxim is self-defeating. The point is that the test lies entirely in the FORM OF THE RULE, and consequences however good do not enter the calculation — which is exactly what separates deontology from utilitarianism. The second reasons from consequences and so is utilitarian; the third is virtue ethics; the fourth appeals to tradition."
+ },
+ {
+  "id": "floor3_eth_ta_03",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "intermediate",
+  "question": "德性倫理學處理道德問題時，最核心的提問方式是甚麼？",
+  "questionEn": "What is the characteristic question of virtue ethics?",
+  "options": [
+   "一個具備良好品格的人在這個處境下會怎樣做",
+   "這個行為所帶來的快樂總量是否大於痛苦總量",
+   "這個行為所依據的規則能否毫無矛盾地普遍化",
+   "這個行為是否符合社會大多數人現時的意見"
+  ],
+  "optionsEn": [
+   "what would a person of good character do in this situation",
+   "does this act produce more pleasure than suffering overall",
+   "can the rule behind this act be universalised without contradiction",
+   "does this act match the opinion of the majority in society today"
+  ],
+  "correctIndex": 0,
+  "explanation": "德性倫理學把焦點由「這個【行為】對不對」轉向「我應該成為一個怎樣的【人】」。它認為道德的核心是長期培養的品格特質（勇敢、誠實、節制、公正等），而具備這些德性的人自然能在具體處境中作出恰當判斷 —— 因此它不提供一條可以機械套用的公式，這既是它的優點（能處理規則難以窮盡的複雜情境）也是它常被批評之處（判準不夠明確）。第二、三項分別是效益主義與義務論的提問；第四項是多數人意見，並非任何一套規範倫理理論。",
+  "explanationEn": "Virtue ethics shifts the focus from \"is this ACT right?\" to \"what sort of PERSON should I become?\". It holds that morality centres on cultivated traits of character — courage, honesty, temperance, justice — and that a person possessing them will judge well in the particular case. It therefore offers no formula to apply mechanically, which is both its strength, in handling situations that rules cannot exhaust, and the ground on which it is most often criticised, for lacking a clear test. The second and third options state the utilitarian and deontological questions; the fourth appeals to majority opinion, which is no normative theory at all."
+ },
+ {
+  "id": "floor3_eth_ta_04",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "hard",
+  "question": "在「電車難題」中，效益主義者與義務論者為何可能得出相反結論？",
+  "questionEn": "In the trolley problem, why may a utilitarian and a deontologist reach opposite conclusions?",
+  "options": [
+   "前者比較死亡人數的多寡，後者關注是否把人當作達成目的的手段",
+   "前者認為生命有價而後者認為生命無價，兩者的價值觀根本對立",
+   "前者只考慮自己的利益，後者則考慮所有人的利益",
+   "前者依據法律條文判斷，後者依據宗教教義判斷"
+  ],
+  "optionsEn": [
+   "the first compares numbers of deaths; the second asks whether a person is used as a means to an end",
+   "the first prices life while the second holds it priceless, so their values are opposed",
+   "the first considers only self-interest while the second considers everyone",
+   "the first judges by the letter of the law, the second by religious doctrine"
+  ],
+  "correctIndex": 0,
+  "explanation": "效益主義計算後果：五條人命重於一條，因此傾向拉桿。義務論則問行為的性質：把一個人推落橋以阻停電車，等於把他當作救人的【工具】，違反「人本身即目的、不可僅視為手段」這條原則，因此即使結果較好也不應為之。留意兩者的分歧不在於誰更重視生命，而在於【判準的位置】—— 一個落在後果，一個落在行為本身的性質。第二項誤把分歧描述成價值觀的對立；第三項曲解效益主義（它要求把所有人的福祉平等計算，並非自利）；第四項混淆了倫理理論與法律及宗教。",
+  "explanationEn": "A utilitarian weighs consequences: five lives outweigh one, so pulling the lever follows. A deontologist asks about the nature of the act: pushing a man off a bridge to stop the trolley uses him as an INSTRUMENT for saving others, violating the principle that persons are ends in themselves and never merely means — so it should not be done even for a better outcome. The disagreement is not about who values life more but about WHERE THE TEST LIES: in consequences or in the character of the act itself. The second option misdescribes it as a clash of values; the third misrepresents utilitarianism, which counts everyone's welfare equally and is not self-interest; the fourth confuses ethical theory with law and religion."
+ },
+ {
+  "id": "floor3_eth_ta_05",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "intermediate",
+  "question": "效益主義常被批評「可能容許犧牲少數人以成全多數人」。這項批評指出了該理論的甚麼特點？",
+  "questionEn": "Utilitarianism is often criticised for potentially permitting the sacrifice of a minority for the majority. What feature does this criticism target?",
+  "options": [
+   "它以總體福祉為判準，本身並不設不可跨越的個人權利底線",
+   "它完全不考慮後果，因此無法回應現實中的道德處境",
+   "它要求行為者只考慮自己的快樂，因而忽略他人的處境",
+   "它認為所有行為都同樣道德，因此無法區分善惡"
+  ],
+  "optionsEn": [
+   "its test is aggregate welfare, and it sets no inviolable floor of individual rights",
+   "it ignores consequences entirely and so cannot address real moral situations",
+   "it requires the agent to consider only their own pleasure, ignoring others",
+   "it holds all acts equally moral and so cannot distinguish right from wrong"
+  ],
+  "correctIndex": 0,
+  "explanation": "效益主義以【總和】為判準，理論上任何個人的利益都可以被更大的總和蓋過，因此並不自動設有「無論如何都不可侵犯」的個人權利。這正是批評者所指之處，亦是規則效益主義（改為評價規則而非個別行為）與權利論試圖回應的問題。要留意：這是一項針對理論結構的批評，並非說效益主義者贊成犧牲少數 —— 多數效益主義者會論證，容許此類犧牲的長遠後果極壞，故實際上不應為之。其餘三項都與效益主義的內容不符：它正是以後果為核心，要求平等計算所有人的福祉，並且明確區分善惡。",
+  "explanationEn": "Utilitarianism judges by the AGGREGATE, so in principle any individual's interest can be outweighed by a larger sum, and it sets no automatic floor of rights that may never be crossed. That is exactly what critics target, and what rule utilitarianism — which evaluates rules rather than individual acts — and rights-based theories try to answer. Note that this is a criticism of the theory's structure, not a claim that utilitarians favour sacrificing minorities: most would argue that the long-run consequences of permitting such sacrifices are very bad, so they should not be permitted in practice. The other options misstate the theory, which is centred on consequences, counts everyone equally, and does distinguish right from wrong."
+ },
+ {
+  "id": "floor3_eth_mr_01",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "intermediate",
+  "question": "「這件事很多人都在做，所以是對的」。這個推論犯了甚麼謬誤？",
+  "questionEn": "\"Many people do this, so it is right.\" What fallacy does this reasoning commit?",
+  "options": [
+   "由事實推出價值 —— 由「實然」跳到「應然」而缺乏中間論證",
+   "循環論證 —— 把有待證明的結論本身當作支持該結論的前提",
+   "稻草人 —— 先曲解對方的立場，再攻擊那個被曲解的版本",
+   "滑坡 —— 主張某個行為必然引發一連串無法阻止的災難後果"
+  ],
+  "optionsEn": [
+   "deriving value from fact — leaping from what IS to what OUGHT without argument",
+   "circular reasoning — taking the very conclusion in question as a premise supporting it",
+   "straw man — first distorting the opponent's position, then attacking the distortion",
+   "slippery slope — claiming an act must set off an unstoppable chain of disasters"
+  ],
+  "correctIndex": 0,
+  "explanation": "「很多人在做」是一項【事實】陳述，「所以是對的」則是【價值】判斷。由前者直接推出後者，中間缺少了一個說明「為何普遍即等於正當」的規範前提，這就是休謨指出的實然—應然鴻溝，亦稱訴諸群眾。歷史上大量曾經普遍的做法（奴隸制、禁止女性受教育）正好說明普遍性本身不構成正當性。其餘三項是另外三種常見謬誤，各有其結構：循環論證預設了結論、稻草人攻擊被曲解的立場、滑坡假定必然的連鎖後果。",
+  "explanationEn": "That many people do something is a statement of FACT, while \"so it is right\" is a judgement of VALUE. Moving straight from one to the other omits the normative premise that would explain why prevalence confers legitimacy — this is Hume's is-ought gap, also known as appeal to popularity. History supplies plenty of once-widespread practices, from slavery to barring women from education, showing that prevalence alone confers nothing. The other options name three different fallacies with their own structures: circular reasoning assumes its conclusion, a straw man attacks a distorted position, and a slippery slope assumes an inevitable chain of consequences."
+ },
+ {
+  "id": "floor3_eth_mr_02",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "hard",
+  "question": "有人說：「道德只是個人喜好，沒有對錯可言。」若此說成立，會產生甚麼後果？",
+  "questionEn": "Someone claims that morality is merely personal preference with no right or wrong. If true, what follows?",
+  "options": [
+   "任何譴責（包括譴責種族滅絕）都失去理據，因為並無標準可資判斷",
+   "所有人的道德判斷都會自動變得一致，因為喜好本來相同",
+   "道德討論會變得更有效率，因為各方都會迅速達成共識",
+   "法律將無法制定，因為法律必須完全等同於道德"
+  ],
+  "optionsEn": [
+   "all condemnation, including of genocide, loses its grounds, since no standard remains",
+   "everyone's moral judgements become uniform, since preferences are the same to begin with",
+   "moral discussion becomes more efficient, since agreement is reached quickly",
+   "law becomes impossible to make, since law must be identical to morality"
+  ],
+  "correctIndex": 0,
+  "explanation": "這是道德相對主義最常被指出的困難：若道德判斷純屬個人喜好，那麼「種族滅絕是錯的」與「我不喜歡芫荽」在邏輯地位上並無分別，前者便失去了譴責的力量。留意這不等於證明相對主義必然錯誤 —— 一個立場帶來令人不安的後果，本身不構成反駁；但它確實把舉證責任推回相對主義者身上，要求他們解釋如何在其框架內保留道德批評的可能。第二項與相對主義的前提矛盾（喜好人各不同）；第三項不成立（沒有共同標準只會令討論無從收窄）；第四項假設法律等同道德，這個前提本身不成立。",
+  "explanationEn": "This is the standard difficulty raised against moral relativism: if moral judgements are only preferences, then \"genocide is wrong\" and \"I dislike coriander\" occupy the same logical position, and the first loses its condemnatory force. Note that this does not prove relativism false — an uncomfortable consequence is not a refutation — but it does shift the burden onto the relativist to explain how moral criticism remains possible within their framework. The second option contradicts relativism's own premise, since preferences differ; the third fails, since without a shared standard discussion cannot converge; the fourth assumes law and morality are identical, which is not so."
+ },
+ {
+  "id": "floor3_eth_mr_03",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "intermediate",
+  "question": "在道德爭議中，指出對方「本身也做過同樣的事」，因而斷定其論點錯誤。這個推論有何問題？",
+  "questionEn": "In a moral dispute, someone points out that their opponent has done the same thing and concludes the opponent's argument fails. What is wrong with that?",
+  "options": [
+   "論點的對錯與提出者的行為並無必然關係，這是訴諸人身的一種",
+   "對方的行為紀錄其實與論點高度相關，因此推論完全成立",
+   "這個推論的問題只在於語氣不禮貌，論證結構本身並無錯誤",
+   "這個推論只在對方是公眾人物時才不成立，私人之間可以使用"
+  ],
+  "optionsEn": [
+   "the soundness of an argument is independent of the arguer's conduct — this is an ad hominem",
+   "the opponent's record is in fact highly relevant, so the reasoning holds",
+   "the only problem is the impolite tone; the structure of the argument is sound",
+   "it fails only when the opponent is a public figure; between private persons it is acceptable"
+  ],
+  "correctIndex": 0,
+  "explanation": "這是訴諸人身之中的「你也一樣」形式。一個論點成立與否，取決於其前提與推理，與提出者本人有否遵守並無邏輯關係 —— 一個吸煙者說「吸煙有害健康」，這句話依然為真。要留意：指出對方言行不一，在討論其【可信度】或【誠意】時可以是相關的，但那與論點本身的【對錯】是兩個問題，混淆兩者正是這個謬誤的核心。第二項正正是謬誤本身；第三項把邏輯問題誤讀成語氣問題；第四項憑對象身分區分，但謬誤的結構與對象是誰無關。",
+  "explanationEn": "This is the \"you too\" form of ad hominem. Whether an argument holds depends on its premises and reasoning, not on whether the person advancing it lives up to it — a smoker saying \"smoking damages health\" is still saying something true. Note that pointing out inconsistency can be relevant when discussing someone's CREDIBILITY or sincerity, but that is a separate question from whether the argument is SOUND, and conflating the two is the heart of the fallacy. The second option simply restates the fallacy; the third mistakes a logical problem for a matter of tone; the fourth distinguishes by the target's status, but the structure of the fallacy does not depend on who is addressed."
+ },
+ {
+  "id": "floor3_eth_mr_04",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "hard",
+  "question": "兩個道德原則在具體處境中互相衝突（例如誠實與保護他人免受傷害）。合理的處理方式是甚麼？",
+  "questionEn": "Two moral principles conflict in a concrete case — honesty against protecting someone from harm. What is a defensible way to proceed?",
+  "options": [
+   "衡量兩者在該處境中的分量與所涉利害，作出有理據的取捨並承認代價",
+   "任意選擇其中一個原則，因為原則之間本來就沒有高下之分",
+   "同時完全遵守兩個原則，因為道德原則不容許有任何例外",
+   "放棄道德判斷，因為原則一旦衝突即證明道德毫無用處"
+  ],
+  "optionsEn": [
+   "weigh their force and the stakes in this case, choose with reasons, and acknowledge the cost",
+   "pick either one arbitrarily, since no principle outranks another",
+   "follow both fully, since moral principles admit no exceptions",
+   "abandon moral judgement, since a conflict proves morality useless"
+  ],
+  "correctIndex": 0,
+  "explanation": "原則衝突是道德生活的常態而非理論失效的證據。合理的處理方式是具體衡量：在這個處境中，誠實所保障的價值與可能造成的傷害各有多重？有沒有既不說謊又能保護對方的第三條路？作出取捨之後，還要承認被犧牲的一方仍然有其分量 —— 這正是「道德剩餘」的概念：即使選擇正確，被壓過的原則所留下的歉疚仍然合理，並非多餘的情緒。第二項把「難以權衡」誤解為「無從權衡」；第三項在邏輯上不可能，衝突的定義正是兩者不能同時完全遵守；第四項由困難跳到全盤否定，是一種過度推論。",
+  "explanationEn": "Conflicting principles are a normal feature of moral life rather than evidence that theory has failed. The defensible course is to weigh the particulars: how much does honesty protect here, how great is the harm risked, and is there a third path that neither lies nor exposes the person? Having chosen, one should still acknowledge that the principle set aside retained its force — this is the idea of moral residue: even a correct choice can leave justified regret, which is not a surplus emotion. The second option mistakes \"hard to weigh\" for \"impossible to weigh\"; the third is logically impossible, since a conflict means both cannot be fully honoured; the fourth leaps from difficulty to wholesale rejection, an over-inference."
+ }
+]

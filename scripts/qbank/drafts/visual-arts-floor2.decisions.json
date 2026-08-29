@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "source": "visual-arts-floor2.json",
+    "subject": "visual-arts",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor3_va_fa_01": "pending",
+    "floor3_va_fa_02": "pending",
+    "floor3_va_fa_03": "pending",
+    "floor3_va_fa_04": "pending",
+    "floor3_va_fa_05": "pending",
+    "floor3_va_fa_06": "pending",
+    "floor3_va_fa_07": "pending",
+    "floor3_va_fa_08": "pending",
+    "floor3_va_hc_01": "pending",
+    "floor3_va_hc_02": "pending",
+    "floor3_va_hc_03": "pending",
+    "floor3_va_hc_04": "pending"
+  }
+}

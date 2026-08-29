@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · visual-arts · visual-arts-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">visual-arts</span></h1>
+<div class="sub">來源 visual-arts-floor2.json · 共 12 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">12</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor3_va_fa_01","topic":"形式分析・元素與原則","difficulty":"basic","question":"在視覺藝術的形式分析中，「線條」屬於下列哪一個範疇？","options":["視覺元素 —— 構成作品的基本材料，與形狀、色彩、質感、空間並列","構圖原則 —— 組織畫面的方法，與平衡、對比、節奏並列","創作媒介 —— 藝術家所使用的物料，與油彩、水墨、金屬並列","藝術風格 —— 特定時期的表現方式，與印象派、立體派並列"],"correctIndex":0,"explanation":"形式分析把作品拆成兩層：【視覺元素】是構成作品的基本材料（線條、形狀、色彩、明暗、質感、空間），【構圖原則】則是組織這些元素的方法（平衡、比例、對比、統一、節奏、強調）。線條屬前者。分清兩層很重要：描述「畫中有粗黑的輪廓線」是指出元素，而「粗黑輪廓線把視線引向中央人物」才是指出原則如何運作 —— 評賞題要求的是後者。媒介指物料，風格指時代或流派的表現方式，兩者都不是形式分析的層次。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_02","topic":"形式分析・元素與原則","difficulty":"intermediate","question":"一幅畫作左右兩邊的物件在大小、數量與位置上並不相同，但整體看來仍然穩定。這最可能運用了甚麼原則？","options":["不對稱平衡 —— 以視覺重量而非鏡像對稱取得穩定","對稱平衡 —— 中軸兩邊的元素完全相同並互相呼應","重複 —— 同一形狀規律地出現以產生秩序感","漸變 —— 元素的大小或色彩循序改變以產生深度"],"correctIndex":0,"explanation":"平衡分對稱與不對稱兩種。對稱平衡靠中軸兩邊完全相同，穩定但容易呆板；不對稱平衡則靠【視覺重量】的相抵 —— 一件大而色淡的物件，可以與另一邊一件細小但色彩鮮艷或質感強烈的物件取得平衡。題幹明言兩邊大小數量位置皆不同而整體仍然穩定，正是不對稱平衡的定義。重複與漸變都是製造秩序與動勢的原則，但它們本身並不解釋「兩邊不同卻仍穩定」這個現象。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_03","topic":"形式分析・元素與原則","difficulty":"intermediate","question":"藝術家把畫面中唯一的紅色物件放在大片灰藍色調之中。這最直接運用了哪一個原則？","options":["對比與強調 —— 以色彩差異令該物件成為視覺焦點","統一 —— 令畫面各部分和諧一致而不突出任何一處","比例 —— 令各物件之間的大小關係符合真實比例","節奏 —— 令視線沿着重複的元素在畫面中移動"],"correctIndex":0,"explanation":"紅與灰藍在色相環上接近互補，並置時互相加強，令紅色物件從冷調背景中跳出來。這同時運用了【對比】（差異）與【強調】（把差異用於指定視覺焦點）—— 兩者常一併出現：對比製造差異，強調決定差異用在哪裏。統一追求的是和諧一致，與題幹描述的「唯一一件突出物件」方向相反；比例處理大小關係；節奏處理視線的移動路徑，都不是本題所描述的手法。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_04","topic":"形式分析・元素與原則","difficulty":"hard","question":"一位評賞者寫道：「這幅畫令人感到孤獨。」單憑這句，在形式分析上有甚麼不足？","options":["只描述了感受，未指出是畫面中哪些視覺元素與原則造成該感受","感受並非藝術評賞的一部分，評賞應完全避免主觀反應","句子太短，評賞必須以指定的字數與段落格式書寫","未提及藝術家的姓名與創作年份，資料不完整"],"correctIndex":0,"explanation":"形式分析的核心要求是把【感受】與【證據】扣連：說「感到孤獨」只是結論，必須進一步指出畫面中甚麼造成這個感受 —— 例如大片留白令人物顯得渺小、冷色調降低溫度感、人物背向觀者切斷了交流、視平線壓低令空間顯得空曠。感受本身並非問題，主觀反應正是評賞的起點；問題在於缺少由畫面事實出發的推導。第三、四項把形式分析誤當成格式要求或資料著錄，兩者都不是它的內容。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_05","topic":"形式分析・元素與原則","difficulty":"basic","question":"在色彩理論中，紅、黃、藍被稱為三原色。原因是甚麼？","options":["它們無法由其他顏色混合而成，卻可混出其他色相","它們是自然界中最常出現的三種顏色，因而最為重要","它們在色相環上互相相鄰，因而形成和諧的色彩組合","它們的明度最高，因而在畫面中最為顯眼"],"correctIndex":0,"explanation":"傳統顏料色彩理論中，三原色的定義正是「不能由其他顏色混合得出，但可以混合出其他色相」。兩兩相混得出三間色（橙、綠、紫），原色與相鄰間色再混得出複色。要留意這是【顏料】的減色系統；光的加色系統以紅、綠、藍為原色，混合後愈加愈亮，最終得白光 —— 兩套系統的原色不同，因為一套是吸收光，另一套是發出光。其餘三項與原色的定義無關：三原色在色相環上互相分隔而非相鄰，明度亦各不相同。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_06","topic":"形式分析・元素與原則","difficulty":"intermediate","question":"藝術家以近處物件清晰、遠處物件模糊而偏藍的手法表現距離。這種技法稱為甚麼？","options":["空氣透視 —— 以清晰度與色彩的變化表現深度","線性透視 —— 以匯聚於消失點的線條表現深度","重疊 —— 以物件互相遮擋的關係表現前後次序","短縮法 —— 以物體沿視線方向壓縮表現伸向觀者"],"correctIndex":0,"explanation":"空氣透視（又稱大氣透視）利用大氣中的水氣與塵埃散射光線這個真實現象：距離愈遠，物件的輪廓愈模糊、對比愈低、色彩愈偏冷偏藍。它與線性透視是兩套獨立而可並用的深度手法 —— 線性透視處理【形狀與線條】的匯聚，空氣透視處理【清晰度與色彩】的變化。重疊是最簡單的深度線索，只交代前後次序而不交代距離遠近；短縮法處理單一物體沿視線方向的壓縮。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_07","topic":"形式分析・元素與原則","difficulty":"hard","question":"一件裝置藝術要求觀眾走進作品之內。這最直接改變了作品與觀眾之間的哪一種關係？","options":["由觀者在作品之外觀看，變為觀者身處作品之內並成為作品的一部分","由作品有固定形狀，變為作品完全沒有實體而只存在於概念之中","由作品由藝術家創作，變為作品完全由觀眾創作而藝術家不參與","由作品可以買賣收藏，變為作品在法律上不再屬於任何人所有"],"correctIndex":0,"explanation":"裝置藝術的核心特徵是佔據並改造一個【空間】，觀眾必須進入該空間，於是觀看的位置由外部轉為內部：觀眾的身體、移動路線甚至其他觀眾的存在，都成為作品經驗的一部分。這與傳統繪畫與雕塑「觀者在作品之外」的關係根本不同。其餘三項各自過度推論：裝置仍有實體，只是形態不限於畫框或基座；藝術家仍然決定整體構思與條件，觀眾的參與是在其設定之內；至於買賣與擁有權，裝置一樣可以被收藏，只是收藏的往往是說明書與再現的權利。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_fa_08","topic":"形式分析・元素與原則","difficulty":"intermediate","question":"在一幅人像作品中，人物佔據畫面約九成而背景幾乎不可見。這個構圖選擇最可能產生甚麼效果？","options":["觀者被迫近距離面對人物，親密感與壓迫感同時增強","觀者可以清楚了解人物身處的環境與社會身份","觀者的視線被引導向畫面深處，空間顯得遼闊","觀者難以辨認人物的表情，作品傾向抽象"],"correctIndex":0,"explanation":"構圖的取景距離直接決定觀者與被畫者的心理距離。人物佔滿畫面等同於把觀者推到極近的位置，面孔的細節無所遁形，親密與壓迫兩種感受同時產生 —— 這正是不少現代肖像刻意採用的策略。第二項方向相反：背景幾乎不可見，正正剝奪了交代環境與身份的線索；第三項與滿框構圖矛盾，深遠空間需要留出背景；第四項不成立，人物放大反而令表情更清晰，抽象與否取決於描繪方式而非取景距離。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_hc_01","topic":"藝術史・技法與風格","difficulty":"basic","question":"印象派畫家常在戶外直接寫生，並以細碎筆觸捕捉光線變化。促成這種轉變的其中一項技術條件是甚麼？","options":["錫管顏料的發明令顏料便於攜帶且不易乾涸","照相機的發明令畫家不再需要學習素描基礎","油彩的發明令畫家首次可以描繪細緻的光影","畫布的發明令畫家不再需要在牆壁上作畫"],"correctIndex":0,"explanation":"十九世紀中葉錫管顏料面世之前，畫家須自行研磨顏料並以豬膀胱盛載，難以攜帶且極易乾涸，戶外寫生因而幾乎不可行。錫管令顏料可以隨身攜帶、隨時開合，加上便攜畫架與鐵路網絡的擴展，畫家才能到郊外反覆觀察同一景物在不同時刻的光色變化。第二項倒果為因：照相的普及確實促使繪畫尋找攝影做不到的方向，但並不代表素描不再重要。第三、四項的年代嚴重錯置 —— 油彩與畫布早在文藝復興時期已廣泛使用，並非十九世紀的新事物。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_hc_02","topic":"藝術史・技法與風格","difficulty":"intermediate","question":"立體派作品常在同一畫面上同時呈現物件的多個角度。這種做法挑戰了甚麼傳統？","options":["文藝復興以來以單一固定視點為基礎的線性透視","以顏料的物質性作為作品主題的傳統","以宗教題材作為繪畫唯一合法內容的傳統","以雕塑而非繪畫作為最高藝術形式的傳統"],"correctIndex":0,"explanation":"線性透視自文藝復興確立以來，預設了一個固定的觀看位置：整幅畫的所有形狀都按同一視點推導。立體派把物件拆解再重組，讓正面、側面、俯視同時出現在一個平面上，等於宣告畫面不必再模擬「一隻眼睛在一個時刻所見」，而可以呈現對物件的整體認知。這是對五百年來繪畫空間慣例的根本質疑。其餘三項與立體派的核心關注並不對應：顏料物質性是抽象表現主義的關注，宗教題材的壟斷早在立體派之前數百年已鬆動，繪畫與雕塑的高下之爭亦非其議題。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_hc_03","topic":"藝術史・技法與風格","difficulty":"intermediate","question":"中國水墨畫講求「留白」。留白在畫面上的作用是甚麼？","options":["未着墨處本身參與構圖，可讀為雲霧、水面或空間，並予人想像餘地","未着墨處純粹是尚未完成的部分，畫家因時間不足而留下","未着墨處用以標示作品的邊界，功能相當於畫框","未着墨處是為題字與鈐印預留的位置，並無構圖意義"],"correctIndex":0,"explanation":"在中國水墨的視覺觀念中，紙的空白並非「沒有畫」，而是畫面的積極組成部分：它可以被讀成雲霧、水面、天空或無限的空間，並與墨色形成虛實相生的關係。畫少而意多，觀者的想像正是在這些空白處展開，這與西方傳統中傾向填滿畫面的取向構成鮮明對比。第二項把美學選擇誤讀為未完成；第三項把留白誤當成邊框；第四項雖然觸及題款鈐印這個真實慣例，但把留白的作用窄化為「預留位置」，忽略了它本身的構圖與意境功能。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_va_hc_04","topic":"藝術史・技法與風格","difficulty":"hard","question":"評賞一件當代藝術作品時，只描述其視覺元素而不提及創作脈絡，可能有甚麼問題？","options":["當代作品的意義往往依賴其提問的社會議題與藝術史脈絡，只談形式會錯失核心","當代作品完全沒有可供分析的視覺元素，形式分析在原則上並不適用","形式分析只適用於古代作品，當代作品必須改用完全不同的評賞方法","描述視覺元素本身屬於主觀判斷，因此不能用於任何時期的作品評賞"],"correctIndex":0,"explanation":"當代藝術經常以【提問】而非【技巧展示】為核心：一件現成物、一段錄像或一場行為，其意義大量來自它針對甚麼議題、回應藝術史上哪一個主張、在甚麼場域展出。若只描述「這是一個白色方形物件」，等於錯過作品真正在說甚麼。要留意這不代表形式分析失效 —— 形式仍然是意義的載體，恰當的做法是【形式與脈絡並用】。其餘三項都把這一點推得過頭：當代作品當然有視覺元素，形式分析亦非古代專用，而描述視覺元素是可查證的觀察而非主觀判斷。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "visual-arts";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "visual-arts-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "visual-arts-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
