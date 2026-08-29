@@ -22,6 +22,7 @@ import { englishQuestions, englishTopics } from './english'
 import { englishFloorB2Questions } from './english-floor-b2'
 import { ictQuestions, ictTopics } from './ict'
 import { ictFloorBatch1Questions } from './ict-floor-batch1'
+import { ictBank3Questions } from './ict-bank'
 import { chineseQuestions, chineseTopics } from './chinese'
 import { chineseReviewedQuestions } from './chinese-reviewed'
 // 書寫題批次亦必須註冊入 barrel —— barrel 是所有 QA 工具與稽核統計的讀取路徑，
@@ -118,7 +119,7 @@ const banks: Record<string, SubjectBank> = {
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
   biology: { questions: [...biologyQuestions, ...biologyBankQuestions, ...biologyBank2Questions, ...biologyFloorB2Questions], topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions, ...englishFloorB2Questions], topics: englishTopics },
-  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions, ...ictBank2Questions], topics: ictTopics },
+  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions, ...ictBank2Questions, ...ictBank3Questions], topics: ictTopics },
   chinese: {
     questions: [
       ...chineseQuestions,

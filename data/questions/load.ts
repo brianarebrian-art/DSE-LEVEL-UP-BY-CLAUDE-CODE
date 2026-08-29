@@ -64,10 +64,10 @@ const loaders: Record<string, Loader> = {
     return [...base.englishQuestions, ...reviewed.englishReviewedQuestions, ...b2.englishFloorB2Questions]
   },
   ict: async () => {
-    const [base, floor1, bank] = await Promise.all([
-      import('./ict'), import('./ict-floor-batch1'), import('./applied-banks'),
+    const [base, floor1, bank, b3] = await Promise.all([
+      import('./ict'), import('./ict-floor-batch1'), import('./applied-banks'), import('./ict-bank'),
     ])
-    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions, ...bank.ictBankQuestions, ...bank.ictBank2Questions]
+    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions, ...bank.ictBankQuestions, ...bank.ictBank2Questions, ...b3.ictBank3Questions]
   },
   chinese: async () => {
     // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
