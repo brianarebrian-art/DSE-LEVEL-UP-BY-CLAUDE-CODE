@@ -615,6 +615,96 @@ for (const k of [2, 3, 4, 5]) {
      `By the chain rule $\\frac{d}{dx}\\ln(${k}x) = \\frac{1}{${k}x} \\times ${k} = \\frac{1}{x}$. Alternatively simplify first: $\\ln(${k}x) = \\ln ${k} + \\ln x$, and since $\\ln ${k}$ is constant only $\\frac{1}{x}$ survives — the two routes agree and check each other. Note that a constant multiple inside a logarithm does not affect the derivative. Traps: $\\frac{${k}}{x}$ keeps the coefficient in the numerator; $\\frac{1}{${k}x}$ omits the inner derivative; $${k}\\ln x$ has not been differentiated at all.`])
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第五批母模板 —— 推 M1 過 1,000（2026-08-29）
+// 微分 142 條不動；其餘八個課題由 47–73 補向約 90。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// PDH4 — 泊松分佈的機率（答案以符號式表示，避免小數捨入爭議）
+for (const lam of [1, 2, 3, 4, 5]) {
+  for (const k of [0, 1, 2]) {
+    add(`m1e_pdh4_${lam}_${k}`, T.distHigh, FW.stats, 'hard',
+      [`設 $X \\sim \\mathrm{Po}(${lam})$。求 $P(X = ${k})$ 的表達式。`,
+       `Let $X \\sim \\mathrm{Po}(${lam})$. Give an expression for $P(X = ${k})$.`],
+      [n(`$\\dfrac{${lam ** k}e^{-${lam}}}{${fact(k)}}$`), n(`$\\dfrac{${lam ** k}e^{${lam}}}{${fact(k)}}$`),
+       n(`$${lam ** k}e^{-${lam}}$`), n(`$\\dfrac{${lam}^{${k}}e^{-${k}}}{${fact(lam)}}$`)],
+      [`泊松分佈的機率質量函數為 $P(X = k) = \\dfrac{\\lambda^{k}e^{-\\lambda}}{k!}$。代入 $\\lambda = ${lam}$、$k = ${k}$：$\\dfrac{${lam}^{${k}}e^{-${lam}}}{${k}!} = \\dfrac{${lam ** k}e^{-${lam}}}{${fact(k)}}$。泊松描述的是「單位時間或空間內隨機事件發生的次數」，其均值與方差同樣是 $\\lambda$ —— 這一點與二項分佈不同，後者均值 $np$ 與方差 $npq$ 並不相等。陷阱：指數的負號寫漏；分母漏了 $k!$；把 $\\lambda$ 與 $k$ 的位置調轉。`,
+       `The Poisson probability mass function is $P(X = k) = \\frac{\\lambda^{k}e^{-\\lambda}}{k!}$. With $\\lambda = ${lam}$ and $k = ${k}$ this gives $\\frac{${lam}^{${k}}e^{-${lam}}}{${k}!} = \\frac{${lam ** k}e^{-${lam}}}{${fact(k)}}$. The Poisson counts random events in a fixed interval, and its mean and variance are both $\\lambda$ — unlike the binomial, whose mean $np$ and variance $npq$ differ. Traps: the minus sign in the exponent is dropped; the $k!$ is omitted; $\\lambda$ and $k$ are interchanged.`])
+  }
+}
+
+// BD4 — 二項分佈的點機率（p = 1/2，答案為簡潔分數）
+for (const nn of [4, 5, 6, 7, 8]) {
+  for (const k of [1, 2, 3]) {
+    if (k > nn) continue
+    const num = nCr(nn, k), den = 2 ** nn
+    add(`m1e_bd4_${nn}_${k}`, T.binomialDist, FW.stats, 'medium',
+      [`一枚公平硬幣擲 ${nn} 次。恰好出現 ${k} 次正面的機率是多少？`,
+       `A fair coin is tossed ${nn} times. What is the probability of exactly ${k} heads?`],
+      [n(`$${frac(num, den)}$`), n(`$${frac(k, nn)}$`), n(`$${frac(num, 2 ** k)}$`), n(`$${frac(1, den)}$`)],
+      [`擲硬幣屬二項分佈 $X \\sim B(${nn}, \\tfrac{1}{2})$。$P(X = ${k}) = \\binom{${nn}}{${k}}\\left(\\tfrac{1}{2}\\right)^{${k}}\\left(\\tfrac{1}{2}\\right)^{${nn - k}} = \\dfrac{${num}}{${den}} = ${frac(num, den)}$。由於 $p = q = \\tfrac{1}{2}$，兩個冪合併為 $\\left(\\tfrac{1}{2}\\right)^{${nn}}$，只餘二項式係數作分子。陷阱：$${frac(k, nn)}$ 把次數之比當成機率；$${frac(num, 2 ** k)}$ 的分母只用了 ${k} 次而非全部 ${nn} 次；$${frac(1, den)}$ 是某一個【特定序列】的機率，漏了 $\\binom{${nn}}{${k}}$ 種排列方式。`,
+       `Coin tossing is binomial, $X \\sim B(${nn}, \\tfrac{1}{2})$. So $P(X = ${k}) = \\binom{${nn}}{${k}}\\left(\\tfrac{1}{2}\\right)^{${k}}\\left(\\tfrac{1}{2}\\right)^{${nn - k}} = \\frac{${num}}{${den}} = ${frac(num, den)}$. Since $p = q = \\tfrac{1}{2}$ the two powers combine into $\\left(\\tfrac{1}{2}\\right)^{${nn}}$, leaving only the binomial coefficient in the numerator. Traps: $${frac(k, nn)}$ reads a ratio of counts as a probability; $${frac(num, 2 ** k)}$ uses only ${k} tosses in the denominator; $${frac(1, den)}$ is the probability of one PARTICULAR sequence and omits the $\\binom{${nn}}{${k}}$ orderings.`])
+  }
+}
+
+// NC2 — 標準分數 z = (x − μ) / σ
+for (const mu of [50, 60, 70, 80, 100]) {
+  for (const sd of [4, 5, 8, 10]) {
+    for (const d of [1, 2, 3]) {
+      const x = mu + d * sd
+      add(`m1e_nc2_${mu}_${sd}_${d}`, T.normalCalc, FW.stats, 'easy',
+        [`某正態分佈的平均數為 ${mu}、標準差為 ${sd}。數值 ${x} 的標準分數 $z$ 是多少？`,
+         `A normal distribution has mean ${mu} and standard deviation ${sd}. What is the $z$-score of the value ${x}?`],
+        [n(`$${d}$`), n(`$${round((x - mu) * sd, 2)}$`), n(`$${round(x / mu, 3)}$`), n(`$${x - mu}$`)],
+        [`標準分數 $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{${x} - ${mu}}{${sd}} = \\dfrac{${x - mu}}{${sd}} = ${d}$。$z$ 的意義是「該數值距離平均數多少個標準差」，因此它沒有單位，可用來比較兩個不同分佈的數值。陷阱：$${round((x - mu) * sd, 2)}$ 乘了標準差而非除；$${round(x / mu, 3)}$ 用了比值而非差值；$${x - mu}$ 只算了離差而未除以標準差 —— 那個數值仍然帶有原本的單位。`,
+         `The standard score is $z = \\frac{x - \\mu}{\\sigma} = \\frac{${x} - ${mu}}{${sd}} = \\frac{${x - mu}}{${sd}} = ${d}$. A $z$-score says how many standard deviations a value lies from the mean, so it is dimensionless and lets values from different distributions be compared. Traps: $${round((x - mu) * sd, 2)}$ multiplies by the standard deviation instead of dividing; $${round(x / mu, 3)}$ uses a ratio rather than a difference; $${x - mu}$ is the deviation only and still carries the original units.`])
+    }
+  }
+}
+
+// SI3 — 由容許誤差反推所需樣本量
+for (const sd of [10, 12, 15, 20]) {
+  for (const nRoot of [4, 5, 10]) {
+    const nn = nRoot ** 2
+    const se = sd / nRoot
+    add(`m1e_si3_${sd}_${nRoot}`, T.statInf, FW.stats, 'hard',
+      [`由標準差為 ${sd} 的母體抽樣，要令樣本平均數的標準誤等於 ${round(se, 2)}，樣本量須為多少？`,
+       `Sampling from a population with standard deviation ${sd}, what sample size makes the standard error of the sample mean equal to ${round(se, 2)}?`],
+      [n(`$${nn}$`), n(`$${nRoot}$`), n(`$${round(sd / se, 2)}$`), n(`$${nn * 2}$`)],
+      [`標準誤 $= \\dfrac{\\sigma}{\\sqrt{n}}$。令 $\\dfrac{${sd}}{\\sqrt{n}} = ${round(se, 2)}$，得 $\\sqrt{n} = ${nRoot}$，故 $n = ${nn}$。留意最後一步要【平方】：樣本量與標準誤是平方反比關係，要把誤差減半必須把樣本量增至四倍，這也是抽樣調查成本高昂的原因。陷阱：${nRoot} 個是 $\\sqrt{n}$ 而非 $n$，漏了最後一步；${round(sd / se, 2)} 個同樣停在 $\\sqrt{n}$；${nn * 2} 個把平方誤作乘二。`,
+       `The standard error is $\\frac{\\sigma}{\\sqrt{n}}$. Setting $\\frac{${sd}}{\\sqrt{n}} = ${round(se, 2)}$ gives $\\sqrt{n} = ${nRoot}$, so $n = ${nn}$. The final SQUARING matters: sample size varies with the inverse square of the standard error, so halving the error requires quadrupling the sample — which is why survey work is expensive. Traps: ${nRoot} is $\\sqrt{n}$ and omits the last step; ${round(sd / se, 2)} likewise stops at $\\sqrt{n}$; ${nn * 2} doubles instead of squaring.`])
+  }
+}
+
+// PR3 — 兩階段抽取（不放回）
+for (const r of [3, 4, 5, 6]) {
+  for (const b of [4, 5, 6, 7]) {
+    const tot = r + b
+    const num = r * (r - 1), den = tot * (tot - 1)
+    add(`m1e_pr3_${r}${b}`, T.probDist, FW.decompose, 'hard',
+      [`袋中有 ${r} 個紅球與 ${b} 個藍球。連續抽出兩球【不放回】，兩球皆為紅球的機率是多少？`,
+       `A bag holds ${r} red and ${b} blue balls. Two balls are drawn in succession WITHOUT replacement. What is the probability that both are red?`],
+      [n(`$${frac(num, den)}$`), n(`$${frac(r * r, tot * tot)}$`), n(`$${frac(r, tot)}$`), n(`$${frac(2 * r, tot)}$`)],
+      [`不放回抽樣的第二次抽取，樣本空間已經改變。第一球為紅的機率是 $${frac(r, tot)}$；已抽走一個紅球後，袋中剩 ${r - 1} 紅、共 ${tot - 1} 球，故第二球為紅的條件機率是 $${frac(r - 1, tot - 1)}$。相乘得 $${frac(num, den)}$。陷阱：$${frac(r * r, tot * tot)}$ 用了【有放回】的算法，兩次的分母相同；$${frac(r, tot)}$ 只算了第一次；$${frac(2 * r, tot)}$ 把兩次的機率相加。`,
+       `With sampling without replacement the sample space changes for the second draw. The first ball is red with probability $${frac(r, tot)}$; with one red removed, ${r - 1} of the remaining ${tot - 1} balls are red, so the conditional probability for the second is $${frac(r - 1, tot - 1)}$. Multiplying gives $${frac(num, den)}$. Traps: $${frac(r * r, tot * tot)}$ uses the WITH-replacement calculation, keeping the same denominator twice; $${frac(r, tot)}$ covers only the first draw; $${frac(2 * r, tot)}$ adds the two probabilities.`])
+  }
+}
+
+// CA3 — 邊際分析：由總成本函數求邊際成本
+for (let a = 1; a <= 3; a++) {
+  for (let b = 2; b <= 5; b++) {
+    for (const q of [4, 6, 10]) {
+      const mc = 2 * a * q + b
+      add(`m1e_ca3_${a}${b}_${q}`, T.calcApp, FW.modelling, 'medium',
+        [`某廠商的總成本函數為 $C(q) = ${a === 1 ? '' : a}q^2 + ${b}q + 100$。當產量為 ${q} 時，邊際成本是多少？`,
+         `A firm's total cost function is $C(q) = ${a === 1 ? '' : a}q^2 + ${b}q + 100$. What is the marginal cost at an output of ${q}?`],
+        [n(`$${mc}$`), n(`$${a * q * q + b * q + 100}$`), n(`$${round((a * q * q + b * q + 100) / q, 2)}$`), n(`$${a * q + b}$`)],
+        [`邊際成本是總成本對產量的導數：$C'(q) = ${2 * a}q + ${b}$。代入 $q = ${q}$ 得 $${2 * a * q} + ${b} = ${mc}$。注意常數項 100（固定成本）求導後消失 —— 這正說明固定成本不影響邊際決策，是「沉沒成本不應影響決定」在數學上的體現。陷阱：$${a * q * q + b * q + 100}$ 是總成本 $C(${q})$；$${round((a * q * q + b * q + 100) / q, 2)}$ 是平均成本；$${a * q + b}$ 求導時漏了二次項的因子 2。`,
+         `Marginal cost is the derivative of total cost: $C'(q) = ${2 * a}q + ${b}$, and at $q = ${q}$ this is $${2 * a * q} + ${b} = ${mc}$. Note that the constant 100 — the fixed cost — vanishes on differentiation, which is precisely why fixed costs do not affect marginal decisions: it is the mathematical form of the rule that sunk costs should not influence a decision. Traps: $${a * q * q + b * q + 100}$ is the total cost $C(${q})$; $${round((a * q * q + b * q + 100) / q, 2)}$ is the average cost; $${a * q + b}$ loses the factor 2 from the quadratic term.`])
+    }
+  }
+}
+
 export const m1BankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
