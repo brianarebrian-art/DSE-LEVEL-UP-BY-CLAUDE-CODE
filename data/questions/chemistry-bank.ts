@@ -567,6 +567,100 @@ for (const theo of [20, 25, 40, 50, 80, 100]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第四批母模板 —— 平均分佈補強（2026-08-29）
+// 補強前最薄：氧化還原與平衡 16、有機化學（高階）17、化學式與式量 30、
+// 氧化還原 33、有機化學 34、氣體體積 35（平均目標 71）。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// RE3 — 電化學序：金屬的活潑性與置換反應
+;([['鎂', 'Mg', '鋅', 'Zn'], ['鋅', 'Zn', '鐵', 'Fe'], ['鐵', 'Fe', '銅', 'Cu'],
+  ['鎂', 'Mg', '銅', 'Cu'], ['鋅', 'Zn', '銅', 'Cu'], ['鎂', 'Mg', '鐵', 'Fe'],
+  ['鋅', 'Zn', '鉛', 'Pb'], ['鐵', 'Fe', '鉛', 'Pb'], ['鎂', 'Mg', '鉛', 'Pb'],
+  ['鋁', 'Al', '銅', 'Cu'], ['鋁', 'Al', '鐵', 'Fe'], ['鋁', 'Al', '鋅', 'Zn'],
+  ['鐵', 'Fe', '銀', 'Ag'], ['銅', 'Cu', '銀', 'Ag'], ['鋅', 'Zn', '銀', 'Ag'],
+  ['鎂', 'Mg', '銀', 'Ag']] as [string, string, string, string][])
+  .forEach(([zhA, a, zhB, b]) => {
+    add(`chemd_re3_${a}_${b}`, T.hellRedox, FW.electron, 'medium',
+      [`把${zhA}片放入${zhB}的鹽溶液中，觀察到${zhB}被置換出來。以下哪一項推論正確？`,
+       `A piece of ${zhA} is placed in a salt solution of ${zhB}, and ${zhB} is displaced. Which inference is correct?`],
+      [[`${zhA}的活潑性高於${zhB}，${zhA}被氧化而 $\\mathrm{${b}^{n+}}$ 被還原`,
+        `${a} is more reactive than ${b}; ${a} is oxidised while $\\mathrm{${b}^{n+}}$ is reduced`],
+       [`${zhB}的活潑性高於${zhA}，${zhB}被氧化而 $\\mathrm{${a}^{n+}}$ 被還原`,
+        `${b} is more reactive than ${a}; ${b} is oxidised while $\\mathrm{${a}^{n+}}$ is reduced`],
+       [`兩種金屬的活潑性相同，反應只由溶液的濃度決定`,
+        `the two metals are equally reactive and the reaction depends only on concentration`],
+       [`${zhA}被還原而 $\\mathrm{${b}^{n+}}$ 被氧化，電子由離子流向金屬`,
+        `${a} is reduced while $\\mathrm{${b}^{n+}}$ is oxidised, electrons flowing from ion to metal`]],
+      [`活潑性較高的金屬能把活潑性較低的金屬由其鹽溶液中置換出來。既然${zhB}被置換出來，代表${zhA}的活潑性較高。反應中${zhA}失去電子成為離子（被氧化，是還原劑），而 $\\mathrm{${b}^{n+}}$ 得到電子成為金屬（被還原，是氧化劑）。判斷方向的口訣：失電子者被氧化、得電子者被還原，兩者必定同時發生。其餘三項分別把活潑性次序倒轉、否定置換反應的判準，或把電子流向寫反。`,
+       `A more reactive metal displaces a less reactive one from its salt solution. Since ${zhB} was displaced, ${zhA} is the more reactive. In the reaction ${zhA} loses electrons to form ions — it is oxidised and acts as the reducing agent — while $\\mathrm{${b}^{n+}}$ gains electrons to form the metal, being reduced and acting as the oxidising agent. The rule is that loss of electrons is oxidation and gain is reduction, and the two always occur together. The other options reverse the reactivity order, deny the basis of displacement, or reverse the direction of electron flow.`])
+  })
+
+// RE4 — 勒沙特列原理：改變條件對平衡位置的影響
+;([['提高壓力', 'raising the pressure', '氣體分子數較少', 'fewer gas molecules'],
+  ['降低壓力', 'lowering the pressure', '氣體分子數較多', 'more gas molecules']] as [string, string, string, string][])
+  .forEach(([zhChange, enChange, zhSide, enSide], i) => {
+    for (const [nL, nR] of [[2, 1], [3, 2], [4, 2], [2, 3], [1, 2], [2, 4]] as [number, number][]) {
+      if (nL === nR) continue
+      const fewer = nL < nR ? '正' : '逆'
+      const more = nL > nR ? '正' : '逆'
+      const ans = i === 0 ? fewer : more
+      const wrong = ans === '正' ? '逆' : '正'
+      add(`chemd_re4_${i}_${nL}${nR}`, T.hellRedox, FW.equilibrium, 'hard',
+        [`可逆反應中，反應物一方有 ${nL} 摩爾氣體，生成物一方有 ${nR} 摩爾氣體。在恆溫下${zhChange}，平衡會向哪一方移動？`,
+         `In a reversible reaction the reactant side has ${nL} mol of gas and the product side ${nR} mol. At constant temperature, which way does the equilibrium shift on ${enChange}?`],
+        [[`向${ans}反應方向移動，即移向${zhSide}的一方`,
+          `it shifts in the ${ans === '正' ? 'forward' : 'reverse'} direction, towards the side with ${enSide}`],
+         [`向${wrong}反應方向移動，即移向${zhSide}的一方`,
+          `it shifts in the ${wrong === '正' ? 'forward' : 'reverse'} direction, towards the side with ${enSide}`],
+         [`平衡位置不變，因為壓力並不影響氣相平衡`,
+          `the position is unchanged, because pressure does not affect gas-phase equilibria`],
+         [`平衡先向${wrong}移動，然後自動回到原來的位置`,
+          `it first shifts in the ${wrong === '正' ? 'forward' : 'reverse'} direction, then returns on its own`]],
+        [`勒沙特列原理：平衡受到外加改變時，會向【抵消該改變】的方向移動。${zhChange}後，系統傾向移向${zhSide}的一方以抵消壓力的變化。此處反應物一方 ${nL} 摩爾、生成物一方 ${nR} 摩爾，故平衡向${ans}反應方向移動。留意平衡移動改變的是各物質的【量】，平衡常數 $K$ 在恆溫下並不改變 —— 只有溫度才會改變 $K$。第三項忽略了氣體莫耳數不等時壓力確實有影響；第四項描述的「自動回復」並不符合平衡的行為。`,
+         `Le Chatelier's principle: a system at equilibrium shifts in the direction that OPPOSES an imposed change. On ${enChange} the system shifts towards the side with ${enSide} to counteract it. With ${nL} mol on the reactant side and ${nR} mol on the product side, the equilibrium moves in the ${ans === '正' ? 'forward' : 'reverse'} direction. Note that the shift changes the AMOUNTS of each species while the equilibrium constant $K$ is unchanged at constant temperature — only temperature alters $K$. The third option ignores that pressure does matter when the mole numbers differ; and the fourth describes a spontaneous return that equilibria do not exhibit.`])
+    }
+  })
+
+// OR3 — 同系列與官能團
+;([['烷', 'alkanes', '單鍵', 'single bonds only', '$\\mathrm{C_nH_{2n+2}}$'],
+  ['烯', 'alkenes', '碳碳雙鍵', 'a carbon-carbon double bond', '$\\mathrm{C_nH_{2n}}$'],
+  ['醇', 'alcohols', '羥基', 'a hydroxyl group', '$\\mathrm{C_nH_{2n+1}OH}$'],
+  ['羧酸', 'carboxylic acids', '羧基', 'a carboxyl group', '$\\mathrm{C_nH_{2n+1}COOH}$']] as [string, string, string, string, string][])
+  .forEach(([zh, en, zhFg, enFg, formula], i) => {
+    for (const nc of [2, 3, 4]) {
+      add(`chemd_or3_${i}_${nc}`, T.hellOrganic, FW.carbon, 'medium',
+        [`含 ${nc} 個碳原子的${zh}類化合物，其結構特徵是甚麼？`,
+         `What structural feature characterises a member of the ${en} with ${nc} carbon atoms?`],
+        [[`分子中含有${zhFg}，通式為 ${formula}`,
+          `the molecule contains ${enFg}, with general formula ${formula}`],
+         [`分子中含有碳碳三鍵，通式為 $\\mathrm{C_nH_{2n-2}}$`,
+          `the molecule contains a carbon-carbon triple bond, general formula $\\mathrm{C_nH_{2n-2}}$`],
+         [`分子中含有醛基，通式為 $\\mathrm{C_nH_{2n+1}CHO}$`,
+          `the molecule contains an aldehyde group, general formula $\\mathrm{C_nH_{2n+1}CHO}$`],
+         [`分子中只含離子鍵，通式為 $\\mathrm{C_nH_{2n}O_2}$`,
+          `the molecule contains only ionic bonds, general formula $\\mathrm{C_nH_{2n}O_2}$`]],
+        [`同系列是指結構相似、通式相同、相鄰成員相差一個 $\\mathrm{CH_2}$ 的一組化合物。${zh}類的結構特徵是${zhFg}，通式為 ${formula}。官能團決定該類化合物的化學性質 —— 同系列成員化學性質相似、物理性質隨碳鏈長度規律變化，正是因為官能團相同而分子大小遞增。其餘三項分別描述炔類、醛類，以及一組並不存在的「含離子鍵有機物」（有機化合物以共價鍵為主）。`,
+         `A homologous series is a family of compounds with similar structure, a common general formula, and successive members differing by $\\mathrm{CH_2}$. The ${en} are characterised by ${enFg}, with general formula ${formula}. The functional group determines the chemistry of the family, which is why members share similar chemical properties while physical properties vary regularly with chain length. The other options describe alkynes, aldehydes, and a non-existent class of ionically bonded organic compounds — organic compounds are predominantly covalent.`])
+    }
+  })
+
+// GV3 — 由質量求氣體體積（室溫及壓力，24.0 dm³ mol⁻¹）
+;([['H_2', 2], ['O_2', 32], ['N_2', 28], ['CO_2', 44], ['CH_4', 16], ['CO', 28],
+  ['SO_2', 64], ['NH_3', 17], ['Cl_2', 71], ['He', 4]] as [string, number][])
+  .forEach(([f, mr]) => {
+    for (const mult of [1, 2]) {
+      const mass = mr * mult
+      const vol = 24 * mult
+      add(`chemd_gv3_${f.replace(/[^A-Za-z0-9]/g, '')}_${mult}`, T.gasVolume, FW.quantity, 'medium',
+        [`${mass} g 的 $\\mathrm{${f}}$ 在室溫及壓力下所佔的體積是多少？（該氣體的摩爾質量為 ${mr} g mol⁻¹，氣體摩爾體積為 24.0 dm³ mol⁻¹）`,
+         `What volume does ${mass} g of $\\mathrm{${f}}$ occupy at room temperature and pressure? (Molar mass ${mr} g mol⁻¹; molar volume 24.0 dm³ mol⁻¹.)`],
+        [n(`${vol}.0 dm³`), n(`${round(mass / 24, 2)} dm³`), n(`${mass} dm³`), n(`${round(mass * 24, 1)} dm³`)],
+        [`先由質量求摩爾數：$n = \\dfrac{${mass}}{${mr}} = ${mult}$ mol。再乘氣體摩爾體積：$${mult} \\times 24.0 = ${vol}.0$ dm³。這是化學計算最常見的兩步路徑 —— 質量與體積之間不能直接換算，必須經摩爾數這個中間量。陷阱：${round(mass / 24, 2)} dm³ 把質量除以摩爾體積，兩個單位並不對應；${mass} dm³ 把質量的數值直接當成體積；${round(mass * 24, 1)} dm³ 漏了先除以摩爾質量。`,
+         `First convert mass to moles: $n = \\frac{${mass}}{${mr}} = ${mult}$ mol. Then multiply by the molar volume: $${mult} \\times 24.0 = ${vol}.0$ dm³. This two-step route is the commonest in chemical calculation — mass and volume cannot be converted directly and must pass through the amount in moles. Traps: ${round(mass / 24, 2)} dm³ divides mass by molar volume, whose units do not match; ${mass} dm³ reads the mass figure as a volume; ${round(mass * 24, 1)} dm³ omits the division by molar mass.`])
+    }
+  })
+
 export const chemistryBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
