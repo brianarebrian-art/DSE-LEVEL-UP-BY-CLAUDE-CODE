@@ -637,3 +637,112 @@ for (const age of [15, 16, 17, 18, 20]) {
 }
 
 export const peBank2Questions: Question[] = pe2.bank
+
+// ── 旅遊與款待：住宿營運與旅費計算 ────────────────────────────────────────
+
+const thsT2 = {
+  accom: { id: 'accommodation', zh: '住宿營運', en: 'Accommodation Operations' },
+  intro: { id: 'intro', zh: '旅遊與款待業概論', en: 'Intro to Tourism & Hospitality' },
+} satisfies Record<string, TopicMeta>
+const ths2 = createBank('ths')
+
+// TH4 — 房價連服務費與稅項
+for (const rate of [800, 1000, 1200, 1500, 2000, 2500]) {
+  for (const svcPct of [10]) {
+    for (const nights of [2, 3, 4, 5]) {
+      const perNight = (rate * (100 + svcPct)) / 100
+      const total = perNight * nights
+      if (!Number.isInteger(total)) continue
+      ths2.add(`ths2_th4_${rate}_${nights}`, thsT2.accom, thsFW.analysis, 'medium',
+        [`某酒店房價為每晚 ${fmt(rate)} 元，另加 ${svcPct}% 服務費。入住 ${nights} 晚的總費用是多少？`,
+         `A hotel charges \\$${fmt(rate)} per night plus a ${svcPct}% service charge. What is the total for ${nights} nights?`],
+        [money(fmt(total)), money(fmt(rate * nights)), money(fmt(perNight)), money(fmt(rate * nights + svcPct))],
+        [`每晚連服務費 = ${fmt(rate)} × (1 + ${svcPct}%) = ${fmt(perNight)} 元，住 ${nights} 晚共 ${fmt(perNight)} × ${nights} = ${fmt(total)} 元。服務費按【房價】計算，並且逐晚累加，因此不能只在總數上加一次。留意香港酒店慣例是「房價 ＋ 10% 服務費」，報價時是否已含服務費，是消費爭議最常見的來源。陷阱：${fmt(rate * nights)} 元漏了服務費；${fmt(perNight)} 元只算了一晚；${fmt(rate * nights + svcPct)} 元把百分率當成金額加上去。`,
+         `The nightly rate including service is \\$${fmt(rate)} × (1 + ${svcPct}%) = \\$${fmt(perNight)}, and ${nights} nights come to \\$${fmt(perNight)} × ${nights} = \\$${fmt(total)}. The service charge is levied on the room rate and accrues each night, so it cannot simply be added once to the total. Hong Kong hotels conventionally quote "rate plus 10% service", and whether a quoted price already includes it is the commonest source of billing disputes. Traps: \\$${fmt(rate * nights)} omits the service charge; \\$${fmt(perNight)} covers one night; \\$${fmt(rate * nights + svcPct)} adds the percentage as an amount.`])
+    }
+  }
+}
+
+// TH5 — 訪港旅客人次的按年增長率
+for (const before of [1000, 1200, 1500, 2000, 2400, 3000]) {
+  for (const pct of [5, 8, 10, 12, 15, 20, 25]) {
+    const after = (before * (100 + pct)) / 100
+    if (!Number.isInteger(after)) continue
+    ths2.add(`ths2_th5_${before}_${pct}`, thsT2.intro, thsFW.analysis, 'easy',
+      [`某地區的訪客人次由 ${fmt(before)} 萬升至 ${fmt(after)} 萬。按年增長率是多少？`,
+       `Visitor arrivals in a destination rise from ${fmt(before)} to ${fmt(after)} (in ten-thousands). What is the year-on-year growth rate?`],
+      [n(`${pct}%`), n(`${fmt(after - before)}%`), n(`${round(((after - before) / after) * 100, 2)}%`), n(`${round((after / before) * 100, 1)}%`)],
+      [`增長率 = 增加量 ÷ 【期初】人次 × 100% = (${fmt(after)} − ${fmt(before)}) ÷ ${fmt(before)} × 100% = ${pct}%。旅遊業的人次數據波動極大，比較時要留意基期效應：若上一年因特殊事件而基數極低，翌年即使只是回復正常水平，增長率也會顯得驚人。陷阱：${fmt(after - before)}% 是增加的【人次】而非百分率；${round(((after - before) / after) * 100, 2)}% 用了期末作分母；${round((after / before) * 100, 1)}% 求的是期末相對期初的比例，減去 100 才是增長率。`,
+       `Growth = increase ÷ the INITIAL figure × 100% = (${fmt(after)} − ${fmt(before)}) ÷ ${fmt(before)} × 100% = ${pct}%. Tourism arrivals swing widely, so base effects matter: if the previous year was depressed by an unusual event, merely returning to normal produces a startling growth rate. Traps: ${fmt(after - before)}% is the increase in arrivals rather than a percentage; ${round(((after - before) / after) * 100, 2)}% uses the final figure as denominator; ${round((after / before) * 100, 1)}% is the final as a proportion of the initial, needing 100 subtracted.`])
+  }
+}
+
+export const thsBank2Questions: Question[] = ths2.bank
+
+// ── 科技與生活：布料用量與成本 ────────────────────────────────────────────
+
+const tlT2 = {
+  fibres: { id: 'fibres', zh: '纖維與布料', en: 'Fibres & Fabrics' },
+  nutrition: { id: 'nutrition', zh: '膳食營養素', en: 'Dietary Nutrients' },
+} satisfies Record<string, TopicMeta>
+const tl2 = createBank('technology-living')
+
+// TL3 — 混紡布料的纖維含量
+for (const cotton of [30, 40, 50, 60, 65, 70, 80]) {
+  for (const weight of [200, 300, 500, 800]) {
+    const cottonG = (weight * cotton) / 100
+    if (!Number.isInteger(cottonG)) continue
+    tl2.add(`tl2_tl3_${cotton}_${weight}`, tlT2.fibres, tlFW.calc, 'easy',
+      [`一件 ${weight} 克的成衣，布料成分為 ${cotton}% 棉、${100 - cotton}% 聚酯纖維。當中棉的重量是多少克？`,
+       `A garment weighing ${weight} g is made of ${cotton}% cotton and ${100 - cotton}% polyester. What mass of cotton does it contain?`],
+      [n(`${fmt(cottonG)} g`), n(`${fmt(weight - cottonG)} g`), n(`${cotton} g`), n(`${fmt(weight)} g`)],
+      [`棉的重量 = 總重 × 棉的百分比 = ${weight} × ${cotton}% = ${fmt(cottonG)} 克，其餘 ${fmt(weight - cottonG)} 克為聚酯纖維。護理標籤上的成分百分比按【重量】計算而非體積或體積比 —— 這決定了洗滌方式：棉比例高則吸濕、易皺、可較高溫熨燙；聚酯比例高則快乾、抗皺，但須避免高溫。陷阱：${fmt(weight - cottonG)} g 算的是聚酯纖維；${cotton} g 把百分率當成克數；${fmt(weight)} g 只抄了總重。`,
+       `Cotton mass = total mass × cotton percentage = ${weight} × ${cotton}% = ${fmt(cottonG)} g, leaving ${fmt(weight - cottonG)} g of polyester. Fibre percentages on a care label are by WEIGHT, not by volume, and they determine how the garment is washed: a high cotton content absorbs moisture, creases readily and tolerates a hotter iron, while a high polyester content dries fast and resists creasing but must be kept away from high heat. Traps: ${fmt(weight - cottonG)} g is the polyester; ${cotton} g reads the percentage as grams; ${fmt(weight)} g copies the total.`])
+  }
+}
+
+// TL4 — 每日建議攝取量的百分比
+for (const rdi of [50, 60, 65, 70, 300, 400]) {
+  for (const pct of [10, 15, 20, 25, 40, 50]) {
+    const amt = (rdi * pct) / 100
+    if (!Number.isInteger(amt)) continue
+    tl2.add(`tl2_tl4_${rdi}_${pct}`, tlT2.nutrition, tlFW.calc, 'medium',
+      [`某營養素的每日建議攝取量為 ${rdi} 克。一份食物提供 ${fmt(amt)} 克，佔每日建議攝取量的百分之幾？`,
+       `The recommended daily intake of a nutrient is ${rdi} g. A portion supplies ${fmt(amt)} g. What percentage of the daily intake is that?`],
+      [n(`${pct}%`), n(`${round((rdi / amt) * 100, 1)}%`), n(`${fmt(amt)}%`), n(`${round(((rdi - amt) / rdi) * 100, 1)}%`)],
+      [`百分比 = 該份食物提供量 ÷ 每日建議攝取量 × 100% = ${fmt(amt)} ÷ ${rdi} × 100% = ${pct}%。營養標籤上的「每日攝取量參考值百分比」正是這樣計算，它讓消費者不必記住絕對數值也能判斷一份食物的分量是否合適。要留意參考值按一般成人設定，兒童、孕婦與運動員的需要並不相同。陷阱：${round((rdi / amt) * 100, 1)}% 把分子分母倒轉；${fmt(amt)}% 把克數當成百分率；${round(((rdi - amt) / rdi) * 100, 1)}% 算的是仍需攝取的比例。`,
+       `The percentage = amount supplied ÷ recommended daily intake × 100% = ${fmt(amt)} ÷ ${rdi} × 100% = ${pct}%. This is exactly how the percentage daily value on a nutrition label is derived, letting consumers judge a portion without memorising absolute figures. Note that reference values are set for a typical adult, and the needs of children, pregnant women and athletes differ. Traps: ${round((rdi / amt) * 100, 1)}% inverts the fraction; ${fmt(amt)}% reads grams as a percentage; ${round(((rdi - amt) / rdi) * 100, 1)}% is the share still to be consumed.`])
+  }
+}
+
+export const technologyLivingBank2Questions: Question[] = tl2.bank
+
+// ── ICT：資料表示與處理（進位制與編碼）────────────────────────────────────
+
+const ictT2 = { rep: { id: 'data_representation', zh: '資料表示與處理', en: 'Data Representation' } } satisfies Record<string, TopicMeta>
+const ict2 = createBank('ict')
+
+// IC7 — 十進位轉二進位
+for (let v = 9; v <= 80; v++) {
+  if (v % 5 !== 0 && v % 7 !== 0 && v % 11 !== 0) continue
+  const bin = v.toString(2)
+  ict2.add(`ict2_ic7_${v}`, ictT2.rep, ictFW.apply, 'medium',
+    [`十進位數 ${v} 轉換為二進位是多少？`, `What is the decimal number ${v} in binary?`],
+    [n(`$${bin}_2$`), n(`$${(v + 1).toString(2)}_2$`), n(`$${v.toString(8)}_2$`), n(`$${bin.split('').reverse().join('')}_2$`)],
+    [`把 ${v} 反覆除以 2 並記錄餘數，再由下而上讀出，即得 $${bin}_2$。驗算方法是把二進位各位的權值相加：$${bin.split('').map((b, j, a) => (b === '1' ? 2 ** (a.length - 1 - j) : 0)).filter(Boolean).join(' + ')} = ${v}$。陷阱：$${(v + 1).toString(2)}_2$ 是 ${v + 1} 的二進位；$${v.toString(8)}_2$ 是八進位的寫法；$${bin.split('').reverse().join('')}_2$ 把餘數次序讀反 —— 除法取餘數時，【最後】得出的餘數是最高位，這是最常見的失分位。`,
+     `Divide ${v} repeatedly by 2, recording the remainders, then read them from bottom to top to get $${bin}_2$. Check by summing the place values: $${bin.split('').map((b, j, a) => (b === '1' ? 2 ** (a.length - 1 - j) : 0)).filter(Boolean).join(' + ')} = ${v}$. Traps: $${(v + 1).toString(2)}_2$ is ${v + 1} in binary; $${v.toString(8)}_2$ is the octal form; $${bin.split('').reverse().join('')}_2$ reads the remainders in the wrong order — the LAST remainder obtained is the most significant bit, and reversing it is the commonest slip.`])
+}
+
+// IC8 — 位元組與儲存單位換算
+for (const [n1, u1, factor, u2] of [[2, 'KB', 1024, 'B'], [4, 'MB', 1024, 'KB'], [8, 'GB', 1024, 'MB'],
+  [3, 'KB', 1024, 'B'], [6, 'MB', 1024, 'KB'], [5, 'GB', 1024, 'MB'], [10, 'KB', 1024, 'B'],
+  [16, 'MB', 1024, 'KB'], [12, 'GB', 1024, 'MB'], [20, 'KB', 1024, 'B']] as [number, string, number, string][]) {
+  const v = n1 * factor
+  ict2.add(`ict2_ic8_${n1}${u1}`, ictT2.rep, ictFW.apply, 'easy',
+    [`${n1} ${u1} 等於多少 ${u2}？（以 1024 為換算基數）`, `How many ${u2} are there in ${n1} ${u1}? (Using 1024 as the conversion factor.)`],
+    [n(`${fmt(v)}`), n(`${fmt(n1 * 1000)}`), n(`${fmt(n1)}`), n(`${fmt(v * 1024)}`)],
+    [`電腦儲存單位以 2 的冪為基數，故 1 ${u1} = 1024 ${u2}，${n1} ${u1} = ${n1} × 1024 = ${fmt(v)} ${u2}。要留意硬碟廠商常以 1000 為基數標示容量，因此一個標示 1 TB 的硬碟，在作業系統中會顯示約 931 GB —— 差異來自基數不同而非容量縮水。陷阱：${fmt(n1 * 1000)} 用了 1000 為基數；${fmt(n1)} 完全沒有換算；${fmt(v * 1024)} 多換算了一級。`,
+     `Storage units are powers of two, so 1 ${u1} = 1024 ${u2} and ${n1} ${u1} = ${n1} × 1024 = ${fmt(v)} ${u2}. Note that drive manufacturers commonly label capacity using 1000, which is why a drive sold as 1 TB shows as about 931 GB in the operating system — the difference comes from the base used, not from missing capacity. Traps: ${fmt(n1 * 1000)} uses 1000 as the base; ${fmt(n1)} makes no conversion; ${fmt(v * 1024)} converts one level too far.`])
+}
+
+export const ictBank2Questions: Question[] = ict2.bank

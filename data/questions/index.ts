@@ -42,7 +42,7 @@ import { economicsFloorBatch2Questions } from './economics-floor-batch2'
 import { englishReviewedQuestions } from './english-reviewed'
 import { bafsReviewedQuestions } from './bafs-reviewed'
 import { bafsBankQuestions } from './bafs-bank'
-import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestions, peBankQuestions, biologyBankQuestions, musicBankQuestions, ictBankQuestions, geographyBankQuestions, biologyBank2Questions, healthManagementBankQuestions, peBank2Questions } from './applied-banks'
+import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestions, peBankQuestions, biologyBankQuestions, musicBankQuestions, ictBankQuestions, geographyBankQuestions, biologyBank2Questions, healthManagementBankQuestions, peBank2Questions, thsBank2Questions, technologyLivingBank2Questions, ictBank2Questions } from './applied-banks'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
@@ -104,7 +104,7 @@ const banks: Record<string, SubjectBank> = {
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
   biology: { questions: [...biologyQuestions, ...biologyBankQuestions, ...biologyBank2Questions], topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
-  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions], topics: ictTopics },
+  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions, ...ictBank2Questions], topics: ictTopics },
   chinese: {
     questions: [
       ...chineseQuestions,
@@ -122,7 +122,7 @@ const banks: Record<string, SubjectBank> = {
   geography: { questions: [...geographyQuestions, ...geographyBankQuestions], topics: geographyTopics },
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },
-  ths: { questions: [...thsQuestions, ...thsBankQuestions], topics: thsTopics },
+  ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions], topics: thsTopics },
   'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions], topics: healthManagementTopics },
   'design-tech': { questions: [...designTechQuestions, ...designTechBankQuestions], topics: designTechTopics },
   music: { questions: [...musicQuestions, ...musicBankQuestions], topics: musicTopics },
@@ -132,7 +132,7 @@ const banks: Record<string, SubjectBank> = {
   'visual-arts': { questions: visualArtsQuestions, topics: visualArtsTopics },
   csd: { questions: [...csdQuestions, ...csdReviewedQuestions], topics: csdTopics },
   'ethics-religious': { questions: ethicsReligiousQuestions, topics: ethicsReligiousTopics },
-  'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions], topics: technologyLivingTopics },
+  'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions], topics: technologyLivingTopics },
 }
 
 // ── 機器閘放行題（auto-gate）──────────────────────────────────────────────

@@ -67,7 +67,7 @@ const loaders: Record<string, Loader> = {
     const [base, floor1, bank] = await Promise.all([
       import('./ict'), import('./ict-floor-batch1'), import('./applied-banks'),
     ])
-    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions, ...bank.ictBankQuestions]
+    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions, ...bank.ictBankQuestions, ...bank.ictBank2Questions]
   },
   chinese: async () => {
     // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
@@ -120,7 +120,7 @@ const loaders: Record<string, Loader> = {
   'chinese-history': async () => (await import('./chinese-history')).chineseHistoryQuestions,
   ths: async () => {
     const [base, bank] = await Promise.all([import('./ths'), import('./applied-banks')])
-    return [...base.thsQuestions, ...bank.thsBankQuestions]
+    return [...base.thsQuestions, ...bank.thsBankQuestions, ...bank.thsBank2Questions]
   },
   'health-management': async () => {
     const [base, floor1] = await Promise.all([
@@ -150,7 +150,7 @@ const loaders: Record<string, Loader> = {
   'ethics-religious': async () => (await import('./ethics-religious')).ethicsReligiousQuestions,
   'technology-living': async () => {
     const [base, bank] = await Promise.all([import('./technology-living'), import('./applied-banks')])
-    return [...base.technologyLivingQuestions, ...bank.technologyLivingBankQuestions]
+    return [...base.technologyLivingQuestions, ...bank.technologyLivingBankQuestions, ...bank.technologyLivingBank2Questions]
   },
 }
 
