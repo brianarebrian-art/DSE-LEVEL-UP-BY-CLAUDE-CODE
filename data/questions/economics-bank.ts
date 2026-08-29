@@ -648,6 +648,115 @@ for (const nom of [2, 3, 4, 5, 6, 8]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第七批母模板 —— 推經濟過 1,000（2026-08-29）
+// 補最薄的四個課題：基礎概念 50、生產可能線 51、國際貿易 55、市場效率 56。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// EL4 — 需求彈性與總收益的方向
+;([['大於 1（富有彈性）', 'greater than 1 (elastic)', '下跌', 'falls', '上升', 'rises'],
+  ['小於 1（缺乏彈性）', 'less than 1 (inelastic)', '下跌', 'falls', '下跌', 'falls']] as
+  [string, string, string, string, string, string][])
+  .forEach(([zhE, enE, zhP, enP, zhR, enR], i) => {
+    for (const price of [20, 40, 50, 80, 100]) {
+      for (const cut of [10, 20]) {
+        add(`econ_el4_${i}_${price}_${cut}`, T.elasticity, FW.mechanism, 'hard',
+          [`某貨品的需求價格彈性${zhE}。若售價由 ${price} 元${zhP} ${cut}%，總收益會怎樣變化？`,
+           `A good has price elasticity of demand ${enE}. If its price ${enP} by ${cut}% from \\$${price}, how does total revenue change?`],
+          [[`總收益${zhR}`, `total revenue ${enR}`],
+           [`總收益${zhR === '上升' ? '下跌' : '上升'}`, `total revenue ${enR === 'rises' ? 'falls' : 'rises'}`],
+           ['總收益不變，因為價格與數量的變化剛好抵銷', 'total revenue is unchanged, as the price and quantity effects exactly offset'],
+           ['無法判斷，因為總收益只由成本決定', 'it cannot be determined, since revenue depends only on costs']],
+          [`總收益 = 價格 × 數量，減價時價格效應（每單位收少了）與數量效應（賣多了）方向相反，誰勝出由彈性決定。彈性${zhE}時，${i === 0 ? '數量的百分比變化【大於】價格的百分比變化，數量效應勝出，故減價令總收益上升' : '數量的百分比變化【小於】價格的百分比變化，價格效應勝出，故減價令總收益下跌'}。單位彈性（等於 1）時兩者才剛好抵銷，總收益不變 —— 但那是彈性恰好為 1 的特例，並非本題的情況。最後一項把收益與成本混為一談。`,
+           `Total revenue is price times quantity, and a price cut sets the price effect (less per unit) against the quantity effect (more units) in opposite directions; elasticity decides which wins. With elasticity ${enE}, ${i === 0 ? 'the percentage change in quantity EXCEEDS that in price, the quantity effect wins, and a price cut raises revenue' : 'the percentage change in quantity is SMALLER than that in price, the price effect wins, and a price cut lowers revenue'}. The two offset exactly only at unit elasticity, which is a special case rather than this one. The last option confuses revenue with cost.`])
+      }
+    }
+  })
+
+// BC4 — 生產四要素及其報酬
+;([['土地', 'land', '地租', 'rent'], ['勞動', 'labour', '工資', 'wages'],
+  ['資本', 'capital', '利息', 'interest'], ['企業家職能', 'entrepreneurship', '利潤', 'profit']] as
+  [string, string, string, string][])
+  .forEach(([zhF, enF, zhR, enR], i) => {
+    const others = [['地租', 'rent'], ['工資', 'wages'], ['利息', 'interest'], ['利潤', 'profit']]
+      .filter((_, j) => j !== i)
+    add(`econ_bc4_${i}`, T.basics, FW.scarcity, 'easy',
+      [`在生產要素之中，${zhF}所得的報酬稱為甚麼？`, `What is the reward to ${enF} as a factor of production?`],
+      [[zhR, enR], [others[0][0], others[0][1]], [others[1][0], others[1][1]], [others[2][0], others[2][1]]],
+      [`四種生產要素各有對應的報酬：土地得地租、勞動得工資、資本得利息、企業家職能得利潤。故${zhF}所得的是${zhR}。要留意「企業家職能」是承擔風險、統籌其餘三種要素的功能，其報酬（利潤）之所以不固定，正是因為它是最後的剩餘 —— 其餘三種要素先取得約定的報酬，餘下的才歸企業家，蝕本時亦由他承擔。`,
+       `Each factor of production has its own reward: land earns rent, labour earns wages, capital earns interest, and entrepreneurship earns profit. So ${enF} earns ${enR}. Note that entrepreneurship is the function of bearing risk and organising the other three factors, and its reward is variable precisely because it is the residual: the other factors are paid their agreed returns first and whatever remains goes to the entrepreneur, who also absorbs any loss.`])
+  })
+
+// PF4 — 生產可能線的移動
+;([['技術進步令兩種貨品的生產力同時提高', 'technological progress raises productivity in both goods', '整條線向外移', 'the whole frontier shifts outwards'],
+  ['一場天災摧毀了部分資本存量', 'a natural disaster destroys part of the capital stock', '整條線向內移', 'the whole frontier shifts inwards'],
+  ['勞動人口因移民而增加', 'the labour force grows through immigration', '整條線向外移', 'the whole frontier shifts outwards'],
+  ['只有生產甲貨品的技術改善', 'technology improves only for good A', '線在甲軸一端向外移，乙軸一端不變', 'the frontier pivots outwards on the A axis while the B intercept is unchanged']] as
+  [string, string, string, string][])
+  .forEach(([zhC, enC, zhE, enE], i) => {
+    const alts = [['整條線向外移', 'the whole frontier shifts outwards'], ['整條線向內移', 'the whole frontier shifts inwards'],
+      ['線的位置不變，只是生產點沿線移動', 'the frontier does not move; the production point slides along it'],
+      ['線在甲軸一端向外移，乙軸一端不變', 'the frontier pivots outwards on the A axis while the B intercept is unchanged']]
+      .filter(([z]) => z !== zhE)
+    add(`econ_pf4_${i}`, T.ppf, FW.scarcity, 'medium',
+      [`若${zhC}，生產可能線會怎樣變化？`, `What happens to the production possibility frontier if ${enC}?`],
+      [[zhE, enE], [alts[0][0], alts[0][1]], [alts[1][0], alts[1][1]], [alts[2][0], alts[2][1]]],
+      [`生產可能線代表以【現有資源與技術】所能達到的最大產出組合。資源增加或技術改善令線向外移（經濟增長）；資源減少或技術倒退令線向內移。若改善只涉及其中一種貨品，則該貨品的截距外移而另一種不變，線因而轉動而非平移。要分清「線本身移動」與「沿線移動」：後者只是資源在兩種貨品之間重新分配，總能力並無改變。此處${zhC}，故${zhE}。`,
+       `The frontier shows the maximum output combinations attainable with EXISTING resources and technology. More resources or better technology shift it outwards, which is economic growth; fewer resources or lost technology shift it inwards. If the improvement affects only one good, that good's intercept moves out while the other stays put, so the frontier pivots rather than shifting. Distinguish a shift OF the frontier from a movement ALONG it: the latter merely reallocates resources between the goods and leaves total capacity unchanged. Here ${enC}, so ${enE}.`])
+  })
+
+// MK4 — 供求變動對均衡的影響
+;([['需求增加而供應不變', 'demand rises while supply is unchanged', '價格上升、數量上升', 'price rises and quantity rises'],
+  ['需求減少而供應不變', 'demand falls while supply is unchanged', '價格下跌、數量下跌', 'price falls and quantity falls'],
+  ['供應增加而需求不變', 'supply rises while demand is unchanged', '價格下跌、數量上升', 'price falls and quantity rises'],
+  ['供應減少而需求不變', 'supply falls while demand is unchanged', '價格上升、數量下跌', 'price rises and quantity falls']] as
+  [string, string, string, string][])
+  .forEach(([zhC, enC, zhE, enE], i) => {
+    const alts = [['價格上升、數量上升', 'price rises and quantity rises'], ['價格下跌、數量下跌', 'price falls and quantity falls'],
+      ['價格下跌、數量上升', 'price falls and quantity rises'], ['價格上升、數量下跌', 'price rises and quantity falls']]
+      .filter(([z]) => z !== zhE)
+    add(`econ_mk4_${i}`, T.market, FW.mechanism, 'medium',
+      [`若${zhC}，市場的均衡價格與均衡數量會怎樣變化？`,
+       `If ${enC}, what happens to the equilibrium price and quantity?`],
+      [[zhE, enE], [alts[0][0], alts[0][1]], [alts[1][0], alts[1][1]], [alts[2][0], alts[2][1]]],
+      [`只有一條曲線移動時，新舊均衡點的比較是確定的。${zhC}：${i < 2 ? '需求曲線沿【不變的】供應曲線移動，故價格與數量【同向】變化' : '供應曲線沿【不變的】需求曲線移動，故價格與數量【反向】變化'}，結果是${zhE}。記住這個規律比逐次畫圖更快：需求移動 → 同向；供應移動 → 反向。若兩條曲線同時移動，其中一項的變化方向就會變成不確定，要視乎兩者移動的幅度。`,
+       `When only one curve moves, comparing the old and new equilibria gives a definite answer. Here ${enC}: ${i < 2 ? 'the demand curve moves along an UNCHANGED supply curve, so price and quantity move in the SAME direction' : 'the supply curve moves along an UNCHANGED demand curve, so price and quantity move in OPPOSITE directions'}, giving ${enE}. This rule is quicker than redrawing the diagram each time: demand shifts move them together, supply shifts move them apart. If both curves shift, one of the two outcomes becomes indeterminate and depends on the relative sizes of the shifts.`])
+  })
+
+// MA7 — 經濟增長率（由兩年的本地生產總值計算）
+for (const y0 of [1000, 1200, 1500, 2000, 2500, 3000, 4000]) {
+  for (const pct of [2, 3, 4, 5, 6, 8]) {
+    const y1 = (y0 * (100 + pct)) / 100
+    if (!Number.isInteger(y1)) continue
+    add(`econ_ma7_${y0}_${pct}`, T.macro, FW.macro, 'medium',
+      [`某經濟體的實質本地生產總值由 ${efmt(y0)} 億元升至 ${efmt(y1)} 億元。經濟增長率是多少？`,
+       `An economy's real GDP rises from ${efmt(y0)} to ${efmt(y1)} (hundred millions). What is the rate of economic growth?`],
+      [n(`${pct}%`), n(`${efmt(y1 - y0)}%`), n(`${round(((y1 - y0) / y1) * 100, 2)}%`), n(`${round((y1 / y0) * 100, 1)}%`)],
+      [`增長率 = 增加量 ÷ 【期初】數值 × 100% = $\\dfrac{${efmt(y1)} - ${efmt(y0)}}{${efmt(y0)}} \\times 100\\% = ${pct}\\%$。必須用【實質】本地生產總值而非名義值，否則物價上升會被誤讀成產出增加。陷阱：${efmt(y1 - y0)}% 是增加的【金額】而非百分率；${round(((y1 - y0) / y1) * 100, 2)}% 用了期末數值作分母；${round((y1 / y0) * 100, 1)}% 求的是期末相對期初的【比例】，減去 100 才是增長率。`,
+       `Growth = increase ÷ the INITIAL value × 100% = $\\frac{${efmt(y1)} - ${efmt(y0)}}{${efmt(y0)}} \\times 100\\% = ${pct}\\%$. Real rather than nominal GDP must be used, or rising prices would be misread as rising output. Traps: ${efmt(y1 - y0)}% is the increase in dollars rather than a percentage; ${round(((y1 - y0) / y1) * 100, 2)}% uses the final value as denominator; ${round((y1 / y0) * 100, 1)}% is the final value as a proportion of the initial, and 100 must be subtracted to get the growth rate.`])
+  }
+}
+
+// TR5 — 貿易差額
+for (const exp of [800, 1200, 1500, 2000, 2400]) {
+  for (const diff of [200, 400, 600]) {
+    for (const sign of [1, -1]) {
+      const imp = exp - sign * diff
+      if (imp <= 0) continue
+      const bal = exp - imp
+      add(`econ_tr5_${exp}_${diff}_${sign > 0 ? 'p' : 'm'}`, T.trade, FW.intl, 'easy',
+        [`某經濟體某年出口 ${efmt(exp)} 億元、進口 ${efmt(imp)} 億元。其貿易差額是多少，屬順差還是逆差？`,
+         `An economy exports ${efmt(exp)} and imports ${efmt(imp)} (hundred millions) in a year. What is its trade balance, and is it a surplus or a deficit?`],
+        [[`${efmt(Math.abs(bal))} 億元${bal > 0 ? '順差' : '逆差'}`, `a ${efmt(Math.abs(bal))} ${bal > 0 ? 'surplus' : 'deficit'}`],
+         [`${efmt(Math.abs(bal))} 億元${bal > 0 ? '逆差' : '順差'}`, `a ${efmt(Math.abs(bal))} ${bal > 0 ? 'deficit' : 'surplus'}`],
+         [`${efmt(exp + imp)} 億元${bal > 0 ? '順差' : '逆差'}`, `a ${efmt(exp + imp)} ${bal > 0 ? 'surplus' : 'deficit'}`],
+         [`${efmt(exp)} 億元${bal > 0 ? '順差' : '逆差'}`, `a ${efmt(exp)} ${bal > 0 ? 'surplus' : 'deficit'}`]],
+        [`貿易差額 = 出口 − 進口 = ${efmt(exp)} − ${efmt(imp)} = ${efmt(bal)} 億元。出口大於進口為順差，小於則為逆差，此處屬${bal > 0 ? '順差' : '逆差'}。留意逆差本身並非必然是壞事：它可能反映資本流入或國內投資旺盛，判斷要看成因而非單看正負。陷阱：第二項方向寫反；${efmt(exp + imp)} 億元把兩者相加，那是【貿易總額】而非差額；${efmt(exp)} 億元只抄了出口。`,
+         `The trade balance is exports minus imports: ${efmt(exp)} − ${efmt(imp)} = ${efmt(bal)}. Exports above imports is a surplus, below is a deficit, so this is a ${bal > 0 ? 'surplus' : 'deficit'}. Note that a deficit is not necessarily bad: it may reflect capital inflows or strong domestic investment, so the cause matters more than the sign. Traps: the second reverses the direction; ${efmt(exp + imp)} adds the two, which is total TRADE rather than the balance; ${efmt(exp)} copies exports alone.`])
+    }
+  }
+}
+
 export const economicsBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
