@@ -661,6 +661,95 @@ for (const theo of [20, 25, 40, 50, 80, 100]) {
     }
   })
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第五批母模板 —— 推向 1,000（2026-08-29）
+// 補強前最薄：有機化學（高階）29、化學式與式量 30、氧化還原 33、
+// 有機化學 34、反應速率與能量 40、週期表 42、摩爾概念 44、化學計量 44。
+// 化學式一律 \mathrm{}；含中文的選項一律明寫雙語對，不用 n()。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// MO2 — 由質量求摩爾數
+;([['H_2O', 18], ['CO_2', 44], ['NaCl', 58.5], ['CaCO_3', 100], ['O_2', 32], ['N_2', 28],
+  ['NaOH', 40], ['H_2SO_4', 98], ['HCl', 36.5], ['CH_4', 16], ['NH_3', 17], ['MgO', 40],
+  ['CuO', 80], ['KOH', 56], ['C_6H_{12}O_6', 180], ['CaO', 56]] as [string, number][])
+  .forEach(([f, mr]) => {
+    // 刻意避開 0.5：8.5 g 與 85 g 的題幹在撞題閘的正規化之下（小數點被移除）
+    // 會變成同一條，NH_3 一組即時中招。倍數一律取整數。
+    for (const mult of [2, 3, 5]) {
+      const mass = mr * mult
+      if (!Number.isInteger(mass * 10)) continue
+      add(`cheme_mo2_${f.replace(/[^A-Za-z0-9]/g, '')}_${String(mult).replace('.', 'p')}`, T.mole, FW.quantity, 'easy',
+        [`${round(mass, 1)} g 的 $\\mathrm{${f}}$ 相當於多少摩爾？（摩爾質量 ${mr} g mol⁻¹）`,
+         `How many moles are there in ${round(mass, 1)} g of $\\mathrm{${f}}$? (Molar mass ${mr} g mol⁻¹.)`],
+        [n(`$${mult}$ mol`), n(`$${round(mass * mr, 1)}$ mol`), n(`$${round(mr / mass, 3)}$ mol`), n(`$${round(mass, 1)}$ mol`)],
+        [`摩爾數 $n = \\dfrac{\\text{質量}}{\\text{摩爾質量}} = \\dfrac{${round(mass, 1)}}{${mr}} = ${mult}$ mol。摩爾是連接【可稱量的質量】與【粒子數目】的橋樑，化學計量幾乎所有計算都要先化為摩爾。陷阱：$${round(mass * mr, 1)}$ mol 把兩者相乘；$${round(mr / mass, 3)}$ mol 把分子分母倒轉；$${round(mass, 1)}$ mol 直接把質量的數值當成摩爾數。`,
+         `The amount is $n = \\frac{\\text{mass}}{\\text{molar mass}} = \\frac{${round(mass, 1)}}{${mr}} = ${mult}$ mol. The mole is the bridge between a mass one can weigh and a number of particles, and nearly every stoichiometric calculation begins by converting to moles. Traps: $${round(mass * mr, 1)}$ mol multiplies the two; $${round(mr / mass, 3)}$ mol inverts the fraction; $${round(mass, 1)}$ mol reads the mass figure as an amount.`])
+    }
+  })
+
+// ST3 — 由平衡方程式求生成物質量
+;([[2, 'Mg', 24, 1, 'O_2', 2, 'MgO', 40], [1, 'CaCO_3', 100, 1, 'CaO', 1, 'CaO', 56],
+  [2, 'H_2', 2, 1, 'O_2', 2, 'H_2O', 18], [1, 'C', 12, 1, 'O_2', 1, 'CO_2', 44],
+  [2, 'Na', 23, 1, 'Cl_2', 2, 'NaCl', 58.5], [1, 'Zn', 65, 1, 'S', 1, 'ZnS', 97],
+  [4, 'Al', 27, 3, 'O_2', 2, 'Al_2O_3', 102], [1, 'Fe', 56, 1, 'S', 1, 'FeS', 88]] as
+  [number, string, number, number, string, number, string, number][])
+  .forEach(([cA, fA, mrA, , , cP, fP, mrP]) => {
+    for (const molA of [1, 2, 4]) {
+      const massA = molA * mrA
+      const molP = (molA * cP) / cA
+      const massP = molP * mrP
+      if (!Number.isInteger(molP * 100)) return
+      add(`cheme_st3_${fA.replace(/[^A-Za-z0-9]/g, '')}_${molA}`, T.stoichiometry, FW.quantReason, 'hard',
+        [`按方程式 $${cA}\\mathrm{${fA}} + \\ldots \\rightarrow ${cP}\\mathrm{${fP}} + \\ldots$，完全反應 ${round(massA, 1)} g 的 $\\mathrm{${fA}}$ 可得多少克 $\\mathrm{${fP}}$？（摩爾質量：$\\mathrm{${fA}}$ ${mrA}、$\\mathrm{${fP}}$ ${mrP} g mol⁻¹）`,
+         `For $${cA}\\mathrm{${fA}} + \\ldots \\rightarrow ${cP}\\mathrm{${fP}} + \\ldots$, what mass of $\\mathrm{${fP}}$ forms when ${round(massA, 1)} g of $\\mathrm{${fA}}$ reacts completely? (Molar masses: $\\mathrm{${fA}}$ ${mrA}, $\\mathrm{${fP}}$ ${mrP} g mol⁻¹.)`],
+        [n(`$${round(massP, 1)}$ g`), n(`$${round(massA, 1)}$ g`), n(`$${round(molA * mrP, 1)}$ g`), n(`$${round(massA * mrP / mrA * cA / cP, 1)}$ g`)],
+        [`化學計量的三步路徑：質量 → 摩爾 → 摩爾 → 質量。第一步 $n(\\mathrm{${fA}}) = \\dfrac{${round(massA, 1)}}{${mrA}} = ${molA}$ mol。第二步按方程式的【係數比】$${cA} : ${cP}$ 換算：$n(\\mathrm{${fP}}) = ${molA} \\times \\dfrac{${cP}}{${cA}} = ${round(molP, 2)}$ mol。第三步 $m = ${round(molP, 2)} \\times ${mrP} = ${round(massP, 1)}$ g。中間必須經過摩爾 —— 質量之間【不能】直接按係數比換算，因為不同物質每摩爾的質量不同。陷阱：$${round(massA, 1)}$ g 以為質量守恆即代表生成物質量等於反應物；$${round(molA * mrP, 1)}$ g 漏了係數比；最後一項把係數比用反了方向。`,
+         `Stoichiometry follows four steps: mass to moles, moles to moles, moles to mass. First $n(\\mathrm{${fA}}) = \\frac{${round(massA, 1)}}{${mrA}} = ${molA}$ mol. Then apply the COEFFICIENT ratio $${cA} : ${cP}$: $n(\\mathrm{${fP}}) = ${molA} \\times \\frac{${cP}}{${cA}} = ${round(molP, 2)}$ mol. Finally $m = ${round(molP, 2)} \\times ${mrP} = ${round(massP, 1)}$ g. The mole step cannot be skipped — masses may NOT be scaled directly by the coefficients, because a mole of each substance weighs differently. Traps: $${round(massA, 1)}$ g assumes conservation of mass means equal product mass; $${round(molA * mrP, 1)}$ g omits the coefficient ratio; the last option applies that ratio the wrong way round.`])
+    }
+  })
+
+// RE5 — 半反應中轉移的電子數
+;([['Mg', 0, 2], ['Al', 0, 3], ['Fe', 2, 3], ['Cu', 0, 2], ['Zn', 0, 2], ['Fe', 0, 2],
+  ['Fe', 0, 3], ['Sn', 2, 4], ['Cr', 3, 6], ['Mn', 2, 7], ['Cu', 1, 2], ['Pb', 2, 4]] as
+  [string, number, number][])
+  .forEach(([sym, from, to]) => {
+    const e = to - from
+    add(`cheme_re5_${sym}_${from}_${to}`, T.redox, FW.electron, 'medium',
+      [`某物種中的 ${sym} 由氧化數 $+${from}$ 變為 $+${to}$。每個 ${sym} 原子轉移了多少個電子，屬氧化還是還原？`,
+       `${sym} changes from oxidation number $+${from}$ to $+${to}$. How many electrons does each ${sym} atom transfer, and is it oxidised or reduced?`],
+      [[`失去 ${e} 個電子，被氧化`, `loses ${e} electrons and is oxidised`],
+       [`得到 ${e} 個電子，被還原`, `gains ${e} electrons and is reduced`],
+       [`失去 ${to} 個電子，被氧化`, `loses ${to} electrons and is oxidised`],
+       [`失去 ${from + to} 個電子，被還原`, `loses ${from + to} electrons and is reduced`]],
+      [`氧化數【上升】代表失去電子，即被氧化。由 $+${from}$ 升至 $+${to}$，差值為 $${to} - ${from} = ${e}$，故每個 ${sym} 原子失去 ${e} 個電子。留意電子數目是氧化數的【變化量】而非終值 —— 這是配平半反應時最常見的失分位。陷阱：第二項方向寫反（得電子是還原，對應氧化數下降）；第三項用了終值 ${to} 而非變化量；第四項把兩個氧化數相加。`,
+       `A RISE in oxidation number means loss of electrons, that is oxidation. From $+${from}$ to $+${to}$ the change is $${to} - ${from} = ${e}$, so each ${sym} atom loses ${e} electrons. The electron count is the CHANGE in oxidation number, not the final value, and this is where balancing half-equations most often goes wrong. Traps: the second reverses the direction, since gaining electrons is reduction and corresponds to a falling oxidation number; the third uses the final value ${to}; the fourth adds the two oxidation numbers.`])
+  })
+
+// OR4 — 烷烴的結構異構體數目（已知值，非估算）
+;([[1, 1], [2, 1], [3, 1], [4, 2], [5, 3], [6, 5], [7, 9], [8, 18]] as [number, number][])
+  .forEach(([nc, iso]) => {
+    if (iso === 1) return
+    add(`cheme_or4_${nc}`, T.hellOrganic, FW.carbon, 'hard',
+      [`分子式為 $\\mathrm{C_{${nc}}H_{${2 * nc + 2}}}$ 的烷烴，共有多少個結構異構體？`,
+       `How many structural isomers does the alkane $\\mathrm{C_{${nc}}H_{${2 * nc + 2}}}$ have?`],
+      [n(`$${iso}$`), n(`$${nc}$`), n(`$${iso + 1}$`), n(`$${2 * nc + 2}$`)],
+      [`結構異構體是分子式相同、但原子連接方式不同的化合物。$\\mathrm{C_{${nc}}H_{${2 * nc + 2}}}$ 共有 ${iso} 個：由直鏈開始，逐步把碳鏈縮短並在不同位置接上支鏈，同時要避免重複計算同一個結構的不同畫法（例如把支鏈畫在左邊或右邊是同一個分子）。碳數愈多，異構體數目增長極快 —— 這正是有機化合物種類遠多於無機的原因。陷阱：$${nc}$ 是碳原子數；$${2 * nc + 2}$ 是氫原子數；$${iso + 1}$ 多數了一個，通常是把同一結構的兩種畫法當成兩個。`,
+       `Structural isomers share a molecular formula but differ in how the atoms are connected. $\\mathrm{C_{${nc}}H_{${2 * nc + 2}}}$ has ${iso}: start from the straight chain, then shorten it and attach branches at successive positions, while avoiding counting one structure twice because it has been drawn differently — a branch drawn to the left or the right is the same molecule. The count grows very fast with carbon number, which is why organic compounds so vastly outnumber inorganic ones. Traps: $${nc}$ is the carbon count; $${2 * nc + 2}$ the hydrogen count; $${iso + 1}$ counts one structure twice.`])
+  })
+
+// RT1 — 反應速率 = 濃度變化 ÷ 時間
+for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
+  for (const t of [10, 20, 25, 50]) {
+    const rate = dc / t
+    add(`cheme_rt1_${String(dc).replace('.', 'p')}_${t}`, T.ratesEnergy, FW.dynamics, 'medium',
+      [`某反應中，反應物濃度在 ${t} 秒內由 ${round(dc + 1, 2)} mol dm⁻³ 降至 ${round(1, 2)}.00 mol dm⁻³。平均反應速率是多少 mol dm⁻³ s⁻¹？`,
+       `In a reaction the concentration of a reactant falls from ${round(dc + 1, 2)} to 1.00 mol dm⁻³ over ${t} s. What is the average rate in mol dm⁻³ s⁻¹?`],
+      [n(`$${round(rate, 4)}$`), n(`$${round(dc, 2)}$`), n(`$${round(t / dc, 2)}$`), n(`$${round((dc + 1) / t, 4)}$`)],
+      [`平均反應速率 $= \\dfrac{\\text{濃度變化}}{\\text{時間}} = \\dfrac{${round(dc, 2)}}{${t}} = ${round(rate, 4)}$ mol dm⁻³ s⁻¹。分子要用【變化量】而非終值或初值。反應速率隨時間下降，因為反應物濃度愈低，單位時間內有效碰撞的次數愈少 —— 所以「平均速率」與「瞬時速率」並不相同。陷阱：$${round(dc, 2)}$ 只算了濃度變化而未除以時間；$${round(t / dc, 2)}$ 把分子分母倒轉；$${round((dc + 1) / t, 4)}$ 用了初濃度而非變化量。`,
+       `Average rate $= \\frac{\\text{change in concentration}}{\\text{time}} = \\frac{${round(dc, 2)}}{${t}} = ${round(rate, 4)}$ mol dm⁻³ s⁻¹. The numerator must be the CHANGE, not the initial or final value. Rate falls with time because a lower reactant concentration means fewer effective collisions per second, so average and instantaneous rates differ. Traps: $${round(dc, 2)}$ is the concentration change without dividing by time; $${round(t / dc, 2)}$ inverts the fraction; $${round((dc + 1) / t, 4)}$ uses the initial concentration instead of the change.`])
+  }
+}
+
 export const chemistryBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
