@@ -131,8 +131,8 @@
    "thermoplastics do not conduct at all, while thermosets conduct well and are used for contacts"
   ],
   "correctIndex": 0,
-  "explanation": "分別在於分子結構。熱塑性塑膠的長鏈分子之間只靠較弱的分子間作用力連繫，受熱時這些作用力被克服，材料軟化而可重新塑形，冷卻後又固化，過程可以反覆進行 —— 因此熱塑性塑膠可以回收再造。熱固性塑膠在固化時，分子之間形成共價交聯鍵，構成一個立體網絡；再加熱只會令它焦化分解而不會軟化，所以無法重塑或以熔融方式回收。第二項把兩者完全對調；加工方法與導電性都不是兩類塑膠的定義性分別。",
-  "explanationEn": "The difference lies in molecular structure. In a thermoplastic the long chains are held together only by relatively weak intermolecular forces; heating overcomes these, the material softens and can be reshaped, and cooling sets it again, with the cycle repeatable — which is why thermoplastics can be recycled. In a thermoset, curing forms covalent cross-links between chains into a three-dimensional network; reheating only chars and decomposes it rather than softening it, so it cannot be reshaped or melt-recycled. The second option reverses the two; processing method and electrical conductivity are not the defining difference."
+  "explanation": "分別在於分子結構。熱塑性塑膠的長鏈分子之間只靠較弱的分子間作用力連繫，受熱時這些作用力被克服，材料軟化而可重新塑形，冷卻後又固化，過程可以反覆進行 —— 因此熱塑性塑膠可以回收再造。熱固性塑膠在固化時，分子之間形成共價交聯鍵，構成一個立體網絡；再加熱只會令它焦化分解而不會軟化，所以無法重塑或以熔融方式回收。有一項把兩者完全對調；加工方法與導電性都不是兩類塑膠的定義性分別。",
+  "explanationEn": "The difference lies in molecular structure. In a thermoplastic the long chains are held together only by relatively weak intermolecular forces; heating overcomes these, the material softens and can be reshaped, and cooling sets it again, with the cycle repeatable — which is why thermoplastics can be recycled. In a thermoset, curing forms covalent cross-links between chains into a three-dimensional network; reheating only chars and decomposes it rather than softening it, so it cannot be reshaped or melt-recycled. One option reverses the two; processing method and electrical conductivity are not the defining difference."
  },
  {
   "id": "floor2_dat_mr_06",
@@ -185,8 +185,8 @@
    "neither resists bending, as round sections suit only tension and compression"
   ],
   "correctIndex": 0,
-  "explanation": "抗彎剛度取決於截面【二次矩】，而二次矩按材料與中性軸距離的平方加權。中性軸附近的材料距離接近零，對抵抗彎曲幾乎沒有貢獻；把同樣份量的材料移到外圍，二次矩顯著上升。空心圓管正是把材料集中在遠離軸心之處，因此在相同重量下抗彎剛度遠高於實心棒 —— 單車車架、旗桿、腳手架用管而不用實心棒，理由就在於此。第二項恰恰誤解了中心材料的作用；第三項忽略了截面積相同不代表分佈相同；第四項與事實不符。",
-  "explanationEn": "Bending stiffness depends on the second moment of area, which weights material by the SQUARE of its distance from the neutral axis. Material near the axis sits at almost zero distance and contributes almost nothing to resisting bending; moving the same quantity outwards raises the second moment substantially. A hollow tube concentrates material away from the centre and is therefore far stiffer in bending than a solid bar of equal weight — which is why bicycle frames, flagpoles and scaffolding use tube rather than solid rod. The second option misreads the role of the central material; the third overlooks that equal area does not mean equal distribution; and the fourth is simply untrue."
+  "explanation": "抗彎剛度取決於截面【二次矩】，而二次矩按材料與中性軸距離的平方加權。中性軸附近的材料距離接近零，對抵抗彎曲幾乎沒有貢獻；把同樣份量的材料移到外圍，二次矩顯著上升。空心圓管正是把材料集中在遠離軸心之處，因此在相同重量下抗彎剛度遠高於實心棒 —— 單車車架、旗桿、腳手架用管而不用實心棒，理由就在於此。有一項恰恰誤解了中心材料的作用；另一項忽略了截面積相同不代表分佈相同；還有一項與事實不符。",
+  "explanationEn": "Bending stiffness depends on the second moment of area, which weights material by the SQUARE of its distance from the neutral axis. Material near the axis sits at almost zero distance and contributes almost nothing to resisting bending; moving the same quantity outwards raises the second moment substantially. A hollow tube concentrates material away from the centre and is therefore far stiffer in bending than a solid bar of equal weight — which is why bicycle frames, flagpoles and scaffolding use tube rather than solid rod. One option misreads the role of the central material; the third overlooks that equal area does not mean equal distribution; and the fourth is simply untrue."
  },
  {
   "id": "floor2_dat_mr_08",
@@ -212,8 +212,8 @@
    "to prove the design team's original concept was right and secure funding from management"
   ],
   "correctIndex": 0,
-  "explanation": "使用者測試的價值在於：設計者對「使用者會點用」的假設，往往與真實行為不符，而這些落差只有看住真人操作才會浮現 —— 例如按鈕位置被誤解、步驟次序不合直覺、標示文字有歧義。測試的目的是【發現問題】並據此修改，因此設計者要抱着「希望找到毛病」的心態。第四項正好把方向倒轉：抱着「證明自己啱」的心態去做測試，會不自覺地引導使用者、忽略負面訊號，測試便失去意義。推廣屬市場推廣範疇；良品率屬生產測試範疇，兩者都不是使用者測試。",
-  "explanationEn": "User testing matters because a designer's assumptions about how people will use a product frequently differ from actual behaviour, and those gaps surface only by watching real users — a button whose position is misread, a step order that feels unnatural, a label that reads two ways. The purpose is to FIND problems and revise accordingly, so the designer should go in hoping to find faults. The fourth option inverts this: testing in order to prove yourself right leads to unconsciously steering users and discounting negative signals, which empties the exercise of value. Promotion belongs to marketing and yield to production testing, and neither is user testing."
+  "explanation": "使用者測試的價值在於：設計者對「使用者會點用」的假設，往往與真實行為不符，而這些落差只有看住真人操作才會浮現 —— 例如按鈕位置被誤解、步驟次序不合直覺、標示文字有歧義。測試的目的是【發現問題】並據此修改，因此設計者要抱着「希望找到毛病」的心態。有一項正好把方向倒轉：抱着「證明自己啱」的心態去做測試，會不自覺地引導使用者、忽略負面訊號，測試便失去意義。推廣屬市場推廣範疇；良品率屬生產測試範疇，兩者都不是使用者測試。",
+  "explanationEn": "User testing matters because a designer's assumptions about how people will use a product frequently differ from actual behaviour, and those gaps surface only by watching real users — a button whose position is misread, a step order that feels unnatural, a label that reads two ways. The purpose is to FIND problems and revise accordingly, so the designer should go in hoping to find faults. One option inverts this: testing in order to prove yourself right leads to unconsciously steering users and discounting negative signals, which empties the exercise of value. Promotion belongs to marketing and yield to production testing, and neither is user testing."
  },
  {
   "id": "floor2_dat_mr_09",

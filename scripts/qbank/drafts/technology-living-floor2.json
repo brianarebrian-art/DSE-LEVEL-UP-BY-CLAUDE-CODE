@@ -77,8 +77,8 @@
    "it withstands very high temperatures and can be ironed hot without deforming or melting"
   ],
   "correctIndex": 0,
-  "explanation": "棉是天然纖維素纖維，分子上有大量羥基，能與水分子形成氫鍵，因此吸濕性強：汗水被吸走後從布面蒸發，穿着較涼爽透氣。代價是吸水後乾得慢，而且纖維彈性回復力弱，容易起皺。聚酯是合成纖維，吸濕性低、快乾、抗皺、彈性佳，但透氣感較差 —— 兩者的特性幾乎互補，這正是棉滌混紡普遍的原因。第二、三項描述的其實是聚酯；第四項亦與事實不符，棉雖然比聚酯耐熱（不會熔化），但高溫仍會令它焦化變黃。",
-  "explanationEn": "Cotton is a natural cellulosic fibre whose many hydroxyl groups hydrogen-bond with water, giving it strong moisture absorbency: sweat is drawn away and evaporates from the fabric surface, so it wears cool and breathable. The price is slow drying once wet, and weak elastic recovery, so it creases readily. Polyester is synthetic, low in absorbency, quick-drying, crease-resistant and elastic, but less breathable — the two are almost complementary, which is why cotton-polyester blends are so common. The second and third options actually describe polyester; and the fourth is untrue, since cotton, though more heat-tolerant than polyester in that it does not melt, still scorches and yellows at high temperatures."
+  "explanation": "棉是天然纖維素纖維，分子上有大量羥基，能與水分子形成氫鍵，因此吸濕性強：汗水被吸走後從布面蒸發，穿着較涼爽透氣。代價是吸水後乾得慢，而且纖維彈性回復力弱，容易起皺。聚酯是合成纖維，吸濕性低、快乾、抗皺、彈性佳，但透氣感較差 —— 兩者的特性幾乎互補，這正是棉滌混紡普遍的原因。其中兩項描述的其實是聚酯；有一項亦與事實不符，棉雖然比聚酯耐熱（不會熔化），但高溫仍會令它焦化變黃。",
+  "explanationEn": "Cotton is a natural cellulosic fibre whose many hydroxyl groups hydrogen-bond with water, giving it strong moisture absorbency: sweat is drawn away and evaporates from the fabric surface, so it wears cool and breathable. The price is slow drying once wet, and weak elastic recovery, so it creases readily. Polyester is synthetic, low in absorbency, quick-drying, crease-resistant and elastic, but less breathable — the two are almost complementary, which is why cotton-polyester blends are so common. Two of the options actually describe polyester; and the fourth is untrue, since cotton, though more heat-tolerant than polyester in that it does not melt, still scorches and yellows at high temperatures."
  },
  {
   "id": "floor2_tl_ft_04",
@@ -131,8 +131,8 @@
    "the fibre conducts electricity so well that soaking generates static and attracts dust"
   ],
   "correctIndex": 0,
-  "explanation": "羊毛等動物纖維表面有鱗片結構，遇水加上搓揉與溫度變化時鱗片互相咬合，纖維糾纏收縮而無法回復，這就是「氈化」；絲則因水洗後光澤與手感受損。乾洗以有機溶劑代替水，避免纖維吸水膨脹，機械作用亦較溫和，因此能保護這類衣物。第二項誇大到不符事實 —— 沒有常見衣料會溶於水；第三項把個別染色問題當成乾洗標示的普遍原因；第四項與纖維性質不符，紡織纖維一般是絕緣體，而靜電恰恰在【乾燥】時才明顯。",
-  "explanationEn": "Animal fibres such as wool have scales on their surface; when wet and subjected to agitation and temperature change the scales interlock, and the fibres tangle and shrink irreversibly — felting. Silk, for its part, loses lustre and handle in water. Dry cleaning replaces water with an organic solvent, so the fibres do not swell and the mechanical action is gentler, protecting such garments. The second option exaggerates beyond fact, since no common textile dissolves in water; the third takes an occasional dye problem for the general reason behind the label; and the fourth misstates fibre properties, as textile fibres are generally insulators and static is in fact worst when DRY."
+  "explanation": "羊毛等動物纖維表面有鱗片結構，遇水加上搓揉與溫度變化時鱗片互相咬合，纖維糾纏收縮而無法回復，這就是「氈化」；絲則因水洗後光澤與手感受損。乾洗以有機溶劑代替水，避免纖維吸水膨脹，機械作用亦較溫和，因此能保護這類衣物。有一項誇大到不符事實 —— 沒有常見衣料會溶於水；另一項把個別染色問題當成乾洗標示的普遍原因；還有一項與纖維性質不符，紡織纖維一般是絕緣體，而靜電恰恰在【乾燥】時才明顯。",
+  "explanationEn": "Animal fibres such as wool have scales on their surface; when wet and subjected to agitation and temperature change the scales interlock, and the fibres tangle and shrink irreversibly — felting. Silk, for its part, loses lustre and handle in water. Dry cleaning replaces water with an organic solvent, so the fibres do not swell and the mechanical action is gentler, protecting such garments. One option exaggerates beyond fact, since no common textile dissolves in water; the third takes an occasional dye problem for the general reason behind the label; and the fourth misstates fibre properties, as textile fibres are generally insulators and static is in fact worst when DRY."
  },
  {
   "id": "floor2_tl_ft_06",
@@ -158,8 +158,8 @@
    "vitamin C evaporates with the steam and leaves the pan in quantity during boiling"
   ],
   "correctIndex": 0,
-  "explanation": "維生素 C 是水溶性維生素，同時對熱與氧氣都不穩定。長時間水煮令它一方面溶出到煮水中（若棄掉煮水便一併倒走），另一方面在高溫與溶氧的作用下被氧化破壞，雙重損失。因此保留維生素 C 的做法是縮短加熱時間、減少用水量，或改用蒸、快炒等方式，甚至保留煮汁一併食用。第二項並非維生素 C 的性質；第三項不成立，維生素之間不會互相轉化；第四項亦不成立，維生素 C 並非揮發性物質。",
-  "explanationEn": "Vitamin C is water-soluble and unstable to both heat and oxygen. Prolonged boiling leaches it into the cooking water — discarded along with the water — while heat and dissolved oxygen oxidise and destroy it, so the loss is twofold. Retaining vitamin C therefore means shortening cooking time, using less water, switching to steaming or quick stir-frying, or using the cooking liquid as well. The second option is not a property of vitamin C; the third is untenable, as vitamins do not convert into one another; and the fourth is also untenable, since vitamin C is not volatile."
+  "explanation": "維生素 C 是水溶性維生素，同時對熱與氧氣都不穩定。長時間水煮令它一方面溶出到煮水中（若棄掉煮水便一併倒走），另一方面在高溫與溶氧的作用下被氧化破壞，雙重損失。因此保留維生素 C 的做法是縮短加熱時間、減少用水量，或改用蒸、快炒等方式，甚至保留煮汁一併食用。有一項並非維生素 C 的性質；另一項不成立，維生素之間不會互相轉化；還有一項亦不成立，維生素 C 並非揮發性物質。",
+  "explanationEn": "Vitamin C is water-soluble and unstable to both heat and oxygen. Prolonged boiling leaches it into the cooking water — discarded along with the water — while heat and dissolved oxygen oxidise and destroy it, so the loss is twofold. Retaining vitamin C therefore means shortening cooking time, using less water, switching to steaming or quick stir-frying, or using the cooking liquid as well. One option is not a property of vitamin C; the third is untenable, as vitamins do not convert into one another; and the fourth is also untenable, since vitamin C is not volatile."
  },
  {
   "id": "floor2_tl_ft_07",
@@ -185,8 +185,8 @@
    "the two behave identically, so the burn test cannot distinguish these fibres at all"
   ],
   "correctIndex": 0,
-  "explanation": "燃燒法的依據是纖維的化學組成。羊毛屬蛋白質纖維，含硫，燃燒時發出燒毛髮或燒羽毛的特徵氣味，離火自熄，灰燼是可用手指捏碎的黑色脆球。腈綸是合成的熱塑性纖維，遇火先熔化後燃燒，滴落並形成堅硬不易捏碎的塑膠珠，氣味刺鼻。第二、三項把兩者的表現對調或憑空杜撰 —— 熔化滴落是【合成】纖維的特徵，天然蛋白質纖維並不熔化；第四項與事實不符，燃燒法正正是紡織實驗室常用的初步鑑別手段。",
-  "explanationEn": "The burn test rests on chemical composition. Wool is a protein fibre containing sulphur: it burns with the characteristic smell of burning hair or feathers, self-extinguishes when removed from the flame, and leaves a black bead that crushes between the fingers. Acrylic is a synthetic thermoplastic: it melts before it burns, drips, and forms a hard plastic bead that resists crushing, with an acrid smell. The second and third options swap the behaviours or invent them — melting and dripping are characteristic of SYNTHETIC fibres, and natural protein fibres do not melt; and the fourth is untrue, as the burn test is a standard preliminary identification in textile laboratories."
+  "explanation": "燃燒法的依據是纖維的化學組成。羊毛屬蛋白質纖維，含硫，燃燒時發出燒毛髮或燒羽毛的特徵氣味，離火自熄，灰燼是可用手指捏碎的黑色脆球。腈綸是合成的熱塑性纖維，遇火先熔化後燃燒，滴落並形成堅硬不易捏碎的塑膠珠，氣味刺鼻。其中兩項把兩者的表現對調或憑空杜撰 —— 熔化滴落是【合成】纖維的特徵，天然蛋白質纖維並不熔化；有一項與事實不符，燃燒法正正是紡織實驗室常用的初步鑑別手段。",
+  "explanationEn": "The burn test rests on chemical composition. Wool is a protein fibre containing sulphur: it burns with the characteristic smell of burning hair or feathers, self-extinguishes when removed from the flame, and leaves a black bead that crushes between the fingers. Acrylic is a synthetic thermoplastic: it melts before it burns, drips, and forms a hard plastic bead that resists crushing, with an acrid smell. Two of the options swap the behaviours or invent them — melting and dripping are characteristic of SYNTHETIC fibres, and natural protein fibres do not melt; and the fourth is untrue, as the burn test is a standard preliminary identification in textile laboratories."
  },
  {
   "id": "floor2_tl_ft_08",

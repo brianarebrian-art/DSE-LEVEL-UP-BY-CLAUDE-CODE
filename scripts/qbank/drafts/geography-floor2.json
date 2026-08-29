@@ -50,8 +50,8 @@
    "velocity has no bearing on the order in which particles settle"
   ],
   "correctIndex": 0,
-  "explanation": "坡度陡則重力分量大，流速快，河流的搬運能力（能搬多大顆粒）與搬運量同時提高，因此上游以侵蝕與搬運為主。進入下游後坡度變緩、流速下降，河流無力再托住較重的顆粒，於是按顆粒由大至小依次沉積 —— 這正是三角洲與氾濫平原沉積物由內向外逐漸變幼的成因。第二項把上下游的特徵完全倒轉；第三、四項與河流作用的基本原理相違。",
-  "explanationEn": "A steep gradient gives a larger downslope component of gravity and hence a faster flow, raising both competence (the largest particle the river can move) and capacity, so the upper course is dominated by erosion and transport. Downstream the gradient eases and velocity falls, the river can no longer hold the heavier particles, and they settle in order from coarsest to finest — which is why deltas and floodplains fine outwards. The second option reverses upper and lower course entirely, and the third and fourth contradict the basic principles of fluvial processes."
+  "explanation": "坡度陡則重力分量大，流速快，河流的搬運能力（能搬多大顆粒）與搬運量同時提高，因此上游以侵蝕與搬運為主。進入下游後坡度變緩、流速下降，河流無力再托住較重的顆粒，於是按顆粒由大至小依次沉積 —— 這正是三角洲與氾濫平原沉積物由內向外逐漸變幼的成因。有一項把上下游的特徵完全倒轉；其中兩項與河流作用的基本原理相違。",
+  "explanationEn": "A steep gradient gives a larger downslope component of gravity and hence a faster flow, raising both competence (the largest particle the river can move) and capacity, so the upper course is dominated by erosion and transport. Downstream the gradient eases and velocity falls, the river can no longer hold the heavier particles, and they settle in order from coarsest to finest — which is why deltas and floodplains fine outwards. One option reverses upper and lower course entirely, and the third and fourth contradict the basic principles of fluvial processes."
  },
  {
   "id": "floor2_geo_pc_03",
@@ -104,8 +104,8 @@
    "cities are planted far more densely than the countryside and heat released by plant respiration raises the temperature"
   ],
   "correctIndex": 0,
-  "explanation": "城市熱島由幾條機制疊加而成：混凝土與瀝青的熱容量大、顏色深，日間吸收並儲存大量太陽輻射，入夜緩慢釋放；不透水面令雨水迅速排走，缺乏植被與水體，蒸發散熱（潛熱）大幅減少；空調、車輛與工業排出人為熱；密集高樓形成「峽谷效應」，令輻射在建築之間反覆反射而難以散失。第二項與事實不符 —— 熱島與海拔無關；第三項因果倒轉，雲量並非熱島的成因；第四項在方向與量級上都不成立，市區植被通常較少，而植物呼吸產熱微不足道。",
-  "explanationEn": "The urban heat island arises from several mechanisms acting together: concrete and asphalt have high heat capacity and dark surfaces, absorbing and storing solar radiation by day and releasing it slowly at night; impermeable surfaces drain rain away quickly and vegetation and water bodies are scarce, so evaporative (latent heat) cooling is much reduced; air conditioning, vehicles and industry add waste heat; and dense tall buildings create a canyon effect in which radiation is reflected repeatedly and escapes poorly. The second option is simply untrue, as the effect is unrelated to elevation; the third reverses cause and effect, since cloud is not the origin of the island; and the fourth fails in both direction and magnitude, since cities generally have less vegetation and plant respiration produces negligible heat."
+  "explanation": "城市熱島由幾條機制疊加而成：混凝土與瀝青的熱容量大、顏色深，日間吸收並儲存大量太陽輻射，入夜緩慢釋放；不透水面令雨水迅速排走，缺乏植被與水體，蒸發散熱（潛熱）大幅減少；空調、車輛與工業排出人為熱；密集高樓形成「峽谷效應」，令輻射在建築之間反覆反射而難以散失。有一項與事實不符 —— 熱島與海拔無關；另一項因果倒轉，雲量並非熱島的成因；還有一項在方向與量級上都不成立，市區植被通常較少，而植物呼吸產熱微不足道。",
+  "explanationEn": "The urban heat island arises from several mechanisms acting together: concrete and asphalt have high heat capacity and dark surfaces, absorbing and storing solar radiation by day and releasing it slowly at night; impermeable surfaces drain rain away quickly and vegetation and water bodies are scarce, so evaporative (latent heat) cooling is much reduced; air conditioning, vehicles and industry add waste heat; and dense tall buildings create a canyon effect in which radiation is reflected repeatedly and escapes poorly. One option is simply untrue, as the effect is unrelated to elevation; the third reverses cause and effect, since cloud is not the origin of the island; and the fourth fails in both direction and magnitude, since cities generally have less vegetation and plant respiration produces negligible heat."
  },
  {
   "id": "floor2_geo_pc_05",
@@ -158,8 +158,8 @@
    "rainforest soils are inherently very fertile, and clearance drives the nutrients down beyond the reach of roots"
   ],
   "correctIndex": 0,
-  "explanation": "雨林的養分循環非常緊密：落葉在高溫多濕下迅速被分解者分解，養分幾乎立即被密集的淺根系吸收回植體，因此養分主要「存」在生物量之中，土壤本身反而貧瘠。砍伐移走了這個儲存庫，同時失去樹冠遮擋，暴雨直接沖刷地面，可溶養分隨下滲水流被淋溶至深層而流失，數年之內即難以耕作。第二項方向寫反 —— 失去遮蔭後土壤溫度上升；第三、四項與雨林土壤（多為貧瘠的磚紅壤）的實況不符。",
-  "explanationEn": "Rainforest nutrient cycling is very tight: leaf litter is broken down rapidly by decomposers in the warm, damp conditions and the nutrients are taken straight back up by a dense mat of shallow roots, so the nutrients are held in the biomass while the soil itself is poor. Clearance removes that store and also the canopy, so heavy rain strikes the ground directly and soluble nutrients are leached downwards and lost, leaving land that is hard to farm within a few years. The second option has the direction wrong, since soil warms once shade is lost, and the third and fourth misdescribe rainforest soils, which are typically infertile ferrallitic soils."
+  "explanation": "雨林的養分循環非常緊密：落葉在高溫多濕下迅速被分解者分解，養分幾乎立即被密集的淺根系吸收回植體，因此養分主要「存」在生物量之中，土壤本身反而貧瘠。砍伐移走了這個儲存庫，同時失去樹冠遮擋，暴雨直接沖刷地面，可溶養分隨下滲水流被淋溶至深層而流失，數年之內即難以耕作。有一項方向寫反 —— 失去遮蔭後土壤溫度上升；其中兩項與雨林土壤（多為貧瘠的磚紅壤）的實況不符。",
+  "explanationEn": "Rainforest nutrient cycling is very tight: leaf litter is broken down rapidly by decomposers in the warm, damp conditions and the nutrients are taken straight back up by a dense mat of shallow roots, so the nutrients are held in the biomass while the soil itself is poor. Clearance removes that store and also the canopy, so heavy rain strikes the ground directly and soluble nutrients are leached downwards and lost, leaving land that is hard to farm within a few years. One option has the direction wrong, since soil warms once shade is lost, and the third and fourth misdescribe rainforest soils, which are typically infertile ferrallitic soils."
  },
  {
   "id": "floor2_geo_pc_07",
@@ -185,8 +185,8 @@
    "velocity is equally slow on both banks, so both receive deposits and the channel narrows until it silts up"
   ],
   "correctIndex": 0,
-  "explanation": "水流進入彎道時，慣性把流速最快的主流帶向外側（凹岸），該處水深流急，側向侵蝕強烈，河岸被掏空後崩塌形成陡直的河崖。內側（凸岸）水淺流緩，河流無力再托住負載，於是沉積成弧形的點沙洲。兩岸一侵一積，令河曲的曲度不斷加大，最終可能截彎取直而形成牛軛湖。第二項把凹凸兩岸的作用完全倒轉 —— 這是本課題最常見的失分位；第三、四項忽略了同一斷面上流速分佈並不均勻，正是這個不均勻才造就曲流。",
-  "explanationEn": "As water enters a bend, inertia carries the fastest thread of flow to the outside of the curve, where the channel is deep and swift, lateral erosion is vigorous, and the undercut bank collapses into a steep river cliff. On the inside the water is shallow and slow, the river can no longer hold its load, and a curved point bar is deposited. Erosion on one bank and deposition on the other steadily increase the sinuosity, until the neck may be cut through to leave an oxbow lake. The second option reverses the two banks entirely, which is where this topic is most often lost; the third and fourth ignore that velocity is unevenly distributed across the channel, and it is precisely that unevenness which creates the meander."
+  "explanation": "水流進入彎道時，慣性把流速最快的主流帶向外側（凹岸），該處水深流急，側向侵蝕強烈，河岸被掏空後崩塌形成陡直的河崖。內側（凸岸）水淺流緩，河流無力再托住負載，於是沉積成弧形的點沙洲。兩岸一侵一積，令河曲的曲度不斷加大，最終可能截彎取直而形成牛軛湖。有一項把凹凸兩岸的作用完全倒轉 —— 這是本課題最常見的失分位；其中兩項忽略了同一斷面上流速分佈並不均勻，正是這個不均勻才造就曲流。",
+  "explanationEn": "As water enters a bend, inertia carries the fastest thread of flow to the outside of the curve, where the channel is deep and swift, lateral erosion is vigorous, and the undercut bank collapses into a steep river cliff. On the inside the water is shallow and slow, the river can no longer hold its load, and a curved point bar is deposited. Erosion on one bank and deposition on the other steadily increase the sinuosity, until the neck may be cut through to leave an oxbow lake. One option reverses the two banks entirely, which is where this topic is most often lost; the third and fourth ignore that velocity is unevenly distributed across the channel, and it is precisely that unevenness which creates the meander."
  },
  {
   "id": "floor2_geo_dm_01",
@@ -212,8 +212,8 @@
    "the city's economic activity must have shrunk sharply and industrial emissions have ceased"
   ],
   "correctIndex": 0,
-  "explanation": "指數由 6.2 降至 4.1 只顯示【結果】，並未提供任何關於成因的資訊。改善可能來自減排政策，也可能來自產業結構轉變、鄰近地區排放下降、氣象條件差異，甚至監測站選址改動。數據回應題的紀律是：讀出數據支持得到的結論，不多不少。第二項把單一成因強加於數據之上；第三項過度推論 —— 指數下降不等於問題解決，4.1 仍屬中等水平；第四項則是把相關當作因果，且方向純屬臆測。",
-  "explanationEn": "A fall from 6.2 to 4.1 reports an OUTCOME and says nothing about its cause. The improvement could stem from emission controls, from a shift in industrial structure, from lower emissions in neighbouring areas, from differing weather, or even from a change in monitoring station locations. The discipline of data-response work is to state exactly what the data support, no more and no less. The second option imposes a single cause on the figures; the third over-infers, since a falling index does not mean the problem is solved and 4.1 is still moderate; and the fourth mistakes correlation for causation while speculating about direction."
+  "explanation": "指數由 6.2 降至 4.1 只顯示【結果】，並未提供任何關於成因的資訊。改善可能來自減排政策，也可能來自產業結構轉變、鄰近地區排放下降、氣象條件差異，甚至監測站選址改動。數據回應題的紀律是：讀出數據支持得到的結論，不多不少。有一項把單一成因強加於數據之上；另一項過度推論 —— 指數下降不等於問題解決，4.1 仍屬中等水平；還有一項則是把相關當作因果，且方向純屬臆測。",
+  "explanationEn": "A fall from 6.2 to 4.1 reports an OUTCOME and says nothing about its cause. The improvement could stem from emission controls, from a shift in industrial structure, from lower emissions in neighbouring areas, from differing weather, or even from a change in monitoring station locations. The discipline of data-response work is to state exactly what the data support, no more and no less. One option imposes a single cause on the figures; the third over-infers, since a falling index does not mean the problem is solved and 4.1 is still moderate; and the fourth mistakes correlation for causation while speculating about direction."
  },
  {
   "id": "floor2_geo_dm_02",
@@ -374,8 +374,8 @@
    "the two data sets must contradict each other and one of them should be rejected"
   ],
   "correctIndex": 0,
-  "explanation": "這是環境管理上典型的「污染轉移」：規管收緊令高污染的生產活動遷往規管較寬鬆的地方，本地指數改善，但區域整體的排放未必下降，甚至可能因運輸增加而上升。評估政策成效因此必須看【適當的空間尺度】，只看行政區內的數字容易得出過於樂觀的結論。第二項忽略了同期鄰區惡化這項關鍵資料；第三項把結構性的產業轉移歸咎於居民態度，缺乏證據；第四項誤把「兩地變化方向相反」當成數據矛盾，但兩者其實可以同時為真，而且正好構成轉移的證據。",
-  "explanationEn": "This is the classic problem of pollution displacement: tighter regulation drives polluting activity to places where rules are looser, so the local index improves while regional emissions may not fall at all and can even rise through extra transport. Judging a policy therefore requires the APPROPRIATE SPATIAL SCALE, since looking only within administrative boundaries invites an over-optimistic conclusion. The second option ignores the key fact that neighbouring areas worsened over the same period; the third blames residents' attitudes for what is a structural relocation of industry, without evidence; and the fourth mistakes opposite trends for contradictory data, when both can be true at once and together constitute the evidence for displacement."
+  "explanation": "這是環境管理上典型的「污染轉移」：規管收緊令高污染的生產活動遷往規管較寬鬆的地方，本地指數改善，但區域整體的排放未必下降，甚至可能因運輸增加而上升。評估政策成效因此必須看【適當的空間尺度】，只看行政區內的數字容易得出過於樂觀的結論。有一項忽略了同期鄰區惡化這項關鍵資料；另一項把結構性的產業轉移歸咎於居民態度，缺乏證據；還有一項誤把「兩地變化方向相反」當成數據矛盾，但兩者其實可以同時為真，而且正好構成轉移的證據。",
+  "explanationEn": "This is the classic problem of pollution displacement: tighter regulation drives polluting activity to places where rules are looser, so the local index improves while regional emissions may not fall at all and can even rise through extra transport. Judging a policy therefore requires the APPROPRIATE SPATIAL SCALE, since looking only within administrative boundaries invites an over-optimistic conclusion. One option ignores the key fact that neighbouring areas worsened over the same period; the third blames residents' attitudes for what is a structural relocation of industry, without evidence; and the fourth mistakes opposite trends for contradictory data, when both can be true at once and together constitute the evidence for displacement."
  },
  {
   "id": "floor2_geo_dm_08",

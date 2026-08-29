@@ -23,8 +23,8 @@
    "the root, a perfect fourth above it, and a perfect fifth above it"
   ],
   "correctIndex": 0,
-  "explanation": "三和弦由根音向上疊置兩個三度而成。大三和弦的下方三度是【大】三度（四個半音）、上方三度是小三度（三個半音），根音到五音合共七個半音，即完全五度。以 C 大三和弦為例，就是 C、E、G。第二項描述的是【小】三和弦（下方為小三度，如 C、E♭、G）—— 大小三和弦的唯一分別就在這個三音，而它決定了和弦是明亮還是暗淡，這正是本課題的核心。第三、四項所列的音程組合都不構成三度疊置的三和弦。",
-  "explanationEn": "A triad stacks two thirds above the root. In a major triad the lower third is MAJOR (four semitones) and the upper third minor (three semitones), making seven semitones from root to fifth — a perfect fifth. A C major triad is thus C, E and G. The second option describes the MINOR triad, whose lower third is minor (C, E flat, G); the third of the chord is the only difference between them and it is what makes the chord sound bright or dark, which is the heart of this topic. The intervals in the third and fourth options do not stack into thirds at all."
+  "explanation": "三和弦由根音向上疊置兩個三度而成。大三和弦的下方三度是【大】三度（四個半音）、上方三度是小三度（三個半音），根音到五音合共七個半音，即完全五度。以 C 大三和弦為例，就是 C、E、G。有一項描述的是【小】三和弦（下方為小三度，如 C、E♭、G）—— 大小三和弦的唯一分別就在這個三音，而它決定了和弦是明亮還是暗淡，這正是本課題的核心。其中兩項所列的音程組合都不構成三度疊置的三和弦。",
+  "explanationEn": "A triad stacks two thirds above the root. In a major triad the lower third is MAJOR (four semitones) and the upper third minor (three semitones), making seven semitones from root to fifth — a perfect fifth. A C major triad is thus C, E and G. One option describes the MINOR triad, whose lower third is minor (C, E flat, G); the third of the chord is the only difference between them and it is what makes the chord sound bright or dark, which is the heart of this topic. The intervals in two of the options do not stack into thirds at all."
  },
  {
   "id": "floor2_mus_hf_02",
@@ -131,8 +131,8 @@
    "a fourth note is added to the three, markedly increasing the tension"
   ],
   "correctIndex": 0,
-  "explanation": "轉位只改變和弦音的【垂直排列】，不改變和弦的成分與名稱。以 C 大三和弦（C、E、G）為例：C 在最低是原位；E 在最低是第一轉位；G 在最低是第二轉位 —— 三者仍然是 C 大三和弦。轉位的作用在於令低音線條更流暢，避免低音大幅跳進。第二項描述的是移調；第三項描述的是改變和弦的三音（大小和弦的分別）；第四項描述的是加入七音構成七和弦，三者都不是轉位。",
-  "explanationEn": "Inversion changes only the VERTICAL arrangement of the chord tones, not the chord's content or name. Take a C major triad — C, E, G: with C lowest it is in root position, with E lowest in first inversion, with G lowest in second inversion, and all three remain C major. Inversions exist to give the bass line a smoother shape and avoid large leaps. The second option describes transposition, the third describes altering the chord's third to change major into minor, and the fourth describes adding a seventh; none of them is inversion."
+  "explanation": "轉位只改變和弦音的【垂直排列】，不改變和弦的成分與名稱。以 C 大三和弦（C、E、G）為例：C 在最低是原位；E 在最低是第一轉位；G 在最低是第二轉位 —— 三者仍然是 C 大三和弦。轉位的作用在於令低音線條更流暢，避免低音大幅跳進。有一項描述的是移調；另一項描述的是改變和弦的三音（大小和弦的分別）；還有一項描述的是加入七音構成七和弦，三者都不是轉位。",
+  "explanationEn": "Inversion changes only the VERTICAL arrangement of the chord tones, not the chord's content or name. Take a C major triad — C, E, G: with C lowest it is in root position, with E lowest in first inversion, with G lowest in second inversion, and all three remain C major. Inversions exist to give the bass line a smoother shape and avoid large leaps. One option describes transposition, the third describes altering the chord's third to change major into minor, and the fourth describes adding a seventh; none of them is inversion."
  },
  {
   "id": "floor2_mus_hf_06",
@@ -158,8 +158,8 @@
    "all three are augmented triads, giving them a markedly unstable sound"
   ],
   "correctIndex": 0,
-  "explanation": "在大調中，各級三和弦的性質由音階本身的全音半音排列決定，結果固定為：I、IV、V 為大三和弦；ii、iii、vi 為小三和弦；vii° 為減三和弦。因此第二、三、六級所建的都是小三和弦 —— 這正是大調作品中能夠出現柔和暗淡色彩的來源，例如 vi 級常用作假終止的落腳點。第二、三項與上述固定排列不符；增三和弦並非自然大調音階內任何一級的原生和弦，須經變化音才能構成。",
-  "explanationEn": "In a major key the quality of each diatonic triad follows from the scale's pattern of tones and semitones, and the result is fixed: I, IV and V are major; ii, iii and vi are minor; and vii is diminished. The triads on the second, third and sixth degrees are therefore minor — the source of the softer, darker colours available within a major key, as when vi becomes the goal of an interrupted cadence. The second and third options contradict that fixed pattern, and an augmented triad is not native to any degree of the natural major scale and requires an altered note."
+  "explanation": "在大調中，各級三和弦的性質由音階本身的全音半音排列決定，結果固定為：I、IV、V 為大三和弦；ii、iii、vi 為小三和弦；vii° 為減三和弦。因此第二、三、六級所建的都是小三和弦 —— 這正是大調作品中能夠出現柔和暗淡色彩的來源，例如 vi 級常用作假終止的落腳點。其中兩項與上述固定排列不符；增三和弦並非自然大調音階內任何一級的原生和弦，須經變化音才能構成。",
+  "explanationEn": "In a major key the quality of each diatonic triad follows from the scale's pattern of tones and semitones, and the result is fixed: I, IV and V are major; ii, iii and vi are minor; and vii is diminished. The triads on the second, third and sixth degrees are therefore minor — the source of the softer, darker colours available within a major key, as when vi becomes the goal of an interrupted cadence. Two of the options contradict that fixed pattern, and an augmented triad is not native to any degree of the natural major scale and requires an altered note."
  },
  {
   "id": "floor2_mus_hf_07",
@@ -185,8 +185,8 @@
    "G major is the subdominant key of C major, and their signatures differ by one flat"
   ],
   "correctIndex": 0,
-  "explanation": "G 是 C 上方的完全五度，因此 G 大調是 C 大調的屬調；在五度圈上相鄰一格，調號由零個升號變成一個升號（F♯）。轉入屬調是古典時期最常見的轉調方向，奏鳴曲式呈示部第二主題往往就在屬調上。第二項不成立 —— C 大調的關係小調是 A 小調（同為零升零降），而且關係調必為一大一小；第三項的同名調指主音相同（如 C 大調與 C 小調），G 與 C 主音不同；第四項方向倒轉，C 大調的下屬調是 F 大調（一個降號）。",
-  "explanationEn": "G lies a perfect fifth above C, so G major is the dominant key of C major; adjacent on the circle of fifths, its signature moves from no sharps to one sharp, F sharp. Modulation to the dominant is the commonest direction in the Classical period, and the second subject of a sonata-form exposition typically appears in it. The second option fails because the relative minor of C major is A minor, with the same signature, and relative keys are always one major and one minor; the third refers to parallel keys sharing a tonic, such as C major and C minor, whereas G and C have different tonics; and the fourth reverses the direction, since the subdominant of C major is F major with one flat."
+  "explanation": "G 是 C 上方的完全五度，因此 G 大調是 C 大調的屬調；在五度圈上相鄰一格，調號由零個升號變成一個升號（F♯）。轉入屬調是古典時期最常見的轉調方向，奏鳴曲式呈示部第二主題往往就在屬調上。有一項不成立 —— C 大調的關係小調是 A 小調（同為零升零降），而且關係調必為一大一小；另一項的同名調指主音相同（如 C 大調與 C 小調），G 與 C 主音不同；還有一項方向倒轉，C 大調的下屬調是 F 大調（一個降號）。",
+  "explanationEn": "G lies a perfect fifth above C, so G major is the dominant key of C major; adjacent on the circle of fifths, its signature moves from no sharps to one sharp, F sharp. Modulation to the dominant is the commonest direction in the Classical period, and the second subject of a sonata-form exposition typically appears in it. One option fails because the relative minor of C major is A minor, with the same signature, and relative keys are always one major and one minor; the third refers to parallel keys sharing a tonic, such as C major and C minor, whereas G and C have different tonics; and the fourth reverses the direction, since the subdominant of C major is F major with one flat."
  },
  {
   "id": "floor2_mus_hf_08",

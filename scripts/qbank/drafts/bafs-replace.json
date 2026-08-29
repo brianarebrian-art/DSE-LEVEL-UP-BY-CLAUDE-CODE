@@ -482,8 +482,8 @@
       "\\$270"
     ],
     "correctIndex": 1,
-    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 40 + 260 − 50 = \\$250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$350，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$260 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
-    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 40 + 260 − 50 = \\$250. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$350 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$260 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 40 + 260 − 50 = \\$250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$350，等於把未賣出的貨也算作成本，是本題最主要的失分位。有一項把期初與期末的加減調轉。答 \\$260 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 40 + 260 − 50 = \\$250. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$350 and counts unsold goods as a cost — the main trap. One option reverses the signs of the two inventory figures. Answering \\$260 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
   },
   {
     "id": "bafs_rep_0019",
@@ -509,8 +509,8 @@
       "\\$1000"
     ],
     "correctIndex": 2,
-    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 120 + 700 − 180 = \\$640。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$1000，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$700 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
-    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 120 + 700 − 180 = \\$640. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$1000 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$700 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 120 + 700 − 180 = \\$640。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$1000，等於把未賣出的貨也算作成本，是本題最主要的失分位。有一項把期初與期末的加減調轉。答 \\$700 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 120 + 700 − 180 = \\$640. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$1000 and counts unsold goods as a cost — the main trap. One option reverses the signs of the two inventory figures. Answering \\$700 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
   },
   {
     "id": "bafs_rep_0020",
@@ -536,8 +536,8 @@
       "\\$150"
     ],
     "correctIndex": 3,
-    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 25 + 160 − 35 = \\$150。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$220，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$160 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
-    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 25 + 160 − 35 = \\$150. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$220 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$160 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 25 + 160 − 35 = \\$150。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$220，等於把未賣出的貨也算作成本，是本題最主要的失分位。有一項把期初與期末的加減調轉。答 \\$160 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 25 + 160 − 35 = \\$150. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$220 and counts unsold goods as a cost — the main trap. One option reverses the signs of the two inventory figures. Answering \\$160 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
   },
   {
     "id": "bafs_rep_0021",
@@ -563,8 +563,8 @@
       "\\$1200"
     ],
     "correctIndex": 0,
-    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 300 + 1200 − 250 = \\$1250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$1750，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$1200 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
-    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 300 + 1200 − 250 = \\$1250. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$1750 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$1200 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 300 + 1200 − 250 = \\$1250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$1750，等於把未賣出的貨也算作成本，是本題最主要的失分位。有一項把期初與期末的加減調轉。答 \\$1200 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 300 + 1200 − 250 = \\$1250. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$1750 and counts unsold goods as a cost — the main trap. One option reverses the signs of the two inventory figures. Answering \\$1200 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
   },
   {
     "id": "bafs_rep_0022",
@@ -590,8 +590,8 @@
       "\\$420"
     ],
     "correctIndex": 1,
-    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 90 + 410 − 100 = \\$400。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$600，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$410 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
-    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 90 + 410 − 100 = \\$400. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$600 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$410 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 90 + 410 − 100 = \\$400。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$600，等於把未賣出的貨也算作成本，是本題最主要的失分位。有一項把期初與期末的加減調轉。答 \\$410 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 90 + 410 − 100 = \\$400. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$600 and counts unsold goods as a cost — the main trap. One option reverses the signs of the two inventory figures. Answering \\$410 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
   },
   {
     "id": "bafs_rep_0023",
@@ -617,8 +617,8 @@
       "\\$460"
     ],
     "correctIndex": 2,
-    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 55 + 345 − 60 = \\$340。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$460，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$345 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
-    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 55 + 345 − 60 = \\$340. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$460 and counts unsold goods as a cost — the main trap. The second option reverses the signs of the two inventory figures. Answering \\$345 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 55 + 345 − 60 = \\$340。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$460，等於把未賣出的貨也算作成本，是本題最主要的失分位。有一項把期初與期末的加減調轉。答 \\$345 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。",
+    "explanationEn": "Cost of goods sold = opening inventory + purchases − closing inventory = 55 + 345 − 60 = \\$340. The logic: what was held at the start plus what was bought is what was *available* for sale; what is still in the warehouse was not sold, so it is deducted. Adding closing inventory instead gives \\$460 and counts unsold goods as a cost — the main trap. One option reverses the signs of the two inventory figures. Answering \\$345 counts purchases only and ignores the change in inventory; the two coincide only when opening and closing inventory happen to be equal."
   },
   {
     "id": "bafs_rep_0024",
@@ -644,8 +644,8 @@
       "\\$320"
     ],
     "correctIndex": 3,
-    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 500 − 180 = \\$320。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$680，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$500 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
-    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 500 − 180 = \\$320. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$680 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$500 ignores liabilities; capital equals assets only when the business owes nothing."
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 500 − 180 = \\$320。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$680，等於把債主的權益也當成東主的。有一項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$500 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 500 − 180 = \\$320. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$680 and treats creditors' claims as the owner's. One option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$500 ignores liabilities; capital equals assets only when the business owes nothing."
   },
   {
     "id": "bafs_rep_0025",
@@ -671,8 +671,8 @@
       "\\$1200"
     ],
     "correctIndex": 0,
-    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 1200 − 750 = \\$450。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$1950，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$1200 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
-    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 1200 − 750 = \\$450. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$1950 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$1200 ignores liabilities; capital equals assets only when the business owes nothing."
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 1200 − 750 = \\$450。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$1950，等於把債主的權益也當成東主的。有一項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$1200 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 1200 − 750 = \\$450. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$1950 and treats creditors' claims as the owner's. One option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$1200 ignores liabilities; capital equals assets only when the business owes nothing."
   },
   {
     "id": "bafs_rep_0026",
@@ -698,8 +698,8 @@
       "\\$-600"
     ],
     "correctIndex": 1,
-    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 860 − 260 = \\$600。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$1120，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$860 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
-    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 860 − 260 = \\$600. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$1120 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$860 ignores liabilities; capital equals assets only when the business owes nothing."
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 860 − 260 = \\$600。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$1120，等於把債主的權益也當成東主的。有一項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$860 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 860 − 260 = \\$600. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$1120 and treats creditors' claims as the owner's. One option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$860 ignores liabilities; capital equals assets only when the business owes nothing."
   },
   {
     "id": "bafs_rep_0027",
@@ -725,8 +725,8 @@
       "\\$3300"
     ],
     "correctIndex": 2,
-    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 2400 − 900 = \\$1500。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$3300，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$2400 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
-    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 2400 − 900 = \\$1500. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$3300 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$2400 ignores liabilities; capital equals assets only when the business owes nothing."
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 2400 − 900 = \\$1500。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$3300，等於把債主的權益也當成東主的。有一項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$2400 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 2400 − 900 = \\$1500. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$3300 and treats creditors' claims as the owner's. One option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$2400 ignores liabilities; capital equals assets only when the business owes nothing."
   },
   {
     "id": "bafs_rep_0028",
@@ -752,8 +752,8 @@
       "\\$225"
     ],
     "correctIndex": 3,
-    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 340 − 115 = \\$225。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$455，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$340 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
-    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 340 − 115 = \\$225. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$455 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$340 ignores liabilities; capital equals assets only when the business owes nothing."
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 340 − 115 = \\$225。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$455，等於把債主的權益也當成東主的。有一項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$340 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 340 − 115 = \\$225. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$455 and treats creditors' claims as the owner's. One option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$340 ignores liabilities; capital equals assets only when the business owes nothing."
   },
   {
     "id": "bafs_rep_0029",
@@ -779,8 +779,8 @@
       "\\$1750"
     ],
     "correctIndex": 0,
-    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 1750 − 1250 = \\$500。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$3000，等於把債主的權益也當成東主的。第二項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$1750 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
-    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 1750 − 1250 = \\$500. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$3000 and treats creditors' claims as the owner's. The second option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$1750 ignores liabilities; capital equals assets only when the business owes nothing."
+    "explanation": "會計等式為：資產 = 負債 + 資本。移項得資本 = 資產 − 負債 = 1750 − 1250 = \\$500。意義是：企業擁有的資源之中，扣除欠外人的部分，餘下才是東主真正擁有的。把兩者相加得 \\$3000，等於把債主的權益也當成東主的。有一項把減數次序調轉，在負債少於資產時會得出負數，僅憑常識即可排除。答 \\$1750 的忽略了負債 —— 只有在企業完全無負債時，資本才等於資產。",
+    "explanationEn": "The accounting equation is assets = liabilities + capital, so capital = assets − liabilities = 1750 − 1250 = \\$500. In words: of the resources the business controls, what is left after settling outside claims belongs to the owner. Adding the two gives \\$3000 and treats creditors' claims as the owner's. One option reverses the subtraction and turns negative whenever liabilities are smaller than assets, which common sense rules out. Answering \\$1750 ignores liabilities; capital equals assets only when the business owes nothing."
   },
   {
     "id": "bafs_rep_0030",
@@ -887,8 +887,8 @@
       "\\$300"
     ],
     "correctIndex": 0,
-    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 150 ÷ (5% × 2) = \\$1500。可以代回檢查：1500 × 5% × 2 = \\$150，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
-    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 150 ÷ (5% × 2) = \\$1500. Check by substituting back: 1500 × 5% × 2 = \\$150, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 150 ÷ (5% × 2) = \\$1500。可以代回檢查：1500 × 5% × 2 = \\$150，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。有一項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 150 ÷ (5% × 2) = \\$1500. Check by substituting back: 1500 × 5% × 2 = \\$150, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. One option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
   },
   {
     "id": "bafs_rep_0034",
@@ -914,8 +914,8 @@
       "\\$5.40"
     ],
     "correctIndex": 1,
-    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 90 ÷ (3% × 2) = \\$1500。可以代回檢查：1500 × 3% × 2 = \\$90，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
-    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 90 ÷ (3% × 2) = \\$1500. Check by substituting back: 1500 × 3% × 2 = \\$90, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 90 ÷ (3% × 2) = \\$1500。可以代回檢查：1500 × 3% × 2 = \\$90，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。有一項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 90 ÷ (3% × 2) = \\$1500. Check by substituting back: 1500 × 3% × 2 = \\$90, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. One option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
   },
   {
     "id": "bafs_rep_0035",
@@ -941,8 +941,8 @@
       "\\$12000"
     ],
     "correctIndex": 2,
-    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 480 ÷ (4% × 3) = \\$4000。可以代回檢查：4000 × 4% × 3 = \\$480，與題目相符。漏了年期得 \\$12000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
-    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 480 ÷ (4% × 3) = \\$4000. Check by substituting back: 4000 × 4% × 3 = \\$480, which matches. Omitting the number of years gives \\$12000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 480 ÷ (4% × 3) = \\$4000。可以代回檢查：4000 × 4% × 3 = \\$480，與題目相符。漏了年期得 \\$12000，等於當作只存了一年。有一項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 480 ÷ (4% × 3) = \\$4000. Check by substituting back: 4000 × 4% × 3 = \\$480, which matches. Omitting the number of years gives \\$12000, as if only one year had elapsed. One option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
   },
   {
     "id": "bafs_rep_0036",
@@ -968,8 +968,8 @@
       "\\$1000"
     ],
     "correctIndex": 3,
-    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 60 ÷ (2% × 3) = \\$1000。可以代回檢查：1000 × 2% × 3 = \\$60，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
-    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 60 ÷ (2% × 3) = \\$1000. Check by substituting back: 1000 × 2% × 3 = \\$60, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 60 ÷ (2% × 3) = \\$1000。可以代回檢查：1000 × 2% × 3 = \\$60，與題目相符。漏了年期得 \\$3000，等於當作只存了一年。有一項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 60 ÷ (2% × 3) = \\$1000. Check by substituting back: 1000 × 2% × 3 = \\$60, which matches. Omitting the number of years gives \\$3000, as if only one year had elapsed. One option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
   },
   {
     "id": "bafs_rep_0037",
@@ -995,8 +995,8 @@
       "\\$1400"
     ],
     "correctIndex": 0,
-    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 700 ÷ (7% × 2) = \\$5000。可以代回檢查：5000 × 7% × 2 = \\$700，與題目相符。漏了年期得 \\$10000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
-    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 700 ÷ (7% × 2) = \\$5000. Check by substituting back: 5000 × 7% × 2 = \\$700, which matches. Omitting the number of years gives \\$10000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 700 ÷ (7% × 2) = \\$5000。可以代回檢查：5000 × 7% × 2 = \\$700，與題目相符。漏了年期得 \\$10000，等於當作只存了一年。有一項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 700 ÷ (7% × 2) = \\$5000. Check by substituting back: 5000 × 7% × 2 = \\$700, which matches. Omitting the number of years gives \\$10000, as if only one year had elapsed. One option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
   },
   {
     "id": "bafs_rep_0038",
@@ -1022,8 +1022,8 @@
       "\\$57.60"
     ],
     "correctIndex": 1,
-    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 240 ÷ (6% × 4) = \\$1000。可以代回檢查：1000 × 6% × 4 = \\$240，與題目相符。漏了年期得 \\$4000，等於當作只存了一年。第二項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
-    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 240 ÷ (6% × 4) = \\$1000. Check by substituting back: 1000 × 6% × 4 = \\$240, which matches. Omitting the number of years gives \\$4000, as if only one year had elapsed. The second option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
+    "explanation": "單利公式為：利息 = 本金 × 年利率 × 年期。已知利息求本金，把公式倒轉：本金 = 240 ÷ (6% × 4) = \\$1000。可以代回檢查：1000 × 6% × 4 = \\$240，與題目相符。漏了年期得 \\$4000，等於當作只存了一年。有一項把除號當成乘號，所得數值遠小於利息本身，明顯不合理 —— 本金必定大於它所產生的利息。最後一項只乘年期而漏了利率。",
+    "explanationEn": "Simple interest is interest = principal × rate × years. Rearranging to find the principal: 240 ÷ (6% × 4) = \\$1000. Check by substituting back: 1000 × 6% × 4 = \\$240, which matches. Omitting the number of years gives \\$4000, as if only one year had elapsed. One option multiplies where it should divide and returns a figure far smaller than the interest itself — impossible, since a principal always exceeds the interest it earns. The last option applies the years but drops the rate."
   },
   {
     "id": "bafs_rep_0039",
@@ -1157,8 +1157,8 @@
       "\\$2500"
     ],
     "correctIndex": 2,
-    "explanation": "遞減餘額法首年以【成本】為基數：50000 × 20% = \\$10000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$8000 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$40000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
-    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 50000 × 20% = \\$10000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$8000 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$40000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years."
+    "explanation": "遞減餘額法首年以【成本】為基數：50000 × 20% = \\$10000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$8000 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$40000 是首年年末的帳面淨值，不是折舊額本身。有一項把折舊率當成年期來除。",
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 50000 × 20% = \\$10000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$8000 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$40000 is the carrying amount at the end of year one, not the depreciation. One option divides by the rate as though it were a number of years."
   },
   {
     "id": "bafs_rep_0044",
@@ -1184,8 +1184,8 @@
       "\\$3000"
     ],
     "correctIndex": 3,
-    "explanation": "遞減餘額法首年以【成本】為基數：12000 × 25% = \\$3000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$2250 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$9000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
-    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 12000 × 25% = \\$3000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$2250 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$9000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years."
+    "explanation": "遞減餘額法首年以【成本】為基數：12000 × 25% = \\$3000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$2250 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$9000 是首年年末的帳面淨值，不是折舊額本身。有一項把折舊率當成年期來除。",
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 12000 × 25% = \\$3000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$2250 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$9000 is the carrying amount at the end of year one, not the depreciation. One option divides by the rate as though it were a number of years."
   },
   {
     "id": "bafs_rep_0045",
@@ -1211,8 +1211,8 @@
       "\\$68000"
     ],
     "correctIndex": 0,
-    "explanation": "遞減餘額法首年以【成本】為基數：80000 × 15% = \\$12000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$10200 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$68000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
-    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 80000 × 15% = \\$12000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$10200 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$68000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years."
+    "explanation": "遞減餘額法首年以【成本】為基數：80000 × 15% = \\$12000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$10200 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$68000 是首年年末的帳面淨值，不是折舊額本身。有一項把折舊率當成年期來除。",
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 80000 × 15% = \\$12000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$10200 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$68000 is the carrying amount at the end of year one, not the depreciation. One option divides by the rate as though it were a number of years."
   },
   {
     "id": "bafs_rep_0046",
@@ -1238,8 +1238,8 @@
       "\\$7560"
     ],
     "correctIndex": 1,
-    "explanation": "遞減餘額法首年以【成本】為基數：36000 × 30% = \\$10800。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$7560 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$25200 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
-    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 36000 × 30% = \\$10800. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$7560 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$25200 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years."
+    "explanation": "遞減餘額法首年以【成本】為基數：36000 × 30% = \\$10800。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$7560 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$25200 是首年年末的帳面淨值，不是折舊額本身。有一項把折舊率當成年期來除。",
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 36000 × 30% = \\$10800. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$7560 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$25200 is the carrying amount at the end of year one, not the depreciation. One option divides by the rate as though it were a number of years."
   },
   {
     "id": "bafs_rep_0047",
@@ -1265,8 +1265,8 @@
       "\\$4800"
     ],
     "correctIndex": 2,
-    "explanation": "遞減餘額法首年以【成本】為基數：24000 × 5% = \\$1200。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$1140 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$22800 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
-    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 24000 × 5% = \\$1200. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$1140 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$22800 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years."
+    "explanation": "遞減餘額法首年以【成本】為基數：24000 × 5% = \\$1200。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$1140 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$22800 是首年年末的帳面淨值，不是折舊額本身。有一項把折舊率當成年期來除。",
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 24000 × 5% = \\$1200. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$1140 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$22800 is the carrying amount at the end of year one, not the depreciation. One option divides by the rate as though it were a number of years."
   },
   {
     "id": "bafs_rep_0048",
@@ -1292,8 +1292,8 @@
       "\\$24000"
     ],
     "correctIndex": 3,
-    "explanation": "遞減餘額法首年以【成本】為基數：60000 × 40% = \\$24000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$14400 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$36000 是首年年末的帳面淨值，不是折舊額本身。第一項把折舊率當成年期來除。",
-    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 60000 × 40% = \\$24000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$14400 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$36000 is the carrying amount at the end of year one, not the depreciation. The first option divides by the rate as though it were a number of years."
+    "explanation": "遞減餘額法首年以【成本】為基數：60000 × 40% = \\$24000。要留意首年【不需】扣除殘值 —— 這是遞減餘額法與直線法最大的分別：直線法先把殘值扣走再攤分，遞減餘額法則直接對帳面淨值計算，殘值只作停止折舊的下限。\\$14400 是第二年的折舊額（基數已變成帳面淨值），錯在提早了一年。\\$36000 是首年年末的帳面淨值，不是折舊額本身。有一項把折舊率當成年期來除。",
+    "explanationEn": "Under the reducing balance method the first year is charged on *cost*: 60000 × 40% = \\$24000. Note that residual value is *not* deducted first — this is the key difference from the straight-line method, which spreads cost less residual value evenly, whereas reducing balance charges a percentage of carrying amount and treats residual value only as a floor. \\$14400 is the second year's charge, computed on the reduced carrying amount, so it is one year early. \\$36000 is the carrying amount at the end of year one, not the depreciation. One option divides by the rate as though it were a number of years."
   },
   {
     "id": "bafs_rep_0049",
@@ -1319,8 +1319,8 @@
       "\\$2250"
     ],
     "correctIndex": 0,
-    "explanation": "分兩步。先求全年折舊：(96000 − 6000) ÷ 5 = \\$18000。再按實際持有月數比例分攤：18000 × 8 ÷ 12 = \\$12000。兩個關卡缺一不可 —— 忘記按月分攤得 \\$18000，等於當作年初已購入，是本題最主要的失分位；忘記扣除殘值則得 \\$12800，因為直線法攤分的是【可折舊金額】而非成本全數。第三項把月數當成除數，把折舊額愈算愈細，方向完全相反。實務上此類題目亦可能改為「按整月計，購入當月計一個月」，作答時應留意題目對月份的界定。",
-    "explanationEn": "Two steps. First the full-year charge: (96000 − 6000) ÷ 5 = \\$18000. Then pro-rate by months held: 18000 × 8 ÷ 12 = \\$12000. Both gates matter — omitting the pro-rating gives \\$18000 and assumes the asset was owned from day one, the main trap here; omitting the residual value gives \\$12800, since the straight-line method spreads the *depreciable amount*, not the full cost. The third option divides by the months instead of multiplying, driving the charge the wrong way entirely. In practice a question may instead say \"count the month of purchase as a full month\", so always check how the months are defined."
+    "explanation": "分兩步。先求全年折舊：(96000 − 6000) ÷ 5 = \\$18000。再按實際持有月數比例分攤：18000 × 8 ÷ 12 = \\$12000。兩個關卡缺一不可 —— 忘記按月分攤得 \\$18000，等於當作年初已購入，是本題最主要的失分位；忘記扣除殘值則得 \\$12800，因為直線法攤分的是【可折舊金額】而非成本全數。有一項把月數當成除數，把折舊額愈算愈細，方向完全相反。實務上此類題目亦可能改為「按整月計，購入當月計一個月」，作答時應留意題目對月份的界定。",
+    "explanationEn": "Two steps. First the full-year charge: (96000 − 6000) ÷ 5 = \\$18000. Then pro-rate by months held: 18000 × 8 ÷ 12 = \\$12000. Both gates matter — omitting the pro-rating gives \\$18000 and assumes the asset was owned from day one, the main trap here; omitting the residual value gives \\$12800, since the straight-line method spreads the *depreciable amount*, not the full cost. One option divides by the months instead of multiplying, driving the charge the wrong way entirely. In practice a question may instead say \"count the month of purchase as a full month\", so always check how the months are defined."
   },
   {
     "id": "bafs_rep_0050",
@@ -1346,8 +1346,8 @@
       "125%"
     ],
     "correctIndex": 1,
-    "explanation": "加成率以【成本】為基數：(200 − 160) ÷ 160 × 100% = 25%。第一個干擾項 20% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
-    "explanationEn": "Mark-up is measured against *cost*: (200 − 160) ÷ 160 × 100% = 25%. The first distractor, 20%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
+    "explanation": "加成率以【成本】為基數：(200 − 160) ÷ 160 × 100% = 25%。有一項 20% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "explanationEn": "Mark-up is measured against *cost*: (200 − 160) ÷ 160 × 100% = 25%. One option, 20%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
   },
   {
     "id": "bafs_rep_0051",
@@ -1373,8 +1373,8 @@
       "23.0769%"
     ],
     "correctIndex": 2,
-    "explanation": "加成率以【成本】為基數：(325 − 250) ÷ 250 × 100% = 30%。第一個干擾項 23.0769% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
-    "explanationEn": "Mark-up is measured against *cost*: (325 − 250) ÷ 250 × 100% = 30%. The first distractor, 23.0769%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
+    "explanation": "加成率以【成本】為基數：(325 − 250) ÷ 250 × 100% = 30%。有一項 23.0769% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "explanationEn": "Mark-up is measured against *cost*: (325 − 250) ÷ 250 × 100% = 30%. One option, 23.0769%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
   },
   {
     "id": "bafs_rep_0052",
@@ -1400,8 +1400,8 @@
       "25%"
     ],
     "correctIndex": 3,
-    "explanation": "加成率以【成本】為基數：(600 − 480) ÷ 480 × 100% = 25%。第一個干擾項 20% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
-    "explanationEn": "Mark-up is measured against *cost*: (600 − 480) ÷ 480 × 100% = 25%. The first distractor, 20%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
+    "explanation": "加成率以【成本】為基數：(600 − 480) ÷ 480 × 100% = 25%。有一項 20% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "explanationEn": "Mark-up is measured against *cost*: (600 − 480) ÷ 480 × 100% = 25%. One option, 20%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
   },
   {
     "id": "bafs_rep_0053",
@@ -1427,8 +1427,8 @@
       "71.4286%"
     ],
     "correctIndex": 0,
-    "explanation": "加成率以【成本】為基數：(126 − 90) ÷ 90 × 100% = 40%。第一個干擾項 28.5714% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
-    "explanationEn": "Mark-up is measured against *cost*: (126 − 90) ÷ 90 × 100% = 40%. The first distractor, 28.5714%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
+    "explanation": "加成率以【成本】為基數：(126 − 90) ÷ 90 × 100% = 40%。有一項 28.5714% 是【毛利率】，它以售價為基數 —— 同一件貨品，同一個毛利額，兩個比率的數值必定不同，而且加成率永遠較高，因為分母較細。混淆這兩者是本課題最集中的失分位，判斷方法只有一句：題目說「以成本為基數」就是加成率，說「佔售價」就是毛利率。餘下兩項把售價與成本直接相除，所得是倍數而非加成的比率。",
+    "explanationEn": "Mark-up is measured against *cost*: (126 − 90) ÷ 90 × 100% = 40%. One option, 28.5714%, is the *gross profit margin*, which is measured against selling price. For the same item and the same money profit the two percentages must differ, and mark-up is always the larger because its denominator is smaller. Confusing the two is where most marks go on this topic, and the test is one line: \"as a percentage of cost\" means mark-up, \"as a percentage of sales\" means margin. The remaining options divide price by cost outright, giving a multiple rather than a rate of mark-up."
   },
   {
     "id": "bafs_rep_0054",

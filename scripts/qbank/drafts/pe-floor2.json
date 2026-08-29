@@ -104,8 +104,8 @@
    "fat can only be broken down anaerobically, and late exercise is exactly when that occurs"
   ],
   "correctIndex": 0,
-  "explanation": "運動初期身體優先使用醣類，因為醣的分解步驟較少、單位時間釋出的 ATP 較多。但肝醣儲量有限（一般僅夠支持約 90 分鐘中高強度運動），隨着儲備下降，脂肪供能的比例逐步上升 —— 脂肪儲量遠大，可支持長時間低至中強度運動，這正是長距離耐力項目與減脂訓練的生理基礎。第二項方向寫反：脂肪供能速率較【慢】而非較快；第三項不符合生理事實，脂肪要經脂解與 β 氧化才能供能；第四項亦不正確，脂肪的氧化必須在【有氧】條件下進行。",
-  "explanationEn": "Early in exercise the body favours carbohydrate, whose breakdown has fewer steps and yields more ATP per unit time. But glycogen stores are limited — typically enough for about 90 minutes of moderate to hard work — and as they fall the share supplied by fat rises. Fat reserves are far larger and sustain prolonged low to moderate work, which is the physiological basis of endurance events and fat-loss training. The second option reverses the direction, since fat supplies energy more SLOWLY; the third is physiologically wrong, as fat must undergo lipolysis and beta-oxidation; and the fourth is also wrong, since fat oxidation requires AEROBIC conditions."
+  "explanation": "運動初期身體優先使用醣類，因為醣的分解步驟較少、單位時間釋出的 ATP 較多。但肝醣儲量有限（一般僅夠支持約 90 分鐘中高強度運動），隨着儲備下降，脂肪供能的比例逐步上升 —— 脂肪儲量遠大，可支持長時間低至中強度運動，這正是長距離耐力項目與減脂訓練的生理基礎。有一項方向寫反：脂肪供能速率較【慢】而非較快；另一項不符合生理事實，脂肪要經脂解與 β 氧化才能供能；還有一項亦不正確，脂肪的氧化必須在【有氧】條件下進行。",
+  "explanationEn": "Early in exercise the body favours carbohydrate, whose breakdown has fewer steps and yields more ATP per unit time. But glycogen stores are limited — typically enough for about 90 minutes of moderate to hard work — and as they fall the share supplied by fat rises. Fat reserves are far larger and sustain prolonged low to moderate work, which is the physiological basis of endurance events and fat-loss training. One option reverses the direction, since fat supplies energy more SLOWLY; the third is physiologically wrong, as fat must undergo lipolysis and beta-oxidation; and the fourth is also wrong, since fat oxidation requires AEROBIC conditions."
  },
  {
   "id": "floor2_pe_bs_05",
@@ -131,8 +131,8 @@
    "training should always use maximal loads, since only maximal loads stimulate growth"
   ],
   "correctIndex": 0,
-  "explanation": "身體只會對「超出目前能力」的刺激作出適應：訓練負荷若停留在已適應的水平，即使勤力訓練，體能亦會停滯不前。因此需要逐步提高強度、時間、頻率或密度，這就是超負荷。要留意它與「每次力竭」並不相同 —— 過度的負荷會導致過度訓練與受傷，超負荷強調的是【略高於】現有水平並配合足夠恢復，而非愈辛苦愈好。第三項描述的正是超負荷要避免的停滯狀態；第四項把超負荷誤解為最大負荷，忽略了不同訓練目標需要不同的強度區間。",
-  "explanationEn": "The body adapts only to a stimulus that exceeds its current capacity: if the load stays at an already-adapted level, fitness plateaus however diligently one trains. Progression therefore raises intensity, duration, frequency or density — that is overload. Note it is not the same as training to exhaustion every session: excessive load leads to overtraining and injury, and overload means a load SLIGHTLY above current capacity combined with adequate recovery, not simply as hard as possible. The third option describes exactly the plateau that overload exists to avoid; the fourth confuses overload with maximal load and ignores that different training goals need different intensity zones."
+  "explanation": "身體只會對「超出目前能力」的刺激作出適應：訓練負荷若停留在已適應的水平，即使勤力訓練，體能亦會停滯不前。因此需要逐步提高強度、時間、頻率或密度，這就是超負荷。要留意它與「每次力竭」並不相同 —— 過度的負荷會導致過度訓練與受傷，超負荷強調的是【略高於】現有水平並配合足夠恢復，而非愈辛苦愈好。有一項描述的正是超負荷要避免的停滯狀態；另一項把超負荷誤解為最大負荷，忽略了不同訓練目標需要不同的強度區間。",
+  "explanationEn": "The body adapts only to a stimulus that exceeds its current capacity: if the load stays at an already-adapted level, fitness plateaus however diligently one trains. Progression therefore raises intensity, duration, frequency or density — that is overload. Note it is not the same as training to exhaustion every session: excessive load leads to overtraining and injury, and overload means a load SLIGHTLY above current capacity combined with adequate recovery, not simply as hard as possible. One option describes exactly the plateau that overload exists to avoid; the fourth confuses overload with maximal load and ignores that different training goals need different intensity zones."
  },
  {
   "id": "floor2_pe_bs_06",
@@ -158,8 +158,8 @@
    "a lower centre of gravity reduces the weight acting on the runner, making balance easier"
   ],
   "correctIndex": 0,
-  "explanation": "穩定性取決於重心線是否落在支撐面（雙腳所圍成的範圍）之內。重心愈低，要把重心線推出支撐面所需的傾斜角度愈大，亦即所需的傾覆力矩愈大，因此愈難被推倒 —— 這正是柔道、相撲、防守姿勢都刻意壓低身體的原因，亦解釋為何加闊雙腳（擴大支撐面）同樣提高穩定性。第二項混淆了穩定性與靈活性，而且重心高低不改變總質量；第三項不成立，摩擦係數取決於接觸面材質而非重心高度；第四項與事實不符，重力大小取決於質量，與重心位置無關。",
-  "explanationEn": "Stability depends on whether the line of gravity falls within the base of support — the area enclosed by the feet. The lower the centre of gravity, the greater the tilt needed to push that line outside the base, and hence the larger the toppling moment required, so the harder it is to unbalance the person. This is why judo, sumo and defensive stances all deliberately lower the body, and why widening the feet, which enlarges the base, also raises stability. The second option confuses stability with agility, and the height of the centre of gravity does not alter total mass; the third is untrue, as the coefficient of friction depends on the surfaces in contact; and the fourth is wrong, since weight depends on mass and not on where the centre of gravity sits."
+  "explanation": "穩定性取決於重心線是否落在支撐面（雙腳所圍成的範圍）之內。重心愈低，要把重心線推出支撐面所需的傾斜角度愈大，亦即所需的傾覆力矩愈大，因此愈難被推倒 —— 這正是柔道、相撲、防守姿勢都刻意壓低身體的原因，亦解釋為何加闊雙腳（擴大支撐面）同樣提高穩定性。有一項混淆了穩定性與靈活性，而且重心高低不改變總質量；另一項不成立，摩擦係數取決於接觸面材質而非重心高度；還有一項與事實不符，重力大小取決於質量，與重心位置無關。",
+  "explanationEn": "Stability depends on whether the line of gravity falls within the base of support — the area enclosed by the feet. The lower the centre of gravity, the greater the tilt needed to push that line outside the base, and hence the larger the toppling moment required, so the harder it is to unbalance the person. This is why judo, sumo and defensive stances all deliberately lower the body, and why widening the feet, which enlarges the base, also raises stability. One option confuses stability with agility, and the height of the centre of gravity does not alter total mass; the third is untrue, as the coefficient of friction depends on the surfaces in contact; and the fourth is wrong, since weight depends on mass and not on where the centre of gravity sits."
  },
  {
   "id": "floor2_pe_bs_07",
@@ -185,8 +185,8 @@
    "it exhausts remaining energy through continued hard work so recovery begins sooner"
   ],
   "correctIndex": 0,
-  "explanation": "劇烈運動時，下肢肌肉的節律收縮像泵一樣協助靜脈血回流。若突然完全停止，這個「肌肉泵」失效，血液容易滯留於下肢，回心血量與腦部供血下降，可能引致頭暈甚至暈厥。緩和運動以逐步降低的低強度活動維持肌肉泵運作，同時保持較高的血流量，有助把乳酸等代謝產物運走。第二項方向錯誤 —— 緩和運動追求的是【逐步】而非立即回落；第三項不符生理事實，水分經消化道吸收後由循環系統分配；第四項與「緩和」的定義自相矛盾。",
-  "explanationEn": "During vigorous exercise the rhythmic contraction of leg muscles acts as a pump assisting venous return. Stopping abruptly disables this muscle pump, blood tends to pool in the legs, and reduced return to the heart and brain can cause dizziness or even fainting. A cool-down keeps the pump working through gradually declining light activity while maintaining raised blood flow, helping clear metabolites such as lactate. The second option has the direction wrong, since a cool-down aims at a GRADUAL rather than immediate return; the third is physiologically incorrect, as water is absorbed through the digestive tract and distributed by the circulation; and the fourth contradicts the meaning of a cool-down."
+  "explanation": "劇烈運動時，下肢肌肉的節律收縮像泵一樣協助靜脈血回流。若突然完全停止，這個「肌肉泵」失效，血液容易滯留於下肢，回心血量與腦部供血下降，可能引致頭暈甚至暈厥。緩和運動以逐步降低的低強度活動維持肌肉泵運作，同時保持較高的血流量，有助把乳酸等代謝產物運走。有一項方向錯誤 —— 緩和運動追求的是【逐步】而非立即回落；另一項不符生理事實，水分經消化道吸收後由循環系統分配；還有一項與「緩和」的定義自相矛盾。",
+  "explanationEn": "During vigorous exercise the rhythmic contraction of leg muscles acts as a pump assisting venous return. Stopping abruptly disables this muscle pump, blood tends to pool in the legs, and reduced return to the heart and brain can cause dizziness or even fainting. A cool-down keeps the pump working through gradually declining light activity while maintaining raised blood flow, helping clear metabolites such as lactate. One option has the direction wrong, since a cool-down aims at a GRADUAL rather than immediate return; the third is physiologically incorrect, as water is absorbed through the digestive tract and distributed by the circulation; and the fourth contradicts the meaning of a cool-down."
  },
  {
   "id": "floor2_pe_bs_08",
@@ -212,7 +212,7 @@
    "it reduces the force the arm must exert, letting the athlete throw further with less force"
   ],
   "correctIndex": 0,
-  "explanation": "出手速度是決定擲遠距離的最主要因素。由衝量—動量關係，速度的增加量取決於力與作用【時間】的乘積；由功—能關係，動能的增加取決於力與作用【距離】的乘積。滑步或旋轉把施力的路徑由手臂一段延長至整個身體移動的距離，時間亦相應延長，因此在同樣的肌肉力量之下能累積更高的出手速度。第二項不成立，技術動作不會改變鉛球的質量；第三項亦不成立，出手之後軌跡只由出手速度、角度與重力決定；第四項方向倒轉 —— 技術是為了累積更多速度，而非省力。",
-  "explanationEn": "Release speed is the dominant factor in throwing distance. From the impulse-momentum relation, the gain in speed depends on force multiplied by the TIME over which it acts; from the work-energy relation, the gain in kinetic energy depends on force multiplied by the DISTANCE. A glide or rotation extends the path of force application from the arm alone to the whole body's travel, and lengthens the time correspondingly, so the same muscular force builds a higher release speed. The second option is untenable, as technique cannot change the shot's mass; the third likewise, since after release the trajectory is fixed by speed, angle and gravity; and the fourth reverses the purpose, which is to accumulate speed rather than to save effort."
+  "explanation": "出手速度是決定擲遠距離的最主要因素。由衝量—動量關係，速度的增加量取決於力與作用【時間】的乘積；由功—能關係，動能的增加取決於力與作用【距離】的乘積。滑步或旋轉把施力的路徑由手臂一段延長至整個身體移動的距離，時間亦相應延長，因此在同樣的肌肉力量之下能累積更高的出手速度。有一項不成立，技術動作不會改變鉛球的質量；另一項亦不成立，出手之後軌跡只由出手速度、角度與重力決定；還有一項方向倒轉 —— 技術是為了累積更多速度，而非省力。",
+  "explanationEn": "Release speed is the dominant factor in throwing distance. From the impulse-momentum relation, the gain in speed depends on force multiplied by the TIME over which it acts; from the work-energy relation, the gain in kinetic energy depends on force multiplied by the DISTANCE. A glide or rotation extends the path of force application from the arm alone to the whole body's travel, and lengthens the time correspondingly, so the same muscular force builds a higher release speed. One option is untenable, as technique cannot change the shot's mass; the third likewise, since after release the trajectory is fixed by speed, angle and gravity; and the fourth reverses the purpose, which is to accumulate speed rather than to save effort."
  }
 ]

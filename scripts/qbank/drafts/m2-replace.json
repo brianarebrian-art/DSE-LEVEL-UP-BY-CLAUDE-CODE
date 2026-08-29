@@ -23,8 +23,8 @@
       "$k = 1.5$"
     ],
     "correctIndex": 0,
-    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 2k - (3)(4) = 2k - 12$，令其為 $0$ 得 $k = 6$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 6$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。第一個干擾項漏了符號，其餘兩項把矩陣元素的位置對調。",
-    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 2k - (3)(4) = 2k - 12$; setting this to $0$ gives $k = 6$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 6$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. The first distractor drops a sign; the other two swap the positions of the entries."
+    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 2k - (3)(4) = 2k - 12$，令其為 $0$ 得 $k = 6$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 6$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。有一項漏了符號，其餘兩項把矩陣元素的位置對調。",
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 2k - (3)(4) = 2k - 12$; setting this to $0$ gives $k = 6$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 6$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. One option drops a sign; the other two swap the positions of the entries."
   },
   {
     "id": "m2_rep_0002",
@@ -50,8 +50,8 @@
       "$k = -3$"
     ],
     "correctIndex": 1,
-    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 1k - (5)(2) = 1k - 10$，令其為 $0$ 得 $k = 10$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 10$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。第一個干擾項漏了符號，其餘兩項把矩陣元素的位置對調。",
-    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 1k - (5)(2) = 1k - 10$; setting this to $0$ gives $k = 10$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 10$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. The first distractor drops a sign; the other two swap the positions of the entries."
+    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 1k - (5)(2) = 1k - 10$，令其為 $0$ 得 $k = 10$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 10$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。有一項漏了符號，其餘兩項把矩陣元素的位置對調。",
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 1k - (5)(2) = 1k - 10$; setting this to $0$ gives $k = 10$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 10$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. One option drops a sign; the other two swap the positions of the entries."
   },
   {
     "id": "m2_rep_0003",
@@ -77,8 +77,8 @@
       "$k = -4$"
     ],
     "correctIndex": 2,
-    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 3k - (2)(6) = 3k - 12$，令其為 $0$ 得 $k = 4$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 4$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。第一個干擾項漏了符號，其餘兩項把矩陣元素的位置對調。",
-    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 3k - (2)(6) = 3k - 12$; setting this to $0$ gives $k = 4$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 4$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. The first distractor drops a sign; the other two swap the positions of the entries."
+    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 3k - (2)(6) = 3k - 12$，令其為 $0$ 得 $k = 4$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 4$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。有一項漏了符號，其餘兩項把矩陣元素的位置對調。",
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 3k - (2)(6) = 3k - 12$; setting this to $0$ gives $k = 4$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 4$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. One option drops a sign; the other two swap the positions of the entries."
   },
   {
     "id": "m2_rep_0004",
@@ -104,8 +104,8 @@
       "$k = 2$"
     ],
     "correctIndex": 3,
-    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 4k - (1)(8) = 4k - 8$，令其為 $0$ 得 $k = 2$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 2$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。第一個干擾項漏了符號，其餘兩項把矩陣元素的位置對調。",
-    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 4k - (1)(8) = 4k - 8$; setting this to $0$ gives $k = 2$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 2$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. The first distractor drops a sign; the other two swap the positions of the entries."
+    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 4k - (1)(8) = 4k - 8$，令其為 $0$ 得 $k = 2$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 2$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。有一項漏了符號，其餘兩項把矩陣元素的位置對調。",
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 4k - (1)(8) = 4k - 8$; setting this to $0$ gives $k = 2$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 2$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. One option drops a sign; the other two swap the positions of the entries."
   },
   {
     "id": "m2_rep_0005",
@@ -131,8 +131,8 @@
       "$k = 1.5$"
     ],
     "correctIndex": 0,
-    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 5k - (3)(10) = 5k - 30$，令其為 $0$ 得 $k = 6$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 6$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。第一個干擾項漏了符號，其餘兩項把矩陣元素的位置對調。",
-    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 5k - (3)(10) = 5k - 30$; setting this to $0$ gives $k = 6$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 6$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. The first distractor drops a sign; the other two swap the positions of the entries."
+    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 5k - (3)(10) = 5k - 30$，令其為 $0$ 得 $k = 6$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 6$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。有一項漏了符號，其餘兩項把矩陣元素的位置對調。",
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 5k - (3)(10) = 5k - 30$; setting this to $0$ gives $k = 6$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 6$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. One option drops a sign; the other two swap the positions of the entries."
   },
   {
     "id": "m2_rep_0006",
@@ -158,8 +158,8 @@
       "$k = -1$"
     ],
     "correctIndex": 1,
-    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 2k - (7)(3) = 2k - 21$，令其為 $0$ 得 $k = 10.5$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 10.5$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。第一個干擾項漏了符號，其餘兩項把矩陣元素的位置對調。",
-    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 2k - (7)(3) = 2k - 21$; setting this to $0$ gives $k = 10.5$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 10.5$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. The first distractor drops a sign; the other two swap the positions of the entries."
+    "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 2k - (7)(3) = 2k - 21$，令其為 $0$ 得 $k = 10.5$。要留意題目問的是【沒有】逆矩陣，即要令行列式等於零；若看漏了否定字眼而去求「有逆矩陣」的條件，答案便會變成一個範圍（$k \\neq 10.5$）而非單一數值 —— 選項全部是單一數值，本身已經提示了題目要的是使行列式歸零的那一點。有一項漏了符號，其餘兩項把矩陣元素的位置對調。",
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 2k - (7)(3) = 2k - 21$; setting this to $0$ gives $k = 10.5$. Note the question asks when the inverse does *not* exist, i.e. when the determinant vanishes. Missing the negative would turn the answer into a range ($k \\neq 10.5$) rather than a single value — and since every option is a single value, that in itself signals which condition is wanted. One option drops a sign; the other two swap the positions of the entries."
   },
   {
     "id": "m2_rep_0007",
@@ -185,8 +185,8 @@
       "$\\begin{pmatrix} 3 & 2 \\\\ 3 & 12 \\end{pmatrix}$"
     ],
     "correctIndex": 2,
-    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $3A = \\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$。第一個干擾項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$3A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
-    "explanationEn": "Scalar multiplication multiplies *every* entry, so $3A = \\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$. The first distractor scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $3A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
+    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $3A = \\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$。有一項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$3A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
+    "explanationEn": "Scalar multiplication multiplies *every* entry, so $3A = \\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$. One option scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $3A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
   },
   {
     "id": "m2_rep_0008",
@@ -212,8 +212,8 @@
       "$\\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$"
     ],
     "correctIndex": 3,
-    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $4A = \\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$。第一個干擾項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$4A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
-    "explanationEn": "Scalar multiplication multiplies *every* entry, so $4A = \\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$. The first distractor scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $4A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
+    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $4A = \\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$。有一項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$4A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
+    "explanationEn": "Scalar multiplication multiplies *every* entry, so $4A = \\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$. One option scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $4A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
   },
   {
     "id": "m2_rep_0009",
@@ -239,8 +239,8 @@
       "$\\begin{pmatrix} 6 & 4 \\\\ 2 & 4 \\end{pmatrix}$"
     ],
     "correctIndex": 0,
-    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $2A = \\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$。第一個干擾項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$2A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
-    "explanationEn": "Scalar multiplication multiplies *every* entry, so $2A = \\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$. The first distractor scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $2A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
+    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $2A = \\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$。有一項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$2A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
+    "explanationEn": "Scalar multiplication multiplies *every* entry, so $2A = \\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$. One option scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $2A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
   },
   {
     "id": "m2_rep_0010",
@@ -266,8 +266,8 @@
       "$\\begin{pmatrix} 10 & 7 \\\\ 5 & 8 \\end{pmatrix}$"
     ],
     "correctIndex": 1,
-    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $5A = \\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$。第一個干擾項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$5A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
-    "explanationEn": "Scalar multiplication multiplies *every* entry, so $5A = \\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$. The first distractor scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $5A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
+    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $5A = \\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$。有一項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$5A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
+    "explanationEn": "Scalar multiplication multiplies *every* entry, so $5A = \\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$. One option scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $5A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
   },
   {
     "id": "m2_rep_0011",
@@ -293,8 +293,8 @@
       "$\\begin{pmatrix} 3 & 4 \\\\ 6 & 3 \\end{pmatrix}$"
     ],
     "correctIndex": 2,
-    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $3A = \\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$。第一個干擾項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$3A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
-    "explanationEn": "Scalar multiplication multiplies *every* entry, so $3A = \\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$. The first distractor scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $3A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
+    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $3A = \\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$。有一項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$3A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
+    "explanationEn": "Scalar multiplication multiplies *every* entry, so $3A = \\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$. One option scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $3A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
   },
   {
     "id": "m2_rep_0012",
@@ -320,8 +320,8 @@
       "$\\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$"
     ],
     "correctIndex": 3,
-    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $2A = \\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$。第一個干擾項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$2A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
-    "explanationEn": "Scalar multiplication multiplies *every* entry, so $2A = \\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$. The first distractor scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $2A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
+    "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，故 $2A = \\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$。有一項只乘了主對角線，是把純量乘法同「乘以單位矩陣的倍數」混淆了 —— 後者才只影響對角線。第二個把乘法做成了加法。第三個乘對了每個元素，但同時把矩陣轉置了：$2A$ 不會改變元素的位置，只改變它們的大小。純量乘法的結果，行列數必定同原矩陣一樣。",
+    "explanationEn": "Scalar multiplication multiplies *every* entry, so $2A = \\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$. One option scales only the leading diagonal, confusing scalar multiplication with multiplying by a multiple of the identity matrix, which is what affects the diagonal alone. The second adds instead of multiplying. The third scales every entry correctly but also transposes the matrix: $2A$ changes the size of the entries, never their positions. The result always has the same dimensions as the original."
   },
   {
     "id": "m2_rep_0013",
@@ -590,8 +590,8 @@
       "$5$"
     ],
     "correctIndex": 1,
-    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$2(2)^2 − 3(2) + 5 = 7$。第一個干擾項漏了常數項。第二個代入了【導函數】$4x − 3$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。第三項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
-    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $2(2)^2 − 3(2) + 5 = 7$. The first distractor drops the constant term. The second substitutes into the *derivative* $4x − 3$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
+    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$2(2)^2 − 3(2) + 5 = 7$。另一項漏了常數項。第二個代入了【導函數】$4x − 3$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。有一項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $2(2)^2 − 3(2) + 5 = 7$. One option drops the constant term. The second substitutes into the *derivative* $4x − 3$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
   },
   {
     "id": "m2_rep_0023",
@@ -617,8 +617,8 @@
       "$21$"
     ],
     "correctIndex": 2,
-    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$1(3)^2 + 4(3) − 6 = 15$。第一個干擾項漏了常數項。第二個代入了【導函數】$2x + 4$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。第三項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
-    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $1(3)^2 + 4(3) − 6 = 15$. The first distractor drops the constant term. The second substitutes into the *derivative* $2x + 4$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
+    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$1(3)^2 + 4(3) − 6 = 15$。另一項漏了常數項。第二個代入了【導函數】$2x + 4$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。有一項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $1(3)^2 + 4(3) − 6 = 15$. One option drops the constant term. The second substitutes into the *derivative* $2x + 4$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
   },
   {
     "id": "m2_rep_0024",
@@ -644,8 +644,8 @@
       "$16$"
     ],
     "correctIndex": 3,
-    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$3(-2)^2 − 1(-2) + 2 = 16$。第一個干擾項漏了常數項。第二個代入了【導函數】$6x − 1$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。第三項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
-    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $3(-2)^2 − 1(-2) + 2 = 16$. The first distractor drops the constant term. The second substitutes into the *derivative* $6x − 1$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
+    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$3(-2)^2 − 1(-2) + 2 = 16$。另一項漏了常數項。第二個代入了【導函數】$6x − 1$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。有一項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $3(-2)^2 − 1(-2) + 2 = 16$. One option drops the constant term. The second substitutes into the *derivative* $6x − 1$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
   },
   {
     "id": "m2_rep_0025",
@@ -671,8 +671,8 @@
       "$8$"
     ],
     "correctIndex": 0,
-    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$2(-2)^2 + 5(-2) + 1 = -1$。第一個干擾項漏了常數項。第二個代入了【導函數】$4x + 5$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。第三項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
-    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $2(-2)^2 + 5(-2) + 1 = -1$. The first distractor drops the constant term. The second substitutes into the *derivative* $4x + 5$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
+    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$2(-2)^2 + 5(-2) + 1 = -1$。另一項漏了常數項。第二個代入了【導函數】$4x + 5$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。有一項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $2(-2)^2 + 5(-2) + 1 = -1$. One option drops the constant term. The second substitutes into the *derivative* $4x + 5$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
   },
   {
     "id": "m2_rep_0026",
@@ -698,8 +698,8 @@
       "$24$"
     ],
     "correctIndex": 1,
-    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$4(3)^2 + 0(3) − 7 = 29$。第一個干擾項漏了常數項。第二個代入了【導函數】$8x + 0$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。第三項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
-    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $4(3)^2 + 0(3) − 7 = 29$. The first distractor drops the constant term. The second substitutes into the *derivative* $8x + 0$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
+    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$4(3)^2 + 0(3) − 7 = 29$。另一項漏了常數項。第二個代入了【導函數】$8x + 0$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。有一項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $4(3)^2 + 0(3) − 7 = 29$. One option drops the constant term. The second substitutes into the *derivative* $8x + 0$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
   },
   {
     "id": "m2_rep_0027",
@@ -725,8 +725,8 @@
       "$-8$"
     ],
     "correctIndex": 2,
-    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$1(4)^2 − 6(4) + 9 = 1$。第一個干擾項漏了常數項。第二個代入了【導函數】$2x − 6$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。第三項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
-    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $1(4)^2 − 6(4) + 9 = 1$. The first distractor drops the constant term. The second substitutes into the *derivative* $2x − 6$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
+    "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入即可：$1(4)^2 − 6(4) + 9 = 1$。另一項漏了常數項。第二個代入了【導函數】$2x − 6$ —— 求極限同求導數是兩件事，混淆兩者是初學極限時最常見的錯。有一項把 $x$ 當成 $1$ 代入。留意：只有當代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+    "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point is simply its value there, so substitute directly: $1(4)^2 − 6(4) + 9 = 1$. One option drops the constant term. The second substitutes into the *derivative* $2x − 6$ — taking a limit and differentiating are different operations, and confusing them is the classic beginner's error. The third substitutes $x = 1$. Note that simplification is needed only when substitution produces an indeterminate form such as $\\frac{0}{0}$, which is not the case here."
   },
   {
     "id": "m2_rep_0028",
@@ -1292,8 +1292,8 @@
       "$k = 6$"
     ],
     "correctIndex": 3,
-    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12 = 0$，得 $k = 6$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。第一個干擾項漏了符號，第二個把兩條方程的係數對調了位置。",
-    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12 = 0$, giving $k = 6$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. The first distractor drops a sign and the second swaps coefficients between the equations."
+    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12 = 0$，得 $k = 6$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。有一項漏了符號，第二個把兩條方程的係數對調了位置。",
+    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12 = 0$, giving $k = 6$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. One option drops a sign and the second swaps coefficients between the equations."
   },
   {
     "id": "m2_rep_0049",
@@ -1319,8 +1319,8 @@
       "Any value of $k$ will do"
     ],
     "correctIndex": 0,
-    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18 = 0$，得 $k = 6$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。第一個干擾項漏了符號，第二個把兩條方程的係數對調了位置。",
-    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18 = 0$, giving $k = 6$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. The first distractor drops a sign and the second swaps coefficients between the equations."
+    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18 = 0$，得 $k = 6$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。有一項漏了符號，第二個把兩條方程的係數對調了位置。",
+    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18 = 0$, giving $k = 6$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. One option drops a sign and the second swaps coefficients between the equations."
   },
   {
     "id": "m2_rep_0050",
@@ -1346,8 +1346,8 @@
       "$k = 0.6$"
     ],
     "correctIndex": 1,
-    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = 1k - 15 = 0$，得 $k = 15$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。第一個干擾項漏了符號，第二個把兩條方程的係數對調了位置。",
-    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = 1k - 15 = 0$, giving $k = 15$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. The first distractor drops a sign and the second swaps coefficients between the equations."
+    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = 1k - 15 = 0$，得 $k = 15$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。有一項漏了符號，第二個把兩條方程的係數對調了位置。",
+    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = 1k - 15 = 0$, giving $k = 15$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. One option drops a sign and the second swaps coefficients between the equations."
   },
   {
     "id": "m2_rep_0051",
@@ -1373,8 +1373,8 @@
       "$k = -1.5$"
     ],
     "correctIndex": 2,
-    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6 = 0$，得 $k = 1.5$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。第一個干擾項漏了符號，第二個把兩條方程的係數對調了位置。",
-    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6 = 0$, giving $k = 1.5$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. The first distractor drops a sign and the second swaps coefficients between the equations."
+    "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6 = 0$，得 $k = 1.5$。「任何 $k$ 值皆可」一項混淆了兩件事：任何 $k$ 都能保證【零解】存在，但要有非零解就必須額外令行列式歸零。有一項漏了符號，第二個把兩條方程的係數對調了位置。",
+    "explanationEn": "A homogeneous system always admits the trivial solution $x = y = 0$; it has a *non-trivial* solution exactly when the coefficient determinant vanishes. So $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6 = 0$, giving $k = 1.5$. The option \"any $k$\" confuses two things: every $k$ guarantees the *trivial* solution, but a non-trivial one additionally requires the determinant to be zero. One option drops a sign and the second swaps coefficients between the equations."
   },
   {
     "id": "m2_rep_0052",
@@ -1751,8 +1751,8 @@
       "$t = 2$"
     ],
     "correctIndex": 0,
-    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + 4t = 0$，故 $t = -1.5$。可以代回檢查：$3 \\times 2 + 4 \\times -1.5 = 0$。第一個干擾項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。第二項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
-    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + 4t = 0$, giving $t = -1.5$. Check by substituting: $3 \\times 2 + 4 \\times -1.5 = 0$. The first distractor drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
+    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + 4t = 0$，故 $t = -1.5$。可以代回檢查：$3 \\times 2 + 4 \\times -1.5 = 0$。另一項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。有一項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
+    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + 4t = 0$, giving $t = -1.5$. Check by substituting: $3 \\times 2 + 4 \\times -1.5 = 0$. One option drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
   },
   {
     "id": "m2_rep_0066",
@@ -1778,8 +1778,8 @@
       "$t = -9$"
     ],
     "correctIndex": 1,
-    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + -6t = 0$，故 $t = 1$。可以代回檢查：$2 \\times 3 + -6 \\times 1 = 0$。第一個干擾項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。第二項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
-    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + -6t = 0$, giving $t = 1$. Check by substituting: $2 \\times 3 + -6 \\times 1 = 0$. The first distractor drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
+    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + -6t = 0$，故 $t = 1$。可以代回檢查：$2 \\times 3 + -6 \\times 1 = 0$。另一項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。有一項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
+    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + -6t = 0$, giving $t = 1$. Check by substituting: $2 \\times 3 + -6 \\times 1 = 0$. One option drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
   },
   {
     "id": "m2_rep_0067",
@@ -1805,8 +1805,8 @@
       "$t = 10$"
     ],
     "correctIndex": 2,
-    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + 2t = 0$，故 $t = -10$。可以代回檢查：$5 \\times 4 + 2 \\times -10 = 0$。第一個干擾項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。第二項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
-    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + 2t = 0$, giving $t = -10$. Check by substituting: $5 \\times 4 + 2 \\times -10 = 0$. The first distractor drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
+    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + 2t = 0$，故 $t = -10$。可以代回檢查：$5 \\times 4 + 2 \\times -10 = 0$。另一項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。有一項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
+    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + 2t = 0$, giving $t = -10$. Check by substituting: $5 \\times 4 + 2 \\times -10 = 0$. One option drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
   },
   {
     "id": "m2_rep_0068",
@@ -1832,7 +1832,7 @@
       "$t = -0.25$"
     ],
     "correctIndex": 3,
-    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + 8t = 0$，故 $t = -0.25$。可以代回檢查：$1 \\times 2 + 8 \\times -0.25 = 0$。第一個干擾項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。第二項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
-    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + 8t = 0$, giving $t = -0.25$. Check by substituting: $1 \\times 2 + 8 \\times -0.25 = 0$. The first distractor drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
+    "explanation": "兩個非零向量垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + 8t = 0$，故 $t = -0.25$。可以代回檢查：$1 \\times 2 + 8 \\times -0.25 = 0$。另一項漏了負號 —— 純量積為零通常要求兩個分量的乘積互相抵銷，故 $t$ 的符號多數同 $\\vec{a}$ 的分量相反，見到答案同號就應該起疑。有一項把兩個分量的角色對調（那是【平行】的條件所用的比例關係）。垂直看純量積，平行看分量成比例，兩者不可混淆。",
+    "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + 8t = 0$, giving $t = -0.25$. Check by substituting: $1 \\times 2 + 8 \\times -0.25 = 0$. One option drops the minus sign — a zero scalar product usually needs the two component products to cancel, so $t$ normally takes the opposite sign to the components of $\\vec{a}$; an answer with matching signs should raise suspicion. The second swaps the roles of the components, which belongs to the proportionality test for *parallel* vectors. Perpendicularity is tested by the scalar product, parallelism by proportional components; the two must not be confused."
   }
 ]

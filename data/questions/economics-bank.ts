@@ -601,8 +601,8 @@ for (const sub of [2, 4, 5, 8, 10]) {
         'non-excludability with rivalry — others cannot be kept out, but one person\'s use markedly reduces what is left'],
        ['由政府提供且完全免費 —— 只要是政府出資的服務便屬共用品',
         'provided by government free of charge — any government-funded service is a public good']],
-      [`共用品有兩個特徵：非排他性（難以阻止不付費者使用）與非競爭性（一人使用不減少他人可用的份量）。正因為非排他，個人有誘因坐享其成而不付費，即「搭便車問題」，令市場提供的數量低於社會最適水平 —— 這是市場失靈的一種，也是政府提供共用品的理由。第三項描述的是【共有資源】（如公海漁業）：非排他但有競爭性，因而出現過度使用。第四項把「由政府提供」誤當成定義 —— 定義在於物品本身的兩個性質，而非誰出錢：政府亦提供大量非共用品（如公立醫院的病床就有競爭性）。`,
-       `A public good is non-excludable — non-payers cannot easily be kept out — and non-rival — one person's use does not reduce the amount available to others. Non-excludability gives individuals an incentive to enjoy the good without paying, the free-rider problem, so the market supplies less than the social optimum. This is a form of market failure and the reason governments provide such goods. The third option describes a COMMON RESOURCE, such as an open-sea fishery: non-excludable but rival, hence over-use. The fourth mistakes government provision for the definition — what matters is the two properties of the good itself, not who pays, and governments also supply many non-public goods, a hospital bed being clearly rival.`])
+      [`共用品有兩個特徵：非排他性（難以阻止不付費者使用）與非競爭性（一人使用不減少他人可用的份量）。正因為非排他，個人有誘因坐享其成而不付費，即「搭便車問題」，令市場提供的數量低於社會最適水平 —— 這是市場失靈的一種，也是政府提供共用品的理由。有一項描述的是【共有資源】（如公海漁業）：非排他但有競爭性，因而出現過度使用。另一項把「由政府提供」誤當成定義 —— 定義在於物品本身的兩個性質，而非誰出錢：政府亦提供大量非共用品（如公立醫院的病床就有競爭性）。`,
+       `A public good is non-excludable — non-payers cannot easily be kept out — and non-rival — one person's use does not reduce the amount available to others. Non-excludability gives individuals an incentive to enjoy the good without paying, the free-rider problem, so the market supplies less than the social optimum. This is a form of market failure and the reason governments provide such goods. One option describes a COMMON RESOURCE, such as an open-sea fishery: non-excludable but rival, hence over-use. The fourth mistakes government provision for the definition — what matters is the two properties of the good itself, not who pays, and governments also supply many non-public goods, a hospital bed being clearly rival.`])
   })
 
 // TR4 — 匯率換算
@@ -751,7 +751,7 @@ for (const exp of [800, 1200, 1500, 2000, 2400]) {
          [`${efmt(Math.abs(bal))} 億元${bal > 0 ? '逆差' : '順差'}`, `a ${efmt(Math.abs(bal))} ${bal > 0 ? 'deficit' : 'surplus'}`],
          [`${efmt(exp + imp)} 億元${bal > 0 ? '順差' : '逆差'}`, `a ${efmt(exp + imp)} ${bal > 0 ? 'surplus' : 'deficit'}`],
          [`${efmt(exp)} 億元${bal > 0 ? '順差' : '逆差'}`, `a ${efmt(exp)} ${bal > 0 ? 'surplus' : 'deficit'}`]],
-        [`貿易差額 = 出口 − 進口 = ${efmt(exp)} − ${efmt(imp)} = ${efmt(bal)} 億元。出口大於進口為順差，小於則為逆差，此處屬${bal > 0 ? '順差' : '逆差'}。留意逆差本身並非必然是壞事：它可能反映資本流入或國內投資旺盛，判斷要看成因而非單看正負。陷阱：第二項方向寫反；${efmt(exp + imp)} 億元把兩者相加，那是【貿易總額】而非差額；${efmt(exp)} 億元只抄了出口。`,
+        [`貿易差額 = 出口 − 進口 = ${efmt(exp)} − ${efmt(imp)} = ${efmt(bal)} 億元。出口大於進口為順差，小於則為逆差，此處屬${bal > 0 ? '順差' : '逆差'}。留意逆差本身並非必然是壞事：它可能反映資本流入或國內投資旺盛，判斷要看成因而非單看正負。陷阱：有一項方向寫反；${efmt(exp + imp)} 億元把兩者相加，那是【貿易總額】而非差額；${efmt(exp)} 億元只抄了出口。`,
          `The trade balance is exports minus imports: ${efmt(exp)} − ${efmt(imp)} = ${efmt(bal)}. Exports above imports is a surplus, below is a deficit, so this is a ${bal > 0 ? 'surplus' : 'deficit'}. Note that a deficit is not necessarily bad: it may reflect capital inflows or strong domestic investment, so the cause matters more than the sign. Traps: the second reverses the direction; ${efmt(exp + imp)} adds the two, which is total TRADE rather than the balance; ${efmt(exp)} copies exports alone.`])
     }
   }

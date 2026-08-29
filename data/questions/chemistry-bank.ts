@@ -617,8 +617,8 @@ for (const theo of [20, 25, 40, 50, 80, 100]) {
           `the position is unchanged, because pressure does not affect gas-phase equilibria`],
          [`平衡先向${wrong}移動，然後自動回到原來的位置`,
           `it first shifts in the ${wrong === '正' ? 'forward' : 'reverse'} direction, then returns on its own`]],
-        [`勒沙特列原理：平衡受到外加改變時，會向【抵消該改變】的方向移動。${zhChange}後，系統傾向移向${zhSide}的一方以抵消壓力的變化。此處反應物一方 ${nL} 摩爾、生成物一方 ${nR} 摩爾，故平衡向${ans}反應方向移動。留意平衡移動改變的是各物質的【量】，平衡常數 $K$ 在恆溫下並不改變 —— 只有溫度才會改變 $K$。第三項忽略了氣體莫耳數不等時壓力確實有影響；第四項描述的「自動回復」並不符合平衡的行為。`,
-         `Le Chatelier's principle: a system at equilibrium shifts in the direction that OPPOSES an imposed change. On ${enChange} the system shifts towards the side with ${enSide} to counteract it. With ${nL} mol on the reactant side and ${nR} mol on the product side, the equilibrium moves in the ${ans === '正' ? 'forward' : 'reverse'} direction. Note that the shift changes the AMOUNTS of each species while the equilibrium constant $K$ is unchanged at constant temperature — only temperature alters $K$. The third option ignores that pressure does matter when the mole numbers differ; and the fourth describes a spontaneous return that equilibria do not exhibit.`])
+        [`勒沙特列原理：平衡受到外加改變時，會向【抵消該改變】的方向移動。${zhChange}後，系統傾向移向${zhSide}的一方以抵消壓力的變化。此處反應物一方 ${nL} 摩爾、生成物一方 ${nR} 摩爾，故平衡向${ans}反應方向移動。留意平衡移動改變的是各物質的【量】，平衡常數 $K$ 在恆溫下並不改變 —— 只有溫度才會改變 $K$。有一項忽略了氣體莫耳數不等時壓力確實有影響；另一項描述的「自動回復」並不符合平衡的行為。`,
+         `Le Chatelier's principle: a system at equilibrium shifts in the direction that OPPOSES an imposed change. On ${enChange} the system shifts towards the side with ${enSide} to counteract it. With ${nL} mol on the reactant side and ${nR} mol on the product side, the equilibrium moves in the ${ans === '正' ? 'forward' : 'reverse'} direction. Note that the shift changes the AMOUNTS of each species while the equilibrium constant $K$ is unchanged at constant temperature — only temperature alters $K$. One option ignores that pressure does matter when the mole numbers differ; and the fourth describes a spontaneous return that equilibria do not exhibit.`])
     }
   })
 
@@ -721,7 +721,7 @@ for (const theo of [20, 25, 40, 50, 80, 100]) {
        [`得到 ${e} 個電子，被還原`, `gains ${e} electrons and is reduced`],
        [`失去 ${to} 個電子，被氧化`, `loses ${to} electrons and is oxidised`],
        [`失去 ${from + to} 個電子，被還原`, `loses ${from + to} electrons and is reduced`]],
-      [`氧化數【上升】代表失去電子，即被氧化。由 $+${from}$ 升至 $+${to}$，差值為 $${to} - ${from} = ${e}$，故每個 ${sym} 原子失去 ${e} 個電子。留意電子數目是氧化數的【變化量】而非終值 —— 這是配平半反應時最常見的失分位。陷阱：第二項方向寫反（得電子是還原，對應氧化數下降）；第三項用了終值 ${to} 而非變化量；第四項把兩個氧化數相加。`,
+      [`氧化數【上升】代表失去電子，即被氧化。由 $+${from}$ 升至 $+${to}$，差值為 $${to} - ${from} = ${e}$，故每個 ${sym} 原子失去 ${e} 個電子。留意電子數目是氧化數的【變化量】而非終值 —— 這是配平半反應時最常見的失分位。陷阱：有一項方向寫反（得電子是還原，對應氧化數下降）；另一項用了終值 ${to} 而非變化量；還有一項把兩個氧化數相加。`,
        `A RISE in oxidation number means loss of electrons, that is oxidation. From $+${from}$ to $+${to}$ the change is $${to} - ${from} = ${e}$, so each ${sym} atom loses ${e} electrons. The electron count is the CHANGE in oxidation number, not the final value, and this is where balancing half-equations most often goes wrong. Traps: the second reverses the direction, since gaining electrons is reduction and corresponds to a falling oxidation number; the third uses the final value ${to}; the fourth adds the two oxidation numbers.`])
   })
 
@@ -777,7 +777,7 @@ for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
        `A compound contains ${round(mass1, 1)} g of ${e1} and ${round(mass2, 1)} g of ${e2}. What is its empirical formula? (Relative atomic masses: ${e1} ${m1}, ${e2} ${m2}.)`],
       [n(`$\\mathrm{${formula}}$`), n(`$\\mathrm{${e1}${c2 === 1 ? '' : `_${c2}`}${e2}${c1 === 1 ? '' : `_${c1}`}}$`),
        n(`$\\mathrm{${e1}${e2}}$`), n(`$\\mathrm{${e1}${c1 + 1 === 1 ? '' : `_${c1 + 1}`}${e2}${c2 === 1 ? '' : `_${c2}`}}$`)],
-      [`實驗式表示各元素原子數目的【最簡整數比】，求法是先把質量除以相對原子質量化為摩爾數，再約簡。$n(${e1}) = \\dfrac{${round(mass1, 1)}}{${m1}} = ${c1}$、$n(${e2}) = \\dfrac{${round(mass2, 1)}}{${m2}} = ${c2}$，比為 $${c1} : ${c2}$，故實驗式為 $\\mathrm{${formula}}$。關鍵在於【不能】直接用質量比 —— 質量比反映的是重量而非原子數目，必須先經摩爾數換算。陷阱：第二項把兩個下標對調；$\\mathrm{${e1}${e2}}$ 假設比例必為 1 : 1；最後一項下標數錯。`,
+      [`實驗式表示各元素原子數目的【最簡整數比】，求法是先把質量除以相對原子質量化為摩爾數，再約簡。$n(${e1}) = \\dfrac{${round(mass1, 1)}}{${m1}} = ${c1}$、$n(${e2}) = \\dfrac{${round(mass2, 1)}}{${m2}} = ${c2}$，比為 $${c1} : ${c2}$，故實驗式為 $\\mathrm{${formula}}$。關鍵在於【不能】直接用質量比 —— 質量比反映的是重量而非原子數目，必須先經摩爾數換算。陷阱：有一項把兩個下標對調；$\\mathrm{${e1}${e2}}$ 假設比例必為 1 : 1；最後一項下標數錯。`,
        `An empirical formula gives the SIMPLEST WHOLE-NUMBER RATIO of atoms, found by dividing each mass by the relative atomic mass to get moles, then simplifying. Here $n(${e1}) = \\frac{${round(mass1, 1)}}{${m1}} = ${c1}$ and $n(${e2}) = \\frac{${round(mass2, 1)}}{${m2}} = ${c2}$, a ratio of $${c1} : ${c2}$, giving $\\mathrm{${formula}}$. The mass ratio may NOT be used directly: it reflects weight rather than numbers of atoms, so the conversion to moles is essential. Traps: the second interchanges the subscripts; $\\mathrm{${e1}${e2}}$ assumes a 1 : 1 ratio; the last miscounts a subscript.`])
   })
 
@@ -861,8 +861,8 @@ for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
          [`$\\mathrm{${fA}}$ —— 按係數比它不足以與全部 $\\mathrm{${fB}}$ 反應`, `$\\mathrm{${fA}}$ — by the coefficient ratio there is too little of it to react with all the $\\mathrm{${fB}}$`],
          [`$\\mathrm{${fA}}$ —— 因為它的摩爾數較多`, `$\\mathrm{${fA}}$ — because more moles of it are present`],
          ['兩者剛好完全反應，沒有限量反應物', 'the two react exactly, so there is no limiting reactant']],
-        [`判斷限量反應物不能只比較摩爾數，必須按方程式的【係數比】換算。${molA} mol $\\mathrm{${fA}}$ 需要 $${molA} \\times \\dfrac{${cB}}{${cA}} = ${round(needB, 2)}$ mol $\\mathrm{${fB}}$，但現有只得 ${round(haveB, 2)} mol，故 $\\mathrm{${fB}}$ 先耗盡，是限量反應物；$\\mathrm{${fA}}$ 則有剩餘。限量反應物決定生成物的最大產量，因此所有產量計算都要由它出發。第三項正是最常見的誤解 —— 摩爾數較多不代表不會先用完，關鍵在於係數比。`,
-         `A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied. ${molA} mol of $\\mathrm{${fA}}$ requires $${molA} \\times \\frac{${cB}}{${cA}} = ${round(needB, 2)}$ mol of $\\mathrm{${fB}}$, but only ${round(haveB, 2)} mol is available, so $\\mathrm{${fB}}$ runs out first and limits the reaction, leaving $\\mathrm{${fA}}$ in excess. The limiting reactant sets the maximum yield, so every yield calculation starts from it. The third option is the commonest misconception: having more moles does not mean a reactant cannot be consumed first, since the coefficient ratio decides.`])
+        [`判斷限量反應物不能只比較摩爾數，必須按方程式的【係數比】換算。${molA} mol $\\mathrm{${fA}}$ 需要 $${molA} \\times \\dfrac{${cB}}{${cA}} = ${round(needB, 2)}$ mol $\\mathrm{${fB}}$，但現有只得 ${round(haveB, 2)} mol，故 $\\mathrm{${fB}}$ 先耗盡，是限量反應物；$\\mathrm{${fA}}$ 則有剩餘。限量反應物決定生成物的最大產量，因此所有產量計算都要由它出發。有一項正是最常見的誤解 —— 摩爾數較多不代表不會先用完，關鍵在於係數比。`,
+         `A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied. ${molA} mol of $\\mathrm{${fA}}$ requires $${molA} \\times \\frac{${cB}}{${cA}} = ${round(needB, 2)}$ mol of $\\mathrm{${fB}}$, but only ${round(haveB, 2)} mol is available, so $\\mathrm{${fB}}$ runs out first and limits the reaction, leaving $\\mathrm{${fA}}$ in excess. The limiting reactant sets the maximum yield, so every yield calculation starts from it. One option is the commonest misconception: having more moles does not mean a reactant cannot be consumed first, since the coefficient ratio decides.`])
     }
   })
 

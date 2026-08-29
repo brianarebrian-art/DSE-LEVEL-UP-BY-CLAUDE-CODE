@@ -50,8 +50,8 @@
    "the centre had to grant lords additional land in compensation, straining the treasury"
   ],
   "correctIndex": 0,
-  "explanation": "推恩令的巧妙之處在於【以恩惠之名行削弱之實】。原本封地由嫡長子一人繼承，勢力得以保持；改為諸子分封之後，一代之後封地被分成數塊，兩三代之後便細碎得不足為患。由於此令表面上惠及眾子，諸侯難以名正言順地反對，中央因而避免了七國之亂那樣的武力衝突。這是制度設計以誘因取代強制的典型例子。第三項描述的是直接廢除，與推恩令的漸進手法相反；第二、四項與史實方向相違。",
-  "explanationEn": "The subtlety of the Decree of Grace lay in weakening the lords under the guise of favour. Previously a fief passed intact to the eldest legitimate son and its strength was preserved; once it was divided among all sons, a single generation split it into several parts and two or three generations left fragments too small to threaten anyone. Because the decree appeared to benefit the younger sons, the lords could not oppose it on principled grounds, and the centre avoided armed conflict of the kind seen in the Rebellion of the Seven States. It is a classic case of institutional design substituting incentives for coercion. The third option describes outright abolition, the opposite of this gradual method, and the second and fourth run against the historical record."
+  "explanation": "推恩令的巧妙之處在於【以恩惠之名行削弱之實】。原本封地由嫡長子一人繼承，勢力得以保持；改為諸子分封之後，一代之後封地被分成數塊，兩三代之後便細碎得不足為患。由於此令表面上惠及眾子，諸侯難以名正言順地反對，中央因而避免了七國之亂那樣的武力衝突。這是制度設計以誘因取代強制的典型例子。有一項描述的是直接廢除，與推恩令的漸進手法相反；其中兩項與史實方向相違。",
+  "explanationEn": "The subtlety of the Decree of Grace lay in weakening the lords under the guise of favour. Previously a fief passed intact to the eldest legitimate son and its strength was preserved; once it was divided among all sons, a single generation split it into several parts and two or three generations left fragments too small to threaten anyone. Because the decree appeared to benefit the younger sons, the lords could not oppose it on principled grounds, and the centre avoided armed conflict of the kind seen in the Rebellion of the Seven States. It is a classic case of institutional design substituting incentives for coercion. One option describes outright abolition, the opposite of this gradual method, and the second and fourth run against the historical record."
  },
  {
   "id": "floor4_chist_ai_03",
@@ -158,8 +158,8 @@
    "a single-cause account must blame particular individuals and is therefore unfair to them"
   ],
   "correctIndex": 0,
-  "explanation": "史學上通常把成因分為【長期結構因素】（如財政積弱、土地兼併、外部壓力累積）與【短期觸發因素】（某次戰敗、某項政令、某個突發事件）。只講觸發因素，會令事件顯得偶然，彷彿沒有那一件事就不會發生；只講結構因素，則無法解釋為何偏偏在那個時刻爆發。兩者兼顧，才能同時回答「為何會發生」與「為何在此時發生」。第二項否定因果本身；第三項把史學方法問題降格為字數；第四項則假設單一歸因必然指向個人，但單一歸因同樣可以是結構性的。",
-  "explanationEn": "Historians commonly distinguish LONG-TERM STRUCTURAL factors — fiscal weakness, land concentration, accumulating external pressure — from SHORT-TERM TRIGGERS such as a defeat, a decree or a sudden incident. Citing only the trigger makes the event look accidental, as though without that one incident nothing would have happened; citing only the structure cannot explain why it broke out at that particular moment. Holding both answers \"why did it happen\" and \"why then\" together. The second option denies causation itself; the third reduces a question of historical method to word count; the fourth assumes single-cause accounts must blame an individual, whereas they can equally be structural."
+  "explanation": "史學上通常把成因分為【長期結構因素】（如財政積弱、土地兼併、外部壓力累積）與【短期觸發因素】（某次戰敗、某項政令、某個突發事件）。只講觸發因素，會令事件顯得偶然，彷彿沒有那一件事就不會發生；只講結構因素，則無法解釋為何偏偏在那個時刻爆發。兩者兼顧，才能同時回答「為何會發生」與「為何在此時發生」。有一項否定因果本身；另一項把史學方法問題降格為字數；還有一項則假設單一歸因必然指向個人，但單一歸因同樣可以是結構性的。",
+  "explanationEn": "Historians commonly distinguish LONG-TERM STRUCTURAL factors — fiscal weakness, land concentration, accumulating external pressure — from SHORT-TERM TRIGGERS such as a defeat, a decree or a sudden incident. Citing only the trigger makes the event look accidental, as though without that one incident nothing would have happened; citing only the structure cannot explain why it broke out at that particular moment. Holding both answers \"why did it happen\" and \"why then\" together. One option denies causation itself; the third reduces a question of historical method to word count; the fourth assumes single-cause accounts must blame an individual, whereas they can equally be structural."
  },
  {
   "id": "floor4_chist_mc_03",
@@ -185,7 +185,169 @@
    "reliability depends only on the writer's rank, the higher the more trustworthy"
   ],
   "correctIndex": 0,
-  "explanation": "回憶錄屬第一手材料，提供的細節、氛圍與動機往往是官方檔案所欠缺的，價值明確。但同時須留意三重限制：作者身處事件之中，立場可能影響取捨；回憶多在事後多年寫成，記憶會隨時間重構；書寫本身可能帶有自辯或塑造形象的動機。因此正確用法是【與其他來源互相印證】，而非單獨採信或一概否定。第二項與第三項分別是全盤採信與全盤否定，都放棄了史料批判；第四項以官職代替內容分析，官職高低與記述是否可靠並無必然關係。",
-  "explanationEn": "A memoir is a primary source whose detail, atmosphere and account of motive are often absent from official archives, and its value is real. Three limits apply nonetheless: the writer stood inside the events, so standpoint may shape what is included; memoirs are usually written years later and memory reconstructs; and the act of writing may carry motives of self-justification or image-making. The sound approach is therefore CORROBORATION against other sources rather than sole reliance or blanket rejection. The second and third options adopt exactly those two extremes and abandon source criticism; the fourth substitutes rank for analysis, and rank bears no necessary relation to reliability."
+  "explanation": "回憶錄屬第一手材料，提供的細節、氛圍與動機往往是官方檔案所欠缺的，價值明確。但同時須留意三重限制：作者身處事件之中，立場可能影響取捨；回憶多在事後多年寫成，記憶會隨時間重構；書寫本身可能帶有自辯或塑造形象的動機。因此正確用法是【與其他來源互相印證】，而非單獨採信或一概否定。其中兩項分別是全盤採信與全盤否定，都放棄了史料批判；有一項以官職代替內容分析，官職高低與記述是否可靠並無必然關係。",
+  "explanationEn": "A memoir is a primary source whose detail, atmosphere and account of motive are often absent from official archives, and its value is real. Three limits apply nonetheless: the writer stood inside the events, so standpoint may shape what is included; memoirs are usually written years later and memory reconstructs; and the act of writing may carry motives of self-justification or image-making. The sound approach is therefore CORROBORATION against other sources rather than sole reliance or blanket rejection. Two of the options adopt exactly those two extremes and abandon source criticism; the fourth substitutes rank for analysis, and rank bears no necessary relation to reliability."
+ },
+ {
+  "id": "floor8_chist_ai_05",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "intermediate",
+  "question": "唐代三省六部制之中，中書、門下、尚書三省的分工如何體現制衡？",
+  "questionEn": "How did the division among the three departments of the Tang system embody mutual checks?",
+  "options": [
+   "中書草擬、門下審議、尚書執行，政令須經三道關口方能推行",
+   "三省各自獨立草擬政令，互不干涉，因而效率最高",
+   "三省同時執行同一政令，以確保政令必定得到落實",
+   "三省輪流掌管全部政務，每省任期屆滿即交由下一省"
+  ],
+  "optionsEn": [
+   "the Secretariat drafted, the Chancellery reviewed and the Department of State executed, so a decree passed three gates",
+   "each department drafted independently without interference, which maximised efficiency",
+   "all three executed the same decree together to guarantee it was carried out",
+   "the three took turns holding all authority, handing over at the end of each term"
+  ],
+  "correctIndex": 0,
+  "explanation": "三省的分工把決策過程拆成三個環節：中書省草擬詔令，門下省審議並可以封駁（退回不同意的詔令），尚書省負責執行。關鍵在於【審議】這一環 —— 門下省有權駁回，等於在皇帝與執行之間加了一道複核，減少草率決策。同時，相權由一人分散到三省長官，皇權因而相對加強。要留意這套制度的制衡是行政程序上的，並非現代意義的分權，最終決定權仍在皇帝。其餘三項分別描述了無分工、重複執行與輪流當值，都不是三省制的結構。",
+  "explanationEn": "The three departments divided policy-making into stages: the Secretariat drafted an edict, the Chancellery reviewed it and could refuse and return it, and the Department of State carried it out. The REVIEW stage is the crux — the Chancellery's power to refuse inserted a check between the emperor and execution and reduced hasty decisions. At the same time, the powers of the chief minister were divided among three heads, which strengthened the throne by comparison. Note that these checks were administrative rather than a separation of powers in the modern sense, and final authority remained with the emperor. The other options describe no division, duplicated execution and rotation, none of which is the structure of the system."
+ },
+ {
+  "id": "floor8_chist_ai_06",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "hard",
+  "question": "一項制度在推行初期成效顯著，其後逐漸失效。分析這種變化時應着眼於甚麼？",
+  "questionEn": "An institution works well at first and decays over time. What should such an analysis focus on?",
+  "options": [
+   "制度所依賴的條件是否改變，以及有無人找到規避的方法",
+   "推行該制度的人是否品德敗壞，制度成效全由人的品格決定",
+   "該制度的條文是否寫得夠長，條文愈詳盡則愈不會失效",
+   "該制度是否由開國君主所創，開國制度必然較後世穩固"
+  ],
+  "optionsEn": [
+   "whether the conditions the institution relied on changed, and whether ways round it were found",
+   "whether those running it became corrupt, since character alone decides an institution's success",
+   "whether its provisions were long enough, since fuller rules never decay",
+   "whether a founding emperor created it, as founding institutions are inherently more durable"
+  ],
+  "correctIndex": 0,
+  "explanation": "制度失效通常有兩條路徑。一是【前提改變】：均田制依賴國家掌握足夠的無主土地，人口增長與土地兼併之後前提不再成立，制度隨之瓦解。二是【被規避】：任何規則一經運行，相關的人便會摸索它的邊界，九品中正制原意兼顧鄉評，運行日久卻被門第操控。分析制度變化，正是要追問這兩點，而非停在「後人不肖」。有一項把制度問題化約為個人品德，正是傳統史論最常見的簡化；其中兩項所提的條文長度與創制者身分，與制度能否持續並無必然關係。",
+  "explanationEn": "Institutions decay along two routes. One is a CHANGE IN PREMISES: the equal-field system depended on the state controlling enough unclaimed land, and once population growth and land concentration removed that premise the system collapsed. The other is CIRCUMVENTION: once a rule operates, those affected probe its edges, and the Nine-Rank system, intended to weigh local reputation, came in time to be worked by the great families. Analysing institutional change means pressing on these two points rather than stopping at the unworthiness of later generations. One option reduces an institutional problem to personal virtue, the commonest simplification in traditional historical commentary; the length of provisions and the identity of the founder bear no necessary relation to durability."
+ },
+ {
+  "id": "floor8_chist_ai_07",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "intermediate",
+  "question": "秦漢以後，中央集權不斷加強而相權不斷削弱。這條長期趨勢的主要動力是甚麼？",
+  "questionEn": "From the Qin and Han onward, central power grew while the chief minister's power shrank. What chiefly drove this long trend?",
+  "options": [
+   "皇帝為防範權臣，持續把相權分割並另設近臣機構代行",
+   "歷代宰相能力持續下降，因而無法承擔原有的職權",
+   "地方勢力持續坐大，中央被迫把相權轉移至地方",
+   "人口持續增長令政務繁重，宰相因而主動請求減權"
+  ],
+  "optionsEn": [
+   "emperors, guarding against powerful ministers, repeatedly split the office and set up inner bodies to act for it",
+   "the ability of chief ministers steadily declined until they could no longer bear the office",
+   "local power grew until the centre was forced to transfer the office to the provinces",
+   "a growing population made government so heavy that ministers asked to be relieved"
+  ],
+  "correctIndex": 0,
+  "explanation": "這條趨勢的動力來自皇權與相權之間的結構性張力。漢代設內朝以分外朝之權，唐代以三省分割相權，宋代設參知政事與樞密使進一步分割，明代索性廢除丞相而設內閣，清代再設軍機處 —— 每一步都是把原本集中的相權拆散，或另設一個更接近皇帝的機構代行其職。認清這條線索，便能理解為何看似不同的制度改革，方向卻高度一致。有一項以個人能力解釋長期制度趨勢；另一項與中央集權加強的事實相反；還有一項所述的主動請求並無史實依據。",
+  "explanationEn": "The trend was driven by the structural tension between throne and chief minister. The Han created an inner court to offset the outer; the Tang split the office among three departments; the Song added assistant administrators and a military commissioner to divide it further; the Ming abolished the chancellorship outright and set up a Grand Secretariat; the Qing added a Grand Council. Each step dispersed a once-concentrated office or created a body closer to the throne to act in its place. Seeing this thread explains why reforms that look quite different point so consistently in one direction. One option explains a long institutional trend by individual ability; another option contradicts the growth of central power; a further option has no basis in the record."
+ },
+ {
+  "id": "floor8_chist_mc_04",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "近現代變局・評價",
+  "topicId": "chist_modern_causation",
+  "topicZh": "近現代變局・評價",
+  "topicEn": "Modern Upheavals — Evaluation",
+  "difficulty": "intermediate",
+  "question": "評價一場改革運動時，指出它「失敗」之後，還應該進一步說明甚麼？",
+  "questionEn": "After judging a reform movement a failure, what should an evaluation go on to establish?",
+  "options": [
+   "以甚麼標準判斷失敗，以及它在哪些方面仍然留下了影響",
+   "該運動的領袖姓名與生卒年份，資料愈齊備愈客觀",
+   "同時期外國有無類似運動，有則說明中國必然落後",
+   "該運動失敗即證明其主張錯誤，不必再作任何討論"
+  ],
+  "optionsEn": [
+   "by what criterion it failed, and in what respects it nonetheless left a mark",
+   "the leaders' names and dates, since fuller data means greater objectivity",
+   "whether other countries had similar movements, proving China lagged if so",
+   "nothing — failure proves the ideas wrong and closes the discussion"
+  ],
+  "correctIndex": 0,
+  "explanation": "「失敗」不是一個自明的結論，而是一個需要界定的判斷：以達成原定目標為標準，還是以對後續發展的影響為標準？戊戌變法以前者論確實失敗（百日而終），但它把制度改革的主張帶入公共討論，並促成其後的清末新政與立憲運動，以後者論則留下實質影響。完整的評價要同時交代標準與影響，否則「失敗」二字會掩蓋掉真正需要分析的部分。有一項以資料齊備冒充客觀；另一項以外國作參照推出價值判斷；還有一項把結果等同對錯，正是評價題最需要避免的簡化。",
+  "explanationEn": "Failure is not a self-evident conclusion but a judgement requiring definition: measured against the movement's stated aims, or against its effect on what followed? By the first standard the Hundred Days' Reform certainly failed, lasting barely three months; by the second it brought institutional reform into public debate and prepared the way for the late Qing New Policies and the constitutional movement. A complete evaluation states both the criterion and the residue, or the word \"failure\" conceals precisely what needs analysing. One option passes fuller data off as objectivity; another option derives a value judgement from foreign comparison; a further option equates outcome with rightness, the simplification an evaluation must most avoid."
+ },
+ {
+  "id": "floor8_chist_mc_05",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "近現代變局・評價",
+  "topicId": "chist_modern_causation",
+  "topicZh": "近現代變局・評價",
+  "topicEn": "Modern Upheavals — Evaluation",
+  "difficulty": "hard",
+  "question": "以今日的價值標準去評價古人的行為，這種做法有何風險？",
+  "questionEn": "What is the risk of judging historical figures by present-day values?",
+  "options": [
+   "忽略當時的可選項目限制，把不存在的選擇當成當事人拒絕",
+   "完全沒有風險，道德標準古今一致，可以直接套用評價",
+   "會令評價過於寬鬆，因為今人的標準必然低於古人",
+   "會令史料無法解讀，因為古文必須以古代標準理解"
+  ],
+  "optionsEn": [
+   "it ignores the range of options actually available and treats absent choices as ones refused",
+   "no risk at all, since moral standards are constant and may be applied directly",
+   "it makes evaluation too lenient, since modern standards are necessarily lower",
+   "it makes sources unreadable, since classical texts need ancient standards to interpret"
+  ],
+  "correctIndex": 0,
+  "explanation": "時代錯置的核心問題不在於今人有沒有資格批評，而在於【可選項目集】不同：批評一位十九世紀官員「為何不推行民主選舉」，等於假設當時存在一條他選擇不走的路，但那條路在當時的認知與制度條件之下並不存在。合理的做法是先問：在當時的條件下，他有哪些實際可行的選項，他選了哪一個，同時代有無人作出不同選擇。這樣既保留評價，又不把不存在的選擇算到當事人頭上。有一項否認脈絡差異；另一項的方向不成立；還有一項把價值評價與文本解讀兩件事混為一談。",
+  "explanationEn": "The core problem with anachronistic judgement is not whether we are entitled to criticise but that the SET OF AVAILABLE OPTIONS differs: faulting a nineteenth-century official for not introducing democratic elections assumes a path he declined to take, when under the knowledge and institutions of the time no such path existed. The sound approach asks first what options were actually open, which he took, and whether contemporaries chose differently. That preserves evaluation without charging him with choices that were never available. One option denies contextual difference; another option's stated direction does not hold; another option confuses value judgement with textual interpretation."
+ },
+ {
+  "id": "floor8_chist_mc_06",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "近現代變局・評價",
+  "topicId": "chist_modern_causation",
+  "topicZh": "近現代變局・評價",
+  "topicEn": "Modern Upheavals — Evaluation",
+  "difficulty": "intermediate",
+  "question": "兩份史料對同一事件的記載互相矛盾。研究者應該怎樣處理？",
+  "questionEn": "Two sources give contradictory accounts of one event. How should a researcher proceed?",
+  "options": [
+   "比較兩者的來源、成書時間與立場，再尋找第三方材料互相印證",
+   "選擇年代較早的一份，年代愈早則記載必然愈為可靠",
+   "選擇篇幅較長的一份，記載愈詳細則必然愈接近事實",
+   "兩份同時放棄，凡有矛盾的史料一律不可用於研究"
+  ],
+  "optionsEn": [
+   "compare their provenance, date and standpoint, then seek third-party material to corroborate",
+   "take the earlier one, since an earlier record is necessarily more reliable",
+   "take the longer one, since fuller detail necessarily means greater accuracy",
+   "discard both, since contradictory sources can never be used"
+  ],
+  "correctIndex": 0,
+  "explanation": "史料矛盾是常態而非例外，處理方法是【史料批判】：這份材料由誰寫、為誰而寫、何時寫成、作者身處事件的甚麼位置、有無利害關係。年代較早未必較可靠 —— 當事人即時的記述可能立場鮮明；篇幅較長亦未必較準確 —— 詳細的細節可能是後世的追記或想像。最有力的做法是尋找立場不同的第三方材料，看哪一份記載得到獨立印證。矛盾本身往往就是線索：它顯示事件在當時已有爭議，而爭議的內容值得追問。有一項放棄了整個研究工作。",
+  "explanationEn": "Contradiction between sources is the norm rather than the exception, and the method is SOURCE CRITICISM: who wrote this, for whom, when, where the writer stood in relation to the events, and what interest they had. An earlier record is not necessarily more reliable, since a participant writing at the time may be strongly committed; a longer one is not necessarily more accurate, since abundant detail may be later reconstruction or invention. The strongest move is to seek third-party material of a different standpoint and see which account is independently corroborated. The contradiction is itself a lead: it shows the event was already disputed, and what was disputed is worth pursuing. One option abandons the enterprise altogether."
  }
 ]

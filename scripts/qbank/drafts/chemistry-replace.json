@@ -347,8 +347,8 @@
       "$40$ g"
     ],
     "correctIndex": 0,
-    "explanation": "先求鎂的物質的量：$\\dfrac{12}{24} = 0.5$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $0.5$ mol MgO，質量為 $0.5 \\times 40 = 20$ g。答 $12$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。第二個干擾項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
-    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{12}{24} = 0.5$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $0.5$ mol of MgO forms, with mass $0.5 \\times 40 = 20$ g. Choosing $12$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. The second distractor swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
+    "explanation": "先求鎂的物質的量：$\\dfrac{12}{24} = 0.5$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $0.5$ mol MgO，質量為 $0.5 \\times 40 = 20$ g。答 $12$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。有一項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
+    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{12}{24} = 0.5$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $0.5$ mol of MgO forms, with mass $0.5 \\times 40 = 20$ g. Choosing $12$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. One option swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
   },
   {
     "id": "chem_rep_0014",
@@ -374,8 +374,8 @@
       "$14.4$ g"
     ],
     "correctIndex": 1,
-    "explanation": "先求鎂的物質的量：$\\dfrac{24}{24} = 1$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $1$ mol MgO，質量為 $1 \\times 40 = 40$ g。答 $24$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。第二個干擾項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
-    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{24}{24} = 1$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $1$ mol of MgO forms, with mass $1 \\times 40 = 40$ g. Choosing $24$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. The second distractor swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
+    "explanation": "先求鎂的物質的量：$\\dfrac{24}{24} = 1$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $1$ mol MgO，質量為 $1 \\times 40 = 40$ g。答 $24$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。有一項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
+    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{24}{24} = 1$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $1$ mol of MgO forms, with mass $1 \\times 40 = 40$ g. Choosing $24$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. One option swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
   },
   {
     "id": "chem_rep_0015",
@@ -401,8 +401,8 @@
       "$6$ g"
     ],
     "correctIndex": 2,
-    "explanation": "先求鎂的物質的量：$\\dfrac{6}{24} = 0.25$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $0.25$ mol MgO，質量為 $0.25 \\times 40 = 10$ g。答 $6$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。第二個干擾項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
-    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{6}{24} = 0.25$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $0.25$ mol of MgO forms, with mass $0.25 \\times 40 = 10$ g. Choosing $6$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. The second distractor swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
+    "explanation": "先求鎂的物質的量：$\\dfrac{6}{24} = 0.25$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $0.25$ mol MgO，質量為 $0.25 \\times 40 = 10$ g。答 $6$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。有一項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
+    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{6}{24} = 0.25$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $0.25$ mol of MgO forms, with mass $0.25 \\times 40 = 10$ g. Choosing $6$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. One option swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
   },
   {
     "id": "chem_rep_0016",
@@ -428,8 +428,8 @@
       "$80$ g"
     ],
     "correctIndex": 3,
-    "explanation": "先求鎂的物質的量：$\\dfrac{48}{24} = 2$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $2$ mol MgO，質量為 $2 \\times 40 = 80$ g。答 $48$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。第二個干擾項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
-    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{48}{24} = 2$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $2$ mol of MgO forms, with mass $2 \\times 40 = 80$ g. Choosing $48$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. The second distractor swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
+    "explanation": "先求鎂的物質的量：$\\dfrac{48}{24} = 2$ mol。方程式中 Mg 與 MgO 的係數同為 2，計量比是 1 : 1，故生成 $2$ mol MgO，質量為 $2 \\times 40 = 80$ g。答 $48$ g 的學生把質量守恆理解錯了：守恆的是反應物與生成物的【總】質量，氧的質量亦計算在內，故產物必定重於原來的鎂。有一項把兩個摩爾質量對調。第三個把係數 2 重複計算了一次——係數已在 1 : 1 的比例中反映，不可再乘。",
+    "explanationEn": "First, $n(\\text{Mg}) = \\dfrac{48}{24} = 2$ mol. Mg and MgO both carry the coefficient 2, so the ratio is 1 : 1 and $2$ mol of MgO forms, with mass $2 \\times 40 = 80$ g. Choosing $48$ g misreads conservation of mass: what is conserved is the *total* mass including the oxygen, so the product must be heavier than the magnesium. One option swaps the two molar masses; the third applies the coefficient 2 twice, although it is already accounted for in the 1 : 1 ratio."
   },
   {
     "id": "chem_rep_0017",
@@ -455,8 +455,8 @@
       "$0.1$ mol/dm³"
     ],
     "correctIndex": 0,
-    "explanation": "摩爾濃度須以【物質的量】而非質量計算，故要分兩步：先求 $n = \\dfrac{8}{40} = 0.2$ mol，再除以體積 $c = \\dfrac{0.2}{0.5} = 0.4$ mol/dm³。直接用質量除以體積得 $16$，漏了轉換為物質的量這一步，是本題最常見的錯誤；由單位可以立即察覺——所得的是 g/dm³ 而非 mol/dm³。第二個干擾項把除以摩爾質量誤作乘以摩爾質量；第三個把除以體積誤作乘以體積。",
-    "explanationEn": "Molarity is defined per *mole*, not per gram, so two steps are needed: $n = \\dfrac{8}{40} = 0.2$ mol, then $c = \\dfrac{0.2}{0.5} = 0.4$ mol/dm³. Dividing mass by volume directly gives $16$ and skips the conversion — the units give it away, since that result is g/dm³, not mol/dm³. The second distractor multiplies by the molar mass instead of dividing; the third multiplies by the volume instead of dividing."
+    "explanation": "摩爾濃度須以【物質的量】而非質量計算，故要分兩步：先求 $n = \\dfrac{8}{40} = 0.2$ mol，再除以體積 $c = \\dfrac{0.2}{0.5} = 0.4$ mol/dm³。直接用質量除以體積得 $16$，漏了轉換為物質的量這一步，是本題最常見的錯誤；由單位可以立即察覺——所得的是 g/dm³ 而非 mol/dm³。有一項把除以摩爾質量誤作乘以摩爾質量；第三個把除以體積誤作乘以體積。",
+    "explanationEn": "Molarity is defined per *mole*, not per gram, so two steps are needed: $n = \\dfrac{8}{40} = 0.2$ mol, then $c = \\dfrac{0.2}{0.5} = 0.4$ mol/dm³. Dividing mass by volume directly gives $16$ and skips the conversion — the units give it away, since that result is g/dm³, not mol/dm³. One option multiplies by the molar mass instead of dividing; the third multiplies by the volume instead of dividing."
   },
   {
     "id": "chem_rep_0018",
@@ -482,8 +482,8 @@
       "$400$ mol/dm³"
     ],
     "correctIndex": 1,
-    "explanation": "摩爾濃度須以【物質的量】而非質量計算，故要分兩步：先求 $n = \\dfrac{20}{40} = 0.5$ mol，再除以體積 $c = \\dfrac{0.5}{2} = 0.25$ mol/dm³。直接用質量除以體積得 $10$，漏了轉換為物質的量這一步，是本題最常見的錯誤；由單位可以立即察覺——所得的是 g/dm³ 而非 mol/dm³。第二個干擾項把除以摩爾質量誤作乘以摩爾質量；第三個把除以體積誤作乘以體積。",
-    "explanationEn": "Molarity is defined per *mole*, not per gram, so two steps are needed: $n = \\dfrac{20}{40} = 0.5$ mol, then $c = \\dfrac{0.5}{2} = 0.25$ mol/dm³. Dividing mass by volume directly gives $10$ and skips the conversion — the units give it away, since that result is g/dm³, not mol/dm³. The second distractor multiplies by the molar mass instead of dividing; the third multiplies by the volume instead of dividing."
+    "explanation": "摩爾濃度須以【物質的量】而非質量計算，故要分兩步：先求 $n = \\dfrac{20}{40} = 0.5$ mol，再除以體積 $c = \\dfrac{0.5}{2} = 0.25$ mol/dm³。直接用質量除以體積得 $10$，漏了轉換為物質的量這一步，是本題最常見的錯誤；由單位可以立即察覺——所得的是 g/dm³ 而非 mol/dm³。有一項把除以摩爾質量誤作乘以摩爾質量；第三個把除以體積誤作乘以體積。",
+    "explanationEn": "Molarity is defined per *mole*, not per gram, so two steps are needed: $n = \\dfrac{20}{40} = 0.5$ mol, then $c = \\dfrac{0.5}{2} = 0.25$ mol/dm³. Dividing mass by volume directly gives $10$ and skips the conversion — the units give it away, since that result is g/dm³, not mol/dm³. One option multiplies by the molar mass instead of dividing; the third multiplies by the volume instead of dividing."
   },
   {
     "id": "chem_rep_0019",
@@ -509,8 +509,8 @@
       "$16$ mol/dm³"
     ],
     "correctIndex": 2,
-    "explanation": "摩爾濃度須以【物質的量】而非質量計算，故要分兩步：先求 $n = \\dfrac{4}{40} = 0.1$ mol，再除以體積 $c = \\dfrac{0.1}{0.25} = 0.4$ mol/dm³。直接用質量除以體積得 $16$，漏了轉換為物質的量這一步，是本題最常見的錯誤；由單位可以立即察覺——所得的是 g/dm³ 而非 mol/dm³。第二個干擾項把除以摩爾質量誤作乘以摩爾質量；第三個把除以體積誤作乘以體積。",
-    "explanationEn": "Molarity is defined per *mole*, not per gram, so two steps are needed: $n = \\dfrac{4}{40} = 0.1$ mol, then $c = \\dfrac{0.1}{0.25} = 0.4$ mol/dm³. Dividing mass by volume directly gives $16$ and skips the conversion — the units give it away, since that result is g/dm³, not mol/dm³. The second distractor multiplies by the molar mass instead of dividing; the third multiplies by the volume instead of dividing."
+    "explanation": "摩爾濃度須以【物質的量】而非質量計算，故要分兩步：先求 $n = \\dfrac{4}{40} = 0.1$ mol，再除以體積 $c = \\dfrac{0.1}{0.25} = 0.4$ mol/dm³。直接用質量除以體積得 $16$，漏了轉換為物質的量這一步，是本題最常見的錯誤；由單位可以立即察覺——所得的是 g/dm³ 而非 mol/dm³。有一項把除以摩爾質量誤作乘以摩爾質量；第三個把除以體積誤作乘以體積。",
+    "explanationEn": "Molarity is defined per *mole*, not per gram, so two steps are needed: $n = \\dfrac{4}{40} = 0.1$ mol, then $c = \\dfrac{0.1}{0.25} = 0.4$ mol/dm³. Dividing mass by volume directly gives $16$ and skips the conversion — the units give it away, since that result is g/dm³, not mol/dm³. One option multiplies by the molar mass instead of dividing; the third multiplies by the volume instead of dividing."
   },
   {
     "id": "chem_rep_0020",
@@ -536,8 +536,8 @@
       "$0.2$ mol/dm³"
     ],
     "correctIndex": 3,
-    "explanation": "稀釋只加水，溶質的物質的量不變：$n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $200$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $0.5$ dm³」誤讀成「加入 $0.5$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume."
+    "explanation": "稀釋只加水，溶質的物質的量不變：$n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $200$，即答案大了一千倍——這是本題設下的主要陷阱。有一項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $0.5$ dm³」誤讀成「加入 $0.5$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 2 \\times \\dfrac{50}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. One option inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume."
   },
   {
     "id": "chem_rep_0021",
@@ -563,8 +563,8 @@
       "$0.0556$ mol/dm³"
     ],
     "correctIndex": 0,
-    "explanation": "稀釋只加水，溶質的物質的量不變：$n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{2} = 0.05$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $50$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $2$ dm³」誤讀成「加入 $2$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{2} = 0.05$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $50$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $2$ dm³\" as \"$2$ dm³ of water added\", which is a different final volume."
+    "explanation": "稀釋只加水，溶質的物質的量不變：$n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{2} = 0.05$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $50$，即答案大了一千倍——這是本題設下的主要陷阱。有一項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $2$ dm³」誤讀成「加入 $2$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 0.5 \\times \\dfrac{200}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{2} = 0.05$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $50$, a thousand times too large — the main trap here. One option inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $2$ dm³\" as \"$2$ dm³ of water added\", which is a different final volume."
   },
   {
     "id": "chem_rep_0022",
@@ -590,7 +590,7 @@
       "$80$ mol/dm³"
     ],
     "correctIndex": 1,
-    "explanation": "稀釋只加水，溶質的物質的量不變：$n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $200$，即答案大了一千倍——這是本題設下的主要陷阱。第二個干擾項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $0.5$ dm³」誤讀成「加入 $0.5$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
-    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. The second distractor inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume."
+    "explanation": "稀釋只加水，溶質的物質的量不變：$n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol。稀釋後濃度為 $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³。題目一邊用 cm³ 一邊用 dm³，漏了 $1$ dm³ $= 1000$ cm³ 這一步就會得出 $200$，即答案大了一千倍——這是本題設下的主要陷阱。有一項把 $c_1V_1 = c_2V_2$ 的比例倒轉；第三個把「稀釋至 $0.5$ dm³」誤讀成「加入 $0.5$ dm³ 的水」，兩者的分別在於前者是最終總體積。",
+    "explanationEn": "Dilution adds only water, so the amount of solute is unchanged: $n = 4 \\times \\dfrac{25}{1000} = 0.1$ mol, and the new molarity is $\\dfrac{0.1}{0.5} = 0.2$ mol/dm³. The question mixes cm³ and dm³; missing the $1$ dm³ $= 1000$ cm³ step gives $200$, a thousand times too large — the main trap here. One option inverts $c_1V_1 = c_2V_2$; the third reads \"diluted to $0.5$ dm³\" as \"$0.5$ dm³ of water added\", which is a different final volume."
   }
 ]

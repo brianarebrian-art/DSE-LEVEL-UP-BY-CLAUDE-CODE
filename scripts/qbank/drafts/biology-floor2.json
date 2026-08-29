@@ -293,7 +293,7 @@
    "blood water potential falls → ADH secretion decreases → the tubule becomes less permeable to water → urine volume nonetheless falls"
   ],
   "correctIndex": 0,
-  "explanation": "缺水令血液中溶質相對濃度上升、水勢下降。下視丘的滲透壓感受器偵測到這個變化，促使腦下垂體後葉釋出抗利尿激素；該激素令腎小管（尤其集尿管）對水的通透性提高，重吸收更多水回血液，尿液因而變少而濃。其餘三項各有一處斷裂：第二項的起點方向寫反；第三項把分泌器官錯配為腎臟，而且結論與抗利尿激素的作用矛盾；第四項在中段把激素方向寫反，卻仍得出尿量減少的結論 —— 前後不能自洽。答這類題要逐環檢查方向是否一致。",
+  "explanation": "缺水令血液中溶質相對濃度上升、水勢下降。下視丘的滲透壓感受器偵測到這個變化，促使腦下垂體後葉釋出抗利尿激素；該激素令腎小管（尤其集尿管）對水的通透性提高，重吸收更多水回血液，尿液因而變少而濃。其餘三項各有一處斷裂：有一項的起點方向寫反；另一項把分泌器官錯配為腎臟，而且結論與抗利尿激素的作用矛盾；還有一項在中段把激素方向寫反，卻仍得出尿量減少的結論 —— 前後不能自洽。答這類題要逐環檢查方向是否一致。",
   "explanationEn": "Dehydration raises the relative solute concentration of the blood and lowers its water potential. Osmoreceptors in the hypothalamus detect this and cause the posterior pituitary to release ADH, which raises the permeability of the kidney tubule — especially the collecting duct — to water, so more water is reabsorbed into the blood and the urine becomes smaller in volume and more concentrated. Each of the other chains breaks somewhere: the second reverses the starting direction; the third puts secretion in the kidney and reaches a conclusion contradicting ADH's action; the fourth reverses the hormone direction midway yet still concludes that urine volume falls, so it is not self-consistent. These items are answered by checking that the direction of every link agrees."
  },
  {
@@ -374,7 +374,7 @@
    "the plant has reached its highest possible rate of photosynthesis"
   ],
   "correctIndex": 0,
-  "explanation": "限制因子的定義是：在眾多影響因素之中，數值最接近不足水平、因而決定整體速率的那一個。曲線平坦代表再增加光照也無濟於事，光已不再是限制因子；而一提高二氧化碳濃度速率便回升，正好證明此時是二氧化碳在拖住速率。第二項與觀察結果直接矛盾；第三項被實驗本身推翻；第四項亦被推翻 —— 速率既然能再上升，先前的平台便不是最大值。這個「換一個因子試試」的實驗設計，正是辨認限制因子的標準做法。",
-  "explanationEn": "A limiting factor is the one among several influences that is closest to being in short supply and therefore sets the overall rate. The plateau shows that adding more light no longer helps, so light is no longer limiting; and the fact that raising carbon dioxide immediately lifts the rate shows that carbon dioxide was holding it back. The second option contradicts the observation directly; the third is refuted by the experiment itself; and the fourth is refuted too, since a rate that can still rise was not a maximum. Changing one factor at a time in this way is the standard method for identifying a limiting factor."
+  "explanation": "限制因子的定義是：在眾多影響因素之中，數值最接近不足水平、因而決定整體速率的那一個。曲線平坦代表再增加光照也無濟於事，光已不再是限制因子；而一提高二氧化碳濃度速率便回升，正好證明此時是二氧化碳在拖住速率。有一項與觀察結果直接矛盾；另一項被實驗本身推翻；還有一項亦被推翻 —— 速率既然能再上升，先前的平台便不是最大值。這個「換一個因子試試」的實驗設計，正是辨認限制因子的標準做法。",
+  "explanationEn": "A limiting factor is the one among several influences that is closest to being in short supply and therefore sets the overall rate. The plateau shows that adding more light no longer helps, so light is no longer limiting; and the fact that raising carbon dioxide immediately lifts the rate shows that carbon dioxide was holding it back. One option contradicts the observation directly; the third is refuted by the experiment itself; and the fourth is refuted too, since a rate that can still rise was not a maximum. Changing one factor at a time in this way is the standard method for identifying a limiting factor."
  }
 ]

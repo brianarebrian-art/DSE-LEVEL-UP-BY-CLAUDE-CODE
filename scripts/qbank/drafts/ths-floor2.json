@@ -50,8 +50,8 @@
    "service quality is set entirely by price, and a higher price necessarily means better service"
   ],
   "correctIndex": 0,
-  "explanation": "服務有四項基本特徵：無形性、不可分離性（生產與消費同時發生）、易變性（同一員工在不同時候表現不一）、易逝性（今晚賣不出的房間不能留到明晚）。無形性帶來的挑戰是：顧客無法在購買前檢驗，而管理者亦無法把服務退回重做 —— 質素只能在交付的當下確保，因此業界依靠標準作業流程、員工培訓與服務藍圖把不確定性壓低。第二、三項分別與無形性和易逝性的定義相反；第四項把價格與質素等同，但兩者並無必然關係。",
-  "explanationEn": "Services have four basic characteristics: intangibility, inseparability of production from consumption, variability as the same employee performs differently at different moments, and perishability as a room unsold tonight cannot be kept for tomorrow. Intangibility means the customer cannot inspect before buying and the manager cannot send the service back to be remade — quality can only be secured at the moment of delivery, which is why the industry relies on standard procedures, training and service blueprints to reduce uncertainty. The second and third options contradict intangibility and perishability respectively; the fourth equates price with quality, between which there is no necessary relation."
+  "explanation": "服務有四項基本特徵：無形性、不可分離性（生產與消費同時發生）、易變性（同一員工在不同時候表現不一）、易逝性（今晚賣不出的房間不能留到明晚）。無形性帶來的挑戰是：顧客無法在購買前檢驗，而管理者亦無法把服務退回重做 —— 質素只能在交付的當下確保，因此業界依靠標準作業流程、員工培訓與服務藍圖把不確定性壓低。其中兩項分別與無形性和易逝性的定義相反；有一項把價格與質素等同，但兩者並無必然關係。",
+  "explanationEn": "Services have four basic characteristics: intangibility, inseparability of production from consumption, variability as the same employee performs differently at different moments, and perishability as a room unsold tonight cannot be kept for tomorrow. Intangibility means the customer cannot inspect before buying and the manager cannot send the service back to be remade — quality can only be secured at the moment of delivery, which is why the industry relies on standard procedures, training and service blueprints to reduce uncertainty. Two of the options contradict intangibility and perishability respectively; the fourth equates price with quality, between which there is no necessary relation."
  },
  {
   "id": "floor7_ths_ca_03",
@@ -77,8 +77,8 @@
    "local cultural distinctiveness fully preserved because visitors have increased"
   ],
   "correctIndex": 0,
-  "explanation": "過度旅遊指訪客數量超出目的地的承載能力，徵狀集中在三方面：社會（居民日常受擠塞與噪音影響、社區設施被旅遊服務取代）、經濟（租金與物價上升，居民被迫遷離市中心）、環境（古蹟磨損、生態壓力超出自然與人工修復的速度）。要留意過度旅遊的弔詭之處：它源於【成功】而非失敗，收入愈高、口碑愈好，壓力愈大，因此不能靠推廣或降價解決，只能靠管理總量與分流。第二項描述的是需求不足，方向相反；第三、四項則與過度旅遊的實際影響不符。",
-  "explanationEn": "Overtourism means visitor numbers exceeding a destination's capacity, and its symptoms cluster in three areas: social, as residents face congestion and noise and neighbourhood facilities give way to tourist services; economic, as rents and prices rise and residents are pushed out of the centre; and environmental, as wear on heritage and pressure on ecosystems outpace natural and funded restoration. Note the paradox: overtourism arises from SUCCESS rather than failure, since higher revenue and better reputation increase the pressure, so it cannot be solved by promotion or lower prices but only by managing volume and dispersal. The second option describes weak demand, the opposite case, and the third and fourth do not match its actual effects."
+  "explanation": "過度旅遊指訪客數量超出目的地的承載能力，徵狀集中在三方面：社會（居民日常受擠塞與噪音影響、社區設施被旅遊服務取代）、經濟（租金與物價上升，居民被迫遷離市中心）、環境（古蹟磨損、生態壓力超出自然與人工修復的速度）。要留意過度旅遊的弔詭之處：它源於【成功】而非失敗，收入愈高、口碑愈好，壓力愈大，因此不能靠推廣或降價解決，只能靠管理總量與分流。有一項描述的是需求不足，方向相反；其中兩項則與過度旅遊的實際影響不符。",
+  "explanationEn": "Overtourism means visitor numbers exceeding a destination's capacity, and its symptoms cluster in three areas: social, as residents face congestion and noise and neighbourhood facilities give way to tourist services; economic, as rents and prices rise and residents are pushed out of the centre; and environmental, as wear on heritage and pressure on ecosystems outpace natural and funded restoration. Note the paradox: overtourism arises from SUCCESS rather than failure, since higher revenue and better reputation increase the pressure, so it cannot be solved by promotion or lower prices but only by managing volume and dispersal. One option describes weak demand, the opposite case, and the third and fourth do not match its actual effects."
  },
  {
   "id": "floor7_ths_ca_04",
@@ -104,7 +104,7 @@
    "competitors' market share, so the project's market position cannot be judged"
   ],
   "correctIndex": 0,
-  "explanation": "收入與職位是最容易量度的兩項，因而也最容易成為唯一被計算的兩項。完整的評估至少還要問三件事：一、外部成本 —— 擠塞、噪音、環境損耗由誰承擔，這些代價通常不入帳；二、分配 —— 收益究竟留在當地社區，還是流向外來經營者，職位是長工還是季節性低薪職位；三、機會成本 —— 同一片土地與同一筆資金若用於其他發展，回報如何。第二、三、四項所列的建造費、滿意度與市佔率都是實務指標，重要但屬於同一個財務與市場框架之內，並未觸及框架之外被排除的代價。",
+  "explanation": "收入與職位是最容易量度的兩項，因而也最容易成為唯一被計算的兩項。完整的評估至少還要問三件事：一、外部成本 —— 擠塞、噪音、環境損耗由誰承擔，這些代價通常不入帳；二、分配 —— 收益究竟留在當地社區，還是流向外來經營者，職位是長工還是季節性低薪職位；三、機會成本 —— 同一片土地與同一筆資金若用於其他發展，回報如何。其餘三項所列的建造費、滿意度與市佔率都是實務指標，重要但屬於同一個財務與市場框架之內，並未觸及框架之外被排除的代價。",
   "explanationEn": "Revenue and jobs are the two easiest things to measure, which is why they so easily become the only two counted. A full assessment asks at least three further questions. First, external costs: who bears the congestion, noise and environmental wear, which typically never enter the account. Second, distribution: whether the gains stay in the host community or flow to outside operators, and whether the jobs are permanent or seasonal and low-paid. Third, opportunity cost: what the same land and capital would return in another use. Construction cost, satisfaction and market share are real operational measures, but they sit inside the same financial and market frame and do not reach the costs that frame excludes."
  }
 ]

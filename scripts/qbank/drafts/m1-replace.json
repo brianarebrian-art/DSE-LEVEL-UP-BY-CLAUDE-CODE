@@ -23,8 +23,8 @@
       "$3x^{2} \\cos 2x + 2x^{3} \\sin 2x$"
     ],
     "correctIndex": 0,
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 2x$，則 $u' = 3x^{2}$、$v' = 2\\cos 2x$（$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $2$）。代入得 $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $2$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 2x$, so $u' = 3x^{2}$ and $v' = 2\\cos 2x$ — the chain rule contributes the factor $2$ when differentiating $\\sin 2x$. Substituting gives $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $2$, and the third swaps $\\sin$ and $\\cos$."
+    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 2x$，則 $u' = 3x^{2}$、$v' = 2\\cos 2x$（$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $2$）。代入得 $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$。還有一項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。有一項漏了 $v'$ 內部的因子 $2$。另一項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 2x$, so $u' = 3x^{2}$ and $v' = 2\\cos 2x$ — the chain rule contributes the factor $2$ when differentiating $\\sin 2x$. Substituting gives $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$. One option simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $2$, and the third swaps $\\sin$ and $\\cos$."
   },
   {
     "id": "m1_rep_0002",
@@ -50,8 +50,8 @@
       "$2x^{1} \\sin 3x + x^{2} \\cos 3x$"
     ],
     "correctIndex": 1,
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 3x$，則 $u' = 2x^{1}$、$v' = 3\\cos 3x$（$\\sin 3x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $3$）。代入得 $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $3$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 3x$, so $u' = 2x^{1}$ and $v' = 3\\cos 3x$ — the chain rule contributes the factor $3$ when differentiating $\\sin 3x$. Substituting gives $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $3$, and the third swaps $\\sin$ and $\\cos$."
+    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 3x$，則 $u' = 2x^{1}$、$v' = 3\\cos 3x$（$\\sin 3x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $3$）。代入得 $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$。還有一項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。有一項漏了 $v'$ 內部的因子 $3$。另一項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 3x$, so $u' = 2x^{1}$ and $v' = 3\\cos 3x$ — the chain rule contributes the factor $3$ when differentiating $\\sin 3x$. Substituting gives $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$. One option simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $3$, and the third swaps $\\sin$ and $\\cos$."
   },
   {
     "id": "m1_rep_0003",
@@ -77,8 +77,8 @@
       "$12x^{2} \\cos 4x$"
     ],
     "correctIndex": 2,
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 4x$，則 $u' = 3x^{2}$、$v' = 4\\cos 4x$（$\\sin 4x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $4$）。代入得 $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $4$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 4x$, so $u' = 3x^{2}$ and $v' = 4\\cos 4x$ — the chain rule contributes the factor $4$ when differentiating $\\sin 4x$. Substituting gives $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $4$, and the third swaps $\\sin$ and $\\cos$."
+    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 4x$，則 $u' = 3x^{2}$、$v' = 4\\cos 4x$（$\\sin 4x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $4$）。代入得 $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$。還有一項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。有一項漏了 $v'$ 內部的因子 $4$。另一項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 4x$, so $u' = 3x^{2}$ and $v' = 4\\cos 4x$ — the chain rule contributes the factor $4$ when differentiating $\\sin 4x$. Substituting gives $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$. One option simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $4$, and the third swaps $\\sin$ and $\\cos$."
   },
   {
     "id": "m1_rep_0004",
@@ -104,8 +104,8 @@
       "$2x^{1} \\sin 5x + 5x^{2} \\cos 5x$"
     ],
     "correctIndex": 3,
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 5x$，則 $u' = 2x^{1}$、$v' = 5\\cos 5x$（$\\sin 5x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $5$）。代入得 $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $5$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 5x$, so $u' = 2x^{1}$ and $v' = 5\\cos 5x$ — the chain rule contributes the factor $5$ when differentiating $\\sin 5x$. Substituting gives $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $5$, and the third swaps $\\sin$ and $\\cos$."
+    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 5x$，則 $u' = 2x^{1}$、$v' = 5\\cos 5x$（$\\sin 5x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $5$）。代入得 $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$。還有一項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。有一項漏了 $v'$ 內部的因子 $5$。另一項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 5x$, so $u' = 2x^{1}$ and $v' = 5\\cos 5x$ — the chain rule contributes the factor $5$ when differentiating $\\sin 5x$. Substituting gives $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$. One option simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $5$, and the third swaps $\\sin$ and $\\cos$."
   },
   {
     "id": "m1_rep_0005",
@@ -131,8 +131,8 @@
       "$4x^{3} \\cos 2x + 2x^{4} \\sin 2x$"
     ],
     "correctIndex": 0,
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{4}$、$v = \\sin 2x$，則 $u' = 4x^{3}$、$v' = 2\\cos 2x$（$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $2$）。代入得 $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $2$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{4}$ and $v = \\sin 2x$, so $u' = 4x^{3}$ and $v' = 2\\cos 2x$ — the chain rule contributes the factor $2$ when differentiating $\\sin 2x$. Substituting gives $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $2$, and the third swaps $\\sin$ and $\\cos$."
+    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{4}$、$v = \\sin 2x$，則 $u' = 4x^{3}$、$v' = 2\\cos 2x$（$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $2$）。代入得 $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$。還有一項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。有一項漏了 $v'$ 內部的因子 $2$。另一項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{4}$ and $v = \\sin 2x$, so $u' = 4x^{3}$ and $v' = 2\\cos 2x$ — the chain rule contributes the factor $2$ when differentiating $\\sin 2x$. Substituting gives $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$. One option simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $2$, and the third swaps $\\sin$ and $\\cos$."
   },
   {
     "id": "m1_rep_0006",
@@ -158,8 +158,8 @@
       "$3x^{2} \\sin 6x + x^{3} \\cos 6x$"
     ],
     "correctIndex": 1,
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 6x$，則 $u' = 3x^{2}$、$v' = 6\\cos 6x$（$\\sin 6x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $6$）。代入得 $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $6$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 6x$, so $u' = 3x^{2}$ and $v' = 6\\cos 6x$ — the chain rule contributes the factor $6$ when differentiating $\\sin 6x$. Substituting gives $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $6$, and the third swaps $\\sin$ and $\\cos$."
+    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 6x$，則 $u' = 3x^{2}$、$v' = 6\\cos 6x$（$\\sin 6x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $6$）。代入得 $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$。還有一項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。有一項漏了 $v'$ 內部的因子 $6$。另一項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 6x$, so $u' = 3x^{2}$ and $v' = 6\\cos 6x$ — the chain rule contributes the factor $6$ when differentiating $\\sin 6x$. Substituting gives $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$. One option simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $6$, and the third swaps $\\sin$ and $\\cos$."
   },
   {
     "id": "m1_rep_0007",
@@ -185,8 +185,8 @@
       "$\\dfrac{3}{(x + 2)^{2}}$"
     ],
     "correctIndex": 2,
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 3x$、$v = x + 2$，則 $u' = 3$、$v' = 1$。分子 $= 3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$，故導數為 $\\dfrac{6}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $3$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 3x$, $v = x + 2$, so $u' = 3$ and $v' = 1$. The numerator is $3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$, giving $\\dfrac{6}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $3$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 3x$、$v = x + 2$，則 $u' = 3$、$v' = 1$。分子 $= 3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$，故導數為 $\\dfrac{6}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。有一項只把分子的導數搬上去，忽略了商法則。答 $3$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 3x$, $v = x + 2$, so $u' = 3$ and $v' = 1$. The numerator is $3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$, giving $\\dfrac{6}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. One option just moves the derivative of the numerator up and ignores the rule. Answering $3$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
   },
   {
     "id": "m1_rep_0008",
@@ -212,8 +212,8 @@
       "$\\dfrac{15}{(x + 3)^{2}}$"
     ],
     "correctIndex": 3,
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 5x$、$v = x + 3$，則 $u' = 5$、$v' = 1$。分子 $= 5(x + 3) - 5x \\cdot 1 = 5x + 15 - 5x = 15$，故導數為 $\\dfrac{15}{(x + 3)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $5$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 5x$, $v = x + 3$, so $u' = 5$ and $v' = 1$. The numerator is $5(x + 3) - 5x \\cdot 1 = 5x + 15 - 5x = 15$, giving $\\dfrac{15}{(x + 3)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $5$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 5x$、$v = x + 3$，則 $u' = 5$、$v' = 1$。分子 $= 5(x + 3) - 5x \\cdot 1 = 5x + 15 - 5x = 15$，故導數為 $\\dfrac{15}{(x + 3)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。有一項只把分子的導數搬上去，忽略了商法則。答 $5$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 5x$, $v = x + 3$, so $u' = 5$ and $v' = 1$. The numerator is $5(x + 3) - 5x \\cdot 1 = 5x + 15 - 5x = 15$, giving $\\dfrac{15}{(x + 3)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. One option just moves the derivative of the numerator up and ignores the rule. Answering $5$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
   },
   {
     "id": "m1_rep_0009",
@@ -239,8 +239,8 @@
       "$\\dfrac{-14}{(x + 7)^{2}}$"
     ],
     "correctIndex": 0,
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 2x$、$v = x + 7$，則 $u' = 2$、$v' = 1$。分子 $= 2(x + 7) - 2x \\cdot 1 = 2x + 14 - 2x = 14$，故導數為 $\\dfrac{14}{(x + 7)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $2$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 2x$, $v = x + 7$, so $u' = 2$ and $v' = 1$. The numerator is $2(x + 7) - 2x \\cdot 1 = 2x + 14 - 2x = 14$, giving $\\dfrac{14}{(x + 7)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $2$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 2x$、$v = x + 7$，則 $u' = 2$、$v' = 1$。分子 $= 2(x + 7) - 2x \\cdot 1 = 2x + 14 - 2x = 14$，故導數為 $\\dfrac{14}{(x + 7)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。有一項只把分子的導數搬上去，忽略了商法則。答 $2$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 2x$, $v = x + 7$, so $u' = 2$ and $v' = 1$. The numerator is $2(x + 7) - 2x \\cdot 1 = 2x + 14 - 2x = 14$, giving $\\dfrac{14}{(x + 7)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. One option just moves the derivative of the numerator up and ignores the rule. Answering $2$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
   },
   {
     "id": "m1_rep_0010",
@@ -266,8 +266,8 @@
       "$4$"
     ],
     "correctIndex": 1,
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 4x$、$v = x + 5$，則 $u' = 4$、$v' = 1$。分子 $= 4(x + 5) - 4x \\cdot 1 = 4x + 20 - 4x = 20$，故導數為 $\\dfrac{20}{(x + 5)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $4$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 4x$, $v = x + 5$, so $u' = 4$ and $v' = 1$. The numerator is $4(x + 5) - 4x \\cdot 1 = 4x + 20 - 4x = 20$, giving $\\dfrac{20}{(x + 5)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $4$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 4x$、$v = x + 5$，則 $u' = 4$、$v' = 1$。分子 $= 4(x + 5) - 4x \\cdot 1 = 4x + 20 - 4x = 20$，故導數為 $\\dfrac{20}{(x + 5)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。有一項只把分子的導數搬上去，忽略了商法則。答 $4$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 4x$, $v = x + 5$, so $u' = 4$ and $v' = 1$. The numerator is $4(x + 5) - 4x \\cdot 1 = 4x + 20 - 4x = 20$, giving $\\dfrac{20}{(x + 5)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. One option just moves the derivative of the numerator up and ignores the rule. Answering $4$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
   },
   {
     "id": "m1_rep_0011",
@@ -293,8 +293,8 @@
       "$\\dfrac{7}{(x + 2)^{2}}$"
     ],
     "correctIndex": 2,
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 7x$、$v = x + 2$，則 $u' = 7$、$v' = 1$。分子 $= 7(x + 2) - 7x \\cdot 1 = 7x + 14 - 7x = 14$，故導數為 $\\dfrac{14}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $7$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 7x$, $v = x + 2$, so $u' = 7$ and $v' = 1$. The numerator is $7(x + 2) - 7x \\cdot 1 = 7x + 14 - 7x = 14$, giving $\\dfrac{14}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $7$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 7x$、$v = x + 2$，則 $u' = 7$、$v' = 1$。分子 $= 7(x + 2) - 7x \\cdot 1 = 7x + 14 - 7x = 14$，故導數為 $\\dfrac{14}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。有一項只把分子的導數搬上去，忽略了商法則。答 $7$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 7x$, $v = x + 2$, so $u' = 7$ and $v' = 1$. The numerator is $7(x + 2) - 7x \\cdot 1 = 7x + 14 - 7x = 14$, giving $\\dfrac{14}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. One option just moves the derivative of the numerator up and ignores the rule. Answering $7$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
   },
   {
     "id": "m1_rep_0012",
@@ -320,8 +320,8 @@
       "$\\dfrac{30}{(x + 5)^{2}}$"
     ],
     "correctIndex": 3,
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 6x$、$v = x + 5$，則 $u' = 6$、$v' = 1$。分子 $= 6(x + 5) - 6x \\cdot 1 = 6x + 30 - 6x = 30$，故導數為 $\\dfrac{30}{(x + 5)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $6$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 6x$, $v = x + 5$, so $u' = 6$ and $v' = 1$. The numerator is $6(x + 5) - 6x \\cdot 1 = 6x + 30 - 6x = 30$, giving $\\dfrac{30}{(x + 5)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $6$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 6x$、$v = x + 5$，則 $u' = 6$、$v' = 1$。分子 $= 6(x + 5) - 6x \\cdot 1 = 6x + 30 - 6x = 30$，故導數為 $\\dfrac{30}{(x + 5)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。有一項只把分子的導數搬上去，忽略了商法則。答 $6$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 6x$, $v = x + 5$, so $u' = 6$ and $v' = 1$. The numerator is $6(x + 5) - 6x \\cdot 1 = 6x + 30 - 6x = 30$, giving $\\dfrac{30}{(x + 5)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. One option just moves the derivative of the numerator up and ignores the rule. Answering $6$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
   },
   {
     "id": "m1_rep_0013",
@@ -347,8 +347,8 @@
       "$4(3)^{3}$"
     ],
     "correctIndex": 0,
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{4}$ 的導數為 $4u^{3}$，內層 $3x + 2$ 的導數為 $3$，兩者相乘得 $4 \\times 3 = 12$，故答案為 $12(3x + 2)^{3}$。第一個干擾項【漏了內層導數】$3$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $3x$。",
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{4}$ gives $4u^{3}$; the inside $3x + 2$ gives $3$; multiplying, $4 \\times 3 = 12$, so the answer is $12(3x + 2)^{3}$. The first distractor drops the inner derivative $3$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $3x$."
+    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{4}$ 的導數為 $4u^{3}$，內層 $3x + 2$ 的導數為 $3$，兩者相乘得 $4 \\times 3 = 12$，故答案為 $12(3x + 2)^{3}$。還有一項【漏了內層導數】$3$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。有一項忘記把指數減一。另一項把括號內整項誤當成單一個 $3x$。",
+    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{4}$ gives $4u^{3}$; the inside $3x + 2$ gives $3$; multiplying, $4 \\times 3 = 12$, so the answer is $12(3x + 2)^{3}$. One option drops the inner derivative $3$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $3x$."
   },
   {
     "id": "m1_rep_0014",
@@ -374,8 +374,8 @@
       "$6(2x + 5)^{3}$"
     ],
     "correctIndex": 1,
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{3}$ 的導數為 $3u^{2}$，內層 $2x + 5$ 的導數為 $2$，兩者相乘得 $3 \\times 2 = 6$，故答案為 $6(2x + 5)^{2}$。第一個干擾項【漏了內層導數】$2$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $2x$。",
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{3}$ gives $3u^{2}$; the inside $2x + 5$ gives $2$; multiplying, $3 \\times 2 = 6$, so the answer is $6(2x + 5)^{2}$. The first distractor drops the inner derivative $2$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $2x$."
+    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{3}$ 的導數為 $3u^{2}$，內層 $2x + 5$ 的導數為 $2$，兩者相乘得 $3 \\times 2 = 6$，故答案為 $6(2x + 5)^{2}$。還有一項【漏了內層導數】$2$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。有一項忘記把指數減一。另一項把括號內整項誤當成單一個 $2x$。",
+    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{3}$ gives $3u^{2}$; the inside $2x + 5$ gives $2$; multiplying, $3 \\times 2 = 6$, so the answer is $6(2x + 5)^{2}$. One option drops the inner derivative $2$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $2x$."
   },
   {
     "id": "m1_rep_0015",
@@ -401,8 +401,8 @@
       "$2(5x + 1)^{1}$"
     ],
     "correctIndex": 2,
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{2}$ 的導數為 $2u^{1}$，內層 $5x + 1$ 的導數為 $5$，兩者相乘得 $2 \\times 5 = 10$，故答案為 $10(5x + 1)^{1}$。第一個干擾項【漏了內層導數】$5$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $5x$。",
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{2}$ gives $2u^{1}$; the inside $5x + 1$ gives $5$; multiplying, $2 \\times 5 = 10$, so the answer is $10(5x + 1)^{1}$. The first distractor drops the inner derivative $5$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $5x$."
+    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{2}$ 的導數為 $2u^{1}$，內層 $5x + 1$ 的導數為 $5$，兩者相乘得 $2 \\times 5 = 10$，故答案為 $10(5x + 1)^{1}$。還有一項【漏了內層導數】$5$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。有一項忘記把指數減一。另一項把括號內整項誤當成單一個 $5x$。",
+    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{2}$ gives $2u^{1}$; the inside $5x + 1$ gives $5$; multiplying, $2 \\times 5 = 10$, so the answer is $10(5x + 1)^{1}$. One option drops the inner derivative $5$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $5x$."
   },
   {
     "id": "m1_rep_0016",
@@ -428,8 +428,8 @@
       "$20(4x + 3)^{4}$"
     ],
     "correctIndex": 3,
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{5}$ 的導數為 $5u^{4}$，內層 $4x + 3$ 的導數為 $4$，兩者相乘得 $5 \\times 4 = 20$，故答案為 $20(4x + 3)^{4}$。第一個干擾項【漏了內層導數】$4$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $4x$。",
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{5}$ gives $5u^{4}$; the inside $4x + 3$ gives $4$; multiplying, $5 \\times 4 = 20$, so the answer is $20(4x + 3)^{4}$. The first distractor drops the inner derivative $4$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $4x$."
+    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{5}$ 的導數為 $5u^{4}$，內層 $4x + 3$ 的導數為 $4$，兩者相乘得 $5 \\times 4 = 20$，故答案為 $20(4x + 3)^{4}$。還有一項【漏了內層導數】$4$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。有一項忘記把指數減一。另一項把括號內整項誤當成單一個 $4x$。",
+    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{5}$ gives $5u^{4}$; the inside $4x + 3$ gives $4$; multiplying, $5 \\times 4 = 20$, so the answer is $20(4x + 3)^{4}$. One option drops the inner derivative $4$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $4x$."
   },
   {
     "id": "m1_rep_0017",
@@ -455,8 +455,8 @@
       "$3(2)^{2}$"
     ],
     "correctIndex": 0,
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{3}$ 的導數為 $3u^{2}$，內層 $2x + 7$ 的導數為 $2$，兩者相乘得 $3 \\times 2 = 6$，故答案為 $6(2x + 7)^{2}$。第一個干擾項【漏了內層導數】$2$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $2x$。",
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{3}$ gives $3u^{2}$; the inside $2x + 7$ gives $2$; multiplying, $3 \\times 2 = 6$, so the answer is $6(2x + 7)^{2}$. The first distractor drops the inner derivative $2$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $2x$."
+    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{3}$ 的導數為 $3u^{2}$，內層 $2x + 7$ 的導數為 $2$，兩者相乘得 $3 \\times 2 = 6$，故答案為 $6(2x + 7)^{2}$。還有一項【漏了內層導數】$2$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。有一項忘記把指數減一。另一項把括號內整項誤當成單一個 $2x$。",
+    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{3}$ gives $3u^{2}$; the inside $2x + 7$ gives $2$; multiplying, $3 \\times 2 = 6$, so the answer is $6(2x + 7)^{2}$. One option drops the inner derivative $2$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $2x$."
   },
   {
     "id": "m1_rep_0018",
@@ -482,8 +482,8 @@
       "$6(3x + 4)^{2}$"
     ],
     "correctIndex": 1,
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{2}$ 的導數為 $2u^{1}$，內層 $3x + 4$ 的導數為 $3$，兩者相乘得 $2 \\times 3 = 6$，故答案為 $6(3x + 4)^{1}$。第一個干擾項【漏了內層導數】$3$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $3x$。",
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{2}$ gives $2u^{1}$; the inside $3x + 4$ gives $3$; multiplying, $2 \\times 3 = 6$, so the answer is $6(3x + 4)^{1}$. The first distractor drops the inner derivative $3$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $3x$."
+    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{2}$ 的導數為 $2u^{1}$，內層 $3x + 4$ 的導數為 $3$，兩者相乘得 $2 \\times 3 = 6$，故答案為 $6(3x + 4)^{1}$。還有一項【漏了內層導數】$3$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。有一項忘記把指數減一。另一項把括號內整項誤當成單一個 $3x$。",
+    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{2}$ gives $2u^{1}$; the inside $3x + 4$ gives $3$; multiplying, $2 \\times 3 = 6$, so the answer is $6(3x + 4)^{1}$. One option drops the inner derivative $3$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $3x$."
   },
   {
     "id": "m1_rep_0019",
@@ -509,8 +509,8 @@
       "$\\dfrac{1}{3x^{2} + 2}$"
     ],
     "correctIndex": 2,
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 3x^{2} + 2$，$f'(x) = 6x$，故答案為 $\\dfrac{6x}{3x^{2} + 2}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 3x^{2} + 2$ and $f'(x) = 6x$, giving $\\dfrac{6x}{3x^{2} + 2}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 3x^{2} + 2$，$f'(x) = 6x$，故答案為 $\\dfrac{6x}{3x^{2} + 2}$。還有一項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。有一項把分母的常數項刪掉，但分母必須完整保留原式。另一項把對數當成可以直接搬到外面的因子。",
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 3x^{2} + 2$ and $f'(x) = 6x$, giving $\\dfrac{6x}{3x^{2} + 2}$. One option writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
   },
   {
     "id": "m1_rep_0020",
@@ -536,8 +536,8 @@
       "$\\dfrac{10x}{5x^{2} + 4}$"
     ],
     "correctIndex": 3,
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 5x^{2} + 4$，$f'(x) = 10x$，故答案為 $\\dfrac{10x}{5x^{2} + 4}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 5x^{2} + 4$ and $f'(x) = 10x$, giving $\\dfrac{10x}{5x^{2} + 4}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 5x^{2} + 4$，$f'(x) = 10x$，故答案為 $\\dfrac{10x}{5x^{2} + 4}$。還有一項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。有一項把分母的常數項刪掉，但分母必須完整保留原式。另一項把對數當成可以直接搬到外面的因子。",
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 5x^{2} + 4$ and $f'(x) = 10x$, giving $\\dfrac{10x}{5x^{2} + 4}$. One option writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
   },
   {
     "id": "m1_rep_0021",
@@ -563,8 +563,8 @@
       "$4x \\ln(2x^{2} + 9)$"
     ],
     "correctIndex": 0,
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 2x^{2} + 9$，$f'(x) = 4x$，故答案為 $\\dfrac{4x}{2x^{2} + 9}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 2x^{2} + 9$ and $f'(x) = 4x$, giving $\\dfrac{4x}{2x^{2} + 9}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 2x^{2} + 9$，$f'(x) = 4x$，故答案為 $\\dfrac{4x}{2x^{2} + 9}$。還有一項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。有一項把分母的常數項刪掉，但分母必須完整保留原式。另一項把對數當成可以直接搬到外面的因子。",
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 2x^{2} + 9$ and $f'(x) = 4x$, giving $\\dfrac{4x}{2x^{2} + 9}$. One option writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
   },
   {
     "id": "m1_rep_0022",
@@ -590,8 +590,8 @@
       "$\\dfrac{14x}{7x^{2}}$"
     ],
     "correctIndex": 1,
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 7x^{2} + 3$，$f'(x) = 14x$，故答案為 $\\dfrac{14x}{7x^{2} + 3}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 7x^{2} + 3$ and $f'(x) = 14x$, giving $\\dfrac{14x}{7x^{2} + 3}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 7x^{2} + 3$，$f'(x) = 14x$，故答案為 $\\dfrac{14x}{7x^{2} + 3}$。還有一項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。有一項把分母的常數項刪掉，但分母必須完整保留原式。另一項把對數當成可以直接搬到外面的因子。",
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 7x^{2} + 3$ and $f'(x) = 14x$, giving $\\dfrac{14x}{7x^{2} + 3}$. One option writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
   },
   {
     "id": "m1_rep_0023",
@@ -617,8 +617,8 @@
       "$\\dfrac{1}{4x^{2} + 5}$"
     ],
     "correctIndex": 2,
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 4x^{2} + 5$，$f'(x) = 8x$，故答案為 $\\dfrac{8x}{4x^{2} + 5}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 4x^{2} + 5$ and $f'(x) = 8x$, giving $\\dfrac{8x}{4x^{2} + 5}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 4x^{2} + 5$，$f'(x) = 8x$，故答案為 $\\dfrac{8x}{4x^{2} + 5}$。還有一項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。有一項把分母的常數項刪掉，但分母必須完整保留原式。另一項把對數當成可以直接搬到外面的因子。",
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 4x^{2} + 5$ and $f'(x) = 8x$, giving $\\dfrac{8x}{4x^{2} + 5}$. One option writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
   },
   {
     "id": "m1_rep_0024",
@@ -644,8 +644,8 @@
       "$\\dfrac{12x}{6x^{2} + 7}$"
     ],
     "correctIndex": 3,
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 6x^{2} + 7$，$f'(x) = 12x$，故答案為 $\\dfrac{12x}{6x^{2} + 7}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 6x^{2} + 7$ and $f'(x) = 12x$, giving $\\dfrac{12x}{6x^{2} + 7}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 6x^{2} + 7$，$f'(x) = 12x$，故答案為 $\\dfrac{12x}{6x^{2} + 7}$。還有一項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。有一項把分母的常數項刪掉，但分母必須完整保留原式。另一項把對數當成可以直接搬到外面的因子。",
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 6x^{2} + 7$ and $f'(x) = 12x$, giving $\\dfrac{12x}{6x^{2} + 7}$. One option writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside."
   },
   {
     "id": "m1_rep_0025",
@@ -671,8 +671,8 @@
       "$-\\dfrac{2x}{6y}$"
     ],
     "correctIndex": 0,
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$4x + 6y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$。第一個干擾項漏了負號 —— 移項時 $4x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $4x + 6y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$. The first distractor drops the minus sign, which must appear when $4x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
+    "explanation": "兩邊同時對 $x$ 求導。左邊：$4x + 6y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$。有一項漏了負號 —— 移項時 $4x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $4x + 6y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$. One option drops the minus sign, which must appear when $4x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
   },
   {
     "id": "m1_rep_0026",
@@ -698,8 +698,8 @@
       "$-\\dfrac{10x}{2y}$"
     ],
     "correctIndex": 1,
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$10x + 4y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$。第一個干擾項漏了負號 —— 移項時 $10x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $10x + 4y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$. The first distractor drops the minus sign, which must appear when $10x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
+    "explanation": "兩邊同時對 $x$ 求導。左邊：$10x + 4y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$。有一項漏了負號 —— 移項時 $10x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $10x + 4y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$. One option drops the minus sign, which must appear when $10x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
   },
   {
     "id": "m1_rep_0027",
@@ -725,8 +725,8 @@
       "$\\dfrac{3x}{7y}$"
     ],
     "correctIndex": 2,
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$6x + 14y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$。第一個干擾項漏了負號 —— 移項時 $6x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $6x + 14y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$. The first distractor drops the minus sign, which must appear when $6x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
+    "explanation": "兩邊同時對 $x$ 求導。左邊：$6x + 14y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$。有一項漏了負號 —— 移項時 $6x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $6x + 14y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$. One option drops the minus sign, which must appear when $6x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
   },
   {
     "id": "m1_rep_0028",
@@ -752,8 +752,8 @@
       "$-\\dfrac{4x}{5y}$"
     ],
     "correctIndex": 3,
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$8x + 10y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$。第一個干擾項漏了負號 —— 移項時 $8x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $8x + 10y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$. The first distractor drops the minus sign, which must appear when $8x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
+    "explanation": "兩邊同時對 $x$ 求導。左邊：$8x + 10y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$。有一項漏了負號 —— 移項時 $8x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $8x + 10y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$. One option drops the minus sign, which must appear when $8x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
   },
   {
     "id": "m1_rep_0029",
@@ -779,8 +779,8 @@
       "$-\\dfrac{6x}{10y}$"
     ],
     "correctIndex": 0,
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$12x + 10y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$。第一個干擾項漏了負號 —— 移項時 $12x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $12x + 10y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$. The first distractor drops the minus sign, which must appear when $12x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
+    "explanation": "兩邊同時對 $x$ 求導。左邊：$12x + 10y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$。有一項漏了負號 —— 移項時 $12x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $12x + 10y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$. One option drops the minus sign, which must appear when $12x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
   },
   {
     "id": "m1_rep_0030",
@@ -806,8 +806,8 @@
       "$-\\dfrac{14x}{2y}$"
     ],
     "correctIndex": 1,
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$14x + 4y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$。第一個干擾項漏了負號 —— 移項時 $14x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $14x + 4y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$. The first distractor drops the minus sign, which must appear when $14x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
+    "explanation": "兩邊同時對 $x$ 求導。左邊：$14x + 4y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$。有一項漏了負號 —— 移項時 $14x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $14x + 4y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$. One option drops the minus sign, which must appear when $14x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction."
   },
   {
     "id": "m1_rep_0031",
@@ -833,8 +833,8 @@
       "$6x^{2} + 10x + 3$"
     ],
     "correctIndex": 2,
-    "explanation": "求導兩次。第一次：$f'(x) = 6x^{2} + 10x + 3$。第二次：$f''(x) = 12x + 10$ —— 常數項 $3$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $10$ 誤寫成仍帶 $x$：$10x$ 求導之後應為 $10$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
-    "explanationEn": "Differentiate twice. First, $f'(x) = 6x^{2} + 10x + 3$. Again, $f''(x) = 12x + 10$ — the constant $3$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $10x$ differentiates to $10$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
+    "explanation": "求導兩次。第一次：$f'(x) = 6x^{2} + 10x + 3$。第二次：$f''(x) = 12x + 10$ —— 常數項 $3$ 在第二次求導時歸零。還有一項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。有一項把常數 $10$ 誤寫成仍帶 $x$：$10x$ 求導之後應為 $10$，$x$ 必須消去。另一項多求了一次，那是 $f'''(x)$。",
+    "explanationEn": "Differentiate twice. First, $f'(x) = 6x^{2} + 10x + 3$. Again, $f''(x) = 12x + 10$ — the constant $3$ vanishes on the second differentiation. One option stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $10x$ differentiates to $10$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
   },
   {
     "id": "m1_rep_0032",
@@ -860,8 +860,8 @@
       "$18x + 4$"
     ],
     "correctIndex": 3,
-    "explanation": "求導兩次。第一次：$f'(x) = 9x^{2} + 4x + 7$。第二次：$f''(x) = 18x + 4$ —— 常數項 $7$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $4$ 誤寫成仍帶 $x$：$4x$ 求導之後應為 $4$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
-    "explanationEn": "Differentiate twice. First, $f'(x) = 9x^{2} + 4x + 7$. Again, $f''(x) = 18x + 4$ — the constant $7$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $4x$ differentiates to $4$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
+    "explanation": "求導兩次。第一次：$f'(x) = 9x^{2} + 4x + 7$。第二次：$f''(x) = 18x + 4$ —— 常數項 $7$ 在第二次求導時歸零。還有一項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。有一項把常數 $4$ 誤寫成仍帶 $x$：$4x$ 求導之後應為 $4$，$x$ 必須消去。另一項多求了一次，那是 $f'''(x)$。",
+    "explanationEn": "Differentiate twice. First, $f'(x) = 9x^{2} + 4x + 7$. Again, $f''(x) = 18x + 4$ — the constant $7$ vanishes on the second differentiation. One option stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $4x$ differentiates to $4$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
   },
   {
     "id": "m1_rep_0033",
@@ -887,8 +887,8 @@
       "$30$"
     ],
     "correctIndex": 0,
-    "explanation": "求導兩次。第一次：$f'(x) = 15x^{2} + 8x + 2$。第二次：$f''(x) = 30x + 8$ —— 常數項 $2$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $8$ 誤寫成仍帶 $x$：$8x$ 求導之後應為 $8$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
-    "explanationEn": "Differentiate twice. First, $f'(x) = 15x^{2} + 8x + 2$. Again, $f''(x) = 30x + 8$ — the constant $2$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $8x$ differentiates to $8$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
+    "explanation": "求導兩次。第一次：$f'(x) = 15x^{2} + 8x + 2$。第二次：$f''(x) = 30x + 8$ —— 常數項 $2$ 在第二次求導時歸零。還有一項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。有一項把常數 $8$ 誤寫成仍帶 $x$：$8x$ 求導之後應為 $8$，$x$ 必須消去。另一項多求了一次，那是 $f'''(x)$。",
+    "explanationEn": "Differentiate twice. First, $f'(x) = 15x^{2} + 8x + 2$. Again, $f''(x) = 30x + 8$ — the constant $2$ vanishes on the second differentiation. One option stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $8x$ differentiates to $8$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
   },
   {
     "id": "m1_rep_0034",
@@ -914,8 +914,8 @@
       "$24x + 14x$"
     ],
     "correctIndex": 1,
-    "explanation": "求導兩次。第一次：$f'(x) = 12x^{2} + 14x + 5$。第二次：$f''(x) = 24x + 14$ —— 常數項 $5$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $14$ 誤寫成仍帶 $x$：$14x$ 求導之後應為 $14$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
-    "explanationEn": "Differentiate twice. First, $f'(x) = 12x^{2} + 14x + 5$. Again, $f''(x) = 24x + 14$ — the constant $5$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $14x$ differentiates to $14$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
+    "explanation": "求導兩次。第一次：$f'(x) = 12x^{2} + 14x + 5$。第二次：$f''(x) = 24x + 14$ —— 常數項 $5$ 在第二次求導時歸零。還有一項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。有一項把常數 $14$ 誤寫成仍帶 $x$：$14x$ 求導之後應為 $14$，$x$ 必須消去。另一項多求了一次，那是 $f'''(x)$。",
+    "explanationEn": "Differentiate twice. First, $f'(x) = 12x^{2} + 14x + 5$. Again, $f''(x) = 24x + 14$ — the constant $5$ vanishes on the second differentiation. One option stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $14x$ differentiates to $14$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
   },
   {
     "id": "m1_rep_0035",
@@ -941,8 +941,8 @@
       "$18x^{2} + 6x + 4$"
     ],
     "correctIndex": 2,
-    "explanation": "求導兩次。第一次：$f'(x) = 18x^{2} + 6x + 4$。第二次：$f''(x) = 36x + 6$ —— 常數項 $4$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $6$ 誤寫成仍帶 $x$：$6x$ 求導之後應為 $6$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
-    "explanationEn": "Differentiate twice. First, $f'(x) = 18x^{2} + 6x + 4$. Again, $f''(x) = 36x + 6$ — the constant $4$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $6x$ differentiates to $6$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
+    "explanation": "求導兩次。第一次：$f'(x) = 18x^{2} + 6x + 4$。第二次：$f''(x) = 36x + 6$ —— 常數項 $4$ 在第二次求導時歸零。還有一項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。有一項把常數 $6$ 誤寫成仍帶 $x$：$6x$ 求導之後應為 $6$，$x$ 必須消去。另一項多求了一次，那是 $f'''(x)$。",
+    "explanationEn": "Differentiate twice. First, $f'(x) = 18x^{2} + 6x + 4$. Again, $f''(x) = 36x + 6$ — the constant $4$ vanishes on the second differentiation. One option stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $6x$ differentiates to $6$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
   },
   {
     "id": "m1_rep_0036",
@@ -968,8 +968,8 @@
       "$42x + 10$"
     ],
     "correctIndex": 3,
-    "explanation": "求導兩次。第一次：$f'(x) = 21x^{2} + 10x + 6$。第二次：$f''(x) = 42x + 10$ —— 常數項 $6$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $10$ 誤寫成仍帶 $x$：$10x$ 求導之後應為 $10$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
-    "explanationEn": "Differentiate twice. First, $f'(x) = 21x^{2} + 10x + 6$. Again, $f''(x) = 42x + 10$ — the constant $6$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $10x$ differentiates to $10$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
+    "explanation": "求導兩次。第一次：$f'(x) = 21x^{2} + 10x + 6$。第二次：$f''(x) = 42x + 10$ —— 常數項 $6$ 在第二次求導時歸零。還有一項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。有一項把常數 $10$ 誤寫成仍帶 $x$：$10x$ 求導之後應為 $10$，$x$ 必須消去。另一項多求了一次，那是 $f'''(x)$。",
+    "explanationEn": "Differentiate twice. First, $f'(x) = 21x^{2} + 10x + 6$. Again, $f''(x) = 42x + 10$ — the constant $6$ vanishes on the second differentiation. One option stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $10x$ differentiates to $10$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$."
   },
   {
     "id": "m1_rep_0037",
@@ -995,8 +995,8 @@
       "$x > 0$"
     ],
     "correctIndex": 0,
-    "explanation": "函數遞增即導數為正。$f'(x) = 2x -8$，令 $f'(x) > 0$ 得 $x > 4$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 4$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -8$, and $f'(x) > 0$ gives $x > 4$. Check it graphically: this is an upward parabola with vertex at $x = 4$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
+    "explanation": "函數遞增即導數為正。$f'(x) = 2x -8$，令 $f'(x) > 0$ 得 $x > 4$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 4$，頂點右邊上升、左邊下降。還有一項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。有一項忘記了求導時 $x^{2}$ 帶出的因子 $2$。另一項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -8$, and $f'(x) > 0$ gives $x > 4$. Check it graphically: this is an upward parabola with vertex at $x = 4$, rising to the right of the vertex and falling to the left. One option reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
   },
   {
     "id": "m1_rep_0038",
@@ -1022,8 +1022,8 @@
       "$x > 12$"
     ],
     "correctIndex": 1,
-    "explanation": "函數遞增即導數為正。$f'(x) = 4x -12$，令 $f'(x) > 0$ 得 $x > 3$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x -12$, and $f'(x) > 0$ gives $x > 3$. Check it graphically: this is an upward parabola with vertex at $x = 3$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
+    "explanation": "函數遞增即導數為正。$f'(x) = 4x -12$，令 $f'(x) > 0$ 得 $x > 3$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。還有一項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。有一項忘記了求導時 $x^{2}$ 帶出的因子 $2$。另一項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x -12$, and $f'(x) > 0$ gives $x > 3$. Check it graphically: this is an upward parabola with vertex at $x = 3$, rising to the right of the vertex and falling to the left. One option reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
   },
   {
     "id": "m1_rep_0039",
@@ -1049,8 +1049,8 @@
       "$x < 2$"
     ],
     "correctIndex": 2,
-    "explanation": "函數遞增即導數為正。$f'(x) = 2x -4$，令 $f'(x) > 0$ 得 $x > 2$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 2$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -4$, and $f'(x) > 0$ gives $x > 2$. Check it graphically: this is an upward parabola with vertex at $x = 2$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
+    "explanation": "函數遞增即導數為正。$f'(x) = 2x -4$，令 $f'(x) > 0$ 得 $x > 2$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 2$，頂點右邊上升、左邊下降。還有一項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。有一項忘記了求導時 $x^{2}$ 帶出的因子 $2$。另一項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -4$, and $f'(x) > 0$ gives $x > 2$. Check it graphically: this is an upward parabola with vertex at $x = 2$, rising to the right of the vertex and falling to the left. One option reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
   },
   {
     "id": "m1_rep_0040",
@@ -1076,8 +1076,8 @@
       "$x > 3$"
     ],
     "correctIndex": 3,
-    "explanation": "函數遞增即導數為正。$f'(x) = 6x -18$，令 $f'(x) > 0$ 得 $x > 3$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 6x -18$, and $f'(x) > 0$ gives $x > 3$. Check it graphically: this is an upward parabola with vertex at $x = 3$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
+    "explanation": "函數遞增即導數為正。$f'(x) = 6x -18$，令 $f'(x) > 0$ 得 $x > 3$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。還有一項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。有一項忘記了求導時 $x^{2}$ 帶出的因子 $2$。另一項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 6x -18$, and $f'(x) > 0$ gives $x > 3$. Check it graphically: this is an upward parabola with vertex at $x = 3$, rising to the right of the vertex and falling to the left. One option reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
   },
   {
     "id": "m1_rep_0041",
@@ -1103,8 +1103,8 @@
       "$x > 0$"
     ],
     "correctIndex": 0,
-    "explanation": "函數遞增即導數為正。$f'(x) = 2x -10$，令 $f'(x) > 0$ 得 $x > 5$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -10$, and $f'(x) > 0$ gives $x > 5$. Check it graphically: this is an upward parabola with vertex at $x = 5$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
+    "explanation": "函數遞增即導數為正。$f'(x) = 2x -10$，令 $f'(x) > 0$ 得 $x > 5$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。還有一項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。有一項忘記了求導時 $x^{2}$ 帶出的因子 $2$。另一項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -10$, and $f'(x) > 0$ gives $x > 5$. Check it graphically: this is an upward parabola with vertex at $x = 5$, rising to the right of the vertex and falling to the left. One option reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
   },
   {
     "id": "m1_rep_0042",
@@ -1130,8 +1130,8 @@
       "$x > 20$"
     ],
     "correctIndex": 1,
-    "explanation": "函數遞增即導數為正。$f'(x) = 4x -20$，令 $f'(x) > 0$ 得 $x > 5$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x -20$, and $f'(x) > 0$ gives $x > 5$. Check it graphically: this is an upward parabola with vertex at $x = 5$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
+    "explanation": "函數遞增即導數為正。$f'(x) = 4x -20$，令 $f'(x) > 0$ 得 $x > 5$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。還有一項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。有一項忘記了求導時 $x^{2}$ 帶出的因子 $2$。另一項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x -20$, and $f'(x) > 0$ gives $x > 5$. Check it graphically: this is an upward parabola with vertex at $x = 5$, rising to the right of the vertex and falling to the left. One option reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin."
   },
   {
     "id": "m1_rep_0043",
@@ -1157,8 +1157,8 @@
       "A maximum, since $f''(3) = 2 > 0$"
     ],
     "correctIndex": 2,
-    "explanation": "二階導數判別法：先求駐點（$f' = 0$ 之處），再看該點的二階導數。$f'(x) = 2x -6$，令其為零確認駐點在 $x = 3$；$f''(x) = 2$，恆為正。二階導數為【正】代表曲線在該處向上凹，故為極小值點。記法：$f'' > 0$ 像個「U」形，是低點；$f'' < 0$ 像個「∩」形，是高點。第一個干擾項把方向記反了。第二項誤以為二階導數為零 —— 此處它恆等於 $2$，並不為零。第三項用 $f' = 0$ 作判別理由，但 $f' = 0$ 只能【找出】駐點，不能判斷它是高是低。",
-    "explanationEn": "The second derivative test: locate the stationary point where $f' = 0$, then examine the second derivative there. $f'(x) = 2x -6$, which vanishes at $x = 3$; and $f''(x) = 2$, which is positive everywhere. A *positive* second derivative means the curve is concave up, so this is a minimum. As a memory aid: $f'' > 0$ looks like a \"U\" and sits at the bottom; $f'' < 0$ looks like an \"∩\" and sits at the top. The first distractor reverses this. The second wrongly claims the second derivative is zero, when it is identically $2$. The third cites $f' = 0$ as the reason, but that only *locates* a stationary point and cannot classify it."
+    "explanation": "二階導數判別法：先求駐點（$f' = 0$ 之處），再看該點的二階導數。$f'(x) = 2x -6$，令其為零確認駐點在 $x = 3$；$f''(x) = 2$，恆為正。二階導數為【正】代表曲線在該處向上凹，故為極小值點。記法：$f'' > 0$ 像個「U」形，是低點；$f'' < 0$ 像個「∩」形，是高點。還有一項把方向記反了。有一項誤以為二階導數為零 —— 此處它恆等於 $2$，並不為零。另一項用 $f' = 0$ 作判別理由，但 $f' = 0$ 只能【找出】駐點，不能判斷它是高是低。",
+    "explanationEn": "The second derivative test: locate the stationary point where $f' = 0$, then examine the second derivative there. $f'(x) = 2x -6$, which vanishes at $x = 3$; and $f''(x) = 2$, which is positive everywhere. A *positive* second derivative means the curve is concave up, so this is a minimum. As a memory aid: $f'' > 0$ looks like a \"U\" and sits at the bottom; $f'' < 0$ looks like an \"∩\" and sits at the top. One option reverses this. The second wrongly claims the second derivative is zero, when it is identically $2$. The third cites $f' = 0$ as the reason, but that only *locates* a stationary point and cannot classify it."
   },
   {
     "id": "m1_rep_0044",
@@ -1184,8 +1184,8 @@
       "A minimum, since $f''(3) = 4 > 0$"
     ],
     "correctIndex": 3,
-    "explanation": "二階導數判別法：先求駐點（$f' = 0$ 之處），再看該點的二階導數。$f'(x) = 4x -12$，令其為零確認駐點在 $x = 3$；$f''(x) = 4$，恆為正。二階導數為【正】代表曲線在該處向上凹，故為極小值點。記法：$f'' > 0$ 像個「U」形，是低點；$f'' < 0$ 像個「∩」形，是高點。第一個干擾項把方向記反了。第二項誤以為二階導數為零 —— 此處它恆等於 $4$，並不為零。第三項用 $f' = 0$ 作判別理由，但 $f' = 0$ 只能【找出】駐點，不能判斷它是高是低。",
-    "explanationEn": "The second derivative test: locate the stationary point where $f' = 0$, then examine the second derivative there. $f'(x) = 4x -12$, which vanishes at $x = 3$; and $f''(x) = 4$, which is positive everywhere. A *positive* second derivative means the curve is concave up, so this is a minimum. As a memory aid: $f'' > 0$ looks like a \"U\" and sits at the bottom; $f'' < 0$ looks like an \"∩\" and sits at the top. The first distractor reverses this. The second wrongly claims the second derivative is zero, when it is identically $4$. The third cites $f' = 0$ as the reason, but that only *locates* a stationary point and cannot classify it."
+    "explanation": "二階導數判別法：先求駐點（$f' = 0$ 之處），再看該點的二階導數。$f'(x) = 4x -12$，令其為零確認駐點在 $x = 3$；$f''(x) = 4$，恆為正。二階導數為【正】代表曲線在該處向上凹，故為極小值點。記法：$f'' > 0$ 像個「U」形，是低點；$f'' < 0$ 像個「∩」形，是高點。還有一項把方向記反了。有一項誤以為二階導數為零 —— 此處它恆等於 $4$，並不為零。另一項用 $f' = 0$ 作判別理由，但 $f' = 0$ 只能【找出】駐點，不能判斷它是高是低。",
+    "explanationEn": "The second derivative test: locate the stationary point where $f' = 0$, then examine the second derivative there. $f'(x) = 4x -12$, which vanishes at $x = 3$; and $f''(x) = 4$, which is positive everywhere. A *positive* second derivative means the curve is concave up, so this is a minimum. As a memory aid: $f'' > 0$ looks like a \"U\" and sits at the bottom; $f'' < 0$ looks like an \"∩\" and sits at the top. One option reverses this. The second wrongly claims the second derivative is zero, when it is identically $4$. The third cites $f' = 0$ as the reason, but that only *locates* a stationary point and cannot classify it."
   },
   {
     "id": "m1_rep_0045",
@@ -1211,8 +1211,8 @@
       "$8.5$ standard deviations"
     ],
     "correctIndex": 0,
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $8$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $8$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
+    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。有一項停在 $8$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. One option stops at $8$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
   },
   {
     "id": "m1_rep_0046",
@@ -1238,8 +1238,8 @@
       "$6.6667$ standard deviations"
     ],
     "correctIndex": 1,
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $30$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $30$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
+    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。有一項停在 $30$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. One option stops at $30$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
   },
   {
     "id": "m1_rep_0047",
@@ -1265,8 +1265,8 @@
       "$5$ standard deviations"
     ],
     "correctIndex": 2,
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $5$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $5$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
+    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。有一項停在 $5$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. One option stops at $5$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
   },
   {
     "id": "m1_rep_0048",
@@ -1292,8 +1292,8 @@
       "$2$ standard deviations"
     ],
     "correctIndex": 3,
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $16$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $16$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
+    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。有一項停在 $16$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. One option stops at $16$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
   },
   {
     "id": "m1_rep_0049",
@@ -1319,8 +1319,8 @@
       "$7$ standard deviations"
     ],
     "correctIndex": 0,
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $20$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $20$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
+    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。有一項停在 $20$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. One option stops at $20$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
   },
   {
     "id": "m1_rep_0050",
@@ -1346,8 +1346,8 @@
       "$11.25$ standard deviations"
     ],
     "correctIndex": 1,
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $12$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $12$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
+    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。有一項停在 $12$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. One option stops at $12$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$."
   },
   {
     "id": "m1_rep_0051",
@@ -1535,8 +1535,8 @@
       "$61.5$"
     ],
     "correctIndex": 0,
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $60$。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $60$. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $60$。還有一項把加號寫成減號，方向剛好相反。有一項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。另一項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $60$. One option subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
   },
   {
     "id": "m1_rep_0058",
@@ -1562,8 +1562,8 @@
       "$-30$"
     ],
     "correctIndex": 1,
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $100$ —— 見到大過平均值的答案就應該起疑。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $100$ — an answer above the mean should raise suspicion. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $100$ —— 見到大過平均值的答案就應該起疑。還有一項把加號寫成減號，方向剛好相反。有一項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。另一項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $100$ — an answer above the mean should raise suspicion. One option subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
   },
   {
     "id": "m1_rep_0059",
@@ -1589,8 +1589,8 @@
       "$38$"
     ],
     "correctIndex": 2,
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $50$。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $50$. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $50$。還有一項把加號寫成減號，方向剛好相反。有一項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。另一項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $50$. One option subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
   },
   {
     "id": "m1_rep_0060",
@@ -1616,8 +1616,8 @@
       "$63$"
     ],
     "correctIndex": 3,
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $72$ —— 見到大過平均值的答案就應該起疑。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $72$ — an answer above the mean should raise suspicion. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $72$ —— 見到大過平均值的答案就應該起疑。還有一項把加號寫成減號，方向剛好相反。有一項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。另一項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $72$ — an answer above the mean should raise suspicion. One option subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
   },
   {
     "id": "m1_rep_0061",
@@ -1643,8 +1643,8 @@
       "$201.2$"
     ],
     "correctIndex": 0,
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $200$。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $200$. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $200$。還有一項把加號寫成減號，方向剛好相反。有一項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。另一項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $200$. One option subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
   },
   {
     "id": "m1_rep_0062",
@@ -1670,8 +1670,8 @@
       "$-2$"
     ],
     "correctIndex": 1,
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $88$ —— 見到大過平均值的答案就應該起疑。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $88$ — an answer above the mean should raise suspicion. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $88$ —— 見到大過平均值的答案就應該起疑。還有一項把加號寫成減號，方向剛好相反。有一項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。另一項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $88$ — an answer above the mean should raise suspicion. One option subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value."
   },
   {
     "id": "m1_rep_0063",
@@ -1859,8 +1859,8 @@
       "$\\mu = 40$, $\\sigma = 6.3246$"
     ],
     "correctIndex": 0,
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 100 \\times 0.4 = 40$，$\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{24} = 4.899$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 100 \\times 0.4 = 40$ and $\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{24} = 4.899$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
+    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 100 \\times 0.4 = 40$，$\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{24} = 4.899$。還有一項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。有一項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。另一項開方時漏了因子 $(1-p)$。",
+    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 100 \\times 0.4 = 40$ and $\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{24} = 4.899$. One option reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
   },
   {
     "id": "m1_rep_0070",
@@ -1886,8 +1886,8 @@
       "$\\mu = 300$, $\\sigma = 8.6603$"
     ],
     "correctIndex": 1,
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 400 \\times 0.25 = 100$，$\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{75} = 8.6603$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 400 \\times 0.25 = 100$ and $\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{75} = 8.6603$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
+    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 400 \\times 0.25 = 100$，$\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{75} = 8.6603$。還有一項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。有一項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。另一項開方時漏了因子 $(1-p)$。",
+    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 400 \\times 0.25 = 100$ and $\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{75} = 8.6603$. One option reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
   },
   {
     "id": "m1_rep_0071",
@@ -1913,8 +1913,8 @@
       "$\\mu = 20$, $\\sigma = 18$"
     ],
     "correctIndex": 2,
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 200 \\times 0.1 = 20$，$\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{18} = 4.2426$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 200 \\times 0.1 = 20$ and $\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{18} = 4.2426$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
+    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 200 \\times 0.1 = 20$，$\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{18} = 4.2426$。還有一項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。有一項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。另一項開方時漏了因子 $(1-p)$。",
+    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 200 \\times 0.1 = 20$ and $\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{18} = 4.2426$. One option reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
   },
   {
     "id": "m1_rep_0072",
@@ -1940,8 +1940,8 @@
       "$\\mu = 180$, $\\sigma = 12$"
     ],
     "correctIndex": 3,
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 900 \\times 0.2 = 180$，$\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{144} = 12$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 900 \\times 0.2 = 180$ and $\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{144} = 12$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
+    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 900 \\times 0.2 = 180$，$\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{144} = 12$。還有一項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。有一項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。另一項開方時漏了因子 $(1-p)$。",
+    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 900 \\times 0.2 = 180$ and $\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{144} = 12$. One option reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
   },
   {
     "id": "m1_rep_0073",
@@ -1967,8 +1967,8 @@
       "$\\mu = 200$, $\\sigma = 14.1421$"
     ],
     "correctIndex": 0,
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 500 \\times 0.4 = 200$，$\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{120} = 10.9545$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 500 \\times 0.4 = 200$ and $\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{120} = 10.9545$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
+    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 500 \\times 0.4 = 200$，$\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{120} = 10.9545$。還有一項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。有一項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。另一項開方時漏了因子 $(1-p)$。",
+    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 500 \\times 0.4 = 200$ and $\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{120} = 10.9545$. One option reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
   },
   {
     "id": "m1_rep_0074",
@@ -1994,8 +1994,8 @@
       "$\\mu = 210$, $\\sigma = 7.9373$"
     ],
     "correctIndex": 1,
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 300 \\times 0.3 = 90$，$\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{63} = 7.9373$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 300 \\times 0.3 = 90$ and $\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{63} = 7.9373$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
+    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 300 \\times 0.3 = 90$，$\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{63} = 7.9373$。還有一項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。有一項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。另一項開方時漏了因子 $(1-p)$。",
+    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 300 \\times 0.3 = 90$ and $\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{63} = 7.9373$. One option reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root."
   },
   {
     "id": "m1_rep_0075",
@@ -2021,8 +2021,8 @@
       "$6$"
     ],
     "correctIndex": 2,
-    "explanation": "先求原函數：$\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$\\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
+    "explanation": "先求原函數：$\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$\\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$。還有一項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。有一項把相減次序調轉，得出的答案符號相反。另一項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$. One option substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
   },
   {
     "id": "m1_rep_0076",
@@ -2048,8 +2048,8 @@
       "$8$"
     ],
     "correctIndex": 3,
-    "explanation": "先求原函數：$\\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$。再代入上下限相減：$\\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
+    "explanation": "先求原函數：$\\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$。再代入上下限相減：$\\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$。還有一項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。有一項把相減次序調轉，得出的答案符號相反。另一項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$. One option substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
   },
   {
     "id": "m1_rep_0077",
@@ -2075,8 +2075,8 @@
       "$8$"
     ],
     "correctIndex": 0,
-    "explanation": "先求原函數：$\\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$。再代入上下限相減：$\\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
+    "explanation": "先求原函數：$\\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$。再代入上下限相減：$\\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$。還有一項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。有一項把相減次序調轉，得出的答案符號相反。另一項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$. One option substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
   },
   {
     "id": "m1_rep_0078",
@@ -2102,8 +2102,8 @@
       "$-36$"
     ],
     "correctIndex": 1,
-    "explanation": "先求原函數：$\\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$。再代入上下限相減：$\\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
+    "explanation": "先求原函數：$\\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$。再代入上下限相減：$\\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$。還有一項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。有一項把相減次序調轉，得出的答案符號相反。另一項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$. One option substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
   },
   {
     "id": "m1_rep_0079",
@@ -2129,8 +2129,8 @@
       "$10$"
     ],
     "correctIndex": 2,
-    "explanation": "先求原函數：$\\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$。再代入上下限相減：$\\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
+    "explanation": "先求原函數：$\\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$。再代入上下限相減：$\\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$。還有一項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。有一項把相減次序調轉，得出的答案符號相反。另一項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$. One option substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
   },
   {
     "id": "m1_rep_0080",
@@ -2156,8 +2156,8 @@
       "$31.5$"
     ],
     "correctIndex": 3,
-    "explanation": "先求原函數：$\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$\\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
+    "explanation": "先求原函數：$\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$\\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$。還有一項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。有一項把相減次序調轉，得出的答案符號相反。另一項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$. One option substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant."
   },
   {
     "id": "m1_rep_0081",
@@ -2183,8 +2183,8 @@
       "$y = 3x^{2} − 2$"
     ],
     "correctIndex": 0,
-    "explanation": "不定積分得 $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$，其中 $C$ 是【積分常數】，必須靠題目給的一點定出來。代入 $(1, 5)$：$5 = 3(1)^{2} + C$，得 $C = 2$。第一個干擾項漏了積分常數 —— 不定積分的答案永遠帶一個 $C$，題目既然給了一點，就是要求你把它定出來，這是本題最主要的失分位。第二項積分時忘記除以 $2$。第三項的常數符號相反。",
-    "explanationEn": "Integrating gives $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$, where $C$ is the *constant of integration* and must be pinned down by the given point. Substituting $(1, 5)$: $5 = 3(1)^{2} + C$, so $C = 2$. The first distractor omits the constant — an indefinite integral always carries one, and supplying a point is exactly how the question asks you to determine it. This is the main trap. The second forgets to divide by $2$ when integrating, and the third has the wrong sign on the constant."
+    "explanation": "不定積分得 $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$，其中 $C$ 是【積分常數】，必須靠題目給的一點定出來。代入 $(1, 5)$：$5 = 3(1)^{2} + C$，得 $C = 2$。還有一項漏了積分常數 —— 不定積分的答案永遠帶一個 $C$，題目既然給了一點，就是要求你把它定出來，這是本題最主要的失分位。有一項積分時忘記除以 $2$。另一項的常數符號相反。",
+    "explanationEn": "Integrating gives $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$, where $C$ is the *constant of integration* and must be pinned down by the given point. Substituting $(1, 5)$: $5 = 3(1)^{2} + C$, so $C = 2$. One option omits the constant — an indefinite integral always carries one, and supplying a point is exactly how the question asks you to determine it. This is the main trap. The second forgets to divide by $2$ when integrating, and the third has the wrong sign on the constant."
   },
   {
     "id": "m1_rep_0082",
@@ -2210,8 +2210,8 @@
       "$y = 4x^{2} − 5$"
     ],
     "correctIndex": 1,
-    "explanation": "不定積分得 $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$，其中 $C$ 是【積分常數】，必須靠題目給的一點定出來。代入 $(2, 3)$：$3 = 2(2)^{2} + C$，得 $C = -5$。第一個干擾項漏了積分常數 —— 不定積分的答案永遠帶一個 $C$，題目既然給了一點，就是要求你把它定出來，這是本題最主要的失分位。第二項積分時忘記除以 $2$。第三項的常數符號相反。",
-    "explanationEn": "Integrating gives $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$, where $C$ is the *constant of integration* and must be pinned down by the given point. Substituting $(2, 3)$: $3 = 2(2)^{2} + C$, so $C = -5$. The first distractor omits the constant — an indefinite integral always carries one, and supplying a point is exactly how the question asks you to determine it. This is the main trap. The second forgets to divide by $2$ when integrating, and the third has the wrong sign on the constant."
+    "explanation": "不定積分得 $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$，其中 $C$ 是【積分常數】，必須靠題目給的一點定出來。代入 $(2, 3)$：$3 = 2(2)^{2} + C$，得 $C = -5$。還有一項漏了積分常數 —— 不定積分的答案永遠帶一個 $C$，題目既然給了一點，就是要求你把它定出來，這是本題最主要的失分位。有一項積分時忘記除以 $2$。另一項的常數符號相反。",
+    "explanationEn": "Integrating gives $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$, where $C$ is the *constant of integration* and must be pinned down by the given point. Substituting $(2, 3)$: $3 = 2(2)^{2} + C$, so $C = -5$. One option omits the constant — an indefinite integral always carries one, and supplying a point is exactly how the question asks you to determine it. This is the main trap. The second forgets to divide by $2$ when integrating, and the third has the wrong sign on the constant."
   },
   {
     "id": "m1_rep_0083",
@@ -2237,8 +2237,8 @@
       "$16$ square units"
     ],
     "correctIndex": 2,
-    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{4} 1x^{2}\\,dx = \\left[\\dfrac{1x^{3}}{3}\\right]_{0}^{4} = \\dfrac{1(4)^{3}}{3} - 0 = 21.3333$。第一個干擾項只把 $x = 4$ 代入原函數，得出的是該點的【高度】而非面積 —— 面積必須經積分累加，不能用單一點的函數值代替。第二項積分時把 $x^{2}$ 的原函數誤寫成除以 $2$（應為除以 $3$，因為指數加一之後是 $3$）。第三項把答案再除一次 $2$，那是三角形面積公式的殘留 —— 曲線下的區域並非三角形，不可套用。",
-    "explanationEn": "The area under a curve is given by a definite integral: $\\displaystyle\\int_{0}^{4} 1x^{2}\\,dx = \\left[\\dfrac{1x^{3}}{3}\\right]_{0}^{4} = \\dfrac{1(4)^{3}}{3} - 0 = 21.3333$. The first distractor substitutes $x = 4$ into the original function, which gives the *height* at that point, not an area; areas must be accumulated by integration and cannot be read off a single function value. The second divides by $2$ instead of $3$ when integrating $x^{2}$ — raising the index gives $3$. The third halves the correct answer, a leftover from the triangle formula, which does not apply to a region bounded by a curve."
+    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{4} 1x^{2}\\,dx = \\left[\\dfrac{1x^{3}}{3}\\right]_{0}^{4} = \\dfrac{1(4)^{3}}{3} - 0 = 21.3333$。還有一項只把 $x = 4$ 代入原函數，得出的是該點的【高度】而非面積 —— 面積必須經積分累加，不能用單一點的函數值代替。有一項積分時把 $x^{2}$ 的原函數誤寫成除以 $2$（應為除以 $3$，因為指數加一之後是 $3$）。另一項把答案再除一次 $2$，那是三角形面積公式的殘留 —— 曲線下的區域並非三角形，不可套用。",
+    "explanationEn": "The area under a curve is given by a definite integral: $\\displaystyle\\int_{0}^{4} 1x^{2}\\,dx = \\left[\\dfrac{1x^{3}}{3}\\right]_{0}^{4} = \\dfrac{1(4)^{3}}{3} - 0 = 21.3333$. One option substitutes $x = 4$ into the original function, which gives the *height* at that point, not an area; areas must be accumulated by integration and cannot be read off a single function value. The second divides by $2$ instead of $3$ when integrating $x^{2}$ — raising the index gives $3$. The third halves the correct answer, a leftover from the triangle formula, which does not apply to a region bounded by a curve."
   },
   {
     "id": "m1_rep_0084",
@@ -2264,8 +2264,8 @@
       "$83.3333$ square units"
     ],
     "correctIndex": 3,
-    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 = 83.3333$。第一個干擾項只把 $x = 5$ 代入原函數，得出的是該點的【高度】而非面積 —— 面積必須經積分累加，不能用單一點的函數值代替。第二項積分時把 $x^{2}$ 的原函數誤寫成除以 $2$（應為除以 $3$，因為指數加一之後是 $3$）。第三項把答案再除一次 $2$，那是三角形面積公式的殘留 —— 曲線下的區域並非三角形，不可套用。",
-    "explanationEn": "The area under a curve is given by a definite integral: $\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 = 83.3333$. The first distractor substitutes $x = 5$ into the original function, which gives the *height* at that point, not an area; areas must be accumulated by integration and cannot be read off a single function value. The second divides by $2$ instead of $3$ when integrating $x^{2}$ — raising the index gives $3$. The third halves the correct answer, a leftover from the triangle formula, which does not apply to a region bounded by a curve."
+    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 = 83.3333$。還有一項只把 $x = 5$ 代入原函數，得出的是該點的【高度】而非面積 —— 面積必須經積分累加，不能用單一點的函數值代替。有一項積分時把 $x^{2}$ 的原函數誤寫成除以 $2$（應為除以 $3$，因為指數加一之後是 $3$）。另一項把答案再除一次 $2$，那是三角形面積公式的殘留 —— 曲線下的區域並非三角形，不可套用。",
+    "explanationEn": "The area under a curve is given by a definite integral: $\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 = 83.3333$. One option substitutes $x = 5$ into the original function, which gives the *height* at that point, not an area; areas must be accumulated by integration and cannot be read off a single function value. The second divides by $2$ instead of $3$ when integrating $x^{2}$ — raising the index gives $3$. The third halves the correct answer, a leftover from the triangle formula, which does not apply to a region bounded by a curve."
   },
   {
     "id": "m1_rep_0085",
@@ -2291,8 +2291,8 @@
       "$12$"
     ],
     "correctIndex": 0,
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$。三個因子缺一不可。第一個干擾項 $8$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$; all three factors are required. The first distractor, $8$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$。三個因子缺一不可。還有一項 $8$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。有一項開了平方根，那是標準差而非變異數。另一項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$; all three factors are required. One option, $8$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
   },
   {
     "id": "m1_rep_0086",
@@ -2318,8 +2318,8 @@
       "$2.8284$"
     ],
     "correctIndex": 1,
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$。三個因子缺一不可。第一個干擾項 $10$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$; all three factors are required. The first distractor, $10$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$。三個因子缺一不可。還有一項 $10$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。有一項開了平方根，那是標準差而非變異數。另一項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$; all three factors are required. One option, $10$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
   },
   {
     "id": "m1_rep_0087",
@@ -2345,8 +2345,8 @@
       "$3$"
     ],
     "correctIndex": 2,
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$。三個因子缺一不可。第一個干擾項 $3$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$; all three factors are required. The first distractor, $3$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$。三個因子缺一不可。還有一項 $3$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。有一項開了平方根，那是標準差而非變異數。另一項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$; all three factors are required. One option, $3$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
   },
   {
     "id": "m1_rep_0088",
@@ -2372,8 +2372,8 @@
       "$10.2$"
     ],
     "correctIndex": 3,
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$。三個因子缺一不可。第一個干擾項 $12$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$; all three factors are required. The first distractor, $12$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$。三個因子缺一不可。還有一項 $12$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。有一項開了平方根，那是標準差而非變異數。另一項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$; all three factors are required. One option, $12$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
   },
   {
     "id": "m1_rep_0089",
@@ -2399,8 +2399,8 @@
       "$12$"
     ],
     "correctIndex": 0,
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$。三個因子缺一不可。第一個干擾項 $18$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$; all three factors are required. The first distractor, $18$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$。三個因子缺一不可。還有一項 $18$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。有一項開了平方根，那是標準差而非變異數。另一項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$; all three factors are required. One option, $18$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
   },
   {
     "id": "m1_rep_0090",
@@ -2426,8 +2426,8 @@
       "$2.6833$"
     ],
     "correctIndex": 1,
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$。三個因子缺一不可。第一個干擾項 $36$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$; all three factors are required. The first distractor, $36$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$。三個因子缺一不可。還有一項 $36$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。有一項開了平方根，那是標準差而非變異數。另一項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$; all three factors are required. One option, $36$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides."
   },
   {
     "id": "m1_rep_0091",
@@ -2453,8 +2453,8 @@
       "$0.3277$"
     ],
     "correctIndex": 2,
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} = 1 - 0.3277 = 0.6723$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=5)$，要算 $5$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $5$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} = 1 - 0.3277 = 0.6723$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=5)$ instead means $5$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $5$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
+    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} = 1 - 0.3277 = 0.6723$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=5)$，要算 $5$ 項，既慢又易漏。還有一項答了 $P(X = 0)$ 本身，即補集而非題目所問。有一項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $5$ 次，不止一次。另一項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} = 1 - 0.3277 = 0.6723$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=5)$ instead means $5$ separate terms, slower and easy to leave one out. One option gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $5$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
   },
   {
     "id": "m1_rep_0092",
@@ -2480,8 +2480,8 @@
       "$0.9375$"
     ],
     "correctIndex": 3,
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} = 1 - 0.0625 = 0.9375$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=4)$，要算 $4$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $4$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} = 1 - 0.0625 = 0.9375$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=4)$ instead means $4$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $4$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
+    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} = 1 - 0.0625 = 0.9375$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=4)$，要算 $4$ 項，既慢又易漏。還有一項答了 $P(X = 0)$ 本身，即補集而非題目所問。有一項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $4$ 次，不止一次。另一項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} = 1 - 0.0625 = 0.9375$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=4)$ instead means $4$ separate terms, slower and easy to leave one out. One option gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $4$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
   },
   {
     "id": "m1_rep_0093",
@@ -2507,8 +2507,8 @@
       "$0.6$"
     ],
     "correctIndex": 0,
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} = 1 - 0.5314 = 0.4686$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=6)$，要算 $6$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $6$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} = 1 - 0.5314 = 0.4686$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=6)$ instead means $6$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $6$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
+    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} = 1 - 0.5314 = 0.4686$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=6)$，要算 $6$ 項，既慢又易漏。還有一項答了 $P(X = 0)$ 本身，即補集而非題目所問。有一項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $6$ 次，不止一次。另一項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} = 1 - 0.5314 = 0.4686$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=6)$ instead means $6$ separate terms, slower and easy to leave one out. One option gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $6$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
   },
   {
     "id": "m1_rep_0094",
@@ -2534,8 +2534,8 @@
       "$0.432$"
     ],
     "correctIndex": 1,
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} = 1 - 0.216 = 0.784$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=3)$，要算 $3$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $3$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} = 1 - 0.216 = 0.784$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=3)$ instead means $3$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $3$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
+    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} = 1 - 0.216 = 0.784$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=3)$，要算 $3$ 項，既慢又易漏。還有一項答了 $P(X = 0)$ 本身，即補集而非題目所問。有一項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $3$ 次，不止一次。另一項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} = 1 - 0.216 = 0.784$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=3)$ instead means $3$ separate terms, slower and easy to leave one out. One option gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $3$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone."
   },
   {
     "id": "m1_rep_0095",
@@ -2561,8 +2561,8 @@
       "$17$"
     ],
     "correctIndex": 2,
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 1)^{4} = 3^{4} = 81$ —— 完全不需展開。第一個干擾項 $17$ 把指數分別作用到兩項之上，但 $(u+v)^{4} \\neq u^{4} + v^{4}$，這是代數上最常見的錯誤展開。$16$ 是 $(1+x)^{4}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{4}$。$12$ 把乘方誤作乘法。",
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 1)^{4} = 3^{4} = 81$ — no expansion needed at all. The first distractor, $17$, applies the power to each term separately, but $(u+v)^{4} \\neq u^{4} + v^{4}$ — the commonest false expansion in algebra. $16$ is the coefficient sum for $(1+x)^{4}$, a formula that holds only when both terms are $1$. $12$ mistakes exponentiation for multiplication."
+    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 1)^{4} = 3^{4} = 81$ —— 完全不需展開。有一項 $17$ 把指數分別作用到兩項之上，但 $(u+v)^{4} \\neq u^{4} + v^{4}$，這是代數上最常見的錯誤展開。$16$ 是 $(1+x)^{4}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{4}$。$12$ 把乘方誤作乘法。",
+    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 1)^{4} = 3^{4} = 81$ — no expansion needed at all. One option, $17$, applies the power to each term separately, but $(u+v)^{4} \\neq u^{4} + v^{4}$ — the commonest false expansion in algebra. $16$ is the coefficient sum for $(1+x)^{4}$, a formula that holds only when both terms are $1$. $12$ mistakes exponentiation for multiplication."
   },
   {
     "id": "m1_rep_0096",
@@ -2588,8 +2588,8 @@
       "$343$"
     ],
     "correctIndex": 3,
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 5)^{3} = 7^{3} = 343$ —— 完全不需展開。第一個干擾項 $133$ 把指數分別作用到兩項之上，但 $(u+v)^{3} \\neq u^{3} + v^{3}$，這是代數上最常見的錯誤展開。$8$ 是 $(1+x)^{3}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{3}$。$21$ 把乘方誤作乘法。",
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 5)^{3} = 7^{3} = 343$ — no expansion needed at all. The first distractor, $133$, applies the power to each term separately, but $(u+v)^{3} \\neq u^{3} + v^{3}$ — the commonest false expansion in algebra. $8$ is the coefficient sum for $(1+x)^{3}$, a formula that holds only when both terms are $1$. $21$ mistakes exponentiation for multiplication."
+    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 5)^{3} = 7^{3} = 343$ —— 完全不需展開。有一項 $133$ 把指數分別作用到兩項之上，但 $(u+v)^{3} \\neq u^{3} + v^{3}$，這是代數上最常見的錯誤展開。$8$ 是 $(1+x)^{3}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{3}$。$21$ 把乘方誤作乘法。",
+    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 5)^{3} = 7^{3} = 343$ — no expansion needed at all. One option, $133$, applies the power to each term separately, but $(u+v)^{3} \\neq u^{3} + v^{3}$ — the commonest false expansion in algebra. $8$ is the coefficient sum for $(1+x)^{3}$, a formula that holds only when both terms are $1$. $21$ mistakes exponentiation for multiplication."
   },
   {
     "id": "m1_rep_0097",
@@ -2615,8 +2615,8 @@
       "$15$"
     ],
     "correctIndex": 0,
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(3 \\times 1 + 2)^{3} = 5^{3} = 125$ —— 完全不需展開。第一個干擾項 $35$ 把指數分別作用到兩項之上，但 $(u+v)^{3} \\neq u^{3} + v^{3}$，這是代數上最常見的錯誤展開。$8$ 是 $(1+x)^{3}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{3}$。$15$ 把乘方誤作乘法。",
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(3 \\times 1 + 2)^{3} = 5^{3} = 125$ — no expansion needed at all. The first distractor, $35$, applies the power to each term separately, but $(u+v)^{3} \\neq u^{3} + v^{3}$ — the commonest false expansion in algebra. $8$ is the coefficient sum for $(1+x)^{3}$, a formula that holds only when both terms are $1$. $15$ mistakes exponentiation for multiplication."
+    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(3 \\times 1 + 2)^{3} = 5^{3} = 125$ —— 完全不需展開。有一項 $35$ 把指數分別作用到兩項之上，但 $(u+v)^{3} \\neq u^{3} + v^{3}$，這是代數上最常見的錯誤展開。$8$ 是 $(1+x)^{3}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{3}$。$15$ 把乘方誤作乘法。",
+    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(3 \\times 1 + 2)^{3} = 5^{3} = 125$ — no expansion needed at all. One option, $35$, applies the power to each term separately, but $(u+v)^{3} \\neq u^{3} + v^{3}$ — the commonest false expansion in algebra. $8$ is the coefficient sum for $(1+x)^{3}$, a formula that holds only when both terms are $1$. $15$ mistakes exponentiation for multiplication."
   },
   {
     "id": "m1_rep_0098",
@@ -2642,8 +2642,8 @@
       "$16$"
     ],
     "correctIndex": 1,
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 3)^{4} = 5^{4} = 625$ —— 完全不需展開。第一個干擾項 $97$ 把指數分別作用到兩項之上，但 $(u+v)^{4} \\neq u^{4} + v^{4}$，這是代數上最常見的錯誤展開。$16$ 是 $(1+x)^{4}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{4}$。$20$ 把乘方誤作乘法。",
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 3)^{4} = 5^{4} = 625$ — no expansion needed at all. The first distractor, $97$, applies the power to each term separately, but $(u+v)^{4} \\neq u^{4} + v^{4}$ — the commonest false expansion in algebra. $16$ is the coefficient sum for $(1+x)^{4}$, a formula that holds only when both terms are $1$. $20$ mistakes exponentiation for multiplication."
+    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 3)^{4} = 5^{4} = 625$ —— 完全不需展開。有一項 $97$ 把指數分別作用到兩項之上，但 $(u+v)^{4} \\neq u^{4} + v^{4}$，這是代數上最常見的錯誤展開。$16$ 是 $(1+x)^{4}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{4}$。$20$ 把乘方誤作乘法。",
+    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 3)^{4} = 5^{4} = 625$ — no expansion needed at all. One option, $97$, applies the power to each term separately, but $(u+v)^{4} \\neq u^{4} + v^{4}$ — the commonest false expansion in algebra. $16$ is the coefficient sum for $(1+x)^{4}$, a formula that holds only when both terms are $1$. $20$ mistakes exponentiation for multiplication."
   },
   {
     "id": "m1_rep_0099",
@@ -2669,8 +2669,8 @@
       "$12$"
     ],
     "correctIndex": 2,
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。還有一項照抄總體標準差，忽略了抽樣會令平均數的波動變細。有一項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。另一項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. One option reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
   },
   {
     "id": "m1_rep_0100",
@@ -2696,8 +2696,8 @@
       "$2$"
     ],
     "correctIndex": 3,
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。還有一項照抄總體標準差，忽略了抽樣會令平均數的波動變細。有一項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。另一項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. One option reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
   },
   {
     "id": "m1_rep_0101",
@@ -2723,8 +2723,8 @@
       "$75$"
     ],
     "correctIndex": 0,
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。還有一項照抄總體標準差，忽略了抽樣會令平均數的波動變細。有一項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。另一項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. One option reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
   },
   {
     "id": "m1_rep_0102",
@@ -2750,7 +2750,7 @@
       "$0.125$"
     ],
     "correctIndex": 1,
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。還有一項照抄總體標準差，忽略了抽樣會令平均數的波動變細。有一項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。另一項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. One option reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong."
   }
 ]
