@@ -564,3 +564,76 @@ for (const s of [1, 2, 3, 4, 5, 6]) {
 }
 
 export const biologyBank2Questions: Question[] = bio2.bank
+
+// ── 健康管理與社會關懷：公共衞生統計 ──────────────────────────────────────
+
+const hmT = { ph: { id: 'public_health', zh: '公共衞生與疾病預防', en: 'Public Health & Disease Prevention' } } satisfies Record<string, TopicMeta>
+const hmFW = { calc: { id: 'calc', zh: '計算分析', en: 'Quantitative', emoji: '🧮' } } satisfies Record<string, FwMeta>
+const hm = createBank('health-management')
+
+// HM1 — 發病率（每十萬人）
+for (const popK of [50, 80, 120, 200, 400, 500]) {
+  for (const cases of [24, 40, 60, 100, 150]) {
+    const pop = popK * 1000
+    const rate = (cases / pop) * 100000
+    if (!Number.isInteger(rate * 10)) continue
+    hm.add(`hmb_hm1_${popK}_${cases}`, hmT.ph, hmFW.calc, 'medium',
+      [`某地區人口 ${fmt(pop)} 人，一年內錄得 ${cases} 宗某疾病的新症。該病的發病率是每十萬人多少宗？`,
+       `A district of ${fmt(pop)} people records ${cases} new cases of a disease in one year. What is the incidence rate per 100,000 population?`],
+      [n(`${round(rate, 1)}`), n(`${cases}`), n(`${round((cases / pop) * 100, 4)}`), n(`${round(pop / cases, 1)}`)],
+      [`發病率 = 新症數目 ÷ 人口 × 100,000 = ${cases} ÷ ${fmt(pop)} × 100,000 = ${round(rate, 1)} 宗／十萬人。要用【率】而非絕對數字作比較，因為人口規模不同的地區，個案數目本身不可比 —— 大城市個案較多，未必代表風險較高。另須分清【發病率】（一段期間內的新症）與【患病率】（某一時點的所有現存病例，包括舊症）。陷阱：${cases} 只抄了個案數目；${round((cases / pop) * 100, 4)} 乘了 100 而非 100,000；${round(pop / cases, 1)} 把分子分母倒轉。`,
+       `Incidence = new cases ÷ population × 100,000 = ${cases} ÷ ${fmt(pop)} × 100,000 = ${round(rate, 1)} per 100,000. Rates rather than raw counts must be used for comparison, since districts of different size are not comparable on counts alone — a large city has more cases without necessarily carrying higher risk. Distinguish also INCIDENCE, the new cases over a period, from PREVALENCE, all existing cases at a point in time. Traps: ${cases} copies the case count; ${round((cases / pop) * 100, 4)} multiplies by 100 rather than 100,000; ${round(pop / cases, 1)} inverts the fraction.`])
+  }
+}
+
+// HM2 — 疫苗接種覆蓋率
+for (const target of [2000, 5000, 8000, 12000, 20000]) {
+  for (const pct of [45, 60, 72, 85, 90]) {
+    const done = (target * pct) / 100
+    if (!Number.isInteger(done)) continue
+    hm.add(`hmb_hm2_${target}_${pct}`, hmT.ph, hmFW.calc, 'easy',
+      [`某社區的目標接種人數為 ${fmt(target)} 人，實際完成接種 ${fmt(done)} 人。接種覆蓋率是多少？`,
+       `A community targets ${fmt(target)} people for vaccination and ${fmt(done)} are vaccinated. What is the coverage rate?`],
+      [n(`${pct}%`), n(`${round((target / done) * 100, 1)}%`), n(`${round(((target - done) / target) * 100, 1)}%`), n(`${fmt(done)}%`)],
+      [`覆蓋率 = 已接種人數 ÷ 目標人數 × 100% = ${fmt(done)} ÷ ${fmt(target)} × 100% = ${pct}%。覆蓋率之所以重要，是因為【群體免疫】需要足夠比例的人接種才能形成：當易感者比例低到病原難以持續傳播，未能接種的人（如免疫力弱者、太年幼者）也會間接受保護。所需的覆蓋率視乎該病的傳染力而定，麻疹等高傳染力疾病要求尤其高。陷阱：${round((target / done) * 100, 1)}% 把分子分母倒轉，得出大於 100% 的結果；${round(((target - done) / target) * 100, 1)}% 算的是未接種比例；${fmt(done)}% 把人數當成百分率。`,
+       `Coverage = number vaccinated ÷ target population × 100% = ${fmt(done)} ÷ ${fmt(target)} × 100% = ${pct}%. Coverage matters because HERD IMMUNITY requires a sufficient proportion to be vaccinated: once susceptible people are scarce enough that the pathogen cannot sustain transmission, those who cannot be vaccinated — the immunocompromised, the very young — are indirectly protected. The threshold depends on how transmissible the disease is, and highly infectious diseases such as measles demand especially high coverage. Traps: ${round((target / done) * 100, 1)}% inverts the fraction and exceeds 100%; ${round(((target - done) / target) * 100, 1)}% is the unvaccinated share; ${fmt(done)}% reads a headcount as a percentage.`])
+  }
+}
+
+export const healthManagementBankQuestions: Question[] = hm.bank
+
+// ── 體育：賽制與運動統計 ──────────────────────────────────────────────────
+
+const peT2 = { society: { id: 'sport_society', zh: '運動與社會', en: 'Sport & Society' } } satisfies Record<string, TopicMeta>
+const pe2 = createBank('pe')
+
+// PE4 — 單循環賽的場數 = n(n−1)/2
+for (let n2 = 4; n2 <= 16; n2++) {
+  const games = (n2 * (n2 - 1)) / 2
+  pe2.add(`pe2_pe4_${n2}`, peT2.society, peFW.calc, 'medium',
+    [`${n2} 支球隊進行【單循環】賽，即每隊與其餘各隊各賽一場。全部賽事共有多少場？`,
+     `${n2} teams play a SINGLE round-robin, each meeting every other team once. How many matches are there in total?`],
+    [qty(games, '場', 'matches'), qty(n2 * (n2 - 1), '場', 'matches'), qty(n2 - 1, '場', 'matches'), qty(n2 * n2, '場', 'matches')],
+    [`每隊各與其餘 ${n2 - 1} 隊賽一場，看似共 ${n2} × ${n2 - 1} = ${n2 * (n2 - 1)} 場；但甲對乙與乙對甲是【同一場】，故要除以 2，得 ${games} 場。這正是組合 $\\binom{${n2}}{2}$ 的意思：由 ${n2} 隊之中選兩隊，次序無關。若改為【雙循環】（主客各一次）則是 ${n2 * (n2 - 1)} 場；若改為單淘汰制，每場淘汰一隊，決出冠軍只需 ${n2 - 1} 場。陷阱：${n2 * (n2 - 1)} 場漏了除以 2；${n2 - 1} 場是單淘汰制的場數；${n2 * n2} 場把自己對自己也算了進去。`,
+     `Each team plays the other ${n2 - 1} teams, which looks like ${n2} × ${n2 - 1} = ${n2 * (n2 - 1)} matches; but A versus B and B versus A are the SAME match, so dividing by 2 gives ${games}. This is exactly the combination $\\binom{${n2}}{2}$: choosing two teams from ${n2} with order irrelevant. A double round-robin, home and away, would be ${n2 * (n2 - 1)} matches, while a single-elimination format eliminates one team per match and needs only ${n2 - 1} to produce a champion. Traps: ${n2 * (n2 - 1)} omits the division by 2; ${n2 - 1} is the knockout figure; ${n2 * n2} counts teams playing themselves.`])
+}
+
+// PE5 — 心率儲備法（Karvonen）目標心率
+for (const age of [15, 16, 17, 18, 20]) {
+  for (const rest of [60, 65, 70, 75]) {
+    for (const pct of [50, 60, 70, 80]) {
+      const mhr = 220 - age, reserve = mhr - rest
+      const thr = rest + (reserve * pct) / 100
+      if (!Number.isInteger(thr)) continue
+      pe2.add(`pe2_pe5_${age}_${rest}_${pct}`, peT2.society, peFW.calc, 'hard',
+        [`一名 ${age} 歲學生的靜息心率為每分鐘 ${rest} 次。以心率儲備法（Karvonen）計算 ${pct}% 強度的目標心率是每分鐘多少次？（最大心率取 220 減年齡）`,
+         `A ${age}-year-old has a resting heart rate of ${rest} bpm. Using the Karvonen heart-rate-reserve method, what is the target heart rate at ${pct}% intensity? (Maximum heart rate is 220 minus age.)`],
+        [qty(thr, '次／分鐘', 'bpm'), qty(round((mhr * pct) / 100, 1), '次／分鐘', 'bpm'),
+         qty(round((reserve * pct) / 100, 1), '次／分鐘', 'bpm'), qty(mhr, '次／分鐘', 'bpm')],
+        [`最大心率 = 220 − ${age} = ${mhr}；心率儲備 = 最大心率 − 靜息心率 = ${mhr} − ${rest} = ${reserve}。Karvonen 公式：目標心率 = 靜息心率 ＋ 儲備 × 強度 = ${rest} ＋ ${reserve} × ${pct}% = ${thr} 次／分鐘。此法比「最大心率 × 強度」更準確，因為它把個人的靜息水平計算在內 —— 體能較佳者靜息心率較低、儲備較大，同一強度百分比對應的絕對心率因而不同。陷阱：${round((mhr * pct) / 100, 1)} 次是直接用最大心率乘強度，忽略了靜息水平；${round((reserve * pct) / 100, 1)} 次漏了最後加回靜息心率；${mhr} 次是最大心率本身。`,
+         `Maximum heart rate = 220 − ${age} = ${mhr}, and the reserve = maximum − resting = ${mhr} − ${rest} = ${reserve}. Karvonen's formula gives target = resting + reserve × intensity = ${rest} + ${reserve} × ${pct}% = ${thr} bpm. It is more accurate than simply multiplying maximum heart rate by the intensity, because it accounts for the individual's resting level: a fitter person has a lower resting rate and a larger reserve, so the same percentage corresponds to a different absolute rate. Traps: ${round((mhr * pct) / 100, 1)} bpm multiplies maximum heart rate directly and ignores the resting level; ${round((reserve * pct) / 100, 1)} bpm omits adding the resting rate back; ${mhr} bpm is the maximum itself.`])
+    }
+  }
+}
+
+export const peBank2Questions: Question[] = pe2.bank

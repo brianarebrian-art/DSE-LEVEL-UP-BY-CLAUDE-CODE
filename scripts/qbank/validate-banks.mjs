@@ -75,6 +75,8 @@ const BANKS = [
   { subject: 'ict', file: 'data/questions/applied-banks.ts', exportName: 'ictBankQuestions' },
   { subject: 'geography', file: 'data/questions/applied-banks.ts', exportName: 'geographyBankQuestions' },
   { subject: 'biology', file: 'data/questions/applied-banks.ts', exportName: 'biologyBank2Questions' },
+  { subject: 'health-management', file: 'data/questions/applied-banks.ts', exportName: 'healthManagementBankQuestions' },
+  { subject: 'pe', file: 'data/questions/applied-banks.ts', exportName: 'peBank2Questions' },
 ]
 
 const RATIO = { easy: 0.3, medium: 0.5, hard: 0.2 } // 300 / 500 / 200 per 1,000

@@ -126,7 +126,7 @@ const loaders: Record<string, Loader> = {
     const [base, floor1] = await Promise.all([
       import('./health-management'), import('./health-management-floor-batch1'),
     ])
-    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions]
+    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions, ...(await import('./applied-banks')).healthManagementBankQuestions]
   },
   'design-tech': async () => {
     const [base, bank] = await Promise.all([import('./design-tech'), import('./applied-banks')])
@@ -138,7 +138,7 @@ const loaders: Record<string, Loader> = {
   },
   pe: async () => {
     const [base, bank] = await Promise.all([import('./pe'), import('./applied-banks')])
-    return [...base.peQuestions, ...bank.peBankQuestions]
+    return [...base.peQuestions, ...bank.peBankQuestions, ...bank.peBank2Questions]
   },
   'chinese-literature': async () => (await import('./chinese-literature')).chineseLiteratureQuestions,
   'english-literature': async () => (await import('./english-literature')).englishLiteratureQuestions,
