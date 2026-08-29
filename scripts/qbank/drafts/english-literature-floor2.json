@@ -1,0 +1,191 @@
+[
+ {
+  "id": "floor6_elit_ti_01",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "basic",
+  "question": "某角色宣稱「我絕不會出賣朋友」，隨即做出相反的事。這屬於哪一種反諷？",
+  "questionEn": "A character declares \"I would never betray a friend\" moments before doing exactly that. Which kind of irony is this?",
+  "options": [
+   "Dramatic irony — the audience grasps a truth the speaker does not",
+   "Verbal irony — the speaker says the opposite of what they mean",
+   "Situational irony — an outcome reverses what everyone expected",
+   "No irony at all — the character has simply changed their mind"
+  ],
+  "optionsEn": [
+   "Dramatic irony — the audience grasps a truth the speaker does not",
+   "Verbal irony — the speaker says the opposite of what they mean",
+   "Situational irony — an outcome reverses what everyone expected",
+   "No irony at all — the character has simply changed their mind"
+  ],
+  "correctIndex": 0,
+  "explanation": "戲劇性反諷源於觀眾與角色之間的【認知落差】：觀眾看得見即將發生的事，說話者卻看不見，同一句話因而帶有說話者自己並未察覺的第二層意思。言語反諷要求角色在說話當下就有意表達相反的意思，而此處的宣告看來出於真誠；情境反諷處理的是事件結果的逆轉而非認知落差；至於「改變主意」則須有重新考慮的過程，但背叛緊接發生。",
+  "explanationEn": "Dramatic irony arises from a GAP IN KNOWLEDGE between audience and character: we can see what is coming while the speaker cannot, and the line acquires a second meaning it does not have for the one who utters it. Verbal irony would require the character to intend the opposite as they speak, which is not the case here — the declaration appears sincere. Situational irony concerns the outcome of events rather than the gap in awareness. And a change of mind would need the character to reconsider, whereas the betrayal follows immediately."
+ },
+ {
+  "id": "floor6_elit_ti_02",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "intermediate",
+  "question": "文學作品的「主題」與「情節」有何分別？",
+  "questionEn": "What distinguishes the THEME of a literary work from its PLOT?",
+  "options": [
+   "Plot is what happens; theme is the idea about life the events explore",
+   "Plot is the idea explored; theme is the sequence of events narrated",
+   "Plot belongs to novels and theme to poems, each to its own genre",
+   "They are two names for the same thing used in different traditions"
+  ],
+  "optionsEn": [
+   "Plot is what happens; theme is the idea about life the events explore",
+   "Plot is the idea explored; theme is the sequence of events narrated",
+   "Plot belongs to novels and theme to poems, each to its own genre",
+   "They are two names for the same thing used in different traditions"
+  ],
+  "correctIndex": 0,
+  "explanation": "情節回答的是【發生了甚麼】—— 事件的次序與因果關係。主題回答的是【在講一個關於甚麼的想法】：野心的代價、信任的脆弱、責任與慾望之間的拉扯。一部作品可以承載多個主題，而主題須以命題形式表述而非一個詞語：「愛情」是題目，「愛情無法在隱瞞之中存活」才是主題。這個分別在考試中至為關鍵，因為以複述情節代替指出主題，正是最常見的失分方式。第三、四項分別把兩個概念綁定於文類或視為同義詞，兩者皆不成立。",
+  "explanationEn": "Plot answers WHAT HAPPENS — the sequence of events and their causal links. Theme answers WHAT IT IS ABOUT at the level of ideas: ambition and its cost, the fragility of trust, the pull between duty and desire. One work can carry several themes, and a theme is stated as a proposition rather than a topic: \"love\" is a topic, while \"love does not survive concealment\" is a theme. The distinction matters in examinations, because answers that retell the plot in place of identifying a theme are the commonest way marks are lost. The third and fourth options tie the terms to genres or treat them as synonyms, and neither holds."
+ },
+ {
+  "id": "floor6_elit_ti_03",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "intermediate",
+  "question": "一部小說以「救援船在主角放棄希望之後一小時抵達」作結。這個結局最可能達到甚麼效果？",
+  "questionEn": "A novel ends with the rescue ship arriving one hour after the protagonist has given up hope. What does this ending most likely achieve?",
+  "options": [
+   "Situational irony that sharpens the theme of how narrowly outcomes turn",
+   "Verbal irony, since the narrator says the opposite of what is meant",
+   "Dramatic irony, since the reader knew the ship's position throughout",
+   "Comic relief, since the arrival resolves the tension happily"
+  ],
+  "optionsEn": [
+   "Situational irony that sharpens the theme of how narrowly outcomes turn",
+   "Verbal irony, since the narrator says the opposite of what is meant",
+   "Dramatic irony, since the reader knew the ship's position throughout",
+   "Comic relief, since the arrival resolves the tension happily"
+  ],
+  "correctIndex": 0,
+  "explanation": "預期與實際之間的逆轉屬【情境】反諷，而把它安排在放棄之後一小時，正是力量所在：這個差距小得近乎偶然，結局因而把「結果往往取決於無人能控制的毫釐之差」這個想法推到讀者面前。言語反諷要求說話者言此意彼，此處並無；戲劇性反諷要求讀者一直知道船的位置，題幹並未如此交代；至於喜劇性緩和，要求緊張被化為輕鬆，而這個結局是把它加深而非化解。",
+  "explanationEn": "The reversal between what was expected and what occurs is SITUATIONAL irony, and placing it one hour past the point of surrender is what gives it force: the gap is small enough to feel arbitrary, so the ending presses the idea that outcomes turn on margins beyond anyone's control. Verbal irony requires a speaker meaning the opposite of their words, which is not in play. Dramatic irony would require the reader to have known the ship's position, and the stem does not say so. Comic relief would require the tension to be released into humour, whereas this ending deepens it."
+ },
+ {
+  "id": "floor6_elit_ti_04",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "hard",
+  "question": "學生寫道：「這部小說的主題是死亡。」這樣表述主題有何不足？",
+  "questionEn": "A student writes: \"The theme of the novel is death.\" What is the weakness of stating a theme this way?",
+  "options": [
+   "It names a topic rather than a claim, so it says nothing the work argues",
+   "Death is too common a subject to serve as a theme in any work",
+   "A theme must always be positive, and death cannot be one",
+   "A theme must be stated in a single word, so the sentence is too long"
+  ],
+  "optionsEn": [
+   "It names a topic rather than a claim, so it says nothing the work argues",
+   "Death is too common a subject to serve as a theme in any work",
+   "A theme must always be positive, and death cannot be one",
+   "A theme must be stated in a single word, so the sentence is too long"
+  ],
+  "correctIndex": 0,
+  "explanation": "主題是作品就其題目所提出的【一個主張】，而非題目本身。「死亡」說明了小說關乎甚麼；主題則要說出小說對此提出了甚麼 —— 例如死亡揭示一個人生前究竟以甚麼為重心，或悲傷比親情更能把人繫在一起。表述為主張之後，主題才可以放回文本檢驗：哪些場景支持它、哪些使它複雜化。第二項把常見誤當成不適用；第三項憑空加了一條並不存在的規則，事實上大量主題都是沉重的；第四項把要求說反了，一個詞語正正是問題所在。",
+  "explanationEn": "A theme is a CLAIM the work advances about its topic, not the topic itself. \"Death\" tells us what the novel concerns; a theme would say what the novel suggests about it — that death exposes what a life was ordered around, or that grief binds people more tightly than affection ever did. Phrased as a claim, the theme can then be tested against the text: which scenes support it, which complicate it. The second option confuses frequency with unsuitability; the third imposes a rule that does not exist, as many themes are bleak; the fourth reverses the requirement, since a single word is precisely the problem."
+ },
+ {
+  "id": "floor6_elit_de_01",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Device & effect",
+  "topicId": "elit_device_effect",
+  "topicZh": "Device & effect",
+  "topicEn": "Device & effect",
+  "difficulty": "basic",
+  "question": "一首詩把悲傷寫成「肋骨後面卡着的一塊石」。這是甚麼手法，效果何在？",
+  "questionEn": "A poem describes grief as \"a stone lodged behind the ribs\". Which device is this, and what does it achieve?",
+  "options": [
+   "Metaphor — it gives an abstract feeling weight, place and presence",
+   "Simile — it compares two unlike things using the word \"like\" or \"as\"",
+   "Personification — it gives human qualities to an inanimate object or idea",
+   "Alliteration — it repeats initial consonant sounds for a musical effect"
+  ],
+  "optionsEn": [
+   "Metaphor — it gives an abstract feeling weight, place and presence",
+   "Simile — it compares two unlike things using the word \"like\" or \"as\"",
+   "Personification — it gives human qualities to an inanimate object or idea",
+   "Alliteration — it repeats initial consonant sounds for a musical effect"
+  ],
+  "correctIndex": 0,
+  "explanation": "詩句說悲傷【就是】一塊石而非「像」一塊石，故屬暗喻。效果在於把一個抽象概念移入身體：石有重量、有固定位置、堅硬，悲傷因而同時獲得三者，由一個名詞變成讀者感覺得到的東西。「肋骨後面」再加一重準確 —— 那正是呼吸與心跳所在，於是這感覺持續而無從迴避。明喻須有「像」或「如」；擬人是把人的特質賦予物，方向相反；押頭韻處理的是聲音重複，這句並非以此為重心。",
+  "explanationEn": "The line states that grief IS a stone rather than that it is like one, which makes it a metaphor. Its effect is to relocate an abstraction into the body: a stone has weight, a fixed position and hardness, so grief acquires all three and becomes something the reader can feel rather than merely name. \"Behind the ribs\" adds precision, placing it where breath and heartbeat are, so the sensation is continuous and inescapable. A simile would need \"like\" or \"as\"; personification would attribute human qualities to a thing rather than the reverse; alliteration concerns repeated sounds, which the line does not turn on."
+ },
+ {
+  "id": "floor6_elit_de_02",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Device & effect",
+  "topicId": "elit_device_effect",
+  "topicZh": "Device & effect",
+  "topicEn": "Device & effect",
+  "difficulty": "intermediate",
+  "question": "一篇短篇小說全由一個後來被發現誤解了事件的敘述者講述。這個選擇的主要效果是甚麼？",
+  "questionEn": "A short story is told entirely by a narrator who turns out to have misunderstood the events. What is the main effect of this choice?",
+  "options": [
+   "It forces the reader to reread and judge, since the account is flawed",
+   "It makes the plot far clearer, since a single voice removes all confusion",
+   "It proves the narrator is lying deliberately in order to deceive the reader",
+   "It shows the author lacked the skill to construct a reliable account of events"
+  ],
+  "optionsEn": [
+   "It forces the reader to reread and judge, since the account is flawed",
+   "It makes the plot far clearer, since a single voice removes all confusion",
+   "It proves the narrator is lying deliberately in order to deceive the reader",
+   "It shows the author lacked the skill to construct a reliable account of events"
+  ],
+  "correctIndex": 0,
+  "explanation": "不可靠敘述者把工作交回讀者手上：一旦知道敘述有偏差，先前每一項細節都要重新掂量 —— 看它在敘述者【之外】透露了甚麼，而非透過敘述者告訴我們甚麼。效果不是混亂而是主動判斷，而「所述」與「所發生」之間的落差往往正是作品的意義所在：自我欺瞞、認知有限、了解他人之難。要留意不可靠不等於說謊：敘述者可以真誠而只是弄錯了、年紀太小，或身在其中而看不清。第二項把效果說反；第三項假定了有意欺騙；第四項把有意為之的技法誤讀為能力不足。",
+  "explanationEn": "An unreliable narrator shifts work onto the reader: once the account is known to be flawed, every earlier detail must be weighed again for what it reveals despite the narrator rather than through them. The effect is not confusion but active judgement, and the gap between what is told and what happened often carries the story's meaning — self-deception, limited understanding, the difficulty of knowing another person. Note that unreliability need not mean lying: a narrator may be sincere and simply mistaken, young, or too involved to see clearly. The second option reverses the effect; the third assumes deliberate deception; the fourth mistakes a deliberate technique for incompetence."
+ },
+ {
+  "id": "floor6_elit_de_03",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Device & effect",
+  "topicId": "elit_device_effect",
+  "topicZh": "Device & effect",
+  "topicEn": "Device & effect",
+  "difficulty": "intermediate",
+  "question": "一齣戲在三個不同場景重複出現「一道關上的門」這個意象。最可能的用意是甚麼？",
+  "questionEn": "A play repeats the image of a closed door in three separate scenes. What is the most likely purpose?",
+  "options": [
+   "To build a motif whose accumulated meaning comments on the action",
+   "To economise on staging by reusing the same piece of scenery",
+   "To signal to the audience that each scene has ended",
+   "To fill time between scenes without advancing the plot"
+  ],
+  "optionsEn": [
+   "To build a motif whose accumulated meaning comments on the action",
+   "To economise on staging by reusing the same piece of scenery",
+   "To signal to the audience that each scene has ended",
+   "To fill time between scenes without advancing the plot"
+  ],
+  "correctIndex": 0,
+  "explanation": "重複出現的意象會成為【母題】：每一次出現都承接前一次所積累的意義，因此到第三次時，那道門已不只是一道門 —— 它可以是拒之門外、是被拒絕的一個決定、是被封死的一段人生。劇作家用的是累積，意義屬於整個模式而非任何單一次出現。答好這類題的方法是追蹤每次出現之間的變化：誰在哪一邊、門有沒有打開、是誰選擇關上。其餘三項把一個結構性手法降格為實務、程序或填充時間的安排，都無法解釋為何偏偏是這個意象反覆出現。",
+  "explanationEn": "A repeated image becomes a MOTIF: each appearance carries forward what the previous ones established, so by the third the door means more than a door — exclusion, a decision refused, a life sealed off. The playwright is using accumulation, and the meaning belongs to the pattern rather than to any single occurrence. Answering such a question well means tracing what changes between appearances: who is on which side, whether it opens, who chose to close it. The other options treat a structural device as a practical, procedural or padding matter, none of which explains why this particular image recurs."
+ }
+]
