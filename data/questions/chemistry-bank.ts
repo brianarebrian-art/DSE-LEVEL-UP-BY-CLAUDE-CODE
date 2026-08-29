@@ -762,7 +762,13 @@ for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
   ['Na', 23, 'Cl', 35.5, 1, 1, 'NaCl'], ['Ca', 40, 'F', 19, 1, 2, 'CaF_2'],
   ['C', 12, 'H', 1, 1, 4, 'CH_4'], ['N', 14, 'H', 1, 1, 3, 'NH_3'],
   ['Zn', 65, 'S', 32, 1, 1, 'ZnS'], ['K', 39, 'O', 16, 2, 1, 'K_2O'],
-  ['Pb', 207, 'O', 16, 1, 2, 'PbO_2'], ['Mg', 24, 'N', 14, 3, 2, 'Mg_3N_2']] as
+  ['Pb', 207, 'O', 16, 1, 2, 'PbO_2'], ['Mg', 24, 'N', 14, 3, 2, 'Mg_3N_2'],
+  ['Li', 7, 'O', 16, 2, 1, 'Li_2O'], ['Ba', 137, 'Cl', 35.5, 1, 2, 'BaCl_2'],
+  ['Ag', 108, 'S', 32, 2, 1, 'Ag_2S'], ['Sn', 119, 'O', 16, 1, 2, 'SnO_2'],
+  ['Cr', 52, 'O', 16, 2, 3, 'Cr_2O_3'], ['Ni', 59, 'O', 16, 1, 1, 'NiO'],
+  ['Ca', 40, 'O', 16, 1, 1, 'CaO'], ['Sr', 88, 'Cl', 35.5, 1, 2, 'SrCl_2'],
+  ['Ti', 48, 'O', 16, 1, 2, 'TiO_2'], ['Mn', 55, 'O', 16, 1, 2, 'MnO_2'],
+  ['V', 51, 'O', 16, 2, 5, 'V_2O_5'], ['Co', 59, 'O', 16, 1, 1, 'CoO']] as
   [string, number, string, number, number, number, string][])
   .forEach(([e1, m1, e2, m2, c1, c2, formula]) => {
     const mass1 = m1 * c1, mass2 = m2 * c2
@@ -861,7 +867,7 @@ for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
   })
 
 // AB3 — pH 與氫離子濃度（整數 pH，避免對數捨入）
-for (const pH of [1, 2, 3, 4, 5, 9, 10, 11, 12, 13]) {
+for (const pH of [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13]) {
   add(`chemf_ab3_${pH}`, T.acidsBases, FW.calc, 'medium',
     [`某溶液的 pH 值為 ${pH}。其氫離子濃度是多少 mol dm⁻³？`,
      `A solution has pH ${pH}. What is its hydrogen ion concentration in mol dm⁻³?`],
@@ -899,6 +905,72 @@ for (const ca of [0.1, 0.2, 0.5, 1]) {
         [`按 1 : 1 反應，中和時酸與鹼的摩爾數相等：$C_a V_a = C_b V_b$。代入 $${round(ca, 2)} \\times ${va} = C_b \\times ${vb}$，得 $C_b = ${round(cb, 4)}$ mol dm⁻³。若酸鹼的反應比例並非 1 : 1（例如硫酸對氫氧化鈉為 1 : 2），公式便要按係數比修正 —— 這是滴定計算最容易忽略的一步。陷阱：$${round((ca * vb) / va, 4)}$ 把兩個體積的位置調轉；$${round(ca, 2)}$ 以為兩者濃度必然相同；$${round(ca * va, 2)}$ 停在摩爾數而未除以鹼液體積。`,
          `Reacting 1 : 1, neutralisation means equal amounts of acid and alkali: $C_a V_a = C_b V_b$. Substituting, $${round(ca, 2)} \\times ${va} = C_b \\times ${vb}$, so $C_b = ${round(cb, 4)}$ mol dm⁻³. Where the stoichiometry is not 1 : 1 — sulphuric acid with sodium hydroxide is 1 : 2 — the coefficients must be applied, and that is the step most often overlooked in titration work. Traps: $${round((ca * vb) / va, 4)}$ interchanges the volumes; $${round(ca, 2)}$ assumes equal concentrations; $${round(ca * va, 2)}$ stops at the amount without dividing by the alkali volume.`])
     }
+  }
+}
+
+// OR6 — 同系列的分子式（三個系列 × 碳數）
+;([['烷', 'alkane', (k: number) => `\\mathrm{C_{${k}}H_{${2 * k + 2}}}`, (k: number) => `\\mathrm{C_{${k}}H_{${2 * k}}}`],
+  ['烯', 'alkene', (k: number) => `\\mathrm{C_{${k}}H_{${2 * k}}}`, (k: number) => `\\mathrm{C_{${k}}H_{${2 * k + 2}}}`]] as
+  [string, string, (k: number) => string, (k: number) => string][])
+  .forEach(([zh, en, f, wrong], i) => {
+    for (let k = 2; k <= 12; k++) {
+      add(`chemg_or6_${i}_${k}`, T.organic, FW.carbon, 'easy',
+        [`含 ${k} 個碳原子的${zh}，其分子式是甚麼？`, `What is the molecular formula of the ${en} with ${k} carbon atoms?`],
+        [n(`$${f(k)}$`), n(`$${wrong(k)}$`), n(`$\\mathrm{C_{${k}}H_{${2 * k - 2}}}$`), n(`$\\mathrm{C_{${k}}H_{${k}}}$`)],
+        [`${zh}類的通式為 $${i === 0 ? '\\mathrm{C_nH_{2n+2}}' : '\\mathrm{C_nH_{2n}}'}$${i === 0 ? '（飽和，只有單鍵）' : '（含一個碳碳雙鍵）'}。代入 $n = ${k}$ 得 $${f(k)}$。烯比同碳數的烷少兩個氫，正因為形成雙鍵時每個碳各騰出一個鍵位。陷阱：$${wrong(k)}$ 是${i === 0 ? '烯' : '烷'}的通式；$\\mathrm{C_{${k}}H_{${2 * k - 2}}}$ 是炔的通式（含三鍵）；$\\mathrm{C_{${k}}H_{${k}}}$ 誤以為碳氫數目相同。`,
+         `The ${en} series has general formula $${i === 0 ? '\\mathrm{C_nH_{2n+2}}' : '\\mathrm{C_nH_{2n}}'}$${i === 0 ? ', being saturated with single bonds only' : ', containing one carbon-carbon double bond'}. With $n = ${k}$ this gives $${f(k)}$. An alkene has two fewer hydrogens than the alkane of the same carbon number, because each carbon in the double bond gives up one bonding position. Traps: $${wrong(k)}$ is the ${i === 0 ? 'alkene' : 'alkane'} formula; $\\mathrm{C_{${k}}H_{${2 * k - 2}}}$ is the alkyne formula, with a triple bond; $\\mathrm{C_{${k}}H_{${k}}}$ assumes equal numbers of carbon and hydrogen.`])
+    }
+  })
+
+// BD5 — 共價分子中的共用電子對數目
+;([['H_2', 1], ['Cl_2', 1], ['O_2', 2], ['N_2', 3], ['H_2O', 2], ['NH_3', 3], ['CH_4', 4],
+  ['CO_2', 4], ['HCl', 1], ['CCl_4', 4], ['H_2S', 2], ['PH_3', 3], ['SiH_4', 4], ['F_2', 1], ['Br_2', 1], ['I_2', 1], ['HBr', 1], ['HF', 1],
+  ['CS_2', 4], ['C_2H_4', 6], ['C_2H_2', 5], ['CHCl_3', 4]] as
+  [string, number][])
+  .forEach(([f, pairs]) => {
+    add(`chemg_bd5_${f.replace(/[^A-Za-z0-9]/g, '')}`, T.bonding, FW.structure, 'medium',
+      [`$\\mathrm{${f}}$ 分子中共有多少對共用電子？`, `How many shared electron pairs are there in a molecule of $\\mathrm{${f}}$?`],
+      // 誘答由候選清單取前三個【與答案及彼此相異】的值。固定寫死 2p 與 p+1
+      // 會在 p = 1 時相等（2 = 2），令所有單鍵分子（H_2、Cl_2、HCl、F_2、
+      // HBr、HF…）整組被丟棄 —— 實測十四個分子只出到七個。
+      // 候選次序按誤解的常見程度排：先數電子而非對數，再多數一對、兩對，
+      // 最後是把每條鍵當成兩對。
+      [n(`$${pairs}$`), ...[pairs * 2, pairs + 1, pairs + 2, pairs * 3, pairs * 4]
+        .filter((v, j, arr) => v !== pairs && arr.indexOf(v) === j)
+        .slice(0, 3)
+        .map((v) => n(`$${v}$`))],
+      [`共價鍵由兩個原子各出一個電子組成一對共用電子。$\\mathrm{${f}}$ 之中共有 ${pairs} 對，即 ${pairs} 條共價鍵${pairs > 1 ? '（單鍵各算一對，雙鍵算兩對，三鍵算三對）' : ''}。數共用電子對時，要先由各原子的最外層電子數推出它需要形成多少條鍵才達到穩定結構 —— 氫需要 1 條、鹵素 1 條、氧與硫 2 條、氮與磷 3 條、碳與矽 4 條。陷阱：$${pairs * 2}$ 數了共用【電子】的個數而非【對】數；其餘兩項數多或數少一對。`,
+       `A covalent bond consists of one shared pair, each atom contributing one electron. $\\mathrm{${f}}$ has ${pairs} such pairs, that is ${pairs} covalent bonds${pairs > 1 ? ', counting a single bond as one pair, a double as two and a triple as three' : ''}. To count them, work out from each atom's outer electrons how many bonds it must form to reach a stable structure: hydrogen and the halogens 1, oxygen and sulphur 2, nitrogen and phosphorus 3, carbon and silicon 4. Traps: $${pairs * 2}$ counts shared ELECTRONS rather than PAIRS; the others miscount by one pair.`])
+  })
+
+// QT3 — 由濃度與體積求溶質質量（三步）
+for (const conc of [0.1, 0.2, 0.5, 1, 2]) {
+  for (const vol of [50, 100, 200, 250, 500]) {
+    for (const [f, mr] of [['NaOH', 40], ['NaCl', 58.5], ['KOH', 56], ['CuSO_4', 160]] as [string, number][]) {
+      const mol = (conc * vol) / 1000
+      const mass = mol * mr
+      if (!Number.isInteger(mass * 100)) continue
+      add(`chemg_qt3_${String(conc).replace('.', 'p')}_${vol}_${f.replace(/[^A-Za-z0-9]/g, '')}`, T.hellQuant, FW.quantReason, 'hard',
+        [`配製 ${vol} cm³ 濃度為 ${conc} mol dm⁻³ 的 $\\mathrm{${f}}$ 溶液，需要多少克 $\\mathrm{${f}}$？（摩爾質量 ${mr} g mol⁻¹）`,
+         `What mass of $\\mathrm{${f}}$ is needed to make ${vol} cm³ of ${conc} mol dm⁻³ solution? (Molar mass ${mr} g mol⁻¹.)`],
+        [n(`$${round(mass, 2)}$ g`), n(`$${round(conc * vol * mr, 1)}$ g`), n(`$${round(mol, 3)}$ g`), n(`$${round((conc * vol) / mr, 3)}$ g`)],
+        [`三步：先把體積由 cm³ 換為 dm³（除以 1000），再乘濃度得摩爾數 $n = ${conc} \\times \\dfrac{${vol}}{1000} = ${round(mol, 3)}$ mol，最後乘摩爾質量得 $m = ${round(mol, 3)} \\times ${mr} = ${round(mass, 2)}$ g。體積單位是本題最常見的失分位 —— 濃度以 mol dm⁻³ 計，量筒讀數卻以 cm³ 計，1 dm³ = 1000 cm³。陷阱：$${round(conc * vol * mr, 1)}$ g 漏了除以 1000；$${round(mol, 3)}$ g 停在摩爾數而未乘摩爾質量；$${round((conc * vol) / mr, 3)}$ g 把摩爾質量除了而非乘。`,
+         `Three steps: convert the volume from cm³ to dm³ by dividing by 1000, multiply by the concentration to get the amount $n = ${conc} \\times \\frac{${vol}}{1000} = ${round(mol, 3)}$ mol, then multiply by the molar mass to get $m = ${round(mol, 3)} \\times ${mr} = ${round(mass, 2)}$ g. Volume units are where marks are most often lost here: concentration is quoted per dm³ while measuring cylinders read in cm³, and 1 dm³ = 1000 cm³. Traps: $${round(conc * vol * mr, 1)}$ g omits the division by 1000; $${round(mol, 3)}$ g stops at the amount; $${round((conc * vol) / mr, 3)}$ g divides by the molar mass instead of multiplying.`])
+    }
+  }
+}
+
+// EN2 — 由溫升求反應放熱（Q = mcΔT）
+for (const vol of [50, 100, 150, 200, 250]) {
+  for (const dT of [5, 10, 15, 20, 25]) {
+    const q = (vol * 4.2 * dT) / 1000
+    if (!Number.isInteger(q * 100)) continue
+    add(`chemg_en2_${vol}_${dT}`, T.ratesEnergy, FW.dynamics, 'hard',
+      [`在量熱杯中，${vol} cm³ 溶液的溫度因反應上升了 ${dT} °C。假設溶液密度為 1 g cm⁻³、比熱容為 4.2 J g⁻¹ °C⁻¹，該反應放出多少千焦熱量？`,
+       `In a calorimeter, ${vol} cm³ of solution rises by ${dT} °C during a reaction. Taking the density as 1 g cm⁻³ and the specific heat capacity as 4.2 J g⁻¹ °C⁻¹, how many kilojoules are released?`],
+      [n(`$${round(q, 2)}$ kJ`), n(`$${round(q * 1000, 0)}$ kJ`), n(`$${round((vol * dT) / 1000, 3)}$ kJ`), n(`$${round((4.2 * dT) / 1000, 4)}$ kJ`)],
+      [`密度為 1 g cm⁻³，故 ${vol} cm³ 溶液的質量為 ${vol} g。$Q = mc\\Delta T = ${vol} \\times 4.2 \\times ${dT} = ${round(vol * 4.2 * dT, 0)}$ J $= ${round(q, 2)}$ kJ。三個容易漏的位置：質量要用【溶液】的質量而非反應物的；單位由焦耳轉千焦要除以 1000；放熱反應的 $\\Delta H$ 為【負】而題目問的「放出多少熱量」則取正值。陷阱：$${round(q * 1000, 0)}$ kJ 漏了焦耳轉千焦；$${round((vol * dT) / 1000, 3)}$ kJ 漏了比熱容；$${round((4.2 * dT) / 1000, 4)}$ kJ 漏了質量。`,
+       `With a density of 1 g cm⁻³ the ${vol} cm³ of solution has a mass of ${vol} g. So $Q = mc\\Delta T = ${vol} \\times 4.2 \\times ${dT} = ${round(vol * 4.2 * dT, 0)}$ J $= ${round(q, 2)}$ kJ. Three easy omissions: the mass is that of the SOLUTION, not the reactants; joules must be divided by 1000 to give kilojoules; and while an exothermic reaction has a NEGATIVE $\\Delta H$, the heat released as asked for here is quoted positive. Traps: $${round(q * 1000, 0)}$ kJ omits the joule-to-kilojoule conversion; $${round((vol * dT) / 1000, 3)}$ kJ omits the specific heat capacity; $${round((4.2 * dT) / 1000, 4)}$ kJ omits the mass.`])
   }
 }
 
