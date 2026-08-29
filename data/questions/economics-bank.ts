@@ -25,6 +25,7 @@ const T = {
   macroCalc: { id: 'econ_macro_calc', zh: '宏觀計算（高階）', en: 'Macroeconomics — calculation' },
   tradeFail: { id: 'econ_trade_failure', zh: '貿易與市場失靈', en: 'Trade & market failure' },
   basics: { id: 'basic_concepts', zh: '基礎概念', en: 'Basic Concepts' },
+  marketFailure: { id: 'market_failure', zh: '市場失靈', en: 'Market Failure' },
   trade: { id: 'trade', zh: '國際貿易', en: 'International Trade' },
 } satisfies Record<string, TopicMeta>
 
@@ -401,6 +402,85 @@ for (const labour of [3000, 3600, 4000, 5000]) {
       [n(`${pct}%`), n(`${round((unemp / (labour - unemp)) * 100, 2)}%`), n(`${round(((labour - unemp) / labour) * 100, 2)}%`), n(`${efmt(unemp)}%`)],
       [`失業率 = 失業人數 ÷ 勞動人口 × 100% = ${efmt(unemp)} ÷ ${efmt(labour)} × 100% = ${pct}%。分母是【勞動人口】而非總人口：學生、退休人士與沒有求職的人並不計入勞動人口，因此失業率上升未必代表就業人數下跌，也可能是更多人重新加入勞動市場。陷阱：${round((unemp / (labour - unemp)) * 100, 2)}% 用了就業人數作分母；${round(((labour - unemp) / labour) * 100, 2)}% 算的是就業率；${efmt(unemp)}% 把人數當成百分率。`,
        `Unemployment rate = number unemployed ÷ labour force × 100% = ${efmt(unemp)} ÷ ${efmt(labour)} × 100% = ${pct}%. The denominator is the LABOUR FORCE, not the total population: students, retirees and those not seeking work are excluded, so a rising unemployment rate need not mean fewer people are employed — it can also reflect more people re-entering the labour market. Traps: ${round((unemp / (labour - unemp)) * 100, 2)}% uses the employed as the denominator; ${round(((labour - unemp) / labour) * 100, 2)}% is the employment rate; ${efmt(unemp)}% reads a headcount as a percentage.`])
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 第四批母模板 —— 平均分佈補強（2026-08-29）
+// 補強前最薄：國際貿易 17、市場失靈 18、市場結構 24、市場效率 26、
+// 生產可能線 31、基礎概念 37（平均目標 77）。廠商與生產 98 條，一條不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// TR2 — 貿易條件：兩國各自的機會成本
+for (const [aX, aY] of [[10, 20], [12, 24], [15, 30], [8, 24], [20, 40], [6, 18],
+  [10, 30], [16, 32], [9, 27], [14, 28], [12, 36], [18, 36]] as [number, number][]) {
+  const oc = aY / aX
+  if (!Number.isInteger(oc)) continue
+  add(`econ_tr2_${aX}_${aY}`, T.trade, FW.quant, 'medium',
+    [`甲國以同一份資源可生產 ${aX} 單位布匹，或 ${aY} 單位小麥。甲國每生產 1 單位布匹的機會成本是多少？`,
+     `With the same resources, Country A can produce ${aX} units of cloth or ${aY} units of wheat. What is A's opportunity cost of producing one unit of cloth?`],
+    [qty(oc, '單位小麥', 'units of wheat'), qty(round(aX / aY, 3), '單位小麥', 'units of wheat'),
+     qty(aY, '單位小麥', 'units of wheat'), qty(aY - aX, '單位小麥', 'units of wheat')],
+    [`機會成本是為了得到某物而【放棄】的最高價值選項。同一份資源可換 ${aX} 單位布匹或 ${aY} 單位小麥，故每 1 單位布匹的代價為 $\\dfrac{${aY}}{${aX}} = ${oc}$ 單位小麥。比較優勢正是由這個比率決定：機會成本較低的一方應專業生產該項貨品，而比較優勢與絕對優勢並不相同 —— 即使一國兩樣都生產得較多，仍可能在其中一樣沒有比較優勢。陷阱：${round(aX / aY, 3)} 單位是小麥【對布匹】的機會成本，方向倒轉；${aY} 單位漏了除以布匹產量；${aY - aX} 單位把兩個產量相減。`,
+     `Opportunity cost is the highest-valued alternative GIVEN UP. The same resources yield either ${aX} cloth or ${aY} wheat, so each unit of cloth costs $\\frac{${aY}}{${aX}} = ${oc}$ units of wheat. Comparative advantage turns on exactly this ratio: the country with the lower opportunity cost should specialise, and comparative advantage differs from absolute advantage — a country producing more of both may still lack comparative advantage in one. Traps: ${round(aX / aY, 3)} is the cost of wheat in terms of cloth, the reverse direction; ${aY} omits the division by cloth output; ${aY - aX} subtracts the two outputs.`])
+}
+
+// TR3 — 專業化與貿易後的總產量增益
+for (const [a1, a2] of [[20, 30], [24, 36], [30, 40], [16, 24], [40, 50], [12, 20]] as [number, number][]) {
+  for (const [b1, b2] of [[10, 25], [15, 30]] as [number, number][]) {
+    const before = a1 / 2 + b1 / 2
+    const after = a1
+    if (after <= before) continue
+    add(`econ_tr3_${a1}${a2}_${b1}${b2}`, T.trade, FW.quant, 'hard',
+      [`甲國全力生產可得 ${a1} 單位貨品 X，乙國全力生產可得 ${b1} 單位貨品 X。原本兩國各以一半資源生產 X，總產量為 ${before} 單位。若甲國完全專業生產 X，X 的總產量會增加多少單位？`,
+       `Country A can make ${a1} units of good X using all its resources, and Country B can make ${b1}. Initially each devotes half its resources to X, giving a total of ${before} units. If A specialises fully in X, by how many units does total output of X rise?`],
+      [qty(after - before, '單位', 'units'), qty(after, '單位', 'units'),
+       qty(before, '單位', 'units'), qty(a1 + b1, '單位', 'units')],
+      [`專業化前的總產量為 $\\dfrac{${a1}}{2} + \\dfrac{${b1}}{2} = ${before}$ 單位；甲國完全專業生產 X 之後，X 的產量為 ${a1} 單位（乙國轉為全力生產另一貨品）。增益 $= ${after} - ${before} = ${after - before}$ 單位。這正是專業化與貿易的核心：按比較優勢分工令總產出上升，各國再透過交換分享增益，因此貿易並非零和。陷阱：${after} 單位是專業化【後】的產量而非增益；${before} 單位是專業化前的產量；${a1 + b1} 單位假設兩國同時全力生產 X，但那樣就沒有人生產另一種貨品。`,
+       `Before specialisation the total is $\\frac{${a1}}{2} + \\frac{${b1}}{2} = ${before}$ units; after A specialises fully in X, output of X is ${a1} units, with B switching entirely to the other good. The gain is $${after} - ${before} = ${after - before}$ units. This is the core of specialisation and trade: dividing production by comparative advantage raises total output, and exchange then shares the gain, so trade is not zero-sum. Traps: ${after} is output AFTER specialising rather than the gain; ${before} is output before; ${a1 + b1} assumes both countries make only X, leaving no one to produce the other good.`])
+  }
+}
+
+// MF1 — 徵稅後的無謂損失（線性供求，三角形面積）
+for (const tax of [2, 4, 6, 8, 10]) {
+  for (const dq of [10, 20, 30, 40]) {
+    const dwl = (tax * dq) / 2
+    add(`econ_mf1_${tax}_${dq}`, T.marketFailure, FW.quant, 'hard',
+      [`政府對某貨品每單位徵收 ${tax} 元稅款，令成交量由原來的水平下跌 ${dq} 單位。假設供求曲線皆為直線，這項稅款造成的無謂損失是多少？`,
+       `A tax of \\$${tax} per unit reduces the quantity traded by ${dq} units. Assuming linear demand and supply, what is the deadweight loss?`],
+      [money(String(dwl)), money(String(tax * dq)), money(String(dq)), money(String(tax))],
+      [`無謂損失是那些「買賣雙方原本都願意成交、徵稅後卻沒有發生」的交易所損失的剩餘。在直線供求之下，它是一個三角形：底為成交量的減少 ${dq} 單位，高為稅額 ${tax} 元，面積 $= \\dfrac{1}{2} \\times ${dq} \\times ${tax} = ${dwl}$ 元。留意無謂損失並非政府稅收 —— 稅收是仍然成交那部分的轉移，無謂損失則是【無人得到】的淨損失。陷阱：${tax * dq} 元漏了乘二分之一，算成長方形；${dq} 元與 ${tax} 元分別只取了三角形的底與高。`,
+       `Deadweight loss is the surplus lost on trades that both sides would have been willing to make but which the tax prevents. With linear curves it is a triangle whose base is the fall in quantity, ${dq} units, and whose height is the tax, \\$${tax}, giving $\\frac{1}{2} \\times ${dq} \\times ${tax} = \\$${dwl}$. Note that deadweight loss is not tax revenue: revenue is a transfer on the trades that still occur, while deadweight loss is a net loss that NO ONE receives. Traps: \\$${tax * dq} omits the one-half and treats it as a rectangle; \\$${dq} and \\$${tax} are merely the base and the height.`])
+  }
+}
+
+// MK2 — 消費者剩餘（線性需求下的三角形）
+for (const pmax of [50, 60, 80, 100, 120]) {
+  for (const p of [20, 30, 40]) {
+    if (p >= pmax) continue
+    for (const q of [20, 40]) {
+      const cs = ((pmax - p) * q) / 2
+      add(`econ_mk2_${pmax}_${p}_${q}`, T.market, FW.quant, 'hard',
+        [`某市場的需求曲線為直線，價格為 ${pmax} 元時需求量為零，現行市價為 ${p} 元，對應的成交量為 ${q} 單位。消費者剩餘是多少？`,
+         `A market has a linear demand curve on which quantity demanded is zero at a price of \\$${pmax}. At the current price of \\$${p} the quantity traded is ${q} units. What is the consumer surplus?`],
+        [money(String(cs)), money(String((pmax - p) * q)), money(String(p * q)), money(String(pmax - p))],
+        [`消費者剩餘是「願意付出的最高價」與「實際付出的價格」之間的差額總和。在直線需求之下，它是需求曲線與市價線之間的三角形：底為成交量 ${q} 單位，高為 $${pmax} - ${p} = ${pmax - p}$ 元，面積 $= \\dfrac{1}{2} \\times ${q} \\times ${pmax - p} = ${cs}$ 元。陷阱：${(pmax - p) * q} 元漏了乘二分之一；${p * q} 元是消費者的總支出；${pmax - p} 元只是第一單位的剩餘。`,
+         `Consumer surplus is the total gap between what buyers are willing to pay and what they actually pay. With linear demand it is the triangle between the demand curve and the price line: base ${q} units, height $${pmax} - ${p} = ${pmax - p}$, so the area is $\\frac{1}{2} \\times ${q} \\times ${pmax - p} = \\$${cs}$. Traps: \\$${(pmax - p) * q} omits the one-half; \\$${p * q} is total expenditure; \\$${pmax - p} is the surplus on the first unit alone.`])
+    }
+  }
+}
+
+// BC2 — 基礎概念：機會成本（顯性與隱性成本）
+for (const wage of [8000, 10000, 12000, 15000, 20000]) {
+  for (const explicit of [3000, 5000, 8000]) {
+    const total = wage + explicit
+    add(`econ_bc2_${wage}_${explicit}`, T.basics, FW.quant, 'medium',
+      [`某人辭去月薪 ${wage.toLocaleString('en-US')} 元的工作去創業，每月另付租金與材料等開支 ${explicit.toLocaleString('en-US')} 元。以經濟學的角度，他每月經營這門生意的總成本是多少？`,
+       `Someone leaves a job paying \\$${wage.toLocaleString('en-US')} a month to start a business, paying a further \\$${explicit.toLocaleString('en-US')} a month in rent and materials. In economic terms, what is the total monthly cost of running the business?`],
+      [money(total.toLocaleString('en-US')), money(explicit.toLocaleString('en-US')),
+       money(wage.toLocaleString('en-US')), money((wage - explicit).toLocaleString('en-US'))],
+      [`經濟成本 = 顯性成本 ＋ 隱性成本。顯性成本是實際付出的 ${explicit.toLocaleString('en-US')} 元；隱性成本是放棄的最高價值選項，即原本每月 ${wage.toLocaleString('en-US')} 元的薪金。兩者相加得 ${total.toLocaleString('en-US')} 元。會計只計顯性成本，因此會計利潤往往高於經濟利潤 —— 這個分別正是「賺錢」與「值得做」兩件事的分野。陷阱：${explicit.toLocaleString('en-US')} 元只計了會計成本，漏了放棄的薪金；${wage.toLocaleString('en-US')} 元只計隱性成本；${(wage - explicit).toLocaleString('en-US')} 元把兩者相減。`,
+       `Economic cost equals explicit cost plus implicit cost. The explicit cost is the \\$${explicit.toLocaleString('en-US')} actually paid; the implicit cost is the highest-valued alternative forgone, namely the \\$${wage.toLocaleString('en-US')} monthly salary. Together they come to \\$${total.toLocaleString('en-US')}. Accounting counts only explicit costs, which is why accounting profit typically exceeds economic profit — and that difference is precisely the difference between making money and being worth doing. Traps: \\$${explicit.toLocaleString('en-US')} is the accounting cost and omits the forgone salary; \\$${wage.toLocaleString('en-US')} counts only the implicit cost; \\$${(wage - explicit).toLocaleString('en-US')} subtracts one from the other.`])
   }
 }
 
