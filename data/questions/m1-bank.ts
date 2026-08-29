@@ -535,6 +535,86 @@ for (const nn of [2, 3, 4, 5]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第四批母模板 —— 推向 1,000（2026-08-29）
+// 微分 142 條已遠高於平均，一條不動；其餘十一個課題由 42–84 補向約 78。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// PC2 — 排列 nPr（有次序之分）
+for (const nn of [5, 6, 7, 8, 9, 10]) {
+  for (const r of [2, 3]) {
+    const p = fact(nn) / fact(nn - r)
+    add(`m1d_pc2_${nn}_${r}`, T.permComb, FW.decompose, 'medium',
+      [`從 ${nn} 名學生之中選出 ${r} 名，分別擔任主席與秘書等【不同】職位。共有多少種安排？`,
+       `From ${nn} students, ${r} are chosen to fill ${r} DISTINCT posts such as chair and secretary. How many arrangements are there?`],
+      [n(`$${p}$`), n(`$${nCr(nn, r)}$`), n(`$${nn ** r}$`), n(`$${nn * r}$`)],
+      [`職位不同，即次序有分別，屬排列：$P^{${nn}}_{${r}} = \\dfrac{${nn}!}{(${nn}-${r})!} = ${p}$。陷阱：$${nCr(nn, r)}$ 是組合 $\\binom{${nn}}{${r}}$，適用於「不分職位」的情況 —— 排列比組合多出 $${r}!$ 倍，正是同一組人排出不同職位的種數；$${nn ** r}$ 容許同一人擔任多個職位（有放回）；$${nn * r}$ 把兩數相乘。`,
+       `Distinct posts mean order matters, so this is a permutation: $P^{${nn}}_{${r}} = \\frac{${nn}!}{(${nn}-${r})!} = ${p}$. Traps: $${nCr(nn, r)}$ is the combination $\\binom{${nn}}{${r}}$, which applies when the posts are not distinguished — a permutation exceeds it by the factor $${r}!$, the number of ways one chosen group can fill the posts; $${nn ** r}$ allows one person to hold several posts, as if with replacement; $${nn * r}$ merely multiplies.`])
+  }
+}
+
+// PC3 — 圓形排列 (n − 1)!
+for (const nn of [4, 5, 6, 7, 8]) {
+  add(`m1d_pc3_${nn}`, T.permComb, FW.decompose, 'hard',
+    [`${nn} 個人圍着圓桌就座，只考慮相對位置（旋轉後相同的座位安排視為同一種）。共有多少種坐法？`,
+     `${nn} people sit around a round table, with arrangements that differ only by rotation counted as the same. How many seatings are there?`],
+    [n(`$${fact(nn - 1)}$`), n(`$${fact(nn)}$`), n(`$${fact(nn - 2)}$`), n(`$${fact(nn) / 2}$`)],
+    [`圓形排列先固定其中一人作參照點以消去旋轉造成的重複，餘下 $${nn} - 1 = ${nn - 1}$ 人作直線排列，故共 $(${nn}-1)! = ${fact(nn - 1)}$ 種。陷阱：$${fact(nn)}$ 是直線排列，把 $${nn}$ 種只差旋轉的座位重複計算了；$${fact(nn - 2)}$ 多固定了一個人；$${fact(nn) / 2}$ 用了「翻轉亦視為相同」的除以 2，但本題只說旋轉，並未提及翻轉。`,
+     `A circular arrangement first fixes one person as a reference to remove rotational duplicates, leaving $${nn} - 1 = ${nn - 1}$ people to arrange in a line, giving $(${nn}-1)! = ${fact(nn - 1)}$. Traps: $${fact(nn)}$ is the linear count and double-counts each seating $${nn}$ times over its rotations; $${fact(nn - 2)}$ fixes one person too many; $${fact(nn) / 2}$ divides by 2 for reflections, which the question does not mention.`])
+}
+
+// PC4 — 有重複字母的排列
+;([['LEVEL', 5, 4], ['BANANA', 6, 12], ['SUCCESS', 7, 24], ['LETTER', 6, 4],
+  ['COFFEE', 6, 4], ['MAMMAL', 6, 12], ['ARRANGE', 7, 4], ['STATISTICS', 10, 48]] as [string, number, number][])
+  .forEach(([word, len, div]) => {
+    const ans = fact(len) / div
+    add(`m1d_pc4_${word}`, T.permComb, FW.decompose, 'hard',
+      [`把英文字「${word}」的所有字母重新排列，可組成多少個不同的字串？`,
+       `In how many distinguishable ways can the letters of the word ${word} be rearranged?`],
+      [n(`$${ans}$`), n(`$${fact(len)}$`), n(`$${Math.round(fact(len) / (div * 2))}$`), n(`$${fact(len - 1)}$`)],
+      [`若 $${len}$ 個字母全部相異，排法為 $${len}! = ${fact(len)}$ 種。但「${word}」有重複字母，交換相同字母並不產生新字串，故須除以各組重複字母個數的階乘之積（此處為 $${div}$），得 $\\dfrac{${fact(len)}}{${div}} = ${ans}$。陷阱：$${fact(len)}$ 完全沒有處理重複；$${Math.round(fact(len) / (div * 2))}$ 多除了一次；$${fact(len - 1)}$ 錯用了圓形排列的公式。`,
+       `If all $${len}$ letters were distinct there would be $${len}! = ${fact(len)}$ arrangements. Because ${word} repeats letters, swapping identical letters produces no new string, so the count is divided by the product of the factorials of the repeat counts — here $${div}$ — giving $\\frac{${fact(len)}}{${div}} = ${ans}$. Traps: $${fact(len)}$ ignores the repetition entirely; $${Math.round(fact(len) / (div * 2))}$ divides once too often; $${fact(len - 1)}$ applies the circular-arrangement formula.`])
+  })
+
+// PR1 — 條件概率 P(A|B) = P(A∩B) / P(B)
+for (const [both, b] of [[1, 4], [1, 3], [2, 5], [1, 6], [3, 8], [2, 7], [3, 10], [1, 5],
+  [2, 9], [4, 9], [3, 7], [5, 12]] as [number, number][]) {
+  if (both >= b) continue
+  add(`m1d_pr1_${both}_${b}`, T.probDist, FW.stats, 'hard',
+    [`已知 $P(A \\cap B) = ${frac(both, 20)}$、$P(B) = ${frac(b, 20)}$。求 $P(A \\mid B)$。`,
+     `Given $P(A \\cap B) = ${frac(both, 20)}$ and $P(B) = ${frac(b, 20)}$, find $P(A \\mid B)$.`],
+    [n(`$${frac(both, b)}$`), n(`$${frac(b, both)}$`), n(`$${frac(both, 20)}$`), n(`$${frac(both * b, 400)}$`)],
+    [`條件概率 $P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{${frac(both, 20)}}{${frac(b, 20)}} = ${frac(both, b)}$。分母是【給定條件】那個事件的概率 —— 意思是把樣本空間縮窄至 $B$ 已經發生的情況。陷阱：$${frac(b, both)}$ 把分子分母倒轉，求了 $P(B \\mid A)$ 的形式；$${frac(both, 20)}$ 只抄了 $P(A \\cap B)$；$${frac(both * b, 400)}$ 把兩個概率相乘，那是【獨立】事件求交集的算法，方向剛好相反。`,
+     `Conditional probability is $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{${frac(both, 20)}}{${frac(b, 20)}} = ${frac(both, b)}$. The denominator is the probability of the CONDITIONING event, which amounts to restricting the sample space to the case that $B$ has occurred. Traps: $${frac(b, both)}$ inverts the fraction and gives the form of $P(B \\mid A)$; $${frac(both, 20)}$ copies $P(A \\cap B)$; $${frac(both * b, 400)}$ multiplies the probabilities, which is how an intersection is found for INDEPENDENT events and runs the other way.`])
+}
+
+// PR2 — 互斥事件的加法定律與補事件
+for (const [a, b] of [[3, 5], [2, 7], [4, 9], [1, 6], [5, 12], [3, 8], [2, 9], [7, 20],
+  [3, 10], [1, 4], [5, 16], [3, 14]] as [number, number][]) {
+  const num = a + b
+  if (num >= 20) continue
+  add(`m1d_pr2_${a}_${b}`, T.probDist, FW.stats, 'medium',
+    [`兩個【互斥】事件的概率分別為 $${frac(a, 20)}$ 與 $${frac(b, 20)}$。兩者【皆不發生】的概率是多少？`,
+     `Two MUTUALLY EXCLUSIVE events have probabilities $${frac(a, 20)}$ and $${frac(b, 20)}$. What is the probability that NEITHER occurs?`],
+    [n(`$${frac(20 - num, 20)}$`), n(`$${frac(num, 20)}$`), n(`$${frac(a * b, 400)}$`), n(`$${frac(20 - a, 20)}$`)],
+    [`互斥即兩者不能同時發生，故「其中之一發生」的概率為兩者相加：$${frac(a, 20)} + ${frac(b, 20)} = ${frac(num, 20)}$。「皆不發生」是它的補事件，用 1 減去：$1 - ${frac(num, 20)} = ${frac(20 - num, 20)}$。陷阱：$${frac(num, 20)}$ 是「其中之一發生」，忘記取補；$${frac(a * b, 400)}$ 把兩者相乘，但互斥事件的交集概率為零，相乘在此並不適用；$${frac(20 - a, 20)}$ 只處理了其中一個事件。`,
+     `Mutually exclusive means the two cannot occur together, so the probability that EITHER occurs is their sum: $${frac(a, 20)} + ${frac(b, 20)} = ${frac(num, 20)}$. "Neither" is the complement of that, so subtract from 1: $1 - ${frac(num, 20)} = ${frac(20 - num, 20)}$. Traps: $${frac(num, 20)}$ is "either occurs" and omits the complement; $${frac(a * b, 400)}$ multiplies, but mutually exclusive events have zero intersection so multiplication does not apply; $${frac(20 - a, 20)}$ handles only one of the events.`])
+}
+
+// EL3 — 指數與對數函數的積分
+for (const k of [2, 3, 4, 5]) {
+  add(`m1d_el3a_${k}`, T.expLog, FW.calc, 'medium',
+    [`求 $\\displaystyle\\int ${k}e^{${k}x}\\,dx$。`, `Evaluate $\\displaystyle\\int ${k}e^{${k}x}\\,dx$.`],
+    [n(`$e^{${k}x} + C$`), n(`$${k}e^{${k}x} + C$`), n(`$${frac(1, k)}e^{${k}x} + C$`), n(`$${k * k}e^{${k}x} + C$`)],
+    [`$\\int e^{kx}dx = \\dfrac{1}{k}e^{kx} + C$。此處被積函數前已有係數 $${k}$，與 $\\dfrac{1}{${k}}$ 恰好抵銷，故答案為 $e^{${k}x} + C$。不定積分必須寫上積分常數 $C$，這是它與定積分最基本的分別。陷阱：$${k}e^{${k}x} + C$ 漏了連鎖法則帶來的 $\\dfrac{1}{${k}}$；$${frac(1, k)}e^{${k}x} + C$ 多除了一次；$${k * k}e^{${k}x} + C$ 把係數乘了兩次。`,
+     `Since $\\int e^{kx}dx = \\frac{1}{k}e^{kx} + C$, and the integrand already carries the factor $${k}$, the two cancel exactly to give $e^{${k}x} + C$. An indefinite integral must carry the constant $C$, which is the most basic difference from a definite integral. Traps: $${k}e^{${k}x} + C$ drops the $\\frac{1}{${k}}$ from the chain rule; $${frac(1, k)}e^{${k}x} + C$ divides once too often; $${k * k}e^{${k}x} + C$ applies the coefficient twice.`])
+  add(`m1d_el3b_${k}`, T.expLog, FW.calc, 'medium',
+    [`求 $\\dfrac{d}{dx}\\left[\\ln(${k}x)\\right]$。`, `Find $\\frac{d}{dx}\\left[\\ln(${k}x)\\right]$.`],
+    [n(`$\\dfrac{1}{x}$`), n(`$\\dfrac{${k}}{x}$`), n(`$\\dfrac{1}{${k}x}$`), n(`$${k}\\ln x$`)],
+    [`由連鎖法則，$\\dfrac{d}{dx}\\ln(${k}x) = \\dfrac{1}{${k}x} \\times ${k} = \\dfrac{1}{x}$。亦可先用對數法則化簡：$\\ln(${k}x) = \\ln ${k} + \\ln x$，而 $\\ln ${k}$ 是常數，求導後只剩 $\\dfrac{1}{x}$ —— 兩條路殊途同歸，正好互相驗算。留意常數倍數在對數內部並不影響導數。陷阱：$\\dfrac{${k}}{x}$ 把係數留了在分子；$\\dfrac{1}{${k}x}$ 漏了乘內層導數；$${k}\\ln x$ 根本未求導。`,
+     `By the chain rule $\\frac{d}{dx}\\ln(${k}x) = \\frac{1}{${k}x} \\times ${k} = \\frac{1}{x}$. Alternatively simplify first: $\\ln(${k}x) = \\ln ${k} + \\ln x$, and since $\\ln ${k}$ is constant only $\\frac{1}{x}$ survives — the two routes agree and check each other. Note that a constant multiple inside a logarithm does not affect the derivative. Traps: $\\frac{${k}}{x}$ keeps the coefficient in the numerator; $\\frac{1}{${k}x}$ omits the inner derivative; $${k}\\ln x$ has not been differentiated at all.`])
+}
+
 export const m1BankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
