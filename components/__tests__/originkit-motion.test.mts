@@ -81,6 +81,21 @@ test('過衝（back）曲線只准出現喺成就彈窗一處 —— P1-7-R2 全
   assert.equal(overshoot.length, 1, `過衝曲線只准一條（成就彈窗），實際 ${overshoot.length} 條`)
   // 而且必須就係 .achievement-pop 用嗰條
   assert.match(ruleBody('.achievement-pop {'), /cubic-bezier\(0\.34,\s*1\.56,\s*0\.64,\s*1\)/)
+
+  // `linear()` 寫嘅彈簧曲線一樣可以過衝（任何一點 > 1 就係），而上面條
+  // regex 只認 cubic-bezier —— 即係話用 linear() 就可以靜靜雞繞過成條禁令。
+  // 2026-08-29 補呢一段：嗰日加 --ease-spring-* 嗰陣先發現呢個窿。
+  // 落閘前影響統計（憲章 §6）：當時全站得 1 條 linear()（--ease-spring-settle，
+  // 臨界阻尼，最大值 1.0000），所以收緊呢道閘對現有 CSS【零影響】。
+  const springOver = [...LIVE.matchAll(/linear\(([\d.,\s]+)\)/g)]
+    .map((m) => ({ peak: Math.max(...m[1].split(',').map(Number)), src: m[0].slice(0, 32) }))
+    .filter((x) => x.peak > 1)
+  assert.deepEqual(
+    springOver.map((x) => `${x.src}… 峰值 ${x.peak}`),
+    [],
+    'linear() 彈簧曲線過衝 = bounce，同 cubic-bezier 過衝一樣受 P1-7-R2 管轄。' +
+      '要開例請跟 §1.4 成就彈窗嘅做法：創辦人裁決 + 連呢個測試一齊改。',
+  )
 })
 
 test('規格書明訂嘅數值唔可以飄走：×5 連擊 5s、焦慮 40s', () => {

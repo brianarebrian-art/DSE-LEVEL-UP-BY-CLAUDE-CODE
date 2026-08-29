@@ -34,7 +34,7 @@ function MetallicRing({ progress, label }: { progress: number; label: string }) 
         strokeLinecap="round" strokeDasharray={C}
         strokeDashoffset={C * (1 - progress)}
         transform="rotate(-90 40 40)"
-        style={{ transition: 'stroke-dashoffset 500ms ease-out' }}
+        style={{ transition: 'stroke-dashoffset 700ms var(--ease-spring-settle)' }}
       />
       {/* 裝飾外環（會轉，SEN／reduced-motion 之下停）*/}
       <circle
@@ -81,7 +81,7 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
               <div className="mt-2.5 h-1.5 rounded-full bg-surface-sunken overflow-hidden">
                 <div
                   className="h-full rounded-full bg-accent"
-                  style={{ width: `${Math.round(a.progress * 100)}%`, transition: 'width 500ms ease-out' }}
+                  style={{ width: `${Math.round(a.progress * 100)}%`, transition: 'width 700ms var(--ease-spring-settle)' }}
                 />
               </div>
               <p className="text-[11px] text-ink-muted mt-1.5" style={{ fontVariantNumeric: 'tabular-nums' }}>

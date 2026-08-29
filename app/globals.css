@@ -227,7 +227,13 @@ body {
    曲線：標準 = cubic-bezier(0.4,0,0.2,1)（Tailwind transition-* 預設已係佢）；
    進場 = cubic-bezier(0,0,0.2,1)；離場 = cubic-bezier(0.4,0,1,1)。
    時長層次：微交互 150ms／組件狀態 200ms／彈窗 250ms／頁面切換 300ms。
-   禁止 bounce／elastic —— pop-in 舊有嘅 1.1 過衝（back 曲線）已移除。 */
+   禁止 bounce／elastic —— pop-in 舊有嘅 1.1 過衝（back 曲線）已移除。
+
+   2026-08-29 補註：本檔下方新增咗一條【彈簧曲線】（--ease-spring-settle）。
+   呢條規則冇改 —— `--ease-spring-settle` 係臨界阻尼，數學上過衝為零，
+   所以 pop-in／slide-up／練習頁回饋改用佢【冇違反】本規則，只係由
+   人手畫嘅 cubic-bezier 換成物理算出嚟嘅減速曲線。
+   會過衝嘅彈簧曲線【冇】加入 —— 詳見下方彈簧曲線一節嘅說明。 */
 @keyframes pop-in {
   0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
@@ -244,11 +250,11 @@ body {
 }
 
 .animate-pop-in {
-  animation: pop-in 0.25s cubic-bezier(0, 0, 0.2, 1) forwards;
+  animation: pop-in 0.32s var(--ease-spring-settle) forwards;
 }
 
 .animate-slide-up {
-  animation: slide-up 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+  animation: slide-up 0.38s var(--ease-spring-settle) forwards;
 }
 
 
@@ -597,7 +603,7 @@ html[data-bottomnav='on'] {
   transform: translate(-50%, -50%);
   pointer-events: none;
   background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, transparent 70%);
-  animation: shockwave-expand 600ms ease-out forwards;
+  animation: shockwave-expand 600ms var(--ease-spring-settle) forwards;
 }
 @keyframes shockwave-expand {
   from { width: 0; height: 0; opacity: 1; }
@@ -615,7 +621,7 @@ html[data-bottomnav='on'] {
 /* 答對：輕柔綠色脈衝。用 box-shadow 擴散，不改動 layout，不觸發 reflow。
    峰值透明度 0.30 —— 屬「察覺得到但不奪目」的層級，非慶祝式閃光。 */
 .pulse-correct {
-  animation: pulse-correct 600ms ease-out forwards;
+  animation: pulse-correct 600ms var(--ease-spring-settle) forwards;
 }
 @keyframes pulse-correct {
   0% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.30); }
@@ -692,6 +698,36 @@ html[data-bottomnav='on'] {
   to { transform: rotate(360deg); }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   彈簧曲線 —— 2026-08-29
+   ---------------------------------------------------------------------------
+   點解要有：全站原本嘅緩動全部係 cubic-bezier，佢冇「重量感」——
+   一件嘢由 A 移到 B，速度曲線係人手畫出嚟嘅，唔係物理算出嚟。
+   CSS `linear()` 可以直接鋪一條【阻尼彈簧】嘅位移曲線，行為同動畫庫嘅
+   spring() 一樣，但係原生 CSS —— 零套件、零位元組（憲章 §5 唔准新增套件）。
+
+   得一條曲線：
+     --ease-spring-settle   ζ=1.00  臨界阻尼 —— 【零過衝】，全站通用
+
+   ⚠️ 原本仲有 bounce（ζ=0.45，過衝 1.202）同 soft（ζ=0.62，過衝 1.083），
+      已經剷走。點解：`components/__tests__/originkit-motion.test.mts:77`
+      逐字鎖死【全站只准一條過衝曲線，而且必須就係成就彈窗嗰條】。
+      憲章 §8.1 雖然 2026-08-22 解禁咗遊戲化，但 P1-7-R2 呢條全站禁令
+      至今只開過一次例（§1.4 成就彈窗，CEO 拍板）。要再開，應該同上次一樣
+      由創辦人裁決，然後連埋測試一齊改 —— 唔係喺實作度靜靜雞繞過去。
+
+      （順帶一提：`linear()` 寫嘅彈簧就算過衝，舊版測試都掃唔到，
+      因為佢只認 cubic-bezier。已經補咗 —— 見同一個測試檔。）
+
+   舊瀏覽器：`linear()` 唔識就會跌返前一行嘅 cubic-bezier（漸進增強）。
+   三條曲線全部係一次性動畫，冇 `infinite`，所以唔會觸及 WCAG 2.3.1
+   每秒三閃嘅上限（lib/__tests__/sen-accessibility.test.mts）。
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --ease-spring-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring-settle: linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000);
+}
+
 /* ── §1.4 成就彈窗（唯一獲准使用 back 曲線嘅位置）──────────────────────
    ⚠️ globals.css 上方 P1-7-R2（Leo 2026-07-16）訂明【全站禁止 bounce／
       elastic】，pop-in 嘅 1.1 過衝當時已刻意剷走。規格書 §1.4 要求成就彈窗
@@ -705,6 +741,22 @@ html[data-bottomnav='on'] {
 @keyframes achievement-pop {
   from { transform: scale(0.85); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* ── 減壓緩衝區入場（.relax-in）—— 2026-08-29 ────────────────────────────
+   用 --ease-spring-settle（臨界阻尼，零過衝）。減壓區嘅動作要似
+   「輕輕落定」，唔係「彈出嚟慶祝」，所以就算將來 bounce 開咗例，
+   呢度都唔應該轉 —— 語意唔啱。
+
+   --relax-in-delay 由呼叫方逐張卡遞增（stagger）。上限刻意封死喺 4 張卡，
+   再多就會變成等動畫行完先用得到，對 ADHD 考生尤其煩。 */
+.relax-in {
+  animation: relax-in 520ms var(--ease-spring-settle) both;
+  animation-delay: var(--relax-in-delay, 0ms);
+}
+@keyframes relax-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── 降級 1：Light 主題不套用霓虹裝飾層 ────────────────────────────────
@@ -753,6 +805,7 @@ html.font-easy .radar-grow {
    熄嘅只係佢點樣出現。
    刻意【唔】收 .hourglass-stream：沙漏個沙流係 60 秒鎖嘅時間讀數，
    凍住佢等於攞走一個功能性指示，唔屬於裝飾層。 */
+html.font-easy .relax-in,
 html.font-easy .animate-slide-up,
 html.font-easy .animate-pop-in,
 html.font-easy .skeleton,
@@ -782,7 +835,8 @@ html.font-easy .cmd-hl {
   .pulse-correct,
   .blindspot-in,
   .ring-draw,
-  .radar-grow {
+  .radar-grow,
+  .relax-in {
     animation: none !important;
     transform: none !important;
     box-shadow: none !important;
