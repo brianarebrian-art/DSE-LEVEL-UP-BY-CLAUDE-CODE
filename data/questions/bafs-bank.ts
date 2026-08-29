@@ -449,6 +449,78 @@ for (const open of [20000, 35000, 50000]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第四批母模板 —— 平均分佈補強（2026-08-29）
+// 補強前最薄：折舊 21、成本與定價 24、利息 32、財務管理 36、財務報表 43。
+// 商業環境（24）與管理（25）屬概念型課題，不適用本工廠，此處不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// DP5 — 折舊：年中購入需按月比例計算
+for (const cost of [60000, 96000, 120000, 144000, 240000]) {
+  for (const life of [4, 5, 6]) {
+    for (const months of [3, 6, 9]) {
+      const annual = cost / life
+      const charge = (annual * months) / 12
+      if (!Number.isInteger(charge)) continue
+      add(`bafs_dp5_${cost}_${life}_${months}`, T.depreciation, FW.acct, 'hard',
+        [`一項成本 ${fmt(cost)} 元、無殘值的資產，可使用 ${life} 年，採用直線法。若該資產在會計年度內只使用了 ${months} 個月，本年度應計提的折舊是多少？`,
+         `An asset costing \\$${fmt(cost)} with no residual value is depreciated straight-line over ${life} years. If it was in use for only ${months} months of the accounting year, what is this year's depreciation charge?`],
+        [money(fmt(charge)), money(fmt(annual)), money(fmt(cost / months)), money(fmt((cost * months) / 12))],
+        [`全年折舊 = ${fmt(cost)} ÷ ${life} = ${fmt(annual)} 元。資產只使用了 ${months} 個月，按月比例計提：${fmt(annual)} × ${months}/12 = ${fmt(charge)} 元。折舊反映的是資產在【本期】所耗用的經濟利益，未持有的月份自然不應計提，這是配比原則的直接應用。陷阱：${fmt(annual)} 元計了全年；${fmt(cost / months)} 元用成本除以月數，漏了可使用年期；${fmt((cost * months) / 12)} 元漏了先除以年期。`,
+         `The full-year charge is \\$${fmt(cost)} ÷ ${life} = \\$${fmt(annual)}. With only ${months} months of use, the charge is apportioned: \\$${fmt(annual)} × ${months}/12 = \\$${fmt(charge)}. Depreciation measures the economic benefit consumed IN THE PERIOD, so months before acquisition carry no charge — a direct application of the matching principle. Traps: \\$${fmt(annual)} charges a full year; \\$${fmt(cost / months)} divides cost by months and ignores the useful life; \\$${fmt((cost * months) / 12)} omits the division by the life.`])
+    }
+  }
+}
+
+// CS1 — 成本與定價：目標利潤下的售價
+for (const unitCost of [40, 60, 80, 120, 150]) {
+  for (const marginPct of [20, 25, 40, 50]) {
+    const price = (unitCost * 100) / (100 - marginPct)
+    if (!Number.isInteger(price)) continue
+    add(`bafs_cs1_${unitCost}_${marginPct}`, T.costing, FW.quant, 'hard',
+      [`某貨品的單位成本為 ${unitCost} 元。若要令【毛利率】達到 ${marginPct}%（以售價為基數），售價應訂為多少？`,
+       `A product costs \\$${unitCost} per unit. What selling price gives a GROSS MARGIN of ${marginPct}% (measured on the selling price)?`],
+      [money(fmt(price)), money(fmt((unitCost * (100 + marginPct)) / 100)), money(fmt(unitCost + marginPct)), money(fmt((unitCost * 100) / marginPct))],
+      [`毛利率以【售價】為基數，故成本佔售價的 $100\\% - ${marginPct}\\% = ${100 - marginPct}\\%$。設售價為 $P$：$${unitCost} = P \\times ${100 - marginPct}\\%$，得 $P = \\dfrac{${unitCost}}{${(100 - marginPct) / 100}} = ${fmt(price)}$ 元。要分清【加成率】以成本為基數、【毛利率】以售價為基數 —— 同一個百分率，兩者算出的售價並不相同。陷阱：${fmt((unitCost * (100 + marginPct)) / 100)} 元用了加成率的算法；${fmt(unitCost + marginPct)} 元把百分率當成金額；${fmt((unitCost * 100) / marginPct)} 元把基數弄反。`,
+       `A gross margin is measured on the SELLING PRICE, so cost is $100\\% - ${marginPct}\\% = ${100 - marginPct}\\%$ of price. Writing $P$ for the price, $${unitCost} = P \\times ${100 - marginPct}\\%$, so $P = \\frac{${unitCost}}{${(100 - marginPct) / 100}} = \\$${fmt(price)}$. Distinguish MARK-UP, based on cost, from MARGIN, based on price: the same percentage gives different prices. Traps: \\$${fmt((unitCost * (100 + marginPct)) / 100)} applies the mark-up method; \\$${fmt(unitCost + marginPct)} treats the percentage as an amount; \\$${fmt((unitCost * 100) / marginPct)} inverts the base.`])
+  }
+}
+
+// IN4 — 利息：分期付款的總付款額與利息
+for (const principal of [12000, 24000, 36000, 60000]) {
+  for (const months of [12, 24, 36]) {
+    for (const ratePct of [5, 10]) {
+      const interest = (principal * ratePct * (months / 12)) / 100
+      const total = principal + interest
+      const monthly = total / months
+      if (!Number.isInteger(monthly)) continue
+      add(`bafs_in4_${principal}_${months}_${ratePct}`, T.interest, FW.finance, 'medium',
+        [`借入 ${fmt(principal)} 元，年利率 ${ratePct}%（單利），分 ${months} 個月等額償還。每月還款額是多少？`,
+         `\\$${fmt(principal)} is borrowed at ${ratePct}% simple interest per year and repaid in ${months} equal monthly instalments. What is each instalment?`],
+        [money(fmt(monthly)), money(fmt(principal / months)), money(fmt(interest / months)), money(fmt(total))],
+        [`先求利息：${fmt(principal)} × ${ratePct}% × ${months / 12} 年 = ${fmt(interest)} 元。總還款額 = 本金 ＋ 利息 = ${fmt(total)} 元，除以 ${months} 期得每月 ${fmt(monthly)} 元。留意實際年利率會高於名義的 ${ratePct}% —— 因為本金隨着還款逐月減少，但單利算法仍按全額計息，這正是比較借貸產品時要看實際年利率的原因。陷阱：${fmt(principal / months)} 元只還本金而不計利息；${fmt(interest / months)} 元只還利息；${fmt(total)} 元是總額而非每期。`,
+         `First the interest: \\$${fmt(principal)} × ${ratePct}% × ${months / 12} years = \\$${fmt(interest)}. Total repayable = principal + interest = \\$${fmt(total)}, and dividing by ${months} instalments gives \\$${fmt(monthly)} a month. Note the effective annual rate exceeds the nominal ${ratePct}%, because the outstanding balance falls each month while simple interest is charged on the full amount throughout — which is why borrowing products should be compared on effective rates. Traps: \\$${fmt(principal / months)} repays principal only; \\$${fmt(interest / months)} repays interest only; \\$${fmt(total)} is the total rather than an instalment.`])
+    }
+  }
+}
+
+// FS2 — 財務報表：由試算表項目求淨利
+for (const revenue of [200000, 350000, 500000, 800000]) {
+  for (const cogsPct of [50, 60, 70]) {
+    for (const expPct of [10, 20]) {
+      const cogs = (revenue * cogsPct) / 100
+      const exp = (revenue * expPct) / 100
+      const net = revenue - cogs - exp
+      add(`bafs_fs2_${revenue}_${cogsPct}_${expPct}`, T.statements, FW.acct, 'medium',
+        [`某公司本年度銷貨收入 ${fmt(revenue)} 元、銷貨成本 ${fmt(cogs)} 元、營業費用 ${fmt(exp)} 元。本年度淨利是多少？`,
+         `A company reports sales of \\$${fmt(revenue)}, cost of goods sold of \\$${fmt(cogs)} and operating expenses of \\$${fmt(exp)}. What is its net profit?`],
+        [money(fmt(net)), money(fmt(revenue - cogs)), money(fmt(revenue - exp)), money(fmt(cogs + exp))],
+        [`損益表由上而下：銷貨收入 − 銷貨成本 = 毛利 ${fmt(revenue - cogs)} 元；毛利 − 營業費用 = 淨利 ${fmt(revenue - cogs)} − ${fmt(exp)} = ${fmt(net)} 元。毛利與淨利是兩個不同層次的指標：毛利只反映買賣本身的加價空間，淨利才計入經營一盤生意的其他開支。陷阱：${fmt(revenue - cogs)} 元停在毛利；${fmt(revenue - exp)} 元漏了銷貨成本；${fmt(cogs + exp)} 元是總開支而非利潤。`,
+         `An income statement runs downwards: sales minus cost of goods sold gives a gross profit of \\$${fmt(revenue - cogs)}; gross profit minus operating expenses gives net profit, \\$${fmt(revenue - cogs)} − \\$${fmt(exp)} = \\$${fmt(net)}. Gross and net profit sit at different levels: the first reflects only the mark-up on goods, while the second accounts for the other costs of running the business. Traps: \\$${fmt(revenue - cogs)} stops at gross profit; \\$${fmt(revenue - exp)} omits cost of goods sold; \\$${fmt(cogs + exp)} is total costs, not profit.`])
+    }
+  }
+}
+
 export const bafsBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
