@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "csd-floor2.json",
+    "subject": "csd",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor4_csd_se_01": "pending",
+    "floor4_csd_se_02": "pending",
+    "floor4_csd_se_03": "pending",
+    "floor4_csd_se_04": "pending",
+    "floor4_csd_dr_01": "pending",
+    "floor4_csd_dr_02": "pending",
+    "floor4_csd_dr_03": "pending",
+    "floor4_csd_ca_01": "pending",
+    "floor4_csd_ca_02": "pending",
+    "floor4_csd_ca_03": "pending"
+  }
+}

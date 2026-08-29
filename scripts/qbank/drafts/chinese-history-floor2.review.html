@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chinese-history · chinese-history-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chinese-history</span></h1>
+<div class="sub">來源 chinese-history-floor2.json · 共 7 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">7</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor4_chist_ai_01","topic":"古代制度・因果","difficulty":"basic","question":"秦朝推行郡縣制，取代西周的分封制。這項改變在中央與地方關係上最主要的影響是甚麼？","options":["地方長官由中央任免而不世襲，中央對地方的控制大幅加強","地方長官由當地世家大族推舉產生，中央必須尊重地方既有的勢力","地方保有獨立的軍隊與財政，可自行決定是否服從中央的政令","中央與地方的權力完全對等，一切重大事務均須雙方協商後決定"],"correctIndex":0,"explanation":"分封制之下，諸侯受封土地與人民，爵位世襲，其領地實質上是一個個小型政權，中央難以直接管治；日久之後諸侯坐大，正是春秋戰國分裂的制度根源。郡縣制則把地方官員改為【由中央任免、有任期、不世襲】，官員的權力來自朝廷授予而非血緣繼承，中央因而能直接控制地方。這項制度為此後兩千年的中央集權奠下基礎。其餘三項描述的分別是推舉制、割據狀態與聯邦式安排，皆非郡縣制的特徵。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_chist_ai_02","topic":"古代制度・因果","difficulty":"intermediate","question":"漢武帝推行「推恩令」，容許諸侯把封地分給眾子。其實際效果是甚麼？","options":["封地不斷細分而力量分散，諸侯勢力在不動武的情況下被削弱","諸侯的封地不斷合併擴大，兵力與財力因而顯著增強","諸侯的爵位被即時廢除，封地全部收歸中央直接管轄","中央須向諸侯增撥土地作為補償，國庫負擔因而加重"],"correctIndex":0,"explanation":"推恩令的巧妙之處在於【以恩惠之名行削弱之實】。原本封地由嫡長子一人繼承，勢力得以保持；改為諸子分封之後，一代之後封地被分成數塊，兩三代之後便細碎得不足為患。由於此令表面上惠及眾子，諸侯難以名正言順地反對，中央因而避免了七國之亂那樣的武力衝突。這是制度設計以誘因取代強制的典型例子。第三項描述的是直接廢除，與推恩令的漸進手法相反；第二、四項與史實方向相違。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_chist_ai_03","topic":"古代制度・因果","difficulty":"intermediate","question":"隋唐科舉制與魏晉九品中正制相比，在選拔人才上的關鍵分別是甚麼？","options":["前者以考試成績取士，後者以門第評品，出身的作用大幅下降","前者以門第高低取士，後者以考試成績取士，兩者恰好相反","兩者同樣以考試取士，分別僅在於考試的科目數量不同","兩者同樣以推薦取士，分別僅在於推薦人的官職高低不同"],"correctIndex":0,"explanation":"九品中正制由中正官按門第與鄉評把士人分為九等，制度運行日久，「上品無寒門、下品無勢族」，實際上成為世家壟斷仕途的工具。科舉改為【以考試成績取士】，理論上向各階層開放，寒門子弟得以憑學問晉身，士族對官位的壟斷因而鬆動。要注意這是相對而非絕對的變化：備考需要長期脫產讀書，家境仍然重要，唐代的世家影響力亦未即時消失 —— 但選拔的【標準】由血統轉為才學，這是制度上的根本轉折。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_chist_ai_04","topic":"古代制度・因果","difficulty":"hard","question":"評價一項古代制度時，若只列出其優點而不提及其局限，會有甚麼問題？","options":["未能解釋該制度為何最終被取代或改革，論述因而不完整","所有古代制度都有害無益，因此不應提及任何優點","古代制度與現代無關，因此優點與局限都不必討論","列出優點屬於主觀判斷，只有列出缺點才算客觀"],"correctIndex":0,"explanation":"制度評價的完整性在於能否解釋【變化】：任何制度若只有優點，便沒有理由被取代。郡縣制強化了中央控制，同時也令地方缺乏自主而在王朝末年難以自救；科舉打破門第壟斷，明清時期卻因八股取士而窒礙思想。指出局限並非否定制度，而是說明它在甚麼條件下有效、在甚麼條件下失效 —— 這正是「評價」與「介紹」的分別。其餘三項各自走向另一極端：全盤否定、認為無關、或把客觀誤解為只講缺點。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_chist_mc_01","topic":"近現代變局・評價","difficulty":"intermediate","question":"評價洋務運動時，指出它「只學技術而不改制度」。這個評價的依據是甚麼？","options":["其重點在興辦軍工與新式企業，政治體制與科舉取士基本維持不變","其重點在改革政治體制與法律制度，但完全沒有引入任何西方技術","其重點在推行議會與選舉制度，但軍事上仍然保留傳統裝備","其重點在廢除科舉與改革學制，但原有的官僚體系維持不變"],"correctIndex":0,"explanation":"洋務運動以「師夷長技以制夷」為方針，重點在造船、製械、辦礦、興學堂等器物層面，而「中學為體、西學為用」正是其自我定位：制度與價值不動，只取技術。甲午戰敗令這條路線受到嚴重質疑 —— 同樣引進西方技術的日本因明治維新改革了制度而勝出，對比之下促成其後的維新變法主張制度改革。要留意評價須有具體依據：說「只學技術」，就要指出它辦了甚麼、沒有改甚麼。其餘三項與洋務運動的實際內容不符。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_chist_mc_02","topic":"近現代變局・評價","difficulty":"hard","question":"在因果分析中，把一場歷史變局歸因於單一原因，通常有甚麼問題？","options":["歷史變局多由長期結構因素與短期觸發因素交互造成","歷史事件根本沒有原因可言，因此任何形式的歸因都必然錯誤","單一歸因的篇幅太過簡短，未能達到論述題所要求的字數","單一歸因必然把責任推給個別人物，因而對當事人並不公允"],"correctIndex":0,"explanation":"史學上通常把成因分為【長期結構因素】（如財政積弱、土地兼併、外部壓力累積）與【短期觸發因素】（某次戰敗、某項政令、某個突發事件）。只講觸發因素，會令事件顯得偶然，彷彿沒有那一件事就不會發生；只講結構因素，則無法解釋為何偏偏在那個時刻爆發。兩者兼顧，才能同時回答「為何會發生」與「為何在此時發生」。第二項否定因果本身；第三項把史學方法問題降格為字數；第四項則假設單一歸因必然指向個人，但單一歸因同樣可以是結構性的。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_chist_mc_03","topic":"近現代變局・評價","difficulty":"intermediate","question":"使用歷史材料時，一份當事人的回憶錄有何特點須要注意？","options":["當事人親歷其事，細節具價值，但立場與記憶偏差同樣須要考慮","當事人親歷其事，所述必為事實，可直接作為結論的依據","回憶錄屬個人記述，完全沒有史料價值，應一律不予採用","回憶錄的可信度只取決於作者的官職高低，官職愈高愈可信"],"correctIndex":0,"explanation":"回憶錄屬第一手材料，提供的細節、氛圍與動機往往是官方檔案所欠缺的，價值明確。但同時須留意三重限制：作者身處事件之中，立場可能影響取捨；回憶多在事後多年寫成，記憶會隨時間重構；書寫本身可能帶有自辯或塑造形象的動機。因此正確用法是【與其他來源互相印證】，而非單獨採信或一概否定。第二項與第三項分別是全盤採信與全盤否定，都放棄了史料批判；第四項以官職代替內容分析，官職高低與記述是否可靠並無必然關係。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chinese-history";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "chinese-history-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chinese-history-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

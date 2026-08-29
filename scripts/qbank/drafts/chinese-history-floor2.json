@@ -1,0 +1,191 @@
+[
+ {
+  "id": "floor4_chist_ai_01",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "basic",
+  "question": "秦朝推行郡縣制，取代西周的分封制。這項改變在中央與地方關係上最主要的影響是甚麼？",
+  "questionEn": "The Qin replaced Zhou enfeoffment with the commandery-county system. What was its main effect on central-local relations?",
+  "options": [
+   "地方長官由中央任免而不世襲，中央對地方的控制大幅加強",
+   "地方長官由當地世家大族推舉產生，中央必須尊重地方既有的勢力",
+   "地方保有獨立的軍隊與財政，可自行決定是否服從中央的政令",
+   "中央與地方的權力完全對等，一切重大事務均須雙方協商後決定"
+  ],
+  "optionsEn": [
+   "local officials were appointed and removed by the centre rather than inheriting office, greatly strengthening central control",
+   "local officials were nominated by established local clans, so the centre had to respect existing local power",
+   "localities retained their own armies and finances and could decide whether to obey central decrees",
+   "centre and locality held exactly equal power, with all major matters settled by mutual negotiation"
+  ],
+  "correctIndex": 0,
+  "explanation": "分封制之下，諸侯受封土地與人民，爵位世襲，其領地實質上是一個個小型政權，中央難以直接管治；日久之後諸侯坐大，正是春秋戰國分裂的制度根源。郡縣制則把地方官員改為【由中央任免、有任期、不世襲】，官員的權力來自朝廷授予而非血緣繼承，中央因而能直接控制地方。這項制度為此後兩千年的中央集權奠下基礎。其餘三項描述的分別是推舉制、割據狀態與聯邦式安排，皆非郡縣制的特徵。",
+  "explanationEn": "Under enfeoffment, lords received land and people with hereditary rank, so their territories were in effect small states that the centre could not govern directly; over time they grew strong, which is the institutional root of the Spring and Autumn and Warring States fragmentation. The commandery-county system made local officials APPOINTED AND REMOVABLE BY THE CENTRE, serving terms and not inheriting office, so their authority came from the court rather than from descent, and the centre could govern localities directly. The arrangement laid the foundation for two millennia of centralised rule. The other options describe nomination systems, warlord separatism and a federal arrangement, none of which characterises the commandery-county system."
+ },
+ {
+  "id": "floor4_chist_ai_02",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "intermediate",
+  "question": "漢武帝推行「推恩令」，容許諸侯把封地分給眾子。其實際效果是甚麼？",
+  "questionEn": "Emperor Wu of Han issued the Decree of Grace allowing lords to divide their fiefs among all sons. What was its actual effect?",
+  "options": [
+   "封地不斷細分而力量分散，諸侯勢力在不動武的情況下被削弱",
+   "諸侯的封地不斷合併擴大，兵力與財力因而顯著增強",
+   "諸侯的爵位被即時廢除，封地全部收歸中央直接管轄",
+   "中央須向諸侯增撥土地作為補償，國庫負擔因而加重"
+  ],
+  "optionsEn": [
+   "fiefs were repeatedly subdivided and their strength dispersed, weakening the lords without recourse to force",
+   "fiefs were consolidated and enlarged, markedly strengthening the lords in troops and revenue",
+   "noble titles were abolished at once and all fiefs taken under direct central administration",
+   "the centre had to grant lords additional land in compensation, straining the treasury"
+  ],
+  "correctIndex": 0,
+  "explanation": "推恩令的巧妙之處在於【以恩惠之名行削弱之實】。原本封地由嫡長子一人繼承，勢力得以保持；改為諸子分封之後，一代之後封地被分成數塊，兩三代之後便細碎得不足為患。由於此令表面上惠及眾子，諸侯難以名正言順地反對，中央因而避免了七國之亂那樣的武力衝突。這是制度設計以誘因取代強制的典型例子。第三項描述的是直接廢除，與推恩令的漸進手法相反；第二、四項與史實方向相違。",
+  "explanationEn": "The subtlety of the Decree of Grace lay in weakening the lords under the guise of favour. Previously a fief passed intact to the eldest legitimate son and its strength was preserved; once it was divided among all sons, a single generation split it into several parts and two or three generations left fragments too small to threaten anyone. Because the decree appeared to benefit the younger sons, the lords could not oppose it on principled grounds, and the centre avoided armed conflict of the kind seen in the Rebellion of the Seven States. It is a classic case of institutional design substituting incentives for coercion. The third option describes outright abolition, the opposite of this gradual method, and the second and fourth run against the historical record."
+ },
+ {
+  "id": "floor4_chist_ai_03",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "intermediate",
+  "question": "隋唐科舉制與魏晉九品中正制相比，在選拔人才上的關鍵分別是甚麼？",
+  "questionEn": "How did the Sui-Tang examination system differ fundamentally from the Nine-Rank system of the Wei-Jin period?",
+  "options": [
+   "前者以考試成績取士，後者以門第評品，出身的作用大幅下降",
+   "前者以門第高低取士，後者以考試成績取士，兩者恰好相反",
+   "兩者同樣以考試取士，分別僅在於考試的科目數量不同",
+   "兩者同樣以推薦取士，分別僅在於推薦人的官職高低不同"
+  ],
+  "optionsEn": [
+   "the former selected by examination while the latter graded by family standing, sharply reducing the weight of birth",
+   "the former selected by family standing and the latter by examination, exactly the reverse",
+   "both selected by examination, differing only in the number of subjects tested",
+   "both selected by recommendation, differing only in the rank of the recommender"
+  ],
+  "correctIndex": 0,
+  "explanation": "九品中正制由中正官按門第與鄉評把士人分為九等，制度運行日久，「上品無寒門、下品無勢族」，實際上成為世家壟斷仕途的工具。科舉改為【以考試成績取士】，理論上向各階層開放，寒門子弟得以憑學問晉身，士族對官位的壟斷因而鬆動。要注意這是相對而非絕對的變化：備考需要長期脫產讀書，家境仍然重要，唐代的世家影響力亦未即時消失 —— 但選拔的【標準】由血統轉為才學，這是制度上的根本轉折。",
+  "explanationEn": "Under the Nine-Rank system, rectifiers graded candidates by family standing and local reputation into nine grades, and in time \"no poor family reached the upper grades and no powerful clan the lower\", making it an instrument by which great families monopolised office. The examination system selected BY EXAMINATION RESULT, in principle open to all classes, so men of humble background could rise through learning and the aristocratic hold on office loosened. This was a relative rather than absolute change: preparing required years free of labour, so family means still mattered, and Tang great families did not vanish overnight — but the CRITERION of selection shifted from descent to attainment, and that is the fundamental institutional turn."
+ },
+ {
+  "id": "floor4_chist_ai_04",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "古代制度・因果",
+  "topicId": "chist_ancient_institution",
+  "topicZh": "古代制度・因果",
+  "topicEn": "Ancient Institutions — Cause & Effect",
+  "difficulty": "hard",
+  "question": "評價一項古代制度時，若只列出其優點而不提及其局限，會有甚麼問題？",
+  "questionEn": "What is wrong with evaluating an ancient institution by listing only its merits?",
+  "options": [
+   "未能解釋該制度為何最終被取代或改革，論述因而不完整",
+   "所有古代制度都有害無益，因此不應提及任何優點",
+   "古代制度與現代無關，因此優點與局限都不必討論",
+   "列出優點屬於主觀判斷，只有列出缺點才算客觀"
+  ],
+  "optionsEn": [
+   "it cannot explain why the institution was eventually replaced or reformed, leaving the account incomplete",
+   "all ancient institutions were harmful, so no merits should be mentioned",
+   "ancient institutions are irrelevant today, so neither merits nor limits need discussion",
+   "listing merits is subjective and only listing faults counts as objective"
+  ],
+  "correctIndex": 0,
+  "explanation": "制度評價的完整性在於能否解釋【變化】：任何制度若只有優點，便沒有理由被取代。郡縣制強化了中央控制，同時也令地方缺乏自主而在王朝末年難以自救；科舉打破門第壟斷，明清時期卻因八股取士而窒礙思想。指出局限並非否定制度，而是說明它在甚麼條件下有效、在甚麼條件下失效 —— 這正是「評價」與「介紹」的分別。其餘三項各自走向另一極端：全盤否定、認為無關、或把客觀誤解為只講缺點。",
+  "explanationEn": "A complete evaluation must be able to explain CHANGE: an institution with only merits would never have been replaced. The commandery-county system strengthened central control while leaving localities without the autonomy to save themselves as a dynasty collapsed; the examination system broke the aristocratic monopoly, yet under the Ming and Qing the eight-legged essay narrowed thought. Noting limits is not a rejection of the institution but an account of the conditions under which it worked and failed — and that is what separates evaluation from description. The other options swing to other extremes: wholesale condemnation, irrelevance, or mistaking objectivity for fault-finding."
+ },
+ {
+  "id": "floor4_chist_mc_01",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "近現代變局・評價",
+  "topicId": "chist_modern_causation",
+  "topicZh": "近現代變局・評價",
+  "topicEn": "Modern Upheavals — Evaluation",
+  "difficulty": "intermediate",
+  "question": "評價洋務運動時，指出它「只學技術而不改制度」。這個評價的依據是甚麼？",
+  "questionEn": "The Self-Strengthening Movement is often judged to have \"learned technology without changing institutions\". On what is that judgement based?",
+  "options": [
+   "其重點在興辦軍工與新式企業，政治體制與科舉取士基本維持不變",
+   "其重點在改革政治體制與法律制度，但完全沒有引入任何西方技術",
+   "其重點在推行議會與選舉制度，但軍事上仍然保留傳統裝備",
+   "其重點在廢除科舉與改革學制，但原有的官僚體系維持不變"
+  ],
+  "optionsEn": [
+   "it concentrated on arsenals and new-style enterprises while leaving the political system and examination-based recruitment largely intact",
+   "it concentrated on reforming political and legal institutions while introducing no Western technology at all",
+   "it introduced parliamentary and electoral institutions while retaining traditional military equipment",
+   "it abolished the examinations and reformed schooling while leaving the bureaucracy unchanged"
+  ],
+  "correctIndex": 0,
+  "explanation": "洋務運動以「師夷長技以制夷」為方針，重點在造船、製械、辦礦、興學堂等器物層面，而「中學為體、西學為用」正是其自我定位：制度與價值不動，只取技術。甲午戰敗令這條路線受到嚴重質疑 —— 同樣引進西方技術的日本因明治維新改革了制度而勝出，對比之下促成其後的維新變法主張制度改革。要留意評價須有具體依據：說「只學技術」，就要指出它辦了甚麼、沒有改甚麼。其餘三項與洋務運動的實際內容不符。",
+  "explanationEn": "The Self-Strengthening Movement worked on the principle of mastering foreign techniques to control foreigners, concentrating on shipyards, arsenals, mines and new schools — the material level — while its own formula, Chinese learning as the essence and Western learning for use, defined its limits: institutions and values were left untouched and only technology taken. Defeat in the Sino-Japanese War called the approach severely into question, since Japan, importing the same Western technology, had also reformed its institutions through the Meiji Restoration and prevailed; the contrast prompted the later reform movement to press for institutional change. Note that an evaluation needs specifics: to say \"only technology\" one must state what was built and what was left unchanged. The other options do not match what the movement actually did."
+ },
+ {
+  "id": "floor4_chist_mc_02",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "近現代變局・評價",
+  "topicId": "chist_modern_causation",
+  "topicZh": "近現代變局・評價",
+  "topicEn": "Modern Upheavals — Evaluation",
+  "difficulty": "hard",
+  "question": "在因果分析中，把一場歷史變局歸因於單一原因，通常有甚麼問題？",
+  "questionEn": "What is usually wrong with attributing a historical upheaval to a single cause?",
+  "options": [
+   "歷史變局多由長期結構因素與短期觸發因素交互造成",
+   "歷史事件根本沒有原因可言，因此任何形式的歸因都必然錯誤",
+   "單一歸因的篇幅太過簡短，未能達到論述題所要求的字數",
+   "單一歸因必然把責任推給個別人物，因而對當事人並不公允"
+  ],
+  "optionsEn": [
+   "upheavals arise from long-term structures interacting with short-term triggers",
+   "historical events have no causes at all, so any form of attribution must be mistaken",
+   "a single-cause account is too brief to meet the word count an essay question requires",
+   "a single-cause account must blame particular individuals and is therefore unfair to them"
+  ],
+  "correctIndex": 0,
+  "explanation": "史學上通常把成因分為【長期結構因素】（如財政積弱、土地兼併、外部壓力累積）與【短期觸發因素】（某次戰敗、某項政令、某個突發事件）。只講觸發因素，會令事件顯得偶然，彷彿沒有那一件事就不會發生；只講結構因素，則無法解釋為何偏偏在那個時刻爆發。兩者兼顧，才能同時回答「為何會發生」與「為何在此時發生」。第二項否定因果本身；第三項把史學方法問題降格為字數；第四項則假設單一歸因必然指向個人，但單一歸因同樣可以是結構性的。",
+  "explanationEn": "Historians commonly distinguish LONG-TERM STRUCTURAL factors — fiscal weakness, land concentration, accumulating external pressure — from SHORT-TERM TRIGGERS such as a defeat, a decree or a sudden incident. Citing only the trigger makes the event look accidental, as though without that one incident nothing would have happened; citing only the structure cannot explain why it broke out at that particular moment. Holding both answers \"why did it happen\" and \"why then\" together. The second option denies causation itself; the third reduces a question of historical method to word count; the fourth assumes single-cause accounts must blame an individual, whereas they can equally be structural."
+ },
+ {
+  "id": "floor4_chist_mc_03",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "近現代變局・評價",
+  "topicId": "chist_modern_causation",
+  "topicZh": "近現代變局・評價",
+  "topicEn": "Modern Upheavals — Evaluation",
+  "difficulty": "intermediate",
+  "question": "使用歷史材料時，一份當事人的回憶錄有何特點須要注意？",
+  "questionEn": "What should be borne in mind when using a participant's memoir as a historical source?",
+  "options": [
+   "當事人親歷其事，細節具價值，但立場與記憶偏差同樣須要考慮",
+   "當事人親歷其事，所述必為事實，可直接作為結論的依據",
+   "回憶錄屬個人記述，完全沒有史料價值，應一律不予採用",
+   "回憶錄的可信度只取決於作者的官職高低，官職愈高愈可信"
+  ],
+  "optionsEn": [
+   "the writer was present and the detail is valuable, but standpoint and memory bias must equally be weighed",
+   "the writer was present, so the account is fact and may be used directly as a basis for conclusions",
+   "a memoir is personal and has no source value at all, so it should never be used",
+   "reliability depends only on the writer's rank, the higher the more trustworthy"
+  ],
+  "correctIndex": 0,
+  "explanation": "回憶錄屬第一手材料，提供的細節、氛圍與動機往往是官方檔案所欠缺的，價值明確。但同時須留意三重限制：作者身處事件之中，立場可能影響取捨；回憶多在事後多年寫成，記憶會隨時間重構；書寫本身可能帶有自辯或塑造形象的動機。因此正確用法是【與其他來源互相印證】，而非單獨採信或一概否定。第二項與第三項分別是全盤採信與全盤否定，都放棄了史料批判；第四項以官職代替內容分析，官職高低與記述是否可靠並無必然關係。",
+  "explanationEn": "A memoir is a primary source whose detail, atmosphere and account of motive are often absent from official archives, and its value is real. Three limits apply nonetheless: the writer stood inside the events, so standpoint may shape what is included; memoirs are usually written years later and memory reconstructs; and the act of writing may carry motives of self-justification or image-making. The sound approach is therefore CORROBORATION against other sources rather than sole reliance or blanket rejection. The second and third options adopt exactly those two extremes and abandon source criticism; the fourth substitutes rank for analysis, and rank bears no necessary relation to reliability."
+ }
+]

@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "source": "chinese-history-floor2.json",
+    "subject": "chinese-history",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor4_chist_ai_01": "pending",
+    "floor4_chist_ai_02": "pending",
+    "floor4_chist_ai_03": "pending",
+    "floor4_chist_ai_04": "pending",
+    "floor4_chist_mc_01": "pending",
+    "floor4_chist_mc_02": "pending",
+    "floor4_chist_mc_03": "pending"
+  }
+}

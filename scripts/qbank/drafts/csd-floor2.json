@@ -1,0 +1,272 @@
+[
+ {
+  "id": "floor4_csd_se_01",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "多角度評鑑・持份者權衡",
+  "topicId": "csd_stakeholder_eval",
+  "topicZh": "多角度評鑑・持份者權衡",
+  "topicEn": "Multi-perspective · stakeholders",
+  "difficulty": "basic",
+  "question": "進行持份者分析時，第一步應該做甚麼？",
+  "questionEn": "What is the first step in a stakeholder analysis?",
+  "options": [
+   "辨識所有會受該議題影響或能影響該議題的個人與群體",
+   "直接判斷哪一方的立場最為合理，然後集中論證該立場",
+   "先統計支持與反對的人數，以多數一方的意見為結論",
+   "先查明政府現行政策的內容，然後按政策方向作結"
+  ],
+  "optionsEn": [
+   "identify every individual and group affected by, or able to affect, the issue",
+   "decide at once which side is most reasonable and argue for it",
+   "count how many support and oppose, then take the majority view as the conclusion",
+   "establish current government policy and conclude in line with it"
+  ],
+  "correctIndex": 0,
+  "explanation": "持份者分析的價值在於【先把場上的人看齊】：受影響者與有影響力者都要列出，包括容易被忽略的一群（例如未來世代、無投票權的居民、行業內的低技術工人）。若一開始就跳到判斷，分析往往只會圍繞最顯眼的兩三方，遺漏的持份者正是評鑑失衡的來源。第二項把結論放在分析之前；第三項以人數代替理據，但持份者的【受影響程度】與人數並不相同 —— 少數人可能承受極大代價；第四項以現行政策代替獨立分析，等於預設政策必然合理。",
+  "explanationEn": "The value of stakeholder analysis lies in first seeing everyone on the field: both those affected and those with influence must be listed, including the easily overlooked — future generations, residents without a vote, low-skilled workers in an affected trade. Jumping straight to judgement usually confines the analysis to the two or three most visible parties, and the omitted stakeholders are precisely where the evaluation goes off balance. The second option puts the conclusion before the analysis; the third substitutes headcount for reasoning, though how heavily a stakeholder is affected is not the same as how many they are — a small group may bear a very large cost; the fourth substitutes existing policy for independent analysis and assumes policy must be sound."
+ },
+ {
+  "id": "floor4_csd_se_02",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "多角度評鑑・持份者權衡",
+  "topicId": "csd_stakeholder_eval",
+  "topicZh": "多角度評鑑・持份者權衡",
+  "topicEn": "Multi-perspective · stakeholders",
+  "difficulty": "intermediate",
+  "question": "在評鑑一項政策時，同時列出「短期成本」與「長期效益」有甚麼作用？",
+  "questionEn": "Why set out short-term costs alongside long-term benefits when evaluating a policy?",
+  "options": [
+   "避免因時間尺度不同而失衡，令代價與回報在同一框架下比較",
+   "證明該政策必然可行，因為長期效益一定大於短期成本",
+   "把討論簡化為金錢計算，令所有考慮都可以量化比較",
+   "滿足評鑑的格式要求，實際內容並不影響結論"
+  ],
+  "optionsEn": [
+   "it prevents a mismatch of time frames, letting costs and returns be compared in one frame",
+   "it proves the policy workable, since long-term benefits always exceed short-term costs",
+   "it reduces the discussion to money so that every consideration becomes comparable",
+   "it satisfies a formatting requirement without affecting the conclusion"
+  ],
+  "correctIndex": 0,
+  "explanation": "很多政策的特徵正是【代價在前、回報在後】：例如環保法規令企業即時增加成本，環境改善卻要十年後才顯現。若只看短期，政策看似必然失敗；只看長期，則會低估過渡期的實際傷害（失業、結業）。同時列出兩者，才能問出真正的問題：過渡期的代價由誰承擔、有沒有紓緩措施。第二項把方法誤當成結論 —— 分析框架本身不保證任何一方勝出；第三項把不可量化的價值（健康、公平）排除在外；第四項否定了分析的實質作用。",
+  "explanationEn": "Many policies place the cost first and the return later: environmental regulation raises business costs at once while the environmental gain appears a decade on. Looking only at the short run makes such a policy seem bound to fail; looking only at the long run understates the real damage of the transition, in job losses and closures. Setting out both is what allows the real question to be asked: who bears the transitional cost, and what mitigation exists. The second option mistakes a method for a conclusion, since the framework guarantees no side; the third excludes values that resist quantification, such as health and fairness; the fourth denies that the analysis does any work."
+ },
+ {
+  "id": "floor4_csd_se_03",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "多角度評鑑・持份者權衡",
+  "topicId": "csd_stakeholder_eval",
+  "topicZh": "多角度評鑑・持份者權衡",
+  "topicEn": "Multi-perspective · stakeholders",
+  "difficulty": "intermediate",
+  "question": "某項發展計劃中，商戶、居民與環保團體立場不同。「持份者立場不同」本身說明了甚麼？",
+  "questionEn": "In a development project, traders, residents and environmental groups take different positions. What does that difference in itself show?",
+  "options": [
+   "各方所處位置不同，承受的成本與獲得的利益並不一樣",
+   "其中必定有一方在說謊，因為事實只有一個",
+   "該計劃必定不可行，因為無法令所有人滿意",
+   "應該擱置計劃，直至所有持份者立場完全一致"
+  ],
+  "optionsEn": [
+   "the parties occupy different positions and do not bear the same costs or receive the same benefits",
+   "one side must be lying, since there is only one set of facts",
+   "the project must be unworkable, since not everyone can be satisfied",
+   "the project should be shelved until all stakeholders agree completely"
+  ],
+  "correctIndex": 0,
+  "explanation": "立場分歧的最基本解釋是【利害分佈不均】：同一項發展，對商戶是客流與租值，對居民是噪音與生活成本，對環保團體是不可逆的生態損失。三方看到的都是真實的一面，分歧未必源於誰在說謊。認清這一點，評鑑才會由「誰對誰錯」轉向「代價與利益如何分配、可否補償」。第二項把價值取態的分歧誤讀為事實真偽；第三、四項則把「有分歧」直接等同「不可行」或「必須擱置」，但公共決策的常態正是在分歧之中權衡取捨，全體一致極少出現。",
+  "explanationEn": "The most basic explanation for disagreement is that costs and benefits fall unevenly: the same development means footfall and rents to traders, noise and living costs to residents, and irreversible ecological loss to environmental groups. Each sees a real aspect, and the disagreement need not mean anyone is lying. Recognising this shifts the evaluation from who is right to how costs and benefits are distributed and whether compensation is possible. The second option mistakes a difference in values for a dispute over facts; the third and fourth equate disagreement with unworkability or with a duty to shelve, whereas public decisions are normally made by weighing amid disagreement, unanimity being rare."
+ },
+ {
+  "id": "floor4_csd_se_04",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "多角度評鑑・持份者權衡",
+  "topicId": "csd_stakeholder_eval",
+  "topicZh": "多角度評鑑・持份者權衡",
+  "topicEn": "Multi-perspective · stakeholders",
+  "difficulty": "hard",
+  "question": "評鑑一項議題時，只引述支持自己立場的持份者意見，會產生甚麼問題？",
+  "questionEn": "What goes wrong when an evaluation cites only the stakeholders who support one's own position?",
+  "options": [
+   "論證看似有據，實際上未經檢驗，因為最強的反對理由從未被處理",
+   "論證會變得更有說服力，因為立場一致的證據較容易理解",
+   "論證的字數會不足，因此無法達到評鑑題的篇幅要求",
+   "論證會過於冗長，因為引述持份者意見會佔用大量篇幅"
+  ],
+  "optionsEn": [
+   "the argument looks evidenced but is untested, since the strongest objection is never addressed",
+   "the argument becomes more persuasive, since consistent evidence is easier to follow",
+   "the argument falls short of the word count required by evaluation questions",
+   "the argument becomes too long, since quoting stakeholders takes up much space"
+  ],
+  "correctIndex": 0,
+  "explanation": "選擇性引述會製造一種【表面上有證據】的假象：每一句引文都真實，整體卻不成立，因為最有力的反對理由從未進入視野。評鑑題要求的正是相反做法 —— 主動找出最強的反方論點並正面回應，能夠處理最強反對的立場才站得住。這亦是為何考評強調「駁論」而非只堆砌支持理據。第二項把說服力與可靠性混為一談；第三、四項把實質的論證缺陷降格為篇幅問題，兩者並非同一層次。",
+  "explanationEn": "Selective citation creates the appearance of evidence: every quotation is genuine yet the whole does not hold, because the strongest objection never comes into view. Evaluation questions ask for the opposite — seek out the strongest counter-argument and answer it directly, since only a position that survives the best objection stands. This is why examiners emphasise rebuttal rather than the accumulation of supporting points. The second option confuses persuasiveness with soundness; the third and fourth reduce a substantive flaw in reasoning to a matter of length, which is not the same order of problem."
+ },
+ {
+  "id": "floor4_csd_dr_01",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data",
+  "difficulty": "basic",
+  "question": "一幅圖表只顯示 2020 至 2023 年的數據，並呈現上升趨勢。單憑此圖可以得出甚麼結論？",
+  "questionEn": "A chart shows only 2020 to 2023 data and an upward trend. What may be concluded from it alone?",
+  "options": [
+   "該指標在這四年間上升，但不能斷定此前此後的走勢或成因",
+   "該指標長期以來一直上升，並且將會繼續上升下去",
+   "該上升由政府在 2020 年推出的政策所造成",
+   "該指標的上升代表相關狀況已經全面改善"
+  ],
+  "optionsEn": [
+   "the indicator rose over these four years, with nothing established about earlier or later trends or causes",
+   "the indicator has long been rising and will continue to rise",
+   "the rise was caused by a policy introduced in 2020",
+   "the rise means the underlying situation has improved across the board"
+  ],
+  "correctIndex": 0,
+  "explanation": "資料回應題的紀律是：讀出資料支持得到的結論，一步也不多走。四年的數據只能說明這四年 —— 之前可能更高（現時只是回升）、之後可能回落；圖表顯示【相關】而非【因果】，把 2020 年的政策當成成因是缺乏證據的歸因；而單一指標上升亦不等於整體狀況改善，其他指標可能同時惡化。四個選項的分別，正是「資料說了甚麼」與「我以為它說了甚麼」之間的距離。",
+  "explanationEn": "The discipline of data-response work is to state what the data support and go not one step further. Four years of figures speak only for those four years: the level may have been higher before, so this is a recovery, and it may fall afterwards. A chart shows correlation, not causation, so attributing the rise to a 2020 policy is an unevidenced inference; and one rising indicator does not mean the overall situation has improved, since others may be worsening. The difference between the four options is exactly the distance between what the data say and what one assumes they say."
+ },
+ {
+  "id": "floor4_csd_dr_02",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data",
+  "difficulty": "intermediate",
+  "question": "兩幅圖表分別顯示「甲市的絕對排放量高於乙市」與「甲市的人均排放量低於乙市」。這兩項數據是否矛盾？",
+  "questionEn": "One chart shows City A with higher total emissions than City B; another shows A with lower per-capita emissions. Do the two contradict each other?",
+  "options": [
+   "不矛盾 —— 甲市人口較多，總量與人均可以同時呈現相反關係",
+   "矛盾 —— 同一城市不可能既排放較多又排放較少，必有一幅圖出錯",
+   "不矛盾 —— 因為兩幅圖表必然採用了不同的年份",
+   "矛盾 —— 除非兩幅圖表由不同機構製作，否則不可能出現此情況"
+  ],
+  "optionsEn": [
+   "no — A has a larger population, so totals and per-capita figures can point opposite ways",
+   "yes — one city cannot emit both more and less, so one chart must be wrong",
+   "no — because the two charts must be using different years",
+   "yes — unless the two charts came from different bodies, this cannot occur"
+  ],
+  "correctIndex": 0,
+  "explanation": "總量 = 人均 × 人口。人口愈大，即使每人排放較少，總量仍可較高。因此「總量高」與「人均低」完全可以同時成立，兩者回答的是不同問題：總量關乎【環境負荷】（大氣承受多少），人均關乎【責任歸屬】（每個人的行為強度）。國際氣候談判中發達國與發展中國家的爭論，正正圍繞應以哪一項作為分擔基準。判讀數據時看清分母，是本課題最重要的一步。",
+  "explanationEn": "Total = per-capita × population. With a larger population, a city can have a higher total while each resident emits less. \"Higher total\" and \"lower per capita\" are therefore perfectly compatible and answer different questions: totals concern ENVIRONMENTAL LOAD, how much the atmosphere receives, while per-capita figures concern RESPONSIBILITY, how intensively each person behaves. The dispute between developed and developing countries in climate negotiations turns on exactly which should set the basis for burden-sharing. Checking the denominator is the single most important step in reading such data."
+ },
+ {
+  "id": "floor4_csd_dr_03",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "資料回應・數據詮釋",
+  "topicId": "csd_data_response",
+  "topicZh": "資料回應・數據詮釋",
+  "topicEn": "Data-response · interpreting data",
+  "difficulty": "intermediate",
+  "question": "一項調查訪問了某商場內的顧客，結論為「市民普遍支持增加該區商場數量」。這個結論有何問題？",
+  "questionEn": "A survey of shoppers inside a mall concludes that \"the public generally supports more malls in the district.\" What is wrong with that?",
+  "options": [
+   "樣本只涵蓋已經在商場的人，不能代表全區市民",
+   "樣本人數必定太少，因為商場的訪問時間有限",
+   "調查必定有引導性問題，因為結論支持商場一方",
+   "調查結果無效，因為所有問卷調查都不可靠"
+  ],
+  "optionsEn": [
+   "the sample covers only people already in a mall and cannot represent the whole district",
+   "the sample must be too small, since interview time in a mall is limited",
+   "the questions must have been leading, since the conclusion favours malls",
+   "the results are void, because all questionnaire surveys are unreliable"
+  ],
+  "correctIndex": 0,
+  "explanation": "這是典型的【抽樣偏差】：在商場內受訪的人，本身就是願意到商場的一群，他們對商場的態度不可能代表全區市民 —— 最不喜歡商場的人根本不在受訪範圍之內。要支持「市民普遍」這個結論，抽樣必須涵蓋全區各類居民。留意第二、三項並非不可能，但題幹並無提供樣本人數或問卷內容，斷定它們有問題屬於缺乏證據的指控；第四項則是過度推論 —— 抽樣得當的問卷調查是可靠的研究方法，問題出在這一次的抽樣方式。",
+  "explanationEn": "This is textbook SAMPLING BIAS: people interviewed inside a mall are by definition people willing to go to malls, so their attitude cannot represent the district — those most opposed to malls are not in the sampling frame at all. Supporting a claim about the public generally would require a sample covering the district's residents broadly. Note that the second and third options are not impossible, but the stem gives neither sample size nor question wording, so asserting them is an unevidenced accusation; and the fourth over-infers, since a properly sampled survey is a sound research method and the fault here lies in this particular sampling."
+ },
+ {
+  "id": "floor4_csd_ca_01",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "概念應用・當代世界",
+  "topicId": "csd_concept_apply",
+  "topicZh": "概念應用・當代世界",
+  "topicEn": "Applying concepts · the contemporary world",
+  "difficulty": "basic",
+  "question": "「全球化」在經濟層面最主要指甚麼現象？",
+  "questionEn": "In economic terms, what does globalisation mainly denote?",
+  "options": [
+   "商品、資本、技術與勞動力跨越國界流動的規模與速度大幅提升",
+   "各國的政治制度在全球化之下逐步統一，最終收斂為同一種模式",
+   "世界各地的語言與文化互相滲透，最終完全融合為單一的文化",
+   "所有國家的經濟發展水平在全球化之下拉平，最終變得完全相同"
+  ],
+  "optionsEn": [
+   "a large rise in the scale and speed at which goods, capital, technology and labour cross borders",
+   "political systems worldwide converge under globalisation into a single model",
+   "the world's languages and cultures interpenetrate until they merge into one",
+   "all countries' development levels are levelled by globalisation until identical"
+  ],
+  "correctIndex": 0,
+  "explanation": "經濟全球化的核心是【跨境流動】的規模與速度提升：生產鏈分佈於多國、資金可即時調動、技術迅速擴散、人口跨境就業。要留意流動增加並不等於結果趨同 —— 全球化同時帶來新的不平等，得益與代價在國與國之間、以及一國之內都分佈不均，這正是相關爭論的核心。其餘三項把全球化誤解為「一切變成一樣」：政治制度、文化與發展水平的差異在全球化之下依然顯著，部分方面甚至擴大。",
+  "explanationEn": "Economic globalisation centres on the rising scale and speed of CROSS-BORDER FLOWS: production chains spanning several countries, capital moved instantly, technology diffusing quickly, people working across borders. Note that more flow does not mean converging outcomes — globalisation also generates new inequality, with gains and costs distributed unevenly both between countries and within them, and that is what the debate is about. The other options mistake globalisation for everything becoming the same: differences in political systems, cultures and development levels remain marked, and in some respects have widened."
+ },
+ {
+  "id": "floor4_csd_ca_02",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "概念應用・當代世界",
+  "topicId": "csd_concept_apply",
+  "topicZh": "概念應用・當代世界",
+  "topicEn": "Applying concepts · the contemporary world",
+  "difficulty": "intermediate",
+  "question": "把「可持續發展」應用到城市規劃時，須同時兼顧哪三個面向？",
+  "questionEn": "Applied to urban planning, which three dimensions does sustainable development require?",
+  "options": [
+   "環境保護、經濟發展與社會公平，三者需同時兼顧而非取其一",
+   "交通、房屋與教育，三者是城市規劃的全部內容",
+   "過去、現在與未來，三者代表城市發展的時間順序",
+   "政府、企業與市民，三者是城市中的三類持份者"
+  ],
+  "optionsEn": [
+   "environmental protection, economic development and social equity, held together rather than traded off",
+   "transport, housing and education, which make up the whole of urban planning",
+   "past, present and future, the time sequence of a city's development",
+   "government, business and citizens, the three kinds of stakeholder in a city"
+  ],
+  "correctIndex": 0,
+  "explanation": "可持續發展的三個面向是環境、經濟與社會，缺一不可 —— 以嚴重污染換取增長不算可持續，以剝奪基層生計的方式推行環保同樣不算。應用到城市規劃，這意味着一項計劃要同時問：它對環境的長遠影響、它的經濟可行性、以及它對不同社群（尤其弱勢）的影響是否公平。第二項列出的是規劃的【範疇】而非可持續發展的面向；第三項描述時間而非面向（代際公平確實是可持續發展的內涵，但那是社會公平之下的一項，並非三個面向本身）；第四項列出的是持份者。",
+  "explanationEn": "The three dimensions are environmental, economic and social, and none may be dropped — trading severe pollution for growth is not sustainable, and neither is environmental policy that destroys poorer people's livelihoods. Applied to urban planning, this means asking of any scheme: what is its long-run environmental effect, is it economically viable, and is its impact on different communities, especially the disadvantaged, fair. The second option lists planning FIELDS rather than dimensions; the third describes time rather than dimensions, and while intergenerational equity is indeed part of sustainability it sits under social equity rather than forming one of the three; the fourth lists stakeholders."
+ },
+ {
+  "id": "floor4_csd_ca_03",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "概念應用・當代世界",
+  "topicId": "csd_concept_apply",
+  "topicZh": "概念應用・當代世界",
+  "topicEn": "Applying concepts · the contemporary world",
+  "difficulty": "hard",
+  "question": "把一個概念（例如「公共衞生」）應用到具體個案時，最常見的錯誤是甚麼？",
+  "questionEn": "What is the commonest error when applying a concept such as public health to a specific case?",
+  "options": [
+   "只複述概念的定義，未指出該概念在個案中具體如何運作",
+   "使用了太多專門術語，令閱卷員難以理解答案",
+   "引用了太多個案細節，令答案偏離所要應用的概念",
+   "概念本身不適用於個案，因此應用必然失敗"
+  ],
+  "optionsEn": [
+   "restating the definition without showing how the concept actually operates in the case",
+   "using so much technical vocabulary that the marker cannot follow",
+   "citing so much case detail that the answer drifts from the concept",
+   "the concept does not fit the case, so any application must fail"
+  ],
+  "correctIndex": 0,
+  "explanation": "概念應用題考的是【概念與個案之間的接駁】。只寫「公共衞生指以群體為對象保障健康的措施」是複述定義，並未應用；要應用，就必須指出在這個個案中，哪一項措施體現了群體導向、它針對甚麼傳播途徑、為何個人層面的做法不足以處理。定義只是起點，分數在接駁的部分。第二、三項確實是可能出現的毛病，但都不及「有定義而無應用」普遍；第四項則假設概念與個案不相容，但題目既然要求應用，通常正正是因為兩者相關。",
+  "explanationEn": "Application questions test the JOIN between concept and case. Writing that \"public health means measures protecting health at the population level\" restates a definition without applying it; applying it means showing which measure in this case embodies the population focus, which transmission route it targets, and why individual-level action would not suffice. The definition is only the starting point, and the marks lie in the join. The second and third options are real faults but far less common than definition-without-application; and the fourth assumes concept and case do not fit, whereas a question asking for application usually presupposes that they do."
+ }
+]
