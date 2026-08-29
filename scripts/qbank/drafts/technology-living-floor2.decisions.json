@@ -1,0 +1,18 @@
+{
+ "_meta": {
+  "source": "technology-living-floor2.json",
+  "subject": "technology-living",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor2_tl_ft_01": "approved",
+  "floor2_tl_ft_02": "approved",
+  "floor2_tl_ft_03": "approved",
+  "floor2_tl_ft_04": "approved",
+  "floor2_tl_ft_05": "approved",
+  "floor2_tl_ft_06": "approved",
+  "floor2_tl_ft_07": "approved",
+  "floor2_tl_ft_08": "approved"
+ }
+}

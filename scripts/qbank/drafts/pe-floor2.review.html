@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · pe · pe-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">pe</span></h1>
+<div class="sub">來源 pe-floor2.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor2_pe_bs_01","topic":"生物力學與能量系統","difficulty":"basic","question":"短跑選手在 100 米比賽中，主要依賴哪一個能量系統供能？","options":["磷酸原系統（ATP-PC）—— 供能極快但只能維持約十秒","有氧系統 —— 供能穩定而持久，適合長時間中低強度運動","乳酸系統 —— 供能中等，主要支持約一至三分鐘的高強度運動","脂肪氧化系統 —— 供能緩慢，主要在靜止與睡眠時提供能量"],"correctIndex":0,"explanation":"三大能量系統的分別在於【供能速率】與【可維持時間】的取捨。磷酸原系統直接分解肌肉中已儲存的磷酸肌酸再生 ATP，不需氧氣、不經多步反應，因此輸出功率最高，但儲量極少，約十秒內耗盡 —— 100 米約十秒完成，正落在這個窗口。乳酸系統接手約一至三分鐘的項目（如 400 米）；有氧系統支持三分鐘以上的持續運動（如長跑）。留意三個系統並非「開關式」切換，而是同時運作、只是比重隨時間轉移。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_02","topic":"生物力學與能量系統","difficulty":"intermediate","question":"跳遠時，運動員起跳的角度會影響跳躍距離。從拋體運動的角度看，這是因為甚麼？","options":["起跳角度決定速度在水平與垂直方向的分配，兩者共同決定滯空時間與水平距離","起跳角度直接決定起跳的速度大小，角度愈大則起跳時的速度必然愈快","起跳角度決定空氣阻力的大小，角度愈小則飛行途中受到的阻力便愈小","起跳角度決定落地時的衝擊力，與跳躍的水平距離並無直接關係"],"correctIndex":0,"explanation":"起跳後身體是一個拋體，水平距離 = 水平速度 × 滯空時間。垂直分速度決定升得多高、因而決定滯空時間；水平分速度決定同一時間內前進多遠。角度太小則滯空太短，角度太大則水平分速度太低，兩者都令距離縮短，故存在一個最佳角度（實際跳遠因起跳點高於落地點且起跳速度隨角度改變，最佳角度約為 18 至 25 度，低於理論上的 45 度）。角度不會決定速度大小 —— 兩者是獨立的變數；空氣阻力在此速度下影響輕微；落地衝擊是另一回事。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_03","topic":"生物力學與能量系統","difficulty":"intermediate","question":"在體操與跳水中，運動員收緊身體（抱膝）能加快旋轉速度。這是由於甚麼原理？","options":["角動量守恆 —— 質量更靠近轉軸令轉動慣量下降，角速度因而上升","線動量守恆 —— 身體體積縮小令空氣阻力下降，因而轉得更快","能量守恆 —— 收緊身體時肌肉釋放額外能量，加快了旋轉","牛頓第三定律 —— 手臂向內拉的作用力產生一個令身體旋轉的反作用力"],"correctIndex":0,"explanation":"離開跳板或器械之後，外力矩幾乎為零，角動量 L = Iω 守恆。抱膝令身體質量向轉軸集中，轉動慣量 I 顯著下降；L 既然不變，角速度 ω 必然按比例上升，旋轉因而加快。展開身體時 I 回升、ω 下降，運動員正是利用這一點在入水或落地前放慢旋轉以便控制姿勢。空氣阻力在此並非主因；肌肉收緊做的功改變的是能量而非角動量，而且無法解釋為何展開時又會變慢；牛頓第三定律描述的是力的成對關係，並不解釋轉速的改變。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_04","topic":"生物力學與能量系統","difficulty":"basic","question":"進行帶氧運動一段時間後，身體開始較多地利用脂肪供能。這主要因為甚麼？","options":["肌肉與肝臟的肝醣儲備逐漸減少，身體轉而動用儲量遠大的脂肪","脂肪的供能速率比醣類快，因此在運動後期更能應付高強度需求","運動時體溫上升，令脂肪自動融化並直接進入血液被肌肉吸收","脂肪在無氧狀態下才能被分解，運動後期身體正好進入無氧狀態"],"correctIndex":0,"explanation":"運動初期身體優先使用醣類，因為醣的分解步驟較少、單位時間釋出的 ATP 較多。但肝醣儲量有限（一般僅夠支持約 90 分鐘中高強度運動），隨着儲備下降，脂肪供能的比例逐步上升 —— 脂肪儲量遠大，可支持長時間低至中強度運動，這正是長距離耐力項目與減脂訓練的生理基礎。有一項方向寫反：脂肪供能速率較【慢】而非較快；另一項不符合生理事實，脂肪要經脂解與 β 氧化才能供能；還有一項亦不正確，脂肪的氧化必須在【有氧】條件下進行。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_05","topic":"生物力學與能量系統","difficulty":"intermediate","question":"「超負荷原則」（overload principle）在體能訓練中的意思是甚麼？","options":["訓練刺激須高於身體目前的適應水平，身體才會產生進一步的適應","每次訓練都必須做到力竭，否則身體不會產生任何訓練效果","訓練量應該每天固定不變，讓身體在穩定的刺激下慢慢適應","訓練應以最大重量進行，因為只有最大負荷才能刺激肌肉生長"],"correctIndex":0,"explanation":"身體只會對「超出目前能力」的刺激作出適應：訓練負荷若停留在已適應的水平，即使勤力訓練，體能亦會停滯不前。因此需要逐步提高強度、時間、頻率或密度，這就是超負荷。要留意它與「每次力竭」並不相同 —— 過度的負荷會導致過度訓練與受傷，超負荷強調的是【略高於】現有水平並配合足夠恢復，而非愈辛苦愈好。有一項描述的正是超負荷要避免的停滯狀態；另一項把超負荷誤解為最大負荷，忽略了不同訓練目標需要不同的強度區間。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_06","topic":"生物力學與能量系統","difficulty":"hard","question":"兩名體重相同的跑手，甲的重心較低。在急速轉向時，甲一般較穩定。這是因為甚麼？","options":["重心愈低，重心線愈不容易移出支撐面之外，傾覆所需的力矩因而較大","重心愈低，身體的總質量便愈集中，因而慣性較小而更容易改變方向","重心愈低，跑手與地面的摩擦係數便愈大，因而不容易滑倒","重心愈低，跑手所受的重力便愈小，因而更容易保持平衡"],"correctIndex":0,"explanation":"穩定性取決於重心線是否落在支撐面（雙腳所圍成的範圍）之內。重心愈低，要把重心線推出支撐面所需的傾斜角度愈大，亦即所需的傾覆力矩愈大，因此愈難被推倒 —— 這正是柔道、相撲、防守姿勢都刻意壓低身體的原因，亦解釋為何加闊雙腳（擴大支撐面）同樣提高穩定性。有一項混淆了穩定性與靈活性，而且重心高低不改變總質量；另一項不成立，摩擦係數取決於接觸面材質而非重心高度；還有一項與事實不符，重力大小取決於質量，與重心位置無關。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_07","topic":"生物力學與能量系統","difficulty":"intermediate","question":"運動後進行緩和運動（cool-down）的主要生理作用是甚麼？","options":["維持血液循環以助清除代謝廢物，並避免血液滯留於下肢引致頭暈","令肌肉溫度迅速回落至靜止水平，藉此立即停止一切代謝活動","在肌肉仍然溫熱時大量補充水分，令水分被肌肉細胞直接吸收","透過持續高強度運動耗盡剩餘體力，使身體更快進入恢復狀態"],"correctIndex":0,"explanation":"劇烈運動時，下肢肌肉的節律收縮像泵一樣協助靜脈血回流。若突然完全停止，這個「肌肉泵」失效，血液容易滯留於下肢，回心血量與腦部供血下降，可能引致頭暈甚至暈厥。緩和運動以逐步降低的低強度活動維持肌肉泵運作，同時保持較高的血流量，有助把乳酸等代謝產物運走。有一項方向錯誤 —— 緩和運動追求的是【逐步】而非立即回落；另一項不符生理事實，水分經消化道吸收後由循環系統分配；還有一項與「緩和」的定義自相矛盾。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_pe_bs_08","topic":"生物力學與能量系統","difficulty":"hard","question":"擲鉛球時，運動員採用滑步或旋轉技術，而非站定直接推出。從力學角度看，這樣做的作用是甚麼？","options":["延長施力的距離與時間，令鉛球在出手前累積更大的速度","增加鉛球本身的質量，使它在飛行時受空氣阻力的影響減少","改變鉛球的重心位置，令它在飛行途中的軌跡更接近直線","減少手臂所需施加的力量，使運動員能夠以更小的力擲得更遠"],"correctIndex":0,"explanation":"出手速度是決定擲遠距離的最主要因素。由衝量—動量關係，速度的增加量取決於力與作用【時間】的乘積；由功—能關係，動能的增加取決於力與作用【距離】的乘積。滑步或旋轉把施力的路徑由手臂一段延長至整個身體移動的距離，時間亦相應延長，因此在同樣的肌肉力量之下能累積更高的出手速度。有一項不成立，技術動作不會改變鉛球的質量；另一項亦不成立，出手之後軌跡只由出手速度、角度與重力決定；還有一項方向倒轉 —— 技術是為了累積更多速度，而非省力。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "pe";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "pe-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "pe-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

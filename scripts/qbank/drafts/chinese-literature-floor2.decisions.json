@@ -1,0 +1,22 @@
+{
+ "_meta": {
+  "source": "chinese-literature-floor2.json",
+  "subject": "chinese-literature",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor5_clit_cc_01": "approved",
+  "floor5_clit_cc_02": "approved",
+  "floor5_clit_cc_03": "approved",
+  "floor5_clit_cc_04": "approved",
+  "floor5_clit_pa_01": "approved",
+  "floor5_clit_pa_02": "approved",
+  "floor5_clit_pa_03": "approved",
+  "floor5_clit_pa_04": "approved",
+  "floor8_clit_cc_05": "approved",
+  "floor8_clit_cc_06": "approved",
+  "floor8_clit_cc_07": "approved",
+  "floor8_clit_cc_08": "approved"
+ }
+}

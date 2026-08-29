@@ -1,0 +1,218 @@
+[
+ {
+  "id": "floor2_pe_bs_01",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "basic",
+  "question": "短跑選手在 100 米比賽中，主要依賴哪一個能量系統供能？",
+  "questionEn": "Which energy system chiefly supplies a sprinter during a 100 m race?",
+  "options": [
+   "磷酸原系統（ATP-PC）—— 供能極快但只能維持約十秒",
+   "有氧系統 —— 供能穩定而持久，適合長時間中低強度運動",
+   "乳酸系統 —— 供能中等，主要支持約一至三分鐘的高強度運動",
+   "脂肪氧化系統 —— 供能緩慢，主要在靜止與睡眠時提供能量"
+  ],
+  "optionsEn": [
+   "the phosphagen (ATP-PC) system — extremely fast but lasting only about ten seconds",
+   "the aerobic system — steady and sustained, suited to prolonged moderate work",
+   "the lactic acid system — moderate output, supporting about one to three minutes of hard work",
+   "fat oxidation — slow to deliver, supplying energy mainly at rest and during sleep"
+  ],
+  "correctIndex": 0,
+  "explanation": "三大能量系統的分別在於【供能速率】與【可維持時間】的取捨。磷酸原系統直接分解肌肉中已儲存的磷酸肌酸再生 ATP，不需氧氣、不經多步反應，因此輸出功率最高，但儲量極少，約十秒內耗盡 —— 100 米約十秒完成，正落在這個窗口。乳酸系統接手約一至三分鐘的項目（如 400 米）；有氧系統支持三分鐘以上的持續運動（如長跑）。留意三個系統並非「開關式」切換，而是同時運作、只是比重隨時間轉移。",
+  "explanationEn": "The three energy systems differ in the trade-off between RATE of supply and DURATION. The phosphagen system regenerates ATP directly from creatine phosphate already stored in muscle, needing neither oxygen nor a long reaction chain, so its power output is highest — but the store is tiny and exhausted in about ten seconds, and a 100 m race lasts about that. The lactic acid system takes over for events of roughly one to three minutes such as the 400 m, and the aerobic system supports sustained work beyond three minutes. Note that the systems are not switches: all three run together and only their relative contributions shift over time."
+ },
+ {
+  "id": "floor2_pe_bs_02",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "intermediate",
+  "question": "跳遠時，運動員起跳的角度會影響跳躍距離。從拋體運動的角度看，這是因為甚麼？",
+  "questionEn": "A long jumper's take-off angle affects the distance jumped. From a projectile-motion standpoint, why?",
+  "options": [
+   "起跳角度決定速度在水平與垂直方向的分配，兩者共同決定滯空時間與水平距離",
+   "起跳角度直接決定起跳的速度大小，角度愈大則起跳時的速度必然愈快",
+   "起跳角度決定空氣阻力的大小，角度愈小則飛行途中受到的阻力便愈小",
+   "起跳角度決定落地時的衝擊力，與跳躍的水平距離並無直接關係"
+  ],
+  "optionsEn": [
+   "the angle splits the take-off velocity between horizontal and vertical, and the two together set flight time and horizontal distance",
+   "the angle directly determines the take-off speed, and a larger angle necessarily gives a faster take-off",
+   "the angle determines the air resistance met in flight, and a smaller angle means less resistance",
+   "the angle determines landing impact and has no direct bearing on horizontal distance"
+  ],
+  "correctIndex": 0,
+  "explanation": "起跳後身體是一個拋體，水平距離 = 水平速度 × 滯空時間。垂直分速度決定升得多高、因而決定滯空時間；水平分速度決定同一時間內前進多遠。角度太小則滯空太短，角度太大則水平分速度太低，兩者都令距離縮短，故存在一個最佳角度（實際跳遠因起跳點高於落地點且起跳速度隨角度改變，最佳角度約為 18 至 25 度，低於理論上的 45 度）。角度不會決定速度大小 —— 兩者是獨立的變數；空氣阻力在此速度下影響輕微；落地衝擊是另一回事。",
+  "explanationEn": "After take-off the body is a projectile, and horizontal distance equals horizontal velocity multiplied by time of flight. The vertical component sets how high the jumper rises and hence the flight time, while the horizontal component sets how far they travel in that time. Too shallow an angle gives too little flight time, too steep an angle too little horizontal speed, and both shorten the jump, so an optimum exists — in practice about 18 to 25 degrees rather than the theoretical 45, because take-off is above the landing point and take-off speed itself falls as the angle steepens. The angle does not set the speed, which is an independent variable; air resistance is minor at these speeds; and landing impact is a separate matter."
+ },
+ {
+  "id": "floor2_pe_bs_03",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "intermediate",
+  "question": "在體操與跳水中，運動員收緊身體（抱膝）能加快旋轉速度。這是由於甚麼原理？",
+  "questionEn": "Gymnasts and divers spin faster when they tuck. What principle explains this?",
+  "options": [
+   "角動量守恆 —— 質量更靠近轉軸令轉動慣量下降，角速度因而上升",
+   "線動量守恆 —— 身體體積縮小令空氣阻力下降，因而轉得更快",
+   "能量守恆 —— 收緊身體時肌肉釋放額外能量，加快了旋轉",
+   "牛頓第三定律 —— 手臂向內拉的作用力產生一個令身體旋轉的反作用力"
+  ],
+  "optionsEn": [
+   "conservation of angular momentum — bringing mass closer to the axis lowers the moment of inertia, so angular velocity rises",
+   "conservation of linear momentum — a smaller body meets less air resistance and so spins faster",
+   "conservation of energy — tucking releases extra energy from the muscles, speeding the spin",
+   "Newton's third law — pulling the arms inwards produces a reaction that turns the body"
+  ],
+  "correctIndex": 0,
+  "explanation": "離開跳板或器械之後，外力矩幾乎為零，角動量 L = Iω 守恆。抱膝令身體質量向轉軸集中，轉動慣量 I 顯著下降；L 既然不變，角速度 ω 必然按比例上升，旋轉因而加快。展開身體時 I 回升、ω 下降，運動員正是利用這一點在入水或落地前放慢旋轉以便控制姿勢。空氣阻力在此並非主因；肌肉收緊做的功改變的是能量而非角動量，而且無法解釋為何展開時又會變慢；牛頓第三定律描述的是力的成對關係，並不解釋轉速的改變。",
+  "explanationEn": "Once free of the board or apparatus the external torque is nearly zero, so angular momentum L = Iω is conserved. Tucking draws the body mass towards the axis and markedly reduces the moment of inertia I; with L fixed, the angular velocity ω must rise in proportion and the spin quickens. Opening out raises I and lowers ω again, which is exactly how athletes slow their rotation to control entry or landing. Air resistance is not the main factor here; the work done by tucking changes energy rather than angular momentum and could not explain the slowing on opening out; and Newton's third law describes paired forces rather than changes in rotational speed."
+ },
+ {
+  "id": "floor2_pe_bs_04",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "basic",
+  "question": "進行帶氧運動一段時間後，身體開始較多地利用脂肪供能。這主要因為甚麼？",
+  "questionEn": "After a period of aerobic exercise the body draws more on fat for energy. Why mainly?",
+  "options": [
+   "肌肉與肝臟的肝醣儲備逐漸減少，身體轉而動用儲量遠大的脂肪",
+   "脂肪的供能速率比醣類快，因此在運動後期更能應付高強度需求",
+   "運動時體溫上升，令脂肪自動融化並直接進入血液被肌肉吸收",
+   "脂肪在無氧狀態下才能被分解，運動後期身體正好進入無氧狀態"
+  ],
+  "optionsEn": [
+   "glycogen stores in muscle and liver run low, so the body turns to its much larger fat reserves",
+   "fat supplies energy faster than carbohydrate and better meets high demand late in exercise",
+   "rising body temperature melts fat, which enters the blood directly for muscles to take up",
+   "fat can only be broken down anaerobically, and late exercise is exactly when that occurs"
+  ],
+  "correctIndex": 0,
+  "explanation": "運動初期身體優先使用醣類，因為醣的分解步驟較少、單位時間釋出的 ATP 較多。但肝醣儲量有限（一般僅夠支持約 90 分鐘中高強度運動），隨着儲備下降，脂肪供能的比例逐步上升 —— 脂肪儲量遠大，可支持長時間低至中強度運動，這正是長距離耐力項目與減脂訓練的生理基礎。有一項方向寫反：脂肪供能速率較【慢】而非較快；另一項不符合生理事實，脂肪要經脂解與 β 氧化才能供能；還有一項亦不正確，脂肪的氧化必須在【有氧】條件下進行。",
+  "explanationEn": "Early in exercise the body favours carbohydrate, whose breakdown has fewer steps and yields more ATP per unit time. But glycogen stores are limited — typically enough for about 90 minutes of moderate to hard work — and as they fall the share supplied by fat rises. Fat reserves are far larger and sustain prolonged low to moderate work, which is the physiological basis of endurance events and fat-loss training. One option reverses the direction, since fat supplies energy more SLOWLY; the third is physiologically wrong, as fat must undergo lipolysis and beta-oxidation; and the fourth is also wrong, since fat oxidation requires AEROBIC conditions."
+ },
+ {
+  "id": "floor2_pe_bs_05",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "intermediate",
+  "question": "「超負荷原則」（overload principle）在體能訓練中的意思是甚麼？",
+  "questionEn": "What does the overload principle mean in physical training?",
+  "options": [
+   "訓練刺激須高於身體目前的適應水平，身體才會產生進一步的適應",
+   "每次訓練都必須做到力竭，否則身體不會產生任何訓練效果",
+   "訓練量應該每天固定不變，讓身體在穩定的刺激下慢慢適應",
+   "訓練應以最大重量進行，因為只有最大負荷才能刺激肌肉生長"
+  ],
+  "optionsEn": [
+   "the training stimulus must exceed the body's current level of adaptation before further adaptation occurs",
+   "every session must be taken to exhaustion or no training effect will result",
+   "training load should stay identical daily so the body adapts under a steady stimulus",
+   "training should always use maximal loads, since only maximal loads stimulate growth"
+  ],
+  "correctIndex": 0,
+  "explanation": "身體只會對「超出目前能力」的刺激作出適應：訓練負荷若停留在已適應的水平，即使勤力訓練，體能亦會停滯不前。因此需要逐步提高強度、時間、頻率或密度，這就是超負荷。要留意它與「每次力竭」並不相同 —— 過度的負荷會導致過度訓練與受傷，超負荷強調的是【略高於】現有水平並配合足夠恢復，而非愈辛苦愈好。有一項描述的正是超負荷要避免的停滯狀態；另一項把超負荷誤解為最大負荷，忽略了不同訓練目標需要不同的強度區間。",
+  "explanationEn": "The body adapts only to a stimulus that exceeds its current capacity: if the load stays at an already-adapted level, fitness plateaus however diligently one trains. Progression therefore raises intensity, duration, frequency or density — that is overload. Note it is not the same as training to exhaustion every session: excessive load leads to overtraining and injury, and overload means a load SLIGHTLY above current capacity combined with adequate recovery, not simply as hard as possible. One option describes exactly the plateau that overload exists to avoid; the fourth confuses overload with maximal load and ignores that different training goals need different intensity zones."
+ },
+ {
+  "id": "floor2_pe_bs_06",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "hard",
+  "question": "兩名體重相同的跑手，甲的重心較低。在急速轉向時，甲一般較穩定。這是因為甚麼？",
+  "questionEn": "Two runners of equal mass: A has a lower centre of gravity. A is generally more stable when changing direction sharply. Why?",
+  "options": [
+   "重心愈低，重心線愈不容易移出支撐面之外，傾覆所需的力矩因而較大",
+   "重心愈低，身體的總質量便愈集中，因而慣性較小而更容易改變方向",
+   "重心愈低，跑手與地面的摩擦係數便愈大，因而不容易滑倒",
+   "重心愈低，跑手所受的重力便愈小，因而更容易保持平衡"
+  ],
+  "optionsEn": [
+   "a lower centre of gravity keeps the line of gravity within the base of support more easily, so a larger moment is needed to topple the runner",
+   "a lower centre of gravity concentrates total mass, giving less inertia and easier direction change",
+   "a lower centre of gravity increases the coefficient of friction with the ground, preventing slips",
+   "a lower centre of gravity reduces the weight acting on the runner, making balance easier"
+  ],
+  "correctIndex": 0,
+  "explanation": "穩定性取決於重心線是否落在支撐面（雙腳所圍成的範圍）之內。重心愈低，要把重心線推出支撐面所需的傾斜角度愈大，亦即所需的傾覆力矩愈大，因此愈難被推倒 —— 這正是柔道、相撲、防守姿勢都刻意壓低身體的原因，亦解釋為何加闊雙腳（擴大支撐面）同樣提高穩定性。有一項混淆了穩定性與靈活性，而且重心高低不改變總質量；另一項不成立，摩擦係數取決於接觸面材質而非重心高度；還有一項與事實不符，重力大小取決於質量，與重心位置無關。",
+  "explanationEn": "Stability depends on whether the line of gravity falls within the base of support — the area enclosed by the feet. The lower the centre of gravity, the greater the tilt needed to push that line outside the base, and hence the larger the toppling moment required, so the harder it is to unbalance the person. This is why judo, sumo and defensive stances all deliberately lower the body, and why widening the feet, which enlarges the base, also raises stability. One option confuses stability with agility, and the height of the centre of gravity does not alter total mass; the third is untrue, as the coefficient of friction depends on the surfaces in contact; and the fourth is wrong, since weight depends on mass and not on where the centre of gravity sits."
+ },
+ {
+  "id": "floor2_pe_bs_07",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "intermediate",
+  "question": "運動後進行緩和運動（cool-down）的主要生理作用是甚麼？",
+  "questionEn": "What is the main physiological purpose of a cool-down after exercise?",
+  "options": [
+   "維持血液循環以助清除代謝廢物，並避免血液滯留於下肢引致頭暈",
+   "令肌肉溫度迅速回落至靜止水平，藉此立即停止一切代謝活動",
+   "在肌肉仍然溫熱時大量補充水分，令水分被肌肉細胞直接吸收",
+   "透過持續高強度運動耗盡剩餘體力，使身體更快進入恢復狀態"
+  ],
+  "optionsEn": [
+   "it keeps blood circulating to clear metabolic waste and prevents blood pooling in the legs and causing dizziness",
+   "it returns muscle temperature to resting level at once, halting all metabolic activity immediately",
+   "it allows large amounts of water to be taken while muscles are warm, for direct uptake by muscle cells",
+   "it exhausts remaining energy through continued hard work so recovery begins sooner"
+  ],
+  "correctIndex": 0,
+  "explanation": "劇烈運動時，下肢肌肉的節律收縮像泵一樣協助靜脈血回流。若突然完全停止，這個「肌肉泵」失效，血液容易滯留於下肢，回心血量與腦部供血下降，可能引致頭暈甚至暈厥。緩和運動以逐步降低的低強度活動維持肌肉泵運作，同時保持較高的血流量，有助把乳酸等代謝產物運走。有一項方向錯誤 —— 緩和運動追求的是【逐步】而非立即回落；另一項不符生理事實，水分經消化道吸收後由循環系統分配；還有一項與「緩和」的定義自相矛盾。",
+  "explanationEn": "During vigorous exercise the rhythmic contraction of leg muscles acts as a pump assisting venous return. Stopping abruptly disables this muscle pump, blood tends to pool in the legs, and reduced return to the heart and brain can cause dizziness or even fainting. A cool-down keeps the pump working through gradually declining light activity while maintaining raised blood flow, helping clear metabolites such as lactate. One option has the direction wrong, since a cool-down aims at a GRADUAL rather than immediate return; the third is physiologically incorrect, as water is absorbed through the digestive tract and distributed by the circulation; and the fourth contradicts the meaning of a cool-down."
+ },
+ {
+  "id": "floor2_pe_bs_08",
+  "type": "mc",
+  "subject": "pe",
+  "topic": "生物力學與能量系統",
+  "topicId": "pe_biomech_systems",
+  "topicZh": "生物力學與能量系統",
+  "topicEn": "Biomechanics & energy systems",
+  "difficulty": "hard",
+  "question": "擲鉛球時，運動員採用滑步或旋轉技術，而非站定直接推出。從力學角度看，這樣做的作用是甚麼？",
+  "questionEn": "Shot putters use a glide or rotational technique rather than standing still. Mechanically, what does this achieve?",
+  "options": [
+   "延長施力的距離與時間，令鉛球在出手前累積更大的速度",
+   "增加鉛球本身的質量，使它在飛行時受空氣阻力的影響減少",
+   "改變鉛球的重心位置，令它在飛行途中的軌跡更接近直線",
+   "減少手臂所需施加的力量，使運動員能夠以更小的力擲得更遠"
+  ],
+  "optionsEn": [
+   "it lengthens the distance and time over which force acts, so the shot gains more speed before release",
+   "it increases the mass of the shot so that air resistance affects its flight less",
+   "it shifts the shot's centre of gravity so its trajectory in flight is straighter",
+   "it reduces the force the arm must exert, letting the athlete throw further with less force"
+  ],
+  "correctIndex": 0,
+  "explanation": "出手速度是決定擲遠距離的最主要因素。由衝量—動量關係，速度的增加量取決於力與作用【時間】的乘積；由功—能關係，動能的增加取決於力與作用【距離】的乘積。滑步或旋轉把施力的路徑由手臂一段延長至整個身體移動的距離，時間亦相應延長，因此在同樣的肌肉力量之下能累積更高的出手速度。有一項不成立，技術動作不會改變鉛球的質量；另一項亦不成立，出手之後軌跡只由出手速度、角度與重力決定；還有一項方向倒轉 —— 技術是為了累積更多速度，而非省力。",
+  "explanationEn": "Release speed is the dominant factor in throwing distance. From the impulse-momentum relation, the gain in speed depends on force multiplied by the TIME over which it acts; from the work-energy relation, the gain in kinetic energy depends on force multiplied by the DISTANCE. A glide or rotation extends the path of force application from the arm alone to the whole body's travel, and lengthens the time correspondingly, so the same muscular force builds a higher release speed. One option is untenable, as technique cannot change the shot's mass; the third likewise, since after release the trajectory is fixed by speed, angle and gravity; and the fourth reverses the purpose, which is to accumulate speed rather than to save effort."
+ }
+]

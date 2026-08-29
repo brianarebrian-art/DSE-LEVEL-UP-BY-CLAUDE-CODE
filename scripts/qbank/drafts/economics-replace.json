@@ -968,8 +968,8 @@
       "a shortage of 40 units; price will tend to rise"
     ],
     "correctIndex": 3,
-    "explanation": "比較同一價格下的兩個數量：供給量 50 件、需求量 90 件，求過於供，短缺 40 件；買方競相出價，故價格趨升。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
-    "explanationEn": "Compare the two quantities at the same price: supply 50, demand 90. Demand exceeds supply by 40 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+    "explanation": "比較同一價格下的兩個數量：供給量 50 件、需求量 90 件，求過於供，短缺 40 件；買方競相出價，故價格趨升。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。有一項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 50, demand 90. Demand exceeds supply by 40 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. One option adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
   },
   {
     "id": "econ_rep_0037",
@@ -995,8 +995,8 @@
       "the demand curve will shift left until the market returns to equilibrium"
     ],
     "correctIndex": 0,
-    "explanation": "比較同一價格下的兩個數量：供給量 70 件、需求量 40 件，供過於求，過剩 30 件；賣方為清貨而減價，故價格趨跌。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
-    "explanationEn": "Compare the two quantities at the same price: supply 70, demand 40. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+    "explanation": "比較同一價格下的兩個數量：供給量 70 件、需求量 40 件，供過於求，過剩 30 件；賣方為清貨而減價，故價格趨跌。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。有一項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 70, demand 40. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. One option adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
   },
   {
     "id": "econ_rep_0038",
@@ -1022,8 +1022,8 @@
       "a surplus of 320 units; price will tend to fall"
     ],
     "correctIndex": 1,
-    "explanation": "比較同一價格下的兩個數量：供給量 120 件、需求量 200 件，求過於供，短缺 80 件；買方競相出價，故價格趨升。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
-    "explanationEn": "Compare the two quantities at the same price: supply 120, demand 200. Demand exceeds supply by 80 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+    "explanation": "比較同一價格下的兩個數量：供給量 120 件、需求量 200 件，求過於供，短缺 80 件；買方競相出價，故價格趨升。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。有一項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 120, demand 200. Demand exceeds supply by 80 units, so buyers bid price up and price tends to rise. Reversing surplus and shortage is the commonest error. One option adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
   },
   {
     "id": "econ_rep_0039",
@@ -1049,8 +1049,8 @@
       "a shortage of 30 units; price will tend to rise"
     ],
     "correctIndex": 2,
-    "explanation": "比較同一價格下的兩個數量：供給量 85 件、需求量 55 件，供過於求，過剩 30 件；賣方為清貨而減價，故價格趨跌。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
-    "explanationEn": "Compare the two quantities at the same price: supply 85, demand 55. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+    "explanation": "比較同一價格下的兩個數量：供給量 85 件、需求量 55 件，供過於求，過剩 30 件；賣方為清貨而減價，故價格趨跌。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。有一項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 85, demand 55. Supply exceeds demand by 30 units, so sellers cut price to clear stock and price tends to fall. Reversing surplus and shortage is the commonest error. One option adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
   },
   {
     "id": "econ_rep_0040",
@@ -1076,8 +1076,8 @@
       "the market is in equilibrium; there is no pressure on price"
     ],
     "correctIndex": 3,
-    "explanation": "比較同一價格下的兩個數量：供給量 64 件、需求量 64 件，兩者相等，市場已在均衡，價格沒有變動的壓力。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
-    "explanationEn": "Compare the two quantities at the same price: supply 64, demand 64. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+    "explanation": "比較同一價格下的兩個數量：供給量 64 件、需求量 64 件，兩者相等，市場已在均衡，價格沒有變動的壓力。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。有一項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 64, demand 64. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. One option adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
   },
   {
     "id": "econ_rep_0041",
@@ -1103,8 +1103,8 @@
       "the demand curve will shift left until the market returns to equilibrium"
     ],
     "correctIndex": 0,
-    "explanation": "比較同一價格下的兩個數量：供給量 30 件、需求量 30 件，兩者相等，市場已在均衡，價格沒有變動的壓力。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。第二個干擾項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
-    "explanationEn": "Compare the two quantities at the same price: supply 30, demand 30. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. The second distractor adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
+    "explanation": "比較同一價格下的兩個數量：供給量 30 件、需求量 30 件，兩者相等，市場已在均衡，價格沒有變動的壓力。把過剩與短缺的方向調轉，是本題最常見的錯誤，記法是：貨多過人要就跌價。有一項把兩個數量相加而非相減，所得並非任何有意義的數量。最後一項混淆了兩件事：此處調整的是【價格】沿着固定的曲線移動，需求曲線本身並不會因為價格而移動。",
+    "explanationEn": "Compare the two quantities at the same price: supply 30, demand 30. They are equal, so the market is already in equilibrium and there is no pressure on price. Reversing surplus and shortage is the commonest error. One option adds the quantities instead of subtracting, which yields no meaningful figure. The last option confuses two things: it is *price* that adjusts along fixed curves — the demand curve itself does not shift because of a price change."
   },
   {
     "id": "econ_rep_0042",

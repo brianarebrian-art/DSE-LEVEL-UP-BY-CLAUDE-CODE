@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · english · english-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">english</span></h1>
+<div class="sub">來源 english-floor2.json · 共 14 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">14</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor7_p1_tone_01","topic":"Reading · Tone & Attitude","difficulty":"basic","question":"作者論及一項新政策時寫道：「委員會自然沒有諮詢任何真正受影響的人。」語氣是甚麼？","options":["Sarcastic — \"naturally\" marks disapproval of what is called expected","Neutral — the sentence merely reports what the committee actually did","Admiring — the writer commends the committee for acting so decisively","Uncertain — the writer does not know whether any consultation occurred"],"correctIndex":0,"explanation":"語氣由用詞承載，與內容同等重要。「自然」把「沒有諮詢」說成完全在意料之中，而把一項失職說成理所當然，正是一種譴責 —— 作者要表達的與贊同相反。這是說明文中反語的標準訊號：一個表示「意料之中」的標記（自然、當然、不出所料）配上一件讀者理應反感的事。中立報道會省去這個標記；讚賞需要正面評價，而文中並無；不確定則需要「似乎」「可能」一類的模糊語。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_tone_02","topic":"Reading · Tone & Attitude","difficulty":"intermediate","question":"下列哪一組詞語最可能顯示【審慎】而非斷言的語氣？","options":["may, tends to, in some cases, appears to","must, always, undeniably, without exception","never, impossible, certainly, proves","urgent, alarming, catastrophic, immediately"],"correctIndex":0,"explanation":"審慎的作者會使用模糊限制語：情態動詞（may、might、could）、頻率限定（tends to、often）、範圍限定（in some cases、in this context）、以及證據標記（appears to、suggests）。這些詞語合起來表示：這項主張是「大概如此」而非「已成定論」。第二、三組作用相反，斷言普遍性與確定性。第四組傳達的是緊迫感，屬於語氣的另一個維度 —— 作者可以同時緊迫而審慎（「這可能相當嚴重，值得即時關注」），因此不應把緊迫讀成斷言。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_tone_03","topic":"Reading · Tone & Attitude","difficulty":"hard","question":"一篇文章前三段稱讚一項計劃，然後列出三個未解決的問題。這個結構最可能反映作者的整體態度是甚麼？","options":["Qualified support — favourable, but conditional on the problems being solved","Complete opposition — the praise was insincere and only the problems count","Complete support — the problems are raised purely as a formal gesture","Indifference — the writer holds no position on the scheme either way"],"correctIndex":0,"explanation":"結構本身承載態度。把保留意見放在讚賞【之後】，等於讓它佔據結尾的位置，而在英文說明文之中，結尾位置通常份量較重，因此全文讀來是「有條件的支持」。把讚賞讀成虛偽、或把問題讀成例行公事，都無法解釋作者何以在兩邊都花了篇幅。應付整體態度題的方法有二：看兩邊各佔多少篇幅，以及看哪一邊佔據結尾 —— 答案通常是有保留的立場而非絕對的立場。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_inf_01","topic":"Reading · Inference & Implication","difficulty":"basic","question":"文中寫道：「到第三週，診所外的人龍已經消失。」可以合理推斷甚麼？","options":["Something changed demand or capacity, though the text does not say what","The clinic closed down permanently at the end of the second week of operation","Everyone in the district had recovered and no longer required any treatment","The clinic began turning patients away without treating any of them at all"],"correctIndex":0,"explanation":"推斷必須由文本加上一般推理得出，並且到此為止。人龍消失，意味着來的人少了，或者服務速度快了，而文中並無交代成因 —— 因此站得住的推斷停在「有些東西改變了」，並列出兩種可能而不從中選一。其餘三項各自補上了文本並不支持的具體成因：結業、全區康復、拒絕診治。推斷題最常見的錯誤正是如此 —— 在文本只支持一個籠統結論之處，補上一個看似合理的故事。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_inf_02","topic":"Reading · Inference & Implication","difficulty":"intermediate","question":"文本的「明言」與「暗示」有何分別？","options":["A statement is written directly; an implication is drawn by the reader","A statement is true whereas an implication is always false or misleading","A statement appears early in a text and an implication only at the very end","They are the same thing, merely described using two different terms"],"correctIndex":0,"explanation":"文本【明言】的內容寫在紙上，可以直接引用。【暗示】則須由讀者根據所寫、所略、以及表述方式建構出來 —— 一位作者詳述某政策的代價而只用一個短句帶過其好處，等於在沒有明言的情況下作出了判斷。暗示並非虛假：它只是通往意義的另一條路徑，而考試之所以考它，正因為粗心閱讀最容易在此出錯 —— 或漏掉一個暗示，或無中生有地讀出文本承載不起的暗示。位置先後與此無關，兩者亦絕非同義詞。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_inf_03","topic":"Reading · Inference & Implication","difficulty":"hard","question":"學生答推斷題時寫下自己對該題目的個人看法。為何這通常得分很低？","options":["The answer must be traceable to the passage, not to the reader's own views","Personal opinion is always wrong, so it cannot earn any credit","The answer is too short, since opinions are briefer than inferences","Inference questions never have a correct answer, so any response is arbitrary"],"correctIndex":0,"explanation":"推斷是一種受約束的閱讀：答案必須由文本推導得出，讀者可以帶入一般常識，但不可帶入個人信念。兩個對該題目意見相左的讀者，應該仍然得出相同的推斷，因為證據就是文本本身。寫下個人看法等於用自己的前提取代了文本的前提，答案因而無法追溯到所讀的內容。個人意見本身並無錯，在議論寫作中自有其位置；問題在於用在一項要求證據的任務上。長短與此無關，而推斷題確實有站得住的答案。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_vr_01","topic":"Reading · Vocabulary & Reference","difficulty":"basic","question":"在「委員會否決了該提案，因為它成本太高」一句中，「它」指甚麼？","options":["The proposal — the nearest preceding noun that fits the sense","The committee — the subject of the main clause","The rejection — the action described by the verb","It refers to nothing specific and is used only for grammar"],"correctIndex":0,"explanation":"指代題的答法是把候選項同時放進【位置】與【意義】兩重檢驗。最接近的前置名詞是「該提案」，而意義上亦通：提案可以成本高，而委員會成本高並不能解釋否決。兩重檢驗不一致時以意義為準 —— 英文作者並不總是把代詞緊貼其指代對象。實用的做法是把候選項代回句中，看推理是否仍然成立。「否決」是動作而非句中的名詞；至於無所指的 it，出現在 it is raining 一類句式，並非此處。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_vr_02","topic":"Reading · Vocabulary & Reference","difficulty":"intermediate","question":"文中「the drug arrests the spread of infection」一句使用了 arrest 一詞。此處取哪一個意思？","options":["To stop or check a process from continuing","To take someone into custody by legal authority","To attract and hold someone's attention","To place under formal charge in a court of law"],"correctIndex":0,"explanation":"詞義題考的是讀者會否讓【句子】決定詞義，而非直接取該詞最常見的意思。arrest 最常指拘捕，但此處它的受詞是「感染的擴散」，並不能被拘捕，而主語是藥物而非執法人員。此處所需的是較舊的一個義項 —— 使某個過程停止，這個用法在醫學寫作中仍然通行。方法始終一致：先看該詞支配甚麼、由甚麼發出，再選出這兩者容許的義項。有一項「吸引注意」是該詞的真實義項，但與此處的主語受詞不合。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor7_p1_vr_03","topic":"Reading · Vocabulary & Reference","difficulty":"hard","question":"為何單憑詞典釋義去答語境詞義題會有風險？","options":["A word may carry several senses, and only the context selects the right one","Dictionary definitions are frequently inaccurate and should not be trusted","Examiners require answers in the student's own words, never a definition","Words in reading passages never carry their dictionary meanings"],"correctIndex":0,"explanation":"大部分常用英文詞都有多個義項，而詞典會把它們一併列出，並不會為某一個句子排出先後。直接取第一條，或取自己剛好認得的那條，正是這類題目失分的方式。可靠的做法是先讀前後文，推出該詞在此處必須是甚麼意思，文章才說得通，然後才回頭核對詞典是否有對應的義項。詞典並非不可靠，問題亦不在於措辭；有一項則說得過頭 —— 文章中的詞語通常確實用着詞典列出的某一個義項，只是未必是第一個。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_p1_tone_04","topic":"Reading · Tone & Attitude","difficulty":"basic","question":"一篇報道寫道：「這份報告在數字上，可以說相當有創意。」語氣是甚麼？","options":["Ironic understatement — the hedge accuses the report of distorting data","Admiring — the writer praises an imaginative way of presenting figures","Neutral — the writer records only that the figures were unusual","Apologetic — the writer regrets having to mention the report"],"correctIndex":0,"explanation":"「shall we say」這類緩衝語（hedge）在此並非表示不確定，而是【明知而故意輕描淡寫】，把嚴重的指控包裝成溫和的措辭，讀者反而更清楚意識到指控的分量。判斷語氣要看用詞與所指事實之間的落差：把「數據造假」說成「有創意」，落差本身就是評價。若真屬中立記述，作者會直接寫出數字有何異常，而不會使用這種修飾。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_p1_tone_05","topic":"Reading · Tone & Attitude","difficulty":"intermediate","question":"在一篇評論文章之中，哪一項最能可靠地顯示作者的態度？","options":["The loaded words chosen where neutral ones were available","The number of paragraphs into which the column is divided","The tense of the verbs used in the opening sentence","Whether the writer's name appears above or below the text"],"correctIndex":0,"explanation":"態度主要由【選詞】承載：同一件事可以說成「示威」或「暴動」、「節省」或「吝嗇」，作者在有中性選項的情況下仍選了帶評價色彩的一個，這個選擇本身即是態度。分析時應指出中性的替代說法是甚麼，再說明作者所選之詞多帶了甚麼含意。段落數目、時態與署名位置屬於版面與文法安排，與作者立場並無穩定關係。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_p1_tone_06","topic":"Reading · Tone & Attitude","difficulty":"hard","question":"一封信以這句作結：「相信此事現在將會得到它至今未曾得到的重視。」語氣傳達了甚麼？","options":["Restrained complaint — polite in form, reproachful in substance","Warm gratitude — the writer thanks the reader for prompt handling","Genuine uncertainty — the writer does not know what will happen next","Open hostility — the writer states plainly that the reader has failed"],"correctIndex":0,"explanation":"這句話的關鍵在【禮貌形式與實質內容的分離】：「相信」屬客套，而「至今未曾得到」則直指對方一直疏忽。正式書信常以這種方式表達不滿 —— 措辭保持得體，指控卻已完整送到。判斷這類語氣，要把句子拆成「表面說法」與「實際斷言」兩層：表面是對將來的期望，實際是對過去的批評。若屬公開敵意，作者會直接指出失職而不加修飾；若屬真正不確定，則不會出現對過去的判斷。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_p1_inf_04","topic":"Reading · Inference & Implication","difficulty":"intermediate","question":"「她把鎖檢查了兩次，臨出門前又檢查了第三次。」可以合理推斷甚麼？","options":["She is anxious about security, though the text never says so","The lock is broken and will not fasten however often it is tried","She is leaving the flat permanently and will not return to it","She has been burgled before, which the passage states directly"],"correctIndex":0,"explanation":"合理推斷須由【文本提供的證據】出發：反覆檢查同一把鎖是行為描寫，指向的是心理狀態 —— 對安全的不安。文本沒有說明原因，因此推斷應停在「焦慮」，不應延伸至鎖已損壞、永久離開或曾經被竊等額外情節，那些都需要文中另有線索支持。留意末項的說法連文本有沒有直接寫出都判斷錯了，屬於把推斷與原文陳述混淆。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_p1_inf_05","topic":"Reading · Inference & Implication","difficulty":"hard","question":"「有根據的推斷」與「過度推斷」的分界在哪裏？","options":["A supported inference stays within what the text's evidence can carry","A supported inference is whichever reading most candidates choose","A supported inference is always the most dramatic of the readings","A supported inference must appear word for word in the passage"],"correctIndex":0,"explanation":"分界在於【證據所能承載的範圍】：推斷可以超出字面，但不可以超出證據。實用的檢查方法是逐句問「文中哪一句支持這一點」—— 若指得出，屬合理推斷；若要補上文本沒有的前提才成立，即為過度推斷。多數人選的答案未必正確，戲劇性亦不是準則；而要求逐字寫出，則把推斷降格為抄錄，等於取消了推斷這回事。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "english";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "english-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "english-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

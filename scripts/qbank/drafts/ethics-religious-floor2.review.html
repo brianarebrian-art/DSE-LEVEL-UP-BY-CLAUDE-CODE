@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · ethics-religious · ethics-religious-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">ethics-religious</span></h1>
+<div class="sub">來源 ethics-religious-floor2.json · 共 15 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">15</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor3_eth_ta_01","topic":"規範倫理・理論應用","difficulty":"basic","question":"效益主義判斷一個行為是否道德，主要依據甚麼？","options":["該行為所帶來的整體後果，即為所有受影響者帶來的快樂與痛苦之總和","該行為是否符合一條可以毫無矛盾地普遍化的道德規則","該行為是否出於一個具備良好品格的人在該處境下會有的動機","該行為是否遵從所屬社群長期承襲下來的傳統與習俗規範"],"correctIndex":0,"explanation":"效益主義屬【後果論】：行為本身無所謂對錯，判準在於它實際造成甚麼後果，而衡量的尺度是受影響者整體的福祉。因此同一個行為在不同處境下可以有不同的道德評價。有一項是康德義務論的定言令式，屬【義務論】，判準在於行為所依據的規則本身；另一項是德性倫理學，關注的是行為者的品格而非行為或規則；還有一項是習俗主義。分辨三大理論的關鍵，正是問「判準落在後果、規則，還是品格」。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_ta_02","topic":"規範倫理・理論應用","difficulty":"intermediate","question":"康德義務論認為，說謊即使能救人一命也是錯的。這個立場的核心理由是甚麼？","options":["道德判準在於行為所依據的規則能否普遍化，而非在於後果如何","救人一命所帶來的快樂總量，其實少於說謊所造成的痛苦總量","說謊者的品格必然敗壞，而品格敗壞的人所做的事一律不道德","社會長期以來禁止說謊，違反長期傳統的行為即屬不道德"],"correctIndex":0,"explanation":"康德的定言令式要求：只按照那些你能同時願意它成為普遍法則的準則行事。「有需要時可以說謊」一旦普遍化，語言的可信性便自我瓦解 —— 若人人在有需要時都說謊，說謊本身也就失去作用，這條準則因而自相矛盾。關鍵在於：判準完全落在【規則的形式】，後果無論多好都不進入計算，這正是義務論與效益主義的分野。有一項用後果作計算，屬效益主義的推理方式；另一項屬德性倫理；還有一項訴諸傳統。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_ta_03","topic":"規範倫理・理論應用","difficulty":"intermediate","question":"德性倫理學處理道德問題時，最核心的提問方式是甚麼？","options":["一個具備良好品格的人在這個處境下會怎樣做","這個行為所帶來的快樂總量是否大於痛苦總量","這個行為所依據的規則能否毫無矛盾地普遍化","這個行為是否符合社會大多數人現時的意見"],"correctIndex":0,"explanation":"德性倫理學把焦點由「這個【行為】對不對」轉向「我應該成為一個怎樣的【人】」。它認為道德的核心是長期培養的品格特質（勇敢、誠實、節制、公正等），而具備這些德性的人自然能在具體處境中作出恰當判斷 —— 因此它不提供一條可以機械套用的公式，這既是它的優點（能處理規則難以窮盡的複雜情境）也是它常被批評之處（判準不夠明確）。其中兩項分別是效益主義與義務論的提問；有一項是多數人意見，並非任何一套規範倫理理論。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_ta_04","topic":"規範倫理・理論應用","difficulty":"hard","question":"在「電車難題」中，效益主義者與義務論者為何可能得出相反結論？","options":["前者比較死亡人數的多寡，後者關注是否把人當作達成目的的手段","前者認為生命有價而後者認為生命無價，兩者的價值觀根本對立","前者只考慮自己的利益，後者則考慮所有人的利益","前者依據法律條文判斷，後者依據宗教教義判斷"],"correctIndex":0,"explanation":"效益主義計算後果：五條人命重於一條，因此傾向拉桿。義務論則問行為的性質：把一個人推落橋以阻停電車，等於把他當作救人的【工具】，違反「人本身即目的、不可僅視為手段」這條原則，因此即使結果較好也不應為之。留意兩者的分歧不在於誰更重視生命，而在於【判準的位置】—— 一個落在後果，一個落在行為本身的性質。有一項誤把分歧描述成價值觀的對立；另一項曲解效益主義（它要求把所有人的福祉平等計算，並非自利）；還有一項混淆了倫理理論與法律及宗教。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_ta_05","topic":"規範倫理・理論應用","difficulty":"intermediate","question":"效益主義常被批評「可能容許犧牲少數人以成全多數人」。這項批評指出了該理論的甚麼特點？","options":["它以總體福祉為判準，本身並不設不可跨越的個人權利底線","它完全不考慮後果，因此無法回應現實中的道德處境","它要求行為者只考慮自己的快樂，因而忽略他人的處境","它認為所有行為都同樣道德，因此無法區分善惡"],"correctIndex":0,"explanation":"效益主義以【總和】為判準，理論上任何個人的利益都可以被更大的總和蓋過，因此並不自動設有「無論如何都不可侵犯」的個人權利。這正是批評者所指之處，亦是規則效益主義（改為評價規則而非個別行為）與權利論試圖回應的問題。要留意：這是一項針對理論結構的批評，並非說效益主義者贊成犧牲少數 —— 多數效益主義者會論證，容許此類犧牲的長遠後果極壞，故實際上不應為之。其餘三項都與效益主義的內容不符：它正是以後果為核心，要求平等計算所有人的福祉，並且明確區分善惡。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_mr_01","topic":"道德推理・後設反思","difficulty":"intermediate","question":"「這件事很多人都在做，所以是對的」。這個推論犯了甚麼謬誤？","options":["由事實推出價值 —— 由「實然」跳到「應然」而缺乏中間論證","循環論證 —— 把有待證明的結論本身當作支持該結論的前提","稻草人 —— 先曲解對方的立場，再攻擊那個被曲解的版本","滑坡 —— 主張某個行為必然引發一連串無法阻止的災難後果"],"correctIndex":0,"explanation":"「很多人在做」是一項【事實】陳述，「所以是對的」則是【價值】判斷。由前者直接推出後者，中間缺少了一個說明「為何普遍即等於正當」的規範前提，這就是休謨指出的實然—應然鴻溝，亦稱訴諸群眾。歷史上大量曾經普遍的做法（奴隸制、禁止女性受教育）正好說明普遍性本身不構成正當性。其餘三項是另外三種常見謬誤，各有其結構：循環論證預設了結論、稻草人攻擊被曲解的立場、滑坡假定必然的連鎖後果。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_mr_02","topic":"道德推理・後設反思","difficulty":"hard","question":"有人說：「道德只是個人喜好，沒有對錯可言。」若此說成立，會產生甚麼後果？","options":["任何譴責（包括譴責種族滅絕）都失去理據，因為並無標準可資判斷","所有人的道德判斷都會自動變得一致，因為喜好本來相同","道德討論會變得更有效率，因為各方都會迅速達成共識","法律將無法制定，因為法律必須完全等同於道德"],"correctIndex":0,"explanation":"這是道德相對主義最常被指出的困難：若道德判斷純屬個人喜好，那麼「種族滅絕是錯的」與「我不喜歡芫荽」在邏輯地位上並無分別，前者便失去了譴責的力量。留意這不等於證明相對主義必然錯誤 —— 一個立場帶來令人不安的後果，本身不構成反駁；但它確實把舉證責任推回相對主義者身上，要求他們解釋如何在其框架內保留道德批評的可能。有一項與相對主義的前提矛盾（喜好人各不同）；另一項不成立（沒有共同標準只會令討論無從收窄）；還有一項假設法律等同道德，這個前提本身不成立。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_mr_03","topic":"道德推理・後設反思","difficulty":"intermediate","question":"在道德爭議中，指出對方「本身也做過同樣的事」，因而斷定其論點錯誤。這個推論有何問題？","options":["論點的對錯與提出者的行為並無必然關係，這是訴諸人身的一種","對方的行為紀錄其實與論點高度相關，因此推論完全成立","這個推論的問題只在於語氣不禮貌，論證結構本身並無錯誤","這個推論只在對方是公眾人物時才不成立，私人之間可以使用"],"correctIndex":0,"explanation":"這是訴諸人身之中的「你也一樣」形式。一個論點成立與否，取決於其前提與推理，與提出者本人有否遵守並無邏輯關係 —— 一個吸煙者說「吸煙有害健康」，這句話依然為真。要留意：指出對方言行不一，在討論其【可信度】或【誠意】時可以是相關的，但那與論點本身的【對錯】是兩個問題，混淆兩者正是這個謬誤的核心。有一項正正是謬誤本身；另一項把邏輯問題誤讀成語氣問題；還有一項憑對象身分區分，但謬誤的結構與對象是誰無關。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor3_eth_mr_04","topic":"道德推理・後設反思","difficulty":"hard","question":"兩個道德原則在具體處境中互相衝突（例如誠實與保護他人免受傷害）。合理的處理方式是甚麼？","options":["衡量兩者在該處境中的分量與所涉利害，作出有理據的取捨並承認代價","任意選擇其中一個原則，因為原則之間本來就沒有高下之分","同時完全遵守兩個原則，因為道德原則不容許有任何例外","放棄道德判斷，因為原則一旦衝突即證明道德毫無用處"],"correctIndex":0,"explanation":"原則衝突是道德生活的常態而非理論失效的證據。合理的處理方式是具體衡量：在這個處境中，誠實所保障的價值與可能造成的傷害各有多重？有沒有既不說謊又能保護對方的第三條路？作出取捨之後，還要承認被犧牲的一方仍然有其分量 —— 這正是「道德剩餘」的概念：即使選擇正確，被壓過的原則所留下的歉疚仍然合理，並非多餘的情緒。有一項把「難以權衡」誤解為「無從權衡」；另一項在邏輯上不可能，衝突的定義正是兩者不能同時完全遵守；還有一項由困難跳到全盤否定，是一種過度推論。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_eth_mr_05","topic":"道德推理・後設反思","difficulty":"basic","question":"有人說：「人類自古以來都有戰爭，所以戰爭在道德上可以接受。」這個推論的問題在哪裏？","options":["由「事實上一直如此」推不出「道德上應該如此」","問題在於歷史記載不足，未能證明自古以來都有戰爭","推論並無問題，凡是長期存在的做法都自有其道理","問題在於戰爭的定義含糊，無法確定何謂一場戰爭"],"correctIndex":0,"explanation":"這是【是然謬誤】：由描述事實的前提，直接跳到規範性的結論。事實陳述講的是世界實際如何，規範陳述講的是應當如何，兩者屬於不同層次，中間必須另有一個道德前提才能接通。奴隸制、酷刑同樣長期存在，若「長期存在即可接受」成立，這些做法也將無法批評 —— 由此可見該推論的形式本身有問題，而非個別例子的問題。指出這一點時，並不需要否認歷史事實，只需指出事實不能單獨支撐道德結論。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_eth_mr_06","topic":"道德推理・後設反思","difficulty":"intermediate","question":"在道德討論之中引用一位受尊敬人物的說法作為理由，甚麼情況下才算恰當？","options":["當該說法本身附有可供檢視的理由，引用只是指出理由所在","任何時候都恰當，受尊敬的人物在道德問題上不會出錯","任何時候都不恰當，道德判斷完全不能參考他人的意見","只在該人物的社會地位高於討論對方時才算恰當"],"correctIndex":0,"explanation":"訴諸權威本身不必然是謬誤，關鍵在於【引用嘅係理由，定係名氣】。若該人物的說法附有論證，引用等於把論證帶入討論，對方仍可檢視；若只以身份地位取代論證，對方便無從反駁，討論亦告終止。全盤否定他人意見同樣不成立：道德思考需要參考前人累積的判斷，只是參考之後仍須自行檢視。判別方法很簡單：把名字拿走之後，那個理由是否仍然站得住。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_eth_mr_07","topic":"道德推理・後設反思","difficulty":"hard","question":"兩名司機同樣疲勞駕駛，其中一人碰巧撞死途人，另一人平安到家。若只譴責前者，會遇到甚麼理論困難？","options":["兩人可以控制的行為相同，責任差異卻來自不能控制的結果","並無困難，造成傷害的一方本來就比較粗心大意","並無困難，道德責任向來只看結果而不看行為","困難在於疲勞駕駛本身並不構成任何道德上的過失"],"correctIndex":0,"explanation":"這是【道德運氣】的經典難題。一般認為責任應與當事人可以控制的範圍相稱，但實際的譴責與法律後果卻明顯受結果左右，而結果之中有相當部分屬於運氣。承認這一點並不等於主張兩人都無責任 —— 兩人都選擇了疲勞駕駛，這部分責任相同；有爭議的只是額外那一層譴責是否有理據。處理方向有二：或者收窄責任至可控範圍，或者承認道德判斷本來就不是完全按可控範圍分配。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_eth_mr_08","topic":"道德推理・後設反思","difficulty":"hard","question":"「己所不欲，勿施於人」在實際應用時，可能出現甚麼限制？","options":["自己的偏好未必等於對方的偏好，照搬會忽略對方的處境","並無限制，所有人在所有處境下的偏好都完全一致","限制在於這條原則只適用於朋友之間，不適用於陌生人","限制在於這條原則要求犧牲自己，因此沒有人能夠做到"],"correctIndex":0,"explanation":"這條原則以【自己的意願】作為推己及人的起點，因此在雙方處境或需要不同時會失準。喜歡熱鬧的人按此原則為害怕喧鬧的朋友安排大型生日會，動機良善而效果相反。常見的修正是把起點由「我不想要甚麼」改為「對方在其處境之中不想要甚麼」，即由設身處地推想改為認真了解對方。指出限制並非否定原則：它仍然攔住了大部分只顧自己的做法，只是不足以單獨處理差異。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_eth_ta_06","topic":"規範倫理・理論應用","difficulty":"intermediate","question":"德性倫理學處理「應否說謊」這個問題時，提問方式與義務論有何不同？","options":["它問一個誠實的人在此處境會怎樣做，而非問規則是否禁止","它問說謊帶來的快樂總量是否大於所造成的痛苦總量","它問說謊這條規則能否毫無矛盾地普遍化為普遍法則","它問說謊有否違反雙方事先訂立的社會契約條款"],"correctIndex":0,"explanation":"德性倫理學的提問單位是【品格】而非【行為規則】：焦點由「這個行為是否違規」轉為「這樣做反映甚麼品格，一個具備誠實與仁愛之德的人在此處境會如何取捨」。義務論問規則與義務，效益主義問後果總量，契約論問協議 —— 三者處理同一個處境，得出的理由結構並不相同。留意德性倫理學並非沒有標準：它以有德者的判斷為參照，而有德者的判斷仍須說得出理由。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_eth_ta_07","topic":"規範倫理・理論應用","difficulty":"hard","question":"若處死一名無辜者能夠平息騷亂、保住多條性命，效益主義會面對甚麼常見反駁？","options":["只計後果總量，會容許犧牲個人，與權利不可侵犯的直覺衝突","效益主義會直接禁止此舉，因為它視殺人為絕對錯誤的行為","反駁在於騷亂涉及的人數難以準確統計，計算因而無法進行","反駁在於效益主義只考慮行為者本人的快樂，並不理會他人"],"correctIndex":0,"explanation":"這個思想實驗針對的是效益主義的【聚合】結構：把所有人的利害加總之後求最大值，個別人的權利便可能被總量壓過。常見回應有兩條：規則效益主義主張應評估「容許處死無辜者」這條規則的長遠後果 —— 一旦司法可以犧牲無辜，公眾對制度的信任將全面崩壞，長遠效益反而更差；另一條回應則直接承認理論與直覺衝突，並質疑該直覺是否可靠。答這類題要留意，效益主義並非不理他人，它恰恰要求平等地計算每一個人。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "ethics-religious";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "ethics-religious-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "ethics-religious-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

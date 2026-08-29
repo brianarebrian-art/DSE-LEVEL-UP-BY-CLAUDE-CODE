@@ -1,0 +1,23 @@
+{
+ "_meta": {
+  "source": "chinese-history-floor2.json",
+  "subject": "chinese-history",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor4_chist_ai_01": "approved",
+  "floor4_chist_ai_02": "approved",
+  "floor4_chist_ai_03": "approved",
+  "floor4_chist_ai_04": "approved",
+  "floor4_chist_mc_01": "approved",
+  "floor4_chist_mc_02": "approved",
+  "floor4_chist_mc_03": "approved",
+  "floor8_chist_ai_05": "approved",
+  "floor8_chist_ai_06": "approved",
+  "floor8_chist_ai_07": "approved",
+  "floor8_chist_mc_04": "approved",
+  "floor8_chist_mc_05": "approved",
+  "floor8_chist_mc_06": "approved"
+ }
+}

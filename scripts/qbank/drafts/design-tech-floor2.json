@@ -1,0 +1,245 @@
+[
+ {
+  "id": "floor2_dat_mr_01",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "basic",
+  "question": "設計一張需要承受人體重量的膠椅時，工程師選用了肋狀加強結構而非加厚整張椅面。這樣做的主要理由是甚麼？",
+  "questionEn": "In designing a plastic chair that must bear a person's weight, the engineer adds ribs rather than thickening the whole seat. What is the main reason?",
+  "options": [
+   "肋狀結構大幅提高抗彎剛度，同時只增加少量材料與重量",
+   "肋狀結構令椅子的外觀更加吸引，是純粹的裝飾考慮",
+   "肋狀結構可以令塑膠在注塑成型時流動得更慢而更均勻",
+   "肋狀結構能令椅子在受力時更容易變形，藉此吸收衝擊"
+  ],
+  "optionsEn": [
+   "ribs greatly raise bending stiffness while adding only a little material and weight",
+   "ribs make the chair look more attractive and are a purely decorative choice",
+   "ribs make the plastic flow more slowly and evenly during injection moulding",
+   "ribs let the chair deform more readily under load so as to absorb impact"
+  ],
+  "correctIndex": 0,
+  "explanation": "抗彎剛度與截面的「深度」成三次方關係：把材料移離中性軸，剛度上升得遠比重量快。肋狀結構正是把少量材料放在最遠離中性軸的位置，因而以極小的重量代價換取大幅提升的剛度。若改為整體加厚，材料用量與重量會按比例上升，成本與注塑週期同時增加，塑膠件亦容易因壁厚不均而收縮變形。外觀並非主要考量；肋條反而會加快而非減慢熔膠流動；至於「更易變形」與承重的設計目標背道而馳。",
+  "explanationEn": "Bending stiffness varies with the cube of section depth: moving material away from the neutral axis raises stiffness far faster than it raises weight. Ribs place a small amount of material as far from the neutral axis as possible, buying a large gain in stiffness for very little weight. Thickening the whole seat instead would raise material use and weight proportionally, increasing both cost and moulding cycle time, and thick uneven walls in plastic tend to sink and warp. Appearance is not the main consideration; ribs speed rather than slow the melt flow; and greater deformation runs directly against the load-bearing objective."
+ },
+ {
+  "id": "floor2_dat_mr_02",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "basic",
+  "question": "在下列情況中，選用鋁合金而非鋼材作為主要材料，最主要的取捨是甚麼？",
+  "questionEn": "When aluminium alloy is chosen over steel as the main material, what is the principal trade-off?",
+  "options": [
+   "以較低的密度換取較輕的重量，但一般強度與剛度均較鋼材為低",
+   "以較高的密度換取較大的強度，但重量會顯著增加",
+   "以較低的成本換取更佳的耐蝕性，但加工難度大幅上升",
+   "以更高的熔點換取更好的耐熱性，但材料價格會下降"
+  ],
+  "optionsEn": [
+   "lower density gives lighter weight, but strength and stiffness are generally below steel's",
+   "higher density gives greater strength, but weight increases substantially",
+   "lower cost buys better corrosion resistance, but machining becomes far harder",
+   "a higher melting point buys better heat resistance, while the price falls"
+  ],
+  "correctIndex": 0,
+  "explanation": "鋁合金的密度約為鋼的三分之一，因此在同樣體積下輕得多，這是選用它的首要理由 —— 航空、單車、手提設備都看重這一點。代價是楊氏模量約為鋼的三分之一、強度亦一般較低，所以要達到相同剛度往往需要加厚截面，部分重量優勢會被抵銷。鋁的耐蝕性確實較佳（表面自然形成氧化層），但成本一般高於普通碳鋼；熔點方面鋁遠低於鋼，耐熱性是它的弱項而非優點。材料選擇題的做法是先問「這個應用最看重哪一項性質」，再看為此付出甚麼代價。",
+  "explanationEn": "Aluminium alloy has roughly one third the density of steel, so it is far lighter for the same volume, and that is the primary reason for choosing it — aircraft, bicycles and portable equipment all prize it. The price is a Young's modulus about one third of steel's and generally lower strength, so matching stiffness often needs a thicker section, offsetting part of the weight saving. Aluminium does resist corrosion well thanks to its natural oxide layer, but it usually costs more than plain carbon steel; and its melting point is far below steel's, so heat resistance is a weakness rather than a strength. Material-selection questions are answered by asking which property the application most needs, then what is given up for it."
+ },
+ {
+  "id": "floor2_dat_mr_03",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "intermediate",
+  "question": "桁架結構（如天橋、起重機臂）廣泛採用三角形單元而非四邊形單元。原因是甚麼？",
+  "questionEn": "Truss structures such as footbridges and crane jibs use triangular rather than quadrilateral units. Why?",
+  "options": [
+   "三角形的形狀由邊長唯一決定，在接點可轉動的情況下仍然不會變形",
+   "三角形所用的桿件比四邊形少，因此可以節省材料與製造成本",
+   "三角形的接點數目較多，能把應力分散到更多位置而降低峰值",
+   "三角形結構在受力時較容易輕微變形，有助吸收風力與震動"
+  ],
+  "optionsEn": [
+   "a triangle's shape is fixed by its side lengths, so it holds even when the joints can rotate",
+   "a triangle uses fewer members than a quadrilateral, saving material and manufacturing cost",
+   "a triangle has more joints, spreading stress over more points and lowering the peak",
+   "a triangle deforms slightly under load, which helps absorb wind and vibration"
+  ],
+  "correctIndex": 0,
+  "explanation": "三角形是唯一「邊長確定即形狀確定」的多邊形：三條邊的長度一經固定，內角便無法改變，即使接點是可自由轉動的鉸接也不會變成另一個形狀。四邊形則不然 —— 四條邊長度不變，它仍可以像平行四邊形一樣傾側坍塌，必須額外加對角斜撐（而加了斜撐，其實就是把它拆成兩個三角形）。桿件數目與接點數目都不是關鍵理由；至於「較易變形」正好與桁架追求的形狀穩定性相反。",
+  "explanationEn": "A triangle is the only polygon whose shape is fully determined by its side lengths: fix the three sides and the angles cannot change, even if the joints are free-turning pins. A quadrilateral is not so — with all four sides unchanged it can still rack over like a parallelogram and collapse, so it needs a diagonal brace, and adding that brace simply divides it into two triangles. Neither member count nor joint count is the reason; and being easier to deform is the opposite of the shape stability a truss is built for."
+ },
+ {
+  "id": "floor2_dat_mr_04",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "intermediate",
+  "question": "一條懸臂樑（一端固定、另一端自由）在自由端受向下的力。樑的哪一部分承受最大的拉應力？",
+  "questionEn": "A cantilever beam is fixed at one end and loaded downwards at the free end. Where does the greatest tensile stress occur?",
+  "options": [
+   "固定端的上表面",
+   "固定端的下表面",
+   "自由端的上表面",
+   "整條樑的中性軸位置"
+  ],
+  "optionsEn": [
+   "the upper surface at the fixed end",
+   "the lower surface at the fixed end",
+   "the upper surface at the free end",
+   "along the neutral axis of the beam"
+  ],
+  "correctIndex": 0,
+  "explanation": "懸臂樑受向下的力時向下彎曲，上表面被拉長、下表面被壓短，因此上表面受拉、下表面受壓。而彎矩由自由端向固定端遞增，在固定端達到最大值，故最大拉應力出現在【固定端的上表面】—— 這正是懸臂結構最常從根部斷裂的原因，亦解釋為何懸臂樑的根部通常做得最厚。下表面受的是壓應力而非拉應力；自由端的彎矩為零，應力最小；中性軸上的正應力恰好為零，那裏既不受拉也不受壓。",
+  "explanationEn": "A downward load bends the cantilever downwards, stretching the upper surface and compressing the lower one, so the top is in tension and the bottom in compression. The bending moment increases from the free end towards the fixed end and is greatest at the support, so the largest tensile stress is at the UPPER SURFACE OF THE FIXED END — which is why cantilevers most often fail at the root, and why cantilever beams are usually deepest there. The lower surface carries compression rather than tension; the bending moment at the free end is zero, so stress is least there; and the direct stress on the neutral axis is exactly zero, being neither tensile nor compressive."
+ },
+ {
+  "id": "floor2_dat_mr_05",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "basic",
+  "question": "熱塑性塑膠與熱固性塑膠的關鍵分別是甚麼？",
+  "questionEn": "What is the key difference between thermoplastics and thermosetting plastics?",
+  "options": [
+   "熱塑性可反覆受熱軟化並重新塑形；熱固性一經硬化便無法再熔化重塑",
+   "熱塑性一經硬化便無法再熔化；熱固性可反覆受熱軟化並重新塑形",
+   "熱塑性只能用注塑成型；熱固性只能用吹塑成型，兩者的加工方法互不相通",
+   "熱塑性完全不導電；熱固性導電性良好，常用於製造電子零件的接點"
+  ],
+  "optionsEn": [
+   "thermoplastics soften and can be reshaped repeatedly on heating; thermosets cannot be remelted once cured",
+   "thermoplastics cannot be remelted once set; thermosets soften and reshape repeatedly on heating",
+   "thermoplastics can only be injection moulded and thermosets only blow moulded, with no overlap",
+   "thermoplastics do not conduct at all, while thermosets conduct well and are used for contacts"
+  ],
+  "correctIndex": 0,
+  "explanation": "分別在於分子結構。熱塑性塑膠的長鏈分子之間只靠較弱的分子間作用力連繫，受熱時這些作用力被克服，材料軟化而可重新塑形，冷卻後又固化，過程可以反覆進行 —— 因此熱塑性塑膠可以回收再造。熱固性塑膠在固化時，分子之間形成共價交聯鍵，構成一個立體網絡；再加熱只會令它焦化分解而不會軟化，所以無法重塑或以熔融方式回收。有一項把兩者完全對調；加工方法與導電性都不是兩類塑膠的定義性分別。",
+  "explanationEn": "The difference lies in molecular structure. In a thermoplastic the long chains are held together only by relatively weak intermolecular forces; heating overcomes these, the material softens and can be reshaped, and cooling sets it again, with the cycle repeatable — which is why thermoplastics can be recycled. In a thermoset, curing forms covalent cross-links between chains into a three-dimensional network; reheating only chars and decomposes it rather than softening it, so it cannot be reshaped or melt-recycled. One option reverses the two; processing method and electrical conductivity are not the defining difference."
+ },
+ {
+  "id": "floor2_dat_mr_06",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "intermediate",
+  "question": "在產品設計中採用「模組化」設計的主要優點是甚麼？",
+  "questionEn": "What is the main advantage of modular design in product development?",
+  "options": [
+   "個別模組可獨立更換或升級，令維修更容易並延長產品壽命",
+   "整件產品的總零件數目必然減少，因此製造成本一定下降",
+   "產品的外觀必然更加統一美觀，因為所有模組尺寸完全相同",
+   "產品必然變得更輕更薄，因為模組之間可以完全緊密貼合"
+  ],
+  "optionsEn": [
+   "individual modules can be replaced or upgraded on their own, easing repair and extending product life",
+   "the total part count falls, so manufacturing cost is certain to drop",
+   "appearance is necessarily more unified, because all modules share identical dimensions",
+   "the product becomes lighter and thinner, because modules pack together perfectly"
+  ],
+  "correctIndex": 0,
+  "explanation": "模組化把產品拆成若干功能獨立、介面標準化的單元。任何一個模組損壞或過時，只需更換該模組而不必棄置整件產品，維修成本與電子廢物同時減少，產品壽命得以延長；同一組模組亦可重新組合成不同型號，縮短開發時間。要留意其餘三項都用了「必然」這種絕對語氣：模組化為了保留介面，零件數目往往【增加】而非減少；外觀與厚薄取決於工業設計，與模組化沒有必然關係。見到「必然」「一定」而缺乏條件限定，通常就是過度推論的訊號。",
+  "explanationEn": "Modular design divides a product into functionally independent units with standardised interfaces. When one module fails or becomes obsolete, only that module need be replaced rather than the whole product, cutting repair cost and electronic waste while extending service life; the same modules can also be recombined into different variants, shortening development. Note that the other three options all use absolute language: modularity typically INCREASES part count rather than reducing it, because interfaces must be added; and appearance and thickness follow from industrial design and bear no necessary relation to modularity. Absolute claims without qualification are usually the signal of over-inference."
+ },
+ {
+  "id": "floor2_dat_mr_07",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "hard",
+  "question": "兩根同樣材料、同樣截面積的樑，一根是實心圓棒，另一根是空心圓管。在抗彎方面，哪一項描述正確？",
+  "questionEn": "Two beams of the same material and the same cross-sectional area: one a solid round bar, the other a hollow tube. Which statement about bending is correct?",
+  "options": [
+   "空心圓管的抗彎剛度較高，因為材料分佈在離中性軸更遠的位置",
+   "實心圓棒的抗彎剛度較高，因為它的中心部分同樣參與抵抗彎曲",
+   "兩者的抗彎剛度完全相同，因為材料相同而截面積亦相同",
+   "兩者都不能抵抗彎曲，圓形截面只適合承受拉力與壓力"
+  ],
+  "optionsEn": [
+   "the hollow tube is stiffer in bending, because its material lies further from the neutral axis",
+   "the solid bar is stiffer, because its central material also resists bending",
+   "the two are equally stiff, since the material and cross-sectional area are the same",
+   "neither resists bending, as round sections suit only tension and compression"
+  ],
+  "correctIndex": 0,
+  "explanation": "抗彎剛度取決於截面【二次矩】，而二次矩按材料與中性軸距離的平方加權。中性軸附近的材料距離接近零，對抵抗彎曲幾乎沒有貢獻；把同樣份量的材料移到外圍，二次矩顯著上升。空心圓管正是把材料集中在遠離軸心之處，因此在相同重量下抗彎剛度遠高於實心棒 —— 單車車架、旗桿、腳手架用管而不用實心棒，理由就在於此。有一項恰恰誤解了中心材料的作用；另一項忽略了截面積相同不代表分佈相同；還有一項與事實不符。",
+  "explanationEn": "Bending stiffness depends on the second moment of area, which weights material by the SQUARE of its distance from the neutral axis. Material near the axis sits at almost zero distance and contributes almost nothing to resisting bending; moving the same quantity outwards raises the second moment substantially. A hollow tube concentrates material away from the centre and is therefore far stiffer in bending than a solid bar of equal weight — which is why bicycle frames, flagpoles and scaffolding use tube rather than solid rod. One option misreads the role of the central material; the third overlooks that equal area does not mean equal distribution; and the fourth is simply untrue."
+ },
+ {
+  "id": "floor2_dat_mr_08",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "intermediate",
+  "question": "設計一件產品時進行「使用者測試」（user testing）的主要目的是甚麼？",
+  "questionEn": "What is the main purpose of user testing during product design?",
+  "options": [
+   "觀察真實使用者操作原型時遇到的困難，據此修正設計上的假設",
+   "向潛在買家推廣產品，藉此在正式發售前先建立市場需求",
+   "確認生產線的良品率能否達到預設標準，以便安排量產時間表",
+   "證明設計團隊原先的構想正確無誤，藉此說服管理層批出資金"
+  ],
+  "optionsEn": [
+   "to watch real users struggle with a prototype and correct the design assumptions revealed",
+   "to promote the product to potential buyers and build demand before launch",
+   "to confirm that the production line yield meets target so mass production can be scheduled",
+   "to prove the design team's original concept was right and secure funding from management"
+  ],
+  "correctIndex": 0,
+  "explanation": "使用者測試的價值在於：設計者對「使用者會點用」的假設，往往與真實行為不符，而這些落差只有看住真人操作才會浮現 —— 例如按鈕位置被誤解、步驟次序不合直覺、標示文字有歧義。測試的目的是【發現問題】並據此修改，因此設計者要抱着「希望找到毛病」的心態。有一項正好把方向倒轉：抱着「證明自己啱」的心態去做測試，會不自覺地引導使用者、忽略負面訊號，測試便失去意義。推廣屬市場推廣範疇；良品率屬生產測試範疇，兩者都不是使用者測試。",
+  "explanationEn": "User testing matters because a designer's assumptions about how people will use a product frequently differ from actual behaviour, and those gaps surface only by watching real users — a button whose position is misread, a step order that feels unnatural, a label that reads two ways. The purpose is to FIND problems and revise accordingly, so the designer should go in hoping to find faults. One option inverts this: testing in order to prove yourself right leads to unconsciously steering users and discounting negative signals, which empties the exercise of value. Promotion belongs to marketing and yield to production testing, and neither is user testing."
+ },
+ {
+  "id": "floor2_dat_mr_09",
+  "type": "mc",
+  "subject": "design-tech",
+  "topic": "材料與結構・推理",
+  "topicId": "dat_materials_reason",
+  "topicZh": "材料與結構・推理",
+  "topicEn": "Materials & structures — reasoning",
+  "difficulty": "hard",
+  "question": "一件金屬零件在遠低於其抗拉強度的反覆應力下，使用一段時間後突然斷裂。這最可能是甚麼現象？",
+  "questionEn": "A metal part fractures suddenly after a period in service, under repeated stresses well below its tensile strength. What is this most likely to be?",
+  "options": [
+   "疲勞破壞 —— 微裂紋在反覆應力下逐次擴展，直至截面不足以承載",
+   "塑性變形 —— 材料在持續荷載下緩慢拉長，最終頸縮而斷裂",
+   "腐蝕破壞 —— 表面與空氣中的氧氣反應，截面因鏽蝕而逐漸減少",
+   "過載破壞 —— 某次施加的力超過了材料的抗拉強度而即時斷裂"
+  ],
+  "optionsEn": [
+   "fatigue — microcracks grow with each stress cycle until the remaining section cannot carry the load",
+   "plastic deformation — the material slowly elongates under sustained load and necks to failure",
+   "corrosion — the surface reacts with atmospheric oxygen and the section is progressively lost to rust",
+   "overload — a single applied force exceeded the tensile strength and broke the part at once"
+  ],
+  "correctIndex": 0,
+  "explanation": "疲勞的特徵正正是題幹描述的組合：應力遠低於抗拉強度、經過一段時間、然後【突然】斷裂。機制是應力集中處（缺口、孔洞、加工痕）萌生微裂紋，每一次應力循環令裂紋前進極小一段，累積數萬至數百萬次後，剩餘截面不足以承載，於是瞬間脆斷 —— 斷口通常一半光滑（裂紋緩慢擴展區）、一半粗糙（最終瞬斷區）。設計上以圓角取代尖角、避免表面刮痕，正是為了減少應力集中。塑性變形會有明顯的持續伸長作為先兆；腐蝕會有可見的鏽蝕；過載則是單次超過強度，與「遠低於抗拉強度」矛盾。",
+  "explanationEn": "Fatigue is characterised by exactly the combination in the stem: stresses well below the tensile strength, a period in service, then SUDDEN fracture. Microcracks initiate at stress concentrations — notches, holes, machining marks — and each stress cycle advances the crack a minute amount until, after tens of thousands to millions of cycles, the remaining section cannot carry the load and snaps. The fracture surface typically shows a smooth region of slow crack growth beside a rough final-fracture zone. Using generous radii instead of sharp corners and avoiding surface scratches reduces stress concentration for this reason. Plastic deformation gives warning through visible elongation; corrosion shows visible rust; and overload means a single excursion above the strength, contradicting \"well below the tensile strength\"."
+ }
+]

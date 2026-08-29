@@ -16,11 +16,20 @@ const T = {
   depreciation: { id: 'depreciation', zh: '折舊', en: 'Depreciation' },
   costing: { id: 'costing', zh: '成本與定價', en: 'Costing & Pricing' },
   interest: { id: 'interest', zh: '利息', en: 'Interest' },
+  // ── 2026-08-28 平均分佈補強 ────────────────────────────────────────────
+  // 實測企會財 13 個課題：ratios 已有 53 條，而 financial_mgmt 與
+  // personal_finance 各 21 條、business_env 24 條（平均目標 77）。
+  // bafs_depreciation / bafs_ratio_analysis / bafs_costing_pricing 三個課題
+  // 有一批 22 條人手草稿正在等審批，本節不觸碰，避免與之重疊。
+  finMgmt: { id: 'financial_mgmt', zh: '財務管理', en: 'Financial Management' },
+  personalFin: { id: 'personal_finance', zh: '個人理財', en: 'Personal Finance' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
   acct: { id: 'accounting', zh: '會計', en: 'Accounting', emoji: '📒' },
   finance: { id: 'finance', zh: '財務', en: 'Finance', emoji: '💰' },
+  quant: { id: 'quantitative_analysis', zh: '計算分析', en: 'Quantitative Analysis', emoji: '🧮' },
+  concepts: { id: 'concepts', zh: '概念理解', en: 'Concepts', emoji: '📘' },
 } satisfies Record<string, FwMeta>
 
 const { bank, add } = createBank('bafs')
@@ -146,6 +155,465 @@ for (const gp of [100, 150, 200, 250]) {
       [`淨利 = ${sales} − ${cogs} − ${exp} = ${np} 元；淨利率 = ${np}/${sales} × 100% = ${margin}%。陷阱：${round(((sales - cogs) / sales) * 100, 1)}% 是毛利率（漏減費用）。`,
        `Net margin = (sales−COGS−expenses)/sales × 100% = ${margin}%. Trap: ${round(((sales - cogs) / sales) * 100, 1)}% is the gross margin.`])
   })
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 平均分佈補強 —— 兩個最薄課題（2026-08-28）
+// 只補 financial_mgmt 與 personal_finance；bafs_depreciation /
+// bafs_ratio_analysis / bafs_costing_pricing 三者有人手草稿在審，不重疊。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// FM1 — 營運資金 = 流動資產 − 流動負債
+for (const [ca, cl] of [[600000, 240000], [500000, 250000], [800000, 320000], [450000, 180000], [720000, 400000], [900000, 500000], [360000, 150000], [640000, 280000]] as [number, number][]) {
+  const wc = ca - cl
+  add(`bb_fm1_${ca}_${cl}`, T.finMgmt, FW.quant, 'easy',
+    [`某公司流動資產 \\$${ca.toLocaleString('en-US')}，流動負債 \\$${cl.toLocaleString('en-US')}。其營運資金是多少？`,
+     `A company has current assets of \\$${ca.toLocaleString('en-US')} and current liabilities of \\$${cl.toLocaleString('en-US')}. What is its working capital?`],
+    [money(wc.toLocaleString('en-US')), money((ca + cl).toLocaleString('en-US')), money(round(ca / cl, 2)), money(cl.toLocaleString('en-US'))],
+    [`營運資金 $=$ 流動資產 $-$ 流動負債 $= ${ca.toLocaleString('en-US')} - ${cl.toLocaleString('en-US')} = ${wc.toLocaleString('en-US')}$ 元。它是一個【金額】，量度企業償還短期債務之後尚餘多少短期資源。陷阱：${(ca + cl).toLocaleString('en-US')} 元用了加法；${round(ca / cl, 2)} 是流動比率——那是一個【比率】而非金額，兩者不可混用；${cl.toLocaleString('en-US')} 元只抄了流動負債。`,
+     `Working capital is current assets less current liabilities: ${ca.toLocaleString('en-US')} − ${cl.toLocaleString('en-US')} = ${wc.toLocaleString('en-US')}. It is an amount, measuring the short-term resources left after short-term debts are met. Traps: ${(ca + cl).toLocaleString('en-US')} adds; ${round(ca / cl, 2)} is the current ratio, which is a ratio rather than an amount and must not be confused with it; ${cl.toLocaleString('en-US')} merely copies the liabilities.`])
+}
+
+// FM2 — 存貨周轉率 = 銷貨成本 ÷ 平均存貨
+for (const [cogs, inv] of [[600000, 100000], [800000, 200000], [450000, 90000], [960000, 120000], [720000, 180000], [540000, 135000], [1200000, 300000], [640000, 160000]] as [number, number][]) {
+  const turn = cogs / inv
+  if (!Number.isInteger(turn)) continue
+  add(`bb_fm2_${cogs}_${inv}`, T.finMgmt, FW.quant, 'medium',
+    [`某商號的銷貨成本為 \\$${cogs.toLocaleString('en-US')}，平均存貨為 \\$${inv.toLocaleString('en-US')}。其存貨周轉率是多少？`,
+     `A business has cost of goods sold of \\$${cogs.toLocaleString('en-US')} and average inventory of \\$${inv.toLocaleString('en-US')}. What is its inventory turnover?`],
+    [qty(turn, '次', 'times'), qty(round(inv / cogs, 3), '次', 'times'), qty(round(365 / turn, 1), '次', 'times'), qty((cogs - inv).toLocaleString('en-US'), '次', 'times')],
+    [`存貨周轉率 $=$ 銷貨成本 $\\div$ 平均存貨 $= ${cogs.toLocaleString('en-US')} \\div ${inv.toLocaleString('en-US')} = ${turn}$ 次，表示一年內存貨平均售出並補充 ${turn} 次。周轉率愈高，一般代表存貨管理愈有效率、資金積壓愈少。陷阱：${round(inv / cogs, 3)} 次上下倒轉；${round(365 / turn, 1)} 是存貨周轉【天數】而非次數，兩者互為倒數關係；最後一項用了相減。`,
+     `Inventory turnover is cost of goods sold divided by average inventory: ${cogs.toLocaleString('en-US')} ÷ ${inv.toLocaleString('en-US')} = ${turn} times, meaning inventory is sold and replaced ${turn} times a year. A higher figure generally indicates more efficient inventory management and less capital tied up. Traps: ${round(inv / cogs, 3)} inverts the ratio; ${round(365 / turn, 1)} is the inventory turnover period in days rather than a number of times, the two being reciprocals; the last option subtracts.`])
+}
+
+// PF1 — 單利 I = P × r × t
+for (const P of [10000, 20000, 50000, 80000]) {
+  for (const r of [0.03, 0.05, 0.06]) {
+    for (const t of [2, 3, 5]) {
+      const I = P * r * t
+      if (!Number.isInteger(I)) continue
+      add(`bb_pf1_${P}_${String(r).replace('.', '')}_${t}`, T.personalFin, FW.concepts, 'easy',
+        [`把 \\$${P.toLocaleString('en-US')} 以年利率 ${r * 100}% 的【單利】存款 ${t} 年。所得利息是多少？`,
+         `\\$${P.toLocaleString('en-US')} is deposited at ${r * 100}% simple interest per year for ${t} years. How much interest is earned?`],
+        [money(I.toLocaleString('en-US')), money((P * r).toLocaleString('en-US')), money((P + I).toLocaleString('en-US')), money(round(P * ((1 + r) ** t - 1), 2))],
+        [`單利 $= P \\times r \\times t = ${P.toLocaleString('en-US')} \\times ${r} \\times ${t} = ${I.toLocaleString('en-US')}$ 元。單利每年只按【本金】計息，利息不會再生利息。陷阱：${(P * r).toLocaleString('en-US')} 元只計了一年；${(P + I).toLocaleString('en-US')} 元是本利和而非利息；最後一項用了複利公式——複利所得較多，因為利息會滾入本金再生息，兩者的分別隨年期拉長而擴大。`,
+         `Simple interest is $P \\times r \\times t = ${P.toLocaleString('en-US')} \\times ${r} \\times ${t} = ${I.toLocaleString('en-US')}$. Simple interest is charged on the principal alone each year, so interest never earns interest. Traps: ${(P * r).toLocaleString('en-US')} covers one year only; ${(P + I).toLocaleString('en-US')} is the total of principal and interest rather than the interest; the last option applies the compound formula, which gives more because interest is added to the principal and itself earns interest, the gap widening with time.`])
+    }
+  }
+}
+
+// PF2 — 複利本利和 A = P(1 + r)ᵗ
+for (const P of [10000, 20000, 50000]) {
+  for (const r of [0.05, 0.1, 0.2]) {
+    for (const t of [2, 3]) {
+      const A = P * (1 + r) ** t
+      if (!Number.isInteger(A)) continue
+      add(`bb_pf2_${P}_${String(r).replace('.', '')}_${t}`, T.personalFin, FW.concepts, 'medium',
+        [`把 \\$${P.toLocaleString('en-US')} 以年利率 ${r * 100}% 的【複利】存款 ${t} 年（每年結息一次）。到期本利和是多少？`,
+         `\\$${P.toLocaleString('en-US')} is deposited at ${r * 100}% compound interest per year for ${t} years, compounded annually. What is the amount at maturity?`],
+        [money(A.toLocaleString('en-US')), money((P * (1 + r * t)).toLocaleString('en-US')), money((A - P).toLocaleString('en-US')), money((P * r * t).toLocaleString('en-US'))],
+        [`複利本利和 $= P(1 + r)^{t} = ${P.toLocaleString('en-US')} \\times ${1 + r}^{${t}} = ${A.toLocaleString('en-US')}$ 元。陷阱：${(P * (1 + r * t)).toLocaleString('en-US')} 元用了單利公式；${(A - P).toLocaleString('en-US')} 元是【利息】而非本利和，題目問的是到期總額；${(P * r * t).toLocaleString('en-US')} 元是單利的利息。留意公式中的指數 ${t} 正是複利與單利的分別所在：複利是連乘，單利是連加。`,
+         `The compound amount is $P(1 + r)^{t} = ${P.toLocaleString('en-US')} \\times ${1 + r}^{${t}} = ${A.toLocaleString('en-US')}$. Traps: ${(P * (1 + r * t)).toLocaleString('en-US')} uses the simple interest formula; ${(A - P).toLocaleString('en-US')} is the interest rather than the amount, and the question asks for the total at maturity; ${(P * r * t).toLocaleString('en-US')} is the simple interest. The exponent ${t} is exactly where compound and simple interest part company: compounding multiplies where simple interest adds.`])
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 第三批母模板 —— 平均分佈補強（2026-08-28）
+// ---------------------------------------------------------------------------
+// 補強前實測企會財 13 個課題：個人理財 63、財務比率 53、財務報表 43，
+// 而折舊計算僅 2 條、比率分析（高階）與成本・定價・回本各 3 條，
+// 不均比高達 31.5×（全站最差）。本節按缺口由大到小補寫計算型母模板。
+//
+// 商業環境（24 條）與管理（25 條）屬概念型課題，並非可由公式構造正確答案
+// 的內容，不適用本工廠，須另循人手出題與覆核管線處理 —— 此處刻意不動。
+//
+// 折舊計算／比率分析（高階）／成本・定價・回本 三個課題另有 22 條人手草稿
+// 待審批。本節所出全為計算題，與該批草稿的題幹不重疊（已用
+// check-draft-overlap 核對）。
+// ═══════════════════════════════════════════════════════════════════════════
+
+const T2 = {
+  depCalc: { id: 'bafs_depreciation', zh: '折舊計算', en: 'Depreciation calculations' },
+  ratioAdv: { id: 'bafs_ratio_analysis', zh: '比率分析（高階）', en: 'Ratio analysis (advanced)' },
+  costPrice: { id: 'bafs_costing_pricing', zh: '成本・定價・回本', en: 'Costing, pricing and payback' },
+  accounting: { id: 'accounting', zh: '會計', en: 'Accounting' },
+} satisfies Record<string, TopicMeta>
+
+const fmt = (v: number): string => v.toLocaleString('en-US')
+
+// ── 折舊計算（bafs_depreciation）──────────────────────────────────────────
+
+// DP1 — 直線法：每年折舊 = (成本 − 殘值) ÷ 可使用年期
+for (const cost of [60000, 80000, 100000, 120000, 150000, 180000]) {
+  for (const life of [4, 5, 6]) {
+    for (const scrapPct of [10, 20]) {
+      const scrap = (cost * scrapPct) / 100
+      const ans = (cost - scrap) / life
+      if (!Number.isInteger(ans)) continue
+      add(`bafs_dp1_${cost}_${life}_${scrapPct}`, T2.depCalc, FW.quant, 'easy',
+        [`一部機器成本 ${fmt(cost)} 元，估計可使用 ${life} 年，殘值為成本的 ${scrapPct}%。以直線法計算，每年折舊是多少？`,
+         `A machine costs \\$${fmt(cost)}, has a useful life of ${life} years and a residual value of ${scrapPct}% of cost. Using the straight-line method, what is the annual depreciation?`],
+        [money(fmt(ans)), money(fmt(cost / life)), money(fmt(scrap / life)), money(fmt(cost - scrap))],
+        [`直線法每年折舊 = (成本 − 殘值) ÷ 可使用年期。殘值 = ${fmt(cost)} × ${scrapPct}% = ${fmt(scrap)} 元，故每年折舊 = (${fmt(cost)} − ${fmt(scrap)}) ÷ ${life} = ${fmt(ans)} 元。陷阱：${fmt(cost / life)} 元漏了扣除殘值；${fmt(scrap / life)} 元只把殘值攤分；${fmt(cost - scrap)} 元是可折舊總額，尚未除以年期。`,
+         `Straight-line depreciation = (cost − residual) ÷ useful life. The residual is \\$${fmt(cost)} × ${scrapPct}% = \\$${fmt(scrap)}, so the annual charge is (\\$${fmt(cost)} − \\$${fmt(scrap)}) ÷ ${life} = \\$${fmt(ans)}. Traps: \\$${fmt(cost / life)} omits the residual; \\$${fmt(scrap / life)} spreads only the residual; \\$${fmt(cost - scrap)} is the total depreciable amount before dividing by the life.`])
+    }
+  }
+}
+
+// DP2 — 直線法下第 n 年年末的帳面淨值
+for (const cost of [60000, 90000, 120000, 150000]) {
+  for (const life of [5, 6]) {
+    for (let yr = 2; yr <= 4; yr++) {
+      const scrap = cost / 10
+      const annual = (cost - scrap) / life
+      if (!Number.isInteger(annual)) continue
+      const acc = annual * yr
+      add(`bafs_dp2_${cost}_${life}_${yr}`, T2.depCalc, FW.quant, 'medium',
+        [`一項資產成本 ${fmt(cost)} 元，殘值 ${fmt(scrap)} 元，可使用 ${life} 年，採用直線法。第 ${yr} 年年末的帳面淨值是多少？`,
+         `An asset costing \\$${fmt(cost)} with a residual value of \\$${fmt(scrap)} is depreciated on a straight-line basis over ${life} years. What is its net book value at the end of year ${yr}?`],
+        [money(fmt(cost - acc)), money(fmt(acc)), money(fmt(cost - annual)), money(fmt(cost - acc - scrap))],
+        [`每年折舊 = (${fmt(cost)} − ${fmt(scrap)}) ÷ ${life} = ${fmt(annual)} 元，${yr} 年的累計折舊 = ${fmt(annual)} × ${yr} = ${fmt(acc)} 元。帳面淨值 = 成本 − 累計折舊 = ${fmt(cost)} − ${fmt(acc)} = ${fmt(cost - acc)} 元。陷阱：${fmt(acc)} 元是累計折舊本身；${fmt(cost - annual)} 元只扣了一年；${fmt(cost - acc - scrap)} 元把殘值重複扣除一次（殘值已包含在帳面淨值之內）。`,
+         `The annual charge is (\\$${fmt(cost)} − \\$${fmt(scrap)}) ÷ ${life} = \\$${fmt(annual)}, so accumulated depreciation after ${yr} years is \\$${fmt(annual)} × ${yr} = \\$${fmt(acc)}. Net book value = cost − accumulated depreciation = \\$${fmt(cost)} − \\$${fmt(acc)} = \\$${fmt(cost - acc)}. Traps: \\$${fmt(acc)} is the accumulated depreciation itself; \\$${fmt(cost - annual)} deducts only one year; \\$${fmt(cost - acc - scrap)} deducts the residual a second time, since it is already contained in the net book value.`])
+    }
+  }
+}
+
+// DP3 — 減值餘額法（首兩年）
+for (const cost of [50000, 80000, 100000, 200000]) {
+  for (const rate of [20, 25, 40, 50]) {
+    const y1 = (cost * rate) / 100
+    const y2 = ((cost - y1) * rate) / 100
+    if (!Number.isInteger(y2)) continue
+    add(`bafs_dp3_${cost}_${rate}`, T2.depCalc, FW.quant, 'hard',
+      [`一部設備成本 ${fmt(cost)} 元，按【減值餘額法】以每年 ${rate}% 計算折舊。第二年的折舊額是多少？`,
+       `Equipment costing \\$${fmt(cost)} is depreciated at ${rate}% per year using the reducing-balance method. What is the depreciation charge for the second year?`],
+      [money(fmt(y2)), money(fmt(y1)), money(fmt(y1 + y2)), money(fmt((cost * rate * 2) / 100))],
+      [`減值餘額法以【帳面淨值】而非成本為計算基礎。第一年折舊 = ${fmt(cost)} × ${rate}% = ${fmt(y1)} 元，年末帳面淨值 = ${fmt(cost - y1)} 元；第二年折舊 = ${fmt(cost - y1)} × ${rate}% = ${fmt(y2)} 元。陷阱：${fmt(y1)} 元是第一年的折舊，誤以為兩年相同（那是直線法的特徵）；${fmt(y1 + y2)} 元是兩年的累計折舊；${fmt((cost * rate * 2) / 100)} 元把成本乘以兩倍稅率。`,
+       `The reducing-balance method applies the rate to the net book value rather than to cost. Year 1: \\$${fmt(cost)} × ${rate}% = \\$${fmt(y1)}, leaving a net book value of \\$${fmt(cost - y1)}. Year 2: \\$${fmt(cost - y1)} × ${rate}% = \\$${fmt(y2)}. Traps: \\$${fmt(y1)} is the year-1 charge and assumes the two years are equal, which is the straight-line pattern; \\$${fmt(y1 + y2)} is the two-year accumulated total; \\$${fmt((cost * rate * 2) / 100)} applies twice the rate to cost.`])
+  }
+}
+
+// DP4 — 出售資產的損益
+for (const cost of [80000, 120000, 160000]) {
+  for (const acc of [30000, 50000, 70000]) {
+    for (const proceeds of [40000, 60000, 90000]) {
+      const nbv = cost - acc
+      const gain = proceeds - nbv
+      if (gain === 0) continue
+      add(`bafs_dp4_${cost}_${acc}_${proceeds}`, T2.depCalc, FW.acct, 'hard',
+        [`一項資產成本 ${fmt(cost)} 元，累計折舊 ${fmt(acc)} 元，現以 ${fmt(proceeds)} 元售出。出售的損益是多少？`,
+         `An asset costing \\$${fmt(cost)} with accumulated depreciation of \\$${fmt(acc)} is sold for \\$${fmt(proceeds)}. What is the gain or loss on disposal?`],
+        [money(fmt(gain)), money(fmt(proceeds - cost)), money(fmt(nbv)), money(fmt(proceeds - acc))],
+        [`出售損益 = 售價 − 帳面淨值。帳面淨值 = 成本 − 累計折舊 = ${fmt(cost)} − ${fmt(acc)} = ${fmt(nbv)} 元，故損益 = ${fmt(proceeds)} − ${fmt(nbv)} = ${fmt(gain)} 元${gain > 0 ? '（收益）' : '（虧損）'}。陷阱：${fmt(proceeds - cost)} 元用了原成本而非帳面淨值，忽略了資產已折舊多年；${fmt(nbv)} 元只是帳面淨值；${fmt(proceeds - acc)} 元把累計折舊當成了帳面淨值。`,
+         `Gain or loss on disposal = proceeds − net book value. The net book value is cost − accumulated depreciation = \\$${fmt(cost)} − \\$${fmt(acc)} = \\$${fmt(nbv)}, so the result is \\$${fmt(proceeds)} − \\$${fmt(nbv)} = \\$${fmt(gain)}${gain > 0 ? ' (a gain)' : ' (a loss)'}. Traps: \\$${fmt(proceeds - cost)} compares with original cost and ignores the years already depreciated; \\$${fmt(nbv)} is merely the net book value; \\$${fmt(proceeds - acc)} treats accumulated depreciation as the net book value.`])
+    }
+  }
+}
+
+// ── 比率分析（高階）（bafs_ratio_analysis）────────────────────────────────
+
+// RA1 — 流動比率 = 流動資產 ÷ 流動負債
+for (const cl of [20000, 25000, 40000, 50000, 60000, 80000]) {
+  for (const mult of [15, 20, 25, 30]) {
+    const ca = (cl * mult) / 10
+    const ratio = mult / 10
+    add(`bafs_ra1_${cl}_${mult}`, T2.ratioAdv, FW.quant, 'easy',
+      [`某公司流動資產 ${fmt(ca)} 元、流動負債 ${fmt(cl)} 元。流動比率是多少？`,
+       `A company has current assets of \\$${fmt(ca)} and current liabilities of \\$${fmt(cl)}. What is its current ratio?`],
+      [n(`${ratio} : 1`), n(`${round(cl / ca, 2)} : 1`), n(`${round((ca - cl) / cl, 2)} : 1`), n(fmt(ca - cl))],
+      [`流動比率 = 流動資產 ÷ 流動負債 = ${fmt(ca)} ÷ ${fmt(cl)} = ${ratio}，即 ${ratio} : 1。此比率量度短期償債能力，一般以 2 : 1 為參考水平。陷阱：${round(cl / ca, 2)} : 1 把分子分母倒轉；${round((ca - cl) / cl, 2)} : 1 用了營運資金而非流動資產作分子；${fmt(ca - cl)} 是營運資金的【金額】，並非比率。`,
+       `Current ratio = current assets ÷ current liabilities = \\$${fmt(ca)} ÷ \\$${fmt(cl)} = ${ratio}, that is ${ratio} : 1. The ratio measures short-term solvency and is commonly benchmarked at 2 : 1. Traps: ${round(cl / ca, 2)} : 1 inverts the fraction; ${round((ca - cl) / cl, 2)} : 1 uses working capital in the numerator; ${fmt(ca - cl)} is the working capital amount, not a ratio.`])
+  }
+}
+
+// RA2 — 速動比率 = (流動資產 − 存貨) ÷ 流動負債
+for (const cl of [20000, 30000, 40000, 50000]) {
+  for (const mult of [20, 25, 30]) {
+    for (const invPct of [20, 40]) {
+      const ca = (cl * mult) / 10
+      const inv = (ca * invPct) / 100
+      const q = (ca - inv) / cl
+      if (!Number.isInteger(q * 100)) continue
+      add(`bafs_ra2_${cl}_${mult}_${invPct}`, T2.ratioAdv, FW.quant, 'medium',
+        [`某公司流動資產 ${fmt(ca)} 元，其中存貨 ${fmt(inv)} 元，流動負債 ${fmt(cl)} 元。速動比率是多少？`,
+         `A company has current assets of \\$${fmt(ca)}, of which inventory is \\$${fmt(inv)}, and current liabilities of \\$${fmt(cl)}. What is its quick ratio?`],
+        [n(`${round(q, 2)} : 1`), n(`${round(ca / cl, 2)} : 1`), n(`${round(inv / cl, 2)} : 1`), n(`${round(cl / (ca - inv), 2)} : 1`)],
+        [`速動比率 = (流動資產 − 存貨) ÷ 流動負債 = (${fmt(ca)} − ${fmt(inv)}) ÷ ${fmt(cl)} = ${round(q, 2)}，即 ${round(q, 2)} : 1。剔除存貨是因為存貨變現最慢，未必能即時用以償還短期債務。陷阱：${round(ca / cl, 2)} : 1 是流動比率，未剔除存貨；${round(inv / cl, 2)} : 1 只用了存貨；${round(cl / (ca - inv), 2)} : 1 把分子分母倒轉。`,
+         `Quick ratio = (current assets − inventory) ÷ current liabilities = (\\$${fmt(ca)} − \\$${fmt(inv)}) ÷ \\$${fmt(cl)} = ${round(q, 2)}, that is ${round(q, 2)} : 1. Inventory is excluded because it is the slowest current asset to convert into cash. Traps: ${round(ca / cl, 2)} : 1 is the current ratio and leaves inventory in; ${round(inv / cl, 2)} : 1 uses inventory alone; ${round(cl / (ca - inv), 2)} : 1 inverts the fraction.`])
+    }
+  }
+}
+
+// RA3 — 存貨周轉期（日）= 平均存貨 ÷ 銷貨成本 × 365
+for (const cogs of [365000, 730000, 1095000, 1460000]) {
+  for (const days of [30, 45, 60, 73, 90]) {
+    const avgInv = (cogs / 365) * days
+    if (!Number.isInteger(avgInv)) continue
+    add(`bafs_ra3_${cogs}_${days}`, T2.ratioAdv, FW.quant, 'hard',
+      [`某公司全年銷貨成本 ${fmt(cogs)} 元，平均存貨 ${fmt(avgInv)} 元。存貨周轉期約為多少日（以一年 365 日計）？`,
+       `A company reports annual cost of goods sold of \\$${fmt(cogs)} and average inventory of \\$${fmt(avgInv)}. What is its inventory turnover period, in days, based on a 365-day year?`],
+      [qty(days, '日', 'days'), qty(round(365 / days, 1), '日', 'days'), qty(round((avgInv / cogs) * 100, 1), '日', 'days'), qty(round(cogs / avgInv, 2), '日', 'days')],
+      [`存貨周轉期 = 平均存貨 ÷ 銷貨成本 × 365 = ${fmt(avgInv)} ÷ ${fmt(cogs)} × 365 = ${days} 日。此數字愈短，代表存貨愈快售出、資金積壓愈少。陷阱：${round(365 / days, 1)} 日把周轉【次數】與周轉【日數】倒轉；${round((avgInv / cogs) * 100, 1)} 日乘了 100 而非 365；${round(cogs / avgInv, 2)} 是存貨周轉率（次數），單位並非日。`,
+       `Inventory turnover period = average inventory ÷ cost of goods sold × 365 = \\$${fmt(avgInv)} ÷ \\$${fmt(cogs)} × 365 = ${days} days. A shorter period means inventory sells faster and less capital is tied up. Traps: ${round(365 / days, 1)} days confuses the number of turns with the number of days; ${round((avgInv / cogs) * 100, 1)} multiplies by 100 instead of 365; ${round(cogs / avgInv, 2)} is the turnover rate in times, not days.`])
+  }
+}
+
+// RA4 — 資本負債比率 = 總負債 ÷ 總資產 × 100%
+for (const assets of [200000, 400000, 500000, 800000, 1000000]) {
+  for (const pct of [25, 40, 60, 75]) {
+    const debt = (assets * pct) / 100
+    add(`bafs_ra4_${assets}_${pct}`, T2.ratioAdv, FW.quant, 'medium',
+      [`某公司總資產 ${fmt(assets)} 元，總負債 ${fmt(debt)} 元。資本負債比率（總負債對總資產）是多少？`,
+       `A company has total assets of \\$${fmt(assets)} and total liabilities of \\$${fmt(debt)}. What is its debt-to-total-assets ratio?`],
+      [n(`${pct}%`), n(`${round((debt / (assets - debt)) * 100, 1)}%`), n(`${round(((assets - debt) / assets) * 100, 1)}%`), n(`${round((assets / debt) * 100, 1)}%`)],
+      [`資本負債比率 = 總負債 ÷ 總資產 × 100% = ${fmt(debt)} ÷ ${fmt(assets)} × 100% = ${pct}%。比率愈高代表財務槓桿愈大、利息負擔愈重。陷阱：${round((debt / (assets - debt)) * 100, 1)}% 用了權益而非總資產作分母（那是負債權益比）；${round(((assets - debt) / assets) * 100, 1)}% 算的是權益比率；${round((assets / debt) * 100, 1)}% 把分子分母倒轉。`,
+       `Debt-to-total-assets = total liabilities ÷ total assets × 100% = \\$${fmt(debt)} ÷ \\$${fmt(assets)} × 100% = ${pct}%. A higher ratio means greater financial leverage and a heavier interest burden. Traps: ${round((debt / (assets - debt)) * 100, 1)}% uses equity as the denominator, which is the debt-to-equity ratio; ${round(((assets - debt) / assets) * 100, 1)}% is the equity ratio; ${round((assets / debt) * 100, 1)}% inverts the fraction.`])
+  }
+}
+
+// ── 成本・定價・回本（bafs_costing_pricing）──────────────────────────────
+
+// CP1 — 邊際貢獻 = 售價 − 單位變動成本；總邊際貢獻 = 邊際貢獻 × 銷量
+for (const price of [50, 80, 120, 150, 200]) {
+  for (const vcPct of [40, 60]) {
+    for (const unitsK of [2, 5, 10]) {
+      const vc = (price * vcPct) / 100
+      const cm = price - vc
+      const units = unitsK * 1000
+      add(`bafs_cp1_${price}_${vcPct}_${unitsK}`, T2.costPrice, FW.quant, 'medium',
+        [`某產品售價每件 ${price} 元，單位變動成本 ${vc} 元。售出 ${fmt(units)} 件，總邊際貢獻是多少？`,
+         `A product sells for \\$${price} per unit with a variable cost of \\$${vc} per unit. If ${fmt(units)} units are sold, what is the total contribution margin?`],
+        [money(fmt(cm * units)), money(fmt(price * units)), money(fmt(vc * units)), money(fmt(cm))],
+        [`單位邊際貢獻 = 售價 − 單位變動成本 = ${price} − ${vc} = ${cm} 元，總邊際貢獻 = ${cm} × ${fmt(units)} = ${fmt(cm * units)} 元。邊際貢獻先用以抵銷固定成本，餘額才是利潤。陷阱：${fmt(price * units)} 元是總銷售收入；${fmt(vc * units)} 元是總變動成本；${fmt(cm)} 元只是【單位】邊際貢獻，未乘銷量。`,
+         `Unit contribution margin = price − variable cost = \\$${price} − \\$${vc} = \\$${cm}, so the total is \\$${cm} × ${fmt(units)} = \\$${fmt(cm * units)}. Contribution first covers fixed costs; only the remainder is profit. Traps: \\$${fmt(price * units)} is total sales revenue; \\$${fmt(vc * units)} is total variable cost; \\$${fmt(cm)} is the unit contribution and has not been multiplied by volume.`])
+    }
+  }
+}
+
+// CP2 — 回本期 = 初始投資 ÷ 每年淨現金流入
+for (const invK of [60, 72, 90, 120, 144, 180, 240, 300]) {
+  for (const flowK of [12, 15, 20, 24, 30, 36, 40, 60]) {
+    const inv = invK * 1000, flow = flowK * 1000
+    const yrs = inv / flow
+    if (!Number.isInteger(yrs) || yrs > 10) continue
+    add(`bafs_cp2_${invK}_${flowK}`, T2.costPrice, FW.finance, 'medium',
+      [`一項投資初期支出 ${fmt(inv)} 元，預計每年帶來淨現金流入 ${fmt(flow)} 元。回本期是多少年？`,
+       `An investment requires an initial outlay of \\$${fmt(inv)} and is expected to generate net cash inflows of \\$${fmt(flow)} per year. What is the payback period?`],
+      [qty(yrs, '年', 'years'), qty(round(flow / inv, 3), '年', 'years'), qty(round(inv / (flow * 12), 2), '年', 'years'), qty(round((inv - flow) / flow, 2), '年', 'years')],
+      [`回本期 = 初始投資 ÷ 每年淨現金流入 = ${fmt(inv)} ÷ ${fmt(flow)} = ${yrs} 年。回本期法只看收回本金的快慢，不理會回本之後的收益，亦不考慮金錢的時間價值，這是它最主要的局限。陷阱：${round(flow / inv, 3)} 年把分子分母倒轉；${round(inv / (flow * 12), 2)} 年誤把每年流入當作每月；${round((inv - flow) / flow, 2)} 年多扣了第一年的流入。`,
+       `Payback period = initial outlay ÷ annual net cash inflow = \\$${fmt(inv)} ÷ \\$${fmt(flow)} = ${yrs} years. Payback measures only how quickly the outlay is recovered; it ignores cash flows after payback and the time value of money, which are its main limitations. Traps: ${round(flow / inv, 3)} inverts the fraction; ${round(inv / (flow * 12), 2)} treats the annual inflow as monthly; ${round((inv - flow) / flow, 2)} deducts the first year's inflow twice.`])
+  }
+}
+
+// CP3 — 加成定價下的成本回推：成本 = 售價 ÷ (1 + 加成率)
+for (const cost of [200, 400, 500, 800, 1000, 1500]) {
+  for (const mk of [20, 25, 50]) {
+    const price = (cost * (100 + mk)) / 100
+    if (!Number.isInteger(price)) continue
+    add(`bafs_cp3_${cost}_${mk}`, T2.costPrice, FW.quant, 'hard',
+      [`某貨品按成本加成 ${mk}% 定價，售價為 ${fmt(price)} 元。其成本是多少？`,
+       `An item is priced at a mark-up of ${mk}% on cost and sells for \\$${fmt(price)}. What is its cost?`],
+      [money(fmt(cost)), money(fmt((price * (100 - mk)) / 100)), money(fmt(price - mk)), money(fmt(price - cost))],
+      [`加成是以【成本】為基數：售價 = 成本 × (1 + ${mk}%)，故成本 = ${fmt(price)} ÷ ${(100 + mk) / 100} = ${fmt(cost)} 元。陷阱：${fmt((price * (100 - mk)) / 100)} 元把加成當作以售價為基數的折扣（那是毛利率的算法）；${fmt(price - mk)} 元把百分率當成了金額直接相減；${fmt(price - cost)} 元是加成的金額而非成本。`,
+       `A mark-up is applied to cost: price = cost × (1 + ${mk}%), so cost = \\$${fmt(price)} ÷ ${(100 + mk) / 100} = \\$${fmt(cost)}. Traps: \\$${fmt((price * (100 - mk)) / 100)} treats the mark-up as a margin on the selling price; \\$${fmt(price - mk)} subtracts the percentage as if it were an amount; \\$${fmt(price - cost)} is the mark-up itself rather than the cost.`])
+  }
+}
+
+// ── 會計（accounting）────────────────────────────────────────────────────
+
+// AC1 — 會計等式：資產 = 負債 + 權益
+for (const assets of [150000, 250000, 360000, 480000, 600000, 750000]) {
+  for (const pct of [30, 40, 60]) {
+    const liab = (assets * pct) / 100
+    add(`bafs_ac1_${assets}_${pct}`, T2.accounting, FW.acct, 'easy',
+      [`某企業總資產 ${fmt(assets)} 元，總負債 ${fmt(liab)} 元。業主權益是多少？`,
+       `A business has total assets of \\$${fmt(assets)} and total liabilities of \\$${fmt(liab)}. What is the owner's equity?`],
+      [money(fmt(assets - liab)), money(fmt(assets + liab)), money(fmt(liab)), money(fmt(assets))],
+      [`會計等式為：資產 = 負債 + 業主權益，移項得業主權益 = 資產 − 負債 = ${fmt(assets)} − ${fmt(liab)} = ${fmt(assets - liab)} 元。陷阱：${fmt(assets + liab)} 元把負債加上而非減去；${fmt(liab)} 元與 ${fmt(assets)} 元分別是負債與資產本身。`,
+       `The accounting equation is assets = liabilities + owner's equity, so equity = assets − liabilities = \\$${fmt(assets)} − \\$${fmt(liab)} = \\$${fmt(assets - liab)}. Traps: \\$${fmt(assets + liab)} adds instead of subtracting; \\$${fmt(liab)} and \\$${fmt(assets)} are the liabilities and the assets themselves.`])
+  }
+}
+
+// AC2 — 銷貨成本 = 期初存貨 + 購貨 − 期末存貨
+for (const open of [20000, 35000, 50000]) {
+  for (const purch of [80000, 120000, 160000, 200000]) {
+    for (const close of [15000, 30000, 45000]) {
+      const cogs = open + purch - close
+      add(`bafs_ac2_${open}_${purch}_${close}`, T2.accounting, FW.acct, 'medium',
+        [`某商號期初存貨 ${fmt(open)} 元，本期購貨 ${fmt(purch)} 元，期末存貨 ${fmt(close)} 元。本期銷貨成本是多少？`,
+         `A trader has opening inventory of \\$${fmt(open)}, purchases of \\$${fmt(purch)} and closing inventory of \\$${fmt(close)}. What is the cost of goods sold for the period?`],
+        [money(fmt(cogs)), money(fmt(open + purch + close)), money(fmt(purch - close)), money(fmt(purch))],
+        [`銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = ${fmt(open)} + ${fmt(purch)} − ${fmt(close)} = ${fmt(cogs)} 元。期末存貨要【減去】，因為它尚未售出，不構成本期成本。陷阱：${fmt(open + purch + close)} 元把期末存貨加上；${fmt(purch - close)} 元漏了期初存貨；${fmt(purch)} 元只計購貨。`,
+         `Cost of goods sold = opening inventory + purchases − closing inventory = \\$${fmt(open)} + \\$${fmt(purch)} − \\$${fmt(close)} = \\$${fmt(cogs)}. Closing inventory is deducted because it remains unsold and is not a cost of this period. Traps: \\$${fmt(open + purch + close)} adds the closing inventory; \\$${fmt(purch - close)} omits opening inventory; \\$${fmt(purch)} counts purchases only.`])
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 第四批母模板 —— 平均分佈補強（2026-08-29）
+// 補強前最薄：折舊 21、成本與定價 24、利息 32、財務管理 36、財務報表 43。
+// 商業環境（24）與管理（25）屬概念型課題，不適用本工廠，此處不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// DP5 — 折舊：年中購入需按月比例計算
+for (const cost of [60000, 96000, 120000, 144000, 180000, 240000]) {
+  for (const life of [4, 5, 6]) {
+    for (const months of [3, 4, 6, 8, 9]) {
+      const annual = cost / life
+      const charge = (annual * months) / 12
+      if (!Number.isInteger(charge)) continue
+      add(`bafs_dp5_${cost}_${life}_${months}`, T.depreciation, FW.acct, 'hard',
+        [`一項成本 ${fmt(cost)} 元、無殘值的資產，可使用 ${life} 年，採用直線法。若該資產在會計年度內只使用了 ${months} 個月，本年度應計提的折舊是多少？`,
+         `An asset costing \\$${fmt(cost)} with no residual value is depreciated straight-line over ${life} years. If it was in use for only ${months} months of the accounting year, what is this year's depreciation charge?`],
+        [money(fmt(charge)), money(fmt(annual)), money(fmt(cost / months)), money(fmt((cost * months) / 12))],
+        [`全年折舊 = ${fmt(cost)} ÷ ${life} = ${fmt(annual)} 元。資產只使用了 ${months} 個月，按月比例計提：${fmt(annual)} × ${months}/12 = ${fmt(charge)} 元。折舊反映的是資產在【本期】所耗用的經濟利益，未持有的月份自然不應計提，這是配比原則的直接應用。陷阱：${fmt(annual)} 元計了全年；${fmt(cost / months)} 元用成本除以月數，漏了可使用年期；${fmt((cost * months) / 12)} 元漏了先除以年期。`,
+         `The full-year charge is \\$${fmt(cost)} ÷ ${life} = \\$${fmt(annual)}. With only ${months} months of use, the charge is apportioned: \\$${fmt(annual)} × ${months}/12 = \\$${fmt(charge)}. Depreciation measures the economic benefit consumed IN THE PERIOD, so months before acquisition carry no charge — a direct application of the matching principle. Traps: \\$${fmt(annual)} charges a full year; \\$${fmt(cost / months)} divides cost by months and ignores the useful life; \\$${fmt((cost * months) / 12)} omits the division by the life.`])
+    }
+  }
+}
+
+// CS1 — 成本與定價：目標利潤下的售價
+for (const unitCost of [40, 60, 80, 100, 120, 150, 200, 240]) {
+  for (const marginPct of [20, 25, 40, 50]) {
+    const price = (unitCost * 100) / (100 - marginPct)
+    if (!Number.isInteger(price)) continue
+    add(`bafs_cs1_${unitCost}_${marginPct}`, T.costing, FW.quant, 'hard',
+      [`某貨品的單位成本為 ${unitCost} 元。若要令【毛利率】達到 ${marginPct}%（以售價為基數），售價應訂為多少？`,
+       `A product costs \\$${unitCost} per unit. What selling price gives a GROSS MARGIN of ${marginPct}% (measured on the selling price)?`],
+      [money(fmt(price)), money(fmt((unitCost * (100 + marginPct)) / 100)), money(fmt(unitCost + marginPct)), money(fmt((unitCost * 100) / marginPct))],
+      [`毛利率以【售價】為基數，故成本佔售價的 $100\\% - ${marginPct}\\% = ${100 - marginPct}\\%$。設售價為 $P$：$${unitCost} = P \\times ${100 - marginPct}\\%$，得 $P = \\dfrac{${unitCost}}{${(100 - marginPct) / 100}} = ${fmt(price)}$ 元。要分清【加成率】以成本為基數、【毛利率】以售價為基數 —— 同一個百分率，兩者算出的售價並不相同。陷阱：${fmt((unitCost * (100 + marginPct)) / 100)} 元用了加成率的算法；${fmt(unitCost + marginPct)} 元把百分率當成金額；${fmt((unitCost * 100) / marginPct)} 元把基數弄反。`,
+       `A gross margin is measured on the SELLING PRICE, so cost is $100\\% - ${marginPct}\\% = ${100 - marginPct}\\%$ of price. Writing $P$ for the price, $${unitCost} = P \\times ${100 - marginPct}\\%$, so $P = \\frac{${unitCost}}{${(100 - marginPct) / 100}} = \\$${fmt(price)}$. Distinguish MARK-UP, based on cost, from MARGIN, based on price: the same percentage gives different prices. Traps: \\$${fmt((unitCost * (100 + marginPct)) / 100)} applies the mark-up method; \\$${fmt(unitCost + marginPct)} treats the percentage as an amount; \\$${fmt((unitCost * 100) / marginPct)} inverts the base.`])
+  }
+}
+
+// IN4 — 利息：分期付款的總付款額與利息
+for (const principal of [12000, 18000, 24000, 36000, 48000, 60000]) {
+  for (const months of [12, 24, 36]) {
+    for (const ratePct of [4, 5, 8, 10]) {
+      const interest = (principal * ratePct * (months / 12)) / 100
+      const total = principal + interest
+      const monthly = total / months
+      if (!Number.isInteger(monthly)) continue
+      add(`bafs_in4_${principal}_${months}_${ratePct}`, T.interest, FW.finance, 'medium',
+        [`借入 ${fmt(principal)} 元，年利率 ${ratePct}%（單利），分 ${months} 個月等額償還。每月還款額是多少？`,
+         `\\$${fmt(principal)} is borrowed at ${ratePct}% simple interest per year and repaid in ${months} equal monthly instalments. What is each instalment?`],
+        [money(fmt(monthly)), money(fmt(principal / months)), money(fmt(interest / months)), money(fmt(total))],
+        [`先求利息：${fmt(principal)} × ${ratePct}% × ${months / 12} 年 = ${fmt(interest)} 元。總還款額 = 本金 ＋ 利息 = ${fmt(total)} 元，除以 ${months} 期得每月 ${fmt(monthly)} 元。留意實際年利率會高於名義的 ${ratePct}% —— 因為本金隨着還款逐月減少，但單利算法仍按全額計息，這正是比較借貸產品時要看實際年利率的原因。陷阱：${fmt(principal / months)} 元只還本金而不計利息；${fmt(interest / months)} 元只還利息；${fmt(total)} 元是總額而非每期。`,
+         `First the interest: \\$${fmt(principal)} × ${ratePct}% × ${months / 12} years = \\$${fmt(interest)}. Total repayable = principal + interest = \\$${fmt(total)}, and dividing by ${months} instalments gives \\$${fmt(monthly)} a month. Note the effective annual rate exceeds the nominal ${ratePct}%, because the outstanding balance falls each month while simple interest is charged on the full amount throughout — which is why borrowing products should be compared on effective rates. Traps: \\$${fmt(principal / months)} repays principal only; \\$${fmt(interest / months)} repays interest only; \\$${fmt(total)} is the total rather than an instalment.`])
+    }
+  }
+}
+
+// FS2 — 財務報表：由試算表項目求淨利
+for (const revenue of [200000, 350000, 500000, 800000]) {
+  for (const cogsPct of [50, 60, 70]) {
+    for (const expPct of [10, 20]) {
+      const cogs = (revenue * cogsPct) / 100
+      const exp = (revenue * expPct) / 100
+      const net = revenue - cogs - exp
+      add(`bafs_fs2_${revenue}_${cogsPct}_${expPct}`, T.statements, FW.acct, 'medium',
+        [`某公司本年度銷貨收入 ${fmt(revenue)} 元、銷貨成本 ${fmt(cogs)} 元、營業費用 ${fmt(exp)} 元。本年度淨利是多少？`,
+         `A company reports sales of \\$${fmt(revenue)}, cost of goods sold of \\$${fmt(cogs)} and operating expenses of \\$${fmt(exp)}. What is its net profit?`],
+        [money(fmt(net)), money(fmt(revenue - cogs)), money(fmt(revenue - exp)), money(fmt(cogs + exp))],
+        [`損益表由上而下：銷貨收入 − 銷貨成本 = 毛利 ${fmt(revenue - cogs)} 元；毛利 − 營業費用 = 淨利 ${fmt(revenue - cogs)} − ${fmt(exp)} = ${fmt(net)} 元。毛利與淨利是兩個不同層次的指標：毛利只反映買賣本身的加價空間，淨利才計入經營一盤生意的其他開支。陷阱：${fmt(revenue - cogs)} 元停在毛利；${fmt(revenue - exp)} 元漏了銷貨成本；${fmt(cogs + exp)} 元是總開支而非利潤。`,
+         `An income statement runs downwards: sales minus cost of goods sold gives a gross profit of \\$${fmt(revenue - cogs)}; gross profit minus operating expenses gives net profit, \\$${fmt(revenue - cogs)} − \\$${fmt(exp)} = \\$${fmt(net)}. Gross and net profit sit at different levels: the first reflects only the mark-up on goods, while the second accounts for the other costs of running the business. Traps: \\$${fmt(revenue - cogs)} stops at gross profit; \\$${fmt(revenue - exp)} omits cost of goods sold; \\$${fmt(cogs + exp)} is total costs, not profit.`])
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 第五批母模板 —— 推向 1,000（2026-08-29）
+// 補最薄的計算型課題：成本與定價 32、財務管理 36、利息 50、財務比率 53、
+// 個人理財 63、財務報表 63。商業環境（24）與管理（25）屬概念型，不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// CS2 — 盈虧平衡銷售額 = 固定成本 ÷ 邊際貢獻率
+for (const fc of [60000, 90000, 120000, 150000, 180000, 240000]) {
+  for (const price of [80, 150]) {
+    for (const vcPct of [25, 40, 60]) {
+      const cmRatio = (100 - vcPct) / 100
+      const beSales = fc / cmRatio
+      if (!Number.isInteger(beSales)) continue
+      add(`bafs_cs2_${fc}_${price}_${vcPct}`, T.costing, FW.quant, 'hard',
+        [`某公司固定成本為 ${fmt(fc)} 元，售價每件 ${price} 元，單位變動成本佔售價的 ${vcPct}%。盈虧平衡銷售額是多少？`,
+         `A company has fixed costs of \\$${fmt(fc)} and sells at \\$${price} per unit with variable cost at ${vcPct}% of price. What is its break-even sales revenue?`],
+        [money(fmt(beSales)), money(fmt(fc)), money(fmt(fc / (price * cmRatio))), money(fmt(fc * cmRatio))],
+        [`邊際貢獻率 = 1 − 變動成本率 = 1 − ${vcPct}% = ${(100 - vcPct)}%。盈虧平衡銷售【額】= 固定成本 ÷ 邊際貢獻率 = ${fmt(fc)} ÷ ${cmRatio} = ${fmt(beSales)} 元。要分清盈虧平衡【銷量】（除以單位邊際貢獻，答案是件數）與盈虧平衡【銷售額】（除以邊際貢獻率，答案是金額）—— 題目問哪一個，就用哪一條。陷阱：${fmt(fc)} 元只抄了固定成本；${fmt(fc / (price * cmRatio))} 元求的是盈虧平衡【銷量】；${fmt(fc * cmRatio)} 元把除法寫成乘法。`,
+         `The contribution margin ratio is 1 − ${vcPct}% = ${100 - vcPct}%. Break-even sales REVENUE = fixed costs ÷ contribution margin ratio = \\$${fmt(fc)} ÷ ${cmRatio} = \\$${fmt(beSales)}. Distinguish break-even VOLUME, found by dividing by the unit contribution and given in units, from break-even REVENUE, found by dividing by the ratio and given in dollars — use whichever the question asks for. Traps: \\$${fmt(fc)} copies the fixed costs; \\$${fmt(fc / (price * cmRatio))} is the break-even volume; \\$${fmt(fc * cmRatio)} multiplies instead of dividing.`])
+    }
+  }
+}
+
+// RA5 — 資產回報率與權益回報率
+for (const profit of [40000, 60000, 90000, 120000, 200000]) {
+  for (const assets of [400000, 600000, 800000, 1000000]) {
+    for (const debtPct of [40, 50, 60]) {
+      const equity = (assets * (100 - debtPct)) / 100
+      const roa = (profit / assets) * 100
+      const roe = (profit / equity) * 100
+      if (!Number.isInteger(roa * 100) || !Number.isInteger(roe * 100)) continue
+      add(`bafs_ra5_${profit}_${assets}_${debtPct}`, T.ratios, FW.quant, 'hard',
+        [`某公司淨利 ${fmt(profit)} 元、總資產 ${fmt(assets)} 元，負債佔總資產 ${debtPct}%。其【權益回報率】是多少？`,
+         `A company earns \\$${fmt(profit)} net profit on total assets of \\$${fmt(assets)}, with liabilities at ${debtPct}% of assets. What is its RETURN ON EQUITY?`],
+        [n(`${round(roe, 2)}%`), n(`${round(roa, 2)}%`), n(`${round((profit / (assets * debtPct / 100)) * 100, 2)}%`), n(`${round((equity / profit) * 100, 1)}%`)],
+        [`權益 = 總資產 − 負債 = ${fmt(assets)} × ${100 - debtPct}% = ${fmt(equity)} 元。權益回報率 = 淨利 ÷ 權益 × 100% = ${fmt(profit)} ÷ ${fmt(equity)} × 100% = ${round(roe, 2)}%。它高於資產回報率（${round(roa, 2)}%），因為部分資產由借款支持 —— 這就是財務槓桿：借款放大股東的回報，但同時放大虧損的風險，槓桿愈高波動愈大。陷阱：${round(roa, 2)}% 是資產回報率，分母用了總資產；${round((profit / (assets * debtPct / 100)) * 100, 2)}% 用了負債作分母；最後一項分子分母倒轉。`,
+         `Equity = total assets − liabilities = \\$${fmt(assets)} × ${100 - debtPct}% = \\$${fmt(equity)}. Return on equity = net profit ÷ equity × 100% = \\$${fmt(profit)} ÷ \\$${fmt(equity)} × 100% = ${round(roe, 2)}%. It exceeds the return on assets of ${round(roa, 2)}% because part of the asset base is funded by borrowing — this is financial leverage: debt magnifies shareholders' returns but equally magnifies losses, so higher gearing means greater volatility. Traps: ${round(roa, 2)}% is return on assets, using total assets as denominator; ${round((profit / (assets * debtPct / 100)) * 100, 2)}% uses liabilities; the last inverts the fraction.`])
+    }
+  }
+}
+
+// PF5 — 個人理財：定期供款的本金總額與利息
+// 題幹明言不計利息，故利率並不進入題面。首版仍然按利率迭代，兩個利率值
+// 出了完全相同的題幹，被撞題閘攔下。改為只按供款額與年期迭代，並加闊兩者。
+for (const monthly of [300, 500, 800, 1000, 1500, 2000, 2500, 3000]) {
+  // years 由 2 起：years = 1 時「只算一年」這個誘答會等於答案本身。
+  for (const years of [2, 3, 4, 5, 6, 8, 10]) {
+    {
+      const principal = monthly * 12 * years
+      add(`bafs_pf5_${monthly}_${years}`, T.personalFin, FW.finance, 'medium',
+        [`某人每月儲蓄 ${fmt(monthly)} 元，持續 ${years} 年。單計本金（不計利息），${years} 年後累積的本金是多少？`,
+         `Someone saves \\$${fmt(monthly)} a month for ${years} years. Ignoring interest, what total principal has accumulated?`],
+        [money(fmt(principal)), money(fmt(monthly * years)), money(fmt(monthly * 12)), money(fmt(monthly * 12 * (years + 1)))],
+        [`本金總額 = 每月供款 × 12 個月 × 年數 = ${fmt(monthly)} × 12 × ${years} = ${fmt(principal)} 元。定期定額儲蓄的威力在於【時間】：即使每月金額不大，累積年期一長，本金本身已相當可觀，再加上複利效應更為明顯。陷阱：${fmt(monthly * years)} 元漏了乘 12 個月；${fmt(monthly * 12)} 元只算了一年；${fmt(monthly * 12 * (years + 1))} 元把年期多數了一年。`,
+         `Total principal = monthly amount × 12 months × years = \\$${fmt(monthly)} × 12 × ${years} = \\$${fmt(principal)}. The power of regular saving lies in TIME: even modest monthly amounts build a substantial principal over enough years, before compounding is taken into account at all. Traps: \\$${fmt(monthly * years)} omits the twelve months; \\$${fmt(monthly * 12)} covers only one year; \\$${fmt(monthly * 12 * (years + 1))} counts one year too many.`])
+    }
+  }
+}
+
+// FM6 — 財務管理：現金流量淨額
+for (const inflow of [150000, 250000, 400000, 600000]) {
+  for (const outPct of [40, 60, 75, 90]) {
+    for (const opening of [20000, 50000, 100000]) {
+      const outflow = (inflow * outPct) / 100
+      const net = inflow - outflow
+      const closing = opening + net
+      add(`bafs_fm6_${inflow}_${outPct}_${opening}`, T.finMgmt, FW.finance, 'medium',
+        [`某公司本月現金流入 ${fmt(inflow)} 元、現金流出 ${fmt(outflow)} 元，月初現金結餘 ${fmt(opening)} 元。月底現金結餘是多少？`,
+         `A company has cash inflows of \\$${fmt(inflow)} and outflows of \\$${fmt(outflow)} in a month, opening with \\$${fmt(opening)}. What is the closing cash balance?`],
+        [money(fmt(closing)), money(fmt(net)), money(fmt(opening + inflow)), money(fmt(inflow - outflow - opening))],
+        [`現金流量淨額 = 流入 − 流出 = ${fmt(inflow)} − ${fmt(outflow)} = ${fmt(net)} 元。月底結餘 = 月初結餘 ＋ 淨額 = ${fmt(opening)} ＋ ${fmt(net)} = ${fmt(closing)} 元。要留意「有利潤」與「有現金」是兩回事：賒銷計入利潤但未收到現金，因此不少賺錢的公司仍會因現金周轉不靈而倒閉 —— 這正是現金流量表獨立於損益表的理由。陷阱：${fmt(net)} 元漏了月初結餘；${fmt(opening + inflow)} 元漏了流出；最後一項把月初結餘減去而非加上。`,
+         `Net cash flow = inflows − outflows = \\$${fmt(inflow)} − \\$${fmt(outflow)} = \\$${fmt(net)}. Closing balance = opening balance + net flow = \\$${fmt(opening)} + \\$${fmt(net)} = \\$${fmt(closing)}. Note that being profitable and having cash are different things: credit sales count as profit before any cash arrives, which is why profitable companies still fail through cash shortages — and why the cash flow statement stands apart from the income statement. Traps: \\$${fmt(net)} omits the opening balance; \\$${fmt(opening + inflow)} omits the outflows; the last subtracts the opening balance instead of adding it.`])
+    }
+  }
+}
+
+// FS3 — 財務報表：資產負債表恆等式的應用
+for (const assets of [500000, 800000, 1200000, 2000000]) {
+  for (const liabPct of [30, 45, 60]) {
+    for (const profit of [50000, 80000, 120000]) {
+      const liab = (assets * liabPct) / 100
+      const equity = assets - liab
+      const openEquity = equity - profit
+      if (openEquity <= 0) continue
+      add(`bafs_fs3_${assets}_${liabPct}_${profit}`, T.statements, FW.acct, 'hard',
+        [`某企業年末總資產 ${fmt(assets)} 元、總負債 ${fmt(liab)} 元。若本年度淨利為 ${fmt(profit)} 元且年內並無資本投入或提取，年初的業主權益是多少？`,
+         `A business ends the year with total assets of \\$${fmt(assets)} and liabilities of \\$${fmt(liab)}. If net profit was \\$${fmt(profit)} with no capital introduced or withdrawn, what was the opening owner's equity?`],
+        [money(fmt(openEquity)), money(fmt(equity)), money(fmt(equity + profit)), money(fmt(assets - profit))],
+        [`先由會計等式求年末權益：資產 − 負債 = ${fmt(assets)} − ${fmt(liab)} = ${fmt(equity)} 元。年內既無資本投入或提取，權益的變化全部來自淨利，故年初權益 = 年末權益 − 淨利 = ${fmt(equity)} − ${fmt(profit)} = ${fmt(openEquity)} 元。這條反向推算正是資產負債表與損益表的連結點：損益表的結果，會經權益流入資產負債表。陷阱：${fmt(equity)} 元是【年末】權益；${fmt(equity + profit)} 元把淨利加上而非減去；${fmt(assets - profit)} 元漏了扣除負債。`,
+         `First use the accounting equation for closing equity: assets − liabilities = \\$${fmt(assets)} − \\$${fmt(liab)} = \\$${fmt(equity)}. With no capital introduced or withdrawn, the whole change in equity is the profit, so opening equity = closing equity − profit = \\$${fmt(equity)} − \\$${fmt(profit)} = \\$${fmt(openEquity)}. This backwards step is exactly where the balance sheet and the income statement connect: the result of the income statement flows into the balance sheet through equity. Traps: \\$${fmt(equity)} is the CLOSING equity; \\$${fmt(equity + profit)} adds the profit instead of subtracting; \\$${fmt(assets - profit)} omits the liabilities.`])
+    }
+  }
+}
 
 export const bafsBankQuestions: Question[] = bank
 

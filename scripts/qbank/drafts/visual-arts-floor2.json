@@ -1,0 +1,434 @@
+[
+ {
+  "id": "floor3_va_fa_01",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "basic",
+  "question": "在視覺藝術的形式分析中，「線條」屬於下列哪一個範疇？",
+  "questionEn": "In formal analysis, which category does line belong to?",
+  "options": [
+   "視覺元素 —— 構成作品的基本材料，與形狀、色彩、質感、空間並列",
+   "構圖原則 —— 組織畫面的方法，與平衡、對比、節奏並列",
+   "創作媒介 —— 藝術家所使用的物料，與油彩、水墨、金屬並列",
+   "藝術風格 —— 特定時期的表現方式，與印象派、立體派並列"
+  ],
+  "optionsEn": [
+   "a visual element — one of the basic building blocks, alongside shape, colour, texture and space",
+   "a principle of composition — a way of organising a work, alongside balance, contrast and rhythm",
+   "a medium — a material the artist uses, alongside oil, ink and metal",
+   "a style — a period manner of working, alongside Impressionism and Cubism"
+  ],
+  "correctIndex": 0,
+  "explanation": "形式分析把作品拆成兩層：【視覺元素】是構成作品的基本材料（線條、形狀、色彩、明暗、質感、空間），【構圖原則】則是組織這些元素的方法（平衡、比例、對比、統一、節奏、強調）。線條屬前者。分清兩層很重要：描述「畫中有粗黑的輪廓線」是指出元素，而「粗黑輪廓線把視線引向中央人物」才是指出原則如何運作 —— 評賞題要求的是後者。媒介指物料，風格指時代或流派的表現方式，兩者都不是形式分析的層次。",
+  "explanationEn": "Formal analysis works on two levels: the VISUAL ELEMENTS are the basic materials of a work — line, shape, colour, tone, texture, space — while the PRINCIPLES of composition are the ways those elements are organised: balance, proportion, contrast, unity, rhythm, emphasis. Line belongs to the first. The distinction matters: saying \"the work has heavy black outlines\" identifies an element, whereas \"the heavy outlines draw the eye to the central figure\" shows a principle at work — and appreciation questions ask for the latter. Medium refers to materials and style to the manner of a period or movement, neither of which is a level of formal analysis."
+ },
+ {
+  "id": "floor3_va_fa_02",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "intermediate",
+  "question": "一幅畫作左右兩邊的物件在大小、數量與位置上並不相同，但整體看來仍然穩定。這最可能運用了甚麼原則？",
+  "questionEn": "A painting has different sizes, numbers and positions of objects on its two sides, yet still reads as stable. Which principle is most likely at work?",
+  "options": [
+   "不對稱平衡 —— 以視覺重量而非鏡像對稱取得穩定",
+   "對稱平衡 —— 中軸兩邊的元素完全相同並互相呼應",
+   "重複 —— 同一形狀規律地出現以產生秩序感",
+   "漸變 —— 元素的大小或色彩循序改變以產生深度"
+  ],
+  "optionsEn": [
+   "asymmetrical balance — stability achieved through visual weight rather than mirror symmetry",
+   "symmetrical balance — identical elements answering each other across a central axis",
+   "repetition — one shape recurring regularly to create order",
+   "gradation — a progressive change in size or colour creating depth"
+  ],
+  "correctIndex": 0,
+  "explanation": "平衡分對稱與不對稱兩種。對稱平衡靠中軸兩邊完全相同，穩定但容易呆板；不對稱平衡則靠【視覺重量】的相抵 —— 一件大而色淡的物件，可以與另一邊一件細小但色彩鮮艷或質感強烈的物件取得平衡。題幹明言兩邊大小數量位置皆不同而整體仍然穩定，正是不對稱平衡的定義。重複與漸變都是製造秩序與動勢的原則，但它們本身並不解釋「兩邊不同卻仍穩定」這個現象。",
+  "explanationEn": "Balance comes in two kinds. Symmetrical balance repeats identical elements on either side of an axis: stable but easily static. Asymmetrical balance instead offsets VISUAL WEIGHT — a large pale object can be balanced by a smaller but vividly coloured or heavily textured one on the other side. The stem specifies that the two sides differ in size, number and position yet the work still reads as stable, which is precisely the definition of asymmetrical balance. Repetition and gradation create order and movement but neither explains stability across dissimilar sides."
+ },
+ {
+  "id": "floor3_va_fa_03",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "intermediate",
+  "question": "藝術家把畫面中唯一的紅色物件放在大片灰藍色調之中。這最直接運用了哪一個原則？",
+  "questionEn": "An artist places the single red object in a composition amid a large field of grey-blue. Which principle does this most directly employ?",
+  "options": [
+   "對比與強調 —— 以色彩差異令該物件成為視覺焦點",
+   "統一 —— 令畫面各部分和諧一致而不突出任何一處",
+   "比例 —— 令各物件之間的大小關係符合真實比例",
+   "節奏 —— 令視線沿着重複的元素在畫面中移動"
+  ],
+  "optionsEn": [
+   "contrast and emphasis — the colour difference makes that object the focal point",
+   "unity — making all parts harmonious so that nothing stands out",
+   "proportion — making the relative sizes of objects true to life",
+   "rhythm — leading the eye through repeated elements across the surface"
+  ],
+  "correctIndex": 0,
+  "explanation": "紅與灰藍在色相環上接近互補，並置時互相加強，令紅色物件從冷調背景中跳出來。這同時運用了【對比】（差異）與【強調】（把差異用於指定視覺焦點）—— 兩者常一併出現：對比製造差異，強調決定差異用在哪裏。統一追求的是和諧一致，與題幹描述的「唯一一件突出物件」方向相反；比例處理大小關係；節奏處理視線的移動路徑，都不是本題所描述的手法。",
+  "explanationEn": "Red and grey-blue sit near opposite each other on the colour wheel, so placed together they intensify one another and the red object leaps out of the cool field. This uses CONTRAST, the difference itself, together with EMPHASIS, the use of that difference to designate a focal point — the two usually appear together, contrast creating the difference and emphasis deciding where it is applied. Unity seeks harmony and runs opposite to the single standout object described; proportion concerns relative size and rhythm the path of the eye, and neither describes this device."
+ },
+ {
+  "id": "floor3_va_fa_04",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "hard",
+  "question": "一位評賞者寫道：「這幅畫令人感到孤獨。」單憑這句，在形式分析上有甚麼不足？",
+  "questionEn": "A viewer writes: \"This painting feels lonely.\" What does that sentence lack as formal analysis?",
+  "options": [
+   "只描述了感受，未指出是畫面中哪些視覺元素與原則造成該感受",
+   "感受並非藝術評賞的一部分，評賞應完全避免主觀反應",
+   "句子太短，評賞必須以指定的字數與段落格式書寫",
+   "未提及藝術家的姓名與創作年份，資料不完整"
+  ],
+  "optionsEn": [
+   "it states a response without identifying which visual elements and principles produce it",
+   "feelings have no place in appreciation, which should avoid subjective response entirely",
+   "it is too short; appreciation must follow a prescribed word count and paragraph format",
+   "it omits the artist's name and date, leaving the information incomplete"
+  ],
+  "correctIndex": 0,
+  "explanation": "形式分析的核心要求是把【感受】與【證據】扣連：說「感到孤獨」只是結論，必須進一步指出畫面中甚麼造成這個感受 —— 例如大片留白令人物顯得渺小、冷色調降低溫度感、人物背向觀者切斷了交流、視平線壓低令空間顯得空曠。感受本身並非問題，主觀反應正是評賞的起點；問題在於缺少由畫面事實出發的推導。其中兩項把形式分析誤當成格式要求或資料著錄，兩者都不是它的內容。",
+  "explanationEn": "Formal analysis requires that a RESPONSE be tied to EVIDENCE: \"it feels lonely\" is a conclusion, and what is needed next is what in the picture produces it — a large empty field making the figure small, a cool palette lowering the temperature, a figure turned away cutting off contact, a low horizon opening the space. The feeling itself is not the problem; subjective response is where appreciation begins. What is missing is the reasoning from what is actually visible. Two of the options mistake formal analysis for a format requirement or a cataloguing exercise, and it is neither."
+ },
+ {
+  "id": "floor3_va_fa_05",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "basic",
+  "question": "在色彩理論中，紅、黃、藍被稱為三原色。原因是甚麼？",
+  "questionEn": "Red, yellow and blue are called primary colours in traditional colour theory. Why?",
+  "options": [
+   "它們無法由其他顏色混合而成，卻可混出其他色相",
+   "它們是自然界中最常出現的三種顏色，因而最為重要",
+   "它們在色相環上互相相鄰，因而形成和諧的色彩組合",
+   "它們的明度最高，因而在畫面中最為顯眼"
+  ],
+  "optionsEn": [
+   "they cannot be mixed from other colours, yet other hues can be mixed from them",
+   "they occur most often in nature and are therefore the most important",
+   "they sit adjacent on the colour wheel and so form a harmonious group",
+   "they are the lightest in tone and therefore the most conspicuous"
+  ],
+  "correctIndex": 0,
+  "explanation": "傳統顏料色彩理論中，三原色的定義正是「不能由其他顏色混合得出，但可以混合出其他色相」。兩兩相混得出三間色（橙、綠、紫），原色與相鄰間色再混得出複色。要留意這是【顏料】的減色系統；光的加色系統以紅、綠、藍為原色，混合後愈加愈亮，最終得白光 —— 兩套系統的原色不同，因為一套是吸收光，另一套是發出光。其餘三項與原色的定義無關：三原色在色相環上互相分隔而非相鄰，明度亦各不相同。",
+  "explanationEn": "In traditional pigment theory a primary colour is defined precisely as one that cannot be mixed from others yet from which other hues can be mixed. Mixing them in pairs gives the secondaries — orange, green, violet — and further mixing gives tertiaries. Note that this is the SUBTRACTIVE system of pigments; the additive system of light takes red, green and blue as primaries and grows brighter as they combine, ending in white. The two sets differ because one absorbs light while the other emits it. None of the other options bears on the definition: the primaries are spaced apart on the wheel rather than adjacent, and they differ in tone."
+ },
+ {
+  "id": "floor3_va_fa_06",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "intermediate",
+  "question": "藝術家以近處物件清晰、遠處物件模糊而偏藍的手法表現距離。這種技法稱為甚麼？",
+  "questionEn": "An artist suggests distance by rendering near objects sharply and distant ones hazy and bluish. What is this technique called?",
+  "options": [
+   "空氣透視 —— 以清晰度與色彩的變化表現深度",
+   "線性透視 —— 以匯聚於消失點的線條表現深度",
+   "重疊 —— 以物件互相遮擋的關係表現前後次序",
+   "短縮法 —— 以物體沿視線方向壓縮表現伸向觀者"
+  ],
+  "optionsEn": [
+   "aerial perspective — depth conveyed through changes in clarity and colour",
+   "linear perspective — depth conveyed by lines converging on a vanishing point",
+   "overlapping — depth conveyed by objects concealing one another",
+   "foreshortening — depth conveyed by compressing a form along the line of sight"
+  ],
+  "correctIndex": 0,
+  "explanation": "空氣透視（又稱大氣透視）利用大氣中的水氣與塵埃散射光線這個真實現象：距離愈遠，物件的輪廓愈模糊、對比愈低、色彩愈偏冷偏藍。它與線性透視是兩套獨立而可並用的深度手法 —— 線性透視處理【形狀與線條】的匯聚，空氣透視處理【清晰度與色彩】的變化。重疊是最簡單的深度線索，只交代前後次序而不交代距離遠近；短縮法處理單一物體沿視線方向的壓縮。",
+  "explanationEn": "Aerial or atmospheric perspective exploits a real phenomenon — moisture and dust in the air scatter light — so that with distance outlines soften, contrast drops and colours cool towards blue. It is independent of linear perspective and the two are often used together: linear perspective handles the convergence of SHAPES AND LINES, aerial perspective the change in CLARITY AND COLOUR. Overlapping is the simplest depth cue and establishes only which object is in front, not how far away; foreshortening concerns the compression of a single form along the viewing direction."
+ },
+ {
+  "id": "floor3_va_fa_07",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "hard",
+  "question": "一件裝置藝術要求觀眾走進作品之內。這最直接改變了作品與觀眾之間的哪一種關係？",
+  "questionEn": "An installation requires viewers to walk inside the work. Which relationship between work and viewer does this most directly change?",
+  "options": [
+   "由觀者在作品之外觀看，變為觀者身處作品之內並成為作品的一部分",
+   "由作品有固定形狀，變為作品完全沒有實體而只存在於概念之中",
+   "由作品由藝術家創作，變為作品完全由觀眾創作而藝術家不參與",
+   "由作品可以買賣收藏，變為作品在法律上不再屬於任何人所有"
+  ],
+  "optionsEn": [
+   "from viewing the work from outside to being inside it and forming part of it",
+   "from having a fixed form to having no physical presence and existing only as a concept",
+   "from being made by the artist to being made entirely by the audience with no artist involved",
+   "from being tradable and collectable to belonging in law to no one"
+  ],
+  "correctIndex": 0,
+  "explanation": "裝置藝術的核心特徵是佔據並改造一個【空間】，觀眾必須進入該空間，於是觀看的位置由外部轉為內部：觀眾的身體、移動路線甚至其他觀眾的存在，都成為作品經驗的一部分。這與傳統繪畫與雕塑「觀者在作品之外」的關係根本不同。其餘三項各自過度推論：裝置仍有實體，只是形態不限於畫框或基座；藝術家仍然決定整體構思與條件，觀眾的參與是在其設定之內；至於買賣與擁有權，裝置一樣可以被收藏，只是收藏的往往是說明書與再現的權利。",
+  "explanationEn": "Installation art characteristically occupies and transforms a SPACE that the viewer must enter, so the vantage point shifts from outside to inside: the viewer's body, path through the space, and even the presence of other viewers become part of the experience. This differs fundamentally from the painting or sculpture that is looked at from without. The other options over-infer: installations remain physical, merely not confined to a frame or plinth; the artist still sets the conception and conditions within which the audience participates; and installations are collected too, often through documentation and the right to re-stage them."
+ },
+ {
+  "id": "floor3_va_fa_08",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "形式分析・元素與原則",
+  "topicId": "va_formal_analysis",
+  "topicZh": "形式分析・元素與原則",
+  "topicEn": "Formal analysis — elements & principles",
+  "difficulty": "intermediate",
+  "question": "在一幅人像作品中，人物佔據畫面約九成而背景幾乎不可見。這個構圖選擇最可能產生甚麼效果？",
+  "questionEn": "In a portrait the figure fills roughly nine-tenths of the picture with the background barely visible. What effect does this framing most likely produce?",
+  "options": [
+   "觀者被迫近距離面對人物，親密感與壓迫感同時增強",
+   "觀者可以清楚了解人物身處的環境與社會身份",
+   "觀者的視線被引導向畫面深處，空間顯得遼闊",
+   "觀者難以辨認人物的表情，作品傾向抽象"
+  ],
+  "optionsEn": [
+   "the viewer is forced into close confrontation, heightening both intimacy and pressure",
+   "the viewer learns clearly about the sitter's setting and social position",
+   "the viewer's eye is led into depth and the space reads as expansive",
+   "the sitter's expression becomes hard to read and the work tends towards abstraction"
+  ],
+  "correctIndex": 0,
+  "explanation": "構圖的取景距離直接決定觀者與被畫者的心理距離。人物佔滿畫面等同於把觀者推到極近的位置，面孔的細節無所遁形，親密與壓迫兩種感受同時產生 —— 這正是不少現代肖像刻意採用的策略。有一項方向相反：背景幾乎不可見，正正剝奪了交代環境與身份的線索；另一項與滿框構圖矛盾，深遠空間需要留出背景；還有一項不成立，人物放大反而令表情更清晰，抽象與否取決於描繪方式而非取景距離。",
+  "explanationEn": "How closely a composition frames its subject sets the psychological distance between viewer and sitter. Filling the picture with the figure places the viewer very close, leaving facial detail nowhere to hide, and produces intimacy and pressure together — a strategy many modern portraits adopt deliberately. One option runs the other way: a barely visible background removes precisely the cues to setting and status. The third contradicts the full-frame framing, since depth needs background to recede into. The fourth is untrue: enlarging the figure makes expression clearer, and abstraction depends on handling rather than framing."
+ },
+ {
+  "id": "floor3_va_hc_01",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "basic",
+  "question": "印象派畫家常在戶外直接寫生，並以細碎筆觸捕捉光線變化。促成這種轉變的其中一項技術條件是甚麼？",
+  "questionEn": "Impressionist painters often worked outdoors, catching changing light in broken brushwork. Which technical development helped make this possible?",
+  "options": [
+   "錫管顏料的發明令顏料便於攜帶且不易乾涸",
+   "照相機的發明令畫家不再需要學習素描基礎",
+   "油彩的發明令畫家首次可以描繪細緻的光影",
+   "畫布的發明令畫家不再需要在牆壁上作畫"
+  ],
+  "optionsEn": [
+   "the invention of the collapsible metal paint tube, making colours portable and slow to dry out",
+   "the invention of photography, freeing painters from learning to draw",
+   "the invention of oil paint, allowing subtle light effects for the first time",
+   "the invention of canvas, freeing painters from working on walls"
+  ],
+  "correctIndex": 0,
+  "explanation": "十九世紀中葉錫管顏料面世之前，畫家須自行研磨顏料並以豬膀胱盛載，難以攜帶且極易乾涸，戶外寫生因而幾乎不可行。錫管令顏料可以隨身攜帶、隨時開合，加上便攜畫架與鐵路網絡的擴展，畫家才能到郊外反覆觀察同一景物在不同時刻的光色變化。有一項倒果為因：照相的普及確實促使繪畫尋找攝影做不到的方向，但並不代表素描不再重要。其中兩項的年代嚴重錯置 —— 油彩與畫布早在文藝復興時期已廣泛使用，並非十九世紀的新事物。",
+  "explanationEn": "Before collapsible metal tubes appeared in the mid-nineteenth century, painters ground their own colours and stored them in pig bladders: hard to carry and quick to dry, which made outdoor painting all but impractical. Tubes made paint portable and resealable, and together with the portable easel and an expanding railway network they let painters return to the same motif to watch light and colour change through the day. One option reverses cause and effect: photography did push painting towards what the camera could not do, but drawing did not cease to matter. The third and fourth are badly misdated — oil paint and canvas were in wide use by the Renaissance and were not nineteenth-century novelties."
+ },
+ {
+  "id": "floor3_va_hc_02",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "intermediate",
+  "question": "立體派作品常在同一畫面上同時呈現物件的多個角度。這種做法挑戰了甚麼傳統？",
+  "questionEn": "Cubist works often show several viewpoints of an object at once. Which tradition does this challenge?",
+  "options": [
+   "文藝復興以來以單一固定視點為基礎的線性透視",
+   "以顏料的物質性作為作品主題的傳統",
+   "以宗教題材作為繪畫唯一合法內容的傳統",
+   "以雕塑而非繪畫作為最高藝術形式的傳統"
+  ],
+  "optionsEn": [
+   "the single fixed viewpoint underlying linear perspective since the Renaissance",
+   "the tradition of making the physical substance of paint the subject",
+   "the tradition that religious subjects were the only legitimate content",
+   "the tradition that sculpture rather than painting was the highest art"
+  ],
+  "correctIndex": 0,
+  "explanation": "線性透視自文藝復興確立以來，預設了一個固定的觀看位置：整幅畫的所有形狀都按同一視點推導。立體派把物件拆解再重組，讓正面、側面、俯視同時出現在一個平面上，等於宣告畫面不必再模擬「一隻眼睛在一個時刻所見」，而可以呈現對物件的整體認知。這是對五百年來繪畫空間慣例的根本質疑。其餘三項與立體派的核心關注並不對應：顏料物質性是抽象表現主義的關注，宗教題材的壟斷早在立體派之前數百年已鬆動，繪畫與雕塑的高下之爭亦非其議題。",
+  "explanationEn": "Linear perspective, established in the Renaissance, presupposes one fixed position from which every shape in the picture is derived. Cubism takes an object apart and reassembles it so that front, side and top appear together on one surface, declaring that a painting need no longer simulate what a single eye sees at a single moment and may instead present what is known about an object as a whole. That is a fundamental challenge to five centuries of pictorial convention. The other options do not match Cubism's concerns: the physicality of paint belongs to Abstract Expressionism, the monopoly of religious subject matter had loosened centuries earlier, and the ranking of painting against sculpture was not at issue."
+ },
+ {
+  "id": "floor3_va_hc_03",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "intermediate",
+  "question": "中國水墨畫講求「留白」。留白在畫面上的作用是甚麼？",
+  "questionEn": "Chinese ink painting values the use of blank space. What does that blankness do in the composition?",
+  "options": [
+   "未着墨處本身參與構圖，可讀為雲霧、水面或空間，並予人想像餘地",
+   "未着墨處純粹是尚未完成的部分，畫家因時間不足而留下",
+   "未着墨處用以標示作品的邊界，功能相當於畫框",
+   "未着墨處是為題字與鈐印預留的位置，並無構圖意義"
+  ],
+  "optionsEn": [
+   "the unpainted area is itself part of the composition, readable as mist, water or space, and leaves room for imagination",
+   "the unpainted area is simply unfinished, left so because the painter ran short of time",
+   "the unpainted area marks the edge of the work and functions as a frame",
+   "the unpainted area is reserved for inscription and seals and carries no compositional meaning"
+  ],
+  "correctIndex": 0,
+  "explanation": "在中國水墨的視覺觀念中，紙的空白並非「沒有畫」，而是畫面的積極組成部分：它可以被讀成雲霧、水面、天空或無限的空間，並與墨色形成虛實相生的關係。畫少而意多，觀者的想像正是在這些空白處展開，這與西方傳統中傾向填滿畫面的取向構成鮮明對比。有一項把美學選擇誤讀為未完成；另一項把留白誤當成邊框；還有一項雖然觸及題款鈐印這個真實慣例，但把留白的作用窄化為「預留位置」，忽略了它本身的構圖與意境功能。",
+  "explanationEn": "In Chinese ink painting the blank paper is not \"nothing painted\" but an active part of the composition: it can be read as mist, water, sky or boundless space, and stands in a complementary relation to the ink. Little is depicted and much is meant, and the viewer's imagination works in exactly these empty areas — a marked contrast with the Western inclination to fill the surface. One option mistakes an aesthetic choice for incompleteness; the third takes blankness for a frame; and the fourth, while it touches the real convention of inscription and seals, narrows blankness to reserved space and misses its compositional and expressive role."
+ },
+ {
+  "id": "floor3_va_hc_04",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "hard",
+  "question": "評賞一件當代藝術作品時，只描述其視覺元素而不提及創作脈絡，可能有甚麼問題？",
+  "questionEn": "What is the risk of appreciating a contemporary work purely through its visual elements, without reference to context?",
+  "options": [
+   "當代作品的意義往往依賴其提問的社會議題與藝術史脈絡，只談形式會錯失核心",
+   "當代作品完全沒有可供分析的視覺元素，形式分析在原則上並不適用",
+   "形式分析只適用於古代作品，當代作品必須改用完全不同的評賞方法",
+   "描述視覺元素本身屬於主觀判斷，因此不能用於任何時期的作品評賞"
+  ],
+  "optionsEn": [
+   "contemporary work often means through the social questions and art-historical position it raises, so form alone misses the point",
+   "contemporary work has no visual elements available for analysis, so formal analysis does not apply in principle",
+   "formal analysis suits only historical work, and contemporary work requires an entirely different method",
+   "describing visual elements is inherently subjective and cannot be used to appreciate work of any period"
+  ],
+  "correctIndex": 0,
+  "explanation": "當代藝術經常以【提問】而非【技巧展示】為核心：一件現成物、一段錄像或一場行為，其意義大量來自它針對甚麼議題、回應藝術史上哪一個主張、在甚麼場域展出。若只描述「這是一個白色方形物件」，等於錯過作品真正在說甚麼。要留意這不代表形式分析失效 —— 形式仍然是意義的載體，恰當的做法是【形式與脈絡並用】。其餘三項都把這一點推得過頭：當代作品當然有視覺元素，形式分析亦非古代專用，而描述視覺元素是可查證的觀察而非主觀判斷。",
+  "explanationEn": "Contemporary art frequently centres on ASKING A QUESTION rather than displaying skill: a readymade, a video, a performance means largely through the issue it addresses, the art-historical claim it answers, and the setting in which it is shown. Describing only \"a white rectangular object\" misses what the work is saying. This does not make formal analysis useless — form still carries meaning, and the sound approach uses form and context together. The other options push the point too far: contemporary work certainly has visual elements, formal analysis is not restricted to historical art, and describing elements is verifiable observation rather than subjective judgement."
+ },
+ {
+  "id": "floor8_va_hc_05",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "basic",
+  "question": "文藝復興時期線性透視法的出現，為繪畫帶來的最主要改變是甚麼？",
+  "questionEn": "What did the arrival of linear perspective most fundamentally change in Renaissance painting?",
+  "options": [
+   "畫面建立起統一的空間深度，觀者的位置因而被明確設定",
+   "顏料變得更耐久，作品因而得以保存更長的時間",
+   "畫家改用畫布取代木板，尺幅因而可以大幅加大",
+   "宗教題材被完全取代，畫面只餘下風景與靜物"
+  ],
+  "optionsEn": [
+   "a single coherent depth is constructed, which fixes where the viewer is standing",
+   "pigments became more durable, so works survived far longer",
+   "canvas replaced wood panel, so pictures could be made much larger",
+   "religious subjects were wholly displaced by landscape and still life"
+  ],
+  "correctIndex": 0,
+  "explanation": "線性透視法以【單一消失點】統一畫面的空間關係，令畫中景物依同一套規則向遠處收窄。它帶來的不只是「畫得像」：由於整個空間依觀者的眼睛位置建構，觀者被安放在一個特定的位置上，看畫因而成為進入一個經過計算的空間。留意顏料耐久性與畫布普及屬材料史的獨立發展，而宗教題材在文藝復興時期仍然是主流，透視法正正大量用於宗教畫。",
+  "explanationEn": "Linear perspective unifies pictorial space around a SINGLE VANISHING POINT, so everything recedes by one consistent rule. What it delivers is more than likeness: because the whole space is constructed from the position of the viewer's eye, the viewer is placed at a determinate point, and looking at the picture becomes entry into a calculated space. Pigment durability and the spread of canvas belong to a separate history of materials, and religious subjects remained dominant — perspective was applied to them extensively."
+ },
+ {
+  "id": "floor8_va_hc_06",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "intermediate",
+  "question": "印象派畫家走出畫室、在戶外直接作畫，這個轉變與哪一項條件關係最直接？",
+  "questionEn": "Which condition bears most directly on the Impressionists' move out of the studio to paint outdoors?",
+  "options": [
+   "顏料改以錫管盛載之後便於攜帶，戶外寫生成為可行",
+   "當時教會明令禁止畫家在室內繪畫任何宗教題材",
+   "戶外的光線比室內昏暗，更適合描繪深沉的色調",
+   "畫布在戶外乾得較慢，方便畫家反覆修改同一處"
+  ],
+  "optionsEn": [
+   "paint in collapsible metal tubes was portable, which made painting on the spot practical",
+   "the church of the day forbade religious subjects to be painted indoors",
+   "outdoor light is dimmer than studio light and suits darker tonalities",
+   "canvas dries more slowly outdoors, which allows repeated reworking"
+  ],
+  "correctIndex": 0,
+  "explanation": "技術條件與風格轉變之間常有直接關聯：顏料由畫室自行研磨、以豬膀胱盛載，改為工廠預製並封入錫管之後，畫具才可以隨身攜帶，即場捕捉光線變化因而成為可行。這正是印象派著力表現「同一景物在不同時刻的光色」的物質前提。留意戶外光線遠比室內強烈而多變，正是這一點推動了明亮色調與短促筆觸的發展。",
+  "explanationEn": "Technical conditions often bear directly on stylistic change. Once paint ceased to be ground in the studio and stored in pig bladders, and was instead factory-made and sealed in collapsible tubes, materials became portable and catching light as it changed on the spot became practical. That is the material precondition for the Impressionists' interest in the same motif under different light at different hours. Note that outdoor light is far stronger and more variable than studio light — which is precisely what drove the brighter palette and the short, broken touch."
+ },
+ {
+  "id": "floor8_va_hc_07",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "intermediate",
+  "question": "中國山水畫的「皴法」主要用來表現甚麼？",
+  "questionEn": "In Chinese landscape painting, what is the technique of cun (texture strokes) chiefly used to render?",
+  "options": [
+   "山石的質感與紋理，以筆法的變化區分不同地貌",
+   "畫面的色彩層次，以顏色濃淡區分遠近的距離",
+   "人物的衣紋走向，以線條疏密區分身份的高低",
+   "題跋的書體風格，以字體大小區分作者的輩分"
+  ],
+  "optionsEn": [
+   "the texture and grain of rock, distinguishing terrain through variation of stroke",
+   "gradations of colour, distinguishing near from far by density of pigment",
+   "the fall of drapery on figures, marking rank by the spacing of lines",
+   "the calligraphic style of inscriptions, marking seniority by size of character"
+  ],
+  "correctIndex": 0,
+  "explanation": "皴法是以【筆法】表現山石表面的質感：披麻皴柔和綿長，多用於江南土質丘陵；斧劈皴方硬峻峭，多用於北方岩石山體。畫家選用哪一種皴法，同時透露了所描繪的地貌與所承接的傳統，因此皴法既是技法問題，也是風格與地域的線索。分析山水畫時，應先辨認筆法特徵，再由此推想畫家的取法與所寫何地。",
+  "explanationEn": "Cun renders the surface texture of rock through the BRUSHSTROKE itself: hemp-fibre strokes are soft and elongated, suited to the earthen hills of the south; axe-cut strokes are angular and abrupt, suited to the rocky massifs of the north. The choice of stroke therefore discloses both the terrain depicted and the tradition the painter works within, making cun a matter of style and region as much as of technique. In analysis, identify the character of the brushwork first, then reason from it to lineage and locale."
+ },
+ {
+  "id": "floor8_va_hc_08",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "hard",
+  "question": "評論一件作品時只說「這是印象派」，在藝術史分析上有甚麼不足？",
+  "questionEn": "What is inadequate, as art-historical analysis, about saying only \"this is Impressionist\"?",
+  "options": [
+   "流派標籤只是起點，仍須說明作品用了甚麼手法達到甚麼效果",
+   "並無不足，指出流派已經完成了藝術史分析的工作",
+   "不足在於印象派並非真正存在的流派，只是後人虛構",
+   "不足在於流派名稱必須連同畫家的生卒年份一併列出"
+  ],
+  "optionsEn": [
+   "a label is only a starting point; the analysis must still say what means produce what effect",
+   "nothing is inadequate: naming the movement completes the art-historical work",
+   "Impressionism was never a real movement but a later invention",
+   "a movement's name must always be given with the artist's dates"
+  ],
+  "correctIndex": 0,
+  "explanation": "流派名稱是【歸類】而非【分析】：它告訴讀者作品大致屬於哪一段脈絡，但沒有說明這一件作品做了甚麼。完整的分析須落到具體：筆觸是否短促而不調和、色彩有否以並置取代混合、光影如何處理、構圖有否採用類似攝影的偏離中心。指出了這些手法之後，才談得上它們共同造成甚麼觀看效果，以及這件作品在該脈絡之中是典型還是例外。",
+  "explanationEn": "A movement label CLASSIFIES rather than analyses: it tells the reader roughly where a work sits, not what this work does. A full analysis has to descend to particulars — whether the touch is short and unblended, whether colour is juxtaposed instead of mixed, how light and shadow are handled, whether the composition is off-centre in a quasi-photographic way. Only once those means are named can one say what viewing effect they jointly produce, and whether the work is typical of its context or an exception within it."
+ }
+]

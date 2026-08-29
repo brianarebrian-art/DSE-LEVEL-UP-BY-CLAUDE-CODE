@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · biology · biology-floor.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">biology</span></h1>
+<div class="sub">來源 biology-floor.json · 共 22 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">22</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"bio_floor_01","topic":"數據與生態","difficulty":"basic","question":"在生態系統中，「生產者」指的是甚麼？","options":["能自行製造有機物的自養生物","以其他生物為食的異養生物","分解死亡生物遺骸的微生物","在食物鏈頂端的大型掠食者"],"correctIndex":0,"explanation":"生產者是自養生物，能利用光能或化學能把無機物轉化為有機物，綠色植物與藻類透過光合作用製造葡萄糖便是典型例子。它們是整個生態系統能量的入口——所有其他營養級的能量最終都來自生產者所固定的那一份。消費者是異養生物，須攝取現成的有機物；分解者則分解死亡遺骸與排泄物，把養分歸還環境。要留意分解者同樣屬於異養，並非生產者，兩者常被混淆：分解者處理的是已存在的有機物，並無把無機物轉為有機物的能力。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_02","topic":"數據與生態","difficulty":"basic","question":"在食物鏈「草 → 兔 → 狐」之中，箭頭所表示的是甚麼？","options":["能量與物質流動的方向","被捕食者逃走的方向","各生物體型由小至大","生物出現的先後次序"],"correctIndex":0,"explanation":"食物鏈的箭頭一律由被食者指向捕食者，表示能量與物質經攝食由前者流向後者。草被兔吃，能量由草流向兔；兔被狐吃，能量再流向狐。學生最常見的錯誤是把箭頭理解成「誰吃誰」而畫反方向——記住箭頭跟隨的是能量，不是進食的動作，方向便不會弄錯。體型大小與出現次序都與箭頭無關：食物鏈中後面的生物未必體型較大，例如寄生蟲寄生於大型動物身上，能量由宿主流向寄生蟲，箭頭仍然由大指向小。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_03","topic":"數據與生態","difficulty":"basic","question":"分解者在生態系統中的主要作用是甚麼？","options":["把有機物分解並把養分歸還環境","為生態系統提供最初的能量來源","控制掠食者的數目使其不致過多","把無機物轉化為可供利用的有機物"],"correctIndex":0,"explanation":"分解者主要是細菌與真菌，它們把死亡生物的遺骸與排泄物中的有機物分解為簡單的無機物，例如硝酸鹽與二氧化碳，令這些養分能再被生產者吸收利用。沒有分解者，養分會被鎖在遺骸之中，物質循環便會中斷，生產者最終缺乏原料。要分清兩件事：分解者負責的是「物質循環」，而能量則是單向流動、逐級遞減，最終以熱能散失，並不循環——所以分解者不是能量來源。把無機物轉為有機物是生產者的工作，並非分解者。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_04","topic":"數據與生態","difficulty":"intermediate","question":"食物鏈的營養級數目通常只有四至五級，最主要的原因是甚麼？","options":["能量每級大幅遞減，高層可用者太少","高營養級生物的繁殖速度過於緩慢","生態系統的物理空間不足以容納更多","高營養級生物普遍體型太大不便捕食"],"correctIndex":0,"explanation":"能量由一個營養級傳到下一級時，只有約一成能被固定於生物體中，其餘以呼吸作用產生的熱能散失、或存在於未被攝食及未被消化的部分。經過四至五級之後，剩餘的能量已少至無法支持一個穩定的族群，因此食物鏈自然有長度上限。這亦解釋了為何頂級掠食者的數目總是很少，以及為何以植物為主的飲食在能量利用上較有效率——營養級愈少，損耗愈低。繁殖速度、空間與體型都會影響個別物種的分佈，但都不是限制營養級數目的根本原因。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_05","topic":"數據與生態","difficulty":"intermediate","question":"某湖泊的能量金字塔呈正立三角形，但數量金字塔卻呈倒立形狀。最合理的解釋是甚麼？","options":["生產者體型細小但數目未及消費者多","該湖泊的能量流動方向與別不同","數量金字塔的繪畫方法出現了錯誤","湖中的消費者並不依賴生產者維生"],"correctIndex":0,"explanation":"能量金字塔永遠正立，因為能量必然逐級遞減，這是熱力學決定的。數量金字塔則只數個體數目，不理體型大小，所以可以倒立：湖泊的生產者是微小的浮游植物，個體雖多但每個所含能量極少；若上一級是體型較大而數目相對可觀的浮游動物，數量比較便可能出現倒轉。同類情況亦見於一棵大樹養活大量昆蟲——生產者只有一株，消費者成千上萬。要記住的原則是：能量金字塔不會倒立，數量與生物量金字塔則可以，因為後兩者沒有把體型與能量含量計算在內。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_06","topic":"數據與生態","difficulty":"intermediate","question":"在碳循環之中，把大氣中的二氧化碳轉入生物體內的主要過程是甚麼？","options":["光合作用","呼吸作用","分解作用","燃燒化石燃料"],"correctIndex":0,"explanation":"光合作用把大氣中的二氧化碳固定為葡萄糖，是碳由無機環境進入生物體的主要通道。其餘三項的方向剛好相反：呼吸作用把有機物氧化並釋出二氧化碳，分解作用把遺骸中的碳釋回環境，燃燒化石燃料則把長期封存於地下的碳快速釋出。分析碳循環時，可先把各過程按「入」與「出」兩類分開——只有光合作用屬「入」，其餘都是「出」。這個不對稱正是大氣二氧化碳濃度上升的關鍵：釋出的速率長期超過固定的速率，而燃燒化石燃料把原本不在循環之中的碳額外加了進來。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_07","topic":"數據與生態","difficulty":"intermediate","question":"研究人員在一片草地上隨機放置 10 個 $1\\,\\text{m}^2$ 的樣方，記錄某種植物的數目，平均每個樣方 6 株。若該草地面積為 $2\\,000\\,\\text{m}^2$，估計該植物的總數約為多少？","options":["$12\\,000$ 株","$1\\,200$ 株","$60\\,000$ 株","$20\\,000$ 株"],"correctIndex":0,"explanation":"樣方法的原理是把小面積的密度推展至全部面積。每平方米平均 6 株，總面積 $2\\,000\\,\\text{m}^2$，估計總數 $= 6 \\times 2\\,000 = 12\\,000$ 株。$1\\,200$ 株是把面積誤讀成 $200\\,\\text{m}^2$；$60\\,000$ 株是先乘樣方數目 10 再乘面積，等於重複計算了一次；$20\\,000$ 株是把面積乘以樣方數目而漏了密度。要留意這個方法的兩個前提：樣方必須隨機放置，否則會系統性高估或低估；樣方數目要足夠多，否則平均值受偶然影響太大。答實驗題時指出「隨機」這一點，往往是評分準則所要求的關鍵字。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_08","topic":"數據與生態","difficulty":"intermediate","question":"某些難分解的殺蟲劑在食物鏈中愈往上層，生物體內的濃度愈高。這現象的成因是甚麼？","options":["該物質不易排出，隨攝食逐級累積","高營養級生物主動吸收該類化學物質","該物質在高營養級生物體內自行合成","高營養級生物的代謝速率特別緩慢"],"correctIndex":0,"explanation":"這類殺蟲劑多為脂溶性且化學上穩定，生物既難以分解亦難以排出，於是留存於脂肪組織之中。高一級的生物一生要吃掉大量低一級的生物，把牠們體內累積的分量一併吸收，濃度因而逐級上升，此即生物放大作用。要注意兩個層次：單一個體隨時間累積稱為生物累積，沿食物鏈逐級升高則稱為生物放大。這解釋了為何頂級掠食者受害最深，亦是禁用某些長效農藥的科學理據。該物質由外界攝入而非體內合成，亦不涉及主動吸收機制。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_09","topic":"遺傳推理","difficulty":"basic","question":"「基因型」與「表現型」的分別是甚麼？","options":["前者指所帶的等位基因組合，後者指表現出的性狀","前者指表現出的性狀，後者指所帶的等位基因組合","兩者意思相同，只是用於不同的生物","前者只適用於顯性，後者只適用於隱性"],"correctIndex":0,"explanation":"基因型是個體所帶的等位基因組合，例如 $Aa$；表現型是實際表現出來的性狀，例如高莖。兩者並非一一對應：$AA$ 與 $Aa$ 的基因型不同，但若 $A$ 為完全顯性，表現型同樣是高莖。這正是遺傳推理題的關鍵——由表現型不能直接讀出基因型，一個顯性表現的個體可能是同型合子亦可能是異型合子，要靠測交或後代的比例去分辨。作答時應明確區分兩者並用符號寫清楚基因型，只寫「高莖」而不寫基因型，往往會失去推理分。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_10","topic":"遺傳推理","difficulty":"basic","question":"一個「同型合子隱性」個體的基因型，應如何表示？","options":["$aa$（兩個相同的隱性等位基因）","$Aa$（一顯性一隱性等位基因）","$AA$（兩個相同的顯性等位基因）","$A$（單一個顯性等位基因）"],"correctIndex":0,"explanation":"同型合子指兩個等位基因相同，隱性即兩個都是隱性等位基因，故寫作 $aa$。$AA$ 是同型合子顯性；$Aa$ 是異型合子。二倍體生物每個性狀有兩個等位基因，一個來自父方一個來自母方，所以基因型必定寫兩個字母，只寫一個 $A$ 並不完整。$aa$ 在推理題中特別有用，因為隱性性狀只在兩個隱性等位基因同時存在時才顯現——見到隱性表現型，就可以肯定其基因型是 $aa$，這往往是解開整條家系題的第一個確定點。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_11","topic":"遺傳推理","difficulty":"basic","question":"在人類中，決定生理性別的染色體組合是怎樣的？","options":["$XX$ 與 $XY$ 兩種組合","$XX$ 與 $YY$ 兩種組合","$XY$ 與 $YY$ 兩種組合","單一條 $X$ 或單一條 $Y$"],"correctIndex":0,"explanation":"人類有 23 對染色體，其中第 23 對為性染色體：$XX$ 與 $XY$ 兩種組合。卵細胞必定帶一條 $X$，精細胞則可能帶 $X$ 或 $Y$，兩者機會各半，因此後代出現兩種組合的機率理論上各為 $50\\%$。$YY$ 並不存在，因為卵細胞不會提供 $Y$。理解這一點是解 $X$ 連鎖遺傳題的基礎：帶 $XY$ 的個體只有一條 $X$，$X$ 上的隱性等位基因沒有另一條 $X$ 可以掩蓋，因此 $X$ 連鎖隱性病症在 $XY$ 個體中出現的比例遠高於 $XX$ 個體。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_12","topic":"遺傳推理","difficulty":"intermediate","question":"若 $A$ 對 $a$ 完全顯性，$Aa$ 與 $Aa$ 雜交，後代基因型的比例是多少？","options":["$AA : Aa : aa = 1 : 2 : 1$","$AA : Aa : aa = 3 : 0 : 1$","$AA : Aa : aa = 1 : 1 : 1$","$AA : Aa : aa = 2 : 1 : 1$"],"correctIndex":0,"explanation":"雙方各產生 $A$ 與 $a$ 兩種配子，機會各半。用棋盤格組合，四個等可能結果為 $AA$、$Aa$、$aA$、$aa$，其中 $Aa$ 與 $aA$ 屬同一基因型，故比例為 $1 : 2 : 1$。要留意這是【基因型】的比例；由於 $A$ 完全顯性，$AA$ 與 $Aa$ 的表現型相同，【表現型】的比例才是我們熟悉的 $3 : 1$。試題常在這裡設陷阱，問基因型而答成 $3 : 1$，或問表現型而答成 $1 : 2 : 1$。讀題時先圈出「基因型」或「表現型」四個字，再落筆，可以避免這一類失分。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_13","topic":"遺傳推理","difficulty":"intermediate","question":"要判斷一株表現顯性性狀的植物是同型合子還是異型合子，應與哪一種植物雜交？","options":["同型合子隱性的植物","同型合子顯性的植物","另一株表現顯性的植物","同一株植物自花授粉"],"correctIndex":0,"explanation":"這種做法稱為測交。與 $aa$ 雜交時，未知個體若為 $AA$，後代必定全部是 $Aa$，全部表現顯性；若為 $Aa$，後代將出現約一半 $Aa$ 與一半 $aa$，即有一半表現隱性。只要後代中出現任何一株隱性個體，便可肯定親本是異型合子——結果一目了然，這正是選用 $aa$ 的原因。與 $AA$ 雜交無用，因為後代必定全部表現顯性，無法分辨；與另一株顯性植物雜交則結果較模糊。自花授粉在植物中確實可行且同樣有效，但並非通用做法，因為許多生物無法自交，測交才是標準方法。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_14","topic":"遺傳推理","difficulty":"intermediate","question":"某體染色體隱性遺傳病，一對均無病徵的夫婦生下一名患病子女。這對夫婦的基因型必定是甚麼？","options":["兩人都是異型合子攜帶者","兩人都是同型合子隱性","一人異型合子，一人同型合子顯性","一人同型合子隱性，一人異型合子"],"correctIndex":0,"explanation":"患病子女表現隱性性狀，基因型必定是 $aa$，兩個隱性等位基因各來自父母一方，因此父母各自至少帶一個 $a$。但父母都沒有病徵，即都不是 $aa$，所以兩人都必定是 $Aa$，即異型合子攜帶者。這種「表面正常卻能生出患病子女」的情況，正是隱性遺傳病的特徵，亦是遺傳輔導的重點。若父母之一為同型合子顯性 $AA$，則所有子女都至少帶一個 $A$，不可能是 $aa$；若父母之一為 $aa$，該人本身便會表現病徵，與題設不符。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_15","topic":"遺傳推理","difficulty":"intermediate","question":"若某遺傳病由體染色體上的隱性等位基因引起，兩名攜帶者生育，每一名子女患病的機率是多少？","options":["$25\\%$","$50\\%$","$75\\%$","$100\\%$"],"correctIndex":0,"explanation":"兩名攜帶者的基因型均為 $Aa$，後代四個等可能結果為 $AA$、$Aa$、$aA$、$aa$，只有 $aa$ 會發病，故機率為四分之一，即 $25\\%$。$50\\%$ 是攜帶者（$Aa$）的機率；$75\\%$ 是不發病（$AA$ 或 $Aa$）的機率。有一點必須講清楚：這個 $25\\%$ 是【每一名子女各自獨立】的機率，並非「四個子女之中必有一個患病」。已經生了一名患病子女，並不會令下一名的機率下降——每次受精都是獨立事件。這是遺傳輔導中最常被誤解的一點，答題時寫明「每名子女獨立」可以顯示對機率的正確理解。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_16","topic":"生理機制・因果鏈","difficulty":"basic","question":"酶（酵素）在化學本質上屬於哪一類物質？","options":["蛋白質","脂質","碳水化合物","核酸"],"correctIndex":0,"explanation":"絕大多數酶都是蛋白質，由氨基酸依特定次序連接並摺疊成具有活性部位的立體結構。理解這一點，就能解釋酶的多項特性：高溫或極端 pH 會破壞維持立體結構的鍵，令活性部位變形，這就是變性；而催化作用依賴活性部位的形狀與受質互補，所以酶具有專一性。反過來說，若把酶誤當成碳水化合物或脂質，便無從解釋為何它會變性、為何有專一性。要補充的是，少數 RNA 分子亦具催化能力，稱為核酶，但在中學課程中一律以蛋白質理解。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_17","topic":"生理機制・因果鏈","difficulty":"basic","question":"「擴散」是指甚麼過程？","options":["粒子由高濃度向低濃度淨移動","粒子由低濃度向高濃度淨移動","水分子透過半透膜的淨移動","須消耗能量的物質運輸方式"],"correctIndex":0,"explanation":"擴散是粒子因隨機運動而由濃度較高處向濃度較低處的淨移動，最終達到均勻分佈。它不需要細胞提供能量，屬被動運輸，動力來自粒子本身的動能與濃度梯度。三個關鍵詞值得留意：「淨」表示兩個方向都有粒子移動，只是由高向低的較多；「濃度梯度」是方向的決定因素；「被動」則區別於主動運輸。水分子透過半透膜的淨移動是滲透，可視為擴散的一個特例；而由低濃度向高濃度移動並需要能量的，是主動運輸。三者的分別是這一課的核心。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_18","topic":"生理機制・因果鏈","difficulty":"basic","question":"人體細胞進行「有氧呼吸」的最終產物是甚麼？","options":["二氧化碳、水與能量","乳酸與少量的能量","葡萄糖、氧氣與能量","酒精、二氧化碳與能量"],"correctIndex":0,"explanation":"有氧呼吸把葡萄糖在氧氣參與下完全氧化，產物為二氧化碳與水，同時釋出大量能量。葡萄糖與氧氣是反應物而非產物，把兩者當成產物是方向弄反。乳酸是人體肌肉在缺氧時進行無氧呼吸的產物，釋出的能量遠少於有氧呼吸；酒精與二氧化碳則是酵母菌進行無氧呼吸的產物，人體不會產生酒精。分辨這三條路徑時，可先問一句「有沒有氧」，再問「是哪一種生物」——人體缺氧走乳酸一路，酵母菌缺氧走酒精一路，兩者不可混用。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_19","topic":"生理機制・因果鏈","difficulty":"intermediate","question":"酶具有「專一性」，即一種酶通常只催化一種反應。其根本原因是甚麼？","options":["活性部位的形狀只與特定受質互補","酶分子的體積遠大於受質分子","酶只能在細胞的特定位置發揮作用","每種酶只在一個特定溫度下有活性"],"correctIndex":0,"explanation":"酶的專一性源於活性部位的立體形狀與電荷分佈，只有形狀互補的受質才能結合形成酶—受質複合物，其他分子無法嵌合，反應便不會被催化。這就是鎖與匙模型的內容；較新的誘導契合模型進一步指出活性部位在結合時會作輕微調整，但互補性這個核心不變。理解這一點便能推出多項後果：高溫或極端 pH 令蛋白質變性、活性部位變形，酶即失去活性且通常不可逆；抑制劑亦正是憑藉能佔據或改變活性部位而發揮作用。體積、位置與溫度都會影響酶的作用，但都不能解釋為何它只認得一種受質。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_20","topic":"生理機制・因果鏈","difficulty":"intermediate","question":"胃蛋白酶在強酸環境中活性最高，但把它移至 pH 7 的環境後活性大幅下降。最準確的解釋是甚麼？","options":["偏離最適 pH 令活性部位形狀改變","pH 7 的環境中並無受質可供結合","酶在中性環境中會被立即分解掉","中性環境令酶分子移動速度變慢"],"correctIndex":0,"explanation":"每種酶都有最適 pH，胃蛋白酶約在 pH 2 附近，與胃液環境相配。pH 改變會影響蛋白質分子中氨基酸側鏈的帶電狀態，令維持立體結構的離子鍵與氫鍵受干擾，活性部位隨之變形，與受質的互補性下降，活性因而降低。程度輕微時可逆，嚴重時則變性而不可逆。要留意這與溫度的影響機制相似——同樣是破壞立體結構——但曲線形狀不同：pH 曲線在最適值兩側都下降，而溫度曲線在最適值之前隨溫度上升。受質是否存在屬另一回事，並非酶本身活性的變化。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_21","topic":"生理機制・因果鏈","difficulty":"intermediate","question":"小腸絨毛細胞把葡萄糖由腸腔運入細胞內，即使腸腔中的葡萄糖濃度較低亦能進行。這屬於哪一種運輸方式？","options":["主動運輸，需要消耗能量","簡單擴散，不需消耗能量","滲透作用，只涉及水分子","過濾作用，靠壓力差推動"],"correctIndex":0,"explanation":"由低濃度移向高濃度即逆濃度梯度，擴散不可能做到，必須由載體蛋白配合能量進行，這就是主動運輸，其能量來自 ATP。這個機制在生理上十分重要：它令小腸能把食物中的葡萄糖幾乎完全吸收，即使腸腔濃度已降至低於血液，仍可繼續吸收，不會浪費養分。判斷運輸方式的方法很直接：先看移動方向相對於濃度梯度是順還是逆——順的是擴散或滲透，逆的必定是主動運輸。滲透只涉及水分子，與葡萄糖無關；過濾靠壓力差，出現於腎小球而非小腸。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bio_floor_22","topic":"生理機制・因果鏈","difficulty":"intermediate","question":"劇烈運動後，人的呼吸速率與心跳速率在停止運動之後仍維持一段時間的偏高水平。最準確的解釋是甚麼？","options":["須補充氧氣以清除積聚的乳酸","身體需要時間把體溫降回正常","肌肉細胞仍在持續進行無氧呼吸","血液中的葡萄糖濃度仍然偏低"],"correctIndex":0,"explanation":"劇烈運動時氧氣供應追不上需求，肌肉細胞轉行無氧呼吸並產生乳酸。停止運動後，身體須攝取額外的氧氣把乳酸氧化分解，這份額外的氧氣需求稱為氧債，因此呼吸與心跳要維持偏高一段時間才回復正常。留意因果次序：不是因為仍在運動，而是因為運動期間欠下的乳酸仍需清理——這正是「因果鏈」題型的考點，要求指出的是延後的後果而非當下的狀態。體溫確實會升高，但降溫主要靠排汗與血管舒張，並非提高呼吸速率的原因；停止運動後肌肉已恢復有氧呼吸；血糖濃度亦由肝臟調節，與呼吸速率無直接關係。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "biology";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "biology-floor.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "biology-floor.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

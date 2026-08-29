@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "source": "english-floor2.json",
+  "subject": "english",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor7_p1_tone_01": "approved",
+  "floor7_p1_tone_02": "approved",
+  "floor7_p1_tone_03": "approved",
+  "floor7_p1_inf_01": "approved",
+  "floor7_p1_inf_02": "approved",
+  "floor7_p1_inf_03": "approved",
+  "floor7_p1_vr_01": "approved",
+  "floor7_p1_vr_02": "approved",
+  "floor7_p1_vr_03": "approved",
+  "floor8_p1_tone_04": "approved",
+  "floor8_p1_tone_05": "approved",
+  "floor8_p1_tone_06": "approved",
+  "floor8_p1_inf_04": "approved",
+  "floor8_p1_inf_05": "approved"
+ }
+}

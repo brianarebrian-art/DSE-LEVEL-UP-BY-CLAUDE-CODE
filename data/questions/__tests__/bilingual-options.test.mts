@@ -29,7 +29,14 @@ import assert from 'node:assert/strict'
 const { getSubjectQuestions } = await import('../index.ts')
 const { getActiveSubjects } = await import('../../subjects.ts')
 
-const HAS_CJK = /[一-鿿]/
+// 漢字（U+4E00–U+9FFF）＋ 中文標點（U+3000–U+303F：頓號、書名號、全形括號等）。
+//
+// 2026-08-29 收緊：舊版只掃漢字，於是「$234$、$90$」這種【全部是數字、
+// 只有一個頓號是中文】的選項照樣過關。英文介面的學生會讀到一個他認不出的
+// 分隔符，而源碼上完全看不出異樣。收緊前先量度（憲章 §6）：全站 8,931 條
+// 非語言科目雙語 MC 之中，含中文標點者 22 條（物理放射現象三族），
+// 已於同一批修正為分語言書寫，故本次收緊【零影響】。
+const HAS_CJK = /[一-鿿　-〿]/
 const LANGUAGE_SUBJECTS = new Set([
   'chinese', 'chinese-history', 'chinese-literature', 'english', 'english-literature',
 ])

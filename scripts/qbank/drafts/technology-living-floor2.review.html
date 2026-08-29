@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · technology-living · technology-living-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">technology-living</span></h1>
+<div class="sub">來源 technology-living-floor2.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor2_tl_ft_01","topic":"食物與紡織科學","difficulty":"basic","question":"烹煮肉類時，肉會由紅轉褐並且收縮變硬。這主要由於甚麼變化？","options":["蛋白質受熱變性，分子結構鬆開後重新聚集並釋出水分","蛋白質受熱分解成氨基酸，因而完全溶解於肉汁之中","肉中的脂肪受熱凝固，把肌肉纖維牢牢黏合在一起","肉中的碳水化合物受熱焦糖化，令整塊肉的體積縮小"],"correctIndex":0,"explanation":"肉的主要成分是蛋白質。受熱時蛋白質的三維結構鬆開（變性），隨後分子之間重新結合成較緊密的網絡，把原本鎖在纖維之間的水分擠出，肉因而收縮、變硬並流失肉汁 —— 這正是過度烹煮令肉柴的原因，亦解釋為何低溫慢煮能保留較多水分。顏色由紅轉褐則來自肌紅蛋白受熱變性。蛋白質變性並非分解成氨基酸；肉中脂肪受熱是【融化】而非凝固；而肉類的碳水化合物含量極低，焦糖化不足以解釋整體收縮。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_02","topic":"食物與紡織科學","difficulty":"intermediate","question":"製作麵包時加入酵母，麵糰會發脹。這是由於甚麼作用？","options":["酵母進行發酵，分解糖分產生二氧化碳，氣體被麵筋網絡困住","酵母吸收麵糰中的水分而膨脹，體積因而由內向外把麵糰撐大","酵母與麵粉中的蛋白質反應生成氣泡，同時令麵糰的顏色變深","酵母釋出熱能令麵糰內的空氣受熱膨脹，因而體積顯著增加"],"correctIndex":0,"explanation":"酵母是活的微生物，在麵糰中分解可發酵的糖分，產生二氧化碳與乙醇。麵粉中的麥穀蛋白與醇溶蛋白經搓揉後形成有彈性的麵筋網絡，能把二氧化碳氣泡困在麵糰之內，麵糰因而發脹。這解釋了兩件事：搓揉不足則麵筋不成網，氣體走掉而發不起；而高筋麵粉正因為蛋白質含量較高、麵筋較強，更適合做麵包。酵母吸水並不足以令體積倍增；酵母不與麵粉蛋白反應生成氣泡；發酵所釋放的熱能亦微不足道。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_03","topic":"食物與紡織科學","difficulty":"basic","question":"棉纖維與聚酯纖維（滌綸）相比，棉的一項主要特性是甚麼？","options":["吸濕性強，能吸收汗水而穿着較為透氣舒適，但乾得較慢並容易起皺","吸濕性極低，汗水難以被吸收，因而穿着時常有黏膩焗促的感覺","彈性回復力極佳，拉長後能完全回復原狀，因此幾乎不會起皺","耐熱性極高，可以承受高溫熨燙而完全不會變形或熔化"],"correctIndex":0,"explanation":"棉是天然纖維素纖維，分子上有大量羥基，能與水分子形成氫鍵，因此吸濕性強：汗水被吸走後從布面蒸發，穿着較涼爽透氣。代價是吸水後乾得慢，而且纖維彈性回復力弱，容易起皺。聚酯是合成纖維，吸濕性低、快乾、抗皺、彈性佳，但透氣感較差 —— 兩者的特性幾乎互補，這正是棉滌混紡普遍的原因。其中兩項描述的其實是聚酯；有一項亦與事實不符，棉雖然比聚酯耐熱（不會熔化），但高溫仍會令它焦化變黃。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_04","topic":"食物與紡織科學","difficulty":"intermediate","question":"食物在攝氏 5 度至 60 度之間存放屬於「危險溫度範圍」。這是因為甚麼？","options":["這個範圍最適合致病細菌迅速繁殖，食物中毒的風險因而大幅上升","這個範圍會令食物中的維生素迅速氧化流失，營養價值顯著下降","這個範圍會令食物中的脂肪迅速酸敗，產生令人不適的異味","這個範圍會令食物中的水分迅速蒸發，令食物乾硬而不能食用"],"correctIndex":0,"explanation":"大部分致病細菌在接近人體體溫的環境繁殖得最快，在適宜條件下每約二十分鐘就可分裂一次；由攝氏 5 度至 60 度之間，繁殖速率足以在數小時內把菌數推高至危險水平。低於 5 度繁殖大幅減慢（但細菌並未死亡），高於 60 度則多數致病菌會被殺滅，因此安全守則是「熱食保持夠熱、冷食保持夠冷」，並縮短食物停留在此範圍的時間。營養流失、脂肪酸敗與水分蒸發都會發生，但它們影響的是品質，而「危險溫度範圍」這個名稱針對的是【食物安全】風險。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_05","topic":"食物與紡織科學","difficulty":"intermediate","question":"在衣物護理標籤上，若標明只可「乾洗」，通常是因為該衣物的纖維有甚麼特性？","options":["纖維遇水會顯著收縮或變形，水洗時的機械作用亦容易令它受損","纖維遇水會迅速溶解，因此接觸清水便會令衣物完全破損","纖維本身帶有大量染料，水洗會令染料完全褪去而顏色盡失","纖維的導電性極高，浸水後會產生靜電而令衣物吸附塵埃"],"correctIndex":0,"explanation":"羊毛等動物纖維表面有鱗片結構，遇水加上搓揉與溫度變化時鱗片互相咬合，纖維糾纏收縮而無法回復，這就是「氈化」；絲則因水洗後光澤與手感受損。乾洗以有機溶劑代替水，避免纖維吸水膨脹，機械作用亦較溫和，因此能保護這類衣物。有一項誇大到不符事實 —— 沒有常見衣料會溶於水；另一項把個別染色問題當成乾洗標示的普遍原因；還有一項與纖維性質不符，紡織纖維一般是絕緣體，而靜電恰恰在【乾燥】時才明顯。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_06","topic":"食物與紡織科學","difficulty":"basic","question":"蔬菜長時間水煮後，維生素 C 大量流失。最主要的原因是甚麼？","options":["維生素 C 易溶於水且不耐熱，會溶入煮水並在加熱過程中被破壞","維生素 C 會與蔬菜中的纖維結合成不能被人體吸收的化合物","維生素 C 在高溫下會轉化為維生素 A，因而在檢測中無法被驗出","維生素 C 會隨水蒸氣一同揮發，因而在沸騰時大量離開鍋中"],"correctIndex":0,"explanation":"維生素 C 是水溶性維生素，同時對熱與氧氣都不穩定。長時間水煮令它一方面溶出到煮水中（若棄掉煮水便一併倒走），另一方面在高溫與溶氧的作用下被氧化破壞，雙重損失。因此保留維生素 C 的做法是縮短加熱時間、減少用水量，或改用蒸、快炒等方式，甚至保留煮汁一併食用。有一項並非維生素 C 的性質；另一項不成立，維生素之間不會互相轉化；還有一項亦不成立，維生素 C 並非揮發性物質。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_07","topic":"食物與紡織科學","difficulty":"hard","question":"兩件外觀相似的針織衫，一件是純羊毛，另一件是純腈綸（亞克力）。用燃燒法辨別時，主要根據甚麼？","options":["羊毛燃燒有燒毛髮氣味、灰燼呈易碎黑球；腈綸則熔化成硬珠並有刺鼻化學氣味","羊毛燃燒時完全沒有氣味、灰燼呈白色粉末；腈綸則燃燒後不留任何殘餘","羊毛遇火立即熔化並滴落；腈綸則不會熔化，只會慢慢碳化而變黑","兩者燃燒的現象完全相同，故燃燒法根本無法用以分辨這兩種纖維"],"correctIndex":0,"explanation":"燃燒法的依據是纖維的化學組成。羊毛屬蛋白質纖維，含硫，燃燒時發出燒毛髮或燒羽毛的特徵氣味，離火自熄，灰燼是可用手指捏碎的黑色脆球。腈綸是合成的熱塑性纖維，遇火先熔化後燃燒，滴落並形成堅硬不易捏碎的塑膠珠，氣味刺鼻。其中兩項把兩者的表現對調或憑空杜撰 —— 熔化滴落是【合成】纖維的特徵，天然蛋白質纖維並不熔化；有一項與事實不符，燃燒法正正是紡織實驗室常用的初步鑑別手段。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor2_tl_ft_08","topic":"食物與紡織科學","difficulty":"intermediate","question":"在食物標籤上，配料表的排列方式有甚麼規定？這對消費者有何用處？","options":["按重量由多至少排列，故排在前面的配料在產品中所佔比例最高","按字母或筆劃次序排列，故消費者可以最快速度找到指定的配料","按營養價值由高至低排列，故排在前面的配料對健康最為有益","按加入生產工序的先後排列，故排在前面的配料是最早加入的"],"correctIndex":0,"explanation":"配料表按加入量的重量由多至少排列。這個規定讓消費者不必看到具體數字，也能判斷產品的大致構成：例如某「果汁飲品」若配料表以水和糖排頭、果汁排在後面，即代表果汁所佔比例不高；同理，若飽和脂肪或糖排在前列，便值得留意。這正是閱讀食物標籤時最實用的一項技巧。其餘三項都不是規定的排列依據 —— 尤其「按營養價值排列」會令人誤以為排頭的配料最健康，恰恰與事實相反。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "technology-living";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "technology-living-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "technology-living-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

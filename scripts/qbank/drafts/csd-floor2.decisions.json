@@ -1,0 +1,30 @@
+{
+ "_meta": {
+  "source": "csd-floor2.json",
+  "subject": "csd",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor4_csd_se_01": "approved",
+  "floor4_csd_se_02": "approved",
+  "floor4_csd_se_03": "approved",
+  "floor4_csd_se_04": "approved",
+  "floor4_csd_dr_01": "approved",
+  "floor4_csd_dr_02": "approved",
+  "floor4_csd_dr_03": "approved",
+  "floor4_csd_ca_01": "approved",
+  "floor4_csd_ca_02": "approved",
+  "floor4_csd_ca_03": "approved",
+  "floor8_csd_se_05": "approved",
+  "floor8_csd_se_06": "approved",
+  "floor8_csd_se_07": "approved",
+  "floor8_csd_se_08": "approved",
+  "floor8_csd_dr_04": "approved",
+  "floor8_csd_dr_05": "approved",
+  "floor8_csd_dr_06": "approved",
+  "floor8_csd_ca_04": "approved",
+  "floor8_csd_ca_05": "approved",
+  "floor8_csd_ca_06": "approved"
+ }
+}

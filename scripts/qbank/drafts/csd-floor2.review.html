@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · csd · csd-floor2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">csd</span></h1>
+<div class="sub">來源 csd-floor2.json · 共 20 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">20</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"floor4_csd_se_01","topic":"多角度評鑑・持份者權衡","difficulty":"basic","question":"進行持份者分析時，第一步應該做甚麼？","options":["辨識所有會受該議題影響或能影響該議題的個人與群體","直接判斷哪一方的立場最為合理，然後集中論證該立場","先統計支持與反對的人數，以多數一方的意見為結論","先查明政府現行政策的內容，然後按政策方向作結"],"correctIndex":0,"explanation":"持份者分析的價值在於【先把場上的人看齊】：受影響者與有影響力者都要列出，包括容易被忽略的一群（例如未來世代、無投票權的居民、行業內的低技術工人）。若一開始就跳到判斷，分析往往只會圍繞最顯眼的兩三方，遺漏的持份者正是評鑑失衡的來源。有一項把結論放在分析之前；另一項以人數代替理據，但持份者的【受影響程度】與人數並不相同 —— 少數人可能承受極大代價；還有一項以現行政策代替獨立分析，等於預設政策必然合理。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_se_02","topic":"多角度評鑑・持份者權衡","difficulty":"intermediate","question":"在評鑑一項政策時，同時列出「短期成本」與「長期效益」有甚麼作用？","options":["避免因時間尺度不同而失衡，令代價與回報在同一框架下比較","證明該政策必然可行，因為長期效益一定大於短期成本","把討論簡化為金錢計算，令所有考慮都可以量化比較","滿足評鑑的格式要求，實際內容並不影響結論"],"correctIndex":0,"explanation":"很多政策的特徵正是【代價在前、回報在後】：例如環保法規令企業即時增加成本，環境改善卻要十年後才顯現。若只看短期，政策看似必然失敗；只看長期，則會低估過渡期的實際傷害（失業、結業）。同時列出兩者，才能問出真正的問題：過渡期的代價由誰承擔、有沒有紓緩措施。有一項把方法誤當成結論 —— 分析框架本身不保證任何一方勝出；另一項把不可量化的價值（健康、公平）排除在外；還有一項否定了分析的實質作用。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_se_03","topic":"多角度評鑑・持份者權衡","difficulty":"intermediate","question":"某項發展計劃中，商戶、居民與環保團體立場不同。「持份者立場不同」本身說明了甚麼？","options":["各方所處位置不同，承受的成本與獲得的利益並不一樣","其中必定有一方在說謊，因為事實只有一個","該計劃必定不可行，因為無法令所有人滿意","應該擱置計劃，直至所有持份者立場完全一致"],"correctIndex":0,"explanation":"立場分歧的最基本解釋是【利害分佈不均】：同一項發展，對商戶是客流與租值，對居民是噪音與生活成本，對環保團體是不可逆的生態損失。三方看到的都是真實的一面，分歧未必源於誰在說謊。認清這一點，評鑑才會由「誰對誰錯」轉向「代價與利益如何分配、可否補償」。有一項把價值取態的分歧誤讀為事實真偽；其中兩項則把「有分歧」直接等同「不可行」或「必須擱置」，但公共決策的常態正是在分歧之中權衡取捨，全體一致極少出現。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_se_04","topic":"多角度評鑑・持份者權衡","difficulty":"hard","question":"評鑑一項議題時，只引述支持自己立場的持份者意見，會產生甚麼問題？","options":["論證看似有據，實際上未經檢驗，因為最強的反對理由從未被處理","論證會變得更有說服力，因為立場一致的證據較容易理解","論證的字數會不足，因此無法達到評鑑題的篇幅要求","論證會過於冗長，因為引述持份者意見會佔用大量篇幅"],"correctIndex":0,"explanation":"選擇性引述會製造一種【表面上有證據】的假象：每一句引文都真實，整體卻不成立，因為最有力的反對理由從未進入視野。評鑑題要求的正是相反做法 —— 主動找出最強的反方論點並正面回應，能夠處理最強反對的立場才站得住。這亦是為何考評強調「駁論」而非只堆砌支持理據。有一項把說服力與可靠性混為一談；其中兩項把實質的論證缺陷降格為篇幅問題，兩者並非同一層次。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_dr_01","topic":"資料回應・數據詮釋","difficulty":"basic","question":"一幅圖表只顯示 2020 至 2023 年的數據，並呈現上升趨勢。單憑此圖可以得出甚麼結論？","options":["該指標在這四年間上升，但不能斷定此前此後的走勢或成因","該指標長期以來一直上升，並且將會繼續上升下去","該上升由政府在 2020 年推出的政策所造成","該指標的上升代表相關狀況已經全面改善"],"correctIndex":0,"explanation":"資料回應題的紀律是：讀出資料支持得到的結論，一步也不多走。四年的數據只能說明這四年 —— 之前可能更高（現時只是回升）、之後可能回落；圖表顯示【相關】而非【因果】，把 2020 年的政策當成成因是缺乏證據的歸因；而單一指標上升亦不等於整體狀況改善，其他指標可能同時惡化。四個選項的分別，正是「資料說了甚麼」與「我以為它說了甚麼」之間的距離。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_dr_02","topic":"資料回應・數據詮釋","difficulty":"intermediate","question":"兩幅圖表分別顯示「甲市的絕對排放量高於乙市」與「甲市的人均排放量低於乙市」。這兩項數據是否矛盾？","options":["不矛盾 —— 甲市人口較多，總量與人均可以同時呈現相反關係","矛盾 —— 同一城市不可能既排放較多又排放較少，必有一幅圖出錯","不矛盾 —— 因為兩幅圖表必然採用了不同的年份","矛盾 —— 除非兩幅圖表由不同機構製作，否則不可能出現此情況"],"correctIndex":0,"explanation":"總量 = 人均 × 人口。人口愈大，即使每人排放較少，總量仍可較高。因此「總量高」與「人均低」完全可以同時成立，兩者回答的是不同問題：總量關乎【環境負荷】（大氣承受多少），人均關乎【責任歸屬】（每個人的行為強度）。國際氣候談判中發達國與發展中國家的爭論，正正圍繞應以哪一項作為分擔基準。判讀數據時看清分母，是本課題最重要的一步。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_dr_03","topic":"資料回應・數據詮釋","difficulty":"intermediate","question":"一項調查訪問了某商場內的顧客，結論為「市民普遍支持增加該區商場數量」。這個結論有何問題？","options":["樣本只涵蓋已經在商場的人，不能代表全區市民","樣本人數必定太少，因為商場的訪問時間有限","調查必定有引導性問題，因為結論支持商場一方","調查結果無效，因為所有問卷調查都不可靠"],"correctIndex":0,"explanation":"這是典型的【抽樣偏差】：在商場內受訪的人，本身就是願意到商場的一群，他們對商場的態度不可能代表全區市民 —— 最不喜歡商場的人根本不在受訪範圍之內。要支持「市民普遍」這個結論，抽樣必須涵蓋全區各類居民。留意其中兩項並非不可能，但題幹並無提供樣本人數或問卷內容，斷定它們有問題屬於缺乏證據的指控；有一項則是過度推論 —— 抽樣得當的問卷調查是可靠的研究方法，問題出在這一次的抽樣方式。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_ca_01","topic":"概念應用・當代世界","difficulty":"basic","question":"「全球化」在經濟層面最主要指甚麼現象？","options":["商品、資本、技術與勞動力跨越國界流動的規模與速度大幅提升","各國的政治制度在全球化之下逐步統一，最終收斂為同一種模式","世界各地的語言與文化互相滲透，最終完全融合為單一的文化","所有國家的經濟發展水平在全球化之下拉平，最終變得完全相同"],"correctIndex":0,"explanation":"經濟全球化的核心是【跨境流動】的規模與速度提升：生產鏈分佈於多國、資金可即時調動、技術迅速擴散、人口跨境就業。要留意流動增加並不等於結果趨同 —— 全球化同時帶來新的不平等，得益與代價在國與國之間、以及一國之內都分佈不均，這正是相關爭論的核心。其餘三項把全球化誤解為「一切變成一樣」：政治制度、文化與發展水平的差異在全球化之下依然顯著，部分方面甚至擴大。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_ca_02","topic":"概念應用・當代世界","difficulty":"intermediate","question":"把「可持續發展」應用到城市規劃時，須同時兼顧哪三個面向？","options":["環境保護、經濟發展與社會公平，三者需同時兼顧而非取其一","交通、房屋與教育，三者是城市規劃的全部內容","過去、現在與未來，三者代表城市發展的時間順序","政府、企業與市民，三者是城市中的三類持份者"],"correctIndex":0,"explanation":"可持續發展的三個面向是環境、經濟與社會，缺一不可 —— 以嚴重污染換取增長不算可持續，以剝奪基層生計的方式推行環保同樣不算。應用到城市規劃，這意味着一項計劃要同時問：它對環境的長遠影響、它的經濟可行性、以及它對不同社群（尤其弱勢）的影響是否公平。有一項列出的是規劃的【範疇】而非可持續發展的面向；另一項描述時間而非面向（代際公平確實是可持續發展的內涵，但那是社會公平之下的一項，並非三個面向本身）；還有一項列出的是持份者。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor4_csd_ca_03","topic":"概念應用・當代世界","difficulty":"hard","question":"把一個概念（例如「公共衞生」）應用到具體個案時，最常見的錯誤是甚麼？","options":["只複述概念的定義，未指出該概念在個案中具體如何運作","使用了太多專門術語，令閱卷員難以理解答案","引用了太多個案細節，令答案偏離所要應用的概念","概念本身不適用於個案，因此應用必然失敗"],"correctIndex":0,"explanation":"概念應用題考的是【概念與個案之間的接駁】。只寫「公共衞生指以群體為對象保障健康的措施」是複述定義，並未應用；要應用，就必須指出在這個個案中，哪一項措施體現了群體導向、它針對甚麼傳播途徑、為何個人層面的做法不足以處理。定義只是起點，分數在接駁的部分。其中兩項確實是可能出現的毛病，但都不及「有定義而無應用」普遍；有一項則假設概念與個案不相容，但題目既然要求應用，通常正正是因為兩者相關。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_se_05","topic":"多角度評鑑・持份者權衡","difficulty":"intermediate","question":"在持份者分析中，「沉默的持份者」指的是甚麼？為何要特別留意？","options":["受影響但缺乏發聲渠道的一群，忽略他們會令評鑑系統性失衡","對議題毫無意見的一群，因此可以在分析中安全地略去","刻意不表態以觀望形勢的一群，立場會隨結果而改變","已經公開表態但意見被媒體忽略的一群，須靠傳媒補救"],"correctIndex":0,"explanation":"沉默不等於無關。未來世代、無投票權的居民、行動不便的長者、行業內的低技術工人 —— 他們往往受影響最深，卻最少出現在公眾討論之中，因為缺乏組織、時間或渠道。若評鑑只收集「有發聲」的意見，結果會系統性偏向組織能力強的一方，而這種偏差不會在資料中顯現出來。因此分析者要主動追問「還有誰受影響但未出現在這份名單上」。其餘三項把沉默解讀為無意見、觀望或被忽略，都假設了當事人有發聲的能力，恰恰漏掉了最需要留意的一群。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_se_06","topic":"多角度評鑑・持份者權衡","difficulty":"hard","question":"評鑑一項政策時，把「受影響程度」與「影響力大小」分開處理，有何作用？","options":["兩者並不對稱：受影響最深的一方，影響決策的能力往往最弱","兩者必然一致，分開處理只是為了令分析看來更為周詳","影響力大小才是重點，受影響程度並不影響決策的合理性","受影響程度無法量度，因此只能以影響力大小作為代替"],"correctIndex":0,"explanation":"把兩者分開，正是為了看見它們之間的落差。一項舊區重建計劃之中，發展商影響力大而受影響有限，租戶則受影響極深卻幾乎無從左右決定。若只按影響力排序，分析會自動複製既有的權力分佈；若只按受影響程度排序，又會低估決策實際如何形成。兩軸並列，才能同時回答「誰承擔代價」與「誰決定結果」，並提出補償或參與機制。有一項否定了落差的存在；另一項把權力等同正當性；還有一項則放棄了受影響程度這一軸，正是最需要保留的一軸。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_se_07","topic":"多角度評鑑・持份者權衡","difficulty":"intermediate","question":"在論述中寫「持份者甲認為……，持份者乙認為……」之後便結束。這樣有何不足？","options":["只並列了立場而未作評鑑，須進一步權衡理據強弱並作出判斷","並列立場已經足夠，評鑑題本來就不要求作出任何判斷","應該只寫其中一方的立場，並列兩方會令論述失去焦點","應該補上第三方的立場，因為評鑑必須涵蓋三個或以上角度"],"correctIndex":0,"explanation":"並列是【描述】，評鑑則要求進一步：兩方的理據各自建基於甚麼證據、哪一方的推論有漏洞、若兩者都成立則如何取捨、取捨的代價由誰承擔。停在並列，等於把判斷的工作交回給閱卷者。要留意「作出判斷」不等於武斷 —— 一個有保留、有條件的判斷（在甚麼情況下應採納哪一方）同樣是判斷，而且往往比一面倒的結論更有說服力。有一項把多角度改為單角度；另一項則把角度數目當成評鑑的標準，但兩個角度若權衡得當，一樣可以是完整的評鑑。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_se_08","topic":"多角度評鑑・持份者權衡","difficulty":"hard","question":"一項政策對某群體有利、對另一群體不利。指出「應設補償機制」屬於甚麼層次的分析？","options":["由指出衝突推進到處理衝突，屬評鑑之後的方案層次","仍停留在描述層次，因為並未提出任何具體的做法","屬於資料回應層次，因為補償金額須由數據推算","並非分析的一部分，政策建議應完全留給政府決定"],"correctIndex":0,"explanation":"公共議題的分析通常分三層：描述（發生甚麼）、評鑑（誰得誰失、理據強弱）、方案（如何處理）。提出補償機制屬第三層 —— 它承認衝突真實存在且無法完全消除，轉而處理「代價如何分擔」。好的方案層答案還會續問：補償由誰支付、如何確保到位、金錢補償能否彌補非金錢的損失（社區網絡、居住習慣）。有一項低估了方案層的性質；另一項把方案誤歸於數據推算；還有一項則放棄了分析者的角色，而公民教育正正要求學生具備提出並檢驗方案的能力。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_dr_04","topic":"資料回應・數據詮釋","difficulty":"intermediate","question":"一幅折線圖的縱軸由 95 開始而非由 0 開始。這會造成甚麼效果？","options":["微小的變化在視覺上被放大，讀者容易高估變化的幅度","微小的變化在視覺上被壓縮，讀者容易低估變化的幅度","對讀者的判斷並無影響，因為數值本身已經標示清楚","圖表因此無效，任何不由 0 開始的圖表都不應採用"],"correctIndex":0,"explanation":"截斷縱軸會把數值範圍壓縮到圖表高度之內，於是由 96 升至 98 的變化，在視覺上可能佔去整幅圖的一半，看起來像是暴升。數值標籤確實存在，但讀者最先接收的是【形狀】而非數字，這正是這種手法有效的原因。要留意截斷本身並非造假 —— 在數值集中於窄範圍時（例如體溫、失業率），由 0 開始反而令變化無法辨認；問題在於讀者是否察覺，因此判讀圖表的第一步應該是看清縱軸的起點。有一項把「須留意」推成「一律不可用」，過度推論。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_dr_05","topic":"資料回應・數據詮釋","difficulty":"hard","question":"兩項數據顯示「雪糕銷量」與「遇溺個案」在同一時期同步上升。可以得出甚麼結論？","options":["兩者相關，但很可能同受第三因素影響，不能斷定其中一項導致另一項","雪糕銷量上升導致遇溺個案增加，因此應限制雪糕的銷售","遇溺個案增加導致雪糕銷量上升，因為家屬以食物寄託哀思","兩項數據必有一項出錯，因為它們之間並無任何關係"],"correctIndex":0,"explanation":"這是相關與因果的經典例子：兩者同升，是因為【氣溫】同時推高雪糕銷量與下水人數，而下水人數上升自然帶來更多遇溺個案。氣溫就是那個第三因素（混淆變項）。判斷因果至少需要三項條件：相關、時序（因在果前）、以及排除其他解釋。此處有一項並不成立。其中兩項各自把相關直接讀成因果，方向相反但錯誤相同；另一項則走向另一極端 —— 兩者確實有真實關係，只是這關係經由第三因素而非彼此直接作用。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_dr_06","topic":"資料回應・數據詮釋","difficulty":"intermediate","question":"資料提及某措施「有效減少 60% 個案」，但未說明比較的基準。應該追問甚麼？","options":["與甚麼比較、期間多長、其間有無其他因素同時改變","該數字由哪一間機構發布，機構愈知名則數字愈可信","該措施的成本是多少，成本愈低則成效必然愈高","該數字是否為整數，非整數的百分比通常不可靠"],"correctIndex":0,"explanation":"「減少 60%」是一個相對數字，離開基準便沒有意義：與去年同期比？與未實施的地區比？與模型預測的無措施情境比？三種基準得出的意義完全不同。此外還要問期間長短（一個月的下跌可能是季節波動）與同期是否有其他改變（若同時實施了另外兩項措施，功勞無法歸於任何一項）。有一項以發布機構代替方法檢視，知名機構一樣可以引述缺乏基準的數字；另一項把成本與成效混為一談；還有一項的「整數不可靠」並無根據。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_ca_04","topic":"概念應用・當代世界","difficulty":"intermediate","question":"把「公民參與」這個概念應用到具體個案時，須說明甚麼才算完整？","options":["參與的形式、參與者的範圍，以及參與對決策實際產生了甚麼作用","參與者的人數，人數愈多則該次參與必然愈為成功","參與活動的舉辦地點與日期，資料愈詳細則分析愈完整","主辦機構的背景，機構愈具規模則參與的成效必然愈高"],"correctIndex":0,"explanation":"應用概念不是套上標籤，而是拆開概念的組成部分再逐項對照個案。公民參與至少有三個維度：【形式】（諮詢、公聽、共同制訂，其深度差別極大）、【範圍】（誰被邀請、誰被遺漏）、【效力】（意見有否改變決定，抑或決定早已作出而諮詢只是程序）。三者缺一，都無法判斷該次參與究竟是實質還是形式。有一項把人數等同成效，但一次由萬人簽署而毫無影響的請願，效力低於一次改變了決定的小型會議；其中兩項所列的都是背景資料而非概念的組成部分。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_ca_05","topic":"概念應用・當代世界","difficulty":"hard","question":"同一個概念在不同社會脈絡中可能有不同意涵。這對概念應用有何提示？","options":["須先說明該概念在此脈絡中的所指，不能直接套用通用定義","概念因此完全無法應用，任何跨脈絡的分析都注定失敗","應選用最權威的定義並在所有個案中一致地套用該定義","概念的意涵由使用者自行決定，因此不必說明所指為何"],"correctIndex":0,"explanation":"「福利」在一個以家庭為主要支援單位的社會，與在一個以國家為主要提供者的社會，所指的制度安排並不相同；「社區」在高密度都市與在鄉村，其邊界與功能亦有分別。因此應用概念的第一步是【界定此處所指】，之後的分析才有着落。這不代表概念失效 —— 正因為要先界定，跨脈絡的比較才能問出有意思的問題：同一個目標在不同制度之下如何實現、各自的代價為何。有一項以統一定義抹平差異；另一項則走向另一極端，若意涵可以隨意界定，概念便失去分析價值。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"floor8_csd_ca_06","topic":"概念應用・當代世界","difficulty":"intermediate","question":"「數碼鴻溝」這個概念，除了指有無上網設備之外，還包括甚麼？","options":["使用能力與資訊素養的差距，以及能否把上網轉化為實際機會","僅指設備價格的高低，與使用者本身的能力並無關係","僅指網絡覆蓋的地理範圍，與城鄉分佈完全等同","僅指上網速度的快慢，速度相同即代表並無鴻溝"],"correctIndex":0,"explanation":"數碼鴻溝通常分三層：接入（有無設備與網絡）、使用（懂不懂操作、能否分辨資訊真偽）、以及成果（能否把上網轉化為求職、學習、獲取服務的實際機會）。只處理第一層，會得出「派了平板電腦便解決了問題」的結論，而實際上長者可能有設備而不懂使用，基層學生可能懂使用而家中沒有安靜的學習空間。三層並看，才能解釋為何同樣接通網絡的人，得益仍然差距懸殊。其餘三項各自把概念窄化為單一因素，正是最常見的應用失誤。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "csd";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "csd-floor2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "csd-floor2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "source": "chemistry-floor.json",
+    "subject": "chemistry",
+    "reviewer": "brian",
+    "reviewedAt": "2026-08-28"
+  },
+  "decisions": {
+    "chem_floor_01": "approved",
+    "chem_floor_02": "approved",
+    "chem_floor_03": "approved",
+    "chem_floor_04": "approved",
+    "chem_floor_05": "approved",
+    "chem_floor_06": "approved",
+    "chem_floor_07": "approved",
+    "chem_floor_08": "approved",
+    "chem_floor_09": "approved",
+    "chem_floor_10": "approved",
+    "chem_floor_11": "approved",
+    "chem_floor_12": "approved",
+    "chem_floor_13": "approved",
+    "chem_floor_14": "approved",
+    "chem_floor_15": "approved",
+    "chem_floor_16": "approved",
+    "chem_floor_17": "approved",
+    "chem_floor_18": "approved",
+    "chem_floor_19": "approved",
+    "chem_floor_20": "approved",
+    "chem_floor_21": "approved",
+    "chem_floor_22": "approved",
+    "chem_floor_23": "approved"
+  }
+}

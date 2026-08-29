@@ -42,7 +42,8 @@ export default function RelaxLanding({
       <div className="grid sm:grid-cols-2 gap-4 mb-4">
         <Link
           href="/relax/solo"
-          className={`block rounded-xl bg-[#14141B] border border-white/10 hover:border-neon-cyan/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${
+          style={{ ["--relax-in-delay" as string]: "0ms" }}
+          className={`relax-in block rounded-xl bg-[#14141B] border border-white/10 hover:border-neon-cyan/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${
             pref.quiet ? 'opacity-90' : ''
           }`}
         >
@@ -59,7 +60,8 @@ export default function RelaxLanding({
 
         <Link
           href="/relax/group"
-          className="block rounded-xl bg-[#14141B] border border-white/10 hover:border-neon-pink/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-pink"
+          style={{ ["--relax-in-delay" as string]: "70ms" }}
+          className="relax-in block rounded-xl bg-[#14141B] border border-white/10 hover:border-neon-pink/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-pink"
         >
           <div className="text-2xl mb-2" aria-hidden>👥</div>
           {/* FIX: [A3][A4][B9] 「組隊開黑」→「同戰友傾偈」；「打卡」→「記錄心情」；描述完整顯示 */}
@@ -73,7 +75,8 @@ export default function RelaxLanding({
       {/* FIX: [A3] 「回藥術」（遊戲術語）→「呼吸」 */}
       <Link
         href="/relax/breathing"
-        className="block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+        style={{ ["--relax-in-delay" as string]: "140ms" }}
+        className="relax-in block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
       >
         🌬️ {en ? 'Let me do a 4-7-8 breath first (1 min)' : '我先做個 4-7-8 呼吸（1 分鐘）'}
       </Link>

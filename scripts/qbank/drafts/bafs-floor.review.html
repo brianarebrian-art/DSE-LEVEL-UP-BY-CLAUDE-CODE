@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · bafs · bafs-floor.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">bafs</span></h1>
+<div class="sub">來源 bafs-floor.json · 共 22 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">22</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"bafs_floor_01","topic":"折舊計算","difficulty":"basic","question":"會計上的「折舊」，其本質是甚麼？","options":["把資產成本分攤至各使用年度","記錄資產市值下跌的實際金額","為將來重置資產而預留的現金","資產在年終實際支付的維修開支"],"correctIndex":0,"explanation":"折舊是把非流動資產的成本，按其可使用年期有系統地分攤至各個會計期間，使成本與所產生的收益配合，這正是配比原則的體現。要清楚三件常被混淆的事。其一，折舊反映的是成本分攤，並非資產市值的實際變動——市值可能上升，折舊照樣要提。其二，折舊是非現金開支，提折舊不會有現金流出，亦不等於預留了任何款項。其三，維修費是當期的實際開支，與折舊分屬兩回事，不可互相取代。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_02","topic":"折舊計算","difficulty":"basic","question":"折舊計算中的「殘值」（residual value）指的是甚麼？","options":["資產在使用年期結束時的預計價值","資產在購入當日所支付的全部成本","資產於年終在資產負債表上的金額","資產累積至今已提折舊的總額"],"correctIndex":0,"explanation":"殘值是預計資產在使用年期屆滿時仍可變現的金額，例如報廢出售所得。它之所以重要，是因為企業實際耗用的只是「成本減殘值」這一部分，折舊便應以此為分攤的基數。直線法的公式正是（成本 − 殘值）÷ 使用年期。要留意殘值是一個估計數字，並非實際交易金額；估計得過高會令每年折舊偏低、利潤偏高。至於年終資產負債表上的金額是帳面淨值，即成本減累計折舊，與殘值並不相同——只有在使用年期結束時，帳面淨值理論上才會等於殘值。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_03","topic":"折舊計算","difficulty":"basic","question":"採用「直線法」計算折舊，各年度的折舊額有甚麼特點？","options":["每年的折舊額維持相同","每年的折舊額逐年遞減","每年的折舊額逐年遞增","折舊額隨市價升跌而變動"],"correctIndex":0,"explanation":"直線法把「成本減殘值」平均分攤至使用年期的每一年，因此每年折舊額相同，在圖上呈一條直線。它適用於效益隨年期平均產生的資產，例如樓宇與辦公室設備。折舊額逐年遞減的是遞減餘額法，因為該法每年按帳面淨值乘以固定百分率，而帳面淨值逐年下降。市價升跌不會影響任何一種方法的折舊額——折舊是成本分攤，不是市值重估，這一點在兩種方法之下同樣成立。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_04","topic":"折舊計算","difficulty":"intermediate","question":"某設備成本 \\$60,000，預計可用 4 年，殘值 \\$4,000。用直線法計算，每年折舊額是多少？","options":["\\$14,000","\\$15,000","\\$16,000","\\$11,200"],"correctIndex":0,"explanation":"直線法每年折舊額 =（成本 − 殘值）÷ 使用年期 =（\\$60,000 − \\$4,000）÷ 4 = \\$56,000 ÷ 4 = \\$14,000。\\$15,000 是漏了扣除殘值，直接以 \\$60,000 ÷ 4 計算，這是最常見的失分位；\\$16,000 是把殘值加上而非減去；\\$11,200 是誤把 \\$56,000 除以 5。做這類題目時，建議先把「成本 − 殘值」寫成一個獨立的數字再除，把兩個步驟分開，比一口氣心算穩妥得多。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_05","topic":"折舊計算","difficulty":"intermediate","question":"沿用上題（成本 \\$60,000、4 年、殘值 \\$4,000、直線法）。使用滿 3 年之後，該設備的帳面淨值是多少？","options":["\\$18,000","\\$42,000","\\$14,000","\\$4,000"],"correctIndex":0,"explanation":"帳面淨值 = 成本 − 累計折舊。每年折舊 \\$14,000，3 年累計 \\$42,000，故帳面淨值 = \\$60,000 − \\$42,000 = \\$18,000。\\$42,000 是累計折舊本身而非帳面淨值，方向搞錯；\\$14,000 只是一年的折舊額；\\$4,000 是殘值，要到第 4 年結束才會達到。可用另一條路徑核對：3 年之後尚餘 1 年折舊 \\$14,000 未提，加上殘值 \\$4,000，合共 \\$18,000，兩條路徑一致。留意帳面淨值永遠不會低於殘值——若計出比殘值還低的數字，必定有一步出錯。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_06","topic":"折舊計算","difficulty":"intermediate","question":"某資產成本 \\$50,000，採用遞減餘額法，每年折舊率 30%。第一年的折舊額是多少？","options":["\\$15,000","\\$10,500","\\$35,000","\\$16,667"],"correctIndex":0,"explanation":"遞減餘額法第一年以成本為基數：\\$50,000 × 30% = \\$15,000。\\$10,500 是第二年的折舊額，即以第一年年末的帳面淨值 \\$35,000 為基數計算（\\$35,000 × 30%），把年份看錯了一年；\\$35,000 是第一年年末的帳面淨值而非折舊額；\\$16,667 是把成本除以 3。呢個方法的特點是早年折舊額較大、其後逐年遞減，適用於效益集中在早期的資產，例如電腦與車輛。要留意遞減餘額法【不扣除殘值】就直接乘率——這一點與直線法不同，是兩法最容易混淆的差異。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_07","topic":"折舊計算","difficulty":"intermediate","question":"就同一項資產而言，遞減餘額法與直線法在「首年折舊額」上的比較，通常是怎樣的？","options":["遞減餘額法首年折舊額較大","直線法首年折舊額較大","兩種方法的首年折舊額相同","兩者的比較須視乎資產市價"],"correctIndex":0,"explanation":"遞減餘額法首年以未經折舊的成本全額乘以折舊率，基數最大，因此折舊額通常高於直線法的平均額；其後基數逐年縮小，折舊額隨之下降，後期反而低於直線法。兩法的分別在於「早提還是平均提」，而非總額——在整個使用年期之內，兩者所提的折舊總額大致相同，只是分佈不同。這個差異有實際影響：選用遞減餘額法會令資產早年的帳面利潤較低、後期較高，因此準則要求所選方法須配合資產效益的實際消耗模式，而不是按利潤需要隨意選擇。市價與兩法的比較無關。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_08","topic":"折舊計算","difficulty":"intermediate","question":"在財務報表中提取折舊，會產生甚麼影響？","options":["損益表開支增加，資產帳面淨值減少","損益表開支增加，銀行結餘同時減少","資產帳面淨值減少，但利潤不受影響","利潤與資產帳面淨值兩者皆不受影響"],"correctIndex":0,"explanation":"折舊在損益表中列為開支，令當期利潤減少；同時在資產負債表中計入累計折舊，令資產的帳面淨值下降。兩邊的影響同時發生，正好維持會計等式平衡。關鍵一點是折舊【不涉及現金流動】——提折舊時並無任何款項付出，所以銀行結餘不受影響。這解釋了為何在現金流量表中，計算營運現金流時要把折舊加回利潤：它先前被扣減，但實際上並無現金流出。這個「減利潤、不減現金」的性質，是折舊在整份試卷中最常被考的概念。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_09","topic":"比率分析（高階）","difficulty":"basic","question":"「流動比率」（current ratio）的計算公式是甚麼？","options":["流動資產 ÷ 流動負債","流動負債 ÷ 流動資產","流動資產 − 流動負債","（流動資產 − 存貨）÷ 流動負債"],"correctIndex":0,"explanation":"流動比率以流動資產除以流動負債，量度企業以短期資產償還短期債務的能力。一般認為 2 : 1 左右較為穩健，但合適水平因行業而異——存貨周轉極快的零售業可以低於此數而仍然安全。要分清三個相關但不同的概念：流動資產減流動負債是營運資金，是一個金額而非比率；把存貨剔除之後再除以流動負債的是速動比率，因為存貨在流動資產之中變現最慢；而把分子分母倒轉並無會計上的意義。答題時應同時指出比率的數值與其含意，只寫數字通常拿不到分析分。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_10","topic":"比率分析（高階）","difficulty":"basic","question":"計算「速動比率」（quick ratio）時，須從流動資產中剔除哪一項？","options":["存貨","應收帳款","銀行存款","短期投資"],"correctIndex":0,"explanation":"速動比率把存貨從流動資產中剔除，因為存貨在所有流動資產之中變現最慢——它須先售出、再收回帳款，才會變成現金，而且在急需資金時往往只能折價出售。剔除之後所得的比率，更能反映企業應付即時債務的能力。應收帳款雖然也需要時間收回，但已經完成銷售這一步，通常仍計入速動資產。銀行存款與短期投資本身已接近現金，更加不會剔除。當一家公司的流動比率理想而速動比率偏低時，通常意味資產過度集中於存貨，這正是比率分析中值得指出的觀察。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_11","topic":"比率分析（高階）","difficulty":"basic","question":"「淨利率」（net profit margin）量度的是甚麼？","options":["每一元銷貨最終所得的淨利潤","每一元資產所產生的銷貨金額","每一元存貨一年周轉的次數","每一元負債所對應的股東權益"],"correctIndex":0,"explanation":"淨利率 = 淨利潤 ÷ 銷貨 × 100%，反映每一元銷貨在扣除全部開支之後最終剩下多少利潤，是量度整體盈利能力的核心指標。它與毛利率的分別在於扣除的範圍：毛利率只扣銷貨成本，淨利率則連同營業開支、利息與稅項一併扣除。因此若毛利率穩定而淨利率下跌，問題多數出在營業開支或財務費用，而非採購或定價——這種「兩個比率一併比較以定位問題」的分析，正是高階題所要求的層次。餘下三項分別描述資產周轉率、存貨周轉率與資本結構比率。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_12","topic":"比率分析（高階）","difficulty":"intermediate","question":"某公司流動資產 \\$500,000（其中存貨 \\$200,000），流動負債 \\$250,000。其速動比率是多少？","options":["1.2 : 1","2 : 1","0.8 : 1","2.5 : 1"],"correctIndex":0,"explanation":"速動比率 =（流動資產 − 存貨）÷ 流動負債 =（\\$500,000 − \\$200,000）÷ \\$250,000 = \\$300,000 ÷ \\$250,000 = 1.2 : 1。2 : 1 是流動比率，漏了剔除存貨，這是本題的主要陷阱；0.8 : 1 是把存貨當成分子（\\$200,000 ÷ \\$250,000）；2.5 : 1 是誤用 \\$500,000 除以 \\$200,000。值得留意的是這家公司流動比率有 2 : 1 看似穩健，但速動比率只有 1.2 : 1，顯示流動資產之中相當部分是存貨。一併比較兩個比率，比單看其中一個更能反映真實的短期償債能力。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_13","topic":"比率分析（高階）","difficulty":"intermediate","question":"某商號銷貨 \\$900,000，淨利潤 \\$72,000。其淨利率是多少？","options":["8%","12.5%","0.08%","80%"],"correctIndex":0,"explanation":"淨利率 = 淨利潤 ÷ 銷貨 × 100% = \\$72,000 ÷ \\$900,000 × 100% = 8%。12.5% 是把分子分母倒轉（\\$900,000 ÷ \\$72,000 得 12.5，並非百分率）；0.08% 是漏了乘以 100%；80% 是小數點放錯位置。要留意比率分析的分母永遠是銷貨而非成本，這一點在毛利率與加成率之間尤其容易混淆。另外，單一個 8% 本身說明不了甚麼——必須與同業水平或該商號往年的數字比較，才能判斷是好是壞。答分析題時只寫出比率而不作比較，通常只能取得計算分。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_14","topic":"比率分析（高階）","difficulty":"intermediate","question":"單憑財務比率去評價一家公司，最主要的局限是甚麼？","options":["比率反映過去數據，亦不涵蓋非財務因素","比率的計算方法過於複雜，容易出現錯誤","比率只適用於上市公司，中小企不能使用","比率必須每日重新計算才會具有參考價值"],"correctIndex":0,"explanation":"財務比率取自已公布的報表，反映的是過去的表現，未必預示將來；而且它只涵蓋可以量化的財務資料，管理層質素、員工士氣、品牌聲譽、行業前景等對前景影響極大的因素，全部不會出現在比率之中。另外兩點局限亦值得留意：資產負債表數字是某一個時點的快照，年結日前後的安排可以令比率好看；不同公司採用的會計政策（例如折舊方法、存貨計價）不同，直接比較未必公平。比率的計算本身並不複雜，亦不限於上市公司，更不需要每日重算——這三項都不是它的真正弱點。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_15","topic":"比率分析（高階）","difficulty":"intermediate","question":"某公司的毛利率維持不變，但淨利率明顯下跌。最可能的原因是甚麼？","options":["營業開支或財務費用上升","貨品的採購成本大幅上升","貨品的售價被大幅調低","本期的銷貨數量顯著減少"],"correctIndex":0,"explanation":"毛利率只受售價與銷貨成本影響；它維持不變，說明採購成本與定價這兩方面大致穩定。淨利率則在毛利之後再扣除營業開支、利息與稅項，因此兩者出現分歧，問題必定落在毛利之後的那一段——租金、薪金、推廣費用上升，或借款增加令利息支出上升，都是常見原因。採購成本上升或售價調低都會先令毛利率下跌，與題設不符。至於銷貨數量減少，會令利潤【金額】下降，但兩個比率都是百分比，數量本身不必然改變比率——分辨「金額」與「比率」的變動，是這一類分析題的關鍵。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_16","topic":"成本・定價・回本","difficulty":"basic","question":"下列哪一項屬於典型的「固定成本」？","options":["廠房的每月租金","生產所用的原材料","按件計算的工資","按產量計費的電力"],"correctIndex":0,"explanation":"固定成本在相關範圍之內不隨產量變動，廠房租金無論當月生產多少件貨品都要照付，屬典型例子。其餘三項都隨產量增減而變動：原材料、按件計算的工資、按產量計費的電力，全部是變動成本。要留意「固定」指的是總額不隨產量變動，而非永遠不變——租金加價時總額當然會變。另外，固定成本的【單位】成本反而隨產量上升而下降，因為同一筆總額攤分到更多件貨品之上，這正是規模經濟的成本基礎，亦是收支平衡分析的關鍵。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_17","topic":"成本・定價・回本","difficulty":"basic","question":"「單位邊際貢獻」（contribution per unit）的計算方法是甚麼？","options":["售價減單位變動成本","售價減單位固定成本","售價減單位總成本","單位變動成本加固定成本"],"correctIndex":0,"explanation":"單位邊際貢獻 = 售價 − 單位變動成本，代表每多賣一件貨品所能貢獻出來、用以抵銷固定成本的金額。固定成本全部抵銷之後，其後每一件的邊際貢獻便成為利潤。理解這一點，收支平衡點的公式便無須死記：固定成本總額 ÷ 單位邊際貢獻，即「要賣多少件才夠抵銷固定成本」。留意公式中減去的是【變動】成本而非固定成本——把單位固定成本減去是最常見的錯誤，因為單位固定成本本身會隨產量改變，用它來計算會得出循環定義。售價減單位總成本得出的是單位利潤，並非邊際貢獻。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_18","topic":"成本・定價・回本","difficulty":"basic","question":"「回本期」（payback period）量度的是甚麼？","options":["收回原有投資額所需的時間","項目整個年期的總利潤金額","項目每年的平均回報百分率","投資在到期時的市場價值"],"correctIndex":0,"explanation":"回本期是累積淨現金流入等於原投資額所需的時間，例如投資 \\$100,000、每年淨流入 \\$25,000，回本期為 4 年。它的優點是計算簡單、直觀，並側重於資金回籠的速度，對現金緊絀的中小企特別實用。但它有兩個明顯局限：其一，完全不理會回本之後的現金流，因此可能捨棄一個回本較慢但長遠回報更高的項目；其二，不考慮金錢的時間價值，把第一年與第四年的一元當成等值。答評價題時把這兩點一併寫出，比只寫「計算簡單」更能取得分析分。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_19","topic":"成本・定價・回本","difficulty":"intermediate","question":"某產品售價每件 \\$50，單位變動成本 \\$30，固定成本總額 \\$80,000。要達到收支平衡，須售出多少件？","options":["4,000 件","1,600 件","2,667 件","2,000 件"],"correctIndex":0,"explanation":"先求單位邊際貢獻：\\$50 − \\$30 = \\$20。收支平衡銷量 = 固定成本 ÷ 單位邊際貢獻 = \\$80,000 ÷ \\$20 = 4,000 件。1,600 件是誤用售價作分母（\\$80,000 ÷ \\$50）；2,667 件是誤用單位變動成本作分母（\\$80,000 ÷ \\$30）；2,000 件是把邊際貢獻誤算為 \\$40。核對方法很直接：賣 4,000 件的總邊際貢獻 = 4,000 × \\$20 = \\$80,000，剛好等於固定成本，利潤為零，符合收支平衡的定義。做完計算把答案代回去驗證一次，是這一課最有效的自我檢查。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_20","topic":"成本・定價・回本","difficulty":"intermediate","question":"沿用上題（售價 \\$50、單位變動成本 \\$30、固定成本 \\$80,000）。若要賺取目標利潤 \\$30,000，須售出多少件？","options":["5,500 件","4,000 件","1,500 件","2,200 件"],"correctIndex":0,"explanation":"目標利潤銷量 =（固定成本 + 目標利潤）÷ 單位邊際貢獻 =（\\$80,000 + \\$30,000）÷ \\$20 = \\$110,000 ÷ \\$20 = 5,500 件。4,000 件是收支平衡點，漏了加上目標利潤；1,500 件只計了目標利潤所需的部分（\\$30,000 ÷ \\$20）而漏了固定成本；2,200 件是誤用 \\$110,000 除以 \\$50。理解的關鍵是把目標利潤視為「額外要抵銷的固定成本」——邊際貢獻先抵銷固定成本，再抵銷目標利潤，兩者性質相同，所以直接相加即可。掌握這個想法，收支平衡與目標利潤兩條公式其實是同一條。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_21","topic":"成本・定價・回本","difficulty":"intermediate","question":"某貨品成本 \\$200，以「成本加成 20%」定價。就此售價而言，其毛利率（以售價為基礎）是多少？","options":["16.7%","20.0%","25.0%","83.3%"],"correctIndex":0,"explanation":"加成 20% 是以成本為基數：毛利 = \\$200 × 20% = \\$40，售價 = \\$200 + \\$40 = \\$240。毛利率則以售價為基數：\\$40 ÷ \\$240 = 16.7%。答 20% 是把加成率當成毛利率，正是本題要考的分別——兩者的分子相同（都是毛利 \\$40），但分母一個是成本、一個是售價，所以毛利率必定小於加成率。25% 是把毛利率反過來當加成率計；83.3% 是成本佔售價的比例。應付這類題目，先寫出成本、毛利、售價三個數字，再看題目問的比率以哪一個為分母，便不會混淆。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bafs_floor_22","topic":"成本・定價・回本","difficulty":"intermediate","question":"某項投資成本 \\$120,000。首三年淨現金流入分別為 \\$30,000、\\$40,000、\\$50,000，其後每年 \\$50,000。其回本期是多少？","options":["3 年","2 年","4 年","2.4 年"],"correctIndex":0,"explanation":"逐年累計淨現金流入：第 1 年 \\$30,000；第 2 年累計 \\$70,000；第 3 年累計 \\$120,000，剛好等於投資成本，故回本期為 3 年。2 年只累計到 \\$70,000，仍未收回；4 年已超過回本點；2.4 年是把成本除以首年流入。要留意各年流入不相同時，必須逐年累加，不可直接用「成本 ÷ 平均流入」——後者只適用於每年流入相同的情況。若累計數在某年之內才追平成本，則須按該年流入的比例計算月份，答案會出現小數。本題數字剛好在年末追平，所以是整數年。","type":"mc","referenceAnswer":null,"markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "bafs";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "bafs-floor.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "bafs-floor.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
