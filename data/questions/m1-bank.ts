@@ -13,7 +13,13 @@ import { createBank, n, frac, round, type TopicMeta, type FwMeta } from './_para
 const T = {
   diff: { id: 'differentiation', zh: '微分', en: 'Differentiation' },
   integ: { id: 'integration', zh: '積分', en: 'Integration' },
-  binomialThm: { id: 'binomial_theorem', zh: '二項式定理', en: 'Binomial Theorem' },
+  // 2026-08-22 稽核修正：本鍵原用 id `binomial_theorem`，但該 id 從未登記於 m1Topics，
+  // 令 E3 一族試題雖存在於題庫，學生卻無法經課題入口（/practice?topic=、/subjects
+  // 課題標籤、/notes）篩選得到。m1.ts 早已登記 `binomial`，標籤同為「二項式定理／
+  // Binomial Theorem」，涵蓋同一課程單位（該課題現有試題亦包括二項式係數計算），
+  // 故併入 `binomial` 而非另立新課題，做法與此前 `normal_distribution` 的譯名統一一致。
+  // 注意：`binomial` 由 m1.ts 登記，因此不得再列入下方 m1BankTopics，否則課題清單重複。
+  binomialThm: { id: 'binomial', zh: '二項式定理', en: 'Binomial Theorem' },
   binomialDist: { id: 'binomial_distribution', zh: '二項分佈', en: 'Binomial Distribution' },
   poisson: { id: 'poisson_distribution', zh: '泊松分佈', en: 'Poisson Distribution' },
   normal: { id: 'normal_distribution', zh: '正態分佈', en: 'Normal Distribution' },
