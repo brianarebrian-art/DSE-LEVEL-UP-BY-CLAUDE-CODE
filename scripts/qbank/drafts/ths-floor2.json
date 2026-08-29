@@ -1,0 +1,110 @@
+[
+ {
+  "id": "floor7_ths_ca_01",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "basic",
+  "question": "旅遊業中的「可持續旅遊」與「大眾旅遊」，最主要的分別在哪裏？",
+  "questionEn": "What most fundamentally distinguishes sustainable tourism from mass tourism?",
+  "options": [
+   "前者以承載力為限制、兼顧當地社區與環境，後者以最大化人次為導向",
+   "前者以最大化人次為導向，後者以承載力為限制並兼顧環境",
+   "前者只在鄉郊進行，後者只在城市進行，分別純在地點",
+   "前者收費昂貴而後者價格低廉，分別純在價格高低"
+  ],
+  "optionsEn": [
+   "the former is bounded by carrying capacity and weighs community and environment; the latter maximises visitor numbers",
+   "the former maximises visitor numbers; the latter is bounded by carrying capacity",
+   "the former happens only in the countryside and the latter only in cities",
+   "the former is expensive and the latter cheap, a difference purely of price"
+  ],
+  "correctIndex": 0,
+  "explanation": "可持續旅遊的核心是【承載力】：一個目的地在不損害環境、不破壞當地生活的前提下，能夠承受多少訪客。它同時要求收益有相當部分留在當地社區，而非全數流向外來經營者。大眾旅遊則以規模為導向，人次與收入是主要指標，代價（擠塞、物價上升、環境壓力、居民生活受擾）往往由當地承擔而不計入帳。要留意可持續不等於昂貴或限於鄉郊 —— 城市一樣可以有承載力管理，價格亦非分野所在。",
+  "explanationEn": "Sustainable tourism turns on CARRYING CAPACITY: how many visitors a destination can absorb without damaging its environment or disrupting local life. It also requires that a substantial share of the revenue stay in the host community rather than flowing entirely to outside operators. Mass tourism is oriented to scale, with arrivals and receipts as the headline measures, while the costs — congestion, rising prices, environmental pressure, disruption to residents — are typically borne locally and left off the account. Note that sustainability means neither expensive nor rural: cities can manage carrying capacity too, and price is not the distinction."
+ },
+ {
+  "id": "floor7_ths_ca_02",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "intermediate",
+  "question": "酒店業強調「服務質素」時，「無形性」這個特徵帶來甚麼管理挑戰？",
+  "questionEn": "In hospitality, what management challenge arises from the intangibility of service?",
+  "options": [
+   "服務無法預先檢驗或儲存，質素須在每次交付時確保",
+   "服務可以像貨品一樣預先逐件檢驗，質素管理相對簡單直接",
+   "服務可以儲存起來留待旺季使用，故淡旺季之間並無分別",
+   "服務質素完全由價格決定，價格愈高則質素必然愈為優良"
+  ],
+  "optionsEn": [
+   "a service cannot be inspected in advance or stored, so quality must be built into process and training at every delivery",
+   "a service can be inspected in advance like goods, making quality management straightforward",
+   "a service can be stored for the peak season, so high and low seasons make no difference",
+   "service quality is set entirely by price, and a higher price necessarily means better service"
+  ],
+  "correctIndex": 0,
+  "explanation": "服務有四項基本特徵：無形性、不可分離性（生產與消費同時發生）、易變性（同一員工在不同時候表現不一）、易逝性（今晚賣不出的房間不能留到明晚）。無形性帶來的挑戰是：顧客無法在購買前檢驗，而管理者亦無法把服務退回重做 —— 質素只能在交付的當下確保，因此業界依靠標準作業流程、員工培訓與服務藍圖把不確定性壓低。第二、三項分別與無形性和易逝性的定義相反；第四項把價格與質素等同，但兩者並無必然關係。",
+  "explanationEn": "Services have four basic characteristics: intangibility, inseparability of production from consumption, variability as the same employee performs differently at different moments, and perishability as a room unsold tonight cannot be kept for tomorrow. Intangibility means the customer cannot inspect before buying and the manager cannot send the service back to be remade — quality can only be secured at the moment of delivery, which is why the industry relies on standard procedures, training and service blueprints to reduce uncertainty. The second and third options contradict intangibility and perishability respectively; the fourth equates price with quality, between which there is no necessary relation."
+ },
+ {
+  "id": "floor7_ths_ca_03",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "intermediate",
+  "question": "一個旅遊目的地出現「過度旅遊」時，最典型的徵狀是甚麼？",
+  "questionEn": "What are the most typical symptoms of overtourism at a destination?",
+  "options": [
+   "居民生活受擾、物價與租金上升、環境壓力超出修復速度",
+   "訪客人次持續下跌、酒店入住率長期偏低、旅遊收入不斷萎縮",
+   "當地居民的平均收入顯著上升，而生活成本則同時明顯下降",
+   "目的地的文化特色因訪客增加而得到更為完整的保存與承傳"
+  ],
+  "optionsEn": [
+   "residents disrupted, prices and rents rising, and pressure on environment and heritage outstripping restoration",
+   "arrivals falling, hotel occupancy persistently low, and tourism income shrinking",
+   "residents' incomes rising on average while their cost of living falls",
+   "local cultural distinctiveness fully preserved because visitors have increased"
+  ],
+  "correctIndex": 0,
+  "explanation": "過度旅遊指訪客數量超出目的地的承載能力，徵狀集中在三方面：社會（居民日常受擠塞與噪音影響、社區設施被旅遊服務取代）、經濟（租金與物價上升，居民被迫遷離市中心）、環境（古蹟磨損、生態壓力超出自然與人工修復的速度）。要留意過度旅遊的弔詭之處：它源於【成功】而非失敗，收入愈高、口碑愈好，壓力愈大，因此不能靠推廣或降價解決，只能靠管理總量與分流。第二項描述的是需求不足，方向相反；第三、四項則與過度旅遊的實際影響不符。",
+  "explanationEn": "Overtourism means visitor numbers exceeding a destination's capacity, and its symptoms cluster in three areas: social, as residents face congestion and noise and neighbourhood facilities give way to tourist services; economic, as rents and prices rise and residents are pushed out of the centre; and environmental, as wear on heritage and pressure on ecosystems outpace natural and funded restoration. Note the paradox: overtourism arises from SUCCESS rather than failure, since higher revenue and better reputation increase the pressure, so it cannot be solved by promotion or lower prices but only by managing volume and dispersal. The second option describes weak demand, the opposite case, and the third and fourth do not match its actual effects."
+ },
+ {
+  "id": "floor7_ths_ca_04",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "hard",
+  "question": "評估一項旅遊發展計劃時，只計算它帶來的收入與職位，會遺漏甚麼？",
+  "questionEn": "What does an assessment of a tourism project miss if it counts only revenue and jobs?",
+  "options": [
+   "未計入由當地承擔而不入帳的外部成本，以及收益分配",
+   "未計入該計劃的建造費用與前期支出，因而低估總投資額",
+   "未計入訪客的滿意程度，因而無法預測回頭客所佔的比例",
+   "未計入競爭對手的市場佔有率，因而無法評估自身市場地位"
+  ],
+  "optionsEn": [
+   "the social and environmental costs borne locally but left off the account, and how the gains are distributed",
+   "the construction cost of the project, so total investment is understated",
+   "visitor satisfaction, so the proportion of returning visitors cannot be forecast",
+   "competitors' market share, so the project's market position cannot be judged"
+  ],
+  "correctIndex": 0,
+  "explanation": "收入與職位是最容易量度的兩項，因而也最容易成為唯一被計算的兩項。完整的評估至少還要問三件事：一、外部成本 —— 擠塞、噪音、環境損耗由誰承擔，這些代價通常不入帳；二、分配 —— 收益究竟留在當地社區，還是流向外來經營者，職位是長工還是季節性低薪職位；三、機會成本 —— 同一片土地與同一筆資金若用於其他發展，回報如何。第二、三、四項所列的建造費、滿意度與市佔率都是實務指標，重要但屬於同一個財務與市場框架之內，並未觸及框架之外被排除的代價。",
+  "explanationEn": "Revenue and jobs are the two easiest things to measure, which is why they so easily become the only two counted. A full assessment asks at least three further questions. First, external costs: who bears the congestion, noise and environmental wear, which typically never enter the account. Second, distribution: whether the gains stay in the host community or flow to outside operators, and whether the jobs are permanent or seasonal and low-paid. Third, opportunity cost: what the same land and capital would return in another use. Construction cost, satisfaction and market share are real operational measures, but they sit inside the same financial and market frame and do not reach the costs that frame excludes."
+ }
+]

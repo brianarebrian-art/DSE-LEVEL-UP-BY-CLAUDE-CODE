@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "source": "english-floor2.json",
+    "subject": "english",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor7_p1_tone_01": "pending",
+    "floor7_p1_tone_02": "pending",
+    "floor7_p1_tone_03": "pending",
+    "floor7_p1_inf_01": "pending",
+    "floor7_p1_inf_02": "pending",
+    "floor7_p1_inf_03": "pending",
+    "floor7_p1_vr_01": "pending",
+    "floor7_p1_vr_02": "pending",
+    "floor7_p1_vr_03": "pending"
+  }
+}

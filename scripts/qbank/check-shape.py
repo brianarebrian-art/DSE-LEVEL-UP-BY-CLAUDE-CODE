@@ -32,7 +32,10 @@ for f in sys.argv[1:]:
         v = [visual_length(o) for o in q['options']]
         ci = q['correctIndex']
         margin = v[ci] - max(x for i, x in enumerate(v) if i != ci)
-        if margin > LIMIT:
+        # 閘在 margin 恰好等於 LIMIT 時已經退回（實測：「闊 6 個視覺字，上限 6」→ 退回），
+        # 故此處用 >= 而非 >。這是本腳本第三次計法出錯，前兩次分別是
+        # 「永遠 exit 0」與「自創寬度計法」。
+        if margin >= LIMIT:
             print(f"  {q['id']}  正確 {v[ci]} vs 最長干擾 {max(x for i,x in enumerate(v) if i!=ci)}  超 {margin}")
             bad += 1
 print(f"形狀超標 {bad} 條")

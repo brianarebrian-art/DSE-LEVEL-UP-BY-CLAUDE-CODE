@@ -1,0 +1,14 @@
+{
+  "_meta": {
+    "source": "ths-floor2.json",
+    "subject": "ths",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "floor7_ths_ca_01": "pending",
+    "floor7_ths_ca_02": "pending",
+    "floor7_ths_ca_03": "pending",
+    "floor7_ths_ca_04": "pending"
+  }
+}
