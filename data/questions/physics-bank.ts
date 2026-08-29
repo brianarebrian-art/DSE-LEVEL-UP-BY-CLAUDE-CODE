@@ -350,13 +350,15 @@ for (const [A, Z, el] of [[238, 92, '鈾'], [226, 88, '鐳'], [222, 86, '氡'], 
   add(`pb_ra3a_${A}`, T.radioactivity, FW.decay, 'medium',
     [`一個質量數 $${A}$、原子序 $${Z}$ 的${el}原子核放出一粒 $\\alpha$ 粒子。所得新核的質量數與原子序分別是多少？`,
      `A nucleus with mass number $${A}$ and atomic number $${Z}$ emits an $\\alpha$ particle. What are the mass number and atomic number of the new nucleus?`],
-    [n(`$${A - 4}$、$${Z - 2}$`), n(`$${A}$、$${Z + 1}$`), n(`$${A - 2}$、$${Z - 4}$`), n(`$${A - 4}$、$${Z}$`)],
+    [[`$${A - 4}$、$${Z - 2}$`, `$${A - 4}$, $${Z - 2}$`], [`$${A}$、$${Z + 1}$`, `$${A}$, $${Z + 1}$`],
+     [`$${A - 2}$、$${Z - 4}$`, `$${A - 2}$, $${Z - 4}$`], [`$${A - 4}$、$${Z}$`, `$${A - 4}$, $${Z}$`]],
     [`$\\alpha$ 粒子即氦核，含 2 個質子與 2 個中子，故質量數減 4、原子序減 2：$${A} - 4 = ${A - 4}$，$${Z} - 2 = ${Z - 2}$。陷阱：$${A}$、$${Z + 1}$ 是 $\\beta$ 衰變的結果；$${A - 2}$、$${Z - 4}$ 把兩個數字調轉；$${A - 4}$、$${Z}$ 漏了原子序的變化。`,
      `An $\\alpha$ particle is a helium nucleus of 2 protons and 2 neutrons, so the mass number falls by 4 and the atomic number by 2: $${A} - 4 = ${A - 4}$ and $${Z} - 2 = ${Z - 2}$. Traps: $${A}$, $${Z + 1}$ is the result of $\\beta$ decay; $${A - 2}$, $${Z - 4}$ swaps the two changes; $${A - 4}$, $${Z}$ omits the change in atomic number.`])
   add(`pb_ra3b_${A}`, T.radioactivity, FW.decay, 'medium',
     [`一個質量數 $${A}$、原子序 $${Z}$ 的原子核放出一粒 $\\beta$ 粒子。所得新核的質量數與原子序分別是多少？`,
      `A nucleus with mass number $${A}$ and atomic number $${Z}$ emits a $\\beta$ particle. What are the mass number and atomic number of the new nucleus?`],
-    [n(`$${A}$、$${Z + 1}$`), n(`$${A - 4}$、$${Z - 2}$`), n(`$${A}$、$${Z - 1}$`), n(`$${A - 1}$、$${Z + 1}$`)],
+    [[`$${A}$、$${Z + 1}$`, `$${A}$, $${Z + 1}$`], [`$${A - 4}$、$${Z - 2}$`, `$${A - 4}$, $${Z - 2}$`],
+     [`$${A}$、$${Z - 1}$`, `$${A}$, $${Z - 1}$`], [`$${A - 1}$、$${Z + 1}$`, `$${A - 1}$, $${Z + 1}$`]],
     [`$\\beta$ 粒子是核內一個中子轉變為質子時放出的電子：質子數增加 1，而質子與中子的總數不變，故質量數維持 $${A}$、原子序增至 $${Z + 1}$。陷阱：$${A - 4}$、$${Z - 2}$ 是 $\\alpha$ 衰變；$${A}$、$${Z - 1}$ 方向相反；$${A - 1}$、$${Z + 1}$ 誤以為質量數會減。`,
      `A $\\beta$ particle is an electron emitted when a neutron in the nucleus turns into a proton: the proton count rises by 1 while the total of protons and neutrons is unchanged, so the mass number stays at $${A}$ and the atomic number becomes $${Z + 1}$. Traps: $${A - 4}$, $${Z - 2}$ is $\\alpha$ decay; $${A}$, $${Z - 1}$ has the wrong direction; $${A - 1}$, $${Z + 1}$ wrongly reduces the mass number.`])
 }
@@ -672,10 +674,17 @@ for (const A0 of [800, 1000, 1200, 1600, 2000, 3200]) {
   for (const [A, Z] of [[226, 88], [238, 92], [214, 82], [210, 84], [232, 90], [220, 86],
     [212, 83], [228, 88], [234, 90], [206, 81]] as [number, number][]) {
     const A2 = A - dA, Z2 = Z - dZ
+    const otherA = mode === 'α' ? A : A - 4, otherZ = mode === 'α' ? Z + 1 : Z - 2
     add(`physc_ra4_${mode === 'α' ? 'a' : 'b'}_${A}_${Z}`, T.radioactivity, FW.decay, 'hard',
       [`一個質量數 ${A}、原子序 ${Z} 的原子核放出一個 ${mode} 粒子。衰變後子核的質量數與原子序分別是多少？`,
        `A nucleus of mass number ${A} and atomic number ${Z} emits an ${mode} particle. What are the mass number and atomic number of the daughter nucleus?`],
-      [n(`$${A2}$、$${Z2}$`), n(`$${A - dA}$、$${Z + dZ}$`), n(`$${A + dA}$、$${Z - dZ}$`), n(`$${A}$、$${Z2}$`)],
+      // 第二個誘答刻意是「套錯另一種衰變規則」所得的子核：α 題給 β 的答案，
+      // β 題給 α 的答案。首兩版寫成 (A + dA, Z2) 與 (A − dA, Z + dZ)，
+      // 在 β（dA = 0）之下都會化簡成答案本身，十條 β 題整組被丟棄。
+      [[`$${A2}$、$${Z2}$`, `$${A2}$, $${Z2}$`],
+       [`$${otherA}$、$${otherZ}$`, `$${otherA}$, $${otherZ}$`],
+       [`$${A2}$、$${Z + dZ}$`, `$${A2}$, $${Z + dZ}$`],
+       [`$${A}$、$${Z}$`, `$${A}$, $${Z}$`]],
       [`核反應中質量數與原子序皆守恆。${mode === 'α' ? 'α 粒子即氦核，帶走 4 個質量數與 2 個原子序，故兩者分別減 4 與減 2' : 'β 粒子是電子，質量數不變；核內一個中子轉為質子並放出電子，故原子序【增加】1'}：質量數 $${A} \\to ${A2}$，原子序 $${Z} \\to ${Z2}$。陷阱：其餘三項分別把原子序的增減方向寫反、把質量數的增減方向寫反，或忘記改動質量數。`,
        `Both mass number and atomic number are conserved in nuclear reactions. ${mode === 'α' ? 'An alpha particle is a helium nucleus carrying away 4 mass units and 2 protons, so both fall, by 4 and by 2 respectively' : 'A beta particle is an electron, so the mass number is unchanged; a neutron becomes a proton and emits the electron, so the atomic number INCREASES by 1'}: mass number $${A} \\to ${A2}$, atomic number $${Z} \\to ${Z2}$. Traps: the other options reverse the direction of the atomic-number change, reverse the mass-number change, or leave the mass number untouched.`])
   }
