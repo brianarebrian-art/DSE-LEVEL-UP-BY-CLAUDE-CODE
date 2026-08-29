@@ -322,5 +322,113 @@
   "correctIndex": 0,
   "explanation": "當代藝術經常以【提問】而非【技巧展示】為核心：一件現成物、一段錄像或一場行為，其意義大量來自它針對甚麼議題、回應藝術史上哪一個主張、在甚麼場域展出。若只描述「這是一個白色方形物件」，等於錯過作品真正在說甚麼。要留意這不代表形式分析失效 —— 形式仍然是意義的載體，恰當的做法是【形式與脈絡並用】。其餘三項都把這一點推得過頭：當代作品當然有視覺元素，形式分析亦非古代專用，而描述視覺元素是可查證的觀察而非主觀判斷。",
   "explanationEn": "Contemporary art frequently centres on ASKING A QUESTION rather than displaying skill: a readymade, a video, a performance means largely through the issue it addresses, the art-historical claim it answers, and the setting in which it is shown. Describing only \"a white rectangular object\" misses what the work is saying. This does not make formal analysis useless — form still carries meaning, and the sound approach uses form and context together. The other options push the point too far: contemporary work certainly has visual elements, formal analysis is not restricted to historical art, and describing elements is verifiable observation rather than subjective judgement."
+ },
+ {
+  "id": "floor8_va_hc_05",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "basic",
+  "question": "文藝復興時期線性透視法的出現，為繪畫帶來的最主要改變是甚麼？",
+  "questionEn": "What did the arrival of linear perspective most fundamentally change in Renaissance painting?",
+  "options": [
+   "畫面建立起統一的空間深度，觀者的位置因而被明確設定",
+   "顏料變得更耐久，作品因而得以保存更長的時間",
+   "畫家改用畫布取代木板，尺幅因而可以大幅加大",
+   "宗教題材被完全取代，畫面只餘下風景與靜物"
+  ],
+  "optionsEn": [
+   "a single coherent depth is constructed, which fixes where the viewer is standing",
+   "pigments became more durable, so works survived far longer",
+   "canvas replaced wood panel, so pictures could be made much larger",
+   "religious subjects were wholly displaced by landscape and still life"
+  ],
+  "correctIndex": 0,
+  "explanation": "線性透視法以【單一消失點】統一畫面的空間關係，令畫中景物依同一套規則向遠處收窄。它帶來的不只是「畫得像」：由於整個空間依觀者的眼睛位置建構，觀者被安放在一個特定的位置上，看畫因而成為進入一個經過計算的空間。留意顏料耐久性與畫布普及屬材料史的獨立發展，而宗教題材在文藝復興時期仍然是主流，透視法正正大量用於宗教畫。",
+  "explanationEn": "Linear perspective unifies pictorial space around a SINGLE VANISHING POINT, so everything recedes by one consistent rule. What it delivers is more than likeness: because the whole space is constructed from the position of the viewer's eye, the viewer is placed at a determinate point, and looking at the picture becomes entry into a calculated space. Pigment durability and the spread of canvas belong to a separate history of materials, and religious subjects remained dominant — perspective was applied to them extensively."
+ },
+ {
+  "id": "floor8_va_hc_06",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "intermediate",
+  "question": "印象派畫家走出畫室、在戶外直接作畫，這個轉變與哪一項條件關係最直接？",
+  "questionEn": "Which condition bears most directly on the Impressionists' move out of the studio to paint outdoors?",
+  "options": [
+   "顏料改以錫管盛載之後便於攜帶，戶外寫生成為可行",
+   "當時教會明令禁止畫家在室內繪畫任何宗教題材",
+   "戶外的光線比室內昏暗，更適合描繪深沉的色調",
+   "畫布在戶外乾得較慢，方便畫家反覆修改同一處"
+  ],
+  "optionsEn": [
+   "paint in collapsible metal tubes was portable, which made painting on the spot practical",
+   "the church of the day forbade religious subjects to be painted indoors",
+   "outdoor light is dimmer than studio light and suits darker tonalities",
+   "canvas dries more slowly outdoors, which allows repeated reworking"
+  ],
+  "correctIndex": 0,
+  "explanation": "技術條件與風格轉變之間常有直接關聯：顏料由畫室自行研磨、以豬膀胱盛載，改為工廠預製並封入錫管之後，畫具才可以隨身攜帶，即場捕捉光線變化因而成為可行。這正是印象派著力表現「同一景物在不同時刻的光色」的物質前提。留意戶外光線遠比室內強烈而多變，正是這一點推動了明亮色調與短促筆觸的發展。",
+  "explanationEn": "Technical conditions often bear directly on stylistic change. Once paint ceased to be ground in the studio and stored in pig bladders, and was instead factory-made and sealed in collapsible tubes, materials became portable and catching light as it changed on the spot became practical. That is the material precondition for the Impressionists' interest in the same motif under different light at different hours. Note that outdoor light is far stronger and more variable than studio light — which is precisely what drove the brighter palette and the short, broken touch."
+ },
+ {
+  "id": "floor8_va_hc_07",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "intermediate",
+  "question": "中國山水畫的「皴法」主要用來表現甚麼？",
+  "questionEn": "In Chinese landscape painting, what is the technique of cun (texture strokes) chiefly used to render?",
+  "options": [
+   "山石的質感與紋理，以筆法的變化區分不同地貌",
+   "畫面的色彩層次，以顏色濃淡區分遠近的距離",
+   "人物的衣紋走向，以線條疏密區分身份的高低",
+   "題跋的書體風格，以字體大小區分作者的輩分"
+  ],
+  "optionsEn": [
+   "the texture and grain of rock, distinguishing terrain through variation of stroke",
+   "gradations of colour, distinguishing near from far by density of pigment",
+   "the fall of drapery on figures, marking rank by the spacing of lines",
+   "the calligraphic style of inscriptions, marking seniority by size of character"
+  ],
+  "correctIndex": 0,
+  "explanation": "皴法是以【筆法】表現山石表面的質感：披麻皴柔和綿長，多用於江南土質丘陵；斧劈皴方硬峻峭，多用於北方岩石山體。畫家選用哪一種皴法，同時透露了所描繪的地貌與所承接的傳統，因此皴法既是技法問題，也是風格與地域的線索。分析山水畫時，應先辨認筆法特徵，再由此推想畫家的取法與所寫何地。",
+  "explanationEn": "Cun renders the surface texture of rock through the BRUSHSTROKE itself: hemp-fibre strokes are soft and elongated, suited to the earthen hills of the south; axe-cut strokes are angular and abrupt, suited to the rocky massifs of the north. The choice of stroke therefore discloses both the terrain depicted and the tradition the painter works within, making cun a matter of style and region as much as of technique. In analysis, identify the character of the brushwork first, then reason from it to lineage and locale."
+ },
+ {
+  "id": "floor8_va_hc_08",
+  "type": "mc",
+  "subject": "visual-arts",
+  "topic": "藝術史・技法與風格",
+  "topicId": "va_history_context",
+  "topicZh": "藝術史・技法與風格",
+  "topicEn": "Art history — technique & style",
+  "difficulty": "hard",
+  "question": "評論一件作品時只說「這是印象派」，在藝術史分析上有甚麼不足？",
+  "questionEn": "What is inadequate, as art-historical analysis, about saying only \"this is Impressionist\"?",
+  "options": [
+   "流派標籤只是起點，仍須說明作品用了甚麼手法達到甚麼效果",
+   "並無不足，指出流派已經完成了藝術史分析的工作",
+   "不足在於印象派並非真正存在的流派，只是後人虛構",
+   "不足在於流派名稱必須連同畫家的生卒年份一併列出"
+  ],
+  "optionsEn": [
+   "a label is only a starting point; the analysis must still say what means produce what effect",
+   "nothing is inadequate: naming the movement completes the art-historical work",
+   "Impressionism was never a real movement but a later invention",
+   "a movement's name must always be given with the artist's dates"
+  ],
+  "correctIndex": 0,
+  "explanation": "流派名稱是【歸類】而非【分析】：它告訴讀者作品大致屬於哪一段脈絡，但沒有說明這一件作品做了甚麼。完整的分析須落到具體：筆觸是否短促而不調和、色彩有否以並置取代混合、光影如何處理、構圖有否採用類似攝影的偏離中心。指出了這些手法之後，才談得上它們共同造成甚麼觀看效果，以及這件作品在該脈絡之中是典型還是例外。",
+  "explanationEn": "A movement label CLASSIFIES rather than analyses: it tells the reader roughly where a work sits, not what this work does. A full analysis has to descend to particulars — whether the touch is short and unblended, whether colour is juxtaposed instead of mixed, how light and shadow are handled, whether the composition is off-centre in a quasi-photographic way. Only once those means are named can one say what viewing effect they jointly produce, and whether the work is typical of its context or an exception within it."
  }
 ]

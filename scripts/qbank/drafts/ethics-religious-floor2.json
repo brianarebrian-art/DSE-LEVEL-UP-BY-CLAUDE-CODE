@@ -241,5 +241,167 @@
   "correctIndex": 0,
   "explanation": "原則衝突是道德生活的常態而非理論失效的證據。合理的處理方式是具體衡量：在這個處境中，誠實所保障的價值與可能造成的傷害各有多重？有沒有既不說謊又能保護對方的第三條路？作出取捨之後，還要承認被犧牲的一方仍然有其分量 —— 這正是「道德剩餘」的概念：即使選擇正確，被壓過的原則所留下的歉疚仍然合理，並非多餘的情緒。有一項把「難以權衡」誤解為「無從權衡」；另一項在邏輯上不可能，衝突的定義正是兩者不能同時完全遵守；還有一項由困難跳到全盤否定，是一種過度推論。",
   "explanationEn": "Conflicting principles are a normal feature of moral life rather than evidence that theory has failed. The defensible course is to weigh the particulars: how much does honesty protect here, how great is the harm risked, and is there a third path that neither lies nor exposes the person? Having chosen, one should still acknowledge that the principle set aside retained its force — this is the idea of moral residue: even a correct choice can leave justified regret, which is not a surplus emotion. One option mistakes \"hard to weigh\" for \"impossible to weigh\"; the third is logically impossible, since a conflict means both cannot be fully honoured; the fourth leaps from difficulty to wholesale rejection, an over-inference."
+ },
+ {
+  "id": "floor8_eth_mr_05",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "basic",
+  "question": "有人說：「人類自古以來都有戰爭，所以戰爭在道德上可以接受。」這個推論的問題在哪裏？",
+  "questionEn": "Someone argues: \"Humans have always waged war, so war is morally acceptable.\" What is wrong with the inference?",
+  "options": [
+   "由「事實上一直如此」推不出「道德上應該如此」",
+   "問題在於歷史記載不足，未能證明自古以來都有戰爭",
+   "推論並無問題，凡是長期存在的做法都自有其道理",
+   "問題在於戰爭的定義含糊，無法確定何謂一場戰爭"
+  ],
+  "optionsEn": [
+   "what has always been the case does not establish what ought to be the case",
+   "the historical record is too thin to show that war has always occurred",
+   "nothing is wrong: a practice that has lasted must have something to it",
+   "the term \"war\" is too vague for the claim to be assessed at all"
+  ],
+  "correctIndex": 0,
+  "explanation": "這是【是然謬誤】：由描述事實的前提，直接跳到規範性的結論。事實陳述講的是世界實際如何，規範陳述講的是應當如何，兩者屬於不同層次，中間必須另有一個道德前提才能接通。奴隸制、酷刑同樣長期存在，若「長期存在即可接受」成立，這些做法也將無法批評 —— 由此可見該推論的形式本身有問題，而非個別例子的問題。指出這一點時，並不需要否認歷史事實，只需指出事實不能單獨支撐道德結論。",
+  "explanationEn": "This is the IS–OUGHT fallacy: a descriptive premise is used to reach a normative conclusion. A statement of fact says how the world is; a normative statement says how it ought to be. Bridging them requires a further moral premise. Slavery and torture have also persisted for millennia; if longevity conferred acceptability, neither could be criticised — which shows the flaw lies in the form of the argument, not in the example. Making the point requires no denial of the historical record, only the observation that facts alone cannot carry a moral conclusion."
+ },
+ {
+  "id": "floor8_eth_mr_06",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "intermediate",
+  "question": "在道德討論之中引用一位受尊敬人物的說法作為理由，甚麼情況下才算恰當？",
+  "questionEn": "When is it legitimate to cite a respected figure in a moral argument?",
+  "options": [
+   "當該說法本身附有可供檢視的理由，引用只是指出理由所在",
+   "任何時候都恰當，受尊敬的人物在道德問題上不會出錯",
+   "任何時候都不恰當，道德判斷完全不能參考他人的意見",
+   "只在該人物的社會地位高於討論對方時才算恰當"
+  ],
+  "optionsEn": [
+   "when the cited view comes with reasons that can be examined, and the citation points to them",
+   "always: a respected figure does not go wrong on moral questions",
+   "never: a moral judgement may take no account of what others think",
+   "only when the figure outranks the person one is arguing with"
+  ],
+  "correctIndex": 0,
+  "explanation": "訴諸權威本身不必然是謬誤，關鍵在於【引用嘅係理由，定係名氣】。若該人物的說法附有論證，引用等於把論證帶入討論，對方仍可檢視；若只以身份地位取代論證，對方便無從反駁，討論亦告終止。全盤否定他人意見同樣不成立：道德思考需要參考前人累積的判斷，只是參考之後仍須自行檢視。判別方法很簡單：把名字拿走之後，那個理由是否仍然站得住。",
+  "explanationEn": "An appeal to authority is not automatically a fallacy; what matters is whether the citation carries REASONS or merely reputation. If the cited figure offers an argument, quoting it brings that argument into the discussion where it can be examined. If standing substitutes for argument, there is nothing to examine and the discussion stops. Rejecting all reference to others is equally untenable: moral thinking draws on accumulated judgement, and only then tests it. The test is simple — remove the name, and see whether the reason still stands."
+ },
+ {
+  "id": "floor8_eth_mr_07",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "hard",
+  "question": "兩名司機同樣疲勞駕駛，其中一人碰巧撞死途人，另一人平安到家。若只譴責前者，會遇到甚麼理論困難？",
+  "questionEn": "Two drivers drive equally fatigued; one happens to kill a pedestrian, the other gets home safely. What difficulty arises in blaming only the first?",
+  "options": [
+   "兩人可以控制的行為相同，責任差異卻來自不能控制的結果",
+   "並無困難，造成傷害的一方本來就比較粗心大意",
+   "並無困難，道德責任向來只看結果而不看行為",
+   "困難在於疲勞駕駛本身並不構成任何道德上的過失"
+  ],
+  "optionsEn": [
+   "their controllable conduct was identical, yet the blame differs by an uncontrollable outcome",
+   "no difficulty: the one who caused harm was simply the more careless driver",
+   "no difficulty: moral responsibility has always tracked outcomes, not conduct",
+   "the difficulty is that driving while fatigued is no moral fault at all"
+  ],
+  "correctIndex": 0,
+  "explanation": "這是【道德運氣】的經典難題。一般認為責任應與當事人可以控制的範圍相稱，但實際的譴責與法律後果卻明顯受結果左右，而結果之中有相當部分屬於運氣。承認這一點並不等於主張兩人都無責任 —— 兩人都選擇了疲勞駕駛，這部分責任相同；有爭議的只是額外那一層譴責是否有理據。處理方向有二：或者收窄責任至可控範圍，或者承認道德判斷本來就不是完全按可控範圍分配。",
+  "explanationEn": "This is the classic problem of MORAL LUCK. Responsibility is usually thought to track what an agent controls, yet actual blame and legal consequence plainly track outcomes, and outcomes are substantially a matter of luck. Acknowledging this does not mean neither driver is responsible: both chose to drive fatigued, and that much is shared. What is contested is the extra layer of blame. Two responses are available — narrow responsibility to what is controlled, or accept that moral judgement was never distributed strictly by control."
+ },
+ {
+  "id": "floor8_eth_mr_08",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "道德推理・後設反思",
+  "topicId": "eth_meta_reason",
+  "topicZh": "道德推理・後設反思",
+  "topicEn": "Moral reasoning — reflection",
+  "difficulty": "hard",
+  "question": "「己所不欲，勿施於人」在實際應用時，可能出現甚麼限制？",
+  "questionEn": "What limitation can arise when the Golden Rule is put into practice?",
+  "options": [
+   "自己的偏好未必等於對方的偏好，照搬會忽略對方的處境",
+   "並無限制，所有人在所有處境下的偏好都完全一致",
+   "限制在於這條原則只適用於朋友之間，不適用於陌生人",
+   "限制在於這條原則要求犧牲自己，因此沒有人能夠做到"
+  ],
+  "optionsEn": [
+   "what one would want is not what another wants; applying it directly ignores their situation",
+   "no limitation: everyone has identical preferences in every situation",
+   "it applies only between friends and has no bearing on strangers",
+   "it demands self-sacrifice, so no one is actually able to follow it"
+  ],
+  "correctIndex": 0,
+  "explanation": "這條原則以【自己的意願】作為推己及人的起點，因此在雙方處境或需要不同時會失準。喜歡熱鬧的人按此原則為害怕喧鬧的朋友安排大型生日會，動機良善而效果相反。常見的修正是把起點由「我不想要甚麼」改為「對方在其處境之中不想要甚麼」，即由設身處地推想改為認真了解對方。指出限制並非否定原則：它仍然攔住了大部分只顧自己的做法，只是不足以單獨處理差異。",
+  "explanationEn": "The rule takes ONE'S OWN wishes as the starting point for reasoning about others, so it misfires when situations or needs differ. Someone who loves a crowd may throw a large birthday party for a friend who dreads noise — good motive, opposite effect. The standard repair shifts the starting point from \"what I would not want\" to \"what this person, in their situation, would not want\": from imagining oneself in their place to actually finding out. Noting the limit is not a rejection: the rule still blocks most purely self-serving conduct, it merely cannot handle difference on its own."
+ },
+ {
+  "id": "floor8_eth_ta_06",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "intermediate",
+  "question": "德性倫理學處理「應否說謊」這個問題時，提問方式與義務論有何不同？",
+  "questionEn": "How does virtue ethics frame the question \"should one lie?\" differently from deontology?",
+  "options": [
+   "它問一個誠實的人在此處境會怎樣做，而非問規則是否禁止",
+   "它問說謊帶來的快樂總量是否大於所造成的痛苦總量",
+   "它問說謊這條規則能否毫無矛盾地普遍化為普遍法則",
+   "它問說謊有否違反雙方事先訂立的社會契約條款"
+  ],
+  "optionsEn": [
+   "it asks what an honest person would do here, not whether a rule forbids it",
+   "it asks whether the pleasure produced outweighs the pain caused",
+   "it asks whether the maxim could be universalised without contradiction",
+   "it asks whether a prior social contract has been breached"
+  ],
+  "correctIndex": 0,
+  "explanation": "德性倫理學的提問單位是【品格】而非【行為規則】：焦點由「這個行為是否違規」轉為「這樣做反映甚麼品格，一個具備誠實與仁愛之德的人在此處境會如何取捨」。義務論問規則與義務，效益主義問後果總量，契約論問協議 —— 三者處理同一個處境，得出的理由結構並不相同。留意德性倫理學並非沒有標準：它以有德者的判斷為參照，而有德者的判斷仍須說得出理由。",
+  "explanationEn": "Virtue ethics takes CHARACTER, not a rule about acts, as its unit: the question shifts from \"does this act break a rule?\" to \"what does doing it express, and how would a person of honesty and benevolence act here?\" Deontology asks about rules and duties, utilitarianism about the balance of consequences, contractarianism about agreements — the same case, three different structures of reason. Note that virtue ethics is not standardless: it refers to the judgement of the virtuous person, and that judgement must still be able to give reasons."
+ },
+ {
+  "id": "floor8_eth_ta_07",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "規範倫理・理論應用",
+  "topicId": "eth_theory_apply",
+  "topicZh": "規範倫理・理論應用",
+  "topicEn": "Normative theory — application",
+  "difficulty": "hard",
+  "question": "若處死一名無辜者能夠平息騷亂、保住多條性命，效益主義會面對甚麼常見反駁？",
+  "questionEn": "If executing one innocent person would quell a riot and save many lives, what standard objection does utilitarianism face?",
+  "options": [
+   "只計後果總量，會容許犧牲個人，與權利不可侵犯的直覺衝突",
+   "效益主義會直接禁止此舉，因為它視殺人為絕對錯誤的行為",
+   "反駁在於騷亂涉及的人數難以準確統計，計算因而無法進行",
+   "反駁在於效益主義只考慮行為者本人的快樂，並不理會他人"
+  ],
+  "optionsEn": [
+   "counting only aggregate outcome permits sacrificing an individual, against the intuition that rights are inviolable",
+   "utilitarianism forbids it outright, since it treats killing as absolutely wrong",
+   "the objection is that the number involved in a riot cannot be counted accurately",
+   "the objection is that utilitarianism weighs only the agent's own pleasure"
+  ],
+  "correctIndex": 0,
+  "explanation": "這個思想實驗針對的是效益主義的【聚合】結構：把所有人的利害加總之後求最大值，個別人的權利便可能被總量壓過。常見回應有兩條：規則效益主義主張應評估「容許處死無辜者」這條規則的長遠後果 —— 一旦司法可以犧牲無辜，公眾對制度的信任將全面崩壞，長遠效益反而更差；另一條回應則直接承認理論與直覺衝突，並質疑該直覺是否可靠。答這類題要留意，效益主義並非不理他人，它恰恰要求平等地計算每一個人。",
+  "explanationEn": "The thought experiment targets utilitarianism's AGGREGATIVE structure: once everyone's interests are summed and maximised, an individual's rights can be outweighed by the total. Two replies are standard. Rule utilitarianism assesses the long-run consequences of the RULE \"innocents may be executed\": once courts may sacrifice the innocent, public trust in the institution collapses, and the long-run balance is worse. The other reply concedes the clash with intuition and questions whether that intuition is reliable. Note that utilitarianism does not ignore others — it insists each person count equally."
  }
 ]

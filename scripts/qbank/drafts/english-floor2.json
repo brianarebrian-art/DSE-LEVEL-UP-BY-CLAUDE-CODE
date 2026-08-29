@@ -241,5 +241,140 @@
   "correctIndex": 0,
   "explanation": "大部分常用英文詞都有多個義項，而詞典會把它們一併列出，並不會為某一個句子排出先後。直接取第一條，或取自己剛好認得的那條，正是這類題目失分的方式。可靠的做法是先讀前後文，推出該詞在此處必須是甚麼意思，文章才說得通，然後才回頭核對詞典是否有對應的義項。詞典並非不可靠，問題亦不在於措辭；有一項則說得過頭 —— 文章中的詞語通常確實用着詞典列出的某一個義項，只是未必是第一個。",
   "explanationEn": "Most common English words carry several senses, and a dictionary lists them all without ranking them for a particular sentence. Choosing the first entry, or the sense one happens to know, is precisely how such questions are failed. The reliable method is to read the surrounding sentences, work out what the word must mean for the passage to make sense, and only then check that a dictionary sense matches. Dictionaries are not unreliable, and the objection is not about phrasing; one option overstates the point, since words in passages usually do carry a listed sense — just not always the first one."
+ },
+ {
+  "id": "floor8_p1_tone_04",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Tone & Attitude",
+  "topicId": "p1_tone",
+  "topicZh": "Reading · Tone & Attitude",
+  "topicEn": "Reading · Tone & Attitude",
+  "difficulty": "basic",
+  "question": "一篇報道寫道：「這份報告在數字上，可以說相當有創意。」語氣是甚麼？",
+  "questionEn": "A report is described as \"shall we say, creative with its figures.\" What is the tone?",
+  "options": [
+   "Ironic understatement — the hedge accuses the report of distorting data",
+   "Admiring — the writer praises an imaginative way of presenting figures",
+   "Neutral — the writer records only that the figures were unusual",
+   "Apologetic — the writer regrets having to mention the report"
+  ],
+  "optionsEn": [
+   "Ironic understatement — the hedge accuses the report of distorting data",
+   "Admiring — the writer praises an imaginative way of presenting figures",
+   "Neutral — the writer records only that the figures were unusual",
+   "Apologetic — the writer regrets having to mention the report"
+  ],
+  "correctIndex": 0,
+  "explanation": "「shall we say」這類緩衝語（hedge）在此並非表示不確定，而是【明知而故意輕描淡寫】，把嚴重的指控包裝成溫和的措辭，讀者反而更清楚意識到指控的分量。判斷語氣要看用詞與所指事實之間的落差：把「數據造假」說成「有創意」，落差本身就是評價。若真屬中立記述，作者會直接寫出數字有何異常，而不會使用這種修飾。",
+  "explanationEn": "A hedge such as \"shall we say\" here does not signal uncertainty; it is deliberate UNDERSTATEMENT, wrapping a serious charge in mild words so that the reader registers its weight all the more. Tone is judged from the gap between the wording and the fact described: calling falsified data \"creative\" is itself the verdict. A genuinely neutral report would state what was unusual about the figures instead of reaching for such a phrase."
+ },
+ {
+  "id": "floor8_p1_tone_05",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Tone & Attitude",
+  "topicId": "p1_tone",
+  "topicZh": "Reading · Tone & Attitude",
+  "topicEn": "Reading · Tone & Attitude",
+  "difficulty": "intermediate",
+  "question": "在一篇評論文章之中，哪一項最能可靠地顯示作者的態度？",
+  "questionEn": "Which feature most reliably signals a writer's attitude in an opinion column?",
+  "options": [
+   "The loaded words chosen where neutral ones were available",
+   "The number of paragraphs into which the column is divided",
+   "The tense of the verbs used in the opening sentence",
+   "Whether the writer's name appears above or below the text"
+  ],
+  "optionsEn": [
+   "The loaded words chosen where neutral ones were available",
+   "The number of paragraphs into which the column is divided",
+   "The tense of the verbs used in the opening sentence",
+   "Whether the writer's name appears above or below the text"
+  ],
+  "correctIndex": 0,
+  "explanation": "態度主要由【選詞】承載：同一件事可以說成「示威」或「暴動」、「節省」或「吝嗇」，作者在有中性選項的情況下仍選了帶評價色彩的一個，這個選擇本身即是態度。分析時應指出中性的替代說法是甚麼，再說明作者所選之詞多帶了甚麼含意。段落數目、時態與署名位置屬於版面與文法安排，與作者立場並無穩定關係。",
+  "explanationEn": "Attitude is carried chiefly by DICTION: the same event may be called a protest or a riot, thrift or miserliness, and choosing the evaluative word when a neutral one was available is itself the stance. An analysis should name the neutral alternative and then say what the chosen word adds. Paragraph count, verb tense and the placing of a byline are matters of layout and grammar, and bear no steady relation to the writer's position."
+ },
+ {
+  "id": "floor8_p1_tone_06",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Tone & Attitude",
+  "topicId": "p1_tone",
+  "topicZh": "Reading · Tone & Attitude",
+  "topicEn": "Reading · Tone & Attitude",
+  "difficulty": "hard",
+  "question": "一封信以這句作結：「相信此事現在將會得到它至今未曾得到的重視。」語氣傳達了甚麼？",
+  "questionEn": "A letter closes: \"I trust the matter will now receive the attention it has so far escaped.\" What does the tone convey?",
+  "options": [
+   "Restrained complaint — polite in form, reproachful in substance",
+   "Warm gratitude — the writer thanks the reader for prompt handling",
+   "Genuine uncertainty — the writer does not know what will happen next",
+   "Open hostility — the writer states plainly that the reader has failed"
+  ],
+  "optionsEn": [
+   "Restrained complaint — polite in form, reproachful in substance",
+   "Warm gratitude — the writer thanks the reader for prompt handling",
+   "Genuine uncertainty — the writer does not know what will happen next",
+   "Open hostility — the writer states plainly that the reader has failed"
+  ],
+  "correctIndex": 0,
+  "explanation": "這句話的關鍵在【禮貌形式與實質內容的分離】：「相信」屬客套，而「至今未曾得到」則直指對方一直疏忽。正式書信常以這種方式表達不滿 —— 措辭保持得體，指控卻已完整送到。判斷這類語氣，要把句子拆成「表面說法」與「實際斷言」兩層：表面是對將來的期望，實際是對過去的批評。若屬公開敵意，作者會直接指出失職而不加修飾；若屬真正不確定，則不會出現對過去的判斷。",
+  "explanationEn": "The key is the SPLIT between polite form and actual content: \"I trust\" is courtesy, while \"has so far escaped\" states outright that the matter was neglected. Formal correspondence often registers dissatisfaction this way — the wording stays correct while the charge is delivered in full. Read such sentences on two levels: the surface is an expectation about the future, the substance a criticism of the past. Open hostility would name the failure without softening; genuine uncertainty would carry no verdict on what has already happened."
+ },
+ {
+  "id": "floor8_p1_inf_04",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Inference & Implication",
+  "topicId": "p1_inference",
+  "topicZh": "Reading · Inference & Implication",
+  "topicEn": "Reading · Inference & Implication",
+  "difficulty": "intermediate",
+  "question": "「她把鎖檢查了兩次，臨出門前又檢查了第三次。」可以合理推斷甚麼？",
+  "questionEn": "\"She checked the lock twice, then a third time before leaving.\" What can reasonably be inferred?",
+  "options": [
+   "She is anxious about security, though the text never says so",
+   "The lock is broken and will not fasten however often it is tried",
+   "She is leaving the flat permanently and will not return to it",
+   "She has been burgled before, which the passage states directly"
+  ],
+  "optionsEn": [
+   "She is anxious about security, though the text never says so",
+   "The lock is broken and will not fasten however often it is tried",
+   "She is leaving the flat permanently and will not return to it",
+   "She has been burgled before, which the passage states directly"
+  ],
+  "correctIndex": 0,
+  "explanation": "合理推斷須由【文本提供的證據】出發：反覆檢查同一把鎖是行為描寫，指向的是心理狀態 —— 對安全的不安。文本沒有說明原因，因此推斷應停在「焦慮」，不應延伸至鎖已損壞、永久離開或曾經被竊等額外情節，那些都需要文中另有線索支持。留意末項的說法連文本有沒有直接寫出都判斷錯了，屬於把推斷與原文陳述混淆。",
+  "explanationEn": "A sound inference starts from the EVIDENCE the text supplies: repeatedly checking one lock is described behaviour, and it points to a state of mind — unease about security. The passage gives no cause, so the inference should stop at anxiety and not extend to a broken lock, a permanent departure or an earlier burglary, each of which would need its own textual support. Note that the last option also misstates what the passage says outright, confusing inference with direct statement."
+ },
+ {
+  "id": "floor8_p1_inf_05",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Inference & Implication",
+  "topicId": "p1_inference",
+  "topicZh": "Reading · Inference & Implication",
+  "topicEn": "Reading · Inference & Implication",
+  "difficulty": "hard",
+  "question": "「有根據的推斷」與「過度推斷」的分界在哪裏？",
+  "questionEn": "What separates a supported inference from an over-inference?",
+  "options": [
+   "A supported inference stays within what the text's evidence can carry",
+   "A supported inference is whichever reading most candidates choose",
+   "A supported inference is always the most dramatic of the readings",
+   "A supported inference must appear word for word in the passage"
+  ],
+  "optionsEn": [
+   "A supported inference stays within what the text's evidence can carry",
+   "A supported inference is whichever reading most candidates choose",
+   "A supported inference is always the most dramatic of the readings",
+   "A supported inference must appear word for word in the passage"
+  ],
+  "correctIndex": 0,
+  "explanation": "分界在於【證據所能承載的範圍】：推斷可以超出字面，但不可以超出證據。實用的檢查方法是逐句問「文中哪一句支持這一點」—— 若指得出，屬合理推斷；若要補上文本沒有的前提才成立，即為過度推斷。多數人選的答案未必正確，戲劇性亦不是準則；而要求逐字寫出，則把推斷降格為抄錄，等於取消了推斷這回事。",
+  "explanationEn": "The line is drawn by WHAT THE EVIDENCE WILL BEAR: an inference may go beyond the letter of the text, but not beyond its evidence. A practical test is to ask, of each step, which sentence supports it. If one can be named, the inference is sound; if the step needs a premise the text never supplies, it is over-inference. What most candidates choose is no guide, and drama is not a criterion; while demanding the words verbatim reduces inference to copying and abolishes it altogether."
  }
 ]

@@ -106,5 +106,113 @@
   "correctIndex": 0,
   "explanation": "收入與職位是最容易量度的兩項，因而也最容易成為唯一被計算的兩項。完整的評估至少還要問三件事：一、外部成本 —— 擠塞、噪音、環境損耗由誰承擔，這些代價通常不入帳；二、分配 —— 收益究竟留在當地社區，還是流向外來經營者，職位是長工還是季節性低薪職位；三、機會成本 —— 同一片土地與同一筆資金若用於其他發展，回報如何。其餘三項所列的建造費、滿意度與市佔率都是實務指標，重要但屬於同一個財務與市場框架之內，並未觸及框架之外被排除的代價。",
   "explanationEn": "Revenue and jobs are the two easiest things to measure, which is why they so easily become the only two counted. A full assessment asks at least three further questions. First, external costs: who bears the congestion, noise and environmental wear, which typically never enter the account. Second, distribution: whether the gains stay in the host community or flow to outside operators, and whether the jobs are permanent or seasonal and low-paid. Third, opportunity cost: what the same land and capital would return in another use. Construction cost, satisfaction and market share are real operational measures, but they sit inside the same financial and market frame and do not reach the costs that frame excludes."
+ },
+ {
+  "id": "floor8_ths_ca_05",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "basic",
+  "question": "在酒店管理之中，「服務標準」與「服務質素」有何分別？",
+  "questionEn": "In hotel management, how do service STANDARDS differ from service QUALITY?",
+  "options": [
+   "標準是可以量度的規定，質素是顧客實際感受到的整體體驗",
+   "兩者完全相同，標準一旦達到即代表質素已經達到",
+   "質素是可以量度的規定，標準則是顧客的主觀感受",
+   "標準只適用於前線員工，質素只適用於管理階層"
+  ],
+  "optionsEn": [
+   "standards are measurable specifications; quality is the experience the guest actually receives",
+   "they are identical: meeting the standard means quality has been met",
+   "quality is the measurable specification and standards the guest's impression",
+   "standards apply only to frontline staff and quality only to management"
+  ],
+  "correctIndex": 0,
+  "explanation": "標準屬於【可量度的規定】，例如電話三聲之內接聽、入住手續五分鐘內完成；質素則是顧客對整體體驗的評價，包含態度、時機與處理突發情況的能力。兩者相關而不相等：標準全部達到，顧客仍可能因為員工態度冷淡而評價不佳；反過來，員工靈活補救亦可能令超時的個案獲得好評。管理上的意義在於，標準用來確保下限，質素則須另行量度顧客觀感。",
+  "explanationEn": "Standards are MEASURABLE SPECIFICATIONS — answer within three rings, complete check-in within five minutes. Quality is the guest's assessment of the whole experience: manner, timing, and how the unexpected is handled. The two are related but not identical: every standard can be met while a guest rates the stay poorly because staff were cold, and an over-long case can still earn praise when staff recover well. Managerially, standards secure a floor; quality has to be measured separately, through what guests perceive."
+ },
+ {
+  "id": "floor8_ths_ca_06",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "intermediate",
+  "question": "旅遊承載力除了實體容量之外，還必須考慮甚麼？",
+  "questionEn": "Beyond physical capacity, what else must tourism carrying capacity take into account?",
+  "options": [
+   "當地居民的心理承受程度，以及社區日常生活受干擾的限度",
+   "只需考慮實體容量，其餘因素與承載力並無關係",
+   "只需考慮酒店房間數目，其他設施不影響承載力",
+   "只需考慮旅客滿意程度，居民感受不屬承載力範圍"
+  ],
+  "optionsEn": [
+   "residents' tolerance, and the limit beyond which community life is disrupted",
+   "only physical capacity matters; nothing else bears on carrying capacity",
+   "only the number of hotel rooms; other facilities do not affect it",
+   "only visitor satisfaction; how residents feel falls outside the concept"
+  ],
+  "correctIndex": 0,
+  "explanation": "承載力至少有四個面向：【實體】（設施與空間）、【生態】（環境可承受的損耗）、【社會】（居民的容忍程度與社區生活）與【心理】（旅客覺得擁擠而降低體驗）。只計實體容量，會出現街道與交通仍未飽和、居民卻已因噪音、租金與日常購物受阻而強烈反對的情況。評估承載力應同時看居民與旅客兩方，並留意超出社會承載力往往先於實體飽和出現。",
+  "explanationEn": "Carrying capacity has at least four dimensions: PHYSICAL (facilities and space), ECOLOGICAL (what the environment can absorb), SOCIAL (residents' tolerance and community life) and PSYCHOLOGICAL (visitors feeling crowded, so the experience degrades). Counting only physical capacity produces the familiar case where streets and transport are not yet saturated but residents already object strongly over noise, rents and disrupted daily shopping. Assessment must weigh residents and visitors alike, noting that the social limit is often reached first."
+ },
+ {
+  "id": "floor8_ths_ca_07",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "intermediate",
+  "question": "為迎合旅客而重新編排的傳統儀式，在「真實性」的討論上會引起甚麼問題？",
+  "questionEn": "A traditional ritual is restaged for visitors. What problem does this raise for AUTHENTICITY?",
+  "options": [
+   "表演形式可能取代原有意義，令當地文化淪為佈景",
+   "並無問題，旅客覺得真實便等於文化真實",
+   "問題在於重新編排必然令儀式的時間變得太長",
+   "問題在於旅客人數太少，不足以支持演出成本"
+  ],
+  "optionsEn": [
+   "the staged form may displace the original meaning, reducing the culture to scenery",
+   "no problem: if visitors find it authentic, it is authentic",
+   "restaging necessarily makes the ritual run too long",
+   "visitor numbers are too small to cover the cost of staging"
+  ],
+  "correctIndex": 0,
+  "explanation": "這牽涉【舞台化真實】的概念：為觀看而編排的版本，時間、場地與流程都按觀眾需要調整，原有的宗教或社群功能因而退居其次。問題不在於「改動」本身 —— 活的文化本來就會變 —— 而在於改動的驅動力來自外來觀眾而非社群自身，長遠可能令儀式只剩下可供觀賞的外形。判斷時可以問：社群有否參與決定如何呈現，以及在沒有旅客的日子，這項儀式是否仍然舉行。",
+  "explanationEn": "This engages the idea of STAGED AUTHENTICITY: a version arranged to be watched has its timing, setting and sequence adjusted to the audience, so the original religious or communal function moves to the background. The difficulty is not change as such — living culture changes anyway — but that the driver of change is an outside audience rather than the community, which over time can leave only the watchable shell. Two useful tests: does the community decide how it is presented, and is the ritual still held when no visitors are there?"
+ },
+ {
+  "id": "floor8_ths_ca_08",
+  "type": "mc",
+  "subject": "ths",
+  "topic": "概念分析・服務與可持續",
+  "topicId": "ths_concept_analysis",
+  "topicZh": "概念分析・服務與可持續",
+  "topicEn": "Concepts — service & sustainability",
+  "difficulty": "hard",
+  "question": "「旅遊收益留存當地的比率」被視為評估可持續旅遊的重要指標，原因是甚麼？",
+  "questionEn": "Why is the share of tourism revenue retained locally treated as a key sustainability indicator?",
+  "options": [
+   "訪客人數再多，收益若大部分外流，當地社區得益仍然有限",
+   "這個比率能夠直接反映旅客對該目的地的滿意程度",
+   "這個比率越低，代表當地經營者的營運效率越高",
+   "這個比率只用於統計用途，與可持續與否並無關係"
+  ],
+  "optionsEn": [
+   "however many visitors arrive, little reaches the community if most revenue leaks out",
+   "the ratio is a direct measure of how satisfied visitors were with the destination",
+   "the lower the ratio, the more efficient local operators must be",
+   "the ratio is collected for statistics only and has no bearing on sustainability"
+  ],
+  "correctIndex": 0,
+  "explanation": "這個指標針對的是【收益外漏】：當住宿、交通與旅行團都由外來企業經營，遊客消費的大部分並不會留在當地，社區承受了擁擠、環境損耗與物價上升的成本，卻分不到相應的收益。可持續旅遊要求成本與得益相稱，因此不能只看訪客人數與總消費額。改善方向包括採購本地食材、聘用本地員工、扶持社區經營的住宿與導賞。留意比率低是成本外流的訊號，並非效率高的證明。",
+  "explanationEn": "The indicator targets REVENUE LEAKAGE: when accommodation, transport and tours are run by outside firms, most of what visitors spend never stays in the destination, and the community bears the crowding, environmental wear and higher prices without a corresponding share of the gain. Sustainability requires that costs and benefits match, so visitor numbers and total spend are not enough on their own. Remedies include local sourcing, local hiring, and support for community-run lodging and guiding. A low ratio signals leakage, not efficiency."
  }
 ]

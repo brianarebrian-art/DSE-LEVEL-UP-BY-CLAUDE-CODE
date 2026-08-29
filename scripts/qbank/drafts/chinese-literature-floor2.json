@@ -214,5 +214,113 @@
   "correctIndex": 0,
   "explanation": "把「明月松間照」翻成「明亮的月光照在松樹之間」，交代了【內容】，卻未觸及鑑賞的核心 —— 為何這樣寫會動人。鑑賞要處理的是【手法如何產生效果】：這句選了甚麼意象、與下句構成甚麼對照、營造出怎樣的意境、與全詩的情感走向有何關係。字面理解是必要的第一步，問題在於停在第一步。其中兩項否定理解字面意思這個前提，但那正是鑑賞的起點；有一項把鑑賞窄化為作者資料，連內容都不觸及，比只翻譯更遠離鑑賞。",
   "explanationEn": "Rendering \"the bright moon shines among the pines\" as \"moonlight falls between the pine trees\" conveys the CONTENT but leaves untouched what appreciation is for — why writing it so should move a reader. Appreciation deals with HOW A DEVICE PRODUCES ITS EFFECT: which images the line selects, what contrast it forms with the next, what atmosphere results, and how that bears on the poem's emotional direction. Understanding the literal sense is a necessary first step; the fault is stopping there. Two of the options deny that first step, which is where appreciation begins; the fourth narrows appreciation to biographical data and does not reach the content at all, straying further still."
+ },
+ {
+  "id": "floor8_clit_cc_05",
+  "type": "mc",
+  "subject": "chinese-literature",
+  "topic": "風格比較・婉約與豪放",
+  "topicId": "clit_craft_compare",
+  "topicZh": "風格比較・婉約與豪放",
+  "topicEn": "Comparing Styles — Wanyue and Haofang",
+  "difficulty": "basic",
+  "question": "婉約詞與豪放詞在題材選擇上，最明顯的分別是甚麼？",
+  "questionEn": "In subject matter, what most clearly distinguishes wanyue from haofang ci?",
+  "options": [
+   "婉約多寫個人情思與離愁別緒，豪放多寫家國襟懷與山河形勝",
+   "婉約多寫家國襟懷與戰場軍旅，豪放多寫個人情思與離愁",
+   "兩者的題材完全相同，分別只在於作者所處的朝代先後",
+   "婉約只用長調而豪放只用小令，題材本身其實並無分別"
+  ],
+  "optionsEn": [
+   "wanyue favours private feeling and parting sorrow; haofang favours state, history and landscape",
+   "wanyue favours state and campaign; haofang favours private feeling and parting sorrow",
+   "their subjects are identical; only the dynasty of the author differs",
+   "wanyue uses only long metres and haofang only short ones; subject does not differ"
+  ],
+  "correctIndex": 0,
+  "explanation": "兩派的分別首先見於【取材與情感基調】：婉約一路以個人情感為核心，寫閨情、離別、身世之感，筆致細膩含蓄；豪放一路則把視野推向家國、歷史與山河，氣象開闊，情感直接。詞調長短與流派並無固定對應 —— 蘇軾《念奴嬌》屬長調而豪放，李清照《聲聲慢》同屬長調而婉約。判斷風格要看作品整體的意境與情感走向，不能只憑詞牌或個別字詞。",
+  "explanationEn": "The two schools differ first in SUBJECT AND EMOTIONAL REGISTER. Wanyue centres on private feeling — the inner chamber, parting, one's own fortunes — handled with restraint and delicacy. Haofang widens the view to state, history and landscape, expansive in scale and direct in feeling. Metre does not map onto school: Su Shi's \"Niannu jiao\" is a long metre and haofang; Li Qingzhao's \"Sheng sheng man\" is equally long and wanyue. Style is judged from the whole work's atmosphere and emotional direction, not from the tune title or a stray word."
+ },
+ {
+  "id": "floor8_clit_cc_06",
+  "type": "mc",
+  "subject": "chinese-literature",
+  "topic": "風格比較・婉約與豪放",
+  "topicId": "clit_craft_compare",
+  "topicZh": "風格比較・婉約與豪放",
+  "topicEn": "Comparing Styles — Wanyue and Haofang",
+  "difficulty": "intermediate",
+  "question": "判斷一首詞屬婉約還是豪放，若只看有沒有出現「大江」「千古」一類詞語，會有甚麼問題？",
+  "questionEn": "What is wrong with classifying a ci as haofang merely because it contains words like \"great river\" or \"through the ages\"?",
+  "options": [
+   "風格由整體意境與情感基調決定，個別詞語可以出現在兩派作品之中",
+   "並無問題，凡是出現這類詞語的作品必定屬於豪放一路",
+   "問題在於這類詞語只出現於唐詩之中，宋詞根本不會使用",
+   "問題在於婉約詞人從來不會使用任何與山河有關的詞語"
+  ],
+  "optionsEn": [
+   "style follows the whole work's atmosphere and register; single words appear in both schools",
+   "nothing is wrong: any work containing such words is haofang",
+   "such words belong only to Tang poetry and never appear in Song ci",
+   "wanyue poets never use any word connected with rivers or mountains"
+  ],
+  "correctIndex": 0,
+  "explanation": "以【個別語彙】代替【整體判讀】是風格題最常見的失分位。詞語只是材料，同一個材料在不同的情感結構之中作用不同：婉約詞寫及江水，多用以承載離愁，如「一江春水向東流」；豪放詞寫及江水，則用以帶出歷史與人事的興替。答這類題應先讀出全篇的情感走向與意境開合，再看用語如何配合，而非倒過來由用語推風格。",
+  "explanationEn": "Substituting a WORD LIST for a reading of the whole work is the commonest error in style questions. Words are material, and the same material serves different ends inside different emotional structures: when a wanyue lyric names a river it usually carries parting sorrow — \"a river of spring water flowing east\"; when a haofang lyric names one it opens onto history and the turning of human affairs. Read the emotional direction and scope of the whole piece first, then see how the diction serves it, rather than inferring style from diction."
+ },
+ {
+  "id": "floor8_clit_cc_07",
+  "type": "mc",
+  "subject": "chinese-literature",
+  "topic": "風格比較・婉約與豪放",
+  "topicId": "clit_craft_compare",
+  "topicZh": "風格比較・婉約與豪放",
+  "topicEn": "Comparing Styles — Wanyue and Haofang",
+  "difficulty": "intermediate",
+  "question": "李清照前期與後期作品的風格有明顯轉變，最主要的成因是甚麼？",
+  "questionEn": "What best explains the marked change of style between Li Qingzhao's earlier and later work?",
+  "options": [
+   "南渡與喪亂的人生經歷，令個人愁緒之中加入了家國之痛",
+   "她中年改習豪放一派，刻意模仿蘇軾與辛棄疾的筆法",
+   "她後期改用長調，詞牌的變換直接決定了風格的轉變",
+   "她前後期作品其實風格一致，所謂轉變只是後人的誤讀"
+  ],
+  "optionsEn": [
+   "the flight south and the upheavals of war added national grief to private sorrow",
+   "in middle life she switched schools, deliberately imitating Su Shi and Xin Qiji",
+   "she moved to long metres, and the change of tune title determined the change of style",
+   "the styles are in fact identical; the supposed change is a later misreading"
+  ],
+  "correctIndex": 0,
+  "explanation": "風格轉變的根源在於【經歷】而非【技法選擇】。前期作品多寫閨中生活與夫婦情趣，筆調輕盈；靖康之亂、南渡、喪夫、文物散佚之後，同一種細膩筆法所承載的內容變為家國之痛與身世飄零，愁緒的重量因而完全不同。留意她始終屬婉約一路，並未改宗豪放 —— 轉變的是情感內容的深度與廣度，不是筆法的門派。",
+  "explanationEn": "The change is rooted in EXPERIENCE, not in a choice of technique. The earlier work treats domestic life and marital affection with a light touch. After the Jingkang catastrophe, the flight south, widowhood and the loss of her collections, the same delicate manner carries national grief and personal dispersal, and the weight of the sorrow is wholly different. Note that she remains within wanyue throughout: what changed is the depth and reach of the feeling, not an allegiance to another school."
+ },
+ {
+  "id": "floor8_clit_cc_08",
+  "type": "mc",
+  "subject": "chinese-literature",
+  "topic": "風格比較・婉約與豪放",
+  "topicId": "clit_craft_compare",
+  "topicZh": "風格比較・婉約與豪放",
+  "topicEn": "Comparing Styles — Wanyue and Haofang",
+  "difficulty": "hard",
+  "question": "有人認為蘇軾《江城子・十年生死兩茫茫》證明豪放詞人也寫婉約之作。這個判斷合理之處在哪裏？",
+  "questionEn": "Some cite Su Shi's \"Jiangchengzi: ten years, the living and dead both blank\" to show that a haofang poet also wrote in the wanyue manner. What makes this defensible?",
+  "options": [
+   "風格屬於作品而非作者，同一位作者可按題材選擇不同筆法",
+   "合理之處在於蘇軾其實從來沒有寫過任何豪放風格的作品",
+   "合理之處在於悼亡題材依照定例必須採用婉約寫法",
+   "這個判斷並不合理，作者一經歸類便不能再改變風格"
+  ],
+  "optionsEn": [
+   "style belongs to the work, not the author; one writer may match manner to subject",
+   "it holds because Su Shi in fact never wrote anything in the haofang manner",
+   "it holds because elegy is by convention required to be written in wanyue",
+   "it is indefensible: once classified, an author's style cannot change"
+  ],
+  "correctIndex": 0,
+  "explanation": "流派標籤是後人為方便討論而設的【歸納】，並非作者自己遵守的規則。蘇軾以豪放著稱，是因為他開拓了詞的題材與氣象，但悼念亡妻的作品情感私密、筆致沉痛，自然歸於婉約一路。由此可見，風格判斷的單位應是作品：先讀出這一篇的情感與意境，再談歸屬。以作者身份反推作品風格，正是這類題所設的陷阱。",
+  "explanationEn": "School labels are a later GENERALISATION made for convenience, not a rule the poets followed. Su Shi is called haofang because he widened what ci could treat and how large it could sound; but a lament for a dead wife is private in feeling and grave in touch, and falls naturally within wanyue. The unit of stylistic judgement is therefore the work: read this poem's feeling and atmosphere first, then discuss where it belongs. Inferring a work's style from its author's label is exactly the trap such questions set."
  }
 ]

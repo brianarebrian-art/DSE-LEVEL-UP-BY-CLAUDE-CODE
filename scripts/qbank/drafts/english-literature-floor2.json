@@ -187,5 +187,167 @@
   "correctIndex": 0,
   "explanation": "重複出現的意象會成為【母題】：每一次出現都承接前一次所積累的意義，因此到第三次時，那道門已不只是一道門 —— 它可以是拒之門外、是被拒絕的一個決定、是被封死的一段人生。劇作家用的是累積，意義屬於整個模式而非任何單一次出現。答好這類題的方法是追蹤每次出現之間的變化：誰在哪一邊、門有沒有打開、是誰選擇關上。其餘三項把一個結構性手法降格為實務、程序或填充時間的安排，都無法解釋為何偏偏是這個意象反覆出現。",
   "explanationEn": "A repeated image becomes a MOTIF: each appearance carries forward what the previous ones established, so by the third the door means more than a door — exclusion, a decision refused, a life sealed off. The playwright is using accumulation, and the meaning belongs to the pattern rather than to any single occurrence. Answering such a question well means tracing what changes between appearances: who is on which side, whether it opens, who chose to close it. The other options treat a structural device as a practical, procedural or padding matter, none of which explains why this particular image recurs."
+ },
+ {
+  "id": "floor8_elit_de_04",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Device & effect",
+  "topicId": "elit_device_effect",
+  "topicZh": "Device & effect",
+  "topicEn": "Device & effect",
+  "difficulty": "basic",
+  "question": "詩人在全詩之中反覆使用同一個意象，最可能達到甚麼效果？",
+  "questionEn": "A poet returns to the same image throughout a poem. What effect is this most likely to create?",
+  "options": [
+   "It builds a controlling idea that gathers meaning with each return",
+   "It shows the poet ran short of images and had to reuse one",
+   "It proves the poem belongs to a fixed traditional verse form",
+   "It signals the poem is meant to be read aloud rather than silently"
+  ],
+  "optionsEn": [
+   "It builds a controlling idea that gathers meaning with each return",
+   "It shows the poet ran short of images and had to reuse one",
+   "It proves the poem belongs to a fixed traditional verse form",
+   "It signals the poem is meant to be read aloud rather than silently"
+  ],
+  "correctIndex": 0,
+  "explanation": "重複出現的意象會形成【貫串全篇的核心】：每次再現都帶著前文累積的聯想，意義因而逐層加厚，最後成為理解整首詩的樞紐。分析時要指出的並非「重複咗」，而是每次出現的語境有何不同、意義如何遞進。把重複視為技窮，是把有意的結構安排誤讀為疏忽；至於朗讀與否、屬何詩體，與意象重複並無必然關係。",
+  "explanationEn": "A recurring image builds a CONTROLLING IDEA: each return carries the associations accumulated earlier, so the meaning thickens by layers until the image becomes the hinge of the whole poem. What an analysis must show is not that repetition occurred but how the context differs at each return and how the meaning advances. Reading repetition as a shortage of invention mistakes deliberate structure for oversight; whether a poem is read aloud, and what form it takes, have no necessary bearing on it."
+ },
+ {
+  "id": "floor8_elit_de_05",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Device & effect",
+  "topicId": "elit_device_effect",
+  "topicZh": "Device & effect",
+  "topicEn": "Device & effect",
+  "difficulty": "intermediate",
+  "question": "小說採用不可靠敘事者，對讀者的閱讀方式提出了甚麼要求？",
+  "questionEn": "A novel uses an unreliable narrator. What does this demand of the reader?",
+  "options": [
+   "Reading the narrator's account against evidence the text supplies elsewhere",
+   "Accepting the account, since a narrator reports what actually happened",
+   "Ignoring the narrator and reading only the dialogue for the facts",
+   "Treating every statement as false, since the narrator cannot be trusted"
+  ],
+  "optionsEn": [
+   "Reading the narrator's account against evidence the text supplies elsewhere",
+   "Accepting the account, since a narrator reports what actually happened",
+   "Ignoring the narrator and reading only the dialogue for the facts",
+   "Treating every statement as false, since the narrator cannot be trusted"
+  ],
+  "correctIndex": 0,
+  "explanation": "不可靠敘事者的作用在於製造【敘述與事實之間的落差】，讀者須同時讀兩層：敘事者說了甚麼，以及文本透過其他人物的反應、細節矛盾、前後不符所透露的實情。要點是「對讀」而非「全盤否定」—— 若敘事者所言皆假，落差便消失，這項手法亦失去意義。判斷不可靠的線索包括自相矛盾、明顯的自利動機、以及旁人反應與敘述明顯不符。",
+  "explanationEn": "An unreliable narrator creates a GAP between the telling and the facts, and the reader must hold two layers at once: what the narrator says, and what the text discloses through other characters' reactions, inconsistent details and contradictions. The work is comparison, not blanket rejection — if everything the narrator said were false, the gap would vanish and the device would lose its point. Signs of unreliability include self-contradiction, evident self-interest, and reactions from others that do not fit the account."
+ },
+ {
+  "id": "floor8_elit_de_06",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Device & effect",
+  "topicId": "elit_device_effect",
+  "topicZh": "Device & effect",
+  "topicEn": "Device & effect",
+  "difficulty": "hard",
+  "question": "劇作家把長句改為短促斷續的句子，最可能造成甚麼效果？",
+  "questionEn": "A dramatist replaces long sentences with short, broken ones. What effect does this most likely produce?",
+  "options": [
+   "Rising pressure, as the rhythm itself enacts the speaker's state",
+   "A calmer, more reflective mood, since short sentences are easier to follow",
+   "A shift of the scene into the past, since short lines mark a flashback",
+   "A signal that the character is now speaking a foreign language"
+  ],
+  "optionsEn": [
+   "Rising pressure, as the rhythm itself enacts the speaker's state",
+   "A calmer, more reflective mood, since short sentences are easier to follow",
+   "A shift of the scene into the past, since short lines mark a flashback",
+   "A signal that the character is now speaking a foreign language"
+  ],
+  "correctIndex": 0,
+  "explanation": "句式屬於【形式層面】的手法，其效果來自節奏與內容的呼應：短促斷句迫使停頓頻密，語速因而加快、氣息變短，讀者或觀眾在感官上先感受到壓力，然後才理解人物處於激動或崩潰的邊緣。分析句式時要說明「形式如何做出內容所講的事」，而非只標示「用了短句」。短句易讀，但易讀不等於平靜 —— 效果取決於它在戲劇處境之中承擔甚麼。",
+  "explanationEn": "Sentence shape is a FORMAL device, and its effect comes from the fit between rhythm and content: short broken units force frequent stops, so the pace quickens and the breath shortens; an audience feels the pressure before it interprets the character as agitated or close to breaking. Analysis must show how the form performs what the content states, not merely note that short sentences occur. Short sentences are easy to follow, but ease is not calm — the effect depends on what the dramatic situation asks the rhythm to carry."
+ },
+ {
+  "id": "floor8_elit_ti_04",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "basic",
+  "question": "一艘救援船在遇難水手停止發出訊號之後片刻經過。這屬於哪一種反諷？",
+  "questionEn": "A rescue ship passes moments after a shipwrecked sailor stops signalling. What kind of irony is this?",
+  "options": [
+   "Situational irony — the outcome inverts what the situation implied",
+   "Verbal irony — the sailor says the opposite of what he actually means",
+   "Dramatic irony — the audience knows what every character also knows",
+   "No irony at all — the events are simply an unfortunate coincidence"
+  ],
+  "optionsEn": [
+   "Situational irony — the outcome inverts what the situation implied",
+   "Verbal irony — the sailor says the opposite of what he actually means",
+   "Dramatic irony — the audience knows what every character also knows",
+   "No irony at all — the events are simply an unfortunate coincidence"
+  ],
+  "correctIndex": 0,
+  "explanation": "情境反諷的來源是【處境本身的落差】：事情的結果與該處境所指向的合理預期相反，而落差並不需要任何人說話造成。言語反諷須有人說出與本意相反的話；戲劇性反諷須有觀眾知而角色不知的認知差距。至於「只是巧合」的說法：巧合是材料，反諷是這個巧合恰恰逆轉了希望所指的方向，兩者並不等同。",
+  "explanationEn": "Situational irony arises from the SITUATION itself: the outcome inverts what the circumstances gave us reason to expect, and no one need speak for the gap to exist. Verbal irony requires a speaker who says the opposite of what is meant; dramatic irony requires an audience that knows what a character does not. As for calling it mere coincidence: the coincidence is the material, while the irony lies in its inverting precisely the direction hope was pointing — the two are not the same."
+ },
+ {
+  "id": "floor8_elit_ti_05",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "intermediate",
+  "question": "在嚴肅的文學作品之中，反諷通常不只是一個玩笑，原因何在？",
+  "questionEn": "Why is irony usually more than a joke in a serious literary work?",
+  "options": [
+   "The gap between expectation and outcome carries the work's judgement",
+   "It lightens the mood so readers are not discouraged by the subject",
+   "It displays the writer's cleverness and is unrelated to the meaning",
+   "It marks the passages that examiners require candidates to memorise"
+  ],
+  "optionsEn": [
+   "The gap between expectation and outcome carries the work's judgement",
+   "It lightens the mood so readers are not discouraged by the subject",
+   "It displays the writer's cleverness and is unrelated to the meaning",
+   "It marks the passages that examiners require candidates to memorise"
+  ],
+  "correctIndex": 0,
+  "explanation": "反諷在嚴肅作品之中承擔【評價】的功能：作者不直接說出結論，而是讓預期與結果之間的落差自行說話，讀者在察覺落差的同時亦接收到作者的判斷。這種寫法比直接議論更難反駁，因為結論是由讀者自己得出的。把反諷僅僅視為調劑氣氛或炫技，會漏掉它在主題層面所做的工作 —— 分析時應指出落差指向甚麼判斷。",
+  "explanationEn": "In serious work irony carries JUDGEMENT: rather than state a conclusion, the writer lets the gap between expectation and outcome speak, so that in noticing the gap the reader also receives the verdict. This is harder to argue with than direct commentary, because the reader reaches the conclusion unaided. Treating irony as mood-lightening or as display misses the work it does at the level of theme — an analysis should say what judgement the gap points to."
+ },
+ {
+  "id": "floor8_elit_ti_06",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Theme & irony",
+  "topicId": "elit_theme_irony",
+  "topicZh": "Theme & irony",
+  "topicEn": "Theme & irony",
+  "difficulty": "hard",
+  "question": "故事中有角色直接說出一句主題句。為何這句話不會自動等同於作品的主題？",
+  "questionEn": "A character states a theme outright. Why is that not automatically the theme of the work?",
+  "options": [
+   "A character's claim is evidence about the character, not the work's view",
+   "Characters never speak truthfully, so a stated theme must be false",
+   "Themes must always be implied, so stating one disqualifies the work",
+   "Only a narrator, never a character, is permitted to state a theme"
+  ],
+  "optionsEn": [
+   "A character's claim is evidence about the character, not the work's view",
+   "Characters never speak truthfully, so a stated theme must be false",
+   "Themes must always be implied, so stating one disqualifies the work",
+   "Only a narrator, never a character, is permitted to state a theme"
+  ],
+  "correctIndex": 0,
+  "explanation": "角色所說的話首先是【該角色的說話】：它反映角色的認知、處境與利害，未必等同作品整體的判斷。要確認作品主題，須看情節走向如何回應這句話 —— 該角色其後的遭遇是印證了它，還是推翻了它；其他人物與敘述又如何評價。若情節始終支持，這句話可作主題的表述；若情節反覆與之衝突，這句話本身便可能是作者要檢視的對象。",
+  "explanationEn": "What a character says is first of all THAT CHARACTER'S speech: it reflects their knowledge, position and interest, and need not coincide with the work's own verdict. To establish theme, look at how the plot answers the statement — whether what befalls the speaker confirms or overturns it, and how other characters and the narration weigh it. If the action supports it throughout, the line may serve as a statement of theme; if the action keeps contradicting it, the line is itself among the things the work is examining."
  }
 ]
