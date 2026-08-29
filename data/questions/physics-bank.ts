@@ -609,6 +609,78 @@ for (const c of [-100, -40, 0, 25, 37, 100, 200, 300, 500]) {
      `The absolute and Celsius scales have the same size of degree but different zero points: $T(\\mathrm{K}) = \\theta(°\\mathrm{C}) + 273$, so $${c} + 273 = ${k}$ K. Traps: $${c - 273}$ K subtracts instead of adding; $${c}$ K copies the Celsius value; $${273 - c}$ K reverses the subtraction. Note that absolute zero, $0$ K $= -273$ °C, is the theoretical minimum, so no temperature in kelvin is ever negative — a negative result means a step has gone wrong.`])
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第三批母模板 —— 平均分佈補強（2026-08-29）
+// 物理已過 1,000，但電學 213 條而多步計算・電與熱只有 38 條、放射現象 50 條，
+// 不均比 5.6×。電學一條不動，只補最薄的四個課題。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// HE3 — 多步：電熱器加熱水（P = VI，Q = Pt = mcΔT）
+for (const V of [110, 220]) {
+  for (const I of [2, 4, 5, 10]) {
+    for (const t of [60, 120, 300]) {
+      const P = V * I, Q = P * t
+      const m = 1, c = 4200
+      const dT = Q / (m * c)
+      if (!Number.isInteger(dT) || dT > 90) continue
+      add(`physc_he3_${V}_${I}_${t}`, T.hellElec, FW.circuit, 'hard',
+        [`一個電熱器接上 ${V} V 電源，通過的電流為 ${I} A，運作 ${t} 秒。若全部能量用於加熱 1 kg 水（比熱容 4200 J kg⁻¹ °C⁻¹），水溫上升多少度？`,
+         `A heater is connected to a ${V} V supply and draws ${I} A for ${t} s. If all the energy heats 1 kg of water (specific heat capacity 4200 J kg⁻¹ °C⁻¹), by how much does the temperature rise?`],
+        [n(`$${dT}$ °C`), n(`$${round(Q / 1000, 1)}$ °C`), n(`$${round(P / c, 4)}$ °C`), n(`$${round(dT * c, 0)}$ °C`)],
+        [`第一步求功率：$P = VI = ${V} \\times ${I} = ${P}$ W。第二步求能量：$Q = Pt = ${P} \\times ${t} = ${Q}$ J。第三步用 $Q = mc\\Delta T$ 解出溫升：$\\Delta T = \\dfrac{${Q}}{1 \\times 4200} = ${dT}$ °C。三步各有一個公式，中間任何一步跳過都會出錯，這正是多步計算題的考核重點。陷阱：$${round(Q / 1000, 1)}$ °C 誤除以 1000；$${round(P / c, 4)}$ °C 漏了乘時間；$${round(dT * c, 0)}$ °C 漏了除以比熱容。`,
+         `Step one, the power: $P = VI = ${V} \\times ${I} = ${P}$ W. Step two, the energy: $Q = Pt = ${P} \\times ${t} = ${Q}$ J. Step three, rearranging $Q = mc\\Delta T$: $\\Delta T = \\frac{${Q}}{1 \\times 4200} = ${dT}$ °C. Each step uses its own formula and skipping any one goes wrong, which is exactly what a multi-step item tests. Traps: $${round(Q / 1000, 1)}$ °C divides by 1000; $${round(P / c, 4)}$ °C omits the time; $${round(dT * c, 0)}$ °C omits the division by the specific heat capacity.`])
+    }
+  }
+}
+
+// HE4 — 多步：電費計算（kWh）
+for (const P of [500, 800, 1000, 1500, 2000]) {
+  for (const hrs of [2, 4, 5, 10]) {
+    for (const rate of [1, 2]) {
+      const kwh = (P * hrs) / 1000
+      const cost = kwh * rate
+      if (!Number.isInteger(cost * 10)) continue
+      add(`physc_he4_${P}_${hrs}_${rate}`, T.hellElec, FW.circuit, 'medium',
+        [`一件功率 ${P} W 的電器每日運作 ${hrs} 小時。若電費為每千瓦時 ${rate} 元，每日電費是多少？`,
+         `An appliance rated ${P} W runs for ${hrs} hours a day. At \\$${rate} per kilowatt-hour, what is the daily cost?`],
+        [[`${round(cost, 2)} 元`, `\\$${round(cost, 2)}`],
+         [`${round(P * hrs * rate, 0)} 元`, `\\$${round(P * hrs * rate, 0)}`],
+         [`${round(kwh, 2)} 元`, `\\$${round(kwh, 2)}`],
+         [`${round(cost / hrs, 3)} 元`, `\\$${round(cost / hrs, 3)}`]],
+        [`先把功率由瓦轉為千瓦：$${P}$ W $= ${P / 1000}$ kW。再求耗電量：$${P / 1000} \\times ${hrs} = ${kwh}$ kWh。最後乘電費率：$${kwh} \\times ${rate} = ${round(cost, 2)}$ 元。千瓦時是【能量】單位而非功率單位 —— 它等於以 1 kW 運作 1 小時所耗的能量，這是本題最常混淆的一點。陷阱：${round(P * hrs * rate, 0)} 元漏了瓦轉千瓦；${round(kwh, 2)} 元停在耗電量而未乘電費率；${round(cost / hrs, 3)} 元多除了一次時間。`,
+         `First convert power to kilowatts: $${P}$ W $= ${P / 1000}$ kW. Then the energy used: $${P / 1000} \\times ${hrs} = ${kwh}$ kWh. Finally multiply by the tariff: $${kwh} \\times ${rate} = \\$${round(cost, 2)}$. A kilowatt-hour is a unit of ENERGY, not power — it is the energy used by 1 kW running for one hour, and that is the commonest confusion here. Traps: \\$${round(P * hrs * rate, 0)} omits the watt-to-kilowatt conversion; \\$${round(kwh, 2)} stops at the energy without applying the tariff; \\$${round(cost / hrs, 3)} divides by the time again.`])
+    }
+  }
+}
+
+// RA3 — 放射性衰變：剩餘活度
+for (const A0 of [800, 1000, 1200, 1600, 2000, 3200]) {
+  for (const nHalf of [1, 2, 3, 4]) {
+    const rest = A0 / 2 ** nHalf
+    if (!Number.isInteger(rest)) continue
+    add(`physc_ra3_${A0}_${nHalf}`, T.radioactivity, FW.decay, 'medium',
+      [`某放射源的初始活度為 ${A0} Bq，半衰期為 6 小時。經過 ${6 * nHalf} 小時後，其活度是多少？`,
+       `A source has an initial activity of ${A0} Bq and a half-life of 6 hours. What is its activity after ${6 * nHalf} hours?`],
+      [n(`$${rest}$ Bq`), n(`$${round(A0 / (nHalf + 1), 1)}$ Bq`), n(`$${A0 - nHalf * (A0 / 2)}$ Bq`), n(`$${round(A0 / (2 * nHalf), 1)}$ Bq`)],
+      [`${6 * nHalf} 小時等於 $\\dfrac{${6 * nHalf}}{6} = ${nHalf}$ 個半衰期。每過一個半衰期活度減半，故剩餘活度 $= ${A0} \\times \\left(\\dfrac{1}{2}\\right)^{${nHalf}} = ${rest}$ Bq。衰變是【指數】而非線性的：經過 ${nHalf} 個半衰期並不是減去 ${nHalf} 個一半，而是連續減半 ${nHalf} 次，所以活度永遠不會真正歸零。陷阱：$${round(A0 / (nHalf + 1), 1)}$ Bq 與 $${round(A0 / (2 * nHalf), 1)}$ Bq 都把指數關係當成除法；$${A0 - nHalf * (A0 / 2)}$ Bq 把減半當成線性遞減。`,
+       `${6 * nHalf} hours is $\\frac{${6 * nHalf}}{6} = ${nHalf}$ half-lives. Activity halves each half-life, so the remainder is $${A0} \\times \\left(\\frac{1}{2}\\right)^{${nHalf}} = ${rest}$ Bq. Decay is EXPONENTIAL, not linear: ${nHalf} half-lives does not mean subtracting ${nHalf} halves but halving ${nHalf} times over, which is why activity never truly reaches zero. Traps: $${round(A0 / (nHalf + 1), 1)}$ Bq and $${round(A0 / (2 * nHalf), 1)}$ Bq both replace the exponential with a division; $${A0 - nHalf * (A0 / 2)}$ Bq treats halving as a linear decrease.`])
+  }
+}
+
+// RA4 — 核方程中的質量數與原子序守恆
+;([['α', 4, 2], ['β', 0, -1]] as [string, number, number][]).forEach(([mode, dA, dZ]) => {
+  for (const [A, Z] of [[226, 88], [238, 92], [214, 82], [210, 84], [232, 90], [220, 86],
+    [212, 83], [228, 88], [234, 90], [206, 81]] as [number, number][]) {
+    const A2 = A - dA, Z2 = Z - dZ
+    add(`physc_ra4_${mode === 'α' ? 'a' : 'b'}_${A}_${Z}`, T.radioactivity, FW.decay, 'hard',
+      [`一個質量數 ${A}、原子序 ${Z} 的原子核放出一個 ${mode} 粒子。衰變後子核的質量數與原子序分別是多少？`,
+       `A nucleus of mass number ${A} and atomic number ${Z} emits an ${mode} particle. What are the mass number and atomic number of the daughter nucleus?`],
+      [n(`$${A2}$、$${Z2}$`), n(`$${A - dA}$、$${Z + dZ}$`), n(`$${A + dA}$、$${Z - dZ}$`), n(`$${A}$、$${Z2}$`)],
+      [`核反應中質量數與原子序皆守恆。${mode === 'α' ? 'α 粒子即氦核，帶走 4 個質量數與 2 個原子序，故兩者分別減 4 與減 2' : 'β 粒子是電子，質量數不變；核內一個中子轉為質子並放出電子，故原子序【增加】1'}：質量數 $${A} \\to ${A2}$，原子序 $${Z} \\to ${Z2}$。陷阱：其餘三項分別把原子序的增減方向寫反、把質量數的增減方向寫反，或忘記改動質量數。`,
+       `Both mass number and atomic number are conserved in nuclear reactions. ${mode === 'α' ? 'An alpha particle is a helium nucleus carrying away 4 mass units and 2 protons, so both fall, by 4 and by 2 respectively' : 'A beta particle is an electron, so the mass number is unchanged; a neutron becomes a proton and emits the electron, so the atomic number INCREASES by 1'}: mass number $${A} \\to ${A2}$, atomic number $${Z} \\to ${Z2}$. Traps: the other options reverse the direction of the atomic-number change, reverse the mass-number change, or leave the mass number untouched.`])
+  }
+})
+
 export const physicsBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
