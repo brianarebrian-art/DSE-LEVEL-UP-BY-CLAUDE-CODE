@@ -26,6 +26,7 @@ const T = {
   tradeFail: { id: 'econ_trade_failure', zh: '貿易與市場失靈', en: 'Trade & market failure' },
   basics: { id: 'basic_concepts', zh: '基礎概念', en: 'Basic Concepts' },
   marketFailure: { id: 'market_failure', zh: '市場失靈', en: 'Market Failure' },
+  marketStructure: { id: 'market_structure', zh: '市場結構', en: 'Market Structure' },
   trade: { id: 'trade', zh: '國際貿易', en: 'International Trade' },
 } satisfies Record<string, TopicMeta>
 
@@ -481,6 +482,83 @@ for (const wage of [8000, 10000, 12000, 15000, 20000]) {
        money(wage.toLocaleString('en-US')), money((wage - explicit).toLocaleString('en-US'))],
       [`經濟成本 = 顯性成本 ＋ 隱性成本。顯性成本是實際付出的 ${explicit.toLocaleString('en-US')} 元；隱性成本是放棄的最高價值選項，即原本每月 ${wage.toLocaleString('en-US')} 元的薪金。兩者相加得 ${total.toLocaleString('en-US')} 元。會計只計顯性成本，因此會計利潤往往高於經濟利潤 —— 這個分別正是「賺錢」與「值得做」兩件事的分野。陷阱：${explicit.toLocaleString('en-US')} 元只計了會計成本，漏了放棄的薪金；${wage.toLocaleString('en-US')} 元只計隱性成本；${(wage - explicit).toLocaleString('en-US')} 元把兩者相減。`,
        `Economic cost equals explicit cost plus implicit cost. The explicit cost is the \\$${explicit.toLocaleString('en-US')} actually paid; the implicit cost is the highest-valued alternative forgone, namely the \\$${wage.toLocaleString('en-US')} monthly salary. Together they come to \\$${total.toLocaleString('en-US')}. Accounting counts only explicit costs, which is why accounting profit typically exceeds economic profit — and that difference is precisely the difference between making money and being worth doing. Traps: \\$${explicit.toLocaleString('en-US')} is the accounting cost and omits the forgone salary; \\$${wage.toLocaleString('en-US')} counts only the implicit cost; \\$${(wage - explicit).toLocaleString('en-US')} subtracts one from the other.`])
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 第五批母模板 —— 推向 1,000（2026-08-29）
+// 補強前最薄：市場結構 24、生產可能線 31、市場失靈 33、國際貿易 40、
+// 市場效率 48、基礎概念 50。廠商與生產 98 條不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// MS1 — 市場結構：集中率
+for (const [a, b, c, d] of [[40, 25, 15, 10], [30, 25, 20, 15], [50, 20, 10, 10],
+  [35, 30, 20, 10], [45, 25, 15, 5], [25, 25, 25, 15], [60, 15, 10, 5],
+  [20, 20, 20, 20], [55, 20, 15, 5], [30, 30, 15, 15]] as [number, number, number, number][]) {
+  const cr2 = a + b, cr4 = a + b + c + d
+  if (cr2 === cr4) continue
+  add(`econ_ms1_${a}${b}${c}${d}`, T.marketStructure, FW.quant, 'medium',
+    [`某行業四大廠商的市場佔有率分別為 ${a}%、${b}%、${c}%、${d}%。該行業的【兩廠商集中率】（CR2）是多少？`,
+     `The four largest firms in an industry hold market shares of ${a}%, ${b}%, ${c}% and ${d}%. What is the two-firm concentration ratio (CR2)?`],
+    [n(`${cr2}%`), n(`${cr4}%`), n(`${a}%`), n(`${round(cr2 / 2, 1)}%`)],
+    [`集中率是市場佔有率最大的若干家廠商的份額之【和】。CR2 取最大的兩家：${a}% ＋ ${b}% = ${cr2}%。集中率愈高，代表市場愈接近寡頭甚至壟斷；但它只看份額分佈，並不反映進入障礙或產品差異，因此不能單憑它斷定市場結構。陷阱：${cr4}% 是 CR4，把四家全部相加；${a}% 只取了最大一家；${round(cr2 / 2, 1)}% 求了平均而非總和。`,
+     `A concentration ratio is the SUM of the shares of the largest firms. CR2 takes the largest two: ${a}% + ${b}% = ${cr2}%. A higher ratio suggests a market closer to oligopoly or monopoly, but it reflects only the distribution of shares and says nothing about barriers to entry or product differentiation, so it cannot settle the market structure on its own. Traps: ${cr4}% is CR4 and adds all four; ${a}% takes only the largest firm; ${round(cr2 / 2, 1)}% averages instead of summing.`])
+}
+
+// MS2 — 完全競爭廠商的短期利潤
+for (const price of [12, 15, 20, 25, 30]) {
+  for (const atc of [8, 10, 14, 18]) {
+    for (const q of [100, 200, 500]) {
+      if (price <= atc) continue
+      const profit = (price - atc) * q
+      add(`econ_ms2_${price}_${atc}_${q}`, T.marketStructure, FW.quant, 'hard',
+        [`完全競爭市場中，某廠商面對的市價為 ${price} 元，其平均總成本為 ${atc} 元，產量為 ${efmt(q)} 單位。該廠商的經濟利潤是多少？`,
+         `In perfect competition a firm faces a market price of \\$${price} with average total cost \\$${atc} at an output of ${efmt(q)} units. What is its economic profit?`],
+        [money(efmt(profit)), money(efmt(price * q)), money(efmt(atc * q)), money(efmt(price - atc))],
+        [`經濟利潤 = (價格 − 平均總成本) × 產量 = (${price} − ${atc}) × ${efmt(q)} = ${efmt(profit)} 元。完全競爭廠商是價格接受者，短期內可以有正的經濟利潤；但由於進入自由，新廠商會被吸引入市，供給增加令價格下跌，直至價格等於平均總成本、經濟利潤歸零為止 —— 這就是長期均衡。留意經濟利潤為零並不代表虧本，正常利潤已計入成本之內。陷阱：${efmt(price * q)} 元是總收益；${efmt(atc * q)} 元是總成本；${efmt(price - atc)} 元只是單位利潤。`,
+         `Economic profit = (price − average total cost) × quantity = (${price} − ${atc}) × ${efmt(q)} = \\$${efmt(profit)}. A perfectly competitive firm is a price taker and can earn positive economic profit in the short run; but free entry attracts new firms, supply rises and price falls until price equals average total cost and economic profit is zero — the long-run equilibrium. Note that zero economic profit is not a loss, since normal profit is already counted as a cost. Traps: \\$${efmt(price * q)} is total revenue; \\$${efmt(atc * q)} is total cost; \\$${efmt(price - atc)} is profit per unit.`])
+    }
+  }
+}
+
+// PF3 — 生產可能線：點的位置判讀
+for (const [maxA, maxB] of [[40, 60], [50, 100], [30, 90], [80, 40], [60, 120]] as [number, number][]) {
+  for (const [x, y, kind] of [[maxA / 2, maxB / 4, 'inside'], [maxA / 4, maxB / 4, 'inside'],
+    [maxA, maxB, 'outside'], [maxA / 2, maxB, 'outside']] as [number, number, string][]) {
+    const inside = kind === 'inside'
+    add(`econ_pf3_${maxA}${maxB}_${x}${y}`, T.ppf, FW.quant, 'medium',
+      [`某經濟體的生產可能線為連接 $(${maxA},\\ 0)$ 與 $(0,\\ ${maxB})$ 的直線。生產組合 $(${x},\\ ${y})$ 位於甚麼位置？`,
+       `An economy's production possibility frontier is the straight line joining $(${maxA},\\ 0)$ and $(0,\\ ${maxB})$. Where does the combination $(${x},\\ ${y})$ lie?`],
+      inside
+        ? [['線內 —— 資源未被充分利用，存在失業或效率損失', 'inside the frontier — resources are underused, with unemployment or inefficiency'],
+           ['線上 —— 資源已被充分而有效率地利用', 'on the frontier — resources are fully and efficiently used'],
+           ['線外 —— 以現有資源與技術無法達到', 'beyond the frontier — unattainable with current resources and technology'],
+           ['線上 —— 但代表資源分配並不公平', 'on the frontier — but the allocation is inequitable']]
+        : [['線外 —— 以現有資源與技術無法達到', 'beyond the frontier — unattainable with current resources and technology'],
+           ['線上 —— 資源已被充分而有效率地利用', 'on the frontier — resources are fully and efficiently used'],
+           ['線內 —— 資源未被充分利用，存在失業或效率損失', 'inside the frontier — resources are underused, with unemployment or inefficiency'],
+           ['線外 —— 但只要增加需求即可達到', 'beyond the frontier — but attainable simply by raising demand']],
+      [`把組合代入直線方程 $\\dfrac{x}{${maxA}} + \\dfrac{y}{${maxB}} = 1$：$\\dfrac{${x}}{${maxA}} + \\dfrac{${y}}{${maxB}} = ${round(x / maxA + y / maxB, 3)}$。${inside ? '結果小於 1，代表該點在線【內】：資源未被充分利用，可能存在失業或生產效率損失，此時增產一種貨品【不必】犧牲另一種。' : '結果大於 1，代表該點在線【外】：以現有的資源與技術無法達到。要達到它，必須增加資源、改善技術或提高生產力 —— 單靠增加需求並不能突破生產能力的上限。'}`,
+       `Substituting into the line $\\frac{x}{${maxA}} + \\frac{y}{${maxB}} = 1$ gives $\\frac{${x}}{${maxA}} + \\frac{${y}}{${maxB}} = ${round(x / maxA + y / maxB, 3)}$. ${inside ? 'The value is below 1, so the point lies INSIDE the frontier: resources are underused, perhaps through unemployment or productive inefficiency, and more of one good can be produced WITHOUT giving up any of the other.' : 'The value exceeds 1, so the point lies BEYOND the frontier and is unattainable with current resources and technology. Reaching it requires more resources, better technology or higher productivity — raising demand alone cannot push past a production capacity limit.'}`])
+  }
+}
+
+// MK3 — 價格上限與短缺
+for (const [pe, qe] of [[50, 200], [60, 300], [80, 400], [100, 250]] as [number, number][]) {
+  for (const cap of [0.6, 0.8]) {
+    const pc = pe * cap
+    const qd = qe + (pe - pc) * 2, qs = qe - (pe - pc) * 2
+    if (qs <= 0) continue
+    add(`econ_mk3_${pe}_${qe}_${String(cap).replace('.', 'p')}`, T.market, FW.quant, 'hard',
+      [`某市場的均衡價格為 ${pe} 元、均衡數量為 ${efmt(qe)} 單位。政府設定價格上限 ${pc} 元後，需求量升至 ${efmt(qd)} 單位，供應量跌至 ${efmt(qs)} 單位。市場出現多少單位的短缺？`,
+       `A market clears at \\$${pe} and ${efmt(qe)} units. After a price ceiling of \\$${pc}, quantity demanded rises to ${efmt(qd)} and quantity supplied falls to ${efmt(qs)}. What shortage results?`],
+      // 第三個誘答原本寫 qe − qs，但 qd 與 qs 對稱於 qe，故 qe − qs 恆等於
+      // qd − qe，兩個誘答其實是同一條算式，整組被 add() 丟棄，一條題都出不到。
+      // 改為「把需求量本身當成短缺」——— 一個真實的誤讀。
+      [qty(efmt(qd - qs), '單位', 'units'), qty(efmt(qd - qe), '單位', 'units'),
+       qty(efmt(qd), '單位', 'units'), qty(efmt(qd + qs), '單位', 'units')],
+      [`短缺 = 需求量 − 供應量 = ${efmt(qd)} − ${efmt(qs)} = ${efmt(qd - qs)} 單位。有效的價格上限必須低於均衡價格，它同時把需求推高與把供應壓低，兩邊的變化都要計算在內 —— 只算其中一邊便會低估短缺。短缺之下，價格不能再擔任分配的角色，於是出現排隊、配給甚至黑市。陷阱：${efmt(qd - qe)} 單位只算了需求增加的部分；${efmt(qd)} 單位把需求量本身當成短缺；${efmt(qd + qs)} 單位把兩者相加。`,
+       `The shortage is quantity demanded minus quantity supplied: ${efmt(qd)} − ${efmt(qs)} = ${efmt(qd - qs)} units. A binding price ceiling must sit below the equilibrium price, and it both raises quantity demanded and lowers quantity supplied, so both movements count — using only one side understates the shortage. With a shortage, price can no longer perform the rationing role, so queues, rationing and black markets appear. Traps: ${efmt(qd - qe)} counts only the rise in demand; ${efmt(qd)} mistakes quantity demanded for the shortage; ${efmt(qd + qs)} adds the two quantities.`])
   }
 }
 
