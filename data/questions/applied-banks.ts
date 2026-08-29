@@ -746,3 +746,90 @@ for (const [n1, u1, factor, u2] of [[2, 'KB', 1024, 'B'], [4, 'MB', 1024, 'KB'],
 }
 
 export const ictBank2Questions: Question[] = ict2.bank
+
+// ── 音樂：拍號與音符時值 ──────────────────────────────────────────────────
+
+const musT2 = { notation: { id: 'theory_notation', zh: '樂理與記譜', en: 'Theory & Notation' } } satisfies Record<string, TopicMeta>
+const mus2 = createBank('music')
+
+// MU3 — 一小節之內的拍數
+;([['4/4', 4, '四分音符', 'crotchet'], ['3/4', 3, '四分音符', 'crotchet'],
+  ['2/4', 2, '四分音符', 'crotchet'], ['6/8', 6, '八分音符', 'quaver'],
+  ['3/8', 3, '八分音符', 'quaver'], ['9/8', 9, '八分音符', 'quaver'],
+  ['2/2', 2, '二分音符', 'minim'], ['3/2', 3, '二分音符', 'minim'],
+  ['12/8', 12, '八分音符', 'quaver'], ['5/4', 5, '四分音符', 'crotchet']] as
+  [string, number, string, string][])
+  .forEach(([sig, beats, zhUnit, enUnit], i) => {
+    const [top, bottom] = sig.split('/').map(Number)
+    const alts = [2, 3, 4, 5, 6, 9, 12].filter((v) => v !== beats)
+    mus2.add(`mus2_mu3_${i}`, musT2.notation, musFW.apply, 'easy',
+      [`拍號為 $\\frac{${top}}{${bottom}}$ 的樂曲，每一小節相當於多少個${zhUnit}的時值？`,
+       `In $\\frac{${top}}{${bottom}}$ time, how many ${enUnit} beats make up one bar?`],
+      // 沿用候選去重寫法：固定取 alts[0]、alts[1] 會在 bottom 恰好等於其中
+      // 一個時碰撞（例如 2/4：alts[1] = 4 = bottom），二十條之中五條被丟棄。
+      [n(`${beats}`), ...[bottom, ...alts]
+        .filter((v, j, arr) => v !== beats && arr.indexOf(v) === j)
+        .slice(0, 3)
+        .map((v) => n(`${v}`))],
+      [`拍號的【上】數字表示每小節的拍數，【下】數字表示以哪一種音符為一拍：${bottom} 代表${zhUnit}。故 $\\frac{${top}}{${bottom}}$ 每小節有 ${beats} 個${zhUnit}的時值。上下兩個數字的角色不同 —— 把下數字當成拍數是本課題最常見的失分位。${top === 6 || top === 9 || top === 12 ? '另須留意：6/8、9/8、12/8 屬【複拍子】，實際感受到的強拍分別是 2、3、4 個，每個強拍再分成三個八分音符。' : ''}陷阱：${bottom} 誤把下數字當成每小節的拍數；其餘兩項是其他常見拍號的拍數。`,
+       `The UPPER number of a time signature gives the number of beats per bar and the LOWER number states which note value counts as one beat: ${bottom} means a ${enUnit}. So $\\frac{${top}}{${bottom}}$ has ${beats} ${enUnit} beats to the bar. The two numbers play different roles, and reading the lower one as the beat count is where this topic is most often lost. ${top === 6 || top === 9 || top === 12 ? 'Note also that 6/8, 9/8 and 12/8 are COMPOUND time, felt as 2, 3 and 4 main beats respectively, each subdividing into three quavers.' : ''} Traps: ${bottom} reads the lower number as the beat count; the other two are beat counts of other common signatures.`])
+  })
+
+// MU4 — 音符時值的換算
+;([['全音符', 'semibreve', 1, '四分音符', 'crotchet', 4], ['全音符', 'semibreve', 1, '八分音符', 'quaver', 8],
+  ['二分音符', 'minim', 1, '四分音符', 'crotchet', 2], ['二分音符', 'minim', 1, '八分音符', 'quaver', 4],
+  ['四分音符', 'crotchet', 1, '八分音符', 'quaver', 2], ['四分音符', 'crotchet', 1, '十六分音符', 'semiquaver', 4],
+  ['全音符', 'semibreve', 1, '二分音符', 'minim', 2], ['八分音符', 'quaver', 1, '十六分音符', 'semiquaver', 2],
+  ['二分音符', 'minim', 1, '十六分音符', 'semiquaver', 8], ['全音符', 'semibreve', 1, '十六分音符', 'semiquaver', 16]] as
+  [string, string, number, string, string, number][])
+  .forEach(([zhA, enA, , zhB, enB, ratio], i) => {
+    mus2.add(`mus2_mu4_${i}`, musT2.notation, musFW.apply, ratio >= 8 ? 'hard' : 'medium',
+      [`一個${zhA}的時值等於多少個${zhB}？`, `How many ${enB}s equal one ${enA} in duration?`],
+      [n(`${ratio}`), ...[ratio * 2, ratio / 2, ratio + 2, ratio + 1]
+        .filter((v, j, arr) => Number.isInteger(v) && v > 0 && v !== ratio && arr.indexOf(v) === j)
+        .slice(0, 3)
+        .map((v) => n(`${v}`))],
+      [`西方記譜法的音符時值按【二的冪】遞減：全音符 → 二分音符 → 四分音符 → 八分音符 → 十六分音符，每一級的時值是前一級的一半。由${zhA}數到${zhB}相差的級數，決定了倍數為 ${ratio}。這個層層減半的結構，正是拍號下數字（2、4、8、16）的由來。附點會把音符時值增加一半，三連音則把一拍平均分成三份 —— 兩者都是這個二進結構的例外。`,
+       `Western note values halve at each step: semibreve to minim to crotchet to quaver to semiquaver, each worth half the one before. The number of steps from a ${enA} to a ${enB} gives the factor of ${ratio}. This repeated halving is exactly where the lower numbers of time signatures (2, 4, 8, 16) come from. A dot adds half again to a note's value, and a triplet divides a beat into three equal parts — both are exceptions to the binary structure.`])
+  })
+
+export const musicBank2Questions: Question[] = mus2.bank
+
+// ── 設計與應用科技：比例縮放與材料密度 ────────────────────────────────────
+
+const datT2 = {
+  process: { id: 'design_process', zh: '設計過程', en: 'Design Process' },
+  materials: { id: 'materials', zh: '材料與特性', en: 'Materials & Properties' },
+} satisfies Record<string, TopicMeta>
+const dat2 = createBank('design-tech')
+
+// DT3 — 比例尺圖則的實際尺寸
+for (const scale of [10, 20, 25, 50, 100]) {
+  for (const drawn of [30, 45, 60, 80, 120]) {
+    const actualMm = drawn * scale
+    dat2.add(`dat2_dt3_${scale}_${drawn}`, datT2.process, datFW.calc, scale <= 20 ? 'easy' : scale >= 100 ? 'hard' : 'medium',
+      [`一張比例為 1 : ${scale} 的圖則上，某部件量得 ${drawn} 毫米。該部件的實際長度是多少毫米？`,
+       `On a 1 : ${scale} drawing, a component measures ${drawn} mm. What is its actual length in millimetres?`],
+      [n(`${fmt(actualMm)}`), n(`${fmt(drawn / scale)}`), n(`${fmt(drawn)}`), n(`${fmt(drawn + scale)}`)],
+      [`比例 1 : ${scale} 表示圖上 1 個單位代表實物 ${scale} 個單位，故實際長度 = ${drawn} × ${scale} = ${fmt(actualMm)} 毫米（即 ${round(actualMm / 1000, 3)} 米）。要分清【縮小】比例（1 : n，圖細於實物，用於建築與機械圖則）與【放大】比例（n : 1，圖大於實物，用於微細零件）—— 冒號兩邊的次序決定了應該乘還是除。陷阱：${fmt(drawn / scale)} 把方向倒轉，當成放大比例；${fmt(drawn)} 完全沒有換算；${fmt(drawn + scale)} 把比例數字當成加數。`,
+       `A scale of 1 : ${scale} means one unit on the drawing represents ${scale} units on the object, so the actual length is ${drawn} × ${scale} = ${fmt(actualMm)} mm, that is ${round(actualMm / 1000, 3)} m. Distinguish REDUCTION scales (1 : n, drawing smaller than the object, used for architectural and engineering drawings) from ENLARGEMENT scales (n : 1, drawing larger, used for tiny components) — the order across the colon decides whether to multiply or divide. Traps: ${fmt(drawn / scale)} reverses the direction and treats it as an enlargement; ${fmt(drawn)} makes no conversion; ${fmt(drawn + scale)} adds the scale figure.`])
+  }
+}
+
+// DT4 — 材料密度：質量 = 密度 × 體積
+;([['鋁', 'aluminium', 2.7], ['鋼', 'steel', 7.8], ['銅', 'copper', 8.9],
+  ['聚氯乙烯', 'PVC', 1.4], ['橡木', 'oak', 0.75], ['玻璃', 'glass', 2.5]] as [string, string, number][])
+  .forEach(([zhM, enM, rho]) => {
+    for (const vol of [100, 200, 500, 1000]) {
+      const mass = rho * vol
+      if (!Number.isInteger(mass * 10)) continue
+      dat2.add(`dat2_dt4_${enM}_${vol}`, datT2.materials, datFW.calc, rho < 1 ? 'hard' : vol === 100 ? 'easy' : 'medium',
+        [`${zhM}的密度為 ${rho} g cm⁻³。一件體積 ${fmt(vol)} cm³ 的${zhM}部件，質量是多少克？`,
+         `${enM} has a density of ${rho} g cm⁻³. What is the mass of an ${enM} component of volume ${fmt(vol)} cm³?`],
+        [n(`${fmt(Math.round(mass * 10) / 10)}`), n(`${round(vol / rho, 1)}`), n(`${fmt(vol)}`), n(`${round(rho, 2)}`)],
+        [`質量 = 密度 × 體積 = ${rho} × ${fmt(vol)} = ${fmt(Math.round(mass * 10) / 10)} 克。密度是選材時最關鍵的指標之一：同樣體積下，鋼的質量約為鋁的三倍，因此航空與單車部件寧可用強度稍低的鋁合金換取重量。密度亦決定物件能否浮於水（水為 1 g cm⁻³）—— ${rho < 1 ? `${zhM}密度小於 1，可浮於水面。` : `${zhM}密度大於 1，會沉入水中。`}陷阱：${round(vol / rho, 1)} 把除法與乘法對調；${fmt(vol)} 只抄了體積；${round(rho, 2)} 只抄了密度。`,
+         `Mass = density × volume = ${rho} × ${fmt(vol)} = ${fmt(Math.round(mass * 10) / 10)} g. Density is among the most important criteria in material selection: for the same volume steel weighs about three times as much as aluminium, which is why aircraft and bicycle components accept slightly lower strength in exchange for lighter alloy. Density also decides whether an object floats, water being 1 g cm⁻³ — ${rho < 1 ? `${enM} is below 1 and floats.` : `${enM} is above 1 and sinks.`} Traps: ${round(vol / rho, 1)} divides instead of multiplying; ${fmt(vol)} copies the volume; ${round(rho, 2)} copies the density.`])
+    }
+  })
+
+export const designTechBank2Questions: Question[] = dat2.bank

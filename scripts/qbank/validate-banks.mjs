@@ -80,6 +80,8 @@ const BANKS = [
   { subject: 'ths', file: 'data/questions/applied-banks.ts', exportName: 'thsBank2Questions' },
   { subject: 'technology-living', file: 'data/questions/applied-banks.ts', exportName: 'technologyLivingBank2Questions' },
   { subject: 'ict', file: 'data/questions/applied-banks.ts', exportName: 'ictBank2Questions' },
+  { subject: 'music', file: 'data/questions/applied-banks.ts', exportName: 'musicBank2Questions' },
+  { subject: 'design-tech', file: 'data/questions/applied-banks.ts', exportName: 'designTechBank2Questions' },
 ]
 
 const RATIO = { easy: 0.3, medium: 0.5, hard: 0.2 } // 300 / 500 / 200 per 1,000
