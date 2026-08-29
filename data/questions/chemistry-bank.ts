@@ -750,6 +750,158 @@ for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第六批母模板 —— 推向 1,000（2026-08-29）
+// 補最薄：化學式與式量 30、有機化學（高階）32、有機化學 34、氧化還原 39、
+// 週期表 42、氧化還原與平衡 44、化學計量 47。摩爾概念 92 條不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// FM3 — 由質量比求實驗式
+;([['Mg', 24, 'O', 16, 1, 1, 'MgO'], ['Fe', 56, 'O', 16, 2, 3, 'Fe_2O_3'],
+  ['Cu', 64, 'O', 16, 1, 1, 'CuO'], ['Al', 27, 'O', 16, 2, 3, 'Al_2O_3'],
+  ['Na', 23, 'Cl', 35.5, 1, 1, 'NaCl'], ['Ca', 40, 'F', 19, 1, 2, 'CaF_2'],
+  ['C', 12, 'H', 1, 1, 4, 'CH_4'], ['N', 14, 'H', 1, 1, 3, 'NH_3'],
+  ['Zn', 65, 'S', 32, 1, 1, 'ZnS'], ['K', 39, 'O', 16, 2, 1, 'K_2O'],
+  ['Pb', 207, 'O', 16, 1, 2, 'PbO_2'], ['Mg', 24, 'N', 14, 3, 2, 'Mg_3N_2']] as
+  [string, number, string, number, number, number, string][])
+  .forEach(([e1, m1, e2, m2, c1, c2, formula]) => {
+    const mass1 = m1 * c1, mass2 = m2 * c2
+    add(`chemf_fm3_${formula.replace(/[^A-Za-z0-9]/g, '')}`, T.formula, FW.quantReason, 'hard',
+      [`某化合物含 ${round(mass1, 1)} g ${e1} 與 ${round(mass2, 1)} g ${e2}。其實驗式是甚麼？（相對原子質量：${e1} ${m1}、${e2} ${m2}）`,
+       `A compound contains ${round(mass1, 1)} g of ${e1} and ${round(mass2, 1)} g of ${e2}. What is its empirical formula? (Relative atomic masses: ${e1} ${m1}, ${e2} ${m2}.)`],
+      [n(`$\\mathrm{${formula}}$`), n(`$\\mathrm{${e1}${c2 === 1 ? '' : `_${c2}`}${e2}${c1 === 1 ? '' : `_${c1}`}}$`),
+       n(`$\\mathrm{${e1}${e2}}$`), n(`$\\mathrm{${e1}${c1 + 1 === 1 ? '' : `_${c1 + 1}`}${e2}${c2 === 1 ? '' : `_${c2}`}}$`)],
+      [`實驗式表示各元素原子數目的【最簡整數比】，求法是先把質量除以相對原子質量化為摩爾數，再約簡。$n(${e1}) = \\dfrac{${round(mass1, 1)}}{${m1}} = ${c1}$、$n(${e2}) = \\dfrac{${round(mass2, 1)}}{${m2}} = ${c2}$，比為 $${c1} : ${c2}$，故實驗式為 $\\mathrm{${formula}}$。關鍵在於【不能】直接用質量比 —— 質量比反映的是重量而非原子數目，必須先經摩爾數換算。陷阱：第二項把兩個下標對調；$\\mathrm{${e1}${e2}}$ 假設比例必為 1 : 1；最後一項下標數錯。`,
+       `An empirical formula gives the SIMPLEST WHOLE-NUMBER RATIO of atoms, found by dividing each mass by the relative atomic mass to get moles, then simplifying. Here $n(${e1}) = \\frac{${round(mass1, 1)}}{${m1}} = ${c1}$ and $n(${e2}) = \\frac{${round(mass2, 1)}}{${m2}} = ${c2}$, a ratio of $${c1} : ${c2}$, giving $\\mathrm{${formula}}$. The mass ratio may NOT be used directly: it reflects weight rather than numbers of atoms, so the conversion to moles is essential. Traps: the second interchanges the subscripts; $\\mathrm{${e1}${e2}}$ assumes a 1 : 1 ratio; the last miscounts a subscript.`])
+  })
+
+// PT4 — 週期性趨勢
+;([['同一週期由左至右，原子半徑', 'across a period from left to right, atomic radius',
+   '逐漸減小 —— 核電荷增加而電子仍在同一殼層，吸引力增強', 'decreases — nuclear charge rises while electrons stay in the same shell, so attraction strengthens',
+   '逐漸增大 —— 電子數目增加令電子雲擴張', 'increases — more electrons expand the electron cloud'],
+  ['同一族由上至下，原子半徑', 'down a group, atomic radius',
+   '逐漸增大 —— 電子殼層數目增加', 'increases — more electron shells are occupied',
+   '逐漸減小 —— 核電荷增加令吸引力增強', 'decreases — greater nuclear charge strengthens attraction'],
+  ['同一週期由左至右，金屬性', 'across a period from left to right, metallic character',
+   '逐漸減弱 —— 原子失去電子的傾向下降', 'weakens — atoms become less inclined to lose electrons',
+   '逐漸增強 —— 原子失去電子的傾向上升', 'strengthens — atoms become more inclined to lose electrons'],
+  ['同一族由上至下，鹼金屬的活潑性', 'down Group 1, the reactivity of the alkali metals',
+   '逐漸增強 —— 最外層電子離核愈遠，愈易失去', 'increases — the outer electron lies further from the nucleus and is lost more easily',
+   '逐漸減弱 —— 原子質量增加令反應變慢', 'decreases — greater atomic mass slows the reaction'],
+  ['同一族由上至下，鹵素的活潑性', 'down Group 17, the reactivity of the halogens',
+   '逐漸減弱 —— 原子半徑增大，吸引外來電子的能力下降', 'decreases — the larger radius weakens the pull on an incoming electron',
+   '逐漸增強 —— 電子殼層增加令反應更快', 'increases — more electron shells speed the reaction']] as
+  [string, string, string, string, string, string][])
+  .forEach(([zhQ, enQ, zhA, enA, zhD, enD], i) => {
+    add(`chemf_pt4_${i}`, T.periodic, FW.structure, 'medium',
+      [`${zhQ}如何變化？`, `How does ${enQ} change?`],
+      [[zhA, enA], [zhD, enD],
+       ['先增大後減小，於該週期或該族的中間位置達到極大值', 'it rises then falls, peaking in the middle of the period or group'],
+       ['沒有規律可循，須逐個元素查表', 'there is no pattern; each element must be looked up individually']],
+      [`${zhQ}${zhA.replace('逐漸', '')}。週期表的規律源於兩股互相角力的因素：核電荷（拉住電子）與電子殼層數目（把外層電子推遠）。同一週期之內殼層數不變而核電荷遞增，故半徑收縮；同一族之內殼層遞增，其效應壓過核電荷的增加，故半徑增大。掌握這兩股因素，五條趨勢都可以推出來，不必逐條硬記。最後兩項否定週期性本身 —— 而週期表之所以叫「週期」表，正正因為性質隨原子序呈現規律。`,
+       `${enQ} ${enA}. The periodic trends arise from two competing factors: nuclear charge, which pulls electrons in, and the number of occupied shells, which pushes the outermost electrons out. Within a period the shell count is fixed while nuclear charge rises, so radius contracts; down a group the added shells outweigh the rising charge, so radius expands. Holding these two factors in mind lets every trend be derived rather than memorised. The last two options deny periodicity itself — and the table is called periodic precisely because properties recur regularly with atomic number.`])
+  })
+
+// RE6 — 辨認氧化劑與還原劑
+;([['Mg', 'CuO', 'Cu', 'MgO'], ['Zn', 'CuSO_4', 'Cu', 'ZnSO_4'], ['C', 'CuO', 'Cu', 'CO_2'],
+  ['H_2', 'CuO', 'Cu', 'H_2O'], ['Fe', 'CuSO_4', 'Cu', 'FeSO_4'], ['Al', 'Fe_2O_3', 'Fe', 'Al_2O_3'],
+  ['CO', 'Fe_2O_3', 'Fe', 'CO_2'], ['Mg', 'ZnO', 'Zn', 'MgO'], ['C', 'PbO', 'Pb', 'CO_2'],
+  ['H_2', 'PbO', 'Pb', 'H_2O']] as [string, string, string, string][])
+  .forEach(([red, ox, , ]) => {
+    add(`chemf_re6_${red.replace(/[^A-Za-z0-9]/g, '')}_${ox.replace(/[^A-Za-z0-9]/g, '')}`, T.redox, FW.electron, 'medium',
+      [`在反應 $\\mathrm{${red}} + \\mathrm{${ox}} \\rightarrow \\ldots$ 之中，哪一種物質是還原劑？`,
+       `In the reaction $\\mathrm{${red}} + \\mathrm{${ox}} \\rightarrow \\ldots$, which substance is the reducing agent?`],
+      [[`$\\mathrm{${red}}$ —— 它失去電子被氧化，同時令對方被還原`, `$\\mathrm{${red}}$ — it loses electrons and is oxidised, causing the other to be reduced`],
+       [`$\\mathrm{${ox}}$ —— 它失去電子被氧化，同時令對方被還原`, `$\\mathrm{${ox}}$ — it loses electrons and is oxidised, causing the other to be reduced`],
+       [`$\\mathrm{${red}}$ —— 它得到電子被還原，因此稱為還原劑`, `$\\mathrm{${red}}$ — it gains electrons and is reduced, hence the name`],
+       ['兩者都是還原劑，因為反應中兩種物質同時失去電子', 'both are reducing agents, since both substances lose electrons']],
+      [`還原劑是【令對方被還原】的物質，而它自己則被氧化（失去電子）。此處 $\\mathrm{${red}}$ 失去電子成為化合物，並把電子交給 $\\mathrm{${ox}}$ 之中的金屬離子，令後者被還原成金屬，故 $\\mathrm{${red}}$ 是還原劑、$\\mathrm{${ox}}$ 是氧化劑。命名容易令人混淆：還原【劑】自己被【氧化】—— 名稱說的是它對【對方】做了甚麼，不是它自己發生甚麼。最後一項不成立：氧化與還原必定同時發生，不可能兩者同時失去電子。`,
+       `A reducing agent is the substance that CAUSES the other to be reduced, while itself being oxidised, that is losing electrons. Here $\\mathrm{${red}}$ loses electrons to form a compound and passes them to the metal ion in $\\mathrm{${ox}}$, which is reduced to the metal; so $\\mathrm{${red}}$ is the reducing agent and $\\mathrm{${ox}}$ the oxidising agent. The naming is a common trap: a reducing AGENT is itself OXIDISED — the name describes what it does to the OTHER substance, not what happens to it. The last option is impossible, since oxidation and reduction always occur together and both species cannot lose electrons.`])
+  })
+
+// OR5 — 加成反應與取代反應的分別
+;([['乙烯與溴水', 'ethene with bromine water', '加成', 'addition', '碳碳雙鍵斷開，兩個溴原子分別接上兩個碳', 'the C=C double bond opens and one bromine adds to each carbon'],
+  ['甲烷與氯氣（在紫外光下）', 'methane with chlorine under ultraviolet light', '取代', 'substitution', '一個氫原子被一個氯原子取代，同時放出氯化氫', 'one hydrogen is replaced by one chlorine, releasing hydrogen chloride'],
+  ['乙烯與氫氣（在催化劑下）', 'ethene with hydrogen over a catalyst', '加成', 'addition', '碳碳雙鍵斷開，兩個氫原子分別接上兩個碳', 'the C=C double bond opens and one hydrogen adds to each carbon'],
+  ['乙烷與溴（在紫外光下）', 'ethane with bromine under ultraviolet light', '取代', 'substitution', '一個氫原子被一個溴原子取代，同時放出溴化氫', 'one hydrogen is replaced by one bromine, releasing hydrogen bromide']] as
+  [string, string, string, string, string, string][])
+  .forEach(([zhR, enR, zhT, enT, zhM, enM], i) => {
+    const other = zhT === '加成' ? '取代' : '加成', otherEn = enT === 'addition' ? 'substitution' : 'addition'
+    add(`chemf_or5_${i}`, T.hellOrganic, FW.carbon, 'hard',
+      [`${zhR}的反應屬於哪一類？其機制是甚麼？`, `What type of reaction occurs between ${enR}, and by what mechanism?`],
+      [[`${zhT}反應 —— ${zhM}`, `${enT} — ${enM}`],
+       [`${other}反應 —— ${zhM}`, `${otherEn} — ${enM}`],
+       [`${zhT}反應 —— 兩個分子直接結合成一個更大的分子而無其他產物`, `${enT} — the two molecules simply join into one larger molecule with no other product`],
+       ['中和反應 —— 酸與鹼結合生成鹽與水', 'neutralisation — an acid and a base give a salt and water']],
+      [`${zhT === '加成' ? '飽和與不飽和是判斷反應類型的關鍵。含碳碳雙鍵的分子屬不飽和，雙鍵中較弱的一條鍵容易斷開，讓其他原子直接加到兩個碳上而不放出任何副產物，這就是加成反應 —— 亦是溴水由棕黃褪色可用來檢驗不飽和度的原理。' : '烷烴屬飽和烴，分子中只有單鍵，沒有可供加成的位置，因此只能在紫外光提供能量之下由自由基機制把一個氫原子換走，同時放出鹵化氫 —— 這就是取代反應。取代必定有副產物，加成則沒有，這是兩者最容易分辨的一點。'}故本反應屬${zhT}反應：${zhM}。`,
+       `${enT === 'addition' ? 'Saturation is the key to the reaction type. A molecule with a C=C bond is unsaturated; the weaker of the two bonds opens readily so that atoms add directly to both carbons with no by-product. This is addition — and the basis of the bromine-water test, in which the orange colour fades.' : 'An alkane is saturated, with only single bonds and no site for addition, so under ultraviolet light a free-radical mechanism replaces one hydrogen and releases a hydrogen halide. This is substitution. Substitution always yields a by-product while addition does not, which is the easiest way to tell them apart.'} The reaction is therefore ${enT}: ${enM}.`])
+  })
+
+// ST4 — 限量反應物
+;([[2, 'Mg', 24, 1, 'O_2', 32], [2, 'H_2', 2, 1, 'O_2', 32], [1, 'C', 12, 1, 'O_2', 32],
+  [2, 'Na', 23, 1, 'Cl_2', 71], [4, 'Al', 27, 3, 'O_2', 32], [1, 'Zn', 65, 1, 'S', 32]] as
+  [number, string, number, number, string, number][])
+  .forEach(([cA, fA, mrA, cB, fB, mrB]) => {
+    for (const molA of [2, 4]) {
+      const needB = (molA * cB) / cA
+      const haveB = needB / 2
+      // continue 而非 return：這裡身處 forEach 的回呼之內，return 會中止
+      // 整個 tuple 的所有 molA，而非只跳過當前一個。
+      if (!Number.isInteger(haveB * 100)) continue
+      add(`chemf_st4_${fA.replace(/[^A-Za-z0-9]/g, '')}_${molA}`, T.stoichiometry, FW.quantReason, 'hard',
+        [`按方程式 $${cA}\\mathrm{${fA}} + ${cB}\\mathrm{${fB}} \\rightarrow \\ldots$，現有 ${molA} mol $\\mathrm{${fA}}$ 與 ${round(haveB, 2)} mol $\\mathrm{${fB}}$。哪一種是限量反應物？`,
+         `For $${cA}\\mathrm{${fA}} + ${cB}\\mathrm{${fB}} \\rightarrow \\ldots$, ${molA} mol of $\\mathrm{${fA}}$ is mixed with ${round(haveB, 2)} mol of $\\mathrm{${fB}}$. Which is the limiting reactant?`],
+        [[`$\\mathrm{${fB}}$ —— 按係數比它不足以與全部 $\\mathrm{${fA}}$ 反應`, `$\\mathrm{${fB}}$ — by the coefficient ratio there is too little of it to react with all the $\\mathrm{${fA}}$`],
+         [`$\\mathrm{${fA}}$ —— 按係數比它不足以與全部 $\\mathrm{${fB}}$ 反應`, `$\\mathrm{${fA}}$ — by the coefficient ratio there is too little of it to react with all the $\\mathrm{${fB}}$`],
+         [`$\\mathrm{${fA}}$ —— 因為它的摩爾數較多`, `$\\mathrm{${fA}}$ — because more moles of it are present`],
+         ['兩者剛好完全反應，沒有限量反應物', 'the two react exactly, so there is no limiting reactant']],
+        [`判斷限量反應物不能只比較摩爾數，必須按方程式的【係數比】換算。${molA} mol $\\mathrm{${fA}}$ 需要 $${molA} \\times \\dfrac{${cB}}{${cA}} = ${round(needB, 2)}$ mol $\\mathrm{${fB}}$，但現有只得 ${round(haveB, 2)} mol，故 $\\mathrm{${fB}}$ 先耗盡，是限量反應物；$\\mathrm{${fA}}$ 則有剩餘。限量反應物決定生成物的最大產量，因此所有產量計算都要由它出發。第三項正是最常見的誤解 —— 摩爾數較多不代表不會先用完，關鍵在於係數比。`,
+         `A limiting reactant cannot be identified by comparing moles alone; the COEFFICIENT ratio must be applied. ${molA} mol of $\\mathrm{${fA}}$ requires $${molA} \\times \\frac{${cB}}{${cA}} = ${round(needB, 2)}$ mol of $\\mathrm{${fB}}$, but only ${round(haveB, 2)} mol is available, so $\\mathrm{${fB}}$ runs out first and limits the reaction, leaving $\\mathrm{${fA}}$ in excess. The limiting reactant sets the maximum yield, so every yield calculation starts from it. The third option is the commonest misconception: having more moles does not mean a reactant cannot be consumed first, since the coefficient ratio decides.`])
+    }
+  })
+
+// AB3 — pH 與氫離子濃度（整數 pH，避免對數捨入）
+for (const pH of [1, 2, 3, 4, 5, 9, 10, 11, 12, 13]) {
+  add(`chemf_ab3_${pH}`, T.acidsBases, FW.calc, 'medium',
+    [`某溶液的 pH 值為 ${pH}。其氫離子濃度是多少 mol dm⁻³？`,
+     `A solution has pH ${pH}. What is its hydrogen ion concentration in mol dm⁻³?`],
+    [n(`$10^{-${pH}}$`), n(`$10^{${pH}}$`), n(`$10^{-${14 - pH}}$`), n(`$${pH}$`)],
+    [`pH 的定義是 $\\mathrm{pH} = -\\log[\\mathrm{H^+}]$，故 $[\\mathrm{H^+}] = 10^{-\\mathrm{pH}} = 10^{-${pH}}$ mol dm⁻³。pH 每下降 1，氫離子濃度增加【十倍】—— 這是對數刻度的直接後果，亦是 pH 4 的溶液酸性比 pH 6 強一百倍而非兩倍的原因。${pH < 7 ? `此溶液 pH 小於 7，屬酸性。` : `此溶液 pH 大於 7，屬鹼性，其氫氧根離子濃度為 $10^{-${14 - pH}}$ mol dm⁻³。`}陷阱：$10^{${pH}}$ 漏了負號，得出大於 1 的荒謬濃度；$10^{-${14 - pH}}$ 是氫氧根離子的濃度；$${pH}$ 直接把 pH 值當成濃度。`,
+     `By definition $\\mathrm{pH} = -\\log[\\mathrm{H^+}]$, so $[\\mathrm{H^+}] = 10^{-\\mathrm{pH}} = 10^{-${pH}}$ mol dm⁻³. Each fall of one pH unit multiplies the hydrogen ion concentration TENFOLD — a direct consequence of the logarithmic scale, and the reason a pH 4 solution is a hundred times more acidic than pH 6 rather than twice. ${pH < 7 ? 'With pH below 7 this solution is acidic.' : `With pH above 7 this solution is alkaline, and its hydroxide concentration is $10^{-${14 - pH}}$ mol dm⁻³.`} Traps: $10^{${pH}}$ drops the minus sign and gives an absurd concentration above 1; $10^{-${14 - pH}}$ is the hydroxide concentration; $${pH}$ reads the pH value as a concentration.`])
+}
+
+// CN2 — 稀釋計算 C₁V₁ = C₂V₂
+for (const c1 of [0.5, 1, 2, 4, 5]) {
+  for (const v1 of [10, 20, 25, 50]) {
+    for (const v2 of [100, 250, 500]) {
+      const c2 = (c1 * v1) / v2
+      if (!Number.isInteger(c2 * 1000)) continue
+      add(`chemf_cn2_${String(c1).replace('.', 'p')}_${v1}_${v2}`, T.concentration, FW.calc, 'medium',
+        [`把 ${v1} cm³ 濃度為 ${c1} mol dm⁻³ 的溶液稀釋至 ${v2} cm³。稀釋後的濃度是多少 mol dm⁻³？`,
+         `${v1} cm³ of a ${c1} mol dm⁻³ solution is diluted to ${v2} cm³. What is the new concentration in mol dm⁻³?`],
+        [n(`$${round(c2, 4)}$`), n(`$${round((c1 * v2) / v1, 3)}$`), n(`$${round(c1, 2)}$`), n(`$${round(c1 * v1, 2)}$`)],
+        [`稀釋只加入溶劑，【溶質的摩爾數不變】，故 $C_1V_1 = C_2V_2$。代入：$${c1} \\times ${v1} = C_2 \\times ${v2}$，得 $C_2 = ${round(c2, 4)}$ mol dm⁻³。體積由 ${v1} 增至 ${v2} cm³，即放大 ${round(v2 / v1, 1)} 倍，濃度便相應縮小同樣倍數 —— 掌握這個反比關係可即時驗算答案是否合理。陷阱：$${round((c1 * v2) / v1, 3)}$ 把兩個體積的位置調轉，得出【濃縮】而非稀釋的結果；$${round(c1, 2)}$ 以為稀釋不改變濃度；$${round(c1 * v1, 2)}$ 停在摩爾數而未除以新體積。`,
+         `Dilution adds only solvent, so the AMOUNT of solute is unchanged and $C_1V_1 = C_2V_2$. Substituting, $${c1} \\times ${v1} = C_2 \\times ${v2}$, so $C_2 = ${round(c2, 4)}$ mol dm⁻³. The volume grows ${round(v2 / v1, 1)}-fold from ${v1} to ${v2} cm³, so the concentration falls by the same factor — an inverse relation that checks the answer instantly. Traps: $${round((c1 * v2) / v1, 3)}$ interchanges the volumes and gives concentration rather than dilution; $${round(c1, 2)}$ assumes dilution leaves concentration unchanged; $${round(c1 * v1, 2)}$ stops at the amount without dividing by the new volume.`])
+    }
+  }
+}
+
+// TH2 — 中和滴定：由滴定數據求未知濃度
+for (const ca of [0.1, 0.2, 0.5, 1]) {
+  for (const va of [20, 25]) {
+    for (const vb of [10, 20, 25, 40, 50]) {
+      const cb = (ca * va) / vb
+      if (!Number.isInteger(cb * 1000)) continue
+      add(`chemf_th2_${String(ca).replace('.', 'p')}_${va}_${vb}`, T.acidsBases, FW.quantReason, 'hard',
+        [`以 ${round(ca, 2)} mol dm⁻³ 的鹽酸滴定氫氧化鈉溶液，中和 ${vb} cm³ 的鹼液需要 ${va} cm³ 酸液。該鹼液的濃度是多少 mol dm⁻³？（兩者按 1 : 1 反應）`,
+         `${va} cm³ of ${round(ca, 2)} mol dm⁻³ hydrochloric acid neutralises ${vb} cm³ of sodium hydroxide solution. What is the concentration of the alkali in mol dm⁻³? (They react 1 : 1.)`],
+        [n(`$${round(cb, 4)}$`), n(`$${round((ca * vb) / va, 4)}$`), n(`$${round(ca, 2)}$`), n(`$${round(ca * va, 2)}$`)],
+        [`按 1 : 1 反應，中和時酸與鹼的摩爾數相等：$C_a V_a = C_b V_b$。代入 $${round(ca, 2)} \\times ${va} = C_b \\times ${vb}$，得 $C_b = ${round(cb, 4)}$ mol dm⁻³。若酸鹼的反應比例並非 1 : 1（例如硫酸對氫氧化鈉為 1 : 2），公式便要按係數比修正 —— 這是滴定計算最容易忽略的一步。陷阱：$${round((ca * vb) / va, 4)}$ 把兩個體積的位置調轉；$${round(ca, 2)}$ 以為兩者濃度必然相同；$${round(ca * va, 2)}$ 停在摩爾數而未除以鹼液體積。`,
+         `Reacting 1 : 1, neutralisation means equal amounts of acid and alkali: $C_a V_a = C_b V_b$. Substituting, $${round(ca, 2)} \\times ${va} = C_b \\times ${vb}$, so $C_b = ${round(cb, 4)}$ mol dm⁻³. Where the stoichiometry is not 1 : 1 — sulphuric acid with sodium hydroxide is 1 : 2 — the coefficients must be applied, and that is the step most often overlooked in titration work. Traps: $${round((ca * vb) / va, 4)}$ interchanges the volumes; $${round(ca, 2)}$ assumes equal concentrations; $${round(ca * va, 2)}$ stops at the amount without dividing by the alkali volume.`])
+    }
+  }
+}
+
 export const chemistryBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
