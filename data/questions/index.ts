@@ -42,7 +42,7 @@ import { economicsFloorBatch2Questions } from './economics-floor-batch2'
 import { englishReviewedQuestions } from './english-reviewed'
 import { bafsReviewedQuestions } from './bafs-reviewed'
 import { bafsBankQuestions } from './bafs-bank'
-import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestions, peBankQuestions, biologyBankQuestions, musicBankQuestions } from './applied-banks'
+import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestions, peBankQuestions, biologyBankQuestions, musicBankQuestions, ictBankQuestions } from './applied-banks'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
@@ -104,7 +104,7 @@ const banks: Record<string, SubjectBank> = {
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
   biology: { questions: [...biologyQuestions, ...biologyBankQuestions], topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
-  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions], topics: ictTopics },
+  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions], topics: ictTopics },
   chinese: {
     questions: [
       ...chineseQuestions,

@@ -72,6 +72,7 @@ const BANKS = [
   { subject: 'pe', file: 'data/questions/applied-banks.ts', exportName: 'peBankQuestions' },
   { subject: 'biology', file: 'data/questions/applied-banks.ts', exportName: 'biologyBankQuestions' },
   { subject: 'music', file: 'data/questions/applied-banks.ts', exportName: 'musicBankQuestions' },
+  { subject: 'ict', file: 'data/questions/applied-banks.ts', exportName: 'ictBankQuestions' },
 ]
 
 const RATIO = { easy: 0.3, medium: 0.5, hard: 0.2 } // 300 / 500 / 200 per 1,000

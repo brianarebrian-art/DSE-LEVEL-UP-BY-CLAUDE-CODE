@@ -316,3 +316,120 @@ for (let k = 1; k <= 7; k++) {
 }
 
 export const musicBankQuestions: Question[] = mus.bank
+
+// ── 資訊及通訊科技：三個計算型課題 ────────────────────────────────────────
+//
+// 資料表示計算、邏輯與算法、網絡計算 —— 三者的答案都由進位制、布林代數
+// 或位元運算規則唯一決定，屬 correct-by-construction。ICT 其餘七個課題
+// （資訊保安與道德、多媒體與網絡技術等）屬概念與判斷型，不適用本工廠。
+
+const ictT = {
+  rep: { id: 'ict_data_rep_calc', zh: '資料表示計算', en: 'Data representation — calculation' },
+  logic: { id: 'ict_logic_algo', zh: '邏輯與算法', en: 'Logic & algorithms' },
+  net: { id: 'ict_network_calc', zh: '網絡計算', en: 'Networking — calculation' },
+} satisfies Record<string, TopicMeta>
+const ictFW = {
+  logic: { id: 'logic', zh: '邏輯推理', en: 'Logical Reasoning', emoji: '🧠' },
+  apply: { id: 'apply', zh: '應用分析', en: 'Application', emoji: '🛠️' },
+} satisfies Record<string, FwMeta>
+const ict = createBank('ict')
+
+// IC1 — 二進位轉十進位
+for (let v = 5; v <= 60; v++) {
+  if (v % 3 !== 0 && v % 7 !== 0) continue
+  const bin = v.toString(2)
+  ict.add(`ictb_ic1_${v}`, ictT.rep, ictFW.apply, 'easy',
+    [`二進位數 $${bin}_2$ 轉換為十進位是多少？`, `What is the binary number $${bin}_2$ in decimal?`],
+    [n(`$${v}$`), n(`$${parseInt(bin, 8)}$`), n(`$${Number(bin)}$`), n(`$${bin.split('').filter((c) => c === '1').length}$`)],
+    [`二進位每一位的權值由右至左依次為 $2^0, 2^1, 2^2, \\dots$，把值為 1 的位的權值相加即得十進位值：$${bin}_2 = ${v}$。陷阱：$${parseInt(bin, 8)}$ 誤按八進位換算；$${Number(bin)}$ 把二進位數字當成十進位數字直接讀出；$${bin.split('').filter((c) => c === '1').length}$ 只數了 1 的個數。`,
+     `In binary the place values from the right are $2^0, 2^1, 2^2, \\dots$, and the decimal value is the sum of the place values where the bit is 1: $${bin}_2 = ${v}$. Traps: $${parseInt(bin, 8)}$ reads the digits as octal; $${Number(bin)}$ reads the binary digits as a decimal numeral; $${bin.split('').filter((c) => c === '1').length}$ merely counts the ones.`])
+}
+
+// IC2 — 十六進位轉十進位
+for (const h of ['1A', '2F', '3C', '4B', '5D', '6E', 'A0', 'B4', 'C8', 'D2', 'E6', 'FF',
+  '7A', '9C', '1F', '2B', '3E', '4D']) {
+  const v = parseInt(h, 16)
+  ict.add(`ictb_ic2_${h}`, ictT.rep, ictFW.apply, 'medium',
+    [`十六進位數 $${h}_{16}$ 轉換為十進位是多少？`, `What is the hexadecimal number $${h}_{16}$ in decimal?`],
+    [n(`$${v}$`), n(`$${parseInt(h[0], 16) + parseInt(h[1], 16)}$`), n(`$${parseInt(h, 16) * 2}$`), n(`$${parseInt(h[0], 16) * 10 + parseInt(h[1], 16)}$`)],
+    [`十六進位每一位的權值為 $16^0, 16^1, \\dots$，且 A 至 F 分別代表 10 至 15。故 $${h}_{16} = ${parseInt(h[0], 16)} \\times 16 + ${parseInt(h[1], 16)} = ${v}$。陷阱：$${parseInt(h[0], 16) + parseInt(h[1], 16)}$ 把兩位相加而未乘權值；$${parseInt(h, 16) * 2}$ 多乘了 2；$${parseInt(h[0], 16) * 10 + parseInt(h[1], 16)}$ 誤用了十進位的權值 10 而非 16。`,
+     `Hexadecimal place values are $16^0, 16^1, \\dots$, with A to F standing for 10 to 15. So $${h}_{16} = ${parseInt(h[0], 16)} \\times 16 + ${parseInt(h[1], 16)} = ${v}$. Traps: $${parseInt(h[0], 16) + parseInt(h[1], 16)}$ adds the digits without place values; $${parseInt(h, 16) * 2}$ doubles the result; $${parseInt(h[0], 16) * 10 + parseInt(h[1], 16)}$ uses the decimal place value 10 instead of 16.`])
+}
+
+// IC3 — 未壓縮點陣圖的檔案大小
+for (const [w, h] of [[640, 480], [800, 600], [1024, 768], [1280, 720], [1920, 1080]] as [number, number][]) {
+  for (const bpp of [8, 24]) {
+    const bytes = (w * h * bpp) / 8
+    const mb = bytes / (1024 * 1024)
+    ict.add(`ictb_ic3_${w}_${bpp}`, ictT.rep, ictFW.apply, 'hard',
+      [`一幅 ${w} × ${h} 像素的未壓縮點陣圖，每個像素佔 ${bpp} 位元。其檔案大小約為多少 MB？（1 MB = 1024 × 1024 位元組）`,
+       `An uncompressed bitmap of ${w} × ${h} pixels uses ${bpp} bits per pixel. What is its file size in MB? (1 MB = 1024 × 1024 bytes.)`],
+      [n(`${round(mb, 2)} MB`), n(`${round(mb * 8, 2)} MB`), n(`${round((w * h) / (1024 * 1024), 3)} MB`), n(`${round(mb / 1024, 4)} MB`)],
+      [`像素總數 $= ${w} \\times ${h} = ${w * h}$，每像素 ${bpp} 位元，故總位元數 $= ${w * h * bpp}$。除以 8 轉為位元組：$${bytes}$，再除以 $1024^2$ 得 ${round(mb, 2)} MB。關鍵在於【位元與位元組】的換算不可漏 —— 色深以位元計，檔案大小以位元組計。陷阱：${round(mb * 8, 2)} MB 漏了除以 8；${round((w * h) / (1024 * 1024), 3)} MB 漏了乘色深；${round(mb / 1024, 4)} MB 多除了一次 1024。`,
+       `The pixel count is $${w} \\times ${h} = ${w * h}$, and at ${bpp} bits each the total is $${w * h * bpp}$ bits. Dividing by 8 gives $${bytes}$ bytes, and dividing by $1024^2$ gives ${round(mb, 2)} MB. The crucial step is the bit-to-byte conversion: colour depth is quoted in bits while file size is in bytes. Traps: ${round(mb * 8, 2)} MB omits the division by 8; ${round((w * h) / (1024 * 1024), 3)} MB omits the colour depth; ${round(mb / 1024, 4)} MB divides by 1024 once too often.`])
+  }
+}
+
+// IC4 — 邏輯閘的真值表輸出【整欄】
+//
+// 刻意問整欄而非單一輸出：單一輸出只有 0 與 1 兩個可能值，根本湊不出四個
+// 相異選項，寫成四選一是設計錯誤（首版如此，整組被 add() 丟棄，一條都出不到）。
+// 改問由 00、01、10、11 四行組成的輸出欄，五種閘各有不同的欄，誘答即為
+// 其他閘的欄 —— 這正是學生真正會混淆的地方。
+const GATES = [
+  { g: 'AND', zh: '且', col: [0, 0, 0, 1] },
+  { g: 'OR', zh: '或', col: [0, 1, 1, 1] },
+  { g: 'NAND', zh: '與非', col: [1, 1, 1, 0] },
+  { g: 'NOR', zh: '或非', col: [1, 0, 0, 0] },
+  { g: 'XOR', zh: '互斥或', col: [0, 1, 1, 0] },
+]
+// IC4a — 由閘的名稱求輸出欄（每閘一條：同一個閘只有一條真值表，
+// 首版每閘出三條，題幹完全相同而只是誘答次序不同，被全站撞題閘攔下）
+for (const { g, zh, col } of GATES) {
+  const d = GATES.filter((x) => x.g !== g).slice(0, 3)
+  ict.add(`ictb_ic4a_${g}`, ictT.logic, ictFW.logic, 'medium',
+    [`一個 ${g}（${zh}）閘的真值表，輸入 $(A, B)$ 依次為 $(0,0)$、$(0,1)$、$(1,0)$、$(1,1)$。輸出欄由上而下是甚麼？`,
+     `For a ${g} gate the inputs $(A, B)$ are taken in the order $(0,0)$, $(0,1)$, $(1,0)$, $(1,1)$. What is the output column, read downwards?`],
+    [n(`$${col.join(',\\ ')}$`), n(`$${d[0].col.join(',\\ ')}$`), n(`$${d[1].col.join(',\\ ')}$`), n(`$${d[2].col.join(',\\ ')}$`)],
+    [`AND 只在兩個輸入皆為 1 時輸出 1；OR 只要有一個輸入為 1 便輸出 1；NAND 與 NOR 分別是 AND 與 OR 的輸出逐位取反；XOR 在兩個輸入【不同】時輸出 1。${g}（${zh}）閘的輸出欄為 $${col.join(',\\ ')}$。三個誘答分別是 ${d.map((x) => x.g).join('、')} 閘的輸出欄 —— 記住閘的名稱容易，記錯它對應哪一欄才是本課題的失分位。`,
+     `AND outputs 1 only when both inputs are 1; OR outputs 1 when at least one is 1; NAND and NOR are the bitwise inverses of AND and OR; XOR outputs 1 when the inputs DIFFER. The ${g} column is $${col.join(',\\ ')}$. The three distractors are the columns of the ${d.map((x) => x.g).join(', ')} gates — remembering the names is easy; pairing each with the right column is where marks are lost.`])
+}
+
+// IC4b — 由輸出欄反向辨認閘（同一組知識，換一個方向考）
+for (const { g, zh, col } of GATES) {
+  const d = GATES.filter((x) => x.g !== g).slice(0, 3)
+  ict.add(`ictb_ic4b_${g}`, ictT.logic, ictFW.logic, 'hard',
+    [`某邏輯閘在輸入 $(0,0)$、$(0,1)$、$(1,0)$、$(1,1)$ 下的輸出依次為 $${col.join(',\\ ')}$。它是哪一種閘？`,
+     `A logic gate gives outputs $${col.join(',\\ ')}$ for the inputs $(0,0)$, $(0,1)$, $(1,0)$, $(1,1)$ in that order. Which gate is it?`],
+    [[`${g}（${zh}）閘`, `a ${g} gate`], [`${d[0].g}（${d[0].zh}）閘`, `a ${d[0].g} gate`],
+     [`${d[1].g}（${d[1].zh}）閘`, `a ${d[1].g} gate`], [`${d[2].g}（${d[2].zh}）閘`, `a ${d[2].g} gate`]],
+    [`辨認的方法是逐行對照定義，而最快的做法是先看 $(0,0)$ 與 $(1,1)$ 兩行：AND 為 $0, 1$、OR 為 $0, 1$（但 $(0,1)$ 行不同）、NAND 為 $1, 0$、NOR 為 $1, 0$（同樣看中間兩行分辨）、XOR 為 $0, 0$。輸出欄 $${col.join(',\\ ')}$ 對應 ${g}（${zh}）閘。`,
+     `Identify the gate by checking each row against the definitions; the quickest route is to look first at the $(0,0)$ and $(1,1)$ rows, then use the middle two rows to separate the remaining candidates. The column $${col.join(',\\ ')}$ belongs to the ${g} gate.`])
+}
+
+// IC6 — 二分搜尋所需的最多比較次數 = log₂n
+for (const k of [3, 4, 5, 6, 7, 8, 10, 12]) {
+  const nItems = 2 ** k
+  ict.add(`ictb_ic6_${k}`, ictT.logic, ictFW.apply, 'hard',
+    [`一個已排序的陣列有 ${nItems} 個元素。以二分搜尋法尋找一個元素，最多需要比較多少次？`,
+     `A sorted array holds ${nItems} elements. Using binary search, what is the maximum number of comparisons needed?`],
+    [qty(k, '次', 'comparisons'), qty(nItems, '次', 'comparisons'), qty(nItems / 2, '次', 'comparisons'), qty(k * 2, '次', 'comparisons')],
+    [`二分搜尋每比較一次便把搜尋範圍減半，故最多比較 $\\log_2 ${nItems} = ${k}$ 次。這正是它遠勝線性搜尋之處：元素數目由 ${nItems} 增至 ${nItems * 2}，線性搜尋的最壞情況加倍，二分搜尋卻只多一次比較 —— 前者是 $O(n)$，後者是 $O(\\log n)$。前提是陣列必須【已排序】。陷阱：${nItems} 次是線性搜尋的最壞情況；${nItems / 2} 次是線性搜尋的平均情況；${k * 2} 次多算了一倍。`,
+     `Each comparison halves the search range, so at most $\\log_2 ${nItems} = ${k}$ comparisons are needed. This is why it far outperforms linear search: doubling the array from ${nItems} to ${nItems * 2} doubles the worst case for linear search but adds only one comparison here — $O(n)$ against $O(\\log n)$. The array must be SORTED for this to apply. Traps: ${nItems} is the linear-search worst case; ${nItems / 2} is its average case; ${k * 2} doubles the answer.`])
+}
+
+// IC5 — 傳輸時間 = 檔案大小 ÷ 頻寬
+for (const mb of [10, 25, 50, 100, 200]) {
+  for (const mbps of [8, 16, 20, 40]) {
+    const secs = (mb * 8) / mbps
+    if (!Number.isInteger(secs)) continue
+    ict.add(`ictb_ic5_${mb}_${mbps}`, ictT.net, ictFW.apply, 'hard',
+      [`以 ${mbps} Mbps 的頻寬傳送一個 ${mb} MB 的檔案，理論上需時多少秒？（1 位元組 = 8 位元，並忽略協定開銷）`,
+       `How long, in seconds, does it theoretically take to transfer a ${mb} MB file over a ${mbps} Mbps link? (1 byte = 8 bits; ignore protocol overhead.)`],
+      [qty(secs, '秒', 's'), qty(round(mb / mbps, 2), '秒', 's'), qty(round(mb * mbps, 1), '秒', 's'), qty(round(secs * 8, 1), '秒', 's')],
+      [`頻寬以【位元】每秒計，檔案大小以【位元組】計，兩者單位不同，必須先換算：$${mb}$ MB $= ${mb} \\times 8 = ${mb * 8}$ Mb。時間 $= \\dfrac{${mb * 8}}{${mbps}} = ${secs}$ 秒。忘記乘 8 是本課題最常見的失分位 —— Mbps 與 MB/s 相差正好八倍。陷阱：${round(mb / mbps, 2)} 秒漏了位元組轉位元；${round(mb * mbps, 1)} 秒把兩者相乘；${round(secs * 8, 1)} 秒把 8 乘了兩次。`,
+       `Bandwidth is quoted in BITS per second while file size is in BYTES, so the units must be reconciled first: $${mb}$ MB $= ${mb} \\times 8 = ${mb * 8}$ Mb. The time is $\\frac{${mb * 8}}{${mbps}} = ${secs}$ s. Forgetting the factor of 8 is where this topic is most often lost, since Mbps and MB/s differ by exactly eight. Traps: ${round(mb / mbps, 2)} s omits the byte-to-bit conversion; ${round(mb * mbps, 1)} s multiplies instead; ${round(secs * 8, 1)} s applies the factor of 8 twice.`])
+  }
+}
+
+export const ictBankQuestions: Question[] = ict.bank
