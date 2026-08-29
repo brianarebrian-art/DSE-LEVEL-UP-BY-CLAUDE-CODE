@@ -487,9 +487,9 @@ for (const unitCost of [40, 60, 80, 120, 150]) {
 }
 
 // IN4 — 利息：分期付款的總付款額與利息
-for (const principal of [12000, 24000, 36000, 60000]) {
-  for (const months of [12, 24, 36]) {
-    for (const ratePct of [5, 10]) {
+for (const principal of [12000, 18000, 24000, 30000, 36000, 48000, 60000, 72000]) {
+  for (const months of [6, 12, 18, 24, 36, 48]) {
+    for (const ratePct of [4, 5, 8, 10]) {
       const interest = (principal * ratePct * (months / 12)) / 100
       const total = principal + interest
       const monthly = total / months
@@ -517,6 +517,100 @@ for (const revenue of [200000, 350000, 500000, 800000]) {
         [money(fmt(net)), money(fmt(revenue - cogs)), money(fmt(revenue - exp)), money(fmt(cogs + exp))],
         [`損益表由上而下：銷貨收入 − 銷貨成本 = 毛利 ${fmt(revenue - cogs)} 元；毛利 − 營業費用 = 淨利 ${fmt(revenue - cogs)} − ${fmt(exp)} = ${fmt(net)} 元。毛利與淨利是兩個不同層次的指標：毛利只反映買賣本身的加價空間，淨利才計入經營一盤生意的其他開支。陷阱：${fmt(revenue - cogs)} 元停在毛利；${fmt(revenue - exp)} 元漏了銷貨成本；${fmt(cogs + exp)} 元是總開支而非利潤。`,
          `An income statement runs downwards: sales minus cost of goods sold gives a gross profit of \\$${fmt(revenue - cogs)}; gross profit minus operating expenses gives net profit, \\$${fmt(revenue - cogs)} − \\$${fmt(exp)} = \\$${fmt(net)}. Gross and net profit sit at different levels: the first reflects only the mark-up on goods, while the second accounts for the other costs of running the business. Traps: \\$${fmt(revenue - cogs)} stops at gross profit; \\$${fmt(revenue - exp)} omits cost of goods sold; \\$${fmt(cogs + exp)} is total costs, not profit.`])
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 第五批母模板 —— 推向 1,000（2026-08-29）
+// 補最薄的計算型課題：成本與定價 32、財務管理 36、利息 50、財務比率 53、
+// 個人理財 63、財務報表 63。商業環境（24）與管理（25）屬概念型，不動。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// CS2 — 盈虧平衡銷售額 = 固定成本 ÷ 邊際貢獻率
+for (const fc of [60000, 90000, 120000, 180000, 240000]) {
+  for (const price of [50, 80, 100, 150]) {
+    for (const vcPct of [40, 60]) {
+      const cmRatio = (100 - vcPct) / 100
+      const beSales = fc / cmRatio
+      if (!Number.isInteger(beSales)) continue
+      add(`bafs_cs2_${fc}_${price}_${vcPct}`, T.costing, FW.quant, 'hard',
+        [`某公司固定成本為 ${fmt(fc)} 元，售價每件 ${price} 元，單位變動成本佔售價的 ${vcPct}%。盈虧平衡銷售額是多少？`,
+         `A company has fixed costs of \\$${fmt(fc)} and sells at \\$${price} per unit with variable cost at ${vcPct}% of price. What is its break-even sales revenue?`],
+        [money(fmt(beSales)), money(fmt(fc)), money(fmt(fc / (price * cmRatio))), money(fmt(fc * cmRatio))],
+        [`邊際貢獻率 = 1 − 變動成本率 = 1 − ${vcPct}% = ${(100 - vcPct)}%。盈虧平衡銷售【額】= 固定成本 ÷ 邊際貢獻率 = ${fmt(fc)} ÷ ${cmRatio} = ${fmt(beSales)} 元。要分清盈虧平衡【銷量】（除以單位邊際貢獻，答案是件數）與盈虧平衡【銷售額】（除以邊際貢獻率，答案是金額）—— 題目問哪一個，就用哪一條。陷阱：${fmt(fc)} 元只抄了固定成本；${fmt(fc / (price * cmRatio))} 元求的是盈虧平衡【銷量】；${fmt(fc * cmRatio)} 元把除法寫成乘法。`,
+         `The contribution margin ratio is 1 − ${vcPct}% = ${100 - vcPct}%. Break-even sales REVENUE = fixed costs ÷ contribution margin ratio = \\$${fmt(fc)} ÷ ${cmRatio} = \\$${fmt(beSales)}. Distinguish break-even VOLUME, found by dividing by the unit contribution and given in units, from break-even REVENUE, found by dividing by the ratio and given in dollars — use whichever the question asks for. Traps: \\$${fmt(fc)} copies the fixed costs; \\$${fmt(fc / (price * cmRatio))} is the break-even volume; \\$${fmt(fc * cmRatio)} multiplies instead of dividing.`])
+    }
+  }
+}
+
+// RA5 — 資產回報率與權益回報率
+for (const profit of [40000, 60000, 90000, 120000, 200000]) {
+  for (const assets of [400000, 600000, 800000, 1000000]) {
+    for (const debtPct of [40, 50, 60]) {
+      const equity = (assets * (100 - debtPct)) / 100
+      const roa = (profit / assets) * 100
+      const roe = (profit / equity) * 100
+      if (!Number.isInteger(roa * 100) || !Number.isInteger(roe * 100)) continue
+      add(`bafs_ra5_${profit}_${assets}_${debtPct}`, T.ratios, FW.quant, 'hard',
+        [`某公司淨利 ${fmt(profit)} 元、總資產 ${fmt(assets)} 元，負債佔總資產 ${debtPct}%。其【權益回報率】是多少？`,
+         `A company earns \\$${fmt(profit)} net profit on total assets of \\$${fmt(assets)}, with liabilities at ${debtPct}% of assets. What is its RETURN ON EQUITY?`],
+        [n(`${round(roe, 2)}%`), n(`${round(roa, 2)}%`), n(`${round((profit / (assets * debtPct / 100)) * 100, 2)}%`), n(`${round((equity / profit) * 100, 1)}%`)],
+        [`權益 = 總資產 − 負債 = ${fmt(assets)} × ${100 - debtPct}% = ${fmt(equity)} 元。權益回報率 = 淨利 ÷ 權益 × 100% = ${fmt(profit)} ÷ ${fmt(equity)} × 100% = ${round(roe, 2)}%。它高於資產回報率（${round(roa, 2)}%），因為部分資產由借款支持 —— 這就是財務槓桿：借款放大股東的回報，但同時放大虧損的風險，槓桿愈高波動愈大。陷阱：${round(roa, 2)}% 是資產回報率，分母用了總資產；${round((profit / (assets * debtPct / 100)) * 100, 2)}% 用了負債作分母；最後一項分子分母倒轉。`,
+         `Equity = total assets − liabilities = \\$${fmt(assets)} × ${100 - debtPct}% = \\$${fmt(equity)}. Return on equity = net profit ÷ equity × 100% = \\$${fmt(profit)} ÷ \\$${fmt(equity)} × 100% = ${round(roe, 2)}%. It exceeds the return on assets of ${round(roa, 2)}% because part of the asset base is funded by borrowing — this is financial leverage: debt magnifies shareholders' returns but equally magnifies losses, so higher gearing means greater volatility. Traps: ${round(roa, 2)}% is return on assets, using total assets as denominator; ${round((profit / (assets * debtPct / 100)) * 100, 2)}% uses liabilities; the last inverts the fraction.`])
+    }
+  }
+}
+
+// PF5 — 個人理財：定期供款的本金總額與利息
+// 題幹明言不計利息，故利率並不進入題面。首版仍然按利率迭代，兩個利率值
+// 出了完全相同的題幹，被撞題閘攔下。改為只按供款額與年期迭代，並加闊兩者。
+for (const monthly of [300, 500, 800, 1000, 1500, 2000, 2500, 3000]) {
+  // years 由 2 起：years = 1 時「只算一年」這個誘答會等於答案本身。
+  for (const years of [2, 3, 4, 5, 6, 8, 10]) {
+    {
+      const principal = monthly * 12 * years
+      add(`bafs_pf5_${monthly}_${years}`, T.personalFin, FW.finance, 'medium',
+        [`某人每月儲蓄 ${fmt(monthly)} 元，持續 ${years} 年。單計本金（不計利息），${years} 年後累積的本金是多少？`,
+         `Someone saves \\$${fmt(monthly)} a month for ${years} years. Ignoring interest, what total principal has accumulated?`],
+        [money(fmt(principal)), money(fmt(monthly * years)), money(fmt(monthly * 12)), money(fmt(monthly * 12 * (years + 1)))],
+        [`本金總額 = 每月供款 × 12 個月 × 年數 = ${fmt(monthly)} × 12 × ${years} = ${fmt(principal)} 元。定期定額儲蓄的威力在於【時間】：即使每月金額不大，累積年期一長，本金本身已相當可觀，再加上複利效應更為明顯。陷阱：${fmt(monthly * years)} 元漏了乘 12 個月；${fmt(monthly * 12)} 元只算了一年；${fmt(monthly * 12 * (years + 1))} 元把年期多數了一年。`,
+         `Total principal = monthly amount × 12 months × years = \\$${fmt(monthly)} × 12 × ${years} = \\$${fmt(principal)}. The power of regular saving lies in TIME: even modest monthly amounts build a substantial principal over enough years, before compounding is taken into account at all. Traps: \\$${fmt(monthly * years)} omits the twelve months; \\$${fmt(monthly * 12)} covers only one year; \\$${fmt(monthly * 12 * (years + 1))} counts one year too many.`])
+    }
+  }
+}
+
+// FM6 — 財務管理：現金流量淨額
+for (const inflow of [150000, 250000, 400000, 600000]) {
+  for (const outPct of [40, 60, 75, 90]) {
+    for (const opening of [20000, 50000, 100000]) {
+      const outflow = (inflow * outPct) / 100
+      const net = inflow - outflow
+      const closing = opening + net
+      add(`bafs_fm6_${inflow}_${outPct}_${opening}`, T.finMgmt, FW.finance, 'medium',
+        [`某公司本月現金流入 ${fmt(inflow)} 元、現金流出 ${fmt(outflow)} 元，月初現金結餘 ${fmt(opening)} 元。月底現金結餘是多少？`,
+         `A company has cash inflows of \\$${fmt(inflow)} and outflows of \\$${fmt(outflow)} in a month, opening with \\$${fmt(opening)}. What is the closing cash balance?`],
+        [money(fmt(closing)), money(fmt(net)), money(fmt(opening + inflow)), money(fmt(inflow - outflow - opening))],
+        [`現金流量淨額 = 流入 − 流出 = ${fmt(inflow)} − ${fmt(outflow)} = ${fmt(net)} 元。月底結餘 = 月初結餘 ＋ 淨額 = ${fmt(opening)} ＋ ${fmt(net)} = ${fmt(closing)} 元。要留意「有利潤」與「有現金」是兩回事：賒銷計入利潤但未收到現金，因此不少賺錢的公司仍會因現金周轉不靈而倒閉 —— 這正是現金流量表獨立於損益表的理由。陷阱：${fmt(net)} 元漏了月初結餘；${fmt(opening + inflow)} 元漏了流出；最後一項把月初結餘減去而非加上。`,
+         `Net cash flow = inflows − outflows = \\$${fmt(inflow)} − \\$${fmt(outflow)} = \\$${fmt(net)}. Closing balance = opening balance + net flow = \\$${fmt(opening)} + \\$${fmt(net)} = \\$${fmt(closing)}. Note that being profitable and having cash are different things: credit sales count as profit before any cash arrives, which is why profitable companies still fail through cash shortages — and why the cash flow statement stands apart from the income statement. Traps: \\$${fmt(net)} omits the opening balance; \\$${fmt(opening + inflow)} omits the outflows; the last subtracts the opening balance instead of adding it.`])
+    }
+  }
+}
+
+// FS3 — 財務報表：資產負債表恆等式的應用
+for (const assets of [500000, 800000, 1200000, 2000000]) {
+  for (const liabPct of [30, 45, 60]) {
+    for (const profit of [50000, 80000, 120000]) {
+      const liab = (assets * liabPct) / 100
+      const equity = assets - liab
+      const openEquity = equity - profit
+      if (openEquity <= 0) continue
+      add(`bafs_fs3_${assets}_${liabPct}_${profit}`, T.statements, FW.acct, 'hard',
+        [`某企業年末總資產 ${fmt(assets)} 元、總負債 ${fmt(liab)} 元。若本年度淨利為 ${fmt(profit)} 元且年內並無資本投入或提取，年初的業主權益是多少？`,
+         `A business ends the year with total assets of \\$${fmt(assets)} and liabilities of \\$${fmt(liab)}. If net profit was \\$${fmt(profit)} with no capital introduced or withdrawn, what was the opening owner's equity?`],
+        [money(fmt(openEquity)), money(fmt(equity)), money(fmt(equity + profit)), money(fmt(assets - profit))],
+        [`先由會計等式求年末權益：資產 − 負債 = ${fmt(assets)} − ${fmt(liab)} = ${fmt(equity)} 元。年內既無資本投入或提取，權益的變化全部來自淨利，故年初權益 = 年末權益 − 淨利 = ${fmt(equity)} − ${fmt(profit)} = ${fmt(openEquity)} 元。這條反向推算正是資產負債表與損益表的連結點：損益表的結果，會經權益流入資產負債表。陷阱：${fmt(equity)} 元是【年末】權益；${fmt(equity + profit)} 元把淨利加上而非減去；${fmt(assets - profit)} 元漏了扣除負債。`,
+         `First use the accounting equation for closing equity: assets − liabilities = \\$${fmt(assets)} − \\$${fmt(liab)} = \\$${fmt(equity)}. With no capital introduced or withdrawn, the whole change in equity is the profit, so opening equity = closing equity − profit = \\$${fmt(equity)} − \\$${fmt(profit)} = \\$${fmt(openEquity)}. This backwards step is exactly where the balance sheet and the income statement connect: the result of the income statement flows into the balance sheet through equity. Traps: \\$${fmt(equity)} is the CLOSING equity; \\$${fmt(equity + profit)} adds the profit instead of subtracting; \\$${fmt(assets - profit)} omits the liabilities.`])
     }
   }
 }
