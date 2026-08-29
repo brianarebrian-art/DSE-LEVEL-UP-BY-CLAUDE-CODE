@@ -57,7 +57,7 @@ const loaders: Record<string, Loader> = {
   },
   biology: async () => {
     const [base, bank] = await Promise.all([import('./biology'), import('./applied-banks')])
-    return [...base.biologyQuestions, ...bank.biologyBankQuestions]
+    return [...base.biologyQuestions, ...bank.biologyBankQuestions, ...bank.biologyBank2Questions]
   },
   english: async () => {
     const [base, reviewed] = await Promise.all([import('./english'), import('./english-reviewed')])
@@ -105,7 +105,10 @@ const loaders: Record<string, Loader> = {
     return [...base.economicsQuestions, ...ebank.economicsBankQuestions, ...reviewed.economicsReviewedQuestions,
       ...floor1.economicsFloorBatch1Questions, ...floor2.economicsFloorBatch2Questions]
   },
-  geography: async () => (await import('./geography')).geographyQuestions,
+  geography: async () => {
+    const [base, bank] = await Promise.all([import('./geography'), import('./applied-banks')])
+    return [...base.geographyQuestions, ...bank.geographyBankQuestions]
+  },
   history: async () => {
     // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。
     // 補底 MC —— brian 2026-08-28 逐題審批。六個當時只得 1–4 條的課題各補至 10 條。

@@ -42,7 +42,7 @@ import { economicsFloorBatch2Questions } from './economics-floor-batch2'
 import { englishReviewedQuestions } from './english-reviewed'
 import { bafsReviewedQuestions } from './bafs-reviewed'
 import { bafsBankQuestions } from './bafs-bank'
-import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestions, peBankQuestions, biologyBankQuestions, musicBankQuestions, ictBankQuestions } from './applied-banks'
+import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestions, peBankQuestions, biologyBankQuestions, musicBankQuestions, ictBankQuestions, geographyBankQuestions, biologyBank2Questions } from './applied-banks'
 import { geographyQuestions, geographyTopics } from './geography'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
@@ -102,7 +102,7 @@ const banks: Record<string, SubjectBank> = {
   m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
-  biology: { questions: [...biologyQuestions, ...biologyBankQuestions], topics: biologyTopics },
+  biology: { questions: [...biologyQuestions, ...biologyBankQuestions, ...biologyBank2Questions], topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions], topics: englishTopics },
   ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions], topics: ictTopics },
   chinese: {
@@ -119,7 +119,7 @@ const banks: Record<string, SubjectBank> = {
   },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
-  geography: { questions: geographyQuestions, topics: geographyTopics },
+  geography: { questions: [...geographyQuestions, ...geographyBankQuestions], topics: geographyTopics },
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: chineseHistoryQuestions, topics: chineseHistoryTopics },
   ths: { questions: [...thsQuestions, ...thsBankQuestions], topics: thsTopics },

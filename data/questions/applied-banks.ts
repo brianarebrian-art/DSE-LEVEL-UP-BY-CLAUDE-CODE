@@ -433,3 +433,134 @@ for (const mb of [10, 25, 50, 100, 200]) {
 }
 
 export const ictBankQuestions: Question[] = ict.bank
+
+// ── 地理：可構造的計算型內容 ──────────────────────────────────────────────
+//
+// 地理的常規課題（天氣與氣候、河流與海岸、城市發展、板塊與自然災害）各自
+// 都有一部分答案由公式唯一決定：氣溫遞減率、河流流量、人口密度與增長、
+// 地圖比例尺與坡度。這些屬 correct-by-construction，可用本工廠出題；
+// 其餘判斷型內容（地理過程的因果推論、環境管理的權衡）則不適用。
+
+const geoT = {
+  weather: { id: 'weather_climate', zh: '天氣與氣候', en: 'Weather & Climate' },
+  rivers: { id: 'rivers_coasts', zh: '河流與海岸環境', en: 'River & Coastal Environments' },
+  urban: { id: 'urban', zh: '城市發展', en: 'Urban Development' },
+  plates: { id: 'plate_hazards', zh: '板塊與自然災害', en: 'Plates & Natural Hazards' },
+} satisfies Record<string, TopicMeta>
+const geoFW = {
+  data: { id: 'data', zh: '數據判讀', en: 'Data handling', emoji: '📊' },
+  process: { id: 'process', zh: '過程分析', en: 'Process analysis', emoji: '🔗' },
+} satisfies Record<string, FwMeta>
+const geo = createBank('geography')
+
+// GE1 — 氣溫遞減率：每上升 100 米，氣溫下降約 0.6 °C
+for (const t0 of [20, 24, 26, 28, 30]) {
+  for (const h of [500, 1000, 1500, 2000, 2500, 3000]) {
+    const drop = (h / 100) * 0.6
+    const t = t0 - drop
+    if (!Number.isInteger(t * 10)) continue
+    geo.add(`geob_ge1_${t0}_${h}`, geoT.weather, geoFW.data, 'medium',
+      [`山腳的氣溫為 ${t0} °C。若氣溫遞減率為每上升 100 米下降 0.6 °C，海拔 ${h} 米處的氣溫約為多少？`,
+       `The temperature at the foot of a mountain is ${t0} °C. With a lapse rate of 0.6 °C per 100 m, what is the temperature at ${h} m above it?`],
+      [n(`${round(t, 1)} °C`), n(`${round(t0 + drop, 1)} °C`), n(`${round(t0 - h * 0.6, 1)} °C`), n(`${round(drop, 1)} °C`)],
+      [`上升 ${h} 米即 ${h / 100} 個 100 米，氣溫共下降 ${h / 100} × 0.6 = ${round(drop, 1)} °C，故該處氣溫為 ${t0} − ${round(drop, 1)} = ${round(t, 1)} °C。氣溫隨高度下降，是因為空氣上升時氣壓降低而膨脹，膨脹做功消耗內能。留意這是【對流層】內的規律，平流層因臭氧吸收紫外線，氣溫反而隨高度上升。陷阱：${round(t0 + drop, 1)} °C 方向寫反；${round(t0 - h * 0.6, 1)} °C 漏了除以 100；${round(drop, 1)} °C 只算了下降幅度而未減去。`,
+       `Rising ${h} m is ${h / 100} intervals of 100 m, a total fall of ${h / 100} × 0.6 = ${round(drop, 1)} °C, so the temperature is ${t0} − ${round(drop, 1)} = ${round(t, 1)} °C. Temperature falls with height because rising air meets lower pressure and expands, and that expansion consumes internal energy. This holds in the TROPOSPHERE; in the stratosphere ozone absorbs ultraviolet and temperature rises with height instead. Traps: ${round(t0 + drop, 1)} °C reverses the direction; ${round(t0 - h * 0.6, 1)} °C omits the division by 100; ${round(drop, 1)} °C is the fall itself, not subtracted.`])
+  }
+}
+
+// GE2 — 河流流量 = 截面積 × 流速
+for (const w of [10, 15, 20, 25, 40]) {
+  for (const d of [1, 2, 3, 4]) {
+    for (const v of [0.5, 1, 1.5, 2]) {
+      const area = w * d, q = area * v
+      if (!Number.isInteger(q * 10)) continue
+      geo.add(`geob_ge2_${w}_${d}_${String(v).replace('.', 'p')}`, geoT.rivers, geoFW.data, 'medium',
+        [`某河道寬 ${w} 米、平均水深 ${d} 米，平均流速為每秒 ${v} 米。其流量是每秒多少立方米？`,
+         `A river channel is ${w} m wide with a mean depth of ${d} m and a mean velocity of ${v} m per second. What is its discharge in cubic metres per second?`],
+        [n(`${round(q, 1)} m³/s`), n(`${round(area, 1)} m³/s`), n(`${round(w + d + v, 1)} m³/s`), n(`${round(w * v, 1)} m³/s`)],
+        [`流量 = 截面積 × 流速。截面積 = 寬 × 深 = ${w} × ${d} = ${area} 平方米，故流量 = ${area} × ${v} = ${round(q, 1)} 立方米每秒。流量是河流侵蝕與搬運能力的關鍵指標：暴雨後流量急升，河流才能搬動平時搬不動的巨礫。陷阱：${round(area, 1)} m³/s 只算了截面積，漏了流速；${round(w + d + v, 1)} m³/s 把三個量相加；${round(w * v, 1)} m³/s 漏了水深。`,
+         `Discharge = cross-sectional area × velocity. The area is width × depth = ${w} × ${d} = ${area} m², so discharge = ${area} × ${v} = ${round(q, 1)} m³/s. Discharge is the key control on a river's erosive and transport capacity: only when discharge surges after heavy rain can a river move boulders it cannot shift at normal flow. Traps: ${round(area, 1)} m³/s is the area alone; ${round(w + d + v, 1)} m³/s adds the three quantities; ${round(w * v, 1)} m³/s omits the depth.`])
+    }
+  }
+}
+
+// GE3 — 人口密度與人口增長率
+for (const popK of [50, 120, 300, 480, 750]) {
+  for (const area of [20, 25, 40, 60]) {
+    const pop = popK * 1000
+    const density = pop / area
+    if (!Number.isInteger(density)) continue
+    geo.add(`geob_ge3_${popK}_${area}`, geoT.urban, geoFW.data, 'easy',
+      [`某市區人口為 ${fmt(pop)} 人，面積為 ${area} 平方公里。其人口密度是每平方公里多少人？`,
+       `An urban area has a population of ${fmt(pop)} in ${area} km². What is its population density per km²?`],
+      [n(`${fmt(density)}`), n(`${fmt(pop)}`), n(`${round(area / (pop / 1000), 4)}`), n(`${fmt(pop * area)}`)],
+      [`人口密度 = 人口 ÷ 面積 = ${fmt(pop)} ÷ ${area} = ${fmt(density)} 人／平方公里。密度只反映【平均】分佈，並不顯示內部差異 —— 同一個行政區之內，市中心與郊野的密度可以相差數十倍，因此判讀密度數據時要留意統計單位的大小。陷阱：${fmt(pop)} 只抄了總人口；${round(area / (pop / 1000), 4)} 把分子分母倒轉；${fmt(pop * area)} 改成了相乘。`,
+       `Population density = population ÷ area = ${fmt(pop)} ÷ ${area} = ${fmt(density)} per km². Density describes only the AVERAGE distribution and hides internal variation — within one administrative district, centre and periphery can differ by tens of times, so the size of the reporting unit matters when reading density data. Traps: ${fmt(pop)} copies the total population; ${round(area / (pop / 1000), 4)} inverts the fraction; ${fmt(pop * area)} multiplies instead.`])
+  }
+}
+
+// GE4 — 地震震級：每升一級，釋放能量約增為 32 倍
+for (const m1 of [4, 5, 6, 7]) {
+  for (const diff of [1, 2]) {
+    const m2 = m1 + diff
+    const times = 32 ** diff
+    geo.add(`geob_ge4_${m1}_${diff}`, geoT.plates, geoFW.process, 'hard',
+      [`黎克特制震級每上升一級，地震所釋放的能量約增為 32 倍。一次 ${m2} 級地震所釋放的能量，約為 ${m1} 級地震的多少倍？`,
+       `On the Richter scale each whole unit represents about 32 times more energy released. About how many times more energy does a magnitude ${m2} earthquake release than a magnitude ${m1} one?`],
+      // 兩個問題一次過修好：
+      // ① 選項含中文（「約…倍」），須明寫雙語對，不能用 n()。
+      // ② diff = 1 時「把指數當成乘法」的誘答 32×1 恰好等於答案 32¹，
+      //    八條 diff = 1 的題全組被丟棄 —— 而一級之差正是最常考的問法。
+      //    改用與化學 BD5 相同的候選去重寫法。
+      [[`約 ${fmt(times)} 倍`, `about ${fmt(times)} times`],
+       ...[32 * diff, 10 ** diff, 10 * diff, 32 * (diff + 1)]
+         .filter((v, j, arr) => v !== times && arr.indexOf(v) === j)
+         .slice(0, 3)
+         .map((v) => [`約 ${fmt(v)} 倍`, `about ${fmt(v)} times`] as [string, string])],
+      [`震級相差 ${diff} 級，能量之比為 $32^{${diff}} = ${fmt(times)}$ 倍。黎克特制是【對數】刻度：級數相加，能量相乘。所以 ${m1} 級與 ${m2} 級在數字上只差 ${diff}，破壞力卻相差數十以至上千倍 —— 這正是傳媒報道震級時容易令公眾低估差異的原因。誘答分別對應：把指數關係當成乘法、用了 10 而非 32（10 倍是【振幅】之比，32 倍才是【能量】之比）、以及只看級數之差。`,
+       `A difference of ${diff} magnitude units means an energy ratio of $32^{${diff}} = ${fmt(times)}$. The Richter scale is LOGARITHMIC: magnitudes add while energies multiply. So magnitudes ${m1} and ${m2} differ by only ${diff} on paper yet by tens or thousands of times in destructive power — which is why reported magnitudes so easily lead the public to underestimate the difference. The distractors correspond to treating the exponential as multiplication, using 10 rather than 32 — tenfold is the ratio of AMPLITUDE while 32-fold is the ratio of ENERGY — and reading only the difference in magnitude.`])
+  }
+}
+
+export const geographyBankQuestions: Question[] = geo.bank
+
+// ── 生物：可構造的計算型內容 ──────────────────────────────────────────────
+
+const bio2T = {
+  cells: { id: 'cells', zh: '細胞', en: 'Cells' },
+  photo: { id: 'photosynthesis', zh: '光合作用', en: 'Photosynthesis' },
+  body: { id: 'human_body', zh: '人體系統', en: 'Human Body Systems' },
+} satisfies Record<string, TopicMeta>
+const bio2 = createBank('biology')
+
+// BI4 — 顯微鏡的總放大倍率與實際大小
+for (const eye of [5, 10, 15]) {
+  for (const obj of [4, 10, 40, 100]) {
+    const mag = eye * obj
+    for (const imgMm of [20, 40]) {
+      const actual = (imgMm * 1000) / mag
+      if (!Number.isInteger(actual)) continue
+      bio2.add(`bio2_bi4_${eye}_${obj}_${imgMm}`, bio2T.cells, bioFW.data, 'medium',
+        [`顯微鏡目鏡為 ×${eye}、物鏡為 ×${obj}。某細胞在視野中的長度為 ${imgMm} 毫米，其實際長度約為多少微米？（1 毫米 = 1000 微米）`,
+         `A microscope has a ×${eye} eyepiece and a ×${obj} objective. A cell appears ${imgMm} mm long. What is its actual length in micrometres? (1 mm = 1000 µm.)`],
+        [n(`${fmt(actual)} µm`), n(`${fmt(imgMm * mag)} µm`), n(`${fmt(mag)} µm`), n(`${fmt(imgMm * 1000)} µm`)],
+        [`總放大倍率 = 目鏡 × 物鏡 = ${eye} × ${obj} = ${mag} 倍。實際大小 = 影像大小 ÷ 放大倍率 = ${imgMm} 毫米 ÷ ${mag} = ${round(imgMm / mag, 4)} 毫米 = ${fmt(actual)} 微米。兩個易錯位：放大倍率是兩個鏡的【乘積】而非和；量度值要由毫米換成微米（乘 1000）。陷阱：${fmt(imgMm * mag)} µm 乘了放大倍率而非除；${fmt(mag)} µm 只抄了倍率；${fmt(imgMm * 1000)} µm 完全沒有除以倍率。`,
+         `Total magnification = eyepiece × objective = ${eye} × ${obj} = ${mag}. Actual size = image size ÷ magnification = ${imgMm} mm ÷ ${mag} = ${round(imgMm / mag, 4)} mm = ${fmt(actual)} µm. Two easy slips: magnification is the PRODUCT of the two lenses, not the sum; and the measurement must be converted from millimetres to micrometres by multiplying by 1000. Traps: ${fmt(imgMm * mag)} µm multiplies by the magnification instead of dividing; ${fmt(mag)} µm copies the magnification; ${fmt(imgMm * 1000)} µm never divides at all.`])
+    }
+  }
+}
+
+// BI5 — 表面積與體積之比
+for (const s of [1, 2, 3, 4, 5, 6]) {
+  const sa = 6 * s * s, vol = s ** 3
+  const ratio = sa / vol
+  if (!Number.isInteger(ratio * 100)) continue
+  bio2.add(`bio2_bi5_${s}`, bio2T.cells, bioFW.data, 'hard',
+    [`一個邊長 ${s} 毫米的立方體細胞模型，其表面積與體積之比是多少？`,
+     `A cube-shaped cell model has edges of ${s} mm. What is its surface area to volume ratio?`],
+    [n(`${round(ratio, 2)} : 1`), n(`${round(vol / sa, 3)} : 1`), n(`${fmt(sa)} : 1`), n(`${fmt(vol)} : 1`)],
+    [`表面積 = $6s^2 = 6 \\times ${s}^2 = ${sa}$ 平方毫米；體積 = $s^3 = ${vol}$ 立方毫米；比值 = ${sa} ÷ ${vol} = ${round(ratio, 2)}。細胞愈大，這個比值愈【小】—— 表面積按平方增長而體積按立方增長，物質交換的面積跟不上需求，這正是細胞不能無限長大、以及大型生物需要肺、腸絨毛等摺疊結構增加表面積的原因。陷阱：${round(vol / sa, 3)} : 1 把分子分母倒轉；${fmt(sa)} : 1 與 ${fmt(vol)} : 1 分別只取了表面積與體積。`,
+     `Surface area = $6s^2 = 6 \\times ${s}^2 = ${sa}$ mm², volume = $s^3 = ${vol}$ mm³, so the ratio is ${sa} ÷ ${vol} = ${round(ratio, 2)}. The larger the cell, the SMALLER this ratio: surface area grows as the square while volume grows as the cube, so the exchange surface cannot keep pace with demand. This is why cells cannot grow indefinitely, and why large organisms need folded structures such as lungs and intestinal villi to raise their surface area. Traps: ${round(vol / sa, 3)} : 1 inverts the ratio; ${fmt(sa)} : 1 and ${fmt(vol)} : 1 give only the surface area and the volume.`])
+}
+
+export const biologyBank2Questions: Question[] = bio2.bank
