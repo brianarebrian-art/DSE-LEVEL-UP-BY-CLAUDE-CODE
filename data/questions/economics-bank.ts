@@ -562,6 +562,92 @@ for (const [pe, qe] of [[50, 200], [60, 300], [80, 400], [100, 250]] as [number,
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 第六批母模板 —— 推向 1,000（2026-08-29）
+// 補強前最薄：市場失靈 33、國際貿易 40、基礎概念 50、生產可能線 51、
+// 市場效率 56、宏觀計算（高階）57、宏觀經濟 58、彈性 66。
+// 術語紅線：public good 一律譯「共用品」。
+// ═══════════════════════════════════════════════════════════════════════════
+
+// MF2 — 補貼令價格下跌、成交量上升
+for (const sub of [2, 4, 5, 8, 10]) {
+  for (const q0 of [100, 200, 400]) {
+    for (const dq of [20, 40]) {
+      const cost = sub * (q0 + dq)
+      add(`econ_mf2_${sub}_${q0}_${dq}`, T.marketFailure, FW.quant, 'medium',
+        [`政府對某貨品每單位補貼 ${sub} 元，成交量由 ${efmt(q0)} 單位升至 ${efmt(q0 + dq)} 單位。政府需要支付的補貼總額是多少？`,
+         `A subsidy of \\$${sub} per unit raises the quantity traded from ${efmt(q0)} to ${efmt(q0 + dq)} units. What is the government's total subsidy bill?`],
+        [money(efmt(cost)), money(efmt(sub * q0)), money(efmt(sub * dq)), money(efmt(q0 + dq))],
+        [`補貼總額 = 每單位補貼 × 【課後】成交量 = ${sub} × ${efmt(q0 + dq)} = ${efmt(cost)} 元。要用補貼【之後】的成交量，因為補貼適用於每一宗實際發生的交易。補貼常用於有正外部性的貨品（如疫苗、教育）：私人需求低於社會最適水平，補貼把兩者拉近。陷阱：${efmt(sub * q0)} 元用了補貼前的成交量；${efmt(sub * dq)} 元只算了增加的部分；${efmt(q0 + dq)} 元只抄了成交量。`,
+         `The bill is the per-unit subsidy times the quantity traded AFTER the subsidy: \\$${sub} × ${efmt(q0 + dq)} = \\$${efmt(cost)}. The post-subsidy quantity is the right one because the subsidy applies to every transaction that actually occurs. Subsidies are typically used where positive externalities exist — vaccination, education — since private demand falls short of the social optimum and the subsidy closes the gap. Traps: \\$${efmt(sub * q0)} uses the pre-subsidy quantity; \\$${efmt(sub * dq)} counts only the increase; \\$${efmt(q0 + dq)} copies the quantity.`])
+    }
+  }
+}
+
+// MF3 — 共用品的兩個特徵
+;([['國防', 'national defence'], ['街燈', 'street lighting'], ['海上燈塔', 'a lighthouse'],
+  ['公共廣播', 'public broadcasting'], ['防洪堤壩', 'a flood barrier'],
+  ['空氣污染監測', 'air-quality monitoring'], ['公海航道標記', 'open-sea navigation markers'],
+  ['疫症防控體系', 'a disease-control system']] as [string, string][])
+  .forEach(([zh, en], i) => {
+    add(`econ_mf3_${i}`, T.marketFailure, FW.scarcity, 'medium',
+      [`${zh}屬於經濟學上的「共用品」。共用品的兩個特徵是甚麼？`,
+       `${en} is a public good in economic terms. What two features define a public good?`],
+      [['非排他性與非競爭性 —— 難以排除他人使用，且一人使用不減少他人可用的份量',
+        'non-excludability and non-rivalry — others cannot easily be kept out, and one person\'s use does not reduce what is left for others'],
+       ['排他性與競爭性 —— 可以排除他人使用，且一人使用會減少他人可用的份量',
+        'excludability and rivalry — others can be kept out, and one person\'s use reduces what is left'],
+       ['非排他性與競爭性 —— 難以排除他人使用，但一人使用會顯著減少他人可用的份量',
+        'non-excludability with rivalry — others cannot be kept out, but one person\'s use markedly reduces what is left'],
+       ['由政府提供且完全免費 —— 只要是政府出資的服務便屬共用品',
+        'provided by government free of charge — any government-funded service is a public good']],
+      [`共用品有兩個特徵：非排他性（難以阻止不付費者使用）與非競爭性（一人使用不減少他人可用的份量）。正因為非排他，個人有誘因坐享其成而不付費，即「搭便車問題」，令市場提供的數量低於社會最適水平 —— 這是市場失靈的一種，也是政府提供共用品的理由。第三項描述的是【共有資源】（如公海漁業）：非排他但有競爭性，因而出現過度使用。第四項把「由政府提供」誤當成定義 —— 定義在於物品本身的兩個性質，而非誰出錢：政府亦提供大量非共用品（如公立醫院的病床就有競爭性）。`,
+       `A public good is non-excludable — non-payers cannot easily be kept out — and non-rival — one person's use does not reduce the amount available to others. Non-excludability gives individuals an incentive to enjoy the good without paying, the free-rider problem, so the market supplies less than the social optimum. This is a form of market failure and the reason governments provide such goods. The third option describes a COMMON RESOURCE, such as an open-sea fishery: non-excludable but rival, hence over-use. The fourth mistakes government provision for the definition — what matters is the two properties of the good itself, not who pays, and governments also supply many non-public goods, a hospital bed being clearly rival.`])
+  })
+
+// TR4 — 匯率換算
+for (const [rate, cur, curEn] of [[7.8, '港元兌 1 美元', 'HKD per USD'], [1.1, '美元兌 1 歐元', 'USD per EUR'],
+  [0.9, '歐元兌 1 美元', 'EUR per USD'], [6.5, '港元兌 100 日圓', 'HKD per 100 JPY']] as [number, string, string][]) {
+  for (const amt of [200, 500, 1000, 2000]) {
+    const conv = rate * amt
+    if (!Number.isInteger(conv * 10)) continue
+    add(`econ_tr4_${String(rate).replace('.', 'p')}_${amt}`, T.trade, FW.quant, 'medium',
+      [`匯率為 ${rate} ${cur}。兌換 ${efmt(amt)} 個單位的外幣，需要多少本幣？`,
+       `The exchange rate is ${rate} ${curEn}. How much local currency is needed to buy ${efmt(amt)} units of the foreign currency?`],
+      [n(`$${round(conv, 1)}$`), n(`$${round(amt / rate, 2)}$`), n(`$${round(amt, 1)}$`), n(`$${round(amt + rate, 1)}$`)],
+      [`匯率 ${rate} 表示 1 個單位外幣值 ${rate} 個單位本幣，故兌換 ${efmt(amt)} 個單位需要 ${efmt(amt)} × ${rate} = ${round(conv, 1)} 個單位本幣。誤解換算方向是本課題最常見的失分位：先問清楚「一個單位甚麼，值幾多個單位甚麼」。本幣貶值（匯率數字上升）令出口變平、進口變貴。陷阱：$${round(amt / rate, 2)}$ 把方向倒轉；$${round(amt, 1)}$ 完全沒有換算；$${round(amt + rate, 1)}$ 把匯率當成手續費加上去。`,
+       `A rate of ${rate} means one unit of foreign currency is worth ${rate} units of local currency, so ${efmt(amt)} units cost ${efmt(amt)} × ${rate} = ${round(conv, 1)}. Getting the direction wrong is where this topic is most often lost, so establish first which currency the rate is quoted per. A depreciating local currency — a rising number here — makes exports cheaper and imports dearer. Traps: $${round(amt / rate, 2)}$ inverts the direction; $${round(amt, 1)}$ makes no conversion; $${round(amt + rate, 1)}$ adds the rate as if it were a fee.`])
+  }
+}
+
+// MA5 — 通脹率（由消費物價指數計算）
+for (const base of [100, 105, 110, 120, 125]) {
+  for (const pct of [2, 4, 5, 8, 10]) {
+    const now = (base * (100 + pct)) / 100
+    if (!Number.isInteger(now * 10)) continue
+    add(`econ_ma5_${base}_${pct}`, T.macroCalc, FW.macro, 'medium',
+      [`某年消費物價指數為 ${base}，翌年升至 ${round(now, 1)}。該年的通脹率是多少？`,
+       `The consumer price index is ${base} one year and ${round(now, 1)} the next. What is the inflation rate?`],
+      [n(`${pct}%`), n(`${round(now - base, 1)}%`), n(`${round(now, 1)}%`), n(`${round(((now - base) / now) * 100, 2)}%`)],
+      [`通脹率 = 指數變化 ÷ 【上一年】指數 × 100% = $\\dfrac{${round(now, 1)} - ${base}}{${base}} \\times 100\\% = ${pct}\\%$。分母必須是上一年的指數（基期），因為通脹率量度的是相對於前一期的變化。留意指數本身不是通脹率 —— 指數 ${round(now, 1)} 只表示物價相對基年的水平。陷阱：${round(now - base, 1)}% 只算了指數的絕對變化，未除以基數；${round(now, 1)}% 直接抄了指數；${round(((now - base) / now) * 100, 2)}% 用了【本年】指數作分母。`,
+       `Inflation = change in index ÷ the PREVIOUS year's index × 100% = $\\frac{${round(now, 1)} - ${base}}{${base}} \\times 100\\% = ${pct}\\%$. The denominator must be the earlier index, since inflation measures change relative to the previous period. Note that the index itself is not an inflation rate — ${round(now, 1)} merely states the price level relative to the base year. Traps: ${round(now - base, 1)}% is the absolute change without dividing; ${round(now, 1)}% copies the index; ${round(((now - base) / now) * 100, 2)}% uses the current index as denominator.`])
+  }
+}
+
+// MA6 — 實質利率 = 名義利率 − 通脹率
+for (const nom of [2, 3, 4, 5, 6, 8]) {
+  for (const inf of [1, 2, 3, 5, 7]) {
+    const real = nom - inf
+    if (real === 0) continue
+    add(`econ_ma6_${nom}_${inf}`, T.macroCalc, FW.macro, 'hard',
+      [`名義利率為 ${nom}%，同期通脹率為 ${inf}%。實質利率約為多少？`,
+       `The nominal interest rate is ${nom}% and inflation over the same period is ${inf}%. What is the approximate real interest rate?`],
+      [n(`${real}%`), n(`${nom + inf}%`), n(`${nom}%`), n(`${round((nom / inf) * 100, 1)}%`)],
+      [`實質利率 ≈ 名義利率 − 通脹率 = ${nom}% − ${inf}% = ${real}%。實質利率反映的是【購買力】的增長：名義上多了 ${nom}%，但物價同時上升 ${inf}%，真正能多買的東西只增加約 ${real}%。${real < 0 ? '此處實質利率為負，代表存款的購買力其實在下降 —— 通脹高於利率時，儲蓄者實際上在蝕本。' : '實質利率為正，儲蓄者的購買力才有真正增長。'}陷阱：${nom + inf}% 把兩者相加；${nom}% 忽略了通脹；${round((nom / inf) * 100, 1)}% 用了相除。`,
+       `The real rate is approximately the nominal rate minus inflation: ${nom}% − ${inf}% = ${real}%. It measures the growth in PURCHASING POWER: ${nom}% more in money terms, but with prices up ${inf}%, only about ${real}% more in goods. ${real < 0 ? 'Here the real rate is negative, so the purchasing power of savings is actually falling — when inflation exceeds the interest rate, savers lose in real terms.' : 'A positive real rate means savers genuinely gain purchasing power.'} Traps: ${nom + inf}% adds the two; ${nom}% ignores inflation; ${round((nom / inf) * 100, 1)}% divides.`])
+  }
+}
+
 export const economicsBankQuestions: Question[] = bank
 
 // ── 課題登記（2026-07-28 稽核修正）──────────────────────────────────────────
