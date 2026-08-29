@@ -1,26 +1,26 @@
 {
-  "_meta": {
-    "source": "visual-arts-floor2.json",
-    "subject": "visual-arts",
-    "reviewer": "",
-    "reviewedAt": ""
-  },
-  "decisions": {
-    "floor3_va_fa_01": "pending",
-    "floor3_va_fa_02": "pending",
-    "floor3_va_fa_03": "pending",
-    "floor3_va_fa_04": "pending",
-    "floor3_va_fa_05": "pending",
-    "floor3_va_fa_06": "pending",
-    "floor3_va_fa_07": "pending",
-    "floor3_va_fa_08": "pending",
-    "floor3_va_hc_01": "pending",
-    "floor3_va_hc_02": "pending",
-    "floor3_va_hc_03": "pending",
-    "floor3_va_hc_04": "pending",
-    "floor8_va_hc_05": "pending",
-    "floor8_va_hc_06": "pending",
-    "floor8_va_hc_07": "pending",
-    "floor8_va_hc_08": "pending"
-  }
+ "_meta": {
+  "source": "visual-arts-floor2.json",
+  "subject": "visual-arts",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor3_va_fa_01": "approved",
+  "floor3_va_fa_02": "approved",
+  "floor3_va_fa_03": "approved",
+  "floor3_va_fa_04": "approved",
+  "floor3_va_fa_05": "approved",
+  "floor3_va_fa_06": "approved",
+  "floor3_va_fa_07": "approved",
+  "floor3_va_fa_08": "approved",
+  "floor3_va_hc_01": "approved",
+  "floor3_va_hc_02": "approved",
+  "floor3_va_hc_03": "approved",
+  "floor3_va_hc_04": "approved",
+  "floor8_va_hc_05": "approved",
+  "floor8_va_hc_06": "approved",
+  "floor8_va_hc_07": "approved",
+  "floor8_va_hc_08": "approved"
+ }
 }

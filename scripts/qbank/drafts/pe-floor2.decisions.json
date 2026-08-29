@@ -1,18 +1,18 @@
 {
-  "_meta": {
-    "source": "pe-floor2.json",
-    "subject": "pe",
-    "reviewer": "",
-    "reviewedAt": ""
-  },
-  "decisions": {
-    "floor2_pe_bs_01": "pending",
-    "floor2_pe_bs_02": "pending",
-    "floor2_pe_bs_03": "pending",
-    "floor2_pe_bs_04": "pending",
-    "floor2_pe_bs_05": "pending",
-    "floor2_pe_bs_06": "pending",
-    "floor2_pe_bs_07": "pending",
-    "floor2_pe_bs_08": "pending"
-  }
+ "_meta": {
+  "source": "pe-floor2.json",
+  "subject": "pe",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor2_pe_bs_01": "approved",
+  "floor2_pe_bs_02": "approved",
+  "floor2_pe_bs_03": "approved",
+  "floor2_pe_bs_04": "approved",
+  "floor2_pe_bs_05": "approved",
+  "floor2_pe_bs_06": "approved",
+  "floor2_pe_bs_07": "approved",
+  "floor2_pe_bs_08": "approved"
+ }
 }

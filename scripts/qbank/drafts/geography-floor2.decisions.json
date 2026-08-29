@@ -1,25 +1,25 @@
 {
-  "_meta": {
-    "source": "geography-floor2.json",
-    "subject": "geography",
-    "reviewer": "",
-    "reviewedAt": ""
-  },
-  "decisions": {
-    "floor2_geo_pc_01": "pending",
-    "floor2_geo_pc_02": "pending",
-    "floor2_geo_pc_03": "pending",
-    "floor2_geo_pc_04": "pending",
-    "floor2_geo_pc_05": "pending",
-    "floor2_geo_pc_06": "pending",
-    "floor2_geo_pc_07": "pending",
-    "floor2_geo_dm_01": "pending",
-    "floor2_geo_dm_02": "pending",
-    "floor2_geo_dm_03": "pending",
-    "floor2_geo_dm_04": "pending",
-    "floor2_geo_dm_05": "pending",
-    "floor2_geo_dm_06": "pending",
-    "floor2_geo_dm_07": "pending",
-    "floor2_geo_dm_08": "pending"
-  }
+ "_meta": {
+  "source": "geography-floor2.json",
+  "subject": "geography",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor2_geo_pc_01": "approved",
+  "floor2_geo_pc_02": "approved",
+  "floor2_geo_pc_03": "approved",
+  "floor2_geo_pc_04": "approved",
+  "floor2_geo_pc_05": "approved",
+  "floor2_geo_pc_06": "approved",
+  "floor2_geo_pc_07": "approved",
+  "floor2_geo_dm_01": "approved",
+  "floor2_geo_dm_02": "approved",
+  "floor2_geo_dm_03": "approved",
+  "floor2_geo_dm_04": "approved",
+  "floor2_geo_dm_05": "approved",
+  "floor2_geo_dm_06": "approved",
+  "floor2_geo_dm_07": "approved",
+  "floor2_geo_dm_08": "approved"
+ }
 }

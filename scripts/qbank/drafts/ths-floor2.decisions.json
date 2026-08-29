@@ -1,18 +1,18 @@
 {
-  "_meta": {
-    "source": "ths-floor2.json",
-    "subject": "ths",
-    "reviewer": "",
-    "reviewedAt": ""
-  },
-  "decisions": {
-    "floor7_ths_ca_01": "pending",
-    "floor7_ths_ca_02": "pending",
-    "floor7_ths_ca_03": "pending",
-    "floor7_ths_ca_04": "pending",
-    "floor8_ths_ca_05": "pending",
-    "floor8_ths_ca_06": "pending",
-    "floor8_ths_ca_07": "pending",
-    "floor8_ths_ca_08": "pending"
-  }
+ "_meta": {
+  "source": "ths-floor2.json",
+  "subject": "ths",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor7_ths_ca_01": "approved",
+  "floor7_ths_ca_02": "approved",
+  "floor7_ths_ca_03": "approved",
+  "floor7_ths_ca_04": "approved",
+  "floor8_ths_ca_05": "approved",
+  "floor8_ths_ca_06": "approved",
+  "floor8_ths_ca_07": "approved",
+  "floor8_ths_ca_08": "pending"
+ }
 }

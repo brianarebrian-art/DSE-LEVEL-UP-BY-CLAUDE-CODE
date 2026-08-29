@@ -7,6 +7,11 @@
 // 草稿唔等於已入庫 —— 憲章 §12：機器永不自動入庫。呢度計佢哋，
 // 係為咗計算仲要寫幾多條，唔係當佢哋已經生效。
 //
+// ⚠️ 2026-08-29 修正：舊版把 drafts/ 全部檔案一齊計，包括仲未簽名、
+// 亦唔會即刻入庫嗰批舊草稿，於是 p1_vocab_ref 明明 live 只有 5 條、
+// floor2 草稿只補 3 條（合共 8），舊版仍然報「已達下限」。
+// 而家分開報兩個數：【已入庫】同【連草稿】—— 前者先係學生見到嘅。
+//
 //   npx tsx scripts/qbank/floor-gap.mts
 // ============================================================================
 // 現有題數 ＋ 待簽草稿 → 仲差幾多先夠每個課題 10 條
@@ -30,6 +35,7 @@ for (const f of readdirSync('scripts/qbank/drafts')) {
 }
 const FLOOR = 10
 let gapTotal = 0
+let liveGapTotal = 0
 const rows: string[] = []
 for (const [id, zh] of S) {
   const qs = idx.getSubjectQuestions(id) as any[]
@@ -38,12 +44,16 @@ for (const [id, zh] of S) {
   for (const q of qs) live[q.topic] = (live[q.topic] ?? 0) + 1
   const mc = qs.filter((q) => (q.type ?? 'mc') === 'mc').length
   const gaps: string[] = []
+  const liveGaps: string[] = []
   for (const t of tps) {
-    const n = (live[t.id] ?? 0) + (draft[id]?.[t.id] ?? 0)
+    const nLive = live[t.id] ?? 0
+    const n = nLive + (draft[id]?.[t.id] ?? 0)
+    if (nLive < FLOOR) { liveGapTotal += FLOOR - nLive; liveGaps.push(`${t.id}(${nLive})`) }
     if (n < FLOOR) { gaps.push(`${t.id}(${n})`); gapTotal += FLOOR - n }
   }
   const counts = tps.map((t) => live[t.id] ?? 0)
-  rows.push(`${zh.padEnd(5)} MC ${String(mc).padStart(5)} 書寫 ${String(qs.length-mc).padStart(3)} · ${String(tps.length).padStart(2)} 課題 · 最薄 ${String(Math.min(...counts)).padStart(3)} 最厚 ${String(Math.max(...counts)).padStart(4)}${gaps.length ? ` · 未夠 10：${gaps.join(' ')}` : ''}`)
+  rows.push(`${zh.padEnd(5)} MC ${String(mc).padStart(5)} 書寫 ${String(qs.length-mc).padStart(3)} · ${String(tps.length).padStart(2)} 課題 · 最薄 ${String(Math.min(...counts)).padStart(3)} 最厚 ${String(Math.max(...counts)).padStart(4)}${liveGaps.length ? ` · 【已入庫】未夠 10：${liveGaps.join(' ')}` : ''}${gaps.length ? ` · 【連草稿】仍未夠：${gaps.join(' ')}` : ''}`)
 }
 console.log(rows.join('\n'))
-console.log(`\n連草稿計，仲要補 ${gapTotal} 條先做到全站每課題 ≥ ${FLOOR}`)
+console.log(`\n【已入庫】仲要補 ${liveGapTotal} 條先做到全站每課題 ≥ ${FLOOR}`)
+console.log(`【連未簽名草稿一齊計】仲要補 ${gapTotal} 條`)

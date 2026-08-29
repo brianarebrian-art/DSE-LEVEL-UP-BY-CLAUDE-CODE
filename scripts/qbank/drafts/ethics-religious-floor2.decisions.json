@@ -1,25 +1,25 @@
 {
-  "_meta": {
-    "source": "ethics-religious-floor2.json",
-    "subject": "ethics-religious",
-    "reviewer": "",
-    "reviewedAt": ""
-  },
-  "decisions": {
-    "floor3_eth_ta_01": "pending",
-    "floor3_eth_ta_02": "pending",
-    "floor3_eth_ta_03": "pending",
-    "floor3_eth_ta_04": "pending",
-    "floor3_eth_ta_05": "pending",
-    "floor3_eth_mr_01": "pending",
-    "floor3_eth_mr_02": "pending",
-    "floor3_eth_mr_03": "pending",
-    "floor3_eth_mr_04": "pending",
-    "floor8_eth_mr_05": "pending",
-    "floor8_eth_mr_06": "pending",
-    "floor8_eth_mr_07": "pending",
-    "floor8_eth_mr_08": "pending",
-    "floor8_eth_ta_06": "pending",
-    "floor8_eth_ta_07": "pending"
-  }
+ "_meta": {
+  "source": "ethics-religious-floor2.json",
+  "subject": "ethics-religious",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor3_eth_ta_01": "approved",
+  "floor3_eth_ta_02": "approved",
+  "floor3_eth_ta_03": "approved",
+  "floor3_eth_ta_04": "approved",
+  "floor3_eth_ta_05": "approved",
+  "floor3_eth_mr_01": "approved",
+  "floor3_eth_mr_02": "approved",
+  "floor3_eth_mr_03": "approved",
+  "floor3_eth_mr_04": "approved",
+  "floor8_eth_mr_05": "approved",
+  "floor8_eth_mr_06": "approved",
+  "floor8_eth_mr_07": "approved",
+  "floor8_eth_mr_08": "approved",
+  "floor8_eth_ta_06": "approved",
+  "floor8_eth_ta_07": "approved"
+ }
 }

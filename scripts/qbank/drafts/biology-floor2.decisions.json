@@ -1,24 +1,24 @@
 {
-  "_meta": {
-    "source": "biology-floor2.json",
-    "subject": "biology",
-    "reviewer": "",
-    "reviewedAt": ""
-  },
-  "decisions": {
-    "floor2_bio_gl_01": "pending",
-    "floor2_bio_gl_02": "pending",
-    "floor2_bio_gl_03": "pending",
-    "floor2_bio_gl_04": "pending",
-    "floor2_bio_gl_05": "pending",
-    "floor2_bio_gl_06": "pending",
-    "floor2_bio_gl_07": "pending",
-    "floor2_bio_pc_01": "pending",
-    "floor2_bio_pc_02": "pending",
-    "floor2_bio_pc_03": "pending",
-    "floor2_bio_pc_04": "pending",
-    "floor2_bio_pc_05": "pending",
-    "floor2_bio_pc_06": "pending",
-    "floor2_bio_pc_07": "pending"
-  }
+ "_meta": {
+  "source": "biology-floor2.json",
+  "subject": "biology",
+  "reviewer": "Brian",
+  "reviewedAt": "2026-08-28"
+ },
+ "decisions": {
+  "floor2_bio_gl_01": "approved",
+  "floor2_bio_gl_02": "approved",
+  "floor2_bio_gl_03": "approved",
+  "floor2_bio_gl_04": "approved",
+  "floor2_bio_gl_05": "approved",
+  "floor2_bio_gl_06": "approved",
+  "floor2_bio_gl_07": "approved",
+  "floor2_bio_pc_01": "approved",
+  "floor2_bio_pc_02": "approved",
+  "floor2_bio_pc_03": "approved",
+  "floor2_bio_pc_04": "approved",
+  "floor2_bio_pc_05": "approved",
+  "floor2_bio_pc_06": "approved",
+  "floor2_bio_pc_07": "approved"
+ }
 }
