@@ -70,6 +70,7 @@ const BANKS = [
   { subject: 'biology', file: 'data/questions/biology-bank.ts', exportName: 'biologyBank3Questions' },
   { subject: 'geography', file: 'data/questions/geography-bank.ts', exportName: 'geographyBank2Questions' },
   { subject: 'music', file: 'data/questions/music-bank.ts', exportName: 'musicBank3Questions' },
+  { subject: 'technology-living', file: 'data/questions/technology-living-bank.ts', exportName: 'technologyLivingBank3Questions' },
   { subject: 'ths', file: 'data/questions/applied-banks.ts', exportName: 'thsBankQuestions' },
   { subject: 'technology-living', file: 'data/questions/applied-banks.ts', exportName: 'technologyLivingBankQuestions' },
   { subject: 'design-tech', file: 'data/questions/applied-banks.ts', exportName: 'designTechBankQuestions' },

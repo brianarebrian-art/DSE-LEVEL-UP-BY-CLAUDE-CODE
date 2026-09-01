@@ -79,6 +79,7 @@ import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religi
 import { ethicsReligiousFloorB2Questions } from './ethics-religious-floor-b2'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
 import { technologyLivingFloorB2Questions } from './technology-living-floor-b2'
+import { technologyLivingBank3Questions } from './technology-living-bank'
 import { chineseHistoryAutoQuestions } from './chinese-history-auto'
 import { chineseLiteratureAutoQuestions } from './chinese-literature-auto'
 import { historyAutoQuestions } from './history-auto'
@@ -150,7 +151,7 @@ const banks: Record<string, SubjectBank> = {
   'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions], topics: visualArtsTopics },
   csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions], topics: csdTopics },
   'ethics-religious': { questions: [...ethicsReligiousQuestions, ...ethicsReligiousFloorB2Questions], topics: ethicsReligiousTopics },
-  'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions, ...technologyLivingFloorB2Questions], topics: technologyLivingTopics },
+  'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions, ...technologyLivingFloorB2Questions, ...technologyLivingBank3Questions], topics: technologyLivingTopics },
 }
 
 // ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
