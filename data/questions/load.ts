@@ -129,7 +129,8 @@ const loaders: Record<string, Loader> = {
     const [base, floor1] = await Promise.all([
       import('./health-management'), import('./health-management-floor-batch1'),
     ])
-    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions, ...(await import('./applied-banks')).healthManagementBankQuestions]
+    const b2 = await import('./health-management-bank')
+    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions, ...(await import('./applied-banks')).healthManagementBankQuestions, ...b2.healthManagementBank2Questions]
   },
   'design-tech': async () => {
     const [base, bank, b2, b3] = await Promise.all([import('./design-tech'), import('./applied-banks'), import('./design-tech-floor-b2'), import('./design-tech-bank')])
