@@ -136,8 +136,8 @@ const loaders: Record<string, Loader> = {
     return [...base.designTechQuestions, ...bank.designTechBankQuestions, ...bank.designTechBank2Questions, ...b2.designTechFloorB2Questions]
   },
   music: async () => {
-    const [base, bank, b2] = await Promise.all([import('./music'), import('./applied-banks'), import('./music-floor-b2')])
-    return [...base.musicQuestions, ...bank.musicBankQuestions, ...bank.musicBank2Questions, ...b2.musicFloorB2Questions]
+    const [base, bank, b2, b3] = await Promise.all([import('./music'), import('./applied-banks'), import('./music-floor-b2'), import('./music-bank')])
+    return [...base.musicQuestions, ...bank.musicBankQuestions, ...bank.musicBank2Questions, ...b2.musicFloorB2Questions, ...b3.musicBank3Questions]
   },
   pe: async () => {
     const [base, bank, b2] = await Promise.all([import('./pe'), import('./applied-banks'), import('./pe-floor-b2')])
