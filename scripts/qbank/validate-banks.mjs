@@ -74,6 +74,7 @@ const BANKS = [
   { subject: 'pe', file: 'data/questions/pe-bank.ts', exportName: 'peBank3Questions' },
   { subject: 'design-tech', file: 'data/questions/design-tech-bank.ts', exportName: 'designTechBank3Questions' },
   { subject: 'health-management', file: 'data/questions/health-management-bank.ts', exportName: 'healthManagementBank2Questions' },
+  { subject: 'visual-arts', file: 'data/questions/visual-arts-bank.ts', exportName: 'visualArtsBank2Questions' },
   { subject: 'ths', file: 'data/questions/applied-banks.ts', exportName: 'thsBankQuestions' },
   { subject: 'technology-living', file: 'data/questions/applied-banks.ts', exportName: 'technologyLivingBankQuestions' },
   { subject: 'design-tech', file: 'data/questions/applied-banks.ts', exportName: 'designTechBankQuestions' },
