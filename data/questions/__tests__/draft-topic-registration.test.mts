@@ -37,6 +37,13 @@ const SUBJECT_OF: Record<string, string> = {
   'chinese-p2-writing-batch3.json': 'chinese',
   'chinese-p1-fillin.json': 'chinese',
   'math-p1-long.json': 'math',
+  // 2026-08-29 中文寫作四組（階段目標一）。b4 用嘅 material_essay 係新課題，
+  // 已同步喺 chinese.ts 以 count: 0 登記 —— 跟返上面四個書寫課題嘅做法，
+  // 未有 MC 之前唔會出現喺課題 chips，但 promote 之後唔會變孤兒。
+  'chinese-writing-b1.json': 'chinese',
+  'chinese-writing-b2.json': 'chinese',
+  'chinese-writing-b3.json': 'chinese',
+  'chinese-writing-b4.json': 'chinese',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────

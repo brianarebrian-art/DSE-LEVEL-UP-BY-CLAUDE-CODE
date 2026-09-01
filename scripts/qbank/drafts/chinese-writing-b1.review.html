@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chinese · chinese-writing-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chinese</span></h1>
+<div class="sub">來源 chinese-writing-b1.json · 共 10 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">10</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"zh_w_arg_01","topic":"論說文・思辨立意","difficulty":"basic","question":"試以「規則與例外」為題，寫作一篇論說文。\n\n〔引導〕制度設立規則，是為了讓人有所依循；但幾乎每一條規則都設有例外。試論述：例外在甚麼情況下維護了規則的精神？又在甚麼情況下，例外反而蛀空了規則本身？","explanation":"本題考核的是【設立判準】的能力。凡屬「甲在何時成立、何時不成立」的題型，評卷關注的並非考生站在哪一邊，而是有否提出一條可用的分界線。只答「要視乎情況」而不說明視乎甚麼情況，等於未曾作答。引導語的兩問是一組對照，漏答其一即失去一半內容分。","type":"long","referenceAnswer":"【核心命題】\n本題的關鍵不在於「應否有例外」，而在於「例外憑甚麼獲得正當性」。引導語已把題目收窄為兩種相反情況，立意必須同時處理，不可只論一邊。\n\n【必達論點】\n一、須指出規則的目的先於規則的條文：當條文的字面執行反而違背其設立目的時，例外是對目的的維護。\n二、須提出一項判準，用以分辨正當的例外與藉口，例如：例外是否公開、是否可覆核、是否人人可援引。\n三、須以具體事例說明「例外被濫用」的機制——通常不是一次破例，而是破例之後未有回溯檢討，使例外沉澱為慣例。\n四、宜於結尾回應一項反面觀點，例如「規則若無例外，是否更公平」，以顯示思辨的完整。\n\n【常見失分位】\n一、通篇只論「規則要靈活」，略去引導語後半的限定，屬審題不清。\n二、以「凡事都有兩面」作結，未提出任何判準，論說淪為調和。\n三、事例與論點之間無推導關係，僅作陳述。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":75,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_02","topic":"論說文・思辨立意","difficulty":"basic","question":"試以「沉默的代價」為題，寫作一篇論說文。\n\n〔引導〕面對不公，有人選擇發聲，有人選擇沉默。有意見認為沉默是懦弱，亦有意見認為沉默是一種自保的智慧。試論述你的看法。","explanation":"此題屬典型的【二元對立命題】。命題者已在引導語中把兩邊都說得有理，用意正是要看考生能否把對立拆解成條件。高分答卷通常不會選邊，而是指出兩邊各自在甚麼條件下成立、在甚麼條件下失效。留意「沉默」一詞在文中須貫徹同一個所指，中途換義會令論證斷裂。","type":"long","referenceAnswer":"【核心命題】\n本題設有一組現成的對立，考生極易滑向「兩者皆有道理」。立意的高下，在於能否指出兩種說法各自成立的【前提】，而非各打五十大板。\n\n【必達論點】\n一、須辨明沉默有多種：出於恐懼的沉默、出於盤算的沉默、出於無力的沉默，三者的道德評價並不相同。\n二、須指出「自保」之說成立的前提是當事人確實承受真實風險；若無風險而仍沉默，自保之說即不成立。\n三、須處理沉默的累積效應：個別沉默或屬合理，但沉默一旦成為常態，會改變他人對可行選項的判斷。\n四、宜提出一種介乎兩極之間的可能，例如以其他方式記錄或轉達，以免論述停留在「發聲」與「沉默」二選一。\n\n【常見失分位】\n一、把題目寫成「應該勇敢發聲」的呼籲文，未處理引導語提出的第二種意見。\n二、以「視乎個人性格」作結，將公共判斷化約為個人喜好。\n三、通篇引用名言而無自身推導。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":75,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_03","topic":"論說文・思辨立意","difficulty":"intermediate","question":"試以「效率的盡頭」為題，寫作一篇論說文。\n\n〔引導〕效率為現代社會所推崇：更快的交通、更短的流程、更省時的工具。然而，有些事情似乎並不因為做得更快而變得更好。試論述：哪些領域的價值無法以效率衡量？原因何在？","explanation":"本題的難點在於【概念的適用範圍】。考生須明白：指出一個概念有其邊界，並不等於否定該概念。凡是「甲並非萬能」的題型，論證的重點都在於劃界的理由，而不在於舉出甲的壞處。文中所舉的例子必須能夠顯示「量度方式改變了行為本身」，否則只是舉例而非論證。","type":"long","referenceAnswer":"【核心命題】\n本題要求界定效率這把尺【失效的範圍】，而非否定效率。立意若寫成「效率不重要」，即與引導語相違。\n\n【必達論點】\n一、須提出一項判準：當過程本身即是目的的一部分時，壓縮過程等於損害目的。教育、照顧、藝術創作均屬此類。\n二、須指出效率的計量前提——效率必須有可量度的產出；若產出本身難以量度，效率的數字只會量到容易量的部分，從而扭曲目標。\n三、須以具體事例說明「為效率而效率」如何反噬，例如：以完成量考核照顧工作，令實際照顧時間下降。\n四、宜承認效率在其適用範圍內的價值，以免論述變成一面倒的反對。\n\n【常見失分位】\n一、通篇批評現代社會急躁，未提出任何界定範圍的判準。\n二、把「效率」與「功利」混為一談，中途偷換概念。\n三、以科技發展作全稱否定，忽略引導語只問「哪些領域」。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":80,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_04","topic":"論說文・思辨立意","difficulty":"intermediate","question":"試以「他人的期望」為題，寫作一篇論說文。\n\n〔引導〕成長過程之中，我們不斷接收來自家人、師長與朋輩的期望。有人視之為前行的動力，有人視之為沉重的負擔。試論述：期望在甚麼條件下成為助力，又在甚麼條件下轉為壓力？","explanation":"本題貼近考生的實際處境，因而最易寫成抒情文。要提醒的是：論說文可以有溫度，但必須有推導。感受可以作為材料，卻不能取代論點。判別方法很簡單——把文中的情緒句刪去之後，剩下的部分是否仍然構成一條論證線。","type":"long","referenceAnswer":"【核心命題】\n本題的關鍵在於找出令期望性質改變的【變項】，而非重述兩種感受。凡未指出變項者，內容分難以進入中上層。\n\n【必達論點】\n一、須提出至少一項變項，例如：期望是否與當事人自身的目標一致；期望有否附帶條件式的接納（即達不到便收回關愛）。\n二、須指出期望與能力之間的距離：距離適中則構成挑戰，距離過遠則構成挫敗的預期。\n三、須處理「期望難以拒絕」這一現實，說明可以如何協商而非單純接受或拒絕。\n四、宜以自身或身邊的具體情境說明，避免通篇抽象。\n\n【常見失分位】\n一、通篇抒發被期望所苦的感受，缺乏論證結構，寫成抒情文。\n二、只答「要溝通」而未說明溝通甚麼、如何協商。\n三、把所有期望一概歸為壓力，與引導語的雙向提問不符。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":80,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_05","topic":"論說文・思辨立意","difficulty":"intermediate","question":"試以「快與慢」為題，寫作一篇論說文。\n\n〔引導〕有人認為，這個時代最缺乏的是慢下來的能力；亦有人認為，慢只是節奏不同，本身無所謂優劣。試論述你的看法。","explanation":"本題屬【概念相對化】的題型。命題者在引導語中已提供一個相對主義的說法（「本身無所謂優劣」），考生若不加處理而逕自讚美其中一方，即等於漏答。處理相對主義說法的方法不是駁倒它，而是指出它在何處成立、在何處會取消一切判斷。","type":"long","referenceAnswer":"【核心命題】\n本題表面問快慢之爭，實則問【判準從何而來】。立意須指出：快慢本身並非價值，價值取決於它服務於甚麼目的。\n\n【必達論點】\n一、須拒絕把快慢直接等同於好壞，並說明理由：同一速度在不同目的之下評價相反。\n二、須指出「慢」被推崇的社會背景——當多數活動被加速，慢成為稀缺，稀缺遂被讀成價值。\n三、須提出自身立場並加以限定，例如：在需要累積與反覆的領域，慢具有不可替代性；在需要回應的領域，遲緩本身即為失職。\n四、宜舉一項兩種節奏並存的事例，以顯示二者並非互斥。\n\n【常見失分位】\n一、通篇讚美慢生活，未回應引導語第二種意見。\n二、以「平衡最重要」作結而無任何判準，論述落空。\n三、將「慢」與「懶」混淆，概念界定不清。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":80,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_06","topic":"論說文・思辨立意","difficulty":"hard","question":"試以「多數的限度」為題，寫作一篇論說文。\n\n〔引導〕在群體之中，少數服從多數被視為合理的決策方式。然而有些事情，即使多數同意，似乎仍然不應如此決定。試論述：多數決的正當性建基於甚麼？在甚麼情況下它會失去這種正當性？","explanation":"本題屬全卷最高階的一類：要求考生為一項習以為常的安排【重建理由】，然後由理由推出限度。這類題目不能靠舉例取勝，必須有一段明確的「之所以合理，是因為……」的推導；限度正是由該推導反推出來。凡跳過理由而直接談限度者，論證必然懸空。","type":"long","referenceAnswer":"【核心命題】\n本題要求論述一項制度的【正當性條件】。立意必須指出多數決不是自明的公理，而是有前提的安排；未觸及前提者，內容分難以進入上層。\n\n【必達論點】\n一、須指出多數決的前提：議題屬可協商範圍、各方資訊大致對等、今日的少數在他日仍有成為多數的機會。\n二、須指出前提失效的情形：當議題涉及某些人的基本處境，而該些人恆為少數時，多數決便由決策方式變成壓制方式。\n三、須處理程序與內容的分野：程序正當不保證結果正當，這正是為何制度另設不受多數更改的部分。\n四、宜回應一項反面觀點，例如「若多數決有限度，由誰界定限度」，並說明此問題本身如何處理。\n\n【常見失分位】\n一、僅論「多數決有時不公平」而未指出其正當性從何而來，論述缺乏根基。\n二、把多數決等同於民主全部，概念過闊。\n三、舉出極端事例後即下結論，未說明該事例如何滿足前文提出的判準。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_07","topic":"論說文・思辨立意","difficulty":"hard","question":"試以「記錄與遺忘」為題，寫作一篇論說文。\n\n〔引導〕科技令一切都可以被記錄並長久保存。有意見認為，完整的記錄有助問責與追溯；亦有意見認為，容許遺忘是人得以重新開始的條件。試論述你的看法。","explanation":"本題的陷阱在於【兩個概念的層次不同】：記錄是技術狀態，遺忘是社會安排。考生若把兩者當成同一層次的對立來寫，論證會不斷打滑。高分答卷通常會先做一次區分——把「能否被記錄」與「應否被檢索」分開，其後的討論才有落腳點。","type":"long","referenceAnswer":"【核心命題】\n本題須把兩種價值放在同一個天秤上比較，並提出處理衝突的原則，而非分別稱讚兩者。\n\n【必達論點】\n一、須指出記錄的功能在於使責任可以追溯，而追溯的對象應是【行為】而非【人格】。\n二、須指出遺忘的功能在於容許改變：若過去永遠可被檢索，改變便失去被承認的可能。\n三、須提出處理衝突的原則，例如按事件的公共性、當事人的身分、時間的長短分別處理，而非一刀切。\n四、宜指出「記錄」與「公開」是兩件事，混為一談會令論述失焦。\n\n【常見失分位】\n一、通篇談私隱而未回應「問責」一方的理由。\n二、把遺忘等同於掩飾，忽略引導語所指的「重新開始」。\n三、只描述現象而無主張，全文未見立場。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_08","topic":"論說文・思辨立意","difficulty":"hard","question":"試以「熟悉的危險」為題，寫作一篇論說文。\n\n〔引導〕人往往在熟悉的環境之中最感安全。但有意見指出，最難察覺的錯誤，正正發生在最熟悉的事情上。試論述：熟悉為何會削弱判斷？可以如何補救？","explanation":"凡題目同時問【為甚麼】與【怎麼辦】，兩問的分數通常相若，而考生大多把篇幅壓在前一問。要留意的是：補救措施必須針對前文所述的機制，若機制寫的是注意力撤出，補救卻答「加強責任心」，兩者之間並無對應，等於前功盡廢。","type":"long","referenceAnswer":"【核心命題】\n本題有兩問：成因與補救。兩問須各佔相當篇幅；只答其一者，內容分必然受限。\n\n【必達論點】\n一、須說明機制而非僅描述現象：熟悉令步驟自動化，注意力隨之撤出，異常因而不被察覺。\n二、須指出熟悉同時改變了預期：因為一向如此，於是把偏差讀成正常範圍內的波動。\n三、補救須落到可執行的層面，例如引入外部檢視、設立與直覺無關的核對程序、刻意改變處理次序以打斷自動化。\n四、宜承認熟悉的正面作用，說明目標並非消除熟悉，而是為它加設防護。\n\n【常見失分位】\n一、只答「要保持警覺」，未觸及熟悉削弱判斷的機制。\n二、補救部分過於籠統，未說明由誰執行、何時執行。\n三、以「人總會犯錯」作結，取消了題目要求的分析。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_09","topic":"論說文・思辨立意","difficulty":"hard","question":"試以「工具與目的」為題，寫作一篇論說文。\n\n〔引導〕任何工具的出現，都是為了達成某個目的。然而有些時候，工具本身會反過來改變甚至取代原來的目的。試以具體事例論述這一現象，並說明可以如何自處。","explanation":"本題與「效率的盡頭」同屬一組，但要求更高：那一題只需劃界，本題須描述【動態過程】。評卷特別看重「每一步都合理，合起來卻偏離」這一層——能寫出這一層的答卷，通常已進入上品。切忌把工具寫成有意志的東西，置換的主體始終是人。","type":"long","referenceAnswer":"【核心命題】\n本題要求論述一個【過程】：目的如何被工具置換。立意須落在置換的機制上，不可停留於「不要沉迷工具」的告誡。\n\n【必達論點】\n一、須說明置換的機制：工具帶來可量度的指標，指標較目的容易追蹤，於是追指標逐漸取代追目的。\n二、須以具體事例貫串全文，例如以閱讀量取代理解、以打卡時數取代實際成效。\n三、須指出置換之所以難以察覺，是因為每一步都合理，只有回看整體才見偏離。\n四、自處之道須具體，例如定期回問「這件事最初要解決甚麼」，並容許在答案改變時修訂做法。\n\n【常見失分位】\n一、通篇批評科技，未處理「工具原為達成目的」這一前提。\n二、事例只作點綴，未用以顯示置換的過程。\n三、結尾流於口號，未提出任何可執行的做法。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_arg_10","topic":"論說文・思辨立意","difficulty":"hard","question":"試以「說服與說贏」為題，寫作一篇論說文。\n\n〔引導〕討論之中，有人志在說服對方，有人志在說贏對方。兩者看似相近，實則取向不同。試論述二者的分別，並說明這一分別對公共討論有何影響。","explanation":"本題屬【概念辨析型】，開篇的定義段落決定全文成敗。要留意的是：辨析不等於下定義，而是要指出兩個相近概念在哪一個維度上分道揚鑣。本題的維度是「以甚麼為成功」，抓到這一點，後文的手法差異與社會後果都可以順勢推出。","type":"long","referenceAnswer":"【核心命題】\n本題要求先【辨析概念】，再論其後果。若只寫「要理性討論」而未做辨析，全文即失去支點。\n\n【必達論點】\n一、須指出分別的核心在於目標：說服以對方改變想法為成功，說贏以對方無法回應為成功。\n二、須指出兩者在手法上的分歧：說服須先準確重述對方立場，說贏則傾向把對方立場說得最弱以便攻擊。\n三、須說明對公共討論的影響：以說贏為目標的討論會令參與者傾向不表態，因為表態的代價是被攻擊而非被理解。\n四、宜承認辯論訓練中「贏」有其位置，並說明場合的分野，以免論述失之偏頗。\n\n【常見失分位】\n一、把兩者的分別說成態度好壞，未觸及目標的不同。\n二、只論網絡罵戰而未回到「公共討論」的層面。\n三、通篇無事例，論述停留在定義。","markingScheme":"內容 16 分：立意是否回應引導語的限定；論點之間有否推導關係；例證是否用於支撐而非堆疊。\n語文 12 分：用詞準確、句式有變化、標點正確；避免口語入文。\n結構 12 分：首段是否確立命題；段落之間有否過渡；結尾有否回應全文而非重複。\n建議篇幅：650 至 800 字。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chinese";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "chinese-writing-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chinese-writing-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

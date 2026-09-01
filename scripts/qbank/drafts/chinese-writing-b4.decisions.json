@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "chinese-writing-b4.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh_w_mat_01": "pending",
+    "zh_w_mat_02": "pending",
+    "zh_w_mat_03": "pending",
+    "zh_w_mat_04": "pending",
+    "zh_w_mat_05": "pending",
+    "zh_w_mat_06": "pending",
+    "zh_w_mat_07": "pending",
+    "zh_w_mat_08": "pending",
+    "zh_w_mat_09": "pending",
+    "zh_w_mat_10": "pending"
+  }
+}

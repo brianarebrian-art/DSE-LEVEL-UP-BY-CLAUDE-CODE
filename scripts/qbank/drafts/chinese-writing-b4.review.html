@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chinese · chinese-writing-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chinese</span></h1>
+<div class="sub">來源 chinese-writing-b4.json · 共 10 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">10</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"zh_w_mat_01","topic":"材料作文・立意與引申","difficulty":"basic","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕園丁修剪盆栽，剪去枝葉，樹形因而端正。有人問：可惜嗎？園丁答：不剪的枝葉，未必長得更高，只會長得更亂。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"材料作文的第一步是【找出材料的真正命題】，而非找關鍵詞。本題若只抓「修剪」二字，容易寫成勸人放棄的文章；真正的命題藏在園丁的回答之中。實用做法：把材料中最像結論的一句圈出，再問它否定了甚麼——被否定的那個可能，正是立意的入口。","type":"long","referenceAnswer":"【材料解讀】\n材料的核心不在「修剪」本身，而在園丁那句回答：捨棄並非損失，而是資源的重新分配。立意若停留在「要懂得取捨」，屬正確而淺；能寫出「不捨的代價是甚麼」，才算觸及材料的深層。\n\n【可取的立意方向】\n一、由個人成長切入：時間與精力有限，樣樣兼顧的結果往往是樣樣不成。\n二、由制度切入：組織不斷增添功能而不刪減，最終各項功能互相牽制。\n三、反向立意亦可成立：園丁的判準從何而來？誰有資格決定何者為「亂」？惟須自圓其說。\n四、無論取何角度，均須回應材料中「未必長得更高」一句——它否定了「不剪也能好」的可能。\n\n【常見失分位】\n一、通篇論述「要學會放棄」，未使用材料所提供的具體邏輯。\n二、把材料當成引言，其後與材料再無關係。\n三、照抄材料原句而未加化用，佔去篇幅而無所增益。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":80,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_02","topic":"材料作文・立意與引申","difficulty":"basic","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕一位長跑教練說：新手總以為終點最難，其實最難的是第三公里——那時新鮮感已過，而終點還遠。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題考核【引申】的準確度。材料給出的是一個具體階段，好的引申須保留該階段的特徵——新鮮感消失、成果未現、終點仍遠——而非只借用「跑步」這個外殼。判別方法：把你的例子代入，看看是否同時滿足這三個特徵。","type":"long","referenceAnswer":"【材料解讀】\n材料指向的是【中段的困難】，而非堅持的重要。立意須落在「新鮮感已過而成果未見」這一特定階段，泛談堅持即偏離材料。\n\n【可取的立意方向】\n一、由學習經驗切入：任何技能都有一段看不見進步的高原期。\n二、由關係切入：熱情消退之後，關係靠甚麼維繫。\n三、可討論如何度過中段，例如把長目標切成可見的短目標、以過程指標取代結果指標。\n四、宜回應材料的隱含判斷：終點之所以看似最難，是因為它最容易被想像；中段之難在於它不被談論。\n\n【常見失分位】\n一、寫成勵志文，通篇論述「堅持就是勝利」，與材料的特定所指無關。\n二、只複述材料而未引申至其他領域。\n三、把「第三公里」當成字面數字討論長跑技巧，未見引申。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":80,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_03","topic":"材料作文・立意與引申","difficulty":"intermediate","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕甲說：地圖畫得愈詳細愈好，這樣才不會迷路。\n乙說：畫得和實地一樣詳細的地圖，就不是地圖了。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題屬【對話式材料】，命題者已把兩種立場說得都有道理，用意是要考生找出兩者的共同前提。本題的共同前提是「地圖為使用而設」——一旦抓住這一點，取捨的判準便自然浮現。凡在兩個立場之間選邊而不做綜合者，立意層次難以進入上品。","type":"long","referenceAnswer":"【材料解讀】\n材料設有一組對話，乙的一句是關鍵：地圖的價值在於【捨棄】。立意須處理「取捨」與「有用」之間的關係，而非在甲乙之間選邊。\n\n【可取的立意方向】\n一、由認知切入：理解一件事必然涉及簡化，簡化不是缺陷而是條件。\n二、由學習切入：筆記若照抄全書即失去筆記的作用。\n三、須進一步指出關鍵問題：既然必須捨棄，判準是甚麼——取決於使用的目的。\n四、可回應風險：簡化亦會遺漏，故須知道自己捨棄了甚麼。\n\n【常見失分位】\n一、只論「凡事要簡化」，未觸及判準問題，論述停在半途。\n二、把甲乙之爭寫成誰對誰錯，忽略兩人各自成立的部分。\n三、通篇談地圖繪製技術，未作引申。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":85,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_04","topic":"材料作文・立意與引申","difficulty":"intermediate","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕有人在山路上見到一塊擋路的石頭，把它推到路邊。多年後重經此地，石頭仍在路邊，路上再無人為此停留。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題的關鍵句在結尾。材料作文的命題者常把真正的命題放在最後一句，因為前文只是鋪墊。實用做法：先問「這句話若刪去，材料還剩下甚麼」——若剩下的只是一件平凡小事，即代表該句正是命題所在。","type":"long","referenceAnswer":"【材料解讀】\n材料的重心在最後一句：善舉的成效在於【此後無人再遇上同一問題】，而這種成效恰恰是無人察覺的。立意宜落在「看不見的貢獻」。\n\n【可取的立意方向】\n一、由公共服務切入：做得好的基礎工作，特徵正是無人談論。\n二、由制度切入：預防性的措施難以獲得認可，因為它防止的事情從未發生。\n3、可討論此一現象的後果：不被看見的工作容易被削減，因為它的價值無法以事件證明。\n四、宜避免把立意寫成「做好事不留名」，材料的重點不在留名與否，而在成效的隱形。\n\n【常見失分位】\n一、寫成道德勸說文，論述「應該助人為樂」，與材料的隱含焦點不符。\n二、只複述故事並加一句感想，未見引申。\n三、把「多年後重經此地」寫成懷舊素材，方向偏離。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":85,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_05","topic":"材料作文・立意與引申","difficulty":"intermediate","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕學生問：老師，這道題我算了三次，答案都不同。\n老師說：那你至少已經知道，其中兩次是錯的。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題與論說文組的「失敗的價值」相近，但材料作文另有要求：立意必須由材料生出，而非套用已有的觀點。分辨方法是看文章有否處理材料的獨特之處——本題的獨特之處在於「三次答案不同」這個具體處境，它使排除成為可能。","type":"long","referenceAnswer":"【材料解讀】\n老師的回答把「失敗」重新定義為【排除】。立意須處理這種轉換的條件，而非僅讚美樂觀態度。\n\n【可取的立意方向】\n一、由學習方法切入：知道哪些路走不通，本身即是進展。\n二、須指出此一轉換的前提：必須知道那兩次何以為錯，否則只是重複而非排除。\n三、可引申至科學與探索：多數研究的成果是縮窄範圍而非直接命中。\n四、宜回應限度：若時間有限或代價高昂，排除法未必可行。\n\n【常見失分位】\n一、把材料讀成「要保持正面思考」，忽略排除法背後的方法論。\n二、只論失敗的價值，與同類題目雷同，未扣緊材料的特定情境。\n三、老師的話被當成安慰語處理，未見分析。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":85,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_06","topic":"材料作文・立意與引申","difficulty":"hard","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕博物館的說明牌寫着：此器物出土時已破碎，現存部分約佔原件三成，其餘為修復所補。\n有觀眾說：既然大半是補的，那還算是原物嗎？\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題難度較高，因為材料提出的是一個哲學性的問題。要留意：材料作文並不要求考生具備專門知識，只要求就材料所提之問作出有條理的思考。凡遇到看似抽象的材料，最穩妥的做法是先把問題換成自己熟悉的處境，再回到材料作答。","type":"long","referenceAnswer":"【材料解讀】\n材料提出的是【同一性】問題：一件事物改變到甚麼程度便不再是它自己。立意須正面處理這個問題，而非只談文物保育。\n\n【可取的立意方向】\n一、由個人切入：人的細胞、記憶與想法不斷更替，何以仍然是同一個人。\n二、由組織切入：成員全數更替之後，機構的延續憑甚麼成立。\n三、須提出一項判準，例如：延續性在於連續的過程，而非構成的材料。\n四、宜回應反面：若判準過寬，任何事物都可宣稱延續，判準因而失去意義。\n\n【常見失分位】\n一、通篇討論文物修復技術或保育政策，未觸及同一性問題。\n二、以「見仁見智」作結，未提出任何判準。\n三、把觀眾的提問當成外行話而加以否定，錯失材料給予的問題。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_07","topic":"材料作文・立意與引申","difficulty":"hard","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕一位攝影師說：我按下快門的那一刻，就決定了甚麼留在框內、甚麼被排除在外。看照片的人，只會看見我留下的那部分。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題與論說文組的「記錄與遺忘」屬同一知識脈絡，但入口不同：那一題問價值取捨，本題問【呈現的結構】。要留意材料中「只會看見我留下的那部分」一句 —— 它指出的不是攝影師說謊，而是觀者無從得知框外之物。把「選擇」讀成「欺騙」，是本題最常見的偏離。","type":"long","referenceAnswer":"【材料解讀】\n材料指向【選擇即是詮釋】：任何呈現都同時是排除，而觀者往往看不見被排除的部分。立意宜落在「看不見的框」。\n\n【可取的立意方向】\n一、由資訊接收切入：新聞、統計、歷史敘述皆有取景，讀者所見已經是被選擇的結果。\n二、須指出此事無法避免：不選擇便無法呈現，故問題不在有沒有框，而在框由誰決定、可否被察覺。\n三、可引申至自我敘述：人講述自己的經歷時，同樣在取景。\n四、宜提出應對之道，例如追問「還有甚麼沒有被拍進去」。\n\n【常見失分位】\n一、通篇批評媒體造假，把「選擇」等同於「欺騙」，概念偷換。\n二、只談攝影技巧，未作引申。\n三、以「凡事都有兩面」作結，未提出可行的應對。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_08","topic":"材料作文・立意與引申","difficulty":"hard","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕村中有一口井，人人都取水，卻無人負責清理。井漸漸淤塞。後來村民議定：每戶每月輪值一天。井水復清。\n有人說：原來問題不在井，在於沒有人的名字寫在井上。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題的難度在於【抗拒道德化的誘惑】。材料明明白白指出「問題不在井」，但多數答卷仍會寫成勸人有公德心的文章。凡材料本身已提供一個解釋方向者，考生若另立一個相反方向，必須說明理由，否則即屬未讀懂材料。","type":"long","referenceAnswer":"【材料解讀】\n材料的關鍵在最後一句：問題的性質是【責任的歸屬】而非資源本身。立意須落在「無人負責」這一結構，而非泛談公德。\n\n【可取的立意方向】\n一、須指出共用資源的特性：人人可用而無人專責時，維護的成本無人承擔。\n二、須說明輪值制何以有效：它把集體責任轉化為可辨識的個人責任。\n三、可引申至日常：小組作業、公共空間、網絡討論皆有相同結構。\n四、宜回應限度：輪值制依賴可辨識與可監察，若群體過大或流動性高，同一辦法未必可行。\n\n【常見失分位】\n一、通篇批評人的自私，把結構問題化約為道德問題，與材料最後一句相違。\n二、只複述故事而未指出機制何以有效。\n三、把立意寫成「團結就是力量」，與材料的具體邏輯無關。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_09","topic":"材料作文・立意與引申","difficulty":"hard","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕甲問：你為甚麼每天記錄天氣？又不會改變甚麼。\n乙答：記錄不是為了改變天氣，是為了知道今年跟往年有甚麼不同。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題屬【一問一答式材料】，命題的重心必定在答方。要留意的是：好的答卷不會忽略問方 —— 甲的質疑（「又不會改變甚麼」）是必須正面處理的對手意見。凡只順着乙的說法發揮而不理會甲者，論述會顯得單薄。","type":"long","referenceAnswer":"【材料解讀】\n乙的回答把記錄的目的由【干預】轉為【辨識變化】。立意須處理這一轉換，並說明為何辨識本身即有價值。\n\n【可取的立意方向】\n一、須指出沒有基線就無法察覺變化：緩慢的改變只有在有紀錄時才被看見。\n二、可引申至個人：情緒、體能、學習狀態的長期紀錄，作用同樣在於顯示趨勢。\n三、須回應甲的質疑而非迴避：無法改變的事，記錄它是否仍有意義。\n四、宜指出記錄的代價與限度：記錄需要持續，而持續本身並不容易。\n\n【常見失分位】\n一、只論「記錄是好習慣」，未回應甲的質疑。\n二、把材料讀成環保議題，偏離對話的重心。\n三、通篇讚美堅持，未觸及基線與變化的關係。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"zh_w_mat_10","topic":"材料作文・立意與引申","difficulty":"hard","question":"閱讀以下材料，然後按要求寫作。\n\n〔材料〕老木匠教徒弟做榫卯，說：接口要留一絲空隙。徒弟問：不是愈緊愈牢嗎？老木匠說：木會脹會縮，一絲不留，第一個潮天就裂給你看。\n\n試就以上材料，自訂角度，自擬題目，寫作一篇文章。","explanation":"本題的判別點在於考生有否處理【前提】。老木匠的道理之所以成立，全繫於木材會隨濕度變化 —— 若材料不變形，愈緊確實愈牢。能寫出這一層條件的答卷，即顯示考生不是套用格言，而是真正讀懂了材料的邏輯。","type":"long","referenceAnswer":"【材料解讀】\n材料的核心是【為變化預留餘地】：最緊密的結合未必最耐久，因為它假設外在條件不變。立意須抓住「木會脹會縮」這一前提。\n\n【可取的立意方向】\n一、由人際切入：關係中的距離不是疏離，而是容許雙方各自變化的空間。\n二、由計劃切入：排得密不透風的時間表，遇上任何意外即全盤崩潰。\n三、由制度切入：規則若不留裁量空間，遇上未預見的情況便只能違規或失效。\n四、須說明餘地與鬆散之別：留一絲空隙是有分寸的設計，不是放任。\n\n【常見失分位】\n一、把立意寫成「凡事不要太執着」，語意鬆散，未扣材料。\n二、只論木工技術，未作引申。\n三、忽略「木會脹會縮」這一前提，把留空隙說成隨意，判準盡失。","markingScheme":"內容 16 分：立意有否緊扣材料的核心而非枝節；引申是否合乎材料的邏輯；有否提出自身見解而非複述材料。\n語文 12 分：用語準確；引述材料時有否化用而非照抄；句式有變化。\n結構 12 分：有否交代對材料的理解；立意與論述之間有否推導；結尾有否回應材料。\n建議篇幅：650 至 800 字。文體不限，惟須切合所立之意。\n本題所列分數為本平台練習用尺度（內容 16／語文 12／結構 12），並非香港考試及評核局的分數分配。參考立意只列方向與判準，刻意不提供完整範文——寫作能力來自自行組織的過程，一旦提供成文範文，練習極易變成背誦。","suggestedMinutes":90,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chinese";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "chinese-writing-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chinese-writing-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

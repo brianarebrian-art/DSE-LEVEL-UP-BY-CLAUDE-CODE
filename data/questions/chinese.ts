@@ -37,6 +37,7 @@ const T = {
   descriptive:{ id: 'descriptive_essay', zh: '命題寫作・描寫',     en: 'Set-Topic Writing — Descriptive' },
   mixed:      { id: 'mixed_essay',       zh: '命題寫作・綜合',     en: 'Set-Topic Writing — Mixed Modes' },
   practical:  { id: 'practical_writing', zh: '實用寫作',           en: 'Practical Writing' },
+  material:   { id: 'material_essay',    zh: '材料作文・立意與引申', en: 'Material-based Composition' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -607,6 +608,7 @@ export const chineseTopics: Topic[] = topicList([
   { topic: T.descriptive, fw: FW.write, count: 0 },
   { topic: T.mixed,       fw: FW.write, count: 0 },
   { topic: T.practical,   fw: FW.write, count: 0 },
+  { topic: T.material,    fw: FW.write, count: 0 },
 ])
 
 // 課外文言地獄卷的 topics 已是 Topic[]，直接附加（勿再經 topicList 二次包裝）。

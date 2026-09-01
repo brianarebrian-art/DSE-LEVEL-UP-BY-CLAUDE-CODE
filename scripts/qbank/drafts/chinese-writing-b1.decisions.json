@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "chinese-writing-b1.json",
+    "subject": "chinese",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "zh_w_arg_01": "pending",
+    "zh_w_arg_02": "pending",
+    "zh_w_arg_03": "pending",
+    "zh_w_arg_04": "pending",
+    "zh_w_arg_05": "pending",
+    "zh_w_arg_06": "pending",
+    "zh_w_arg_07": "pending",
+    "zh_w_arg_08": "pending",
+    "zh_w_arg_09": "pending",
+    "zh_w_arg_10": "pending"
+  }
+}
