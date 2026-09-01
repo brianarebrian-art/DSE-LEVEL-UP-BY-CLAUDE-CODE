@@ -106,8 +106,8 @@ const loaders: Record<string, Loader> = {
       ...floor1.economicsFloorBatch1Questions, ...floor2.economicsFloorBatch2Questions]
   },
   geography: async () => {
-    const [base, bank, b2] = await Promise.all([import('./geography'), import('./applied-banks'), import('./geography-floor-b2')])
-    return [...base.geographyQuestions, ...bank.geographyBankQuestions, ...b2.geographyFloorB2Questions]
+    const [base, bank, b2, b3] = await Promise.all([import('./geography'), import('./applied-banks'), import('./geography-floor-b2'), import('./geography-bank')])
+    return [...base.geographyQuestions, ...bank.geographyBankQuestions, ...b2.geographyFloorB2Questions, ...b3.geographyBank2Questions]
   },
   history: async () => {
     // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。

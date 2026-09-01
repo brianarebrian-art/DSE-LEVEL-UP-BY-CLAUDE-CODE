@@ -68,6 +68,7 @@ const BANKS = [
   // 一個新 bank 若不登記在此，本閘會靜靜略過它 —— 綠燈但沒有掃過。
   { subject: 'ict', file: 'data/questions/ict-bank.ts', exportName: 'ictBank3Questions' },
   { subject: 'biology', file: 'data/questions/biology-bank.ts', exportName: 'biologyBank3Questions' },
+  { subject: 'geography', file: 'data/questions/geography-bank.ts', exportName: 'geographyBank2Questions' },
   { subject: 'ths', file: 'data/questions/applied-banks.ts', exportName: 'thsBankQuestions' },
   { subject: 'technology-living', file: 'data/questions/applied-banks.ts', exportName: 'technologyLivingBankQuestions' },
   { subject: 'design-tech', file: 'data/questions/applied-banks.ts', exportName: 'designTechBankQuestions' },
