@@ -140,8 +140,8 @@ const loaders: Record<string, Loader> = {
     return [...base.musicQuestions, ...bank.musicBankQuestions, ...bank.musicBank2Questions, ...b2.musicFloorB2Questions, ...b3.musicBank3Questions]
   },
   pe: async () => {
-    const [base, bank, b2] = await Promise.all([import('./pe'), import('./applied-banks'), import('./pe-floor-b2')])
-    return [...base.peQuestions, ...bank.peBankQuestions, ...bank.peBank2Questions, ...b2.peFloorB2Questions]
+    const [base, bank, b2, b3] = await Promise.all([import('./pe'), import('./applied-banks'), import('./pe-floor-b2'), import('./pe-bank')])
+    return [...base.peQuestions, ...bank.peBankQuestions, ...bank.peBank2Questions, ...b2.peFloorB2Questions, ...b3.peBank3Questions]
   },
   'chinese-literature': async () => {
     const [base, b2] = await Promise.all([import('./chinese-literature'), import('./chinese-literature-floor-b2')])
