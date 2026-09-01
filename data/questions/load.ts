@@ -56,8 +56,8 @@ const loaders: Record<string, Loader> = {
     return [...base.chemistryQuestions, ...cbank.chemistryBankQuestions, ...floor1.chemistryFloorBatch1Questions]
   },
   biology: async () => {
-    const [base, bank, b2] = await Promise.all([import('./biology'), import('./applied-banks'), import('./biology-floor-b2')])
-    return [...base.biologyQuestions, ...bank.biologyBankQuestions, ...bank.biologyBank2Questions, ...b2.biologyFloorB2Questions]
+    const [base, bank, b2, b3] = await Promise.all([import('./biology'), import('./applied-banks'), import('./biology-floor-b2'), import('./biology-bank')])
+    return [...base.biologyQuestions, ...bank.biologyBankQuestions, ...bank.biologyBank2Questions, ...b2.biologyFloorB2Questions, ...b3.biologyBank3Questions]
   },
   english: async () => {
     const [base, reviewed, b2] = await Promise.all([import('./english'), import('./english-reviewed'), import('./english-floor-b2')])

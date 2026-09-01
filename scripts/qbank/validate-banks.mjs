@@ -67,6 +67,7 @@ const BANKS = [
   // 應用科目計算型題庫（六科共用一個檔案，見該檔頭部說明）。
   // 一個新 bank 若不登記在此，本閘會靜靜略過它 —— 綠燈但沒有掃過。
   { subject: 'ict', file: 'data/questions/ict-bank.ts', exportName: 'ictBank3Questions' },
+  { subject: 'biology', file: 'data/questions/biology-bank.ts', exportName: 'biologyBank3Questions' },
   { subject: 'ths', file: 'data/questions/applied-banks.ts', exportName: 'thsBankQuestions' },
   { subject: 'technology-living', file: 'data/questions/applied-banks.ts', exportName: 'technologyLivingBankQuestions' },
   { subject: 'design-tech', file: 'data/questions/applied-banks.ts', exportName: 'designTechBankQuestions' },
