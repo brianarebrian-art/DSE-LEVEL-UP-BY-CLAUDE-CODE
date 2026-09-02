@@ -25,6 +25,12 @@ interface HourglassTimerProps {
   ariaLabel: string
 }
 
+// 2026-09-02（莫蘭迪 v4.0-B）：沙色由寫死嘅 --color-neon-cyan 改為
+// var(--color-ml-clay, …)，fallback 保留原霓虹青，即係【莫蘭迪 scope 以外
+// 一個像素都唔變】。點解要改：霓虹青 #00F5D4 落淺色卡 #FFFFFF 只有 1.40:1,
+// 遠低於圖形所需嘅 3:1 —— 即係話學生喺 Light 主題俾 60 秒鎖住嗰陣，
+// 佢盯住嗰個計時器本身近乎隱形。莫蘭迪值：clay 落卡 5.67（淺）／4.6+（暗）。
+// 完成態同理由 #4ade80 改為 --color-ml-good。
 export default function HourglassTimer({ remaining, total, soft, label, ariaLabel }: HourglassTimerProps) {
   const uid = useId()
   const p = total > 0 ? Math.min(1, Math.max(0, 1 - remaining / total)) : 1
@@ -69,7 +75,7 @@ export default function HourglassTimer({ remaining, total, soft, label, ariaLabe
           y={topY}
           width="92"
           height={Math.max(0, 94 - topY)}
-          fill="var(--color-neon-cyan)"
+          fill="var(--color-ml-clay, var(--color-neon-cyan))"
           fillOpacity={sandOpacity}
           style={geomTransition}
         />
@@ -81,7 +87,7 @@ export default function HourglassTimer({ remaining, total, soft, label, ariaLabe
             y1="96"
             x2="60"
             y2={184 - pileH}
-            stroke="var(--color-neon-cyan)"
+            stroke="var(--color-ml-clay, var(--color-neon-cyan))"
             strokeOpacity={sandOpacity}
             strokeWidth="2"
             className="hourglass-stream"
@@ -95,7 +101,7 @@ export default function HourglassTimer({ remaining, total, soft, label, ariaLabe
           y={184 - pileH}
           width="92"
           height={pileH + 2}
-          fill="var(--color-neon-cyan)"
+          fill="var(--color-ml-clay, var(--color-neon-cyan))"
           fillOpacity={sandOpacity}
           style={geomTransition}
         />
@@ -103,7 +109,7 @@ export default function HourglassTimer({ remaining, total, soft, label, ariaLabe
         {/* 沙漏霓虹框（完成 → 綠） */}
         <g
           fill="none"
-          stroke={done ? '#4ade80' : 'var(--color-neon-cyan)'}
+          stroke={done ? 'var(--color-ml-good, #4ade80)' : 'var(--color-ml-clay, var(--color-neon-cyan))'}
           strokeWidth="2.5"
           strokeLinejoin="round"
           strokeLinecap="round"

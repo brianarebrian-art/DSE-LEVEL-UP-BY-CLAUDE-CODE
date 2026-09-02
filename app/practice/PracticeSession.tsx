@@ -38,7 +38,7 @@ import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, Lightbulb, ChevronRight, Clock, Brain, Zap, Lock, Coffee, Timer } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, Lock, Coffee, Timer } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
@@ -704,7 +704,7 @@ export default function PracticeSession({
   // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
   if (justOneDone) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
+      <div data-ml className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
         <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
           <div className="text-3xl mb-3" aria-hidden>🌱</div>
           <h2 className="text-lg font-medium text-ink mb-2">
@@ -741,7 +741,7 @@ export default function PracticeSession({
     const doneCount = resumeOffer.current
     const totalCount = resumeOffer.questionIds.length
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
+      <div data-ml className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
         <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
           <div className="text-3xl mb-3" aria-hidden>📍</div>
           <h2 className="text-lg font-medium text-ink mb-2">
@@ -778,7 +778,7 @@ export default function PracticeSession({
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
+      <div data-ml className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
         <div className="text-5xl">{subjectMeta?.emoji ?? '📝'}</div>
         <p className="text-ink-muted">
           {subjectMeta
@@ -794,16 +794,30 @@ export default function PracticeSession({
 
   if (!currentQ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
+      <div data-ml className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
     )
   }
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+    <div data-ml className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto">
 
-        {/* Subject label + weakness badge */}
-        <div className="flex items-center gap-2 mb-3 text-sm">
+        {/* 返回科目頁 —— 全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），
+            所以呢個係練習頁【唯一】嘅離開路徑，唔可以刪。
+            擺喺科目名左邊、細字弱對比：睇得到，但唔會同題目爭注意力
+            （規格 §7.3A「單一焦點」）；min-h-11 保持觸控靶大細。 */}
+        {/* sticky：捲落去睇解析嗰陣，返回掣要仲喺度。
+            全屏模式冇 Navbar，佢係唯一出口，唔可以隨頁面捲走。
+            用 bg-surface 同頁面底色一致，所以內容捲過去唔會見到接縫。 */}
+        <div className="sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
+          <Link
+            href="/subjects"
+            aria-label={tr('返回科目選擇', 'Back to subject list')}
+            className="-ml-2 inline-flex items-center gap-0.5 min-h-11 pl-1 pr-2 rounded-lg text-ink-muted hover:text-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            <ChevronLeft size={16} aria-hidden />
+            <span className="text-xs">{tr('返回', 'Back')}</span>
+          </Link>
           {subjectMeta && (
             <>
               <span>{subjectMeta.emoji}</span>
@@ -811,7 +825,7 @@ export default function PracticeSession({
             </>
           )}
           {mode === 'weakness' && (
-            <span className="inline-flex items-center gap-1 text-xs text-gold bg-gold/10 border border-gold/20 px-2 py-0.5 rounded-full">
+            <span className="inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
               🛠️ {tr('盲點修復卷', 'Repair worksheet')}
             </span>
           )}
@@ -860,7 +874,7 @@ export default function PracticeSession({
                     title={tr('逐題計時：關 / 60 秒 / 90 秒。時間到唔會強制結束。',
                               'Per-question timer: off / 60s / 90s. Time-up never ends anything.')}
                     className={`inline-flex items-center gap-1 min-h-11 px-2 -my-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
-                      perQTimer === 0 ? 'text-ink-faint hover:text-ink-muted' : 'text-accent'
+                      perQTimer === 0 ? 'text-ink-muted hover:text-ink-soft' : 'text-accent'
                     }`}
                   >
                     <Timer size={13} aria-hidden />
@@ -889,11 +903,15 @@ export default function PracticeSession({
         </div>
 
         {/* Question card */}
-        <div className="bg-surface-raised border border-line rounded-2xl p-6 sm:p-8 mb-4 animate-slide-up">
+        {/* 規格 §7.3A 頁面轉場：新題由右滑入（400ms）。key 綁題號，換題先重播。
+            ⚠️ 只做【入場】—— 規格原文仲要「舊題向左滑出」，但離場動畫要留住
+            舊 node 再等 400ms，等於每題多 0.4 秒延遲，一個 20 題 session 就係
+            8 秒白等。方向感由入場方向已經帶到，離場暫時唔做。 */}
+        <div key={currentQ.id} className="bg-surface-raised border border-line rounded-2xl p-6 sm:p-8 mb-4 ml-q-enter">
           {/* Meta */}
           <div className="flex items-center gap-2 flex-wrap mb-6">
             <DifficultyBadge difficulty={currentQ.difficulty} />
-            <span className="inline-flex items-center gap-1.5 text-xs text-gold bg-gold/10 px-3 py-1 rounded-full">
+            <span className="inline-flex items-center gap-1.5 text-xs text-ink bg-surface-sunken border border-gold px-3 py-1 rounded-full">
               <span>{currentQ.frameworkEmoji}</span>
               {tr(currentQ.frameworkZh, currentQ.frameworkEn)}
             </span>
@@ -966,7 +984,7 @@ export default function PracticeSession({
                   key={idx}
                   onClick={() => selectOption(opt.zh, idx)}
                   disabled={answerState !== null}
-                  className={`relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}${pulse}`}
+                  className={`ml-press relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}${pulse}`}
                 >
                   {shockIdx === idx && (
                     <span
@@ -1178,7 +1196,7 @@ export default function PracticeSession({
                       <button
                         onClick={toggleCalmLock}
                         title={tr('柔和模式：沙漏放慢、色調更靜', 'Calm mode: slower hourglass, softer tones')}
-                        className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-gold/40 text-gold bg-gold/10' : 'border-line-strong text-ink-muted hover:text-ink-soft'}`}
+                        className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-gold text-ink bg-surface-sunken' : 'border-line-strong text-ink-muted hover:text-ink-soft'}`}
                       >
                         {tr('柔和', 'Calm')}
                       </button>
@@ -1226,7 +1244,7 @@ export default function PracticeSession({
                             key={i}
                             disabled={followupCorrect}
                             onClick={() => setFollowupPick(o[0])}
-                            className={`w-full text-left text-sm text-ink-soft border rounded-xl px-4 py-2.5 transition-all ${st}`}
+                            className={`ml-pick${picked ? ' ml-pick-on' : ''} w-full text-left text-sm text-ink-soft border rounded-xl px-4 py-2.5 transition-all ${st}`}
                           >
                             {tr(o[0], o[1])}
                           </button>
@@ -1241,7 +1259,7 @@ export default function PracticeSession({
                       </p>
                     )}
                     {followupCorrect && (
-                      <p className="text-xs text-ink-soft mt-3 leading-relaxed border-t border-line-strong pt-2">
+                      <p className="ml-reveal text-xs text-ink-soft mt-3 leading-relaxed border-t border-line-strong pt-2">
                         <span className="text-accent font-medium">✓ </span>
                         {tr(followup.explain[0], followup.explain[1])}
                       </p>
@@ -1296,7 +1314,7 @@ export default function PracticeSession({
                           aria-pressed={on}
                           className={`px-2.5 py-1 rounded-full border transition-colors ${
                             on
-                              ? 'border-accent/50 text-accent bg-accent/[0.10]'
+                              ? 'border-accent text-ink bg-surface-sunken'
                               : 'border-line text-ink-muted hover:text-ink-soft'
                           }`}
                         >

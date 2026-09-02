@@ -209,7 +209,7 @@ export default function ReportPageClient() {
   // Loading
   if (report === null) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface-sunken">
+      <div data-ml className="min-h-screen flex items-center justify-center bg-surface-sunken">
         <p className="text-ink-muted animate-pulse motion-reduce:animate-none">{en ? 'Building your study map…' : '生成緊你嘅溫書地圖...'}</p>
       </div>
     )
@@ -218,13 +218,13 @@ export default function ReportPageClient() {
   // 未有數據
   if (report === 'empty') {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface-sunken px-4 text-center">
+      <div data-ml className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface-sunken px-4 text-center">
         <div className="text-5xl" aria-hidden>🗺️</div>
         <p className="text-ink-soft font-bold">{en ? 'Not enough data yet — do a few questions first!' : '仲未有足夠數據，做幾題先！'}</p>
         <p className="text-ink-muted text-sm max-w-sm">
           {en ? 'Do a few questions first — your study map is built from your real practice.' : '先做幾條題目 —— 溫書地圖係由你嘅真實練習記錄生成。'}
         </p>
-        <Link href="/subjects" className="mt-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-6 py-3 rounded-xl transition-all">
+        <Link href="/subjects" className="ml-press mt-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-6 py-3 rounded-xl transition-all">
           {en ? 'Start practising' : '去操練'}
         </Link>
       </div>
@@ -240,7 +240,7 @@ export default function ReportPageClient() {
   ]
 
   return (
-    <div className="min-h-screen bg-surface-sunken px-4 py-10">
+    <div data-ml className="min-h-screen bg-surface-sunken px-4 py-10">
       <div className="max-w-3xl mx-auto">
         {/* 頂部操作列（no-print，唔會入 PNG 截圖之外嘅嘢） */}
         <div className="no-print flex items-center justify-between mb-6 gap-3 flex-wrap">

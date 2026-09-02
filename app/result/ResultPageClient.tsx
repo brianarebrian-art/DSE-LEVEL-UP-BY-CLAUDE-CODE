@@ -136,15 +136,15 @@ export default function ResultPageClient() {
     return () => ctrl.abort()
   }, [])
 
-  const displayScore = useCountUp(result?.score ?? 0, 1400)
+  const displayScore = useCountUp(result?.score ?? 0, 800) // 規格 §7.6：800ms
   const displayPct = useCountUp(
     result ? Math.round((result.score / result.total) * 100) : 0,
-    1400
+    800
   )
 
   if (!result || !gradeResult) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface text-ink-soft">
+      <div data-ml className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface text-ink-soft">
         <p className="text-ink-muted">{r.notFound}</p>
         <Link href="/practice" className="text-accent underline">{r.backToPractice}</Link>
       </div>
@@ -256,7 +256,7 @@ export default function ResultPageClient() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+    <div data-ml className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto space-y-6">
 
         {/* Subject context */}
@@ -355,7 +355,7 @@ export default function ResultPageClient() {
 
           {/* Marks to next grade */}
           {gradeResult.marksToNextGrade !== null && gradeResult.nextGrade && (
-            <div className="inline-flex items-center gap-2 text-sm text-gold bg-gold/10 border border-gold/20 rounded-full px-4 py-2">
+            <div className="inline-flex items-center gap-2 text-sm text-ink bg-surface-sunken border border-gold rounded-full px-4 py-2">
               {r.marksToNext
                 .replace('{grade}', gradeResult.nextGrade)
                 .replace('{marks}', String(gradeResult.marksToNextGrade))}
@@ -465,7 +465,7 @@ export default function ResultPageClient() {
             )[0]
             if (weak && weak.correct / weak.total < 0.8) {
               return (
-                <div className="mt-4 p-3 bg-gold/10 border border-gold/20 rounded-xl text-sm text-gold">
+                <div className="mt-4 p-3 bg-surface-sunken border-l-[3px] border-gold rounded-xl text-sm text-ink">
                   {r.weakAdviceA}<strong>{weak.topic}</strong>{r.weakAdviceB}{weak.correct}/{weak.total}{r.weakAdviceC}
                 </div>
               )
@@ -476,7 +476,7 @@ export default function ResultPageClient() {
         {/* Teacher hand-in tool — copies the fixed report template to clipboard */}
         <button
           onClick={copyTeacherReport}
-          className="no-print w-full flex items-center justify-center gap-2 bg-violet/10 hover:bg-violet/20 border border-violet/30 text-violet font-medium py-3.5 rounded-xl transition-all"
+          className="no-print w-full flex items-center justify-center gap-2 bg-surface-sunken hover:bg-surface-raised border border-violet text-ink font-medium py-3.5 rounded-xl transition-all"
         >
           {reportCopied ? <ClipboardCheck size={16} className="text-accent" /> : <ClipboardCopy size={16} />}
           {reportCopied

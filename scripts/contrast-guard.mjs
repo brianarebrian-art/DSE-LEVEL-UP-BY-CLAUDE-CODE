@@ -94,11 +94,38 @@ const stripComments = (s) =>
     .replace(/\/\*[\s\S]*?\*\//g, '')
 
 // 深色底：有其中一個就代表鋪咗深色表面。
-const DARK_SURFACE = /\b(?:bg|from|via|to)-(?:slate|gray|zinc|neutral|stone)-(?:6|7|8|9)\d{2}\b|\bbg-black\b|\b(?:bg|from|via|to)-\[#(?:0|1|2)[0-9A-Fa-f]{5}\b|\bbg-(?:surface-)?(?:ink|dark)\b/
+//
+// ⚠️ 每個分支尾都有 `(?!\/)` —— 帶 alpha 嘅底【唔算】鋪咗深色表面。
+// 2026-09-02 修補：`bg-black/70` 係彈層遮罩，佢同下面嘅嘢合成，
+// 唔構成一個已知嘅深色字底；但舊 regex 一見到就當成「呢個檔有深底」，
+// 於是成個檔嘅淺色字全部獲豁免。實例：EmotionThermometer 個標題
+// `text-white` 疊喺 `bg-surface-raised` 上，淺色主題下對比 1.00:1
+// （即係完全隱形），而本 guard 一直放行 —— 就係俾嗰個 bg-black/70 呃咗。
+// 落閘前影響統計（憲章 §6）：166 個 .tsx 入面有 4 個檔改變分類
+// （sensei、SubjectDetailView、AuthButton、ReadingRuler），
+// 但四個都冇淺色字，所以【新增報錯 = 0】。
+const DARK_SURFACE = /\b(?:bg|from|via|to)-(?:slate|gray|zinc|neutral|stone)-(?:6|7|8|9)\d{2}\b(?!\/)|\bbg-black\b(?!\/)|\b(?:bg|from|via|to)-\[#(?:0|1|2)[0-9A-Fa-f]{5}\b(?!\/)|\bbg-(?:surface-)?(?:ink|dark)\b(?!\/)/
 // 淺色字階（會出事嗰啲）
 const LIGHT_TEXT = /\btext-(slate|gray|zinc|neutral|stone|cyan|sky|teal|emerald|green|lime|yellow|amber|orange|rose|pink|violet|purple|blue|indigo|red)-(50|100|200|300|400|500)\b/g
 // 硬編 hex 淺字
 const HEX_TEXT = /\btext-\[#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})\]/g
+
+// 孤兒白字：`text-white` 但同一段 class 字串入面【冇任何 bg-*】。
+//
+// 點解要獨立一條規則：`text-white` 落淺底係 1.00:1 —— 對比度嘅最壞情況，
+// 但佢一直唔喺 LIGHT_TEXT 個 regex 入面（嗰個只覆蓋 text-{色}-{50…500}），
+// 所以呢種最嚴重嘅缺陷從來冇入過本 guard 視野。
+// 2026-09-02 實例：EmotionThermometer 個標題「而家感覺點？」——
+// 學生啱啱答錯難題彈出嚟問佢感受，嗰句問題本身完全睇唔到。
+//
+// 點解要求「同一串冇 bg-*」而唔係見到就報：白字落實色掣係完全正當嘅用法
+// （bg-rose text-white、bg-slate-500 text-white 之類）。落閘前實測：
+// 一刀切會產生 6 個誤報（account、admin、dashboard、result 四個檔嘅
+// 徽章同掣），而本 guard 檔頭寫住「寧可漏報都唔可以誤報 —— 一個成日嘈嘅
+// guard 好快就會被 --force 繞過」。加咗同串 bg-* 呢個條件之後：
+// 現行 code 誤報 0；突變測試（把上述兩個真缺陷還原）捉返 2/2。
+const CLASS_CHUNK = /(["'`])((?:(?!\1)[\s\S])*)\1/g
+const HAS_BG = /\bbg-[\w[\]#./-]+/
 
 /**
  * 深色底可以由【祖先 layout】鋪落嚟，唔一定喺同一個檔案。
@@ -223,6 +250,14 @@ for (const file of ROOTS.flatMap((r) => walk(r))) {
 
   HEX_TEXT.lastIndex = 0
   while ((m = HEX_TEXT.exec(src))) record(m[0], `#${m[1]}`, m.index)
+
+  // 孤兒白字。白色喺任何淺色底上都係 1.00–1.05:1，直接當 #FFFFFF 計。
+  CLASS_CHUNK.lastIndex = 0
+  while ((m = CLASS_CHUNK.exec(src))) {
+    const chunk = m[2]
+    if (!/\btext-white\b/.test(chunk) || HAS_BG.test(chunk)) continue
+    record('text-white', '#FFFFFF', m.index)
+  }
 
   for (const v of seen.values()) findings.push({ file, ...v })
 }
