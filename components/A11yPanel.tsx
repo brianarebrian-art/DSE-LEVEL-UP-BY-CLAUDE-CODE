@@ -45,6 +45,20 @@ const MIN = 12
 const MAX = 24
 const STEP = 2
 
+// 2026-09-02（莫蘭迪 v4.0-B 決定二）：本面板一直冇跟 2026-07-22 嘅 light-first
+// 遷移走 —— 成個組件寫死 slate 深色階，內部自洽（對比 5.7–13.4，冇無障礙問題），
+// 但佢係全站常駐嘅浮動面板，喺淺色／莫蘭迪頁面上會浮出一塊深灰島，
+// 就係「零視覺斷層」要剷走嗰種斷層。
+//
+// 全部改為語意 token，深度層級保留：slate-900／700 → surface-sunken（凹陷、控件），
+// slate-800 → surface-raised（面板身）。開啟態實心掣由 `bg-amber-400 text-black`
+// 改為 `bg-gold-strong text-on-accent` —— text-black 喺 Cyber 主題（淺金底）
+// 會變成深字落淺底啱，但 Light（深金底）就係深字落深底；on-accent 兩邊都啱。
+// 四種主題組合實測：開啟態 5.64–13.5，關閉態 7.13–13.95，全部過 AA。
+//
+// ⚠️ 呢個組件由三個測試守住（sen-accessibility、answer-feedback、route-states），
+// 但佢哋 assert 嘅全部係邏輯（comfortOn 推導、localStorage keys），冇一條綁色 class。
+// 換色唔會令佢哋失效，亦即係話【換色本身冇測試網】—— 改完要實跑睇。
 export default function A11yPanel() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -211,7 +225,7 @@ export default function A11yPanel() {
         aria-expanded={open}
         aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
         title={en ? 'Accessibility · text size & easy-read font' : '無障礙 · 字級同易讀字體'}
-        className="no-print fixed floating-bottom left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center hover:bg-slate-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"
+        className="no-print fixed floating-bottom left-4 z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-surface-raised border border-line-strong flex items-center justify-center hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
       >
         {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
             OG 圖，SVG 重繪先有真透明背景）。無障礙名稱由 button aria-label 提供。
@@ -221,19 +235,19 @@ export default function A11yPanel() {
 
       {open && (
         <div
-          className="no-print fixed floating-bottom-3 left-4 z-50 w-72 max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-2xl p-4 shadow-xl"
+          className="no-print fixed floating-bottom-3 left-4 z-50 w-72 max-w-[calc(100vw-2rem)] bg-surface-sunken border border-line-strong rounded-2xl p-4 shadow-xl"
           role="dialog"
           aria-label={en ? 'Accessibility options' : '無障礙設定'}
         >
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2 text-slate-100 font-bold text-sm">
+            <div className="flex items-center gap-2 text-ink font-bold text-sm">
               <Image src="/icons/accessibility.svg" alt="" aria-hidden width={20} height={20} className="object-contain" unoptimized />
               {en ? 'Accessibility' : '無障礙設定'}
             </div>
             <button
               onClick={() => setOpen(false)}
               aria-label={en ? 'Close' : '關閉'}
-              className="min-h-11 min-w-11 flex items-center justify-center text-slate-400 hover:text-slate-200 transition-colors -mr-2 -mt-2"
+              className="min-h-11 min-w-11 flex items-center justify-center text-ink-muted hover:text-ink transition-colors -mr-2 -mt-2"
             >
               <X size={16} />
             </button>
@@ -245,19 +259,19 @@ export default function A11yPanel() {
             aria-pressed={comfortOn}
             className={`w-full min-h-11 mb-4 flex items-center justify-between rounded-xl border px-4 py-2.5 transition-colors ${
               comfortOn
-                ? 'bg-cyan-500/15 border-cyan-400/50 text-cyan-200'
-                : 'bg-slate-800 border-slate-600 text-slate-200 hover:bg-slate-700'
+                ? 'bg-accent/15 border-accent/50 text-accent'
+                : 'bg-surface-raised border-line-strong text-ink hover:bg-surface-sunken'
             }`}
           >
             <span className="text-left">
               <span className="block text-sm font-bold">✨ {en ? 'Comfort mode (one tap)' : '一鍵舒適模式'}</span>
-              <span className="block text-[11px] text-slate-400">
+              <span className="block text-[11px] text-ink-muted">
                 {en ? 'Easy font + ruler + timer off + muted' : '易讀字體＋閱讀尺＋隱藏計時器＋靜音'}
               </span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                comfortOn ? 'bg-cyan-400 text-black' : 'bg-slate-700 text-slate-200'
+                comfortOn ? 'bg-accent-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
               }`}
             >
               {comfortOn ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
@@ -266,7 +280,7 @@ export default function A11yPanel() {
 
           {/* 字級 A− / A+ */}
           <div className="mb-4">
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-2">
+            <div className="flex items-center gap-1.5 text-xs text-ink-muted mb-2">
               <Type size={13} /> {en ? 'Text size' : '字級大細'}
             </div>
             <div className="flex items-center gap-2">
@@ -274,17 +288,17 @@ export default function A11yPanel() {
                 onClick={() => setFont(size - STEP)}
                 disabled={size <= MIN}
                 aria-label={en ? 'Smaller text' : '縮細字'}
-                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-100 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-line-strong bg-surface-raised text-ink hover:bg-surface-sunken disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <Minus size={15} />
                 <span className="text-sm ml-1">A</span>
               </button>
-              <span className="tabular-nums text-sm text-slate-300 w-14 text-center shrink-0">{size}px</span>
+              <span className="tabular-nums text-sm text-ink-soft w-14 text-center shrink-0">{size}px</span>
               <button
                 onClick={() => setFont(size + STEP)}
                 disabled={size >= MAX}
                 aria-label={en ? 'Larger text' : '放大字'}
-                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-slate-700 bg-slate-800 text-slate-100 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-line-strong bg-surface-raised text-ink hover:bg-surface-sunken disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 <Plus size={15} />
                 <span className="text-base ml-1">A</span>
@@ -294,11 +308,11 @@ export default function A11yPanel() {
 
           {/* B1 行距（1.2–2.0，每 0.1 一級） */}
           <div className="mb-4">
-            <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
+            <div className="flex items-center justify-between text-xs text-ink-muted mb-2">
               <span className="flex items-center gap-1.5">
                 <AlignJustify size={13} /> {en ? 'Line spacing' : '行距'}
               </span>
-              <span className="tabular-nums text-slate-300">{lineH.toFixed(1)}</span>
+              <span className="tabular-nums text-ink-soft">{lineH.toFixed(1)}</span>
             </div>
             <input
               type="range"
@@ -312,13 +326,13 @@ export default function A11yPanel() {
                 applyTextSpacing(v, letterSp)
               }}
               aria-label={en ? 'Line spacing' : '行距'}
-              className="w-full accent-amber-400 cursor-pointer"
+              className="w-full accent-accent-strong cursor-pointer"
             />
           </div>
 
           {/* B1 字間距（三檔） */}
           <div className="mb-4">
-            <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-2">
+            <div className="flex items-center gap-1.5 text-xs text-ink-muted mb-2">
               <MoveHorizontal size={13} /> {en ? 'Letter spacing' : '字間距'}
             </div>
             <div className="grid grid-cols-3 gap-1.5">
@@ -332,8 +346,8 @@ export default function A11yPanel() {
                   aria-pressed={letterSp === v}
                   className={`min-h-11 rounded-xl border text-xs transition-colors ${
                     letterSp === v
-                      ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
-                      : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                      ? 'bg-gold/15 border-gold/40 text-gold'
+                      : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
                   }`}
                 >
                   {v === 'normal'
@@ -347,10 +361,10 @@ export default function A11yPanel() {
           </div>
 
           {/* B1 即時預覽：拖動滑桿時即刻見到疏密度，唔使閂 panel 去試 */}
-          <div className="mb-4 rounded-xl border border-slate-700 bg-slate-800/60 p-3">
-            <div className="text-[11px] text-slate-400 mb-1">{en ? 'Preview' : '即時預覽'}</div>
+          <div className="mb-4 rounded-xl border border-line-strong bg-surface-raised/60 p-3">
+            <div className="text-[11px] text-ink-muted mb-1">{en ? 'Preview' : '即時預覽'}</div>
             <p
-              className="text-sm text-slate-200"
+              className="text-sm text-ink"
               style={{ lineHeight: lineH, letterSpacing: LETTER_SPACING_PREVIEW[letterSp] }}
             >
               {en
@@ -365,17 +379,17 @@ export default function A11yPanel() {
             aria-pressed={easy}
             className={`w-full min-h-11 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               easy
-                ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
-                : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gold/15 border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
             <span className="text-left">
               <span className="block text-sm">{en ? 'Easy-read font' : '易讀字體'}</span>
-              <span className="block text-[11px] text-slate-400">{en ? 'Dyslexia-friendly' : '讀寫障礙友善'}</span>
+              <span className="block text-[11px] text-ink-muted">{en ? 'Dyslexia-friendly' : '讀寫障礙友善'}</span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                easy ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
+                easy ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
               }`}
             >
               {easy ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
@@ -388,22 +402,22 @@ export default function A11yPanel() {
             aria-pressed={noMotion}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               noMotion
-                ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
-                : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gold/15 border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
             <span className="text-left flex items-center gap-2">
               <Wind size={14} className="shrink-0" />
               <span>
                 <span className="block text-sm">{en ? 'Reduce motion' : '減少動態效果'}</span>
-                <span className="block text-[11px] text-slate-400">
+                <span className="block text-[11px] text-ink-muted">
                   {en ? 'Stops animations without changing device settings' : '唔使改機身設定都停到動畫'}
                 </span>
               </span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                noMotion ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
+                noMotion ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
               }`}
             >
               {noMotion ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
@@ -415,20 +429,20 @@ export default function A11yPanel() {
             aria-pressed={hideTimer}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               hideTimer
-                ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
-                : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gold/15 border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
             <span className="text-left flex items-center gap-2">
               <Clock size={14} className="shrink-0" />
               <span>
                 <span className="block text-sm">{en ? 'Hide practice timer' : '隱藏練習計時器'}</span>
-                <span className="block text-[11px] text-slate-400">{en ? 'Less time pressure' : '減低時間壓力'}</span>
+                <span className="block text-[11px] text-ink-muted">{en ? 'Less time pressure' : '減低時間壓力'}</span>
               </span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                hideTimer ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
+                hideTimer ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
               }`}
             >
               {hideTimer ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
@@ -441,29 +455,29 @@ export default function A11yPanel() {
             aria-pressed={sound}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               sound
-                ? 'bg-amber-500/15 border-amber-500/40 text-amber-200'
-                : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gold/15 border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
             <span className="text-left flex items-center gap-2">
               <Volume2 size={14} className="shrink-0" />
               <span>
                 <span className="block text-sm">{en ? 'Gentle chime on correct' : '答對輕柔提示音'}</span>
-                <span className="block text-[11px] text-slate-400">
+                <span className="block text-[11px] text-ink-muted">
                   {en ? 'Off by default · never on wrong answers' : '預設關閉 · 答錯永遠無聲'}
                 </span>
               </span>
             </span>
             <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                sound ? 'bg-amber-400 text-black' : 'bg-slate-700 text-slate-200'
+                sound ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
               }`}
             >
               {sound ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
 
-          <p className="text-[11px] text-slate-400 mt-3 leading-relaxed">
+          <p className="text-[11px] text-ink-muted mt-3 leading-relaxed">
             {en
               ? 'Reading ruler is the 📏 button next to this one.'
               : '防跳行閱讀尺喺隔籬顆 📏 掣。'}

@@ -84,10 +84,32 @@ test('底欄四個入口指向真實路由，並且喺沉浸式模式收起', ()
     assert.ok(src.includes(`'${href}'`), `底欄冇 ${href}`)
   }
   // /bookmarks 本來喺全站導覽入面完全冇入口 —— 呢個係底欄補返嘅實際缺口，唔好又剷走。
-  assert.ok(/IMMERSIVE/.test(src), '冇沉浸式路由名單')
-  assert.ok(/'\/practice'/.test(src), '練習頁應收起底欄，否則會食走垂直空間兼易誤撳')
+  //
+  // 2026-09-02：沉浸式名單由 BottomNav 搬咗入 lib/immersiveRoutes.ts，
+  // 因為 AppShell（Navbar／Footer）都要用同一張。呢個斷言跟住搬，
+  // 而且順手擴闊：三個消費點缺一唔可 —— 名單、底欄、外殼。
+  assert.ok(/isImmersiveRoute/.test(src), '底欄冇用共用嘅沉浸式判斷')
+
+  const list = readFileSync(new URL('../../lib/immersiveRoutes.ts', import.meta.url).pathname, 'utf8')
+  assert.ok(/IMMERSIVE_ROUTES/.test(list), '冇沉浸式路由名單')
+  assert.ok(/'\/practice'/.test(list), '練習頁應收起底欄，否則會食走垂直空間兼易誤撳')
+
+  const shell = readFileSync(new URL('../AppShell.tsx', import.meta.url).pathname, 'utf8')
+  assert.ok(/isImmersiveRoute/.test(shell), 'AppShell 冇用沉浸式判斷 —— 練習頁會走返個 Navbar 出嚟')
+  assert.ok(/!immersive && navbar/.test(shell), 'AppShell 冇喺沉浸式模式收起 Navbar')
+  assert.ok(/!immersive && footer/.test(shell), 'AppShell 冇喺沉浸式模式收起 Footer')
+
   assert.ok(/aria-current/.test(src), '冇標示當前分頁')
   assert.ok(/md:hidden/.test(src), '底欄唔應該喺桌面出現')
+})
+
+test('練習頁必須自己有離開路徑 —— 全屏模式冇咗 Navbar', () => {
+  const src = readFileSync(new URL('../../app/practice/PracticeSession.tsx', import.meta.url).pathname, 'utf8')
+  // 呢條唔係樣式檢查，係防困死：Navbar 一收起，練習頁就係唯一出口。
+  assert.ok(
+    /href="\/subjects"/.test(src),
+    '練習頁冇返回科目頁嘅連結 —— 學生會困死喺全屏狀態，只剩瀏覽器返回掣',
+  )
 })
 
 // ── 導覽收斂（2026-08-21）──────────────────────────────────────────────────

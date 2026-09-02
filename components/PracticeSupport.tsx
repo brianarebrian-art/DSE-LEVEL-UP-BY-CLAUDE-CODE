@@ -136,7 +136,7 @@ export default function PracticeSupport() {
 
       {/* F09 今日夠了 —— 零罪疚、零「你仲有 X 題未做」 */}
       {doneToday && (
-        <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[60] bg-scrim-soft backdrop-blur-sm flex items-center justify-center p-4">
           <div className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
             <div className="text-3xl mb-3" aria-hidden>🌙</div>
             <p className="text-ink font-medium mb-2">{en ? 'You did enough today.' : '你已經好叻，聽日再戰。'}</p>

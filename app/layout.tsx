@@ -4,6 +4,7 @@ import './globals.css'
 import 'katex/dist/katex.min.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AppShell from '@/components/AppShell'
 import Providers from '@/components/Providers'
 import BottomNav from '@/components/BottomNav'
 import GlobalA11y from '@/components/GlobalA11y'
@@ -141,12 +142,11 @@ export default function RootLayout({
           跳至主要內容 · Skip to main content{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}
         </a>
         <Providers>
-          <Navbar />
-          {/* pb 讀 --bottom-nav-h：底欄唔顯示時係 0，唔會平白多咗一段空白。 */}
-          <main id="main-content" className="pt-16" style={{ paddingBottom: 'var(--bottom-nav-h)' }}>
+          {/* AppShell 負責全屏任務模式（/practice 等）隱藏 Navbar／Footer 同收起
+              頂部留白。名單見 lib/immersiveRoutes.ts，同 BottomNav 共用同一張。 */}
+          <AppShell navbar={<Navbar />} footer={<Footer />}>
             {children}
-          </main>
-          <Footer />
+          </AppShell>
           {/* 全站無障礙層：字級/易讀字體全站套用 + 「我唔開心」SOS（/relax 內自動隱藏） */}
           <GlobalA11y />
           {/* SEN 無障礙工具（全站常駐）：字級／易讀字體面板 + 防跳行閱讀尺 */}

@@ -90,7 +90,7 @@ export default function ExternalLinkGate({
 
       {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-scrim p-4"
           onClick={() => setOpen(false)}
         >
           <div

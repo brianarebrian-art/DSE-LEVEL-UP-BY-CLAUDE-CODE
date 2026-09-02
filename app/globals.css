@@ -57,6 +57,13 @@
   --color-line: rgba(0, 0, 0, 0.06);
   --color-line-strong: rgba(0, 0, 0, 0.12);
 
+  /* 彈層遮罩。抽做 token 嘅原因：遮罩本身唔跟主題走 ——
+     純黑 70% 蓋落莫蘭迪暖米底，出嚟係一片冷灰，同頁面調子脫節。
+     呢兩個預設值 = 原本 bg-black/70 同 bg-black/40，即係
+     非莫蘭迪頁面【一個像素都唔變】；只有 [data-ml] 之下先轉暖。 */
+  --color-scrim: rgba(0, 0, 0, 0.70);
+  --color-scrim-soft: rgba(0, 0, 0, 0.40);
+
   /* 三個輔助色族。Cyber 值全部經對比度實測（見下方）。 */
   --color-gold: #7E5D07;          /* 年份／次要標記（5.56 / 淡底 4.51） */
   --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色】，只做邊框／淡底 */
@@ -82,6 +89,45 @@
   --grade-2:   #475569; /* 6.93 */
   --grade-1:   #334155; /* 9.47 */
   --grade-u:   #9D1449; /* 7.30 —— 玫紅，唔用正紅（憲章 §大愛） */
+
+  /* ── 莫蘭迪 token（ml-*）｜規格 v4.0-B｜2026-09-02 ─────────────────────────
+     四大核心頁（做題／Result／60 秒引擎／錯題 DNA）專用色階。
+     生成 bg-ml-canvas、text-ml-ink、border-ml-line 等 utilities。
+
+     【點解另開 ml-* 命名空間，而唔係直接改寫上面嘅 Light token】
+     規格 §7.2 Tailwind 規則本身就寫「寫入 colors.ml.*」。呢個決定有實測支持：
+     若果把 --color-accent 換成 sage，全站三十幾條 route 現有嘅同色淡底藥丸
+     （text-accent bg-accent/12）會即刻跌穿 —— sage 落 α=0.15 淡底只有 3.94。
+     莫蘭迪色相偏柔和，本質上經唔起藥丸嗰 0.9 損耗，所以規格 §變更 5 改為
+     【禁用同色淡底藥丸】。呢條新規只適用於改用 ml-* 嘅頁；未遷移嘅頁繼續用
+     原本 accent／gold／violet 一套，兩套並存唔會互相污染。
+
+     【對比度驗證】括號＝落三個同主題底面（canvas／surface／muted）嘅最差值。
+     Light 三底面 = #F4F0EA / #FFFDF9 / #F0EBE3。
+     ⚠️ 改色前必讀：v4.0 原版有三個值未達標，v4.0-A 只修咗 Light 一半，
+     以下係逐項實測後嘅定案，每個都要對【三個】底面計，唔可以只計 canvas。 */
+  --color-ml-canvas: #F4F0EA;      /* 頁面底 */
+  --color-ml-surface: #FFFDF9;     /* 卡片 */
+  --color-ml-muted: #F0EBE3;       /* 次級區塊。⚠️ 規格原值 #E8E2D9 太深，
+                                      五隻前景色全部喺佢身上跌穿，已調淺 */
+  --color-ml-ink: #2C2A29;         /* 正文（12.04） */
+  --color-ml-ink-soft: #6B6560;    /* 輔助（4.84） */
+  --color-ml-sage: #5E6B5A;        /* 主行動、正確（4.75 / 白字掣 5.64） */
+  --color-ml-clay: #76644F;        /* 強調、失分標示（4.78 / 白字掣 5.67）
+                                      ⚠️ 規格原值 #A89080 對卡只有 2.97，
+                                      連圖形 3:1 都唔夠 —— 即係「指出失分位」
+                                      嗰個標示會近乎隱形。已撳深兩次 */
+  --color-ml-warn: #8B5E4A;        /* 超時、警告（4.66 / 白字掣 5.53）。唔用螢光紅 */
+  --color-ml-good: #5E6B5A;        /* 達標（同 sage） */
+  --color-ml-line: #89847D;        /* 控件邊界（3.13，WCAG 1.4.11）
+                                      ⚠️ 規格原值 #D9D2C8 只有 1.32、
+                                      v4.0-A 改 #C4BDB3 亦只有 1.64 —— 兩次都冇落到地 */
+  --color-ml-on-brand: #FFFFFF;    /* 實心掣上嘅字（Light 用白字） */
+  /* rose／mist 刻意【唔納入對比度規範】：兩者對三底面只有 1.97 / 2.41，
+     連圖形 3:1 都唔夠。規格已明文限定「只可做裝飾底或 icon 填色，唔載字」——
+     即係唔可以做描邊 icon，亦唔可以做唯一嘅狀態指示。 */
+  --color-ml-rose: #B7A6A3;        /* 情緒／關懷 —— 純裝飾填色 */
+  --color-ml-mist: #8A9BA8;        /* 資訊／交通 —— 純裝飾填色 */
 }
 
 /* ── Cyber 主題（深夜霓虹）────────────────────────────────────────────────
@@ -133,6 +179,110 @@
   --grade-2:   #94A3B8; /*  6.64 */
   --grade-1:   #CBD5E1; /* 11.47 */
   --grade-u:   #FF87B8; /*  7.63 —— 玫紅 */
+
+  /* 莫蘭迪 token 嘅 Cyber（暗色）值。Dark 三底面 = #1E1C1B / #2C2A29 / #3A3734。
+     ⚠️ 暗色模式方向同 Light 相反：實心掣係【淺色填色 + 深色字】，唔係白字。
+     規格 v4.0-A 曾經把 dark 一欄跟住 Light 一齊撳深（sage → #6B7D66），
+     結果配白字得 4.42，反而變差；v4.0-B 已回復原值配深字。
+     另外 v4.0-B 個 dark 欄只驗咗 canvas，冇驗第三個暗底 #3A3734 ——
+     ink-soft 同 line 兩個喺嗰度跌穿（4.36 / 2.11），以下係修正後嘅值。 */
+  --color-ml-canvas: #1E1C1B;
+  --color-ml-surface: #2C2A29;
+  --color-ml-muted: #3A3734;
+  --color-ml-ink: #E8E2D9;         /* 9.18 */
+  --color-ml-ink-soft: #A8A19A;    /* 4.63（規格值 #A39C95 落 muted 只有 4.36） */
+  --color-ml-sage: #8A9A86;        /* 深字掣 5.70 */
+  --color-ml-clay: #C4A994;        /* 深字掣 7.64 */
+  --color-ml-warn: #C4896E;        /* 深字掣 5.78 */
+  --color-ml-good: #A3B59A;        /* 深字掣 7.79 */
+  --color-ml-line: #898581;        /* 3.23（規格值 #6C6762 落 muted 只有 2.11） */
+  --color-ml-on-brand: #1E1C1B;    /* 實心掣上嘅字（Dark 用深字） */
+  --color-ml-rose: #C9B8B5;        /* 純裝飾填色 */
+  --color-ml-mist: #9AABB6;        /* 純裝飾填色 */
+}
+
+/* ── 莫蘭迪 scope（[data-ml]）｜規格 v4.0-B §7 ─────────────────────────────
+   把【現有語意 token】喺呢個 scope 內重新指向莫蘭迪色階。
+
+   點解用 scope 而唔係逐個 className 換做 ml-*：
+   四個核心畫面實測有 259 處語意 token（bg-surface／text-ink／text-accent…）、
+   【零】處寫死 Tailwind 色階。即係話呢批頁早就已經完成 token 化 —— 只要喺
+   容器上重新定義同名變數，259 處自動跟住變，唔使郁一行 className。
+   規格 §7.1 講「工作量係換值 + 補色，唔係重寫 2,000 行」，呢個就係嗰個換法。
+
+   ⚠️ 唯一唔可以自動跟嘅係【同色淡底藥丸】（bg-accent/[0.10] 之類）——
+   Tailwind 會編譯成帶 alpha 嘅色值，scope 換底色之後對比會跌約 0.9，
+   而莫蘭迪色相本身冇呢個餘量。四個畫面共 40 處，已按規格 §變更 5 逐處
+   改為【實色 bg-ml-muted + 左側 3px 色條】，唔靠 alpha。
+
+   本 scope 只影響掛咗 data-ml 嘅子樹；其餘三十幾條 route 完全唔受影響。 */
+[data-ml] {
+  --color-surface: var(--color-ml-canvas);
+  --color-surface-raised: var(--color-ml-surface);
+  --color-surface-sunken: var(--color-ml-muted);
+  --color-ink: var(--color-ml-ink);
+  --color-ink-soft: #3D3A38;        /* 9.51 */
+  --color-ink-muted: var(--color-ml-ink-soft); /* 4.84 */
+  --color-ink-faint: #9C958D;       /* 2.49 —— 同上游一樣，只准用於停用控件／
+                                       aria-hidden 裝飾（WCAG 1.4.3 明文豁免） */
+  --color-accent: var(--color-ml-sage);        /* 4.75 */
+  --color-accent-strong: var(--color-ml-sage); /* 白字掣 5.64 */
+  --color-accent-hover: #4D584A;               /* 白字 7.47 */
+  --color-on-accent: var(--color-ml-on-brand);
+  --color-line: rgba(44, 42, 41, 0.08);
+  --color-line-strong: rgba(44, 42, 41, 0.16);
+  /* 遮罩改用暖墨（同 ml-ink #2C2A29 同源），蓋落 #F4F0EA 唔會出冷灰。 */
+  --color-scrim: rgba(44, 42, 41, 0.72);
+  --color-scrim-soft: rgba(44, 42, 41, 0.42);
+
+  /* 三個輔助色族改指莫蘭迪。gold 喺 60 秒引擎用得最多（鎖艙邊框、反思提示），
+     莫蘭迪對應色係 clay；rose 對應 warn；violet 對應 mist。
+     ⚠️ mist 原值 #8A9BA8 落三底面只有 2.41，【載唔到字】——
+     故文字用 mist-strong #5B666F（4.95），原 mist 只留畀裝飾填色。 */
+  --color-gold: var(--color-ml-clay);          /* 4.78 */
+  --color-gold-soft: var(--color-ml-rose);     /* 1.97 —— 永遠唔可以做字色 */
+  --color-gold-strong: #5F5144;                /* 5.94 / 白字 7.64 */
+  --color-violet: #5B666F;                     /* mist-strong 4.95 */
+  --color-violet-strong: #4A545C;              /* 白字 7.19 */
+  --color-on-violet: #FFFFFF;
+  --color-rose: var(--color-ml-warn);          /* 4.66 */
+  --color-rose-strong: #724D3D;                /* 白字 7.38 */
+
+  /* 等級色：規格個 token 表【完全冇提過等級色】，但 Result 頁一路用緊。
+     莫蘭迪底 (#F4F0EA) 比現行底 (#FAFAF8) 深，所有等級色對比會跌約 0.4 ——
+     實測 Lv5* 由 4.82 跌到 4.44、Lv5 由 4.70 跌到 4.33，兩隻穿 AA。
+     其餘六隻仲有餘量，原值保留。 */
+  --grade-5s: #846208;  /* 4.74（原 #8A6608 落莫蘭迪底只有 4.44） */
+  --grade-5:  #16793A;  /* 4.62（原 #177E3C 落莫蘭迪底只有 4.33） */
+}
+
+/* 莫蘭迪 scope 喺 Cyber 主題下嘅值。ml-* 變數本身已經喺 [data-theme='cyber']
+   換咗一套，所以下面 var() 引用會自動跟；只需覆寫唔係經 ml-* 指過去嗰幾個。 */
+/* 兩條 selector 缺一唔可：data-ml 可以掛喺 <html> 自己（AppShell 掛嘅，
+   俾全域彈層跟色），亦可以喺頁面個 div（SSR 首屏用，避免閃色）。
+   `A B` 只食後代，掛喺 :root 自己嗰個要 `AB` 先食到。 */
+:root[data-theme='cyber'][data-ml],
+:root[data-theme='cyber'] [data-ml] {
+  --color-ink-soft: #CFC8BF;        /* 7.13 */
+  --color-ink-faint: #726C66;       /* 2.28 —— 停用控件／裝飾專用 */
+  --color-accent-hover: #A0B39B;    /* 深字 7.61 */
+  --color-line: rgba(232, 226, 217, 0.10);
+  --color-line-strong: rgba(232, 226, 217, 0.20);
+  --color-scrim: rgba(10, 9, 9, 0.78);
+  --color-scrim-soft: rgba(10, 9, 9, 0.50);
+  --color-gold-strong: #D4B7A0;     /* 深字 8.96 */
+  --color-violet: #9AABB6;          /* 裝飾 mist 落暗底 = 6.05，載得字 */
+  --color-violet-strong: #9AABB6;
+  --color-on-violet: #1E1C1B;
+  --color-rose-strong: #D49477;     /* 深字 6.71 */
+  /* ⚠️ 等級色必須喺呢度【還原】做 Cyber 值。
+     上面 [data-ml] 為咗遷就莫蘭迪淺底，把 grade-5／grade-5s 撳深咗；
+     但兩條 selector 特異性一樣，後者只係贏喺次序，所以嗰兩個深色值會
+     一路帶入暗色模式 —— 2026-09-02 瀏覽器實測到 grade-5 得 3.10:1、
+     grade-5s 得 3.02:1（深綠／深金疊喺 #1E1C1B 上）。
+     其餘六隻冇喺 [data-ml] 覆寫過，所以自動保持 Cyber 值，唔使寫。 */
+  --grade-5s: #FCD34D;              /* 11.81 → 落 #1E1C1B 更鬆 */
+  --grade-5:  #4ADE80;              /*  9.77 → 同上 */
 }
 
 body {
@@ -754,6 +904,110 @@ html[data-bottomnav='on'] {
   animation: relax-in 520ms var(--ease-spring-settle) both;
   animation-delay: var(--relax-in-delay, 0ms);
 }
+/* ══ 莫蘭迪動效層（規格 v4.0-B §7.3／§7.6）════════════════════════════════
+   全部用 transform／opacity／stroke-dashoffset —— 唔碰 layout，唔用 JS 動畫庫
+   （規格 §7.5 明文禁 Framer Motion；憲章 §5 禁新增套件）。
+
+   統一物理感：一律 ease-out 系（cubic-bezier(0.25, 0.1, 0.25, 1)），
+   ⚠️【唔准】加第二條過衝曲線 —— P1-7-R2 全站禁令，
+   originkit-motion.test.mts 只准 .achievement-pop 一條，cubic-bezier
+   同 linear() 兩種寫法都守住。下面所有曲線第二個控制點都 ≤ 1。 */
+
+/* 題目轉場：舊題向左滑出、新題由右滑入（規格 §7.3A，400ms）。
+   位移刻意細（24px）—— 規格講「暗示前後關係」，唔係做投影片。 */
+@keyframes ml-q-enter {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ml-q-leave {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-24px); }
+}
+.ml-q-enter { animation: ml-q-enter 400ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+.ml-q-leave { animation: ml-q-leave 400ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+
+/* 選項按落：scale 0.96（規格 §7.3A，150ms）。用 :active 而唔係 JS state ——
+   快速連點時瀏覽器自己處理，唔會卡住介面（規格 §7.5「可中斷」）。 */
+.ml-press { transition: transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1); }
+.ml-press:active { transform: scale(0.96); }
+
+/* 錯因選項選中：scale 1.02（規格 §7.3C，200ms）。1.02 唔算過衝 ——
+   佢係終點值，唔係曲線超過 1；守閘查嘅係曲線。 */
+.ml-pick-on { transform: scale(1.02); }
+.ml-pick { transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1), opacity 200ms ease-out; }
+
+/* 提示揭示：Accordion fade + translateY(10px)（規格 §7.3C，300ms）。 */
+@keyframes ml-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ml-reveal { animation: ml-reveal 300ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+
+/* Modal 入場：scale 0.9→1 + fade（規格 §7.3D，300ms）。 */
+@keyframes ml-modal-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.ml-modal-in { animation: ml-modal-in 300ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+
+/* 錯題 DNA 家族樹：節點 stagger 入場，每個錯開 50ms（規格 §7.3D／§7.6）。
+   用 --i 傳序號，唔使為每個節點寫一條 rule。 */
+.ml-stagger {
+  animation: ml-reveal 320ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+/* 基因節點 hover 上浮 4px（規格 §7.3D，200ms）。 */
+.ml-lift { transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 200ms ease-out; }
+.ml-lift:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(44, 42, 41, 0.12); }
+
+/* 同一基因第三次出現：輕微脈衝 scale 1→1.03→1（規格 §7.3D，1s）。
+   憲章 §7：呢個係【引起注意】，唔係懲罰 —— 幅度同答啱嘅 .pulse-correct 一致，
+   冇震屏、冇變色、冇音效。 */
+@keyframes ml-notice {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+.ml-notice { animation: ml-notice 1s cubic-bezier(0.25, 0.1, 0.25, 1) 2; }
+
+/* ── 降級：prefers-reduced-motion ——「降級後所有轉場變為 150ms fade」
+   （規格 §7.5 逐字要求）。位移同縮放全部拆走，只留最溫和嘅淡入。 */
+@media (prefers-reduced-motion: reduce) {
+  .ml-q-enter, .ml-q-leave, .ml-reveal, .ml-modal-in, .ml-stagger {
+    animation: ml-reveal 150ms ease-out both;
+    animation-delay: 0ms;
+  }
+  .ml-press, .ml-pick, .ml-lift { transition: none; }
+  .ml-press:active, .ml-pick-on, .ml-lift:hover { transform: none; }
+  .ml-notice { animation: none; }
+}
+
+/* ── 降級：一鍵舒適模式（SEN）—— 憲章 §8.1 約束 4：整層關掉，唔係調慢。
+   ⚠️ 每個都要 opacity: 1 收尾：動畫係 `both`，關咗 animation 之後
+   如果冇明確寫返 opacity，元素會停喺 from 嘅 opacity: 0 —— 即係
+   「關咗動畫 = 睇唔到內容」。呢個係整層關嗰陣最易踩嘅窿。 */
+html.font-easy .ml-q-enter,
+html.font-easy .ml-q-leave,
+html.font-easy .ml-reveal,
+html.font-easy .ml-modal-in,
+html.font-easy .ml-stagger,
+html.font-easy .ml-notice {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1;
+}
+html.font-easy .ml-press,
+html.font-easy .ml-pick,
+html.font-easy .ml-lift {
+  transition: none !important;
+}
+html.font-easy .ml-press:active,
+html.font-easy .ml-pick-on,
+html.font-easy .ml-lift:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 @keyframes relax-in {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }

@@ -91,7 +91,7 @@ export default function GlobalA11y() {
         onClick={() => setSosOpen(true)}
         title={en ? 'Feeling down? We are here.' : '我唔開心 —— 你唔係一個人，我哋喺度。'}
         // FIX: [B8] safe-area — iPhone Home Indicator 唔會遮擋（root layout 已設 viewport-fit=cover）
-        className="no-print fixed floating-bottom right-4 z-40 w-12 h-12 rounded-full bg-surface-raised/90 border border-sky-500/40 text-accent flex items-center justify-center hover:bg-sky-500/15 transition-colors animate-pulse motion-reduce:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-400"
+        className="no-print fixed floating-bottom right-4 z-40 w-12 h-12 rounded-full bg-surface-raised/90 border border-accent/40 text-accent flex items-center justify-center hover:bg-accent/15 transition-colors animate-pulse motion-reduce:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         style={{ animationDuration: '3s' }}
         aria-label={en ? 'Emotional support' : '情緒支援'}
       >
@@ -111,7 +111,7 @@ export default function GlobalA11y() {
             <button
               onClick={() => setSosOpen(false)}
               aria-label={en ? 'Close' : '關閉'}
-              className="absolute top-3 right-3 min-h-11 min-w-11 flex items-center justify-center text-ink-soft hover:text-white transition-colors"
+              className="absolute top-3 right-3 min-h-11 min-w-11 flex items-center justify-center text-ink-soft hover:text-ink transition-colors"
             >
               <X size={18} />
             </button>
@@ -126,7 +126,7 @@ export default function GlobalA11y() {
                 href="/relax/breathing"
                 onClick={() => setSosOpen(false)}
                 autoFocus
-                className="block min-h-11 rounded-[10px] border border-sky-500/30 text-accent text-sm px-4 py-3 hover:bg-sky-500/10 transition-colors"
+                className="block min-h-11 rounded-[10px] border border-accent/30 text-accent text-sm px-4 py-3 hover:bg-accent/10 transition-colors"
               >
                 🫁 {en ? 'Do a 4-7-8 breath (1 minute)' : '做個 4-7-8 呼吸（1 分鐘）'}
               </Link>
@@ -140,7 +140,7 @@ export default function GlobalA11y() {
               </Link>
             </div>
 
-            <div className="rounded-[10px] border border-red-500/10 bg-red-500/5 px-4 py-3 text-center">
+            <div className="rounded-[10px] border border-rose/20 bg-rose/[0.05] px-4 py-3 text-center">
               <p className="text-xs text-ink-soft leading-relaxed">
                 {en ? 'Need to talk to someone now?' : '想搵真人傾？'}
                 <br />

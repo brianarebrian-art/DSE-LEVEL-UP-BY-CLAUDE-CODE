@@ -89,8 +89,12 @@ export default function ErrorDNA() {
 
           {/* Legend */}
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4">
-            {ORDER.map((k) => (
-              <div key={k} className="flex items-center gap-1.5 text-xs text-ink-muted">
+            {ORDER.map((k, i) => (
+              <div
+                key={k}
+                className="ml-stagger flex items-center gap-1.5 text-xs text-ink-muted"
+                style={{ ['--i' as string]: i }}
+              >
                 <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: CAUSE[k].color }} />
                 <span>{CAUSE[k].emoji} {en ? CAUSE[k].en : CAUSE[k].zh}</span>
                 <span className="text-ink-muted">({counts[k]})</span>
@@ -100,7 +104,7 @@ export default function ErrorDNA() {
 
           {/* 連續同類錯因警示（≥3 次） */}
           {streak && (
-            <div className="bg-rose/[0.06] rounded-xl px-4 py-3 border-l-2 border-rose/50 mb-3">
+            <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-[3px] border-rose mb-3">
               <div className="text-xs text-rose font-medium mb-1">{en ? 'Repeat-pattern alert' : '重複模式警示'}</div>
               <p className="text-sm text-ink-soft leading-relaxed">
                 {en
@@ -111,7 +115,7 @@ export default function ErrorDNA() {
           )}
 
           {/* Diagnosis on the top cause */}
-          <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-2 border-gold/60">
+          <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-[3px] border-gold">
             <div className="text-xs text-gold font-medium mb-1">{en ? 'Pattern read' : '模式診斷'}</div>
             <p className="text-sm text-ink-soft leading-relaxed">{en ? CAUSE[top].adviceEn : CAUSE[top].adviceZh}</p>
           </div>

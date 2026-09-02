@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 import { BookOpen, Bookmark, TrendingUp, UserRound } from 'lucide-react'
 import { useT, useLocale } from '@/lib/i18n'
+import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 
 // 手機底部導航（UI／UX 方案 §6.1）。
 //
@@ -32,8 +33,6 @@ import { useT, useLocale } from '@/lib/i18n'
 // 掛喺 <html> 而唔係各自傳 prop：底欄一收起，變數即刻返 0，唔會出現
 // 「底欄冇咗但浮動掣仲吊喺半空」。
 
-/** 全螢幕任務模式 —— 呢啲路由唔顯示底欄。 */
-const IMMERSIVE = ['/practice', '/focus', '/relax', '/paper-warrior', '/answer-sheet']
 
 export default function BottomNav() {
   const pathname = usePathname()
@@ -41,7 +40,7 @@ export default function BottomNav() {
   const { locale } = useLocale()
   const en = locale === 'en'
 
-  const hidden = IMMERSIVE.some((p) => pathname === p || pathname.startsWith(`${p}/`))
+  const hidden = isImmersiveRoute(pathname)
 
   useEffect(() => {
     const el = document.documentElement
