@@ -8,10 +8,14 @@ import assert from 'node:assert/strict'
 import * as ns from '../examDay/upstream.ts'
 // 執行期攞 default（CJS 包住嗰個），型別上攞 namespace —— 兩邊都啱。
 const upstream = (ns as unknown as { default?: typeof ns }).default ?? ns
-const { cachedJson, __resetCache, TTL } = upstream
+const { cachedJson, __resetCache, TTL, mtrDisrupted } = upstream
 
-// 報告 v4.0 §6.4 要求：「為 429、5xx、空 platform_list 寫 fixture，
-// 確保上游變更時即時發現」。呢度用假 fetch 造出嗰三種情況。
+// 報告 v4.0 §6.4 要求：「為 429、5xx、空回應寫 fixture，確保上游變更時
+// 即時發現」。呢度用假 fetch 造出嗰三種情況。
+//
+// 註：原文寫「空 platform_list」，嗰個係輕鐵嘅欄位。輕鐵上游已於
+// 2026-09-03 移除（見 upstream.ts），所以同一條契約改為守港鐵嘅
+// 空班次表 —— 要守嘅行為（「空 ≠ 失敗」）冇變。
 //
 // 呢批測試守嘅係【熔斷】—— 考試朝早六點半，上游死咗要照出最後一次成功
 // 嘅資料同時間戳，唔可以出白畫面。呢個行為冇測試網就會靜靜雞失效
@@ -63,13 +67,30 @@ test('第一次就失敗（冇舊值可出）→ 要掉錯，唔可以扮成功'
   restore()
 })
 
-test('空 platform_list 唔算失敗 —— 輕鐵冇車一樣係有效答案', async () => {
+test('空班次表唔算失敗 —— 尾班車走咗一樣係有效答案', async () => {
   __resetCache()
-  stubFetch([{ status: 200, body: { status: 1, platform_list: [] } }])
-  const r = await cachedJson<{ platform_list: unknown[] }>('tlrt', 'https://x.test/d', 0)
+  stubFetch([{ status: 200, body: { status: 1, data: { 'TKL-TKO': { UP: [], DOWN: [] } } } }])
+  const r = await cachedJson<{ data: Record<string, { UP: unknown[] }> }>('tmtr', 'https://x.test/d', 0)
   assert.equal(r.stale, false)
-  assert.deepEqual(r.data.platform_list, [])
+  assert.deepEqual(r.data.data['TKL-TKO'].UP, [])
   restore()
+})
+
+// ── 延誤旗 ──
+// 港鐵把延誤放喺兩個唔同位（頂層 isdelay、data 入面 isdelay），仲有
+// status !== 1。三個都要認 —— 認漏一個，落雨嗰朝就靜靜雞唔會加緩衝。
+test('延誤旗：status 唔係 1 就當有事', () => {
+  assert.equal(mtrDisrupted({ status: 0, data: {} }), true)
+})
+test('延誤旗：頂層 isdelay = Y', () => {
+  assert.equal(mtrDisrupted({ status: 1, isdelay: 'Y' }), true)
+})
+test('延誤旗：data 入面某一站 isdelay = Y', () => {
+  assert.equal(mtrDisrupted({ status: 1, data: { 'TKL-TKO': { isdelay: 'Y' } } }), true)
+})
+test('延誤旗：一切正常就係 false（唔可以無端加緩衝）', () => {
+  assert.equal(mtrDisrupted({ status: 1, isdelay: 'N', data: { 'TKL-TKO': { isdelay: 'N' } } }), false)
+  assert.equal(mtrDisrupted(undefined), false)
 })
 
 test('TTL 之內唔會再打上游', async () => {

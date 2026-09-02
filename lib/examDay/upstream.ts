@@ -77,9 +77,14 @@ export function __resetCache() {
 }
 
 // ── 上游端點（全部公開、免鑰匙、免費）────────────────────────────────
+//
+// 輕鐵 getSchedule 曾經喺呢度，2026-09-03 移除。原因唔係佢壞咗，
+// 係佢要求用戶自己打一個【輕鐵站編號】—— 一個四位數字代碼。
+// 冇人記得自己屋企附近嗰個站係 250 定 260，所以嗰格輸入框實際上
+// 永遠係空。而家「由屋企去到出發站要幾耐」用一個學生自己講得出嘅
+// 分鐘數代替咗佢，順便連巴士、小巴、行路嘅接駁一齊涵蓋咗。
 const HKO = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php'
 const MTR = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php'
-const LRT = 'https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule'
 
 /** TTL 按規格 §6.2：天氣 5–10 分鐘、列車 15–30 秒。 */
 export const TTL = { weather: 5 * 60_000, warning: 60_000, train: 20_000 } as const
@@ -118,31 +123,35 @@ export interface MtrTrain {
   valid: string
 }
 export interface MtrSchedule {
+  /** 1 = 正常。0 = 港鐵掛住特別安排／事故公告（連 url 一齊出）。 */
   status?: number
+  message?: string
+  /** status 0 嗰陣港鐵俾嘅公告連結 */
+  url?: string
   sys_time?: string
   curr_time?: string
-  data?: Record<string, { UP?: MtrTrain[]; DOWN?: MtrTrain[] }>
+  /** 'Y' = 該站有延誤。港鐵有時放喺頂層，有時放喺 data 入面 —— 兩處都要睇。 */
+  isdelay?: string
+  data?: Record<string, { UP?: MtrTrain[]; DOWN?: MtrTrain[]; isdelay?: string }>
+}
+
+/**
+ * 由一份 getSchedule 判斷「有冇嘢阻住」。
+ *
+ * ⚠️ 呢個只係轉述港鐵自己出嘅旗，唔係我哋自己偵測延誤。
+ * 我哋冇能力知道「班次疏咗」—— 一個站嘅下一班車幾時到，
+ * 同「今日成條線慢咗」係兩回事。所以呢度只認港鐵明講嗰兩個訊號。
+ */
+export function mtrDisrupted(s: MtrSchedule | undefined): boolean {
+  if (!s) return false
+  if (s.status !== undefined && s.status !== 1) return true
+  if (s.isdelay === 'Y') return true
+  return Object.values(s.data ?? {}).some((d) => d.isdelay === 'Y')
 }
 
 export const getMtr = (line: string, sta: string) =>
   cachedJson<MtrSchedule>(
     `mtr:${line}:${sta}`,
     `${MTR}?line=${encodeURIComponent(line)}&sta=${encodeURIComponent(sta)}&lang=tc`,
-    TTL.train,
-  )
-
-export interface LrtPlatform {
-  platform_id: number
-  route_list?: { route_no: string; dest_ch: string; time_ch: string; train_length?: number }[]
-}
-export interface LrtSchedule {
-  status?: number
-  platform_list?: LrtPlatform[]
-}
-
-export const getLrt = (stationId: string) =>
-  cachedJson<LrtSchedule>(
-    `lrt:${stationId}`,
-    `${LRT}?station_id=${encodeURIComponent(stationId)}`,
     TTL.train,
   )
