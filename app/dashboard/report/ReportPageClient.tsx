@@ -250,7 +250,7 @@ export default function ReportPageClient() {
           <button
             onClick={downloadPng}
             disabled={downloading}
-            className="inline-flex items-center gap-2 min-h-11 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-4 py-2.5 rounded-xl transition-all text-sm font-bold disabled:opacity-50"
+            className="ml-press inline-flex items-center gap-2 min-h-11 bg-accent-strong hover:bg-accent-hover text-on-accent px-4 py-2.5 rounded-xl transition-all text-sm font-bold disabled:opacity-50"
           >
             <ImageDown size={15} /> {downloading ? (en ? 'Exporting…' : '導出緊…') : en ? 'Download PNG' : '下載 PNG'}
           </button>

@@ -326,7 +326,7 @@ export default function A11yPanel() {
                 applyTextSpacing(v, letterSp)
               }}
               aria-label={en ? 'Line spacing' : '行距'}
-              className="w-full accent-amber-400 cursor-pointer"
+              className="w-full accent-accent-strong cursor-pointer"
             />
           </div>
 
