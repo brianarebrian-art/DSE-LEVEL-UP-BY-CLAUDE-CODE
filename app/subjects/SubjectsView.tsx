@@ -12,24 +12,16 @@ import { useLocale } from '@/lib/i18n'
 import { bestSimilarity, FUZZY_THRESHOLD } from '@/lib/fuzzy'
 
 // Tailwind needs literal class names, so map accents explicitly.
-// Light-first（憲章 §3）：每科保留自己嘅 hover accent 作色彩編碼（hover-only 淡色調，on-white 讀得清）。
+// 2026-09-02（規格 v4.0-B §1.3）：原本 16 隻高飽和 Tailwind 色收斂成六個
+// 莫蘭迪家族。色值定義喺 globals.css --color-subj-*，跟主題走。
+// 用途只係 hover 色彩編碼，唔載字，所以門檻係 3:1（圖形／UI 邊界）。
 const accentRing: Record<string, string> = {
-  amber: 'hover:border-amber-500/50 hover:bg-amber-500/5',
-  cyan: 'hover:border-cyan-500/50 hover:bg-cyan-500/5',
-  sky: 'hover:border-sky-500/50 hover:bg-sky-500/5',
-  violet: 'hover:border-violet-500/50 hover:bg-violet-500/5',
-  emerald: 'hover:border-emerald-500/50 hover:bg-emerald-500/5',
-  green: 'hover:border-green-500/50 hover:bg-green-500/5',
-  rose: 'hover:border-rose-500/50 hover:bg-rose-500/5',
-  red: 'hover:border-red-500/50 hover:bg-red-500/5',
-  blue: 'hover:border-blue-500/50 hover:bg-blue-500/5',
-  orange: 'hover:border-orange-500/50 hover:bg-orange-500/5',
-  teal: 'hover:border-teal-500/50 hover:bg-teal-500/5',
-  pink: 'hover:border-pink-500/50 hover:bg-pink-500/5',
-  fuchsia: 'hover:border-fuchsia-500/50 hover:bg-fuchsia-500/5',
-  indigo: 'hover:border-indigo-500/50 hover:bg-indigo-500/5',
-  slate: 'hover:border-slate-500/50 hover:bg-slate-500/5',
-  lime: 'hover:border-lime-500/50 hover:bg-lime-500/5',
+  sage: 'hover:border-subj-sage/50 hover:bg-subj-sage/5',
+  moss: 'hover:border-subj-moss/50 hover:bg-subj-moss/5',
+  mist: 'hover:border-subj-mist/50 hover:bg-subj-mist/5',
+  clay: 'hover:border-subj-clay/50 hover:bg-subj-clay/5',
+  rose: 'hover:border-subj-rose/50 hover:bg-subj-rose/5',
+  stone: 'hover:border-subj-stone/50 hover:bg-subj-stone/5',
 }
 
 export default function SubjectsView() {
@@ -71,7 +63,7 @@ export default function SubjectsView() {
           會被理解成全題型覆蓋 —— 而實情係 MC 有、書寫／口試／實作冇。
           改為顯示【真實題數】：一個具體數字唔會被過度詮釋，而且加減題會自動跟。 */}
       <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full">
+        <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
           <CheckCircle2 size={10} /> {getSubjectQuestions(s.id).length}
           {en ? ' MC' : ' 條 MC'}
         </span>
@@ -183,7 +175,7 @@ export default function SubjectsView() {
               onClick={() => setCategory(val)}
               className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                 category === val
-                  ? 'bg-accent/12 text-accent border-accent/40'
+                  ? 'bg-surface-sunken text-accent border-accent/40'
                   : 'bg-surface-raised text-ink-muted border-line-strong hover:text-accent'
               }`}
             >

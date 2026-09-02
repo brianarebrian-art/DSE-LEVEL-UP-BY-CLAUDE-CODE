@@ -90,7 +90,7 @@ export default function ExamDayClient() {
     iso ? new Date(iso).toLocaleTimeString(en ? 'en-HK' : 'zh-HK', { hour: '2-digit', minute: '2-digit' }) : '—'
 
   return (
-    <div data-ml className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto">
         <div className="sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
           <Link

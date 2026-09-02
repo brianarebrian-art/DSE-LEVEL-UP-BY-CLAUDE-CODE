@@ -78,7 +78,7 @@ export default function BreathingExercise() {
       {phase === 'idle' ? (
         <button
           onClick={() => setPhase('in')}
-          className="bg-accent/10 hover:bg-accent/15 text-accent border border-accent/30 font-medium px-6 py-2.5 rounded-xl transition-all"
+          className="bg-surface-sunken hover:bg-surface-sunken text-accent border border-accent/30 font-medium px-6 py-2.5 rounded-xl transition-all"
         >
           {en ? 'Start' : '開始'}
         </button>

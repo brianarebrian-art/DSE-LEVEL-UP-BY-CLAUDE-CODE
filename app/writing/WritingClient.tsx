@@ -102,7 +102,7 @@ export default function WritingClient() {
 
         {/* Header */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-xs text-violet bg-violet/[0.08] border border-violet/25 px-3 py-1 rounded-full mb-3">
+          <div className="inline-flex items-center gap-2 text-xs text-violet bg-surface-sunken border border-violet/25 px-3 py-1 rounded-full mb-3">
             <PenLine size={13} /> {tr('英文卷二・寫作工作室', 'English Paper 2 · Writing Studio')}
           </div>
           <h1 className="text-2xl sm:text-3xl font-medium text-ink mb-2">

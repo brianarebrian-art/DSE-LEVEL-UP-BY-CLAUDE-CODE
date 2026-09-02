@@ -92,7 +92,7 @@ export default function ReadingRuler() {
           title={en ? 'Reading ruler (focus aid)' : '閱讀尺（防跳行輔助）'}
           className={`flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border transition-all ${
             on
-              ? 'bg-gold/15 border-gold/50 text-gold'
+              ? 'bg-surface-sunken border-gold/50 text-gold'
               : 'bg-surface-raised border-line-strong text-ink-muted hover:text-accent'
           }`}
         >

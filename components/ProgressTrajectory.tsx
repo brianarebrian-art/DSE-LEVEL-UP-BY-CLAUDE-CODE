@@ -63,7 +63,7 @@ export default function ProgressTrajectory() {
           <div className="text-lg font-medium text-ink">{subtitle}</div>
         </div>
         {pts && pts.length >= 2 && (
-          <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/[0.07] px-3 py-1.5 text-xs font-medium text-accent">
+          <span className="inline-flex items-center rounded-full border border-accent/25 bg-surface-sunken px-3 py-1.5 text-xs font-medium text-accent">
             {en ? `Last ${pts.length} active days` : `過去 ${pts.length} 個活躍日`}
           </span>
         )}

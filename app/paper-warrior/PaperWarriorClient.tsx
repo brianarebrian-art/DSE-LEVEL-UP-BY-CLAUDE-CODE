@@ -149,7 +149,7 @@ export default function PaperWarriorClient() {
                   }}
                   className={`min-h-11 rounded-lg px-4 text-sm transition-colors ${
                     size === n
-                      ? 'bg-accent/12 text-accent-strong ring-1 ring-accent/40'
+                      ? 'bg-surface-sunken text-accent-strong ring-1 ring-accent/40'
                       : 'bg-line text-ink-muted hover:bg-line'
                   }`}
                 >
@@ -174,7 +174,7 @@ export default function PaperWarriorClient() {
                     }}
                     className={`min-h-11 rounded-lg px-4 text-sm transition-colors ${
                       written === n
-                        ? 'bg-accent/12 text-accent-strong ring-1 ring-accent/40'
+                        ? 'bg-surface-sunken text-accent-strong ring-1 ring-accent/40'
                         : 'bg-line text-ink-muted hover:bg-line'
                     }`}
                   >
@@ -216,7 +216,7 @@ export default function PaperWarriorClient() {
             {paper && (
               <button
                 onClick={() => window.print()}
-                className="min-h-11 inline-flex items-center gap-2 rounded-lg border border-accent/40 px-4 py-2 text-sm font-medium text-accent-strong transition-colors hover:bg-accent/[0.06]"
+                className="min-h-11 inline-flex items-center gap-2 rounded-lg border border-accent/40 px-4 py-2 text-sm font-medium text-accent-strong transition-colors hover:bg-surface-sunken"
               >
                 <Printer size={15} /> {tr('打印 / 儲存做 PDF', 'Print / Save as PDF')}
               </button>
@@ -224,7 +224,7 @@ export default function PaperWarriorClient() {
           </div>
 
           {paper && (
-            <div className="mt-4 rounded-xl border border-accent/25 bg-accent/[0.06] p-3 text-sm text-accent-strong">
+            <div className="mt-4 rounded-xl border border-accent/25 bg-surface-sunken p-3 text-sm text-accent-strong">
               <p>
                 {tr(
                   `已生成 ${paper.items.length} 題。「打印」個窗入面揀「另存為 PDF」就有電子檔。`,

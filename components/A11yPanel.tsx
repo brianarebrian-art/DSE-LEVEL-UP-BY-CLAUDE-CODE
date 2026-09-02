@@ -63,6 +63,17 @@ export default function A11yPanel() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [open, setOpen] = useState(false)
+
+  // 全站任何位置都開得到本面板（規格 v4.0-B §6.1）。
+  // 本面板係浮動組件、冇獨立路由，所以頁尾嗰條「無障礙設定」冇得用 <Link>；
+  // 改為派一個 window event。用 event 而唔係 context：本面板掛喺 root layout，
+  // 而發起者（Footer）同佢係兄弟，冇共同 provider，加一個 provider 淨係為
+  // 開個面板唔值得。
+  useEffect(() => {
+    const openIt = () => setOpen(true)
+    window.addEventListener('dse-open-a11y', openIt)
+    return () => window.removeEventListener('dse-open-a11y', openIt)
+  }, [])
   const [size, setSize] = useState(16)
   const [easy, setEasy] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
@@ -259,7 +270,7 @@ export default function A11yPanel() {
             aria-pressed={comfortOn}
             className={`w-full min-h-11 mb-4 flex items-center justify-between rounded-xl border px-4 py-2.5 transition-colors ${
               comfortOn
-                ? 'bg-accent/15 border-accent/50 text-accent'
+                ? 'bg-surface-sunken border-accent/50 text-accent'
                 : 'bg-surface-raised border-line-strong text-ink hover:bg-surface-sunken'
             }`}
           >
@@ -346,7 +357,7 @@ export default function A11yPanel() {
                   aria-pressed={letterSp === v}
                   className={`min-h-11 rounded-xl border text-xs transition-colors ${
                     letterSp === v
-                      ? 'bg-gold/15 border-gold/40 text-gold'
+                      ? 'bg-surface-sunken border-gold/40 text-gold'
                       : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
                   }`}
                 >
@@ -379,7 +390,7 @@ export default function A11yPanel() {
             aria-pressed={easy}
             className={`w-full min-h-11 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               easy
-                ? 'bg-gold/15 border-gold/40 text-gold'
+                ? 'bg-surface-sunken border-gold/40 text-gold'
                 : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
@@ -402,7 +413,7 @@ export default function A11yPanel() {
             aria-pressed={noMotion}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               noMotion
-                ? 'bg-gold/15 border-gold/40 text-gold'
+                ? 'bg-surface-sunken border-gold/40 text-gold'
                 : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
@@ -429,7 +440,7 @@ export default function A11yPanel() {
             aria-pressed={hideTimer}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               hideTimer
-                ? 'bg-gold/15 border-gold/40 text-gold'
+                ? 'bg-surface-sunken border-gold/40 text-gold'
                 : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >
@@ -455,7 +466,7 @@ export default function A11yPanel() {
             aria-pressed={sound}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
               sound
-                ? 'bg-gold/15 border-gold/40 text-gold'
+                ? 'bg-surface-sunken border-gold/40 text-gold'
                 : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
             }`}
           >

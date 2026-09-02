@@ -78,7 +78,7 @@ export default function SenseiClient() {
       <div className="max-w-3xl mx-auto">
         {/* 憲章 §16.B 執行要求 1：永遠顯示、唔遮得住嘅 AI 標示。
             唔可以摺埋、唔可以只喺首次出現。 */}
-        <div className="inline-flex items-center gap-2 text-xs text-accent bg-accent/[0.08] border border-accent/25 px-3 py-1 rounded-full mb-3">
+        <div className="inline-flex items-center gap-2 text-xs text-accent bg-surface-sunken border border-accent/25 px-3 py-1 rounded-full mb-3">
           <Sparkles size={13} /> {en ? AI_BADGE.en : AI_BADGE.zh}
         </div>
 
@@ -101,7 +101,7 @@ export default function SenseiClient() {
             <button
               type="submit"
               disabled={busy}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent/15 border border-accent/40 px-4 py-2 text-sm text-accent disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-surface-sunken border border-accent/40 px-4 py-2 text-sm text-accent disabled:opacity-50"
             >
               <Search size={14} /> {en ? 'Ask' : '問'}
             </button>
@@ -136,7 +136,7 @@ export default function SenseiClient() {
                   aria-pressed={prefs[key]}
                   className="flex items-center gap-2 text-sm text-ink-soft min-h-11 text-left"
                 >
-                  <span className={`inline-flex h-4 w-4 shrink-0 items-center justify-center rounded border ${prefs[key] ? 'bg-accent/20 border-accent/60 text-accent' : 'border-ink/30'}`}>
+                  <span className={`inline-flex h-4 w-4 shrink-0 items-center justify-center rounded border ${prefs[key] ? 'bg-surface-sunken border-accent/60 text-accent' : 'border-ink/30'}`}>
                     {prefs[key] && <Check size={11} />}
                   </span>
                   {en ? enLabel : zh}

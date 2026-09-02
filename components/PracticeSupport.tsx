@@ -119,7 +119,7 @@ export default function PracticeSupport() {
           title={en ? 'Dyslexia-friendly font (BDA-style system stack)' : '易讀字體（讀寫障礙友善）'}
           className={`flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border shadow-sm transition-all ${
             easyFont
-              ? 'bg-accent/12 border-accent/40 text-accent'
+              ? 'bg-surface-sunken border-accent/40 text-accent'
               : 'bg-surface-raised/90 border-line-strong text-ink-muted hover:text-ink-soft'
           }`}
         >

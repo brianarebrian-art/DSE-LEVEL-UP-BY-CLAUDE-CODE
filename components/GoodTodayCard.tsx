@@ -185,7 +185,7 @@ export default function GoodTodayCard({ className = '' }: { className?: string }
               onClick={saveOwn}
               disabled={!draft.trim()}
               aria-label={en ? 'Save' : '儲存'}
-              className="min-h-11 min-w-11 shrink-0 inline-flex items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent transition-colors hover:bg-accent/15 disabled:opacity-40"
+              className="min-h-11 min-w-11 shrink-0 inline-flex items-center justify-center rounded-xl border border-accent/30 bg-surface-sunken text-accent transition-colors hover:bg-surface-sunken disabled:opacity-40"
             >
               <Check size={16} aria-hidden />
             </button>

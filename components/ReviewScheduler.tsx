@@ -18,9 +18,9 @@ import { useLocale } from '@/lib/i18n'
 // 大愛紅線：無「你仲錯／又錯」；用「溫故知新／值得再鞏固」。
 
 const CAUSE_TAG: Record<ReverseCause, { zh: string; en: string; cls: string }> = {
-  A: { zh: '概念盲區', en: 'Concept', cls: 'bg-rose/[0.10] text-rose border-rose/30' },
-  B: { zh: '審題陷阱', en: 'Trap', cls: 'bg-gold/[0.10] text-gold border-gold/30' },
-  C: { zh: '運算粗心', en: 'Careless', cls: 'bg-accent/[0.10] text-accent border-accent/30' },
+  A: { zh: '概念盲區', en: 'Concept', cls: 'bg-surface-sunken text-rose border-rose/30' },
+  B: { zh: '審題陷阱', en: 'Trap', cls: 'bg-surface-sunken text-gold border-gold/30' },
+  C: { zh: '運算粗心', en: 'Careless', cls: 'bg-surface-sunken text-accent border-accent/30' },
 }
 
 export default function ReviewScheduler() {
@@ -72,7 +72,7 @@ export default function ReviewScheduler() {
                     ? `/practice?subject=${encodeURIComponent(d.subjectId)}&topic=${encodeURIComponent(d.topicId)}`
                     : `/practice?subject=${encodeURIComponent(d.subjectId)}`}
                   onClick={() => markDone(d.questionId)}
-                  className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/15 rounded-lg px-4 py-2 text-sm font-medium transition-all"
+                  className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-lg px-4 py-2 text-sm font-medium transition-all"
                 >
                   {en ? 'Review this topic' : '開始重溫'}
                 </Link>

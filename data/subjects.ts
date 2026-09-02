@@ -33,7 +33,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '最多考生、最易改寫、即時批改。10 年試卷提煉 12 個核心邏輯框架。',
     descriptionEn: 'Largest entry, easiest to rewrite, instant marking. 12 core logical frameworks distilled from 10 years of papers.',
-    accent: 'amber',
+    accent: 'sage',
   },
   {
     id: 'm2',
@@ -48,7 +48,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '高需求、邏輯清晰。微積分、矩陣、向量、數學歸納法。',
     descriptionEn: 'High demand, clear logic. Calculus, matrices, vectors and mathematical induction.',
-    accent: 'cyan',
+    accent: 'moss',
   },
   {
     id: 'm1',
@@ -63,7 +63,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '高需求、邏輯清晰。微積分應用、二項分佈、常態分佈。',
     descriptionEn: 'High demand, clear logic. Applications of calculus, binomial and normal distributions.',
-    accent: 'sky',
+    accent: 'moss',
   },
 
   // ── P1：理科核心 + 英文 ──
@@ -80,7 +80,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '理科生核心、MC 易自動批改。力學、電學、波動、熱學。',
     descriptionEn: 'Core for science students, MC auto-marked. Mechanics, electricity, waves and heat.',
-    accent: 'violet',
+    accent: 'mist',
   },
   {
     id: 'chemistry',
@@ -95,7 +95,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '理科生核心、MC 易自動批改。摩爾、酸鹼、氧化還原、化學鍵。',
     descriptionEn: 'Core for science students, MC auto-marked. Moles, acids and bases, redox and bonding.',
-    accent: 'emerald',
+    accent: 'clay',
   },
   {
     id: 'biology',
@@ -110,7 +110,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '理科生核心、MC 易自動批改。細胞、遺傳、生態、人體系統。',
     descriptionEn: 'Core for science students, MC auto-marked. Cells, genetics, ecology and human body systems.',
-    accent: 'green',
+    accent: 'sage',
   },
   {
     id: 'english',
@@ -142,7 +142,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '必修科。字詞、成語、病句、修辭、文言、閱讀理解。',
     descriptionEn: 'Core subject. Vocabulary, idioms, faulty sentences, rhetoric, classical Chinese and reading comprehension.',
-    accent: 'red',
+    accent: 'rose',
   },
   {
     id: 'bafs',
@@ -157,7 +157,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '選修科中較熱門。會計基礎、財務報表、財務比率、成本、商業概念。',
     descriptionEn: 'A popular elective. Accounting basics, financial statements, ratios, costing and business concepts.',
-    accent: 'amber',
+    accent: 'clay',
   },
   {
     id: 'ict',
@@ -172,7 +172,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '選修科中較熱門。數字系統、程式編寫、數據庫、網絡。',
     descriptionEn: 'A popular elective. Number systems, programming, databases and networking.',
-    accent: 'blue',
+    accent: 'mist',
   },
   {
     id: 'economics',
@@ -187,7 +187,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '熱門選修科。微觀（需求供應、彈性、市場結構）與宏觀（國民收入、通脹、國際貿易）。',
     descriptionEn: 'A popular elective. Micro (demand–supply, elasticity, market structures) and macro (national income, inflation, trade).',
-    accent: 'emerald',
+    accent: 'sage',
   },
   {
     id: 'csd',
@@ -202,7 +202,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '必修核心科。三大主題：「一國兩制」下的香港、改革開放以來的國家、互聯相依的當代世界。重議題分析與多角度論證。',
     descriptionEn: 'Core compulsory subject. Three themes: Hong Kong under One Country Two Systems, the nation since reform and opening-up, and the interconnected contemporary world. Emphasises issue analysis and multi-perspective reasoning.',
-    accent: 'blue',
+    accent: 'mist',
   },
 
   // ── P3：人文科目 ──
@@ -220,7 +220,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2026 年 11 月',
     description: '人文科、需大量內容改寫。歷代政治、文化、制度演變。',
     descriptionEn: 'Humanities, needs heavy content rewriting. Politics, culture and institutional change across dynasties.',
-    accent: 'orange',
+    accent: 'clay',
   },
   {
     id: 'history',
@@ -236,7 +236,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2026 年 11 月',
     description: '人文科、需大量內容改寫。20 世紀亞洲與世界局勢。',
     descriptionEn: 'Humanities, needs heavy content rewriting. 20th-century Asia and the wider world.',
-    accent: 'amber',
+    accent: 'stone',
   },
   {
     id: 'geography',
@@ -251,7 +251,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '人文科。板塊、河流地貌、氣候、城市發展、地圖技巧。',
     descriptionEn: 'Humanities. Plate tectonics, river landforms, climate, urban development and map skills.',
-    accent: 'teal',
+    accent: 'stone',
   },
   {
     id: 'chinese-literature',
@@ -283,7 +283,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年第一季',
     description: '小眾但忠實用戶。詩歌、小說、戲劇賞析。',
     descriptionEn: 'Niche but loyal users. Appreciation of poetry, prose and drama.',
-    accent: 'pink',
+    accent: 'rose',
   },
   {
     id: 'ethics-religious',
@@ -298,7 +298,7 @@ export const subjects: SubjectMeta[] = [
     isActive: true,
     description: '人文選修科。規範倫理理論、應用倫理、道德推理，及基督宗教與佛教傳統的教義與倫理回應。',
     descriptionEn: 'Humanities elective. Normative ethical theories, applied ethics, moral reasoning, and the teachings and ethical responses of the Christian and Buddhist traditions.',
-    accent: 'violet',
+    accent: 'stone',
   },
 
   // ── P4：冷門科目 ──
@@ -316,7 +316,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年',
     description: '冷門科目、後期補上。旅遊業、款待業營運與服務。',
     descriptionEn: 'Smaller subject, added later. Tourism and hospitality operations and service.',
-    accent: 'sky',
+    accent: 'mist',
   },
   {
     id: 'health-management',
@@ -348,7 +348,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年',
     description: '冷門科目、後期補上。設計流程、結構、材料與工藝。',
     descriptionEn: 'Smaller subject, added later. Design process, structures, materials and craft.',
-    accent: 'slate',
+    accent: 'stone',
   },
   {
     id: 'visual-arts',
@@ -364,7 +364,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年',
     description: '冷門科目、後期補上。藝術評賞、創作實踐。',
     descriptionEn: 'Smaller subject, added later. Art appreciation and creative practice.',
-    accent: 'fuchsia',
+    accent: 'rose',
   },
   {
     id: 'music',
@@ -380,7 +380,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年',
     description: '冷門科目、後期補上。聆聽、創作、演奏知識。',
     descriptionEn: 'Smaller subject, added later. Listening, composing and performing knowledge.',
-    accent: 'indigo',
+    accent: 'stone',
   },
   {
     id: 'pe',
@@ -396,7 +396,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年',
     description: '冷門科目、後期補上。運動科學、人體解剖、體育文化。',
     descriptionEn: 'Smaller subject, added later. Sports science, human anatomy and physical culture.',
-    accent: 'lime',
+    accent: 'sage',
   },
   {
     id: 'technology-living',
@@ -412,7 +412,7 @@ export const subjects: SubjectMeta[] = [
     launchDate: '2027 年',
     description: '冷門科目、後期補上。食物科學與營養、膳食計劃、食物安全、纖維布料與時尚設計、消費與可持續。',
     descriptionEn: 'Smaller subject, added later. Food science and nutrition, meal planning, food safety, fibres and fashion design, and sustainable consumption.',
-    accent: 'orange',
+    accent: 'clay',
   },
 ]
 

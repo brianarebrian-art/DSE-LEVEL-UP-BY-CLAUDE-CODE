@@ -145,7 +145,7 @@ export default function CapsuleClient() {
                 aria-pressed={chosen === o.at}
                 className={`min-h-11 rounded-full px-3 py-1.5 text-xs transition-colors ${
                   chosen === o.at
-                    ? 'bg-accent/12 text-accent-strong ring-1 ring-accent/40'
+                    ? 'bg-surface-sunken text-accent-strong ring-1 ring-accent/40'
                     : 'bg-surface-sunken text-ink-muted hover:text-ink-soft'
                 }`}
               >

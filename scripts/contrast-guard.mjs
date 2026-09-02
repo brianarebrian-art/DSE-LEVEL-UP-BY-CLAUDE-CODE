@@ -248,8 +248,21 @@ for (const file of ROOTS.flatMap((r) => walk(r))) {
     if (hex) record(m[0], hex, m.index)
   }
 
+  // ⚠️ 成對寫死（bg + text 喺同一串）嗰啲喺下面另外處理，唔喺呢度報 ——
+  // 攞佢哋去同頁面底色比係錯嘅比較對象。
+  const PAIRED = new Set()
+  CLASS_CHUNK.lastIndex = 0
+  while ((m = CLASS_CHUNK.exec(src))) {
+    const c = m[2]
+    if (/\bbg-\[#[0-9A-Fa-f]{3,6}\]/.test(c)) {
+      for (const t of c.match(/\btext-\[#[0-9A-Fa-f]{3,6}\]/g) ?? []) PAIRED.add(t)
+    }
+  }
   HEX_TEXT.lastIndex = 0
-  while ((m = HEX_TEXT.exec(src))) record(m[0], `#${m[1]}`, m.index)
+  while ((m = HEX_TEXT.exec(src))) {
+    if (PAIRED.has(m[0])) continue
+    record(m[0], `#${m[1]}`, m.index)
+  }
 
   // 孤兒白字。白色喺任何淺色底上都係 1.00–1.05:1，直接當 #FFFFFF 計。
   CLASS_CHUNK.lastIndex = 0
@@ -257,6 +270,32 @@ for (const file of ROOTS.flatMap((r) => walk(r))) {
     const chunk = m[2]
     if (!/\btext-white\b/.test(chunk) || HAS_BG.test(chunk)) continue
     record('text-white', '#FFFFFF', m.index)
+  }
+
+  // 【成對寫死】：同一段 class 字串同時寫死 bg 同 text 嘅時候，
+  // 應該比對【嗰兩隻色之間】，唔係比對頁面底色。
+  //
+  // 2026-09-02 加呢段嘅原因：lib/grading.ts 嘅等級徽章莫蘭迪化之後寫成
+  // `bg-[#3C443A] text-[#FFFDF9]` —— 深底配暖白字，實測 9.94:1，完全正確。
+  // 但本 guard 攞暖白字去同頁面底色 #FAFAF8 比，得 1.03:1，報咗個假警報。
+  // 收窄 DARK_SURFACE 個 hex 範圍去遷就唔係辦法（會放過真正嘅中間調誤用），
+  // 成對比對先係啱嘅比較對象，而且順帶捉到「深底配深字」呢類真缺陷。
+  // §6 影響統計：全站只有 10 處成對寫死，全部喺 lib/grading.ts。
+  const PAIR_TEXT = /\btext-\[#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})\]/
+  const PAIR_BG = /\bbg-\[#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})\]/
+  CLASS_CHUNK.lastIndex = 0
+  while ((m = CLASS_CHUNK.exec(src))) {
+    const chunk = m[2]
+    const ct = PAIR_TEXT.exec(chunk)
+    const cb = PAIR_BG.exec(chunk)
+    if (!ct || !cb) continue
+    const cr2 = contrast(`#${ct[1]}`, `#${cb[1]}`)
+    if (cr2 >= 4.5) continue
+    const line = src.slice(0, m.index).split('\n').length
+    seen.set(`pair:${ct[0]}@${cb[0]}`, {
+      cls: `${ct[0]} on ${cb[0]}`, hex: `#${ct[1]}`, cr: cr2.toFixed(2), line,
+      against: `#${cb[1]}`,
+    })
   }
 
   for (const v of seen.values()) findings.push({ file, ...v })
@@ -274,7 +313,10 @@ console.log(`\n❌ 發現 ${findings.length} 處未達 WCAG AA（需 ≥ 4.5:1�
 let last = ''
 for (const f of findings) {
   if (f.file !== last) { console.log(`── ${f.file}`); last = f.file }
-  console.log(`   L${f.line}: ${f.cls}  (${f.hex} on ${SURFACE} = ${f.cr}:1)`)
+  // 成對寫死嗰啲比對嘅係嗰兩隻色之間，唔係頁面底色 —— 訊息要講返啱嘅比較對象，
+  // 否則睇報告嘅人會照住 #FAFAF8 去查，查極都對唔上。
+  const ground = f.against ?? SURFACE
+  console.log(`   L${f.line}: ${f.cls}  (${f.hex} on ${ground} = ${f.cr}:1)`)
 }
 console.log(`
 修法：換用語意 token（見 app/globals.css）——

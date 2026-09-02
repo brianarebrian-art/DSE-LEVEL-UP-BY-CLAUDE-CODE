@@ -108,7 +108,7 @@ export default function BookmarkButton({
             <button
               onClick={() => draft.trim() && assign(draft)}
               disabled={!draft.trim()}
-              className="min-h-11 shrink-0 rounded-lg border border-accent/30 bg-accent/10 px-3 text-xs text-accent transition-colors hover:bg-accent/15 disabled:opacity-40"
+              className="min-h-11 shrink-0 rounded-lg border border-accent/30 bg-surface-sunken px-3 text-xs text-accent transition-colors hover:bg-surface-sunken disabled:opacity-40"
             >
               {en ? 'Add' : '加入'}
             </button>

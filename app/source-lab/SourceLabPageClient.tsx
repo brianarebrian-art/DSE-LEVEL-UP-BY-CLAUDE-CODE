@@ -14,7 +14,7 @@ export default function SourceLabPageClient() {
     <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-xs text-gold bg-gold/[0.08] border border-gold/25 px-3 py-1 rounded-full mb-3">
+          <div className="inline-flex items-center gap-2 text-xs text-gold bg-surface-sunken border border-gold/25 px-3 py-1 rounded-full mb-3">
             <Search size={13} /> {en ? 'History Paper 1 · Source Analysis' : '歷史卷一・史料判讀'}
           </div>
           <h1 className="text-2xl sm:text-3xl font-medium text-ink mb-2">

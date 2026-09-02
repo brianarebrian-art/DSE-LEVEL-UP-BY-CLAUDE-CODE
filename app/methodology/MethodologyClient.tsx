@@ -31,7 +31,7 @@ export default function MethodologyClient() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-2 mb-6 text-sm text-gold">
+          <div className="inline-flex items-center gap-2 bg-surface-sunken border border-gold/20 rounded-full px-4 py-2 mb-6 text-sm text-gold">
             {m.badge}
           </div>
           <h1 className="text-3xl sm:text-4xl font-medium mb-4 text-ink">
@@ -45,7 +45,7 @@ export default function MethodologyClient() {
         </div>
 
         {/* The core insight */}
-        <div className="bg-gold/[0.06] border border-gold/20 rounded-2xl p-6 sm:p-8 mb-16">
+        <div className="bg-surface-sunken border border-gold/20 rounded-2xl p-6 sm:p-8 mb-16">
           <h2 className="text-xl font-medium mb-4 text-ink">{m.insightTitle}</h2>
           <p className="text-ink-soft leading-relaxed mb-4">
             {m.insightP1Pre}<strong className="text-gold">{m.insightP1Strong}</strong>{m.insightP1Post}
@@ -88,7 +88,7 @@ export default function MethodologyClient() {
                   type="button"
                   onClick={() => toggle(i)}
                   aria-expanded={isOpen}
-                  className="w-full text-left px-6 py-5 flex items-center gap-4 hover:bg-surface-sunken transition-colors"
+                  className="w-full text-left px-6 py-5 flex items-center gap-4 hover:bg-surface-sunken border border-gold/40 transition-colors"
                 >
                   <span className="text-3xl">{fwEmojis[i]}</span>
                   <div className="min-w-0">
@@ -97,7 +97,7 @@ export default function MethodologyClient() {
                   </div>
                   <div className="ml-auto hidden md:flex gap-2 flex-wrap justify-end max-w-[40%]">
                     {f.topics.map((tp) => (
-                      <span key={tp} className="text-xs text-gold bg-gold/10 px-2 py-0.5 rounded-full">
+                      <span key={tp} className="text-xs text-gold bg-surface-sunken px-2 py-0.5 rounded-full">
                         {tp}
                       </span>
                     ))}
@@ -147,7 +147,7 @@ export default function MethodologyClient() {
                         </div>
                         <Link
                           href="/practice"
-                          className="text-xs text-accent bg-accent/10 hover:bg-accent/15 border border-accent/20 px-3 py-1.5 rounded-lg transition-all inline-block"
+                          className="text-xs text-accent bg-surface-sunken hover:bg-surface-raised border border-accent/20 px-3 py-1.5 rounded-lg transition-all inline-block"
                         >
                           {m.practiseSimilar}
                         </Link>

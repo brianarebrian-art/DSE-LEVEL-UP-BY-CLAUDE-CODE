@@ -85,7 +85,7 @@ export default function NotesOverview() {
       </p>
 
       {totalAttempted === 0 && (
-        <p className="mb-5 rounded-xl border border-gold/25 bg-gold/[0.06] p-3 text-sm text-gold-strong">
+        <p className="mb-5 rounded-xl border border-gold/25 bg-surface-sunken p-3 text-sm text-gold-strong">
           {tr(
             '你仲未做過練習，所以暫時淨係見到每個課題有幾多題。做多幾份，呢度就會開始顯示你自己嘅盲點。',
             'You have not practised yet, so for now these only show how many questions each topic holds. Do a few sets and your own blind spots will start appearing here.',
