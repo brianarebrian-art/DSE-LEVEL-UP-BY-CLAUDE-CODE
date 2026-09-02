@@ -51,6 +51,8 @@ const RULES = [
     re: /保證(?:升|你|考|成績|入|合格|攞)|包升|必勝|一定入到|穩袋|包你/g,
     why: '成績保證 —— 考試結果唔喺平台控制範圍，兌現唔到。',
     fix: '改為描述機制：「幫你搵出最常錯嘅位」。',
+    // 「我哋唔會保證你準時到場」係【免責聲明】，唔係承諾。見下面 NEGATED。
+    negatable: true,
   },
   {
     id: 'medical',
@@ -75,6 +77,7 @@ const RULES = [
     re: /零版權風險|絕對安全|完全無風險|零風險|告不入/g,
     why: '「零風險」係一張兌現唔到嘅支票。改寫降低風險，唔等於零。',
     fix: '改為事實陳述：「所有題目獨立改寫，並非 HKEAA 官方試題」。',
+    negatable: true,
   },
   {
     id: 'official-endorsement',
@@ -109,6 +112,28 @@ const RULES = [
     fix: '要顯示就即時由真實數據算（例：/transparency 嘅審批比例由題庫算出）。',
   },
 ]
+
+/**
+ * 否定詞：命中之前 10 個字之內出現任何一個，而中間又冇「但」轉折，
+ * 就當【呢一個】命中係否定句，唔算違規。
+ *
+ * ══ 點解要有 ══
+ * 2026-09-03 考試日管家寫免責聲明「我哋唔會亦冇能力保證你準時到場」，
+ * 被 guarantee 規則攔住。呢個唔止係誤報，方向仲要係反轉嘅：
+ * 「保證」呢兩個字最正當、最應該出現嘅位置，就係一句話明我哋唔保證嘅
+ * 免責聲明。一個攔住免責聲明嘅閘，會迫作者寫得含糊啲去避開個閘 ——
+ * 即係為咗過閘而削弱一份本來想加強嘅法律保障。
+ *
+ * ══ 點解淨係 guarantee 同 zero-risk 有 ══
+ * 只有呢兩條規則會出現「我哋唔會 X」呢種正當否定用法。
+ * 「我哋唔係全港第一」「我哋唔會用假見證」寫出嚟一樣係怪，
+ * 所以其餘規則保持一律攔截 —— negatable 要逐條開，唔可以做全域行為。
+ *
+ * ══ 「但」點解要攔 ══
+ * 「冇人保證你升，但我哋保證你升」—— 後半截係真承諾。
+ * 逐個命中獨立判斷 + 遇「但」即失效，先至捉得返。
+ */
+const NEGATORS = /(唔會|唔能|唔可以|冇能力|冇辦法|唔敢|不會|不能|無法|並非|從來唔)(?!.*但)/
 
 const TARGET_FILES = ['lib/dictionary.ts', 'data/heroContent.ts', 'data/quotes.ts']
 const TARGET_DIRS = ['app', 'components']
@@ -145,6 +170,7 @@ for (const file of files) {
     rule.re.lastIndex = 0
     let m
     while ((m = rule.re.exec(src))) {
+      if (rule.negatable && NEGATORS.test(src.slice(Math.max(0, m.index - 10), m.index))) continue
       findings.push({
         file,
         line: src.slice(0, m.index).split('\n').length,
