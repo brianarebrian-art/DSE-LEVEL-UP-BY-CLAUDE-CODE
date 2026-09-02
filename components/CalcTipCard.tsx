@@ -34,7 +34,7 @@ export default function CalcTipCard({ topicId }: { topicId: string }) {
           {en ? tip.titleEn : tip.titleZh}
         </span>
         {isDraft && (
-          <span className="text-[10px] font-bold text-gold bg-gold/[0.10] border border-gold/30 rounded-full px-2 py-0.5 shrink-0">
+          <span className="text-[10px] font-bold text-gold bg-surface-sunken border border-gold/30 rounded-full px-2 py-0.5 shrink-0">
             ⚠️ {en ? 'DRAFT — not machine-verified' : '草稿 · 未經真機驗證'}
           </span>
         )}

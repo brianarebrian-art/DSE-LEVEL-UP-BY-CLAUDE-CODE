@@ -179,7 +179,7 @@ export default function BookmarksView() {
                   <li key={`${bm.subjectId}:${bm.questionId}`} className="rounded-2xl border border-line bg-surface-raised p-4">
                     <div className="mb-2 flex items-start justify-between gap-3">
                       <div className="flex flex-wrap items-center gap-2 text-xs text-ink-muted">
-                        <span className="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-accent">
+                        <span className="rounded-full border border-accent/30 bg-surface-sunken px-2 py-0.5 text-accent">
                           {subjectName}
                         </span>
                         <span>{bm.topic}</span>

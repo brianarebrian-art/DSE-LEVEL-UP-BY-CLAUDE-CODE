@@ -219,7 +219,7 @@ export default async function AdminPage() {
             <StatCard label="待審題數" /* i18n-exempt: admin */ value={pendingCount.toLocaleString()} className="text-rose" />
           </div>
           {!dbOk && (
-            <p className="mt-3 rounded-lg border border-gold/30 bg-gold/10 p-3 text-sm text-gold-strong">
+            <p className="mt-3 rounded-lg border border-gold/30 bg-surface-sunken p-3 text-sm text-gold-strong">
               ⚠️ Supabase 未連通 —— 決定暫時冇得喺網上儲存，隊列狀態只反映 repo 內本地 decisions。{/* i18n-exempt: admin */}
             </p>
           )}

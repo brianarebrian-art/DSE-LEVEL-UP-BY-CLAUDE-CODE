@@ -44,7 +44,7 @@ export default function AccountPageClient() {
   return (
     <div className="min-h-screen px-4 py-16">
       <div className="max-w-lg mx-auto">
-        <h1 className="text-2xl font-extrabold mb-6">{en ? 'Account settings' : '帳戶設定'}</h1>
+        <h1 className="text-2xl font-extrabold mb-6">{en ? 'Profile & Account' : '個人檔案與帳戶'}</h1>
 
         {/* $0 跨裝置：導出／導入進度檔案（毋須登入） */}
         {!done && <DataPortability />}
@@ -66,7 +66,7 @@ export default function AccountPageClient() {
                 ? 'Your cloud progress has been removed, and local data has been cleared.'
                 : '你的雲端進度已經清除，本機資料亦已清空。'}
             </p>
-            <Link href="/" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all">
+            <Link href="/" className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-5 py-2.5 rounded-xl transition-all">
               {en ? 'Back to home' : '返回首頁'}
             </Link>
           </div>
@@ -75,13 +75,13 @@ export default function AccountPageClient() {
             <p className="text-ink-soft mb-4">{en ? 'Please sign in to manage your account data.' : '請先登入，才能管理你的帳戶資料。'}</p>
             <button
               onClick={() => authSignInGoogle('/account')}
-              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-black font-bold px-5 py-2.5 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-5 py-2.5 rounded-xl transition-all"
             >
               {en ? 'Sign in with Google' : '用 Google 登入'}
             </button>
           </div>
         ) : (
-          <div className="bg-surface-raised border border-red-500/20 rounded-2xl p-6">
+          <div className="bg-surface-raised border border-rose/25 rounded-2xl p-6">
             <h2 className="text-base font-bold text-ink mb-2">{en ? 'Delete my data' : '刪除我的資料'}</h2>
             <p className="text-sm text-ink-muted leading-relaxed mb-4">
               {en
@@ -95,7 +95,7 @@ export default function AccountPageClient() {
                 <button
                   onClick={del}
                   disabled={busy}
-                  className="bg-red-500/90 hover:bg-red-500 text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-all disabled:opacity-50"
+                  className="bg-rose-strong hover:bg-rose text-on-accent font-bold px-4 py-2.5 rounded-xl text-sm transition-all disabled:opacity-50"
                 >
                   {busy ? (en ? 'Deleting…' : '刪除中…') : en ? 'Confirm delete' : '確定刪除'}
                 </button>
@@ -110,7 +110,7 @@ export default function AccountPageClient() {
             ) : (
               <button
                 onClick={() => setConfirming(true)}
-                className="border border-red-500/40 text-rose hover:bg-red-500/10 font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
+                className="border border-rose/40 text-rose hover:bg-surface-sunken font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
               >
                 {en ? 'Delete my data' : '刪除我的資料'}
               </button>

@@ -144,7 +144,7 @@ export default function ResultPageClient() {
 
   if (!result || !gradeResult) {
     return (
-      <div data-ml className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface text-ink-soft">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface text-ink-soft">
         <p className="text-ink-muted">{r.notFound}</p>
         <Link href="/practice" className="text-accent underline">{r.backToPractice}</Link>
       </div>
@@ -256,7 +256,7 @@ export default function ResultPageClient() {
   }
 
   return (
-    <div data-ml className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto space-y-6">
 
         {/* Subject context */}
@@ -371,7 +371,7 @@ export default function ResultPageClient() {
             改嘅係：紅色→金色、⚠️→💡、「警示」→「下一步」、
             由「你唔夠」改成「你已經拿穩咗乜、跟住攻乜」。 */}
         {showChineseWarning && (
-          <div className="bg-gold/[0.06] border border-gold/25 rounded-2xl p-5">
+          <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-gold text-lg">💡</span>
               <span className="text-gold font-medium text-sm">{locale === 'en' ? 'Where the next marks are' : '下一段分數喺邊'}</span>

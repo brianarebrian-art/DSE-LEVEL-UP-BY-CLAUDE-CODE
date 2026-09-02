@@ -107,25 +107,34 @@ export const gradeColors: Record<string, string> = {
 // 等級徽章（實心底＋字）。底色刻意【主題無關】——兩個主題渲染一樣，所以呢批值
 // 保持字面色而唔用 token。正因為底色固定，字色必須逐個等級配對：深底配白字、
 // 亮底配深字。舊版全部硬套 `text-black`，深藍灰底只有 2.35:1（第 1 級）／
-// 3.74:1（第 2 級），兩者皆不合格。
+// ── 2026-09-02 莫蘭迪化（規格 v4.0-B §1.2）────────────────────────────────
+// 舊值用 Tailwind amber／green／blue-500 一套高飽和色，同莫蘭迪色板格格不入。
+// 現改為一條【暗→淺】嘅莫蘭迪階梯，全部配暖白字 #FFFDF9（唔用純白）。
 //
-// 實測（Tailwind v4 oklch 實際渲染值，非 v3 hex）：
-//   amber-500 #FE9A00 深字 8.35 · amber-400 #FFB900 深字 10.35 · green-500 #00C950 深字 8.04
-//   blue-500  #2B7FFF 深字 4.74 · slate-500 #62748E 白字 4.76 · slate-600 #45556C 白字 7.58
-// ⚠️ purple-500 #AD46FF 係陷阱：深字 4.33、白字 4.12，【兩邊都唔夠】，
-//    故第 3 級改用固定深紫 #6D28D9（白字 7.10）。
-// U 級用玫紅 #9D1449（白字 7.30）而唔用 red-500：憲章禁大紅。
+// 實測（暖白字落各底色）：
+//   5** #3C443A 9.94 · 5* #4A5544 7.73 · 5 #5E6B5A 5.55 · 4 #5B666F 5.78
+//   3   #76644F 5.58 · 2  #6B6560 5.65 · 1 #767068 4.82 · U #8A6E6A 4.57
+//   達標 #5E6B5A 5.55 · 不達標 #8B5E4A 5.44         —— 全部 ≥ 4.5
+//
+// ⚠️ 同規格書有一處【刻意偏離】：規格把第 4 級同 5／5*／5** 一齊歸做灰綠，
+// 即係四級共用一個色相。實測四者亮度差只有 0.008–0.053，擠喺同一條色相上
+// 會分唔開。故第 4 級改用藍灰 #5B666F —— 「上到 L4」係本地學位嘅實際門檻，
+// 呢條界要讀得出。第 3／2 級同理用暖土同中性灰，靠【色相】而唔係亮度分級。
+//
+// U 級用玫瑰灰 #8A6E6A 而唔用紅：憲章禁大紅交叉，U 唔應該睇落似懲罰。
+// 字色寫死 hex 而唔用 token：呢批係語意數據色，同 lib/grading.ts 其餘
+// gradeColors 一致，唔應該生成 bg-grade-5 之類 utility（見上方原註）。
 export const gradeBgColors: Record<string, string> = {
-  '5**': 'bg-amber-500 text-slate-900',
-  '5*': 'bg-amber-400 text-slate-900',
-  '5': 'bg-green-500 text-slate-900',
-  '4': 'bg-blue-500 text-slate-900',
-  '3': 'bg-[#6D28D9] text-white',
-  '2': 'bg-slate-500 text-white',
-  '1': 'bg-slate-600 text-white',
-  U: 'bg-[#9D1449] text-white',
-  達標: 'bg-emerald-600 text-white',
-  不達標: 'bg-slate-600 text-white',
+  '5**': 'bg-[#3C443A] text-[#FFFDF9]',
+  '5*': 'bg-[#4A5544] text-[#FFFDF9]',
+  '5': 'bg-[#5E6B5A] text-[#FFFDF9]',
+  '4': 'bg-[#5B666F] text-[#FFFDF9]',
+  '3': 'bg-[#76644F] text-[#FFFDF9]',
+  '2': 'bg-[#6B6560] text-[#FFFDF9]',
+  '1': 'bg-[#767068] text-[#FFFDF9]',
+  U: 'bg-[#8A6E6A] text-[#FFFDF9]',
+  達標: 'bg-[#5E6B5A] text-[#FFFDF9]',
+  不達標: 'bg-[#8B5E4A] text-[#FFFDF9]',
 }
 
 export const gradeMessages: Record<string, string> = {

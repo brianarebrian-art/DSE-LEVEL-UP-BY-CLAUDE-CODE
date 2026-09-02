@@ -49,7 +49,7 @@ export default function TextQuestionCard({
     <div className="bg-surface-raised border border-line rounded-2xl p-6">
       {/* 題型標籤 */}
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-[11px] font-bold tracking-wide text-gold bg-gold/10 border border-gold/30 rounded-full px-2.5 py-1">
+        <span className="text-[11px] font-bold tracking-wide text-gold bg-surface-sunken border border-gold/30 rounded-full px-2.5 py-1">
           {en ? 'Text answer' : '文字題'}
         </span>
         <span className="text-xs text-ink-muted">{q.frameworkEmoji} {tr(q.frameworkZh, q.frameworkEn)}</span>
@@ -86,7 +86,7 @@ export default function TextQuestionCard({
           </div>
 
           {/* 參考答案 —— 用青（accent）而唔用綠：全站冇綠 token，青本身係正向主色 */}
-          <div className="rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 mb-3">
+          <div className="rounded-xl border border-accent/30 bg-surface-sunken px-4 py-3 mb-3">
             <div className="text-xs text-accent font-bold mb-1">{en ? 'Reference answer' : '參考答案'}</div>
             <div className="text-sm text-ink-soft leading-relaxed">
               <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn)}</MathText>
@@ -108,13 +108,13 @@ export default function TextQuestionCard({
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => mark('correct')}
-                  className="min-h-11 inline-flex items-center justify-center gap-2 border border-accent/40 bg-accent/10 hover:bg-accent/15 text-accent font-semibold py-2.5 rounded-xl transition-colors"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 border border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent font-semibold py-2.5 rounded-xl transition-colors"
                 >
                   <CheckCircle2 size={16} aria-hidden /> {en ? 'I got it' : '我掌握到'}
                 </button>
                 <button
                   onClick={() => mark('wrong')}
-                  className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 bg-gold/10 hover:bg-gold/15 text-gold font-semibold py-2.5 rounded-xl transition-colors"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 bg-surface-sunken hover:bg-surface-sunken text-gold font-semibold py-2.5 rounded-xl transition-colors"
                 >
                   <Lightbulb size={16} aria-hidden /> {en ? 'Not yet' : '未掌握到'}
                 </button>

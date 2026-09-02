@@ -111,7 +111,7 @@ export default function StagedExplanation({
         {!done && (
           <button
             onClick={() => setShown((n) => n + 1)}
-            className="mt-3 inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-accent/30 bg-accent/10 px-3 text-xs font-medium text-accent transition-colors hover:bg-accent/15"
+            className="mt-3 inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-accent/30 bg-surface-sunken px-3 text-xs font-medium text-accent transition-colors hover:bg-surface-sunken"
           >
             {en ? `Next step (${shown}/${steps.length})` : `下一步（${shown}/${steps.length}）`}
             <ChevronDown size={13} aria-hidden />
@@ -130,7 +130,7 @@ export default function StagedExplanation({
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <button
             onClick={() => setFull(true)}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-accent/30 bg-accent/10 px-3 text-xs font-medium text-accent transition-colors hover:bg-accent/15"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-accent/30 bg-surface-sunken px-3 text-xs font-medium text-accent transition-colors hover:bg-surface-sunken"
           >
             {en ? 'Show the rest' : '睇埋成個解析'}
             <ChevronDown size={13} aria-hidden />

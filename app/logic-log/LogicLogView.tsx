@@ -145,7 +145,7 @@ export default function LogicLogView() {
                     {e.subjects.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mt-3">
                         {e.subjects.map((s) => (
-                          <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-accent/[0.10] text-accent border border-accent/30">
+                          <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-surface-sunken text-accent border border-accent/30">
                             {subjectLabel(s, en)}
                           </span>
                         ))}

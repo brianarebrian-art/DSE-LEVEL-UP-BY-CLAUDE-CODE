@@ -704,7 +704,7 @@ export default function PracticeSession({
   // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
   if (justOneDone) {
     return (
-      <div data-ml className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
         <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
           <div className="text-3xl mb-3" aria-hidden>🌱</div>
           <h2 className="text-lg font-medium text-ink mb-2">
@@ -741,7 +741,7 @@ export default function PracticeSession({
     const doneCount = resumeOffer.current
     const totalCount = resumeOffer.questionIds.length
     return (
-      <div data-ml className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
         <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
           <div className="text-3xl mb-3" aria-hidden>📍</div>
           <h2 className="text-lg font-medium text-ink mb-2">
@@ -778,7 +778,7 @@ export default function PracticeSession({
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
     return (
-      <div data-ml className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
         <div className="text-5xl">{subjectMeta?.emoji ?? '📝'}</div>
         <p className="text-ink-muted">
           {subjectMeta
@@ -794,12 +794,12 @@ export default function PracticeSession({
 
   if (!currentQ) {
     return (
-      <div data-ml className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
+      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
     )
   }
 
   return (
-    <div data-ml className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
       <div className="max-w-2xl mx-auto">
 
         {/* 返回科目頁 —— 全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），

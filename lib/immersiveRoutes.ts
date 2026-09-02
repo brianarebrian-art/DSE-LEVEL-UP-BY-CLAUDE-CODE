@@ -29,14 +29,8 @@ export function isImmersiveRoute(pathname: string | null): boolean {
   return IMMERSIVE_ROUTES.some((p) => pathname === p || pathname.startsWith(`${p}/`))
 }
 
-// ── 莫蘭迪路由（規格 v4.0-B §7.4）────────────────────────────────────────
-// 呢啲頁用莫蘭迪色階（globals.css 嘅 [data-ml] scope）。
-//
-// ⚠️ 同 IMMERSIVE_ROUTES 唔一樣：/dashboard/report 係莫蘭迪但唔係全屏，
-// /focus、/relax 係全屏但唔用莫蘭迪。兩張表刻意分開。
-export const MORANDI_ROUTES = ['/practice', '/result', '/dashboard/report'] as const
-
-export function isMorandiRoute(pathname: string | null): boolean {
-  if (!pathname) return false
-  return MORANDI_ROUTES.some((p) => pathname === p || pathname.startsWith(`${p}/`))
-}
+// ── 莫蘭迪路由：已取消 ──────────────────────────────────────────────
+// 2026-09-02 之前有一張 MORANDI_ROUTES，因為莫蘭迪色只鋪四個核心頁。
+// 而家全站語意 token 已經整體指向莫蘭迪（app/globals.css 的 :root），
+// 唔再需要逐條 route 開關 —— 呢張表連同 isMorandiRoute 一齊剷走。
+// 保留呢段註釋，係因為「點解冇咗」比「有過乜」更容易有人重新加返。

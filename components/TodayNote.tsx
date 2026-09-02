@@ -145,7 +145,7 @@ export default function TodayNote({ className = '' }: { className?: string }) {
       {suggestion && (
         <Link
           href={`/practice?subject=${suggestion.subjectId}&topic=${encodeURIComponent(suggestion.topicId)}&size=1`}
-          className="min-h-11 inline-flex items-center gap-2 border border-accent/40 bg-accent/10 hover:bg-accent/15 text-accent text-sm font-medium px-4 py-2 rounded-xl transition-colors"
+          className="min-h-11 inline-flex items-center gap-2 border border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent text-sm font-medium px-4 py-2 rounded-xl transition-colors"
         >
           {tr('先做 1 題', 'Just one question')} <ArrowRight size={15} aria-hidden />
         </Link>

@@ -120,13 +120,13 @@ export default function DataPortability() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={exportFile}
-          className="inline-flex items-center gap-2 min-h-11 bg-cyan-500/10 text-accent border border-cyan-500/30 hover:bg-cyan-500/20 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
         >
           <Download size={15} /> {en ? 'Export progress file' : '導出進度檔案'}
         </button>
         <button
           onClick={() => fileRef.current?.click()}
-          className="inline-flex items-center gap-2 min-h-11 bg-surface-sunken border border-line-strong text-ink hover:bg-slate-700 px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
+          className="inline-flex items-center gap-2 min-h-11 bg-surface-sunken border border-line-strong text-ink hover:bg-surface-sunken px-4 py-2.5 rounded-xl transition-all text-sm font-semibold"
         >
           <Upload size={15} /> {en ? 'Import progress file' : '導入進度檔案'}
         </button>

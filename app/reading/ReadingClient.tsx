@@ -85,7 +85,7 @@ export default function ReadingClient() {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 text-xs text-violet bg-violet/[0.08] border border-violet/25 px-3 py-1 rounded-full mb-3">
+          <div className="inline-flex items-center gap-2 text-xs text-violet bg-surface-sunken border border-violet/25 px-3 py-1 rounded-full mb-3">
             <BookOpenCheck size={13} /> {tr('英文卷一・閱讀理解', 'English Paper 1 · Reading')}
           </div>
           <h1 className="text-2xl sm:text-3xl font-medium text-ink mb-2">
@@ -104,10 +104,10 @@ export default function ReadingClient() {
             <article key={p.id} className="bg-surface-raised border border-line rounded-2xl p-6 sm:p-8">
               {/* Passage meta */}
               <div className="flex items-center gap-2 flex-wrap mb-3">
-                <span className="text-[11px] font-medium text-gold bg-gold/[0.08] border border-gold/25 px-2.5 py-0.5 rounded-full">
+                <span className="text-[11px] font-medium text-gold bg-surface-sunken border border-gold/25 px-2.5 py-0.5 rounded-full">
                   {tr(p.partZh, p.part)}
                 </span>
-                <span className="text-[11px] font-medium text-violet bg-violet/[0.08] border border-violet/25 px-2.5 py-0.5 rounded-full">
+                <span className="text-[11px] font-medium text-violet bg-surface-sunken border border-violet/25 px-2.5 py-0.5 rounded-full">
                   🎯 {tr(p.skillZh, p.skill)}
                 </span>
               </div>
@@ -162,7 +162,7 @@ export default function ReadingClient() {
                       </div>
 
                       {answered && (
-                        <div className="mt-3 rounded-xl p-4 bg-gold/[0.08] border border-gold/25 animate-slide-up">
+                        <div className="mt-3 rounded-xl p-4 bg-surface-sunken border border-gold/25 animate-slide-up">
                           <div className="flex items-center gap-2 mb-1">
                             <Brain size={15} className="text-gold" />
                             <span className="text-gold font-medium text-xs">

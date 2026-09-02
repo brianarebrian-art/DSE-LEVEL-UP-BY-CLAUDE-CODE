@@ -48,8 +48,8 @@ export default function LongQuestionCard({
   const reportHref = `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(`[${en ? 'Question report' : '題目回報'}] ${q.id}`)}`
 
   const levels: { key: Level; zh: string; en: string; cls: string }[] = [
-    { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-accent/40 bg-accent/10 hover:bg-accent/15 text-accent' },
-    { key: 'partial', zh: '部分明白', en: 'Partly', cls: 'border-gold/40 bg-gold/10 hover:bg-gold/15 text-gold' },
+    { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent' },
+    { key: 'partial', zh: '部分明白', en: 'Partly', cls: 'border-gold/40 bg-surface-sunken hover:bg-surface-sunken text-gold' },
     { key: 'none', zh: '仲未掌握', en: 'Not yet', cls: 'border-line-strong bg-surface-sunken hover:bg-line text-ink-soft' },
   ]
 
@@ -57,7 +57,7 @@ export default function LongQuestionCard({
     <div className="bg-surface-raised border border-line rounded-2xl p-6">
       {/* 題型標籤 + 建議用時 */}
       <div className="flex items-center gap-2 mb-3 flex-wrap">
-        <span className="text-[11px] font-bold tracking-wide text-gold bg-gold/10 border border-gold/30 rounded-full px-2.5 py-1">
+        <span className="text-[11px] font-bold tracking-wide text-gold bg-surface-sunken border border-gold/30 rounded-full px-2.5 py-1">
           {en ? 'Long response' : '長題目'}
         </span>
         {q.suggestedMinutes ? (

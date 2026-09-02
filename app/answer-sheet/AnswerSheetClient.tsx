@@ -54,8 +54,8 @@ const WRITTEN_CREDIT: Record<WrittenLevel, number> = { full: 1, partial: 0.5, no
 type WrittenLevel = Extract<SelfAssessment, 'full' | 'partial' | 'none'>
 
 const WRITTEN_LEVELS: { key: WrittenLevel; zh: string; en: string; cls: string }[] = [
-  { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-accent/50 bg-accent/15 text-accent-strong' },
-  { key: 'partial', zh: '部分明白', en: 'Partly', cls: 'border-gold/50 bg-gold/15 text-gold-strong' },
+  { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-accent/50 bg-surface-sunken text-accent-strong' },
+  { key: 'partial', zh: '部分明白', en: 'Partly', cls: 'border-gold/50 bg-surface-sunken text-gold-strong' },
   { key: 'none', zh: '仲未掌握', en: 'Not yet', cls: 'border-line-strong bg-line text-ink-soft' },
 ]
 
@@ -272,7 +272,7 @@ export default function AnswerSheetClient() {
           </div>
         </label>
         {error && (
-          <p className="mt-3 rounded-lg border border-gold/30 bg-gold/10 p-3 text-sm text-gold-strong">
+          <p className="mt-3 rounded-lg border border-gold/30 bg-surface-sunken p-3 text-sm text-gold-strong">
             {tr('搵唔到呢個卷號。再對一對張紙下面嗰行字？', "That code didn't match a paper — could you double-check the line at the bottom of your sheet?")}
           </p>
         )}
@@ -334,7 +334,7 @@ export default function AnswerSheetClient() {
                       aria-pressed={mark === 'right'}
                       className={`inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-3 text-sm font-medium transition-colors ${
                         mark === 'right'
-                          ? 'border-accent/50 bg-accent/15 text-accent-strong'
+                          ? 'border-accent/50 bg-surface-sunken text-accent-strong'
                           : 'border-line bg-surface text-ink-muted hover:border-accent/40'
                       }`}
                     >
@@ -345,7 +345,7 @@ export default function AnswerSheetClient() {
                       aria-pressed={mark === 'wrong'}
                       className={`inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-3 text-sm font-medium transition-colors ${
                         mark === 'wrong'
-                          ? 'border-gold/50 bg-gold/15 text-gold-strong'
+                          ? 'border-gold/50 bg-surface-sunken text-gold-strong'
                           : 'border-line bg-surface text-ink-muted hover:border-gold/40'
                       }`}
                     >

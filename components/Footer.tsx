@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { BookOpen } from 'lucide-react'
-import { useT } from '@/lib/i18n'
+import { useT, useLocale } from '@/lib/i18n'
 import GuardianCredits from '@/components/GuardianCredits'
 
 // Phase 2 Task 2（Kate/Leo 2026-07-18）：light-first 三層頁尾安全網（憲章 §10）。
@@ -12,6 +12,8 @@ import GuardianCredits from '@/components/GuardianCredits'
 
 export default function Footer() {
   const t = useT()
+  const { locale } = useLocale()
+  const en = locale === 'en'
   return (
     <footer className="border-t border-line bg-surface">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
@@ -66,6 +68,17 @@ export default function Footer() {
                 <Link href="/about" className="hover:text-accent transition-colors">
                   {t.footer.aboutUs}
                 </Link>
+              </li>
+              <li>
+                {/* 無障礙設定（規格 v4.0-B §6.1）。A11yPanel 冇獨立路由，
+                    所以用 button 派 event，唔係 <Link> —— 頁尾唔可以連去 404。 */}
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event('dse-open-a11y'))}
+                  className="min-h-11 text-left hover:text-accent transition-colors"
+                >
+                  {en ? 'Accessibility' : '無障礙設定'}
+                </button>
               </li>
               <li>
                 <Link href="/trust" className="font-medium hover:text-accent transition-colors">

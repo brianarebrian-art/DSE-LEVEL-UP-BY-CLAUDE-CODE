@@ -79,7 +79,7 @@ function Inner({ subjectId }: { subjectId: string }) {
             onClick={() => setSelected(t.id)}
             className={`min-h-9 rounded-full px-3 py-1 text-xs transition-colors ${
               selected === t.id
-                ? 'bg-violet/12 text-violet-strong ring-1 ring-violet/40'
+                ? 'bg-surface-sunken text-violet-strong ring-1 ring-violet/40'
                 : 'bg-line text-ink-muted hover:bg-line'
             }`}
           >

@@ -155,8 +155,8 @@ function FocusRoom() {
           <div
             className={`inline-flex items-center gap-2 text-xs px-3 py-1 rounded-full mb-5 ${
               mode === 'focus'
-                ? 'text-gold bg-gold/10 border border-gold/20'
-                : 'text-accent bg-accent/10 border border-accent/20'
+                ? 'text-gold bg-surface-sunken border border-gold/20'
+                : 'text-accent bg-surface-sunken border border-accent/20'
             }`}
           >
             {mode === 'focus' ? (en ? '🎯 Focus' : '🎯 專注中') : en ? '☕ Break' : '☕ 小休'}

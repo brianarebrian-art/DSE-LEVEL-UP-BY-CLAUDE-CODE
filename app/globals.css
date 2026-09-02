@@ -64,6 +64,18 @@
   --color-scrim: rgba(0, 0, 0, 0.70);
   --color-scrim-soft: rgba(0, 0, 0, 0.40);
 
+  /* ── 科目家族色（規格 v4.0-B §1.3）─────────────────────────────────
+     原本 25 科各自用一隻 Tailwind 高飽和色（amber／cyan／fuchsia…共 16 隻），
+     收斂成六個莫蘭迪家族。用途只有一個：科目卡 hover 時嘅邊框同極淡底，
+     即係色彩編碼，唔載字。
+     括號＝落三個同主題底面嘅最差比值（門檻 3:1，WCAG 1.4.11 圖形／UI 邊界）。 */
+  --color-subj-sage: #5E6B5A;   /* 4.75 —— 數學、生物、經濟、體育 */
+  --color-subj-moss: #4A5A48;   /* 6.22 —— M1、M2 */
+  --color-subj-mist: #5B666F;   /* 4.95 —— 物理、ICT、公民、旅款 */
+  --color-subj-clay: #76644F;   /* 4.78 —— 化學、企會財、中史、科技與生活 */
+  --color-subj-rose: #8A6E6A;   /* 3.92 —— 英文、中文、中國文學、英語文學、健管、視藝 */
+  --color-subj-stone: #6B6560;  /* 4.84 —— 歷史、地理、倫宗、設計、音樂 */
+
   /* 三個輔助色族。Cyber 值全部經對比度實測（見下方）。 */
   --color-gold: #7E5D07;          /* 年份／次要標記（5.56 / 淡底 4.51） */
   --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色】，只做邊框／淡底 */
@@ -201,8 +213,16 @@
   --color-ml-mist: #9AABB6;        /* 純裝飾填色 */
 }
 
-/* ── 莫蘭迪 scope（[data-ml]）｜規格 v4.0-B §7 ─────────────────────────────
-   把【現有語意 token】喺呢個 scope 內重新指向莫蘭迪色階。
+/* ── 莫蘭迪：全站語意 token 映射｜規格 v4.0-B ───────────────────────────
+   把【現有語意 token】整體重新指向莫蘭迪色階。
+
+   2026-09-02 由 [data-ml] scope 升上 :root。原本只鋪四個核心頁，
+   係因為當時全站有 69 處「同色字疊同色淡底」——
+   sage 落 α=0.10 藥丸只有 4.19，鋪全站即刻穿。
+   呢 69 處已經逐處改成【實色 bg-surface-sunken + 保留有色文字】
+   （有色文字落實色次級面：sage 4.75、clay 4.78、mist 4.95、warn 4.66），
+   所以全站映射而家安全。另外 63 處淡底配 ink 文字（實測 8.4+）
+   同 48 處純邊框刻意冇動 —— 佢哋本來就唔失效，改咗係為改而改。
 
    點解用 scope 而唔係逐個 className 換做 ml-*：
    四個核心畫面實測有 259 處語意 token（bg-surface／text-ink／text-accent…）、
@@ -216,7 +236,7 @@
    改為【實色 bg-ml-muted + 左側 3px 色條】，唔靠 alpha。
 
    本 scope 只影響掛咗 data-ml 嘅子樹；其餘三十幾條 route 完全唔受影響。 */
-[data-ml] {
+:root {
   --color-surface: var(--color-ml-canvas);
   --color-surface-raised: var(--color-ml-surface);
   --color-surface-sunken: var(--color-ml-muted);
@@ -261,8 +281,7 @@
 /* 兩條 selector 缺一唔可：data-ml 可以掛喺 <html> 自己（AppShell 掛嘅，
    俾全域彈層跟色），亦可以喺頁面個 div（SSR 首屏用，避免閃色）。
    `A B` 只食後代，掛喺 :root 自己嗰個要 `AB` 先食到。 */
-:root[data-theme='cyber'][data-ml],
-:root[data-theme='cyber'] [data-ml] {
+:root[data-theme='cyber'] {
   --color-ink-soft: #CFC8BF;        /* 7.13 */
   --color-ink-faint: #726C66;       /* 2.28 —— 停用控件／裝飾專用 */
   --color-accent-hover: #A0B39B;    /* 深字 7.61 */
@@ -270,6 +289,13 @@
   --color-line-strong: rgba(232, 226, 217, 0.20);
   --color-scrim: rgba(10, 9, 9, 0.78);
   --color-scrim-soft: rgba(10, 9, 9, 0.50);
+  /* 科目家族色嘅 Cyber 值。深色底要調亮先睇到，方向同莫蘭迪 dark 一致。 */
+  --color-subj-sage: #8A9A86;   /* 3.97 */
+  --color-subj-moss: #7E9179;   /* 3.50 */
+  --color-subj-mist: #9AABB6;   /* 5.00 */
+  --color-subj-clay: #C4A994;   /* 5.32 */
+  --color-subj-rose: #C9AFAA;   /* 5.74 */
+  --color-subj-stone: #A8A19A;  /* 4.63 */
   --color-gold-strong: #D4B7A0;     /* 深字 8.96 */
   --color-violet: #9AABB6;          /* 裝飾 mist 落暗底 = 6.05，載得字 */
   --color-violet-strong: #9AABB6;

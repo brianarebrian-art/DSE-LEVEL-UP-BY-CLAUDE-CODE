@@ -99,7 +99,7 @@ export default function HomePage() {
             對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
         <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
-          <div className="animate-on-scroll mb-8 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/[0.07] px-4 py-2 text-sm font-medium text-accent">
+          <div className="animate-on-scroll mb-8 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent">
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />
             {hero.badge}
           </div>
@@ -210,7 +210,7 @@ export default function HomePage() {
 
             <div className="animate-on-scroll stagger-2 rounded-2xl border border-accent/25 bg-surface-raised p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
               <div className="mb-4 flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-xs font-medium text-accent">2</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-surface-sunken border border-accent/40 text-xs font-medium text-accent">2</span>
                 <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{h.step2Label}</span>
               </div>
               <div className="mb-3 flex items-center gap-2">
@@ -222,7 +222,7 @@ export default function HomePage() {
 
             <div className="animate-on-scroll stagger-3 rounded-2xl border border-gold-soft/30 bg-surface-raised p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
               <div className="mb-4 flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-soft/15 text-xs font-medium text-gold">3</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-surface-sunken border border-gold/40 text-xs font-medium text-gold">3</span>
                 <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{h.step3Label}</span>
               </div>
               <div className="mb-3 flex items-center gap-2">
@@ -234,7 +234,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/subjects/math"
-                className="block rounded-lg border border-accent/30 bg-accent/[0.06] py-2 text-center text-sm text-accent transition-all duration-200 hover:bg-accent/[0.12]"
+                className="block rounded-lg border border-accent/30 bg-surface-sunken py-2 text-center text-sm text-accent transition-all duration-200 hover:bg-surface-sunken"
               >
                 {h.step3Cta}
               </Link>

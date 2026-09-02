@@ -5,8 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  FileText, Bookmark, Timer, Moon, Wrench, Network,
-} from 'lucide-react'
+  FileText, Bookmark, Timer, Moon, Wrench, Network, CloudSun } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -108,7 +107,7 @@ export default function DashboardPageClient() {
         </p>
         <Link
           href="/relax"
-          className="min-h-11 inline-flex items-center bg-accent/10 text-accent border border-accent/30 hover:bg-accent/15 rounded-xl px-6 py-3 font-medium transition-all"
+          className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-all"
         >
           🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
@@ -202,9 +201,17 @@ export default function DashboardPageClient() {
             </p>
           </div>
           <div className="flex items-center gap-2">
+            {/* 考試日管家入口（報告 v4.0 §7.4：Dashboard 放考試日 brief）。
+                擺喺呢度而唔係 Navbar：Navbar 橫向已迫到盡（見該檔實測寬度）。 */}
+            <Link
+              href="/exam-day"
+              className="inline-flex items-center gap-2 bg-surface-raised border border-line-strong text-ink-soft hover:text-ink hover:border-accent/40 px-4 py-2.5 rounded-xl transition-colors text-sm min-h-11"
+            >
+              <CloudSun size={15} aria-hidden /> {en ? 'Exam-day brief' : '考試日管家'}
+            </Link>
             <Link
               href="/dashboard/report"
-              className="inline-flex items-center gap-2 bg-surface-raised border border-accent/30 text-accent hover:bg-accent/[0.06] px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
+              className="inline-flex items-center gap-2 bg-surface-raised border border-accent/30 text-accent hover:bg-surface-sunken px-4 py-2.5 rounded-xl transition-all text-sm font-medium"
             >
               <FileText size={15} aria-hidden /> {en ? 'Generate report' : '生成報告'}
             </Link>
@@ -305,7 +312,7 @@ export default function DashboardPageClient() {
                 {en ? 'Every drill, a real return' : '每一卷，都係實打實嘅回報'}
               </div>
             </div>
-            <span className="inline-flex items-center gap-1.5 text-xs text-accent bg-accent/[0.08] border border-accent/20 px-3 py-1.5 rounded-full">
+            <span className="inline-flex items-center gap-1.5 text-xs text-accent bg-surface-sunken border border-accent/20 px-3 py-1.5 rounded-full">
               <Coins size={13} /> {en ? '100% free · no tutoring fees' : '完全免費 · 慳返補習費'}
             </span>
           </div>
@@ -406,7 +413,7 @@ export default function DashboardPageClient() {
         >
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <span className="w-11 h-11 rounded-xl bg-accent/[0.10] border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
+              <span className="w-11 h-11 rounded-xl bg-surface-sunken border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
                 <Network size={20} className="text-accent" />
               </span>
               <div>
@@ -481,7 +488,7 @@ export default function DashboardPageClient() {
         {stats.weakTopics.length > 0 && (
           <>
             <h2 className="text-lg font-medium mb-4 text-ink">{d.weakTitle}</h2>
-            <div className="bg-gold/[0.06] border border-gold/25 rounded-2xl p-5 mb-10">
+            <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5 mb-10">
               <div className="space-y-3">
                 {stats.weakTopics.map((wt) => (
                   <div key={wt.topic} className="flex items-center justify-between text-sm">

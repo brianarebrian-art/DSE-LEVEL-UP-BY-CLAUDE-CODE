@@ -55,7 +55,7 @@ export default function DailyQuote() {
       <p className="mt-3 text-sm text-ink-muted">— DSE LEVEL UP</p>
       <button
         onClick={shuffle}
-        className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface-raised px-5 py-2.5 text-sm font-medium text-accent transition-all hover:bg-accent/[0.06]"
+        className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface-raised px-5 py-2.5 text-sm font-medium text-accent transition-all hover:bg-surface-sunken"
       >
         <RefreshCw size={15} /> {en ? 'Another one' : '換一句'}
       </button>

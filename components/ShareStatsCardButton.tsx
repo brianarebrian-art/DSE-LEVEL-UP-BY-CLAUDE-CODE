@@ -53,7 +53,7 @@ export default function ShareStatsCardButton({ data, en = false }: { data: Daily
       <button
         onClick={handleShare}
         disabled={busy}
-        className="no-print w-full flex items-center justify-center gap-2 border border-accent/40 text-accent font-semibold py-3.5 rounded-xl transition-all hover:bg-accent/10 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="no-print w-full flex items-center justify-center gap-2 border border-accent/40 text-accent font-semibold py-3.5 rounded-xl transition-all hover:bg-surface-sunken disabled:opacity-50 disabled:cursor-not-allowed"
         style={{ boxShadow: '0 0 20px rgba(0,245,212,0.12)' }}
       >
         <ImageDown size={16} /> {busy ? (en ? 'Generating…' : '生成緊戰績卡…') : en ? 'Share stats card to IG Story' : '分享戰績卡到 IG Story'}

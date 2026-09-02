@@ -46,7 +46,7 @@ export default function StepHints({ subjectId }: { subjectId: string }) {
       <ol className="space-y-3">
         {steps.slice(0, opened).map((s, i) => (
           <li key={i} className="blindspot-in flex items-start gap-2.5">
-            <span className="shrink-0 w-5 h-5 rounded-md bg-gold/15 text-gold text-[11px] font-medium flex items-center justify-center mt-0.5">
+            <span className="shrink-0 w-5 h-5 rounded-md bg-surface-sunken border border-gold/40 text-gold text-[11px] font-medium flex items-center justify-center mt-0.5">
               {i + 1}
             </span>
             <span className="min-w-0">
