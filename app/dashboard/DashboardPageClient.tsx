@@ -5,8 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  FileText, Bookmark, Timer, Moon, Wrench, Network,
-} from 'lucide-react'
+  FileText, Bookmark, Timer, Moon, Wrench, Network, CloudSun } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -202,6 +201,14 @@ export default function DashboardPageClient() {
             </p>
           </div>
           <div className="flex items-center gap-2">
+            {/* 考試日管家入口（報告 v4.0 §7.4：Dashboard 放考試日 brief）。
+                擺喺呢度而唔係 Navbar：Navbar 橫向已迫到盡（見該檔實測寬度）。 */}
+            <Link
+              href="/exam-day"
+              className="inline-flex items-center gap-2 bg-surface-raised border border-line-strong text-ink-soft hover:text-ink hover:border-accent/40 px-4 py-2.5 rounded-xl transition-colors text-sm min-h-11"
+            >
+              <CloudSun size={15} aria-hidden /> {en ? 'Exam-day brief' : '考試日管家'}
+            </Link>
             <Link
               href="/dashboard/report"
               className="inline-flex items-center gap-2 bg-surface-raised border border-accent/30 text-accent hover:bg-accent/[0.06] px-4 py-2.5 rounded-xl transition-all text-sm font-medium"

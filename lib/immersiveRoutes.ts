@@ -34,7 +34,7 @@ export function isImmersiveRoute(pathname: string | null): boolean {
 //
 // ⚠️ 同 IMMERSIVE_ROUTES 唔一樣：/dashboard/report 係莫蘭迪但唔係全屏，
 // /focus、/relax 係全屏但唔用莫蘭迪。兩張表刻意分開。
-export const MORANDI_ROUTES = ['/practice', '/result', '/dashboard/report'] as const
+export const MORANDI_ROUTES = ['/practice', '/result', '/dashboard/report', '/exam-day'] as const
 
 export function isMorandiRoute(pathname: string | null): boolean {
   if (!pathname) return false
