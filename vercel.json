@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/exam-day-nudge", "schedule": "0 14 * * *" },
+    { "path": "/api/cron/exam-day-nudge", "schedule": "30 22 * * *" }
+  ]
+}

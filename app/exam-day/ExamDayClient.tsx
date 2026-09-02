@@ -2,9 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
-import { ChevronLeft, CloudSun, TrainFront, Clock, RefreshCw, Bus, Footprints } from 'lucide-react'
+import { ChevronLeft, CloudSun, TrainFront, Clock, RefreshCw, Bus, Footprints, Bell, BellOff } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import {
+  pushSupported, currentSubscription, subscribePush, unsubscribePush,
+  writePushConfig, examDateOf, type SubscribeResult,
+} from '@/lib/push/client'
 import {
   resolvePlace, planJourney, suggestNames, stationLabel, lineLabel,
   type Journey,
@@ -31,12 +35,17 @@ import {
 // 憲章 §16.E：上雲白名單（lib/sync.ts）新增任何一個 key 都要創辦人
 // 書面批准，所以呢啲嘢冇入 sync。
 //
-// ══ 冇做主動推送（§6.3）══
-// 規格要求 22:00 準備清單、06:30 綜合 brief、天氣突變即時推送。冇做：
-//   1. 推送要一張伺服器端訂閱表，而張表必然要綁 user id ＋ 考試日期
-//      ＋ 試場 —— 即係上面講嗰個未批准嘅資料類別。
-//   2. 「天氣突變即時推送」喺 Vercel Hobby 上面做唔到：cron 一日一次，
-//      根本行唔到「即時」。寫得出嘅只會係一個做唔到嘅承諾。
+// ══ 推送（§6.3）——做咗兩個時段，第三個做唔到 ══
+// 規格要求三樣：22:00 準備清單、06:30 綜合 brief、天氣突變即時推送。
+//   ✓ 前兩樣做咗（Vercel Cron 每日兩次）。
+//   ✗ 「天氣突變即時推送」做唔到 —— Vercel Hobby 嘅 cron 每個一日
+//     淨係行得一次，冇任何辦法做到「突變即時」。寫得出但兌現唔到嘅
+//     承諾，喺考試朝早會令學生等一個永遠唔會嚟嘅通知，
+//     所以介面上面一個字都唔會提「即時」。
+//
+// 訂閱表【冇】user id、考試日期、試場（supabase/migrations/0012）。
+// 伺服器send嘅推送冇任何內容，「今日關唔關我事」由 public/sw.js
+// 喺學生部機上面讀 IndexedDB 判斷。伺服器永遠唔知發生過乜。
 
 interface Buffer { code: string; zh: string; en: string; minutes: number }
 interface Note { zh: string; en: string }
@@ -120,7 +129,28 @@ export default function ExamDayClient() {
    */
   const seq = useRef(0)
 
+  // 推送。'unknown' = 仲未問過瀏覽器（SSR 同首次 render 都係呢個）。
+  const [pushOn, setPushOn] = useState<boolean | 'unknown'>('unknown')
+  const [pushMsg, setPushMsg] = useState<SubscribeResult | null>(null)
+  const [pushBusy, setPushBusy] = useState(false)
+
   useEffect(() => { setPrefs(readPrefs()) }, [])
+
+  useEffect(() => {
+    if (!pushSupported()) { setPushOn(false); return }
+    void currentSubscription().then((s) => setPushOn(!!s))
+  }, [])
+
+  // 把考試日期鏡一份落 IndexedDB —— service worker 冇 localStorage，
+  // 讀唔到就永遠判斷唔到「今日係咪你考試」，於是永遠唔會出通知。
+  useEffect(() => {
+    void writePushConfig({
+      examDate: examDateOf(prefs.examAt),
+      night: true,
+      morning: true,
+      lang: en ? 'en' : 'zh',
+    })
+  }, [prefs.examAt, en])
 
   const save = (p: Prefs) => {
     setPrefs(p)
@@ -211,6 +241,32 @@ export default function ExamDayClient() {
     const dt = typeof d === 'string' ? new Date(d) : d
     // 24 小時制：一個叫你六點四十七出門嘅畫面，唔應該仲要人分「上午」定「下午」。
     return dt.toLocaleTimeString(en ? 'en-HK' : 'zh-HK', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+  }
+
+  // 一定要由撳掣叫 —— 冇用戶手勢嘅權限請求會被拒，而被拒一次之後
+  // 好多瀏覽器唔會再問，即係我哋燒咗人哋一個永久嘅選擇權。
+  const togglePush = async () => {
+    setPushBusy(true); setPushMsg(null)
+    try {
+      if (pushOn === true) {
+        await unsubscribePush()
+        setPushOn(false)
+      } else {
+        const r = await subscribePush(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY)
+        setPushMsg(r)
+        setPushOn(r === 'ok')
+      }
+    } finally { setPushBusy(false) }
+  }
+
+  // 逐個 case 用 tr()，唔用 [zh, en] 元組 —— i18n-guard 唔接受元組寫法
+  // （佢分唔清「雙語資料表」同「淨中文寫死」），全站慣例係 en 三元／tr()。
+  const pushMessage = (r: SubscribeResult) => {
+    if (r === 'ok') return tr('開咗。前一晚同考試朝早各提你一次。', 'On. One reminder the night before, one on the exam morning.')
+    if (r === 'denied') return tr('你部機拒絕咗通知權限。要開返嘅話，去瀏覽器嘅網站設定度改。', 'Notifications were blocked. Re-enable them in your browser’s site settings.')
+    if (r === 'unsupported') return tr('你個瀏覽器唔支援推送通知。', 'Your browser does not support push notifications.')
+    if (r === 'not-configured') return tr('推送功能未設定好，暫時開唔到。', 'Push is not set up yet.')
+    return tr('開唔到，試多次。開唔到嘅話照樣可以自己入嚟睇。', 'Could not turn it on. You can still open this page yourself.')
   }
 
   const field = 'mt-1 w-full min-h-11 rounded-xl border border-line-strong bg-surface-sunken px-3 text-sm text-ink'
@@ -352,6 +408,39 @@ export default function ExamDayClient() {
             <RefreshCw size={15} aria-hidden className={loading ? 'animate-spin' : ''} />
             {loading ? tr('攞緊…', 'Fetching…') : tr('更新天氣同車務', 'Refresh weather & trains')}
           </button>
+          {/* ── 提我 ── */}
+          {pushOn !== 'unknown' && (
+            <div className="mt-4 pt-4 border-t border-line">
+              <button
+                type="button"
+                onClick={() => void togglePush()}
+                disabled={pushBusy}
+                aria-pressed={pushOn === true}
+                className={`ml-press w-full min-h-11 rounded-xl border px-3 inline-flex items-center justify-center gap-2 text-sm transition-colors disabled:opacity-60 ${
+                  pushOn ? 'border-accent bg-surface-sunken text-ink' : 'border-line-strong text-ink-soft hover:text-ink'
+                }`}
+              >
+                {pushOn ? <Bell size={15} aria-hidden /> : <BellOff size={15} aria-hidden />}
+                {pushOn
+                  ? tr('考試前會提你（撳一下關閉）', 'Reminders on (tap to turn off)')
+                  : tr('考試前提我一聲', 'Remind me before my exam')}
+              </button>
+              <p className="text-[11px] text-ink-muted mt-2 leading-relaxed">
+                {tr('前一晚提你執嘢，考試朝早提你睇出門時間 —— 兩個時段，冇第三個。天氣突變唔會即時通知你，我哋做唔到，唔想扮做到。',
+                    'One reminder the night before, one on the exam morning — that is all. We cannot send you instant alerts when the weather turns, so we will not pretend otherwise.')}
+              </p>
+              <p className="text-[11px] text-ink-muted mt-1 leading-relaxed">
+                {tr('伺服器唔會知你幾時考、喺邊考 —— 佢send嘅通知係空白嘅，「今日關唔關你事」係你部機自己判斷。',
+                    'The server never learns your exam date or venue — the push it sends is empty, and your own device decides whether today concerns you.')}
+              </p>
+              {pushMsg && (
+                <p className="text-[11px] text-ink mt-2 bg-surface-sunken border-l-[3px] border-accent rounded-lg px-3 py-2 leading-relaxed">
+                  {pushMessage(pushMsg)}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* 呢句要跟模式變。巴士模式根本乜都唔傳，照出「傳去伺服器嘅淨係一個 */}
           {/* 上車站」就係喺私隱聲明度講咗一句唔啱嘅嘢 —— 講少咗都係講錯。 */}
           <p className="text-[11px] text-ink-muted mt-3 leading-relaxed">
