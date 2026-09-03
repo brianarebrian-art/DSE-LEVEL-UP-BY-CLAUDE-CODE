@@ -23,7 +23,14 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 // 全站淺色底（app/globals.css 的 --color-surface）。淺字最終疊喺呢個色上。
-const SURFACE = '#FAFAF8'
+//
+// ⚠️ 2026-09-03 修正：呢個值一路寫死 '#FAFAF8'，但莫蘭迪化之後真實
+// --color-surface 已經係 --color-ml-canvas = #F4F0EA。個閘對住一個唔再存在
+// 嘅底色計咗一段時間。方向上係偏寬鬆（#F4F0EA 比 #FAFAF8 深，真實對比會
+// 高過個閘所報），所以冇放走過真缺陷 —— 但一個同佢守護嘅調色板脫節嘅閘，
+// 遲早會反方向出錯。呢類漂移只會喺有人對返實情嗰陣先發現，故此連埋
+// 出處一齊寫低。
+const SURFACE = '#F4F0EA'
 
 // Tailwind 預設色階。只列會出問題嘅淺階；深階一律過 AA，不必列。
 //

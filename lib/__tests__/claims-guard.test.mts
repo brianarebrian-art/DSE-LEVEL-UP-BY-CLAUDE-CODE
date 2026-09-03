@@ -65,6 +65,14 @@ const MUST_CATCH: [label: string, sentence: string][] = [
   ['假見證第一人稱', '我當年都係 Band 3，而家讀緊 U。'],
   // 否定豁免（2026-09-03）唔可以開得太闊：一句轉折之後嘅真承諾仍然要捉到。
   ['否定之後又轉頭承諾', '冇人保證你升，但我哋保證你升。'],
+  // ── 英文具名見證（2026-09-03 補漏）─────────────────────────────────────
+  // 逐字抄自 2026-09-03 嗰份 UI 規格 §4.2 要求擺上 Landing 嘅 Testimonial 區。
+  // 補漏之前呢六句全部過到閘 —— 即係話個閘捉嘅係「中文假見證」，唔係「假見證」。
+  ['英文見證：第一人稱得益', 'DSE LEVEL UP helped me stop guessing and start understanding.'],
+  ['英文見證：第一人稱經歷', 'I studied with less stress and saw real improvement.'],
+  ['英文見證：具名落款', 'Chloe W. shared her story — Chloe W. told us so.'],
+  ['英文見證：虛構成績落款', 'A happy learner · 5** in English Language'],
+  ['英文見證：虛構屆別落款', 'A happy learner · Class of 2024'],
 ]
 
 for (const [label, sentence] of MUST_CATCH) {
@@ -87,6 +95,16 @@ const MUST_PASS: [label: string, sentence: string][] = [
   // 一份本來想加強嘅法律保障。
   ['免責聲明（否定嘅「保證」）', '我哋唔會亦冇能力保證你準時到場。'],
   ['否定嘅「零風險」', '改寫降低風險，但本平台並非零風險。'],
+  // ── 英文補漏唔可以攔到正當文案（2026-09-03）───────────────────────────
+  // 收窄之前呢兩句真係被攔過，兩句都係 live 文案，逐字抄返：
+  ['FAQ 問句（現有 /trust 文案）', 'What can this actually help me with — and what can it not?'],
+  ['自評掣（現有答題紙文案）', 'I got it'],
+  // 以下四句今日唔存在，但係最容易寫出嚟嘅正當英文文案 ——
+  // B 類三個子訊號要求落款分隔符（· , — –），就係為咗放得過呢啲。
+  ['以屆別講受眾而非落款', 'Built for the Class of 2027.'],
+  ['以成績講目標而非落款', 'To reach 5** in English Language you need to read past the surface.'],
+  ['祈使句市場文案', 'Stop guessing, start understanding.'],
+  ['難度星級而非評分', '難度：★★★'],
 ]
 
 for (const [label, sentence] of MUST_PASS) {
