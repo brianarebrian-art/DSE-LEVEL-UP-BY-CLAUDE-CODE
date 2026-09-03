@@ -155,8 +155,8 @@ const loaders: Record<string, Loader> = {
     return [...base.englishLiteratureQuestions, ...b2.englishLiteratureFloorB2Questions]
   },
   'visual-arts': async () => {
-    const [base, b2, b3] = await Promise.all([import('./visual-arts'), import('./visual-arts-floor-b2'), import('./visual-arts-bank')])
-    return [...base.visualArtsQuestions, ...b2.visualArtsFloorB2Questions, ...b3.visualArtsBank2Questions]
+    const [base, b2, b3, b4] = await Promise.all([import('./visual-arts'), import('./visual-arts-floor-b2'), import('./visual-arts-bank'), import('./visual-arts-bank2')])
+    return [...base.visualArtsQuestions, ...b2.visualArtsFloorB2Questions, ...b3.visualArtsBank2Questions, ...b4.visualArtsBank3Questions]
   },
   csd: async () => {
     const [base, reviewed, b2] = await Promise.all([import('./csd'), import('./csd-reviewed'), import('./csd-floor-b2')])
