@@ -30,6 +30,8 @@ const T = {
   eco: { id: 'ecology', zh: '生態', en: 'Ecology' },
   enzymes: { id: 'enzymes', zh: '酶', en: 'Enzymes' },
   coord: { id: 'coordination', zh: '神經與協調', en: 'Coordination' },
+  digest: { id: 'digestion', zh: '營養與消化', en: 'Nutrition & Digestion' },
+  cells: { id: 'cells', zh: '細胞', en: 'Cells' },
 } satisfies Record<string, TopicMeta>
 
 const FW = {
@@ -87,7 +89,7 @@ for (const total of [160, 240, 320, 400, 480, 560, 640, 720, 800, 880, 960, 1120
 }
 
 // GL4 — 性連鎖：帶因母親與正常父親的男性子代患病比例
-for (const sons of [20, 30, 40, 50, 60, 70, 80, 100, 120, 160, 200, 240]) {
+for (const sons of [20, 24, 30, 36, 40, 50, 60, 70, 80, 90, 100, 120, 160, 200, 240]) {
   const affected = sons / 2
   const d = distract(affected, [sons, sons / 4, 0])
   if (d.length < 3) continue
@@ -193,7 +195,7 @@ for (const rate of [15, 18, 20, 24, 28, 30, 36, 42, 48]) {
 // ── 生理機制・因果鏈 ──────────────────────────────────────────────────────
 
 // CH1 — 心輸出量 = 心搏量 × 心率
-for (const stroke of [60, 65, 70, 75, 80, 85, 90]) {
+for (const stroke of [55, 60, 65, 70, 75, 80, 85, 90, 95]) {
   for (const hr of [60, 70, 72, 80, 100]) {
     const co = (stroke * hr) / 1000
     const r = Math.round(co * 100) / 100
@@ -286,6 +288,40 @@ for (const synapses of [2, 3, 4, 5, 6, 8]) {
       [`總延擱 = 突觸數 × 每個延擱 = $${synapses} \\times ${delay} = ${total}$ 毫秒。突觸延擱源於神經遞質的釋放、擴散與受體結合 —— 這是化學過程，比沿軸突的電傳導慢得多。這正是最簡單的反射弧只用兩至三個神經元的原因：每多一個突觸，反應就慢一點，而反射的價值正在於快。`,
        `Total delay = number of synapses × delay each = $${synapses} \\times ${delay} = ${total}$ ms. Synaptic delay comes from transmitter release, diffusion and receptor binding — a chemical process, far slower than electrical conduction along an axon. That is exactly why the simplest reflex arcs use only two or three neurones: every extra synapse costs time, and speed is the whole point of a reflex.`])
   }
+}
+
+// ── 營養與消化 ────────────────────────────────────────────────────────────
+
+// DG1 — 三大營養素熱值：碳水化合物與蛋白質各 17 kJ/g，脂肪 38 kJ/g
+for (const carb of [20, 30, 40, 50, 60, 80, 100]) {
+  for (const fat of [5, 10, 15, 20, 25]) {
+    const kj = carb * 17 + fat * 38
+    const d = distract(kj, [(carb + fat) * 17, (carb + fat) * 38, carb * 38 + fat * 17])
+    if (d.length < 3) continue
+    b.add(`biob2_dg1_${carb}_${fat}`, T.digest, FW.apply, 'medium',
+      [`一份食物含碳水化合物 ${carb} 克、脂肪 ${fat} 克，不含蛋白質。若碳水化合物的熱值為每克 17 kJ、脂肪為每克 38 kJ，該食物可提供多少 kJ 能量？`,
+       `A portion of food contains ${carb} g of carbohydrate and ${fat} g of fat, with no protein. Taking carbohydrate as 17 kJ per g and fat as 38 kJ per g, how much energy does it supply, in kJ?`],
+      [qty(kj, 'kJ', 'kJ'), ...d.map((v) => qty(v, 'kJ', 'kJ'))],
+      [`分別計算再相加：碳水化合物 $${carb} \\times 17 = ${carb * 17}$ kJ，脂肪 $${fat} \\times 38 = ${fat * 38}$ kJ，合共 ${kj} kJ。脂肪的熱值是碳水化合物的【兩倍多】，所以少量脂肪已可貢獻大量能量 —— 答 $${(carb + fat) * 17}$ 把兩者當成同一熱值相加，正是低估脂肪的典型做法。`,
+       `Compute each and add: carbohydrate gives $${carb} \\times 17 = ${carb * 17}$ kJ and fat gives $${fat} \\times 38 = ${fat * 38}$ kJ, totalling ${kj} kJ. Fat carries MORE THAN TWICE the energy per gram, so a small mass of fat contributes a great deal — answering $${(carb + fat) * 17}$ treats both at the same value and is the classic way fat gets underestimated.`])
+  }
+}
+
+// ── 細胞 ──────────────────────────────────────────────────────────────────
+
+// CE1 — 立方體細胞的表面積體積比 = 6/邊長
+for (const side of [1, 2, 3, 4, 5, 6, 8, 10, 12]) {
+  const sa = 6 * side * side
+  const vol = side ** 3
+  const ratio = Math.round((sa / vol) * 100) / 100
+  const d = distract(ratio, [sa, vol, Math.round((vol / sa) * 100) / 100])
+  if (d.length < 3) continue
+  b.add(`biob2_ce1_${side}`, T.cells, FW.logic, 'medium',
+    [`一個立方體細胞的邊長為 ${side} 單位。其表面積與體積之比為多少？`,
+     `A cube-shaped cell has sides of ${side} units. What is its surface-area-to-volume ratio?`],
+    [qty(ratio, '', ''), ...d.map((v) => qty(v, '', ''))],
+    [`表面積 = $6 \\times ${side}^2 = ${sa}$，體積 = $${side}^3 = ${vol}$，比值 = $${sa} \\div ${vol} = ${ratio}$。留意邊長增加時，表面積按【平方】增長而體積按【立方】增長，故比值【下降】。細胞不能無限長大，正是因為物質靠擴散進出而擴散只發生在表面：體積一大，表面就不夠用。`,
+     `Surface area = $6 \\times ${side}^2 = ${sa}$ and volume = $${side}^3 = ${vol}$, so the ratio is $${sa} \\div ${vol} = ${ratio}$. As the side grows, surface area rises with the SQUARE while volume rises with the CUBE, so the ratio FALLS. Cells cannot grow without limit precisely because materials enter and leave by diffusion across the surface: enlarge the volume and the surface can no longer keep up.`])
 }
 
 export const biologyBank4Questions: Question[] = b.bank
