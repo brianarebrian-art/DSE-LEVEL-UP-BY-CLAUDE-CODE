@@ -99,9 +99,47 @@ const RULES = [
     // 2026-08-21 喺 components/EncouragementWall.tsx 捉到兩種齊備（8 條說話、
     // 標題「過來人打氣牆」、每條落款「匿名學長姐」，全部由我哋自己寫）。
     // 學生喺最脆弱嗰刻信咗一個唔存在嘅人 —— 呢個係最難解釋嗰種失實。
-    re: /——\s*(匿名)?(學長|學姐|師兄|師姐|同學|考生|用戶)|—\s*an?\s+anonymous\s+(senior|student|user)|我(當年|以前|嗰年)都?係\s*[Bb]and\s*\d|我\s*[Mm]ock\s*考|我最後都?(夠分|入到|考到)/g,
+    //
+    // ══ 2026-09-03 補漏：英文具名見證 ══
+    // 上面兩種形態【全部係中文】。2026-09-03 一份 UI 規格要求喺 Landing 放：
+    //   "DSE LEVEL UP helped me stop guessing and start understanding.
+    //    I studied with less stress and saw real improvement."
+    //   —— Chloe W. · 5** in English Language · Class of 2024  ★★★★★
+    // 一個唔存在嘅人 + 一個唔存在嘅成績，即係憲章 §8 明文禁嗰樣，
+    // 但呢個閘會靜靜雞放佢過 —— 換咗英文、換咗具名，兩條中文 regex 一條都唔中。
+    // 即係話呢個閘捉嘅其實係「中文假見證」，唔係「假見證」。
+    //
+    // 新增六個子訊號，分兩類：
+    //   A. 第一人稱英文得益宣稱（helped me／I studied|improved|scored／
+    //      saw … improvement）—— 全站文案一律用第二人稱（你／you），
+    //      一句第一人稱過去式得益宣稱基本上只會係見證。
+    //   B. 落款位嘅虛構身分（Class of 20xx／5** in <Subject>／英文具名落款）。
+    //
+    // ⚠️ B 類三個全部要求前面有落款分隔符（· , — –），唔可以淨係認關鍵字。
+    // 點解：「Built for the Class of 2027」「要攞 5** in English Language
+    // 你需要……」呢兩句係正當文案，唔綁落款位就會攔錯。收窄好過加豁免 ——
+    // 一張豁免名單淨係會愈嚟愈長，而且每一項都要人記得點解喺度。
+    //
+    // ⚠️ 刻意【唔】收兩個候選，雖然今日兩個都係零命中：
+    //   · `stop guessing` —— 「Stop guessing, start understanding」做標題
+    //     係正當市場文案，唔係見證。
+    //   · `★★★` / `5 stars` —— 難度指示器一樣會用星。
+    // 兩個都唔會增加對目標句嘅捕捉力（已經被其餘六個中晒），
+    // 淨係增加噪音。一個成日嘈嘅閘好快會被繞過，到時就等於冇。
+    //
+    // ⚠️ 唔可以用 /gi 一次過解決大小寫：`i` flag 會令 B 類嗰兩個 `[A-Z]`
+    // 連細楷都中，即係把「具名落款」收窄成「任何一個字」，等於冇收窄過。
+    // 要唔分大小寫嘅逐個寫 [Hh]／[Ss]／[Cc]；`I` 本身喺英文永遠大楷。
+    //
+    // 收窄前後嘅實測（憲章 §6，掃 187 個文案檔）：
+    //   收窄前 `help(ed|s)? me`  → 中 app/trust/TrustClient.tsx:105
+    //          「What can this actually help me with — and what can it not?」
+    //   收窄前 `I (got|stopped|learned)` → 中兩個自評掣「I got it」
+    //          （app/answer-sheet/AnswerSheetClient.tsx、components/TextQuestionCard.tsx）
+    //   收窄後六個子訊號 → 現有文案新增被攔 0 處，目標句六個全中。
+    re: /——\s*(匿名)?(學長|學姐|師兄|師姐|同學|考生|用戶)|—\s*an?\s+anonymous\s+(senior|student|user)|我(當年|以前|嗰年)都?係\s*[Bb]and\s*\d|我\s*[Mm]ock\s*考|我最後都?(夠分|入到|考到)|\b[Hh]elped\s+me\b|\bI\s+(?:studied|improved|scored)\b|\b[Ss]aw\s+(?:real|huge|massive|big)\s+improvement\b|[·,—–]\s*[Cc]lass\s+of\s+20\d{2}\b|[·,—–]\s*[45]\s?\*\*?\s+in\s+[A-Z][a-z]|[—–]\s*[A-Z][a-z]+\s+[A-Z]\./g,
     why: '假用戶見證 —— 我哋自己寫嘅說話唔可以簽住一個唔存在嘅人，亦唔可以扮成某個具體學生嘅親身經歷。憲章 §8 明文禁止。',
-    fix: '照講係邊個講：「想同你講幾句」。內容改成唔假託任何人嘅講法，例如「Mock 嘅分數唔係判詞」。真實見證要經同意並標明收集日期。',
+    fix: '照講係邊個講：「想同你講幾句」。內容改成唔假託任何人嘅講法，例如「Mock 嘅分數唔係判詞」。真實見證要經同意並標明收集日期。英文 Landing 想要社會證明嘅話，改成講得出處嘅真實數據 —— 例如 /transparency 嗰個由題庫即時算出嚟嘅審批比例。',
   },
   {
     id: 'fabricated-social-proof',
