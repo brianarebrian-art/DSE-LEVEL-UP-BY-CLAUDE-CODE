@@ -122,8 +122,8 @@ const loaders: Record<string, Loader> = {
     return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions, ...b1.historyBank1Questions]
   },
   'chinese-history': async () => {
-    const [base, b2] = await Promise.all([import('./chinese-history'), import('./chinese-history-floor-b2')])
-    return [...base.chineseHistoryQuestions, ...b2.chineseHistoryFloorB2Questions]
+    const [base, b2, b3] = await Promise.all([import('./chinese-history'), import('./chinese-history-floor-b2'), import('./chinese-history-bank')])
+    return [...base.chineseHistoryQuestions, ...b2.chineseHistoryFloorB2Questions, ...b3.chineseHistoryBank1Questions]
   },
   ths: async () => {
     const [base, bank, b2, b3] = await Promise.all([import('./ths'), import('./applied-banks'), import('./ths-floor-b2'), import('./ths-bank')])

@@ -61,6 +61,7 @@ import { historyBank1Questions } from './history-bank'
 import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { chineseHistoryFloorB2Questions } from './chinese-history-floor-b2'
+import { chineseHistoryBank1Questions } from './chinese-history-bank'
 import { thsQuestions, thsTopics } from './ths'
 import { thsBank3Questions } from './ths-bank'
 import { thsFloorB2Questions } from './ths-floor-b2'
@@ -159,7 +160,7 @@ const banks: Record<string, SubjectBank> = {
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
   geography: { questions: [...geographyQuestions, ...geographyBankQuestions, ...geographyFloorB2Questions, ...geographyBank2Questions, ...geographyBank3Questions], topics: geographyTopics },
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions, ...historyBank1Questions], topics: historyTopics },
-  'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions], topics: chineseHistoryTopics },
+  'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions, ...chineseHistoryBank1Questions], topics: chineseHistoryTopics },
   ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions, ...thsFloorB2Questions, ...thsBank3Questions], topics: thsTopics },
   'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions, ...healthManagementBank2Questions, ...healthManagementBank3Questions], topics: healthManagementTopics },
   'design-tech': { questions: [...designTechQuestions, ...designTechBankQuestions, ...designTechBank2Questions, ...designTechFloorB2Questions, ...designTechBank3Questions, ...designTechBank4Questions], topics: designTechTopics },
