@@ -55,6 +55,7 @@ import { geographyBank2Questions } from './geography-bank'
 import { geographyBank3Questions } from './geography-bank3'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
+import { historyBank1Questions } from './history-bank'
 import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { chineseHistoryFloorB2Questions } from './chinese-history-floor-b2'
@@ -153,7 +154,7 @@ const banks: Record<string, SubjectBank> = {
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
   geography: { questions: [...geographyQuestions, ...geographyBankQuestions, ...geographyFloorB2Questions, ...geographyBank2Questions, ...geographyBank3Questions], topics: geographyTopics },
-  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
+  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions, ...historyBank1Questions], topics: historyTopics },
   'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions], topics: chineseHistoryTopics },
   ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions, ...thsFloorB2Questions, ...thsBank3Questions], topics: thsTopics },
   'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions, ...healthManagementBank2Questions, ...healthManagementBank3Questions], topics: healthManagementTopics },

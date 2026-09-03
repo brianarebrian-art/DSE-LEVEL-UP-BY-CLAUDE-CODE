@@ -113,10 +113,11 @@ const loaders: Record<string, Loader> = {
   history: async () => {
     // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。
     // 補底 MC —— brian 2026-08-28 逐題審批。六個當時只得 1–4 條的課題各補至 10 條。
-    const [base, essays, floor1] = await Promise.all([
+    const [base, essays, floor1, b1] = await Promise.all([
       import('./history'), import('./history-p2-essays'), import('./history-floor-batch1'),
+      import('./history-bank'),
     ])
-    return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions]
+    return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions, ...b1.historyBank1Questions]
   },
   'chinese-history': async () => {
     const [base, b2] = await Promise.all([import('./chinese-history'), import('./chinese-history-floor-b2')])
