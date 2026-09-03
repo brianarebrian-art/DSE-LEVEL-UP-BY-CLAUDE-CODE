@@ -11,6 +11,23 @@
    • ErrorRadar —— SVG presentation attribute（fill="…"）按規範唔食 var()，
      而且被溫書地圖報告導出重用 */
 @theme {
+  /* ── 盲測黑題卡專用（components/BlindTestQuestion.tsx）─────────────────
+     呢張卡係一張【試卷】，唔係一個 UI 面板 —— 所以兩個主題都係「紙」，
+     只係暗色模式用舊紙色，唔會喺深夜刺眼。
+
+     點解唔跟其他卡用 surface-raised：舊版係純黑卡配純黑遮蓋條，
+     「塗黑」實際上睇唔到（黑疊黑）。而暗色模式下【物理上做唔到】
+     一條比卡更深嘅條 —— #2C2A29 已經接近黑，再深都只有 1.34:1。
+     一張紙先至有得塗黑。
+
+     墨、輔助字、陶土三隻兩個主題共用，因為紙兩邊都係淺色。
+     括號＝落【兩種紙】嘅最差值。 */
+  --color-paper: #F5E7C8;         /* PC-009 試卷紙（暗色模式改舊紙色，見下） */
+  --color-paper-ink: #2C2A29;     /* 墨、遮蓋條（淺紙 11.66 / 舊紙 6.36） */
+  --color-paper-muted: #4A4642;   /* 輔助字（7.63 / 4.16） */
+  --color-paper-warn: #6B2B2B;    /* PC-004 陷阱標示（8.55 / 4.66）。
+                                     色卡入面最深嗰隻磚紅，唔係螢光紅 —— 憲章 §7 */
+
   --color-neon-cyan: #00F5D4;
   --color-neon-pink: #FF006E;
   --color-neon-yellow: #FEE440;
@@ -69,15 +86,19 @@
      收斂成六個莫蘭迪家族。用途只有一個：科目卡 hover 時嘅邊框同極淡底，
      即係色彩編碼，唔載字。
      括號＝落三個同主題底面嘅最差比值（門檻 3:1，WCAG 1.4.11 圖形／UI 邊界）。 */
-  --color-subj-sage: #5E6B5A;   /* 4.75 —— 數學、生物、經濟、體育 */
-  --color-subj-moss: #4A5A48;   /* 6.22 —— M1、M2 */
-  --color-subj-mist: #5B666F;   /* 4.95 —— 物理、ICT、公民、旅款 */
-  --color-subj-clay: #76644F;   /* 4.78 —— 化學、企會財、中史、科技與生活 */
-  --color-subj-rose: #8A6E6A;   /* 3.92 —— 英文、中文、中國文學、英語文學、健管、視藝 */
-  --color-subj-stone: #6B6560;  /* 4.84 —— 歷史、地理、倫宗、設計、音樂 */
+  /* 科目家族色（虹牌莫蘭迪色卡暗半，壓深至 AA）。
+     六個家族要分得開，所以刻意揀開色相：綠／深綠／藍／土／玫瑰／岩灰。 */
+  --color-subj-sage: #57685C;   /* PC-016↓ 4.66 */
+  --color-subj-moss: #566953;   /* PC-032↓ 4.65 */
+  --color-subj-mist: #4D667E;   /* PC-020↓ 4.67 */
+  --color-subj-clay: #706347;   /* PC-011↓ 4.61 */
+  --color-subj-rose: #845956;   /* PC-003↓ 4.69 */
+  --color-subj-stone: #666557;  /* PC-028↓ 4.68 */
 
   /* 三個輔助色族。Cyber 值全部經對比度實測（見下方）。 */
-  --color-gold: #7E5D07;          /* 年份／次要標記（5.56 / 淡底 4.51） */
+  --color-gold: #756238;          /* PC-012↓ 年份／次要標記。⚠️ :root 會用
+                                     var(--color-ml-clay) 覆蓋佢，呢度只係 @theme
+                                     生成 utility 用嘅預設值。 */
   --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色】，只做邊框／淡底 */
   --color-gold-strong: #725106;   /* 6.63 */
   --color-violet: #6D28D9;        /* 課題／框架標記（6.50 / 淡底 5.09） */
@@ -117,80 +138,125 @@
      【對比度驗證】括號＝落三個同主題底面（canvas／surface／muted）嘅最差值。
      Light 三底面 = #F4F0EA / #FFFDF9 / #F0EBE3。
      ⚠️ 改色前必讀：v4.0 原版有三個值未達標，v4.0-A 只修咗 Light 一半，
-     以下係逐項實測後嘅定案，每個都要對【三個】底面計，唔可以只計 canvas。 */
+     以下係逐項實測後嘅定案，每個都要對【四個】底面計。
+
+     ⚠️ 2026-09-03：由三個改為四個。第四個係 #E5E2DC（倒數列），
+     瀏覽器實測揾到 —— gold 4.22、ink-muted 4.44、sage 4.27 全部喺佢身上
+     跌穿 AA，而三底面計法一直報「合格」。
+     呢個係同一個錯第三次：規格 v4.0-A 只計 canvas 漏咗 muted，
+     v4.0-B 只計 canvas 漏咗第三底。校色基準唔齊，個數字就係假嘅。
+     四個底面：#F4F0EA 頁 / #FFFDF9 卡 / #F0EBE3 次級 / #E5E2DC 倒數列。 */
   --color-ml-canvas: #F4F0EA;      /* 頁面底 */
   --color-ml-surface: #FFFDF9;     /* 卡片 */
   --color-ml-muted: #F0EBE3;       /* 次級區塊。⚠️ 規格原值 #E8E2D9 太深，
                                       五隻前景色全部喺佢身上跌穿，已調淺 */
   --color-ml-ink: #2C2A29;         /* 正文（12.04） */
-  --color-ml-ink-soft: #6B6560;    /* 輔助（4.84） */
-  --color-ml-sage: #5E6B5A;        /* 主行動、正確（4.75 / 白字掣 5.64） */
-  --color-ml-clay: #76644F;        /* 強調、失分標示（4.78 / 白字掣 5.67）
-                                      ⚠️ 規格原值 #A89080 對卡只有 2.97，
-                                      連圖形 3:1 都唔夠 —— 即係「指出失分位」
-                                      嗰個標示會近乎隱形。已撳深兩次 */
-  --color-ml-warn: #8B5E4A;        /* 超時、警告（4.66 / 白字掣 5.53）。唔用螢光紅 */
-  --color-ml-good: #5E6B5A;        /* 達標（同 sage） */
-  --color-ml-line: #89847D;        /* 控件邊界（3.13，WCAG 1.4.11）
-                                      ⚠️ 規格原值 #D9D2C8 只有 1.32、
-                                      v4.0-A 改 #C4BDB3 亦只有 1.64 —— 兩次都冇落到地 */
+  --color-ml-ink-soft: #69635F;    /* 輔助（4.57，四底面） */
+  /* 以下五隻嚟自虹牌莫蘭迪色卡【暗嗰半】，按同一色相壓深至 AA ——
+     點解要壓深，見本區塊上方嘅「色卡係油漆卡」註釋。 */
+  --color-ml-sage: #57685C;        /* PC-016↓ 主行動、正確（4.59 / 白字掣 5.68） */
+  --color-ml-clay: #706347;        /* PC-011↓ 強調、失分標示（4.56 / 白字掣 5.63） */
+  --color-ml-warn: #845956;        /* PC-003↓ 超時、警告（4.58 / 白字掣 5.66）。
+                                      用色卡嘅乾玫瑰，唔用螢光紅 —— 憲章 §7 */
+  --color-ml-good: #566953;        /* PC-032↓ 達標（4.59 / 白字掣 5.68） */
+  --color-ml-line: #8A8377;        /* PC-027↓ 控件邊界（3.16，WCAG 1.4.11）。
+                                      色卡原值 #B5AC9C 只有 1.89 —— 佢係一隻牆色，
+                                      唔係一條線色 */
   --color-ml-on-brand: #FFFFFF;    /* 實心掣上嘅字（Light 用白字） */
+  --color-ml-rose: #C5908B;        /* PC-002 純裝飾填色 */
+  --color-ml-mist: #AFC2D1;        /* PC-018 純裝飾填色 */
   /* rose／mist 刻意【唔納入對比度規範】：兩者對三底面只有 1.97 / 2.41，
      連圖形 3:1 都唔夠。規格已明文限定「只可做裝飾底或 icon 填色，唔載字」——
      即係唔可以做描邊 icon，亦唔可以做唯一嘅狀態指示。 */
   --color-ml-rose: #B7A6A3;        /* 情緒／關懷 —— 純裝飾填色 */
   --color-ml-mist: #8A9BA8;        /* 資訊／交通 —— 純裝飾填色 */
 }
+/* ── 暗色主題（莫蘭迪夜色）────────────────────────────────────────────────
+   2026-09-03：由「Cyber 深夜霓虹」改為莫蘭迪暗色。
 
-/* ── Cyber 主題（深夜霓虹）────────────────────────────────────────────────
-   全部組合實測通過 WCAG AA，正文級別更達 AAA。逐項對比度（vs 底 #0B1120）：
-     ink       #E8ECF4 → 15.90:1  AAA
-     ink-soft  #D4DAE6 → 13.42:1  AAA
-     ink-muted #9CA3AF →  7.42:1  AAA   ← Light 的 #6B6B6B 落深底只有 3.53:1，
-                                          內文不合格，故 Cyber 必須換色
-     accent    #00F5D4 → 13.46:1  AAA
-   ⚠️ 實心掣刻意用【深色字】on 霓虹青（13.46:1）。白字 on #00F5D4 只有 1.40:1，
-      等同睇唔到 —— 呢個係最易踩的陷阱，改色前必須重新計算。
-   霓虹粉 #FF006E（4.91:1）與紫 #9B5DE5（4.56:1）僅達 AA 下限，只可用於大字、
-   圖示與裝飾，不得用作長段正文。 */
+   ══ 點解要改 ══
+   莫蘭迪化做咗兩輪之後，暗色模式仍然係藍底青光（#0B1120／#00F5D4）——
+   因為前兩輪只把 --color-ml-* 呢組新 token 搬上 :root 同呢度，
+   但【冇動過】本區塊嘅核心語意 token。淺色嗰邊 :root 係
+   `--color-surface: var(--color-ml-canvas)` 咁映射，暗色呢邊
+   一直係寫死嘅藍。即係話莫蘭迪只做咗一半，而「一半」喺
+   深色模式睇落就係完全冇做。
+
+   ⚠️ 順手合併咗兩個 selector 完全一樣嘅區塊。之前係兩個
+   `:root[data-theme='cyber']`，第二個靜靜雞覆蓋第一個一部分 ——
+   核心底色同 accent 就係因為【第二個冇覆蓋到】而保住咗藍色，
+   而冇人為意，因為第二個區塊睇落已經好齊全。兩個同名 selector
+   本身就係一個等人踩嘅坑，唔好再拆返開。
+
+   ══ 暗色同淺色嘅方向相反 ══
+   實心掣喺呢度係【淺色填色 + 深色字】。白字 on 莫蘭迪灰綠只有 1.4–2:1，
+   等同睇唔到。改色之前必須重新計，唔可以照抄淺色嗰欄。
+
+   逐項對比度 = 落三個暗底（#1E1C1B / #2C2A29 / #3A3734）嘅【最差】值，
+   唔係只計 canvas —— 只計 canvas 係上一輪漏咗 line 同 ink-soft 嘅原因。 */
 :root[data-theme='cyber'] {
-  --color-surface: #0B1120;
-  --color-surface-raised: #131C2E;
-  --color-surface-sunken: #080C14;
-  --color-ink: #E8ECF4;
-  --color-ink-soft: #D4DAE6;
-  --color-ink-muted: #9CA3AF;
-  --color-ink-faint: #8B94A6;
-  --color-accent: #00F5D4;
-  --color-accent-strong: #00F5D4;
-  --color-accent-hover: #5CFFE4;
-  --color-on-accent: #08121A;
-  --color-line: rgba(255, 255, 255, 0.10);
-  --color-line-strong: rgba(255, 255, 255, 0.18);
+  /* 三個底面：暖調近黑，唔係藍調。同淺色嗰邊一樣由 --color-ml-* 映射過嚟，
+     咁「莫蘭迪」就真係得一個定義，唔會再有一半做咗一半冇做。 */
+  --color-surface: var(--color-ml-canvas);          /* #1E1C1B */
+  --color-surface-raised: var(--color-ml-surface);  /* #2C2A29 */
+  --color-surface-sunken: var(--color-ml-muted);    /* #3A3734 */
 
-  /* 輔助色族的 Cyber 值。Light 原值落深底全部唔合格，必須換色 ——
-     實測（vs #0B1120）：#B8860B 5.79 只達 AA；#7C3AED 3.30【不合格】；
-     #C2185B 3.21【不合格】。以下換值全部 ≥7:1（AAA），因為此三色多用於
-     文字（violet text:26、rose text:23、gold text:45），AA 下限唔夠穩。 */
-  --color-gold: #E8B93A;          /* 10.25:1 AAA */
-  --color-gold-soft: #F5C542;     /* 11.61:1 AAA */
-  --color-gold-strong: #D4A017;   /*  7.93:1 AAA */
-  --color-violet: #B98CF5;        /*  7.29:1 AAA */
-  --color-violet-strong: #9B5DE5; /*  4.56:1 —— 僅 AA，只用於底色／邊框，唔用於正文 */
-  --color-rose: #FF87B8;          /*  8.44:1 AAA */
-  --color-rose-strong: #FF5C9E;   /*  6.52:1 AA —— 同上，非正文用 */
-  --color-on-violet: #1A1024;     /* 深字 on #B98CF5 = 6.6:1 AA（白字只有 1.6:1） */
+  --color-ink: var(--color-ml-ink);                 /* #E8E2D9  9.18 */
+  --color-ink-soft: #CFC8BF;                        /* 7.13 */
+  --color-ink-muted: var(--color-ml-ink-soft);      /* #A8A19A 4.63 */
+  --color-ink-faint: #726C66;                       /* 2.28 —— 停用控件／裝飾專用 */
 
-  /* 等級色 Cyber 版（括號＝落三個深底嘅最差比值）。
-     Light 嘅深金／深藍／深紫落深卡只有 2.25–4.63，故必須整組換亮。 */
-  --grade-5ss: #FBBF24; /* 10.20 */
-  --grade-5s:  #FCD34D; /* 11.81 */
-  --grade-5:   #4ADE80; /*  9.77 */
-  --grade-4:   #60A5FA; /*  6.70 */
-  --grade-3:   #C084FC; /*  6.44 */
-  --grade-2:   #94A3B8; /*  6.64 */
-  --grade-1:   #CBD5E1; /* 11.47 */
-  --grade-u:   #FF87B8; /*  7.63 —— 玫紅 */
+  /* accent 落暗底要調亮：dark 嘅 --color-ml-sage 本身係 #A0B39B（見下），
+     文字用 5.30、實心掣配深字 7.61。舊值 #8A9A86 做文字只有 3.97，唔合格。 */
+  --color-accent: var(--color-ml-sage);
+  --color-accent-strong: var(--color-ml-sage);
+  --color-accent-hover: #AABCA5;                    /* 深字掣 8.44 */
+  --color-on-accent: var(--color-ml-on-brand);      /* #1E1C1B */
+
+  --color-line: rgba(232, 226, 217, 0.10);
+  --color-line-strong: rgba(232, 226, 217, 0.20);
+  --color-scrim: rgba(10, 9, 9, 0.78);
+  --color-scrim-soft: rgba(10, 9, 9, 0.50);
+
+  /* 盲測卡嘅紙：暗色模式用舊紙色。純白紙落 #1E1C1B 頁底係 16.71，
+     深夜睇會刺眼；舊紙 9.60，仍然清楚係一張紙，但唔會灼眼。
+     墨、輔助字、陶土三隻唔使覆寫 —— 紙兩邊都係淺色，同一組墨通用。 */
+  --color-paper: #DDD3C6;   /* PC-026 舊紙。純白紙落 #1E1C1B 頁底係 16.7，
+                               深夜灼眼；呢隻 11.48，仍然明顯係一張紙。
+                               ⚠️ 本來揀咗更深嘅 PC-027（7.55），但卡入面有
+                               5–10% 墨色疊底（選項框、字母徽章），疊完之後
+                               輔助字只剩 3.57 —— 紙太暗就托唔起字。
+                               解決方法係紙調亮，唔係把墨壓到接近黑。 */
+
+  /* 輔助色族（莫蘭迪暗色）。三個名係歷史遺留（gold／violet／rose），
+     實際色相已經收埋落莫蘭迪：gold→陶土、violet→霧藍灰、rose→乾玫瑰。
+     冇改名，係因為佢哋散落成百處，改名嘅風險遠大於收益 ——
+     而且名本身係語意（提示／次要／提醒），唔係色相。
+     括號＝落三個暗底嘅【最差】值。 */
+  --color-gold: #EDD9A8;          /* PC-010  8.50 */
+  --color-gold-soft: #F5E7C8;     /* PC-009  9.65 */
+  --color-gold-strong: #DCC48C;   /* PC-011  6.94 */
+  --color-violet: #C0BCD6;        /* PC-022  6.42 */
+  --color-violet-strong: #DCD7E5; /* PC-021  8.39 */
+  --color-rose: #E0A38C;          /* PC-006  5.51 */
+  --color-rose-strong: #C5908B;   /* PC-002  4.36 —— 裝飾／邊框，非正文 */
+  --color-on-violet: #1E1C1B;     /* 深字 on 紫灰 = 9.22（白字只有 1.6） */
+
+  /* 等級色（莫蘭迪暗色，括號＝落三個暗底嘅最差比值，全部 ≥5:1）。
+     Light 嘅深金／深藍／深紫落深底只有 2.25–4.63，故必須整組換亮。
+
+     ⚠️ 相鄰級別之間嘅亮度差好細（5→4 Δ0.027、3→2 Δ0.016），呢個係
+     【接受咗嘅】—— 見 lib/grading.ts 檔頭：WCAG 1.4.1 要求等級唔可以
+     只靠顏色分辨，真正嘅辨識依據係「5**」「5*」呢啲字本身。
+     為咗拉開色相而撳低對比度，係倒轉咗優先次序。 */
+  --grade-5ss: #DCE5DA; /* PC-013  9.16 */
+  --grade-5s:  #B5CBA8; /* PC-031  6.80 */
+  --grade-5:   #A8C0A0; /* PC-014  6.03 */
+  --grade-4:   #AFC2D1; /* PC-018  6.45 —— 霧藍，同 5 分開色相 */
+  --grade-3:   #DCC48C; /* PC-011  6.94 —— 陶土 */
+  --grade-2:   #DDD3C6; /* PC-026  8.00 —— 岩灰 */
+  --grade-1:   #C9C9C9; /* PC-034  7.14 */
+  --grade-u:   #C5908B; /* PC-002  4.36 —— 乾玫瑰，唔用正紅（憲章 §7） */
 
   /* 莫蘭迪 token 嘅 Cyber（暗色）值。Dark 三底面 = #1E1C1B / #2C2A29 / #3A3734。
      ⚠️ 暗色模式方向同 Light 相反：實心掣係【淺色填色 + 深色字】，唔係白字。
@@ -198,19 +264,35 @@
      結果配白字得 4.42，反而變差；v4.0-B 已回復原值配深字。
      另外 v4.0-B 個 dark 欄只驗咗 canvas，冇驗第三個暗底 #3A3734 ——
      ink-soft 同 line 兩個喺嗰度跌穿（4.36 / 2.11），以下係修正後嘅值。 */
+  /* 三個底面：色卡【冇】呢個暗度 —— 油漆卡最深都只到 PC-036 #6E6E6E，
+     因為冇人會把成間房掃到接近黑。所以底色維持原有嘅暖調近黑，
+     色卡負責嘅係【前景】。 */
   --color-ml-canvas: #1E1C1B;
   --color-ml-surface: #2C2A29;
   --color-ml-muted: #3A3734;
-  --color-ml-ink: #E8E2D9;         /* 9.18 */
-  --color-ml-ink-soft: #A8A19A;    /* 4.63（規格值 #A39C95 落 muted 只有 4.36） */
-  --color-ml-sage: #8A9A86;        /* 深字掣 5.70 */
-  --color-ml-clay: #C4A994;        /* 深字掣 7.64 */
-  --color-ml-warn: #C4896E;        /* 深字掣 5.78 */
-  --color-ml-good: #A3B59A;        /* 深字掣 7.79 */
-  --color-ml-line: #898581;        /* 3.23（規格值 #6C6762 落 muted 只有 2.11） */
+  /* 以下全部係色卡【亮嗰半】嘅原值，一個字都冇改 ——
+     佢哋落暗底 4.36–9.97，本身就已經達標。 */
+  --color-ml-ink: #F0EBE3;         /* PC-025 正文（9.97） */
+  --color-ml-ink-soft: #C9C9C9;    /* PC-034 輔助（7.14） */
+  --color-ml-sage: #A8C0A0;        /* PC-014 文字 6.03 / 深字掣 8.66 */
+  --color-ml-clay: #DCC48C;        /* PC-011 文字 6.94 / 深字掣 9.96 */
+  --color-ml-warn: #E0A38C;        /* PC-006 文字 5.51 / 深字掣 7.91 */
+  --color-ml-good: #B5CBA8;        /* PC-031 文字 6.80 / 深字掣 9.76 */
+  --color-ml-line: #A0A0A0;        /* PC-035 控件邊界（4.52） */
   --color-ml-on-brand: #1E1C1B;    /* 實心掣上嘅字（Dark 用深字） */
-  --color-ml-rose: #C9B8B5;        /* 純裝飾填色 */
-  --color-ml-mist: #9AABB6;        /* 純裝飾填色 */
+  --color-ml-rose: #C5908B;        /* PC-002 裝飾（4.36） */
+  --color-ml-mist: #AFC2D1;        /* PC-018 裝飾（6.45） */
+
+  /* 科目家族色（暗色）。用喺 /subjects 卡片嘅 hover 邊框同淡底，
+     即係【圖形】用途，WCAG 下限 3:1；以下全部 ≥4.3，有餘裕。
+     moss 由 #7E9179（3.50）調亮，唔係因為佢唔合格，
+     而係佢同 sage 幾乎撞埋一齊，六個家族分唔開就冇意思。 */
+  --color-subj-sage: #A8C0A0;   /* PC-014 6.03 */
+  --color-subj-moss: #B5CBA8;   /* PC-031 6.80 */
+  --color-subj-mist: #AFC2D1;   /* PC-018 6.45 */
+  --color-subj-clay: #DCC48C;   /* PC-011 6.94 */
+  --color-subj-rose: #C5908B;   /* PC-002 4.36 */
+  --color-subj-stone: #DDD3C6;  /* PC-026 8.00 */
 }
 
 /* ── 莫蘭迪：全站語意 token 映射｜規格 v4.0-B ───────────────────────────
@@ -259,7 +341,7 @@
      莫蘭迪對應色係 clay；rose 對應 warn；violet 對應 mist。
      ⚠️ mist 原值 #8A9BA8 落三底面只有 2.41，【載唔到字】——
      故文字用 mist-strong #5B666F（4.95），原 mist 只留畀裝飾填色。 */
-  --color-gold: var(--color-ml-clay);          /* 4.78 */
+  --color-gold: var(--color-ml-clay);          /* 4.56（四底面） */
   --color-gold-soft: var(--color-ml-rose);     /* 1.97 —— 永遠唔可以做字色 */
   --color-gold-strong: #5F5144;                /* 5.94 / 白字 7.64 */
   --color-violet: #5B666F;                     /* mist-strong 4.95 */
@@ -281,35 +363,7 @@
 /* 兩條 selector 缺一唔可：data-ml 可以掛喺 <html> 自己（AppShell 掛嘅，
    俾全域彈層跟色），亦可以喺頁面個 div（SSR 首屏用，避免閃色）。
    `A B` 只食後代，掛喺 :root 自己嗰個要 `AB` 先食到。 */
-:root[data-theme='cyber'] {
-  --color-ink-soft: #CFC8BF;        /* 7.13 */
-  --color-ink-faint: #726C66;       /* 2.28 —— 停用控件／裝飾專用 */
-  --color-accent-hover: #A0B39B;    /* 深字 7.61 */
-  --color-line: rgba(232, 226, 217, 0.10);
-  --color-line-strong: rgba(232, 226, 217, 0.20);
-  --color-scrim: rgba(10, 9, 9, 0.78);
-  --color-scrim-soft: rgba(10, 9, 9, 0.50);
-  /* 科目家族色嘅 Cyber 值。深色底要調亮先睇到，方向同莫蘭迪 dark 一致。 */
-  --color-subj-sage: #8A9A86;   /* 3.97 */
-  --color-subj-moss: #7E9179;   /* 3.50 */
-  --color-subj-mist: #9AABB6;   /* 5.00 */
-  --color-subj-clay: #C4A994;   /* 5.32 */
-  --color-subj-rose: #C9AFAA;   /* 5.74 */
-  --color-subj-stone: #A8A19A;  /* 4.63 */
-  --color-gold-strong: #D4B7A0;     /* 深字 8.96 */
-  --color-violet: #9AABB6;          /* 裝飾 mist 落暗底 = 6.05，載得字 */
-  --color-violet-strong: #9AABB6;
-  --color-on-violet: #1E1C1B;
-  --color-rose-strong: #D49477;     /* 深字 6.71 */
-  /* ⚠️ 等級色必須喺呢度【還原】做 Cyber 值。
-     上面 [data-ml] 為咗遷就莫蘭迪淺底，把 grade-5／grade-5s 撳深咗；
-     但兩條 selector 特異性一樣，後者只係贏喺次序，所以嗰兩個深色值會
-     一路帶入暗色模式 —— 2026-09-02 瀏覽器實測到 grade-5 得 3.10:1、
-     grade-5s 得 3.02:1（深綠／深金疊喺 #1E1C1B 上）。
-     其餘六隻冇喺 [data-ml] 覆寫過，所以自動保持 Cyber 值，唔使寫。 */
-  --grade-5s: #FCD34D;              /* 11.81 → 落 #1E1C1B 更鬆 */
-  --grade-5:  #4ADE80;              /*  9.77 → 同上 */
-}
+
 
 body {
   background-color: var(--color-surface);
