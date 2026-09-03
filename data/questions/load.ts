@@ -56,18 +56,19 @@ const loaders: Record<string, Loader> = {
     return [...base.chemistryQuestions, ...cbank.chemistryBankQuestions, ...floor1.chemistryFloorBatch1Questions]
   },
   biology: async () => {
-    const [base, bank, b2, b3] = await Promise.all([import('./biology'), import('./applied-banks'), import('./biology-floor-b2'), import('./biology-bank')])
-    return [...base.biologyQuestions, ...bank.biologyBankQuestions, ...bank.biologyBank2Questions, ...b2.biologyFloorB2Questions, ...b3.biologyBank3Questions]
+    const [base, bank, b2, b3, b4] = await Promise.all([import('./biology'), import('./applied-banks'), import('./biology-floor-b2'), import('./biology-bank'), import('./biology-bank2')])
+    return [...base.biologyQuestions, ...bank.biologyBankQuestions, ...bank.biologyBank2Questions, ...b2.biologyFloorB2Questions, ...b3.biologyBank3Questions, ...b4.biologyBank4Questions]
   },
   english: async () => {
     const [base, reviewed, b2] = await Promise.all([import('./english'), import('./english-reviewed'), import('./english-floor-b2')])
     return [...base.englishQuestions, ...reviewed.englishReviewedQuestions, ...b2.englishFloorB2Questions]
   },
   ict: async () => {
-    const [base, floor1, bank, b3] = await Promise.all([
+    const [base, floor1, bank, b3, b4] = await Promise.all([
       import('./ict'), import('./ict-floor-batch1'), import('./applied-banks'), import('./ict-bank'),
+      import('./ict-bank4'),
     ])
-    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions, ...bank.ictBankQuestions, ...bank.ictBank2Questions, ...b3.ictBank3Questions]
+    return [...base.ictQuestions, ...floor1.ictFloorBatch1Questions, ...bank.ictBankQuestions, ...bank.ictBank2Questions, ...b3.ictBank3Questions, ...b4.ictBank4Questions]
   },
   chinese: async () => {
     // 三個已審核批次各自一個檔案 —— promote-drafts.mjs 屬覆寫而非追加，同一科目
@@ -106,8 +107,8 @@ const loaders: Record<string, Loader> = {
       ...floor1.economicsFloorBatch1Questions, ...floor2.economicsFloorBatch2Questions]
   },
   geography: async () => {
-    const [base, bank, b2, b3] = await Promise.all([import('./geography'), import('./applied-banks'), import('./geography-floor-b2'), import('./geography-bank')])
-    return [...base.geographyQuestions, ...bank.geographyBankQuestions, ...b2.geographyFloorB2Questions, ...b3.geographyBank2Questions]
+    const [base, bank, b2, b3, b4] = await Promise.all([import('./geography'), import('./applied-banks'), import('./geography-floor-b2'), import('./geography-bank'), import('./geography-bank3')])
+    return [...base.geographyQuestions, ...bank.geographyBankQuestions, ...b2.geographyFloorB2Questions, ...b3.geographyBank2Questions, ...b4.geographyBank3Questions]
   },
   history: async () => {
     // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。
@@ -133,12 +134,12 @@ const loaders: Record<string, Loader> = {
     return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions, ...(await import('./applied-banks')).healthManagementBankQuestions, ...b2.healthManagementBank2Questions]
   },
   'design-tech': async () => {
-    const [base, bank, b2, b3] = await Promise.all([import('./design-tech'), import('./applied-banks'), import('./design-tech-floor-b2'), import('./design-tech-bank')])
-    return [...base.designTechQuestions, ...bank.designTechBankQuestions, ...bank.designTechBank2Questions, ...b2.designTechFloorB2Questions, ...b3.designTechBank3Questions]
+    const [base, bank, b2, b3, b4] = await Promise.all([import('./design-tech'), import('./applied-banks'), import('./design-tech-floor-b2'), import('./design-tech-bank'), import('./design-tech-bank2')])
+    return [...base.designTechQuestions, ...bank.designTechBankQuestions, ...bank.designTechBank2Questions, ...b2.designTechFloorB2Questions, ...b3.designTechBank3Questions, ...b4.designTechBank4Questions]
   },
   music: async () => {
-    const [base, bank, b2, b3] = await Promise.all([import('./music'), import('./applied-banks'), import('./music-floor-b2'), import('./music-bank')])
-    return [...base.musicQuestions, ...bank.musicBankQuestions, ...bank.musicBank2Questions, ...b2.musicFloorB2Questions, ...b3.musicBank3Questions]
+    const [base, bank, b2, b3, b4] = await Promise.all([import('./music'), import('./applied-banks'), import('./music-floor-b2'), import('./music-bank'), import('./music-bank2')])
+    return [...base.musicQuestions, ...bank.musicBankQuestions, ...bank.musicBank2Questions, ...b2.musicFloorB2Questions, ...b3.musicBank3Questions, ...b4.musicBank4Questions]
   },
   pe: async () => {
     const [base, bank, b2, b3] = await Promise.all([import('./pe'), import('./applied-banks'), import('./pe-floor-b2'), import('./pe-bank')])
@@ -165,8 +166,8 @@ const loaders: Record<string, Loader> = {
     return [...base.ethicsReligiousQuestions, ...b2.ethicsReligiousFloorB2Questions]
   },
   'technology-living': async () => {
-    const [base, bank, b2, b3] = await Promise.all([import('./technology-living'), import('./applied-banks'), import('./technology-living-floor-b2'), import('./technology-living-bank')])
-    return [...base.technologyLivingQuestions, ...bank.technologyLivingBankQuestions, ...bank.technologyLivingBank2Questions, ...b2.technologyLivingFloorB2Questions, ...b3.technologyLivingBank3Questions]
+    const [base, bank, b2, b3, b4] = await Promise.all([import('./technology-living'), import('./applied-banks'), import('./technology-living-floor-b2'), import('./technology-living-bank'), import('./technology-living-bank2')])
+    return [...base.technologyLivingQuestions, ...bank.technologyLivingBankQuestions, ...bank.technologyLivingBank2Questions, ...b2.technologyLivingFloorB2Questions, ...b3.technologyLivingBank3Questions, ...b4.technologyLivingBank4Questions]
   },
 }
 

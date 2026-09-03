@@ -19,11 +19,13 @@ import { chemistryFloorBatch1Questions } from './chemistry-floor-batch1'
 import { biologyQuestions, biologyTopics } from './biology'
 import { biologyFloorB2Questions } from './biology-floor-b2'
 import { biologyBank3Questions } from './biology-bank'
+import { biologyBank4Questions } from './biology-bank2'
 import { englishQuestions, englishTopics } from './english'
 import { englishFloorB2Questions } from './english-floor-b2'
 import { ictQuestions, ictTopics } from './ict'
 import { ictFloorBatch1Questions } from './ict-floor-batch1'
 import { ictBank3Questions } from './ict-bank'
+import { ictBank4Questions } from './ict-bank4'
 import { chineseQuestions, chineseTopics } from './chinese'
 import { chineseReviewedQuestions } from './chinese-reviewed'
 // 書寫題批次亦必須註冊入 barrel —— barrel 是所有 QA 工具與稽核統計的讀取路徑，
@@ -50,6 +52,7 @@ import { thsBankQuestions, technologyLivingBankQuestions, designTechBankQuestion
 import { geographyQuestions, geographyTopics } from './geography'
 import { geographyFloorB2Questions } from './geography-floor-b2'
 import { geographyBank2Questions } from './geography-bank'
+import { geographyBank3Questions } from './geography-bank3'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
 import { historyFloorBatch1Questions } from './history-floor-batch1'
@@ -63,9 +66,11 @@ import { healthManagementBank2Questions } from './health-management-bank'
 import { designTechQuestions, designTechTopics } from './design-tech'
 import { designTechFloorB2Questions } from './design-tech-floor-b2'
 import { designTechBank3Questions } from './design-tech-bank'
+import { designTechBank4Questions } from './design-tech-bank2'
 import { musicQuestions, musicTopics } from './music'
 import { musicFloorB2Questions } from './music-floor-b2'
 import { musicBank3Questions } from './music-bank'
+import { musicBank4Questions } from './music-bank2'
 import { peQuestions, peTopics } from './pe'
 import { peFloorB2Questions } from './pe-floor-b2'
 import { peBank3Questions } from './pe-bank'
@@ -84,6 +89,7 @@ import { ethicsReligiousFloorB2Questions } from './ethics-religious-floor-b2'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
 import { technologyLivingFloorB2Questions } from './technology-living-floor-b2'
 import { technologyLivingBank3Questions } from './technology-living-bank'
+import { technologyLivingBank4Questions } from './technology-living-bank2'
 import { chineseHistoryAutoQuestions } from './chinese-history-auto'
 import { chineseLiteratureAutoQuestions } from './chinese-literature-auto'
 import { historyAutoQuestions } from './history-auto'
@@ -125,9 +131,9 @@ const banks: Record<string, SubjectBank> = {
   m2: { questions: [...m2Questions, ...m2BankQuestions], topics: m2Topics },
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
-  biology: { questions: [...biologyQuestions, ...biologyBankQuestions, ...biologyBank2Questions, ...biologyFloorB2Questions, ...biologyBank3Questions], topics: biologyTopics },
+  biology: { questions: [...biologyQuestions, ...biologyBankQuestions, ...biologyBank2Questions, ...biologyFloorB2Questions, ...biologyBank3Questions, ...biologyBank4Questions], topics: biologyTopics },
   english: { questions: [...englishQuestions, ...englishReviewedQuestions, ...englishFloorB2Questions], topics: englishTopics },
-  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions, ...ictBank2Questions, ...ictBank3Questions], topics: ictTopics },
+  ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions, ...ictBank2Questions, ...ictBank3Questions, ...ictBank4Questions], topics: ictTopics },
   chinese: {
     questions: [
       ...chineseQuestions,
@@ -142,20 +148,20 @@ const banks: Record<string, SubjectBank> = {
   },
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
-  geography: { questions: [...geographyQuestions, ...geographyBankQuestions, ...geographyFloorB2Questions, ...geographyBank2Questions], topics: geographyTopics },
+  geography: { questions: [...geographyQuestions, ...geographyBankQuestions, ...geographyFloorB2Questions, ...geographyBank2Questions, ...geographyBank3Questions], topics: geographyTopics },
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
   'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions], topics: chineseHistoryTopics },
   ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions, ...thsFloorB2Questions], topics: thsTopics },
   'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions, ...healthManagementBank2Questions], topics: healthManagementTopics },
-  'design-tech': { questions: [...designTechQuestions, ...designTechBankQuestions, ...designTechBank2Questions, ...designTechFloorB2Questions, ...designTechBank3Questions], topics: designTechTopics },
-  music: { questions: [...musicQuestions, ...musicBankQuestions, ...musicBank2Questions, ...musicFloorB2Questions, ...musicBank3Questions], topics: musicTopics },
+  'design-tech': { questions: [...designTechQuestions, ...designTechBankQuestions, ...designTechBank2Questions, ...designTechFloorB2Questions, ...designTechBank3Questions, ...designTechBank4Questions], topics: designTechTopics },
+  music: { questions: [...musicQuestions, ...musicBankQuestions, ...musicBank2Questions, ...musicFloorB2Questions, ...musicBank3Questions, ...musicBank4Questions], topics: musicTopics },
   pe: { questions: [...peQuestions, ...peBankQuestions, ...peBank2Questions, ...peFloorB2Questions, ...peBank3Questions], topics: peTopics },
   'chinese-literature': { questions: [...chineseLiteratureQuestions, ...chineseLiteratureFloorB2Questions], topics: chineseLiteratureTopics },
   'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions], topics: englishLiteratureTopics },
   'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions, ...visualArtsBank2Questions], topics: visualArtsTopics },
   csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions], topics: csdTopics },
   'ethics-religious': { questions: [...ethicsReligiousQuestions, ...ethicsReligiousFloorB2Questions], topics: ethicsReligiousTopics },
-  'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions, ...technologyLivingFloorB2Questions, ...technologyLivingBank3Questions], topics: technologyLivingTopics },
+  'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions, ...technologyLivingFloorB2Questions, ...technologyLivingBank3Questions, ...technologyLivingBank4Questions], topics: technologyLivingTopics },
 }
 
 // ── 機器閘放行題（auto-gate）──────────────────────────────────────────────
