@@ -22,6 +22,7 @@ import { biologyBank3Questions } from './biology-bank'
 import { biologyBank4Questions } from './biology-bank2'
 import { englishQuestions, englishTopics } from './english'
 import { englishFloorB2Questions } from './english-floor-b2'
+import { englishBank1Questions } from './english-bank'
 import { ictQuestions, ictTopics } from './ict'
 import { ictFloorBatch1Questions } from './ict-floor-batch1'
 import { ictBank3Questions } from './ict-bank'
@@ -137,7 +138,7 @@ const banks: Record<string, SubjectBank> = {
   physics: { questions: [...physicsQuestions, ...physicsBankQuestions], topics: physicsTopics },
   chemistry: { questions: [...chemistryQuestions, ...chemistryBankQuestions, ...chemistryFloorBatch1Questions], topics: chemistryTopics },
   biology: { questions: [...biologyQuestions, ...biologyBankQuestions, ...biologyBank2Questions, ...biologyFloorB2Questions, ...biologyBank3Questions, ...biologyBank4Questions], topics: biologyTopics },
-  english: { questions: [...englishQuestions, ...englishReviewedQuestions, ...englishFloorB2Questions], topics: englishTopics },
+  english: { questions: [...englishQuestions, ...englishReviewedQuestions, ...englishFloorB2Questions, ...englishBank1Questions], topics: englishTopics },
   ict: { questions: [...ictQuestions, ...ictFloorBatch1Questions, ...ictBankQuestions, ...ictBank2Questions, ...ictBank3Questions, ...ictBank4Questions], topics: ictTopics },
   chinese: {
     questions: [
