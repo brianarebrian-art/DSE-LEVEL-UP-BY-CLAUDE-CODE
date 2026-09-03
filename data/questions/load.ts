@@ -123,8 +123,8 @@ const loaders: Record<string, Loader> = {
     return [...base.chineseHistoryQuestions, ...b2.chineseHistoryFloorB2Questions]
   },
   ths: async () => {
-    const [base, bank, b2] = await Promise.all([import('./ths'), import('./applied-banks'), import('./ths-floor-b2')])
-    return [...base.thsQuestions, ...bank.thsBankQuestions, ...bank.thsBank2Questions, ...b2.thsFloorB2Questions]
+    const [base, bank, b2, b3] = await Promise.all([import('./ths'), import('./applied-banks'), import('./ths-floor-b2'), import('./ths-bank')])
+    return [...base.thsQuestions, ...bank.thsBankQuestions, ...bank.thsBank2Questions, ...b2.thsFloorB2Questions, ...b3.thsBank3Questions]
   },
   'health-management': async () => {
     const [base, floor1] = await Promise.all([
