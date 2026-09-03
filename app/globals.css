@@ -813,6 +813,14 @@ html[data-bottomnav='on'] {
     --sidebar-w: 260px;
   }
 }
+/* 吉祥物：舒適模式一開就整隻收埋（憲章 §7 —— SEN 要「整層關掉」，唔係「調細」）。
+   佢唔郁，但對 ADHD 同視覺敏感嘅學生嚟講，一幅大插畫本身就係視覺噪音。
+   用 CSS 唔用 JS：零 hydration 風險，而且自動接返無障礙面板嗰個
+   「一鍵舒適模式」（佢會 toggle html.no-motion），唔使另開一個開關畀人揾。 */
+html.no-motion .mascot {
+  display: none;
+}
+
 /* 左錨浮動元素用呢兩個，唔好再直接寫 left-4 / left-20。 */
 .floating-left {
   left: calc(var(--sidebar-w) + 1rem);

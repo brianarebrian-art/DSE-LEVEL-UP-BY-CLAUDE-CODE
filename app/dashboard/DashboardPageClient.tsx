@@ -45,6 +45,7 @@ import TodayNote from '@/components/TodayNote'
 // SPEC-GAMIFY-P1 §MVP P0：儀表板頂部「最近足跡」橫向列 + 邏輯家園入口。
 // 兩者都由既有 localStorage 導出，練習頁零改動（見 lib/logicLog.ts 檔首）。
 import TrailStrip from '@/components/TrailStrip'
+import Mascot from '@/components/Mascot'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -137,7 +138,15 @@ export default function DashboardPageClient() {
           {/* Even with zero history, let new users bind Google to sync */}
           <SyncStatus />
           <div className="text-center">
-            <div className="text-6xl mb-6">📊</div>
+            {/* 2026-09-03：📊 換成吉祥物（捧杯、瞇眼笑）。
+                呢個係「你仲未開始練習」嘅空狀態 —— 即係新用戶第一次入到嚟
+                見到嗰版。一個圖表 emoji 喺呢一刻讀落係「你冇數據」；
+                一隻捧住杯嘅貓頭鷹讀落係「坐低先」。憲章 §7。
+                只擺喺空狀態：有數據嗰個分支係做緊嘢嘅版面，
+                而且兩個分支互斥，所以成版永遠最多一隻（規則①）。 */}
+            <div className="mb-6 flex justify-center">
+              <Mascot pose="mug" height={148} />
+            </div>
             <h1 className="text-3xl font-medium mb-3 text-ink">{d.title}</h1>
             <p className="text-ink-muted mb-8">
               {d.emptyBody}

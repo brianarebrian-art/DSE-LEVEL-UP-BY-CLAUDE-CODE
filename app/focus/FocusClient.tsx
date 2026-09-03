@@ -6,6 +6,7 @@ import { Play, Pause, RotateCcw, Share2, MessageCircle, Users } from 'lucide-rea
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { useLocale } from '@/lib/i18n'
 import BreathingExercise from '@/components/BreathingExercise'
+import Mascot from '@/components/Mascot'
 
 // WhatsApp 家長戰報已移除（創辦人 2026-07-21 決定）：撞 doc §3.1 禁 WhatsApp + 家長專區傾向。
 // 番茄鐘計時、今日 tally、自律房間（含 study-together WhatsApp 邀請）全部保留。
@@ -142,7 +143,12 @@ function FocusRoom() {
   return (
     <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
       <div className="max-w-md mx-auto">
-        <div className="text-center mb-2 text-4xl">🍅</div>
+        {/* 2026-09-03：🍅 換成吉祥物。番茄鐘個 🍅 邊個都用得，
+            呢隻貓頭鷹先係我哋自己嘅 —— 而擺吉祥物嘅目的就係要人一眼認得出
+            係邊個網站。頁面標題本身仲係「自律番茄鐘」，意思冇丟失。 */}
+        <div className="flex justify-center mb-2">
+          <Mascot pose="headset-mug" height={112} />
+        </div>
         <h1 className="text-2xl font-medium text-center mb-1 text-ink">
           {en ? 'Focus Room' : '自律番茄鐘'}
         </h1>
