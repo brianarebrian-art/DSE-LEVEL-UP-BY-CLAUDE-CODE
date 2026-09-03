@@ -44,6 +44,12 @@ const SUBJECT_OF: Record<string, string> = {
   'chinese-writing-b2.json': 'chinese',
   'chinese-writing-b3.json': 'chinese',
   'chinese-writing-b4.json': 'chinese',
+  // 2026-09-03 理科書寫題第一批（由 scripts/qbank/gen-long-drafts.mjs 生成）。
+  // 三科用嘅 topicId 全部係該科【已登記】嘅既有課題，冇新增課題，
+  // 所以唔會出現孤兒題；本閘會逐個核實。
+  'physics-long-b1.json': 'physics',
+  'chemistry-long-b1.json': 'chemistry',
+  'biology-long-b1.json': 'biology',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────
