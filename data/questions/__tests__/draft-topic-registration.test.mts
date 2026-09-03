@@ -53,6 +53,8 @@ const SUBJECT_OF: Record<string, string> = {
   // 2026-09-03 計算型科目書寫題第二批（scripts/qbank/gen-long-drafts-b2.mjs）。
   'economics-long-b1.json': 'economics',
   'geography-long-b1.json': 'geography',
+  'bafs-long-b1.json': 'bafs',
+  'ict-long-b1.json': 'ict',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────

@@ -226,9 +226,118 @@ const build = (subject, subjectZh, groups, prefix) => {
   return out.length
 }
 
+// ── 企會財 ──────────────────────────────────────────────────────────────
+// ⚠️ 金額一律寫 \$ —— `$` 係本庫嘅 LaTeX 分隔符，唔 escape 會令其後文字變公式。
+const BAFS = [
+  { topic: '折舊', n: 15, make: (k) => {
+      const cost = 50000 + k * 8000, res = 5000 + k * 500, life = 4 + (k % 5)
+      const sl = ((cost - res) / life).toFixed(0)
+      const rate = 20 + (k % 4) * 5
+      const y1 = (cost * rate / 100).toFixed(0), y2 = ((cost - Number(y1)) * rate / 100).toFixed(0)
+      return { q: `某資產成本 \\$${cost}，估計可用 ${life} 年，殘值 \\$${res}。\n（a）以直線法計算每年折舊額。\n（b）改以餘額遞減法、折舊率 ${rate}% 計算首兩年的折舊額。\n（c）兩種方法下的【累計】折舊在資產壽命結束時是否相同？兩種方法各適合哪一類資產？`,
+        ans: `（a）直線法：(${cost} − ${res}) ÷ ${life} = \\$${sl}／年。\n（b）餘額遞減法：第一年 = ${cost} × ${rate}% = \\$${y1}；第二年 = (${cost} − ${y1}) × ${rate}% = \\$${y2}。\n（c）累計折舊【最終大致相同】—— 兩法都是把成本減殘值的部分分攤，只是【分攤的時間形態】不同：直線法每年相同，餘額遞減法前重後輕。\n適用：直線法適合價值隨時間平均消耗的資產（如樓宇裝修、傢具）；餘額遞減法適合前期效益高、後期維修上升的資產（如電腦、車輛），令折舊與該資產實際帶來的效益在時間上較為配合。\n⚠️ 常見錯誤：以為餘額遞減法「折舊總額較多」。兩法的總額受同一個上限約束，分別在時間分佈。`,
+        ansEn: `(a) Straight line: (${cost} - ${res}) / ${life} = \\$${sl} per year. (b) Reducing balance at ${rate}%: year 1 = \\$${y1}; year 2 = \\$${y2}. (c) Total accumulated depreciation is broadly the same; the methods differ in the TIMING of the charge. Straight line suits assets consumed evenly; reducing balance suits assets whose benefit is front-loaded and whose repairs rise later, matching cost to benefit. The common error is assuming reducing balance charges more in total.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '利息', n: 15, make: (k) => {
+      const P0 = 20000 + k * 5000, r = 3 + (k % 6), n = 3 + (k % 5)
+      const si = (P0 * r * n / 100).toFixed(0)
+      const ci = (P0 * Math.pow(1 + r / 100, n) - P0).toFixed(0)
+      return { q: `本金 \\$${P0}，年利率 ${r}%，存款 ${n} 年。\n（a）計算單利息總額。\n（b）計算按年複利的利息總額。\n（c）解釋兩者差額的來源，並說明為何年期愈長差額愈大。`,
+        ans: `（a）單利：I = Prt = ${P0} × ${r}% × ${n} = \\$${si}。\n（b）複利：本利和 = ${P0} × (1 + ${r}%)^${n} = \\$${(P0 * Math.pow(1 + r / 100, n)).toFixed(0)}，利息 = \\$${ci}。\n（c）差額 = \\$${(Number(ci) - Number(si)).toFixed(0)}。來源：單利只就【原本金】計息；複利把每期已賺得的利息【加入本金】，下一期連利息也生息。\n年期愈長差額愈大，因為複利的基數逐期擴大，屬指數增長；單利的基數固定，屬線性增長。兩條線起點接近，之後愈拉愈開。\n⚠️ 個人理財的實際意義：同一道理亦適用於欠款 —— 拖欠愈久，利息增長愈快。`,
+        ansEn: `(a) Simple interest = \\$${si}. (b) Compound: amount = \\$${(P0 * Math.pow(1 + r / 100, n)).toFixed(0)}, interest = \\$${ci}. (c) Difference = \\$${(Number(ci) - Number(si)).toFixed(0)}. Simple interest is charged on the original principal only; compound interest adds each period's interest to the base, so interest earns interest. The gap widens because compounding grows exponentially while simple interest grows linearly. The same logic applies to debt.`,
+        min: 12, diff: 'basic' } } },
+  { topic: '成本與定價', n: 15, make: (k) => {
+      const fc = 30000 + k * 4000, vc = 25 + k * 3, p = 60 + k * 5
+      const cm = p - vc, be = Math.ceil(fc / cm)
+      return { q: `某產品售價 \\$${p}，每單位可變成本 \\$${vc}，每月固定成本 \\$${fc}。\n（a）計算每單位邊際貢獻及每月回本銷量。\n（b）若售價提高一成，回本銷量會如何變化？請計算並解釋方向。\n（c）有經理主張「提價一定令回本更快，所以應盡量提價」。試指出這個推論忽略了甚麼。`,
+        ans: `（a）邊際貢獻 = ${p} − ${vc} = \\$${cm}／單位；回本銷量 = ${fc} ÷ ${cm} = ${be} 單位／月。\n（b）新售價 = \\$${(p * 1.1).toFixed(1)}；新邊際貢獻 = \\$${(p * 1.1 - vc).toFixed(1)}；新回本銷量 = ${Math.ceil(fc / (p * 1.1 - vc))} 單位，較原來【減少】。邊際貢獻上升，每賣一單位能分擔的固定成本更多，故回本所需銷量下降。\n（c）該推論假設了【銷量不會因提價而下跌】。實際上提價會令需求量減少；若跌幅大於邊際貢獻的升幅，總邊際貢獻反而下降，回本更慢甚至無法回本。\n正確判斷要同時看：邊際貢獻的變化、銷量的變化，以及兩者相乘後的總額。\n⚠️ 這是本課題最常見的單邊推論：只看價格一邊，不看數量一邊。`,
+        ansEn: `(a) Contribution = \\$${cm} per unit; break-even = ${be} units per month. (b) At \\$${(p * 1.1).toFixed(1)} the contribution becomes \\$${(p * 1.1 - vc).toFixed(1)} and break-even falls to ${Math.ceil(fc / (p * 1.1 - vc))} units. (c) The argument assumes volume is unaffected. A price rise reduces quantity demanded; if that fall outweighs the higher contribution, total contribution drops and break-even becomes harder. Judge contribution, volume and their product together.`,
+        min: 15, diff: 'hard' } } },
+  { topic: '財務比率', n: 15, make: (k) => {
+      const ca = 180000 + k * 20000, cl = 90000 + k * 8000, inv = 40000 + k * 5000
+      const cr = (ca / cl).toFixed(2), qr = ((ca - inv) / cl).toFixed(2)
+      return { q: `某公司流動資產 \\$${ca}（其中存貨 \\$${inv}），流動負債 \\$${cl}。\n（a）計算流動比率與速動比率。\n（b）解釋兩個比率的分別，以及為何速動比率要剔除存貨。\n（c）若某公司流動比率高達 4.0，是否必然代表財務穩健？試指出【兩項】可能的相反解讀。`,
+        ans: `（a）流動比率 = ${ca} ÷ ${cl} = ${cr}；速動比率 = (${ca} − ${inv}) ÷ ${cl} = ${qr}。\n（b）流動比率衡量全部流動資產對短期負債的覆蓋；速動比率只計【變現較快】的部分。剔除存貨，是因為存貨要先賣出、再收款才變成現金，所需時間與能否賣出都不確定；一旦滯銷，帳面金額並不代表可即時動用的購買力。\n（c）兩項相反解讀：\n一、【資產運用效率低】—— 大量現金或應收賬長期閒置，未投入生產或未有效收回，回報率偏低。\n二、【存貨積壓】—— 高比率可能只是因為存貨堆積；此時速動比率會明顯低於流動比率，兩者的差距本身就是警號。\n⚠️ 比率永遠要成組看，並與同業及自身歷史比較。`,
+        ansEn: `(a) Current ratio = ${cr}; quick ratio = ${qr}. (b) The current ratio covers all current assets; the quick ratio counts only readily realisable ones. Inventory is excluded because it must be sold and then collected, and neither is certain. (c) Two contrary readings: idle assets depressing returns, and stock build-up — in which case the gap between the two ratios is itself the warning. Ratios must be read as a set and against industry and past figures.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '個人理財', n: 15, make: (k) => {
+      const inc = 15000 + k * 1200, save = 10 + (k % 6) * 5
+      const amt = (inc * save / 100).toFixed(0)
+      return { q: `某人月入 \\$${inc}，計劃把收入的 ${save}% 儲起。\n（a）計算每月儲蓄額及一年的儲蓄總額。\n（b）指出【兩項】在制訂個人理財計劃時應先於「投資」處理的事項，並說明理由。\n（c）有人說「回報率愈高的產品愈值得買」。試以風險與個人處境評估這個說法。`,
+        ans: `（a）每月 = \\$${amt}；一年 = \\$${(Number(amt) * 12).toFixed(0)}。\n（b）一、【應急儲備】—— 一般建議相當於三至六個月必要開支。理由：突發事件若無儲備，就要以高息借貸或蝕讓投資應付，代價遠高於投資的潛在回報。\n二、【清還高息債務】—— 信用卡欠款的年利率往往遠高於一般投資的預期回報；還清高息債等於取得一個確定而且免稅的「回報」。\n（c）該說法忽略了【回報與風險同向】：預期回報高的產品，本金損失的可能與幅度通常也較大。\n是否值得買還取決於個人處境：資金何時要用、能否承受帳面虧損、以及是否已完成上述兩項基礎。同一項產品，對五年後才用錢的人與下個月要交學費的人，合適程度完全不同。\n⚠️ 本題不是要判斷任何具體產品，而是要說明「合適與否取決於處境」。`,
+        ansEn: `(a) \\$${amt} per month; \\$${(Number(amt) * 12).toFixed(0)} per year. (b) An emergency fund of three to six months of essential expenses, and clearing high-interest debt — paying off a card balance is a certain, tax-free return usually above expected investment returns. (c) Expected return and risk move together. Suitability also depends on when the money is needed, tolerance for paper losses, and whether those foundations are in place.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '會計', n: 15, make: (k) => {
+      const asset = 500000 + k * 40000, liab = 200000 + k * 15000, buy = 20000 + k * 2000
+      const eq = asset - liab
+      return { q: `某企業的資產總額為 \\$${asset}，負債總額為 \\$${liab}。\n（a）以會計等式計算業主權益。\n（b）若企業以現金 \\$${buy} 購入設備，說明這項交易如何影響三個要素，並解釋等式為何仍然成立。\n（c）若改為以賒賬購入同一設備，影響有何不同？`,
+        ans: `（a）資產 = 負債 + 業主權益，故業主權益 = ${asset} − ${liab} = \\$${eq}。\n（b）以現金購入設備：資產一方【內部轉換】—— 設備增加 \\$${buy}，現金減少同額；資產總額【不變】，負債與業主權益均不變。等式仍然成立，因為交易只改變資產的【組成】而非總額。\n（c）賒賬購入：資產增加 \\$${buy}（設備），負債同時增加 \\$${buy}（應付賬），業主權益【不變】。等式兩邊同時增加相同金額，故仍然平衡。\n⚠️ 重點：每一項交易至少影響兩個項目，而等式永遠平衡 —— 若答案令等式不平衡，一定是漏了其中一邊。`,
+        ansEn: `(a) Equity = \\$${eq}. (b) Buying for cash swaps one asset for another: equipment up \\$${buy}, cash down the same; totals unchanged, only the COMPOSITION of assets changes. (c) On credit, assets and liabilities both rise \\$${buy} and equity is unchanged; both sides grow equally. Every transaction touches at least two items and the equation always balances.`,
+        min: 12, diff: 'basic' } } },
+  { topic: '財務管理', n: 15, make: (k) => {
+      const inv = 100000 + k * 20000, cf = 30000 + k * 4000, yrs = 4 + (k % 4)
+      const pb = (inv / cf).toFixed(2)
+      return { q: `某項投資初始支出 \\$${inv}，預期每年淨現金流入 \\$${cf}，為期 ${yrs} 年。\n（a）計算回本期。\n（b）指出回本期法的【一項優點】與【兩項限制】。\n（c）若另一項投資的回本期較短，但第 ${yrs} 年後仍有可觀現金流，單以回本期比較會得出甚麼誤導的結論？`,
+        ans: `（a）回本期 = ${inv} ÷ ${cf} = ${pb} 年。\n（b）優點：計算簡單直觀，並直接反映資金被綁住的時間，對現金緊絀的企業尤其有用。\n限制一：【忽略回本之後的現金流】—— 回本較慢但長期收益豐厚的投資可能被錯誤剔除。\n限制二：【不考慮貨幣的時間價值】—— 把第一年與第 ${yrs} 年的一元當成等值。\n（c）會得出「回本期較短者必然較優」這個誤導結論。回本期只量度「幾時攞返本金」，不量度「總共賺幾多」。正確做法是同時參考淨現值等考慮全期現金流與時間價值的方法。\n⚠️ 本題考的是「指標量度甚麼、不量度甚麼」。`,
+        ansEn: `(a) Payback = ${pb} years. (b) Advantage: simple and it shows how long capital is tied up. Limits: it ignores cash flows after payback, and it ignores the time value of money. (c) It suggests the shorter payback is necessarily better. Payback measures when the outlay returns, not how much is earned; use net present value alongside it.`,
+        min: 15, diff: 'hard' } } },
+]
+
+// ── 資訊及通訊科技 ──────────────────────────────────────────────────────
+const ICT = [
+  { topic: '資料表示與處理', n: 15, make: (k) => {
+      const n = 8 + k * 4, bits = 3 + (k % 5), sym = Math.pow(2, bits)
+      return { q: `某系統需要為 ${sym} 個不同符號各自編碼。\n（a）求所需的最少位元數，並說明計算方法。\n（b）若一份文件含 ${n * 1000} 個這樣的符號，求所需的儲存空間（以位元組表示）。\n（c）若符號數目由 ${sym} 增至 ${sym * 2}，所需位元數會增加多少？解釋為何不是加倍。`,
+        ans: `（a）需要 n 位元使 2ⁿ ≥ ${sym}。2^${bits} = ${sym}，故最少 ${bits} 位元。方法：位元數 = ⌈log₂(符號數)⌉ —— 每加一個位元，可表示的符號數【翻一倍】。\n（b）總位元 = ${n * 1000} × ${bits} = ${n * 1000 * bits}；位元組 = ${(n * 1000 * bits / 8).toFixed(1)}。\n（c）符號數加倍時，位元數【只增加 1】（由 ${bits} 變 ${bits + 1}）。原因：位元與符號數之間是【對數關係】而非線性關係。這正是二進位編碼高效的原因：符號數以倍數增長，所需空間只以加法增長。\n⚠️ 常見錯誤：以為符號多一倍就要多一倍位元。`,
+        ansEn: `(a) 2^${bits} = ${sym}, so ${bits} bits; in general bits = ceil(log2(symbols)) and each extra bit DOUBLES the symbols. (b) ${n * 1000} × ${bits} = ${n * 1000 * bits} bits = ${(n * 1000 * bits / 8).toFixed(1)} bytes. (c) Doubling the symbols adds only ONE bit, because the relation is logarithmic. That is why binary coding is efficient: symbols grow multiplicatively while storage grows additively.`,
+        min: 12, diff: 'intermediate' } } },
+  { topic: '網絡與互聯網', n: 15, make: (k) => {
+      const size = 20 + k * 8, speed = 5 + (k % 6) * 5
+      const t = ((size * 8) / speed).toFixed(1)
+      return { q: `要傳送一個 ${size} MB 的檔案，網絡的實際傳輸速率為 ${speed} Mbps。\n（a）計算理論所需時間（秒），並註明單位換算的關鍵一步。\n（b）實際所需時間必定較長。指出【兩個】原因並說明機制。\n（c）解釋「頻寬」與「延遲」的分別，並各舉一個它們分別成為瓶頸的情境。`,
+        ans: `（a）關鍵換算：1 位元組 = 8 位元，而 Mbps 是【每秒百萬位元】。檔案 = ${size} × 8 = ${size * 8} Mb；時間 = ${t} 秒。\n（b）一、【協定額外開銷】—— 每個封包附帶標頭，實際載荷少於總傳輸量。二、【重傳與擁塞控制】—— 封包遺失需重傳，而擁塞控制會主動降低發送速率以免網絡崩潰。\n（c）頻寬是【單位時間可傳送的資料量】；延遲是【一個封包由起點到終點所需的時間】。\n頻寬成為瓶頸：下載大型檔案或串流高清影片。延遲成為瓶頸：線上對戰遊戲或視像通話 —— 資料量小但要求即時，管道再粗也改變不了訊號走一趟所需的時間。\n⚠️ 本課題最重要的一組概念：加大頻寬解決不了延遲問題。`,
+        ansEn: `(a) 1 byte = 8 bits and Mbps means megabits per second: ${size} MB × 8 = ${size * 8} Mb, so ${t} s. (b) Protocol overhead and retransmission with congestion control. (c) Bandwidth is data per unit time; latency is the time for one packet end to end. Bandwidth limits large downloads; latency limits gaming and video calls, where a wider pipe cannot shorten the trip. Adding bandwidth does not fix latency.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '程式編寫與算法', n: 15, make: (k) => {
+      // ⚠️ 教訓②：第一版寫 `100 * Math.pow(2, k % 6)`，六個取值跑 15 次，
+      //    機器閘捉到 9 條撞題。改為每一輪都得出唯一嘅 n。
+      const n = 100 * Math.pow(2, k % 6) + k * 8
+      return { q: `某演算法對 n 項資料的執行步驟數約為 n²，另一演算法約為 n log₂ n。設 n = ${n}（log₂ ${n} ≈ ${Math.log2(n).toFixed(1)}）。\n（a）分別估算兩者的步驟數。\n（b）若 n 增至 ${n * 2}，兩者的步驟數各增加約多少倍？\n（c）解釋為何在 n 很小的時候，複雜度較高的演算法有可能反而較快。`,
+        ans: `（a）n² = ${n * n}；n log₂ n ≈ ${(n * Math.log2(n)).toFixed(0)}。\n（b）n 加倍：n² 變為約【4 倍】（因為 (2n)² = 4n²）；n log₂ n 變為約 ${((n * 2 * Math.log2(n * 2)) / (n * Math.log2(n))).toFixed(2)} 倍，略多於 2 倍。\n（c）因為大 O 表示法【略去了常數項與低次項】，只描述 n 趨大時的增長趨勢。複雜度較低的演算法往往有較大的常數開銷（遞迴呼叫、額外記憶體配置、預處理）；n 很小時這些固定開銷佔比很大，可能蓋過增長率的優勢。實務上混合式排序在資料量小於某門檻時改用簡單演算法，正是基於這個道理。\n⚠️ 本題考的是「複雜度描述趨勢，不描述絕對速度」。`,
+        ansEn: `(a) n² = ${n * n}; n log2 n = ${(n * Math.log2(n)).toFixed(0)}. (b) Doubling n makes n² about 4x larger, while n log2 n grows by about ${((n * 2 * Math.log2(n * 2)) / (n * Math.log2(n))).toFixed(2)}x. (c) Big-O drops constants and lower-order terms and describes growth as n gets large; the asymptotically better algorithm often carries a larger constant, which dominates at small n. Hybrid sorts switch to a simple algorithm below a threshold for exactly this reason.`,
+        min: 15, diff: 'hard' } } },
+  { topic: '資料庫', n: 15, make: (k) => {
+      const rec = 5000 + k * 1200, fld = 6 + (k % 5)
+      return { q: `某資料表有 ${rec} 筆紀錄、${fld} 個欄位。\n（a）說明「主鍵」的作用，並指出為何不應以「姓名」作主鍵。\n（b）解釋資料重複如何導致更新異常，請以一個具體情境說明。\n（c）指出建立索引的一項好處與一項代價。`,
+        ans: `（a）主鍵用以【唯一識別】表中每一筆紀錄，不可重複、不可留空。不應以姓名作主鍵：姓名可以重複、可以更改，而且不同人輸入時可能有不同寫法。主鍵一旦不唯一或會變動，所有引用它的關聯都會出錯。\n（b）若某供應商的電話在 ${rec} 筆紀錄中重複儲存，一旦電話更改而只更新了部分紀錄，同一供應商就會同時存在兩個不同電話 —— 系統無從判斷哪一個正確。正規化的作用，正是令每一項事實【只儲存一次】。\n（c）好處：大幅加快按該欄位搜尋與排序（不必逐筆掃描 ${rec} 筆）。代價：索引佔用儲存空間，而且每次新增、刪除或修改紀錄時都要同步更新，令寫入變慢。\n⚠️ 索引不是愈多愈好，要按實際查詢模式取捨。`,
+        ansEn: `(a) A primary key uniquely identifies each record and can be neither duplicated nor null. Names repeat, change and are entered inconsistently. (b) If a supplier's phone is stored across many of the ${rec} records and only some are updated, the database holds two numbers for one supplier. Normalisation stores each fact ONCE. (c) An index speeds searching and sorting, avoiding a scan of ${rec} rows; the cost is storage plus slower writes. More indexes is not automatically better.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '資訊保安與道德', n: 15, make: (k) => {
+      const len = 8 + k, cs = [26, 52, 62, 95][k % 4]
+      return { q: `某系統要求密碼長度為 ${len} 個字元，可用字元集大小為 ${cs}。\n（a）以次方式寫出可能的密碼組合數。\n（b）解釋為何「增加長度」通常比「增加字元種類」更有效地擴大組合空間。\n（c）指出【兩項】即使密碼很強仍可能失守的途徑，並各說明應對方法。`,
+        ans: `（a）組合數 = ${cs}^${len}。\n（b）組合數 =（字元集大小）^（長度）。字元集大小在【底數】，長度在【指數】。增加指數對結果的影響遠大於增加底數：把長度由 ${len} 增至 ${len + 2}，組合數乘以 ${cs}²；而把字元集由 ${cs} 增至 ${cs + 10}，倍數遠小於此。這也是為何現時普遍建議較長的通行短語而非短而複雜的密碼。\n（c）一、【釣魚】—— 攻擊者誘使用戶自行輸入密碼，密碼強度完全不起作用。應對：核實網址與寄件人、不經連結登入、啟用雙重認證。\n二、【資料外洩後的憑證填充】—— 一處網站外洩，攻擊者用同一組帳密試其他網站。應對：每個網站用不同密碼、啟用雙重認證。\n⚠️ 密碼強度只防「猜」，防不到「騙」與「重用」。`,
+        ansEn: `(a) ${cs}^${len} combinations. (b) The set size is the BASE and the length is the EXPONENT, so raising the exponent matters far more: two extra characters multiply by ${cs}². Hence longer passphrases rather than short complex passwords. (c) Phishing (the user types it in voluntarily, so strength is irrelevant) and credential stuffing after a breach. Strength defends against guessing, not deception or reuse.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '電腦系統與硬件', n: 15, make: (k) => {
+      const ghz = (2 + k * 0.2).toFixed(1), cores = [2, 4, 6, 8][k % 4]
+      return { q: `某處理器的時脈為 ${ghz} GHz，具 ${cores} 個核心。\n（a）說明時脈頻率的意義，並指出它為何不足以單獨比較兩款處理器的效能。\n（b）解釋為何核心數目由 ${cores} 增至 ${cores * 2} 時，實際效能通常【不會】提升一倍。\n（c）說明快取記憶體的作用，並解釋為何它比主記憶體小得多。`,
+        ans: `（a）時脈頻率指每秒的時脈週期數，${ghz} GHz 即每秒 ${ghz} × 10⁹ 個週期。不足以單獨比較，是因為不同架構在【每個週期能完成的工作量】上有分別（指令集、管線深度、分支預測、每週期指令數）。\n（b）因為並非所有工作都可以【平行化】。程式中總有必須依序執行的部分，這部分不會因核心增加而加快；此外還有核心之間的協調開銷、對記憶體頻寬與快取的爭用。\n（c）快取是介乎處理器與主記憶體之間的高速小容量記憶體，存放最近或最常用的資料與指令，減少處理器等待主記憶體的時間。它比主記憶體小得多，是因為速度愈快的記憶體單位成本愈高、耗電與發熱愈大、而且必須物理上靠近處理器 —— 靠近的空間有限。這是成本與速度的取捨，不是技術上做不到。\n⚠️ 共同主題：硬件規格是多維的，任何單一數字都不足以代表效能。`,
+        ansEn: `(a) ${ghz} GHz is ${ghz} × 10^9 cycles per second; it cannot be compared alone because architectures differ in work done per cycle. (b) Not all work parallelises; the sequential portion does not speed up, and coordination overhead plus contention for memory bandwidth and cache reduce the gain. (c) Cache is small fast memory holding recently used data, cutting waiting time; it is small because faster memory costs more per unit, draws more power and must sit close to the processor, where space is limited.`,
+        min: 14, diff: 'intermediate' } } },
+  { topic: '多媒體與網絡技術', n: 15, make: (k) => {
+      const w = 800 + k * 200, h = 600 + k * 150, depth = [8, 16, 24, 32][k % 4]
+      const bytes = (w * h * depth) / 8
+      return { q: `某未壓縮影像的解像度為 ${w} × ${h} 像素，色彩深度為 ${depth} 位元。\n（a）計算檔案大小（以 MB 表示，取 1 MB = 1,048,576 位元組）。\n（b）解釋有損壓縮與無損壓縮的分別，並各舉一個適用情境。\n（c）若把解像度的長寬各減半，檔案大小會變成原來的幾分之一？請說明。`,
+        ans: `（a）位元總數 = ${w} × ${h} × ${depth} = ${w * h * depth}；位元組 = ${bytes}；MB = ${(bytes / 1048576).toFixed(2)}。\n（b）無損壓縮：解壓後與原檔【完全一致】，靠去除統計上的冗餘。適用於文字、程式碼、需要精確保存的圖表。有損壓縮：永久捨棄人眼或人耳較不敏感的資訊，換取遠高的壓縮率。適用於相片、音樂、影片。\n（c）長寬各減半，像素數變為 1/2 × 1/2 = 【四分之一】，故檔案大小亦為四分之一（約 ${(bytes / 4 / 1048576).toFixed(2)} MB）。原因：檔案大小與【面積】成正比，而面積是兩個維度的乘積 —— 很多人會誤答二分之一。\n⚠️ 凡涉及二維的量，改變一個線性尺度都要記得平方。`,
+        ansEn: `(a) ${w} × ${h} × ${depth} = ${w * h * depth} bits = ${bytes} bytes = ${(bytes / 1048576).toFixed(2)} MB. (b) Lossless reconstructs the original exactly, for text, code and figures; lossy discards what the eye or ear notices least, for photographs, music and video. (c) Halving each dimension leaves a QUARTER of the pixels, about ${(bytes / 4 / 1048576).toFixed(2)} MB — size scales with AREA. The usual wrong answer is one half.`,
+        min: 13, diff: 'intermediate' } } },
+]
+
 console.log('生成書寫題草稿・第二批（reviewer 欄一律留空，待真人逐題簽署）：')
 let total = 0
 total += build('economics', '經濟', ECON, 'ec_l')
 total += build('geography', '地理', GEO, 'ge_l')
+total += build('bafs', '企會財', BAFS, 'bf_l')
+total += build('ict', 'ICT', ICT, 'ic_l')
 console.log(`\n合計 ${total} 條。`)
 export { build, TOPIC_ID, TAIL_ZH, TAIL_EN, CASIO }
