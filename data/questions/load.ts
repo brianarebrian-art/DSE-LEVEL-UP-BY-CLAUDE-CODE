@@ -113,25 +113,27 @@ const loaders: Record<string, Loader> = {
   history: async () => {
     // 卷二論述題（long）—— brian 2026-08-27 逐題審批，38 條 / 950 分。
     // 補底 MC —— brian 2026-08-28 逐題審批。六個當時只得 1–4 條的課題各補至 10 條。
-    const [base, essays, floor1] = await Promise.all([
+    const [base, essays, floor1, b1] = await Promise.all([
       import('./history'), import('./history-p2-essays'), import('./history-floor-batch1'),
+      import('./history-bank'),
     ])
-    return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions]
+    return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions, ...b1.historyBank1Questions]
   },
   'chinese-history': async () => {
     const [base, b2] = await Promise.all([import('./chinese-history'), import('./chinese-history-floor-b2')])
     return [...base.chineseHistoryQuestions, ...b2.chineseHistoryFloorB2Questions]
   },
   ths: async () => {
-    const [base, bank, b2] = await Promise.all([import('./ths'), import('./applied-banks'), import('./ths-floor-b2')])
-    return [...base.thsQuestions, ...bank.thsBankQuestions, ...bank.thsBank2Questions, ...b2.thsFloorB2Questions]
+    const [base, bank, b2, b3] = await Promise.all([import('./ths'), import('./applied-banks'), import('./ths-floor-b2'), import('./ths-bank')])
+    return [...base.thsQuestions, ...bank.thsBankQuestions, ...bank.thsBank2Questions, ...b2.thsFloorB2Questions, ...b3.thsBank3Questions]
   },
   'health-management': async () => {
     const [base, floor1] = await Promise.all([
       import('./health-management'), import('./health-management-floor-batch1'),
     ])
     const b2 = await import('./health-management-bank')
-    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions, ...(await import('./applied-banks')).healthManagementBankQuestions, ...b2.healthManagementBank2Questions]
+    const b3 = await import('./health-management-bank2')
+    return [...base.healthManagementQuestions, ...floor1.healthManagementFloorBatch1Questions, ...(await import('./applied-banks')).healthManagementBankQuestions, ...b2.healthManagementBank2Questions, ...b3.healthManagementBank3Questions]
   },
   'design-tech': async () => {
     const [base, bank, b2, b3, b4] = await Promise.all([import('./design-tech'), import('./applied-banks'), import('./design-tech-floor-b2'), import('./design-tech-bank'), import('./design-tech-bank2')])
@@ -154,8 +156,8 @@ const loaders: Record<string, Loader> = {
     return [...base.englishLiteratureQuestions, ...b2.englishLiteratureFloorB2Questions]
   },
   'visual-arts': async () => {
-    const [base, b2, b3] = await Promise.all([import('./visual-arts'), import('./visual-arts-floor-b2'), import('./visual-arts-bank')])
-    return [...base.visualArtsQuestions, ...b2.visualArtsFloorB2Questions, ...b3.visualArtsBank2Questions]
+    const [base, b2, b3, b4] = await Promise.all([import('./visual-arts'), import('./visual-arts-floor-b2'), import('./visual-arts-bank'), import('./visual-arts-bank2')])
+    return [...base.visualArtsQuestions, ...b2.visualArtsFloorB2Questions, ...b3.visualArtsBank2Questions, ...b4.visualArtsBank3Questions]
   },
   csd: async () => {
     const [base, reviewed, b2] = await Promise.all([import('./csd'), import('./csd-reviewed'), import('./csd-floor-b2')])

@@ -55,14 +55,17 @@ import { geographyBank2Questions } from './geography-bank'
 import { geographyBank3Questions } from './geography-bank3'
 import { historyQuestions, historyTopics } from './history'
 import { historyP2EssaysQuestions } from './history-p2-essays'
+import { historyBank1Questions } from './history-bank'
 import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { chineseHistoryFloorB2Questions } from './chinese-history-floor-b2'
 import { thsQuestions, thsTopics } from './ths'
+import { thsBank3Questions } from './ths-bank'
 import { thsFloorB2Questions } from './ths-floor-b2'
 import { healthManagementQuestions, healthManagementTopics } from './health-management'
 import { healthManagementFloorBatch1Questions } from './health-management-floor-batch1'
 import { healthManagementBank2Questions } from './health-management-bank'
+import { healthManagementBank3Questions } from './health-management-bank2'
 import { designTechQuestions, designTechTopics } from './design-tech'
 import { designTechFloorB2Questions } from './design-tech-floor-b2'
 import { designTechBank3Questions } from './design-tech-bank'
@@ -82,6 +85,7 @@ import { englishLiteratureFloorB2Questions } from './english-literature-floor-b2
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { visualArtsFloorB2Questions } from './visual-arts-floor-b2'
 import { visualArtsBank2Questions } from './visual-arts-bank'
+import { visualArtsBank3Questions } from './visual-arts-bank2'
 import { csdQuestions, csdTopics } from './csd'
 import { csdFloorB2Questions } from './csd-floor-b2'
 import { csdReviewedQuestions } from './csd-reviewed'
@@ -150,16 +154,16 @@ const banks: Record<string, SubjectBank> = {
   bafs: { questions: [...bafsQuestions, ...bafsBankQuestions, ...bafsReviewedQuestions], topics: bafsTopics },
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
   geography: { questions: [...geographyQuestions, ...geographyBankQuestions, ...geographyFloorB2Questions, ...geographyBank2Questions, ...geographyBank3Questions], topics: geographyTopics },
-  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions], topics: historyTopics },
+  history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions, ...historyBank1Questions], topics: historyTopics },
   'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions], topics: chineseHistoryTopics },
-  ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions, ...thsFloorB2Questions], topics: thsTopics },
-  'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions, ...healthManagementBank2Questions], topics: healthManagementTopics },
+  ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions, ...thsFloorB2Questions, ...thsBank3Questions], topics: thsTopics },
+  'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions, ...healthManagementBank2Questions, ...healthManagementBank3Questions], topics: healthManagementTopics },
   'design-tech': { questions: [...designTechQuestions, ...designTechBankQuestions, ...designTechBank2Questions, ...designTechFloorB2Questions, ...designTechBank3Questions, ...designTechBank4Questions], topics: designTechTopics },
   music: { questions: [...musicQuestions, ...musicBankQuestions, ...musicBank2Questions, ...musicFloorB2Questions, ...musicBank3Questions, ...musicBank4Questions], topics: musicTopics },
   pe: { questions: [...peQuestions, ...peBankQuestions, ...peBank2Questions, ...peFloorB2Questions, ...peBank3Questions, ...peBank4Questions], topics: peTopics },
   'chinese-literature': { questions: [...chineseLiteratureQuestions, ...chineseLiteratureFloorB2Questions], topics: chineseLiteratureTopics },
   'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions], topics: englishLiteratureTopics },
-  'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions, ...visualArtsBank2Questions], topics: visualArtsTopics },
+  'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions, ...visualArtsBank2Questions, ...visualArtsBank3Questions], topics: visualArtsTopics },
   csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions], topics: csdTopics },
   'ethics-religious': { questions: [...ethicsReligiousQuestions, ...ethicsReligiousFloorB2Questions], topics: ethicsReligiousTopics },
   'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions, ...technologyLivingFloorB2Questions, ...technologyLivingBank3Questions, ...technologyLivingBank4Questions], topics: technologyLivingTopics },
