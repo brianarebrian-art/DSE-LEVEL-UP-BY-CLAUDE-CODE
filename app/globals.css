@@ -17,7 +17,7 @@
 
      點解唔跟其他卡用 surface-raised：舊版係純黑卡配純黑遮蓋條，
      「塗黑」實際上睇唔到（黑疊黑）。而暗色模式下【物理上做唔到】
-     一條比卡更深嘅條 —— #2C2A29 已經接近黑，再深都只有 1.34:1。
+     一條比卡更深嘅條 —— 卡面 #252422 已經接近黑，純黑落上去都只有 1.35:1。
      一張紙先至有得塗黑。
 
      墨、輔助字、陶土三隻兩個主題共用，因為紙兩邊都係淺色。
@@ -192,37 +192,61 @@
    實心掣喺呢度係【淺色填色 + 深色字】。白字 on 莫蘭迪灰綠只有 1.4–2:1，
    等同睇唔到。改色之前必須重新計，唔可以照抄淺色嗰欄。
 
-   逐項對比度 = 落三個暗底（#1E1C1B / #2C2A29 / #3A3734）嘅【最差】值，
+   逐項對比度 = 落三個暗底（#1a1917 / #252422 / #2f2e2c）嘅【最差】值，
    唔係只計 canvas —— 只計 canvas 係上一輪漏咗 line 同 ink-soft 嘅原因。 */
 :root[data-theme='cyber'] {
   /* 三個底面：暖調近黑，唔係藍調。同淺色嗰邊一樣由 --color-ml-* 映射過嚟，
      咁「莫蘭迪」就真係得一個定義，唔會再有一半做咗一半冇做。 */
-  --color-surface: var(--color-ml-canvas);          /* #1E1C1B */
-  --color-surface-raised: var(--color-ml-surface);  /* #2C2A29 */
-  --color-surface-sunken: var(--color-ml-muted);    /* #3A3734 */
+  --color-surface: var(--color-ml-canvas);          /* #1a1917 規格 --bg-primary */
+  --color-surface-raised: var(--color-ml-surface);  /* #252422 規格 --bg-card */
+  --color-surface-sunken: var(--color-ml-muted);    /* #2f2e2c 規格 --bg-elevated */
 
-  --color-ink: var(--color-ml-ink);                 /* #E8E2D9  9.18 */
-  --color-ink-soft: #CFC8BF;                        /* 7.13 */
-  --color-ink-muted: var(--color-ml-ink-soft);      /* #A8A19A 4.63 */
-  --color-ink-faint: #726C66;                       /* 2.28 —— 停用控件／裝飾專用 */
+  --color-ink: var(--color-ml-ink);                 /* #f0e8dc  11.16　規格 --text-primary */
+  --color-ink-soft: #c1bab0;                        /* 7.05　規格冇呢一階，由 --cream 壓暗推導 */
+  --color-ink-muted: var(--color-ml-ink-soft);      /* #a8a095  5.25　規格 --text-secondary（原 4.63，升咗） */
+  --color-ink-faint: #6b6560;                       /* 2.36 —— 停用控件／裝飾專用（原 2.28）
+
+     ⚠️ 呢隻就係規格嘅 --text-muted。規格 §2.1 派佢做「時間戳、極次要資訊」，
+     但 §4.6 又派佢做 Focus Mode 嘅「Distractions can wait outside this room.」
+     同 sidebar 嘅引言 —— 嗰兩處係真係要睇嘅字。實測落最亮嗰個暗底
+     (#2f2e2c) 只有 2.36:1，連圖形 3:1 都唔夠，即係規格自己踩緊自己嘅
+     QA 清單第 9 條（≥4.5:1）。
+     解決方法唔係調亮佢 —— 本站本來就有四階，第四階（faint）嘅定位一路
+     都係「WCAG 1.4.3 明文豁免嘅停用態／裝飾」。所以規格嗰隻色照收，
+     但凡係真文案一律行 ink-muted（#a8a095，5.25）。 */
 
   /* accent 落暗底要調亮：dark 嘅 --color-ml-sage 本身係 #A0B39B（見下），
      文字用 5.30、實心掣配深字 7.61。舊值 #8A9A86 做文字只有 3.97，唔合格。 */
   --color-accent: var(--color-ml-sage);
   --color-accent-strong: var(--color-ml-sage);
-  --color-accent-hover: #AABCA5;                    /* 深字掣 8.44 */
-  --color-on-accent: var(--color-ml-on-brand);      /* #1E1C1B */
+  --color-accent-hover: #6b8f71;                    /* 規格 --moss-dark。深字掣 4.85 ✅
 
-  --color-line: rgba(232, 226, 217, 0.10);
-  --color-line-strong: rgba(232, 226, 217, 0.20);
+     ⚠️ 規格自己喺呢度有矛盾：§3.3 寫 hover「亮度 +10%」，但 §2.1 個表
+     又叫呢隻做「深苔綠 hover」。暗色模式下撳深係會【減】對比
+     （5.87 → 4.85），不過仍然過 AA，所以照跟色表。
+     全站 44 處全部係 bg-accent-hover，零處做字色 —— 已核。 */
+  --color-on-accent: var(--color-ml-on-brand);      /* #1a1917 */
+
+  /* 規格 --border-subtle / --border-hover 原值照收。實測疊落卡面 (#252422)：
+     0.06 → #312f2d，對比 1.16；0.12 → #3c3b37，對比 1.38。
+     兩者都遠低於 3:1，但 WCAG 1.4.11 只管【載住資訊嘅】邊界；卡片外框
+     純裝飾，唔喺規範內。真正要載資訊嗰啲（輸入框、可選項邊界）行
+     --color-ml-line（#918a7e，3.97），唔係行呢兩隻 —— 兩者唔可以撈亂。
+     ⚠️ 舊值係 0.10 / 0.20，即係呢一步係【調暗】咗卡框。
+     如果實機睇落太隱形，改返上去唔會影響任何合規計算。 */
+  --color-line: rgba(232, 224, 212, 0.06);
+  --color-line-strong: rgba(232, 224, 212, 0.12);
   --color-scrim: rgba(10, 9, 9, 0.78);
   --color-scrim-soft: rgba(10, 9, 9, 0.50);
 
-  /* 盲測卡嘅紙：暗色模式用舊紙色。純白紙落 #1E1C1B 頁底係 16.71，
+  /* 盲測卡嘅紙：暗色模式用舊紙色。純白紙落 #1a1917 頁底係 17.57，
      深夜睇會刺眼；舊紙 9.60，仍然清楚係一張紙，但唔會灼眼。
      墨、輔助字、陶土三隻唔使覆寫 —— 紙兩邊都係淺色，同一組墨通用。 */
-  --color-paper: #DDD3C6;   /* PC-026 舊紙。純白紙落 #1E1C1B 頁底係 16.7，
-                               深夜灼眼；呢隻 11.48，仍然明顯係一張紙。
+  --color-paper: #DDD3C6;   /* PC-026 舊紙。純白紙落 #1a1917 頁底係 17.57，
+                               深夜灼眼；呢隻 11.89，仍然明顯係一張紙。
+                               ⚠️ 底面轉深之後重驗過：落三個新暗底最差 9.18，
+                               墨落紙 9.66、輔助字落紙 6.33 —— 全部照舊達標，
+                               所以紙本身唔使跟住規格改。
                                ⚠️ 本來揀咗更深嘅 PC-027（7.55），但卡入面有
                                5–10% 墨色疊底（選項框、字母徽章），疊完之後
                                輔助字只剩 3.57 —— 紙太暗就托唔起字。
@@ -233,14 +257,14 @@
      冇改名，係因為佢哋散落成百處，改名嘅風險遠大於收益 ——
      而且名本身係語意（提示／次要／提醒），唔係色相。
      括號＝落三個暗底嘅【最差】值。 */
-  --color-gold: #EDD9A8;          /* PC-010  8.50 */
-  --color-gold-soft: #F5E7C8;     /* PC-009  9.65 */
-  --color-gold-strong: #DCC48C;   /* PC-011  6.94 */
-  --color-violet: #C0BCD6;        /* PC-022  6.42 */
-  --color-violet-strong: #DCD7E5; /* PC-021  8.39 */
-  --color-rose: #E0A38C;          /* PC-006  5.51 */
-  --color-rose-strong: #C5908B;   /* PC-002  4.36 —— 裝飾／邊框，非正文 */
-  --color-on-violet: #1E1C1B;     /* 深字 on 紫灰 = 9.22（白字只有 1.6） */
+  --color-gold: var(--color-ml-clay);   /* #b8956f 規格 --wood  4.89 */
+  --color-gold-soft: #e6ba8b;     /* wood ×1.25  7.60 —— 全站 1 處，做 border */
+  --color-gold-strong: #d4ab80;   /* wood ×1.15  6.42 —— 全站 10 處做字色，故要 ≥4.5 */
+  --color-violet: var(--color-ml-mist); /* #8a9fb8 規格 --mist  4.99 */
+  --color-violet-strong: #a8c2e0; /* mist ×1.22  7.40 —— 3 處做字色 */
+  --color-rose: var(--color-ml-warn);   /* #c49a9a 規格 --rose  5.45 */
+  --color-rose-strong: #b89191;   /* rose ×0.94  4.84 —— 有 1 處做字色，故要 ≥4.5 */
+  --color-on-violet: #1a1917;     /* 深字 on 霧藍 = 6.47（白字只有 1.9） */
 
   /* 等級色（莫蘭迪暗色，括號＝落三個暗底嘅最差比值，全部 ≥5:1）。
      Light 嘅深金／深藍／深紫落深底只有 2.25–4.63，故必須整組換亮。
@@ -249,50 +273,58 @@
      【接受咗嘅】—— 見 lib/grading.ts 檔頭：WCAG 1.4.1 要求等級唔可以
      只靠顏色分辨，真正嘅辨識依據係「5**」「5*」呢啲字本身。
      為咗拉開色相而撳低對比度，係倒轉咗優先次序。 */
-  --grade-5ss: #DCE5DA; /* PC-013  9.16 */
-  --grade-5s:  #B5CBA8; /* PC-031  6.80 */
-  --grade-5:   #A8C0A0; /* PC-014  6.03 */
-  --grade-4:   #AFC2D1; /* PC-018  6.45 —— 霧藍，同 5 分開色相 */
-  --grade-3:   #DCC48C; /* PC-011  6.94 —— 陶土 */
-  --grade-2:   #DDD3C6; /* PC-026  8.00 —— 岩灰 */
-  --grade-1:   #C9C9C9; /* PC-034  7.14 */
-  --grade-u:   #C5908B; /* PC-002  4.36 —— 乾玫瑰，唔用正紅（憲章 §7） */
+  --grade-5ss: #e8e0d4; /* 規格 --cream        10.36 */
+  --grade-5s:  #9ab89d; /* moss ×1.25          6.28 */
+  --grade-5:   #7a9e7e; /* 規格 --moss         4.53 */
+  --grade-4:   #8a9fb8; /* 規格 --mist         4.99 —— 同 5 分開色相 */
+  --grade-3:   #b8956f; /* 規格 --wood         4.89 */
+  --grade-2:   #c1bab0; /* 岩灰                7.05 */
+  --grade-1:   #a8a095; /* 規格 --text-secondary 5.25 */
+  --grade-u:   #c49a9a; /* 規格 --rose         5.45 —— 唔用正紅（憲章 §7） */
 
-  /* 莫蘭迪 token 嘅 Cyber（暗色）值。Dark 三底面 = #1E1C1B / #2C2A29 / #3A3734。
+  /* Cyber（暗色）一欄。Dark 三底面 = #1a1917 / #252422 / #2f2e2c（規格 §2.1）。
      ⚠️ 暗色模式方向同 Light 相反：實心掣係【淺色填色 + 深色字】，唔係白字。
      規格 v4.0-A 曾經把 dark 一欄跟住 Light 一齊撳深（sage → #6B7D66），
      結果配白字得 4.42，反而變差；v4.0-B 已回復原值配深字。
-     另外 v4.0-B 個 dark 欄只驗咗 canvas，冇驗第三個暗底 #3A3734 ——
+     另外 v4.0-B 個 dark 欄只驗咗 canvas，冇驗第三個暗底 ——
      ink-soft 同 line 兩個喺嗰度跌穿（4.36 / 2.11），以下係修正後嘅值。 */
-  /* 三個底面：色卡【冇】呢個暗度 —— 油漆卡最深都只到 PC-036 #6E6E6E，
-     因為冇人會把成間房掃到接近黑。所以底色維持原有嘅暖調近黑，
-     色卡負責嘅係【前景】。 */
-  --color-ml-canvas: #1E1C1B;
-  --color-ml-surface: #2C2A29;
-  --color-ml-muted: #3A3734;
-  /* 以下全部係色卡【亮嗰半】嘅原值，一個字都冇改 ——
-     佢哋落暗底 4.36–9.97，本身就已經達標。 */
-  --color-ml-ink: #F0EBE3;         /* PC-025 正文（9.97） */
-  --color-ml-ink-soft: #C9C9C9;    /* PC-034 輔助（7.14） */
-  --color-ml-sage: #A8C0A0;        /* PC-014 文字 6.03 / 深字掣 8.66 */
-  --color-ml-clay: #DCC48C;        /* PC-011 文字 6.94 / 深字掣 9.96 */
-  --color-ml-warn: #E0A38C;        /* PC-006 文字 5.51 / 深字掣 7.91 */
-  --color-ml-good: #B5CBA8;        /* PC-031 文字 6.80 / 深字掣 9.76 */
-  --color-ml-line: #A0A0A0;        /* PC-035 控件邊界（4.52） */
-  --color-ml-on-brand: #1E1C1B;    /* 實心掣上嘅字（Dark 用深字） */
-  --color-ml-rose: #C5908B;        /* PC-002 裝飾（4.36） */
-  --color-ml-mist: #AFC2D1;        /* PC-018 裝飾（6.45） */
+  /* ══ 2026-09-03：暗色一欄由莫蘭迪色卡改為「深夜書房療癒風」規格 §2.1 ══
+     淺色一欄【原封不動】—— 規格係淨暗色，Yuna 拍板保留雙主題，
+     所以呢一次只動 [data-theme='cyber']。日光下用機同 SEN 高對比需求
+     照樣有淺色行，剛做完嘅四底面校準亦唔會白費。
+
+     三個底面直接收規格原值。括號＝落三個【新】暗底
+     (#1a1917 / #252422 / #2f2e2c) 嘅最差值，唔係只計 canvas。 */
+  --color-ml-canvas: #1a1917;      /* 規格 --bg-primary */
+  --color-ml-surface: #252422;     /* 規格 --bg-card */
+  --color-ml-muted: #2f2e2c;       /* 規格 --bg-elevated */
+  /* 前景：規格五隻主色原值照收，實測全部過 AA 正文 4.5:1 ——
+     呢份規格嘅配色係計過先出，唔使似上幾份咁逐隻執。 */
+  --color-ml-ink: #f0e8dc;         /* 規格 --text-primary    11.16 */
+  --color-ml-ink-soft: #a8a095;    /* 規格 --text-secondary   5.25 */
+  --color-ml-sage: #7a9e7e;        /* 規格 --moss  文字 4.53 / 深字掣 5.87 */
+  --color-ml-clay: #b8956f;        /* 規格 --wood  文字 4.89 / 深字掣 6.33 */
+  --color-ml-warn: #c49a9a;        /* 規格 --rose  文字 5.45 / 深字掣 7.06 */
+  --color-ml-good: #9ab89d;        /* moss ×1.25   文字 6.28 —— 規格冇「達標」色，
+                                      由 moss 調亮推導，同 sage 分得開（ΔL 0.135） */
+  --color-ml-line: #918a7e;        /* 控件邊界 3.97（WCAG 1.4.11 ≥3:1）。
+                                      ⚠️ 唔好用規格嘅 --border-subtle 頂替 ——
+                                      嗰隻 rgba 0.06 只有 1.16，係卡片裝飾框，
+                                      唔載得起輸入框／可選項嘅邊界。 */
+  --color-ml-on-brand: #1a1917;    /* 實心掣上嘅字（Dark 用深字，規格 §3.3 一致） */
+  --color-ml-rose: #c49a9a;        /* 規格 --rose  裝飾（5.45） */
+  --color-ml-mist: #8a9fb8;        /* 規格 --mist  裝飾（4.99） */
 
   /* 科目家族色（暗色）。用喺 /subjects 卡片嘅 hover 邊框同淡底，
      即係【圖形】用途，WCAG 下限 3:1；以下全部 ≥4.3，有餘裕。
      moss 由 #7E9179（3.50）調亮，唔係因為佢唔合格，
      而係佢同 sage 幾乎撞埋一齊，六個家族分唔開就冇意思。 */
-  --color-subj-sage: #A8C0A0;   /* PC-014 6.03 */
-  --color-subj-moss: #B5CBA8;   /* PC-031 6.80 */
-  --color-subj-mist: #AFC2D1;   /* PC-018 6.45 */
-  --color-subj-clay: #DCC48C;   /* PC-011 6.94 */
-  --color-subj-rose: #C5908B;   /* PC-002 4.36 */
-  --color-subj-stone: #DDD3C6;  /* PC-026 8.00 */
+  --color-subj-sage: #7a9e7e;   /* 規格 --moss   4.53 */
+  --color-subj-moss: #9ab89d;   /* moss ×1.25    6.28 */
+  --color-subj-mist: #8a9fb8;   /* 規格 --mist   4.99 */
+  --color-subj-clay: #b8956f;   /* 規格 --wood   4.89 */
+  --color-subj-rose: #c49a9a;   /* 規格 --rose   5.45 */
+  --color-subj-stone: #c1bab0;  /* 岩灰          7.05 */
 }
 
 /* ── 莫蘭迪：全站語意 token 映射｜規格 v4.0-B ───────────────────────────
