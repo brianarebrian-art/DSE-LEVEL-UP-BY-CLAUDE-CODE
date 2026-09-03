@@ -50,6 +50,9 @@ const SUBJECT_OF: Record<string, string> = {
   'physics-long-b1.json': 'physics',
   'chemistry-long-b1.json': 'chemistry',
   'biology-long-b1.json': 'biology',
+  // 2026-09-03 計算型科目書寫題第二批（scripts/qbank/gen-long-drafts-b2.mjs）。
+  'economics-long-b1.json': 'economics',
+  'geography-long-b1.json': 'geography',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────
