@@ -23,6 +23,10 @@ import { createBank, qty, type TopicMeta, type FwMeta } from './_parametric'
 
 const T = {
   netcalc: { id: 'ict_network_calc', zh: '網絡計算', en: 'Networking — calculation' },
+  web: { id: 'multimedia_web', zh: '多媒體與網絡技術', en: 'Multimedia & Web' },
+  datacalc: { id: 'ict_data_rep_calc', zh: '資料表示計算', en: 'Data Representation — calculation' },
+  database: { id: 'databases', zh: '資料庫', en: 'Databases' },
+  programming: { id: 'programming', zh: '程式編寫與算法', en: 'Programming & Algorithms' },
   logic: { id: 'ict_logic_algo', zh: '邏輯與算法', en: 'Logic & Algorithms' },
   systems: { id: 'computer_systems', zh: '電腦系統與硬件', en: 'Computer Systems & Hardware' },
   security: { id: 'security_ethics', zh: '資訊保安與道德', en: 'Security & Ethics' },
@@ -71,7 +75,7 @@ for (const host of [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
 }
 
 // NC3 — 傳播延遲 = 距離 ÷ 訊號速度（以 200,000 km/s 計）
-for (const km of [200, 400, 600, 1000, 1600, 2000, 3000, 4000]) {
+for (const km of [200, 400, 600, 800, 1000, 1200, 1600, 2000, 2400, 3000, 4000, 5000]) {
   const ms = km / 200
   if (!Number.isInteger(ms)) continue
   const d = distract(ms, [km / 100, km / 300, km, ms * 2])
@@ -282,6 +286,158 @@ for (const bits of [16, 18, 20, 22, 24]) {
       [`金鑰空間為 $2^{${bits}} = ${2 ** bits}$ 個。逐個試下去，正確金鑰平均出現在【一半】的位置，故平均嘗試 $${2 ** bits} \\div 2 = ${2 ** bits / 2}$ 個，需時 $${2 ** bits / 2} \\div ${rate} = ${sec}$ 秒。答 $${sec * 2}$ 是漏了除以 2，那是【最壞情況】即試盡全部金鑰所需的時間。題目問平均還是最壞，必須看清楚。`,
        `The key space is $2^{${bits}} = ${2 ** bits}$. Trying keys one by one, the correct key sits on average HALFWAY through, so $${2 ** bits} \\div 2 = ${2 ** bits / 2}$ attempts are needed, taking $${2 ** bits / 2} \\div ${rate} = ${sec}$ s. Answering $${sec * 2}$ omits the division by two and gives the WORST case — the time to exhaust every key. Read whether the question asks for the average or the worst case.`])
   }
+}
+
+// ── 多媒體與網絡技術 ──────────────────────────────────────────────────────
+
+// MM1 — 未壓縮點陣圖大小 = 闊 × 高 × 色深 ÷ 8
+for (const w of [640, 800, 1024, 1280]) {
+  for (const h of [480, 600, 768]) {
+    for (const depth of [8, 24]) {
+      const kb = (w * h * depth) / 8 / 1024
+      if (!Number.isInteger(kb)) continue
+      const d = distract(kb, [kb * 8, (w * h) / 1024, kb / depth])
+      if (d.length < 3) continue
+      b.add(`ictb4_mm1_${w}_${h}_${depth}`, T.web, FW.apply, 'medium',
+        [`一幅未經壓縮的點陣圖闊 ${w} 像素、高 ${h} 像素，色深 ${depth} 位元。該圖檔佔多少 KB？（1 KB = 1024 位元組）`,
+         `An uncompressed bitmap is ${w} pixels wide and ${h} pixels high with a colour depth of ${depth} bits. What is the file size in KB? (1 KB = 1024 bytes)`],
+        [qty(kb, 'KB', 'KB'), ...d.map((v) => qty(v, 'KB', 'KB'))],
+        [`像素總數 = $${w} \\times ${h} = ${w * h}$。每個像素佔 ${depth} 位元，故共 $${w * h} \\times ${depth} = ${w * h * depth}$ 位元；除以 8 得位元組，再除以 1024 得 ${kb} KB。答 $${kb * 8}$ 是漏了除以 8，得出的是位元數。色深愈大，同樣尺寸的圖檔愈大 —— 這正是 24 位元真彩色圖檔遠大於 8 位元的原因。`,
+         `Pixel count = $${w} \\times ${h} = ${w * h}$. At ${depth} bits each that is $${w * h} \\times ${depth} = ${w * h * depth}$ bits; divide by 8 for bytes and by 1024 for ${kb} KB. Answering $${kb * 8}$ omits the division by eight and gives a bit count. Greater colour depth means a larger file at the same dimensions — which is why 24-bit true colour is far heavier than 8-bit.`])
+    }
+  }
+}
+
+// MM2 — 未壓縮音訊大小 = 取樣率 × 位元深度 × 聲道 × 秒數 ÷ 8
+for (const rate of [8000, 11025, 22050, 44100]) {
+  for (const bitDepth of [8, 16]) {
+    for (const ch of [1, 2]) {
+      const bytes = (rate * bitDepth * ch * 10) / 8
+      if (!Number.isInteger(bytes)) continue
+      const kb = Math.round(bytes / 1024)
+      const d = distract(kb, [kb * 8, Math.round(kb / ch), Math.round((rate * 10) / 1024)])
+      if (d.length < 3) continue
+      b.add(`ictb4_mm2_${rate}_${bitDepth}_${ch}`, T.web, FW.apply, 'hard',
+        [`一段 10 秒的未壓縮音訊，取樣率 ${rate} Hz、位元深度 ${bitDepth} 位元、${ch === 1 ? '單' : '雙'}聲道。檔案約佔多少 KB？（1 KB = 1024 位元組）`,
+         `A 10-second uncompressed audio clip is sampled at ${rate} Hz with ${bitDepth}-bit depth in ${ch === 1 ? 'mono' : 'stereo'}. About how many KB does the file occupy? (1 KB = 1024 bytes)`],
+        [qty(kb, 'KB', 'KB'), ...d.map((v) => qty(v, 'KB', 'KB'))],
+        [`每秒的資料量 = 取樣率 × 位元深度 × 聲道 = $${rate} \\times ${bitDepth} \\times ${ch} = ${rate * bitDepth * ch}$ 位元。十秒共 $${rate * bitDepth * ch * 10}$ 位元，除以 8 得 ${bytes} 位元組，約 ${kb} KB。四個因素缺一不可：漏掉聲道數，立體聲會算成單聲道的一半。`,
+         `Data per second = sampling rate × bit depth × channels = $${rate} \\times ${bitDepth} \\times ${ch} = ${rate * bitDepth * ch}$ bits. Ten seconds is $${rate * bitDepth * ch * 10}$ bits, which is ${bytes} bytes or about ${kb} KB. All four factors matter: drop the channel count and a stereo clip is sized as if it were mono.`])
+    }
+  }
+}
+
+// MM3 — 壓縮比：壓縮後大小 = 原大小 ÷ 壓縮比
+for (const orig of [120, 240, 360, 480, 600, 900]) {
+  for (const ratio of [3, 4, 5, 6]) {
+    const after = orig / ratio
+    if (!Number.isInteger(after)) continue
+    const saved = orig - after
+    const d = distract(after, [saved, orig * ratio, orig - ratio])
+    if (d.length < 3) continue
+    b.add(`ictb4_mm3_${orig}_${ratio}`, T.web, FW.logic, 'medium',
+      [`一個 ${orig} MB 的檔案以 ${ratio}:1 的壓縮比壓縮。壓縮後的檔案大小是多少 MB？`,
+       `A ${orig} MB file is compressed at a ratio of ${ratio}:1. What is the compressed size in MB?`],
+      [qty(after, 'MB', 'MB'), ...d.map((v) => qty(v, 'MB', 'MB'))],
+      [`${ratio}:1 表示原大小是壓縮後的 ${ratio} 倍，故壓縮後 = $${orig} \\div ${ratio} = ${after}$ MB。答 $${saved}$ 是【節省了的空間】而非壓縮後的大小 —— 兩者只在壓縮比為 2:1 時相等，正是這個特例令不少人把兩個概念混為一談。題目問哪一個，必須看清楚。`,
+       `A ${ratio}:1 ratio means the original is ${ratio} times the compressed size, so the result is $${orig} \\div ${ratio} = ${after}$ MB. Answering $${saved}$ gives the SPACE SAVED rather than the compressed size — the two coincide only at 2:1, and that special case is exactly why they get conflated. Read which one is asked.`])
+  }
+}
+
+// ── 資料表示計算 ──────────────────────────────────────────────────────────
+
+// DC1 — 八位元二補碼可表示的最小值 / 位元數與範圍
+for (const bits of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 24, 32]) {
+  const maxV = 2 ** (bits - 1) - 1
+  const d = distract(maxV, [2 ** bits - 1, 2 ** (bits - 1), -(2 ** (bits - 1))])
+  if (d.length < 3) continue
+  b.add(`ictb4_dc1_${bits}`, T.datacalc, FW.logic, 'medium',
+    [`以 ${bits} 位元二補碼表示帶正負號的整數。可表示的【最大】正整數是多少？`,
+     `Signed integers are stored in ${bits}-bit two's complement. What is the LARGEST positive integer representable?`],
+    [qty(maxV, '', ''), ...d.map((v) => qty(v, '', ''))],
+    [`二補碼以最高位作符號位，餘下 $${bits} - 1 = ${bits - 1}$ 位表示數值，故最大正數為 $2^{${bits - 1}} - 1 = ${maxV}$。答 $${2 ** bits - 1}$ 是無正負號的最大值，等於把符號位也當成數值位。留意範圍不對稱：最小值是 $-${2 ** (bits - 1)}$，比最大值多一個 —— 因為零佔用了正數那一邊的一個編碼。`,
+     `Two's complement uses the top bit as a sign, leaving $${bits} - 1 = ${bits - 1}$ value bits, so the maximum is $2^{${bits - 1}} - 1 = ${maxV}$. Answering $${2 ** bits - 1}$ is the UNSIGNED maximum and treats the sign bit as a value bit. Note the range is asymmetric: the minimum is $-${2 ** (bits - 1)}$, one further from zero, because zero consumes one code on the positive side.`])
+}
+
+// DC2 — 編碼所需位元數 = ⌈log2(符號數)⌉
+// ⚠️ 誘答不可寫 Math.floor(Math.log2(symbols))：當 symbols 不是 2 的次方時，
+// 它【恆等於】bits - 1，兩個誘答其實是同一條算式，去重後只剩兩個，
+// 整組十條靜默丟棄（首次撰寫時實測產出為 0）。改用 bits + 1。
+for (const symbols of [5, 9, 12, 17, 20, 25, 33, 40, 50, 65, 80, 100, 130, 200, 300, 500, 700, 1000]) {
+  const bits = Math.ceil(Math.log2(symbols))
+  const d = distract(bits, [bits - 1, bits + 1, symbols])
+  if (d.length < 3) continue
+  b.add(`ictb4_dc2_${symbols}`, T.datacalc, FW.logic, 'medium',
+    [`某編碼方案需要區分 ${symbols} 個不同符號。每個符號最少需要多少個位元？`,
+     `An encoding scheme must distinguish ${symbols} different symbols. What is the minimum number of bits per symbol?`],
+    [qty(bits, '位元', 'bits'), ...d.map((v) => qty(v, '位元', 'bits'))],
+    [`$n$ 個位元可表示 $2^n$ 個不同組合，需要 $2^n \\geq ${symbols}$。$2^{${bits - 1}} = ${2 ** (bits - 1)}$ 不足，$2^{${bits}} = ${2 ** bits}$ 才夠，故最少 ${bits} 個位元。位元數【必須向上取整】：不足一個位元無法表示，餘下的組合寧可浪費也不能少。答 $${bits - 1}$ 正是向下取整，會有符號無法編碼。`,
+     `With $n$ bits there are $2^n$ combinations, so $2^n \\geq ${symbols}$ is required. $2^{${bits - 1}} = ${2 ** (bits - 1)}$ falls short while $2^{${bits}} = ${2 ** bits}$ suffices, so ${bits} bits are needed. Bit counts must be ROUNDED UP: a fraction of a bit cannot be stored, and spare combinations are wasted rather than omitted. Answering $${bits - 1}$ rounds down and leaves symbols uncodable.`])
+}
+
+// ── 資料庫 ────────────────────────────────────────────────────────────────
+
+// DB_A — 索引後的查詢比較次數（B 樹近似為 log 底數）
+for (const rows of [1000, 4000, 8000, 16000, 64000]) {
+  for (const fan of [4, 8]) {
+    const depth = Math.ceil(Math.log(rows) / Math.log(fan))
+    const d = distract(depth, [rows, Math.ceil(rows / fan), depth * fan])
+    if (d.length < 3) continue
+    b.add(`ictb4_dba_${rows}_${fan}`, T.database, FW.logic, 'hard',
+      [`一個含 ${rows} 筆記錄的資料表建有索引，索引樹每個節點最多分出 ${fan} 個子節點。由根節點走到目標記錄最多需經過多少層？`,
+       `A table of ${rows} records is indexed by a tree in which each node has at most ${fan} children. At most how many levels are traversed from the root to a record?`],
+      [qty(depth, '層', 'levels'), ...d.map((v) => qty(v, '層', 'levels'))],
+      [`每往下一層，可涵蓋的記錄數就乘以 ${fan}。要涵蓋 ${rows} 筆，需 $\\lceil \\log_{${fan}} ${rows} \\rceil = ${depth}$ 層。答 $${rows}$ 是全表掃描的比較次數 —— 索引的價值正在於把它由線性壓成對數：記錄增至十倍，層數只多一兩層。`,
+       `Each additional level multiplies the reachable records by ${fan}. Covering ${rows} records needs $\\lceil \\log_{${fan}} ${rows} \\rceil = ${depth}$ levels. Answering $${rows}$ is the comparison count for a full table scan — and the whole value of an index is turning that linear cost into a logarithmic one: multiply the records tenfold and the depth grows by a level or two.`])
+  }
+}
+
+// DB_B — 關係基數：一對多聯繫所需外鍵數目
+for (const parents of [2, 3, 4, 5, 6, 7]) {
+  for (const children of [3, 4, 5, 6]) {
+    const fks = children
+    const total = parents + children
+    const d = distract(fks, [parents, total, parents * children])
+    if (d.length < 3) continue
+    b.add(`ictb4_dbb_${parents}_${children}`, T.database, FW.logic, 'medium',
+      [`某資料庫有 ${parents} 個父實體與 ${children} 個子實體，每個子實體各以一個一對多聯繫連向其中一個父實體。合共需要在子實體中加入多少個外鍵欄位？`,
+       `A database has ${parents} parent entities and ${children} child entities, each child linked to one parent by a one-to-many relationship. How many foreign key fields must be added to the child entities in total?`],
+      [qty(fks, '個', ''), ...d.map((v) => qty(v, '個', ''))],
+      [`一對多聯繫的外鍵一律放在【多】的一方，即子實體。${children} 個子實體各需一個外鍵，故共 ${fks} 個。答 $${parents}$ 是把外鍵放到父實體 —— 若放在父方，一個父記錄要指向多個子記錄，一個欄位存不下，這正是外鍵必須放在多方的原因。`,
+       `In a one-to-many relationship the foreign key always sits on the MANY side, that is, the child. Each of the ${children} children needs one, giving ${fks}. Answering $${parents}$ puts the key on the parent — but a parent would then have to point at many children, which one field cannot hold, and that is precisely why the key belongs on the many side.`])
+  }
+}
+
+// ── 程式編寫與算法 ────────────────────────────────────────────────────────
+
+// PR_A — 迴圈執行次數（含步長）
+for (const start of [0, 1, 2, 5]) {
+  for (const end of [20, 30, 50, 100]) {
+    for (const step of [2, 3, 5]) {
+      const times = Math.floor((end - start) / step) + 1
+      const d = distract(times, [end - start, Math.floor((end - start) / step), end / step])
+      if (d.length < 3) continue
+      b.add(`ictb4_pra_${start}_${end}_${step}`, T.programming, FW.apply, 'medium',
+        [`一個計數迴圈由 ${start} 開始，每次遞增 ${step}，直至計數器超過 ${end} 為止。迴圈體合共執行多少次？`,
+         `A counting loop starts at ${start}, increases by ${step} each pass, and stops once the counter exceeds ${end}. How many times does the loop body execute?`],
+        [qty(times, '次', ''), ...d.map((v) => qty(v, '次', ''))],
+        [`由 ${start} 起以 ${step} 遞增，最後一個不超過 ${end} 的值是 ${start + (times - 1) * step}。次數 = $\\lfloor (${end} - ${start}) \\div ${step} \\rfloor + 1 = ${times}$ 次。那個【加一】是起點本身也要算一次 —— 漏掉它就是典型的差一錯誤，而這種錯誤在測試時往往只差最後一筆資料，最難察覺。`,
+         `Starting at ${start} in steps of ${step}, the last value not exceeding ${end} is ${start + (times - 1) * step}. The count is $\\lfloor (${end} - ${start}) \\div ${step} \\rfloor + 1 = ${times}$. The PLUS ONE counts the starting value itself — omitting it is the classic off-by-one error, and it is the hardest kind to spot because testing usually misses only the final item.`])
+    }
+  }
+}
+
+// PR_B — 遞迴呼叫次數（階乘）
+for (const n7 of [4, 5, 6, 7, 8, 9, 10, 12, 15]) {
+  const calls = n7 + 1
+  const d = distract(calls, [n7, n7 - 1, n7 * 2])
+  if (d.length < 3) continue
+  b.add(`ictb4_prb_${n7}`, T.programming, FW.logic, 'hard',
+    [`一個計算階乘的遞迴函數以 $n = 0$ 為終止條件。呼叫 $\\text{fact}(${n7})$ 時，該函數合共被呼叫多少次（包括最初一次）？`,
+     `A recursive factorial function terminates at $n = 0$. When $\\text{fact}(${n7})$ is called, how many times is the function invoked in total, including the first call?`],
+    [qty(calls, '次', ''), ...d.map((v) => qty(v, '次', ''))],
+    [`呼叫序列為 $\\text{fact}(${n7}), \\text{fact}(${n7 - 1}), \\ldots, \\text{fact}(1), \\text{fact}(0)$，即由 ${n7} 數到 0，共 $${n7} + 1 = ${calls}$ 次。答 $${n7}$ 是漏了終止條件那一次 —— 而終止條件正是遞迴一定會被執行到的一次，漏算它等於假設遞迴不會停。`,
+     `The call sequence is $\\text{fact}(${n7}), \\text{fact}(${n7 - 1}), \\ldots, \\text{fact}(1), \\text{fact}(0)$ — from ${n7} down to 0, which is $${n7} + 1 = ${calls}$ calls. Answering $${n7}$ omits the base case, yet the base case is the one call recursion is guaranteed to reach; leaving it out assumes the recursion never stops.`])
 }
 
 export const ictBank4Questions: Question[] = b.bank
