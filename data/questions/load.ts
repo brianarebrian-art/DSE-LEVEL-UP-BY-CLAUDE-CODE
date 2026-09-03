@@ -160,8 +160,8 @@ const loaders: Record<string, Loader> = {
     return [...base.visualArtsQuestions, ...b2.visualArtsFloorB2Questions, ...b3.visualArtsBank2Questions, ...b4.visualArtsBank3Questions]
   },
   csd: async () => {
-    const [base, reviewed, b2] = await Promise.all([import('./csd'), import('./csd-reviewed'), import('./csd-floor-b2')])
-    return [...base.csdQuestions, ...reviewed.csdReviewedQuestions, ...b2.csdFloorB2Questions]
+    const [base, reviewed, b2, b3] = await Promise.all([import('./csd'), import('./csd-reviewed'), import('./csd-floor-b2'), import('./csd-bank')])
+    return [...base.csdQuestions, ...reviewed.csdReviewedQuestions, ...b2.csdFloorB2Questions, ...b3.csdBank1Questions]
   },
   'ethics-religious': async () => {
     const [base, b2] = await Promise.all([import('./ethics-religious'), import('./ethics-religious-floor-b2')])

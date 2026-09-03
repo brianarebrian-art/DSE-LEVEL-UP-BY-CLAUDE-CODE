@@ -90,6 +90,7 @@ import { visualArtsBank3Questions } from './visual-arts-bank2'
 import { csdQuestions, csdTopics } from './csd'
 import { csdFloorB2Questions } from './csd-floor-b2'
 import { csdReviewedQuestions } from './csd-reviewed'
+import { csdBank1Questions } from './csd-bank'
 import { ethicsReligiousQuestions, ethicsReligiousTopics } from './ethics-religious'
 import { ethicsReligiousFloorB2Questions } from './ethics-religious-floor-b2'
 import { technologyLivingQuestions, technologyLivingTopics } from './technology-living'
@@ -165,7 +166,7 @@ const banks: Record<string, SubjectBank> = {
   'chinese-literature': { questions: [...chineseLiteratureQuestions, ...chineseLiteratureFloorB2Questions], topics: chineseLiteratureTopics },
   'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions], topics: englishLiteratureTopics },
   'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions, ...visualArtsBank2Questions, ...visualArtsBank3Questions], topics: visualArtsTopics },
-  csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions], topics: csdTopics },
+  csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions, ...csdBank1Questions], topics: csdTopics },
   'ethics-religious': { questions: [...ethicsReligiousQuestions, ...ethicsReligiousFloorB2Questions], topics: ethicsReligiousTopics },
   'technology-living': { questions: [...technologyLivingQuestions, ...technologyLivingBankQuestions, ...technologyLivingBank2Questions, ...technologyLivingFloorB2Questions, ...technologyLivingBank3Questions, ...technologyLivingBank4Questions], topics: technologyLivingTopics },
 }
