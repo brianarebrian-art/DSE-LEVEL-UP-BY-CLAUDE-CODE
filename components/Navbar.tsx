@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
+import Greeting from '@/components/Greeting'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
 import { useT, useLocale } from '@/lib/i18n'
@@ -78,12 +79,19 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
+  // left 要跟側欄讓位。position:fixed 係對住 viewport，唔係對住父層 ——
+  // 所以喺 AppShell 包一個有 padding 嘅 div 推唔郁佢，一定要喺呢度出。
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-line bg-surface-raised">
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-line bg-surface-raised lg:left-20 xl:left-[260px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-ink">
+          {/* lg 起側欄自己有品牌區（規格 §3.1.1），呢度再出一次就係重複；
+              頂部欄嗰個位規格 §3.2 係留畀問候語嘅。 */}
+          <div className="hidden lg:block">
+            <Greeting />
+          </div>
+          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-ink lg:hidden">
             <BookOpen size={22} className="text-accent" />
             <span className="whitespace-nowrap">
               DSE <span className="text-accent">Level Up</span>
@@ -93,18 +101,9 @@ export default function Navbar() {
 
         {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
         <div className="hidden lg:flex items-center gap-6">
-          {/* P1-3 WCAG：導航鏈接補 44px 觸控高度（navbar 容器 64px 高，視覺不變） */}
-          {navLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`text-sm whitespace-nowrap transition-colors min-h-11 inline-flex items-center px-1 ${
-                pathname === l.href ? 'text-accent' : 'text-ink-muted hover:text-accent'
-              }`}
-            >
-              {t.nav[l.key]}
-            </Link>
-          ))}
+          {/* 2026-09-03：橫向連結搬咗落側欄（規格 §3.1）。同一組連結出兩次，
+              學生要諗「呢兩個係咪同一樣嘢」，而且選中態要維護兩處。
+              <lg 冇側欄，所以漢堡選單面板嗰份【原封不動】保留。 */}
           {/* 全科入口 —— 2026-08-09 由 /subjects/math 改為 /subjects：「開始練習」
               屬通用行動呼籲，直接導向數學科等於代學生選定科目。路由為複數。 */}
           <Link

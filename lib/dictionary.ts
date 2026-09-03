@@ -17,6 +17,26 @@ const zh = {
     tabSaved: '收藏',
     tabAccount: '帳戶',
   },
+  // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
+  // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
+  sidebar: {
+    tagline: 'Study Smarter, Not Harder',
+    practice: '練習',
+    progress: '我的進度',
+    studyMap: '溫書地圖',
+    saved: '收藏',
+    focus: '專注',
+    relax: '呼吸空間',
+    // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
+    // 見 components/Sidebar.tsx 註釋解釋點解換咗。
+    quote: '掌握邏輯，唔係背答案。無論數字點變，你都識答。',
+  },
+  greeting: {
+    morning: '早晨',
+    afternoon: '午安',
+    evening: '晚上好',
+    night: '夜深了',
+  },
   footer: {
     tagline1: '改寫版歷屆試題，掌握核心邏輯。',
     tagline2: '由 2026 DSE 考生製作。',
@@ -351,6 +371,22 @@ const en: typeof zh = {
     tabProgress: 'Progress',
     tabSaved: 'Saved',
     tabAccount: 'Account',
+  },
+  sidebar: {
+    tagline: 'Study Smarter, Not Harder',
+    practice: 'Practise',
+    progress: 'My Progress',
+    studyMap: 'Study Map',
+    saved: 'Saved',
+    focus: 'Focus',
+    relax: 'Breathing Space',
+    quote: 'Master the logic, not the answers. Whatever the numbers, you can solve it.',
+  },
+  greeting: {
+    morning: 'Good morning',
+    afternoon: 'Good afternoon',
+    evening: 'Good evening',
+    night: 'Good night',
   },
   footer: {
     tagline1: 'Rewritten past-paper questions — master the core logic.',

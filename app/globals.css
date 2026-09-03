@@ -787,6 +787,40 @@ html[data-bottomnav='on'] {
 .floating-bottom {
   bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--bottom-nav-h));
 }
+/* ── 左側欄讓位（2026-09-03，規格 §3.1）─────────────────────────────────
+   同 --bottom-nav-h 一模一樣嘅道理，只係換成橫向。
+
+   ══ 點解要有 ══
+   側欄係 z-40，但無障礙掣同閱讀尺係 z-50 —— 即係話側欄一出，兩個掣就
+   【浮喺側欄之上】，實測正好壓住底部引言（掣 16–64px、尺 80–161px，
+   引言 24–235px）。呢兩個掣本身嘅定位假設咗左邊冇嘢。
+
+   同上面嗰個變數一樣掛喺 <html>（由 Sidebar 自己掛 data-sidebar），
+   唔係逐個組件傳 prop：側欄一收起（沉浸式路由）變數即刻返 0，
+   唔會出現「側欄冇咗但啲掣仲讓緊位」。 */
+:root {
+  --sidebar-w: 0px;
+}
+/* 斷點必須同 Sidebar 嘅 lg / xl 完全一致（Tailwind v4：lg = 64rem、xl = 80rem）。
+   對唔齊嘅話會出現一條「掣讓咗位但側欄未出」嘅闊度帶。 */
+@media (min-width: 64rem) {
+  html[data-sidebar='on'] {
+    --sidebar-w: 5rem;
+  }
+}
+@media (min-width: 80rem) {
+  html[data-sidebar='on'] {
+    --sidebar-w: 260px;
+  }
+}
+/* 左錨浮動元素用呢兩個，唔好再直接寫 left-4 / left-20。 */
+.floating-left {
+  left: calc(var(--sidebar-w) + 1rem);
+}
+.floating-left-2 {
+  left: calc(var(--sidebar-w) + 5rem);
+}
+
 /* 疊喺 `.floating-bottom` 之上嘅第二層（例如無障礙面板彈出、練習頁工具角） */
 .floating-bottom-2 {
   bottom: calc(max(4rem, calc(env(safe-area-inset-bottom) + 3rem)) + var(--bottom-nav-h));

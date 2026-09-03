@@ -15,7 +15,9 @@ export default function Footer() {
   const { locale } = useLocale()
   const en = locale === 'en'
   return (
-    <footer className="border-t border-line bg-surface">
+    /* lg 起要讓返左側欄嘅闊度（80px → 260px）。沉浸式路由根本唔 render
+       Footer，所以呢度唔使再判斷一次。 */
+    <footer className="border-t border-line bg-surface lg:pl-20 xl:pl-[260px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
         {/* Layer 1：Doormat 二級導航 */}
         <div className="grid sm:grid-cols-3 gap-8 mb-10">

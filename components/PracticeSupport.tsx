@@ -87,7 +87,7 @@ export default function PracticeSupport() {
           佔用形狀由「一條直柱」變成「一條橫帶」。
           呢種【縱向遮擋】用 `scrollWidth === innerWidth` 係驗唔到嘅：
           闊度一直都啱，出事嘅係高度。 */}
-      <div className="fixed floating-bottom-2 left-4 z-50 no-print flex flex-row flex-wrap items-center gap-2 max-w-[calc(100vw-2rem)]">
+      <div className="fixed floating-bottom-2 floating-left z-50 no-print flex flex-row flex-wrap items-center gap-2 max-w-[calc(100vw-2rem)]">
         {/* relative wrapper：字級滑桿改為浮喺掣上面嘅 popover，唔再參與橫排流，
             否則滑桿會將成條橫帶推到爆出畫面右邊。 */}
         <div className="relative">
