@@ -86,6 +86,7 @@ import { chineseLiteratureFloorB2Questions } from './chinese-literature-floor-b2
 import { chineseLiteratureBank1Questions } from './chinese-literature-bank'
 import { englishLiteratureQuestions, englishLiteratureTopics } from './english-literature'
 import { englishLiteratureFloorB2Questions } from './english-literature-floor-b2'
+import { englishLiteratureBank1Questions } from './english-literature-bank'
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { visualArtsFloorB2Questions } from './visual-arts-floor-b2'
 import { visualArtsBank2Questions } from './visual-arts-bank'
@@ -168,7 +169,7 @@ const banks: Record<string, SubjectBank> = {
   music: { questions: [...musicQuestions, ...musicBankQuestions, ...musicBank2Questions, ...musicFloorB2Questions, ...musicBank3Questions, ...musicBank4Questions], topics: musicTopics },
   pe: { questions: [...peQuestions, ...peBankQuestions, ...peBank2Questions, ...peFloorB2Questions, ...peBank3Questions, ...peBank4Questions], topics: peTopics },
   'chinese-literature': { questions: [...chineseLiteratureQuestions, ...chineseLiteratureFloorB2Questions, ...chineseLiteratureBank1Questions], topics: chineseLiteratureTopics },
-  'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions], topics: englishLiteratureTopics },
+  'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions, ...englishLiteratureBank1Questions], topics: englishLiteratureTopics },
   'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions, ...visualArtsBank2Questions, ...visualArtsBank3Questions], topics: visualArtsTopics },
   csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions, ...csdBank1Questions], topics: csdTopics },
   'ethics-religious': { questions: [...ethicsReligiousQuestions, ...ethicsReligiousFloorB2Questions], topics: ethicsReligiousTopics },
