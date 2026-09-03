@@ -12,6 +12,7 @@ import { useLocale } from '@/lib/i18n'
 // 方向一：季節性 Hero（純前端按月切換文案；light-first 不變）
 import { getCurrentSeason } from '@/utils/season'
 import { getSeasonalHero } from '@/data/heroContent'
+import Mascot from '@/components/Mascot'
 
 // UI/UX 憲章 §3「清晨圖書館」light-first 首階段：landing 自足淺色（自帶背景，
 // 唔郁全域 body），故內頁暗色維持不變、零爆版。全域 toggle + 內頁 migrate = Phase 2。
@@ -99,6 +100,15 @@ export default function HomePage() {
             對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
         <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
+          {/* 吉祥物擺喺標題之上 —— 訪客見到嘅第一件嘢。
+              擺呢隻嘅目的係認得出個網站，所以佢應該喺最強嗰個位，
+              唔係收埋喺頁尾做裝飾。揀「讀緊書」呢個姿勢而唔係滑板嗰隻：
+              首屏要一眼講到呢度係做咩嘅。
+              priority：佢喺 LCP 範圍，唔標會拖慢首屏。 */}
+          <div className="animate-on-scroll mb-4 flex justify-center">
+            <Mascot pose="reading" height={168} priority />
+          </div>
+
           <div className="animate-on-scroll mb-8 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent">
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />
             {hero.badge}

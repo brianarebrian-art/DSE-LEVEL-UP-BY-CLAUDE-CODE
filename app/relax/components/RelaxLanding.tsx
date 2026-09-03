@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import type { SensoryPref } from './SensoryMenu'
+import Mascot from '@/components/Mascot'
 
 // 🫁 呼吸空間主頁（前身「Buff 補給艙」，CEO 指令 2026-07-15 統一改名）：
 // 兩大選擇 + 4-7-8 呼吸入口。零遊戲術語（MP／單排／開黑已全清），保留共情、
@@ -19,8 +20,13 @@ export default function RelaxLanding({
   return (
     <div>
       <div className="text-center mb-8">
-        {/* FIX: [A1] ⚡ Buff 補給艙 → 🫁 呼吸空間 */}
-        <div className="text-3xl mb-2" aria-hidden>🫁</div>
+        {/* FIX: [A1] ⚡ Buff 補給艙 → 🫁 呼吸空間
+            2026-09-03：🫁 再換成吉祥物（梳化捧杯、閉眼）。
+            呢一版講嘅就係「入嚟唞一唞」，而呢隻姿勢本身已經係嗰句說話 ——
+            比一個肺部 emoji 講得準，亦冇咗醫療聯想。 */}
+        <div className="flex justify-center mb-2">
+          <Mascot pose="armchair" height={132} />
+        </div>
         <h1 className="text-2xl font-bold text-[#E8E8EC]">{en ? 'Breathing Space' : '呼吸空間'}</h1>
         {/* FIX: [A1][A3] 「溫書耗 MP？入嚟補」→「溫書攰咗？入嚟唞一唞」（MP 概念整體移除） */}
         <p className="text-sm text-neon-cyan mt-2 font-medium">
