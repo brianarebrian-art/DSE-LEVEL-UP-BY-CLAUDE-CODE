@@ -122,8 +122,8 @@ const loaders: Record<string, Loader> = {
     return [...base.historyQuestions, ...essays.historyP2EssaysQuestions, ...floor1.historyFloorBatch1Questions, ...b1.historyBank1Questions]
   },
   'chinese-history': async () => {
-    const [base, b2] = await Promise.all([import('./chinese-history'), import('./chinese-history-floor-b2')])
-    return [...base.chineseHistoryQuestions, ...b2.chineseHistoryFloorB2Questions]
+    const [base, b2, b3] = await Promise.all([import('./chinese-history'), import('./chinese-history-floor-b2'), import('./chinese-history-bank')])
+    return [...base.chineseHistoryQuestions, ...b2.chineseHistoryFloorB2Questions, ...b3.chineseHistoryBank1Questions]
   },
   ths: async () => {
     const [base, bank, b2, b3] = await Promise.all([import('./ths'), import('./applied-banks'), import('./ths-floor-b2'), import('./ths-bank')])
@@ -150,12 +150,12 @@ const loaders: Record<string, Loader> = {
     return [...base.peQuestions, ...bank.peBankQuestions, ...bank.peBank2Questions, ...b2.peFloorB2Questions, ...b3.peBank3Questions, ...b4.peBank4Questions]
   },
   'chinese-literature': async () => {
-    const [base, b2] = await Promise.all([import('./chinese-literature'), import('./chinese-literature-floor-b2')])
-    return [...base.chineseLiteratureQuestions, ...b2.chineseLiteratureFloorB2Questions]
+    const [base, b2, b3] = await Promise.all([import('./chinese-literature'), import('./chinese-literature-floor-b2'), import('./chinese-literature-bank')])
+    return [...base.chineseLiteratureQuestions, ...b2.chineseLiteratureFloorB2Questions, ...b3.chineseLiteratureBank1Questions]
   },
   'english-literature': async () => {
-    const [base, b2] = await Promise.all([import('./english-literature'), import('./english-literature-floor-b2')])
-    return [...base.englishLiteratureQuestions, ...b2.englishLiteratureFloorB2Questions]
+    const [base, b2, b3] = await Promise.all([import('./english-literature'), import('./english-literature-floor-b2'), import('./english-literature-bank')])
+    return [...base.englishLiteratureQuestions, ...b2.englishLiteratureFloorB2Questions, ...b3.englishLiteratureBank1Questions]
   },
   'visual-arts': async () => {
     const [base, b2, b3, b4] = await Promise.all([import('./visual-arts'), import('./visual-arts-floor-b2'), import('./visual-arts-bank'), import('./visual-arts-bank2')])

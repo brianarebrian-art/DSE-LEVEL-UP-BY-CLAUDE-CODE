@@ -61,6 +61,7 @@ import { historyBank1Questions } from './history-bank'
 import { historyFloorBatch1Questions } from './history-floor-batch1'
 import { chineseHistoryQuestions, chineseHistoryTopics } from './chinese-history'
 import { chineseHistoryFloorB2Questions } from './chinese-history-floor-b2'
+import { chineseHistoryBank1Questions } from './chinese-history-bank'
 import { thsQuestions, thsTopics } from './ths'
 import { thsBank3Questions } from './ths-bank'
 import { thsFloorB2Questions } from './ths-floor-b2'
@@ -82,8 +83,10 @@ import { peBank3Questions } from './pe-bank'
 import { peBank4Questions } from './pe-bank2'
 import { chineseLiteratureQuestions, chineseLiteratureTopics } from './chinese-literature'
 import { chineseLiteratureFloorB2Questions } from './chinese-literature-floor-b2'
+import { chineseLiteratureBank1Questions } from './chinese-literature-bank'
 import { englishLiteratureQuestions, englishLiteratureTopics } from './english-literature'
 import { englishLiteratureFloorB2Questions } from './english-literature-floor-b2'
+import { englishLiteratureBank1Questions } from './english-literature-bank'
 import { visualArtsQuestions, visualArtsTopics } from './visual-arts'
 import { visualArtsFloorB2Questions } from './visual-arts-floor-b2'
 import { visualArtsBank2Questions } from './visual-arts-bank'
@@ -159,14 +162,14 @@ const banks: Record<string, SubjectBank> = {
   economics: { questions: [...economicsQuestions, ...economicsBankQuestions, ...economicsReviewedQuestions, ...economicsFloorBatch1Questions, ...economicsFloorBatch2Questions], topics: economicsTopics },
   geography: { questions: [...geographyQuestions, ...geographyBankQuestions, ...geographyFloorB2Questions, ...geographyBank2Questions, ...geographyBank3Questions], topics: geographyTopics },
   history: { questions: [...historyQuestions, ...historyP2EssaysQuestions, ...historyFloorBatch1Questions, ...historyBank1Questions], topics: historyTopics },
-  'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions], topics: chineseHistoryTopics },
+  'chinese-history': { questions: [...chineseHistoryQuestions, ...chineseHistoryFloorB2Questions, ...chineseHistoryBank1Questions], topics: chineseHistoryTopics },
   ths: { questions: [...thsQuestions, ...thsBankQuestions, ...thsBank2Questions, ...thsFloorB2Questions, ...thsBank3Questions], topics: thsTopics },
   'health-management': { questions: [...healthManagementQuestions, ...healthManagementFloorBatch1Questions, ...healthManagementBankQuestions, ...healthManagementBank2Questions, ...healthManagementBank3Questions], topics: healthManagementTopics },
   'design-tech': { questions: [...designTechQuestions, ...designTechBankQuestions, ...designTechBank2Questions, ...designTechFloorB2Questions, ...designTechBank3Questions, ...designTechBank4Questions], topics: designTechTopics },
   music: { questions: [...musicQuestions, ...musicBankQuestions, ...musicBank2Questions, ...musicFloorB2Questions, ...musicBank3Questions, ...musicBank4Questions], topics: musicTopics },
   pe: { questions: [...peQuestions, ...peBankQuestions, ...peBank2Questions, ...peFloorB2Questions, ...peBank3Questions, ...peBank4Questions], topics: peTopics },
-  'chinese-literature': { questions: [...chineseLiteratureQuestions, ...chineseLiteratureFloorB2Questions], topics: chineseLiteratureTopics },
-  'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions], topics: englishLiteratureTopics },
+  'chinese-literature': { questions: [...chineseLiteratureQuestions, ...chineseLiteratureFloorB2Questions, ...chineseLiteratureBank1Questions], topics: chineseLiteratureTopics },
+  'english-literature': { questions: [...englishLiteratureQuestions, ...englishLiteratureFloorB2Questions, ...englishLiteratureBank1Questions], topics: englishLiteratureTopics },
   'visual-arts': { questions: [...visualArtsQuestions, ...visualArtsFloorB2Questions, ...visualArtsBank2Questions, ...visualArtsBank3Questions], topics: visualArtsTopics },
   csd: { questions: [...csdQuestions, ...csdReviewedQuestions, ...csdFloorB2Questions, ...csdBank1Questions], topics: csdTopics },
   'ethics-religious': { questions: [...ethicsReligiousQuestions, ...ethicsReligiousFloorB2Questions], topics: ethicsReligiousTopics },
