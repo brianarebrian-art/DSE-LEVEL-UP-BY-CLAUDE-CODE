@@ -166,8 +166,8 @@ const loaders: Record<string, Loader> = {
     return [...base.csdQuestions, ...reviewed.csdReviewedQuestions, ...b2.csdFloorB2Questions, ...b3.csdBank1Questions]
   },
   'ethics-religious': async () => {
-    const [base, b2] = await Promise.all([import('./ethics-religious'), import('./ethics-religious-floor-b2')])
-    return [...base.ethicsReligiousQuestions, ...b2.ethicsReligiousFloorB2Questions]
+    const [base, b2, b3] = await Promise.all([import('./ethics-religious'), import('./ethics-religious-floor-b2'), import('./ethics-religious-bank')])
+    return [...base.ethicsReligiousQuestions, ...b2.ethicsReligiousFloorB2Questions, ...b3.ethicsReligiousBank1Questions]
   },
   'technology-living': async () => {
     const [base, bank, b2, b3, b4] = await Promise.all([import('./technology-living'), import('./applied-banks'), import('./technology-living-floor-b2'), import('./technology-living-bank'), import('./technology-living-bank2')])

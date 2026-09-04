@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 審批台由 scripts/qbank/build-review-artifact.mjs 生成（2.4 MB，內嵌全部草稿）。
+# 生成物唔入 git —— 草稿正本已經喺 drafts/，重跑腳本即可得到同一份。
+scripts/qbank/review-console.html
