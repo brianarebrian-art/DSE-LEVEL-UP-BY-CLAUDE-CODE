@@ -27,6 +27,12 @@ const ALLOW_UNLINKED = {
   '/admin': '題目審批後台，只俾管理員直接輸入網址入',
   '/dev/answer-cards': '開發用預覽頁，唔屬於學生流程',
   '/dev/long-session': '開發用預覽頁，唔屬於學生流程',
+  // ⚠️ 呢個豁免有到期日，唔同上面幾條。
+  // /confirm-payment 嘅正式入口係價格頁 /support（規格 D3-5，仲未起）。
+  // 而家係暗部署：頁面 noindex、Stripe 未接、按鈕撳唔落。
+  // /support 一起好就【即刻刪走呢一行】—— 到時仲留住，就變成一條
+  // 真係冇人入得到嘅付款頁，而個閘會由「捉到」變成「被叫收聲」。
+  '/confirm-payment': '暗部署中（憲章 §8.2，2026-09-19 開賣）。入口 /support 未起 —— /support 上線即刪此豁免',
 }
 
 const files = []
