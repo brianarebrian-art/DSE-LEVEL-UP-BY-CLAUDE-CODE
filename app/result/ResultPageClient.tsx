@@ -6,6 +6,8 @@ import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lu
 import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
 import { gradeRange } from '@/lib/gradeConfidence'
 import MasteryEstimate from '@/components/MasteryEstimate'
+import QuotaNotice from '@/components/QuotaNotice'
+import { recordAnswered } from '@/lib/quota'
 
 /** 佔位符替換。字典行文如 '以呢 {n} 題計'；同 marksToNext 沿用嘅 .replace 做法一致，
  *  只係抽成一個函數，免得多個佔位符時串成一長串 .replace()。 */
@@ -100,6 +102,10 @@ export default function ResultPageClient() {
     setResult(data)
     setGradeResult(gr)
     setTimeout(() => setShowBadge(true), 1600)
+
+    // 每日額度計數（暗置 —— 見 lib/quota.ts）。個 token 係呢組練習嘅指紋，
+    // 令 refresh 結果頁唔會重複計數。
+    recordAnswered(data.total, `${data.subjectId ?? 'practice'}:${data.score}/${data.total}:${data.elapsed}`)
 
     // 服務端覆核：用答案庫重批一次對數。背景進行，唔阻塞結果畫面，
     // 離線／失敗一律靜靜跳過（憲章：網絡問題唔可以變成學生見到嘅錯誤）。
@@ -519,6 +525,9 @@ export default function ResultPageClient() {
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
+
+        {/* 每日額度提示（修補 4）。暗部署期間 render null —— 見 lib/quota.ts。 */}
+        <QuotaNotice />
 
         {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
         <EncouragementWall />
