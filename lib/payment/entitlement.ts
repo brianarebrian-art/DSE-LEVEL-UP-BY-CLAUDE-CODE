@@ -69,6 +69,67 @@ export async function getEntitlement(): Promise<Entitlement> {
   }
 }
 
+/** 憲章 §8.2 唔管呢個數 —— 修補 7 定 3 部。改佢唔使雙簽，但要諗清楚 UX。 */
+export const MAX_PLUS_DEVICES = 3
+
+/** 唔會每次頁面載入都寫 DB。同一部機一個鐘內只 touch 一次。 */
+const LRU_TOUCH_INTERVAL_MS = 60 * 60 * 1000
+
+/**
+ * 帶裝置 LRU 嘅權限核對（Phase 2.3 方案 B）。
+ *
+ * 最近用開嘅 MAX_PLUS_DEVICES 部攞到 Plus。第 4 部一用，
+ * 最耐冇用嗰部自動讓位 —— 讓位＝跌返 free，唔係被鎖走任何嘢。
+ * §3.1 永久免費層對每一部機、每一個人、任何時候都完整可用。
+ *
+ * ══ 裝置檢查 fail-OPEN，同 entitlement 本身 fail-CLOSED 相反 ══
+ * 呢個唔對稱係刻意嘅：
+ *   · entitlement 查唔到 → free。因為「唔知佢有冇畀錢」嗰陣，
+ *     當佢冇畀，最多係佢見唔到加速工具。
+ *   · 裝置表查唔到 → 照畀 Plus。因為佢【已經確認畀咗錢】，
+ *     而裝置上限係一個收入保護機制，唔係安全邊界。
+ *     為咗我哋個 DB 出問題而剝一個付費學生嘅權限，講唔通。
+ */
+export async function getEntitlementForDevice(deviceToken: string | null): Promise<Entitlement> {
+  const ent = await getEntitlement()
+  if (ent.tier !== 'plus' || !deviceToken) return ent
+
+  const userId = await getSyncUserId()
+  if (!userId) return ent
+
+  try {
+    const supabase = getServiceSupabase()
+    const { data, error } = await supabase
+      .from('plus_devices')
+      .select('device_token, last_seen_at')
+      .eq('user_id', userId)
+      .order('last_seen_at', { ascending: false })
+      .limit(MAX_PLUS_DEVICES + 1)
+    if (error) throw error
+
+    const rows = data ?? []
+    const mine = rows.find((r) => r.device_token === deviceToken)
+    const now = Date.now()
+
+    // 節流：一個鐘內見過就唔再寫。
+    const stale = !mine || now - new Date(String(mine.last_seen_at)).getTime() > LRU_TOUCH_INTERVAL_MS
+    if (stale) {
+      await supabase
+        .from('plus_devices')
+        .upsert({ user_id: userId, device_token: deviceToken, last_seen_at: new Date(now).toISOString() })
+      // 啱啱 touch 過＝最近用開，一定喺 top N 入面。
+      return ent
+    }
+
+    // 排名：喺最近用開嘅頭 N 部之內先攞到 Plus。
+    const rank = rows.findIndex((r) => r.device_token === deviceToken)
+    return rank >= 0 && rank < MAX_PLUS_DEVICES ? ent : { tier: 'free', expiresAt: ent.expiresAt }
+  } catch (e) {
+    safeLog('error', 'entitlement-device', e)
+    return ent // fail-open —— 見上面註釋
+  }
+}
+
 /**
  * 一句話版本，畀只需要「係咪 Plus」嘅地方用。
  *

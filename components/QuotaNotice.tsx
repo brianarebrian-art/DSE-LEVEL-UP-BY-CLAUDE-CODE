@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import { hasReachedDailyLimit, isSenComfortMode, FREE_DAILY_LIMIT } from '@/lib/quota'
+import { usePlusTier } from '@/lib/payment/usePlusTier'
 
 // 每日額度提示（修補 4）。
 //
@@ -28,6 +29,10 @@ export default function QuotaNotice() {
   const { locale } = useLocale()
   const en = locale === 'en'
 
+  // Plus 用戶冇每日上限，所以呢個提示對佢哋嚟講完全冇意義 ——
+  // 更差嘅係，佢會向一個【已經畀咗錢】嘅學生推銷佢已經買咗嘅嘢。
+  const { tier, loading } = usePlusTier()
+
   // localStorage 要喺 client 讀 —— 直接喺 render 讀會令 SSR 同首次
   // client render 唔一致（hydration mismatch）。
   const [state, setState] = useState<{ reached: boolean; sen: boolean } | null>(null)
@@ -35,7 +40,8 @@ export default function QuotaNotice() {
     setState({ reached: hasReachedDailyLimit(), sen: isSenComfortMode() })
   }, [])
 
-  if (!state?.reached) return null
+  // loading 期間唔渲染：寧可遲半秒先出，都好過向 Plus 用戶閃一閃個推銷。
+  if (loading || tier === 'plus' || !state?.reached) return null
 
   if (state.sen) {
     // ── SEN 無壓力版 ──

@@ -23,6 +23,9 @@ export const USER_SCOPED_TABLES = [
   'wall_posts',
   'wall_likes',
   'user_sessions', // 0010 已寫好但未 apply；表仲喺度，所以照刪（防守性）
+  // 0014 Plus 裝置 LRU。同付費表唔同 —— 呢張【要刪】：佢冇稅務用途，
+  // 淨係一堆「呢個瀏覽器設定檔幾時用過」嘅紀錄。刪帳號留住佢冇任何理由。
+  'plus_devices',
 ] as const
 
 /**
