@@ -26,8 +26,37 @@ export default function ConfirmPaymentClient(props: Props) {
   const en = locale === 'en'
   const consentId = useId()
   const [consented, setConsented] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const [problem, setProblem] = useState<'signin' | 'general' | null>(null)
 
-  const canProceed = consented && props.stripeReady
+  const canProceed = consented && props.stripeReady && !busy
+
+  async function goToStripe() {
+    setBusy(true)
+    setProblem(null)
+    try {
+      const r = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // 只傳 plan，唔傳金額（§5.1）—— 價格由 server 查 Stripe 決定。
+        body: JSON.stringify({ plan: props.sku, consent: true }),
+      })
+      if (r.status === 401) {
+        setProblem('signin')
+        setBusy(false)
+        return
+      }
+      const data = (await r.json().catch(() => ({}))) as { url?: string }
+      if (r.ok && data.url) {
+        window.location.href = data.url
+        return // 唔 setBusy(false)：頁面正離開，收返個掣可以令人再撳一次
+      }
+      setProblem('general')
+    } catch {
+      setProblem('general')
+    }
+    setBusy(false)
+  }
 
   return (
     <div className="mx-auto max-w-xl px-5 py-10">
@@ -91,11 +120,18 @@ export default function ConfirmPaymentClient(props: Props) {
       {/* ── 兩個按鈕，同等大小（修補 9 設計紅線）── */}
       <div className="flex flex-col sm:flex-row gap-3">
         <button
-          type="submit"
+          type="button"
+          onClick={goToStripe}
           disabled={!canProceed}
           className="flex-1 rounded-xl bg-accent-strong text-on-accent px-5 py-3 font-medium transition-all duration-200 hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-accent-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          {en ? 'Continue to Stripe' : '確認，前往 Stripe 付款'}
+          {busy
+            ? en
+              ? 'Opening Stripe…'
+              : '開緊 Stripe…'
+            : en
+              ? 'Continue to Stripe'
+              : '確認，前往 Stripe 付款'}
         </button>
         <Link
           href="/"
@@ -115,12 +151,31 @@ export default function ConfirmPaymentClient(props: Props) {
         </p>
       )}
 
-      {/* Stripe 未接好（Phase 1.2 未完成）。照顯示成版，但唔扮撳得。 */}
+      {/* Stripe 未接好（暗部署 / 未設 key）。照顯示成版，但唔扮撳得。 */}
       {consented && !props.stripeReady && (
         <p className="text-sm text-ink-muted mt-3" role="status">
           {en
             ? 'Payments are not open yet. Nothing to do here for now — the free version has everything you need.'
             : '付款功能仲未開放。而家唔使做任何嘢 —— 免費版已經夠你用。'}
+        </p>
+      )}
+
+      {/* 兩個問題狀態都唔用紅色、唔講「錯誤」（§7）。 */}
+      {problem === 'signin' && (
+        <p className="text-sm text-ink-soft mt-3 leading-relaxed" role="status">
+          {en
+            ? 'Plus is tied to your account, so you need to sign in first — otherwise there is nothing to attach it to.'
+            : 'Plus 係綁住你個帳戶嘅，所以要先登入 —— 唔係就冇嘢可以綁。'}{' '}
+          <Link href="/api/auth/signin" className="underline focus-visible:outline focus-visible:outline-2">
+            {en ? 'Sign in' : '去登入'}
+          </Link>
+        </p>
+      )}
+      {problem === 'general' && (
+        <p className="text-sm text-ink-soft mt-3 leading-relaxed" role="status">
+          {en
+            ? 'We could not open the payment page just now, and nothing has been charged. Try again in a moment.'
+            : '而家開唔到付款頁，亦冇扣過任何錢。等陣再試一次。'}
         </p>
       )}
 
