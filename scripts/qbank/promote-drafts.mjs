@@ -163,11 +163,28 @@ import type { ${bankType} } from './types'
 export const ${exportName}: ${bankType}[] = `
 writeFileSync(outFile, header + JSON.stringify(approved, null, 2) + '\n')
 
-console.log(`\n✓ promoted ${approved.length} human-approved question(s) → data/questions/${base}.ts`)
+// 抽樣模式下【唔可以】把全部 admitted 講成 human-approved —— `approved` 入面
+// 包住 machine-admitted 嗰批，冇人讀過佢哋。2026-09-05 實測印過
+// 「promoted 22 human-approved question(s)」，而真人得讀 8 條。
+// 生成檔嘅檔頭一直寫得啱，錯淨係喺呢一行 —— 但呢行先係跑腳本嗰個人會見到嘅嘢，
+// 而佢就係跟住落去做 load.ts 接線嗰位。§16.C／§16.D 同一類假狀態聲稱。
+//
+// 數目由 `approved` 實數計，唔用 SAMPLE.size：兩者理應相等（抽中而未批或被駁回
+// 都已經喺上面停咗機），但呢行係報告，報告應該數返實物。
+const humanRead = MODE === 'sampled' ? approved.filter((q) => SAMPLE.has(q.id)).length : approved.length
+console.log(MODE === 'sampled'
+  ? `\n✓ promoted ${approved.length} question(s) → data/questions/${base}.ts\n`
+    + `  ${humanRead} 條真人全讀 ＋ ${approved.length - humanRead} 條 machine-admitted`
+    + `（只過機器閘 —— 格式／術語／重複，冇人讀過答案啱唔啱）`
+  : `\n✓ promoted ${approved.length} human-approved question(s) → data/questions/${base}.ts`)
 console.log(`  reviewer: ${reviewer} · ${reviewedAt}`)
 console.log(`\n  NEXT (manual — a second human gate; this script will NOT do it for you):`)
 console.log(`  1. In data/questions/load.ts, merge into the "${SUBJECT}" loader:`)
-console.log(`         const reviewed = await import('./${SUBJECT}-reviewed')`)
+// ⚠️ 用 `base` 唔可以用 SUBJECT：輸出檔係 `${base}.ts`，而 base = OUT || `${SUBJECT}-reviewed`。
+// 寫死 `${SUBJECT}-reviewed` 就會印一條指去另一個檔（或者根本唔存在嘅檔）嘅 import，
+// 偏偏 --out 存在嘅原因正正係 promote 會覆寫（見檔頭 2026-08-07 中文卷二嗰宗）——
+// 即係話呢個片段喺 --out 要保護嗰個情況下先至係錯嘅。
+console.log(`         const reviewed = await import('./${base}')`)
 console.log(`         return [...base, ...reviewed.${exportName}]`)
 console.log(`  2. node scripts/qbank/validate-banks.mjs   (global dup-id / identical-stem check)`)
 console.log(`  3. npm run build -- --webpack\n`)
