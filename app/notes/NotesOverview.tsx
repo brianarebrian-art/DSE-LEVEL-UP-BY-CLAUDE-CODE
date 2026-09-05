@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { Gem, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { subjects } from '@/data/subjects'
-import { getSubjectQuestions, getSubjectTopics } from '@/data/questions'
+// 只要題數同課題數，唔要題目內容 —— 讀 summary.generated，唔好 import barrel。
+import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { getTopicStats, type TopicStatEntry } from '@/lib/topicStats'
 
 // 知識凝結總覽 —— 每個有題目嘅科目一張卡。全部數字由真題庫／你嘅 localStorage 計，
@@ -37,16 +38,16 @@ export default function NotesOverview() {
     const out: Row[] = []
     for (const s of subjects) {
       if (!s.isActive) continue
-      const qs = getSubjectQuestions(s.id)
-      if (qs.length === 0) continue
+      const sum = SUBJECT_SUMMARY[s.id]
+      if (!sum || sum.total === 0) continue
       const mine = stats.filter((e) => e.subjectId === s.id)
       out.push({
         id: s.id,
         name: s.name,
         nameEn: s.nameEn,
         emoji: s.emoji,
-        topics: getSubjectTopics(s.id).length,
-        questions: qs.length,
+        topics: sum.topics,
+        questions: sum.total,
         attempted: mine.reduce((n, e) => n + e.total, 0),
         wrong: mine.reduce((n, e) => n + e.wrong, 0),
       })

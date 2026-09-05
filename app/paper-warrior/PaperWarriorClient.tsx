@@ -6,13 +6,16 @@ import { Printer, FileText, RefreshCw, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
+// 課題清單同「有冇書寫題」→ summary.generated（靜態）。
+// 出卷要嘅真題目 → load.ts 逐科 lazy loader，撳「生成試卷」先落嗰一科。
+// 兩者都唔行 barrel：barrel 靜態 import 齊 25 科，喺呢個 client 檔會將
+// 全部題庫 build 入瀏覽器 —— 為咗一份試卷落 25 科（2026-09-05 實測）。
+import { SUBJECT_SUMMARY, SUBJECT_TOPICS } from '@/data/questions/summary.generated'
 import {
-  getSubjectMCQuestions,
-  getSubjectTopics,
-  getQuestionsByTopic,
-  getWrittenQuestions,
-  hasWrittenQuestions,
-} from '@/data/questions'
+  loadSubjectMCQuestions,
+  loadQuestionsByTopic,
+  loadWrittenQuestions,
+} from '@/data/questions/load'
 import type { WrittenQuestion } from '@/data/questions/types'
 import QRCode from '@/components/QRCode'
 import {
@@ -52,7 +55,7 @@ export default function PaperWarriorClient() {
   // 冇題就連個控制項都唔顯示 —— 好過畀人揀完先話「呢科冇」。
   const subjectHasWritten = useMemo(() => {
     try {
-      return hasWrittenQuestions(subject)
+      return (SUBJECT_SUMMARY[subject]?.written ?? 0) > 0
     } catch {
       return false
     }
@@ -60,24 +63,34 @@ export default function PaperWarriorClient() {
 
   const topics = useMemo(() => {
     try {
-      return getSubjectTopics(subject)
+      return SUBJECT_TOPICS[subject] ?? []
     } catch {
       return []
     }
   }, [subject])
 
+  const [busy, setBusy] = useState(false)
+
   const subjectMeta = activeSubjects.find((s) => s.id === subject)
 
-  const generate = useCallback(() => {
-    const wanted = subjectHasWritten ? written : 0
-    const spec: PaperSpec = { subject, topic, size, seed: newSeed(), ...(wanted > 0 && { written: wanted }) }
-    // 甲部只取 MC：客觀分數評級嗰部分，書寫題（自評制）唔計入
-    const pool = topic ? getQuestionsByTopic(subject, topic) : getSubjectMCQuestions(subject)
-    const items = buildPaper(spec, pool)
-    // 乙部由全科書寫題抽（唔跟課題篩選 —— 長題目本身就跨課題，26 條再篩就幾乎抽唔到）
-    const writtenItems = buildWrittenSection(spec, wanted > 0 ? getWrittenQuestions(subject) : [])
-    setPaper(items.length > 0 ? { spec, items, writtenItems } : null)
-  }, [subject, topic, size, written, subjectHasWritten])
+  // 2026-09-05 改為 async：題目改成按需載入，所以出卷要等一個 await。
+  // seed 喺 await 之前先攞 —— 攞完先 await 嘅話，連撳兩次可能撞同一個 seed。
+  const generate = useCallback(async () => {
+    if (busy) return
+    setBusy(true)
+    try {
+      const wanted = subjectHasWritten ? written : 0
+      const spec: PaperSpec = { subject, topic, size, seed: newSeed(), ...(wanted > 0 && { written: wanted }) }
+      // 甲部只取 MC：客觀分數評級嗰部分，書寫題（自評制）唔計入
+      const pool = topic ? await loadQuestionsByTopic(subject, topic) : await loadSubjectMCQuestions(subject)
+      const items = buildPaper(spec, pool)
+      // 乙部由全科書寫題抽（唔跟課題篩選 —— 長題目本身就跨課題，26 條再篩就幾乎抽唔到）
+      const writtenItems = buildWrittenSection(spec, wanted > 0 ? await loadWrittenQuestions(subject) : [])
+      setPaper(items.length > 0 ? { spec, items, writtenItems } : null)
+    } finally {
+      setBusy(false)
+    }
+  }, [subject, topic, size, written, subjectHasWritten, busy])
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -209,9 +222,12 @@ export default function PaperWarriorClient() {
           <div className="mt-5 flex flex-wrap gap-2">
             <button
               onClick={generate}
-              className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-accent-strong px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
+              disabled={busy}
+              aria-busy={busy}
+              className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-accent-strong px-4 py-2 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-60"
             >
-              <RefreshCw size={15} /> {paper ? tr('換一份', 'Regenerate') : tr('生成試卷', 'Generate paper')}
+              <RefreshCw size={15} className={busy ? 'animate-spin' : undefined} />
+              {busy ? tr('出緊卷…', 'Building…') : paper ? tr('換一份', 'Regenerate') : tr('生成試卷', 'Generate paper')}
             </button>
             {paper && (
               <button

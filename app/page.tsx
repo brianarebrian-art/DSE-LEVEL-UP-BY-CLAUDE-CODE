@@ -7,7 +7,11 @@ import MathText from '@/components/MathText'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
 import { subjects, getActiveSubjects } from '@/data/subjects'
-import { getSubjectQuestions } from '@/data/questions'
+// 由 summary.generated.ts 攞總數，唔好 import barrel ——
+// barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
+// build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
+// 一條都冇顯示過）。呢一頁只係想要一個總數。
+import { TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
 import { useLocale } from '@/lib/i18n'
 // 方向一：季節性 Hero（純前端按月切換文案；light-first 不變）
 import { getCurrentSeason } from '@/utils/season'
@@ -30,7 +34,6 @@ const totalSubjects = subjects.length
 //    係最容易被截圖質疑嗰種矛盾。改為即時由題庫算，唔會再過時。
 // ② 三個數本身無來源。「10 年」對應年份分析 2014–2023（真實範圍），
 //    「核心思維框架」對應現有科目數。全部由資料衍生或有明確定義。
-const TOTAL_QUESTIONS = activeSubjects.reduce((n, s) => n + getSubjectQuestions(s.id).length, 0)
 const statNums = ['10', String(TOTAL_QUESTIONS), String(activeSubjects.length)]
 
 export default function HomePage() {

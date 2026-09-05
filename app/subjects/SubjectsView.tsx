@@ -7,7 +7,7 @@ import {
   subjects,
   type SubjectMeta,
 } from '@/data/subjects'
-import { getSubjectQuestions } from '@/data/questions'
+import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { useLocale } from '@/lib/i18n'
 import { bestSimilarity, FUZZY_THRESHOLD } from '@/lib/fuzzy'
 
@@ -66,9 +66,11 @@ export default function SubjectsView() {
     //   ② 書寫題覆蓋率本來寫死一句「未涵蓋」，但數學／中文／歷史已經有書寫題
     //      入咗庫。寫死嘅句子唔會跟住數據行 —— 一句喺三科身上已經係假嘅話，
     //      同一句喺其餘廿二科身上就算啱都唔應該再信。改為逐科由實數推。
-    const all = getSubjectQuestions(s.id)
-    const mc = all.filter((q) => (q.type ?? 'mc') === 'mc').length
-    const written = all.length - mc
+  //   ③ 2026-09-05 再改：數字由 summary.generated 攞，唔再 import barrel。
+  //      呢一頁本來為咗顯示 25 個題數，將全 25 科題庫 build 咗入瀏覽器
+  //      （實測 28 個題庫 chunk）。數字完全一樣 —— summary 由題庫產生，
+  //      而 summary-parity 測試每次 npm test 拎真題庫重算比對。
+    const { mc, written } = SUBJECT_SUMMARY[s.id] ?? { mc: 0, written: 0 }
     return (
       <Link
         href={`/subjects/${s.id}`}

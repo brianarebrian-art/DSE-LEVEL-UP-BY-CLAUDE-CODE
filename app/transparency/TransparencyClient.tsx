@@ -4,7 +4,7 @@ import { ShieldCheck, Database, AlertTriangle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { REVIEW_BATCHES, REVIEWED_COUNT } from '@/data/provenance'
 import { getActiveSubjects } from '@/data/subjects'
-import { getSubjectQuestions } from '@/data/questions'
+import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and
@@ -16,7 +16,9 @@ export default function TransparencyClient() {
   // 實數，唔硬編：題庫加減題之後呢兩個數會自動跟住走。
   // 硬編一個「1.83%」喺度，遲早會變成一個講錯咗嘅數字 —— 而呢一段嘅
   // 全部價值就係佢準。
-  const totalQuestions = getActiveSubjects().reduce((n, sub) => n + getSubjectQuestions(sub.id).length, 0)
+  // 讀 summary.generated（唔好 import barrel —— 會將 2.2MB 題目 build 入呢一頁）。
+  // 數字仍然係實數：summary 由題庫產生，summary-parity 測試每次 npm test 都會重算比對。
+  const totalQuestions = getActiveSubjects().reduce((n, sub) => n + (SUBJECT_SUMMARY[sub.id]?.total ?? 0), 0)
   const pct = totalQuestions > 0 ? ((REVIEWED_COUNT / totalQuestions) * 100).toFixed(2) : '0'
 
   const sections = [

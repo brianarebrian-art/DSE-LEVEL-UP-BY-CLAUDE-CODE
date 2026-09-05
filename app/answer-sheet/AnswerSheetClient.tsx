@@ -7,7 +7,10 @@ import { ClipboardCheck, Lightbulb, ArrowRight, Check, RotateCcw, Save } from 'l
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
-import { getSubjectMCQuestions, getQuestionsByTopic, getWrittenQuestions } from '@/data/questions'
+// 答題卡由卷號重建試卷，只需要卷號指名嗰一科。改行 load.ts 逐科 lazy loader ——
+// 原本行 barrel，即係為咗重建一份卷而將全 25 科題庫 build 入瀏覽器
+// （2026-09-05 生產站實測）。
+import { loadSubjectMCQuestions, loadQuestionsByTopic, loadWrittenQuestions } from '@/data/questions/load'
 import type { SelfAssessment, WrittenQuestion } from '@/data/questions/types'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { recordAttempt } from '@/lib/progress'
@@ -71,13 +74,16 @@ export default function AnswerSheetClient() {
   >(null)
   const [writtenLevels, setWrittenLevels] = useState<Record<string, WrittenLevel>>({})
   const [error, setError] = useState(false)
+  // 題目改成按需載入，所以開卷有一段等待。冇呢個狀態嘅話，撳「開卷」之後
+  // 畫面幾百毫秒完全冇反應 —— 學生只會再撳多次。
+  const [busy, setBusy] = useState(false)
   const [marks, setMarks] = useState<Record<string, Mark>>({})
   const [causes, setCauses] = useState<Record<string, ReverseCause>>({})
   const [scoreInput, setScoreInput] = useState('')
   const [minutesInput, setMinutesInput] = useState('')
   const [saved, setSaved] = useState<{ score: number; total: number; grade: string; topics: number } | null>(null)
 
-  const load = useCallback((raw: string) => {
+  const load = useCallback(async (raw: string) => {
     const spec = decodePaperCode(raw)
     if (!spec) {
       setError(true)
@@ -85,11 +91,15 @@ export default function AnswerSheetClient() {
       return
     }
     // 只取 MC：答題卡係客觀批改流程，書寫題（自評制）唔屬於呢個入口
-    const pool = spec.topic ? getQuestionsByTopic(spec.subject, spec.topic) : getSubjectMCQuestions(spec.subject)
+    setBusy(true)
+    const pool = spec.topic
+      ? await loadQuestionsByTopic(spec.subject, spec.topic)
+      : await loadSubjectMCQuestions(spec.subject)
     const items = buildPaper(spec, pool)
     if (items.length === 0) {
       setError(true)
       setPaper(null)
+      setBusy(false)
       return
     }
     setError(false)
@@ -100,8 +110,9 @@ export default function AnswerSheetClient() {
     setMinutesInput('')
     setSaved(null)
     // 乙部：卷號第 5 段有幾多就重建幾多（冇第 5 段即 0，舊卷號行為不變）
-    const writtenItems = buildWrittenSection(spec, spec.written ? getWrittenQuestions(spec.subject) : [])
+    const writtenItems = buildWrittenSection(spec, spec.written ? await loadWrittenQuestions(spec.subject) : [])
     setPaper({ spec, items, writtenItems })
+    setBusy(false)
   }, [])
 
   // 由 URL ?p= 自動開卷（紙上印咗 QR 同卷號）
@@ -265,9 +276,11 @@ export default function AnswerSheetClient() {
             />
             <button
               onClick={() => load(code)}
-              className="min-h-11 rounded-lg bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
+              disabled={busy}
+              aria-busy={busy}
+              className="min-h-11 rounded-lg bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-60"
             >
-              {tr('開卷', 'Open')}
+              {busy ? tr('開緊…', 'Opening…') : tr('開卷', 'Open')}
             </button>
           </div>
         </label>
