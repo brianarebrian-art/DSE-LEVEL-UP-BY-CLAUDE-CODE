@@ -58,11 +58,11 @@ export default function SensoryMenu({
 
   return (
     // FIX: [B9][C11] 細屏內容唔會截斷（overflow-y-auto + max-h）；dialog ARIA
-    <div className="fixed inset-0 z-50 bg-[#0A0A0F]/96 flex items-center justify-center p-4 overflow-y-auto">
-      <div role="dialog" aria-modal="true" aria-labelledby="sensory-title" className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-[#14141B] rounded-xl p-6">
+    <div className="fixed inset-0 z-50 bg-surface/96 flex items-center justify-center p-4 overflow-y-auto">
+      <div role="dialog" aria-modal="true" aria-labelledby="sensory-title" className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-surface-raised rounded-xl p-6">
         {/* FIX: [A1] Buff 補給艙 → 呼吸空間 */}
-        <h2 id="sensory-title" className="text-lg font-bold text-[#E8E8EC] mb-1">{en ? 'Welcome to the 🫁 Breathing Space' : '歡迎嚟到 🫁 呼吸空間'}</h2>
-        <p className="text-sm text-[#8B8B96] mb-5">{en ? 'How do you want this space to feel today? (you can pick more than one)' : '今日你想點樣感受呢個空間？（可以多選）'}</p>
+        <h2 id="sensory-title" className="text-lg font-bold text-ink mb-1">{en ? 'Welcome to the 🫁 Breathing Space' : '歡迎嚟到 🫁 呼吸空間'}</h2>
+        <p className="text-sm text-ink-muted mb-5">{en ? 'How do you want this space to feel today? (you can pick more than one)' : '今日你想點樣感受呢個空間？（可以多選）'}</p>
 
         <div className="space-y-3 mb-6">
           {OPTIONS.map((o) => {
@@ -72,10 +72,10 @@ export default function SensoryMenu({
                 key={o.key}
                 onClick={() => toggle(o.key)}
                 aria-pressed={on}
-                className={`w-full min-h-11 flex items-center gap-3 text-left rounded-[10px] border px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${
+                className={`w-full min-h-11 flex items-center gap-3 text-left rounded-[10px] border px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
                   on
-                    ? 'border-neon-cyan/60 bg-neon-cyan/10 text-[#E8E8EC]'
-                    : 'border-white/10 bg-transparent text-[#8B8B96] hover:border-white/25'
+                    ? 'border-accent/60 bg-accent/10 text-ink'
+                    : 'border-line bg-transparent text-ink-muted hover:border-white/25'
                 }`}
               >
                 <span className="text-xl" aria-hidden>{o.emoji}</span>
@@ -83,7 +83,7 @@ export default function SensoryMenu({
                   <span className="block text-sm font-medium">{en ? o.labelEn : o.labelZh}</span>
                   <span className="block text-xs opacity-70">{en ? o.hintEn : o.hintZh}</span>
                 </span>
-                <span className={`text-xs ${on ? 'text-neon-cyan' : 'opacity-40'}`}>{on ? (en ? 'Selected' : '已選') : ''}</span>
+                <span className={`text-xs ${on ? 'text-accent' : 'opacity-40'}`}>{on ? (en ? 'Selected' : '已選') : ''}</span>
               </button>
             )
           })}
@@ -91,11 +91,11 @@ export default function SensoryMenu({
 
         <button
           onClick={onDone}
-          className="w-full min-h-11 rounded-[10px] bg-neon-cyan/15 border border-neon-cyan/40 text-neon-cyan font-medium py-3 hover:bg-neon-cyan/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+          className="w-full min-h-11 rounded-[10px] bg-accent/10 border border-accent/40 text-accent font-medium py-3 hover:bg-accent/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           {en ? 'Enter' : '入去先'}
         </button>
-        <p className="text-[11px] text-[#8B8B96] text-center mt-3">{en ? 'You can change this anytime from the main page.' : '之後隨時可以喺主頁改返。'}</p>
+        <p className="text-[11px] text-ink-muted text-center mt-3">{en ? 'You can change this anytime from the main page.' : '之後隨時可以喺主頁改返。'}</p>
       </div>
     </div>
   )

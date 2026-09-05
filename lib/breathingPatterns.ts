@@ -30,11 +30,17 @@ export const PHASE_LABELS: Record<Phase, { zh: string; en: string }> = {
 
 // 相位顏色沿用 /relax 既有霓虹（呢個區係刻意深色，唔屬 light-first 遷移範圍）。
 // 用 @theme 變數而唔係字面 hex，跟 P1-7-R1 已定嘅做法。
+// 2026-09-05 莫蘭迪化：原本用 --color-neon-cyan/pink/purple（螢光）。
+//
+// ⚠️ 呼吸頁【刻意維持深底】而唔跟其餘頁面轉米白 —— 一個凌晨三點想回氣嘅學生，
+// 唔應該畀一版高亮度米白照住。深底係功能，唔係走漏。
+// 但個環嘅顏色要跟莫蘭迪：螢光青／桃紅喺深底上係最刺眼嗰種光，同「回氣」相反。
+// 改用科目家族色（同一套莫蘭迪色卡，已壓深至 AA），三個階段仍然分得開。
 export const PHASE_COLOR: Record<Phase, string> = {
-  in: 'var(--color-neon-cyan)',
-  hold: 'var(--color-neon-purple)',
-  out: 'var(--color-neon-pink)',
-  holdOut: 'var(--color-neon-purple)',
+  in: 'var(--color-subj-sage)',
+  hold: 'var(--color-subj-mist)',
+  out: 'var(--color-subj-rose)',
+  holdOut: 'var(--color-subj-mist)',
 }
 
 export const PATTERNS: BreathingPattern[] = [

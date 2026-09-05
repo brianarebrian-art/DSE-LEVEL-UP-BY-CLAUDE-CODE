@@ -54,10 +54,10 @@ export default function GroundingExercise() {
       {/* 導引說明（非臨床框架） */}
       <div className="text-center mb-6">
         <div className="text-3xl mb-2" aria-hidden>🧭</div>
-        <h1 className="text-2xl font-bold text-[#E8E8EC]">
+        <h1 className="text-2xl font-bold text-ink">
           {en ? '5-4-3-2-1 Grounding' : '5-4-3-2-1 落地練習'}
         </h1>
-        <p className="text-sm text-[#C2C2CC] mt-2 leading-relaxed max-w-md mx-auto">
+        <p className="text-sm text-ink-soft mt-2 leading-relaxed max-w-md mx-auto">
           {en
             ? 'When you feel panicky or a bit “not here”, use your five senses to gently pull yourself back to now. Go slowly — there’s no right or wrong, and nothing here is recorded.'
             : '當你覺得好慌、或者好似「唔喺度」咁，用五官逐樣拉自己返到當下。慢慢嚟，冇對錯，呢度亦唔會記錄任何嘢。'}
@@ -71,10 +71,10 @@ export default function GroundingExercise() {
             key={s.n}
             className={`w-8 h-8 rounded-full flex items-center justify-center text-xs border transition-colors ${
               i < step
-                ? 'border-neon-cyan/40 text-neon-cyan/50'
+                ? 'border-accent/40 text-accent/70'
                 : i === step
-                  ? 'border-neon-cyan text-neon-cyan'
-                  : 'border-white/10 text-white/30'
+                  ? 'border-accent text-accent'
+                  : 'border-line text-ink-faint'
             }`}
           >
             {s.n}
@@ -85,16 +85,16 @@ export default function GroundingExercise() {
       {current ? (
         <div
           key={step}
-          className={`rounded-2xl bg-[#14141B] border border-white/10 p-8 text-center ${anim}`}
+          className={`rounded-2xl bg-surface-raised border border-line p-8 text-center ${anim}`}
           role="group"
           aria-label={en ? `Step, notice ${current.n}` : `第 ${current.n} 步`}
         >
           <div className="text-4xl mb-4" aria-hidden>{current.icon}</div>
-          <div className="text-neon-cyan text-5xl font-bold mb-3 tabular-nums">{current.n}</div>
-          <p className="text-[#E8E8EC] text-base leading-relaxed mb-2">
+          <div className="text-accent text-5xl font-bold mb-3 tabular-nums">{current.n}</div>
+          <p className="text-ink text-base leading-relaxed mb-2">
             {en ? current.en : current.zh}
           </p>
-          <p className="text-sm text-[#C2C2CC] leading-relaxed mb-7 max-w-sm mx-auto">
+          <p className="text-sm text-ink-soft leading-relaxed mb-7 max-w-sm mx-auto">
             {en ? current.hintEn : current.hintZh}
           </p>
 
@@ -102,14 +102,14 @@ export default function GroundingExercise() {
             {step > 0 && (
               <button
                 onClick={() => setStep((s) => Math.max(0, s - 1))}
-                className="min-h-11 px-5 py-2.5 rounded-[10px] border border-white/20 text-white/70 text-sm hover:bg-white/10 transition-colors"
+                className="min-h-11 px-5 py-2.5 rounded-[10px] border border-line-strong text-ink-soft text-sm hover:bg-surface-sunken transition-colors"
               >
                 {en ? 'Back' : '返上一步'}
               </button>
             )}
             <button
               onClick={() => setStep((s) => s + 1)}
-              className="min-h-11 px-6 py-2.5 rounded-[10px] border border-neon-cyan/50 text-neon-cyan text-sm hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+              className="min-h-11 px-6 py-2.5 rounded-[10px] border border-accent/50 text-accent text-sm hover:bg-accent/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
               {step < SENSES.length - 1
                 ? en ? 'I found them · next' : '搵到喇 · 下一步'
@@ -119,12 +119,12 @@ export default function GroundingExercise() {
         </div>
       ) : (
         // 收結畫面：安定語（同苦化城・常不輕菩薩），零指標、零評分
-        <div className={`rounded-2xl bg-[#14141B] border border-neon-cyan/20 p-8 text-center ${anim}`}>
+        <div className={`rounded-2xl bg-surface-raised border border-accent/20 p-8 text-center ${anim}`}>
           <div className="text-4xl mb-4" aria-hidden>🕊️</div>
-          <p className="text-[#E8E8EC] text-lg leading-relaxed mb-2">
+          <p className="text-ink text-lg leading-relaxed mb-2">
             {en ? 'You are safe. You are here, in this moment.' : '你係安全嘅，你係而家呢一刻。'}
           </p>
-          <p className="text-sm text-[#C2C2CC] leading-relaxed mb-7 max-w-sm mx-auto">
+          <p className="text-sm text-ink-soft leading-relaxed mb-7 max-w-sm mx-auto">
             {en
               ? 'That took guts. Do it again anytime you need — or just sit here for a while.'
               : '你做得好好。有需要隨時可以再嚟一次，或者就咁坐一陣都得。'}
@@ -132,13 +132,13 @@ export default function GroundingExercise() {
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <button
               onClick={() => setStep(0)}
-              className="min-h-11 px-5 py-2.5 rounded-[10px] border border-neon-cyan/50 text-neon-cyan text-sm hover:bg-neon-cyan/10 transition-colors"
+              className="min-h-11 px-5 py-2.5 rounded-[10px] border border-accent/50 text-accent text-sm hover:bg-accent/10 transition-colors"
             >
               {en ? 'Do it again' : '再嚟一次'}
             </button>
             <button
               onClick={() => router.push('/relax')}
-              className="min-h-11 px-5 py-2.5 rounded-[10px] border border-white/20 text-white/80 text-sm hover:bg-white/10 transition-colors"
+              className="min-h-11 px-5 py-2.5 rounded-[10px] border border-line-strong text-ink-soft text-sm hover:bg-surface-sunken transition-colors"
             >
               {en ? 'Back to Breathing Space' : '返去呼吸空間'}
             </button>

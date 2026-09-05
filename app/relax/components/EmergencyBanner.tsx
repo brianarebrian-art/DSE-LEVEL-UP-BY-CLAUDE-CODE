@@ -9,15 +9,15 @@ export default function EmergencyBanner() {
   const { locale } = useLocale()
   const en = locale === 'en'
   return (
-    <div className="mt-8 p-4 rounded-xl border border-red-500/10 bg-red-500/5 text-center">
-      <p className="text-sm text-white/80 leading-relaxed">
+    <div className="mt-8 p-4 rounded-xl border border-line-strong bg-surface-sunken text-center">
+      <p className="text-sm text-ink-soft leading-relaxed">
         {en ? "Feeling overwhelmed? You're not alone. The Samaritans 24hr hotline: " : '覺得頂唔順？你唔係一個人。撒瑪利亞會 24hr 熱線：'}
-        <a href="tel:28960000" className="text-neon-cyan underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2896 0000</a>
+        <a href="tel:28960000" className="text-accent underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2896 0000</a>
         {' | '}{en ? 'Suicide Prevention: ' : '生命熱線：'}
-        <a href="tel:23820000" className="text-neon-cyan underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2382 0000</a>
+        <a href="tel:23820000" className="text-accent underline underline-offset-2 px-1 min-h-11 inline-flex items-center">2382 0000</a>
       </p>
       {/* FIX: [C14] 加醫療免責聲明；[B5] white/50（對比臨界）→ white/70 */}
-      <p className="text-xs text-white/70 mt-1 leading-relaxed">
+      <p className="text-xs text-ink-muted mt-1 leading-relaxed">
         {en
           ? 'This platform is not a professional medical service; the information above is for reference only. In an emergency, call 999 immediately or go to the nearest A&E.'
           : '本平台非專業醫療機構，以上資訊僅供參考。如情況緊急，請立即致電 999 或前往就近急症室。'}
