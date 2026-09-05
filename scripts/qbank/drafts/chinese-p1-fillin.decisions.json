@@ -2,25 +2,42 @@
   "_meta": {
     "source": "chinese-p1-fillin.json",
     "subject": "chinese",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 8,
+      "of": 16,
+      "seed": "chinese-p1-fillin.json:16",
+      "ids": [
+        "zh_p1_fill_02",
+        "zh_p1_fill_04",
+        "zh_p1_fill_05",
+        "zh_p1_fill_07",
+        "zh_p1_fill_08",
+        "zh_p1_fill_10",
+        "zh_p1_fill_12",
+        "zh_p1_fill_16"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
-    "zh_p1_fill_01": "pending",
+    "zh_p1_fill_01": "machine-admitted",
     "zh_p1_fill_02": "pending",
-    "zh_p1_fill_03": "pending",
+    "zh_p1_fill_03": "machine-admitted",
     "zh_p1_fill_04": "pending",
     "zh_p1_fill_05": "pending",
-    "zh_p1_fill_06": "pending",
+    "zh_p1_fill_06": "machine-admitted",
     "zh_p1_fill_07": "pending",
     "zh_p1_fill_08": "pending",
-    "zh_p1_fill_09": "pending",
+    "zh_p1_fill_09": "machine-admitted",
     "zh_p1_fill_10": "pending",
-    "zh_p1_fill_11": "pending",
+    "zh_p1_fill_11": "machine-admitted",
     "zh_p1_fill_12": "pending",
-    "zh_p1_fill_13": "pending",
-    "zh_p1_fill_14": "pending",
-    "zh_p1_fill_15": "pending",
+    "zh_p1_fill_13": "machine-admitted",
+    "zh_p1_fill_14": "machine-admitted",
+    "zh_p1_fill_15": "machine-admitted",
     "zh_p1_fill_16": "pending"
   }
 }

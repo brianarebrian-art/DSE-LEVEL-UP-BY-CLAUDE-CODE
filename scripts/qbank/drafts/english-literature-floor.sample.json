@@ -1,0 +1,245 @@
+[
+ {
+  "id": "elit_floor_01",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Poetry",
+  "topicId": "poetry",
+  "topicZh": "Poetry",
+  "topicEn": "Poetry",
+  "difficulty": "basic",
+  "question": "“The harbour lights came on at seven, / the ferry pulled against the tide, / my mother said we’d wait till eleven, / and watched the water from my side.”\n\nWhat is the rhyme scheme of this stanza?",
+  "questionEn": "“The harbour lights came on at seven, / the ferry pulled against the tide, / my mother said we’d wait till eleven, / and watched the water from my side.”\n\nWhat is the rhyme scheme of this stanza?",
+  "options": [
+   "ABAB",
+   "AABB",
+   "ABBA",
+   "ABCB"
+  ],
+  "optionsEn": [
+   "ABAB",
+   "AABB",
+   "ABBA",
+   "ABCB"
+  ],
+  "correctIndex": 0,
+  "explanation": "Match the end words in order: “seven” and “eleven” rhyme, and so do “tide” and “side”. The rhyming pairs alternate — first with third, second with fourth — which is written ABAB. AABB would need the rhymes to fall in adjacent pairs, and ABBA would need the outer two lines to rhyme with each other while the inner two rhyme separately. Always letter the end words before choosing; guessing from the look of the stanza is where marks go.",
+  "explanationEn": "Match the end words in order: “seven” and “eleven” rhyme, and so do “tide” and “side”. The rhyming pairs alternate — first with third, second with fourth — which is written ABAB. AABB would need the rhymes to fall in adjacent pairs, and ABBA would need the outer two lines to rhyme with each other while the inner two rhyme separately. Always letter the end words before choosing; guessing from the look of the stanza is where marks go."
+ },
+ {
+  "id": "elit_floor_03",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Poetry",
+  "topicId": "poetry",
+  "topicZh": "Poetry",
+  "topicEn": "Poetry",
+  "difficulty": "basic",
+  "question": "“The bread had gone hard; the kitchen smelled of yesterday’s rain.”\n\nThe imagery in this line appeals mainly to which senses?",
+  "questionEn": "“The bread had gone hard; the kitchen smelled of yesterday’s rain.”\n\nThe imagery in this line appeals mainly to which senses?",
+  "options": [
+   "hearing and taste",
+   "sight only",
+   "touch and smell",
+   "sight and hearing"
+  ],
+  "optionsEn": [
+   "hearing and taste",
+   "sight only",
+   "touch and smell",
+   "sight and hearing"
+  ],
+  "correctIndex": 2,
+  "explanation": "“Gone hard” is something you register by touching, and “smelled” names the sense outright. Note the common assumption that imagery must be visual — it is not: writers reach for smell and touch precisely because those senses carry memory. Nothing here is heard, and while bread suggests taste, the line never describes a flavour.",
+  "explanationEn": "“Gone hard” is something you register by touching, and “smelled” names the sense outright. Note the common assumption that imagery must be visual — it is not: writers reach for smell and touch precisely because those senses carry memory. Nothing here is heard, and while bread suggests taste, the line never describes a flavour."
+ },
+ {
+  "id": "elit_floor_11",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Prose Fiction",
+  "topicId": "prose_fiction",
+  "topicZh": "Prose Fiction",
+  "topicEn": "Prose Fiction",
+  "difficulty": "basic",
+  "question": "“I did not tell them about the phone call. I told myself there would be a better moment.”\n\nWhich point of view is used, and what follows from it?",
+  "questionEn": "“I did not tell them about the phone call. I told myself there would be a better moment.”\n\nWhich point of view is used, and what follows from it?",
+  "options": [
+   "third-person limited — we follow one character from the outside",
+   "second person — the narrator is addressing the reader directly",
+   "first person — we are given only what this narrator chooses to tell",
+   "third-person omniscient — we are given every character’s thoughts"
+  ],
+  "optionsEn": [
+   "third-person limited — we follow one character from the outside",
+   "second person — the narrator is addressing the reader directly",
+   "first person — we are given only what this narrator chooses to tell",
+   "third-person omniscient — we are given every character’s thoughts"
+  ],
+  "correctIndex": 2,
+  "explanation": "The pronoun “I” settles the point of view, but the useful half of the answer is what it costs us: everything reaches the reader through one person, including the silence about the phone call. That is not a flaw to complain about — it is the writer choosing what we may and may not see, and it is worth saying so in an essay.",
+  "explanationEn": "The pronoun “I” settles the point of view, but the useful half of the answer is what it costs us: everything reaches the reader through one person, including the silence about the phone call. That is not a flaw to complain about — it is the writer choosing what we may and may not see, and it is worth saying so in an essay."
+ },
+ {
+  "id": "elit_floor_22",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Characterisation",
+  "topicId": "characterisation",
+  "topicZh": "Characterisation",
+  "topicEn": "Characterisation",
+  "difficulty": "basic",
+  "question": "“Sum returned the wallet, then stood outside the shop for a while before going in.”\n\nWhich question asks about Sum’s motivation?",
+  "questionEn": "“Sum returned the wallet, then stood outside the shop for a while before going in.”\n\nWhich question asks about Sum’s motivation?",
+  "options": [
+   "When did Sum finally go inside the shop that day?",
+   "Why did Sum wait outside before going into the shop?",
+   "What was the object that Sum returned to the shop?",
+   "Where was Sum standing before entering the shop?"
+  ],
+  "optionsEn": [
+   "When did Sum finally go inside the shop that day?",
+   "Why did Sum wait outside before going into the shop?",
+   "What was the object that Sum returned to the shop?",
+   "Where was Sum standing before entering the shop?"
+  ],
+  "correctIndex": 1,
+  "explanation": "Motivation is the reason behind an action, so it is reached by asking why. What, where and when recover the events, and an essay that answers only those has retold the story rather than examined it. The waiting is the detail worth asking about: the wallet was already returned, so something else kept Sum outside.",
+  "explanationEn": "Motivation is the reason behind an action, so it is reached by asking why. What, where and when recover the events, and an essay that answers only those has retold the story rather than examined it. The waiting is the detail worth asking about: the wallet was already returned, so something else kept Sum outside."
+ },
+ {
+  "id": "elit_floor_25",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Themes",
+  "topicId": "themes",
+  "topicZh": "Themes",
+  "topicEn": "Themes",
+  "difficulty": "basic",
+  "question": "Throughout a story, a character keeps a broken watch in her pocket and refuses to have it mended.\n\nWhat is the most reasonable way to read the watch?",
+  "questionEn": "Throughout a story, a character keeps a broken watch in her pocket and refuses to have it mended.\n\nWhat is the most reasonable way to read the watch?",
+  "options": [
+   "as a symbol whose meaning comes from the way this story uses it",
+   "as a symbol carrying one fixed meaning that all watches carry",
+   "as a realistic detail that carries no significance whatsoever",
+   "as foreshadowing, since it predicts a later event exactly"
+  ],
+  "optionsEn": [
+   "as a symbol whose meaning comes from the way this story uses it",
+   "as a symbol carrying one fixed meaning that all watches carry",
+   "as a realistic detail that carries no significance whatsoever",
+   "as foreshadowing, since it predicts a later event exactly"
+  ],
+  "correctIndex": 0,
+  "explanation": "The refusal to mend it is what makes the watch mean anything; a working watch in a pocket would pass unnoticed. Note both errors to avoid: symbols do not come with fixed meanings looked up from a list, and not every object in a story is one. Evidence for a symbolic reading is the text’s own insistence — it keeps coming back.",
+  "explanationEn": "The refusal to mend it is what makes the watch mean anything; a working watch in a pocket would pass unnoticed. Note both errors to avoid: symbols do not come with fixed meanings looked up from a list, and not every object in a story is one. Evidence for a symbolic reading is the text’s own insistence — it keeps coming back."
+ },
+ {
+  "id": "elit_floor_27",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Themes",
+  "topicId": "themes",
+  "topicZh": "Themes",
+  "topicEn": "Themes",
+  "difficulty": "basic",
+  "question": "A student writes: “This story is about how ambition isolates people.”\n\nWhat must the student do next in an essay?",
+  "questionEn": "A student writes: “This story is about how ambition isolates people.”\n\nWhat must the student do next in an essay?",
+  "options": [
+   "summarise the events of the whole story in the order they occur",
+   "explain what the author intended the reader to feel while reading",
+   "point to places in the text where ambition leads the character away from others",
+   "state the same claim again in stronger and more confident wording"
+  ],
+  "optionsEn": [
+   "summarise the events of the whole story in the order they occur",
+   "explain what the author intended the reader to feel while reading",
+   "point to places in the text where ambition leads the character away from others",
+   "state the same claim again in stronger and more confident wording"
+  ],
+  "correctIndex": 2,
+  "explanation": "The claim is a good one, and a claim without textual evidence earns little however good it is. Note two familiar detours: restating a point more loudly does not support it, and retelling the plot shows only that the book has been read. What the author intended is unknowable and, in any case, not what is being marked — the text is.",
+  "explanationEn": "The claim is a good one, and a claim without textual evidence earns little however good it is. Note two familiar detours: restating a point more loudly does not support it, and retelling the plot shows only that the book has been read. What the author intended is unknowable and, in any case, not what is being marked — the text is."
+ },
+ {
+  "id": "elit_floor_28",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Themes",
+  "topicId": "themes",
+  "topicZh": "Themes",
+  "topicEn": "Themes",
+  "difficulty": "basic",
+  "question": "A short story is titled “The Spare Key”. The key itself is mentioned only twice.\n\nWhat does the title suggest about how the story should be read?",
+  "questionEn": "A short story is titled “The Spare Key”. The key itself is mentioned only twice.\n\nWhat does the title suggest about how the story should be read?",
+  "options": [
+   "that the key is unimportant, since it appears only twice in the whole story",
+   "that the title is a mistake, because a title should name the main character",
+   "that the title is there to tell the reader which genre the story belongs to",
+   "that the key matters more than its two mentions would suggest on their own"
+  ],
+  "optionsEn": [
+   "that the key is unimportant, since it appears only twice in the whole story",
+   "that the title is a mistake, because a title should name the main character",
+   "that the title is there to tell the reader which genre the story belongs to",
+   "that the key matters more than its two mentions would suggest on their own"
+  ],
+  "correctIndex": 3,
+  "explanation": "A title is the one piece of the text the writer places outside the story to point back at it, so a title naming an object that barely appears is an instruction to look harder at that object. Frequency is a poor guide to importance: a detail mentioned twice at the right two moments can carry the whole story.",
+  "explanationEn": "A title is the one piece of the text the writer places outside the story to point back at it, so a title naming an object that barely appears is an instruction to look harder at that object. Frequency is a poor guide to importance: a detail mentioned twice at the right two moments can carry the whole story."
+ },
+ {
+  "id": "elit_floor_31",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Shakespeare",
+  "topicId": "shakespeare",
+  "topicZh": "Shakespeare",
+  "topicEn": "Shakespeare",
+  "difficulty": "basic",
+  "question": "On the page, a character’s lines each begin with a capital letter and stop well short of the right-hand margin, while another character’s lines run right across the page.\n\nWhat does this difference in layout tell you?",
+  "questionEn": "On the page, a character’s lines each begin with a capital letter and stop well short of the right-hand margin, while another character’s lines run right across the page.\n\nWhat does this difference in layout tell you?",
+  "options": [
+   "the first passage is a stage direction and the second is dialogue",
+   "the first passage is a song and is meant to be sung by the actor",
+   "the first character is speaking in verse and the second in prose",
+   "the first character is whispering and the second is speaking aloud"
+  ],
+  "optionsEn": [
+   "the first passage is a stage direction and the second is dialogue",
+   "the first passage is a song and is meant to be sung by the actor",
+   "the first character is speaking in verse and the second in prose",
+   "the first character is whispering and the second is speaking aloud"
+  ],
+  "correctIndex": 2,
+  "explanation": "Verse is set out in measured lines, so it ends where the metre ends rather than where the page does; prose runs on to the margin like ordinary writing. This is worth noticing before reading a word, because Shakespeare moves between the two, and a character shifting from verse to prose — or the reverse — is doing something the layout announces.",
+  "explanationEn": "Verse is set out in measured lines, so it ends where the metre ends rather than where the page does; prose runs on to the margin like ordinary writing. This is worth noticing before reading a word, because Shakespeare moves between the two, and a character shifting from verse to prose — or the reverse — is doing something the layout announces."
+ },
+ {
+  "id": "elit_floor_34",
+  "type": "mc",
+  "subject": "english-literature",
+  "topic": "Criticism",
+  "topicId": "criticism",
+  "topicZh": "Criticism",
+  "topicEn": "Criticism",
+  "difficulty": "basic",
+  "question": "A student writes: “The writer uses a metaphor: ‘Her patience was a thin rope.’ This is very effective.”\n\nWhat is the main weakness of this comment?",
+  "questionEn": "A student writes: “The writer uses a metaphor: ‘Her patience was a thin rope.’ This is very effective.”\n\nWhat is the main weakness of this comment?",
+  "options": [
+   "metaphors are not a suitable subject for discussion in a literary essay",
+   "it names the device and quotes it, but never explains how the metaphor works",
+   "the quotation chosen is far too short to serve as evidence in an essay",
+   "the student should have found a simile to write about instead of this"
+  ],
+  "optionsEn": [
+   "metaphors are not a suitable subject for discussion in a literary essay",
+   "it names the device and quotes it, but never explains how the metaphor works",
+   "the quotation chosen is far too short to serve as evidence in an essay",
+   "the student should have found a simile to write about instead of this"
+  ],
+  "correctIndex": 1,
+  "explanation": "Everything is in place except the analysis: a rope that is thin can still hold, but only for a while and only under so much weight — and that is what the sentence says about her patience. Naming plus quoting plus “effective” is the most common shape of a low-scoring paragraph. Make the last step the longest one: say what the words do.",
+  "explanationEn": "Everything is in place except the analysis: a rope that is thin can still hold, but only for a while and only under so much weight — and that is what the sentence says about her patience. Naming plus quoting plus “effective” is the most common shape of a low-scoring paragraph. Make the last step the longest one: say what the words do."
+ }
+]

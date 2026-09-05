@@ -2,8 +2,25 @@
   "_meta": {
     "source": "chinese-fanwen-weak-batch2.json",
     "subject": "chinese",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 8,
+      "of": 10,
+      "seed": "chinese-fanwen-weak-batch2.json:10",
+      "ids": [
+        "art-chinese-xyy-lexis-0",
+        "art-chinese-xyy-comp-1",
+        "art-chinese-xyy-technique-2",
+        "art-chinese-lplxr-lexis-0",
+        "art-chinese-lplxr-comp-1",
+        "art-chinese-lplxr-technique-2",
+        "art-chinese-fx-xyy-xsyy-0",
+        "art-chinese-fx-lplxr-yyl-1"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
     "art-chinese-xyy-lexis-0": "pending",
@@ -12,8 +29,8 @@
     "art-chinese-lplxr-lexis-0": "pending",
     "art-chinese-lplxr-comp-1": "pending",
     "art-chinese-lplxr-technique-2": "pending",
-    "art-chinese-xsyy-lexis-0": "pending",
-    "art-chinese-xsyy-comp-1": "pending",
+    "art-chinese-xsyy-lexis-0": "machine-admitted",
+    "art-chinese-xsyy-comp-1": "machine-admitted",
     "art-chinese-fx-xyy-xsyy-0": "pending",
     "art-chinese-fx-lplxr-yyl-1": "pending"
   }

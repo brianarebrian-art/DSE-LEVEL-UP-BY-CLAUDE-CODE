@@ -1,0 +1,56 @@
+[
+ {
+  "id": "floor9_p1_vr_04",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Vocabulary & Reference",
+  "topicId": "p1_vocab_ref",
+  "topicZh": "Reading · Vocabulary & Reference",
+  "topicEn": "Reading · Vocabulary & Reference",
+  "difficulty": "intermediate",
+  "question": "「委員會駁回了第一份提案，並修訂了第二份。這令觀察者頗感意外。」句中的 This 指甚麼？",
+  "questionEn": "\"The committee rejected the first proposal and revised the second. This surprised observers.\" What does \"This\" refer to?",
+  "options": [
+   "The committee's handling of both proposals taken together",
+   "Only the revision, since it is the nearer of the two actions",
+   "The observers' own expectations, stated later in the passage",
+   "The second proposal itself, as the closest preceding noun"
+  ],
+  "optionsEn": [
+   "The committee's handling of both proposals taken together",
+   "Only the revision, since it is the nearer of the two actions",
+   "The observers' own expectations, stated later in the passage",
+   "The second proposal itself, as the closest preceding noun"
+  ],
+  "correctIndex": 0,
+  "explanation": "代詞 this 在句首時，多數指前一句所述的【整件事】，而非最接近的名詞。前句敘述了兩個動作 —— 駁回與修訂 —— 兩者合起來構成令人意外的處理方式，因此 this 指的是這整個處理。判斷指代要問「甚麼令觀察者意外」，答案顯然不是「第二份提案」這件物件本身。留意「最接近的名詞」是一條粗略的經驗法則，遇上句首的 this／that／which 往往並不適用。",
+  "explanationEn": "Sentence-initial \"this\" usually points to the WHOLE action or situation in the preceding sentence, not to the nearest noun. The previous sentence reports two actions — a rejection and a revision — and together they form the handling that surprised observers, so \"this\" names that handling. To resolve reference, ask what exactly surprised the observers; the answer is plainly not the object called \"the second proposal\". Note that \"nearest noun\" is a rough rule of thumb and often fails for sentence-initial this, that and which."
+ },
+ {
+  "id": "floor9_p1_vr_05",
+  "type": "mc",
+  "subject": "english",
+  "topic": "Reading · Vocabulary & Reference",
+  "topicId": "p1_vocab_ref",
+  "topicZh": "Reading · Vocabulary & Reference",
+  "topicEn": "Reading · Vocabulary & Reference",
+  "difficulty": "hard",
+  "question": "「該計劃的成本高昂，但其收益同樣可觀 —— 這一點批評者往往略過不提。」該處的 which 一類指代若改用代詞，最容易出現甚麼錯誤？",
+  "questionEn": "In \"The scheme is costly, but its returns are substantial — a point critics tend to pass over\", what mistake is easiest to make in resolving the reference?",
+  "options": [
+   "Taking it to name the cost alone, when it names the returns being substantial",
+   "Taking it to name the critics, since they are mentioned immediately before",
+   "Taking it to name the scheme, since the scheme is the subject of the sentence",
+   "Assuming it names nothing, since a dash cannot introduce a reference"
+  ],
+  "optionsEn": [
+   "Taking it to name the cost alone, when it names the returns being substantial",
+   "Taking it to name the critics, since they are mentioned immediately before",
+   "Taking it to name the scheme, since the scheme is the subject of the sentence",
+   "Assuming it names nothing, since a dash cannot introduce a reference"
+  ],
+  "correctIndex": 0,
+  "explanation": "轉折句之中，指代通常承接【轉折之後】那一部分，因為那才是作者真正要強調的內容。此句以 but 帶出「收益同樣可觀」，接著說批評者略過不提 —— 被略過的自然是這一項，而非人所共知的成本。判斷方法是把指代還原成完整句子再讀一次：「批評者往往略過收益同樣可觀這一點」通順且合乎文意，換成成本則與 but 的轉折方向相反。",
+  "explanationEn": "In a sentence built on contrast, a reference normally picks up what follows the CONTRAST MARKER, since that is what the writer is pressing. Here \"but\" introduces the substantial returns, and it is those that critics pass over — not the cost, which is common ground. The test is to expand the reference into a full sentence and reread: \"critics tend to pass over the fact that the returns are substantial\" reads naturally and fits the argument, whereas substituting the cost runs against the direction the \"but\" has set."
+ }
+]

@@ -2,8 +2,23 @@
   "_meta": {
     "source": "bafs-batch-2.json",
     "subject": "bafs",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 6,
+      "of": 6,
+      "seed": "bafs-batch-2.json:6",
+      "ids": [
+        "bafs-07",
+        "bafs-08",
+        "bafs-09",
+        "bafs-10",
+        "bafs-11",
+        "bafs-12"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
     "bafs-07": "pending",

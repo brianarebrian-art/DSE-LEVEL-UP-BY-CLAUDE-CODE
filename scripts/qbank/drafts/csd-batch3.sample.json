@@ -1,0 +1,272 @@
+[
+ {
+  "id": "csd-b3-01",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "「一國兩制」與憲制秩序",
+  "difficulty": "basic",
+  "question": "《基本法》規定香港特別行政區享有高度自治權。就「高度自治」的來源而言，下列哪一項理解最為準確？",
+  "questionEn": "The Basic Law provides that the HKSAR enjoys a high degree of autonomy. Which understanding of the source of that autonomy is most accurate?",
+  "options": [
+   "高度自治權是特區成立之時本身已經擁有的固有權力，中央只作確認",
+   "高度自治權由中央授予，並非特區固有的權力",
+   "高度自治權由《基本法》與國際條約共同賦予，兩者缺一不可",
+   "高度自治權的具體範圍由特區按其實際需要自行界定及調整"
+  ],
+  "optionsEn": [
+   "It is an inherent power the HKSAR already held at its establishment, which the Centre merely confirmed",
+   "The high degree of autonomy is authorised by the Central Authorities; it is not an inherent power of the HKSAR",
+   "It is conferred jointly by the Basic Law and international treaties, neither of which may be omitted",
+   "Its precise scope is defined and adjusted by the HKSAR according to its own needs"
+  ],
+  "correctIndex": 1,
+  "explanation": "單一制國家之下，地方行政區域的權力來自中央授權。特區的高度自治權由全國人民代表大會透過《基本法》授予，並非特區自身固有，亦不能由特區自行擴充。\n\n【干擾項剖析】「固有權力」把授權關係說成天然存在，屬概念倒置；「由國際條約共同賦予」混淆了《中英聯合聲明》的歷史背景與現行憲制依據；「範圍由特區自行界定」與授權關係直接矛盾——授權者才能界定授權範圍。",
+  "explanationEn": "Under a unitary state, the powers of a local administrative region derive from central authorisation. The HKSAR's high degree of autonomy is authorised by the National People's Congress through the Basic Law; it is neither inherent nor self-expanding.\n\n[Distractor analysis] Calling it inherent inverts the relationship of authorisation. Attributing it jointly to treaties confuses historical background with the present constitutional basis. Saying the HKSAR defines its own scope contradicts authorisation itself — the authorising body defines the scope.",
+  "topicId": "hk_constitution",
+  "topicZh": "「一國兩制」與憲制秩序",
+  "topicEn": "OCTS & Constitutional Order"
+ },
+ {
+  "id": "csd-b3-02",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "「一國兩制」與憲制秩序",
+  "difficulty": "intermediate",
+  "question": "有評論認為，行政長官既要向中央人民政府負責，亦要向香港特別行政區負責，此一「雙負責」安排會令問責變得含糊。就《基本法》的制度設計而言，下列哪一項回應最為恰當？",
+  "questionEn": "Some commentators argue that requiring the Chief Executive to be accountable both to the Central People's Government and to the HKSAR makes accountability ambiguous. Which response best reflects the institutional design of the Basic Law?",
+  "options": [
+   "兩重負責意味行政長官可按事情性質自行選擇向哪一方交代",
+   "兩重負責只是條文上的禮節性表述，並不產生任何具體的制度要求",
+   "兩重負責針對不同事項，各有明確對象與範圍，並非同一事項的兩個標準",
+   "兩重負責在同一事項上必然互相衝突，故實際運作中只有向中央負責一項生效"
+  ],
+  "optionsEn": [
+   "The Chief Executive may choose which side to answer to depending on the matter",
+   "They are merely ceremonial wording and impose no concrete institutional requirement",
+   "The two lines of accountability address different matters, each with a defined object and scope; they are not two standards for the same matter",
+   "They necessarily conflict on the same matter, so only accountability to the Centre operates in practice"
+  ],
+  "correctIndex": 2,
+  "explanation": "行政長官向中央負責，主要涉及《基本法》所定屬於中央事權的事項，例如執行中央發出的指令、就特區整體施政向中央述職；向特區負責則體現於須向立法會作施政報告、答覆質詢及受監督。兩者對象與事項不同，屬分工而非同一事項的雙重標準。\n\n【干擾項剖析】「必然衝突」把制度分工誤讀為零和關係，屬過度推論；「只是禮節性表述」否定條文的規範效力，與述職、答覆質詢等具體安排不符；「可自行選擇」把制度義務說成個人裁量，屬張冠李戴。",
+  "explanationEn": "Accountability to the Central Authorities concerns matters falling within central powers under the Basic Law, such as implementing directives and reporting on the overall governance of the HKSAR. Accountability to the HKSAR is expressed through delivering policy addresses to the Legislative Council, answering questions and being subject to monitoring. The objects and matters differ; this is a division of functions, not two standards for one matter.\n\n[Distractor analysis] Claiming necessary conflict misreads a division of functions as zero-sum — an over-inference. Calling it ceremonial denies normative force and is inconsistent with duty visits and question sessions. Saying the office-holder may choose recasts an institutional duty as personal discretion.",
+  "topicId": "hk_constitution",
+  "topicZh": "「一國兩制」與憲制秩序",
+  "topicEn": "OCTS & Constitutional Order"
+ },
+ {
+  "id": "csd-b3-06",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "法治、權利與責任",
+  "difficulty": "intermediate",
+  "question": "有市民認為「我有言論自由，所以我發表任何內容都不應受法律追究」。就權利與責任的關係而言，此說的主要問題在於甚麼？",
+  "questionEn": "A citizen argues: 'I have freedom of speech, so nothing I publish should attract legal consequences.' What is the main flaw in this claim regarding rights and responsibilities?",
+  "options": [
+   "言論自由只在私人場合之內適用，於公開場合發表則不受保障",
+   "權利的主體只限於已成年的市民，未成年人並不享有言論自由",
+   "言論自由並非香港現行法律所保障的權利，故此說本身並無法律依據",
+   "混淆了權利受保障與權利不受任何限制，忽略行使權利時對他人權利的責任"
+  ],
+  "optionsEn": [
+   "It applies only in private settings and is unprotected in public",
+   "Only adults hold rights; minors do not enjoy freedom of speech",
+   "Freedom of speech is not protected under Hong Kong law, so the claim has no legal basis",
+   "It confuses being protected with being unlimited, ignoring the responsibility owed to others' rights when exercising a right"
+  ],
+  "correctIndex": 3,
+  "explanation": "權利受保障不等於權利絕對。行使言論自由時，若損害他人名譽、煽動他人犯罪或危害公共安全，仍須承擔相應法律責任。權利與責任並存，正是公民身分的基本內容。\n\n【干擾項剖析】「並非法律所保障」與《基本法》及相關人權條文不符，屬事實錯誤；「只屬於成年人」把權利主體任意收窄；「只在私人場合適用」把保障範圍倒轉——公開表達正是言論自由的典型情境。",
+  "explanationEn": "Protection is not the same as absence of limits. In exercising free speech, one remains legally responsible where reputation is harmed, crime is incited, or public safety is endangered. Rights coexisting with responsibilities is basic to citizenship.\n\n[Distractor analysis] Denying legal protection is factually wrong given the Basic Law and human-rights provisions. Restricting the right to adults arbitrarily narrows who holds it. Confining it to private settings inverts the position — public expression is the paradigm case.",
+  "topicId": "hk_rule_of_law",
+  "topicZh": "法治、權利與責任",
+  "topicEn": "Rule of Law, Rights & Duties"
+ },
+ {
+  "id": "csd-b3-09",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "香港社會與參與",
+  "difficulty": "basic",
+  "question": "人口老化會同時影響勞動力供應與公共開支。就其對公共財政的影響而言，下列哪一項推論最為直接？",
+  "questionEn": "Population ageing affects both labour supply and public expenditure. Which inference about its impact on public finances is most direct?",
+  "options": [
+   "醫療及安老開支會顯著上升，但稅收總額不會因人口結構改變而受影響",
+   "納稅人口比例下降，而醫療及安老服務開支上升，收支壓力同時來自兩端",
+   "納稅人口比例會下降，但公共服務的開支水平可以維持完全不變",
+   "人口老化只改變人口的年齡分佈，對公共財政收支並無實質影響"
+  ],
+  "optionsEn": [
+   "Healthcare and elderly spending rise markedly, but total revenue is unaffected by demographic change",
+   "The proportion of taxpayers falls while spending on healthcare and elderly services rises, so pressure comes from both sides",
+   "The taxpaying share falls, yet public service spending can remain entirely unchanged",
+   "Ageing only alters the age distribution and has no substantive fiscal effect"
+  ],
+  "correctIndex": 1,
+  "explanation": "人口老化的結構性影響是雙向的：勞動年齡人口比例下降令稅基收窄，而長者人口增加令醫療、安老及福利開支上升。分析公共財政壓力時，兩端須同時考慮，只計其一會低估影響。\n\n【干擾項剖析】「只有開支上升」與「只有稅收下降」各自只取一端，屬分析不完整；「並無實質影響」與人口結構同財政收支的關係不符。",
+  "explanationEn": "The structural effect runs both ways: a falling share of working-age population narrows the tax base, while a growing elderly population raises spending on healthcare, elderly care and welfare. Both sides must be considered; taking only one understates the impact.\n\n[Distractor analysis] Each single-sided option captures only half the effect. Denying any substantive impact is inconsistent with the link between demographic structure and fiscal balance.",
+  "topicId": "hk_society",
+  "topicZh": "香港社會與參與",
+  "topicEn": "Hong Kong Society & Participation"
+ },
+ {
+  "id": "csd-b3-14",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "改革開放與國家發展",
+  "difficulty": "intermediate",
+  "question": "國家推行區域協調發展策略，例如粵港澳大灣區建設。就「協調」二字的政策含義而言，下列哪一項理解最為準確？",
+  "questionEn": "The State pursues coordinated regional development, such as the Guangdong–Hong Kong–Macao Greater Bay Area. What does 'coordinated' most accurately mean in policy terms?",
+  "options": [
+   "區內各地的發展速度必須完全一致，任何一地都不可以領先或落後",
+   "各地按自身優勢分工並加強互聯互通，以整體效益為目標，而非各自獨立發展",
+   "由區內單一城市主導全部規劃，其餘城市按其安排作依附式發展",
+   "區內各地取消自身既有產業，全部改由中央統一分配新的分工"
+  ],
+  "optionsEn": [
+   "All areas must develop at exactly the same pace, with none ahead or behind",
+   "Each area specialises according to its strengths and strengthens connectivity, aiming at overall benefit rather than developing in isolation",
+   "One city leads all planning while the rest develop as its dependencies",
+   "Areas abolish existing industries and have new roles assigned centrally"
+  ],
+  "correctIndex": 1,
+  "explanation": "區域協調的重點在於分工與聯通：各地保留並發揮自身優勢，同時透過基礎設施、要素流動及制度銜接形成整體。目標是整體效益提升，而非速度劃一或角色取代。\n\n【干擾項剖析】「速度完全一致」把協調誤解為平均主義；「單一城市主導、其餘依附」與優勢互補的原則相反；「取消自身產業統一安排」與保留各地優勢的做法直接矛盾。",
+  "explanationEn": "Coordination centres on specialisation and connectivity: each area retains and exercises its strengths while infrastructure, factor flows and institutional alignment knit them into a whole. The aim is overall gain, not uniform pace or substituted roles.\n\n[Distractor analysis] Identical pace misreads coordination as levelling. One city with dependencies contradicts complementarity. Abolishing local industries contradicts retaining local strengths.",
+  "topicId": "china_reform",
+  "topicZh": "改革開放與國家發展",
+  "topicEn": "Reform & National Development"
+ },
+ {
+  "id": "csd-b3-16",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "改革開放與國家發展",
+  "difficulty": "hard",
+  "question": "有意見認為，經濟增長速度放緩即代表發展政策失敗。就國家由高速增長轉向高質量發展的政策取向而言，此說的主要問題是甚麼？",
+  "questionEn": "Some argue that slower growth means development policy has failed. Given the shift from high-speed growth to high-quality development, what is the main flaw in that claim?",
+  "options": [
+   "以單一速度指標評價一項目標已包含結構、環境與分配的政策，評價標準與政策目標不對應",
+   "增長速度放緩必然由外部環境變化造成，與內部政策調整無關",
+   "經濟增長速度在任何發展階段之中，都不屬於值得參考的指標",
+   "高質量發展本身必然會帶來比過去更高的經濟增長速度"
+  ],
+  "optionsEn": [
+   "It judges by a single speed indicator a policy whose goals include structure, environment and distribution; the yardstick does not match the objective",
+   "Slower growth is necessarily caused by external conditions, not internal adjustment",
+   "Growth rates are never a worthwhile indicator at any stage of development",
+   "High-quality development necessarily yields higher growth than before"
+  ],
+  "correctIndex": 0,
+  "explanation": "高質量發展的目標包括產業結構升級、環境承載、區域協調及收入分配等多個面向，其中部分目標與短期增速之間存在取捨。以單一速度指標判斷成敗，等於用與政策目標不一致的標準作評價。\n\n【干擾項剖析】「任何情況下都不重要」把批評矯枉過正，增速仍是重要指標之一；「必然帶來更高增速」把兩者關係說成必然，屬過度推論；「必然由外部因素造成」把成因單一化，忽略了主動調整的可能。",
+  "explanationEn": "High-quality development targets industrial upgrading, environmental capacity, regional coordination and distribution, several of which involve trade-offs against short-run speed. Judging success by speed alone applies a yardstick inconsistent with the stated objective.\n\n[Distractor analysis] Saying speed never matters overcorrects; it remains one important indicator. Asserting necessarily higher growth is an over-inference. Attributing the slowdown necessarily to external factors reduces causation to a single source and ignores deliberate adjustment.",
+  "topicId": "china_reform",
+  "topicZh": "改革開放與國家發展",
+  "topicEn": "Reform & National Development"
+ },
+ {
+  "id": "csd-b3-17",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "科技創新與綜合國力",
+  "difficulty": "basic",
+  "question": "「創新驅動發展」強調由要素投入轉向創新推動。此一轉變的主要原因最能以下列哪一項說明？",
+  "questionEn": "'Innovation-driven development' shifts from factor inputs to innovation. Which best explains the main reason for the shift?",
+  "options": [
+   "創新可以完全取代經濟體對資本投入的需求，令投資變得多餘",
+   "單靠增加土地、勞動力及資本投入，長遠會遇到報酬遞減與資源約束",
+   "創新驅動的模式只適用於服務業，並不適用於製造業的發展",
+   "增加土地、勞動力及資本的投入，在任何發展階段都不會帶來增長"
+  ],
+  "optionsEn": [
+   "Innovation can wholly replace the need for capital, making investment redundant",
+   "Relying on more land, labour and capital eventually meets diminishing returns and resource constraints",
+   "The innovation-driven model suits services only and not manufacturing",
+   "Adding land, labour and capital produces no growth at any stage of development"
+  ],
+  "correctIndex": 1,
+  "explanation": "以要素投入推動增長，在發展初期成效明顯，但當土地、勞動力及資本的可增幅度受限，且邊際報酬下降時，增長便難以為繼。轉向創新，目的是提高同樣投入之下的產出效率。\n\n【干擾項剖析】「任何階段都不能帶來增長」與發展初期的實際情況不符；「完全取代對資本的需求」誇大了創新的作用——創新本身亦需投資；「只適用於服務業」與製造業技術升級的事實相反。",
+  "explanationEn": "Factor-driven growth works well early on, but when land, labour and capital can no longer expand much and marginal returns fall, growth becomes hard to sustain. Turning to innovation aims to raise output efficiency from the same inputs.\n\n[Distractor analysis] Denying that inputs ever generate growth contradicts early-stage experience. Claiming innovation replaces capital entirely overstates its role, since innovation itself requires investment. Confining it to services contradicts technological upgrading in manufacturing.",
+  "topicId": "china_tech_power",
+  "topicZh": "科技創新與綜合國力",
+  "topicEn": "Innovation & National Strength"
+ },
+ {
+  "id": "csd-b3-19",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "科技創新與綜合國力",
+  "difficulty": "intermediate",
+  "question": "數字經濟發展同時帶來效率提升與新的治理課題，例如個人資料保障與平台市場地位。就政策取態而言，下列哪一項最能反映「發展與規範並重」？",
+  "questionEn": "The digital economy brings efficiency gains alongside new governance questions such as personal data protection and platform market power. Which best reflects a policy stance of 'development and regulation in parallel'?",
+  "options": [
+   "先讓市場全面放任發展，待出現嚴重問題之後才回過頭來考慮規範",
+   "暫停一切數字經濟活動，直至相關法規全部訂立完備之後方再開展",
+   "只集中訂立各項規則，同時不鼓勵任何新技術在市場上的應用",
+   "在鼓勵技術應用的同時，訂立資料使用與市場競爭的規則，令發展有可預期的邊界"
+  ],
+  "optionsEn": [
+   "Allowing wholly unrestrained development and considering rules only after serious problems emerge",
+   "Suspending all digital-economy activity until the full body of regulation is in place",
+   "Concentrating on rules alone while discouraging any new technological application",
+   "Encouraging technological application while setting rules on data use and market competition, giving development predictable boundaries"
+  ],
+  "correctIndex": 3,
+  "explanation": "「並重」指兩者同時進行而非先後取捨：規則提供可預期的邊界，令投資與應用有依據；發展則令規則有實際對象。兩者互為條件。\n\n【干擾項剖析】「暫停至法規完備」把並重變成先規範後發展；「先放任後規範」則變成先發展後規範；「只訂規則不鼓勵應用」放棄了發展一端。三者均為先後取捨，並非並重。",
+  "explanationEn": "'In parallel' means both at once rather than one before the other: rules provide predictable boundaries so investment and application have a basis, while development gives the rules a real subject. Each conditions the other.\n\n[Distractor analysis] Suspending until rules are complete puts regulation first. Unrestrained development puts regulation last. Rules without encouraging application abandons the development side. All three are sequential trade-offs, not parallelism.",
+  "topicId": "china_tech_power",
+  "topicZh": "科技創新與綜合國力",
+  "topicEn": "Innovation & National Strength"
+ },
+ {
+  "id": "csd-b3-27",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "互聯相依的世界",
+  "difficulty": "intermediate",
+  "question": "某地依賴單一國家供應大部分能源。就風險管理而言，下列哪一項措施最能針對此一結構性弱點？",
+  "questionEn": "A place relies on a single country for most of its energy. Which measure best addresses this structural vulnerability?",
+  "options": [
+   "即時停止一切能源進口，全部改由本地現有的發電設施供應",
+   "拓展供應來源並提高本地可再生能源比重，降低對單一來源的依賴",
+   "增加本地的能源消耗總量，藉此提高向供應國議價時的談判籌碼",
+   "與現有的單一供應國簽訂更長年期的合約，藉此維持現時的供應關係"
+  ],
+  "optionsEn": [
+   "Halting all energy imports immediately and relying on existing local generation",
+   "Diversifying supply sources and raising the share of local renewables to reduce reliance on one source",
+   "Raising total local energy consumption to strengthen bargaining leverage with the supplier",
+   "Signing a longer-term contract with the same single supplier to maintain the current relationship"
+  ],
+  "correctIndex": 1,
+  "explanation": "問題的根源在於「單一來源」而非「進口」本身。分散供應來源並發展本地可再生能源，直接降低單一中斷所造成的衝擊，屬對症下藥。\n\n【干擾項剖析】延長合約只是鎖定現狀，並未解除集中風險；「增加消耗提高議價能力」會加深依賴，方向相反；「停止一切進口」在本地供應不足時並不可行，屬極端而非對策。",
+  "explanationEn": "The root problem is single-source concentration, not importing as such. Diversifying sources and developing local renewables directly reduce the impact of a single disruption.\n\n[Distractor analysis] A longer contract locks in the status quo without removing concentration risk. Consuming more deepens reliance — the wrong direction. Halting all imports is not feasible where local supply is insufficient; it is an extreme, not a remedy.",
+  "topicId": "interdependence",
+  "topicZh": "互聯相依的世界",
+  "topicEn": "An Interdependent World"
+ },
+ {
+  "id": "csd-b3-32",
+  "type": "mc",
+  "subject": "csd",
+  "topic": "可持續發展與公共衞生",
+  "difficulty": "hard",
+  "question": "某項公共衞生措施能顯著降低傳染風險，但同時限制部分個人活動。就政策取捨而言，下列哪一項分析框架最為合理？",
+  "questionEn": "A public-health measure substantially lowers infection risk but restricts some individual activities. Which analytical framework for the trade-off is most defensible?",
+  "options": [
+   "比較措施的預期公共健康得益與所限制權利的程度，並檢視有否侵害較小而效果相若的替代方案",
+   "凡是涉及限制個人活動的公共衞生措施，一律不應推行",
+   "應由受影響人數最多的一方單方面決定是否推行該項措施",
+   "凡是能夠降低傳染風險的措施一律應該推行，不必考慮其他因素"
+  ],
+  "optionsEn": [
+   "Comparing expected public-health gains against the extent of rights restricted, and examining whether a less intrusive measure of similar effect exists",
+   "No public-health measure restricting individual activity should ever be adopted",
+   "The group with the most people affected should decide unilaterally",
+   "Any measure that lowers infection risk should be adopted regardless of other factors"
+  ],
+  "correctIndex": 0,
+  "explanation": "公共衞生措施的正當性通常按三點檢視：目的是否正當、手段與目的是否相稱、有否侵害較小而同樣有效的替代方案。此框架同時處理得益與代價，亦要求檢視替代選項，較單邊取態合理。\n\n【干擾項剖析】「一律不應推行」與「一律應推行」各自取消了取捨本身；「由人數最多一方決定」以多寡取代理據，忽略了少數群體所承受的代價。",
+  "explanationEn": "The legitimacy of public-health measures is usually examined on three points: whether the aim is legitimate, whether means are proportionate to the aim, and whether a less intrusive but equally effective alternative exists. This framework weighs both gains and costs and requires alternatives to be considered.\n\n[Distractor analysis] Blanket rejection and blanket adoption each abolish the trade-off. Deciding by headcount substitutes numbers for reasons and ignores costs borne by smaller groups.",
+  "topicId": "sustainability",
+  "topicZh": "可持續發展與公共衞生",
+  "topicEn": "Sustainability & Public Health"
+ }
+]

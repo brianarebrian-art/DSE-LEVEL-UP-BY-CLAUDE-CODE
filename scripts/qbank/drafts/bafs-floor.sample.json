@@ -1,0 +1,218 @@
+[
+ {
+  "id": "bafs_floor_04",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "折舊計算",
+  "topicId": "bafs_depreciation",
+  "topicZh": "折舊計算",
+  "topicEn": "Depreciation",
+  "difficulty": "intermediate",
+  "question": "某設備成本 \\$60,000，預計可用 4 年，殘值 \\$4,000。用直線法計算，每年折舊額是多少？",
+  "questionEn": "Equipment costing \\$60,000 has a 4-year useful life and a residual value of \\$4,000. What is the annual straight-line depreciation charge?",
+  "options": [
+   "\\$14,000",
+   "\\$15,000",
+   "\\$16,000",
+   "\\$11,200"
+  ],
+  "optionsEn": [
+   "\\$14,000",
+   "\\$15,000",
+   "\\$16,000",
+   "\\$11,200"
+  ],
+  "correctIndex": 0,
+  "explanation": "直線法每年折舊額 =（成本 − 殘值）÷ 使用年期 =（\\$60,000 − \\$4,000）÷ 4 = \\$56,000 ÷ 4 = \\$14,000。\\$15,000 是漏了扣除殘值，直接以 \\$60,000 ÷ 4 計算，這是最常見的失分位；\\$16,000 是把殘值加上而非減去；\\$11,200 是誤把 \\$56,000 除以 5。做這類題目時，建議先把「成本 − 殘值」寫成一個獨立的數字再除，把兩個步驟分開，比一口氣心算穩妥得多。",
+  "explanationEn": "The annual straight-line charge is (cost − residual value) ÷ useful life = (\\$60,000 − \\$4,000) ÷ 4 = \\$56,000 ÷ 4 = \\$14,000. The figure \\$15,000 omits the residual value and simply divides \\$60,000 by 4, which is where marks are most often lost; \\$16,000 adds the residual value instead of subtracting it; \\$11,200 divides \\$56,000 by 5. For questions of this kind it helps to write cost less residual value as a separate figure before dividing, keeping the two steps apart rather than doing it all in one mental calculation."
+ },
+ {
+  "id": "bafs_floor_07",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "折舊計算",
+  "topicId": "bafs_depreciation",
+  "topicZh": "折舊計算",
+  "topicEn": "Depreciation",
+  "difficulty": "intermediate",
+  "question": "就同一項資產而言，遞減餘額法與直線法在「首年折舊額」上的比較，通常是怎樣的？",
+  "questionEn": "For the same asset, how does the first-year charge under reducing balance usually compare with straight-line?",
+  "options": [
+   "遞減餘額法首年折舊額較大",
+   "直線法首年折舊額較大",
+   "兩種方法的首年折舊額相同",
+   "兩者的比較須視乎資產市價"
+  ],
+  "optionsEn": [
+   "reducing balance gives the larger first-year charge",
+   "straight-line gives the larger first-year charge",
+   "the two give the same first-year charge",
+   "it depends on the asset's market price"
+  ],
+  "correctIndex": 0,
+  "explanation": "遞減餘額法首年以未經折舊的成本全額乘以折舊率，基數最大，因此折舊額通常高於直線法的平均額；其後基數逐年縮小，折舊額隨之下降，後期反而低於直線法。兩法的分別在於「早提還是平均提」，而非總額——在整個使用年期之內，兩者所提的折舊總額大致相同，只是分佈不同。這個差異有實際影響：選用遞減餘額法會令資產早年的帳面利潤較低、後期較高，因此準則要求所選方法須配合資產效益的實際消耗模式，而不是按利潤需要隨意選擇。市價與兩法的比較無關。",
+  "explanationEn": "Reducing balance applies the rate to the full undepreciated cost in year one, the largest possible base, so the charge normally exceeds the straight-line average; the base then shrinks each year and the charge falls, ending below straight-line in later years. The difference lies in whether the charge is front-loaded or even, not in the total — over the whole useful life the two recognise broadly the same amount, distributed differently. This has a practical effect: reducing balance reports lower profit in the asset's early years and higher profit later, which is why standards require the method chosen to reflect how the asset's benefits are actually consumed rather than being selected to suit a desired profit. Market price has no bearing on the comparison."
+ },
+ {
+  "id": "bafs_floor_11",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "比率分析（高階）",
+  "topicId": "bafs_ratio_analysis",
+  "topicZh": "比率分析（高階）",
+  "topicEn": "Ratio analysis",
+  "difficulty": "basic",
+  "question": "「淨利率」（net profit margin）量度的是甚麼？",
+  "questionEn": "What does the net profit margin measure?",
+  "options": [
+   "每一元銷貨最終所得的淨利潤",
+   "每一元資產所產生的銷貨金額",
+   "每一元存貨一年周轉的次數",
+   "每一元負債所對應的股東權益"
+  ],
+  "optionsEn": [
+   "net profit earned per dollar of sales",
+   "sales generated per dollar of assets",
+   "times inventory turns over per dollar",
+   "shareholders' equity per dollar of debt"
+  ],
+  "correctIndex": 0,
+  "explanation": "淨利率 = 淨利潤 ÷ 銷貨 × 100%，反映每一元銷貨在扣除全部開支之後最終剩下多少利潤，是量度整體盈利能力的核心指標。它與毛利率的分別在於扣除的範圍：毛利率只扣銷貨成本，淨利率則連同營業開支、利息與稅項一併扣除。因此若毛利率穩定而淨利率下跌，問題多數出在營業開支或財務費用，而非採購或定價——這種「兩個比率一併比較以定位問題」的分析，正是高階題所要求的層次。餘下三項分別描述資產周轉率、存貨周轉率與資本結構比率。",
+  "explanationEn": "Net profit margin is net profit ÷ sales × 100%, showing how much profit remains from each dollar of sales after all expenses, and is the central measure of overall profitability. It differs from gross profit margin in what is deducted: gross margin subtracts only cost of sales, whereas net margin also subtracts operating expenses, interest and tax. So if gross margin holds steady while net margin falls, the problem usually lies in operating expenses or finance costs rather than in purchasing or pricing — and reading two ratios together to locate the problem is exactly the level of analysis higher-order questions expect. The other three options describe asset turnover, inventory turnover and a capital structure ratio."
+ },
+ {
+  "id": "bafs_floor_13",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "比率分析（高階）",
+  "topicId": "bafs_ratio_analysis",
+  "topicZh": "比率分析（高階）",
+  "topicEn": "Ratio analysis",
+  "difficulty": "intermediate",
+  "question": "某商號銷貨 \\$900,000，淨利潤 \\$72,000。其淨利率是多少？",
+  "questionEn": "A business has sales of \\$900,000 and net profit of \\$72,000. What is its net profit margin?",
+  "options": [
+   "8%",
+   "12.5%",
+   "0.08%",
+   "80%"
+  ],
+  "optionsEn": [
+   "8%",
+   "12.5%",
+   "0.08%",
+   "80%"
+  ],
+  "correctIndex": 0,
+  "explanation": "淨利率 = 淨利潤 ÷ 銷貨 × 100% = \\$72,000 ÷ \\$900,000 × 100% = 8%。12.5% 是把分子分母倒轉（\\$900,000 ÷ \\$72,000 得 12.5，並非百分率）；0.08% 是漏了乘以 100%；80% 是小數點放錯位置。要留意比率分析的分母永遠是銷貨而非成本，這一點在毛利率與加成率之間尤其容易混淆。另外，單一個 8% 本身說明不了甚麼——必須與同業水平或該商號往年的數字比較，才能判斷是好是壞。答分析題時只寫出比率而不作比較，通常只能取得計算分。",
+  "explanationEn": "Net profit margin is net profit ÷ sales × 100% = \\$72,000 ÷ \\$900,000 × 100% = 8%. The figure 12.5% inverts the fraction (\\$900,000 ÷ \\$72,000 gives 12.5, which is not a percentage); 0.08% omits the multiplication by 100%; 80% misplaces the decimal point. Note that the denominator in these ratios is always sales rather than cost, a distinction especially easy to blur between gross margin and mark-up. Note too that 8% on its own says little — it must be set against industry levels or the firm's own earlier figures before it can be judged good or bad. Stating a ratio without any comparison usually earns only the calculation marks."
+ },
+ {
+  "id": "bafs_floor_14",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "比率分析（高階）",
+  "topicId": "bafs_ratio_analysis",
+  "topicZh": "比率分析（高階）",
+  "topicEn": "Ratio analysis",
+  "difficulty": "intermediate",
+  "question": "單憑財務比率去評價一家公司，最主要的局限是甚麼？",
+  "questionEn": "What is the main limitation of judging a company by financial ratios alone?",
+  "options": [
+   "比率反映過去數據，亦不涵蓋非財務因素",
+   "比率的計算方法過於複雜，容易出現錯誤",
+   "比率只適用於上市公司，中小企不能使用",
+   "比率必須每日重新計算才會具有參考價值"
+  ],
+  "optionsEn": [
+   "ratios reflect past data and omit non-financial factors",
+   "the calculations are too complex and prone to error",
+   "ratios apply only to listed companies, not to smaller firms",
+   "ratios must be recalculated daily to be of any use"
+  ],
+  "correctIndex": 0,
+  "explanation": "財務比率取自已公布的報表，反映的是過去的表現，未必預示將來；而且它只涵蓋可以量化的財務資料，管理層質素、員工士氣、品牌聲譽、行業前景等對前景影響極大的因素，全部不會出現在比率之中。另外兩點局限亦值得留意：資產負債表數字是某一個時點的快照，年結日前後的安排可以令比率好看；不同公司採用的會計政策（例如折舊方法、存貨計價）不同，直接比較未必公平。比率的計算本身並不複雜，亦不限於上市公司，更不需要每日重算——這三項都不是它的真正弱點。",
+  "explanationEn": "Financial ratios are drawn from published statements and describe past performance, which need not predict the future; and they cover only what can be quantified financially, leaving out management quality, staff morale, brand reputation and industry outlook, all of which bear heavily on prospects. Two further limitations deserve note: balance sheet figures are a snapshot at one date, and arrangements made around the year end can flatter the ratios; and companies apply different accounting policies, such as depreciation methods and inventory valuation, so direct comparison may be unfair. The calculations themselves are not complex, are not confined to listed companies, and need no daily recalculation — none of those is a genuine weakness."
+ },
+ {
+  "id": "bafs_floor_17",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "成本・定價・回本",
+  "topicId": "bafs_costing_pricing",
+  "topicZh": "成本・定價・回本",
+  "topicEn": "Costing, pricing & payback",
+  "difficulty": "basic",
+  "question": "「單位邊際貢獻」（contribution per unit）的計算方法是甚麼？",
+  "questionEn": "How is contribution per unit calculated?",
+  "options": [
+   "售價減單位變動成本",
+   "售價減單位固定成本",
+   "售價減單位總成本",
+   "單位變動成本加固定成本"
+  ],
+  "optionsEn": [
+   "selling price less variable cost per unit",
+   "selling price less fixed cost per unit",
+   "selling price less total cost per unit",
+   "variable cost per unit plus fixed cost"
+  ],
+  "correctIndex": 0,
+  "explanation": "單位邊際貢獻 = 售價 − 單位變動成本，代表每多賣一件貨品所能貢獻出來、用以抵銷固定成本的金額。固定成本全部抵銷之後，其後每一件的邊際貢獻便成為利潤。理解這一點，收支平衡點的公式便無須死記：固定成本總額 ÷ 單位邊際貢獻，即「要賣多少件才夠抵銷固定成本」。留意公式中減去的是【變動】成本而非固定成本——把單位固定成本減去是最常見的錯誤，因為單位固定成本本身會隨產量改變，用它來計算會得出循環定義。售價減單位總成本得出的是單位利潤，並非邊際貢獻。",
+  "explanationEn": "Contribution per unit is selling price less variable cost per unit, the amount each additional unit sold contributes towards covering fixed costs. Once fixed costs are fully covered, the contribution from every further unit becomes profit. Seen this way the break-even formula needs no memorising: total fixed costs ÷ contribution per unit, that is, how many units must be sold to cover the fixed costs. Note that what is deducted is the variable cost, not the fixed cost — subtracting fixed cost per unit is the commonest error, since fixed cost per unit itself changes with output and using it produces a circular definition. Selling price less total cost per unit gives profit per unit, which is not contribution."
+ },
+ {
+  "id": "bafs_floor_18",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "成本・定價・回本",
+  "topicId": "bafs_costing_pricing",
+  "topicZh": "成本・定價・回本",
+  "topicEn": "Costing, pricing & payback",
+  "difficulty": "basic",
+  "question": "「回本期」（payback period）量度的是甚麼？",
+  "questionEn": "What does the payback period measure?",
+  "options": [
+   "收回原有投資額所需的時間",
+   "項目整個年期的總利潤金額",
+   "項目每年的平均回報百分率",
+   "投資在到期時的市場價值"
+  ],
+  "optionsEn": [
+   "the time taken to recover the original investment",
+   "the total profit over the project's whole life",
+   "the average annual percentage return",
+   "the market value of the investment at maturity"
+  ],
+  "correctIndex": 0,
+  "explanation": "回本期是累積淨現金流入等於原投資額所需的時間，例如投資 \\$100,000、每年淨流入 \\$25,000，回本期為 4 年。它的優點是計算簡單、直觀，並側重於資金回籠的速度，對現金緊絀的中小企特別實用。但它有兩個明顯局限：其一，完全不理會回本之後的現金流，因此可能捨棄一個回本較慢但長遠回報更高的項目；其二，不考慮金錢的時間價值，把第一年與第四年的一元當成等值。答評價題時把這兩點一併寫出，比只寫「計算簡單」更能取得分析分。",
+  "explanationEn": "The payback period is the time taken for cumulative net cash inflows to equal the original outlay — an investment of \\$100,000 returning \\$25,000 a year pays back in 4 years. Its merits are simplicity and a focus on how quickly cash comes back, which suits smaller firms with tight cash. It has two clear limitations: it ignores all cash flows after payback, so a project that pays back more slowly but returns far more overall may be rejected; and it disregards the time value of money, treating a dollar in year one as equal to a dollar in year four. Setting out both limitations earns more analysis marks in an evaluation question than simply noting that it is easy to calculate."
+ },
+ {
+  "id": "bafs_floor_21",
+  "type": "mc",
+  "subject": "bafs",
+  "topic": "成本・定價・回本",
+  "topicId": "bafs_costing_pricing",
+  "topicZh": "成本・定價・回本",
+  "topicEn": "Costing, pricing & payback",
+  "difficulty": "intermediate",
+  "question": "某貨品成本 \\$200，以「成本加成 20%」定價。就此售價而言，其毛利率（以售價為基礎）是多少？",
+  "questionEn": "Goods costing \\$200 are priced at a mark-up of 20% on cost. What is the gross profit margin on that selling price?",
+  "options": [
+   "16.7%",
+   "20.0%",
+   "25.0%",
+   "83.3%"
+  ],
+  "optionsEn": [
+   "16.7%",
+   "20.0%",
+   "25.0%",
+   "83.3%"
+  ],
+  "correctIndex": 0,
+  "explanation": "加成 20% 是以成本為基數：毛利 = \\$200 × 20% = \\$40，售價 = \\$200 + \\$40 = \\$240。毛利率則以售價為基數：\\$40 ÷ \\$240 = 16.7%。答 20% 是把加成率當成毛利率，正是本題要考的分別——兩者的分子相同（都是毛利 \\$40），但分母一個是成本、一個是售價，所以毛利率必定小於加成率。25% 是把毛利率反過來當加成率計；83.3% 是成本佔售價的比例。應付這類題目，先寫出成本、毛利、售價三個數字，再看題目問的比率以哪一個為分母，便不會混淆。",
+  "explanationEn": "A 20% mark-up is calculated on cost: gross profit = \\$200 × 20% = \\$40 and selling price = \\$200 + \\$40 = \\$240. Margin, however, is calculated on selling price: \\$40 ÷ \\$240 = 16.7%. Answering 20% treats the mark-up as the margin, which is precisely the distinction being tested — both have the same numerator, the \\$40 of gross profit, but the denominator is cost in one case and selling price in the other, so the margin is always the smaller. The figure 25% works the relationship backwards, and 83.3% is cost as a proportion of selling price. For questions of this kind, write down cost, gross profit and selling price first, then check which of them the required ratio uses as its denominator."
+ }
+]
