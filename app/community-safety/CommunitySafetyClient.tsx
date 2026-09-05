@@ -118,18 +118,6 @@ export default function CommunitySafetyClient() {
         </p>
       </Section>
 
-      <Section title={en ? 'The one thing that looks social, and is not' : '一樣睇落似互動、但唔係嘅嘢'}>
-        <p>
-          {en ? 'On ' : '喺'}
-          <Link href="/focus" className="font-medium text-accent-strong underline underline-offset-2">
-            {en ? 'the focus timer' : '專注計時器'}
-          </Link>
-          {en
-            ? ' you can share a room code so classmates start a session at the same time. Each device runs its own timer. Nothing is sent between you — no server, no sync, no shared state, no way to see who else is “in” the room. It is a promise you make to each other, not a connection between your devices.'
-            : '你可以 share 一個房號，等同學同一時間開始溫。每部機各自計時。你哋之間冇任何嘢傳送 —— 冇 server、冇同步、冇共享狀態，亦冇任何方法睇到仲有邊個「喺房入面」。佢係你哋之間嘅一個約定，唔係你哋部機之間嘅連線。'}
-        </p>
-      </Section>
-
       <Section title={en ? 'Links that leave this site' : '離開本站嘅連結'}>
         <p>
           {en

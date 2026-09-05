@@ -23,9 +23,7 @@ const zh = {
     tagline: 'Study Smarter, Not Harder',
     practice: '練習',
     progress: '我的進度',
-    studyMap: '溫書地圖',
     saved: '收藏',
-    focus: '專注',
     relax: '呼吸空間',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
@@ -373,9 +371,7 @@ const en: typeof zh = {
     tagline: 'Study Smarter, Not Harder',
     practice: 'Practise',
     progress: 'My Progress',
-    studyMap: 'Study Map',
     saved: 'Saved',
-    focus: 'Focus',
     relax: 'Breathing Space',
     quote: 'Master the logic, not the answers. Whatever the numbers, you can solve it.',
   },
