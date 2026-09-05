@@ -19,7 +19,9 @@
     "qa:budget": "node scripts/budget-guard.mjs",
     "qa:intel": "node scripts/hkeaa-monitor.mjs",
     "qa:slowsql": "node scripts/db-slow-queries.mjs",
-    "baseline": "npx --yes tsx@4.19.2 scripts/qbank/baseline.mts"
+    "baseline": "npx --yes tsx@4.19.2 scripts/qbank/baseline.mts",
+    "qbank:sync": "npx --yes tsx@4.19.2 scripts/qbank/sync-questions.mts",
+    "qbank:sync:check": "npx --yes tsx@4.19.2 scripts/qbank/sync-questions.mts --check"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

@@ -46,8 +46,50 @@
 - **Styling:** Tailwind CSS v4
 - **Auth:** Auth.js v5（Google OAuth）— **無 Supabase Auth，無 Better Auth**
 - **Middleware:** proxy.ts — **無 middleware.ts**
-- **Database:** Supabase PostgreSQL（僅經 server-only `getServiceSupabase()`）
+- **Database:** Supabase PostgreSQL。**兩種存取模式，唔可以混淆：**
+  - **寫入 ＋ 一切用戶數據：僅經 server-only `getServiceSupabase()`**（service role key 永不入瀏覽器）
+  - **題庫讀取：瀏覽器直連**（2026-09-05 新增，見 §3.1）
 - **Data:** 100% localStorage（客戶端），Supabase 只作 server-side 備份
+
+### 3.1 題庫瀏覽器直連 —— 2026-09-05 新增
+
+**決策：** Brian 2026-09-05：「為咗盡量慳住用 Edge Request，將所有題目搬入去
+Supabase……user 每一次做題目就呼叫 Supabase 拎題目出嚟」「即刻做瀏覽器直連
+Supabase，唔經 Vercel」。
+
+**點解要改憲章而唔係淨係改代碼：** 原條文寫死「僅經 server-only
+`getServiceSupabase()`」。瀏覽器直連係一個【新嘅存取模式】，代碼落咗而條文冇跟，
+下一個 session 讀憲章就會當佢係違規而拆走 —— §8.1 同 §8.2 各記低過一次呢個模式。
+
+**准許嘅範圍（只此一項）：** `questions` ＋ `question_bank_versions` 兩張表，
+**只讀**，經 `NEXT_PUBLIC_SUPABASE_ANON_KEY`。
+
+**約束（全部生效）：**
+
+1. **只限題目內容。** 題目本身已經係公開內容 —— 而家 build 入 JS chunk，
+   view-source 就攞得晒，包括 `correctIndex`。搬上雲【冇新增任何曝露】。
+   **任何用戶數據（`user_progress`／`user_settings`／`profiles`）一律維持
+   server-only**，唔准用同一個 anon key 開多一張表。§16.E 嘅約束不受本節影響。
+2. **anon 只有 SELECT。** `revoke insert, update, delete …`（`0017`）＋ RLS 零寫入
+   policy，兩層各自獨立成立。憲章 §12「機器永不自動入庫」靠呢兩層 ——
+   學生（或任何攞到 anon key 嘅人）改唔到一隻字。
+   ⚠️ Supabase 有 `ALTER DEFAULT PRIVILEGES`，新表自動畀齊 anon 全套 DML，
+   所以 `grant select` **唔構成收窄**，一定要顯式 `revoke`。呢點喺 `0016` 原稿
+   寫錯過，實測捉返（見 `0017` 檔頭）。
+3. **`data/questions/*.ts` 仍然係唯一正本。** 雲端係【衍生鏡像】，
+   由人手執行嘅 `scripts/qbank/sync-questions.mts` 單向寫入（repo → 雲）。
+   **反方向永不存在，亦唔准加** —— 一旦容許雲 → repo，改一條題目就會變成
+   一個冇 diff、冇 blame、冇實名簽署嘅動作，而學生睇到嘅嘢已經變咗。
+4. **靜態 chunk 回落路徑唔准拆。** 離線、未設 key、Supabase 死、學生封鎖咗
+   IndexedDB —— 四種情況都靠佢。chunk 本來 build 好擺喺 CDN，雲端行得通嗰陣
+   一個 byte 都唔會攞，所以留住佢嘅代價係零。
+   迴歸鎖：`lib/__tests__/question-cloud.test.mts`。
+5. **必須有 IndexedDB 版本比對。** 實測每科 gzip 85–186KB，每次練習都重攞
+   即係免費額度 5GB／月 ≈ 28,000 次科目載入就爆 —— 爆咗唔係慢啲，係停止服務，
+   同 §5 成本死鎖直接對撞。比對版本號之後，回頭客每次練習題目流量係
+   **32 bytes**（實測）。
+6. **`@supabase/supabase-js` 唔准入瀏覽器 bundle。** 用 `fetch` 直接打
+   PostgREST，bundle 加零。呢點同 §5「嚴禁新增套件」同一個理由。
 - **ORM:** 無 Drizzle ORM
 - **Charts:** 純 SVG + Tailwind — **禁 Chart.js / D3 / Recharts**
 - **Build:** `--webpack`，dev port 3001

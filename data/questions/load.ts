@@ -1,3 +1,4 @@
+import { loadFromCloud } from '@/lib/questionCloud'
 import type { AnyQuestion, MCQuestion, Question, WrittenQuestion } from './types'
 
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
@@ -213,9 +214,26 @@ const autoLoaders: Record<string, Loader> = {
  * 直接取用全部題目通常並不正確，因為兩類題目走完全不同的批改流程。
  */
 export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuestion[]> {
+  if (!loaders[subjectId] && !autoLoaders[subjectId]) return []
+
+  // ① 瀏覽器直連 Supabase（2026-09-05）。節省的是 Vercel Edge Request ——
+  //    題目流量由 Vercel 移至 Supabase；而回訪者連題目流量亦不產生
+  //    （IndexedDB 比對版本號，未變則不重新下載）。詳見 lib/questionCloud.ts。
+  //
+  //    ⚠️ 此步在 server 必然返回 null（cloudBankEnabled() 檢查 `window`）。
+  //    此為刻意設計：`loadSubjectQuestions` 亦有 server 呼叫者（subjects/[subject]
+  //    的 RSC、/api/result/verify），它們在同一 process 內本已持有靜態題庫，
+  //    改行網絡只會由「零延遲」變成「一個 round trip 加一個故障點」。
+  const cloud = await loadFromCloud(subjectId)
+  if (cloud?.length) return cloud
+
+  // ② 回落靜態 chunk。此路徑【並未移除】，亦不得移除：
+  //    離線、未設定 anon key、Supabase 故障、學生封鎖 IndexedDB —— 四種情況
+  //    均依賴此路徑。chunk 本已 build 妥並置於 CDN，雲端可用時一個 byte 亦不會
+  //    下載，故保留的代價為零。
+  //    迴歸鎖：lib/__tests__/question-cloud.test.mts
   const loader = loaders[subjectId]
   const auto = autoLoaders[subjectId]
-  if (!loader && !auto) return []
   const [base, extra] = await Promise.all([loader ? loader() : [], auto ? auto() : []])
   return extra.length ? [...base, ...extra] : base
 }
