@@ -13,7 +13,7 @@ import ConceptNet from '@/components/ConceptNet'
 import MathText from '@/components/MathText'
 import { useLocale } from '@/lib/i18n'
 import { textsInQuestion, type ConceptNode } from '@/lib/conceptNet'
-import { getSubjectQuestions } from '@/data/questions'
+import { loadSubjectQuestions } from '@/data/questions/load'
 import type { AnyQuestion, MCQuestion } from '@/data/questions'
 
 /** 每篇最多列幾多條 —— 一次過鋪成一版係資訊過載，本身就係壓力源。 */
@@ -26,8 +26,13 @@ export default function ConceptNetView() {
   const [bank, setBank] = useState<AnyQuestion[]>([])
 
   // 題庫喺客戶端攞：呢一頁 noindex，唔需要 SSR 出題目內容。
+  //
+  // 2026-09-05：由 barrel 嘅 getSubjectQuestions 改成 load.ts 嘅 lazy loader。
+  // barrel 靜態 import 齊 25 科 —— 呢一頁只用中文，卻要成個題庫先開得到。
   useEffect(() => {
-    setBank(getSubjectQuestions('chinese'))
+    let alive = true
+    loadSubjectQuestions('chinese').then((qs) => { if (alive) setBank(qs) })
+    return () => { alive = false }
   }, [])
 
   const related = useMemo(() => {

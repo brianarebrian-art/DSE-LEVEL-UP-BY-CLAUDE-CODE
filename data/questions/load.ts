@@ -244,6 +244,17 @@ export async function loadSubjectMCQuestions(subjectId: string): Promise<MCQuest
 }
 
 /**
+ * 某課題的 MC。等同 barrel 的 `getQuestionsByTopic()`，但只載入該科的 chunk。
+ *
+ * 2026-09-05 新增：/answer-sheet 與 /paper-warrior 原本呼叫 barrel 版本，
+ * 而兩者皆為 client component —— 於是為了一份試卷，將 25 科題庫全部
+ * build 入瀏覽器。此函數令它們可以只取所需的一科。
+ */
+export async function loadQuestionsByTopic(subjectId: string, topicId: string): Promise<MCQuestion[]> {
+  return (await loadSubjectMCQuestions(subjectId)).filter((q) => q.topic === topicId)
+}
+
+/**
  * 只取書寫題（text／long）。獨立 `?mode=long` 練習專用。
  * 此類題目【永不由機器批改】，亦不計入客觀準確率與等級預測（決策 ①）。
  */

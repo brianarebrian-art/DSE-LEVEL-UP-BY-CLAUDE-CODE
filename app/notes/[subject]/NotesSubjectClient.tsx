@@ -7,7 +7,13 @@ import { ArrowLeft, Lightbulb, Target, BookOpen, Printer } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import { getSubject } from '@/data/subjects'
-import { getSubjectQuestions, getSubjectTopics } from '@/data/questions'
+// 課題清單同題數 → summary.generated（靜態，唔會拉入題目）。
+// 題目內容（buildTopicNote 要）→ load.ts 逐科 lazy loader。
+// 兩者都刻意唔行 barrel：barrel 靜態 import 齊 25 科，喺 client 檔會將
+// 2.2MB 題目 build 入瀏覽器（2026-09-05 生產站實測）。
+import { SUBJECT_SUMMARY, SUBJECT_TOPICS } from '@/data/questions/summary.generated'
+import { loadSubjectQuestions } from '@/data/questions/load'
+import type { AnyQuestion } from '@/data/questions'
 import { getReverseLog, type ReverseLogEntry } from '@/lib/reverseLog'
 import { getTopicStats, type TopicStatEntry } from '@/lib/topicStats'
 import { buildTopicNote, accuracy, type TopicNote } from '@/lib/notes/notes'
@@ -28,8 +34,10 @@ function Inner({ subjectId }: { subjectId: string }) {
   const params = useSearchParams()
 
   const meta = getSubject(subjectId)
-  const topics = useMemo(() => getSubjectTopics(subjectId), [subjectId])
-  const questions = useMemo(() => getSubjectQuestions(subjectId), [subjectId])
+  const topics = useMemo(() => SUBJECT_TOPICS[subjectId] ?? [], [subjectId])
+  // 標題嗰個題數即刻出（靜態），唔使等題目載入。
+  const questionCount = SUBJECT_SUMMARY[subjectId]?.total ?? 0
+  const [questions, setQuestions] = useState<AnyQuestion[]>([])
 
   const [selected, setSelected] = useState<string>('')
   const [log, setLog] = useState<ReverseLogEntry[]>([])
@@ -41,6 +49,13 @@ function Inner({ subjectId }: { subjectId: string }) {
     setStats(getTopicStats())
   }, [])
 
+  // 題目內容改為按需載入 —— 只落呢一科嘅 chunk。
+  useEffect(() => {
+    let alive = true
+    loadSubjectQuestions(subjectId).then((qs) => { if (alive) setQuestions(qs) })
+    return () => { alive = false }
+  }, [subjectId])
+
   // ?topic= 深連結；冇就揀第一個
   useEffect(() => {
     const t = params.get('topic')
@@ -50,6 +65,9 @@ function Inner({ subjectId }: { subjectId: string }) {
   const note: TopicNote | null = useMemo(() => {
     const t = topics.find((x) => x.id === selected)
     if (!t) return null
+    // 題目未載完就唔好砌 —— 用空陣列砌出嚟係一份「0 題、0 個陷阱」嘅筆記，
+    // 睇落唔似載入中，似呢個課題真係冇嘢。
+    if (questions.length === 0) return null
     const stat = stats.find((s) => s.subjectId === subjectId && s.topic === t.id)
     return buildTopicNote(t.id, en ? (t.en ?? t.zh) : t.zh, t.emoji, questions, log, stat)
   }, [topics, selected, stats, subjectId, questions, log, en])
@@ -67,7 +85,7 @@ function Inner({ subjectId }: { subjectId: string }) {
           {meta?.emoji} {en ? meta?.nameEn : meta?.name}
         </h1>
         <p className="mt-1 text-sm text-ink-muted">
-          {tr(`${topics.length} 個課題 · ${questions.length} 題`, `${topics.length} topics · ${questions.length} questions`)}
+          {tr(`${topics.length} 個課題 · ${questionCount} 題`, `${topics.length} topics · ${questionCount} questions`)}
         </p>
       </header>
 

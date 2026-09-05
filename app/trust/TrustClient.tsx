@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import { REVIEWED_COUNT } from '@/data/provenance'
 import { getActiveSubjects } from '@/data/subjects'
-import { getSubjectQuestions } from '@/data/questions'
+import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 
 // 見 page.tsx 檔頭。呢版唔加新聲稱，只排列已存在嘅答案。
 //
@@ -39,7 +39,8 @@ export default function TrustClient() {
   const en = locale === 'en'
 
   const subjects = getActiveSubjects()
-  const total = subjects.reduce((n, s) => n + getSubjectQuestions(s.id).length, 0)
+  // 同 /transparency 一樣讀 summary.generated，唔好 import barrel。
+  const total = subjects.reduce((n, s) => n + (SUBJECT_SUMMARY[s.id]?.total ?? 0), 0)
   const pct = total > 0 ? ((REVIEWED_COUNT / total) * 100).toFixed(2) : '0'
 
   return (
