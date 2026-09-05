@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RelaxLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-[#E8E8EC]">
+    <div className="min-h-screen bg-surface text-ink">
       <div className="max-w-2xl mx-auto px-4 py-8">
         {/* 一鍵離開（SEN 要求：任何頁面一 click 返 Dashboard） */}
         <ExitBar />

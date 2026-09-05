@@ -20,7 +20,7 @@ export default function SupermarketFrame() {
         className="block w-full border-0 bg-transparent"
         style={{ height: 'min(82dvh, 960px)' }}
       />
-      <p className="mt-3 text-center text-xs leading-relaxed text-[#C2C2CC]">
+      <p className="mt-3 text-center text-xs leading-relaxed text-ink-soft">
         {en
           ? 'Everything in here is imaginary — the coins are not money, cannot be topped up, and buy nothing real.'
           : '入面全部都係虛擬嘅 —— 溫習幣唔係錢、唔可以充值、亦買唔到任何真實嘢。'}

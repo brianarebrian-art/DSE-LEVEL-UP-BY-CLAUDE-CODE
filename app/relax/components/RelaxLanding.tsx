@@ -27,19 +27,18 @@ export default function RelaxLanding({
         <div className="flex justify-center mb-2">
           <Mascot pose="armchair" height={132} />
         </div>
-        <h1 className="text-2xl font-bold text-[#E8E8EC]">{en ? 'Breathing Space' : '呼吸空間'}</h1>
+        <h1 className="text-2xl font-bold text-ink">{en ? 'Breathing Space' : '呼吸空間'}</h1>
         {/* FIX: [A1][A3] 「溫書耗 MP？入嚟補」→「溫書攰咗？入嚟唞一唞」（MP 概念整體移除） */}
-        <p className="text-sm text-neon-cyan mt-2 font-medium">
+        <p className="text-sm text-accent mt-2 font-medium">
           {en ? 'Study-tired? Come take a breather · recharge before heading back out' : '溫書攰咗？入嚟唞一唞 · 狀態回滿再出發'}
         </p>
-        {/* FIX: [A4][B5] 「催你」→「催促你」；#8B8B96 → #C2C2CC 提升說明文字對比度 */}
-        <p className="text-sm text-[#C2C2CC] mt-1 leading-relaxed">
+        <p className="text-sm text-ink-soft mt-1 leading-relaxed">
           {en ? 'Just opening this today already takes guts. No questions here, no countdown, no one rushing you.' : '今日肯打開嚟已經好叻。呢度冇題目、冇倒數、冇人會催促你。'}
         </p>
         {/* FIX: [B7] 純文字連結 → 高對比 cyan + underline-offset-4 + 更大觸控區（min-h-11 保留） */}
         <button
           onClick={onReopenMenu}
-          className="mt-2 text-sm text-neon-cyan hover:text-[#7FFAE8] underline underline-offset-4 min-h-11 py-2 px-4 transition-colors"
+          className="mt-2 text-sm text-accent hover:text-accent-hover underline underline-offset-4 min-h-11 py-2 px-4 transition-colors"
         >
           {en ? 'Reset sensory preferences' : '重新設定感官偏好'}
         </button>
@@ -49,15 +48,14 @@ export default function RelaxLanding({
         <Link
           href="/relax/solo"
           style={{ ["--relax-in-delay" as string]: "0ms" }}
-          className={`relax-in block rounded-xl bg-[#14141B] border border-white/10 hover:border-neon-cyan/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan ${
+          className={`relax-in block rounded-xl bg-surface-raised border border-line hover:border-accent/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
             pref.quiet ? 'opacity-90' : ''
           }`}
         >
           <div className="text-2xl mb-2" aria-hidden>🎧</div>
           {/* FIX: [A3] 「單排補 MP」→「獨處充電」 */}
-          <div className="font-bold text-[#E8E8EC] mb-1">🎧 {en ? 'Solo Recharge' : '獨處充電'}</div>
-          {/* FIX: [B5] 卡片描述 #8B8B96 → #C2C2CC */}
-          <div className="text-sm text-[#C2C2CC]">
+          <div className="font-bold text-ink mb-1">🎧 {en ? 'Solo Recharge' : '獨處充電'}</div>
+          <div className="text-sm text-ink-soft">
             {pref.quiet
               ? en ? 'Text-only breather, zone out (quiet mode)' : '文字回氣、放空（安靜模式）'
               : en ? 'Listen, breathe, zone out for a bit' : '聽聲、回氣、放空一陣'}
@@ -67,12 +65,12 @@ export default function RelaxLanding({
         <Link
           href="/relax/group"
           style={{ ["--relax-in-delay" as string]: "70ms" }}
-          className="relax-in block rounded-xl bg-[#14141B] border border-white/10 hover:border-neon-pink/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-pink"
+          className="relax-in block rounded-xl bg-surface-raised border border-line hover:border-subj-rose/50 p-6 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           <div className="text-2xl mb-2" aria-hidden>👥</div>
           {/* FIX: [A3][A4][B9] 「組隊開黑」→「同戰友傾偈」；「打卡」→「記錄心情」；描述完整顯示 */}
-          <div className="font-bold text-[#E8E8EC] mb-1">👥 {en ? 'Chat with study buddies' : '同戰友傾偈'}</div>
-          <div className="text-sm text-[#C2C2CC]">
+          <div className="font-bold text-ink mb-1">👥 {en ? 'Chat with study buddies' : '同戰友傾偈'}</div>
+          <div className="text-sm text-ink-soft">
             {en ? 'Chat, ask questions, or just watch others log their mood' : '傾偈、問問題、純粹睇人記錄心情都得'}
           </div>
         </Link>
@@ -82,7 +80,7 @@ export default function RelaxLanding({
       <Link
         href="/relax/breathing"
         style={{ ["--relax-in-delay" as string]: "140ms" }}
-        className="relax-in block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+        className="relax-in block w-full text-center rounded-[10px] border border-accent/30 text-accent text-sm py-3 min-h-11 hover:bg-accent/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         🌬️ {en ? 'Let me do a 4-7-8 breath first (1 min)' : '我先做個 4-7-8 呼吸（1 分鐘）'}
       </Link>
@@ -90,7 +88,7 @@ export default function RelaxLanding({
       {/* 5-4-3-2-1 落地練習（SEN-07 靜態安全網）：慌／解離感時用五官拉返當下 */}
       <Link
         href="/relax/grounding"
-        className="block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 mt-3 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+        className="block w-full text-center rounded-[10px] border border-accent/30 text-accent text-sm py-3 min-h-11 mt-3 hover:bg-accent/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         🧭 {en ? '5-4-3-2-1 grounding · pull myself back to now' : '5-4-3-2-1 落地練習 · 拉自己返到當下'}
       </Link>
@@ -98,7 +96,7 @@ export default function RelaxLanding({
       {/* 🛒 虛擬超市：純瀏覽減壓，零貨幣零結帳零計時（2026-08-04） */}
       <Link
         href="/relax/virtual-supermarket"
-        className="block w-full text-center rounded-[10px] border border-neon-pink/30 text-neon-pink text-sm py-3 min-h-11 mt-3 hover:bg-neon-pink/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-pink"
+        className="block w-full text-center rounded-[10px] border border-subj-rose/40 text-subj-rose text-sm py-3 min-h-11 mt-3 hover:bg-subj-rose/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         🛒 {en ? 'Wander a virtual supermarket · nothing to buy' : '行下虛擬超市 · 冇嘢要買'}
       </Link>
@@ -109,13 +107,13 @@ export default function RelaxLanding({
           日子先用得着，所以擺喺呼吸空間落面，唔擺喺練習流程入面。 */}
       <Link
         href="/waiting"
-        className="block w-full text-center rounded-[10px] border border-neon-cyan/30 text-neon-cyan text-sm py-3 min-h-11 mt-3 hover:bg-neon-cyan/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon-cyan"
+        className="block w-full text-center rounded-[10px] border border-accent/30 text-accent text-sm py-3 min-h-11 mt-3 hover:bg-accent/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         🕯️ {en ? 'Before results day · a slower place to wait' : '放榜前 · 一個慢啲嘅地方等'}
       </Link>
 
       {/* FIX: [A3][B5] 「補 1 格 MP 都得」→「唞 1 分鐘都得」；提升對比度 */}
-      <p className="text-xs text-[#C2C2CC] text-center mt-4">
+      <p className="text-xs text-ink-soft text-center mt-4">
         {en ? "Even one minute counts. Skip it if you're not up for it — no one will blame you." : '唞 1 分鐘都得。唔想做就唔做，冇人會怪你。'}
       </p>
     </div>

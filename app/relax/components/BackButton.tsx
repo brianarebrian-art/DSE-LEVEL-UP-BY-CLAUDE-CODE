@@ -11,7 +11,7 @@ export default function BackButton() {
     // FIX: [A1][A2] 「返去補給艙」→「返去呼吸空間」
     <Link
       href="/relax"
-      className="inline-flex items-center gap-1.5 min-h-11 px-2 -ml-2 text-sm text-[#8B8B96] hover:text-[#E8E8EC] transition-colors"
+      className="inline-flex items-center gap-1.5 min-h-11 px-2 -ml-2 text-sm text-ink-muted hover:text-ink transition-colors"
     >
       ← {en ? 'Back to the Breathing Space' : '返去呼吸空間'}
     </Link>

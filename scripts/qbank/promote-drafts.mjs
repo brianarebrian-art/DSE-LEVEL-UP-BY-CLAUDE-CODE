@@ -187,5 +187,12 @@ console.log(`  1. In data/questions/load.ts, merge into the "${SUBJECT}" loader:
 console.log(`         const reviewed = await import('./${base}')`)
 console.log(`         return [...base, ...reviewed.${exportName}]`)
 console.log(`  2. node scripts/qbank/validate-banks.mjs   (global dup-id / identical-stem check)`)
-console.log(`  3. npm run build -- --webpack\n`)
+console.log(`  3. npm run build -- --webpack`)
+// 2026-09-05 題庫上雲之後【必須】有呢一步。
+// 學生嘅瀏覽器而家直連 Supabase 攞題（憲章 §3.1），而雲端優先於靜態 chunk ——
+// 即係話 commit ＋ deploy 咗但冇同步，學生睇到嘅仍然係【舊題庫】，
+// 而且冇任何錯誤訊息：build 綠、測試綠、頁面正常，只係新題目一條都唔見。
+// 呢個 footgun 只會喺呢一刻出現，所以提示要放喺呢一刻。
+console.log(`  4. npx tsx scripts/qbank/sync-questions.mts --push   ← 唔做呢步，學生見到嘅仍然係舊題庫`)
+console.log(`     （核對用 --check；憲章 §3.1）\n`)
 process.exit(0)

@@ -22,8 +22,9 @@ function MetallicRing({ progress, label }: { progress: number; label: string }) 
     <svg viewBox="0 0 80 80" className="w-20 h-20 shrink-0" role="img" aria-label={label}>
       <defs>
         <linearGradient id="rank-ring" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="var(--color-neon-cyan)" />
-          <stop offset="100%" stopColor="var(--color-neon-purple)" />
+          {/* 2026-09-05 莫蘭迪化：原本係 neon-cyan → neon-purple 螢光漸變。 */}
+          <stop offset="0%" stopColor="var(--color-subj-sage)" />
+          <stop offset="100%" stopColor="var(--color-subj-mist)" />
         </linearGradient>
       </defs>
       {/* 底環 */}

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { BookOpen, Target, Dna, Bookmark, Clock, Leaf } from 'lucide-react'
+import { BookOpen, Target, Bookmark, Leaf } from 'lucide-react'
 import OwlMark from '@/components/OwlMark'
 import { useT, useLocale } from '@/lib/i18n'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
@@ -14,9 +14,7 @@ import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 // 規格 §3.1 列咗五項並註明「順序不可變」：
 //   Daily Mission / Error DNA / Grade Predictor / Focus Mode / Breathing Room
 // 逐條對返實際路由，五項入面【只有兩項有路由】：
-//   Focus Mode → /focus ✅ ・ Breathing Room → /relax ✅
 //   Daily Mission → 冇；最接近係 /dashboard
-//   Error DNA    → 冇；佢係一個組件，住喺 /dashboard/report（我嘅溫書地圖）
 //   Grade Predictor → 冇；等級預測分佈喺 /result 同 /prediction-method
 //
 // 更要緊嘅係：規格嗰五項【冇「練習」】。呢個站嘅核心動作就係做題 ——
@@ -47,9 +45,7 @@ import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 const ITEMS = [
   { href: '/subjects', key: 'practice', Icon: BookOpen, exact: false },
   { href: '/dashboard', key: 'progress', Icon: Target, exact: true },
-  { href: '/dashboard/report', key: 'studyMap', Icon: Dna, exact: false },
   { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false },
-  { href: '/focus', key: 'focus', Icon: Clock, exact: false },
   { href: '/relax', key: 'relax', Icon: Leaf, exact: false },
 ] as const
 
