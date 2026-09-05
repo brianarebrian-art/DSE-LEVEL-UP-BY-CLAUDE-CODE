@@ -2,31 +2,48 @@
   "_meta": {
     "source": "biology-floor.json",
     "subject": "biology",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 8,
+      "of": 22,
+      "seed": "biology-floor.json:22",
+      "ids": [
+        "bio_floor_05",
+        "bio_floor_09",
+        "bio_floor_10",
+        "bio_floor_12",
+        "bio_floor_15",
+        "bio_floor_17",
+        "bio_floor_20",
+        "bio_floor_21"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
-    "bio_floor_01": "pending",
-    "bio_floor_02": "pending",
-    "bio_floor_03": "pending",
-    "bio_floor_04": "pending",
+    "bio_floor_01": "machine-admitted",
+    "bio_floor_02": "machine-admitted",
+    "bio_floor_03": "machine-admitted",
+    "bio_floor_04": "machine-admitted",
     "bio_floor_05": "pending",
-    "bio_floor_06": "pending",
-    "bio_floor_07": "pending",
-    "bio_floor_08": "pending",
+    "bio_floor_06": "machine-admitted",
+    "bio_floor_07": "machine-admitted",
+    "bio_floor_08": "machine-admitted",
     "bio_floor_09": "pending",
     "bio_floor_10": "pending",
-    "bio_floor_11": "pending",
+    "bio_floor_11": "machine-admitted",
     "bio_floor_12": "pending",
-    "bio_floor_13": "pending",
-    "bio_floor_14": "pending",
+    "bio_floor_13": "machine-admitted",
+    "bio_floor_14": "machine-admitted",
     "bio_floor_15": "pending",
-    "bio_floor_16": "pending",
+    "bio_floor_16": "machine-admitted",
     "bio_floor_17": "pending",
-    "bio_floor_18": "pending",
-    "bio_floor_19": "pending",
+    "bio_floor_18": "machine-admitted",
+    "bio_floor_19": "machine-admitted",
     "bio_floor_20": "pending",
     "bio_floor_21": "pending",
-    "bio_floor_22": "pending"
+    "bio_floor_22": "machine-admitted"
   }
 }

@@ -28,7 +28,17 @@
 // 本框架會檢查四個選項互異、正解確實在選項之內、沒有 NaN 或 undefined。
 // ============================================================================
 import { writeFileSync } from 'node:fs'
-import { getSubjectQuestions } from '../../../data/questions/index.ts'
+
+// ⚠️ 動態 import，唔可以改返靜態。
+// `import { getSubjectQuestions } from '../../../data/questions/index.ts'` 喺
+// tsx 4.19.2（本 repo 全線鎖住嘅版本）之下會拋：
+//   SyntaxError: The requested module '…/index.ts' does not provide an export
+//                named 'getSubjectQuestions'
+// index.ts 係靠 `export *` 轉出嗰個函數，靜態分析階段睇唔到，要等到執行先解析到。
+// 同一個坑 topic-coverage.mjs 檔頭已經記低過（佢用轉譯繞開）；floor-gap.mts
+// 用 `await import(...)` 就一直行得。改成動態之後，成個 builders/ 目錄先跑得返。
+// 2026-09-05 實測：改之前所有 builder 都係一開波就死喺呢一行。
+const { getSubjectQuestions } = await import('../../../data/questions/index.ts')
 
 export type Diff = 'basic' | 'intermediate' | 'hard'
 export interface Inst {

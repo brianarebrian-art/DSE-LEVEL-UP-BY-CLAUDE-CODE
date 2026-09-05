@@ -54,31 +54,50 @@ export default function SubjectsView() {
   }
   const totalMatched = subjects.filter(matches).length
 
-  const ActiveCard = ({ s }: { s: SubjectMeta }) => (
-    <Link
-      href={`/subjects/${s.id}`}
-      className={`group relative bg-surface-raised border border-line rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}
-    >
-      {/* 2026-08-21：呢度本來係一個「✓ 已上線」徽章。信譽審核 §5 指出「已上線」
-          會被理解成全題型覆蓋 —— 而實情係 MC 有、書寫／口試／實作冇。
-          改為顯示【真實題數】：一個具體數字唔會被過度詮釋，而且加減題會自動跟。 */}
-      <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
-          <CheckCircle2 size={10} /> {getSubjectQuestions(s.id).length}
-          {en ? ' MC' : ' 條 MC'}
-        </span>
-      </div>
-      <div className="text-3xl mb-3">{s.emoji}</div>
-      <div className="font-medium mb-1 text-ink">{name(s)}</div>
-      <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
-      <div className="text-[11px] text-ink-muted mb-3">
-        {en ? 'Written / oral / practical: not covered' : '書寫、口試、實作：未涵蓋'}
-      </div>
-      <div className="flex items-center gap-1 text-sm text-accent font-medium">
-        {tl.startPractice} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-      </div>
-    </Link>
-  )
+  const ActiveCard = ({ s }: { s: SubjectMeta }) => {
+    // 2026-08-21：呢度本來係一個「✓ 已上線」徽章。信譽審核 §5 指出「已上線」
+    // 會被理解成全題型覆蓋。改為顯示【真實題數】：一個具體數字唔會被過度詮釋，
+    // 而且加減題會自動跟。
+    //
+    // 2026-09-05 修正兩處：
+    //   ① 個徽章本來寫 `getSubjectQuestions(s.id).length` 然後標「條 MC」，但
+    //      呢個函數返嘅係【全部題型】。數學實測 1539 條入面得 1509 條係 MC，
+    //      即係個數字每次都連書寫題一齊報做 MC。而家先 filter 再數。
+    //   ② 書寫題覆蓋率本來寫死一句「未涵蓋」，但數學／中文／歷史已經有書寫題
+    //      入咗庫。寫死嘅句子唔會跟住數據行 —— 一句喺三科身上已經係假嘅話，
+    //      同一句喺其餘廿二科身上就算啱都唔應該再信。改為逐科由實數推。
+    const all = getSubjectQuestions(s.id)
+    const mc = all.filter((q) => (q.type ?? 'mc') === 'mc').length
+    const written = all.length - mc
+    return (
+      <Link
+        href={`/subjects/${s.id}`}
+        className={`group relative bg-surface-raised border border-line rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}
+      >
+        <div className="absolute top-4 right-4">
+          <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
+            <CheckCircle2 size={10} /> {mc}
+            {en ? ' MC' : ' 條 MC'}
+          </span>
+        </div>
+        <div className="text-3xl mb-3">{s.emoji}</div>
+        <div className="font-medium mb-1 text-ink">{name(s)}</div>
+        <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
+        <div className="text-[11px] text-ink-muted mb-3">
+          {written > 0
+            ? en
+              ? `Written: ${written} · oral / practical: not covered`
+              : `書寫 ${written} 條 · 口試、實作：未涵蓋`
+            : en
+              ? 'Written / oral / practical: not covered'
+              : '書寫、口試、實作：未涵蓋'}
+        </div>
+        <div className="flex items-center gap-1 text-sm text-accent font-medium">
+          {tl.startPractice} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+        </div>
+      </Link>
+    )
+  }
 
   const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
     <div className="relative bg-surface border border-line rounded-xl p-5 opacity-80">
@@ -120,24 +139,12 @@ export default function SubjectsView() {
           </Link>
         </div>
 
-        {/* Roadmap progress bar */}
-        <div className="bg-surface-raised border border-line rounded-2xl p-5 mb-12">
-          <div className="flex justify-between text-sm mb-2">
-            <span className="text-ink-muted">{tl.progressLabel}</span>
-            <span className="text-accent font-medium">
-              {activeCount} / {subjects.length}{tl.progressUnit}
-            </span>
-          </div>
-          <div className="h-2 bg-line rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-accent to-violet rounded-full"
-              style={{ width: `${(activeCount / subjects.length) * 100}%` }}
-            />
-          </div>
-          <p className="text-xs text-ink-muted mt-3">
-            {tl.strategy}
-          </p>
-        </div>
+        {/* 2026-09-05：「內容生產進度」進度條喺呢度剷走。
+            佢一直顯示 25 / 25，即係一條永遠滿格嘅進度條 —— 25 科全部有題目，
+            冇嘢仲喺度「生產緊」。真正未齊嘅係【個別課題】同【書寫題】，
+            而嗰兩樣喺呢條科目層級嘅進度條上面永遠見唔到。
+            一個永遠滿格嘅指標唔係報平安，係量錯咗嘢。
+            覆蓋率而家逐科顯示（見 ActiveCard），跟實數行。 */}
 
         {/* Controls: search + sort */}
         <div className="flex flex-col sm:flex-row gap-3 mb-4">

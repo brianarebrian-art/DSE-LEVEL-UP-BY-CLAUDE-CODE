@@ -1,6 +1,14 @@
 -- 0013 —— Plus 付費系統基礎表（憲章 §8.2 受控收費框架）。
 --
--- ⚠️ 未套用。由創辦人喺 Supabase SQL Editor 自己行（生產資料庫）。
+-- ✅ 已套用：2026-09-04，生產資料庫 aegekxapxgcfdrkzisis（DSE-LEVEL-UP）。
+--    套用後實測：plus_entitlements / purchases / consent_logs / site_config
+--    四張表存在、RLS 全開、site_config 有 1 行（plus_enabled = false）。
+--    現有表一行都冇郁（user_progress 166 / user_settings 144 / profiles 6
+--    / review_decisions 197 / wall_posts 1，套用前後相同）。
+--
+--    ⚠️ 套用者係 Claude Code，唔係創辦人本人 —— 創辦人 2026-09-04 表示
+--    唔識用 Supabase SQL Editor，明示要求代行。本 repo 其餘 migration
+--    （0012 等）維持「由創辦人自己行」嘅慣例，呢次係例外，故此註明。
 --
 -- 依據：憲章 §3.2／§5 例外一／§8.2／§16.E／§17（2026-09-04 Brian ＋ Yuna 雙簽），
 --       修訂案全文見 docs/charter-amendment-2026-09-04.md。

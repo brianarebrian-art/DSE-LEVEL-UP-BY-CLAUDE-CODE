@@ -2,8 +2,20 @@
   "_meta": {
     "source": "english-written-batch1.json",
     "subject": "english",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 3,
+      "of": 3,
+      "seed": "english-written-batch1.json:3",
+      "ids": [
+        "en_long_b1_01",
+        "en_long_b1_02",
+        "en_long_b1_03"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
     "en_long_b1_01": "pending",

@@ -2,29 +2,46 @@
   "_meta": {
     "source": "chinese-fanwen-long-batch1.json",
     "subject": "chinese",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 8,
+      "of": 20,
+      "seed": "chinese-fanwen-long-batch1.json:20",
+      "ids": [
+        "zh_long_b1_01",
+        "zh_long_b1_05",
+        "zh_long_b1_09",
+        "zh_long_b1_10",
+        "zh_long_b1_14",
+        "zh_long_b1_15",
+        "zh_long_b1_17",
+        "zh_long_b1_19"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
     "zh_long_b1_01": "pending",
-    "zh_long_b1_02": "pending",
-    "zh_long_b1_03": "pending",
-    "zh_long_b1_04": "pending",
+    "zh_long_b1_02": "machine-admitted",
+    "zh_long_b1_03": "machine-admitted",
+    "zh_long_b1_04": "machine-admitted",
     "zh_long_b1_05": "pending",
-    "zh_long_b1_06": "pending",
-    "zh_long_b1_07": "pending",
-    "zh_long_b1_08": "pending",
+    "zh_long_b1_06": "machine-admitted",
+    "zh_long_b1_07": "machine-admitted",
+    "zh_long_b1_08": "machine-admitted",
     "zh_long_b1_09": "pending",
     "zh_long_b1_10": "pending",
-    "zh_long_b1_11": "pending",
-    "zh_long_b1_12": "pending",
-    "zh_long_b1_13": "pending",
+    "zh_long_b1_11": "machine-admitted",
+    "zh_long_b1_12": "machine-admitted",
+    "zh_long_b1_13": "machine-admitted",
     "zh_long_b1_14": "pending",
     "zh_long_b1_15": "pending",
-    "zh_long_b1_16": "pending",
+    "zh_long_b1_16": "machine-admitted",
     "zh_long_b1_17": "pending",
-    "zh_long_b1_18": "pending",
+    "zh_long_b1_18": "machine-admitted",
     "zh_long_b1_19": "pending",
-    "zh_long_b1_20": "pending"
+    "zh_long_b1_20": "machine-admitted"
   }
 }

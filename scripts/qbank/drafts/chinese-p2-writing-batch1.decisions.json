@@ -2,8 +2,23 @@
   "_meta": {
     "source": "chinese-p2-writing-batch1.json",
     "subject": "chinese",
+    "mode": "sampled",
     "reviewer": "",
-    "reviewedAt": ""
+    "reviewedAt": "",
+    "sample": {
+      "size": 6,
+      "of": 6,
+      "seed": "chinese-p2-writing-batch1.json:6",
+      "ids": [
+        "zh_p2_b1_01",
+        "zh_p2_b1_02",
+        "zh_p2_b1_03",
+        "zh_p2_b1_04",
+        "zh_p2_b1_05",
+        "zh_p2_b1_06"
+      ]
+    },
+    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
   },
   "decisions": {
     "zh_p2_b1_01": "pending",

@@ -1,0 +1,218 @@
+[
+ {
+  "id": "geo_floor_01",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "板塊與災害",
+  "topicId": "plate_hazards",
+  "topicZh": "板塊與災害",
+  "topicEn": "Plate Movement and Hazards",
+  "difficulty": "basic",
+  "question": "地球最外層由若干塊板塊組成。板塊之間的相對運動，大致可分為哪三類？",
+  "questionEn": "The outermost layer of the Earth is made up of a number of plates. Into which three kinds is their relative movement broadly divided?",
+  "options": [
+   "分離、聚合、平移（轉形）",
+   "上升、下降、旋轉",
+   "侵蝕、搬運、沉積",
+   "增溫、降溫、恆溫"
+  ],
+  "optionsEn": [
+   "divergent, convergent and transform",
+   "rising, sinking and rotating",
+   "erosion, transport and deposition",
+   "warming, cooling and remaining constant"
+  ],
+  "correctIndex": 0,
+  "explanation": "三類邊界各有其地貌與災害：分離型板塊互相拉開，形成中洋脊與裂谷；聚合型互相擠壓，形成海溝、褶皺山脈與火山；平移（轉形）型互相錯動，多發生淺源地震。留意「侵蝕、搬運、沉積」是【河流及海岸作用】的三分法，屬另一課題，兩者常被混淆 —— 前者由板塊內部熱力驅動，後者由地表的水流與波浪造成。",
+  "explanationEn": "Each kind of boundary has its own landforms and hazards. At divergent boundaries the plates pull apart, producing mid-ocean ridges and rift valleys; at convergent boundaries they press together, producing trenches, fold mountains and volcanoes; at transform boundaries they slide past one another, giving mostly shallow-focus earthquakes. Note that erosion, transport and deposition are the threefold division of river and coastal processes, a different topic altogether — the first set is driven by heat within the Earth, the second by surface water and waves."
+ },
+ {
+  "id": "geo_floor_03",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "板塊與災害",
+  "topicId": "plate_hazards",
+  "topicZh": "板塊與災害",
+  "topicEn": "Plate Movement and Hazards",
+  "difficulty": "basic",
+  "question": "火山噴發時可能造成的直接危害之一是甚麼？",
+  "questionEn": "What is one of the direct hazards that a volcanic eruption may produce?",
+  "options": [
+   "土壤鹽化 —— 鹽分在土壤表層積聚",
+   "雨影效應 —— 山的背風坡降水顯著偏少",
+   "火山碎屑流 —— 高溫氣體與碎屑高速沿坡而下",
+   "沿岸漂移 —— 沉積物沿海岸線被帶動移動"
+  ],
+  "optionsEn": [
+   "soil salinisation — salts accumulating at the soil surface",
+   "the rain-shadow effect — markedly less rainfall on a mountain’s leeward side",
+   "a pyroclastic flow — hot gas and debris rushing down the slope at speed",
+   "longshore drift — sediment being carried along the coastline"
+  ],
+  "correctIndex": 2,
+  "explanation": "火山碎屑流的溫度可達數百度，速度可超過每小時一百公里，沿山坡而下，是火山災害中致命性最高的一種，遠比熔岩流危險 —— 熔岩流速度慢，人可避開，碎屑流則不能。其餘三項全部是真實的地理現象，但分別屬於海岸作用、農業土壤問題及地形降水，與火山活動無關。跨課題張冠李戴，是本科常見的失分位。",
+  "explanationEn": "A pyroclastic flow can reach several hundred degrees and travel at over a hundred kilometres an hour down the flank of the volcano, and it is the deadliest of volcanic hazards — far more so than a lava flow, which moves slowly enough to be walked away from. The other three are all genuine geographical phenomena but belong to coastal processes, to agricultural soil problems and to relief rainfall respectively, and have nothing to do with volcanic activity. Attributing one topic’s term to another is a common way to lose marks in this subject."
+ },
+ {
+  "id": "geo_floor_06",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "河流與海岸",
+  "topicId": "rivers_coasts",
+  "topicZh": "河流與海岸",
+  "topicEn": "Rivers and Coasts",
+  "difficulty": "basic",
+  "question": "河流的「集水區」(drainage basin) 是指甚麼？",
+  "questionEn": "What is the drainage basin of a river?",
+  "options": [
+   "河流兩岸堤壩之間所圍起的範圍",
+   "一條河流及其支流所收集地表徑流的整片區域",
+   "河流之中水深最大的一段河道",
+   "河口一帶由沉積物堆積而成的三角洲"
+  ],
+  "optionsEn": [
+   "the area enclosed between the embankments on the two banks",
+   "the whole area from which a river and its tributaries collect surface run-off",
+   "the stretch of channel where the river is deepest",
+   "the delta of sediment built up at the river mouth"
+  ],
+  "correctIndex": 1,
+  "explanation": "集水區由分水嶺（通常是山脊線）劃界：嶺的這一邊落下的雨水匯入這條河，另一邊則匯入鄰近的河。理解這個範圍，才能理解為何上游的土地利用會影響下游 —— 上游森林被砍伐，同一場雨在集水區內的入滲減少、徑流加快，下游的氾濫風險便隨之上升。故河流管理必須以整個集水區為單位，而非只處理出事的一段河道。",
+  "explanationEn": "A drainage basin is bounded by the watershed, usually a ridge line: rain falling on one side of the ridge feeds this river, rain on the other side feeds the next. Grasping this area is what explains why land use upstream affects places downstream — clear the upstream forest and the same rainfall infiltrates less and runs off faster within the basin, so flood risk downstream rises. River management therefore has to take the whole basin as its unit rather than treating only the reach where trouble appeared."
+ },
+ {
+  "id": "geo_floor_08",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "天氣與氣候",
+  "topicId": "weather_climate",
+  "topicZh": "天氣與氣候",
+  "topicEn": "Weather and Climate",
+  "difficulty": "basic",
+  "question": "一般的氣候圖（climate graph）以柱狀圖與折線圖並列。兩者分別表示甚麼？",
+  "questionEn": "A climate graph normally combines bars with a line. What does each of them show?",
+  "options": [
+   "柱狀表示每月平均氣溫，折線表示每月降水量",
+   "兩者都表示氣溫，分別代表兩個不同年份",
+   "柱狀表示日照時數，折線表示平均風速",
+   "柱狀表示每月降水量，折線表示每月平均氣溫"
+  ],
+  "optionsEn": [
+   "the bars show mean monthly temperature and the line shows monthly rainfall",
+   "both show temperature, for two different years",
+   "the bars show hours of sunshine and the line shows mean wind speed",
+   "the bars show monthly rainfall and the line shows mean monthly temperature"
+  ],
+  "correctIndex": 3,
+  "explanation": "這是國際通用的畫法：降水量以柱狀表示（讀左軸或右軸的毫米刻度），氣溫以折線表示（讀另一軸的攝氏刻度）。讀圖時應先確認每一條軸屬於哪一項數據，再讀數 —— 兩軸的刻度不同，把柱與線對調就會得出完全相反的結論，例如把雨季誤讀為最熱的月份。此外要留意南半球的氣候圖，其最熱月份出現在年中的相反位置。",
+  "explanationEn": "This is the internationally standard convention: rainfall is drawn as bars, read against the millimetre scale on one axis, and temperature as a line, read against the Celsius scale on the other. Establish which axis belongs to which variable before taking any reading — the two scales differ, and swapping bars for line yields exactly the wrong conclusion, such as reading the wet season as the hottest months. Note also that on a Southern Hemisphere climate graph the warmest months fall at the opposite end of the year."
+ },
+ {
+  "id": "geo_floor_15",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "工業與區位",
+  "topicId": "industry",
+  "topicZh": "工業與區位",
+  "topicEn": "Industry and Location",
+  "difficulty": "basic",
+  "question": "在全球生產鏈之中，「外判」(outsourcing) 的意思是甚麼？",
+  "questionEn": "What does outsourcing mean in a global production chain?",
+  "options": [
+   "企業把總部由一個地方遷往另一個地方",
+   "企業向外地的銀行借入資金以擴充業務",
+   "企業把部分生產或服務工序交由其他公司承擔",
+   "企業把製成品直接售予外地的消費者"
+  ],
+  "optionsEn": [
+   "a firm moves its headquarters from one place to another",
+   "a firm borrows funds from banks abroad in order to expand",
+   "a firm hands part of its production or service work to another company",
+   "a firm sells its finished goods directly to consumers abroad"
+  ],
+  "correctIndex": 2,
+  "explanation": "外判的核心在於「交由別人做」：企業保留設計、品牌與銷售，把成本較高或非核心的工序交予其他公司，往往設於工資較低的地區。這解釋了為何一件商品可以在多個國家之間輾轉完成，亦帶出相關的爭議 —— 承接工序的一方議價能力較弱，工資與勞工條件容易被壓低。留意外判與出口、遷冊、融資是四回事，答全球化題時不宜混用。",
+  "explanationEn": "The heart of outsourcing is that the work is given to someone else: the firm keeps design, brand and sales, and passes the costlier or non-core stages to other companies, often in places where wages are lower. This explains how a single product can be completed across several countries, and it raises the associated dispute — the firms taking on those stages have weaker bargaining power, so wages and working conditions are readily pushed down. Outsourcing, exporting, relocating a headquarters and raising finance abroad are four different things, and should not be used interchangeably in an answer on globalisation."
+ },
+ {
+  "id": "geo_floor_18",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "糧食問題",
+  "topicId": "food",
+  "topicZh": "糧食問題",
+  "topicEn": "Food and Hunger",
+  "difficulty": "basic",
+  "question": "傳統農業中的「休耕」或「輪耕」做法，主要目的是甚麼？",
+  "questionEn": "What is the main purpose of fallowing or shifting cultivation in traditional farming?",
+  "options": [
+   "方便在田間使用大型農業機械",
+   "讓土壤有時間恢復肥力",
+   "縮短農作物運往市場的距離",
+   "增加農民出售農產品的現金收入"
+  ],
+  "optionsEn": [
+   "to make it easier to use large machinery in the fields",
+   "to give the soil time to recover its fertility",
+   "to shorten the distance crops must travel to market",
+   "to increase the cash income farmers earn from sales"
+  ],
+  "correctIndex": 1,
+  "explanation": "連續耕作會不斷消耗土壤中的養分；讓土地休息一段時間，植被得以重生、有機質得以累積、養分得以補充，土壤結構亦可恢復。故此做法在人口壓力不大時可以持續。但當人口增加、休耕期被迫縮短，土壤未及恢復又再耕種，肥力便逐年下降，最終導致土壤退化 —— 這正是熱帶地區刀耕火種由可持續轉為不可持續的關鍵所在。",
+  "explanationEn": "Continuous cropping steadily draws nutrients out of the soil; letting the land rest allows vegetation to return, organic matter to build up and nutrients to be replenished, and lets the soil structure recover. The practice is therefore sustainable where population pressure is light. But as numbers grow and the fallow period is shortened, land is cropped again before it has recovered, fertility falls year by year, and the soil degrades — which is precisely how slash-and-burn in the tropics passes from sustainable to unsustainable."
+ },
+ {
+  "id": "geo_floor_21",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "氣候變化",
+  "topicId": "climate_change",
+  "topicZh": "氣候變化",
+  "topicEn": "Climate Change",
+  "difficulty": "basic",
+  "question": "「溫室效應」的基本原理是甚麼？",
+  "questionEn": "What is the basic mechanism of the greenhouse effect?",
+  "options": [
+   "大氣中某些氣體讓太陽短波輻射通過，卻吸收地面放出的長波輻射",
+   "大氣中的雲層把太陽輻射直接反射回地面",
+   "大氣層的厚度增加，使地面空氣受壓而升溫",
+   "地球與太陽之間的距離正在逐年縮短"
+  ],
+  "optionsEn": [
+   "certain gases let the sun’s short-wave radiation through but absorb the long-wave radiation the ground gives off",
+   "clouds in the atmosphere reflect solar radiation straight back to the ground",
+   "the atmosphere thickens, compressing the air at the surface and warming it",
+   "the distance between the Earth and the sun is shortening year by year"
+  ],
+  "correctIndex": 0,
+  "explanation": "關鍵在於「進得來、出不去」：太陽輻射以短波為主，可穿過大氣到達地面；地面受熱後以長波輻射向外散熱，而二氧化碳、甲烷、水汽等溫室氣體正好能吸收長波，把熱量截留在大氣層內。留意溫室效應【本身是自然現象】，若完全沒有，地表平均氣溫將遠低於現時而不利生命；問題在於人類活動大量增加溫室氣體，令截留的熱量超出自然水平，即「增強的溫室效應」。",
+  "explanationEn": "The point is that heat gets in but cannot easily get out. Solar radiation is mostly short-wave and passes through the atmosphere to the ground; the warmed ground radiates heat outward at long wavelengths, and greenhouse gases such as carbon dioxide, methane and water vapour absorb precisely those long wavelengths, trapping the heat within the atmosphere. Note that the greenhouse effect is itself a natural phenomenon — without it the mean surface temperature would be far lower and far less hospitable to life. The problem is that human activity has greatly increased these gases, so that more heat is trapped than naturally would be: the enhanced greenhouse effect."
+ },
+ {
+  "id": "geo_floor_22",
+  "type": "mc",
+  "subject": "geography",
+  "topic": "氣候變化",
+  "topicId": "climate_change",
+  "topicZh": "氣候變化",
+  "topicEn": "Climate Change",
+  "difficulty": "basic",
+  "question": "「化石燃料」包括以下哪一組？",
+  "questionEn": "Which of the following groups are fossil fuels?",
+  "options": [
+   "鈾與釷等核燃料",
+   "煤、石油與天然氣",
+   "太陽能、風能與水能",
+   "木柴、稻稈與竹"
+  ],
+  "optionsEn": [
+   "nuclear fuels such as uranium and thorium",
+   "coal, oil and natural gas",
+   "solar, wind and hydro power",
+   "firewood, rice straw and bamboo"
+  ],
+  "correctIndex": 1,
+  "explanation": "化石燃料由遠古生物遺骸經長時間高溫高壓形成，儲量有限且再生極慢，燃燒時釋出長期封存的碳，是人為二氧化碳排放的主要來源。留意兩項常見混淆：木柴與稻稈屬生物質燃料，碳循環周期以年計而非以百萬年計，故性質與化石燃料不同；核燃料燃燒時不排放二氧化碳，但涉及放射性廢料與安全問題，是另一組議題。分清燃料類別，才能正確討論減排的取捨。",
+  "explanationEn": "Fossil fuels formed from the remains of ancient organisms under long periods of heat and pressure; reserves are finite and replenish only over geological time, and burning them releases carbon that had been locked away, which makes them the principal source of human carbon dioxide emissions. Note two common confusions. Firewood and straw are biomass fuels, whose carbon cycles over years rather than millions of years, so they are a different case. Nuclear fuels release no carbon dioxide in use but raise questions of radioactive waste and safety, which form a separate set of issues. Sorting the categories is what makes a discussion of emission trade-offs accurate."
+ }
+]

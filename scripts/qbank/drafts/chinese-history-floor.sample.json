@@ -1,0 +1,272 @@
+[
+ {
+  "id": "chist_floor_05",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "先秦政治",
+  "topicId": "preqin_polity",
+  "topicZh": "先秦政治",
+  "topicEn": "Pre-Qin Polity",
+  "difficulty": "basic",
+  "question": "戰國時期各國相繼變法，內容雖然不同，但普遍有一個共通方向。這個方向是甚麼？",
+  "questionEn": "The Warring States all undertook reforms which, though differing in content, shared a common direction. What was it?",
+  "options": [
+   "加強君主與中央的權力，削弱世襲貴族",
+   "恢復西周的封建與宗法舊制",
+   "把政治權力交予各地商人團體",
+   "放棄農業，全面發展手工業與貿易"
+  ],
+  "optionsEn": [
+   "strengthening the ruler and the centre while weakening the hereditary nobility",
+   "restoring the Western Zhou institutions of enfeoffment and lineage",
+   "transferring political power to merchant groups in the regions",
+   "abandoning agriculture in favour of handicrafts and trade"
+  ],
+  "correctIndex": 0,
+  "explanation": "無論是魏國的李悝、楚國的吳起，還是秦國的商鞅，變法的共同結果都是把權力由世襲貴族手上收歸君主。措施包括按功授爵而非按血統、以官僚取代封君治理地方、統一賦稅與法令。理解這條主線，就能明白何以戰國之後會走向中央集權的帝制。",
+  "explanationEn": "Whether Li Kui in Wei, Wu Qi in Chu or Shang Yang in Qin, the common result was to draw power from hereditary nobles to the ruler: rank by merit rather than birth, officials replacing enfeoffed lords in local government, and unified taxation and law. Grasping this thread explains why the Warring States gave way to a centralised imperial order."
+ },
+ {
+  "id": "chist_floor_07",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "秦漢至隋唐制度",
+  "topicId": "qinhan_tang",
+  "topicZh": "秦漢至隋唐制度",
+  "topicEn": "Qin–Tang Institutions",
+  "difficulty": "basic",
+  "question": "漢武帝頒行「推恩令」，容許諸侯把封地分給各個兒子。這項措施實際上產生了甚麼效果？",
+  "questionEn": "Emperor Wu of Han issued the “Decree of Grace”, allowing princes to divide their fiefs among all their sons. What effect did it actually produce?",
+  "options": [
+   "諸侯獲得自行任免中央官員的權力",
+   "朝廷取消了全部諸侯的爵位",
+   "諸侯封地逐代分割而變小，勢力自然削弱",
+   "諸侯的封地因合併而擴大"
+  ],
+  "optionsEn": [
+   "princes gained the power to appoint and dismiss central officials",
+   "the court abolished all princely titles outright",
+   "the fiefs were split in each generation and shrank, weakening the princes without confrontation",
+   "the fiefs were merged and became larger"
+  ],
+  "correctIndex": 2,
+  "explanation": "表面上這是恩典：從前只有嫡長子承襲，如今諸子皆可分得土地。但封地總量不變，分得越多、每份越小，數代之後諸侯已無力對抗中央。此舉的高明之處，在於不必動武、不必背上苛待宗室之名，而收削藩之效。",
+  "explanationEn": "On its face this was a favour: where only the eldest son had inherited, now all sons received land. But the total area was fixed, so the more it was divided the smaller each portion became, and within a few generations no prince could challenge the centre. Its elegance lay in achieving the reduction of princely power without force and without the odium of harshness toward the imperial clan."
+ },
+ {
+  "id": "chist_floor_13",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "宋元明清",
+  "topicId": "song_qing",
+  "topicZh": "宋元明清",
+  "topicEn": "Song to Qing",
+  "difficulty": "basic",
+  "question": "明太祖廢除丞相一職，把六部直接置於皇帝之下。這項改動對皇權有甚麼影響？",
+  "questionEn": "The Ming founder abolished the office of chief councillor and placed the Six Ministries directly under the emperor. What was the effect on imperial power?",
+  "options": [
+   "皇權大為集中，但皇帝的日常政務負擔亦大增",
+   "皇權受到削弱，六部得以自行決策",
+   "皇帝從此不再參與行政事務",
+   "地方督撫取得任免中央官員之權"
+  ],
+  "optionsEn": [
+   "imperial power became far more concentrated, while the emperor’s daily workload rose sharply",
+   "imperial power was weakened and the Six Ministries decided matters themselves",
+   "the emperor ceased to take part in administration",
+   "provincial governors gained the power to appoint central officials"
+  ],
+  "correctIndex": 0,
+  "explanation": "丞相原是皇帝與六部之間的中介，既分擔政務，亦在一定程度上制衡皇權。廢相之後，六部直達御前，權力盡歸皇帝，但所有奏章亦須皇帝親自處理。其後設立內閣以協助票擬，正是這個負擔的直接後果 —— 制度上被廢除的職能，實際上會以另一種形式回來。",
+  "explanationEn": "The chief councillor had stood between emperor and ministries, both sharing the burden and to some degree checking the throne. With the office gone, the ministries reported directly and all power rested with the emperor — but so did every memorial. The later creation of the Grand Secretariat to prepare draft rescripts was a direct consequence of that burden: a function abolished on paper tends to return in another form."
+ },
+ {
+  "id": "chist_floor_18",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "晚清變局",
+  "topicId": "late_qing",
+  "topicZh": "晚清變局",
+  "topicEn": "The Late Qing Crisis",
+  "difficulty": "basic",
+  "question": "戊戌變法在推行約一百日之後即告失敗。變法的主要主張是甚麼？",
+  "questionEn": "The Hundred Days’ Reform failed after roughly a hundred days. What did the reformers mainly advocate?",
+  "options": [
+   "把全國土地平均分配予農民",
+   "仿效外國推行君主立憲，並改革教育與行政",
+   "推翻清廷，建立共和政體",
+   "全面恢復明代的政治制度"
+  ],
+  "optionsEn": [
+   "redistributing all land equally among farmers",
+   "adopting a constitutional monarchy on foreign models, together with educational and administrative reform",
+   "overthrowing the Qing and establishing a republic",
+   "a full restoration of Ming political institutions"
+  ],
+  "correctIndex": 1,
+  "explanation": "維新派主張在保留皇室的前提下改革制度：設議院、改科舉、辦新式學堂、裁汰冗員。這與洋務運動只學器物不同，已觸及制度層面；但亦與革命派主張推翻帝制不同。分清「改良」與「革命」兩條路線，是理解晚清政治最重要的一組區分。",
+  "explanationEn": "The reformers sought institutional change while keeping the throne: a parliament, reform of the examinations, new-style schools and the removal of sinecures. This went beyond the Self-Strengthening Movement’s material borrowing to touch institutions, yet stopped short of the revolutionaries’ aim of ending the monarchy. Distinguishing reform from revolution is the single most important distinction in late Qing politics."
+ },
+ {
+  "id": "chist_floor_23",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "辛亥革命",
+  "topicId": "revolution",
+  "topicZh": "辛亥革命",
+  "topicEn": "The 1911 Revolution",
+  "difficulty": "basic",
+  "question": "辛亥革命結束了在中國實行兩千多年的哪一種政治制度？",
+  "questionEn": "The 1911 Revolution ended which political institution, in place in China for over two thousand years?",
+  "options": [
+   "郡縣地方行政制度",
+   "宗法家族制度",
+   "君主專制的帝制",
+   "科舉取士制度"
+  ],
+  "optionsEn": [
+   "the commandery-and-county system of local administration",
+   "the lineage system of family organisation",
+   "the imperial system of autocratic monarchy",
+   "selection of officials by examination"
+  ],
+  "correctIndex": 2,
+  "explanation": "自秦統一以來，帝制延續兩千餘年，辛亥革命使之終結，此後任何政權都難以公開回復帝制 —— 袁世凱稱帝迅速失敗，正說明這一點。至於科舉，早在一九○五年已停辦；郡縣式的地方行政則以另一種形式延續至今。分清哪一項被終結，是本題的關鍵。",
+  "explanationEn": "The imperial system had run for over two millennia since the Qin unification; the 1911 Revolution ended it, and thereafter no regime could openly restore it — Yuan Shikai’s swift failure as emperor demonstrates the point. The examinations had already been abolished in 1905, while commandery-style local administration continues in altered form to this day. Identifying which institution actually ended is the point of the question."
+ },
+ {
+  "id": "chist_floor_25",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "民國發展",
+  "topicId": "republic",
+  "topicZh": "民國發展",
+  "topicEn": "The Republican Era",
+  "difficulty": "basic",
+  "question": "五四運動最初由北京的學生發起，其後迅速擴大。這裏所謂「擴大」，具體表現是甚麼？",
+  "questionEn": "The May Fourth Movement began with students in Beijing and then spread rapidly. In what did that spreading consist?",
+  "options": [
+   "上海等地的工人罷工、商人罷市，運動由學界擴及社會各階層",
+   "各省的軍閥先後宣布獨立，脫離北京政府的管轄",
+   "政府主動下令全國各地響應學生所提出的訴求",
+   "各國駐華使館聯合發表聲明，公開支持學生"
+  ],
+  "optionsEn": [
+   "workers struck and merchants closed their shops in Shanghai and elsewhere, carrying the movement beyond the students into other classes",
+   "provincial warlords declared independence one after another from the Beijing government",
+   "the government itself ordered the whole country to support the students’ demands",
+   "the foreign legations in China issued a joint statement backing the students"
+  ],
+  "correctIndex": 0,
+  "explanation": "運動之所以能迫使政府讓步，關鍵在於它不再只是校園之內的事：工人罷工影響生產，商人罷市影響市面，壓力由多方同時施加。研究群眾運動時要留意這一點 —— 訴求是否正當是一回事，能否形成足夠壓力是另一回事，而後者往往取決於有多少不同群體加入。",
+  "explanationEn": "What forced the government to give ground was that the movement ceased to be confined to the campuses: strikes disrupted production and shop closures disrupted commerce, so pressure came from several directions at once. This is worth noting in studying popular movements — whether a demand is just is one question, and whether it can generate sufficient pressure another, and the second usually turns on how many different groups join in."
+ },
+ {
+  "id": "chist_floor_26",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "民國發展",
+  "topicId": "republic",
+  "topicZh": "民國發展",
+  "topicEn": "The Republican Era",
+  "difficulty": "basic",
+  "question": "一九三六年西安事變的直接結果是甚麼？",
+  "questionEn": "What was the immediate outcome of the Xi’an Incident of 1936?",
+  "options": [
+   "日本被迫撤出東北",
+   "促成國共停止內戰、共同抗日",
+   "國民政府正式向日本宣戰",
+   "中共放棄根據地，接受國民政府改編"
+  ],
+  "optionsEn": [
+   "Japan was forced to withdraw from the Northeast",
+   "it brought the civil war to a halt and led the Nationalists and Communists to resist Japan jointly",
+   "the Nationalist government formally declared war on Japan",
+   "the Communists abandoned their base areas and accepted Nationalist reorganisation"
+  ],
+  "correctIndex": 1,
+  "explanation": "事變之後，內戰停止，第二次國共合作隨之形成。留意「直接結果」四字：正式對日宣戰是在一九四一年珍珠港事件之後，與西安事變相隔五年；日本撤出東北則要待一九四五年戰爭結束。答此類題目時，先確認題目問的是即時結果還是長遠影響。",
+  "explanationEn": "After the incident the civil war stopped and the second united front took shape. Note the words “immediate outcome”: the formal declaration of war came only after Pearl Harbor in 1941, five years later, and Japan left the Northeast only at the war’s end in 1945. With questions of this kind, first establish whether the immediate result or the longer consequence is being asked for."
+ },
+ {
+  "id": "chist_floor_31",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "中共建國至改革",
+  "topicId": "prc",
+  "topicZh": "中共建國至改革",
+  "topicEn": "The PRC: Founding to Reform",
+  "difficulty": "basic",
+  "question": "「文化大革命」對中國的教育造成了甚麼直接影響？",
+  "questionEn": "What was the direct effect of the Cultural Revolution on education in China?",
+  "options": [
+   "義務教育年限由六年延長至九年",
+   "大量學生獲派往歐美留學",
+   "正常教學與招生長期中斷，造成人才培養的斷層",
+   "高等院校數目大幅增加"
+  ],
+  "optionsEn": [
+   "compulsory schooling was extended from six years to nine",
+   "large numbers of students were sent to study in Europe and North America",
+   "normal teaching and admissions were interrupted for years, creating a gap in the training of skilled people",
+   "the number of higher institutions increased sharply"
+  ],
+  "correctIndex": 2,
+  "explanation": "大專院校停止正常招生多年，中小學教學亦嚴重受擾。其後果不止於當時：一代人的專業訓練出現缺口，而這批人本應在其後數十年成為各行業的骨幹。評價這段歷史時，須把即時的衝擊與這種延後才顯現的長期代價分開來看。",
+  "explanationEn": "Higher institutions ceased normal admissions for years and schooling was badly disrupted. The consequence outlasted the period: a gap opened in one generation’s professional training, and that generation would otherwise have formed the backbone of many fields in the decades after. Assessing this era means separating the immediate damage from the delayed, long-term cost."
+ },
+ {
+  "id": "chist_floor_35",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "香港與兩岸",
+  "topicId": "hk_taiwan",
+  "topicZh": "香港與兩岸",
+  "topicEn": "Hong Kong and Cross-Strait Relations",
+  "difficulty": "basic",
+  "question": "一九四九年之後，海峽兩岸長期處於分治狀態。造成這一局面的直接原因是甚麼？",
+  "questionEn": "After 1949 the two sides of the Taiwan Strait remained separately governed for decades. What was the direct cause?",
+  "options": [
+   "聯合國決議把台灣列為託管地",
+   "兩岸在一九四九年簽訂分治協議",
+   "國共內戰結束後，國民政府遷往台灣",
+   "台灣在戰後由日本繼續管治"
+  ],
+  "optionsEn": [
+   "a United Nations resolution placed Taiwan under trusteeship",
+   "the two sides signed a partition agreement in 1949",
+   "the Nationalist government moved to Taiwan at the end of the civil war",
+   "Taiwan remained under Japanese administration after the war"
+  ],
+  "correctIndex": 2,
+  "explanation": "一九四五年台灣已由日本交還中國；一九四九年內戰結束，國民政府遷台，兩岸自此分治。答此類題目要留意「直接原因」與「背景」之別：日本殖民統治的五十年是背景，內戰的結局才是直接原因。至於託管與分治協議，均與史實不符。",
+  "explanationEn": "Taiwan had been returned by Japan in 1945; when the civil war ended in 1949 the Nationalist government relocated there, and the two sides have been separately governed since. Note the difference between the direct cause and the background: fifty years of Japanese colonial rule is background, while the outcome of the civil war is the direct cause. Trusteeship and a partition agreement do not match the record."
+ },
+ {
+  "id": "chist_floor_38",
+  "type": "mc",
+  "subject": "chinese-history",
+  "topic": "民國發展",
+  "topicId": "republic",
+  "topicZh": "民國發展",
+  "topicEn": "The Republican Era",
+  "difficulty": "basic",
+  "question": "軍閥割據時期的基本特徵是甚麼？",
+  "questionEn": "What characterised the period of warlord division?",
+  "options": [
+   "地方行政由科舉出身的文官體系全面掌握",
+   "各地軍事實力人物各據地盤，中央政府號令難行",
+   "全國由單一政黨統一管治，政令上下貫通",
+   "政權由議會多數黨組成，並按期改選更替"
+  ],
+  "optionsEn": [
+   "local administration was wholly in the hands of officials recruited through the examinations",
+   "military strongmen held their own territories, and the central government’s writ did not run",
+   "a single party governed the whole country and its orders were carried out throughout",
+   "government was formed by the majority party in parliament and changed at regular elections"
+  ],
+  "correctIndex": 1,
+  "explanation": "帝制結束之後，統一的權威未能重建，掌握軍隊者即掌握實權，各據一方而互相攻伐，中央政府雖然名義存在，實際能夠支配的範圍有限。這一局面直接造成賦稅繁重、交通阻斷與民生困苦，亦解釋了為何其後「統一」成為各方共同訴求。留意科舉已於一九○五年停辦，以文官體系描述此期並不符史實。",
+  "explanationEn": "With the monarchy gone and no unified authority rebuilt, whoever commanded troops held real power; each held a region and fought the others, and though a central government existed in name the area it could actually direct was limited. This produced heavy exactions, broken communications and severe hardship, and explains why unification became a demand shared across the political spectrum thereafter. Note that the examination system had been abolished in 1905, so describing this period in terms of an examination-recruited officialdom does not match the record."
+ }
+]

@@ -1,0 +1,272 @@
+[
+ {
+  "id": "hist_floor_01",
+  "type": "mc",
+  "subject": "history",
+  "topic": "第一次世界大戰",
+  "topicId": "ww1",
+  "topicZh": "第一次世界大戰",
+  "topicEn": "The First World War",
+  "difficulty": "basic",
+  "question": "一九一四年，奧匈帝國皇儲斐迪南在塞拉耶佛遇刺。這件事在一戰的成因之中屬於哪一類？",
+  "questionEn": "In 1914 Archduke Franz Ferdinand of Austria-Hungary was assassinated at Sarajevo. Under which category of causes of the First World War does this event fall?",
+  "options": [
+   "導火線 —— 觸發戰爭的即時事件",
+   "長遠成因 —— 積累多年的結構因素",
+   "戰爭的結果之一",
+   "戰後和約的其中一項條款"
+  ],
+  "optionsEn": [
+   "the immediate trigger — the event that set the war off",
+   "a long-term cause — a structural factor built up over years",
+   "one of the war’s outcomes",
+   "a clause of the post-war peace settlement"
+  ],
+  "correctIndex": 0,
+  "explanation": "成因分析須分層：長遠成因（軍備競賽、結盟對峙、帝國爭奪、民族主義）積累多年，導火線則是使積累爆發的那一刻。遇刺本身若無此前的結盟體系，未必會演成全面戰爭 —— 這正是兩者的分別。答卷二論述題時把兩者混為一談，是最常見的失分位。",
+  "explanationEn": "Causes must be layered: long-term causes — the arms race, hardened alliances, imperial rivalry, nationalism — built up over years, while the trigger is the moment that sets the accumulation off. Without the pre-existing alliance system the assassination need not have become a general war; that is the distinction. Conflating the two is a common way to lose marks in Paper 2."
+ },
+ {
+  "id": "hist_floor_03",
+  "type": "mc",
+  "subject": "history",
+  "topic": "第一次世界大戰",
+  "topicId": "ww1",
+  "topicZh": "第一次世界大戰",
+  "topicEn": "The First World War",
+  "difficulty": "basic",
+  "question": "一戰後召開的巴黎和會，其主要工作是甚麼？",
+  "questionEn": "What was the main business of the Paris Peace Conference held after the First World War?",
+  "options": [
+   "劃分非洲殖民地的勢力範圍",
+   "成立聯合國並設立安全理事會",
+   "處理戰敗國問題並重訂戰後國際秩序",
+   "商議如何聯合對抗蘇聯的擴張"
+  ],
+  "optionsEn": [
+   "partitioning colonial spheres of influence in Africa",
+   "founding the United Nations and its Security Council",
+   "settling the position of the defeated states and reordering the post-war international system",
+   "coordinating resistance to Soviet expansion"
+  ],
+  "correctIndex": 2,
+  "explanation": "和會處置戰敗國、重劃疆界、訂立賠償，並成立【國際聯盟】。留意聯合國與安全理事會是【二戰】之後的產物，兩個組織相差二十餘年；而劃分非洲殖民地主要是十九世紀末柏林會議的事。分清哪個會議做了哪件事，是這一課的基本功。",
+  "explanationEn": "The conference dealt with the defeated states, redrew borders, fixed reparations and created the League of Nations. Note that the United Nations and its Security Council came after the Second World War, more than twenty years later, while the partition of Africa belongs mainly to the Berlin Conference of the late nineteenth century. Keeping straight which conference did what is basic to this topic."
+ },
+ {
+  "id": "hist_floor_14",
+  "type": "mc",
+  "subject": "history",
+  "topic": "冷戰",
+  "topicId": "cold_war",
+  "topicZh": "冷戰",
+  "topicEn": "The Cold War",
+  "difficulty": "basic",
+  "question": "冷戰結束的一項標誌性事件是甚麼？",
+  "questionEn": "Which event is taken as a landmark of the end of the Cold War?",
+  "options": [
+   "馬歇爾計劃實施",
+   "蘇聯解體",
+   "古巴導彈危機",
+   "韓戰爆發"
+  ],
+  "optionsEn": [
+   "the launch of the Marshall Plan",
+   "the dissolution of the Soviet Union",
+   "the Cuban Missile Crisis",
+   "the outbreak of the Korean War"
+  ],
+  "correctIndex": 1,
+  "explanation": "蘇聯解體標誌兩極結構終結。留意三個干擾項都是冷戰【期間】的重要事件，位置不同：馬歇爾計劃屬冷戰初期的經濟手段，韓戰是早期的代理衝突，古巴導彈危機是對峙的高峰。把冷戰的起、中、終三段事件排好次序，是這一課的基本要求。",
+  "explanationEn": "The dissolution of the Soviet Union marks the end of the bipolar structure. All three distractors are important events within the Cold War at different points: the Marshall Plan was an early economic instrument, the Korean War an early proxy conflict, and the Cuban Missile Crisis the peak of confrontation. Ordering the beginning, middle and end of the Cold War is a basic requirement of this topic."
+ },
+ {
+  "id": "hist_floor_15",
+  "type": "mc",
+  "subject": "history",
+  "topic": "冷戰",
+  "topicId": "cold_war",
+  "topicZh": "冷戰",
+  "topicEn": "The Cold War",
+  "difficulty": "basic",
+  "question": "二戰之後德國被分為東西兩部分。柏林這座城市位於哪一邊的境內？",
+  "questionEn": "After the Second World War Germany was divided into east and west. Within which side did the city of Berlin lie?",
+  "options": [
+   "柏林剛好橫跨東西德的邊界，一半屬一方",
+   "柏林由蘇聯單獨管治，並不分為東西兩部分",
+   "整座柏林位於東德境內，市內再分為東西柏林",
+   "整座柏林位於西德境內，市內再分為東西柏林"
+  ],
+  "optionsEn": [
+   "Berlin straddled the border exactly, with half on each side",
+   "Berlin was administered by the Soviet Union alone and was not divided at all",
+   "the whole of Berlin lay inside East Germany, and the city itself was then divided into east and west",
+   "the whole of Berlin lay inside West Germany, and the city itself was then divided into east and west"
+  ],
+  "correctIndex": 2,
+  "explanation": "柏林雖然位於蘇聯佔領區（即其後的東德）之內，卻由四國分區佔領，故西柏林成為東德境內的一塊「飛地」，四面被東德包圍。認清這一點，柏林封鎖與柏林圍牆才講得通：蘇聯只需切斷陸路通道即可圍困西柏林，西方唯有靠空運補給；而圍牆之所以要環繞整個西柏林而非沿東西德邊界修築，原因亦在於此。把柏林誤置於西德境內，其後的整段敘述都會失去邏輯。",
+  "explanationEn": "Berlin lay inside the Soviet occupation zone, which became East Germany, yet the city itself was occupied in sectors by the four powers, so West Berlin formed an enclave surrounded on every side by East German territory. Grasping this makes the Berlin Blockade and the Berlin Wall intelligible: the Soviet Union needed only to cut the land routes to besiege West Berlin, leaving the Western powers to supply it by air; and the Wall had to encircle the whole of West Berlin rather than run along the inner-German border for the same reason. Placing Berlin inside West Germany leaves the entire subsequent narrative without its logic."
+ },
+ {
+  "id": "hist_floor_17",
+  "type": "mc",
+  "subject": "history",
+  "topic": "極權主義興起",
+  "topicId": "dictatorship",
+  "topicZh": "極權主義興起",
+  "topicEn": "Rise of Dictatorships",
+  "difficulty": "basic",
+  "question": "極權政權在取得政權之後，通常會採取以下哪一項措施以鞏固統治？",
+  "questionEn": "Having taken power, authoritarian regimes typically adopted which of the following to consolidate their rule?",
+  "options": [
+   "控制傳媒與教育，統一對外發布的訊息",
+   "擴大議會權力並鼓勵反對黨發展",
+   "把行政權力下放予地方自治團體",
+   "取消一切軍事與警察機構"
+  ],
+  "optionsEn": [
+   "controlling the press and education so as to unify the message reaching the public",
+   "expanding parliament’s powers and encouraging opposition parties",
+   "devolving executive power to local self-governing bodies",
+   "abolishing all military and police institutions"
+  ],
+  "correctIndex": 0,
+  "explanation": "控制資訊是這類政權的共通做法：傳媒統一口徑、教育由小培養認同、異見受壓制。理解「共通做法」的好處，是可以用同一組指標去比較不同政權，而不必逐個死記 —— 卷二比較題正正要求這種可移植的分析框架。",
+  "explanationEn": "Control of information was common to such regimes: a single line in the press, education shaping identity from an early age, and the suppression of dissent. The value of identifying common practices is that the same set of indicators can then be used to compare different regimes rather than memorising each separately — which is exactly the transferable framework a Paper 2 comparison requires."
+ },
+ {
+  "id": "hist_floor_20",
+  "type": "mc",
+  "subject": "history",
+  "topic": "國際合作",
+  "topicId": "intl_coop",
+  "topicZh": "國際合作",
+  "topicEn": "International Cooperation",
+  "difficulty": "basic",
+  "question": "二戰後歐洲經濟一體化的起步階段，採取的做法是甚麼？",
+  "questionEn": "How did European economic integration begin after the Second World War?",
+  "options": [
+   "一次過成立單一國家，取消所有成員國政府",
+   "先統一貨幣，再商討貿易安排",
+   "由聯合國指定成員國強制加入",
+   "先就特定產業建立共同管理，再逐步擴展至更廣範圍"
+  ],
+  "optionsEn": [
+   "creating a single state at once and abolishing all member governments",
+   "unifying the currency first and only then discussing trade",
+   "the United Nations designating members and compelling them to join",
+   "starting with joint management of particular industries and extending outward step by step"
+  ],
+  "correctIndex": 3,
+  "explanation": "一體化的路徑是由小而大：先把最容易引發衝突的產業置於共同管理之下，再擴展至關稅同盟、共同市場以至更深的政策協調。這種次序的好處是每一步都建基於前一步的成果，令合作有機會累積。留意單一貨幣是【後期】的事，並非起點。",
+  "explanationEn": "Integration proceeded from small to large: first placing the industries most likely to cause conflict under joint management, then extending to a customs union, a common market and deeper policy coordination. The advantage of this order is that each step rests on the results of the last, letting cooperation accumulate. Note that a single currency came late, not at the beginning."
+ },
+ {
+  "id": "hist_floor_22",
+  "type": "mc",
+  "subject": "history",
+  "topic": "國際合作",
+  "topicId": "intl_coop",
+  "topicZh": "國際合作",
+  "topicEn": "International Cooperation",
+  "difficulty": "basic",
+  "question": "聯合國轄下的專門機構（例如世界衞生組織）主要負責甚麼？",
+  "questionEn": "What are the UN’s specialised agencies, such as the World Health Organization, mainly responsible for?",
+  "options": [
+   "決定安全理事會常任理事國的席位",
+   "在特定技術範疇推動跨國合作與制訂共同標準",
+   "指揮聯合國的維持和平部隊",
+   "審理各國之間的領土爭議"
+  ],
+  "optionsEn": [
+   "deciding the seats of permanent members of the Security Council",
+   "promoting cross-border cooperation and setting common standards in particular technical fields",
+   "commanding United Nations peacekeeping forces",
+   "adjudicating territorial disputes between states"
+  ],
+  "correctIndex": 1,
+  "explanation": "專門機構把合作延伸至衞生、教育、勞工、氣象等技術範疇。這類合作的特點是：即使政治關係緊張，各國仍有實際誘因參與 —— 疾病與氣象不受國界限制。理解這一點，就明白何以冷戰期間政治對峙，技術合作卻未曾中斷。",
+  "explanationEn": "The specialised agencies extend cooperation into health, education, labour, meteorology and other technical fields. Such cooperation has a distinctive feature: even when political relations are strained, states retain a practical incentive to take part — disease and weather do not respect borders. This explains why technical cooperation continued through the political confrontation of the Cold War."
+ },
+ {
+  "id": "hist_floor_28",
+  "type": "mc",
+  "subject": "history",
+  "topic": "日本現代化",
+  "topicId": "japan_mod",
+  "topicZh": "日本現代化",
+  "topicEn": "Modernisation of Japan",
+  "difficulty": "basic",
+  "question": "第二次世界大戰後，日本經濟迅速復甦。以下哪一項是促成復甦的外部條件？",
+  "questionEn": "Japan’s economy recovered quickly after the Second World War. Which was an external condition of that recovery?",
+  "options": [
+   "日本本土蘊藏豐富的石油與鐵礦",
+   "日本在戰後取得大量海外殖民地",
+   "日本完全脫離國際貿易，自給自足",
+   "戰後的國際安排與開放的外部市場，令日本產品得以出口"
+  ],
+  "optionsEn": [
+   "abundant domestic reserves of oil and iron ore",
+   "the acquisition of extensive overseas colonies after the war",
+   "complete withdrawal from international trade in favour of self-sufficiency",
+   "post-war international arrangements and open external markets that let Japanese goods be exported"
+  ],
+  "correctIndex": 3,
+  "explanation": "日本天然資源匱乏，復甦高度依賴進口原料與出口製成品，故外部市場的開放是必要條件。同時亦須留意內部因素：產業政策、企業組織形式、高儲蓄與人力資本。評價復甦時把內外因素並列，比只講其中一邊完整得多。",
+  "explanationEn": "Japan is poor in natural resources, and recovery depended heavily on importing raw materials and exporting manufactures, so open external markets were a necessary condition. Internal factors also matter: industrial policy, forms of corporate organisation, high savings and human capital. Setting external and internal factors side by side gives a fuller assessment than either alone."
+ },
+ {
+  "id": "hist_floor_32",
+  "type": "mc",
+  "subject": "history",
+  "topic": "香港與東南亞",
+  "topicId": "hk_seasia",
+  "topicZh": "香港與東南亞",
+  "topicEn": "Hong Kong & Southeast Asia",
+  "difficulty": "basic",
+  "question": "二十世紀五十至七十年代，香港工業以哪一類產業為主？",
+  "questionEn": "Which kind of industry predominated in Hong Kong between the 1950s and the 1970s?",
+  "options": [
+   "鋼鐵與造船等重工業",
+   "石油開採與煉油業",
+   "大規模機械化農業",
+   "紡織、製衣、塑膠等輕工業"
+  ],
+  "optionsEn": [
+   "heavy industries such as steel and shipbuilding",
+   "oil extraction and refining",
+   "large-scale mechanised agriculture",
+   "light industries such as textiles, garments and plastics"
+  ],
+  "correctIndex": 3,
+  "explanation": "香港缺乏煤鐵等天然資源、土地有限，故工業集中於原料進口方便、投資額較小、勞動力密集的輕工業。理解「條件決定產業結構」這一點，比死記行業名稱有用得多 —— 同一套推理可以用來解釋其後為何轉向服務業。",
+  "explanationEn": "Hong Kong lacked coal, iron and land, so industry concentrated on light manufacturing where materials were easily imported, capital requirements modest and labour intensive. Understanding that conditions shape industrial structure is more useful than memorising the industries — the same reasoning explains the later shift to services."
+ },
+ {
+  "id": "hist_floor_36",
+  "type": "mc",
+  "subject": "history",
+  "topic": "極權主義興起",
+  "topicId": "dictatorship",
+  "topicZh": "極權主義興起",
+  "topicEn": "Rise of Dictatorships",
+  "difficulty": "basic",
+  "question": "意大利法西斯政權與德國納粹政權，在取得政權的方式上有一項共同點。這一共同點是甚麼？",
+  "questionEn": "The Fascist regime in Italy and the Nazi regime in Germany shared one feature in how they came to power. What was it?",
+  "options": [
+   "均由外國軍隊扶植，在佔領之下成立政權",
+   "均由全國公民投票直接選出領袖後立即建政",
+   "均以武裝起義一舉推翻原有政府後奪權",
+   "均先在既有體制之內取得執政地位，其後才逐步取消憲政限制"
+  ],
+  "optionsEn": [
+   "both were installed by foreign armies and set up under occupation",
+   "both were founded immediately after a national plebiscite directly elected the leader",
+   "both seized power by overthrowing the existing government in a single armed rising",
+   "both first gained office within the existing system, and only afterwards dismantled constitutional limits"
+  ],
+  "correctIndex": 3,
+  "explanation": "兩者都不是靠一場政變一舉奪權：政權先經合法途徑進入體制，再運用緊急權力、修改法例與打壓反對派，把制度上的制衡逐一取消。認清這一點很重要 —— 它說明憲政體制本身並不能自動阻止極權，關鍵在於制衡是否被實際維持。答論述題時若把兩者寫成武裝推翻，不但與史實不符，亦會錯過「體制如何被由內拆解」這條真正的分析線索。",
+  "explanationEn": "Neither regime seized power in a single coup: each first entered the system by lawful means, then used emergency powers, changes in the law and the suppression of opponents to remove the institutional checks one by one. The point matters, because it shows that a constitutional order does not by itself prevent dictatorship — what counts is whether the checks are kept in working order. Writing these up as armed overthrows in an essay not only misstates the record but misses the real line of analysis: how a system was dismantled from within."
+ }
+]

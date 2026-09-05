@@ -1,0 +1,218 @@
+[
+ {
+  "id": "eth_floor_13",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "基督宗教",
+  "topicId": "christianity",
+  "topicZh": "基督宗教",
+  "topicEn": "Christianity",
+  "difficulty": "basic",
+  "question": "基督宗教《新約》中的「四福音書」，記載的主要內容是甚麼？",
+  "questionEn": "What do the four Gospels of the Christian New Testament mainly record?",
+  "options": [
+   "耶穌的生平、言行與教訓",
+   "以色列人出埃及的經過與律法的頒布",
+   "初期教會的建立、傳教與擴展",
+   "關於世界終末的異象與啟示"
+  ],
+  "optionsEn": [
+   "the life, words, deeds and teaching of Jesus",
+   "the exodus of the Israelites from Egypt and the giving of the Law",
+   "the founding, mission and spread of the early Church",
+   "visions and revelations concerning the end of the world"
+  ],
+  "correctIndex": 0,
+  "explanation": "四福音書即《馬太福音》、《馬可福音》、《路加福音》及《約翰福音》，各自從不同角度記述耶穌。其餘三項亦真實存在於《聖經》，但屬別的書卷：出埃及與律法屬《出埃及記》，初期教會屬《使徒行傳》，終末異象屬《啟示錄》。把內容與書卷對上號，是答基督宗教題目的基本功。",
+  "explanationEn": "The four Gospels are Matthew, Mark, Luke and John, each recounting Jesus from its own angle. The other three are also genuinely in the Bible but belong to different books: the exodus and the Law to Exodus, the early Church to Acts, and the visions of the end to Revelation. Matching content to book is basic to answering on the Christian tradition."
+ },
+ {
+  "id": "eth_floor_15",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "基督宗教",
+  "topicId": "christianity",
+  "topicZh": "基督宗教",
+  "topicEn": "Christianity",
+  "difficulty": "basic",
+  "question": "基督宗教的「三位一體」教義，其內容是甚麼？",
+  "questionEn": "What is the content of the Christian doctrine of the Trinity?",
+  "options": [
+   "神在不同時期先後以三種身分顯現，並非同時",
+   "神、人與世界三者最終合而為一",
+   "聖父、聖子、聖靈為同一位神的三個位格",
+   "聖父、聖子、聖靈是三位各自獨立的神"
+  ],
+  "optionsEn": [
+   "God appears successively in three roles at different periods, not at once",
+   "God, humanity and the world are ultimately merged into one",
+   "Father, Son and Holy Spirit are three persons of one and the same God",
+   "Father, Son and Holy Spirit are three separate and independent gods"
+  ],
+  "correctIndex": 2,
+  "explanation": "這是基督宗教主流傳統的核心教義之一：一位神，三個位格，既非三位神，亦非同一位格輪流換上三副面孔。餘下三項在教會歷史上都曾出現並被主流傳統判定為偏離：主張三位獨立者近於多神論，主張先後顯現者即所謂形態論，主張神與世界合一者則近於泛神論。本題只描述該傳統自身的理解，不涉及其真偽的判斷。",
+  "explanationEn": "This is one of the central doctrines of the mainstream Christian tradition: one God in three persons — neither three gods, nor one person wearing three faces in turn. The other three positions all appeared in church history and were judged by the mainstream tradition to depart from it: three independent beings tends towards polytheism, successive appearances is what is called modalism, and the merging of God and world approaches pantheism. This question describes only how the tradition understands itself and makes no judgement about whether it is true."
+ },
+ {
+  "id": "eth_floor_18",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "佛教",
+  "topicId": "buddhism",
+  "topicZh": "佛教",
+  "topicEn": "Buddhism",
+  "difficulty": "basic",
+  "question": "佛教「三法印」中的「諸行無常」，指的是甚麼？",
+  "questionEn": "What does “all conditioned things are impermanent”, one of the Buddhist three marks of existence, mean?",
+  "options": [
+   "世事的變化由某位神明所主宰和安排",
+   "一切因緣和合而生的事物都在變化，沒有恆常不變的狀態",
+   "一切事物都是虛假的，實際上並不存在",
+   "人生必然充滿痛苦，而且無法改變"
+  ],
+  "optionsEn": [
+   "the changes of the world are governed and arranged by a deity",
+   "everything that arises from conditions is in change; no state remains permanently as it is",
+   "everything is illusory and does not in fact exist at all",
+   "human life is necessarily full of pain, and this cannot be altered"
+  ],
+  "correctIndex": 1,
+  "explanation": "無常說的是「變」，不是「無」：事物確實存在，只是不能以固定不變的方式存在。這一點常被誤讀為虛無主義，繼而推論「既然一切都假，做甚麼都無所謂」—— 恰恰相反，正因為事物由因緣構成、可以改變，修行與行善才有意義，苦亦才有止息的可能。此外佛教並不以神明主宰世事解釋變化，而以因緣法解釋。",
+  "explanationEn": "Impermanence asserts change, not non-existence: things do exist, only not in a fixed and unchanging way. This is often misread as nihilism, from which people go on to infer that since everything is unreal nothing matters — the opposite of the point. It is precisely because things are made of conditions and can change that practice and moral effort have any purchase, and that the ending of suffering is possible at all. Nor does Buddhism explain change by the rule of a deity; it explains it by conditioned arising."
+ },
+ {
+  "id": "eth_floor_21",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "宗教哲學",
+  "topicId": "religion_philosophy",
+  "topicZh": "宗教哲學",
+  "topicEn": "Philosophy of Religion",
+  "difficulty": "basic",
+  "question": "在宗教哲學的討論中，「論證有效」與「結論為真」是兩回事。這一分別提醒我們甚麼？",
+  "questionEn": "In philosophy of religion a valid argument is one thing and a true conclusion another. What does this distinction remind us of?",
+  "options": [
+   "即使推論的形式正確，若前提不成立，結論仍未必為真",
+   "只要結論確實為真，該論證就必定是有效的",
+   "只要論證形式有效，就不必再檢查它的前提",
+   "論證是否成立，取決於提出者的身分與權威"
+  ],
+  "optionsEn": [
+   "even if the reasoning is formally correct, the conclusion need not be true if a premise fails",
+   "so long as the conclusion is in fact true, the argument must be valid",
+   "so long as the form is valid, the premises need not be examined",
+   "whether an argument holds depends on the standing and authority of whoever advances it"
+  ],
+  "correctIndex": 0,
+  "explanation": "有效只保證「若前提為真，結論必為真」，它管的是形式而非內容。故評估一個論證要做兩件事：先看推論是否有效，再逐一檢查前提是否可接受。這正是「宇宙論證」、「設計論證」等有神論論證的爭論焦點所在 —— 反對者多半並非指其推論混亂，而是質疑其中某項前提。留意「訴諸權威」不能代替上述兩步。",
+  "explanationEn": "Validity guarantees only that if the premises are true the conclusion must be; it governs form, not content. Assessing an argument therefore takes two steps: check whether the inference is valid, then examine each premise for acceptability. This is exactly where the dispute lies over theistic arguments such as the cosmological and the design argument — objectors rarely claim the reasoning is muddled, but rather challenge one of the premises. Note that appeal to authority is no substitute for either step."
+ },
+ {
+  "id": "eth_floor_26",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "宗教與倫理",
+  "topicId": "religion_ethics",
+  "topicZh": "宗教與倫理",
+  "topicEn": "Religion and Ethics",
+  "difficulty": "basic",
+  "question": "伊斯蘭教的「五功」（五柱）之中，包括以下哪一項？",
+  "questionEn": "Which of the following is one of the Five Pillars of Islam?",
+  "options": [
+   "皈依佛、法、僧三寶",
+   "每日五次的禮拜",
+   "每週一次的主日崇拜",
+   "以水施行的洗禮"
+  ],
+  "optionsEn": [
+   "taking refuge in the Buddha, Dharma and Sangha",
+   "the five daily prayers",
+   "weekly Sunday worship",
+   "baptism with water"
+  ],
+  "correctIndex": 1,
+  "explanation": "五功為念（作信仰宣告）、禮（每日五次禮拜）、齋（萊麥丹月封齋）、課（天課，按規定比例施捨）、朝（有能力者一生一次朝覲），構成該傳統日常實踐的基本框架。其餘三項分別屬於基督宗教（主日崇拜、洗禮）與佛教（皈依三寶）。跨傳統比較時先確認每項實踐屬於哪個傳統，論述才不會張冠李戴。",
+  "explanationEn": "The Five Pillars are the declaration of faith, the five daily prayers, the fast of Ramadan, the prescribed alms known as zakat, and the pilgrimage undertaken once in a lifetime by those able to do so; together they frame the tradition’s daily practice. The other three options belong to Christianity — Sunday worship and baptism — and to Buddhism, in taking refuge in the Three Jewels. When comparing traditions, establishing which practice belongs to which keeps an answer from attributing one tradition’s observance to another."
+ },
+ {
+  "id": "eth_floor_27",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "宗教與社會",
+  "topicId": "religion_society",
+  "topicZh": "宗教與社會",
+  "topicEn": "Religion and Society",
+  "difficulty": "basic",
+  "question": "「宗教自由」作為一項基本人權，一般包括哪些內容？",
+  "questionEn": "What does freedom of religion, as a basic human right, generally include?",
+  "options": [
+   "只包括內心相信的自由，不包括公開表達",
+   "包括要求他人接受自己信仰的自由",
+   "信或不信的自由、改變信仰的自由，以及表達與實踐信仰的自由",
+   "只包括在指定宗教場所之內進行崇拜的自由"
+  ],
+  "optionsEn": [
+   "only the freedom to believe inwardly, and not to express that belief",
+   "the freedom to require others to accept one’s own belief",
+   "the freedom to believe or not, to change one’s belief, and to express and practise it",
+   "only the freedom to worship inside designated religious premises"
+  ],
+  "correctIndex": 2,
+  "explanation": "宗教自由的內容有三層：相信與否的自由、改變或放棄信仰的自由，以及在私人與公共場合表達及實踐的自由；不信與離教同樣受保障，這一點常被忽略。至於界線：自由的行使不得侵害他人的同等權利，故「要求他人接受」並不屬於宗教自由，反而是對他人同一權利的侵犯。分清「我有權相信並表達」與「他人有義務接受」，是這一課的關鍵。",
+  "explanationEn": "The right has three layers: the freedom to believe or not, the freedom to change or abandon a belief, and the freedom to express and practise it in private and in public. That non-belief and leaving a religion are equally protected is often overlooked. As for the limit: exercising the freedom must not invade the equal rights of others, so requiring others to accept one’s belief is no part of religious freedom but an infringement of the same right in them. Separating “I may believe and say so” from “others must accept it” is the key to this topic."
+ },
+ {
+  "id": "eth_floor_28",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "宗教與社會",
+  "topicId": "religion_society",
+  "topicZh": "宗教與社會",
+  "topicEn": "Religion and Society",
+  "difficulty": "basic",
+  "question": "在宗教議題上，為甚麼特別需要警惕「刻板印象」？",
+  "questionEn": "Why is it especially important to be wary of stereotyping on religious questions?",
+  "options": [
+   "刻板印象一律來自傳媒報道，與其他因素無關",
+   "刻板印象只會影響信眾人數較少的宗教",
+   "刻板印象只是印象問題，與現實生活無關",
+   "把個別人士的行為推及整個宗教群體，會造成不公平的標籤"
+  ],
+  "optionsEn": [
+   "stereotypes always come from media reporting and from nothing else",
+   "stereotypes affect only religions with smaller numbers of adherents",
+   "a stereotype is a matter of impression only, with no bearing on real life",
+   "it extends the acts of individuals to a whole religious community, producing an unfair label"
+  ],
+  "correctIndex": 3,
+  "explanation": "宗教群體內部往往差異甚大，同一傳統之內既有不同宗派，亦有立場相去甚遠的個人。以個別事件概括整個群體，在邏輯上是以偏概全，在後果上則可能導致就業、居住及日常相處中的實際歧視 —— 故此並非只是「印象」問題。留意刻板印象並非只由傳媒造成，日常語言、教育內容及既有社群經驗同樣有份；亦不限於少數群體，多數群體同樣可能被簡化。",
+  "explanationEn": "Religious communities are internally varied: one tradition contains different schools and individuals whose positions are far apart. Generalising from a particular incident to a whole community is a hasty generalisation in logic, and in its effects can produce real discrimination in employment, housing and everyday dealings — so it is not merely a matter of impression. Note too that stereotypes are not produced by the media alone; ordinary language, the content of education and existing community experience all contribute, and they are not confined to minority groups, since majorities can be flattened just as easily."
+ },
+ {
+  "id": "eth_floor_29",
+  "type": "mc",
+  "subject": "ethics-religious",
+  "topic": "宗教與社會",
+  "topicId": "religion_society",
+  "topicZh": "宗教與社會",
+  "topicEn": "Religion and Society",
+  "difficulty": "basic",
+  "question": "閱讀傳媒有關宗教議題的報道時，讀者應留意甚麼？",
+  "questionEn": "What should a reader watch for in media reporting on religious matters?",
+  "options": [
+   "報道是否只呈現極端個案，以及消息來源是否包括該傳統本身",
+   "報道所用的標題是否吸引，能否引起討論",
+   "該宗教在本地的信眾人數是否足夠眾多",
+   "該報道的立場是否與讀者本人的信仰一致"
+  ],
+  "optionsEn": [
+   "whether only extreme cases are presented, and whether the sources include the tradition itself",
+   "whether the headline is eye-catching and likely to prompt discussion",
+   "whether the religion has a large enough local following",
+   "whether the report’s stance agrees with the reader’s own beliefs"
+  ],
+  "correctIndex": 0,
+  "explanation": "新聞價值傾向罕見與衝突，故宗教報道容易偏重極端個案，令讀者以少數推斷全體。查看消息來源是否包括該傳統內部的聲音，是最直接的校正方法。留意最後一項是典型的確認偏誤 —— 以「是否合乎我原有的看法」判斷報道可信與否，等於只讓自己聽到已相信的東西，這在任何議題上都會削弱判斷力，在宗教議題上尤甚。",
+  "explanationEn": "News value favours the rare and the conflictual, so religious coverage tends to over-represent extreme cases and invites readers to infer the whole from a few. Checking whether the sources include voices from within the tradition is the most direct correction. Note that the last option is textbook confirmation bias: judging a report’s reliability by whether it matches what one already thinks means hearing only what one already believes, which weakens judgement on any subject and on this one especially."
+ }
+]

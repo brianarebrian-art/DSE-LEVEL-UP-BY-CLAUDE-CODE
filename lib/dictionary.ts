@@ -147,9 +147,6 @@ const zh = {
     introA: '涵蓋全部 HKDSE 科目，',
     introLiveA: ' 科已全部上線',
     introB: '。全部 25 科嘅 MC 練習完全免費，無限次做。',
-    progressLabel: '內容生產進度',
-    progressUnit: ' 科',
-    strategy: '全部 25 科都有改寫 MC 練習，完全免費，無限次做。書寫、口試同實作題型暫時未涵蓋。',
     startPractice: '開始練習',
     priorities: {
       P0: { label: '核心必爭', desc: '最多考生、最易改寫、即時批改' },
@@ -158,9 +155,9 @@ const zh = {
       P3: { label: '人文科目', desc: '需大量內容改寫的人文與文學科' },
       P4: { label: '其他選修', desc: '冷門科目、後期逐步補上' },
     },
-    footerTitle: '想優先睇到某科？',
+    footerTitle: '想優先睇到邊一科嘅課題？',
     footerBody: '話我哋知你考緊邊科，我哋會調整生產優先級。',
-    footerBtn: '告訴我哋你想要嘅科目',
+    footerBtn: '告訴我哋你想要嘅課題',
   },
   subjectDetail: {
     launchPrefix: '預計上線：',
@@ -498,9 +495,6 @@ const en: typeof zh = {
     introA: 'Covering every HKDSE subject — all ',
     introLiveA: ' subjects are now live',
     introB: '. MC practice for all 25 subjects is completely free and unlimited.',
-    progressLabel: 'Content production progress',
-    progressUnit: ' subjects',
-    strategy: 'All 25 subjects have rewritten MC practice, completely free and unlimited. Written, oral and practical papers are not yet covered.',
     startPractice: 'Start practice',
     priorities: {
       P0: { label: 'Core must-win', desc: 'Largest entry, easiest to rewrite, instant marking' },
@@ -509,9 +503,9 @@ const en: typeof zh = {
       P3: { label: 'Humanities', desc: 'Humanities and literature needing heavy rewriting' },
       P4: { label: 'Other electives', desc: 'Smaller subjects, added later' },
     },
-    footerTitle: 'Want a subject prioritised?',
+    footerTitle: 'Want a topic prioritised?',
     footerBody: 'Tell us which subjects you’re taking and we’ll adjust the production priority.',
-    footerBtn: 'Tell us the subjects you want',
+    footerBtn: 'Tell us the topics you want',
   },
   subjectDetail: {
     launchPrefix: 'Expected launch: ',

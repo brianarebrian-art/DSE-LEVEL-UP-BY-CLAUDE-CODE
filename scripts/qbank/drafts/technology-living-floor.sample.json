@@ -1,0 +1,245 @@
+[
+ {
+  "id": "tl_floor_05",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "人生階段營養",
+  "topicId": "lifecycle",
+  "topicZh": "人生階段營養",
+  "topicEn": "Nutrition across the Life Cycle",
+  "difficulty": "basic",
+  "question": "青春期的少女比同齡少男較容易缺乏哪一種礦物質？",
+  "questionEn": "Adolescent girls are more likely than boys of the same age to be short of which mineral?",
+  "options": [
+   "鐵質",
+   "碘質",
+   "鈉質",
+   "氟質"
+  ],
+  "optionsEn": [
+   "iron",
+   "iodine",
+   "sodium",
+   "fluoride"
+  ],
+  "correctIndex": 0,
+  "explanation": "月經開始後每月固定失血，而血液中的血紅蛋白正以鐵為核心，故少女的鐵質需要量高於同齡少男，缺乏時會出現疲倦、面色蒼白及專注力下降。留意膳食中的鐵分兩種：來自紅肉的血基質鐵吸收率較高，來自深綠色蔬菜及豆類的非血基質鐵吸收率較低，但與含維生素 C 的食物同吃可提高吸收。",
+  "explanationEn": "Once menstruation begins there is a regular monthly loss of blood, and iron sits at the centre of the haemoglobin in that blood, so an adolescent girl needs more iron than a boy of the same age; shortage shows as tiredness, pallor and poor concentration. Note that dietary iron comes in two forms: haem iron from red meat is well absorbed, while non-haem iron from dark green vegetables and pulses is less so — though eating it with a food rich in vitamin C improves absorption."
+ },
+ {
+  "id": "tl_floor_06",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "人生階段營養",
+  "topicId": "lifecycle",
+  "topicZh": "人生階段營養",
+  "topicEn": "Nutrition across the Life Cycle",
+  "difficulty": "basic",
+  "question": "兒童每日需要充足的鈣質，主要用於甚麼？",
+  "questionEn": "Children need an adequate daily supply of calcium mainly for what purpose?",
+  "options": [
+   "製造消化食物所需的酵素",
+   "建造及強化骨骼與牙齒",
+   "把氧氣由肺部運送到全身",
+   "調節體溫並帶走代謝廢物"
+  ],
+  "optionsEn": [
+   "making the enzymes needed to digest food",
+   "building and strengthening bone and teeth",
+   "carrying oxygen from the lungs to the rest of the body",
+   "regulating body temperature and carrying away waste"
+  ],
+  "correctIndex": 1,
+  "explanation": "骨骼在兒童及青少年階段迅速增長，成年前所累積的骨質量會影響日後患骨質疏鬆的風險，故這段時期的鈣質攝取特別關鍵。其餘三項各有所屬：運送氧氣靠鐵質，調節體溫及運走廢物靠水分，酵素則主要由蛋白質構成。另須留意鈣質必須有維生素 D 配合才能有效吸收，兩者宜一併考慮。",
+  "explanationEn": "Bone grows fast through childhood and adolescence, and the peak bone mass reached before adulthood affects the later risk of osteoporosis, which makes calcium intake at this stage particularly important. The other three belong elsewhere: oxygen is carried by iron, temperature and waste removal by water, and enzymes are built mainly from protein. Note too that calcium needs vitamin D to be absorbed efficiently, so the two should be considered together."
+ },
+ {
+  "id": "tl_floor_09",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "膳食計劃",
+  "topicId": "meal_planning",
+  "topicZh": "膳食計劃",
+  "topicEn": "Meal Planning",
+  "difficulty": "basic",
+  "question": "為一個家庭編製膳食計劃時，最先要確定的是甚麼？",
+  "questionEn": "What must be established first when drawing up a meal plan for a family?",
+  "options": [
+   "各成員的年齡、健康狀況及活動量",
+   "廚房現有的餐具及器皿數量",
+   "每一餐上菜的先後次序",
+   "食物擺盤時的顏色配搭"
+  ],
+  "optionsEn": [
+   "the age, health condition and activity level of each member",
+   "how many pieces of tableware and equipment the kitchen has",
+   "the order in which the dishes are to be served",
+   "the colour arrangement used when plating the food"
+  ],
+  "correctIndex": 0,
+  "explanation": "膳食計劃的起點是「為誰而設」：一個做體力勞動的成年人、一個發育中的青少年、一個患高血壓的長者，三者的能量與營養需要並不相同，同一份餐單不可能同時最適合三人。先定需要，再定食物，最後才輪到烹調與呈現 —— 次序倒轉，往往就是設計題失分的地方。",
+  "explanationEn": "A meal plan begins with the question of who it is for: an adult doing physical work, a growing adolescent and an older person with high blood pressure have different energy and nutrient needs, and no single menu can be best for all three at once. Establish needs first, then foods, and only then cooking and presentation — reversing that order is where marks are commonly lost in design questions."
+ },
+ {
+  "id": "tl_floor_10",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "膳食計劃",
+  "topicId": "meal_planning",
+  "topicZh": "膳食計劃",
+  "topicEn": "Meal Planning",
+  "difficulty": "basic",
+  "question": "早餐對學生特別重要，主要原因是甚麼？",
+  "questionEn": "Why is breakfast particularly important for students?",
+  "options": [
+   "早餐所含的維生素比一日其他餐次都要多",
+   "經過整夜空腹後補充能量，有助維持上午的專注力",
+   "早餐的食物一般較容易消化，可減輕腸胃負擔",
+   "早餐可以代替午餐，以減少全日的總能量攝取"
+  ],
+  "optionsEn": [
+   "breakfast contains more vitamins than any other meal of the day",
+   "it restores energy after the overnight fast and helps maintain concentration through the morning",
+   "breakfast foods are generally easier to digest and lighter on the stomach",
+   "breakfast can replace lunch and so cut the day’s total energy intake"
+  ],
+  "correctIndex": 1,
+  "explanation": "大腦主要以葡萄糖為燃料，而經過一夜之後血糖及肝糖儲備均處於低位，若不進食，上午的記憶、專注及情緒都會受影響。留意所謂「不吃早餐可減重」是常見誤解：空腹到中午容易令下一餐份量失控，全日總攝取未必減少。一份合適的早餐應同時提供穀物、蛋白質食物及蔬果。",
+  "explanationEn": "The brain runs mainly on glucose, and after a night’s fast both blood glucose and liver glycogen are low; skipping the meal shows up in memory, concentration and mood through the morning. Note the common belief that skipping breakfast helps with weight control: going hungry until midday tends to make the next meal larger, and the day’s total may not fall at all. A suitable breakfast supplies grain foods, a protein food and some vegetables or fruit."
+ },
+ {
+  "id": "tl_floor_16",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物科學",
+  "topicId": "food_science",
+  "topicZh": "食物科學",
+  "topicEn": "Food Science",
+  "difficulty": "basic",
+  "question": "油炸食物時若油溫過低，最可能出現甚麼情況？",
+  "questionEn": "What is most likely to happen if the oil is not hot enough when deep-frying?",
+  "options": [
+   "食物外層迅速焦黑，內部仍未熟透",
+   "油會立即大量冒煙並有起火危險",
+   "食物完全不會變色，亦不會被加熱",
+   "食物吸收較多油分，成品油膩而不鬆脆"
+  ],
+  "optionsEn": [
+   "the outside browns and burns quickly while the inside stays raw",
+   "the oil immediately smokes heavily and risks catching fire",
+   "the food neither browns nor heats up at all",
+   "the food takes up more oil and turns out greasy rather than crisp"
+  ],
+  "correctIndex": 3,
+  "explanation": "油溫足夠時，食物表面的水分會迅速汽化，形成一層向外的蒸氣，阻止油分大量滲入，同時令表層脫水變脆。油溫不足則水分蒸發緩慢，油有時間滲入食物內部，成品因而油膩。相反的問題 —— 外焦內生、油冒煙起火 —— 屬油溫【過高】的徵狀，兩者的處理方法剛好相反，不可混淆。",
+  "explanationEn": "When the oil is hot enough, moisture at the surface of the food turns to steam at once, and that outward flow of steam keeps oil from soaking in while the surface dries and crisps. If the oil is too cool the moisture leaves slowly, oil has time to penetrate, and the result is greasy. The opposite problems — a burnt outside with a raw centre, or oil smoking and catching fire — are signs of oil that is too hot, and the remedies are opposite, so the two must not be confused."
+ },
+ {
+  "id": "tl_floor_18",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物科學",
+  "topicId": "food_science",
+  "topicZh": "食物科學",
+  "topicEn": "Food Science",
+  "difficulty": "basic",
+  "question": "食物的水分含量高，對其保存有甚麼影響？",
+  "questionEn": "How does a high moisture content affect how well a food keeps?",
+  "options": [
+   "水分越高，食物內酵素的活動越慢",
+   "微生物較易生長，食物較易腐壞",
+   "水分能隔絕空氣，食物反而較耐存放",
+   "對保存沒有影響，只影響食物的口感"
+  ],
+  "optionsEn": [
+   "the more water there is, the slower the food’s enzymes work",
+   "micro-organisms grow more readily, so the food spoils sooner",
+   "the water seals out air, so the food actually keeps longer",
+   "it has no effect on keeping quality, only on texture"
+  ],
+  "correctIndex": 1,
+  "explanation": "微生物生長需要水，而且需要的是可供利用的「自由水」。乾製、醃製及加糖之所以能保存食物，原理相同：不是把微生物殺死，而是把水分抽走或以鹽、糖把水「綁住」，令微生物無水可用。酵素活動同樣需要水，水分越高活動越快，故高水分食物的自然變質亦較迅速。",
+  "explanationEn": "Micro-organisms need water to grow, and specifically the free water available to them. Drying, salting and sugaring all preserve food on the same principle: not by killing the organisms but by removing the water, or by binding it up with salt or sugar so that none is available. Enzymes likewise need water and work faster when there is more of it, so foods high in moisture also deteriorate on their own more quickly."
+ },
+ {
+  "id": "tl_floor_22",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "食物安全",
+  "topicId": "food_safety",
+  "topicZh": "食物安全",
+  "topicEn": "Food Safety",
+  "difficulty": "basic",
+  "question": "以下關於清洗蔬果的說法，哪一項正確？",
+  "questionEn": "Which of the following statements about washing fruit and vegetables is correct?",
+  "options": [
+   "應以熱水浸泡，因為熱水可去除所有農藥殘餘",
+   "應以流動清水徹底沖洗，必要時去皮，以減少泥土及殘餘",
+   "應以洗潔精浸洗，因為洗潔精可以分解表面的農藥",
+   "只要是有機種植的蔬果，就完全不需要清洗"
+  ],
+  "optionsEn": [
+   "soak in hot water, because hot water removes all pesticide residues",
+   "wash thoroughly under running water, and peel where appropriate, to reduce soil and residues",
+   "soak in dishwashing detergent, because detergent breaks down surface pesticides",
+   "organically grown produce needs no washing at all"
+  ],
+  "correctIndex": 1,
+  "explanation": "流動清水的沖刷力量能帶走泥土、微生物及部分表面殘餘，必要時可用刷洗或去皮進一步減少。洗潔精並非為食用而設，本身可能殘留在蔬果表面，反而構成新的問題。有機種植只是不使用某些合成農藥，並不代表沒有泥土及環境中的微生物。至於熱水浸泡，除了未必更有效，還會令蔬菜變軟並流失水溶性維生素。",
+  "explanationEn": "The scrubbing action of running water carries away soil, micro-organisms and some surface residue, and brushing or peeling reduces it further where appropriate. Dishwashing detergent is not made to be eaten and may itself remain on the surface, creating a new problem. Organic growing means only that certain synthetic pesticides were not used; it does not remove soil or the micro-organisms present in any field. Soaking in hot water is no more effective and additionally softens vegetables and leaches out water-soluble vitamins."
+ },
+ {
+  "id": "tl_floor_31",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "服裝與時裝",
+  "topicId": "fashion",
+  "topicZh": "服裝與時裝",
+  "topicEn": "Fashion and Clothing",
+  "difficulty": "basic",
+  "question": "試身時除了確認尺碼是否合適，還應該注意甚麼？",
+  "questionEn": "Besides checking the size, what else should be attended to when trying on a garment?",
+  "options": [
+   "店內的燈光是否足夠明亮",
+   "同一款式還剩下多少件存貨",
+   "活動時是否舒適，例如舉手、坐下有沒有拉扯",
+   "衣物的吊牌是否印刷精美"
+  ],
+  "optionsEn": [
+   "whether the lighting in the shop is bright enough",
+   "how many pieces of the style are left in stock",
+   "whether it is comfortable in movement — raising the arms or sitting down without pulling",
+   "whether the swing tag is attractively printed"
+  ],
+  "correctIndex": 2,
+  "explanation": "靜止站立時合身，不等於穿着時合用。衣服是在人體活動之下工作的：舉手時肩袖會否扯起衣身、坐下時腰圍及大腿位會否過緊、彎腰時背部會否外露，這些都要在試身室裏做一次才知道。合身度包括長度、圍度、鬆份及活動空間四方面，只看尺碼標籤上的數字並不足夠。",
+  "explanationEn": "Fitting while standing still is not the same as fitting in use. Clothes work on a body in motion: whether raising the arms drags the body of the garment up, whether the waist and thigh are too tight when seated, whether the back is exposed when bending — these can only be found out by trying them in the fitting room. Fit covers length, girth, ease and room to move, and the number on the size label alone does not settle it."
+ },
+ {
+  "id": "tl_floor_35",
+  "type": "mc",
+  "subject": "technology-living",
+  "topic": "精明消費",
+  "topicId": "consumer",
+  "topicZh": "精明消費",
+  "topicEn": "Consumer Education",
+  "difficulty": "basic",
+  "question": "把仍可穿着的舊衣物捐贈或轉贈他人，在可持續消費上屬於哪一項做法？",
+  "questionEn": "Giving away or donating clothing that is still wearable is which practice in sustainable consumption?",
+  "options": [
+   "減少，從源頭上減少購買的數量",
+   "棄置，交由堆填區作最終處理",
+   "重用，延長物品原有的使用壽命",
+   "回收，把物料分解後再造成新產品"
+  ],
+  "optionsEn": [
+   "reduce — buying less in the first place",
+   "disposal — sending it to landfill for final treatment",
+   "reuse — extending the useful life of the article as it is",
+   "recycling — breaking the material down and remaking it"
+  ],
+  "correctIndex": 2,
+  "explanation": "重用是指物品以原有形態繼續被使用，不需經過分解或再加工，因而所耗能源最少。回收則要把纖維分解重造，過程本身消耗能源及水，而混紡布料更難以分離，回收率遠低於一般想像。至於減少，是三者之中最根本的一項 —— 買得少，其後的重用與回收壓力自然減輕。三者的優先次序是先減少、再重用、後回收。",
+  "explanationEn": "Reuse means the article goes on being used in its existing form, without being broken down or reprocessed, which is why it consumes the least energy. Recycling requires the fibre to be broken down and remade, a process that itself consumes energy and water, and blended fabrics are hard to separate, so recovery rates are far lower than generally assumed. Reduction is the most fundamental of the three — buy less and the later burden of reuse and recycling falls accordingly. The order of priority is reduce, then reuse, then recycle."
+ }
+]

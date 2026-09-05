@@ -15,6 +15,18 @@
 // ⚠️ 憲章 §16.C：任何「最終狀態」欄位都要由實跑嘅人填。本頁生成時
 //    每一題都係 pending，冇一條預設通過。
 //
+// ══ 抽樣覆核（2026-09-05 加）══
+// 認 decisions 檔嘅 `_meta.mode === 'sampled'`（由 sample-review.mjs 產生）：
+// 只出抽中嗰批畀真人讀，未抽中嗰批原樣保留 machine-admitted 再一齊匯出。
+//
+// 加之前：本腳本第 43 行排除 `.sample.json`，於是照全批出題 —— 105 條嘅批次
+// 會要人讀晒 105 條，抽樣等於冇做過。而 `sample-review.mjs` 由 2026-08-27
+// 起存在至今一次都未用過，正正因為冇一個審批介面識佢。
+//
+// ⚠️ 改動最貴嘅一點喺匯出（見 buildOut）：promote 係 default-deny，
+// decisions 入面冇出現嘅 id 一律唔入庫。如果只匯出抽中嗰批，其餘幾百條
+// 就會靜靜咁消失 —— 冇報錯，只有題數少咗，而冇人會即刻發現。
+//
 // 用法：node scripts/qbank/build-review-artifact.mjs
 // 輸出：一個 HTML 檔，交畀 Artifact 發佈（預設私密）。
 
@@ -52,11 +64,38 @@ for (const f of files) {
   const rows = JSON.parse(fs.readFileSync(path.join(DRAFTS, f), 'utf8'))
   if (!Array.isArray(rows) || !rows.length) continue
   const subject = dec._meta?.subject ?? rows[0]?.subject ?? ''
+
+  // ── 抽樣覆核（sample-review.mjs，2026-08-27 創辦人決定）──────────────────
+  // mode: 'sampled' 之下，真人只需要全讀 sample.ids 嗰批；其餘喺 decisions
+  // 入面已經標咗 machine-admitted。審批台只出抽中嗰批 —— 連未抽中嗰啲一齊出，
+  // 就等於把「抽樣」變返「逐題」，個模式本身冇咗意義。
+  //
+  // ⚠️ 但【未抽中嗰批嘅 id 一定要帶住】，見下面 `admitted`。
+  // promote 係 default-deny：decisions 入面冇出現嘅 id 一律唔入庫。淨係匯出
+  // 抽中嗰批，就會靜靜咁掉咗其餘幾百條 —— 冇報錯、冇警告，只有題數少咗。
+  // 呢個係本次改動最易錯亦最貴嘅一點，所以 `order` 保留草稿原本次序，
+  // 匯出時逐個 id 走一次，抽中嗰啲攞真人決定，其餘原樣寫返。
+  const sampled = dec._meta?.mode === 'sampled'
+  const sampleIds = new Set(dec._meta?.sample?.ids ?? [])
+  const shown = sampled ? rows.filter((r) => sampleIds.has(r.id)) : rows
+  if (!shown.length) continue
+
   bundles.push({
     file: f,
     subject,
     subjectZh: SUBJECT_ZH[subject] ?? subject,
-    questions: rows.map((r) => ({
+    sampled,
+    ofTotal: rows.length,
+    seed: dec._meta?.sample?.seed ?? '',
+    note: dec._meta?.note ?? '',
+    // 草稿原本次序嘅完整 id 清單 —— 匯出時照呢個次序寫，令 diff 睇得明。
+    order: rows.map((r) => r.id),
+    // 未抽中嗰批嘅現有狀態（machine-admitted）。非抽樣模式係空物件，
+    // 於是匯出邏輯對兩種模式完全一致，唔使分叉。
+    admitted: sampled
+      ? Object.fromEntries(Object.entries(dec.decisions ?? {}).filter(([id]) => !sampleIds.has(id)))
+      : {},
+    questions: shown.map((r) => ({
       id: r.id,
       topic: r.topicZh ?? r.topic ?? '',
       difficulty: r.difficulty ?? '',
@@ -269,11 +308,12 @@ pre.cmd{
   <nav class="rail" aria-label="草稿檔案">
     <div class="brand">
       <h1>草稿審批台</h1>
-      <p><b id="tot">0</b> 條待簽 · 逐題批<br>進度自動存喺呢部機</p>
+      <p><b id="tot">0</b> 條待簽<span id="totmode"></span><br>進度自動存喺呢部機</p>
     </div>
     <div id="files"></div>
     <div class="note" style="margin-top:14px">
-      冇「全部通過」掣 —— 憲章 §12 要求逐題批，一個總掣會令呢條紀律得個名。
+      冇「全部通過」掣 —— 一個總掣會令逐題批呢條紀律得個名。
+      <span id="railnote"></span>
     </div>
   </nav>
 
@@ -329,7 +369,7 @@ pre.cmd{
   <div class="note">
     <b>覆蓋之後跑：</b>
     <pre class="cmd" id="cmd"></pre>
-    promote 只會寫入標住 approved 嘅題；pending 同 rejected 一律唔入庫，
+    <span id="promnote"></span>
     而且會再過一次機器閘 —— 撳咗通過都唔會令一條格式有問題嘅題入到庫。<br>
     入庫之後仲要人手 wire 入 <span class="mono">load.ts</span>，嗰步 promote 只會印出片段，唔會自己改。
   </div>
@@ -363,13 +403,23 @@ function renderFiles() {
     el.setAttribute('aria-current', i === fi ? 'true' : 'false');
     el.innerHTML =
       '<span class="fr"><b>' + b.subjectZh + '</b><span class="mono" style="font-size:11px;color:var(--ink-faint)">'
-      + (t.ok + t.no) + '/' + n + '</span></span>'
+      + (t.ok + t.no) + '/' + n + (b.sampled ? ' <span title="抽樣覆核">抽 ' + n + '/' + b.ofTotal + '</span>' : '')
+      + '</span></span>'
       + '<span class="bar"><i class="b-ok" style="width:' + (t.ok / n * 100) + '%"></i>'
       + '<i class="b-no" style="width:' + (t.no / n * 100) + '%"></i></span>';
     el.onclick = () => { fi = i; qi = 0; renderAll(); };
     box.appendChild(el);
   });
-  $('tot').textContent = BUNDLES.reduce((n, b) => n + b.questions.length, 0);
+  const shown = BUNDLES.reduce((n, b) => n + b.questions.length, 0);
+  const whole = BUNDLES.reduce((n, b) => n + b.ofTotal, 0);
+  const anySampled = BUNDLES.some((b) => b.sampled);
+  $('tot').textContent = shown;
+  // 唔可以喺抽樣模式下照寫「逐題批」—— 全批 whole 條入面只讀 shown 條，
+  // 寫住「逐題批」就係一句假嘅狀態描述（憲章 §16.C／§16.D 同一個病）。
+  $('totmode').textContent = anySampled ? ' · 抽樣覆核（全批 ' + whole + ' 條）' : ' · 逐題批';
+  $('railnote').textContent = anySampled
+    ? '本次為抽樣覆核：抽中嗰批要全部讀完，其餘只過咗機器閘 —— 機器檢查格式／術語／重複，唔檢查答案啱唔啱。抽中任何一條被退回 = 整批退回重檢，唔好淨係踢走嗰一條。'
+    : '';
 }
 
 function renderStrip() {
@@ -388,7 +438,8 @@ function renderStrip() {
 
 function renderQ() {
   const b = cur(), q = curQ(), t = tally(b);
-  $('ftitle').textContent = b.subjectZh + ' · 第 ' + (qi + 1) + ' / ' + b.questions.length + ' 題';
+  $('ftitle').textContent = b.subjectZh + ' · 第 ' + (qi + 1) + ' / ' + b.questions.length + ' 題'
+    + (b.sampled ? '（抽樣覆核，全批 ' + b.ofTotal + ' 條）' : '');
   $('counts').innerHTML =
     '<b class="c-ok">' + t.ok + '</b> 通過 · <b class="c-no">' + t.no + '</b> 退回 · <b class="c-wait">' + t.wait + '</b> 待批';
   const dz = { basic:'基礎', intermediate:'中等', hard:'拔尖' }[q.difficulty] || q.difficulty;
@@ -444,17 +495,37 @@ function buildOut() {
   const rev = $('rev').value.trim();
   const t = tally(b);
   $('dwarn').hidden = t.wait === 0;
-  if (t.wait) $('dwarn').textContent =
-    '仲有 ' + t.wait + ' 條未批。匯出唔會攔你，但 promote 只收 approved —— 未批嘅一律唔入庫。';
+  if (t.wait) $('dwarn').textContent = b.sampled
+    ? '抽中嗰 ' + b.questions.length + ' 條仲有 ' + t.wait + ' 條未批。抽樣覆核嘅前提係嗰批【全部】讀過 —— promote 會直接拒絕。'
+    : '仲有 ' + t.wait + ' 條未批。匯出唔會攔你，但 promote 只收 approved —— 未批嘅一律唔入庫。';
+  const today = rev ? new Date().toISOString().slice(0, 10) : '';
   const obj = {
-    _meta: {
-      source: b.file, subject: b.subject,
-      reviewer: rev,
-      reviewedAt: rev ? new Date().toISOString().slice(0, 10) : '',
-    },
-    decisions: Object.fromEntries(b.questions.map((q) => [q.id, stat(q.id)])),
+    _meta: b.sampled
+      ? {
+          source: b.file, subject: b.subject,
+          mode: 'sampled',
+          reviewer: rev,
+          reviewedAt: today,
+          sample: { size: b.questions.length, of: b.ofTotal, seed: b.seed, ids: b.questions.map((q) => q.id) },
+          note: b.note,
+        }
+      : {
+          source: b.file, subject: b.subject,
+          reviewer: rev,
+          reviewedAt: today,
+        },
+    // 照草稿原本次序行一次：抽中嗰啲攞真人決定，未抽中嗰啲原樣寫返
+    // machine-admitted。漏咗後者 = promote default-deny 靜靜咁掉走佢哋。
+    decisions: Object.fromEntries(b.order.map((id) => [id, b.admitted[id] ?? stat(id)])),
   };
   $('out').value = JSON.stringify(obj, null, 1) + '\\n';
+  // 呢句唔可以寫死：抽樣模式下 machine-admitted 亦都會入庫，寫住「只收
+  // approved」就係喺一個權威介面度講咗件冇發生嘅事。
+  $('promnote').textContent = b.sampled
+    ? 'promote 會寫入抽中而標住 approved 嘅題，加埋其餘 ' + (b.ofTotal - b.questions.length)
+      + ' 條 machine-admitted（只過機器閘，冇人讀過答案）；pending 同 rejected 一律唔入庫。'
+      + '生成嘅題庫檔頭會如實寫明呢個分野。'
+    : 'promote 只會寫入標住 approved 嘅題；pending 同 rejected 一律唔入庫。';
   $('dfile').textContent = 'scripts/qbank/drafts/' + b.file.replace('.json', '.decisions.json');
   $('cmd').textContent =
     'node scripts/qbank/promote-drafts.mjs \\\\\\n'

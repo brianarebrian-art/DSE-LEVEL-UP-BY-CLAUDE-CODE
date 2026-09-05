@@ -22,6 +22,22 @@ export const MAX_AMOUNT_CENTS = 19800
  */
 export const CONSENT_TEXT_VERSION = '2026-09-04.1'
 
+// ══ 同 Stripe 嘅對應 ══
+// 每個 SKU 喺 Stripe 有一個同名 product id 同一個同名 price lookup_key。
+// 即係 sku === product.id === price.lookup_key，唔使另外維護一張對照表。
+//
+// Sandbox（acct_1UBwkYHANzDoBuwt）已建，2026-09-04：
+//   plus_monthly  HK$28   price_1UByPmHANzDoBuwtizROlBWq  one_time
+//   plus_season   HK$168  price_1UByPdHANzDoBuwtU3G93gpm  one_time
+//   plus_yearly   HK$198  price_1UByPwHANzDoBuwtRFpUVNOf  one_time
+// 三個都係 recurring: null —— 冇自動續費（2026-09-04 創辦人決定）。
+// Live 帳戶【未建】任何 product／price。
+//
+// ⚠️ 下面 amountCents 只係【顯示】用。真正扣幾多錢由 Stripe Price 話事。
+// 兩邊漂移 = 畀學生睇 HK$168 但扣 HK$188 —— 佢唔會知，直到張卡單出咗。
+// 所以建立 Checkout Session 嗰陣【必須】用 lookup_key 攞返 Stripe Price，
+// 同呢度嘅 amountCents 對一次，唔啱就拒絕開 session（唔好靜靜哋用邊一邊）。
+
 export type PlusSku = 'plus_monthly' | 'plus_season' | 'plus_yearly'
 
 type SkuSpec = {

@@ -1,0 +1,218 @@
+[
+ {
+  "id": "bio_floor_05",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "數據與生態",
+  "topicId": "bio_data_ecology",
+  "topicZh": "數據與生態",
+  "topicEn": "Data & ecology",
+  "difficulty": "intermediate",
+  "question": "某湖泊的能量金字塔呈正立三角形，但數量金字塔卻呈倒立形狀。最合理的解釋是甚麼？",
+  "questionEn": "A lake's pyramid of energy is upright but its pyramid of numbers is inverted. What is the most reasonable explanation?",
+  "options": [
+   "生產者體型細小但數目未及消費者多",
+   "該湖泊的能量流動方向與別不同",
+   "數量金字塔的繪畫方法出現了錯誤",
+   "湖中的消費者並不依賴生產者維生"
+  ],
+  "optionsEn": [
+   "the producers are tiny and fewer than the consumers",
+   "energy flows in an unusual direction in this lake",
+   "the pyramid of numbers has simply been drawn wrongly",
+   "the consumers there do not depend on the producers"
+  ],
+  "correctIndex": 0,
+  "explanation": "能量金字塔永遠正立，因為能量必然逐級遞減，這是熱力學決定的。數量金字塔則只數個體數目，不理體型大小，所以可以倒立：湖泊的生產者是微小的浮游植物，個體雖多但每個所含能量極少；若上一級是體型較大而數目相對可觀的浮游動物，數量比較便可能出現倒轉。同類情況亦見於一棵大樹養活大量昆蟲——生產者只有一株，消費者成千上萬。要記住的原則是：能量金字塔不會倒立，數量與生物量金字塔則可以，因為後兩者沒有把體型與能量含量計算在內。",
+  "explanationEn": "A pyramid of energy is always upright, because energy must diminish at each level — thermodynamics requires it. A pyramid of numbers counts individuals regardless of size, so it can invert: the producers in a lake are minute phytoplankton, numerous but each holding very little energy, and if the next level consists of larger zooplankton present in appreciable numbers, the comparison can turn over. The same occurs with one large tree supporting thousands of insects — a single producer, a vast number of consumers. The principle to remember is that a pyramid of energy never inverts, while pyramids of numbers and biomass can, because neither takes body size and energy content into account."
+ },
+ {
+  "id": "bio_floor_09",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "basic",
+  "question": "「基因型」與「表現型」的分別是甚麼？",
+  "questionEn": "What is the difference between genotype and phenotype?",
+  "options": [
+   "前者指所帶的等位基因組合，後者指表現出的性狀",
+   "前者指表現出的性狀，後者指所帶的等位基因組合",
+   "兩者意思相同，只是用於不同的生物",
+   "前者只適用於顯性，後者只適用於隱性"
+  ],
+  "optionsEn": [
+   "the alleles carried, versus the characteristics shown",
+   "the characteristics shown, versus the alleles carried",
+   "the same thing, used for different organisms",
+   "one applies only to dominant, the other only to recessive"
+  ],
+  "correctIndex": 0,
+  "explanation": "基因型是個體所帶的等位基因組合，例如 $Aa$；表現型是實際表現出來的性狀，例如高莖。兩者並非一一對應：$AA$ 與 $Aa$ 的基因型不同，但若 $A$ 為完全顯性，表現型同樣是高莖。這正是遺傳推理題的關鍵——由表現型不能直接讀出基因型，一個顯性表現的個體可能是同型合子亦可能是異型合子，要靠測交或後代的比例去分辨。作答時應明確區分兩者並用符號寫清楚基因型，只寫「高莖」而不寫基因型，往往會失去推理分。",
+  "explanationEn": "The genotype is the combination of alleles an individual carries, such as $Aa$, while the phenotype is the characteristic actually shown, such as tall. The two do not correspond one to one: $AA$ and $Aa$ are different genotypes, but if $A$ is completely dominant both give the tall phenotype. This is the crux of genetics reasoning — a genotype cannot be read directly off a phenotype, since an individual showing the dominant characteristic may be homozygous or heterozygous, and a test cross or the ratios among offspring are needed to tell. Answers should distinguish the two explicitly and write genotypes in symbols; writing only tall without the genotype commonly loses the reasoning marks."
+ },
+ {
+  "id": "bio_floor_10",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "basic",
+  "question": "一個「同型合子隱性」個體的基因型，應如何表示？",
+  "questionEn": "How is the genotype of a homozygous recessive individual written?",
+  "options": [
+   "$aa$（兩個相同的隱性等位基因）",
+   "$Aa$（一顯性一隱性等位基因）",
+   "$AA$（兩個相同的顯性等位基因）",
+   "$A$（單一個顯性等位基因）"
+  ],
+  "optionsEn": [
+   "$aa$ (two identical recessive alleles)",
+   "$Aa$ (one dominant and one recessive allele)",
+   "$AA$ (two identical dominant alleles)",
+   "$A$ (a single dominant allele)"
+  ],
+  "correctIndex": 0,
+  "explanation": "同型合子指兩個等位基因相同，隱性即兩個都是隱性等位基因，故寫作 $aa$。$AA$ 是同型合子顯性；$Aa$ 是異型合子。二倍體生物每個性狀有兩個等位基因，一個來自父方一個來自母方，所以基因型必定寫兩個字母，只寫一個 $A$ 並不完整。$aa$ 在推理題中特別有用，因為隱性性狀只在兩個隱性等位基因同時存在時才顯現——見到隱性表現型，就可以肯定其基因型是 $aa$，這往往是解開整條家系題的第一個確定點。",
+  "explanationEn": "Homozygous means the two alleles are identical, and recessive means both are the recessive allele, so the genotype is written $aa$. The genotype $AA$ is homozygous dominant and $Aa$ is heterozygous. A diploid organism carries two alleles for each characteristic, one from each parent, so a genotype is always written with two letters; a single $A$ is incomplete. The genotype $aa$ is especially useful in reasoning problems, because a recessive characteristic appears only when both recessive alleles are present — so a recessive phenotype fixes the genotype as $aa$, and that is often the first certainty from which a whole pedigree question can be unravelled."
+ },
+ {
+  "id": "bio_floor_12",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "intermediate",
+  "question": "若 $A$ 對 $a$ 完全顯性，$Aa$ 與 $Aa$ 雜交，後代基因型的比例是多少？",
+  "questionEn": "If $A$ is completely dominant over $a$, what genotype ratio results from crossing $Aa$ with $Aa$?",
+  "options": [
+   "$AA : Aa : aa = 1 : 2 : 1$",
+   "$AA : Aa : aa = 3 : 0 : 1$",
+   "$AA : Aa : aa = 1 : 1 : 1$",
+   "$AA : Aa : aa = 2 : 1 : 1$"
+  ],
+  "optionsEn": [
+   "$AA : Aa : aa = 1 : 2 : 1$",
+   "$AA : Aa : aa = 3 : 0 : 1$",
+   "$AA : Aa : aa = 1 : 1 : 1$",
+   "$AA : Aa : aa = 2 : 1 : 1$"
+  ],
+  "correctIndex": 0,
+  "explanation": "雙方各產生 $A$ 與 $a$ 兩種配子，機會各半。用棋盤格組合，四個等可能結果為 $AA$、$Aa$、$aA$、$aa$，其中 $Aa$ 與 $aA$ 屬同一基因型，故比例為 $1 : 2 : 1$。要留意這是【基因型】的比例；由於 $A$ 完全顯性，$AA$ 與 $Aa$ 的表現型相同，【表現型】的比例才是我們熟悉的 $3 : 1$。試題常在這裡設陷阱，問基因型而答成 $3 : 1$，或問表現型而答成 $1 : 2 : 1$。讀題時先圈出「基因型」或「表現型」四個字，再落筆，可以避免這一類失分。",
+  "explanationEn": "Each parent produces $A$ and $a$ gametes in equal proportion. Combining them in a grid gives four equally likely outcomes — $AA$, $Aa$, $aA$ and $aa$ — and since $Aa$ and $aA$ are the same genotype, the ratio is $1 : 2 : 1$. Note that this is the genotype ratio; because $A$ is completely dominant, $AA$ and $Aa$ share a phenotype, so the phenotype ratio is the familiar $3 : 1$. Examination questions often set a trap here, asking for genotypes and receiving $3 : 1$, or asking for phenotypes and receiving $1 : 2 : 1$. Circling the word genotype or phenotype before writing anything avoids this class of error."
+ },
+ {
+  "id": "bio_floor_15",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "遺傳推理",
+  "topicId": "bio_genetics_logic",
+  "topicZh": "遺傳推理",
+  "topicEn": "Genetics — reasoning",
+  "difficulty": "intermediate",
+  "question": "若某遺傳病由體染色體上的隱性等位基因引起，兩名攜帶者生育，每一名子女患病的機率是多少？",
+  "questionEn": "For a condition caused by an autosomal recessive allele, if two carriers have children, what is the probability that any one child is affected?",
+  "options": [
+   "$25\\%$",
+   "$50\\%$",
+   "$75\\%$",
+   "$100\\%$"
+  ],
+  "optionsEn": [
+   "$25\\%$",
+   "$50\\%$",
+   "$75\\%$",
+   "$100\\%$"
+  ],
+  "correctIndex": 0,
+  "explanation": "兩名攜帶者的基因型均為 $Aa$，後代四個等可能結果為 $AA$、$Aa$、$aA$、$aa$，只有 $aa$ 會發病，故機率為四分之一，即 $25\\%$。$50\\%$ 是攜帶者（$Aa$）的機率；$75\\%$ 是不發病（$AA$ 或 $Aa$）的機率。有一點必須講清楚：這個 $25\\%$ 是【每一名子女各自獨立】的機率，並非「四個子女之中必有一個患病」。已經生了一名患病子女，並不會令下一名的機率下降——每次受精都是獨立事件。這是遺傳輔導中最常被誤解的一點，答題時寫明「每名子女獨立」可以顯示對機率的正確理解。",
+  "explanationEn": "Both carriers are $Aa$, so the four equally likely outcomes are $AA$, $Aa$, $aA$ and $aa$; only $aa$ is affected, giving a probability of one in four, or $25\\%$. The figure $50\\%$ is the probability of being a carrier ($Aa$) and $75\\%$ that of being unaffected ($AA$ or $Aa$). One point must be made clearly: this $25\\%$ applies to each child independently and does not mean that one in every four children will be affected. Having already had an affected child does not lower the probability for the next — each fertilisation is an independent event. This is the most commonly misunderstood point in genetic counselling, and writing that each child is independent shows a correct grasp of the probability."
+ },
+ {
+  "id": "bio_floor_17",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "basic",
+  "question": "「擴散」是指甚麼過程？",
+  "questionEn": "What process is diffusion?",
+  "options": [
+   "粒子由高濃度向低濃度淨移動",
+   "粒子由低濃度向高濃度淨移動",
+   "水分子透過半透膜的淨移動",
+   "須消耗能量的物質運輸方式"
+  ],
+  "optionsEn": [
+   "net movement of particles from high to low concentration",
+   "net movement of particles from low to high concentration",
+   "net movement of water through a partially permeable membrane",
+   "a form of transport that requires energy"
+  ],
+  "correctIndex": 0,
+  "explanation": "擴散是粒子因隨機運動而由濃度較高處向濃度較低處的淨移動，最終達到均勻分佈。它不需要細胞提供能量，屬被動運輸，動力來自粒子本身的動能與濃度梯度。三個關鍵詞值得留意：「淨」表示兩個方向都有粒子移動，只是由高向低的較多；「濃度梯度」是方向的決定因素；「被動」則區別於主動運輸。水分子透過半透膜的淨移動是滲透，可視為擴散的一個特例；而由低濃度向高濃度移動並需要能量的，是主動運輸。三者的分別是這一課的核心。",
+  "explanationEn": "Diffusion is the net movement of particles from a region of higher concentration to one of lower concentration as a result of their random motion, ending in an even distribution. It requires no energy from the cell and is therefore passive, driven by the particles' own kinetic energy and the concentration gradient. Three words repay attention: net indicates that particles move both ways but more go down the gradient than up; the gradient determines the direction; and passive distinguishes it from active transport. The net movement of water through a partially permeable membrane is osmosis, a special case of diffusion, while movement up a gradient requiring energy is active transport. Telling the three apart is the core of this topic."
+ },
+ {
+  "id": "bio_floor_20",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "intermediate",
+  "question": "胃蛋白酶在強酸環境中活性最高，但把它移至 pH 7 的環境後活性大幅下降。最準確的解釋是甚麼？",
+  "questionEn": "Pepsin is most active in strongly acidic conditions but loses much of its activity at pH 7. What is the most accurate explanation?",
+  "options": [
+   "偏離最適 pH 令活性部位形狀改變",
+   "pH 7 的環境中並無受質可供結合",
+   "酶在中性環境中會被立即分解掉",
+   "中性環境令酶分子移動速度變慢"
+  ],
+  "optionsEn": [
+   "moving away from optimum pH alters the active site's shape",
+   "no substrate is available to bind at pH 7",
+   "the enzyme is immediately broken down when neutral",
+   "a neutral environment slows the enzyme molecules down"
+  ],
+  "correctIndex": 0,
+  "explanation": "每種酶都有最適 pH，胃蛋白酶約在 pH 2 附近，與胃液環境相配。pH 改變會影響蛋白質分子中氨基酸側鏈的帶電狀態，令維持立體結構的離子鍵與氫鍵受干擾，活性部位隨之變形，與受質的互補性下降，活性因而降低。程度輕微時可逆，嚴重時則變性而不可逆。要留意這與溫度的影響機制相似——同樣是破壞立體結構——但曲線形狀不同：pH 曲線在最適值兩側都下降，而溫度曲線在最適值之前隨溫度上升。受質是否存在屬另一回事，並非酶本身活性的變化。",
+  "explanationEn": "Every enzyme has an optimum pH, and pepsin's is around pH 2, matching the stomach. A change in pH alters the charges on amino acid side chains, disturbing the ionic and hydrogen bonds that hold the three-dimensional structure, so the active site is distorted, complementarity with the substrate falls and activity drops. Mild changes are reversible; severe ones denature the enzyme irreversibly. Note that the mechanism resembles that of temperature — both disrupt the three-dimensional structure — but the curves differ in shape: a pH curve falls on both sides of the optimum, while a temperature curve rises with temperature up to the optimum. Whether substrate is present is a separate matter and not a change in the enzyme's own activity."
+ },
+ {
+  "id": "bio_floor_21",
+  "type": "mc",
+  "subject": "biology",
+  "topic": "生理機制・因果鏈",
+  "topicId": "bio_physio_chain",
+  "topicZh": "生理機制・因果鏈",
+  "topicEn": "Physiology — causal chains",
+  "difficulty": "intermediate",
+  "question": "小腸絨毛細胞把葡萄糖由腸腔運入細胞內，即使腸腔中的葡萄糖濃度較低亦能進行。這屬於哪一種運輸方式？",
+  "questionEn": "Cells lining the small intestine take glucose from the gut into the cell even when the concentration in the gut is lower. What kind of transport is this?",
+  "options": [
+   "主動運輸，需要消耗能量",
+   "簡單擴散，不需消耗能量",
+   "滲透作用，只涉及水分子",
+   "過濾作用，靠壓力差推動"
+  ],
+  "optionsEn": [
+   "active transport, which requires energy",
+   "simple diffusion, which requires no energy",
+   "osmosis, which involves water only",
+   "filtration, driven by a pressure difference"
+  ],
+  "correctIndex": 0,
+  "explanation": "由低濃度移向高濃度即逆濃度梯度，擴散不可能做到，必須由載體蛋白配合能量進行，這就是主動運輸，其能量來自 ATP。這個機制在生理上十分重要：它令小腸能把食物中的葡萄糖幾乎完全吸收，即使腸腔濃度已降至低於血液，仍可繼續吸收，不會浪費養分。判斷運輸方式的方法很直接：先看移動方向相對於濃度梯度是順還是逆——順的是擴散或滲透，逆的必定是主動運輸。滲透只涉及水分子，與葡萄糖無關；過濾靠壓力差，出現於腎小球而非小腸。",
+  "explanationEn": "Moving from lower to higher concentration is movement against the gradient, which diffusion cannot achieve; it requires a carrier protein together with energy, and that is active transport, powered by ATP. The mechanism matters physiologically: it allows the small intestine to absorb almost all the glucose in food, continuing even after the concentration in the gut has fallen below that in the blood, so no nutrient is wasted. Identifying the mode of transport is straightforward — establish whether the movement is down or against the concentration gradient; down means diffusion or osmosis, against means active transport. Osmosis concerns water only and does not apply to glucose, while filtration is driven by pressure and occurs in the kidney glomerulus rather than the intestine."
+ }
+]

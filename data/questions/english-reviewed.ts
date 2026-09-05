@@ -22,6 +22,7 @@ export const englishReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "Read the sentence: “Missing that flight turned out to be a blessing in disguise, because the delay let Priya meet her future business partner at the airport.” What does “a blessing in disguise” mean here?",
+    "explanation": "「A blessing in disguise（因禍得福）」指表面上不幸、其後卻帶來意想不到好處的事。句中「錯過航班」看似壞事，卻促成重要相遇，正合此義。常見扣分陷阱：按字面把 blessing 理解為「禮物」或「祝福」，忽略 in disguise（偽裝／表面看不出）的轉折意味。",
     "options": [
       "A setback that unexpectedly leads to something good",
       "A gift that is wrapped and hidden",
@@ -29,8 +30,8 @@ export const englishReviewedQuestions: Question[] = [
       "A secret ceremony held at an airport"
     ],
     "correctIndex": 0,
-    "explanation": "「A blessing in disguise（因禍得福）」指表面上不幸、其後卻帶來意想不到好處的事。句中「錯過航班」看似壞事，卻促成重要相遇，正合此義。常見扣分陷阱：按字面把 blessing 理解為「禮物」或「祝福」，忽略 in disguise（偽裝／表面看不出）的轉折意味。",
-    "marks": 1
+    "marks": 1,
+    "explanationEn": "“A blessing in disguise” means a setback that unexpectedly brings something good. Missing the flight looked bad but led to a key meeting, so one option is correct. Common trap: reading “blessing” literally as a gift, ignoring “in disguise”."
   },
   {
     "id": "eng-idiom-02",
@@ -45,6 +46,7 @@ export const englishReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "Which idiom best completes the sentence? “The complaints the company has received are only ___; many more customers are unhappy but have stayed silent.”",
+    "explanation": "「The tip of the iceberg（冰山一角）」指一個更大、隱藏問題中可見的一小部分。句意為「收到的投訴只是可見的一小部分，更多不滿被隱藏」，正合此義。常見扣分陷阱：見到「problem」便選帶負面色彩的其他成語，忽略「可見一小部分 vs 隱藏大部分」這個核心語境。",
     "options": [
       "the tip of the iceberg",
       "a double-edged sword",
@@ -52,8 +54,8 @@ export const englishReviewedQuestions: Question[] = [
       "water under the bridge"
     ],
     "correctIndex": 0,
-    "explanation": "「The tip of the iceberg（冰山一角）」指一個更大、隱藏問題中可見的一小部分。句意為「收到的投訴只是可見的一小部分，更多不滿被隱藏」，正合此義。常見扣分陷阱：見到「problem」便選帶負面色彩的其他成語，忽略「可見一小部分 vs 隱藏大部分」這個核心語境。",
-    "marks": 1
+    "marks": 1,
+    "explanationEn": "“The tip of the iceberg” is the small visible part of a much larger hidden problem. The complaints are the visible part; more dissatisfaction is hidden — so one option fits. Trap: picking another negative idiom without matching the “small visible vs large hidden” context."
   },
   {
     "id": "eng-idiom-03",
@@ -68,6 +70,7 @@ export const englishReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "When we say that smartphones are “a double-edged sword”, we mean that they ___.",
+    "explanation": "「A double-edged sword（雙刃劍／一體兩面）」比喻同一事物既有好處也有壞處。說智能電話是雙刃劍，即指它有明顯益處但同時帶來實在的弊端，正合此義。常見扣分陷阱：把比喻當字面，理解為「鋒利危險」。",
     "options": [
       "bring clear benefits but also real drawbacks",
       "are physically sharp and dangerous",
@@ -75,8 +78,8 @@ export const englishReviewedQuestions: Question[] = [
       "are only useful for two purposes"
     ],
     "correctIndex": 0,
-    "explanation": "「A double-edged sword（雙刃劍／一體兩面）」比喻同一事物既有好處也有壞處。說智能電話是雙刃劍，即指它有明顯益處但同時帶來實在的弊端，正合此義。常見扣分陷阱：把比喻當字面，理解為「鋒利危險」。",
-    "marks": 1
+    "marks": 1,
+    "explanationEn": "“A double-edged sword” describes something with both advantages and disadvantages. Calling smartphones a double-edged sword means they bring benefits but also real drawbacks — one option. Trap: taking the metaphor literally as “sharp and dangerous”."
   },
   {
     "id": "eng-idiom-04",
@@ -91,6 +94,7 @@ export const englishReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "In a formal argumentative essay, which opening best introduces a widely held opinion in an appropriate academic register?",
+    "explanation": "「A prevailing view holds that…（普遍看法認為……）」是正式、客觀地引入普遍觀點的學術片語，最合議論文語域。其餘選項分別過於口語（lol）、猶豫不定（kinda / maybe）或不完整不規範，皆不符正式書面語。常見扣分陷阱：只看內容對錯而忽略「語域是否正式」這個評分重點。",
     "options": [
       "A prevailing view holds that remote work improves productivity.",
       "Everybody always says remote work is way better lol.",
@@ -98,8 +102,8 @@ export const englishReviewedQuestions: Question[] = [
       "Remote work good, office bad, simple as that."
     ],
     "correctIndex": 0,
-    "explanation": "「A prevailing view holds that…（普遍看法認為……）」是正式、客觀地引入普遍觀點的學術片語，最合議論文語域。其餘選項分別過於口語（lol）、猶豫不定（kinda / maybe）或不完整不規範，皆不符正式書面語。常見扣分陷阱：只看內容對錯而忽略「語域是否正式」這個評分重點。",
-    "marks": 1
+    "marks": 1,
+    "explanationEn": "“A prevailing view holds that…” formally and objectively introduces a common opinion, matching an academic register. The others are too colloquial, hesitant, or ungrammatical. Trap: judging only the content, not the required formal register."
   },
   {
     "id": "eng-idiom-05",
@@ -114,6 +118,7 @@ export const englishReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "A writer begins a paragraph with “Mounting evidence points to the fact that …”. This phrase signals that the writer is about to ___.",
+    "explanation": "「Mounting evidence points to the fact that…（越來越多證據顯示……）」用於引入不斷累積、支持某論點的研究或數據，屬論證性語言，此即該句的用法。常見扣分陷阱：把「evidence」誤當作個人經歷或情感訴求，混淆論證與敘事／抒情。",
     "options": [
       "present accumulating research or data that support a claim",
       "share a personal childhood memory",
@@ -121,8 +126,8 @@ export const englishReviewedQuestions: Question[] = [
       "change the subject to an unrelated topic"
     ],
     "correctIndex": 0,
-    "explanation": "「Mounting evidence points to the fact that…（越來越多證據顯示……）」用於引入不斷累積、支持某論點的研究或數據，屬論證性語言，此即該句的用法。常見扣分陷阱：把「evidence」誤當作個人經歷或情感訴求，混淆論證與敘事／抒情。",
-    "marks": 1
+    "marks": 1,
+    "explanationEn": "“Mounting evidence points to the fact that…” introduces accumulating research or data supporting a claim — argumentative language. Hence one option. Trap: confusing evidence-based argument with anecdote or emotional appeal."
   },
   {
     "id": "eng-idiom-06",
@@ -137,6 +142,7 @@ export const englishReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "Which sentence expresses the idea most appropriately for a formal DSE writing task?",
+    "explanation": "「The significance of … should not be understated（……的重要性不容低估）」是正式、有力的書面語表達，最合正式寫作語域。其餘選項含口語標記（tbh、like、whatever）或語氣猶豫，皆不合格。常見扣分陷阱：只看是否強調了重點，忽略語域與用詞是否正式規範。",
     "options": [
       "The significance of mental health support should not be understated.",
       "Mental health support is honestly super duper important tbh.",
@@ -144,7 +150,7 @@ export const englishReviewedQuestions: Question[] = [
       "Mental health support, whatever, it kind of matters I guess."
     ],
     "correctIndex": 0,
-    "explanation": "「The significance of … should not be understated（……的重要性不容低估）」是正式、有力的書面語表達，最合正式寫作語域。其餘選項含口語標記（tbh、like、whatever）或語氣猶豫，皆不合格。常見扣分陷阱：只看是否強調了重點，忽略語域與用詞是否正式規範。",
-    "marks": 1
+    "marks": 1,
+    "explanationEn": "“The significance of … should not be understated” is a formal, emphatic written expression suited to formal writing. The others contain colloquial markers or hesitant tone. Trap: checking only whether the point is emphasised, not whether the register is formal."
   }
 ]
