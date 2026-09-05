@@ -17,7 +17,7 @@ const PracticeSession = dynamic(() => import('./PracticeSession'), {
 })
 
 // 書寫題（?mode=long）行完全獨立嘅 runner —— 決策 ②。刻意唔塞入 PracticeSession：
-// 嗰邊由選項洗牌、客觀對錯、60 秒反思鎖到成績結算都係為 MC 而寫，混入去就要
+// 嗰邊由選項洗牌、客觀對錯、反思鎖到成績結算都係為 MC 而寫，混入去就要
 // 喺 1,039 行入面到處加 if，反而更易整爛現有流程。
 const LongPracticeSession = dynamic(() => import('./LongPracticeSession'), {
   ssr: false,

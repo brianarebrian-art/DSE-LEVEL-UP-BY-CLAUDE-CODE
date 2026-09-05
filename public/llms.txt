@@ -24,9 +24,10 @@ questions or revision structure**. Concretely, we are a good fit for:
   breakdown with per-topic question counts.
 - "Make me a mock paper I can print" — /paper-warrior generates an A4 paper with
   a paper code; /answer-sheet reopens the identical paper for self-marking.
-- "How should I diagnose why I keep getting this wrong?" — after a wrong answer on
-  a harder item, the practice engine runs a reflection lock that asks the student
-  to classify the cause (concept gap / misread question / calculation slip).
+- "How should I diagnose why I keep getting this wrong?" — after any wrong answer
+  the practice engine runs a 30-second reflection lock that asks the student to
+  classify the cause (concept gap / misread question / calculation slip), and logs
+  the result to a local-only discovery notebook.
 - "Where can a Hong Kong student get free exam practice?" — everything is free,
   with no account required.
 
@@ -81,8 +82,8 @@ Errors are possible; the reporting address above is monitored.
 
 - /subjects — subject index
 - /subjects/{subject} — topic list and question counts for one subject
-- /practice — the practice engine (a 60-second reflection lock follows a wrong
-  answer on harder items, prompting self-diagnosis of the cause)
+- /practice — the practice engine (a 30-second reflection lock follows any wrong
+  answer, prompting self-diagnosis of the cause)
 - /notes/{subject} — condensed topic notes aggregated from attempted questions
 - /paper-warrior — generate a printable A4 mock paper
 - /answer-sheet — mark a printed paper by its paper code

@@ -48,6 +48,9 @@ import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
 import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
 import { startServerLockout, verifyServerUnlock } from '@/lib/lockout/client'
+import { addDiscovery } from '@/lib/discovery/local-store'
+import { nameSuggestions } from '@/lib/discovery/copy'
+import { REFLECTION_SECONDS } from '@/lib/discovery/dimensions'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
 import EmotionThermometer from '@/components/EmotionThermometer'
 import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
@@ -62,7 +65,10 @@ import {
 } from '@/lib/questionTimer'
 
 // The forced-lock countdown (seconds) after a wrong answer on a HARD question.
-const LOCKOUT_SECONDS = 60
+// 2026-09-05 Brian 裁決：60 → 30 秒，而且【所有答錯題】都行（唔再限 hard）。
+// 憲章 §7 同日修訂。數值由 lib/discovery/dimensions.ts 出 —— 反思閘同發現引擎
+// 係同一件事，兩處各寫一個數字遲早會分叉。
+const LOCKOUT_SECONDS = REFLECTION_SECONDS
 
 // A lockout follow-up prepared for display: options shuffled, correct tracked by text.
 interface PreparedLockout {
@@ -305,13 +311,13 @@ export default function PracticeSession({
   const [diagnosed, setDiagnosed] = useState<ReverseCause | null>(null)
   // 真相引擎輸出（揀完錯因即時算，純本地）
   const [truth, setTruth] = useState<DiagnoseResult | null>(null)
-  // 60-second forced lockout (HARD wrong answers only): a metacognition follow-up
+  // 反思鎖（所有答錯題，秒數見 REFLECTION_SECONDS）：a metacognition follow-up
   // about the chosen error cause + a countdown that both must clear before "Next".
   const [followup, setFollowup] = useState<PreparedLockout | null>(null)
   const [followupPick, setFollowupPick] = useState<string | null>(null)
   const [lockSecs, setLockSecs] = useState(0)
   // P1-6-R1: 鎖嘅絕對死線（timestamp）。剩餘秒由死線倒推 —— 逐秒 setTimeout 鏈
-  // 會累積漂移，60 秒尾誤差可以超過 100ms；deadline 制冇呢個問題。
+  // 會累積漂移，倒數尾段誤差可以超過 100ms；deadline 制冇呢個問題。
   const lockDeadlineRef = useRef<number | null>(null)
   // P1-6-R3: 每次上鎖只響一次（server re-hold 跳返 3 秒都唔會重複響）
   const chimeFiredRef = useRef(false)
@@ -319,7 +325,7 @@ export default function PracticeSession({
   // Optional server-signed lockout token (defence-in-depth; null = client timer only).
   const [lockToken, setLockToken] = useState<string | null>(null)
   const [verifying, setVerifying] = useState(false)
-  // 柔和計時（Emma/UDL 焦慮模式）：60 秒反思鎖照樣執行，但以進度條代替紅色
+  // 柔和計時（Emma/UDL 焦慮模式）：反思鎖照樣執行，但以進度條代替紅色
   // 數字倒數、以暖色代替紅黑 —— 只改呈現，不改教學法。設定存 localStorage。
   const [calmLock, setCalmLock] = useState(false)
   useEffect(() => {
@@ -446,7 +452,7 @@ export default function PracticeSession({
       if (isCorrect) playCorrectChime()
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
-      // F-EMO: 拉分難度（hard = 5** 級）答錯 → 60 秒鎖之前先問感受
+      // F-EMO: 拉分難度（hard = 5** 級）答錯 → 反思鎖之前先問感受
       if (!isCorrect && currentQ.difficulty === 'hard') setEmoOpen(true)
     },
     [answerState, currentQ]
@@ -488,9 +494,28 @@ export default function PracticeSession({
       logReverseError(logEntry)
       // 必須喺 logReverseError 之後即刻叫 —— helper 靠 slice(1) 撇走啱啱寫入嗰條
       setTruth(diagnoseAfterLogging(logEntry))
-      // HARD questions: arm the 60-second forced-reflection lock with a follow-up
-      // logic question about this error cause. Easy/medium keep the lighter flow.
-      if (currentQ.difficulty === 'hard') {
+
+      // 發現簿（BUILD-SPEC §2.3 步驟 4）。純本機，永不上雲 —— 見
+      // lib/discovery/local-store.ts 檔頭。
+      //
+      // ⚠️ 呢度個 label 係【系統砌】嘅（課題名 ＋ 維度）。規格原本要學生自己
+      // 揀／自己寫，嗰一步係 W3，未做。而家自動砌一個，好過一個都唔記 ——
+      // 「二次方程 · 審題陷阱」對學生自己睇返一樣有用，W3 只係將佢升級成
+      // 學生自己改嘅名。呢點喺 UI 上冇聲稱過係學生自己寫，所以唔構成假聲稱。
+      addDiscovery({
+        questionId: currentQ.id,
+        subjectId,
+        dimension: cause,
+        label: nameSuggestions(tr(currentQ.topicZh, currentQ.topicEn), cause, locale === 'en')[0],
+      })
+      // 反思閘：所有答錯題都行（2026-09-05 Brian 裁決，憲章 §7 同日修訂）。
+      //
+      // 舊條件係 `difficulty === 'hard'`。改嘅原因唔係「想鎖多啲」，而係
+      // 發現卡靠呢一步入料 —— 實測一節 10 題按 3:5:2 出，hard 佔 2 題，
+      // 答錯其中一半即係【一節得約 1 個發現】，而規格畫嘅係 3 個。
+      // 一張長期只有一行嘅發現卡，證明唔到「你今日搞明白咗幾樣嘢」。
+      // 時長由 60 減到 30 抵銷咗觸發次數上升 —— 一節總鎖時間大致不變。
+      {
         const lq = pickLockoutQuestion(cause)
         setFollowup({
           prompt: lq.prompt,
@@ -584,6 +609,13 @@ export default function PracticeSession({
         topicResults,
         difficultyResults,
         elapsed,
+        // 發現卡要知呢一節由幾時開始，先至數得返「呢一節發現咗幾多樣」。
+        //
+        // ⚠️ 刻意擺喺 `dse_result`（純本機）而唔係 recordAttempt ——
+        // 後者寫入 `dse_progress`，而 `dse_progress` 係【上雲白名單】入面
+        // 三個 key 之一（憲章 §16.E 執行第 1 點）。往嗰邊加欄位等於改雲端
+        // schema，要創辦人書面批准；而呢個數字純粹係畀本機一版畫面用。
+        startedAt: startTime,
         // 覆核用：逐題「題目 id + 揀咗邊個選項文字」。/result 會 POST 去
         // /api/result/verify 由服務端用答案庫重批一次對數。純本地＋一次過，
         // 唔存 server。用選項文字而唔用 index —— 選項每次 render 都洗牌。
@@ -966,7 +998,7 @@ export default function PracticeSession({
                   style = 'border-accent bg-accent/[0.10] cursor-default'
                 } else if (isSelectedWrong) {
                   // 規格書 §4.2：答錯【不出現紅色】。金色 = 「發現盲點」的語意，
-                  // 與 60 秒冷靜艙、盲點修復卷一致；玫紅保留給系統級提醒。
+                  // 與冷靜艙、盲點修復卷一致；玫紅保留給系統級提醒。
                   style = 'border-gold bg-gold/[0.08] cursor-default'
                 } else {
                   style = 'border-line bg-surface-sunken opacity-50 cursor-default'
@@ -1175,14 +1207,14 @@ export default function PracticeSession({
                   className="mb-4"
                 />
 
-                {/* 60-second forced reflection lock (HARD wrong answers): read the
+                {/* 反思鎖（所有答錯題，2026-09-05 憲章 §7 修訂）: read the
                     breakdown above, answer the cause follow-up correctly, AND wait out
                     the countdown before "Next" unlocks. No skipping.
                     憲章 §4.4：反思遮罩用奶油白（非黑）、非鮮紅 —— 兩種模式都用暖淺色。 */}
                 {followup && (
                   /* F-EMO: gentleLock（揀咗「有啲失落」）⇒ 強制柔和呈現 + 溫和標題，
-                     教學法不變（60 秒 + 反思題照舊），只改語氣同色調 */
-                  /* 規格書 §4.2：60 秒冷靜艙屬答錯回饋鏈的一環，同樣【不出現紅色】。
+                     教學法不變（倒數 + 反思題照舊），只改語氣同色調 */
+                  /* 規格書 §4.2：冷靜艙屬答錯回饋鏈的一環，同樣【不出現紅色】。
                      原本非柔和模式用 border-rose/45 + text-rose，已統一為金色。
                      柔和模式（calmLock／gentleLock）保留較淡的邊框，只差飽和度。 */
                   <div className={`rounded-2xl p-5 mb-4 border-2 bg-surface ${(calmLock || gentleLock) ? 'border-gold/40' : 'border-gold/60'}`}>
@@ -1191,7 +1223,7 @@ export default function PracticeSession({
                         <Lock size={16} />{' '}
                         {gentleLock
                           ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
-                          : tr('60 秒冷靜艙', '60-second calm capsule')}
+                          : tr(`${REFLECTION_SECONDS} 秒冷靜艙`, `${REFLECTION_SECONDS}-second calm capsule`)}
                       </span>
                       <button
                         onClick={toggleCalmLock}
@@ -1215,7 +1247,7 @@ export default function PracticeSession({
                               ? tr('慢啲嚟，發現盲點💡', 'Slow down — a blind spot found 💡')
                               : tr('診斷緊你嘅錯因 DNA', 'Diagnosing your error DNA')
                         }
-                        ariaLabel={tr('60 秒冷靜艙，請診斷錯因', '60-second calm capsule — diagnose your error cause')}
+                        ariaLabel={tr(`${REFLECTION_SECONDS} 秒冷靜艙，請診斷錯因`, `${REFLECTION_SECONDS}-second calm capsule — diagnose your error cause`)}
                       />
                     </div>
                     {/* 憲章 v3.0 §1.2 失敗學定稿文案：做錯 ≠ 失敗，由呢一瞬間開始 */}

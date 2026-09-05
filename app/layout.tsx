@@ -101,7 +101,7 @@ const jsonLd = {
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'HKD' },
       audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
       description:
-        'Free HKDSE revision platform with 5,167 independently rewritten multiple-choice questions across 25 subjects, a 60-second reflection lock for wrong answers, printable paper-based mock sets, and accessibility features for students with SEN. Questions are original rewrites, not reproductions of HKEAA past papers.',
+        'Free HKDSE revision platform with 26,204 independently rewritten questions across 25 subjects, a 30-second reflection lock after any wrong answer, printable paper-based mock sets, and accessibility features for students with SEN. Questions are original rewrites, not reproductions of HKEAA past papers.',
     },
   ],
 }
