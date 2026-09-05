@@ -43,13 +43,12 @@ const PAID = /^(stripe|@stripe\/|@sendgrid\/|aws-sdk|@aws-sdk\/|twilio|@twilio\/
 // 已審批例外（有文件根據，非走漏）：
 //   @anthropic-ai/sdk — 人文科題庫生成管線（scripts/gen-questions.mts）專用。
 //   只有創辦人主動設置 ANTHROPIC_API_KEY 先會產生費用；平台運行時完全不引用。
-//   stripe / @stripe/* — 憲章 §5 例外一（2026-09-04 Brian ＋ Yuna 雙簽），
-//   §8.2 受控收費框架之必要基礎設施。按交易百分比收費、無月費，不計入月度死鎖。
-//   例外嚴格限於 Stripe：SendGrid／Resend／AWS／Twilio 等仍然係紅色警報。
-const EXCEPTIONS = new Set(['@anthropic-ai/sdk', 'stripe'])
-const EXCEPTION_PREFIX = /^@stripe\//
-const approved = (d) => EXCEPTIONS.has(d) || EXCEPTION_PREFIX.test(d)
-// 例外分兩類，訊息唔可以撈亂 —— Stripe 係真係會按交易產生費用，唔係「只喺創辦人開 key 時」。
+//
+// ⚠️ 2026-09-05：Stripe 例外【已收回】。收費系統整套剷除，`stripe` 套件亦已移除，
+//   所以 stripe / @stripe/* 由「已審批例外」變返「紅色警報」—— 呢個係刻意嘅：
+//   下次有人 npm i stripe，個閘要即刻嗌，而唔係靜靜哋放行一個已經廢除嘅例外。
+const EXCEPTIONS = new Set(['@anthropic-ai/sdk'])
+const approved = (d) => EXCEPTIONS.has(d)
 const KEY_GATED = new Set(['@anthropic-ai/sdk'])
 const deps = { ...pkg.dependencies, ...pkg.devDependencies }
 const hits = Object.keys(deps).filter((d) => PAID.test(d))
