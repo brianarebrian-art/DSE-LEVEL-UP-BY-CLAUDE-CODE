@@ -93,14 +93,6 @@ export default function RelaxLanding({
         🧭 {en ? '5-4-3-2-1 grounding · pull myself back to now' : '5-4-3-2-1 落地練習 · 拉自己返到當下'}
       </Link>
 
-      {/* 🛒 虛擬超市：純瀏覽減壓，零貨幣零結帳零計時（2026-08-04） */}
-      <Link
-        href="/relax/virtual-supermarket"
-        className="block w-full text-center rounded-[10px] border border-subj-rose/40 text-subj-rose text-sm py-3 min-h-11 mt-3 hover:bg-subj-rose/10 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-      >
-        🛒 {en ? 'Wander a virtual supermarket · nothing to buy' : '行下虛擬超市 · 冇嘢要買'}
-      </Link>
-
       {/* 放榜前緩衝空間（第 4 週端到端 QA 發現）：/waiting 一直喺 sitemap 入面，
           但全站冇任何一條連結指過去 —— 即係只有由搜尋引擎入嚟先搵得到。
           嗰版有每日一句、呼吸、時間囊同真實求助熱線，係做完晒之後嗰段最難捱嘅
