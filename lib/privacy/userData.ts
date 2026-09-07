@@ -29,6 +29,25 @@ export const USER_SCOPED_TABLES = [
  * 刻意【唔】刪嘅表，每個必須有理由。
  * 冇理由嘅豁免遲早會變成「加咗落去就算」，到時個測試等於冇。
  */
+// ── Better Auth 自己嘅表（只喺 email/password 開咗之後先存在）──────────────
+//
+// ⚠️ 呢批【唔可以】直接塞入 USER_SCOPED_TABLES：嗰個迴圈一律行
+// `.eq('user_id', …)`，而 Better Auth 用嘅係另一套 key。塞咗入去唔會靜靜哋
+// 唔刪 —— 係會撞 42703（undefined_column）令成個抹除 500。
+//
+// 而且 key 嘅【值】都唔同：USER_SCOPED_TABLES 用嘅 userId 係 Google `sub`
+// （見 lib/auth/server.ts），而呢批用嘅係 Better Auth 自己嘅 user id。
+// 兩個 id 喺同一次抹除入面同時存在，所以要分開攞。
+//
+// `verification` 冇 user id —— 佢由 email 做 identifier。唔清嘅話，一個
+// 刪咗帳號嘅學生嘅電郵會留喺嗰度直到 token 過期。所以照 email 清。
+export const BETTER_AUTH_TABLES = [
+  { table: 'session', key: 'userId', of: 'betterAuthUserId' },
+  { table: 'account', key: 'userId', of: 'betterAuthUserId' },
+  { table: 'user', key: 'id', of: 'betterAuthUserId' },
+  { table: 'verification', key: 'identifier', of: 'email' },
+] as const
+
 export const NOT_USER_SCOPED = [
   {
     table: 'review_decisions',

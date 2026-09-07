@@ -44,7 +44,30 @@
 
 - **Framework:** Next.js 16.2.9 + React 19.2.4
 - **Styling:** Tailwind CSS v4
-- **Auth:** Auth.js v5（Google OAuth）— **無 Supabase Auth，無 Better Auth**
+- **Auth:** 雙 backend，由 `NEXT_PUBLIC_AUTH_BACKEND` 揀。**無 Supabase Auth。**
+  - 預設：Auth.js v5（Google OAuth，JWT strategy，**唔需要資料庫**）
+  - 可切換：Better Auth（Google ＋ **email/password**）—— 2026-09-07 Brian 裁決要開
+  - ⚠️ 原條文寫「**無 Better Auth**」，同 §5 嗰段「已經安裝並已接線…唔准當佢係幻覺刪走」
+    直接打架。§5 嗰段先啱：`better-auth@^1.6.23` 一直喺 `package.json`，
+    `lib/auth/{better-auth,client,session,server}.ts` 全部接咗線，
+    cutover runbook 喺 `FLIP-TO-BETTER-AUTH.md`。呢度更正。
+
+#### 開 email/password 之前必須成立（2026-09-07）
+
+Better Auth 一開，`user` 表就會存**學生電郵 ＋ 密碼 hash**。三件事同日處理：
+
+1. **私隱頁唔可以再講「我哋唔會將你嘅電郵地址存入資料庫」。**
+   已改為由 `betterAuthEnabled` 衍生 —— 兩個狀態各有一段真文案，
+   唔會出現「代碼改咗但私隱政策漏咗改」嗰個窗口。
+2. **刪帳號要清埋 Better Auth 嘅表。** 佢哋用 `id`／`userId`／`identifier`，
+   **唔係** `user_id`，塞入原本個迴圈會撞 42703 令成個抹除 500。
+   已加 `BETTER_AUTH_TABLES` 獨立處理（`verification` 由 email 做 key）。
+3. **`getSyncUserId()` 解析唔到 Google `accountId` 嗰陣一律回 `null`。**
+   原本會回落 Better Auth 自己個 user id —— 而現有 **169 個帳號**
+   （2026-09-07 實測）嘅雲端進度全部 keyed on Google `sub`，換咗 key 就永久失聯，
+   而且【冇聲】。回 `null` 只係「今次唔同步」，本機資料一個字都冇少。
+
+迴歸鎖：`lib/__tests__/email-auth-readiness.test.mts`。
 - **Middleware:** proxy.ts — **無 middleware.ts**
 - **Database:** Supabase PostgreSQL。**兩種存取模式，唔可以混淆：**
   - **寫入 ＋ 一切用戶數據：僅經 server-only `getServiceSupabase()`**（service role key 永不入瀏覽器）

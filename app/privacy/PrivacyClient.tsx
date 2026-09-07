@@ -23,7 +23,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   )
 }
 
-export default function PrivacyClient() {
+export default function PrivacyClient({ storesEmail = false }: { storesEmail?: boolean }) {
   const { locale } = useLocale()
   const en = locale === 'en'
 
@@ -118,9 +118,13 @@ export default function PrivacyClient() {
             : '你用 Google 登入嗰陣，我哋會收到一個屬於你嘅穩定帳戶識別碼。我哋就係用呢個識別碼去對應你嘅進度，等你換機嗰陣攞得返。'}
         </p>
         <p>
-          {en
-            ? 'We do not store your email address in our database. We checked: there is no path in the code that writes a student’s email address to any table.'
-            : '我哋唔會將你嘅電郵地址存入資料庫。呢點我哋查過：代碼入面冇任何路徑會將學生嘅電郵地址寫入任何一張表。'}
+          {storesEmail
+            ? en
+              ? 'If you sign up with an email address and password, we store that email address and a one-way hash of your password. We never store the password itself, and we cannot read it. If you only ever sign in with Google, no email address of yours is stored.'
+              : '如果你用電郵同密碼註冊，我哋會存低嗰個電郵地址，同埋你密碼嘅單向雜湊值。密碼本身我哋唔會存，亦讀唔到。如果你由頭到尾都只係用 Google 登入，就冇存過你任何電郵地址。'
+            : en
+              ? 'We do not store your email address in our database. We checked: there is no path in the code that writes a student’s email address to any table.'
+              : '我哋唔會將你嘅電郵地址存入資料庫。呢點我哋查過：代碼入面冇任何路徑會將學生嘅電郵地址寫入任何一張表。'}
         </p>
         <p>
           {en
