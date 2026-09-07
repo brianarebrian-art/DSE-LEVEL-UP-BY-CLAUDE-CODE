@@ -6,6 +6,10 @@ import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lu
 import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
 import { gradeRange } from '@/lib/gradeConfidence'
 import MasteryEstimate from '@/components/MasteryEstimate'
+import { discoveriesSince } from '@/lib/discovery/local-store'
+import { DISCOVERY_COPY, dimensionShort } from '@/lib/discovery/copy'
+import { DIMENSION_BY_ID } from '@/lib/discovery/dimensions'
+import type { Discovery } from '@/lib/discovery/types'
 
 /** 佔位符替換。字典行文如 '以呢 {n} 題計'；同 marksToNext 沿用嘅 .replace 做法一致，
  *  只係抽成一個函數，免得多個佔位符時串成一長串 .replace()。 */
@@ -36,6 +40,8 @@ interface StoredResult {
   topicResults: TopicResult[]
   difficultyResults?: DifficultyResults
   elapsed: number
+  /** 呢一節嘅開始時間。舊記錄冇呢欄，發現卡就唔顯示（唔會估）。 */
+  startedAt?: number
   /** 覆核用逐題答案。舊記錄冇呢欄，覆核就靜靜跳過。 */
   submitted?: { questionId: string; selectedZh: string | null }[]
 }
@@ -429,6 +435,8 @@ export default function ResultPageClient() {
 
         {/* 累積掌握度估算（等級預測 v3）。擺喺本節成績之下、課題分析之上：
             本節成績講「今次」，掌握度講「至今」，兩者要分得開。 */}
+        <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} attempted={result.total} />
+
         {result.subjectId && <MasteryEstimate subjectId={result.subjectId} />}
 
         {/* Topic breakdown */}
@@ -529,5 +537,60 @@ export default function ResultPageClient() {
         </p>
       </div>
     </div>
+  )
+}
+
+// ── 發現卡（BUILD-SPEC §2.3 步驟 5）────────────────────────────────────────
+// 一節做完，學生帶走嘅唔應該淨係一個分數。呢一條列返佢今節逐題自診之後
+// 記低咗嘅嘢。
+//
+// 分數本身呢一頁一直都有（等級預測、逐課題對錯）—— 規格 §1.3 主張連分數都
+// 唔應該出，嗰個係更大嘅改動，未裁決，所以呢度係【加一層】而唔係取代。
+//
+// localStorage 要 mount 之後先讀（避免 hydration 唔一致），同 /notes 一致。
+function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: boolean; attempted: number }) {
+  const [items, setItems] = useState<Discovery[] | null>(null)
+  useEffect(() => {
+    if (startedAt === undefined) { setItems([]); return }
+    setItems(discoveriesSince(startedAt))
+  }, [startedAt])
+
+  // 舊記錄（冇 startedAt）同讀取中：乜都唔出，唔出空框。
+  if (startedAt === undefined || items === null) return null
+
+  const title = items.length > 0 ? DISCOVERY_COPY.cardTitle(items.length) : DISCOVERY_COPY.cardEmpty
+  return (
+    <section className="mb-6 rounded-xl border border-line bg-surface-raised p-5">
+      <h2 className="mb-1 text-base font-medium text-ink">{en ? title.en : title.zh}</h2>
+      <p className="mb-3 text-xs text-ink-muted">
+        {en ? DISCOVERY_COPY.cardAttempted(attempted).en : DISCOVERY_COPY.cardAttempted(attempted).zh}
+      </p>
+      {items.length > 0 && (
+        <ul className="space-y-1.5">
+          {/* 三張以下顯示全部；超過就顯示三張 —— 一次過鋪十幾行係資訊過載，
+              而資訊過載本身就係壓力源（規格 §2.3 步驟 5）。 */}
+          {items.slice(0, 3).map((d) => (
+            <li key={d.id} className="flex items-start gap-2 text-sm text-ink-soft">
+              <span aria-hidden>{DIMENSION_BY_ID[d.dimension].icon}</span>
+              <span>
+                {d.label}
+                {/* 而家嘅 label 係系統砌（「課題 · 維度」），已經帶咗維度名，
+                    再加個標籤就會出「概念盲區概念盲區」。W3 學生自己改名之後
+                    label 就唔一定帶維度，嗰陣個標籤先有用 —— 所以唔係剷走，
+                    係重複先隱藏。 */}
+                {!d.label.includes(dimensionShort(d.dimension, en)) && (
+                  <span className="ml-2 text-xs text-ink-faint">{dimensionShort(d.dimension, en)}</span>
+                )}
+              </span>
+            </li>
+          ))}
+          {items.length > 3 && (
+            <li className="text-xs text-ink-muted">
+              {en ? `+ ${items.length - 3} more` : `仲有 ${items.length - 3} 個`}
+            </li>
+          )}
+        </ul>
+      )}
+    </section>
   )
 }

@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { buildLogEntries, nodeTone, subjectLabel, type LogEntry } from '@/lib/logicLog'
-import { getHomestead, type HomesteadState } from '@/lib/homestead'
 
 // 儀表板上的「最近足跡」橫向列（SPEC-GAMIFY-P1 §MVP P0 第 3 項）+ 家園入口。
 //
@@ -34,11 +33,9 @@ export default function TrailStrip({ className = '' }: { className?: string }) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [entries, setEntries] = useState<LogEntry[] | null>(null)
-  const [home, setHome] = useState<HomesteadState | null>(null)
 
   useEffect(() => {
     setEntries(buildLogEntries())
-    setHome(getHomestead())
   }, [])
 
   if (entries === null || entries.length === 0) return null
@@ -83,23 +80,6 @@ export default function TrailStrip({ className = '' }: { className?: string }) {
           ))}
         </ul>
       </div>
-
-      {home && (
-        <Link
-          href="/homestead"
-          className="mt-3 flex items-center justify-between rounded-2xl border border-line bg-surface-raised px-5 py-4 min-h-11"
-        >
-          <span>
-            <span className="block text-sm font-medium text-ink">
-              🏡 {en ? 'Logic homestead' : '邏輯家園'}
-            </span>
-            <span className="block text-xs text-ink-muted mt-0.5">
-              {home.zones.map((z) => `${z.zone.emoji}${z.level}`).join('  ')}
-            </span>
-          </span>
-          <ArrowRight className="w-4 h-4 text-ink-muted shrink-0" />
-        </Link>
-      )}
     </section>
   )
 }

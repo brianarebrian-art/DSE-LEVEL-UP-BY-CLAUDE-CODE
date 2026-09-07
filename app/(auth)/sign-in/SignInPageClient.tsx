@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { LogIn, Loader2 } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import InAppBrowserNotice from '@/components/InAppBrowserNotice'
 import { AUTH_BACKEND } from '@/lib/auth/client'
 import { authSignInGoogle, authSignInEmail } from '@/lib/auth/session'
 
@@ -46,6 +47,10 @@ export default function SignInPageClient() {
             ? 'Sign in to sync your progress across devices. The platform is 100% free.'
             : '登入以跨裝置同步你嘅進度。平台 100% 免費。'}
         </p>
+
+        {/* Google OAuth 喺 App 內置瀏覽器會被 Google 自己封 —— 呢一版只有 Google
+            一個選項，封咗就零後路，所以提示要擺喺個掣【之上】而唔係之下。 */}
+        <InAppBrowserNotice />
 
         <button
           onClick={() => authSignInGoogle()}

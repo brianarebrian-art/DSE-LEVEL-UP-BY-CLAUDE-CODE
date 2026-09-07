@@ -5,6 +5,12 @@ import { useLocale } from '@/lib/i18n'
 
 // Custom 404 — replaces Next's default so no framework/version detail is implied,
 // and the user always has a way back. Client component so text follows the language toggle.
+//
+// 2026-09-05：加咗 /sitemap.xml 同 /llms.txt 兩條連結。
+// 個 status code 本身一直係真 404（實測 /some-path-that-does-not-exist → 404），
+// 所以爬蟲同 agent 唔會當每條路徑都存在。但一個【只有「返回首頁」】嘅 404，
+// 對一個行錯咗路嘅 agent 嚟講係死胡同 —— 佢知道呢頁唔存在，但唔知邊啲存在。
+// 兩條連結成本近乎零，而且對人一樣有用（sitemap 係全站目錄）。
 export default function NotFound() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -23,6 +29,19 @@ export default function NotFound() {
         >
           {en ? 'Back to home' : '返回首頁'}
         </Link>
+
+        <p className="mt-8 text-xs text-ink-muted">
+          {en ? 'Looking for something specific?' : '想搵某一頁？'}
+        </p>
+        <p className="mt-1 text-xs">
+          <a href="/sitemap.xml" className="min-h-11 inline-flex items-center px-2 text-accent hover:text-accent-hover hover:underline underline-offset-4">
+            {en ? 'Every page (sitemap.xml)' : '全站頁面（sitemap.xml）'}
+          </a>
+          <span className="text-ink-faint" aria-hidden>·</span>
+          <a href="/llms.txt" className="min-h-11 inline-flex items-center px-2 text-accent hover:text-accent-hover hover:underline underline-offset-4">
+            {en ? 'What this site is (llms.txt)' : '呢個網站係咩（llms.txt）'}
+          </a>
+        </p>
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ import { getSubjectQuestions } from '@/data/questions'
 import { subjects } from '@/data/subjects'
 import { safeLog } from '@/lib/safeLog'
 import { ReviewPanel, type Batch, type HistoryRow } from './ReviewPanel'
+import UserOverview from '@/components/admin/UserOverview'
 
 // Admin 審核面板 — 只限 ADMIN_EMAILS 白名單（兩位創辦人）。中文單語內部工具。
 // 身份唔夠 → 直接彈返首頁，頁面唔會透露自己存在啲乜。
@@ -224,6 +225,10 @@ export default async function AdminPage() {
             </p>
           )}
         </header>
+
+        {/* 用戶概覽擺喺審核面板【之上】：呢個面板本來全部係「我哋做咗幾多題」，
+            冇一個數係「有冇人用」。後者先係決定前者值唔值得做嗰個數。 */}
+        <UserOverview />
 
         <ReviewPanel batches={batches} history={history} dbOk={dbOk} />
 

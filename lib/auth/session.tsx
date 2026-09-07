@@ -81,11 +81,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 // --- Action helpers (plain functions, so branching on AUTH_BACKEND is fine here). ---
 
-export function authSignInGoogle(callbackURL = '/dashboard'): void {
+/**
+ * Google 登入。唔傳 `to` 就返返學生原本嗰版。
+ *
+ * ⚠️ 兩個 backend 嘅 option 名【唔同】，而且改錯咗係靜靜哋錯：
+ *   Better Auth → `callbackURL`（大楷 URL）
+ *   Auth.js v5  → `redirectTo`（`callbackUrl` 係 deprecated 別名）
+ *
+ * 2026-09-05 修正：原本兩邊都傳 `callbackURL`。Auth.js 嗰邊
+ * `SignInOptions extends Record<string, unknown>`，所以個 key 過到 tsc
+ * 但完全唔會被讀 —— 結果 Auth.js（預設 backend）行咗佢自己嘅預設
+ * 「返返登入前嗰版」，而 Better Auth 就真係跳去 /dashboard。
+ * 即係話同一粒掣喺兩個 backend 之下行為唔同，而兩邊都唔係有人揀過嘅。
+ *
+ * 現行行為：兩邊一致，預設返返原本嗰版（呢個亦係學生想要嘅 ——
+ * 喺練習頁撳登入，唔應該被掉去 dashboard，之後仲要自己搵返條題目）。
+ * 迴歸鎖：lib/__tests__/auth-callback.test.mts
+ */
+export function authSignInGoogle(to?: string): void {
+  // 同源保證：只取 pathname + search，唔會變成 open redirect。
+  const target = to
+    ?? (typeof window !== 'undefined' ? window.location.pathname + window.location.search : '/dashboard')
   if (AUTH_BACKEND === 'better-auth') {
-    void authClient.signIn.social({ provider: 'google', callbackURL })
+    void authClient.signIn.social({ provider: 'google', callbackURL: target })
   } else {
-    void nextSignIn('google', { callbackURL })
+    void nextSignIn('google', { redirectTo: target })
   }
 }
 
