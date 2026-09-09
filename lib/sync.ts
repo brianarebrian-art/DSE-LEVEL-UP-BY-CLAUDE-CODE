@@ -13,6 +13,7 @@ const KEYS = {
   progress: 'dse_progress',
   counter: 'dse_free_attempts_total',
   topicStats: 'dse_topic_stats',
+  reverseLog: 'dse_reverse_log',
 } as const
 const UPDATED_AT = 'dse_updated_at'
 const SYNCED_AT = 'dse_synced_at'
@@ -48,19 +49,18 @@ function readNum(key: string): number | null {
 export interface Snapshot {
   dse_progress: unknown[]
   dse_free_attempts_total: number
-  /**
-   * 逐課題累計（做過／錯咗）。
-   *
-   * 【2026-08-26 起唔再上傳】—— 見下方 snapshotLocal 嘅說明。
-   * 保留喺型別入面係為咗讀得返舊雲端列（舊列仲有呢個欄位）。
-   */
+  /** 逐課題累計（做過／錯咗）。2026-09-07 起重新上傳（憲章 §16.E，2026-09-04 雙簽）。 */
   dse_topic_stats?: Record<string, unknown>
   /**
-   * 未完成嗰節練習。
-   *
-   * 【2026-08-26 起唔再上傳】—— 見下方 snapshotLocal 嘅說明。
+   * 未完成嗰節練習，包括 `answers[].selectedZh`（＝答案原文）。
+   * 2026-09-08 起上傳 —— 憲章 §16.E 約束 5 已修訂，見 snapshotLocal 說明。
    */
   dse_active_session?: ActiveSession | null
+  /**
+   * 錯因自診紀錄，包括 `selected` / `correct`（＝答案原文）。
+   * 2026-09-08 起上傳 —— 同上。
+   */
+  dse_reverse_log?: unknown[]
   updatedAt: number | null // last local change (device wall-clock ms)
   syncedAt: number | null // last cloud merge on THIS device
 }
@@ -93,18 +93,64 @@ export interface CloudData {
  * 犧牲咗嘅：喺【另一部機】接住做未完成嗰節。同一部機續做完全冇影響
  * （localStorage 一個字都冇郁），做完嘅結果亦照樣經 `dse_progress` 同步。
  *
- * 【剔走 dse_topic_stats】—— 個人逐課題正確率屬「平台可讀」層（L2），
- * 按 2026-08-25 裁決禁止上雲。佢本來就係 localStorage-first
- * （見 lib/topicStats.ts），所以呢度唔上傳就已經完全喺本機。
- * 犧牲咗嘅：換部機之後雷達圖要重新累積。
+ * 【dse_topic_stats 已於 2026-09-07 重新加入】—— 2026-08-25 曾經剔走，
+ * 但憲章 §16.E 已於 2026-09-04 由 Brian ＋ Yuna 雙簽【明文批准】此 key 上雲
+ * （執行第 1 點：「已批准：dse_progress、dse_free_attempts_total、
+ * dse_topic_stats」）。代碼一直未跟，形成憲章同實作漂移 ——
+ * 條文批准咗，學生換部機雷達圖依然由零開始。此處補回。
  *
- * 舊雲端列仍然帶住呢兩個欄位（按批准嘅選項 A，唔主動刪學生資料），
- * 但 applyLocal 已經唔會再攞佢哋覆蓋本機。
+ * §16.E 七條約束全部維持：只限用戶本人查閱（/api/progress 已按
+ * session user_id 綁定）、禁止third party、禁止跨用戶比較、唔做付費牆。
+ *
+ * ⚠️ 空物件唔上傳 —— 見下面 topicStats 段。`applyLocal` 用
+ * `if (s.dse_topic_stats)` 判斷，而 `{}` 喺 JS 係 truthy，所以一部
+ * 【未累積過】嘅新機一旦上傳 `{}`，就會將雲端已有嘅雷達數據洗白。
+ * 只喺有內容時先帶呢個欄位，`undefined` 對 applyLocal 嚟講＝「唔好郁」。
+ *
+ * ══ 2026-09-08 修訂：答案原文改為上雲（憲章 §16.E 約束 5 已修訂）══
+ *
+ * 【dse_active_session ＋ dse_reverse_log 現在會上傳】，兩者都含答案原文
+ * （前者 `answers[].selectedZh`，後者 `selected` / `correct`）。
+ *
+ * 裁決：Yuna（COO）2026-09-08 就本條單獨開題並選定「選項 C：整個上傳」，
+ * 理由係跨裝置連續性 —— 手機做到一半，返到屋企用 iPad 接唔返，對焦慮症
+ * 同 SEN 學生造成嘅打擊，大過答案原文留喺 server 嘅風險。
+ * 憲章 §1.1「學生成效與長期信任為最高原則」。
+ * ⬜ 待 Brian 副署 —— §16.E 原條文係雙簽寫入，修訂亦應雙簽。
+ * 修訂全文：docs/charter-amendment-2026-09-08.md
+ *
+ * 【點解之前禁】（保留存檔，唔好當佢消失咗）：2026-08-26 修正嘅起因，係
+ * `selectedZh` 曾經【冇人為呢件事做過決定】就連同 user_id upsert 咗上雲。
+ * 今次唔同嘅唔係風險大細，係【有冇人決定過】—— 前者係漏，後者係簽咗名嘅取捨。
+ *
+ * 【同時生效嘅約束】：
+ *   · 只限用戶本人查閱 —— /api/progress 按 session user_id 綁定，
+ *     admin 面板明文唔掂呢兩個 key（見 app/api/admin/users/stats/route.ts 檔頭）
+ *   · 禁止向任何第三方提供、禁止跨用戶匯總比較（§16.E 約束 2／3 不變）
+ *   · 私隱頁必須同步講明 —— 已改（app/privacy/PrivacyClient.tsx）
+ *   · active session 交卷即 `clearActiveSession()`，所以係短暫嘅；
+ *     reverse log 有 CAP 200（lib/reverseLog.ts:33），唔會無限增長
+ *
+ * ⚠️ 空陣列／空物件唔上傳 —— `applyLocal` 用 truthy 判斷，
+ * 一部未累積過嘅新機一旦上傳空值，就會將雲端已有嘅嘢洗白，而且冇聲。
  */
 export function snapshotLocal(): Snapshot {
+  // 只喺真係累積過先帶呢個欄位 —— 空物件會經 applyLocal 洗走雲端已有嘅雷達。
+  const topicStats = readJSON<Record<string, unknown>>(KEYS.topicStats, {})
+  const hasTopicStats = topicStats && Object.keys(topicStats).length > 0
+  // `null` 同「個 key 根本唔存在」係兩件事：前者代表「嗰節喺呢部機做完咗」，
+  // 要傳上去叫其他機清走；後者代表「呢部機冇資料」，唔應該覆蓋雲端。
+  // 所以要睇 raw string，唔可以只睇 parse 完嘅值。
+  const rawActive = typeof localStorage !== 'undefined' ? localStorage.getItem(ACTIVE_SESSION_KEY) : null
+  const activeSession = rawActive === null ? undefined : readJSON<ActiveSession | null>(ACTIVE_SESSION_KEY, null)
+  const reverseLog = readJSON<unknown[]>(KEYS.reverseLog, [])
   return {
     dse_progress: readJSON<unknown[]>(KEYS.progress, []),
     dse_free_attempts_total: readNum(KEYS.counter) ?? 0,
+    ...(hasTopicStats ? { dse_topic_stats: topicStats } : {}),
+    // `null` 有意義（＝嗰節喺呢部機做完咗，要通知其他機清走），所以照帶。
+    ...(activeSession !== undefined ? { dse_active_session: activeSession } : {}),
+    ...(reverseLog.length > 0 ? { dse_reverse_log: reverseLog } : {}),
     updatedAt: readNum(UPDATED_AT),
     syncedAt: readNum(SYNCED_AT),
   }
@@ -164,6 +210,11 @@ export function applyLocal(s: Snapshot): void {
       localStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(s.dse_active_session))
     } else if (s.dse_active_session === null) {
       localStorage.removeItem(ACTIVE_SESSION_KEY)
+    }
+    // 錯因自診紀錄。同 topic stats 一樣：有值先覆蓋，`undefined` 就唔郁 ——
+    // 唔可以 `?? []`，否則一部舊快照就會將本機累積咗嘅自診記錄洗走。
+    if (Array.isArray(s.dse_reverse_log)) {
+      localStorage.setItem(KEYS.reverseLog, JSON.stringify(s.dse_reverse_log))
     }
     const now = Date.now()
     localStorage.setItem(UPDATED_AT, String(now))

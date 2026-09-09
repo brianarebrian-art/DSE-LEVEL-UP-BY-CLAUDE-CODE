@@ -46,14 +46,44 @@ function snapshotBody(): string {
 const ALLOWED_UPLOAD_KEYS = [
   'dse_progress', // 每節練習嘅分數／總數／時戳
   'dse_free_attempts_total', // 單一累計數字
+  // 2026-09-07 加入。批准來源：憲章 §16.E 執行第 1 點 ——
+  // 「已批准：dse_progress、dse_free_attempts_total、dse_topic_stats」，
+  // Brian ＋ Yuna 2026-09-04 雙簽，全文見 docs/charter-amendment-2026-09-04.md。
+  //
+  // 過咗上面三條問題：入面【冇】學生寫嘅字、【冇】答案原文、【冇】情緒 ——
+  // 每個課題只有 { total, wrong, label, subjectId, topic } 五個數字／標籤。
+  // 「可以推斷個人強弱」呢點【係真】，而呢一點正正就係 §16.E 單獨開題、
+  // 單獨裁決嘅嘢：准上雲，但七條約束同時生效（只限本人查閱、禁第三方、
+  // 禁跨用戶比較、唔做付費牆…）。
+  //
+  // ⚠️ 呢個批准【只涵蓋呢一個 key】。§16.E 約束 6：新增任何一個 key
+  // 仍須創辦人書面批准 —— 唔可以攞呢行做先例去加下一個。
+  'dse_topic_stats',
+
+  // ══ 2026-09-08 加入。兩個 key 都【含答案原文】。══
+  //
+  // 呢兩行推翻咗本檔頂嗰段嘅原意，所以要講清楚點解唔算走返轉頭：
+  // 2026-08-26 嗰次修正嘅問題，係 `selectedZh` 【冇人為呢件事做過決定】
+  // 就上咗雲 —— 係一個漏，唔係一個取捨。今次係有人開題、有理由、有簽名。
+  //
+  // 裁決：Yuna（COO）2026-09-08 單獨開題並選定「選項 C：整個上傳」。
+  // 理由：手機做到一半，返到屋企用 iPad 接唔返，對焦慮症同 SEN 學生
+  // 造成嘅打擊，大過答案原文留喺 server 嘅風險（憲章 §1.1）。
+  // ⬜ 待 Brian 副署。全文：docs/charter-amendment-2026-09-08.md
+  //
+  // 同時生效：§16.E 約束 1／2／3 不變（只限本人查閱、禁第三方、禁跨用戶比較）。
+  // 私隱頁已同步（app/privacy/PrivacyClient.tsx），StoredDataInspector
+  // 亦已列出（有 trust-disclosure.test.mts 把關）。
+  'dse_active_session', // answers[].selectedZh
+  'dse_reverse_log', // selected / correct
 ]
 
+// 呢張名單【冇縮水嘅意思】—— 下面每一個仍然係硬紅線。
+// 情緒、時間囊、作文原文、心情備註：呢啲係學生寫畀自己嘅字，
+// 唔係佢答題揀嘅選項。兩者性質唔同，唔可以攞 2026-09-08 個決定做先例。
 const FORBIDDEN_UPLOAD_KEYS = [
-  'dse_active_session', // answers[].selectedZh = 答案原文
-  'dse_topic_stats', // 個人逐課題正確率（L2 平台可讀）
   'dse_emotion_log', // 情緒
   'dse_capsule', // 學生寫畀自己嘅信
-  'dse_reverse_log', // 錯因自診
   'dse_writing_draft', // 作文原文
   'dse_logic_log', // 心情備註
   'dse_own_cheers', 'dse_sensei_prefs', // 學生自己寫嘅鼓勵語
@@ -71,16 +101,19 @@ test('上傳 payload 只可以含白名單入面嘅鍵', () => {
   )
 })
 
-test('答案原文永遠唔可以出現喺上傳 payload', () => {
+// 2026-09-08：呢條測試原本斷言「答案原文永遠唔可以上傳」。選項 C 之後
+// 個方向反轉咗，所以佢改為鎖住【新界線】而唔係刪走 ——
+// 一條刪走咗嘅測試，等於一條冇人守嘅界線。
+//
+// 新界線：學生【揀】嘅嘢（選項）可以上雲；學生【寫】嘅嘢永遠唔可以。
+test('學生自己寫嘅字，一個字都唔可以出現喺上傳 payload', () => {
   const body = snapshotBody()
-  assert.ok(
-    !/selectedZh/.test(body),
-    'snapshotLocal() 掂到 selectedZh —— 呢個係學生揀嗰個選項嘅文字，唔可以離開部機',
-  )
-  assert.ok(
-    !/ACTIVE_SESSION_KEY/.test(body),
-    'snapshotLocal() 掂到 ACTIVE_SESSION_KEY —— 未完成嗰節帶住答案原文',
-  )
+  // 呢四個 key 分別係：情緒記錄、寫畀自己嘅時間囊、作文草稿、心情備註。
+  // 佢哋同「揀邊個選項」性質完全唔同 —— 2026-09-08 個決定唔涵蓋佢哋，
+  // 亦唔可以攞嚟做先例。
+  for (const k of ['dse_emotion_log', 'dse_capsule', 'dse_writing_draft', 'dse_logic_log']) {
+    assert.ok(!body.includes(k), `snapshotLocal() 掂到 ${k} —— 學生寫畀自己嘅字，唔可以離開部機`)
+  }
 })
 
 test('明文禁止名單入面嘅鍵，一個都唔准喺上傳 payload 出現', () => {

@@ -32,6 +32,7 @@ export const CLOUD_PROGRESS_KEYS = [
   'dse_free_attempts_total',
   'dse_topic_stats',
   'dse_active_session',
+  'dse_reverse_log',
 ] as const
 
 export const CLOUD_SETTINGS_KEYS = [
