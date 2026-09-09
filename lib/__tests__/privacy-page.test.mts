@@ -81,7 +81,13 @@ test('頁面聲稱「心情記錄唔會上傳」—— 佢真係唔喺上雲清�
     'dse_emotion_log 入咗上雲清單 —— /privacy 明文寫住佢唔會上傳。' +
       '心理健康紀錄唔應該離開學生部機（見憲章 §7）。',
   )
-  for (const k of ['dse_reverse_log', 'dse_bookmarks', 'dse_writing_draft', 'dse_result']) {
+  // ⚠️ `dse_reverse_log` 2026-09-08 由呢張名單移走 —— 佢而家【會】上傳
+  // （選項 C，Yuna 裁決，⬜ 待 Brian 副署，見 docs/charter-amendment-2026-09-08.md），
+  // 而 /privacy 亦已經改為明文講明佢會上傳埋你揀嗰個選項同正解。
+  // 移走佢唔等於呢條測試鬆咗：上面 `dse_emotion_log` 嗰句仍然係最硬嗰條，
+  // 下面三個亦原封不動。條界線由「答題內容一律唔上」改成
+  // 「你【揀】嘅可以上，你【寫】嘅永遠唔上」。
+  for (const k of ['dse_bookmarks', 'dse_writing_draft', 'dse_result']) {
     assert.ok(!cloudKeys.includes(k), `/privacy 寫住 ${k} 唔上傳，但佢已經喺上雲清單`)
   }
 })

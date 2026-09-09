@@ -91,8 +91,24 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             {en ? 'Practice progress: ' : '練習進度：'}
             <span className="text-ink-muted">
               {en
-                ? 'your scores and time per set, your accuracy per topic, how many sets you have done, and any unfinished set so you can resume it.'
-                : '每份卷嘅分數同用時、逐個課題嘅答對率、做過幾多份卷，以及未做完嗰份卷（方便你續做）。'}
+                ? 'your scores and time per set, your accuracy per topic, and how many sets you have done.'
+                : '每份卷嘅分數同用時、逐個課題嘅答對率、做過幾多份卷。'}
+            </span>
+          </li>
+          <li>
+            {en ? 'An unfinished set, so you can resume it elsewhere: ' : '未做完嗰份卷，等你可以喺另一部機接住做：'}
+            <span className="text-ink-muted">
+              {en
+                ? 'which questions were drawn, how far you got, and — being honest with you — which option you picked on each one. We need the option itself, not just right-or-wrong, or the score would come out wrong when you resume. It is deleted the moment you finish or abandon the set.'
+                : '嗰份卷抽咗邊啲題、你做到第幾題，以及 —— 老實同你講 —— 每題你揀咗邊個選項。我哋要嘅係「揀咗邊個」，唔淨止「啱定錯」，因為淨係留啱錯，你續做嗰陣個分數會計錯。你一交卷或者放棄咗，佢即刻刪走。'}
+            </span>
+          </li>
+          <li>
+            {en ? 'Your error-diagnosis notes: ' : '你嘅錯因自診紀錄：'}
+            <span className="text-ink-muted">
+              {en
+                ? 'for each question you got wrong, which of the three causes you picked, plus the option you chose and the correct one — so your error radar follows you to another device instead of starting from zero.'
+                : '每條答錯嘅題，你揀咗三個原因入面邊個，連埋你揀嗰個選項同正解 —— 咁你部機換咗，錯題雷達圖唔使由零開始。'}
             </span>
           </li>
           <li>
@@ -106,8 +122,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'Deliberately NOT synced, even when you are signed in: your time capsules, your mood log, your error-diagnosis notes, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. Your capsules and your mood log in particular are never uploaded — those are words you wrote to yourself, and they are not something we want to hold.'
-            : '就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅心情記錄、你嘅錯因自診紀錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。特別係時間囊同心情記錄 —— 嗰啲係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'Deliberately NOT synced, even when you are signed in: your time capsules, your mood log, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules and your mood log are words you wrote to yourself, and they are not something we want to hold.'
+            : '就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅心情記錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊同心情記錄係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 
