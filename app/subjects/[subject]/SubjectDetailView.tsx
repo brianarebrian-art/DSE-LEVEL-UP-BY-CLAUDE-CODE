@@ -66,8 +66,8 @@ export default function SubjectDetailView({
   // 每題 1 分，所以滿分 = 一節題數。
   const sessionQuestions = Math.min(SESSION_SIZE, questionsCount)
   const totalMarks = sessionQuestions
-  // 每題約 1.5 分鐘，另加答錯之後嘅 30 秒反思鎖（憲章 §7）。按 3:5:2，
-  // 一節 10 題預期答錯約 3 條 ≈ 多 1.5 分鐘，所以向上取整已經夠覆蓋。
+  // 每題約 1.5 分鐘。（2026-09-09 之前仲要加答錯後嘅 30 秒反思鎖；鎖已剷除，
+  // 見憲章 §7.2，所以估算純粹係作答時間。）
   const estimatedMinutes = Math.max(5, Math.round(sessionQuestions * 1.5))
   const activeShortNames = getActiveSubjects()
     .map((s) => (en ? s.shortEn : s.short))

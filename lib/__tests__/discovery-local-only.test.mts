@@ -44,46 +44,58 @@ test('② 發現簿嘅維度沿用 ReverseCause，冇另開一套', async () => 
   assert.deepEqual(DIMENSIONS.map((d) => d.id), ['A', 'B', 'C'])
 })
 
-test('③ 反思閘秒數單一來源 —— PracticeSession 唔准自己寫死一個數', () => {
-  const dims = read('lib/discovery/dimensions.ts')
-  assert.match(dims, /export const REFLECTION_SECONDS = 30/, '憲章 §7 現行條文係 30 秒')
-  const ps = read('app/practice/PracticeSession.tsx')
-  assert.match(ps, /const LOCKOUT_SECONDS = REFLECTION_SECONDS/,
-    'PracticeSession 應該由 dimensions.ts import 秒數，唔好自己寫一個數字')
-})
+// ══ 2026-09-09：30 秒反思鎖已剷除（兩個月實驗，憲章 §7.2）══
+//
+// 呢三條測試原本守住個鎖（秒數單一來源、所有答錯題都行、文案唔准分叉）。
+// 鎖剷咗，佢哋唔係刪走 —— 係【反轉】去守實驗條件本身。一條刪走咗嘅測試
+// 等於一條冇人守嘅界線；而呢個實驗嘅價值完全取決於兩個月入面
+// ①個鎖真係冇返嚟 ②入料嗰一步真係仲喺度。
 
-test('④ 反思閘喺【所有】答錯題都行，唔再限 hard（憲章 §7 2026-09-05 修訂）', () => {
+test('③ 個鎖唔可以靜靜哋返嚟 —— PracticeSession 一個倒數都唔准有', () => {
   const ps = read('app/practice/PracticeSession.tsx')
-  assert.ok(
-    !/if \(currentQ\.difficulty === 'hard'\) \{\s*\n\s*const lq = pickLockoutQuestion/.test(ps),
-    '反思閘又變返 hard-only —— 憲章 §7 已於 2026-09-05 改為所有答錯題',
-  )
-})
-
-test('⑤ 冇任何學生可見文案寫死一個同 REFLECTION_SECONDS 唔一致嘅秒數', async () => {
-  // 2026-09-05 實測：60→30 改咗代碼之後，全站仲有五處文案照寫「60 秒」——
-  // 包括個鎖自己個標題「60 秒冷靜艙」、練習頁說明、layout 嘅 meta description
-  // 同 llms.txt。學生見到個掣寫 60、實際 30；agent 讀 llms.txt 讀到 60。
-  //
-  // 秒數係一個【會改】嘅數字（今次已經改過一次），而佢散落喺五個檔嘅字串裏面。
-  // 冇閘就一定會再分叉，所以呢度掃返學生可見嗰批。
-  const { REFLECTION_SECONDS } = await import('../discovery/dimensions.ts')
-  const files = [
-    'app/practice/PracticeSession.tsx',
-    'app/practice/page.tsx',
-    'app/layout.tsx',
-    'public/llms.txt',
-  ]
-  for (const f of files) {
-    const src = read(f)
-    for (const m of src.matchAll(/(\d+)\s*秒(冷靜艙|反思鎖)/g)) {
-      assert.equal(Number(m[1]), REFLECTION_SECONDS, `${f} 寫死咗「${m[0]}」，但 REFLECTION_SECONDS = ${REFLECTION_SECONDS}`)
-    }
-    for (const m of src.matchAll(/(\d+)-second (reflection lock|calm capsule)/g)) {
-      assert.equal(Number(m[1]), REFLECTION_SECONDS, `${f} 寫死咗「${m[0]}」，但 REFLECTION_SECONDS = ${REFLECTION_SECONDS}`)
-    }
+  const code = ps.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/[^\n]*/g, '$1 ')
+  for (const gone of ['LOCKOUT_SECONDS', 'lockDeadlineRef', 'setLockSecs', 'pickLockoutQuestion',
+                      'startServerLockout', 'verifyServerUnlock', 'playLockChime']) {
+    assert.ok(
+      !code.includes(gone),
+      `PracticeSession 又出現咗 ${gone} —— 反思鎖喺 2026-09-09 剷咗做兩個月實驗。` +
+        `要復活請走憲章程序（§7.2），唔好靜靜哋接返 —— 接返咗，兩個月後條 curve 就冇意義。`,
+    )
   }
 })
+
+test('④ 錯因自診【一定要】留低 —— 佢係錯題 DNA 嘅唯一入料口', () => {
+  const ps = read('app/practice/PracticeSession.tsx')
+  // 剷鎖嗰陣好易順手將成個 chooseCause 一齊剷。剷咗就冇咗：
+  // 錯題 DNA 雷達、遺忘曲線重溫、溫書地圖報告，同埋憲章 §16.E
+  //（2026-09-08 雙簽）跨機同步嗰個 dse_reverse_log。
+  assert.match(ps, /logReverseError\(logEntry\)/,
+    'chooseCause 冇再寫入錯題日誌 —— ErrorRadar／ReviewScheduler／溫書地圖會一齊變白')
+  assert.match(ps, /addDiscovery\(\{/,
+    'chooseCause 冇再記發現 —— /result 嘅「今日你發現咗 N 樣嘢」會永遠係 0')
+  assert.match(ps, /const chooseCause = useCallback\(/, 'chooseCause 本身唔見咗')
+})
+
+test('⑤ 冇任何學生或者 agent 見到嘅文案仲講住個鎖', () => {
+  // 2026-09-05 嗰次由 60 改 30，全站有五處文案冇跟住改。今次係整個剷除，
+  // 同一個風險更大：對外仲寫住「答錯會鎖 30 秒」而實際上冇，就係假聲稱。
+  const files = [
+    'app/layout.tsx',
+    'app/practice/page.tsx',
+    'app/subjects/[subject]/SubjectDetailView.tsx',
+    'public/llms.txt',
+  ]
+  const hits: string[] = []
+  for (const f of files) {
+    let src: string
+    try { src = read(f) } catch { continue }
+    // 只掃學生／agent 讀到嘅字串，唔掃解釋改動嘅註釋。
+    const copy = src.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/[^\n]*/g, '$1 ')
+    if (/秒反思鎖|reflection lock|秒冷靜艙/i.test(copy)) hits.push(f)
+  }
+  assert.deepEqual(hits, [], `呢啲檔仲對外聲稱有反思鎖，但鎖已經剷咗：\n  ${hits.join('\n  ')}`)
+})
+
 
 test('⑥ 冇任何學生可見文案仲聲稱個鎖只喺「中高難度」先行', () => {
   for (const f of ['app/practice/page.tsx', 'app/layout.tsx', 'public/llms.txt']) {

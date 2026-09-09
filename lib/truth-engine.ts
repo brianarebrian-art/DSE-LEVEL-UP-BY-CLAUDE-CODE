@@ -23,7 +23,7 @@
 import { getCalcTip } from '@/data/calcTips'
 import { getReverseLog, type ReverseLogEntry } from './reverseLog'
 
-/** [書面語／廣東話情感層, English] —— 同 lib/lockoutQuestions.ts 嘅 LPair 同一慣例。 */
+/** [書面語／廣東話情感層, English] —— 沿用已剷除嘅 lib/lockoutQuestions.ts 嘅 LPair 慣例。 */
 export type TPair = [zh: string, en: string]
 
 /**
