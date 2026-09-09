@@ -2,6 +2,7 @@
 
 import { HelpCircle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { SESSION_SIZE } from '@/lib/entitlements'
 
 // FAQ 手風琴（Jack/客戶體驗）— 用原生 <details>/<summary>：零 JS 狀態、鍵盤
 // 無障礙自帶。完整 20 條見 content/community/faq.md；呢度精選 8 條上站。
@@ -40,8 +41,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '等級預測準唔準？', qEn: 'How accurate is the level estimate?',
-    aZh: '只係按你喺本平台表現嘅自我評估參考，並非官方預測，亦唔構成任何成績保證。結果頁會直接寫出範圍同埋點解會咁闊 —— 20 題嘅樣本分辨唔到相鄰等級，我哋唔會扮分辨到。最終成績以 HKEAA 公布為準。',
-    aEn: 'It is a self-assessment reference based on your practice here — not an official prediction and never a guarantee. The result page states the range and why it is wide: twenty questions cannot separate neighbouring levels, and we will not pretend otherwise.',
+    aZh: `只係按你喺本平台表現嘅自我評估參考，並非官方預測，亦唔構成任何成績保證。結果頁會直接寫出範圍同埋點解會咁闊 —— ${SESSION_SIZE} 題嘅樣本分辨唔到相鄰等級，我哋唔會扮分辨到。做多幾節，個範圍會自然收窄。最終成績以 HKEAA 公布為準。`,
+    aEn: `It is a self-assessment reference based on your practice here — not an official prediction and never a guarantee. The result page states the range and why it is wide: ${SESSION_SIZE} questions cannot separate neighbouring levels, and we will not pretend otherwise. The range narrows as you complete more sets.`,
   },
   {
     qZh: 'SEN 同學有咩支援？', qEn: 'What support is there for SEN students?',

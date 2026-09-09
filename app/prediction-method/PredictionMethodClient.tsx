@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import { SESSION_SIZE } from '@/lib/entitlements'
 
 // 見 page.tsx 檔頭。呢版唔係為算法辯護，係公開佢有幾粗糙。
 
@@ -118,8 +119,8 @@ export default function PredictionMethodClient() {
         </p>
         <p>
           {en
-            ? 'We use Wilson rather than the more common p ± z·√(p(1−p)/n) because the latter breaks on small samples: it can produce intervals outside 0–100%, and at 20 out of 20 it collapses to zero width — which would tell you we are 100% certain you are a 5**. We are not.'
-            : '用 Wilson 而唔用常見嘅 p ± z·√(p(1−p)/n)，係因為後者喺細樣本會出鬼：區間可以超出 0–100%，而 20 題全對時更會收窄成寬度零 —— 即係話畀你聽我哋百分百肯定你係 5**。我哋唔係。'}
+            ? `We use Wilson rather than the more common p ± z·√(p(1−p)/n) because the latter breaks on small samples: it can produce intervals outside 0–100%, and at ${SESSION_SIZE} out of ${SESSION_SIZE} it collapses to zero width — which would tell you we are 100% certain you are a 5**. We are not. A shorter set makes the interval wider, not narrower — one set is a snapshot, and the estimate settles as you do more.`
+            : `用 Wilson 而唔用常見嘅 p ± z·√(p(1−p)/n)，係因為後者喺細樣本會出鬼：區間可以超出 0–100%，而 ${SESSION_SIZE} 題全對時更會收窄成寬度零 —— 即係話畀你聽我哋百分百肯定你係 5**。我哋唔係。一節短咗，個區間只會闊咗，唔會窄咗 —— 一節只係一個切面，做多幾節個估計自然會收窄。`}
         </p>
       </Section>
 

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/auth/adminAllowlist'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { SESSION_SIZE } from '@/lib/entitlements'
 
 // ============================================================================
 // Admin 用戶概覽 —— 平台真實使用量指標
@@ -87,7 +88,7 @@ export interface UserStats {
   totalHours: number
   medianSessionSeconds: number | null
   medianQuestionsPerSession: number | null
-  /** 一節出 20 題；少於 20 即中途離開。 */
+  /** 冇做夠一整節（見 FULL_SET_SIZES）。 */
   partialSessions: number
   /** 每日活躍（近 60 日，香港時間）。 */
   daily: { day: string; users: number; sessions: number; questions: number }[]
@@ -119,6 +120,14 @@ const median = (xs: number[]): number | null => {
 
 const pct = (n: number, d: number): number | null =>
   d > 0 ? Math.round((n / d) * 1000) / 10 : null
+
+// 「做完一整節」有幾多題 —— 唔可以寫死一個數字。
+//   20  2026-09-09 之前嘅 SESSION_SIZE（歷史紀錄大部分係呢個）
+//   10  2026-09-09 起嘅 SESSION_SIZE
+//    1  「只做 1 題」入口（components/JustOneCard.tsx）—— 佢做完一題就係完整
+// `dse_progress` 冇存低「嗰陣打算出幾多題」，所以只能夠對返呢張已知清單。
+// 寫死 `total < 20` 會令改版之後每一節都被當成「中途走咗」。
+const FULL_SET_SIZES = new Set([1, SESSION_SIZE, 20])
 
 export async function GET() {
   const admin = await requireAdmin()
@@ -187,7 +196,7 @@ export async function GET() {
         totalQ += total
         totalCorrect += score
         qPerSession.push(total)
-        if (total < 20) partial++
+        if (!FULL_SET_SIZES.has(total)) partial++
         if (typeof a.elapsed === 'number' && a.elapsed > 0) {
           totalElapsed += a.elapsed
           elapsedAll.push(a.elapsed)
@@ -343,7 +352,7 @@ export async function GET() {
         },
         {
           metric: '流失原因',
-          reason: '一節少於 20 題只知「冇做完」，唔知係太難、悶、閃走、定係手機出事。要問人，唔係查表。',
+          reason: `一節少於 ${SESSION_SIZE} 題只知「冇做完」，唔知係太難、悶、閃走、定係手機出事。要問人，唔係查表。`,
         },
       ],
     }

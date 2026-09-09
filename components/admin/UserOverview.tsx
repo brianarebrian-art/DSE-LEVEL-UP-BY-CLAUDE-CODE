@@ -80,7 +80,7 @@ const NOTE = {
   questions: '逐節 total 相加', // i18n-exempt: admin 內部工具，中文單語
   accuracy: 'score ÷ total', // i18n-exempt: admin 內部工具，中文單語
   medianSession: 'elapsed 中位數', // i18n-exempt: admin 內部工具，中文單語
-  partial: '一節出 20 題，少過即中途走咗', // i18n-exempt: admin 內部工具，中文單語
+  partial: '冇做夠一整節（1 / 10 / 20 題以外）', // i18n-exempt: admin 內部工具，中文單語
   active: '7 日／30 日內做過練習', // i18n-exempt: admin 內部工具，中文單語
 } as const
 
