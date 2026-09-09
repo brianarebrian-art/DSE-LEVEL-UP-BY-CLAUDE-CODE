@@ -8,6 +8,7 @@ import AppShell from '@/components/AppShell'
 import Providers from '@/components/Providers'
 import BottomNav from '@/components/BottomNav'
 import GlobalA11y from '@/components/GlobalA11y'
+import PrivacyConsentGate from '@/components/PrivacyConsentGate'
 import A11yPanel from '@/components/A11yPanel'
 import ReadingRuler from '@/components/ReadingRuler'
 
@@ -149,6 +150,8 @@ export default function RootLayout({
           </AppShell>
           {/* 全站無障礙層：字級/易讀字體全站套用 + 「我唔開心」SOS（/relax 內自動隱藏） */}
           <GlobalA11y />
+          {/* 私隱同意閘。唔同意唔會擋住任何嘢 —— 只係唔開雲端同步（Phase 2 選項 B）。 */}
+          <PrivacyConsentGate />
           {/* SEN 無障礙工具（全站常駐）：字級／易讀字體面板 + 防跳行閱讀尺 */}
           <A11yPanel />
           <ReadingRuler />
