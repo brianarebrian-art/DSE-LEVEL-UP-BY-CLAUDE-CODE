@@ -45,6 +45,41 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
   const { user, status: authStatus } = useAuthSession()
   const userId = user?.id ?? null
   const [status, setStatus] = useState<SyncStatus>('idle')
+
+  // ── 私隱同意閘（2026-09-09，Phase 2 選項 B）────────────────────────────
+  //
+  // 同步【只喺用戶同意咗現行政策版本】先至行。唔同意 → 呢個 provider 咩都唔做，
+  // 而 localStorage 一個字都冇郁：練習、雷達圖、錯因自診、SEN 設定全部照用。
+  // 呢個就係「唔同意唔等於用唔到網站」喺代碼上面嘅落點。
+  //
+  // 預設 `false` 而唔係 `true` —— 查唔到、網絡差、route 死咗，一律當【未同意】。
+  // fail-open 嘅話，一次故障就會令全部人喺冇同意之下上雲，而且冇聲。
+  const [consentOk, setConsentOk] = useState(false)
+
+  useEffect(() => {
+    if (!AUTH_ENABLED) return
+    if (authStatus !== 'authenticated') {
+      setConsentOk(false)
+      return
+    }
+    let alive = true
+    const check = () => {
+      fetch('/api/privacy/consent')
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+        .then((j: { consented?: boolean }) => alive && setConsentOk(Boolean(j.consented)))
+        .catch(() => alive && setConsentOk(false))
+    }
+    check()
+    // 用戶喺 modal 撳完「同意」即刻開始同步，唔使等下次 reload。
+    window.addEventListener('dse:consent-changed', check)
+    return () => {
+      alive = false
+      window.removeEventListener('dse:consent-changed', check)
+    }
+  }, [authStatus])
+
+  /** 同步嘅唯一前置條件：登入咗 ＋ 同意咗。 */
+  const maySync = authStatus === 'authenticated' && consentOk
   const [version, setVersion] = useState(0)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const lastPullRef = useRef(0) // throttles the foreground refresh below
@@ -114,20 +149,20 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
   // On login: initial pull + merge. On logout: back to idle (local data untouched).
   useEffect(() => {
     if (!AUTH_ENABLED) return
-    if (authStatus === 'authenticated') void pullMerge()
+    if (maySync) void pullMerge()
     else if (authStatus === 'unauthenticated') setStatus('idle')
-  }, [authStatus, pullMerge])
+  }, [maySync, authStatus, pullMerge])
 
   // Local changes → reactive bump + (when logged in) debounced push.
   useEffect(() => {
     if (!AUTH_ENABLED) return
     const onChange = () => {
       bump()
-      if (authStatus === 'authenticated') schedulePush()
+      if (maySync) schedulePush()
     }
     window.addEventListener(PROGRESS_EVENT, onChange)
     return () => window.removeEventListener(PROGRESS_EVENT, onChange)
-  }, [authStatus, schedulePush, bump])
+  }, [maySync, schedulePush, bump])
 
   // Auto-recover when the network returns (防線 F): re-run a full pull+merge so we
   // BOTH catch up on any cloud changes we missed while offline AND flush local
@@ -135,7 +170,7 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (!AUTH_ENABLED) return
     const onOnline = () => {
-      if (authStatus === 'authenticated') void pullMerge()
+      if (maySync) void pullMerge()
     }
     const onOffline = () => setStatus('offline')
     window.addEventListener('online', onOnline)
@@ -144,7 +179,7 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
       window.removeEventListener('online', onOnline)
       window.removeEventListener('offline', onOffline)
     }
-  }, [authStatus, pullMerge])
+  }, [maySync, pullMerge])
 
   // v3.0 F1「多裝置」: refresh when this tab comes back to the foreground, so picking up
   // another device shows its in-progress run without a manual reload. Throttled so a
@@ -154,7 +189,7 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (!AUTH_ENABLED) return
     const onForeground = () => {
-      if (authStatus !== 'authenticated') return
+      if (!maySync) return
       if (document.visibilityState !== 'visible') return
       const now = Date.now()
       if (now - lastPullRef.current < FOREGROUND_PULL_MS) return
@@ -167,7 +202,7 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
       document.removeEventListener('visibilitychange', onForeground)
       window.removeEventListener('focus', onForeground)
     }
-  }, [authStatus, pullMerge])
+  }, [maySync, pullMerge])
 
   // Clear any pending debounced push on unmount (no dangling setTimeout → no
   // setState-after-unmount). debounceRef is also cleared on every reschedule.

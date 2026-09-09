@@ -5,6 +5,7 @@ import { ArrowRight, PenLine, BookOpenCheck, FileText, Search, Sparkles } from '
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
+import { SESSION_SIZE } from '@/lib/entitlements'
 
 export default function SubjectDetailView({
   meta,
@@ -56,7 +57,18 @@ export default function SubjectDetailView({
     )
   }
 
-  const totalMarks = questionsCount
+  // ⚠️ 2026-09-09 修正。原本寫 `const totalMarks = questionsCount` ——
+  // questionsCount 係【成個科目題庫】嘅題數，唔係一節嘅題數。
+  // 實測化學版出過「⏱ 約 1503 分鐘 · 🎯 1002 分滿分」：即係話個卡叫學生
+  // 預留 25 個鐘去做一份實際上得 20 題嘅卷。兩個數都係量緊錯嘅嘢。
+  //
+  // 呢張卡描述嘅係【撳落去會開始嗰一節練習】，所以兩個數都要跟 SESSION_SIZE。
+  // 每題 1 分，所以滿分 = 一節題數。
+  const sessionQuestions = Math.min(SESSION_SIZE, questionsCount)
+  const totalMarks = sessionQuestions
+  // 每題約 1.5 分鐘。（2026-09-09 之前仲要加答錯後嘅 30 秒反思鎖；鎖已剷除，
+  // 見憲章 §7.2，所以估算純粹係作答時間。）
+  const estimatedMinutes = Math.max(5, Math.round(sessionQuestions * 1.5))
   const activeShortNames = getActiveSubjects()
     .map((s) => (en ? s.shortEn : s.short))
     .join(en ? ', ' : '、')
@@ -90,7 +102,7 @@ export default function SubjectDetailView({
               {questionsCount}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
             </p>
             <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
-              <span>{sd.minutesAbout}{Math.max(5, Math.round(questionsCount * 1.5))}{sd.minutesUnit}</span>
+              <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
               <span>·</span>
               <span>{sd.gradePredict}</span>
               <span>·</span>

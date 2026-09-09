@@ -17,9 +17,7 @@ import MathText from '@/components/MathText'
 // P1-6-R2: 指令字高亮 — 自診「審題陷阱」後題幹指令字先亮
 import CommandWordText from '@/components/CommandWordText'
 // P1-6-R1: 沙漏 SVG 取代數字倒數
-import HourglassTimer from '@/components/HourglassTimer'
 // P1-6-R3: 鎖尾 5 秒溫和提示音（程序化生成，靜默降級）
-import { playLockChime } from '@/lib/lockChime'
 // 第 1 週 · 引擎一：答對輕柔提示音（預設關閉，A11yPanel 可開）
 import { playCorrectChime } from '@/lib/answerChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
@@ -46,11 +44,8 @@ import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
 // 真相引擎：由歷史錯誤記錄推斷「今次錯誤真正嘅成因」，喺解密卡加一句可執行建議
 import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
-import { pickLockoutQuestion, type LPair } from '@/lib/lockoutQuestions'
-import { startServerLockout, verifyServerUnlock } from '@/lib/lockout/client'
 import { addDiscovery } from '@/lib/discovery/local-store'
 import { nameSuggestions } from '@/lib/discovery/copy'
-import { REFLECTION_SECONDS } from '@/lib/discovery/dimensions'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
 import EmotionThermometer from '@/components/EmotionThermometer'
 import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
@@ -68,15 +63,7 @@ import {
 // 2026-09-05 Brian 裁決：60 → 30 秒，而且【所有答錯題】都行（唔再限 hard）。
 // 憲章 §7 同日修訂。數值由 lib/discovery/dimensions.ts 出 —— 反思閘同發現引擎
 // 係同一件事，兩處各寫一個數字遲早會分叉。
-const LOCKOUT_SECONDS = REFLECTION_SECONDS
 
-// A lockout follow-up prepared for display: options shuffled, correct tracked by text.
-interface PreparedLockout {
-  prompt: LPair
-  options: LPair[]
-  correctZh: string
-  explain: LPair
-}
 
 // 三維逆向錯因 (the forced self-diagnosis behind the "答錯即鎖死" lockout). The student
 // must own WHICH underlying trap caught them before the Marking Scheme unlocks.
@@ -311,32 +298,25 @@ export default function PracticeSession({
   const [diagnosed, setDiagnosed] = useState<ReverseCause | null>(null)
   // 真相引擎輸出（揀完錯因即時算，純本地）
   const [truth, setTruth] = useState<DiagnoseResult | null>(null)
-  // 反思鎖（所有答錯題，秒數見 REFLECTION_SECONDS）：a metacognition follow-up
+  // 2026-09-09：呢度原本係反思鎖嘅 state。鎖已剷除（憲章 §7.2 實驗）。
   // about the chosen error cause + a countdown that both must clear before "Next".
-  const [followup, setFollowup] = useState<PreparedLockout | null>(null)
-  const [followupPick, setFollowupPick] = useState<string | null>(null)
-  const [lockSecs, setLockSecs] = useState(0)
   // P1-6-R1: 鎖嘅絕對死線（timestamp）。剩餘秒由死線倒推 —— 逐秒 setTimeout 鏈
   // 會累積漂移，倒數尾段誤差可以超過 100ms；deadline 制冇呢個問題。
-  const lockDeadlineRef = useRef<number | null>(null)
   // P1-6-R3: 每次上鎖只響一次（server re-hold 跳返 3 秒都唔會重複響）
-  const chimeFiredRef = useRef(false)
   const [elapsed, setElapsed] = useState(0)
   // Optional server-signed lockout token (defence-in-depth; null = client timer only).
-  const [lockToken, setLockToken] = useState<string | null>(null)
-  const [verifying, setVerifying] = useState(false)
   // 柔和計時（Emma/UDL 焦慮模式）：反思鎖照樣執行，但以進度條代替紅色
   // 數字倒數、以暖色代替紅黑 —— 只改呈現，不改教學法。設定存 localStorage。
   const [calmLock, setCalmLock] = useState(false)
   useEffect(() => {
     try { setCalmLock(localStorage.getItem('dse_calm_lock') === '1') } catch { /* ignore */ }
   }, [])
-  const toggleCalmLock = useCallback(() => {
-    setCalmLock((v) => {
-      try { localStorage.setItem('dse_calm_lock', v ? '0' : '1') } catch { /* ignore */ }
-      return !v
-    })
-  }, [])
+  // ⚠️ 2026-09-09：原本呢度有個 toggleCalmLock，唯一入口喺反思鎖個介面入面。
+  // 鎖剷咗，個掣亦一齊冇咗 —— 即係話 `dse_calm_lock` 而家改唔到，
+  // 只會由設定同步帶落嚟。calmLock 本身仍然有用（下面 CommandWordText 嘅
+  // soft 呈現），所以個 state 保留。
+  // 下一步應該將呢個掣搬入 A11yPanel（同其餘 SEN 控制擺埋一齊），而唔係
+  // 留喺一個已經唔存在嘅介面度。未做 —— 已記入憲章 §7.2 待辦。
 
   // 隱藏練習計時器（SEN／焦慮友善）：A11yPanel 寫入 dse_hide_timer 並派 `dse-a11y` 事件，
   // 練習頁即時套用。只影響顯示 —— elapsed 照計，結果頁時間統計不受影響。
@@ -351,10 +331,7 @@ export default function PracticeSession({
     setRestOpen(false)
     if (pausedMs <= 0) return
     setStartTime((t) => t + pausedMs)
-    if (lockDeadlineRef.current !== null) {
-      lockDeadlineRef.current += pausedMs
-      setLockSecs(Math.max(0, Math.ceil((lockDeadlineRef.current - Date.now()) / 1000)))
-    }
+    // 2026-09-09：原本仲要順延個 30 秒鎖嘅死線。鎖已剷除，休息只影響計時。
   }, [])
 
   const [hideTimer, setHideTimer] = useState(false)
@@ -411,12 +388,10 @@ export default function PracticeSession({
   const currentQ = questions[current]
   const totalQ = questions.length
   const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
-  // The "Next" button is held while the forced lock is active: until the follow-up
-  // is answered correctly AND the countdown has run out.
-  const followupCorrect = followup !== null && followupPick === followup.correctZh
-  const lockHeld = followup !== null && (lockSecs > 0 || !followupCorrect)
+  // 2026-09-09：「下一題」原本會喺反思鎖期間扣住（要答啱追問題 ＋ 等夠 30 秒）。
+  // 鎖已剷除，所以永遠唔扣 —— 學生揀完錯因即刻睇得到解析，撳得到下一題。
 
-  // F-EMO: 情緒溫度計狀態。gentleLock = 揀咗「有啲失落」→ 反思鎖轉柔和呈現 + 溫和標題
+  // F-EMO: 情緒溫度計。gentleLock = 揀咗「有啲失落」→ 解析卡轉柔和呈現（鎖已剷，只剩色調）
   const [emoOpen, setEmoOpen] = useState(false)
   const [gentleLock, setGentleLock] = useState(false)
 
@@ -508,57 +483,15 @@ export default function PracticeSession({
         dimension: cause,
         label: nameSuggestions(tr(currentQ.topicZh, currentQ.topicEn), cause, locale === 'en')[0],
       })
-      // 反思閘：所有答錯題都行（2026-09-05 Brian 裁決，憲章 §7 同日修訂）。
+      // ⚠️ 2026-09-09：呢度原本會啟動 30 秒倒數 ＋ 一條追問題 ＋ server lock token。
+      // 全部剷咗（Yuna 裁決，兩個月實驗，憲章 §7.2）。
       //
-      // 舊條件係 `difficulty === 'hard'`。改嘅原因唔係「想鎖多啲」，而係
-      // 發現卡靠呢一步入料 —— 實測一節 10 題按 3:5:2 出，hard 佔 2 題，
-      // 答錯其中一半即係【一節得約 1 個發現】，而規格畫嘅係 3 個。
-      // 一張長期只有一行嘅發現卡，證明唔到「你今日搞明白咗幾樣嘢」。
-      // 時長由 60 減到 30 抵銷咗觸發次數上升 —— 一節總鎖時間大致不變。
-      {
-        const lq = pickLockoutQuestion(cause)
-        setFollowup({
-          prompt: lq.prompt,
-          options: shuffle(lq.options),
-          correctZh: lq.options[0][0],
-          explain: lq.explain,
-        })
-        setFollowupPick(null)
-        lockDeadlineRef.current = Date.now() + LOCKOUT_SECONDS * 1000
-        chimeFiredRef.current = false
-        setLockSecs(LOCKOUT_SECONDS)
-        // Defence-in-depth: also register a server-signed lock (no-op unless enabled).
-        setLockToken(null)
-        const qid = currentQ.id
-        void startServerLockout(qid).then((r) => {
-          if (r) setLockToken(r.token)
-        })
-      }
+      // 上面 logReverseError ＋ addDiscovery 【保留】—— 撳錯因係一下撳，唔係一個鎖，
+      // 而佢係錯題 DNA／雷達圖／遺忘曲線／溫書地圖嘅唯一入料口。兩樣一齊剷，
+      // 兩個月後條正確率 curve 就分唔清係「冇咗等待」定係「冇咗自我診斷」造成。
     },
     [currentQ, answerState, subjectId]
   )
-
-  // Tick the forced-lock countdown from its absolute deadline (P1-6-R1: the old
-  // per-second setTimeout chain accumulated drift; 250ms polls off a timestamp
-  // keep the 60s total accurate to well under 100ms).
-  const lockActive = lockSecs > 0
-  useEffect(() => {
-    if (!lockActive) return
-    const id = setInterval(() => {
-      const dl = lockDeadlineRef.current
-      setLockSecs(dl === null ? 0 : Math.max(0, Math.ceil((dl - Date.now()) / 1000)))
-    }, 250)
-    return () => clearInterval(id)
-  }, [lockActive])
-
-  // P1-6-R3: 鎖尾 5 秒溫和提示音（每次上鎖只響一次；柔和模式降頻減音量）
-  useEffect(() => {
-    if (followup === null) return
-    if (lockSecs > 0 && lockSecs <= 5 && !chimeFiredRef.current) {
-      chimeFiredRef.current = true
-      playLockChime(calmLock || gentleLock)
-    }
-  }, [lockSecs, followup, calmLock, gentleLock])
 
   const next = useCallback(() => {
     const newAnswers = [...answers, answerState]
@@ -566,11 +499,6 @@ export default function PracticeSession({
     setAnswerState(null)
     setDiagnosed(null)
     setTruth(null)
-    setFollowup(null)
-    setFollowupPick(null)
-    lockDeadlineRef.current = null
-    setLockSecs(0)
-    setLockToken(null)
     setGentleLock(false) // F-EMO: 柔和呈現只限本題
 
     if (current + 1 >= totalQ) {
@@ -685,20 +613,9 @@ export default function PracticeSession({
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
   // returns OK, so a student is never wrongly stuck. A genuine "not expired" reply
   // re-holds the client lock for a few seconds.
-  const proceed = useCallback(async () => {
-    if (lockHeld || verifying) return
-    if (lockToken) {
-      setVerifying(true)
-      const ok = await verifyServerUnlock(lockToken)
-      setVerifying(false)
-      if (!ok) {
-        lockDeadlineRef.current = Date.now() + 3000
-        setLockSecs(3)
-        return
-      }
-    }
-    next()
-  }, [lockHeld, verifying, lockToken, next])
+  // 2026-09-09：原本要先向 server 驗一次個簽名鎖仲有效（防 DevTools 篡改倒數），
+  // 驗完先放行。鎖已剷除，所以「下一題」就係直接落下一題。
+  const proceed = next
 
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
@@ -1207,115 +1124,20 @@ export default function PracticeSession({
                   className="mb-4"
                 />
 
-                {/* 反思鎖（所有答錯題，2026-09-05 憲章 §7 修訂）: read the
-                    breakdown above, answer the cause follow-up correctly, AND wait out
-                    the countdown before "Next" unlocks. No skipping.
-                    憲章 §4.4：反思遮罩用奶油白（非黑）、非鮮紅 —— 兩種模式都用暖淺色。 */}
-                {followup && (
-                  /* F-EMO: gentleLock（揀咗「有啲失落」）⇒ 強制柔和呈現 + 溫和標題，
-                     教學法不變（倒數 + 反思題照舊），只改語氣同色調 */
-                  /* 規格書 §4.2：冷靜艙屬答錯回饋鏈的一環，同樣【不出現紅色】。
-                     原本非柔和模式用 border-rose/45 + text-rose，已統一為金色。
-                     柔和模式（calmLock／gentleLock）保留較淡的邊框，只差飽和度。 */
-                  <div className={`rounded-2xl p-5 mb-4 border-2 bg-surface ${(calmLock || gentleLock) ? 'border-gold/40' : 'border-gold/60'}`}>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="flex items-center gap-2 font-medium text-sm tracking-wide text-gold">
-                        <Lock size={16} />{' '}
-                        {gentleLock
-                          ? tr('慢啲嚟，你發現咗一個新盲點💡', 'Take it slow — you just found a new blind spot 💡')
-                          : tr(`${REFLECTION_SECONDS} 秒冷靜艙`, `${REFLECTION_SECONDS}-second calm capsule`)}
-                      </span>
-                      <button
-                        onClick={toggleCalmLock}
-                        title={tr('柔和模式：沙漏放慢、色調更靜', 'Calm mode: slower hourglass, softer tones')}
-                        className={`text-[10px] px-2 py-1 rounded-full border transition-all ${calmLock ? 'border-gold text-ink bg-surface-sunken' : 'border-line-strong text-ink-muted hover:text-ink-soft'}`}
-                      >
-                        {tr('柔和', 'Calm')}
-                      </button>
-                    </div>
-                    {/* P1-6-R1: 沙漏 SVG 取代數字倒數 —— 非線性沙流（前快後慢），
-                        柔和／情緒柔和模式下減速降飽和。準確計時由 deadline 效應負責。 */}
-                    <div className="flex justify-center mb-4">
-                      <HourglassTimer
-                        remaining={lockSecs}
-                        total={LOCKOUT_SECONDS}
-                        soft={calmLock || gentleLock}
-                        label={
-                          gentleLock
-                            ? tr('唞一唞，你發現咗新盲點💡', 'Take a breather — you found a new blind spot 💡')
-                            : calmLock
-                              ? tr('慢啲嚟，發現盲點💡', 'Slow down — a blind spot found 💡')
-                              : tr('診斷緊你嘅錯因 DNA', 'Diagnosing your error DNA')
-                        }
-                        ariaLabel={tr(`${REFLECTION_SECONDS} 秒冷靜艙，請診斷錯因`, `${REFLECTION_SECONDS}-second calm capsule — diagnose your error cause`)}
-                      />
-                    </div>
-                    {/* 憲章 v3.0 §1.2 失敗學定稿文案：做錯 ≠ 失敗，由呢一瞬間開始 */}
-                    <p className="text-xs text-ink-muted text-center mb-3 leading-relaxed">
-                      {tr('過去係過去，未來係未來。由呢一瞬間開始。',
-                          'The past is the past, the future is the future. Start from this very moment.')}
-                    </p>
-                    <p className="text-xs text-ink-muted mb-3 leading-relaxed">
-                      {tr('讀完上面嘅錯因拆解，答對以下反思題，並等倒數完結，先可以解鎖下一題。',
-                          'Read the breakdown above, answer the reflection question correctly, and wait out the countdown to unlock the next question.')}
-                    </p>
-                    <p className="text-sm font-medium text-ink mb-3">{tr(followup.prompt[0], followup.prompt[1])}</p>
-                    <div className="space-y-2">
-                      {followup.options.map((o, i) => {
-                        const picked = followupPick === o[0]
-                        const isCorrectOpt = o[0] === followup.correctZh
-                        let st = 'border-line-strong bg-surface-sunken hover:border-accent/40 cursor-pointer'
-                        if (followupPick !== null) {
-                          if (isCorrectOpt) st = 'border-accent bg-accent/[0.10]'
-                          // 規格書 §4.2：自診反思題揀錯同樣【不出現紅色】，統一金色
-                          else if (picked) st = 'border-gold bg-gold/[0.08]'
-                          else st = 'border-line bg-surface-sunken opacity-50'
-                        }
-                        return (
-                          <button
-                            key={i}
-                            disabled={followupCorrect}
-                            onClick={() => setFollowupPick(o[0])}
-                            className={`ml-pick${picked ? ' ml-pick-on' : ''} w-full text-left text-sm text-ink-soft border rounded-xl px-4 py-2.5 transition-all ${st}`}
-                          >
-                            {tr(o[0], o[1])}
-                          </button>
-                        )
-                      })}
-                    </div>
-                    {followupPick !== null && !followupCorrect && (
-                      /* 規格書 §4.2：重試提示唔可以用紅色 —— 呢句係邀請再試，唔係判錯。 */
-                      <p className="text-xs text-gold mt-2">
-                        {tr('再諗深一層 —— 揀返最能根治呢個錯因嘅做法。',
-                            'Think again — pick the approach that actually fixes this error type.')}
-                      </p>
-                    )}
-                    {followupCorrect && (
-                      <p className="ml-reveal text-xs text-ink-soft mt-3 leading-relaxed border-t border-line-strong pt-2">
-                        <span className="text-accent font-medium">✓ </span>
-                        {tr(followup.explain[0], followup.explain[1])}
-                      </p>
-                    )}
-                  </div>
-                )}
+                {/* ⚠️ 2026-09-09：30 秒反思鎖已剷除（兩個月實驗）。
+                    倒數、追問題、server lock token 全部移走 —— 學生見唔到任何強制等待。
+                    【保留】上面嘅三維錯因一撳 —— 佢係錯題 DNA／雷達圖／遺忘曲線重溫嘅
+                    唯一入料口，亦係憲章 §16.E（2026-09-08 雙簽）跨機同步嗰個 key。
+                    兩樣一齊剷，兩個月後條正確率 curve 就分唔清係邊個變數造成。
+                    復活方法：git revert 本次 commit。憲章 §7.2 記低咗實驗條件。 */}
 
-                {/* Next button — disabled while the forced lock is held or verifying. */}
+                {/* 2026-09-09：呢個掣原本會喺反思鎖期間變灰、出一個鎖頭同倒數秒數。
+                    鎖已剷除，所以佢永遠撳得。 */}
                 <button
                   onClick={proceed}
-                  disabled={lockHeld || verifying}
-                  className={`w-full font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
-                    lockHeld || verifying
-                      ? 'bg-surface-sunken text-ink-faint cursor-not-allowed'
-                      : 'bg-accent-strong hover:bg-accent-hover text-on-accent'
-                  }`}
+                  className="w-full font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent"
                 >
-                  {lockHeld || verifying ? (
-                    <>
-                      <Lock size={16} />
-                      {tr(`解鎖中…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`,
-                          `Locked…${lockSecs > 0 ? ` (${lockSecs}s)` : ''}`)}
-                    </>
-                  ) : totalQ === 1 ? (
+                  {totalQ === 1 ? (
                     // C6：1 題卷冇結果頁，亦唔應該喺啱啱答錯之後彈「🎉」。
                     tr('做完喇', 'Done')
                   ) : current + 1 >= totalQ ? t.practice.seeResult : (

@@ -46,6 +46,7 @@ import TodayNote from '@/components/TodayNote'
 // 兩者都由既有 localStorage 導出，練習頁零改動（見 lib/logicLog.ts 檔首）。
 import TrailStrip from '@/components/TrailStrip'
 import Mascot from '@/components/Mascot'
+import { SESSION_SIZE } from '@/lib/entitlements'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -351,8 +352,8 @@ export default function DashboardPageClient() {
               </h3>
               <p className="text-sm text-ink-muted mb-4">
                 {en
-                  ? 'Auto-build a 20-question drill from your lowest win-rate topics.'
-                  : '自動由你勝率最低嘅課題，砌一份 20 題專屬特訓卷。'}
+                  ? `Auto-build a ${SESSION_SIZE}-question drill from your lowest win-rate topics.`
+                  : `自動由你勝率最低嘅課題，砌一份 ${SESSION_SIZE} 題專屬特訓卷。`}
               </p>
               <button
                 onClick={onRepair}

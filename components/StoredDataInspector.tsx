@@ -66,7 +66,7 @@ const LABELS: Record<string, { zh: string; en: string }> = {
   dse_good_today: { zh: '今日做得好嘅嘢', en: 'What went well today' },
   dse_focus_today: { zh: '今日想專注嘅嘢', en: "Today's focus" },
   dse_not_tonight_until: { zh: '「今晚唔溫」設定', en: '"Not tonight" setting' },
-  dse_calm_lock: { zh: '反思鎖偏好', en: 'Reflection-lock preference' },
+  dse_calm_lock: { zh: '柔和呈現偏好', en: 'Soft-presentation preference' },
   dse_explain_always_full: { zh: '解析always攤開', en: 'Always expand explanations' },
   dse_locale: { zh: '語言選擇', en: 'Language preference' },
   dse_easy_font: { zh: '易讀字體開關', en: 'Easy-reading font toggle' },
