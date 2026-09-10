@@ -323,15 +323,19 @@ export default function PracticeSession({
   // 柔和計時（Emma/UDL 焦慮模式）：反思鎖照樣執行，但以進度條代替紅色
   // 數字倒數、以暖色代替紅黑 —— 只改呈現，不改教學法。設定存 localStorage。
   const [calmLock, setCalmLock] = useState(false)
+  // 2026-09-09 剷反思鎖嗰陣，`dse_calm_lock` 唯一嘅開關一齊冇咗 —— 個設定仲喺度、
+  // 仲會同步、仲影響下面 CommandWordText 嘅 soft 呈現，但學生改唔到。
+  // 2026-09-11 補返：個掣已搬入 A11yPanel（同其餘 SEN 控制擺埋一齊）。
+  // A11yPanel 同 applyCloudSettings 改完都會派 `dse-a11y`，所以呢度要跟住聽 ——
+  // 淨係 mount 讀一次嘅話，學生喺做緊題嗰陣撳個掣係唔會有反應嘅。
   useEffect(() => {
-    try { setCalmLock(localStorage.getItem('dse_calm_lock') === '1') } catch { /* ignore */ }
+    const read = () => {
+      try { setCalmLock(localStorage.getItem('dse_calm_lock') === '1') } catch { /* ignore */ }
+    }
+    read()
+    window.addEventListener('dse-a11y', read)
+    return () => window.removeEventListener('dse-a11y', read)
   }, [])
-  // ⚠️ 2026-09-09：原本呢度有個 toggleCalmLock，唯一入口喺反思鎖個介面入面。
-  // 鎖剷咗，個掣亦一齊冇咗 —— 即係話 `dse_calm_lock` 而家改唔到，
-  // 只會由設定同步帶落嚟。calmLock 本身仍然有用（下面 CommandWordText 嘅
-  // soft 呈現），所以個 state 保留。
-  // 下一步應該將呢個掣搬入 A11yPanel（同其餘 SEN 控制擺埋一齊），而唔係
-  // 留喺一個已經唔存在嘅介面度。未做 —— 已記入憲章 §7.2 待辦。
 
   // 隱藏練習計時器（SEN／焦慮友善）：A11yPanel 寫入 dse_hide_timer 並派 `dse-a11y` 事件，
   // 練習頁即時套用。只影響顯示 —— elapsed 照計，結果頁時間統計不受影響。

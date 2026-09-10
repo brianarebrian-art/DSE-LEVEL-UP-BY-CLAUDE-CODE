@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { AlignJustify, Clock, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
+import { AlignJustify, Clock, Feather, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
@@ -41,6 +41,11 @@ const HIDE_TIMER_KEY = 'dse_hide_timer'
 // 或者唔識改作業系統設定嘅學生，之前完全冇得揀。
 const NO_MOTION_KEY = 'dse_no_motion'
 const RULER_KEY = 'dse_reading_ruler' // 同 ReadingRuler.tsx 共用
+// 柔和呈現偏好。2026-09-09 剷反思鎖嗰陣，佢【唯一嘅開關】一齊冇咗 ——
+// 個設定仲喺度、仲會同步（lib/settingsSync.ts:32）、仲影響指令字高亮嘅呈現
+// （PracticeSession 嘅 CommandWordText soft），但學生改唔到。
+// 憲章 §7.2 記低咗「應該搬入 A11yPanel」，2026-09-11 補返。
+const CALM_KEY = 'dse_calm_lock'
 const MIN = 12
 const MAX = 24
 const STEP = 2
@@ -80,6 +85,7 @@ export default function A11yPanel() {
   const [sound, setSound] = useState(false)
   const [noMotion, setNoMotion] = useState(false)
   const [ruler, setRuler] = useState(false)
+  const [calm, setCalm] = useState(false)
   // B1（2026-07-22）：行距／字間距，同字級一樣即時生效 + 存 localStorage
   const [lineH, setLineH] = useState(DEFAULT_LINE_HEIGHT)
   const [letterSp, setLetterSp] = useState<LetterSpacing>('normal')
@@ -93,6 +99,7 @@ export default function A11yPanel() {
       setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
       setSound(isAnswerSoundOn())
       setNoMotion(localStorage.getItem(NO_MOTION_KEY) === '1')
+      setCalm(localStorage.getItem(CALM_KEY) === '1')
       const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       setRuler(!!r?.on)
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
@@ -112,6 +119,7 @@ export default function A11yPanel() {
         setEasy(localStorage.getItem(EASY_KEY) === '1')
         setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
         setSound(isAnswerSoundOn())
+        setCalm(localStorage.getItem(CALM_KEY) === '1')
         const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
         setRuler(!!r?.on)
       } catch {
@@ -193,6 +201,34 @@ export default function A11yPanel() {
       return next
     })
   }, [])
+
+  // 柔和呈現。只改【呈現】唔改教學法：指令字高亮由高對比改為柔和色。
+  //
+  // ⚠️ 刻意【唔】納入下面「一鍵舒適模式」嘅 comfortOn 推導。納入嘅話，
+  //    今日已經開住舒適模式嘅學生（easy && hideTimer && ruler && noMotion && !sound）
+  //    會因為 calm 仲係 0 而突然見到總掣變「關」—— 一個純粹補返個掣嘅改動，
+  //    唔應該令任何人已有嘅狀態顯示變樣。
+  //
+  // ⚠️ 副作用擺喺 handler，【唔可以】擺入 setCalm 個 updater 入面。
+  //    同檔其餘幾個 toggle 都係擺喺 updater 入面而冇事，但呢個唔得 ——
+  //    因為上面個 `dse-a11y` listener 會 setCalm(讀返 storage)，
+  //    喺 updater 入面 dispatch 就變成 setCalm 執行途中再入 setCalm（re-entrant），
+  //    結果係撳完個掣彈返原位。
+  //
+  //    實測（2026-09-11，localhost:3001）：另外兩個掣 0 → 1，呢個 0 → 0。
+  //    ⚠️ 掃原始碼嘅測試【捉唔到呢一種 bug】—— 四條測試全綠，個掣係壞嘅。
+  //    憲章 §4 要求喺運行中 UI 手動驗證，就係為咗呢種。
+  const toggleCalm = useCallback(() => {
+    const next = !calm
+    setCalm(next)
+    try {
+      localStorage.setItem(CALM_KEY, next ? '1' : '0')
+    } catch {
+      /* ignore */
+    }
+    // 練習頁監聽緊 dse-a11y —— 派咗佢，做緊題嗰個唔使 reload 就即刻見到。
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [calm])
 
   // 一鍵舒適模式：三項支援（易讀字體＋閱讀尺＋隱藏計時器）一掣齊開／齊關。
   // 無痕設計（Emma/UDL）：UI 只描述功能，唔出任何診斷標籤字眼。
@@ -485,6 +521,34 @@ export default function A11yPanel() {
               }`}
             >
               {sound ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
+
+          {/* 柔和呈現（2026-09-11 補返 —— 憲章 §7.2 記低嘅缺口） */}
+          <button
+            onClick={toggleCalm}
+            aria-pressed={calm}
+            className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+              calm
+                ? 'bg-surface-sunken border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+            }`}
+          >
+            <span className="text-left flex items-center gap-2">
+              <Feather size={14} className="shrink-0" />
+              <span>
+                <span className="block text-sm">{en ? 'Softer highlighting' : '柔和呈現'}</span>
+                <span className="block text-[11px] text-ink-muted">
+                  {en ? 'Gentler colours for keyword highlights' : '指令字高亮改用柔和色'}
+                </span>
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                calm ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+              }`}
+            >
+              {calm ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
 
