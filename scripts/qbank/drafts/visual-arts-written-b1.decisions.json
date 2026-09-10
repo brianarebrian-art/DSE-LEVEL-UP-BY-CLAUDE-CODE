@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "visual-arts-written-b1.json",
+    "subject": "visual-arts",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "va_w1_01": "pending",
+    "va_w1_02": "pending",
+    "va_w1_03": "pending",
+    "va_w1_04": "pending",
+    "va_w1_05": "pending"
+  }
+}

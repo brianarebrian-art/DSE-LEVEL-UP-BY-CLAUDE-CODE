@@ -55,6 +55,32 @@ const SUBJECT_OF: Record<string, string> = {
   'geography-long-b1.json': 'geography',
   'bafs-long-b1.json': 'bafs',
   'ict-long-b1.json': 'ict',
+  // 2026-09-10 22 科非 MC 題目第一批，每科 5 條
+  //（scripts/qbank/gen-written-b1.mjs，內容逐條人手撰寫）。
+  // 22 科皆為當時書寫題 = 0 嘅科目（實測：coverage-report.mts）。
+  // 全部 topicId 均為該科【已登記】嘅既有課題，冇新增課題 —— 本閘會逐個核實。
+  'physics-written-b1.json': 'physics',
+  'chemistry-written-b1.json': 'chemistry',
+  'biology-written-b1.json': 'biology',
+  'm1-written-b1.json': 'm1',
+  'm2-written-b1.json': 'm2',
+  'english-written-b1.json': 'english',
+  'bafs-written-b1.json': 'bafs',
+  'ict-written-b1.json': 'ict',
+  'economics-written-b1.json': 'economics',
+  'csd-written-b1.json': 'csd',
+  'chinese-history-written-b1.json': 'chinese-history',
+  'geography-written-b1.json': 'geography',
+  'chinese-literature-written-b1.json': 'chinese-literature',
+  'english-literature-written-b1.json': 'english-literature',
+  'ethics-religious-written-b1.json': 'ethics-religious',
+  'ths-written-b1.json': 'ths',
+  'health-management-written-b1.json': 'health-management',
+  'design-tech-written-b1.json': 'design-tech',
+  'visual-arts-written-b1.json': 'visual-arts',
+  'music-written-b1.json': 'music',
+  'pe-written-b1.json': 'pe',
+  'technology-living-written-b1.json': 'technology-living',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────

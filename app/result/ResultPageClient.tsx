@@ -18,6 +18,7 @@ const fmt = (tpl: string, vars: Record<string, string>) =>
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
@@ -437,6 +438,10 @@ export default function ResultPageClient() {
             本節成績講「今次」，掌握度講「至今」，兩者要分得開。 */}
         <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} attempted={result.total} />
 
+        {/* 聽日有嘢等你 —— 回訪鉤子。擺喺發現卡之後：先講「今日你搞明白咗乜」，
+            再講「聽日有咩等緊你」，順序同學生嘅情緒節奏一致。 */}
+        <TomorrowStrip en={locale === 'en'} />
+
         {result.subjectId && <MasteryEstimate subjectId={result.subjectId} />}
 
         {/* Topic breakdown */}
@@ -591,6 +596,57 @@ function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: 
           )}
         </ul>
       )}
+    </section>
+  )
+}
+
+// ── 聽日有嘢等你（回訪鉤子）────────────────────────────────────────────────
+//
+// ══ 點解要有 ══
+// 遺忘曲線重溫排程（lib/reviewSchedule.ts，1/3/7/14/30 日）早就上線，但淨係
+// 喺 /dashboard 出現。而學生交完卷係落 /result —— 嗰一頁由頭到尾冇提過聽日
+// 有嘢等緊佢。即係話排程雖然存在，喺【決定佢聽日返唔返嚟】嗰一刻係隱形嘅。
+//
+// 實測：174 個帳號、97 個做過至少一節，第二日返過嚟得 24 個（14%）。
+//
+// ══ 點解唔做「連續打卡」 ══
+// 2027 目標書要求 Daily Streak。但 lib/progress.ts:158 記低咗連續計數已經
+// 被【刻意剷走並取代】—— 中斷一日即歸零，等同宣告「之前的努力白費」；
+// 對焦慮傾向學生係純粹壓力，對 ADHD 學生令重新開始嘅門檻更高（憲章 §7）。
+//
+// 呢度用【聽日有嘢等你】而唔係【你連續咗幾多日】：前者係一個邀請，
+// 後者係一個會斷嘅紀錄。兩者都提供回訪理由，但只有前者喺學生休息一日
+// 之後唔會懲罰佢。
+//
+// ⚠️ 冇嘢到期就【乜都唔顯示】，唔會出「聽日冇嘢重溫」之類嘅空狀態 ——
+//    嗰句話對一個啱啱全對嘅學生嚟講毫無意義，對一個做少咗題嘅學生嚟講
+//    就變成一句提醒佢做得少。空狀態唔係一定要填。
+function TomorrowStrip({ en }: { en: boolean }) {
+  const [items, setItems] = useState<DueItem[]>([])
+  useEffect(() => {
+    // localStorage 只喺瀏覽器有 —— 喺 effect 入面讀，避免 SSR 同 hydration 唔一致。
+    setItems(upcomingReviews(3))
+  }, [])
+  if (items.length === 0) return null
+
+  const topics = [...new Set(items.map((d) => (en ? d.topicEn ?? d.topic : d.topic)))]
+  return (
+    <section className="bg-surface-raised border border-line rounded-2xl p-5">
+      <h3 className="text-sm font-medium text-ink mb-1.5">
+        {en ? `${items.length} ${items.length === 1 ? 'question is' : 'questions are'} waiting tomorrow` : `聽日有 ${items.length} 條等你`}
+      </h3>
+      <p className="text-xs text-ink-muted leading-relaxed mb-3">
+        {en
+          ? 'Spaced review — these come back at the point where memory starts to fade, so one pass tomorrow is worth several today.'
+          : '遺忘曲線排程 —— 呢幾條會喺記憶開始變淡嗰一刻返嚟，所以聽日做一次，抵過今日做幾次。'}
+      </p>
+      <ul className="flex flex-wrap gap-2">
+        {topics.map((t) => (
+          <li key={t} className="text-xs text-ink-soft bg-surface-sunken border border-line rounded-lg px-2.5 py-1">
+            {t}
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

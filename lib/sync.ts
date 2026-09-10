@@ -179,16 +179,106 @@ export function mergeSnapshots(local: Snapshot, cloud: CloudData): Snapshot {
   const cloudSnap = cloud.progress
   if (!cloudSnap) return local // A
 
+  // ── 邊一邊「贏」———————————————————————————————————————————————————
+  // 呢段邏輯逐字不變（防線 A／B／C）。贏家決定嗰啲【唔可以合併】嘅欄位：
+  // active session（一節就係一節，冇得合併）、topic stats（見下面）、時間戳。
+  let winner: Snapshot
   if (local.syncedAt == null) {
     // B — avoid clobbering: take whichever side has more data.
-    return score(local) >= score(cloudSnap) ? local : cloudSnap
+    winner = score(local) >= score(cloudSnap) ? local : cloudSnap
+  } else {
+    // C — both ends are established; newest local change wins.
+    const localT = local.updatedAt ?? 0
+    const cloudT = cloudSnap.updatedAt ?? (cloud.updated_at ? Date.parse(cloud.updated_at) : 0)
+    winner = localT >= cloudT ? local : cloudSnap
   }
 
-  // C — both ends are established; newest local change wins.
-  const localT = local.updatedAt ?? 0
-  const cloudT =
-    cloudSnap.updatedAt ?? (cloud.updated_at ? Date.parse(cloud.updated_at) : 0)
-  return localT >= cloudT ? local : cloudSnap
+  // ── 2026-09-10：append-only 嘅欄位改為【union】而唔係跟贏家 ────────────────
+  //
+  // 點解要改：原本成個函數 `return local` 或者 `return cloudSnap`，即係整份
+  // 快照二選一。輸嗰邊嘅 `dse_progress` 陣列連同入面所有節，一次過被丟棄。
+  //
+  // 實測重現（scripts/sync-conflict-repro.mts，4 個情境跑咗 3 個掉失）：
+  //   · 兩部機各自離線做題 → 掉失一節
+  //   · 三裝置並行（Mobile→iPad→Desktop）→ 掉失一節
+  //
+  // 點解一直冇人察覺：單一裝置用戶永遠撞唔到；兩部機順序使用亦撞唔到，
+  // 因為較新嗰邊本身已經包含較舊嗰邊。只有【兩邊各自離線做過題】先會掉。
+  //
+  // 點解 union 係安全嘅：`dse_progress` 同 `dse_reverse_log` 都係 append-only
+  // 而且每條記錄自帶時間戳（AttemptRecord.timestamp / ReverseLogEntry.ts）。
+  // Union 只會【加返】被丟棄嘅記錄，數學上唔可能刪走任何一條 ——
+  // 即係最壞情況等於改動前，唔存在「改完之後掉多咗」呢個可能。
+  //
+  // ⚠️ `dse_topic_stats` 【刻意唔 union】。每部機嘅數字係「該機對累積歷史
+  //    嘅視角」：兩邊分叉之後，相加會把共同歷史雙計，取 max 又會掉失較細
+  //    嗰邊嘅增量。呢個係 CRDT 問題，揀錯會污染現有帳號嘅雷達數據，
+  //    而雷達正正係 §16.E 特登開放上雲嗰批 key。故此維持跟贏家，
+  //    留待創辦人拍板（scripts/sync-conflict-repro.mts 情境 4 仍然會紅，
+  //    嗰個紅係【故意留住】嘅提醒，唔係未修好嘅疏忽）。
+  const mergedProgress = unionBy(
+    asArray(local.dse_progress),
+    asArray(cloudSnap.dse_progress),
+    (r) => `${(r as { timestamp?: number })?.timestamp ?? ''}|${(r as { subjectId?: string })?.subjectId ?? ''}`,
+    (a, b) => ((a as { timestamp?: number })?.timestamp ?? 0) - ((b as { timestamp?: number })?.timestamp ?? 0), // push 順序＝舊到新
+  )
+  // reverse log 用 unshift 寫入（新到舊），並有 CAP 200（lib/reverseLog.ts:33）。
+  // Union 之後照樣新到舊排並截 200，唔可以無視個 CAP —— 否則同步會令本機
+  // 嘅日誌長過本機自己寫得出嘅上限。
+  const mergedReverse = unionBy(
+    asArray(local.dse_reverse_log),
+    asArray(cloudSnap.dse_reverse_log),
+    (r) => `${(r as { ts?: number })?.ts ?? ''}|${(r as { questionId?: string })?.questionId ?? ''}`,
+    (a, b) => ((b as { ts?: number })?.ts ?? 0) - ((a as { ts?: number })?.ts ?? 0), // unshift 順序＝新到舊
+  ).slice(0, REVERSE_LOG_CAP)
+
+  const out: Snapshot = {
+    ...winner,
+    dse_progress: mergedProgress,
+    // 計數器唔可以跟贏家 —— 贏家嗰邊嘅數可能細過合併後嘅實際節數。
+    // 取三者最大值，保證同步之後永遠唔會倒退。
+    dse_free_attempts_total: Math.max(
+      Number(local.dse_free_attempts_total) || 0,
+      Number(cloudSnap.dse_free_attempts_total) || 0,
+      mergedProgress.length,
+    ),
+  }
+  // `undefined` 同「空陣列」係兩件事：前者代表舊快照冇呢個欄位，applyLocal
+  // 見到 undefined 會【唔郁】本機資料。所以合併結果為空就唔好帶呢個欄位出去，
+  // 否則會把一部有日誌嘅機洗成空白（同 snapshotLocal 嗰個空物件陷阱同源）。
+  if (mergedReverse.length > 0) out.dse_reverse_log = mergedReverse
+  else if (winner.dse_reverse_log !== undefined) out.dse_reverse_log = winner.dse_reverse_log
+
+  return out
+}
+
+/** reverse log 上限，同 lib/reverseLog.ts 嘅 CAP 一致。 */
+const REVERSE_LOG_CAP = 200
+
+const asArray = (v: unknown): unknown[] => (Array.isArray(v) ? v : [])
+
+/**
+ * 兩個 append-only 陣列嘅聯集，按 `key` 去重，再按 `cmp` 排序。
+ *
+ * 去重鍵用「時間戳 ＋ 識別欄」而唔係整條記錄 JSON：同一條記錄喺兩部機之間
+ * 來回同步之後，欄位次序或者 optional 欄可能唔完全一樣（例如 `topicEn`
+ * 係 2026-08-23 之後先加），JSON 比對會當佢哋係兩條而造成重複。
+ */
+function unionBy(
+  a: unknown[],
+  b: unknown[],
+  key: (r: unknown) => string,
+  cmp: (x: unknown, y: unknown) => number,
+): unknown[] {
+  const seen = new Set<string>()
+  const out: unknown[] = []
+  for (const r of [...a, ...b]) {
+    const k = key(r)
+    if (seen.has(k)) continue
+    seen.add(k)
+    out.push(r)
+  }
+  return out.sort(cmp)
 }
 
 /** Write a winning snapshot back to local storage + stamp the sync markers. */

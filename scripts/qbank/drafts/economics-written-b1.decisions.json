@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "economics-written-b1.json",
+    "subject": "economics",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ec_w1_01": "pending",
+    "ec_w1_02": "pending",
+    "ec_w1_03": "pending",
+    "ec_w1_04": "pending",
+    "ec_w1_05": "pending"
+  }
+}

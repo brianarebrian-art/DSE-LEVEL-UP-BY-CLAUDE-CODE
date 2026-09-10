@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chinese-literature · chinese-literature-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chinese-literature</span></h1>
+<div class="sub">來源 chinese-literature-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"cl_w1_01","topic":"唐詩","difficulty":"basic","question":"王維〈山居秋暝〉有「明月松間照，清泉石上流」二句。\n試分析此二句在【感官描寫】及【動靜配合】兩方面的表現手法，並說明其如何營造詩中的意境。","explanation":"賞析題最常見的失分，是把「手法」與「效果」分家 —— 只指出「這是視覺描寫」而不說它令讀者感受到什麼，等於只完成一半。評卷所看的是三步：指出手法、說明其如何運作、扣回全詩的意境或情感。\n本題另有一個容易忽略的層次：「以動襯靜」並非「有動有靜」而已。動靜配合的關鍵在於後者反襯前者 —— 山中若真無聲，反而覺不出靜；正因有泉聲可聞，四周之寂靜才被聽出來。答案若只寫「一句靜一句動，對比鮮明」，屬描述現象而未觸及手法的作用。\n作答時宜緊扣字詞。「清」「照」「流」三字各自承擔不同的感官功能，逐字分析比泛論「用詞優美」有力得多。","type":"text","referenceAnswer":"感官描寫方面：\n上句「明月松間照」訴諸視覺 —— 月光透過松枝灑落，光影交錯，畫面清朗。\n下句「清泉石上流」兼及視覺與聽覺 —— 「清」既寫泉水之澄澈，亦暗含流水之聲；「石上流」則令讀者如聞水擊石面的清響。\n二句由純視覺推展至視聽交融，感官層次由單一而豐富，讀者所感受的並非一幅靜止的畫，而是一個可以身處其中的空間。\n\n動靜配合方面：\n上句為靜 —— 月照松間，光影不動，是凝定的景。\n下句為動 —— 泉水流過石面，是持續的動態。\n二句一靜一動，互相映襯：靜而不死，因有流泉；動而不喧，因泉聲反襯山中之靜。此即以動襯靜的手法。\n\n意境的營造：\n詩人所寫並非荒涼寂寞，而是清幽澄淨。月、松、泉、石四者皆屬潔淨無塵之物，合而構成一個遠離塵囂的世界。\n動靜相生令這個世界有生氣而不喧鬧，感官交融令它可感可觸。由是引出全詩末句「王孫自可留」的歸隱之意 —— 景之可留，正因其境之可安。\n此二句寫景而不止於景，景中已含詩人之心境，是情景交融的典型示範。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cl_w1_02","topic":"風格比較・婉約與豪放","difficulty":"intermediate","question":"宋詞有婉約與豪放二派之分。\n（a）分別說明兩派在【題材選取】、【意象運用】及【語言風格】三方面的特徵。\n（b）以蘇軾〈念奴嬌・赤壁懷古〉與李清照〈聲聲慢〉為例，各舉一處具體文句，說明其如何體現所屬流派的特徵。\n（c）有論者謂「豪放勝於婉約，因其境界闊大」。試評論此說法。","explanation":"（c）是本題的重心，亦是文學科評卷最看重的能力：不以標籤代替判斷。要駁倒「豪放勝於婉約」，最有效的方法並非為婉約辯護，而是指出這個比較所用的尺本身有問題 —— 以題材的大小衡量文學價值，等於預設了只有一種情感值得書寫。\n三個理由的層次應有分別：第一點針對評價標準，第二點提出反證（題材極小而成就極高），第三點指出二分法本身過於簡化。三者不可重複，否則只算一個理由。\n（b）務必引用具體文句並逐字分析。只寫「蘇軾豪放、李清照婉約」屬複述常識，未有分析；而引文之後亦須說明它如何體現該派特徵，引而不析同樣不會取分。","type":"long","referenceAnswer":"（a）三方面的特徵：\n\n題材選取 ——\n婉約派多寫個人的離情別緒、閨閣情思、身世飄零，取材貼近日常生活與內心感受，格局相對細密。\n豪放派多寫歷代興亡、山川形勝、功業抱負，取材由個人推向家國與歷史，格局相對開闊。\n\n意象運用 ——\n婉約派好用細小、柔和、日常之物：梧桐、細雨、殘燈、黃花、羅衾。此類意象體積小而觸感近，適於承載幽微的情緒。\n豪放派好用宏大、剛健、具歷史縱深之物：大江、亂石、驚濤、孤城、千古。此類意象空間廣而時間長，適於承載激越的情懷。\n\n語言風格 ——\n婉約派用字含蓄委婉，多疊字與雙聲疊韻，聲情低回，情感往往不直說而由物象透出。\n豪放派用字直率剛勁，句式或長或短而氣勢貫注，情感多直抒胸臆。\n\n（b）蘇軾〈念奴嬌・赤壁懷古〉：\n「亂石穿空，驚濤拍岸，捲起千堆雪」\n三句連用「穿」「拍」「捲」三個力度極強的動詞，寫江山之險峻壯闊。意象皆屬巨大自然物，空間感開闊；語言剛勁而節奏急促，正是豪放派的典型。此三句寫景，實為下文「江山如畫，一時多少豪傑」張本 —— 由自然之壯闊引出歷史之壯闊，題材由景推向史。\n\n李清照〈聲聲慢〉：\n「梧桐更兼細雨，到黃昏、點點滴滴」\n所取意象為梧桐、細雨、黃昏，皆細小柔和而屬日常所見；「點點滴滴」為疊字，摹寫雨聲之細碎綿延，聲情低回。詞人並未直言愁苦，而由雨打梧桐之聲層層透出，正是婉約派含蓄不直說的手法。\n\n（c）此說法不能成立，理由有三。\n\n其一，境界闊大與否，並非文學高下的唯一標準。詞的價值在於能否準確而深刻地表現其所要表現的情感。婉約詞所寫者為幽微細膩之情，此類情感本不宜以壯闊之筆出之；若以豪放之語寫離愁，反成失真。以題材之大小論高下，等於預設了只有一種情感值得書寫。\n\n其二，闊大本身亦可流於空洞。豪放而無真情實感者，容易淪為叫囂，境界看似開闊而內裡空虛。反之，李清照〈聲聲慢〉開篇連下十四疊字，題材不過是一個秋日黃昏的個人愁緒，而其藝術成就歷代公認 —— 可見深度並不繫於題材的大小。\n\n其三，兩派並非截然對立，亦非高下之別，而是各有所長的兩種路徑。蘇軾亦有〈江城子〉悼亡之作，情深而語婉；辛棄疾詞中亦不乏細膩之筆。以流派標籤判定優劣，往往會忽略作品本身的複雜性。\n\n較公允的說法是：豪放與婉約各自開闢了一種表現領域，二者的成就應各就其領域之內衡量，而非以一方的標準去量度另一方。","markingScheme":"（a）3 分 —— 題材、意象、語言三方面各 1 分，每項須同時說明兩派而非只寫一派。\n（b）4 分 —— 兩例各 2 分：引文正確且切合（1）、分析能扣回該派特徵（1）。引而不析者每例只給 1 分。\n（c）3 分 —— 指出境界闊大並非唯一標準（1）；以具體反證說明深度不繫於題材大小（1）；指出二分法過於簡化或提出更公允的表述（1）。一面倒地為婉約辯護而未觸及評價標準者，最多 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":20,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cl_w1_03","topic":"寫作手法","difficulty":"intermediate","question":"「襯托」與「對比」是兩種容易混淆的表現手法。\n（a）分別說明二者的定義，並指出其根本分別。\n（b）各舉一個文學作品中的例子，說明其運用。\n（c）試說明何以「以樂景寫哀情」屬於襯托而非對比，並解釋此手法何以能加強哀情的表達。","explanation":"襯托與對比之所以常被混淆，是因為兩者表面上都涉及兩樣不同的東西放在一起。分辨的關鍵不在形式而在意圖 —— 作者是要你看其中一方，還是要你看兩方之間的距離。本題（a）所提供的那條判斷方法值得記住，因為它可以即時套用於任何一段引文。\n（c）是本題最能拉開差距的部分。多數答案能答出反襯二字，卻說不出何以反襯比正襯有效。三個理由的層次不同：第一點講心理落差，第二點講人物處境，第三點講含蓄的美學效果。能夠答出第三點者不多，而它恰恰是中國文學評賞最核心的一條原則 —— 不著一字而盡得風流。\n舉例時務必用讀過的作品，並引出原句。憑印象轉述而不引文，評卷無從判斷該例是否成立。","type":"long","referenceAnswer":"（a）定義：\n襯托 —— 以次要事物陪襯主要事物，使主體更為突出。兩者之間有主次之分，陪襯者本身並非表現的目的，其存在只為令主體更鮮明。\n對比 —— 把兩種相反或相異的事物並列，藉其差異互相映照。兩者地位相當，並無主次，讀者所見的是差異本身。\n\n根本分別：在於有無主次之分。\n襯托是「甲為乙服務」，去掉甲，乙仍是主體，只是不夠突出；對比是「甲與乙並立」，去掉任何一方，對比即不存在。\n判斷的方法可以很直接：問一句「作者所要表現的是哪一方」。答案只有一方者為襯托，兩方皆是者為對比。\n\n（b）襯托的例子：\n王籍〈入若耶溪〉「蟬噪林逾靜，鳥鳴山更幽」。蟬聲與鳥聲並非作者所要表現的對象，其作用在於反襯山林之幽靜 —— 正因有聲可聞，四周之寂靜才被聽出來。主體是靜，聲音只是陪襯，此為以動襯靜。\n\n對比的例子：\n杜甫〈自京赴奉先縣詠懷五百字〉「朱門酒肉臭，路有凍死骨」。富者之奢與貧者之死並列，兩者地位相當，作者所要表現的正是這道差距本身，而非其中一方。去掉任何一句，批判即不成立，故為對比。\n\n（c）「以樂景寫哀情」屬襯托而非對比，理由如下：\n所寫的樂景並非作者所要表現的對象。春光明媚、花開鳥鳴，其存在只為反襯人物內心之哀。作者所要表現的自始至終只有一個哀字，樂景是手段而非目的，故合乎襯托有主次之分的定義。\n若為對比，則作者須同時表現樂與哀兩者，並要讀者注意二者之差距本身 —— 而此類作品所寫的並非世上有樂亦有哀，而是我獨哀。\n\n何以能加強哀情：\n其一，落差令情感更為刺目。哀情置於哀景之中，二者同調，讀者的感受被稀釋；置於樂景之中，二者相犯，哀便顯得格外突兀而深刻。\n其二，樂景反照出人物的孤立。滿目春光而獨自傷懷，等於在說天地間唯我一人如此，哀情因而由個人情緒升為一種處境。\n其三，此手法避免了直說。作者不必寫我很哀傷，只需寫花開鳥鳴，讀者自能從那份不協調之中感受到哀 —— 由讀者自行體會所得的情感，比作者直陳者更為深刻。","markingScheme":"（a）3 分 —— 襯托定義（1）；對比定義（1）；指出根本分別在於有無主次（1）。只寫一個是陪襯一個是比較而未觸及主次者，第三項不給分。\n（b）2 分 —— 兩例各 1 分，須引出原句並說明何以屬該手法。引而不析或例證不切合者不給分。\n（c）3 分 —— 正確說明何以屬襯托，須扣回主次之分（1）；加強哀情的理由兩項（各 1 分，須指向不同層面）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cl_w1_04","topic":"明清小說","difficulty":"intermediate","question":"中國古典小說常以「白描」手法刻畫人物。\n試說明白描的特點，並解釋何以此手法在刻畫人物性格時，效果往往勝於直接的性格描述。","explanation":"本題所考的並非術語的定義，而是對敘事原理的理解。答白描就是簡單樸素的描寫只觸及形式，未觸及作用；真正的關鍵在不作評論這一點 —— 敘述者退出判斷，把判斷權交還讀者。\n第二部分的三個理由不宜合併成一個。可信、立體、留有餘地分別對應「讀者如何相信」「人物有幾複雜」「人物能否變化」三個不同層面，各自成立。若三點都在講比較生動，實際上只算一個理由。\n作答時若能舉一個具體例子（例如以某個為小事錙銖必較的舉動見其吝嗇），會比純理論陳述更有說服力；惟本題並未要求，故例子屬加分而非必須。","type":"text","referenceAnswer":"白描的特點：\n其一，不加渲染。以簡練的筆墨直接寫人物的言語、行動與外貌，不施濃墨重彩的形容，亦少用比喻與鋪陳。\n其二，不作評論。敘述者只呈現人物做了什麼、說了什麼，不代讀者下判斷，不直接說明該人物是善是惡、是精是拙。\n其三，重在細節。一個動作、一句對白、一件隨身之物，往往即已透露性格，毋須另加說明。\n\n何以效果勝於直接的性格描述：\n其一，可信。直接寫此人吝嗇是敘述者的斷言，讀者只能選擇相信與否；寫他如何為半分銀子與人爭執，則是讀者親眼所見的證據，結論由讀者自行得出，因而更為牢固。\n其二，立體。性格標籤只有一個維度，而具體行動往往同時透露多重訊息 —— 同一個舉動可以同時顯示吝嗇、精明與不安，人物因而複雜可信，不致淪為一種性格的代表。\n其三，留有餘地。白描不下定論，讀者可在不同情節之間自行調整對人物的判斷，人物遂能隨情節發展而變化；一經標籤定性，人物便被固定，其後的變化反而顯得突兀。\n\n可以一句話概括：白描讓讀者去認識人物，而直接描述只是告訴讀者結論 —— 前者是經歷，後者是通知。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cl_w1_05","topic":"文學鑑賞","difficulty":"hard","question":"「一切景語皆情語」（王國維《人間詞話》）。\n（a）解釋此語的含意。\n（b）試以兩篇不同時代的作品為例，說明作者如何藉景物寄託情感，並比較二者在寄託方式上的分別。\n（c）有學生問：「若一切景語皆情語，那麼純粹寫景而無寄託的作品，是否即無文學價值？」試回應此問題。","explanation":"（c）是本題的真正考點，而它所考的並非文學知識，而是能否辨認一個問題的前設有問題。學生的提問把一句描述性的話（景物必帶情感）當成了規範性的標準（有寄託才是好作品），兩者混淆，問題才得以成立。回應此類問題的第一步永遠是拆前設，而非直接回答是或否。\n（b）的比較部分須落到方式而非高下。陶詩與杜詩皆為第一流之作，若答成陶詩較含蓄故較高明，即墮入（c）所要破除的那種單一標準。王國維有我之境與無我之境一組概念在此極為適用，而且正好出自同一部《人間詞話》，援引得當可見融會。\n舉例宜跨時代，因為題目明文要求不同時代。兩例皆取自唐詩或皆取自宋詞，即不符題意。","type":"long","referenceAnswer":"（a）含意：\n文學作品中的景物並非客觀的記錄，而是經作者情感選擇與著色之後的產物。\n作者寫哪一樣景、不寫哪一樣，用什麼字眼去寫，本身已由其心境所決定。同一片秋林，喜者見其斑斕，悲者見其凋零 —— 所寫的雖是景，所透出的實為情。\n故王國維謂一切景語皆情語：凡入文之景，皆已帶上作者的情感，並無真正中立的寫景。\n\n（b）兩例及其寄託方式：\n\n例一：陶淵明〈飲酒〉（其五）「採菊東籬下，悠然見南山」\n所寫者為日常景物 —— 東籬、菊、南山。景物本身平淡無奇，而情感即寄於悠然二字與見字之中。見而非望，是不經意的偶遇而非刻意的尋覓，正見其心之無所繫縛。作者並未言說歸隱之樂，樂已在景中。\n寄託方式：情融於景，不著痕跡。景與情合為一體，讀者須從語氣與用字的細微處體會。\n\n例二：杜甫〈春望〉「感時花濺淚，恨別鳥驚心」\n所寫者為春日的花與鳥，本屬樂景。而作者以濺淚、驚心二語，把自身的悲慟直接投射於花鳥之上 —— 花本不會落淚，鳥亦不會驚心，此乃移情之筆。\n寄託方式：情移於景，痕跡鮮明。作者主動把情感加諸物象，讀者一望即知其悲。\n\n比較：\n陶詩的寄託是隱的 —— 情感藏於景物之後，須讀者自行尋索；杜詩的寄託是顯的 —— 情感壓在景物之上，讀者無從迴避。\n二者的分別不在深淺，而在方式：前者以自然為情感之居所，後者以情感重塑自然之面目。前者近乎無我之境，物我兩忘；後者近乎有我之境，以我觀物，故物皆著我之色彩。\n\n（c）回應：\n此問題的前設須先釐清。一切景語皆情語是一個關於文學作品中景物性質的觀察，並非一條評價標準。它所說的是凡入文之景必已帶情，而非有寄託者方為佳作。二者是不同層次的命題，把前者當成後者，正是此問題的來源。\n\n進一步而言，所謂純粹寫景而無寄託的作品，其實極為罕見，甚至可以說並不存在。原因正如（a）所述：作者在選材與用字之際，情感已經介入。一篇看似客觀的山水描寫，其取景之角度、著墨之輕重、節奏之疾徐，無一不透露作者的態度。故此類作品並非無情，只是其情較為沖淡，或不指向某一具體的悲喜。\n\n再者，即使真有情感極淡的寫景之作，其文學價值亦不因此而失。文學的價值不只在於情感的濃度，尚有語言之精警、觀察之細微、境界之澄澈。一篇能令讀者重新看見尋常景物的作品，本身即有價值 —— 使人重新感知世界，正是文學的功能之一。\n\n故此問題的答案是：\n第一，一切景語皆情語不是評價標準，不應據以判定作品的高下。\n第二，純然無情的寫景幾乎不存在，故此假設本身難以成立。\n第三，即使情感沖淡，作品仍可憑其他方面的成就而具價值。\n以單一標準衡量所有作品，本身即是文學評論須要避免的做法。","markingScheme":"（a）2 分 —— 指出景物已經作者情感選擇與著色（1）；說明並無中立的寫景，或以同一景物在不同心境下的差異作說明（1）。\n（b）6 分 —— 兩例各 2 分（引文正確 1 分、分析扣回情感 1 分）；比較 2 分（須落到寄託方式之隱與顯，並指出分別不在高下）。兩例同屬一個時代者，比較部分不給分。\n（c）4 分 —— 指出提問混淆了描述與評價標準（2）；說明純然無寄託之作幾乎不存在（1）；指出即使情感沖淡仍可憑其他成就而具價值（1）。直接答是或否而未拆前設者，最多 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":25,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chinese-literature";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "chinese-literature-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chinese-literature-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · design-tech · design-tech-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">design-tech</span></h1>
+<div class="sub">來源 design-tech-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"dt_w1_01","topic":"結構與機械・計算","difficulty":"basic","question":"一根均勻的槓桿長 1.2 米，支點設於左端起 0.3 米處。左端掛上 60 N 的重物。\n（a）若在右端施力使槓桿平衡，所需的力為多少？\n（b）此槓桿的機械利益（mechanical advantage）為多少？\n（c）說明此結果反映了槓桿設計上的哪一項取捨。","explanation":"（c）才是本題的考點。力矩計算屬程序操作，而能否由結果讀出設計含意，才是本科與物理科的分別所在。機械利益高並非無條件的優點 —— 它以行程換取力量，而在空間受限的裝置（例如手提工具、車廂內的機構）之中，行程本身可能就是最緊的約束。\n計算部分須留意力臂的量度起點是支點，而非槓桿的端點。把 1.2 米整條當成施力臂是最常見的錯誤，得出的答案為 15 N，看似合理而實際偏低。\n作答時把「功不變」這一點寫出來，比只說「省力但要移動較遠」更能顯示理解其原理。","type":"text","referenceAnswer":"（a）力臂：負載臂 = 0.3 m；施力臂 = 1.2 − 0.3 = 0.9 m。\n取矩平衡：60 × 0.3 = F × 0.9\nF = 18 ÷ 0.9 = 20 N。\n（b）機械利益 = 負載 ÷ 施力 = 60 ÷ 20 = 3。\n（亦可由力臂之比得出：0.9 ÷ 0.3 = 3。）\n（c）取捨在於【力】與【距離】之間。\n施力只需 20 N 即可支撐 60 N 的負載，省力三倍；但施力端須移動的距離亦為負載端的三倍。若要把重物提升 0.1 米，施力端須下移 0.3 米。\n機械裝置並不會創造能量，它只改變力與距離的分配 —— 省了力就必須多走距離，兩者的乘積（即功）在理想情況下維持不變。設計時究竟該偏向省力抑或偏向省行程，取決於實際限制：空間狹窄者宜取短行程，操作者力量有限者宜取高機械利益。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dt_w1_02","topic":"設計過程","difficulty":"intermediate","question":"某學生設計一款供輪椅使用者單手操作的門把。\n（a）列出設計過程的五個主要階段，並就本個案說明每一階段所應完成的具體工作。\n（b）解釋何以「使用者研究」不能以設計者自身的想像取代，並舉出一項若略去此步可能出現的失誤。\n（c）該學生製作了一個原型，測試後發現使用者能夠開門，但需時較長。他認為「功能既已達成，可以定案」。試評論此判斷。","explanation":"（a）的評分不在於能否背出五個階段的名稱，而在於每一階段是否落到本個案的具體工作。答「進行研究」屬階段名稱的重複；答「量度輪椅座位高度與單手可施加的扭力」才是本題所要的內容。\n（b）第二個理由值得留意：它指出設計者所預想的「動作」往往比真實使用少了幾步。開門在健全者眼中是一個動作，在輪椅使用者的實際流程中是五個 —— 而問題通常出在中間那幾步，恰恰是想像最容易跳過的部分。\n（c）示範本科一項核心判準：功能達成不等於設計完成。無障礙設計尤其如此，因為「勉強可用」與「同樣好用」之間的差距，正是該領域存在的理由。末段那句「設計過程是循環而非直線」把（c）扣回（a）第五階段，令全題成為一個整體。","type":"long","referenceAnswer":"（a）五個主要階段及本個案的具體工作：\n第一，界定問題與研究。訪談輪椅使用者，觀察其開門的實際過程；量度輪椅座位高度、可及範圍與單手可施加的最大扭力；查閱無障礙設計的相關標準。此階段的產出是一份寫明約束條件的設計簡介。\n第二，構思方案。就已界定的約束提出多個不同方向的初步構想（下壓式、推板式、感應式、槓桿加長式），此階段重數量而非質素，避免過早收窄。\n第三，篩選與發展。按已訂的準則（施力大小、可及高度、成本、耐用度、安裝是否須改動門body）評比各方案，選出一至兩個深入發展，繪製工作圖並選定材料。\n第四，製作原型。以可得的材料製成可實際操作的樣品，重點在於能否被使用，而非外觀完成度。\n第五，測試與改良。由真實使用者在真實環境中試用，記錄成效與問題，據此修改，並重複測試。此階段並非一次性 —— 設計過程是循環而非直線。\n\n（b）何以使用者研究不能以想像取代：\n其一，設計者的身體條件與使用者不同。一個能夠站立、雙手可用的設計者，無法憑想像得知坐姿之下的可及高度、單手施力的實際上限，以及輪椅與門之間的位置關係如何限制動作。這些是可量度的事實，不是可推想的偏好。\n其二，真實使用往往包含設計者預想不到的步驟。開門對輪椅使用者而言並非單一動作，而是接近、定位、開啟、通過、關上一連串動作，其中「通過時門會否回彈」往往比「能否開啟」更為關鍵 —— 而這一點只有觀察真實過程才會發現。\n其三，使用者之間亦有差異。上肢力量、手部功能、輪椅類型各不相同，單一想像中的使用者會令設計只適合一種情況。\n\n略去此步可能出現的失誤（舉例）：\n把門把設於一般高度（約 1.0 米），在站立者的角度完全合理，但輪椅使用者的舒適操作範圍約在 0.8 至 1.1 米之間且須考慮前伸距離，若同時門邊空間不足以令輪椅側靠，使用者根本無法接近至可施力的位置。此類失誤在圖紙上不會顯現，只會在實地測試中出現。\n\n（c）評論：\n此判斷不能成立，理由有三。\n\n其一，混淆了「可以做到」與「設計成功」。無障礙設計的目標並非讓使用者勉強完成動作，而是令其與其他人一樣便利地完成。若開門需時明顯較長，該設計實際上仍然把額外的成本（時間、體力、他人的等待）轉嫁予使用者，而這正是無障礙設計原本要消除的東西。\n\n其二，時間本身是一項功能指標，而非附帶的舒適度問題。在真實情境中，門後可能有人等候，使用者可能因此感到壓力而放棄使用該通道；一項需時過長的設施，實際使用率往往極低，等同於未曾提供。\n\n其三，測試結果已經指出了改良方向，而非確認了完成。測試的目的並不是取得通過與否的判定，而是發現問題所在。「能開但慢」是一項具體的、可追查的線索 —— 慢在哪一步？是握持不穩、施力位置不佳、抑或須要重新調整輪椅位置？下一步應是拆解該過程並針對瓶頸修改，而非結案。\n\n設計過程的第五階段本身即包含「重複」二字。以第一次測試的結果定案，等於把一個循環的過程當成了直線。","markingScheme":"（a）5 分 —— 五個階段各 1 分，須連本個案的具體工作；只列階段名稱者全項最多 2 分。\n（b）2 分 —— 至少兩個理由，須指向不同層面（1）；具體失誤例子須說明何以在圖紙上不可見（1）。\n（c）2 分 —— 指出功能達成不等於設計完成，或時間本身即功能指標（1）；指出測試結果應導向下一輪改良，呼應設計過程的循環性（1）。答「應該再測試」而無理由不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dt_w1_03","topic":"材料與結構・推理","difficulty":"intermediate","question":"（a）比較低碳鋼、鋁合金及工程塑膠三種材料在【強度重量比】、【抗腐蝕性】及【成型加工】三方面的表現。\n（b）某公司設計一款戶外公園長椅的支架。試選出一種材料，並以（a）的比較說明選擇理由，同時指出所選材料的一項缺點及其補救方法。\n（c）解釋「三角形是穩定結構」的原理，並說明何以長椅支架常見交叉斜撐。","explanation":"（b）的評分並不取決於選了哪一種材料 —— 三者皆可寫出合理的答案。關鍵在於理由是否逐項扣回（a）的三個維度，以及是否處理了所選材料的弱項。若選鋁合金而未提及成本與焊接，或選塑膠而未提及紫外線老化與抗破壞能力，同樣屬論證不完整。\n本題另有一個容易被略去的層次：公共設施的選材須考慮維修與破壞。這一點不在（a）的三個維度之內，而正因如此，能夠自行補上者顯示了超出題目框架的判斷。\n（c）的最後一句是本科的通則性原則：改變受力方式優於加大截面。同樣的思路可用於解釋門框斜撐、書架背板、單車三角車架等多種常見結構。","type":"long","referenceAnswer":"（a）三種材料的比較：\n強度重量比 —— 鋁合金最高：其強度雖低於低碳鋼，而密度僅約三分之一，故單位重量所能承受的載荷較佳。低碳鋼絕對強度最高但偏重。工程塑膠強度最低，惟重量極輕，在低載荷用途中亦足夠。\n抗腐蝕性 —— 工程塑膠最佳，不生鏽，對雨水與清潔劑不敏感。鋁合金次之：表面自然生成氧化層可自我保護，惟在含鹽環境中仍會受蝕。低碳鋼最差，暴露於潮濕空氣即生鏽，必須依靠鍍鋅、噴粉或油漆等表面處理。\n成型加工 —— 工程塑膠最易，可注塑一次成型出複雜形狀，量產單價低，惟開模成本高。鋁合金可擠壓、鑄造、機械加工，成型自由度高。低碳鋼多以切割、彎折、焊接成型，工序較多而技術成熟、單件成本低。\n\n（b）選擇：低碳鋼，並施以熱浸鍍鋅及噴粉處理。\n\n理由（按（a）逐項）：\n強度重量比 —— 公園長椅的支架屬固定裝置，安裝後毋須搬動，故重量並非關鍵約束，而低碳鋼的絕對強度足以應付多人同時就坐及可能的踐踏、攀爬等非預期載荷。\n抗腐蝕性 —— 此為低碳鋼的弱項，但可以表面處理補救（見下）。\n成型加工 —— 支架多為直線與彎折構件，切割、彎折、焊接的工序成熟，本地供應充足；相較之下，工程塑膠須開模，數量不多時單價反而更高，而鋁合金材料成本較高且焊接工藝要求較嚴。\n另有兩項考慮：低碳鋼易於現場維修與焊補，而公共設施的損壞維修頻繁；其抗蓄意破壞的能力亦優於塑膠。\n\n缺點及補救：\n缺點為易生鏽，尤其在香港的高濕度與沿海鹽霧環境之下。\n補救：採熱浸鍍鋅在鋼材表面形成鋅層，鋅比鐵活潑，會優先氧化而保護底層鋼材（犧牲性保護）；其上再加噴粉塗層，兼具阻隔與外觀作用。設計上亦應避免積水 —— 管件端部封閉或開排水孔，接合位不設可積水的凹槽，因為鏽蝕多由積水處開始。\n\n（c）三角形穩定的原理：\n三角形一經確定三邊長度，其形狀即唯一確定，無法在不改變邊長的情況下改變角度。故對三角形施加側向力時，構件只會承受拉力或壓力（軸向力），而不會產生使結構變形的旋轉。\n相對而言，四邊形即使四邊長度固定，仍可在接點處轉動而變成平行四邊形（此即所謂剪切變形），故本身並不穩定。\n\n何以長椅支架常見交叉斜撐：\n長椅的支架多為矩形框架（兩支腳加上下橫樑），此形狀在受到側向推力時會傾斜變形。加入一條或一對斜撐，即把矩形分割成兩個三角形，令框架的形狀被鎖定。\n實際使用中的側向力來源甚多：使用者側身起坐、多人同時倚靠一側、風力，以及被推移。斜撐把這些側向力轉化為構件的軸向拉壓，而材料承受軸向力的能力遠高於承受彎曲，故以少量材料即可顯著提升穩定性。\n此即結構設計的通則：能以三角形處理的，不必以加大構件截面處理 —— 前者改變受力方式，後者只是硬撐。","markingScheme":"（a）3 分 —— 三個維度各 1 分，每項須同時比較三種材料。只寫其中兩種者該項不給分。\n（b）3 分 —— 選材並逐項扣回（a）的理由（2）；缺點連可行的補救方法（1）。補救須具體，只寫「加保護塗層」不給分。\n（c）2 分 —— 三角形唯一確定形狀、構件只受軸向力（1）；矩形框架加斜撐即分割成三角形並鎖定形狀，連側向力來源（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dt_w1_04","topic":"人體工學","difficulty":"intermediate","question":"設計座椅時常用「人體測量數據」（anthropometric data）中的百分位數。\n試說明何以座位高度宜採第 5 百分位、而座位深度亦宜採較小的百分位，但座椅寬度則宜採第 95 百分位，並歸納其中的通用原則。","explanation":"本題的分數集中在通用原則，而該原則的表述方式值得留意：判準不是「取大取小」，而是「哪一個方向的錯誤無法補救」。一旦掌握此問法，任何新的尺寸都可以自行推斷 —— 門框高度屬下限（過矮會撞頭，無法補救），故取高百分位；架上物品的擺放高度屬上限（過高則矮者取不到），故取低百分位。\n最後一段關於「平均人並不存在」的觀察，是人體工學中一項著名的結論。它之所以重要，是因為以平均值設計是最直覺、亦最常見的錯誤：看似照顧了最多人，實際上兩端皆不適用，而中間亦無人完全符合。作答時能補上這一點，屬完整理解。","type":"text","referenceAnswer":"座位高度採第 5 百分位（即身材較矮者的膝窩高度）：\n若座位高度按高個子設定，矮個子坐下時雙腳無法著地，重量會壓在大腿後方，阻礙血液循環並造成不適。反之，若按矮個子設定，高個子雙腳仍可著地，只是膝部角度較大，尚可接受。\n即：高度過高者無法補救，過低者尚可容忍。\n\n座位深度亦採較小的百分位（臀部至膝窩的長度）：\n深度過大時，矮個子的膝窩會被座椅前緣頂住，或須把臀部前移而失去椅背支撐。深度較小則高個子只是大腿承托面積減少，仍可正常就坐。\n同樣是一方無法補救、另一方可以容忍。\n\n座椅寬度採第 95 百分位（臀寬）：\n寬度不足者無法就坐或被兩側扶手夾迫，屬直接的排除；而寬度充裕對身材較小者並無妨礙，最多只是空間略有餘裕。\n\n通用原則：\n選取百分位的依據並非「取平均值」，而是問【哪一個方向的錯誤無法由使用者自行補救】。\n凡屬「上限」性質的尺寸 —— 即過大就會把一部分人排除在外者（座位高度、深度、控制器的可及距離）—— 應按身材較小者設定，取低百分位。\n凡屬「下限」性質的尺寸 —— 即過小就會把一部分人排除在外者（座椅寬度、通道闊度、頭部空間）—— 應按身材較大者設定，取高百分位。\n\n須特別指出：按平均值（第 50 百分位）設計，結果是兩端的人皆不適用 —— 而由於人體各項尺寸之間的相關性並不完全，實際上幾乎沒有人的每一項尺寸都恰好落在第 50 百分位。所謂「為平均人設計」，等於為一個並不存在的人設計。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dt_w1_05","topic":"可持續設計","difficulty":"hard","question":"某品牌推出一款以回收塑膠製造的水樽，並以「環保」作為主要賣點。\n（a）說明「產品生命週期評估」（life cycle assessment）涵蓋哪些階段，並指出只看材料來源會遺漏什麼。\n（b）該水樽由多種材料組成（樽身塑膠、矽膠密封圈、金屬蓋、印刷標籤）。試說明此設計在【壽命終結】階段會產生什麼問題，並提出兩項改良方向。\n（c）有評論指出：「若消費者因為它環保而多買一個並不需要的水樽，此產品的環境效益即為負數。」試評論此說法。\n（d）就（c）所指出的問題，說明設計者可以如何回應，並指出設計本身能力的界限。","explanation":"（a）最後一段是本題的樞紐：使用期是攤分基數，其影響覆蓋全部階段。掌握這一點之後，（b）與（d）的改良方向便自然指向同一處 —— 延長使用期的效益，遠大於改換材料。\n（b）那個反諷值得記住：以回收料製成，卻因自身構造而無法再被回收。此類「材料進入循環一次即被鎖死」的情況在實際產品中相當普遍，而它正是可回收設計（design for disassembly）存在的理由。\n（c）的評論須避免兩個極端：全盤接受會導向「任何改善皆無意義」，全盤否定則忽略了真實存在的抵銷效應。答案採取的做法是承認機制、補上比較基準（替代抑或新增）、再指出極端化的後果，此為評論類題目的穩健結構。\n（d）末段關於界限的討論，是本題最高一檔的內容。它要求考生分清「設計能做什麼」與「什麼須由系統完成」，而不把兩者混為一談 —— 既不誇大設計的作用，亦不以此推卸設計的責任。","type":"long","referenceAnswer":"（a）產品生命週期評估涵蓋的階段：\n原料開採與製備 —— 取得原材料所需的採掘、運輸與加工，回收料在此階段的負擔較原生料為低，但並非零。\n製造 —— 成型、組裝、表面處理所耗的能源與產生的廢料。\n運輸與分銷 —— 由工廠至倉庫至零售點的運輸，包裝亦計入此階段。\n使用 —— 產品在使用期間所需的資源。對水樽而言主要是清洗用水與洗潔劑，數量看似微小，惟乘以使用年期與次數之後並不可忽略。\n壽命終結 —— 回收、堆填或焚化的處理方式與難度。\n\n只看材料來源會遺漏什麼：\n遺漏了其餘四個階段的全部負擔。一個以回收塑膠製造的水樽，若製造工序耗能較高、由海外長途運送、使用期短而壽命終結時無法回收，其整體環境負擔可能高於一個以原生材料製造但耐用十年的水樽。\n更根本的遺漏是【使用期長度】。對耐用品而言，環境效益的最大變數往往並非材料，而是它被使用多久 —— 一件用三十次的產品，其每次使用所攤分的環境成本，是用三百次者的十倍。材料來源只影響第一階段，而使用期長度影響全部階段的攤分基數。\n\n（b）壽命終結階段的問題：\n多種材料結合而難以分離，令回收在實務上無法進行。回收處理須按材料分類，而塑膠、矽膠、金屬與印刷油墨各有不同的處理流程；若使用者無法徒手拆解，回收商亦不會為單件產品逐一拆件（人手成本遠高於回收料的價值），結果是整件產品被歸入不可回收，送往堆填或焚化。\n此處存在一個反諷：產品以回收料製成，卻因為其自身的構造而無法再被回收 —— 材料進入了循環一次，然後被鎖死在終點。\n\n兩項改良方向：\n其一，減少材料種類並使其可分離。以同類塑膠取代矽膠密封圈（或採用可拆卸的設計，令密封圈可徒手取出）；樽蓋改用與樽身相同的塑膠而非金屬；標籤改為直接模內壓印或雷射蝕刻，取消印刷油墨與黏合劑。原則是：能用一種材料完成的，不用兩種；必須用兩種的，令其可以徒手分離。\n其二，設計可更換的零件並延長使用期。密封圈是最先老化的部件，若設計成可單獨購買更換，使用者便毋須因一個小零件而棄置整個水樽。此舉直接延長使用期，而按（a）所述，使用期是攤分基數，其效果覆蓋全部階段。\n\n（c）評論：\n此說法所指出的機制真實存在，而其推論方向正確，惟表述稍嫌絕對。\n\n成立之處：任何產品的製造皆有環境負擔，而「較環保的產品」所節省的，只是相對於同類產品的差額。若該產品的出現導致了一次本來不會發生的購買，則整件產品的全部負擔皆屬淨增加，並無任何差額可資抵銷。此時較環保的材料只是令一件不必要的產品負擔略低，而非令它變成正面。\n此一現象在環境經濟學中有其名稱：當效率提升或道德標籤降低了消費的心理成本，實際消費量反而上升，部分甚至全部抵銷了原有的節省。\n\n須補充之處：\n其一，「負數」須有比較基準。若該消費者本來會購買一個不環保的水樽，而改為購買此款，則屬替代而非新增，效益為正。判斷的關鍵在於這次購買是【替代】抑或【額外】，而這無法由產品本身決定。\n其二，此說法若推到極端，會導向「任何產品都不應改善」的結論，而這顯然不對。合理的表述並非否定改善材料的價值，而是指出：材料改善的效益，可以被消費行為的改變所抵銷，故不能只計前者而不計後者。\n\n（d）設計者可以如何回應：\n其一，把設計目標由「較環保的產品」轉為「延長使用期的產品」。耐用、可維修、可更換零件、外觀不易過時 —— 這些特性減少的是購買次數本身，而非單次購買的負擔。\n其二，避免以環保作為促銷手段。若行銷訊息暗示「買這個就是為環境出力」，本身即在製造（c）所述的效果。較誠實的表述是說明產品的實際特性與限制，把判斷交還消費者。\n其三，提供延長使用期的配套 —— 維修服務、零件供應、回收計劃，令「繼續用」比「換新」更方便。\n\n設計本身能力的界限：\n設計可以決定一件產品能用多久、能否修理、能否回收，但無法決定它會被買多少次、會否被閒置、會否因款式更替而被淘汰。這些取決於消費文化、行銷、價格與社會習慣，而其中大部分不在設計者的控制之內。\n因此，把「是否環保」全數繫於產品設計，本身即是一種歸因錯誤。設計能夠做的是把上限提高 —— 令一件產品有可能被用很久、有可能被回收；至於這些可能是否兌現，須由使用方式、回收系統與消費決定共同完成。認清這條界限，並非推卸責任，而是避免以產品層面的改善去掩蓋系統層面的問題。","markingScheme":"（a）3 分 —— 五個階段齊備（2）；指出遺漏其餘階段，並能點出使用期為攤分基數（1）。只答「還要看製造與運輸」給 2 分。\n（b）3 分 —— 說明多材料難分離令回收在實務上不可行，須觸及回收商的人手成本（1）；兩項改良各 1 分，須分別針對可分離性與使用期。\n（c）2 分 —— 承認抵銷機制成立（1）；補上比較基準（替代抑或新增），或指出推到極端的後果（1）。全盤同意或全盤否定者最多 1 分。\n（d）2 分 —— 至少兩項設計回應，須指向延長使用期而非改換材料（1）；說明設計能力的界限，須分清產品層面與系統層面（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":18,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "design-tech";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "design-tech-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "design-tech-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

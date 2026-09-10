@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chemistry · chemistry-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chemistry</span></h1>
+<div class="sub">來源 chemistry-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"ch_w1_01","topic":"化學式與式量","difficulty":"basic","question":"某有機化合物按質量計含碳 40.0%、氫 6.7%、氧 53.3%，其摩爾質量為 180 g mol⁻¹。\n試求該化合物的實驗式及分子式。（相對原子質量：H 1.0、C 12.0、O 16.0）","explanation":"本題的固定程序是「百分比視作質量、質量除以相對原子質量、再除以最小值」。最常見的失分並非算術，而是把百分比直接當成比例（寫成 40 : 6.7 : 53.3），跳過了除以相對原子質量這一步 —— 質量比並不等於原子數目比。求分子式時必須以摩爾質量除以實驗式的式量，得出的倍數再乘回每一個下標；直接把 180 拆成元素質量是另一條走不通的路。","type":"text","referenceAnswer":"以 100 g 樣本計算各元素的摩爾數：\nC：40.0 ÷ 12.0 = 3.33 mol\nH：6.7 ÷ 1.0 = 6.7 mol\nO：53.3 ÷ 16.0 = 3.33 mol\n各項除以最小值 3.33，得 C : H : O = 1 : 2 : 1。\n實驗式為 CH₂O，其式量 = 12.0 + 2.0 + 16.0 = 30.0。\n180 ÷ 30.0 = 6，故分子式為 C₆H₁₂O₆。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w1_02","topic":"化學計量","difficulty":"intermediate","question":"把 4.0 g 氫氧化鈉固體加入 50.0 cm³、濃度為 1.5 mol dm⁻³ 的稀硫酸中，讓其充分反應。\n（a）寫出反應的化學方程式。\n（b）分別計算兩種反應物的摩爾數，並指出何者為限量反應物，說明判斷依據。\n（c）計算反應所生成的硫酸鈉質量。\n（相對原子質量：H 1.0、O 16.0、Na 23.0、S 32.1）","explanation":"判斷限量反應物不能只比較兩者的摩爾數大小，必須先經過方程式的係數 —— 此題硫酸的摩爾數較少，但因為每一摩爾硫酸需要兩摩爾氫氧化鈉，結果反而是氫氧化鈉不足。正確做法是問「若某一方完全反應，另一方需要多少」，再與實際擁有量比較。（c）部分必須以限量反應物入手：用過量的硫酸去計算產物，會得出偏高的答案，而且這個答案表面上完全合理，不會有任何異常，所以（b）一旦判斷錯誤，（c）亦無法自我察覺。","type":"long","referenceAnswer":"（a）2NaOH + H₂SO₄ → Na₂SO₄ + 2H₂O\n（b）NaOH 的摩爾質量 = 23.0 + 16.0 + 1.0 = 40.0 g mol⁻¹\nn(NaOH) = 4.0 ÷ 40.0 = 0.10 mol\nn(H₂SO₄) = 1.5 × (50.0 ÷ 1000) = 0.075 mol\n按方程式，0.075 mol 硫酸需要 0.15 mol 氫氧化鈉才能完全反應，而現有只有 0.10 mol，故氫氧化鈉為限量反應物。\n（c）按 2 : 1 的比例，n(Na₂SO₄) = 0.10 ÷ 2 = 0.050 mol\nNa₂SO₄ 的摩爾質量 = (23.0 × 2) + 32.1 + (16.0 × 4) = 142.1 g mol⁻¹\n質量 = 0.050 × 142.1 = 7.1 g","markingScheme":"（a）2 分 —— 產物正確（1）；配平正確，特別是 NaOH 前的係數 2（1）。\n（b）3 分 —— 兩個摩爾數各 1 分；經方程式係數比較後正確指出限量反應物並說明依據（1）。只寫「NaOH 較少」而未經係數比較不給分。\n（c）3 分 —— 由限量反應物按 2 : 1 求得 0.050 mol（1）；Na₂SO₄ 摩爾質量 142.1（1）；7.1 g 連單位（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w1_03","topic":"酸鹼","difficulty":"intermediate","question":"以 0.100 mol dm⁻³ 的鹽酸滴定 25.0 cm³ 氫氧化鈉溶液，三次滴定的平均體積為 22.5 cm³。\n（a）寫出反應方程式，並計算該氫氧化鈉溶液的濃度。\n（b）此滴定可選用甲基橙或酚酞作指示劑。試從等當點的 pH 值解釋原因。\n（c）若移液管在量取氫氧化鈉溶液之前只以蒸餾水潤洗，而未以該氫氧化鈉溶液潤洗，所得的濃度會較真實值偏高還是偏低？試說明。","explanation":"（b）不是背誦指示劑名稱的題目，而是問「為何這一組酸鹼可以兩者皆用」。得分關鍵在於指出等當點附近 pH 有一段陡變，而兩個指示劑的變色範圍都落在其中；若換成弱酸強鹼，答案便會不同。（c）是實驗誤差題，判斷方向的方法與物理科相同：先問這個失誤令哪一個量偏離，再由公式的結構推出結果的方向。留意「潤洗」的規則並非一律要用待測溶液 —— 錐形瓶只可用蒸餾水潤洗，移液管與滴定管則必須用其所盛的溶液潤洗，兩者方向相反，混淆即出錯。","type":"long","referenceAnswer":"（a）HCl + NaOH → NaCl + H₂O\nn(HCl) = 0.100 × (22.5 ÷ 1000) = 2.25 × 10⁻³ mol\n按 1 : 1 的比例，n(NaOH) = 2.25 × 10⁻³ mol\nc(NaOH) = 2.25 × 10⁻³ ÷ (25.0 ÷ 1000) = 0.0900 mol dm⁻³\n（b）強酸與強鹼中和，等當點的 pH 值為 7，而 pH 在等當點附近有一段極陡的變化（約由 pH 3 升至 pH 11）。甲基橙（約 pH 3.1 至 4.4）與酚酞（約 pH 8.3 至 10.0）的變色範圍都落在這一段陡變之內，故兩者均適用。\n（c）偏低。移液管內殘留的蒸餾水會稀釋所量取的氫氧化鈉溶液，令實際轉移的氫氧化鈉摩爾數少於應有之數，所需鹽酸體積因而偏小；由 c = n ÷ V 計算，n 被低估，所得濃度亦偏低。","markingScheme":"（a）3 分 —— 方程式（1）；n(HCl) = 2.25 × 10⁻³ mol（1）；0.0900 mol dm⁻³ 連單位（1）。\n（b）3 分 —— 指出等當點 pH = 7（1）；指出等當點附近 pH 陡變（1）；說明兩個指示劑的變色範圍均在該範圍之內（1）。只寫「因為是強酸強鹼」不給分。\n（c）2 分 —— 判斷「偏低」（1）；由稀釋推到摩爾數被低估、再推到濃度（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w1_04","topic":"有機化學","difficulty":"intermediate","question":"分子式為 C₄H₁₀O 而屬於醇類的結構異構物共有多少個？\n試寫出其中兩個的系統命名，並指出哪一個屬於第三級（三級）醇，說明判斷依據。","explanation":"數異構物必須有系統，否則不是漏數就是重覆。可行的做法是先定碳骨架（直鏈丁基與支鏈的 2-甲基丙基兩種），再把羥基逐個位置放上去，最後剔除因對稱而重覆的結構。留意本題只問醇類 —— C₄H₁₀O 同時包括醚類（例如乙氧基乙烷），把它們一併數入是常見的失分。分級的判準是羥基所在碳原子的取代情況，而不是分子中碳原子的總數，亦不是羥基在鏈上的編號。","type":"text","referenceAnswer":"共有 4 個：\n丁-1-醇（butan-1-ol）、丁-2-醇（butan-2-ol）、2-甲基丙-1-醇（2-methylpropan-1-ol）、2-甲基丙-2-醇（2-methylpropan-2-ol）。\n其中 2-甲基丙-2-醇屬於第三級醇。\n判斷依據：看與羥基（−OH）相連的那一個碳原子，另外連接了多少個碳原子。連接一個為第一級，兩個為第二級，三個為第三級。2-甲基丙-2-醇中該碳原子連接了三個甲基，故屬第三級。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w1_05","topic":"氧化還原","difficulty":"hard","question":"在酸性條件下，高錳酸鉀溶液可把亞鐵離子氧化為鐵離子，自身還原為錳離子。\n（a）分別寫出 MnO₄⁻ 及 Fe²⁺ 的半反應方程式（須包含電子）。\n（b）由（a）寫出整體的離子方程式。\n（c）以 0.0200 mol dm⁻³ 的高錳酸鉀溶液滴定 25.0 cm³ 的亞鐵離子溶液，達終點時用去 20.0 cm³。計算該亞鐵離子溶液的濃度。\n（d）此滴定必須以稀硫酸而非稀鹽酸提供酸性環境。試解釋原因，並說明若誤用稀鹽酸，所得的亞鐵離子濃度會偏高還是偏低。","explanation":"本題把三件事串在一起：半反應的配平、摩爾比的來源，以及試劑選擇的理由。配平 MnO₄⁻ 的半反應有固定次序：先平衡錳，再以水平衡氧，然後以氫離子平衡氫，最後以電子平衡電荷 —— 略過任何一步，電荷都不會相等。（c）的 1 : 5 並非題目給出的數字，而是由（b）的方程式讀出，這正是（a）與（b）必須先做的原因；若直接假設 1 : 1，答案會小五倍而全題無從察覺。（d）要求答出一條完整的因果鏈：氯離子被氧化，額外消耗滴定劑，體積偏大，摩爾數被高估，濃度偏高。只答「因為鹽酸會反應」不足以取得方向分。","type":"long","referenceAnswer":"（a）還原半反應：MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O\n氧化半反應：Fe²⁺ → Fe³⁺ + e⁻\n（b）把氧化半反應乘以 5 再相加，電子相消：\nMnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺\n（c）n(MnO₄⁻) = 0.0200 × (20.0 ÷ 1000) = 4.00 × 10⁻⁴ mol\n按 1 : 5 的比例，n(Fe²⁺) = 5 × 4.00 × 10⁻⁴ = 2.00 × 10⁻³ mol\nc(Fe²⁺) = 2.00 × 10⁻³ ÷ (25.0 ÷ 1000) = 0.0800 mol dm⁻³\n（d）稀鹽酸中的氯離子本身亦會被高錳酸鉀氧化（放出氯氣），因而額外消耗高錳酸鉀。滴定所用的體積會大於單獨氧化亞鐵離子所需之數，令計算所得的亞鐵離子摩爾數被高估，故濃度偏高。稀硫酸中的硫酸根離子在此條件下不被氧化，只提供氫離子，故適用。","markingScheme":"（a）3 分 —— MnO₄⁻ 半反應完全配平，含 8H⁺、5e⁻、4H₂O（2）；Fe²⁺ 半反應（1）。\n（b）2 分 —— 氧化半反應乘以 5（1）；整體方程式配平、電子已相消（1）。\n（c）3 分 —— n(MnO₄⁻)（1）；由方程式讀出 1 : 5 並應用（1）；0.0800 mol dm⁻³ 連單位（1）。\n（d）2 分 —— 指出氯離子被氧化並額外消耗高錳酸鉀（1）；由此推出濃度偏高的完整方向（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chemistry";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "chemistry-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chemistry-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

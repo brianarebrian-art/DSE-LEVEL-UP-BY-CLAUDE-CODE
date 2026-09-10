@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · csd · csd-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">csd</span></h1>
+<div class="sub">來源 csd-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"cs_w1_01","topic":"可持續發展與公共衞生","difficulty":"basic","question":"試說明「可持續發展」的三個面向，並就香港的都市固體廢物問題，各舉一項相應的考慮。","explanation":"本題的評分不只看能否列出三個面向的名稱，更看每一個面向是否配上與固體廢物直接相關的具體考慮。答「要保護環境」屬空泛，答「堆填區容量有限」才落到實處。另一個容易忽略的要求是最後一句：三個面向須同時兼顧，而非各自獨立。公民科的評卷相當重視能否指出面向之間的張力 —— 環境上最理想的做法，未必在經濟或社會上可行，而政策正是在這些張力之間取捨。作答時把張力寫出來，比逐項羅列更能反映理解。","type":"text","referenceAnswer":"可持續發展的三個面向及相應考慮：\n環境面向 —— 發展須顧及自然環境的承載能力。就固體廢物而言，堆填區容量有限，而廢物滲濾液與堆填氣體會影響鄰近的土地與空氣質素，故須考慮減少堆填的總量。\n經濟面向 —— 措施須在資源運用上可行並具效益。回收再造需要收集、分類與處理的設施及人力，若回收物料的市場價格偏低，整條產業鏈難以自負盈虧，故須考慮如何令回收在經濟上得以持續。\n社會面向 —— 措施須顧及市民的接受程度與公平。垃圾徵費會令基層家庭的負擔按比例較重，而處理設施的選址往往引起鄰近居民反對，故須考慮成本分擔的公平性與社區溝通。\n三者須同時兼顧：只顧環境而忽略經濟可行性，措施難以持續推行；只顧經濟而忽略社會接受程度，政策容易在落實階段受阻。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cs_w1_02","topic":"資料回應・數據詮釋","difficulty":"intermediate","question":"參考以下資料，回答問題。\n\n資料一（某地區調查，受訪 15 至 24 歲青年共 1 200 人）\n- 表示「有意在未來五年到大灣區內地城市工作或創業」：31%\n- 表示「未有考慮」：44%\n- 表示「不會考慮」：25%\n- 在表示「有意」的一群之中，最常提及的原因為「發展機會較多」（62%）及「生活成本較低」（48%）\n\n資料二（一名受訪青年的說法）\n「我不是不想去，是不知道去了之後如何回來。專業資格互認、社會保障、子女教育——這些都不是一次講座可以解答的問題。」\n\n（a）根據資料一，描述受訪青年對北上發展的取態，並指出一項該調查未能顯示的資訊。\n（b）資料二所反映的顧慮，屬於哪一類障礙？試以資料一的數字說明兩者之間的關係。\n（c）若你是政策制定者，就上述資料，提出兩項有助降低該類障礙的措施，並各說明其針對性。","explanation":"（a）的第二部分是資料回應題的常設要求：指出資料【未能】顯示什麼。良好的答案不是隨口說「資料不足」，而是具體指出缺了哪一項會影響詮釋的資訊 —— 例如樣本的背景分佈，因為若受訪者集中於某一類群體，31% 這個數字便不能代表全體青年。\n（b）是本題的關鍵：必須把資料二的個人說法連回資料一的數字，而連接點就是「未有考慮」與「不會考慮」的分別。這兩個選項在日常語言中相近，在政策分析上卻完全不同 —— 前者是尚未評估，後者是評估後拒絕。能夠指出這一點，即已回答了題目要求的「兩者之間的關係」。\n（c）的措施必須針對制度性障礙。提出「加強宣傳」或「舉辦更多交流團」是最常見的失分，因為資料二明言「這些都不是一次講座可以解答的問題」—— 題目已經預先排除了這一類答案。","type":"long","referenceAnswer":"（a）取態描述：明確表示有意北上的佔 31%，明確表示不會考慮的佔 25%，兩者相差不大；而人數最多的一群是「未有考慮」的 44%。即受訪青年之中，態度未定者多於任何一方的既定立場。\n在有意北上的一群之中，所持理由以「發展機會較多」（62%）居首，「生活成本較低」（48%）次之，顯示推動力主要來自對前景的判斷而非單純的成本考慮。\n該調查未能顯示的資訊（任舉一項）：受訪者的教育程度、行業或家庭背景如何分佈，故無法得知不同群體之間的取態是否有明顯差異；亦未顯示「未有考慮」的一群究竟是因為資訊不足、抑或已有其他計劃。\n（b）資料二所反映的屬制度性障礙 —— 專業資格互認、社會保障銜接、子女教育安排，均非個人意願所能解決，而是兩地制度尚未完全接軌所致。\n與資料一的關係：資料一顯示最大的一群（44%）是「未有考慮」而非「不會考慮」，即他們並未拒絕，只是未進入認真評估的階段。資料二正好說明其中一個可能原因 —— 當退出的路徑不明確時，青年不會把它當成一個可以認真規劃的選項。換言之，這 44% 之中有相當部分可能並非缺乏意願，而是缺乏可據以判斷的制度資訊。\n（c）措施一：擴大專業資格互認的範圍，並設立單一查詢平台，列明各行業資格在兩地之間的承認狀況與轉換程序。\n針對性：直接處理資料二所指「不知道去了之後如何回來」之中的資格問題，令青年在決定之前即可掌握確定的資訊，把不確定性轉化為可評估的條件。\n措施二：建立社會保障與強積金的跨境銜接安排，並就在內地就業期間的供款與提取訂明規則。\n針對性：社會保障的斷層是長期性的顧慮，一次性的宣傳活動無法解決；訂明規則等於降低了「若將來回來便一無所有」的風險，令北上不再是一個不可逆的決定。\n（其他可接受的措施包括：為隨遷子女提供學位安排的清晰指引；設立過渡期支援，讓青年可先短期試行再作長期決定。）","markingScheme":"（a）3 分 —— 準確描述三個比例並指出「未有考慮」為最大一群（1）；引用有意北上者的兩項理由並作出詮釋（1）；具體指出一項調查未能顯示的資訊（1）。答「資料不足」而無具體所指不給分。\n（b）4 分 —— 正確辨認為制度性障礙（1）；舉出資料二中至少兩項具體事例（1）；引用 44% 這個數字（1）；說明「未有考慮」與「不會考慮」的分別，並連回資料二所指的不確定性（1）。\n（c）3 分 —— 兩項措施各 1 分，須針對制度層面；另 1 分予針對性的說明是否確實回應資料二所提出的顧慮。純宣傳或交流活動類措施不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":18,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cs_w1_03","topic":"香港社會與參與","difficulty":"intermediate","question":"香港人口老化持續，65 歲及以上人口的比例預期在未來二十年顯著上升。\n（a）指出人口老化對香港【勞動市場】及【公共財政】各帶來一項挑戰，並說明其機制。\n（b）政府考慮推行三項措施：延長法定退休年齡、擴大輸入外地勞工、加強推動自動化。試各指出一項優點與一項限制。\n（c）就上述三項措施，指出兩個受影響程度不同的持份者群體，並說明同一項措施何以在不同群體之間產生不同效果。","explanation":"（a）要求的是機制而非現象。「勞動人口減少」是現象，「退出者多於加入者，供應下降，人手短缺推高工資成本」才是機制。公共財政一項的關鍵在於指出開支與收入【同時】向不利方向移動 —— 只答其中一面，等於漏掉了問題的一半。\n（c）是本題最能拉開差距的部分，亦是公民科評卷最重視的能力：同一項政策落在不同人身上，效果並不相同。作答時應先明確界定兩個群體（界定得愈具體愈好），再選一項措施逐一分析，最後歸納出「政策劃一而處境不一」這個原則。泛泛地說「有人得益有人受損」而不指明是誰、為何，不會取得高分。","type":"long","referenceAnswer":"（a）勞動市場的挑戰：勞動人口萎縮。隨着人口老化，退出勞動市場的人數多於加入者，勞動力供應下降。在需求不變的情況下，人手短缺會推高工資成本，而部分依賴人手的行業（護理、飲食、建造）會首當其衝，可能出現有職位而無人應徵的情況。\n公共財政的挑戰：開支與收入同時向不利方向移動。醫療與長者服務的需求隨長者人口上升而增加，屬經常性開支；同時，處於納稅年齡的人口比例下降，薪俸稅稅基收窄。開支上升而收入基礎收窄，兩者疊加，令財政壓力大於任何單一因素所致。\n（b）延長法定退休年齡\n優點：直接增加勞動人口，同時延後領取退休保障的時間，對勞動市場與公共財政兩方面同時有利。\n限制：並非所有工作都適合較年長的僱員，體力要求高的行業難以照樣延長；亦可能減慢年輕僱員的晉升機會。\n擴大輸入外地勞工\n優點：見效較快，可即時填補特定行業的人手短缺，毋須等待本地勞動人口結構改變。\n限制：本地工人憂慮工資受壓與就業機會減少；輸入勞工亦帶來住屋、社會服務等配套需求，屬人口政策而非單純的勞工政策。\n加強推動自動化\n優點：提高人均生產力，令產出不必依賴勞動人口的數量增長，屬長期而根本的方向。\n限制：初期投資成本高，中小企未必負擔得起；部分工序（尤其貼身照顧與人際服務）難以自動化；轉型期間亦須為受影響的工人提供再培訓。\n（c）兩個受影響程度不同的群體（舉例）：\n群體一 —— 從事體力勞動的中年基層工人。\n群體二 —— 從事文書或專業工作的僱員。\n以「延長法定退休年齡」為例：對第二類僱員而言，延長年期意味多數年收入與更長的職業生涯，影響大致正面；對第一類工人而言，體力隨年齡下降，延長退休年齡可能等於在身體條件轉差的情況下仍須繼續工作，而其工種未必有較輕鬆的崗位可供調配。\n同一項措施產生不同效果的原因在於：措施本身是劃一的，而不同群體的工作性質、身體條件、議價能力與可選擇的替代出路並不相同。故評估任何一項人口或勞工政策，不能只看整體數字，須同時問「這項措施落在誰身上」。","markingScheme":"（a）4 分 —— 勞動市場的挑戰連機制（2）；公共財政的挑戰連機制（2）。公共財政一項須同時提及開支上升與稅基收窄，只答一面給 1 分。\n（b）3 分 —— 三項措施各 1 分，每項須有優點及限制各一；只有其中一項者不給該分。\n（c）2 分 —— 明確界定兩個群體（1）；以同一項措施說明效果差異，並歸納出處境不同的原則（1）。泛泛而談不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cs_w1_04","topic":"經濟全球化","difficulty":"intermediate","question":"試指出經濟全球化為發展中國家帶來的一項機遇及一項風險，並說明何以同一個現象可以同時產生兩種效果。","explanation":"本題的最後一問是評分重點，亦是公民科常見的思維訓練：不要把一個現象簡單分類為「好」或「壞」。機遇與風險同源於「連結加深」這一件事，能夠指出兩者的共同來源，比分別羅列優缺點高一個層次。作答時值得補上一句：結果取決於該國自身的條件與政策，因為這一句把分析由「全球化是好是壞」轉為「在什麼條件下產生什麼結果」，正是評卷所期望的層次。舉例時宜具體 —— 提及單一產業依賴、技術轉移、外部需求波動等，比泛稱「經濟受影響」有力得多。","type":"text","referenceAnswer":"機遇：參與國際分工，令本地產業得以接入全球生產鏈。跨國企業設廠帶來就業機會、資金與技術轉移，出口市場亦由本地擴展至全球，為經濟增長提供動力。\n風險：對外部需求與外來投資的依賴加深。當某一產業成為經濟的主要支柱，一旦外部需求下跌、或跨國企業把生產轉移至成本更低的地方，該國缺乏緩衝，就業與收入會即時受到衝擊。\n何以同一現象產生兩種效果：機遇與風險其實是同一件事的兩面 —— 兩者都源於「與外部市場的連結加深」。連結帶來機會，同時亦帶來傳導：外部的順境會傳入，逆境同樣會傳入。決定最終結果的並非全球化本身，而是該國有否分散產業結構、有否提升本地的技術能力，以及有否建立應對衝擊的社會保障。\n換言之，全球化改變的是機會與風險的規模，而非哪一方必然佔上風。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"cs_w1_05","topic":"多角度評鑑・持份者權衡","difficulty":"hard","question":"某城市計劃在市中心一幅空地上興建一座公共文化及體育綜合設施。該地皮亦可用作興建資助房屋。政府就兩個方案諮詢公眾。\n（a）指出四個主要持份者，並各說明其最關注的一項考慮。\n（b）就「應優先興建資助房屋」這一立場，提出兩個支持的理由及兩個反對的理由。\n（c）在資料不足的情況下，你認為決策者還需要哪三項資訊才能作出較可靠的判斷？各說明其重要性。\n（d）有意見認為「公眾諮詢既然收到相反意見，即代表方案有問題，應該擱置」。試評論此推論。","explanation":"（c）是本題最能顯示分析能力的部分，因為它要求指出【尚未知道什麼】，而不是就已知資料作判斷。關於「是否存在其他地皮」那一項尤其值得留意：題目把情況設定為二選一，而良好的答案會質疑這個前提本身。凡遇「兩個方案該選哪一個」的題型，先問一句「是否真的只有兩個選項」，往往能開出比正反對辯更高一層的分析。\n（d）針對的是一種常見而錯誤的推論方式：把「有反對意見」當成「方案有問題」的證據。要拆解它，最有效的方法是把該推論推到極端 —— 若成立，則任何涉及取捨的方案都不能推行，而這個結論明顯不合理，故前提有誤。作答時應同時指出正確的判斷標準：看反對意見所提出的理由是否成立，而非看意見是否分歧。","type":"long","referenceAnswer":"（a）四個持份者及其最關注的考慮：\n輪候資助房屋的家庭 —— 最關注輪候時間能否縮短，即該地皮能提供多少個單位、何時落成。\n鄰近社區居民 —— 最關注設施落成後對日常生活的影響，包括交通流量、噪音、以及社區原有設施是否足夠應付新增人口。\n文化及體育團體與其使用者 —— 最關注全市的文化體育設施是否足夠，以及現有場地是否長期供不應求。\n政府（財政與規劃部門）—— 最關注土地資源的整體運用效率、兩個方案的建造與長期營運成本，以及與整體規劃的協調。\n（b）支持「應優先興建資助房屋」的理由：\n其一，住屋屬基本需要，其迫切性高於文化及體育設施。輪候冊上的家庭面對的是即時的居住困難，而文化體育需求雖然真實，其未獲滿足的後果並不同級。\n其二，市中心地皮的可替代性較低。資助房屋須靠近就業與交通樞紐才能發揮作用，而文化及體育設施相對而言在選址上有較大彈性，可考慮市區邊緣或改造現有建築。\n反對的理由：\n其一，只以迫切性排序會令非迫切但重要的需求長期被推後。文化及體育設施關乎市民的身心健康與社區凝聚，若每次都讓路，最終會出現整代人缺乏公共活動空間的情況。\n其二，單一地皮所能提供的單位數目，相對於輪候需求可能只屬杯水車薪，未必能實質縮短輪候時間；若如此，以「解決住屋問題」為由而放棄唯一適合的文化體育用地，代價與效益並不相稱。\n（c）決策者還需要的三項資訊：\n其一，該地皮在兩個方案下的實際容量 —— 可興建多少個住宅單位，或可提供多少設施及使用量。沒有這個數字，「優先」的討論停留在原則層面，無從比較實際貢獻。\n重要性：直接決定（b）第二個反對理由是否成立。\n其二，全市文化及體育設施的現有供求數據，以及該區居民的使用距離。\n重要性：若鄰近已有同類設施，本方案的邊際效益便低；若該區長期缺乏，情況相反。\n其三，是否存在其他可用地皮，以及其時間表。\n重要性：本題被設定為二選一，但這個前提本身須要驗證。若另有地皮可在合理年期內提供其中一項用途，則兩者未必互相排斥，決策的性質便由「取捨」變成「排序」。\n（d）此推論不成立。公眾諮詢的目的本來就是收集不同立場的意見，而不同持份者的利益與優次本來就不一致 —— 收到相反意見是諮詢正常運作的結果，不是方案有問題的證據。\n若按此推論行事，任何涉及資源分配的方案都不可能推行，因為資源有限，總有一方認為自己的需要被排在後面。\n合理的做法是：檢視反對意見所提出的具體理由是否成立，是否指出了方案本身的缺陷（例如低估了交通負荷、高估了使用率），並就有理據的部分修訂方案。換言之，應評估意見的內容，而非以意見的分歧程度作為判斷標準。","markingScheme":"（a）4 分 —— 四個持份者各 1 分，每項須連同一項具體而合理的關注；只列名稱不給分。\n（b）2 分 —— 支持與反對各須兩個理由，四項齊備給 2 分，缺一給 1 分。\n（c）3 分 —— 三項資訊各 1 分，每項須連同重要性的說明。能質疑「二選一」這個前提者，該項屬完整作答。\n（d）1 分 —— 指出諮詢收到相反意見屬正常，並提出應評估意見內容而非分歧程度的判斷標準。只答「不同意」不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":18,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "csd";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "csd-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "csd-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

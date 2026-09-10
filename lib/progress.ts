@@ -70,8 +70,42 @@ export function loadAttempts(): AttemptRecord[] {
   }
 }
 
+/**
+ * 一條練習紀錄係咪【數學上可能】。
+ *
+ * ══ 點解要有 ══
+ * 2026-09-10 稽核 Supabase 時揾到一條紀錄：`score=10000 · total=100 · elapsed=4`
+ *（4 秒做完 100 題）。淨係嗰一條，就令全站正確率由 88.5% 變成 257.8%、
+ * math 科變成 1748%。
+ *
+ * 讀取端已經有閘（scripts/qbank/recalibrate-difficulty.mts），但過濾唔等於
+ * 唔入 —— 髒數據照樣寫入本機、照樣同步上雲、照樣散去每一部裝置，
+ * 而每一個新寫嘅分析腳本都要自己記得再過濾一次。漏一次就得一次錯數。
+ *
+ * ══ 閘刻意保守 ══
+ * 只擋【數學上不可能】嘅，唔擋【睇落可疑】嘅。擋得太狠會令數據偏向
+ * 「乖學生」，而嗰個偏差冇人察覺得到 —— 呢個比一條離群值更難處理。
+ * 例如「40 秒做完 10 題」快得可疑但完全可能（純猜、或者跳答），故此放行。
+ *
+ * ⚠️ 唔可以 throw。學生啱啱做完一節，唔應該因為一個內部一致性問題而見到
+ *    錯誤畫面或者失去成績。擋住寫入之後靜靜返轉頭，同 catch quota 一樣係
+ *    soft-fail —— 憲章 §7：唔可以有打擊自信嘅元素。
+ */
+function isPossibleAttempt(a: AttemptRecord): boolean {
+  const { score, total } = a
+  if (!Number.isFinite(score) || !Number.isFinite(total)) return false
+  if (!Number.isInteger(total) || total <= 0) return false
+  if (!Number.isInteger(score) || score < 0) return false
+  if (score > total) return false // 答啱多過總題數 —— 呢個係嗰條 10000/100
+  return true
+}
+
 export function recordAttempt(a: AttemptRecord): void {
   if (!isBrowser()) return
+  // 寫入端衛生閘。擋住之後靜靜返轉頭 —— 見 isPossibleAttempt 檔頭。
+  // ⚠️ 唔好改名做 isPlausible* —— 撞正 privacy-page.test.mts 掃緊嘅分析工具
+  //    Plausible，會令一條私隱閘紅。實際踩過。
+  if (!isPossibleAttempt(a)) return
   const all = loadAttempts()
   all.push(a)
   // Keep the store bounded (most recent 500 attempts).

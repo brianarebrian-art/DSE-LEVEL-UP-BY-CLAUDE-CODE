@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · pe · pe-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">pe</span></h1>
+<div class="sub">來源 pe-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"pe_w1_01","topic":"運動生理計算","difficulty":"basic","question":"一名十七歲學生的靜態心率為每分鐘 60 次。\n（a）以「220 減年齡」估算其最大心率。\n（b）教練建議他在最大心率 60% 至 75% 的區間內進行有氧訓練。計算該區間的心率範圍。\n（c）指出「220 減年齡」這條公式的一項限制。","explanation":"本題的計算部分不難，考點在（c）—— 能否指出一條被廣泛使用的公式其實只是估算。這一點在體育科的實務上相當重要：按公式所定的訓練區間若對某人偏高，他實際上是在無氧區間訓練，效果與預期不符而且風險上升。\n留意題目所給的靜態心率（60）在（a）與（b）之中並未用到 —— 它是一項【多餘資料】，用以測試考生會否不加判斷地把所有數字塞進公式。若採用儲備心率法（Karvonen）則須用到靜態心率，惟本題明確指出以最大心率的百分比計算，故不應混用。作答時應留意題目所指定的方法。","type":"text","referenceAnswer":"（a）最大心率 = 220 − 17 = 每分鐘 203 次。\n（b）下限 = 203 × 60% = 121.8，約每分鐘 122 次\n上限 = 203 × 75% = 152.25，約每分鐘 152 次\n訓練區間為每分鐘約 122 至 152 次。\n（c）限制（任舉一項）：\n此公式只以年齡作為變數，完全不考慮個體差異。實際上同齡者的最大心率可相差每分鐘 10 至 20 次，故按此公式所定的區間，對部分人而言偏高，對另一部分人而言偏低。\n（其他可接受的答案：公式源自統計上的平均趨勢，屬估算而非量度，準確的最大心率須經運動測試取得；公式亦未考慮訓練水平、遺傳因素或藥物影響。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w1_02","topic":"生物力學與能量系統","difficulty":"intermediate","question":"（a）說明三個能量系統（ATP-CP 系統、乳酸系統、有氧系統）在【供能時間】、【是否需要氧氣】及【副產物】三方面的分別。\n（b）就一場 400 米賽跑，說明三個系統如何依次及重疊地供能，並解釋何以 400 米被視為最艱苦的徑賽項目之一。\n（c）某跑手為改善 400 米成績，只進行長距離慢跑訓練。試評論此訓練安排。","explanation":"（b）的關鍵在於指出三個系統【同時運作而只是主次不同】。把它們寫成依次開關是最常見的概念錯誤 —— 實際上有氧系統由起跑第一步即已參與，只是初期比例極低。能寫出這一點，即與一般答案分開。\n「何以最艱苦」一問所考的是能否作出比較推理：不是問 400 米有多辛苦，而是問何以它比 100 米與 800 米更辛苦。答案須同時處理兩個方向的比較 —— 較短者乳酸來不及累積，較長者速度下降令乳酸受限。只講 400 米本身而不作比較，即未回答題目。\n（c）末段的補充是本題的分寸位。指出「問題在於只做慢跑，而非慢跑本身」，避免了把一項有用的訓練手段全盤否定 —— 評卷樂見這種區分，因為它顯示考生理解訓練計劃是配搭而非單選。","type":"long","referenceAnswer":"（a）三方面的分別：\nATP-CP 系統 —— 供能時間約 0 至 10 秒；不需要氧氣（無氧）；副產物為肌酸，不造成疲勞。其特點是輸出功率最高而持續時間最短。\n乳酸系統（無氧糖酵解）—— 供能時間約 10 秒至 2 分鐘；不需要氧氣；副產物為乳酸及氫離子，後者令肌肉酸性上升而導致疲勞與灼熱感。\n有氧系統 —— 供能時間由 2 分鐘起，可長時間持續；需要氧氣；副產物為二氧化碳與水，經呼吸與排汗排出，不造成明顯疲勞。其輸出功率最低而持續力最強。\n三者的取捨關係清晰：愈快提供能量者，持續時間愈短，且副產物愈易造成疲勞。\n\n（b）400 米賽跑的供能：\n起跑後首約 8 秒 —— 以 ATP-CP 系統為主，提供起跑加速所需的高功率輸出。\n約 8 秒至 40 秒 —— ATP-CP 儲備耗盡，乳酸系統成為主要供能來源，跑手在此階段維持接近全速。\n約 40 秒至終點 —— 乳酸大量累積，肌肉酸性上升，收縮效率下降；有氧系統的貢獻雖逐步上升，惟其輸出功率遠不足以維持該速度，故跑手速度開始下降。\n須留意三者並非依次開關，而是同時運作、只是主次不同 —— 有氧系統由起跑一刻即已參與，只是初期比例極低。\n\n何以最為艱苦：\n400 米的時間長度（約 45 至 60 秒）恰好落在乳酸系統供能能力的極限之上。距離再短（100 米、200 米），主要依賴 ATP-CP，乳酸來不及大量累積；距離再長（800 米以上），跑手須降低速度以令有氧系統承擔更大比例，乳酸的累積速率因而受限。\n唯獨 400 米：既須全程接近最高速度，時間又長至足以令乳酸大量累積而無從緩解。跑手在最後一百米所經歷的，是在肌肉嚴重酸化的狀態下仍須維持高速 —— 此為其艱苦之處。\n\n（c）評論：\n此訓練安排不恰當，理由有三。\n\n其一，訓練的專項性不符。長距離慢跑主要發展有氧系統，而 400 米的主要供能來源是乳酸系統。訓練必須針對比賽所依賴的系統 —— 此為訓練的專項性原則。以慢跑訓練 400 米，等於為一場主要考驗無氧耐力的比賽準備有氧基礎。\n\n其二，未能發展耐乳酸能力。400 米的關鍵能力之一，是在乳酸大量累積之下仍能維持動作效率與速度。此項能力只能透過在該生理狀態之下反覆訓練而獲得 —— 即高強度、持續 30 至 60 秒、伴以不完全恢復的間歇訓練。長距離慢跑的強度不足以令乳酸累積至該水平，故此能力無從發展。\n\n其三，可能對速度產生負面影響。長期只作低強度長距離訓練，會令肌纖維的徵召模式與代謝特性向耐力方向適應，最大速度與爆發力可能因而下降 —— 而 400 米同樣需要相當的絕對速度。\n\n須補充：這並不表示長距離慢跑對 400 米跑手全無價值。有氧能力有助於訓練之間的恢復，亦影響比賽後段有氧系統所能承擔的比例，故仍應佔訓練計劃的一部分。問題在於【只】做慢跑，而非做慢跑本身。合理的安排應以無氧間歇訓練為主，輔以有氧基礎訓練、速度訓練與力量訓練。","markingScheme":"（a）3 分 —— 三個系統各 1 分，須同時涵蓋供能時間、是否需氧、副產物三項。缺副產物一項者該系統只給半分計入整體。\n（b）4 分 —— 三個階段的供能主次（2）；指出三者同時運作而非依次開關（1）；何以最艱苦，須同時與較短及較長項目比較（1）。只講 400 米本身者此項不給分。\n（c）2 分 —— 指出違反訓練專項性、未能發展耐乳酸能力（1）；指出問題在於「只」做慢跑，並提出合理的訓練配搭（1）。全盤否定慢跑者此項只給半分計入整體。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w1_03","topic":"運動創傷","difficulty":"intermediate","question":"一名學生在籃球比賽中落地時扭傷足踝，患處迅速腫脹並感到疼痛。\n（a）說明急性運動創傷首 48 小時的處理原則，並解釋每一項的作用。\n（b）解釋何以在急性期不應熱敷或按摩患處。\n（c）該學生兩星期後傷勢明顯好轉，打算立即回復全面訓練。試指出此決定的風險，並說明重返運動應依循什麼原則。","explanation":"（a）不可只列 PRICE 五個字母，每項須說明作用。而更關鍵的是最後那句：五項的共同目標是控制腫脹。掌握此一目標之後，（b）便可直接推導 —— 凡增加血流的處理，在急性期皆與目標相違。此種「先確立目標、再由目標判斷措施」的思路，比逐項背誦可靠得多。\n（c）之中「本體感覺尚未恢復」這項風險是本題的高分位，亦是最少人提及的。足踝扭傷復發率極高，而主因並非肌力不足，是關節感受器受損後的位置感下降。若答案只講「韌帶未完全康復」，仍停留在結構層面而未觸及神經控制層面。\n「以功能表現而非時間為準」一句應明確寫出。學生最常見的判斷依據正是「已經過了兩星期」與「已經不痛」，而兩者皆非可靠指標。","type":"long","referenceAnswer":"（a）首 48 小時的處理原則（PRICE）：\n保護（Protection）—— 以護具、繃帶或拐杖保護患處，避免再次受力。作用是防止傷勢在組織尚未穩定之時進一步擴大。\n休息（Rest）—— 停止運動，避免以患肢負重。作用是讓受損組織有機會開始修復，而非在持續受力之下反覆撕裂。\n冰敷（Ice）—— 每次約 15 至 20 分鐘，間隔 1 至 2 小時重複。作用是令血管收縮，減少出血與滲液，同時降低神經傳導速度而減輕痛感。\n加壓（Compression）—— 以彈性繃帶包紮患處。作用是限制腫脹的空間，減少組織液積聚。\n抬高（Elevation）—— 把患處抬至高於心臟水平。作用是借助重力促進靜脈與淋巴回流，減少患處積血積液。\n五項的共同目標是【控制腫脹】—— 腫脹本身會壓迫周圍組織、延緩修復並延長康復時間，故急性期的處理核心並非止痛，而是限制腫脹的程度。\n\n（b）何以不應熱敷或按摩：\n熱敷令血管擴張，血流增加。在急性期，受損的微血管仍在滲血滲液，血流增加即等於出血與腫脹加劇，與處理目標背道而馳。\n按摩則以外力擠壓患處，可能令尚未穩定的血管再次破裂，亦可能牽動受傷的韌帶纖維而造成二次損傷。\n兩者在急性期之後（腫脹已受控、約 48 至 72 小時之後）方適用，屆時目標由「控制腫脹」轉為「促進循環與吸收積液」，熱敷與按摩才有其作用。\n可見同一項處理是否恰當，取決於處於哪一個階段 —— 判斷的依據是傷後時間與腫脹狀況，而非感覺是否舒服。\n\n（c）立即回復全面訓練的風險：\n其一，疼痛消退不等於組織已完全復原。韌帶的修復需時數星期至數月，而痛感通常在結構強度恢復之前已大幅減退。此時組織的抗拉強度仍低於受傷前，貿然承受比賽強度的扭轉與落地負荷，極易再次撕裂。\n其二，本體感覺（proprioception）尚未恢復。足踝扭傷會損害關節內的感受器，令身體對足踝位置的感知能力下降。即使肌力已恢復，若本體感覺未經訓練重建，落地時的自動調節反應會遲鈍，這正是足踝扭傷極易復發的主要原因。\n其三，復發的傷勢通常較初次為重，且更易演變成慢性不穩定，長遠影響運動能力。\n\n重返運動應依循的原則：\n第一，分階段漸進。由無痛的關節活動開始，繼而肌力訓練、本體感覺與平衡訓練，然後是直線慢跑、變速跑、變向跑，最後才是專項動作與對抗訓練。每一階段須在無痛且無腫脹的前提下完成，方可進入下一階段。\n第二，以功能表現而非時間為準。「兩星期」本身不構成復出的理由；判斷應基於能否完成該項運動所需的動作 —— 例如單腳跳、急停轉向、落地穩定性測試等，而非日曆。\n第三，重建本體感覺不可省略。平衡板、單腳站立、不穩定表面訓練等須納入康復計劃，否則肌力雖已恢復而復發風險依然偏高。","markingScheme":"（a）4 分 —— 五項處理齊備（2）；每項作用正確（1）；指出共同目標為控制腫脹（1）。只寫 PRICE 五個字母而無作用者，全項最多 2 分。\n（b）2 分 —— 熱敷令血流增加而加劇腫脹（1）；按摩可能造成二次損傷，或指出兩者在急性期後方適用（1）。\n（c）2 分 —— 至少兩項風險，須包括本體感覺未恢復方給滿分（1）；重返原則須包括分階段漸進及以功能而非時間為準（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w1_04","topic":"運動心理學","difficulty":"intermediate","question":"試以「倒 U 形假說」（inverted-U hypothesis）說明喚醒水平與運動表現之間的關係，並解釋何以射箭與舉重兩項運動的最佳喚醒水平並不相同。","explanation":"本題最常見的失分是把倒 U 形寫成「喚醒愈高表現愈好」或「愈放鬆愈好」—— 兩者皆為直線關係，而倒 U 形的要點正是【存在一個最佳點，兩側皆下降】。作答時必須明確描述兩側的下降原因，只講一側等於只答一半。\n第二部分的通則值得記住：精細與複雜者宜低，力量與簡單者宜高。掌握此通則之後，任何新的項目都可以自行推斷 —— 高爾夫推桿宜低、短跑起跑宜高、體操平衡木宜低、拳擊宜中偏高。\n末段關於同一場比賽內部差異的補充，顯示考生理解喚醒水平並非運動員的固定屬性，而是可按環節調節的狀態 —— 這正是運動心理學介入（例如呼吸調節、意象訓練、賽前程序）之所以有其空間。","type":"text","referenceAnswer":"倒 U 形假說的內容：\n運動表現與喚醒水平之間並非直線關係，而呈倒 U 形。\n喚醒水平過低時，運動員注意力渙散、肌肉徵召不足、反應遲緩，表現欠佳。\n隨着喚醒水平上升，注意力集中、肌肉徵召增加、反應加快，表現隨之改善，至某一水平達到最佳。\n若喚醒水平繼續上升越過該點，表現反而下降 —— 因為過度喚醒會令肌肉過分緊張、注意範圍過度收窄（忽略了周邊的重要訊息）、判斷力下降，並可能出現動作變形。\n\n何以兩項運動的最佳喚醒水平不同：\n關鍵在於該項目對【精細控制】與【最大力量輸出】的相對要求。\n\n射箭屬精細控制型項目。動作幅度小、依賴穩定的持弓與細微的瞄準調整，並須控制呼吸與心跳。過高的喚醒會令手部顫抖、心跳加快而影響穩定，故其最佳喚醒水平【偏低】。\n\n舉重屬最大力量輸出型項目。動作簡單、時間極短、幾乎不涉精細調節，而需要在一瞬之間徵召最大量的運動單位。較高的喚醒有助腎上腺素分泌、提升肌肉徵召與心理動員，故其最佳喚醒水平【偏高】。\n\n通則：項目所要求的技巧愈精細、動作愈複雜，最佳喚醒水平愈低；所要求的力量與爆發愈大、動作愈簡單，最佳喚醒水平愈高。\n此一規律亦解釋了同一場比賽之中不同環節的差異 —— 例如足球員射門前的定位球需要較低的喚醒，而爭頂與衝刺則需要較高。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w1_05","topic":"運動與社會","difficulty":"hard","question":"香港學童的體能活動量長期低於世界衞生組織的建議水平。\n（a）指出三項導致此情況的社會或環境因素，並說明其機制。\n（b）解釋何以「鼓勵學生多做運動」的宣傳難以有效改善此情況。\n（c）提出兩項針對環境而非個人意願的措施，並各說明其局限。\n（d）有意見認為「學校應增加體育課節數以解決問題」。試評論此建議。","explanation":"（b）與健康管理科那條關於健康教育的題目共用同一項原理：凡效果取決於個人資源的措施，都傾向擴大不平等。此原則在本科同樣適用，而能夠指出「知識並非障礙、條件才是」的答案，比列舉宣傳的不足更為有力。\n（a）三項因素的機制須具體。「學業繁忙」是現象，「時間是零和的，不計入成績者被優先削減」才是機制。交通模式與街道環境那一項尤其值得留意 —— 它指出的並非「學生不願運動」，而是【日常順帶的活動量消失了】，於是所有活動都變成須要額外安排的項目。此一觀察直接支撐了（d）末段的結論。\n（d）的評論結構值得學習：先承認其獨有的優點（覆蓋平等，這是自願性措施所沒有的），再分三個層次指出限制（上限低、實際運用率低、擠壓效應），最後提出方向而非否定該建議。末段那句「凡須要學生額外騰出時間的方案，都會在時間最緊絀的一群身上首先失效」把全題收束於一個可遷移的判準。","type":"long","referenceAnswer":"（a）三項因素及其機制：\n其一，學業時間的擠壓。課時、補習與功課佔用大部分課餘時間，運動被視為可犧牲的項目。機制在於時間是零和的 —— 當升學競爭令學業時間的邊際價值被評估得極高，任何不直接計入成績的活動皆會被優先削減，而運動正屬此類。\n其二，居住與活動空間不足。香港人均居住面積狹小，家中無空間活動；而公共運動場地供不應求，球場須提前預約且時段緊絀。機制在於：運動的「參與成本」被大幅推高 —— 不只是體力上的付出，還包括預約、交通、輪候的時間成本，而成本愈高，參與率愈低。\n其三，交通模式與街道環境。學童多以校巴或公共交通往返學校，日常步行距離短；而街道環境以車輛為優先，行人道狹窄、過路設施繞道、空氣質素欠佳，令步行與踏單車不具吸引力。機制在於：日常生活中原本可以「順帶」完成的活動量消失了，一切運動都必須成為刻意安排的額外項目。\n\n（b）何以宣傳難以有效：\n宣傳處理的是【意願與知識】，而上述三項因素全部屬於【條件】。\n絕大多數學生與家長都知道運動有益，亦不反對多做運動 —— 障礙並非不想，而是時間被佔用、場地不可得、環境不便利。當意願已經存在而條件不足時，增加意願並不會轉化為行為。\n此外，宣傳的效果依賴接收者的既有資源：家境較佳者本已有條件參與（可負擔收費場地、有家長接送、住所鄰近設施），收到訊息即可行動；條件較差者收到相同訊息而無從實行。結果是宣傳可能擴大群體之間的活動量差距，而非縮窄。\n\n（c）兩項針對環境的措施：\n措施一：開放學校設施於課餘及假日供社區使用，並由學校或非政府機構提供基本管理。\n作用機制：直接增加可用場地的供應，而毋須另覓土地；學校設施鄰近住所，減少交通時間成本。\n局限：涉及管理、保安、保險與清潔的額外成本與責任，學校缺乏誘因主動承擔；開放時段亦可能與學校活動衝突。若無專責的資源與清晰的責任安排，此措施在實務上難以持續。\n\n措施二：改善通學路徑的步行環境 —— 加闊行人道、增設地面過路設施、於學校周邊設立限速區或上課時段的車輛管制。\n作用機制：把活動量重新嵌入日常生活，令步行上學成為可行且安全的選擇，毋須額外抽出時間。\n局限：工程需時且涉及多個部門協調；效果亦受居住地與學校的距離所限 —— 跨區就學者無論路徑如何改善，仍不可能步行上學。此措施只對居住於學校鄰近者有效。\n\n（d）評論「增加體育課節數」：\n此建議方向正確而力度有限，須分三點評論。\n\n合理之處：體育課是學校時間表之內的安排，不依賴學生課餘的自主決定，亦不受家庭資源差異所影響 —— 就此而言，它是少數能夠平等地覆蓋全體學生的措施，其公平性優於大部分依賴自願參與的方案。\n\n限制之一：時數上限低。即使由每週兩節增至三節，每週增加的活動時間亦僅約 40 分鐘，而世界衞生組織建議兒童及青少年每日至少 60 分鐘中等至劇烈強度活動。體育課無論如何增加，都不可能單獨滿足此目標。\n\n限制之二：課節時間的實際運用率不高。一節體育課之中，更衣、集合、點名、器材佈置與講解佔去相當比例，學生實際處於中等以上強度的時間往往遠少於課節長度。若不同時改善課堂的設計與運作，增加節數的邊際效益有限。\n\n限制之三：擠壓效應。學校時間表總量固定，增加體育課即須減少其他科目 —— 在升學壓力之下，此建議極可能遭遇來自學校、家長甚至學生本身的抵抗。若不觸及（a）所指出的第一項因素（學業時間的擠壓），此建議在落實層面即面對結構性阻力。\n\n較公允的表述是：增加體育課節數應納入方案，因其覆蓋面平等而穩定，但不能作為唯一措施。真正有效的方向是把活動量重新嵌入日常生活 —— 通學路徑、課間活動、社區設施 —— 令學生毋須在「運動」與「其他事情」之間作出取捨。凡須要學生額外騰出時間的方案，都會在時間最緊絀的一群身上首先失效，而那正是最需要改善的一群。","markingScheme":"（a）3 分 —— 三項因素各 1 分，須連機制而非只列現象。「學業繁忙」「地方細」不給分。\n（b）2 分 —— 指出障礙為條件而非知識或意願（1）；指出宣傳效果依賴既有資源、可能擴大差距（1）。\n（c）2 分 —— 兩項措施各 1 分，須針對環境且各連一項具體局限。屬宣傳或個人勸導者不給分。\n（d）3 分 —— 承認其覆蓋平等的優點（1）；至少兩項限制，須包括時數上限或擠壓效應（1）；提出把活動量嵌入日常生活的方向（1）。全盤否定或全盤同意者最多 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":18,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "pe";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "pe-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "pe-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

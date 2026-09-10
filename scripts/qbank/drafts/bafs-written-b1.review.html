@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · bafs · bafs-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">bafs</span></h1>
+<div class="sub">來源 bafs-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"bf_w1_01","topic":"利息","difficulty":"basic","question":"甲把 20 000 元存入一個年利率 4%、每年計息一次的定期存款，為期 3 年。乙同樣存入 20 000 元，年利率同為 4%，但以單利計算，同為 3 年。\n試分別計算兩人 3 年後的本利和，並說明兩者差額的來源。","explanation":"本題的計算並不困難，考點在於是否說得出差額的成因。答「因為複利較高」屬複述現象而非解釋機制；正確的說法要指出利息被計入下一期的本金。留意複利公式中的指數是期數而非年數 —— 本題每年計息一次，兩者剛好相同，但若題目改為每半年計息一次，年利率須除以二而期數須乘以二，這是同類題目最常見的失分位置。作答時建議先寫出算式再代入數字，因為評卷對算式本身設有分數。","type":"text","referenceAnswer":"甲（複利）：\n本利和 = 20 000 × (1 + 0.04)³ = 20 000 × 1.124864 = 22 497.28 元\n利息 = 2 497.28 元\n\n乙（單利）：\n利息 = 20 000 × 0.04 × 3 = 2 400 元\n本利和 = 22 400 元\n\n差額 = 22 497.28 − 22 400 = 97.28 元。\n差額的來源：複利之下，第一年所得的 800 元利息會在第二年一併計息，第二年所得的利息又會在第三年計息，即「利息本身亦產生利息」。單利則只按原本金 20 000 元計息，三年所得完全相同。\n年期愈長、利率愈高，這個差距擴大得愈快 —— 三年只差 97.28 元，但同一組數字放到二十年，差距會以倍數計。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bf_w1_02","topic":"折舊","difficulty":"intermediate","question":"某公司於年初以 80 000 元購入一部機器，估計可使用 5 年，5 年後的殘值為 5 000 元。\n（a）以直線法計算每年的折舊額。\n（b）改以餘額遞減法、折舊率 30% 計算首三年的折舊額。\n（c）比較兩種方法在首三年的累計折舊，並說明何種資產較適合採用餘額遞減法。\n（d）有人認為「折舊是公司每年撥出的一筆現金，用以將來重置該機器」。試指出此說法的錯處。","explanation":"（d）是本題的重心，亦是 BAFS 最常被誤解的概念之一。折舊之所以令人誤會，是因為它出現在損益表上、令利潤減少，而減少利潤這件事在直覺上與「付了錢」相似。實情是這筆錢在購入資產當日已經付清，折舊只是把它分期記入各年。判斷此類說法的可靠方法是問一句：這項分錄有沒有令銀行結餘改變？答案是沒有，所以它並非現金流。（c）另有一個常見誤解 —— 以為餘額遞減法折舊總額較多。兩種方法的總額同受「成本減殘值」這個上限約束，分別只在時間分佈。","type":"long","referenceAnswer":"（a）每年折舊 = (80 000 − 5 000) ÷ 5 = 15 000 元。\n（b）第一年：80 000 × 30% = 24 000 元，帳面淨值餘 56 000 元\n第二年：56 000 × 30% = 16 800 元，帳面淨值餘 39 200 元\n第三年：39 200 × 30% = 11 760 元，帳面淨值餘 27 440 元\n（c）直線法首三年累計 = 15 000 × 3 = 45 000 元\n餘額遞減法首三年累計 = 24 000 + 16 800 + 11 760 = 52 560 元\n餘額遞減法在前期攤佔較多，故首三年的累計折舊較高。\n適用資產：前期效益高而後期維修成本上升的資產，例如電腦、車輛、生產設備。把折舊費用前重後輕，令折舊與該資產實際帶來的效益在時間上較為配合；後期折舊減少，正好抵銷維修支出上升，令每年的總負擔較為平均。\n（d）折舊並非現金支出，亦沒有任何一筆現金因此而被撥存。折舊是把已付出的成本，按資產可使用的年期分攤到各個會計期間的一項帳面調整，屬於配對原則的應用。公司若要重置機器，必須另行安排資金；帳上有大額累計折舊，不等於銀行戶口有相應的存款。","markingScheme":"（a）1 分 —— 15 000 元，須先減去殘值。\n（b）3 分 —— 三年各 1 分，每年須以上年的帳面淨值為基數。以原值 80 000 元重複計算者，第二、三年不給分。\n（c）2 分 —— 兩個累計數並作比較（1）；指出適用於前期效益高、後期維修上升的資產並說明配合的理由（1）。\n（d）2 分 —— 指出折舊並非現金支出（1）；說明其為成本分攤的帳面調整、重置須另行籌措資金（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bf_w1_03","topic":"財務比率","difficulty":"intermediate","question":"某零售公司兩個年度的資料如下（金額以千元計）：\n\n              2025年    2026年\n流動資產        900      1 200\n其中：存貨      400        750\n流動負債        500        600\n\n（a）計算兩年的流動比率及速動比率，答案準確至小數點後兩位。\n（b）該公司經理表示：「流動比率由 1.80 升至 2.00，公司的短期償債能力已見改善。」試評論此說法。\n（c）就（b）所指出的情況，提出兩項可行的改善措施。","explanation":"本題示範比率分析的核心紀律：任何一個比率單獨看都可能誤導，必須與相關比率並讀。流動比率與速動比率的差別只在於是否計入存貨，所以兩者一升一跌，即等於直接指出問題出在存貨。作答時最有力的一步是把兩個增幅並列 —— 存貨增 350 而流動資產總額只增 300，這一句數字比任何形容詞更能說明問題。（c）的措施必須針對（b）所診斷的病因；提出「向銀行借款」之類的建議只會令流動負債上升，反而令兩個比率同時惡化，屬答非所問。","type":"long","referenceAnswer":"（a）2025 年：\n流動比率 = 900 ÷ 500 = 1.80\n速動比率 = (900 − 400) ÷ 500 = 500 ÷ 500 = 1.00\n2026 年：\n流動比率 = 1 200 ÷ 600 = 2.00\n速動比率 = (1 200 − 750) ÷ 600 = 450 ÷ 600 = 0.75\n（b）該說法不成立，或至少過於片面。流動比率確實由 1.80 升至 2.00，但速動比率同期由 1.00 跌至 0.75。\n兩者方向相反，原因在於流動資產的增長幾乎全部來自存貨：存貨由 400 增至 750，增幅 350，而流動資產總額只增 300。換言之，非存貨部分的流動資產反而減少了。\n存貨是流動資產之中變現能力最低的一項，須先售出、再收回貨款，才成為現金。以存貨堆砌出來的流動比率上升，並不代表公司有更強的即時償債能力；速動比率跌破 1.00，反而顯示公司已無法單靠速動資產應付到期的流動負債。\n（c）措施一：清理滯銷存貨。以折扣促銷或退回供應商等方式減少存貨水平，把資金釋放為現金或應收帳款，可同時提升速動比率。\n措施二：收緊採購與存貨管理。檢討採購量與補貨週期，避免存貨繼續累積；亦可與供應商商議延長信貸期，改善現金流的時間錯配。","markingScheme":"（a）4 分 —— 四個比率各 1 分，速動資產須為流動資產減存貨。\n（b）2 分 —— 指出兩個比率方向相反並歸因於存貨增長（1）；說明存貨變現能力最低、速動比率跌破 1.00 的含意（1）。只答「流動比率上升所以改善」全項不給分。\n（c）2 分 —— 兩項措施各 1 分，須針對存貨問題；提出增加借貸等會同時推高流動負債的做法不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bf_w1_04","topic":"成本與定價","difficulty":"intermediate","question":"某小店售賣單一產品，每件售價 60 元，每件變動成本 36 元，每月固定成本 21 600 元。\n（a）計算每月的收支平衡銷量。\n（b）若該店希望每月賺取 6 000 元利潤，須售出多少件？\n（c）若租金上升令固定成本增至 24 000 元，而售價與變動成本不變，收支平衡銷量會如何改變？","explanation":"本題三部分共用同一條公式，變化只在分子。關鍵在於分母永遠是「每件貢獻邊際」，即售價減變動成本，而非售價本身 —— 用 60 元作分母是最常見的失分，得出的數字看似合理卻偏小。（c）除了直接重算之外，亦可用增量思維：固定成本增加多少，除以每件貢獻邊際，即得須多售的件數。能寫出這一步，顯示理解公式的結構而非僅記住形式。留意目標利潤在公式中與固定成本同列於分子，因為兩者同樣須由貢獻邊際去覆蓋。","type":"text","referenceAnswer":"每件貢獻邊際 = 60 − 36 = 24 元。\n（a）收支平衡銷量 = 固定成本 ÷ 每件貢獻邊際 = 21 600 ÷ 24 = 900 件。\n（b）所需銷量 = (固定成本 + 目標利潤) ÷ 每件貢獻邊際 = (21 600 + 6 000) ÷ 24 = 27 600 ÷ 24 = 1 150 件。\n（c）新的收支平衡銷量 = 24 000 ÷ 24 = 1 000 件，較原來增加 100 件。\n固定成本上升 2 400 元，而每件貢獻邊際不變，故須多售 2 400 ÷ 24 = 100 件才能覆蓋新增的固定成本。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bf_w1_05","topic":"財務報表","difficulty":"hard","question":"某獨資商店於 2026 年 3 月 31 日的資料如下（金額以元計）：\n\n銷貨 480 000；銷貨成本 312 000；租金 48 000；薪金 66 000；水電 9 600；折舊 12 000；利息支出 4 800\n\n（a）以直式（Vertical Form）編製截至 2026 年 3 月 31 日止年度的損益表，須列出毛利及本年度純利。\n（b）計算毛利率及純利率，答案準確至小數點後一位。\n（c）該店東主表示：「純利率偏低，應該立即減少薪金支出。」試從兩個角度評論此建議。","explanation":"（a）的格式本身設有分數：直式報表要求由銷貨開始，逐級減至純利，中間必須明確列出毛利與營業溢利兩個小計。把利息支出與租金、薪金並列於營業開支之內是常見的格式錯誤 —— 利息屬融資成本，須在營業溢利之後單獨扣減，否則營業溢利這一個小計便失去意義。（c）示範一種在近年卷二經常出現的問法：東主的建議並非全錯，但推理跳步。良好的答案先指出診斷不足，再指出該措施本身可能反噬，最後提出替代方向；只答「不應減薪，因為員工會不開心」屬情緒判斷，未能取得分數。","type":"long","referenceAnswer":"（a）損益表（直式），截至 2026 年 3 月 31 日止年度：\n\n銷貨                        480 000\n減：銷貨成本                312 000\n毛利                        168 000\n\n減：營業開支\n  租金            48 000\n  薪金            66 000\n  水電             9 600\n  折舊            12 000\n                            135 600\n營業溢利                     32 400\n減：利息支出                  4 800\n本年度純利                   27 600\n\n（b）毛利率 = 168 000 ÷ 480 000 × 100% = 35.0%\n純利率 = 27 600 ÷ 480 000 × 100% = 5.8%\n（c）角度一 —— 該建議未經診斷即開藥。毛利率 35.0% 與純利率 5.8% 之間相差 29.2 個百分點，全部由營業開支及利息造成，而薪金 66 000 元只佔其中一部分；租金 48 000 元的比重同樣可觀。在未比較同業水平、未檢視各項開支是否合理之前，單獨挑出薪金並無依據。\n角度二 —— 減薪可能損害收入本身。零售業務依賴人手提供服務，減少薪金支出通常意味減少人手或降低待遇，可能令服務水準下降、員工流失，銷貨隨之減少。若銷貨下跌的幅度大於節省的薪金，純利反而更低。\n可行的替代方向包括：檢視租金是否可重議、提高毛利率（改善採購成本或調整售價組合）、以及檢討利息支出所反映的負債水平。","markingScheme":"（a）5 分 —— 毛利 168 000（1）；四項營業開支齊全並加總為 135 600（2）；營業溢利 32 400 作為獨立小計（1）；利息在營業溢利之後扣減，純利 27 600（1）。把利息計入營業開支者扣 1 分。\n（b）2 分 —— 毛利率 35.0%（1）；純利率 5.8%（1）。\n（c）3 分 —— 指出未經比較即單挑薪金、其他開支比重同樣可觀（1）；指出減薪可能令銷貨下跌而反致純利更低（1）；提出至少一項可行的替代方向（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":18,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "bafs";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "bafs-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "bafs-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

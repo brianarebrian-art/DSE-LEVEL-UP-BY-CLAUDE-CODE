@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · m2 · m2-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">m2</span></h1>
+<div class="sub">來源 m2-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"m2_w1_01","topic":"極限","difficulty":"basic","question":"求下列極限，並說明所用的方法：\n（a）lim(x→3) (x² − 9) ÷ (x − 3)\n（b）lim(x→0) (sin 5x) ÷ x","explanation":"兩小題示範不定形的兩種標準處理：多項式用因式分解消去令分母為零的因子，三角函數則湊成基本極限的標準形。（b）最常見的失分是直接寫「等於 1」，忽略了分母須與正弦函數的引數一致 —— 必須先把分母配成 5x，再補回外面的因數 5。留意 (x + 3)(x − 3) ÷ (x − 3) 的化簡只在 x ≠ 3 時成立，而求極限本來就不考慮 x = 3 這一點，故此步合法；作答時寫明這項條件，可顯示對極限定義的理解。","type":"text","referenceAnswer":"（a）直接代入得 0 ÷ 0，屬不定形，故先因式分解：\n(x² − 9) ÷ (x − 3) = (x + 3)(x − 3) ÷ (x − 3) = x + 3（x ≠ 3）\n故極限 = 3 + 3 = 6。\n（b）利用基本極限 lim(u→0) (sin u) ÷ u = 1。\n(sin 5x) ÷ x = 5 × (sin 5x) ÷ (5x)\n當 x → 0 時 5x → 0，故 (sin 5x) ÷ (5x) → 1\n極限 = 5 × 1 = 5。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m2_w1_02","topic":"數學歸納法","difficulty":"intermediate","question":"以數學歸納法證明：對於一切正整數 n，\n1 × 2 + 2 × 3 + 3 × 4 + … + n(n + 1) = n(n + 1)(n + 2) ÷ 3。\n證明須包括基礎步驟、歸納假設、歸納步驟三部分，並在最後明確作出結論。","explanation":"數學歸納法的分數大部分不在計算，而在結構是否完整。三個部分缺一不可，而最常被略去的是最後的結論句 —— 沒有它，證明只是說明了兩件事實，未曾把兩者連起來。歸納步驟另有一個評卷要點：必須明確指出何處用了歸納假設，否則等於在證明過程中悄悄假設了所要證的結論。技術上的關鍵一步是提取公因式 (k + 1)(k + 2)，而非把全式展開 —— 展開之後雖然仍可整理成功，但過程冗長且極易出錯。","type":"long","referenceAnswer":"基礎步驟：當 n = 1 時，\n左邊 = 1 × 2 = 2；右邊 = 1 × 2 × 3 ÷ 3 = 2。\n左邊 = 右邊，故命題對 n = 1 成立。\n\n歸納假設：設命題對某正整數 k 成立，即\n1×2 + 2×3 + … + k(k + 1) = k(k + 1)(k + 2) ÷ 3。\n\n歸納步驟：考慮 n = k + 1 的情況。\n左邊 = [1×2 + … + k(k + 1)] + (k + 1)(k + 2)\n= k(k + 1)(k + 2) ÷ 3 + (k + 1)(k + 2)      （用了歸納假設）\n= (k + 1)(k + 2) × [k ÷ 3 + 1]\n= (k + 1)(k + 2) × (k + 3) ÷ 3\n= (k + 1)(k + 2)(k + 3) ÷ 3\n此正是原式中 n 換成 k + 1 所得的右邊。\n故命題對 n = k + 1 亦成立。\n\n結論：命題對 n = 1 成立；若對 n = k 成立則對 n = k + 1 亦成立。由數學歸納法，命題對一切正整數 n 成立。","markingScheme":"基礎步驟 1 分 —— 左右兩邊各自計算並比較。只寫「顯然成立」不給分。\n歸納假設 1 分 —— 明確寫出對 n = k 的假設式。\n歸納步驟 4 分 —— 寫出 n = k + 1 時的左邊並拆出前 k 項（1）；代入歸納假設並註明（1）；提取公因式 (k + 1)(k + 2)（1）；整理成 (k + 1)(k + 2)(k + 3) ÷ 3 並指出即所需形式（1）。\n結論 1 分 —— 明確寫出由數學歸納法得證。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":12,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m2_w1_03","topic":"矩陣與行列式","difficulty":"intermediate","question":"設 A 為二階方陣，A = [[2, 1], [4, 3]]。\n（a）求 A 的行列式 det A。\n（b）求 A 的逆矩陣 A⁻¹。\n（c）利用（b）解方程組：2x + y = 5，4x + 3y = 11。\n（d）若把第二條方程改為 4x + 2y = 10，該方程組的解會有何變化？試由行列式的角度說明。","explanation":"（d）是本題唯一超出程序操作的部分。行列式為零這件事本身只給出一個否定的訊息 —— 逆矩陣不存在、解不唯一；至於究竟是無限多解還是無解，必須另行比較兩條方程的常數項是否也成同一比例。只答「無解」是常見的失分，因為此處兩條方程其實是同一條直線。作答時把「det = 0」與「進一步檢查常數項」分成兩步寫，可清楚顯示兩者的邏輯關係。另須留意逆矩陣公式中的負號位置：對角線元素互換，副對角線元素變號，寫錯位置會令（c）的答案完全改變而過程仍然順暢。","type":"long","referenceAnswer":"（a）det A = (2)(3) − (1)(4) = 6 − 4 = 2。\n（b）A⁻¹ = (1 ÷ det A) × [[3, −1], [−4, 2]] = [[1.5, −0.5], [−2, 1]]。\n（c）方程組可寫成 A·[x, y]ᵀ = [5, 11]ᵀ。\n[x, y]ᵀ = A⁻¹·[5, 11]ᵀ\nx = 1.5 × 5 + (−0.5) × 11 = 7.5 − 5.5 = 2\ny = (−2) × 5 + 1 × 11 = −10 + 11 = 1\n故 x = 2，y = 1。\n（d）新的係數矩陣為 [[2, 1], [4, 2]]，其行列式 = (2)(2) − (1)(4) = 0。\n行列式為零，逆矩陣不存在，故不能以（b）的方法求解。\n觀察兩條方程：4x + 2y = 10 恰為 2x + y = 5 的兩倍，即兩條方程描述同一條直線，方程組有無限多組解（凡滿足 2x + y = 5 的 (x, y) 皆為解），而非唯一解。\n若右邊改為與比例不符的數值（例如 4x + 2y = 12），則兩條方程互相矛盾，方程組無解。行列式為零所指出的正是「並非唯一解」，至於是無限多解抑或無解，須進一步比較常數項。","markingScheme":"（a）1 分 —— det A = 2。\n（b）2 分 —— 正確的伴隨矩陣形式（1）；除以行列式後所得矩陣（1）。\n（c）3 分 —— 寫成矩陣方程 A·[x, y]ᵀ = [5, 11]ᵀ（1）；矩陣乘法（1）；x = 2、y = 1（1）。\n（d）2 分 —— 計算新行列式為零並指出逆矩陣不存在（1）；辨認兩式為同一直線、解有無限多組（1）。只答「無解」此項不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m2_w1_04","topic":"二項式定理","difficulty":"intermediate","question":"在 (2x − 1/x)⁶ 的展開式中，求常數項，並說明如何確定該項的位置。","explanation":"本題的方法比答案重要：一般項寫出後，把兩處的 x 合併成 x^(6−2r)，問題便由「展開六項再逐項檢查」化為「解一條一元一次方程」。三處符號與係數都要處理妥當 —— 2 的冪來自 (2x)^(6−r)，負號來自 (−1)^r，而 x 的負指數來自 1/x。漏掉其中任何一項，數值即出錯而形式仍然正確。r = 3 為奇數，故常數項為負；答案若得出正數，可即時知道漏了負號。","type":"text","referenceAnswer":"第 (r + 1) 項為：\nC(6, r) × (2x)^(6−r) × (−1/x)^r\n= C(6, r) × 2^(6−r) × (−1)^r × x^(6−r) × x^(−r)\n= C(6, r) × 2^(6−r) × (−1)^r × x^(6−2r)\n常數項即 x 的指數為零者：6 − 2r = 0，故 r = 3。\n代入 r = 3：\nC(6, 3) × 2³ × (−1)³ = 20 × 8 × (−1) = −160。\n故常數項為 −160。\n確定位置的方法：把一般項整理成單一個 x 的冪，再令該指數等於零解出 r，而不是逐項展開後尋找。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m2_w1_05","topic":"積分法","difficulty":"hard","question":"設曲線 y = x² 與直線 y = 2x。\n（a）求兩者的交點坐標。\n（b）求由該曲線與該直線所圍成的區域的面積。\n（c）若把該區域繞 x 軸旋轉一周，求所得立體的體積，答案以 π 表示。\n（d）某學生在（c）中把體積寫成 π ∫ (2x − x²)² dx。試指出此做法為何不正確。","explanation":"（d）是本題真正的考點，而且它所針對的錯誤在計算過程中完全不會露出破綻：積分照樣做得出，答案照樣是一個 π 的倍數，只是數值不對。要避免此錯，必須回到截面的幾何意義 —— 旋轉之後，垂直於 x 軸的截面是一個圓環，而圓環的面積公式本身就是「兩個圓面積之差」。凡遇兩條曲線之間的旋轉體，先畫一個截面，比記憶公式可靠。另須留意（b）與（c）的被積函數不同：面積用「上減下」，體積用「外平方減內平方」，兩者不可混用。","type":"long","referenceAnswer":"（a）令 x² = 2x，得 x² − 2x = 0，x(x − 2) = 0，故 x = 0 或 x = 2。\n交點為 (0, 0) 及 (2, 4)。\n（b）在 0 \u003c x \u003c 2 的範圍內 2x > x²，故\n面積 = ∫₀² (2x − x²) dx\n= [x² − x³ ÷ 3]₀²\n= (4 − 8 ÷ 3) − 0\n= 4 ÷ 3。\n（c）旋轉體為外半徑 2x、內半徑 x² 的環形截面：\n體積 = π ∫₀² [(2x)² − (x²)²] dx\n= π ∫₀² (4x² − x⁴) dx\n= π [4x³ ÷ 3 − x⁵ ÷ 5]₀²\n= π [(32 ÷ 3) − (32 ÷ 5)]\n= π × 32 × (5 − 3) ÷ 15\n= 64π ÷ 15。\n（d）該寫法把「兩個半徑之差」平方，而正確做法是「兩個半徑各自平方後相減」。\n(2x − x²)² 與 (2x)² − (x²)² 並不相等，前者展開後多出一項交叉項 −2·(2x)·(x²)。\n幾何上的理由：旋轉後的截面是一個圓環，其面積等於外圓面積減內圓面積，即 π(外半徑)² − π(內半徑)²，而不是 π × (兩半徑之差)²。後者所描述的是一個半徑等於「差」的實心圓，與該圓環並非同一個圖形。","markingScheme":"（a）2 分 —— 列出 x² = 2x 並解得 x = 0、2（1）；兩個交點坐標（1）。\n（b）3 分 —— 判斷 0 \u003c x \u003c 2 內 2x 在上（1）；正確積分（1）；4 ÷ 3（1）。\n（c）3 分 —— 列出 π ∫ [(2x)² − (x²)²] dx（1）；積分求值（1）；64π ÷ 15（1）。\n（d）2 分 —— 指出「差的平方」不等於「平方的差」（1）；以圓環面積的幾何意義說明（1）。只答「公式用錯」不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "m2";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "m2-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "m2-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

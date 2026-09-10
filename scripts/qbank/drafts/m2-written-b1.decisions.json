@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "m2-written-b1.json",
+    "subject": "m2",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "m2_w1_01": "pending",
+    "m2_w1_02": "pending",
+    "m2_w1_03": "pending",
+    "m2_w1_04": "pending",
+    "m2_w1_05": "pending"
+  }
+}

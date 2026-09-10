@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "chinese-literature-written-b1.json",
+    "subject": "chinese-literature",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "cl_w1_01": "pending",
+    "cl_w1_02": "pending",
+    "cl_w1_03": "pending",
+    "cl_w1_04": "pending",
+    "cl_w1_05": "pending"
+  }
+}
