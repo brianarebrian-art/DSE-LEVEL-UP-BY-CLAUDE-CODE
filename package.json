@@ -26,7 +26,8 @@
     "qa:copy": "node scripts/copy-guard.mjs",
     "qbank:recalibrate-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/recalibrate-difficulty.mts",
     "qbank:simulate-sampling": "npx --yes tsx@4.19.2 scripts/qbank/simulate-sampling.mts",
-    "sync:conflict-repro": "npx --yes tsx@4.19.2 scripts/sync-conflict-repro.mts"
+    "sync:conflict-repro": "npx --yes tsx@4.19.2 scripts/sync-conflict-repro.mts",
+    "analytics:retention": "npx --yes tsx@4.19.2 scripts/analytics/retention.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
