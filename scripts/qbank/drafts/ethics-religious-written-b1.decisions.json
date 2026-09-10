@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "ethics-religious-written-b1.json",
+    "subject": "ethics-religious",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "er_w1_01": "pending",
+    "er_w1_02": "pending",
+    "er_w1_03": "pending",
+    "er_w1_04": "pending",
+    "er_w1_05": "pending"
+  }
+}

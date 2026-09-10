@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · music · music-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">music</span></h1>
+<div class="sub">來源 music-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"mu_w1_01","topic":"樂理・音程與調號","difficulty":"basic","question":"（a）說出 C 大調與 A 小調的關係，並解釋何以兩者的調號相同而聽感不同。\n（b）指出 C 至 E、C 至 F、C 至 G 三個音程的名稱（含大小或完全），並說明判斷音程名稱的兩個步驟。","explanation":"（a）的關鍵在於指出分別在【中心】而非【材料】。答「因為一個是大調一個是小調」屬複述題目而未有解釋；必須說出主音的轉移如何改變其餘各音與中心的關係。末段關於升高第七級的補充亦有分數，因為它指出關係大小調「調號相同」這句話在實際樂曲中有其限度。\n（b）第二步之所以強調次序不可顛倒，是因為同音異名（enharmonic）是樂理最常見的陷阱：聽起來相同的兩個音程，名稱可以完全不同。先數音名再算半音，即可避免。作答時把 C 至升 D 與 C 至降 E 的例子寫出來，比抽象說明有力。","type":"text","referenceAnswer":"（a）兩者為關係大小調（relative major and minor）。A 小調是 C 大調的關係小調，其主音位於 C 大調音階的第六級。\n兩者所用的音完全相同（自然音階皆為 C、D、E、F、G、A、B），故調號同為無升降記號。\n何以聽感不同：分別不在於用了哪些音，而在於【以哪一個音為中心】。C 大調以 C 為主音，樂句傾向於落在 C 之上，而 C 與其上方三度 E 之間為大三度，色彩明亮。A 小調以 A 為主音，A 與其上方三度 C 之間為小三度，色彩較暗。\n主音的轉移改變了其餘各音與中心的關係，於是同一組音材料產生了不同的調性感覺。實際作品之中，小調亦常升高第七級（此處為 G 升）以構成導音，令回到主音的傾向更明確，此時兩者所用的音便不再完全相同。\n\n（b）三個音程：\nC 至 E —— 大三度（major 3rd）\nC 至 F —— 完全四度（perfect 4th）\nC 至 G —— 完全五度（perfect 5th）\n\n判斷音程名稱的兩個步驟：\n第一步，數【級數】。由下方音數至上方音，包含首尾兩音在內，得出的數字即為音程的度數。C 至 E 為 C、D、E 三個音名，故為三度；C 至 G 為五個音名，故為五度。此步只看音名，不理升降記號。\n第二步，判斷【性質】。數兩音之間實際相隔多少個半音，再對照該度數的標準值。三度有大三度（4 個半音）與小三度（3 個半音）之分；四度、五度、八度及一度屬「完全」類，只有完全、增、減之分，而無大小之別。\n\n兩步不可合併：先數級數再判性質，次序顛倒容易出錯 —— 例如 C 至升 D 與 C 至降 E，兩者實際音高相同，但前者為增二度、後者為小三度，級數不同故名稱不同。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mu_w1_02","topic":"曲式與結構","difficulty":"intermediate","question":"（a）說明奏鳴曲式（sonata form）的三個主要部分及各自的功能。\n（b）解釋何以「呈示部有兩個主題」這一點對整個曲式的運作至為關鍵。\n（c）聆聽者若只憑旋律是否好聽去判斷一首奏鳴曲式樂章，會錯過什麼？試說明。","explanation":"（b）是本題的樞紐，而它所針對的正是最常見的誤解：以為奏鳴曲式的重點在「有兩個主題」。實際上重點在【兩者處於不同的調】—— 若不明白這一點，整個曲式便只是一個旋律的排列表，而非一個有內在動力的結構。答案中「離家、遊歷、回家」的比喻可以幫助記憶，但作答時仍須把調性關係說清楚，不可只用比喻代替。\n（c）的第二個理由值得特別注意：以「好不好聽」為準則，會系統性地低估發展部，而發展部恰恰是作曲技藝最集中之處。此一觀察可推廣至其他藝術形式 —— 凡以即時感官愉悅為唯一標準，最需要時間與知識方能欣賞的部分必然被低估。\n末段的補充避免了走向另一極端。旋律動人並非缺點，把入口當成全部才是問題所在；能保持此分寸，比一面倒貶低通俗聆聽為佳。","type":"long","referenceAnswer":"（a）三個主要部分：\n呈示部（exposition）—— 呈現主要的音樂材料。第一主題在主調上出現，經過渡段轉入另一調（大調樂曲通常轉至屬調，小調樂曲通常轉至關係大調），第二主題在新調上出現，兩個主題在性格上通常有所對比。其功能是【建立材料與調性上的張力】。\n發展部（development）—— 把呈示部的材料加以變化、分割、轉調、重新組合，經歷多個調區而不作長時間的穩定。其功能是【維持並加劇不穩定狀態】，令聽者處於期待解決的狀態。\n再現部（recapitulation）—— 兩個主題再次出現，但第二主題不再轉往別調，而是回到主調呈現。其功能是【解決調性上的張力】，令樂章有結束的感覺。\n（部分樂章另有序奏與尾聲，惟非曲式的必要部分。）\n\n（b）何以兩個主題至為關鍵：\n關鍵並不在於「有兩段旋律」，而在於【兩者處於不同的調】。\n呈示部的核心事件是調性的離開：第二主題在非主調上出現，令樂章帶著一個未解決的問題 —— 音樂已經離家而尚未回來。此一調性上的不平衡，正是推動整個樂章繼續進行的力量。\n若兩個主題皆在主調上呈現，發展部便無事可作（沒有張力需要維持），再現部亦無事可解決（沒有離開，何來回歸），整個結構會失去存在的理由。\n再現部之所以令人感到滿足，並非因為聽到熟悉的旋律再次出現，而是因為第二主題【這一次留在主調】—— 那個在呈示部提出的問題，至此方得解答。\n故奏鳴曲式的本質是一個調性上的敘事：離家、遊歷、回家。兩個主題是承載這個敘事的載體，而非目的本身。\n\n（c）只憑旋律是否好聽會錯過什麼：\n其一，錯過結構本身。奏鳴曲式的效果來自各部分之間的關係 —— 同一段旋律在呈示部與再現部出現時，聽感並不相同，因為它在第二次出現時所處的調不同、所承擔的功能不同。只聽旋律者會覺得「這段又出現了」，而察覺不到它的意義已經改變。\n其二，錯過發展部的價值。發展部往往是全樂章旋律性最弱的部分 —— 主題被拆解成片段、頻繁轉調、不易跟隨。以「好不好聽」為標準，此部分必然評價最低；而它恰恰是整首樂章張力最集中、作曲技藝最集中之處。\n其三，錯過時間尺度上的體驗。奏鳴曲式的滿足感建立於期待與延遲：問題在開首提出，經過長時間的懸置，最後方得解決。此種滿足須要在整個樂章的長度之內累積，無法由任何單一片段提供。只聽片段者所得的，是若干個好聽的瞬間，而非一個完整的過程。\n\n須補充：旋律是否動人並非不重要，它是聽眾進入作品的入口。問題只在於把入口當成全部 —— 正如讀小說不能只看寫得優美的句子而不理情節的推進。","markingScheme":"（a）3 分 —— 三個部分各 1 分，須連功能而非只列名稱；呈示部一項須提及第二主題在另一調上出現方給滿分。\n（b）4 分 —— 指出關鍵在調性而非主題數目（2）；說明若兩主題同調則發展部與再現部失去作用（1）；指出再現部的滿足來自第二主題回到主調（1）。\n（c）2 分 —— 至少兩項，須指向不同層面（結構關係、發展部被低估、時間尺度上的體驗）。只答「會錯過很多」不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mu_w1_03","topic":"中國音樂","difficulty":"intermediate","question":"（a）說明中國傳統音樂中「五聲音階」的構成，並指出它與西方大調音階的分別。\n（b）解釋何以中國傳統器樂合奏中，各聲部往往同時演奏同一旋律的不同變體，並說明此種織體的名稱及效果。\n（c）有人認為「中國音樂缺乏和聲，故表現力不及西方音樂」。試評論此說法。","explanation":"（c）與視藝科那條關於透視法的題目結構相同，而這並非巧合：以一套體系為標準去衡量另一套，是跨文化藝術比較中最常見的錯誤。應對方法亦相同 —— 先分辨前提與結論（前提往往是對的），再指出結論所預設的單線發展觀，最後提出以並列取代排序的表述。\n第一個理由是本題的核心：中國音樂並非「少了和聲」，而是把表現的任務分配到別的維度上。能夠具體說出那些維度（音色、揉弦、滑音、單音的處理），比抽象地說「各有特色」有力得多 —— 後者是態度，前者是論據。\n（b）須留意支聲複調與西方複調（polyphony）的分別：前者是同一旋律的多個版本，後者是不同旋律的並行。混淆兩者是本題最常見的失分。","type":"long","referenceAnswer":"（a）五聲音階的構成：\n由五個音組成，傳統稱為宮、商、角、徵、羽。若以 C 為宮，則五音為 C、D、E、G、A。\n其構成的特點在於【不含半音】—— 五音之間全部為全音或小三度，沒有相鄰半音的關係。\n\n與西方大調音階的分別：\n西方大調為七聲音階，除五聲音階所含的五音之外，另有第四級（F）與第七級（B）。這兩個音正是產生半音關係的來源：第三級與第四級之間（E 至 F）、第七級與主音之間（B 至 C）皆為半音。\n第七級的半音關係尤其重要 —— 它構成導音，產生強烈的傾向要解決至主音，而此傾向正是西方功能和聲推進的基本動力。\n五聲音階沒有這兩個音，故亦沒有導音的緊張感。其效果是音階本身較為平穩、開闊，任何一音停留皆不會產生強烈的須解決之感，這正是五聲音階聽來較為悠然的原因。\n\n（b）此種織體的名稱：支聲複調（heterophony），或稱支聲織體。\n何以如此：各件樂器的構造與演奏法不同 —— 笛子擅長快速的裝飾與滑音，古箏可作大幅度的刮奏與按滑，二胡可作連綿的滑音與揉弦。同一條旋律交由不同樂器演奏時，各自按其性能與慣例加以潤飾，於是產生同源而不同貌的多個版本。\n此並非各奏各的，而是共同依循同一條旋律骨幹，只在裝飾的密度、時值的微調與音色上有別。\n效果：整體音響厚實而不失統一。聽者所感受到的仍是一條旋律，但其質地豐富、線條略帶參差，產生一種流動而有機的效果 —— 有如同一句話由多人同時說出，字句相同而語氣各異。\n此與西方多聲部音樂的原理不同：後者各聲部演奏【不同】的旋律，其豐富來自聲部之間的縱向關係（和聲）；支聲織體的豐富則來自同一旋律的多重演繹，屬橫向的層疊。\n\n（c）評論：\n此說法的前提部分成立，而結論不成立。\n\n就前提而言：中國傳統音樂確實未發展出西方式的功能和聲體系 —— 沒有以三和弦為基礎、按調性功能推進的縱向架構。就此一項具體事實而言，該說法無誤。\n\n結論何以不成立：\n其一，它以一項元素的有無判定整體的表現力，而忽略了中國音樂在其他維度上的高度發展。西方音樂以和聲承擔的表現任務，中國音樂多由【音色】與【單音的處理】承擔：一個音的起音方式、揉弦的幅度與速度、滑音的走向、音尾的收放，皆為表意的手段。古琴一音之中所包含的變化，其複雜程度不下於一個和弦的進行。以有無和聲論表現力，等於只數一種工具而不問工作是否完成。\n\n其二，此說法預設了單一的發展路徑。它假定音樂的成熟以西方的軌跡為標準，未達此標準即為不足。實際上兩者是針對不同的美學目標所發展的不同體系 —— 一個追求縱向的結構張力，一個追求橫向的線條與音色變化。以其一為尺度衡量其二，所得的結論必然是後者有所欠缺，但這是量度方式所預先決定的，並非事實的發現。\n\n其三，「表現力」本身須要界定。若指能否傳達複雜的情感與意境，則中國音樂顯然具備 —— 否則其數千年的傳統與其在文人生活中的地位便無從解釋。若指能否構築大規模的多聲部結構，則此說僅為對事實的描述，而不構成價值判斷。\n\n較公允的表述是：中國傳統音樂與西方藝術音樂在表現手段的分佈上不同 —— 前者集中於線條、音色與單音的微觀處理，後者集中於和聲與多聲部結構。兩者各有其深度，比較應在承認此一分別的前提下進行。","markingScheme":"（a）3 分 —— 五聲音階的構成連宮商角徵羽或具體音名（1）；指出不含半音（1）；與大調音階的分別，須提及第四、七級及導音的作用（1）。\n（b）2 分 —— 正確命名支聲複調（1）；說明成因（樂器性能不同而潤飾同一骨幹）及效果，並能與西方多聲部區分（1）。\n（c）3 分 —— 承認前提部分成立（1）；指出中國音樂把表現任務分配至音色與單音處理，須具體（1）；指出以單一體系為尺度的問題或提出並列式表述（1）。一面倒者最多 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mu_w1_04","topic":"和聲・和弦與曲式","difficulty":"intermediate","question":"（a）在 C 大調上寫出 I、IV、V 三個三和弦所包含的音。\n（b）說明何以「V 至 I」是最強的終止式，並指出其中哪一個音起關鍵作用。\n（c）指出「IV 至 I」的終止式名稱，並說明其聽感何以較為柔和。","explanation":"（b）要求指出關鍵音，這一點值得留意 —— 許多答案能說出「V 至 I 最強」，卻答不出何以如此。導音的半音傾向是整個西方功能和聲的核心動力，而它亦解釋了為何小調常須升高第七級：自然小音階的第七級距離主音為全音，傾向不足，須人為升高方能構成有效的終止式。\n（c）的比較令兩者的分別更清晰：正格終止有導音、有緊張與解決的過程；變格終止無導音、有共同音、變化平順。把「解決」與「安放」分開表述，比只寫「比較柔和」更能顯示理解其成因。\n作答此類題目時，養成先寫出和弦所含各音的習慣 —— 一旦音名列出，導音是否在內、有無共同音等問題便一目了然，毋須憑記憶。","type":"text","referenceAnswer":"（a）在 C 大調上：\nI（主和弦）= C、E、G\nIV（下屬和弦）= F、A、C\nV（屬和弦）= G、B、D\n\n（b）V 至 I（正格終止，authentic cadence）之所以最強：\n關鍵在於 V 和弦所包含的 B 音 —— 它是 C 大調的第七級，即【導音】。導音與主音之間只相隔半音，此一極近的距離產生強烈的向上傾向，聽感上要求解決至 C。\n此外，V 和弦另有一音 D，為第二級，傾向下行解決至主音 C；而根音 G 至 C 為完全四度上行（或完全五度下行），此為最穩固的低音進行。\n三重傾向同時指向主和弦 —— 導音上行、第二級下行、低音作四五度跳進 —— 故 V 至 I 產生最明確的結束感。\n若必須指出一個關鍵音，答案為【B（導音）】：正是它的半音傾向令此終止式無可替代。\n\n（c）IV 至 I 稱為變格終止（plagal cadence），因常見於聖詠末尾的「阿們」而俗稱阿們終止。\n聽感較柔和的原因：\nIV 和弦（F、A、C）並不包含導音 B，故缺少了那個要求解決至主音的半音傾向。其低音由 F 進行至 C，屬完全五度上行（或完全四度下行），穩固而不緊迫。\n此外，IV 和弦已經包含主音 C 本身，兩個和弦之間有共同音，變化幅度較小，故過渡平順。\n結果是：變格終止同樣具有結束感，但那是一種「安放」而非「解決」—— 沒有先製造緊張再化解的過程，故聽來安詳而非有力。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mu_w1_05","topic":"聆聽與分析","difficulty":"hard","question":"一段音樂的描述如下：開首由單一低音樂器以極慢速度奏出四個音的動機，力度極弱；此動機每隔一段時間重複一次，每次加入一件新樂器，音域逐漸向上擴展，力度持續增強；至樂曲後段，全體樂器同時演奏該動機，力度達至最強；最後突然中斷，只餘最初的低音樂器獨奏該動機，力度回復極弱。\n（a）分析此樂曲在【織體】、【力度】及【配器】三方面的處理，並說明三者如何協同運作。\n（b）此樂曲的結構屬何種原理？試說明其效果何以主要來自「時間」而非「材料」。\n（c）作曲家在最強處突然中斷、回到獨奏。試分析此一安排的效果，並說明若改為逐漸減弱至結束，效果有何不同。\n（d）有聆聽者表示：「整首樂曲只有四個音，太單調。」試回應此評論。","explanation":"（b）是本題的核心觀念：音樂是時間的藝術，而某些作品的內容完全不存在於任何單一瞬間之內。「第十次重複之所以震撼，並非因為它本身特別，而是因為它前面有九次」—— 這句話值得記住，因為它解釋了一切累積式、極簡主義及過程音樂的運作方式。\n（c）示範了與視藝科（c）相同的分析方法：設想另一種處理，藉以反證原作的選擇。此法在任何藝術評賞中皆適用，而其價值在於把「本來就是這樣」變回「這是一個選擇」。\n（d）的第三個理由最為關鍵，亦最少人想到：材料保持不變，並非欠缺變化的證據，而是令其他變化得以被察覺的【條件】。此一「以不變作為對照」的原理在極簡主義音樂中尤為明顯。末段承認評論者的聆聽經驗真實，並指出責任亦部分在作曲家一方，是誠實而非讓步 —— 一件作品若要求特殊的聆聽方式，它就有責任提供進入的線索。","type":"long","referenceAnswer":"（a）三方面的處理：\n織體 —— 由最稀薄至最厚實再回到最稀薄。開首為單線條的獨奏，其後每次重複加入一件樂器，聲部數目遞增，織體逐步累積至全體齊奏，最後驟然回到單線條。整體呈拱形。\n力度 —— 由極弱漸強至極強，其後突然回落至極弱。力度的變化並非獨立進行，而是隨樂器數目的增加而自然產生 —— 更多樂器同時演奏，音量必然增大。\n配器 —— 音域由低向上擴展。每次加入的新樂器多在較高音域，令音響的空間感逐步向上開展，同時音色由單一而漸趨複合。\n\n三者如何協同：\n三個維度全部指向同一個方向，並在同一時刻轉折。織體變厚、力度變強、音域變闊，三者互為因果 —— 加入樂器同時造成了這三種變化，故聽者所感受到的並非三條獨立的發展線，而是一個持續累積的整體過程。\n此種同向疊加是本曲效果強烈的原因：任何一個維度單獨變化，效果都遠不及三者同步。而最後的中斷亦是三者同時發生 —— 織體、力度、音域在同一瞬間全部回到起點，故該轉折顯得極為突兀而有力。\n\n（b）結構原理：\n屬【累積式】（或稱漸進累積、變奏累積）結構 —— 以單一材料的不斷重複為基礎，透過配器、力度與織體的漸變製造發展，而非透過材料本身的變化。\n\n何以效果主要來自時間：\n因為材料由頭到尾未變。四個音的動機每次重複時完全相同，若把任何一次重複單獨抽出來聽，所得的資訊與第一次並無分別。\n效果之所以產生，在於【重複的累積】與【變化的速率】：聽者記得上一次是什麼樣子，於是察覺這一次厚了一點、響了一點；此種比較只能在時間之中進行。第十次重複之所以震撼，並非因為它本身特別，而是因為它前面有九次。\n換言之，本曲的內容並不在任何一個瞬間之內，而在瞬間與瞬間之間的差異之中。這正是音樂作為時間藝術的特性 —— 一幅畫可以在一瞥之間把握，而此類作品必須經歷其全部長度方能成立。\n\n（c）突然中斷、回到獨奏的效果：\n其一，製造最大的對比。全體齊奏的極強與獨奏的極弱之間落差極大，而落差愈大，感受愈強烈。若在中間插入過渡，此落差便被稀釋。\n其二，令聽者重新聽見開首的材料。同一段獨奏在樂曲開首出現時，聽者一無所知；在經歷了全部累積之後再次聽到，它已承載了整個過程的記憶。音符相同，而意義已變 —— 這是重複性結構所獨有的效果。\n其三，留下未完成之感。突然中斷不提供解決，而是把聽者留在一個開放的狀態；樂曲雖已結束，過程卻未被收束。\n\n若改為逐漸減弱至結束：\n效果會由「斷裂」轉為「消散」。漸弱是一個可預期的過程，聽者在其中逐步準備結束，情緒得以平緩降落；而突然中斷則不給予準備時間，衝擊集中於一瞬。\n此外，漸弱會令樂曲呈現完整的對稱拱形（起、升、頂、降、止），結構上更為圓滿而封閉；突然中斷則打破了對稱，令下降的一段被壓縮至近乎為零，結構上顯得不平衡 —— 而此不平衡正是其力量的來源。\n兩種處理並無高下，分別在於作曲家想要的是「圓滿」抑或「衝擊」。\n\n（d）回應「只有四個音，太單調」：\n此評論所依據的是【材料的數量】，而本曲的內容並不在材料之中。\n\n其一，須分辨「材料」與「作品」。四個音是本曲的材料，正如一塊磚是建築的材料。以材料的種類數目評價作品，等於以磚的款式評價一座建築 —— 建築的價值在於磚如何被組織，而非磚有幾種。\n\n其二，本曲的變化極為豐富，只是變化不在音高之上。織體由一件樂器增至全體、力度跨越整個幅度、音域由窄至闊、音色由單一至複合 —— 這些全部是實實在在的變化，而且是聽得見的。認為「只有四個音」即等於「沒有變化」，是把音樂的參數窄化為音高一項。\n\n其三，材料的單一正是此類作品的手段而非缺陷。若動機不斷改變，聽者便無從察覺配器與力度的漸變 —— 因為無從比較。正是材料保持不變，其餘各項的變化才變得清晰可辨。此處的單一是刻意的，其作用相當於實驗中的對照組。\n\n須承認此評論指出了一種真實的聆聽經驗：若聽者的注意力集中於旋律，本曲確實提供不了什麼。此類作品要求的是另一種聆聽方式 —— 注意的不是「現在奏什麼」，而是「現在與剛才有何不同」。作品並無問題，惟其所要求的聆聽習慣與大部分聽眾的習慣不同，而這一點作曲家本身亦須承擔部分責任。","markingScheme":"（a）3 分 —— 三方面各處理正確（2）；說明三者同向疊加並在同一時刻轉折（1）。只分別描述而未說明協同關係者最多 2 分。\n（b）3 分 —— 指出屬累積式結構（1）；說明材料不變（1）；說明效果來自重複的累積與比較，只能在時間中產生（1）。\n（c）2 分 —— 突然中斷的效果至少兩項（1）；與漸弱作比較，須觸及對稱與衝擊之別（1）。\n（d）2 分 —— 指出評論以材料數量為準而內容不在材料之中（1）；指出材料不變是令其他變化可被察覺的條件（1）。只答「其實很有變化」而無說明不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":20,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "music";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "music-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "music-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

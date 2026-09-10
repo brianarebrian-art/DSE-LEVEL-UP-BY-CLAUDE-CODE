@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · physics · physics-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">physics</span></h1>
+<div class="sub">來源 physics-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"ph_w1_01","topic":"運動學","difficulty":"basic","question":"一名跑手沿一條長 400 米的環形跑道跑畢一整圈，用時 50 秒，最後返回起點。\n試分別計算其平均速率與平均速度，並解釋兩者數值不同的原因。","explanation":"本題考核標量與向量的分別，而非計算本身。答案為零並非錯誤，正是這一題的考點：位移只看起點與終點的相對位置，與途中經過的路徑無關。常見失分是把兩者都計為 8 m s⁻¹，即把速度當成速率的同義詞；另一常見失分是答出零卻無法說明理由。作答時必須明確寫出「位移為零」這一步，僅寫「因為回到起點」未算完整說明。","type":"text","referenceAnswer":"平均速率 = 總路程 ÷ 時間 = 400 ÷ 50 = 8 m s⁻¹。\n平均速度 = 位移 ÷ 時間 = 0 ÷ 50 = 0 m s⁻¹。\n原因：速率是標量，量度實際走過的路程；速度是向量，量度由起點指向終點的位移。跑畢一整圈後終點與起點重合，位移為零，故平均速度為零，而路程仍為 400 米。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ph_w1_02","topic":"力與運動","difficulty":"intermediate","question":"一個質量為 5.0 kg 的木箱置於傾角 30° 的斜面上，木箱與斜面之間的摩擦係數為 0.20。取 g = 10 m s⁻²。\n（a）計算重力沿斜面向下的分量。\n（b）計算斜面對木箱的正向反作用力，並由此求出摩擦力。判斷木箱會否下滑，並說明依據。\n（c）若在斜面灑水，令摩擦係數降至 0.10，求木箱下滑時的加速度。","explanation":"本題的關鍵在於分解方向的選取：把重力分解為「沿斜面」與「垂直斜面」兩個方向，而非水平與垂直，因為木箱的運動被約束在斜面之上。第二個關鍵是 sin 與 cos 的配對 —— 沿斜面分量用 sin，正向反作用力用 cos，記錯即全題失分。（c）部分容易漏掉的是摩擦力隨正向反作用力改變而改變，不可沿用（b）的數值。","type":"long","referenceAnswer":"（a）重量 W = mg = 5.0 × 10 = 50 N。\n沿斜面分量 = W sin 30° = 50 × 0.5 = 25 N。\n（b）正向反作用力 R = W cos 30° = 50 × 0.866 = 43.3 N。\n摩擦力 f = 0.20 × 43.3 = 8.7 N。\n由於沿斜面向下的分量 25 N 遠大於摩擦力所能提供的 8.7 N，合力不為零，木箱會下滑。\n（c）新摩擦力 f = 0.10 × 43.3 = 4.3 N。\n合力 = 25 − 4.3 = 20.7 N。\n由 F = ma，a = 20.7 ÷ 5.0 = 4.1 m s⁻²，方向沿斜面向下。","markingScheme":"（a）2 分 —— 求出重量 50 N（1）；正確用 sin 30° 求出 25 N（1）。\n（b）3 分 —— 正向反作用力用 cos 30°（1）；摩擦力 8.7 N（1）；比較兩個數值後作出「會下滑」的判斷並說明依據（1）。只寫結論而無比較不給分。\n（c）3 分 —— 重新計算摩擦力（1）；合力 20.7 N（1）；加速度 4.1 m s⁻² 連方向（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ph_w1_03","topic":"熱學","difficulty":"intermediate","question":"將一塊質量 0.20 kg、溫度 90 °C 的金屬放入量熱器內，器中盛有 0.30 kg、溫度 20 °C 的水。混合後的共同溫度為 26 °C。水的比熱容為 4 200 J kg⁻¹ °C⁻¹。\n（a）計算水所吸收的熱量。\n（b）假設沒有熱量散失，計算該金屬的比熱容。\n（c）實際實驗中量熱器與周圍環境有熱交換。這會令（b）所得的比熱容較真實值偏高還是偏低？試說明理由。","explanation":"本題的計算部分並不困難，難點在（c）。判斷系統誤差的方向，必須回到所用的公式，逐項問「這個假設令哪一個量被高估或低估」，再由公式的結構推出結果的方向。憑印象答「因為有熱量散失所以偏高」是最常見的失分 —— 散失的是金屬放出的熱，而水吸收的熱量是實際量度所得，未受影響。另須留意兩邊的 ΔT 並不相同：水升 6 °C，金屬跌 64 °C。","type":"long","referenceAnswer":"（a）Q = mcΔT = 0.30 × 4 200 × (26 − 20) = 7 560 J。\n（b）金屬的溫度變化 ΔT = 90 − 26 = 64 °C。\n假設金屬放出的熱量全部由水吸收：0.20 × c × 64 = 7 560\nc = 7 560 ÷ 12.8 = 590 J kg⁻¹ °C⁻¹（約 5.9 × 10² J kg⁻¹ °C⁻¹）。\n（c）偏低。金屬放出的熱量中有一部分散失至環境，並非全部進入水中；計算時卻假設兩者相等，等於低估了金屬實際放出的熱量。由 c = Q ÷ (mΔT)，Q 被低估，所得的 c 亦隨之偏低。","markingScheme":"（a）2 分 —— 正確代入 mcΔT（1）；7 560 J（1）。\n（b）3 分 —— 金屬 ΔT = 64 °C（1）；列出「金屬放熱 = 水吸熱」的等式（1）；c ≈ 590 J kg⁻¹ °C⁻¹ 連單位（1）。\n（c）2 分 —— 判斷「偏低」（1）；理由回到 c = Q ÷ (mΔT) 說明 Q 被低估（1）。只答方向而無理由不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":12,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ph_w1_04","topic":"電學","difficulty":"intermediate","question":"一個 6.0 Ω 電阻與一個 3.0 Ω 電阻並聯，該並聯組合再與一個 4.0 Ω 電阻串聯，最後接上電動勢 12 V、內阻可略去不計的電池。\n試計算電路的總電阻，以及通過該 4.0 Ω 電阻的電流。","explanation":"本題考核的是先辨認電路結構、後代入公式的次序。並聯電阻的合成值必定小於其中最小的一個（此處 2.0 Ω 小於 3.0 Ω），這個性質可用來即時檢查答案是否合理 —— 若算得 9.0 Ω，不必再看步驟已知有誤。最後一步的重點在於串聯元件的電流相同，所以毋須另行分流計算；把 2.0 A 再除以二是常見的多餘一步。","type":"text","referenceAnswer":"並聯部分：1/R = 1/6.0 + 1/3.0 = 1/6.0 + 2/6.0 = 3/6.0，故 R = 2.0 Ω。\n總電阻 = 2.0 + 4.0 = 6.0 Ω。\n總電流 I = V ÷ R = 12 ÷ 6.0 = 2.0 A。\n4.0 Ω 電阻與並聯組合串聯，即全部電流均通過該電阻，故通過 4.0 Ω 的電流為 2.0 A。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ph_w1_05","topic":"放射現象","difficulty":"hard","question":"碘-131（原子序 53）的半衰期為 8.0 日，放出 β 粒子後衰變為氙（Xe，原子序 54）。\n（a）寫出此衰變的核反應方程式，並說明質量數與原子序如何守恆。\n（b）某醫院於某日接收一個活度為 6.4 × 10⁵ Bq 的碘-131 樣本。24 日後該樣本的活度為多少？\n（c）有人建議改用半衰期長達 5 730 年的碳-14 作同類體內顯影用途。試從半衰期的角度指出此建議的兩個問題。","explanation":"（a）的守恆檢查是評卷的固定得分點，寫出方程式而不說明兩項守恆，通常只得一半分數。（b）的陷阱是把 24 日當成「除以 24 ÷ 8 = 3」之後再乘以 3 而非取 2 的三次方 —— 半衰期是指數關係，不是比例關係。（c）要求把「半衰期長」這一個性質推到兩個不同方向：一個關於訊號強度（活度太低），一個關於照射時間（無法及時衰減）。只答其中一面而換一種說法重複，不會取得第二個得分點。","type":"long","referenceAnswer":"（a）¹³¹₅₃I → ¹³¹₅₄Xe + ⁰₋₁e\n質量數：131 = 131 + 0，守恆。原子序：53 = 54 + (−1)，守恆。\nβ 粒子由核內一個中子轉變為一個質子而放出，故質子數增一、中子數減一，質量數不變。\n（b）24 ÷ 8.0 = 3，即經歷三個半衰期。\n活度 = 6.4 × 10⁵ ÷ 2³ = 6.4 × 10⁵ ÷ 8 = 8.0 × 10⁴ Bq。\n（c）其一：半衰期極長代表單位時間內衰變的原子核極少，即活度極低，探測器接收到的訊號微弱，須注入極大量的物質才能成像，本身即構成危害。\n其二：進入人體後，碳-14 的活度在病人一生之內幾乎不會下降，等於長期持續受到輻射照射；碘-131 則在數星期內衰減至可忽略的水平，照射時間有限。","markingScheme":"（a）3 分 —— 方程式的產物與 β 粒子正確（1）；質量數守恆的說明（1）；原子序守恆的說明（1）。\n（b）3 分 —— 辨認為三個半衰期（1）；除以 2³ 而非乘除比例（1）；8.0 × 10⁴ Bq 連單位（1）。\n（c）3 分 —— 活度過低／訊號不足一點（1）；體內照射時間過長一點（1）；兩點確實由「半衰期」推出而非泛談安全（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "physics";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "physics-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "physics-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

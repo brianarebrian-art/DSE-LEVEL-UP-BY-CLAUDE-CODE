@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "design-tech-written-b1.json",
+    "subject": "design-tech",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "dt_w1_01": "pending",
+    "dt_w1_02": "pending",
+    "dt_w1_03": "pending",
+    "dt_w1_04": "pending",
+    "dt_w1_05": "pending"
+  }
+}

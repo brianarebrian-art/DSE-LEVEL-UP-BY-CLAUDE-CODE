@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "ths-written-b1.json",
+    "subject": "ths",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "th_w1_01": "pending",
+    "th_w1_02": "pending",
+    "th_w1_03": "pending",
+    "th_w1_04": "pending",
+    "th_w1_05": "pending"
+  }
+}

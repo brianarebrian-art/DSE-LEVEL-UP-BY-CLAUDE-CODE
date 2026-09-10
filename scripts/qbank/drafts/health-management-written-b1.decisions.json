@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "health-management-written-b1.json",
+    "subject": "health-management",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "hm_w1_01": "pending",
+    "hm_w1_02": "pending",
+    "hm_w1_03": "pending",
+    "hm_w1_04": "pending",
+    "hm_w1_05": "pending"
+  }
+}

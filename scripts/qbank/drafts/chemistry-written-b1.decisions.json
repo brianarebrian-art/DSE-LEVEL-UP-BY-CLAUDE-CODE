@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "chemistry-written-b1.json",
+    "subject": "chemistry",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ch_w1_01": "pending",
+    "ch_w1_02": "pending",
+    "ch_w1_03": "pending",
+    "ch_w1_04": "pending",
+    "ch_w1_05": "pending"
+  }
+}

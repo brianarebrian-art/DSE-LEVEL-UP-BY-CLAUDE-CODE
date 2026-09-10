@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "bafs-written-b1.json",
+    "subject": "bafs",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "bf_w1_01": "pending",
+    "bf_w1_02": "pending",
+    "bf_w1_03": "pending",
+    "bf_w1_04": "pending",
+    "bf_w1_05": "pending"
+  }
+}

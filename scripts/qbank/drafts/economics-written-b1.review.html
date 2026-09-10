@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · economics · economics-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">economics</span></h1>
+<div class="sub">來源 economics-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"ec_w1_01","topic":"基礎概念","difficulty":"basic","question":"陳小姐現職月薪 18 000 元。她考慮辭職修讀一個為期一年的全日制課程，學費 60 000 元，另需購買書籍及器材共 8 000 元。修讀期間她仍須繳付原有的房租每月 6 000 元。\n試計算她修讀該課程一年的機會成本，並說明哪些項目不應計入。","explanation":"機會成本的計算有兩個常犯錯誤，本題各針對一個。其一是漏掉隱含成本 —— 只把學費與書籍加起來得 68 000 元，忽略了一整年放棄的薪金，而後者才是本題金額最大的一項。其二是把不隨決定改變的支出計入 —— 房租無論選哪一條路都要付，把它加進去等於高估了修讀的代價。判斷的方法很直接：逐項問「若不修讀，這筆錢還會不會發生」。答案為「會」的一律剔除。","type":"text","referenceAnswer":"應計入的項目：\n放棄的薪金（隱含成本）= 18 000 × 12 = 216 000 元\n學費（外顯成本）= 60 000 元\n書籍及器材（外顯成本）= 8 000 元\n機會成本合計 = 216 000 + 60 000 + 8 000 = 284 000 元。\n\n不應計入的項目：房租。\n理由：房租每月 6 000 元，無論她修讀與否都要繳付，不會因這項決定而改變，故不屬於選擇該課程所放棄的代價。機會成本只計算因作出此選擇而產生或放棄的價值。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w1_02","topic":"需求與供應","difficulty":"intermediate","question":"某市住宅租務市場的均衡月租為 12 000 元，均衡數量為 50 000 個單位。政府為紓緩居住負擔，立法規定月租上限為 9 000 元。\n（a）以需求與供應圖說明此措施的即時影響，並指出短缺的性質。\n（b）在租金上限之下，住宅單位將以何種方式分配？舉出兩種可能出現的非價格分配方式。\n（c）長期而言，此措施對住宅單位的供應數量與質素分別有何影響？試說明機制。\n（d）有意見認為「既然租金上限令短缺出現，把上限定得更低就可以令更多人負擔得起」。試評論此說法。","explanation":"（c）是本題與一般教科書答案拉開距離的地方。多數答案只寫「供應減少」，而質素下降這一項同樣重要，而且理論上更有意思：價格被管制之後，交易雙方仍會尋找其他可調整的維度，質素、附加條件、甚至排隊時間都成為變相的價格。能夠寫出「調整轉移到價格以外的維度」這句話，顯示理解價格管制的本質。（d）要求評論一個把方向推到極端的推論，作答時應先指出其邏輯錯誤（上限不增加供應），再指出後果的分配面（成功者與被排除者），最後提出方向正確的替代政策。只答「不同意，因為短缺會更嚴重」屬答對一半。","type":"long","referenceAnswer":"（a）9 000 元低於均衡租金 12 000 元，屬有效的價格上限。\n在 9 000 元的租金水平，需求量上升而供應量下跌，兩者之差即為短缺。圖上表現為需求曲線與供應曲線在該價格線上的橫向距離。\n此短缺的性質：並非因為住宅單位總數突然減少，而是價格被禁止上升至結清市場的水平，令願意租住者多於願意出租者。\n（b）非價格分配方式（任舉兩項）：\n先到先得的排隊輪候；業主按個人偏好或關係揀選租客；要求租客支付「鞋金」或超額按金等法例以外的額外付款；甚至以較低的維修承諾作交換。\n（c）供應數量：長期而言，租金受限令出租物業的回報下降，業主會把單位改作自住、出售、或轉作其他用途，新建出租單位的誘因亦減少，故供應量進一步下跌，短缺較短期更為嚴重。\n質素：租金既然無法上調，業主減少維修保養以降低成本；而在短缺之下，單位即使失修仍不愁租客，令業主缺乏改善的壓力。故單位質素隨時間下降。此處實際發生的是價格以外的調整 —— 價格被管制，市場便在質素這一維度上尋回平衡。\n（d）此說法不成立。租金上限並不會令住宅單位增加，它只改變了「以什麼方式分配既有單位」。上限定得愈低，短缺愈大，能夠租到單位的人愈少 —— 成功租到的人確實付得較少，但被排除在外的人由「租金貴」變成「根本租不到」，處境更差。\n更根本的問題是：真正令人負擔困難的是供應不足，而價格上限對供應的作用是負面的。要令更多人負擔得起，須從增加供應入手（例如放寬土地供應、簡化建屋審批），或以針對性的租金津貼直接補助有需要者，而不使市場價格失去分配訊號的功能。","markingScheme":"（a）3 分 —— 指出 9 000 元為有效上限（1）；需求量上升、供應量下跌（1）；短缺為兩者在該價格下的差距，並說明其成因為價格不能上升（1）。\n（b）2 分 —— 兩種非價格分配方式各 1 分。\n（c）2 分 —— 供應數量下降並說明業主的反應（1）；質素下降並說明其機制（1）。只寫「供應減少」而無質素一項，此項最多 1 分。\n（d）2 分 —— 指出上限不會增加供應、短缺反而擴大（1）；指出成功租到者與被排除者處境不同，並提出方向正確的替代做法（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w1_03","topic":"彈性","difficulty":"intermediate","question":"某戲院現時票價 80 元，每月售出 10 000 張門票。經理考慮把票價調高至 96 元，並估計售票量將跌至 8 500 張。\n（a）計算此價格變動範圍內的需求價格彈性（以絕對值表示），並判斷需求屬富彈性抑或乏彈性。\n（b）計算加價前後的總收益，並說明計算結果與（a）的判斷是否一致。\n（c）該經理另指出：「暑假期間觀眾的選擇較少，需求會較乏彈性。」若此判斷成立，加價的效果會有何不同？\n（d）指出一項會令戲院門票需求變得較富彈性的因素，並說明理由。","explanation":"（b）並非獨立的計算題，而是用來驗證（a）。彈性與總收益之間有一條固定關係：需求乏彈性時加價令總收益上升，富彈性時加價令總收益下跌。若兩部分的答案互相矛盾，即代表其中一步算錯，這是一個可以自行檢查的機制。留意彈性一律取絕對值後再與 1 比較，把 −0.75 直接說成「小於 1 所以乏彈性」在數值上碰巧成立，但推理有誤。（d）的三個因素之中，替代品數目是最根本的一項 —— 其餘兩項本質上都在影響消費者尋找替代的能力或動機。","type":"long","referenceAnswer":"（a）價格變動百分比 = (96 − 80) ÷ 80 × 100% = 20%\n數量變動百分比 = (8 500 − 10 000) ÷ 10 000 × 100% = −15%\n需求價格彈性（絕對值）= 15% ÷ 20% = 0.75\n0.75 小於 1，故需求屬乏彈性。\n（b）加價前總收益 = 80 × 10 000 = 800 000 元\n加價後總收益 = 96 × 8 500 = 816 000 元\n總收益上升 16 000 元。\n此結果與（a）一致：需求乏彈性時，數量下跌的百分比小於價格上升的百分比，故加價會令總收益上升。兩者並非兩件事，而是同一件事的兩種表述。\n（c）若暑假期間需求更為乏彈性，即同樣的加價幅度所引致的售票量跌幅更小，總收益的升幅會更大。換言之，同一項加價在需求較乏彈性的時段所帶來的收益改善較為顯著；這亦解釋了為何不少行業在需求乏彈性的旺季調高價格。\n（d）可令需求較富彈性的因素（任舉一項並說明）：\n替代品增多 —— 若串流平台在較短時間內提供同一批電影，觀眾可輕易改為在家觀看，加價時流失的觀眾便會增多。\n門票支出佔收入的比重上升 —— 支出佔比愈大，消費者對價格變動愈敏感。\n可供考慮的時間愈長 —— 短期內觀眾未必即時改變習慣，時間愈長，尋找替代方式的機會愈多，故長期需求一般較短期富彈性。","markingScheme":"（a）3 分 —— 兩個百分比變動各 1 分；0.75 及「乏彈性」的判斷（1）。未取絕對值即與 1 比較者扣此分。\n（b）3 分 —— 兩個總收益各 1 分；指出結果與乏彈性的判斷一致並說明理由（1）。\n（c）1 分 —— 指出售票量跌幅更小、總收益升幅更大。\n（d）1 分 —— 舉出一項因素並說明其如何影響消費者轉向替代品的能力。只列出因素名稱而無理由不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w1_04","topic":"宏觀經濟","difficulty":"intermediate","question":"某經濟體某年的資料如下（以億元計）：\n私人消費開支 6 200；本地固定資本形成總額 1 800；政府消費開支 900；存貨變動 100；貨品及服務出口 4 500；貨品及服務進口 4 000\n\n（a）以開支法計算該年的本地生產總值（GDP）。\n（b）翌年名義 GDP 上升 4%，而同期物價水平上升 5%。試判斷實質 GDP 的變動方向，並說明理由。","explanation":"（a）的兩個常見失分位置：其一是漏掉存貨變動，投資一項只計固定資本形成；其二是進口的處理 —— 進口須減去，因為它並非本地生產，計算開支時已包含在消費與投資之內，不減去即會重複計算。（b）考核的是名義與實質的分別，這是宏觀經濟最基本亦最常被混淆的一組概念。判斷方法簡單直接：把名義增長率與物價增長率相減，餘數即約為實質增長率。留意這是一個近似算法，在變幅不大時足夠準確，DSE 的評卷亦接受此做法。","type":"text","referenceAnswer":"（a）GDP = 私人消費 + 投資 + 政府消費 + 淨出口\n投資 = 本地固定資本形成總額 + 存貨變動 = 1 800 + 100 = 1 900\n淨出口 = 4 500 − 4 000 = 500\nGDP = 6 200 + 1 900 + 900 + 500 = 9 500 億元。\n（b）實質 GDP 下跌。\n名義 GDP 的變動包含產量與物價兩部分。物價上升 5% 而名義 GDP 只上升 4%，即產量的變動不足以抵銷物價的升幅，故按固定價格計算的實質產出實際上減少了，約下跌 1%。\n此結果的意義在於：名義數字上升並不代表實際生產的貨品及服務增加。判斷經濟是否真正增長，必須先剔除物價因素。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w1_05","topic":"市場失靈","difficulty":"hard","question":"某沿海地區的居民長期受風暴潮威脅。政府考慮興建一道海堤，保護整段海岸線。\n（a）解釋為何海堤具備共用品的兩項特徵，並說明何以私人市場難以提供足夠數量的海堤。\n（b）該地區另有一家工廠向海中排放污水，令附近漁民的漁獲下降。試指出此情況所涉及的市場失靈類別，並比較它與（a）在成因上的分別。\n（c）就（b）的情況，提出兩項可行的政策，並各指出一項限制。\n（d）有意見認為「凡市場失靈，政府就應該介入」。試評論此說法。","explanation":"本題把兩類市場失靈並列，而（b）的比較部分正是分數集中之處：許多答案能分別說明共用品與外部性，卻說不出兩者在成因與方向上的分別。記住一組對照即可 —— 共用品的問題是「排他不到，所以無人肯付款，結果供應太少」；負外部性的問題是「成本推卸得出去，所以生產者不必承擔，結果生產太多」。（d）考核的是不把課本結論當成萬能公式的能力。市場失靈是介入的必要條件而非充分條件，能夠指出政府介入本身有成本與資訊限制，屬較高層次的作答；只答「同意，因為政府可以矯正市場失靈」則停留在複述定義。","type":"long","referenceAnswer":"（a）海堤具備共用品的兩項特徵：\n非競爭性 —— 一名居民受海堤保護，並不會減少其他居民所得到的保護。使用者增加，並不需要額外興建海堤。\n非排他性 —— 海堤一旦建成，無法把不付款的居民排除於保護之外。整段海岸線受保護，居住其中的人自然受惠。\n私人市場難以提供的原因：由於無法排他，每一名居民都有誘因等待他人付款而自己免費享用，此即免費乘車者問題。當所有人都如此考慮，願意付款的總額便遠低於海堤的實際價值，私人企業無從收回成本，故供應量低於社會所需水平，甚至完全不獲提供。\n（b）此情況屬負外部性（外部成本）。\n工廠在決定產量時只計算自己的私人成本，而漁民漁獲下降這項成本並未落在工廠身上。社會成本高於私人成本，故工廠的產量高於社會最適水平。\n與（a）在成因上的分別：共用品的問題在於【無法排他】，令付款與受惠脫節，導致供應不足；負外部性的問題在於【成本未被計入】，令生產者的私人計算與社會計算不一致，導致生產過多。前者是供應太少，後者是生產太多，方向相反，成因亦不同。\n（c）政策一：向工廠徵收排污費，稅額按排放量計算。\n限制：政府難以準確量度外部成本的金額。稅額訂得過低則無法有效減少排放，訂得過高則令生產減少至低於社會最適水平。\n政策二：訂立排放標準，規定水質須達特定要求方可排放。\n限制：規管需要持續的監察與執法，成本不菲；而劃一標準未必符合成本效益，因為不同工廠減少排放的成本並不相同。\n（另可接受：界定並保障漁民的產權，讓雙方議價；限制為交易成本高、當事人眾多時難以達成協議。）\n（d）此說法過於絕對。市場失靈確實構成政府考慮介入的理由，但並非充分理由，原因有三：\n其一，政府介入本身有成本 —— 包括行政、監察、執法的資源，以及規管所引致的效率損失。若介入的成本高於所矯正的損失，介入反而令社會整體境況更差。\n其二，政府未必掌握所需資訊。（c）已指出訂定稅額須知道外部成本的實際金額，而這項資訊在現實中極難準確取得。\n其三，政府介入亦可能失效 —— 政策受各方壓力影響、執行不到位、或產生非預期的後果。\n較穩妥的表述是：市場失靈是啟動評估的理由，而是否介入、以何種方式介入，須逐個情況比較介入的預期效益與成本。","markingScheme":"（a）3 分 —— 非競爭性連解釋（1）；非排他性連解釋（1）；免費乘車者問題導致供應不足（1）。只列出兩項特徵的名稱而無解釋，最多 1 分。\n（b）3 分 —— 正確指出負外部性（1）；說明社會成本高於私人成本、產量高於社會最適水平（1）；比較兩者成因與方向的分別（1）。\n（c）2 分 —— 兩項政策各 1 分，每項須連同一項限制；只列政策而無限制不給分。\n（d）2 分 —— 指出市場失靈非充分理由（1）；舉出至少一項具體理由，如介入成本或資訊限制（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":17,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "economics";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "economics-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "economics-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

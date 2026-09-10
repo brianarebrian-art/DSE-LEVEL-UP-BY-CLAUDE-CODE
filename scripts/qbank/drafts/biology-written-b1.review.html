@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · biology · biology-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">biology</span></h1>
+<div class="sub">來源 biology-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"bi_w1_01","topic":"細胞","difficulty":"basic","question":"把一片新鮮的紅蘿蔔薄片分別放入蒸餾水及濃鹽水中，各浸泡三十分鐘。\n試預測兩片紅蘿蔔的軟硬度會有何變化，並以水勢及滲透作用解釋原因。","explanation":"本題考核的是把一個機制應用到方向相反的兩種情況，而不是背誦「滲透作用」的定義。得分關鍵在於每一次都指明水勢的比較對象 —— 是外界溶液與細胞液相比，而非籠統地說「水多水少」。另一個常被忽略的細節是植物細胞有細胞壁：水分過量進入不會令細胞脹破，只會產生膨壓，這正是植物組織變硬挺的原因；若把動物細胞的溶血現象套用於此，即屬概念錯配。","type":"text","referenceAnswer":"放入蒸餾水的一片會變得較硬挺。蒸餾水的水勢高於細胞液，水分子經細胞膜由高水勢一方向低水勢一方淨移入細胞，液泡脹大並把細胞質推向細胞壁，產生膨壓，故變硬挺。\n放入濃鹽水的一片會變軟。濃鹽水的水勢低於細胞液，水分子淨移出細胞，液泡縮小，膨壓下降，細胞膜與細胞壁分離，出現質壁分離，故變軟。\n兩者的水分移動方向不同，但機制相同：水分子均由水勢較高一方移向水勢較低一方，屬被動運輸，不需消耗能量。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w1_02","topic":"酶","difficulty":"intermediate","question":"某研究量度一種消化酶在攝氏 10 度至 60 度之間的反應速率，發現速率由 10 度起逐步上升，於 40 度達到最高，其後急降，至 60 度時接近零。\n（a）解釋為何反應速率在 10 度至 40 度之間隨溫度上升而增加。\n（b）解釋為何超過 40 度之後速率急降，並說明此下降與（a）的上升在性質上有何根本分別。\n（c）若把已升溫至 60 度的酶溶液冷卻回 40 度，反應速率能否回復至原來的最高值？試說明。","explanation":"曲線兩側看似對稱，成因卻完全不同 —— 這一點正是本題的考點，亦是（b）必須明確寫出「根本分別」的原因。只答「溫度太高酶會失效」不會取得結構層面的分數。（c）是一條可以由（b）直接推出的題目：既然下降的原因是結構被破壞，而非分子運動過快，則移除熱能並不會令結構回復。答「可以回復，因為溫度已回到最適值」正是把（a）的機制誤用於（b）的情況。留意「變性」與「抑制」不同，後者可以是可逆的。","type":"long","referenceAnswer":"（a）溫度上升令酶分子與受質分子的動能增加，兩者碰撞的頻率與有效碰撞的比例均上升，故單位時間內形成的酶與受質複合物增多，反應速率上升。\n（b）超過最適溫度後，過高的熱能破壞維持酶三維結構的氫鍵及其他弱作用力，活性部位的形狀改變，受質不再能與之吻合，酶變性。變性的酶分子逐步累積，故速率急降。\n根本分別：（a）的上升只是分子運動加快，酶本身的結構完全沒有改變；（b）的下降則是酶的結構本身被破壞。前者屬動力學上的變化，後者屬結構上的損壞。\n（c）不能。變性涉及三維結構的破壞，在一般實驗條件下不可逆轉；冷卻只能令分子動能回落，卻無法令已改變形狀的活性部位復原。故速率仍然接近零。","markingScheme":"（a）2 分 —— 動能增加令碰撞頻率上升（1）；酶與受質複合物形成增多（1）。\n（b）4 分 —— 指出超過最適溫度（1）；氫鍵等弱作用力被破壞（1）；活性部位形狀改變、受質不再吻合（1）；明確指出與（a）的分別在於「結構受損」而非「運動加快」（1）。\n（c）2 分 —— 判斷「不能」（1）；理由為變性不可逆、冷卻無法復原活性部位（1）。只答「不能」而無理由不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w1_03","topic":"遺傳","difficulty":"intermediate","question":"人類的白化病由一個隱性等位基因控制，位於常染色體上。一對膚色正常的夫婦育有一名患白化病的兒子。\n（a）以 A 代表顯性等位基因、a 代表隱性等位基因，寫出這對夫婦的基因型，並說明判斷依據。\n（b）以遺傳圖解或棋盤方格顯示其後代的基因型比例，並計算下一名子女患白化病的概率。\n（c）該夫婦的女兒膚色正常。她是帶因者的概率為多少？試說明此數值為何不是二分之一。","explanation":"（a）的推理方向是由子女倒推父母，這是遺傳題最常考的方向：隱性性狀出現，即代表兩位親代各自貢獻了一個隱性等位基因。（c）是本題的分水嶺。1 : 2 : 1 這個比例本身沒有錯，但題目多給了一項資料 —— 女兒膚色正常 —— 這項資料把 aa 從可能性中剔除，餘下的三份之中有兩份是 Aa。凡題目寫明「該子女膚色正常」而仍答 1/2，即是沒有使用題目給出的全部資料。作答時應明確寫出「排除 aa 之後」這一步，僅寫 2/3 而無說明，通常只得一半分數。","type":"long","referenceAnswer":"（a）兩人的基因型均為 Aa。\n依據：兒子患病，基因型必為 aa，其中一個 a 來自父親、一個 a 來自母親，故父母各自至少帶有一個 a。而父母膚色正常，必定帶有至少一個 A，故兩人皆為 Aa。\n（b）Aa × Aa：\n配子 A、a 與 A、a 組合，得 AA : Aa : aa = 1 : 2 : 1。\n下一名子女患白化病（aa）的概率為 1/4。\n（c）3分之1。\n因為題目已知該女兒膚色正常，即已排除 aa 這一種可能。在餘下的 AA : Aa = 1 : 2 之中，Aa 佔 2/3，故她是帶因者的概率為 2/3。\n1/2 之所以不對，是因為 1/2 是「Aa 在全部四種組合中所佔的比例」，並未把「已知她不是白化病患者」這項資料計算在內。已知的資料改變了樣本空間。","markingScheme":"（a）3 分 —— 兩人皆 Aa（1）；由兒子 aa 倒推父母各帶一個 a（1）；由父母表型正常推出各帶一個 A（1）。\n（b）3 分 —— 配子與棋盤方格或遺傳圖解正確（1）；AA : Aa : aa = 1 : 2 : 1（1）；概率 1/4（1）。\n（c）2 分 —— 2/3（1）；說明因已知非患者而排除 aa、樣本空間改變（1）。答 1/2 全項不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w1_04","topic":"神經與協調","difficulty":"intermediate","question":"手指觸及極熱的物件時會不自覺地立即縮回。\n試按次序列出此反射弧所經過的結構，並解釋此反應為何比「看見物件並決定移開手」快得多。","explanation":"本題的評分重點在「次序」與「數目」兩件事：五個結構要齊備並按正確次序排列，漏掉中間神經元是最常見的失分。解釋速度差異時，只寫「因為不經大腦」屬部分正確而未夠具體 —— 得分關鍵是指出突觸數目較少，而突觸傳遞是整條路徑中最慢的一環。最後一點值得記住：反射動作發生時大腦並非完全沒有參與，只是它接收訊息的時間在動作之後，故不構成動作的原因。把這一點寫出來，可顯示對「反射」與「有意識反應」的分別有清楚理解。","type":"text","referenceAnswer":"反射弧的次序：\n感受器（皮膚內的痛覺或溫度感受器）→ 感覺神經元 → 脊髓內的中間神經元 → 運動神經元 → 效應器（上臂的屈肌）。\n此反應較快的原因：訊息在脊髓內即完成整合並發出指令，不必先上傳至大腦皮質作有意識的判斷，再由大腦下達指令。傳導路徑較短，途中經過的突觸數目較少，而突觸傳遞是神經傳導中最費時的一環，故總反應時間大幅縮短。\n大腦仍會接收到痛覺訊息，但那是在手已經縮回之後才產生的感覺，並非引發動作的原因。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w1_05","topic":"光合作用","difficulty":"hard","question":"有人希望驗證「二氧化碳濃度是光合作用速率的限制因子」。他把水生植物金魚藻置於試管內的水中，以數算單位時間內放出的氣泡數目量度光合作用速率。\n（a）在此實驗中，除二氧化碳濃度外，須控制哪三個變量？各說明不控制的後果。\n（b）如何在不改變其他條件的前提下，提供不同的二氧化碳濃度？\n（c）實驗結果顯示，二氧化碳濃度上升至某一水平後，氣泡數目不再增加。試提出兩個可能的解釋。\n（d）指出「以氣泡數目量度光合作用速率」這個方法的一項限制。","explanation":"本題考核的是實驗設計而非知識點的記誦，而（a）的要求比一般「列出控制變量」高一級：每一項都要寫出「不控制會怎樣」。只列出三個名詞，通常只取得一半分數，因為題目問的是理由。（b）容易被忽略的是「在不改變其他條件的前提下」這一句 —— 直接向水中吹氣同時會改變溫度與含氧量，並非合格答案。（c）的兩個解釋必須指向不同的原因，若兩者都在講「其他因素成為限制」，只算一項。（d）是誠實地評價方法本身，這一類問題在近年的卷二相當常見，關鍵在於指出量度指標與所欲量度的事物之間存在差距，而非批評操作技巧。","type":"long","referenceAnswer":"（a）三個須控制的變量：\n光強度 —— 若光源距離改變，光強度即成為另一個變化中的因素，所得的差異無法歸因於二氧化碳濃度。\n溫度 —— 溫度影響光合作用中各種酶的活性；若試管因燈泡發熱而升溫，速率的上升可能來自溫度而非二氧化碳。\n植物材料 —— 同一批金魚藻、長度相同，因為不同個體的葉面積與生理狀態不同，會令起點不一致。\n（b）加入不同質量的碳酸氫鈉於同體積的水中，配成一系列已知濃度的溶液。碳酸氫鈉在水中釋出二氧化碳，而水的體積、溫度與離子環境的變化極小，故其他條件大致不變。\n（c）解釋一：二氧化碳已不再是限制因子，另一個因素（例如光強度或溫度）成為新的限制因子，故再增加二氧化碳亦無作用。\n解釋二：酶或光合作用所需的其他組分已達飽和，反應速率受制於系統本身的最大處理能力。\n（d）氣泡數目只反映氣體的數目，不反映其體積或成分。氣泡大小可以不一，而放出的氣體亦不全是氧氣（含溶於水中而後釋出的其他氣體），故所得數值只是一個相對指標，不能作絕對的產氧量量度。","markingScheme":"（a）6 分 —— 三個變量各 2 分：名稱正確（1）、不控制的後果具體（1）。只寫名稱者每項 1 分。\n（b）1 分 —— 以碳酸氫鈉配製一系列濃度，或其他能保持其他條件不變的可行做法。\n（c）2 分 —— 兩個解釋各 1 分，且必須指向不同原因。\n（d）1 分 —— 指出氣泡數目與實際產氧量之間的差距（大小不一、成分不純或類似論點）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "biology";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "biology-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "biology-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

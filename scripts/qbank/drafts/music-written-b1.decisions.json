@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "music-written-b1.json",
+    "subject": "music",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "mu_w1_01": "pending",
+    "mu_w1_02": "pending",
+    "mu_w1_03": "pending",
+    "mu_w1_04": "pending",
+    "mu_w1_05": "pending"
+  }
+}

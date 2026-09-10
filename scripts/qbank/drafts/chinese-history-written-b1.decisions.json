@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "chinese-history-written-b1.json",
+    "subject": "chinese-history",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "chh_w1_01": "pending",
+    "chh_w1_02": "pending",
+    "chh_w1_03": "pending",
+    "chh_w1_04": "pending",
+    "chh_w1_05": "pending"
+  }
+}

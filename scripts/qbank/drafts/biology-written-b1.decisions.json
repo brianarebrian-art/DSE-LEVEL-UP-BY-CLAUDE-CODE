@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "biology-written-b1.json",
+    "subject": "biology",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "bi_w1_01": "pending",
+    "bi_w1_02": "pending",
+    "bi_w1_03": "pending",
+    "bi_w1_04": "pending",
+    "bi_w1_05": "pending"
+  }
+}

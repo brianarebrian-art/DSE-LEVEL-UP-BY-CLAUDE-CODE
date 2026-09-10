@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · health-management · health-management-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">health-management</span></h1>
+<div class="sub">來源 health-management-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"hm_w1_01","topic":"整全健康・概念應用","difficulty":"basic","question":"世界衞生組織把健康界定為身體、心理及社會三方面的完全良好狀態，而非僅指沒有疾病。\n試以一名剛退休的六十五歲人士為例，說明三個面向各自可能出現的問題，並解釋何以只處理身體一項並不足夠。","explanation":"本題的關鍵在最後一部分，而三個理由應分別指向不同層面：互相影響（機制）、定義的覆蓋範圍（何謂健康）、介入設計（實務）。若三點都在講「三者有關係」，實際上只算一項。\n第二個理由值得特別留意：它指出一個以身體為本的定義會令某類問題【在制度上不可見】—— 沒有指標，就沒有紀錄；沒有紀錄，就沒有人跟進。這種「定義決定了什麼會被看見」的觀察，在本科的評鑑題中屢屢適用。\n舉例務必貼緊題目所給的處境（剛退休、六十五歲）。泛論「長者容易孤獨」而未扣回退休這個具體轉折，會失去情境分。","type":"text","referenceAnswer":"身體方面：退休後日常活動量下降，肌肉量與心肺功能隨之減退；作息失去固定架構，可能出現睡眠時間紊亂；慢性病（高血壓、糖尿病）若原由公司體檢跟進，退休後可能失去定期監察。\n心理方面：職業身分是許多人自我價值的主要來源，退休令這一來源突然消失，可能出現失落、無用感，甚至抑鬱徵狀；生活失去外在時間表之後，部分人會感到日子漫長而缺乏目標。\n社會方面：工作場所本身是一個現成的社交網絡。退休之後，日常接觸的人數大幅減少，而在職時建立的關係多依附於工作情境，難以自然延續，社交圈因而收窄。\n\n何以只處理身體一項並不足夠：\n其一，三個面向互相影響。社交退縮令人減少外出，外出減少令活動量進一步下降，身體狀況隨之轉差；而體能下降又令人更不願外出，形成循環。單獨處理其中一環，另外兩環會把它拉回原處。\n其二，健康的目標並非數值正常，而是能夠過想過的生活。一名血壓與血糖全部達標、卻整日獨處而毫無目標的長者，按醫學指標屬健康，而其生活質素明顯欠佳。若健康的定義只計身體，這種情況便無從識別，亦無人介入。\n其三，最有效的介入往往同時觸及多於一個面向。參加社區的晨運隊，既是運動（身體）、也是規律（心理）、亦是與人接觸（社會）。以整全的角度設計介入，成效通常高於三項分開處理。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w1_02","topic":"三級預防分類","difficulty":"intermediate","question":"（a）說明一級、二級及三級預防的定義，並各舉一個與糖尿病相關的實例。\n（b）某地區的糖尿病篩查計劃參與率長期偏低。試指出兩個可能的原因，並各提出一項針對性的改善措施。\n（c）有意見認為「把資源集中於三級預防最為划算，因為病人已經確診，效果看得見」。試評論此說法。","explanation":"（a）末段那句「分別在於介入的時間點而非措施本身」值得記住 —— 它可以即時解決分類上的疑難。例如「運動」既可以是一級亦可以是三級，關鍵在對象是誰。凡分類題出現同一項措施而歸類不同，此原則即為答案。\n（c）的第二個問題是本題的最高一檔：可見度與有效度是兩件事。一級預防之所以看似成效不彰，是因為它的成果是「沒有發生的事」，而沒有發生的事無法計數。這是量度上的問題，不是效果上的問題。能夠把這一點說清楚，比列舉預防的好處有力得多。\n（b）的改善措施必須針對所指出的原因。若原因是「缺乏自覺症狀」而措施答「加強宣傳」，兩者並不對應 —— 宣傳處理的是資訊不足，而非動機不足。把篩查嵌入既有接觸點，才是針對「不覺得有需要」這個具體障礙的做法。","type":"long","referenceAnswer":"（a）一級預防 —— 在疾病發生之前介入，目的是減少發病。\n實例：推廣均衡飲食與恆常運動、減少含糖飲品的攝取、在學校及職場推行健康生活教育。\n\n二級預防 —— 在疾病早期而尚未出現明顯症狀之時發現並處理，目的是及早治療、阻止惡化。\n實例：為高風險群組（家族史、肥胖、四十五歲以上）提供定期血糖篩查，及早識別前期糖尿病並介入。\n\n三級預防 —— 在疾病已確診之後介入，目的是減少併發症與失能，維持生活功能。\n實例：糖尿病人的足部護理與眼底檢查、血糖自我監測教育、併發症的康復服務。\n\n三者的分別在於介入的時間點，而非措施本身的性質 —— 同一項運動指導，用於未病者是一級，用於已確診者則屬三級。\n\n（b）兩個可能原因及改善措施：\n原因一 —— 缺乏自覺症狀，故不覺得有需要。糖尿病早期通常沒有明顯不適，居民主觀上並不認為自己有病，篩查的必要性不易感受到。\n措施：把篩查嵌入既有的接觸點，而非另設一個須主動前往的服務。例如在長者健康中心的例行覆診、社區中心的活動日、地區診所的其他就診中順帶提供，令參與所需的額外行動接近於零。\n\n原因二 —— 時間與交通成本，加上對結果的憂慮。在職居民須請假前往，長者則受行動能力所限；亦有人擔心一旦確診會影響保險或就業，因而寧可不知。\n措施：一方面提供流動篩查車、延長至周末及晚間時段，降低前往的成本；另一方面在宣傳中明確說明資料的保密安排，並強調早期發現可透過生活方式逆轉，減輕確診等同壞消息的印象。\n\n（c）評論：\n此說法有其部分道理，但整體不能成立。\n\n合理之處：三級預防的對象明確、成效可量度（併發症率、住院日數），資源投入與結果之間的關係較易顯示，在問責與撥款的角度上確實有其吸引力。\n\n問題之一：成本結構被忽略。糖尿病一旦進入併發症階段，透析、視網膜手術、截肢與長期照顧的費用遠高於前期介入。把資源集中於下游，等於選擇在最昂貴的階段才付費。\n\n問題之二：所謂效果看得見，正因為三級預防的成效較易量度，而非因為它較有效。一級預防的成效體現為「沒有發生的病例」，這在統計上難以歸功於任何單一措施，故顯得不彰。以可見度作為分配資源的準則，會系統性地低估所有預防性工作 —— 這是一個量度方法上的偏差，不是效益上的差異。\n\n問題之三：三者並非互相替代。一級預防減少新增個案，二級預防令已發生者停留在較易處理的階段，三級預防照顧已確診者。削減前兩者，長遠只會令三級預防的服務對象不斷增加，成本隨之上升。\n\n較公允的表述是：三個層級服務於不同的目標，應按人口的疾病負擔與各層級的邊際效益分配資源，而非按成效的可見度分配。","markingScheme":"（a）3 分 —— 三個層級各 1 分，須同時有定義與糖尿病實例。能指出三者按介入時間點區分者，屬完整作答。\n（b）4 分 —— 兩組各 2 分：原因具體（1）、措施確實針對該原因（1）。措施與原因不對應者只給 1 分。\n（c）2 分 —— 承認其合理之處（1）；至少指出一項實質問題，成本結構、可見度偏差或三者非互相替代皆可（1）。一面倒同意或反對者最多 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w1_03","topic":"照顧倫理","difficulty":"intermediate","question":"一名八十歲、認知能力仍然清晰的長者拒絕接受醫生建議的手術，家人則堅持要她接受。\n（a）指出此情況所涉及的兩項倫理原則，並說明其衝突所在。\n（b）說明「知情同意」須具備哪三項要素，並指出何以「家人同意」不能取代「當事人同意」。\n（c）若該長者的認知能力已明顯衰退，決策應如何處理？試說明應依循的次序及其理由。","explanation":"（c）的次序本身即為評分點，而其理由比次序更重要：每往下一步，決定便離當事人的意願遠一分。能寫出這句話，即顯示考生理解此一階梯並非程序上的規定，而是有實質根據的。\n第一步「先評估而非假定」最常被跳過。認知衰退並非全有或全無，而能力須就【具體決定】評估 —— 這一點在實務上極重要，因為以診斷標籤取代能力評估，是剝奪自主權最常見的途徑。\n（b）的三項要素之中，「自願」一項在本個案特別關鍵，因為題目已寫明家人堅持。家人持續施壓之下所作的同意，即使形式齊備，亦不符合自願的要求。作答時把此點扣回題目情境，比抽象複述三項要素為佳。","type":"long","referenceAnswer":"（a）兩項原則：\n自主原則 —— 具備決策能力的人有權就自己的身體與治療作出決定，包括作出他人認為不明智的決定。\n行善原則（兼及不傷害原則）—— 照顧者有責任促進當事人的福祉，避免可預見的傷害。醫生建議手術、家人堅持接受，皆出於此。\n\n衝突所在：兩項原則指向不同的判斷者。自主原則問「當事人自己想怎樣」；行善原則問「什麼對當事人最好」。當兩者的答案一致時並無問題，而本個案的困難正在於兩者分歧 —— 當事人所選擇的，並非旁人判斷為最有利的。\n須留意，此衝突不能以「哪一項原則較重要」一句解決。在當事人具備決策能力的前提下，現行的醫療倫理與法律實踐以自主原則優先；但這並不表示行善原則失效，它仍要求醫護充分說明風險、確認當事人真正理解，並持續提供支援。\n\n（b）知情同意的三項要素：\n第一，資訊充分。當事人須獲告知病情、建議的治療、其風險與益處、其他可行選項，以及不接受治療的後果。資訊須以當事人能理解的方式提供。\n第二，理解。當事人須實際明白所獲的資訊，而非僅曾聽過。醫護有責任確認理解，例如請當事人以自己的話複述。\n第三，自願。同意須出於當事人本人的意願，不受威脅、欺瞞或不當壓力（包括家人的持續施壓）所影響。\n\n何以家人同意不能取代當事人同意：\n其一，承受後果者是當事人本人。手術的風險、術後的痛楚與康復過程由她承擔，而非由家人承擔。決定權應歸於承受後果的一方。\n其二，家人的判斷未必等同當事人的意願。家人所依據的往往是自己的價值觀與情感需要 —— 例如不忍見親人離世，而當事人所重視的可能是餘下日子的生活質素而非壽命長短。兩者出於善意而不同。\n其三，若容許家人代決，實際上等於取消了自主原則。一項只在旁人同意時方生效的權利，並不是權利。\n\n（c）認知能力明顯衰退時的處理次序：\n第一，先評估而非假定。認知衰退並非全有或全無 —— 須就【該項具體決定】評估其能力，而非以年齡或診斷一概而論。一個人可能無法處理財務，卻仍能理解並表達對手術的意願。\n第二，若能力不足，優先依循當事人先前表達的意願。包括預設醫療指示、先前訂立的照顧計劃，或有可靠證據的口頭表達。理由是：這仍然是她本人的意願，只是在她仍有能力時作出。\n第三，若無先前意願的紀錄，則採「代理判斷」—— 由最了解她的人（通常是家人）推想「若她此刻有能力，她會如何選擇」，依據為她一貫的價值觀與生活取態，而非代理人自己的偏好。\n第四，若連推想的依據亦不足，方退至「最佳利益」判斷 —— 綜合醫療益處、痛苦程度、生活質素與她已知的偏好，由醫療團隊與家人共同決定。\n\n此一次序的理由在於：每往下一步，決定便離當事人本人的意願遠一分。故必須逐級而下，不可跳過 —— 直接跳至最佳利益判斷，等於在仍有辦法知道她想怎樣的情況下，選擇了替她決定。","markingScheme":"（a）3 分 —— 兩項原則各 1 分；說明衝突在於兩者指向不同判斷者（1）。只寫「兩者有衝突」而無說明不給第三分。\n（b）3 分 —— 三項要素齊備（2）；家人不能代決的理由至少一項，須扣回承受後果者或自主權的性質（1）。\n（c）3 分 —— 四個步驟的次序正確（2）；說明次序的理由，即每步離當事人意願更遠（1）。跳過能力評估一步扣 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w1_04","topic":"社區照顧","difficulty":"intermediate","question":"試比較「社區照顧」與「院舍照顧」在【自主程度】、【照顧強度】及【照顧者負擔】三方面的分別，並說明何以「居家安老」並非在所有情況下皆為較佳選擇。","explanation":"比較題必須逐項對應，三個維度都要同時說明兩種模式。本題另一個要點在於不把院舍照顧寫成純負面 —— 它在照顧強度與照顧者負擔兩方面確有優勢，而一面倒的答案會失去比較分。\n最後一部分是本題的重心。「居家安老」在政策論述中幾乎已成為不言自明的目標，而試題正是要考生察覺：一項普遍認同的方向，在具體條件不足時可能產生相反的結果。第二個理由尤其值得記住 —— 政策名稱與實際安排之間可能有落差，「居家」若無支援配套，實際上就是「家人獨力承擔」。能夠指出這個落差，比列舉院舍的缺點更能顯示判斷力。","type":"text","referenceAnswer":"三方面的比較：\n自主程度 —— 社區照顧之下，長者留在熟悉的環境，作息、飲食與社交安排大致保留，自主程度較高。院舍照顧須遷離原有居所，日程與膳食按機構安排，個人自主受較大限制，惟部分院舍已加入選擇性安排以作彌補。\n照顧強度 —— 社區照顧多為日間或定時到訪，夜間及突發情況的覆蓋有限。院舍提供二十四小時在場照顧，醫護支援與應變能力較強，適合照顧需求高或病情不穩者。\n照顧者負擔 —— 社區照顧之下，大量照顧工作實際由家人承擔，尤以夜間、假日及服務空隙時段為甚，長期照顧者的體力與精神負擔沉重。院舍照顧把主要照顧責任轉移至機構，家人負擔顯著減輕，但可能承受經濟壓力與情感上的內疚。\n\n何以居家安老並非在所有情況下皆較佳：\n其一，照顧需求可能超出家居所能提供的水平。晚期認知障礙、需要頻繁醫療處置、或有跌倒與遊走風險者，家居環境難以提供足夠的安全與監察，勉強維持反而增加意外風險。\n其二，居家安老的可行性取決於支援是否到位。若社區服務輪候時間長、上門服務時數不足、住所環境不適合（樓梯樓、空間狹小、浴室無扶手），所謂居家實際上等於把照顧責任全數壓在家人身上。此時政策上的居家安老與現實中的家庭獨力承擔，並非同一回事。\n其三，須同時考慮照顧者。若主要照顧者本身年事已高、健康欠佳或須外出工作，長期承擔可能導致其自身健康崩潰。照顧者倒下之後，被照顧者的處境只會更差，故照顧者的可持續性本身即應計入判斷。\n\n較合理的表述是：居家安老是一個值得優先考慮的方向，而非一項應無條件推行的原則。判斷應按長者的照顧需求、住所條件、可獲得的社區支援，以及照顧者的能力四者綜合而定。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w1_05","topic":"公共衞生與疾病預防","difficulty":"hard","question":"「健康的社會決定因素」指出，個人的健康狀況在相當程度上取決於其所處的社會經濟條件。\n（a）舉出三項健康的社會決定因素，並各說明其影響健康的機制。\n（b）解釋何以單靠「健康教育」難以縮窄不同社會經濟群體之間的健康差距，並指出此類措施有時反而擴大差距的原因。\n（c）就香港的處境，提出兩項針對社會決定因素而非個人行為的措施，並各說明其局限。\n（d）有意見認為「健康最終是個人選擇的結果，強調社會因素會削弱個人責任」。試評論此說法。","explanation":"（b）的第二部分是本題最具分量的一問，亦是公共衞生的一項核心觀察：凡效果取決於個人資源的措施，都傾向擴大不平等。此原則的應用範圍遠超健康教育 —— 自願參與的計劃、須主動申請的津貼、依賴資訊搜尋的服務，全部具備同一結構。能夠把個別現象提升為原則，是本題的高分位。\n（d）的第三個理由（社會經濟梯度）最為有力，因為它訴諸實證而非論證。健康差距不是隨機分佈，而是沿收入與教育整齊遞減 —— 若健康純屬個人選擇，此種規律性便無法解釋。作答時若只用前兩個理由，論證仍停留在概念層面。\n末段承認對方所關注的問題確有意義，並提出「責任並非只有一份」，是良好評論應有的收結：拒絕在個人與社會之間作零和分配，比選一邊站更接近實情。","type":"long","referenceAnswer":"（a）三項社會決定因素及其機制：\n收入水平 —— 收入決定可負擔的飲食質素、居住條件與醫療選擇。低收入家庭傾向購買價格較低而熱量密度高、營養較差的食物；亦較可能延遲求診以節省開支，令小病拖成大病。\n教育程度 —— 教育影響對健康資訊的理解與運用，包括閱讀藥物指示、理解風險數字、與醫護有效溝通的能力。教育程度亦間接決定職業與收入，故其影響同時經由多條路徑發生。\n居住環境 —— 住所的面積、通風、衞生條件與噪音直接影響呼吸系統疾病與睡眠質素；社區是否有可安全步行的空間、是否鄰近新鮮食物來源，則決定運動與飲食的實際可行性。劏房與板間房環境的健康代價，並非住戶的選擇所致。\n\n（b）何以健康教育難以縮窄差距：\n健康教育處理的是知識，而不同群體之間的差距主要並非知識差距。大部分吸煙者知道吸煙有害，大部分人知道應多吃蔬果 —— 障礙在於實行的條件：工時長而不定、居所無煮食空間、附近沒有負擔得起的新鮮食物、缺乏安全的運動場所。知識充足而條件不足之時，教育無從發揮作用。\n\n何以有時反而擴大差距：\n健康教育的效果高度依賴接收者的既有資源。社經條件較佳者接收到同一項訊息之後，有能力即時付諸實行 —— 改變飲食、購買器材、安排時間、使用預防性服務；條件較差者接收到相同訊息，卻缺乏實行的餘裕。於是一項對所有人同樣提供的措施，只有一部分人得以受惠，兩者之間的差距因而拉開。\n此一現象在公共衞生中有其名稱：凡措施的效果取決於個人資源，該措施即傾向擴大不平等；愈是依賴個人主動配合的介入，此傾向愈明顯。\n\n（c）兩項針對社會決定因素的措施：\n措施一：改善基層家庭的居住條件，包括加快公營房屋供應、規管分間單位的最低居住標準（面積、通風、獨立廚廁）。\n局限：土地與建屋週期長，短期內難以見效；提高分間單位標準若無足夠的替代供應，可能令部分單位退出市場，反而令最基層的住戶更難覓得居所 —— 此為規管類措施的典型風險。\n\n措施二：在基層社區增設可負擔的新鮮食物供應點，並把地區康健中心的預防服務主動外展至工時長、難以主動求診的群體（例如在職貧窮家庭、少數族裔）。\n局限：外展服務的人手與成本高，覆蓋面有限；而食物供應點的成效取決於居民的購買力與烹煮條件，若居所本身沒有煮食空間，供應改善的效果亦有限 —— 可見各項決定因素互相牽連，單獨處理一項的效果會被其餘各項所限制。\n\n（d）評論：\n此說法把兩件事對立起來，而它們實際上並不互相排斥。\n\n其一，指出結構性因素並非否定個人選擇的存在，而是指出選擇是在條件之中作出的。一個人可以選擇吃得健康，但其選項由收入、時間與居所條件所界定。承認條件的作用，並不等於認為個人毫無作用；恰恰相反，正因為選擇是真實的，才更應關注選項的分佈是否公平。\n\n其二，該說法在因果與責任之間跳步。即使某人的健康問題與其行為有關，亦不推出「因此社會無須介入」。醫療系統照顧因車禍受傷者，並不先追究其是否超速；把治理責任繫於道德責任，會令最需要協助的一群最難獲得協助。\n\n其三，此說法在實證上不成立。健康差距沿社會經濟梯度呈現規律分佈 —— 由最低層至最高層逐級遞減，而非隨機分佈。若健康純屬個人選擇，個人意志力沒有理由按收入或教育程度整齊排列。此一梯度本身即是社會因素在起作用的證據。\n\n須承認該說法所關注的問題確有意義：若把一切歸因於環境，個人的能動性確實可能被低估，而介入措施亦可能變成家長式的代為安排。合理的立場是兩者並存 —— 個人須為自己的行為負責，而社會有責任令健康的選項成為每個人都負擔得起的選項。責任並非只有一份，不必在個人與社會之間分配殆盡。","markingScheme":"（a）3 分 —— 三項因素各 1 分，須連同機制而非只列名稱。「貧窮影響健康」不給分，須說明經由哪條路徑。\n（b）3 分 —— 指出差距主要非知識差距、障礙在於實行條件（1）；說明效果依賴個人資源（1）；把此觀察提升為原則，即依賴個人主動的措施傾向擴大不平等（1）。\n（c）2 分 —— 兩項措施各 1 分，須針對決定因素而非個人行為，且各連一項局限。措施屬健康教育或個人行為勸導者不給分。\n（d）2 分 —— 指出承認條件並不否定個人能動性（1）；另舉一項理由，因果與責任的跳步或社會經濟梯度皆可（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":18,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "health-management";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "health-management-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "health-management-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

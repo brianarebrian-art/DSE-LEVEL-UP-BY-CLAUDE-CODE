@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · visual-arts · visual-arts-written-b1.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">visual-arts</span></h1>
+<div class="sub">來源 visual-arts-written-b1.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"va_w1_01","topic":"藝術元素與原則","difficulty":"basic","question":"試分辨「藝術元素」與「藝術原則」，並各舉三項。\n再以「一幅畫中人物置於畫面正中央」為例，說明此安排同時涉及哪一項元素與哪一項原則。","explanation":"元素與原則的分辨是本科的基礎，而混淆兩者是評賞題最常見的失分來源 —— 把「平衡」說成元素，或把「色彩」說成原則，即顯示未掌握這一組概念的結構。記住那句「元素是用了什麼、原則是怎樣安排」，即可即時判別。\n最後一段的補充是本題的加分位：置中的效果並非固定，而取決於其餘元素的配合。評賞題若把某項安排的效果說成必然如此，通常會被視為分析不足；良好的答案會指出效果的條件。","type":"text","referenceAnswer":"分辨：\n藝術元素是構成作品的基本材料，是作者實際落在畫面上的東西 —— 線條、形狀、色彩、明暗、質感、空間、量感。\n藝術原則是組織這些元素的方式，是元素之間的關係 —— 平衡、對比、比例、節奏、統一、強調、變化。\n可以一句話概括：元素是「用了什麼」，原則是「怎樣安排」。元素可以逐一指認，原則則須觀察多個元素之間的關係方能判斷。\n\n三項元素：線條、色彩、明暗。\n三項原則：平衡、對比、強調。\n\n人物置於畫面正中央：\n所涉元素為【空間】—— 人物在畫面之中所佔的位置與周圍留白的分佈，屬空間的運用。\n所涉原則為【平衡】與【強調】—— 置中令左右兩側的視覺重量相等，屬對稱平衡；同時，畫面中心是視線最自然落點，置中即把該人物置於最受注視的位置，屬強調。\n\n須留意，同一個安排可以同時服務多項原則，而其效果亦視乎其餘元素而定：若人物置中而背景空曠，強調的效果最為顯著；若周圍佈滿細節，置中的位置優勢便會被削弱。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w1_02","topic":"形式分析・元素與原則","difficulty":"intermediate","question":"一幅畫作的描述如下：畫面下方三分之二為深褐色的室內空間，人物坐於左下角，面朝畫面右方；右上角有一扇小窗，射入一道明亮的斜光，落在人物的手上。畫中其餘部分幾乎不見細節。\n（a）分析此作品在【明暗】、【構圖位置】及【視線引導】三方面的處理。\n（b）說明畫家把光源設於右上角、而人物置於左下角，此一安排產生什麼效果。\n（c）若把光線改為均勻照亮全幅畫面，作品會有何改變？據此說明「取捨」在藝術創作中的作用。","explanation":"（c）是本題的重心，而它所用的方法值得學習：以「若改成另一樣會怎樣」去反證原作的處理。此法之所以有效，是因為一件作品的所有選擇在完成之後看起來都是自然的，唯有設想其反面，才能看出那是一個選擇而非必然。\n（a）的「視線引導」一項最容易寫得空泛。得分關鍵在於指出路徑的具體走向 —— 由何處進入、經何處、止於何處 —— 而非只寫「引導觀者注意人物」。本題的答案更進一步指出光線同時是照明與路徑，此一雙重身分正是該作品構圖的核心。\n末段那句「創作者透過決定不呈現什麼來決定觀者看見什麼」可套用於多種評賞題。凡遇留白、剪影、局部特寫、單色處理，皆屬同一機制。","type":"long","referenceAnswer":"（a）三方面的處理：\n明暗 —— 全幅以深褐色為主調，明暗對比極為懸殊：一道亮光與大片近乎無細節的暗部並置。此種處理令畫面的可見資訊高度集中，觀者所能看清的只有被光照及的部分，其餘皆退為背景。\n構圖位置 —— 人物置於左下角，並非畫面中心。此位置本身較不受注目，而畫家以光線補償了位置上的劣勢 —— 人物之所以成為主體，並非因為它在中央，而是因為它是唯一被照亮的。\n視線引導 —— 觀者的視線由右上角的窗口進入，沿斜光的方向移向左下方，最終停在人物的手上。光線在此同時是照明與路徑：它既決定了什麼可見，亦決定了觀看的次序。人物面朝右方，視線又被引回光源方向，形成一個往復的循環，令觀者的目光在畫面內部來回而不易離開。\n\n（b）此一安排的效果：\n其一，製造了對角線的張力。光源與主體分處畫面的兩個對角，兩者之間的斜線橫貫全幅，令構圖具有方向與動勢，而非靜止的並列。若兩者同處一側，畫面會失去這條貫穿的軸線。\n其二，把「距離」變成內容。光自遠處的小窗而來，落在近處的人物手上，其間隔着一段幽暗的空間。這段距離令光顯得來之不易，亦令人物的處境顯得孤立 —— 光是外來的、有限的、恰好觸及的。\n其三，令注意力集中於手部。手是全畫唯一被明確照亮的細節，觀者無從看清面容或環境，只能透過手的姿態去推想人物的狀態。此為一種刻意的資訊限制：畫家不告訴觀者這個人是誰、在做什麼，只給出一個線索，其餘交由觀者補完。\n\n（c）若改為均勻照明：\n畫面的一切細節將同時可見 —— 室內的陳設、人物的面容與衣著、窗外的景象皆進入視野。\n隨之而來的改變有三：\n主體消失。當全部事物同樣清晰，畫面便失去中心，觀者的視線無所依從，人物由「唯一可見者」變為「眾多可見者之一」。\n視線引導失效。原本由光線構成的觀看路徑不復存在，觀者可由任何位置進入，觀看次序變得隨機。\n情緒轉變。原作的孤立感與內省氣氛，很大程度來自暗部所造成的封閉與未知；一旦全部照亮，畫面會轉為平實的記錄性描寫，張力隨之消散。\n\n取捨在藝術創作中的作用：\n此例說明，作品的表現力並不來自呈現了多少，而來自捨棄了多少。畫家放棄了大部分的視覺資訊，換取了三樣東西：一個明確的主體、一條確定的觀看路徑，以及一種由未知所生的情緒。\n若不作取捨，這三樣皆無從產生 —— 因為主體之為主體，正是相對於被壓抑者而言；沒有暗，光便不成其為光。\n這一原則不限於明暗。構圖上的留白、色彩上的節制、敘事上的省略，皆屬同一機制：創作者透過決定「不呈現什麼」來決定觀者「看見什麼」。故評賞一件作品時，除了問畫面上有什麼，亦應問畫家刻意略去了什麼。","markingScheme":"（a）4 分 —— 明暗（1）；構圖位置，須指出人物不在中心而以光線補償（1）；視線引導，須交代具體路徑（1）；能指出光線兼具照明與路徑雙重作用（1）。\n（b）3 分 —— 對角線張力（1）；距離成為內容或光之來之不易（1）；注意力集中於手部並涉及資訊限制（1）。\n（c）3 分 —— 至少兩項改變，須包括主體消失或視線引導失效（1）；情緒轉變（1）；歸納取捨的作用，須指出捨棄與呈現互為條件（1）。只答「會變得沒有那麼特別」不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":20,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w1_03","topic":"藝術史・技法與風格","difficulty":"intermediate","question":"（a）說明中國山水畫的「散點透視」與西方繪畫的「線性透視」在觀看方式上的根本分別。\n（b）解釋何以此分別並非技術水平的高下，而是不同觀看觀念的結果。\n（c）某展覽把兩者並置展出，並在說明牌上寫道：「中國畫家當時尚未掌握透視法。」試評論此說法，並提出一個較恰當的表述。","explanation":"（c）是本題的考點，而它所針對的並非史實錯誤，而是一種評價框架上的錯誤 —— 以一套體系為標準去衡量另一套。此類問題在近年的視藝與文化科試題中相當常見，作答的關鍵是先指出該表述預設了什麼（單線發展、西方為終點），再說明此預設不成立。\n第三個理由值得留意：它談的是表述的後果而非其對錯。展覽說明牌的權威性令一句話足以框定整批作品的觀看方式，而這正是「表述並不中性」的意思。能夠指出此點，比單純論證史實有誤更進一層。\n最後要求提出「較恰當的表述」，是一個實作題 —— 必須真的寫出一句，而非泛論應該如何。良好的替代表述有三個特徵：以並列取代排序、說明分別的性質、不使用隱含高下的字眼（尚未、仍然、只能）。","type":"long","referenceAnswer":"（a）根本分別：\n線性透視預設【一個固定的觀看位置】。畫面按單一視點構成，所有平行線收束於消失點，物體按與該視點的距離而縮小。觀者被安排在一個特定的位置上，畫面所呈現的是「在那一點所見的一瞬」。\n散點透視則不設固定視點。畫家在同一畫面中容納多個觀看位置 —— 山腳、山腰、山頂可分別以不同角度描繪，觀者的視線隨畫卷展開而移動。長卷尤其如此：觀看的過程本身是移動的，畫面所呈現的是「行走與遊觀之中的所見」，而非一瞬。\n\n可以一句話概括：線性透視把時間凝固於一點，散點透視把時間展開為過程。\n\n（b）何以並非技術水平的高下：\n其一，兩者服務於不同的目的。線性透視要解決的是「如何在平面上逼真地再現眼前所見」，其標準是視覺上的準確；散點透視要解決的是「如何在一幅畫中容納一段遊歷」，其標準是能否傳達山水的整體氣象與觀者的行進體驗。以前者的標準衡量後者，等於以尺量重。\n其二，散點透視有其自身的規範，並非隨意。中國山水畫講求高遠、深遠、平遠三種取景方式及其配合，各有法度；畫家對空間關係的處理是經過訓練與選擇的，而非未能掌握。\n其三，兩種觀念背後是不同的自然觀。線性透視以觀者為中心，世界按與「我」的距離而排列；散點透視中人往往極小甚至隱於山林，畫面所呈現的並非「我看見的世界」，而是「世界之中的我」。此為哲學層面的分別，非技法所能涵蓋。\n\n（c）評論：\n此說法不能成立，其問題有三。\n\n其一，它把一種觀念上的選擇誤讀為能力上的缺陷。「尚未掌握」預設了一條由不會到會的單線發展路徑，並把西方的方案設為該路徑的終點。實際上兩者是兩套各自完備的體系，並非同一條路上的先後。\n\n其二，它與史實不符。中國畫論對空間處理有系統的論述，而畫家在需要時亦能作出符合近大遠小的描繪；散點的運用是選擇的結果，而非因為不能。\n\n其三，此類表述的後果並不中性。展覽說明牌帶有權威性，觀眾多會照單全收；一句「尚未掌握」會令觀者以評估技術缺陷的眼光去看待整批作品，從而看不見其自身的成就與邏輯。以一套體系的標準去評價另一套體系，本身即是評賞上的錯誤。\n\n較恰當的表述（示例）：\n「中國山水畫並不採用單一視點的線性透視，而發展出可容納多個視角的散點構圖。兩者反映不同的觀看觀念：前者呈現定點所見的一瞬，後者呈現遊觀過程中的所見。」\n此一表述的優點在於：以並列取代排序，說明分別而不判定高下，並讓觀者得以在各自的邏輯之內理解兩批作品。","markingScheme":"（a）3 分 —— 線性透視的固定視點（1）；散點透視的多視點與觀看隨畫面移動（1）；能歸納為一瞬與過程之別（1）。\n（b）3 分 —— 三個理由各 1 分：目的不同、散點自有法度、背後的自然觀不同。三點若重複同一意思只算一項。\n（c）3 分 —— 指出「尚未掌握」預設單線發展（1）；指出與史實不符或表述後果並不中性（1）；寫出一句具體而不含高下判斷的替代表述（1）。只答「這樣說不對」不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":16,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w1_04","topic":"視覺設計","difficulty":"intermediate","question":"一張海報須在三秒之內傳達訊息。\n試說明「視覺層次」（visual hierarchy）的作用，並指出設計者可用哪三種手段建立層次。再說明何以「把重要的資訊全部放大」通常會令層次失效。","explanation":"本題的關鍵在最後一部分，而其原理可以一句話概括：顯著性是相對的。此原則的應用範圍極廣 —— 全部加粗等於沒有加粗，全部用鮮色等於沒有重點，每一句都加驚嘆號等於全部都是平語。凡以「強調」為目的的手段，一旦普遍施用即自我取消。\n三種手段之中，「對比」一項最容易被低估。多數答案只想到放大，而留白其實是更有效的工具 —— 它不佔用尺寸資源，卻能顯著提升鄰近元素的注目度。答案中「被大量留白包圍的小字可以比擠在密集文字中的大字更突出」一句，正是要顯示這一點。\n末段那句「設計者真正的決定往往不是放大什麼，而是願意縮小什麼」，把本題與（視藝科）取捨的通則連起來，屬完整作答。","type":"text","referenceAnswer":"視覺層次的作用：\n決定觀者接收資訊的【次序】。觀者不會同時看見畫面上的所有東西，而是按顯著程度逐項接收；視覺層次即是設計者對這個次序的安排 —— 什麼先看見、什麼其次、什麼最後。\n在三秒的限制之下，此安排尤其關鍵：觀者未必會讀完全部內容，故必須確保最重要的一項在第一眼即被接收。\n\n三種建立層次的手段：\n其一，大小。尺寸差異是最直接的顯著性訊號，較大者先被注意。\n其二，對比。包括明暗對比、色彩對比與留白 —— 一項元素與其周圍差異愈大，愈易被注意。一個被大量留白包圍的小字，可以比一個擠在密集文字之中的大字更為突出。\n其三，位置。畫面的上方與左上角（就由左至右的閱讀習慣而言）是視線的自然起點；置於此處者較易被優先接收。\n（另可接受：色彩的飽和度、字體的粗細與樣式對比、方向與指向性元素。）\n\n何以「把重要的資訊全部放大」會令層次失效：\n因為層次來自【差異】，而非來自絕對尺寸。顯著性是相對的：一項元素之所以突出，是相對於其周圍較不突出者而言。若全部資訊皆放大，各項之間的相對關係回復平等，畫面上便不再有任何一項比其餘更顯著，層次隨之消失。\n實際的結果是：觀者無從知道應由何處看起，於是視線在畫面上游移。在三秒的限制之下，游移等同於未有接收 —— 海報看似訊息豐富，實際上一項也未傳達。\n\n此處的原則與明暗的道理相同：沒有暗，光便不成其為光。要令一項資訊突出，必須有另一些資訊甘於退後。設計者真正的決定，往往不是放大什麼，而是願意縮小什麼。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w1_05","topic":"藝術與文化","difficulty":"hard","question":"某藝術家把一件日常物品（一張摺椅）原封不動地放入展覽廳，並命名為作品。有觀眾表示：「這不是藝術，因為他甚麼都沒有做。」\n（a）指出此作品所依據的藝術觀念，並說明其主張。\n（b）解釋「甚麼都沒有做」這一判斷所預設的藝術定義，並指出此定義的限制。\n（c）試提出兩項可用以評價此類作品的準則，並各說明其如何運作。\n（d）有人擔心：「若一切皆可為藝術，藝術評價便無標準可言。」試回應此憂慮。","explanation":"（d）是本題的最高一檔，而其關鍵在於分辨兩個被混為一談的問題：範疇（什麼可以是藝術）與評價（什麼是好藝術）。此一分辨可以套用於許多同類爭論 —— 放寬定義並不等於取消標準，正如任何人可以參賽並不等於取消評判。\n（b）的第三個理由值得注意：它把對方的定義【歷史化】—— 指出「以技藝界定藝術」本身是一個特定時期的產物，而非藝術的本質。這是一種有力的論證方式，因為它不必否定該定義曾經成立，只須指出它的適用範圍有限。\n（c）要求提出可運作的準則，而非泛泛的態度。「要看有沒有意義」不算準則，因為它無法用來區分兩件作品；「若換成任何其他物品皆無分別，即說明藝術家未處理脈絡」才是可操作的判準 —— 它給出了一個可以實際執行的測試。作答此類題目時，可自問：我提出的準則能否用來判斷兩件具體作品孰優孰劣？若不能，它便只是一種態度。","type":"long","referenceAnswer":"（a）所依據的藝術觀念：\n此作品屬「現成品」（readymade）的傳統，其背後是概念藝術的主張 —— 藝術的核心並非物件本身，亦非製作物件所需的技藝，而是【觀念】與【脈絡】。\n主張可分兩層：\n第一，藝術性不在物質之中。同一張摺椅，放在課室是家具，放在展覽廳並經命名則成為作品；物件毫無改變，改變的是它被觀看的框架。故藝術性是由脈絡賦予的，而非物件所固有。\n第二，藝術家的工作是「選擇」與「指認」，而非「製作」。在此觀念之下，決定把什麼放進藝術的範疇之內，本身即是一項創作行為，其重要性不亞於技藝。\n\n（b）「甚麼都沒有做」所預設的藝術定義：\n此判斷預設了藝術須包含【可見的技藝勞動】—— 藝術品之為藝術品，是因為有人以技巧把材料轉化成別的東西，而該轉化的痕跡可以在成品上看見。此為一個以「製作」為核心的定義。\n\n此定義的限制：\n其一，它無法解釋大量已被廣泛接受的作品。攝影按下快門的一刻並無材料轉化；極簡主義的作品刻意消除技藝痕跡；行為藝術與大地藝術根本沒有可保存的物件。若堅持此定義，須把上述全部逐出藝術之外，代價過大。\n其二，它把「技藝」與「藝術」混為一談。技藝高超的仿製品與工藝品同樣需要大量勞動，而我們並不因此認為它們的藝術價值必然高於一件構思精妙而製作簡單的作品。可見勞動量與藝術價值並非同一件事。\n其三，它其實是一個歷史上的特定定義，而非普遍真理。以技藝界定藝術，主要源於文藝復興以降的西方傳統；把一個時期的標準當作藝術的本質，即是把歷史誤認為自然。\n\n（c）兩項評價準則：\n準則一：觀念的清晰度與必要性。\n運作方式：問這件作品提出了什麼問題或主張，而該主張是否須要以這種形式提出。一張摺椅若旨在質疑「是什麼令一件物品成為藝術」，則其形式與其主張直接相關 —— 唯有把最平凡的物件放進展廳，該問題才會被尖銳地提出。反之，若同一手法只是重複前人已提出過的主張而無新意，則其觀念缺乏必要性，作品便流於形式的挪用。\n\n準則二：脈絡的處理是否經過深思。\n運作方式：概念作品既然依靠脈絡生效，則藝術家對脈絡的安排即為其創作內容 —— 選擇了哪一件物品（摺椅而非名貴座椅，何以）、置於展廳的哪個位置、如何命名、有無說明文字。這些決定全部可以評價其恰當與否。一件現成品若換成任何其他物品皆無分別，則說明藝術家並未真正處理脈絡，只是執行了一個公式。\n\n（d）回應「若一切皆可為藝術，評價便無標準」：\n此憂慮混淆了兩個不同的問題：【什麼可以成為藝術】與【什麼是好的藝術】。\n\n前者是範疇問題，後者是評價問題。範疇的開放並不推出評價的取消 —— 正如任何人皆可以寫小說，並不表示所有小說同樣好。放寬了入場資格，並不等於取消了比賽。\n\n進一步而言，評價標準並未消失，只是【隨作品類型而變】。評價一幅寫實油畫與評價一件概念作品，所用的準則本就不同，正如評價一首詩與評價一部長篇小說不會用同一把尺。（c）所提出的兩項準則即為概念作品的評價依據，它們同樣可以區分優劣 —— 有些現成品作品被視為重要，有些則被視為草率的模仿，而這個區分正是由標準所作出的。\n\n須承認此憂慮有其合理的來源：概念作品的評價確實較難，因為其優劣不在可即時目睹的技藝之上，須要對脈絡與藝術史有一定認識方能判斷。門檻較高、判斷較費力，是真實的困難 —— 但困難不等於沒有標準。\n\n較準確的表述是：藝術的範疇已經擴大，而評價的工作因此變得更需要說理。不能再以「畫得像不像」一望而知，取而代之的是必須說出理由 —— 而必須說理，正是有標準的表現，不是沒有標準的證明。","markingScheme":"（a）2 分 —— 指出屬現成品或概念藝術（1）；說明其主張，須觸及脈絡賦予藝術性或選擇即創作（1）。\n（b）3 分 —— 指出所預設的定義以可見技藝為核心（1）；限制兩項各 1 分，須指向不同層面（無法涵蓋已接受的作品、技藝與藝術價值非同一事、該定義屬歷史特定產物）。\n（c）2 分 —— 兩項準則各 1 分，須說明其運作方式且可用以區分作品優劣。純態度式的表述不給分。\n（d）3 分 —— 分辨範疇問題與評價問題（1）；指出標準隨作品類型而變並舉例（1）；承認評價確較困難而困難不等於無標準（1）。答「藝術是主觀的」不給分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":20,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "visual-arts";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "visual-arts-written-b1.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "visual-arts-written-b1.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
