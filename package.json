@@ -23,7 +23,9 @@
     "qbank:sync": "npx --yes tsx@4.19.2 scripts/qbank/sync-questions.mts",
     "qbank:sync:check": "npx --yes tsx@4.19.2 scripts/qbank/sync-questions.mts --check",
     "gen:summary": "npx --yes tsx@4.19.2 scripts/gen-question-summary.mts",
-    "qa:copy": "node scripts/copy-guard.mjs"
+    "qa:copy": "node scripts/copy-guard.mjs",
+    "qbank:recalibrate-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/recalibrate-difficulty.mts",
+    "qbank:simulate-sampling": "npx --yes tsx@4.19.2 scripts/qbank/simulate-sampling.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
