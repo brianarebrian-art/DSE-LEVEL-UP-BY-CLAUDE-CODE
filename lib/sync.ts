@@ -166,7 +166,18 @@ function score(s: Snapshot): number {
     if (typeof t === 'number') topicTotal += t
   }
   const counter = Number(s.dse_free_attempts_total) || 0
-  return attempts * 1000 + topicTotal + counter
+  // ⚠️ 未完成嗰節同錯因自診【一定要計入】。
+  //    2026-09-10 實測（lib/__tests__/cross-device-e2e.test.mts ①）：
+  //    學生喺手機做到第 5 題，跳去一部【從未同步過】嘅機（新電腦、學校電腦、
+  //    重灌完個瀏覽器），兩邊 score 都係 0，而防線 B 嘅平手判本機贏 ——
+  //    嗰半節就【靜靜哋冇咗】，學生要由第一題重做。
+  //
+  //    佢哋刻意擺喺 attempts 以下同一個檔次（同 topicTotal / counter 一齊）：
+  //    做完嘅節永遠重過未完成嘅節，所以呢個改動只會喺原本平手嗰啲情況度分到勝負，
+  //    唔會令一份較少嘅快照贏過一份較多嘅。
+  const inflight = Array.isArray(s.dse_active_session?.answers) ? s.dse_active_session.answers.length : 0
+  const diagnosed = Array.isArray(s.dse_reverse_log) ? s.dse_reverse_log.length : 0
+  return attempts * 1000 + topicTotal + counter + inflight + diagnosed
 }
 
 /**
@@ -299,7 +310,12 @@ export function applyLocal(s: Snapshot): void {
     if (s.dse_active_session) {
       localStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(s.dse_active_session))
     } else if (s.dse_active_session === null) {
-      localStorage.removeItem(ACTIVE_SESSION_KEY)
+      // ⚠️ 寫 'null'，唔係 removeItem。
+      //    removeItem 之後，呢部機下次 snapshotLocal 會出 `undefined`（＝「呢部機
+      //    冇資料，唔好郁雲端」），於是「嗰節做完咗」呢個訊號就喺佢手上斷咗 ——
+      //    一部由頭到尾離線嘅第三部機，永遠等唔到通知，會一路 offer 一節
+      //    其實已經交咗卷嘅練習。寫 'null' 令個訊號一路傳得落去。
+      localStorage.setItem(ACTIVE_SESSION_KEY, 'null')
     }
     // 錯因自診紀錄。同 topic stats 一樣：有值先覆蓋，`undefined` 就唔郁 ——
     // 唔可以 `?? []`，否則一部舊快照就會將本機累積咗嘅自診記錄洗走。
