@@ -32,7 +32,7 @@ import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
 import { getSeen, recordSeen } from '@/lib/seen'
-import { weakestTopics, recordTopicOutcomes } from '@/lib/topicStats'
+import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicStats'
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
@@ -53,6 +53,7 @@ import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
 // 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
 import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState } from '@/lib/adaptiveOrder'
+import { weightedOrder } from '@/lib/empiricalWeighting'
 // 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
 import {
   getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
@@ -192,8 +193,22 @@ function buildPool(
     ordered = [...unseen, ...seenOldestFirst]
   }
 
+  // 實測難度加權（2027 目標書階段一第 2 項）。**預設完全唔生效** ——
+  // EMPIRICAL_K = 0 之下 weightedOrder 原樣返回，即係現行行為一個字都冇改。
+  //
+  // 加權刻意落喺【排序】而唔係【分層】：下面 pickByDifficulty 照樣按 3:5:2
+  // 分層，所以比例分毫不變，變嘅只係邊個課題填入每一層。憲章 §7 同
+  // lib/adaptiveOrder.ts 都建基於嗰個比例。
+  //
+  // 開之前請讀 lib/empiricalWeighting.ts 檔頭 —— 特別係「k ≈ 3.1 會令五個
+  // 課題食咗 61% 抽題量」同「§7.2 兩個月實驗期內改難度，條 curve 會讀唔到」。
+  const weighted = weightedOrder(
+    ordered,
+    getTopicStats().filter((e) => e.subjectId === subjectId),
+  )
+
   // Stratify to the DSE 30/50/20 mix, then shuffle so difficulties aren't clustered.
-  return shuffle(pickByDifficulty(ordered, sessionSize)).map(prepareQuestion)
+  return shuffle(pickByDifficulty(weighted, sessionSize)).map(prepareQuestion)
 }
 
 type AnswerState = { selectedZh: string; isCorrect: boolean } | null
