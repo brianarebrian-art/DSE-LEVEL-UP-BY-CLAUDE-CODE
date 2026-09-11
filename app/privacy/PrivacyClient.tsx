@@ -112,6 +112,14 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             </span>
           </li>
           <li>
+            {en ? 'The dates you opened the app: ' : '你開過 app 嘅日期：'}
+            <span className="text-ink-muted">
+              {en
+                ? 'one row per day — just the date, nothing else. Not the time beyond the first open, not which pages, not your IP or device. We added this to answer one question we could not otherwise answer: how many people open the app and never actually practise. Knowing that is how we find out the first screen is in the way.'
+                : '一日一行，淨係一個日期，冇其他。唔記你嗰日第一次之後開過幾多次，唔記你揭過邊啲頁，唔記你嘅 IP 或者裝置。加呢樣係為咗答一條我哋本來答唔到嘅問題：有幾多人開咗 app，但一題都冇做過。知道咗，先揾得出係咪第一版畫面攔住咗人。'}
+            </span>
+          </li>
+          <li>
             {en ? 'Accessibility and display settings: ' : '無障礙同顯示設定：'}
             <span className="text-ink-muted">
               {en
@@ -122,8 +130,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'Deliberately NOT synced, even when you are signed in: your time capsules, your mood log, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules and your mood log are words you wrote to yourself, and they are not something we want to hold.'
-            : '就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅心情記錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊同心情記錄係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'If you are not signed in, we do not record that you were here at all — no tracking cookie, no visitor id, no row anywhere. Deliberately NOT synced, even when you are signed in: your time capsules, your mood log, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules and your mood log are words you wrote to yourself, and they are not something we want to hold.'
+            : '未登入嘅話，我哋唔會記錄你嚟過 —— 冇 cookie 追蹤、冇訪客編號、冇任何一行。就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅心情記錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊同心情記錄係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 

@@ -16,6 +16,7 @@ export const USER_SCOPED_TABLES = [
   'user_progress', // 雲端練習進度（分數、逐課題答對率、未完成嘅卷）
   'user_settings', // 無障礙同介面偏好（易讀字體、閱讀尺、字級⋯）
   'profiles', // 顯示名稱同角色
+  'user_sessions', // 每日一行嘅「開過 app」紀錄（2026-09-11 重建，見 migration 0018）
   // ↓ 影子溫書室已於 2026-08-21 由代碼庫刪走（docs/DECISION-no-interaction.md），
   //   但 `supabase/migrations/0011_drop_wall.sql` 【未套用】—— 兩張表仲喺生產。
   //   所以呢兩行【要留住】：刪帳號仍然要清得走殘留資料。0011 套用之後留住亦無害

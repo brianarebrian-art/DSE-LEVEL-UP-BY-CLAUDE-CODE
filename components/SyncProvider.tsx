@@ -36,6 +36,8 @@ export function useSync(): SyncContextValue {
 }
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
+/** 本機記住「今日已經 ping 過」—— 純本機，唔上雲。 */
+const SESSION_PING_KEY = 'dse_session_pinged'
 const DEBOUNCE_MS = 2500 // 防線 D: cap cloud writes to ~one per burst of activity
 const FOREGROUND_PULL_MS = 10_000 // v3.0 F1: min gap between foreground refresh pulls
 
@@ -160,6 +162,40 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
     if (maySync) void pullMerge()
     else if (authStatus === 'unauthenticated') setStatus('idle')
   }, [maySync, authStatus, pullMerge])
+
+  // ── 「今日開過 app」一日一次 ────────────────────────────────────────────
+  //
+  // 量度目標：【開咗 app 但一題都冇做】嗰批人。佢哋喺 dse_progress 入面
+  // 冇任何一節，所以由練習紀錄推唔到 —— 呢個就係「未做題即流失」黑洞。
+  //
+  // 三件刻意嘅事：
+  //  ① 本機先擋一重（SESSION_PING_KEY 記住今日已 ping），所以一日只會出一個
+  //     請求。冇呢一重，一個開開閂閂十次嘅學生就會打十次 —— 而個 upsert
+  //     本身已經冪等，多打只係白費 Edge Request（憲章 §5 成本死鎖）。
+  //  ② `void` ＋ `.catch(() => {})`：呢個係分析，唔係功能。失敗就算，
+  //     絕對唔可以令做題流程見到錯誤或者卡住。
+  //  ③ 擋完先寫本機標記 —— 寫咗標記先發請求嘅話，請求失敗就等到聽日先再試；
+  //     而家係成功先記低，失敗嘅話下次 mount 會再試。
+  useEffect(() => {
+    if (!AUTH_ENABLED || !maySync) return
+    const today = new Date().toISOString().slice(0, 10)
+    try {
+      if (localStorage.getItem(SESSION_PING_KEY) === today) return
+    } catch {
+      /* 私密模式讀唔到 —— 照 ping，最多一日多幾個請求 */
+    }
+    void fetch('/api/sync/session', { method: 'POST', keepalive: true })
+      .then(() => {
+        try {
+          localStorage.setItem(SESSION_PING_KEY, today)
+        } catch {
+          /* ignore */
+        }
+      })
+      .catch(() => {
+        /* 分析用途，失敗唔影響做題 */
+      })
+  }, [maySync])
 
   // Local changes → reactive bump + (when logged in) debounced push.
   useEffect(() => {

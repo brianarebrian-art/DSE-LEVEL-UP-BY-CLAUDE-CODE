@@ -98,6 +98,33 @@ for (const row of rows) {
 const rowsWithProgressKey = rows.filter((r) => Array.isArray(r.progress_data?.dse_progress)).length
 const neverPractised = rows.length - users.length
 
+// ── user_sessions（2026-09-11 重建並接線）────────────────────────────────────
+// 一個用戶一日最多一行。喺呢張表有行、但喺 dse_progress 冇任何一節，
+// 就係「開咗 app 但一題都冇做」—— 直接量到，唔使由 user_progress 推。
+//
+// ⚠️ 呢張表由 2026-09-11 先開始累積。之前嘅日子冇數據，唔係「冇人開過」。
+//    所以下面會列出資料起始日，避免有人把空白讀成零。
+const sesRes = await fetch(`${env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/user_sessions?select=user_id,day`, {
+  headers: { apikey: env.SUPABASE_SERVICE_ROLE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}` },
+})
+const sesRows: { user_id?: string; day?: string }[] = sesRes.ok ? await sesRes.json() : []
+const sesByUser = new Map<string, string[]>()
+for (const r of sesRows) {
+  if (!r.user_id || !r.day) continue
+  const arr = sesByUser.get(r.user_id) ?? []
+  arr.push(r.day)
+  sesByUser.set(r.user_id, arr)
+}
+const sesFirstDay = sesRows.length ? sesRows.map((r) => r.day!).sort()[0] : null
+// 有練習紀錄嘅 user_id（user_progress 嘅 key 同 user_sessions 一致，都係 Google sub）
+const practisedIds = new Set(
+  rows.filter((r) => {
+    const p = r.progress_data?.dse_progress
+    return Array.isArray(p) && (p as Attempt[]).some(usable)
+  }).map((r) => r.user_id).filter(Boolean) as string[],
+)
+const openedNeverPractised = [...sesByUser.keys()].filter((id) => !practisedIds.has(id)).length
+
 // ── 留存 ────────────────────────────────────────────────────────────────────
 //
 // 三個定義，因為佢哋答唔同問題，而混淆咗就會得出一個好睇但冇意思嘅數：
@@ -171,11 +198,18 @@ console.log(`   其中有 dse_progress 欄               ${String(rowsWithProgre
 console.log(`   其中做過至少一節（可算留存）         ${String(users.length).padStart(4)}   ${pct(users.length, rows.length)}`)
 console.log(`   登入同步過但【一節都冇做】           ${String(neverPractised).padStart(4)}   ${pct(neverPractised, rows.length)}  ← 就係呢批`)
 console.log(``)
-console.log(`   ⚠️ user_sessions 表【唔存在】—— 2026-08-20 由 migration 0010 刪除，`)
-console.log(`      理由：0 行、唯一寫入端點零呼叫、設計已被 lib/studyTime.ts 取代。`)
-console.log(`      但「開咗但未做題」呢一段唔使佢都量得到（上面 ${neverPractised} 個帳號）。`)
-console.log(`      量唔到嘅只餘【從未登入過嘅匿名訪客】—— 要量就要開始追蹤未成年訪客，`)
-console.log(`      屬新增採集，需要創辦人裁決（見尾段）。`)
+console.log(``)
+console.log(`   ── user_sessions（2026-09-11 重建並接線）──`)
+if (sesRows.length === 0) {
+  console.log(`   ⚠️ 仲未有任何一行。表已建、端點已接線，但要等已登入用戶再開一次 app 先會有數。`)
+  console.log(`      呢個空白【唔等於「冇人開過」】—— 採集由 2026-09-11 先開始。`)
+  console.log(`      上面嗰 ${neverPractised} 個「同步過但零練習」係由 user_progress 推出嚟嘅代理指標，`)
+  console.log(`      有咗 session 數據之後就可以直接量，唔使再推。`)
+} else {
+  console.log(`   資料起始日                          ${sesFirstDay}`)
+  console.log(`   開過 app 嘅帳號                     ${String(sesByUser.size).padStart(4)}`)
+  console.log(`   其中【開過但一題都冇做】             ${String(openedNeverPractised).padStart(4)}   ${pct(openedNeverPractised, sesByUser.size)}  ← 直接量到`)
+}
 
 console.log(`\n${L}\n① 留存（目標：次日 ≥ 50%）`)
 console.log(`   次日返嚟（D1）    ${String(d1).padStart(4)} / ${String(eligible.length).padStart(4)}  ${pct(d1, eligible.length).padStart(7)}`)
