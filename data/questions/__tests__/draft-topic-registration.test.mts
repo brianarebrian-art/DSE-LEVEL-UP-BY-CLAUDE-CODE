@@ -55,6 +55,17 @@ const SUBJECT_OF: Record<string, string> = {
   'geography-long-b1.json': 'geography',
   'bafs-long-b1.json': 'bafs',
   'ict-long-b1.json': 'ict',
+  // 2026-09-11 非 MC 題目第二批（scripts/qbank/gen-written-b2.mjs）。
+  // 每科所用嘅 5 個課題同第一批【不重複】，且全部係該科已登記嘅既有課題 ——
+  // 冇新增任何課題，所以唔會製造孤兒題；本閘會逐個核實。
+  // ⚠️ 第二批尚未出齊 22 科，只有下列 6 科。刻意唔以佔位內容填滿：
+  //    一條佔位題流入審批管線，比缺一科更難察覺。
+  'physics-written-b2.json': 'physics',
+  'chemistry-written-b2.json': 'chemistry',
+  'biology-written-b2.json': 'biology',
+  'm1-written-b2.json': 'm1',
+  'm2-written-b2.json': 'm2',
+  'economics-written-b2.json': 'economics',
   // 2026-09-10 22 科非 MC 題目第一批，每科 5 條
   //（scripts/qbank/gen-written-b1.mjs，內容逐條人手撰寫）。
   // 22 科皆為當時書寫題 = 0 嘅科目（實測：coverage-report.mts）。

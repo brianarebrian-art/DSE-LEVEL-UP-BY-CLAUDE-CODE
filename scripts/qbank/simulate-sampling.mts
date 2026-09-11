@@ -166,6 +166,54 @@ if (TARGET <= lo0 && TARGET >= hi0) {
   }
 }
 
+// ── ⓪ 封存核對：EMPIRICAL_K = 0 之下，抽題次序必須【逐項不變】────────────
+//
+// 2026-09-11 目標書階段三：「確認 k = 0 時抽題順序與原始 unseen-first
+// 100% 吻合」。呢個唔係「差唔多一樣」—— 係逐項相同。
+//
+// 點解要喺呢度再驗一次（lib/__tests__/empirical-weighting.test.mts 已經有）：
+// 嗰邊驗嘅係一個細陣列。呢度用【真實題庫規模】跑 1,000 次，而且用真實嘅
+// 課題統計做權重 —— 一個只喺細樣本成立嘅 early return（例如寫成
+// `if (k <= 0 && questions.length < N)`）喺嗰邊過到關，喺呢度過唔到。
+//
+// ⚠️ 一個「掣關住但行為已經變咗」嘅模組，比一個開咗嘅模組更危險：
+//    冇人會去查一個聲稱關住嘅嘢。
+{
+  // lib/empiricalWeighting.ts 冇任何 import，所以唔使行轉譯嗰條路，直接載入。
+  const { weightedOrder, EMPIRICAL_K, isEmpiricalWeightingActive } = await import('../../lib/empiricalWeighting.ts')
+
+  // 用真實嘅逐課題實測（emp）砌題池 —— 唔係造假數據。
+  const cells = [...emp.entries()].map(([k, v]) => ({ topic: k, total: v.total, wrong: v.wrong }))
+  const qs = cells.map((c, i) => ({ topic: c.topic, id: `q${i}` }))
+  const acc = cells.map((c) => ({ topic: c.topic, total: c.total, wrong: c.wrong }))
+  let changed = 0
+  for (let i = 0; i < 1000; i++) {
+    const out = weightedOrder(qs, acc) // 用預設 k ＝ EMPIRICAL_K
+    if (out.length !== qs.length || out.some((q, j) => q !== qs[j])) changed++
+  }
+
+  // 偶數個樣本嘅中位數：要取兩個中間值嘅【平均】。初版寫咗 rates[len/2]
+  // 攞咗上中位數，令未做過嘅課題繼承最難嗰個值而永遠排最前。
+  const evenPool = [{ topic: 'unseen', id: 'u' }, { topic: 'lo', id: 'l' }, { topic: 'hi', id: 'h' }]
+  const evenAcc = [
+    { topic: 'lo', total: 50, wrong: 2 },  // 4%
+    { topic: 'hi', total: 50, wrong: 45 }, // 90%
+  ]
+  const medOrder = weightedOrder(evenPool, evenAcc, 4, () => 0.5).map((q) => q.id)
+
+  console.log(`\n${'─'.repeat(74)}\n⓪ 封存核對（EMPIRICAL_K = ${EMPIRICAL_K}）`)
+  console.log(`   生效中：${isEmpiricalWeightingActive() ? '⚠️ 係' : '否'}`)
+  console.log(`   1,000 次抽題，次序同輸入【逐項不同】嘅次數：${changed}` +
+    `${changed === 0 ? '  ✅ 0 變更' : '  ⛔ 封存已被破壞'}`)
+  console.log(`   題池規模：${qs.length} 個課題（全部帶真實實測）`)
+  console.log(`   偶數樣本中位數回退：${medOrder.join(' → ')}` +
+    `${medOrder[1] === 'u' ? '  ✅ 未做過嘅企中間' : '  ⛔ 中位數算錯'}`)
+  if (changed !== 0 || isEmpiricalWeightingActive() || medOrder[1] !== 'u') {
+    console.log(`\n   ⛔ 封存核對失敗。EMPIRICAL_K 應維持 0 直至 2026-11-09（憲章 §7.2 覆檢）。`)
+    process.exitCode = 1
+  }
+}
+
 console.log(`\n${'─'.repeat(74)}\n判讀`)
 if (hitK !== null) {
   console.log(`  ✅ 單靠重新分配抽題權重，全站正確率去得到 65%。`)

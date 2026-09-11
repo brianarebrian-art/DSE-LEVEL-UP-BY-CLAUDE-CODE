@@ -418,3 +418,67 @@ BATCH.economics = [
     markingSchemeEn: '(a) 2 marks — using C + I + G + (X − M), in particular SUBTRACTING imports (1); 6 500 (1). Adding imports earns nothing here.\n(b) 3 marks — correct deflation 6 500 ÷ 108 × 100 (1); real GDP about 6 018.5 (1); growth about 0.3% (1).\n(c) 2 marks — identifying 8.3% as nominal growth including price rises (1); quantifying it as about 8 percentage points from prices and about 0.3 from real output (1). "It ignores inflation" without figures earns 1.\n(d) 2 marks — any two limitations, 1 mark each. They must be conceptual; "the figure may be inaccurate" earns nothing.',
   },
 ]
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 把 BATCH 轉為 review-drafts.mjs 所收的格式：每科一個 JSON 陣列。
+//
+// 本步只做三件事：補 subject／topic 欄、為 long 題貼上 §16.A 誠實尾註、寫檔。
+// 題目內容一個字都不會被修改或生成。
+//
+// ⚠️ 本批【尚未出齊 22 科】。已完成的科目見下方彙總；其餘科目留待後續批次。
+//    刻意不以佔位內容填滿 —— 一條佔位題流入審批管線，比缺一科更難察覺。
+// ═══════════════════════════════════════════════════════════════════════════
+const SUBJECT_ORDER = Object.keys(BATCH)
+let total = 0
+const summary = []
+
+for (const subject of SUBJECT_ORDER) {
+  const rows = BATCH[subject].map((q) => {
+    const out = {
+      id: q.id,
+      type: q.type,
+      subject,
+      // `topic` 為人類可讀標籤，`topicId` 為真實 id —— 兩者都要帶，
+      // 否則 promote 時會 slug 中文標籤而製造孤兒課題。
+      topic: q.topicZh,
+      topicId: q.topicId,
+      topicZh: q.topicZh,
+      topicEn: q.topicEn,
+      difficulty: q.difficulty,
+      question: q.question,
+      questionEn: q.questionEn,
+      explanation: q.explanation,
+      explanationEn: q.explanationEn,
+      referenceAnswer: q.referenceAnswer,
+      referenceAnswerEn: q.referenceAnswerEn,
+    }
+    if (q.type === 'long') {
+      out.marks = q.marks
+      out.suggestedMinutes = q.suggestedMinutes
+      // 尾註逐字一致貼上 —— 手抄一次漏一次，而漏嗰次就係向學生講咗
+      // 「呢個係考評局分數」（憲章 §16.A）。
+      out.markingScheme = q.markingScheme + TAIL_ZH
+      out.markingSchemeEn = q.markingSchemeEn + TAIL_EN
+    }
+    return out
+  })
+
+  fs.writeFileSync(path.join(OUT, `${subject}-written-b2.json`), JSON.stringify(rows, null, 2) + '\n')
+  total += rows.length
+  const byType = rows.reduce((a, r) => ((a[r.type] = (a[r.type] || 0) + 1), a), {})
+  const byDiff = rows.reduce((a, r) => ((a[r.difficulty] = (a[r.difficulty] || 0) + 1), a), {})
+  summary.push(
+    `  ${subject.padEnd(20)} ${String(rows.length).padStart(2)} 條  ` +
+    `(text ${byType.text || 0} / long ${byType.long || 0})  ` +
+    `[basic ${byDiff.basic || 0} · inter ${byDiff.intermediate || 0} · hard ${byDiff.hard || 0}]`,
+  )
+}
+
+console.log(`\n📝 非 MC 題目・第二批 —— 已寫入 ${SUBJECT_ORDER.length} 個草稿檔，合共 ${total} 條\n`)
+console.log(summary.join('\n'))
+console.log(`\n每科所用嘅 5 個課題全部同第一批【不重複】，且全部係該科已登記嘅既有課題。`)
+console.log(`\n下一步（機器只做到呢度 —— 憲章 §12）：`)
+console.log(`  1. node scripts/qbank/review-drafts.mjs --in scripts/qbank/drafts/<subject>-written-b2.json --subject <subject>`)
+console.log(`  2. 真人逐條批 —— reviewer 欄要填真名`)
+console.log(`  3. promote-drafts.mjs → 人手 wire 入 load.ts → npm test → sync-questions.mts --push`)
+console.log(`\n⚠️  本腳本【冇】亦【唔會】寫入任何題庫。decisions 檔嘅 reviewer 欄一律留空。\n`)

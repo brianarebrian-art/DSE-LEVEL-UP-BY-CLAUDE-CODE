@@ -82,6 +82,22 @@ for (const row of rows) {
   users.push({ days, attempts: clean })
 }
 
+// ── 漏斗：「未做題即流失」量得到幾多 ──────────────────────────────────────
+//
+// 2026-09-11 目標書講「消滅『未做題即流失』嘅數據黑洞」，並提出補寫
+// user_sessions。⚠️ 實測：user_sessions【唔存在】——
+// 已於 2026-08-20 由 supabase/migrations/0010_drop_user_sessions.sql 刪除，
+// 理由有記錄（0 行、唯一寫入端點零呼叫、設計已被 lib/studyTime.ts 取代）。
+//
+// 但個黑洞其實冇想像中黑：user_progress 有一行，就代表該帳號登入過而且同步過。
+// 其中【一節都冇做過】嗰批，正正就係「開咗但未做題」——
+// 呢一段唔使任何新採集就量得到，下面直接列出。
+//
+// 真正量唔到嘅只餘一段：【從未登入過】嘅匿名訪客。要量佢就要開始追蹤
+// 未成年訪客，屬新增採集，唔喺本腳本範圍之內（見報告尾段）。
+const rowsWithProgressKey = rows.filter((r) => Array.isArray(r.progress_data?.dse_progress)).length
+const neverPractised = rows.length - users.length
+
 // ── 留存 ────────────────────────────────────────────────────────────────────
 //
 // 三個定義，因為佢哋答唔同問題，而混淆咗就會得出一個好睇但冇意思嘅數：
@@ -149,14 +165,26 @@ const L = '─'.repeat(72)
 console.log(`\n${'═'.repeat(72)}\n  留存率 ＋ 逐週正確率 curve（唯讀）\n${'═'.repeat(72)}`)
 console.log(`\n帳號 ${rows.length} · 做過題 ${users.length} · 剔走不可能紀錄 ${droppedAttempts} 條`)
 
+console.log(`\n${L}\n⓪ 漏斗：「未做題即流失」`)
+console.log(`   同步過嘅帳號（user_progress 有行）   ${String(rows.length).padStart(4)}`)
+console.log(`   其中有 dse_progress 欄               ${String(rowsWithProgressKey).padStart(4)}`)
+console.log(`   其中做過至少一節（可算留存）         ${String(users.length).padStart(4)}   ${pct(users.length, rows.length)}`)
+console.log(`   登入同步過但【一節都冇做】           ${String(neverPractised).padStart(4)}   ${pct(neverPractised, rows.length)}  ← 就係呢批`)
+console.log(``)
+console.log(`   ⚠️ user_sessions 表【唔存在】—— 2026-08-20 由 migration 0010 刪除，`)
+console.log(`      理由：0 行、唯一寫入端點零呼叫、設計已被 lib/studyTime.ts 取代。`)
+console.log(`      但「開咗但未做題」呢一段唔使佢都量得到（上面 ${neverPractised} 個帳號）。`)
+console.log(`      量唔到嘅只餘【從未登入過嘅匿名訪客】—— 要量就要開始追蹤未成年訪客，`)
+console.log(`      屬新增採集，需要創辦人裁決（見尾段）。`)
+
 console.log(`\n${L}\n① 留存（目標：次日 ≥ 50%）`)
 console.log(`   次日返嚟（D1）    ${String(d1).padStart(4)} / ${String(eligible.length).padStart(4)}  ${pct(d1, eligible.length).padStart(7)}`)
 console.log(`   一週內返嚟（D7）  ${String(d7).padStart(4)} / ${String(eligible7.length).padStart(4)}  ${pct(d7, eligible7.length).padStart(7)}`)
 console.log(`   曾經返過（上限）  ${String(everReturned).padStart(4)} / ${String(eligible.length).padStart(4)}  ${pct(everReturned, eligible.length).padStart(7)}`)
 console.log(`\n   ⚠️ 分母已排除「今日先第一次做題」嘅人 —— 佢哋未有機會返嚟。`)
 console.log(`      唔排除嘅話，每新增一個用戶就會即刻拉低 D1，而嗰個下跌係假嘅。`)
-console.log(`   ⚠️ 量嘅係【做過題嘅人有冇返嚟再做題】，唔係【開過網站嘅人有冇再開】——`)
-console.log(`      user_sessions 表 0 行，前端從來冇寫過，所以「開咗但未做題」嗰批量度唔到。`)
+console.log(`   ⚠️ 量嘅係【做過題嘅人有冇返嚟再做題】，唔係【開過網站嘅人有冇再開】。`)
+console.log(`      2026-09-11 簽署：以做過題者嘅 D1 返場率為正式標準，所以呢個分母係啱嘅。`)
 
 const gap = eligible.length ? (d1 / eligible.length - 0.5) * 100 : 0
 console.log(`\n   距 50% 目標（按 D1 計）：${gap >= 0 ? '已達標' : `尚差 ${Math.abs(gap).toFixed(1)} 個百分點`}`)
@@ -197,6 +225,20 @@ if (afterLock.sessions < 30) {
   console.log(`      §7.2 訂明 2026-11-09 覆檢，就係為咗等夠兩個月數據。`)
   console.log(`      而家跑呢個腳本嘅目的係【確認量得到】，唔係【而家就睇答案】。`)
 }
+
+console.log(`\n${L}\n④ 仲有咩量唔到 —— 需要裁決嘅一項`)
+console.log(`   量得到：登入 → 同步 → 做題 → 返場，全條漏斗（見 ⓪ 同 ①）。`)
+console.log(`   量唔到：【從未登入過】嘅匿名訪客 —— 開過網站、睇過題目、走咗，冇留低任何行。`)
+console.log(``)
+console.log(`   要量佢，唯一方法係開始記錄未登入訪客嘅到訪 —— 即係對 12–18 歲`)
+console.log(`   未成年人新增一類採集，而且私隱頁要同日改（§3 已有先例）。`)
+console.log(`   ⚠️ 呢個唔係實作細節，係一個私隱決定，要創辦人拍板。`)
+console.log(``)
+console.log(`   兩件事值得一併考慮：`)
+console.log(`   · 2026-09-11 簽署嘅正式標準係「做過題者嘅 D1 返場率」——`)
+console.log(`     嗰個指標【唔需要】匿名追蹤就計得到（已計，見 ①）。`)
+console.log(`   · 已經量到嘅 ${neverPractised} 個「同步過但零練習」帳號（${pct(neverPractised, rows.length)}），`)
+console.log(`     本身已經係最大嗰段流失。未用盡呢段數據之前，新增採集未必划算。`)
 
 console.log(`\n${L}\n全站：${allTotal.toLocaleString()} 題 · 正確率 ${pct(allCorrect, allTotal)}`)
 console.log(`§7.2 對照基準（剷鎖前實測）：88.3% · 5,565 題 · 484 節`)

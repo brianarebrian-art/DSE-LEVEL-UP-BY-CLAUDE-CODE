@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · m1 · m1-written-b2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">m1</span></h1>
+<div class="sub">來源 m1-written-b2.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"m1_w2_01","topic":"二項式定理","difficulty":"basic","question":"展開式 (2x − 1/x)⁶ 中，求 x² 項的係數。","explanation":"本題的失分幾乎全部集中於一點：漏了 2 的冪次或漏了負號。通項為 C(6, r)(2x)^(6−r)(−1/x)^r，其中 (2x)^(6−r) 帶有 2^(6−r) 這個因子，而 (−1/x)^r 帶有 (−1)^r。只寫 C(6, r)x^(6−2r) 而略去這兩個因子，是最常見的做法，亦必然得出錯誤答案。\n求 r 的方法是解 x 的冪次方程：(6 − r) − r = 2，得 r = 2。此步宜先做，避免逐項展開六項而增加出錯機會。\n\nCasio fx-50FH II / 3650P：組合數用 nCr 鍵（C(6,2) 即按 6 nCr 2 = 15）。若需檢查多個 r 值，可用 PROG 模式把通項寫成一個程式，以 r 為輸入逐個試值，比逐次重按快得多。","type":"text","referenceAnswer":"通項為 T(r+1) = C(6, r) · (2x)^(6−r) · (−1/x)^r\n= C(6, r) · 2^(6−r) · (−1)^r · x^(6−r) · x^(−r)\n= C(6, r) · 2^(6−r) · (−1)^r · x^(6−2r)\n\n令 x 的冪次為 2：6 − 2r = 2，得 r = 2。\n\n代入 r = 2：\n係數 = C(6, 2) · 2^4 · (−1)²\n= 15 × 16 × 1\n= 240\n\n故 x² 項的係數為 240。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m1_w2_02","topic":"概率分佈","difficulty":"intermediate","question":"某工廠生產的燈泡中，有 4% 為次品。現隨機抽取 20 個燈泡。\n(a) 求恰好有 2 個次品的概率。（答案準確至四位小數）\n(b) 求至少有 1 個次品的概率。\n(c) 求次品數目的期望值與方差。\n(d) 有學生以「1 減去恰好 0 個」計算 (b)，另一學生逐項相加 1 至 20 個次品的概率。兩者的答案是否相同？哪一種做法較佳？請說明。","explanation":"(d) 是本題的教學重點。兩種做法在數學上完全等價，答案相同；但逐項相加二十項，每一項都是一次出錯機會，而且在計數機上耗時甚多。使用互補事件只需計算一項，是應試上明顯較佳的做法。\n須留意「較佳」的理由必須落在【出錯機會與時間】上，而非「因為比較短」。答「兩者答案不同」是概念錯誤 —— 至少 1 個與恰好 0 個互為互補事件，兩者概率之和必為 1。\n\nCasio fx-50FH II / 3650P：二項概率沒有內建函數，須用 nCr 鍵配合冪運算逐項計算。建議把 C(20, r) × 0.04^r × 0.96^(20−r) 存為 PROG 程式，以 r 為輸入 —— 一旦題目要求多個 r 值（例如求 P(X ≤ 3)），此舉可大幅減少重複按鍵所引致的錯誤。","type":"long","referenceAnswer":"設 X 為 20 個燈泡中的次品數目，則 X ~ B(20, 0.04)。\n\n(a) P(X = 2) = C(20, 2) × 0.04² × 0.96¹⁸\n= 190 × 0.0016 × 0.4796\n= 0.1458（準確至四位小數）\n\n(b) P(X ≥ 1) = 1 − P(X = 0)\n= 1 − 0.96²⁰\n= 1 − 0.4420\n= 0.5580\n\n(c) 期望值 E(X) = np = 20 × 0.04 = 0.8\n方差 Var(X) = np(1 − p) = 20 × 0.04 × 0.96 = 0.768\n\n(d) 兩者的答案相同。「至少 1 個」與「恰好 0 個」互為互補事件，故 P(X ≥ 1) = 1 − P(X = 0)，兩種算法在數學上等價。\n以互補事件計算較佳，理由有二：\n1. 只需計算一項，而逐項相加需計算二十項，每一項都是一次運算出錯的機會；\n2. 在考試時間之內，二十次計數機運算所耗的時間遠多於一次，且中途按錯難以察覺。\n須注意「較佳」並非因為算式較短，而是因為出錯機會與所需時間都顯著較低。","markingScheme":"(a) 2 分 —— 正確辨認 X ~ B(20, 0.04) 並列出 C(20,2)0.04²0.96¹⁸（1）；0.1458（1）。\n(b) 2 分 —— 使用互補事件 1 − P(X = 0) 或等效（1）；0.5580（1）。\n(c) 2 分 —— E(X) = 0.8（1）；Var(X) = 0.768（1）。答標準差者須開方正確方可得分。\n(d) 2 分 —— 判斷兩者答案相同並說明互補關係（1）；以「出錯機會較少／所需時間較短」說明互補法較佳（1）。答「兩者答案不同」者本部分不得分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m1_w2_03","topic":"積分法","difficulty":"intermediate","question":"某產品的邊際成本函數為 C′(x) = 6x + 40（單位：元／件），其中 x 為產量（件）。已知生產 10 件的總成本為 900 元。\n(a) 求總成本函數 C(x)。\n(b) 求固定成本。\n(c) 求產量由 10 件增至 20 件時所增加的成本。\n(d) 有學生以 C(20) − C(10) 計算 (c)，另一學生計算 ∫ 由 10 至 20 的 C′(x) dx。請說明兩者為何必然相等。","explanation":"(a) 的失分位在積分常數。由邊際成本積分得出的是總成本函數加上一個未定常數，必須代入題目所給的條件求出該常數；直接寫 C(x) = 3x² + 40x 而略去常數，是最常見的錯誤，並會令 (b) 一併錯誤。\n(b) 固定成本即產量為零時的成本，亦即 C(0)，正正等於該積分常數。此一對應關係值得記牢：積分常數在成本問題中有明確的經濟意義，並非可有可無的裝飾。\n(d) 考的是微積分基本定理。定積分 ∫ C′(x) dx 由 10 至 20 的值等於原函數在兩端的差 C(20) − C(10)，這正是基本定理的內容。答「因為兩者都是求面積」未觸及原函數與導函數的關係。","type":"long","referenceAnswer":"(a) C(x) = ∫ (6x + 40) dx = 3x² + 40x + k\n代入 C(10) = 900：\n3(100) + 40(10) + k = 900\n300 + 400 + k = 900\nk = 200\n故 C(x) = 3x² + 40x + 200。\n\n(b) 固定成本 = C(0) = 3(0) + 40(0) + 200 = 200 元。\n（固定成本即產量為零時仍須支付的成本，數值上等於積分常數 k。）\n\n(c) C(20) = 3(400) + 40(20) + 200 = 1 200 + 800 + 200 = 2 200\nC(10) = 900\n所增加的成本 = 2 200 − 900 = 1 300 元。\n\n(d) 兩者必然相等，因為此即微積分基本定理。\nC(x) 是 C′(x) 的一個原函數。定積分由 10 至 20 的值等於原函數在上下限的差：\n∫（10 至 20）C′(x) dx = [C(x)]（10 至 20）= C(20) − C(10)。\n須注意積分常數在相減時互相抵消，故無論選用哪一個原函數，所得的差值相同 —— 這亦解釋了為何 (c) 不需要先知道固定成本亦可作答。","markingScheme":"(a) 3 分 —— 正確積分得 3x² + 40x（1）；保留積分常數 k（1）；代入條件求得 k = 200（1）。略去常數者最多得 1 分。\n(b) 1 分 —— 200 元，並指出即 C(0)。\n(c) 2 分 —— 正確代入求 C(20) = 2 200（1）；1 300 元（1）。\n(d) 2 分 —— 引用微積分基本定理，指出 C(x) 為 C′(x) 的原函數（1）；說明定積分等於原函數在上下限之差，且積分常數相減時抵消（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m1_w2_04","topic":"微分法","difficulty":"intermediate","question":"設 y = x·e^(−2x)。\n(a) 求 dy/dx。\n(b) 求該曲線的極值點坐標，並判斷其為極大值抑或極小值。","explanation":"(a) 須用乘積法則，並注意 e^(−2x) 的導數為 −2e^(−2x)（鏈式法則），漏了 −2 是最高頻的錯誤。\n(b) 求極值點時，由 dy/dx = e^(−2x)(1 − 2x) = 0 求解。此處值得留意：e^(−2x) 對任何實數 x 皆為正，永不為零，故只需解 1 − 2x = 0。有考生把 e^(−2x) = 0 亦當成一個解而多出一個並不存在的極值點 —— 指數函數恆正，是應熟記的事實。\n判斷極大或極小可用二階導數或一階導數的符號變化；後者在考試中通常較快，且不易因二次求導出錯而失分。","type":"text","referenceAnswer":"(a) 以乘積法則，設 u = x、v = e^(−2x)：\ndu/dx = 1，dv/dx = −2e^(−2x)\ndy/dx = u(dv/dx) + v(du/dx)\n= x(−2e^(−2x)) + e^(−2x)(1)\n= e^(−2x)(1 − 2x)\n\n(b) 令 dy/dx = 0：\ne^(−2x)(1 − 2x) = 0\n由於 e^(−2x) > 0 對所有實數 x 成立，永不為零，故只需解 1 − 2x = 0，得 x = 1/2。\n\n代入原式求 y：\ny = (1/2)·e^(−1) = 1/(2e) ≈ 0.184\n\n判斷性質（以一階導數符號變化）：\n當 x \u003c 1/2 時，1 − 2x > 0，故 dy/dx > 0，函數遞增；\n當 x > 1/2 時，1 − 2x \u003c 0，故 dy/dx \u003c 0，函數遞減。\n導數由正變負，故此點為極大值點。\n\n極值點坐標為 (1/2, 1/(2e))，為極大值點。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"m1_w2_05","topic":"統計推斷","difficulty":"hard","question":"某城市成年男性的身高服從正態分佈，平均值為 172 cm，標準差為 6 cm。\n(a) 求隨機抽取一名成年男性，其身高超過 180 cm 的概率。\n(b) 求身高介乎 166 cm 與 178 cm 之間的比例。\n(c) 某服裝公司欲為最高的 10% 男性設計特大碼。求其身高下限。\n(d) 該公司另以「平均值加一個標準差」（即 178 cm）作為特大碼的下限。此做法會令特大碼覆蓋多少比例的男性？與 (c) 比較並評論。","explanation":"(c) 與 (d) 的方向相反，是本題的分辨點。(c) 由【比例】反求分界值，須先在標準正態表中找出對應上尾 10% 的 z 值（約 1.282），再以 x = μ + zσ 還原；(d) 則由【分界值】正求比例。有考生在 (c) 誤用 z = 1.28 對應的下尾機率，把答案算成第 10 百分位而非第 90 百分位，得出低於平均值的荒謬結果 —— 檢查方法很簡單：既然是「最高的 10%」，答案必然大於 172。\n(d) 的評論須落在實質差別上：加一個標準差只覆蓋約 15.9%，比目標的 10% 多出近六個百分點，即會多做約六成的特大碼存貨。「差不多」並非可接受的評論；須以數字說明差異的方向與幅度。\n\nCasio fx-50FH II / 3650P：兩型號皆無內建正態分佈累積函數，z 值仍須查標準正態分佈表。計數機的用途在於快速求 z = (x − μ)/σ 及還原 x = μ + zσ；把這兩條式存為 PROG 程式，可避免在多小題之間重複輸入 μ 與 σ 時按錯。","type":"long","referenceAnswer":"設 X 為身高，X ~ N(172, 6²)。\n\n(a) z = (180 − 172) / 6 = 8 / 6 = 1.333\nP(X > 180) = P(Z > 1.333) = 1 − 0.9087 = 0.0913\n約 9.13%。\n\n(b) 下限：z₁ = (166 − 172) / 6 = −1.000\n上限：z₂ = (178 − 172) / 6 = 1.000\nP(−1 \u003c Z \u003c 1) = 0.8413 − 0.1587 = 0.6826\n約 68.3%。\n（此即正態分佈「平均值加減一個標準差涵蓋約 68%」的標準結果，可用作核對。）\n\n(c) 最高的 10% 即上尾機率為 0.10，對應的累積概率為 0.90。\n查表得 z = 1.282。\nx = μ + zσ = 172 + 1.282 × 6 = 172 + 7.69 = 179.7 cm\n故特大碼的身高下限約為 179.7 cm（約 180 cm）。\n\n(d) 以 178 cm 為下限：\nz = (178 − 172) / 6 = 1.000\nP(X > 178) = 1 − 0.8413 = 0.1587，即約 15.9%。\n\n比較與評論：\n公司原意是覆蓋最高的 10%，但以「平均值加一個標準差」為分界，實際覆蓋 15.9%，比目標多出約 5.9 個百分點。以相對比例計，實際覆蓋人數約為目標的 1.59 倍，即特大碼的生產量會超出計劃約六成。\n差異的成因是「一個標準差」與「上尾 10%」並非同一個位置：上尾 10% 對應的 z 值為 1.282 而非 1.000。若公司要準確覆蓋 10%，應採用 (c) 的 179.7 cm；若刻意選用 178 cm 以留有餘裕，則須同時調整存貨預算，並清楚知道所覆蓋的是 15.9% 而非 10%。","markingScheme":"(a) 2 分 —— z = 1.333（1）；0.0913 或約 9.1%（1）。\n(b) 2 分 —— 兩個 z 值皆為 ±1（1）；0.683 或約 68.3%（1）。\n(c) 3 分 —— 辨認上尾 10% 對應累積概率 0.90（1）；z = 1.282（1）；179.7 cm 連單位（1）。答案低於 172 者本部分不得分。\n(d) 2 分 —— 15.9%（1）；比較須引用數字，指出多出約 5.9 個百分點或約為目標的 1.59 倍，並說明成因為 z = 1.000 與 z = 1.282 的分別（1）。只寫「差不多」或「多咗少少」不得分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "m1";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "m1-written-b2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "m1-written-b2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

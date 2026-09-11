@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · biology · biology-written-b2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">biology</span></h1>
+<div class="sub">來源 biology-written-b2.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"bi_w2_01","topic":"消化系統","difficulty":"basic","question":"(a) 說明小腸絨毛的三項結構特徵，並分別指出其如何有助吸收。\n(b) 為何澱粉必須先被消化為葡萄糖才能被吸收？","explanation":"本題要求「結構特徵」與「如何有助吸收」成對出現。只列出特徵而不說明作用，或只說「有助吸收」而不指出機制，都只能取得一半分數。例如「絨毛數目極多」本身不是答案，須接上「大幅增加表面積，令單位時間內可吸收的分子數目上升」。\n(b) 的關鍵在於分子大小與細胞膜的通透性：澱粉分子過大，無法通過小腸上皮細胞的細胞膜，而葡萄糖分子細小且可溶，能經載體蛋白運送。答「因為葡萄糖是能量來源」並未回答吸收的問題。","type":"text","referenceAnswer":"(a) 任舉三項，每項須連結其作用：\n1. 絨毛及微絨毛數目極多 —— 大幅增加吸收的表面積，令單位時間內能吸收的養分分子數目上升。\n2. 上皮層只有一個細胞的厚度 —— 縮短擴散距離，加快養分進入血液的速率。\n3. 每條絨毛內有豐富的微血管網（及乳糜管）—— 迅速把已吸收的養分帶走，維持絨毛內外的濃度梯度，令擴散持續進行。\n（亦可答：乳糜管專責吸收脂肪酸與甘油。）\n\n(b) 澱粉是分子極大的多醣，不能通過小腸上皮細胞的細胞膜。葡萄糖是單醣，分子細小且可溶於水，能經細胞膜上的載體蛋白運送入細胞，再進入血液。故必須先由酶催化水解為葡萄糖，吸收方能發生。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w2_02","topic":"人體生理","difficulty":"intermediate","question":"一名學生由靜止開始劇烈運動十分鐘。\n(a) 描述運動期間心率與呼吸速率的變化。\n(b) 解釋這些變化如何有助肌肉持續收縮。\n(c) 運動結束後數分鐘，該學生的呼吸速率仍然高於靜止水平。請解釋原因。\n(d) 有學生答「因為身體仍然很熱，所以要繼續呼吸散熱」。請評論此說法。","explanation":"(c) 是本題的判別點，考的是氧債（過量運動後耗氧量）。劇烈運動時肌肉部分進行無氧呼吸，積累乳酸；運動停止後仍須額外的氧把乳酸氧化分解，故呼吸速率不會即時回落。答「因為要補回運動時欠缺的氧」方向正確，但須說出乳酸這一環節才算完整。\n(d) 的說法混淆了呼吸系統與體溫調節。人體散熱主要靠排汗與皮膚血管舒張，呼吸散熱在人類中所佔比例甚小（該機制在犬類等動物才顯著）。此問要求考生分辨「同時發生」與「因果關係」—— 運動後身體確實較熱，但這並非呼吸速率偏高的原因。","type":"long","referenceAnswer":"(a) 心率與呼吸速率均顯著上升；呼吸的深度亦增加。兩者在運動開始後迅速上升，其後維持於較高水平。\n\n(b) 心率上升令血液循環加快，單位時間內送抵肌肉的氧氣與葡萄糖增加，同時較快帶走二氧化碳與熱量。\n呼吸速率及深度增加令肺部的氣體交換速率上升，血液的含氧量得以維持。\n兩者共同確保肌肉細胞能持續進行有氧呼吸，釋放足夠能量（ATP）供肌肉收縮。\n\n(c) 運動期間肌肉的需氧量超過供應，部分肌肉細胞進行無氧呼吸並積累乳酸。運動停止後，身體須額外攝取氧氣，把乳酸氧化分解（部分經肝臟轉化），此額外的需氧量稱為氧債。故呼吸速率須維持於高於靜止的水平，直至乳酸清除為止。\n\n(d) 說法不正確。人體散熱主要依靠排汗（汗液蒸發帶走潛熱）及皮膚血管舒張增加輻射散熱，經呼吸散失的熱量所佔比例甚小。運動後身體較熱與呼吸速率偏高兩者同時出現，但並無因果關係；呼吸速率偏高的真正原因是償還氧債（氧化乳酸），如 (c) 所述。","markingScheme":"(a) 2 分 —— 心率上升（1）；呼吸速率上升（深度增加亦可）（1）。\n(b) 2 分 —— 加快輸送氧氣與葡萄糖至肌肉（1）；維持有氧呼吸以持續釋放能量供收縮（1）。\n(c) 3 分 —— 指出運動時進行無氧呼吸並積累乳酸（1）；指出運動後須額外的氧氧化乳酸（1）；點名氧債或等效說法（1）。只寫「補返啲氧」而無乳酸得 1 分。\n(d) 1 分 —— 指出人體散熱主要靠排汗及皮膚血管舒張，並說明兩者只是同時發生而非因果。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w2_03","topic":"生態學","difficulty":"intermediate","question":"一個池塘生態系統中，浮游植物被水蚤攝食，水蚤被小魚攝食，小魚被水鳥捕食。\n(a) 寫出此食物鏈，並指出各營養級。\n(b) 解釋為何食物鏈的營養級數目通常不超過四至五級。\n(c) 若大量含磷肥料流入池塘，描述可能出現的連鎖後果。\n(d) 有學生答「肥料令植物生長，所以魚會更多」。請指出此推論忽略了甚麼。","explanation":"(b) 的正確解釋是能量在每一級之間的傳遞效率甚低（約百分之十），其餘大部分以呼吸作用產生的熱能散失、或存於未被攝食及未能消化的部分。到第四、五級時可用能量已不足以維持一個族群。只寫「能量會流失」而不提大致比例或散失途徑，說理並不完整。\n(d) 考的是富營養化的整體後果。該推論只取了食物鏈的第一步，忽略了藻類過度繁殖後死亡、細菌分解大量消耗溶氧、水中缺氧反令魚類死亡。此推論的結構性錯誤在於把一條多步驟的因果鏈截斷於對自己有利的一步。","type":"long","referenceAnswer":"(a) 浮游植物 → 水蚤 → 小魚 → 水鳥\n浮游植物：生產者（第一營養級）\n水蚤：初級消費者（第二營養級）\n小魚：次級消費者（第三營養級）\n水鳥：三級消費者（第四營養級）\n\n(b) 能量由一個營養級傳遞至下一級時，效率甚低，一般只有約百分之十。其餘的能量以呼吸作用所產生的熱能散失，或存於未被攝食的部分、糞便及未能消化的物質之中。\n經過三至四次傳遞後，餘下的能量已不足以支持一個具存活能力的族群，故營養級數目通常不超過四至五級。\n\n(c) 可能的連鎖後果：\n1. 磷為限制性養分，其大量流入令藻類及浮游植物迅速繁殖，出現藻華。\n2. 水面被藻類覆蓋，光線難以透入，水底的水生植物因缺乏光照而死亡。\n3. 大量藻類及植物死亡後，分解者（細菌）大量繁殖進行分解，消耗水中的溶解氧。\n4. 水中溶氧急降，魚類及其他需氧生物因缺氧而死亡。\n5. 生物多樣性下降，池塘生態系統的結構受破壞。\n\n(d) 該推論只取了因果鏈的第一步，忽略了其後的步驟。植物（藻類）確實會因養分增加而大量繁殖，但藻類壽命短，死亡後由細菌分解，而分解過程會大量消耗水中的溶解氧。結果並非魚類增加，而是水體缺氧導致魚類死亡。此推論亦忽略了藻華遮蔽陽光對水底植物的影響。","markingScheme":"(a) 2 分 —— 食物鏈次序正確（1）；四個營養級名稱正確（1）。\n(b) 2 分 —— 指出傳遞效率低（約百分之十）（1）；說明能量以呼吸熱能／未被攝食或未消化部分流失（1）。\n(c) 3 分 —— 藻華（1）；藻類死亡後細菌分解消耗溶氧（1）；水中缺氧導致魚類死亡（1）。次序須成鏈，散列現象最多得 2 分。\n(d) 1 分 —— 指出推論截斷於第一步，忽略藻類死亡、細菌分解耗氧、最終缺氧致魚類死亡。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w2_04","topic":"遺傳推理","difficulty":"intermediate","question":"人類的捲舌能力由一對等位基因控制，捲舌（R）為顯性，不能捲舌（r）為隱性。\n一對能捲舌的夫婦育有一名不能捲舌的兒子。\n(a) 寫出父母雙方的基因型，並說明推斷依據。\n(b) 若該夫婦再生一名子女，該子女能捲舌的機率是多少？\n(c) 已知第二名子女能捲舌。該子女為雜合子的機率是多少？","explanation":"(c) 是本題的判別點，考的是條件機率。四種等可能結果為 RR、Rr、rR、rr；題目已告知該子女能捲舌，即已排除 rr，餘下三種等可能，其中兩種為雜合子，故機率為三分之二。答二分之一者，是忽略了題目所給的額外資訊 —— 「已知能捲舌」把樣本空間由四項收窄至三項。此類「已知…則…」的問法在歷屆反覆出現，而失分幾乎全部源於未把已知條件用上。\n(a) 的推斷方向須寫明：兒子為 rr，其兩個 r 各來自父母一方，故父母各自必帶一個 r；而父母能捲舌，故各自必有一個 R。","type":"text","referenceAnswer":"(a) 父母雙方的基因型均為 Rr（雜合子）。\n推斷依據：兒子不能捲舌，屬隱性性狀，基因型必為 rr。其兩個 r 等位基因分別來自父親與母親，故父母各自必帶有一個 r。又父母二人皆能捲舌，屬顯性性狀，故各自必帶有至少一個 R。兩項合併，父母的基因型只能是 Rr。\n\n(b) Rr × Rr 的子代基因型比例為 RR : Rr : rr = 1 : 2 : 1。\n能捲舌者為 RR 及 Rr，佔四分之三。\n故機率為 3/4（0.75）。\n\n(c) 四種等可能組合為 RR、Rr、rR、rr。題目已知該子女能捲舌，故 rr 被排除，餘下 RR、Rr、rR 三種等可能情況。\n其中雜合子（Rr 或 rR）佔兩種。\n故機率為 2/3。\n須注意此處不可答 1/2 —— 題目提供了「能捲舌」這項額外資訊，必須用以收窄樣本空間。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"bi_w2_05","topic":"生理調節鏈","difficulty":"hard","question":"一名健康人士在炎熱天氣下進行戶外工作三小時，期間只飲用少量水。\n(a) 描述其血液滲透濃度的變化，並說明身體如何偵測此變化。\n(b) 描述抗利尿激素（ADH）分泌量的變化及其對腎臟的作用。\n(c) 說明尿液的體積與濃度將如何改變。\n(d) 若該人士其後一次過大量飲水，描述身體的調節反應，並解釋為何負反饋機制不會令體內水分持續增加。","explanation":"本題考的是一條完整的負反饋鏈，失分多數源於鏈條斷裂而非個別知識點錯誤。常見的斷點有三：一是只寫「ADH 增加」而未說出其作用位置（腎小管及集尿管的水分重吸收）；二是把 ADH 的作用寫成「令尿液減少」而未經重吸收這一步，等於跳過機制；三是 (d) 只描述反向變化而未回答「為何不會持續增加」。\n(d) 的正確答案須點明負反饋的定義：反應本身會消除引發它的刺激。血液被稀釋後 ADH 下降、排出多餘水分，滲透濃度回升至正常，刺激消失，反應隨之停止 —— 系統因此圍繞設定點振盪，而非單向偏離。只答「因為身體會調節」並未觸及機制。","type":"long","referenceAnswer":"(a) 因大量出汗而水分流失，飲水不足，血液的滲透濃度上升（血液變得較濃）。\n下視丘的滲透壓感受器偵測到此上升。\n\n(b) 下視丘受刺激後，腦垂體後葉分泌的抗利尿激素（ADH）增加。\nADH 經血液運送至腎臟，令腎小管遠端及集尿管的管壁對水的通透性上升，水分由濾液被重吸收回血液的量因而增加。\n\n(c) 尿液體積減少，濃度上升（顏色較深）。此為水分被大量重吸收的直接結果。\n\n(d) 大量飲水後，血液的滲透濃度下降（血液被稀釋）。下視丘的滲透壓感受器偵測到此下降，腦垂體後葉分泌的 ADH 減少。腎小管遠端及集尿管對水的通透性下降，水分重吸收減少，故排出大量稀釋的尿液，血液的滲透濃度回升至正常水平。\n\n負反饋不會令體內水分持續增加，因為【反應本身會消除引發它的刺激】。血液被稀釋引發 ADH 下降；ADH 下降令多餘水分被排出；水分排出後血液的滲透濃度回升，稀釋這個刺激隨之消失，ADH 分泌回復正常水平，排水反應亦停止。系統因此在設定點附近來回調節，而非朝單一方向持續偏離。","markingScheme":"(a) 2 分 —— 血液滲透濃度上升（1）；下視丘滲透壓感受器偵測（1）。\n(b) 3 分 —— ADH 分泌增加（1）；點名腦垂體後葉（1）；作用於腎小管遠端及集尿管，提高對水的通透性令重吸收增加（1）。只寫「令尿少啲」而無重吸收得 0 分。\n(c) 2 分 —— 體積減少（1）；濃度上升（1）。\n(d) 2 分 —— 描述反向調節（ADH 下降、重吸收減少、排出大量稀尿）（1）；說明負反饋的機制係反應消除刺激，故系統在設定點附近振盪（1）。只答「身體會自我調節」不得該分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "biology";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "biology-written-b2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "biology-written-b2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
