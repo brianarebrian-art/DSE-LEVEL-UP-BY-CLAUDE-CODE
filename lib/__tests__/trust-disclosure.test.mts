@@ -63,7 +63,13 @@ test('上雲清單同兩條同步通道完全對應', () => {
     [...fs.readFileSync(file, 'utf8').matchAll(/\bdse_[a-z_]+\b/g)].map((m) => m[0])
 
   // 同步機制自身嘅簿記 key —— 唔係學生數據，唔算「上傳你嘅嘢」。
-  const BOOKKEEPING = new Set(['dse_updated_at', 'dse_synced_at', 'dse_sync_owner'])
+  // ⚠️ 加入呢個 set＝聲稱「呢個 key 唔會上傳」。唔可以憑感覺加 ——
+  //    dse_topic_stats_base 由 lib/__tests__/topic-stats-crdt.test.mts 測試 ⑦
+  //    實際核實過：snapshotLocal() 嘅輸出入面冇佢，CLOUD_KEYS 亦冇佢。
+  const BOOKKEEPING = new Set([
+    'dse_updated_at', 'dse_synced_at', 'dse_sync_owner',
+    'dse_topic_stats_base', // 三方合併嘅本機基準（2026-09-11），純本機記帳
+  ])
   // settingsSync 檔頭有一段「唔存在／改咗名」嘅反面例子註解，唔可以當真 key。
   const NOT_REAL = new Set(['dse_dark_mode', 'dse_dyslexic_font', 'dse_focus_mode', 'dse_focus_today'])
 

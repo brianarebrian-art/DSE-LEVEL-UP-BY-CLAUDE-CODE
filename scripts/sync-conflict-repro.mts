@@ -79,15 +79,47 @@ console.log(`\n用真實 lib/sync.ts 嘅 mergeSnapshots，逐格模擬。`)
     win.dse_progress.map((a) => a.id), ['s0', 'd1', 'i1'])
 }
 
-// ── 情境 4：課題統計（雷達圖）—— 兩邊各自累積 ──────────────────────────────
+// ── 情境 4：課題統計（雷達圖）—— 共同歷史 ＋ 兩邊各自再累積 ────────────────
+//
+// 2026-09-11 簽署「基於 Timestamp 嘅增量 Union」之後改寫。
+// 舊版只測「兩邊各自累積【唔同科】」—— 嗰個情況連取 max 都過到關，
+// 測唔出真正嘅難題。真正嘅難題係【同一個課題兩邊都做過】：
+//
+//   基準（上次同步）  math::algebra 20 題做過 · 5 題錯
+//   手機再做 10 題，3 題錯  → 本機 30 / 8
+//   iPad 再做  6 題，1 題錯 → 雲端 26 / 6
+//
+//   正解 36 / 9（20 + 10 + 6 · 5 + 3 + 1）
+//   相加 → 56 / 14（共同嗰 20 題被雙計）
+//   取max → 30 / 8（掉失 iPad 嗰 6 題）
+//   跟贏家 → 30 / 8（同上）
+//
+// 順帶保留「兩邊唔同科」嘅檢查，確保新邏輯冇整爛舊有嘅正確行為。
 {
+  const base = {
+    'math::algebra': { total: 20, wrong: 5 },
+  }
   const cloud = snap([A('c1', 'math', 1000)], 1000, 500)
-  cloud.dse_topic_stats = { 'math::algebra': { total: 20, wrong: 5 } }
+  cloud.dse_topic_stats = {
+    'math::algebra': { total: 26, wrong: 6 }, // iPad 再做咗 6 題
+  }
   const local = snap([A('l1', 'econ', 2000)], 2000, 500)
-  local.dse_topic_stats = { 'econ::demand': { total: 15, wrong: 3 } }
-  const win = mergeSnapshots(local as never, { progress: cloud as never, updated_at: null } as never) as Snap
-  check('情境 4 · 錯題 DNA 雷達（兩邊各自累積唔同科）',
-    Object.keys(win.dse_topic_stats ?? {}), ['math::algebra', 'econ::demand'])
+  local.dse_topic_stats = {
+    'math::algebra': { total: 30, wrong: 8 }, // 手機再做咗 10 題
+    'econ::demand': { total: 15, wrong: 3 }, // 手機新開嘅課題，雲端未見過
+  }
+  const win = mergeSnapshots(
+    local as never,
+    { progress: cloud as never, updated_at: null } as never,
+    base as never,
+  ) as Snap
+  const fmt = (m: Record<string, { total?: number; wrong?: number }> | undefined) =>
+    Object.entries(m ?? {})
+      .map(([k, v]) => `${k}=${v?.total ?? 0}/${v?.wrong ?? 0}`)
+      .sort()
+  check('情境 4 · 錯題 DNA 雷達（共同歷史 ＋ 兩邊各自再累積）',
+    fmt(win.dse_topic_stats as never),
+    ['econ::demand=15/3', 'math::algebra=36/9'])
 }
 
 console.log(`\n${'─'.repeat(72)}`)
@@ -101,21 +133,18 @@ if (failures) {
   console.log(`  Union 只會加返被丟棄嘅記錄，數學上刪唔到任何一條 ——`)
   console.log(`  最壞情況等於改動前，唔存在「改完掉多咗」呢個可能。`)
   console.log(``)
-  console.log(`━━ 情境 4（dse_topic_stats）—— 刻意未修 ━━`)
-  console.log(`  呢個紅係【故意留住】嘅提醒，唔係疏忽。`)
-  console.log(`  每部機嘅課題統計係「該機對累積歷史嘅視角」。兩邊分叉之後：`)
-  console.log(`    · 相加  → 把共同歷史雙計（做過 20 題變成 40 題）`)
-  console.log(`    · 取max → 掉失較細嗰邊嘅增量`)
-  console.log(`    · 跟贏家（現狀）→ 掉失輸嗰邊全部`)
-  console.log(`  三個都會錯，只係錯法唔同。呢個係 CRDT 問題。`)
-  console.log(``)
-  console.log(`  ⚠️ 揀錯會污染現有帳號嘅錯題 DNA 雷達，而雷達正正係 §16.E`)
-  console.log(`     特登開放上雲嗰批 key。憲章 §4：呢一步要創辦人拍板，`)
-  console.log(`     唔係喺一次同步修正入面順帶決定。`)
+  console.log(`━━ 情境 4（dse_topic_stats）━━`)
+  console.log(`  逐課題統計行三方增量合併：合併結果 = 雲端 + （本機 − 基準）。`)
+  console.log(`  基準係本機記帳（dse_topic_stats_base），永不上雲。`)
+  console.log(`  冇蓋到章嗰陣會退回【逐欄取 max】—— 唔會雙計，但會掉失另一邊嘅增量。`)
+  console.log(`  所以呢個紅最可能係 markTopicBase() 冇喺 push 成功／applyLocal 之後叫，`)
+  console.log(`  而唔係合併公式本身錯。`)
 } else {
   console.log(`✅ 四個情境全部冇掉失。`)
-  console.log(`   ⚠️ 若情境 4 轉綠，代表有人改咗 dse_topic_stats 嘅合併語意 ——`)
-  console.log(`      嗰個決定要有簽名，請核實。`)
+  console.log(`   情境 4 由 2026-09-11 起應該綠 —— 逐課題統計行三方增量合併`)
+  console.log(`   （基準由 markTopicBase() 喺每次成功同步之後蓋章）。`)
+  console.log(`   ⚠️ 若情境 4 再度轉紅，先查 markTopicBase() 嘅呼叫仲喺唔喺，`)
+  console.log(`      冇基準就會靜靜哋退回保守嘅取 max。`)
 }
 console.log(`\n本腳本唯讀 —— 只跑 mergeSnapshots，冇掂 localStorage、冇寫 Supabase。\n`)
 process.exit(0)

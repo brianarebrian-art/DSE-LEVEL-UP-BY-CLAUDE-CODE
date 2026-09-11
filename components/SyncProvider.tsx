@@ -12,6 +12,7 @@ import { useAuthSession } from '@/lib/auth/session'
 import {
   snapshotLocal,
   applyLocal,
+  markTopicBase,
   mergeSnapshots,
   emptySnapshot,
   getSyncOwner,
@@ -94,12 +95,19 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
     }
     setStatus('syncing')
     try {
+      // ⚠️ 要把【送出去嗰一份】捉住，唔可以喺 fetch 入面叫 snapshotLocal()
+      //    然後成功之後再叫多次 —— 兩次之間學生可能已經做多咗一題，
+      //    咁蓋落去嘅基準就會包含一段雲端未收到嘅增量，下次合併會靜靜哋食走佢。
+      const sent = snapshotLocal()
       const res = await fetch('/api/progress', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ progress: snapshotLocal() }),
+        body: JSON.stringify({ progress: sent }),
       })
       if (!res.ok) throw new Error(`push ${res.status}`)
+      // push 成功＝雲端而家等於 `sent`。基準必須跟住郁，否則下次合併算出嚟嘅
+      // 增量會包含雲端【已經有】嘅部分，即係雙計（見 lib/sync.ts markTopicBase）。
+      markTopicBase(sent.dse_topic_stats)
       setStatus('synced')
     } catch {
       // 防線 F: keep working on local; retry fires on the next 'online' event.
