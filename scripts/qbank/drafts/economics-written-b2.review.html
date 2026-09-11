@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · economics · economics-written-b2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">economics</span></h1>
+<div class="sub">來源 economics-written-b2.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"ec_w2_01","topic":"生產可能性界線","difficulty":"basic","question":"某經濟體只生產食物與衣服兩種產品。\n(a) 說明生產可能性界線上的點與界線以內的點，分別代表甚麼。\n(b) 為何生產可能性界線一般向外凸（凹向原點）？\n(c) 舉出兩項會令整條界線向外移的因素。","explanation":"(b) 的正確理由是機會成本遞增：生產要素並非同質，各自適合生產不同產品。當一種產品的產量持續增加時，須動用愈來愈不適合生產該產品的要素，故每多生產一單位所須放棄的另一產品數量遞增，界線因而向外凸。只寫「因為資源有限」並未解釋形狀 —— 資源有限只解釋了界線的存在，並不解釋它為何不是直線。\n(c) 須分辨「界線向外移」與「界線上移動」。前者要求生產能力本身提升（要素數量增加或技術進步），後者只是產品組合的轉換。答「多生產食物」是界線上的移動，不得分。","type":"text","referenceAnswer":"(a) 界線上的點：代表在現有資源與技術之下，充分及有效率地運用所有生產要素所能達致的產量組合。此時不可能在不減少一種產品的產量的情況下增加另一種產品的產量。\n界線以內的點：代表資源未被充分運用或運用效率偏低（例如存在失業或閒置設備）。此時可以同時增加兩種產品的產量，並不需要作出取捨。\n\n(b) 因為機會成本遞增。\n生產要素並非同質：某些要素較適合生產食物，另一些較適合生產衣服。當衣服的產量持續增加時，必須把愈來愈不適合生產衣服的要素（原本較適合生產食物者）轉用於衣服。故每多生產一單位衣服所須放棄的食物數量逐漸增加，界線的斜率愈來愈陡，形狀因而向外凸。\n（若各項生產要素完全同質，機會成本固定，界線便會是一條直線。）\n\n(c) 任舉兩項：\n1. 生產要素數量增加，例如人口增長令勞動力增加，或發現新的自然資源。\n2. 技術進步，令同樣數量的生產要素能生產更多產品。\n3. 教育與培訓改善人力資本的質素，提升勞動生產力。\n4. 資本累積，例如新增機器與廠房。\n須注意：純粹改變兩種產品的產量組合屬於界線【上】的移動，並不會令界線本身外移。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w2_02","topic":"市場結構","difficulty":"intermediate","question":"(a) 列出完全競爭市場的四項特徵。\n(b) 解釋為何完全競爭市場中的個別廠商是價格接受者。\n(c) 比較完全競爭與壟斷在長期利潤上的差異，並說明造成差異的原因。\n(d) 有評論認為「壟斷者可以隨意訂定任何高價」。請評論此說法。","explanation":"(c) 的關鍵不在於「壟斷者賺得多」這個結論，而在於【入行障礙】這個原因。完全競爭之下沒有入行障礙，經濟利潤會吸引新廠商加入，供應增加令價格下跌，直至經濟利潤歸零；壟斷之下存在入行障礙，新廠商無法加入，故經濟利潤可長期維持。只寫結論而不指出入行障礙，等於未答「原因」一問。\n(d) 是本題最具鑑別度的一問。壟斷者面對的是一條向右下傾斜的需求曲線 —— 訂價愈高，銷量愈少。壟斷者可以選擇價格【或】銷量，但不能兩者同時選定；追求利潤最大化者亦不會選擇最高價，因為總收益會下跌。此說法把「沒有競爭對手」誤讀為「不受需求規律約束」。","type":"long","referenceAnswer":"(a) 完全競爭市場的四項特徵：\n1. 廠商數目眾多，每一廠商的產量佔市場總量的比例極小。\n2. 產品同質，各廠商所售產品在買家眼中完全相同。\n3. 沒有入行及離行障礙，廠商可自由進出該行業。\n4. 買賣雙方均掌握完全的市場資訊，包括價格與產品質素。\n\n(b) 由於廠商數目眾多而每家的產量佔市場總量的比例極小，任何一家廠商增產或減產都不足以影響市場的總供應，因而不能影響市場價格。\n加上產品同質，若某廠商把售價定於市價之上，買家會轉向其他廠商購買完全相同的產品，該廠商的銷量將降至零。\n而在市價之下出售並無誘因，因為該廠商在市價之下已能售出其全部產量。\n故個別廠商只能接受市場所決定的價格，稱為價格接受者。\n\n(c) 長期利潤的差異：\n完全競爭：長期只能取得正常利潤，經濟利潤為零。\n壟斷：長期仍可維持經濟利潤（超額利潤）。\n\n造成差異的原因是【入行障礙】：\n在完全競爭之下，若現有廠商取得經濟利潤，由於沒有入行障礙，新廠商會被吸引加入；市場供應增加令價格下跌，直至經濟利潤消失為止。反之若出現虧損，廠商會離行，供應減少令價格回升。故長期均衡時經濟利潤必為零。\n在壟斷之下，存在入行障礙（例如專利權、法例限制、關鍵資源的獨有控制權、龐大的規模經濟），新廠商無法加入。價格不會因新競爭者加入而被壓低，故經濟利潤可長期維持。\n\n(d) 此說法並不正確。\n壟斷者雖為市場上唯一的供應者，但仍須面對一條向右下傾斜的市場需求曲線：價格訂得愈高，需求量愈少。壟斷者可以選擇價格，亦可以選擇銷量，但【不能同時決定兩者】—— 一經訂價，銷量即由需求曲線決定。\n再者，追求利潤最大化的壟斷者亦不會訂定最高價。價格過高會令銷量大幅下跌，總收益隨之下降；利潤最大化的產量在邊際收益等於邊際成本之處，對應的價格由需求曲線決定，通常遠低於買家所能承受的上限。\n此說法的錯誤在於把「沒有競爭對手」誤讀為「不受需求規律約束」。","markingScheme":"(a) 2 分 —— 四項特徵，答對兩至三項得 1 分，四項齊全得 2 分。\n(b) 2 分 —— 以「單一廠商佔市場比例極小、影響不到總供應」說明（1）；以產品同質推出定價高於市價會失去全部買家（1）。\n(c) 2 分 —— 指出完全競爭長期經濟利潤為零、壟斷可維持經濟利潤（1）；原因明確落在入行障礙，並說明新廠商加入／無法加入的機制（1）。只寫結論而無入行障礙得 1 分。\n(d) 2 分 —— 指出壟斷者面對向右下傾斜的需求曲線，價格與銷量不能同時決定（1）；指出利潤最大化者不會訂最高價，因總收益會下跌（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w2_03","topic":"廠商與生產","difficulty":"intermediate","question":"(a) 列出四項生產要素，並分別說明其報酬名稱。\n(b) 說明短期與長期在生產上的分別。\n(c) 解釋邊際回報遞減定律，並指出其成立的前提條件。\n(d) 某工廠增聘工人後總產量上升，但平均產量下降。此現象是否與「增聘工人有利」矛盾？請說明。","explanation":"(a) 企業家職能的報酬為利潤。⚠️ 此處必須寫「企業家職能」而非單寫「企業」—— 後者指涉商業組織，並非生產要素。\n(c) 的前提條件是本題最常被略去的一環：邊際回報遞減只在【至少有一種生產要素固定】的情況下成立，亦即只適用於短期。長期所有要素皆可變動，該定律並不適用（長期討論的是規模報酬，屬另一概念）。只陳述定律而不寫前提，是半個答案。\n(d) 考的是總量、平均量與邊際量三者的關係。總產量上升代表邊際產量仍為正數；平均產量下降代表邊際產量低於平均產量。兩者可以同時成立，並無矛盾。是否「有利」須比較該工人的邊際產量所帶來的收益與其工資，而非單看平均產量。","type":"long","referenceAnswer":"(a) 四項生產要素及其報酬：\n土地 —— 報酬為地租\n勞動 —— 報酬為工資\n資本 —— 報酬為利息\n企業家職能 —— 報酬為利潤\n\n(b) 短期：至少有一種生產要素的數量固定不變（通常為資本，例如廠房與機器），廠商只能藉調整可變要素（通常為勞動）來改變產量。\n長期：所有生產要素的數量皆可變動，廠商可以改變廠房規模、增置機器，甚至進出該行業。\n須注意短期與長期並非以固定的月數或年數界定，而是以「有沒有固定要素」界定；不同行業所需的時間長短差異甚大。\n\n(c) 邊際回報遞減定律：在其他生產要素的數量維持不變的情況下，持續增加某一種可變要素的投入量，該要素的邊際產量最終必然遞減。\n\n前提條件：\n1. 至少有一種生產要素的數量固定不變 —— 故本定律【只適用於短期】。長期所有要素皆可變動，本定律並不適用。\n2. 技術水平維持不變。若期間出現技術進步，邊際產量可能不跌反升。\n3. 各單位的可變要素同質，即後加入的工人與先前的工人能力相同；否則產量下跌可能源於質素差異而非本定律。\n\n(d) 兩者並不矛盾。\n總產量上升，代表新增工人的邊際產量仍為正數，即該工人確實有所貢獻。\n平均產量下降，代表新增工人的邊際產量【低於】原有的平均產量，因而把平均值拉低。\n此兩項可以同時成立：一個邊際產量為正但低於平均值的數值，必然令總量上升而平均值下跌。\n\n至於是否「有利」，須比較該名工人的邊際產量所帶來的額外收益與其工資：\n若邊際產量的收益高於工資，增聘該工人仍能增加利潤，故屬有利；\n若邊際產量的收益低於工資，則不應增聘。\n判斷準則在於邊際量而非平均量 —— 單以平均產量下跌斷定不應增聘，是用錯了比較的基準。","markingScheme":"(a) 2 分 —— 四項要素齊全（1）；四項報酬名稱正確（1）。企業家職能寫成「企業」者扣該項。\n(b) 2 分 —— 短期至少一項要素固定（1）；長期所有要素可變，並指出兩者非以月數界定（1）。\n(c) 2 分 —— 正確陳述定律（1）；指出至少一種要素固定／只適用於短期（1）。缺前提者只得 1 分。\n(d) 2 分 —— 說明邊際產量為正但低於平均，故總量升而平均跌（1）；指出判斷是否有利須比較邊際產量的收益與工資（1）。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w2_04","topic":"國際貿易","difficulty":"intermediate","question":"甲國生產一單位布需 4 小時，生產一單位酒需 8 小時；乙國生產一單位布需 6 小時，生產一單位酒需 6 小時。\n(a) 哪一國在生產布方面具有絕對優勢？哪一國在生產酒方面具有比較優勢？\n(b) 說明兩國應如何分工，並解釋分工為何能令雙方得益。","explanation":"本題的分辨點在於絕對優勢與比較優勢是兩個不同的準則。甲國生產兩種產品所需的時間都較少，故在兩者皆具絕對優勢；但比較優勢須看【機會成本】而非所需時間。\n甲國生產一單位酒的機會成本為 2 單位布（8 ÷ 4）；乙國為 1 單位布（6 ÷ 6）。乙國的機會成本較低，故在酒方面具比較優勢。\n最常見的錯誤是見甲國「樣樣都快」便斷定甲國應該自行生產兩種產品、貿易對其無益。此結論忽略了甲國把時間集中於機會成本較低的產品（布）所能取得的額外產量 —— 得益的來源是機會成本的差異，而非絕對效率的高低。","type":"text","referenceAnswer":"(a) 絕對優勢（布）：甲國。甲國生產一單位布只需 4 小時，少於乙國的 6 小時。\n（事實上甲國生產酒亦只需 8 小時，少於乙國的 6 小時以外的比較須另計 —— 就酒而言乙國需 6 小時，較甲國的 8 小時為少，故乙國在酒方面具絕對優勢。）\n\n比較優勢（酒）：乙國。\n計算機會成本：\n甲國：生產 1 單位酒需 8 小時，同樣的 8 小時可生產 2 單位布，故機會成本為 2 單位布。\n乙國：生產 1 單位酒需 6 小時，同樣的 6 小時可生產 1 單位布，故機會成本為 1 單位布。\n乙國生產酒的機會成本較低，故在酒方面具比較優勢。\n\n(b) 分工方式：甲國專門生產布，乙國專門生產酒，然後互相貿易。\n\n得益的原因：\n甲國生產布的機會成本為 0.5 單位酒（4 ÷ 8），乙國為 1 單位酒（6 ÷ 6），故甲國在布方面具比較優勢；乙國在酒方面具比較優勢（如 (a) 所示）。\n各國專門生產本身機會成本較低的產品，可令兩國合計的總產量上升。以同樣的總工時計算，專門化之後所生產的布與酒的總量，均多於兩國各自自給自足時的總量。\n總產量增加後，透過貿易按雙方接受的交換比率分配，兩國所能消費的產品組合皆可超越其本身的生產可能性界線，故雙方均可得益。\n須注意得益的來源是【機會成本的差異】，而非絕對效率的高低；即使一國在所有產品上皆具絕對優勢，只要兩國的機會成本不同，分工仍然對雙方有利。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ec_w2_05","topic":"宏觀經濟計算","difficulty":"hard","question":"某經濟體某年的數據如下（單位：億元）：\n消費開支 4 200、投資開支 1 100、政府開支 900、出口 2 600、進口 2 300。\n(a) 以支出法計算本地生產總值（GDP）。\n(b) 若該年的物價指數由 100 升至 108，而上年的名義 GDP 為 6 000 億元，計算本年的實質 GDP（以上年為基年）及實質經濟增長率。\n(c) 有評論以名義 GDP 由 6 000 升至 6 500 為據，宣稱經濟增長為 8.3%。請評論此說法。\n(d) 說明 GDP 作為生活水平指標的兩項局限。","explanation":"(c) 是本題的核心。名義 GDP 的上升同時包含產量增加與物價上升兩部分，把名義增長直接當成經濟增長，等於把通脹計算為實質產出。本題物價指數升了 8%，而名義 GDP 升了 8.3%，故實質增長其實只有約 0.3% —— 兩個數字相差近三十倍，結論的方向亦由「強勁增長」變成「幾乎停滯」。\n(a) 的常見錯誤是漏減進口。進口並非本地生產，計入淨出口（出口減進口）方為正確；把出口與進口相加是完全相反的做法。\n(d) 須留意題目問「作為生活水平指標的局限」，故答案應落在「GDP 量度的東西與生活水平之間的落差」，例如未計入收入分配、未計入非市場活動、未扣除環境代價、未反映閒暇。答「GDP 數字可能不準確」是量度誤差的問題，並非概念上的局限。","type":"long","referenceAnswer":"(a) 以支出法：GDP = C + I + G + (X − M)\n= 4 200 + 1 100 + 900 + (2 600 − 2 300)\n= 4 200 + 1 100 + 900 + 300\n= 6 500 億元\n\n(b) 實質 GDP = 名義 GDP ÷ 物價指數 × 100\n= 6 500 ÷ 108 × 100\n= 6 018.5 億元（約 6 018.5）\n\n實質經濟增長率 = (6 018.5 − 6 000) ÷ 6 000 × 100%\n= 18.5 ÷ 6 000 × 100%\n= 0.31%（約 0.3%）\n\n(c) 此說法並不正確。\n該評論所計算的 8.3%（(6 500 − 6 000) ÷ 6 000）是【名義】GDP 的增長率，當中同時包含兩個部分：本地生產的實質數量增加，以及物價上升。\n本年物價指數由 100 升至 108，即物價上升了 8%。把此部分剔除之後，實質經濟增長率只有約 0.3%（見 (b)）。\n換言之，名義 GDP 上升的 8.3 個百分點之中，約 8 個百分點來自物價上升，僅約 0.3 個百分點來自實質產量增加。以名義增長描述經濟表現，等於把通脹當成產出，會令人誤以為經濟強勁增長，而實情接近停滯。\n正確的做法是以固定基年的物價剔除通脹的影響，比較實質 GDP。\n\n(d) 任舉兩項：\n1. 未反映收入分配。GDP 及人均 GDP 只是總量與平均值，即使數字上升，增加的收入亦可能集中於少數人，大部分居民的生活水平未必改善。\n2. 未計入非市場活動。家務勞動、義務工作、自給自足的生產並無市場交易，故不計入 GDP，但確實對生活水平有貢獻。\n3. 未扣除環境代價。生產過程所造成的污染與資源耗損並未從 GDP 中扣除；污染其後所需的清理開支反而會令 GDP 上升。\n4. 未反映閒暇與工時。兩個 GDP 相同的經濟體，若其一的居民工時遠長於另一，兩者的生活水平並不相同。","markingScheme":"(a) 2 分 —— 使用 C + I + G + (X − M)，特別是【減】進口（1）；6 500 億元（1）。把進口相加者本部分不得分。\n(b) 3 分 —— 正確的平減方法 6 500 ÷ 108 × 100（1）；實質 GDP 約 6 018.5（1）；增長率約 0.3%（1）。\n(c) 2 分 —— 指出 8.3% 為名義增長，包含物價上升（1）；以「約 8 個百分點來自物價、約 0.3 個百分點來自實質產量」量化說明（1）。只寫「冇計通脹」而無數字得 1 分。\n(d) 2 分 —— 任兩項局限，每項 1 分。須落在概念局限；答「數字可能不準確」不得分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "economics";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "economics-written-b2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "economics-written-b2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

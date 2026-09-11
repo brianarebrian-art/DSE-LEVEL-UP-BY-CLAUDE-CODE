@@ -83,7 +83,23 @@ export function loadActiveSession(): ActiveSession | null {
 export function clearActiveSession(): void {
   if (!isBrowser()) return
   try {
-    localStorage.removeItem(ACTIVE_SESSION_KEY)
+    // ⚠️ 寫 'null'，唔係 removeItem —— 呢兩樣喺跨裝置同步度【意思完全唔同】。
+    //
+    //   'null'  ＝「嗰節喺呢部機做完咗」→ 上傳之後叫其他機一齊清走
+    //   冇個 key ＝「呢部機未有過資料」  → 上傳之後唔准郁雲端
+    //
+    // lib/sync.ts 嘅 snapshotLocal 同 applyLocal 兩邊都特登實現咗呢個分別，
+    // 但本函數一直 removeItem，即係【永遠出唔到第一個訊號】——
+    // 條路寫好咗，但冇嘢行得入去。
+    //
+    // 實際後果：學生喺 iPad 交咗卷，攞返部電話，電話仍然 offer「繼續上次嗰節」，
+    // 一撳落去就重做一次已經交咗嘅題目。
+    // PracticeSession.tsx:587 嗰句註釋寫住「here or on any device」——
+    // 「on any device」嗰半由今日開始先至係真。
+    //
+    // loadActiveSession 對 'null' 係安全嘅：JSON.parse('null') → null，
+    // isActiveSession(null) → false → 回 null，同以前一模一樣。
+    localStorage.setItem(ACTIVE_SESSION_KEY, 'null')
   } catch {
     /* ignore */
   }

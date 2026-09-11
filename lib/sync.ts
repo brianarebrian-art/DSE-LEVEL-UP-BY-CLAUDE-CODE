@@ -15,6 +15,13 @@ const KEYS = {
   topicStats: 'dse_topic_stats',
   reverseLog: 'dse_reverse_log',
 } as const
+// 上次同雲端一致嗰一刻嘅課題統計快照。**純本機記帳，永不上傳。**
+//
+// ⚠️ 佢【唔屬於】§16.E 嘅上雲白名單，亦唔准加入 —— 白名單維持三個 key
+//    （dse_progress／dse_topic_stats／dse_active_session＋dse_reverse_log 已批）。
+//    本 key 只存在於本機，用嚟計「自從上次同步之後，本機加咗幾多」。
+//    迴歸鎖：lib/__tests__/topic-stats-crdt.test.mts 測試 ⑦。
+const TOPIC_BASE = 'dse_topic_stats_base'
 const UPDATED_AT = 'dse_updated_at'
 const SYNCED_AT = 'dse_synced_at'
 const SYNC_OWNER = 'dse_sync_owner' // which user id the local data last synced as
@@ -156,6 +163,113 @@ export function snapshotLocal(): Snapshot {
   }
 }
 
+// ── 逐課題統計嘅 CRDT 合併 —— 2026-09-11 ────────────────────────────────────
+//
+// 決策：2026-09-11 簽署「實作基於 Timestamp 的增量 Union 策略」。
+// 此前呢個欄位刻意跟贏家，scripts/sync-conflict-repro.mts 情境 4 長期留紅。
+//
+// ══ 點解唔可以就咁相加或者取 max ══
+// 每部機嘅 { total, wrong } 係【該機對累積歷史嘅視角】，唔係增量：
+//   · 相加   → 共同歷史被雙計（兩部機都見過嗰 20 題會變成 40 題）
+//   · 取 max → 掉失較細嗰邊嘅增量
+//   · 跟贏家 → 掉失輸嗰邊全部
+//
+// ══ 實際做法：三方合併（3-way merge）══
+// 本機額外記住一個【基準】—— 上次同雲端一致嗰一刻嘅數字。於是：
+//
+//     本機自上次同步之後嘅增量 = local − base
+//     合併結果 = cloud + 嗰個增量
+//
+// 共同歷史已經包含喺 cloud 入面，所以只加一次，唔會雙計；
+// 而另一部機嘅增量亦已經喺 cloud 入面，所以唔會掉失。
+// 呢個就係「基於時間點基準嘅增量 union」—— 基準嘅時間點由 markTopicBase()
+// 喺每次成功 push 或 applyLocal 之後蓋章。
+//
+// ══ 兩個保護 ══
+// ① `Math.max(…, lv)` 唔係裝飾：一個喺 base 入面、但已經唔喺 cloud 入面嘅
+//    課題（雲端行被一部冇該課題嘅機覆蓋過），delta 會扣走 base 嗰部分，
+//    結果反而細過本機現有值。夾住本機值就保證合併【永不倒退】。
+// ② 冇基準嗰陣（第一次同步、或者舊裝置未蓋過章）退回【逐欄取 max】。
+//    保守：寧可少計一部機嘅未同步增量，都唔可以雙計 ——
+//    雙計會令學生嘅雷達顯示佢做過根本冇做過嘅題數，而且冇辦法事後分辨。
+interface TopicStatEntry {
+  total?: number
+  wrong?: number
+  [k: string]: unknown
+}
+type TopicStatMap = Record<string, TopicStatEntry>
+
+/** 非負有限數先算數；其餘（NaN／負數／字串）一律當 0。 */
+const statNum = (v: unknown): number =>
+  typeof v === 'number' && Number.isFinite(v) && v >= 0 ? v : 0
+
+/** 讀本機基準。冇、壞、或者喺 server 上一律回 null（＝退回取 max）。 */
+function readTopicBase(): TopicStatMap | null {
+  if (!isBrowser()) return null
+  try {
+    const raw = localStorage.getItem(TOPIC_BASE)
+    if (!raw) return null
+    const parsed: unknown = JSON.parse(raw)
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+      ? (parsed as TopicStatMap)
+      : null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * 蓋章：記低「本機同雲端而家一致」嗰一刻嘅課題統計。
+ *
+ * ⚠️ 成功 push 之後【一定要】叫 —— push 會令雲端等於本機，基準唔跟住郁嘅話，
+ *    下次合併計出嚟嘅 delta 會包含雲端【已經有】嘅部分，即係雙計。
+ *    applyLocal 亦會自己蓋章（合併完之後本機就係新基準）。
+ */
+export function markTopicBase(stats: unknown): void {
+  if (!isBrowser()) return
+  try {
+    if (stats && typeof stats === 'object' && !Array.isArray(stats)) {
+      localStorage.setItem(TOPIC_BASE, JSON.stringify(stats))
+    }
+  } catch {
+    /* quota / private mode —— 冇基準只會退回取 max，唔會出錯數 */
+  }
+}
+
+/**
+ * 三方合併逐課題統計。`base` 為 null 時退回逐欄取 max（保守，永不雙計）。
+ * export 出嚟純為咗測試同 repro 腳本可以注入基準。
+ */
+export function mergeTopicStats(
+  local: TopicStatMap | undefined,
+  cloud: TopicStatMap | undefined,
+  base: TopicStatMap | null,
+): TopicStatMap | undefined {
+  if (!local && !cloud) return undefined
+  const L = local ?? {}
+  const C = cloud ?? {}
+  const out: TopicStatMap = {}
+  for (const key of new Set([...Object.keys(L), ...Object.keys(C)])) {
+    const l = L[key]
+    const c = C[key]
+    // 標籤等中繼資料：本機較新者優先，雲端補底。
+    const meta: TopicStatEntry = { ...(c ?? {}), ...(l ?? {}) }
+    const fold = (f: 'total' | 'wrong'): number => {
+      const lv = statNum(l?.[f])
+      const cv = statNum(c?.[f])
+      if (base == null) return Math.max(lv, cv) // 保護 ②
+      const delta = Math.max(0, lv - statNum(base[key]?.[f]))
+      return Math.max(cv + delta, lv) // 保護 ①
+    }
+    const total = fold('total')
+    // 答錯數永遠唔可以多過做過數 —— 兩個欄位各自合併，理論上有機會撞穿，
+    // 而一個 wrong > total 嘅課題會令正確率變成負數（recalibrate 嘅衛生閘會剔走佢，
+    // 即係嗰個課題喺雷達上直接消失）。喺呢度夾住，唔好留畀下游執。
+    out[key] = { ...meta, total, wrong: Math.min(fold('wrong'), total) }
+  }
+  return out
+}
+
 // "Completeness" score — bigger means more effort to preserve (防線 E 情境 B,
 // "數值較大者 / 較完整者"). Attempts dominate; topic volume and the counter break ties.
 function score(s: Snapshot): number {
@@ -166,7 +280,18 @@ function score(s: Snapshot): number {
     if (typeof t === 'number') topicTotal += t
   }
   const counter = Number(s.dse_free_attempts_total) || 0
-  return attempts * 1000 + topicTotal + counter
+  // ⚠️ 未完成嗰節同錯因自診【一定要計入】。
+  //    2026-09-10 實測（lib/__tests__/cross-device-e2e.test.mts ①）：
+  //    學生喺手機做到第 5 題，跳去一部【從未同步過】嘅機（新電腦、學校電腦、
+  //    重灌完個瀏覽器），兩邊 score 都係 0，而防線 B 嘅平手判本機贏 ——
+  //    嗰半節就【靜靜哋冇咗】，學生要由第一題重做。
+  //
+  //    佢哋刻意擺喺 attempts 以下同一個檔次（同 topicTotal / counter 一齊）：
+  //    做完嘅節永遠重過未完成嘅節，所以呢個改動只會喺原本平手嗰啲情況度分到勝負，
+  //    唔會令一份較少嘅快照贏過一份較多嘅。
+  const inflight = Array.isArray(s.dse_active_session?.answers) ? s.dse_active_session.answers.length : 0
+  const diagnosed = Array.isArray(s.dse_reverse_log) ? s.dse_reverse_log.length : 0
+  return attempts * 1000 + topicTotal + counter + inflight + diagnosed
 }
 
 /**
@@ -175,7 +300,12 @@ function score(s: Snapshot): number {
  *  - B: this device has never synced (no `syncedAt`) → the more COMPLETE side wins.
  *  - C: this device has synced before → the NEWER change wins (by wall-clock).
  */
-export function mergeSnapshots(local: Snapshot, cloud: CloudData): Snapshot {
+export function mergeSnapshots(
+  local: Snapshot,
+  cloud: CloudData,
+  /** 課題統計嘅基準。唔傳就由本機讀 —— 測試同 repro 腳本靠呢個參數注入。 */
+  topicBase?: TopicStatMap | null,
+): Snapshot {
   const cloudSnap = cloud.progress
   if (!cloudSnap) return local // A
 
@@ -210,12 +340,8 @@ export function mergeSnapshots(local: Snapshot, cloud: CloudData): Snapshot {
   // Union 只會【加返】被丟棄嘅記錄，數學上唔可能刪走任何一條 ——
   // 即係最壞情況等於改動前，唔存在「改完之後掉多咗」呢個可能。
   //
-  // ⚠️ `dse_topic_stats` 【刻意唔 union】。每部機嘅數字係「該機對累積歷史
-  //    嘅視角」：兩邊分叉之後，相加會把共同歷史雙計，取 max 又會掉失較細
-  //    嗰邊嘅增量。呢個係 CRDT 問題，揀錯會污染現有帳號嘅雷達數據，
-  //    而雷達正正係 §16.E 特登開放上雲嗰批 key。故此維持跟贏家，
-  //    留待創辦人拍板（scripts/sync-conflict-repro.mts 情境 4 仍然會紅，
-  //    嗰個紅係【故意留住】嘅提醒，唔係未修好嘅疏忽）。
+  // ⚠️ `dse_topic_stats` 由 2026-09-11 起行【三方增量合併】，唔再跟贏家 ——
+  //    見上面 mergeTopicStats 嘅說明。情境 4 因此轉綠。
   const mergedProgress = unionBy(
     asArray(local.dse_progress),
     asArray(cloudSnap.dse_progress),
@@ -248,6 +374,17 @@ export function mergeSnapshots(local: Snapshot, cloud: CloudData): Snapshot {
   // 否則會把一部有日誌嘅機洗成空白（同 snapshotLocal 嗰個空物件陷阱同源）。
   if (mergedReverse.length > 0) out.dse_reverse_log = mergedReverse
   else if (winner.dse_reverse_log !== undefined) out.dse_reverse_log = winner.dse_reverse_log
+
+  // 逐課題統計：三方增量合併（2026-09-11 簽署）。同 reverse log 一樣，
+  // 合併唔出嘢就唔好帶呢個欄位出去 —— `undefined` 代表「唔郁本機」，
+  // 而 `{}` 會把一部有雷達數據嘅機洗成空白。
+  const mergedTopics = mergeTopicStats(
+    local.dse_topic_stats as TopicStatMap | undefined,
+    cloudSnap.dse_topic_stats as TopicStatMap | undefined,
+    topicBase === undefined ? readTopicBase() : topicBase,
+  )
+  if (mergedTopics && Object.keys(mergedTopics).length > 0) out.dse_topic_stats = mergedTopics
+  else if (winner.dse_topic_stats !== undefined) out.dse_topic_stats = winner.dse_topic_stats
 
   return out
 }
@@ -292,6 +429,8 @@ export function applyLocal(s: Snapshot): void {
     // 有值先覆蓋，`{}`（換用戶嘅乾淨石板）先清走，`undefined` 就唔郁。
     if (s.dse_topic_stats) {
       localStorage.setItem(KEYS.topicStats, JSON.stringify(s.dse_topic_stats))
+      // 合併完之後，本機就係新嘅基準 —— 下次合併由呢一點起計增量。
+      markTopicBase(s.dse_topic_stats)
     }
     // In-progress run: adopt the winner's. An explicit null means the run was finished
     // (or abandoned) on the winning device, so clear it here too. `undefined` means the
@@ -299,7 +438,12 @@ export function applyLocal(s: Snapshot): void {
     if (s.dse_active_session) {
       localStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(s.dse_active_session))
     } else if (s.dse_active_session === null) {
-      localStorage.removeItem(ACTIVE_SESSION_KEY)
+      // ⚠️ 寫 'null'，唔係 removeItem。
+      //    removeItem 之後，呢部機下次 snapshotLocal 會出 `undefined`（＝「呢部機
+      //    冇資料，唔好郁雲端」），於是「嗰節做完咗」呢個訊號就喺佢手上斷咗 ——
+      //    一部由頭到尾離線嘅第三部機，永遠等唔到通知，會一路 offer 一節
+      //    其實已經交咗卷嘅練習。寫 'null' 令個訊號一路傳得落去。
+      localStorage.setItem(ACTIVE_SESSION_KEY, 'null')
     }
     // 錯因自診紀錄。同 topic stats 一樣：有值先覆蓋，`undefined` 就唔郁 ——
     // 唔可以 `?? []`，否則一部舊快照就會將本機累積咗嘅自診記錄洗走。

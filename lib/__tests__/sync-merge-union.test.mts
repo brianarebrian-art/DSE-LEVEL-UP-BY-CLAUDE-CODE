@@ -115,19 +115,23 @@ test('未同步過嘅機由較完整嗰邊做贏家（防線 B）', () => {
   assert.deepEqual(out.dse_active_session, { subjectId: 'math' }, '未完成嗰節跟贏家 —— 一節就係一節，冇得合併')
 })
 
-// ── ⑧ topic_stats 刻意維持跟贏家 ──────────────────────────────────────────
+// ── ⑧ topic_stats 由跟贏家改為三方增量合併（2026-09-11 簽署）────────────────
 //
-// ⚠️ 呢條測試鎖住嘅係一個【已知未解決】嘅狀態，唔係一個理想行為。
-//    兩邊分叉之後：相加會雙計共同歷史、取 max 會掉失增量、跟贏家會掉失輸嗰邊。
-//    三個都會錯，只係錯法唔同 —— 屬 CRDT 問題，要創辦人拍板（憲章 §4）。
+// 舊版呢條測試鎖住「跟贏家」，並寫明「若日後有人改咗合併語意，呢條測試會紅。
+// 嗰陣要做嘅唔係改測試，係核實嗰個決定有冇簽名。」
 //
-//    若日後有人改咗合併語意，呢條測試會紅。嗰陣要做嘅唔係改測試，
-//    係核實嗰個決定有冇簽名。
-test('dse_topic_stats 維持跟贏家（已知未解決，改動需簽名）', () => {
+// 核實結果：2026-09-11 簽署「實作基於 Timestamp 嘅增量 Union 策略」，
+// 故此改測試。完整語意測試喺 lib/__tests__/topic-stats-crdt.test.mts，
+// 呢度只留一條把關：合併之後【兩邊嘅課題都要在】。
+test('dse_topic_stats 行三方增量合併 —— 兩邊嘅課題都保得住', () => {
   const out = mergeSnapshots(
     snap({ dse_progress: [], dse_topic_stats: { 'econ::demand': { total: 15 } }, updatedAt: 2000, syncedAt: 500 }),
     cloudOf(snap({ dse_progress: [], dse_topic_stats: { 'math::algebra': { total: 20 } }, updatedAt: 1000, syncedAt: 500 })),
+    null, // 冇基準 → 退回逐欄取 max（保守，唔雙計）
   )
-  assert.deepEqual(Object.keys(out.dse_topic_stats as object), ['econ::demand'],
-    '現行語意：贏家嗰邊嘅 topic stats 原樣保留。若呢條紅咗，請先核實有冇簽名批准改合併語意。')
+  assert.deepEqual(
+    Object.keys(out.dse_topic_stats as object).sort(),
+    ['econ::demand', 'math::algebra'],
+    '兩邊各自累積嘅課題都要保住 —— 舊語意會掉失輸嗰邊全部',
+  )
 })

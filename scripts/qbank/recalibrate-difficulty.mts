@@ -227,8 +227,17 @@ for (const k of ['easy', 'medium', 'hard'] as const) {
 }
 const ok = byDiff.easy[1] && byDiff.medium[1] && byDiff.hard[1]
 if (ok) {
+  // ⚠️ 舊版寫「❌ 標籤排序係錯嘅」—— 嗰句 over-claim 咗。
+  //    hard 只得 160 題，91.9% vs 88.4% 完全喺噪音範圍之內。
+  //    數據撐得住嘅結論係【分唔開】，唔係【反轉】。兩者都足以判死個標籤系統，
+  //    但講錯咗嗰個，第一個去核數嘅人就會發現報告靠唔住。
+  //    正式檢定喺 npm run qbank:accuracy-budget 第 ② 節（χ² = 1.83, p ≈ 0.40）。
   const ae = byDiff.easy[0] / byDiff.easy[1], am = byDiff.medium[0] / byDiff.medium[1], ah = byDiff.hard[0] / byDiff.hard[1]
-  console.log(`   排序：${ae > am && am > ah ? '✅ easy > medium > hard（符合預期）' : '❌ 唔符合預期 —— 標籤排序係錯嘅'}`)
+  const spread = Math.max(ae, am, ah) - Math.min(ae, am, ah)
+  console.log(`   三層極差：${(spread * 100).toFixed(1)} 個百分點` +
+    `${spread < 0.1 ? ' —— 幾乎完全重疊，標籤分唔開三層' : ''}`)
+  console.log(`   （顯著性檢定見 npm run qbank:accuracy-budget ②；` +
+    `「分唔開」係結論，「排序反轉」唔係 —— hard 樣本只得 ${byDiff.hard[1]} 題）`)
 }
 
 console.log(`\n${line}\n③ 核心測試：靜態難度標籤預唔預測得到實測正確率？`)

@@ -32,8 +32,12 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-09-09.v1',
-  hash: 'b2e44e871df73cd2', // 2026-09-09 基準。改文案 → bump version ＋ 更新呢個。
+  version: '2026-09-11.v2',
+  // 2026-09-11 基準。上一版 b2e44e871df73cd2（2026-09-09.v1）。
+  // 今次改嘅唔係錯字，係新增咗一個【採集類別】——「你開過 app 嘅日期」
+  // （migration 0018 重建嘅 user_sessions），同時明文寫低未登入唔記錄。
+  // 所以 version 由 v1 bump 到 v2：v1 撳過同意嘅學生從來冇見過嗰句。
+  hash: '0eb32705b900395a',
 }
 
 function policyFingerprint(): string {

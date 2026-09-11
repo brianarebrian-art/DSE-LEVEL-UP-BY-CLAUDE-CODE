@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · chemistry · chemistry-written-b2.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">chemistry</span></h1>
+<div class="sub">來源 chemistry-written-b2.json · 共 5 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">5</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"ch_w2_01","topic":"摩爾概念","difficulty":"basic","question":"(a) 計算 4.4 g 二氧化碳（CO₂）所含的摩爾數。（相對原子質量：C 12.0、O 16.0）\n(b) 該樣本在室溫及壓力下佔多少體積？（室溫及壓力下氣體摩爾體積為 24.0 dm³ mol⁻¹）\n(c) 該樣本含有多少個氧原子？（阿伏伽德羅常數為 6.02 × 10²³ mol⁻¹）","explanation":"(c) 是本題的分辨點。每一個 CO₂ 分子含兩個氧原子，故氧原子數目為分子數目的兩倍。直接以摩爾數乘阿伏伽德羅常數所得的是【分子】數目，漏了乘 2 是最常見的失分；題目問「氧原子」而非「二氧化碳分子」，此一字之差正是設題所在。另須留意 (b) 的摩爾體積只適用於氣體，且與氣體種類無關 —— 有考生誤以為不同氣體有不同摩爾體積而嘗試按摩爾質量調整，此舉並無依據。","type":"text","referenceAnswer":"(a) M(CO₂) = 12.0 + 2 × 16.0 = 44.0 g mol⁻¹\nn = m / M = 4.4 ÷ 44.0 = 0.10 mol。\n\n(b) V = n × 24.0 = 0.10 × 24.0 = 2.4 dm³。\n\n(c) 分子數目 = 0.10 × 6.02 × 10²³ = 6.02 × 10²² 個。\n每個 CO₂ 分子含 2 個氧原子，故氧原子數目 = 2 × 6.02 × 10²² = 1.204 × 10²³ 個（約 1.2 × 10²³ 個）。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w2_02","topic":"濃度計算","difficulty":"intermediate","question":"實驗室備有 2.00 mol dm⁻³ 的鹽酸溶液。\n(a) 欲配製 250 cm³ 濃度為 0.400 mol dm⁻³ 的鹽酸，須量取上述濃鹽酸多少 cm³？\n(b) 描述配製此稀溶液的步驟，並指出所需的主要儀器。\n(c) 若學生在稀釋後才發現量瓶內壁沾有水滴，所得溶液的濃度會偏高還是偏低？請說明。","explanation":"(a) 屬固定程序，扣分多數源於單位：250 cm³ 必須先化為 0.250 dm³，否則摩爾數會相差一千倍。\n(c) 是本題的判別點，而正確答案與直覺相反。量瓶內壁的水滴【不影響】最終濃度：所加的溶質摩爾數固定，而最終體積由量瓶的刻度線決定，殘留的水只是提早佔用了本來也要加入的水的位置。答「偏低，因為多了水」者，是誤以為終體積會超出刻度 —— 但定容時是加水至刻度線為止，並非加固定體積的水。此題考的正是「終體積由刻度決定」這一點。","type":"long","referenceAnswer":"(a) 所需摩爾數 n = c × V = 0.400 × 0.250 = 0.100 mol。\n由濃鹽酸取得此摩爾數所需體積 V = n / c = 0.100 ÷ 2.00 = 0.0500 dm³ = 50.0 cm³。\n\n(b) 步驟：\n1. 以移液管（或量筒）準確量取 50.0 cm³ 的 2.00 mol dm⁻³ 鹽酸。\n2. 將其轉移至 250 cm³ 量瓶中。\n3. 以蒸餾水沖洗移液管及漏斗，洗液一併注入量瓶，確保溶質全部轉移。\n4. 加蒸餾水至接近刻度線，再以滴管逐滴加至彎月面底部與刻度線相切。\n5. 塞緊瓶塞，反覆倒轉搖勻。\n主要儀器：250 cm³ 量瓶、移液管（或量筒）、滴管。\n\n(c) 濃度不受影響。\n理由：溶質的摩爾數（0.100 mol）已經固定，而最終體積由量瓶的刻度線決定，並非由所加水的體積決定。內壁原有的水滴只是提早佔去了本來也要加入的蒸餾水的位置，定容至刻度線後總體積仍為 250 cm³，故濃度仍為 0.400 mol dm⁻³。","markingScheme":"(a) 3 分 —— 體積換算為 0.250 dm³（1）；n = 0.100 mol（1）；50.0 cm³ 連單位（1）。\n(b) 3 分 —— 量取指定體積並轉移入量瓶（1）；沖洗並將洗液一併注入（1）；加水至刻度線後搖勻，並點名量瓶（1）。\n(c) 2 分 —— 判斷濃度【不受影響】（1）；理由回到「溶質摩爾數固定、終體積由刻度線決定」（1）。答偏高或偏低者本部分不得分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":13,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w2_03","topic":"化學鍵","difficulty":"intermediate","question":"下表列出三種物質的熔點：\n氯化鈉 801 °C　　二氧化矽 1 610 °C　　四氯化碳 −23 °C\n(a) 分別指出三者所屬的結構類型。\n(b) 解釋二氧化矽的熔點為何遠高於四氯化碳。\n(c) 氯化鈉固體不導電，熔融後卻能導電。請解釋。\n(d) 有學生答「四氯化碳熔點低，因為 C—Cl 共價鍵較弱」。請指出此說法的錯誤。","explanation":"(d) 是全題最具鑑別度的一問，亦是歷屆最高頻的概念錯誤。熔化簡單分子晶體時所克服的是【分子之間】的范德華力，而非分子【內部】的共價鍵 —— 四氯化碳熔化後仍然是 CCl₄ 分子，C—Cl 鍵完全沒有斷裂。把「熔點低」歸因於共價鍵弱，等於把分子間力與鍵內力混為一談。\n(b) 的正確對比是「共價網絡結構須斷裂大量強共價鍵」對「簡單分子晶體只須克服弱分子間力」，而不是單純比較「大分子」與「小分子」。","type":"long","referenceAnswer":"(a) 氯化鈉：離子結構（巨型離子晶格）。\n二氧化矽：共價網絡結構（巨型共價結構）。\n四氯化碳：簡單分子結構。\n\n(b) 二氧化矽屬共價網絡結構，全晶體由 Si—O 共價鍵連成一體，熔化時必須斷裂大量強共價鍵，故需極高能量。\n四氯化碳屬簡單分子結構，分子內雖有共價鍵，但熔化時只須克服分子之間的范德華力，該力遠弱於共價鍵，故熔點極低。\n\n(c) 導電須有可自由移動的帶電粒子。氯化鈉固體中，鈉離子與氯離子被固定於晶格的位置上，不能移動，故不導電。熔融後晶格瓦解，離子可自由移動並向電極遷移，故能導電。\n\n(d) 錯誤在於混淆分子間作用力與分子內共價鍵。四氯化碳熔化時斷裂的是分子【之間】的范德華力，C—Cl 共價鍵並無斷裂 —— 液態四氯化碳仍由完整的 CCl₄ 分子組成。事實上 C—Cl 鍵相當強；熔點低反映的是分子間力弱，與共價鍵的強弱無關。","markingScheme":"(a) 3 分 —— 每個正確結構類型各 1 分。\n(b) 2 分 —— 二氧化矽須斷裂大量強共價鍵（1）；四氯化碳只須克服分子間力（1）。只寫「一個大一個細」不得分。\n(c) 2 分 —— 指出導電須有可自由移動的離子（1）；對比固體中離子被固定與熔融後離子可移動（1）。\n(d) 1 分 —— 明確指出熔化克服的是分子間力而非共價鍵，且 C—Cl 鍵並無斷裂。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":14,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w2_04","topic":"元素週期表","difficulty":"intermediate","question":"(a) 說明同一週期由左至右，原子半徑的變化趨勢，並解釋原因。\n(b) 鈉與鎂同屬第三週期。指出兩者與冷水反應的劇烈程度差異，並以電子排布解釋。\n(c) 為何氬不與水或氧氣反應？","explanation":"(a) 的正確解釋須同時提及兩件事：核電荷增加，而電子仍加入【同一】主電子層，故屏蔽效應大致不變、有效核電荷上升、電子被拉得更近。只寫「質子多了所以拉力大了」而不提電子層數不變，說理並不完整 —— 因為由一週期跳至下一週期時質子同樣增加，半徑卻是增大的，可見「質子增加」本身並不足以決定趨勢。\n(b) 須落到最外層電子數目：鈉失去 1 個電子即達穩定結構，鎂須失去 2 個，故鈉的反應較劇烈。","type":"text","referenceAnswer":"(a) 由左至右，原子半徑逐漸減小。\n原因：質子數目增加，核電荷增大；而新增的電子填入同一個主電子層，內層電子的屏蔽效應大致不變，故有效核電荷上升，對最外層電子的吸引力增強，電子雲被拉近原子核，半徑因而減小。\n\n(b) 鈉與冷水反應劇烈，迅速產生氫氣並在水面熔成銀白色小球游動；鎂與冷水反應極慢，僅緩慢產生少量氣泡。\n解釋：鈉的最外層有 1 個電子，只須失去 1 個電子即可達致穩定的電子排布；鎂的最外層有 2 個電子，須失去 2 個電子，所需能量較多，故反應遠為緩慢。\n\n(c) 氬的最外電子層已填滿（電子排布 2, 8, 8），屬穩定的八隅體結構，既無失去電子亦無獲得電子的傾向，故不與水或氧氣反應。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ch_w2_05","topic":"反應速率與能量","difficulty":"hard","question":"過量的大理石塊與 50.0 cm³ 稀鹽酸反應，反應過程中量度所產生二氧化碳的體積。\n(a) 寫出反應的化學方程式。\n(b) 說明為何反應速率隨時間下降，並指出反應完結時的判斷依據。\n(c) 若改用同質量的大理石粉末，其他條件不變，所收集的二氧化碳總體積會否改變？反應速率會否改變？請分別說明。\n(d) 若改用濃度加倍但體積減半的鹽酸，二氧化碳的總體積會否改變？請以摩爾數說明。","explanation":"(c) 與 (d) 都在分辨「速率」與「產量」這兩個經常被混為一談的量。粉末增大接觸面積，只影響碰撞頻率因而影響速率；限量試劑是鹽酸，其摩爾數不變，故總產量不變。答「粉末反應快所以產生較多氣體」是最常見的錯誤，它把「較快到達終點」誤讀為「終點較高」。\n(d) 則是同一原理的另一面：濃度加倍而體積減半，鹽酸的摩爾數 c × V 完全不變，故總產量亦不變 —— 但初速率會上升，因為單位體積內的粒子較密。能同時答對「產量不變、速率改變」者，才算真正掌握此一分辨。","type":"long","referenceAnswer":"(a) CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)\n\n(b) 反應進行時鹽酸被消耗，其濃度逐漸下降，單位體積內的氫離子數目減少，與大理石表面的有效碰撞頻率下降，故速率隨時間減慢。\n判斷完結的依據：二氧化碳的體積不再增加（曲線變為水平）。由於大理石過量，反應停止是因為鹽酸已完全耗盡。\n\n(c) 二氧化碳總體積【不變】。限量試劑為鹽酸，其摩爾數並無改變，故所能產生的二氧化碳摩爾數亦相同。\n反應速率【上升】。粉末的總表面積遠大於塊狀，酸與碳酸鈣接觸的機會增加，單位時間內的有效碰撞次數上升，故初速率較高、較早到達終點，但曲線的最終高度相同。\n\n(d) 總體積【不變】。\n設原鹽酸濃度為 c、體積為 V，摩爾數為 cV。新鹽酸濃度為 2c、體積為 V/2，摩爾數為 2c × V/2 = cV，與原來完全相同。由於大理石過量、鹽酸為限量試劑，所產生的二氧化碳摩爾數由鹽酸的摩爾數決定，故總體積不變。\n須補充：初速率會上升，因為濃度較高令單位體積內的氫離子較密，有效碰撞頻率增加。","markingScheme":"(a) 2 分 —— 反應物與生成物正確（1）；配平，特別是 HCl 前的 2（1）。\n(b) 2 分 —— 以鹽酸濃度下降、有效碰撞頻率減少解釋速率下降（1）；以曲線變平／體積不再增加作完結依據，並指出鹽酸耗盡（1）。\n(c) 3 分 —— 總體積不變（1）；理由回到鹽酸為限量試劑且摩爾數不變（1）；速率上升並歸因於表面積增大（1）。答「產生較多氣體」者首兩分全失。\n(d) 2 分 —— 總體積不變（1）；以 2c × V/2 = cV 顯示摩爾數不變（1）。只答「不變」而無摩爾數計算得 1 分。\n本題所列分數為本平台練習用尺度，並非香港考試及評核局的分數分配。參考答案只列必達步驟與判準，刻意不提供可直接抄錄的完整答卷。交卷後請逐項對照自評，機器不會為本題評分。","suggestedMinutes":15,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "chemistry";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "chemistry-written-b2.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "chemistry-written-b2.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
