@@ -92,6 +92,26 @@ const SUBJECT_OF: Record<string, string> = {
   'music-written-b1.json': 'music',
   'pe-written-b1.json': 'pe',
   'technology-living-written-b1.json': 'technology-living',
+  // 2026-09-12 非 MC 第三批，共 117 條。派落非 MC 最薄嘅 15 科：
+  // 12 科各 +8（本身連草稿計只得 5 條，等於冇書寫練習），english / m1 / m2 各 +7。
+  // 課題全部避開同科 b1 已用嘅，亦全部係該科【已登記】課題 —— 冇新增課題，
+  // 本閘會逐個核實。m1 / m2 兩批依憲章 §5 附 Casio fx-50FH II / 3650P 程式教學
+  //（第一批漏咗呢一項，今批補返）。
+  'chinese-history-written-b3.json': 'chinese-history',
+  'chinese-literature-written-b3.json': 'chinese-literature',
+  'csd-written-b3.json': 'csd',
+  'design-tech-written-b3.json': 'design-tech',
+  'english-literature-written-b3.json': 'english-literature',
+  'ethics-religious-written-b3.json': 'ethics-religious',
+  'health-management-written-b3.json': 'health-management',
+  'music-written-b3.json': 'music',
+  'pe-written-b3.json': 'pe',
+  'technology-living-written-b3.json': 'technology-living',
+  'ths-written-b3.json': 'ths',
+  'visual-arts-written-b3.json': 'visual-arts',
+  'english-written-b3.json': 'english',
+  'm1-written-b3.json': 'm1',
+  'm2-written-b3.json': 'm2',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────
