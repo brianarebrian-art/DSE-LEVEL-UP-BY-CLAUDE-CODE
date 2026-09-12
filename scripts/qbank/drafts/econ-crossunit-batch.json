@@ -20,7 +20,7 @@
       "Install; the displaced workers face cyclical unemployment"
     ],
     "correctIndex": 2,
-    "explanation": "邊際比較：引入機器每月節省工資 2 × \\$9,000 = \\$18,000，高於機器成本 \\$8,000，淨節省 \\$10,000，故有經濟誘因引入。工人因科技／技能需求轉變而被取代，屬「結構性失業」。常見扣分陷阱：只見機器成本 \\$8,000 就話「增加開支」而唔同節省比較；或失業類型判斷錯——摩擦性失業指轉工過渡期，週期性失業源於經濟衰退，兩者都唔切合科技取代。",
+    "explanation": "邊際比較：引入機器每月節省工資 2 × \\$9,000 = \\$18,000，高於機器成本 \\$8,000，淨節省 \\$10,000，故有經濟誘因引入。工人因科技／技能需求轉變而被取代，屬「結構性失業」。常見扣分陷阱：只見機器成本 \\$8,000 就話「增加開支」而不與節省比較；或失業類型判斷錯——摩擦性失業指轉工過渡期，週期性失業源於經濟衰退，兩者都不切合科技取代。",
     "explanationEn": "Marginal comparison: installing saves 2 × \\$9,000 = \\$18,000 a month, above the \\$8,000 cost, a net \\$10,000 — so there is an incentive. Workers replaced by a shift in technology/skills demand face structural unemployment. Traps: seeing only the \\$8,000 cost without comparing the saving; or mislabelling the unemployment (frictional = job-search transition, cyclical = recession).",
     "_agentMeta": {
       "status": "draft",
@@ -55,7 +55,7 @@
       "Supply shifts up, but because demand is inelastic consumers bear the smaller share"
     ],
     "correctIndex": 0,
-    "explanation": "從量稅加在賣方，令供給曲線向上移約稅額 \\$2，均衡價上升、數量下跌；升幅少於 \\$2，因買賣雙方分擔稅款。相對無彈性的一方承擔較大部分——需求較無彈性，故消費者承擔較多。常見扣分陷阱：把徵稅誤當令「需求」移動（其實移供給）；以為價格必升足 \\$2 由消費者全付（只有需求完全無彈性才成立）；或搞錯轉嫁方向（無彈性一方應承擔較大而非較細）。",
+    "explanation": "從量稅加在賣方，令供給曲線向上移約稅額 \\$2，均衡價上升、數量下跌；升幅少於 \\$2，因買賣雙方分擔稅款。相對無彈性的一方承擔較大部分——需求較無彈性，故消費者承擔較多。常見扣分陷阱：把徵稅誤當令「需求」移動（其實移供給）；以為價格必升足 \\$2 由消費者全付（只有需求完全無彈性才成立）；或誤判轉嫁方向（無彈性一方應承擔較大而非較細）。",
     "explanationEn": "A specific tax on sellers shifts supply up by about \\$2; equilibrium price rises and quantity falls, with the price rising by less than \\$2 as the burden is shared. The relatively less elastic side bears more — here demand — so consumers bear the larger share. Traps: thinking the tax shifts demand (it shifts supply); assuming price rises the full \\$2 onto consumers (only if demand is perfectly inelastic); or reversing the incidence.",
     "_agentMeta": {
       "status": "draft",

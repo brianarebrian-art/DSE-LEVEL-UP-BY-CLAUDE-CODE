@@ -10,7 +10,7 @@
     "options": ["\\$67,500", "\\$72,500", "\\$87,500", "\\$75,000"],
     "optionsEn": ["\\$67,500", "\\$72,500", "\\$87,500", "\\$75,000"],
     "correctIndex": 2,
-    "explanation": "先扣薪金同資本利息，再分剩餘。資本利息：阿明 \\$150,000×10% = \\$15,000、阿珊 \\$100,000×10% = \\$10,000。剩餘 = 150,000 − 20,000 − 15,000 − 10,000 = \\$105,000，平分後每人 \\$52,500。阿明 = 薪金 20,000 + 利息 15,000 + 剩餘 52,500 = \\$87,500。常見扣分陷阱：漏計自己嘅薪金（得 \\$67,500）、漏計自己嘅資本利息（得 \\$72,500），或索性將淨利潤直接平分（\\$75,000），忽略薪金同利息要先分撥。",
+    "explanation": "先扣薪金同資本利息，再分剩餘。資本利息：阿明 \\$150,000×10% = \\$15,000、阿珊 \\$100,000×10% = \\$10,000。剩餘 = 150,000 − 20,000 − 15,000 − 10,000 = \\$105,000，平分後每人 \\$52,500。阿明 = 薪金 20,000 + 利息 15,000 + 剩餘 52,500 = \\$87,500。常見扣分陷阱：漏計自己的薪金（得 \\$67,500）、漏計自己的資本利息（得 \\$72,500），或索性將淨利潤直接平分（\\$75,000），忽略薪金同利息要先分撥。",
     "explanationEn": "Deduct salary and interest on capital first, then split the residue. Interest: Ming \\$150,000×10% = \\$15,000; Shan \\$100,000×10% = \\$10,000. Residue = 150,000 − 20,000 − 15,000 − 10,000 = \\$105,000, i.e. \\$52,500 each. Ming = salary 20,000 + interest 15,000 + share 52,500 = \\$87,500. Common traps: omitting one's own salary (\\$67,500) or interest (\\$72,500), or simply halving the net profit (\\$75,000).",
     "_agentMeta": {
       "status": "draft",
@@ -34,7 +34,7 @@
     "options": ["\\$6,000", "\\$6,667", "\\$36,000", "\\$12,000"],
     "optionsEn": ["\\$6,000", "\\$6,667", "\\$36,000", "\\$12,000"],
     "correctIndex": 0,
-    "explanation": "重估損益 = 土地升值 \\$40,000 − 呆帳準備增加 \\$4,000 = \\$36,000（呆帳準備增加係一項損失，要扣）。按舊比例 3 : 2 : 1，黃君佔 1/6，即 36,000 × 1/6 = \\$6,000。常見扣分陷阱：漏咗扣呆帳準備、淨用 40,000 × 1/6 = \\$6,667；將成筆 \\$36,000 全歸退伙人；或錯將重估利潤除以「3 個人」（\\$12,000）而非按比例。",
+    "explanation": "重估損益 = 土地升值 \\$40,000 − 呆帳準備增加 \\$4,000 = \\$36,000（呆帳準備增加係一項損失，要扣）。按舊比例 3 : 2 : 1，黃君佔 1/6，即 36,000 × 1/6 = \\$6,000。常見扣分陷阱：漏了扣減呆帳準備、淨用 40,000 × 1/6 = \\$6,667；將成筆 \\$36,000 全歸退伙人；或錯將重估利潤除以「3 個人」（\\$12,000）而非按比例。",
     "explanationEn": "Revaluation result = land gain \\$40,000 − increase in provision for doubtful debts \\$4,000 = \\$36,000 (the higher provision is a loss). In the old ratio 3 : 2 : 1, Wong takes 1/6 = 36,000 × 1/6 = \\$6,000. Common traps: ignoring the provision and using 40,000 × 1/6 = \\$6,667; giving the whole \\$36,000 to the retiree; or dividing by 3 partners (\\$12,000) instead of by ratio.",
     "_agentMeta": {
       "status": "draft",
@@ -58,7 +58,7 @@
     "options": ["\\$16,500", "\\$17,500", "\\$18,300", "\\$17,000"],
     "optionsEn": ["\\$16,500", "\\$17,500", "\\$18,300", "\\$17,000"],
     "correctIndex": 1,
-    "explanation": "只有「現金簿未入帳」嘅項目先更正現金簿：扣手續費 \\$200、扣自動轉帳 \\$800、加代收利息 \\$500，即 18,000 − 200 − 800 + 500 = \\$17,500。常見扣分陷阱：將代收利息當扣減（得 \\$16,500）；漏咗自動轉帳（得 \\$18,300）；或漏咗代收利息（得 \\$17,000）。留意：未過帳支票同在途存款只影響「現金簿 vs 銀行結單」嘅調節，唔會更正現金簿本身。",
+    "explanation": "只有「現金簿未入帳」的項目先更正現金簿：扣手續費 \\$200、扣自動轉帳 \\$800、加代收利息 \\$500，即 18,000 − 200 − 800 + 500 = \\$17,500。常見扣分陷阱：將代收利息當扣減（得 \\$16,500）；漏了自動轉帳（得 \\$18,300）；或漏了代收利息（得 \\$17,000）。留意：未過帳支票同在途存款只影響「現金簿 vs 銀行結單」的調節，不會更正現金簿本身。",
     "explanationEn": "Only items not yet in the cash book adjust it: less charges \\$200, less direct debit \\$800, add interest \\$500 = 18,000 − 200 − 800 + 500 = \\$17,500. Common traps: treating interest as a deduction (\\$16,500); missing the direct debit (\\$18,300); or missing the interest (\\$17,000). Note: unpresented cheques and uncredited deposits belong to the bank reconciliation, not to correcting the cash book.",
     "_agentMeta": {
       "status": "draft",
@@ -82,7 +82,7 @@
     "options": ["\\$50.00", "\\$52.50", "\\$47.50", "\\$52.63"],
     "optionsEn": ["\\$50.00", "\\$52.50", "\\$47.50", "\\$52.63"],
     "correctIndex": 3,
-    "explanation": "總成本 = 1,000 × \\$50 = \\$50,000。正常損耗 5% = 50 件，完好存貨 = 950 件。正常損耗成本攤入完好存貨：50,000 ÷ 950 = \\$52.63。常見扣分陷阱：完全唔攤分（仍用 \\$50.00）；誤用「成本 × 1.05」得 \\$52.50；或掉轉方向用「成本 × 0.95」得 \\$47.50。正常損耗屬生產／存貨的無可避免成本，應由完好單位承擔。",
+    "explanation": "總成本 = 1,000 × \\$50 = \\$50,000。正常損耗 5% = 50 件，完好存貨 = 950 件。正常損耗成本攤入完好存貨：50,000 ÷ 950 = \\$52.63。常見扣分陷阱：完全不攤分（仍用 \\$50.00）；誤用「成本 × 1.05」得 \\$52.50；或掉轉方向用「成本 × 0.95」得 \\$47.50。正常損耗屬生產／存貨的無可避免成本，應由完好單位承擔。",
     "explanationEn": "Total cost = 1,000 × \\$50 = \\$50,000. Normal loss 5% = 50 units, so good units = 950. Absorbing the loss: 50,000 ÷ 950 = \\$52.63. Common traps: no absorption (\\$50.00); using cost × 1.05 (\\$52.50); or cost × 0.95 in the wrong direction (\\$47.50). Normal loss is an unavoidable cost borne by the good units.",
     "_agentMeta": {
       "status": "draft",
@@ -106,7 +106,7 @@
     "options": [
       "繼續營運：邊際貢獻 \\$15,000 高於可避免固定成本 \\$12,000，淨保留 \\$3,000",
       "停止營運：計入總固定成本 \\$20,000 後錄得 \\$5,000 虧損",
-      "停止營運：邊際貢獻只有 \\$15,000，唔足以打和",
+      "停止營運：邊際貢獻只有 \\$15,000，不足以打和",
       "繼續營運：因為售價 \\$100 高於變動成本 \\$75"
     ],
     "optionsEn": [
@@ -116,7 +116,7 @@
       "Keep running: because price \\$100 is above variable cost \\$75"
     ],
     "correctIndex": 0,
-    "explanation": "邊際貢獻 = (100 − 75) × 600 = \\$15,000。短期停產決策只比較貢獻同「可避免」固定成本：15,000 > 12,000，繼續營運可淨保留 \\$3,000（用嚟抵銷不可避免折舊）。常見扣分陷阱：用「總固定成本 \\$20,000」計出 \\$5,000 虧損就話停產——但 \\$8,000 折舊停產都要俾，唔應納入比較；亦有人結論啱（繼續）但理由錯，只講「售價高於變動成本」而漏咗固定成本分析。",
+    "explanation": "邊際貢獻 = (100 − 75) × 600 = \\$15,000。短期停產決策只比較貢獻同「可避免」固定成本：15,000 > 12,000，繼續營運可淨保留 \\$3,000（用以抵銷不可避免折舊）。常見扣分陷阱：用「總固定成本 \\$20,000」計出 \\$5,000 虧損就話停產——但 \\$8,000 折舊停產仍須支付，不應納入比較；亦有人結論啱（繼續）但理由錯，只講「售價高於變動成本」而漏了固定成本分析。",
     "explanationEn": "Contribution = (100 − 75) × 600 = \\$15,000. A short-run shutdown decision compares contribution only with AVOIDABLE fixed cost: 15,000 > 12,000, so keep running and retain \\$3,000 toward the unavoidable depreciation. Traps: using total fixed \\$20,000 to show a \\$5,000 loss and shutting — but the \\$8,000 depreciation is incurred regardless; or reaching the right conclusion for the wrong reason (price > variable cost, ignoring fixed costs).",
     "_agentMeta": {
       "status": "draft",
@@ -140,7 +140,7 @@
     "options": ["800 件", "625 件", "1,000 件", "1,667 件"],
     "optionsEn": ["800 units", "625 units", "1,000 units", "1,667 units"],
     "correctIndex": 2,
-    "explanation": "每件邊際貢獻 = 80 − 30 = \\$50。所需銷量 = (固定成本 + 目標利潤) ÷ 每件貢獻 = (40,000 + 10,000) ÷ 50 = 1,000 件。常見扣分陷阱：只計打和點漏咗目標利潤（40,000 ÷ 50 = 800 件）；用售價 \\$80 而非貢獻 \\$50 做分母（50,000 ÷ 80 ≈ 625 件）；或用變動成本 \\$30 做分母（50,000 ÷ 30 ≈ 1,667 件）。",
+    "explanation": "每件邊際貢獻 = 80 − 30 = \\$50。所需銷量 = (固定成本 + 目標利潤) ÷ 每件貢獻 = (40,000 + 10,000) ÷ 50 = 1,000 件。常見扣分陷阱：只計打和點漏了目標利潤（40,000 ÷ 50 = 800 件）；用售價 \\$80 而非貢獻 \\$50 做分母（50,000 ÷ 80 ≈ 625 件）；或用變動成本 \\$30 做分母（50,000 ÷ 30 ≈ 1,667 件）。",
     "explanationEn": "Contribution per unit = 80 − 30 = \\$50. Required sales = (fixed cost + target profit) ÷ contribution = (40,000 + 10,000) ÷ 50 = 1,000 units. Common traps: ignoring the target profit and finding only break-even (40,000 ÷ 50 = 800); dividing by price \\$80 instead of contribution \\$50 (≈ 625); or dividing by variable cost \\$30 (≈ 1,667).",
     "_agentMeta": {
       "status": "draft",

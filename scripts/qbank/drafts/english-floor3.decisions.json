@@ -2,22 +2,13 @@
   "_meta": {
     "source": "english-floor3.json",
     "subject": "english",
-    "mode": "sampled",
-    "reviewer": "",
-    "reviewedAt": "",
-    "sample": {
-      "size": 2,
-      "of": 2,
-      "seed": "english-floor3.json:2",
-      "ids": [
-        "floor9_p1_vr_04",
-        "floor9_p1_vr_05"
-      ]
-    },
-    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
   },
   "decisions": {
-    "floor9_p1_vr_04": "pending",
-    "floor9_p1_vr_05": "pending"
+    "floor9_p1_vr_04": "approved",
+    "floor9_p1_vr_05": "approved"
   }
 }

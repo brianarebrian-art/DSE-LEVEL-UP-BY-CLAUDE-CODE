@@ -2,14 +2,16 @@
   "_meta": {
     "source": "m1-written-b1.json",
     "subject": "m1",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
   },
   "decisions": {
-    "m1_w1_01": "pending",
-    "m1_w1_02": "pending",
-    "m1_w1_03": "pending",
-    "m1_w1_04": "pending",
-    "m1_w1_05": "pending"
+    "m1_w1_01": "approved",
+    "m1_w1_02": "approved",
+    "m1_w1_03": "approved",
+    "m1_w1_04": "approved",
+    "m1_w1_05": "approved"
   }
 }

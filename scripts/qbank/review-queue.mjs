@@ -55,6 +55,19 @@ const failDetail = []
 // term-guard.mjs 只掃 data/questions/ 嘅 .ts，草稿係 .json，從來冇經過呢一關；
 // _gate.mjs 亦只鏡像咗術語紅線，冇鏡像口語掃描。結果係一條寫住口語嘅草稿
 // 可以過晒所有閘、擺上人面前審批，到 promote 成 .ts 嗰刻先至被 term-guard 攔住。
+// 攤平一行題目入面所有字串，連同佢喺邊個欄 —— 對齊 term-guard 逐行掃 .ts 嘅做法。
+// `id` / `topicId` 係 slug，唔係畀學生睇嘅文字，跳過。
+function* textLines(row, path = '') {
+  if (typeof row === 'string') { for (const l of row.split('\n')) yield [path || 'value', l]; return }
+  if (Array.isArray(row)) { for (const [i, v] of row.entries()) yield* textLines(v, `${path}[${i}]`); return }
+  if (row && typeof row === 'object') {
+    for (const [k, v] of Object.entries(row)) {
+      if (k === 'id' || k === 'topicId') continue
+      yield* textLines(v, path ? `${path}.${k}` : k)
+    }
+  }
+}
+
 const colloquial = []
 const signedFiles = []
 const unsignedFiles = []
@@ -78,11 +91,15 @@ for (const f of files) {
     byType.set(t, (byType.get(t) ?? 0) + 1)
     if (gateRow(r, subject).length) { bad++; failed++ }
     // 語言科目嘅題目內容【就是】考核對象，口語可能係題材本身 —— 同 term-guard 一致豁免。
+    // ⚠️ 掃【每一個】字串欄，唔可以手寫一張欄位清單。
+    // 2026-09-12 實測：原本只掃 question／explanation／referenceAnswer 三欄，
+    // 漏咗 markingScheme —— 4 個 b2 檔（biology／economics／m1／m2）合共 5 條題
+    // 喺評分準則入面有口語，本報告話「6 個檔」，實情係 9 個。
+    // 而 term-guard 係【逐行掃成個 .ts】，唔分欄位；一張手寫欄位清單必然追唔上
+    // 新增欄位，而追唔上嗰刻本報告就會靜靜哋少報 —— 覆核者會批走一批出唔到街嘅題。
     if (!isLanguageBank(f)) {
-      for (const k of ['question', 'explanation', 'referenceAnswer']) {
-        for (const line of String(r[k] ?? '').split('\n')) {
-          if (COLLOQUIAL.test(line)) colloquial.push({ file: f, id: r.id, field: k, line: line.trim() })
-        }
+      for (const [k, line] of textLines(r)) {
+        if (COLLOQUIAL.test(line)) colloquial.push({ file: f, id: r.id, field: k, line: line.trim() })
       }
     }
   }

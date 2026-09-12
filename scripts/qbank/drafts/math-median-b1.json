@@ -1022,7 +1022,7 @@
       "$6$"
     ],
     "correctIndex": 1,
-    "explanation": "$x > 2$ 且 $x$ 為整數，故最小可取 $3$；$x \\le 9$ 容許取到 $9$。由 $3$ 至 $9$ 共有 $9 - 3 + 1 = 7$ 個整數。答 $8$ 把 $2$ 也算了進去，但 $x > 2$ 是嚴格不等式，$2$ 不符合。答 $6$ 把 $9$ 剔除了，但 $x \\le 9$ 是包含等號的，$9$ 符合。答 $9$ 誤把上限當成個數。兩個端點分別「包唔包」，是這類題唯一的分野。",
+    "explanation": "$x > 2$ 且 $x$ 為整數，故最小可取 $3$；$x \\le 9$ 容許取到 $9$。由 $3$ 至 $9$ 共有 $9 - 3 + 1 = 7$ 個整數。答 $8$ 把 $2$ 也算了進去，但 $x > 2$ 是嚴格不等式，$2$ 不符合。答 $6$ 把 $9$ 剔除了，但 $x \\le 9$ 是包含等號的，$9$ 符合。答 $9$ 誤把上限當成個數。兩個端點分別「是否包含」，是這類題唯一的分野。",
     "explanationEn": "Since $x > 2$ and $x$ is an integer, the smallest value is $3$; $x \\le 9$ allows $9$. From $3$ to $9$ there are $9 - 3 + 1 = 7$ integers. Answering $8$ includes $2$, but $x > 2$ is strict. Answering $6$ excludes $9$, but $x \\le 9$ includes it. Answering $9$ mistakes the upper bound for the count. Whether each endpoint is included is the whole point of this type."
   },
   {
@@ -1049,7 +1049,7 @@
       "$10$"
     ],
     "correctIndex": 2,
-    "explanation": "$x > 4$ 且 $x$ 為整數，故最小可取 $5$；$x \\le 13$ 容許取到 $13$。由 $5$ 至 $13$ 共有 $13 - 5 + 1 = 9$ 個整數。答 $10$ 把 $4$ 也算了進去，但 $x > 4$ 是嚴格不等式，$4$ 不符合。答 $8$ 把 $13$ 剔除了，但 $x \\le 13$ 是包含等號的，$13$ 符合。答 $13$ 誤把上限當成個數。兩個端點分別「包唔包」，是這類題唯一的分野。",
+    "explanation": "$x > 4$ 且 $x$ 為整數，故最小可取 $5$；$x \\le 13$ 容許取到 $13$。由 $5$ 至 $13$ 共有 $13 - 5 + 1 = 9$ 個整數。答 $10$ 把 $4$ 也算了進去，但 $x > 4$ 是嚴格不等式，$4$ 不符合。答 $8$ 把 $13$ 剔除了，但 $x \\le 13$ 是包含等號的，$13$ 符合。答 $13$ 誤把上限當成個數。兩個端點分別「是否包含」，是這類題唯一的分野。",
     "explanationEn": "Since $x > 4$ and $x$ is an integer, the smallest value is $5$; $x \\le 13$ allows $13$. From $5$ to $13$ there are $13 - 5 + 1 = 9$ integers. Answering $10$ includes $4$, but $x > 4$ is strict. Answering $8$ excludes $13$, but $x \\le 13$ includes it. Answering $13$ mistakes the upper bound for the count. Whether each endpoint is included is the whole point of this type."
   },
   {
@@ -1076,7 +1076,7 @@
       "$8$"
     ],
     "correctIndex": 3,
-    "explanation": "$x > 3$ 且 $x$ 為整數，故最小可取 $4$；$x \\le 11$ 容許取到 $11$。由 $4$ 至 $11$ 共有 $11 - 4 + 1 = 8$ 個整數。答 $9$ 把 $3$ 也算了進去，但 $x > 3$ 是嚴格不等式，$3$ 不符合。答 $7$ 把 $11$ 剔除了，但 $x \\le 11$ 是包含等號的，$11$ 符合。答 $11$ 誤把上限當成個數。兩個端點分別「包唔包」，是這類題唯一的分野。",
+    "explanation": "$x > 3$ 且 $x$ 為整數，故最小可取 $4$；$x \\le 11$ 容許取到 $11$。由 $4$ 至 $11$ 共有 $11 - 4 + 1 = 8$ 個整數。答 $9$ 把 $3$ 也算了進去，但 $x > 3$ 是嚴格不等式，$3$ 不符合。答 $7$ 把 $11$ 剔除了，但 $x \\le 11$ 是包含等號的，$11$ 符合。答 $11$ 誤把上限當成個數。兩個端點分別「是否包含」，是這類題唯一的分野。",
     "explanationEn": "Since $x > 3$ and $x$ is an integer, the smallest value is $4$; $x \\le 11$ allows $11$. From $4$ to $11$ there are $11 - 4 + 1 = 8$ integers. Answering $9$ includes $3$, but $x > 3$ is strict. Answering $7$ excludes $11$, but $x \\le 11$ includes it. Answering $11$ mistakes the upper bound for the count. Whether each endpoint is included is the whole point of this type."
   },
   {
@@ -1103,7 +1103,7 @@
       "$16$"
     ],
     "correctIndex": 0,
-    "explanation": "$x > 5$ 且 $x$ 為整數，故最小可取 $6$；$x \\le 16$ 容許取到 $16$。由 $6$ 至 $16$ 共有 $16 - 6 + 1 = 11$ 個整數。答 $12$ 把 $5$ 也算了進去，但 $x > 5$ 是嚴格不等式，$5$ 不符合。答 $10$ 把 $16$ 剔除了，但 $x \\le 16$ 是包含等號的，$16$ 符合。答 $16$ 誤把上限當成個數。兩個端點分別「包唔包」，是這類題唯一的分野。",
+    "explanation": "$x > 5$ 且 $x$ 為整數，故最小可取 $6$；$x \\le 16$ 容許取到 $16$。由 $6$ 至 $16$ 共有 $16 - 6 + 1 = 11$ 個整數。答 $12$ 把 $5$ 也算了進去，但 $x > 5$ 是嚴格不等式，$5$ 不符合。答 $10$ 把 $16$ 剔除了，但 $x \\le 16$ 是包含等號的，$16$ 符合。答 $16$ 誤把上限當成個數。兩個端點分別「是否包含」，是這類題唯一的分野。",
     "explanationEn": "Since $x > 5$ and $x$ is an integer, the smallest value is $6$; $x \\le 16$ allows $16$. From $6$ to $16$ there are $16 - 6 + 1 = 11$ integers. Answering $12$ includes $5$, but $x > 5$ is strict. Answering $10$ excludes $16$, but $x \\le 16$ includes it. Answering $16$ mistakes the upper bound for the count. Whether each endpoint is included is the whole point of this type."
   },
   {

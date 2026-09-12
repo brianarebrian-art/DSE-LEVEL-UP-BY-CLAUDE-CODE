@@ -131,7 +131,7 @@
       "\\$4,000"
     ],
     "correctIndex": 0,
-    "explanation": "帳面淨值 = 成本 − 累計折舊。每年折舊 \\$14,000，3 年累計 \\$42,000，故帳面淨值 = \\$60,000 − \\$42,000 = \\$18,000。\\$42,000 是累計折舊本身而非帳面淨值，方向搞錯；\\$14,000 只是一年的折舊額；\\$4,000 是殘值，要到第 4 年結束才會達到。可用另一條路徑核對：3 年之後尚餘 1 年折舊 \\$14,000 未提，加上殘值 \\$4,000，合共 \\$18,000，兩條路徑一致。留意帳面淨值永遠不會低於殘值——若計出比殘值還低的數字，必定有一步出錯。",
+    "explanation": "帳面淨值 = 成本 − 累計折舊。每年折舊 \\$14,000，3 年累計 \\$42,000，故帳面淨值 = \\$60,000 − \\$42,000 = \\$18,000。\\$42,000 是累計折舊本身而非帳面淨值，方向顛倒；\\$14,000 只是一年的折舊額；\\$4,000 是殘值，要到第 4 年結束才會達到。可用另一條路徑核對：3 年之後尚餘 1 年折舊 \\$14,000 未提，加上殘值 \\$4,000，合共 \\$18,000，兩條路徑一致。留意帳面淨值永遠不會低於殘值——若計出比殘值還低的數字，必定有一步出錯。",
     "explanationEn": "Net book value equals cost less accumulated depreciation. At \\$14,000 a year, three years accumulate \\$42,000, so the net book value is \\$60,000 − \\$42,000 = \\$18,000. The figure \\$42,000 is the accumulated depreciation itself rather than the net book value, the wrong way round; \\$14,000 is a single year's charge; \\$4,000 is the residual value, which is not reached until the end of year 4. Check by another route: after three years one year's charge of \\$14,000 remains unrecognised, and adding the residual value of \\$4,000 gives \\$18,000, agreeing with the first route. Note that net book value never falls below residual value — a figure lower than that means a step has gone wrong."
   },
   {

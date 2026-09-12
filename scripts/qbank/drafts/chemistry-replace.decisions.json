@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "source": "chemistry-replace.json",
+    "subject": "chemistry",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "chem_rep_0001": "approved",
+    "chem_rep_0002": "approved",
+    "chem_rep_0003": "approved",
+    "chem_rep_0004": "approved",
+    "chem_rep_0005": "approved",
+    "chem_rep_0006": "approved",
+    "chem_rep_0007": "approved",
+    "chem_rep_0008": "approved",
+    "chem_rep_0009": "approved",
+    "chem_rep_0010": "approved",
+    "chem_rep_0011": "approved",
+    "chem_rep_0012": "approved",
+    "chem_rep_0013": "approved",
+    "chem_rep_0014": "approved",
+    "chem_rep_0015": "approved",
+    "chem_rep_0016": "approved",
+    "chem_rep_0017": "approved",
+    "chem_rep_0018": "approved",
+    "chem_rep_0019": "approved",
+    "chem_rep_0020": "approved",
+    "chem_rep_0021": "approved",
+    "chem_rep_0022": "approved"
+  }
+}

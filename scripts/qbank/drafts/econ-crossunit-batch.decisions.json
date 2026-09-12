@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "source": "econ-crossunit-batch.json",
+    "subject": "economics",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "econ-cu-01": "approved",
+    "econ-cu-02": "approved",
+    "econ-cu-03": "approved",
+    "econ-cu-04": "approved",
+    "econ-cu-05": "approved"
+  }
+}

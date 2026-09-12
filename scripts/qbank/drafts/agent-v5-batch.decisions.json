@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "source": "agent-v5-batch.json",
+    "subject": "economics",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "agent-v5-economics-01": "approved",
+    "agent-v5-economics-02": "approved",
+    "agent-v5-math-03": "approved",
+    "agent-v5-math-04": "approved",
+    "agent-v5-english-05": "approved",
+    "agent-v5-chinese-06": "approved"
+  }
+}
