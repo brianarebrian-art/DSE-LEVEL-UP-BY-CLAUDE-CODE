@@ -81,7 +81,7 @@ export default function GroupCommunity() {
 
         <div className="flex flex-wrap gap-2 mb-4">
           {TAGS.map((tag) => (
-            <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-subj-rose/40 bg-subj-rose/10 text-subj-rose">
+            <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-subj-rose/40 bg-surface-sunken text-subj-rose">
               {en ? tag.en : tag.zh}
             </span>
           ))}
@@ -89,7 +89,13 @@ export default function GroupCommunity() {
 
         {/* 關於管理員 — 學生自發，唔係官方（法律免責內容，NON-NEGOTIABLE，中文原文不變）。
             2026-08-20：由頁底搬到【CTA 上面】，令學生喺撳走之前一定睇得到。 */}
-        <div className="rounded-xl bg-black/30 border border-line p-4 mb-4">
+        {/* ⚠️ 2026-09-12：底色本來係 bg-black/30 —— 寫死嘅黑遮罩，假設咗暗色主題。
+    淺色主題下佢疊落 #F4F0EA 變成中灰 #A8A49E，而入面嘅 text-ink-muted
+    係深色字 → 實測 2.38，遠低於 AA 4.5。
+    呢段係法律免責兼未成年人安全提示（「唔好向唔認識嘅人畀電話、地址…」），
+    上面嘅註釋特登講明搬咗上 CTA 之前「令學生一定睇得到」——
+    但 2.38 之下佢係睇唔清嘅。改用跟主題嘅 surface-sunken。 */}
+        <div className="rounded-xl bg-surface-sunken border border-line p-4 mb-4">
           <div className="flex items-start gap-3">
             <span className="text-lg" aria-hidden>👤</span>
             <div>

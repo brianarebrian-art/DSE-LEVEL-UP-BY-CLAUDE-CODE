@@ -376,3 +376,60 @@ test('⑧ 全站同 className 內嘅 token 配搭全部過 AA', () => {
     `只掃到 ${found.size} 對 token 配搭，遠少於 2026-09-12 實測嘅 13 對 —— ` +
     `多數係掃描器跟唔上 className 寫法嘅變化，而唔係真係少咗配搭。先修掃描器。`)
 })
+
+// ── ⑨ 寫死嘅 bg-black/N · bg-white/N —— 主題盲底色 ─────────────────────────
+// 呢個 root cause 喺 repo 出現過三次：
+//   1. EmotionThermometer —— 檔頭記低：「contrast-guard 見到本檔有 bg-black/70
+//      就當有深色底放行，但嗰個係遮罩，唔係字嘅底」，對比曾經係 1.00（完全隱形）
+//   2. globals.css §莫蘭迪 —— 40 個同色淡底藥丸，「scope 換底色之後對比跌約 0.9」，
+//      已逐處改為實色底
+//   3. GroupCommunity（2026-09-12 本次）—— bg-black/30 喺淺色主題變中灰 #A8A49E，
+//      入面嘅 text-ink-muted 深字疊上去 = 2.38。而嗰段係未成年人安全提示
+//      （「唔好向唔認識嘅人畀電話、地址、就讀學校或者相片」），
+//      組件註釋仲特登講明搬咗上 CTA 之前「令學生一定睇得到」
+//
+// 共通機制：bg-black/N 唔跟主題，但疊喺佢上面嘅 text-* token 跟主題。
+// 暗色主題下兩者啱啱夾得埋，所以開發時見唔到 —— 只會喺淺色主題出事。
+//
+// 規則：任何 bg-black/N 或 bg-white/N 都要有理由。載入骨架一類冇文字嘅純裝飾
+// 可以入基線；其餘一律改用跟主題嘅 surface token。
+const OPAQUE_BG_BASELINE: Record<string, number> = {
+  // 載入骨架：純裝飾、冇文字、唔涉及對比。
+  'components/AuthButton.tsx': 1,
+}
+
+test('⑨ 寫死嘅 bg-black/N · bg-white/N 不得超出基線', () => {
+  const found: Record<string, number> = {}
+  const offenders: string[] = []
+  const walk = (d: string) => {
+    for (const e of readdirSync(join(ROOT, d))) {
+      const rel = `${d}/${e}`
+      if (statSync(join(ROOT, rel)).isDirectory()) {
+        if (!/node_modules|__tests__|\.next/.test(rel)) walk(rel)
+      } else if (rel.endsWith('.tsx')) {
+        // 先把註釋區段抹白（保留換行以維持行號）—— JSX 嘅 {/* … */} 可以跨行，
+        // 淨係睇「行頭係咪 //」會漏，而且會誤中講緊呢個規則嘅註釋本身。
+        const blanked = readFileSync(join(ROOT, rel), 'utf8')
+          .replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' '))
+          .replace(/\/\/[^\n]*/g, (m) => ' '.repeat(m.length))
+        blanked.split('\n').forEach((ln, i) => {
+          if (!/\bbg-(black|white)\/\d/.test(ln)) return
+          found[rel] = (found[rel] ?? 0) + 1
+          if (!(rel in OPAQUE_BG_BASELINE)) offenders.push(`${rel}:${i + 1}  ${ln.trim().slice(0, 70)}`)
+        })
+      }
+    }
+  }
+  walk('components'); walk('app')
+
+  assert.deepEqual(offenders, [],
+    `以下用咗主題盲嘅寫死底色：\n${offenders.join('\n')}\n` +
+    `bg-black/N 唔跟主題，但疊喺佢上面嘅 text-* token 跟主題 —— ` +
+    `暗色主題下啱啱夾得埋，只會喺淺色主題出事（實測低至 1.00）。\n` +
+    `修法：改用 bg-surface-sunken / bg-surface-raised 等跟主題嘅 token。`)
+
+  for (const [f, cap] of Object.entries(OPAQUE_BG_BASELINE)) {
+    assert.ok((found[f] ?? 0) <= cap,
+      `${f} 嘅寫死底色由 ${cap} 增至 ${found[f]} —— 基線只可以減，唔可以加。`)
+  }
+})
