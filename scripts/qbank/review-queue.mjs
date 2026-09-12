@@ -27,6 +27,7 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gateRow } from './_gate.mjs'
 import { REAL_PERSON_HANDLES } from './_reviewer-gate.mjs'
+import { COLLOQUIAL, colloquialHint, isLanguageBank } from './_terms.mjs'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const DIR = join(HERE, 'drafts')
@@ -50,6 +51,11 @@ let total = 0
 let failed = 0
 const byType = new Map()
 const failDetail = []
+// 口語命中（憲章 §5：解析層必須 100% 標準書面語）。
+// term-guard.mjs 只掃 data/questions/ 嘅 .ts，草稿係 .json，從來冇經過呢一關；
+// _gate.mjs 亦只鏡像咗術語紅線，冇鏡像口語掃描。結果係一條寫住口語嘅草稿
+// 可以過晒所有閘、擺上人面前審批，到 promote 成 .ts 嗰刻先至被 term-guard 攔住。
+const colloquial = []
 const signedFiles = []
 const unsignedFiles = []
 
@@ -71,6 +77,14 @@ for (const f of files) {
     const t = r?.type ?? 'mc'
     byType.set(t, (byType.get(t) ?? 0) + 1)
     if (gateRow(r, subject).length) { bad++; failed++ }
+    // 語言科目嘅題目內容【就是】考核對象，口語可能係題材本身 —— 同 term-guard 一致豁免。
+    if (!isLanguageBank(f)) {
+      for (const k of ['question', 'explanation', 'referenceAnswer']) {
+        for (const line of String(r[k] ?? '').split('\n')) {
+          if (COLLOQUIAL.test(line)) colloquial.push({ file: f, id: r.id, field: k, line: line.trim() })
+        }
+      }
+    }
   }
   if (bad) failDetail.push([f, '未過 _gate.mjs', bad, rows.length])
 
@@ -107,6 +121,22 @@ if (failed === 0) {
 } else {
   console.log(`  ❌ 格式閘：${failed} 條未過 —— 唔應該擺上人面前`)
   for (const [f, why, bad, n] of failDetail) console.log(`       ${pad(f, 44)} ${why}${n ? ` ${bad}/${n}` : ''}`)
+}
+
+console.log()
+if (colloquial.length === 0) {
+  console.log('  ✅ 書面語：非語言科草稿零口語命中')
+} else {
+  const byFile = new Map()
+  for (const c of colloquial) byFile.set(c.file, (byFile.get(c.file) ?? 0) + 1)
+  console.log(`  ⚠️  書面語：${colloquial.length} 行口語，涉及 ${byFile.size} 個檔（憲章 §5）`)
+  for (const [f, n] of [...byFile].sort((a, z) => z[1] - a[1])) {
+    const first = colloquial.find((c) => c.file === f)
+    console.log(`       ${pad(f, 40)} ${num(n, 3)} 行 · ${first.id}${colloquialHint(first.line)}`)
+  }
+  console.log('       ↑ 呢批題 promote 成 .ts 嗰刻會被 term-guard 攔住 —— 審批前要先改。')
+  console.log('       刻意【唔】計入退出碼：改動人哋等緊審批嘅草稿內容唔係本腳本嘅事，')
+  console.log('       而加硬閘會即刻令 npm run qa 轉紅（憲章 §6：唔可以令現有數據集失效）。')
 }
 
 console.log()
