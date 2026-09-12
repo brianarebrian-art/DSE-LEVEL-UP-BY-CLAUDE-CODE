@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · pe · pe-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">pe</span></h1>
+<div class="sub">來源 pe-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"pe_w4_01","topic":"解剖學","difficulty":"basic","question":"肌肉多以「拮抗肌對」的形式運作。試以手肘屈曲為例說明此一概念。","explanation":"答案須指出肌肉只能拉不能推這一前提，否則「為何需要成對」無從解釋。須正確指出屈曲時的主動肌與拮抗肌，並說明伸直時角色互換。","type":"text","referenceAnswer":"前提：肌肉收縮時只能產生拉力，不能產生推力。因此單一肌肉只能把骨骼拉向一個方向，要令關節能夠雙向活動，必須有另一組肌肉作用於相反方向。\n手肘屈曲：\n肱二頭肌收縮，把前臂拉向上臂，此時肱二頭肌為主動肌（原動肌）。同時肱三頭肌舒張並容許拉長，此時為拮抗肌。若肱三頭肌不舒張，兩者同時用力，關節便會僵住而無法活動。\n手肘伸直：\n角色互換。肱三頭肌收縮把前臂拉回伸直位置，成為主動肌；肱二頭肌舒張，成為拮抗肌。\n補充：拮抗肌並非完全放鬆，而是以受控的方式逐步拉長，藉此控制動作速度並在末端減速，防止關節被過度伸展而受傷。此即離心收縮的作用。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_02","topic":"運動創傷","difficulty":"basic","question":"運動員扭傷腳踝後，即時處理應遵循哪些原則？試列出四項，並說明其中一項的原理。","explanation":"本題須列出四項並解釋其一。列項容易，解釋則須指出該處理【如何】作用於受傷後的生理反應，而非只答「有幫助」。亦須留意不可立即熱敷或按摩。","type":"text","referenceAnswer":"四項原則：\n一、保護與休息 —— 立即停止運動，避免以受傷的腳負重，防止傷勢加重。\n二、冷敷 —— 以冰袋外裹毛巾敷於患處，每次約十五至二十分鐘，其間留有間隔。\n三、加壓 —— 以彈性繃帶由遠端向近端包紮，鬆緊以不影響末端血液循環為度。\n四、抬高 —— 把受傷的腳抬至高於心臟水平。\n（此外：受傷後首四十八小時內不可熱敷、按摩、飲酒或進行劇烈伸展，此類做法會令出血與腫脹加劇。若疼痛劇烈、無法負重或關節變形，須即時求醫以排除骨折。）\n原理說明（以冷敷為例）：\n扭傷時，關節周圍的微血管與軟組織受損並出血，身體隨即引發發炎反應，局部血管擴張、通透性上升，組織液滲出，形成腫脹。腫脹本身會壓迫周圍組織、加劇疼痛，並延長復原時間。\n冷敷令局部血管收縮，減少流入患處的血液，出血量與滲出量因而下降，腫脹得以限制。同時，低溫降低神經末梢的傳導速度，具止痛作用；亦減慢受傷區域的代謝率，減少因缺氧而造成的繼發性組織損傷。\n須注意：冰不可直接接觸皮膚，且每次不宜超過二十分鐘，否則可能造成凍傷，或引起反射性血管擴張而適得其反。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_03","topic":"運動生理學","difficulty":"intermediate","question":"長期進行帶氧訓練後，靜止心率通常會下降。試解釋此一現象的生理機制。","explanation":"本題常見錯誤是答「心臟變強壯了」而止步。答案須引入心輸出量的公式，說明每搏輸出量上升而需求不變時，心率必然下降，方為完整解釋。","type":"text","referenceAnswer":"核心關係：心輸出量 = 每搏輸出量 × 心率。\n靜止狀態下，身體的耗氧量大致固定，故所需的心輸出量亦大致固定。若每搏輸出量上升而所需的心輸出量不變，心率必然下降以維持等式成立。此即靜止心率下降的直接原因。\n每搏輸出量為何上升：\n其一，心室腔容積增大（心臟的離心性肥大）。長期帶氧訓練令回心血量長時間增加，心室在舒張期被充盈得更滿，容積隨之適應性增大，每次收縮可射出的血量因而上升。\n其二，心肌收縮力增強，射血分數提高。心室壁的收縮效率改善，每次收縮能把更大比例的血液射出。\n其三，血漿容量增加，靜脈回流改善。回心血量上升令心室充盈更佳，按史達林定律，心肌纖維被拉長後收縮力增強，每搏輸出量因而進一步上升。\n其他配合的適應：\n自主神經調節亦有改變 —— 迷走神經（副交感）張力上升，交感神經活動相對下降，兩者共同令竇房結的自發放電頻率減慢。\n意義：靜止心率下降代表心臟以較少的次數完成同樣的工作，每次收縮之間的舒張期延長，心肌本身得到更充分的灌流與休息，故常被視為心血管適應良好的指標之一。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_04","topic":"生物力學","difficulty":"intermediate","question":"接球時，運動員多會隨球的方向後撤雙手。試以生物力學原理解釋此一動作的作用。","explanation":"本題須引入衝量與動量的關係。只答「減少衝力」而無公式或推理者，未達要求。亦宜指出球的動量並無改變，改變的只是作用時間。","type":"text","referenceAnswer":"原理：衝量等於動量的改變，即 F × t = m × Δv。\n接球的任務，是把球由飛行速度減至靜止，故動量的改變量 m × Δv 是固定的 —— 球的質量與來球速度皆非接球者所能選擇。既然等式左方的乘積固定，作用時間 t 愈長，所需的平均力 F 便愈小。\n後撤雙手的作用，正是延長球與手接觸的時間。若雙手固定不動，球在極短時間內停止，所需的力甚大，此力同時作用於手指與手掌，容易造成挫傷或脫手。雙手隨球後撤，減速過程被拉長至數倍時間，平均作用力相應下降。\n附帶的好處：\n其一，較小的作用力令球不易被彈開。球撞擊剛性表面時，反彈力大；手部順勢後撤相當於降低相對速度，球較易被「吸」在手中。\n其二，力量分散於較長的時間，痛感明顯減輕，接球者較能穩定控制球。\n同一原理的其他應用：跳落地面時屈膝緩衝、拳擊手隨對手出拳方向後仰卸力、汽車設有潰縮區。三者皆是以延長作用時間來降低峰值受力。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_05","topic":"營養與健康","difficulty":"intermediate","question":"耐力運動員在長時間比賽期間需要補充水分與醣類。試說明兩者各自的作用，並指出補充不足分別會出現甚麼情況。","explanation":"答案須把兩者分開處理，各自交代作用與缺乏的後果。常見失分是把脫水與低血糖的症狀混為一談 —— 兩者的機制與表現並不相同。","type":"text","referenceAnswer":"水分的作用：\n運動時肌肉產生大量熱能，身體主要以排汗散熱。汗液蒸發帶走熱量，維持核心體溫於安全範圍。水分同時維持血漿容量，血漿容量足夠，心臟才能把血液送往工作中的肌肉與皮膚 —— 前者供氧，後者散熱。\n補充不足的後果：血漿容量下降，心率須上升以維持心輸出量，同一強度下的負荷感明顯增加。皮膚血流減少令散熱能力下降，核心體溫上升。表現為口渴、頭暈、乏力、表現下降；情況嚴重時可發展為熱衰竭或中暑，後者屬醫療急症。此外，脫水亦令血液黏稠度上升，進一步加重心臟負擔。\n醣類的作用：\n醣類以肌糖原與肝糖原形式儲存，是中高強度運動時的主要能量來源。肌糖原供應運動中的肌肉；肝糖原則分解為葡萄糖釋入血液，維持血糖穩定，而大腦幾乎完全依賴葡萄糖供能。人體的糖原儲備有限，一般僅足夠支持約九十分鐘的中高強度運動。\n補充不足的後果：糖原耗盡後，身體須更多倚賴脂肪供能，而脂肪的氧化速率較慢，可維持的運動強度因而下降，運動員被迫減速。血糖下降則影響中樞神經，出現注意力不集中、判斷力下降、動作協調變差、情緒煩躁，嚴重者甚至意識模糊。\n兩者的分別：脫水的核心問題在於體溫調節與循環，低血糖的核心問題在於能量供應與中樞神經功能。比賽中同時出現亦屬常見，但處理方式不同 —— 前者須補水並降溫，後者須補充醣類。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_06","topic":"運動心理學","difficulty":"intermediate","question":"有教練認為「比賽前愈緊張，表現愈好」。試就喚醒水平與表現的關係評論此說。","explanation":"本題須引入倒 U 形關係，並指出最佳喚醒水平隨項目與個人而異。只答「太緊張不好」而無理論框架者，論證薄弱；亦須指出「緊張」與「喚醒」並非同義。","type":"text","referenceAnswer":"此說只在某一範圍內成立，作為普遍規律並不正確。\n倒 U 形關係：喚醒水平與表現的關係並非直線，而是倒轉的 U 形。喚醒過低時，注意力渙散、反應遲緩、動機不足，表現欠佳；喚醒上升至中等水平，注意力集中、肌肉徵召效率提高、反應加快，表現達到最佳；喚醒繼續上升超過該點，表現反而下降。\n過度喚醒為何損害表現：\n其一，注意力窄化。過度喚醒令注意範圍收窄，運動員可能只盯住球而看不見走位的隊友，在需要判讀全局的項目中尤其不利。\n其二，肌肉過度緊張。拮抗肌未能適時放鬆，動作變得僵硬，協調性與流暢度下降，精細動作的準確度明顯受損。\n其三，認知干擾。對失敗的憂慮佔用工作記憶，思考資源被分散，決策變慢。\n最佳點並非固定：\n其一，隨項目而異。需要爆發力而技術要求相對簡單的項目（例如舉重、短跑起步），最佳喚醒水平較高；需要精細控制的項目（例如射箭、高爾夫推桿、體操平衡木），最佳水平較低。\n其二，隨個人而異。同一項目中，不同運動員的最佳區間並不相同，教練須按個別情況調節，不可一概而論。\n其三，隨經驗與熟練程度而異。技術愈鞏固，可承受的喚醒水平愈高；新手在高喚醒下較易失誤。\n另須釐清一點：「緊張」與「喚醒」並非同義。喚醒是生理激活程度，本身中性；焦慮則帶有負面的認知成分，例如對失敗的預期。適度的生理激活有助表現，但高焦慮即使在同一激活水平之下，亦會透過上述認知干擾損害表現。\n結論：該教練的說法把一段上升區間誤當成全程規律。正確的做法不是追求「愈緊張愈好」，而是協助運動員找出並進入其個人的最佳喚醒區間 —— 過低時提升，過高時以呼吸調節、例行程序、注意力重導等方法降低。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_07","topic":"體適能與訓練","difficulty":"hard","question":"一名學生希望同時提升長跑成績與最大肌力，於是每日同時進行長距離跑步與重量訓練，數週後兩項均無進步。試分析可能的原因，並提出改良的訓練安排。","explanation":"本題涉及干擾效應與恢復不足兩項機制，答案須同時處理。只答「操得太多」而不解釋兩種訓練刺激為何互相抵觸者，未達高分要求。改良安排須具體到頻率與次序。","type":"text","referenceAnswer":"可能原因一：恢復不足，未能完成適應。\n訓練本身並不帶來進步 —— 訓練施加刺激，進步發生於其後的恢復期。肌肉蛋白合成、糖原補充、神經系統復原皆需時間。每日進行兩種高負荷訓練而無休息日，身體長期處於未完全恢復的狀態，新的訓練負荷疊加於未修復的疲勞之上，適應無從發生。長期如此更可能出現過度訓練，表現不升反跌。\n可能原因二：干擾效應 —— 兩種訓練的適應方向互相抵觸。\n耐力訓練所誘發的適應，包括線粒體增生、微血管密度上升、肌纖維傾向慢縮特性；肌力訓練所誘發的適應，則包括肌纖維橫截面積增大、神經徵召能力提升、快縮纖維的發展。兩者在細胞層面的訊號路徑並不相同，同時且高強度地施加，耐力訓練的訊號會抑制肌肉增大的訊號，令肌力增長受限。\n可能原因三：次序與間隔安排不當。\n同日先跑後練，肌肉已處於疲勞狀態，重量訓練無法使用足夠負重，刺激不足；先練後跑則跑步質素下降。兩者互相削弱，結果是兩項都只達到中等刺激，而中等刺激不足以在任何一方引起明顯適應。\n可能原因四：營養與睡眠未配合。\n總訓練量大幅上升而能量攝取、蛋白質攝取與睡眠時間未相應調整，恢復所需的原料與時間皆不足。\n改良的訓練安排：\n一、設立休息日。每週至少一至兩日完全休息或只作低強度活動，讓適應得以完成。\n二、分開安排，避免同日高強度疊加。可採用：星期一、四重量訓練（大肌群、較大負重、較少次數）；星期二、六長距離跑；星期三低強度恢復性活動；星期日休息。同日必須兼顧時，兩節之間至少相隔六小時。\n三、確立優先次序。同時最大化兩項並不現實，宜按階段側重：例如以四至六星期為一週期，先以耐力為主、肌力維持，其後轉為以肌力為主、耐力維持。此舉令每一階段皆有足夠的專項刺激。\n四、同日訓練時，把優先項目放在前面。若該階段以肌力為主，則先做重量訓練；反之亦然。\n五、配合恢復條件。確保足夠睡眠、訓練後補充醣類與蛋白質，並定期以靜止心率、主觀疲勞程度與訓練表現監察恢復狀況。\n補充：干擾效應的程度因人而異，亦與訓練量相關。訓練量適中時，兩者可以並存並各有進步；本個案的問題並非「不可兼顧」，而是每日高量疊加、毫無休息的安排，令兩項刺激都變成慢性疲勞而非適應誘因。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"pe_w4_08","topic":"生物力學與能量系統","difficulty":"hard","question":"試比較一百米短跑與一千五百米中距離跑在能量系統運用上的分別，並解釋為何兩者的訓練方法不能互相取代。","explanation":"本題須具體指出各項目所依賴的系統及其比例，而非只說「一個靠無氧、一個靠帶氧」。第二部分須以訓練特異性原則解釋，並指出兩者所需的適應在生理層面並不重疊。","type":"text","referenceAnswer":"一百米短跑：\n歷時約十至十二秒，強度接近最大。主要依賴磷酸原系統（ATP-磷酸肌酸系統）—— 肌肉內儲存的 ATP 與磷酸肌酸可即時供能，無須氧氣，功率輸出最高，但儲備極少，約六至十秒即耗盡。其後由乳酸系統（無氧糖酵解）接續，但在此距離內其貢獻有限。帶氧系統在如此短的時間內幾乎來不及啟動，貢獻可以忽略。\n一千五百米：\n歷時約三分半至五分鐘，屬帶氧與無氧系統並重的項目。以全程計，帶氧系統的貢獻約佔七至八成，無氧糖酵解約佔兩至三成。但比例並非平均分布 —— 起步加速與最後衝刺階段，無氧系統的貢獻顯著上升；中段則以帶氧供能為主。運動員須在高乳酸環境下維持速度，故對乳酸耐受能力的要求亦高。\n為何訓練不可互相取代：\n其一，所需的生理適應不同。短跑訓練誘發的適應包括快縮纖維肥大、神經徵召速率與同步性提升、磷酸肌酸儲量增加、以及肌腱剛度改善。中距離訓練誘發的適應則包括最大攝氧量提升、線粒體與微血管增生、乳酸閾值上移、以及緩衝能力增強。兩組適應由不同的訓練刺激誘發，並不會互相產生。\n其二，訓練特異性原則。身體只會針對所施加的刺激作出適應。大量低強度長距離訓練不會提升最大功率輸出，甚至可能因干擾效應而抑制肌肉肥大；反之，只做十秒級的最大強度衝刺，因總刺激時間過短，無法對心肺系統構成足夠的持續負荷，不會提升最大攝氧量。\n其三，技術與動作模式不同。短跑要求極大的步幅與步頻、強力的蹬伸與短暫的觸地時間；中距離則要求經濟的跑姿以減少單位距離的能量消耗，觸地時間較長、動作幅度較為節制。兩者的神經肌肉協調模式並不相同，練其一不會自動改善其二。\n其四，恢復需求不同。短跑訓練以高強度、短時間、長組間休息為特徵；中距離訓練則包含較長的持續段落與較短的間歇。兩者的疲勞性質與恢復時間皆異，訓練計劃的編排方式亦因而不同。\n補充：雖然不能互相取代，但並非全無交集。中距離運動員須要衝刺能力以應付最後階段，故會加入部分速度訓練；短跑運動員亦需一定的帶氧基礎以支持反覆高強度訓練之間的恢復。關鍵在於比例與側重，而非把其中一種當成另一種的替代品。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "pe";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "pe-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "pe-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

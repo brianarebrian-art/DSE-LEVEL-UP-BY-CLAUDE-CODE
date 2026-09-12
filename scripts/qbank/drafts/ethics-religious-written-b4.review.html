@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · ethics-religious · ethics-religious-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">ethics-religious</span></h1>
+<div class="sub">來源 ethics-religious-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"eth_w4_01","topic":"道德概念","difficulty":"basic","question":"試分辨「道德」與「法律」，並舉一例說明兩者可以不一致。","explanation":"答案須指出兩者在來源、制裁方式與適用範圍上的分別，不可只答「法律有懲罰、道德冇」。所舉例子須真正呈現不一致，即某行為合法而不道德，或道德上應為而法律不強制。","type":"text","referenceAnswer":"分別：\n一、來源不同。法律由具立法權的機構按既定程序制定，可以查閱條文；道德源於社會長期形成的共識、宗教傳統或理性反省，並無單一權威頒布。\n二、制裁方式不同。違法可被強制執行，包括罰款、監禁；違反道德所受的是輿論譴責、關係疏離與良心不安，並無強制力。\n三、適用範圍不同。法律通常只規管可被客觀證明的外在行為；道德同時關注動機與內心態度。同一筆捐款，法律只問是否合法，道德則會問出於甚麼考慮。\n不一致的例子：目睹陌生人遇溺而有能力施救，若該地法律並無強制救助的規定，袖手旁觀並不違法，但普遍會被視為道德上有虧。此例顯示道德要求可以高於法律要求。\n（另一方向的例子亦可接受：某些歷史上的法律曾容許歧視，行為合法而道德上不能成立。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_02","topic":"佛教","difficulty":"basic","question":"佛教以「緣起」說明事物的存在方式。試說明此一觀念，並指出它如何支持「無我」的主張。","explanation":"本題須呈現由緣起推導至無我的思路，而非把兩個名相並列。常見失分是把「無我」理解為「甚麼都不存在」；正確理解是否定恆常不變、獨立自存的主體，而非否定現象。","type":"text","referenceAnswer":"緣起的內容：一切現象皆依條件而生起，條件具備則現象出現，條件離散則現象消失。事物並非自己產生自己，亦非恆常不變，而是在種種因緣的交互之中暫時成立。\n如何支持無我：\n若有一個「我」，按常識應具備三項特徵 —— 恆常不變、獨立自存、能夠主宰。但依緣起觀之，人由身體與心識等要素依條件聚合而成，這些要素每一刻都在變化，並無一項可以離開其他條件而獨存。既然構成的要素全部依緣而起、剎那生滅，其中便找不到一個恆常獨立的主體。\n須澄清的是，無我並非說「沒有人」或「經驗不存在」。日常所說的「我」，在佛教中被理解為對一組持續變化的身心過程所作的方便稱呼，如同「河流」指稱不斷流動的水，而非水中有一恆常不變之物。\n實踐意義：執取一個不存在的恆常自我，會引致對得失、榮辱、生死的執著，因而生苦。理解緣起與無我，是鬆動此一執取的起點。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_03","topic":"規範倫理學","difficulty":"intermediate","question":"效益主義以行為的後果判斷對錯。試指出此一取向的兩項優點與兩項困難。","explanation":"答案須平衡，且困難部分不可只說「難以計算」。高分答案會指出更根本的問題：後果的比較需要共同尺度，而效益主義原則上容許為多數而犧牲少數。","type":"text","referenceAnswer":"優點一：提供可公開檢驗的判斷依據。\n是非取決於可觀察的後果，各方可以就「哪一種做法帶來較佳結果」提出證據與論證，而不必先取得價值信念上的一致。在多元社會的公共政策討論中，此一特點甚為實用。\n優點二：一視同仁地計算每一個人的利益。\n在衡量後果時，任何人的苦樂皆同等計入，不因身分、階級或親疏而加權。此一立場為反對特權與偏私提供了理據。\n困難一：後果之間缺乏共同尺度。\n把健康、自由、時間與金錢化為同一單位以作比較，本身即有爭議。一旦無法通約，「總量最大」這一判準便難以實際運用；而所採用的換算方式往往已經隱含了價值判斷。\n困難二：原則上容許犧牲少數。\n若損害少數人可令總量顯著提升，效益主義並無內在的理由加以禁止。此點與一般人對個人權利的直覺相衝突，亦是規則效益主義等修正版本嘗試回應的問題。\n（其他可接受的困難：後果難以完全預見，判斷須依賴不確定的預測；要求行為者時刻追求最大效益，對個人而言過於嚴苛。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_04","topic":"基督宗教","difficulty":"intermediate","question":"基督宗教傳統中，「愛鄰舍」是核心的倫理要求。試說明此一要求在實踐上如何超越一般的互惠原則。","explanation":"本題須作比較，故答案不可只複述教義。互惠原則以「對方會否回報」為條件；答案須指出愛鄰舍在對象範圍與動機結構上與此不同，並可指出其實踐上的困難以示分寸。","type":"text","referenceAnswer":"互惠原則的結構：我善待他人，因為預期對方在日後會以同等方式回報，或因為對方曾經善待我。其成立條件有二 —— 對方有能力回報，且雙方關係可以持續。\n愛鄰舍如何超越此一結構：\n一、對象不以回報能力為準。該傳統反覆把要求指向陌生人、外邦人、乃至仇敵，即最不可能回報的一群。若只善待有能力回報者，此一要求便無所增益。\n二、動機不繫於對方的反應。行動的理由被置於行動者與神的關係之中，而非置於預期收益之中。因此即使對方冷淡、誤解甚至敵視，要求依然成立。\n三、包含主動尋找而非被動回應。互惠在對方先有所付出之後啟動；此一要求則指向主動察覺他人的需要，不待對方開口。\n實踐上的困難：其一，資源與精力有限，無差別的善待在現實中難以持續，故傳統中亦發展出關於次序與分寸的討論。其二，對施予者與受助者之間的不對等關係若處理不當，善意可能變成居高臨下。承認這些困難，並不削弱該要求本身，而是說明其實踐須有具體的判斷。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_05","topic":"宗教倫理","difficulty":"intermediate","question":"有人主張：「若無宗教，人便沒有行善的理由。」試評論此說。","explanation":"本題要求評論，故須同時處理支持與反對的理據，不可一面倒。關鍵在於分辨「行善的動機」與「道德的根據」兩個不同問題 —— 混淆兩者是本題最常見的失誤。","type":"text","referenceAnswer":"此說有其觀察基礎，但作為普遍命題並不成立。\n支持該說的考慮：\n其一，宗教確實為行善提供強而持久的動機，包括來世的賞罰、對神的回應，以及群體的共同實踐。對許多信徒而言，此一動機比抽象的理性論證更能支撐長期的道德努力。\n其二，宗教傳統提供具體的規範內容與典範人物，使「應當如何做」不致停留於原則。\n該說不成立之處：\n其一，混淆了動機與根據。即使宗教是許多人行善的動機，亦不能推出【唯有】宗教可以提供理由。事實上，效益主義以苦樂為據、義務論以理性一致性為據、德性論以人的興盛為據，皆不預設宗教信仰。\n其二，與經驗不符。不持宗教信仰者同樣會誠實、守諾、照顧他人；若該說成立，此類行為應屬罕見，但實情並非如此。\n其三，若把「行善的唯一理由」歸於賞罰，反而削弱道德的價值。純為避罰而為的行為，一般不被視為有德，此點在宗教傳統內部亦有討論。\n較穩妥的表述：宗教【可以】為道德提供動機、內容與群體支持，而且對許多人而言確實如此；但「沒有宗教就沒有理由」則超出了可支持的範圍。爭論的真正焦點，應是各種根據各自面對甚麼困難，而非其中一種是否為唯一。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_06","topic":"應用倫理","difficulty":"intermediate","question":"某醫院的深切治療部床位有限，須決定分配次序。試提出兩項可能採用的分配準則，並分別指出其倫理難題。","explanation":"本題要求準則與難題配對出現，只列準則不談難題者不予高分。所提準則須是實際討論中會出現者，而非明顯不可接受的做法（例如按付款能力），否則難題部分流於空泛。","type":"text","referenceAnswer":"準則一：醫療效益，即優先分配予最有可能因治療而存活的病人。\n理據：床位稀缺時，把資源投放於成效最高之處，可以挽救最多生命。\n倫理難題：此準則系統性地不利於高齡者、有多種長期病患者與殘障人士，因為他們的預後統計上較差。結果是同一群體在每一次資源緊絀時都排在後面，形成累積的不利。此外，「存活機會」的評估本身帶有不確定性，而不同評估工具會給出不同結果。\n準則二：先到先得，按求診次序分配。\n理據：程序中立，不需要對任何人的生命作價值比較，亦不易被人事關係左右。\n倫理難題：表面中立，實際結果並不平等。居住偏遠、缺乏交通工具、資訊不足或不敢求醫者，抵達時間較遲，於是被制度性地排後。同時，此準則完全不考慮醫療迫切性 —— 一名情況穩定者可能佔用了另一名危急者所需的床位。\n（其他可接受的準則：按病情緊急程度分流；隨機抽籤；優先照顧負有照顧責任者。各自的難題須相應說明。）\n補充：實際制度多採混合準則，例如先以緊急程度分流，同級之內再按其他考慮。此舉並不消除上述難題，而是把取捨明示於程序之中，使決定可被檢視與問責 —— 這一點本身即具倫理意義。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_07","topic":"規範倫理・理論應用","difficulty":"hard","question":"一名記者取得可證明某機構長期隱瞞安全風險的內部文件，但取得途徑涉及違反保密協議。試分別以效益主義與義務論分析此一情況，並比較兩種分析的分歧所在。","explanation":"本題須真正運用兩套理論，而非只貼標籤。常見失分是把義務論簡化為「不可說謊」便得出反對結論；實則義務論內部亦有義務衝突，須處理。比較部分必須指出分歧的【根源】，而非只說「兩者結論不同」。","type":"text","referenceAnswer":"效益主義的分析：\n須比較公開與不公開兩種做法的整體後果。公開一方：風險得以揭露，可能避免傷亡，並促使同類機構改善；代價是保密協議的效力受損，日後資料提供者可能更難取得信任，機構亦可能收緊內部資訊流通。不公開一方：協議得以維持，但風險持續，潛在傷害延續。\n若可避免的傷害規模大、且無其他途徑揭露，效益主義多會支持公開；但結論並非自動成立，須視乎證據的可靠程度、有否合法替代途徑，以及公開後實際能否促成改變。\n義務論的分析：\n此處存在義務衝突，而非單一規則的適用。一方面，記者對保密承諾負有信守義務；另一方面，記者對可能受害的公眾負有警告義務，而該機構亦負有不欺瞞的義務 —— 隱瞞行為本身已違反後者。\n義務論者可循兩條路處理：其一，指出承諾的效力有其界限，一項用以掩蓋對他人重大傷害的保密安排，其約束力本身可受質疑；其二，援引義務的輕重次序，認為防止重大傷害的義務優先於信守承諾的義務。無論循哪一條，重點皆在於【權利與義務的性質】，而非後果的總量。\n分歧的根源：\n其一，判斷的著眼點不同。效益主義問「哪一種做法整體結果較佳」，義務論問「誰對誰負有何種義務，該義務是否可被推翻」。\n其二，對「可否為好結果而違反規則」的立場不同。效益主義原則上容許，只要後果較佳；義務論則要求該違反本身能被一項更高的義務證成，而不能僅以結果證成。\n其三，兩者在【證據不足】時的取態不同。若文件的真確性尚未確定，效益主義的計算會因不確定性而趨於保守；義務論則會轉而追問記者是否已盡查證之責，即把問題轉為行為者義務的問題。\n結論：兩套理論在本案可能得出相同的實踐結論（支持公開），但其理由不可互換。分歧不在結論，而在何者構成理由 —— 這一點在結論相反的案例中才會顯現其重要性。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"eth_w4_08","topic":"道德推理・後設反思","difficulty":"hard","question":"有人主張：「道德只是各地習俗，沒有對錯可言。」試分析此說在推理上的問題。","explanation":"本題屬後設倫理，重點在推理而非立場。學生常見錯誤是以「我覺得殺人一定錯」作反駁 —— 這是訴諸直覺，並未指出對方推理的問題。答案須指出由「各地做法不同」推出「沒有對錯」屬於不當推論。","type":"text","referenceAnswer":"須先區分兩個命題：\n（甲）描述命題 —— 不同社會的道德規範在事實上有所不同。\n（乙）規範命題 —— 因此不存在可據以評價的對錯標準。\n（甲）大致可由人類學觀察支持，（乙）則是另一層次的主張。該說的核心問題，正在於由（甲）直接推出（乙）。\n問題一：由事實推出規範，屬不當推論。\n人們對一件事意見分歧，並不等於該事沒有答案。歷史上對疾病成因、地球形狀亦曾眾說紛紜，但無人據此斷言「疾病成因沒有事實可言」。分歧只顯示認識未一致，不足以證明對象不存在。\n問題二：差異的程度被誇大。\n細看各社會的規範，差異往往在於【如何實現】而非【是否重視】。禁止無故殺害同群成員、要求信守承諾、反對忘恩負義，在各社會中普遍存在；差異多來自對「誰算同群」「何謂無故」的界定不同。若把共同點一併算作差異，該說所依據的前提本身已被誇大。\n問題三：此說在實踐上自相矛盾。\n主張「沒有對錯」者，通常同時主張「應當尊重各地文化」「不應以自身標準評判他人」。但「應當尊重」本身就是一項跨文化的規範主張。若真的沒有對錯，此一主張亦無約束力；若它有約束力，則「沒有對錯」不成立。\n問題四：該說令改革無從談起。\n若道德等同現行習俗，則凡是改變現行習俗者，按定義皆屬錯誤。歷史上廢除奴隸制、擴大參政權等變革，在其社會當時皆屬違反習俗之舉。該說的結論是這些變革在道德上不可能是進步，而這與大多數持此說者自身的判斷相違。\n結論：文化差異是真實的，並且提醒人不可輕率把本地慣例當成普遍真理 —— 此一警惕有其價值。但由差異推出「沒有對錯」，跨越了描述與規範之間的界線。較穩妥的立場是：道德判斷可以有對錯，而我們對它的認識受處境限制，因此須保持審慎與可修正的態度。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "ethics-religious";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "ethics-religious-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "ethics-religious-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

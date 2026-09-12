@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "source": "pe-written-b4.json",
+    "subject": "pe",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "pe_w4_01": "pending",
+    "pe_w4_02": "pending",
+    "pe_w4_03": "pending",
+    "pe_w4_04": "pending",
+    "pe_w4_05": "pending",
+    "pe_w4_06": "pending",
+    "pe_w4_07": "pending",
+    "pe_w4_08": "pending"
+  }
+}

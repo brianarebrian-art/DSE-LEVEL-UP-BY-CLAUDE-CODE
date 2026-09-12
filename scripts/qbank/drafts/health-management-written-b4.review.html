@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · health-management · health-management-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">health-management</span></h1>
+<div class="sub">來源 health-management-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"hm_w4_01","topic":"健康概念","difficulty":"basic","question":"有人把健康理解為「沒有疾病」。試指出此一理解的兩項不足。","explanation":"答案須指出該定義所遺漏的範疇，並說明遺漏會帶來何種後果。只答「健康不只是身體」而無說明者，內容過於籠統。","type":"text","referenceAnswer":"不足一：忽略心理與社交層面。\n一個沒有任何確診疾病的人，可能長期焦慮、孤立、缺乏支援，其生活質素明顯受損。若以「沒有疾病」為準，此人會被歸類為健康，因而得不到任何支援。這一遺漏在精神健康與長者照顧方面影響尤大。\n不足二：把健康視為非有即無的狀態，忽略程度差異。\n「有病／沒病」是二分判斷，但實際上健康呈連續的光譜：同樣沒有確診疾病的兩個人，體能、抵抗力、日常活動能力可以相差甚遠。以二分法理解健康，便無從評估改善的空間，健康促進工作亦失去目標。\n（其他可接受的不足：忽略帶病仍可維持良好生活質素的情況，例如長期病患者在妥善管理下仍可如常工作生活；忽略影響健康的環境與社會條件。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_02","topic":"三級預防分類","difficulty":"basic","question":"試分別為一級、二級及三級預防各舉一個例子，並說明三者針對疾病進程的哪一階段。","explanation":"本題最常見的失分是把「篩查」誤歸一級預防。判別準則在於：疾病是否已經開始。一級在疾病出現之前，二級在已出現而未有症狀或早期，三級在已確診之後。","type":"text","referenceAnswer":"一級預防：疾病尚未發生，目的是減少發病。\n例子：為兒童接種疫苗；在學校推行禁煙教育；改善工作場所通風以減少職業性呼吸系統疾病。此階段針對的是【風險因素】，作用於疾病出現之前。\n二級預防：疾病已經開始，但尚未出現明顯症狀，目的是及早發現及早治療。\n例子：為指定年齡群組提供大腸癌篩查；定期量度血壓以發現未察覺的高血壓。此階段針對的是【早期階段】，作用在於縮短由發病至治療的時間，改善預後。\n三級預防：疾病已確診，目的是減少併發症與失能，並維持生活質素。\n例子：中風後的康復訓練；為糖尿病患者提供足部護理以預防潰瘍與截肢。此階段針對的是【已確立的疾病】，目標不是治癒，而是限制其影響。\n三者關係：層級愈前，成本通常愈低而受惠人數愈多；但三級預防同樣不可或缺，因為疾病一旦發生，其後果可以透過妥善管理而大幅減輕。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_03","topic":"人生發展","difficulty":"intermediate","question":"長者由居家生活轉入安老院舍，是一項重大的生活轉變。試分析此一轉變可能帶來的兩類影響，並說明照顧者可以如何協助適應。","explanation":"答案須兼顧正面與負面，只列負面影響者未達「兩類」的要求。協助方式須具體可行，並且對應所指出的影響，而非泛談「多關心」。","type":"text","referenceAnswer":"影響一（負面）：自主感與身分感受損。\n入住院舍後，起居時間、膳食內容、房間佈置多由院舍安排，長者原本可自行決定的事情大幅減少。同時離開居住多年的社區，日常會面的鄰里與商戶不再出現，過往由環境所支撐的身分感亦隨之削弱。此類轉變可引致情緒低落、退縮，甚至加速認知功能衰退。\n影響二（正面）：照顧與社交支援增加。\n院舍提供二十四小時的照顧與應急支援，對獨居而跌倒風險高的長者而言，安全感明顯提升。規律的作息、定時的膳食與服藥，有助長期病患的管理；院舍內的群體活動亦可減少獨居所帶來的孤立。\n照顧者可以如何協助：\n其一，在可行範圍內保留選擇權。例如讓長者自行決定起床時間、選擇膳食、安排房內物品的擺放。選擇的內容未必重大，但「仍然由我決定」這一感受，正是對抗自主感受損的關鍵。\n其二，協助保留連續性。把長者原有的照片、被鋪、慣用物件帶入院舍；維持原有的作息習慣；安排舊鄰居或教友探訪。連續性令轉變不致成為與過去的斷裂。\n其三，分階段適應。入住前先行參觀、短期試住，讓長者對環境有預期；入住初期加密探訪，其後逐步調整。\n其四，讓長者參與決定本身。在身體與認知狀況許可下，把入住與否、選擇哪一所院舍的討論讓長者參與，而非事後通知。被動接受安排與自行參與決定，對其後的適應影響甚大。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_04","topic":"促進健康","difficulty":"intermediate","question":"一項推廣運動的健康計劃，只以單張與海報向市民宣傳「多做運動」，成效有限。試解釋此類做法成效不彰的原因，並提出兩項可提升成效的方向。","explanation":"本題的關鍵在於區分「知識不足」與「行為障礙」。單張只能處理前者，但多數人並非不知道運動有益。答案若不指出此一錯配，即未觸及核心。","type":"text","referenceAnswer":"成效不彰的原因：\n其一，錯配問題所在。單張與海報所提供的是資訊，其前提是市民【不知道】運動有益。但實際上多數人已經知道，真正的障礙在於時間不足、費用、場地不便、缺乏同伴、或過往失敗經驗所帶來的挫敗感。以資訊回應非資訊性的障礙，自然效果有限。\n其二，訊息過於籠統，難以轉化為行動。「多做運動」沒有指明做甚麼、多久一次、從何開始，接收者即使有意願，亦不知下一步。\n其三，單向傳遞，沒有支援與跟進。行為改變通常需要初期的引導、階段性的回饋與持續的提醒，而單張只出現一次。\n其四，未考慮不同群體的處境。長者、體力勞動者、輪班工作者所面對的障礙各異，同一份單張難以同時適用。\n提升成效的方向：\n方向一：由改變資訊轉為改變環境與機會。\n例如在社區增設免費健身設施、延長公園開放時間、在屋苑安排定期的集體運動班、與僱主合作提供工間伸展時段。此舉直接移除障礙，而不要求市民先行克服障礙。環境措施的另一優點是覆蓋面廣，且不需依賴個人持續的意志。\n方向二：把訊息具體化並提供支援與回饋。\n以「每星期三次、每次三十分鐘快步行」取代「多做運動」；提供起步計劃、記錄工具與同伴配對；設立可觀察的短期目標並給予回饋。具體、可量度、有支援的目標，比一般性呼籲更易轉化為持續行為。\n（其他可接受的方向：針對特定群體設計內容；與地區組織合作，借助既有的社交網絡推動。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_05","topic":"公共衞生與疾病預防","difficulty":"intermediate","question":"個人衞生習慣與公共衞生措施同樣影響傳染病的傳播。試說明兩者的分工，並指出為何只依賴其中一方並不足夠。","explanation":"本題須指出兩者作用於傳播鏈的不同環節，而非只列舉例子。第二部分須各自說明其局限，只講一方者未完成題目。","type":"text","referenceAnswer":"分工：\n個人衞生習慣作用於【個體與病原體接觸】這一環節，包括洗手、佩戴口罩、不共用餐具、患病時留在家中。其特點是即時、成本低，並且由個人自行控制。\n公共衞生措施作用於【傳播的結構性條件】，包括食水與污水處理、食物安全監管、疫苗接種計劃、疫情監測與通報、醫療系統的隔離與治療能力，以及通風與環境衞生的規管。其特點是覆蓋整體人口，並且不依賴個人逐一配合。\n為何只靠個人衞生不足夠：\n其一，部分傳播途徑非個人所能控制。食水受污染、街市衞生欠佳、公共場所通風不良，個人無論如何注意，亦難以完全避免接觸。\n其二，個人行為的依從度不可能達到百分之百。教育程度、工作條件、居住環境皆會影響實踐能力；獨居長者、輪班工人、居住空間狹窄者，即使有意願亦未必做得到。\n其三，部分疾病須達到相當高的群體免疫水平方能阻斷傳播，而這只能透過有組織的疫苗接種計劃達成。\n為何只靠公共衞生措施亦不足夠：\n其一，措施的效果最終須經個人行為落實。疫苗須有人接種，口罩須有人佩戴，隔離指引須有人遵從。依從度偏低會令措施的實際效果遠低於設計。\n其二，公共措施的反應存在時間差。由發現異常、確認病原、到部署應對，需時數日至數週；在此期間，個人衞生習慣是唯一可即時發揮作用的防線。\n其三，資源有限，公共措施須有優先次序，難以覆蓋所有場景。\n結論：兩者並非替代關係，而是作用於傳播鏈不同環節的互補措施。任何一方缺失，另一方的效果都會被顯著削弱。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_06","topic":"照顧技巧","difficulty":"intermediate","question":"協助行動不便的長者由床邊轉移至輪椅時，照顧者須注意哪些要點？試從長者安全與照顧者自身兩方面說明。","explanation":"本題須兩面兼顧。只講長者安全而不談照顧者腰背保護者，未完成題目 —— 照顧者受傷是長期照顧中的實際問題，亦會令長者失去照顧者。答案宜按轉移前、轉移中、轉移後的次序組織。","type":"text","referenceAnswer":"轉移前的準備：\n其一，向長者說明將要進行的動作，取得同意並邀請其在能力範圍內配合。事先說明可減少突然被移動所引起的驚慌與抗拒。\n其二，檢查輪椅：置於長者較有力一側，與床邊成約三十至四十五度角，鎖上兩邊手掣，移開或翻起腳踏。此步驟若省略，輪椅在受力時滑開，是常見的跌倒成因。\n其三，確認長者已穿上防滑鞋，衣物不會絆腳；床邊高度調校至長者雙腳能平放地面。\n其四，評估自己能否獨力完成。若長者體重較重或完全不能承重，應改用兩人協助或使用移位機，不可勉強。\n轉移過程中（長者安全）：\n先協助長者坐於床邊，雙腳平放地面，靜坐片刻讓血壓適應，以免體位性低血壓引致暈眩。照顧者站於長者前方，雙膝輕抵其膝以防滑前，雙手扶托其腰背或使用移位腰帶，切勿拉扯長者的手臂或腋下 —— 此舉容易造成肩關節脫位或皮膚撕裂。指示長者身體前傾、借力站起，再以小步轉向，坐下時確認臀部已對準座位。\n轉移過程中（照顧者自身）：\n雙腳前後分開站穩，擴大支撐面；屈膝屈髖而非彎腰，以大腿肌肉發力；保持長者靠近自己的身體，重物離身體愈遠，腰椎所受的力矩愈大；全程避免腰部扭轉，須改變方向時應移動雙腳而非扭腰。動作宜緩慢並與長者的節奏一致，切忌突然發力。\n轉移後：\n確認長者坐姿端正、背部貼靠椅背、雙腳平放腳踏；放下腳踏並解除手掣前先確認長者已坐穩；觀察面色與神志，詢問有無不適。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_07","topic":"醫療與社會照顧系統","difficulty":"hard","question":"有意見主張把資源由醫院服務轉向基層醫療，以應對人口老化。試分析此一主張的理據，並指出推行時可能遇到的兩項困難。","explanation":"本題須先交代理據，再處理困難，兩部分皆須具體。困難不宜只答「錢不夠」—— 資源轉移本身正是為了處理資源問題；宜從轉型期的雙重負擔、人手、以及市民使用習慣入手。","type":"text","referenceAnswer":"理據：\n其一，人口老化所帶來的主要負擔是長期病，而非急性疾病。高血壓、糖尿病、慢阻肺病等須長期管理，管理得宜可大幅減少急性惡化與住院。基層醫療正是提供持續管理的層級。\n其二，成本效益。一次住院的成本遠高於多次門診跟進。若能透過基層醫療及早介入，避免病情惡化至需要入院，同一筆資源可服務更多人。\n其三，及早識別。定期接觸使醫護人員得以在症狀輕微時發現問題，治療較簡單、預後較佳。\n其四，減輕醫院擠塞。急症室與內科病房的壓力，有相當部分來自本可在社區處理的情況。\n困難一：轉型期須同時支撐兩個系統，形成雙重負擔。\n基層醫療的效果須時方能顯現 —— 今日加強管理，減少住院要待數年後。但期間醫院的需求不會即時下降，現有病人仍須治療。即是說，資源須在一段時間內同時投入兩邊，而非單純由一方轉往另一方。若在效果顯現之前削減醫院資源，服務會出現缺口。\n困難二：基層醫療的人手與吸引力不足。\n擴充基層醫療須有足夠的家庭醫生、社區護士、專職醫療人員，而培訓需時多年。同時，專科在職業聲望、收入與發展階梯上往往較具吸引力，人才流向難以單靠政策文件改變。人手不足會令服務質素下降，市民的信心隨之減弱。\n（其他可接受的困難：市民習慣直接求診專科或急症室，改變使用習慣需時；不同服務提供者之間的資料互通與轉介機制不完善，令持續管理難以落實；基層醫療的成效指標不易量度，難以向公眾與財政部門證明其價值。）\n補充：上述困難並不否定該主張的方向，而是指出其為一項需要長期投入與過渡安排的改革，不可期望短期見效。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hm_w4_08","topic":"整全健康・概念應用","difficulty":"hard","question":"一名長期病患者的化驗指標長期維持正常，但自覺生活質素不佳。試以整全健康的角度分析此一情況，並說明照顧計劃應如何調整。","explanation":"本題的核心在於指出「指標正常」與「生活質素良好」並非同一回事，兩者可以分離。答案須具體指出分離的可能來源，並就每一項提出對應的調整，而非泛談「要關心心理健康」。","type":"text","referenceAnswer":"分析：\n化驗指標量度的是疾病在生理層面的控制情況，而生活質素量度的是患者實際的生活經驗。兩者可以分離，原因可能有以下數項。\n其一，治療方案本身帶來負擔。頻繁的服藥時間、飲食限制、定期覆診、注射或監測程序，會佔用大量時間並限制日常安排。指標正常，正可能是以嚴格依從換來的，而依從本身就是代價。\n其二，藥物副作用未被納入評估。疲倦、體重變化、睡眠受擾、情緒波動等，通常不會反映在化驗單上，但直接影響日常生活。\n其三，心理與社交層面受影響。長期病帶來對未來的不確定感、對成為家人負擔的憂慮；飲食限制令社交聚會變得困難，患者可能逐漸減少外出，形成孤立。\n其四，角色與身分的轉變。因病而減少工作、放棄原有興趣或家庭角色，會削弱自我價值感，而此項與指標完全無關。\n照顧計劃的調整：\n其一，評估工具須擴闊。除化驗指標外，加入生活質素、情緒狀態、睡眠、疲倦程度與社交參與的定期評估，並記錄患者自述。若只量度可化驗的項目，上述問題永遠不會進入計劃之內。\n其二，與患者共同檢視治療方案的可負擔程度。在醫學安全的範圍內，探討能否簡化服藥次數、放寬非關鍵的限制、或調整覆診頻率。此處須明確：調整的是【負擔】而非【治療目標】，不可為求方便而犧牲病情控制。\n其三，處理副作用。把副作用視為須主動查問的項目，而非等患者投訴；必要時與醫生商討換藥或劑量調整。\n其四，加入心理與社交支援。包括同路人支援小組、個別輔導、以及協助患者在限制之下重建可行的社交與興趣安排，例如與家人共同調整聚餐方式，而非要求患者迴避。\n其五，重新確立目標。與患者共同訂立以生活功能為本的目標，例如「能夠參加孫兒的畢業禮」，而非只以指標為目標。此舉令治療與患者所重視的事情連上關係，依從度亦通常隨之提升。\n結論：本個案顯示，以單一維度的指標評估照顧成效並不足夠。指標正常是必要而非充分的條件；整全健康要求同時關注生理、心理、社交與角色功能四方面，而照顧計劃的評估工具，必須涵蓋它所聲稱關心的範疇。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "health-management";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "health-management-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "health-management-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
