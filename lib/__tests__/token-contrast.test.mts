@@ -311,3 +311,68 @@ test('⑦ 危機熱線連結唔帶 alpha 變體', () => {
       `半透明會令對比跌穿 AA（實測 /80 = 4.38）。用實色 text-accent。`)
   }
 })
+
+// ── ⑧ 全站掃描：每一對同 className 內嘅（文字 token × 底色 token）都要過 AA ──
+// 測試 ② 鎖住嘅係我手揀嘅三張卡。手揀嘅問題係：揀得中就過，揀漏就冇人知，
+// 而目標書要求嘅係【所有卡片】—— 一個冇邊界嘅講法冇可能驗收。
+//
+// 本測試把佢變成可枚舉：掃 components/ 同 app/ 每一個 className 字串，
+// 凡係同一個字串入面【同時】有 text-<token> 同 bg-<token>，就當成一對，逐對驗。
+// 新加一張卡若果用咗未驗過嘅配搭，即刻紅 —— 唔使有人記得去加入名單。
+//
+// 2026-09-12 加入時實測 13 對，全部過（最低 accent|surface-sunken 暗色 4.53），
+// 所以對當時嘅 build 零影響（憲章 §6）。
+//
+// ⚠️ 覆蓋邊界（要講清楚，唔好當成全覆蓋）：
+//   捉到　：同一個 className 內嘅配搭
+//   捉唔到：父容器出底色、子元素出文字（要跑瀏覽器先知，而 $0 約束下冇驅動）
+//   捉唔到：寫死嘅色值（bg-[rgba(...)]）—— 嗰類由測試 ⑥ 另外守
+//   捉唔到：alpha 變體（text-accent/80）編譯成 oklab 之後嘅實際值 —— 由測試 ⑦ 守熱線嗰處
+// 三條測試合埋先算一個防線，冇一條單獨足夠。
+const SURFACES_ALL = ['surface', 'surface-raised', 'surface-sunken', 'accent-strong', 'accent-hover'] as const
+const INKS_ALL = ['ink', 'ink-soft', 'ink-muted', 'ink-faint', 'accent', 'on-accent'] as const
+
+test('⑧ 全站同 className 內嘅 token 配搭全部過 AA', () => {
+  const found = new Map<string, Set<string>>()
+  const walk = (d: string) => {
+    for (const e of readdirSync(join(ROOT, d))) {
+      const rel = `${d}/${e}`
+      if (statSync(join(ROOT, rel)).isDirectory()) {
+        if (!/node_modules|__tests__|\.next/.test(rel)) walk(rel)
+      } else if (rel.endsWith('.tsx')) {
+        const src = readFileSync(join(ROOT, rel), 'utf8')
+        for (const m of src.matchAll(/["'`]([^"'`\n]*(?:bg-|text-)[^"'`\n]*)["'`]/g)) {
+          const cls = m[1]
+          const bgs = SURFACES_ALL.filter((s) => new RegExp(`(^|\\s|:)bg-${s}(\\s|$)`).test(cls))
+          const inks = INKS_ALL.filter((s) => new RegExp(`(^|\\s|:)text-${s}(\\s|$)`).test(cls))
+          for (const b of bgs) for (const i of inks) {
+            const k = `${i}|${b}`
+            if (!found.has(k)) found.set(k, new Set())
+            found.get(k)!.add(rel)
+          }
+        }
+      }
+    }
+  }
+  walk('components'); walk('app')
+
+  const fails: string[] = []
+  for (const [k, files] of found) {
+    const [ink, bg] = k.split('|')
+    for (const [theme, raw] of [['light', LIGHT_RAW], ['cyber', CYBER_RAW]] as const) {
+      // ink-faint 只准做裝飾／停用態（測試 ⑤ 守住用法），故此處按非文字 3:1 判。
+      const floor = ink === 'ink-faint' ? 3.0 : 4.5
+      const r = contrast(tok(raw, ink), tok(raw, bg))
+      if (r < floor) fails.push(`${theme} · ${k} = ${r}（要 ≥ ${floor}）· 例：${[...files][0]}`)
+    }
+  }
+  assert.deepEqual(fails, [],
+    `以下 token 配搭跌穿 AA：\n${fails.join('\n')}\n` +
+    `修法：換一個對比足夠嘅 token，唔好加豁免 —— 呢啲配搭係學生實際睇緊嘅。`)
+
+  // 反向：配搭數目跌到 0 代表掃描器壞咗（例如 className 寫法變咗而正則跟唔上），
+  // 而壞咗嘅掃描器係會靜靜哋「全部通過」嘅。
+  assert.ok(found.size >= 10,
+    `只掃到 ${found.size} 對 token 配搭，遠少於 2026-09-12 實測嘅 13 對 —— ` +
+    `多數係掃描器跟唔上 className 寫法嘅變化，而唔係真係少咗配搭。先修掃描器。`)
+})
