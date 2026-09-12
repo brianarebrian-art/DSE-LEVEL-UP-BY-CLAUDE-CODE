@@ -19,6 +19,25 @@
 // 呢個閘只掃【明確會爆】嘅寫法，唔做啟發式猜測 —— 一個成日誤報嘅閘，
 // 三個星期之後就會有人加 `--no-verify` 繞過佢。
 
+// ══ 人手實機驗收嘅兩個陷阱（2026-09-12 實測，兩邊都中過）══
+//
+// 上面講咗 `scrollWidth === innerWidth` 會【漏報】。反方向一樣會出事：
+// 改為逐個元素同 `visualViewport.width` 比，就會【誤報】。
+//
+// 成因：visualViewport.width 唔計垂直捲動條（375），而 position:fixed 嘅元素
+// 以 innerWidth 為準（383）。差嗰 8px 就係捲動條。結果係頂欄、底欄同佢哋
+// 入面【所有】子元素，喺任何夠長要捲嘅頁都會被判成爆版。
+// 實測 /exam-day 報 5 個「爆版」、scrollWidth 383 —— 但捲到 x=100 之後
+// scrollX 仍然係 0，即係根本冇嘢捲得郁。
+//
+// 地面真相只有一個：實際捲一下。
+//   const x0 = scrollX; scrollTo(200, scrollY); const moved = scrollX; scrollTo(x0, scrollY);
+//   moved > 0 先至係真嘅橫向爆版。
+//
+// 第二個陷阱同顏色有關，順帶記低：喺 SPA 導航之後即刻切 data-theme 再量，
+// getComputedStyle 會攞到過期值。實測曾經因此報「footer 連結對比 2.97」，
+// 而整頁重載之後同一個元素係 6.80。切主題要靠 localStorage + 整頁重載。
+
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
