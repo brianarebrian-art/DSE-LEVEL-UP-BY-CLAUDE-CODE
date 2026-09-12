@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · music · music-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">music</span></h1>
+<div class="sub">來源 music-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"mus_w4_01","topic":"音樂元素","difficulty":"basic","question":"試分辨「力度」與「音色」，並各舉一例說明作曲家如何運用它們製造對比。","explanation":"兩個概念容易混淆，因為兩者皆影響聽感。答案須指出力度關乎聲音的強弱，音色關乎聲音的性質；同一件樂器可以改變力度而音色大致不變，不同樂器則在同一力度下音色迥異。","type":"text","referenceAnswer":"力度：指聲音的強弱程度，以弱、中弱、中強、強等標示。改變力度即改變音量，而發聲體不變。\n音色：指聲音的性質或「顏色」，由泛音的組成與包絡所決定。同一個音高、同一個力度，由長笛與雙簧管奏出，聽起來截然不同，分別即在音色。\n運用力度製造對比的例子：一段樂句以強奏呈示，隨即以弱奏重複同一材料，形成回聲效果。聽眾聽到的是同樣的旋律，但距離感與情緒隨力度而改變，樂句因而產生層次，而不需增添任何新材料。\n運用音色製造對比的例子：同一主題先由弦樂群奏出，其後交予銅管奏出。音高與節奏完全相同，但弦樂較為柔和連貫，銅管明亮而具穿透力，聽眾即感到情緒由內斂轉為宣告。作曲家藉此標示樂曲進入新的段落，或表示同一意念的性質已經改變。\n補充：兩者常同時運用 —— 由弱奏的弦樂轉為強奏的銅管，對比最為顯著。分析時須留意分辨哪一項才是造成效果的主因。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_02","topic":"樂器與合奏","difficulty":"basic","question":"弦樂四重奏由兩支小提琴、一支中提琴與一支大提琴組成。試說明此一組合在音域與音色上的特點，並指出它與鋼琴獨奏在表現上的一項主要分別。","explanation":"答案須指出四件樂器同屬一族，音色同質而音域互補，故融合度高。與鋼琴比較時，宜落在「持續音與力度變化」之上，而非只說「樂器數目不同」。","type":"text","referenceAnswer":"音域特點：四件樂器合起來覆蓋由低音至高音的寬廣音域。大提琴提供低音基礎，中提琴填補中音，兩支小提琴負責中高音與旋律。各聲部音域彼此銜接而略有重疊，故和聲可以寫得緊密，聲部之間亦可自由交錯。\n音色特點：四件樂器同屬弓弦樂器族，發聲原理相同，泛音結構相近，因而融合度極高。合奏時可以聽成一個整體，亦可以清楚分辨四條獨立的線條，此一特性令四重奏既適合寫緊密的和聲，亦適合寫對位。\n與鋼琴獨奏的主要分別：對單一音的持續控制能力。\n弓弦樂器以弓擦弦發聲，只要運弓不停，聲音便可持續，並且可以在發音之後改變力度 —— 由弱漸強、由強漸弱、加入揉弦改變色彩。鋼琴的音則在擊弦一刻已經定型，其後只會自然衰減，演奏者無法在音已發出之後令它變強。\n此一分別直接影響兩者的寫作方式：四重奏適合寫長線條的歌唱旋律與逐漸增長的張力；鋼琴則以觸鍵層次、踏板、以及一人同時控制多個聲部的能力見長。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_03","topic":"曲式與結構","difficulty":"intermediate","question":"三段體（ABA）是常見的曲式。試說明中段（B）通常如何與首尾兩段形成對比，並解釋再現首段的作用。","explanation":"答案須具體列出製造對比的手段，不可只說「中段不同」。再現的作用須指出其心理效果 —— 聽眾帶著中段的經驗回到熟悉的材料，感受已不相同。","type":"text","referenceAnswer":"中段製造對比的常見手段：\n其一，調性。中段多轉往關係調 —— 若首段為大調，中段常轉至關係小調或屬調；調性一變，情緒色彩隨之改變。\n其二，主題材料。中段引入新的旋律，或把首段材料作大幅變形，使聽眾察覺已進入不同的區域。\n其三，織體與配器。例如首段為齊奏的主調織體，中段轉為對位或減少樂器，聲音密度改變。\n其四，節奏與速度。中段可採用不同的節奏型、拍子或速度，造成動靜之別。\n其五，力度。首段強而中段弱（或相反），是最直接的對比手段。\n再現首段的作用：\n其一，結構上的平衡與完整。三段體兩端對稱，聽眾在中段的偏離之後回到起點，全曲有明確的收束感，不致懸而未決。\n其二，確立主要材料的地位。同一材料出現兩次，聽眾記得更牢，該段落亦因重複而成為全曲的核心。\n其三，心理上的效果 —— 這一點最重要。再現的音符與首次出現時相同，但聽眾已不相同：他們經歷了中段的轉折，帶著這段經驗回到熟悉的材料，於是同一段音樂聽起來或更安穩、或更帶懷念。作曲家往往在再現時加入裝飾、變奏或改變配器，正是為了呼應這一點 —— 表面是回歸，實際上並非原地踏步。\n補充：若再現完全不變，稱為原樣再現；若有所變化，則屬變化再現。後者在較長的作品中更為常見。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_04","topic":"中國音樂","difficulty":"intermediate","question":"中國傳統音樂常用五聲音階。試說明五聲音階的構成，並解釋為何以此音階寫成的旋律較少出現尖銳的不協和感。","explanation":"本題須指出五聲音階與七聲音階的分別在於缺少半音關係，此點正是不協和感較少的原因。只答「只有五個音」而不談音程結構者，未觸及核心。","type":"text","referenceAnswer":"構成：五聲音階由五個音組成，傳統稱為宮、商、角、徵、羽。若以 C 為宮，五個音即為 C、D、E、G、A。與七聲大調音階相比，五聲音階省去了第四級（F）與第七級（B）。\n為何較少尖銳的不協和感：\n關鍵在於音程結構。七聲大調音階之內存在兩組半音關係 —— 第三與第四級之間（E 與 F），以及第七與第八級之間（B 與 C）。半音是最窄的音程，兩音同時響起時拍頻明顯，聽感緊張；而第七級（B）與第四級（F）之間更構成三全音，是傳統和聲中公認最不穩定的音程。\n五聲音階恰好把這兩個音省去，於是音階之內任何兩音之間最小的音程為全音，既無半音亦無三全音。旋律無論如何跳進或級進，或多個音同時響起，皆不會產生上述兩種最尖銳的組合。此即五聲音階聽起來平和、易於入耳的結構性原因。\n附帶的特性：\n其一，由於缺少導音（第七級），旋律不會產生強烈的「必須解決到主音」的傾向，故調性的引力較弱，旋律可以較自由地遊走，亦較容易在不同的音上作結。\n其二，同一組五個音可以有五種不同的起始音，形成五個調式（宮、商、角、徵、羽調式），各具色彩，而不需增加任何新的音。\n其三，此一特性令五聲旋律容易與不同的和聲配搭，亦是它在現代改編中仍然通用的原因之一。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_05","topic":"西方音樂史","difficulty":"intermediate","question":"由巴洛克時期到古典時期，音樂織體出現明顯轉變。試說明此一轉變的內容，並指出其與當時聽眾群改變的關係。","explanation":"本題須把技術特徵與社會條件連繫起來。只描述「由複調變主調」而不觸及聽眾群，屬答了一半；反之只談社會背景而不說明織體，同樣不完整。","type":"text","referenceAnswer":"轉變的內容：\n巴洛克時期以複調織體為主。多條旋律線同時進行，各自獨立而彼此交織，賦格是其典型；聽眾須同時追蹤數條線條，方能領會作品的精妙。\n古典時期則轉向主調織體。一條清晰的主要旋律居於上方，其餘聲部提供和聲伴奏，主次分明。樂句劃分亦趨向規整，常見兩小節、四小節、八小節的對稱結構，並以明確的終止式標示句讀。\n與聽眾群改變的關係：\n巴洛克時期的音樂主要服務於教會與宮廷。聽眾人數有限，且多具備相當的音樂訓練，能夠欣賞對位技巧本身；作品亦常為特定場合而作，聽眾對曲目較為熟悉。\n古典時期，公開音樂會逐步興起，中產階層成為重要的聽眾與樂譜購買者。這批聽眾人數大增，但音樂訓練程度參差，且多為首次聆聽該作品。在此條件下，複雜的對位難以在一次聆聽之中被理解，而一條清晰可記的旋律配上規整的樂句結構，則能讓不同背景的聽眾即時跟上。\n此外，家庭音樂活動興盛，業餘者需要技術上可以應付的樂譜，主調織體亦較易演奏與改編。出版商為銷路計，傾向出版此類作品，進一步強化了這一方向。\n須留意的分寸：此一轉變是重心的移動，並非複調技巧的消失。古典時期的作曲家仍然運用對位，尤其在發展部與終曲，只是把它作為主調框架之內的手段，而非全曲的組織原則。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_06","topic":"樂理・音程與調號","difficulty":"intermediate","question":"試說明如何由調號判斷一首樂曲屬大調抑或其關係小調，並指出單憑調號不足以確定的原因。","explanation":"本題的核心在於：關係大小調共用同一調號，故調號只能縮窄至兩個可能，不能確定。答案須提出實際可用的判別方法，例如升記號與終止音。","type":"text","referenceAnswer":"調號所能提供的資訊：\n每一個調號對應一組大調與其關係小調。例如一個升號（升 F）對應 G 大調與 E 小調；兩個降號（降 B、降 E）對應降 B 大調與 G 小調。關係小調的主音位於大調主音下方小三度。因此，見到調號只能把可能收窄至兩個，無法直接判定。\n單憑調號不足以確定的原因：\n關係大小調的調號完全相同，兩者所用的七個音亦相同，分別只在於以哪一個音為中心。調號記錄的是升降記號，並不記錄中心音，故此一資訊本身無法區分。\n實際的判別方法：\n其一，查看樂曲中有否出現規律性的臨時升記號。小調通常使用和聲小調或旋律小調，第七級須升高半音以構成導音。若一首調號為一個升號的樂曲，頻繁出現升 D，即強烈提示為 E 小調而非 G 大調。此為最可靠的線索。\n其二，觀察開首與結尾的音。樂曲的最後一個和弦，尤其是低音聲部的音，絕大多數為主音。若結束於 E，多為 E 小調；結束於 G，多為 G 大調。\n其三，留意開頭數小節所強調的和弦。主和弦通常在開首即被確立。\n其四，整體的調式色彩可作輔助參考，但不宜單獨依賴 —— 小調並非必然聽起來哀傷，大調亦可以寫得沉鬱。\n建議次序：先看調號縮窄範圍，再查臨時升記號，最後以首尾音驗證。三者一致時判斷最為可靠。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_07","topic":"和聲・和弦與曲式","difficulty":"hard","question":"終止式標示樂句的句讀。試比較完全終止與半終止在功能上的分別，並說明作曲家如何運用終止式的安排延長聽眾的期待。","explanation":"答案須指出兩種終止式所帶來的穩定程度不同，並以標點作比喻說明其句讀功能。第二部分是難點，須說明延遲解決如何製造期待，可援引偽終止。","type":"text","referenceAnswer":"完全終止：由屬和弦進行至主和弦（V–I）。屬和弦內含導音，具有強烈的解決傾向，進行至主和弦之後張力完全釋放，聽感穩定而完滿。其功能相當於句號 —— 標示一個完整樂句的結束，聽眾知道此處可以告一段落。\n半終止：樂句停在屬和弦（多為 I–V 或 IV–V）。屬和弦本身並不穩定，停在此處等於把張力懸置，聽感未完。其功能相當於逗號 —— 標示樂句暫告一段落，但語意未完，聽眾預期後面仍有下文。\n兩者的配合：常見的做法是把一個八小節的樂段分為兩個四小節樂句，前句以半終止收（提問），後句以完全終止收（回答）。此一「問答」結構令樂段既有內部的呼吸，又有整體的完結感。\n如何延長期待：\n手法一：連續使用半終止，推遲完全終止的出現。樂句一再停在屬和弦而不解決，聽眾的期待被反覆喚起卻未被滿足，張力隨每一次延遲而累積。\n手法二：使用偽終止（中斷終止）。屬和弦之後，聽眾預期進行至主和弦，作曲家卻進行至六級和弦。和聲確實移動了，張力卻未釋放，期待因而被「騙」一次。此一手法在樂曲的高潮前後尤為有效。\n手法三：延長屬和弦本身。在主和弦到來之前，先以持續的屬音（屬持續音）或反覆的屬和弦鋪陳數小節，愈是延長，其後主和弦到來時的釋放感愈強。\n手法四：在終止式上加入裝飾性的延遲，例如在主和弦到來前插入裝飾段落，把解決再推遲一步。\n共通原理：期待來自「已建立的模式」與「尚未兌現」之間的落差。作曲家先以重複建立聽眾對某一進行的預期，再延遲或改道，張力即由此產生。若從未建立預期，延遲亦不會被察覺 —— 故終止式的運用，必然建基於先前的規律。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"mus_w4_08","topic":"樂理與記譜","difficulty":"hard","question":"樂譜無法完整記錄一次演出的所有細節。試指出記譜法在哪三方面存在固有限制，並說明演奏者如何補足。","explanation":"本題屬概念反思，答案須指出限制的【性質】，即為何這些內容原則上難以寫入樂譜，而非只說「樂譜寫得不夠詳細」。補足部分須說明依據，否則會流於「隨意發揮」。","type":"text","referenceAnswer":"限制一：時間標記只能給出近似值。\n速度術語（例如「快板」）指示的是一個範圍而非確切數值；即使標明每分鐘的拍數，實際演奏亦不會機械地平均 —— 樂句的呼吸、漸慢、微小的伸縮，皆是音樂表達的一部分，而這些彈性無法逐一寫出。若真要逐拍標明，樂譜將繁瑣至不可讀，而且會把演奏者變成執行者。\n限制二：力度與音色的標示只有有限的層級。\n由最弱至最強，常用的標記不過六至八級，但實際演奏中可分辨的力度層次遠多於此。音色方面更缺乏系統的符號 —— 「溫暖」「明亮」「粗糙」等要求只能以文字提示，而文字的理解因人而異。同一個「強奏」，在室內樂與交響樂團中所指的音量並不相同。\n限制三：符號的意義隨時代與地域而變。\n同一個裝飾音記號，在不同時期的演奏慣例中有不同的奏法；巴洛克時期的許多細節依賴當時通行而未被寫下的慣例。樂譜記錄的是作曲家認為【不需要寫】之外的部分，而「不需要寫」的標準隨時代改變。後世的演奏者面對的，其實是一份預設了若干已失傳共識的文件。\n演奏者如何補足：\n其一，依據演奏傳統與歷史知識。研究該時期的演奏慣例、作曲家的其他作品、同時代的論述，以還原樂譜所預設而未寫出的部分。此一途徑使補足有所依據，而非憑空想像。\n其二，依據音樂本身的結構。樂句的走向、和聲的張力、曲式的位置，皆提示了何處應推進、何處應收束。一個走向高潮的樂句自然需要漸強，即使樂譜並無標記。\n其三，依據場地與樂器的實際條件。同一份樂譜在不同空間、不同樂器上須作調整，方能達到作曲家所要的效果。此一調整並非違反樂譜，而是實現其意圖的必要手段。\n其四，依據演奏者自身的理解與判斷。在上述各項容許的範圍之內，演奏者作出個人的選擇，這正是同一作品可以有多個各具價值的演繹的原因。\n結論：樂譜是一份不完整但有結構的指示，它界定了必須遵守的框架，同時留下必須由演奏者填補的空間。兩者缺一不可 —— 全無框架則作品失去身分，全無空間則演出失去生命。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "music";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "music-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "music-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
