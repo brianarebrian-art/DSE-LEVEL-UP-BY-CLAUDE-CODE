@@ -44,6 +44,8 @@ type Review = {
   where: string
   /** 到期時要答嘅問題 —— 唔係「做咗未」，係「憑咩決定」。 */
   question: string
+  /** 產生所需數據嘅指令。到期先揾工具係遲咗 —— 工具要喺絆線度講明。 */
+  tool: string
 }
 
 const REVIEWS: Review[] = [
@@ -54,6 +56,7 @@ const REVIEWS: Review[] = [
     question:
       '對返數：74% 嘅節冇做夠 20 題、中位數 15 —— 改成 10 之後呢兩個數變咗幾多？' +
       '目標係壓到 30%。唔啱就要改返，唔可以當個假設已證實。',
+    tool: 'npm run analytics:retention（§⓪ 漏斗 · §① 留存）',
   },
   {
     date: '2026-11-09',
@@ -62,6 +65,7 @@ const REVIEWS: Review[] = [
     question:
       '交逐週正確率 curve，對照剷鎖前基準（88.3%、5,565 題、484 節、中位 15 題）。' +
       '三個選項：復活個鎖、永久刪除、改個形態 —— 揀邊個都要寫低憑咩。',
+    tool: 'npm run analytics:retention（§② 逐週 curve · §③ 剷鎖前後對照）',
   },
 ]
 
@@ -80,6 +84,7 @@ test('憲章覆檢日到期時必須有裁決紀錄', () => {
       `\n  ⏰ ${r.date}（今日 ${todayHK}）：${r.what}\n` +
       `     出處：${r.where}\n` +
       `     要答：${r.question}\n` +
+      `     數據：${r.tool}\n` +
       `     做法：寫 ${recordPath(r.date)}，寫低決定同依據。\n` +
       `           保持現狀都係一個決定 —— 寫低就得，唔寫先係問題。`,
     )
