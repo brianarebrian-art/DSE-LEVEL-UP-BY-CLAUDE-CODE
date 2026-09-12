@@ -45,7 +45,7 @@ function Row({
         <span className="text-sm text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
           {now}
         </span>
-        <span className="text-[11px] text-ink-faint" style={{ fontVariantNumeric: 'tabular-nums' }}>
+        <span className="text-[11px] text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>
           ← {before}
         </span>
         <Delta now={now} before={before} />

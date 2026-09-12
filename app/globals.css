@@ -397,6 +397,41 @@
    `A B` 只食後代，掛喺 :root 自己嗰個要 `AB` 先食到。 */
 
 
+
+/* ── 深色覆蓋層 scope ────────────────────────────────────────────────────────
+   /relax/breathing 嘅全屏呼吸畫面刻意喺【兩個主題】都用近黑底
+   （bg-[rgba(10,10,15,0.96)]，一個令人靜落嚟嘅畫面），但層內嘅文字一直用緊
+   跟主題嘅語意 token。暗色主題下 token 本來就係淺色，所以一直睇落冇事；
+   淺色主題下就變成【深字疊深底】。
+
+   2026-09-12 實測（localhost:3001 /relax/breathing，data-theme=light）：
+   14 個文字元素入面 6 個跌穿 AA ——
+     · 「結束呼吸」掣　　　　　　　　1.64  ← 近乎隱形
+     · 三個模式掣　　　　　　　　　　3.12
+     · 模式描述　　　　　　　　　　　3.13
+     · 「如有呼吸系統疾病（如哮喘）…」3.13  ← 呢句係健康安全提示
+
+   最後嗰句最要緊：一個哮喘學生喺呼吸練習度，睇唔清嗰句講緊佢自己嘅提示，
+   就等於冇提示過。憲章 §16.D 記過同一類判例 —— 會改變學生安全行為嘅資訊
+   唔可以呈現得似有實無。
+
+   修法：喺覆蓋層局部重新定義語意 token 為暗色一套，一個 class 修好所有子元素，
+   唔使逐個元素改顏色（逐個改嘅話，下一個喺層內加元素嘅人又會再中一次）。
+   ⚠️ 呢個 scope 只適用於【自己畫咗深底、而且唔跟主題】嘅容器。
+   跟主題嘅容器一律唔可以用，否則暗色主題下會變成淺字疊淺底。 */
+.on-dark-overlay {
+  --color-ink: #F0E8DC;
+  --color-ink-soft: #C1BAB0;
+  --color-ink-muted: #A8A095;
+  --color-ink-faint: #6B6560;
+  --color-accent: #7A9E7E;
+  --color-accent-strong: #7A9E7E;
+  --color-on-accent: #1A1917;
+  --color-surface-sunken: #2F2E2C;
+  --color-line: rgba(232, 224, 212, 0.10);
+  --color-line-strong: rgba(232, 224, 212, 0.20);
+}
+
 body {
   background-color: var(--color-surface);
   color: var(--color-ink);

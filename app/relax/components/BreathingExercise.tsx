@@ -118,7 +118,7 @@ export default function BreathingExercise() {
   const expanded = phase === 'in' || phase === 'hold'
 
   return (
-    <div className="fixed inset-0 z-50 bg-[rgba(10,10,15,0.96)] flex flex-col items-center justify-center p-6">
+    <div className="on-dark-overlay fixed inset-0 z-50 bg-[rgba(10,10,15,0.96)] flex flex-col items-center justify-center p-6">
       {done ? (
         <div className="text-center max-w-xs">
           <div className="text-3xl mb-4" aria-hidden>🕊️</div>
@@ -189,7 +189,10 @@ export default function BreathingExercise() {
             🌬️ {en ? p_when(pattern, true) : p_when(pattern, false)}
             {reduced ? (en ? ' (animation off per your system setting)' : '（已按系統設定停用動畫）') : ''}
           </p>
-          <p className="text-xs text-ink-faint mb-8 text-center max-w-xs leading-relaxed">
+          {/* ⚠️ 呢句係健康安全提示，唔係裝飾 —— 一定唔可以用 ink-faint（2.91 / 2.70）。
+              一個哮喘學生喺呼吸練習度睇唔清嗰句講緊佢自己嘅提示，就等於冇提示過。
+              globals.css 明文：ink-faint 只准用於停用控件同 aria-hidden 裝飾。 */}
+          <p className="text-xs text-ink-muted mb-8 text-center max-w-xs leading-relaxed">
             {en
               ? 'If you have a respiratory condition (e.g. asthma), breathe naturally — don’t force deep breaths or hold.'
               : '如有呼吸系統疾病（如哮喘），請改為自然呼吸，唔好強迫深呼吸或屏息。'}
@@ -225,7 +228,7 @@ export default function BreathingExercise() {
             )}
           </div>
           {!speechOk && (
-            <p className="text-[11px] text-ink-faint mt-3">
+            <p className="text-[11px] text-ink-muted mt-3">
               {en ? 'This browser doesn’t support speech; text guidance is used.' : '此瀏覽器不支援語音，已用純文字引導。'}
             </p>
           )}
@@ -233,12 +236,15 @@ export default function BreathingExercise() {
       )}
 
       {/* 緊急熱線（Sarah — NON-NEGOTIABLE）：全屏 overlay 遮住 layout 橫幅，
-          所以喺 overlay 內再現一次，確保呼吸頁都「見到」 */}
+          所以喺 overlay 內再現一次，確保呼吸頁都「見到」
+          ⚠️ 2026-09-12：兩條電話本來帶 /80 透明度變體，喺淺色主題實測 4.38 —— 跌穿 AA 4.5。
+          「見到」唔可以只係喺 DOM 入面存在。alpha 已剷走。
+          呢兩條連結唔准再加透明度變體。 */}
       <p className="absolute bottom-4 left-4 right-4 text-center text-[11px] text-ink-muted leading-relaxed">
         {en ? 'Feeling overwhelmed? The Samaritans 24hr: ' : '覺得頂唔順？撒瑪利亞會 24hr：'}
-        <a href="tel:28960000" className="text-accent/80 underline underline-offset-2">2896 0000</a>
+        <a href="tel:28960000" className="text-accent underline underline-offset-2">2896 0000</a>
         {' · '}{en ? 'Suicide Prevention: ' : '生命熱線：'}
-        <a href="tel:23820000" className="text-accent/80 underline underline-offset-2">2382 0000</a>
+        <a href="tel:23820000" className="text-accent underline underline-offset-2">2382 0000</a>
         {' · '}{en ? 'In an emergency call 999' : '緊急請致電 999'}
       </p>
     </div>

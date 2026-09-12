@@ -27,7 +27,7 @@
 // ============================================================================
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 
 const ROOT = join(import.meta.dirname, '..', '..')
@@ -198,5 +198,116 @@ test('④ 兩張卡冇用 text-ink-faint 做文字', () => {
     assert.ok(!/[\s"'`]text-ink-faint[\s"'`]/.test(src),
       `${file} 用咗 text-ink-faint —— 佢喺兩個主題分別得 2.49 / 2.36，` +
       `只准用於停用控件同 aria-hidden 裝飾（見 globals.css）。`)
+  }
+})
+
+// ── ⑤ ink-faint 只准用於停用控件同 aria-hidden 裝飾 ─────────────────────────
+// globals.css 兩處都明文寫住呢條限制（light 2.49–2.91、cyber 2.36–2.70，
+// 全部遠低於 AA），但一直只係註釋，冇任何嘢執行緊。
+//
+// 2026-09-12 掃全站捉到四處真違規，全部係學生要讀嘅內容：
+//   · BreathingExercise 嘅哮喘安全提示 —— 一個哮喘學生喺呼吸練習度
+//     睇唔清嗰句講緊佢自己嘅提示，就等於冇提示過
+//   · PrivacyConsentGate 通往完整私隱政策嘅連結（Link 繼承 p 嘅顏色）
+//   · BreathingExercise 嘅語音回退說明
+//   · PersonalTimeline 嘅對照數字
+// 四處已改 ink-muted。
+//
+// 判斷準則：同一行有 `aria-hidden` 或 `disabled:` 即視為正當（裝飾／停用態）。
+// 其餘一律要喺下面嘅基線之內 —— 呢個係 _gate.mjs `SHAPE_BASELINE` 同一個做法：
+// 祖父清單之內嘅舊碼豁免，新碼一律要過。修法係改用 ink-muted，唔係加基線。
+const FAINT_BASELINE: Record<string, number> = {
+  // relax 嘅「未啟用狀態」切換 —— 語義上就係停用控件，屬 globals.css 准許範圍，
+  // 只係寫法上冇 `disabled:` 前綴（佢哋係三元運算而唔係 CSS variant）。
+  'app/relax/components/BreathingExercise.tsx': 1,
+  'app/relax/components/GroundingExercise.tsx': 1,
+  // 管理員內部工具，唔係學生介面。數字密集嘅表格用最淡一階係合理取捨，
+  // 但仍然計入基線，令佢只可以減唔可以加。
+  'components/admin/UserOverview.tsx': 16,
+}
+
+test('⑤ text-ink-faint 只用於裝飾／停用態，其餘不得超出基線', () => {
+  const found: Record<string, number> = {}
+  const offenders: string[] = []
+  const walk = (d: string) => {
+    for (const e of readdirSync(join(ROOT, d))) {
+      const rel = `${d}/${e}`
+      if (statSync(join(ROOT, rel)).isDirectory()) {
+        if (!/node_modules|__tests__|\.next/.test(rel)) walk(rel)
+      } else if (rel.endsWith('.tsx')) {
+        readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((ln, i) => {
+          if (!ln.includes('text-ink-faint')) return
+          if (/aria-hidden|disabled:/.test(ln)) return      // 裝飾／停用態，正當
+          found[rel] = (found[rel] ?? 0) + 1
+          if (!(rel in FAINT_BASELINE)) offenders.push(`${rel}:${i + 1}  ${ln.trim().slice(0, 70)}`)
+        })
+      }
+    }
+  }
+  walk('components'); walk('app')
+
+  assert.deepEqual(offenders, [],
+    `text-ink-faint 用咗喺唔係裝飾／停用態嘅地方（對比 2.36–2.91，遠低於 AA 4.5）：\n` +
+    `${offenders.join('\n')}\n` +
+    `修法：改用 text-ink-muted（4.98–6.80，兩個主題都過）。唔好加入基線。`)
+
+  for (const [f, cap] of Object.entries(FAINT_BASELINE)) {
+    assert.ok((found[f] ?? 0) <= cap,
+      `${f} 嘅 ink-faint 由 ${cap} 增至 ${found[f]} —— 基線只可以減，唔可以加。`)
+  }
+})
+
+// ── ⑥ 自己畫深底嘅覆蓋層必須 scope 語意 token ───────────────────────────────
+// /relax/breathing 嘅全屏呼吸畫面用 bg-[rgba(10,10,15,0.96)]，即係【兩個主題都深色】，
+// 但層內文字一直用跟主題嘅 ink token。暗色主題下 token 本來就淺，所以睇落冇事；
+// 淺色主題下就係深字疊深底。
+//
+// 2026-09-12 實測（localhost:3001，data-theme=light）：14 個文字元素 6 個跌穿 AA，
+// 最嚴重係「結束呼吸」掣 1.64、哮喘安全提示 3.13。
+// 加 .on-dark-overlay（globals.css 局部重新定義 token）之後，兩個主題皆 0 跌穿。
+//
+// 本測試守住呢一類：凡係 `fixed inset-0` 配寫死深色底嘅容器，都要帶 scope class。
+// 唔守嘅話，下一個做全屏覆蓋層嘅人會由零再中一次，而且【只會喺淺色主題出事】——
+// 開發時多數用暗色，所以肉眼發現唔到。
+test('⑥ fixed inset-0 嘅寫死深底覆蓋層必須帶 .on-dark-overlay', () => {
+  const bad: string[] = []
+  const walk = (d: string) => {
+    for (const e of readdirSync(join(ROOT, d))) {
+      const rel = `${d}/${e}`
+      if (statSync(join(ROOT, rel)).isDirectory()) {
+        if (!/node_modules|__tests__|\.next/.test(rel)) walk(rel)
+      } else if (rel.endsWith('.tsx')) {
+        readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((ln, i) => {
+          if (!/fixed\s+inset-0/.test(ln)) return
+          // 寫死嘅深底：bg-[rgba(…低亮度…)] 或 bg-[#0-3 開頭]
+          const dark = /bg-\[rgba?\(\s*([0-9]{1,2})\s*,/.test(ln) || /bg-\[#[0-3][0-9a-fA-F]/.test(ln)
+          if (!dark) return
+          if (!ln.includes('on-dark-overlay')) bad.push(`${rel}:${i + 1}  ${ln.trim().slice(0, 74)}`)
+        })
+      }
+    }
+  }
+  walk('components'); walk('app')
+  assert.deepEqual(bad, [],
+    `以下覆蓋層自己畫咗深底，但冇 scope 語意 token：\n${bad.join('\n')}\n` +
+    `淺色主題下層內文字會變成深字疊深底（實測低至 1.64）。` +
+    `修法：喺容器 className 加 on-dark-overlay。`)
+})
+
+// ── ⑦ 危機熱線連結唔准帶透明度變體 ──────────────────────────────────────────
+// 兩條熱線原本係 text-accent/80，喺深色覆蓋層上實測 4.38 —— 跌穿 AA 4.5。
+// 組件註釋自己寫住「NON-NEGOTIABLE」，但「見到」唔可以只係喺 DOM 入面存在。
+//
+// ⚠️ 呢個缺陷之前量唔到：Tailwind 嘅 alpha 變體（/80）會編譯成 oklab，
+// 而當時嘅量度只認 rgb()，所以【靜靜哋跳過晒所有半透明文字】——
+// 而嗰批正正最容易跌穿。改用 canvas 取樣先量得到。
+test('⑦ 危機熱線連結唔帶 alpha 變體', () => {
+  const src = readFileSync(join(ROOT, 'app/relax/components/BreathingExercise.tsx'), 'utf8')
+  for (const tel of ['tel:28960000', 'tel:23820000']) {
+    const line = src.split('\n').find((l) => l.includes(tel))
+    assert.ok(line, `揾唔到 ${tel} —— 熱線唔可以移除`)
+    assert.ok(!/text-\w+\/\d+/.test(line!),
+      `${tel} 嘅連結帶咗透明度變體：${line!.trim()}\n` +
+      `半透明會令對比跌穿 AA（實測 /80 = 4.38）。用實色 text-accent。`)
   }
 })
