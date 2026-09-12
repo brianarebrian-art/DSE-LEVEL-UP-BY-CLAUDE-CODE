@@ -31,7 +31,8 @@
     "analytics:hook-reach": "npx --yes tsx@4.19.2 scripts/analytics/hook-reach.mts",
     "analytics:retention": "npx --yes tsx@4.19.2 scripts/analytics/retention.mts",
     "qbank:accuracy-budget": "npx --yes tsx@4.19.2 scripts/qbank/accuracy-budget.mts",
-    "qbank:calibrate": "npx --yes tsx@4.19.2 scripts/qbank/calibrate-topic-difficulty.mts"
+    "qbank:calibrate": "npx --yes tsx@4.19.2 scripts/qbank/calibrate-topic-difficulty.mts",
+    "qbank:gap": "npx --yes tsx@4.19.2 scripts/qbank/gap-2027.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
