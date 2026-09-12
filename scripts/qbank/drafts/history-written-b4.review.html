@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · history · history-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">history</span></h1>
+<div class="sub">來源 history-written-b4.json · 共 10 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">10</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"hist_w4_01","topic":"極權主義興起","difficulty":"basic","question":"兩次大戰之間，歐洲多國出現極權政體。試指出極權政體在控制社會方面，與一般威權政體的兩項分別。","explanation":"本題考核概念界線，答案必須落在【控制的範圍與深度】之上，不可只答「更加獨裁」或「更加殘暴」，因為程度之別並非類型之別。學生常見失分在於只列舉暴行，而未指出極權政體所獨有的制度特徵。","type":"text","referenceAnswer":"分別一：控制範圍由政治領域擴展至私人生活。\n威權政體通常只要求人民不挑戰政權，對教育、藝術、家庭、閒暇並不積極干預。極權政體則設立官方青年組織、統一課程內容、審查文藝創作，務求人民的價值觀亦與政權一致。換言之，前者要求服從，後者要求信仰。\n分別二：以單一官方意識形態與群眾動員取代被動順從。\n極權政體必須有一套解釋歷史與未來的完整學說，並透過遊行、集會、廣播不斷動員群眾參與。威權政體多數只維持秩序，並不需要人民主動表態。\n（其他可接受的答案：極權政體設有滲透社會的秘密警察與告密網絡；以黨組織取代或吸納原有的公民團體。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_02","topic":"香港與東南亞","difficulty":"basic","question":"二十世紀中葉，香港與東南亞多個港口城市同樣以轉口貿易起家。試指出香港其後的發展路徑與其中一個東南亞港口城市有何不同，並說明造成差異的一項因素。","explanation":"本題要求比較，答案必須同時出現兩地，並明確指出分歧點，只描述香港一地不予給分。所舉因素須與該分歧有因果關係，不可泛稱「地理位置優越」，因為各港口城市同樣位處要衝。","type":"text","referenceAnswer":"分歧：香港於一九五零年代轉向出口製造業，而新加坡在獨立初期仍以轉口與煉油為主，其大規模工業化須待政府主導的工業區計劃推行之後。\n因素：韓戰引發的禁運令香港的轉口貿易一度中斷，本地資金與由內地南來的技術人員被迫轉投紡織、製衣等輕工業，形成一次被動而急速的產業轉型。新加坡並未同時受到同等規模的貿易衝擊，故其工業化來自其後的政策推動而非外部斷裂。\n（亦可比較馬尼拉或檳城，只要分歧點與因素之間有明確因果關係即可。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_03","topic":"史料判讀","difficulty":"basic","question":"一份於戰爭結束後三十年出版的回憶錄，作者為當時某國的前線指揮官。就研究該場戰役的決策過程而言，試指出此史料的一項價值與一項限制。","explanation":"本題常見失分是把「主觀」當成限制的全部理由。任何回憶錄都主觀，此點並不能區分史料優劣；答案須指出該主觀性【具體如何】影響對決策過程的判斷。價值一項亦須扣緊「決策過程」，不可泛答「提供第一手資料」。","type":"text","referenceAnswer":"價值：作者身處指揮層，能提供命令如何下達、情報如何傳遞、以及會議上曾考慮而最終放棄的方案等細節。這類過程性資料通常不會寫入戰後的官方戰報，其他史料難以取代。\n限制：相隔三十年成書，作者的記憶已受其後的公開討論與評價影響，且身為當事人有維護自身聲譽的動機，對失誤的敘述可能被淡化或轉嫁。因此涉及責任誰屬的段落，須與同期文件或他方記述互相參證方可採用。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_04","topic":"因果分析・導火線與根源","difficulty":"intermediate","question":"有學生認為：「若沒有那次暗殺事件，第一次世界大戰便不會爆發。」試就導火線與根本原因的分別，評論此說。","explanation":"本題的關鍵在於「導火線可被替代」這一點。答案若只列舉軍備競賽、同盟體系、民族主義等根本原因，而不處理該學生的反事實推論，即未有回應題目。高分答案須指出：根本原因一旦成熟，導火線的具體形式並非必然，但導火線決定了戰爭爆發的時機與初期陣營。","type":"text","referenceAnswer":"此說部分成立，但推論過度。\n成立之處：該暗殺事件確實決定了戰爭在一九一四年夏天爆發，亦決定了最初由哪兩個國家開戰。若無此事，同一年的局勢未必立即演成全面戰爭。\n過度之處：把「不會爆發」與「不會在此時爆發」混為一談。當時的同盟體系已把兩組大國綁定，任一方參戰即牽動全局；海軍競賽與殖民地爭奪令各國視衝突為早晚之事；而總動員時間表的存在，使外交斡旋的空間被壓縮至數日。上述條件不因暗殺與否而改變。巴爾幹地區此前已多次出現危機，任何一次同類事件都可能起到相同作用。\n結論：導火線決定戰爭的【時機與形式】，根本原因決定戰爭的【可能性】。該學生把前者的必要性誤當作後者的充分性。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_05","topic":"第一次世界大戰","difficulty":"intermediate","question":"第一次世界大戰西線在一九一四年底陷入僵持，此後三年戰線推進極為有限。試從軍事技術角度解釋此一僵局的成因。","explanation":"題目限定「軍事技術角度」，答案若只談指揮官保守或士氣問題，即使內容正確亦屬離題。核心在於防禦性技術的成熟程度遠超同期的進攻與通訊技術，形成結構性不對稱。","type":"text","referenceAnswer":"僵局源於防守方所掌握的技術，遠比進攻方成熟。\n一、火力上的不對稱。機槍令一小隊守軍可以封鎖一段開闊地；帶刺鐵絲網把進攻部隊迫入預設的火力區；速射火炮配合預校射表，可在短時間內覆蓋既定座標。三者結合，使橫越無人地帶的傷亡率極高。\n二、通訊與機動的落後。當時無可靠的無線電通訊，攻方一旦越過己方戰壕，即與後方指揮失去聯繫，無法呼叫增援或修正炮擊。同時後勤仍依賴鐵路與馬車，而鐵路屬於防守方後方；即使攻方突破一段防線，補給與增援的速度亦慢於防守方沿內線調兵的速度。\n三、後果：任何局部突破都會在數日內被填補，戰線因而恢復僵持。直至坦克與步炮協同戰術在一九一八年成熟，此一不對稱方被打破。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_06","topic":"冷戰","difficulty":"intermediate","question":"冷戰期間，美蘇兩國在歐洲直接開戰的情況並未出現。試解釋為何雙方的對抗在歐洲維持於非戰爭狀態。","explanation":"本題容易流於「因為有核武」一句了事。核武本身並不自動帶來克制 —— 答案須說明核武【透過何種機制】改變雙方的成本計算，並補充歐洲特有的其他約束條件，例如陣營界線的明確化。","type":"text","referenceAnswer":"一、核武改變了勝利的意義。雙方均具備在承受第一擊後仍能還擊的能力，使全面戰爭的預期結果不再是「一方獲勝」，而是雙方同遭毀滅。當戰爭無法帶來任何可欲的結果，開戰的理性基礎即被抽走。\n二、歐洲的界線清晰且雙方均予承認。分界既經多份戰後安排確定，雙方對何處屬於對方勢力範圍並無誤判空間。相較之下，界線模糊的地區反而屢生衝突。\n三、危機管理機制逐步建立。經歷數次危機之後，雙方設立直接通訊渠道並達成軍備控制協議，降低了因誤判或意外而升級的可能。\n四、代理衝突提供了替代出口。雙方把競爭轉移至歐洲以外地區，既可爭取戰略利益，又不觸發直接對抗。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_07","topic":"戰後衝突與聯合國","difficulty":"intermediate","question":"有評論認為聯合國在冷戰期間「無力制止大國之間的衝突」。試就安理會的制度設計，說明此一局限的來源，並指出聯合國在同期仍能發揮作用的一個範疇。","explanation":"本題須指出否決權並非制度缺陷，而是使大國願意加入的條件 —— 這一點是分辨中上與中下答案的關鍵。第二部分必須舉出具體範疇並說明其為何不受否決權掣肘。","type":"text","referenceAnswer":"局限的來源：安理會五個常任理事國各自擁有否決權，任何涉及強制行動的決議只要其中一國反對即不能通過。當衝突的一方【本身就是】常任理事國，或為其盟友，該國必然行使否決權，故聯合國在結構上無法對大國採取強制措施。\n此一設計並非疏忽。前一代的國際組織因欠缺大國參與而失效，故戰後的安排刻意以否決權換取大國留在體制之內。換言之，否決權是聯合國得以存在的代價，而非可以事後修補的漏洞。\n仍能發揮作用的範疇：其一，在大國利益並不直接對立的地區部署維持和平部隊，於停火之後隔開交戰雙方。其二，透過專門機構推行衞生、難民與糧食工作，此類職能不需安理會授權強制行動，故不受否決權影響。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_08","topic":"東南亞：由殖民地到獨立國家","difficulty":"intermediate","question":"東南亞各殖民地取得獨立的方式並不一致，有以談判達成，亦有經武裝鬥爭。試解釋造成此一差異的兩項因素。","explanation":"答案須具比較性，即所舉因素要能同時解釋兩類結果，而非只描述某一國的經過。常見失分是把「民族主義強弱」當成因素 —— 各地皆有民族主義運動，此項並不能區分結果。","type":"text","referenceAnswer":"因素一：殖民母國在戰後的實力與取態。\n部分母國在第二次世界大戰中元氣大傷，本土重建已耗盡財政與兵力，故傾向以談判交出政權，換取日後的經濟與文化聯繫。另一些母國則視該殖民地為戰後恢復大國地位的憑藉，或有大量僑民定居當地，因而選擇以武力壓制獨立運動，衝突遂無可避免。\n因素二：日本佔領時期所遺留的組織與武裝。\n佔領期間，部分地區的民族主義者獲准組織青年隊與地方防衞武力，戰爭結束時已掌握人員、槍械與行政經驗。當母國試圖恢復統治，這些組織即成為武裝抵抗的骨幹。反之，若當地的民族主義力量在佔領期間未取得同等的組織與武裝，則談判成為唯一可行的途徑。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_09","topic":"影響與意義評價","difficulty":"hard","question":"歷史學者評估一宗事件是否「重要」時，所用的準則並不一致。試指出兩項常用準則，並說明採用不同準則如何導致對同一事件得出不同評價。","explanation":"本題屬史學方法，答案不可只複述某一事件的影響。關鍵在於指出「重要」並非事件的固有屬性，而是相對於所問問題而成立；高分答案會以同一事件示範兩種準則得出相反結論。","type":"text","referenceAnswer":"準則一：後果的規模與持續時間。事件影響的人數愈多、影響延續愈久，即愈重要。\n準則二：當時人的認知與反應。事件在發生當時被視為轉捩點、引發廣泛討論或即時改變行為，即具重要性。\n此外亦有以「若無此事，其後發展會否不同」為準則者，即反事實檢驗。\n兩準則如何導致分歧：以某項技術的初次公開展示為例。按當時人的認知，該次展示可能只被視為新奇玩意，報章篇幅甚少，同期人士並不重視，按第二項準則其重要性甚低。但若該技術其後普及並改變整個行業的運作方式，按第一項準則則屬極重要。\n相反的情況同樣存在：一場在當時舉國震動、迫使政府改組的政治風波，若其後各項安排迅速回復原狀，按第一項準則的重要性便會被調低，而按第二項準則仍屬重大。\n結論：兩位學者對同一事件評價相反，未必有一方錯誤，可能只是各自回答不同的問題。故評估重要性之前，必須先說明所採準則。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"hist_w4_10","topic":"香港的現代化與蛻變","difficulty":"hard","question":"有學生認為，香港戰後的經濟起飛「主要源於政府採取不干預政策」。試評論此說。","explanation":"本題要求評論而非複述。學生常見問題是全盤接受或全盤否定；高分答案須先指出該說有何依據，再指出其忽略了政府在基礎建設、公營房屋與法制方面的實質投入，最後說明「不干預」一詞在何種意義下才成立。","type":"text","referenceAnswer":"此說有部分依據，但把一項【產業政策上的節制】誇大為【政府整體上的缺席】，因而失衡。\n支持該說之處：政府確實長期不挑選重點產業、不設進口保護、不向個別企業提供補貼，亦維持低而簡單的稅制。廠商可按外部需求迅速轉換產品與規模，此一彈性在成衣、玩具、電子等行業的擴張中確有作用。\n該說忽略之處：其一，政府在基礎建設上投入甚鉅，包括供水、供電、貨櫃碼頭與道路，而這些正是製造業與轉口貿易得以運作的前提。其二，大規模公營房屋計劃使大量家庭的居住開支受控，變相令工資可以維持在出口廠商負擔得起的水平，這是一項對產業成本結構有直接影響的干預。其三，穩定的法制、產權保障與可預期的行政程序，本身就是政府持續提供的制度性投入。\n其他因素：內地南來的資金、企業家與勞動力提供了起步條件；戰後世界貿易的擴張提供了外部需求。若無這兩項，單靠政策節制亦不足以造成起飛。\n結論：較準確的講法是，政府在【產業選擇】上節制，但在【基礎條件】上積極。把後者略去而只保留前者，便會得出一個過於簡化的因果解釋。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "history";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "history-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "history-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>
