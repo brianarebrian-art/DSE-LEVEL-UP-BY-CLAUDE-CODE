@@ -28,11 +28,18 @@
       "original_authored": true,
       "not_copied_from_reference": true,
       "reference_note": "Original cross-unit item written from DSE syllabus concepts; scenario/numbers fresh, no external stats asserted as official.",
-      "cross_unit": ["production cost", "marginal analysis", "unemployment"],
+      "cross_unit": [
+        "production cost",
+        "marginal analysis",
+        "unemployment"
+      ],
       "bilingual": true,
       "trap_level": 4,
       "source": "econ-crossunit-topic-sourced"
-    }
+    },
+    "topicId": "firm_production",
+    "topicZh": "跨單元（生產成本・邊際分析・失業類型）",
+    "topicEn": "Firms & Production"
   },
   {
     "id": "econ-cu-02",
@@ -63,11 +70,18 @@
       "original_authored": true,
       "not_copied_from_reference": true,
       "reference_note": "Original cross-unit item written from DSE syllabus concepts; uses price-elasticity incidence (in-scope; income/cross/point elasticity avoided).",
-      "cross_unit": ["taxation", "supply & demand", "tax incidence"],
+      "cross_unit": [
+        "taxation",
+        "supply & demand",
+        "tax incidence"
+      ],
       "bilingual": true,
       "trap_level": 4,
       "source": "econ-crossunit-topic-sourced"
-    }
+    },
+    "topicId": "demand_supply",
+    "topicZh": "跨單元（從量稅・供求均衡・稅負轉嫁）",
+    "topicEn": "Demand & Supply"
   },
   {
     "id": "econ-cu-03",
@@ -98,11 +112,18 @@
       "original_authored": true,
       "not_copied_from_reference": true,
       "reference_note": "Original cross-unit item; term 共用品 enforced (not 公共財).",
-      "cross_unit": ["public goods", "market failure", "role of government"],
+      "cross_unit": [
+        "public goods",
+        "market failure",
+        "role of government"
+      ],
       "bilingual": true,
       "trap_level": 3,
       "source": "econ-crossunit-topic-sourced"
-    }
+    },
+    "topicId": "market_failure",
+    "topicZh": "跨單元（共用品・市場失靈・政府角色）",
+    "topicEn": "Market Failure"
   },
   {
     "id": "econ-cu-04",
@@ -133,11 +154,18 @@
       "original_authored": true,
       "not_copied_from_reference": true,
       "reference_note": "Original cross-unit item; numbers chosen so comparative advantage differs from absolute advantage.",
-      "cross_unit": ["opportunity cost", "comparative advantage", "gains from trade"],
+      "cross_unit": [
+        "opportunity cost",
+        "comparative advantage",
+        "gains from trade"
+      ],
       "bilingual": true,
       "trap_level": 4,
       "source": "econ-crossunit-topic-sourced"
-    }
+    },
+    "topicId": "trade",
+    "topicZh": "跨單元（機會成本・比較優勢・貿易得益）",
+    "topicEn": "International Trade"
   },
   {
     "id": "econ-cu-05",
@@ -168,10 +196,17 @@
       "original_authored": true,
       "not_copied_from_reference": true,
       "reference_note": "Original cross-unit item written from DSE syllabus concepts; percentages internal to the problem, not asserted official statistics.",
-      "cross_unit": ["inflation", "nominal vs real", "purchasing power"],
+      "cross_unit": [
+        "inflation",
+        "nominal vs real",
+        "purchasing power"
+      ],
       "bilingual": true,
       "trap_level": 3,
       "source": "econ-crossunit-topic-sourced"
-    }
+    },
+    "topicId": "macroeconomics",
+    "topicZh": "跨單元（通脹・名義與實質・購買力）",
+    "topicEn": "Macroeconomics"
   }
 ]

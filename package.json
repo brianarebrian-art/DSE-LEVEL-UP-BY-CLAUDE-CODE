@@ -23,6 +23,7 @@
     "baseline": "npx --yes tsx@4.19.2 scripts/qbank/baseline.mts",
     "qbank:sync": "npx --yes tsx@4.19.2 scripts/qbank/sync-questions.mts",
     "qbank:sync:check": "npx --yes tsx@4.19.2 scripts/qbank/sync-questions.mts --check",
+    "qbank:promote-all": "node scripts/qbank/promote-all.mjs",
     "gen:summary": "npx --yes tsx@4.19.2 scripts/gen-question-summary.mts",
     "qa:copy": "node scripts/copy-guard.mjs",
     "qbank:recalibrate-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/recalibrate-difficulty.mts",
