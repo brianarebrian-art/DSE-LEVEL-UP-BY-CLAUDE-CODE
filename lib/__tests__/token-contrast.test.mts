@@ -433,3 +433,48 @@ test('⑨ 寫死嘅 bg-black/N · bg-white/N 不得超出基線', () => {
       `${f} 嘅寫死底色由 ${cap} 增至 ${found[f]} —— 基線只可以減，唔可以加。`)
   }
 })
+
+// ⑩ 固定淺色卡（bg-paper）入面唔准用跟主題嘅 ink token
+//
+// `bg-paper` 係一張【刻意唔跟主題】嘅試卷紙：淺色主題 #F5E7C8、
+// 暗色主題 #DDD3C6 —— 兩個都係淺色。而 `text-ink*` 係跟主題走嘅：
+// cyber 之下 `--color-ink-muted` = #A8A095（淺色）。
+// 兩樣撞埋，就係淺字疊淺紙。
+//
+// 2026-09-12 實機喺 cyber 主題量到 1.30:1 —— 三個 emoji 格冇寫色，
+// 繼承咗主題 ink-muted。當時係 emoji（彩色字形，CSS color 唔會畫到佢），
+// 所以睇落冇事；但下一個喺同一張卡加【文字】而唔寫色嘅人就會中招，
+// 而且【只會喺暗色主題出事】，淺色主題永遠睇唔到。
+//
+// 呢條同測試 ⑥（.on-dark-overlay）係同一類病嘅反方向：
+// ⑥ 守「暗底疊淺主題字」，本條守「淺卡疊暗主題字」。
+// 兩條都唔係守某一個畫面，係守「固定色面 × 跟主題嘅字」呢個組合。
+test('⑩ 固定淺色紙卡入面唔准用跟主題嘅 ink token', () => {
+  const offenders: string[] = []
+  const scan = (d: string) => {
+    for (const e of readdirSync(join(ROOT, d))) {
+      const rel = `${d}/${e}`
+      if (statSync(join(ROOT, rel)).isDirectory()) {
+        if (!/node_modules|__tests__|\.next/.test(rel)) scan(rel)
+        continue
+      }
+      if (!rel.endsWith('.tsx')) continue
+      const blanked = readFileSync(join(ROOT, rel), 'utf8')
+        .replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' '))
+        .replace(/\/\/[^\n]*/g, (m) => ' '.repeat(m.length))
+      // 只查真係用咗紙卡嘅檔 —— 全檔就係嗰張卡。
+      if (!/\bbg-paper\b/.test(blanked)) continue
+      blanked.split('\n').forEach((ln, i) => {
+        const m = ln.match(/\btext-ink(-soft|-muted|-faint)?\b/)
+        if (m) offenders.push(`${rel}:${i + 1}  ${m[0]}  ${ln.trim().slice(0, 60)}`)
+      })
+    }
+  }
+  scan('components'); scan('app')
+
+  assert.deepEqual(offenders, [],
+    `以下喺 bg-paper 紙卡入面用咗跟主題嘅 ink token：\n${offenders.join('\n')}\n`
+    + `紙卡兩個主題都係淺色（#F5E7C8 / #DDD3C6），但 text-ink* 喺 cyber 係淺色 ——\n`
+    + `即係淺字疊淺紙，而且只會喺暗色主題出事。\n`
+    + `修法：改用 text-paper-ink / text-paper-muted / text-paper-warn。`)
+})

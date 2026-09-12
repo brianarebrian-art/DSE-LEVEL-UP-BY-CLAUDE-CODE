@@ -148,7 +148,7 @@ export default function BlindTestQuestion() {
         <div className="grid grid-cols-3 gap-2">
           {causes.map((c) => (
             <div key={c.zh} className="border border-paper-warn/30 bg-paper-warn/5 rounded-lg px-2 py-2 text-center">
-              <div className="text-base leading-none mb-1">{c.emoji}</div>
+              <div className="text-base leading-none mb-1 text-paper-ink">{c.emoji}</div>
               <div className="text-[11px] font-bold text-paper-ink leading-tight">{tr(c.zh, c.en)}</div>
               <div className="text-[10px] text-paper-muted mt-0.5 leading-tight">{tr(c.dZh, c.dEn)}</div>
             </div>
