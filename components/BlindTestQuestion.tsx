@@ -33,18 +33,42 @@ function Black({
   children,
   revealed,
   onReveal,
+  label,
 }: {
   children: React.ReactNode
   revealed: boolean
   onReveal: () => void
+  /** 未揭開時畀讀屏用戶嘅說明。揭開之後唔再需要 —— 內容自己講嘢。 */
+  label: string
 }) {
+  // ⚠️ 2026-09-12：未揭開嘅遮蓋塊係一個【真正嘅操作點】，唔淨係一個樣式。
+  // 原本只有 onClick，即係淨係滑鼠做到 —— 鍵盤同讀屏用戶見到個黑格但揭唔開，
+  // 而格入面係題目嘅數字（「∠APB = ⬛°」），揭唔開就讀唔到條題。WCAG 2.1.1。
+  // 揭開之後就唔再係操作點，所以 role / tabIndex / onKeyDown 一律收返 ——
+  // 留住嘅話，鍵盤用戶要行過一堆冇作用嘅停駐點。
+  const interactive = !revealed
   return (
     <span
-      onClick={onReveal}
+      onClick={interactive ? onReveal : undefined}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      aria-label={interactive ? label : undefined}
+      onKeyDown={
+        interactive
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                onReveal()
+              }
+            }
+          : undefined
+      }
       className={`inline-block rounded px-1 mx-0.5 align-middle transition-colors ${
         revealed
           ? 'bg-paper-ink/10 text-paper-warn font-semibold'
           : 'bg-paper-ink text-paper-ink cursor-pointer select-none'
+              + ' focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+              + ' focus-visible:outline-paper-warn'
       }`}
     >
       {children}
@@ -100,7 +124,7 @@ export default function BlindTestQuestion() {
       <p className="text-sm leading-relaxed text-paper-ink mb-4">
         {tr('由圓外一點 P 引兩條切線，', 'From external point P two tangents are drawn; ')}
         {tr('已知 ∠APB = ', '∠APB = ')}
-        <Black revealed={revealed} onReveal={reveal}>{tr('五十', 'fifty')}</Black>
+        <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>{tr('五十', 'fifty')}</Black>
         {tr('°，C 為優弧上一點，求 ∠ACB。', '°, with C on the major arc. Find ∠ACB.')}
       </p>
 
@@ -111,7 +135,7 @@ export default function BlindTestQuestion() {
             <span className="w-5 h-5 rounded bg-paper-ink/10 text-paper-ink text-xs font-bold flex items-center justify-center">
               {['A', 'B', 'C', 'D'][i]}
             </span>
-            <Black revealed={revealed} onReveal={reveal}>{v}</Black><span className="text-paper-muted">°</span>
+            <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>{v}</Black><span className="text-paper-muted">°</span>
           </div>
         ))}
       </div>
