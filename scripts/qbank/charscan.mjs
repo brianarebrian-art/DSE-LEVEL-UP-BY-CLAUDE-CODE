@@ -26,6 +26,18 @@
 //    大部分都係咁；一刀切會令個閘永遠紅，等於冇閘。真 bug 嘅特徵係
 //    「當造food材」—— 中文字直接貼住英文字，冇括號、冇空格。
 //
+// ⑤ 2026-09-13 新增：*En 欄唔准有全角標點。
+//    起因係一個自己漏咗嘅 bug —— math_p1_05 嘅 referenceAnswerEn 寫住
+//    「$a=-3$，$b=-11$」，一個全角逗號。`[一-鿿]` 只掃漢字，標點唔在範圍，
+//    所以規則 ① 過、term-guard 過、_gate 過、JSON.parse 過、tsc 過。
+//    我自己寫嘅分類器同樣漏咗，所以提案文件一度寫錯做「純數式」。
+//    量過影響範圍（憲章 §6）：9,305 個 *En 欄，非語言科命中 0 —— 零債務落閘。
+//    刻意排除 — em dash、− minus、… ellipsis、· middle dot、’ ” 等：
+//    呢啲喺英文散文係正常排版，攔咗就係狼來了。
+//    語言科同規則 ① 一樣豁免：中文科嘅 questionEn 有可能正當引述《岳陽樓記》。
+//    已知被豁免嘅 3 處：english-literature-floor 用「【Romeo and Juliet】」
+//    做書名號（elit_floor_29 / 30 / 32）。寫落嚟係為咗有記錄，唔係靜靜哋漏。
+//
 // 一個日日嗌錯嘅閘，兩個星期之後就冇人再睇。收窄同攔截一樣重要。
 //
 // ══ 基線棘輪（憲章 §6）══
@@ -50,6 +62,8 @@ import { join } from 'node:path'
 const DIR = 'scripts/qbank/drafts'
 const CJK = /[一-鿿]/
 const CYRILLIC = /[Ѐ-ӿ]/
+// 見檔頭收窄 ⑤。只收「喺英文散文絕對唔應該出現」嘅全角標點。
+const FULLWIDTH_PUNCT = /[，。、；：？！（）｛｝［］【】「」『』《》〈〉]/
 const LANG_BANK = /^(english|chinese)/
 const ZH_FIELDS = ['question', 'explanation', 'referenceAnswer', 'markingScheme']
 // 正當地出現喺中文句子裡面嘅小寫英文縮寫。
@@ -59,16 +73,18 @@ const ALLOWED_LOWER = new Set(['ph', 'kcal', 'rpm', 'vs', 'et', 'al', 'www', 'co
 const BASELINE = {
   // 2026-09-12 收窄 ④ 之後實測。三個檔，合共 75 處，全部係既有草稿。
   //
-  // math-p1-long 嗰 69 處係【真 bug 而且已經上線】：questionEn / markingSchemeEn /
-  // explanationEn 入面夾住中文（「一個長方體」「三維三角的整個技巧」）。
-  // 英文介面嘅學生做緊一條中英夾雜嘅題目，而冇任何閘會嗌。
-  // 本批唔順手改 —— 嗰 20 條題已由 brian 2026-08-27 逐題簽名批過，
-  // 改內容須重新覆核（憲章 §12）。記入基線＝記入待辦，唔係批准。
+  // ✅ math-p1-long 嗰 69 處已於 2026-09-13 清零。
+  //    原本係【真 bug 而且已經上線】：questionEn / markingSchemeEn / explanationEn
+  //    入面夾住中文（「一個長方體」「三維三角的整個技巧」），英文介面嘅學生
+  //    做緊一條中英夾雜嘅題目。已按 docs/qbank-en-fix-math-p1-long.md 重寫四個
+  //    En 欄（中文欄零改動），經 Yuna 2026-09-13 授權套用。
+  //    留住呢個 `0` 而唔係刪走成行：一行寫住「曾經 69，而家 0」嘅紀錄，
+  //    同一行唔存在嘅紀錄，對下一個 session 嚟講唔同。
   //
-  // 另外 6 處經查屬正當引述：history-p2-essays 嘅英文解析引述中文考問術語，
+  // 餘下 6 處經查屬正當引述：history-p2-essays 嘅英文解析引述中文考問術語，
   // economics-written-b2 嘅英文解析引述「企業家職能」本身。
   // 兩者都係「正在討論嗰個詞」，剝走反而令解析講唔通。
-  'math-p1-long.json': 69,
+  'math-p1-long.json': 0,
   'history-p2-essays.json': 4,
   'economics-written-b2.json': 2,
 }
@@ -96,6 +112,14 @@ for (const f of readdirSync(DIR).sort()) {
       if (isLang) continue
       if (/En$/.test(k) && CJK.test(v)) {
         hits.push([f, q.id, k, '英文欄有中文', v.match(/[一-鿿]+/)?.[0] ?? ''])
+      } else if (/En$/.test(k) && FULLWIDTH_PUNCT.test(v)) {
+        // 收窄 ⑤：漢字掃描捉唔到嘅全角標點。
+        //
+        // ⚠️ 一定要 else —— 同一個欄由兩條規則各嗌一次，就會令既有檔嘅命中數
+        // 憑空翻倍（history-p2-essays 嘅 4 會變 8），而基線按定義只可以減。
+        // 一條新規則唔應該要求放寬一條舊基線先入得咗。
+        const marks = [...new Set(v.match(new RegExp(FULLWIDTH_PUNCT.source, 'g')))].join('')
+        hits.push([f, q.id, k, '英文欄有全角標點', marks])
       }
       if (!/En$/.test(k) && ZH_FIELDS.includes(k)) {
         // 剝走 LaTeX 之後才掃 —— 見檔頭收窄 ③。
