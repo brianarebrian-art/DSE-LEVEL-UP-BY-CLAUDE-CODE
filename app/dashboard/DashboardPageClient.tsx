@@ -210,7 +210,13 @@ export default function DashboardPageClient() {
               {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          {/* ⚠️ flex-wrap 唔可以剷。2026-09-13 喺 375px 實測：四個掣被 flex 壓到
+              75–82px 闊，中文標籤逐字斷行 ——「我嘅收藏」四個字佔咗【五行】
+              （實測 0.8 字／行）。唔算橫向爆版，所以 responsive-guard 同
+              scrollX 探針都唔會嗌，但喺學生主力裝置上係讀唔到嘅。
+              揀 flex-wrap 而唔係 overflow-x-auto：換行乜都見到，橫向捲動會
+              令第四個掣（繼續練習 —— 呢一行最重要嗰個）喺窄機收埋咗。 */}
+          <div className="flex flex-wrap items-center gap-2">
             {/* 考試日管家入口（報告 v4.0 §7.4：Dashboard 放考試日 brief）。
                 擺喺呢度而唔係 Navbar：Navbar 橫向已迫到盡（見該檔實測寬度）。 */}
             <Link
