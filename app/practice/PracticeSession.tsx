@@ -636,6 +636,49 @@ export default function PracticeSession({
   // 驗完先放行。鎖已剷除，所以「下一題」就係直接落下一題。
   const proceed = next
 
+  // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
+  //
+  // ⚠️ 呢個【唔係】無障礙合規修補。選項掣本身一直 Tab 得到、Enter 撳得到，
+  //    WCAG 2.1.1 本來就過。呢度做嘅係效率：一節 10 題，純鍵盤操作由
+  //    「Tab ×N ＋ Enter」變成一下掣。對 ADHD 學生特別實際 ——
+  //    每多一下操作就多一個分心位。講清楚呢點，係因為憲章 §16.D 判例
+  //    就係「把一樣嘢講成保護學生」而實情唔係。
+  //
+  // 三條唔可以省嘅守則：
+  //   ① 輸入焦點一律唔攔。學生喺 input／textarea／contenteditable 打緊字嗰陣
+  //      撳「A」係要打一個 A，唔係揀 A。
+  //   ② 有修飾鍵一律唔攔 —— ⌘A 全選、⌃D 等系統同瀏覽器快捷鍵要照行。
+  //   ③ 答咗就唔再接受選項鍵。同 `disabled` 掣一致 —— 唔可以由鍵盤繞過一個
+  //      介面上已經封咗嘅操作。
+  //
+  // Enter 只喺焦點【唔喺任何掣上面】先接手：焦點喺「下一題」嗰陣，
+  // 瀏覽器自己已經會觸發一次，再攔多次就會一下撳跳兩題。
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      const el = e.target as HTMLElement | null
+      if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return
+
+      if (e.key === 'Enter') {
+        if (answerState === null) return
+        if (el && /^(BUTTON|A)$/.test(el.tagName)) return // 交返畀瀏覽器原生觸發
+        e.preventDefault()
+        proceed()
+        return
+      }
+
+      if (answerState !== null || !currentQ) return
+      const k = e.key.toUpperCase()
+      const idx = /^[1-4]$/.test(k) ? Number(k) - 1 : 'ABCD'.indexOf(k)
+      const opt = idx >= 0 ? currentQ.shuffledOptions[idx] : undefined
+      if (!opt) return
+      e.preventDefault()
+      selectOption(opt.zh, idx)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [answerState, currentQ, selectOption, proceed])
+
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
   // not-yet-seen questions changes nothing. Shifting `startTime` back by the elapsed
@@ -978,6 +1021,20 @@ export default function PracticeSession({
               )
             })}
           </div>
+
+          {/* 快捷鍵提示。一個冇人知嘅快捷鍵等於冇 —— 所以一定要寫出嚟。
+              `hidden sm:block`：觸控裝置冇實體鍵盤，講咗只係阻頭阻勢。
+              ⚠️ 用 `text-ink-muted`（淺色 5.93 / 暗色 5.25）而【唔用】`ink-faint`：
+              globals.css:62 明文寫住 ink-faint 係 2.43，未達 AA，只限停用控件同裝飾。
+              ⚠️ 亦【唔加】`aria-hidden`。第一版加咗，錯 —— 咁樣做嘅話
+              docs/a11y-runtime-sweep 個探針會跳過呢個元素（佢刻意唔掃裝飾元素），
+              即係我自己整咗一段睇唔清嘅字，再親手令自己個閘睇唔到佢。
+              而且讀屏用戶一樣用鍵盤，呢句對佢哋唔係多餘。 */}
+          <p className="hidden sm:block mt-3 text-[11px] text-ink-muted">
+            {answerState === null
+              ? tr('快捷鍵：1–4 或 A–D 揀答案', 'Shortcuts: 1–4 or A–D to answer')
+              : tr('快捷鍵：Enter 落下一題', 'Shortcut: Enter for the next question')}
+          </p>
         </div>
 
         {/* Feedback + Next */}
