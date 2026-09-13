@@ -15,9 +15,16 @@
     ],
     "correctIndex": 2,
     "explanation": "「待」在此指有所憑藉、有所依賴。列子雖能御風而行，卻必須依靠風力，故仍未達真正的逍遙；莊子由此推出「乘天地之正，而御六氣之辯，以遊無窮」的無待之境。「等候、期待」是「待」在現代漢語中的常用義，屬以今律古的字面誤讀，與「免乎行」的語境不合；「對待、款待」由「款待」一詞聯想而來，然文中並無交際對象；「停留、逗留」則與「旬有五日而後反」所寫的往返行動相牴觸。",
-    "trapTypes": ["keyword_misread", "concept_swap", "correct", "irrelevant"],
+    "trapTypes": [
+      "keyword_misread",
+      "concept_swap",
+      "correct",
+      "irrelevant"
+    ],
     "dnaTag": "CMT",
-    "_mother": "xyy-lexis"
+    "_mother": "xyy-lexis",
+    "topicZh": "指定範文・字詞",
+    "topicEn": "Set Texts — Diction"
   },
   {
     "id": "art-chinese-xyy-comp-1",
@@ -35,9 +42,16 @@
     ],
     "correctIndex": 0,
     "explanation": "莊子先肯定宋榮子能超越毀譽，再指出他「定乎內外之分，辯乎榮辱之境」——仍須劃分內外、辨別榮辱，即仍有所分別、有所憑依，故未臻無待。所謂「未樹」是就境界層次而言，並非否定其修養。「徒有虛名、汲汲於稱譽」與原文「舉世譽之而不加勸」直接相反，屬概念倒置；「再加磨練便可成為至人」把層次之別誤解為程度之差，然在莊子看來有待與無待性質不同而非分量不同，屬過度推論；「不理世事、過於消極」則把道家的超越誤讀為消極避世，並非本文批評所在。",
-    "trapTypes": ["correct", "concept_reversal", "over_interpretation", "concept_swap"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "over_interpretation",
+      "concept_swap"
+    ],
     "dnaTag": "CMT",
-    "_mother": "xyy-comp"
+    "_mother": "xyy-comp",
+    "topicZh": "指定範文・內容",
+    "topicEn": "Set Texts — Content"
   },
   {
     "id": "art-chinese-xyy-technique-2",
@@ -55,9 +69,16 @@
     ],
     "correctIndex": 1,
     "explanation": "鵬須「風之積也厚」方能徙於南冥，蜩鳩則止於榆枋；二者所待之物有大小，而「有待」的性質相同。莊子由此層層推進，經宋榮子、列子而至「乘天地之正」的無待，方是逍遙。「志向愈大則愈接近逍遙」是最常見的過度推論，把小大之辯誤讀為優劣之判；若此說成立，大鵬即應是逍遙，與下文「猶有所待」的推論即告斷裂。「知足常樂、不必好高騖遠」把蜩鳩之笑當作作者立場，屬張冠李戴，原文「之二蟲又何知」已明示其見識之陋。「各安其性即是逍遙，二者並無分別」半對半錯——齊物之意雖近莊學，但本篇推論指向無待，且原文明言「小知不及大知」，不能說毫無分別。",
-    "trapTypes": ["over_interpretation", "correct", "concept_swap", "half_right"],
+    "trapTypes": [
+      "over_interpretation",
+      "correct",
+      "concept_swap",
+      "half_right"
+    ],
     "dnaTag": "CMT",
-    "_mother": "xyy-technique"
+    "_mother": "xyy-technique",
+    "topicZh": "指定範文・名句手法",
+    "topicEn": "Set Texts — Key Lines & Devices"
   },
   {
     "id": "art-chinese-lplxr-lexis-0",
@@ -75,9 +96,16 @@
     ],
     "correctIndex": 3,
     "explanation": "「先」「後」在此為意動用法，即「以……為先」「以……為後」，表達價值上的輕重取捨，而非行動的時間次序。「先處理國家大事、其後再報私仇」是最易誤入的讀法，把價值判斷降格為時間安排，與下文將相和好、結為刎頸之交的結局不合，因相如始終無意報復；「國家的前途與個人的後路」把動詞誤作名詞，於句法不通；「使國家爭先、使私仇落後」混淆意動與使動，使動須有使某物產生某種變化之意，此處並無。",
-    "trapTypes": ["half_right", "keyword_misread", "concept_swap", "correct"],
+    "trapTypes": [
+      "half_right",
+      "keyword_misread",
+      "concept_swap",
+      "correct"
+    ],
     "dnaTag": "CMT",
-    "_mother": "lplxr-lexis"
+    "_mother": "lplxr-lexis",
+    "topicZh": "指定範文・字詞",
+    "topicEn": "Set Texts — Diction"
   },
   {
     "id": "art-chinese-lplxr-comp-1",
@@ -95,9 +123,16 @@
     ],
     "correctIndex": 0,
     "explanation": "舍人以「庸人尚羞之，況於將相乎」相責，正是把世俗「怯懦」的理解推到極處；相如隨即以「強秦之所以不敢加兵於趙者，徒以吾兩人在也」作答，兩相對照，退讓的真正理由方顯，廉頗聞之而肉袒負荊，情節亦由此推進。「出身低微、不敢衝突」與相如在完璧、澠池兩事中的膽識直接矛盾；「批評門客見識淺薄」把敘事的襯托功能誤作批判對象，屬張冠李戴，舍人只是承擔誤解的角色；「明哲保身」半對半錯——外在行為確是退避，但動機在國事而非自保，正是相如親口否定的讀法。",
-    "trapTypes": ["correct", "concept_reversal", "concept_swap", "half_right"],
+    "trapTypes": [
+      "correct",
+      "concept_reversal",
+      "concept_swap",
+      "half_right"
+    ],
     "dnaTag": "CMT",
-    "_mother": "lplxr-comp"
+    "_mother": "lplxr-comp",
+    "topicZh": "指定範文・內容",
+    "topicEn": "Set Texts — Content"
   },
   {
     "id": "art-chinese-lplxr-technique-2",
@@ -115,9 +150,16 @@
     ],
     "correctIndex": 2,
     "explanation": "相如先以「璧有瑕，請指示王」的說辭取回璧，再退立倚柱——柱正是實現威脅的憑藉，位置的選擇本身即計謀的一部分；其後又要求齋戒五日，為遣人懷璧歸趙爭取時間。整段行止環環相扣，可見其智。「性情剛烈、不顧後果」只見其怒而未見其謀，屬只讀表層；「已無他策，唯有以死相拼」把主動的手段誤作被動的絕境，忽略相如始終掌握節奏；「於情節推進並無實際作用」與下文秦王「辭謝，固請」的讓步直接不合。",
-    "trapTypes": ["half_right", "concept_swap", "correct", "irrelevant"],
+    "trapTypes": [
+      "half_right",
+      "concept_swap",
+      "correct",
+      "irrelevant"
+    ],
     "dnaTag": "CMT",
-    "_mother": "lplxr-technique"
+    "_mother": "lplxr-technique",
+    "topicZh": "指定範文・名句手法",
+    "topicEn": "Set Texts — Key Lines & Devices"
   },
   {
     "id": "art-chinese-xsyy-lexis-0",
@@ -135,9 +177,16 @@
     ],
     "correctIndex": 1,
     "explanation": "「惴」「慄」二字皆有恐懼之義，「恆惴慄」謂長期處於憂懼不安之中，寫作者遭貶之後的心境；此語為全文伏線，其後西山之遊的「心凝形釋」正由此翻出。「憤懣不平」是遭貶者常見的情緒，卻非此二字的字義，屬以情理推字義；「貧病交迫」由「僇人」的處境聯想而來，然文中並無其事；「寂寞無聊」則與下文「日與其徒上高山，入深林」所寫的頻繁出遊不合。",
-    "trapTypes": ["over_interpretation", "correct", "irrelevant", "half_right"],
+    "trapTypes": [
+      "over_interpretation",
+      "correct",
+      "irrelevant",
+      "half_right"
+    ],
     "dnaTag": "CMT",
-    "_mother": "xsyy-lexis"
+    "_mother": "xsyy-lexis",
+    "topicZh": "指定範文・字詞",
+    "topicEn": "Set Texts — Diction"
   },
   {
     "id": "art-chinese-xsyy-comp-1",
@@ -155,9 +204,16 @@
     ],
     "correctIndex": 3,
     "explanation": "篇首「恆惴慄」點出前遊的動機在排遣，故「施施而行，漫漫而遊」而未能真正入景；登西山後見「其高下之勢，岈然洼然」，知「是山之特立，不與培塿為類」，終至「心凝形釋，與萬化冥合」，主客合一，故曰「遊於是乎始」。「景色平庸、不值一提」把心境之別誤作景物之優劣，而原文寫前遊亦有「傾壺而醉」之樂；「自謙不夠用心、勸人專注」把哲理體悟降為遊覽態度的告誡，屬過度引申；「此前未曾登過高山」與「日與其徒上高山」一句直接牴觸，屬只截後文而忽略前文的誤讀。",
-    "trapTypes": ["concept_swap", "over_interpretation", "keyword_misread", "correct"],
+    "trapTypes": [
+      "concept_swap",
+      "over_interpretation",
+      "keyword_misread",
+      "correct"
+    ],
     "dnaTag": "CMT",
-    "_mother": "xsyy-comp"
+    "_mother": "xsyy-comp",
+    "topicZh": "指定範文・內容",
+    "topicEn": "Set Texts — Content"
   },
   {
     "id": "art-chinese-fx-xyy-xsyy-0",
@@ -175,9 +231,16 @@
     ],
     "correctIndex": 0,
     "explanation": "《逍遙遊》以鯤鵬、蜩鳩、宋榮子、列子逐層推說，指出凡有所待皆非逍遙，最後歸於「至人無己，神人無功，聖人無名」，是層層剝落的論理；《始得西山宴遊記》則由「恆惴慄」寫到登西山所見，再到「心凝形釋，與萬化冥合」，是即景生情、由感入境。「皆為遭貶後的自我安慰」屬張冠李戴——遭貶者是柳宗元，莊子並無此背景，且《逍遙遊》志在破除依待而非逃避現實；「皆先描寫景物，再由景入理」半對半錯——柳文確是由景入理，《逍遙遊》開篇的鯤鵬卻是寓言設喻而非寫景，兩者說理方式不同；「短暫」與「永久」之分於兩文皆無根據，屬憑空添加的推斷。",
-    "trapTypes": ["correct", "concept_swap", "half_right", "over_interpretation"],
+    "trapTypes": [
+      "correct",
+      "concept_swap",
+      "half_right",
+      "over_interpretation"
+    ],
     "dnaTag": "CMT",
-    "_mother": "fx-xyy-xsyy"
+    "_mother": "fx-xyy-xsyy",
+    "topicZh": "指定範文・名句手法",
+    "topicEn": "Set Texts — Key Lines & Devices"
   },
   {
     "id": "art-chinese-fx-lplxr-yyl-1",
@@ -195,8 +258,15 @@
     ],
     "correctIndex": 2,
     "explanation": "相如之語針對與廉頗的私怨而發，所指為「強秦之所以不敢加兵於趙者，徒以吾兩人在也」的當前國勢，是具體情境中的輕重權衡；范仲淹之語則承「不以物喜，不以己悲」而來，以「古仁人之心」自期，不繫於一時一事，是普遍而終身的懷抱。「二者所言相同」是最常見的過度推論，只見句式相同而忽略對象與範圍之別；「相如出於一時權宜，故境界較低」半對半錯——場合確有具體與普遍之分，但原文寫二人「卒相與驩，為刎頸之交」，其襟懷並非權宜，此判斷失之武斷；「於內容並無分別」則把修辭上的對稱等同於內容上的等同，屬以形式取代內容。",
-    "trapTypes": ["over_interpretation", "half_right", "correct", "concept_swap"],
+    "trapTypes": [
+      "over_interpretation",
+      "half_right",
+      "correct",
+      "concept_swap"
+    ],
     "dnaTag": "CMT",
-    "_mother": "fx-lplxr-yyl"
+    "_mother": "fx-lplxr-yyl",
+    "topicZh": "指定範文・名句手法",
+    "topicEn": "Set Texts — Key Lines & Devices"
   }
 ]

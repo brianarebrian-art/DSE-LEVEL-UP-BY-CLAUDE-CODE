@@ -2,14 +2,16 @@
   "_meta": {
     "source": "visual-arts-written-b1.json",
     "subject": "visual-arts",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
   },
   "decisions": {
-    "va_w1_01": "pending",
-    "va_w1_02": "pending",
-    "va_w1_03": "pending",
-    "va_w1_04": "pending",
-    "va_w1_05": "pending"
+    "va_w1_01": "approved",
+    "va_w1_02": "approved",
+    "va_w1_03": "approved",
+    "va_w1_04": "approved",
+    "va_w1_05": "approved"
   }
 }

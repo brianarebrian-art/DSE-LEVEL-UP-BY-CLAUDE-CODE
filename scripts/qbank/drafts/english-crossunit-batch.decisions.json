@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "source": "english-crossunit-batch.json",
+    "subject": "english",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "eng-cu-01": "approved",
+    "eng-cu-02": "approved",
+    "eng-cu-03": "approved",
+    "eng-cu-04": "approved",
+    "eng-cu-05": "approved"
+  }
+}

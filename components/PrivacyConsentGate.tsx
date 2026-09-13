@@ -156,7 +156,9 @@ export default function PrivacyConsentGate() {
           </button>
         </div>
 
-        <p className="mt-4 text-center text-xs text-ink-faint">
+        {/* 同意閘上通往完整私隱政策嘅連結。個 Link 冇自己嘅顏色，繼承呢個 p —— 
+            用 ink-faint 等於叫學生喺 2.91 對比之下揾一條佢有權睇嘅政策。 */}
+        <p className="mt-4 text-center text-xs text-ink-muted">
           <Link href="/privacy" className="underline underline-offset-2 hover:text-accent">
             {en ? 'Read the full privacy policy' : '睇完整私隱政策'}
           </Link>

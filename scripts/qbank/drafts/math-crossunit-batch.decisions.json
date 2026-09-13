@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "source": "math-crossunit-batch.json",
+    "subject": "math",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "math-cu-01": "approved",
+    "math-cu-02": "approved",
+    "math-cu-03": "approved",
+    "math-cu-04": "approved",
+    "math-cu-05": "approved"
+  }
+}

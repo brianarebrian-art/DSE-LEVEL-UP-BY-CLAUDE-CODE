@@ -2,14 +2,16 @@
   "_meta": {
     "source": "chemistry-written-b2.json",
     "subject": "chemistry",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
   },
   "decisions": {
-    "ch_w2_01": "pending",
-    "ch_w2_02": "pending",
-    "ch_w2_03": "pending",
-    "ch_w2_04": "pending",
-    "ch_w2_05": "pending"
+    "ch_w2_01": "approved",
+    "ch_w2_02": "approved",
+    "ch_w2_03": "approved",
+    "ch_w2_04": "approved",
+    "ch_w2_05": "approved"
   }
 }

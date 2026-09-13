@@ -20,6 +20,7 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
+import { execFileSync } from 'node:child_process'
 import { pathToFileURL } from 'node:url'
 
 const DRAFTS = 'scripts/qbank/drafts'
@@ -28,10 +29,38 @@ const OUT = 'data/provenance.ts'
 /** 只收 approved。rejected 同 pending 唔係「已入庫」，唔可以當審批紀錄出。 */
 const APPROVED = 'approved'
 
+// ══ 第二條紀律：批咗 ≠ 上咗線 ══
+//
+// /transparency 同 /trust 兩版都用 REVIEWED_COUNT 講同一句話：
+// 「N 條題目有實名審批紀錄 —— 佔現時 X 條【上線】題目嘅 pct%」。
+// 呢句話成立嘅前提係 N ⊆ 上線題目。本生成器原本淨係數 decisions.json 入面
+// approved 嘅 id，冇問過嗰條題係咪 promote 咗 —— 兩個數放埋一齊就會講大咗。
+//
+// 2026-09-12 撞正：Yuna 一次過批晒 1,878 條草稿（全部未 promote）。
+// 照舊生成的話 REVIEWED_COUNT 604 → 2,482，百分比 2.31% → 9.47%，
+// 而多出嗰 1,878 條學生一條都做唔到。憲章 §8 禁虛構統計，呢個就係一單。
+//
+// 所以：approved 之上再加一層 —— 要真係載入得到先計。
+// 條題一日未 wire 入 load.ts，佢就一日唔會出現喺呢個檔度；promote 完再跑一次
+// 就會自己入返嚟。
+const liveIds = () => {
+  const out = execFileSync('npx', ['tsx', 'scripts/qbank/live-ids.mts'], {
+    encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
+  })
+  const arr = JSON.parse(out)
+  // 空集 = 列舉行錯咗，唔係「一條題都冇上線」。噉樣落去會靜靜哋清空成個
+  // provenance 檔（604 → 0），對外變成「我哋一條實名審批都冇」。寧可死。
+  if (!Array.isArray(arr) || arr.length === 0) {
+    throw new Error('live-ids.mts 回咗空集 —— 題庫列舉失敗，拒絕生成（唔可以靜靜哋清空 provenance）')
+  }
+  return new Set(arr)
+}
+
 export function collect() {
   const entries = {}
   const batches = []
   if (!fs.existsSync(DRAFTS)) return { entries, batches }
+  const live = liveIds()
 
   for (const file of fs.readdirSync(DRAFTS).filter((f) => f.endsWith('.decisions.json')).sort()) {
     let json
@@ -52,6 +81,7 @@ export function collect() {
     let n = 0
     for (const [id, decision] of Object.entries(decisions)) {
       if (decision !== APPROVED) continue
+      if (!live.has(id)) continue // 批咗但未 promote —— 見上方 liveIds() 註釋
       entries[id] = { reviewer, reviewedAt, batch: file.replace('.decisions.json', '') }
       n++
     }

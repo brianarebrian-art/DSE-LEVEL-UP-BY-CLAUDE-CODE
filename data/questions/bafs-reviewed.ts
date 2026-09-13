@@ -6,14 +6,6 @@
 //   source   : bafs-batch.json
 //   approved : 6  (easy 4 / medium 2 / hard 0)
 // Do NOT hand-edit — re-run the pipeline instead. NOT yet live until wired into load.ts.
-//
-// 【2026-08-07 補譯】原有 6 條僅具中文欄位，英文介面的學生會看到中文題目。
-// 由 scripts/qbank/apply-translations.mjs 補入 contentEn / optionsEn / explanationEn：
-//   譯稿 : scripts/qbank/drafts/en-backfill-51.json
-//   覆核 : scripts/qbank/drafts/en-backfill-51.decisions.json（reviewer brian，逐條 approved）
-// 中文內容、選項次序、correctIndex 一律零改動（腳本內設逐欄斷言把關）。
-// 如需再行補譯或修訂譯文，請循同一流程：修改譯稿 → review-translations.mjs
-// → 真人逐條審批 → apply-translations.mjs。
 import type { Question } from './types'
 
 export const bafsReviewedQuestions: Question[] = [
@@ -30,23 +22,23 @@ export const bafsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某公司於年初以 \\$120,000 購入一部機器，估計可用 5 年，殘值為 \\$20,000。若採用直線法計算折舊，每年的折舊費用為多少？",
-    "contentEn": "A company bought a machine at the start of the year for \\$120,000, with an estimated useful life of 5 years and a residual value of \\$20,000. Using the straight-line method, what is the annual depreciation charge?",
+    "explanation": "直線法每年折舊 = （成本 − 殘值）÷ 可用年期 =（120,000 − 20,000）÷ 5 = 20,000。常見扣分陷阱：忘記先扣減殘值（誤算 120,000 ÷ 5 = 24,000），或把總折舊 100,000 當作每年折舊。",
     "options": [
       "\\$20,000",
       "\\$24,000",
       "\\$100,000",
       "\\$4,000"
     ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A company buys a machine for \\$120,000 at the start of the year, with an estimated useful life of 5 years and a residual value of \\$20,000. Using the straight-line method, what is the annual depreciation expense?",
     "optionsEn": [
       "\\$20,000",
       "\\$24,000",
       "\\$100,000",
       "\\$4,000"
     ],
-    "correctIndex": 0,
-    "explanation": "直線法每年折舊 = （成本 − 殘值）÷ 可用年期 =（120,000 − 20,000）÷ 5 = 20,000。常見扣分陷阱：忘記先扣減殘值（誤算 120,000 ÷ 5 = 24,000），或把總折舊 100,000 當作每年折舊。",
-    "explanationEn": "Under the straight-line method, annual depreciation = (cost − residual value) ÷ useful life = (120,000 − 20,000) ÷ 5 = 20,000. Common mark-losing traps: forgetting to deduct the residual value first (giving 120,000 ÷ 5 = 24,000), or treating the total depreciation of 100,000 as the annual charge.",
-    "marks": 1
+    "explanationEn": "Straight-line annual depreciation = (cost − residual) ÷ useful life = (120,000 − 20,000) ÷ 5 = 20,000. Common trap: forgetting to deduct the residual value (120,000 ÷ 5 = 24,000), or mistaking total depreciation (100,000) for the annual figure."
   },
   {
     "id": "bafs-02",
@@ -61,23 +53,23 @@ export const bafsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "根據審慎性原則（prudence），期末存貨在財務報表中一般應以下列何者列賬？",
-    "contentEn": "Under the prudence concept, at what amount should closing inventory generally be stated in the financial statements?",
+    "explanation": "按審慎性原則，存貨以「成本」與「可變現淨值（NRV）」中的較低者列賬，以免高估資產與利潤。常見扣分陷阱：一律用成本入賬，或誤以售價（未實現利潤）列賬。",
     "options": [
       "成本與可變現淨值兩者中的較低者",
       "永遠以成本列賬",
       "永遠以售價列賬",
       "成本與售價兩者中的較高者"
     ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Under the prudence concept, closing inventory should generally be stated in the financial statements at which of the following?",
     "optionsEn": [
       "The lower of cost and net realisable value",
       "Always at cost",
       "Always at selling price",
       "The higher of cost and selling price"
     ],
-    "correctIndex": 0,
-    "explanation": "按審慎性原則，存貨以「成本」與「可變現淨值（NRV）」中的較低者列賬，以免高估資產與利潤。常見扣分陷阱：一律用成本入賬，或誤以售價（未實現利潤）列賬。",
-    "explanationEn": "Under the prudence concept, inventory is stated at the lower of cost and net realisable value (NRV), so that assets and profit are not overstated. Common mark-losing traps: recording at cost in all cases, or using selling price (which includes unrealised profit).",
-    "marks": 1
+    "explanationEn": "Under prudence, inventory is stated at the lower of cost and net realisable value, to avoid overstating assets and profit. Common trap: always using cost, or valuing at selling price (unrealised profit)."
   },
   {
     "id": "bafs-03",
@@ -92,23 +84,23 @@ export const bafsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某公司流動資產為 \\$180,000，流動負債為 \\$90,000。其流動比率（current ratio）為多少？",
-    "contentEn": "A company has current assets of \\$180,000 and current liabilities of \\$90,000. What is its current ratio?",
+    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 180,000 ÷ 90,000 = 2，即 2 : 1。常見扣分陷阱：把分子分母倒轉（0.5 : 1），或誤把兩者之差當成比率。",
     "options": [
       "2 : 1",
       "0.5 : 1",
       "1 : 2",
       "\\$90,000"
     ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A company has current assets of \\$180,000 and current liabilities of \\$90,000. What is its current ratio?",
     "optionsEn": [
       "2 : 1",
       "0.5 : 1",
       "1 : 2",
       "\\$90,000"
     ],
-    "correctIndex": 0,
-    "explanation": "流動比率 = 流動資產 ÷ 流動負債 = 180,000 ÷ 90,000 = 2，即 2 : 1。常見扣分陷阱：把分子分母倒轉（0.5 : 1），或誤把兩者之差當成比率。",
-    "explanationEn": "Current ratio = current assets ÷ current liabilities = 180,000 ÷ 90,000 = 2, that is 2 : 1. Common mark-losing traps: inverting the numerator and denominator (0.5 : 1), or mistaking the difference between the two figures for the ratio.",
-    "marks": 1
+    "explanationEn": "Current ratio = current assets ÷ current liabilities = 180,000 ÷ 90,000 = 2, i.e. 2 : 1. Common trap: inverting the ratio (0.5 : 1), or using the difference instead."
   },
   {
     "id": "bafs-04",
@@ -123,23 +115,23 @@ export const bafsReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "在直式（vertical form）財務狀況表中，「應收帳款（trade receivables）」一般應歸類為下列何者？",
-    "contentEn": "In a statement of financial position in vertical form, how should \"trade receivables\" generally be classified?",
+    "explanation": "應收帳款預期在一個營業週期（通常一年）內收回，屬流動資產，在直式財務狀況表中列於流動資產項下。常見扣分陷阱：與應付帳款（trade payables，屬流動負債）混淆。",
     "options": [
       "流動資產",
       "非流動資產",
       "流動負債",
       "業主權益"
     ],
-    "optionsEn": [
-      "Current assets",
-      "Non-current assets",
-      "Current liabilities",
-      "Owner’s equity"
-    ],
     "correctIndex": 0,
-    "explanation": "應收帳款預期在一個營業週期（通常一年）內收回，屬流動資產，在直式財務狀況表中列於流動資產項下。常見扣分陷阱：與應付帳款（trade payables，屬流動負債）混淆。",
-    "explanationEn": "Trade receivables are expected to be collected within one operating cycle (normally one year) and are therefore current assets, shown under current assets in a statement of financial position in vertical form. Common mark-losing trap: confusing them with trade payables, which are current liabilities.",
-    "marks": 1
+    "marks": 1,
+    "contentEn": "In a statement of financial position (vertical form), 'trade receivables' should normally be classified as which of the following?",
+    "optionsEn": [
+      "A current asset",
+      "A non-current asset",
+      "A current liability",
+      "Owner's equity"
+    ],
+    "explanationEn": "Trade receivables are expected to be collected within one operating cycle (usually a year), so they are a current asset, listed under current assets in the vertical-form statement. Common trap: confusing them with trade payables (a current liability)."
   },
   {
     "id": "bafs-05",
@@ -154,23 +146,23 @@ export const bafsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某公司應收帳款為 \\$200,000，管理層估計其中 3% 可能無法收回，須設立呆帳準備（provision for doubtful debts）。應設立的呆帳準備金額為多少？",
-    "contentEn": "A company has trade receivables of \\$200,000, and management estimates that 3% of them may be uncollectible, so a provision for doubtful debts must be created. What is the amount of the provision?",
+    "explanation": "呆帳準備 = 應收帳款 × 估計不能收回比率 = 200,000 × 3% = 6,000。這是對應收帳款的估計減值，並非直接註銷整筆帳款。常見扣分陷阱：把整筆 200,000 當壞帳註銷，或百分比小數點計錯（60,000）。",
     "options": [
       "\\$6,000",
       "\\$60,000",
       "\\$194,000",
       "\\$200,000"
     ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A company has trade receivables of \\$200,000. Management estimates 3% may be uncollectible and sets up a provision for doubtful debts. What is the amount of the provision?",
     "optionsEn": [
       "\\$6,000",
       "\\$60,000",
       "\\$194,000",
       "\\$200,000"
     ],
-    "correctIndex": 0,
-    "explanation": "呆帳準備 = 應收帳款 × 估計不能收回比率 = 200,000 × 3% = 6,000。這是對應收帳款的估計減值，並非直接註銷整筆帳款。常見扣分陷阱：把整筆 200,000 當壞帳註銷，或百分比小數點計錯（60,000）。",
-    "explanationEn": "Provision for doubtful debts = trade receivables × estimated uncollectible rate = 200,000 × 3% = 6,000. This is an estimated impairment of trade receivables, not a direct write-off of the whole balance. Common mark-losing traps: writing off the full 200,000 as a bad debt, or misplacing the decimal point in the percentage (giving 60,000).",
-    "marks": 1
+    "explanationEn": "Provision for doubtful debts = receivables × estimated uncollectible rate = 200,000 × 3% = 6,000. It is an estimated impairment of receivables, not a write-off of the whole balance. Common trap: writing off the full 200,000, or a decimal error (60,000)."
   },
   {
     "id": "bafs-06",
@@ -185,22 +177,22 @@ export const bafsReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "就有限公司的融資而言，下列關於「債權證（debentures）」的描述，何者正確？",
-    "contentEn": "Regarding the financing of a limited company, which of the following statements about \"debentures\" is correct?",
+    "explanation": "債權證持有人是公司的債權人（非股東），可獲固定利息，且利息屬須支付的費用，不論公司是否有盈利。股息與投票權屬普通股股東。常見扣分陷阱：把債權證與股份混淆，或以為利息視乎盈利才付。",
     "options": [
       "持有人是公司的債權人，可獲固定利息",
       "持有人是公司的股東，可獲股息",
       "持有人擁有公司的投票權",
       "利息只在公司有盈利時才須支付"
     ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Regarding the financing of a limited company, which statement about debentures is correct?",
     "optionsEn": [
       "Holders are creditors of the company and receive fixed interest",
       "Holders are shareholders of the company and receive dividends",
       "Holders have voting rights in the company",
       "Interest is payable only when the company makes a profit"
     ],
-    "correctIndex": 0,
-    "explanation": "債權證持有人是公司的債權人（非股東），可獲固定利息，且利息屬須支付的費用，不論公司是否有盈利。股息與投票權屬普通股股東。常見扣分陷阱：把債權證與股份混淆，或以為利息視乎盈利才付。",
-    "explanationEn": "Debenture holders are creditors of the company (not shareholders) and receive fixed interest, which is an expense that must be paid whether or not the company makes a profit. Dividends and voting rights belong to ordinary shareholders. Common mark-losing traps: confusing debentures with shares, or assuming interest is paid only out of profit.",
-    "marks": 1
+    "explanationEn": "Debenture holders are creditors (not shareholders), receive fixed interest, and that interest is an expense payable regardless of profit. Dividends and voting rights belong to ordinary shareholders. Common trap: confusing debentures with shares, or thinking interest depends on profit."
   }
 ]

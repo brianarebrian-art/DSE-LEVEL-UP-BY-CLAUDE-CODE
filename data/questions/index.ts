@@ -118,6 +118,76 @@ import { m2AutoQuestions } from './m2-auto'
 import { m1AutoQuestions } from './m1-auto'
 import { physicsAutoQuestions } from './physics-auto'
 
+// ── 實名審批批次（human-reviewed）—— 對應 load.ts 的 reviewedLoaders ────────
+// 兩邊必須同步：loader-parity.test.mts 會逐科比對 id，只加一邊即 fail。
+// 「只在 loader」= 學生見到但稽核見不到，「只在 barrel」= 反過來。
+import { bafsBatch2ReviewedQuestions } from './bafs-batch-2-reviewed'
+import { bafsFloorReviewedQuestions } from './bafs-floor-reviewed'
+import { bafsLongB1ReviewedQuestions } from './bafs-long-b1-reviewed'
+import { bafsWrittenB1ReviewedQuestions } from './bafs-written-b1-reviewed'
+import { biologyFloorReviewedQuestions } from './biology-floor-reviewed'
+import { biologyLongB1ReviewedQuestions } from './biology-long-b1-reviewed'
+import { biologyWrittenB1ReviewedQuestions } from './biology-written-b1-reviewed'
+import { biologyWrittenB2ReviewedQuestions } from './biology-written-b2-reviewed'
+import { chemistryLongB1ReviewedQuestions } from './chemistry-long-b1-reviewed'
+import { chemistryWrittenB1ReviewedQuestions } from './chemistry-written-b1-reviewed'
+import { chemistryWrittenB2ReviewedQuestions } from './chemistry-written-b2-reviewed'
+import { chineseFanwenWeakBatch2ReviewedQuestions } from './chinese-fanwen-weak-batch2-reviewed'
+import { chineseP1FillinReviewedQuestions } from './chinese-p1-fillin-reviewed'
+import { chineseWritingB1ReviewedQuestions } from './chinese-writing-b1-reviewed'
+import { chineseWritingB2ReviewedQuestions } from './chinese-writing-b2-reviewed'
+import { chineseWritingB3ReviewedQuestions } from './chinese-writing-b3-reviewed'
+import { chineseWritingB4ReviewedQuestions } from './chinese-writing-b4-reviewed'
+import { chineseHistoryWrittenB1ReviewedQuestions } from './chinese-history-written-b1-reviewed'
+import { chineseHistoryWrittenB3ReviewedQuestions } from './chinese-history-written-b3-reviewed'
+import { chineseLiteratureWrittenB1ReviewedQuestions } from './chinese-literature-written-b1-reviewed'
+import { chineseLiteratureWrittenB3ReviewedQuestions } from './chinese-literature-written-b3-reviewed'
+import { csdBatch3ReviewedQuestions } from './csd-batch3-reviewed'
+import { csdWrittenB1ReviewedQuestions } from './csd-written-b1-reviewed'
+import { csdWrittenB3ReviewedQuestions } from './csd-written-b3-reviewed'
+import { designTechWrittenB1ReviewedQuestions } from './design-tech-written-b1-reviewed'
+import { designTechWrittenB3ReviewedQuestions } from './design-tech-written-b3-reviewed'
+import { econCrossunitBatchReviewedQuestions } from './econ-crossunit-batch-reviewed'
+import { economicsLongB1ReviewedQuestions } from './economics-long-b1-reviewed'
+import { economicsWrittenB1ReviewedQuestions } from './economics-written-b1-reviewed'
+import { economicsWrittenB2ReviewedQuestions } from './economics-written-b2-reviewed'
+import { englishCrossunitBatchReviewedQuestions } from './english-crossunit-batch-reviewed'
+import { englishFloor3ReviewedQuestions } from './english-floor3-reviewed'
+import { englishWrittenB1ReviewedQuestions } from './english-written-b1-reviewed'
+import { englishWrittenB3ReviewedQuestions } from './english-written-b3-reviewed'
+import { englishWrittenBatch1ReviewedQuestions } from './english-written-batch1-reviewed'
+import { englishLiteratureWrittenB1ReviewedQuestions } from './english-literature-written-b1-reviewed'
+import { englishLiteratureWrittenB3ReviewedQuestions } from './english-literature-written-b3-reviewed'
+import { ethicsReligiousWrittenB1ReviewedQuestions } from './ethics-religious-written-b1-reviewed'
+import { ethicsReligiousWrittenB3ReviewedQuestions } from './ethics-religious-written-b3-reviewed'
+import { geographyLongB1ReviewedQuestions } from './geography-long-b1-reviewed'
+import { geographyWrittenB1ReviewedQuestions } from './geography-written-b1-reviewed'
+import { healthManagementWrittenB1ReviewedQuestions } from './health-management-written-b1-reviewed'
+import { healthManagementWrittenB3ReviewedQuestions } from './health-management-written-b3-reviewed'
+import { ictLongB1ReviewedQuestions } from './ict-long-b1-reviewed'
+import { ictWrittenB1ReviewedQuestions } from './ict-written-b1-reviewed'
+import { m1WrittenB1ReviewedQuestions } from './m1-written-b1-reviewed'
+import { m1WrittenB2ReviewedQuestions } from './m1-written-b2-reviewed'
+import { m1WrittenB3ReviewedQuestions } from './m1-written-b3-reviewed'
+import { m2WrittenB1ReviewedQuestions } from './m2-written-b1-reviewed'
+import { m2WrittenB2ReviewedQuestions } from './m2-written-b2-reviewed'
+import { m2WrittenB3ReviewedQuestions } from './m2-written-b3-reviewed'
+import { mathCrossunitBatchReviewedQuestions } from './math-crossunit-batch-reviewed'
+import { mathMedianB1ReviewedQuestions } from './math-median-b1-reviewed'
+import { musicWrittenB1ReviewedQuestions } from './music-written-b1-reviewed'
+import { musicWrittenB3ReviewedQuestions } from './music-written-b3-reviewed'
+import { peWrittenB1ReviewedQuestions } from './pe-written-b1-reviewed'
+import { peWrittenB3ReviewedQuestions } from './pe-written-b3-reviewed'
+import { physicsLongB1ReviewedQuestions } from './physics-long-b1-reviewed'
+import { physicsWrittenB1ReviewedQuestions } from './physics-written-b1-reviewed'
+import { physicsWrittenB2ReviewedQuestions } from './physics-written-b2-reviewed'
+import { technologyLivingWrittenB1ReviewedQuestions } from './technology-living-written-b1-reviewed'
+import { technologyLivingWrittenB3ReviewedQuestions } from './technology-living-written-b3-reviewed'
+import { thsWrittenB1ReviewedQuestions } from './ths-written-b1-reviewed'
+import { thsWrittenB3ReviewedQuestions } from './ths-written-b3-reviewed'
+import { visualArtsWrittenB1ReviewedQuestions } from './visual-arts-written-b1-reviewed'
+import { visualArtsWrittenB3ReviewedQuestions } from './visual-arts-written-b3-reviewed'
+
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
 // 2026-07-31（非 MC 題型接線 Phase 2）：題庫由純 MC 放寬為混合題型。
@@ -199,11 +269,43 @@ const autoBanks: Record<string, AnyQuestion[]> = {
   'chinese-history': chineseHistoryAutoQuestions,
 }
 
+// 實名審批批次 —— 必須同 load.ts 的 reviewedLoaders 逐科對得上。
+// 與 autoBanks 分開兩張表而不合併：此處每題在 data/provenance.ts 都有實名逐題
+// 審批紀錄，autoBanks 那批沒有。合併之後就再分不出邊條有人簽過名。
+const reviewedBanks: Record<string, AnyQuestion[]> = {
+  'bafs': [...bafsBatch2ReviewedQuestions, ...bafsFloorReviewedQuestions, ...bafsLongB1ReviewedQuestions, ...bafsWrittenB1ReviewedQuestions],
+  'biology': [...biologyFloorReviewedQuestions, ...biologyLongB1ReviewedQuestions, ...biologyWrittenB1ReviewedQuestions, ...biologyWrittenB2ReviewedQuestions],
+  'chemistry': [...chemistryLongB1ReviewedQuestions, ...chemistryWrittenB1ReviewedQuestions, ...chemistryWrittenB2ReviewedQuestions],
+  'chinese': [...chineseFanwenWeakBatch2ReviewedQuestions, ...chineseP1FillinReviewedQuestions, ...chineseWritingB1ReviewedQuestions, ...chineseWritingB2ReviewedQuestions, ...chineseWritingB3ReviewedQuestions, ...chineseWritingB4ReviewedQuestions],
+  'chinese-history': [...chineseHistoryWrittenB1ReviewedQuestions, ...chineseHistoryWrittenB3ReviewedQuestions],
+  'chinese-literature': [...chineseLiteratureWrittenB1ReviewedQuestions, ...chineseLiteratureWrittenB3ReviewedQuestions],
+  'csd': [...csdBatch3ReviewedQuestions, ...csdWrittenB1ReviewedQuestions, ...csdWrittenB3ReviewedQuestions],
+  'design-tech': [...designTechWrittenB1ReviewedQuestions, ...designTechWrittenB3ReviewedQuestions],
+  'economics': [...econCrossunitBatchReviewedQuestions, ...economicsLongB1ReviewedQuestions, ...economicsWrittenB1ReviewedQuestions, ...economicsWrittenB2ReviewedQuestions],
+  'english': [...englishCrossunitBatchReviewedQuestions, ...englishFloor3ReviewedQuestions, ...englishWrittenB1ReviewedQuestions, ...englishWrittenB3ReviewedQuestions, ...englishWrittenBatch1ReviewedQuestions],
+  'english-literature': [...englishLiteratureWrittenB1ReviewedQuestions, ...englishLiteratureWrittenB3ReviewedQuestions],
+  'ethics-religious': [...ethicsReligiousWrittenB1ReviewedQuestions, ...ethicsReligiousWrittenB3ReviewedQuestions],
+  'geography': [...geographyLongB1ReviewedQuestions, ...geographyWrittenB1ReviewedQuestions],
+  'health-management': [...healthManagementWrittenB1ReviewedQuestions, ...healthManagementWrittenB3ReviewedQuestions],
+  'ict': [...ictLongB1ReviewedQuestions, ...ictWrittenB1ReviewedQuestions],
+  'm1': [...m1WrittenB1ReviewedQuestions, ...m1WrittenB2ReviewedQuestions, ...m1WrittenB3ReviewedQuestions],
+  'm2': [...m2WrittenB1ReviewedQuestions, ...m2WrittenB2ReviewedQuestions, ...m2WrittenB3ReviewedQuestions],
+  'math': [...mathCrossunitBatchReviewedQuestions, ...mathMedianB1ReviewedQuestions],
+  'music': [...musicWrittenB1ReviewedQuestions, ...musicWrittenB3ReviewedQuestions],
+  'pe': [...peWrittenB1ReviewedQuestions, ...peWrittenB3ReviewedQuestions],
+  'physics': [...physicsLongB1ReviewedQuestions, ...physicsWrittenB1ReviewedQuestions, ...physicsWrittenB2ReviewedQuestions],
+  'technology-living': [...technologyLivingWrittenB1ReviewedQuestions, ...technologyLivingWrittenB3ReviewedQuestions],
+  'ths': [...thsWrittenB1ReviewedQuestions, ...thsWrittenB3ReviewedQuestions],
+  'visual-arts': [...visualArtsWrittenB1ReviewedQuestions, ...visualArtsWrittenB3ReviewedQuestions],
+}
+
 /** 該科全部題目（MC + 書寫題）。計數／課題統計用。 */
 export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
   const base = banks[subjectId]?.questions ?? []
   const extra = autoBanks[subjectId]
-  return extra?.length ? [...base, ...extra] : base
+  const reviewed = reviewedBanks[subjectId]
+  if (!extra?.length && !reviewed?.length) return base
+  return [...base, ...(extra ?? []), ...(reviewed ?? [])]
 }
 
 /**

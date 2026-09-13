@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "source": "csd-written-b4.json",
+    "subject": "csd",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "csd_w4_01": "pending",
+    "csd_w4_02": "pending",
+    "csd_w4_03": "pending",
+    "csd_w4_04": "pending",
+    "csd_w4_05": "pending",
+    "csd_w4_06": "pending",
+    "csd_w4_07": "pending",
+    "csd_w4_08": "pending"
+  }
+}

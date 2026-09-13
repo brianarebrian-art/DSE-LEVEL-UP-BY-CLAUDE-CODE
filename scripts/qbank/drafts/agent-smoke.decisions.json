@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "source": "agent-smoke.json",
+    "subject": "economics",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "agent-smoke-economics-1": "approved"
+  }
+}

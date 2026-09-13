@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "ethics-religious-written-b3.json",
+    "subject": "ethics-religious",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "eth_w3_01": "approved",
+    "eth_w3_02": "approved",
+    "eth_w3_03": "approved",
+    "eth_w3_04": "approved",
+    "eth_w3_05": "approved",
+    "eth_w3_06": "approved",
+    "eth_w3_07": "approved",
+    "eth_w3_08": "approved"
+  }
+}

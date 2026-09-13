@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "source": "design-tech-written-b3.json",
+    "subject": "design-tech",
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
+  },
+  "decisions": {
+    "dat_w3_01": "approved",
+    "dat_w3_02": "approved",
+    "dat_w3_03": "approved",
+    "dat_w3_04": "approved",
+    "dat_w3_05": "approved",
+    "dat_w3_06": "approved",
+    "dat_w3_07": "approved",
+    "dat_w3_08": "approved"
+  }
+}

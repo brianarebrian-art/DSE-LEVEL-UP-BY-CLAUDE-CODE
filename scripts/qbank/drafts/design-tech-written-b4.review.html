@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · design-tech · design-tech-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">design-tech</span></h1>
+<div class="sub">來源 design-tech-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"dat_w4_01","topic":"設計元素與原則","difficulty":"basic","question":"設計中的「對比」與「重複」看似相反，卻常同時運用。試分別說明兩者的作用，並解釋為何兩者可以並存。","explanation":"答案須指出兩者作用於不同的目的：重複建立秩序，對比製造重點。第三部分是關鍵 —— 必須有秩序作為背景，重點才顯得出，故兩者並非互斥。","type":"text","referenceAnswer":"重複的作用：建立秩序與統一感。同一種形狀、顏色、字體或間距反覆出現，使各部分被看成一個整體，而非零散的元素。重複亦令使用者建立預期 —— 見到同一種樣式，即知其功能相同，因而減少理解所需的時間。\n對比的作用：製造重點與區分層次。把某一元素在大小、顏色、形狀或方向上明顯區別於其餘，視線便會首先落在該處。對比亦用以區分不同性質的內容，例如標題與正文、可按與不可按。\n為何可以並存：\n對比之所以有效，正因為存在一個由重複建立的基準。若版面上每一件事物都不相同，便沒有任何一件顯得突出 —— 全部都是例外，等於沒有例外。反之，若一切完全相同，版面雖然整齊，卻沒有重點，使用者不知從何看起。\n因此兩者的正確關係是：以重複建立大部分元素的一致性，再以對比標示少數需要優先注意的元素。重複是背景，對比是前景；沒有背景，前景無從顯現。\n實例：一份說明書中，所有段落使用同一字體、同一行距（重複），只有警告事項使用較大字號並加上邊框（對比）。使用者一眼即可找到警告，而其餘內容仍然整齊易讀。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_02","topic":"材料與特性","difficulty":"basic","question":"設計一張戶外長椅時，選用木材與選用鋁合金各有考慮。試就耐候性與維護兩方面比較兩者。","explanation":"本題要求比較，答案須兩種材料並列，並以材料性質解釋其表現。只列結論而不說明原因者，未達要求；亦宜指出兩者的維護性質不同（定期 vs 幾乎免維護）。","type":"text","referenceAnswer":"耐候性：\n木材屬有機材料，會吸收與釋出水分。長期受雨水與日照，會出現脹縮、開裂、翹曲；濕度高時易受真菌侵蝕而腐爛，亦可能受蟲蛀。紫外線會令表面纖維降解，顏色變灰。未經處理的木材在戶外的壽命有限，須經防腐處理或選用天然耐腐的木種。\n鋁合金表面會自然生成一層緻密的氧化鋁薄膜，此膜能阻隔空氣與水分，令內部金屬不再繼續氧化，故鋁在一般環境下不會如鐵般持續生鏽。其不受真菌與蟲蛀影響，尺寸亦不隨濕度變化。但在沿海高鹽環境下，若氧化膜被破損（例如刮花或有異種金屬接觸），可能出現點蝕或電偶腐蝕。\n維護：\n木材須定期維護 —— 每一至兩年重新上油或上漆，以補充保護層；須檢查有無鬆脫、開裂或腐爛的部位並及時更換。維護成本持續，但單件更換容易，損壞部分可局部處理。\n鋁合金接近免維護，日常只需清水沖洗。若表面經陽極氧化或粉末噴塗處理，防護能力更強。但一旦出現較深的損壞或變形，修復較為困難，通常須整件更換。\n綜合：木材初期成本較低、觸感溫暖、易於局部維修，但須持續投入維護；鋁合金初期成本較高，維護需求極低，適合難以定期照料的場地。實際選擇尚須考慮使用環境（是否近海）、預期使用年期，以及該處能否安排定期保養。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_03","topic":"結構與機械","difficulty":"intermediate","question":"三角形在結構中被視為穩定的基本單元。試解釋其原因，並說明工程上如何把此原理應用於四邊形結構。","explanation":"答案須由「邊長固定則形狀唯一」這一幾何事實出發，並說明四邊形為何可以在邊長不變的情況下變形。應用部分須指出斜撐或角撐的作用即是把四邊形分割成三角形。","type":"text","referenceAnswer":"三角形為何穩定：\n三邊長度一旦確定，三角形的形狀即唯一確定，無法在不改變邊長的情況下變成另一個形狀。要令三角形變形，必須拉長或壓短其中至少一條邊，而構件抵抗拉伸與壓縮的能力遠高於抵抗彎曲的能力。因此，由鉸接構件組成的三角形，在受力時各構件只承受軸向的拉力或壓力，結構整體不會走樣。\n四邊形為何不穩定：\n四邊長度固定，形狀卻不唯一。以鉸接方式連接的四邊形，可以在各邊長度完全不變的情況下由長方形「傾側」成平行四邊形，此過程只需節點轉動，不需任何一條邊伸縮。由於節點轉動所需的力遠小於拉壓構件所需的力，此類結構在側向力（例如風力、地震）之下極易變形甚至倒塌。\n工程上的應用：\n方法一：加設斜撐。在四邊形之內加一條對角構件，四邊形即被分割成兩個三角形。原本可以自由轉動的節點，因為對角線的長度固定而被鎖住 —— 要令結構傾側，必須改變對角線的長度，即等同拉伸或壓縮該構件。常見於鋼架建築、塔式起重機、以及橋樑的桁架。\n方法二：加設角撐（節點板）。在角位加上三角形的加固板，令該節點不再是自由轉動的鉸接，而成為剛接。效果同樣是把轉動自由度消除，原理仍然是三角形。\n方法三：以剛性面板代替。把整個四邊形以一塊具剪力強度的板材封閉（例如剪力牆、夾板），板材抵抗剪切變形，效果相當於無數個三角形。\n補充：若結構須保留可動性 —— 例如摺疊椅、剪刀式升降台 —— 則會刻意保留四邊形的可變形特性，並以其他方式（鎖扣、油壓缸）在需要時固定。可見「穩定」並非永遠是目標，關鍵在於設計者是否有意識地選擇。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_04","topic":"生產工序","difficulty":"intermediate","question":"同一件塑膠產品可以用注塑或 3D 打印製造。試就生產數量與設計修改兩方面，比較兩種工序的適用情況。","explanation":"本題的核心在於成本結構的分別：注塑有高昂的模具（固定）成本而單件成本低，3D 打印幾乎無固定成本而單件成本高。答案須指出兩者存在一個成本相等的臨界數量。","type":"text","referenceAnswer":"生產數量：\n注塑的成本結構為「高固定成本、低單件成本」。開模需時數週並涉及可觀費用，但模具一旦完成，每件產品的成本極低，成型時間以秒計。因此總成本 = 模具費 + 單件成本 × 數量，數量愈大，模具費攤分到每件的部分愈小。\n3D 打印的成本結構相反 —— 幾乎沒有固定成本，不需模具，收到檔案即可開始；但每件的打印時間以小時計，材料價格較高，單件成本因而遠高於注塑，而且不會隨數量增加而顯著下降。\n兩者存在一個成本相等的臨界數量。低於該數量，3D 打印較划算；高於該數量，注塑較划算。實際臨界點視乎產品尺寸、複雜程度與模具難度，可能由數百件至數千件不等。\n設計修改：\n注塑一旦開模，修改設計的代價極高。小幅修改或可在模具上補焊再加工，大幅修改則須重新開模，時間與費用等同重來。因此注塑要求設計在開模之前已經定案，並且須考慮脫模斜度、壁厚均勻、避免倒扣等成型限制。\n3D 打印修改設計只需更新三維檔案，下一件即按新設計製造，成本與時間幾乎不變。此一特性令它極適合設計驗證階段 —— 可以連續製作多個版本，實物比較之後再定案。同時它對幾何形狀的限制少得多，中空、複雜內部結構、倒扣等在注塑中難以實現的形狀，打印可以直接做出。\n綜合建議：\n設計初期與功能驗證，以及極小批量或訂製產品，宜用 3D 打印；設計定案並確認需求量達到臨界點之後，轉用注塑量產。實務上兩者常先後使用：先以打印製作原型、反覆修改，待設計穩定後才投資開模。此一次序令模具費只在設計已確定時才支出，避免因設計變更而浪費。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_05","topic":"電腦輔助設計與製造","difficulty":"intermediate","question":"有學生認為，採用電腦輔助設計之後，製作實物模型已無必要。試評論此說。","explanation":"本題要求評論，答案須先承認該說有其依據，再指出實物模型所提供而屏幕無法提供的資訊。關鍵在於指出人體感受、真實材料行為與使用情境測試，皆不能由視覺模擬取代。","type":"text","referenceAnswer":"該說有其依據：\n電腦輔助設計確實取代了部分傳統模型的功能。三維模型可以任意旋轉、剖切、量度，發現幾何上的干涉與尺寸錯誤；渲染可以預視外觀與顏色；有限元分析可以模擬受力與變形；動態模擬可以檢查機件的運動範圍有無碰撞。這些工作若以實物進行，成本與時間都高得多。因此實物模型的需求確實比從前減少。\n但該說並不成立：\n其一，觸感與重量無法在屏幕上呈現。手持的感覺、重心位置、表面質感、開關的阻力，全部須以實物方能判斷。一件在屏幕上比例完美的手柄，握上手可能太粗或邊緣割手。凡涉及人體介面的設計，此一缺口尤其關鍵。\n其二，真實材料的行為與模擬存在差距。模擬須輸入材料參數，而實際材料存在批次差異、內部缺陷、加工所引入的殘餘應力；接合位、螺絲孔、焊點的實際強度亦往往低於理想化的模型。分析結果只是預測，實物測試才是驗證。\n其三，尺度感受難以由屏幕判斷。屏幕上的物件可以任意縮放，觀看者缺乏參照，對實際大小的判斷常有偏差。一件在屏幕上看來合適的家具，放入真實空間可能過大。\n其四，使用者測試須有實物。要觀察別人如何拿起、如何誤用、會在哪一步猶豫，必須把東西交到對方手上。此類資訊無法由設計者對著屏幕想像出來。\n其五，製造可行性。實物模型會暴露圖面上看不見的問題 —— 某個角落工具進不去、某個工序次序上做不到、公差累積令零件裝不上。\n結論：正確的說法並非「實物模型已無必要」，而是「其角色已經改變」。以往用以檢查幾何與比例的模型，大部分工作已由電腦承擔；而實物模型的價值，現已集中於【電腦不能提供的資訊】—— 觸感、真實材料行為、尺度感受、使用者行為與製造可行性。兩者是分工，不是取代。實務上的常見做法，是先在電腦中反覆修改以減少實物版本的數量，再以少數關鍵的實物模型驗證電腦無法回答的問題。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_06","topic":"設計過程","difficulty":"intermediate","question":"設計過程通常以「界定問題」為首個階段。試說明此一階段若處理不當，會對其後各階段造成甚麼影響，並指出界定問題時應注意的兩點。","explanation":"本題的重點在於指出錯誤定義的代價會隨階段推進而放大。注意事項宜包括「不要在問題陳述中預設解決方案」這一點，此為最常見的失誤。","type":"text","referenceAnswer":"處理不當的影響：\n其一，其後所有工作的方向被鎖定。構思、草圖、原型、測試皆以問題陳述為依歸。若問題本身界定錯誤，後續工作愈認真，離真正需求愈遠；技術上完美的方案，可能解決了一個不存在的問題。\n其二，修正成本隨階段遞增。在界定階段修改一句陳述幾乎沒有成本；到草圖階段須重畫；到原型階段須重做；到開模或量產階段發現問題，損失以整套模具與批量計。愈遲發現，代價愈高。\n其三，評估準則失效。方案的優劣須對照設計要求來判斷。若要求本身錯誤，評估便無從進行，最終只能憑個人喜好選擇，設計過程失去客觀依據。\n其四，難以察覺。錯誤的問題陳述不會自己報錯 —— 整個流程可以順暢走完，做出一件製作精良而無人需要的東西，直至面對真實使用者時才顯露。\n界定問題時應注意：\n注意一：不要在問題陳述中預設解決方案。\n「設計一款可摺疊的雨傘架」已經假定了答案是雨傘架、而且要摺疊；較佳的陳述是「如何在狹小的玄關安置濕雨傘，使地面不會積水而通道不受阻」。後者保留了其他可能 —— 掛鈎、吸水墊、排水槽。問題陳述一旦寫成方案，其餘可能在構思開始之前已被排除。\n注意二：確認真實需求，而非表面要求。\n使用者所說的，往往是他們想到的方案而非根本需求。若有人說「想要一個更大的書櫃」，背後的需求可能是「書太多而找不到想要的那本」，後者可以由分類、淘汰或數碼化解決，未必需要更大的書櫃。界定階段應追問「為甚麼」，直至觸及需求本身。\n（其他可接受的注意事項：明確列出限制條件（成本、尺寸、法規、使用環境）；確認使用者是誰，以及使用者與購買者是否同一人；訂出可量度的成功準則，使方案可被驗證。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_07","topic":"結構與機械・計算","difficulty":"hard","question":"一組齒輪傳動系統：驅動齒輪 A 有 20 齒，與齒輪 B（60 齒）嚙合；齒輪 B 與齒輪 C（15 齒）同軸固定；齒輪 C 與輸出齒輪 D（45 齒）嚙合。馬達驅動齒輪 A，轉速為每分鐘 1800 轉。\n(a) 計算 A 至 B 及 C 至 D 的速比。\n(b) 計算系統的總速比與齒輪 D 的轉速。\n(c) 若馬達輸出扭矩為 0.5 牛頓米，在不計損耗的情況下，計算齒輪 D 的輸出扭矩。\n(d) 齒輪 D 的實際轉速量得為每分鐘 195 轉。試計算偏差百分率，並提出一項可能的原因。","explanation":"本題的設計重點在 (b)：複合輪系的總速比是【各級速比相乘】，不是相加。把 3 與 3 相加得 6 是最常見的錯誤，會令答案由 200 變成 300。\n第二個陷阱在於齒輪 B 與 C 同軸 —— 兩者轉速相同，故 B 至 C 之間沒有速比，不可把 60 與 15 當成一級嚙合來計算。\n(c) 須留意扭矩與轉速的關係與速比相反：減速即增扭。\n(d) 要求學生把計算結果與實測比較，並意識到偏差來自現實因素而非計算錯誤。","type":"long","referenceAnswer":"(a) 速比 = 被動齒輪齒數 ÷ 主動齒輪齒數。\nA 至 B：60 ÷ 20 = 3（即 B 每轉一圈，A 轉三圈）。\nC 至 D：45 ÷ 15 = 3。\n\n(b) 齒輪 B 與 C 同軸固定，兩者轉速相同，因此 B 至 C 之間【沒有速比】，不可把 60 與 15 相除。\n總速比 = 第一級 × 第二級 = 3 × 3 = 9。\n齒輪 D 轉速 = 1800 ÷ 9 = 200 轉／分鐘。\n\n(c) 在不計損耗的前提下，輸入功率等於輸出功率。功率 = 扭矩 × 角速度，故轉速下降多少倍，扭矩即上升多少倍。\n輸出扭矩 = 0.5 × 9 = 4.5 牛頓米。\n（核對：0.5 × 1800 = 900，4.5 × 200 = 900，兩者相等，符合功率守恆。）\n\n(d) 偏差百分率 = (200 − 195) ÷ 200 × 100% = 2.5%。\n可能原因：系統存在摩擦損耗。軸承、齒面嚙合處的摩擦消耗部分輸入功率，馬達在帶負載時的實際轉速會低於空載標稱的 1800 轉／分鐘，輸出端轉速因而略低於理論值。\n（其他合理原因：齒輪存在齒隙與磨損；轉速計本身的量度誤差；齒輪與軸之間有輕微滑移。）\n補充：2.5% 的偏差屬正常範圍。若偏差遠大於此（例如超過一成），則應懷疑裝配問題、潤滑不足或負載過大，而非一般損耗。","markingScheme":"(a) 2 分 —— A 至 B：60 ÷ 20 = 3（1）；C 至 D：45 ÷ 15 = 3（1）。\n   速比須為被動齒數 ÷ 主動齒數；寫成 20 ÷ 60 者該分不給。\n(b) 2 分 —— 總速比 = 3 × 3 = 9（1）；D 的轉速 = 1800 ÷ 9 = 200 rpm（1）。\n   ⚠️ 答 3 + 3 = 6（得 300 rpm）者，兩分皆不給 —— 此為本題的核心概念。\n   ⚠️ 把 B 至 C 當成一級（60 ÷ 15 = 4）者亦不給分：同軸即同速。\n(c) 2 分 —— 列出扭矩與速比成正比（1）；0.5 × 9 = 4.5 牛頓米（1）。\n   答 0.5 ÷ 9 者概念倒轉，不給分。\n(d) 2 分 —— 偏差 = (200 − 195) ÷ 200 × 100% = 2.5%（1）；\n   提出合理原因並說明（1）。\n   可接受的原因：軸承與嚙合摩擦造成損耗；齒隙與磨損；負載下馬達實際轉速低於標稱值；量度誤差。\n   ⚠️ 答「計算錯誤」不給分 —— 題目已列明實測值，偏差屬現實因素。","suggestedMinutes":12,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"dat_w4_08","topic":"材料與結構・推理","difficulty":"hard","question":"工字樑（I 形截面）在建築中廣泛使用。試解釋為何把材料集中於上下翼緣而非平均分布，並指出此一設計的限制。","explanation":"本題須說明樑受彎時的應力分布：上下表面應力最大，中性軸處為零。答案若只說「省材料」而不解釋應力分布，屬未觸及原理。限制部分須指出其方向性 —— 工字樑只在一個方向強。","type":"text","referenceAnswer":"受彎時的應力分布：\n樑承受向下的載荷時會向下彎曲。上方的纖維被壓縮，下方的纖維被拉伸，兩者之間必然存在一層既不伸長亦不縮短的面，稱為中性軸。\n應力大小與距離中性軸的距離成正比 —— 最上與最下的表面應力最大，愈接近中性軸應力愈小，中性軸處的正應力為零。\n為何集中於上下翼緣：\n既然中性軸附近的材料承受的應力接近於零，把材料放在該處對抗彎能力貢獻甚微，卻同樣佔用重量與成本。把材料移至上下兩端，令它處於應力最大之處，即可在相同重量之下大幅提高截面對彎曲的抵抗能力（截面二次矩）。\n此即工字形截面的由來：上下翼緣承受主要的拉壓應力，中間的腹板只需足夠傳遞剪力並把兩片翼緣維持在固定距離。腹板可以做得較薄，材料因而集中於最有效的位置。\n結果是「同樣重量，抗彎能力大幅提高」，或反過來「同樣的承載能力，重量大幅減輕」。減輕自重本身亦有連鎖效益 —— 樑自身的重量也是載荷，減輕自重等於釋放更多承載能力予實際用途，並減少柱與基礎的負擔。\n設計的限制：\n其一，強度具方向性。工字樑只在腹板所在的平面內特別強；若載荷來自側向（垂直於腹板的方向），截面二次矩遠小於主方向，抗彎能力大幅下降。因此工字樑必須按預期的受力方向安裝，方向裝錯會令設計失效。\n其二，腹板較薄，易發生局部挫曲。在集中載荷處（例如支座上方或吊掛點），薄腹板可能出現局部皺曲而失穩，故該等位置通常須加設加勁板。\n其三，抗扭能力弱。開口薄壁截面的抗扭剛度遠低於同等重量的封閉截面（例如方管），故承受扭矩的構件不宜採用工字形。\n其四，翼緣受壓的一側可能出現側向扭轉挫曲。受壓翼緣如同一根細長的柱，若側向無支撐，樑可能在達到彎曲強度之前先行側傾失穩，故長跨度的工字樑須設置側向支撐。\n結論：工字樑是「按應力分布配置材料」這一原則的典型應用，其效率極高，但代價是各方面性能的不均衡。設計者採用時，必須確認受力方向明確、扭矩不大，並處理好局部與整體穩定的問題。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "design-tech";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "design-tech-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "design-tech-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

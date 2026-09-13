@@ -63,45 +63,9 @@ const BANNED_ECON = [
 ]
 
 // (3) Cantonese colloquial markers / slang — banned outside the language subjects.
-// Single chars that exist ONLY in colloquial Cantonese, plus slang phrases.
-const COLLOQUIAL = /[嘅噉冇嘢咗唔喺睇啲乜諗畀嗰嘥攞]|咁樣|秒殺|殺著|撈亂|搞反|搞錯|點樣|而家|依家|好似|邊個/
-
-// 口語 → 書面語建議對照（Oscar 2026-08-13）。
-//
-// 原本 COLLOQUIAL 命中只印一句通用訊息「question content must be 標準書面語」，
-// 唔會講應該改成乜。BANNED_* 各表一直都帶 `fix` 欄，口語表獨缺，令改稿者要自己
-// 逐個查。此表補回同一種提示，命中時直接印出建議寫法。
-//
-// ⚠️ 只收【單向明確】嘅對照。一詞多義者一律留空（回退通用訊息），寧可少提示，
-// 唔好提示錯：例如「好似」可解「猶如」亦可解「例如」，「睇」可解「觀察」「閱讀」
-// 「診斷」，按上下文而定，機器判斷唔到就唔應該亂建議。
-const COLLOQUIAL_FIX = [
-  [/而家|依家/, '現時／目前'],
-  [/點樣/, '如何'],
-  [/邊個/, '哪一個'],
-  [/咁樣|噉/, '這樣'],
-  [/秒殺|殺著/, '快速解法（避免誇張語）'],
-  [/撈亂/, '混淆'],
-  [/搞反/, '顛倒'],
-  [/搞錯/, '誤解'],
-  [/嘥/, '浪費'],
-  [/冇/, '沒有'],
-  [/唔/, '不'],
-  [/喺/, '在'],
-  [/嘅/, '的'],
-  [/咗/, '了'],
-  [/嘢/, '事物'],
-  [/啲/, '些'],
-  [/乜/, '什麼'],
-  [/嗰/, '那'],
-  [/諗/, '思考'],
-  [/畀/, '給予'],
-  [/攞/, '取得'],
-]
-const colloquialHint = (line) => {
-  const hits = COLLOQUIAL_FIX.filter(([re]) => re.test(line)).map(([, fix]) => fix)
-  return hits.length ? ` → 建議：${[...new Set(hits)].join('、')}` : ''
-}
+// 口語規則同建議對照已抽入 ./_terms.mjs，與覆核隊列報告共用 ——
+// 規則複製兩份必然漂移，而漂移之後「草稿過到、題庫過唔到」嘅縫隙會靜靜哋重開。
+import { COLLOQUIAL, colloquialHint, isLanguageBank } from './_terms.mjs'
 
 // ── P1-4 科目常數/格式鎖（Oscar 2026-07-16）。全部「單位錨定」以防誤殺
 // 計算結果啱好等於嗰個數字嘅正常選項（例如 49÷5=9.8 作為長度）。
@@ -151,7 +115,7 @@ const BANNED_ICT = [
   { re: /正規化/, fix: '規範化 (normalisation — 教育局《ICT 常用英漢辭彙》採「規範化；規格化」)' },
 ]
 
-const isLanguageBank = (name) => /^(chinese|english)/.test(name)
+// isLanguageBank 同上，見 ./_terms.mjs
 
 let violations = 0
 const report = (file, lineNo, rule, excerpt) => {

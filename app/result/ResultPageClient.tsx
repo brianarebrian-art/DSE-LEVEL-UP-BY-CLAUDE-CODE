@@ -583,8 +583,12 @@ function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: 
                     再加個標籤就會出「概念盲區概念盲區」。W3 學生自己改名之後
                     label 就唔一定帶維度，嗰陣個標籤先有用 —— 所以唔係剷走，
                     係重複先隱藏。 */}
+                {/* ink-faint 喺兩個主題分別得 2.49 / 2.36 —— globals.css 明文只准
+                    佢用於停用控件同 aria-hidden 裝飾。呢個維度名係學生要讀嘅內容，
+                    改用 ink-muted（5.82 / 6.00，過 AA），仍然淡過隔離嗰個 ink-soft，
+                    層次唔變。 */}
                 {!d.label.includes(dimensionShort(d.dimension, en)) && (
-                  <span className="ml-2 text-xs text-ink-faint">{dimensionShort(d.dimension, en)}</span>
+                  <span className="ml-2 text-xs text-ink-muted">{dimensionShort(d.dimension, en)}</span>
                 )}
               </span>
             </li>

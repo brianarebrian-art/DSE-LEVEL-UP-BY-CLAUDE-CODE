@@ -92,6 +92,53 @@ const SUBJECT_OF: Record<string, string> = {
   'music-written-b1.json': 'music',
   'pe-written-b1.json': 'pe',
   'technology-living-written-b1.json': 'technology-living',
+  // 2026-09-12 非 MC 第三批，共 117 條。派落非 MC 最薄嘅 15 科：
+  // 12 科各 +8（本身連草稿計只得 5 條，等於冇書寫練習），english / m1 / m2 各 +7。
+  // 課題全部避開同科 b1 已用嘅，亦全部係該科【已登記】課題 —— 冇新增課題，
+  // 本閘會逐個核實。m1 / m2 兩批依憲章 §5 附 Casio fx-50FH II / 3650P 程式教學
+  //（第一批漏咗呢一項，今批補返）。
+  'chinese-history-written-b3.json': 'chinese-history',
+  'chinese-literature-written-b3.json': 'chinese-literature',
+  'csd-written-b3.json': 'csd',
+  'design-tech-written-b3.json': 'design-tech',
+  'english-literature-written-b3.json': 'english-literature',
+  'ethics-religious-written-b3.json': 'ethics-religious',
+  'health-management-written-b3.json': 'health-management',
+  'music-written-b3.json': 'music',
+  'pe-written-b3.json': 'pe',
+  'technology-living-written-b3.json': 'technology-living',
+  'ths-written-b3.json': 'ths',
+  'visual-arts-written-b3.json': 'visual-arts',
+  'english-written-b3.json': 'english',
+  'm1-written-b3.json': 'm1',
+  'm2-written-b3.json': 'm2',
+
+  // 2026-09-12 非 MC 第四批，共 140 條 —— 補齊 2027 目標嘅非 MC 缺口。
+  // 缺口實測係 140（live 非 MC 1,060／目標 1,200），唔係目標書所寫嘅 117；
+  // 嗰 117 條草稿從來唔存在，見 commit 832003c。
+  //
+  // 分配原則：抬高最薄嗰批，唔係平均攤分。逐科逐課題數過之後，
+  // 12 科只得 13 條非 MC、english 15、m1／m2 各 17、math 30、history 38。
+  // 每科各取【最薄嗰幾個課題】各出一條，令冇課題停留喺 0–1 條。
+  // 課題全部係該科【已登記】課題 —— 冇新增課題，本閘會逐個核實。
+  // m1／m2／math 三科依憲章 §5 附 Casio fx-50FH II / 3650P 程式教學。
+  'history-written-b4.json': 'history',
+  'chinese-history-written-b4.json': 'chinese-history',
+  'chinese-literature-written-b4.json': 'chinese-literature',
+  'english-literature-written-b4.json': 'english-literature',
+  'csd-written-b4.json': 'csd',
+  'ethics-religious-written-b4.json': 'ethics-religious',
+  'technology-living-written-b4.json': 'technology-living',
+  'health-management-written-b4.json': 'health-management',
+  'pe-written-b4.json': 'pe',
+  'music-written-b4.json': 'music',
+  'design-tech-written-b4.json': 'design-tech',
+  'visual-arts-written-b4.json': 'visual-arts',
+  'ths-written-b4.json': 'ths',
+  'english-written-b4.json': 'english',
+  'm1-written-b4.json': 'm1',
+  'm2-written-b4.json': 'm2',
+  'math-written-b4.json': 'math',
 }
 
 // ── 草稿正本 vs 派生檔 ──────────────────────────────────────────────────────

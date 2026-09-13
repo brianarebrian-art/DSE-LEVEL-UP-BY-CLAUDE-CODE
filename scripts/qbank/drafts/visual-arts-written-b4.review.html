@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · visual-arts · visual-arts-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">visual-arts</span></h1>
+<div class="sub">來源 visual-arts-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"va_w4_01","topic":"媒材與技法","difficulty":"basic","question":"水彩與油彩在覆蓋能力與作畫次序上有所不同。試比較兩者，並說明此一分別如何影響畫家的創作方式。","explanation":"答案須指出水彩透明、難以覆蓋，故須由淺至深並預留留白；油彩不透明、可以反覆修改。第三部分須把材料特性連繫到創作心態，而非只列技法。","type":"text","referenceAnswer":"覆蓋能力：\n水彩以水稀釋，顏料層薄而透明，下層的顏色與紙張的白會透過上層顯現。因此淺色不能蓋過深色 —— 在深色之上加淺色，只會得到較混濁的深色。\n油彩以油為媒介，顏料層厚而不透明（尤其加入白色之後），淺色可以完全覆蓋深色。乾燥緩慢，濕潤時可以刮除、擦掉或直接覆蓋重畫。\n作畫次序：\n水彩須由淺至深逐層疊加，並且必須【預先計劃】留白 —— 畫面上最亮的部分是紙的白，一旦畫上顏色就無法取回。故下筆之前須先想清楚哪些位置不上色。\n油彩的次序限制較少，一般由暗部鋪起再逐步提亮，最亮的高光留至最後點上。因為可以覆蓋，畫家可以先畫再改。\n對創作方式的影響：\n水彩要求預想與果斷。由於錯誤難以修正，畫家須在動筆前已有相當完整的構想，落筆須準確而一次到位；過度修改會令畫面混濁、紙張起毛。此一限制同時是其特質的來源 —— 水彩的通透感與筆觸的鮮明，正來自不反覆塗改。\n油彩容許試錯與長時間推敲。畫家可以先鋪大關係，再逐步調整比例、色調與細節，甚至在數週後把整塊區域改掉。此一彈性使油畫適合大尺寸、多層次、構圖複雜的作品，亦容許畫家在作畫過程中改變原有構想。\n補充：兩者並無高下之分，選擇取決於創作意圖。要求即興、輕快、通透的效果，水彩較合適；要求厚重、細膩、可長期推敲的效果，則油彩較合適。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_02","topic":"視覺設計","difficulty":"basic","question":"海報設計中，「視覺層次」的作用是甚麼？試指出三種建立視覺層次的方法。","explanation":"答案須先說明層次的功能 —— 引導觀看次序，而非只令畫面好看。三種方法須具體，並宜指出各自如何影響視線。","type":"text","referenceAnswer":"視覺層次的作用：\n海報通常在數秒之內被掃視，觀者不會逐字閱讀。視覺層次的作用，是決定觀者【先看甚麼、後看甚麼】，使最重要的資訊（例如活動名稱、日期）在第一眼即被接收，次要資訊（例如詳細地址、贊助名單）則在觀者產生興趣之後才被閱讀。\n若欠缺層次，所有元素在視覺上同等重要，觀者不知從何入手，往往索性略過整張海報。故層次並非美感問題，而是資訊能否傳達的問題。\n建立層次的方法：\n方法一：大小對比。\n最重要的元素放大，次要的縮小。人眼會先被較大的形狀吸引，故字號與圖像尺寸的差距本身就是次序的指示。差距須明顯 —— 若標題與正文只相差少許，層次不成立。\n方法二：顏色與明度對比。\n把主要元素置於與背景反差最大之處，或使用與整體色調不同的強調色。高反差的區域在視覺上「跳出」，低反差的則退後。此法亦可在不改變尺寸的情況下建立層次。\n方法三：位置與留白。\n置於視線自然起點（多為左上或畫面中央偏上）的元素會被先看見。同時，在重要元素四周留出較多空白，可令它與其餘內容分開，顯得獨立而重要 —— 留白本身就是一種強調手段，且不需增加任何元素。\n（其他可接受的方法：字體粗幼與樣式的差異；以線條、色塊或方向性圖形引導視線；把相關資訊分組，令觀者一次處理一組而非逐項閱讀。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_03","topic":"中國藝術","difficulty":"intermediate","question":"中國山水畫常見「留白」，畫面並非全部填滿。試說明留白的作用，並指出它與西方傳統風景畫在空間處理上的分別。","explanation":"本題須指出留白並非「未畫完」，而是積極的構成元素。比較部分宜落在觀看方式的分別 —— 西方傳統以單點透視建構一個可進入的空間，中國山水則不預設固定視點。","type":"text","referenceAnswer":"留白的作用：\n其一，表示未定之物。空白可讀作雲、霧、水、天空或遠處的虛空，其具體所指由周圍的景物提示。同一片空白在山腰是雲，在山腳是水，畫家不必逐一描繪，觀者自行補足。\n其二，調節畫面的疏密。實景集中之處密，留白之處疏，一疏一密形成節奏，避免畫面平均而沉悶。\n其三，製造深遠感。愈遠的景物愈簡略，最終消融於空白之中，距離感因而產生，而不需依賴線性透視的縮小規律。\n其四，容納題跋與鈐印。詩文、款識與印章是作品的組成部分，留白為它們預留位置，使書、畫、印在同一畫面上並存。\n其五，留予觀者參與。空白處沒有指定內容，觀者的想像得以介入，作品因而在觀看之中完成。\n與西方傳統風景畫的分別：\n西方傳統以單一視點的線性透視建構空間。畫面被設想為一扇窗，窗外是一個連續、可測量、可進入的三維空間；地平線、消失點與物體的縮小比例共同構成一個統一的視覺系統。畫面通常填滿，因為那個空間本身是連續的，不應出現「甚麼都沒有」的區域。\n中國山水則不預設固定視點，常以移動的視線組織畫面（高遠、深遠、平遠並用），觀者的目光沿畫面遊走而非停在一處。空間並非一個可測量的容器，而是由實景與空白的關係暗示出來的。因此留白不是空間中的洞，而是空間本身的一部分。\n結論：兩者的分別，根本上是「再現一個被觀看的空間」與「引導一段觀看的過程」之別。前者要求空間完整而連貫，後者容許、甚至需要空白，令觀看得以展開。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_04","topic":"西方藝術","difficulty":"intermediate","question":"攝影術在十九世紀中葉普及之後，對西方繪畫造成衝擊。試說明此一衝擊如何促使繪畫改變方向。","explanation":"本題須指出攝影奪去了繪畫的某一項職能，迫使繪畫尋找攝影不能取代的領域。答案宜舉出具體的轉向方向，而非只說「畫家轉為抽象」。","type":"text","referenceAnswer":"衝擊的性質：\n在攝影出現之前，繪畫承擔一項重要的社會職能 —— 準確記錄人物容貌、事件場面與地方景象。肖像畫尤其是畫家的主要收入來源。攝影在準確度、速度與價格三方面都遠勝人手繪製：一張照片數分鐘完成，價格是肖像畫的零頭，而且形似程度無可爭議。\n此一職能被奪去之後，繪畫面對一個實際問題：若「畫得像」已經不再是稀缺的能力，繪畫還能提供甚麼？\n促成的轉向：\n方向一：由「記錄對象」轉向「記錄感知」。\n既然照片能記錄物件的形狀，畫家轉而處理照片所不能記錄的東西 —— 光線在特定時刻的變化、視覺的即時印象、色彩在眼中的相互作用。印象派在戶外快速作畫、以並置的色點取代混色，正是把注意力由「那件東西是甚麼樣子」移至「我看見它的那一刻是怎樣的」。\n方向二：由再現轉向表現。\n畫家開始以誇張、變形、非自然的色彩來傳達情緒與主觀感受。此一領域攝影當時難以進入，因為照片的說服力恰恰建基於它的客觀性。\n方向三：轉向形式本身。\n若繪畫不必再服務於再現，構圖、色彩關係、筆觸、平面性即可成為作品的主題。此一路徑最終通向二十世紀的抽象繪畫。\n方向四：畫家亦從攝影吸收養分。\n照片提供了新的構圖觀念 —— 偶然的裁切、人物被畫框切斷、不尋常的視角、瞬間的動態姿勢。部分畫家直接以照片為參考，或把照片式的構圖引入繪畫。\n須留意的分寸：\n其一，此一轉變並非一夜之間，亦非所有畫家皆如此回應；學院派的寫實傳統在同期仍然延續，並有其支持者。\n其二，攝影並非唯一原因。顏料工業化（管裝顏料令戶外作畫可行）、鐵路普及（畫家可輕易前往郊外）、東方藝術的傳入（平面化構圖）、以及光學與色彩理論的發展，同樣推動了上述轉向。把整場變革歸因於攝影一項，會過度簡化。\n結論：攝影的作用，與其說是「造成」新的繪畫，不如說是【取消了舊的必要性】。當再現不再是繪畫必須承擔的責任，原本被此一責任佔據的空間才騰出來，讓其他可能性得以發展。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_05","topic":"現代與當代藝術","difficulty":"intermediate","question":"有觀眾認為當代藝術「不需要技巧，人人都做得到」。試評論此說。","explanation":"本題要求評論，故須先承認該說並非全無道理，再指出它把「技巧」理解得過於狹窄。答案不宜一面倒維護當代藝術，亦不應把所有作品一概而論。","type":"text","referenceAnswer":"該說有其合理之處：\n其一，部分當代作品的製作過程確實不涉及傳統的手藝訓練。現成物、觀念作品、指令式作品（由他人按指示執行）在技術上可以由任何人完成，此為事實，並非誤解。\n其二，當代藝術的評價標準對一般觀眾而言並不透明。傳統作品的優劣有可見的依據 —— 比例、明暗、筆觸；當代作品的價值往往繫於脈絡、概念與提問方式，而這些須具備相關知識才看得出。觀眾感到「看不出好在哪裡」，是一種合理的反應，不應被輕率地當成無知。\n該說的問題：\n其一，把「技巧」等同於「手上功夫」。若技巧指的是達成意圖的能力，則當代藝術要求的技巧仍然存在，只是轉移了位置 —— 選擇一件現成物並使它產生新的意義、決定作品的尺寸與擺放方式、設計觀眾與作品的關係、處理材料與場地的實際問題，皆需要判斷與經驗。困難之處由「怎樣做出來」移至「做甚麼、為甚麼、放在哪裡」。\n其二，「人人做得到」與「人人想得到」並非同一回事。一件作品在被做出來之後，其做法往往顯得簡單；但在它出現之前，沒有人這樣做。判斷此刻此地應該提出哪一個問題，本身就是難以複製的能力。第一次做與第二次做，意義完全不同 —— 後者已不具備前者的作用。\n其三，把當代藝術當成單一類別。當代藝術包含大量對技藝要求極高的創作 —— 大型裝置的結構與工程、錄像的拍攝與剪接、複雜材料的處理、新媒體的程式編寫。以最少涉及手藝的一類概括全體，並不成立。\n須保留的一點：\n上述辯護並不等於所有當代作品都成立。有些作品概念薄弱、只在重複既有手法，或依賴市場與話語而非內容。「不能一概而論」同時意味著不能一概維護。正確的做法是逐件作品判斷 —— 它提出了甚麼問題？處理得是否恰當？形式與意圖是否相稱？\n結論：該說指出了一個真實的觀感落差，但其推論建立在對「技巧」的狹窄定義之上。較有建設性的問法，不是「這需不需要技巧」，而是「這件作品要求的是哪一種能力，它做到了沒有」。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_06","topic":"形式分析・元素與原則","difficulty":"intermediate","question":"進行形式分析時，有學生習慣先說明作品的題材與故事內容。試指出此一做法的問題，並說明形式分析應如何進行。","explanation":"本題考核方法。答案須指出題材描述與形式分析是兩回事，前者說明「畫了甚麼」，後者說明「怎樣畫、產生甚麼效果」。第二部分須提出可操作的步驟。","type":"text","referenceAnswer":"此一做法的問題：\n其一，混淆了兩種不同的工作。描述題材回答的是「畫了甚麼」，屬內容辨識；形式分析回答的是「畫家如何安排視覺元素，這些安排產生甚麼效果」。前者即使完全正確，亦未構成分析。\n其二，容易滑向講述故事而非分析作品。學生一旦進入敘述模式，其後段落往往繼續補充人物關係與情節背景，最終整篇文章談的是題材，而非畫面。\n其三，會令分析被題材牽著走。若先確定「這是一幅哀傷的作品」，其後便傾向只尋找支持此一結論的形式特徵，而忽略與之不符的部分。結論先於觀察，分析即失去發現的能力。\n其四，題材相同的兩件作品可以效果迥異，而分別正在於形式。若只描述題材，此一分別無從呈現。\n形式分析應如何進行：\n步驟一：先描述可見的形式事實，暫不作判斷。\n包括構圖（主要形狀的分布、畫面被如何分割、視覺重心何在）、線條（曲直、粗幼、方向）、色彩（主調、對比、明度分布）、質感與筆觸、空間處理（深度如何營造、有無透視）、尺寸與比例。此一階段應盡量具體，例如「深色塊集中於畫面右下方，約佔三分之一」，而非「畫面很暗」。\n步驟二：指出這些形式之間的關係。\n哪些元素重複？哪些形成對比？視線被引導至何處，由甚麼引導？畫面是穩定還是不穩定，何以如此？此一步驟把零散的觀察組織成結構。\n步驟三：說明形式所產生的效果。\n把上述結構與觀者的感受連繫起來：為何構圖令人感到壓迫？為何視線無法停留？此處須明確指出【哪一項形式特徵】造成【哪一種效果】，而非泛稱「很有張力」。\n步驟四：此時方引入題材與脈絡。\n題材並非不可談，而是應在形式分析之後引入，用以說明形式安排如何服務於內容。例如：畫家把主要人物置於畫面邊緣而非中央，而該人物正是事件的主角 —— 此一安排與題材結合，方顯出其意義。\n結論：次序本身就是方法。先形式後題材，分析建基於觀察；先題材後形式，觀察容易變成對既定印象的補充說明。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_07","topic":"藝術史・技法與風格","difficulty":"hard","question":"藝術風格的轉變，往往同時涉及技術條件與社會條件。試以任何一次風格轉變為例，說明兩類條件如何共同作用，並指出單以其中一類解釋的不足。","explanation":"本題屬方法論，答案須避免技術決定論與社會決定論兩個極端。高分答案會指出：技術提供可能性，社會條件決定該可能性是否被採用，兩者缺一則解釋不完整。","type":"text","referenceAnswer":"以十九世紀後期戶外寫生風景畫的興起為例。\n技術條件：\n其一，錫管顏料於一八四零年代出現。此前顏料須由畫家或助手自行研磨調製，存放於豬膀胱之中，攜帶不便且容易乾涸。管裝顏料可密封、可攜帶、可長時間保存，戶外作畫在技術上方才可行。\n其二，鉻、鎘等新合成顏料令色彩更為明亮而穩定，為描繪強烈日光提供了物質基礎。\n其三，便攜畫架與預先繃好的畫布可以購買，減省了現場準備的工夫。\n社會條件：\n其一，鐵路網絡擴張，畫家可以在一日之內往返城市與郊外，海邊與鄉村成為可及的題材。\n其二，中產階層興起，藝術市場由宮廷與教會的訂件轉向公開買賣。畫家可以先畫自己想畫的，再尋找買家，而不必先取得訂單。此一轉變令風景與日常題材有了市場。\n其三，學院體系的權威減弱，落選者展覽與獨立展覽提供了替代的發表渠道，不合學院標準的作品得以面世。\n其四，攝影承接了準確記錄的職能，促使繪畫轉向主觀感知。\n兩類條件如何共同作用：\n技術條件提供【可能性】，社會條件決定該可能性是否被實現、以及朝哪一個方向實現。管裝顏料本身不會令任何人走到戶外 —— 它只是取消了一項障礙。真正驅使畫家離開畫室的，是題材的市場、可達的郊外，以及不再須要取悅學院評審的自由。\n反過來，社會條件亦不足以單獨成事。即使市場歡迎風景畫、鐵路四通八達，若顏料仍須現場研磨、半日即乾，戶外快速捕捉光線的作畫方式在物理上無法實行。\n單以一類解釋的不足：\n只談技術，會推出「有了管裝顏料就必然出現印象派」這一結論。但同一批顏料同時供應給學院派畫家，他們並未因此改變作畫方式。技術是共享的，風格卻是分歧的 —— 可見技術不能解釋分歧。\n只談社會，則無法說明為何這一轉變發生於此時而非更早。市場與題材的變化是漸進的，若無物質條件配合，畫家縱有意願亦無從實踐。\n結論：兩類條件的關係並非相加，而是「必要而各自不充分」。技術移除障礙，社會提供動機與出路；兩者相遇之處，新的風格才有可能出現。分析任何一次風格轉變時，應同時追問「甚麼變得可能了」與「甚麼令人想這樣做」。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"va_w4_08","topic":"藝術評賞","difficulty":"hard","question":"評賞一件作品時，「我不喜歡」與「這件作品不好」是兩種不同的判斷。試分辨兩者，並說明評賞應如何處理個人偏好。","explanation":"本題考核評賞的態度與方法。答案須指出兩者的性質分別 —— 一為個人反應，一為須提出理由的評價。但亦不應把偏好完全排除，否則評賞會變成無人的程序。高分答案會處理這一張力。","type":"text","referenceAnswer":"兩者的分別：\n「我不喜歡」是一項關於自己的陳述。它報告觀者的反應，永遠為真 —— 沒有人可以告訴你「你其實喜歡」。正因為它不可被反駁，它亦不需要理由，而且不能作為與他人討論的共同基礎。\n「這件作品不好」是一項關於作品的陳述。它提出一個可以被質疑、被反駁、被論證的主張，因而須提出理由：作品意圖為何？所用手段是否達成該意圖？形式與內容是否相稱？同類作品之中它處於甚麼位置？\n混淆的後果：\n把偏好當成評價，會令討論無法進行 —— 若「不好」的意思只是「我不喜歡」，兩個人便沒有任何可以爭論的東西，各自報告感受即完結。同時亦會令評賞失去修正的可能：偏好無所謂對錯，故永遠不會被修正。\n反方向的錯誤同樣存在：把評價當成偏好，即「一切都是主觀的，說不上好壞」。此說看似寬容，實則取消了評賞本身 —— 若任何判斷都不能被質疑，則任何判斷亦不值得聽取。\n評賞應如何處理個人偏好：\n其一，把偏好作為起點而非終點。強烈的反應 —— 無論喜歡或抗拒 —— 通常表示作品觸及了某些東西。應追問「我為甚麼有此反應」，把感受轉化為可檢視的問題：是題材令我不安？是色彩令我不適？是它挑戰了我原有的期望？追問之後，個人反應往往能導向對作品的真實觀察。\n其二，把偏好明確標示，不要偽裝成客觀判斷。寫「我個人不喜歡這種處理，但必須承認它有效地達成了作者的意圖」，比寫「這件作品失敗」更誠實，亦更有資訊。\n其三，區分「不喜歡」與「不理解」。相當一部分的抗拒來自陌生 —— 不熟悉的形式語言、不了解的脈絡。在判斷之前先了解，往往會改變反應；若了解之後仍然不喜歡，該判斷便有了分量。\n其四，承認偏好不可能亦不應該被完全排除。評賞不是量度，沒有一套可以脫離觀者而運作的程序。分別在於：一個有自覺的觀者知道哪一部分是自己的反應、哪一部分是關於作品的論證，並且願意把後者交付討論。\n結論：目標不是消滅偏好，而是【不讓偏好冒充理由】。能夠說出「我不喜歡，但它是好的」，或「我很喜歡，但它有明顯的弱點」，正是評賞成熟的標誌。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "visual-arts";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "visual-arts-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "visual-arts-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

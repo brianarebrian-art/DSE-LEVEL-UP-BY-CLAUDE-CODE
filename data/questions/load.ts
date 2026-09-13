@@ -206,6 +206,134 @@ const autoLoaders: Record<string, Loader> = {
   'chinese-history': async () => (await import('./chinese-history-auto')).chineseHistoryAutoQuestions,
 }
 
+// ── 實名審批批次（human-reviewed）─────────────────────────────────────────
+// 由 scripts/qbank/promote-drafts.mjs 產生的 *-reviewed.ts，每批一行。
+//
+// 為何獨立一張表而不改上方各科的 loader：與 autoLoaders 同一理由 ——
+// 上方每個 loader 形狀不一（有單行式、有 Promise.all 區塊、有四個 bank 合併），
+// 逐個動手術改錯一次即會令整科題目消失。一科可有多批（例如 m1 三批），
+// 故此表的值為陣列。
+//
+// ⚠️ 此表與 autoLoaders【不可混用】：此處每一條題目在 data/provenance.ts 都有
+//    實名逐題審批紀錄，autoLoaders 那批沒有。前端 QuestionProvenance 依此
+//    如實顯示，混用即等於為未經審批的題目假稱有人簽過名。
+const reviewedLoaders: Record<string, Loader[]> = {
+  'bafs': [
+    async () => (await import('./bafs-batch-2-reviewed')).bafsBatch2ReviewedQuestions,
+    async () => (await import('./bafs-floor-reviewed')).bafsFloorReviewedQuestions,
+    async () => (await import('./bafs-long-b1-reviewed')).bafsLongB1ReviewedQuestions,
+    async () => (await import('./bafs-written-b1-reviewed')).bafsWrittenB1ReviewedQuestions,
+  ],
+  'biology': [
+    async () => (await import('./biology-floor-reviewed')).biologyFloorReviewedQuestions,
+    async () => (await import('./biology-long-b1-reviewed')).biologyLongB1ReviewedQuestions,
+    async () => (await import('./biology-written-b1-reviewed')).biologyWrittenB1ReviewedQuestions,
+    async () => (await import('./biology-written-b2-reviewed')).biologyWrittenB2ReviewedQuestions,
+  ],
+  'chemistry': [
+    async () => (await import('./chemistry-long-b1-reviewed')).chemistryLongB1ReviewedQuestions,
+    async () => (await import('./chemistry-written-b1-reviewed')).chemistryWrittenB1ReviewedQuestions,
+    async () => (await import('./chemistry-written-b2-reviewed')).chemistryWrittenB2ReviewedQuestions,
+  ],
+  'chinese': [
+    async () => (await import('./chinese-fanwen-weak-batch2-reviewed')).chineseFanwenWeakBatch2ReviewedQuestions,
+    async () => (await import('./chinese-p1-fillin-reviewed')).chineseP1FillinReviewedQuestions,
+    async () => (await import('./chinese-writing-b1-reviewed')).chineseWritingB1ReviewedQuestions,
+    async () => (await import('./chinese-writing-b2-reviewed')).chineseWritingB2ReviewedQuestions,
+    async () => (await import('./chinese-writing-b3-reviewed')).chineseWritingB3ReviewedQuestions,
+    async () => (await import('./chinese-writing-b4-reviewed')).chineseWritingB4ReviewedQuestions,
+  ],
+  'chinese-history': [
+    async () => (await import('./chinese-history-written-b1-reviewed')).chineseHistoryWrittenB1ReviewedQuestions,
+    async () => (await import('./chinese-history-written-b3-reviewed')).chineseHistoryWrittenB3ReviewedQuestions,
+  ],
+  'chinese-literature': [
+    async () => (await import('./chinese-literature-written-b1-reviewed')).chineseLiteratureWrittenB1ReviewedQuestions,
+    async () => (await import('./chinese-literature-written-b3-reviewed')).chineseLiteratureWrittenB3ReviewedQuestions,
+  ],
+  'csd': [
+    async () => (await import('./csd-batch3-reviewed')).csdBatch3ReviewedQuestions,
+    async () => (await import('./csd-written-b1-reviewed')).csdWrittenB1ReviewedQuestions,
+    async () => (await import('./csd-written-b3-reviewed')).csdWrittenB3ReviewedQuestions,
+  ],
+  'design-tech': [
+    async () => (await import('./design-tech-written-b1-reviewed')).designTechWrittenB1ReviewedQuestions,
+    async () => (await import('./design-tech-written-b3-reviewed')).designTechWrittenB3ReviewedQuestions,
+  ],
+  'economics': [
+    async () => (await import('./econ-crossunit-batch-reviewed')).econCrossunitBatchReviewedQuestions,
+    async () => (await import('./economics-long-b1-reviewed')).economicsLongB1ReviewedQuestions,
+    async () => (await import('./economics-written-b1-reviewed')).economicsWrittenB1ReviewedQuestions,
+    async () => (await import('./economics-written-b2-reviewed')).economicsWrittenB2ReviewedQuestions,
+  ],
+  'english': [
+    async () => (await import('./english-crossunit-batch-reviewed')).englishCrossunitBatchReviewedQuestions,
+    async () => (await import('./english-floor3-reviewed')).englishFloor3ReviewedQuestions,
+    async () => (await import('./english-written-b1-reviewed')).englishWrittenB1ReviewedQuestions,
+    async () => (await import('./english-written-b3-reviewed')).englishWrittenB3ReviewedQuestions,
+    async () => (await import('./english-written-batch1-reviewed')).englishWrittenBatch1ReviewedQuestions,
+  ],
+  'english-literature': [
+    async () => (await import('./english-literature-written-b1-reviewed')).englishLiteratureWrittenB1ReviewedQuestions,
+    async () => (await import('./english-literature-written-b3-reviewed')).englishLiteratureWrittenB3ReviewedQuestions,
+  ],
+  'ethics-religious': [
+    async () => (await import('./ethics-religious-written-b1-reviewed')).ethicsReligiousWrittenB1ReviewedQuestions,
+    async () => (await import('./ethics-religious-written-b3-reviewed')).ethicsReligiousWrittenB3ReviewedQuestions,
+  ],
+  'geography': [
+    async () => (await import('./geography-long-b1-reviewed')).geographyLongB1ReviewedQuestions,
+    async () => (await import('./geography-written-b1-reviewed')).geographyWrittenB1ReviewedQuestions,
+  ],
+  'health-management': [
+    async () => (await import('./health-management-written-b1-reviewed')).healthManagementWrittenB1ReviewedQuestions,
+    async () => (await import('./health-management-written-b3-reviewed')).healthManagementWrittenB3ReviewedQuestions,
+  ],
+  'ict': [
+    async () => (await import('./ict-long-b1-reviewed')).ictLongB1ReviewedQuestions,
+    async () => (await import('./ict-written-b1-reviewed')).ictWrittenB1ReviewedQuestions,
+  ],
+  'm1': [
+    async () => (await import('./m1-written-b1-reviewed')).m1WrittenB1ReviewedQuestions,
+    async () => (await import('./m1-written-b2-reviewed')).m1WrittenB2ReviewedQuestions,
+    async () => (await import('./m1-written-b3-reviewed')).m1WrittenB3ReviewedQuestions,
+  ],
+  'm2': [
+    async () => (await import('./m2-written-b1-reviewed')).m2WrittenB1ReviewedQuestions,
+    async () => (await import('./m2-written-b2-reviewed')).m2WrittenB2ReviewedQuestions,
+    async () => (await import('./m2-written-b3-reviewed')).m2WrittenB3ReviewedQuestions,
+  ],
+  'math': [
+    async () => (await import('./math-crossunit-batch-reviewed')).mathCrossunitBatchReviewedQuestions,
+    async () => (await import('./math-median-b1-reviewed')).mathMedianB1ReviewedQuestions,
+  ],
+  'music': [
+    async () => (await import('./music-written-b1-reviewed')).musicWrittenB1ReviewedQuestions,
+    async () => (await import('./music-written-b3-reviewed')).musicWrittenB3ReviewedQuestions,
+  ],
+  'pe': [
+    async () => (await import('./pe-written-b1-reviewed')).peWrittenB1ReviewedQuestions,
+    async () => (await import('./pe-written-b3-reviewed')).peWrittenB3ReviewedQuestions,
+  ],
+  'physics': [
+    async () => (await import('./physics-long-b1-reviewed')).physicsLongB1ReviewedQuestions,
+    async () => (await import('./physics-written-b1-reviewed')).physicsWrittenB1ReviewedQuestions,
+    async () => (await import('./physics-written-b2-reviewed')).physicsWrittenB2ReviewedQuestions,
+  ],
+  'technology-living': [
+    async () => (await import('./technology-living-written-b1-reviewed')).technologyLivingWrittenB1ReviewedQuestions,
+    async () => (await import('./technology-living-written-b3-reviewed')).technologyLivingWrittenB3ReviewedQuestions,
+  ],
+  'ths': [
+    async () => (await import('./ths-written-b1-reviewed')).thsWrittenB1ReviewedQuestions,
+    async () => (await import('./ths-written-b3-reviewed')).thsWrittenB3ReviewedQuestions,
+  ],
+  'visual-arts': [
+    async () => (await import('./visual-arts-written-b1-reviewed')).visualArtsWrittenB1ReviewedQuestions,
+    async () => (await import('./visual-arts-written-b3-reviewed')).visualArtsWrittenB3ReviewedQuestions,
+  ],
+}
+
 /**
  * Load one subject's question bank on demand (its own chunk). Returns [] for an
  * unknown subject. Use this from CLIENT components instead of the eager barrel.
@@ -214,7 +342,7 @@ const autoLoaders: Record<string, Loader> = {
  * 直接取用全部題目通常並不正確，因為兩類題目走完全不同的批改流程。
  */
 export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuestion[]> {
-  if (!loaders[subjectId] && !autoLoaders[subjectId]) return []
+  if (!loaders[subjectId] && !autoLoaders[subjectId] && !reviewedLoaders[subjectId]) return []
 
   // ① 瀏覽器直連 Supabase（2026-09-05）。節省的是 Vercel Edge Request ——
   //    題目流量由 Vercel 移至 Supabase；而回訪者連題目流量亦不產生
@@ -234,8 +362,15 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   //    迴歸鎖：lib/__tests__/question-cloud.test.mts
   const loader = loaders[subjectId]
   const auto = autoLoaders[subjectId]
-  const [base, extra] = await Promise.all([loader ? loader() : [], auto ? auto() : []])
-  return extra.length ? [...base, ...extra] : base
+  const reviewed = reviewedLoaders[subjectId] ?? []
+  const [base, extra, ...revBatches] = await Promise.all([
+    loader ? loader() : [],
+    auto ? auto() : [],
+    ...reviewed.map((f) => f()),
+  ])
+  const rev = revBatches.flat()
+  if (!extra.length && !rev.length) return base
+  return [...base, ...extra, ...rev]
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */

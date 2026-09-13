@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · csd · csd-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">csd</span></h1>
+<div class="sub">來源 csd-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"csd_w4_01","topic":"法治、權利與責任","difficulty":"basic","question":"有人把「法治」理解為「人人守法」。試指出此一理解遺漏了法治的哪兩項要求。","explanation":"本題考核概念的完整性。守法只是其中一層；答案須指出法律本身須符合的條件，以及政府同樣受法律約束這一點。只答「要守法之餘也要有良法」而無說明者，內容過於籠統。","type":"text","referenceAnswer":"遺漏一：政府本身亦受法律約束。\n法治不只要求市民守法，同時要求行使公權力者依法辦事，其權力來源、範圍與程序均須有法律依據，並可受獨立機構審查。若只有市民須守法而掌權者不受限制，該情況應稱為「以法管治」，並非法治。\n遺漏二：法律本身須符合若干形式要求。\n法律須公開、明確、不溯及既往，並對同類情況一視同仁；市民必須能夠事先知道何謂合法，方可據以安排生活。若法律內容隱晦、朝令夕改，或針對特定對象而設，即使人人服從，亦不符合法治的要求。\n（其他可接受的要求：司法獨立；市民在權利受侵害時可尋求有效的司法救濟。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_02","topic":"經濟全球化","difficulty":"basic","question":"經濟全球化令生產工序分散於不同地區。試指出此一分工方式為參與生產的發展中經濟體帶來的一項利益與一項風險。","explanation":"答案須具體指向【參與生產】的一方，而非泛論全球化的好壞。風險一項宜落在依賴性或議價能力之上，只答「污染」則未緊扣分工這一條件。","type":"text","referenceAnswer":"利益：取得就業、外匯與技術學習的機會。\n承接某一生產工序，可以在本地創造大量就業，吸納由農業轉出的勞動力；出口所得的外匯可用於進口設備；而長期承接生產亦有機會累積管理與工藝經驗，為日後升級至較高附加值的工序創造條件。\n風險：承接的工序多屬可替代性高的環節，議價能力弱。\n若所參與的只是組裝一類技術門檻較低的工序，跨國企業可在成本上升時轉往他地，該經濟體缺乏留住生產的籌碼。與此同時，長期停留於低附加值環節，利潤大部分由掌握設計、品牌與銷售渠道的一方取得，本地即使產量龐大，收益比例仍然偏低。\n（其他可接受的風險：過度依賴單一外部市場，該市場一旦轉弱即全面受創。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_03","topic":"「一國兩制」與憲制秩序","difficulty":"intermediate","question":"香港特別行政區實行的制度由《中華人民共和國憲法》與《基本法》共同構成憲制基礎。試說明為何理解香港的憲制秩序須同時參照兩份文件。","explanation":"本題屬制度理解題，答案應說明兩份文件各自的功能與相互關係，並指出只看其一會產生何種理解缺口。答案須客觀交代制度安排，不宜作政治立場的評論。","type":"text","referenceAnswer":"兩份文件的關係在於：一者提供設立的依據，一者規定運作的內容。\n《憲法》方面：特別行政區這一建制，源自《憲法》第三十一條授權國家在必要時設立特別行政區，並由全國人民代表大會以法律規定該區實行的制度。換言之，特別行政區得以存在、以及其制度得以不同於內地，其法律依據在《憲法》之內。若只讀《基本法》，便無從說明該部法律本身的權力來源。\n《基本法》方面：《基本法》由全國人民代表大會制定，具體規定特別行政區的政治體制、居民的權利與義務、經濟與社會制度、以及與中央的關係，並訂明原有法律基本不變、保留普通法制度。日常運作中所依據的具體規則，絕大部分在此。\n只看其一的缺口：僅參照《憲法》，無法得知特區實際實行何種制度；僅參照《基本法》，則無法說明該法的效力何來，亦無法理解涉及中央職權的條文（例如國防、外交、法律解釋權）為何如此安排。\n結論：兩份文件在不同層次上運作，前者確立地位與授權，後者規定內容與程序，須合併閱讀方能得出完整的理解。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_04","topic":"香港社會與參與","difficulty":"intermediate","question":"香港人口老化持續，長者比例上升。試分析此一趨勢對公共財政與勞動市場各帶來的一項挑戰，並指出兩者之間的關聯。","explanation":"本題要求三部分：財政挑戰、勞動市場挑戰、以及兩者關聯。第三部分是分辨高低分的關鍵 —— 兩項挑戰並非各自獨立，而是互相加強。","type":"text","referenceAnswer":"公共財政的挑戰：醫療與福利開支上升，而稅基相對收窄。\n長者對醫療服務的使用率遠高於其他年齡組別，公營醫院、長者社區照顧與院舍服務的需求同步上升；同時，退休人士不再繳交薪俸稅，而政府的經常收入有相當部分來自受薪人口。開支上升與收入基礎收窄同時發生，結構性壓力因而形成。\n勞動市場的挑戰：勞動人口萎縮，部分行業出現人手短缺。\n退休人數超過新加入勞動市場的人數時，整體勞動力下降。護理、建造、運輸等體力需求較高或入職吸引力較低的行業首當其衝，人手不足會限制服務供應，亦推高營運成本。\n兩者的關聯：互相加強，形成循環。\n勞動人口萎縮令稅收增長放緩，削弱政府應付醫療與福利開支的能力；而護理人手短缺會推高單位服務成本，令同一筆開支所能提供的服務減少，等同進一步加重財政壓力。與此同時，若照顧服務供應不足，部分在職人士須辭職或減少工時以照顧家中長者，勞動人口再受一重削減。\n（可補充的回應方向：延長工作年限、提升生產力、釋放婦女與長者的勞動參與、調整醫療系統的服務組合。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_05","topic":"改革開放與國家發展","difficulty":"intermediate","question":"改革開放初期採取「先試點、後推廣」的方式推行政策。試說明此一做法的兩項優點，並指出其一項局限。","explanation":"本題考核政策推行方法，答案不必評價改革本身。優點宜落在風險控制與資訊收集之上；局限可從地區差異或既得利益形成方面著手。","type":"text","referenceAnswer":"優點一：把政策失誤的代價限制在可控範圍之內。\n大規模政策一旦全國同時推行而出現偏差，糾正成本極高，影響人口以億計。先在有限地區試行，若效果不如預期，可以及時調整或中止，損失僅限於試點範圍。對一個經濟基礎薄弱、缺乏犯錯餘裕的階段而言，這一點尤其重要。\n優點二：產生可供比較的實際資料。\n試點與未試點地區同時存在，等於形成一組現實中的對照，決策者可以觀察差異究竟由政策造成，抑或由其他因素造成。相較於單憑推論或外國經驗，此種資料更貼近本地條件，亦更容易說服持不同意見者。\n局限：試點的成功未必可以複製。\n獲選作試點的地區，往往在區位、基礎設施、人才或政策配套上原已較具優勢，其成果部分來自這些條件而非政策本身。推廣至條件不同的地區時，同一政策的效果可能大打折扣。此外，試點期間形成的利益關係，亦可能令其後的調整變得困難。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_06","topic":"互聯相依的世界","difficulty":"intermediate","question":"跨境傳染病、氣候變化等議題須各國合作方能處理，但實際合作往往困難重重。試解釋造成合作困難的兩項結構性原因。","explanation":"題目指明「結構性原因」，故答案不應停留於「某些國家不願意」。須指出即使各國均認同問題存在，仍會出現的集體行動困難，例如成本與利益的分配方式與監督問題。","type":"text","referenceAnswer":"原因一：成本由個別國家承擔，利益卻由所有國家共享。\n減排、建立監測系統、儲備物資等措施，開支與政治代價落在採取行動的一方；而改善後的環境或較低的疫症風險，不採取行動者同樣受惠，亦無法排除其受惠。在此結構下，每一國都有等待他國先行的誘因；若各國皆如此計算，集體行動便難以啟動。這並非某一國特別自私，而是誘因結構所致。\n原因二：欠缺具強制力的執行機制。\n國際協議大多依賴自願遵守，缺乏類似國內法院與執法機關的強制手段。即使各方簽署，履行程度亦難以核實：排放數據由各國自行申報，疫情資訊的公布時機涉及本國經濟與聲譽考慮。監督既不完備，違約的成本便偏低，協議的約束力隨之下降。\n（其他可接受的原因：各國發展階段不同，對「公平分擔」的理解存在根本分歧；問題的後果在時間與地域上分布不均，受影響最深者未必是排放或風險的主要來源。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_07","topic":"科技創新與綜合國力","difficulty":"hard","question":"有意見以專利申請數量作為衡量一國創新能力的指標。試評論此一指標，並提出兩項可以補充的衡量方式。","explanation":"本題與指標評估相關，答案須指出該指標【何以】會失真，而非只說「不夠全面」。所提補充方式須針對已指出的缺陷，否則兩部分脫節。","type":"text","referenceAnswer":"該指標的可取之處：專利數量客觀、可以逐年比較，資料由專責機構登記，收集成本低，且在跨國比較時定義相對一致。作為觀察趨勢的粗略工具，有其用處。\n失真的原因：\n其一，數量不等於質素。專利之間的價值差異極大，一項改變整個行業的發明與一項只作微小改良的設計，在統計上各計一件。若只看總數，兩者無從分辨。\n其二，申請行為受政策與制度影響。若政府按專利數量提供補貼、將其納入機構考績或人才評審，申請量會上升，而該上升未必反映技術進步。此時指標所量度的，其實是誘因而非創新。\n其三，各行業的專利傾向不同。軟件、商業模式與服務業的創新未必以專利形式出現；部分企業寧可以商業秘密保護技術。以專利數量比較產業結構不同的國家，會系統性地低估某些領域。\n補充方式一：專利的被引用次數與同族專利的覆蓋國家數目。\n被後來的專利頻繁引用，顯示該技術具影響力；在多個國家申請保護，則反映申請人相信其具備商業價值，願意承擔額外費用。兩者均針對「質素」這一缺口。\n補充方式二：研發投入的產出效率與技術的實際採用率。\n觀察研發開支佔生產總值的比率之外，更應觀察新技術在產業中的實際採用情況，例如新設備的普及程度、相關產品的市場佔有率。此項針對「申請不等於應用」這一缺口。\n（其他可接受的補充：高技術產品出口比重；科研人員佔就業人口比例；企業自資研發佔總研發的比重。）\n結論：任何單一指標皆可被針對性地推高，故評估創新能力宜同時採用數項性質不同的指標，並留意各項指標本身會否反過來影響被量度的行為。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"csd_w4_08","topic":"資料回應・數據詮釋","difficulty":"hard","question":"一份報告顯示，某市過去十年的平均家庭收入上升了兩成，同期市民對「生活改善」的自評比例卻下跌。試提出三項可以同時解釋兩組數據的可能原因，並說明須補充哪些資料方可判別。","explanation":"本題的核心在於「平均數」與「自評」兩種數據各自的性質。學生常見錯誤是直接斷定其中一組數據造假；正確做法是先尋找可令兩者同時成立的解釋。第二問要求指出判別所需資料，缺此即未完成。","type":"text","referenceAnswer":"須先注意：兩組數據並不直接矛盾。前者為客觀貨幣金額的平均值，後者為主觀感受的比例，兩者量度的對象不同，可以同時為真。\n可能原因一：分配變化。平均數由總額除以住戶數目，若收入增長集中於高收入住戶，平均數可以上升兩成，而中位住戶的收入幾乎不變。多數市民的實際處境沒有改善，自評下跌並不矛盾。\n可能原因二：物價與必要開支上升幅度超過收入。\n報告所列若為名義收入，則須扣除同期通脹。若住屋、交通、醫療等難以削減的開支升幅高於兩成，實質可支配收入反而下降，收入數字上升而生活感受轉差。\n可能原因三：比較基準隨時間改變。\n自評是相對判斷，市民會與身邊的人、與社會整體、或與自身的期望比較。若期望隨經濟增長而上升得更快，或社會差距擴大令比較對象改變，即使自身狀況略有改善，自評仍可轉差。\n（其他可接受的原因：非收入因素轉差，例如工時延長、居住面積縮小、空氣質素或通勤時間惡化，這些不進入收入統計但直接影響生活感受。）\n判別所需的補充資料：\n其一，收入的中位數與分布（例如各分位數的變化），用以判別是否屬分配問題。\n其二，同期的消費物價指數，特別是住屋與必需品的分項指數，用以計算實質收入。\n其三，自評問題的確切措辭與抽樣方法，並確認十年間有否更改 —— 措辭或樣本改變會令前後數據不可直接比較。\n其四，非收入生活指標的時間序列，例如工時、居住面積、通勤時間。\n說明：上述四項並非同一層次的補充。首兩項針對數據本身的性質，第三項針對數據的可比性，第四項則引入收入以外的解釋。若第三項顯示問卷曾經更改，則其餘分析須重新評估，故宜優先處理。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "csd";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "csd-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "csd-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

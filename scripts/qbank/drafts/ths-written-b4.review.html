@@ -1,0 +1,113 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人手覆核 · ths · ths-written-b4.json</title>
+<style>
+  :root { --bg:#0b1020; --card:#141b2e; --line:#28324a; --ink:#e8ecf5; --dim:#9aa5bf; --ok:#22c55e; --no:#ef4444; --wait:#f5b942; --accent:#5b8cff; }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif; padding-bottom:96px; }
+  header { padding:20px 24px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; } .sub { color:var(--dim); font-size:15px; }
+  .wrap { max-width:860px; margin:0 auto; padding:20px 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card.approved { border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset; }
+  .card.rejected { border-color:var(--no); opacity:.55; }
+  .meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--dim); margin-bottom:10px; }
+  .badge { padding:2px 10px; border-radius:999px; border:1px solid var(--line); }
+  .q { font-size:19px; font-weight:600; margin:6px 0 14px; white-space:pre-wrap; }
+  ul { list-style:none; margin:0 0 14px; padding:0; } li { padding:9px 14px; border:1px solid var(--line); border-radius:10px; margin:7px 0; white-space:pre-wrap; }
+  li.correct { border-color:var(--ok); background:rgba(34,197,94,.10); font-weight:600; }
+  li.correct::before { content:"✅ "; }
+  .exp { color:var(--dim); font-size:15px; background:rgba(91,140,255,.07); border-left:3px solid var(--accent); padding:10px 14px; border-radius:0 8px 8px 0; white-space:pre-wrap; }
+  .acts { display:flex; gap:10px; margin-top:16px; } .acts button { flex:1; min-height:52px; font-size:17px; font-weight:700; border-radius:12px; border:2px solid var(--line); background:transparent; color:var(--ink); cursor:pointer; }
+  .acts .a.on { background:var(--ok); border-color:var(--ok); color:#04140a; } .acts .r.on { background:var(--no); border-color:var(--no); color:#fff; } .acts .p.on { background:var(--wait); border-color:var(--wait); color:#1a1200; }
+  footer { position:fixed; left:0; right:0; bottom:0; background:#0b1020ee; backdrop-filter:blur(8px); border-top:1px solid var(--line); padding:12px 16px; }
+  .fwrap { max-width:860px; margin:0 auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .counts { font-size:15px; } .counts b { font-size:18px; } .grow { flex:1; }
+  input#rev { min-height:44px; padding:0 12px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); font-size:15px; }
+  button#exp { min-height:48px; padding:0 20px; font-size:16px; font-weight:800; border-radius:12px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  .hint { color:var(--dim); font-size:13px; padding:0 16px 8px; max-width:860px; margin:0 auto; }
+  .note { color:var(--wait); font-size:13px; }
+</style></head><body>
+<header><div class="wrap" style="padding-bottom:0"><h1>👤 人手逐題覆核 — <span style="color:var(--accent)">ths</span></h1>
+<div class="sub">來源 ths-written-b4.json · 共 8 題已通過機器客觀閘（格式／去重／術語）。<span class="note">機器唔判對錯 —— 每題嘅學術正確與否，由你決定。</span></div></div></header>
+<div class="hint">⌨️ 快捷鍵：<b>A</b> 通過 · <b>R</b> 退回 · <b>P</b> 待定 · <b>J / K</b> 上一題／下一題。數學題以原始 $LaTeX$ 顯示（如需精確排版可喺 preview 對照）。</div>
+<div class="wrap" id="list"></div>
+<footer><div class="fwrap">
+  <span class="counts">✅ <b id="cA">0</b> 通過 · ❌ <b id="cR">0</b> 退回 · ⏳ <b id="cP">8</b> 待定</span>
+  <span class="grow"></span>
+  <input id="rev" placeholder="覆核人姓名（會蓋印落題庫）" />
+  <button id="exp">⬇️ 匯出審批結果 (decisions.json)</button>
+</div></div>
+<script>
+const DATA = [{"id":"ths_w4_01","topic":"旅遊與款待業概論","difficulty":"basic","question":"旅遊業的產品具有「不可儲存」的特性。試說明此一特性的意思，並指出它為經營者帶來的兩項挑戰。","explanation":"答案須先說明不可儲存的具體意思 —— 今日賣不出的房間不能留待明日出售，而非只覆述術語。挑戰須與此特性有因果關係，泛答「競爭激烈」不予高分。","type":"text","referenceAnswer":"特性的意思：\n酒店房間、航班座位、餐廳座位等產品，其「生產」與「消費」同時發生，且供應量在短期內固定。今晚未售出的房間，不能儲存至明晚出售 —— 該晚的收入機會永久消失。與製造業不同，製造業的存貨可以留待日後出售，旅遊業則無此可能。\n挑戰一：需求波動之下，收入損失無法補回。\n需求受季節、假期、天氣、事件影響，起伏極大。淡季時大量房間空置，而固定成本（租金、折舊、基本人手、水電）照樣支出；旺季時即使需求超出供應，亦無法以淡季的閒置產能來滿足。全年平均入住率因而難以提升，經營者須在淡季蒙受確定的損失。\n挑戰二：定價與訂房管理的壓力極大。\n由於空置等同零收入，經營者面對「寧可低價售出，也不要空置」的誘因；但長期低價會損害品牌定位，並令顧客養成等待減價的習慣。同時，過度接受預訂（超額預訂）以填補臨時取消的空缺，一旦取消率低於預期，便會出現無房可派的情況，損害聲譽。如何在「空置」與「超賣」之間拿捏，是持續的難題。\n（其他可接受的挑戰：人手編配困難 —— 需求高峰需要大量人手，低谷則閒置，而人手不能如存貨般調動；投資回收期長而風險集中於特定時段。）","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_02","topic":"餐飲服務","difficulty":"basic","question":"自助餐與單點形式在人手安排與成本控制上有何分別？試比較說明。","explanation":"本題要求比較，須兩種形式並列。成本控制部分宜指出自助餐的食物成本較難預計而人手成本較低，單點則相反，並說明原因。","type":"text","referenceAnswer":"人手安排：\n自助餐把取餐的工作交予顧客，服務員主要負責補充食物、收拾餐具與提供飲品。同一個服務員可以照顧較多座位，故每位顧客所需的服務人手較少。但廚房須在開餐前完成大量菜式並持續補充，廚務人手集中於備餐階段，且須有人專責監察食物溫度與衞生。\n單點形式則每一道菜按單製作，服務員須負責點餐、落單、上菜、更換餐具、結賬，並須熟悉菜式內容以回答查詢。每位服務員可照顧的座位較少。廚房方面，出品時間分散於整個營業時段，須按單即製，對廚師的技術與速度要求較高。\n成本控制：\n食物成本方面，自助餐較難預計。顧客取用量因人而異，剩食難以再用，而為了維持餐檯的賣相，即使接近收市亦須保持一定的擺放量，浪費因而較高。經營者須以歷史數據估算人均取用量，並藉菜式配搭（例如把成本較低的項目置於動線前段）控制成本。\n單點的食物成本較易控制，因為每一道菜的分量與用料固定，成本可以逐項計算，售價亦可對應成本設定。存貨管理亦較精確。\n人手成本方面則相反：自助餐的前廳人手較少，人均服務成本較低；單點需要較多且較熟練的服務員與廚師，人手成本較高。\n綜合：自助餐以固定售價換取翻檯速度與人手效率，代價是食物成本的不確定；單點以較高的人手成本換取食物成本的可控與售價的彈性。兩者的選擇須配合目標顧客、場地條件與營業時段。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_03","topic":"旅遊目的地","difficulty":"intermediate","question":"一個旅遊目的地若過度依賴單一客源市場，會面對甚麼風險？試說明兩項，並提出一項分散風險的策略。","explanation":"答案須指出風險的機制，而非只說「危險」。所提策略須具體，並且與所指出的風險對應；泛答「加強宣傳」而不說明向誰宣傳、如何改變產品，不予高分。","type":"text","referenceAnswer":"風險一：該市場的外部衝擊會直接傳導至目的地。\n單一客源市場的經濟衰退、貨幣貶值、政策改變（例如簽證或出境限制）、或該地與目的地之間的關係轉變，皆會令客量在短期內大幅下跌。由於缺乏其他市場緩衝，整體旅客人次幾乎按同一比例下跌，酒店、餐飲、零售、交通同時受創。此類衝擊的來源在目的地【控制範圍之外】，經營者無從預防，只能承受。\n風險二：產品與服務逐步單一化，令轉型困難。\n長期服務同一市場，商戶會按該群顧客的偏好調整菜式、語言、營業時間、購物種類與宣傳方式。此一適應在客量穩定時提升效率，但同時削弱了服務其他市場的能力 —— 員工的語言技能、餐飲口味、行程設計皆已高度專門化。一旦原有市場萎縮，即使有意轉向其他客源，亦需時間與投資方能重新配置，而此一空窗期正是最脆弱的時候。\n（其他可接受的風險：議價能力下降，旅行社與航空公司可挾客量要求更優惠的條件；旅客結構單一令淡旺季高度重疊，設施使用率的波動更為極端。）\n分散風險的策略：發展「多市場、多動機」的客源組合。\n具體做法包括：\n其一，識別與現有市場在季節性上互補的新市場。若原有市場集中於夏季出遊，可針對冬季出遊的地區推廣，令全年需求較為平均。\n其二，按旅遊動機（而非只按地域）分散。例如在既有的觀光客之外，發展會議展覽、醫療、教育交流、體育賽事等客群。此類旅客的出行決定受不同因素驅動，不會與觀光客同時波動。\n其三，同步調整產品而非只調整宣傳。包括培訓多語言人手、增加不同飲食選擇、設計適合不同文化習慣的行程，並確保指示與資訊的多語言化。宣傳吸引新客源，產品決定他們是否再來。\n其四，設定可監察的指標。例如訂立「單一市場佔比不超過某一水平」的目標，並定期檢視，使分散成為持續的管理工作而非一次性的宣傳項目。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_04","topic":"旅行社與會展","difficulty":"intermediate","question":"會議展覽旅客與一般觀光旅客在消費模式與季節分布上有何分別？試說明此一分別對主辦城市的意義。","explanation":"答案須具體比較兩類旅客，並在第三部分指出對城市的實際意義 —— 尤其是填補淡季與提高人均消費兩點。只描述分別而不談意義者，未完成題目。","type":"text","referenceAnswer":"消費模式的分別：\n會展旅客的人均消費通常較高。原因有幾項：其一，費用多由公司或主辦機構承擔，個人對價格的敏感度較低；其二，住宿多選擇位置便利、設施齊全的中高檔酒店；其三，商務宴請、場地租用、展位佈置、器材租賃等會展特有的開支，本身即構成可觀的收入；其四，隨行人員與延伸行程（會後多留數日觀光）帶來額外消費。\n一般觀光旅客則自付費用，對價格較為敏感，住宿與餐飲的選擇範圍較廣，消費集中於景點門票、購物與交通。\n季節分布的分別：\n觀光旅客高度集中於假期、長假與氣候宜人的季節，全年需求呈明顯的高峰與低谷。\n會展活動的日期則由主辦機構按場地檔期與業界周期編排，通常刻意避開度假高峰 —— 一來場地與酒店在旺季難以預訂且價格高昂，二來與會者本身不願在假期出差。結果是會展活動多落在觀光淡季，兩者在時間上互補。\n對主辦城市的意義：\n其一，填補淡季，提高全年設施使用率。旅遊業的產品不可儲存，淡季空置即永久損失。會展需求落在觀光淡季，可令酒店與場地的全年平均入住率上升，固定成本得以分攤，經營穩定性明顯改善。\n其二，提升單位旅客的經濟貢獻。在旅客人次不變的情況下，會展旅客的較高人均消費令旅遊收益上升；對承受力有限的城市而言，此一路徑比單純追求人次增長更為可取，因為它不會同步加重交通、景點與居民生活的負擔。\n其三，帶動相關產業與專業服務。場地營運、展覽工程、翻譯、影音技術、公關與物流等皆因會展而發展，形成較高技術含量的就業。\n其四，聲譽與長遠效益。國際會議與展覽把該城市置於業界視野之內，與會者的印象會影響其後的投資、合作與再度到訪的決定。此類效益不會即時反映於當期收入，但長期而言可能更為重要。\n須注意的一點：會展需求依賴場地規模、交通連繫、酒店供應與簽證便利，而且城市之間競爭激烈。若基礎設施不足，單靠宣傳難以爭取到大型活動。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_05","topic":"可持續旅遊","difficulty":"intermediate","question":"「承載力」是可持續旅遊的重要概念。試說明承載力包含哪幾個面向，並解釋為何單以「每日遊客上限」作管理手段並不足夠。","explanation":"答案須指出承載力並非單一數字，而涵蓋自然、設施、社會與體驗四個面向。第二部分須說明人次上限所忽略的因素，例如時間分布與旅客行為。","type":"text","referenceAnswer":"承載力的面向：\n其一，自然環境承載力。指生態系統在不出現不可逆損害的前提下所能承受的使用程度，例如珊瑚礁可承受的潛水人次、山徑可承受的踐踏而不至土壤流失。\n其二，設施承載力。指道路、供水、污水處理、電力、泊車位、廁所等基礎設施的容量。超出之後即出現擠塞、供水不足或污水處理超負荷。\n其三，社會承載力。指當地居民對旅遊活動的容忍程度。超出之後會出現物價與租金上升、公共空間被佔用、生活節奏被打擾，居民對旅遊業的態度由歡迎轉為抗拒。\n其四，體驗承載力。指旅客本身所能接受的擁擠程度。人數過多會令遊覽體驗下降 —— 排隊過久、無法拍照、聽不到導賞，旅客滿意度與重遊意願隨之下跌。\n四者的上限並不相同，最低的一項即是實際的限制所在。\n為何單以每日人次上限不足夠：\n其一，忽略時間分布。同樣是每日三千人，若集中於上午十時至正午之間抵達，與平均分布於全日，對場地與居民的壓力截然不同。前者可能在高峰時段遠超承載力，而每日總數仍在限額之內。\n其二，忽略空間分布。旅客往往集中於少數熱點，其餘區域近乎無人。總量控制無法處理此一不均 —— 熱點依舊超載，而限額卻把有意前往其他區域的旅客一併擋住。\n其三，忽略旅客行為的差異。一名步行的旅客與一輛旅遊巴所帶來的環境壓力並不相同；停留數小時與留宿數天的資源消耗亦異。以「人次」為單一單位，等於假設所有旅客的影響相同。\n其四，忽略活動類型。同一地點，觀鳥與越野電單車的環境影響相差極遠，而兩者在人次上同樣計為一人。\n其五，上限本身難以科學地訂定，且一經公布即傾向被視為「可以用盡的配額」，反而令使用量長期貼近上限。\n較完整的管理方式：\n應把人次上限與其他手段配合，包括分時段預約制（處理時間分布）、路線與分區管理（處理空間分布）、按活動類型與交通方式差別收費或設限（處理影響差異）、以及對生態與居民態度的持續監測，按實測結果調整。人次上限可以作為其中一環，但不應是唯一的一環。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_06","topic":"優質顧客服務","difficulty":"intermediate","question":"有酒店以「顧客永遠是對的」作為服務原則。試評論此一原則，並提出較完整的處理投訴方式。","explanation":"本題要求評論，答案須先指出該原則的用意，再指出其問題 —— 特別是對前線員工的影響。所提方式須具體、有次序，而非空談「用心服務」。","type":"text","referenceAnswer":"該原則的用意：\n其一，提醒員工不要與顧客爭辯對錯。在服務場合，即使員工在事實上正確，爭贏一場辯論仍會失去一位顧客，並可能影響鄰近顧客的觀感。\n其二，把處理重點由「誰有錯」轉向「如何解決」，使投訴能夠迅速結束。\n其三，作為一句口號，它簡單、易記、方向明確。\n該原則的問題：\n其一，字面上並不成立。顧客可以記錯、誤解條款、或提出不合理甚至無理的要求。若把「永遠是對的」照字面執行，等於承諾滿足一切要求，這在營運上不可能，亦對其他顧客不公平 —— 為一名喧嘩的顧客破例，可能損害其餘十名安靜顧客的權益。\n其二，令前線員工失去判斷空間。員工既被告知顧客永遠正確，便無從拒絕不合理的要求，亦不敢向上呈報；遇到無理對待時，管理層若仍以此原則要求員工忍讓，員工會感到不被支持。長遠而言，此一做法削弱士氣、提高流失率，而人手不穩定最終仍會反映在服務質素上。\n其三，掩蓋真正的問題。若所有投訴一律以補償了結，管理層便不會追究投訴背後的系統性成因，同類問題將重複出現。\n較完整的處理方式：\n第一步，聆聽並讓對方把話說完。不打斷、不即時辯解。多數投訴者首先需要的是被認真對待，而非賠償。\n第二步，就對方的感受致歉，並與事實責任分開。「讓你等了這麼久，實在抱歉」是對經歷的回應，並不等於承認所有指控。此一區分讓員工既能表達誠意，又不致在責任未清之前作出承諾。\n第三步，查證事實。翻查紀錄、系統或詢問相關同事，確認實際發生了甚麼。此步驟不可省略，否則補償只是猜測。\n第四步，提出可行的解決方案，並說明可以做到甚麼、不可以做到甚麼。若要求超出權限或政策，應如實說明並提出替代方案，同時把個案轉交有權處理的上級，而非含糊敷衍。\n第五步，跟進並記錄。確認顧客是否滿意，並把個案記入系統。\n第六步，定期檢視投訴紀錄，找出重複出現的類型，追查系統性成因並作出改善。此步驟最常被略過，卻是唯一能夠減少投訴總量的一步。\n對員工的配套：清楚訂明前線可自行決定的補償額度與範圍，使員工能夠即時解決小問題；同時明確表示，顧客的辱罵或人身攻擊不在容忍之列，管理層會介入。有此界線，員工方能安心行使授權。\n結論：較準確的講法不是「顧客永遠是對的」，而是【顧客的感受永遠是真實的，值得認真對待；而事實與責任須經查證，解決方案須在權限與公平之內】。前者是態度，後者是程序，兩者缺一不可。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_07","topic":"酒店營運計算","difficulty":"hard","question":"某酒店共有 250 間客房。某月（30 日）售出客房總數為 6,000 間夜，客房收入為 \\$5,400,000。\n(a) 計算該月的平均入住率（準確至小數點後一位）。\n(b) 計算平均房價（每間夜平均收入）。\n(c) 計算每間可供出租客房收入（RevPAR）。\n(d) 翌月該酒店把房價提高一成，入住率跌至 72%。假設該月同樣為 30 日，試計算新的 RevPAR，並就此結果評論該次加價決定。","explanation":"本題的關鍵在於分清兩個分母。平均房價的分母是【已售出】的間夜，RevPAR 的分母是【可供出租】的間夜（房間數 × 日數）。把兩者混淆是最常見的錯誤。\n(d) 是本題的重點：加價令入住率下跌，究竟總收入是升是跌，不能憑直覺判斷，必須計算。此處數字經設計，加價後 RevPAR 實際上升，與「加價會趕客所以蝕本」的直覺相反。\n另須留意 RevPAR = 平均房價 × 入住率，此一關係可用作核對。","type":"long","referenceAnswer":"(a) 可供出租客房間夜 = 客房數 × 日數 = 250 × 30 = 7,500 間夜。\n入住率 = 已售間夜 ÷ 可供出租間夜 = 6,000 ÷ 7,500 = 0.80 = 80.0%。\n\n(b) 平均房價 = 客房收入 ÷ 【已售出】間夜 = 5,400,000 ÷ 6,000 = \\$900。\n注意分母是已售出的 6,000，而非可供出租的 7,500 —— 平均房價回答的是「賣出去的每一間夜，平均收到幾多錢」。\n\n(c) RevPAR = 客房收入 ÷ 【可供出租】間夜 = 5,400,000 ÷ 7,500 = \\$720。\n核對：RevPAR = 平均房價 × 入住率 = 900 × 80% = \\$720，兩者相符。\nRevPAR 之所以有用，正在於它把「賣得貴」與「賣得多」兩項合併為一個數字。一間酒店可以靠壓價谷高入住率，亦可以靠高價而接受低入住率，單看其中一項都會被誤導。\n\n(d) 新平均房價 = 900 × 1.1 = \\$990。\n新 RevPAR = 990 × 72% = \\$712.80。\n（核對：新售出間夜 = 7,500 × 72% = 5,400 間夜；收入 = 5,400 × 990 = \\$5,346,000；5,346,000 ÷ 7,500 = \\$712.80，相符。）\n評論：\nRevPAR 由 \\$720 跌至 \\$712.80，下跌 \\$7.20，即約 1.0%。客房總收入亦由 \\$5,400,000 跌至 \\$5,346,000，減少 \\$54,000。因此【純就客房收入而言，此次加價並不划算】—— 一成的加價未能補回八個百分點的入住率跌幅。\n須補充的幾點：\n其一，本題只計客房收入。入住率下跌 8 個百分點即減少 600 間夜，相應減少清潔、洗滌、布草、客用品與能源等變動成本。若每間夜的變動成本高於 \\$90，則加價後的【毛利】反而可能上升，結論會逆轉。故單憑 RevPAR 判斷並不完整。\n其二，反方向亦須考慮：住客減少會同時拉低餐飲、洗衣、停車等附帶收入，此部分損失不反映於 RevPAR。\n其三，一個月的數據不足以下定論。入住率的變動可能受季節、節慶或市場整體情況影響，未必全由加價造成；應與同期市場數據比較，方能分辨。\n結論：以現有資料，此次加價在客房收入上是輕微負面（−1.0%），差距甚小。管理層應取得變動成本與附帶收入的數據再作定論，並觀察多於一個月的表現。","markingScheme":"(a) 2 分 —— 可供出租間夜 = 250 × 30 = 7,500（1）；6,000 ÷ 7,500 × 100% = 80.0%（1）。\n   ⚠️ 以 6,000 ÷ 250 或 6,000 ÷ 30 作分母者，兩分皆不給。\n(b) 1 分 —— 5,400,000 ÷ 6,000 = \\$900。分母須為【已售出】間夜。\n(c) 2 分 —— 5,400,000 ÷ 7,500 = \\$720（1）；或以 900 × 80% = \\$720（1）。\n   任一方法正確即給 2 分；能同時列出兩種方法並互相核對者，不另加分但屬良好示範。\n   ⚠️ 答 \\$900（即與平均房價相同）者不給分 —— 顯示未分清兩個分母。\n(d) 3 分 —— 新房價 = 900 × 1.1 = \\$990（1）；新 RevPAR = 990 × 72% = \\$712.80（1）；\n   評論（1）：須指出 RevPAR 由 720 跌至 712.8，下跌約 1.0%，故【純以客房收入計，此次加價並不划算】。\n   ⚠️ 只答「加價後收入上升」而無計算支持者不給分。\n   ⚠️ 答「入住率跌所以一定蝕」而無計算者亦不給分 —— 本題要求以數字判斷。\n   若考生指出須同時考慮成本（入住率下跌可減少清潔、洗滌、能源等變動成本），屬額外的合理補充，可在評論一分之內從寬處理。","suggestedMinutes":12,"trapTypes":null,"dnaTag":null,"mother":null},{"id":"ths_w4_08","topic":"概念分析・服務與可持續","difficulty":"hard","question":"有酒店以「環保」為賣點，但同時提供每日更換床單與大量即棄用品。試分析此一情況所反映的問題，並說明如何判別一項環保措施是否名實相符。","explanation":"本題涉及對外宣稱與實際做法之間的落差。答案須指出此類做法的具體害處（不止於「不誠實」），並在第二部分提出可操作的判別準則，而非只說「要看實際行動」。","type":"text","referenceAnswer":"此一情況反映的問題：\n其一，宣稱與核心營運脫節。酒店的主要環境足跡來自能源、用水、洗滌與廢物，而每日更換床單正是用水與能源的大戶，即棄用品則直接產生廢物。若在最大的兩個項目上維持原狀，而以若干低成本的象徵性措施作宣傳，該宣稱與實際影響並無對應關係。\n其二，選擇性呈現。此類宣傳通常只公布有利的項目（例如「已更換節能燈泡」），而不公布整體用水量、用電量或廢物量。在缺乏總量數據的情況下，個別措施無從評估 —— 一項措施可以真實存在，同時完全不影響大局。\n其三，對行業的損害。當「環保」標籤變得廉價，真正投入資源改善的酒店便失去了區別於他人的憑據，消費者亦逐漸不再相信任何相關宣稱。結果是認真做的一方受罰，而非得益。\n其四，對消費者的誤導。部分旅客會為環保理由而選擇該酒店，甚至願意支付較高價格。若宣稱不實，他們的選擇並未達成其目的，而這一點他們無從察覺。\n如何判別一項環保措施是否名實相符：\n準則一：它是否作用於該行業最大的環境影響項目。\n酒店業的主要影響在能源、用水、食物浪費與廢物。若措施集中於這幾項（例如改裝空調系統、設置洗滌用水回收、減少自助餐剩食），較可能具實質作用；若只涉及印刷品改用再造紙一類邊緣項目，作用有限。\n準則二：有沒有可查核的數據，而且是總量而非單項。\n真實的措施會帶來可量度的改變 —— 每間夜用電量、每間夜用水量、廢物重量。若酒店公布這些數字並顯示逐年變化，宣稱即可被檢驗；若只描述做了甚麼而不公布結果，則無從判斷。須特別留意分母：應以「每間夜」計，否則入住率下跌亦會令總量下降，看似改善。\n準則三：措施是否同時為經營者省錢，以及省下的錢流向何處。\n減少更換床單既省水電亦省人工，對酒店有直接經濟利益。這不表示該措施不好 —— 環保與省錢並不矛盾。但若一項措施只省錢而環境效益薄弱（例如以「環保」為名減少清潔頻次，而其餘高耗能環節不變），則須質疑其動機。可觀察的指標是：酒店有沒有把節省投入其他環境改善，抑或只收入囊中。\n準則四：有沒有獨立第三方核證，以及該核證的要求是甚麼。\n認證有助提高可信度，但須留意認證機構是否獨立、標準是否公開、有無實地審核與定期覆檢。純粹自我聲明的標誌參考價值甚低。\n準則五：措施是否把責任轉嫁予顧客。\n「請重用毛巾以保護環境」本身合理，但若酒店在其他環節毫無作為，此舉便只是把減量的責任交給顧客，而自身不承擔成本。真實的做法應是酒店先改自身營運，再邀請顧客配合。\n結論：判別的核心不在於「有沒有做環保」，而在於【所做的是否針對最大的影響項目，以及結果有沒有可查核的數據支持】。凡是只講措施而不講結果、只講單項而不講總量的宣稱，都應保留判斷。","markingScheme":null,"suggestedMinutes":null,"trapTypes":null,"dnaTag":null,"mother":null}];
+const SUBJECT = "ths";
+const state = {}; DATA.forEach(d => state[d.id] = 'pending');
+// ── 審核用時自動記錄 ──────────────────────────────────────────────────────
+// 點解要自動計：2026-08-27 公社科首批 40 條，目的之一係量度真實審核速度，
+// 用嚟推算餘下 2,562 條 MC 需要幾多人手。結果冇人記得計時，個數字要靠
+// commit 時間戳倒推，只夾到一個上限。靠人記住撳錶就一定會漏 —— 所以改由
+// 頁面自己記，匯出時一併帶出。呢個唔係監察，係令「一條題要審幾耐」呢個
+// 規劃前提有真實數據，唔使再估。
+const marks = [];              // 每次落決定嘅時間戳
+let firstMarkAt = null;
+function noteMark(){ const t = Date.now(); if(firstMarkAt===null) firstMarkAt=t; marks.push(t); }
+function timing(){
+  if(marks.length < 2) return null;
+  const gaps = []; for(let i=1;i<marks.length;i++) gaps.push((marks[i]-marks[i-1])/1000);
+  gaps.sort((x,y)=>x-y);
+  const med = gaps.length%2 ? gaps[(gaps.length-1)/2] : (gaps[gaps.length/2-1]+gaps[gaps.length/2])/2;
+  return {
+    totalSeconds: Math.round((marks[marks.length-1]-firstMarkAt)/1000),
+    decisions: marks.length,
+    medianSecondsPerQuestion: Math.round(med*10)/10,
+    fastestSeconds: Math.round(gaps[0]*10)/10,
+  };
+}
+const list = document.getElementById('list');
+const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**', basic:'補底 L4', intermediate:'普通 L5' };
+// 質量憲章元數據標籤（審批人參考 —— 唔會入庫）
+const trapZh = { correct:'正解', half_right:'半對半錯', over_interpretation:'過度推論', irrelevant:'無關干擾', concept_swap:'概念偷換', concept_reversal:'概念顛倒', keyword_misread:'審題字詞' };
+const dnaZh = { CMT:'🧠 CMT 概念盲區 (A)', TMR:'🎯 TMR 審題陷阱 (B)', MEC:'🧮 MEC 運算粗心 (C)' };
+DATA.forEach((d, i) => {
+  const el = document.createElement('div'); el.className = 'card'; el.id = 'c'+i; el.dataset.i = i;
+  const trapTag = (oi) => d.trapTypes && d.trapTypes[oi] && d.trapTypes[oi] !== 'correct'
+    ? ` <span style="font-size:12px;color:var(--wait);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:nowrap">${trapZh[d.trapTypes[oi]]||escape(d.trapTypes[oi])}</span>`
+    : '';
+  const typeZh = { mc:'選擇題', text:'文字題', long:'長題目' };
+  el.innerHTML = `<div class="meta"><span class="badge">#${i+1}</span><span class="badge">${d.id}</span><span class="badge">${d.topic}</span><span class="badge">${diffZh[d.difficulty]||d.difficulty}</span>${d.type!=='mc'?`<span class="badge" style="color:var(--accent)">${typeZh[d.type]||d.type}</span>`:''}${d.dnaTag?`<span class="badge" style="color:var(--wait)">${dnaZh[d.dnaTag]||d.dnaTag}</span>`:''}${d.mother?`<span class="badge">模板 ${escape(d.mother)}</span>`:''}</div>
+  <div class="q">${escape(d.question)}</div>
+  ${d.type === 'mc'
+    ? `<ul>${d.options.map((o,oi)=>`<li class="${oi===d.correctIndex?'correct':''}">${escape(o)}${trapTag(oi)}</li>`).join('')}</ul>`
+    : `<div class="exp" style="border-left:3px solid var(--ok);padding-left:12px;margin:12px 0">
+         <div style="color:var(--ok);font-weight:600;margin-bottom:4px">參考答案（學生提交後見到，用嚟自評）</div>
+         ${escape(d.referenceAnswer || '（缺失 —— 呢條唔應該過到閘，請退回）')}
+       </div>
+       ${d.markingScheme ? `<div class="exp" style="border-left:3px solid var(--line);padding-left:12px;margin:12px 0">
+         <div style="color:var(--dim);font-weight:600;margin-bottom:4px">評分準則 / 步驟分</div>${escape(d.markingScheme)}</div>` : ''}
+       <div style="color:var(--wait);font-size:13px;margin:8px 0">
+         ⚠️ ${d.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。
+         批呢類題請重點睇「參考答案本身啱唔啱、夠唔夠學生自己判斷」。${d.suggestedMinutes ? ` · 建議用時 ${d.suggestedMinutes} 分鐘` : ''}
+       </div>`}
+  <div class="exp">💡 ${escape(d.explanation)}</div>
+  <div class="acts"><button class="a" onclick="mark(${i},'approved')">✅ 通過</button><button class="r" onclick="mark(${i},'rejected')">❌ 退回</button><button class="p on" onclick="mark(${i},'pending')">⏳ 待定</button></div>`;
+  list.appendChild(el);
+});
+function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+let cur = 0;
+function mark(i, v){ const d = DATA[i]; if(state[d.id]!==v) noteMark(); state[d.id] = v; const el = document.getElementById('c'+i);
+  el.classList.toggle('approved', v==='approved'); el.classList.toggle('rejected', v==='rejected');
+  el.querySelector('.a').classList.toggle('on', v==='approved'); el.querySelector('.r').classList.toggle('on', v==='rejected'); el.querySelector('.p').classList.toggle('on', v==='pending');
+  counts(); }
+function counts(){ let a=0,r=0,p=0; for(const k in state){ if(state[k]==='approved')a++; else if(state[k]==='rejected')r++; else p++; }
+  document.getElementById('cA').textContent=a; document.getElementById('cR').textContent=r; document.getElementById('cP').textContent=p; }
+function focusCard(i){ cur=Math.max(0,Math.min(DATA.length-1,i)); document.getElementById('c'+cur).scrollIntoView({behavior:'smooth',block:'center'}); }
+document.addEventListener('keydown', e=>{ if(e.target.tagName==='INPUT')return; const k=e.key.toLowerCase();
+  if(k==='j'){focusCard(cur+1);} else if(k==='k'){focusCard(cur-1);}
+  else if(k==='a'){mark(cur,'approved');focusCard(cur+1);} else if(k==='r'){mark(cur,'rejected');focusCard(cur+1);} else if(k==='p'){mark(cur,'pending');} });
+document.getElementById('exp').addEventListener('click', ()=>{
+  // 簽名日期用香港時間 —— toISOString() 喺 HKT 00:00-08:00 會報前一日，
+  // 令簽名日期同簽名人當日嘅日曆對唔上（同 sensei-golive.mjs 同一修正）。
+  const out = { _meta: { source: "ths-written-b4.json", subject: SUBJECT, reviewer: document.getElementById('rev').value.trim(), reviewedAt: new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Hong_Kong'}).format(new Date()), timing: timing() }, decisions: state };
+  const blob = new Blob([JSON.stringify(out,null,2)+'\n'], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = "ths-written-b4.decisions.json"; a.click();
+});
+counts();
+</script></body></html>

@@ -408,3 +408,34 @@ test('一鍵舒適模式要包埋減少動態 —— 憲章 §8.1 約束 4：裝
   const line = src.match(/const comfortOn =[^\n]*/)?.[0] ?? ''
   assert.match(line, /noMotion/, `一鍵舒適模式冇計入 noMotion：${line}`)
 })
+
+// ── 遮蓋塊必須鍵盤操作得到（WCAG 2.1.1）────────────────────────────────────
+// 首頁 BlindTestQuestion 用遮蓋塊示範「數字會變、邏輯唔變」：數值黑咗，撳一下先揭開。
+// 2026-09-12 實測：9 個遮蓋塊全部係淨得 onClick 嘅 <span>，冇 tabIndex、冇 role、
+// 冇可聚焦祖先 —— 即係【淨係滑鼠做到】。鍵盤同讀屏用戶見到個黑格但揭唔開，
+// 而格入面係題目嘅數字（「∠APB = ⬛°」），揭唔開即係讀唔到條題。
+//
+// 已改為 role="button" + tabIndex={0} + Enter／Space，並喺揭開之後把三者收返
+// （揭開後唔再係操作點，留住會令鍵盤用戶行過一堆冇作用嘅停駐點）。
+//
+// 順帶掃過全站：另外 4 處「非語意元素帶 onClick」全部係 modal 背景遮罩
+// 同 stopPropagation，而兩個 modal 都有 Escape 處理 —— 屬正當寫法，冇改。
+test('首頁遮蓋塊鍵盤操作得到（role / tabIndex / 鍵盤處理器齊全）', () => {
+  const src = readFileSync(join(ROOT, 'components/BlindTestQuestion.tsx'), 'utf8')
+  for (const [need, why] of [
+    ["role={interactive ? 'button' : undefined}", '讀屏要知佢係一個掣'],
+    ['tabIndex={interactive ? 0 : undefined}', '鍵盤要去到'],
+    ['onKeyDown', 'Enter／Space 要揭得開'],
+    ["e.key === 'Enter'", 'Enter'],
+    ["e.key === ' '", 'Space'],
+    ['aria-label={interactive ? label : undefined}', '讀屏要知撳落去會點'],
+  ] as const) {
+    assert.ok(src.includes(need),
+      `BlindTestQuestion 缺少「${need}」（${why}）。\n` +
+      `遮蓋塊係真正嘅操作點，唔可以淨係 onClick —— 咁樣就變成滑鼠專用。`)
+  }
+  // 反向：揭開之後三者都要收返
+  assert.ok(src.includes('const interactive = !revealed'),
+    '缺少 interactive 判斷：揭開後應該收返 role / tabIndex / onKeyDown，' +
+    '否則鍵盤用戶要 Tab 過一堆冇作用嘅停駐點。')
+})

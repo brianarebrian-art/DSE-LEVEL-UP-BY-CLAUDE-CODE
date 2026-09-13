@@ -2,14 +2,16 @@
   "_meta": {
     "source": "design-tech-written-b1.json",
     "subject": "design-tech",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。"
   },
   "decisions": {
-    "dt_w1_01": "pending",
-    "dt_w1_02": "pending",
-    "dt_w1_03": "pending",
-    "dt_w1_04": "pending",
-    "dt_w1_05": "pending"
+    "dt_w1_01": "approved",
+    "dt_w1_02": "approved",
+    "dt_w1_03": "approved",
+    "dt_w1_04": "approved",
+    "dt_w1_05": "approved"
   }
 }

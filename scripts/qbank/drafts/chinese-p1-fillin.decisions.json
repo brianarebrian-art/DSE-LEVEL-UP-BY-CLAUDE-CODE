@@ -2,42 +2,27 @@
   "_meta": {
     "source": "chinese-p1-fillin.json",
     "subject": "chinese",
-    "mode": "sampled",
-    "reviewer": "",
-    "reviewedAt": "",
-    "sample": {
-      "size": 8,
-      "of": 16,
-      "seed": "chinese-p1-fillin.json:16",
-      "ids": [
-        "zh_p1_fill_02",
-        "zh_p1_fill_04",
-        "zh_p1_fill_05",
-        "zh_p1_fill_07",
-        "zh_p1_fill_08",
-        "zh_p1_fill_10",
-        "zh_p1_fill_12",
-        "zh_p1_fill_16"
-      ]
-    },
-    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。 本檔原為抽樣模式，未讀部分曾標 machine-admitted；今次全讀，一律升為 approved。"
   },
   "decisions": {
-    "zh_p1_fill_01": "machine-admitted",
-    "zh_p1_fill_02": "pending",
-    "zh_p1_fill_03": "machine-admitted",
-    "zh_p1_fill_04": "pending",
-    "zh_p1_fill_05": "pending",
-    "zh_p1_fill_06": "machine-admitted",
-    "zh_p1_fill_07": "pending",
-    "zh_p1_fill_08": "pending",
-    "zh_p1_fill_09": "machine-admitted",
-    "zh_p1_fill_10": "pending",
-    "zh_p1_fill_11": "machine-admitted",
-    "zh_p1_fill_12": "pending",
-    "zh_p1_fill_13": "machine-admitted",
-    "zh_p1_fill_14": "machine-admitted",
-    "zh_p1_fill_15": "machine-admitted",
-    "zh_p1_fill_16": "pending"
+    "zh_p1_fill_01": "approved",
+    "zh_p1_fill_02": "approved",
+    "zh_p1_fill_03": "approved",
+    "zh_p1_fill_04": "approved",
+    "zh_p1_fill_05": "approved",
+    "zh_p1_fill_06": "approved",
+    "zh_p1_fill_07": "approved",
+    "zh_p1_fill_08": "approved",
+    "zh_p1_fill_09": "approved",
+    "zh_p1_fill_10": "approved",
+    "zh_p1_fill_11": "approved",
+    "zh_p1_fill_12": "approved",
+    "zh_p1_fill_13": "approved",
+    "zh_p1_fill_14": "approved",
+    "zh_p1_fill_15": "approved",
+    "zh_p1_fill_16": "approved"
   }
 }

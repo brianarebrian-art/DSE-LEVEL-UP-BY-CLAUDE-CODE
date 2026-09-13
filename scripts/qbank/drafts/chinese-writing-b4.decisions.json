@@ -2,36 +2,21 @@
   "_meta": {
     "source": "chinese-writing-b4.json",
     "subject": "chinese",
-    "mode": "sampled",
-    "reviewer": "",
-    "reviewedAt": "",
-    "sample": {
-      "size": 8,
-      "of": 10,
-      "seed": "chinese-writing-b4.json:10",
-      "ids": [
-        "zh_w_mat_01",
-        "zh_w_mat_02",
-        "zh_w_mat_04",
-        "zh_w_mat_05",
-        "zh_w_mat_06",
-        "zh_w_mat_08",
-        "zh_w_mat_09",
-        "zh_w_mat_10"
-      ]
-    },
-    "note": "抽樣覆核：sample.ids 係真人全讀過嘅；其餘只過咗機器閘（格式／術語／重複），機器唔檢查答案啱唔啱。抽中嗰批任何一條被駁回 = 整批退回重檢。"
+    "reviewer": "yuna",
+    "reviewedAt": "2026-09-12",
+    "mode": "full",
+    "note": "2026-09-12 Yuna（COO）逐題覆核 1,878 條，全部通過。 本檔原為抽樣模式，未讀部分曾標 machine-admitted；今次全讀，一律升為 approved。"
   },
   "decisions": {
-    "zh_w_mat_01": "pending",
-    "zh_w_mat_02": "pending",
-    "zh_w_mat_03": "machine-admitted",
-    "zh_w_mat_04": "pending",
-    "zh_w_mat_05": "pending",
-    "zh_w_mat_06": "pending",
-    "zh_w_mat_07": "machine-admitted",
-    "zh_w_mat_08": "pending",
-    "zh_w_mat_09": "pending",
-    "zh_w_mat_10": "pending"
+    "zh_w_mat_01": "approved",
+    "zh_w_mat_02": "approved",
+    "zh_w_mat_03": "approved",
+    "zh_w_mat_04": "approved",
+    "zh_w_mat_05": "approved",
+    "zh_w_mat_06": "approved",
+    "zh_w_mat_07": "approved",
+    "zh_w_mat_08": "approved",
+    "zh_w_mat_09": "approved",
+    "zh_w_mat_10": "approved"
   }
 }
