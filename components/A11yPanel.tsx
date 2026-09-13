@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
-import { AlignJustify, Clock, Feather, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
+import { AlignJustify, Clock, Feather, Lightbulb, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
@@ -14,6 +14,7 @@ import {
   LINE_HEIGHT_KEY,
   LETTER_SPACING_KEY,
   DEFAULT_LINE_HEIGHT,
+  FOCUS_LIGHT_KEY,
   type LetterSpacing,
 } from '@/components/GlobalA11y'
 
@@ -81,6 +82,7 @@ export default function A11yPanel() {
   }, [])
   const [size, setSize] = useState(16)
   const [easy, setEasy] = useState(false)
+  const [focusLight, setFocusLight] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
   const [sound, setSound] = useState(false)
   const [noMotion, setNoMotion] = useState(false)
@@ -100,6 +102,7 @@ export default function A11yPanel() {
       setSound(isAnswerSoundOn())
       setNoMotion(localStorage.getItem(NO_MOTION_KEY) === '1')
       setCalm(localStorage.getItem(CALM_KEY) === '1')
+      setFocusLight(localStorage.getItem(FOCUS_LIGHT_KEY) === '1')
       const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       setRuler(!!r?.on)
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
@@ -120,6 +123,7 @@ export default function A11yPanel() {
         setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
         setSound(isAnswerSoundOn())
         setCalm(localStorage.getItem(CALM_KEY) === '1')
+        setFocusLight(localStorage.getItem(FOCUS_LIGHT_KEY) === '1')
         const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
         setRuler(!!r?.on)
       } catch {
@@ -229,6 +233,32 @@ export default function A11yPanel() {
     // 練習頁監聽緊 dse-a11y —— 派咗佢，做緊題嗰個唔使 reload 就即刻見到。
     window.dispatchEvent(new Event('dse-a11y'))
   }, [calm])
+
+  // Focus 專注燈光模式（ADHD／UDL）。練習頁周邊淡落，題目卡維持全亮。
+  //
+  // ⚠️ 呢個掣【必須存在】，唔可以淨係留返 Shift+F。目標書寫嘅係練習頁
+  //    `Shift + F`，但觸控機根本冇 Shift —— 只得快捷鍵嘅話，手機同平板嘅學生
+  //    永遠開唔到，亦關唔返。憲章 §7.2 記低過同一種 bug（dse_calm_lock 個掣
+  //    隨反思鎖一齊消失，設定仲喺度但改唔到），迴歸鎖係
+  //    lib/__tests__/settings-have-controls.test.mts。呢個 key 刻意唔上雲，
+  //    所以嗰條測試掃唔到佢 —— 故另立 lib/__tests__/focus-light.test.mts。
+  //
+  // ⚠️ 同 toggleCalm 一樣，副作用擺喺 handler 身上而【唔係】setFocusLight 個
+  //    updater 入面 —— 上面個 dse-a11y listener 會 setFocusLight(讀返 storage)，
+  //    喺 updater 入面 dispatch 就會 re-entrant，撳完彈返原位（2026-09-11 實測過）。
+  const toggleFocusLight = useCallback(() => {
+    const next = !focusLight
+    setFocusLight(next)
+    document.documentElement.classList.toggle('focus-light', next)
+    try {
+      localStorage.setItem(FOCUS_LIGHT_KEY, next ? '1' : '0')
+    } catch {
+      /* ignore */
+    }
+    // 練習頁聽住 dse-a11y —— 派咗佢，做緊題嗰個唔使 reload 就即刻見到，
+    // 而且頁內嗰個 Shift+F 同呢個掣會保持同一個狀態。
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [focusLight])
 
   // 一鍵舒適模式：三項支援（易讀字體＋閱讀尺＋隱藏計時器）一掣齊開／齊關。
   // 無痕設計（Emma/UDL）：UI 只描述功能，唔出任何診斷標籤字眼。
@@ -549,6 +579,36 @@ export default function A11yPanel() {
               }`}
             >
               {calm ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
+
+          {/* Focus 專注燈光（2026-09-13，ADHD／UDL） */}
+          <button
+            onClick={toggleFocusLight}
+            aria-pressed={focusLight}
+            className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+              focusLight
+                ? 'bg-surface-sunken border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+            }`}
+          >
+            <span className="text-left flex items-center gap-2">
+              <Lightbulb size={14} className="shrink-0" />
+              <span>
+                <span className="block text-sm">{en ? 'Focus light' : 'Focus 專注燈'}</span>
+                <span className="block text-[11px] text-ink-muted">
+                  {en
+                    ? 'Dims everything around the question. Shift + F while practising.'
+                    : '做題時周邊淡落，題目卡維持全亮。練習頁可撳 Shift + F。'}
+                </span>
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                focusLight ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+              }`}
+            >
+              {focusLight ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
 

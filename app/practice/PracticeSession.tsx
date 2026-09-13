@@ -26,6 +26,7 @@ import QuestionProvenance from '@/components/QuestionProvenance'
 import EmotionTags from '@/components/EmotionTags'
 import BookmarkButton from '@/components/BookmarkButton'
 import StagedExplanation from '@/components/StagedExplanation'
+import { FOCUS_LIGHT_KEY } from '@/components/GlobalA11y'
 import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
@@ -361,6 +362,30 @@ export default function PracticeSession({
     return () => window.removeEventListener('dse-a11y', read)
   }, [])
 
+  // Focus 專注燈光模式（ADHD／UDL，2026-09-13）。<html> 個 class 由 GlobalA11y
+  // 開機套用、由 A11yPanel 個掣 toggle；呢度淨係揸住【頁內嘅狀態顯示】同 Shift+F。
+  //
+  // 唔喺呢度讀 classList 而讀返 localStorage：兩處各自讀同一個真相來源，
+  // 唔會因為 render 次序而見到唔同答案。A11yPanel 改完會派 dse-a11y，所以
+  // 學生喺做緊題嗰陣由面板開關，呢度即刻跟到。
+  const [focusLight, setFocusLight] = useState(false)
+  useEffect(() => {
+    const read = () => { try { setFocusLight(localStorage.getItem(FOCUS_LIGHT_KEY) === '1') } catch { /* ignore */ } }
+    read()
+    window.addEventListener('dse-a11y', read)
+    return () => window.removeEventListener('dse-a11y', read)
+  }, [])
+
+  // Shift + F 切換。刻意做成同 A11yPanel 完全一樣嘅三步（寫 class、寫 storage、
+  // 派事件），而唔係各自維護一份狀態 —— 兩個入口寫落唔同地方，就會出現
+  // 「面板顯示關、畫面其實開住」呢種對唔上嘅狀態。
+  const toggleFocusLight = useCallback(() => {
+    const next = !(document.documentElement.classList.contains('focus-light'))
+    document.documentElement.classList.toggle('focus-light', next)
+    try { localStorage.setItem(FOCUS_LIGHT_KEY, next ? '1' : '0') } catch { /* ignore */ }
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [])
+
   // Show the English string when the UI is in English and a translation exists;
   // otherwise fall back to the Chinese original (so untranslated subjects still work).
   const tr = useCallback(
@@ -659,6 +684,15 @@ export default function PracticeSession({
       const el = e.target as HTMLElement | null
       if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return
 
+      // Shift + F：專注燈。擺喺兩個守衛之後 —— 輸入框打大階 F 唔可以變成切換，
+      // 而 ⌘/⌃/⌥ 組合亦已經喺上面放行咗畀瀏覽器。
+      // 唔理 answerState：睇解析嗰陣一樣想熄得返個燈。
+      if (e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+        e.preventDefault()
+        toggleFocusLight()
+        return
+      }
+
       if (e.key === 'Enter') {
         if (answerState === null) return
         if (el && /^(BUTTON|A)$/.test(el.tagName)) return // 交返畀瀏覽器原生觸發
@@ -677,7 +711,7 @@ export default function PracticeSession({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [answerState, currentQ, selectOption, proceed])
+  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight])
 
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
@@ -820,7 +854,7 @@ export default function PracticeSession({
         {/* sticky：捲落去睇解析嗰陣，返回掣要仲喺度。
             全屏模式冇 Navbar，佢係唯一出口，唔可以隨頁面捲走。
             用 bg-surface 同頁面底色一致，所以內容捲過去唔會見到接縫。 */}
-        <div className="sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
+        <div className="focus-dim sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
           <Link
             href="/subjects"
             aria-label={tr('返回科目選擇', 'Back to subject list')}
@@ -843,7 +877,9 @@ export default function PracticeSession({
         </div>
 
         {/* Progress bar */}
-        <div className="mb-6">
+        {/* focus-dim：Focus 專注燈開咗嗰陣淡落 0.25。hover／focus-within 會即刻
+            還原（globals.css）—— 所以「淡咗」永遠唔等於「攞唔返」。 */}
+        <div className="focus-dim mb-6">
           <div className="flex justify-between text-sm text-ink-muted mb-2">
             <span>
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
@@ -1034,6 +1070,10 @@ export default function PracticeSession({
             {answerState === null
               ? tr('快捷鍵：1–4 或 A–D 揀答案', 'Shortcuts: 1–4 or A–D to answer')
               : tr('快捷鍵：Enter 落下一題', 'Shortcut: Enter for the next question')}
+            {' · '}
+            {focusLight
+              ? tr('Shift + F 熄專注燈', 'Shift + F to turn the focus light off')
+              : tr('Shift + F 開專注燈', 'Shift + F for focus light')}
           </p>
         </div>
 
@@ -1260,7 +1300,7 @@ export default function PracticeSession({
         )}
 
         {/* Score tracker */}
-        <div className="mt-6 flex justify-center gap-2 flex-wrap">
+        <div className="focus-dim mt-6 flex justify-center gap-2 flex-wrap">
           {Array.from({ length: totalQ }).map((_, i) => {
             let color = 'bg-line'
             if (i < answers.length) {
