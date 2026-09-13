@@ -7,6 +7,7 @@ import { useLocale } from '@/lib/i18n'
 // 進度檔案導出／導入 —— 刻意放喺登入牆之外（服務對象正正係唔想登入嘅學生）
 import DataPortability from '@/components/DataPortability'
 import StoredDataInspector from '@/components/StoredDataInspector'
+import RestDayPicker from '@/components/RestDayPicker'
 
 // Account settings — the PDPO one-click erasure (bilingual via useLocale). Deletes the
 // user's server-side data (cloud progress) and clears local data.
@@ -48,6 +49,15 @@ export default function AccountPageClient() {
 
         {/* $0 跨裝置：導出／導入進度檔案（毋須登入） */}
         {!done && <DataPortability />}
+
+        {/* 休息日護盾。擺喺導出／導入之後、數據檢視之前 ——
+            上面兩格講「你嘅資料點處理」，呢格講「你點用呢個平台」，
+            都係同一類：由學生自己話事嘅設定，唔使登入。 */}
+        {!done && (
+          <div className="mt-6">
+            <RestDayPicker />
+          </div>
+        )}
 
         {/* 數據承諾可驗證 —— 擺喺導出／導入之後：先話你可以攞走，再畀你睇實
             究竟有咩喺度、邊啲會上雲。文字承諾要人信，呢個唔使。 */}
