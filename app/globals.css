@@ -766,6 +766,20 @@ html.focus-light .focus-dim:focus-within {
   opacity: 1;
 }
 
+/* KaTeX 顯示式喺窄機橫向捲動（2026-09-15）。
+   題庫最長嘅 $$…$$ 有 300 幾字元 TeX，375px 一定闊過屏幕。KaTeX 顯示式唔會自己斷行，
+   冇呢條規則嘅話，一條長算式會將成個練習頁撐闊，學生要成版左右拉先睇到題目。
+   只限顯示式（.katex-display）：行內算式包 overflow 容器會打斷段落流，而且 KaTeX
+   行內模式本身會喺頂層關係符號（=、<）斷行。
+   overflow-y: hidden：唔加嘅話部分瀏覽器會因為 KaTeX 嘅上下標高度出一條垂直捲軸。
+   ⚠️ 2026-09-13 嘅 34 條路由 375px 掃描報 0 爆版，但嗰次練習頁啱啱抽到短算式 ——
+      0 爆版唔代表冇長算式，只代表嗰一刻冇撞到。 */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
 /* P1-3 WCAG（Leo/Kate 2026-07-16）：跳至主要內容連結。
    預設以 clip 完全隱藏（螢幕閱讀器照讀到），鍵盤第一下 Tab focus 即以
    琥珀色藥丸現身左上角。用自訂 class 唔用 focus:not-sr-only ——
