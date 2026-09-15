@@ -661,6 +661,16 @@ export default function PracticeSession({
   // 驗完先放行。鎖已剷除，所以「下一題」就係直接落下一題。
   const proceed = next
 
+  // 「下一題」掣出唔出、Enter 可唔可以推進 —— 【同一個判斷】，下面 JSX 同鍵盤
+  // handler 都用佢，唔准各自寫一份。
+  //
+  // ⚠️ 2026-09-15 實測捉到嘅 bug：鍵盤 handler 原本只檢查 answerState !== null。
+  //    答錯之後、三維自診未揀之前，介面仲未出「下一題」掣，但撳 Enter 就直接
+  //    跳去下一題 —— 自診被鍵盤繞過，dse_reverse_log 冇嗰一條。自診係錯題 DNA、
+  //    雷達圖、遺忘曲線重溫嘅唯一入料口（憲章 §7.2 明文保留）。
+  //    原本嘅測試只驗咗「答啱之後 Enter 換題」，所以冇捉到。
+  const canProceed = answerState !== null && (answerState.isCorrect || diagnosed !== null)
+
   // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
   //
   // ⚠️ 呢個【唔係】無障礙合規修補。選項掣本身一直 Tab 得到、Enter 撳得到，
@@ -694,14 +704,18 @@ export default function PracticeSession({
       }
 
       if (e.key === 'Enter') {
-        if (answerState === null) return
+        // 同「下一題」掣同一個條件；情緒溫度計／休息模式開住嗰陣亦唔可以
+        // 喺 modal 背後推進（溫度計個掣有焦點時，下面嘅 BUTTON 分支會交返畀
+        // 瀏覽器原生觸發嗰個掣，唔受影響）。
+        if (!canProceed || emoOpen || restOpen) return
         if (el && /^(BUTTON|A)$/.test(el.tagName)) return // 交返畀瀏覽器原生觸發
         e.preventDefault()
         proceed()
         return
       }
 
-      if (answerState !== null || !currentQ) return
+      // 休息模式係一個 modal —— 唔可以喺佢背後用鍵盤答題。
+      if (answerState !== null || !currentQ || restOpen) return
       const k = e.key.toUpperCase()
       const idx = /^[1-4]$/.test(k) ? Number(k) - 1 : 'ABCD'.indexOf(k)
       const opt = idx >= 0 ? currentQ.shuffledOptions[idx] : undefined
@@ -711,7 +725,7 @@ export default function PracticeSession({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight])
+  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight, canProceed, emoOpen, restOpen])
 
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
@@ -1080,7 +1094,8 @@ export default function PracticeSession({
         {/* Feedback + Next */}
         {answerState !== null && (
           <div className="animate-slide-up">
-            {!answerState.isCorrect && diagnosed === null ? (
+            {/* canProceed：同 Enter 快捷鍵共用同一個判斷（見上面 canProceed 定義）。 */}
+            {!canProceed ? (
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
                  3-way reverse-cause self-diagnosis. Calm gold, reflective (因材施教). */
               <div className="rounded-2xl p-6 mb-4 border border-gold/40 bg-gold/[0.06]">
