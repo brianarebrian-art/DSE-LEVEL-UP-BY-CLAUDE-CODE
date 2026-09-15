@@ -27,6 +27,7 @@ import GentleSuggestions from '@/components/GentleSuggestions'
 // 第 3 週 · 引擎二之二：個人進度時間軸（只同自己上一段時間比）
 import PersonalTimeline from '@/components/PersonalTimeline'
 import JustOneCard from '@/components/JustOneCard'
+import QuietModeToggle from '@/components/QuietModeToggle'
 import GoodTodayCard from '@/components/GoodTodayCard'
 import PracticeRankCard from '@/components/PracticeRankCard'
 import { DashboardSkeleton } from '@/components/Skeleton'
@@ -271,6 +272,9 @@ export default function DashboardPageClient() {
             </div>
           ))}
         </div>
+
+        {/* 安靜模式開關（lib/quietMode.ts）—— 擺喺數字卡之前，學生未見到數字就可以先揀收埋 */}
+        <QuietModeToggle />
 
         {/* 計劃A §5.6：精進軌跡（每日正確率曲線，真實數據） */}
         <ProgressTrajectory />

@@ -7,6 +7,7 @@ import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
 import { ANSWER_SOUND_KEY, isAnswerSoundOn, playCorrectChime } from '@/lib/answerChime'
+import { QUIET_KEY } from '@/lib/quietMode'
 import {
   applyFontSize,
   applyTextSpacing,
@@ -276,6 +277,10 @@ export default function A11yPanel() {
       localStorage.setItem(EASY_KEY, next ? '1' : '0')
       localStorage.setItem(HIDE_TIMER_KEY, next ? '1' : '0')
       localStorage.setItem(NO_MOTION_KEY, next ? '1' : '0')
+      // 安靜模式（段位／EXP、溫習時數）一齊開關 —— 憲章 §8.1 約束 4：一鍵舒適模式之下
+      // 遊戲化層要整層關掉。⚠️ 刻意【唔】納入上面 comfortOn 嘅推導（同 calm 一樣）：
+      // 納入嘅話，今日已經開住舒適模式嘅學生會因為呢個 key 仲係 0 而見到總掣變「關」。
+      localStorage.setItem(QUIET_KEY, next ? '1' : '0')
       // 開舒適模式 = 靜音；關舒適模式【唔會】自動開聲（聲音一律要主動開啟）
       if (next) localStorage.setItem(ANSWER_SOUND_KEY, '0')
       const saved = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
@@ -312,7 +317,7 @@ export default function A11yPanel() {
 
       {open && (
         <div
-          className="no-print fixed floating-bottom-3 floating-left z-50 w-72 max-w-[calc(100vw-var(--sidebar-w)-2rem)] bg-surface-sunken border border-line-strong rounded-2xl p-4 shadow-xl"
+          className="no-print fixed floating-bottom-3 floating-panel-max-h floating-left z-50 w-72 max-w-[calc(100vw-var(--sidebar-w)-2rem)] bg-surface-sunken border border-line-strong rounded-2xl p-4 shadow-xl"
           role="dialog"
           aria-label={en ? 'Accessibility options' : '無障礙設定'}
         >

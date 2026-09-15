@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useQuiet } from '@/lib/quietMode'
 import { Clock } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { loadAttempts, type AttemptRecord } from '@/lib/progress'
@@ -35,11 +36,14 @@ export default function StudyTimeInsight() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [attempts, setAttempts] = useState<AttemptRecord[] | null>(null)
+  // 安靜模式（lib/quietMode.ts，憲章 §8.1 約束 4）—— hook 一定要喺任何 return 之前叫
+  const quiet = useQuiet()
 
   useEffect(() => {
     setAttempts(loadAttempts()) // client-only（localStorage）
   }, [])
 
+  if (quiet) return null
   if (!attempts) return null
 
   const t = studyTotals(attempts, WINDOW)

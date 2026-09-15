@@ -928,6 +928,21 @@ html.no-motion .mascot {
   bottom: calc(max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) + var(--bottom-nav-h));
 }
 
+/* 貼底浮動【面板】嘅高度上限（2026-09-15）。
+   ⚠️ 用同上面 .floating-bottom-3 一模一樣嘅 bottom 公式 —— 改一邊一定要改埋另一邊。
+   點解要有：無障礙面板係 position:fixed、貼住底部。fixed 元素唔跟頁面捲，而面板
+   本身又冇 max-height／overflow —— 面板一高過視窗，頂部就伸出畫面上面、捲都捲唔到。
+   2026-09-15 localhost:3001 實測：面板 992px、視窗 987px，頂部 133px 喺畫面外，
+   而嗰度正正係「一鍵舒適模式」總掣。手機（812px）同細 laptop（768px）喺今日加
+   Focus 專注燈掣之前已經爆咗；加咗之後連 987px 都爆。一個需要舒適模式嘅 SEN 學生，
+   偏偏撳唔到個總掣。 */
+.floating-panel-max-h {
+  max-height: calc(100vh - max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) - var(--bottom-nav-h) - 1rem);
+  max-height: calc(100dvh - max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) - var(--bottom-nav-h) - 1rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 /* ══════════════════════════════════════════════════════════════════════════
    ORIGINKIT 動態劇場底層（2026-08-22，Yuna 交付；CEO 拍板保留遊戲化）
    --------------------------------------------------------------------------
