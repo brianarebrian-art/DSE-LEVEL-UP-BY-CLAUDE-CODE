@@ -61,10 +61,12 @@ const REVIEWS: Review[] = [
   {
     date: '2026-11-09',
     what: '§7.2 剷除 30 秒反思鎖嘅兩個月實驗期滿；同時重新考慮 EMPIRICAL_K',
-    where: 'docs/charter.md §7.2 · lib/empiricalWeighting.ts:30',
+    where: 'docs/charter.md §7.2 · lib/empiricalWeighting.ts:30 · docs/iso-loop-design-2026-11-09.md',
     question:
       '交逐週正確率 curve，對照剷鎖前基準（88.3%、5,565 題、484 節、中位 15 題）。' +
-      '三個選項：復活個鎖、永久刪除、改個形態 —— 揀邊個都要寫低憑咩。',
+      '三個選項：復活個鎖、永久刪除、改個形態 —— 揀邊個都要寫低憑咩。' +
+      '「改變形態」的其中一個候選為同構閉環 A/B（強制 8 秒框架卡＋同構題），' +
+      '2026-09-15 決定留待本次覆檢一併處理，開工前須回答的問題見 docs/iso-loop-design-2026-11-09.md。',
     tool: 'npm run analytics:retention（§② 逐週 curve · §③ 剷鎖前後對照）',
   },
 ]
@@ -94,6 +96,14 @@ test('憲章覆檢日到期時必須有裁決紀錄', () => {
     `以下憲章覆檢已到期而未有裁決紀錄：${overdue.join('')}\n\n` +
     `⚠️ 唔好刪走呢條測試過關。佢存在嘅唯一理由，就係防止一個「兩個月實驗」` +
     `因為冇人記得而變成永久現狀。`)
+})
+
+// The reminder only helps if the documents it points to still exist on the review date.
+// A renamed or deleted design note would leave a dead reference, discovered only when it is needed.
+test('覆檢項目引用的 docs 檔案必須存在', () => {
+  const missing = REVIEWS.flatMap(r => r.where.match(/docs\/[\w.-]+\.md/g) ?? [])
+    .filter(p => !existsSync(join(ROOT, p)))
+  assert.deepEqual(missing, [], `覆檢項目引用的文件不存在：${missing.join(', ')}`)
 })
 
 // 提早知會：到期前 21 日開始喺測試輸出提一句。
