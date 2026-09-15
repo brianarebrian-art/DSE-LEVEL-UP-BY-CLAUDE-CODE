@@ -45,6 +45,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
+      // service worker 腳本唔可以被 CDN／瀏覽器 cache 住：回滾（NEXT_PUBLIC_SW_OFFLINE=0）
+      // 同緊急換版本都靠學生部機攞到新嘅 sw.js。瀏覽器本身檢查 SW 更新時會繞過
+      // HTTP cache，但 CDN 唔會 —— 明寫 no-cache，唔靠預設。
+      { source: '/sw.js', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
       // 虛擬超市（public/supermarket/**）係一個零依賴靜態頁，由
       // /relax/virtual-supermarket 用【同源】iframe 載入，好等 relax layout
       // 嘅緊急熱線橫幅同「一撳離開」照樣包住佢。

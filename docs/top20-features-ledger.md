@@ -6,7 +6,7 @@
 |---|------|------|------|
 | 01 | 錯題情緒標籤（5票冠軍） | ✅ | `components/EmotionTags.tsx` 掛入答錯解析卡：😰唔開心／😐冇所謂／💡想知點解，按選擇回應對應語氣，記錄入 localStorage `dse_emotion_log`（供將來壓力分析）。偏離：無 Supabase `student_responses` 表 —— 平台進度數據一向 local-first，跟現有架構 |
 | 02 | 共用品陷阱題專區 | ✅（內容）⏳（獨立頁） | 6 條雙條件判別陷阱題入咗 economics.ts（`econ_pg_*`：免費≠共用品／政府提供≠共用品／煙花／加密廣播／擠塞公路／搭便車），經 gates+人手驗算。獨立 route 押後：practice 已支援 topic filter（市場失靈），日後要專頁再起 |
-| 03 | Service Worker 離線題庫 | ⏳ | SW 係雙刃劍：寫錯會令用戶永遠食住舊版 app（stale SW 經典事故）。需要獨立立項＋分階段 rollout＋回滾方案，唔應該喺 20 件嘢嘅 bundle 入面順手做 |
+| 03 | Service Worker 離線題庫 | 🟡 已實作・**生產未開** | 原判斷（保留）：SW 係雙刃劍：寫錯會令用戶永遠食住舊版 app（stale SW 經典事故）。需要獨立立項＋分階段 rollout＋回滾方案。**2026-09-15 三個前提逐樣對應**：① network-first，有網結構上攞唔到舊嘢（`public/sw.js` 檔頭）；② 生產預設關，由 `NEXT_PUBLIC_SW_OFFLINE=1` 開（`lib/pwa/swUrl.ts`）；③ 回滾＝設返 0，SW 自動換版並刪晒離線快取。localhost:3001 生產 build 實測：斷網做題、斷網 reload、未開過頁出離線頁、回滾四項全過。**幾時開由創辦人喺 Vercel 決定。** |
 | 04 | 概念盲點診斷器 | ♻️ | 60 秒鎖三選一自診（概念/審題/粗心）＋ErrorDNA 分佈＋dashboard 建議**已上線**。「自我診斷」係平台刻意嘅元認知設計，唔改做自動判定 |
 | 05 | 關鍵字批改引擎 | ⏳ | 需要長答題提交介面 —— MC 平台未有此 infra（同前幾輪長答/DRQ 押後理由一致）。marking_scheme 概念網已備（concept_network.json），infra 立項即可接上 |
 | 06 | 「如果數字變咗」變體題 | ♻️（引擎）⏳（按鈕） | 參數化 bank 本身就係變體工廠（每輪 20 題已係唔同變體）。「試下變體題」即場按鈕需要 runtime 生成面，押後 |

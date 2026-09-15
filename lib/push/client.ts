@@ -8,6 +8,8 @@
 // 考試日期本身仍然係 localStorage 嗰份為準（app/exam-day/ExamDayClient.tsx），
 // 呢度只係鏡一份落 IDB 俾 SW 讀。
 
+import { SW_URL } from '@/lib/pwa/swUrl'
+
 const DB = 'dse-exam-day'
 const STORE = 'prefs'
 const KEY = 'config'
@@ -79,7 +81,8 @@ function urlB64ToBytes(b64: string): Uint8Array {
 export async function registerSw(): Promise<ServiceWorkerRegistration | null> {
   if (!pushSupported()) return null
   try {
-    return await navigator.serviceWorker.register('/sw.js')
+    // SW_URL：同離線層共用同一個登記 URL，否則兩邊會互相蓋（見 lib/pwa/swUrl.ts）
+    return await navigator.serviceWorker.register(SW_URL)
   } catch {
     return null
   }
