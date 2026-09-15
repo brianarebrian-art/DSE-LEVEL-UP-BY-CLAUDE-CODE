@@ -724,6 +724,62 @@ html.a11y-spacing button {
   letter-spacing: var(--dse-letter-spacing, normal);
 }
 
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Focus 專注燈光模式（html.focus-light）—— 2026-09-13，ADHD／UDL
+   --------------------------------------------------------------------------
+   做乜：練習頁嘅周邊（返回列、進度條／計時器、底部得分點）淡落 0.25，
+   餘返題目卡同解析係全亮。目的唔係隱藏，係【降低周邊嘅搶注意力能力】。
+
+   ⚠️ 三個刻意嘅決定，每個都有唔可以拆嘅理由：
+
+   ① `:hover` 同 `:focus-within` 一定要有。
+      0.25 嘅文字對比度大約 1.3:1 —— 遠低於 AA。所以淡咗嗰啲嘢必須有一個
+      【唔使先關閉呢個模式】就讀返到嘅路徑。鍵盤用戶 Tab 入去 → focus-within
+      即刻還原；滑鼠用戶 hover 即刻還原。冇呢兩條，呢個功能就係一個
+      「用嚟幫人專注、順手令人讀唔到出口」嘅設計。
+
+   ② 用 `opacity` 而唔係 `visibility` / `display` / `aria-hidden`。
+      opacity 完全【唔影響】輔助技術：螢幕閱讀器照讀、Tab 次序一個唔少。
+      呢個就係目標書所講「不破壞 ARIA 讀屏」嘅落實方式 —— 唔係加咗
+      aria-live 或者 role 去補救，而係由頭揀一個對 AT 透明嘅機制。
+
+   ③ 浮動掣（左下無障礙面板、右下情緒支援）【唔淡】。
+      無障礙面板係觸控機關閉呢個模式嘅唯一路徑，淡咗就自己封自己；
+      情緒支援掣任何情況都唔可以退到背景。
+
+   ⚠️ 對比度閘睇唔到呢個模式：scripts/a11y/runtime-probe.js 量嘅係
+      getComputedStyle(el).color，而祖先層嘅 opacity 唔會反映喺嗰度。
+      即係話開咗 focus-light 之後個探針照樣報 0 失敗 —— 呢個係佢嘅盲點，
+      唔係一個「已驗證安全」嘅結論。寫喺度，因為一個冇人知嘅盲點
+      同一個唔存在嘅閘冇分別。預設關閉，DoD 嘅全站掃描量嘅係預設狀態。
+
+   動態：html.no-motion 嘅通用選擇器（上面）已經覆蓋呢度個 transition，
+   唔使再寫多條 —— 逐個功能各寫一條，就係當年漏咗 .animate-slide-up 嗰個 bug。
+   ─────────────────────────────────────────────────────────────────────────── */
+html.focus-light .focus-dim {
+  opacity: 0.25;
+  transition: opacity 200ms ease;
+}
+html.focus-light .focus-dim:hover,
+html.focus-light .focus-dim:focus-within {
+  opacity: 1;
+}
+
+/* KaTeX 顯示式喺窄機橫向捲動（2026-09-15）。
+   題庫最長嘅 $$…$$ 有 300 幾字元 TeX，375px 一定闊過屏幕。KaTeX 顯示式唔會自己斷行，
+   冇呢條規則嘅話，一條長算式會將成個練習頁撐闊，學生要成版左右拉先睇到題目。
+   只限顯示式（.katex-display）：行內算式包 overflow 容器會打斷段落流，而且 KaTeX
+   行內模式本身會喺頂層關係符號（=、<）斷行。
+   overflow-y: hidden：唔加嘅話部分瀏覽器會因為 KaTeX 嘅上下標高度出一條垂直捲軸。
+   ⚠️ 2026-09-13 嘅 34 條路由 375px 掃描報 0 爆版，但嗰次練習頁啱啱抽到短算式 ——
+      0 爆版唔代表冇長算式，只代表嗰一刻冇撞到。 */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
 /* P1-3 WCAG（Leo/Kate 2026-07-16）：跳至主要內容連結。
    預設以 clip 完全隱藏（螢幕閱讀器照讀到），鍵盤第一下 Tab focus 即以
    琥珀色藥丸現身左上角。用自訂 class 唔用 focus:not-sr-only ——
@@ -870,6 +926,21 @@ html.no-motion .mascot {
 }
 .floating-bottom-3 {
   bottom: calc(max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) + var(--bottom-nav-h));
+}
+
+/* 貼底浮動【面板】嘅高度上限（2026-09-15）。
+   ⚠️ 用同上面 .floating-bottom-3 一模一樣嘅 bottom 公式 —— 改一邊一定要改埋另一邊。
+   點解要有：無障礙面板係 position:fixed、貼住底部。fixed 元素唔跟頁面捲，而面板
+   本身又冇 max-height／overflow —— 面板一高過視窗，頂部就伸出畫面上面、捲都捲唔到。
+   2026-09-15 localhost:3001 實測：面板 992px、視窗 987px，頂部 133px 喺畫面外，
+   而嗰度正正係「一鍵舒適模式」總掣。手機（812px）同細 laptop（768px）喺今日加
+   Focus 專注燈掣之前已經爆咗；加咗之後連 987px 都爆。一個需要舒適模式嘅 SEN 學生，
+   偏偏撳唔到個總掣。 */
+.floating-panel-max-h {
+  max-height: calc(100vh - max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) - var(--bottom-nav-h) - 1rem);
+  max-height: calc(100dvh - max(4.5rem, calc(env(safe-area-inset-bottom) + 3.5rem)) - var(--bottom-nav-h) - 1rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

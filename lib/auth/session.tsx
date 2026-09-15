@@ -114,6 +114,26 @@ export function authSignOut(): void {
   else void nextSignOut()
 }
 
+/**
+ * 登出，並【等佢完成】先返回，唔會自己導航。
+ *
+ * 畀「刪除我的資料」用：刪完雲端同本機之後，如果仍然係登入狀態，SyncProvider
+ * reload 後會即刻 ping /api/sync/session —— 即係刪除之後幾秒，雲端又開返一行
+ * 綁住佢 user_id 嘅紀錄。所以刪除最後一步一定要登出，而且要等佢完成先 reload：
+ * 上面個 authSignOut() 係射完唔理，同 location.replace() 會搶跑，POST 可能被中斷。
+ *
+ * 登出失敗唔拋錯 —— 到呢一步雲端同本機已經清咗，唔可以因為登出失敗而令介面
+ * 以為成個刪除失敗。
+ */
+export async function authSignOutAndWait(): Promise<void> {
+  try {
+    if (AUTH_BACKEND === 'better-auth') await authClient.signOut()
+    else await nextSignOut({ redirect: false })
+  } catch {
+    /* ignore —— 見上 */
+  }
+}
+
 // Email/password (Better Auth only). Returns Better Auth's { data, error } result so
 // the sign-in/up pages can surface validation errors without throwing.
 export async function authSignInEmail(email: string, password: string, callbackURL = '/dashboard') {

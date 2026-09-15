@@ -104,25 +104,61 @@ window.__probe = function () {
 }
 
 window.__ovf = function () {
-  const before = { x: window.scrollX, y: window.scrollY }
+  // ══ 2026-09-15 重寫 —— 舊版喺呢個站【結構上量唔到嘢】══
+  // 舊版只靠「scrollTo(400) 之後 scrollX > 0」判斷爆版。但 globals.css 由 2026-08-24
+  // （HOTFIX-0823）起有 `html { overflow-x: clip }` 安全網：頁面層根本捲唔郁，
+  // 闊過屏幕嘅內容係【直接被裁走】—— scrollX 永遠係 0，舊版永遠報「0 爆版」。
+  // 2026-09-13 嘅 34 路由掃描就係咁得出「0 爆版」，嗰個結果唔作數。
+  //
+  // 而家嘅地面真相：有冇元素伸出屏幕右邊，而佢同 <html> 之間【冇】任何會
+  // 裁剪或者捲動嘅祖先（overflow-x ≠ visible）。有嘅話，佢係喺一個捲得郁／
+  // 本身就裁嘅容器入面（例如 overflow-x-auto 嘅表格、.katex-display），唔算。
+  // 冇嘅話，佢就係俾 html 嘅 clip 裁走咗 —— 學生睇唔到嗰部分。
   const vv = window.visualViewport ? Math.round(window.visualViewport.width) : window.innerWidth
-  // 真相只有一個：試真係捲得郁唔郁。
-  // ⚠️ scrollWidth === innerWidth 呢個做法【唔得】—— Chrome 會撐大 layout viewport，
-  //    所以爆版嗰陣兩個數照樣相等，必然假陰性。要真係 scrollTo 然後睇 scrollX。
-  const ys = [0, Math.round(document.documentElement.scrollHeight / 3), Math.round(document.documentElement.scrollHeight * 2 / 3)]
-  let maxX = 0
-  for (const y of ys) { window.scrollTo(400, y); maxX = Math.max(maxX, Math.round(window.scrollX)) }
-  window.scrollTo(before.x, before.y)
-  let culprits = []
-  if (maxX > 0) {
-    for (const el of document.querySelectorAll('body *')) {
-      const r = el.getBoundingClientRect()
-      if (r.width < 2 || r.height < 2) continue
-      if (r.right > vv + 1) culprits.push({ tag: el.tagName.toLowerCase(), cls: (el.className || '').toString().slice(0, 70), right: Math.round(r.right), w: Math.round(r.width) })
+  const contained = (el) => {
+    for (let a = el.parentElement; a && a !== document.documentElement; a = a.parentElement) {
+      if (a === document.body) continue // body 冇設 overflow；html 嘅 clip 先係要揾嘅嘢
+      if (getComputedStyle(a).overflowX !== 'visible') return true
     }
-    culprits = culprits.slice(0, 6)
+    return false
   }
-  return { vv, innerWidth: window.innerWidth, scrollXreached: maxX, overflow: maxX > 0, culprits }
+  const culprits = []
+  for (const el of document.querySelectorAll('body *')) {
+    const r = el.getBoundingClientRect()
+    if (r.width < 2 || r.height < 2) continue
+    if (r.right <= vv + 1) continue
+    const cs = getComputedStyle(el)
+    if (cs.visibility === 'hidden' || cs.display === 'none') continue
+    if (cs.position === 'fixed') continue // 抽屜式選單等離屏元素：由佢自己嘅 transform 管
+    if (contained(el)) continue
+    culprits.push({ tag: el.tagName.toLowerCase(), cls: (el.className || '').toString().slice(0, 70), right: Math.round(r.right), w: Math.round(r.width) })
+  }
+  // 只報最外層：一個闊元素入面嘅子元素全部都會超出，唔使逐個列
+  const outer = culprits.filter((c, k) => k === 0 || c.right !== culprits[k - 1].right || c.w !== culprits[k - 1].w)
+  return { vv, clipped: culprits.length > 0, count: culprits.length, culprits: outer.slice(0, 6) }
+}
+
+/**
+ * __ovf 嘅負向測試（2026-09-15）。一支未紅過嘅探針，唔知係「冇爆版」定係「探針壞咗」
+ * —— 舊版 __ovf 就係從來冇紅過，所以冇人發現佢量唔到嘢。
+ * 種兩個 800px 闊嘅元素：一個直接放（應該捉到），一個放喺 overflow-x:auto 容器入面
+ * （唔應該捉到）。兩項都要對，嗰次掃描先作數。
+ */
+window.__ovfSelfTest = function () {
+  const host = document.querySelector('main') || document.body
+  const bad = document.createElement('div')
+  bad.innerHTML = '<span style="display:inline-block;width:800px;height:10px"></span>'
+  const box = document.createElement('div')
+  box.style.overflowX = 'auto'
+  box.innerHTML = '<span style="display:inline-block;width:800px;height:10px"></span>'
+  host.appendChild(bad)
+  const caught = window.__ovf().clipped
+  bad.remove()
+  host.appendChild(box)
+  const falseAlarm = window.__ovf().clipped
+  box.remove()
+  const baseline = window.__ovf().clipped // 頁面本身（兩個測試元素都已移走）
+  return { ok: caught && !falseAlarm, caughtWide: caught, flaggedScrollableBox: falseAlarm, pageItselfClipped: baseline }
 }
 
 /**

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useQuiet } from '@/lib/quietMode'
 import { useLocale } from '@/lib/i18n'
 import { getPracticeRank, RANKS, type PracticeRankState } from '@/lib/practiceRank'
 
@@ -50,9 +51,12 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
   const { locale } = useLocale()
   const en = locale === 'en'
   const [a, setA] = useState<PracticeRankState | null>(null)
+  // 安靜模式（lib/quietMode.ts，憲章 §8.1 約束 4）—— hook 一定要喺任何 return 之前叫
+  const quiet = useQuiet()
 
   // 導出值，唔會寫任何嘢；掛喺 mount 之後避免 SSR／水合唔一致
   useEffect(() => { setA(getPracticeRank()) }, [])
+  if (quiet) return null
   if (!a || a.sessions === 0) return null
 
   const tier = RANKS.indexOf(a.rank) + 1

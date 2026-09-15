@@ -16,6 +16,10 @@ import { useLocale } from '@/lib/i18n'
 export const FONT_KEY = 'dse_font_size'
 export const LINE_HEIGHT_KEY = 'dse_line_height'
 export const LETTER_SPACING_KEY = 'dse_letter_spacing'
+/** Focus 專注燈光模式。⚠️ 刻意唔入 lib/settingsSync.ts —— 入咗就變成上雲設定，
+ *  而憲章 §16.E 執行第 1 點寫明每個上雲 key 要創辦人書面批准。主題（dse-theme）
+ *  本身都係純本機，呢個跟返佢。 */
+export const FOCUS_LIGHT_KEY = 'dse_focus_light'
 
 export function applyFontSize(px: number) {
   const v = Math.min(24, Math.max(12, px))
@@ -66,6 +70,10 @@ export default function GlobalA11y() {
       // 手動減少動態。同 font-easy 一樣要喺 mount 即刻套用 —— 遲一格畫面，
       // 前庭敏感／光敏感用戶就已經見到咗一次動畫，防唔到佢想防嗰樣嘢。
       if (localStorage.getItem('dse_no_motion') === '1') document.documentElement.classList.add('no-motion')
+      // Focus 專注燈光模式（ADHD／UDL）。同上面兩個一樣要喺 mount 即刻套用：
+      // 遲一格畫面，學生就會見到成版嘢全亮咗一閃再淡落去 —— 對一個【正正因為
+      // 周邊太嘈先開呢個模式】嘅人嚟講，嗰一閃就係佢想避開嗰樣嘢。
+      if (localStorage.getItem(FOCUS_LIGHT_KEY) === '1') document.documentElement.classList.add('focus-light')
       // B1: 開機套用已存嘅行距／字間距（同字級一樣，只喺有偏好時先郁）
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
       const ls = localStorage.getItem(LETTER_SPACING_KEY) as LetterSpacing | null

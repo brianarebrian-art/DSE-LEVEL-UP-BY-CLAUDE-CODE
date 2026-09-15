@@ -26,6 +26,7 @@ import QuestionProvenance from '@/components/QuestionProvenance'
 import EmotionTags from '@/components/EmotionTags'
 import BookmarkButton from '@/components/BookmarkButton'
 import StagedExplanation from '@/components/StagedExplanation'
+import { FOCUS_LIGHT_KEY } from '@/components/GlobalA11y'
 import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
@@ -361,6 +362,30 @@ export default function PracticeSession({
     return () => window.removeEventListener('dse-a11y', read)
   }, [])
 
+  // Focus 專注燈光模式（ADHD／UDL，2026-09-13）。<html> 個 class 由 GlobalA11y
+  // 開機套用、由 A11yPanel 個掣 toggle；呢度淨係揸住【頁內嘅狀態顯示】同 Shift+F。
+  //
+  // 唔喺呢度讀 classList 而讀返 localStorage：兩處各自讀同一個真相來源，
+  // 唔會因為 render 次序而見到唔同答案。A11yPanel 改完會派 dse-a11y，所以
+  // 學生喺做緊題嗰陣由面板開關，呢度即刻跟到。
+  const [focusLight, setFocusLight] = useState(false)
+  useEffect(() => {
+    const read = () => { try { setFocusLight(localStorage.getItem(FOCUS_LIGHT_KEY) === '1') } catch { /* ignore */ } }
+    read()
+    window.addEventListener('dse-a11y', read)
+    return () => window.removeEventListener('dse-a11y', read)
+  }, [])
+
+  // Shift + F 切換。刻意做成同 A11yPanel 完全一樣嘅三步（寫 class、寫 storage、
+  // 派事件），而唔係各自維護一份狀態 —— 兩個入口寫落唔同地方，就會出現
+  // 「面板顯示關、畫面其實開住」呢種對唔上嘅狀態。
+  const toggleFocusLight = useCallback(() => {
+    const next = !(document.documentElement.classList.contains('focus-light'))
+    document.documentElement.classList.toggle('focus-light', next)
+    try { localStorage.setItem(FOCUS_LIGHT_KEY, next ? '1' : '0') } catch { /* ignore */ }
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [])
+
   // Show the English string when the UI is in English and a translation exists;
   // otherwise fall back to the Chinese original (so untranslated subjects still work).
   const tr = useCallback(
@@ -636,6 +661,16 @@ export default function PracticeSession({
   // 驗完先放行。鎖已剷除，所以「下一題」就係直接落下一題。
   const proceed = next
 
+  // 「下一題」掣出唔出、Enter 可唔可以推進 —— 【同一個判斷】，下面 JSX 同鍵盤
+  // handler 都用佢，唔准各自寫一份。
+  //
+  // ⚠️ 2026-09-15 實測捉到嘅 bug：鍵盤 handler 原本只檢查 answerState !== null。
+  //    答錯之後、三維自診未揀之前，介面仲未出「下一題」掣，但撳 Enter 就直接
+  //    跳去下一題 —— 自診被鍵盤繞過，dse_reverse_log 冇嗰一條。自診係錯題 DNA、
+  //    雷達圖、遺忘曲線重溫嘅唯一入料口（憲章 §7.2 明文保留）。
+  //    原本嘅測試只驗咗「答啱之後 Enter 換題」，所以冇捉到。
+  const canProceed = answerState !== null && (answerState.isCorrect || diagnosed !== null)
+
   // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
   //
   // ⚠️ 呢個【唔係】無障礙合規修補。選項掣本身一直 Tab 得到、Enter 撳得到，
@@ -659,15 +694,28 @@ export default function PracticeSession({
       const el = e.target as HTMLElement | null
       if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return
 
+      // Shift + F：專注燈。擺喺兩個守衛之後 —— 輸入框打大階 F 唔可以變成切換，
+      // 而 ⌘/⌃/⌥ 組合亦已經喺上面放行咗畀瀏覽器。
+      // 唔理 answerState：睇解析嗰陣一樣想熄得返個燈。
+      if (e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+        e.preventDefault()
+        toggleFocusLight()
+        return
+      }
+
       if (e.key === 'Enter') {
-        if (answerState === null) return
+        // 同「下一題」掣同一個條件；情緒溫度計／休息模式開住嗰陣亦唔可以
+        // 喺 modal 背後推進（溫度計個掣有焦點時，下面嘅 BUTTON 分支會交返畀
+        // 瀏覽器原生觸發嗰個掣，唔受影響）。
+        if (!canProceed || emoOpen || restOpen) return
         if (el && /^(BUTTON|A)$/.test(el.tagName)) return // 交返畀瀏覽器原生觸發
         e.preventDefault()
         proceed()
         return
       }
 
-      if (answerState !== null || !currentQ) return
+      // 休息模式係一個 modal —— 唔可以喺佢背後用鍵盤答題。
+      if (answerState !== null || !currentQ || restOpen) return
       const k = e.key.toUpperCase()
       const idx = /^[1-4]$/.test(k) ? Number(k) - 1 : 'ABCD'.indexOf(k)
       const opt = idx >= 0 ? currentQ.shuffledOptions[idx] : undefined
@@ -677,7 +725,7 @@ export default function PracticeSession({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [answerState, currentQ, selectOption, proceed])
+  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight, canProceed, emoOpen, restOpen])
 
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
@@ -820,7 +868,7 @@ export default function PracticeSession({
         {/* sticky：捲落去睇解析嗰陣，返回掣要仲喺度。
             全屏模式冇 Navbar，佢係唯一出口，唔可以隨頁面捲走。
             用 bg-surface 同頁面底色一致，所以內容捲過去唔會見到接縫。 */}
-        <div className="sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
+        <div className="focus-dim sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
           <Link
             href="/subjects"
             aria-label={tr('返回科目選擇', 'Back to subject list')}
@@ -843,7 +891,9 @@ export default function PracticeSession({
         </div>
 
         {/* Progress bar */}
-        <div className="mb-6">
+        {/* focus-dim：Focus 專注燈開咗嗰陣淡落 0.25。hover／focus-within 會即刻
+            還原（globals.css）—— 所以「淡咗」永遠唔等於「攞唔返」。 */}
+        <div className="focus-dim mb-6">
           <div className="flex justify-between text-sm text-ink-muted mb-2">
             <span>
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
@@ -1034,13 +1084,18 @@ export default function PracticeSession({
             {answerState === null
               ? tr('快捷鍵：1–4 或 A–D 揀答案', 'Shortcuts: 1–4 or A–D to answer')
               : tr('快捷鍵：Enter 落下一題', 'Shortcut: Enter for the next question')}
+            {' · '}
+            {focusLight
+              ? tr('Shift + F 熄專注燈', 'Shift + F to turn the focus light off')
+              : tr('Shift + F 開專注燈', 'Shift + F for focus light')}
           </p>
         </div>
 
         {/* Feedback + Next */}
         {answerState !== null && (
           <div className="animate-slide-up">
-            {!answerState.isCorrect && diagnosed === null ? (
+            {/* canProceed：同 Enter 快捷鍵共用同一個判斷（見上面 canProceed 定義）。 */}
+            {!canProceed ? (
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
                  3-way reverse-cause self-diagnosis. Calm gold, reflective (因材施教). */
               <div className="rounded-2xl p-6 mb-4 border border-gold/40 bg-gold/[0.06]">
@@ -1260,7 +1315,7 @@ export default function PracticeSession({
         )}
 
         {/* Score tracker */}
-        <div className="mt-6 flex justify-center gap-2 flex-wrap">
+        <div className="focus-dim mt-6 flex justify-center gap-2 flex-wrap">
           {Array.from({ length: totalQ }).map((_, i) => {
             let color = 'bg-line'
             if (i < answers.length) {

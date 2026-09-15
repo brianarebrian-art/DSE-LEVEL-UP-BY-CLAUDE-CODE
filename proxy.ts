@@ -3,6 +3,11 @@ import { NextResponse, type NextRequest } from 'next/server'
 // API rate limiting (Eric/資安 — $0 方案). In-memory sliding window per IP.
 // Next 16 renamed `middleware` → `proxy` (see node_modules/next/dist/docs/…/proxy.md).
 //
+// ⚠️ 唔好開 middleware.ts。Next 16.3.2 見到 middleware.ts 同 proxy.ts 同時存在，
+//    `next build` 會直接 throw（node_modules/next/dist/build/index.js：
+//    "Both middleware file … and proxy file … are detected. Please use … only."）——
+//    唔係靜靜哋被忽略，係 build 紅。有人照舊教學開 middleware.ts，會喺 build 嗰刻撞到。
+//
 // HONEST LIMITATION: proxy instances don't share state across edge isolates, so on
 // Vercel this is best-effort per-instance throttling — it blunts bursts and naive
 // brute force at $0, but is NOT a distributed limiter (that needs KV/Redis, Stage 2).

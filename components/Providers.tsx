@@ -5,6 +5,7 @@ import SyncProvider from '@/components/SyncProvider'
 import SettingsSync from '@/components/SettingsSync'
 import ThemeProvider from '@/components/ThemeProvider'
 import { AuthProvider } from '@/lib/auth/session'
+import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
 
 // LanguageProvider wraps everything so the whole UI can switch 中/EN client-side.
 // AuthProvider is the backend-agnostic seam: it mounts the active auth bridge (Auth.js
@@ -24,6 +25,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             所以唔會出現「兩條通道爭同一份數據」嘅時間戳競賽。 */}
           <SyncProvider>
             <SettingsSync>{children}</SettingsSync>
+            {/* 離線層登記（唔 render 任何嘢）—— 見 components/ServiceWorkerRegister.tsx */}
+            <ServiceWorkerRegister />
           </SyncProvider>
         </AuthProvider>
       </LanguageProvider>

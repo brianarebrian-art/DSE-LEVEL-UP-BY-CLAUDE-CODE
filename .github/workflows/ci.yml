@@ -14,6 +14,19 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+
+      # 2026-09-15：build 設定守衛（快，擺喺長嘅 build 之前）。
+      # · build 同 dev 一定要 --webpack（憲章 §3）：冇嘅話 Next 16 預設行 Turbopack，
+      #   同 preview（3001，--webpack）行唔同嘅 bundler —— CI 綠唔代表本地行到。
+      #   2026-09-15 發現 dev script 一直冇 --webpack，README 教人行嘅就係佢。
+      # · middleware.ts：Next 16 見到佢同 proxy.ts 並存會喺 build throw；喺呢度
+      #   先攔，錯誤訊息講明原因，唔使等 build 跑幾分鐘先知。
+      - name: Build config guard (--webpack, no middleware.ts)
+        run: |
+          node -e "const s=require('./package.json').scripts; for (const k of ['build','dev']) if(!/--webpack/.test(s[k])){console.error('✗ package.json '+k+' 冇 --webpack：'+s[k]);process.exit(1)}"
+          if [ -e middleware.ts ] || [ -e src/middleware.ts ]; then echo "✗ 唔可以有 middleware.ts —— Next 16 用 proxy.ts（見 proxy.ts 檔頭）"; exit 1; fi
+          echo "✓ build 設定 OK"
+
       - run: npm test
 
       # 憲章 §15 五閘：term-guard（術語＋書面語）／validate-banks（題庫結構）／

@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "source": "batch2-uncovered.json",
+    "subject": "math",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ma-arith-seq": "pending",
+    "ma-seq-pattern": "pending",
+    "ma-linear-fn": "pending",
+    "ma-locus": "pending",
+    "ma-variation": "pending",
+    "ma-indices": "pending",
+    "ma-factorisation": "pending",
+    "ma-coord-geom": "pending",
+    "ma-fn-composite": "pending",
+    "ma-polygon-angles": "pending",
+    "ma-trig-ratio": "pending",
+    "ma-sig-fig": "pending"
+  }
+}

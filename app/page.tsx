@@ -6,6 +6,7 @@ import { ArrowRight, Brain, Zap } from 'lucide-react'
 import MathText from '@/components/MathText'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
+import InstallHint from '@/components/InstallHint'
 import { subjects, getActiveSubjects } from '@/data/subjects'
 // 由 summary.generated.ts 攞總數，唔好 import barrel ——
 // barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
@@ -95,6 +96,8 @@ export default function HomePage() {
   return (
     <div ref={rootRef} className="min-h-screen bg-surface text-ink-soft">
       <CountdownBanner />
+      {/* 「加到主畫面」輕提示：已裝／撳過唔使／瀏覽器唔支援都唔出（見組件檔頭） */}
+      <InstallHint />
 
       {/* ── HERO ── */}
       <section className="relative px-4 pt-20 pb-24">
