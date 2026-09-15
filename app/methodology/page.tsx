@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import ArticleJsonLd from '@/components/Seo/ArticleJsonLd'
 import MethodologyClient from './MethodologyClient'
 
 // 2026-08-21：本版原本淨係一個 client component，冇自己嘅 metadata，所以喺搜尋
@@ -14,5 +15,11 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <MethodologyClient />
+  return (
+    <>
+      <MethodologyClient />
+      {/* Article 結構化資料 ＋ 頁底可見日期（日期由 lib/articleDates.ts 讀） */}
+      <ArticleJsonLd route="/methodology" meta={metadata} />
+    </>
+  )
 }

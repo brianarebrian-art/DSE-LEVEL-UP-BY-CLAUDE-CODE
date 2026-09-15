@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import ArticleJsonLd from '@/components/Seo/ArticleJsonLd'
 import CommunitySafetyClient from './CommunitySafetyClient'
 
 // /community-safety —— 學生安全。
@@ -26,6 +27,8 @@ export default function CommunitySafetyPage() {
   return (
     <div className="min-h-screen bg-surface text-ink-soft">
       <CommunitySafetyClient />
+      {/* Article 結構化資料 ＋ 頁底可見日期（日期由 lib/articleDates.ts 讀） */}
+      <ArticleJsonLd route="/community-safety" meta={metadata} />
     </div>
   )
 }
