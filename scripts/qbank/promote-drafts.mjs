@@ -20,7 +20,7 @@
 //     --decisions scripts/qbank/drafts/econ.decisions.json
 // ============================================================================
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gateRow, toReviewedQuestion, norm } from './_gate.mjs'
@@ -161,6 +161,31 @@ ${typeLine}// Do NOT hand-edit — re-run the pipeline instead. NOT yet live unt
 import type { ${bankType} } from './types'
 
 export const ${exportName}: ${bankType}[] = `
+// ── 覆寫保護（2026-09-15）────────────────────────────────────────────────
+// 輸出檔已經存在、而且嚟自【另一個】批次 → 停機，唔寫。
+//
+// 點解唔係「合併」（2026-09-15 一份規格書提出過）：生成檔嘅檔頭只有【一組】
+// reviewer／reviewed／source／mode。兩批合併落同一個檔，就要揀其中一組做檔頭 ——
+// Yuna 逐題批嘅一批同 Brian 抽樣批嘅一批（mode: sampled，其餘只過機器閘）混埋，
+// 其中一批嘅審批紀錄就會錯誤歸屬，甚至將抽樣批講成逐題人手批。
+// 呢個係 §12／§16.C 最嚴嗰類問題。所以正確做法係【一批一個檔】（--out），
+// 而呢度做嘅係令「唔記得加 --out」由靜靜哋冚走一批，變成即刻停機。
+//
+// 同一個批次重跑（改咗決定之後再 promote）照舊准：嗰個係冪等操作，唔會掉資料。
+// 刻意【冇】--force：一個 force 旗就係下一個 footgun。真係要取代，
+// 人手刪咗個檔先（git 睇得到嘅動作）。
+if (existsSync(outFile)) {
+  const prevSource = readFileSync(outFile, 'utf8').match(/^\/\/\s+source\s*:\s*(.+?)\s*$/m)?.[1]
+  if (prevSource !== basename(IN)) {
+    console.error(`\n✗ data/questions/${base}.ts 已經存在，而且嚟自另一個批次：`)
+    console.error(`     現有：${prevSource ?? '（檔頭冇 source —— 唔係由本腳本生成）'}`)
+    console.error(`     今次：${basename(IN)}`)
+    console.error(`  寫落去就會冚走嗰一批（2026-08-07 中文卷二就係咁冇咗 18 條）。`)
+    // 建議名跟現有慣例：bafs-batch-2.json → bafs-batch-2-reviewed.ts
+    console.error(`  請加 --out 用一個新檔名，例如：--out ${basename(IN).replace(/\.json$/, '')}-reviewed\n`)
+    process.exit(1)
+  }
+}
 writeFileSync(outFile, header + JSON.stringify(approved, null, 2) + '\n')
 
 // 抽樣模式下【唔可以】把全部 admitted 講成 human-approved —— `approved` 入面
