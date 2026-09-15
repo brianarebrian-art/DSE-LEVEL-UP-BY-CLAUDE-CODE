@@ -5,6 +5,11 @@ import { useLocale } from '@/lib/i18n'
 import { REVIEW_BATCHES, REVIEWED_COUNT } from '@/data/provenance'
 import { getActiveSubjects } from '@/data/subjects'
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
+import { FLAGGED } from '@/data/qualityFlags'
+
+// 「待核」按介面語言分開計（同 components/QuestionProvenance.tsx 嘅 ZH_FLAGS／EN_FLAGS 一致）。
+const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).length
+const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en')).length
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and
@@ -129,6 +134,13 @@ export default function TransparencyClient() {
           {en
             ? 'A question with no named review record is not an unchecked question — it means no human signed off on it line by line, and we will not pretend otherwise. Machines never sign on a person\u2019s behalf here.'
             : '冇實名審批紀錄，唔等於冇檢查過 —— 只係冇真人逐題簽過名，我哋唔會扮有。喺呢度，機器永遠唔會代人簽名。'}
+        </p>
+        {/* 第三個狀態「待核」（2026-09-15）。數字由生成檔即時計，唔寫死 —— 題目修好一條，
+            呢度自動少一條。 */}
+        <p className="text-ink-soft leading-relaxed mb-5">
+          {en
+            ? `${PENDING_EN.toLocaleString()} questions are marked “Pending review” in the English interface and ${PENDING_ZH.toLocaleString()} in the Chinese interface. These are questions where our checks have found a specific problem that a person has not fixed yet: the explanation refers to an option by position, and because options are shuffled every time, that reference may point to the wrong one. The badge says so on the question itself. We show them instead of hiding them.`
+            : `有 ${PENDING_ZH.toLocaleString()} 條題目喺中文介面、${PENDING_EN.toLocaleString()} 條喺英文介面標住「待核」。呢啲係機器已經驗出具體問題、但仲未有人手修正嘅題目：解析用位置講選項，而選項每次都會洗牌，所以嗰句可能指錯。徽章會喺題目度直接講明。我哋選擇攤出嚟，而唔係收埋。`}
         </p>
 
         <div className="bg-surface-raised border border-line rounded-2xl p-5 overflow-x-auto">
