@@ -52,10 +52,15 @@ const REVIEWS: Review[] = [
   {
     date: '2026-10-09',
     what: 'SESSION_SIZE 由 20 減到 10 之後，中途離開率有冇由 74% 跌向 30%',
-    where: 'docs/charter.md §7.1 · lib/entitlements.ts:16',
+    where: 'docs/charter.md §7.1 · lib/entitlements.ts:31',
     question:
       '對返數：74% 嘅節冇做夠 20 題、中位數 15 —— 改成 10 之後呢兩個數變咗幾多？' +
-      '目標係壓到 30%。唔啱就要改返，唔可以當個假設已證實。',
+      '目標係壓到 30%。唔啱就要改返，唔可以當個假設已證實。' +
+      '⚠️ 2026-09-15 發現：按現行代碼，dse_progress 只在完成最後一題後寫入' +
+      '（app/practice/PracticeSession.tsx 的 recordAttempt；「今日夠了」離開不寫入），' +
+      '中途離開的節不會出現在數據中。74% 基線量度的可能是「已完成但較短的節」' +
+      '（課題卷、弱項卷、只做 1 題、紙筆對答案），而非中途離開。' +
+      '覆檢前須先核實計法；analytics:retention 目前亦沒有計算此指標。',
     tool: 'npm run analytics:retention（§⓪ 漏斗 · §① 留存）',
   },
   {
