@@ -49,24 +49,9 @@ const nextConfig: NextConfig = {
       // 同緊急換版本都靠學生部機攞到新嘅 sw.js。瀏覽器本身檢查 SW 更新時會繞過
       // HTTP cache，但 CDN 唔會 —— 明寫 no-cache，唔靠預設。
       { source: '/sw.js', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
-      // 虛擬超市（public/supermarket/**）係一個零依賴靜態頁，由
-      // /relax/virtual-supermarket 用【同源】iframe 載入，好等 relax layout
-      // 嘅緊急熱線橫幅同「一撳離開」照樣包住佢。
-      //
-      // 全站預設 X-Frame-Options: DENY + frame-ancestors 'none' 會連同源 iframe
-      // 都封死，所以呢條路徑單獨放寬到 SAMEORIGIN / 'self' —— 只准本網域嵌自己，
-      // 外站一樣嵌唔到。其餘所有 header（nosniff / HSTS / Referrer-Policy 等）
-      // 由上面嗰條規則繼續套用，唔受影響。
-      {
-        source: '/supermarket/:path*',
-        headers: [
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          {
-            key: 'Content-Security-Policy',
-            value: csp.replace("frame-ancestors 'none'", "frame-ancestors 'self'"),
-          },
-        ],
-      },
+      // The /supermarket/:path* iframe exception (SAMEORIGIN) was removed on 2026-09-16.
+      // Its only consumer, the virtual supermarket, was deleted on 2026-09-05 (charter §8.1.1).
+      // An unused relaxation of a security header must not remain in place.
     ]
   },
 }
