@@ -6,6 +6,7 @@
     "dev": "next dev -p 3001 --webpack",
     "clean": "rm -rf .next",
     "dev:clean": "npm run clean && npm run dev",
+    "dev:fresh": "rm -rf .next/dev/cache && npm run dev",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",

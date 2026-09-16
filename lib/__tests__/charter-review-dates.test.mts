@@ -52,19 +52,31 @@ const REVIEWS: Review[] = [
   {
     date: '2026-10-09',
     what: 'SESSION_SIZE 由 20 減到 10 之後，中途離開率有冇由 74% 跌向 30%',
-    where: 'docs/charter.md §7.1 · lib/entitlements.ts:16',
+    where: 'docs/charter.md §7.1 · lib/entitlements.ts:31',
     question:
       '對返數：74% 嘅節冇做夠 20 題、中位數 15 —— 改成 10 之後呢兩個數變咗幾多？' +
-      '目標係壓到 30%。唔啱就要改返，唔可以當個假設已證實。',
+      '目標係壓到 30%。唔啱就要改返，唔可以當個假設已證實。' +
+      '⚠️ 2026-09-15 發現：按現行代碼，dse_progress 只在完成最後一題後寫入' +
+      '（app/practice/PracticeSession.tsx 的 recordAttempt；「今日夠了」離開不寫入），' +
+      '中途離開的節不會出現在數據中。74% 基線量度的可能是「已完成但較短的節」' +
+      '（課題卷、弱項卷、只做 1 題、紙筆對答案），而非中途離開。' +
+      '覆檢前須先核實計法；analytics:retention 目前亦沒有計算此指標。' +
+      '另：2027 目標書要求「預設 5 題微型卷（保留 10 題長卷）」，2026-09-15 決定留待本次覆檢，' +
+      '計法核實後一併決定預設為 5 題或 10 題。如需真正量度中途離開，須記錄「已開始但未完成」的節，' +
+      '屬新增數據採集，須創辦人批准。',
     tool: 'npm run analytics:retention（§⓪ 漏斗 · §① 留存）',
   },
   {
     date: '2026-11-09',
     what: '§7.2 剷除 30 秒反思鎖嘅兩個月實驗期滿；同時重新考慮 EMPIRICAL_K',
-    where: 'docs/charter.md §7.2 · lib/empiricalWeighting.ts:30',
+    where: 'docs/charter.md §7.2 · lib/empiricalWeighting.ts:30 · docs/iso-loop-design-2026-11-09.md',
     question:
       '交逐週正確率 curve，對照剷鎖前基準（88.3%、5,565 題、484 節、中位 15 題）。' +
-      '三個選項：復活個鎖、永久刪除、改個形態 —— 揀邊個都要寫低憑咩。',
+      '三個選項：復活個鎖、永久刪除、改個形態 —— 揀邊個都要寫低憑咩。' +
+      '「改變形態」的其中一個候選為同構閉環 A/B（強制 8 秒框架卡＋同構題），' +
+      '2026-09-15 決定留待本次覆檢一併處理，開工前須回答的問題見 docs/iso-loop-design-2026-11-09.md。' +
+      '「90 秒首訪閉環」（完成後方可選科）同日決定一併於本次覆檢處理，見同一文件第 6 節；' +
+      '「練習頁盲測模式」（預設隱藏數字與單位）同日決定於本次覆檢後再決定，見第 7 節。',
     tool: 'npm run analytics:retention（§② 逐週 curve · §③ 剷鎖前後對照）',
   },
 ]
@@ -94,6 +106,14 @@ test('憲章覆檢日到期時必須有裁決紀錄', () => {
     `以下憲章覆檢已到期而未有裁決紀錄：${overdue.join('')}\n\n` +
     `⚠️ 唔好刪走呢條測試過關。佢存在嘅唯一理由，就係防止一個「兩個月實驗」` +
     `因為冇人記得而變成永久現狀。`)
+})
+
+// The reminder only helps if the documents it points to still exist on the review date.
+// A renamed or deleted design note would leave a dead reference, discovered only when it is needed.
+test('覆檢項目引用的 docs 檔案必須存在', () => {
+  const missing = REVIEWS.flatMap(r => r.where.match(/docs\/[\w.-]+\.md/g) ?? [])
+    .filter(p => !existsSync(join(ROOT, p)))
+  assert.deepEqual(missing, [], `覆檢項目引用的文件不存在：${missing.join(', ')}`)
 })
 
 // 提早知會：到期前 21 日開始喺測試輸出提一句。

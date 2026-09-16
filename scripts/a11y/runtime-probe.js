@@ -15,9 +15,10 @@
 //   1. npm run dev（port 3001 —— 唔可以用 3002）
 //   2. 揀主題：localStorage.setItem('dse-theme','light') 或 'cyber'，然後【重新載入】
 //      （淨係改 data-theme attribute 唔夠 —— 開機嗰段 inline script 先係權威）
-//   3. DevTools Console 貼晒本檔，然後 __probe() / __ovf()
+//   3. DevTools Console 貼晒本檔，然後 `await __settle()`（等入場動畫做完）
+//      先至 __probe() / __ovf()
 //
-// ══ 三個曾經令呢支嘢報錯數嘅坑（全部實測踩過）══
+// ══ 四個曾經令呢支嘢報錯數嘅坑（全部實測踩過）══
 //
 // ① 半透明前景。`color: rgba(0,0,0,.18)` 唔合成落背景就會當成純黑而「合格」。
 //    要 over(fg, bg) 先。負向測試就係為咗釘死呢一點。
@@ -26,6 +27,9 @@
 //    遇到 backgroundImage !== 'none' 就【放棄呢個元素】，寧可漏報唔好亂嗌。
 // ③ eval 覆蓋唔到已存在嘅 window.__probe。改完探針再跑，量緊嘅可能係舊版。
 //    每次跑之前一定要 `delete window.__probe`。
+// ④ 祖先 opacity（2026-09-16 修）。舊版只睇元素【自己】嘅 opacity，所以 Focus 燈
+//    開住（非聚焦區 opacity: .25）嗰陣照樣報「0 失敗」——啲字實際淡到 1.8:1。
+//    而家由元素沿祖先鏈逐層合成背景同 opacity，自測亦加咗一紅一綠兩個 opacity 例。
 //
 // ══ 最緊要嘅一步：負向測試 ══
 // 一支未紅過嘅探針，唔知係「冇問題」定係「探針壞咗」。跑之前先種一個
@@ -41,33 +45,75 @@ window.__probe = function () {
     const p = m[1].split(/[,\s/]+/).filter(Boolean).map(Number)
     return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }
   }
-  const over = (fg, bg) => ({ r: fg.r * fg.a + bg.r * (1 - fg.a), g: fg.g * fg.a + bg.g * (1 - fg.a), b: fg.b * fg.a + bg.b * (1 - fg.a), a: 1 })
+  // Porter-Duff source-over; the bottom colour may itself be translucent.
+  const over = (top, bot) => {
+    const a = top.a + bot.a * (1 - top.a)
+    if (a <= 0) return { r: 0, g: 0, b: 0, a: 0 }
+    const mix = (t, b) => (t * top.a + b * bot.a * (1 - top.a)) / a
+    return { r: mix(top.r, bot.r), g: mix(top.g, bot.g), b: mix(top.b, bot.b), a }
+  }
+  const WHITE = { r: 255, g: 255, b: 255, a: 1 }
 
-  // 由元素向上砌實際背景。遇到 gradient 就放棄呢個元素（見檔頭坑 ②）。
-  function bgOf(el) {
-    let cur = el, acc = null
-    while (cur && cur !== document.documentElement.parentNode) {
-      const cs = getComputedStyle(cur)
+  // Final on-screen colour of `start` painted inside `el`: composite it over each
+  // ancestor's background and apply each ancestor's opacity, up to the canvas.
+  // Pitfall ④ (2026-09-16): the old version only looked at the element's own opacity.
+  // With the Focus light on, the dimmed regions sit at opacity 0.25, yet the probe
+  // still reported zero failures because ancestor opacity was never applied.
+  // Returns null on a gradient background (pitfall ②: give up rather than guess).
+  function render(el, start) {
+    const chain = []
+    for (let cur = el; cur; cur = cur.parentElement) chain.push(cur)
+    const styles = chain.map((n) => getComputedStyle(n))
+    // dimAbove[i]: some node at index >= i has opacity < 1, so an opaque colour
+    // below it will still be blended with whatever lies behind.
+    const dimAbove = new Array(chain.length + 1).fill(false)
+    for (let i = chain.length - 1; i >= 0; i--) dimAbove[i] = dimAbove[i + 1] || Number(styles[i].opacity) < 1
+    let acc = start
+    for (let i = 0; i < chain.length; i++) {
+      const cs = styles[i]
       if (cs.backgroundImage && cs.backgroundImage !== 'none') return null
       const c = parse(cs.backgroundColor)
-      if (c && c.a > 0) { acc = acc ? over(acc, c) : c; if (acc.a >= 0.999) return acc }
-      cur = cur.parentElement
+      if (c && c.a > 0) acc = over(acc, c)
+      const op = Number(cs.opacity)
+      if (op < 1) acc = { ...acc, a: acc.a * op }
+      if (acc.a >= 0.999 && !dimAbove[i + 1]) return acc
     }
-    const html = parse(getComputedStyle(document.documentElement).backgroundColor)
-    const base = html && html.a > 0 ? html : { r: 255, g: 255, b: 255, a: 1 }
-    return acc ? over(acc, base) : base
+    return over(acc, WHITE)
+  }
+
+  const cumulativeOpacity = (el) => {
+    let o = 1
+    for (let cur = el; cur; cur = cur.parentElement) o *= Number(getComputedStyle(cur).opacity)
+    return o
   }
 
   const hidden = (el) => {
     const cs = getComputedStyle(el)
-    if (cs.display === 'none' || cs.visibility === 'hidden' || Number(cs.opacity) === 0) return true
+    if (cs.display === 'none' || cs.visibility === 'hidden') return true
+    if (cumulativeOpacity(el) < 0.02) return true // an ancestor at opacity 0 hides it as well
     const r = el.getBoundingClientRect()
     return r.width < 2 || r.height < 2
+  }
+
+  // 動畫途中量到嘅 opacity 唔算數（2026-09-16 實測）：`/practice` 張卡有入場動畫
+  // `ml-q-enter`，載入後 1.2 秒量到 4.28:1，等佢做完再量係 4.98:1。
+  // 計埋祖先 opacity 之後，唔避開呢一刻就會報一批唔存在嘅失敗。
+  const midAnimation = new Set()
+  for (const a of (document.getAnimations ? document.getAnimations() : [])) {
+    if (a.playState !== 'running') continue
+    const t = a.effect && a.effect.target
+    if (t) midAnimation.add(t)
+  }
+  const animatingChain = (el) => {
+    for (let cur = el; cur; cur = cur.parentElement) if (midAnimation.has(cur)) return true
+    return false
   }
 
   const fails = []
   let checked = 0
   let redacted = 0
+  let inactive = 0
+  let animating = 0
   for (const el of document.querySelectorAll('body *')) {
     if (el.closest('[aria-hidden="true"]')) continue     // 裝飾元素，唔係畀人讀
     if (el.closest('svg, script, style, noscript')) continue
@@ -75,10 +121,14 @@ window.__probe = function () {
     const text = [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent.trim()).join('')
     if (!text) continue
     if (hidden(el)) continue
+    // WCAG 1.4.3 exempts text in inactive UI components. Now that ancestor opacity
+    // is counted, a disabled button at opacity-50 would otherwise be reported.
+    if (el.closest(':disabled, [aria-disabled="true"]')) { inactive++; continue }
+    if (animatingChain(el)) { animating++; continue } // 先 await __settle()，剩返嘅先跳過
     const cs = getComputedStyle(el)
-    const fg = parse(cs.color); if (!fg) continue
-    const bg = bgOf(el); if (!bg) continue
-    const eff = fg.a < 1 ? over(fg, bg) : fg
+    const fgRaw = parse(cs.color); if (!fgRaw) continue
+    const bg = render(el, { r: 0, g: 0, b: 0, a: 0 }); if (!bg) continue
+    const eff = render(el, fgRaw); if (!eff) continue
     const L1 = lum([eff.r, eff.g, eff.b]), L2 = lum([bg.r, bg.g, bg.b])
     const ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05)
     const px = parseFloat(cs.fontSize), bold = Number(cs.fontWeight) >= 700
@@ -100,7 +150,29 @@ window.__probe = function () {
         fg: cs.color, bg: `rgb(${Math.round(bg.r)},${Math.round(bg.g)},${Math.round(bg.b)})`, px })
     }
   }
-  return { redacted, theme: document.documentElement.getAttribute('data-theme'), checked, fails }
+  return { redacted, inactive, animating, theme: document.documentElement.getAttribute('data-theme'), checked, fails }
+}
+
+/**
+ * 掃之前 await 佢：等入場動畫做完先量。無限循環嘅動畫（脈動、轉圈）永遠唔會完，
+ * 所以唔等佢哋 —— 佢哋嘅 target 會喺 __probe 入面被跳過並計入 `animating`。
+ */
+window.__settle = async function (maxMs = 3000) {
+  const t0 = Date.now()
+  const finite = () => (document.getAnimations ? document.getAnimations() : []).filter((a) => {
+    if (a.playState !== 'running') return false
+    const it = a.effect && a.effect.getTiming ? a.effect.getTiming().iterations : 1
+    return it !== Infinity
+  })
+  while (Date.now() - t0 < maxMs) {
+    const running = finite()
+    if (!running.length) return { settled: true, waitedMs: Date.now() - t0 }
+    await Promise.race([
+      Promise.allSettled(running.map((a) => a.finished)),
+      new Promise((r) => setTimeout(r, 150)),
+    ])
+  }
+  return { settled: false, waitedMs: Date.now() - t0 }
 }
 
 window.__ovf = function () {
@@ -163,8 +235,8 @@ window.__ovfSelfTest = function () {
 
 /**
  * 負向測試 —— 跑任何一頁之前先跑呢個。
- * 種四個已知答案嘅元素：兩個應該紅、兩個應該綠。
- * 四項有任何一項唔對，表示探針壞咗，嗰次掃描嘅「零失敗」唔作數。
+ * 種六個已知答案嘅元素：三個應該紅、三個應該綠。
+ * 六項有任何一項唔對，表示探針壞咗，嗰次掃描嘅「零失敗」唔作數。
  */
 window.__probeSelfTest = function () {
   const d = document.createElement('div')
@@ -173,17 +245,21 @@ window.__probeSelfTest = function () {
     <div style="background:#ffffff;color:#bbbbbb;font-size:14px">SELFTEST_FAIL_LOW</div>
     <div style="background:#ffffff;color:rgba(0,0,0,0.18);font-size:14px">SELFTEST_FAIL_ALPHA</div>
     <div style="background:#ffffff;color:#595959;font-size:14px">SELFTEST_PASS_GREY</div>
-    <div style="background:#ffffff;color:#000000;font-size:14px">SELFTEST_PASS_BLACK</div>`
+    <div style="background:#ffffff;color:#000000;font-size:14px">SELFTEST_PASS_BLACK</div>
+    <div style="background:#ffffff"><div style="opacity:0.25"><div style="color:#000000;font-size:14px">SELFTEST_FAIL_OPACITY</div></div></div>
+    <div style="background:#ffffff"><div style="opacity:0.9"><div style="color:#000000;font-size:14px">SELFTEST_PASS_OPACITY</div></div></div>`
   // 要真係喺版面上先量得到 —— left:-9999px 唔影響 getComputedStyle
   document.body.appendChild(d)
   const hit = new Set(window.__probe().fails.map((f) => f.text))
   d.remove()
+  // Black text under an ancestor at opacity 0.25 renders as rgb(191,191,191) on white,
+  // about 1.8:1. A probe that ignores ancestor opacity reports it as passing.
   const want = {
-    SELFTEST_FAIL_LOW: true, SELFTEST_FAIL_ALPHA: true,
-    SELFTEST_PASS_GREY: false, SELFTEST_PASS_BLACK: false,
+    SELFTEST_FAIL_LOW: true, SELFTEST_FAIL_ALPHA: true, SELFTEST_FAIL_OPACITY: true,
+    SELFTEST_PASS_GREY: false, SELFTEST_PASS_BLACK: false, SELFTEST_PASS_OPACITY: false,
   }
   const bad = Object.entries(want).filter(([k, v]) => hit.has(k) !== v).map(([k]) => k)
   if (bad.length) { console.error('✗ 探針自檢唔通過：', bad, '—— 今次掃描結果唔作數'); return false }
-  console.log('✅ 探針自檢通過（兩紅兩綠）')
+  console.log('✅ 探針自檢通過（三紅三綠）')
   return true
 }
