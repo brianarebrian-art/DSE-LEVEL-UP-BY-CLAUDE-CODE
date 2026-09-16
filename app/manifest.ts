@@ -27,10 +27,21 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'zh-HK',
     categories: ['education'],
     icons: [
+      // 2026-09-16 加返 PNG。原本淨係得 SVG ＋ favicon.ico：Chrome／Edge 收 SVG，
+      // 但唔係每個 Android 瀏覽器都收 —— 收唔到就會攞 32px 嘅 favicon 放大，
+      // 主畫面個圖示會糊。對象好多用舊機，所以唔靠單一格式。
+      { src: '/icons/owl-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/icons/owl-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      // maskable：底色滿版、貓頭鷹縮到 76%，好等 Android 切圓形／水滴形都唔會切到隻鳥
+      //（安全區係中央 80%）。冇呢張嘅話，系統會自己加白邊或者切走隻鳥對角。
+      { src: '/icons/owl-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
       // SVG 'any'：Chrome／Edge 接受作為可安裝圖示，一個檔頂晒 192 同 512。
-      // 冇呢個嘅話，Chrome 唔會當呢個站「可安裝」—— favicon.ico 太細。
       { src: '/icons/owl.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
       { src: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
     ],
+    // iOS 唔讀 manifest 嘅 icons，佢讀 <link rel="apple-touch-icon">。
+    // 嗰張圖由 app/apple-icon.png 提供（Next 檔案慣例，會自動出 <link>）——
+    // 底色一樣要滿版，因為 iOS 會將透明位填黑。
+    // 三張 PNG 全部由 public/icons/owl.svg 產生；改 SVG 記得重新產生（見 docs）。
   }
 }
