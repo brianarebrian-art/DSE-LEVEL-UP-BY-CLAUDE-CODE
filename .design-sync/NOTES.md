@@ -193,3 +193,15 @@ KaTeX 字體要另外拎：`cfg.extraFonts` 加 `node_modules/katex/dist/katex.m
   enum/type/context/hook）。數量大跳動就要睇下係咪 `srcDir` 被改過。
 - `app/globals.css` 73KB 係單一 token 來源；莫蘭迪主色同四隻霓虹色（只用喺導出 PNG 卡）
   都喺入面，改咗色系要重跑先會同步。
+
+## `docs/tokens.md` 係生成檔（2026-09-18 加入 guidelines）
+
+`guidelinesGlob` 第七份 `docs/tokens.md` **唔係人手寫**，由
+`scripts/gen-token-doc.mjs` 讀 `app/globals.css` 生成。
+
+- 重跑全量 sync 之前先跑 `npm run tokens:doc`，否則上傳嘅係舊表。
+- `npm run qa` 尾段有 `gen-token-doc.mjs --check`，過期會 exit 1，所以
+  正常流程唔會漏 —— 但 design-sync 唔行 `qa`，呢度特登寫低。
+- 佢出【resolved】值唔係宣告清單：`--color-accent-strong` 喺 `@theme`
+  宣告 `#00726C`，但 `:root`（L363）指去 sage `#57685C` 贏咗。
+  design agent 照 `@theme` 揀色就會成套偏綠青。65 個 token 入面 28 個係咁。

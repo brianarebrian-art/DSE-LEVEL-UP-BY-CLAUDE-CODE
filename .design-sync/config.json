@@ -11,7 +11,8 @@
     "docs/aaa-contrast-feasibility.md",
     "docs/a11y-runtime-sweep-2026-09-13.md",
     "docs/sen-comfort-mode-launch.md",
-    "docs/TERMINOLOGY.md"
+    "docs/TERMINOLOGY.md",
+    "docs/tokens.md"
   ],
   "componentSrcMap": {
     "A11yPanel": "components/A11yPanel.tsx",
