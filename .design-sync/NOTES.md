@@ -154,6 +154,12 @@ KaTeX 字體要另外拎：`cfg.extraFonts` 加 `node_modules/katex/dist/katex.m
   所以只會出空白。要造狀態就要喺 preview 度扮 UA、扮事件，
   等於寫一個假嘅瀏覽器環境 —— 嗰個唔係「組件真身」，係一個仿製品。
 
+- **AppShell ／ GlobalA11y ／ ServiceWorkerRegister ／ SettingsSync ／
+  SyncProvider ／ ThemeProvider ／ ArticleJsonLd** —— 七個都**冇視覺表面**：
+  佢哋係 layout wrapper、全域事件 listener、SW 註冊、context provider，
+  或者一個 `<script type="application/ld+json">`。render 出嚟本身就係「冇嘢」，
+  所以 floor card 已經係最準確嘅呈現。`AppShell` 另外仲要 App Router context。
+
 ## ⚠️ 預覽環境冇任何 `NEXT_PUBLIC_*` env
 
 `process` shim 供嘅係一個空 `env`，所以**每一條 env 分支都行「關」嗰邊**：
@@ -162,6 +168,21 @@ KaTeX 字體要另外拎：`cfg.extraFonts` 加 `node_modules/katex/dist/katex.m
 `AuthButton`。**呢個唔係 bug，但睇卡嘅人要知**，否則會以為跨裝置同步未上線。
 如果日後想 render 開咗 auth 嘅狀態，要喺 shim 度填返個 env 值，
 並且喺卡嘅註釋講明嗰個係扮出嚟嘅。
+
+- **Navbar ／ BottomNav ／ Sidebar ／ A11yPanel ／ AuthButton ／ NotTonightGate** ——
+  六個都喺靜態卡度 render 唔到嘢，原因各有唔同：
+  頭三個用 `next/navigation` 嘅 `usePathname`／`useRouter`，冇 App Router context
+  就係一片空白；`A11yPanel` 係 `fixed` 浮動掣＋面板，同 portal 浮層一樣出唔到全身；
+  `AuthButton` 喺 `NEXT_PUBLIC_AUTH_ENABLED` 未設之下 `return null`；
+  `NotTonightGate` 未觸發之前唔會 render children。
+  全部退返 floor card —— 一張空白卡比 floor card 差，因為佢會被讀成「呢個組件係空嘅」。
+
+## Known render warns（已逐個睇過，唔係新問題）
+
+- `[RENDER_THIN] QRCode` —— QR 碼係畫出嚟嘅圖形，一個字都冇，所以量文字嘅檢查
+  自然報空。實際截圖兩格都畫到完整 QR（`SiteLink` 同 `Larger` 尺寸唔同）。良性。
+- `[GRID_OVERFLOW] PracticeSupport ／ ShareStatsCardButton` —— 兩個都用 fixed／
+  整幅闊度佈局，喺多欄格網入面會撐出格外。已加 `cardMode: single`。
 
 ## Re-sync risks（下次跑之前睇呢段）
 

@@ -107,6 +107,7 @@
     "CalcTipCard": "  topicId: string;",
     "CommandWordText": "  text: string;\n  soft: boolean;",
     "ConceptNet": "  onSelect?: (node: ConceptNode) => void;\n  selectedId?: string;",
+    "DailyStatsCard": "  data: unknown; // DailyStatsCardData\n  en?: boolean;\n  qrSrc?: string;",
     "DifficultyBadge": "  difficulty: \"easy\" | \"medium\" | \"hard\";",
     "EmotionThermometer": "  onPick: (tag: EmotionTag) => void;",
     "ExternalLinkGate": "  href: string;\n  platform: string;\n  children: unknown; // ReactNode\n  className?: string;\n  style?: unknown; // CSSProperties\n  extraWarning?: string;",
@@ -143,6 +144,20 @@
     "Footer": {
       "cardMode": "single",
       "viewport": "1100x1000"
+    },
+    "DailyStatsCard": {
+      "cardMode": "single",
+      "viewport": "1200x1400"
+    },
+    "PracticeSupport": {
+      "cardMode": "single",
+      "primaryStory": "Default"
+    },
+    "ShareStatsCardButton": {
+      "cardMode": "single",
+      "primaryStory": "Zh"
     }
-  }
+  },
+  "readmeHeader": ".design-sync/conventions.md",
+  "projectId": "44fc81ef-bcd5-458a-a250-bf9174cfa2a3"
 }

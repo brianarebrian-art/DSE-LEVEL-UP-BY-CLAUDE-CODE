@@ -12,7 +12,7 @@
   "CountdownBanner": "",
   "DailyPlan": "",
   "DailySpectrum": "",
-  "DailyStatsCard": "",
+  "DailyStatsCard": "  data: unknown; // DailyStatsCardData\n  en?: boolean;\n  qrSrc?: string;",
   "DataPortability": "",
   "DifficultyBadge": "  difficulty: \"easy\" | \"medium\" | \"hard\";",
   "EmotionTags": "",

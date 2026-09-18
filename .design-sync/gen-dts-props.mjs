@@ -43,6 +43,23 @@ project.addSourceFileAtPath(join(ROOT, '.ds-sync/node_modules/@types/react/index
 /** React 自己嗰啲（children 除外）唔係呢個組件嘅 API，出咗只會嘈。 */
 const NOISE = /^(key|ref|dangerouslySetInnerHTML|suppressHydrationWarning)$/
 
+/**
+ * 抽唔到嘅例外，人手寫。
+ *
+ * `DailyStatsCard` 係 `forwardRef<HTMLDivElement, {...}>(function …)` ——
+ * 佢唔係 function declaration 亦唔係有型別註解嘅 variable，所以下面個
+ * `declFor` 搵唔到參數，結果 props 會空。全 repo 得佢一個係咁
+ * （`grep -l forwardRef components/`），所以寫一條例外好過為一個 case
+ * 喺 generator 度砌一套 forwardRef 型別參數解析。
+ *
+ * ⚠️ 改咗 DailyStatsCard 嘅 props 就要改呢度 —— 冇嘢會自動捉到佢漂咗。
+ */
+const MANUAL = {
+  // `data` 降級做 unknown 同自動路徑一致 —— `DailyStatsCardData` 喺 emit 出嚟
+  // 嗰個獨立 .d.ts 度冇定義，原樣寫落去會 [DTS_PARSE] 紅。
+  DailyStatsCard: `  data: unknown; // DailyStatsCardData\n  en?: boolean;\n  qrSrc?: string;`,
+}
+
 function declFor(file, name) {
   const sf = project.getSourceFile(join(ROOT, srcMap[name]))
   if (!sf) return null
@@ -61,6 +78,11 @@ let empty = 0
 const misses = []
 
 for (const name of Object.keys(srcMap)) {
+  if (MANUAL[name]) {
+    out[name] = MANUAL[name]
+    done++
+    continue
+  }
   const decl = declFor(srcMap[name], name)
   const params = decl?.getParameters?.() ?? []
   if (!params.length) {
