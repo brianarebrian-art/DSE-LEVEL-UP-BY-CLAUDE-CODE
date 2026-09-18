@@ -141,6 +141,28 @@ KaTeX 字體要另外拎：`cfg.extraFonts` 加 `node_modules/katex/dist/katex.m
   一張切爛或者空白嘅卡，**比 floor card 差** —— floor card 至少誠實講「呢個未 author」。
   所以兩個都唔 author。要睇真身要喺 `localhost:3001` 開。
 
+- **Mascot** —— 佢用 `next/image` 由 `/owl/<pose>.png` 攞圖（`public/owl/`，824KB）。
+  Bundle 只帶 CSS 同字體，**唔帶 `public/` 嘅圖片**，所以五個姿勢全部出破圖 icon。
+  converter 冇一個 cfg key 係用嚟搬任意靜態資產嘅（`extraFonts` 只收字體）。
+  同一類問題亦影響 **QRCode**（`/qr.png`）。
+  要修嘅話得兩條路：喺 preview 度用 data-URI inline 張圖（824KB 會入晒每張卡），
+  或者等 converter 支援靜態資產。兩條都唔抵，所以退返 floor card。
+
+- **PrivacyConsentGate ／ InstallHint ／ InAppBrowserNotice ／ ReadingRuler** ——
+  四個都係**條件式**組件：未同意私隱條款／未收到 `beforeinstallprompt`／唔係
+  in-app browser／閱讀尺未開，就 `return null`。靜態卡入面條件永遠唔成立，
+  所以只會出空白。要造狀態就要喺 preview 度扮 UA、扮事件，
+  等於寫一個假嘅瀏覽器環境 —— 嗰個唔係「組件真身」，係一個仿製品。
+
+## ⚠️ 預覽環境冇任何 `NEXT_PUBLIC_*` env
+
+`process` shim 供嘅係一個空 `env`，所以**每一條 env 分支都行「關」嗰邊**：
+`NEXT_PUBLIC_AUTH_ENABLED`、`NEXT_PUBLIC_AUTH_BACKEND`、`NEXT_PUBLIC_SW_OFFLINE`
+統統 undefined。影響到嘅卡最少有 `SyncStatus`（出「進度暫存喺呢部裝置」）同
+`AuthButton`。**呢個唔係 bug，但睇卡嘅人要知**，否則會以為跨裝置同步未上線。
+如果日後想 render 開咗 auth 嘅狀態，要喺 shim 度填返個 env 值，
+並且喺卡嘅註釋講明嗰個係扮出嚟嘅。
+
 ## Re-sync risks（下次跑之前睇呢段）
 
 - `npm ci` 會清走 `node_modules/dse-level-up` symlink → build 會 ENOENT。先重建個 link。
