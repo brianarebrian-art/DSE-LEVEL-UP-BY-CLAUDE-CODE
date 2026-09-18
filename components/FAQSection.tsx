@@ -20,9 +20,9 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
     aEn: 'No. Every item is an original rewrite aligned to the syllabus and assessment guide. Past papers are HKEAA copyright — get those from the HKEAA site. You do not have to take our word for it: the transparency page lists every named, dated review batch, and the figures are computed live from the bank rather than hard-coded.',
   },
   {
-    qZh: '點解答錯會鎖 60 秒？', qEn: 'Why am I locked for 60 seconds after a wrong answer?',
-    aZh: '錯題唔反思，操幾多都冇用。60 秒內你要診斷自己嘅錯因（概念／審題／粗心）並答對反思題，先解得鎖。怕壓力可以開「柔和計時」。',
-    aEn: 'Drilling without reflection is wasted effort. In those 60 seconds you diagnose your error cause and answer a follow-up. A “Calm timer” mode is available.',
+    qZh: '答錯之後會點？', qEn: 'What happens after a wrong answer?',
+    aZh: '第一句唔係「錯咗」，係「你發現咗一個新盲點💡」。跟住撳低你覺得係邊種錯因（概念盲區／審題陷阱／運算粗心），撳咗就即刻見到解析。冇倒數、冇計時、冇追問題 —— 一下撳就過到。撳嗰一下會累積成你嘅錯因 DNA。',
+    aEn: 'The first line is not “wrong” — it is “you just found a new blind spot”. You then tag which kind of slip it was (concept, HKEAA reading trap, or execution), and the explanation opens straight away. No countdown, no timer, no follow-up question: one tap and you are through. That tap is what builds your Error DNA.',
   },
   {
     qZh: '「錯因 DNA」係乜嚟？', qEn: 'What is “Error DNA”?',
@@ -46,8 +46,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: 'SEN 同學有咩支援？', qEn: 'What support is there for SEN students?',
-    aZh: '練習頁左下角有「閱讀尺」（防跳行）、「易讀字體」同「唞一唞」呼吸練習；反思鎖有柔和計時模式。有其他需要歡迎話我哋知。',
-    aEn: 'The practice page has a reading ruler, an easy-font toggle, a breathing exercise, and a calm-timer mode for the reflection lock. Tell us what else would help.',
+    aZh: '練習頁左下角係無障礙工具角：閱讀尺（防跳行）、易讀字體、字級調節，同埋「今日夠了」零罪疚收工。做題途中隨時撳得休息，唞幾耐計時就順延幾耐；想淨係專注一題就撳 Shift + F 開專注燈。呼吸練習喺「呼吸空間」，每週休息日喺帳戶頁揀。全部自選、預設關。有其他需要歡迎話我哋知。',
+    aEn: 'The practice page keeps an accessibility corner in the bottom-left: reading ruler, easy font, text size, and a guilt-free “that is enough for today”. You can rest mid-session — the timer is extended by exactly as long as you rest — and Shift + F dims everything around the question. Breathing exercises live in Breathing Space, and weekly rest days are set in your account. All of it is opt-in and off by default. Tell us what else would help.',
   },
 ]
 

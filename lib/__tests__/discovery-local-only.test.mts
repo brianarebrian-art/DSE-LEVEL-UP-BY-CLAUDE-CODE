@@ -16,7 +16,7 @@
 // ============================================================================
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -76,22 +76,40 @@ test('④ 錯因自診【一定要】留低 —— 佢係錯題 DNA 嘅唯一入
   assert.match(ps, /const chooseCause = useCallback\(/, 'chooseCause 本身唔見咗')
 })
 
+// 呢條測試 2026-09-18 收緊過兩次，兩個窿都係實際漏咗嘢先發現：
+//
+// ① **檔案清單係人手列嘅**，而 `components/FAQSection.tsx`（喺 /about 出街）
+//    冇喺入面。佢由 2026-09-09 起一直對學生講「點解答錯會鎖 60 秒？」，
+//    九日都冇人捉到。一張要人記得去加檔名嘅清單，遲早會漏 —— 而漏嗰次
+//    通常就係最值錢嗰次。而家改為行勻 `components/` 同 `app/`。
+// ② **個 pattern 本身都對唔中**：原本係 `秒反思鎖`，要求「秒」緊貼「反思鎖」。
+//    真實文案寫「鎖 60 秒」同「反思鎖有柔和計時模式」，兩句都唔中。
+//    即係話就算 FAQ 當時喺清單入面，一樣會綠燈放行。
+const LOCK_COPY =
+  /反思鎖|鎖\s*\d+\s*秒|冷靜艙|柔和計時|reflection lock|locked for \d+ second|calm[- ]timer/i
+
+function walk(dir: string, out: string[] = []): string[] {
+  for (const e of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
+    if (e.name === 'node_modules' || e.name.startsWith('.')) continue
+    const rel = `${dir}/${e.name}`
+    if (e.isDirectory()) walk(rel, out)
+    else if (/\.(tsx|ts)$/.test(e.name) && !rel.includes('__tests__')) out.push(rel)
+  }
+  return out
+}
+
 test('⑤ 冇任何學生或者 agent 見到嘅文案仲講住個鎖', () => {
   // 2026-09-05 嗰次由 60 改 30，全站有五處文案冇跟住改。今次係整個剷除，
   // 同一個風險更大：對外仲寫住「答錯會鎖 30 秒」而實際上冇，就係假聲稱。
-  const files = [
-    'app/layout.tsx',
-    'app/practice/page.tsx',
-    'app/subjects/[subject]/SubjectDetailView.tsx',
-    'public/llms.txt',
-  ]
+  const files = [...walk('components'), ...walk('app'), 'public/llms.txt']
   const hits: string[] = []
   for (const f of files) {
     let src: string
     try { src = read(f) } catch { continue }
-    // 只掃學生／agent 讀到嘅字串，唔掃解釋改動嘅註釋。
+    // 只掃學生／agent 讀到嘅字串，唔掃解釋改動嘅註釋 —— 憲章 §7.2 特登要求
+    // 保留「呢個機制存在過、點解存在過」嘅註釋，所以註釋出現「反思鎖」係正常。
     const copy = src.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/[^\n]*/g, '$1 ')
-    if (/秒反思鎖|reflection lock|秒冷靜艙/i.test(copy)) hits.push(f)
+    if (LOCK_COPY.test(copy)) hits.push(f)
   }
   assert.deepEqual(hits, [], `呢啲檔仲對外聲稱有反思鎖，但鎖已經剷咗：\n  ${hits.join('\n  ')}`)
 })
