@@ -17,6 +17,14 @@ const zh = {
     tabSaved: '收藏',
     tabAccount: '帳戶',
   },
+  // 前／後頁導航（PageNav）。目的地名一律沿用上面 nav 嘅叫法 —— 同底欄、
+  // 側欄同一個原則：掣寫一個名、頁寫另一個名，學生就要記兩套。
+  // 呢度只補一個 nav 冇嘅 `home`，其餘全部由 lib/pageOrder 對應返上面。
+  pageNav: {
+    prev: '上一頁',
+    next: '下一頁',
+    home: '首頁',
+  },
   // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
   sidebar: {
@@ -366,6 +374,11 @@ const en: typeof zh = {
     tabProgress: 'Progress',
     tabSaved: 'Saved',
     tabAccount: 'Account',
+  },
+  pageNav: {
+    prev: 'Back',
+    next: 'Forward',
+    home: 'Home',
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',

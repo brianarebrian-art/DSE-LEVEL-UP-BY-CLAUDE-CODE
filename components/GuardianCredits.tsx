@@ -68,14 +68,19 @@ export default function GuardianCredits() {
       </p>
 
       {guardians.map((g) => (
-        <div key={g.name} className="bg-surface-sunken rounded-lg p-4 mb-6">
-          <p className="font-medium text-ink-soft mb-2">{g.name}</p>
-          <ul className="text-sm text-ink-muted mb-3 space-y-1">
+        <div key={g.name} className="bg-surface-sunken rounded-xl p-6 mb-6">
+          {/* 2026-09-18：名由 16px/500 ink-soft 升做 18px/600 ink，貢獻項由 14px
+              升做 16px，行距 1.8，卡內距 16→24px。呢張卡淨係得一個真人，
+              而佢係全站唯一一個具名致謝 —— 用最細嗰級字去寫，同要表達嘅嘢相反。
+              ⚠️ 加大字級唔等於加人：名單維持一個人，虛構 persona 唔上榜
+              （憲章 §8 假見證、§16.C 虛擬 persona 唔可以做驗收人）。 */}
+          <p className="text-lg font-semibold text-ink mb-3">{g.name}</p>
+          <ul className="text-base text-ink-muted mb-4 space-y-1 leading-[1.8]">
             {g.contributions.map((c) => (
               <li key={c.zh}>· {en ? c.en : c.zh}</li>
             ))}
           </ul>
-          <p className="text-sm text-ink-muted italic mb-3">「{g.quoteZh}」</p>
+          <p className="text-base text-ink-muted italic mb-4 leading-[1.8]">「{g.quoteZh}」</p>
           <ExternalLinkGate
             href={g.github}
             platform="GitHub"
