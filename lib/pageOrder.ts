@@ -85,6 +85,7 @@ export const EXCLUDED: Record<string, string> = {
   '/concept-net': '支線功能頁',
   '/exam-day': '支線功能頁',
   '/logic-log': '支線功能頁',
+  '/predictor': '支線功能頁，由側欄「等級預測」入；個人化內容，同 /dashboard 一樣唔入 sitemap',
   '/reading': '支線功能頁',
   '/sensei': '支線功能頁',
   '/source-lab': '支線功能頁',

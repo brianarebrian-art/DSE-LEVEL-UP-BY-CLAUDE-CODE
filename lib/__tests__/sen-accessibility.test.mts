@@ -157,6 +157,41 @@ test('易讀字體後備堆疊符合 BDA 建議（無襯線、字形辨識度高
   assert.match(rule, /sans-serif/, '最後一定要落返 sans-serif')
 })
 
+// 易讀字體規則只設喺 body。任何【自己帶 font-family】嘅元素都會蓋過佢 ——
+// 冇錯誤、冇警告，淨係開咗易讀模式嘅學生見到某啲字冇轉。
+// 2026-09-19 加 Night Study 襯線標題嗰陣差啲踩中，所以守嘅係呢一類，唔係嗰一個 class：
+// UI 用到嘅每一個 Tailwind 字體族 utility，都要喺 font-easy 之下讓位，或者寫低理由豁免。
+const FONT_FAMILY_EXEMPT: Record<string, string> = {
+  'font-mono':
+    '等寬係為咗對齊（粵拼音節、數字欄、代碼），唔係風格。易讀模式下要唔要讓位' +
+    '未有決定 —— 列喺度係要佢睇得見，唔係當佢已經解決咗',
+}
+test('自帶字體族嘅 utility 喺易讀模式下要讓位，唔可以蓋過 OpenDyslexic', () => {
+  const used = new Set<string>()
+  for (const f of UI_FILES) {
+    for (const m of read(f).matchAll(/\bfont-(sans|serif|mono)\b/g)) used.add(`font-${m[1]}`)
+  }
+  const easyRules = [...LIVE.matchAll(/html\.font-easy[^{}]*\{[^}]*\}/g)].map((m) => m[0])
+  const missing = [...used].filter(
+    (cls) =>
+      !(cls in FONT_FAMILY_EXEMPT) &&
+      !easyRules.some((r) => r.includes(`.${cls}`) && /font-family:\s*inherit/.test(r)),
+  )
+  assert.deepEqual(missing, [], `呢啲字體 utility 喺易讀模式下會蓋過 OpenDyslexic：${missing.join('、')}`)
+  // 豁免名單要真係有人用，否則佢就係一條冇對象嘅豁免
+  for (const cls of Object.keys(FONT_FAMILY_EXEMPT)) {
+    assert.ok(used.has(cls), `${cls} 喺豁免名單但全站冇人用 —— 刪走佢`)
+  }
+})
+
+test('襯線標題喺易讀模式下同時取消斜體（BDA：避開斜體）', () => {
+  const rule = [...LIVE.matchAll(/html\.font-easy[^{}]*\{[^}]*\}/g)]
+    .map((m) => m[0])
+    .find((r) => r.includes('.font-serif'))
+  assert.ok(rule, '冇 html.font-easy .font-serif 規則')
+  assert.match(rule!, /font-style:\s*normal\s*!important/)
+})
+
 test('OpenDyslexic 字體檔狀態要同 @font-face 一致（唔一致就會逢開必 404）', () => {
   const declared = /@font-face\s*\{[^}]*OpenDyslexic[^}]*\}/.test(CSS)
   const present = existsSync(join(ROOT, 'public/fonts/OpenDyslexic-Regular.woff2'))

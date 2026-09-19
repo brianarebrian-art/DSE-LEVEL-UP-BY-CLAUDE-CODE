@@ -9,7 +9,7 @@ import { getActiveSubjects } from '@/data/subjects'
 // ① `/question/{id}` ×5,167：外部規格曾要求逐題出 URL，但 `app/question/` 這個
 //    路由段【並不存在】。照做等於主動邀請爬蟲索引 5,167 個 404，比沒有 sitemap
 //    更差。日後若真的開設逐題頁，才在此加入。
-// ② 個人化頁（`/dashboard`、`/dashboard/report`、`/result`、`/account`）：內容
+// ② 個人化頁（`/dashboard`、`/predictor`、`/result`、`/account`）：內容
 //    全部由 localStorage 於客戶端產生，伺服器端渲染為空殼。收錄只會令爬蟲取得
 //    一批空白頁，拖低整站品質評分。待各頁補上伺服器端內容後方可加入。
 // ③ 舊「影子溫書室」（`/wall`）已於 2026-08-21 整個移除 —— 見 docs/DECISION-no-interaction.md。
@@ -41,7 +41,6 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
   { path: '/sensei', priority: 0.7, freq: 'weekly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },
-  { path: '/focus', priority: 0.5, freq: 'monthly' },
   { path: '/relax', priority: 0.5, freq: 'monthly' },
   { path: '/relax/breathing', priority: 0.4, freq: 'yearly' },
   { path: '/relax/grounding', priority: 0.4, freq: 'yearly' },

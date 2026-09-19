@@ -15,9 +15,10 @@
 //
 // ⚠️ 加路由入呢張表之前，先確認嗰頁【自己有返回路徑】——
 // 冇嘅話學生會困死喺全屏狀態，只剩瀏覽器返回掣。
+// （原本仲有 '/focus'。2026-09-05 Brian 剷除「專注」功能（536397f）時漏咗清，
+//  指住一條唔存在嘅路由；2026-09-19 補清。sitemap 同 mascot 嗰兩行亦一併清走。）
 export const IMMERSIVE_ROUTES = [
   '/practice',
-  '/focus',
   '/relax',
   '/paper-warrior',
   '/answer-sheet',
