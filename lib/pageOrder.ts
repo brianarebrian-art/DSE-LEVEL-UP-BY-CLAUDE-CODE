@@ -58,6 +58,7 @@ export const EXCLUDED: Record<string, string> = {
   '/waiting': '情緒支援落腳頁，唔應該喺呢度催人去下一頁',
 
   // 動態詳情頁：由上層列表入，返回路徑係返上層
+  '/cantonese/[sceneId]': '動態詳情頁，返回路徑係返 /cantonese',
   '/notes/[subject]': '動態詳情頁，返回路徑係返 /notes',
   '/source-lab/[id]': '動態詳情頁，返回路徑係返 /source-lab',
   '/subjects/[subject]': '動態詳情頁，返回路徑係返 /subjects',

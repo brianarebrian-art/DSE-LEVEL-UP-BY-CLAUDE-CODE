@@ -23,25 +23,37 @@ import { fileURLToPath } from 'node:url'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
 
-const { REVIEW, CANTONESE_TOPICS, PURPOSES, UNSURE } = await import('../../data/cantonese.ts')
+const { REVIEW, CANTONESE_TOPICS, PURPOSES, UNSURE, SCENE_IDS, topicById, unsureForScene } =
+  await import('../../data/cantonese.ts')
 
 /** 場景數同每個場景嘅句數。改呢兩個數之前要有人真係決定過。 */
 const TOPIC_COUNT = 12
 const PHRASES_PER_TOPIC = 6
 
-test('① 簽名閘接住線 —— 頁面由 REVIEW.reviewer 推導，卡片靠佢決定出唔出', () => {
-  const page = read('app/cantonese/page.tsx')
+test('① 簽名閘接住線 —— 列表同場景詳情兩版都由 REVIEW.reviewer 推導', () => {
+  // ⚠️ 兩版都要驗。詳情頁做後門嘅話，一個未經覆核嘅粵拼喺
+  //    /cantonese/greeting 出，同喺 /cantonese 出，對學生嚟講一模一樣。
+  for (const page of ['app/cantonese/page.tsx', 'app/cantonese/[sceneId]/page.tsx']) {
+    assert.match(
+      read(page),
+      /signed=\{REVIEW\.reviewer\.trim\(\)\.length > 0\}/,
+      `${page} 冇由 REVIEW.reviewer 推導 signed —— 個閘斷咗線，內容會無條件出街`,
+    )
+  }
   assert.match(
-    page,
-    /signed=\{REVIEW\.reviewer\.trim\(\)\.length > 0\}/,
-    'page.tsx 冇由 REVIEW.reviewer 推導 signed —— 個閘斷咗線，內容會無條件出街',
+    read('components/CantoneseTopicCard.tsx'),
+    /signed \?/,
+    'CantoneseTopicCard 冇用 signed 分支 —— 對照會照出',
   )
-  const card = read('components/CantoneseTopicCard.tsx')
-  assert.match(card, /signed \?/, 'CantoneseTopicCard 冇用 signed 分支 —— 對照會照出')
   assert.match(
-    card,
+    read('app/cantonese/[sceneId]/SceneView.tsx'),
+    /signed \?/,
+    'SceneView 冇用 signed 分支 —— 詳情頁會無條件出啲句',
+  )
+  assert.match(
+    read('components/CantonesePhrase.tsx'),
     /\{p\.jyut\}/,
-    'CantoneseTopicCard 冇 render p.jyut —— 呢條測試守緊嘅嘢已經唔存在，要重寫測試',
+    'CantonesePhrase 冇 render p.jyut —— 呢條測試守緊嘅嘢已經唔存在，要重寫測試',
   )
 })
 
@@ -138,9 +150,50 @@ test('⑥ 揀唔定嘅粵拼要列喺 UNSURE，唔可以靜靜哋當冇事', () 
     Array.isArray(UNSURE) && UNSURE.length > 0,
     'UNSURE 係空 —— 即係聲稱成份粵拼零疑問。真係咁嘅話，請喺本測試寫低點解。',
   )
-  for (const line of UNSURE) {
-    assert.match(line, /→/, `UNSURE 每行要寫「廣東話 → 寫咗乜（另一個可能）」：${line}`)
+  const bad: string[] = []
+  for (const u of UNSURE) {
+    if (!u.term?.trim()) bad.push(`有一條冇 term`)
+    if (!u.note?.trim()) bad.push(`${u.term}：冇 note，覆核人唔知要對乜`)
+    if (!Array.isArray(u.scenes) || u.scenes.length === 0) {
+      bad.push(`${u.term}：冇 scenes，喺任何場景頁都唔會出現`)
+    }
   }
+  assert.deepEqual(bad, [], `UNSURE 有問題：\n  ${bad.join('\n  ')}`)
+})
+
+test('⑩ UNSURE 每條都要綁到真場景 —— 打錯 id 會靜靜哋消失', () => {
+  // `scenes` 唔係標籤，係接線：場景詳情頁靠佢揀該場景相關嗰批。
+  // 打錯一個字，嗰條就【邊度都唔會出現】，而個場景會話「冇列出任何未定嘅
+  // 粵拼」—— 嗰句係假嘅，同時唔會有任何嘢紅。
+  const live = new Set(SCENE_IDS)
+  const dead = UNSURE.flatMap((u) =>
+    u.scenes.filter((s: string) => !live.has(s)).map((s: string) => `${u.term} → ${s}`),
+  )
+  assert.deepEqual(dead, [], `UNSURE 指住唔存在嘅場景 id：\n  ${dead.join('\n  ')}`)
+
+  // 反向：每條都要至少喺一個場景頁出得到。
+  const orphan = UNSURE.filter((u) => !u.scenes.some((s: string) => unsureForScene(s).includes(u)))
+  assert.deepEqual(orphan.map((u) => u.term), [], 'UNSURE 有條目揀唔返出嚟')
+})
+
+test('⑪ 十二條場景路由由 SCENE_IDS 推導，冇第二張手寫清單', () => {
+  assert.deepEqual(
+    SCENE_IDS,
+    CANTONESE_TOPICS.map((t) => t.id),
+    'SCENE_IDS 同 CANTONESE_TOPICS 唔同步 —— generateStaticParams 會出錯嘅頁',
+  )
+  for (const id of SCENE_IDS) {
+    assert.ok(topicById(id), `topicById('${id}') 攞唔到場景 —— /cantonese/${id} 會 404`)
+  }
+  assert.equal(topicById('does-not-exist'), undefined, 'topicById 對唔存在嘅 id 要回 undefined，畀 route 自己 404')
+
+  // 列表卡連去詳情頁；冇呢條連結，十二條 route 就變孤兒（integration-guard
+  // 只查有冇入口，查唔到入口指啱邊度）。
+  assert.match(
+    read('components/CantoneseTopicCard.tsx'),
+    /href=\{`\/cantonese\/\$\{topic\.id\}`\}/,
+    'CantoneseTopicCard 冇連去 /cantonese/{id} —— 十二條詳情頁入唔到',
+  )
 })
 
 test('⑦ 每個場景嘅溝通目的要夠散 —— 六句唔可以全部係發問', () => {
@@ -169,22 +222,34 @@ test('⑦ 每個場景嘅溝通目的要夠散 —— 六句唔可以全部係�
   assert.deepEqual(missing, [], `呢啲溝通目的成個課程都冇教過：${missing.join('、')}`)
 })
 
-test('⑧ 未簽名嘅分支唔准掂到句子內容 —— 零粵拼入 DOM', () => {
+test('⑧ 未簽名嘅分支唔准掂到句子內容 —— 列表同詳情兩版都零粵拼入 DOM', () => {
   // ① 驗咗「有 signed 分支」，但冇驗未簽名嗰半入面有乜。呢條切開兩半，
-  // 逐個字查未簽名嗰半有冇掂到 p.jyut／p.canto／p.putong。
+  // 逐個字查未簽名嗰半有冇掂到句子內容或者 <CantonesePhrase>。
   //
   // ⚠️ 呢個係【靜態掃原始碼】，唔係 runtime 防護（憲章 §16.D）。真正嘅
   //    地面真相係喺 localhost:3001 未簽名狀態下數 DOM 入面嘅粵拼 —— 呢條
   //    只係令「有人喺未簽名嗰半加返啲句」呢件事唔會靜靜哋發生。
-  const card = read('components/CantoneseTopicCard.tsx')
-  const split = card.indexOf('\n      ) : (')
-  assert.ok(split > 0, 'CantoneseTopicCard 搵唔到 signed 三元嘅分界 —— 結構改咗，要重寫本測試')
-  const unsigned = card.slice(split)
-  const leaks = ['p.jyut', 'p.canto', 'p.putong'].filter((f) => unsigned.includes(f))
-  assert.deepEqual(
-    leaks,
-    [],
-    `未簽名分支掂到咗句子內容：${leaks.join('、')} —— 未經覆核嘅粵拼會入 DOM`,
+  const FILES = ['components/CantoneseTopicCard.tsx', 'app/cantonese/[sceneId]/SceneView.tsx']
+  for (const f of FILES) {
+    const src = read(f)
+    const split = src.indexOf(') : (')
+    assert.ok(split > 0, `${f} 搵唔到 signed 三元嘅分界 —— 結構改咗，要重寫本測試`)
+    const unsigned = src.slice(split)
+    const leaks = ['p.jyut', 'p.canto', 'p.putong', 'CantonesePhrase'].filter((x) =>
+      unsigned.includes(x),
+    )
+    assert.deepEqual(
+      leaks,
+      [],
+      `${f} 未簽名分支掂到咗句子內容：${leaks.join('、')} —— 未經覆核嘅粵拼會入 DOM`,
+    )
+  }
+
+  // CantonesePhrase 自己【唔做】簽名判斷 —— 閘喺兩個呼叫方。寫喺呢度嘅話，
+  // 兩個呼叫方都會以為對方做咗，而組件多一個 prop 就多一個繞得過嘅入口。
+  assert.ok(
+    !read('components/CantonesePhrase.tsx').includes('signed'),
+    'CantonesePhrase 唔應該自己判斷 signed —— 閘只可以喺呼叫方，否則責任兩邊都唔清',
   )
 })
 

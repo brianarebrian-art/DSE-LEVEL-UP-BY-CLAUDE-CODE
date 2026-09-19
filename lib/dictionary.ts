@@ -50,6 +50,21 @@ const zh = {
     practiceCta: '做呢個課題',
     safetyLabel: '安全提示',
     purposeLabel: '用途',
+    // 場景詳情頁（/cantonese/[sceneId]）。
+    // ⚠️ 列表卡同詳情頁嘅分別必須係【真嘅】—— 一個撳入去見到同一樣嘢嘅
+    //    「深入了解」係講大話。詳情頁多咗：逐句文化提示、該場景相關嘅
+    //    未定粵拼、安全提示置頂、單欄細讀版面。
+    detailCta: '深入了解',
+    back: '返回全部場景',
+    courseShort: '香港日常廣東話',
+    listNoteHint: '逐句嘅文化同用法提示喺場景頁入面。',
+    unsureTitle: '呢個場景有粵拼未定',
+    unsureBody: '以下係寫嘅時候自己都揀唔定嘅音，覆核由呢批入手最有效率。',
+    unsureNone: '呢個場景冇列出任何未定嘅粵拼。',
+    // ⚠️ 呢句唔可以省。一個場景喺 UNSURE 零命中，好易被讀成「呢六句已經驗過」，
+    //    但 UNSURE 只列「我知道自己唔肯定」嗰批 —— 真正危險嘅係寫嗰陣完全
+    //    冇為意、所以連疑問都冇記低嗰啲。
+    unsureCaveat: '零命中唔代表呢六句已經驗證 —— 呢張表只列出寫嘅時候意識到有疑問嗰啲。',
     // 每句嘅溝通目的。鍵值對應 data/cantonese.ts 嘅 `Purpose` union ——
     // 加一個新 purpose 而漏咗呢度，TypeScript 會即刻嗌。
     purposes: {
@@ -440,6 +455,15 @@ const en: typeof zh = {
     practiceCta: 'Practise this topic',
     safetyLabel: 'Safety note',
     purposeLabel: 'Use',
+    detailCta: 'See the full scene',
+    back: 'Back to all situations',
+    courseShort: 'Everyday Cantonese',
+    listNoteHint: 'Usage and culture notes for each line are on the scene page.',
+    unsureTitle: 'Some Jyutping here is unsettled',
+    unsureBody: 'These are the readings the writer was unsure of. Checking starts here.',
+    unsureNone: 'No unsettled Jyutping is listed for this scene.',
+    unsureCaveat:
+      'Nothing listed does not mean these six lines are verified — this list only covers readings the writer noticed a doubt about.',
     purposes: {
       ask: 'Asking',
       confirm: 'Confirming',

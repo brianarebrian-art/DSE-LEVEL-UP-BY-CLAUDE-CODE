@@ -3,21 +3,29 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useT } from '@/lib/i18n'
+import CantonesePhrase from '@/components/CantonesePhrase'
 import type { CantoneseTopic } from '@/data/cantonese'
 
-// 一個日常生活場景嘅卡（/cantonese）。
+// 一個日常生活場景嘅列表卡（/cantonese），撳落去入 /cantonese/{id}。
 //
 // ⚠️ 本檔原名 CantoneseDseCard —— 個名係最初掛喺中文科底下嗰陣留低嘅。
 //    2026-09-19 呢個變咗獨立課程，「Dse」兩個字喺呢度已經係講緊一件唔存在
 //    嘅關係，所以連檔名一齊改。
 //
+// ══ 列表同詳情頁嘅分別必須係真嘅 ══
+// 一個撳入去見到同一樣嘢嘅「深入了解」係講大話。所以文化提示（noteZh／noteEn）
+// 【只喺詳情頁出】，連同該場景相關嘅未定粵拼同置頂安全提示。
+// 列表出六句四欄，已經足夠答「呢個場景教乜」。
+//
+// ══ 點解用 stretched link 而唔係成張卡包落 <Link> ══
+// 卡入面有 <ul>／<li>，而且日後若果 topicId 綁返課題，就會多一個練習連結 ——
+// <a> 入面再有 <a> 係無效 HTML，瀏覽器會靜靜哋拆開，鍵盤同 screen reader
+// 嘅行為由嗰刻起就唔可預測。所以只有一個 <a>，用 after:absolute inset-0
+// 覆蓋成張卡：全張可揿，但 tab 停一次，讀屏讀到一個有名嘅連結。
+//
 // `signed` 決定啲句出唔出。冇簽名就淨係出【結構】—— 欄名同呢張卡涵蓋嘅
 // 溝通目的，一個粵拼字元都唔會入 DOM。理由見 data/cantonese.ts 檔頭
 // （錯一個聲調數字＝教學生讀錯音，而冇任何閘捉到）。
-//
-// 點解未簽名都要出溝通目的：一張淨係寫住「廣東話／粵拼／普通話／English」
-// 嘅卡，答唔到「呢張卡教到我乜」。出埋目的，學生至少知道呢個場景會教佢
-// 點發問、點禮貌拒絕 —— 而呢啲係結構，唔係未經覆核嘅事實資料。
 
 export default function CantoneseTopicCard({
   topic,
@@ -36,26 +44,13 @@ export default function CantoneseTopicCard({
   // 六句可能有兩句同一個目的，出兩次就變咗噪音。
   const purposes = [...new Set(topic.phrases.map((p) => p.purpose))]
 
-  const safety = en ? topic.safetyEn : topic.safetyZh
-
   return (
-    <div className="rounded-xl border border-line bg-surface-raised p-5">
+    <div className="relative rounded-xl border border-line bg-surface-raised p-5 transition-colors focus-within:border-accent hover:border-accent">
       {/* h2 而唔係 h3：呢版得一個 h1（頁標題），十二張卡就係佢下面第一層。
           舊版用 h3，大綱變成 H1 → H3，中間跳咗一級 —— 靠標題跳轉嘅
-          screen reader 用家會以為漏咗一段。實測 2026-09-19：h1 × 1、h3 × 12、
-          h2 × 0。 */}
+          screen reader 用家會以為漏咗一段。 */}
       <h2 className="mb-2 text-base font-medium text-ink">{en ? topic.en : topic.zh}</h2>
       <p className="mb-4 text-sm leading-relaxed text-ink-muted">{en ? topic.whyEn : topic.whyZh}</p>
-
-      {/* 安全提示擺喺啲句【上面】—— 一個唔舒服嘅學生應該喺讀任何一句之前
-          就知道呢度唔代替醫生同老師，唔係碌到底先知。 */}
-      {safety && (
-        <p className="mb-4 rounded-lg border border-line bg-surface-sunken p-3 text-xs leading-relaxed text-ink-soft">
-          <span className="font-medium text-ink">{c.safetyLabel}</span>
-          <span aria-hidden> · </span>
-          {safety}
-        </p>
-      )}
 
       {signed ? (
         // 每句一組，唔用 <table>。第一版用咗 `min-w-[26rem]` 嘅表：卡實際闊
@@ -64,26 +59,7 @@ export default function CantoneseTopicCard({
         <ul className="space-y-4">
           {topic.phrases.map((p) => (
             <li key={p.canto} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
-              <p className="mb-1 text-[0.6875rem] font-medium uppercase tracking-wide text-ink-muted">
-                {c.purposes[p.purpose]}
-              </p>
-              {/* 粵拼【另起一行】，唔同廣東話並排。舊版兩者同一行 gap-x-3：短詞
-                  （「打包」）睇落冇事，而家啲句長到十幾個音節，並排就會喺窄機
-                  斷行斷到粵拼插入咗廣東話中間，逐個音節對唔返邊個字。 */}
-              <p className="text-base font-medium leading-relaxed text-ink">{p.canto}</p>
-              <p className="mt-0.5 font-mono text-xs leading-relaxed tracking-tight text-accent">
-                {p.jyut}
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-ink-muted">{p.putong}</p>
-              <p className="text-sm leading-relaxed text-ink-muted">{p.en}</p>
-              {/* 註解用 text-ink-muted 而唔係 text-ink-faint —— faint 喺兩個
-                  主題嘅對比係 2.36–2.91，遠低過 AA 4.5。呢啲係學生真係要讀
-                  嘅文化提示，唔係裝飾字。token-contrast 測試 ⑤ 捉返。 */}
-              {(en ? p.noteEn : p.noteZh) && (
-                <p className="mt-1.5 border-l-2 border-line pl-2.5 text-xs leading-relaxed text-ink-muted">
-                  {en ? p.noteEn : p.noteZh}
-                </p>
-              )}
+              <CantonesePhrase p={p} en={en} showNote={false} />
             </li>
           ))}
         </ul>
@@ -112,19 +88,19 @@ export default function CantoneseTopicCard({
         </div>
       )}
 
-      {/* 十二個主題全部冇 topicId —— 中文科十九個課題冇一個載得起佢哋，所以
-          唔出練習掣。夾硬指去一個唔相干嘅課題，學生撳完去到一版同佢啱先睇緊
-          嘅嘢完全無關嘅練習 —— 下次就唔會再信呢個掣。
-          呢段留住，係因為日後若果加返綁得到課題嘅主題，個掣即刻返嚟。 */}
-      {topic.topicId && (
-        <Link
-          href={`/practice?subject=chinese&topic=${topic.topicId}`}
-          className="mt-4 inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2 text-sm text-ink-soft transition-colors hover:bg-surface-sunken hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          {c.practiceCta}
-          <ArrowRight size={15} className="text-ink-muted" aria-hidden />
-        </Link>
-      )}
+      {/* 唯一嘅 <a>。`after:absolute after:inset-0` 令成張卡可揿，而 DOM 入面
+          仍然得一個連結 —— tab 停一次，讀屏讀到「深入了解，打招呼及寒暄」。
+          aria-label 帶埋場景名，否則十二個連結全部讀成「深入了解」。 */}
+      <Link
+        href={`/cantonese/${topic.id}`}
+        // 英文用半形冒號，中文用全形 —— PageNav 嘅 label() 同一個做法。
+        // 讀屏讀出嚟嘅停頓唔同，而全形冒號夾喺英文句中間係一個排版錯。
+        aria-label={en ? `${c.detailCta}: ${topic.en}` : `${c.detailCta}：${topic.zh}`}
+        className="mt-4 inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2 text-sm text-ink-soft transition-colors after:absolute after:inset-0 after:content-[''] hover:bg-surface-sunken hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        {c.detailCta}
+        <ArrowRight size={15} className="text-ink-muted" aria-hidden />
+      </Link>
     </div>
   )
 }
