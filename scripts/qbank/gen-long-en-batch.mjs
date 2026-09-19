@@ -88,6 +88,24 @@ const items = arr.filter((q) => !q.contentEn && TOPICS.includes(q.topicZh))
  *   社會最適水平 = socially optimal level
  *   生產可能線 = production possibility frontier
  *   機會成本 = opportunity cost
+ *   支出法 = expenditure approach
+ *   本地生產總值 = Gross Domestic Product
+ *   億元 = hundred million dollars（⚠️【唔可以】寫 "$100 million"）
+ *   完全競爭 = perfect competition
+ *   價格接受者 = price taker
+ *   訂價能力 = price-setting power
+ *   產品差異 = product differentiation
+ *   進入障礙 = barriers to entry
+ *
+ * ⚠️ b3 兩個模板嘅譯法唔係另起爐灶 —— 係由【已經入咗庫嘅 referenceAnswerEn】
+ *    抄返出嚟（"hundred million"、"price-setting power"、"barriers to entry"
+ *    全部原文照用）。同一條題嘅題幹同參考答案由兩個人分兩次譯，就會出現
+ *    題幹問 "pricing power" 而答案答 "price-setting power" 呢種漂移 ——
+ *    學生會以為係兩樣嘢。
+ *
+ * ⚠️「億元」呢個單位特別容易出事：寫 "$100 million" 會憑空多咗一個數字
+ *    「100」，而下面條斷言逐個數字比對中英，會即刻 throw。呢個唔係斷言過嚴，
+ *    係佢做緊嘢 —— 一個代入咗 7 個數字嘅模板，多一個假數字就對唔返位。
  *
  * 中文用【】標重點，英文用全大寫 —— 英文冇對應嘅括號，而粗體入唔到
  * 純文字欄位。b1 已經係咁做（"Give TWO factors…"），兩批保持一致。
@@ -119,6 +137,33 @@ const EN_TEMPLATE = {
     '(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n' +
     '(b) Explain why a free market produces more of such a good than the socially optimal level.\n' +
     '(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.',
+
+  // ⚠️ 尾兩個數字【係同一個值】（「政府開支增加 20 億元……增幅會等於、大於
+  //    還是小於 20 億元」）。{5} 同 {6} 代入同一個數，同 PPF 嗰個情況一樣，
+  //    唔係手民之誤。
+  宏觀經濟:
+    'An economy records the following expenditure data for one year ' +
+    '(all figures in hundred million dollars): private consumption {0}, investment {1}, ' +
+    'government expenditure {2}, exports {3}, imports {4}.\n' +
+    '(a) Calculate Gross Domestic Product using the expenditure approach.\n' +
+    '(b) Explain why imports must be SUBTRACTED in this calculation.\n' +
+    // ⚠️ 單位只喺開頭講一次，(c) 用淨數字。唔好寫 "rises by 20 hundred million
+    //    dollars" —— 英文讀起上嚟係「二十個一億」，而且已入庫嘅
+    //    referenceAnswerEn 寫嘅係 "GREATER than 20"，題幹跟返先對得上。
+    '(c) If government expenditure rises by {5} the following year while every other item ' +
+    'stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, ' +
+    'or less than {6}? Explain.',
+
+  // ⚠️ 同上：{1} 同 {2} 係同一個百分比（題幹講一次，提示再引一次）。
+  市場結構:
+    'Compare a perfectly competitive market with a market served by only {0} firms, ' +
+    'in which the largest firm holds about {1}% of the market.\n' +
+    '(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and ' +
+    'PRICE-SETTING POWER.\n' +
+    '(Hint: what does the figure of {2}% for the largest firm tell you on its own?)\n' +
+    '(b) Explain why a firm under perfect competition is a “price taker”.\n' +
+    '(c) A classmate says “the fewer the firms, the higher the price must be”. ' +
+    'Which part of that statement holds, and which part is an over-simplification?',
 }
 
 /** 104 條共用同一段解析，所以英文亦只需一段。 */

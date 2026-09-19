@@ -1,0 +1,428 @@
+{
+  "kind": "translation-batch",
+  "note": "為已入庫但缺 contentEn / explanationEn 嘅 economics 長題補譯（第三批：宏觀經濟 13 + 市場結構 13）。只新增英文欄，不改任何中文內容、分數或參考答案。呢批題目係參數化模板 —— 每個課題 13 條同文不同數，所以英文由一個模板逐條代入生成，生成時已斷言英文抽出嘅數字序列同中文完全一致，轉義錢號數目亦一致。覆核請睇模板譯法本身：一個模板批咗，佢 13 個變體就一齊成立。referenceAnswerEn / markingSchemeEn 早已齊全，唔喺本批範圍。機器唔會自動入庫 —— 要真人簽 decisions 嘅 _meta.reviewer 之後先套用。",
+  "created": "2026-09-19",
+  "reviewer": "",
+  "approvedAt": null,
+  "counts": {
+    "economics": 26
+  },
+  "items": [
+    {
+      "id": "ec_l_4_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 400、投資 120、政府開支 200、出口 80、進口 60。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 20 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 20 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 400, investment 120, government expenditure 200, exports 80, imports 60.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 20 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 20? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 430、投資 130、政府開支 215、出口 85、進口 64。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 22 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 22 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 430, investment 130, government expenditure 215, exports 85, imports 64.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 22 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 22? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 460、投資 140、政府開支 230、出口 90、進口 68。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 23 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 23 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 460, investment 140, government expenditure 230, exports 90, imports 68.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 23 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 23? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 490、投資 150、政府開支 245、出口 95、進口 72。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 25 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 25 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 490, investment 150, government expenditure 245, exports 95, imports 72.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 25 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 25? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 520、投資 160、政府開支 260、出口 100、進口 76。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 26 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 26 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 520, investment 160, government expenditure 260, exports 100, imports 76.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 26 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 26? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 550、投資 170、政府開支 275、出口 105、進口 80。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 28 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 28 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 550, investment 170, government expenditure 275, exports 105, imports 80.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 28 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 28? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 580、投資 180、政府開支 290、出口 110、進口 84。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 29 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 29 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 580, investment 180, government expenditure 290, exports 110, imports 84.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 29 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 29? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 610、投資 190、政府開支 305、出口 115、進口 88。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 31 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 31 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 610, investment 190, government expenditure 305, exports 115, imports 88.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 31 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 31? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 640、投資 200、政府開支 320、出口 120、進口 92。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 32 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 32 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 640, investment 200, government expenditure 320, exports 120, imports 92.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 32 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 32? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 670、投資 210、政府開支 335、出口 125、進口 96。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 34 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 34 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 670, investment 210, government expenditure 335, exports 125, imports 96.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 34 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 34? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 700、投資 220、政府開支 350、出口 130、進口 100。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 35 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 35 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 700, investment 220, government expenditure 350, exports 130, imports 100.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 35 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 35? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 730、投資 230、政府開支 365、出口 135、進口 104。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 37 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 37 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 730, investment 230, government expenditure 365, exports 135, imports 104.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 37 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 37? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_4_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "宏觀經濟",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體某年的支出資料如下（單位：億元）：私人消費 760、投資 240、政府開支 380、出口 140、進口 108。\n（a）以支出法計算本地生產總值。\n（b）解釋為何計算時要【減去】進口。\n（c）若翌年政府開支增加 38 億元而其他項目不變，本地生產總值的增幅會等於、大於還是小於 38 億元？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy records the following expenditure data for one year (all figures in hundred million dollars): private consumption 760, investment 240, government expenditure 380, exports 140, imports 108.\n(a) Calculate Gross Domestic Product using the expenditure approach.\n(b) Explain why imports must be SUBTRACTED in this calculation.\n(c) If government expenditure rises by 38 the following year while every other item stays unchanged, will the rise in Gross Domestic Product be equal to, greater than, or less than 38? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 2 家廠商的市場（該市場中最大一家佔有約 30% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 30% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 2 firms, in which the largest firm holds about 30% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 30% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 3 家廠商的市場（該市場中最大一家佔有約 34% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 34% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 3 firms, in which the largest firm holds about 34% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 34% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 4 家廠商的市場（該市場中最大一家佔有約 38% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 38% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 4 firms, in which the largest firm holds about 38% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 38% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 5 家廠商的市場（該市場中最大一家佔有約 42% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 42% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 5 firms, in which the largest firm holds about 42% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 42% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 2 家廠商的市場（該市場中最大一家佔有約 46% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 46% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 2 firms, in which the largest firm holds about 46% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 46% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 3 家廠商的市場（該市場中最大一家佔有約 50% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 50% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 3 firms, in which the largest firm holds about 50% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 50% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 4 家廠商的市場（該市場中最大一家佔有約 54% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 54% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 4 firms, in which the largest firm holds about 54% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 54% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 5 家廠商的市場（該市場中最大一家佔有約 58% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 58% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 5 firms, in which the largest firm holds about 58% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 58% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 2 家廠商的市場（該市場中最大一家佔有約 62% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 62% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 2 firms, in which the largest firm holds about 62% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 62% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 3 家廠商的市場（該市場中最大一家佔有約 66% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 66% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 3 firms, in which the largest firm holds about 66% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 66% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 4 家廠商的市場（該市場中最大一家佔有約 70% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 70% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 4 firms, in which the largest firm holds about 70% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 70% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 5 家廠商的市場（該市場中最大一家佔有約 74% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 74% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 5 firms, in which the largest firm holds about 74% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 74% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_5_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場結構",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "試比較完全競爭市場與只有 2 家廠商的市場（該市場中最大一家佔有約 78% 市場份額）。\n（a）指出兩者在【廠商數目】、【產品差異】與【訂價能力】三方面的分別。\n（提示：最大一家佔 78% 這一項數據，本身說明了甚麼？）\n（b）解釋為何完全競爭下的廠商是「價格接受者」。\n（c）有同學說「廠商數目愈少，價格必然愈高」。這句話哪一部分成立、哪一部分過度簡化？",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Compare a perfectly competitive market with a market served by only 2 firms, in which the largest firm holds about 78% of the market.\n(a) State how the two differ in NUMBER OF FIRMS, PRODUCT DIFFERENTIATION and PRICE-SETTING POWER.\n(Hint: what does the figure of 78% for the largest firm tell you on its own?)\n(b) Explain why a firm under perfect competition is a “price taker”.\n(c) A classmate says “the fewer the firms, the higher the price must be”. Which part of that statement holds, and which part is an over-simplification?",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    }
+  ]
+}
