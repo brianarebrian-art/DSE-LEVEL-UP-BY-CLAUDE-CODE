@@ -1,8 +1,13 @@
 // 生成 economics 長題補譯批次。用法：node scripts/qbank/gen-long-en-batch.mjs --batch=b2
 //
 // 點解用模板代入而唔係逐條譯：呢 104 條係參數化題，抹走數字之後全科得 11 個
-// 模板。逐條人手譯會有兩個唔必要嘅風險 —— ① 同一個模板嘅 13 個變體譯法漂移
+// 骨架。逐條人手譯會有兩個唔必要嘅風險 —— ① 同一個模板嘅 13 個變體譯法漂移
 // ② 數字抄錯。代入法兩樣都冇。
+//
+// 11 個骨架，但只需要 8 個模板字串：基礎概念嗰 4 個骨架分別只係【第三個選項】
+// 嗰個詞唔同（自修一小時／兼職兩小時／陪家人吃飯／參加球隊訓練），其餘逐字
+// 相同。抄四份出嚟就會有四份九成一樣嘅嘢等人各自改歪 —— 所以改為一個模板加
+// 一個 `{alt}` 代入位，配 `EN_VARIANT` 一張詞表。
 //
 // 生成之後會逐條斷言：英文抽出嚟嘅數字序列，必須同中文完全一致。
 //
@@ -96,6 +101,11 @@ const items = arr.filter((q) => !q.contentEn && TOPICS.includes(q.topicZh))
  *   訂價能力 = price-setting power
  *   產品差異 = product differentiation
  *   進入障礙 = barriers to entry
+ *   固定成本／可變成本 = fixed cost / variable cost
+ *   總成本／總收益／平均成本 = total cost / total revenue / average cost
+ *   停產 = shut down（短期停產法則 = the short-run shutdown rule）
+ *   機會成本 = opportunity cost（「最佳放棄選項」= the BEST forgone alternative）
+ *   邊際 = the margin
  *
  * ⚠️ b3 兩個模板嘅譯法唔係另起爐灶 —— 係由【已經入咗庫嘅 referenceAnswerEn】
  *    抄返出嚟（"hundred million"、"price-setting power"、"barriers to entry"
@@ -164,6 +174,46 @@ const EN_TEMPLATE = {
     '(b) Explain why a firm under perfect competition is a “price taker”.\n' +
     '(c) A classmate says “the fewer the firms, the higher the price must be”. ' +
     'Which part of that statement holds, and which part is an over-simplification?',
+
+  // ⚠️ 五個數字得四個帶錢號 —— 產量「200 單位」唔帶。英漢錢號數目下面有斷言，
+  //    所以呢度多加或者漏一個 `\\$` 都會即刻擲錯，唔會靜靜哋出街。
+  廠商與生產:
+    'A firm has a fixed cost of \\${0}, a variable cost of \\${1} per unit, a selling price of ' +
+    '\\${2} per unit, and an output of {3} units.\n' +
+    '(a) Calculate total cost, total revenue and profit.\n' +
+    '(b) Calculate average cost, and explain why average cost falls at first as output rises.\n' +
+    '(c) If the price falls to \\${4} in the short run, should the firm shut down immediately? ' +
+    'Answer in terms of VARIABLE COST.',
+
+  // `{alt}` 由 EN_VARIANT 代入，見下。
+  基礎概念:
+    'A student has a two-hour free period and can choose to revise, to work part-time at ' +
+    '\\${0} an hour, or to {alt}. The student chooses to revise.\n' +
+    '(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n' +
+    '(b) Explain why opportunity cost is NOT the sum of every option given up.\n' +
+    '(c) If the part-time wage rises to \\${1} an hour, will the student’s choice necessarily ' +
+    'change? Answer in terms of the MARGIN.',
+}
+
+/**
+ * 同一個課題入面，骨架之間【只有一個詞唔同】嗰陣用呢張表。
+ *
+ * 基礎概念 13 條分 4 個骨架，分別只係第三個選項。四個模板抄開嚟，就會有四份
+ * 九成一樣嘅英文等住各自改歪 —— 而漂移正正係代入法要避免嗰件事。
+ *
+ * ⚠️ 變體字串入面唔可以有數字。有嘅話會令英文嘅數字序列多咗一個，下面條
+ *    中英逐個數字比對嘅斷言即刻擲錯 —— 所以「兩小時」寫 "two hours" 而唔係 "2 hours"。
+ *
+ * ⚠️ 逐條要【啱啱好】命中一個 key，零個或者多過一個都擲錯。唔准有 fallback：
+ *    悄悄揀個預設值，出嚟就係一條英文問緊另一件事嘅題。
+ */
+const EN_VARIANT = {
+  基礎概念: {
+    自修一小時: 'study on their own for an hour',
+    兼職兩小時: 'work part-time for two hours',
+    陪家人吃飯: 'have a meal with family',
+    參加球隊訓練: 'go to team training',
+  },
 }
 
 /** 104 條共用同一段解析，所以英文亦只需一段。 */
@@ -196,8 +246,29 @@ const nums = (s) => s.match(/\d+(?:\.\d+)?/g) ?? []
 const out = []
 for (const q of items) {
   const n = nums(q.content)
-  const tpl = EN_TEMPLATE[q.topicZh]
+  let tpl = EN_TEMPLATE[q.topicZh]
   if (!tpl) throw new Error(`${q.id}: 冇 ${q.topicZh} 嘅英文模板`)
+
+  // `{alt}` 同 EN_VARIANT 必須成對出現 —— 兩邊各自檢查一次。
+  // 淨係查一邊嘅話，另一邊寫漏就會靜靜哋出一條英文同中文問緊兩件事嘅題。
+  const variants = EN_VARIANT[q.topicZh]
+  if (tpl.includes('{alt}') !== Boolean(variants)) {
+    throw new Error(
+      `${q.topicZh}: 模板${tpl.includes('{alt}') ? '有' : '冇'} {alt}，` +
+        `但 EN_VARIANT ${variants ? '有' : '冇'}呢個課題 —— 兩者要成對。`,
+    )
+  }
+  if (variants) {
+    const hits = Object.keys(variants).filter((k) => q.content.includes(k))
+    if (hits.length !== 1) {
+      throw new Error(
+        `${q.id}: {alt} 要啱啱好命中一個變體，實際命中 ${hits.length} 個` +
+          `${hits.length ? `（${hits.join('、')}）` : ''} —— 新骨架要加入 EN_VARIANT。`,
+      )
+    }
+    tpl = tpl.replace('{alt}', variants[hits[0]])
+  }
+
   const en = tpl.replace(/\{(\d)\}/g, (_, i) => {
     if (n[+i] === undefined) throw new Error(`${q.id}: 模板要 {${i}} 但中文只有 ${n.length} 個數字`)
     return n[+i]
@@ -246,7 +317,11 @@ const doc = {
 }
 
 writeFileSync(join(ROOT, OUT), JSON.stringify(doc, null, 2) + '\n')
+const variantNote = TOPICS.filter((t) => EN_VARIANT[t])
+  .map((t) => `${t} ${Object.keys(EN_VARIANT[t]).length} 個變體詞`)
+  .join('、')
 console.log(
-  `${BATCH}：寫咗 ${out.length} 條 · 課題 ${TOPICS.join('、')} · 模板 ${TOPICS.length} 個\n` +
+  `${BATCH}：寫咗 ${out.length} 條 · 課題 ${TOPICS.join('、')} · 模板 ${TOPICS.length} 個` +
+    `${variantNote ? `（${variantNote}）` : ''}\n` +
     `數字序列逐條核對通過、轉義錢號數目一致 → ${OUT}`,
 )

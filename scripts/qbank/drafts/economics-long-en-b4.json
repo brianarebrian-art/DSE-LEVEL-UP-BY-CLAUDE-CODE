@@ -1,0 +1,428 @@
+{
+  "kind": "translation-batch",
+  "note": "為已入庫但缺 contentEn / explanationEn 嘅 economics 長題補譯（第四批：廠商與生產 13 + 基礎概念 13）。只新增英文欄，不改任何中文內容、分數或參考答案。呢批題目係參數化模板 —— 每個課題 13 條同文不同數，所以英文由一個模板逐條代入生成，生成時已斷言英文抽出嘅數字序列同中文完全一致，轉義錢號數目亦一致。覆核請睇模板譯法本身：一個模板批咗，佢 13 個變體就一齊成立。referenceAnswerEn / markingSchemeEn 早已齊全，唔喺本批範圍。機器唔會自動入庫 —— 要真人簽 decisions 嘅 _meta.reviewer 之後先套用。",
+  "created": "2026-09-19",
+  "reviewer": "",
+  "approvedAt": null,
+  "counts": {
+    "economics": 26
+  },
+  "items": [
+    {
+      "id": "ec_l_6_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$60 兼職、或自修一小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$120，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$60 an hour, or to study on their own for an hour. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$120 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$65 兼職、或兼職兩小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$130，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$65 an hour, or to work part-time for two hours. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$130 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$70 兼職、或陪家人吃飯。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$140，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$70 an hour, or to have a meal with family. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$140 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$75 兼職、或參加球隊訓練。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$150，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$75 an hour, or to go to team training. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$150 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$80 兼職、或自修一小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$160，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$80 an hour, or to study on their own for an hour. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$160 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$85 兼職、或兼職兩小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$170，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$85 an hour, or to work part-time for two hours. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$170 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$90 兼職、或陪家人吃飯。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$180，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$90 an hour, or to have a meal with family. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$180 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$95 兼職、或參加球隊訓練。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$190，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$95 an hour, or to go to team training. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$190 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$100 兼職、或自修一小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$200，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$100 an hour, or to study on their own for an hour. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$200 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$105 兼職、或兼職兩小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$210，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$105 an hour, or to work part-time for two hours. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$210 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$110 兼職、或陪家人吃飯。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$220，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$110 an hour, or to have a meal with family. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$220 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$115 兼職、或參加球隊訓練。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$230，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$115 an hour, or to go to team training. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$230 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_6_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "基礎概念",
+      "difficulty": "easy",
+      "status": "pending",
+      "zh": {
+        "content": "一名學生有一段兩小時的空檔，可選擇：溫習、以時薪 \\$120 兼職、或自修一小時。他最終選擇了溫習。\n（a）界定「機會成本」，並指出此例中溫習的機會成本是甚麼。\n（b）解釋為何機會成本【不是】把所有放棄的選項相加。\n（c）若兼職時薪升至 \\$240，他的選擇會否必然改變？試以「邊際」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A student has a two-hour free period and can choose to revise, to work part-time at \\$120 an hour, or to study on their own for an hour. The student chooses to revise.\n(a) Define OPPORTUNITY COST, and state what the opportunity cost of revising is here.\n(b) Explain why opportunity cost is NOT the sum of every option given up.\n(c) If the part-time wage rises to \\$240 an hour, will the student’s choice necessarily change? Answer in terms of the MARGIN.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$2000，每單位可變成本為 \\$15，售價為 \\$40，產量為 200 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$18，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$2000, a variable cost of \\$15 per unit, a selling price of \\$40 per unit, and an output of 200 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$18 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$2200，每單位可變成本為 \\$17，售價為 \\$43，產量為 220 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$20，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$2200, a variable cost of \\$17 per unit, a selling price of \\$43 per unit, and an output of 220 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$20 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$2400，每單位可變成本為 \\$19，售價為 \\$46，產量為 240 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$22，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$2400, a variable cost of \\$19 per unit, a selling price of \\$46 per unit, and an output of 240 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$22 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$2600，每單位可變成本為 \\$21，售價為 \\$49，產量為 260 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$24，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$2600, a variable cost of \\$21 per unit, a selling price of \\$49 per unit, and an output of 260 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$24 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$2800，每單位可變成本為 \\$23，售價為 \\$52，產量為 280 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$26，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$2800, a variable cost of \\$23 per unit, a selling price of \\$52 per unit, and an output of 280 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$26 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$3000，每單位可變成本為 \\$25，售價為 \\$55，產量為 300 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$28，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$3000, a variable cost of \\$25 per unit, a selling price of \\$55 per unit, and an output of 300 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$28 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$3200，每單位可變成本為 \\$27，售價為 \\$58，產量為 320 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$30，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$3200, a variable cost of \\$27 per unit, a selling price of \\$58 per unit, and an output of 320 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$30 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$3400，每單位可變成本為 \\$29，售價為 \\$61，產量為 340 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$32，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$3400, a variable cost of \\$29 per unit, a selling price of \\$61 per unit, and an output of 340 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$32 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$3600，每單位可變成本為 \\$31，售價為 \\$64，產量為 360 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$34，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$3600, a variable cost of \\$31 per unit, a selling price of \\$64 per unit, and an output of 360 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$34 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$3800，每單位可變成本為 \\$33，售價為 \\$67，產量為 380 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$36，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$3800, a variable cost of \\$33 per unit, a selling price of \\$67 per unit, and an output of 380 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$36 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$4000，每單位可變成本為 \\$35，售價為 \\$70，產量為 400 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$38，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$4000, a variable cost of \\$35 per unit, a selling price of \\$70 per unit, and an output of 400 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$38 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$4200，每單位可變成本為 \\$37，售價為 \\$73，產量為 420 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$40，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$4200, a variable cost of \\$37 per unit, a selling price of \\$73 per unit, and an output of 420 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$40 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_7_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "廠商與生產",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某廠商的固定成本為 \\$4400，每單位可變成本為 \\$39，售價為 \\$76，產量為 440 單位。\n（a）計算總成本、總收益與利潤。\n（b）計算平均成本，並解釋為何平均成本會隨產量增加而先下降。\n（c）若短期內售價跌至 \\$42，該廠商應否立即停產？試以「可變成本」的角度說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A firm has a fixed cost of \\$4400, a variable cost of \\$39 per unit, a selling price of \\$76 per unit, and an output of 440 units.\n(a) Calculate total cost, total revenue and profit.\n(b) Calculate average cost, and explain why average cost falls at first as output rises.\n(c) If the price falls to \\$42 in the short run, should the firm shut down immediately? Answer in terms of VARIABLE COST.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    }
+  ]
+}
