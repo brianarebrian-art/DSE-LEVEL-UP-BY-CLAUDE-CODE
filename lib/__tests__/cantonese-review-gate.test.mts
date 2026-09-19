@@ -90,14 +90,34 @@ test('④ 有綁課題嘅主題，課題必須真係存在', async () => {
   assert.deepEqual(dead, [], `呢啲卡指住唔存在嘅課題，「做呢個課題」會係死掣：\n  ${dead.join('\n  ')}`)
 })
 
-test('⑤ 校園主題一定要綁課題 —— 唔准靜靜哋變成冇入口', () => {
-  // ④ 放寬咗之後留低一個窿：校園主題（1–8）本來每個都撳得入練習，
-  // 而家只要有人刪走個 topicId，④ 就會照樣綠。呢條補返。
-  const CAMPUS = ['classroom', 'recess', 'homework', 'teachers', 'peers', 'school-life', 'help', 'spoken-written']
-  const missing = CAMPUS.filter((id) => !CAMPUS_TOPICS.find((t) => t.id === id)?.topicId)
-  assert.deepEqual(
-    missing,
-    [],
-    `呢啲校園主題冇咗 topicId，練習掣會靜靜哋消失：${missing.join(', ')}`,
+test('⑤ 每個主題六句，id 唔重複', () => {
+  // ④ 淨係驗「有綁課題嗰批」，而現版 0/13 全部冇綁 —— 即係話 ④ 而家係
+  // 空轉。呢條補返一啲真係量度緊嘢嘅不變式，否則個檔可以爛成點都冇人知。
+  const bad: string[] = []
+  const seen = new Set<string>()
+  for (const t of CAMPUS_TOPICS) {
+    if (seen.has(t.id)) bad.push(`${t.id}：id 重複`)
+    seen.add(t.id)
+    if (t.phrases.length !== 6) bad.push(`${t.id}：${t.phrases.length} 句，應該係 6 句`)
+    for (const p of t.phrases) {
+      for (const [k, v] of [['canto', p.canto], ['jyut', p.jyut], ['putong', p.putong], ['en', p.en]]) {
+        if (!String(v).trim()) bad.push(`${t.id} / ${p.canto}：${k} 空白`)
+      }
+    }
+  }
+  assert.deepEqual(bad, [], `內容結構有問題：\n  ${bad.join('\n  ')}`)
+})
+
+test('⑥ 揀唔定嘅粵拼要列喺 UNSURE，唔可以靜靜哋當冇事', async () => {
+  // 寫嗰陣揀唔定嘅音，如果淨係擺喺腦入面，覆核人就冇得由最高風險嗰批入手。
+  // 呢條唔查對錯（機器查唔到），只查「有冇列出嚟」——一個空嘅 UNSURE 代表
+  // 寫嘅人聲稱七十八條全部零疑問，而呢個聲稱本身就應該有人質疑。
+  const { UNSURE } = await import('../../data/cantonese.ts')
+  assert.ok(
+    Array.isArray(UNSURE) && UNSURE.length > 0,
+    'UNSURE 係空 —— 即係聲稱成份粵拼零疑問。真係咁嘅話，請喺本測試寫低點解。',
   )
+  for (const line of UNSURE) {
+    assert.match(line, /→/, `UNSURE 每行要寫「廣東話 → 寫咗乜（另一個可能）」：${line}`)
+  }
 })

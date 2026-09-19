@@ -36,27 +36,26 @@ const zh = {
   //    卷三（聆聽及綜合能力）同卷四（說話），見 docs/dse-syllabus-sources.md。
   //    教一張唔存在嘅卷，比唔教更差。
   cantonese: {
-    title: '新來港支援',
-    kicker: '業餘班 · 非正規課程',
-    lead: '頭八個情境喺校園，每個都撳得入去做返對應嘅中文科練習；後四個係日常生活，冇對應課題，所以冇練習掣。',
+    title: '新來港支援 · 香港日常廣東話',
+    kicker: '獨立課程 · 業餘班 · 非正規課程',
+    lead: '十三個場景，全部係香港人平時出街真係會講嘅話。呢個唔係中文科嘅一部分，所以冇練習掣。',
     disclaimer:
-      '本頁並非官方課程，亦非考評局教材，粵拼亦非任何官方拼音標準嘅權威版本。內容為新來港學生嘅輔助參考，例句一律獨立原創，並非抄錄歷屆試題。',
-    papersNote: '中國語文科自 2024 年起只設卷一（閱讀）同卷二（寫作）；卷三、卷四已經取消。',
+      '本頁並非官方課程，亦非考評局教材，粵拼亦非任何官方拼音標準嘅權威版本。內容為新來港學生嘅日常語言輔助參考，與任何科目課程無關，例句一律獨立原創。',
     colCanto: '廣東話',
     colJyut: '粵拼',
     colPutong: '普通話',
     colEn: 'English',
     practiceCta: '做呢個課題',
     // 主頁當眼卡。新來港支援唔屬於任何一科，所以入口唔喺科目總覽，喺首頁。
-    homeTitle: '新來港支援｜校園同日常生活廣東話',
-    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。呢度按場景排 —— 課室、小息、買嘢、食嘢、搭車，十二個情境、四欄對照。',
+    homeTitle: '新來港支援｜香港日常廣東話',
+    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。買嘢、食飯、搭車、睇醫生、打波 —— 十三個場景，四欄對照。',
     homeCta: '立即學習',
     // 未簽名嗰陣唔可以寫「立即學習」—— 撳入去係一版「仲未上線」，
     // 而首頁係最多人睇嗰版，喺度開空頭支票代價最大。
     homeCtaPending: '睇下涵蓋乜',
     pendingTitle: '內容仲未上線',
     pendingBody:
-      '呢十二個題目嘅逐詞對照仲喺準備緊 —— 粵拼每個聲調數字都要有人逐個對過先出得街。下面列出嘅係已經定好嘅範圍，唔係已完成嘅內容。',
+      '呢十三個場景嘅逐句對照仲喺準備緊 —— 粵拼每個聲調數字都要有人逐個對過先出得街。下面列出嘅係已經定好嘅範圍，唔係已完成嘅內容。',
   },
   // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
@@ -414,26 +413,24 @@ const en: typeof zh = {
     home: 'Home',
   },
   cantonese: {
-    title: 'Support for newly arrived students',
-    kicker: 'Informal · not a formal course',
-    lead: 'The first eight situations are on campus and each links into the matching Chinese Language practice. The last four are daily life, with no matching topic — so no practice button.',
+    title: 'New to Hong Kong — everyday Cantonese',
+    kicker: 'Standalone · informal, not a formal course',
+    lead: 'Thirteen situations, all of them things people here actually say. This is not part of Chinese Language, so there is no practice button.',
     disclaimer:
-      'This page is not an official course, not HKEAA material, and not an authoritative reference for any romanisation standard. It is supplementary reference for newly arrived students; all examples are written independently and are not reproduced from past papers.',
-    papersNote:
-      'Since 2024, HKDSE Chinese Language has only Paper 1 (Reading) and Paper 2 (Writing). Papers 3 and 4 have been withdrawn.',
+      'This page is not an official course, not HKEAA material, and not an authoritative reference for any romanisation standard. It is everyday-language support for newly arrived students, unrelated to any subject syllabus; all examples are written independently.',
     colCanto: 'Cantonese',
     colJyut: 'Jyutping',
     colPutong: 'Putonghua',
     colEn: 'English',
     practiceCta: 'Practise this topic',
-    homeTitle: 'New to Hong Kong — Cantonese for school and daily life',
+    homeTitle: 'New to Hong Kong — everyday Cantonese',
     homeLead:
-      'What people here actually say differs from what the textbook teaches. Twelve situations — classroom, recess, shopping, eating, getting around — four columns each.',
+      'What people here actually say differs from what the textbook teaches. Shopping, eating, getting around, the doctor, playing ball — thirteen situations, four columns each.',
     homeCta: 'Start learning',
     homeCtaPending: 'See what it covers',
     pendingTitle: 'Content is not live yet',
     pendingBody:
-      'The word-by-word tables for these twelve areas are still being prepared — every Jyutping tone number has to be checked individually before any of it goes live. What is listed below is the agreed scope, not finished content.',
+      'The tables for these thirteen situations are still being prepared — every Jyutping tone number has to be checked individually before any of it goes live. What is listed below is the agreed scope, not finished content.',
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
