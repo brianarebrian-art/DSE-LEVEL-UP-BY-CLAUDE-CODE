@@ -3,11 +3,19 @@
 import Link from 'next/link'
 import { Info } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
-import CantoneseDseCard, { type CantoneseTopic } from '@/components/CantoneseDseCard'
+import CantoneseDseCard from '@/components/CantoneseDseCard'
+import type { CampusTopic } from '@/data/cantonese'
 
 // /cantonese 嘅呈現層。範圍、卷別同留白嘅理由見 app/cantonese/page.tsx 檔頭。
 
-export default function CantoneseView({ topics }: { topics: CantoneseTopic[] }) {
+export default function CantoneseView({
+  topics,
+  signed,
+}: {
+  topics: CampusTopic[]
+  /** data/cantonese.ts 嘅 REVIEW.reviewer 有冇真人簽名。冇就唔出四欄對照。 */
+  signed: boolean
+}) {
   const { t, locale } = useLocale()
   const c = t.cantonese
   const en = locale === 'en'
@@ -41,15 +49,17 @@ export default function CantoneseView({ topics }: { topics: CantoneseTopic[] }) 
         </p>
 
         {/* 「仲未上線」擺喺卡之前。八張只有欄名嘅卡好易被讀成「內容壞咗」，
-            所以要先講清楚下面係範圍唔係成品。 */}
-        <div className="mt-8 rounded-xl border border-line bg-surface-sunken p-4">
-          <p className="text-sm font-medium text-ink">{c.pendingTitle}</p>
-          <p className="mt-1 text-sm leading-relaxed text-ink-muted">{c.pendingBody}</p>
-        </div>
+            所以要先講清楚下面係範圍唔係成品。簽咗名就唔使出。 */}
+        {!signed && (
+          <div className="mt-8 rounded-xl border border-line bg-surface-sunken p-4">
+            <p className="text-sm font-medium text-ink">{c.pendingTitle}</p>
+            <p className="mt-1 text-sm leading-relaxed text-ink-muted">{c.pendingBody}</p>
+          </div>
+        )}
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {topics.map((topic) => (
-            <CantoneseDseCard key={topic.topicId} topic={topic} en={en} />
+            <CantoneseDseCard key={topic.id} topic={topic} en={en} signed={signed} />
           ))}
         </div>
       </div>

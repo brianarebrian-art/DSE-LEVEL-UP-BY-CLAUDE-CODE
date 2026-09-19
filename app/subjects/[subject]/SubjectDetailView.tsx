@@ -85,21 +85,11 @@ export default function SubjectDetailView({
           <span>{short}</span>
         </div>
 
-        {/* 中文科新來港支援嘅唯一入口。擺喺中文科頁而唔係主導航，因為佢服務
-            緊一部分學生，唔係全部 —— 同 lib/pageOrder.ts 嗰邊嘅豁免理由一致。
-            冇呢條連結 /cantonese 就係孤兒路由，scripts/integration-guard.mjs 會嗌。 */}
-        {meta.id === 'chinese' && (
-          <Link
-            href="/cantonese"
-            className="mb-5 flex min-h-11 items-center justify-between gap-3 rounded-xl border border-line bg-surface-raised px-4 py-3 text-sm transition-colors hover:bg-surface-sunken focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            <span>
-              <span className="font-medium text-ink">{t.cantonese.title}</span>
-              <span className="ml-2 text-xs text-ink-muted">{t.cantonese.kicker}</span>
-            </span>
-            <ArrowRight size={16} className="shrink-0 text-ink-muted" aria-hidden />
-          </Link>
-        )}
+        {/* 2026-09-19：呢度曾經有一條去 /cantonese 嘅新來港支援 banner，已剷。
+            新來港支援唔屬於任何一科 —— 一個中文差、但數學物理好好嘅新來港
+            學生，唔會行去中文科頁搵呢樣嘢。入口搬咗去首頁（app/page.tsx，
+            信任列之後、科目 grid 之前）。
+            呢段註釋留低，係因為「點解中文科頁冇」比「曾經有過」更易有人想加返。 */}
 
         {/* Header */}
         <div className="mb-10">
