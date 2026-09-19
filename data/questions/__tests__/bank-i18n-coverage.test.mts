@@ -54,7 +54,9 @@ const MAX_MISSING: Record<string, number> = {
   bafs: 105,
   ict: 105,
   geography: 105,
-  economics: 104,
+  // 2026-09-19：由 104 降到 78。economics-long-en-b1（需求與供應 13 + 彈性 13）
+  // 經 brian 簽署後套用，補咗 26 條。剩低 78 條分 6 個課題、9 個模板。
+  economics: 78,
   biology: 72,
   physics: 64,
   chemistry: 49,
