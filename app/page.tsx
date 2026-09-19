@@ -9,7 +9,6 @@ import CountdownBanner from '@/components/CountdownBanner'
 import InstallHint from '@/components/InstallHint'
 import { subjects, getActiveSubjects } from '@/data/subjects'
 // 只攞簽名狀態，唔攞內容 —— 首頁唔需要 48 條對照，攞咗就白白 build 入 bundle。
-import { REVIEW as CANTONESE_REVIEW } from '@/data/cantonese'
 // 由 summary.generated.ts 攞總數，唔好 import barrel ——
 // barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
@@ -27,7 +26,6 @@ import Mascot from '@/components/Mascot'
 // 字重只用 400/500（憲章 §3.3），強調靠字級同顏色而非粗體。
 
 const activeSubjects = getActiveSubjects()
-const cantoneseSigned = CANTONESE_REVIEW.reviewer.trim().length > 0
 const totalSubjects = subjects.length
 
 // 真實數字（憲章 §4 規格牆；「4科」是憲章筆誤，實為 25 科）。
@@ -199,9 +197,9 @@ export default function HomePage() {
           「Hero 之後第一件事」，答訪客第一個問題。呢張卡唔應該插隊，
           但佢仍然喺科目 grid（下面好遠）之前，第一屏碌一下就見到。
 
-          ⚠️ CTA 文案跟簽名狀態變。內容未經人審之前唔會 render（見
-          data/cantonese.ts），所以未簽名嗰陣唔可以寫「立即學習」——
-          撳入去係一版「仲未上線」，而首頁係最多人睇嗰版。 */}
+          ⚠️ 2026-09-19：CTA 本來跟真人簽名狀態變（未簽名寫「了解課程內容」）。
+          簽名閘已剷除，內容無條件出街，所以 CTA 固定寫「立即學習」——
+          而家撳入去真係有嘢學，唔再係一版「仲未上線」。 */}
       <section className="bg-surface px-4 py-10">
         <div className="mx-auto max-w-4xl rounded-2xl border border-line bg-surface-raised p-6 sm:p-8">
           <p className="text-xs font-medium uppercase tracking-wide text-ink-muted">
@@ -215,7 +213,7 @@ export default function HomePage() {
             href="/cantonese"
             className="mt-5 inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            {cantoneseSigned ? t.cantonese.homeCta : t.cantonese.homeCtaPending}
+            {t.cantonese.homeCta}
             <ArrowRight size={16} aria-hidden />
           </Link>
         </div>

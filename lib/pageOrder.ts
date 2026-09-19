@@ -59,6 +59,7 @@ export const EXCLUDED: Record<string, string> = {
 
   // 動態詳情頁：由上層列表入，返回路徑係返上層
   '/cantonese/[sceneId]': '動態詳情頁，返回路徑係返 /cantonese',
+  '/cantonese/learn': '廣東話學習方法頁，由 /cantonese 入，返回路徑係返 /cantonese',
   '/notes/[subject]': '動態詳情頁，返回路徑係返 /notes',
   '/source-lab/[id]': '動態詳情頁，返回路徑係返 /source-lab',
   '/subjects/[subject]': '動態詳情頁，返回路徑係返 /subjects',

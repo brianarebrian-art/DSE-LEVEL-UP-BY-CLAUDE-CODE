@@ -28,7 +28,7 @@ const zh = {
   // 新來港學生支援頁（/cantonese）。
   //
   // ⚠️ 2026-09-19 範圍改過兩次。呢段註釋原本寫住「地鐵用語、問路、買嘢呢類
-  //    生活求生粵語唔屬於呢度」，而同日已經改為【十二個全部日常生活場景】。
+  //    生活求生粵語唔屬於呢度」，而家係【十六個全部日常生活場景】，並且由 Claude Code 校對後直接出街。
   //    舊句留喺度會變成一段同內容直接打架嘅條文 —— 憲章 §8.1 記低過呢個模式，
   //    所以改寫而唔係擺喺度當佢仲啱。
   //    範圍本身仲未喺 docs/charter.md 調和，詳見 data/cantonese.ts 檔頭。
@@ -37,12 +37,12 @@ const zh = {
   cantonese: {
     title: '新來港・香港日常廣東話',
     kicker: '獨立課程 · 業餘班 · 非正規生活支援',
-    lead: '獨立非正規生活支援課程，重點係聽得明、講得出、用得啱。十二個場景、七十二句，全部係香港人平時出街真係會講嘅話。',
+    lead: '獨立非正規生活支援課程，重點係聽得明、講得出、用得啱。十六個場景、九十六句、一百二十八個日常詞語，全部係香港人平時真係會講嘅話。',
     // 三件事缺一不可（順序＝重要性）：粵拼唔係權威版本、呢個唔屬中文科、
     // 身體同緊急情況要搵真人。第三件唔係例行免責 —— 睇醫生嗰版真係會有人
     // 攞住嚟用。
     disclaimer:
-      '粵拼並非任何官方拼音標準嘅權威版本，只作發音參考。本課程為業餘班、非正規日常生活支援，唔屬中國語文科或任何 DSE 科目，亦非考評局教材，例句一律獨立原創。遇到身體不適、醫療或緊急情況，請尋求醫生、老師、社工、家長等專業或可信任成人協助；緊急情況打 999。',
+      '粵拼並非任何官方拼音標準嘅權威版本，只作發音參考；如果同你老師教嘅唔同，以老師為準。本課程為業餘班、非正規日常生活支援，唔屬中國語文科或任何 DSE 科目，亦非考評局教材，例句一律獨立原創。遇到身體不適、醫療或緊急情況，請尋求醫生、老師、社工、家長等專業或可信任成人協助；緊急情況打 999。',
     colCanto: '廣東話',
     colJyut: '粵拼',
     colPutong: '普通話',
@@ -52,19 +52,33 @@ const zh = {
     purposeLabel: '用途',
     // 場景詳情頁（/cantonese/[sceneId]）。
     // ⚠️ 列表卡同詳情頁嘅分別必須係【真嘅】—— 一個撳入去見到同一樣嘢嘅
-    //    「深入了解」係講大話。詳情頁多咗：逐句文化提示、該場景相關嘅
-    //    未定粵拼、安全提示置頂、單欄細讀版面。
+    //    「深入了解」係講大話。詳情頁多咗：逐句用法提示、詞語表、學習提示、
+    //    安全提示置頂、單欄細讀版面。
     detailCta: '深入了解',
     back: '返回全部場景',
     courseShort: '香港日常廣東話',
-    listNoteHint: '逐句嘅文化同用法提示喺場景頁入面。',
-    unsureTitle: '呢個場景有粵拼未定',
-    unsureBody: '以下係寫嘅時候自己都揀唔定嘅音，覆核由呢批入手最有效率。',
-    unsureNone: '呢個場景冇列出任何未定嘅粵拼。',
-    // ⚠️ 呢句唔可以省。一個場景喺 UNSURE 零命中，好易被讀成「呢六句已經驗過」，
-    //    但 UNSURE 只列「我知道自己唔肯定」嗰批 —— 真正危險嘅係寫嗰陣完全
-    //    冇為意、所以連疑問都冇記低嗰啲。
-    unsureCaveat: '零命中唔代表呢六句已經驗證 —— 呢張表只列出寫嘅時候意識到有疑問嗰啲。',
+    listNoteHint: '逐句用法提示、詞語表同學習提示喺場景頁入面。',
+    wordsTitle: '呢個場景嘅常用字詞',
+    wordsLead: '句係一次過用嘅，詞係拆得開再砌嘅。呢啲字日常一定撞到。',
+    learnTitle: '點樣記',
+    // ⚠️ 呢段唔可以寫成「粵拼已驗證」。機器查到嘅只係「每個音節結構上合法」，
+    //    查唔到「個音讀得啱唔啱」。兩句唔同意思，而憲章 §16.D 就係為咗呢種分別。
+    sourceTitle: '呢啲內容邊個寫、查過乜',
+    sourceBody:
+      '內容由 Claude Code 撰寫同校對。每個粵拼音節都經機器對返粵拼嘅封閉集合（19 個聲母、約 60 個韻母、6 個聲調），所以唔會出現唔存在嘅音節。⚠️ 但機器查唔到【個音讀得啱唔啱】—— 結構合法唔等於讀音正確。如果同你老師或者身邊人講嘅唔同，以佢哋為準。',
+    learnHubTitle: '點樣學廣東話',
+    learnHubLead: '識普通話嘅話，你已經識大部分字 —— 缺嘅淨係讀音。呢版教六個聲調、普通話同廣東話之間嘅對應規律，同最易踩嘅陷阱。',
+    learnHubCta: '先睇點樣學',
+    tonesTitle: '六個聲調',
+    tonesLead: '普通話四個聲調，廣東話六個。多出嚟嗰兩個唔係「難咗」，係普通話冇嘅低音區。同一個音節淨係換聲調，就係另一個字。',
+    rulesTitle: '由普通話推過去',
+    rulesLead: '呢啲係傾向，唔係定律 —— 每條都寫咗例外。一條規律一次過解鎖幾百個字，比逐個詞背快好多。',
+    rulesFrom: '普通話',
+    rulesTo: '廣東話',
+    rulesException: '例外',
+    trapsTitle: '最易踩嘅陷阱',
+    trapsLead: '呢批最危險，因為個字你識寫、識普通話意思，所以唔會覺得自己需要查。',
+    practiceTitle: '每日五分鐘',
     // 每句嘅溝通目的。鍵值對應 data/cantonese.ts 嘅 `Purpose` union ——
     // 加一個新 purpose 而漏咗呢度，TypeScript 會即刻嗌。
     purposes: {
@@ -78,14 +92,8 @@ const zh = {
     },
     // 主頁當眼卡。新來港支援唔屬於任何一科，所以入口唔喺科目總覽，喺首頁。
     homeTitle: '新來港・香港日常廣東話',
-    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。買嘢、食飯、搭車、睇醫生、約人打波 —— 十二個場景，每句附粵拼、普通話同英文。',
+    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。返學、食飯、搭車、打風、睇醫生、約人打波 —— 十六個場景，每句附粵拼、普通話同英文，仲有點樣學嘅方法。',
     homeCta: '立即學習',
-    // 未簽名嗰陣唔可以寫「立即學習」—— 撳入去係一版「仲未上線」，
-    // 而首頁係最多人睇嗰版，喺度開空頭支票代價最大。
-    homeCtaPending: '了解課程內容',
-    pendingTitle: '內容正由真人校對中',
-    pendingBody:
-      '呢十二個場景嘅逐句對照仲喺校對緊 —— 粵拼每一個聲調數字都要有人逐個對過先出得街。下面列出嘅係已經定好嘅範圍同每張卡涵蓋嘅溝通目的，唔係已完成嘅內容。',
   },
   // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
@@ -445,9 +453,9 @@ const en: typeof zh = {
   cantonese: {
     title: 'New to Hong Kong — everyday Cantonese',
     kicker: 'Standalone · informal everyday-life support',
-    lead: 'A standalone, informal everyday-life course. The goal is to understand it, say it, and use it correctly — twelve situations, seventy-two lines, all of them things people here actually say.',
+    lead: 'A standalone, informal everyday-life course. The goal is to understand it, say it, and use it correctly — sixteen situations, ninety-six lines and a hundred and twenty-eight everyday words, all of them things people here actually say.',
     disclaimer:
-      'Jyutping here is a pronunciation aid, not an authoritative version of any official romanisation standard. This is an informal everyday-life course: it is not part of Chinese Language or any DSE subject, not HKEAA material, and all examples are written independently. If you feel unwell, or for anything medical or urgent, go to a doctor, teacher, social worker, family member or another trusted adult — in an emergency call 999.',
+      'Jyutping here is a pronunciation aid, not an authoritative version of any official romanisation standard — if it differs from what your teacher says, go with your teacher. This is an informal everyday-life course: it is not part of Chinese Language or any DSE subject, not HKEAA material, and all examples are written independently. If you feel unwell, or for anything medical or urgent, go to a doctor, teacher, social worker, family member or another trusted adult — in an emergency call 999.',
     colCanto: 'Cantonese',
     colJyut: 'Jyutping',
     colPutong: 'Putonghua',
@@ -458,12 +466,26 @@ const en: typeof zh = {
     detailCta: 'See the full scene',
     back: 'Back to all situations',
     courseShort: 'Everyday Cantonese',
-    listNoteHint: 'Usage and culture notes for each line are on the scene page.',
-    unsureTitle: 'Some Jyutping here is unsettled',
-    unsureBody: 'These are the readings the writer was unsure of. Checking starts here.',
-    unsureNone: 'No unsettled Jyutping is listed for this scene.',
-    unsureCaveat:
-      'Nothing listed does not mean these six lines are verified — this list only covers readings the writer noticed a doubt about.',
+    listNoteHint: 'Usage notes, the word list and study tips are on each scene page.',
+    wordsTitle: 'Words you will meet here',
+    wordsLead: 'A sentence is used whole; words come apart and go back together. These turn up daily.',
+    learnTitle: 'How to remember it',
+    sourceTitle: 'Who wrote this, and what was checked',
+    sourceBody:
+      'Written and checked by Claude Code. Every Jyutping syllable is machine-checked against the closed Jyutping inventory (19 initials, about 60 finals, 6 tones), so no impossible syllable can appear. ⚠️ What the machine cannot check is whether the reading is the right one — a structurally valid syllable is not necessarily the correct pronunciation. If it differs from what your teacher or the people around you say, go with them.',
+    learnHubTitle: 'How to learn Cantonese',
+    learnHubLead: 'If you already read Putonghua, you know most of the characters — what is missing is the sound. This page covers the six tones, the regular Putonghua-to-Cantonese correspondences, and the traps.',
+    learnHubCta: 'Start with how to learn',
+    tonesTitle: 'The six tones',
+    tonesLead: 'Putonghua has four tones; Cantonese has six. The extra two are not “harder” — they sit in a low register Putonghua does not use. Change only the tone and you have a different word.',
+    rulesTitle: 'Working across from Putonghua',
+    rulesLead: 'These are tendencies, not laws — each one lists its exceptions. A single rule unlocks hundreds of characters at once.',
+    rulesFrom: 'Putonghua',
+    rulesTo: 'Cantonese',
+    rulesException: 'Exception',
+    trapsTitle: 'The easiest traps to fall into',
+    trapsLead: 'These are the dangerous ones: you can already read the character and you know the Putonghua meaning, so it never occurs to you to check.',
+    practiceTitle: 'Five minutes a day',
     purposes: {
       ask: 'Asking',
       confirm: 'Confirming',
@@ -475,12 +497,8 @@ const en: typeof zh = {
     },
     homeTitle: 'New to Hong Kong — everyday Cantonese',
     homeLead:
-      'What people here actually say differs from what the textbook teaches. Shopping, eating, getting around, the doctor, making plans — twelve situations, each line with Jyutping, Putonghua and English.',
+      'What people here actually say differs from what the textbook teaches. School, eating, getting around, typhoons, the doctor, making plans — sixteen situations, each line with Jyutping, Putonghua and English, plus how to learn it.',
     homeCta: 'Start learning',
-    homeCtaPending: 'See what it covers',
-    pendingTitle: 'Being checked by a person',
-    pendingBody:
-      'The lines for these twelve situations are still being proofread — every Jyutping tone number has to be checked individually before any of it goes live. What is listed below is the agreed scope and the communication purposes each card covers, not finished content.',
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
