@@ -20,6 +20,12 @@ const inter = Inter({ subsets: ['latin'] })
 // （public/robots.txt 為靜態檔，無法匯入，由 lib/__tests__/site-origin.test.mts 核對。）
 import { SITE_ORIGIN as SITE_URL } from '@/lib/site'
 
+// 題數由真題庫衍生，唔手寫 —— 手寫嗰個版本喺呢度漂咗兩個星期（26,204 vs 27,321）。
+// `summary.generated.ts` 淨係數字同課題名（gzip 12KB），唔會拉題庫入 bundle；
+// 呢個檔本身就係為咗呢件事而存在（見該檔檔頭）。
+// 迴歸鎖：lib/__tests__/claim-parity.test.mts
+import { TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
+
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
   // 發出警告，且 og:image 會輸出成相對路徑，大部分社交平台抓不到。
@@ -67,8 +73,16 @@ export const metadata: Metadata = {
 // 知識圖譜（JSON-LD）。全部以英文撰寫 —— 此段並非使用者可見文案，而是給搜尋引擎
 // 與答案引擎讀的結構化資料，英文可獲最廣泛的解析支援。
 //
-// 誠實紅線：`description` 只寫查證得到的事實（題數實測 26,204、25 科），
-// 且明文載明與 HKEAA 無從屬關係 —— 與頁尾免責聲明、/llms.txt 三處一致。
+// 誠實紅線：`description` 只寫查證得到的事實，且明文載明與 HKEAA 無從屬關係
+// —— 與頁尾免責聲明、/llms.txt 三處一致。
+//
+// ⚠️ 2026-09-19：呢個數原本手寫死喺下面段 description，而真題庫一路行前咗
+// 一千幾百條，漂咗兩個星期都冇人知。上一版呢句註釋仲自己寫住「實測」加一個
+// 數字 —— 一句【自稱已核實】嘅聲稱本身過咗期，比冇日期更差（§16.D 同一個病）。
+// 改為由 TOTAL_QUESTIONS 衍生：手寫一次就會漂一次，衍生先至永遠對得返。
+//
+// 呢度【刻意唔重述嗰個舊數字】。claim-parity 連註釋一齊掃（原本個 bug 有一半
+// 就係喺註釋度），所以喺註釋寫返個過時數字，一樣會紅 —— 而咁樣係啱嘅。
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -102,7 +116,7 @@ const jsonLd = {
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'HKD' },
       audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
       description:
-        'Free HKDSE revision platform with 26,204 independently rewritten questions across 25 subjects, a three-way self-diagnosis after any wrong answer, printable paper-based mock sets, and accessibility features for students with SEN. Questions are original rewrites, not reproductions of HKEAA past papers.',
+        `Free HKDSE revision platform with ${TOTAL_QUESTIONS.toLocaleString('en-US')} independently rewritten questions across 25 subjects, a three-way self-diagnosis after any wrong answer, printable paper-based mock sets, and accessibility features for students with SEN. Questions are original rewrites, not reproductions of HKEAA past papers.`,
     },
   ],
 }
