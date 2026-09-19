@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Sidebar from '@/components/Sidebar'
+import PageNav from '@/components/PageNav'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 
 // 全站外殼 —— 決定 Navbar／Footer 出唔出，同埋 <main> 要唔要留返導航列嘅位。
@@ -47,6 +48,12 @@ export default function AppShell({
         style={{ paddingBottom: 'var(--bottom-nav-h)' }}
       >
         {children}
+        {/* 前／後頁導航掛喺呢度一次，唔喺任何 page.tsx 出現 —— 一張要人記得去
+            加 <PageNav> 嘅清單，遲早會漏，而漏嗰次通常就係最值錢嗰次。
+            PageNav 自己查 lib/pageOrder：唔喺主瀏覽循環就 return null，
+            所以全屏模式、動態詳情頁、後台都唔會出。擺喺 <main> 入面係為咗
+            食返上面 `inset` 嘅側欄讓位，唔使再算多次。 */}
+        <PageNav />
       </main>
       {!immersive && footer}
     </>
