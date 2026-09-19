@@ -99,8 +99,10 @@ const zh = {
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
-    mission: '每日任務',
-    todayPractice: '今日練習',
+    // 模板叫「Daily Mission」「Today's Practice」，冇跟：上面嗰條原則 ——
+    // /dashboard 自己叫「我的進度」、底欄叫「練習」，側欄另起一個名就係兩套。
+    progress: '我的進度',
+    practice: '練習',
     errorDna: '錯題 DNA',
     predictor: '等級預測',
     relax: '呼吸空間',
@@ -534,8 +536,8 @@ const en: typeof zh = {
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
-    mission: 'Daily Mission',
-    todayPractice: "Today's Practice",
+    progress: 'My Progress',
+    practice: 'Practise',
     errorDna: 'Error DNA',
     predictor: 'Grade Predictor',
     relax: 'Breathing Space',
