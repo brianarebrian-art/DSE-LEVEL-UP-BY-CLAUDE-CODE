@@ -27,35 +27,50 @@ const zh = {
   },
   // 新來港學生支援頁（/cantonese）。
   //
-  // ⚠️ 2026-09-19 範圍改過一次。呢段註釋原本寫住「地鐵用語、問路、買嘢呢類
-  //    生活求生粵語唔屬於呢度」，而同日下午加咗買嘢／買衫／食嘢／交通住行
-  //    四個主題。舊句留喺度會變成一段同內容直接打架嘅條文 —— 憲章 §8.1
-  //    記低過呢個模式，所以改寫而唔係擺喺度當佢仲啱。
+  // ⚠️ 2026-09-19 範圍改過兩次。呢段註釋原本寫住「地鐵用語、問路、買嘢呢類
+  //    生活求生粵語唔屬於呢度」，而同日已經改為【十二個全部日常生活場景】。
+  //    舊句留喺度會變成一段同內容直接打架嘅條文 —— 憲章 §8.1 記低過呢個模式，
+  //    所以改寫而唔係擺喺度當佢仲啱。
   //    範圍本身仲未喺 docs/charter.md 調和，詳見 data/cantonese.ts 檔頭。
-  // ⚠️ 亦【唔會】出現卷三／卷四。2024 核心科目優化已經剷走中國語文科嘅
-  //    卷三（聆聽及綜合能力）同卷四（說話），見 docs/dse-syllabus-sources.md。
-  //    教一張唔存在嘅卷，比唔教更差。
+  // ⚠️ 亦【唔會】出現卷三／卷四，或者任何 DSE 卷別 —— 呢個唔屬中文科。
+  //    喺一版教買衫搭車嘅頁度講卷別，只會令人以為呢度係試前溫習。
   cantonese: {
-    title: '新來港支援 · 香港日常廣東話',
-    kicker: '獨立課程 · 業餘班 · 非正規課程',
-    lead: '十三個場景，全部係香港人平時出街真係會講嘅話。呢個唔係中文科嘅一部分，所以冇練習掣。',
+    title: '新來港・香港日常廣東話',
+    kicker: '獨立課程 · 業餘班 · 非正規生活支援',
+    lead: '獨立非正規生活支援課程，重點係聽得明、講得出、用得啱。十二個場景、七十二句，全部係香港人平時出街真係會講嘅話。',
+    // 三件事缺一不可（順序＝重要性）：粵拼唔係權威版本、呢個唔屬中文科、
+    // 身體同緊急情況要搵真人。第三件唔係例行免責 —— 睇醫生嗰版真係會有人
+    // 攞住嚟用。
     disclaimer:
-      '本頁並非官方課程，亦非考評局教材，粵拼亦非任何官方拼音標準嘅權威版本。內容為新來港學生嘅日常語言輔助參考，與任何科目課程無關，例句一律獨立原創。',
+      '粵拼並非任何官方拼音標準嘅權威版本，只作發音參考。本課程為業餘班、非正規日常生活支援，唔屬中國語文科或任何 DSE 科目，亦非考評局教材，例句一律獨立原創。遇到身體不適、醫療或緊急情況，請尋求醫生、老師、社工、家長等專業或可信任成人協助；緊急情況打 999。',
     colCanto: '廣東話',
     colJyut: '粵拼',
     colPutong: '普通話',
     colEn: 'English',
     practiceCta: '做呢個課題',
+    safetyLabel: '安全提示',
+    purposeLabel: '用途',
+    // 每句嘅溝通目的。鍵值對應 data/cantonese.ts 嘅 `Purpose` union ——
+    // 加一個新 purpose 而漏咗呢度，TypeScript 會即刻嗌。
+    purposes: {
+      ask: '發問',
+      confirm: '確認',
+      need: '表達需要',
+      request: '禮貌請求',
+      decline: '拒絕・修正',
+      repeat: '請人重複',
+      close: '收尾・道謝',
+    },
     // 主頁當眼卡。新來港支援唔屬於任何一科，所以入口唔喺科目總覽，喺首頁。
-    homeTitle: '新來港支援｜香港日常廣東話',
-    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。買嘢、食飯、搭車、睇醫生、打波 —— 十三個場景，四欄對照。',
+    homeTitle: '新來港・香港日常廣東話',
+    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。買嘢、食飯、搭車、睇醫生、約人打波 —— 十二個場景，每句附粵拼、普通話同英文。',
     homeCta: '立即學習',
     // 未簽名嗰陣唔可以寫「立即學習」—— 撳入去係一版「仲未上線」，
     // 而首頁係最多人睇嗰版，喺度開空頭支票代價最大。
-    homeCtaPending: '睇下涵蓋乜',
-    pendingTitle: '內容仲未上線',
+    homeCtaPending: '了解課程內容',
+    pendingTitle: '內容正由真人校對中',
     pendingBody:
-      '呢十三個場景嘅逐句對照仲喺準備緊 —— 粵拼每個聲調數字都要有人逐個對過先出得街。下面列出嘅係已經定好嘅範圍，唔係已完成嘅內容。',
+      '呢十二個場景嘅逐句對照仲喺校對緊 —— 粵拼每一個聲調數字都要有人逐個對過先出得街。下面列出嘅係已經定好嘅範圍同每張卡涵蓋嘅溝通目的，唔係已完成嘅內容。',
   },
   // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
@@ -414,23 +429,34 @@ const en: typeof zh = {
   },
   cantonese: {
     title: 'New to Hong Kong — everyday Cantonese',
-    kicker: 'Standalone · informal, not a formal course',
-    lead: 'Thirteen situations, all of them things people here actually say. This is not part of Chinese Language, so there is no practice button.',
+    kicker: 'Standalone · informal everyday-life support',
+    lead: 'A standalone, informal everyday-life course. The goal is to understand it, say it, and use it correctly — twelve situations, seventy-two lines, all of them things people here actually say.',
     disclaimer:
-      'This page is not an official course, not HKEAA material, and not an authoritative reference for any romanisation standard. It is everyday-language support for newly arrived students, unrelated to any subject syllabus; all examples are written independently.',
+      'Jyutping here is a pronunciation aid, not an authoritative version of any official romanisation standard. This is an informal everyday-life course: it is not part of Chinese Language or any DSE subject, not HKEAA material, and all examples are written independently. If you feel unwell, or for anything medical or urgent, go to a doctor, teacher, social worker, family member or another trusted adult — in an emergency call 999.',
     colCanto: 'Cantonese',
     colJyut: 'Jyutping',
     colPutong: 'Putonghua',
     colEn: 'English',
     practiceCta: 'Practise this topic',
+    safetyLabel: 'Safety note',
+    purposeLabel: 'Use',
+    purposes: {
+      ask: 'Asking',
+      confirm: 'Confirming',
+      need: 'Stating a need',
+      request: 'Polite request',
+      decline: 'Declining · correcting',
+      repeat: 'Asking to repeat',
+      close: 'Closing · thanks',
+    },
     homeTitle: 'New to Hong Kong — everyday Cantonese',
     homeLead:
-      'What people here actually say differs from what the textbook teaches. Shopping, eating, getting around, the doctor, playing ball — thirteen situations, four columns each.',
+      'What people here actually say differs from what the textbook teaches. Shopping, eating, getting around, the doctor, making plans — twelve situations, each line with Jyutping, Putonghua and English.',
     homeCta: 'Start learning',
     homeCtaPending: 'See what it covers',
-    pendingTitle: 'Content is not live yet',
+    pendingTitle: 'Being checked by a person',
     pendingBody:
-      'The tables for these thirteen situations are still being prepared — every Jyutping tone number has to be checked individually before any of it goes live. What is listed below is the agreed scope, not finished content.',
+      'The lines for these twelve situations are still being proofread — every Jyutping tone number has to be checked individually before any of it goes live. What is listed below is the agreed scope and the communication purposes each card covers, not finished content.',
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
