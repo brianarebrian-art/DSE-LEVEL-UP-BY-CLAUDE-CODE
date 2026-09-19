@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "source": "economics-long-en-b2.json",
+    "subject": "translation",
+    "reviewer": "",
+    "reviewedAt": ""
+  },
+  "decisions": {
+    "ec_l_2_01": "pending",
+    "ec_l_2_02": "pending",
+    "ec_l_2_03": "pending",
+    "ec_l_2_04": "pending",
+    "ec_l_2_05": "pending",
+    "ec_l_2_06": "pending",
+    "ec_l_2_07": "pending",
+    "ec_l_2_08": "pending",
+    "ec_l_2_09": "pending",
+    "ec_l_2_10": "pending",
+    "ec_l_2_11": "pending",
+    "ec_l_2_12": "pending",
+    "ec_l_2_13": "pending",
+    "ec_l_3_01": "pending",
+    "ec_l_3_02": "pending",
+    "ec_l_3_03": "pending",
+    "ec_l_3_04": "pending",
+    "ec_l_3_05": "pending",
+    "ec_l_3_06": "pending",
+    "ec_l_3_07": "pending",
+    "ec_l_3_08": "pending",
+    "ec_l_3_09": "pending",
+    "ec_l_3_10": "pending",
+    "ec_l_3_11": "pending",
+    "ec_l_3_12": "pending",
+    "ec_l_3_13": "pending"
+  }
+}

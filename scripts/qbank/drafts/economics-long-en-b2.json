@@ -1,0 +1,428 @@
+{
+  "kind": "translation-batch",
+  "note": "為已入庫但缺 contentEn / explanationEn 嘅 economics 長題補譯（第二批：生產可能線（PPF） 13 + 市場失靈 13）。只新增英文欄，不改任何中文內容、分數或參考答案。呢批題目係參數化模板 —— 每個課題 13 條同文不同數，所以英文由一個模板逐條代入生成，生成時已斷言英文抽出嘅數字序列同中文完全一致，轉義錢號數目亦一致。覆核請睇模板譯法本身：一個模板批咗，佢 13 個變體就一齊成立。referenceAnswerEn / markingSchemeEn 早已齊全，唔喺本批範圍。機器唔會自動入庫 —— 要真人簽 decisions 嘅 _meta.reviewer 之後先套用。",
+  "created": "2026-09-19",
+  "reviewer": "",
+  "approvedAt": null,
+  "counts": {
+    "economics": 26
+  },
+  "items": [
+    {
+      "id": "ec_l_2_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 100 單位；由 100 單位甲減至 80 單位甲時，乙的產量可由 60 單位增至 68 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 100 units. When output of A is cut from 100 units to 80 units, output of B can rise from 60 units to 68 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 110 單位；由 110 單位甲減至 90 單位甲時，乙的產量可由 65 單位增至 73 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 110 units. When output of A is cut from 110 units to 90 units, output of B can rise from 65 units to 73 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 120 單位；由 120 單位甲減至 100 單位甲時，乙的產量可由 70 單位增至 78 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 120 units. When output of A is cut from 120 units to 100 units, output of B can rise from 70 units to 78 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 130 單位；由 130 單位甲減至 110 單位甲時，乙的產量可由 75 單位增至 83 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 130 units. When output of A is cut from 130 units to 110 units, output of B can rise from 75 units to 83 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 140 單位；由 140 單位甲減至 120 單位甲時，乙的產量可由 80 單位增至 88 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 140 units. When output of A is cut from 140 units to 120 units, output of B can rise from 80 units to 88 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 150 單位；由 150 單位甲減至 130 單位甲時，乙的產量可由 85 單位增至 93 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 150 units. When output of A is cut from 150 units to 130 units, output of B can rise from 85 units to 93 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 160 單位；由 160 單位甲減至 140 單位甲時，乙的產量可由 90 單位增至 98 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 160 units. When output of A is cut from 160 units to 140 units, output of B can rise from 90 units to 98 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 170 單位；由 170 單位甲減至 150 單位甲時，乙的產量可由 95 單位增至 103 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 170 units. When output of A is cut from 170 units to 150 units, output of B can rise from 95 units to 103 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 180 單位；由 180 單位甲減至 160 單位甲時，乙的產量可由 100 單位增至 108 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 180 units. When output of A is cut from 180 units to 160 units, output of B can rise from 100 units to 108 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 190 單位；由 190 單位甲減至 170 單位甲時，乙的產量可由 105 單位增至 113 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 190 units. When output of A is cut from 190 units to 170 units, output of B can rise from 105 units to 113 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 200 單位；由 200 單位甲減至 180 單位甲時，乙的產量可由 110 單位增至 118 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 200 units. When output of A is cut from 200 units to 180 units, output of B can rise from 110 units to 118 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 210 單位；由 210 單位甲減至 190 單位甲時，乙的產量可由 115 單位增至 123 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 210 units. When output of A is cut from 210 units to 190 units, output of B can rise from 115 units to 123 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_2_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "生產可能線（PPF）",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某經濟體只生產甲、乙兩種產品。若全部資源用於甲，可生產 220 單位；由 220 單位甲減至 200 單位甲時，乙的產量可由 120 單位增至 128 單位。\n（a）計算多生產每一單位乙的機會成本（以甲表示）。\n（b）解釋為何生產可能線通常向外凸出（凹向原點），而非直線。\n（c）若該經濟體目前的生產組合位於線【之內】，說明這代表甚麼，以及與「線上移動」有何分別。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "An economy produces only two goods, A and B. If all its resources go to A, it can produce 220 units. When output of A is cut from 220 units to 200 units, output of B can rise from 120 units to 128 units.\n(a) Calculate the opportunity cost of each additional unit of B, expressed in units of A.\n(b) Explain why a production possibility frontier is usually bowed outwards (concave to the origin) rather than a straight line.\n(c) If the economy’s current combination of output lies INSIDE the frontier, explain what that indicates, and how it differs from a movement ALONG the frontier.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$10 的外部成本，目前產量為 500 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$10 on nearby residents. Its current output is 500 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$13 的外部成本，目前產量為 525 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$13 on nearby residents. Its current output is 525 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$16 的外部成本，目前產量為 550 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$16 on nearby residents. Its current output is 550 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$19 的外部成本，目前產量為 575 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$19 on nearby residents. Its current output is 575 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$22 的外部成本，目前產量為 600 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$22 on nearby residents. Its current output is 600 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$25 的外部成本，目前產量為 625 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$25 on nearby residents. Its current output is 625 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$28 的外部成本，目前產量為 650 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$28 on nearby residents. Its current output is 650 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$31 的外部成本，目前產量為 675 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$31 on nearby residents. Its current output is 675 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$34 的外部成本，目前產量為 700 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$34 on nearby residents. Its current output is 700 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$37 的外部成本，目前產量為 725 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$37 on nearby residents. Its current output is 725 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$40 的外部成本，目前產量為 750 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$40 on nearby residents. Its current output is 750 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$43 的外部成本，目前產量為 775 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$43 on nearby residents. Its current output is 775 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_3_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "市場失靈",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某工廠的生產每單位對周邊居民造成 \\$46 的外部成本，目前產量為 800 單位。\n（a）說明私人成本、外部成本與社會成本三者的關係，並計算該產量下的外部成本總額。\n（b）解釋為何在自由市場中，這類產品的產量會高於社會最適水平。\n（c）指出【兩種】可以處理這個問題的政策工具，並各說明其作用機制與一項限制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "Each unit a factory produces imposes an external cost of \\$46 on nearby residents. Its current output is 800 units.\n(a) Explain how private cost, external cost and social cost relate to one another, and calculate the total external cost at this level of output.\n(b) Explain why a free market produces more of such a good than the socially optimal level.\n(c) Name TWO policy tools that could address this, explaining for each its mechanism and one limitation.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    }
+  ]
+}
