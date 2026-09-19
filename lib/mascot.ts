@@ -56,7 +56,8 @@ export const NO_MASCOT_ROUTES = [
  * 規則①：每頁最多一隻 —— 所以呢度係 route → pose 嘅一對一映射。
  * 加新頁就喺呢度加一行；一條路由寫兩次，TypeScript 自己會叫。
  *
- * 點解揀呢四個位：呢四版都係學生「停低咗」嘅時刻（入站、睇進度、抖、專注），
+ * 點解揀呢幾個位：佢哋都係學生「停低咗」嘅時刻（入站、睇進度、抖），
+ * （原本仲有 /focus —— 2026-09-05 Brian 剷除「專注」功能時漏咗清呢行，2026-09-19 補清。）
  * 唔係「做緊嘢」嘅時刻。吉祥物要建立嘅係認得出個網站，唔係喺人趕住做題
  * 嗰陣攞注意力。
  */
@@ -64,7 +65,6 @@ export const PLACEMENTS = {
   '/': 'reading',
   '/dashboard': 'mug',
   '/relax': 'armchair',
-  '/focus': 'headset-mug',
 } as const satisfies Record<string, Pose>
 
 /** pathname 係咪落喺「唔准擺」嘅範圍（子路由一齊計）。 */

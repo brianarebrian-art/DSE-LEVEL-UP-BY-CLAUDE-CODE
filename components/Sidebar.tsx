@@ -3,24 +3,26 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { BookOpen, Target, Bookmark, Leaf } from 'lucide-react'
+import { Target, Dna, ChartColumnIncreasing, Leaf, Bookmark, Sprout } from 'lucide-react'
 import OwlMark from '@/components/OwlMark'
 import { useT, useLocale } from '@/lib/i18n'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 
-// 左側導航欄 —— 規格 §3.1（「深夜書房療癒風」2026-09-03，Yuna 核准版式）。
+// 左側導航欄 —— Night Study 設計（Claude Design `templates/night-study/NightStudy`）。
 //
-// ══ 點解導航項同規格圖唔一樣 ══
-// 規格 §3.1 列咗五項並註明「順序不可變」：
-//   Daily Mission / Error DNA / Grade Predictor / Focus Mode / Breathing Room
-// 逐條對返實際路由，五項入面【只有兩項有路由】：
-//   Daily Mission → 冇；最接近係 /dashboard
-//   Grade Predictor → 冇；等級預測分佈喺 /result 同 /prediction-method
-//
-// 更要緊嘅係：規格嗰五項【冇「練習」】。呢個站嘅核心動作就係做題 ——
-// 一條由側欄入唔到練習嘅導航，唔係風格差異，係一個死結。
-// 規格圖只畫咗七頁（全站有 43 頁），五項清單係嗰七頁嘅目錄，唔係全站 IA。
-// 所以：版式、狀態、字級、間距全部照規格；項目清單用實際存在嘅目的地。
+// ══ 2026-09-19：項目清單改跟模板 ══
+// 2026-09-03 版冇跟規格嘅五項，理由有兩個：（a）五項入面只有兩項有路由；
+// （b）規格冇「練習」。今次兩個理由都唔再成立 ——
+//   · 模板版本已經加咗「↳ Today's Practice」，擺喺每日任務之下；
+//   · 等級預測有咗自己嘅頁（/predictor）。
+// 所以清單改跟模板，但有三處刻意唔跟：
+//   ① 冇 Focus Mode。Brian 2026-09-05 親口剷除成個「專注」功能
+//      （commit 536397f），呼吸法已搬入呼吸空間。模板喺呢個裁決之前畫成。
+//   ② 錯題 DNA 唔開新頁，指去 /dashboard#error-dna。同一個 commit 入面 Brian
+//      將「溫書地圖」合併返落進度頁（「合併落去我哋嘅進度嗰度」）——
+//      另開一頁錯題 DNA，就係重建佢啱啱合併走嘅嘢。
+//   ③ 保留「收藏」。模板冇佢，但剷走即係有人今日撳得到、明日撳唔到。
+//      直向側欄多一項只係多 52px 高（見下面「點解可以擺到六項」）。
 //
 // ══ 點解可以擺到六項（Navbar 當初收到剩四條）══
 // Navbar 收斂由六條變四條，理由係量出嚟嘅【橫向】闊度：連結組中文 1,020px，
@@ -42,12 +44,24 @@ import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 // 「沉浸式 = 零干擾」嘅決定相反。呢度維持現行做法，因為嗰個決定有寫低理由
 // （答題時誤撳離開）。要改嘅話應該係一個獨立決定，唔係跟住換色順手改咗。
 
+// `sub`：模板將「今日練習」縮入每日任務之下（↳）—— 層級係資訊，唔係裝飾：
+// 練習係每日任務入面嘅一件事，唔係並列嘅另一個分區。
+// 完整側欄嗰陣 sub 項用 ↳ 代替圖標；80px 欄冇位畫層級，淨係一個 ↳ 又唔知係乜，
+// 所以喺嗰度照出自己個 icon。
 const ITEMS = [
-  { href: '/subjects', key: 'practice', Icon: BookOpen, exact: false },
-  { href: '/dashboard', key: 'progress', Icon: Target, exact: true },
-  { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false },
-  { href: '/relax', key: 'relax', Icon: Leaf, exact: false },
+  { href: '/dashboard', key: 'mission', Icon: Target, exact: true, sub: false },
+  { href: '/subjects', key: 'todayPractice', Icon: Sprout, exact: false, sub: true },
+  { href: '/dashboard#error-dna', key: 'errorDna', Icon: Dna, exact: true, sub: false },
+  { href: '/predictor', key: 'predictor', Icon: ChartColumnIncreasing, exact: false, sub: false },
+  { href: '/relax', key: 'relax', Icon: Leaf, exact: false, sub: false },
+  { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false, sub: false },
 ] as const
+
+/** 錨點連結永遠唔算「目前頁」—— pathname 冇 hash，否則會同每日任務一齊亮。 */
+function isActive(pathname: string, href: string, exact: boolean): boolean {
+  if (href.includes('#')) return false
+  return exact ? pathname === href : pathname === href || pathname.startsWith(`${href}/`)
+}
 
 export default function Sidebar() {
   const pathname = usePathname()
@@ -78,45 +92,56 @@ export default function Sidebar() {
       aria-label={en ? 'Sections' : '分區導航'}
       className="no-print fixed inset-y-0 left-0 z-40 hidden w-20 flex-col border-r border-line bg-surface lg:flex xl:w-[260px]"
     >
-      {/* 品牌區（規格 §3.1.1）。80px 欄下只剩吉祥物，文字收起。 */}
+      {/* 品牌區。模板將貓頭鷹置中放大、名字用襯線體；80px 欄下只剩吉祥物。
+          模板嘅貓頭鷹係 150px —— 喺 1280×720 嘅手提電腦上，品牌區會食走
+          三分一個側欄高度，六個導航項就要捲。收到 88px，名字同副題照跟模板。 */}
       <Link
         href="/"
-        className="flex items-center gap-3 border-b border-line px-4 py-5 xl:px-6 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
+        className="flex flex-col items-center gap-2 border-b border-line px-3 py-5 text-center xl:px-6 xl:pb-6 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
       >
-        <OwlMark size={40} className="shrink-0" />
+        <OwlMark size={40} className="shrink-0 xl:hidden" />
+        <OwlMark size={88} className="hidden shrink-0 xl:block" />
         <span className="hidden min-w-0 xl:block">
-          <span className="block truncate text-sm font-semibold tracking-[0.05em] text-ink">
+          <span className="block font-serif text-xl tracking-[0.12em] text-gold-strong">
             DSE LEVEL UP
           </span>
-          <span className="block truncate text-xs text-ink-muted">{t.sidebar.tagline}</span>
+          <span className="mt-0.5 block font-serif text-sm text-ink-muted">
+            {t.sidebar.tagline}
+          </span>
         </span>
       </Link>
 
-      <ul className="flex flex-1 flex-col gap-1 px-3 py-4">
-        {ITEMS.map(({ href, key, Icon, exact }) => {
-          const active = exact
-            ? pathname === href
-            : pathname === href || pathname.startsWith(`${href}/`)
+      <ul className="flex flex-1 flex-col gap-1 px-3 py-4 xl:px-4">
+        {ITEMS.map(({ href, key, Icon, exact, sub }) => {
+          const active = isActive(pathname, href, exact)
           return (
-            <li key={href}>
+            <li key={href} className={sub ? 'xl:ml-6' : undefined}>
               <Link
                 href={href}
                 aria-current={active ? 'page' : undefined}
                 title={t.sidebar[key]}
-                className={`relative flex min-h-12 items-center gap-3 rounded-lg px-3 text-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
+                // 選中態跟模板：整格淺色底加一圈邊，冇左豎條。
+                // 字色維持 text-ink 而唔係 accent —— accent 字疊喺 accent 底上面
+                // 會食走對比；邊框同底色已經夠講「你喺度」，讀屏靠 aria-current。
+                className={`flex items-center gap-3 rounded-xl border px-3 font-serif transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
+                  sub ? 'min-h-11 text-[15px]' : 'min-h-[52px] text-[17px]'
+                } ${
                   active
-                    ? 'bg-accent/15 text-accent'
-                    : 'text-ink-muted hover:bg-accent/8 hover:text-ink'
+                    ? 'border-accent/35 bg-accent/15 text-ink'
+                    : 'border-transparent text-ink-soft hover:bg-accent/8 hover:text-ink'
                 }`}
               >
-                {/* 選中態嘅左豎條（規格 §3.1.2）。裝飾用，讀屏靠 aria-current。 */}
-                {active && (
-                  <span
-                    aria-hidden
-                    className="absolute inset-y-2 left-0 w-[3px] rounded-full bg-accent"
-                  />
+                <Icon
+                  size={22}
+                  strokeWidth={1.3}
+                  aria-hidden
+                  className={`shrink-0 text-gold ${sub ? 'xl:hidden' : ''}`}
+                />
+                {sub && (
+                  <span aria-hidden className="hidden text-ink-muted xl:inline">
+                    ↳
+                  </span>
                 )}
-                <Icon size={22} strokeWidth={1.5} aria-hidden className="shrink-0" />
                 {/* 80px 欄收字，但唔可以淨靠 title —— 觸控裝置冇 hover。
                     故收字嗰陣用 sr-only 保住無障礙名，而 lg 斷點以下根本唔出側欄。 */}
                 <span className="hidden xl:inline">{t.sidebar[key]}</span>
@@ -133,9 +158,9 @@ export default function Sidebar() {
                同憲章 §8 禁虛構嘅精神相反；
           （b）軍事框架同 §7 大愛設計、同呢班考緊試嘅中六生唔夾。
           改用憲章 §9 自己嗰句 —— 係我哋自己講過嘅話，冇出處問題，而且更貼題。 */}
-      <div className="hidden border-t border-line px-6 py-5 xl:block">
-        <Leaf size={16} strokeWidth={1.5} aria-hidden className="mb-2 text-ink-faint" />
-        <p className="text-xs italic leading-relaxed text-ink-muted">{t.sidebar.quote}</p>
+      <div className="hidden gap-3 border-t border-line px-6 py-5 xl:flex">
+        <Leaf size={18} strokeWidth={1.2} aria-hidden className="mt-1 shrink-0 text-gold" />
+        <p className="font-serif text-sm italic leading-relaxed text-ink-muted">{t.sidebar.quote}</p>
       </div>
     </nav>
   )

@@ -78,6 +78,43 @@ export default function DashboardPageClient() {
     setTopics(getTopicStats())
   }, [version])
 
+  // 錨點（/dashboard#error-dna、#review）要等數據到咗先捲得到。
+  // 首次 render 係骨架屏，Next 處理 hash 嗰一刻目標 section 仲未存在 ——
+  // 唔補呢一步，由側欄或者 /predictor 撳過嚟，會停喺頁頂而唔會有任何錯誤。
+  //
+  // 捲一次都唔夠：上面十幾個組件各自喺自己嘅 effect 讀 localStorage，陸續出現，
+  // 會將目標推落去（實測捲完之後仲差 2,512px）。所以每格重新對準，連續 5 格
+  // 冇再郁先停，最多 90 格（約 1.5 秒）。學生自己一郁就即刻放手 —— 佢開始睇嘢，
+  // 就唔好再搶佢個畫面。
+  useEffect(() => {
+    if (!stats || !window.location.hash) return
+    const id = window.location.hash.slice(1)
+    let raf = 0
+    let frames = 0
+    let stable = 0
+    let lastTop = Number.NaN
+    const stop = () => cancelAnimationFrame(raf)
+    const tick = () => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const top = el.getBoundingClientRect().top
+      if (Math.abs(top - lastTop) < 1) stable++
+      else {
+        stable = 0
+        el.scrollIntoView()
+      }
+      lastTop = el.getBoundingClientRect().top
+      if (stable < 5 && ++frames < 90) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    const events = ['wheel', 'touchstart', 'keydown'] as const
+    for (const e of events) window.addEventListener(e, stop, { once: true, passive: true })
+    return () => {
+      stop()
+      for (const e of events) window.removeEventListener(e, stop)
+    }
+  }, [stats])
+
   // F-NTM: 讀取 + 監聽開關（setNotTonight 會派 dse-ntm 事件）
   useEffect(() => {
     const read = () => setNtm(isNotTonight())
@@ -305,8 +342,9 @@ export default function DashboardPageClient() {
         {/* Today's plan — AI-free: targets the weakest topics with direct drill links */}
         <DailyPlan />
 
-        {/* F-REV: 錯題重溫智能排程（艾賓浩斯 1/3/7/14/30 日，本地數據） */}
-        <div className="mb-10">
+        {/* F-REV: 錯題重溫智能排程（艾賓浩斯 1/3/7/14/30 日，本地數據）
+            id 係 /predictor「下一步」嘅錨點。scroll-mt 避開 fixed Navbar（h-16）。 */}
+        <div id="review" className="mb-10 scroll-mt-20">
           <ReviewScheduler />
         </div>
 
@@ -445,13 +483,18 @@ export default function DashboardPageClient() {
             掌握度講「而家點」，時間軸講「同上一段時間比點」，錯題指紋講「點解」。 */}
         <PersonalTimeline />
 
-        {/* Error DNA — distribution of self-diagnosed error causes */}
-        <ErrorDNA />
+        {/* 錯題 DNA 兩件（分佈 ＋ 30 日雷達）包埋一齊，做側欄「錯題 DNA」嘅落腳點。
+            冇另開 /error-dna：Brian 2026-09-05 將「溫書地圖」合併返進度頁（536397f），
+            另開一頁就係重建佢啱啱合併走嘅嘢。見 components/Sidebar.tsx。 */}
+        <section id="error-dna" className="scroll-mt-20">
+          {/* Error DNA — distribution of self-diagnosed error causes */}
+          <ErrorDNA />
 
-        {/* F-DNA: 錯題 DNA 雷達（30 日三軸分佈 + 規則式洞察） */}
-        <div className="mt-6 mb-10">
-          <ErrorRadar />
-        </div>
+          {/* F-DNA: 錯題 DNA 雷達（30 日三軸分佈 + 規則式洞察） */}
+          <div className="mt-6 mb-10">
+            <ErrorRadar />
+          </div>
+        </section>
 
         {/* Per-subject performance */}
         <h2 className="text-lg font-medium mb-4 text-ink">{d.perSubject}</h2>

@@ -11,6 +11,15 @@
    • ErrorRadar —— SVG presentation attribute（fill="…"）按規範唔食 var()，
      而且被溫書地圖報告導出重用 */
 @theme {
+  /* ── 標題襯線體（Night Study 設計，2026-09-19）──────────────────────────
+     覆寫 Tailwind 內建嘅 `font-serif`，所以用嘅係原生 utility，唔係自創 class。
+     EB Garamond 由 next/font 自行託管（app/layout.tsx），但佢【冇中文字形】——
+     中文由後面幾個系統襯線接手：Songti TC（Apple）、PMingLiU（Windows）、
+     Noto／Source Han Serif（Android、Linux）。全部係系統字體，零下載。
+     ⚠️ 讀寫障礙模式下會被下面 `html.font-easy .font-serif` 蓋返做 OpenDyslexic。 */
+  --font-serif: var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC',
+    'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif;
+
   /* ── 盲測黑題卡專用（components/BlindTestQuestion.tsx）─────────────────
      呢張卡係一張【試卷】，唔係一個 UI 面板 —— 所以兩個主題都係「紙」，
      只係暗色模式用舊紙色，唔會喺深夜刺眼。
@@ -704,6 +713,13 @@ html.font-easy body {
   letter-spacing: 0.035em;
   word-spacing: 0.06em;
   line-height: 1.7;
+}
+/* 襯線標題喺易讀模式下要讓位。上面嗰條只設 body，而 `.font-serif` 自己有
+   font-family —— 唔覆寫嘅話，開咗易讀字體嘅學生會見到標題照樣係 Garamond 斜體，
+   而 BDA 指引正正叫避開襯線同斜體。迴歸鎖：sen-accessibility.test.mts */
+html.font-easy .font-serif {
+  font-family: inherit !important;
+  font-style: normal !important;
 }
 /* BDA 建議：正文左對齊（唔用兩端對齊），令每行開端對齊、更易逐行追讀 */
 html.font-easy p,

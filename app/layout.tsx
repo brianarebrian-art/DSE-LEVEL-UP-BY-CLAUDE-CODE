@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, EB_Garamond } from 'next/font/google'
 import './globals.css'
 import 'katex/dist/katex.min.css'
 import Navbar from '@/components/Navbar'
@@ -13,6 +13,17 @@ import A11yPanel from '@/components/A11yPanel'
 import ReadingRuler from '@/components/ReadingRuler'
 
 const inter = Inter({ subsets: ['latin'] })
+
+// 標題用襯線體（Night Study 設計，2026-09-19）。只供 `font-serif` 標題用，
+// 正文維持 Inter —— 襯線正文對讀寫障礙學生較難讀（BDA 指引）。
+// next/font 會喺 build 時自行託管，瀏覽器唔會向 Google 發任何請求。
+// EB Garamond 冇中文字形，中文字由 globals.css `--font-serif` 嘅系統襯線接手。
+const garamond = EB_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  style: ['normal', 'italic'],
+  variable: '--font-garamond',
+})
 
 // 部署網域。dselevelup.hk 尚未購入，一律沿用現行 Vercel 域（Brian 2026-07-29 拍板）。
 // 2026-08-14：原本此處與 app/sitemap.ts 各有一份字面值，靠註釋提醒「三處必須一致」。
@@ -135,7 +146,7 @@ export default function RootLayout({
   return (
     // suppressHydrationWarning：下方防閃爍腳本會喺 React 水合之前改 data-theme，
     // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
-    <html lang="zh-HK" className="h-full" suppressHydrationWarning>
+    <html lang="zh-HK" className={`h-full ${garamond.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-surface text-ink`}>
         {/* 防閃爍：必須喺任何內容繪製之前決定主題，否則深色用戶會見到一下白閃。
             內容與 lib/theme.ts 同一條日出方程 —— 呢度係鏡像副本，因為 inline

@@ -15,7 +15,20 @@ import { driftYears } from '@/lib/levelDrift'
 // ⛔ 未夠證據時【唔出等級】，改為講「仲要做幾多題」。
 // ⛔ 唔講「你會攞 X 級」，只講「而家嘅表現落喺邊個範圍」。
 
-export default function MasteryEstimate({ subjectId, className = '' }: { subjectId: string; className?: string }) {
+// `heading`／`headingLevel`：/predictor 一版列幾科，每張卡要講明係邊科，
+// 而且擺喺「各科估算」h2 之下要降做 h3。兩個都係可選 —— /result 唔傳，行為不變。
+export default function MasteryEstimate({
+  subjectId,
+  className = '',
+  heading,
+  headingLevel = 'h2',
+}: {
+  subjectId: string
+  className?: string
+  heading?: string
+  headingLevel?: 'h2' | 'h3'
+}) {
+  const Heading = headingLevel
   const { locale } = useLocale()
   const en = locale === 'en'
   const [m, setM] = useState<SubjectMastery | null>(null)
@@ -34,9 +47,9 @@ export default function MasteryEstimate({ subjectId, className = '' }: { subject
 
   return (
     <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
-      <h2 className="font-medium text-ink mb-1">
-        📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}
-      </h2>
+      <Heading className="font-medium text-ink mb-1">
+        {heading ?? <>📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</>}
+      </Heading>
 
       {band ? (
         <>
