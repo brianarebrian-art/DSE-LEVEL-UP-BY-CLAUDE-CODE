@@ -1,9 +1,32 @@
 // 新來港學生・校園廣東話融入（/cantonese）—— 內容正本。
 //
 // ══ 目的 ══
-// 幫新來港學生快啲融入香港學生嘅廣東話環境。對象係 DSE 考生，所以喺憲章
-// §1.2「戰場只有一個：香港 DSE」之內；但呢版係【校園語境】，唔係生活求生粵語 ——
-// 冇地鐵、冇問路、冇買嘢。第八個題目（口語 vs 書面語）直接服務卷二寫作。
+// 幫新來港學生快啲融入香港學生嘅廣東話環境。
+//
+// 1–8 係【校園語境】，各自綁一個中文科真課題，第八個（口語 vs 書面語）
+// 直接服務卷二寫作。呢八個喺憲章 §1.2「戰場只有一個：香港 DSE」之內。
+//
+// ⚠️ 9–12 係【日常生活】（買嘢／買衫／食嘢／交通住行），2026-09-19 由 Yuna
+//    指示加入。呢四個【綁唔到任何中文科課題】—— 十九個課題（指定範文、
+//    文言閱讀、修辭、實用寫作…）冇一個載得起「試身」同「八達通」。所以
+//    佢哋嘅 `topicId` 留空，卡片唔會出「做呢個課題」個掣。
+//
+//    夾硬綁一個課題上去會令數據講大話，所以寧可留空 —— 而留空亦令「呢四個
+//    同前八個唔同性質」呢件事，喺數據本身就睇得到。
+//
+// ⚠️ **憲章條文未跟上。** §1.2 同 §2 目標受眾都係圍住 DSE 寫，而買衫、搭車
+//    同 DSE 冇關係。同一批用語（「唔該」「喺邊度」「幾多錢」「幫幫手」）
+//    喺 2026-09-19 早些時曾經以「§1.2 禁通用粵語班」為由否決過，同日下午
+//    改為加入 —— 呢個轉向【只喺呢度有紀錄】。
+//
+//    憲章 §3.3 寫明：代碼同條文要同一日一齊改，否則「下一個 session 讀憲章
+//    就會照 §8.2 白名單再起一次」。今次係反方向：下一個 session 讀 §1.2，
+//    見到呢版教緊買衫，就會當佢係違規而拆走。
+//
+//    要呢四個主題企得穩，需要創辦人喺 docs/charter.md 開一條 —— 同 §16.E
+//    執行第 4 點一樣，由創辦人主動開題，唔係夾喺一個功能提案入面順帶過。
+//    喺嗰條寫低之前，呢四個主題【同其餘八個一樣】仍然要簽名先出得街，
+//    所以現階段對學生冇任何影響。
 //
 // ══ 點解要簽名先出得街 ══
 // 粵拼係【事實資料】，而且錯咗冇人會知。一個聲調數字寫錯，學生照住讀就係
@@ -42,8 +65,13 @@ export interface CampusTopic {
   id: string
   zh: string
   en: string
-  /** 對應 data/questions 嘅真中文科課題，撳得入練習。 */
-  topicId: string
+  /**
+   * 對應 data/questions 嘅真中文科課題，撳得入練習。
+   *
+   * 日常生活主題（9–12）冇 —— 中文科十九個課題冇一個載得起「試身」或者
+   * 「八達通」。留空好過夾硬綁一個，見檔頭。冇 topicId 就唔出練習掣。
+   */
+  topicId?: string
   whyZh: string
   whyEn: string
   phrases: Phrase[]
@@ -176,6 +204,69 @@ export const CAMPUS_TOPICS: CampusTopic[] = [
       { canto: '冇', jyut: 'mou5', putong: '没有', en: 'not have → write 沒有' },
       { canto: '係', jyut: 'hai6', putong: '是', en: 'to be → write 是' },
       { canto: '唔', jyut: 'm4', putong: '不', en: 'not → write 不' },
+    ],
+  },
+
+  // ── 9–12：日常生活 ─────────────────────────────────────────────────────
+  // 冇 topicId，冇練習掣。範圍問題見檔頭 ⚠️。
+  {
+    id: 'shopping',
+    zh: '買嘢',
+    en: 'Shopping',
+    whyZh: '香港鋪頭講價、找續嘅講法同內地唔同，聽唔明好容易畀人當唔識行情。',
+    whyEn: 'How prices and change are talked about here differs from the mainland.',
+    phrases: [
+      { canto: '幾多錢', jyut: 'gei2 do1 cin2', putong: '多少钱', en: 'how much is it' },
+      { canto: '我睇睇先', jyut: 'ngo5 tai2 tai2 sin1', putong: '我先看看', en: 'I’m just looking' },
+      { canto: '平啲得唔得', jyut: 'peng4 di1 dak1 m4 dak1', putong: '能便宜点吗', en: 'can you do it cheaper' },
+      { canto: '唔使找', jyut: 'm4 sai2 zaau2', putong: '不用找了', en: 'keep the change' },
+      { canto: '刷卡得唔得', jyut: 'caat3 kaat1 dak1 m4 dak1', putong: '可以刷卡吗', en: 'can I pay by card' },
+      { canto: '有冇袋', jyut: 'jau5 mou5 doi2', putong: '有没有袋子', en: 'do you have a bag' },
+    ],
+  },
+  {
+    id: 'clothes',
+    zh: '買衫',
+    en: 'Buying clothes',
+    whyZh: '碼數、試身、換貨呢幾樣，唔識講就成單交易都卡住。',
+    whyEn: 'Sizes, trying on and exchanges — not having the words stalls the whole thing.',
+    phrases: [
+      { canto: '試身', jyut: 'si3 san1', putong: '试穿', en: 'to try on' },
+      { canto: '有冇細碼', jyut: 'jau5 mou5 sai3 maa5', putong: '有没有小号', en: 'do you have a small' },
+      { canto: '大碼', jyut: 'daai6 maa5', putong: '大号', en: 'large size' },
+      { canto: '啱唔啱身', jyut: 'ngaam1 m4 ngaam1 san1', putong: '合不合身', en: 'does it fit' },
+      { canto: '換得唔換得', jyut: 'wun6 dak1 m4 wun6 dak1', putong: '能不能换', en: 'can it be exchanged' },
+      { canto: '有冇第二隻色', jyut: 'jau5 mou5 dai6 ji6 zek3 sik1', putong: '有没有别的颜色', en: 'any other colour' },
+    ],
+  },
+  {
+    id: 'eating',
+    zh: '食嘢',
+    en: 'Eating out',
+    whyZh: '茶餐廳落單係一套自己嘅簡稱。「走青」「少甜」唔係書面語，但日日都用。',
+    whyEn: 'Ordering in a cha chaan teng runs on its own shorthand — not textbook Chinese, but used daily.',
+    phrases: [
+      { canto: '落單', jyut: 'lok6 daan1', putong: '点菜', en: 'to order' },
+      { canto: '走青', jyut: 'zau2 ceng1', putong: '不要葱', en: 'hold the spring onion' },
+      { canto: '少甜', jyut: 'siu2 tim4', putong: '少糖', en: 'less sugar' },
+      { canto: '打包', jyut: 'daa2 baau1', putong: '打包', en: 'to take away' },
+      { canto: '埋單', jyut: 'maai4 daan1', putong: '买单', en: 'the bill, please' },
+      { canto: '唔該加水', jyut: 'm4 goi1 gaa1 seoi2', putong: '请加点水', en: 'more water, please' },
+    ],
+  },
+  {
+    id: 'transport',
+    zh: '交通住行',
+    en: 'Getting around',
+    whyZh: '「有落」係小巴專用，唔嗌就過咗站。呢啲嘢冇人會特登教。',
+    whyEn: '「有落」is minibus-only — not calling it means missing your stop. Nobody teaches this on purpose.',
+    phrases: [
+      { canto: '搭車', jyut: 'daap3 ce1', putong: '坐车', en: 'to take transport' },
+      { canto: '八達通', jyut: 'baat3 daat6 tung1', putong: '八达通', en: 'Octopus card' },
+      { canto: '落車', jyut: 'lok6 ce1', putong: '下车', en: 'to get off' },
+      { canto: '轉車', jyut: 'zyun3 ce1', putong: '换乘', en: 'to change lines' },
+      { canto: '有落', jyut: 'jau5 lok6', putong: '到站下车', en: 'stopping here (on a minibus)' },
+      { canto: '幾點埋站', jyut: 'gei2 dim2 maai4 zaam6', putong: '几点到站', en: 'when does it get in' },
     ],
   },
 ]

@@ -61,13 +61,18 @@ export default function CantoneseDseCard({
         </ul>
       )}
 
-      <Link
-        href={`/practice?subject=chinese&topic=${topic.topicId}`}
-        className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2 text-sm text-ink-soft transition-colors hover:bg-surface-sunken hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      >
-        {c.practiceCta}
-        <ArrowRight size={15} className="text-ink-muted" aria-hidden />
-      </Link>
+      {/* 日常生活主題（買嘢／買衫／食嘢／交通）冇 topicId —— 中文科十九個課題
+          冇一個載得起佢哋，所以唔出練習掣。夾硬指去一個唔相干嘅課題，學生撳完
+          去到一版同佢啱先睇緊嘅嘢完全無關嘅練習 —— 下次就唔會再信呢個掣。 */}
+      {topic.topicId && (
+        <Link
+          href={`/practice?subject=chinese&topic=${topic.topicId}`}
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2 text-sm text-ink-soft transition-colors hover:bg-surface-sunken hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {c.practiceCta}
+          <ArrowRight size={15} className="text-ink-muted" aria-hidden />
+        </Link>
+      )}
     </div>
   )
 }

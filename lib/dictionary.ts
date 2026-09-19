@@ -25,20 +25,22 @@ const zh = {
     next: '下一頁',
     home: '首頁',
   },
-  // 新來港學生嘅中文科支援頁（/cantonese）。
+  // 新來港學生支援頁（/cantonese）。
   //
-  // ⚠️ 呢版【唔係】通用廣東話班。憲章 §1.2：戰場只有一個，香港 DSE，
-  //    禁止全齡層擴張。所有內容必須綁返中文科真實課題 —— 地鐵用語、
-  //    問路、買嘢呢類生活求生粵語唔屬於呢度。
+  // ⚠️ 2026-09-19 範圍改過一次。呢段註釋原本寫住「地鐵用語、問路、買嘢呢類
+  //    生活求生粵語唔屬於呢度」，而同日下午加咗買嘢／買衫／食嘢／交通住行
+  //    四個主題。舊句留喺度會變成一段同內容直接打架嘅條文 —— 憲章 §8.1
+  //    記低過呢個模式，所以改寫而唔係擺喺度當佢仲啱。
+  //    範圍本身仲未喺 docs/charter.md 調和，詳見 data/cantonese.ts 檔頭。
   // ⚠️ 亦【唔會】出現卷三／卷四。2024 核心科目優化已經剷走中國語文科嘅
   //    卷三（聆聽及綜合能力）同卷四（說話），見 docs/dse-syllabus-sources.md。
   //    教一張唔存在嘅卷，比唔教更差。
   cantonese: {
-    title: '中文科新來港支援',
+    title: '新來港支援',
     kicker: '業餘班 · 非正規課程',
-    lead: '香港中文科好多失分位，唔係唔識諗，係唔熟香港書面語同口語之間嗰道界。呢度按中文科真實課題排，每個題目都撳得入去做返嗰個課題嘅練習。',
+    lead: '頭八個情境喺校園，每個都撳得入去做返對應嘅中文科練習；後四個係日常生活，冇對應課題，所以冇練習掣。',
     disclaimer:
-      '本頁並非官方課程，亦非考評局教材。內容為新來港學生嘅中文科輔助參考，例句一律獨立原創，並非抄錄歷屆試題。',
+      '本頁並非官方課程，亦非考評局教材，粵拼亦非任何官方拼音標準嘅權威版本。內容為新來港學生嘅輔助參考，例句一律獨立原創，並非抄錄歷屆試題。',
     papersNote: '中國語文科自 2024 年起只設卷一（閱讀）同卷二（寫作）；卷三、卷四已經取消。',
     colCanto: '廣東話',
     colJyut: '粵拼',
@@ -46,15 +48,15 @@ const zh = {
     colEn: 'English',
     practiceCta: '做呢個課題',
     // 主頁當眼卡。新來港支援唔屬於任何一科，所以入口唔喺科目總覽，喺首頁。
-    homeTitle: '新來港支援｜校園廣東話融入',
-    homeLead: '香港同學平時講嘅嘢，同書本教嘅唔同。呢度按校園場景排，八個情境、四欄對照。',
+    homeTitle: '新來港支援｜校園同日常生活廣東話',
+    homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。呢度按場景排 —— 課室、小息、買嘢、食嘢、搭車，十二個情境、四欄對照。',
     homeCta: '立即學習',
     // 未簽名嗰陣唔可以寫「立即學習」—— 撳入去係一版「仲未上線」，
     // 而首頁係最多人睇嗰版，喺度開空頭支票代價最大。
     homeCtaPending: '睇下涵蓋乜',
     pendingTitle: '內容仲未上線',
     pendingBody:
-      '呢八個題目嘅逐詞對照仲喺準備緊，要經中文科負責人逐條審過先出。下面列出嘅係已經定好嘅範圍，唔係已完成嘅內容。',
+      '呢十二個題目嘅逐詞對照仲喺準備緊 —— 粵拼每個聲調數字都要有人逐個對過先出得街。下面列出嘅係已經定好嘅範圍，唔係已完成嘅內容。',
   },
   // 左側導航欄（規格 §3.1）。項目名一律沿用目的地本身嘅叫法 ——
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
@@ -412,11 +414,11 @@ const en: typeof zh = {
     home: 'Home',
   },
   cantonese: {
-    title: 'Chinese Language support for newly arrived students',
+    title: 'Support for newly arrived students',
     kicker: 'Informal · not a formal course',
-    lead: 'A lot of marks lost in HKDSE Chinese are not about thinking — they are about the line between written Hong Kong Chinese and spoken Cantonese. This page is organised around the real Chinese Language topics, and each one links straight into practice for that topic.',
+    lead: 'The first eight situations are on campus and each links into the matching Chinese Language practice. The last four are daily life, with no matching topic — so no practice button.',
     disclaimer:
-      'This page is not an official course and not HKEAA material. It is supplementary reference for newly arrived students taking Chinese Language; all examples are written independently and are not reproduced from past papers.',
+      'This page is not an official course, not HKEAA material, and not an authoritative reference for any romanisation standard. It is supplementary reference for newly arrived students; all examples are written independently and are not reproduced from past papers.',
     papersNote:
       'Since 2024, HKDSE Chinese Language has only Paper 1 (Reading) and Paper 2 (Writing). Papers 3 and 4 have been withdrawn.',
     colCanto: 'Cantonese',
@@ -424,14 +426,14 @@ const en: typeof zh = {
     colPutong: 'Putonghua',
     colEn: 'English',
     practiceCta: 'Practise this topic',
-    homeTitle: 'New to Hong Kong — settling into campus Cantonese',
+    homeTitle: 'New to Hong Kong — Cantonese for school and daily life',
     homeLead:
-      'What classmates actually say differs from what the textbook teaches. Eight campus situations, four columns each.',
+      'What people here actually say differs from what the textbook teaches. Twelve situations — classroom, recess, shopping, eating, getting around — four columns each.',
     homeCta: 'Start learning',
     homeCtaPending: 'See what it covers',
     pendingTitle: 'Content is not live yet',
     pendingBody:
-      'The word-by-word tables for these eight areas are still being prepared and need to be checked item by item by the Chinese Language lead. What is listed below is the agreed scope, not finished content.',
+      'The word-by-word tables for these twelve areas are still being prepared — every Jyutping tone number has to be checked individually before any of it goes live. What is listed below is the agreed scope, not finished content.',
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',

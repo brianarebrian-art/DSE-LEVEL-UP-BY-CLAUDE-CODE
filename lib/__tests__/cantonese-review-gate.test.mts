@@ -79,9 +79,25 @@ test('③ 每條粵拼都有聲調數字 —— 冇聲調嘅粵拼教唔到發�
   assert.deepEqual(bad, [], `呢啲粵拼音節唔符合「字母 + 1–6 聲調」格式：\n  ${bad.join('\n  ')}`)
 })
 
-test('④ 八個題目各自綁一個中文科真課題', async () => {
+test('④ 有綁課題嘅主題，課題必須真係存在', async () => {
+  // 日常生活主題（買嘢／買衫／食嘢／交通住行）冇 topicId —— 中文科十九個課題
+  // 冇一個載得起佢哋，夾硬綁一個會令數據講大話。所以呢度只驗【有綁嗰批】。
   const { getSubjectTopics } = await import('../../data/questions/index.ts')
   const live = new Set((getSubjectTopics('chinese') as { id: string }[]).map((t) => t.id))
-  const dead = CAMPUS_TOPICS.filter((t) => !live.has(t.topicId)).map((t) => `${t.id} → ${t.topicId}`)
+  const dead = CAMPUS_TOPICS.filter((t) => t.topicId && !live.has(t.topicId)).map(
+    (t) => `${t.id} → ${t.topicId}`,
+  )
   assert.deepEqual(dead, [], `呢啲卡指住唔存在嘅課題，「做呢個課題」會係死掣：\n  ${dead.join('\n  ')}`)
+})
+
+test('⑤ 校園主題一定要綁課題 —— 唔准靜靜哋變成冇入口', () => {
+  // ④ 放寬咗之後留低一個窿：校園主題（1–8）本來每個都撳得入練習，
+  // 而家只要有人刪走個 topicId，④ 就會照樣綠。呢條補返。
+  const CAMPUS = ['classroom', 'recess', 'homework', 'teachers', 'peers', 'school-life', 'help', 'spoken-written']
+  const missing = CAMPUS.filter((id) => !CAMPUS_TOPICS.find((t) => t.id === id)?.topicId)
+  assert.deepEqual(
+    missing,
+    [],
+    `呢啲校園主題冇咗 topicId，練習掣會靜靜哋消失：${missing.join(', ')}`,
+  )
 })
