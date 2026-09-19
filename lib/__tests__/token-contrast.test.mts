@@ -192,9 +192,26 @@ test('③ 組件仍然用緊 PAIRS 所假設嘅 class', () => {
 // globals.css 兩處都明文標住 ink-faint 只准用於停用控件／aria-hidden 裝飾
 // （light 2.49、cyber 2.36，兩個都遠低於 AA）。呢個約束只寫喺註釋度，
 // 冇任何嘢執行緊 —— 對一個趕住搵個「淡啲嘅灰」嘅人嚟講，佢就係下一個選擇。
+// ⚠️ ④ ⑤ 都要【先剝走註釋】先掃。2026-09-19 實測：一句解釋「呢度用
+//    text-ink-muted 而唔係 text-ink-faint，因為 faint 對比只有 2.36」嘅註釋，
+//    會被 ⑤ 當成違規報出嚟 —— 即係話，一個交代咗點解避開呢個 token 嘅註釋，
+//    反而過唔到守呢個 token 嘅閘。
+//
+//    copy-guard.mjs 檔頭記低過一模一樣嘅病（「最諷刺嗰個命中係一句註釋」），
+//    i18n-guard 亦都係開場就剝註釋。呢個閘寫嗰陣漏咗呢一步。
+//
+//    剝註釋【唔會】令個閘鬆：真正嘅 className 永遠喺 JSX 屬性入面，
+//    唔會喺 `//` 或者 `{/* */}` 裏面。換句話講，剝走嘅全部都係假陽性。
+//    換行保留住，所以報出嚟嘅行號仍然準。
+const stripTsxComments = (src: string) =>
+  src
+    .replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' ')) // 區塊／JSX 註釋 → 同量空白
+    .replace(/^([ \t]*)\/\/[^\n]*$/gm, '$1') // 整行 //
+    .replace(/([^:"'`\\])\/\/[^\n]*/g, '$1') // 行尾 //（避開 http://）
+
 test('④ 兩張卡冇用 text-ink-faint 做文字', () => {
   for (const file of Object.keys(USES)) {
-    const src = readFileSync(join(ROOT, file), 'utf8')
+    const src = stripTsxComments(readFileSync(join(ROOT, file), 'utf8'))
     assert.ok(!/[\s"'`]text-ink-faint[\s"'`]/.test(src),
       `${file} 用咗 text-ink-faint —— 佢喺兩個主題分別得 2.49 / 2.36，` +
       `只准用於停用控件同 aria-hidden 裝飾（見 globals.css）。`)
@@ -235,7 +252,7 @@ test('⑤ text-ink-faint 只用於裝飾／停用態，其餘不得超出基線'
       if (statSync(join(ROOT, rel)).isDirectory()) {
         if (!/node_modules|__tests__|\.next/.test(rel)) walk(rel)
       } else if (rel.endsWith('.tsx')) {
-        readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((ln, i) => {
+        stripTsxComments(readFileSync(join(ROOT, rel), 'utf8')).split('\n').forEach((ln, i) => {
           if (!ln.includes('text-ink-faint')) return
           if (/aria-hidden|disabled:/.test(ln)) return      // 裝飾／停用態，正當
           found[rel] = (found[rel] ?? 0) + 1
@@ -277,7 +294,7 @@ test('⑥ fixed inset-0 嘅寫死深底覆蓋層必須帶 .on-dark-overlay', () 
       if (statSync(join(ROOT, rel)).isDirectory()) {
         if (!/node_modules|__tests__|\.next/.test(rel)) walk(rel)
       } else if (rel.endsWith('.tsx')) {
-        readFileSync(join(ROOT, rel), 'utf8').split('\n').forEach((ln, i) => {
+        stripTsxComments(readFileSync(join(ROOT, rel), 'utf8')).split('\n').forEach((ln, i) => {
           if (!/fixed\s+inset-0/.test(ln)) return
           // 寫死嘅深底：bg-[rgba(…低亮度…)] 或 bg-[#0-3 開頭]
           const dark = /bg-\[rgba?\(\s*([0-9]{1,2})\s*,/.test(ln) || /bg-\[#[0-3][0-9a-fA-F]/.test(ln)
