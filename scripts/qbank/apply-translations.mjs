@@ -99,8 +99,21 @@ for (const [relPath, items] of Object.entries(byFile)) {
       failures.push(`${it.id}: 題庫中文內容同覆核時唔一致 —— 請重新覆核，唔好盲套`)
       continue
     }
-    if (it.en.optionsEn.length !== q.options.length) {
-      failures.push(`${it.id}: optionsEn 數目對唔上 options`)
+    // ⚠️ 2026-09-19：原本呢度直接讀 `q.options.length`。`text`／`long` 題冇
+    // `options` 欄（見 data/questions/types.ts），所以一撞到書寫題就會擲
+    // TypeError 令成個腳本死 —— 而唔係好似其餘檢查咁報一句然後跳過。
+    // 冇人踩到，純粹因為上一批（en-backfill-51）全部係 MC。
+    // 呢個同「閘寫咗畀搵到 bug 嗰個 case」係同一個病，所以分開兩邊寫清楚：
+    if (q.options !== undefined) {
+      if (!Array.isArray(it.en.optionsEn) || it.en.optionsEn.length !== q.options.length) {
+        failures.push(`${it.id}: optionsEn 數目對唔上 options`)
+        continue
+      }
+    } else if (it.en.optionsEn !== undefined) {
+      // 冇 options 嘅題帶住 optionsEn，代表譯稿當咗佢係選擇題 —— 落咗庫就會
+      // 有一組冇嘢對應嘅英文選項，而下面生死線③只檢查【舊欄】冇變，捉唔到
+      // 一個多出嚟嘅新欄。
+      failures.push(`${it.id}: 呢條係 ${q.type} 題，冇 options，但譯稿有 optionsEn`)
       continue
     }
 
