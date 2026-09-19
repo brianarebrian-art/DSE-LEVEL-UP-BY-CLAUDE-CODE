@@ -45,6 +45,13 @@ const zh = {
     colPutong: '普通話',
     colEn: 'English',
     practiceCta: '做呢個課題',
+    // 主頁當眼卡。新來港支援唔屬於任何一科，所以入口唔喺科目總覽，喺首頁。
+    homeTitle: '新來港支援｜校園廣東話融入',
+    homeLead: '香港同學平時講嘅嘢，同書本教嘅唔同。呢度按校園場景排，八個情境、四欄對照。',
+    homeCta: '立即學習',
+    // 未簽名嗰陣唔可以寫「立即學習」—— 撳入去係一版「仲未上線」，
+    // 而首頁係最多人睇嗰版，喺度開空頭支票代價最大。
+    homeCtaPending: '睇下涵蓋乜',
     pendingTitle: '內容仲未上線',
     pendingBody:
       '呢八個題目嘅逐詞對照仲喺準備緊，要經中文科負責人逐條審過先出。下面列出嘅係已經定好嘅範圍，唔係已完成嘅內容。',
@@ -417,6 +424,11 @@ const en: typeof zh = {
     colPutong: 'Putonghua',
     colEn: 'English',
     practiceCta: 'Practise this topic',
+    homeTitle: 'New to Hong Kong — settling into campus Cantonese',
+    homeLead:
+      'What classmates actually say differs from what the textbook teaches. Eight campus situations, four columns each.',
+    homeCta: 'Start learning',
+    homeCtaPending: 'See what it covers',
     pendingTitle: 'Content is not live yet',
     pendingBody:
       'The word-by-word tables for these eight areas are still being prepared and need to be checked item by item by the Chinese Language lead. What is listed below is the agreed scope, not finished content.',

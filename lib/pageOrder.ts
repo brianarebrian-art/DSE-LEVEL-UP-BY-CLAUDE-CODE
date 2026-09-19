@@ -76,8 +76,9 @@ export const EXCLUDED: Record<string, string> = {
   // ⚠️ /cantonese 刻意【唔入】PAGE_ORDER。本檔開頭寫明循環嗰六條係
   //    Navbar ∩ BottomNav ∩ Sidebar 嘅交集，而 /cantonese 唔喺任何一條
   //    持久導航入面。為咗一個新頁破自己一日前先寫低嘅規則，個規則就變裝飾。
-  //    佢有自己嘅入口：/subjects/chinese 頂部一條連結。
-  '/cantonese': '中文科新來港支援（業餘班·非正規課程），入口喺 /subjects/chinese 頂部',
+  //    佢有自己嘅入口：首頁一張全闊卡（信任列之後、科目 grid 之前）。
+  //    入口唔擺科目總覽，因為新來港支援唔屬於任何一科。
+  '/cantonese': '新來港校園廣東話融入（業餘班·非正規課程），入口喺首頁當眼位，唔屬任何科目',
   '/capsule': '支線功能頁',
   '/concept-net': '支線功能頁',
   '/exam-day': '支線功能頁',

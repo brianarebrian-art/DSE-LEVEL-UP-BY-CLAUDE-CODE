@@ -8,6 +8,8 @@ import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
 import InstallHint from '@/components/InstallHint'
 import { subjects, getActiveSubjects } from '@/data/subjects'
+// 只攞簽名狀態，唔攞內容 —— 首頁唔需要 48 條對照，攞咗就白白 build 入 bundle。
+import { REVIEW as CANTONESE_REVIEW } from '@/data/cantonese'
 // 由 summary.generated.ts 攞總數，唔好 import barrel ——
 // barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
@@ -25,6 +27,7 @@ import Mascot from '@/components/Mascot'
 // 字重只用 400/500（憲章 §3.3），強調靠字級同顏色而非粗體。
 
 const activeSubjects = getActiveSubjects()
+const cantoneseSigned = CANTONESE_REVIEW.reviewer.trim().length > 0
 const totalSubjects = subjects.length
 
 // 真實數字（憲章 §4 規格牆；「4科」是憲章筆誤，實為 25 科）。
@@ -184,6 +187,36 @@ export default function HomePage() {
           <span aria-hidden className="text-ink-faint">·</span>
           <Link href="/trust" className="font-medium text-accent-strong underline underline-offset-2">
             {locale === 'en' ? 'Check any of this' : '逐項查得到'}
+          </Link>
+        </div>
+      </section>
+
+      {/* ── 新來港支援 ──
+          擺喺首頁而唔係科目總覽，因為佢唔屬於任何一科 —— 一個中文差、
+          但數學物理好好嘅新來港學生，唔會去 /subjects/chinese 搵呢樣嘢。
+
+          擺喺信任列【之後】而唔係 Hero 緊接住：上面嗰段註釋寫明信任列要做
+          「Hero 之後第一件事」，答訪客第一個問題。呢張卡唔應該插隊，
+          但佢仍然喺科目 grid（下面好遠）之前，第一屏碌一下就見到。
+
+          ⚠️ CTA 文案跟簽名狀態變。內容未經人審之前唔會 render（見
+          data/cantonese.ts），所以未簽名嗰陣唔可以寫「立即學習」——
+          撳入去係一版「仲未上線」，而首頁係最多人睇嗰版。 */}
+      <section className="bg-surface px-4 py-10">
+        <div className="mx-auto max-w-4xl rounded-2xl border border-line bg-surface-raised p-6 sm:p-8">
+          <p className="text-xs font-medium uppercase tracking-wide text-ink-muted">
+            {t.cantonese.kicker}
+          </p>
+          <h2 className="mt-1 text-xl font-medium text-ink sm:text-2xl">{t.cantonese.homeTitle}</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            {t.cantonese.homeLead}
+          </p>
+          <Link
+            href="/cantonese"
+            className="mt-5 inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {cantoneseSigned ? t.cantonese.homeCta : t.cantonese.homeCtaPending}
+            <ArrowRight size={16} aria-hidden />
           </Link>
         </div>
       </section>
