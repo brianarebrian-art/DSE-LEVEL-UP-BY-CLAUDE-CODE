@@ -57,25 +57,45 @@ export const REVIEW: { reviewer: string; reviewedAt: string } = {
   reviewedAt: '',
 }
 
+export interface UnsureItem {
+  /** 廣東話（連上下文，方便覆核人喺頁面搵返） */
+  term: string
+  /** 寫咗乜、另一個可能係乜 */
+  note: string
+  /**
+   * 呢個音出現喺邊幾個場景。必須係真嘅 topic id ——
+   * 測試 ⑩ 會對返 `CANTONESE_TOPICS`。
+   *
+   * ⚠️ 呢個欄位唔係「標籤」，係接線。場景詳情頁靠佢揀出該場景相關嗰批；
+   *    打錯一個字，個場景就會靜靜哋話「冇列出任何唔肯定嘅粵拼」——
+   *    而嗰句係假嘅，同時唔會有任何嘢紅。
+   */
+  scenes: string[]
+}
+
 /**
  * 寫嘅時候自己揀唔定嘅粵拼，覆核時優先對呢批。
- * 格式：`廣東話 → 寫咗乜（另一個可能）`
  *
  * ⚠️ 呢張表淨係列「我知道自己唔肯定」嗰啲。真正危險嘅係第三類 ——
  *    寫嗰陣完全冇為意、所以連疑問都冇記低嘅音。嗰啲唔會喺呢度出現。
+ *    所以一個場景喺呢度零命中，【唔等於】嗰六句已驗證。
  */
-export const UNSURE: string[] = [
-  '嚟（我係新嚟嘅）→ lai4（定 lei4？兩個都有人讀）',
-  '稱呼 → cing1 fu1（定 cing3 fu1？）',
-  '廣東話 → gwong2 dung1 waa2（waa2 定 waa6？）',
-  '幾多錢 → cin4（定 cin2？）',
-  '有冇袋 → doi2（定 doi6？名詞「袋」同動詞「袋」唔同音）',
-  '諗（我諗諗先）→ nam2（定 lam2？）',
-  '有冇位坐 → wai2（定 wai6？）',
-  '插蘇 → caap3 sou1（sou1 定 sou2？）',
-  '訂場 → deng6（定 ding6？兩個讀法都有人用）',
-  '大聲／細聲 → seng1（定 sing1？口語同書面唔同）',
+export const UNSURE: UnsureItem[] = [
+  { term: '嚟（我係新嚟嘅・我啱啱嚟香港）', note: '寫咗 lai4，定 lei4？兩個都有人讀', scenes: ['greeting'] },
+  { term: '稱呼（點稱呼你呀）', note: '寫咗 cing1 fu1，定 cing3 fu1？', scenes: ['greeting'] },
+  { term: '廣東話', note: '寫咗 gwong2 dung1 waa2，waa2 定 waa6？', scenes: ['greeting'] },
+  { term: '錢（幾多錢・一斤幾多錢・價錢）', note: '寫咗 cin4，定 cin2？', scenes: ['shopping', 'market'] },
+  { term: '袋（有冇袋）', note: '寫咗 doi2，定 doi6？名詞「袋」同動詞「袋」唔同音', scenes: ['shopping'] },
+  { term: '諗（我諗諗先・等我諗吓先）', note: '寫咗 nam2，定 lam2？', scenes: ['clothes', 'slang'] },
+  { term: '位（有冇位坐）', note: '寫咗 wai2，定 wai6？', scenes: ['library'] },
+  { term: '插蘇', note: '寫咗 caap3 sou1，sou1 定 sou2？', scenes: ['library'] },
+  { term: '訂場（點樣訂個場）', note: '寫咗 deng6，定 ding6？兩個讀法都有人用', scenes: ['hangout'] },
+  { term: '聲（大聲啲・細聲啲）', note: '寫咗 seng1，定 sing1？口語同書面唔同', scenes: ['help', 'library'] },
 ]
+
+/** 揀出同一個場景相關嘅唔肯定項。冇命中回空 array —— 呢個唔代表嗰六句已驗。 */
+export const unsureForScene = (sceneId: string): UnsureItem[] =>
+  UNSURE.filter((u) => u.scenes.includes(sceneId))
 
 /**
  * 一句嘅溝通目的。呢個係一個【封閉集合】—— 加新值之前要諗清楚，
@@ -824,3 +844,10 @@ export const CANTONESE_TOPICS: CantoneseTopic[] = [
     ],
   },
 ]
+
+/** 由 id 攞場景。搵唔到回 `undefined`，畀 route 自己決定 404。 */
+export const topicById = (id: string): CantoneseTopic | undefined =>
+  CANTONESE_TOPICS.find((t) => t.id === id)
+
+/** 十二個場景 id，畀 `generateStaticParams` 用。冇第二張手寫清單。 */
+export const SCENE_IDS: string[] = CANTONESE_TOPICS.map((t) => t.id)
