@@ -15,7 +15,7 @@
 // 匯出格式同 review-drafts.mjs 一致，方便日後接上同一套 promote 流程。
 // ============================================================================
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
 
 const IN = process.argv[2]
@@ -65,9 +65,38 @@ if (problems.length) {
 }
 
 const decPath = join(outDir, `${base}.decisions.json`)
-const decisions = { _meta: { source: basename(IN), subject: 'translation', reviewer: '', reviewedAt: '' }, decisions: {} }
-for (const it of items) decisions.decisions[it.id] = 'pending'
-writeFileSync(decPath, JSON.stringify(decisions, null, 2) + '\n')
+
+// ══ 唔准洗走一個真人簽名 ══
+//
+// ⚠️ 呢個閘唔係預防性，係補一單已經發生咗嘅事故。2026-09-19：攞一個【已經
+//    由 brian 簽咗名並且批晒 26 條】嘅批次嚟做煙霧測試，行咗呢個腳本一次 ——
+//    下面幾行無條件寫一份全 pending、reviewer 空白嘅 decisions，brian 嘅簽名
+//    連同 26 個 approved 當場冇晒。要由 HEAD~1 還原再逐 byte 對返。
+//
+//    更麻煩嘅係佢【唔會嗌】：腳本照常印「已生成覆核表」然後 exit 0，
+//    而 provenance 測試要到下一次 `npm test` 先紅 —— 中間就算有人 commit 咗，
+//    個 commit 睇落就係「重新生成覆核表」，冇人會懷疑。
+//
+//    事後只喺 gen-long-en-batch.mjs 加閘係唔夠嘅：出事嘅唔係生成器，係呢度。
+//    一個閘要守【嗰一類 bug】，唔係守發現佢嗰個檔。
+if (existsSync(decPath) && !process.argv.includes('--force')) {
+  const prev = JSON.parse(readFileSync(decPath, 'utf8'))
+  const who = (prev._meta?.reviewer ?? '').trim()
+  if (who) {
+    const done = Object.values(prev.decisions ?? {}).filter((v) => v !== 'pending').length
+    console.error(
+      `❌ ${basename(decPath)} 已經由「${who}」簽咗名（${done} 條已判）。\n` +
+        `   重新生成會將佢重設為全 pending、簽名清空 —— 拒絕覆寫。\n` +
+        `   淨係想重出 HTML？加 --html-only。真係要重設審批？加 --force。`,
+    )
+    process.exit(1)
+  }
+}
+if (!process.argv.includes('--html-only')) {
+  const decisions = { _meta: { source: basename(IN), subject: 'translation', reviewer: '', reviewedAt: '' }, decisions: {} }
+  for (const it of items) decisions.decisions[it.id] = 'pending'
+  writeFileSync(decPath, JSON.stringify(decisions, null, 2) + '\n')
+}
 
 const data = JSON.stringify(items).replace(/</g, '\\u003c')
 const html = `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
