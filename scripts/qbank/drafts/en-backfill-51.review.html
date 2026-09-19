@@ -50,7 +50,8 @@ const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**' };
 function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 DATA.forEach((d, i) => {
   const el = document.createElement('div'); el.className='card'; el.id='c'+i;
-  const opts = (arr) => '<ul>' + arr.map((o,oi)=>'<li class="'+(oi===d.correctIndex?'correct':'')+'">'+escape(o)+'</li>').join('') + '</ul>';
+  // 書寫題（text／long）冇選項 —— 出空字串，唔好當 arr 一定係陣列。
+  const opts = (arr) => !Array.isArray(arr) ? '' : '<ul>' + arr.map((o,oi)=>'<li class="'+(oi===d.correctIndex?'correct':'')+'">'+escape(o)+'</li>').join('') + '</ul>';
   el.innerHTML =
     '<div class="meta"><span class="badge">#'+(i+1)+'</span><span class="badge">'+escape(d.id)+'</span>'+
     '<span class="badge">'+escape(d.subject)+'</span><span class="badge">'+escape(d.topicZh||'')+'</span>'+

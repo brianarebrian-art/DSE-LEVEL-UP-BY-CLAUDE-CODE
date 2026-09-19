@@ -1,0 +1,428 @@
+{
+  "kind": "translation-batch",
+  "note": "為已入庫但缺 contentEn / explanationEn 嘅 economics 長題補譯（第一批：需求與供應 13 + 彈性 13）。只新增英文欄，不改任何中文內容、分數或參考答案。呢批題目係參數化模板 —— 每個課題 13 條同文不同數，所以英文由一個模板逐條代入生成，生成時已斷言英文抽出嘅數字序列同中文完全一致。覆核請睇模板譯法本身：一個模板批咗，佢 13 個變體就一齊成立。referenceAnswerEn / markingSchemeEn 早已齊全，唔喺本批範圍。機器唔會自動入庫 —— 要真人簽 decisions 嘅 _meta.reviewer 之後先套用。",
+  "created": "2026-09-19",
+  "reviewer": "",
+  "approvedAt": null,
+  "counts": {
+    "economics": 26
+  },
+  "items": [
+    {
+      "id": "ec_l_0_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$20、均衡數量為 100 單位。政府其後徵收每單位 \\$5 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 90 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$20 with an equilibrium quantity of 100 units. The government then imposes a specific tax of \\$5 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 90 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$25、均衡數量為 97 單位。政府其後徵收每單位 \\$6 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 85 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$25 with an equilibrium quantity of 97 units. The government then imposes a specific tax of \\$6 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 85 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$30、均衡數量為 94 單位。政府其後徵收每單位 \\$7 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 80 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$30 with an equilibrium quantity of 94 units. The government then imposes a specific tax of \\$7 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 80 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$35、均衡數量為 91 單位。政府其後徵收每單位 \\$8 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 75 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$35 with an equilibrium quantity of 91 units. The government then imposes a specific tax of \\$8 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 75 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$40、均衡數量為 88 單位。政府其後徵收每單位 \\$5 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 78 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$40 with an equilibrium quantity of 88 units. The government then imposes a specific tax of \\$5 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 78 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$45、均衡數量為 85 單位。政府其後徵收每單位 \\$6 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 73 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$45 with an equilibrium quantity of 85 units. The government then imposes a specific tax of \\$6 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 73 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$50、均衡數量為 82 單位。政府其後徵收每單位 \\$7 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 68 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$50 with an equilibrium quantity of 82 units. The government then imposes a specific tax of \\$7 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 68 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$55、均衡數量為 79 單位。政府其後徵收每單位 \\$8 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 63 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$55 with an equilibrium quantity of 79 units. The government then imposes a specific tax of \\$8 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 63 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$60、均衡數量為 76 單位。政府其後徵收每單位 \\$5 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 66 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$60 with an equilibrium quantity of 76 units. The government then imposes a specific tax of \\$5 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 66 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$65、均衡數量為 73 單位。政府其後徵收每單位 \\$6 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 61 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$65 with an equilibrium quantity of 73 units. The government then imposes a specific tax of \\$6 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 61 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$70、均衡數量為 70 單位。政府其後徵收每單位 \\$7 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 56 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$70 with an equilibrium quantity of 70 units. The government then imposes a specific tax of \\$7 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 56 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$75、均衡數量為 67 單位。政府其後徵收每單位 \\$8 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 51 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$75 with an equilibrium quantity of 67 units. The government then imposes a specific tax of \\$8 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 51 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_0_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "需求與供應",
+      "difficulty": "medium",
+      "status": "pending",
+      "zh": {
+        "content": "某市場的均衡價格為 \\$80、均衡數量為 64 單位。政府其後徵收每單位 \\$5 的從量稅。\n（a）說明徵稅如何影響供應曲線，並指出移動的方向與幅度。\n（b）若新均衡數量為 54 單位，計算數量的變動百分比。\n（c）稅項由買方還是賣方繳交，會否影響最終的稅負分擔？試說明。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "A market is in equilibrium at a price of \\$80 with an equilibrium quantity of 64 units. The government then imposes a specific tax of \\$5 per unit.\n(a) Explain how the tax affects the supply curve, stating both the direction and the size of the shift.\n(b) If the new equilibrium quantity is 54 units, calculate the percentage change in quantity.\n(c) Does it matter, for how the tax burden ends up being shared, whether the tax is paid by buyers or by sellers? Explain.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_01",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$40 升至 \\$48，需求量由 200 單位降至 180 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$40 to \\$48, and the quantity demanded falls from 200 units to 180 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_02",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$44 升至 \\$52，需求量由 194 單位降至 173 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$44 to \\$52, and the quantity demanded falls from 194 units to 173 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_03",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$48 升至 \\$56，需求量由 188 單位降至 166 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$48 to \\$56, and the quantity demanded falls from 188 units to 166 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_04",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$52 升至 \\$60，需求量由 182 單位降至 159 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$52 to \\$60, and the quantity demanded falls from 182 units to 159 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_05",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$56 升至 \\$64，需求量由 176 單位降至 152 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$56 to \\$64, and the quantity demanded falls from 176 units to 152 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_06",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$60 升至 \\$68，需求量由 170 單位降至 145 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$60 to \\$68, and the quantity demanded falls from 170 units to 145 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_07",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$64 升至 \\$72，需求量由 164 單位降至 138 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$64 to \\$72, and the quantity demanded falls from 164 units to 138 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_08",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$68 升至 \\$76，需求量由 158 單位降至 131 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$68 to \\$76, and the quantity demanded falls from 158 units to 131 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_09",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$72 升至 \\$80，需求量由 152 單位降至 124 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$72 to \\$80, and the quantity demanded falls from 152 units to 124 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_10",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$76 升至 \\$84，需求量由 146 單位降至 117 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$76 to \\$84, and the quantity demanded falls from 146 units to 117 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_11",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$80 升至 \\$88，需求量由 140 單位降至 110 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$80 to \\$88, and the quantity demanded falls from 140 units to 110 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_12",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$84 升至 \\$92，需求量由 134 單位降至 103 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$84 to \\$92, and the quantity demanded falls from 134 units to 103 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    },
+    {
+      "id": "ec_l_1_13",
+      "subject": "economics",
+      "sourceFile": "data/questions/economics-long-b1-reviewed.ts",
+      "topicZh": "彈性",
+      "difficulty": "hard",
+      "status": "pending",
+      "zh": {
+        "content": "某商品的價格由 \\$88 升至 \\$96，需求量由 128 單位降至 96 單位。\n（a）計算需求價格彈性（用起點法）。\n（b）判斷該需求屬富有彈性還是缺乏彈性，並說明廠商提價後總收益的變化方向。\n（c）舉出【兩個】會令此商品的需求變得較富有彈性的因素，並解釋機制。",
+        "explanation": "本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟，解釋要指出機制而非複述現象，延伸部分要處理題目指定的比較或條件。評卷關注的不是最終數字，而是每一步是否有依據 —— 答案正確而過程跳步，與過程完整而末步算錯，前者失分往往更多。"
+      },
+      "en": {
+        "contentEn": "The price of a good rises from \\$88 to \\$96, and the quantity demanded falls from 128 units to 96 units.\n(a) Calculate the price elasticity of demand, using the point method with the initial price and quantity.\n(b) State whether this demand is elastic or inelastic, and explain the direction in which the firm’s total revenue moves after the price rise.\n(c) Give TWO factors that would make demand for this good more elastic, explaining the mechanism in each case.",
+        "explanationEn": "What is being assessed is the whole path from the data to the conclusion: the calculation has to show its steps, the explanation has to identify the mechanism rather than restate the phenomenon, and the last part has to address the comparison or condition the question actually specifies. Marking looks not at the final figure but at whether each step is justified — a right answer that skips working usually loses more than complete reasoning with a slip in the last calculation."
+      }
+    }
+  ]
+}
