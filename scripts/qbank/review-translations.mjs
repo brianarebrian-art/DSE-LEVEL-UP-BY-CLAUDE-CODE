@@ -38,11 +38,21 @@ const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt
 // ── 客觀閘（機器只查得到嘅嘢；譯文準確與否唔係機器判得到）
 const problems = []
 for (const it of items) {
-  if (it.en.optionsEn.length !== it.zh.options.length) {
-    problems.push(`${it.id}: 中英選項數目唔同 (${it.zh.options.length} vs ${it.en.optionsEn.length})`)
+  // ⚠️ 2026-09-19：原本呢兩句無條件讀 `.options.length` 同 `.optionsEn.findIndex`。
+  // `text`／`long` 題冇 options，一撞到書寫題批次就擲 TypeError 當場死。
+  // （同一個 bug 喺 apply-translations.mjs 都有 —— 修嗰次只修咗嗰個檔，冇掃呢個，
+  //  結果出第一批長題譯稿嗰陣即刻撞返。所以呢次兩個檔一齊修。）
+  if (it.zh.options !== undefined || it.en.optionsEn !== undefined) {
+    if (!Array.isArray(it.zh.options) || !Array.isArray(it.en.optionsEn)) {
+      problems.push(`${it.id}: options 同 optionsEn 要麼兩邊都有，要麼兩邊都冇`)
+    } else {
+      if (it.en.optionsEn.length !== it.zh.options.length) {
+        problems.push(`${it.id}: 中英選項數目唔同 (${it.zh.options.length} vs ${it.en.optionsEn.length})`)
+      }
+      const bad = it.en.optionsEn.findIndex((o) => typeof o !== 'string' || !o.trim())
+      if (bad >= 0) problems.push(`${it.id}: optionsEn[${bad}] 空白`)
+    }
   }
-  const bad = it.en.optionsEn.findIndex((o) => typeof o !== 'string' || !o.trim())
-  if (bad >= 0) problems.push(`${it.id}: optionsEn[${bad}] 空白`)
   for (const [k, v] of [['contentEn', it.en.contentEn], ['explanationEn', it.en.explanationEn]]) {
     if (typeof v !== 'string' || !v.trim()) problems.push(`${it.id}: ${k} 空白`)
     else if (((v.match(/(?<!\\)\$/g) ?? []).length) % 2) problems.push(`${it.id}: ${k} 嘅 $ 唔平衡（KaTeX 會食咗成段）`)
@@ -112,7 +122,8 @@ const diffZh = { easy:'補底 L4', medium:'普通 L5', hard:'拔尖 5**' };
 function escape(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 DATA.forEach((d, i) => {
   const el = document.createElement('div'); el.className='card'; el.id='c'+i;
-  const opts = (arr) => '<ul>' + arr.map((o,oi)=>'<li class="'+(oi===d.correctIndex?'correct':'')+'">'+escape(o)+'</li>').join('') + '</ul>';
+  // 書寫題（text／long）冇選項 —— 出空字串，唔好當 arr 一定係陣列。
+  const opts = (arr) => !Array.isArray(arr) ? '' : '<ul>' + arr.map((o,oi)=>'<li class="'+(oi===d.correctIndex?'correct':'')+'">'+escape(o)+'</li>').join('') + '</ul>';
   el.innerHTML =
     '<div class="meta"><span class="badge">#'+(i+1)+'</span><span class="badge">'+escape(d.id)+'</span>'+
     '<span class="badge">'+escape(d.subject)+'</span><span class="badge">'+escape(d.topicZh||'')+'</span>'+

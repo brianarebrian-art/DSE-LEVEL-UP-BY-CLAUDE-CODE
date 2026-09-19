@@ -72,6 +72,12 @@ export const EXCLUDED: Record<string, string> = {
   '/trust': 'Footer 資訊頁',
 
   // 支線功能頁：由 /subjects 或各自入口入，唔喺主循環
+  //
+  // ⚠️ /cantonese 刻意【唔入】PAGE_ORDER。本檔開頭寫明循環嗰六條係
+  //    Navbar ∩ BottomNav ∩ Sidebar 嘅交集，而 /cantonese 唔喺任何一條
+  //    持久導航入面。為咗一個新頁破自己一日前先寫低嘅規則，個規則就變裝飾。
+  //    佢有自己嘅入口：/subjects/chinese 頂部一條連結。
+  '/cantonese': '中文科新來港支援（業餘班·非正規課程），入口喺 /subjects/chinese 頂部',
   '/capsule': '支線功能頁',
   '/concept-net': '支線功能頁',
   '/exam-day': '支線功能頁',
