@@ -13,9 +13,13 @@ import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 // ══ 2026-09-19：項目清單改跟模板 ══
 // 2026-09-03 版冇跟規格嘅五項，理由有兩個：（a）五項入面只有兩項有路由；
 // （b）規格冇「練習」。今次兩個理由都唔再成立 ——
-//   · 模板版本已經加咗「↳ Today's Practice」，擺喺每日任務之下；
+//   · 模板版本已經加咗「Today's Practice」；
 //   · 等級預測有咗自己嘅頁（/predictor）。
-// 所以清單改跟模板，但有三處刻意唔跟：
+// 所以目的地同次序改跟模板，但有四處刻意唔跟：
+//   ⓪ 名唔跟。模板叫「Daily Mission」「↳ Today's Practice」，但 /dashboard 自己叫
+//      「我的進度」、底欄叫「練習」—— lib/dictionary.ts 側欄段寫明「掣寫一個名、
+//      頁寫另一個名，學生要記兩套」。改返目的地本身嘅名之後，「練習」亦唔再係
+//      「我的進度」嘅子項，所以 ↳ 縮排一齊拎走 —— 縮排會講錯層級。
 //   ① 冇 Focus Mode。Brian 2026-09-05 親口剷除成個「專注」功能
 //      （commit 536397f），呼吸法已搬入呼吸空間。模板喺呢個裁決之前畫成。
 //   ② 錯題 DNA 唔開新頁，指去 /dashboard#error-dna。同一個 commit 入面 Brian
@@ -44,20 +48,16 @@ import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 // 「沉浸式 = 零干擾」嘅決定相反。呢度維持現行做法，因為嗰個決定有寫低理由
 // （答題時誤撳離開）。要改嘅話應該係一個獨立決定，唔係跟住換色順手改咗。
 
-// `sub`：模板將「今日練習」縮入每日任務之下（↳）—— 層級係資訊，唔係裝飾：
-// 練習係每日任務入面嘅一件事，唔係並列嘅另一個分區。
-// 完整側欄嗰陣 sub 項用 ↳ 代替圖標；80px 欄冇位畫層級，淨係一個 ↳ 又唔知係乜，
-// 所以喺嗰度照出自己個 icon。
 const ITEMS = [
-  { href: '/dashboard', key: 'mission', Icon: Target, exact: true, sub: false },
-  { href: '/subjects', key: 'todayPractice', Icon: Sprout, exact: false, sub: true },
-  { href: '/dashboard#error-dna', key: 'errorDna', Icon: Dna, exact: true, sub: false },
-  { href: '/predictor', key: 'predictor', Icon: ChartColumnIncreasing, exact: false, sub: false },
-  { href: '/relax', key: 'relax', Icon: Leaf, exact: false, sub: false },
-  { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false, sub: false },
+  { href: '/dashboard', key: 'progress', Icon: Target, exact: true },
+  { href: '/subjects', key: 'practice', Icon: Sprout, exact: false },
+  { href: '/dashboard#error-dna', key: 'errorDna', Icon: Dna, exact: true },
+  { href: '/predictor', key: 'predictor', Icon: ChartColumnIncreasing, exact: false },
+  { href: '/relax', key: 'relax', Icon: Leaf, exact: false },
+  { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false },
 ] as const
 
-/** 錨點連結永遠唔算「目前頁」—— pathname 冇 hash，否則會同每日任務一齊亮。 */
+/** 錨點連結永遠唔算「目前頁」—— pathname 冇 hash，否則會同「我的進度」一齊亮。 */
 function isActive(pathname: string, href: string, exact: boolean): boolean {
   if (href.includes('#')) return false
   return exact ? pathname === href : pathname === href || pathname.startsWith(`${href}/`)
@@ -112,10 +112,10 @@ export default function Sidebar() {
       </Link>
 
       <ul className="flex flex-1 flex-col gap-1 px-3 py-4 xl:px-4">
-        {ITEMS.map(({ href, key, Icon, exact, sub }) => {
+        {ITEMS.map(({ href, key, Icon, exact }) => {
           const active = isActive(pathname, href, exact)
           return (
-            <li key={href} className={sub ? 'xl:ml-6' : undefined}>
+            <li key={href}>
               <Link
                 href={href}
                 aria-current={active ? 'page' : undefined}
@@ -123,25 +123,13 @@ export default function Sidebar() {
                 // 選中態跟模板：整格淺色底加一圈邊，冇左豎條。
                 // 字色維持 text-ink 而唔係 accent —— accent 字疊喺 accent 底上面
                 // 會食走對比；邊框同底色已經夠講「你喺度」，讀屏靠 aria-current。
-                className={`flex items-center gap-3 rounded-xl border px-3 font-serif transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
-                  sub ? 'min-h-11 text-[15px]' : 'min-h-[52px] text-[17px]'
-                } ${
+                className={`flex min-h-[52px] items-center gap-3 rounded-xl border px-3 font-serif text-[17px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
                   active
                     ? 'border-accent/35 bg-accent/15 text-ink'
                     : 'border-transparent text-ink-soft hover:bg-accent/8 hover:text-ink'
                 }`}
               >
-                <Icon
-                  size={22}
-                  strokeWidth={1.3}
-                  aria-hidden
-                  className={`shrink-0 text-gold ${sub ? 'xl:hidden' : ''}`}
-                />
-                {sub && (
-                  <span aria-hidden className="hidden text-ink-muted xl:inline">
-                    ↳
-                  </span>
-                )}
+                <Icon size={22} strokeWidth={1.3} aria-hidden className="shrink-0 text-gold" />
                 {/* 80px 欄收字，但唔可以淨靠 title —— 觸控裝置冇 hover。
                     故收字嗰陣用 sr-only 保住無障礙名，而 lg 斷點以下根本唔出側欄。 */}
                 <span className="hidden xl:inline">{t.sidebar[key]}</span>

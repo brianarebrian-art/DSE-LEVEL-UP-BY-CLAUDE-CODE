@@ -895,7 +895,11 @@ export default function PracticeSession({
             還原（globals.css）—— 所以「淡咗」永遠唔等於「攞唔返」。 */}
         <div className="focus-dim mb-6">
           <div className="flex justify-between text-sm text-ink-muted mb-2">
-            <span>
+            {/* Night Study 模板：題號用金色襯線。只係字體 —— 模板同一版仲有
+                「60-Second Reflection」倒數、做題中途嘅雷達圖同「Panic Attack
+                First Aid」側欄，全部冇搬：第一樣係 §7.2 實驗期間唔准接返嘅鎖，
+                後兩樣違反 §8.1 約束 3（唔可以侵蝕練習流程）。 */}
+            <span className="font-serif text-base text-gold-strong">
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
             </span>
             <span className="flex items-center gap-3">
@@ -990,7 +994,8 @@ export default function PracticeSession({
           </div>
 
           {/* Content — P1-6-R2: 自診咗「B. 審題陷阱」先高亮題幹指令字 */}
-          <p className="text-lg leading-relaxed mb-8 text-ink">
+          {/* 題幹維持無襯線：呢度係要逐字讀嘅正文，唔係標題（BDA）。只跟模板加大。 */}
+          <p className="text-lg sm:text-xl leading-relaxed mb-8 text-ink">
             {diagnosed === 'B' && answerState !== null && !answerState.isCorrect ? (
               <CommandWordText
                 text={tr(currentQ.content, currentQ.contentEn)}

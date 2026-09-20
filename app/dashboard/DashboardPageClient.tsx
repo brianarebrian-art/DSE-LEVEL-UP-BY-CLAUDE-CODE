@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  Bookmark, Moon, Wrench, Network, CloudSun } from 'lucide-react'
+  Bookmark, Moon, Wrench, Network, CloudSun, Wind, ChartColumnIncreasing } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -139,7 +139,7 @@ export default function DashboardPageClient() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
         <div className="text-6xl" aria-hidden>🌙</div>
-        <h1 className="text-2xl font-medium text-ink">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
+        <h1 className="text-2xl font-serif text-ink">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
         <p className="text-ink-muted leading-relaxed">
           {en ? 'Rest well tonight. See you tomorrow.' : '今晚好好休息。聽日再見。'}
           <br />
@@ -186,7 +186,7 @@ export default function DashboardPageClient() {
             <div className="mb-6 flex justify-center">
               <Mascot pose="mug" height={148} />
             </div>
-            <h1 className="text-3xl font-medium mb-3 text-ink">{d.title}</h1>
+            <h1 className="text-3xl font-serif mb-3 text-ink">{d.title}</h1>
             <p className="text-ink-muted mb-8">
               {d.emptyBody}
             </p>
@@ -243,7 +243,7 @@ export default function DashboardPageClient() {
         {/* Header */}
         <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
           <div>
-            <h1 className="text-3xl sm:text-4xl font-medium mb-1 text-ink">{d.title}</h1>
+            <h1 className="text-3xl sm:text-4xl font-serif mb-1 text-ink">{d.title}</h1>
             <p className="text-ink-muted text-sm">
               {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
             </p>
@@ -312,6 +312,54 @@ export default function DashboardPageClient() {
 
         {/* 安靜模式開關（lib/quietMode.ts）—— 擺喺數字卡之前，學生未見到數字就可以先揀收埋 */}
         <QuietModeToggle />
+
+        {/* 今日節奏（Night Study 模板「Today's rhythm」）。
+            模板嘅 dashboard 畫咗五格，其餘四格呢頁本身已經有（近 30 日統計卡、
+            DailyPlan、錯題 DNA、逐科表現）—— 再畫一次就係同一批數據出兩次。
+            真係缺嘅得呢一格。模板第一行係 Focus Mode，Brian 2026-09-05 已剷除
+            （536397f），換成等級預測：/predictor 除咗側欄之外本來冇任何入口，
+            而側欄喺 1024px 以下唔出。 */}
+        <section className="mb-10 rounded-2xl border border-line bg-surface-raised p-5">
+          <h2 className="mb-4 font-serif text-lg text-ink">{en ? "Today's rhythm" : '今日節奏'}</h2>
+          <div className="space-y-3">
+            {[
+              {
+                href: '/relax',
+                Icon: Wind,
+                title: en ? 'Breathing Space' : '呼吸空間',
+                body: en ? 'Reset your mind, breathe, recharge.' : '停一停，呼吸，回一回氣。',
+                cta: en ? 'Breathe' : '去唞',
+                tone: 'bg-violet/15 text-violet-strong',
+              },
+              {
+                href: '/predictor',
+                Icon: ChartColumnIncreasing,
+                title: en ? 'Grade Predictor' : '等級預測',
+                body: en ? 'A range, not a promise — per subject.' : '每科一個範圍，唔係一個承諾。',
+                cta: en ? 'Have a look' : '睇吓',
+                tone: 'bg-accent/15 text-accent',
+              },
+            ].map(({ href, Icon, title, body, cta, tone }) => (
+              <Link
+                key={href}
+                href={href}
+                className="flex min-h-16 items-center gap-4 rounded-xl border border-line bg-surface p-3 transition-colors hover:border-accent/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              >
+                <span className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${tone}`}>
+                  <Icon size={20} strokeWidth={1.4} aria-hidden />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-serif text-base text-ink">{title}</span>
+                  <span className="block text-sm text-ink-muted">{body}</span>
+                </span>
+                <span className="inline-flex shrink-0 items-center gap-1 text-sm text-accent">
+                  {cta}
+                  <ArrowRight size={14} aria-hidden />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* 計劃A §5.6：精進軌跡（每日正確率曲線，真實數據） */}
         <ProgressTrajectory />
@@ -420,7 +468,7 @@ export default function DashboardPageClient() {
             每次開儀表板都被迎面撞一次，違反憲章第 7 條。 */}
         {masteryTopics.length > 0 && (
           <>
-            <h2 className="text-lg font-medium mb-1 text-ink">
+            <h2 className="text-lg font-serif mb-1 text-ink">
               {en ? 'Topic mastery' : '課題掌握度'}
             </h2>
             <p className="text-xs text-ink-muted mb-4">
@@ -497,7 +545,7 @@ export default function DashboardPageClient() {
         </section>
 
         {/* Per-subject performance */}
-        <h2 className="text-lg font-medium mb-4 text-ink">{d.perSubject}</h2>
+        <h2 className="text-lg font-serif mb-4 text-ink">{d.perSubject}</h2>
         <div className="space-y-3 mb-10">
           {stats.subjects.map((s) => {
             const meta = getSubject(s.subjectId)
@@ -538,7 +586,7 @@ export default function DashboardPageClient() {
         {/* Weak topics */}
         {stats.weakTopics.length > 0 && (
           <>
-            <h2 className="text-lg font-medium mb-4 text-ink">{d.weakTitle}</h2>
+            <h2 className="text-lg font-serif mb-4 text-ink">{d.weakTitle}</h2>
             <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5 mb-10">
               <div className="space-y-3">
                 {stats.weakTopics.map((wt) => (
@@ -555,7 +603,7 @@ export default function DashboardPageClient() {
         )}
 
         {/* Recent attempts */}
-        <h2 className="text-lg font-medium mb-4 text-ink">{d.recentTitle}</h2>
+        <h2 className="text-lg font-serif mb-4 text-ink">{d.recentTitle}</h2>
         <div className="bg-surface-raised border border-line rounded-2xl divide-y divide-line mb-10">
           {stats.recent.map((a, i) => {
             const meta = getSubject(a.subjectId)
