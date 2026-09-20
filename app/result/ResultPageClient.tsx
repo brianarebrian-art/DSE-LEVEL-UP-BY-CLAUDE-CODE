@@ -18,6 +18,7 @@ const fmt = (tpl: string, vars: Record<string, string>) =>
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+import { SITE_ORIGIN } from '@/lib/site'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
@@ -211,7 +212,7 @@ export default function ResultPageClient() {
     strengthTopic: bestTopic && bestTopic.correct === bestTopic.total && bestTopic.topic !== worstTopic?.topic ? bestTopic.topic : undefined,
     focusTopic: worstTopic && worstTopic.correct < worstTopic.total ? worstTopic.topic : undefined,
     igLink: 'ig.me/j/AbYCy6ZUDR-yWVPN',
-    siteUrl: siteHost || 'dse-level-up-by-claude-code.vercel.app',
+    siteUrl: siteHost || SITE_ORIGIN.replace(/^https:\/\//, ''),
   }
 
   // ── Teacher hand-in report. Fills the fixed template with real diagnostic data;
@@ -519,7 +520,9 @@ export default function ResultPageClient() {
         {/* Share */}
         <button
           onClick={() => {
-            const text = `${r.shareTextA}${subjName}${r.shareTextB}${result.score}/${result.total}${r.shareTextC}${gradeResult.grade}${r.shareTextD}`
+            // 網址由 SITE_ORIGIN 接上，唔喺字典文案入面寫死 —— 見 lib/dictionary.ts
+            // shareTextD 嘅註釋（原文寫死咗一個未購入嘅網域）。
+            const text = `${r.shareTextA}${subjName}${r.shareTextB}${result.score}/${result.total}${r.shareTextC}${gradeResult.grade}${r.shareTextD}${SITE_ORIGIN}`
             if (navigator.share) {
               navigator.share({ text }).catch(() => {})
             } else {

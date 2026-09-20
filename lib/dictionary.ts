@@ -318,7 +318,12 @@ const zh = {
     shareTextA: '我喺 DSE Level Up 練習',
     shareTextB: '，得到 ',
     shareTextC: ' 分，預測等級 ',
-    shareTextD: '！🔥 一齊練 DSE：dselevelup.hk',
+    // ⚠️ 唔好喺呢度寫網域。網址由呼叫點接上 `SITE_ORIGIN`（lib/site.ts 單一來源）。
+    // 原文寫死咗 `dselevelup.hk` —— 而同一個 repo 入面 app/layout.tsx 同 app/sitemap.ts
+    // 兩處註釋都寫住「dselevelup.hk 尚未購入」（Brian 2026-07-29 拍板）。即係每一次
+    // 分享都叫同學去一個我哋擁有唔到嘅網域，任何人註冊咗就接收得到呢批流量。
+    // 迴歸鎖：lib/__tests__/site-origin.test.mts。
+    shareTextD: '！🔥 一齊練 DSE：',
     shareCopied: '已複製分享文字！',
     disclaimer: '等級預測僅供參考，最終成績以 HKEAA 公布為準。',
     defaultSubject: '數學',
@@ -749,7 +754,8 @@ const en: typeof zh = {
     shareTextA: 'I practised ',
     shareTextB: ' on DSE Level Up and scored ',
     shareTextC: ', predicted grade ',
-    shareTextD: '! 🔥 Practise DSE: dselevelup.hk',
+    // 見 zh 版同名鍵：網域唔喺文案入面，由呼叫點接上 SITE_ORIGIN。
+    shareTextD: '! 🔥 Practise DSE: ',
     shareCopied: 'Share text copied!',
     disclaimer: 'Grade predictions are for reference only — final results are as published by the HKEAA.',
     defaultSubject: 'Maths',
