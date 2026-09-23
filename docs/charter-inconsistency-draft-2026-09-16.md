@@ -52,12 +52,29 @@ docs/charter.md:438  - 風格：Cyber-Academic（暗底霓虹戰鬥風，非白�
 
 實際（`app/globals.css`）：
 
-| | 實際值 |
-|---|---|
-| 預設（淺色）頁面底 | `--color-surface: #FAFAF8` |
-| 正文 | `--color-ink: #1A1A1A`（對比 15.91） |
-| 強調 | `--color-accent: #006B65`（5.83） |
-| 暗色主題 `cyber` | `#1a1917` 底 ＋ sage 綠，唔係藍底青光 |
+⛔ **2026-09-23 更正 —— 本節原本寫錯咗三個色值。**
+
+原文寫「預設頁面底 `#FAFAF8`、正文 `#1A1A1A`、強調 `#006B65`」。
+呢三個 hex 的確喺 `globals.css` 出現過（L54／L68／L76），**但係之後被覆蓋咗**：
+L363 有一個**無條件** `:root`（唔喺任何 media query 或者 `[data-theme]` 入面）
+將三個變數重新指去莫蘭迪 ml 色版。`docs/tokens.md`（由 `globals.css` 自動生成）
+第 21／24／28 行逐行列咗呢個覆蓋。
+
+| 角色 | 宣告值（L54/68/76） | **真正生效（L363 起）** |
+|---|---|---|
+| 頁面底 `--color-surface` | `#FAFAF8` | **`#F4F0EA`** |
+| 正文 `--color-ink` | `#1A1A1A` | **`#2C2A29`**（12.04） |
+| 強調 `--color-accent` | `#006B65` | **`#57685C`** sage（4.75 / 白字掣 5.64） |
+| 暗色主題 `cyber` | — | `#1a1917` 底 ＋ sage 綠，唔係藍底青光 |
+
+⚠️ **點解要特別記低：** 本草案存在嘅理由就係「條文同實情唔一致」。
+如果照原文簽落去，憲章 §14 就會記住三個**唔會 render 出嚟**嘅 hex ——
+即係用一個新嘅漂移，取代一個舊嘅漂移。下一個 session 讀完憲章去「對齊」代碼，
+反而會將個站由莫蘭迪改返去 `#FAFAF8` 系。
+
+草案原文只讀到 L54／L68／L76 就停，冇再向下搵有冇覆蓋。
+（2026-09-21 記錄嘅「同意」係基於原文嗰三個值，所以本節改完之後，
+第二項嘅立場請重新確認一次。）
 
 `globals.css:178` 自己寫住：「莫蘭迪化做咗兩輪之後，暗色模式仍然係藍底青光
 （#0B1120／#00F5D4）——」即係當時已經**刻意離開**霓虹。
@@ -71,7 +88,9 @@ docs/charter.md:438  - 風格：Cyber-Academic（暗底霓虹戰鬥風，非白�
 
 **建議條文（改寫 §14 全節）：**
 
-> - **預設淺色莫蘭迪**：頁面底 `#FAFAF8`、正文 `#1A1A1A`、強調 `#006B65`。
+> - **預設淺色莫蘭迪**：頁面底 `#F4F0EA`、正文 `#2C2A29`、強調 `#57685C`（sage）。
+>   （2026-09-23 更正。色值單一來源係 `app/globals.css`，對照表見 `docs/tokens.md`；
+>   憲章唔應該再各自抄一份 hex —— 抄就會再漂移一次。）
 > - **暗色主題 `cyber`**：`#1a1917` 底 ＋ sage 綠，非藍底青光。
 > - **霓虹四色（`--color-neon-*`）只保留喺導出圖卡**（溫書地圖 PNG、成績卡）——
 >   嗰批圖要離開網站都睇得明，所以鎖定標準色版，唔跟主題變數。
@@ -137,7 +156,10 @@ docs/charter.md:717  *⬜ 待 Brian 副署。*
 
 ```bash
 node -p "require('next/package.json').version"                    # 一
-grep -nE "^\s*--color-(surface|ink|accent):" app/globals.css      # 二
+# 二 —— ⚠️ 要睇【全部】宣告，唔可以見到頭三個就收手（原稿就係咁錯）：
+grep -nE "^\s*--color-(surface|ink|accent):" app/globals.css
+# 更可靠：tokens.md 由 globals.css 自動生成，「生效值」嗰欄已經算好覆蓋
+grep -nE "color-(surface|ink|accent)\`" docs/tokens.md | head
 grep -rn "零故障" docs/charter.md                                  # 三
 grep -n "待 Brian 副署" docs/charter.md                            # 四
 ```
