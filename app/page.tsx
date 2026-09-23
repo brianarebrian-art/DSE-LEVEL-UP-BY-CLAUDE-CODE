@@ -246,7 +246,7 @@ export default function HomePage() {
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-surface-sunken text-xs font-medium text-ink-muted">1</span>
                 <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{h.step1Label}</span>
               </div>
-              <div className="mb-3 font-mono text-xs text-accent">2023 DSE Math Paper 1 Q1</div>
+              <div className="mb-3 font-mono text-xs text-accent">{h.demoArchetype}</div>
               <p className="text-sm leading-relaxed text-ink-soft">
                 {h.demoSolve}<MathText>$2x^2 + 3x - 5 = 0$</MathText>{h.demoFind}<MathText>$x$</MathText>{h.demoValueEnd}
               </p>

@@ -207,8 +207,12 @@ const zh = {
     ctaStart: '立即開始練習',
     ctaMethod: '了解方法論',
     demoTitle: '睇下係點樣運作',
-    demoSub: '一條 2023 DSE 真題 → 拆解核心邏輯 → 改寫版練習題',
-    step1Label: '官方試題',
+    // ⚠️ 唔可以講「真題」／「官方試題」。憲章 §1.4 零版權侵犯：本站所有題目
+    // 都係原創平行改寫，一條都唔係 HKEAA 原文。每頁 footer 同時寫住「並非官方試題」——
+    // 首頁講反話，係對外聲稱同免責聲明自己打架。迴歸鎖：scripts/claims-guard.mjs。
+    demoSub: '一個 DSE 常見題型 → 拆解核心邏輯 → 原創改寫練習題',
+    step1Label: '常見題型',
+    demoArchetype: '二次方程 · 核心題型',
     demoSolve: '解方程 ',
     demoFind: '，求 ',
     demoValueEnd: ' 的值。',
@@ -413,7 +417,9 @@ const zh = {
     insightP1Post: '——所以無論 HKEAA 換咩數字、換咩情景，只要邏輯係一樣的，佢都即刻 get 到怎麼做。',
     insightP2: '本平台的改寫題，就係用 AI 分析 10 年 DSE 試卷，提煉出每道題的核心考點，然後用新的數字、新的情景，考你同一個邏輯。做完，你掌握的係邏輯——不是答案。',
     fwSectionTitle: '4 個核心框架示範',
-    officialLabel: '官方試題',
+    // 呢個標籤貼喺 f.content 上面，而 f.content 係原創改寫嘅題型示例，
+    // 唔係 HKEAA 原文 —— 叫佢「官方試題」同 footer 免責聲明直接打架（§1.4）。
+    officialLabel: '常見題型',
     analysisLabel: '核心邏輯分析',
     rewrittenLabel: '改寫版（本平台）',
     answerLabel: '答案：',
@@ -643,8 +649,10 @@ const en: typeof zh = {
     ctaStart: 'Start practising now',
     ctaMethod: 'See the method',
     demoTitle: 'See how it works',
-    demoSub: 'A real 2023 DSE question → unpack the core logic → a rewritten practice question',
-    step1Label: 'Official question',
+    // 見 zh 版同名鍵：唔可以聲稱係官方／真題。
+    demoSub: 'A common HKDSE question type → unpack the core logic → an independently rewritten practice question',
+    step1Label: 'Common type',
+    demoArchetype: 'Quadratic equations · core type',
     demoSolve: 'Solve ',
     demoFind: ' for ',
     demoValueEnd: '.',
@@ -843,7 +851,8 @@ const en: typeof zh = {
     insightP1Post: ' each question tests — so whatever numbers or scenario the HKEAA uses, as long as the logic is the same, they instantly get how to do it.',
     insightP2: 'This platform’s rewritten questions use AI to analyse 10 years of DSE papers, distil each question’s core assessment point, then test the same logic with new numbers and scenarios. When you’re done, what you’ve mastered is the logic — not the answer.',
     fwSectionTitle: '4 core frameworks demonstrated',
-    officialLabel: 'Official question',
+    // 見 zh 版：貼喺原創改寫示例上面，唔可以叫「官方」。
+    officialLabel: 'Common type',
     analysisLabel: 'Core logic analysis',
     rewrittenLabel: 'Rewritten (this platform)',
     answerLabel: 'Answer: ',
