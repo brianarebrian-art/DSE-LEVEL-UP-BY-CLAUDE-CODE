@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
-import { REVIEWED_COUNT } from '@/data/provenance'
 import { getActiveSubjects } from '@/data/subjects'
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 
@@ -41,7 +40,6 @@ export default function TrustClient() {
   const subjects = getActiveSubjects()
   // 同 /transparency 一樣讀 summary.generated，唔好 import barrel。
   const total = subjects.reduce((n, s) => n + (SUBJECT_SUMMARY[s.id]?.total ?? 0), 0)
-  const pct = total > 0 ? ((REVIEWED_COUNT / total) * 100).toFixed(2) : '0'
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
@@ -70,12 +68,12 @@ export default function TrustClient() {
         </ul>
       </div>
 
-      {/* 三個即時由代碼算嘅數 */}
-      <div className="mb-8 grid grid-cols-3 gap-3">
+      {/* Two figures computed live from the code. A third, "N% carry a named review
+          record", was removed on 2026-09-25 when the review records were deleted. */}
+      <div className="mb-8 grid grid-cols-2 gap-3">
         {[
           { n: total.toLocaleString(), l: en ? 'rewritten MC questions' : '條改寫 MC 題' },
           { n: String(subjects.length), l: en ? 'subjects with MC practice' : '科有 MC 練習' },
-          { n: `${pct}%`, l: en ? 'carry a named review record' : '有實名審批紀錄' },
         ].map((s) => (
           <div key={s.l} className="rounded-xl border border-line bg-surface-raised p-3 text-center">
             <div className="text-lg font-medium text-ink">{s.n}</div>
@@ -83,11 +81,6 @@ export default function TrustClient() {
           </div>
         ))}
       </div>
-      <p className="mb-8 text-xs leading-relaxed text-ink-muted">
-        {en
-          ? `That last figure is low and we publish it anyway: ${REVIEWED_COUNT} of ${total.toLocaleString()} questions have a named, dated, one-by-one approval on record. Every other question shows which automated checks it passed instead — we would rather show a small true number than a large vague one.`
-          : `最後嗰個數低，我哋照樣公開：${total.toLocaleString()} 條題目入面有 ${REVIEWED_COUNT} 條有實名、有日期、逐題嘅審批紀錄。其餘每一條都會顯示佢過咗邊啲自動檢查 —— 我哋寧願擺一個細但真嘅數，唔擺一個大但含糊嘅數。`}
-      </p>
 
       <h2 className="mb-3 text-lg font-medium text-ink">{en ? 'The questions people actually ask' : '大家真係會問嘅問題'}</h2>
       <div className="space-y-3">

@@ -98,8 +98,8 @@ export default function AboutClient() {
           <div className="space-y-2.5 text-sm text-ink-soft">
             {[
               en
-                ? 'Academic precision is the red line: every answer and explanation is hand-verified.'
-                : '學術精準度是生死線：每題答案與釋義均經人手核對。',
+                ? 'Academic precision is the red line: answers and explanations pass automated checks before going live, and reported errors are fixed as soon as we can.'
+                : '學術精準度是生死線：答案與釋義上線前均須通過自動檢查，接獲錯誤報告會盡快修正。',
               en
                 ? 'Original rewrites only — no reproduction of HKEAA past-paper content.'
                 : '一律獨立改寫——絕不複製香港考評局試題內容。',

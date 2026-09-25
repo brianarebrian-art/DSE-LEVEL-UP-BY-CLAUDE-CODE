@@ -8,19 +8,21 @@
 //    題目合唔合課程、問法自然唔自然、步驟分割得啱唔啱、
 //    分數分配合唔合理 —— 全部要真人睇。機器永不自動入庫。
 //
-// 讀檔而非 import 草稿：`npx tsx@4.19.2` 喺呢個 repo（package.json 冇
-// `"type": "module"`）唔支援 .ts/.tsx 嘅具名 ESM import，會拋
-// "does not provide an export named …"。全部現存測試都係讀檔，唔係巧合。
+// 2026-09-25: the draft file (scripts/qbank/drafts/math-p1-long.json) was deleted
+// together with the review records. The test now reads the live bank instead, so
+// it checks exactly what students see. `ns.default ?? ns` handles the CommonJS
+// interop of the pinned tsx@4.19.2, which does not support named ESM imports
+// from .ts files in this repo.
 // ============================================================================
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
 
-const DRAFT = 'scripts/qbank/drafts/math-p1-long.json'
-const rows: { id: string; referenceAnswer: string; marks: number }[] = JSON.parse(readFileSync(DRAFT, 'utf8'))
+const ns: any = await import('../../data/questions/math-p1-long.ts')
+const rows: { id: string; referenceAnswer: string; marks: number }[] =
+  (ns.default ?? ns).mathP1LongQuestions
 const ans = (id: string) => {
   const r = rows.find((x) => x.id === id)
-  assert.ok(r, `草稿冇 ${id}`)
+  assert.ok(r, `題庫冇 ${id}`)
   return r!.referenceAnswer
 }
 /** 答案字串入面要搵到呢個數（容許 LaTeX 包裝）。 */
@@ -35,7 +37,7 @@ const round3sf = (x: number) => Number(x.toPrecision(3))
 const near = (a: number, b: number, msg?: string) =>
   assert.ok(Math.abs(a - b) < 1e-9, `${msg ?? ''} 期望 ${b}，實際 ${a}`)
 
-test('全部 20 條都在草稿之內，且 id 唯一', () => {
+test('全部 20 條都在題庫之內，且 id 唯一', () => {
   assert.equal(rows.length, 20)
   assert.equal(new Set(rows.map((r) => r.id)).size, 20)
 })
