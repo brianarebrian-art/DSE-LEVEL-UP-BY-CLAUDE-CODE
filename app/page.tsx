@@ -171,7 +171,7 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-center text-xs text-ink-muted">
           <span>
             {TOTAL_QUESTIONS.toLocaleString()}
-            {locale === 'en' ? ' rewritten MC questions' : ' 條改寫 MC 題'}
+            {locale === 'en' ? ' rewritten questions' : ' 條改寫題目'}
           </span>
           <span aria-hidden className="text-ink-faint">·</span>
           <span>
