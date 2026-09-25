@@ -48,6 +48,35 @@ interface StoredResult {
   submitted?: { questionId: string; selectedZh: string | null }[]
 }
 
+/**
+ * Parses `dse_result`. Returns null for anything unusable instead of throwing.
+ *
+ * The key is not only written by PracticeSession: DataPortability imports it
+ * from a backup file after checking only that it is an object, and a student can
+ * edit it by hand. A malformed value previously threw inside the mount effect
+ * (JSON.parse) or during render (`topicResults.map` on undefined), taking the
+ * whole page down. An unusable record is now treated the same as no record.
+ *
+ * Bounds match `isPossibleAttempt` in lib/progress.ts.
+ */
+export function readStoredResult(raw: string | null): StoredResult | null {
+  if (!raw) return null
+  let d: unknown
+  try {
+    d = JSON.parse(raw)
+  } catch {
+    return null
+  }
+  if (typeof d !== 'object' || d === null) return null
+  const { score, total, topicResults, elapsed } = d as Record<string, unknown>
+  if (typeof score !== 'number' || typeof total !== 'number') return null
+  if (!Number.isInteger(total) || total <= 0) return null
+  if (!Number.isInteger(score) || score < 0 || score > total) return null
+  if (!Array.isArray(topicResults)) return null
+  if (typeof elapsed !== 'number' || !Number.isFinite(elapsed)) return null
+  return d as StoredResult
+}
+
 /** 服務端覆核狀態。null = 未覆核／覆核唔到（一律靜靜收起，唔嘈學生）。 */
 type VerifyState = { ok: true } | { ok: false; score: number; total: number } | null
 
@@ -91,6 +120,10 @@ export default function ResultPageClient() {
   const r = t.result
   const [result, setResult] = useState<StoredResult | null>(null)
   const [gradeResult, setGradeResult] = useState<GradeResult | null>(null)
+  // Whether localStorage has been read yet. Before the mount effect runs (and in
+  // the server-rendered HTML) `result` is null, so without this flag every visit
+  // painted "no result found" first, including right after finishing a session.
+  const [checked, setChecked] = useState(false)
   const [verify, setVerify] = useState<VerifyState>(null)
   const [showBadge, setShowBadge] = useState(false)
   const [shared, setShared] = useState(false)
@@ -101,10 +134,16 @@ export default function ResultPageClient() {
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
   useEffect(() => {
     setSiteHost(window.location.host)
-    const raw = localStorage.getItem('dse_result')
-    if (!raw) return
-    const data: StoredResult = JSON.parse(raw)
-    const gr = predictGrade(data.score, getPracticeCutoffs(data.total, data.subjectId ?? 'practice'), data.subjectId)
+    let raw: string | null = null
+    try {
+      raw = localStorage.getItem('dse_result')
+    } catch {
+      /* storage blocked (some private modes / site-data settings) */
+    }
+    const data = readStoredResult(raw)
+    setChecked(true)
+    if (!data) return
+    const gr =predictGrade(data.score, getPracticeCutoffs(data.total, data.subjectId ?? 'practice'), data.subjectId)
     setResult(data)
     setGradeResult(gr)
     setTimeout(() => setShowBadge(true), 1600)
@@ -150,11 +189,36 @@ export default function ResultPageClient() {
     800
   )
 
+  if (!checked) {
+    return (
+      <div aria-busy="true" className="min-h-[55dvh] grid place-items-center px-4 bg-surface">
+        <span className="sr-only">{t.common.loading}</span>
+        <div className="w-full max-w-md h-48 rounded-2xl bg-surface-sunken animate-pulse" />
+      </div>
+    )
+  }
+
   if (!result || !gradeResult) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-surface text-ink-soft">
-        <p className="text-ink-muted">{r.notFound}</p>
-        <Link href="/practice" className="text-accent underline">{r.backToPractice}</Link>
+      <div className="min-h-[55dvh] grid place-items-center px-4 py-12 bg-surface">
+        <section className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-6 text-center">
+          <h1 className="text-lg font-semibold text-ink">{r.emptyTitle}</h1>
+          <p className="mt-3 text-sm leading-relaxed text-ink-muted">{r.emptyBody}</p>
+          <div className="mt-6 grid gap-3">
+            <Link
+              href="/practice"
+              className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-all"
+            >
+              {r.emptyStart} <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/dashboard"
+              className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-all"
+            >
+              {r.emptyProgress}
+            </Link>
+          </div>
+        </section>
       </div>
     )
   }
