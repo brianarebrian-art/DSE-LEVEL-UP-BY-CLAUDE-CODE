@@ -24,104 +24,10 @@ const DRAFTS = 'scripts/qbank/drafts'
 // 草稿檔名 → 科目 id。冇喺呢度登記嘅草稿檔會被跳過並喺下面單獨報告，
 // 以免新增草稿時靜靜地繞過本閘。
 const SUBJECT_OF: Record<string, string> = {
-  // 已入庫嘅早期書寫題批次 —— 一併納入，令現存登記狀態亦有迴歸保護。
-  'chinese-fanwen-long-batch1.json': 'chinese',
-  'chinese-p2-writing-batch1.json': 'chinese',
-  'english-written-batch1.json': 'english',
-  'math-long-batch-1.json': 'math',
-  'history-p2-essays.json': 'history',
-  'history-floor.json': 'history',
-  'chinese-history-floor.json': 'chinese-history',
-  'chinese-literature-floor.json': 'chinese-literature',
-  'chinese-p2-writing-batch2.json': 'chinese',
-  'chinese-p2-writing-batch3.json': 'chinese',
-  'chinese-p1-fillin.json': 'chinese',
-  'math-p1-long.json': 'math',
-  // 2026-08-29 中文寫作四組（階段目標一）。b4 用嘅 material_essay 係新課題，
-  // 已同步喺 chinese.ts 以 count: 0 登記 —— 跟返上面四個書寫課題嘅做法，
-  // 未有 MC 之前唔會出現喺課題 chips，但 promote 之後唔會變孤兒。
-  'chinese-writing-b1.json': 'chinese',
-  'chinese-writing-b2.json': 'chinese',
-  'chinese-writing-b3.json': 'chinese',
-  'chinese-writing-b4.json': 'chinese',
-  // 2026-09-03 理科書寫題第一批（由 scripts/qbank/gen-long-drafts.mjs 生成）。
-  // 三科用嘅 topicId 全部係該科【已登記】嘅既有課題，冇新增課題，
-  // 所以唔會出現孤兒題；本閘會逐個核實。
-  'physics-long-b1.json': 'physics',
-  'chemistry-long-b1.json': 'chemistry',
-  'biology-long-b1.json': 'biology',
-  // 2026-09-03 計算型科目書寫題第二批（scripts/qbank/gen-long-drafts-b2.mjs）。
-  'economics-long-b1.json': 'economics',
-  'geography-long-b1.json': 'geography',
-  'bafs-long-b1.json': 'bafs',
-  'ict-long-b1.json': 'ict',
-  // 2026-09-11 非 MC 題目第二批（scripts/qbank/gen-written-b2.mjs）。
-  // 每科所用嘅 5 個課題同第一批【不重複】，且全部係該科已登記嘅既有課題 ——
-  // 冇新增任何課題，所以唔會製造孤兒題；本閘會逐個核實。
-  // ⚠️ 第二批尚未出齊 22 科，只有下列 6 科。刻意唔以佔位內容填滿：
-  //    一條佔位題流入審批管線，比缺一科更難察覺。
-  'physics-written-b2.json': 'physics',
-  'chemistry-written-b2.json': 'chemistry',
-  'biology-written-b2.json': 'biology',
-  'm1-written-b2.json': 'm1',
-  'm2-written-b2.json': 'm2',
-  'economics-written-b2.json': 'economics',
-  // 2026-09-10 22 科非 MC 題目第一批，每科 5 條
-  //（scripts/qbank/gen-written-b1.mjs，內容逐條人手撰寫）。
-  // 22 科皆為當時書寫題 = 0 嘅科目（實測：coverage-report.mts）。
-  // 全部 topicId 均為該科【已登記】嘅既有課題，冇新增課題 —— 本閘會逐個核實。
-  'physics-written-b1.json': 'physics',
-  'chemistry-written-b1.json': 'chemistry',
-  'biology-written-b1.json': 'biology',
-  'm1-written-b1.json': 'm1',
-  'm2-written-b1.json': 'm2',
-  'english-written-b1.json': 'english',
-  'bafs-written-b1.json': 'bafs',
-  'ict-written-b1.json': 'ict',
-  'economics-written-b1.json': 'economics',
-  'csd-written-b1.json': 'csd',
-  'chinese-history-written-b1.json': 'chinese-history',
-  'geography-written-b1.json': 'geography',
-  'chinese-literature-written-b1.json': 'chinese-literature',
-  'english-literature-written-b1.json': 'english-literature',
-  'ethics-religious-written-b1.json': 'ethics-religious',
-  'ths-written-b1.json': 'ths',
-  'health-management-written-b1.json': 'health-management',
-  'design-tech-written-b1.json': 'design-tech',
-  'visual-arts-written-b1.json': 'visual-arts',
-  'music-written-b1.json': 'music',
-  'pe-written-b1.json': 'pe',
-  'technology-living-written-b1.json': 'technology-living',
-  // 2026-09-12 非 MC 第三批，共 117 條。派落非 MC 最薄嘅 15 科：
-  // 12 科各 +8（本身連草稿計只得 5 條，等於冇書寫練習），english / m1 / m2 各 +7。
-  // 課題全部避開同科 b1 已用嘅，亦全部係該科【已登記】課題 —— 冇新增課題，
-  // 本閘會逐個核實。m1 / m2 兩批依憲章 §5 附 Casio fx-50FH II / 3650P 程式教學
-  //（第一批漏咗呢一項，今批補返）。
-  'chinese-history-written-b3.json': 'chinese-history',
-  'chinese-literature-written-b3.json': 'chinese-literature',
-  'csd-written-b3.json': 'csd',
-  'design-tech-written-b3.json': 'design-tech',
-  'english-literature-written-b3.json': 'english-literature',
-  'ethics-religious-written-b3.json': 'ethics-religious',
-  'health-management-written-b3.json': 'health-management',
-  'music-written-b3.json': 'music',
-  'pe-written-b3.json': 'pe',
-  'technology-living-written-b3.json': 'technology-living',
-  'ths-written-b3.json': 'ths',
-  'visual-arts-written-b3.json': 'visual-arts',
-  'english-written-b3.json': 'english',
-  'm1-written-b3.json': 'm1',
-  'm2-written-b3.json': 'm2',
-
-  // 2026-09-12 非 MC 第四批，共 140 條 —— 補齊 2027 目標嘅非 MC 缺口。
-  // 缺口實測係 140（live 非 MC 1,060／目標 1,200），唔係目標書所寫嘅 117；
-  // 嗰 117 條草稿從來唔存在，見 commit 832003c。
-  //
-  // 分配原則：抬高最薄嗰批，唔係平均攤分。逐科逐課題數過之後，
-  // 12 科只得 13 條非 MC、english 15、m1／m2 各 17、math 30、history 38。
-  // 每科各取【最薄嗰幾個課題】各出一條，令冇課題停留喺 0–1 條。
-  // 課題全部係該科【已登記】課題 —— 冇新增課題，本閘會逐個核實。
-  // m1／m2／math 三科依憲章 §5 附 Casio fx-50FH II / 3650P 程式教學。
+  // 2026-09-25: 66 draft files previously listed here were deleted together with
+  // their review records (Yuna's instruction). All of them had already been
+  // promoted, and the live banks remain covered by topic-registration.test.mts.
+  // The entries below are drafts that have not been reviewed yet.
   'history-written-b4.json': 'history',
   'chinese-history-written-b4.json': 'chinese-history',
   'chinese-literature-written-b4.json': 'chinese-literature',

@@ -11,8 +11,7 @@
 //
 // 【2026-08-07 補譯】原有 25 條僅具中文欄位，英文介面的學生會看到中文題目。
 // 由 scripts/qbank/apply-translations.mjs 補入 contentEn / optionsEn / explanationEn：
-//   譯稿 : scripts/qbank/drafts/en-backfill-51.json
-//   覆核 : scripts/qbank/drafts/en-backfill-51.decisions.json（reviewer brian，逐條 approved）
+//   譯稿批次 : en-backfill-51（譯稿檔已於 2026-09-25 移除）
 // 選項多為純 LaTeX，兩種語言共用（與 bafs.ts 的 optm 約定一致）；僅 math_imp_052
 // 的「沒有最大值」屬中文，另譯為 "No maximum value"。
 // 中文內容、選項次序、correctIndex 一律零改動（腳本內設逐欄斷言把關）。

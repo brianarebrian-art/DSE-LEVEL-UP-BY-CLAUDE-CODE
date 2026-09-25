@@ -16,8 +16,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '題目係咪抄歷屆試題？', qEn: 'Are the questions copied from past papers?',
-    aZh: '唔係。所有題目都係對照課程及評估指引獨立改寫嘅原創題。歷屆試題版權屬 HKEAA，官方試題請到 HKEAA 網站。唔使淨係信我哋 —— 透明度頁列咗每一批經真人逐題審批嘅紀錄，連審批人同日期，數字亦係即時由題庫算出，唔係寫死。',
-    aEn: 'No. Every item is an original rewrite aligned to the syllabus and assessment guide. Past papers are HKEAA copyright — get those from the HKEAA site. You do not have to take our word for it: the transparency page lists every named, dated review batch, and the figures are computed live from the bank rather than hard-coded.',
+    aZh: '唔係。所有題目都係對照課程及評估指引獨立改寫嘅原創題。歷屆試題版權屬 HKEAA，官方試題請到 HKEAA 網站。透明度頁講清楚每條題目上線前要過邊啲自動檢查。',
+    aEn: 'No. Every item is an original rewrite aligned to the syllabus and assessment guide. Past papers are HKEAA copyright — get those from the HKEAA site. The transparency page sets out the automated checks every question passes before it goes live.',
   },
   {
     qZh: '答錯之後會點？', qEn: 'What happens after a wrong answer?',

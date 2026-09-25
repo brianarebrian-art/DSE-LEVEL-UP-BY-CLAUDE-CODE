@@ -231,8 +231,8 @@ export default function MethodologyClient() {
 
           <p className="text-sm text-ink-soft leading-relaxed border-t border-line pt-4">
             {locale === 'en'
-              ? 'And on the human/AI line: AI drafts and classifies; a person decides what goes live. Today 1.83% of live questions carry a named line-by-line approval record — we show that figure on every question rather than rounding it up.'
-              : '至於人同 AI 嘅分工：AI 出初稿同分類，出唔出街由人決定。今日 live 題目入面有 1.83% 帶實名逐題審批紀錄 —— 我哋喺每條題目下面照寫呢個數，唔會四捨五入上去。'}
+              ? 'And on the human/AI line: AI drafts and classifies; a person decides what goes live.'
+              : '至於人同 AI 嘅分工：AI 出初稿同分類，出唔出街由人決定。'}
           </p>
         </div>
 
