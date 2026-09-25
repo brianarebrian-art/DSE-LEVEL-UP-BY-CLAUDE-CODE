@@ -169,6 +169,20 @@ for (const [line, , , [id, zh, en]] of BRANCHES) reg(id, zh, en, line)
 
 export const STATIONS: Station[] = [...stationMap.values()]
 
+/**
+ * 呢條線真係有呢個站。`/api/exam-day/brief` 用佢做白名單。
+ *
+ * 2026-09-25 保安審計：嗰個 API 原本將網址嘅 `line`／`sta` 原封不動做
+ * 上游快取嘅 key（`mtr:${line}:${sta}`），而個快取 Map 冇上限 —— 有人不停換
+ * 亂碼，快取就一路脹，而且每個新 key 都真係打一次港鐵 API。
+ * 前端嘅 line／sta 一定係由呢份網絡圖行 planJourney 出嚟，所以白名單唔會
+ * 擋到正常用法；key 嘅數目亦因此封頂喺「站 × 線」嘅組合數。
+ */
+export function isKnownStop(line: string, sta: string): boolean {
+  const s = stationMap.get(sta)
+  return !!s && s.lines.includes(line)
+}
+
 /** 圖嘅節點係「車站＋線」，唔係淨係車站 —— 咁先分得出轉車嘅成本。 */
 const node = (sta: string, line: string) => `${sta}@${line}`
 const adj = new Map<string, { to: string; mins: number }[]>()

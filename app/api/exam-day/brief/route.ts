@@ -3,6 +3,7 @@ import {
   getWarnings, getCurrentWeather, getMtr, mtrDisrupted,
   type WarnSum, type MtrTrain, type RhrRead,
 } from '@/lib/examDay/upstream'
+import { isKnownStop } from '@/lib/examDay/network'
 
 // GET /api/exam-day/brief?line=TKL&sta=TKO
 //
@@ -114,8 +115,14 @@ const nextTrains = (t: MtrTrain[] | undefined) =>
 
 export async function GET(req: Request) {
   const q = new URL(req.url).searchParams
-  const line = q.get('line')
-  const sta = q.get('sta')
+  // 只收網絡圖入面真實存在嘅「線＋站」組合（見 lib/examDay/network.ts isKnownStop）。
+  // 唔認得就當冇揀港鐵：天氣同警告照出，唔回 400 —— 一個打錯站碼嘅請求
+  // 唔應該令學生連天氣都睇唔到。亦唔將唔認得嘅值原樣 echo 返出去。
+  const rawLine = q.get('line')
+  const rawSta = q.get('sta')
+  const known = !!rawLine && !!rawSta && isKnownStop(rawLine, rawSta)
+  const line = known ? rawLine : null
+  const sta = known ? rawSta : null
 
   // 每個上游獨立 settle：一個死唔應該拖冧成份 brief（§6.2 熔斷）。
   const [warnRes, wxRes, mtrRes] = await Promise.allSettled([
