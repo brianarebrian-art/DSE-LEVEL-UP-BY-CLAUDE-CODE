@@ -14,6 +14,9 @@ import { useEffect, useState } from 'react'
 // 只收：段位／EXP（PracticeRankCard）、溫習時數（StudyTimeInsight）；
 // 2026-09-26 起加埋 dashboard 頂部嘅分數行同四格數字卡（UX audit B5 (b)，
 // 驗證確認數字卡喺開關之前出現而且收唔到）。
+// 2026-09-26 Yuna 另外決定（B5）：練習頁嘅總時間（學生揀咗顯示都收）、
+// 答錯難題後自動彈出嘅情緒溫度計、結果頁嘅打氣牆（EncouragementWall）。
+// 「每題計時」掣保留，學生可以自己開。
 // 唔收：錯因雷達、正確率曲線 —— 嗰啲係學習資訊，唔係遊戲化或者計時壓力。
 // 規格書寫嘅「streak／排名」本身唔存在（no-daily-streak 測試、§16.E 約束 3），冇嘢可收。
 //

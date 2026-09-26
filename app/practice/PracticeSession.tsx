@@ -59,6 +59,7 @@ import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState
 import { weightedOrder } from '@/lib/empiricalWeighting'
 // 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
 import { readTimerPref, type TimerPref } from '@/lib/timerPreference'
+import { isQuiet, useQuiet } from '@/lib/quietMode'
 import {
   getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
   TIMER_OPTIONS, type TimerOption,
@@ -368,7 +369,9 @@ export default function PracticeSession({
   // UX audit B4 (b): the running clock is hidden unless the student turns it on (lib/timerPreference.ts).
   const [timerPref, setTimerPref] = useState<TimerPref>('default')
   const hideTimer = timerPref === 'hide'
-  const showElapsed = timerPref === 'show'
+  // Quiet mode (UX audit B5, Yuna 2026-09-26) also hides the running clock.
+  const quiet = useQuiet()
+  const showElapsed = timerPref === 'show' && !quiet
   useEffect(() => {
     const read = () => setTimerPref(readTimerPref())
     read()
@@ -486,7 +489,8 @@ export default function PracticeSession({
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
       // F-EMO: 拉分難度（hard = 5** 級）答錯 → 反思鎖之前先問感受
-      if (!isCorrect && currentQ.difficulty === 'hard') setEmoOpen(true)
+      // Not in quiet mode (UX audit B5, Yuna 2026-09-26): no automatic pop-up.
+      if (!isCorrect && currentQ.difficulty === 'hard' && !isQuiet()) setEmoOpen(true)
     },
     [answerState, currentQ]
   )

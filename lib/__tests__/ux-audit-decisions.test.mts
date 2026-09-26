@@ -48,7 +48,7 @@ test('B4: an explicit hide still hides; turning the clock on is remembered', () 
 
 test('B4: the practice page hides the running clock unless the student chose to show it', () => {
   const ps = read('app/practice/PracticeSession.tsx')
-  assert.match(ps, /const showElapsed = timerPref === 'show'/)
+  assert.match(ps, /const showElapsed = timerPref === 'show' && !quiet/)
   assert.match(ps, /\{showElapsed && \(\s*<span className="flex items-center gap-1">\s*<Clock/, 'elapsed clock must depend on showElapsed')
   // The per-question timer button stays available in the default state.
   assert.match(ps, /const hideTimer = timerPref === 'hide'/)
@@ -115,4 +115,14 @@ test('B5: the dashboard score line and stat cards are hidden in quiet mode, afte
   const toggle = src.indexOf('<QuietModeToggle />')
   const cards = src.indexOf('{statCards.map')
   assert.ok(toggle > 0 && toggle < cards, 'the toggle must come before the stat cards')
+})
+
+test('B5: quiet mode also hides the practice clock, the mood pop-up and the encouragement wall', () => {
+  const ps = read('app/practice/PracticeSession.tsx')
+  assert.match(ps, /const showElapsed = timerPref === 'show' && !quiet/)
+  assert.match(ps, /if \(!isCorrect && currentQ\.difficulty === 'hard' && !isQuiet\(\)\) setEmoOpen\(true\)/)
+  // The per-question timer button still depends only on an explicit hide.
+  assert.match(ps, /const hideTimer = timerPref === 'hide'/)
+  const result = read('app/result/ResultPageClient.tsx')
+  assert.match(result, /\{!quiet && <EncouragementWall \/>\}/)
 })

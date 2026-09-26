@@ -4,7 +4,7 @@ import { Moon } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { setQuiet, useQuiet } from '@/lib/quietMode'
 
-// Dashboard 嘅安靜模式開關。見 lib/quietMode.ts 檔頭：收埋分數、段位／EXP 同溫習時數。
+// Dashboard 嘅安靜模式開關。收埋乜嘢見 lib/quietMode.ts 檔頭。
 // 文案只講「收埋咩」，唔講「點解你需要」—— 無痕設計（Emma/UDL），唔出診斷字眼。
 export default function QuietModeToggle() {
   const { locale } = useLocale()
@@ -23,11 +23,11 @@ export default function QuietModeToggle() {
       <Moon size={14} aria-hidden className="shrink-0" />
       {quiet
         ? en
-          ? 'Quiet mode on: scores, rank, EXP and study time hidden'
-          : '安靜模式：已收埋分數、段位、EXP 同溫習時數'
+          ? 'Quiet mode on: scores, rank, clock, encouragement wall and mood pop-up hidden'
+          : '安靜模式：已收埋分數、段位、計時、打氣牆同心情彈窗'
         : en
-          ? 'Quiet mode: hide scores, rank, EXP and study time'
-          : '安靜模式：收埋分數、段位、EXP 同溫習時數'}
+          ? 'Quiet mode: hide scores, rank, clock, encouragement wall and mood pop-up'
+          : '安靜模式：收埋分數、段位、計時、打氣牆同心情彈窗'}
     </button>
   )
 }

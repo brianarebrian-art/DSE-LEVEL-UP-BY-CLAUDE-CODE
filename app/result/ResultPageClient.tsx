@@ -22,6 +22,7 @@ import { useLocale } from '@/lib/i18n'
 import { SITE_ORIGIN } from '@/lib/site'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
+import { useQuiet } from '@/lib/quietMode'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
 import { buildCauseCardData } from '@/lib/causeCard'
@@ -132,6 +133,8 @@ export default function ResultPageClient() {
   const [shared, setShared] = useState(false)
   const [reportCopied, setReportCopied] = useState(false)
   const [siteHost, setSiteHost] = useState('')
+  // Quiet mode hides the encouragement wall (UX audit B5, Yuna 2026-09-26).
+  const quiet = useQuiet()
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
@@ -640,7 +643,7 @@ export default function ResultPageClient() {
         </button>
 
         {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
-        <EncouragementWall />
+        {!quiet && <EncouragementWall />}
 
         {/* Disclaimer */}
         <p className="text-xs text-ink-muted text-center">
