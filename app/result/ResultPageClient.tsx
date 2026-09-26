@@ -6,6 +6,7 @@ import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lu
 import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
 import { gradeRange } from '@/lib/gradeConfidence'
 import MasteryEstimate from '@/components/MasteryEstimate'
+import { TIER_LEVEL_BANDS } from '@/lib/difficulty'
 import { discoveriesSince } from '@/lib/discovery/local-store'
 import { DISCOVERY_COPY, dimensionShort } from '@/lib/discovery/copy'
 import { DIMENSION_BY_ID } from '@/lib/discovery/dimensions'
@@ -195,6 +196,10 @@ export default function ResultPageClient() {
   ]
   const cardTiers = dr
     ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ label: m.label, correct: dr[m.key].correct, total: dr[m.key].total, color: m.color }))
+    : []
+  // Rows for the level-band section. Citizenship and Social Development has no levels.
+  const bandTiers = dr && !isBinaryGrade && result.subjectId !== 'csd'
+    ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ key: m.key, label: m.label, correct: dr[m.key].correct, total: dr[m.key].total }))
     : []
   const ratioSorted = [...result.topicResults].filter((tt) => tt.total > 0).sort((a, b) => b.correct / b.total - a.correct / a.total)
   const bestTopic = ratioSorted[0]
@@ -434,6 +439,33 @@ export default function ResultPageClient() {
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
         </div>
+
+        {/* This session by difficulty tier, with the level band each tier is written for.
+            The bands are the platform's estimate, so the note under them is not optional.
+            Citizenship and Social Development has no levels, so the section is skipped. */}
+        {bandTiers.length > 0 && (
+          <div className="bg-surface-raised border border-line rounded-2xl p-6">
+            <div className="text-sm font-medium text-ink mb-4">
+              {locale === 'en' ? 'This session by difficulty' : '本節分層表現'}
+            </div>
+            <div className="space-y-3">
+              {bandTiers.map((t) => (
+                <div key={t.key} className="flex items-baseline justify-between gap-3 text-sm">
+                  <span className="text-ink-soft">
+                    {t.label}
+                    <span className="text-ink-muted">{locale === 'en' ? ` (${TIER_LEVEL_BANDS[t.key].en})` : `（${TIER_LEVEL_BANDS[t.key].zh}）`}</span>
+                  </span>
+                  <span className="text-ink tabular-nums">{t.correct}/{t.total}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-ink-muted leading-relaxed">
+              {locale === 'en'
+                ? 'The level bands are our own estimate based on each question’s difficulty label, not an HKEAA standard. The labels are still being calibrated, so treat the bands as a rough guide.'
+                : '等級對應是本平台按題目難度標籤所作的估算，並非考評局標準。難度標籤仍在校準，現階段只供參考。'}
+            </p>
+          </div>
+        )}
 
         {/* 累積掌握度估算（等級預測 v3）。擺喺本節成績之下、課題分析之上：
             本節成績講「今次」，掌握度講「至今」，兩者要分得開。 */}

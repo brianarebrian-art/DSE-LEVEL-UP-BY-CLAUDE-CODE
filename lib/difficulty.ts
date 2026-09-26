@@ -70,3 +70,21 @@ export const TIER_REQUEST_LABELS: Record<Difficulty, { zh: string; en: string }>
   medium: { zh: DIFFICULTY_TIERS.medium.label ?? '進階', en: DIFFICULTY_TIERS.medium.labelEn ?? 'Advanced' },
   hard: { zh: '再深入啲', en: 'Go deeper' },
 }
+
+/**
+ * The DSE level band each difficulty tier is written for (Yuna, 2026-09-26).
+ *
+ * This is the platform's own estimate, not an HKEAA standard: the HKEAA level
+ * descriptors describe candidates, not individual questions. It is shown on
+ * the result page only, next to a note saying so, and never for Citizenship
+ * and Social Development, which is reported as attained / not attained.
+ *
+ * The bands are only as good as the difficulty labels, and those are still
+ * being calibrated (scripts/qbank/calibrate-topic-difficulty.mts found the
+ * three tiers statistically indistinguishable on 2026-09-10).
+ */
+export const TIER_LEVEL_BANDS: Record<Difficulty, { zh: string; en: string }> = {
+  easy: { zh: '約 2–3 級', en: 'about Level 2–3' },
+  medium: { zh: '約 4 級', en: 'about Level 4' },
+  hard: { zh: '約 5 級或以上', en: 'about Level 5 or above' },
+}
