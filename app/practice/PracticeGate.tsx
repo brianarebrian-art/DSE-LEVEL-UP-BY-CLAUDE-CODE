@@ -11,7 +11,7 @@ import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/l
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
-import { hasElectives, isTopicInScope, type ElectiveSelection } from '@/lib/electives'
+import { hasElectives, isQuestionInScope, type ElectiveSelection } from '@/lib/electives'
 import type { ReverseCause } from '@/lib/reverseLog'
 
 // Client-only quiz runner (uses Math.random/localStorage). The platform is 100%
@@ -186,9 +186,9 @@ export default function PracticeGate({
   )
 }
 
-function inScope<T extends { topic: string }>(bank: T[], subjectId: string, topicFilter: string | null, selKey: string): T[] {
+function inScope<T extends { id: string; topic: string }>(bank: T[], subjectId: string, topicFilter: string | null, selKey: string): T[] {
   if (topicFilter) return bank
   const sel = JSON.parse(selKey) as ElectiveSelection | null
-  const kept = bank.filter((q) => isTopicInScope(subjectId, q.topic, sel ?? undefined))
+  const kept = bank.filter((q) => isQuestionInScope(subjectId, q, sel ?? undefined))
   return kept.length ? kept : bank
 }

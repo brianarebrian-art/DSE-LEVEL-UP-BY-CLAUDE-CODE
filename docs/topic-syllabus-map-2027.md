@@ -250,7 +250,7 @@
 | `accounting` | 會計 | 105 | 必修 | 商管組必修 Basics of Accounting（p.21、p.32）；會計組選修 |
 | `financial_mgmt` | 財務管理 | 99 | 選修 | 商管組選修 Financial Management（p.35） |
 | `personal_finance` | 個人理財 | 134 | 必修 | 兩組共同必修：Basics of Personal Financial Management（p.24） |
-| `bafs_ratio_analysis` | 比率分析（高階） | 90 | 選修 | 會計組選修（p.29）；全文只在此頁出現比率分析 |
+| `bafs_ratio_analysis` | 比率分析（高階） | 90 | 選修 | 會計組選修（p.29）；商管組選修財務管理亦有比率分析（p.25–26），2026-09-26 更正（原寫「全文只在此頁出現」） |
 | `bafs_costing_pricing` | 成本・定價・回本 | 86 | 選修 | 會計組選修 Cost Accounting（p.29–30）；回本期另見商管組 p.35 |
 | `bafs_depreciation` | 折舊計算 | 103 | 選修 | 會計組選修（p.26–27）；全文只在此兩頁出現折舊 |
 | `financial_statements` | 財務報表 | 99 | 部分 | 會計組選修（p.26–29）；商管組必修只涉基礎（p.32） |
