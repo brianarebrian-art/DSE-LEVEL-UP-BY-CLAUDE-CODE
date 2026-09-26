@@ -1,4 +1,5 @@
 import { loadFromCloud } from '@/lib/questionCloud'
+import { BANK_VERSION } from './bank-versions.generated'
 import type { AnyQuestion, MCQuestion, Question, WrittenQuestion } from './types'
 
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
@@ -214,15 +215,17 @@ const autoLoaders: Record<string, Loader> = {
 // 逐個動手術改錯一次即會令整科題目消失。一科可有多批（例如 m1 三批），
 // 故此表的值為陣列。
 //
-// ⚠️ 此表與 autoLoaders【不可混用】：此處每一條題目在 data/provenance.ts 都有
-//    實名逐題審批紀錄，autoLoaders 那批沒有。前端 QuestionProvenance 依此
-//    如實顯示，混用即等於為未經審批的題目假稱有人簽過名。
+// ⚠️ 此表與 autoLoaders【不可混用】：此處的題目均經 drafts 管線由真人批准後入庫，
+//    autoLoaders 那批只通過機器閘。
+//    2026-09-25 起，此日期之前的審批紀錄已按 Yuna 指示刪除，data/provenance.ts
+//    只收錄其後新簽署的批次（首批為 bafs-accounts-b1，2026-09-26）。
 const reviewedLoaders: Record<string, Loader[]> = {
   'bafs': [
     async () => (await import('./bafs-batch-2-reviewed')).bafsBatch2ReviewedQuestions,
     async () => (await import('./bafs-floor-reviewed')).bafsFloorReviewedQuestions,
     async () => (await import('./bafs-long-b1-reviewed')).bafsLongB1ReviewedQuestions,
     async () => (await import('./bafs-written-b1-reviewed')).bafsWrittenB1ReviewedQuestions,
+    async () => (await import('./bafs-accounts-b1-reviewed')).bafsAccountsB1ReviewedQuestions,
   ],
   'biology': [
     async () => (await import('./biology-floor-reviewed')).biologyFloorReviewedQuestions,
@@ -352,7 +355,9 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   //    此為刻意設計：`loadSubjectQuestions` 亦有 server 呼叫者（subjects/[subject]
   //    的 RSC、/api/result/verify），它們在同一 process 內本已持有靜態題庫，
   //    改行網絡只會由「零延遲」變成「一個 round trip 加一個故障點」。
-  const cloud = await loadFromCloud(subjectId)
+  //    The cloud copy is used only when its version matches this build's
+  //    (bank-versions.generated.ts); otherwise the bundled chunk below is used.
+  const cloud = await loadFromCloud(subjectId, BANK_VERSION[subjectId])
   if (cloud?.length) return cloud
 
   // ② 回落靜態 chunk。此路徑【並未移除】，亦不得移除：

@@ -8,6 +8,9 @@
 //   ② 分頁攞題被簡化成一個 GET      → 最大嗰科靜靜哋少咗五百幾條
 //   ③ questionCloud 加入寫入        → 繞過憲章 §12 嘅覆核管線
 //   ④ sync script 加 pull 模式      → 正本方向倒轉，改題目冇 diff 冇 blame
+//   ⑤ (2026-09-25) a cloud copy whose version differs from the build is used
+//      anyway → students practise a stale bank. This happened: the cloud stayed
+//      at 2026-09-05, 1,117 questions behind, and was served for three weeks.
 // ============================================================================
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
@@ -64,4 +67,48 @@ test('④ 同步方向單向 —— sync script 唔准寫返 data/questions/', (
   assert.ok(!/writeFileSync|appendFileSync|mkdirSync/.test(src),
     'sync-questions.mts 出現檔案寫入 —— 雲端唔可以倒流返正本')
   assert.match(src, /方向係【單向】/, '單向聲明唔見咗')
+})
+
+test('⑤ 雲端版本同 build 唔一致就唔用雲端（連下載都唔好下載）', async () => {
+  const g = globalThis as Record<string, unknown>
+  const saved = { window: g.window, fetch: g.fetch, url: process.env.NEXT_PUBLIC_SUPABASE_URL, anon: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY }
+  // questionCloud reads the env at import time, and needs a `window` to enable itself.
+  process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://example.supabase.co'
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'anon'
+  g.window = globalThis
+  const calls: string[] = []
+  g.fetch = async (url: string) => {
+    calls.push(url)
+    if (url.includes('question_bank_versions')) return new Response(JSON.stringify([{ version: 'cloud-v' }]))
+    return new Response(JSON.stringify([{ data: { id: 'q1' } }]))
+  }
+  try {
+    const ns = await import('../questionCloud.ts') as Record<string, unknown>
+    const mod = ((ns.default as Record<string, unknown>)?.loadFromCloud ? ns.default : ns) as {
+      loadFromCloud: (subject: string, expected?: string) => Promise<unknown[] | null>
+    }
+    const bankFetches = () => calls.filter((u) => u.includes('/rest/v1/questions?')).length
+
+    // Stale (or ahead): the caller must fall back to the bundled chunk.
+    assert.equal(await mod.loadFromCloud('math', 'build-v'), null)
+    assert.equal(bankFetches(), 0, 'downloaded a bank it was going to discard')
+
+    // Matching: the cloud copy is used.
+    assert.deepEqual(await mod.loadFromCloud('math', 'cloud-v'), [{ id: 'q1' }])
+    assert.equal(bankFetches(), 1)
+
+    // No expected version (subject missing from BANK_VERSION): previous behaviour.
+    assert.deepEqual(await mod.loadFromCloud('math'), [{ id: 'q1' }])
+  } finally {
+    g.window = saved.window
+    g.fetch = saved.fetch
+    process.env.NEXT_PUBLIC_SUPABASE_URL = saved.url
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = saved.anon
+  }
+})
+
+test('⑤ load.ts 將 build 嘅版本號傳畀 loadFromCloud', () => {
+  const src = read('data/questions/load.ts')
+  assert.match(src, /loadFromCloud\(subjectId, BANK_VERSION\[subjectId\]\)/,
+    'load.ts 冇傳版本號 —— 雲端副本過時都會照用')
 })

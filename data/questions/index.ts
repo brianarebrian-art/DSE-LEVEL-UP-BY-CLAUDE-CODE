@@ -125,6 +125,7 @@ import { bafsBatch2ReviewedQuestions } from './bafs-batch-2-reviewed'
 import { bafsFloorReviewedQuestions } from './bafs-floor-reviewed'
 import { bafsLongB1ReviewedQuestions } from './bafs-long-b1-reviewed'
 import { bafsWrittenB1ReviewedQuestions } from './bafs-written-b1-reviewed'
+import { bafsAccountsB1ReviewedQuestions } from './bafs-accounts-b1-reviewed'
 import { biologyFloorReviewedQuestions } from './biology-floor-reviewed'
 import { biologyLongB1ReviewedQuestions } from './biology-long-b1-reviewed'
 import { biologyWrittenB1ReviewedQuestions } from './biology-written-b1-reviewed'
@@ -273,7 +274,7 @@ const autoBanks: Record<string, AnyQuestion[]> = {
 // 與 autoBanks 分開兩張表而不合併：此處每題在 data/provenance.ts 都有實名逐題
 // 審批紀錄，autoBanks 那批沒有。合併之後就再分不出邊條有人簽過名。
 const reviewedBanks: Record<string, AnyQuestion[]> = {
-  'bafs': [...bafsBatch2ReviewedQuestions, ...bafsFloorReviewedQuestions, ...bafsLongB1ReviewedQuestions, ...bafsWrittenB1ReviewedQuestions],
+  'bafs': [...bafsBatch2ReviewedQuestions, ...bafsFloorReviewedQuestions, ...bafsLongB1ReviewedQuestions, ...bafsWrittenB1ReviewedQuestions, ...bafsAccountsB1ReviewedQuestions],
   'biology': [...biologyFloorReviewedQuestions, ...biologyLongB1ReviewedQuestions, ...biologyWrittenB1ReviewedQuestions, ...biologyWrittenB2ReviewedQuestions],
   'chemistry': [...chemistryLongB1ReviewedQuestions, ...chemistryWrittenB1ReviewedQuestions, ...chemistryWrittenB2ReviewedQuestions],
   'chinese': [...chineseFanwenWeakBatch2ReviewedQuestions, ...chineseP1FillinReviewedQuestions, ...chineseWritingB1ReviewedQuestions, ...chineseWritingB2ReviewedQuestions, ...chineseWritingB3ReviewedQuestions, ...chineseWritingB4ReviewedQuestions],

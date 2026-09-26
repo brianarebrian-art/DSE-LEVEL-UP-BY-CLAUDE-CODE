@@ -32,14 +32,19 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const idx = await import(join(ROOT, 'data/questions/index.ts')) as {
-  getSubjectQuestions: (id: string) => { type?: string }[]
+  getSubjectQuestions: (id: string) => ({ type?: string } & Record<string, unknown>)[]
   getSubjectTopics: (id: string) => Record<string, unknown>[]
 }
 const { subjects } = await import(join(ROOT, 'data/subjects.ts')) as {
   subjects: { id: string; isActive?: boolean }[]
 }
 
+const { versionOf } = await import(join(ROOT, 'scripts/qbank/bank-version.mts')) as {
+  versionOf: (qs: Record<string, unknown>[]) => string
+}
+
 const active = subjects.filter((s) => s.isActive !== false)
+const versions: Record<string, string> = {}
 
 const summary: Record<string, { total: number; mc: number; written: number; topics: number }> = {}
 const topics: Record<string, unknown[]> = {}
@@ -49,6 +54,7 @@ for (const s of active) {
   const mc = qs.filter((q) => (q.type ?? 'mc') === 'mc').length
   const ts = idx.getSubjectTopics(s.id)
   summary[s.id] = { total: qs.length, mc, written: qs.length - mc, topics: ts.length }
+  versions[s.id] = versionOf(qs)
   // 只帶【呈現同篩選】需要嘅欄位。刻意逐個列出而唔係整個 spread ——
   // Topic 將來加欄位唔應該靜靜哋令呢個檔發脹。
   topics[s.id] = ts.map((t) => ({
@@ -95,5 +101,22 @@ export const TOTAL_QUESTIONS = ${total}
 const dest = join(ROOT, 'data/questions/summary.generated.ts')
 writeFileSync(dest, out)
 console.log(`✓ data/questions/summary.generated.ts`)
+
+// Kept in a separate file on purpose: data/questions/load.ts imports it, and
+// load.ts is part of the practice page bundle. Importing summary.generated.ts
+// there would add its topic lists (about 50KB) to every practice page.
+const versionsOut = `// ⚠️ 本檔由 scripts/gen-question-summary.mts 產生 —— 請勿手動修改。
+// 重新產生：npm run gen:summary
+// 迴歸鎖：data/questions/__tests__/summary-parity.test.mts
+//
+// 每科題庫內容的雜湊，算法見 scripts/qbank/bank-version.mts（與 sync-questions.mts 共用）。
+// 瀏覽器只會在雲端版本號與此處一致時使用 Supabase 副本，否則使用隨網站一併建置的題庫。
+// 原因：2026-09-25 發現雲端副本停留於 09-05，比 repo 少 1,117 條，而學生一直在做舊版本。
+
+/** 科目 id → 題庫內容版本號（與 Supabase question_bank_versions.version 同一算法）。 */
+export const BANK_VERSION: Record<string, string> = ${JSON.stringify(versions, null, 2)}
+`
+writeFileSync(join(ROOT, 'data/questions/bank-versions.generated.ts'), versionsOut)
+console.log(`✓ data/questions/bank-versions.generated.ts`)
 console.log(`  ${active.length} 科 · ${Object.values(summary).reduce((n, v) => n + v.topics, 0)} 個課題 · ${total} 條題目`)
 console.log(`  檔案大小 ${(out.length / 1024).toFixed(0)}KB`)

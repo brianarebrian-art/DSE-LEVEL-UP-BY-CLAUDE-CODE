@@ -67,7 +67,7 @@ export default function LongQuestionCard({
         ) : null}
       </div>
 
-      <div className="text-sm sm:text-base text-ink leading-relaxed mb-4">
+      <div className="text-sm sm:text-base text-ink leading-relaxed mb-4 whitespace-pre-line">
         <MathText>{tr(q.content, q.contentEn)}</MathText>
       </div>
 
@@ -119,7 +119,7 @@ export default function LongQuestionCard({
             <ChevronDown size={16} aria-hidden className={`text-accent transition-transform ${showAnswer ? 'rotate-180' : ''}`} />
           </button>
           {showAnswer && (
-            <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2">
+            <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
               <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn)}</MathText>
             </div>
           )}
@@ -135,7 +135,7 @@ export default function LongQuestionCard({
                 <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showScheme ? 'rotate-180' : ''}`} />
               </button>
               {showScheme && (
-                <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2">
+                <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
                   <MathText>{tr(q.markingScheme, q.markingSchemeEn)}</MathText>
                 </div>
               )}
@@ -153,7 +153,7 @@ export default function LongQuestionCard({
                 <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showWhy ? 'rotate-180' : ''}`} />
               </button>
               {showWhy && (
-                <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2">
+                <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
                   <MathText>{tr(q.explanation, q.explanationEn)}</MathText>
                 </div>
               )}
