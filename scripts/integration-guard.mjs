@@ -47,6 +47,15 @@ walk('lib')
 walk('data')
 
 const src = new Map(files.map((f) => [f, readFileSync(join(ROOT, f), 'utf8')]))
+
+// Next.js 按慣例自己載入嘅根目錄檔 —— 佢哋係真正嘅「使用者」，但唔喺上面
+// 四個目錄入面。只當佢哋係 importer（加入 src），唔會拎佢哋去檢查有冇接線。
+// 2026-09-25：proxy.ts 改用 lib/rateLimit.ts 之後，個閘誤報「模組冇被任何地方
+// import」—— 唔係冇接線，係個閘睇唔到 proxy.ts。修個閘，唔加豁免：一個
+// 靠豁免過關嘅閘，下一個真係冇接線嘅模組都會一樣靠豁免過關。
+for (const f of ['proxy.ts', 'auth.ts', 'instrumentation.ts', 'next.config.ts']) {
+  if (existsSync(join(ROOT, f))) src.set(f, readFileSync(join(ROOT, f), 'utf8'))
+}
 const findings = []
 
 // ── ① components/ ──────────────────────────────────────────────────────────

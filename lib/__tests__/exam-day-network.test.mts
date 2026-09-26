@@ -131,3 +131,42 @@ test('站代碼一律轉到中／英名，唔會原封不動出街', () => {
   assert.equal(stationLabel('LOW'), '羅湖')
   assert.equal(stationLabel('LMC', true), 'Lok Ma Chau')
 })
+
+// ── isKnownStop：/api/exam-day/brief 嘅白名單（2026-09-25 保安審計）──────────
+// 嗰個 API 原本將網址 line／sta 原樣做快取 key，快取 Map 冇上限，
+// 每個新 key 仲會打一次港鐵 API。白名單要做到兩件事：
+//   ① 前端可能送嘅每一個組合都要放行（否則學生睇唔到下一班車）
+//   ② 其餘一律擋
+
+test('isKnownStop：網絡圖入面每一個「線＋站」都放行', () => {
+  let n = 0
+  for (const s of net.STATIONS) for (const l of s.lines) { assert.ok(net.isKnownStop(l, s.id), `${l}:${s.id}`); n++ }
+  assert.ok(n > 50, `組合數太少（${n}），網絡圖可能冇載入`)
+})
+
+test('isKnownStop：前端真正送出去嘅 boardLine＋boardStation 全部放行', () => {
+  // ExamDayClient.tsx 用 journey.boardLine／boardStation 叫 API —— 行晒全部起訖組合
+  const ids = net.STATIONS.map((s) => s.id)
+  let n = 0
+  for (const from of ids) for (const to of ids) {
+    const j = net.planJourney(from, to)
+    if (!j) continue
+    n++
+    // 第一程係行路轉車（中環行去香港站之類）嘅路線，boardLine 係 'WALK'。
+    // WALK 唔係港鐵線：港鐵 API 對佢回 {"status":0,"message":"WALK line is disabled in CMS."}
+    // （2026-09-25 實測），而 mtrDisrupted() 見 status !== 1 就當受阻 ——
+    // 即係白名單之前，呢批學生考試朝早會見到一個【假嘅港鐵受阻警告】。擋走佢係啱嘅。
+    if (j.boardLine === 'WALK') { assert.equal(net.isKnownStop(j.boardLine, j.boardStation), false); continue }
+    assert.ok(net.isKnownStop(j.boardLine, j.boardStation), `${from}→${to}: ${j.boardLine}:${j.boardStation}`)
+  }
+  assert.ok(n > 1000, `行咗 ${n} 條路線，太少`)
+})
+
+test('isKnownStop：亂碼、錯配、注入字串一律擋（負向自測）', () => {
+  assert.equal(net.isKnownStop('TKL', 'ZZZ'), false)
+  assert.equal(net.isKnownStop('XYZ', 'TKO'), false)
+  assert.equal(net.isKnownStop('EAL', 'TKO'), false, '東鐵綫冇將軍澳站')
+  assert.equal(net.isKnownStop('TKL', 'TKO&line=EAL'), false)
+  assert.equal(net.isKnownStop('', ''), false)
+  assert.equal(net.isKnownStop('WALK', 'CEN'), false, 'WALK 唔係港鐵線，港鐵 API 會回 status 0')
+})
