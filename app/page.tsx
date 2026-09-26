@@ -179,8 +179,6 @@ export default function HomePage() {
             {locale === 'en' ? ' subjects' : ' 科'}
           </span>
           <span aria-hidden className="text-ink-faint">·</span>
-          <span>{locale === 'en' ? 'Written papers not covered' : '書寫卷未涵蓋'}</span>
-          <span aria-hidden className="text-ink-faint">·</span>
           <span>{locale === 'en' ? 'Not affiliated with the HKEAA' : '與考評局無從屬關係'}</span>
           <span aria-hidden className="text-ink-faint">·</span>
           <Link href="/trust" className="font-medium text-accent-strong underline underline-offset-2">

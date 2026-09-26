@@ -36,6 +36,7 @@ import type { Dictionary } from '@/lib/dictionary'
 // F-NTM: 今晚唔溫得（本地 until-04:00 開關）
 import { isNotTonight, setNotTonight } from '@/lib/notTonight'
 import { isRestDayToday } from '@/lib/restDay'
+import { useQuiet } from '@/lib/quietMode'
 // F-PRG / F-DNA / F-REV: 學習光譜 + 錯因雷達 + 重溫排程（全部純本地數據）
 import DailySpectrum from '@/components/DailySpectrum'
 import ErrorRadar from '@/components/ErrorRadar'
@@ -73,6 +74,8 @@ export default function DashboardPageClient() {
   // F-NTM: 今晚唔溫得 — 開啟時 Dashboard 收起所有推送／計數，只顯示休息畫面
   const [ntm, setNtm] = useState(false)
   const [restDay, setRestDay] = useState(false)
+  // UX audit B5 (b): quiet mode also hides the score line and the stat cards.
+  const quiet = useQuiet()
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
@@ -290,9 +293,11 @@ export default function DashboardPageClient() {
         <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
           <div>
             <h1 className="text-3xl sm:text-4xl font-serif mb-1 text-ink">{d.title}</h1>
-            <p className="text-ink-muted text-sm">
-              {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
-            </p>
+            {!quiet && (
+              <p className="text-ink-muted text-sm">
+                {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
+              </p>
+            )}
           </div>
           {/* ⚠️ flex-wrap 唔可以剷。2026-09-13 喺 375px 實測：四個掣被 flex 壓到
               75–82px 闊，中文標籤逐字斷行 ——「我嘅收藏」四個字佔咗【五行】
@@ -334,6 +339,10 @@ export default function DashboardPageClient() {
           </div>
         </div>
 
+        {/* Quiet mode toggle (lib/quietMode.ts), placed before the stat cards so a
+            student can hide the numbers before seeing them (UX audit B5 (b)). */}
+        <QuietModeToggle />
+
         {/* Cross-device sync status (replaces the old on-device teaser) */}
         <SyncStatus />
 
@@ -342,22 +351,21 @@ export default function DashboardPageClient() {
             冇提示時組件自行回傳 null，唔會留低空殼。 */}
         <TodayNote className="mb-10" />
 
-        {/* Stat cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
-          {statCards.map((c) => (
-            <div key={c.label} className="bg-surface-raised border border-line rounded-2xl p-5">
-              <c.icon size={18} className={`${c.accent} mb-3`} />
-              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                {c.value}
-                <span className="text-sm text-ink-muted font-normal ml-1">{c.unit}</span>
+        {/* Stat cards, hidden in quiet mode */}
+        {!quiet && (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+            {statCards.map((c) => (
+              <div key={c.label} className="bg-surface-raised border border-line rounded-2xl p-5">
+                <c.icon size={18} className={`${c.accent} mb-3`} />
+                <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                  {c.value}
+                  <span className="text-sm text-ink-muted font-normal ml-1">{c.unit}</span>
+                </div>
+                <div className="text-xs text-ink-muted mt-1">{c.label}</div>
               </div>
-              <div className="text-xs text-ink-muted mt-1">{c.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* 安靜模式開關（lib/quietMode.ts）—— 擺喺數字卡之前，學生未見到數字就可以先揀收埋 */}
-        <QuietModeToggle />
+            ))}
+          </div>
+        )}
 
         {/* 今日節奏（Night Study 模板「Today's rhythm」）。
             模板嘅 dashboard 畫咗五格，其餘四格呢頁本身已經有（近 30 日統計卡、

@@ -293,7 +293,7 @@ const zh = {
     topicWrittenBadge: '書寫題',
     topicWrittenCountB: ' 條書寫題 · 自評制',
     crossTitle: '想練其他科？',
-    crossLiveSuffix: '都有 MC 練習；書寫題未涵蓋',
+    crossLiveSuffix: '都有練習',
     crossAll: '全部科目',
   },
   result: {
@@ -735,7 +735,7 @@ const en: typeof zh = {
     topicWrittenBadge: 'Written',
     topicWrittenCountB: ' written questions · self-assessed',
     crossTitle: 'Want to practise another subject?',
-    crossLiveSuffix: ' have MC practice; written papers are not covered',
+    crossLiveSuffix: ' have practice too',
     crossAll: 'All subjects',
   },
   result: {
