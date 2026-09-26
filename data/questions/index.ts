@@ -1,4 +1,6 @@
 import type { AnyQuestion, MCQuestion, Topic, WrittenQuestion } from './types'
+import { applyDifficultyOverrides } from './family'
+import { DIFFICULTY_OVERRIDES } from './difficulty-overrides.generated'
 import { mathQuestions, mathTopics } from './math'
 import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
@@ -300,13 +302,23 @@ const reviewedBanks: Record<string, AnyQuestion[]> = {
   'visual-arts': [...visualArtsWrittenB1ReviewedQuestions, ...visualArtsWrittenB3ReviewedQuestions],
 }
 
-/** 該科全部題目（MC + 書寫題）。計數／課題統計用。 */
-export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
+/**
+ * The bank exactly as written in the source files, before family difficulty
+ * overrides. Only scripts/qbank/gen-difficulty-overrides.mts should call this:
+ * it derives the overrides from the original labels, so it must not read its
+ * own output.
+ */
+export function getSubjectQuestionsRaw(subjectId: string): AnyQuestion[] {
   const base = banks[subjectId]?.questions ?? []
   const extra = autoBanks[subjectId]
   const reviewed = reviewedBanks[subjectId]
   if (!extra?.length && !reviewed?.length) return base
   return [...base, ...(extra ?? []), ...(reviewed ?? [])]
+}
+
+/** 該科全部題目（MC + 書寫題）。計數／課題統計用。Family difficulty overrides applied (data/questions/family.ts). */
+export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
+  return applyDifficultyOverrides(getSubjectQuestionsRaw(subjectId), DIFFICULTY_OVERRIDES[subjectId])
 }
 
 /**
