@@ -72,7 +72,7 @@ export default function TrustClient() {
           record", was removed on 2026-09-25 when the review records were deleted. */}
       <div className="mb-8 grid grid-cols-2 gap-3">
         {[
-          { n: total.toLocaleString(), l: en ? 'rewritten MC questions' : '條改寫 MC 題' },
+          { n: total.toLocaleString(), l: en ? 'rewritten questions' : '條改寫題目' },
           { n: String(subjects.length), l: en ? 'subjects with MC practice' : '科有 MC 練習' },
         ].map((s) => (
           <div key={s.l} className="rounded-xl border border-line bg-surface-raised p-3 text-center">
