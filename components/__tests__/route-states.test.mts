@@ -119,7 +119,9 @@ test('頂部導覽收成四條內容入口，並且 /bookmarks 有咗入口', ()
   const start = src.indexOf('}[] = [', src.indexOf('const navLinks'))
   const block = src.slice(start, src.indexOf('\n]', start))
   const hrefs = [...block.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
-  assert.deepEqual(hrefs, ['/subjects', '/dashboard', '/bookmarks', '/notes'])
+  // 2026-09-26 Yuna：「不考之地」加喺最尾。navLinks 自 2026-09-03 起只供三橫選單用
+  // （橫向連結已搬去側欄），多一條唔影響橫向導覽闊度。
+  assert.deepEqual(hrefs, ['/subjects', '/dashboard', '/bookmarks', '/notes', '/off-syllabus'])
   // /bookmarks 本來喺全站導覽入面一個入口都冇 —— 唔好又剷走。
   assert.ok(hrefs.includes('/bookmarks'), '/bookmarks 又冇咗導覽入口')
 })
