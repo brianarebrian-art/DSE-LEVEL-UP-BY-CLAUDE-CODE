@@ -16,7 +16,7 @@ export const BANK_VERSION: Record<string, string> = {
   "biology": "ef7363b0127fd008",
   "english": "58c6898ca40e1597",
   "chinese": "cfa2fd972b82aee7",
-  "bafs": "58e17aa0481d747c",
+  "bafs": "695714705309b8c5",
   "ict": "bb2f7a41cf70393c",
   "economics": "32060ce53af546ef",
   "csd": "38e4803d800584de",

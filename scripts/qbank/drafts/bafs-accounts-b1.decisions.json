@@ -2,14 +2,20 @@
   "_meta": {
     "source": "bafs-accounts-b1.json",
     "subject": "bafs",
-    "reviewer": "",
-    "reviewedAt": ""
+    "reviewer": "brian",
+    "reviewedAt": "2026-09-26",
+    "timing": {
+      "totalSeconds": 53,
+      "decisions": 5,
+      "medianSecondsPerQuestion": 4,
+      "fastestSeconds": 3.4
+    }
   },
   "decisions": {
-    "bafs_acct_b1_01": "pending",
-    "bafs_acct_b1_02": "pending",
-    "bafs_acct_b1_03": "pending",
-    "bafs_acct_b1_04": "pending",
-    "bafs_acct_b1_05": "pending"
+    "bafs_acct_b1_01": "approved",
+    "bafs_acct_b1_02": "approved",
+    "bafs_acct_b1_03": "approved",
+    "bafs_acct_b1_04": "approved",
+    "bafs_acct_b1_05": "approved"
   }
 }

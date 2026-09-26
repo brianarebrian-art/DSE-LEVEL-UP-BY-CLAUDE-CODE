@@ -69,9 +69,9 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 19
   },
   "bafs": {
-    "total": 1156,
+    "total": 1161,
     "mc": 1046,
-    "written": 110,
+    "written": 115,
     "topics": 13
   },
   "ict": {
@@ -1562,9 +1562,9 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "會計",
       "frameworkEn": "Accounting",
       "emoji": "📒",
-      "count": 99,
+      "count": 104,
       "mcCount": 98,
-      "writtenCount": 1
+      "writtenCount": 6
     },
     {
       "id": "ratios",
@@ -3505,4 +3505,4 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數。 */
-export const TOTAL_QUESTIONS = 27321
+export const TOTAL_QUESTIONS = 27326

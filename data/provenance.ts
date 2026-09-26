@@ -16,7 +16,11 @@ export interface ReviewRecord {
 
 /** 題目 id → 實名審批紀錄。 */
 export const REVIEWED: Record<string, ReviewRecord> = {
-
+  "bafs_acct_b1_01": { reviewer: "brian", reviewedAt: "2026-09-26", batch: "bafs-accounts-b1" },
+  "bafs_acct_b1_02": { reviewer: "brian", reviewedAt: "2026-09-26", batch: "bafs-accounts-b1" },
+  "bafs_acct_b1_03": { reviewer: "brian", reviewedAt: "2026-09-26", batch: "bafs-accounts-b1" },
+  "bafs_acct_b1_04": { reviewer: "brian", reviewedAt: "2026-09-26", batch: "bafs-accounts-b1" },
+  "bafs_acct_b1_05": { reviewer: "brian", reviewedAt: "2026-09-26", batch: "bafs-accounts-b1" },
 }
 
 export interface ReviewBatch {
@@ -29,11 +33,11 @@ export interface ReviewBatch {
 
 /** 逐批彙總，供透明度頁顯示。 */
 export const REVIEW_BATCHES: ReviewBatch[] = [
-
+  { batch: "bafs-accounts-b1", subject: "bafs", reviewer: "brian", reviewedAt: "2026-09-26", approved: 5 },
 ]
 
 /** 有實名審批紀錄嘅題目總數。 */
-export const REVIEWED_COUNT = 0
+export const REVIEWED_COUNT = 5
 
 /** 查一條題目有冇實名審批紀錄。冇 = 回 undefined，唔會拗直。 */
 export const getReviewRecord = (questionId: string): ReviewRecord | undefined =>
