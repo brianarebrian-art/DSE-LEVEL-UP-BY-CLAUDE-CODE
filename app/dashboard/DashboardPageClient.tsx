@@ -35,6 +35,7 @@ import { useSync } from '@/components/SyncProvider'
 import type { Dictionary } from '@/lib/dictionary'
 // F-NTM: 今晚唔溫得（本地 until-04:00 開關）
 import { isNotTonight, setNotTonight } from '@/lib/notTonight'
+import { isRestDayToday } from '@/lib/restDay'
 // F-PRG / F-DNA / F-REV: 學習光譜 + 錯因雷達 + 重溫排程（全部純本地數據）
 import DailySpectrum from '@/components/DailySpectrum'
 import ErrorRadar from '@/components/ErrorRadar'
@@ -71,6 +72,7 @@ export default function DashboardPageClient() {
   const [confirmReset, setConfirmReset] = useState(false)
   // F-NTM: 今晚唔溫得 — 開啟時 Dashboard 收起所有推送／計數，只顯示休息畫面
   const [ntm, setNtm] = useState(false)
+  const [restDay, setRestDay] = useState(false)
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
@@ -123,6 +125,16 @@ export default function DashboardPageClient() {
     return () => window.removeEventListener('dse-ntm', read)
   }, [])
 
+  // UX audit B1 (a), Yuna 2026-09-21: a rest day the student chose is a full rest page, like
+  // not-tonight, instead of one quiet card on a page that keeps offering tasks.
+  // RestDayPicker dispatches dse-rest-day, so a change in another tab applies here too.
+  useEffect(() => {
+    const read = () => setRestDay(isRestDayToday())
+    read()
+    window.addEventListener('dse-rest-day', read)
+    return () => window.removeEventListener('dse-rest-day', read)
+  }, [])
+
   // #117：進度全部住喺 localStorage，只可以 mount 之後先讀，所以呢一格必然出現。
   // 原本得一句置中「載入中」，慢機上係一閃而過嘅空白；改為骨架屏，版面唔會跳。
   if (!stats) {
@@ -158,6 +170,40 @@ export default function DashboardPageClient() {
           {en ? 'Turn off early' : '提早關閉呢個模式'}
         </button>
         <p className="text-xs text-ink-muted">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
+      </div>
+    )
+  }
+
+  // Rest day: no tasks, no counts. The small link lets a student do one question anyway,
+  // and nothing about the choice is recorded.
+  if (restDay) {
+    const last = stats.recent[0]?.subjectId
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
+        <div className="text-6xl" aria-hidden>🌿</div>
+        <h1 className="text-2xl font-serif text-ink">{en ? 'Today is one of your rest days' : '今日係你自己揀咗嘅休息日'}</h1>
+        <p className="text-ink-muted leading-relaxed max-w-sm">
+          {en
+            ? 'Nothing is waiting for you here. Rest is part of the plan, not a gap in it.'
+            : '呢度冇嘢等緊你。休息本身就係計劃嘅一部分，唔係一個缺口。'}
+          <br />
+          {en ? 'Your progress is saved.' : '你嘅進度已經儲好。'}
+        </p>
+        <Link
+          href="/relax"
+          className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-all"
+        >
+          🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
+        </Link>
+        <Link
+          href={last ? `/practice?subject=${encodeURIComponent(last)}&size=1` : '/subjects'}
+          className="min-h-11 inline-flex items-center text-sm text-ink-muted hover:text-accent underline underline-offset-4 transition-colors"
+        >
+          {en ? 'I still feel like doing one' : '今日想做少少都得'}
+        </Link>
+        <Link href="/account" className="text-xs text-ink-muted hover:text-accent underline underline-offset-4">
+          {en ? 'Change my rest days' : '更改休息日'}
+        </Link>
       </div>
     )
   }

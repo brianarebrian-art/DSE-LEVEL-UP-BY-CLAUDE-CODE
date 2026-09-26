@@ -75,3 +75,16 @@ test('B2: the repeat-pattern card is gold and framed as a finding, and concept b
   const conceptColour = src.match(/zh: '概念盲區', en: 'Concept blind spot', color: '(#[0-9A-Fa-f]{6})'/)?.[1]
   assert.equal(conceptColour, '#6D28D9', 'concept blind spot must leave the red family')
 })
+
+// ── B1 (a): a chosen rest day is a full rest page on the dashboard ─────────
+test('B1: the dashboard shows a full rest page on a rest day, before any task or count', () => {
+  const src = read('app/dashboard/DashboardPageClient.tsx')
+  assert.match(src, /setRestDay\(isRestDayToday\(\)\)/)
+  assert.match(src, /addEventListener\('dse-rest-day', read\)/)
+  const branch = src.indexOf('if (restDay) {')
+  assert.ok(branch > 0, 'rest-day branch missing')
+  assert.ok(branch < src.indexOf('const accuracyPct'), 'the rest page must return before stats are rendered')
+  const page = src.slice(branch, branch + 2500)
+  assert.match(page, /今日想做少少都得/, 'keep the small "do one anyway" link')
+  assert.match(page, /href="\/relax"/)
+})
