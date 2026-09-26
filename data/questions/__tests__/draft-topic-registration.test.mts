@@ -28,6 +28,8 @@ const SUBJECT_OF: Record<string, string> = {
   // their review records (Yuna's instruction). All of them had already been
   // promoted, and the live banks remain covered by topic-registration.test.mts.
   // The entries below are drafts that have not been reviewed yet.
+  // 2026-09-26 BAFS accounting module, financial statements (sole proprietorship).
+  'bafs-accounts-b1.json': 'bafs',
   'history-written-b4.json': 'history',
   'chinese-history-written-b4.json': 'chinese-history',
   'chinese-literature-written-b4.json': 'chinese-literature',
