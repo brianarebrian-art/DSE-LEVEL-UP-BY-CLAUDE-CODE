@@ -24,6 +24,8 @@ import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
+import { buildCauseCardData } from '@/lib/causeCard'
+import { getReverseLog } from '@/lib/reverseLog'
 
 interface TopicResult {
   topic: string
@@ -283,6 +285,11 @@ export default function ResultPageClient() {
     igLink: 'ig.me/j/AbYCy6ZUDR-yWVPN',
     siteUrl: siteHost || SITE_ORIGIN.replace(/^https:\/\//, ''),
   }
+  // UX audit A2 (c): the cause card, shared instead of the score card by default.
+  // null when no cause was recorded today in this subject (lib/causeCard.ts).
+  const causeCardData = result.subjectId
+    ? buildCauseCardData(getReverseLog(), result.subjectId, { date: cardData.date, subject: subjName, siteUrl: cardData.siteUrl })
+    : null
 
   // ── Teacher hand-in report. Fills the fixed template with real diagnostic data;
   // Name/Class stay as blanks for the student to complete.
@@ -595,7 +602,7 @@ export default function ResultPageClient() {
         </button>
 
         {/* 分享戰績卡到 IG Story（誠實版：真數據 only，html2canvas 客戶端）*/}
-        <ShareStatsCardButton data={cardData} en={locale === 'en'} />
+        <ShareStatsCardButton data={cardData} causeData={causeCardData} en={locale === 'en'} />
 
         {/* Action buttons */}
         <div className="no-print grid sm:grid-cols-2 gap-3">
