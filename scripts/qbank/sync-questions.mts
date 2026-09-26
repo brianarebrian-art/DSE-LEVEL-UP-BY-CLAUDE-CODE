@@ -126,17 +126,47 @@ if (!PUSH) {
 // 次序刻意係「先寫後刪最後標版本」—— 中途死咗，版本號仍然係舊嗰個，
 // 下次跑會由頭嚟過；反過來先標版本就會留低一個「聲稱已同步但其實未」嘅狀態。
 const CHUNK = 500
+// Upserts are batched by size, not by count. 2026-09-26: two runs both died with
+// EPIPE at chemistry, the first subject with a 500-row batch over 0.8 MB (0.90 MB;
+// the largest batch that had gone through was 0.78 MB). A server that rejects an
+// oversized body closes the socket while it is still being written, which shows up
+// as EPIPE rather than a 413. Batches now stay under MAX_BATCH_BYTES.
+const MAX_BATCH_BYTES = 400 * 1024
+function sizedBatches<T>(rows: T[]): T[][] {
+  const out: T[][] = []
+  let cur: T[] = []
+  let bytes = 2
+  for (const r of rows) {
+    const b = Buffer.byteLength(JSON.stringify(r)) + 1
+    if (cur.length && bytes + b > MAX_BATCH_BYTES) { out.push(cur); cur = []; bytes = 2 }
+    cur.push(r)
+    bytes += b
+  }
+  if (cur.length) out.push(cur)
+  return out
+}
+let synced = 0
 for (const { subject, qs, version } of plan) {
   const rows = qs.map((q) => ({
     id: q.id, subject, topic: q.topic, type: q.type ?? 'mc', difficulty: q.difficulty, data: q,
   }))
-  for (let i = 0; i < rows.length; i += CHUNK) {
-    await rest('questions?on_conflict=id', {
-      method: 'POST',
-      headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
-      body: JSON.stringify(rows.slice(i, i + CHUNK)),
-    })
-    process.stdout.write(`\r  ${subject}: ${Math.min(i + CHUNK, rows.length)}/${rows.length}   `)
+  let done = 0
+  for (const [n, batch] of sizedBatches(rows).entries()) {
+    try {
+      await rest('questions?on_conflict=id', {
+        method: 'POST',
+        headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
+        body: JSON.stringify(batch),
+      })
+    } catch (e) {
+      // Say where it stopped. The version row is written last, so this subject stays
+      // marked as out of date and the next run starts it again.
+      console.error(`\n✗ ${subject}: batch ${n + 1} (${batch.length} rows) failed: ${(e as Error).message}`)
+      console.error(`  ${synced} of ${plan.length} subjects were synced before this. Run --push again.`)
+      process.exit(1)
+    }
+    done += batch.length
+    process.stdout.write(`\r  ${subject}: ${done}/${rows.length}   `)
   }
   const live = new Set(rows.map((r) => r.id))
   const cur = await (await rest(`questions?subject=eq.${encodeURIComponent(subject)}&select=id`)).json() as { id: string }[]
@@ -153,5 +183,6 @@ for (const { subject, qs, version } of plan) {
     body: JSON.stringify([{ subject, version, count: rows.length, synced_at: new Date().toISOString() }]),
   })
   console.log(`\r  ✓ ${subject}: ${rows.length} 條${stale.length ? `（刪走 ${stale.length} 條舊題）` : ''}            `)
+  synced++
 }
 console.log(`\n✓ ${plan.length} 科已同步上 Supabase。`)
