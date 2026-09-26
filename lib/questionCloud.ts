@@ -119,9 +119,18 @@ async function fetchVersion(subject: string, signal?: AbortSignal): Promise<stri
  * 攞一科題目。攞唔到（離線、未設 key、雲端故障、cache 亦空）回 `null`，
  * 由 caller 決定回落靜態 chunk —— 呢度刻意唔自己拋錯，因為「攞唔到雲端」
  * 係一個【預期之內】嘅狀態，唔係例外。
+ *
+ * `expected` is the version this build was made with (bank-versions.generated.ts).
+ * When given, the cloud copy is used only if its version equals it; otherwise this
+ * returns null and the caller uses the bundled chunk. Added 2026-09-25: the cloud
+ * copy had stayed at 2026-09-05, 1,117 questions behind the repo, and was served
+ * in preference to the newer bundled banks because nothing compared the two.
+ * The repo is the only source of truth (charter §3.1 constraint 3), so a mirror
+ * that differs from it must never win.
  */
 export async function loadFromCloud(
   subject: string,
+  expected?: string,
   signal?: AbortSignal,
 ): Promise<AnyQuestion[] | null> {
   if (!cloudBankEnabled()) return null
@@ -129,13 +138,22 @@ export async function loadFromCloud(
   const db = await openDb()
   const cached = db ? await idbGet(db, subject) : null
 
+  // A cache that already matches the build needs no network round trip at all.
+  if (expected && cached?.version === expected && cached.questions.length) {
+    return cached.questions
+  }
+
   let version: string | null = null
   try {
     version = await fetchVersion(subject, signal)
   } catch {
     // 離線／DNS 死。有 cache 就照用 —— 呢個就係離線做題行得通嘅原因。
+    // (Offline, a cache from an older version still beats no questions at all.)
     return cached?.questions.length ? cached.questions : null
   }
+
+  // Cloud copy differs from this build (stale, or synced ahead of a deploy).
+  if (expected && version !== expected) return null
 
   if (cached && version && cached.version === version && cached.questions.length) {
     return cached.questions

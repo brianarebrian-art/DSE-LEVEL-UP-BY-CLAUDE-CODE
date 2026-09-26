@@ -1,4 +1,5 @@
 import { loadFromCloud } from '@/lib/questionCloud'
+import { BANK_VERSION } from './bank-versions.generated'
 import type { AnyQuestion, MCQuestion, Question, WrittenQuestion } from './types'
 
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
@@ -352,7 +353,9 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   //    此為刻意設計：`loadSubjectQuestions` 亦有 server 呼叫者（subjects/[subject]
   //    的 RSC、/api/result/verify），它們在同一 process 內本已持有靜態題庫，
   //    改行網絡只會由「零延遲」變成「一個 round trip 加一個故障點」。
-  const cloud = await loadFromCloud(subjectId)
+  //    The cloud copy is used only when its version matches this build's
+  //    (bank-versions.generated.ts); otherwise the bundled chunk below is used.
+  const cloud = await loadFromCloud(subjectId, BANK_VERSION[subjectId])
   if (cloud?.length) return cloud
 
   // ② 回落靜態 chunk。此路徑【並未移除】，亦不得移除：

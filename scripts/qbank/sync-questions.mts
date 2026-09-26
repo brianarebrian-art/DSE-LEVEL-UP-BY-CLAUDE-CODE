@@ -19,7 +19,6 @@
 // service key 只從 .env.local／環境變數讀，永不打印、永不寫檔（同
 // pull-decisions.mjs 一致）。
 // ============================================================================
-import { createHash } from 'node:crypto'
 import { existsSync, readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -66,13 +65,12 @@ if (!URL_ || !KEY) {
 }
 const H = { apikey: KEY, Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' }
 
-// ── 版本號 ──────────────────────────────────────────────────────────────────
-// 對【題目內容】取雜湊，而唔係對檔案 —— 註釋改動、檔案重排唔應該令全校學生
-// 重新下載成科題目。題目按 id 排序之後先序列化，令雜湊唔受 loader 合併次序影響。
-const versionOf = (qs: Record<string, unknown>[]): string =>
-  createHash('sha256')
-    .update(JSON.stringify([...qs].sort((a, b) => String(a.id).localeCompare(String(b.id)))))
-    .digest('hex').slice(0, 16)
+// ── Version ─────────────────────────────────────────────────────────────────
+// Shared with gen-question-summary.mts: the site only uses the cloud copy when
+// the version it was built with matches the one written here. See bank-version.mts.
+const { versionOf } = await import(join(ROOT, 'scripts/qbank/bank-version.mts')) as {
+  versionOf: (qs: Record<string, unknown>[]) => string
+}
 
 async function rest(path: string, init?: RequestInit) {
   const r = await fetch(`${URL_}/rest/v1/${path}`, { ...init, headers: { ...H, ...(init?.headers ?? {}) } })

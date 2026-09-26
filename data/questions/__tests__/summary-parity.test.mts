@@ -60,3 +60,16 @@ test('TOTAL_QUESTIONS 等於逐科加起嚟', () => {
   const sum = active.reduce((n, s) => n + getSubjectQuestions(s.id).length, 0)
   assert.equal(TOTAL_QUESTIONS, sum, `全站總題數對唔上 ${FIX}`)
 })
+
+// Added 2026-09-25. The browser uses the Supabase copy only when its version equals
+// BANK_VERSION. A stale BANK_VERSION would make every subject fall back to the
+// bundled chunk forever (silently), so it is checked against the real banks here,
+// with the same hash function sync-questions.mts writes to Supabase.
+test('BANK_VERSION 同真題庫內容一致（同 sync-questions.mts 同一算法）', async () => {
+  const { BANK_VERSION } = await import('../bank-versions.generated.ts')
+  const { versionOf } = await import('../../../scripts/qbank/bank-version.mts')
+  for (const s of active) {
+    assert.equal(BANK_VERSION[s.id], versionOf(getSubjectQuestions(s.id)), `${s.id} 版本號對唔上 ${FIX}`)
+  }
+  assert.equal(Object.keys(BANK_VERSION).length, active.length, `科目數對唔上 ${FIX}`)
+})
