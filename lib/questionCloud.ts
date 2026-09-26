@@ -105,6 +105,9 @@ async function fetchBank(subject: string, signal?: AbortSignal): Promise<AnyQues
   }
 }
 
+/** How long to wait for the version check when a local copy exists (UX audit C1). */
+export const VERSION_TIMEOUT_MS = 3500
+
 async function fetchVersion(subject: string, signal?: AbortSignal): Promise<string | null> {
   const res = await fetch(
     `${URL_}/rest/v1/question_bank_versions?subject=eq.${encodeURIComponent(subject)}&select=version`,
@@ -143,13 +146,23 @@ export async function loadFromCloud(
     return cached.questions
   }
 
+  // UX audit C1 (a): with a local copy to fall back on, do not wait on a network that
+  // answers slowly or never (school Wi-Fi with signal but no internet). 3.5 s, then the
+  // cache is used exactly as if the request had failed.
   let version: string | null = null
+  const ctrl = new AbortController()
+  const onAbort = () => ctrl.abort()
+  signal?.addEventListener('abort', onAbort)
+  const timer = cached?.questions.length ? setTimeout(() => ctrl.abort(), VERSION_TIMEOUT_MS) : null
   try {
-    version = await fetchVersion(subject, signal)
+    version = await fetchVersion(subject, ctrl.signal)
   } catch {
     // 離線／DNS 死。有 cache 就照用 —— 呢個就係離線做題行得通嘅原因。
     // (Offline, a cache from an older version still beats no questions at all.)
     return cached?.questions.length ? cached.questions : null
+  } finally {
+    if (timer) clearTimeout(timer)
+    signal?.removeEventListener('abort', onAbort)
   }
 
   // Cloud copy differs from this build (stale, or synced ahead of a deploy).

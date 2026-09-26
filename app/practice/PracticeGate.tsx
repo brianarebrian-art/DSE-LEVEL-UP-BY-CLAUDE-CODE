@@ -2,7 +2,10 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect, useMemo, useState } from 'react'
-import { useT } from '@/lib/i18n'
+import Link from 'next/link'
+import { useLocale, useT } from '@/lib/i18n'
+import { loadAttempts } from '@/lib/progress'
+import { getSubject } from '@/data/subjects'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
@@ -41,6 +44,61 @@ function Loading() {
   )
 }
 
+/**
+ * UX audit C1 (a), Yuna 2026-09-21: a bank that fails to load (offline, chunk never
+ * cached) used to leave the skeleton spinning forever, and a screen reader kept
+ * announcing "loading". This says what happened and lists subjects this device has
+ * practised before, which are the ones most likely to still open offline.
+ */
+function BankLoadError({ subjectId }: { subjectId: string }) {
+  const { locale } = useLocale()
+  const en = locale === 'en'
+  const [others, setOthers] = useState<string[]>([])
+  useEffect(() => {
+    const seen = new Set<string>()
+    for (const a of [...loadAttempts()].sort((x, y) => y.timestamp - x.timestamp)) {
+      if (a.subjectId !== subjectId && getSubject(a.subjectId)) seen.add(a.subjectId)
+    }
+    setOthers([...seen].slice(0, 6))
+  }, [subjectId])
+  const name = (id: string) => {
+    const m = getSubject(id)
+    return m ? (en ? m.nameEn : m.name) : id
+  }
+  return (
+    <div role="alert" className="mx-auto max-w-md px-4 py-16 text-center">
+      <h1 className="text-xl font-medium text-ink">{en ? 'This subject isn’t saved on this device yet' : '呢科未存喺部機'}</h1>
+      <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+        {en
+          ? 'The questions could not be downloaded, probably because there is no connection right now. Open it once while you are online and it will be saved.'
+          : '題目下載唔到，多數係因為而家冇網。有網嗰陣開一次，就會存低喺部機。'}
+      </p>
+      {others.length > 0 && (
+        <div className="mt-6">
+          <p className="text-sm text-ink-soft">{en ? 'Subjects you have practised here before, worth a try:' : '你之前喺呢部機做過呢幾科，可以試下：'}</p>
+          <ul className="mt-3 flex flex-wrap justify-center gap-2">
+            {others.map((id) => (
+              <li key={id}>
+                <Link href={`/practice?subject=${encodeURIComponent(id)}`} className="inline-flex min-h-11 items-center rounded-xl border border-line-strong px-4 text-sm text-ink hover:bg-surface-sunken">
+                  {name(id)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-xl bg-accent-strong px-5 text-sm font-medium text-on-accent hover:bg-accent-hover">
+          {en ? 'Try again' : '再試一次'}
+        </button>
+        <Link href="/subjects" className="inline-flex min-h-11 items-center px-3 text-sm text-accent underline underline-offset-4">
+          {en ? 'All subjects' : '全部科目'}
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 export default function PracticeGate({
   subjectId,
   topicFilter,
@@ -59,13 +117,16 @@ export default function PracticeGate({
   // 兩條路各自只攞自己嗰種題 —— MC runner 讀 options／correctIndex，攞錯會即時爆。
   const [mcBank, setMcBank] = useState<MCQuestion[] | null>(null)
   const [writtenBank, setWrittenBank] = useState<WrittenQuestion[] | null>(null)
+  const [loadFailed, setLoadFailed] = useState(false)
 
   useEffect(() => {
     let alive = true
+    setLoadFailed(false)
+    const fail = () => { if (alive) setLoadFailed(true) }
     if (long) {
-      loadWrittenQuestions(subjectId).then((qs) => { if (alive) setWrittenBank(qs) })
+      loadWrittenQuestions(subjectId).then((qs) => { if (alive) setWrittenBank(qs) }).catch(fail)
     } else {
-      loadSubjectMCQuestions(subjectId).then((qs) => { if (alive) setMcBank(qs) })
+      loadSubjectMCQuestions(subjectId).then((qs) => { if (alive) setMcBank(qs) }).catch(fail)
     }
     return () => {
       alive = false
@@ -85,6 +146,8 @@ export default function PracticeGate({
     () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey),
     [writtenBank, subjectId, topicFilter, selKey],
   )
+
+  if (loadFailed) return <BankLoadError subjectId={subjectId} />
 
   // A subject with electives needs an answer before the first session. The
   // dialog accepts "not assigned / not sure", which shows every topic.

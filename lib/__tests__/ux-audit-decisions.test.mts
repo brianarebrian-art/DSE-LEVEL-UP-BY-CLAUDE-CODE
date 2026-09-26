@@ -88,3 +88,20 @@ test('B1: the dashboard shows a full rest page on a rest day, before any task or
   assert.match(page, /今日想做少少都得/, 'keep the small "do one anyway" link')
   assert.match(page, /href="\/relax"/)
 })
+
+// ── C1 (a): a bank that fails to load says so instead of spinning forever ────
+test('C1: both bank loads have a catch that leads to an error screen', () => {
+  const gate = read('app/practice/PracticeGate.tsx')
+  assert.match(gate, /loadWrittenQuestions\(subjectId\)\.then\([^\n]*\)\.catch\(fail\)/)
+  assert.match(gate, /loadSubjectMCQuestions\(subjectId\)\.then\([^\n]*\)\.catch\(fail\)/)
+  assert.match(gate, /if \(loadFailed\) return <BankLoadError subjectId=\{subjectId\} \/>/)
+  assert.match(gate, /呢科未存喺部機/)
+})
+
+test('C1: the version check gives up after a few seconds only when a local copy exists', () => {
+  const cloud = read('lib/questionCloud.ts')
+  const ms = Number(cloud.match(/export const VERSION_TIMEOUT_MS = (\d+)/)?.[1])
+  assert.ok(ms >= 3000 && ms <= 4000, `timeout ${ms} ms is outside the chosen 3–4 s`)
+  assert.match(cloud, /cached\?\.questions\.length \? setTimeout\(\(\) => ctrl\.abort\(\), VERSION_TIMEOUT_MS\) : null/)
+  assert.match(cloud, /clearTimeout\(timer\)/)
+})
