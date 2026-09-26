@@ -8,10 +8,12 @@ import { useLocale } from '@/lib/i18n'
 // 錯因 DNA — visualises the distribution of the student's self-diagnosed error causes
 // (the A/B/C reverse-cause log written by the lockout). Pure client-side; reads the
 // existing dse_reverse_log. AI-free: the "diagnosis" is a fixed rule on the top cause.
-// Light-first（憲章 §3）：三色改用青／金／玫（on-white 讀得清、避開鮮紅錯誤主色）。
+// Light-first（憲章 §3）：三色改用青／金／紫（on-white 讀得清、避開鮮紅錯誤主色）。
+// UX audit B2 (a), Yuna 2026-09-21: the concept-blind-spot colour leaves the red family
+// (was rose #C2185B, now violet #6D28D9, the palette's --color-violet).
 const CAUSE: Record<ReverseCause, { emoji: string; zh: string; en: string; color: string; adviceZh: string; adviceEn: string }> = {
   A: {
-    emoji: '🧠', zh: '概念盲區', en: 'Concept blind spot', color: '#C2185B',
+    emoji: '🧠', zh: '概念盲區', en: 'Concept blind spot', color: '#6D28D9',
     adviceZh: '你最常喺「概念盲區」跌倒 —— 做題前先重溫該課題嘅定義同前提，唔好急住計。',
     adviceEn: 'Your weak point is concept blind spots — revisit a topic’s definitions and conditions before drilling.',
   },
@@ -102,14 +104,15 @@ export default function ErrorDNA() {
             ))}
           </div>
 
-          {/* 連續同類錯因警示（≥3 次） */}
+          {/* Same cause three or more times in a row. UX audit B2 (a): framed as a pattern the
+              student found (gold, not rose), with one thing they can do next. */}
           {streak && (
-            <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-[3px] border-rose mb-3">
-              <div className="text-xs text-rose font-medium mb-1">{en ? 'Repeat-pattern alert' : '重複模式警示'}</div>
+            <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-[3px] border-gold mb-3">
+              <div className="text-xs text-gold font-medium mb-1">{en ? 'You found a pattern' : '你搵到一個規律'}</div>
               <p className="text-sm text-ink-soft leading-relaxed">
                 {en
-                  ? `Your last ${streak.len} errors were all “${CAUSE[streak.cause].en}”. Stop drilling for a moment and fix the root cause first — otherwise the loop repeats.`
-                  : `你最近 ${streak.len} 次錯誤全部係「${CAUSE[streak.cause].zh}」。停一停，先處理呢個根源再操卷 —— 唔係嘅話個循環會一直重複。`}
+                  ? `Your last ${streak.len} slips were all “${CAUSE[streak.cause].en}”. Knowing that is useful. Next time: ${CAUSE[streak.cause].adviceEn.split(' — ')[1] ?? CAUSE[streak.cause].adviceEn}`
+                  : `你最近 ${streak.len} 次都係「${CAUSE[streak.cause].zh}」—— 搵到呢個規律已經係進步。下次可以咁做：${CAUSE[streak.cause].adviceZh.split('——')[1]?.trim() ?? CAUSE[streak.cause].adviceZh}`}
               </p>
             </div>
           )}

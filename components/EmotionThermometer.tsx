@@ -1,13 +1,20 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { useLocale } from '@/lib/i18n'
 import type { EmotionTag } from '@/lib/emotionLog'
 
 // F-EMO: 情緒溫度計 (Emma/UDL + Leo/前端)
 // 觸發：拉分難度（difficulty === 'hard'，即 5** 級）答錯後、60 秒反思鎖出現之前。
 // 三個狀態選項 + 「略過」——唔強制學生表態；「好慌」直接跳過鎖死去呼吸空間。
-// 大愛紅線：無紅色、無催促字眼；ESC = 略過；autoFocus 第一個按鈕（ARIA 要求）。
+// 大愛紅線：無紅色、無催促字眼；ESC = 略過。
+// UX audit B3 (a), Yuna 2026-09-21: focus goes to the heading, not to the first option.
+// With the first option focused, a reflexive Enter (Enter is "next question" on the
+// practice page) recorded "I'm OK" without the student choosing it, and that record
+// feeds the error DNA. The dialog still takes focus on open (the ARIA reason for the
+// old autoFocus), the rest of the page is inert while it is open, and focus returns
+// to where it was when it closes.
 
 // 2026-09-02：本組件個面板係 bg-surface-raised（跟主題走），但入面幾處前景色
 // 一直寫死住暗色時代嘅值。最嚴重係標題 text-white —— 落淺色主題底
@@ -22,6 +29,24 @@ export default function EmotionThermometer({
 }) {
   const { locale } = useLocale()
   const en = locale === 'en'
+
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement | null
+    headingRef.current?.focus()
+    const root = rootRef.current
+    const made: Element[] = []
+    for (const el of Array.from(document.body.children)) {
+      if (el === root || el.hasAttribute('inert')) continue
+      el.setAttribute('inert', '')
+      made.push(el)
+    }
+    return () => {
+      for (const el of made) el.removeAttribute('inert')
+      if (previous && document.contains(previous)) previous.focus()
+    }
+  }, [])
 
   // ESC 等同「略過」（C11 鍵盤要求）
   useEffect(() => {
@@ -38,15 +63,15 @@ export default function EmotionThermometer({
     { tag: 'anxious', emoji: '😰', zh: '好慌，想停一停', en: 'Panicking — I need to pause', border: 'border-violet/40 hover:bg-violet/10' },
   ]
 
-  return (
-    <div className="fixed inset-0 z-[70] bg-scrim backdrop-blur-sm flex items-center justify-center p-4">
+  return createPortal(
+    <div ref={rootRef} className="fixed inset-0 z-[70] bg-scrim backdrop-blur-sm flex items-center justify-center p-4">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="emotion-title"
         className="w-full max-w-sm bg-surface-raised border border-line-strong rounded-2xl p-6"
       >
-        <h2 id="emotion-title" className="text-lg font-bold text-ink mb-1">
+        <h2 id="emotion-title" ref={headingRef} tabIndex={-1} className="text-lg font-bold text-ink mb-1 outline-none">
           {en ? 'How are you feeling right now?' : '而家感覺點？'}
         </h2>
         <p className="text-sm text-ink-soft mb-5">
@@ -54,11 +79,10 @@ export default function EmotionThermometer({
         </p>
 
         <div className="flex flex-col gap-4">
-          {options.map((o, i) => (
+          {options.map((o) => (
             <button
               key={o.tag}
               onClick={() => onPick(o.tag)}
-              autoFocus={i === 0}
               className={`w-full min-h-11 flex items-center gap-3 text-left rounded-xl border bg-surface-sunken/60 px-4 py-3 text-sm text-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${o.border}`}
             >
               <span className="text-2xl" aria-hidden>{o.emoji}</span>
@@ -76,6 +100,7 @@ export default function EmotionThermometer({
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

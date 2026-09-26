@@ -53,3 +53,25 @@ test('B4: the practice page hides the running clock unless the student chose to 
   // The per-question timer button stays available in the default state.
   assert.match(ps, /const hideTimer = timerPref === 'hide'/)
 })
+
+// ── B3 (a): the emotion check-in focuses its heading, not "I'm OK" ──────────
+test('B3: no option is auto-focused; the heading takes focus and the page goes inert', () => {
+  const src = read('components/EmotionThermometer.tsx')
+  assert.doesNotMatch(src, /autoFocus=/, 'an auto-focused option lets a reflexive Enter record a feeling')
+  assert.match(src, /ref=\{headingRef\} tabIndex=\{-1\}/)
+  assert.match(src, /headingRef\.current\?\.focus\(\)/)
+  assert.match(src, /setAttribute\('inert', ''\)/)
+  assert.match(src, /previous\.focus\(\)/, 'focus must return where it was')
+})
+
+// ── B2 (a): a repeated error cause is a pattern the student found, not an alert ──
+test('B2: the repeat-pattern card is gold and framed as a finding, and concept blind spots are not red', () => {
+  const src = read('components/ErrorDNA.tsx')
+  assert.doesNotMatch(src, /重複模式警示|Repeat-pattern alert/)
+  assert.match(src, /你搵到一個規律/)
+  const card = src.slice(src.indexOf('{streak && ('), src.indexOf('{streak && (') + 400)
+  assert.match(card, /border-gold/)
+  assert.doesNotMatch(card, /rose/)
+  const conceptColour = src.match(/zh: '概念盲區', en: 'Concept blind spot', color: '(#[0-9A-Fa-f]{6})'/)?.[1]
+  assert.equal(conceptColour, '#6D28D9', 'concept blind spot must leave the red family')
+})
