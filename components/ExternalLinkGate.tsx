@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 
@@ -88,7 +89,9 @@ export default function ExternalLinkGate({
         {children}
       </a>
 
-      {open && (
+      {/* Rendered into <body> through a portal: callers often place this link inside a <p>,
+          and a dialog with headings and paragraphs is not valid inside one. */}
+      {open && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-scrim p-4"
           onClick={() => setOpen(false)}
@@ -146,7 +149,8 @@ export default function ExternalLinkGate({
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   )
