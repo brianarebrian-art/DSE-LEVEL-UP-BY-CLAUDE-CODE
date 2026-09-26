@@ -55,7 +55,7 @@ export default function TextQuestionCard({
         <span className="text-xs text-ink-muted">{q.frameworkEmoji} {tr(q.frameworkZh, q.frameworkEn)}</span>
       </div>
 
-      <div className="text-sm sm:text-base text-ink leading-relaxed mb-4">
+      <div className="text-sm sm:text-base text-ink leading-relaxed mb-4 whitespace-pre-line">
         <MathText>{tr(q.content, q.contentEn)}</MathText>
       </div>
 
@@ -88,13 +88,13 @@ export default function TextQuestionCard({
           {/* 參考答案 —— 用青（accent）而唔用綠：全站冇綠 token，青本身係正向主色 */}
           <div className="rounded-xl border border-accent/30 bg-surface-sunken px-4 py-3 mb-3">
             <div className="text-xs text-accent font-bold mb-1">{en ? 'Reference answer' : '參考答案'}</div>
-            <div className="text-sm text-ink-soft leading-relaxed">
+            <div className="text-sm text-ink-soft leading-relaxed whitespace-pre-line">
               <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn)}</MathText>
             </div>
           </div>
 
           {q.explanation && (
-            <div className="text-sm text-ink-muted leading-relaxed mb-4">
+            <div className="text-sm text-ink-muted leading-relaxed mb-4 whitespace-pre-line">
               <MathText>{tr(q.explanation, q.explanationEn)}</MathText>
             </div>
           )}
