@@ -2,7 +2,8 @@
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { useAuthSession } from '@/lib/auth/session'
-import { A11Y_EVENT, applyCloudSettings, pullSettings, pushSettings } from '@/lib/settingsSync'
+import { A11Y_EVENT, applyCloudSettings, deleteSettings, pullSettings, pushSettings } from '@/lib/settingsSync'
+import { keepExistingSync, readSyncConsent, SETTINGS_SYNC_EVENT } from '@/lib/settingsSyncConsent'
 
 // v8.0 CLOUD-FIRST · SEN 設定同步接線。
 //
@@ -10,6 +11,10 @@ import { A11Y_EVENT, applyCloudSettings, pullSettings, pushSettings } from '@/li
 // 同一份數據唔可以有兩條同步通道，否則兩邊時間戳唔同就會變成邊條後行邊條贏。
 //
 // 匿名用戶：authStatus !== 'authenticated' 時呢個組件由頭到尾唔會 fetch 任何嘢。
+//
+// UX audit D1 (b+), Yuna 2026-09-21: syncing needs consent (lib/settingsSyncConsent.ts).
+// An account that already has cloud settings keeps syncing; a new account uploads
+// nothing until the student turns sync on; turning it off deletes the cloud copy.
 
 export type SettingsSyncState = 'idle' | 'syncing' | 'synced' | 'pending' | 'anonymous'
 
@@ -50,10 +55,17 @@ export default function SettingsSync({ children }: { children: React.ReactNode }
 
     let cancelled = false
     void (async () => {
+      const consent = readSyncConsent()
+      if (consent === 'off') {
+        setState('idle')
+        return
+      }
       setState('syncing')
       const cloud = await pullSettings()
       if (cancelled) return
       if (cloud) {
+        // Already syncing before consent existed: keep it on.
+        if (consent === 'unset') keepExistingSync()
         applyingRef.current = true
         applyCloudSettings(cloud)
         // 等本輪 dse-a11y 派完先解鎖，唔係就會即刻回彈一次 push
@@ -61,9 +73,12 @@ export default function SettingsSync({ children }: { children: React.ReactNode }
           applyingRef.current = false
         }, 0)
         setState('synced')
-      } else {
+      } else if (consent === 'on') {
         // 雲端未有記錄 → 將本機現狀種上去，令第二部機有嘢可拉
         await push()
+      } else {
+        // New account, no consent yet: upload nothing.
+        setState('idle')
       }
     })()
     return () => {
@@ -75,7 +90,7 @@ export default function SettingsSync({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (!authed) return
     const onChange = () => {
-      if (applyingRef.current) return
+      if (applyingRef.current || readSyncConsent() !== 'on') return
       if (timerRef.current) clearTimeout(timerRef.current)
       timerRef.current = setTimeout(() => void push(), DEBOUNCE_MS)
     }
@@ -86,9 +101,20 @@ export default function SettingsSync({ children }: { children: React.ReactNode }
   // 返返網就補送一次（唔彈嘢、唔打斷）
   useEffect(() => {
     if (!authed) return
-    const onOnline = () => void push()
+    const onOnline = () => { if (readSyncConsent() === 'on') void push() }
     window.addEventListener('online', onOnline)
     return () => window.removeEventListener('online', onOnline)
+  }, [authed, push])
+
+  // The student switched sync on or off in the accessibility panel.
+  useEffect(() => {
+    if (!authed) return
+    const onConsent = () => {
+      if (readSyncConsent() === 'on') void push()
+      else void deleteSettings().then(() => setState('idle'))
+    }
+    window.addEventListener(SETTINGS_SYNC_EVENT, onConsent)
+    return () => window.removeEventListener(SETTINGS_SYNC_EVENT, onConsent)
   }, [authed, push])
 
   useEffect(() => {

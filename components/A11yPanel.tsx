@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { readTimerPref, writeTimerHidden } from '@/lib/timerPreference'
+import { readSyncConsent, setSyncConsent, SETTINGS_SYNC_EVENT } from '@/lib/settingsSyncConsent'
 import Image from 'next/image'
-import { AlignJustify, Clock, Feather, Lightbulb, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
+import { AlignJustify, Clock, Cloud, Feather, Lightbulb, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
@@ -85,6 +86,14 @@ export default function A11yPanel() {
   const [easy, setEasy] = useState(false)
   const [focusLight, setFocusLight] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
+  // UX audit D1 (b+): settings sync is opt-in for new accounts (lib/settingsSyncConsent.ts).
+  const [syncOn, setSyncOn] = useState(false)
+  useEffect(() => {
+    const read = () => setSyncOn(readSyncConsent() === 'on')
+    read()
+    window.addEventListener(SETTINGS_SYNC_EVENT, read)
+    return () => window.removeEventListener(SETTINGS_SYNC_EVENT, read)
+  }, [])
   const [sound, setSound] = useState(false)
   const [noMotion, setNoMotion] = useState(false)
   const [ruler, setRuler] = useState(false)
@@ -582,6 +591,36 @@ export default function A11yPanel() {
               {calm ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
+
+          {/* Settings sync to the account (UX audit D1 (b+)). Only shown when sign-in exists. */}
+          {process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true' && (
+            <button
+              onClick={() => setSyncConsent(!syncOn)}
+              aria-pressed={syncOn}
+              className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+                syncOn
+                  ? 'bg-surface-sunken border-gold/40 text-gold'
+                  : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+              }`}
+            >
+              <span className="text-left flex items-center gap-2">
+                <Cloud size={14} className="shrink-0" />
+                <span>
+                  <span className="block text-sm">{en ? 'Sync these settings to my account' : '同步呢啲設定去我個帳戶'}</span>
+                  <span className="block text-[11px] text-ink-muted">
+                    {en ? 'Signed in: no need to set them again on another device. Off deletes our copy.' : '登入後換部機唔使再調。閂咗會刪走伺服器上嗰份。'}
+                  </span>
+                </span>
+              </span>
+              <span
+                className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                  syncOn ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+                }`}
+              >
+                {syncOn ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+              </span>
+            </button>
+          )}
 
           {/* Focus 專注燈光（2026-09-13，ADHD／UDL） */}
           <button

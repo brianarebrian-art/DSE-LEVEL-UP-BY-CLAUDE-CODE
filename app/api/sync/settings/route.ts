@@ -84,6 +84,21 @@ export async function GET() {
   }
 }
 
+// DELETE: the student turned settings sync off (UX audit D1): remove this account's row.
+export async function DELETE() {
+  const userId = await getSyncUserId()
+  if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  try {
+    const supabase = getServiceSupabase()
+    const { error } = await supabase.from(TABLE).delete().eq('user_id', userId) // own row only
+    if (error) throw error
+    return NextResponse.json({ ok: true })
+  } catch (e) {
+    safeLog('error', 'api/sync/settings DELETE', e)
+    return NextResponse.json({ error: 'internal error' }, { status: 500 })
+  }
+}
+
 // POST — upsert 設定。Body: { settings: {...} }
 export async function POST(request: Request) {
   const userId = await getSyncUserId()

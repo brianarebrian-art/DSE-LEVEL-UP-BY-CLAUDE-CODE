@@ -76,6 +76,7 @@ const LABELS: Record<string, { zh: string; en: string }> = {
   dse_reading_ruler: { zh: '閱讀尺開關', en: 'Reading ruler toggle' },
   dse_hide_timer: { zh: '隱藏計時器', en: 'Hide the timer' },
   dse_timer_choice: { zh: '你喺呢部機揀過顯示計時器', en: 'You chose to show the timer on this device' },
+  dse_settings_sync: { zh: '閱讀設定同步開關', en: 'Settings sync switch' },
   dse_relax_sensory_pref: { zh: '呼吸空間感官偏好', en: 'Breathing Space sensory preference' },
   dse_sync_owner: { zh: '上次同步嘅帳戶', en: 'Account last synced with' },
   dse_synced_at: { zh: '上次同步時間', en: 'Last sync time' },

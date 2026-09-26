@@ -31,7 +31,7 @@
  * 而唔係執錯字。一個喺 v1 撳過同意嘅學生，從來冇見過「會記低你開過 app 嘅日期」
  * 呢句 —— 攞佢張舊同意書去蓋新採集，就係本檔頭講嗰個「舊紀錄靜靜哋扮成同意咗新版」。
  */
-export const POLICY_VERSION = '2026-09-11.v2'
+export const POLICY_VERSION = '2026-09-26.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

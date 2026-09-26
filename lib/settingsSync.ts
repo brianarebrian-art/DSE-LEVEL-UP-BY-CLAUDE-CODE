@@ -126,6 +126,16 @@ export async function pushSettings(): Promise<boolean> {
   }
 }
 
+/** Delete this account's cloud copy (the student turned settings sync off, UX audit D1). */
+export async function deleteSettings(): Promise<boolean> {
+  try {
+    const res = await fetch('/api/sync/settings', { method: 'DELETE' })
+    return res.ok
+  } catch {
+    return false
+  }
+}
+
 /** 登入時拉一次。回傳有冇成功攞到雲端設定。 */
 export async function pullSettings(): Promise<CloudSettings | null> {
   try {

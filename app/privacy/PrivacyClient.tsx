@@ -123,8 +123,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             {en ? 'Accessibility and display settings: ' : '無障礙同顯示設定：'}
             <span className="text-ink-muted">
               {en
-                ? 'easy-read font, reading ruler, hidden timer, calm lock, font size, line height, letter spacing, and your sensory preferences.'
-                : '易讀字體、閱讀尺、隱藏計時器、平靜鎖、字級、行距、字距，同你嘅感官偏好。'}
+                ? 'easy-read font, reading ruler, hidden timer, calm lock, font size, line height, letter spacing, and your sensory preferences. Only if you turn “sync these settings” on in the accessibility panel; accounts created before 26 September 2026 that were already syncing stay on. Turning it off deletes our copy.'
+                : '易讀字體、閱讀尺、隱藏計時器、平靜鎖、字級、行距、字距，同你嘅感官偏好。要你喺無障礙設定打開「同步呢啲設定」先會上傳；2026 年 9 月 26 日之前已經同步緊嘅帳戶維持開住。閂咗會刪走我哋手上嗰份。'}
             </span>
           </li>
         </ul>

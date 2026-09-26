@@ -32,12 +32,14 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-09-11.v2',
+  version: '2026-09-26.v1',
   // 2026-09-11 基準。上一版 b2e44e871df73cd2（2026-09-09.v1）。
   // 今次改嘅唔係錯字，係新增咗一個【採集類別】——「你開過 app 嘅日期」
   // （migration 0018 重建嘅 user_sessions），同時明文寫低未登入唔記錄。
   // 所以 version 由 v1 bump 到 v2：v1 撳過同意嘅學生從來冇見過嗰句。
-  hash: '0eb32705b900395a',
+  // 2026-09-26 (2026-09-26.v1): settings sync became opt-in for new accounts (UX audit D1),
+  // and turning it off deletes the cloud copy. Previous: 0eb32705b900395a (2026-09-11.v2).
+  hash: 'b19716aab0b0c327',
 }
 
 function policyFingerprint(): string {
