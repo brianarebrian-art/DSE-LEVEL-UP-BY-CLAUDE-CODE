@@ -88,3 +88,12 @@ test('白名單每一項都真實存在（唔可以留下已刪檔嘅殭屍豁�
     assert.ok(a.why.length > 20, `白名單 ${a.file} 欠實質理由`)
   }
 })
+
+test('the confirm dialog is rendered through a portal', () => {
+  // Callers place the gate inside <p> (exam-day, prediction-method, subject pages).
+  // Rendered inline, the dialog puts <h2>, <p> and <div> inside that paragraph,
+  // which React reports as invalid nesting and a hydration hazard.
+  const gate = fs.readFileSync(GATE, 'utf8')
+  assert.match(gate, /createPortal\(/, 'the dialog must be rendered with createPortal')
+  assert.match(gate, /document\.body,?\s*\)/, 'the portal target must be document.body')
+})
