@@ -7,7 +7,8 @@
 
 # DSE LEVEL UP — CLAUDE.md
 # 戰場只有一個：香港中學文憑試（DSE）
-# 最後更新：2026-09-26 | 新增 §18 取消簽署制度、§19 Notion 第二大腦（Yuna 指示）
+# 最後更新：2026-09-26 | §12 改為機器閘自動入庫＋事後退回；§1 新增 2.1 不考之地（Yuna 指示）
+# 前次：2026-09-26 | 新增 §18 取消簽署制度、§19 Notion 第二大腦（Yuna 指示）
 # 前次：2026-09-09 | §7.2 新增：反思鎖剷除，兩個月實驗（2026-11-09 覆檢）
 # 前次：2026-09-09 | §16.E 約束 5 Brian 副署 —— 雙簽完成 ✅；一節題數 20→10（§7.1）
 # 前次：2026-09-09 | Yuna 補簽 2026-09-05 撤銷收費框架 —— 該次修訂雙簽完成 ✅
@@ -44,8 +45,8 @@
 - **官方連結：** https://dse-level-up-by-claude-code.vercel.app/
 - **目標受眾：** 12-18 歲香港 DSE 考生（P1 邊緣分數考生、P2 自修生、SEN/基層學生、前線老師/SENCO）
 - **創辦人模式：** 業餘娛樂模式，每週一次異步同步
-- **生產紀律：** drafts → review-drafts.mjs → 真人逐題批 → promote-drafts.mjs → decisions.json → 人手 wire 入 load.ts。**機器永不自動入庫。**
-  （2026-09-26 起審批毋須簽名，見 §18；取消實名審批後由甚麼守住「機器永不自動入庫」，尚待決定。）
+- **生產紀律：** 新題過機器閘即自動上線，創辦人事後覆核，有問題即退回（2026-09-26 Yuna 決定，詳見 §12）。
+  （原文「機器永不自動入庫」已由該決定取代；舊文保留於 §12.3 存檔。）
 
 ---
 
@@ -103,7 +104,7 @@ Supabase，唔經 Vercel」。
    **任何用戶數據（`user_progress`／`user_settings`／`profiles`）一律維持
    server-only**，唔准用同一個 anon key 開多一張表。§16.E 嘅約束不受本節影響。
 2. **anon 只有 SELECT。** `revoke insert, update, delete …`（`0017`）＋ RLS 零寫入
-   policy，兩層各自獨立成立。憲章 §12「機器永不自動入庫」靠呢兩層 ——
+   policy，兩層各自獨立成立。題庫只可以由 repo 經 §12 流程寫入，靠嘅就係呢兩層 ——
    學生（或任何攞到 anon key 嘅人）改唔到一隻字。
    ⚠️ Supabase 有 `ALTER DEFAULT PRIVILEGES`，新表自動畀齊 anon 全套 DML，
    所以 `grant select` **唔構成收窄**，一定要顯式 `revoke`。呢點喺 `0016` 原稿
@@ -417,6 +418,32 @@ listener 又會 `setCalm` —— 變成 re-entrant，撳完個掣彈返原位。
 
 ## 12. 生產紀律（題目入庫流程）
 
+**決定：** Yuna（COO）2026-09-26，按 §18：「想要『自動入 approved』。」新題過機器閘即上線，毋須事前真人審批。
+
+### 12.1 自動入庫（預設通道）
+
+```
+drafts/
+  ↓ scripts/qbank/auto-promote.mts（機器閘：格式、四個相異選項、術語紅線、
+  ↓   與現有題庫的重複度、批次內重複、課題 id 對得上）
+  ↓ data/questions/*-auto.ts（framework = auto，「機器閘放行題」）
+  ↓ npm test ＋ npm run gen:summary
+  ↓ 部署，再 sync-questions --push
+```
+
+約束（全部生效）：
+
+1. **照實披露。** 題目出處欄寫「經自動檢查」，並說明未有真人逐題審批（`components/QuestionProvenance.tsx`、`/transparency`）。
+   不得移除、摺埋或淡化這個披露（§8、§16.D）。
+2. **機器驗不到答案在學術上是否正確。** 草稿必須 correct-by-construction（數理科由程式計出），或引用可查證的原文；機器閘只是最後一道濾網，不是品質來源。
+3. **事後覆核及退回。** 創辦人發現問題，用 `npx tsx scripts/qbank/withdraw.mts --subject <科目> --id <題號> --reason "<原因>"` 退回。
+   退回寫入 `data/questions/withdrawn.json`，記錄日期及原因；題目檔不刪，可用 `--undo` 撤銷。退回後須 gen:summary、部署及 sync-questions --push。
+4. **§16.A 不受影響。** 本節講的是題目上線，不是批改學生答案；長答自動批改維持永久禁止。
+5. 自動通道由 2026-08-22 Yuna 指令建立（`auto-promote.mts`），但本節舊文一直寫「機器永不自動入庫」，兩者並存約一個月而互相矛盾。
+   2026-09-26 起以本節為準；當日已有 728 條機器閘題在線。
+
+### 12.2 人手審批通道（保留，可選）
+
 ```
 drafts/
   ↓ review-drafts.mjs（自動格式檢查）
@@ -426,6 +453,10 @@ drafts/
   ↓ 人手 wire 入 load.ts
   ↓ npm test（驗證通過）
 ```
+
+### 12.3 舊條文（存檔）
+
+~~機器永不自動入庫。~~（2026-09-26 由 §12.1 取代。保留此句，是為了讓下一個 session 知道這條線動過、由誰決定。）
 
 **每 session 20 題，DIFF_RATIO 3:5:2（basic:intermediate:hard）。**
 
@@ -738,10 +769,10 @@ E-02 甚至自己標咗「風險：高，要創辦人親自簽名」，程序上
 其中列明的未決問題如何處理，須由創辦人逐份決定，再寫入本憲章。
 草案不會因本節而自動生效 —— 部分草案本身仍有未答的問題。
 
-特別注意 `docs/charter-amendment-2026-09-25-DRAFT.md`（取消實名審批程序）的問題一：
-取消實名審批之後，「機器永不自動入庫」（§2、§12）由甚麼守住，**尚未決定**。
-在決定之前，`scripts/qbank/promote-drafts.mjs` 仍要求 `decisions.json` 有審批人欄，
-即新題仍無法經現有工具上線 —— 代碼與條文在此暫時不一致，須隨該決定一併處理。
+`docs/charter-amendment-2026-09-25-DRAFT.md`（取消實名審批程序）的問題一
+（取消實名審批之後，「機器永不自動入庫」由甚麼守住）已於 2026-09-26 決定：
+改為過機器閘即上線、事後覆核退回，見 §12。人手通道 `promote-drafts.mjs` 保留作可選，
+現時仍要求審批人欄非空（`scripts/qbank/_reviewer-gate.mjs`）；用自動通道則不需要。
 
 ---
 

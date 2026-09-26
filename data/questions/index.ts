@@ -1,7 +1,7 @@
 import type { AnyQuestion, MCQuestion, Topic, WrittenQuestion } from './types'
 import { applyDifficultyOverrides } from './family'
 import { DIFFICULTY_OVERRIDES } from './difficulty-overrides.generated'
-import { isHiddenTopic, withoutHiddenTopics } from './hidden-topics'
+import { isHiddenTopic, withoutWithheld } from './hidden-topics'
 import { mathQuestions, mathTopics } from './math'
 import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
@@ -320,7 +320,7 @@ export function getSubjectQuestionsRaw(subjectId: string): AnyQuestion[] {
 /** 該科全部題目（MC + 書寫題）。計數／課題統計用。Family difficulty overrides applied (data/questions/family.ts). */
 export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
   // Withheld topics (hidden-topics.ts) are dropped here; getSubjectQuestionsRaw keeps them.
-  return withoutHiddenTopics(
+  return withoutWithheld(
     subjectId,
     applyDifficultyOverrides(getSubjectQuestionsRaw(subjectId), DIFFICULTY_OVERRIDES[subjectId]),
   )

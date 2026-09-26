@@ -31,8 +31,8 @@ test('the topic list does not show them', () => {
 
 test('the client loader filters both the cloud and the static path', () => {
   const src = readFileSync('data/questions/load.ts', 'utf8')
-  assert.match(src, /if \(cloud\?\.length\) return withoutHiddenTopics\(subjectId, cloud\)/)
-  assert.match(src, /return withoutHiddenTopics\(subjectId, applyDifficultyOverrides\(all/)
+  assert.match(src, /if \(cloud\?\.length\) return withoutWithheld\(subjectId, cloud\)/)
+  assert.match(src, /return withoutWithheld\(subjectId, applyDifficultyOverrides\(all/)
 })
 
 test('the record lists every withheld id', () => {
@@ -40,4 +40,25 @@ test('the record lists every withheld id', () => {
   const raw = I.getSubjectQuestionsRaw('ethics-religious').filter((q: any) => HIDDEN.includes(q.topic))
   const missing = raw.filter((q: any) => !doc.includes(q.id))
   assert.equal(missing.length, 0, `not in docs/UNMAPPED-220.md: ${missing.slice(0, 5).map((q: any) => q.id).join(', ')}`)
+})
+
+// ── Withdrawal after publication (charter §12, Yuna 2026-09-26) ──────────────
+test('every withdrawn entry points at a real question and says when and why', () => {
+  const W = JSON.parse(readFileSync('data/questions/withdrawn.json', 'utf8'))
+  for (const [subject, m] of Object.entries<Record<string, { date: string; reason: string }>>(W)) {
+    const raw = new Set(I.getSubjectQuestionsRaw(subject).map((q: any) => q.id))
+    const served = new Set(I.getSubjectQuestions(subject).map((q: any) => q.id))
+    for (const [id, e] of Object.entries(m)) {
+      assert.ok(raw.has(id), `${subject}/${id}: withdrawn id does not exist`)
+      assert.ok(!served.has(id), `${subject}/${id}: withdrawn but still served`)
+      assert.match(e.date, /^\d{4}-\d{2}-\d{2}$/)
+      assert.ok(e.reason.trim().length > 0, `${subject}/${id}: a withdrawal needs a reason`)
+    }
+  }
+})
+
+test('withdrawn questions are filtered wherever withheld topics are', () => {
+  const src = readFileSync('data/questions/hidden-topics.ts', 'utf8')
+  assert.match(src, /!hidden\.includes\(q\.topic\) && !out\[q\.id\]/)
+  assert.match(readFileSync('scripts/qbank/withdraw.mts', 'utf8'), /data\/questions\/withdrawn\.json/)
 })

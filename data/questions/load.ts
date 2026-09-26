@@ -1,7 +1,7 @@
 import { loadFromCloud } from '@/lib/questionCloud'
 import { BANK_VERSION } from './bank-versions.generated'
 import { applyDifficultyOverrides } from './family'
-import { withoutHiddenTopics } from './hidden-topics'
+import { withoutWithheld } from './hidden-topics'
 import type { AnyQuestion, MCQuestion, Question, WrittenQuestion } from './types'
 
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
@@ -362,7 +362,7 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   const cloud = await loadFromCloud(subjectId, BANK_VERSION[subjectId])
   // Withheld topics are dropped on both paths (hidden-topics.ts), in case an older
   // cloud copy still carries them.
-  if (cloud?.length) return withoutHiddenTopics(subjectId, cloud)
+  if (cloud?.length) return withoutWithheld(subjectId, cloud)
 
   // ② 回落靜態 chunk。此路徑【並未移除】，亦不得移除：
   //    離線、未設定 anon key、Supabase 故障、學生封鎖 IndexedDB —— 四種情況
@@ -382,7 +382,7 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   // Family difficulty overrides (data/questions/family.ts). Imported lazily so the
   // map only downloads on this fallback path; the cloud copy already carries them.
   const { DIFFICULTY_OVERRIDES } = await import('./difficulty-overrides.generated')
-  return withoutHiddenTopics(subjectId, applyDifficultyOverrides(all, DIFFICULTY_OVERRIDES[subjectId]))
+  return withoutWithheld(subjectId, applyDifficultyOverrides(all, DIFFICULTY_OVERRIDES[subjectId]))
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */
