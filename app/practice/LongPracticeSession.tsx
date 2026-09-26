@@ -147,8 +147,8 @@ export default function LongPracticeSession({
           <p className="text-lg font-medium mb-2">{tr('呢科暫時未有長題目', 'No written questions here yet')}</p>
           <p className="text-sm text-ink-muted leading-relaxed mb-6">
             {tr(
-              '長題目要逐條經真人審批先會上線，所以出得慢。想即刻練，可以先做選擇題。',
-              'Written questions go live only after a human approves each one, so they arrive slowly. The multiple-choice bank is ready now.',
+              '想即刻練，可以先做選擇題。',
+              'The multiple-choice bank is ready now.',
             )}
           </p>
           <Link

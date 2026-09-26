@@ -158,8 +158,8 @@ export default function SubjectDetailView({
                 ? 'Write your own answer, then self-assess against the reference answer and marking scheme. Never machine-marked.'
                 : '自己寫答案，交卷後對照參考答案同評分準則自評。機器永不批改。'
               : en
-                ? 'Coming soon — every written question is approved by a human one by one, so they arrive slowly.'
-                : '準備中 —— 長題目要逐條經真人審批先會上線，所以出得慢。'}
+                ? 'Coming soon — no written questions for this subject yet.'
+                : '準備中 —— 呢科暫時未有長題目。'}
           </p>
         </div>
       </div>
