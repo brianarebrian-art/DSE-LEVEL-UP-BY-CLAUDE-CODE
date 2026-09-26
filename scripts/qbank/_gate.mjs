@@ -336,8 +336,12 @@ export function toReviewedQuestion(row, subject) {
     topicZh: topicLabel,
     ...(topicLabelEn ? { topicEn: topicLabelEn } : {}),
     framework: 'reviewed',
-    frameworkZh: '人手核對題',
-    frameworkEmoji: '✅',
+    // Shown to students as the question's label. Was '人手核對題 ✅' until 2026-09-25,
+    // when the named review records were deleted (Yuna's instruction) and every
+    // public human-review claim was removed; this label was one of them.
+    frameworkZh: '改寫練習題',
+    frameworkEn: 'Rewritten practice',
+    frameworkEmoji: '📝',
     difficulty: DIFFICULTY_MAP[row.difficulty],
     year: 0,
     content: row.question.trim(),
