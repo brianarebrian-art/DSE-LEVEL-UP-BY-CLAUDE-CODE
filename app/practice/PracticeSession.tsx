@@ -7,6 +7,7 @@ import {
   clearActiveSession,
   isResumable,
   type ActiveSession,
+  type PracticeMode,
 } from '@/lib/sessionResume'
 // recordAttempt() notifies on completion, but that fires BEFORE we clear the active
 // session — so we re-stamp afterwards to push the cleared state up too.
@@ -42,7 +43,8 @@ import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, L
 import RestMode from '@/components/RestMode'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
-import { logReverseError, type ReverseCause } from '@/lib/reverseLog'
+import { logReverseError, getReverseLog, type ReverseCause } from '@/lib/reverseLog'
+import { orderByCause } from '@/lib/causeMode'
 // 真相引擎：由歷史錯誤記錄推斷「今次錯誤真正嘅成因」，喺解密卡加一句可執行建議
 import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
 import { addDiscovery } from '@/lib/discovery/local-store'
@@ -57,6 +59,7 @@ import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState
 import { weightedOrder } from '@/lib/empiricalWeighting'
 // 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
 import { readTimerPref, type TimerPref } from '@/lib/timerPreference'
+import { isQuiet, useQuiet } from '@/lib/quietMode'
 import {
   getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
   TIMER_OPTIONS, type TimerOption,
@@ -165,7 +168,8 @@ function buildPool(
   subjectId: string,
   topicFilter: string | null,
   sessionSize: number,
-  mode: 'normal' | 'weakness',
+  mode: PracticeMode,
+  cause: ReverseCause | null,
 ): PreparedQuestion[] {
   const scoped = topicFilter ? bank.filter((q) => q.topic === topicFilter) : bank
   // Serve the full 30/50/20 mix (補底/普通/拔尖) — pickByDifficulty stratifies below.
@@ -183,6 +187,7 @@ function buildPool(
     const rest = shuffle(base.filter((q) => !weak.has(q.topic)))
     ordered = [...weakQs, ...rest]
   } else {
+    // mode='cause' reorders this same recency order below (lib/causeMode.ts).
     // Prefer questions the user hasn't been shown recently: unseen ones first (in
     // random order), then the longest-ago-seen, so re-doing a subject surfaces
     // fresh questions and only repeats once the whole bank is exhausted.
@@ -193,6 +198,9 @@ function buildPool(
       .filter((q) => recency.has(q.id))
       .sort((a, b) => recency.get(b.id)! - recency.get(a.id)!)
     ordered = [...unseen, ...seenOldestFirst]
+    // UX audit F1: questions matching the chosen error cause go first. Stratification
+    // below is unchanged, so the 3:5:2 mix still holds.
+    if (mode === 'cause' && cause) ordered = orderByCause(ordered, cause, getReverseLog(), subjectId)
   }
 
   // 實測難度加權（2027 目標書階段一第 2 項）。**預設完全唔生效** ——
@@ -275,7 +283,9 @@ interface SessionProps {
   subjectId: string
   topicFilter: string | null
   sessionSize: number
-  mode?: 'normal' | 'weakness'
+  mode?: PracticeMode
+  /** With mode='cause': which self-diagnosed cause to practise. */
+  cause?: ReverseCause | null
 }
 
 // A single practice run. This component is loaded client-only (via next/dynamic
@@ -288,12 +298,13 @@ export default function PracticeSession({
   topicFilter,
   sessionSize,
   mode = 'normal',
+  cause = null,
 }: SessionProps) {
   const router = useRouter()
   const { locale, t } = useLocale()
   const subjectMeta = getSubject(subjectId)
 
-  const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode))
+  const [questions, setQuestions] = useState<PreparedQuestion[]>(() => buildPool(bank, subjectId, topicFilter, sessionSize, mode, cause))
   // 第 3 週 · 引擎五：連續答對／答錯狀態。純 session 內存 ——
   // 唔寫 localStorage：呢個係「今日呢一刻嘅節奏」，唔應該變成一個跟住學生走嘅標籤。
   const [streak, setStreak] = useState<StreakState>(EMPTY_STREAK)
@@ -358,7 +369,9 @@ export default function PracticeSession({
   // UX audit B4 (b): the running clock is hidden unless the student turns it on (lib/timerPreference.ts).
   const [timerPref, setTimerPref] = useState<TimerPref>('default')
   const hideTimer = timerPref === 'hide'
-  const showElapsed = timerPref === 'show'
+  // Quiet mode (UX audit B5, Yuna 2026-09-26) also hides the running clock.
+  const quiet = useQuiet()
+  const showElapsed = timerPref === 'show' && !quiet
   useEffect(() => {
     const read = () => setTimerPref(readTimerPref())
     read()
@@ -476,7 +489,8 @@ export default function PracticeSession({
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
       // F-EMO: 拉分難度（hard = 5** 級）答錯 → 反思鎖之前先問感受
-      if (!isCorrect && currentQ.difficulty === 'hard') setEmoOpen(true)
+      // Not in quiet mode (UX audit B5, Yuna 2026-09-26): no automatic pop-up.
+      if (!isCorrect && currentQ.difficulty === 'hard' && !isQuiet()) setEmoOpen(true)
     },
     [answerState, currentQ]
   )
@@ -890,6 +904,15 @@ export default function PracticeSession({
           {mode === 'weakness' && (
             <span className="inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
               🛠️ {tr('盲點修復卷', 'Repair worksheet')}
+            </span>
+          )}
+          {mode === 'cause' && cause && (
+            <span className="inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
+              {cause === 'A'
+                ? tr('🧠 專攻概念盲區', '🧠 Concept blind spots')
+                : cause === 'B'
+                  ? tr('🎯 專攻審題陷阱', '🎯 Reading the question')
+                  : tr('🧮 專攻運算粗心', '🧮 Careful calculation')}
             </span>
           )}
         </div>

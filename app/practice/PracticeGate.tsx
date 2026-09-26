@@ -11,7 +11,8 @@ import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/l
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
-import { hasElectives, isTopicInScope, type ElectiveSelection } from '@/lib/electives'
+import { hasElectives, isQuestionInScope, type ElectiveSelection } from '@/lib/electives'
+import type { ReverseCause } from '@/lib/reverseLog'
 
 // Client-only quiz runner (uses Math.random/localStorage). The platform is 100%
 // free, so there is no wall, cap or tier check here any more — we simply load
@@ -103,11 +104,14 @@ export default function PracticeGate({
   subjectId,
   topicFilter,
   mode = 'normal',
+  cause = null,
   sessionSize,
 }: {
   subjectId: string
   topicFilter: string | null
-  mode?: 'normal' | 'weakness' | 'long'
+  mode?: 'normal' | 'weakness' | 'long' | 'cause'
+  /** With mode='cause': the error cause to practise (lib/causeMode.ts). */
+  cause?: ReverseCause | null
   /** C6「只做 1 題」會傳 1；其餘一律用標準卷長。 */
   sessionSize?: number
 }) {
@@ -171,19 +175,20 @@ export default function PracticeGate({
 
   return (
     <PracticeSession
-      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (sessionSize ?? '')}
+      key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (cause ?? '') + '|' + (sessionSize ?? '')}
       bank={scopedMc}
       subjectId={subjectId}
       topicFilter={topicFilter}
       sessionSize={sessionSize ?? SESSION_SIZE}
-      mode={mode === 'weakness' ? 'weakness' : 'normal'}
+      mode={mode === 'weakness' || mode === 'cause' ? mode : 'normal'}
+      cause={cause}
     />
   )
 }
 
-function inScope<T extends { topic: string }>(bank: T[], subjectId: string, topicFilter: string | null, selKey: string): T[] {
+function inScope<T extends { id: string; topic: string }>(bank: T[], subjectId: string, topicFilter: string | null, selKey: string): T[] {
   if (topicFilter) return bank
   const sel = JSON.parse(selKey) as ElectiveSelection | null
-  const kept = bank.filter((q) => isTopicInScope(subjectId, q.topic, sel ?? undefined))
+  const kept = bank.filter((q) => isQuestionInScope(subjectId, q, sel ?? undefined))
   return kept.length ? kept : bank
 }

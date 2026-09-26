@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useT } from '@/lib/i18n'
 import PracticeGate from './PracticeGate'
+import { parseCause } from '@/lib/causeMode'
 import PracticeSupport from '@/components/PracticeSupport'
 // NTM 溫柔二次確認：開咗「今晚唔溫得」入嚟會先問一次（零強制，確認即放行）
 import NotTonightGate from '@/components/NotTonightGate'
@@ -25,17 +26,22 @@ function PracticeRouter() {
   const topicFilter = params.get('topic')
   // `long` = 書寫題獨立卷（決策 ②）。同 MC 卷完全分開，唔共用 sessionSize。
   const rawMode = params.get('mode')
-  const mode = rawMode === 'weakness' ? 'weakness' : rawMode === 'long' ? 'long' : 'normal'
+  // `cause` = practise by self-diagnosed error cause (UX audit F1, lib/causeMode.ts).
+  // Without a valid ?cause= it is an ordinary session.
+  const cause = parseCause(params.get('cause'))
+  const mode =
+    rawMode === 'weakness' ? 'weakness' : rawMode === 'long' ? 'long' : rawMode === 'cause' && cause ? 'cause' : 'normal'
   // C6「只做 1 題」：唯一支援嘅細卷尺寸。刻意唔開放任意數字 ——
   // 呢個入口存在嘅意義係「門檻低到冇得再低」，唔係一個自訂長度功能。
   const size = params.get('size') === '1' ? 1 : undefined
   // Re-mount the gate (and the session beneath it) whenever subject/topic/mode changes.
   return (
     <PracticeGate
-      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${size ?? ''}`}
+      key={`${subjectId}|${topicFilter ?? ''}|${mode}|${cause ?? ''}|${size ?? ''}`}
       subjectId={subjectId}
       topicFilter={topicFilter}
       mode={mode}
+      cause={mode === 'cause' ? cause : null}
       sessionSize={size}
     />
   )

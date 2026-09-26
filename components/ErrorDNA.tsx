@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Fingerprint } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Fingerprint } from 'lucide-react'
 import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { useLocale } from '@/lib/i18n'
+import { causeHasMaterial } from '@/lib/causeMode'
 
 // 錯因 DNA — visualises the distribution of the student's self-diagnosed error causes
 // (the A/B/C reverse-cause log written by the lockout). Pure client-side; reads the
@@ -36,7 +38,8 @@ export default function ErrorDNA() {
   const [counts, setCounts] = useState<Record<ReverseCause, number>>({ A: 0, B: 0, C: 0 })
   const [total, setTotal] = useState(0)
   // 連續同類錯因偵測（Ethan/數據）：最近 N 次全同一錯因 ⇒ 惡性循環警示。
-  const [streak, setStreak] = useState<{ cause: ReverseCause; len: number } | null>(null)
+  // practiceHref: UX audit F1, a 10-question session on this cause in the latest entry's subject.
+  const [streak, setStreak] = useState<{ cause: ReverseCause; len: number; practiceHref: string | null } | null>(null)
 
   useEffect(() => {
     const log = getReverseLog()
@@ -49,7 +52,12 @@ export default function ErrorDNA() {
       const head = log[0].cause
       let len = 0
       for (const e of log) { if (e.cause === head) len++; else break }
-      setStreak(len >= 3 ? { cause: head, len } : null)
+      const subjectId = log[0].subjectId
+      const practiceHref =
+        subjectId && causeHasMaterial(log, subjectId, head)
+          ? `/practice?subject=${encodeURIComponent(subjectId)}&mode=cause&cause=${head}`
+          : null
+      setStreak(len >= 3 ? { cause: head, len, practiceHref } : null)
     }
   }, [])
 
@@ -114,6 +122,15 @@ export default function ErrorDNA() {
                   ? `Your last ${streak.len} slips were all “${CAUSE[streak.cause].en}”. Knowing that is useful. Next time: ${CAUSE[streak.cause].adviceEn.split(' — ')[1] ?? CAUSE[streak.cause].adviceEn}`
                   : `你最近 ${streak.len} 次都係「${CAUSE[streak.cause].zh}」—— 搵到呢個規律已經係進步。下次可以咁做：${CAUSE[streak.cause].adviceZh.split('——')[1]?.trim() ?? CAUSE[streak.cause].adviceZh}`}
               </p>
+              {streak.practiceHref && (
+                <Link
+                  href={streak.practiceHref}
+                  className="mt-2 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-accent-strong underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                >
+                  {en ? 'Practise this kind now' : '即刻練返呢類'}
+                  <ArrowRight size={14} aria-hidden />
+                </Link>
+              )}
             </div>
           )}
 

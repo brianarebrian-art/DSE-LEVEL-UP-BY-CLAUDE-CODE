@@ -9,11 +9,12 @@ const { loadSubjectQuestions } = await import('../load.ts')
 const { subjects } = await import('../../subjects.ts')
 const { familyKey, familyLabel, stemSkeleton } = await import('../family.ts')
 const { DIFFICULTY_OVERRIDES } = await import('../difficulty-overrides.generated.ts')
+const { isHiddenTopic } = await import('../hidden-topics.ts')
 
 const active: string[] = subjects.filter((s: { isActive?: boolean }) => s.isActive !== false).map((s: { id: string }) => s.id)
 const isMc = (q: { type?: string }) => (q.type ?? 'mc') === 'mc'
 type Tier = 'easy' | 'medium' | 'hard'
-type Row = { id: string; difficulty: Tier }
+type Row = { id: string; difficulty: Tier; topic: string }
 
 test('the family label rule: majority, ties go to the middle', () => {
   assert.equal(familyLabel(['easy', 'easy', 'medium']), 'easy')
@@ -69,7 +70,10 @@ test('overrides only change difficulty, and only on questions that exist', () =>
     const out = new Map<string, Row>(getSubjectQuestions(s).map((q: Row) => [q.id, q]))
     for (const [id, d] of Object.entries(map)) {
       const before = raw.get(id), after = out.get(id)
-      assert.ok(before && after, `${s}: override for unknown id ${id}`)
+      assert.ok(before, `${s}: override for unknown id ${id}`)
+      // Families are computed on the whole bank, withheld topics included (hidden-topics.ts),
+      // so their overrides stay ready for when they come back.
+      if (!after) { assert.ok(isHiddenTopic(s, before.topic), `${s}/${id}: missing from the served bank`); continue }
       assert.notEqual(before.difficulty, d, `${s}/${id}: override does not change anything`)
       assert.deepEqual({ ...after, difficulty: before.difficulty }, before, `${s}/${id}: override changed more than difficulty`)
     }

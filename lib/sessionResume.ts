@@ -27,11 +27,14 @@ export interface SavedAnswer {
   isCorrect: boolean
 }
 
+/** 'cause' = practice by error cause (lib/causeMode.ts, UX audit F1). */
+export type PracticeMode = 'normal' | 'weakness' | 'cause'
+
 export interface ActiveSession {
   v: 1
   subjectId: string
   topicFilter: string | null
-  mode: 'normal' | 'weakness'
+  mode: PracticeMode
   questionIds: string[]
   answers: (SavedAnswer | null)[]
   current: number
@@ -113,7 +116,7 @@ export function isResumable(
   s: ActiveSession | null,
   subjectId: string,
   topicFilter: string | null,
-  mode: 'normal' | 'weakness',
+  mode: PracticeMode,
 ): s is ActiveSession {
   if (!s) return false
   if (s.subjectId !== subjectId) return false

@@ -22,8 +22,11 @@ import { useLocale } from '@/lib/i18n'
 import { SITE_ORIGIN } from '@/lib/site'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
+import { useQuiet } from '@/lib/quietMode'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
+import { buildCauseCardData } from '@/lib/causeCard'
+import { getReverseLog } from '@/lib/reverseLog'
 
 interface TopicResult {
   topic: string
@@ -130,6 +133,8 @@ export default function ResultPageClient() {
   const [shared, setShared] = useState(false)
   const [reportCopied, setReportCopied] = useState(false)
   const [siteHost, setSiteHost] = useState('')
+  // Quiet mode hides the encouragement wall (UX audit B5, Yuna 2026-09-26).
+  const quiet = useQuiet()
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
@@ -283,6 +288,11 @@ export default function ResultPageClient() {
     igLink: 'ig.me/j/AbYCy6ZUDR-yWVPN',
     siteUrl: siteHost || SITE_ORIGIN.replace(/^https:\/\//, ''),
   }
+  // UX audit A2 (c): the cause card, shared instead of the score card by default.
+  // null when no cause was recorded today in this subject (lib/causeCard.ts).
+  const causeCardData = result.subjectId
+    ? buildCauseCardData(getReverseLog(), result.subjectId, { date: cardData.date, subject: subjName, siteUrl: cardData.siteUrl })
+    : null
 
   // ── Teacher hand-in report. Fills the fixed template with real diagnostic data;
   // Name/Class stay as blanks for the student to complete.
@@ -595,7 +605,7 @@ export default function ResultPageClient() {
         </button>
 
         {/* 分享戰績卡到 IG Story（誠實版：真數據 only，html2canvas 客戶端）*/}
-        <ShareStatsCardButton data={cardData} en={locale === 'en'} />
+        <ShareStatsCardButton data={cardData} causeData={causeCardData} en={locale === 'en'} />
 
         {/* Action buttons */}
         <div className="no-print grid sm:grid-cols-2 gap-3">
@@ -633,7 +643,7 @@ export default function ResultPageClient() {
         </button>
 
         {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
-        <EncouragementWall />
+        {!quiet && <EncouragementWall />}
 
         {/* Disclaimer */}
         <p className="text-xs text-ink-muted text-center">

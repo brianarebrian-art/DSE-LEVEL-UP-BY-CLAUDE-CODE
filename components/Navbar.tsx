@@ -49,12 +49,14 @@ import { useT, useLocale } from '@/lib/i18n'
 // 再放「帳戶」係重複；手機底欄嗰四格拇指夠得到嘅位置就冇登入掣，所以要有。
 const navLinks: {
   href: string
-  key: 'subjects' | 'progress' | 'tabSaved' | 'notes'
+  key: 'subjects' | 'progress' | 'tabSaved' | 'notes' | 'offSyllabus'
 }[] = [
   { href: '/subjects', key: 'subjects' },
   { href: '/dashboard', key: 'progress' },
   { href: '/bookmarks', key: 'tabSaved' },
   { href: '/notes', key: 'notes' },
+  // 2026-09-26 Yuna：非 DSE 範圍嘅內容（例如新來港廣東話）只由呢度入，唔放首頁。
+  { href: '/off-syllabus', key: 'offSyllabus' },
 ]
 
 export default function Navbar() {

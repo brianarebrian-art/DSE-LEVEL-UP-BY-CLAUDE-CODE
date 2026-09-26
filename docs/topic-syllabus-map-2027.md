@@ -250,7 +250,7 @@
 | `accounting` | 會計 | 105 | 必修 | 商管組必修 Basics of Accounting（p.21、p.32）；會計組選修 |
 | `financial_mgmt` | 財務管理 | 99 | 選修 | 商管組選修 Financial Management（p.35） |
 | `personal_finance` | 個人理財 | 134 | 必修 | 兩組共同必修：Basics of Personal Financial Management（p.24） |
-| `bafs_ratio_analysis` | 比率分析（高階） | 90 | 選修 | 會計組選修（p.29）；全文只在此頁出現比率分析 |
+| `bafs_ratio_analysis` | 比率分析（高階） | 90 | 選修 | 會計組選修（p.29）；商管組選修財務管理亦有比率分析（p.25–26），2026-09-26 更正（原寫「全文只在此頁出現」） |
 | `bafs_costing_pricing` | 成本・定價・回本 | 86 | 選修 | 會計組選修 Cost Accounting（p.29–30）；回本期另見商管組 p.35 |
 | `bafs_depreciation` | 折舊計算 | 103 | 選修 | 會計組選修（p.26–27）；全文只在此兩頁出現折舊 |
 | `financial_statements` | 財務報表 | 99 | 部分 | 會計組選修（p.26–29）；商管組必修只涉基礎（p.32） |
@@ -543,6 +543,7 @@
 ## 待決定事項（未執行）
 
 1. **「未見」課題（220 題）**：倫理與宗教 `religion_philosophy`、`religion_society`。可選：收起不出題、改標課題、或經 §12 流程刪除並重寫。
+   **2026-09-26 已決定（Yuna，按 §18）：收起不出題，題目保留作審計。** 見 `docs/UNMAPPED-220.md`。
 2. **「部分」課題**：先由學科負責人確認哪些題目超出範圍，再逐批處理。
 3. **選修篩選**：是否按本表把經濟 `ppf`（選修二）、BAFS 會計組課題、`financial_mgmt`（商業管理組）加入 `TOPIC_SCOPE`。
 4. **「前備」課題**：初中內容保留作溫習，抑或降低出題比例。

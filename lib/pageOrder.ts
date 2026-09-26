@@ -78,9 +78,11 @@ export const EXCLUDED: Record<string, string> = {
   // ⚠️ /cantonese 刻意【唔入】PAGE_ORDER。本檔開頭寫明循環嗰六條係
   //    Navbar ∩ BottomNav ∩ Sidebar 嘅交集，而 /cantonese 唔喺任何一條
   //    持久導航入面。為咗一個新頁破自己一日前先寫低嘅規則，個規則就變裝飾。
-  //    佢有自己嘅入口：首頁一張全闊卡（信任列之後、科目 grid 之前）。
+  //    2026-09-26 起入口改為「不考之地」（/off-syllabus），首頁當眼卡已移走。
   //    入口唔擺科目總覽，因為新來港支援唔屬於任何一科。
-  '/cantonese': '新來港日常廣東話（業餘班·非正規生活支援），入口喺首頁當眼位，唔屬任何科目',
+  '/cantonese': '新來港日常廣東話（業餘班·非正規生活支援），由 /off-syllabus 入，唔屬任何科目',
+  // 2026-09-26 Yuna：非 DSE 範圍內容嘅集合頁，入口喺三橫選單同側欄最尾，刻意唔入循環。
+  '/off-syllabus': '不考之地：非 DSE 考核範圍內容，由三橫選單及側欄入，唔屬主循環',
   '/capsule': '支線功能頁',
   '/concept-net': '支線功能頁',
   '/exam-day': '支線功能頁',

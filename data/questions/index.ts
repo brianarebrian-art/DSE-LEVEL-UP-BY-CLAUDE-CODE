@@ -1,6 +1,7 @@
 import type { AnyQuestion, MCQuestion, Topic, WrittenQuestion } from './types'
 import { applyDifficultyOverrides } from './family'
 import { DIFFICULTY_OVERRIDES } from './difficulty-overrides.generated'
+import { isHiddenTopic, withoutWithheld } from './hidden-topics'
 import { mathQuestions, mathTopics } from './math'
 import { mathGeneratedQuestions } from './math-generated'
 import { mathParametricQuestions } from './math-parametric'
@@ -318,7 +319,11 @@ export function getSubjectQuestionsRaw(subjectId: string): AnyQuestion[] {
 
 /** 該科全部題目（MC + 書寫題）。計數／課題統計用。Family difficulty overrides applied (data/questions/family.ts). */
 export function getSubjectQuestions(subjectId: string): AnyQuestion[] {
-  return applyDifficultyOverrides(getSubjectQuestionsRaw(subjectId), DIFFICULTY_OVERRIDES[subjectId])
+  // Withheld topics (hidden-topics.ts) are dropped here; getSubjectQuestionsRaw keeps them.
+  return withoutWithheld(
+    subjectId,
+    applyDifficultyOverrides(getSubjectQuestionsRaw(subjectId), DIFFICULTY_OVERRIDES[subjectId]),
+  )
 }
 
 /**
@@ -373,7 +378,7 @@ export function getSubjectTopics(subjectId: string): Topic[] {
     else writtenCounts.set(q.topic, (writtenCounts.get(q.topic) ?? 0) + 1)
   }
 
-  const withRealCounts = bank.topics.map((t) => ({
+  const withRealCounts = bank.topics.filter((t) => !isHiddenTopic(subjectId, t.id)).map((t) => ({
     ...t,
     count: counts.get(t.id) ?? 0,
     mcCount: mcCounts.get(t.id) ?? 0,

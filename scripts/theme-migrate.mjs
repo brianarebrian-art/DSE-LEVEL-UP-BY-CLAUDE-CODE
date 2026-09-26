@@ -33,6 +33,7 @@ const REPORT_ONLY = process.argv.includes('--report')
 const EXCLUDE = [
   /^app\/relax\//,
   /^components\/DailyStatsCard\.tsx$/,
+  /^components\/CauseCard\.tsx$/,
   /^components\/ErrorRadar\.tsx$/,
   /^components\/DailySpectrum\.tsx$/,
   /^app\/dashboard\/report\//,
