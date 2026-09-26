@@ -639,6 +639,10 @@ build 結果、「已上線／已完成」欄位。
 >    **合共三個 key，不延伸至任何其他 key。** 本條本身永不因批准過幾多個而放寬 ——
 >    第四個 key 一樣要重新開題、重新決定。
 >    （2026-09-26 起「書面批准」改為創辦人明確決定並記錄於 `docs/`，毋須簽名，見 §18。）
+>    **2026-09-26：第四個 key `dse_electives`（每科選修單元選擇）** 經開題
+>    （`docs/charter-amendment-2026-09-26-electives-DRAFT.md`）後由 Yuna 決定上雲，
+>    經 `lib/sync.ts` 同一通道，唔開新表。屬學生【揀】嘅嘢，符合約束 5 界線。
+>    本條其餘內容不變：第五個 key 一樣要重新開題、重新決定。
 > 7. **老師平台維持已否決狀態**（§8）。本次修訂**不**構成復建理由 ——
 >    `classes` / `enrollments` / `question_events` 已於 `0003_drop_teacher_platform.sql`
 >    刪除，維持刪除。
@@ -676,7 +680,7 @@ E-02 甚至自己標咗「風險：高，要創辦人親自簽名」，程序上
 
 1. 上雲白名單由 `lib/sync.ts` 定義。**新增任何一個 key 都要創辦人明確決定**（記錄於 `docs/`，毋須簽名，見 §18）。
    已批准：`dse_progress`、`dse_free_attempts_total`、`dse_topic_stats`（2026-09-04）、
-   `dse_active_session`、`dse_reverse_log`（2026-09-08）。
+   `dse_active_session`、`dse_reverse_log`（2026-09-08）、`dse_electives`（2026-09-26，Yuna，按 §18）。
    ⚠️ `dse_topic_stats` 2026-09-04 批准咗，但代碼直到 **2026-09-07** 先跟上 ——
    中間三日條文同實作漂移咗，學生換部機雷達圖照樣由零開始。
    **批准同落實係兩件事，兩件都要有人做。**

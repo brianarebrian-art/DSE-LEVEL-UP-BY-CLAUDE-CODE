@@ -76,6 +76,13 @@ const ALLOWED_UPLOAD_KEYS = [
   // 亦已列出（有 trust-disclosure.test.mts 把關）。
   'dse_active_session', // answers[].selectedZh
   'dse_reverse_log', // selected / correct
+
+  // 2026-09-26 added. Decision: Yuna (COO) under charter §18, recorded in
+  // docs/charter-amendment-2026-09-26-electives-DRAFT.md and charter §16.E.
+  // Elective unit ids per subject: something the student picked, nothing written,
+  // no answers, no feelings. It can hint at the school (same combination), which
+  // the draft accepts because only the student can read it (§16.E constraints 1, 3).
+  'dse_electives',
 ]
 
 // 呢張名單【冇縮水嘅意思】—— 下面每一個仍然係硬紅線。

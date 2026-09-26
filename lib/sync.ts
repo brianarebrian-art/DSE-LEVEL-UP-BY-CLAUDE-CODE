@@ -14,7 +14,12 @@ const KEYS = {
   counter: 'dse_free_attempts_total',
   topicStats: 'dse_topic_stats',
   reverseLog: 'dse_reverse_log',
+  // Elective choices (lib/electives.ts ELECTIVES_KEY). Yuna 2026-09-26, charter §16.E.
+  electives: 'dse_electives',
 } as const
+// Same value as ELECTIVES_EVENT in lib/electives.ts (which imports this file, so it
+// cannot be imported here). Tells ElectiveSelector to re-read after a cloud merge.
+const ELECTIVES_EVENT = 'dse-electives'
 // 上次同雲端一致嗰一刻嘅課題統計快照。**純本機記帳，永不上傳。**
 //
 // ⚠️ 佢【唔屬於】§16.E 嘅上雲白名單，亦唔准加入 —— 白名單維持三個 key
@@ -68,6 +73,11 @@ export interface Snapshot {
    * 2026-09-08 起上傳 —— 同上。
    */
   dse_reverse_log?: unknown[]
+  /**
+   * Elective units per subject, e.g. { physics: { units: [...], updatedAt } }.
+   * Uploaded from 2026-09-26 (Yuna, charter §16.E). A choice, not something written.
+   */
+  dse_electives?: Record<string, unknown>
   updatedAt: number | null // last local change (device wall-clock ms)
   syncedAt: number | null // last cloud merge on THIS device
 }
@@ -154,6 +164,8 @@ export function snapshotLocal(): Snapshot {
   const rawActive = typeof localStorage !== 'undefined' ? localStorage.getItem(ACTIVE_SESSION_KEY) : null
   const activeSession = rawActive === null ? undefined : readJSON<ActiveSession | null>(ACTIVE_SESSION_KEY, null)
   const reverseLog = readJSON<unknown[]>(KEYS.reverseLog, [])
+  const electives = readJSON<Record<string, unknown>>(KEYS.electives, {})
+  const hasElectives = electives && typeof electives === 'object' && Object.keys(electives).length > 0
   return {
     dse_progress: readJSON<unknown[]>(KEYS.progress, []),
     dse_free_attempts_total: readNum(KEYS.counter) ?? 0,
@@ -161,6 +173,9 @@ export function snapshotLocal(): Snapshot {
     // `null` 有意義（＝嗰節喺呢部機做完咗，要通知其他機清走），所以照帶。
     ...(activeSession !== undefined ? { dse_active_session: activeSession } : {}),
     ...(reverseLog.length > 0 ? { dse_reverse_log: reverseLog } : {}),
+    // Only when there is a choice: an empty object would not wipe the cloud copy
+    // (mergeElectives keeps both sides), but there is no reason to send it.
+    ...(hasElectives ? { dse_electives: electives } : {}),
     updatedAt: readNum(UPDATED_AT),
     syncedAt: readNum(SYNCED_AT),
   }
@@ -389,6 +404,35 @@ export function mergeSnapshots(
   if (mergedTopics && Object.keys(mergedTopics).length > 0) out.dse_topic_stats = mergedTopics
   else if (winner.dse_topic_stats !== undefined) out.dse_topic_stats = winner.dse_topic_stats
 
+  const mergedElectives = mergeElectives(local.dse_electives, cloudSnap.dse_electives)
+  if (Object.keys(mergedElectives).length > 0) out.dse_electives = mergedElectives
+  else delete out.dse_electives
+
+  return out
+}
+
+/**
+ * Elective choices: per subject, the newer choice wins (its own updatedAt; a choice
+ * without one counts as oldest). A tie keeps this device's choice. A subject chosen
+ * on only one side is kept, so choosing physics on the phone and BAFS on the laptop
+ * ends with both.
+ */
+export function mergeElectives(
+  local: Record<string, unknown> | undefined,
+  cloud: Record<string, unknown> | undefined,
+): Record<string, unknown> {
+  const L = local && typeof local === 'object' ? local : {}
+  const C = cloud && typeof cloud === 'object' ? cloud : {}
+  const at = (v: unknown) => {
+    const t = (v as { updatedAt?: unknown } | null)?.updatedAt
+    return typeof t === 'number' && Number.isFinite(t) ? t : 0
+  }
+  const out: Record<string, unknown> = {}
+  for (const subject of new Set([...Object.keys(L), ...Object.keys(C)])) {
+    const l = L[subject]
+    const c = C[subject]
+    out[subject] = l === undefined ? c : c === undefined ? l : at(c) > at(l) ? c : l
+  }
   return out
 }
 
@@ -453,6 +497,10 @@ export function applyLocal(s: Snapshot): void {
     if (Array.isArray(s.dse_reverse_log)) {
       localStorage.setItem(KEYS.reverseLog, JSON.stringify(s.dse_reverse_log))
     }
+    if (s.dse_electives && typeof s.dse_electives === 'object') {
+      localStorage.setItem(KEYS.electives, JSON.stringify(s.dse_electives))
+      window.dispatchEvent(new Event(ELECTIVES_EVENT))
+    }
     const now = Date.now()
     localStorage.setItem(UPDATED_AT, String(now))
     localStorage.setItem(SYNCED_AT, String(now))
@@ -468,6 +516,7 @@ export function emptySnapshot(): Snapshot {
     dse_free_attempts_total: 0,
     dse_topic_stats: {},
     dse_active_session: null,
+    dse_electives: {},
     updatedAt: null,
     syncedAt: null,
   }

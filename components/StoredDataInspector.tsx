@@ -33,6 +33,7 @@ export const CLOUD_PROGRESS_KEYS = [
   'dse_topic_stats',
   'dse_active_session',
   'dse_reverse_log',
+  'dse_electives', // 2026-09-26, Yuna: elective choices follow the student to another device
 ] as const
 
 export const CLOUD_SETTINGS_KEYS = [

@@ -112,6 +112,14 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             </span>
           </li>
           <li>
+            {en ? 'Your elective choices: ' : '你揀咗嘅選修單元：'}
+            <span className="text-ink-muted">
+              {en
+                ? 'which elective units (or strand) you picked for each subject, so you do not have to choose again on another device.'
+                : '每科你揀咗邊啲選修單元（或者範疇），等你換部機唔使再揀過。'}
+            </span>
+          </li>
+          <li>
             {en ? 'The dates you opened the app: ' : '你開過 app 嘅日期：'}
             <span className="text-ink-muted">
               {en

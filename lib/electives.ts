@@ -2,12 +2,14 @@
 // assigned, per subject. Rules and official unit names come from
 // PAPER_STRUCTURE in data/dse-paper-formats.ts (2027 assessment frameworks).
 //
-// Stored in localStorage only. Syncing to the cloud needs the charter
-// amendment in docs/charter-amendment-2026-09-26-electives-DRAFT.md (§16.E
-// constraint 6); until both founders sign, this module must not be added to
-// lib/sync.ts.
+// Stored in localStorage and, for signed-in students, synced with progress
+// (lib/sync.ts). Decided by Yuna on 2026-09-26 under charter §18; see
+// docs/charter-amendment-2026-09-26-electives-DRAFT.md and charter §16.E.
+// Each subject's choice carries its own updatedAt so the newer choice wins per
+// subject when two devices disagree.
 
 import { PAPER_STRUCTURE, type ElectiveRule } from '@/data/dse-paper-formats'
+import { notifyProgressChanged } from '@/lib/sync'
 
 export const ELECTIVES_KEY = 'dse_electives'
 export const ELECTIVES_EVENT = 'dse-electives'
@@ -19,6 +21,8 @@ export interface ElectiveSelection {
   strand?: string
   /** Chosen elective unit ids. */
   units: string[]
+  /** When this choice was made (ms). Used to pick the newer choice across devices. */
+  updatedAt?: number
 }
 
 export type ElectiveMap = Record<string, ElectiveSelection>
@@ -65,13 +69,14 @@ export function readElectives(): ElectiveMap {
 
 export function saveElective(subject: string, sel: ElectiveSelection): void {
   const all = readElectives()
-  all[subject] = sel
+  all[subject] = { ...sel, updatedAt: Date.now() }
   try {
     localStorage.setItem(ELECTIVES_KEY, JSON.stringify(all))
   } catch {
     /* storage blocked: the choice lasts for this page only */
   }
   window.dispatchEvent(new Event(ELECTIVES_EVENT))
+  notifyProgressChanged() // signed in: push with progress
 }
 
 // ── Which existing topics belong to one elective or strand ─────────────────
