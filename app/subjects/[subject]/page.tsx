@@ -103,6 +103,11 @@ export default async function SubjectPage({
         meta={meta}
         questionsCount={questions.length}
         writtenCount={writtenCount}
+        typeCounts={{
+          mc: questions.filter((q) => (q.type ?? 'mc') === 'mc').length,
+          text: questions.filter((q) => q.type === 'text').length,
+          long: questions.filter((q) => q.type === 'long').length,
+        }}
         topics={topics}
       />
     </>

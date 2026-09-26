@@ -6,15 +6,21 @@ import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
 import { SESSION_SIZE } from '@/lib/entitlements'
+import ElectiveSelector from '@/components/ElectiveSelector'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
+import { isMCExamFormat, PAPER_STRUCTURE, QUESTION_KIND_LABELS } from '@/data/dse-paper-formats'
 
 export default function SubjectDetailView({
   meta,
   questionsCount,
   writtenCount,
+  typeCounts,
   topics,
 }: {
   meta: SubjectMeta
   questionsCount: number
+  /** 現有題數，按題庫只分得出的三類：選擇題、短答題（text）、長題（long）。 */
+  typeCounts: { mc: number; text: number; long: number }
   /** 書寫題（text／long）條數。0 亦照樣顯示入口 —— 見下方長題目卡的註釋。 */
   writtenCount: number
   topics: Topic[]
@@ -64,6 +70,8 @@ export default function SubjectDetailView({
   //
   // 呢張卡描述嘅係【撳落去會開始嗰一節練習】，所以兩個數都要跟 SESSION_SIZE。
   // 每題 1 分，所以滿分 = 一節題數。
+  const examHasMC = isMCExamFormat(meta.id)
+  const structure = PAPER_STRUCTURE[meta.id]
   const sessionQuestions = Math.min(SESSION_SIZE, questionsCount)
   const totalMarks = sessionQuestions
   // 每題約 1.5 分鐘。（2026-09-09 之前仲要加答錯後嘅 30 秒反思鎖；鎖已剷除，
@@ -72,6 +80,98 @@ export default function SubjectDetailView({
   const activeShortNames = getActiveSubjects()
     .map((s) => (en ? s.shortEn : s.short))
     .join(en ? ', ' : '、')
+
+  // 真實 2027 年考卷冇選擇題的科目（data/dse-paper-formats.ts 的 hasMC），書寫卷排頭做主入口，
+  // 選擇題標「僅供溫習」。兩張卡按 DOM 次序重排而不用 CSS order：讀屏與鍵盤 Tab
+  // 跟隨 DOM，視覺次序與閱讀次序不一致會違反 WCAG 1.3.2／2.4.3。
+  const mcCard = (
+    <>
+    {/* Quick start banner */}
+    <div className={`rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${examHasMC ? 'bg-accent/[0.05] border border-accent/20' : 'bg-surface-raised border border-line'}`}>
+      <div>
+        <div className="font-medium text-lg mb-1 text-ink">
+          {examHasMC ? sd.quickStartTitle : en ? 'Multiple-choice (revision only)' : '選擇題（僅供溫習）'}
+        </div>
+        {!examHasMC && (
+          <p className="text-sm text-ink-soft mb-1">
+            {en
+              ? 'The 2027 exam has no multiple-choice questions in this subject. Use these to revise concepts, not to practise the exam format.'
+              : '2027 年考卷呢科冇選擇題。呢啲題幫你溫概念，唔係練考試題型。'}
+          </p>
+        )}
+        <p className="text-ink-muted text-sm">
+          {questionsCount}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
+        </p>
+        <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
+          <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
+          <span>·</span>
+          <span>{sd.gradePredict}</span>
+          <span>·</span>
+          <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
+        </div>
+      </div>
+      {(
+        <Link
+          href={`/practice?subject=${meta.id}`}
+          className={`shrink-0 inline-flex items-center gap-2 font-medium px-6 py-3 rounded-xl transition-all ${examHasMC ? 'bg-accent-strong hover:bg-accent-hover text-on-accent' : 'bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft'}`}
+        >
+          {sd.startNow} <ArrowRight size={16} />
+        </Link>
+      )}
+    </div>
+    </>
+  )
+  const writtenCard = (
+    <>
+    {/* 長題目入口 —— 每一科都有，唔止 MC。
+        `?mode=long` 的 runner（LongPracticeSession）一直存在，但此前全站冇任何
+        科目頁連去嗰度，學生實際上只做得到選擇題。此卡就是缺失的入口。
+        writtenCount === 0 時仍然顯示並可點擊：runner 本身有誠實的空狀態
+        （「呢科暫時未有長題目」＋ 說明人手審批流程 ＋ 回退去選擇題），
+        比隱藏入口更好 —— 學生至少知道呢個題型存在、亦知道點解未有。 */}
+    <Link
+      href={`/practice?subject=${meta.id}&mode=long`}
+      className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-all ${
+        writtenCount > 0
+          ? 'bg-accent/[0.06] hover:bg-accent/[0.10] border-accent/25 hover:border-accent/40'
+          : 'bg-ink/[0.03] hover:bg-ink/[0.05] border-ink/10 hover:border-ink/20'
+      }`}
+    >
+      <div className="flex items-center gap-3">
+        <FileText
+          size={20}
+          className={`shrink-0 ${writtenCount > 0 ? 'text-accent' : 'text-ink-muted'}`}
+        />
+        <div>
+          <div className="font-medium text-ink">
+            {en ? 'Written Paper · Long Questions' : '書寫卷・長題目'}
+            {writtenCount > 0 && (
+              <span className="ml-2 text-xs font-normal text-ink-muted">
+                {writtenCount}
+                {en ? ' available' : ' 題'}
+              </span>
+            )}
+          </div>
+          <p className="text-xs text-ink-muted mt-0.5 leading-relaxed">
+            {writtenCount > 0
+              ? en
+                ? 'Write your own answer, then self-assess against the reference answer and marking scheme. Never machine-marked.'
+                : '自己寫答案，交卷後對照參考答案同評分準則自評。機器永不批改。'
+              : en
+                ? 'Coming soon — every written question is approved by a human one by one, so they arrive slowly.'
+                : '準備中 —— 長題目要逐條經真人審批先會上線，所以出得慢。'}
+          </p>
+        </div>
+      </div>
+      <ArrowRight
+        size={16}
+        className={`shrink-0 group-hover:translate-x-0.5 transition-transform ${
+          writtenCount > 0 ? 'text-accent' : 'text-ink-muted'
+        }`}
+      />
+    </Link>
+    </>
+  )
 
   return (
     <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
@@ -100,78 +200,9 @@ export default function SubjectDetailView({
           <p className="text-ink-muted text-lg">{description}</p>
         </div>
 
-        {/* Quick start banner */}
-        <div className="bg-accent/[0.05] border border-accent/20 rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <div className="font-medium text-lg mb-1 text-ink">{sd.quickStartTitle}</div>
-            <p className="text-ink-muted text-sm">
-              {questionsCount}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
-            </p>
-            <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
-              <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
-              <span>·</span>
-              <span>{sd.gradePredict}</span>
-              <span>·</span>
-              <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
-            </div>
-          </div>
-          {(
-            <Link
-              href={`/practice?subject=${meta.id}`}
-              className="shrink-0 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-all"
-            >
-              {sd.startNow} <ArrowRight size={16} />
-            </Link>
-          )}
-        </div>
+        <ElectiveSelector subject={meta.id} />
 
-        {/* 長題目入口 —— 每一科都有，唔止 MC。
-            `?mode=long` 的 runner（LongPracticeSession）一直存在，但此前全站冇任何
-            科目頁連去嗰度，學生實際上只做得到選擇題。此卡就是缺失的入口。
-            writtenCount === 0 時仍然顯示並可點擊：runner 本身有誠實的空狀態
-            （「呢科暫時未有長題目」＋ 說明人手審批流程 ＋ 回退去選擇題），
-            比隱藏入口更好 —— 學生至少知道呢個題型存在、亦知道點解未有。 */}
-        <Link
-          href={`/practice?subject=${meta.id}&mode=long`}
-          className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-all ${
-            writtenCount > 0
-              ? 'bg-accent/[0.06] hover:bg-accent/[0.10] border-accent/25 hover:border-accent/40'
-              : 'bg-ink/[0.03] hover:bg-ink/[0.05] border-ink/10 hover:border-ink/20'
-          }`}
-        >
-          <div className="flex items-center gap-3">
-            <FileText
-              size={20}
-              className={`shrink-0 ${writtenCount > 0 ? 'text-accent' : 'text-ink-muted'}`}
-            />
-            <div>
-              <div className="font-medium text-ink">
-                {en ? 'Written Paper · Long Questions' : '書寫卷・長題目'}
-                {writtenCount > 0 && (
-                  <span className="ml-2 text-xs font-normal text-ink-muted">
-                    {writtenCount}
-                    {en ? ' available' : ' 題'}
-                  </span>
-                )}
-              </div>
-              <p className="text-xs text-ink-muted mt-0.5 leading-relaxed">
-                {writtenCount > 0
-                  ? en
-                    ? 'Write your own answer, then self-assess against the reference answer and marking scheme. Never machine-marked.'
-                    : '自己寫答案，交卷後對照參考答案同評分準則自評。機器永不批改。'
-                  : en
-                    ? 'Coming soon — every written question is approved by a human one by one, so they arrive slowly.'
-                    : '準備中 —— 長題目要逐條經真人審批先會上線，所以出得慢。'}
-              </p>
-            </div>
-          </div>
-          <ArrowRight
-            size={16}
-            className={`shrink-0 group-hover:translate-x-0.5 transition-transform ${
-              writtenCount > 0 ? 'text-accent' : 'text-ink-muted'
-            }`}
-          />
-        </Link>
+        {examHasMC ? <>{mcCard}{writtenCard}</> : <>{writtenCard}{mcCard}</>}
 
         {/* English-only: Paper 2 Writing Studio entry */}
         {meta.id === 'english' && (
@@ -258,6 +289,81 @@ export default function SubjectDetailView({
             </div>
             <ArrowRight size={16} className="text-gold shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </Link>
+        )}
+
+        {/* 2027 年考卷結構 —— data/dse-paper-formats.ts 的 PAPER_STRUCTURE（2026-09-26 按評核大綱核對）。
+            題數只分得出三類（選擇題、短答題、長題）；「資料題」「論述題」等真實題型各有幾多條，
+            題庫未有標註，所以不列數字，只列考卷結構作參考。 */}
+        {structure && (
+          <section className="mb-10 rounded-2xl border border-line bg-surface-raised p-5">
+            <h2 className="text-lg font-medium text-ink">{en ? 'The 2027 exam, and what we have' : '2027 年考卷結構同現有題數'}</h2>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {([
+                ['mc', en ? 'Multiple-choice' : '選擇題', typeCounts.mc],
+                ['text', en ? 'Short answer' : '短答題', typeCounts.text],
+                ['long', en ? 'Long questions' : '長題', typeCounts.long],
+              ] as const).map(([k, label, n]) => (
+                <span
+                  key={k}
+                  className={`inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3 text-sm ${n > 0 ? 'border-line-strong text-ink' : 'border-line text-ink-muted opacity-60'}`}
+                >
+                  {label} <span className="tabular-nums">{n}</span>
+                  {k === 'mc' && !examHasMC && n > 0 && (
+                    <span className="text-xs text-ink-muted">{en ? '· revision only' : '· 僅供溫習'}</span>
+                  )}
+                </span>
+              ))}
+            </div>
+            <ul className="mt-4 divide-y divide-line text-sm">
+              {structure.sections.map((sec, i) => {
+                const strandName = sec.strand
+                  ? structure.electives?.find((r) => r.kind === 'strand')?.units.find((u) => u.id === sec.strand)
+                  : undefined
+                return (
+                  <li key={i} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-2">
+                    <span className="w-20 shrink-0 text-ink-muted">
+                      {en ? `Paper ${sec.paper}` : `卷 ${sec.paper}`}
+                      {sec.section ? ` · ${sec.section}` : ''}
+                    </span>
+                    <span className="min-w-0 flex-1 text-ink">
+                      {sec.kinds.map((k) => QUESTION_KIND_LABELS[k][en ? 'en' : 'zh']).join(en ? ', ' : '、')}
+                      {sec.elective && (
+                        <span className="ml-2 rounded-full bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">{en ? 'elective' : '選修'}</span>
+                      )}
+                      {strandName && (
+                        <span className="ml-2 rounded-full bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">
+                          {en ? strandName.en : strandName.zh ?? strandName.en}
+                        </span>
+                      )}
+                    </span>
+                    <span className="tabular-nums text-ink-soft">
+                      {sec.weight === null ? '—' : `${sec.derived ? '≈' : ''}${sec.weight}%`}
+                    </span>
+                    {!en && sec.choice && <span className="basis-full text-xs text-ink-muted">{sec.choice}</span>}
+                  </li>
+                )
+              })}
+              {structure.sbaPct > 0 && (
+                <li className="flex items-baseline gap-x-3 py-2">
+                  <span className="flex-1 text-ink-muted">{en ? 'School-based assessment' : '校本評核'}</span>
+                  <span className="tabular-nums text-ink-soft">{structure.sbaPct}%</span>
+                </li>
+              )}
+            </ul>
+            <p className="mt-3 text-xs leading-relaxed text-ink-muted">
+              {en
+                ? '% is of the whole subject. ≈ means converted from the marks the framework gives; — means the framework does not split it. Source: '
+                : '百分比為佔全科總分。≈ 表示由大綱列出的分數換算；— 表示大綱未有分列。來源：'}
+              <ExternalLinkGate
+                href={`https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/${structure.framework}`}
+                platform={en ? 'HKEAA' : '考評局'}
+                className="underline underline-offset-2 hover:text-accent"
+              >
+                {en ? 'HKEAA 2027 Assessment Framework' : '考評局 2027 年評核大綱'}
+              </ExternalLinkGate>
+              {en ? ', checked 26 Sep 2026.' : '，2026-09-26 核對。'}
+            </p>
+          </section>
         )}
 
         {/* Topic list */}

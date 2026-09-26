@@ -1,12 +1,14 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useT } from '@/lib/i18n'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
+import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
+import { hasElectives, isTopicInScope, type ElectiveSelection } from '@/lib/electives'
 
 // Client-only quiz runner (uses Math.random/localStorage). The platform is 100%
 // free, so there is no wall, cap or tier check here any more — we simply load
@@ -52,6 +54,7 @@ export default function PracticeGate({
   sessionSize?: number
 }) {
   const long = mode === 'long'
+  const electives = useElectiveSelection(subjectId)
   // The subject's question bank, lazily fetched as its own chunk.
   // 兩條路各自只攞自己嗰種題 —— MC runner 讀 options／correctIndex，攞錯會即時爆。
   const [mcBank, setMcBank] = useState<MCQuestion[] | null>(null)
@@ -69,28 +72,55 @@ export default function PracticeGate({
     }
   }, [subjectId, long])
 
+  // Mixed practice follows the saved electives. A session the student opened on
+  // one topic is left alone: choosing that topic is an explicit request. If the
+  // filter would leave nothing, the whole bank is used rather than an empty session.
+  //
+  // Memoised on the selection's content, not its object identity: readElectives()
+  // returns a fresh object on every storage event, and LongPracticeSession
+  // rebuilds (reshuffles) its pool whenever `bank` changes identity.
+  const selKey = JSON.stringify(electives.sel ?? null)
+  const scopedMc = useMemo(() => mcBank && inScope(mcBank, subjectId, topicFilter, selKey), [mcBank, subjectId, topicFilter, selKey])
+  const scopedWritten = useMemo(
+    () => writtenBank && inScope(writtenBank, subjectId, topicFilter, selKey),
+    [writtenBank, subjectId, topicFilter, selKey],
+  )
+
+  // A subject with electives needs an answer before the first session. The
+  // dialog accepts "not assigned / not sure", which shows every topic.
+  if (hasElectives(subjectId) && (!electives.ready || !electives.complete)) {
+    return electives.ready ? <ElectiveSelector subject={subjectId} /> : <Loading />
+  }
+
   if (long) {
-    if (writtenBank === null) return <Loading />
+    if (scopedWritten === null) return <Loading />
     return (
       <LongPracticeSession
         key={subjectId + '|' + (topicFilter ?? '') + '|long'}
-        bank={writtenBank}
+        bank={scopedWritten}
         subjectId={subjectId}
         topicFilter={topicFilter}
       />
     )
   }
 
-  if (mcBank === null) return <Loading />
+  if (scopedMc === null) return <Loading />
 
   return (
     <PracticeSession
       key={subjectId + '|' + (topicFilter ?? '') + '|' + mode + '|' + (sessionSize ?? '')}
-      bank={mcBank}
+      bank={scopedMc}
       subjectId={subjectId}
       topicFilter={topicFilter}
       sessionSize={sessionSize ?? SESSION_SIZE}
       mode={mode === 'weakness' ? 'weakness' : 'normal'}
     />
   )
+}
+
+function inScope<T extends { topic: string }>(bank: T[], subjectId: string, topicFilter: string | null, selKey: string): T[] {
+  if (topicFilter) return bank
+  const sel = JSON.parse(selKey) as ElectiveSelection | null
+  const kept = bank.filter((q) => isTopicInScope(subjectId, q.topic, sel ?? undefined))
+  return kept.length ? kept : bank
 }
