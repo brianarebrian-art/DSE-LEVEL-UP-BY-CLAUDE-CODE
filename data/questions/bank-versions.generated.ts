@@ -25,7 +25,7 @@ export const BANK_VERSION: Record<string, string> = {
   "geography": "e3f5b6180b0ad2dc",
   "chinese-literature": "fba3353ff66aa3ee",
   "english-literature": "fb0d11dbd2fdd27a",
-  "ethics-religious": "53d39db3ba90b74d",
+  "ethics-religious": "bf9e8797ed27a2de",
   "ths": "d2773cd7752d4e43",
   "health-management": "cfc1ae68bf9688df",
   "design-tech": "64fef62b093109a5",

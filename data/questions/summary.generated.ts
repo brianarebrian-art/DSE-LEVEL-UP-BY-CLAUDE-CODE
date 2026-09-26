@@ -123,10 +123,10 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 10
   },
   "ethics-religious": {
-    "total": 1087,
-    "mc": 1074,
-    "written": 13,
-    "topics": 10
+    "total": 867,
+    "mc": 858,
+    "written": 9,
+    "topics": 8
   },
   "ths": {
     "total": 1021,
@@ -2652,17 +2652,6 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "writtenCount": 1
     },
     {
-      "id": "religion_philosophy",
-      "zh": "宗教哲學",
-      "en": "Philosophy of Religion",
-      "framework": "宗教哲學",
-      "frameworkEn": "Philosophy of Religion",
-      "emoji": "🤔",
-      "count": 110,
-      "mcCount": 108,
-      "writtenCount": 2
-    },
-    {
       "id": "religion_ethics",
       "zh": "宗教倫理",
       "en": "Religious Ethics",
@@ -2672,17 +2661,6 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "count": 110,
       "mcCount": 109,
       "writtenCount": 1
-    },
-    {
-      "id": "religion_society",
-      "zh": "宗教與社會",
-      "en": "Religion & Society",
-      "framework": "宗教社會",
-      "frameworkEn": "Religion & Society",
-      "emoji": "🌍",
-      "count": 110,
-      "mcCount": 108,
-      "writtenCount": 2
     },
     {
       "id": "eth_theory_apply",
@@ -3505,4 +3483,4 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數。 */
-export const TOTAL_QUESTIONS = 27326
+export const TOTAL_QUESTIONS = 27106
