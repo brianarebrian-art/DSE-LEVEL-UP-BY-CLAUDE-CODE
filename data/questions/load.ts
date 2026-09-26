@@ -1,5 +1,6 @@
 import { loadFromCloud } from '@/lib/questionCloud'
 import { BANK_VERSION } from './bank-versions.generated'
+import { applyDifficultyOverrides } from './family'
 import type { AnyQuestion, MCQuestion, Question, WrittenQuestion } from './types'
 
 // ── Lazy, per-subject question loading (code-splitting) ──────────────────────
@@ -374,8 +375,11 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
     ...reviewed.map((f) => f()),
   ])
   const rev = revBatches.flat()
-  if (!extra.length && !rev.length) return base
-  return [...base, ...extra, ...rev]
+  const all = !extra.length && !rev.length ? base : [...base, ...extra, ...rev]
+  // Family difficulty overrides (data/questions/family.ts). Imported lazily so the
+  // map only downloads on this fallback path; the cloud copy already carries them.
+  const { DIFFICULTY_OVERRIDES } = await import('./difficulty-overrides.generated')
+  return applyDifficultyOverrides(all, DIFFICULTY_OVERRIDES[subjectId])
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */

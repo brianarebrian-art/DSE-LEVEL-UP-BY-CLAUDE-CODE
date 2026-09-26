@@ -40,7 +40,8 @@
     "analytics:retention": "npx --yes tsx@4.19.2 scripts/analytics/retention.mts",
     "qbank:accuracy-budget": "npx --yes tsx@4.19.2 scripts/qbank/accuracy-budget.mts",
     "qbank:calibrate": "npx --yes tsx@4.19.2 scripts/qbank/calibrate-topic-difficulty.mts",
-    "qbank:gap": "npx --yes tsx@4.19.2 scripts/qbank/gap-2027.mts"
+    "qbank:gap": "npx --yes tsx@4.19.2 scripts/qbank/gap-2027.mts",
+    "qbank:family-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/gen-difficulty-overrides.mts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
