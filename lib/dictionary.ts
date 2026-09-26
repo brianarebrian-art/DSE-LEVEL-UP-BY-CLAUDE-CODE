@@ -9,6 +9,8 @@ const zh = {
     about: '關於我們',
     paper: '紙筆戰士',
     notes: '知識凝結',
+    // 2026-09-26 Yuna：非 DSE 考核範圍嘅內容集中喺呢度，入口只喺三橫選單同側欄。
+    offSyllabus: '不考之地',
     startPractice: '開始練習',
     // 手機底欄：刻意沿用各頁自己嘅叫法，唔另創「今日／回顧／我的」一套新詞 ——
     // 掣寫「今日」但撳落去個頁面寫「我的進度」，只會令學生要記兩套名。
@@ -20,6 +22,11 @@ const zh = {
   // 前／後頁導航（PageNav）。目的地名一律沿用上面 nav 嘅叫法 —— 同底欄、
   // 側欄同一個原則：掣寫一個名、頁寫另一個名，學生就要記兩套。
   // 呢度只補一個 nav 冇嘅 `home`，其餘全部由 lib/pageOrder 對應返上面。
+  // 不考之地（/off-syllabus）。2026-09-26 Yuna 定名同標語。
+  offSyllabus: {
+    tagline: '純粹為樂趣而學',
+    lead: '呢度嘅嘢唔屬任何 DSE 科目，亦唔會喺考試出現。唔計分、唔記進度，想睇就睇。',
+  },
   pageNav: {
     prev: '上一頁',
     next: '下一頁',
@@ -90,7 +97,7 @@ const zh = {
       repeat: '請人重複',
       close: '收尾・道謝',
     },
-    // 主頁當眼卡。新來港支援唔屬於任何一科，所以入口唔喺科目總覽，喺首頁。
+    // 「不考之地」（/off-syllabus）入面嘅卡。2026-09-26 前係首頁當眼卡，已移走。
     homeTitle: '新來港・香港日常廣東話',
     homeLead: '香港人平時講嘅嘢，同書本教嘅唔同。返學、食飯、搭車、打風、睇醫生、約人打波 —— 十六個場景，每句附粵拼、普通話同英文，仲有點樣學嘅方法。',
     homeCta: '立即學習',
@@ -107,6 +114,7 @@ const zh = {
     predictor: '等級預測',
     relax: '呼吸空間',
     saved: '收藏',
+    offSyllabus: '不考之地',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
     quote: '掌握邏輯，唔係背答案。無論數字點變，你都識答。',
@@ -486,11 +494,16 @@ const en: typeof zh = {
     about: 'About',
     paper: 'Paper Warrior',
     notes: 'Notes',
+    offSyllabus: 'Off the Syllabus',
     startPractice: 'Start Practice',
     tabPractice: 'Practise',
     tabProgress: 'Progress',
     tabSaved: 'Saved',
     tabAccount: 'Account',
+  },
+  offSyllabus: {
+    tagline: 'Learning just for fun',
+    lead: 'Nothing here belongs to a DSE subject or turns up in an exam. No scores, no progress tracking. Browse as you like.',
   },
   pageNav: {
     prev: 'Back',
@@ -555,6 +568,7 @@ const en: typeof zh = {
     predictor: 'Grade Predictor',
     relax: 'Breathing Space',
     saved: 'Saved',
+    offSyllabus: 'Off the Syllabus',
     quote: 'Master the logic, not the answers. Whatever the numbers, you can solve it.',
   },
   predictor: {

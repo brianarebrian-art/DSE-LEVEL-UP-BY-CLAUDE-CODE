@@ -187,35 +187,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 新來港支援 ──
-          擺喺首頁而唔係科目總覽，因為佢唔屬於任何一科 —— 一個中文差、
-          但數學物理好好嘅新來港學生，唔會去 /subjects/chinese 搵呢樣嘢。
-
-          擺喺信任列【之後】而唔係 Hero 緊接住：上面嗰段註釋寫明信任列要做
-          「Hero 之後第一件事」，答訪客第一個問題。呢張卡唔應該插隊，
-          但佢仍然喺科目 grid（下面好遠）之前，第一屏碌一下就見到。
-
-          ⚠️ 2026-09-19：CTA 本來跟真人簽名狀態變（未簽名寫「了解課程內容」）。
-          簽名閘已剷除，內容無條件出街，所以 CTA 固定寫「立即學習」——
-          而家撳入去真係有嘢學，唔再係一版「仲未上線」。 */}
-      <section className="bg-surface px-4 py-10">
-        <div className="mx-auto max-w-4xl rounded-2xl border border-line bg-surface-raised p-6 sm:p-8">
-          <p className="text-xs font-medium uppercase tracking-wide text-ink-muted">
-            {t.cantonese.kicker}
-          </p>
-          <h2 className="mt-1 text-xl font-medium text-ink sm:text-2xl">{t.cantonese.homeTitle}</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            {t.cantonese.homeLead}
-          </p>
-          <Link
-            href="/cantonese"
-            className="mt-5 inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          >
-            {t.cantonese.homeCta}
-            <ArrowRight size={16} aria-hidden />
-          </Link>
-        </div>
-      </section>
+      {/* 2026-09-26：新來港廣東話卡已由首頁移走（Yuna：「唔好擺咁當眼位置」）。
+          入口改為三橫選單同側欄嘅「不考之地」（/off-syllabus）。 */}
 
       {/* ── 盲測黑題 —— 深色「終端」卡刻意做淺底對比 ── */}
       <section className="bg-surface-raised px-4 py-14">

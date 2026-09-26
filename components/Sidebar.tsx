@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { Target, Dna, ChartColumnIncreasing, Leaf, Bookmark, Sprout } from 'lucide-react'
+import { Target, Dna, ChartColumnIncreasing, Leaf, Bookmark, Sprout, Compass } from 'lucide-react'
 import OwlMark from '@/components/OwlMark'
 import { useT, useLocale } from '@/lib/i18n'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
@@ -55,6 +55,8 @@ const ITEMS = [
   { href: '/predictor', key: 'predictor', Icon: ChartColumnIncreasing, exact: false },
   { href: '/relax', key: 'relax', Icon: Leaf, exact: false },
   { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false },
+  // 2026-09-26：桌面冇三橫選單，「不考之地」喺側欄最尾，同三橫選單一樣唔當眼。
+  { href: '/off-syllabus', key: 'offSyllabus', Icon: Compass, exact: false },
 ] as const
 
 /** 錨點連結永遠唔算「目前頁」—— pathname 冇 hash，否則會同「我的進度」一齊亮。 */
