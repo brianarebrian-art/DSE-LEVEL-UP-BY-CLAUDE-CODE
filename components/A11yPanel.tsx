@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import { readTimerPref, writeTimerHidden } from '@/lib/timerPreference'
 import Image from 'next/image'
 import { AlignJustify, Clock, Feather, Lightbulb, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
@@ -38,7 +39,6 @@ const LETTER_SPACING_PREVIEW: Record<LetterSpacing, string> = {
 // 亦只有 3.74:1，全部升至 slate-400／slate-100。SEN 面板本身睇唔到字係最唔應該。
 
 const EASY_KEY = 'dse_easy_font'
-const HIDE_TIMER_KEY = 'dse_hide_timer'
 // 手動「減少動態」。全站本來只跟系統 prefers-reduced-motion —— 用學校電腦、
 // 或者唔識改作業系統設定嘅學生，之前完全冇得揀。
 const NO_MOTION_KEY = 'dse_no_motion'
@@ -99,7 +99,7 @@ export default function A11yPanel() {
       const s = Number(localStorage.getItem(FONT_KEY))
       if (s >= MIN && s <= MAX) setSize(s)
       setEasy(localStorage.getItem(EASY_KEY) === '1')
-      setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
+      setHideTimer(readTimerPref() !== 'show')
       setSound(isAnswerSoundOn())
       setNoMotion(localStorage.getItem(NO_MOTION_KEY) === '1')
       setCalm(localStorage.getItem(CALM_KEY) === '1')
@@ -121,7 +121,7 @@ export default function A11yPanel() {
     const sync = () => {
       try {
         setEasy(localStorage.getItem(EASY_KEY) === '1')
-        setHideTimer(localStorage.getItem(HIDE_TIMER_KEY) === '1')
+        setHideTimer(readTimerPref() !== 'show')
         setSound(isAnswerSoundOn())
         setCalm(localStorage.getItem(CALM_KEY) === '1')
         setFocusLight(localStorage.getItem(FOCUS_LIGHT_KEY) === '1')
@@ -166,11 +166,7 @@ export default function A11yPanel() {
   const toggleTimer = useCallback(() => {
     setHideTimer((prev) => {
       const next = !prev
-      try {
-        localStorage.setItem(HIDE_TIMER_KEY, next ? '1' : '0')
-      } catch {
-        /* ignore */
-      }
+      writeTimerHidden(next)
       // 通知已開住嘅練習頁即時套用（PracticeSession 監聽 dse-a11y）
       window.dispatchEvent(new Event('dse-a11y'))
       return next
@@ -275,7 +271,7 @@ export default function A11yPanel() {
     document.documentElement.classList.toggle('no-motion', next)
     try {
       localStorage.setItem(EASY_KEY, next ? '1' : '0')
-      localStorage.setItem(HIDE_TIMER_KEY, next ? '1' : '0')
+      writeTimerHidden(next)
       localStorage.setItem(NO_MOTION_KEY, next ? '1' : '0')
       // 安靜模式（段位／EXP、溫習時數）一齊開關 —— 憲章 §8.1 約束 4：一鍵舒適模式之下
       // 遊戲化層要整層關掉。⚠️ 刻意【唔】納入上面 comfortOn 嘅推導（同 calm 一樣）：

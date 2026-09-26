@@ -48,11 +48,31 @@ test('每個上雲嘅 SEN 開關都有介面改得到', () => {
     // 「有介面改得到」＝ 有地方 setItem 佢。淨係 getItem 就係唯讀，即係改唔到。
     // 兩種寫法都要接受：直接用字面 key，或者先綁去一個常數再用。
     const literal = new RegExp(`setItem\\(\\s*['"]${key}['"]`).test(UI)
-    const written = literal || constNameWrites(key)
+    const written = literal || constNameWrites(key) || libWriterCalledFromUi(key)
     assert.ok(written, `${key} 會同步上雲，但 components/ 同 app/ 入面冇任何介面寫得入佢 —— ` +
       `即係學生改唔到（2026-09-09 dse_calm_lock 就係咁）`)
   }
 })
+
+/**
+ * A lib helper that writes the key counts only when a component calls it
+ * (lib/timerPreference.ts writeTimerHidden, 2026-09-26). lib/settingsSync.ts is
+ * excluded: applyCloudSettings writes every synced key, so counting it would let
+ * a setting with no control of its own pass, which is the bug this test exists for.
+ */
+function libWriterCalledFromUi(key: string): boolean {
+  for (const f of readdirSync('lib').filter((n) => n.endsWith('.ts') && n !== 'settingsSync.ts')) {
+    const src = readFileSync(join('lib', f), 'utf8')
+    const consts = [...src.matchAll(new RegExp(`const (\\w+) = '${key}'`, 'g'))].map((m) => m[1])
+    if (!consts.length) continue
+    for (const m of src.matchAll(/export function (\w+)\([^)]*\)[^{]*\{([\s\S]*?)\n\}/g)) {
+      const [, name, body] = m
+      const writes = consts.some((c) => new RegExp(`setItem\\(${c}\\s*,`).test(body))
+      if (writes && new RegExp(`\\b${name}\\(`).test(UI)) return true
+    }
+  }
+  return false
+}
 
 /** 好多檔案用常數名（例如 CALM_KEY）而唔係字面 key，所以要順住常數名再搵一次。 */
 function constNameWrites(key: string): boolean {

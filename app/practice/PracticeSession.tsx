@@ -56,6 +56,7 @@ import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
 import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState } from '@/lib/adaptiveOrder'
 import { weightedOrder } from '@/lib/empiricalWeighting'
 // 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
+import { readTimerPref, type TimerPref } from '@/lib/timerPreference'
 import {
   getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
   TIMER_OPTIONS, type TimerOption,
@@ -354,9 +355,12 @@ export default function PracticeSession({
     // 2026-09-09：原本仲要順延個 30 秒鎖嘅死線。鎖已剷除，休息只影響計時。
   }, [])
 
-  const [hideTimer, setHideTimer] = useState(false)
+  // UX audit B4 (b): the running clock is hidden unless the student turns it on (lib/timerPreference.ts).
+  const [timerPref, setTimerPref] = useState<TimerPref>('default')
+  const hideTimer = timerPref === 'hide'
+  const showElapsed = timerPref === 'show'
   useEffect(() => {
-    const read = () => { try { setHideTimer(localStorage.getItem('dse_hide_timer') === '1') } catch { /* ignore */ } }
+    const read = () => setTimerPref(readTimerPref())
     read()
     window.addEventListener('dse-a11y', read)
     return () => window.removeEventListener('dse-a11y', read)
@@ -903,7 +907,7 @@ export default function PracticeSession({
               {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
             </span>
             <span className="flex items-center gap-3">
-              {!hideTimer && (
+              {showElapsed && (
                 <span className="flex items-center gap-1">
                   <Clock size={13} /> {formatTime(elapsed)}
                 </span>

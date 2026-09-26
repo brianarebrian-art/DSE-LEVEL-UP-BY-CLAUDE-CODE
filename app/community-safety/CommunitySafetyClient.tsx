@@ -131,6 +131,21 @@ export default function CommunitySafetyClient() {
         </p>
       </Section>
 
+      {/* UX audit A1 (b), Yuna 2026-09-21: the share card keeps its Instagram group link,
+          and this page says plainly that the group is outside the site. */}
+      <Section title={en ? 'The Instagram group is not part of this site' : 'IG 溫書群組唔屬於本站'}>
+        <p>
+          {en
+            ? 'Your share card and the Breathing Space page carry a link to an Instagram study group. That group lives on Instagram, not here. Accounts, direct messages, content rules and privacy there are Instagram’s, and nothing on this page describes it: “no user-to-user interaction” is a statement about this site only.'
+            : '分享卡同「呼吸空間」有一條 Instagram 溫書群組連結。嗰個群組喺 Instagram 上面，唔喺本站。嗰邊嘅帳戶、私訊、內容規則同私隱，全部由 Instagram 管，本頁講嘅嘢一樣都唔包括佢：「冇用戶對用戶互動」講嘅只係本站。'}
+        </p>
+        <p>
+          {en
+            ? 'Joining is up to you. If anything there makes you uncomfortable, you can leave the group, block and report on Instagram, and talk to someone you trust.'
+            : '入唔入係你自己決定。如果喺嗰邊有任何嘢令你唔舒服，可以退出群組、喺 Instagram 封鎖同舉報，亦可以同你信任嘅人講。'}
+        </p>
+      </Section>
+
       <Section title={en ? 'If things are heavy right now' : '如果你而家好辛苦'}>
         <p>
           {en

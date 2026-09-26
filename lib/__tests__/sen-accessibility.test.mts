@@ -99,9 +99,13 @@ test('一鍵舒適模式 = 易讀字體 + 閱讀尺 + 隱藏計時器 + 減少�
   assert.match(A11Y, /const comfortOn = easy && hideTimer && ruler && noMotion && !sound/)
   assert.match(A11Y, /if \(next\) setSound\(false\)/)
   // 五項都要真係寫落 storage
-  for (const key of ['EASY_KEY', 'HIDE_TIMER_KEY', 'RULER_KEY', 'NO_MOTION_KEY', 'ANSWER_SOUND_KEY']) {
+  for (const key of ['EASY_KEY', 'RULER_KEY', 'NO_MOTION_KEY', 'ANSWER_SOUND_KEY']) {
     assert.ok(A11Y.includes(key), `一鍵舒適模式冇處理 ${key}`)
   }
+  // The timer goes through lib/timerPreference.ts since 2026-09-26 (UX audit B4).
+  const comfort = A11Y.slice(A11Y.indexOf('const toggleComfort'), A11Y.indexOf('const toggleComfort') + 1500)
+  assert.match(comfort, /writeTimerHidden\(next\)/, 'comfort mode must write the timer setting')
+  assert.match(readFileSync('lib/timerPreference.ts', 'utf8'), /setItem\(HIDE_TIMER_KEY/, 'writeTimerHidden must write dse_hide_timer')
 })
 
 test('裝飾層喺舒適模式下要 display:none 或者 animation:none，唔可以只係調慢', () => {
