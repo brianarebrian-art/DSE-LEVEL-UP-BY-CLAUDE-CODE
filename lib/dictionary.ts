@@ -26,6 +26,18 @@ const zh = {
   offSyllabus: {
     tagline: '純粹為樂趣而學',
     lead: '呢度嘅嘢唔屬任何 DSE 科目，亦唔會喺考試出現。唔計分、唔記進度，想睇就睇。',
+    // 話題卡（data/offSyllabus）。卡片內容本身係廣東話，只有呢啲標題跟語言切換。
+    cardsTitle: '話題卡',
+    cardsLead: '十個範疇，揀一個開始睇。唔使記、唔使答，睇完可以同朋友吹下水。',
+    cardsUnit: ' 張卡',
+    life: '生活點用？',
+    scene: '場景',
+    dialogue: '地道對白',
+    explain: '解密',
+    trivia: '不考冷知識',
+    chat: '今日吹水話題',
+    aiNote: '話題卡由 AI 協助撰寫，冷知識未經專家逐張核對；如發現錯漏，請以可靠資料為準。',
+    enNote: '',
   },
   pageNav: {
     prev: '上一頁',
@@ -504,6 +516,17 @@ const en: typeof zh = {
   offSyllabus: {
     tagline: 'Learning just for fun',
     lead: 'Nothing here belongs to a DSE subject or turns up in an exam. No scores, no progress tracking. Browse as you like.',
+    cardsTitle: 'Topic cards',
+    cardsLead: 'Ten themes. Pick one and browse. Nothing to remember, nothing to answer.',
+    cardsUnit: ' cards',
+    life: 'In real life',
+    scene: 'Scene',
+    dialogue: 'What people say',
+    explain: 'What it means',
+    trivia: 'Fun fact (not on any exam)',
+    chat: 'Chat starter',
+    aiNote: 'These cards were written with AI help, and the fun facts have not been checked one by one by an expert. If something looks wrong, trust a reliable source.',
+    enNote: 'The cards are written in Cantonese.',
   },
   pageNav: {
     prev: 'Back',

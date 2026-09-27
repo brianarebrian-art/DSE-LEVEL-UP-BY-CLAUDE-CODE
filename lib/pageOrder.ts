@@ -83,6 +83,7 @@ export const EXCLUDED: Record<string, string> = {
   '/cantonese': '新來港日常廣東話（業餘班·非正規生活支援），由 /off-syllabus 入，唔屬任何科目',
   // 2026-09-26 Yuna：非 DSE 範圍內容嘅集合頁，入口喺三橫選單同側欄最尾，刻意唔入循環。
   '/off-syllabus': '不考之地：非 DSE 考核範圍內容，由三橫選單及側欄入，唔屬主循環',
+  '/off-syllabus/[category]': '動態詳情頁（話題卡範疇），返回路徑係返 /off-syllabus',
   '/capsule': '支線功能頁',
   '/concept-net': '支線功能頁',
   '/exam-day': '支線功能頁',
