@@ -73,7 +73,7 @@
 | 項目 | 日期 | 執行人 |
 |---|---|---|
 | 部署到 production | 2026-09-26（commit `67eba34` 推上 `main`；Claude 以 curl 核實 production `/community-safety` 已提供新版內容） | 經 GitHub Desktop 推送 |
-| `npx tsx scripts/qbank/sync-questions.mts --push` 完成 | ⬜ 待填（2026-09-26 首次執行中途斷線：25 科只同步 4 科，`--check` 報 21 科不一致） | ⬜ |
+| `npx tsx scripts/qbank/sync-questions.mts --push` 完成 | 2026-09-27（2026-09-26 兩次執行都在化學斷線；改為按大小分批後一次完成，`--check` 25 科一致） | Claude，按 Yuna 指示執行 |
 
 同步完成前，瀏覽器會發現雲端題庫版本與網站不符，改用網站內置題庫，而內置題庫已套用新標籤。
 
