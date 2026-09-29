@@ -72,7 +72,9 @@ export default function SubjectDetailView({
   // 每題 1 分，所以滿分 = 一節題數。
   const examHasMC = isMCExamFormat(meta.id)
   const structure = PAPER_STRUCTURE[meta.id]
-  const sessionQuestions = Math.min(SESSION_SIZE, questionsCount)
+  // 2026-09-29：此卡開始的是選擇題練習，所以只計選擇題。原本用全科總數（連書寫題），
+  // 令數學科頁寫 1,624 題而科目總覽寫 1,594 條 MC，兩頁數字對不上。
+  const sessionQuestions = Math.min(SESSION_SIZE, typeCounts.mc)
   const totalMarks = sessionQuestions
   // 每題約 1.5 分鐘。（2026-09-09 之前仲要加答錯後嘅 30 秒反思鎖；鎖已剷除，
   // 見憲章 §7.2，所以估算純粹係作答時間。）
@@ -100,7 +102,7 @@ export default function SubjectDetailView({
           </p>
         )}
         <p className="text-ink-muted text-sm">
-          {questionsCount}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
+          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
         </p>
         <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
           <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>

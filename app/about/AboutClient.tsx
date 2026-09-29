@@ -31,8 +31,10 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '啟發式教學',
     enTitle: 'Learning through struggle',
     quote: '不憤不啟，不悱不發',
-    zh: '不到你真正想通又想不通的臨界點，我們絕不直接施放答案。答錯一條硬題，介面會鎖死、強制你先誠實面對錯因、答對一條反思追問——逼你由「靠記」走向「靠想」，學會舉一反三。',
-    en: 'We will not hand you the answer until you have genuinely wrestled to the edge of understanding. Miss a hard question and the screen locks: you must first own the cause of your error and answer a reflection check — pushing you from memorising toward thinking, and toward reasoning by analogy.',
+    // 2026-09-29：原文「介面會鎖死……答對一條反思追問」描述的是 2026-09-09 已移除的反思鎖（憲章 §7.2，
+    // 為期兩個月的實驗，2026-11-09 覆檢）。現時答錯後只需揀一個錯因，詳解即打開。若反思鎖恢復，此段須同步改回。
+    zh: '不到你真正想通又想不通的臨界點，我們絕不直接施放答案。答錯任何一題，詳解會先收起，要你先誠實指出錯因（概念盲區、審題陷阱或運算粗心），詳解才會打開——逼你由「靠記」走向「靠想」，學會舉一反三。',
+    en: 'We will not hand you the answer until you have genuinely wrestled to the edge of understanding. Miss any question and the full solution stays folded until you name the cause of your error — a concept gap, a misread question, or a slip in working. That pushes you from memorising toward thinking, and toward reasoning by analogy.',
   },
   {
     icon: '🕊️',

@@ -74,3 +74,27 @@ test('the homepage hero does not wait for JavaScript to become visible', () => {
   // globals.css overrides any Tailwind height class on the image itself.
   assert.doesNotMatch(hero, /<Mascot[^>]*className="[^"]*\bh-\[/)
 })
+
+// ── 2026-09-29 second pass: points from an external audit that checked out ──
+
+test('the subject quick-start card counts only the multiple-choice questions it starts', () => {
+  const view = read('app/subjects/[subject]/SubjectDetailView.tsx')
+  assert.match(view, /\{typeCounts\.mc\.toLocaleString\(\)\}\{sd\.quickDescA\}/)
+  assert.match(view, /Math\.min\(SESSION_SIZE, typeCounts\.mc\)/)
+})
+
+test('no page claims to cover every DSE subject', () => {
+  // The 25 subjects are HKDSE Category A subjects (M1 and M2 counted separately);
+  // Combined Science and the Category B and C subjects are not covered.
+  const strip = (s: string) => s.replace(/^\s*\/\/.*$/gm, '')
+  for (const f of ['lib/dictionary.ts', 'app/layout.tsx']) {
+    assert.doesNotMatch(strip(read(f)), /涵蓋全部 (HK)?DSE 科目|Covering every HKDSE subject|cover every HKDSE subject/, f)
+  }
+})
+
+test('the About page does not describe the removed reflection lock', () => {
+  // The lock and its follow-up question were removed on 2026-09-09 (charter §7.2).
+  // If they come back, restore the wording and delete this test.
+  const about = read('app/about/AboutClient.tsx').replace(/^\s*\/\/.*$/gm, '')
+  assert.doesNotMatch(about, /介面會鎖死|反思追問|the screen locks|reflection check/)
+})
