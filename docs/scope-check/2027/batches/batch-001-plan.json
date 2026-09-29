@@ -1,0 +1,363 @@
+{
+  "_note": [
+    "第一批計劃。只列題號、摘要、待核對問題、所需人手決定及預定輸出格式。",
+    "本檔沒有任何範圍判斷（PASS／REVIEW／REPLACE）。狀態：PHASE2_PAUSED，WAITING_FOR_COPYRIGHT_CLARIFICATION。",
+    "見 docs/scope-check/2027/PHASE2-preview.md 及 docs/DECISIONS-2026-09-30.md。"
+  ],
+  "batch": "001",
+  "status": "PLANNED_NOT_STARTED",
+  "decision_status": "WAITING_FOR_COPYRIGHT_CLARIFICATION",
+  "target_exam_year": 2027,
+  "subject": "physics",
+  "topic": "pressure_density",
+  "template_family": {
+    "family_id": "pb_e4",
+    "family_key": "physics|pressure_density|一物體質量 $#$ kg、體積 $#$ m³，求其密度。",
+    "family_size_in_use": 30,
+    "in_this_batch": 10,
+    "later_batches": [
+      "pb_e4_4_2",
+      "pb_e4_4_3",
+      "pb_e4_4_4",
+      "pb_e4_4_5",
+      "pb_e4_4_6",
+      "pb_e4_5_2",
+      "pb_e4_5_3",
+      "pb_e4_5_4",
+      "pb_e4_5_5",
+      "pb_e4_5_6",
+      "pb_e4_6_2",
+      "pb_e4_6_3",
+      "pb_e4_6_4",
+      "pb_e4_6_5",
+      "pb_e4_6_6",
+      "pb_e4_7_2",
+      "pb_e4_7_3",
+      "pb_e4_7_4",
+      "pb_e4_7_5",
+      "pb_e4_7_6"
+    ],
+    "structure": "已知質量 m（kg）及體積 V（m³），求密度；選擇題，四個選項，標為容易。"
+  },
+  "allowed_decisions_this_batch": [
+    "PASS",
+    "REVIEW"
+  ],
+  "replace_allowed_only_if": "已有合法、可供使用的 2027 範圍事實，明確證明密度不屬 2027 物理課程可用內容，而且題目沒有考核任何高中物理概念。",
+  "replacement_drafts": "PAUSED",
+  "questions": [
+    {
+      "question_id": "pb_e4_2_2",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 4 kg、體積 2 m³，求其密度。",
+      "stored_options": [
+        "$2$ kg/m³",
+        "$8$ kg/m³",
+        "$0.5$ kg/m³",
+        "$6$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$2$ kg/m³",
+      "values": {
+        "mass_kg": 4,
+        "volume_m3": 2
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_2_3",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 6 kg、體積 3 m³，求其密度。",
+      "stored_options": [
+        "$2$ kg/m³",
+        "$18$ kg/m³",
+        "$0.5$ kg/m³",
+        "$9$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$2$ kg/m³",
+      "values": {
+        "mass_kg": 6,
+        "volume_m3": 3
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_2_4",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 8 kg、體積 4 m³，求其密度。",
+      "stored_options": [
+        "$2$ kg/m³",
+        "$32$ kg/m³",
+        "$0.5$ kg/m³",
+        "$12$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$2$ kg/m³",
+      "values": {
+        "mass_kg": 8,
+        "volume_m3": 4
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_2_5",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 10 kg、體積 5 m³，求其密度。",
+      "stored_options": [
+        "$2$ kg/m³",
+        "$50$ kg/m³",
+        "$0.5$ kg/m³",
+        "$15$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$2$ kg/m³",
+      "values": {
+        "mass_kg": 10,
+        "volume_m3": 5
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_2_6",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 12 kg、體積 6 m³，求其密度。",
+      "stored_options": [
+        "$2$ kg/m³",
+        "$72$ kg/m³",
+        "$0.5$ kg/m³",
+        "$18$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$2$ kg/m³",
+      "values": {
+        "mass_kg": 12,
+        "volume_m3": 6
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_3_2",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 6 kg、體積 2 m³，求其密度。",
+      "stored_options": [
+        "$3$ kg/m³",
+        "$12$ kg/m³",
+        "$0.333$ kg/m³",
+        "$8$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$3$ kg/m³",
+      "values": {
+        "mass_kg": 6,
+        "volume_m3": 2
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_3_3",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 9 kg、體積 3 m³，求其密度。",
+      "stored_options": [
+        "$3$ kg/m³",
+        "$27$ kg/m³",
+        "$0.333$ kg/m³",
+        "$12$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$3$ kg/m³",
+      "values": {
+        "mass_kg": 9,
+        "volume_m3": 3
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_3_4",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 12 kg、體積 4 m³，求其密度。",
+      "stored_options": [
+        "$3$ kg/m³",
+        "$48$ kg/m³",
+        "$0.333$ kg/m³",
+        "$16$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$3$ kg/m³",
+      "values": {
+        "mass_kg": 12,
+        "volume_m3": 4
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_3_5",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 15 kg、體積 5 m³，求其密度。",
+      "stored_options": [
+        "$3$ kg/m³",
+        "$75$ kg/m³",
+        "$0.333$ kg/m³",
+        "$20$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$3$ kg/m³",
+      "values": {
+        "mass_kg": 15,
+        "volume_m3": 5
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    },
+    {
+      "question_id": "pb_e4_3_6",
+      "family_id": "pb_e4",
+      "type": "mc",
+      "difficulty_label": "easy",
+      "summary": "質量 18 kg、體積 6 m³，求其密度。",
+      "stored_options": [
+        "$3$ kg/m³",
+        "$108$ kg/m³",
+        "$0.333$ kg/m³",
+        "$24$ kg/m³"
+      ],
+      "stored_correct_index": 0,
+      "stored_correct_option": "$3$ kg/m³",
+      "values": {
+        "mass_kg": 18,
+        "volume_m3": 6
+      },
+      "individual_checks_to_run": [
+        "正確選項是否等於 m ÷ V",
+        "四個選項是否各不相同",
+        "解析的數值及單位是否與正確選項一致",
+        "解析有沒有位置式字眼"
+      ],
+      "decision": null
+    }
+  ],
+  "family_questions_to_check": [
+    {
+      "id": "F1",
+      "question": "適用於 2027 年考生的教育局物理科課程指引，有沒有包括或假定質量密度（ρ = m/V）？",
+      "source_needed": "EDB Physics C&A Guide（版本按 docs/topic-syllabus-map-2027.md）",
+      "existing_lead": "topic-syllabus-map-2027.md：指引並無質量密度，全文只有 magnetic flux density（AI_RECORDED_UNVERIFIED，2026-09-26）",
+      "needs_hkeaa": false
+    },
+    {
+      "id": "F2",
+      "question": "指引有沒有列明初中科學為前備知識？若有，是否涵蓋密度？",
+      "source_needed": "EDB Physics C&A Guide",
+      "existing_lead": null,
+      "needs_hkeaa": false
+    },
+    {
+      "id": "F3",
+      "question": "題目除一次除法外，有沒有考核任何高中物理概念（例如壓強、氣體定律）？",
+      "source_needed": "題目本身（本站原創題，不涉外部版權）",
+      "existing_lead": null,
+      "needs_hkeaa": false
+    },
+    {
+      "id": "F4",
+      "question": "判斷是否需要考評局評核大綱的事實？",
+      "source_needed": "—",
+      "existing_lead": "預計不需要：屬課程內容問題，不涉卷別或題型。如需要，本批一律 REVIEW。",
+      "needs_hkeaa": false
+    }
+  ],
+  "human_decisions_needed": [
+    {
+      "id": "H1",
+      "decision": "由一位真人在教育局物理科指引核對 F1、F2，記為 HUMAN_VERIFIED_FACT（事實、文件版本、章節或頁碼、核對人代號、日期）。Claude 不把指引原文大段放入 prompt。",
+      "blocking": true
+    },
+    {
+      "id": "H2",
+      "decision": "確認 pb_e4 家族判斷同時適用於第二、三批的其餘 20 題。",
+      "blocking": false
+    },
+    {
+      "id": "H3",
+      "decision": "考評局或律師確認真人整理的考評局事實可否交給 Claude。本批預計不需要。",
+      "blocking": false
+    }
+  ],
+  "planned_output": {
+    "result_file": "docs/scope-check/2027/batches/batch-001.json",
+    "human_readable": "docs/scope-check/2027/batches/batch-001.md",
+    "format": "見 PHASE2-preview.md 第四節「紀錄格式」",
+    "replacement_drafts": null
+  }
+}
