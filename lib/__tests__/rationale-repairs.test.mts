@@ -22,7 +22,17 @@ const I = pick(await import('../../data/questions/index.ts'))
 
 type Stage = 'withdrawn' | 'rewritten' | 'automated-checked' | 'content-reviewed' | 'restored'
 const ORDER: Stage[] = ['withdrawn', 'rewritten', 'automated-checked', 'content-reviewed', 'restored']
-interface Rec { subject: string; batch: string | null; stage: Stage; updated: string; contentReview: null | { by: string; date: string } }
+// The six content-review items (Yuna 2026-09-29, decision ①). All six must pass;
+// "5 of 6" is a fail and the question stays withdrawn.
+const ITEMS = ['stem', 'answer', 'optionNotes', 'concept', 'teaching', 'language'] as const
+interface Review {
+  by: string
+  date: string
+  decision: 'pass' | 'fail'
+  items: Record<(typeof ITEMS)[number], 'pass' | 'fail'>
+  notes: string
+}
+interface Rec { subject: string; batch: string | null; stage: Stage; updated: string; contentReview: null | Review }
 const log = JSON.parse(read('data/questions/rationale-repairs.json')) as Record<string, Rec>
 const withdrawn = JSON.parse(read('data/questions/withdrawn.json')) as Record<string, Record<string, unknown>>
 
@@ -40,22 +50,58 @@ test('the repair log covers the 176 questions withdrawn on 2026-09-29, and only 
   }
 })
 
-test('restore gate: back in the bank only when restored, and only after a named review', () => {
-  for (const [id, r] of Object.entries(log)) {
-    const isWithdrawn = !!withdrawn[r.subject]?.[id]
-    if (r.stage === 'restored') {
-      assert.ok(!isWithdrawn, `${id} is marked restored but still withdrawn`)
-    } else {
-      assert.ok(isWithdrawn, `${id} is back in the bank but its stage is ${r.stage}`)
-    }
-    const reviewed = ORDER.indexOf(r.stage) >= ORDER.indexOf('content-reviewed')
-    if (reviewed) {
-      assert.ok(r.contentReview?.by?.trim() && r.contentReview?.date, `${id}: ${r.stage} needs the reviewer's name and date`)
-    } else {
-      // §16.C: no reviewer is pre-filled before the review has happened.
-      assert.equal(r.contentReview, null, `${id}: reviewer recorded before content review`)
-    }
+/** Every rule a repair record must satisfy. Returns the problems found (empty = fine). */
+function gateProblems(id: string, r: Rec, isWithdrawn: boolean): string[] {
+  const out: string[] = []
+  const bad = (m: string) => out.push(`${id}: ${m}`)
+  if (r.stage === 'restored' && isWithdrawn) bad('marked restored but still withdrawn')
+  if (r.stage !== 'restored' && !isWithdrawn) bad(`back in the bank but its stage is ${r.stage}`)
+  const cr = r.contentReview
+  if (cr) {
+    // A recorded review is complete: who, when, the decision, all six items, notes.
+    if (!cr.by?.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(cr.date ?? '')) bad('review needs the reviewer and a date')
+    if (cr.decision !== 'pass' && cr.decision !== 'fail') bad('decision must be pass or fail')
+    for (const k of ITEMS) if (cr.items?.[k] !== 'pass' && cr.items?.[k] !== 'fail') bad(`item ${k} not recorded`)
+    const allPass = ITEMS.every((k) => cr.items?.[k] === 'pass')
+    if ((cr.decision === 'pass') !== allPass) bad('decision is pass only when all six items pass')
+    if (cr.decision === 'fail' && !cr.notes?.trim()) bad('a failed review must say why')
   }
+  const at = ORDER.indexOf(r.stage)
+  if (at >= ORDER.indexOf('content-reviewed')) {
+    if (cr?.decision !== 'pass') bad(`${r.stage} needs a passed review`)
+  } else if (at < ORDER.indexOf('automated-checked')) {
+    // §16.C: no review is recorded for something that has not been rewritten yet.
+    if (cr !== null) bad('review recorded before the rewrite')
+  } else if (cr !== null && cr.decision !== 'fail') {
+    // automated-checked: not reviewed yet, or reviewed and failed (back to rework).
+    bad('a passed review must move the stage on')
+  }
+  return out
+}
+
+test('restore gate: back in the bank only when restored, and only after a full passed review', () => {
+  const problems = Object.entries(log).flatMap(([id, r]) => gateProblems(id, r, !!withdrawn[r.subject]?.[id]))
+  assert.deepEqual(problems, [])
+})
+
+test('restore gate rejects the shortcuts it exists to stop', () => {
+  const allPass = Object.fromEntries(ITEMS.map((k) => [k, 'pass'])) as Review['items']
+  const review = (over: Partial<Review> = {}): Review => ({ by: 'Reviewer', date: '2026-10-01', decision: 'pass', items: { ...allPass }, notes: '', ...over })
+  const rec = (stage: Stage, contentReview: Review | null): Rec => ({ subject: 'm1', batch: 'M1-01', stage, updated: '2026-10-01', contentReview })
+  const fiveOfSix = review({ items: { ...allPass, teaching: 'fail' } })
+  // 5 of 6 recorded as a pass
+  assert.ok(gateProblems('x', rec('content-reviewed', fiveOfSix), true).some((p) => p.includes('all six')))
+  // restored with no review, or back in the bank without being restored
+  assert.ok(gateProblems('x', rec('restored', null), false).length > 0)
+  assert.ok(gateProblems('x', rec('automated-checked', null), false).some((p) => p.includes('back in the bank')))
+  // a reviewer filled in before the rewrite (§16.C)
+  assert.ok(gateProblems('x', rec('withdrawn', review()), true).some((p) => p.includes('before the rewrite')))
+  // a failed review without a reason
+  assert.ok(gateProblems('x', rec('automated-checked', review({ decision: 'fail', items: { ...allPass, language: 'fail' } })), true).some((p) => p.includes('say why')))
+  // the legitimate paths pass
+  assert.deepEqual(gateProblems('x', rec('automated-checked', null), true), [])
+  assert.deepEqual(gateProblems('x', rec('automated-checked', review({ decision: 'fail', items: { ...allPass, concept: 'fail' }, notes: 'wrong rule named' })), true), [])
+  assert.deepEqual(gateProblems('x', rec('restored', review()), false), [])
 })
 
 test('each batch file matches the log and the bank', () => {

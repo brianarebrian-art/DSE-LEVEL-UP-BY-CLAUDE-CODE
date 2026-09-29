@@ -7,10 +7,10 @@
     "   清一條就由呢度剷一條；一條都唔准補入嚟。",
     "",
     "全部集中喺 *-auto.ts（機器生成、未經逐題人手改寫嗰批）。",
-    "要清就要改草稿再重新 promote，而 promote 要真人簽名（憲章 §12）。"
+    "要清就要改寫解析（docs/rationale-repairs.md），唔係加入豁免。"
   ],
-  "measuredAt": "2026-09-05",
-  "total": 293,
+  "measuredAt": "2026-09-29",
+  "total": 277,
   "grandfathered": {
     "bafs-auto.ts": [
       "bafs_rep_0018 [explanationEn]",
@@ -124,22 +124,6 @@
       "eth_floor_24 [explanationEn]"
     ],
     "m1-auto.ts": [
-      "m1_rep_0001 [explanationEn]",
-      "m1_rep_0001 [explanation]",
-      "m1_rep_0002 [explanationEn]",
-      "m1_rep_0002 [explanation]",
-      "m1_rep_0003 [explanationEn]",
-      "m1_rep_0003 [explanation]",
-      "m1_rep_0004 [explanationEn]",
-      "m1_rep_0004 [explanation]",
-      "m1_rep_0005 [explanationEn]",
-      "m1_rep_0005 [explanation]",
-      "m1_rep_0006 [explanationEn]",
-      "m1_rep_0006 [explanation]",
-      "m1_rep_0007 [explanationEn]",
-      "m1_rep_0008 [explanationEn]",
-      "m1_rep_0009 [explanationEn]",
-      "m1_rep_0010 [explanationEn]",
       "m1_rep_0011 [explanationEn]",
       "m1_rep_0012 [explanationEn]",
       "m1_rep_0013 [explanationEn]",

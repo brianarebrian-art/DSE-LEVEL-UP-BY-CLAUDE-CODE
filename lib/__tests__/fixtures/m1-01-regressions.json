@@ -1,0 +1,51 @@
+{
+  "about": "Regression fixtures for batch M1-01, 2026-09-29 (Yuna's decision ⑥). Snapshots of the questions as they were before the repair (commit 7cea431). See docs/rationale-repairs.md.",
+  "caseA_optionRationaleMismatch": {
+    "why": "The explanation names distractors in a fixed order ('the first distractor multiplies the two derivatives'), but the stored options are in a different order and are shuffled on display. In m1_rep_0002 the first stored distractor swaps sin and cos; the multiplied-derivatives option is elsewhere.",
+    "before": {
+      "id": "m1_rep_0002",
+      "content": "求 $\\dfrac{d}{dx}\\left(x^{2} \\sin 3x\\right)$。",
+      "options": [
+        "$2x^{1} \\cos 3x + 3x^{2} \\sin 3x$",
+        "$2x^{1} \\sin 3x + 3x^{2} \\cos 3x$",
+        "$6x^{1} \\cos 3x$",
+        "$2x^{1} \\sin 3x + x^{2} \\cos 3x$"
+      ],
+      "correctIndex": 1,
+      "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 3x$，則 $u' = 2x^{1}$、$v' = 3\\cos 3x$（$\\sin 3x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $3$）。代入得 $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $3$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+      "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 3x$, so $u' = 2x^{1}$ and $v' = 3\\cos 3x$ — the chain rule contributes the factor $3$ when differentiating $\\sin 3x$. Substituting gives $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $3$, and the third swaps $\\sin$ and $\\cos$."
+    }
+  },
+  "caseB_presentationNormalisation": {
+    "why": "'2x^{1}' was printed instead of '2x'. Mathematically equal, but a student seeing x^{1} in an answer can doubt what they have learnt.",
+    "before": {
+      "id": "m1_rep_0004",
+      "content": "求 $\\dfrac{d}{dx}\\left(x^{2} \\sin 5x\\right)$。",
+      "options": [
+        "$10x^{1} \\cos 5x$",
+        "$2x^{1} \\sin 5x + x^{2} \\cos 5x$",
+        "$2x^{1} \\cos 5x + 5x^{2} \\sin 5x$",
+        "$2x^{1} \\sin 5x + 5x^{2} \\cos 5x$"
+      ],
+      "correctIndex": 3,
+      "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 5x$，則 $u' = 2x^{1}$、$v' = 5\\cos 5x$（$\\sin 5x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $5$）。代入得 $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $5$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+      "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 5x$, so $u' = 2x^{1}$ and $v' = 5\\cos 5x$ — the chain rule contributes the factor $5$ when differentiating $\\sin 5x$. Substituting gives $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $5$, and the third swaps $\\sin$ and $\\cos$."
+    }
+  },
+  "caseC_misconceptionWording": {
+    "why": "The distractor k (for d/dx of kx/(x+c)) was described as 'treating the expression as linear'. It comes from u'/v' — differentiating numerator and denominator separately and dividing. The repaired note names that misconception and states that it is wrong; the explanation states the actual quotient rule. The risk to guard against is a note that misdiagnoses the error, or that reads as if u'/v' were the rule.",
+    "before": {
+      "id": "m1_rep_0007",
+      "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{3x}{x + 2}\\right)$。",
+      "options": [
+        "$3$",
+        "$\\dfrac{-6}{(x + 2)^{2}}$",
+        "$\\dfrac{6}{(x + 2)^{2}}$",
+        "$\\dfrac{3}{(x + 2)^{2}}$"
+      ],
+      "correctIndex": 2,
+      "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 3x$、$v = x + 2$，則 $u' = 3$、$v' = 1$。分子 $= 3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$，故導數為 $\\dfrac{6}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $3$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+      "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 3x$, $v = x + 2$, so $u' = 3$ and $v' = 1$. The numerator is $3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$, giving $\\dfrac{6}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $3$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign."
+    }
+  }
+}

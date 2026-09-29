@@ -11,12 +11,14 @@ const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).le
 const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en')).length
 // 已撤回（withdrawn.json）的題目數。撤回不是刪除：題目仍在題庫，逐條記錄日期與原因。
 const WITHDRAWN_COUNT = Object.values(WITHDRAWN).reduce((n, byId) => n + Object.keys(byId).length, 0)
-// 176 題解析修復進度（data/questions/rationale-repairs.json）。總數保持不變，
-// 只有「已改寫」「重新上線」兩個數字會上升 —— 讓學生看到問題被發現之後確實有人在修。
+// 176 題解析修復進度（data/questions/rationale-repairs.json）。三個都是累計數：
+// 總數保持 176，「已改寫」「已重新上線」只會上升 —— 讓學生看到問題被發現之後確實有人在修。
+// 2026-09-29 Yuna 要求用「已修復」；此處改用「已改寫」，因為改寫後未經真人內容覆核，
+// 不應暗示內容已確認正確（同一決定亦寫明 AI 不可自行宣稱解析內容正確）。
 const REPAIR_STAGES = Object.values(repairLog as Record<string, { stage: string }>).map((r) => r.stage)
 const REPAIR_FOUND = REPAIR_STAGES.length
 const REPAIR_RESTORED = REPAIR_STAGES.filter((s) => s === 'restored').length
-const REPAIR_REWRITTEN = REPAIR_STAGES.filter((s) => s === 'automated-checked' || s === 'content-reviewed').length
+const REPAIR_REWRITTEN = REPAIR_STAGES.filter((s) => ['automated-checked', 'content-reviewed', 'restored'].includes(s)).length
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and passes
@@ -159,18 +161,25 @@ export default function TransparencyClient() {
         {REPAIR_FOUND > 0 && (
           <dl className="mb-5 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
             <div>
-              <dt className="text-xs text-ink-muted">{en ? 'Found and withdrawn' : '發現問題、已收起'}</dt>
+              <dt className="text-xs text-ink-muted">{en ? 'Withdrawn in total' : '共收起'}</dt>
               <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_FOUND}</dd>
             </div>
             <div>
-              <dt className="text-xs text-ink-muted">{en ? 'Rewritten, awaiting review' : '已改寫、等人手覆核'}</dt>
+              <dt className="text-xs text-ink-muted">{en ? 'Rewritten' : '已改寫'}</dt>
               <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_REWRITTEN}</dd>
             </div>
             <div>
-              <dt className="text-xs text-ink-muted">{en ? 'Back in practice' : '重新上線'}</dt>
+              <dt className="text-xs text-ink-muted">{en ? 'Back in practice' : '已重新上線'}</dt>
               <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_RESTORED}</dd>
             </div>
           </dl>
+        )}
+        {REPAIR_FOUND > 0 && (
+          <p className="text-ink-muted text-sm leading-relaxed mb-5">
+            {en
+              ? 'A rewritten question goes back into practice only after a person has reviewed its content.'
+              : '已改寫嘅題目要經真人內容覆核，先會重新加入練習池。'}
+          </p>
         )}
       </section>
     </div>

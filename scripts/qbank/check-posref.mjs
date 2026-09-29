@@ -36,6 +36,19 @@ const BASELINE = 'scripts/qbank/posref-bank-baseline.json'
 // 「第二項」喺數學指多項式／點積嘅項 —— 呢啲都唔係選項引用。
 const ZH = /第[一二三四]項(?!因素|變[項數]|憑證|獨立)/
 const EN = /\b[Tt]he (?:first|second|third|fourth) (?:option|distractor)s?\b|\boptions? [ABCD]\b/
+// ── 第二層（2026-09-29，Yuna 決定 ⑤）：序數與字母式引用 ──
+// ZH／EN 只捉「第二項」「the second option」。同日量度發現另有約 500 條上線題用
+// 「最後一項」「第三個選項」「The final option」—— 一樣係講位置，一樣會指錯。
+// 分開一組 pattern、分開一張祖父清單：
+//   · 草稿一律攔（新題唔准再寫）；
+//   · 題庫現存嗰批入 posref-ordinal-baseline.json，只准減唔准加（憲章 §6）；
+//   · 唔入 gen-quality-flags.mts —— 呢批要點處理（收起／掛待核／逐批修）由創辦人決定，
+//     喺決定之前，學生見到嘅狀態唔變。
+// 「最後一項」喺數學亦可以指展開式嘅末項；新題請寫「末項」，避免誤攔。
+const ZH_ORD = /第\s*[1-4一二三四]\s*個(?:干擾項|選項|答案)|最後一(?:項|個選項|個干擾項)|(?<![A-Za-z\\{(])[ABCD]\s*選項|選項\s*[ABCD](?![A-Za-z])/
+const EN_ORD = /\b(?:last|final) (?:option|distractor|answer choice|choice)s?\b|\b(?:first|second|third|fourth) (?:answer choice|choice)s?\b/i
+const BASELINE_ORD = 'scripts/qbank/posref-ordinal-baseline.json'
+const matchAny = (t) => t.match(ZH) ?? t.match(EN) ?? t.match(ZH_ORD) ?? t.match(EN_ORD)
 const FIELDS = ['explanation', 'explanationEn']
 
 const argv = process.argv.slice(2)
@@ -56,7 +69,7 @@ for (const f of files) {
     for (const k of FIELDS) {
       const t = q[k]
       if (typeof t !== 'string') continue
-      const m = t.match(ZH) ?? t.match(EN)
+      const m = matchAny(t)
       if (!m) continue
       bad++
       console.log(`  ✗ ${f.split('/').pop()} ${q.id} [${k}] 「${m[0]}」`)
@@ -94,83 +107,97 @@ function scanBank(file) {
   for (const m of s.matchAll(FIELD)) {
     const [field, text] = [m[1], m[2]]
     const hit = text.match(ZH) ?? text.match(EN)
-    if (!hit) continue
-    hits.push({ id: nearestId(m.index), field, phrase: hit[0] })
+    const ord = text.match(ZH_ORD) ?? text.match(EN_ORD)
+    if (hit) hits.push({ id: nearestId(m.index), field, phrase: hit[0], layer: 'pos' })
+    if (ord) hits.push({ id: nearestId(m.index), field, phrase: ord[0], layer: 'ord' })
   }
   return hits
 }
 
 const bankFiles = readdirSync(BANKS).filter((f) => f.endsWith('.ts')).sort()
 const found = {}
+const foundOrd = {}
 for (const f of bankFiles) {
   const hits = scanBank(join(BANKS, f))
-  if (hits.length) found[f] = hits.map((h) => `${h.id} [${h.field}]`).sort()
+  const pos = hits.filter((h) => h.layer === 'pos')
+  const ord = hits.filter((h) => h.layer === 'ord')
+  if (pos.length) found[f] = pos.map((h) => `${h.id} [${h.field}]`).sort()
+  if (ord.length) foundOrd[f] = ord.map((h) => `${h.id} [${h.field}]`).sort()
 }
 
-const base = existsSync(BASELINE) ? JSON.parse(readFileSync(BASELINE, 'utf8')) : null
+// 兩張祖父清單，同一套規矩：只准減，唔准加。
+const NOTES = {
+  [BASELINE]: [
+    '位置式選項引用嘅【祖父清單】—— 呢啲題目喺題庫掃描生效之前已經存在，故獲豁免。',
+    '憲章 §6：唔准以新閘令現有數據集失效。呢張清單就係嗰個豁免。',
+    '',
+    '⚠️ 只准減，唔准加。--write-baseline 見到有新增就會拒絕寫入。',
+    '   清一條就由呢度剷一條；一條都唔准補入嚟。',
+    '',
+    '全部集中喺 *-auto.ts（機器生成、未經逐題人手改寫嗰批）。',
+    '要清就要改寫解析（docs/rationale-repairs.md），唔係加入豁免。',
+  ],
+  [BASELINE_ORD]: [
+    '序數／字母式選項引用（「最後一項」「第三個選項」「The final option」「A 選項」）嘅【祖父清單】。',
+    '2026-09-29 加入第二層檢查時已經存在嘅上線題，故獲豁免（憲章 §6）。',
+    '點處理呢批（收起、掛待核、逐批修）由創辦人決定，見 docs/DECISIONS-2026-09-29.md。',
+    '',
+    '⚠️ 只准減，唔准加。',
+  ],
+}
 
-if (WRITE_BASELINE) {
+let failed = false
+for (const [path, now, label] of [[BASELINE, found, '位置式引用'], [BASELINE_ORD, foundOrd, '序數／字母式引用']]) {
+  const base = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : null
   const old = base?.grandfathered ?? {}
   const added = []
-  for (const [f, list] of Object.entries(found)) {
+  const fixed = []
+  for (const [f, list] of Object.entries(now)) {
     const prev = new Set(old[f] ?? [])
     for (const e of list) if (!prev.has(e)) added.push(`${f} ${e}`)
   }
-  // 只准減唔准加 —— 呢個限制先係「祖父清單」同「豁免清單」嘅分別。
-  // 冇咗佢，任何新回歸都可以一句 --write-baseline 洗白。
-  if (base && added.length) {
-    console.log(`\n✗ 拒絕寫入：有 ${added.length} 項【新增】，祖父清單只准減唔准加。`)
-    for (const a of added.slice(0, 10)) console.log(`   + ${a}`)
-    console.log(`  呢啲係新出現嘅位置式引用，要修好，唔係加入豁免。\n`)
-    process.exit(1)
+  for (const [f, list] of Object.entries(old)) {
+    const cur = new Set(now[f] ?? [])
+    for (const e of list) if (!cur.has(e)) fixed.push(`${f} ${e}`)
   }
-  const total = Object.values(found).reduce((n, l) => n + l.length, 0)
-  writeFileSync(BASELINE, JSON.stringify({
-    _note: [
-      '位置式選項引用嘅【祖父清單】—— 呢啲題目喺題庫掃描生效之前已經存在，故獲豁免。',
-      '憲章 §6：唔准以新閘令現有數據集失效。呢張清單就係嗰個豁免。',
-      '',
-      '⚠️ 只准減，唔准加。--write-baseline 見到有新增就會拒絕寫入。',
-      '   清一條就由呢度剷一條；一條都唔准補入嚟。',
-      '',
-      '全部集中喺 *-auto.ts（機器生成、未經逐題人手改寫嗰批）。',
-      '要清就要改草稿再重新 promote，而 promote 要真人簽名（憲章 §12）。',
-    ],
-    measuredAt: new Date().toISOString().slice(0, 10),
-    total,
-    grandfathered: found,
-  }, null, 2) + '\n')
-  console.log(`\n✅ 已寫入 ${BASELINE}：${total} 條，${Object.keys(found).length} 個檔。`)
-  process.exit(0)
-}
+  const total = Object.values(now).reduce((n, l) => n + l.length, 0)
 
-if (!base) {
-  console.log(`\n✗ 搵唔到 ${BASELINE}。先跑一次 --banks --write-baseline 立基線。\n`)
-  process.exit(1)
-}
+  if (WRITE_BASELINE) {
+    // 只准減唔准加 —— 呢個限制先係「祖父清單」同「豁免清單」嘅分別。
+    // 冇咗佢，任何新回歸都可以一句 --write-baseline 洗白。
+    if (base && added.length) {
+      console.log(`\n✗ 拒絕寫入 ${path}：有 ${added.length} 項【新增】${label}，祖父清單只准減唔准加。`)
+      for (const a of added.slice(0, 10)) console.log(`   + ${a}`)
+      failed = true
+      continue
+    }
+    writeFileSync(path, JSON.stringify({
+      _note: NOTES[path],
+      measuredAt: new Date().toISOString().slice(0, 10),
+      total,
+      grandfathered: now,
+    }, null, 2) + '\n')
+    console.log(`✅ 已寫入 ${path}：${total} 條，${Object.keys(now).length} 個檔。`)
+    continue
+  }
 
-const old = base.grandfathered ?? {}
-const regressions = []
-const fixed = []
-for (const [f, list] of Object.entries(found)) {
-  const prev = new Set(old[f] ?? [])
-  for (const e of list) if (!prev.has(e)) regressions.push(`${f} ${e}`)
+  if (!base) {
+    console.log(`\n✗ 搵唔到 ${path}。先跑一次 --banks --write-baseline 立基線。\n`)
+    failed = true
+    continue
+  }
+  if (added.length) {
+    console.log(`\n❌ 題庫新增 ${added.length} 處${label}（祖父清單以外）：`)
+    for (const r of added) console.log(`   ✗ ${r}`)
+    console.log(`\n   選項會洗牌，位置指唔到人。改為引用選項內容，或者用 optionNotes（每個選項一條解析）。`)
+    console.log(`   ⚠️ 唔好用 --write-baseline 洗白 —— 佢會拒絕，而且嗰個先係呢道閘嘅重點。\n`)
+    failed = true
+    continue
+  }
+  console.log(`✅ check-posref --banks（${label}）：${bankFiles.length} 個題庫檔，${total} 條喺祖父清單內，零新增。`)
+  if (fixed.length) {
+    console.log(`   🎉 已修好 ${fixed.length} 條，可以由祖父清單剷走（跑 --banks --write-baseline）：`)
+    for (const x of fixed.slice(0, 5)) console.log(`      − ${x}`)
+  }
 }
-for (const [f, list] of Object.entries(old)) {
-  const now = new Set(found[f] ?? [])
-  for (const e of list) if (!now.has(e)) fixed.push(`${f} ${e}`)
-}
-
-const nowTotal = Object.values(found).reduce((n, l) => n + l.length, 0)
-if (regressions.length) {
-  console.log(`\n❌ 題庫新增 ${regressions.length} 處位置式引用（祖父清單以外）：`)
-  for (const r of regressions) console.log(`   ✗ ${r}`)
-  console.log(`\n   選項會洗牌，位置指唔到人。改為引用選項內容，或者用「有一項／另一項」。`)
-  console.log(`   ⚠️ 唔好用 --write-baseline 洗白 —— 佢會拒絕，而且嗰個先係呢道閘嘅重點。\n`)
-  process.exit(1)
-}
-console.log(`✅ check-posref --banks：${bankFiles.length} 個題庫檔，${nowTotal} 條喺祖父清單內，零新增。`)
-if (fixed.length) {
-  console.log(`   🎉 已修好 ${fixed.length} 條，可以由祖父清單剷走（跑 --banks --write-baseline）：`)
-  for (const x of fixed.slice(0, 5)) console.log(`      − ${x}`)
-}
+if (failed) process.exit(1)

@@ -39,10 +39,14 @@ withdrawn → rewritten → automated-checked → content-reviewed → restored
 |---|---|---|
 | withdrawn | 創辦人決定 | `withdrawn.json` 有日期與原因 |
 | rewritten, automated-checked | Claude，以腳本生成及檢查 | `scripts/qbank/repair-rationale.mts --batch <名>` |
-| content-reviewed | **一位真人**：Yuna、Brian 或其指定的人 | 在 `rationale-repairs.json` 的 `contentReview` 填上姓名與日期 |
+| content-reviewed | **一位真人**：須熟悉該科內容（M1 批次即 M1 微積分）；以能力決定，不以誰有空決定 | 在 `rationale-repairs.json` 的 `contentReview` 填上覆核人、日期、決定、六項結果及備註 |
 | restored | 內容覆核之後 | `withdraw.mts --undo`，再執行 `npm run gen:summary`，並把階段改為 `restored` |
 
-- `lib/__tests__/rationale-repairs.test.mts` 是階段之間的閘：
+- **內容覆核六項**（Yuna 2026-09-29 決定 ①）：題幹、正確答案、選項解析、核心概念、教學價值、語文。
+  - 六項全部通過，決定才是「通過」。任何一項不通過，決定就是「不通過」，並須寫明原因，題目留在撤回名單內。不存在「5／6 通過」。
+  - 不通過的題目要先修改模板或流程，不可硬放。
+- **覆核人記錄會公開：** 本 repo 是公開的，`contentReview.by` 任何人都看得到。建議填代號，真實身份及資格由創辦人另行保存。
+- `lib/__tests__/rationale-repairs.test.mts` 是階段之間的閘（另有反向自我測試，證明它會拒絕「5／6 通過」等捷徑）：
   - 未到 `restored` 的題目必須仍在撤回名單內。
   - `content-reviewed` 及 `restored` 必須有覆核人姓名。
   - 之前的階段不得預先填上覆核人（憲章 §16.C）。
@@ -58,9 +62,30 @@ withdrawn → rewritten → automated-checked → content-reviewed → restored
 |---|---|---|---|
 | M1-01 | m1_rep_0001–0010 | 積法則 $x^a \sin bx$（6 題）；商法則 $\dfrac{kx}{x+c}$（4 題） | `scripts/qbank/repairs/m1-01.mts` |
 
+- **M1-01 是校準批次：** 全部 10 題通過真人覆核並恢復之後，才開始 M1-02。如果覆核發現解析「數學正確，但學生看完仍不明白為何錯」，先改模板，再做下一批。
+- **固定回歸樣本**（`lib/__tests__/m1-01-regressions.test.mts`）：
+  - A：選項與解析錯配
+  - B：「$x^{1}$」這類表達
+  - C：錯法描述不準確
+
 ### M1-01 的內容修正
 
 - 選項內的「$2x^{1}$」改為「$2x$」，只影響 $a = 2$ 的題目。
 - 商法則「答 $k$」這個干擾項，舊解析說是「當成一次函數直接求導」。實際錯法是分子、分母各自求導再相除（$u'/v'$），已照實描述。
 - 解析全文只保留推導，用書面語。舊文的「$\sin$ 同 $\cos$」屬口語，已改。
 - 參數化題的正確答案與三個干擾項由程式重新計算，再逐一對上儲存的選項；每條解析的位置由這個配對決定。測試亦以另一套程式重算一次。
+
+## 五、第二層位置詞檢查（2026-09-29，Yuna 決定 ⑤）
+
+`check-posref.mjs` 新增序數與字母式引用：「最後一項」「第三個選項」「A 選項」「The final option」等。
+
+- 草稿：一律攔截。
+- `*-auto.ts` 題庫：現存的列入 `scripts/qbank/posref-ordinal-baseline.json`，只准減少。
+- 手寫題庫：`check-posref.mjs` 只讀雙引號欄位，看不到手寫題庫檔。改由 `lib/__tests__/posref-runtime.test.mts` 直接檢查載入後的題目，現存命中列入 `scripts/qbank/posref-runtime-baseline.json`。
+- 量度結果（2026-09-29），這兩批的處理方法由創辦人決定：
+  - `*-auto.ts` 中另有 **135 條上線題**用序數式引用（例如「最後一項用了相減」），與 176 題屬同一類問題。
+  - 手寫題庫有 537 條上線題命中，當中混有非選項引用（例如數列「第二項」、題幹「第二項陳述」），未分類。
+
+## 六、技術債（P2，不阻今次修復）
+
+- **不可變的選項 ID：** 現時以儲存索引（0–3）作選項身份。短期足夠，因為洗牌只在介面層發生。但日後如果生成器改變選項次序、替換或增減干擾項，或合併題目版本，索引就不再是可靠的身份。題庫 schema v2 應改用不可變的 `option.id`。在此之前，不為這批題目全庫遷移。
