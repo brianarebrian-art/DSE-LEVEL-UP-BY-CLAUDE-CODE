@@ -15,7 +15,8 @@ import { subjects, getActiveSubjects } from '@/data/subjects'
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
 // 一條都冇顯示過）。呢一頁只係想要一個總數。
 import { TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
-import { SESSION_SIZE } from '@/lib/entitlements'
+import { SESSION_SIZE, sessionMinutes } from '@/lib/entitlements'
+import { quickStartSubjects, quickStartHref } from '@/lib/quickStart'
 import { useLocale } from '@/lib/i18n'
 // 方向一：季節性 Hero（純前端按月切換文案；light-first 不變）
 import { getCurrentSeason } from '@/utils/season'
@@ -29,6 +30,8 @@ import Mascot from '@/components/Mascot'
 
 const activeSubjects = getActiveSubjects()
 const totalSubjects = subjects.length
+const quickSubjects = quickStartSubjects()
+const sessionMins = sessionMinutes()
 
 // 首頁規格牆三個大數字。
 //
@@ -44,6 +47,7 @@ const statNums = [TOTAL_QUESTIONS, SESSION_SIZE, 0]
 export default function HomePage() {
   const { t, locale } = useLocale()
   const h = t.home
+  const en = locale === 'en'
   const rootRef = useRef<HTMLDivElement>(null)
   // 季節性 Hero 文案（按月份，deterministic → SSR/CSR 一致，無 hydration mismatch）
   const hero = getSeasonalHero(getCurrentSeason(), locale === 'en')
@@ -110,8 +114,10 @@ export default function HomePage() {
           ① 吉祥物在手機縮小（高約 104px），徽章在手機隱藏（與 h1 內容重複）；
           ② CTA 移到副標題之後，「DSE 舊生 + AI」及信任標記移到 CTA 之下；
           ③ 進場動畫改用純 CSS（.hero-rise，見 globals.css），不再等待 JavaScript
-             hydrate 才由 opacity 0 變為可見。 */}
-      <section className="relative px-4 pt-8 pb-16 sm:pt-20 sm:pb-24">
+             hydrate 才由 opacity 0 變為可見。
+          2026-09-30（UX 循環 LOOP 2）：桌面頂部留白及徽章、副標題下方間距各減一級，
+          令 1280×800 手提電腦的首屏亦見到「揀其他科目」。 */}
+      <section className="relative px-4 pt-8 pb-16 sm:pt-12 sm:pb-24">
         {/* 裝飾光暈。w-full max-w-[560px]：以前寫死 w-[560px]，喺 375px 機上左右各爆 93px，
             令 Chrome 將版面視窗由 375 撐大到 467（＝成頁自動縮細 20%，字細咗一圈，
             對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
@@ -126,15 +132,16 @@ export default function HomePage() {
               首屏要一眼講到呢度係做咩嘅。
               priority：佢喺 LCP 範圍，唔標會拖慢首屏。 */}
           <div className="hero-rise mb-4 flex justify-center">
-            {/* 以外層闊度控制尺寸（手機 128px ≈ 高 104px；桌面 208px ＝ 原本高 168px）。
+            {/* 以外層闊度控制尺寸（手機 128px ≈ 高 104px；桌面 176px ≈ 高 142px。
+                2026-09-30 由 208px 縮小，令 1024×768 首屏容得下快速開始及「揀其他科目」）。
                 不能在 img 上用 h-[…]：globals.css 有一條不在 @layer 內的 `img { height: auto }`，
                 優先級高於所有 Tailwind 工具類，高度類別會被靜默覆蓋（2026-09-29 production 實測）。 */}
-            <div className="w-[128px] sm:w-[208px]">
+            <div className="w-[128px] sm:w-[176px]">
               <Mascot pose="reading" height={168} priority className="w-full" />
             </div>
           </div>
 
-          <div className="hero-rise hero-rise-1 mb-8 hidden items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent sm:inline-flex">
+          <div className="hero-rise hero-rise-1 mb-6 hidden items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent sm:inline-flex">
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />
             {hero.badge}
           </div>
@@ -145,21 +152,50 @@ export default function HomePage() {
             <span className="bg-gradient-to-r from-accent to-accent bg-clip-text text-transparent">{hero.headline2}</span>
           </h1>
 
-          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-8 sm:text-xl">{hero.subhead}</p>
+          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-6 sm:text-xl">{hero.subhead}</p>
 
-          <div className="hero-rise hero-rise-2 mb-6 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-            <Link
-              href={hero.ctaStartHref}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-strong px-8 py-4 text-base font-medium text-on-accent transition-all duration-200 hover:bg-accent-hover hover:-translate-y-0.5"
-            >
-              {hero.ctaStartLabel} <ArrowRight size={18} />
-            </Link>
-            <Link
-              href={hero.ctaSecHref}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-surface-raised px-8 py-4 text-base font-medium text-ink-soft transition-all duration-200 hover:border-accent/30 hover:-translate-y-0.5"
-            >
-              <Brain size={18} className="text-accent" /> {hero.ctaSecLabel}
-            </Link>
+          {/* 快速開始（UX 循環 LOOP 2，2026-09-30）。
+              以前主按鈕「開始練習」只通往科目列表，新訪客要經過科目列表、科目頁、「立即開始」
+              三頁才見到第一題。現在四個核心科目直接開始一節練習；其他科目及季節性副入口
+              改為同一屏的文字連結，副入口（放榜季是 /waiting、/relax）仍然在首屏。 */}
+          <div className="hero-rise hero-rise-2 mx-auto mb-6 max-w-md">
+            <p id="quick-start-label" className="mb-3 text-base font-medium text-ink">
+              {en ? `Pick a subject to start ${SESSION_SIZE} questions` : `揀一科，即刻開始 ${SESSION_SIZE} 題`}
+            </p>
+            {/* 四格一行（手機亦然）：兩行兩格會把「揀其他科目」推到 375×812 首屏底部，
+                被左下角無障礙按鈕及右下角情緒支援按鈕遮住。 */}
+            <ul aria-labelledby="quick-start-label" className="grid grid-cols-4 gap-2 sm:gap-3">
+              {quickSubjects.map((s) => (
+                <li key={s.id}>
+                  <Link
+                    href={quickStartHref(s.id)}
+                    aria-label={en ? `${s.shortEn}: start ${SESSION_SIZE} questions` : `${s.short}：開始 ${SESSION_SIZE} 題`}
+                    className="flex min-h-[64px] flex-col items-center justify-center gap-0.5 rounded-xl bg-accent-strong px-1 text-base font-medium text-on-accent transition-colors duration-200 hover:bg-accent-hover"
+                  >
+                    <span aria-hidden className="text-lg leading-none">{s.emoji}</span>
+                    {en ? s.shortEn : s.short}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-sm text-ink-muted">
+              {en ? `About ${sessionMins} minutes · no sign-in needed · free` : `約 ${sessionMins} 分鐘 · 唔使登入 · 免費`}
+            </p>
+            <div className="mt-1 flex flex-wrap items-center justify-center gap-x-4">
+              <Link
+                href={hero.ctaStartHref}
+                className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-accent-strong underline underline-offset-4"
+              >
+                {en ? `All ${activeSubjects.length} subjects` : `揀其他科目（共 ${activeSubjects.length} 科）`}
+                <ArrowRight size={14} aria-hidden />
+              </Link>
+              <Link
+                href={hero.ctaSecHref}
+                className="inline-flex min-h-11 items-center gap-1 text-sm text-ink-soft underline underline-offset-4"
+              >
+                <Brain size={14} aria-hidden className="text-accent" /> {hero.ctaSecLabel}
+              </Link>
+            </div>
           </div>
 
           <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">

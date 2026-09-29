@@ -29,3 +29,12 @@
 //     所以數字改咗都唔會計錯。但樣本細一半，區間會闊咗 ——
 //     /prediction-method 同 FAQ 嗰兩段文案已同步改。
 export const SESSION_SIZE = 10
+
+// ── 一節大約要幾耐 ────────────────────────────────────────────────────────
+// 每題約 1.5 分鐘（§7.1 的估算，2026-09-09 反思鎖剷除後只計作答時間），
+// 最少寫 5 分鐘。首頁快速開始及科目頁快速開始卡同用此函數，兩處不再各自計算。
+export const MINUTES_PER_QUESTION = 1.5
+
+export function sessionMinutes(questions: number = SESSION_SIZE): number {
+  return Math.max(5, Math.round(questions * MINUTES_PER_QUESTION))
+}

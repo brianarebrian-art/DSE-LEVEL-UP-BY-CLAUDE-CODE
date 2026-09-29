@@ -5,7 +5,7 @@ import { ArrowRight, PenLine, BookOpenCheck, FileText, Search, Sparkles } from '
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
-import { SESSION_SIZE } from '@/lib/entitlements'
+import { SESSION_SIZE, sessionMinutes } from '@/lib/entitlements'
 import ElectiveSelector from '@/components/ElectiveSelector'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { isMCExamFormat, PAPER_STRUCTURE, QUESTION_KIND_LABELS } from '@/data/dse-paper-formats'
@@ -76,9 +76,8 @@ export default function SubjectDetailView({
   // 令數學科頁寫 1,624 題而科目總覽寫 1,594 條 MC，兩頁數字對不上。
   const sessionQuestions = Math.min(SESSION_SIZE, typeCounts.mc)
   const totalMarks = sessionQuestions
-  // 每題約 1.5 分鐘。（2026-09-09 之前仲要加答錯後嘅 30 秒反思鎖；鎖已剷除，
-  // 見憲章 §7.2，所以估算純粹係作答時間。）
-  const estimatedMinutes = Math.max(5, Math.round(sessionQuestions * 1.5))
+  // 每題約 1.5 分鐘，與首頁快速開始同一來源（lib/entitlements.ts 的 sessionMinutes）。
+  const estimatedMinutes = sessionMinutes(sessionQuestions)
   const activeShortNames = getActiveSubjects()
     .map((s) => (en ? s.shortEn : s.short))
     .join(en ? ', ' : '、')
