@@ -22,6 +22,11 @@ const eslintConfig = defineConfig([
     // so ignoring the whole directory costs no real coverage and also covers
     // any worktree a future session creates.
     ".claude/**",
+    // design-sync output (gitignored, .gitignore line 50): a compiled bundle of
+    // this app plus a vendored copy of React. A local `npm run lint` linted it
+    // and failed with 29 errors, all inside React's own source; a fresh checkout
+    // (CI) never has the directory. The sources it is built from are still linted.
+    "ds-bundle/**",
   ]),
   {
     // This app deliberately hydrates localStorage in mount effects across many
