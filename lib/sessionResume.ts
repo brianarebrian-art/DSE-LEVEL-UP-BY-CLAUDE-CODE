@@ -127,3 +127,60 @@ export function isResumable(
   if (Date.now() - s.updatedAt > MAX_AGE_MS) return false
   return true
 }
+
+/**
+ * The practice URL that re-creates a run's subject/topic/mode, so the practice page's own
+ * isResumable() matches the saved run and offers to continue it.
+ *
+ * 'cause' runs are left out on purpose: the cause itself is not saved in ActiveSession,
+ * and without `?cause=` PracticeShell falls back to 'normal', so the saved run would
+ * never match.
+ */
+export function practiceHref(subjectId: string, topicFilter: string | null, mode: PracticeMode): string {
+  const q = new URLSearchParams({ subject: subjectId })
+  if (topicFilter) q.set('topic', topicFilter)
+  if (mode === 'weakness') q.set('mode', 'weakness')
+  return `/practice?${q.toString()}`
+}
+
+/** Where the homepage "continue" card sends a returning student. */
+export type ContinueTarget =
+  | { kind: 'resume'; subjectId: string; href: string; done: number; total: number }
+  | { kind: 'again'; subjectId: string; href: string }
+
+/**
+ * Homepage shortcut for a returning student (2026-09-29).
+ *
+ *  1. An unfinished run that the practice page would offer to resume → continue it.
+ *  2. Otherwise the subject of the most recent finished run → start a fresh set.
+ *  3. Otherwise nothing: a first-time visitor sees the ordinary homepage.
+ *
+ * Pure, so it can be tested without a browser. `isLive` filters out subjects that have
+ * since been withdrawn or renamed.
+ */
+export function pickContinueTarget(
+  session: ActiveSession | null,
+  lastSubjectId: string | null,
+  isLive: (subjectId: string) => boolean,
+): ContinueTarget | null {
+  if (
+    session &&
+    // Only modes that practiceHref can rebuild. A missing mode (hand-edited or very old
+    // storage) would not match on the practice page either, so it is not offered.
+    (session.mode === 'normal' || session.mode === 'weakness') &&
+    isLive(session.subjectId) &&
+    isResumable(session, session.subjectId, session.topicFilter ?? null, session.mode)
+  ) {
+    return {
+      kind: 'resume',
+      subjectId: session.subjectId,
+      href: practiceHref(session.subjectId, session.topicFilter ?? null, session.mode),
+      done: session.current,
+      total: session.questionIds.length,
+    }
+  }
+  if (lastSubjectId && isLive(lastSubjectId)) {
+    return { kind: 'again', subjectId: lastSubjectId, href: practiceHref(lastSubjectId, null, 'normal') }
+  }
+  return null
+}

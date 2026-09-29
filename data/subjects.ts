@@ -18,6 +18,10 @@ export interface SubjectMeta {
   accent: string // tailwind 顏色名（amber / blue / green ...）
 }
 
+// description / descriptionEn 是學生看到的文字：/subjects 卡片、科目頁導語，以及搜尋結果的
+// meta description。只寫課題與練習內容，不寫內部排期或營運判斷。
+// 2026-09-29 移除「冷門科目、後期補上」「小眾但忠實用戶」「最易改寫」「MC 易自動批改」等
+// 內部備註；迴歸鎖：lib/__tests__/subject-copy.test.mts。
 export const subjects: SubjectMeta[] = [
   // ── P0：核心必爭 ──
   {
@@ -31,8 +35,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P0',
     hasMC: true,
     isActive: true,
-    description: '最多考生、最易改寫、即時批改。10 年試卷提煉 12 個核心邏輯框架。',
-    descriptionEn: 'Largest entry, easiest to rewrite, instant marking. 12 core logical frameworks distilled from 10 years of papers.',
+    description: '二次方程、函數、數列、坐標幾何、概率與統計。逐類題型拆解考核重點，數字換了也懂得解。',
+    descriptionEn: 'Quadratics, functions, sequences, coordinate geometry, probability and statistics. Each question type is broken down so you can solve it whatever the numbers.',
     accent: 'sage',
   },
   {
@@ -46,8 +50,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P0',
     hasMC: true,
     isActive: true,
-    description: '高需求、邏輯清晰。微積分、矩陣、向量、數學歸納法。',
-    descriptionEn: 'High demand, clear logic. Calculus, matrices, vectors and mathematical induction.',
+    description: '微積分、矩陣、向量、數學歸納法。',
+    descriptionEn: 'Calculus, matrices, vectors and mathematical induction.',
     accent: 'moss',
   },
   {
@@ -61,8 +65,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P0',
     hasMC: true,
     isActive: true,
-    description: '高需求、邏輯清晰。微積分應用、二項分佈、常態分佈。',
-    descriptionEn: 'High demand, clear logic. Applications of calculus, binomial and normal distributions.',
+    description: '微積分應用、二項分佈、常態分佈。',
+    descriptionEn: 'Applications of calculus, binomial and normal distributions.',
     accent: 'moss',
   },
 
@@ -78,8 +82,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P1',
     hasMC: true,
     isActive: true,
-    description: '理科生核心、MC 易自動批改。力學、電學、波動、熱學。',
-    descriptionEn: 'Core for science students, MC auto-marked. Mechanics, electricity, waves and heat.',
+    description: '力學、電學、波動、熱學。',
+    descriptionEn: 'Mechanics, electricity, waves and heat.',
     accent: 'mist',
   },
   {
@@ -93,8 +97,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P1',
     hasMC: true,
     isActive: true,
-    description: '理科生核心、MC 易自動批改。摩爾、酸鹼、氧化還原、化學鍵。',
-    descriptionEn: 'Core for science students, MC auto-marked. Moles, acids and bases, redox and bonding.',
+    description: '摩爾、酸鹼、氧化還原、化學鍵。',
+    descriptionEn: 'Moles, acids and bases, redox and bonding.',
     accent: 'clay',
   },
   {
@@ -108,8 +112,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P1',
     hasMC: true,
     isActive: true,
-    description: '理科生核心、MC 易自動批改。細胞、遺傳、生態、人體系統。',
-    descriptionEn: 'Core for science students, MC auto-marked. Cells, genetics, ecology and human body systems.',
+    description: '細胞、遺傳、生態、人體系統。',
+    descriptionEn: 'Cells, genetics, ecology and human body systems.',
     accent: 'sage',
   },
   {
@@ -123,8 +127,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P1',
     hasMC: true,
     isActive: true,
-    description: '必修科、文法與詞彙可改寫。Grammar、Vocabulary、Reading。',
-    descriptionEn: 'Core subject; grammar and vocabulary can be rewritten. Grammar, vocabulary and reading.',
+    description: 'Grammar、Vocabulary、Reading。',
+    descriptionEn: 'Grammar, vocabulary and reading.',
     accent: 'rose',
   },
 
@@ -140,8 +144,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P2',
     hasMC: true,
     isActive: true,
-    description: '必修科。字詞、成語、病句、修辭、文言、閱讀理解。',
-    descriptionEn: 'Core subject. Vocabulary, idioms, faulty sentences, rhetoric, classical Chinese and reading comprehension.',
+    description: '字詞、成語、病句、修辭、文言、閱讀理解。',
+    descriptionEn: 'Vocabulary, idioms, faulty sentences, rhetoric, classical Chinese and reading comprehension.',
     accent: 'rose',
   },
   {
@@ -155,8 +159,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P2',
     hasMC: true,
     isActive: true,
-    description: '選修科中較熱門。會計基礎、財務報表、財務比率、成本、商業概念。',
-    descriptionEn: 'A popular elective. Accounting basics, financial statements, ratios, costing and business concepts.',
+    description: '會計基礎、財務報表、財務比率、成本、商業概念。',
+    descriptionEn: 'Accounting basics, financial statements, ratios, costing and business concepts.',
     accent: 'clay',
   },
   {
@@ -170,8 +174,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P2',
     hasMC: true,
     isActive: true,
-    description: '選修科中較熱門。數字系統、程式編寫、數據庫、網絡。',
-    descriptionEn: 'A popular elective. Number systems, programming, databases and networking.',
+    description: '數字系統、程式編寫、數據庫、網絡。',
+    descriptionEn: 'Number systems, programming, databases and networking.',
     accent: 'mist',
   },
   {
@@ -185,8 +189,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P2',
     hasMC: true,
     isActive: true,
-    description: '熱門選修科。微觀（需求供應、彈性、市場結構）與宏觀（國民收入、通脹、國際貿易）。',
-    descriptionEn: 'A popular elective. Micro (demand–supply, elasticity, market structures) and macro (national income, inflation, trade).',
+    description: '微觀（需求供應、彈性、市場結構）與宏觀（國民收入、通脹、國際貿易）。',
+    descriptionEn: 'Micro (demand–supply, elasticity, market structures) and macro (national income, inflation, trade).',
     accent: 'sage',
   },
   {
@@ -200,8 +204,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P2',
     hasMC: true,
     isActive: true,
-    description: '必修核心科。三大主題：「一國兩制」下的香港、改革開放以來的國家、互聯相依的當代世界。重議題分析與多角度論證。',
-    descriptionEn: 'Core compulsory subject. Three themes: Hong Kong under One Country Two Systems, the nation since reform and opening-up, and the interconnected contemporary world. Emphasises issue analysis and multi-perspective reasoning.',
+    description: '三大主題：「一國兩制」下的香港、改革開放以來的國家、互聯相依的當代世界。重議題分析與多角度論證。',
+    descriptionEn: 'Three themes: Hong Kong under One Country Two Systems, the nation since reform and opening-up, and the interconnected contemporary world. Emphasises issue analysis and multi-perspective reasoning.',
     accent: 'mist',
   },
 
@@ -218,8 +222,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2026 年 11 月',
-    description: '人文科、需大量內容改寫。歷代政治、文化、制度演變。',
-    descriptionEn: 'Humanities, needs heavy content rewriting. Politics, culture and institutional change across dynasties.',
+    description: '歷代政治、文化、制度演變。',
+    descriptionEn: 'Politics, culture and institutional change across dynasties.',
     accent: 'clay',
   },
   {
@@ -234,8 +238,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2026 年 11 月',
-    description: '人文科、需大量內容改寫。20 世紀亞洲與世界局勢。',
-    descriptionEn: 'Humanities, needs heavy content rewriting. 20th-century Asia and the wider world.',
+    description: '20 世紀亞洲與世界局勢。',
+    descriptionEn: '20th-century Asia and the wider world.',
     accent: 'stone',
   },
   {
@@ -249,8 +253,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P3',
     hasMC: true,
     isActive: true,
-    description: '人文科。板塊、河流地貌、氣候、城市發展、地圖技巧。',
-    descriptionEn: 'Humanities. Plate tectonics, river landforms, climate, urban development and map skills.',
+    description: '板塊、河流地貌、氣候、城市發展、地圖技巧。',
+    descriptionEn: 'Plate tectonics, river landforms, climate, urban development and map skills.',
     accent: 'stone',
   },
   {
@@ -265,8 +269,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年第一季',
-    description: '小眾但忠實用戶。文學賞析、創作、文體分析。',
-    descriptionEn: 'Niche but loyal users. Literary appreciation, creative writing and genre analysis.',
+    description: '文學賞析、創作、文體分析。',
+    descriptionEn: 'Literary appreciation, creative writing and genre analysis.',
     accent: 'rose',
   },
   {
@@ -281,8 +285,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年第一季',
-    description: '小眾但忠實用戶。詩歌、小說、戲劇賞析。',
-    descriptionEn: 'Niche but loyal users. Appreciation of poetry, prose and drama.',
+    description: '詩歌、小說、戲劇賞析。',
+    descriptionEn: 'Appreciation of poetry, prose and drama.',
     accent: 'rose',
   },
   {
@@ -296,8 +300,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P3',
     hasMC: true,
     isActive: true,
-    description: '人文選修科。規範倫理理論、應用倫理、道德推理，及基督宗教與佛教傳統的教義與倫理回應。',
-    descriptionEn: 'Humanities elective. Normative ethical theories, applied ethics, moral reasoning, and the teachings and ethical responses of the Christian and Buddhist traditions.',
+    description: '規範倫理理論、應用倫理、道德推理，及基督宗教與佛教傳統的教義與倫理回應。',
+    descriptionEn: 'Normative ethical theories, applied ethics, moral reasoning, and the teachings and ethical responses of the Christian and Buddhist traditions.',
     accent: 'stone',
   },
 
@@ -314,8 +318,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。旅遊業、款待業營運與服務。',
-    descriptionEn: 'Smaller subject, added later. Tourism and hospitality operations and service.',
+    description: '旅遊業、款待業營運與服務。',
+    descriptionEn: 'Tourism and hospitality operations and service.',
     accent: 'mist',
   },
   {
@@ -330,8 +334,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。健康概念、社會關懷、照顧服務。',
-    descriptionEn: 'Smaller subject, added later. Health concepts, social care and caring services.',
+    description: '健康概念、社會關懷、照顧服務。',
+    descriptionEn: 'Health concepts, social care and caring services.',
     accent: 'rose',
   },
   {
@@ -346,8 +350,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。設計流程、結構、材料與工藝。',
-    descriptionEn: 'Smaller subject, added later. Design process, structures, materials and craft.',
+    description: '設計流程、結構、材料與工藝。',
+    descriptionEn: 'Design process, structures, materials and craft.',
     accent: 'stone',
   },
   {
@@ -362,8 +366,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。藝術評賞、創作實踐。',
-    descriptionEn: 'Smaller subject, added later. Art appreciation and creative practice.',
+    description: '藝術評賞、創作實踐。',
+    descriptionEn: 'Art appreciation and creative practice.',
     accent: 'rose',
   },
   {
@@ -378,8 +382,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。聆聽、創作、演奏知識。',
-    descriptionEn: 'Smaller subject, added later. Listening, composing and performing knowledge.',
+    description: '聆聽、創作、演奏知識。',
+    descriptionEn: 'Listening, composing and performing knowledge.',
     accent: 'stone',
   },
   {
@@ -394,8 +398,8 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。運動科學、人體解剖、體育文化。',
-    descriptionEn: 'Smaller subject, added later. Sports science, human anatomy and physical culture.',
+    description: '運動科學、人體解剖、體育文化。',
+    descriptionEn: 'Sports science, human anatomy and physical culture.',
     accent: 'sage',
   },
   {
@@ -410,14 +414,25 @@ export const subjects: SubjectMeta[] = [
     hasMC: true,
     isActive: true,
     launchDate: '2027 年',
-    description: '冷門科目、後期補上。食物科學與營養、膳食計劃、食物安全、纖維布料與時尚設計、消費與可持續。',
-    descriptionEn: 'Smaller subject, added later. Food science and nutrition, meal planning, food safety, fibres and fashion design, and sustainable consumption.',
+    description: '食物科學與營養、膳食計劃、食物安全、纖維布料與時尚設計、消費與可持續。',
+    descriptionEn: 'Food science and nutrition, meal planning, food safety, fibres and fashion design, and sustainable consumption.',
     accent: 'clay',
   },
 ]
 
 export function getSubject(id: string): SubjectMeta | undefined {
   return subjects.find((s) => s.id === id)
+}
+
+/**
+ * Search-result description for a subject page (2026-09-29).
+ * The bare topic list was only 10–20 characters for most subjects, which search
+ * engines tend to replace with arbitrary page text. Every claim here is checked:
+ * all live questions carry an explanation (subject-copy.test.mts), and the site has
+ * no ads or paid tier (charter §1.3).
+ */
+export function subjectMetaDescription(s: SubjectMeta): string {
+  return `${s.name}免費 MC 練習：${s.description}每題附解析，無廣告。`
 }
 
 export function getActiveSubjects(): SubjectMeta[] {

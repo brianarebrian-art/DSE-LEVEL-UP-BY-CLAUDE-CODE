@@ -7,6 +7,7 @@ import MathText from '@/components/MathText'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
 import InstallHint from '@/components/InstallHint'
+import ContinueCard from '@/components/ContinueCard'
 import { subjects, getActiveSubjects } from '@/data/subjects'
 // 只攞簽名狀態，唔攞內容 —— 首頁唔需要 48 條對照，攞咗就白白 build 入 bundle。
 // 由 summary.generated.ts 攞總數，唔好 import barrel ——
@@ -14,6 +15,7 @@ import { subjects, getActiveSubjects } from '@/data/subjects'
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
 // 一條都冇顯示過）。呢一頁只係想要一個總數。
 import { TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
+import { SESSION_SIZE } from '@/lib/entitlements'
 import { useLocale } from '@/lib/i18n'
 // 方向一：季節性 Hero（純前端按月切換文案；light-first 不變）
 import { getCurrentSeason } from '@/utils/season'
@@ -28,15 +30,16 @@ import Mascot from '@/components/Mascot'
 const activeSubjects = getActiveSubjects()
 const totalSubjects = subjects.length
 
-// 真實數字（憲章 §4 規格牆；「4科」是憲章筆誤，實為 25 科）。
-// 首頁三個大數字。
+// 首頁規格牆三個大數字。
 //
-// 2026-08-20 修正兩個問題：
-// ① 題數硬編咗「120+」，實際題庫有 5,201 條 —— 首頁同 /practice 對唔上，
-//    係最容易被截圖質疑嗰種矛盾。改為即時由題庫算，唔會再過時。
-// ② 三個數本身無來源。「10 年」對應年份分析 2014–2023（真實範圍），
-//    「核心思維框架」對應現有科目數。全部由資料衍生或有明確定義。
-const statNums = ['10', String(TOTAL_QUESTIONS), String(activeSubjects.length)]
+// 2026-08-20：題數由硬編「120+」改為即時由題庫計算。
+// 2026-09-29：另外兩個數字撤下，因為兩者均無資料支持（憲章 §8 不虛構數據）：
+//   ①「10 年 · 年份分析（2014–2023）」—— 當日實測，題庫大部分題目沒有年份欄位，
+//     有年份者全屬 2019–2025，沒有任何一題標示 2014–2018。
+//   ②「25 個核心思維框架」—— 數值其實是科目數目，並非框架數目；
+//     數學科頁面實際列出的框架只有七個。
+// 改為三個可由程式碼推導、學生關心的數字：題數、一節題數（SESSION_SIZE）、費用。
+const statNums = [TOTAL_QUESTIONS, SESSION_SIZE, 0]
 
 export default function HomePage() {
   const { t, locale } = useLocale()
@@ -46,9 +49,9 @@ export default function HomePage() {
   const hero = getSeasonalHero(getCurrentSeason(), locale === 'en')
 
   const stats = [
-    { num: statNums[0], unit: locale === 'en' ? '' : '年', label: h.statsItems[0].label },
-    { num: statNums[1], unit: '', label: h.statsItems[1].label },
-    { num: statNums[2], unit: locale === 'en' ? '' : '個', label: h.statsItems[2].label },
+    { num: statNums[0], prefix: '', unit: '', label: h.statsItems[0].label },
+    { num: statNums[1], prefix: '', unit: locale === 'en' ? '' : '題', label: h.statsItems[1].label },
+    { num: statNums[2], prefix: locale === 'en' ? 'HK$' : '', unit: locale === 'en' ? '' : '元', label: h.statsItems[2].label },
   ]
 
   // 純 CSS + Intersection Observer 進場動畫 + 大數字 count-up（憲章 §5，只觸發一次）。
@@ -73,11 +76,12 @@ export default function HomePage() {
             // 細數之後，一定要保證回得返真數 —— 用 setTimeout 兜底：rAF 喺隱藏
             // 分頁完全唔行，setTimeout 只會被節流。缺咗呢個保險，用戶喺動畫途中
             // 切走再返嚟，就會永遠停喺一個中途數字。
-            const settle = () => { counter.textContent = String(target) + suffix }
+            // 千位分隔與信任列一致（信任列顯示「27,106」，規格牆以前顯示「27106」）。
+            const settle = () => { counter.textContent = target.toLocaleString('en-US') + suffix }
             const start = performance.now()
             const step = (now: number) => {
               const p = Math.min((now - start) / 1400, 1)
-              counter.textContent = Math.floor(p * target).toString() + (p >= 1 ? suffix : '')
+              counter.textContent = Math.floor(p * target).toLocaleString('en-US') + (p >= 1 ? suffix : '')
               if (p < 1) requestAnimationFrame(step)
             }
             if (document.hidden) { settle() } else {
@@ -100,50 +104,50 @@ export default function HomePage() {
       {/* 「加到主畫面」輕提示：已裝／撳過唔使／瀏覽器唔支援都唔出（見組件檔頭） */}
       <InstallHint />
 
-      {/* ── HERO ── */}
-      <section className="relative px-4 pt-20 pb-24">
+      {/* ── HERO ──
+          2026-09-29 手機首屏重排。375×812 實測：主 CTA「開始練習」原位於 y=807，
+          而底部導航由 y=755 開始 —— 在最多人使用的裝置上，第一屏看不到主按鈕。
+          ① 吉祥物在手機縮小（高約 104px），徽章在手機隱藏（與 h1 內容重複）；
+          ② CTA 移到副標題之後，「DSE 舊生 + AI」及信任標記移到 CTA 之下；
+          ③ 進場動畫改用純 CSS（.hero-rise，見 globals.css），不再等待 JavaScript
+             hydrate 才由 opacity 0 變為可見。 */}
+      <section className="relative px-4 pt-8 pb-16 sm:pt-20 sm:pb-24">
         {/* 裝飾光暈。w-full max-w-[560px]：以前寫死 w-[560px]，喺 375px 機上左右各爆 93px，
             令 Chrome 將版面視窗由 375 撐大到 467（＝成頁自動縮細 20%，字細咗一圈，
             對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
         <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
+          {/* 回訪學生：一按即繼續上次練習（沒有紀錄則不顯示，初次訪客所見不變）。 */}
+          <ContinueCard />
+
           {/* 吉祥物擺喺標題之上 —— 訪客見到嘅第一件嘢。
               擺呢隻嘅目的係認得出個網站，所以佢應該喺最強嗰個位，
               唔係收埋喺頁尾做裝飾。揀「讀緊書」呢個姿勢而唔係滑板嗰隻：
               首屏要一眼講到呢度係做咩嘅。
               priority：佢喺 LCP 範圍，唔標會拖慢首屏。 */}
-          <div className="animate-on-scroll mb-4 flex justify-center">
-            <Mascot pose="reading" height={168} priority />
+          <div className="hero-rise mb-4 flex justify-center">
+            {/* 以外層闊度控制尺寸（手機 128px ≈ 高 104px；桌面 208px ＝ 原本高 168px）。
+                不能在 img 上用 h-[…]：globals.css 有一條不在 @layer 內的 `img { height: auto }`，
+                優先級高於所有 Tailwind 工具類，高度類別會被靜默覆蓋（2026-09-29 production 實測）。 */}
+            <div className="w-[128px] sm:w-[208px]">
+              <Mascot pose="reading" height={168} priority className="w-full" />
+            </div>
           </div>
 
-          <div className="animate-on-scroll mb-8 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent">
+          <div className="hero-rise hero-rise-1 mb-8 hidden items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent sm:inline-flex">
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />
             {hero.badge}
           </div>
 
-          <h1 className="animate-on-scroll stagger-1 mb-6 text-4xl font-medium leading-[1.1] tracking-tight text-ink sm:text-5xl md:text-6xl">
+          <h1 className="hero-rise hero-rise-1 mb-4 text-4xl font-medium leading-[1.1] tracking-tight text-ink sm:mb-6 sm:text-5xl md:text-6xl">
             {hero.headline1}
             <br />
             <span className="bg-gradient-to-r from-accent to-accent bg-clip-text text-transparent">{hero.headline2}</span>
           </h1>
 
-          <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-xl text-ink-muted">{hero.subhead}</p>
+          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-8 sm:text-xl">{hero.subhead}</p>
 
-          <p className="animate-on-scroll stagger-2 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            {locale === 'en'
-              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind past-paper traps, one question at a time.'
-              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解歷屆試題陷阱背後嘅核心邏輯。'}
-          </p>
-
-          <div className="animate-on-scroll stagger-3 mb-10 flex items-center justify-center gap-4 text-sm text-ink-muted">
-            <span>{h.trust1}</span>
-            <span>·</span>
-            <span>{h.trust2}</span>
-            <span>·</span>
-            <span>{h.trust3}</span>
-          </div>
-
-          <div className="animate-on-scroll stagger-4 flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="hero-rise hero-rise-2 mb-6 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
             <Link
               href={hero.ctaStartHref}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-strong px-8 py-4 text-base font-medium text-on-accent transition-all duration-200 hover:bg-accent-hover hover:-translate-y-0.5"
@@ -157,6 +161,19 @@ export default function HomePage() {
               <Brain size={18} className="text-accent" /> {hero.ctaSecLabel}
             </Link>
           </div>
+
+          <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            {locale === 'en'
+              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind past-paper traps, one question at a time.'
+              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解歷屆試題陷阱背後嘅核心邏輯。'}
+          </p>
+
+          {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}
+          <ul className="hero-rise hero-rise-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-ink-muted">
+            <li>{h.trust1}</li>
+            <li>{h.trust2}</li>
+            <li>{h.trust3}</li>
+          </ul>
         </div>
       </section>
 
@@ -266,19 +283,17 @@ export default function HomePage() {
       {/* ── 規格牆（大數字 count-up）── */}
       <section className="bg-surface-raised px-4 py-16">
         <div className="mx-auto max-w-3xl">
-          <div className="grid grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-3 gap-4 text-center sm:gap-8">
             {stats.map((s, i) => {
-              const m = s.num.match(/^(\d+)(.*)$/)
-              const target = m ? m[1] : s.num
-              const numSuffix = m ? m[2] : ''
               return (
                 <div key={i} className={`animate-on-scroll stagger-${i + 1}`}>
-                  <div className="mb-1 text-4xl font-medium text-accent tabular-nums sm:text-5xl">
+                  <div className="mb-1 text-2xl font-medium text-accent tabular-nums sm:text-5xl">
+                    {s.prefix && <span className="text-lg sm:text-2xl">{s.prefix}</span>}
                     {/* SSR 初始值必須係【真數】而唔係 0：requestAnimationFrame 喺隱藏分頁
                         完全唔 fire，動畫唔行嗰陣呢個值就係學生（同搜尋引擎、社交預覽）
                         見到嘅嘢。以前寫死 0，即係首頁隨時顯示「0 年 0 題 0 個」。 */}
-                    <span data-count={target} data-suffix={numSuffix}>{target}{numSuffix}</span>
-                    <span className="text-2xl">{s.unit}</span>
+                    <span data-count={s.num}>{s.num.toLocaleString('en-US')}</span>
+                    <span className="text-lg sm:text-2xl">{s.unit}</span>
                   </div>
                   <div className="text-sm text-ink-muted">{s.label}</div>
                 </div>

@@ -518,6 +518,24 @@ body {
   .animate-on-scroll { opacity: 1; transform: none; transition: none; }
 }
 
+/* Homepage hero entrance, CSS only (2026-09-29).
+   The hero used .animate-on-scroll, which stays at opacity 0 until app/page.tsx
+   hydrates and adds .visible. On a slow phone the first screen was blank until
+   the JavaScript arrived, and the mascot (the LCP image) was painted late.
+   A keyframe runs on first paint without JavaScript. The base style is visible,
+   so `animation: none` leaves the content showing, not hidden. */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-rise { animation: hero-rise 0.5s cubic-bezier(0, 0, 0.2, 1) both; }
+.hero-rise-1 { animation-delay: 0.06s; }
+.hero-rise-2 { animation-delay: 0.12s; }
+.hero-rise-3 { animation-delay: 0.18s; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
