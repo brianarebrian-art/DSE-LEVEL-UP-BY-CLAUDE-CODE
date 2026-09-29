@@ -2,721 +2,2413 @@
   "bafs": {
     "bafs_rep_0018": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0019": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0020": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0021": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0022": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0023": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0024": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0025": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0026": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0027": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0028": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0029": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0033": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0034": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0035": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0036": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0037": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0038": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0043": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0044": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0045": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0046": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0047": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0048": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0049": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0050": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0051": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0052": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "bafs_rep_0053": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0001": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0002": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0003": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0004": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0005": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0006": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0007": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0008": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0009": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0010": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0011": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0012": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0013": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0014": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0015": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0016": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0017": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0039": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0040": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0041": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0042": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0054": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_rep_0055": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_40_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_40_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_40_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_60_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_60_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_60_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_75_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_75_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_75_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_90_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_90_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_150000_90_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_40_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_40_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_40_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_60_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_60_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_60_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_75_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_75_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_75_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_90_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_90_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_250000_90_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_40_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_40_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_40_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_60_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_60_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_60_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_75_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_75_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_75_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_90_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_90_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_400000_90_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_40_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_40_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_40_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_60_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_60_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_60_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_75_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_75_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_75_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_90_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_90_20000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_fm6_600000_90_50000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_1000000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_1000000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_400000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_400000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_600000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_800000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_120000_800000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_200000_1000000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_200000_400000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_200000_800000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_40000_1000000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_40000_400000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_40000_800000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_1000000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_1000000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_400000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_400000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_600000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_800000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_60000_800000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_1000000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_1000000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_400000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_400000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_600000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_600000_60": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_ra5_90000_800000_40": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_1200000_300000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_450000_90000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_540000_135000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_600000_100000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_640000_160000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_720000_180000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_800000_200000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_fm2_960000_120000": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_003_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_003_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_003_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_005_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_005_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_005_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_006_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_006_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_10000_006_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_003_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_003_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_003_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_005_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_005_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_005_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_006_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_006_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_20000_006_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_003_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_003_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_003_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_005_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_005_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_005_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_006_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_006_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_50000_006_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_003_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_003_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_003_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_005_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_005_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_005_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_006_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_006_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bb_pf1_80000_006_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "chemistry": {
     "chem_rep_0013": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0014": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0015": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0016": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0017": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0018": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0019": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0020": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0021": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "chem_rep_0022": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chem_rep_0007": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chem_rep_0008": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chem_rep_0009": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chem_rep_0010": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chem_rep_0011": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chem_rep_0012": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "cheme_st3_Al_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "cheme_st3_Al_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "cheme_st3_Al_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_Ag2S": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_Al2O3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_BaCl2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_CaF2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_CH4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_Cr2O3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_Fe2O3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_K2O": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_Li2O": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_Mg3N2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_MnO2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_NH3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_PbO2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_SnO2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_SrCl2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_TiO2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_fm3_V2O5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_Al_Fe2O3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_C_CuO": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_C_PbO": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_CO_Fe2O3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_Fe_CuSO4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_H2_CuO": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_H2_PbO": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_Mg_CuO": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_Mg_ZnO": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "chemf_re6_Zn_CuSO4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "economics": {
     "econ_rep_0036": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "econ_rep_0037": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "econ_rep_0038": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "econ_rep_0039": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "econ_rep_0040": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "econ_rep_0041": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0007": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0008": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0009": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0010": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0011": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0012": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0013": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0014": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0015": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0016": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0017": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0018": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0025": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0026": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0027": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0028": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0029": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0030": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0031": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0032": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0033": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0034": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0035": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0042": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0043": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0044": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0045": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0046": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0047": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0066": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0067": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0068": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0069": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0070": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0071": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0072": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0073": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0074": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0075": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0081": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0082": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0083": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_rep_0084": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_100_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_100_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_20_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_20_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_40_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_40_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_50_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_50_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_80_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_0_80_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_100_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_100_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_20_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_20_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_40_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_40_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_50_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_50_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_80_10": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_el4_1_80_20": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "english": {
     "en_floor_27": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "en_floor_30": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "en_floor_35": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "en_floor_36": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "en_floor_25": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "en_floor_31": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "en_floor_39": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "floor8_p1_inf_04": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "ethics-religious": {
     "eth_floor_24": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "eth_floor_29": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "m1": {
     "m1_rep_0001": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0002": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0003": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0004": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0005": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0006": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0007": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0008": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0009": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0010": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0011": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0012": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0013": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0014": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0015": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0016": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0017": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0018": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0019": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0020": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0021": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0022": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0023": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0024": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0025": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0026": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0027": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0028": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0029": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0030": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0031": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0032": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0033": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0034": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0035": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0036": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0037": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0038": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0039": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0040": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0041": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0042": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0043": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0044": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0045": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0046": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0047": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0048": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0049": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0050": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0057": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0058": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0059": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0060": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0061": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0062": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0069": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0070": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0071": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0072": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0073": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0074": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0075": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0076": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0077": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0078": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0079": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0080": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0081": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0082": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0083": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0084": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0085": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0086": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0087": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0088": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0089": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0090": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0091": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0092": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0093": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0094": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0095": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0096": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0097": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0098": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0099": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0100": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0101": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m1_rep_0102": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_rep_0063": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_rep_0064": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_rep_0065": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_rep_0066": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_rep_0067": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_rep_0068": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_2_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_2_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_2_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_2_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_3_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_3_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_3_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_3_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_4_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_4_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_4_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_4_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_5_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_5_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_5_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_5_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_6_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_6_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_6_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_6_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_7_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_7_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_7_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el1_7_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_10_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_10_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_10_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_2_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_2_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_2_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_3_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_3_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_3_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_5_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_5_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_5_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_7_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_7_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1b_el2_7_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "m2": {
     "m2_rep_0001": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0002": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0003": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0004": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0005": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0006": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0007": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0008": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0009": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0010": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0011": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0012": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0022": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0023": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0024": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0025": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0026": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0027": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0048": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0049": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0050": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0051": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0065": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0066": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0067": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "m2_rep_0068": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0028": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0029": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0030": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0031": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0032": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0033": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0034": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0035": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0036": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m2_rep_0037": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
   "chinese": {
     "zh_floor_08": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_12": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_15": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_24": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_26": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_28": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_29": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_32": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_37": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     },
     "zh_floor_40": {
       "date": "2026-09-29",
-      "reason": "解析以位置指稱選項（例如「第二項」），選項洗牌後會指錯，部分位置詞亦與原本次序不符；逐題改寫解析並通過 check-posref 後恢復。Yuna 2026-09-29 決定。"
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "zh_fl_lx02": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    }
+  },
+  "physics": {
+    "phy_rep_0001": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0002": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0003": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0004": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0005": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0006": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0007": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0008": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0009": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0010": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0011": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0012": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0013": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0014": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0015": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0016": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0017": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0018": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0025": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0026": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0027": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0028": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0029": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0030": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0031": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0032": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0033": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0034": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0035": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0036": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0043": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0044": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0045": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0046": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0047": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0048": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0071": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0072": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0073": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0074": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "phy_rep_0075": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    }
+  },
+  "biology": {
+    "bioh_ph_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    }
+  },
+  "csd": {
+    "csd_sus_0_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_0_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_1_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_2_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_3_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_4_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_5_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_6_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_0": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_1": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_2": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_3": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_5": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_6": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_7": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_sus_7_8": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    }
+  },
+  "geography": {
+    "geob_dm3_某區的公園數": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "geob_dm3_某國的手機用": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "geob_dm3_某市的雪糕銷": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "geob_dm3_沿海城市的旅": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "geoh_ma_4": {
+      "date": "2026-09-29",
+      "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   }
 }

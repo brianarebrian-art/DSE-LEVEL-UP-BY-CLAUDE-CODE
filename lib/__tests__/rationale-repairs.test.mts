@@ -42,8 +42,10 @@ const batches = readdirSync(join(ROOT, 'data/questions/rationale-repairs'))
   .filter((f) => f.endsWith('.json'))
   .map((f) => JSON.parse(read(`data/questions/rationale-repairs/${f}`)) as { batch: string; subject: string; repairs: Repair[] })
 
-test('the repair log covers the 176 questions withdrawn on 2026-09-29, and only them', () => {
-  assert.equal(Object.keys(log).length, 176)
+test('the repair log covers the positional withdrawals of 2026-09-29, one record per question', () => {
+  // First decision: 176. Fourth decision: 135 machine-generated plus the hand-written
+  // class A (lib/__tests__/posref-cohorts.test.mts checks the cohorts themselves).
+  assert.equal(Object.values(log).filter((r) => (r as { cohort?: string }).cohort === 'positional-first').length, 176)
   for (const [id, r] of Object.entries(log)) {
     assert.ok(ORDER.includes(r.stage), `${id}: unknown stage ${r.stage}`)
     assert.ok(I.getSubjectQuestionsRaw(r.subject).some((q) => q.id === id), `${id} not in the ${r.subject} bank`)
@@ -162,7 +164,8 @@ test('M1-01: parameters read from the stem, every option recomputed, every note 
 })
 
 test('/transparency shows the repair progress from the log, not a hand-written number', () => {
+  assert.match(read('data/questions/repair-stats.ts'), /from '\.\/rationale-repairs\.json'/)
+  assert.match(read('app/transparency/page.tsx'), /<TransparencyClient stats=\{repairStats\(\)\} \/>/)
   const page = read('app/transparency/TransparencyClient.tsx')
-  assert.match(page, /rationale-repairs\.json/)
-  assert.match(page, /REPAIR_RESTORED/)
+  for (const k of ['stats.found', 'stats.rewritten', 'stats.restored']) assert.ok(page.includes(`n(${k})`), k)
 })

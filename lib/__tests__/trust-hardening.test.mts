@@ -25,11 +25,12 @@ const F = (flagsMod as { default?: typeof flagsMod }).default ?? flagsMod
 test('the positional-explanation batch is withdrawn with a date and a reason', () => {
   const batch = Object.entries(withdrawn).flatMap(([subject, byId]) =>
     Object.entries(byId)
-      .filter(([, r]) => r.date === '2026-09-29' && r.reason.includes('位置'))
+      .filter(([, r]) => r.date === '2026-09-29' && r.reason === 'POSITIONAL_RATIONALE_REFERENCE')
       .map(([id]) => ({ subject, id })),
   )
-  // Shrinks as rewritten questions are restored with withdraw.mts --undo.
-  assert.ok(batch.length <= 176, `${batch.length}`)
+  // 176 + 135 + 286 on 2026-09-29 (docs/rationale-repairs.md); shrinks as rewritten
+  // questions are restored with withdraw.mts --undo.
+  assert.ok(batch.length > 0 && batch.length <= 597, `${batch.length}`)
   for (const { subject, id } of batch) {
     assert.ok(!I.getSubjectQuestions(subject).some((q) => q.id === id), `${subject}/${id} is still served`)
     assert.ok(I.getSubjectQuestionsRaw(subject).some((q) => q.id === id), `${subject}/${id} was deleted, not withdrawn`)

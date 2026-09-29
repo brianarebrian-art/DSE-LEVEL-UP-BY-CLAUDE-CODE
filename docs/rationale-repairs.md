@@ -1,11 +1,12 @@
-# 解析修復：176 條位置式解析題
+# 解析修復：位置式解析題
 
-**決定：** Yuna，2026-09-29（見 `docs/DECISIONS-2026-09-29.md` 第一、第六節）。
+**決定：** Yuna，2026-09-29（見 `docs/DECISIONS-2026-09-29.md` 第一、第六、第七、第八節）。
+**範圍：** 三批，共 597 題（按題號計，無重複）：第一次檢查 176、機器生成題庫 135、手寫題庫 286。見第七節。
 **狀態來源：** `data/questions/rationale-repairs.json`。本文件只記錄流程與更正，不記錄進度數字；進度以該 JSON 為準，並顯示在 /transparency。
 
 ## 一、問題是甚麼
 
-這 176 條題目的解析以位置指稱選項，例如「第二項」「the second option」。選項每次呈現都會洗牌，所以這類字眼必然會指錯。
+這些題目的解析以位置指稱選項，例如「第二項」「最後一項」「the second option」。選項每次呈現都會洗牌，所以這類字眼必然會指錯。
 
 ### 更正紀錄：參照錯，不等於推理錯
 
@@ -45,7 +46,7 @@ withdrawn → rewritten → automated-checked → content-reviewed → restored
 - **內容覆核六項**（Yuna 2026-09-29 決定 ①）：題幹、正確答案、選項解析、核心概念、教學價值、語文。
   - 六項全部通過，決定才是「通過」。任何一項不通過，決定就是「不通過」，並須寫明原因，題目留在撤回名單內。不存在「5／6 通過」。
   - 不通過的題目要先修改模板或流程，不可硬放。
-- **覆核人記錄會公開：** 本 repo 是公開的，`contentReview.by` 任何人都看得到。建議填代號，真實身份及資格由創辦人另行保存。
+- **覆核人用公開代號**（Yuna 2026-09-29 第四次決定 ⑦）：本 repo 是公開的，`contentReview.by` 任何人都看得到，所以只填代號（例如 `M1-R01`）。真實身份及資格由創辦人另行保存。代號不是對外的「已認證」標記。
 - `lib/__tests__/rationale-repairs.test.mts` 是階段之間的閘（另有反向自我測試，證明它會拒絕「5／6 通過」等捷徑）：
   - 未到 `restored` 的題目必須仍在撤回名單內。
   - `content-reviewed` 及 `restored` 必須有覆核人姓名。
@@ -55,14 +56,14 @@ withdrawn → rewritten → automated-checked → content-reviewed → restored
 
 ## 四、批次
 
-- 10 題一批。先做 M1 90 題：學生已少了約 9% 的 M1 題目。
+- 10 題一批。先做第一批 176 題中的 M1 90 題：學生已少了約 9% 的 M1 題目。第二、第三批（135、286）排在其後，次序待定。
 - 每批的覆核表放在 `docs/rationale-repairs/<批次>.md`。
 
 | 批次 | 題目 | 模板 | 生成腳本 |
 |---|---|---|---|
 | M1-01 | m1_rep_0001–0010 | 積法則 $x^a \sin bx$（6 題）；商法則 $\dfrac{kx}{x+c}$（4 題） | `scripts/qbank/repairs/m1-01.mts` |
 
-- **M1-01 是校準批次：** 全部 10 題通過真人覆核並恢復之後，才開始 M1-02。如果覆核發現解析「數學正確，但學生看完仍不明白為何錯」，先改模板，再做下一批。
+- **M1-01 是校準批次：** 全部 10 題通過真人覆核並恢復之後，才開始 M1-02（第四次決定 ⑪：M1-02 繼續等）。如果覆核發現解析「數學正確，但學生看完仍不明白為何錯」，先改模板，再做下一批。
 - **固定回歸樣本**（`lib/__tests__/m1-01-regressions.test.mts`）：
   - A：選項與解析錯配
   - B：「$x^{1}$」這類表達
@@ -82,10 +83,56 @@ withdrawn → rewritten → automated-checked → content-reviewed → restored
 - 草稿：一律攔截。
 - `*-auto.ts` 題庫：現存的列入 `scripts/qbank/posref-ordinal-baseline.json`，只准減少。
 - 手寫題庫：`check-posref.mjs` 只讀雙引號欄位，看不到手寫題庫檔。改由 `lib/__tests__/posref-runtime.test.mts` 直接檢查載入後的題目，現存命中列入 `scripts/qbank/posref-runtime-baseline.json`。
-- 量度結果（2026-09-29），這兩批的處理方法由創辦人決定：
-  - `*-auto.ts` 中另有 **135 條上線題**用序數式引用（例如「最後一項用了相減」），與 176 題屬同一類問題。
-  - 手寫題庫有 537 條上線題命中，當中混有非選項引用（例如數列「第二項」、題幹「第二項陳述」），未分類。
+- 量度結果（2026-09-29）及處理（第四次決定，見第七節）：
+  - 機器生成題庫另有 **135 條上線題**用序數式引用（例如「最後一項用了相減」）：全部收起。其中 133 條在 `*-auto.ts`，2 條在 `promote-drafts.mjs` 生成的題庫（`chinese-floor-batch1.ts`、`english-floor-b2.ts`）。
+  - 手寫題庫有 **537 條上線題**命中：逐題分類，A 類收起，B、C 類保留。
 
 ## 六、技術債（P2，不阻今次修復）
 
 - **不可變的選項 ID：** 現時以儲存索引（0–3）作選項身份。短期足夠，因為洗牌只在介面層發生。但日後如果生成器改變選項次序、替換或增減干擾項，或合併題目版本，索引就不再是可靠的身份。題庫 schema v2 應改用不可變的 `option.id`。在此之前，不為這批題目全庫遷移。
+
+## 七、第四次決定：擴散範圍與內容品質架構（2026-09-29）
+
+### 1. 三批，分開計數
+
+| 批次（`rationale-repairs.json` 的 `cohort`） | 題數 | 來源 | 處理 |
+|---|---|---|---|
+| `positional-first` | 176 | 第一層檢查（「第二項」） | 收起，逐批修復 |
+| `positional-machine` | 135 | 第二層檢查，機器生成題庫 | 全部收起，不論分類 |
+| `positional-handwritten` | 286 | 第二層檢查及執行期檢查，手寫題庫，A 類 | 收起 |
+
+- 總數 597 是題號的聯集，不是三個數相加。三批互不重疊，由 `lib/__tests__/posref-cohorts.test.mts` 從基線檔重新計算核對；`data/questions/repair-stats.ts` 若發現重疊會令 build 失敗。
+- `withdrawn.json` 每條只記日期及原因代碼 `POSITIONAL_RATIONALE_REFERENCE`（說明見 `hidden-topics.ts` 的 `WITHDRAW_CODES`）。這個檔案會送到每位學生的瀏覽器，同一句原因重複 597 次會令它大四倍。
+- `withdraw.mts` 不會覆寫已收起的題目，批量模式（`--list`）會報告跳過了多少條，所以重疊會被看見，而不會被加總掩蓋。
+
+### 2. 手寫題庫 537 條：命中字眼不等於有錯
+
+`scripts/qbank/classify-posref.mts` 逐題分類，依據題目本身的結構，不單靠字眼（訊號見該檔檔頭）：
+
+| 類別 | 意思 | 題數 | 處理 |
+|---|---|---|---|
+| A　CONFIDENT_OPTION_REFERENCE | 指選項（例如「陷阱：90,000 元漏了…；最後一項把…」「第三個選項」「the last option」） | 286 | 收起（`--apply`） |
+| B　LIKELY_CONTENT_REFERENCE | 指題目內容（「漏了第二項」＝算式的項；「缺了第三項」＝解析列出的第三個條件；詩歌核對清單的最後一項） | 238 | 保留 |
+| C　AMBIGUOUS | 判斷不到 | 13 | 照常上線，列入 `docs/rationale-repairs/posref-review-queue.md` 等人手判斷 |
+
+- 分類結果：`data/questions/posref-classification.json`（生成檔，不可人手改）。
+- C 類的人手決定寫入 `scripts/qbank/posref-review-decisions.json`（覆核人填代號、日期、理由），重跑 `classify-posref.mts --write --apply`。Claude 不會代填。
+- C 類 13 題：`el_po_6_*` 12 題（「最後一項」之後的句子講 speaker，而選項亦講 speaker）、`dath_me_1` 1 題（分類器未能把「800 N／MA 0.25」對上選項「施力 = 800 N，MA = 0.25」）。
+- 機器生成的 135 題亦跑過分類器：全部 A 類。其中 31 題的位置詞按儲存次序其實指向正確答案，即不洗牌也是錯的，與 `bafs_rep_0018` 同類。手寫 A 類沒有這種情況。
+
+### 3. 兩條閘規則（名稱寫死）
+
+- **NEW_ITEM_GATE：** 新題一律不准以位置指選項：第一項、第二項、最後一項、第三個選項、A 選項、B option、the final option 等。檢查範圍為解析、MC Hack 及逐選項解析（2026-09-29 擴大，擴大前量度：題庫及草稿零命中）。
+  - 草稿：`check-posref.mjs`。題庫：`lib/__tests__/posref-runtime.test.mts`。
+  - 新題即使指題目內容（例如「數列的第二項」）亦會被攔。請寫「首項」「末項」或直接寫出該項。
+- **LEGACY_BASELINE：** 三張祖父清單（277／416／838）只可以減少。上限寫死在 `posref-runtime.test.mts`，清單多一條即 CI 失敗；修好一條就要同時刪走該條並調低上限。執行期清單亦不准保留已修好的題目，防止以舊換新。
+
+### 4. 內容品質驗證的三層（Yuna：「唔好再用『通過 regex』當成『內容安全』」）
+
+| 層 | 負責 | 在本項目 | 不負責 |
+|---|---|---|---|
+| 文字模式 | 找出可疑字眼 | `check-posref.mjs` 的四組 pattern | 判斷字眼指甚麼 |
+| 結構與 CI | 分類，並阻止新問題 | `classify-posref.mts`、`optionNotes`、NEW_ITEM_GATE、LEGACY_BASELINE、撤回鎖 | 判斷解析在教學上是否正確 |
+| 真人 | 判斷教學內容是否正確 | 六項內容覆核（第三節）、C 類判斷 | — |
+
+通過前兩層，只代表「沒有已知的位置式錯誤」，不代表內容正確。題目只有經第三層覆核才會恢復上線。

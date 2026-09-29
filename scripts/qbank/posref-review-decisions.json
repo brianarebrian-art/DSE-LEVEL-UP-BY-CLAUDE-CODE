@@ -1,0 +1,8 @@
+{
+  "_note": [
+    "位置詞候選（C 類）嘅人手決定。由覆核人填寫，Claude 不會代填（憲章 §16.C、§18.1）。",
+    "鍵：科目/題號。值：{ \"class\": \"A\" 或 \"B\", \"by\": 覆核人代號, \"date\": \"YYYY-MM-DD\", \"note\": 理由 }。",
+    "A = 指選項（收起）；B = 指題目內容（保留）。填完重跑 scripts/qbank/classify-posref.mts --write。"
+  ],
+  "decisions": {}
+}

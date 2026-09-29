@@ -52,7 +52,7 @@ export type QualityFlag = 'posref' | 'posref-en'
 const OUT = 'data/qualityFlags.ts'
 // 同 scripts/qbank/check-posref.mjs 一致。改嗰邊要改埋呢度 —— 測試 ③ 會對。
 const POS_ZH = /第[一二三四]項(?!因素|變[項數]|憑證|獨立)/
-const POS_EN = /\b[Tt]he (?:first|second|third|fourth) (?:option|distractor)s?\b|\boptions? [ABCD]\b/
+const POS_EN = /\b[Tt]he (?:first|second|third|fourth) (?:option|distractor)s?\b|\boptions? [ABCD]\b|\b[ABCD] (?:option|choice)s?\b|\b(?:choice|answer) [ABCD]\b/
 
 /** 題目 id → 已驗出嘅問題。純函數（除咗讀檔），唔寫任何嘢。 */
 export async function collectFlags(): Promise<Record<string, QualityFlag[]>> {

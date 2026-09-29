@@ -25,6 +25,16 @@
 //   node scripts/qbank/check-posref.mjs --banks   （順便掃 data/questions/，對祖父清單）
 //   node scripts/qbank/check-posref.mjs --banks --write-baseline
 //                                                 （重寫祖父清單；只准減，唔准加）
+//
+// ══ 2026-09-29 第四次決定：兩條規則，名稱寫死 ══
+//   NEW_ITEM_GATE    新題（草稿，及任何不在祖父清單的題目）一律不准以位置指選項：
+//                    第一項、第二項、最後一項、第三個選項、A 選項、option B、the final option。
+//                    解析、MC Hack、逐選項解析（optionNotes）都查。
+//   LEGACY_BASELINE  舊題命中列入祖父清單，數目只可以減少，不可以增加。
+//                    三張清單的數目上限寫在 lib/__tests__/posref-runtime.test.mts；
+//                    清單多一條，CI 即 fail。
+// 本閘只負責找出可疑字眼。字眼指的是選項還是題目內容，由 classify-posref.mts 分類；
+// 內容是否正確，由真人覆核（docs/rationale-repairs.md §七）。
 // ============================================================================
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
@@ -35,7 +45,7 @@ const BASELINE = 'scripts/qbank/posref-bank-baseline.json'
 // 「第三項因素」＝混淆變項、「第二項憑證」＝雙重認證第二重、
 // 「第二項」喺數學指多項式／點積嘅項 —— 呢啲都唔係選項引用。
 const ZH = /第[一二三四]項(?!因素|變[項數]|憑證|獨立)/
-const EN = /\b[Tt]he (?:first|second|third|fourth) (?:option|distractor)s?\b|\boptions? [ABCD]\b/
+const EN = /\b[Tt]he (?:first|second|third|fourth) (?:option|distractor)s?\b|\boptions? [ABCD]\b|\b[ABCD] (?:option|choice)s?\b|\b(?:choice|answer) [ABCD]\b/
 // ── 第二層（2026-09-29，Yuna 決定 ⑤）：序數與字母式引用 ──
 // ZH／EN 只捉「第二項」「the second option」。同日量度發現另有約 500 條上線題用
 // 「最後一項」「第三個選項」「The final option」—— 一樣係講位置，一樣會指錯。
@@ -49,7 +59,7 @@ const ZH_ORD = /第\s*[1-4一二三四]\s*個(?:干擾項|選項|答案)|最後�
 const EN_ORD = /\b(?:last|final) (?:option|distractor|answer choice|choice)s?\b|\b(?:first|second|third|fourth) (?:answer choice|choice)s?\b/i
 const BASELINE_ORD = 'scripts/qbank/posref-ordinal-baseline.json'
 const matchAny = (t) => t.match(ZH) ?? t.match(EN) ?? t.match(ZH_ORD) ?? t.match(EN_ORD)
-const FIELDS = ['explanation', 'explanationEn']
+const FIELDS = ['explanation', 'explanationEn', 'mcHack', 'mcHackEn']
 
 const argv = process.argv.slice(2)
 const SCAN_BANKS = argv.includes('--banks')
@@ -66,8 +76,11 @@ for (const f of files) {
   try { data = JSON.parse(readFileSync(f, 'utf8')) } catch { continue }
   const qs = Array.isArray(data) ? data : (data.questions ?? data.drafts ?? data.items ?? [])
   for (const q of qs) {
-    for (const k of FIELDS) {
-      const t = q[k]
+    const texts = [
+      ...FIELDS.map((k) => [k, q[k]]),
+      ...(Array.isArray(q.optionNotes) ? q.optionNotes.flatMap((n, i) => [[`optionNotes[${i}]`, n?.zh], [`optionNotes[${i}].en`, n?.en]]) : []),
+    ]
+    for (const [k, t] of texts) {
       if (typeof t !== 'string') continue
       const m = matchAny(t)
       if (!m) continue

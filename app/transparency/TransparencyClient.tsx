@@ -3,22 +3,11 @@
 import { ShieldCheck, Database, AlertTriangle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { FLAGGED } from '@/data/qualityFlags'
-import { WITHDRAWN } from '@/data/questions/hidden-topics'
-import repairLog from '@/data/questions/rationale-repairs.json'
+import type { RepairStats } from '@/data/questions/repair-stats'
 
 // 「待核」按介面語言分開計（同 components/QuestionProvenance.tsx 嘅 ZH_FLAGS／EN_FLAGS 一致）。
 const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).length
 const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en')).length
-// 已撤回（withdrawn.json）的題目數。撤回不是刪除：題目仍在題庫，逐條記錄日期與原因。
-const WITHDRAWN_COUNT = Object.values(WITHDRAWN).reduce((n, byId) => n + Object.keys(byId).length, 0)
-// 176 題解析修復進度（data/questions/rationale-repairs.json）。三個都是累計數：
-// 總數保持 176，「已改寫」「已重新上線」只會上升 —— 讓學生看到問題被發現之後確實有人在修。
-// 2026-09-29 Yuna 要求用「已修復」；此處改用「已改寫」，因為改寫後未經真人內容覆核，
-// 不應暗示內容已確認正確（同一決定亦寫明 AI 不可自行宣稱解析內容正確）。
-const REPAIR_STAGES = Object.values(repairLog as Record<string, { stage: string }>).map((r) => r.stage)
-const REPAIR_FOUND = REPAIR_STAGES.length
-const REPAIR_RESTORED = REPAIR_STAGES.filter((s) => s === 'restored').length
-const REPAIR_REWRITTEN = REPAIR_STAGES.filter((s) => ['automated-checked', 'content-reviewed', 'restored'].includes(s)).length
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and passes
@@ -32,9 +21,23 @@ const REPAIR_REWRITTEN = REPAIR_STAGES.filter((s) => ['automated-checked', 'cont
 // 2026-09-29 (Yuna): "follow the style and reasoning of 2012–2025 past papers" was removed.
 // Until a lawyer or the HKEAA confirms it, no public text links AI to past papers
 // (the HKEAA copyright notice bars use of its publications with AI tools).
-export default function TransparencyClient() {
+// 撤回及修復數字由 server component（page.tsx）經 data/questions/repair-stats.ts 計好傳入，
+// 兩個 JSON 檔（約 450KB）因此不會送到瀏覽器。
+//
+// 2026-09-29 第四次決定（Yuna）：
+//   · 兩組數分開寫：「修復」＝已收起的位置式解析題；「候選」＝手寫題庫的位置詞命中。
+//     命中不等於有錯（「數列的第二項」是題目內容），混在一起學生會以為全部都錯。
+//   · 共收起的總數由程式按題號計聯集，不是把幾批相加。
+//   · Yuna 要求用「已修復」；此處用「已改寫」，因為改寫後未經真人內容覆核，
+//     不應暗示內容已確認正確（第三次決定：AI 不可自行宣稱解析內容正確）。
+export default function TransparencyClient({ stats }: { stats: RepairStats }) {
   const { locale } = useLocale()
   const en = locale === 'en'
+  const WITHDRAWN_COUNT = stats.withdrawnNow
+  const stillOut = stats.found - stats.restored
+  const c = stats.byCohort
+  const k = stats.candidates
+  const n = (x: number) => x.toLocaleString()
 
   const sections = [
     {
@@ -154,32 +157,66 @@ export default function TransparencyClient() {
         {WITHDRAWN_COUNT > 0 && (
           <p className="text-ink-soft leading-relaxed mb-5">
             {en
-              ? `${WITHDRAWN_COUNT.toLocaleString()} questions have been withdrawn and no longer appear in practice. Withdrawn is not deleted: each stays in the bank with the date and reason recorded. The 176 withdrawn on 29 September 2026 had explanations that referred to options by position (“the second option”). Options are shuffled, and some of those references did not match the original order either, so leaving them in would teach the wrong thing. Each comes back only after its explanation is rewritten and passes the checks.`
-              : `有 ${WITHDRAWN_COUNT.toLocaleString()} 條題目已經收起，唔會再出現喺練習入面。收起唔係刪除：題目留喺題庫，每條都記低咗收起日期同原因。2026 年 9 月 29 日收起嘅 176 條，係因為解析用位置講選項（例如「第二項」）—— 選項會洗牌，而且部分位置詞同原本次序都對唔上，留住只會教錯。每條要改寫好解析、再通過檢查，先會放返出嚟。`}
+              ? `${n(WITHDRAWN_COUNT)} questions have been withdrawn and no longer appear in practice. Withdrawn is not deleted: each stays in the bank with the date and reason recorded. ${stillOut === WITHDRAWN_COUNT ? 'All of them were' : `${n(stillOut)} of them were`} withdrawn because the explanation refers to an option by its position (“the second option”, “the last option”). Options are shuffled every time, so those words point at the wrong option, and leaving them in would teach the wrong thing.`
+              : `有 ${n(WITHDRAWN_COUNT)} 條題目已經收起，唔會再出現喺練習入面。收起唔係刪除：題目留喺題庫，每條都記低咗收起日期同原因。${stillOut === WITHDRAWN_COUNT ? '全部' : `其中 ${n(stillOut)} 條`}都係因為解析用位置講選項（例如「第二項」「最後一項」「第三個選項」）—— 選項每次都會洗牌，呢啲字眼會指錯，留住只會教錯。`}
           </p>
         )}
-        {REPAIR_FOUND > 0 && (
-          <dl className="mb-5 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
-            <div>
-              <dt className="text-xs text-ink-muted">{en ? 'Withdrawn in total' : '共收起'}</dt>
-              <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_FOUND}</dd>
-            </div>
-            <div>
-              <dt className="text-xs text-ink-muted">{en ? 'Rewritten' : '已改寫'}</dt>
-              <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_REWRITTEN}</dd>
-            </div>
-            <div>
-              <dt className="text-xs text-ink-muted">{en ? 'Back in practice' : '已重新上線'}</dt>
-              <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_RESTORED}</dd>
-            </div>
-          </dl>
+        {stats.found > 0 && (
+          <>
+            <h3 className="text-base font-bold text-ink mb-2">{en ? 'Repairing these explanations' : '修復進度'}</h3>
+            <dl className="mb-3 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
+              <div>
+                <dt className="text-xs text-ink-muted">{en ? 'Total withdrawn' : '共收起'}</dt>
+                <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.found)}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">{en ? 'Rewritten' : '已改寫'}</dt>
+                <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.rewritten)}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">{en ? 'Back in practice' : '已重新上線'}</dt>
+                <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.restored)}</dd>
+              </div>
+            </dl>
+            <p className="text-ink-muted text-sm leading-relaxed mb-6">
+              {en
+                ? `Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. A rewritten question goes back into practice only after a person has reviewed its content.`
+                : `分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。已改寫嘅題目要經真人內容覆核，先會重新加入練習池。`}
+            </p>
+          </>
         )}
-        {REPAIR_FOUND > 0 && (
-          <p className="text-ink-muted text-sm leading-relaxed mb-5">
-            {en
-              ? 'A rewritten question goes back into practice only after a person has reviewed its content.'
-              : '已改寫嘅題目要經真人內容覆核，先會重新加入練習池。'}
-          </p>
+        {k.total > 0 && (
+          <>
+            <h3 className="text-base font-bold text-ink mb-2">{en ? 'Position words in the hand-written banks' : '手寫題庫嘅位置詞'}</h3>
+            <p className="text-ink-soft leading-relaxed mb-3">
+              {en
+                ? `Our check found ${n(k.total)} explanations in the hand-written banks that use a position word. A position word is not always about the options: “the second term of the sequence” is about the question itself and is correct. So each one was sorted, instead of withdrawing them all:`
+                : `檢查器喺手寫題庫搵到 ${n(k.total)} 條解析用咗位置詞。但位置詞唔一定係講選項：例如「數列的第二項」講嘅係題目內容，冇錯。所以我哋逐條分類，而唔係一次過全部收起：`}
+            </p>
+            <dl className="mb-3 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
+              {/* 標籤要短，375px 下每欄約 95px；狀態放在數字下面，三欄數字才對得齊。 */}
+              <div>
+                <dt className="text-xs text-ink-muted">{en ? 'About an option' : '講選項'}</dt>
+                <dd className="text-2xl font-medium tabular-nums text-ink">{n(k.A)}</dd>
+                <dd className="text-xs text-ink-muted">{en ? 'withdrawn' : '已收起'}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">{en ? 'About content' : '講題目內容'}</dt>
+                <dd className="text-2xl font-medium tabular-nums text-ink">{n(k.B)}</dd>
+                <dd className="text-xs text-ink-muted">{en ? 'kept' : '保留'}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-ink-muted">{en ? 'Unclear' : '未能判斷'}</dt>
+                <dd className="text-2xl font-medium tabular-nums text-ink">{n(k.C)}</dd>
+                <dd className="text-xs text-ink-muted">{en ? 'awaits review' : '等人手睇'}</dd>
+              </div>
+            </dl>
+            <p className="text-ink-muted text-sm leading-relaxed mb-5">
+              {en
+                ? 'Questions a person has not yet looked at stay in practice until they do. New questions may not use position words at all.'
+                : '未能判斷嘅題目，喺有人睇過之前照常出題。新題一律唔准用位置詞。'}
+            </p>
+          </>
         )}
       </section>
     </div>
