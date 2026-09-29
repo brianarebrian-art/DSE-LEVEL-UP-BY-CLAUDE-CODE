@@ -86,6 +86,17 @@ test('上雲清單同兩條同步通道完全對應', () => {
   )
 })
 
+test('信任中心同步數量由兩條實際同步清單計出，唔可以硬編 12', () => {
+  const trust = fs.readFileSync('app/trust/TrustClient.tsx', 'utf8')
+  assert.match(trust, /CLOUD_PROGRESS_KEYS\.length \+ CLOUD_SETTINGS_KEYS\.length/)
+  assert.doesNotMatch(trust, /同步嘅只有 12 項|exactly 12 items sync/)
+})
+
+test('/practice 科目清單明確標示總題數同題型拆分', () => {
+  const practice = fs.readFileSync('app/practice/page.tsx', 'utf8')
+  assert.match(practice, /總題數 \/ total questions（\{subjectMc\} MC \/ multiple-choice、\{subjectWritten\} 書寫題 \/ written-response）/)
+})
+
 test('情緒記錄永不喺上雲清單', () => {
   // 憲章紅線：情緒／精神健康數據唔上雲。呢條測試令佢唔可以靜靜被加返入去。
   assert.ok(

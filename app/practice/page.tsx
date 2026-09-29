@@ -45,11 +45,18 @@ export default function PracticePage() {
         <h2>科目 · Subjects{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h2>
         <ul>
           {subjects.map((s) => (
-            <li key={s.id}>
-              <a href={`/subjects/${s.id}`}>
-                {s.name} — {getSubjectQuestions(s.id).length}
-              </a>
-            </li>
+            (() => {
+              const subjectQuestions = getSubjectQuestions(s.id)
+              const subjectWritten = subjectQuestions.filter((q) => q.type === 'long' || q.type === 'text').length
+              const subjectMc = subjectQuestions.length - subjectWritten
+              return (
+                <li key={s.id}>
+                  <a href={`/subjects/${s.id}`}>
+                    {s.name} — {subjectQuestions.length} 總題數 / total questions（{subjectMc} MC / multiple-choice、{subjectWritten} 書寫題 / written-response）{/* i18n-exempt: 雙語並列（server component 冇 locale） */}
+                  </a>
+                </li>
+              )
+            })()
           ))}
         </ul>
       </div>

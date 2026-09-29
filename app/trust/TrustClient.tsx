@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import { getActiveSubjects } from '@/data/subjects'
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
+import { CLOUD_PROGRESS_KEYS, CLOUD_SETTINGS_KEYS } from '@/components/StoredDataInspector'
 
 // 見 page.tsx 檔頭。呢版唔加新聲稱，只排列已存在嘅答案。
 //
@@ -40,6 +41,7 @@ export default function TrustClient() {
   const subjects = getActiveSubjects()
   // 同 /transparency 一樣讀 summary.generated，唔好 import barrel。
   const total = subjects.reduce((n, s) => n + (SUBJECT_SUMMARY[s.id]?.total ?? 0), 0)
+  const cloudCount = CLOUD_PROGRESS_KEYS.length + CLOUD_SETTINGS_KEYS.length
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
@@ -119,8 +121,8 @@ export default function TrustClient() {
           q={en ? 'What do you store about me? Can I delete it?' : '你哋存咗我啲咩？刪唔刪得？'}
           a={
             en
-              ? 'Without signing in, nothing leaves your browser. Signed in, exactly 12 items sync. No analytics, no ad networks, no data sales. You can erase it yourself.'
-              : '唔登入嘅話乜都唔會離開你部瀏覽器。登入之後同步嘅只有 12 項。冇分析工具、冇廣告網絡、唔賣數據。你自己刪得走。'
+              ? `Without signing in, nothing leaves your browser. Signed in, exactly ${cloudCount} items sync. No analytics, no ad networks, no data sales. You can erase it yourself.`
+              : `唔登入嘅話乜都唔會離開你部瀏覽器。登入之後同步嘅只有 ${cloudCount} 項。冇分析工具、冇廣告網絡、唔賣數據。你自己刪得走。`
           }
           cta={en ? 'Privacy policy' : '私隱政策'}
         />
