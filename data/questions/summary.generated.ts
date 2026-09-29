@@ -27,14 +27,14 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 25
   },
   "m2": {
-    "total": 1019,
-    "mc": 1002,
+    "total": 993,
+    "mc": 976,
     "written": 17,
     "topics": 10
   },
   "m1": {
-    "total": 1033,
-    "mc": 1016,
+    "total": 943,
+    "mc": 926,
     "written": 17,
     "topics": 12
   },
@@ -45,8 +45,8 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 13
   },
   "chemistry": {
-    "total": 1061,
-    "mc": 1002,
+    "total": 1051,
+    "mc": 992,
     "written": 59,
     "topics": 14
   },
@@ -57,20 +57,20 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 11
   },
   "english": {
-    "total": 1059,
-    "mc": 1044,
+    "total": 1055,
+    "mc": 1040,
     "written": 15,
     "topics": 12
   },
   "chinese": {
-    "total": 1158,
-    "mc": 1030,
+    "total": 1148,
+    "mc": 1020,
     "written": 128,
     "topics": 19
   },
   "bafs": {
-    "total": 1161,
-    "mc": 1046,
+    "total": 1132,
+    "mc": 1017,
     "written": 115,
     "topics": 13
   },
@@ -81,8 +81,8 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 10
   },
   "economics": {
-    "total": 1130,
-    "mc": 1016,
+    "total": 1124,
+    "mc": 1010,
     "written": 114,
     "topics": 13
   },
@@ -123,8 +123,8 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 10
   },
   "ethics-religious": {
-    "total": 867,
-    "mc": 858,
+    "total": 866,
+    "mc": 857,
     "written": 9,
     "topics": 8
   },
@@ -481,8 +481,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "轉化思維",
       "frameworkEn": "Transformative Thinking",
       "emoji": "🔄",
-      "count": 103,
-      "mcCount": 102,
+      "count": 97,
+      "mcCount": 96,
       "writtenCount": 1
     },
     {
@@ -492,8 +492,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "條件分解",
       "frameworkEn": "Condition Decomposition",
       "emoji": "🎯",
-      "count": 105,
-      "mcCount": 103,
+      "count": 93,
+      "mcCount": 91,
       "writtenCount": 2
     },
     {
@@ -503,8 +503,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "幾何直覺",
       "frameworkEn": "Geometric Intuition",
       "emoji": "📐",
-      "count": 98,
-      "mcCount": 96,
+      "count": 94,
+      "mcCount": 92,
       "writtenCount": 2
     },
     {
@@ -558,8 +558,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "代數",
       "frameworkEn": "Algebra",
       "emoji": "🔢",
-      "count": 103,
-      "mcCount": 101,
+      "count": 99,
+      "mcCount": 97,
       "writtenCount": 2
     }
   ],
@@ -582,8 +582,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "條件分解",
       "frameworkEn": "Condition Decomposition",
       "emoji": "🎯",
-      "count": 85,
-      "mcCount": 84,
+      "count": 81,
+      "mcCount": 80,
       "writtenCount": 1
     },
     {
@@ -626,8 +626,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "建模能力",
       "frameworkEn": "Modelling",
       "emoji": "🏗️",
-      "count": 81,
-      "mcCount": 80,
+      "count": 63,
+      "mcCount": 62,
       "writtenCount": 1
     },
     {
@@ -637,8 +637,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "建模能力",
       "frameworkEn": "Modelling",
       "emoji": "🏗️",
-      "count": 63,
-      "mcCount": 61,
+      "count": 59,
+      "mcCount": 57,
       "writtenCount": 2
     },
     {
@@ -670,8 +670,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "微積分",
       "frameworkEn": "Calculus",
       "emoji": "📈",
-      "count": 144,
-      "mcCount": 142,
+      "count": 100,
+      "mcCount": 98,
       "writtenCount": 2
     },
     {
@@ -681,8 +681,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "微積分",
       "frameworkEn": "Calculus",
       "emoji": "📈",
-      "count": 80,
-      "mcCount": 79,
+      "count": 70,
+      "mcCount": 69,
       "writtenCount": 1
     },
     {
@@ -692,8 +692,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "統計",
       "frameworkEn": "Statistics",
       "emoji": "📊",
-      "count": 71,
-      "mcCount": 70,
+      "count": 61,
+      "mcCount": 60,
       "writtenCount": 1
     }
   ],
@@ -971,8 +971,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "公式運算",
       "frameworkEn": "Formula Calculation",
       "emoji": "🧪",
-      "count": 129,
-      "mcCount": 121,
+      "count": 123,
+      "mcCount": 115,
       "writtenCount": 8
     },
     {
@@ -993,8 +993,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "反應分析",
       "frameworkEn": "Reaction Analysis",
       "emoji": "🔬",
-      "count": 67,
-      "mcCount": 59,
+      "count": 63,
+      "mcCount": 55,
       "writtenCount": 8
     }
   ],
@@ -1184,8 +1184,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "Writing",
       "frameworkEn": "Writing",
       "emoji": "✍️",
-      "count": 87,
-      "mcCount": 85,
+      "count": 85,
+      "mcCount": 83,
       "writtenCount": 2
     },
     {
@@ -1217,8 +1217,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "Reading",
       "frameworkEn": "Reading",
       "emoji": "📖",
-      "count": 87,
-      "mcCount": 87,
+      "count": 85,
+      "mcCount": 85,
       "writtenCount": 0
     },
     {
@@ -1263,8 +1263,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "指定文言範文",
       "frameworkEn": "Prescribed Classical Texts",
       "emoji": "📜",
-      "count": 63,
-      "mcCount": 57,
+      "count": 61,
+      "mcCount": 55,
       "writtenCount": 6
     },
     {
@@ -1274,8 +1274,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "指定文言範文",
       "frameworkEn": "Prescribed Classical Texts",
       "emoji": "📜",
-      "count": 69,
-      "mcCount": 58,
+      "count": 68,
+      "mcCount": 57,
       "writtenCount": 11
     },
     {
@@ -1296,8 +1296,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "文言閱讀",
       "frameworkEn": "Classical Chinese Reading",
       "emoji": "🏯",
-      "count": 60,
-      "mcCount": 60,
+      "count": 59,
+      "mcCount": 59,
       "writtenCount": 0
     },
     {
@@ -1307,8 +1307,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "閱讀理解",
       "frameworkEn": "Reading Comprehension",
       "emoji": "📖",
-      "count": 62,
-      "mcCount": 62,
+      "count": 60,
+      "mcCount": 60,
       "writtenCount": 0
     },
     {
@@ -1329,8 +1329,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "語文運用",
       "frameworkEn": "Language Use",
       "emoji": "✍️",
-      "count": 60,
-      "mcCount": 60,
+      "count": 58,
+      "mcCount": 58,
       "writtenCount": 0
     },
     {
@@ -1351,8 +1351,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "文言閱讀",
       "frameworkEn": "Classical Chinese Reading",
       "emoji": "🏯",
-      "count": 61,
-      "mcCount": 58,
+      "count": 60,
+      "mcCount": 57,
       "writtenCount": 3
     },
     {
@@ -1362,8 +1362,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "閱讀理解",
       "frameworkEn": "Reading Comprehension",
       "emoji": "📖",
-      "count": 61,
-      "mcCount": 59,
+      "count": 60,
+      "mcCount": 58,
       "writtenCount": 2
     },
     {
@@ -1562,8 +1562,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "會計",
       "frameworkEn": "Accounting",
       "emoji": "📒",
-      "count": 104,
-      "mcCount": 98,
+      "count": 92,
+      "mcCount": 86,
       "writtenCount": 6
     },
     {
@@ -1584,8 +1584,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "會計",
       "frameworkEn": "Accounting",
       "emoji": "📒",
-      "count": 101,
-      "mcCount": 85,
+      "count": 94,
+      "mcCount": 78,
       "writtenCount": 16
     },
     {
@@ -1595,8 +1595,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "財務",
       "frameworkEn": "Finance",
       "emoji": "💰",
-      "count": 104,
-      "mcCount": 88,
+      "count": 98,
+      "mcCount": 82,
       "writtenCount": 16
     },
     {
@@ -1606,8 +1606,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "財務",
       "frameworkEn": "Finance",
       "emoji": "💰",
-      "count": 90,
-      "mcCount": 74,
+      "count": 86,
+      "mcCount": 70,
       "writtenCount": 16
     }
   ],
@@ -1753,8 +1753,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "市場機制",
       "frameworkEn": "Market Mechanism",
       "emoji": "📈",
-      "count": 92,
-      "mcCount": 78,
+      "count": 86,
+      "mcCount": 72,
       "writtenCount": 14
     },
     {
@@ -2658,8 +2658,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "宗教傳統",
       "frameworkEn": "Religious Tradition",
       "emoji": "🕊️",
-      "count": 110,
-      "mcCount": 109,
+      "count": 109,
+      "mcCount": 108,
       "writtenCount": 1
     },
     {
@@ -3483,4 +3483,4 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數。 */
-export const TOTAL_QUESTIONS = 27106
+export const TOTAL_QUESTIONS = 26930

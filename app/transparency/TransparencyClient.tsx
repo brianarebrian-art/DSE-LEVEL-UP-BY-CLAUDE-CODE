@@ -3,10 +3,13 @@
 import { ShieldCheck, Database, AlertTriangle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { FLAGGED } from '@/data/qualityFlags'
+import { WITHDRAWN } from '@/data/questions/hidden-topics'
 
 // 「待核」按介面語言分開計（同 components/QuestionProvenance.tsx 嘅 ZH_FLAGS／EN_FLAGS 一致）。
 const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).length
 const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en')).length
+// 已撤回（withdrawn.json）的題目數。撤回不是刪除：題目仍在題庫，逐條記錄日期與原因。
+const WITHDRAWN_COUNT = Object.values(WITHDRAWN).reduce((n, byId) => n + Object.keys(byId).length, 0)
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and passes
@@ -16,6 +19,10 @@ const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en'))
 // instruction, together with the batch table and the "N questions carry a named
 // review record" figure that were generated from them. Nothing on this page may
 // claim human, line-by-line review again unless new records back it.
+//
+// 2026-09-29 (Yuna): "follow the style and reasoning of 2012–2025 past papers" was removed.
+// Until a lawyer or the HKEAA confirms it, no public text links AI to past papers
+// (the HKEAA copyright notice bars use of its publications with AI tools).
 export default function TransparencyClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -27,13 +34,13 @@ export default function TransparencyClient() {
       points: en
         ? [
             'Every question is co-authored by DSE alumni with AI, then passes automated checks before it goes live.',
-            'All items are original rewrites that follow the style and reasoning of 2012–2025 past papers — they are NOT official HKEAA questions, and no official content is copied.',
+            'All items are original rewrites written to DSE question types and assessment points — they are NOT official HKEAA questions, and no official content is copied.',
             'Numeric / calculation questions are verified by parametric brute-force checking.',
             'Spotted a mistake? Tell us and we’ll fix it as soon as we can.',
           ]
         : [
             '每一條題目都由 DSE 舊生 + AI 協作編寫，上線前要通過自動檢查。',
-            '全部都係原創改寫，參照 2012–2025 歷屆試題嘅出題邏輯同風格 —— 並非 HKEAA 官方試題，亦無複製任何官方內容。',
+            '全部都係原創改寫，按 DSE 題型同考核重點撰寫 —— 並非 HKEAA 官方試題，亦無複製任何官方內容。',
             '數值／計算題以參數化方式 brute-force 驗算。',
             '發現錯誤？話我哋知，我哋會盡快修正。',
           ],
@@ -123,12 +130,25 @@ export default function TransparencyClient() {
             : '每一條題目上線前都要通過自動閘：術語同書面語檢查、結構同難度比例驗證、以及一個材料唔齊就唔畀過嘅格式閘。呢啲係機器檢查，唔係有人逐題簽名 —— 我哋唔會扮有。'}
         </p>
         {/* 第三個狀態「待核」（2026-09-15）。數字由生成檔即時計，唔寫死 —— 題目修好一條，
-            呢度自動少一條。 */}
+            呢度自動少一條。
+            2026-09-29（Yuna 決定）：待核題由「照常出題、掛徽章」改為撤回，故刪去原文
+            「我哋選擇攤出嚟，而唔係收埋」，並加上撤回段落。 */}
         <p className="text-ink-soft leading-relaxed mb-5">
-          {en
-            ? `${PENDING_EN.toLocaleString()} questions are marked “Pending review” in the English interface and ${PENDING_ZH.toLocaleString()} in the Chinese interface. These are questions where our checks have found a specific problem that a person has not fixed yet: the explanation refers to an option by position, and because options are shuffled every time, that reference may point to the wrong one. The badge says so on the question itself. We show them instead of hiding them.`
-            : `有 ${PENDING_ZH.toLocaleString()} 條題目喺中文介面、${PENDING_EN.toLocaleString()} 條喺英文介面標住「待核」。呢啲係機器已經驗出具體問題、但仲未有人手修正嘅題目：解析用位置講選項，而選項每次都會洗牌，所以嗰句可能指錯。徽章會喺題目度直接講明。我哋選擇攤出嚟，而唔係收埋。`}
+          {PENDING_ZH + PENDING_EN === 0
+            ? en
+              ? 'No question is marked “Pending review” at the moment.'
+              : '而家冇題目標住「待核」。'
+            : en
+              ? `${PENDING_EN.toLocaleString()} questions are marked “Pending review” in the English interface and ${PENDING_ZH.toLocaleString()} in the Chinese interface. These are questions where our checks have found a specific problem that a person has not fixed yet: the explanation refers to an option by position, and because options are shuffled every time, that reference may point to the wrong one. The badge says so on the question itself.`
+              : `有 ${PENDING_ZH.toLocaleString()} 條題目喺中文介面、${PENDING_EN.toLocaleString()} 條喺英文介面標住「待核」。呢啲係機器已經驗出具體問題、但仲未有人手修正嘅題目：解析用位置講選項，而選項每次都會洗牌，所以嗰句可能指錯。徽章會喺題目度直接講明。`}
         </p>
+        {WITHDRAWN_COUNT > 0 && (
+          <p className="text-ink-soft leading-relaxed mb-5">
+            {en
+              ? `${WITHDRAWN_COUNT.toLocaleString()} questions have been withdrawn and no longer appear in practice. Withdrawn is not deleted: each stays in the bank with the date and reason recorded. The 176 withdrawn on 29 September 2026 had explanations that referred to options by position (“the second option”). Options are shuffled, and some of those references did not match the original order either, so leaving them in would teach the wrong thing. Each comes back only after its explanation is rewritten and passes the checks.`
+              : `有 ${WITHDRAWN_COUNT.toLocaleString()} 條題目已經收起，唔會再出現喺練習入面。收起唔係刪除：題目留喺題庫，每條都記低咗收起日期同原因。2026 年 9 月 29 日收起嘅 176 條，係因為解析用位置講選項（例如「第二項」）—— 選項會洗牌，而且部分位置詞同原本次序都對唔上，留住只會教錯。每條要改寫好解析、再通過檢查，先會放返出嚟。`}
+          </p>
+        )}
       </section>
     </div>
   )

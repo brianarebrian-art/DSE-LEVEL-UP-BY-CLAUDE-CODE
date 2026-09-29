@@ -164,8 +164,8 @@ export default function HomePage() {
 
           <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             {locale === 'en'
-              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind past-paper traps, one question at a time.'
-              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解歷屆試題陷阱背後嘅核心邏輯。'}
+              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind common DSE traps, one question at a time.'
+              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解 DSE 常見陷阱背後嘅核心邏輯。'}
           </p>
 
           {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}

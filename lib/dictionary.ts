@@ -347,7 +347,8 @@ const zh = {
     shareScore: '分享成績',
     shareTextA: '我喺 DSE Level Up 練習',
     shareTextB: '，得到 ',
-    shareTextC: ' 分，預測等級 ',
+    // 2026-09-29（Yuna 決定）：分享文字最易被當成真 DSE 成績轉發，改用與結果頁一致的「本節表現等級」。
+    shareTextC: ' 分，本節表現等級 ',
     // ⚠️ 唔好喺呢度寫網域。網址由呼叫點接上 `SITE_ORIGIN`（lib/site.ts 單一來源）。
     // 原文寫死咗 `dselevelup.hk` —— 而同一個 repo 入面 app/layout.tsx 同 app/sitemap.ts
     // 兩處註釋都寫住「dselevelup.hk 尚未購入」（Brian 2026-07-29 拍板）。即係每一次
@@ -355,7 +356,7 @@ const zh = {
     // 迴歸鎖：lib/__tests__/site-origin.test.mts。
     shareTextD: '！🔥 一齊練 DSE：',
     shareCopied: '已複製分享文字！',
-    disclaimer: '等級預測僅供參考，最終成績以 HKEAA 公布為準。',
+    disclaimer: '呢個等級只係根據你喺本平台嘅練習表現估算，唔係 HKEAA 成績預測；最終成績以 HKEAA 公布為準。',
     defaultSubject: '數學',
     gradeMessages: {
       '5**': '頂尖水平！完美發揮！',
@@ -405,33 +406,9 @@ const zh = {
   // 排行榜字典已於 2026-07-31 刪除。頁面本身在 2026-07-20 (3c7a811) 移除，
   // 但字典區塊遺留下來，仍隨 bundle 送到瀏覽器 —— 內含「今日參與」等虛構在線
   // 人數文案（憲章 §8 禁虛構統計）及連續天數後綴（禁 gamification）。
-  about: {
-    titlePrefix: '關於 ',
-    intro: '一個 2026 DSE 考生，一個問題：點樣真係考好 DSE？',
-    whyTitle: '為什麼要做呢個平台？',
-    whyP1: '我係今屆（2026）DSE 考生。溫書期間，我一直用 past paper 操練，但做完一份又一份之後，慢慢發現一件事：',
-    whyQuote: '「咦，其實每年 DSE 都係考緊同一樣嘢——只係換左個數字。」',
-    whyP2: '我決定用 AI 系統分析 2014–2023 年的 DSE Math 試卷，提煉每道題背後考核的底層邏輯。發現唔係 100 個邏輯，係 12 個核心框架。',
-    methodTitle: '改寫題目的方法',
-    methodSteps: [
-      '分析每道官方試題的考核能力點（唔係答案，係「考緊乜嘢」）',
-      '將數字、名稱、情景全部改動，但保留相同的邏輯結構',
-      '每道改寫題標注「考核框架」，讓你知道自己在練習哪個邏輯',
-      '解釋說明不直接給答案，而係點出邏輯，留思考空間',
-    ],
-    promiseTitle: '承諾',
-    promises: [
-      { k: '無廣告', v: '——唔想破壞學習體驗' },
-      { k: '開源方法論', v: '——即使平台有一日唔喺，方法論永遠存在' },
-      { k: '持續改善', v: '——你的 feedback 係我最大動力' },
-    ],
-    contactTitle: '聯絡我',
-    contactBody: '有任何問題、建議、或者你想報告 bug——都可以搵我。',
-    legalLabel: '法律聲明：',
-    legalBody:
-      '本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。官方歷屆試題請前往 HKEAA 網站下載。等級預測僅供參考，最終成績以 HKEAA 公布為準。',
-    cta: '開始練習',
-  },
+  // 2026-09-29：`about` 字典區塊已刪除。/about 頁一直用 app/about/AboutClient.tsx 的內容，此區塊無人使用，
+  // 但仍隨 bundle 送到瀏覽器，而且載有未經核實的說法（「用 AI 系統分析 2014–2023 年的 DSE Math 試卷」
+  //「12 個核心框架」）。在版權問題有法律確認之前，不再公開任何「AI 分析歷屆試卷」的表述（Yuna 2026-09-29 決定）。
   methodology: {
     badge: '核心方法論',
     title1: '點解改寫版練習',
@@ -441,7 +418,9 @@ const zh = {
     insightP1Pre: '唔係因為佢背曬全部 past paper 答案。係因為佢知道每道題目背後考的是',
     insightP1Strong: '哪個底層邏輯',
     insightP1Post: '——所以無論 HKEAA 換咩數字、換咩情景，只要邏輯係一樣的，佢都即刻 get 到怎麼做。',
-    insightP2: '本平台的改寫題，就係用 AI 分析 10 年 DSE 試卷，提煉出每道題的核心考點，然後用新的數字、新的情景，考你同一個邏輯。做完，你掌握的係邏輯——不是答案。',
+    // 2026-09-29：原文「用 AI 分析 10 年 DSE 試卷」撤下。考評局版權聲明禁止其刊物用於任何 AI 或機器學習工具；
+    // 法律確認之前，不公開任何「AI 分析歷屆試卷」的表述（Yuna 決定）。新文字不聲稱任何資料來源。
+    insightP2: '本平台的改寫題，會先找出每類 DSE 題型的核心考點，然後用新的數字、新的情景，考你同一個邏輯。做完，你掌握的係邏輯——不是答案。',
     fwSectionTitle: '4 個核心框架示範',
     // 呢個標籤貼喺 f.content 上面，而 f.content 係原創改寫嘅題型示例，
     // 唔係 HKEAA 原文 —— 叫佢「官方試題」同 footer 免責聲明直接打架（§1.4）。
@@ -806,11 +785,11 @@ const en: typeof zh = {
     shareScore: 'Share score',
     shareTextA: 'I practised ',
     shareTextB: ' on DSE Level Up and scored ',
-    shareTextC: ', predicted grade ',
+    shareTextC: ', level for this set ',
     // 見 zh 版同名鍵：網域唔喺文案入面，由呼叫點接上 SITE_ORIGIN。
     shareTextD: '! 🔥 Practise DSE: ',
     shareCopied: 'Share text copied!',
-    disclaimer: 'Grade predictions are for reference only — final results are as published by the HKEAA.',
+    disclaimer: 'This level is estimated only from your practice on this platform. It is not a prediction of your HKEAA grade; final results are as published by the HKEAA.',
     defaultSubject: 'Maths',
     gradeMessages: {
       '5**': 'Top tier! A flawless performance!',
@@ -858,33 +837,7 @@ const en: typeof zh = {
     timeDayAgo: ' d ago',
   },
   // 見上方中文字典同位置的說明：排行榜字典已於 2026-07-31 一併刪除。
-  about: {
-    titlePrefix: 'About ',
-    intro: 'One 2026 DSE candidate, one question: how do you really do well in the DSE?',
-    whyTitle: 'Why build this platform?',
-    whyP1: 'I’m a current (2026) DSE candidate. While revising, I kept drilling past papers, and after doing one after another I slowly realised something:',
-    whyQuote: '“Hold on — every year the DSE tests the same thing, just with different numbers.”',
-    whyP2: 'I decided to use AI to systematically analyse the 2014–2023 DSE Maths papers and distil the underlying logic each question tests. It turned out to be not 100 logics, but 12 core frameworks.',
-    methodTitle: 'How the questions are rewritten',
-    methodSteps: [
-      'Analyse each official question’s assessed ability (not the answer, but “what it tests”)',
-      'Change all the numbers, names and scenarios while keeping the same logical structure',
-      'Tag each rewritten question with its “assessment framework” so you know which logic you’re practising',
-      'Explanations don’t hand you the answer — they point out the logic and leave room to think',
-    ],
-    promiseTitle: 'Promises',
-    promises: [
-      { k: 'No ads', v: ' — I don’t want to spoil the learning experience' },
-      { k: 'Open methodology', v: ' — even if the platform one day disappears, the method lives on' },
-      { k: 'Continuous improvement', v: ' — your feedback is my biggest motivation' },
-    ],
-    contactTitle: 'Contact me',
-    contactBody: 'Any questions, suggestions, or bugs to report — reach out any time.',
-    legalLabel: 'Legal notice:',
-    legalBody:
-      'All questions on this platform are independently rewritten versions intended to help candidates practise exam skills; they are not official HKEAA papers. Please download official past papers from the HKEAA website. Grade predictions are for reference only — final results are as published by the HKEAA.',
-    cta: 'Start practice',
-  },
+  // 2026-09-29：`about` 字典區塊已刪除，見上方中文字典同位置的說明。
   methodology: {
     badge: 'Core methodology',
     title1: 'Why can rewritten practice',
@@ -894,7 +847,7 @@ const en: typeof zh = {
     insightP1Pre: 'Not because they memorised every past-paper answer. It’s because they know which ',
     insightP1Strong: 'underlying logic',
     insightP1Post: ' each question tests — so whatever numbers or scenario the HKEAA uses, as long as the logic is the same, they instantly get how to do it.',
-    insightP2: 'This platform’s rewritten questions use AI to analyse 10 years of DSE papers, distil each question’s core assessment point, then test the same logic with new numbers and scenarios. When you’re done, what you’ve mastered is the logic — not the answer.',
+    insightP2: 'This platform’s rewritten questions start from the core assessment point of each DSE question type, then test the same logic with new numbers and new scenarios. When you finish, what you have mastered is the logic — not the answer.',
     fwSectionTitle: '4 core frameworks demonstrated',
     // 見 zh 版：貼喺原創改寫示例上面，唔可以叫「官方」。
     officialLabel: 'Common type',

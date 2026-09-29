@@ -21,7 +21,11 @@ test('students get none of them; the raw bank still has all 220', () => {
   assert.equal(served.filter((q: any) => HIDDEN.includes(q.topic)).length, 0)
   const raw = I.getSubjectQuestionsRaw('ethics-religious')
   assert.equal(raw.filter((q: any) => HIDDEN.includes(q.topic)).length, 220)
-  assert.equal(raw.length - served.length, 220)
+  // Questions withdrawn one by one (withdrawn.json) are also held back; since
+  // 2026-09-29 one ERS question is among them (positional explanation).
+  const withdrawn = Object.keys(JSON.parse(readFileSync('data/questions/withdrawn.json', 'utf8'))['ethics-religious'] ?? {})
+  const withdrawnOutsideHidden = raw.filter((q: any) => withdrawn.includes(q.id) && !HIDDEN.includes(q.topic)).length
+  assert.equal(raw.length - served.length, 220 + withdrawnOutsideHidden)
 })
 
 test('the topic list does not show them', () => {
