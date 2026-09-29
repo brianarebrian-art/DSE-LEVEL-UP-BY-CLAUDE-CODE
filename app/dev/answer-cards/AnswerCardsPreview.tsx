@@ -1,8 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
-import type { LongQuestion, TextQuestion } from '@/data/questions/types'
+import OptionNotes from '@/components/OptionNotes'
+import { displayOptions } from '@/lib/optionNotes'
+import type { LongQuestion, OptionNote, TextQuestion } from '@/data/questions/types'
 
 // 樣本題目 —— 【純預覽用，唔會、亦唔可以入題庫】。id 前綴 `_preview_` 就係
 // 提醒：任何真正入庫嘅題目都必須行 drafts → 客觀閘 → 真人逐題批 → promote 管線。
@@ -57,7 +60,19 @@ const sampleLong: LongQuestion = {
   marks: 4,
 }
 
+// 選項解析樣本（2026-09-29）。數字取自回歸樣本 bafs_rep_0018（lib/__tests__/fixtures/），
+// 解析以 optionId（儲存次序）掛在選項上。撳「重新洗牌」可見每條解析跟住自己的選項走。
+const sampleOptions = ['\\$260', '\\$250', '\\$350', '\\$270']
+const sampleNotes: OptionNote[] = [
+  { optionId: 0, zh: '只計購貨，忽略了期初與期末存貨的變動。', en: 'Counts purchases only and ignores the change in inventory.' },
+  { optionId: 1, zh: '正確：期初存貨 + 購貨 − 期末存貨 = 40 + 260 − 50。', en: 'Correct: opening inventory + purchases − closing inventory = 40 + 260 − 50.' },
+  { optionId: 2, zh: '把期末存貨加上去，等於把未賣出的貨也算作成本。', en: 'Adds closing inventory, counting unsold goods as cost.' },
+  { optionId: 3, zh: '把期初與期末存貨的加減調轉了。', en: 'Swaps opening and closing inventory.' },
+]
+
 export default function AnswerCardsPreview() {
+  // First render uses a fixed order so the server and client HTML match; the button reshuffles.
+  const [shown, setShown] = useState(() => displayOptions({ options: sampleOptions }, () => 0.5))
   return (
     <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
       <div className="mx-auto max-w-2xl">
@@ -78,6 +93,20 @@ export default function AnswerCardsPreview() {
           <section>
             <h2 className="text-sm font-medium text-ink-muted mb-3">LongQuestionCard{/* i18n-exempt: 組件名 */}</h2>
             <LongQuestionCard q={sampleLong} />
+          </section>
+
+          <section>
+            <h2 className="text-sm font-medium text-ink-muted mb-3">OptionNotes{/* i18n-exempt: 組件名 */}</h2>
+            <button
+              type="button"
+              onClick={() => setShown(displayOptions({ options: sampleOptions }))}
+              className="mb-3 min-h-11 rounded-lg border border-line px-3 text-sm text-ink-soft hover:border-accent/40"
+            >
+              重新洗牌{/* i18n-exempt: 開發專用頁，生產環境 404 */}
+            </button>
+            <div className="rounded-2xl border border-gold/30 bg-gold/[0.10] p-5">
+              <OptionNotes notes={sampleNotes} options={shown} correctId={1} selectedZh={'\\$270'} />
+            </div>
           </section>
         </div>
       </div>

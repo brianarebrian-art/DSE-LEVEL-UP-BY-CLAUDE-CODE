@@ -4,12 +4,19 @@ import { ShieldCheck, Database, AlertTriangle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { FLAGGED } from '@/data/qualityFlags'
 import { WITHDRAWN } from '@/data/questions/hidden-topics'
+import repairLog from '@/data/questions/rationale-repairs.json'
 
 // 「待核」按介面語言分開計（同 components/QuestionProvenance.tsx 嘅 ZH_FLAGS／EN_FLAGS 一致）。
 const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).length
 const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en')).length
 // 已撤回（withdrawn.json）的題目數。撤回不是刪除：題目仍在題庫，逐條記錄日期與原因。
 const WITHDRAWN_COUNT = Object.values(WITHDRAWN).reduce((n, byId) => n + Object.keys(byId).length, 0)
+// 176 題解析修復進度（data/questions/rationale-repairs.json）。總數保持不變，
+// 只有「已改寫」「重新上線」兩個數字會上升 —— 讓學生看到問題被發現之後確實有人在修。
+const REPAIR_STAGES = Object.values(repairLog as Record<string, { stage: string }>).map((r) => r.stage)
+const REPAIR_FOUND = REPAIR_STAGES.length
+const REPAIR_RESTORED = REPAIR_STAGES.filter((s) => s === 'restored').length
+const REPAIR_REWRITTEN = REPAIR_STAGES.filter((s) => s === 'automated-checked' || s === 'content-reviewed').length
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and passes
@@ -148,6 +155,22 @@ export default function TransparencyClient() {
               ? `${WITHDRAWN_COUNT.toLocaleString()} questions have been withdrawn and no longer appear in practice. Withdrawn is not deleted: each stays in the bank with the date and reason recorded. The 176 withdrawn on 29 September 2026 had explanations that referred to options by position (“the second option”). Options are shuffled, and some of those references did not match the original order either, so leaving them in would teach the wrong thing. Each comes back only after its explanation is rewritten and passes the checks.`
               : `有 ${WITHDRAWN_COUNT.toLocaleString()} 條題目已經收起，唔會再出現喺練習入面。收起唔係刪除：題目留喺題庫，每條都記低咗收起日期同原因。2026 年 9 月 29 日收起嘅 176 條，係因為解析用位置講選項（例如「第二項」）—— 選項會洗牌，而且部分位置詞同原本次序都對唔上，留住只會教錯。每條要改寫好解析、再通過檢查，先會放返出嚟。`}
           </p>
+        )}
+        {REPAIR_FOUND > 0 && (
+          <dl className="mb-5 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
+            <div>
+              <dt className="text-xs text-ink-muted">{en ? 'Found and withdrawn' : '發現問題、已收起'}</dt>
+              <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_FOUND}</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-ink-muted">{en ? 'Rewritten, awaiting review' : '已改寫、等人手覆核'}</dt>
+              <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_REWRITTEN}</dd>
+            </div>
+            <div>
+              <dt className="text-xs text-ink-muted">{en ? 'Back in practice' : '重新上線'}</dt>
+              <dd className="text-2xl font-medium tabular-nums text-ink">{REPAIR_RESTORED}</dd>
+            </div>
+          </dl>
         )}
       </section>
     </div>

@@ -25,7 +25,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(x^{3} \\sin 2x\\right)$。",
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 2x$，則 $u' = 3x^{2}$、$v' = 2\\cos 2x$（$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $2$）。代入得 $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $2$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanation": "兩個函數相乘，要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 2x$，則 $u' = 3x^{2}$；$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出因子 $2$，所以 $v' = 2\\cos 2x$。代入得 $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$。",
     "options": [
       "$3x^{2} \\sin 2x + 2x^{3} \\cos 2x$",
       "$6x^{2} \\cos 2x$",
@@ -41,8 +41,30 @@ export const m1AutoQuestions: Question[] = [
       "$3x^{2} \\sin 2x + x^{3} \\cos 2x$",
       "$3x^{2} \\cos 2x + 2x^{3} \\sin 2x$"
     ],
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 2x$, so $u' = 3x^{2}$ and $v' = 2\\cos 2x$ — the chain rule contributes the factor $2$ when differentiating $\\sin 2x$. Substituting gives $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $2$, and the third swaps $\\sin$ and $\\cos$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 2x$, so $u' = 3x^{2}$; differentiating $\\sin 2x$, the chain rule brings out the factor $2$, so $v' = 2\\cos 2x$. Substituting gives $3x^{2} \\sin 2x + 2x^{3} \\cos 2x$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$u'v = 3x^{2} \\sin 2x$，$uv' = 2x^{3} \\cos 2x$，兩項相加即得。",
+        "en": "Correct. $u'v = 3x^{2} \\sin 2x$ and $uv' = 2x^{3} \\cos 2x$; add the two terms."
+      },
+      {
+        "optionId": 1,
+        "zh": "把兩個導數直接相乘：$3x^{2} \\times 2\\cos 2x = 6x^{2} \\cos 2x$。導數沒有這種乘法規則，這是初學積法則最常見的錯誤。",
+        "en": "This multiplies the two derivatives: $3x^{2} \\times 2\\cos 2x = 6x^{2} \\cos 2x$. Derivatives have no such rule; it is the most common first mistake with products."
+      },
+      {
+        "optionId": 2,
+        "zh": "$uv'$ 一項漏了鏈式法則帶出的因子 $2$：$\\sin 2x$ 的導數是 $2\\cos 2x$，不是 $\\cos 2x$。",
+        "en": "The $uv'$ term is missing the factor $2$ from the chain rule: the derivative of $\\sin 2x$ is $2\\cos 2x$, not $\\cos 2x$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\sin$ 與 $\\cos$ 放錯了位置。被求導的是 $v = \\sin 2x$，所以 $\\cos 2x$ 應出現在 $uv'$ 一項；$u'v$ 一項保留原來的 $\\sin 2x$。",
+        "en": "$\\sin$ and $\\cos$ are in the wrong places. It is $v = \\sin 2x$ that is differentiated, so $\\cos 2x$ belongs in the $uv'$ term, while the $u'v$ term keeps $\\sin 2x$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0002",
@@ -57,24 +79,46 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(x^{2} \\sin 3x\\right)$。",
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 3x$，則 $u' = 2x^{1}$、$v' = 3\\cos 3x$（$\\sin 3x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $3$）。代入得 $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $3$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanation": "兩個函數相乘，要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 3x$，則 $u' = 2x$；$\\sin 3x$ 對 $x$ 求導時，鏈式法則帶出因子 $3$，所以 $v' = 3\\cos 3x$。代入得 $2x \\sin 3x + 3x^{2} \\cos 3x$。",
     "options": [
-      "$2x^{1} \\cos 3x + 3x^{2} \\sin 3x$",
-      "$2x^{1} \\sin 3x + 3x^{2} \\cos 3x$",
-      "$6x^{1} \\cos 3x$",
-      "$2x^{1} \\sin 3x + x^{2} \\cos 3x$"
+      "$2x \\cos 3x + 3x^{2} \\sin 3x$",
+      "$2x \\sin 3x + 3x^{2} \\cos 3x$",
+      "$6x \\cos 3x$",
+      "$2x \\sin 3x + x^{2} \\cos 3x$"
     ],
     "correctIndex": 1,
     "marks": 1,
     "contentEn": "Find $\\dfrac{d}{dx}\\left(x^{2} \\sin 3x\\right)$.",
     "optionsEn": [
-      "$2x^{1} \\cos 3x + 3x^{2} \\sin 3x$",
-      "$2x^{1} \\sin 3x + 3x^{2} \\cos 3x$",
-      "$6x^{1} \\cos 3x$",
-      "$2x^{1} \\sin 3x + x^{2} \\cos 3x$"
+      "$2x \\cos 3x + 3x^{2} \\sin 3x$",
+      "$2x \\sin 3x + 3x^{2} \\cos 3x$",
+      "$6x \\cos 3x$",
+      "$2x \\sin 3x + x^{2} \\cos 3x$"
     ],
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 3x$, so $u' = 2x^{1}$ and $v' = 3\\cos 3x$ — the chain rule contributes the factor $3$ when differentiating $\\sin 3x$. Substituting gives $2x^{1} \\sin 3x + 3x^{2} \\cos 3x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $3$, and the third swaps $\\sin$ and $\\cos$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 3x$, so $u' = 2x$; differentiating $\\sin 3x$, the chain rule brings out the factor $3$, so $v' = 3\\cos 3x$. Substituting gives $2x \\sin 3x + 3x^{2} \\cos 3x$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\sin$ 與 $\\cos$ 放錯了位置。被求導的是 $v = \\sin 3x$，所以 $\\cos 3x$ 應出現在 $uv'$ 一項；$u'v$ 一項保留原來的 $\\sin 3x$。",
+        "en": "$\\sin$ and $\\cos$ are in the wrong places. It is $v = \\sin 3x$ that is differentiated, so $\\cos 3x$ belongs in the $uv'$ term, while the $u'v$ term keeps $\\sin 3x$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$u'v = 2x \\sin 3x$，$uv' = 3x^{2} \\cos 3x$，兩項相加即得。",
+        "en": "Correct. $u'v = 2x \\sin 3x$ and $uv' = 3x^{2} \\cos 3x$; add the two terms."
+      },
+      {
+        "optionId": 2,
+        "zh": "把兩個導數直接相乘：$2x \\times 3\\cos 3x = 6x \\cos 3x$。導數沒有這種乘法規則，這是初學積法則最常見的錯誤。",
+        "en": "This multiplies the two derivatives: $2x \\times 3\\cos 3x = 6x \\cos 3x$. Derivatives have no such rule; it is the most common first mistake with products."
+      },
+      {
+        "optionId": 3,
+        "zh": "$uv'$ 一項漏了鏈式法則帶出的因子 $3$：$\\sin 3x$ 的導數是 $3\\cos 3x$，不是 $\\cos 3x$。",
+        "en": "The $uv'$ term is missing the factor $3$ from the chain rule: the derivative of $\\sin 3x$ is $3\\cos 3x$, not $\\cos 3x$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0003",
@@ -89,7 +133,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(x^{3} \\sin 4x\\right)$。",
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 4x$，則 $u' = 3x^{2}$、$v' = 4\\cos 4x$（$\\sin 4x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $4$）。代入得 $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $4$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanation": "兩個函數相乘，要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 4x$，則 $u' = 3x^{2}$；$\\sin 4x$ 對 $x$ 求導時，鏈式法則帶出因子 $4$，所以 $v' = 4\\cos 4x$。代入得 $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$。",
     "options": [
       "$3x^{2} \\sin 4x + x^{3} \\cos 4x$",
       "$3x^{2} \\cos 4x + 4x^{3} \\sin 4x$",
@@ -105,8 +149,30 @@ export const m1AutoQuestions: Question[] = [
       "$3x^{2} \\sin 4x + 4x^{3} \\cos 4x$",
       "$12x^{2} \\cos 4x$"
     ],
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 4x$, so $u' = 3x^{2}$ and $v' = 4\\cos 4x$ — the chain rule contributes the factor $4$ when differentiating $\\sin 4x$. Substituting gives $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $4$, and the third swaps $\\sin$ and $\\cos$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 4x$, so $u' = 3x^{2}$; differentiating $\\sin 4x$, the chain rule brings out the factor $4$, so $v' = 4\\cos 4x$. Substituting gives $3x^{2} \\sin 4x + 4x^{3} \\cos 4x$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$uv'$ 一項漏了鏈式法則帶出的因子 $4$：$\\sin 4x$ 的導數是 $4\\cos 4x$，不是 $\\cos 4x$。",
+        "en": "The $uv'$ term is missing the factor $4$ from the chain rule: the derivative of $\\sin 4x$ is $4\\cos 4x$, not $\\cos 4x$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\sin$ 與 $\\cos$ 放錯了位置。被求導的是 $v = \\sin 4x$，所以 $\\cos 4x$ 應出現在 $uv'$ 一項；$u'v$ 一項保留原來的 $\\sin 4x$。",
+        "en": "$\\sin$ and $\\cos$ are in the wrong places. It is $v = \\sin 4x$ that is differentiated, so $\\cos 4x$ belongs in the $uv'$ term, while the $u'v$ term keeps $\\sin 4x$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$u'v = 3x^{2} \\sin 4x$，$uv' = 4x^{3} \\cos 4x$，兩項相加即得。",
+        "en": "Correct. $u'v = 3x^{2} \\sin 4x$ and $uv' = 4x^{3} \\cos 4x$; add the two terms."
+      },
+      {
+        "optionId": 3,
+        "zh": "把兩個導數直接相乘：$3x^{2} \\times 4\\cos 4x = 12x^{2} \\cos 4x$。導數沒有這種乘法規則，這是初學積法則最常見的錯誤。",
+        "en": "This multiplies the two derivatives: $3x^{2} \\times 4\\cos 4x = 12x^{2} \\cos 4x$. Derivatives have no such rule; it is the most common first mistake with products."
+      }
+    ]
   },
   {
     "id": "m1_rep_0004",
@@ -121,24 +187,46 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(x^{2} \\sin 5x\\right)$。",
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 5x$，則 $u' = 2x^{1}$、$v' = 5\\cos 5x$（$\\sin 5x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $5$）。代入得 $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $5$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanation": "兩個函數相乘，要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{2}$、$v = \\sin 5x$，則 $u' = 2x$；$\\sin 5x$ 對 $x$ 求導時，鏈式法則帶出因子 $5$，所以 $v' = 5\\cos 5x$。代入得 $2x \\sin 5x + 5x^{2} \\cos 5x$。",
     "options": [
-      "$10x^{1} \\cos 5x$",
-      "$2x^{1} \\sin 5x + x^{2} \\cos 5x$",
-      "$2x^{1} \\cos 5x + 5x^{2} \\sin 5x$",
-      "$2x^{1} \\sin 5x + 5x^{2} \\cos 5x$"
+      "$10x \\cos 5x$",
+      "$2x \\sin 5x + x^{2} \\cos 5x$",
+      "$2x \\cos 5x + 5x^{2} \\sin 5x$",
+      "$2x \\sin 5x + 5x^{2} \\cos 5x$"
     ],
     "correctIndex": 3,
     "marks": 1,
     "contentEn": "Find $\\dfrac{d}{dx}\\left(x^{2} \\sin 5x\\right)$.",
     "optionsEn": [
-      "$10x^{1} \\cos 5x$",
-      "$2x^{1} \\sin 5x + x^{2} \\cos 5x$",
-      "$2x^{1} \\cos 5x + 5x^{2} \\sin 5x$",
-      "$2x^{1} \\sin 5x + 5x^{2} \\cos 5x$"
+      "$10x \\cos 5x$",
+      "$2x \\sin 5x + x^{2} \\cos 5x$",
+      "$2x \\cos 5x + 5x^{2} \\sin 5x$",
+      "$2x \\sin 5x + 5x^{2} \\cos 5x$"
     ],
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 5x$, so $u' = 2x^{1}$ and $v' = 5\\cos 5x$ — the chain rule contributes the factor $5$ when differentiating $\\sin 5x$. Substituting gives $2x^{1} \\sin 5x + 5x^{2} \\cos 5x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $5$, and the third swaps $\\sin$ and $\\cos$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{2}$ and $v = \\sin 5x$, so $u' = 2x$; differentiating $\\sin 5x$, the chain rule brings out the factor $5$, so $v' = 5\\cos 5x$. Substituting gives $2x \\sin 5x + 5x^{2} \\cos 5x$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把兩個導數直接相乘：$2x \\times 5\\cos 5x = 10x \\cos 5x$。導數沒有這種乘法規則，這是初學積法則最常見的錯誤。",
+        "en": "This multiplies the two derivatives: $2x \\times 5\\cos 5x = 10x \\cos 5x$. Derivatives have no such rule; it is the most common first mistake with products."
+      },
+      {
+        "optionId": 1,
+        "zh": "$uv'$ 一項漏了鏈式法則帶出的因子 $5$：$\\sin 5x$ 的導數是 $5\\cos 5x$，不是 $\\cos 5x$。",
+        "en": "The $uv'$ term is missing the factor $5$ from the chain rule: the derivative of $\\sin 5x$ is $5\\cos 5x$, not $\\cos 5x$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\sin$ 與 $\\cos$ 放錯了位置。被求導的是 $v = \\sin 5x$，所以 $\\cos 5x$ 應出現在 $uv'$ 一項；$u'v$ 一項保留原來的 $\\sin 5x$。",
+        "en": "$\\sin$ and $\\cos$ are in the wrong places. It is $v = \\sin 5x$ that is differentiated, so $\\cos 5x$ belongs in the $uv'$ term, while the $u'v$ term keeps $\\sin 5x$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$u'v = 2x \\sin 5x$，$uv' = 5x^{2} \\cos 5x$，兩項相加即得。",
+        "en": "Correct. $u'v = 2x \\sin 5x$ and $uv' = 5x^{2} \\cos 5x$; add the two terms."
+      }
+    ]
   },
   {
     "id": "m1_rep_0005",
@@ -153,7 +241,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(x^{4} \\sin 2x\\right)$。",
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{4}$、$v = \\sin 2x$，則 $u' = 4x^{3}$、$v' = 2\\cos 2x$（$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $2$）。代入得 $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $2$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanation": "兩個函數相乘，要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{4}$、$v = \\sin 2x$，則 $u' = 4x^{3}$；$\\sin 2x$ 對 $x$ 求導時，鏈式法則帶出因子 $2$，所以 $v' = 2\\cos 2x$。代入得 $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$。",
     "options": [
       "$4x^{3} \\sin 2x + 2x^{4} \\cos 2x$",
       "$8x^{3} \\cos 2x$",
@@ -169,8 +257,30 @@ export const m1AutoQuestions: Question[] = [
       "$4x^{3} \\sin 2x + x^{4} \\cos 2x$",
       "$4x^{3} \\cos 2x + 2x^{4} \\sin 2x$"
     ],
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{4}$ and $v = \\sin 2x$, so $u' = 4x^{3}$ and $v' = 2\\cos 2x$ — the chain rule contributes the factor $2$ when differentiating $\\sin 2x$. Substituting gives $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $2$, and the third swaps $\\sin$ and $\\cos$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{4}$ and $v = \\sin 2x$, so $u' = 4x^{3}$; differentiating $\\sin 2x$, the chain rule brings out the factor $2$, so $v' = 2\\cos 2x$. Substituting gives $4x^{3} \\sin 2x + 2x^{4} \\cos 2x$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$u'v = 4x^{3} \\sin 2x$，$uv' = 2x^{4} \\cos 2x$，兩項相加即得。",
+        "en": "Correct. $u'v = 4x^{3} \\sin 2x$ and $uv' = 2x^{4} \\cos 2x$; add the two terms."
+      },
+      {
+        "optionId": 1,
+        "zh": "把兩個導數直接相乘：$4x^{3} \\times 2\\cos 2x = 8x^{3} \\cos 2x$。導數沒有這種乘法規則，這是初學積法則最常見的錯誤。",
+        "en": "This multiplies the two derivatives: $4x^{3} \\times 2\\cos 2x = 8x^{3} \\cos 2x$. Derivatives have no such rule; it is the most common first mistake with products."
+      },
+      {
+        "optionId": 2,
+        "zh": "$uv'$ 一項漏了鏈式法則帶出的因子 $2$：$\\sin 2x$ 的導數是 $2\\cos 2x$，不是 $\\cos 2x$。",
+        "en": "The $uv'$ term is missing the factor $2$ from the chain rule: the derivative of $\\sin 2x$ is $2\\cos 2x$, not $\\cos 2x$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\sin$ 與 $\\cos$ 放錯了位置。被求導的是 $v = \\sin 2x$，所以 $\\cos 2x$ 應出現在 $uv'$ 一項；$u'v$ 一項保留原來的 $\\sin 2x$。",
+        "en": "$\\sin$ and $\\cos$ are in the wrong places. It is $v = \\sin 2x$ that is differentiated, so $\\cos 2x$ belongs in the $uv'$ term, while the $u'v$ term keeps $\\sin 2x$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0006",
@@ -185,7 +295,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(x^{3} \\sin 6x\\right)$。",
-    "explanation": "兩個函數相乘要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 6x$，則 $u' = 3x^{2}$、$v' = 6\\cos 6x$（$\\sin 6x$ 對 $x$ 求導時，鏈式法則帶出一個因子 $6$）。代入得 $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$。第一個干擾項把兩個導數【直接相乘】—— 導數並無這種乘法規則，是初學積法則最常見的錯。第二項漏了 $v'$ 內部的因子 $6$。第三項把 $\\sin$ 同 $\\cos$ 的位置調轉了。",
+    "explanation": "兩個函數相乘，要用積法則 $(uv)' = u'v + uv'$。取 $u = x^{3}$、$v = \\sin 6x$，則 $u' = 3x^{2}$；$\\sin 6x$ 對 $x$ 求導時，鏈式法則帶出因子 $6$，所以 $v' = 6\\cos 6x$。代入得 $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$。",
     "options": [
       "$3x^{2} \\cos 6x + 6x^{3} \\sin 6x$",
       "$3x^{2} \\sin 6x + 6x^{3} \\cos 6x$",
@@ -201,8 +311,30 @@ export const m1AutoQuestions: Question[] = [
       "$18x^{2} \\cos 6x$",
       "$3x^{2} \\sin 6x + x^{3} \\cos 6x$"
     ],
-    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 6x$, so $u' = 3x^{2}$ and $v' = 6\\cos 6x$ — the chain rule contributes the factor $6$ when differentiating $\\sin 6x$. Substituting gives $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$. The first distractor simply multiplies the two derivatives, a rule that does not exist and the classic first error with products. The second omits the inner factor $6$, and the third swaps $\\sin$ and $\\cos$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A product of two functions needs the product rule $(uv)' = u'v + uv'$. Take $u = x^{3}$ and $v = \\sin 6x$, so $u' = 3x^{2}$; differentiating $\\sin 6x$, the chain rule brings out the factor $6$, so $v' = 6\\cos 6x$. Substituting gives $3x^{2} \\sin 6x + 6x^{3} \\cos 6x$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\sin$ 與 $\\cos$ 放錯了位置。被求導的是 $v = \\sin 6x$，所以 $\\cos 6x$ 應出現在 $uv'$ 一項；$u'v$ 一項保留原來的 $\\sin 6x$。",
+        "en": "$\\sin$ and $\\cos$ are in the wrong places. It is $v = \\sin 6x$ that is differentiated, so $\\cos 6x$ belongs in the $uv'$ term, while the $u'v$ term keeps $\\sin 6x$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$u'v = 3x^{2} \\sin 6x$，$uv' = 6x^{3} \\cos 6x$，兩項相加即得。",
+        "en": "Correct. $u'v = 3x^{2} \\sin 6x$ and $uv' = 6x^{3} \\cos 6x$; add the two terms."
+      },
+      {
+        "optionId": 2,
+        "zh": "把兩個導數直接相乘：$3x^{2} \\times 6\\cos 6x = 18x^{2} \\cos 6x$。導數沒有這種乘法規則，這是初學積法則最常見的錯誤。",
+        "en": "This multiplies the two derivatives: $3x^{2} \\times 6\\cos 6x = 18x^{2} \\cos 6x$. Derivatives have no such rule; it is the most common first mistake with products."
+      },
+      {
+        "optionId": 3,
+        "zh": "$uv'$ 一項漏了鏈式法則帶出的因子 $6$：$\\sin 6x$ 的導數是 $6\\cos 6x$，不是 $\\cos 6x$。",
+        "en": "The $uv'$ term is missing the factor $6$ from the chain rule: the derivative of $\\sin 6x$ is $6\\cos 6x$, not $\\cos 6x$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0007",
@@ -217,7 +349,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{3x}{x + 2}\\right)$。",
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 3x$、$v = x + 2$，則 $u' = 3$、$v' = 1$。分子 $= 3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$，故導數為 $\\dfrac{6}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $3$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 3x$、$v = x + 2$，則 $u' = 3$、$v' = 1$。分子 $= 3(x + 2) - 3x \\cdot 1 = 6$，故導數為 $\\dfrac{6}{(x + 2)^{2}}$。分子的 $x$ 項恰好抵銷，是這類題目的特徵。",
     "options": [
       "$3$",
       "$\\dfrac{-6}{(x + 2)^{2}}$",
@@ -233,8 +365,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{6}{(x + 2)^{2}}$",
       "$\\dfrac{3}{(x + 2)^{2}}$"
     ],
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 3x$, $v = x + 2$, so $u' = 3$ and $v' = 1$. The numerator is $3(x + 2) - 3x \\cdot 1 = 3x + 6 - 3x = 6$, giving $\\dfrac{6}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $3$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 3x$ and $v = x + 2$, so $u' = 3$ and $v' = 1$. The numerator is $3(x + 2) - 3x \\cdot 1 = 6$, giving $\\dfrac{6}{(x + 2)^{2}}$. The $x$ terms cancel exactly, which is characteristic of this type.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分別對分子和分母求導再相除：$\\dfrac{u'}{v'} = \\dfrac{3}{1} = 3$。商的導數並不等於導數的商。",
+        "en": "This differentiates the top and the bottom separately and divides: $\\dfrac{u'}{v'} = \\dfrac{3}{1} = 3$. The derivative of a quotient is not the quotient of the derivatives."
+      },
+      {
+        "optionId": 1,
+        "zh": "分子寫成 $uv' - u'v$，減法次序調轉了，所以答案的正負號相反。商法則的分子必須是 $u'v$ 在前。",
+        "en": "The numerator was written as $uv' - u'v$, the subtraction the wrong way round, so the sign is flipped. In the quotient rule $u'v$ always comes first."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。分子 $u'v - uv' = 3(x + 2) - 3x = 6$，分母為 $(x + 2)^{2}$。",
+        "en": "Correct. The numerator is $u'v - uv' = 3(x + 2) - 3x = 6$ and the denominator is $(x + 2)^{2}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "分子只寫了 $u' = 3$，漏了 $u'v - uv'$ 的結構。",
+        "en": "The numerator is just $u' = 3$; the $u'v - uv'$ structure is missing."
+      }
+    ]
   },
   {
     "id": "m1_rep_0008",
@@ -249,7 +403,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{5x}{x + 3}\\right)$。",
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 5x$、$v = x + 3$，則 $u' = 5$、$v' = 1$。分子 $= 5(x + 3) - 5x \\cdot 1 = 5x + 15 - 5x = 15$，故導數為 $\\dfrac{15}{(x + 3)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $5$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 5x$、$v = x + 3$，則 $u' = 5$、$v' = 1$。分子 $= 5(x + 3) - 5x \\cdot 1 = 15$，故導數為 $\\dfrac{15}{(x + 3)^{2}}$。分子的 $x$ 項恰好抵銷，是這類題目的特徵。",
     "options": [
       "$\\dfrac{5}{(x + 3)^{2}}$",
       "$5$",
@@ -265,8 +419,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{-15}{(x + 3)^{2}}$",
       "$\\dfrac{15}{(x + 3)^{2}}$"
     ],
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 5x$, $v = x + 3$, so $u' = 5$ and $v' = 1$. The numerator is $5(x + 3) - 5x \\cdot 1 = 5x + 15 - 5x = 15$, giving $\\dfrac{15}{(x + 3)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $5$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 5x$ and $v = x + 3$, so $u' = 5$ and $v' = 1$. The numerator is $5(x + 3) - 5x \\cdot 1 = 15$, giving $\\dfrac{15}{(x + 3)^{2}}$. The $x$ terms cancel exactly, which is characteristic of this type.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子只寫了 $u' = 5$，漏了 $u'v - uv'$ 的結構。",
+        "en": "The numerator is just $u' = 5$; the $u'v - uv'$ structure is missing."
+      },
+      {
+        "optionId": 1,
+        "zh": "分別對分子和分母求導再相除：$\\dfrac{u'}{v'} = \\dfrac{5}{1} = 5$。商的導數並不等於導數的商。",
+        "en": "This differentiates the top and the bottom separately and divides: $\\dfrac{u'}{v'} = \\dfrac{5}{1} = 5$. The derivative of a quotient is not the quotient of the derivatives."
+      },
+      {
+        "optionId": 2,
+        "zh": "分子寫成 $uv' - u'v$，減法次序調轉了，所以答案的正負號相反。商法則的分子必須是 $u'v$ 在前。",
+        "en": "The numerator was written as $uv' - u'v$, the subtraction the wrong way round, so the sign is flipped. In the quotient rule $u'v$ always comes first."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。分子 $u'v - uv' = 5(x + 3) - 5x = 15$，分母為 $(x + 3)^{2}$。",
+        "en": "Correct. The numerator is $u'v - uv' = 5(x + 3) - 5x = 15$ and the denominator is $(x + 3)^{2}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0009",
@@ -281,7 +457,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{2x}{x + 7}\\right)$。",
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 2x$、$v = x + 7$，則 $u' = 2$、$v' = 1$。分子 $= 2(x + 7) - 2x \\cdot 1 = 2x + 14 - 2x = 14$，故導數為 $\\dfrac{14}{(x + 7)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $2$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 2x$、$v = x + 7$，則 $u' = 2$、$v' = 1$。分子 $= 2(x + 7) - 2x \\cdot 1 = 14$，故導數為 $\\dfrac{14}{(x + 7)^{2}}$。分子的 $x$ 項恰好抵銷，是這類題目的特徵。",
     "options": [
       "$\\dfrac{14}{(x + 7)^{2}}$",
       "$\\dfrac{2}{(x + 7)^{2}}$",
@@ -297,8 +473,30 @@ export const m1AutoQuestions: Question[] = [
       "$2$",
       "$\\dfrac{-14}{(x + 7)^{2}}$"
     ],
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 2x$, $v = x + 7$, so $u' = 2$ and $v' = 1$. The numerator is $2(x + 7) - 2x \\cdot 1 = 2x + 14 - 2x = 14$, giving $\\dfrac{14}{(x + 7)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $2$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 2x$ and $v = x + 7$, so $u' = 2$ and $v' = 1$. The numerator is $2(x + 7) - 2x \\cdot 1 = 14$, giving $\\dfrac{14}{(x + 7)^{2}}$. The $x$ terms cancel exactly, which is characteristic of this type.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。分子 $u'v - uv' = 2(x + 7) - 2x = 14$，分母為 $(x + 7)^{2}$。",
+        "en": "Correct. The numerator is $u'v - uv' = 2(x + 7) - 2x = 14$ and the denominator is $(x + 7)^{2}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "分子只寫了 $u' = 2$，漏了 $u'v - uv'$ 的結構。",
+        "en": "The numerator is just $u' = 2$; the $u'v - uv'$ structure is missing."
+      },
+      {
+        "optionId": 2,
+        "zh": "分別對分子和分母求導再相除：$\\dfrac{u'}{v'} = \\dfrac{2}{1} = 2$。商的導數並不等於導數的商。",
+        "en": "This differentiates the top and the bottom separately and divides: $\\dfrac{u'}{v'} = \\dfrac{2}{1} = 2$. The derivative of a quotient is not the quotient of the derivatives."
+      },
+      {
+        "optionId": 3,
+        "zh": "分子寫成 $uv' - u'v$，減法次序調轉了，所以答案的正負號相反。商法則的分子必須是 $u'v$ 在前。",
+        "en": "The numerator was written as $uv' - u'v$, the subtraction the wrong way round, so the sign is flipped. In the quotient rule $u'v$ always comes first."
+      }
+    ]
   },
   {
     "id": "m1_rep_0010",
@@ -313,7 +511,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{4x}{x + 5}\\right)$。",
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 4x$、$v = x + 5$，則 $u' = 4$、$v' = 1$。分子 $= 4(x + 5) - 4x \\cdot 1 = 4x + 20 - 4x = 20$，故導數為 $\\dfrac{20}{(x + 5)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $4$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 4x$、$v = x + 5$，則 $u' = 4$、$v' = 1$。分子 $= 4(x + 5) - 4x \\cdot 1 = 20$，故導數為 $\\dfrac{20}{(x + 5)^{2}}$。分子的 $x$ 項恰好抵銷，是這類題目的特徵。",
     "options": [
       "$\\dfrac{-20}{(x + 5)^{2}}$",
       "$\\dfrac{20}{(x + 5)^{2}}$",
@@ -329,8 +527,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{4}{(x + 5)^{2}}$",
       "$4$"
     ],
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 4x$, $v = x + 5$, so $u' = 4$ and $v' = 1$. The numerator is $4(x + 5) - 4x \\cdot 1 = 4x + 20 - 4x = 20$, giving $\\dfrac{20}{(x + 5)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $4$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 4x$ and $v = x + 5$, so $u' = 4$ and $v' = 1$. The numerator is $4(x + 5) - 4x \\cdot 1 = 20$, giving $\\dfrac{20}{(x + 5)^{2}}$. The $x$ terms cancel exactly, which is characteristic of this type.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子寫成 $uv' - u'v$，減法次序調轉了，所以答案的正負號相反。商法則的分子必須是 $u'v$ 在前。",
+        "en": "The numerator was written as $uv' - u'v$, the subtraction the wrong way round, so the sign is flipped. In the quotient rule $u'v$ always comes first."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。分子 $u'v - uv' = 4(x + 5) - 4x = 20$，分母為 $(x + 5)^{2}$。",
+        "en": "Correct. The numerator is $u'v - uv' = 4(x + 5) - 4x = 20$ and the denominator is $(x + 5)^{2}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "分子只寫了 $u' = 4$，漏了 $u'v - uv'$ 的結構。",
+        "en": "The numerator is just $u' = 4$; the $u'v - uv'$ structure is missing."
+      },
+      {
+        "optionId": 3,
+        "zh": "分別對分子和分母求導再相除：$\\dfrac{u'}{v'} = \\dfrac{4}{1} = 4$。商的導數並不等於導數的商。",
+        "en": "This differentiates the top and the bottom separately and divides: $\\dfrac{u'}{v'} = \\dfrac{4}{1} = 4$. The derivative of a quotient is not the quotient of the derivatives."
+      }
+    ]
   },
   {
     "id": "m1_rep_0011",

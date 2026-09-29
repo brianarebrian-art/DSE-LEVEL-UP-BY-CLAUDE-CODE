@@ -1,0 +1,21 @@
+{
+  "about": "Regression fixture, 2026-09-29. The stored explanation says 「第二項把期初與期末的加減調轉」. By stored order the second option is the correct answer; the option the sentence describes is the one that swaps opening and closing inventory. The reasoning is right; the positional reference is wrong. See docs/rationale-repairs.md.",
+  "snapshotOf": "bafs_rep_0018 (data/questions/bafs-auto.ts) as withdrawn on 2026-09-29",
+  "question": {
+    "id": "bafs_rep_0018",
+    "content": "某商號本年度期初存貨 \\$40，年內購貨 \\$260，期末存貨 \\$50。求本年度的銷貨成本。",
+    "options": [
+      "\\$260",
+      "\\$250",
+      "\\$350",
+      "\\$270"
+    ],
+    "correctIndex": 1,
+    "explanation": "銷貨成本 = 期初存貨 + 購貨 − 期末存貨 = 40 + 260 − 50 = \\$250。理路是：年初已有的加上年內買入的，就是【可供出售】的貨；仍然留在倉的（期末存貨）未曾賣出，所以要減走。把期末存貨【加】上去得 \\$350，等於把未賣出的貨也算作成本，是本題最主要的失分位。第二項把期初與期末的加減調轉。答 \\$260 的只計購貨，忽略了兩期存貨的變動 —— 只有在期初與期末存貨相等時，兩者才會碰巧相同。"
+  },
+  "inputs": {
+    "opening": 40,
+    "purchases": 260,
+    "closing": 50
+  }
+}

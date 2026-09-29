@@ -8,6 +8,7 @@ import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
 import { getSubject } from '@/data/subjects'
 import { loadSubjectQuestions } from '@/data/questions/load'
+import { isWithdrawn } from '@/data/questions/hidden-topics'
 import type { AnyQuestion } from '@/data/questions/types'
 import {
   DEFAULT_FOLDER,
@@ -210,6 +211,14 @@ export default function BookmarksView() {
                           <ReportQuestionButton questionId={q.id} variant="standalone" />
                         </div>
                       </>
+                    ) : isWithdrawn(bm.subjectId, bm.questionId) ? (
+                      /* 撤回題（withdrawn.json）：不顯示內容，講明是暫時收起及原因，收藏保留。
+                         題目修好並恢復後，這個收藏會自動顯示回題目（2026-09-29，Yuna 決定）。 */
+                      <p className="text-sm text-ink-muted">
+                        {en
+                          ? 'This question has been withdrawn while its explanation is being corrected. Your bookmark stays; the question comes back here once it is fixed.'
+                          : '呢條題暫時收起咗，因為解析要修正。收藏會保留，修好之後會喺度自動出返。'}
+                      </p>
                     ) : (
                       <p className="text-sm text-ink-muted">
                         {en

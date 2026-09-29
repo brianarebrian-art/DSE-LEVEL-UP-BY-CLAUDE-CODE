@@ -1,5 +1,20 @@
 export type Difficulty = 'easy' | 'medium' | 'hard'
 
+/**
+ * A rationale attached to one option (2026-09-29, Yuna's decision after 176
+ * questions were withdrawn for positional explanations).
+ *
+ * `optionId` is the option's index in the STORED `options` / `optionsEn` arrays.
+ * That index is the option's identity: it never changes, whereas the display order
+ * is shuffled on every render. The note is shown next to its own option, so it
+ * never needs to say "the second option" — which is exactly what went wrong.
+ */
+export interface OptionNote {
+  optionId: number
+  zh: string
+  en?: string
+}
+
 export interface MCQuestion {
   id: string
   type: 'mc'
@@ -22,6 +37,13 @@ export interface MCQuestion {
   explanationEn?: string
   mcHack?: string // Path B — optional "名師速解 / MC Hack" exam shortcut
   mcHackEn?: string
+  /**
+   * Optional per-option rationale, keyed by stored option index (see OptionNote).
+   * Older questions do not have it and keep their prose `explanation` only; the two
+   * coexist, so no bank-wide migration is needed. A question that has it must give
+   * every option exactly one note (lib/__tests__/option-notes.test.mts).
+   */
+  optionNotes?: OptionNote[]
   // 逐步拆解（#54）—— 真正分好步的解題過程，一步一步揭。
   //
   // ⚠️ 刻意設為 optional 且【不得由 explanation 自動切分】：現行 5,201 條題目的

@@ -27,6 +27,8 @@ import QuestionProvenance from '@/components/QuestionProvenance'
 import EmotionTags from '@/components/EmotionTags'
 import BookmarkButton from '@/components/BookmarkButton'
 import StagedExplanation from '@/components/StagedExplanation'
+import OptionNotes from '@/components/OptionNotes'
+import { displayOptions, type DisplayOption } from '@/lib/optionNotes'
 import { FOCUS_LIGHT_KEY } from '@/components/GlobalA11y'
 import type { Question, Difficulty } from '@/data/questions'
 import { getSubject } from '@/data/subjects'
@@ -97,11 +99,10 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 // An option carries both languages so the display can switch 中/EN while grading
-// stays anchored to the (always-present) Chinese text.
-interface PreparedOption {
-  zh: string
-  en: string | null
-}
+// stays anchored to the (always-present) Chinese text. Since 2026-09-29 it also
+// carries `optionId`, its stored index, so per-option notes follow it through the
+// shuffle (lib/optionNotes.ts).
+type PreparedOption = DisplayOption
 
 // A question prepared for display: options shuffled as zh/en pairs, with the
 // correct answer kept by its Chinese TEXT — so grading compares a stable,
@@ -109,8 +110,7 @@ interface PreparedOption {
 type PreparedQuestion = Question & { shuffledOptions: PreparedOption[]; correctZh: string }
 
 function prepareQuestion(q: Question): PreparedQuestion {
-  const pairs: PreparedOption[] = q.options.map((zh, i) => ({ zh, en: q.optionsEn?.[i] ?? null }))
-  return { ...q, shuffledOptions: shuffle(pairs), correctZh: q.options[q.correctIndex] }
+  return { ...q, shuffledOptions: displayOptions(q), correctZh: q.options[q.correctIndex] }
 }
 
 // DSE difficulty mix served per run: 30% 基礎(easy) / 50% 普通(medium) / 20% 拔尖(hard).
@@ -1186,6 +1186,12 @@ export default function PracticeSession({
                           text={tr(currentQ.explanation, currentQ.explanationEn)}
                           steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         />
+                        <OptionNotes
+                          notes={currentQ.optionNotes}
+                          options={currentQ.shuffledOptions}
+                          correctId={currentQ.correctIndex}
+                          selectedZh={answerState.selectedZh}
+                        />
                         {/* 答啱一樣要出來源披露 —— 兩條分支都要，否則答啱嘅學生
                             永遠見唔到，個披露就變成「淨係錯先話你知」。 */}
                         <QuestionProvenance questionId={currentQ.id} />
@@ -1220,6 +1226,12 @@ export default function PracticeSession({
                             💡 {tr('正解思路：', 'Reasoning: ')}
                           </span>
                         }
+                      />
+                      <OptionNotes
+                        notes={currentQ.optionNotes}
+                        options={currentQ.shuffledOptions}
+                        correctId={currentQ.correctIndex}
+                        selectedZh={answerState.selectedZh}
                       />
                     </div>
 
