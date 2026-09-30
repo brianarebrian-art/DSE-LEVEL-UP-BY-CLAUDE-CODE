@@ -59,3 +59,17 @@ export function nextStep(
   const untried = withMc.find((t) => !(statsByTopic[t.id]?.total > 0))
   return untried ? { kind: 'untried', topicId: untried.id } : null
 }
+
+/** 本科最需要練的課題：有足夠題數、未達「穩定」、答對率最低的幾個（練習頁 1440px 左欄，LOOP 40）。 */
+export function weakestInSubject<R extends { subjectId: string; total: number; wrong: number }>(
+  rows: readonly R[],
+  subjectId: string,
+  limit = 3,
+): { r: R; e: TopicEvidence }[] {
+  return rows
+    .filter((r) => r.subjectId === subjectId)
+    .map((r) => ({ r, e: topicEvidence(r) }))
+    .filter(({ e }) => e.level === 'weak' || e.level === 'fair')
+    .sort((a, b) => a.e.accuracy - b.e.accuracy)
+    .slice(0, limit)
+}

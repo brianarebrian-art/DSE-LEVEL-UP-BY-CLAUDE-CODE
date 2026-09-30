@@ -13,7 +13,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const src = readFileSync(join(ROOT, 'app/practice/PracticeSession.tsx'), 'utf8')
 const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
 
-const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14">')
+const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14 desk:grid-cols-[220px_1fr_1fr]">')
 const cardAt = code.indexOf('<div key={currentQ.id} className="bg-surface-raised')
 const feedbackAt = code.indexOf('<div ref={feedbackRef}')
 // 2026-09-30 (loop 19): the bottom score dots moved to the top status strip, so the
@@ -27,12 +27,12 @@ test('the question card and the feedback share one two-column grid from lg up', 
   assert.ok(afterGridAt > feedbackAt)
   const closeAt = code.lastIndexOf('</div>', afterGridAt)
   assert.ok(feedbackAt < closeAt)
-  assert.match(code, /<div className="max-w-2xl mx-auto lg:max-w-6xl">/)
+  assert.match(code, /<div className="max-w-2xl mx-auto lg:max-w-6xl desk:max-w-\[1296px\]">/)
 })
 
-test('below lg nothing changes: every layout class on the wrapper is lg-prefixed', () => {
+test('below lg nothing changes: every layout class on the wrapper is lg- or 1440-prefixed', () => {
   const cls = code.slice(gridAt).match(/className="([^"]+)"/)![1]
-  for (const c of cls.split(/\s+/)) assert.match(c, /^lg:/, c)
+  for (const c of cls.split(/\s+/)) assert.match(c, /^(lg:|desk:)/, c)
 })
 
 test('before an answer the right column explains itself instead of sitting empty, on lg only', () => {

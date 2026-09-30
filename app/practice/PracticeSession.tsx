@@ -46,6 +46,7 @@ import RestMode from '@/components/RestMode'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
 import { A11yButton } from '@/components/A11yPanel'
 import QuestionStatusStrip from '@/components/QuestionStatusStrip'
+import PracticeContextRail from '@/components/PracticeContextRail'
 import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import { INTERVALS, DAILY_REVIEW_LIMIT } from '@/lib/reviewSchedule'
@@ -904,8 +905,9 @@ export default function PracticeSession({
 
   return (
     <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
-      {/* lg（≥1024px）加闊到 6xl，題目與回饋並排（UX 循環 LOOP 8，見下方 grid 註解）。 */}
-      <div className="max-w-2xl mx-auto lg:max-w-6xl">
+      {/* lg（≥1024px）加闊到 6xl，題目與回饋並排（UX 循環 LOOP 8，見下方 grid 註解）。
+          1440px 起再加左欄（LOOP 40），整體加闊到 1296px：兩邊各留 72px，右欄唔會落入右下情緒支援掣（x=1376 起）之下。 */}
+      <div className="max-w-2xl mx-auto lg:max-w-6xl desk:max-w-[1296px]">
 
         {/* 返回科目頁 —— 全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），
             所以呢個係練習頁【唯一】嘅離開路徑，唔可以刪。
@@ -1027,7 +1029,9 @@ export default function PracticeSession({
             並排後回饋在題目右邊由頂開始；1023px 或以下維持單欄，行為不變。 */}
         {/* lg:max-xl:pr-14：1024–1279px 時整個版面貼近右邊，右欄「下一題」右端會落在右下情緒支援掣
             （48px 加 16px 邊距）之下；留出 56px。xl 起版面已置中，右邊有足夠空位。 */}
-        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14">
+        {/* desk（1440px，globals.css @theme）：左欄（PracticeContextRail）＋題目＋回饋三欄；左欄在 1440px 以下 display:none，不佔格。 */}
+        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14 desk:grid-cols-[220px_1fr_1fr]">
+        <PracticeContextRail subjectId={subjectId} topicLabel={tr(currentQ.topicZh, currentQ.topicEn)} />
         {/* Question card */}
         {/* 規格 §7.3A 頁面轉場：新題由右滑入（400ms）。key 綁題號，換題先重播。
             ⚠️ 只做【入場】—— 規格原文仲要「舊題向左滑出」，但離場動畫要留住

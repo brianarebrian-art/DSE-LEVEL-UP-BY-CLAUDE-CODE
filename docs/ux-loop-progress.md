@@ -665,3 +665,17 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
   - 767px：圖示列不顯示，底部導航顯示，內容不讓位。
   - 任何闊度都只有一種常駐導航。
 - **Commit：** 見 git log（`feat(layout): the side bar's icon rail on tablets`）。
+
+## LOOP 40 — 2026-09-30
+
+- **Slice：** 1440px 起練習頁三欄：背景、題目、回饋（新 prompt §19，P1）。
+- **量度（改動前，1440×900）：** 兩欄（題目 564px、回饋 564px）置中，左右各約 144px 空白；做題時看不到自己本科哪個課題最弱，要離開練習去進度頁。
+- **影響範圍：** 新增 `components/PracticeContextRail.tsx`；`lib/topicEvidence.ts`（新增 `weakestInSubject`）；`app/practice/PracticeSession.tsx`（容器及 grid 各加一個 1440px class，左欄放第一格）；`app/globals.css`（新增具名斷點 `--breakpoint-desk: 90rem`）；`docs/tokens.md`（生成檔）；測試：新增一個，`practice-wide-layout.test.mts` 的定位字串及「只用 lg 前綴」的檢查改為容許 `desk:`（1024px 以下不變的要求不變）。
+- **改動：** 1440px 起容器 1296px，grid 為 220px｜題目｜回饋。左欄 sticky，內容：「呢一題」的課題名；「本科最需要練」三個課題，每個附答對率、評語及題數，規則與科目頁相同（至少 5 題、未達穩定、按答對率排）；沒有足夠題數時寫「暫時講唔到」。左欄只顯示，不放連結，避免做題途中離開。課題名取自本機 `dse_topic_stats`，不把全科課題表載入練習頁。1439px 以下左欄 `display:none`，版面與之前相同。
+- **過程中的錯誤：** 第一次用 `min-[1440px]:grid-cols-[…]`，實測左欄闊 564px、題目被擠到第二欄。原因是 Tailwind v4 把任意值斷點 `min-[…]` 的規則排在 `lg:` 之前，同一元素上的 `lg:grid-cols-2` 蓋過了它。改用 `@theme` 具名斷點 `desk`（排在 xl 之後）後正常，測試亦鎖住要用具名斷點。
+- **測試：** 新增 `lib/__tests__/practice-context-rail.test.mts`（3 項）。
+- **驗證：** `npm test` 1238/1238；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build）：**
+  - 1440×900：左欄 x=72–292（220px）、題目 316–830、回饋 854–1368；右欄右邊在情緒支援掣（x=1376 起）之前；無水平捲動。
+  - 1439px：左欄不顯示，題目 x=144、闊 564，與改動前相同。
+- **Commit：** 見 git log（`feat(practice): a context column on wide screens`）。
