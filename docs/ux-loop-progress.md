@@ -441,3 +441,14 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **畫面（production build，375×812）：** 信任標記「✓ 課題初步對照 2027 年課程指引 | ✓ 全部功能免費 | ✓ 無廣告」；覆核句 y=748；「點樣做」36×44，與情緒支援掣（y=692–740）不重疊；頁尾兩句正確；無水平捲動。
 - **需要留意：** `/writing` 有一句「取材自 2023 DSE 英文卷二『Poems & Songs』主題的原創練習題」，以及 `/prediction-method` 說等級分佈數字「由考評局 PDF 直接抽出」。兩者都涉及考評局出版物，按 2026-09-30 版權決定待法律釐清，下一輪寫入 `CONTENT_PROVENANCE.md`，本輪不改。
 - **Commit：** 見 git log（`fix(trust): state curriculum and review status instead of who made the site`）。
+
+## LOOP 23 — 2026-09-30
+
+- **Slice：** 建立 `CONTENT_PROVENANCE.md`（新 prompt §31、§32，P0 法律／來源）。
+- **量度（改動前）：** repo 沒有集中的來源紀錄。考評局衍生資料散落三處：`data/dse-2025-level-distribution.json`、`data/dse-level-drift.json`（2026-08-23 以腳本從考評局 PDF 抽數，`MasteryEstimate` 使用）、`data/dse-paper-formats.ts`（AI 協助核對評核大綱）。`/writing` 有「取材自 2023 DSE 英文卷二」的描述。repo 內沒有「試卷 → 模型 → 改寫」的出題流程；`data/raw-sources/math/` 只有兩份人手寫的技巧筆記。
+- **影響範圍：** 新增 `CONTENT_PROVENANCE.md`（repo 根目錄）、新增測試。不改任何資料或功能。
+- **內容：** 五節：練習題、課程指引對照、考評局衍生資料（逐檔寫用途、來源、取得方法、標記、法律狀態）、其他內容、不做的事；最後列三項待創辦人決定。開頭寫明不是法律意見、沒有取得任何授權；題數不另抄，指向 `CONTENT_STATS`。
+- **刻意不改：** 三個考評局衍生資料檔及 `/writing` 描述維持原狀。按 2026-09-30 規則它們屬「待法律釐清」，是否保留、改由真人核實標記 `HUMAN_VERIFIED_FACT`，或移除功能，由創辦人決定。
+- **測試：** 新增 `lib/__tests__/content-provenance.test.mts`（3 項）：`data/`（題庫以外）凡提及考評局的檔案都要列入；不得聲稱法律上沒有問題或已獲授權；題數不抄入文件。
+- **驗證：** `npm test` 1191/1191；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。純文件及測試，無畫面改動。
+- **Commit：** 見 git log（`docs(provenance): record where every kind of content comes from`）。
