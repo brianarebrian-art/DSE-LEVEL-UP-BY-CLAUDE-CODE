@@ -44,6 +44,7 @@ import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, L
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
+import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { logReverseError, getReverseLog, type ReverseCause } from '@/lib/reverseLog'
@@ -456,6 +457,24 @@ export default function PracticeSession({
   // F-EMO: 情緒溫度計。gentleLock = 揀咗「有啲失落」→ 解析卡轉柔和呈現（鎖已剷，只剩色調）
   const [emoOpen, setEmoOpen] = useState(false)
   const [gentleLock, setGentleLock] = useState(false)
+
+  // UX 循環 LOOP 4（2026-09-30）：答題後把回饋帶入視線（規則及實測見 lib/practiceScroll.ts）。
+  // 情緒溫度計開着時不捲，關閉後才捲；減少動態（系統設定或 html.no-motion）時不做平滑捲動。
+  const feedbackRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (answerState === null || emoOpen) return
+    const id = requestAnimationFrame(() => {
+      const el = feedbackRef.current
+      if (!el) return
+      const delta = feedbackScrollDelta(el.getBoundingClientRect().top, window.innerHeight)
+      if (delta <= 0) return
+      const reduce =
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+        document.documentElement.classList.contains('no-motion')
+      window.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' })
+    })
+    return () => cancelAnimationFrame(id)
+  }, [answerState, emoOpen])
 
   // §2.5 答題衝擊波：記住啱啱撳咗邊個選項，由該掣中心擴散一次。
   //
@@ -1126,9 +1145,18 @@ export default function PracticeSession({
           </p>
         </div>
 
+        {/* 讀屏：答題結果一句講完。區域常駐（內容由空變有），讀屏軟件才會讀出。 */}
+        <p className="sr-only" aria-live="polite">
+          {answerState === null
+            ? ''
+            : answerState.isCorrect
+              ? tr('答啱。解析喺下面。', 'Correct. The explanation is below.')
+              : tr('未答啱。正確答案已經標示，揀一個錯因就睇到詳解。', 'Not this time. The correct answer is marked; choose what tripped you up to see the solution.')}
+        </p>
+
         {/* Feedback + Next */}
         {answerState !== null && (
-          <div className="animate-slide-up">
+          <div ref={feedbackRef} className="animate-slide-up">
             {/* canProceed：同 Enter 快捷鍵共用同一個判斷（見上面 canProceed 定義）。 */}
             {!canProceed ? (
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
