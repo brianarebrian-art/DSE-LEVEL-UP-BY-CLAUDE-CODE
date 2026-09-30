@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { getActiveSubjects } from '@/data/subjects'
 
 // PWA manifest —— 令考生可以「加到主畫面」，之後全屏開啟、冇瀏覽器網址列。
 //
@@ -19,7 +20,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'DSE Level Up',
     short_name: 'DSE Level Up',
-    description: '免費 DSE 練習平台，涵蓋 25 科獨立改寫試題。掌握邏輯，唔係背答案。',
+    description: `免費 DSE 練習平台，涵蓋 ${getActiveSubjects().length} 科獨立改寫試題。掌握邏輯，唔係背答案。`,
     start_url: '/',
     display: 'standalone',
     background_color: '#F4F0EA',

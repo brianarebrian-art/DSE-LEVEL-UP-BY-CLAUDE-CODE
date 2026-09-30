@@ -17,7 +17,7 @@ import PracticeShell from './PracticeShell'
 export const metadata: Metadata = {
   title: 'DSE 練習 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
   description:
-    '免費 DSE 練習：25 科獨立改寫題目，多項選擇題及書寫題兼備，答錯任何一題都可以從概念盲區、審題陷阱、運算粗心三方面自我診斷。', // i18n-exempt: 靜態 SEO meta description
+    `免費 DSE 練習：${getActiveSubjects().length} 科獨立改寫題目，多項選擇題及書寫題兼備，答錯任何一題都可以從概念盲區、審題陷阱、運算粗心三方面自我診斷。`, // i18n-exempt: 靜態 SEO meta description
 }
 
 export default function PracticePage() {

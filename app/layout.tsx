@@ -36,6 +36,9 @@ import { SITE_ORIGIN as SITE_URL } from '@/lib/site'
 // 呢個檔本身就係為咗呢件事而存在（見該檔檔頭）。
 // 迴歸鎖：lib/__tests__/claim-parity.test.mts
 import { TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
+import { getActiveSubjects } from '@/data/subjects'
+// 科目數目由科目表計算（UX 循環 LOOP 11），不在各處寫死「25」。
+const SUBJECT_COUNT = getActiveSubjects().length
 
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
@@ -69,7 +72,7 @@ export const metadata: Metadata = {
     locale: 'zh_HK',
     url: SITE_URL,
     title: 'DSE Level Up | 掌握 DSE 核心邏輯', // i18n-exempt: 靜態 SEO OG title
-    description: '免費 DSE 練習平台，涵蓋 25 科獨立改寫試題。掌握邏輯，唔係背答案。', // i18n-exempt: 靜態 SEO OG description
+    description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。掌握邏輯，唔係背答案。`, // i18n-exempt: 靜態 SEO OG description
     // 刻意不在此宣告 images —— `app/opengraph-image.tsx` 屬 Next.js 檔案約定，
     // 建置時會自動注入 og:image / twitter:image（連 width／height／type）。
     // 兩邊都寫會產生重複標籤。
@@ -77,7 +80,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'DSE Level Up | 掌握 DSE 核心邏輯', // i18n-exempt: 靜態 SEO Twitter title
-    description: '免費 DSE 練習平台，涵蓋 25 科獨立改寫試題。', // i18n-exempt: 靜態 SEO Twitter description
+    description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。`, // i18n-exempt: 靜態 SEO Twitter description
   },
 }
 
@@ -127,7 +130,7 @@ const jsonLd = {
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'HKD' },
       audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
       description:
-        `Free HKDSE revision platform with ${TOTAL_QUESTIONS.toLocaleString('en-US')} independently rewritten questions across 25 subjects, a three-way self-diagnosis after any wrong answer, printable paper-based mock sets, and accessibility features for students with SEN. Questions are original rewrites, not reproductions of HKEAA past papers.`,
+        `Free HKDSE revision platform with ${TOTAL_QUESTIONS.toLocaleString('en-US')} independently rewritten questions across ${SUBJECT_COUNT} subjects, a three-way self-diagnosis after any wrong answer, printable paper-based mock sets, and accessibility features for students with SEN. Questions are original rewrites, not reproductions of HKEAA past papers.`,
     },
   ],
 }

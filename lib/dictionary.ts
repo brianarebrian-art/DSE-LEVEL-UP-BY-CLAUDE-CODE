@@ -284,7 +284,7 @@ const zh = {
     // 未有綜合科學，亦未有乙類、丙類科目。
     introA: 'HKDSE 甲類科目（M1、M2 分開計），',
     introLiveA: ' 科已全部上線',
-    introB: '。全部 25 科嘅 MC 練習完全免費，無限次做。',
+    introB: '。全部科目嘅 MC 練習完全免費，無限次做。',
     startPractice: '開始練習',
     priorities: {
       P0: { label: '核心必爭', desc: '最多考生、最易改寫、即時批改' },
@@ -722,7 +722,7 @@ const en: typeof zh = {
     title: 'All Subjects',
     introA: 'HKDSE Category A subjects (M1 and M2 counted separately) — all ',
     introLiveA: ' subjects are now live',
-    introB: '. MC practice for all 25 subjects is completely free and unlimited.',
+    introB: '. MC practice in every subject is completely free and unlimited.',
     startPractice: 'Start practice',
     priorities: {
       P0: { label: 'Core must-win', desc: 'Largest entry, easiest to rewrite, instant marking' },

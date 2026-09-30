@@ -210,3 +210,18 @@
 - **未完成：** 同一模板家族的「相似變式」未有獨立入口（按課題練習已涵蓋同課題題目）；圖示不一致（練習頁錯因用 🧠🎯🧮，發現卡用 🧩🔍✏️），屬既有問題，未改。
 - **下一輪最高優先問題：** P1-G／H：題目來源披露（`QuestionProvenance`）及題數單一來源——先核對現有披露是否準確、題數在首頁、科目頁、練習頁、信任頁、sitemap 是否由同一來源計算。
 - **Commit：** 見 git log（`feat(practice): point a chosen error cause to review and practice`）。
+
+## LOOP 11 — 2026-09-30
+
+- **Slice：** 題數及科目數只從題庫及科目表計算（P1-H）。
+- **優先級：** P1。
+- **盤點：** 首頁、`/subjects`、科目頁、`/practice`、`/trust`、`/transparency` 的題數已經讀 `summary.generated.ts` 或題庫，並有 `summary-parity` 等測試。仍然寫死的有：
+  - `app/opengraph-image.tsx`：社交分享預覽圖寫「5,167 questions, 25 subjects」，實數是 26,510。分享連結到 WhatsApp、IG、Facebook 時就會顯示這個舊數字。
+  - 「25 科／25 subjects」寫死在 `app/layout.tsx`（OG、Twitter 描述及 JSON-LD）、`app/manifest.ts`、`app/practice/page.tsx`、`app/notes/page.tsx` 的 metadata，以及 `/subjects` 介紹句（`lib/dictionary.ts` 中英各一）。
+- **改動：** 預覽圖改讀 `TOTAL_QUESTIONS` 及 `getActiveSubjects().length`；各 metadata 的科目數改讀 `getActiveSubjects().length`；`/subjects` 介紹句本來前半已經顯示實數，後半改為「全部科目」，不再重複數字。`public/llms.txt` 不變（已有 claim-parity 測試對數）。
+- **測試：** 新增 `lib/__tests__/count-sources.test.mts`（3 項）：掃描 `app/`、`components/`、`lib/dictionary.ts`、`data/heroContent.ts` 的程式碼（不含註解），不准出現寫死的題數（四位數以上加「questions／條／題」）或 20–29 科；預覽圖讀實數；負向自測。負向自測第一次執行就發現掃描式對「25 科」是盲的（中文字後沒有英文字詞邊界），修正後才通過，所以第一項的通過是在修正後的掃描式下得出。
+- **驗證：** `npm test` 1144/1144；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build）：** `/opengraph-image` 渲染為「Free HKDSE practice — 26,510 questions, 25 subjects」；`/manifest.webmanifest` 描述為「涵蓋 25 科」。
+- **未完成：** 已部署的網站在 push 及重新部署前仍然送出舊預覽圖；社交平台會快取預覽圖，更新後可能要用各平台的除錯工具重新抓取。
+- **下一輪最高優先問題：** P1-G：題目來源披露。現有披露只寫「經自動檢查」或「待核」加報錯入口，沒有課綱版本及修訂日期。
+- **Commit：** 見 git log（`fix(copy): read question and subject counts from the bank everywhere`）。

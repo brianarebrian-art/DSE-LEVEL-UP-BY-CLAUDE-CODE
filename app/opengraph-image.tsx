@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og'
+import { TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
+import { getActiveSubjects } from '@/data/subjects'
 
 // 社交分享卡（og:image + twitter:image）。採用 Next.js 檔案約定，建置時產生一次，
 // 執行期零成本、零新增套件 —— 符合 $180.81 成本死鎖。
@@ -35,7 +37,8 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: 'flex', marginTop: 36, fontSize: 40, color: '#2D2D2D', lineHeight: 1.35 }}>
-          Free HKDSE practice — 5,167 questions, 25 subjects
+          {/* 2026-09-30（UX 循環 LOOP 11）：原本寫死「5,167 questions」，比實數少五倍。改由題庫摘要及科目表計算。 */}
+          {`Free HKDSE practice — ${TOTAL_QUESTIONS.toLocaleString('en-US')} questions, ${getActiveSubjects().length} subjects`}
         </div>
 
         <div style={{ display: 'flex', marginTop: 20, fontSize: 28, color: '#6B6B6B' }}>
