@@ -109,14 +109,17 @@ export default function SubjectsView() {
           </Link>
         </h2>
         <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
+        {/* 2026-09-30（改進循環 2，prompt §15–§16）：原本每科都寫「口試、實作：未涵蓋」，
+            但並非每科都有口試或實作，而本站未有可靠的逐科考核組成資料（ASSESSMENT_METADATA_DEFERRED）。
+            改為不逐項判定的說法。 */}
         <div className="text-[11px] text-ink-muted mb-3">
           {written > 0
             ? en
-              ? `Written: ${written} · oral / practical: not covered`
-              : `書寫 ${written} 條 · 口試、實作：未涵蓋`
+              ? `Written (self-marked): ${written} · some assessment components are not offered here`
+              : `書寫（自評）${written} 條 · 部分考核形式未於本站提供`
             : en
-              ? 'Written / oral / practical: not covered'
-              : '書寫、口試、實作：未涵蓋'}
+              ? 'Some assessment components are not offered here'
+              : '部分考核形式未於本站提供'}
         </div>
         <div className="mt-auto flex items-center justify-between gap-3">
           <Link

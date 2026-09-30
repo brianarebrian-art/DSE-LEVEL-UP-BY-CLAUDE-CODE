@@ -773,3 +773,10 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - 同一門檻套用到 `DailyPlan`（原本答 1 題即列入）及 `gentleSuggestions`（原本 2 題）；結果頁「今次最弱」改「今次較需要鞏固」。
 - 瀏覽器實測（production）：`/subjects/math` 顯示「建議下一步：「概率」。最近較需要鞏固：你喺呢科最近 3 次答錯，有 3 次喺呢個課題。」；按鈕 48px，點擊後到 `/practice?subject=math&topic=probability`。
 - 未做（下一個 project）：skill graph、learner model、變體生成、mastery 更新。無資料庫改動。
+
+## R2-5 科目覆蓋標示的後備字眼（prompt §15–§16）
+
+- `ASSESSMENT_METADATA_DEFERRED`：逐科「不適用／未涵蓋／完整／部分」需要可靠的考核組成資料，本輪不補、不猜。
+- `/subjects` 每張科目卡原本寫「口試、實作：未涵蓋」，但並非每科都有口試或實作。改為「書寫（自評）N 條 · 部分考核形式未於本站提供」。
+- 首頁科目段及 `/subjects` meta 原本寫「書寫…題型未涵蓋」，但每科都有書寫題（自評），改為同一後備字眼。
+- 測試：`coverage-fallback.test.mts`。瀏覽器實測（375px）：25 張卡都顯示後備字眼，頁面無「未涵蓋」，無水平捲動。
