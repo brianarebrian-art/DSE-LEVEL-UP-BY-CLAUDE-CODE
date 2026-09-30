@@ -48,15 +48,27 @@ import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 // 「沉浸式 = 零干擾」嘅決定相反。呢度維持現行做法，因為嗰個決定有寫低理由
 // （答題時誤撳離開）。要改嘅話應該係一個獨立決定，唔係跟住換色順手改咗。
 
+// ══ 2026-09-30：按學生要做的事分組（UX 循環 LOOP 13，P1-I）══
+// 以前七項一條直落，同等份量：「我的進度」排第一，「練習」第二，「收藏」排到第六。
+// 改為三組加最尾一項：溫習（練習、收藏）→ 分析（進度、錯題 DNA、等級預測）→ 休息（呼吸空間），
+// 「不考之地」照舊喺最尾，貼住底部、冇組名，維持「唔當眼」（憲章 §1.2.1）。
+// 目的地、名稱、圖示一個都冇改，只改次序同加組名。
+const GROUPS = [
+  { id: 'study', labelKey: 'groupStudy' },
+  { id: 'review', labelKey: 'groupReview' },
+  { id: 'rest', labelKey: 'groupRest' },
+  { id: 'other', labelKey: null },
+] as const
+
 const ITEMS = [
-  { href: '/dashboard', key: 'progress', Icon: Target, exact: true },
-  { href: '/subjects', key: 'practice', Icon: Sprout, exact: false },
-  { href: '/dashboard#error-dna', key: 'errorDna', Icon: Dna, exact: true },
-  { href: '/predictor', key: 'predictor', Icon: ChartColumnIncreasing, exact: false },
-  { href: '/relax', key: 'relax', Icon: Leaf, exact: false },
-  { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false },
+  { href: '/subjects', key: 'practice', Icon: Sprout, exact: false, group: 'study' },
+  { href: '/bookmarks', key: 'saved', Icon: Bookmark, exact: false, group: 'study' },
+  { href: '/dashboard', key: 'progress', Icon: Target, exact: true, group: 'review' },
+  { href: '/dashboard#error-dna', key: 'errorDna', Icon: Dna, exact: true, group: 'review' },
+  { href: '/predictor', key: 'predictor', Icon: ChartColumnIncreasing, exact: false, group: 'review' },
+  { href: '/relax', key: 'relax', Icon: Leaf, exact: false, group: 'rest' },
   // 2026-09-26：桌面冇三橫選單，「不考之地」喺側欄最尾，同三橫選單一樣唔當眼。
-  { href: '/off-syllabus', key: 'offSyllabus', Icon: Compass, exact: false },
+  { href: '/off-syllabus', key: 'offSyllabus', Icon: Compass, exact: false, group: 'other' },
 ] as const
 
 /** 錨點連結永遠唔算「目前頁」—— pathname 冇 hash，否則會同「我的進度」一齊亮。 */
@@ -113,34 +125,54 @@ export default function Sidebar() {
         </span>
       </Link>
 
-      <ul className="flex flex-1 flex-col gap-1 px-3 py-4 xl:px-4">
-        {ITEMS.map(({ href, key, Icon, exact }) => {
-          const active = isActive(pathname, href, exact)
+      {/* overflow-y-auto：加咗組名之後，矮嘅手提電腦（1280×720）可能容唔晒，寧可側欄自己捲，唔好切走最尾幾項。 */}
+      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-3 py-4 xl:px-4">
+        {GROUPS.map((g, gi) => {
+          const label = g.labelKey ? t.sidebar[g.labelKey] : t.sidebar.offSyllabus
           return (
-            <li key={href}>
-              <Link
-                href={href}
-                aria-current={active ? 'page' : undefined}
-                title={t.sidebar[key]}
-                // 選中態跟模板：整格淺色底加一圈邊，冇左豎條。
-                // 字色維持 text-ink 而唔係 accent —— accent 字疊喺 accent 底上面
-                // 會食走對比；邊框同底色已經夠講「你喺度」，讀屏靠 aria-current。
-                className={`flex min-h-[52px] items-center gap-3 rounded-xl border px-3 font-serif text-[17px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
-                  active
-                    ? 'border-accent/35 bg-accent/15 text-ink'
-                    : 'border-transparent text-ink-soft hover:bg-accent/8 hover:text-ink'
-                }`}
-              >
-                <Icon size={22} strokeWidth={1.3} aria-hidden className="shrink-0 text-gold" />
-                {/* 80px 欄收字，但唔可以淨靠 title —— 觸控裝置冇 hover。
-                    故收字嗰陣用 sr-only 保住無障礙名，而 lg 斷點以下根本唔出側欄。 */}
-                <span className="hidden xl:inline">{t.sidebar[key]}</span>
-                <span className="sr-only xl:hidden">{t.sidebar[key]}</span>
-              </Link>
-            </li>
+            <div
+              key={g.id}
+              role="group"
+              aria-label={label}
+              className={g.id === 'other' ? 'mt-auto border-t border-line pt-3' : gi > 0 ? 'border-t border-line pt-3 xl:border-t-0 xl:pt-0' : ''}
+            >
+              {g.labelKey && (
+                <p aria-hidden className="mb-1 hidden px-3 text-[11px] font-medium uppercase tracking-[0.12em] text-ink-muted xl:block">
+                  {label}
+                </p>
+              )}
+              <ul className="flex flex-col gap-1">
+                {ITEMS.filter((it) => it.group === g.id).map(({ href, key, Icon, exact }) => {
+                  const active = isActive(pathname, href, exact)
+                  return (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        aria-current={active ? 'page' : undefined}
+                        title={t.sidebar[key]}
+                        // 選中態跟模板：整格淺色底加一圈邊，冇左豎條。
+                        // 字色維持 text-ink 而唔係 accent —— accent 字疊喺 accent 底上面
+                        // 會食走對比；邊框同底色已經夠講「你喺度」，讀屏靠 aria-current。
+                        className={`flex min-h-[52px] items-center gap-3 rounded-xl border px-3 font-serif text-[17px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
+                          active
+                            ? 'border-accent/35 bg-accent/15 text-ink'
+                            : 'border-transparent text-ink-soft hover:bg-accent/8 hover:text-ink'
+                        }`}
+                      >
+                        <Icon size={22} strokeWidth={1.3} aria-hidden className="shrink-0 text-gold" />
+                        {/* 80px 欄收字，但唔可以淨靠 title —— 觸控裝置冇 hover。
+                            故收字嗰陣用 sr-only 保住無障礙名，而 lg 斷點以下根本唔出側欄。 */}
+                        <span className="hidden xl:inline">{t.sidebar[key]}</span>
+                        <span className="sr-only xl:hidden">{t.sidebar[key]}</span>
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
           )
         })}
-      </ul>
+      </div>
 
       {/* 底部引用（規格 §3.1.3）。
           ⚠️ 規格原文係「Slow is smooth, smooth is fast. — Navy SEALs」。冇照用：
@@ -148,7 +180,9 @@ export default function Sidebar() {
                同憲章 §8 禁虛構嘅精神相反；
           （b）軍事框架同 §7 大愛設計、同呢班考緊試嘅中六生唔夾。
           改用憲章 §9 自己嗰句 —— 係我哋自己講過嘅話，冇出處問題，而且更貼題。 */}
-      <div className="hidden gap-3 border-t border-line px-6 py-5 xl:flex">
+      {/* sidebar-quote：矮嘅手提電腦（≤760px 高）收起呢句裝飾金句（globals.css），
+          1280×720 實測加咗組名之後，唔收就要喺側欄入面捲先見到「不考之地」。 */}
+      <div className="sidebar-quote hidden gap-3 border-t border-line px-6 py-5 xl:flex">
         <Leaf size={18} strokeWidth={1.2} aria-hidden className="mt-1 shrink-0 text-gold" />
         <p className="font-serif text-sm italic leading-relaxed text-ink-muted">{t.sidebar.quote}</p>
       </div>

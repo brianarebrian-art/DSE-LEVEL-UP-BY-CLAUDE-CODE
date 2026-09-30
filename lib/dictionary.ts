@@ -127,6 +127,10 @@ const zh = {
     relax: '呼吸空間',
     saved: '收藏',
     offSyllabus: '不考之地',
+    // 側欄組名（2026-09-30，UX 循環 LOOP 13）：按學生要做的事分組。
+    groupStudy: '溫習',
+    groupReview: '分析',
+    groupRest: '休息',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
     quote: '掌握邏輯，唔係背答案。無論數字點變，你都識答。',
@@ -575,6 +579,9 @@ const en: typeof zh = {
     relax: 'Breathing Space',
     saved: 'Saved',
     offSyllabus: 'Off the Syllabus',
+    groupStudy: 'Study',
+    groupReview: 'Review',
+    groupRest: 'Rest',
     quote: 'Master the logic, not the answers. Whatever the numbers, you can solve it.',
   },
   predictor: {

@@ -1405,3 +1405,10 @@ html.font-easy .cmd-hl {
     opacity: 1 !important;
   }
 }
+
+/* 側欄底部金句：矮屏幕收起（2026-09-30，UX 循環 LOOP 13）。
+   側欄分組後多咗三個組名，1280×720 時導航清單要捲先見到最尾一項。金句係裝飾，
+   導航項唔係，所以收金句。刻意寫喺 @layer 之外：要蓋過 Tailwind utilities 層嘅 xl:flex。 */
+@media (max-height: 760px) {
+  .sidebar-quote { display: none; }
+}
