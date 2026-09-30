@@ -108,9 +108,9 @@ const DailyStatsCard = forwardRef<HTMLDivElement, { data: DailyStatsCardData; en
         {d.strengthTopic && (
           <div style={{ marginTop: 20, width: '100%' }}>
             <Bento border="rgba(155,93,229,0.18)" full>
-              <div style={{ fontSize: 22, color: C.purple, fontWeight: 600 }}>{en ? 'Your strength today 💜' : '你今日嘅強項 💜'}</div>
+              <div style={{ fontSize: 22, color: C.purple, fontWeight: 600 }}>{en ? 'All correct today 💜' : '今日全對嘅課題 💜'}</div>
               <div style={{ fontSize: 40, color: C.ink, fontWeight: 700, marginTop: 8, textAlign: 'center' }}>{en ? `“${d.strengthTopic}”` : `「${d.strengthTopic}」`}</div>
-              <div style={{ fontSize: 18, color: C.sub, marginTop: 8 }}>{en ? "You've got this locked in — keep it up." : '呢個位你掌握得好穩，繼續保持。'}</div>
+              <div style={{ fontSize: 18, color: C.sub, marginTop: 8 }}>{en ? 'Every question on it was right this session.' : '今節呢個課題嘅題目全部答啱。'}</div>
             </Bento>
           </div>
         )}

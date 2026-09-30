@@ -103,7 +103,7 @@ export default function SenseiClient() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={en ? 'e.g. why do public goods have a free-rider problem?' : '例如：點解共用品會有搭便車問題？'}
-              aria-label={en ? 'Ask Sensei' : '向 Sensei 提問'}
+              aria-label={en ? 'Search knowledge cards' : '搜尋知識卡'}
               className="flex-1 min-w-0 rounded-lg bg-ink/[0.04] border border-ink/15 px-3 py-2 text-sm text-ink placeholder:text-ink-muted/70 focus:outline-none focus:border-accent/50"
             />
             <button

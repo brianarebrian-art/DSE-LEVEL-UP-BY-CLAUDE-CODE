@@ -413,7 +413,7 @@ export default function AnswerSheetClient() {
               <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                 {tr(
                   '書寫題永遠唔會由機器批改。下面出參考答案同評分準則，你自己對住張紙評 —— 呢部分唔會計入上面個分數，只會記入你嘅課題練習紀錄。',
-                  'Written questions are never machine-marked. Below is a model answer and marking scheme for you to judge your own work — this section never counts toward the score or grade above; it only feeds your topic mastery.',
+                  'Written questions are never machine-marked. Below is a model answer and marking scheme for you to judge your own work — this section never counts toward the score above; it only goes into your topic practice record.',
                 )}
               </p>
 

@@ -265,7 +265,7 @@ export default function SubjectDetailView({
             <div className="flex items-center gap-3">
               <Sparkles size={20} className="text-accent shrink-0" />
               <div>
-                <div className="font-medium text-ink">{en ? 'SENSEI · concept lookup' : 'SENSEI・概念檢索'}</div>
+                <div className="font-medium text-ink">{en ? 'Knowledge cards · SENSEI' : '知識卡・SENSEI'}</div>
                 <p className="text-xs text-ink-muted mt-0.5">
                   {en
                     ? 'Ask about a concept and read a knowledge card a named person has checked. Nothing is generated — if there is no card, it says so.'

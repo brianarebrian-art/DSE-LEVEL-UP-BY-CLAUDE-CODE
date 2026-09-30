@@ -103,27 +103,27 @@ export default function TextQuestionCard({
           {marked === null ? (
             <div>
               <p className="text-sm text-ink-soft mb-2">
-                {en ? 'Compare with the reference — how did you do?' : '對照參考答案，你掌握到未？'}
+                {en ? 'Compare with the reference — did your answer match?' : '對照參考答案，你答中咗未？'}
               </p>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => mark('correct')}
                   className="min-h-11 inline-flex items-center justify-center gap-2 border border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent font-semibold py-2.5 rounded-xl transition-colors"
                 >
-                  <CheckCircle2 size={16} aria-hidden /> {en ? 'I got it' : '我掌握到'}
+                  <CheckCircle2 size={16} aria-hidden /> {en ? 'It matches' : '大致對到'}
                 </button>
                 <button
                   onClick={() => mark('wrong')}
                   className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 bg-surface-sunken hover:bg-surface-sunken text-gold font-semibold py-2.5 rounded-xl transition-colors"
                 >
-                  <Lightbulb size={16} aria-hidden /> {en ? 'Not yet' : '未掌握到'}
+                  <Lightbulb size={16} aria-hidden /> {en ? 'Not yet' : '未對到'}
                 </button>
               </div>
             </div>
           ) : (
             <div className="text-sm text-ink-muted">
               {marked === 'correct'
-                ? en ? '✓ Logged — you got it.' : '✓ 已記錄：你掌握到'
+                ? en ? '✓ Logged — your answer matched.' : '✓ 已記錄：大致對到'
                 : en ? '💡 A new blind spot found — saved to your review.' : '💡 你發現咗一個新盲點，已寫入你嘅溫習'}
             </div>
           )}

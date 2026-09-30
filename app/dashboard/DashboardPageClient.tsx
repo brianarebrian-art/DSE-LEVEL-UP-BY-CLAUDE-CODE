@@ -523,7 +523,7 @@ export default function DashboardPageClient() {
         {masteryTopics.length > 0 && (
           <>
             <h2 className="text-lg font-serif mb-1 text-ink">
-              {en ? 'Topic mastery' : '課題掌握度'}
+              {en ? 'Topic practice record' : '課題練習紀錄'}
             </h2>
             <p className="text-xs text-ink-muted mb-4">
               {en

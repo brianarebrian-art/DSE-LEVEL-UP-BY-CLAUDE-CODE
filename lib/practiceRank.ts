@@ -53,7 +53,7 @@ export const RANKS: Rank[] = [
   { id: 'start',    zh: '起步', en: 'Starting Out',    at: 0 },
   { id: 'footing',  zh: '站穩', en: 'Finding Footing', at: 500 },
   { id: 'fluent',   zh: '上手', en: 'Getting Fluent',  at: 1500 },
-  { id: 'practised',zh: '熟練', en: 'Well Practised',  at: 3500 },
+  { id: 'practised',zh: '勤練', en: 'Well Practised',  at: 3500 },
   { id: 'sharp',    zh: '精進', en: 'Sharpening',      at: 7000 },
   { id: 'staying',  zh: '恆心', en: 'Staying Power',   at: 12000 },
 ]

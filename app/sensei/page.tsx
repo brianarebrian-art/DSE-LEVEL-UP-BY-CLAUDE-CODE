@@ -5,7 +5,7 @@ import SenseiClient from './SenseiClient'
 export const metadata: Metadata = {
   title: '知識卡 · SENSEI | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
   // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
-  description: 'SENSEI 是 DSE Level Up 的 AI 學習助手：只檢索由真人審核過的知識卡片，不會自行生成答案。', // i18n-exempt
+  description: '知識卡（SENSEI）：DSE Level Up 的 AI 學習助手，只檢索由真人審核過的知識卡片，不會自行生成答案。', // i18n-exempt
 }
 
 export default function Page() {

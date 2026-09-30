@@ -42,7 +42,7 @@ export default function ReviewScheduler() {
       <h2 className="font-medium mb-1 text-ink">📖 {en ? "Today's review suggestions" : '今日建議重溫'}</h2>
       <p className="text-xs text-ink-muted mb-4">
         {en
-          ? 'Spaced repetition (day 1 / 3 / 7 / 14 / 30 after a slip) — revisiting is how knowing becomes mastery.'
+          ? 'Spaced repetition (day 1 / 3 / 7 / 14 / 30 after a slip) — these concepts are worth another look.'
           : '溫故知新 —— 按遺忘曲線（錯後第 1／3／7／14／30 日）排程，呢啲概念值得再鞏固。'}
       </p>
 
