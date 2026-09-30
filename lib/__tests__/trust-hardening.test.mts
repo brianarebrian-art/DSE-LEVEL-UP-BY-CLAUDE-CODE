@@ -28,9 +28,10 @@ test('the positional-explanation batch is withdrawn with a date and a reason', (
       .filter(([, r]) => r.date === '2026-09-29' && r.reason === 'POSITIONAL_RATIONALE_REFERENCE')
       .map(([id]) => ({ subject, id })),
   )
-  // 176 + 135 + 286 on 2026-09-29 (docs/rationale-repairs.md); shrinks as rewritten
-  // questions are restored with withdraw.mts --undo.
-  assert.ok(batch.length > 0 && batch.length <= 597, `${batch.length}`)
+  // Historical batch size, not a live statistic (live counts: CONTENT_STATS). The batch
+  // shrinks as rewritten questions are restored with withdraw.mts --undo.
+  const HISTORICAL_BATCH_2026_09_29 = 176 + 135 + 286 // docs/rationale-repairs.md
+  assert.ok(batch.length > 0 && batch.length <= HISTORICAL_BATCH_2026_09_29, `${batch.length}`)
   for (const { subject, id } of batch) {
     assert.ok(!I.getSubjectQuestions(subject).some((q) => q.id === id), `${subject}/${id} is still served`)
     assert.ok(I.getSubjectQuestionsRaw(subject).some((q) => q.id === id), `${subject}/${id} was deleted, not withdrawn`)

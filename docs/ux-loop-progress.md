@@ -749,3 +749,16 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - `/trust`、FAQ、頁尾連結「表現等級點計」改為描述現況。
 - 保留：`dse_progress` 內的 `grade` 欄位（上雲 key，改結構需創辦人決定），只是不再顯示。
 - 測試：`no-grade-leakage.test.mts`。瀏覽器實測：`/dashboard` 兩節顯示「需要鞏固」「相對穩定」、無 5**；`/writing` 三項 7 分顯示「自評相對穩定（不是 DSE 等級）」。
+
+## R2-3 舊題數全 repo 核對（prompt §2、§46）
+
+| 位置 | 判斷 | 處理 |
+|---|---|---|
+| `public/llms.txt`「we hold 27,106 original items」 | 過時對外文案 | 改為練習池數字；`claim-parity` 掃描加入「items」，並加反向自測（舊檔會 fail） |
+| `app/page.tsx` 註釋「信任列顯示 27,106」 | 過時註釋 | 刪去數字 |
+| `docs/PHASE1-scope-check-2026-09-30.md`（26,510） | 歷史文件 | 加「歷史紀錄」說明，指向 `CONTENT_STATS` |
+| `docs/ux-loop-progress.md`、`DECISIONS-*`、`UNMAPPED-220.md` | 有日期的歷史紀錄 | 保留 |
+| `trust-hardening.test.mts` 的 597 | 2026-09-29 批次大小（歷史），非現行統計 | 改名 `HISTORICAL_BATCH_2026_09_29` |
+| `content-stats`、`count-sources` 測試內的舊數字 | 註釋或反向自測 fixture | 保留 |
+
+`app/`、`components/`、`lib/` 無其他 hard-code 題數。

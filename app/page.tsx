@@ -85,7 +85,7 @@ export default function HomePage() {
             // 細數之後，一定要保證回得返真數 —— 用 setTimeout 兜底：rAF 喺隱藏
             // 分頁完全唔行，setTimeout 只會被節流。缺咗呢個保險，用戶喺動畫途中
             // 切走再返嚟，就會永遠停喺一個中途數字。
-            // 千位分隔與信任列一致（信任列顯示「27,106」，規格牆以前顯示「27106」）。
+            // 千位分隔與信任列一致（規格牆以前顯示不帶逗號的數字）。
             const settle = () => { counter.textContent = target.toLocaleString('en-US') + suffix }
             const start = performance.now()
             const step = (now: number) => {

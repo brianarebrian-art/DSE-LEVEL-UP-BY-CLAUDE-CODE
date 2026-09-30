@@ -105,7 +105,7 @@ test('llms.txt 有 "When to use this" 段 —— 話畀 agent 知幾時應該搵
 // 代價係寫歷史註釋嗰陣唔可以重述舊數字，要改寫成唔帶數字嘅講法。
 /** 一個數字要算「題數聲稱」，要貼住題目相關嘅字眼 —— 淨係四位數會撈到年份。 */
 const CLAIM_PATTERNS = [
-  /([\d][\d,]{3,})\s*(?:[A-Za-z-]+\s+){0,3}questions?\b/gi, // 26,204 independently rewritten questions
+  /([\d][\d,]{3,})\s*(?:[A-Za-z-]+\s+){0,3}(?:questions?|items?)\b/gi, // 26,204 independently rewritten questions / original items
   /([\d][\d,]{3,})\s*條\s*(?:題|試題|題目)/g, //               27,321 條題目
   /題[數目][^\d\n]{0,8}([\d][\d,]{3,})/g, //                   題數實測 26,204
 ]
@@ -159,4 +159,11 @@ test('全部對外題數聲稱都同真題庫一致 —— 唔限於 llms.txt', 
       `data/questions/summary.generated.ts 嘅 TOTAL_QUESTIONS 衍生，` +
       `咁就唔會再漂。llms.txt 係純文字，跑 \`npm run gen:summary\` 之後人手更新。`,
   )
+})
+
+// 2026-09-30（改進循環 2）：llms.txt「we hold 27,106 original items」漏網，因為舊 pattern 只認 questions。
+test('negative self-test: "N original items" counts as a question-count claim', () => {
+  const hit = [...'we hold 27,106 original items'.matchAll(CLAIM_PATTERNS[0])]
+  assert.equal(hit.length, 1)
+  assert.equal(num(hit[0][1]), 27106)
 })
