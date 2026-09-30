@@ -901,7 +901,8 @@ export default function PracticeSession({
 
   return (
     <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
-      <div className="max-w-2xl mx-auto">
+      {/* lg（≥1024px）加闊到 6xl，題目與回饋並排（UX 循環 LOOP 8，見下方 grid 註解）。 */}
+      <div className="max-w-2xl mx-auto lg:max-w-6xl">
 
         {/* 返回科目頁 —— 全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），
             所以呢個係練習頁【唯一】嘅離開路徑，唔可以刪。
@@ -1020,6 +1021,10 @@ export default function PracticeSession({
           </div>
         </div>
 
+        {/* 2026-09-30（UX 循環 LOOP 8）：≥1024px 題目與回饋並排。1024×768 實測，題目卡只佔中間 672px、
+            兩邊各約 170px 空白，答題後回饋由 y=668 開始，「下一題」在 y=1171，要捲約 500px。
+            並排後回饋在題目右邊由頂開始；1023px 或以下維持單欄，行為不變。 */}
+        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
         {/* Question card */}
         {/* 規格 §7.3A 頁面轉場：新題由右滑入（400ms）。key 綁題號，換題先重播。
             ⚠️ 只做【入場】—— 規格原文仲要「舊題向左滑出」，但離場動畫要留住
@@ -1392,6 +1397,15 @@ export default function PracticeSession({
             )}
           </div>
         )}
+
+        {/* 未答題時右欄的說明（只在 lg 顯示），答題後由回饋取代，避免右欄一片空白。 */}
+        {answerState === null && (
+          <p className="focus-dim hidden lg:block rounded-2xl border border-dashed border-line p-6 text-sm leading-relaxed text-ink-muted">
+            {tr('揀咗答案之後，對錯、錯因同解析會喺呢邊出現，唔使捲落去。',
+                'After you choose an answer, whether it was right, what tripped you up and the explanation appear here, without scrolling.')}
+          </p>
+        )}
+        </div>
 
         {/* Score tracker */}
         <div className="focus-dim mt-6 flex justify-center gap-2 flex-wrap">
