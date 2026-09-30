@@ -1025,7 +1025,9 @@ export default function PracticeSession({
         {/* 2026-09-30（UX 循環 LOOP 8）：≥1024px 題目與回饋並排。1024×768 實測，題目卡只佔中間 672px、
             兩邊各約 170px 空白，答題後回饋由 y=668 開始，「下一題」在 y=1171，要捲約 500px。
             並排後回饋在題目右邊由頂開始；1023px 或以下維持單欄，行為不變。 */}
-        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+        {/* lg:max-xl:pr-14：1024–1279px 時整個版面貼近右邊，右欄「下一題」右端會落在右下情緒支援掣
+            （48px 加 16px 邊距）之下；留出 56px。xl 起版面已置中，右邊有足夠空位。 */}
+        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14">
         {/* Question card */}
         {/* 規格 §7.3A 頁面轉場：新題由右滑入（400ms）。key 綁題號，換題先重播。
             ⚠️ 只做【入場】—— 規格原文仲要「舊題向左滑出」，但離場動畫要留住

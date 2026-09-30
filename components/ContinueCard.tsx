@@ -45,7 +45,8 @@ export default function ContinueCard() {
   const name = en ? subject.shortEn : subject.short
 
   return (
-    <div className="hero-rise mx-auto mb-6 flex max-w-md items-center gap-3 rounded-2xl border border-accent/25 bg-surface-raised p-3 pl-4 text-left shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+    // data-continue-card：手機首屏有這張卡時，globals.css 收起吉祥物（UX 循環 LOOP 15）。
+    <div data-continue-card className="hero-rise mx-auto mb-6 flex max-w-md items-center gap-3 rounded-2xl border border-accent/25 bg-surface-raised p-3 pl-4 text-left shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       <div className="min-w-0 flex-1">
         <p className="text-xs text-ink-muted">
           {target.kind === 'resume'

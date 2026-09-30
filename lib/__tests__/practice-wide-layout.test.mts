@@ -13,7 +13,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 const src = readFileSync(join(ROOT, 'app/practice/PracticeSession.tsx'), 'utf8')
 const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
 
-const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">')
+const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14">')
 const cardAt = code.indexOf('<div key={currentQ.id} className="bg-surface-raised')
 const feedbackAt = code.indexOf('<div ref={feedbackRef}')
 const trackerAt = code.indexOf('Array.from({ length: totalQ })')

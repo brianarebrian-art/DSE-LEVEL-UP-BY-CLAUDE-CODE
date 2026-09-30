@@ -282,3 +282,23 @@
 - **未能驗證：** 真實的 Google 登入失敗重新導向。Claude 不可以輸入登入憑證，所以只驗證了設定及頁面本身；Better Auth 後備（`NEXT_PUBLIC_AUTH_BACKEND=better-auth`，預設不啟用）的錯誤流程未改。
 - **下一輪：** P1 F–J 已全部有處理或有記錄的原因。檢查循環停止條件，並處理之前記下的已知問題（回訪學生首頁連結被角落掣遮住、1024×768「下一題」與情緒支援掣重疊）。
 - **Commit：** 見 git log（`feat(auth): a sign-in error page that leads back to practice`）。
+
+## LOOP 15 — 2026-09-30
+
+- **Slice：** 角落掣（無障礙、情緒支援）遮住可撳內容的兩處（P0-5 收尾）。
+- **優先級：** P0。
+- **量度（改動前）：**
+  - 回訪學生（有「繼續」卡）在 375×812 首頁：「揀其他科目」「睇吓點運作」在 y=701–745，在左下無障礙掣及右下情緒支援掣（y=692 起）之下。
+  - 1024×768 練習頁：右欄「下一題」右端（x≈1002）落在情緒支援掣（x=954–1002）之下。
+- **影響範圍：** `components/ContinueCard.tsx`（加 `data-continue-card`）、`app/page.tsx`（吉祥物外層加 `hero-mascot`）、`app/globals.css`（一條手機規則）、`docs/tokens.md`（生成檔）、`app/practice/PracticeSession.tsx`（一個 class）、新增測試及一個舊測試的定位字串。
+- **改動：**
+  - 手機闊度（<640px）而首屏有「繼續」卡時，收起吉祥物（用 `section:has([data-continue-card])`）。吉祥物的作用是讓初次來的人認得網站；初次訪客（沒有「繼續」卡）所見不變。
+  - 練習頁在 1024–1279px 時，兩欄右邊多留 56px（`lg:max-xl:pr-14`）；1280px 起版面已置中，不需要。
+- **測試：** 新增 `lib/__tests__/corner-buttons.test.mts`（2 項）；`practice-wide-layout.test.mts` 的定位字串跟着更新。
+- **驗證：** `npm test` 1160/1160；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build）：**
+  - 375×812 回訪學生：吉祥物收起；「繼續第 4 題」y=182–226，四格 y=474–538，兩條連結 y=570–614；與角落掣沒有重疊。
+  - 375×812 初次訪客（暫時移走本機進度紀錄，驗證後放回）：吉祥物照常顯示，沒有「繼續」卡。
+  - 1024×768：「下一題」右端 x=946，情緒支援掣由 x=954 開始，不再重疊。代價：右欄窄了，「下一題」由 y=726 移到 y=762，要捲約 50px。
+- **下一輪：** 檢查循環停止條件。
+- **Commit：** 見 git log（`fix(layout): keep links and 下一題 clear of the corner buttons`）。

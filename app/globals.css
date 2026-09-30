@@ -1412,3 +1412,11 @@ html.font-easy .cmd-hl {
 @media (max-height: 760px) {
   .sidebar-quote { display: none; }
 }
+
+/* 回訪學生的手機首屏（2026-09-30，UX 循環 LOOP 15）。
+   「繼續」卡出現時，375×812 實測快速開始下面兩條連結（y=701–745）落在左下無障礙掣及右下
+   情緒支援掣（y=692 起）之下。吉祥物是給初次來的人認得網站用的；回訪學生已經認得，
+   所以只在有「繼續」卡時、只在手機闊度收起它，初次訪客所見不變。寫在 @layer 之外，蓋過 flex。 */
+@media (max-width: 639px) {
+  section:has([data-continue-card]) .hero-mascot { display: none; }
+}

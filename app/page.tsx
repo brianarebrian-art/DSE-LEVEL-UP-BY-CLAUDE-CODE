@@ -131,7 +131,7 @@ export default function HomePage() {
               唔係收埋喺頁尾做裝飾。揀「讀緊書」呢個姿勢而唔係滑板嗰隻：
               首屏要一眼講到呢度係做咩嘅。
               priority：佢喺 LCP 範圍，唔標會拖慢首屏。 */}
-          <div className="hero-rise mb-4 flex justify-center">
+          <div className="hero-mascot hero-rise mb-4 flex justify-center">
             {/* 以外層闊度控制尺寸（手機 128px ≈ 高 104px；桌面 176px ≈ 高 142px。
                 2026-09-30 由 208px 縮小，令 1024×768 首屏容得下快速開始及「揀其他科目」）。
                 不能在 img 上用 h-[…]：globals.css 有一條不在 @layer 內的 `img { height: auto }`，
