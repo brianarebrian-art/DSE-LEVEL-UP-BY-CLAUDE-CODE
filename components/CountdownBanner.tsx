@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { CalendarDays } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { EXAM_COUNTDOWN_EVENT, isExamCountdownOn } from '@/lib/examCountdown'
 
 // HKDSE exam start date.
 // ⚠️ UPDATE EACH YEAR with the official HKEAA date once it is announced. This is an
@@ -12,14 +13,22 @@ const DSE_EXAM_DATE = new Date('2027-04-08T00:00:00+08:00')
 
 // A calm, encouraging countdown (因材施教 tone) — a daily-habit nudge, NOT an alarm.
 // Returns null until mounted so the day count never causes an SSR/CSR mismatch.
+// 2026-09-30 (Yuna decision 5): off by default; a student turns it on in /account
+// (考期模式, lib/examCountdown.ts). Returns null while it is off.
 export default function CountdownBanner() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [days, setDays] = useState<number | null>(null)
 
   useEffect(() => {
-    const ms = DSE_EXAM_DATE.getTime() - Date.now()
-    setDays(Math.max(0, Math.ceil(ms / 86_400_000)))
+    const read = () => {
+      if (!isExamCountdownOn()) return setDays(null)
+      const ms = DSE_EXAM_DATE.getTime() - Date.now()
+      setDays(Math.max(0, Math.ceil(ms / 86_400_000)))
+    }
+    read()
+    window.addEventListener(EXAM_COUNTDOWN_EVENT, read)
+    return () => window.removeEventListener(EXAM_COUNTDOWN_EVENT, read)
   }, [])
 
   if (days === null) return null

@@ -481,3 +481,14 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1196/1196；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，1280×800，`/dashboard`）：** 全頁沒有「DNA」「指紋」；兩個標題「你嘅錯誤模式」「錯誤模式（最近 30 日）」；說明句在；側欄連結「錯誤模式」；無水平捲動。
 - **Commit：** 見 git log（`fix(copy): error patterns, not Error DNA`）。
+
+## LOOP 26 — 2026-09-30
+
+- **Slice：** 首頁倒數預設收起，改為學生自行開啟的「考期模式」（創辦人決定 5）。
+- **量度（改動前）：** 每個訪客打開首頁，頂部先見「距 190 日 · 2027 DSE 開考」及一句提示；沒有關閉方法。
+- **影響範圍：** 新增 `lib/examCountdown.ts`、`components/ExamCountdownToggle.tsx`；`components/CountdownBanner.tsx`（關閉時不顯示，聽開關事件）；`app/account/AccountPageClient.tsx`（放在休息日之後）；`components/StoredDataInspector.tsx`（新鍵的說明）；新增測試。
+- **改動：** 新本機鍵 `dse_exam_countdown`（'1' 為開），預設不存在即關。帳戶頁「考期模式」一個 48px 按鈕（`aria-pressed`），說明日期在考評局公布時間表之前是估算。不上雲；不在 `lib/sync.ts`、`lib/settingsSync.ts` 或信任中心的同步鍵內，同步數目仍是 14。
+- **測試：** 新增 `lib/__tests__/exam-countdown.test.mts`（5 項）：預設關、開關往返、儲存被封鎖時當關、橫額關閉時不渲染、開關在帳戶頁且列入本機資料、不是雲端鍵。
+- **驗證：** `npm test` 1201/1201；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 首頁沒有倒數；帳戶頁撳「開啟倒數」（48px）後變「倒數已開」、`aria-pressed=true`；返首頁顯示「距 190 日 · 2027 DSE 開考」。驗證後已刪除測試用的設定。
+- **Commit：** 見 git log（`feat(home): exam countdown only when the student turns it on`）。

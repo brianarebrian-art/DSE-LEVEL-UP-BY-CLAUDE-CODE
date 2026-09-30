@@ -70,6 +70,7 @@ const LABELS: Record<string, { zh: string; en: string }> = {
   dse_calm_lock: { zh: '柔和呈現偏好', en: 'Soft-presentation preference' },
   dse_explain_always_full: { zh: '解析always攤開', en: 'Always expand explanations' },
   dse_locale: { zh: '語言選擇', en: 'Language preference' },
+  dse_exam_countdown: { zh: '考期模式（首頁倒數）開關', en: 'Exam countdown on the home page' },
   dse_easy_font: { zh: '易讀字體開關', en: 'Easy-reading font toggle' },
   dse_font_size: { zh: '字級', en: 'Font size' },
   dse_line_height: { zh: '行距', en: 'Line height' },

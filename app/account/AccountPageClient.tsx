@@ -9,6 +9,7 @@ import { useLocale } from '@/lib/i18n'
 import DataPortability from '@/components/DataPortability'
 import StoredDataInspector from '@/components/StoredDataInspector'
 import RestDayPicker from '@/components/RestDayPicker'
+import ExamCountdownToggle from '@/components/ExamCountdownToggle'
 
 // Account settings — the PDPO one-click erasure (bilingual via useLocale). Deletes the
 // user's server-side data (cloud progress) and clears local data.
@@ -87,6 +88,13 @@ export default function AccountPageClient() {
         {!done && (
           <div className="mt-6">
             <RestDayPicker />
+          </div>
+        )}
+
+        {/* 考期模式（創辦人決定 5，2026-09-30）：首頁倒數預設收起，喺度自己開。 */}
+        {!done && (
+          <div className="mt-6">
+            <ExamCountdownToggle />
           </div>
         )}
 
