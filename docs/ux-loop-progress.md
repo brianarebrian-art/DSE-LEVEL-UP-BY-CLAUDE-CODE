@@ -679,3 +679,13 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
   - 1440×900：左欄 x=72–292（220px）、題目 316–830、回饋 854–1368；右欄右邊在情緒支援掣（x=1376 起）之前；無水平捲動。
   - 1439px：左欄不顯示，題目 x=144、闊 564，與改動前相同。
 - **Commit：** 見 git log（`feat(practice): a context column on wide screens`）。
+
+## LOOP 41 — 2026-09-30
+
+- **Slice：** 刪去虛構的「掌握度 +1」（新 prompt §41；憲章 §8 不虛構數據）。
+- **量度（改動前）：** 進度頁「今日學習光譜」做齊 3:5:2 時顯示「✨ 今日光譜完成，掌握度 +1」。網站沒有任何會因此加一的掌握度數值。其餘掌握度顯示已核對：課題圓環在少於 4 題時已標明樣本少；科目頁（LOOP 32）及練習頁左欄（LOOP 40）都附題數；全站沒有「已掌握」字眼。
+- **影響範圍：** `components/DailySpectrum.tsx`（一句）、新增測試。
+- **改動：** 改為「✨ 今日光譜完成」。
+- **測試：** 新增 `lib/__tests__/no-fake-mastery.test.mts`（2 項）。
+- **驗證：** `npm test` 1240/1240；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。純文案。
+- **Commit：** 見 git log（`fix(copy): no invented mastery +1`）。

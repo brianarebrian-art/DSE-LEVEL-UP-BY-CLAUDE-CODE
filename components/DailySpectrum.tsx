@@ -37,7 +37,8 @@ export default function DailySpectrum() {
         <h2 className="font-medium text-ink">🌈 {en ? "Today's study spectrum" : '今日學習光譜'}</h2>
         {complete && (
           <span className="text-sm font-medium text-accent">
-            ✨ {en ? 'Spectrum complete — mastery +1' : '今日光譜完成，掌握度 +1'}
+            {/* 2026-09-30（LOOP 41）：原文「掌握度 +1」。網站沒有任何會加一的掌握度數值，這是虛構的量。 */}
+            ✨ {en ? 'Today’s spectrum is complete' : '今日光譜完成'}
           </span>
         )}
       </div>
