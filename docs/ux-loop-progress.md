@@ -740,3 +740,12 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - `STALE_CHARTER_COPY`：頁尾及 `/about` 的「等級預測僅供參考」為憲章 §13 逐字條文，本輪不改。
 - `DECISION_CONFLICT`：`/predictor`（練習表現估算）仍以 Level 範圍顯示。Yuna 2026-09-29 決定改名保留；本 prompt 只明確授權結果頁。未改。
 - 測試：`practice-band.test.mts`（新）；`tier-level-bands`、`result-wording`、`result-empty-state`、`result-next-steps`、`prediction-wording`、`trust-hardening` 改錨點（要求不變或更嚴）。
+
+## R2-2 其他頁面的等級外洩（prompt §7）
+
+- `/dashboard`：刪去各科「最佳 5**」標籤；最近練習的等級標籤改為本節表現字眼（`getPracticePerformanceBand`）。
+- `/paper-warrior` 答題紙：「已存 … · 等級 X」刪去等級。`/writing`：自評平均分不再換算成「預估 5**／4／3」，改為中性字眼並註明不是 DSE 等級。
+- `/api/result/verify` 不再回傳 `grade`（前端已不使用）。
+- `/trust`、FAQ、頁尾連結「表現等級點計」改為描述現況。
+- 保留：`dse_progress` 內的 `grade` 欄位（上雲 key，改結構需創辦人決定），只是不再顯示。
+- 測試：`no-grade-leakage.test.mts`。瀏覽器實測：`/dashboard` 兩節顯示「需要鞏固」「相對穩定」、無 5**；`/writing` 三項 7 分顯示「自評相對穩定（不是 DSE 等級）」。

@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { loadSubjectMCQuestions } from '@/data/questions/load'
-import { predictGrade } from '@/lib/grading'
-import { getPracticeCutoffs } from '@/data/cutoffs'
 import { safeLog } from '@/lib/safeLog'
 import { regrade, isSubmittedAnswers, MAX_ANSWERS } from '@/lib/verifyResult'
 
@@ -68,13 +66,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ verified: false, reason: 'no_matching_questions' })
     }
 
-    const grade = predictGrade(score, getPracticeCutoffs(total, body.subjectId), body.subjectId).grade
-
     return NextResponse.json({
       verified: true,
       score,
       total,
-      grade,
       // 幾多條 id 對唔上題庫（通常＝學生揸緊舊 bundle，或者題庫啱啱更新過）
       unmatched: unknownIds.length,
     })

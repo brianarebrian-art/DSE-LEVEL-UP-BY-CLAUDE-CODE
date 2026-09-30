@@ -13,7 +13,7 @@ import {
   type ProgressStats,
 } from '@/lib/progress'
 import { getSubject } from '@/data/subjects'
-import { gradeBgColors } from '@/lib/grading'
+import { getPracticePerformanceBand, PRACTICE_BAND_LABEL } from '@/lib/practiceBand'
 import { useLocale } from '@/lib/i18n'
 import { getTopicStats, weakestTopics, winRate, topicLabel, type TopicStatEntry } from '@/lib/topicStats'
 import RadarChart from '@/components/RadarChart'
@@ -617,10 +617,7 @@ export default function DashboardPageClient() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-ink-muted">{s.questions}{d.questionsUnit}</span>
-                    {/* 字色由 gradeBgColors 逐級配對（深底白字／亮底深字），唔可以喺此硬套 text-black */}
-                    <span className={`text-xs font-medium px-2 py-0.5 rounded ${gradeBgColors[s.bestGrade] ?? 'bg-slate-500 text-white'}`}>
-                      {d.bestPrefix}{s.bestGrade}
-                    </span>
+                    {/* 2026-09-30（改進循環 2）：刪去「最佳 5**」等級標籤。每節由十題推出的等級不是 DSE 等級。 */}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -672,8 +669,12 @@ export default function DashboardPageClient() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>{a.score}/{a.total}</span>
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded ${gradeBgColors[a.grade] ?? 'bg-slate-500 text-white'}`}>
-                    {a.grade}
+                  {/* 2026-09-30：原本顯示該節的 DSE 等級（5** 等），改為本節表現字眼。 */}
+                  <span className="text-xs text-ink-muted">
+                    {(() => {
+                      const l = PRACTICE_BAND_LABEL[getPracticePerformanceBand(a.score, a.total)]
+                      return locale === 'en' ? l.en : l.zh
+                    })()}
                   </span>
                 </div>
               </div>

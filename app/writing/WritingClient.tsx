@@ -60,12 +60,12 @@ const VOCAB: { phrase: string; meaning: string; example: string }[] = [
   { phrase: 'the hallmark of creative expression', meaning: 'the defining quality or mark of genuine creativity', example: 'Emotional depth, many argue, remains the hallmark of creative expression.' },
 ]
 
+// 2026-09-30（改進循環 2）：原本把自評平均分換算成「預估 5**／4／3」。
+// 學生自己打的分數推不出 DSE 等級，改為中性描述，並寫明不是等級。
 function bandLabel(avg: number, en: boolean): string {
-  if (avg >= 6.5) return en ? 'Estimated 5** — exceptional' : '預估 5** — 卓越'
-  if (avg >= 5.5) return en ? 'Estimated 5*/5 — strong' : '預估 5*/5 — 優秀'
-  if (avg >= 4.5) return en ? 'Estimated 4 — on target' : '預估 4 — 達標'
-  if (avg >= 3) return en ? 'Estimated 3 — developing' : '預估 3 — 待提升'
-  return en ? 'Estimated 1–2 — needs rebuilding' : '預估 1–2 — 須重建基礎'
+  if (avg >= 5.5) return en ? 'Self-rated fairly steady — not a DSE level' : '自評相對穩定（不是 DSE 等級）'
+  if (avg >= 3.5) return en ? 'Self-rated developing — not a DSE level' : '自評發展中（不是 DSE 等級）'
+  return en ? 'Self-rated needs consolidating — not a DSE level' : '自評需要鞏固（不是 DSE 等級）'
 }
 
 export default function WritingClient() {
@@ -245,7 +245,7 @@ export default function WritingClient() {
           )}
           {rated > 0 && rated < 3 && (
             <p className="mt-4 text-xs text-ink-muted text-center">
-              {tr('為三個範疇都評分後即顯示綜合等級。', 'Rate all three domains to see your overall band.')}
+              {tr('為三個範疇都評分後即顯示綜合自評。', 'Rate all three domains to see your overall self-assessment.')}
             </p>
           )}
         </div>

@@ -412,7 +412,7 @@ export default function AnswerSheetClient() {
               <h2 className="text-base font-medium text-ink">{tr('乙部 · 書寫題', 'Section B · Written')}</h2>
               <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                 {tr(
-                  '書寫題永遠唔會由機器批改。下面出參考答案同評分準則，你自己對住張紙評 —— 呢部分唔會計入上面個成績同等級，只會餵你嘅課題掌握度。',
+                  '書寫題永遠唔會由機器批改。下面出參考答案同評分準則，你自己對住張紙評 —— 呢部分唔會計入上面個分數，只會記入你嘅課題練習紀錄。',
                   'Written questions are never machine-marked. Below is a model answer and marking scheme for you to judge your own work — this section never counts toward the score or grade above; it only feeds your topic mastery.',
                 )}
               </p>
@@ -588,8 +588,8 @@ export default function AnswerSheetClient() {
               <div className="mt-4 rounded-xl border border-accent/30 bg-accent/[0.07] p-3" role="status">
                 <p className="text-sm font-medium text-accent-strong">
                   {tr(
-                    `已存：${saved.total} 題入面啱咗 ${saved.score} 題 · 等級 ${saved.grade}`,
-                    `Saved: ${saved.score} of ${saved.total} correct · grade ${saved.grade}`,
+                    `已存：${saved.total} 題入面啱咗 ${saved.score} 題`,
+                    `Saved: ${saved.score} of ${saved.total} correct`,
                   )}
                 </p>
                 <p className="mt-1 text-xs text-ink-muted">

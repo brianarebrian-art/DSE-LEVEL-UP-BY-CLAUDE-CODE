@@ -198,8 +198,8 @@ export default function PaperWarriorClient() {
               </div>
               <p className="mt-1.5 text-xs leading-relaxed text-ink-muted">
                 {tr(
-                  '書寫題冇客觀對錯，對答案時出參考答案同評分準則畀你自評，唔會計入上面嗰個分數同等級。',
-                  'Written questions have no objective right answer: the answer sheet shows a model answer and marking scheme for you to self-assess. They never count toward the score or grade above.',
+                  '書寫題冇客觀對錯，對答案時出參考答案同評分準則畀你自評，唔會計入上面嗰個分數。',
+                  'Written questions have no objective right answer: the answer sheet shows a model answer and marking scheme for you to self-assess. They never count toward the score above.',
                 )}
               </p>
             </div>

@@ -108,11 +108,11 @@ export default function TrustClient() {
         />
         <Card
           href="/prediction-method"
-          q={en ? 'Where does my level come from?' : '我個等級係點嚟？'}
+          q={en ? 'How are the practice figures worked out?' : '練習表現點計出嚟？'}
           a={
             en
-              ? 'From your MC accuracy compared against approximate bands, shown as a range because the sample is small. The whole table is published.'
-              : '由你嘅 MC 答對率同近似分界線對照而來，因為樣本細所以顯示成一個範圍。成張表都貼咗出嚟。'
+              ? 'The result page shows your score and one plain word about the session, never a DSE level. The cumulative estimate and its limits are explained in full.'
+              : '結果頁只顯示答對題數同一個描述今節嘅字眼，唔會出 DSE 等級。累積估算點計、有咩限制，全部寫晒出嚟。'
           }
           cta={en ? 'The full method' : '完整計法'}
         />

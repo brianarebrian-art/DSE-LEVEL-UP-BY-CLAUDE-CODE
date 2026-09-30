@@ -16,7 +16,7 @@ import TrustClient from './TrustClient'
 export const metadata: Metadata = {
   title: '信任中心 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
   // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
-  description: '一版睇齊：我哋係邊個、唔係咩、題目點嚟、資料點處理同等級點計。每項都有得查。', // i18n-exempt
+  description: '一版睇齊：我哋係邊個、唔係咩、題目點嚟、資料點處理同練習表現點計。每項都有得查。', // i18n-exempt
 }
 
 export default function Page() {

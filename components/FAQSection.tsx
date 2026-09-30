@@ -41,8 +41,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '練習表現估算準唔準？', qEn: 'How accurate is the practice performance estimate?',
-    aZh: `只係按你喺本平台表現嘅自我評估參考，並非官方預測，亦唔構成任何成績保證。結果頁會直接寫出範圍同埋點解會咁闊 —— ${SESSION_SIZE} 題嘅樣本分辨唔到相鄰等級，我哋唔會扮分辨到。做多幾節，個範圍會自然收窄。最終成績以 HKEAA 公布為準。`,
-    aEn: `It is a self-assessment reference based on your practice here — not an official prediction and never a guarantee. The result page states the range and why it is wide: ${SESSION_SIZE} questions cannot separate neighbouring levels, and we will not pretend otherwise. The range narrows as you complete more sets.`,
+    aZh: `只係按你喺本平台表現嘅自我評估參考，並非官方預測，亦唔構成任何成績保證。結果頁唔會出 DSE 等級，只寫你答對幾多題同今節表現；${SESSION_SIZE} 題分辨唔到相鄰等級，我哋唔會扮分辨到。累積估算喺「練習表現估算」頁，做多幾節範圍會收窄。最終成績以 HKEAA 公布為準。`,
+    aEn: `It is a self-assessment reference based on your practice here — not an official prediction and never a guarantee. The result page shows no DSE level, only your score and a word about the session: ${SESSION_SIZE} questions cannot separate neighbouring levels, and we will not pretend otherwise. The cumulative estimate is on its own page, and its range narrows as you complete more sets.`,
   },
   {
     qZh: 'SEN 同學有咩支援？', qEn: 'What support is there for SEN students?',
