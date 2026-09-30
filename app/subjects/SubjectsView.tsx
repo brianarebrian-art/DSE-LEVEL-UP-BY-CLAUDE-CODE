@@ -285,7 +285,7 @@ export default function SubjectsView() {
         >
           <Printer size={15} aria-hidden />
           {t.nav.paper}
-          {en ? ': printable A4 paper' : '：打印 A4 練習卷'}
+          {en ? ' (A4, pen and paper)' : '（A4，用紙筆做）'}
         </Link>
 
         {/* Footer note */}

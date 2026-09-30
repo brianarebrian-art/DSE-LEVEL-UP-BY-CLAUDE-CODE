@@ -15,7 +15,7 @@ import AnswerSheetClient from './AnswerSheetClient'
 export const metadata: Metadata = {
   title: '紙筆對答案 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
   description:
-    '掃描紙筆戰士試卷上的 QR 或輸入卷號，即時顯示全卷正確答案與解析。對照紙上答案自行批改，答錯可自診概念盲區、審題陷阱或運算粗心，成績併入個人進度。', // i18n-exempt: 靜態 SEO meta description
+    '掃描列印練習卷上的 QR 或輸入卷號，即時顯示全卷正確答案與解析。對照紙上答案自行批改，答錯可自診概念盲區、審題陷阱或運算粗心，成績併入個人進度。', // i18n-exempt: 靜態 SEO meta description
   alternates: { canonical: '/answer-sheet' },
 }
 
@@ -26,7 +26,7 @@ export default function AnswerSheetPage() {
         <h1>紙筆對答案 · Paper answer sheet{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
         <p>掃描「紙筆戰士」列印卷上的 QR 碼，或輸入卷號，系統會以同一組亂數重建完全相同的試卷，並即時顯示全卷正確答案與解析。你可對照紙上答案逐題自行批改，就答錯的題目自我診斷錯因（概念盲區、審題陷阱、運算粗心），並將成績存入個人進度與錯因雷達。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
         <p>
-          Scan the QR code on a printed Paper Warrior paper, or enter its paper code, to rebuild the identical
+          Scan the QR code on a printed practice set, or enter its paper code, to rebuild the identical
           paper and see every correct answer and explanation immediately. Mark your paper against it, log the
           cause of each mistake, and save the result to your progress. Not affiliated with the HKEAA.
         </p>

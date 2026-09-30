@@ -7,7 +7,8 @@ const zh = {
     progress: '我的進度',
     methodology: '方法論',
     about: '關於我們',
-    paper: '紙筆戰士',
+    // 2026-09-30（LOOP 36）：主名稱用學生認得的「列印練習卷」，「紙筆戰士」只作頁面副題。
+    paper: '列印練習卷',
     notes: '知識凝結',
     // 2026-09-26 Yuna：非 DSE 考核範圍嘅內容集中喺呢度，入口只喺三橫選單同側欄。
     offSyllabus: '不考之地',
@@ -497,7 +498,7 @@ const en: typeof zh = {
     progress: 'My Progress',
     methodology: 'Method',
     about: 'About',
-    paper: 'Paper Warrior',
+    paper: 'Printable practice set',
     notes: 'Notes',
     offSyllabus: 'Off the Syllabus',
     startPractice: 'Start Practice',

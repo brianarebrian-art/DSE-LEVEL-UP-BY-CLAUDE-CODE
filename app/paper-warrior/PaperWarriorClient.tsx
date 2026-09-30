@@ -99,8 +99,9 @@ export default function PaperWarriorClient() {
         <header className="mb-6">
           <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
             <FileText size={22} className="text-accent" />
-            {tr('紙筆戰士', 'Paper Warrior')}
+            {tr('列印練習卷', 'Printable practice set')}
           </h1>
+          <p className="mt-0.5 text-xs text-ink-muted">{tr('紙筆戰士', 'Paper Warrior')}</p>
           <p className="mt-1 text-sm text-ink-muted">
             {tr(
               '印一份出嚟，用紙同筆好好咁做一次。做完返嚟對答案，錯嘅照樣入錯題紀錄。',
@@ -270,7 +271,7 @@ export default function PaperWarriorClient() {
         <article className="paper-sheet mt-8 rounded-2xl border border-line bg-surface-raised p-8 text-ink">
           <header className="mb-5 border-b border-line-strong pb-3">
             <h2 className="text-lg font-semibold">
-              DSE Level Up — {tr('紙筆戰士', 'Paper Warrior')}
+              DSE Level Up — {tr('列印練習卷', 'Printable practice set')}
             </h2>
             <p className="mt-0.5 text-xs text-ink-soft">
               {tr('科目', 'Subject')}：{en ? subjectMeta?.nameEn : subjectMeta?.name}
@@ -377,8 +378,8 @@ export default function PaperWarriorClient() {
             </p>
             <p className="mt-0.5">
               {tr(
-                '做完想對答案：掃左邊個 QR 碼就會即刻開對答案頁；冇相機都得，喺 DSE Level Up 開「紙筆戰士 → 對答案」，打返上面個卷號一樣重開到同一份卷。',
-                'To check your answers: scan the QR code on the left to open the answer sheet directly. No camera? Open “Paper Warrior → Answer sheet” on DSE Level Up and enter the paper code above.',
+                '做完想對答案：掃左邊個 QR 碼就會即刻開對答案頁；冇相機都得，喺 DSE Level Up 開「列印練習卷 → 對答案」，打返上面個卷號一樣重開到同一份卷。',
+                'To check your answers: scan the QR code on the left to open the answer sheet directly. No camera? Open “Printable practice set → Answer sheet” on DSE Level Up and enter the paper code above.',
               )}
             </p>
             <p className="mt-1.5 text-ink-muted">

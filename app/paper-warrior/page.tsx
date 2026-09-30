@@ -5,9 +5,9 @@ import PaperWarriorClient from './PaperWarriorClient'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '模擬卷練習 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
+  title: '列印練習卷 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
   // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
-  description: '計時模擬卷，做完即見錯因分佈。全部原創改寫題，並非 HKEAA 官方試題。', // i18n-exempt
+  description: '列印 A4 練習卷，用紙筆做完再返嚟對答案，錯題照樣記入進度。全部原創題，並非 HKEAA 官方試題。', // i18n-exempt
 }
 
 export default function PaperWarriorPage() {

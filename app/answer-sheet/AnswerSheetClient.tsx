@@ -293,7 +293,7 @@ export default function AnswerSheetClient() {
           <p className="mt-3 text-xs text-ink-muted">
             {tr('未有卷？', 'No paper yet?')}{' '}
             <Link href="/paper-warrior" className="text-accent-strong underline underline-offset-2">
-              {tr('去紙筆戰士印一份', 'Print one in Paper Warrior')}
+              {tr('去「列印練習卷」印一份', 'Print one from the printable practice set page')}
             </Link>
           </p>
         )}

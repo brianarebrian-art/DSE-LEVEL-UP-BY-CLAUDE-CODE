@@ -605,3 +605,14 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1227/1227；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812）：** AI 標示仍在最上；h1「知識卡」；三條起手問題各 44px；撳第一條後顯示判別式的卡；無水平捲動。
 - **Commit：** 見 git log（`feat(sensei): call it knowledge cards and offer questions that find one`）。
+
+## LOOP 36 — 2026-09-30
+
+- **Slice：** 「紙筆戰士」改為次要名稱，主名稱用「列印練習卷」（新 prompt §24，P1）。
+- **量度（改動前）：** 頁尾、科目列表、對答案頁都用「紙筆戰士」作連結文字，學生要點入去才知道是列印練習卷；頁面 `<title>`「模擬卷練習」及描述「計時模擬卷」又是另一個名稱，而一份只有 10 題，不是完整模擬卷。
+- **影響範圍：** `lib/dictionary.ts`（`nav.paper`）、`app/paper-warrior/{PaperWarriorClient,page}.tsx`、`app/subjects/SubjectsView.tsx`、`app/answer-sheet/{AnswerSheetClient,page}.tsx`、新增測試。路由 `/paper-warrior` 不變；已印出的試卷上的 QR 連結不受影響。
+- **改動：** 連結及 h1 用「列印練習卷／Printable practice set」；h1 下面細字「紙筆戰士」；科目列表連結「列印練習卷（A4，用紙筆做）」；`<title>` 及描述統一為列印練習卷，不再稱「計時模擬卷」。
+- **測試：** 新增 `lib/__tests__/plain-vocabulary.test.mts`（2 項）。
+- **驗證：** `npm test` 1229/1229；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** `/paper-warrior` h1「列印練習卷」、副題「紙筆戰士」；科目列表及頁尾連結為新名稱；無水平捲動。
+- **Commit：** 見 git log（`fix(copy): call the printable set what it is`）。
