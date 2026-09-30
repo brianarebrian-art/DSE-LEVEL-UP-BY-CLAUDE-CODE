@@ -18,6 +18,7 @@
 import { dueReviews } from '@/lib/reviewSchedule'
 import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { weakestTopics, topicLabel } from '@/lib/topicStats'
+import { MIN_EVIDENCE } from '@/lib/topicEvidence'
 import { loadAttempts } from '@/lib/progress'
 import { getSubject } from '@/data/subjects'
 
@@ -174,13 +175,13 @@ export function buildSuggestions(now: number = Date.now()): Suggestion[] {
   }
 
   // ④ 考試節點建議 —— 刻意唔帶倒數數字（見檔頭）
-  const weak = weakestTopics({ min: 2, limit: 1 })[0]
+  const weak = weakestTopics({ min: MIN_EVIDENCE, limit: 1 })[0]
   if (weak) {
     out.push({
       id: `exam:${weak.key}:${todayStr(now)}`,
       kind: 'exam',
-      zh: `想喺考場穩陣啲，「${topicLabel(weak, false)}」係最抵溫嗰個 —— 練返幾條。`,
-      en: `If you want a steadier exam day, “${topicLabel(weak, true)}” is the highest-yield one to drill.`,
+      zh: `「${topicLabel(weak, false)}」最近較需要鞏固 —— 練返幾條。`,
+      en: `“${topicLabel(weak, true)}” recently needs consolidating — try a few.`,
       href: `/practice?subject=${weak.subjectId}&topic=${encodeURIComponent(weak.topic)}`,
       actionZh: '去練',
       actionEn: 'Drill it',

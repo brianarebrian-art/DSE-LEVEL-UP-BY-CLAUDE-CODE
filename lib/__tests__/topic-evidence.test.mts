@@ -33,16 +33,7 @@ test('no label ever says mastered', () => {
   }
 })
 
-test('next step: weakest topic with evidence, else first untried, else none', () => {
-  const topics = [{ id: 'a', count: 10 }, { id: 'b', count: 10 }, { id: 'c', count: 10 }, { id: 'w', count: 5, mcCount: 0 }]
-  assert.deepEqual(T.nextStep(topics, { a: { total: 10, wrong: 2 }, b: { total: 10, wrong: 6 }, c: { total: 3, wrong: 3 } }),
-    { kind: 'weak', topicId: 'b', evidence: T.topicEvidence({ total: 10, wrong: 6 }) })
-  // Three wrong out of three is not evidence enough to pick c.
-  assert.deepEqual(T.nextStep(topics, { a: { total: 20, wrong: 0 }, b: { total: 20, wrong: 1 } }), { kind: 'untried', topicId: 'c' })
-  assert.equal(T.nextStep(topics, { a: { total: 20, wrong: 0 }, b: { total: 20, wrong: 0 }, c: { total: 20, wrong: 0 } }), null)
-  // A written-only topic is never suggested for an MC session.
-  assert.notEqual(T.nextStep([{ id: 'w', count: 5, mcCount: 0 }], {})?.topicId, 'w')
-})
+// The next-step rules moved to recommend-next.test.mts with recommendNextPractice (2026-09-30).
 
 test('the subject page shows the panel and per-topic lines from local data only', () => {
   const view = readFileSync('app/subjects/[subject]/SubjectDetailView.tsx', 'utf8')

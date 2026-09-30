@@ -374,7 +374,7 @@ export default function ResultPageClient() {
                 >
                   <span className="min-w-0">
                     <span className="block text-xs text-ink-muted">
-                      {en ? `Weakest this time: ${steps.weakest.correct}/${steps.weakest.total}` : `今次最弱：${steps.weakest.correct}/${steps.weakest.total}`}
+                      {en ? `Needs consolidating this time: ${steps.weakest.correct}/${steps.weakest.total}` : `今次較需要鞏固：${steps.weakest.correct}/${steps.weakest.total}`}
                     </span>
                     <span className="block font-medium">
                       {en ? `Practise ${steps.weakest.label}` : `練返「${steps.weakest.label}」`}

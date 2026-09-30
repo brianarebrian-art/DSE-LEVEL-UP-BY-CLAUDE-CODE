@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { CalendarCheck, ArrowRight } from 'lucide-react'
 import { weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
+import { MIN_EVIDENCE } from '@/lib/topicEvidence'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 
@@ -20,7 +21,8 @@ export default function DailyPlan() {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    setItems(weakestTopics({ min: 1, limit: 3 }))
+    // 2026-09-30（改進循環 2）：原本 min: 1，答過一題就可以被列為要溫的課題。
+    setItems(weakestTopics({ min: MIN_EVIDENCE, limit: 3 }))
     setReady(true)
   }, [])
 
@@ -44,8 +46,8 @@ export default function DailyPlan() {
         <>
           <p className="text-sm text-ink-muted mb-4">
             {en
-              ? 'Do a few practices first and we’ll build a focused plan from your weakest topics.'
-              : '先做幾份練習，我哋就會用你最弱嘅課題砌出一個專屬計劃。'}
+              ? `Once a topic has ${MIN_EVIDENCE} or more answers, the ones that need consolidating show up here.`
+              : `一個課題做夠 ${MIN_EVIDENCE} 題之後，較需要鞏固嘅課題就會喺度出現。`}
           </p>
           <Link
             href="/subjects"
@@ -58,8 +60,8 @@ export default function DailyPlan() {
         <>
           <p className="text-sm text-ink-muted mb-4">
             {en
-              ? 'Your 3 weakest topics — clear them one by one.'
-              : '你 3 個最弱嘅課題 —— 逐個擊破。'}
+              ? 'Recently needs consolidating — one at a time.'
+              : '最近較需要鞏固嘅課題 —— 一個一個嚟。'}
           </p>
           <div className="space-y-2.5">
             {items.map((it) => {

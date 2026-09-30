@@ -762,3 +762,14 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 | `content-stats`、`count-sources` 測試內的舊數字 | 註釋或反向自測 fixture | 保留 |
 
 `app/`、`components/`、`lib/` 無其他 hard-code 題數。
+
+## R2-4 Adaptive Recommendation V1（prompt §8–§13、§40）
+
+- 新增 `lib/recommendNext.ts`：`recommendNextPractice({subject, questionCounts, topicEvidence, recentErrors, recentSessions})` → `{subject, topic, reason, estimatedMinutes}`。零 migration，只讀本機已有的 `dse_topic_stats`、`dse_reverse_log`、`dse_progress` 及已發布題數。
+  - 次序：①本科最近 10 次答錯（14 日內）集中在同一課題（≥2 次，且該課題已答 ≥5 題）；②已答 ≥5 題、未達「穩定」中答對率最低；③未試過的課題。
+  - 只推薦有已發布選擇題的課題；剛以 80% 以上完成的課題（3 小時內）不即時再推。
+  - 取代 `topicEvidence.nextStep()`（已移除，測試搬到 `recommend-next.test.mts`）。
+- 科目頁「你喺呢科」改用此函數，原因句寫「最近較需要鞏固：…」，不說「最弱」。
+- 同一門檻套用到 `DailyPlan`（原本答 1 題即列入）及 `gentleSuggestions`（原本 2 題）；結果頁「今次最弱」改「今次較需要鞏固」。
+- 瀏覽器實測（production）：`/subjects/math` 顯示「建議下一步：「概率」。最近較需要鞏固：你喺呢科最近 3 次答錯，有 3 次喺呢個課題。」；按鈕 48px，點擊後到 `/practice?subject=math&topic=probability`。
+- 未做（下一個 project）：skill graph、learner model、變體生成、mastery 更新。無資料庫改動。

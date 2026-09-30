@@ -35,30 +35,7 @@ export const LEVEL_LABEL: Record<Exclude<TopicLevel, 'unknown'>, { zh: string; e
   steady: { zh: '穩定', en: 'steady' },
 }
 
-export type NextStep =
-  | { kind: 'weak'; topicId: string; evidence: TopicEvidence }
-  | { kind: 'untried'; topicId: string }
-
-/**
- * The one topic most worth the next ten minutes: the lowest-accuracy topic that has
- * enough evidence and is not yet steady; failing that, the first topic with MC questions
- * the student has not tried; otherwise nothing.
- */
-export function nextStep(
-  topics: readonly { id: string; mcCount?: number; count: number }[],
-  statsByTopic: Readonly<Record<string, { total: number; wrong: number }>>,
-): NextStep | null {
-  const withMc = topics.filter((t) => (t.mcCount ?? t.count) > 0)
-  let best: { topicId: string; evidence: TopicEvidence } | null = null
-  for (const t of withMc) {
-    const e = topicEvidence(statsByTopic[t.id])
-    if (e.level !== 'weak' && e.level !== 'fair') continue
-    if (!best || e.accuracy < best.evidence.accuracy) best = { topicId: t.id, evidence: e }
-  }
-  if (best) return { kind: 'weak', ...best }
-  const untried = withMc.find((t) => !(statsByTopic[t.id]?.total > 0))
-  return untried ? { kind: 'untried', topicId: untried.id } : null
-}
+// nextStep() moved into lib/recommendNext.ts (recommendNextPractice) on 2026-09-30.
 
 /** 本科最需要練的課題：有足夠題數、未達「穩定」、答對率最低的幾個（練習頁 1440px 左欄，LOOP 40）。 */
 export function weakestInSubject<R extends { subjectId: string; total: number; wrong: number }>(
