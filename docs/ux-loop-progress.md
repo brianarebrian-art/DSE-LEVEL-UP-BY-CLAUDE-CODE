@@ -553,3 +553,17 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1215/1215；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，1280×800）：** 測試瀏覽器有紀錄時 `/start` → `/practice?subject=economics`；暫時移走紀錄後 `/start` → `/subjects`（驗證後已放回）；首頁頂欄「開始練習」`href="/start"`。
 - **Commit：** 見 git log（`feat(nav): 開始練習 resumes or starts practice for returning students`）。
+
+## LOOP 32 — 2026-09-30
+
+- **Slice：** 科目頁回答「下一步做咩」，逐課題顯示答對率連證據量（新 prompt §9、§41，P1）。
+- **量度（改動前）：** 科目頁只列題數、課題及題數；回訪學生看不到自己上次做到哪裏、哪個課題最弱，要自己去進度頁找。
+- **影響範圍：** 新增 `lib/topicEvidence.ts`（純函數）、`components/SubjectProgressPanel.tsx`；`app/subjects/[subject]/SubjectDetailView.tsx`（放卡片、課題卡加一行）；新增測試。只讀本機已有的 `dse_progress`、`dse_topic_stats`，不寫入、不上傳。
+- **改動：**
+  - 科目頁頂「你喺呢科」：上次練習日期及分數；建議下一步，並附「做 10 題『X』· 約 15 分鐘」（48px）。建議的課題按以下次序選：有至少 5 題紀錄、未達「穩定」、答對率最低的課題；沒有的話選第一個未做過、有選擇題的課題；兩者都沒有就不建議。卡底註明「只按你喺呢部機嘅練習計。做得少嘅課題，只當參考。」沒有紀錄的學生不會見到這張卡。
+  - 每張課題卡加一行：不足 5 題寫「做過 N 題，未夠判斷」；5 題以上寫「答對 62% · 一般 · 13 題（證據少）」。評語只有「要加強／一般／穩定」，永不寫「已掌握」；不足 15 題加「證據少」。
+- **測試：** 新增 `lib/__tests__/topic-evidence.test.mts`（5 項）：不足 5 題無評語；評語門檻及「證據少」；壞紀錄不出不可能的數字；沒有「掌握」字眼；下一步的選擇次序（證據不足不選、純書寫課題不選）；頁面接線及 hook 在提早 return 之前。
+- **驗證：** `npm test` 1220/1220；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812，`/subjects/math`，測試瀏覽器有少量紀錄）：** 卡片顯示「上次練習：9月30日，4 / 10」「建議下一步：『概率』，你喺呢度仲未做過」，按鈕 48px 連去 `?topic=probability`；做過的課題顯示「做過 1 題，未夠判斷」；「綜合練習」仍在首屏；無水平捲動。
+- **未做：** prompt §15–§18 的 adaptive loop（同構題 → 轉移題）、learner model、每題的 variant taxonomy。題庫沒有「同一技能」及「變體類型」欄位；要做須為 26,000 題加標記，屬題庫結構改動（憲章 §6 先查影響）。本輪的建議只用現有的課題統計。
+- **Commit：** 見 git log（`feat(subject): what to do next, with the evidence behind it`）。

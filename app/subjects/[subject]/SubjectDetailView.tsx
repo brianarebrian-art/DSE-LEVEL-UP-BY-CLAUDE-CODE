@@ -8,6 +8,8 @@ import { useLocale } from '@/lib/i18n'
 import { SESSION_SIZE, sessionMinutes } from '@/lib/entitlements'
 import ElectiveSelector from '@/components/ElectiveSelector'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import SubjectProgressPanel, { evidenceLine, useSubjectTopicTally } from '@/components/SubjectProgressPanel'
+import { topicEvidence } from '@/lib/topicEvidence'
 import { isMCExamFormat, PAPER_STRUCTURE, QUESTION_KIND_LABELS } from '@/data/dse-paper-formats'
 
 export default function SubjectDetailView({
@@ -38,6 +40,8 @@ export default function SubjectDetailView({
   const name = en ? meta.nameEn : meta.name
   const short = en ? meta.shortEn : meta.short
   const description = en ? meta.descriptionEn : meta.description
+  // 本科逐課題的本機統計（LOOP 32）。hook 必須在任何提早 return 之前呼叫。
+  const tally = useSubjectTopicTally(meta.id)
 
   // Subject exists but has no live content yet → coming soon view.
   if (!meta.isActive || questionsCount === 0) {
@@ -87,6 +91,8 @@ export default function SubjectDetailView({
   // 跟隨 DOM，視覺次序與閱讀次序不一致會違反 WCAG 1.3.2／2.4.3。
   const mcCard = (
     <>
+    {/* 你喺呢科（LOOP 32）：上次練習及建議下一步；沒有紀錄時不顯示。 */}
+    <SubjectProgressPanel subjectId={meta.id} topics={topics} tally={tally} />
     {/* Quick start banner */}
     <div className={`rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${examHasMC ? 'bg-accent/[0.05] border border-accent/20' : 'bg-surface-raised border border-line'}`}>
       <div>
@@ -412,6 +418,10 @@ export default function SubjectDetailView({
                     {sd.topicFwPrefix}{en ? (topic.frameworkEn ?? topic.framework) : topic.framework}{sd.topicCountA}
                     {writtenOnly ? `${written}${sd.topicWrittenCountB}` : `${topic.count}${sd.topicCountB}`}
                   </div>
+                  {/* 本機答對率及題數（LOOP 32）。題數未夠只講題數，永不寫「已掌握」。 */}
+                  {tally && tally[topic.id]?.total > 0 && (
+                    <div className="mt-1 text-xs text-ink-soft">{evidenceLine(topicEvidence(tally[topic.id]), en)}</div>
+                  )}
                 </div>
               </div>
               <svg
