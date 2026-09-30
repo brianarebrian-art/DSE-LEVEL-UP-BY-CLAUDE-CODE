@@ -9,7 +9,7 @@ import {
 } from '@/data/subjects'
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { useLocale } from '@/lib/i18n'
-import { bestSimilarity, FUZZY_THRESHOLD } from '@/lib/fuzzy'
+import { searchSubjects } from '@/lib/subjectSearch'
 import { quickStartHref } from '@/lib/quickStart'
 import { SESSION_SIZE } from '@/lib/entitlements'
 
@@ -44,17 +44,18 @@ export default function SubjectsView() {
   // 原本打錯一個字就會得出「搵唔到符合嘅科目」—— 讀寫障礙學生往往因此以為
   // 平台冇呢一科而放棄。現時「數學」打成「數学」、「economics」打漏一個字母
   // 一樣搵得到。實作見 lib/fuzzy.ts（純函數、11 個測試覆蓋、零依賴）。
+  //
+  // 2026-09-30（UX 循環 LOOP 9）：加入學生常用簡稱（通識、電腦、家政、TL、Chem…），並在
+  // 預設排序下按相關度排列，完全吻合簡稱的科目排第一。實測及別名表見 lib/subjectSearch.ts。
   const q = query.trim()
-  const searchable = (s: SubjectMeta) => [s.name, s.nameEn, s.short, s.shortEn]
-  const matches = (s: SubjectMeta) =>
-    (!q || bestSimilarity(q, searchable(s)) >= FUZZY_THRESHOLD) &&
-    (category === 'all' || s.category === category)
+  const inCategory = (s: SubjectMeta) => category === 'all' || s.category === category
+  const matched = searchSubjects(subjects, q).filter(inCategory)
   const sortGroup = (group: SubjectMeta[]) => {
     if (sort === 'az') return [...group].sort((a, b) => name(a).localeCompare(name(b)))
     if (sort === 'live') return [...group].sort((a, b) => Number(b.isActive) - Number(a.isActive))
     return group
   }
-  const totalMatched = subjects.filter(matches).length
+  const totalMatched = matched.length
 
   const ActiveCard = ({ s }: { s: SubjectMeta }) => {
     // 2026-08-21：呢度本來係一個「✓ 已上線」徽章。信譽審核 §5 指出「已上線」
@@ -165,11 +166,14 @@ export default function SubjectsView() {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              type="search"
+              aria-label={en ? 'Search subjects, e.g. Chem, ICT, 通識' : '搜尋科目，例如：數學、Chem、通識'}
               placeholder={en ? 'Search subjects…' : '搜尋科目…'}
               className="w-full bg-surface-raised border border-line-strong rounded-xl pl-9 pr-3 py-2.5 text-sm text-ink-soft placeholder-ink-muted focus:border-accent/50 focus:outline-none"
             />
           </div>
           <select
+            aria-label={en ? 'Sort subjects' : '科目排序'}
             value={sort}
             onChange={(e) => setSort(e.target.value as 'default' | 'az' | 'live')}
             className="bg-surface-raised border border-line-strong rounded-xl px-3 py-2.5 text-sm text-ink-soft focus:border-accent/50 focus:outline-none"
@@ -220,7 +224,7 @@ export default function SubjectsView() {
 
         {/* One flat grid — every subject is free and open to everyone. */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {sortGroup(subjects.filter(matches)).map((s) =>
+          {sortGroup(matched).map((s) =>
             s.isActive ? (
               <ActiveCard key={s.id} s={s} />
             ) : (

@@ -43,7 +43,7 @@ test('the start link is a 48px target with a name that includes its visible text
 })
 
 test('the printable-paper mode keeps an entry on this page, after the subject grid', () => {
-  const grid = code.indexOf('sortGroup(subjects.filter(matches))')
+  const grid = code.indexOf('sortGroup(matched)')
   const paper = code.indexOf('href="/paper-warrior"')
   assert.ok(grid > 0 && paper > grid, 'paper-warrior link after the grid')
 })

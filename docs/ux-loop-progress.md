@@ -175,3 +175,20 @@
   - 鍵盤快捷鍵已有題目卡下方的提示（1–4／A–D、Enter、Shift+F），未加獨立說明頁。
 - **下一輪最高優先問題：** P1-F。錯因只寫入標籤：自診「概念盲區／審題陷阱／運算粗心」之後，同一頁沒有連去相似變式或按錯因練習（`?mode=cause`）的入口。
 - **Commit：** 見 git log（`feat(practice): show question and feedback side by side on wide screens`）。
+
+## LOOP 9 — 2026-09-30
+
+- **Slice：** 科目搜尋認得學生常用簡稱，並按相關度排序（P0-B「alias search」）。
+- **優先級：** P0。
+- **量度（改動前，以現有錯字容忍比對逐一試）：** 「通識」「電腦」「家政」「TL」「Liberal Studies」完全沒有結果；「LS」只配到數學；「ICT」配到 6 科、「eng」配到 6 科，並按頁面預設次序排列（ICT 排在 M2、M1 之後）。
+- **影響範圍：** 新增 `lib/subjectSearch.ts`（別名表及排序）；`app/subjects/SubjectsView.tsx` 改用它，並為搜尋框及排序選單加上 `aria-label`（以前只有 placeholder）；一個舊測試的定位字串跟着改名；新增測試。
+- **改動：**
+  - 別名只作搜尋用途，不會顯示：例如 公民與社會發展「通識／公社／Liberal Studies／LS」、資訊及通訊科技「電腦」、科技與生活「家政／TL」、化學「Chem」、物理「Phy」。
+  - 查詢等於簡稱或別名時得 1 分，排第一；其餘仍用原有錯字容忍比對。預設排序下按分數排列（同分維持原次序）；選「名稱 A–Z」或「已上線優先」時照用戶選擇。
+  - 搜尋框改為 `type="search"`，`aria-label` 附例子。
+- **測試：** 新增 `lib/__tests__/subject-search.test.mts`（8 項）：以前找不到的五個名稱；LS 改配公民；簡稱完全吻合排第一（ICT、eng、Chem、phy、中文、英文、數學、M2）；錯字容忍仍然有效（數学、economcs）；空查詢保持原次序；每個別名都屬真實科目而且不重複；頁面使用同一搜尋函數；搜尋框及選單有可讀名稱。
+- **驗證：** `npm test` 1135/1135；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 在搜尋框輸入「通識」只剩「公民與社會發展」；輸入「ICT」時「資訊及通訊科技」排第一；搜尋框外觀與之前一致（高 42px，左側放大鏡位置不變）。
+- **未完成：** 「最近使用的科目」未做（Loop B 最後一項）。
+- **下一輪最高優先問題：** P0 A–E 主要項目已完成，轉入 P1-F：錯因自診後，同一頁沒有連去同一錯因的練習（`?mode=cause`）或同課題變式。
+- **Commit：** 見 git log（`feat(subjects): find subjects by the names students use`）。
