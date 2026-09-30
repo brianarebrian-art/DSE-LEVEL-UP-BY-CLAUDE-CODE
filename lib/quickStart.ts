@@ -1,5 +1,5 @@
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
-import { practiceHref } from '@/lib/sessionResume'
+import { pickContinueTarget, practiceHref, type ActiveSession } from '@/lib/sessionResume'
 
 // Homepage quick start (UX loop 2, 2026-09-30).
 //
@@ -40,4 +40,18 @@ export function recentSubjectIds(
     if (!out.includes(a.subjectId) && isLive(a.subjectId)) out.push(a.subjectId)
   }
   return out
+}
+
+/**
+ * Where 開始練習 sends a student (UX loop 31, 2026-09-30; hardening prompt §11).
+ * Same rule as the home 繼續 card: an unfinished set is resumed, otherwise a fresh set
+ * in the most recent subject; a first-time visitor picks a subject.
+ */
+export function startHref(
+  session: ActiveSession | null,
+  attempts: readonly { subjectId: string; timestamp: number }[],
+  isLive: (id: string) => boolean,
+): string {
+  const [last] = recentSubjectIds(attempts, isLive, 1)
+  return pickContinueTarget(session, last ?? null, isLive)?.href ?? '/subjects'
 }

@@ -542,3 +542,14 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **測試：** 新增 `lib/__tests__/report-categories.test.mts`（2 項）。
 - **驗證：** `npm test` 1211/1211；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **Commit：** 見 git log（`feat(report): a category for questions filed under the wrong topic`）。
+
+## LOOP 31 — 2026-09-30
+
+- **Slice：** `/start`：頂欄「開始練習」對回訪學生直接去練習（新 prompt §11，P1）。
+- **量度（改動前）：** 首頁已可一撳開始（LOOP 2）、回訪有「繼續」卡；但頂欄（桌面及手機選單）的「開始練習」一律去 `/subjects`，回訪學生仍要再揀科。
+- **影響範圍：** `lib/quickStart.ts`（新增 `startHref`，沿用首頁「繼續」卡的 `pickContinueTarget`）、新增 `app/start/{page,StartRedirect}.tsx`、`components/Navbar.tsx`（兩個 CTA）、`lib/pageOrder.ts`（路由分類）、新增測試。
+- **改動：** `/start` 只讀本機紀錄：有未做完、練習頁會提供續做的一節 → 回到那一節；否則最近一科開新一節；沒有紀錄 → `/subjects`。用 `router.replace`，按返回不會停在中轉頁；轉頁失敗時頁面有「揀科目」連結。`noindex`。
+- **測試：** 新增 `lib/__tests__/start-route.test.mts`（4 項）：初次訪客、最近一科（略過下線科目）、續做（含課題；未答或已完成不續做；下線科目不提供）、頁面及頂欄接線。
+- **驗證：** `npm test` 1215/1215；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，1280×800）：** 測試瀏覽器有紀錄時 `/start` → `/practice?subject=economics`；暫時移走紀錄後 `/start` → `/subjects`（驗證後已放回）；首頁頂欄「開始練習」`href="/start"`。
+- **Commit：** 見 git log（`feat(nav): 開始練習 resumes or starts practice for returning students`）。

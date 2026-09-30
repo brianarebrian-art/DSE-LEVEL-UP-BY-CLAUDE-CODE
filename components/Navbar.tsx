@@ -107,10 +107,11 @@ export default function Navbar() {
           {/* 2026-09-03：橫向連結搬咗落側欄（規格 §3.1）。同一組連結出兩次，
               學生要諗「呢兩個係咪同一樣嘢」，而且選中態要維護兩處。
               <lg 冇側欄，所以漢堡選單面板嗰份【原封不動】保留。 */}
-          {/* 全科入口 —— 2026-08-09 由 /subjects/math 改為 /subjects：「開始練習」
+          {/* 2026-09-30（LOOP 31）改去 /start：回訪學生直接繼續或開新一節，初次來的學生仍到 /subjects。
+              全科入口 —— 2026-08-09 由 /subjects/math 改為 /subjects：「開始練習」
               屬通用行動呼籲，直接導向數學科等於代學生選定科目。路由為複數。 */}
           <Link
-            href="/subjects"
+            href="/start"
             className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-colors"
           >
             {t.nav.startPractice}
@@ -164,7 +165,7 @@ export default function Navbar() {
 
             {/* 漢堡選單內容須與橫向條完全一致 —— 連目標路由亦然。 */}
             <Link
-              href="/subjects"
+              href="/start"
               onClick={() => setOpen(false)}
               className="mt-4 min-h-11 flex items-center justify-center bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm py-2.5 rounded-lg transition-colors"
             >
