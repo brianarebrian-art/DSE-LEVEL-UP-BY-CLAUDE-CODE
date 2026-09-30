@@ -210,6 +210,15 @@ export default function HomePage() {
             <li>{h.trust2}</li>
             <li>{h.trust3}</li>
           </ul>
+          {/* 覆核狀態（創辦人決定 6）：一句講實情，連去透明度頁的細節。 */}
+          <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
+            {locale === 'en'
+              ? 'Questions go live after automated checks; no one has reviewed each one by hand. '
+              : '題目經自動檢查上線，未經逐題人手覆核。'}
+            <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
+              {locale === 'en' ? 'How it works' : '點樣做'}
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -352,7 +361,7 @@ export default function HomePage() {
           </p>
           <div className="grid gap-4 text-left sm:grid-cols-3">
             {[
-              { icon: '🧠', title: locale === 'en' ? 'Efficient' : '高效', body: locale === 'en' ? 'Crack the underlying logic of past papers — not memorise answers that never come back.' : '拆穿歷屆試題嘅底層邏輯 —— 唔係死背啲唔會再出嘅答案。' },
+              { icon: '🧠', title: locale === 'en' ? 'Efficient' : '高效', body: locale === 'en' ? 'Crack the logic behind common DSE question types — not memorise answers that never come back.' : '拆穿 DSE 常見題型嘅底層邏輯 —— 唔係死背啲唔會再出嘅答案。' },
               { icon: '⚖️', title: locale === 'en' ? 'Fair' : '公平', body: locale === 'en' ? 'Completely free. Every student — not only the ones who can afford star tutors — gets the same edge.' : '完全免費。唔止俾得起補習天王嘅人 —— 係每一個學生，都攞到同一個籌碼。' },
               { icon: '🤝', title: locale === 'en' ? 'For your family' : '利他', body: locale === 'en' ? 'Whatever you’d have spent on tutoring stays home with your family. That is the whole point.' : '本來要使喺補習嘅，留返喺屋企。呢個先係我哋嘅初心。' },
             ].map((c, i) => (

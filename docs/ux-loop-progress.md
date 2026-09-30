@@ -425,3 +425,19 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1185/1185；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，1280×800）：** `/predictor` 的 `<title>`「練習表現估算 | DSE Level Up」、h1「練習表現估算」、側欄「練習表現」，無水平捲動。測試瀏覽器的練習量不足以出範圍，範圍下的說明句由測試覆蓋。
 - **Commit：** 見 git log（`fix(trust): call the practice estimate what it is, not a grade prediction`）。
+
+## LOOP 22 — 2026-09-30
+
+- **Slice：** 「2026 DSE 考生製作」及暗示題目取自歷屆試題的文案（創辦人決定 6；新 prompt §31、§38，P0）。
+- **量度（改動前）：** 首頁信任標記「✓ 2026 DSE 考生製作」；頁尾「改寫版歷屆試題，掌握核心邏輯。／由 2026 DSE 考生製作。」；首頁「高效」卡「拆穿歷屆試題嘅底層邏輯」；SEO keywords 含「歷屆試題」。首頁沒有任何地方講題目的覆核狀態。
+- **影響範圍：** `lib/dictionary.ts`（中英 tagline1、tagline2、trust1）、`app/page.tsx`（信任標記下一行、「高效」卡）、`app/layout.tsx`（keywords）、`components/Footer.tsx`（一行註釋）、新增測試。
+- **改動：**
+  - 信任標記：「✓ 課題初步對照 2027 年課程指引」（英文 first pass）。依據 `docs/topic-syllabus-map-2027.md`：298 個課題已對照教育局指引，但屬 AI 初步對照，未經學科負責人覆核，故寫「初步」。
+  - 信任標記下一行：「題目經自動檢查上線，未經逐題人手覆核。點樣做」，連去 `/transparency`，連結 44px 高。
+  - 頁尾：「原創 DSE 練習題，掌握核心邏輯。」＋「課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線，未經逐題人手覆核。」
+  - 「高效」卡改為「拆穿 DSE 常見題型嘅底層邏輯」；keywords 去掉「歷屆試題」「改寫試題」。
+- **測試：** 新增 `lib/__tests__/trust-copy.test.mts`（3 項）。
+- **驗證：** `npm test` 1188/1188；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 信任標記「✓ 課題初步對照 2027 年課程指引 | ✓ 全部功能免費 | ✓ 無廣告」；覆核句 y=748；「點樣做」36×44，與情緒支援掣（y=692–740）不重疊；頁尾兩句正確；無水平捲動。
+- **需要留意：** `/writing` 有一句「取材自 2023 DSE 英文卷二『Poems & Songs』主題的原創練習題」，以及 `/prediction-method` 說等級分佈數字「由考評局 PDF 直接抽出」。兩者都涉及考評局出版物，按 2026-09-30 版權決定待法律釐清，下一輪寫入 `CONTENT_PROVENANCE.md`，本輪不改。
+- **Commit：** 見 git log（`fix(trust): state curriculum and review status instead of who made the site`）。

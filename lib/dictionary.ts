@@ -173,8 +173,11 @@ const zh = {
     night: '夜深了',
   },
   footer: {
-    tagline1: '改寫版歷屆試題，掌握核心邏輯。',
-    tagline2: '由 2026 DSE 考生製作。',
+    // 2026-09-30（UX 循環 LOOP 22，創辦人決定 6）：原文「改寫版歷屆試題」「由 2026 DSE 考生製作」。
+    // 前者暗示題目取自歷屆試題；後者與題目是否可信無關。改為講課程對照及覆核狀態的實情
+    // （docs/topic-syllabus-map-2027.md：AI 初步對照，未經學科負責人覆核；憲章 §12：自動檢查上線）。
+    tagline1: '原創 DSE 練習題，掌握核心邏輯。',
+    tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線，未經逐題人手覆核。',
     practiceHeading: '練習',
     linkMath: '數學',
     linkMethodology: '方法論',
@@ -226,7 +229,7 @@ const zh = {
     headline1: '身為考過 DSE 嘅中學生，',
     headline2: '我想幫你用最輕鬆嘅方法溫書',
     subhead: '掌握邏輯，唔係背答案。無論出乜題，你都識答。',
-    trust1: '✓ 2026 DSE 考生製作',
+    trust1: '✓ 課題初步對照 2027 年課程指引',
     // 2026-09-29：原文「✓ 涵蓋全部 DSE 科目」屬過度聲稱（未涵蓋綜合科學，亦未涵蓋書寫、口試、實作卷）。
     trust2: '✓ 全部功能免費',
     trust3: '✓ 無廣告',
@@ -620,8 +623,8 @@ const en: typeof zh = {
     night: 'Good night',
   },
   footer: {
-    tagline1: 'Rewritten past-paper questions — master the core logic.',
-    tagline2: 'Made by a 2026 DSE candidate.',
+    tagline1: 'Original DSE practice questions — master the core logic.',
+    tagline2: 'Topics checked against the curriculum guides for the 2027 exam (first pass). Questions go live after automated checks; no one has reviewed each one by hand.',
     practiceHeading: 'Practice',
     linkMath: 'Mathematics',
     linkMethodology: 'Method',
@@ -673,7 +676,7 @@ const en: typeof zh = {
     headline1: 'As a secondary student who’s sat the DSE,',
     headline2: 'I want to help you revise the easy way',
     subhead: 'Master the logic, don’t memorise answers. Whatever they ask, you’ll know how.',
-    trust1: '✓ Made by a 2026 DSE candidate',
+    trust1: '✓ Topics checked against the 2027 curriculum guides (first pass)',
     trust2: '✓ Every feature free',
     trust3: '✓ No ads',
     ctaStart: 'Start practising now',

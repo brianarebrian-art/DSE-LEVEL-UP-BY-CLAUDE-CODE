@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   // 刻意不設 `title.template` —— 各子頁（/subjects、/notes/[subject] 等）已自行
   // 於標題末尾附上「| DSE Level Up」，加 template 會變成重複兩次。
   applicationName: 'DSE Level Up',
-  keywords: ['DSE', 'HKDSE', '文憑試', '歷屆試題', '改寫試題', '溫習', '免費補習', 'DSE 練習'], // i18n-exempt: SEO keywords，唔跟 client locale
+  keywords: ['DSE', 'HKDSE', '文憑試', 'DSE 練習題', '原創練習題', '溫習', '免費補習', 'DSE 練習'], // i18n-exempt: SEO keywords，唔跟 client locale
   authors: [{ name: 'DSE Level Up' }],
   creator: 'DSE Level Up',
   publisher: 'DSE Level Up',

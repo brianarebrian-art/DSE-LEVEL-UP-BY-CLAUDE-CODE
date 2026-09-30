@@ -115,7 +115,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* 守護者致謝名單 —— 錨點係 Brand 欄嘅 tagline2「由 2026 DSE 考生製作。」。
+        {/* 守護者致謝名單 —— 錨點係 Brand 欄嘅 tagline2。
             規格原文寫「插入喺 tagline 下面、練習連結上面」，但真實 Footer 係三欄
             grid（Brand｜練習｜關於），啲連結係喺 tagline【隔籬】而唔係下面，
             而規格禁令 #6 亦明文唔准移動現有連結。故放喺整個 doormat grid 之後、
