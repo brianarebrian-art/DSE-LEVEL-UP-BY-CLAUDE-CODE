@@ -21,13 +21,13 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '答錯之後會點？', qEn: 'What happens after a wrong answer?',
-    aZh: '第一句唔係「錯咗」，係「你發現咗一個新盲點💡」。跟住撳低你覺得係邊種錯因（概念盲區／審題陷阱／運算粗心），撳咗就即刻見到解析。冇倒數、冇計時、冇追問題 —— 一下撳就過到。撳嗰一下會累積成你嘅錯因 DNA。',
-    aEn: 'The first line is not “wrong” — it is “you just found a new blind spot”. You then tag which kind of slip it was (concept, HKEAA reading trap, or execution), and the explanation opens straight away. No countdown, no timer, no follow-up question: one tap and you are through. That tap is what builds your Error DNA.',
+    aZh: '第一句唔係「錯咗」，係「你發現咗一個新盲點💡」。跟住撳低你覺得係邊種錯因（概念盲區／審題陷阱／運算粗心），撳咗就即刻見到解析。冇倒數、冇計時、冇追問題 —— 一下撳就過到。撳嗰一下會累積成你嘅錯誤模式。',
+    aEn: 'The first line is not “wrong” — it is “you just found a new blind spot”. You then tag which kind of slip it was (concept, HKEAA reading trap, or execution), and the explanation opens straight away. No countdown, no timer, no follow-up question: one tap and you are through. That tap is what builds your error patterns.',
   },
   {
-    qZh: '「錯因 DNA」係乜嚟？', qEn: 'What is “Error DNA”?',
-    aZh: '你每次錯因自診都會累積成一幅分佈圖，話你知自己最常跌喺「概念盲區」「審題陷阱」定「運算粗心」，仲會偵測連續同類錯誤。',
-    aEn: 'Your self-diagnosed error causes build a distribution showing whether you most often trip on concepts, misreading, or careless slips — including repeat streaks.',
+    qZh: '「錯誤模式」係乜嚟？', qEn: 'What are “error patterns”?',
+    aZh: '你每次錯因自診都會累積成一幅分佈圖，話你知自己最常跌喺「概念盲區」「審題陷阱」定「運算粗心」，仲會留意連續同類錯誤。呢啲全部按你自己揀嘅錯因計，唔係系統診斷。',
+    aEn: 'Your self-diagnosed error causes build a distribution showing whether you most often trip on concepts, misreading, or careless slips — including repeat streaks. It is all counted from the causes you picked yourself, not a diagnosis by the system.',
   },
   {
     qZh: '我嘅進度存喺邊？會唔會唔見咗？', qEn: 'Where is my progress stored?',

@@ -464,3 +464,20 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1194/1194；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812）：** 介紹句 4 行（y=188、高 80）；第一張卡「開始 10 題」y=645–693，仍在首屏及底部導航之上；無水平捲動。
 - **Commit：** 見 git log（`fix(subjects): say what is covered instead of "all live"`）。
+
+## LOOP 25 — 2026-09-30
+
+- **Slice：** 「錯題 DNA／錯因 DNA／錯題指紋」改名「錯誤模式」，並講明是學生自選錯因的統計（新 prompt §12、§13，P1）。
+- **量度（改動前）：** 側欄「錯題 DNA」；進度頁「你嘅錯題指紋」「🧬 錯題 DNA 雷達」；FAQ「錯因 DNA 係乜嚟」。資料來源只是學生答錯後自己揀的三個錯因，頁面沒有講這是自我判斷。
+- **影響範圍：** `lib/dictionary.ts`、`components/ErrorDNA.tsx`、`components/ErrorRadar.tsx`、`components/FAQSection.tsx`、新增測試。組件名、`#error-dna` 錨點及 `dse_reverse_log` 不變。
+- **改動：** 名稱改為「錯誤模式／Error patterns」；卡片說明「按你每次答錯之後自己揀嘅錯因統計。呢個係你自己嘅判斷，唔係網站幫你診斷。」；雷達說明「你自己揀嘅錯因分佈」；FAQ 同步。
+- **未執行（與創辦人決定衝突）：**
+  - prompt §12 把錯因由三個改為六個（加「方法揀錯」「粗心」「我唔確定」等）。
+  - prompt §14 答錯後可以「我唔確定」或「直接睇解析」。
+  - 兩項都會改變憲章 §7.2 的實驗：Yuna 2026-09-09 起剷走 30 秒鎖、保留三維自診，為期兩個月，2026-11-09 按逐週正確率覆檢。憲章明寫只剷凍結、不動自診，「個變數先至乾淨」。實驗期間加略過或改分類，覆檢就分不清正確率變化的原因。
+  - 六分類亦會改變已上雲的 `dse_reverse_log` 內容（§16.E）。
+  - 建議 2026-11-09 覆檢時一併決定。
+- **測試：** 新增 `lib/__tests__/error-pattern-naming.test.mts`（2 項）。
+- **驗證：** `npm test` 1196/1196；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，1280×800，`/dashboard`）：** 全頁沒有「DNA」「指紋」；兩個標題「你嘅錯誤模式」「錯誤模式（最近 30 日）」；說明句在；側欄連結「錯誤模式」；無水平捲動。
+- **Commit：** 見 git log（`fix(copy): error patterns, not Error DNA`）。

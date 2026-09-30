@@ -106,9 +106,9 @@ export default function ErrorRadar() {
 
   return (
     <div className="bg-surface-raised border border-line rounded-2xl p-6">
-      <h2 className="font-medium mb-1 text-ink">🧬 {en ? 'Error DNA radar (last 30 days)' : '錯題 DNA 雷達（最近 30 日）'}</h2>
+      <h2 className="font-medium mb-1 text-ink">{en ? 'Error patterns (last 30 days)' : '錯誤模式（最近 30 日）'}</h2>
       <p className="text-xs text-ink-muted mb-3">
-        {en ? 'Share of each self-diagnosed error cause' : '三維錯因自診分佈（各軸 = 佔錯誤百分比）'}
+        {en ? 'Share of each cause you picked yourself (each axis = % of wrong answers)' : '你自己揀嘅錯因分佈（各軸 = 佔錯誤百分比）'}
       </p>
 
       {total < 5 ? (

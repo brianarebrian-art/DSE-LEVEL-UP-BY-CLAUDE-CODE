@@ -122,7 +122,8 @@ const zh = {
     // /dashboard 自己叫「我的進度」、底欄叫「練習」，側欄另起一個名就係兩套。
     progress: '我的進度',
     practice: '練習',
-    errorDna: '錯題 DNA',
+    // 2026-09-30（UX 循環 LOOP 25）：「DNA」暗示系統建立了學習者模型，實際只是學生自選錯因的統計。
+    errorDna: '錯誤模式',
     // 2026-09-30（UX 循環 LOOP 21）：「等級預測」改名。它是本站練習數據的估算，不是考評局成績預測。
     predictor: '練習表現',
     relax: '呼吸空間',
@@ -152,7 +153,7 @@ const zh = {
     causesTitle: '錯因分佈',
     causesLead: '過去 30 日，答錯之後你自己揀嘅原因。',
     causesEmpty: '答錯之後揀一個原因，呢度就會開始有分佈。',
-    causesMore: '睇完整錯題 DNA',
+    causesMore: '睇完整錯誤模式',
     subjectsTitle: '各科估算',
     subjectsLead: '每科獨立計。題數未夠嗰科會直接講仲差幾多，唔會作一個數出嚟。',
     nextTitle: '下一步',
@@ -584,7 +585,7 @@ const en: typeof zh = {
     tagline: 'Study Smarter, Not Harder',
     progress: 'My Progress',
     practice: 'Practise',
-    errorDna: 'Error DNA',
+    errorDna: 'Error patterns',
     predictor: 'Practice performance',
     relax: 'Breathing Space',
     saved: 'Saved',
@@ -608,7 +609,7 @@ const en: typeof zh = {
     causesTitle: 'Why answers went wrong',
     causesLead: 'The reasons you picked yourself after a wrong answer, over the last 30 days.',
     causesEmpty: 'Pick a reason after a wrong answer and a pattern will start to show here.',
-    causesMore: 'See full Error DNA',
+    causesMore: 'See all error patterns',
     subjectsTitle: 'Estimate by subject',
     subjectsLead: 'Each subject is worked out on its own. Where there are not enough questions yet, it says how many more — it will not make a number up.',
     nextTitle: 'Next step',

@@ -67,17 +67,17 @@ export default function ErrorDNA() {
     <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
       <div className="flex items-center gap-2.5 mb-1">
         <Fingerprint size={18} className="text-gold shrink-0" />
-        <h3 className="text-lg font-medium text-ink">{en ? 'Your error fingerprint' : '你嘅錯題指紋'}</h3>
+        <h3 className="text-lg font-medium text-ink">{en ? 'Your error patterns' : '你嘅錯誤模式'}</h3>
       </div>
       <p className="text-ink-muted text-sm mb-4">
-        {en ? 'Every self-diagnosed mistake builds your pattern.' : '每次錯因自診都會砌出你獨有嘅錯誤模式。'}
+        {en ? 'Counted from the causes you picked yourself after each wrong answer. It is your own read, not a diagnosis by the site.' : '按你每次答錯之後自己揀嘅錯因統計。呢個係你自己嘅判斷，唔係網站幫你診斷。'}
       </p>
 
       {total === 0 ? (
         <p className="text-sm text-ink-muted bg-surface-sunken rounded-xl px-4 py-6 text-center">
           {en
-            ? 'Practise and run the reverse-cause check after a wrong answer — your error fingerprint will appear here.'
-            : '開始練習，答錯後做錯因自診，你嘅錯題指紋就會喺度顯示。'}
+            ? 'Practise and pick a cause after a wrong answer — your error patterns will appear here.'
+            : '開始練習，答錯後揀一個錯因，你嘅錯誤模式就會喺度顯示。'}
         </p>
       ) : (
         <>
