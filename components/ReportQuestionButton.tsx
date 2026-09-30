@@ -85,6 +85,8 @@ export default function ReportQuestionButton({
   const [cat, setCat] = useState<CategoryKey>('answer')
   const [detail, setDetail] = useState('')
   const [copied, setCopied] = useState(false)
+  // 撳咗「用電郵寄出」：只代表郵件程式已開啟（或者冇反應），唔代表已寄出。
+  const [prepared, setPrepared] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const wasOpen = useRef(false)
@@ -95,6 +97,7 @@ export default function ReportQuestionButton({
     setCat('answer')
     setDetail('')
     setCopied(false)
+    setPrepared(false)
   }, [questionId])
 
   useEffect(() => {
@@ -108,6 +111,7 @@ export default function ReportQuestionButton({
       panelRef.current?.focus({ preventScroll: true })
       if (panelRef.current) panelRef.current.scrollTop = 0
       setCopied(false)
+      setPrepared(false)
       wasOpen.current = true
       return () => document.removeEventListener('keydown', onKey)
     }
@@ -171,8 +175,8 @@ export default function ReportQuestionButton({
               </h2>
               <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                 {en
-                  ? 'A person reads every report. If it turns out we are wrong, the question gets fixed or withdrawn.'
-                  : '每一封都有真人睇。如果證實係我哋錯，條題會改或者落架。'}
+                  ? 'Reports are sent by email from your own email app; this site does not store them. A person reads every one. If it turns out we are wrong, the question gets fixed or withdrawn.'
+                  : '報告會透過你自己嘅電郵寄出，本站唔會儲存。每一封都有真人睇；如果證實係我哋錯，條題會改或者落架。'}
               </p>
               <p className="mt-2 font-mono text-[11px] text-ink-muted">
                 {en ? 'Question ID' : '題號'}: {questionId}
@@ -232,6 +236,7 @@ export default function ReportQuestionButton({
               <div className="mt-4 flex flex-wrap gap-2">
                 <a
                   href={mailtoHref(questionId, body, en)}
+                  onClick={() => setPrepared(true)}
                   className="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
                 >
                   {en ? 'Open email app' : '用電郵寄出'}
@@ -247,7 +252,11 @@ export default function ReportQuestionButton({
 
               {/* 「冇郵件程式」嘅出路要寫明 —— 唔可以假設每部裝置都撳得郵件連結。 */}
               <p aria-live="polite" className="mt-2 text-[11px] leading-relaxed text-ink-muted">
-                {copied
+                {prepared && !copied
+                  ? en
+                    ? `Report prepared. It is only sent when you press Send in your email app. If nothing opened, copy the text and send it to ${REPORT_EMAIL}.`
+                    : `報告已準備。要喺你嘅電郵程式撳「傳送」先算寄出；如果乜都冇彈出嚟，複製上面段字寄去 ${REPORT_EMAIL}。`
+                  : copied
                   ? en
                     ? `Copied. Send it to ${REPORT_EMAIL} however you like.`
                     : `已複製。用任何方式寄去 ${REPORT_EMAIL} 都得。`
