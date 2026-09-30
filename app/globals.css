@@ -1420,3 +1420,11 @@ html.font-easy .cmd-hl {
 @media (max-width: 639px) {
   section:has([data-continue-card]) .hero-mascot { display: none; }
 }
+
+/* 手機的無障礙入口在頁頂（2026-09-30，Yuna 決定 1，UX 循環 LOOP 18）。
+   頁面有頁頂按鈕（A11yButton，data-a11y-trigger）時，手機闊度收起左下角浮動掣；
+   沒有頁頂按鈕的頁面，浮動掣照舊顯示。斷點與按鈕的 md:hidden 相同（768px）。
+   寫在 @layer 之外，蓋過 Tailwind 的 flex。 */
+@media (max-width: 767px) {
+  body:has([data-a11y-trigger]) .a11y-fab { display: none; }
+}

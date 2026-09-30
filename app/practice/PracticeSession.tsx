@@ -44,6 +44,7 @@ import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, L
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
+import { A11yButton } from '@/components/A11yPanel'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import { INTERVALS, DAILY_REVIEW_LIMIT } from '@/lib/reviewSchedule'
 import DifficultyBadge from '@/components/DifficultyBadge'
@@ -941,6 +942,8 @@ export default function PracticeSession({
                   : tr('🧮 專攻運算粗心', '🧮 Careful calculation')}
             </span>
           )}
+          {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：這一行是 sticky，做題途中隨時撳得到。 */}
+          <A11yButton className="ml-auto" />
         </div>
 
         {/* Progress bar */}

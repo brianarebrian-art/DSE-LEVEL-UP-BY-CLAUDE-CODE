@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { readTimerPref, writeTimerHidden } from '@/lib/timerPreference'
 import { readSyncConsent, setSyncConsent, SETTINGS_SYNC_EVENT } from '@/lib/settingsSyncConsent'
 import Image from 'next/image'
@@ -25,6 +25,34 @@ const LETTER_SPACING_PREVIEW: Record<LetterSpacing, string> = {
   normal: 'normal',
   wide: '0.05em',
   'extra-wide': '0.1em',
+}
+
+/** 開啟本面板的 window event。頁尾連結及頁頂按鈕都用它。 */
+export const OPEN_A11Y_EVENT = 'dse-open-a11y'
+
+// 手機頁頂的無障礙入口（2026-09-30 Yuna 決定 1，docs/ux-loop-progress.md）。
+//
+// 左下角浮動掣在手機上會蓋住每頁首屏底部的內容。頁頂一放這個按鈕，
+// globals.css 就在手機闊度收起浮動掣（`body:has([data-a11y-trigger]) .a11y-fab`）。
+// 用「有沒有這個按鈕」判斷，而不是列出路由：沒有頁頂入口的頁面（例如呼吸空間）
+// 浮動掣照舊顯示，任何頁面都不會失去無障礙入口。
+// 按鈕本身 `md:hidden`，與上面的 CSS 同一個斷點（768px），桌面維持浮動掣。
+export function A11yButton({ className = '' }: { className?: string }) {
+  const { locale } = useLocale()
+  const en = locale === 'en'
+  return (
+    <button
+      type="button"
+      data-a11y-trigger
+      onClick={() => window.dispatchEvent(new Event(OPEN_A11Y_EVENT))}
+      aria-haspopup="dialog"
+      aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
+      title={en ? 'Accessibility · text size, easy-read font, reading ruler' : '無障礙 · 字級、易讀字體、閱讀尺'}
+      className={`md:hidden inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg hover:bg-line transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${className}`}
+    >
+      <Image src="/icons/accessibility.svg" alt="" aria-hidden width={24} height={24} className="object-contain" unoptimized />
+    </button>
+  )
 }
 
 // 全站無障礙控制面板（Leo/前端 + Emma/UDL — SEN 支援）。
@@ -78,11 +106,28 @@ export default function A11yPanel() {
   // 改為派一個 window event。用 event 而唔係 context：本面板掛喺 root layout，
   // 而發起者（Footer）同佢係兄弟，冇共同 provider，加一個 provider 淨係為
   // 開個面板唔值得。
+  //
+  // 由頁頂按鈕或頁尾連結開啟時，發起者離面板很遠：焦點移到面板的「關閉」，
+  // 關閉後返回發起者，鍵盤及讀屏使用者不會迷路。浮動掣本身就在面板旁邊，行為不變。
+  const openerRef = useRef<HTMLElement | null>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
-    const openIt = () => setOpen(true)
-    window.addEventListener('dse-open-a11y', openIt)
-    return () => window.removeEventListener('dse-open-a11y', openIt)
+    const openIt = () => {
+      openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+      setOpen(true)
+    }
+    window.addEventListener(OPEN_A11Y_EVENT, openIt)
+    return () => window.removeEventListener(OPEN_A11Y_EVENT, openIt)
   }, [])
+  useEffect(() => {
+    if (open) {
+      if (openerRef.current) closeRef.current?.focus()
+      return
+    }
+    const opener = openerRef.current
+    openerRef.current = null
+    if (opener?.isConnected) opener.focus()
+  }, [open])
   const [size, setSize] = useState(16)
   const [easy, setEasy] = useState(false)
   const [focusLight, setFocusLight] = useState(false)
@@ -328,7 +373,7 @@ export default function A11yPanel() {
         aria-expanded={open}
         aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
         title={en ? 'Accessibility · text size, easy-read font, reading ruler' : '無障礙 · 字級、易讀字體、閱讀尺'}
-        className="no-print fixed floating-bottom floating-left z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-surface-raised border border-line-strong flex items-center justify-center hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+        className="a11y-fab no-print fixed floating-bottom floating-left z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-surface-raised border border-line-strong flex items-center justify-center hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
       >
         {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
             OG 圖，SVG 重繪先有真透明背景）。無障礙名稱由 button aria-label 提供。
@@ -348,6 +393,7 @@ export default function A11yPanel() {
               {en ? 'Accessibility' : '無障礙設定'}
             </div>
             <button
+              ref={closeRef}
               onClick={() => setOpen(false)}
               aria-label={en ? 'Close' : '關閉'}
               className="min-h-11 min-w-11 flex items-center justify-center text-ink-muted hover:text-ink transition-colors -mr-2 -mt-2"

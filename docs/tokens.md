@@ -9,7 +9,7 @@
 node scripts/gen-token-doc.mjs
 ```
 
-掃到 **168** 個 custom property 宣告，分佈喺 **206** 個 block。
+掃到 **168** 個 custom property 宣告，分佈喺 **208** 個 block。
 
 ## ⚠️ 被覆蓋嘅宣告
 
@@ -434,3 +434,5 @@ node scripts/gen-token-doc.mjs
 | L1413 | `@media (max-height: 760px) › .sidebar-quote` |
 | L1420 | `@media (max-width: 639px)` |
 | L1421 | `@media (max-width: 639px) › section:has([data-continue-card]) .hero-mascot` |
+| L1428 | `@media (max-width: 767px)` |
+| L1429 | `@media (max-width: 767px) › body:has([data-a11y-trigger]) .a11y-fab` |

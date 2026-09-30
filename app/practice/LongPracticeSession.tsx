@@ -6,6 +6,7 @@ import { ArrowRight, Brain } from 'lucide-react'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
+import { A11yButton } from '@/components/A11yPanel'
 import { useLocale } from '@/lib/i18n'
 import { getSeen, orderUnseenFirst, recordSeen } from '@/lib/seen'
 import { recordTopicOutcomes } from '@/lib/topicStats'
@@ -214,15 +215,17 @@ export default function LongPracticeSession({
   return (
     <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
       <div className="mx-auto max-w-2xl">
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-xs text-ink-muted">
+        <div className="flex items-center justify-between gap-2 mb-4">
+          <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
             {tr(`第 ${idx + 1} / ${questions.length} 條`, `${idx + 1} of ${questions.length}`)}
           </span>
-          <span className="flex items-center gap-3">
+          <span className="flex items-center gap-2 sm:gap-3">
             <span className="text-[11px] text-ink-muted">
               {tr('長題目練習 · 自評制', 'Written practice · self-assessed')}
             </span>
             <EnoughTodayButton />
+            {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）。 */}
+            <A11yButton />
           </span>
         </div>
 

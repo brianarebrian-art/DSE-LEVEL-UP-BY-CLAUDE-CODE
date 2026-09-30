@@ -8,6 +8,7 @@ import AuthButton from '@/components/AuthButton'
 import Greeting from '@/components/Greeting'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
+import { A11yButton } from '@/components/A11yPanel'
 import { useT, useLocale } from '@/lib/i18n'
 
 // Phase 2 Task 1（Kate/Leo 2026-07-18）：light-first 清晨圖書館。純白底 + #1A1A1A 文字
@@ -121,7 +122,10 @@ export default function Navbar() {
         </div>
 
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
-        <div className="lg:hidden flex items-center">
+        <div className="lg:hidden flex items-center gap-1">
+          {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：放在漢堡掣旁邊，
+              左下角浮動掣在手機上因此收起。平板及以上不顯示，維持浮動掣。 */}
+          <A11yButton />
           {/* FIX: [C12類] icon-only 掣冇無障礙名，VoiceOver/TalkBack 用戶開唔到選單；
               順手補 44px 觸控目標（B10 標準）+ aria-expanded + aria-controls */}
           <button
