@@ -567,3 +567,16 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **畫面（production build，375×812，`/subjects/math`，測試瀏覽器有少量紀錄）：** 卡片顯示「上次練習：9月30日，4 / 10」「建議下一步：『概率』，你喺呢度仲未做過」，按鈕 48px 連去 `?topic=probability`；做過的課題顯示「做過 1 題，未夠判斷」；「綜合練習」仍在首屏；無水平捲動。
 - **未做：** prompt §15–§18 的 adaptive loop（同構題 → 轉移題）、learner model、每題的 variant taxonomy。題庫沒有「同一技能」及「變體類型」欄位；要做須為 26,000 題加標記，屬題庫結構改動（憲章 §6 先查影響）。本輪的建議只用現有的課題統計。
 - **Commit：** 見 git log（`feat(subject): what to do next, with the evidence behind it`）。
+
+## LOOP 33 — 2026-09-30
+
+- **Slice：** 書寫題的自我檢查清單，並講明本站不評分（新 prompt §26；憲章 §16.A）。
+- **量度（改動前）：** 長題目提交後只有一個三級自評「完全掌握／部分明白／仲未掌握」，沒有告訴學生應該對照甚麼；「完全掌握」是學生對自己掌握程度的宣稱，其實只是和參考答案比較。
+- **影響範圍：** `components/LongQuestionCard.tsx`（清單、標籤）、`app/answer-sheet/AnswerSheetClient.tsx`（同一組標籤）、新增測試。
+- **改動：**
+  - 提交後、自評之前多一個「自己對一對」：先寫「本站唔會幫你評分。對住參考答案同評分準則，剔低你嘅答案做到嘅項目。呢度唔會儲存。」，再列四項（內容完整、概念正確、論點有證據、結構清晰），每項 44px。剔選只保存在頁面狀態，不存、不送、不計分，也不影響下面的自評。
+  - 自評三級改為「大致對到／對到部分／未對到」，問題改為「整體嚟講，你嘅答案同參考答案有幾接近？」。資料值（full／partial／none）不變，課題統計不受影響。
+- **測試：** 新增 `lib/__tests__/written-self-check.test.mts`（3 項）。
+- **驗證：** `npm test` 1223/1223；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812，歷史科長題目）：** 提交後見到清單及說明句；四項各 44px；剔選可用；自評三級顯示新標籤；localStorage 沒有新增清單相關的鍵；無水平捲動。測試時輸入的「test」沒有寫入 localStorage。
+- **Commit：** 見 git log（`feat(written): a four-point self-check, and say the site does not mark`）。

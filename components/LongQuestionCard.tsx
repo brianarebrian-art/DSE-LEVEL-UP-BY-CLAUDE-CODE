@@ -21,6 +21,14 @@ import type { LongQuestion, SelfAssessment } from '@/data/questions/types'
 // 而且呢個係學生自己講嘅評估，唔係機器判佢錯 —— 措辭同色彩都唔應該似判決。
 type Level = Extract<SelfAssessment, 'full' | 'partial' | 'none'>
 
+/** 自我檢查的四項（LOOP 33）。只供對照，不計分。 */
+export const RUBRIC = [
+  { key: 'content', zh: '內容完整：題目要求嘅部分都有答', en: 'Complete: every part of the question is answered' },
+  { key: 'concept', zh: '概念正確：用詞同解釋冇錯', en: 'Correct concepts: terms and explanations are right' },
+  { key: 'evidence', zh: '論點有證據：每個論點都有例子或數據支持', en: 'Supported: each point has an example or evidence' },
+  { key: 'structure', zh: '結構清晰：分段、次序令人易明', en: 'Clear structure: paragraphs and order are easy to follow' },
+] as const
+
 export default function LongQuestionCard({
   q,
   onResult,
@@ -38,6 +46,8 @@ export default function LongQuestionCard({
   const [showAnswer, setShowAnswer] = useState(true)
   const [showScheme, setShowScheme] = useState(false)
   const [showWhy, setShowWhy] = useState(false)
+  // 自我檢查清單（LOOP 33）：只幫學生對照，不儲存、不計分、不影響下面的自評。
+  const [checks, setChecks] = useState<Record<string, boolean>>({})
 
   const pick = (l: Level) => {
     if (level) return
@@ -48,9 +58,10 @@ export default function LongQuestionCard({
   const reportHref = `mailto:dselevelup@gmail.com?subject=${encodeURIComponent(`[${en ? 'Question report' : '題目回報'}] ${q.id}`)}`
 
   const levels: { key: Level; zh: string; en: string; cls: string }[] = [
-    { key: 'full', zh: '完全掌握', en: 'Fully got it', cls: 'border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent' },
-    { key: 'partial', zh: '部分明白', en: 'Partly', cls: 'border-gold/40 bg-surface-sunken hover:bg-surface-sunken text-gold' },
-    { key: 'none', zh: '仲未掌握', en: 'Not yet', cls: 'border-line-strong bg-surface-sunken hover:bg-line text-ink-soft' },
+    // 2026-09-30（LOOP 33）：原文「完全掌握／仲未掌握」。自評比對的是參考答案，不是掌握程度。
+    { key: 'full', zh: '大致對到', en: 'Mostly matches', cls: 'border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent' },
+    { key: 'partial', zh: '對到部分', en: 'Partly', cls: 'border-gold/40 bg-surface-sunken hover:bg-surface-sunken text-gold' },
+    { key: 'none', zh: '未對到', en: 'Not yet', cls: 'border-line-strong bg-surface-sunken hover:bg-line text-ink-soft' },
   ]
 
   return (
@@ -160,11 +171,34 @@ export default function LongQuestionCard({
             </>
           )}
 
+          {/* 自我檢查清單（第二份 loop prompt §26，LOOP 33）。憲章 §16.A：本站不批改書寫題。 */}
+          <fieldset className="mt-4 rounded-xl border border-line p-4">
+            <legend className="px-1 text-sm font-medium text-ink">
+              {en ? 'Check your answer yourself' : '自己對一對'}
+            </legend>
+            <p className="mb-2 text-xs text-ink-muted">
+              {en
+                ? 'This site does not mark written answers. Tick what your answer does, comparing it with the model answer and marking scheme. Nothing here is saved.'
+                : '本站唔會幫你評分。對住參考答案同評分準則，剔低你嘅答案做到嘅項目。呢度唔會儲存。'}
+            </p>
+            {RUBRIC.map((r) => (
+              <label key={r.key} className="flex min-h-11 items-center gap-3 text-sm text-ink-soft">
+                <input
+                  type="checkbox"
+                  className="h-5 w-5 shrink-0 accent-[var(--color-accent-strong)]"
+                  checked={!!checks[r.key]}
+                  onChange={(e) => setChecks((c) => ({ ...c, [r.key]: e.target.checked }))}
+                />
+                {en ? r.en : r.zh}
+              </label>
+            ))}
+          </fieldset>
+
           {/* 3-level self-assessment */}
           {level === null ? (
             <div className="mt-3">
               <p className="text-sm text-ink-soft mb-2">
-                {en ? 'Compare with the model answer — how did you do?' : '對照參考答案，你掌握到幾多？'}
+                {en ? 'Overall, how close is your answer to the model answer?' : '整體嚟講，你嘅答案同參考答案有幾接近？'}
               </p>
               <div className="grid grid-cols-3 gap-2">
                 {levels.map((l) => (
