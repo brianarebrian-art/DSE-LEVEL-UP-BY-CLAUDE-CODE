@@ -39,11 +39,6 @@ const zh = {
     aiNote: '話題卡由 AI 協助撰寫，冷知識未經專家逐張核對；如發現錯漏，請以可靠資料為準。',
     enNote: '',
   },
-  pageNav: {
-    prev: '上一頁',
-    next: '下一頁',
-    home: '首頁',
-  },
   // 新來港學生支援頁（/cantonese）。
   //
   // ⚠️ 2026-09-19 範圍改過兩次。呢段註釋原本寫住「地鐵用語、問路、買嘢呢類
@@ -525,11 +520,6 @@ const en: typeof zh = {
     chat: 'Chat starter',
     aiNote: 'These cards were written with AI help, and the fun facts have not been checked one by one by an expert. If something looks wrong, trust a reliable source.',
     enNote: 'The cards are written in Cantonese.',
-  },
-  pageNav: {
-    prev: 'Back',
-    next: 'Forward',
-    home: 'Home',
   },
   cantonese: {
     title: 'New to Hong Kong — everyday Cantonese',

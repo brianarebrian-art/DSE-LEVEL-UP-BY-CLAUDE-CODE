@@ -107,13 +107,27 @@ export function orderIndex(pathname: string | null): number {
   return (PAGE_ORDER as readonly string[]).indexOf(p)
 }
 
-/** 循環嘅前一條／後一條。唔喺循環入面就回 null。 */
-export function neighbours(pathname: string | null): { prev: string; next: string } | null {
+
+/**
+ * 每頁底部的「下一步」（UX 循環 LOOP 34；第二份 loop prompt §23）。
+ *
+ * 以前 PageNav 按 PAGE_ORDER 出「上一頁：首頁／下一頁：我的進度」—— 那是網站的頁面樹，
+ * 不是學生想做的事。改為按頁面給兩個去處：第一個一律是繼續練習（/start 按本機紀錄決定去哪），
+ * 第二個是這一頁之後最常要做的事。PAGE_ORDER 仍然是「哪些頁有這一行」的單一來源，
+ * scripts/guard-nav.mjs 照舊要求每條 route 分類。
+ */
+export interface IntentLink { href: string; zh: string; en: string }
+const PRACTISE: IntentLink = { href: '/start', zh: '繼續練習', en: 'Keep practising' }
+export const INTENT_LINKS: Record<(typeof PAGE_ORDER)[number], readonly [IntentLink, IntentLink]> = {
+  '/': [PRACTISE, { href: '/subjects', zh: '揀其他科目', en: 'Choose another subject' }],
+  '/subjects': [PRACTISE, { href: '/bookmarks', zh: '查看錯題', en: 'Review saved questions' }],
+  '/dashboard': [{ ...PRACTISE, zh: '再做 10 題', en: 'Ten more questions' }, { href: '/bookmarks', zh: '查看錯題', en: 'Review saved questions' }],
+  '/bookmarks': [{ ...PRACTISE, zh: '再做 10 題', en: 'Ten more questions' }, { href: '/dashboard', zh: '睇進度', en: 'See progress' }],
+  '/notes': [PRACTISE, { href: '/subjects', zh: '揀科目', en: 'Choose a subject' }],
+  '/account': [PRACTISE, { href: '/dashboard', zh: '睇進度', en: 'See progress' }],
+}
+
+export function intentLinks(pathname: string | null): readonly [IntentLink, IntentLink] | null {
   const i = orderIndex(pathname)
-  if (i < 0) return null
-  const n = PAGE_ORDER.length
-  return {
-    prev: PAGE_ORDER[(i - 1 + n) % n],
-    next: PAGE_ORDER[(i + 1) % n],
-  }
+  return i < 0 ? null : INTENT_LINKS[PAGE_ORDER[i]]
 }

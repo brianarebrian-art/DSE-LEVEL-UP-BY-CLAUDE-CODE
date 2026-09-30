@@ -580,3 +580,14 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1223/1223；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812，歷史科長題目）：** 提交後見到清單及說明句；四項各 44px；剔選可用；自評三級顯示新標籤；localStorage 沒有新增清單相關的鍵；無水平捲動。測試時輸入的「test」沒有寫入 localStorage。
 - **Commit：** 見 git log（`feat(written): a four-point self-check, and say the site does not mark`）。
+
+## LOOP 34 — 2026-09-30
+
+- **Slice：** 頁底「上一頁／下一頁」改為按學生意圖的「下一步」（新 prompt §23，P1）。
+- **量度（改動前）：** 首頁、科目、進度、收藏、筆記、帳戶六頁底部是「上一頁：首頁｜下一頁：我的進度」這類按頁面樹排的連結。
+- **影響範圍：** `lib/pageOrder.ts`（新增 `INTENT_LINKS`、`intentLinks()`，刪去已無用的 `neighbours()`）、`components/PageNav.tsx`（重寫）、`lib/dictionary.ts`（刪去已無用的 `pageNav` 字串）、新增測試。`PAGE_ORDER` 及 `scripts/guard-nav.mjs` 的分類規則不變。
+- **改動：** 每頁兩個 48px 按鈕：第一個（實心）去 `/start`，文字按頁面寫「繼續練習」或「再做 10 題」；第二個（框線）是該頁之後最常做的事：首頁「揀其他科目」、科目「查看錯題」、進度「查看錯題」、收藏「睇進度」、筆記「揀科目」、帳戶「睇進度」。`nav` 的名稱改為「下一步」。
+- **測試：** 新增 `lib/__tests__/intent-nav.test.mts`（2 項）：六頁各有兩個連結、第一個是練習、第二個不指向自己、目的地 route 存在；全屏及資訊頁沒有這一行；組件不再用前後頁。
+- **驗證：** `npm test` 1225/1225；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812，`/dashboard`）：** 底部「再做 10 題」（`/start`）及「查看錯題」（`/bookmarks`），各 48px；舊的「頁面導航」已不存在；無水平捲動。
+- **Commit：** 見 git log（`feat(nav): next-step links instead of previous and next page`）。
