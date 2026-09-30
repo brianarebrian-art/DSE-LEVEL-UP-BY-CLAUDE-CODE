@@ -40,6 +40,41 @@ test('the record claims no legal clearance and no HKEAA permission', () => {
   assert.match(doc, /不是法律意見，亦不聲稱任何內容「法律上沒有問題」/)
   assert.match(doc, /沒有取得香港考試及評核局（考評局）或教育局的任何授權、認可或背書/)
   assert.doesNotMatch(doc, /已獲授權|獲考評局授權|licensed by the HKEAA|legally cleared|完全合法/)
+  // Refinement loop 2 (prompt §22): no legal-status words at all, unless a legal document
+  // in the repo backs them. There is none.
+  assert.doesNotMatch(doc, /\blegal(ly)?\b|\bcomplian(t|ce)\b|\blicen[cs]ed\b|\bpermitted\b|合法|合規|獲准/i)
+})
+
+// Refinement loop 2 (2026-09-30; prompt §22): code that reads an HKEAA-derived data file
+// must be listed in §3.1, and any extraction script named after the HKEAA in §3.
+const DERIVED = ['dse-2025-level-distribution', 'dse-level-drift', 'dse-paper-formats']
+function codeFiles(dir: string): string[] {
+  return readdirSync(dir).flatMap((f) => {
+    const p = join(dir, f)
+    if (f === '__tests__' || f === 'node_modules' || f.startsWith('.')) return []
+    return statSync(p).isDirectory() ? codeFiles(p) : /\.(ts|tsx|mts|mjs|py)$/.test(f) ? [p] : []
+  })
+}
+
+test('every file that reads an HKEAA-derived data file is listed', () => {
+  const importRe = new RegExp(`(from|import)\\s+[^\\n]*['"][^'"]*(${DERIVED.join('|')})(\\.json|\\.ts)?['"]`)
+  const missing: string[] = []
+  for (const d of ['app', 'components', 'lib', 'scripts']) {
+    for (const abs of codeFiles(join(ROOT, d))) {
+      const rel = relative(ROOT, abs)
+      const src = readFileSync(abs, 'utf8')
+      const reads = importRe.test(src) || (/hkeaa/i.test(rel) && /\.py$/.test(rel))
+      if (reads && !doc.includes(`\`${rel}\``)) missing.push(rel)
+    }
+  }
+  assert.deepEqual(missing, [], 'add these to CONTENT_PROVENANCE.md §3 / §3.1')
+})
+
+test('negative self-test: the import scan recognises the forms used in the repo', () => {
+  const importRe = new RegExp(`(from|import)\\s+[^\\n]*['"][^'"]*(${DERIVED.join('|')})(\\.json|\\.ts)?['"]`)
+  assert.ok(importRe.test("import raw from '@/data/dse-level-drift.json'"))
+  assert.ok(importRe.test("import { getPaperFormat } from '../../data/dse-paper-formats.ts'"))
+  assert.ok(!importRe.test('// see data/dse-paper-formats.ts'))
 })
 
 test('the record points to the single count source instead of copying numbers', () => {

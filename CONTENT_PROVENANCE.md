@@ -44,6 +44,19 @@
 | `data/reading.ts` | 英文卷一閱讀練習 | 本站原創文章；檔頭寫明對齊 2023 年文憑試某部分考核的技能類型 | 本站編寫 | — | 原創；技能對齊的描述來源待確認 |
 | `app/writing/WritingClient.tsx` | 英文卷二寫作練習 | 原創題目；頁面寫「取材自 2023 DSE 英文卷二『Poems & Songs』主題」 | — | — | 待確認：是否應保留對某年試卷主題的描述 |
 
+### 3.1 讀取上表資料的程式檔
+
+以下檔案 import 第 3 節的考評局衍生資料檔。新增讀取者時須先在此加一行；`lib/__tests__/content-provenance.test.mts` 會掃描 `app/`、`components/`、`lib/`、`scripts/` 並檢查。
+
+| 檔案 | 讀取 | 用途 |
+|---|---|---|
+| `lib/levelDistribution.ts` | `data/dse-2025-level-distribution.json` | `MasteryEstimate`（`/predictor`） |
+| `lib/levelDrift.ts` | `data/dse-level-drift.json` | `MasteryEstimate`（`/predictor`） |
+| `lib/electives.ts` | `data/dse-paper-formats.ts` | 選修規則 |
+| `app/subjects/[subject]/SubjectDetailView.tsx` | `data/dse-paper-formats.ts` | 科目頁「考卷結構」 |
+| `scripts/qbank/dse-conformance.mts` | `data/dse-paper-formats.ts` | 題庫檢查腳本（不上線） |
+| `scripts/qbank/review-scope-difficulty.mts` | `data/dse-paper-formats.ts` | 題庫檢查腳本（不上線） |
+
 **不在 repo、不使用：** `~/Downloads/Kimi_Agent_DSE 试卷下载.zip`（考評局歷屆試卷）。按 2026-09-30 規則不得以 AI 開啟或處理。
 
 ## 4. 其他內容

@@ -786,3 +786,11 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - 維持電郵報告，不建表、不存資料、不做審核後台。
 - 對話框開頭加「報告會透過你自己嘅電郵寄出，本站唔會儲存。」撳「用電郵寄出」後顯示「報告已準備。要喺你嘅電郵程式撳「傳送」先算寄出；如果乜都冇彈出嚟，複製上面段字寄去 …」，不說「已送出」。
 - 測試：`report-categories.test.mts` 加一項。瀏覽器實測（375px，練習頁答錯後）：兩句都出現，對話框無水平溢出。
+
+## R2-7 來源紀錄自動掃描（prompt §22）
+
+- `CONTENT_PROVENANCE.md` 新增 §3.1：列出 6 個 import 考評局衍生資料檔的程式檔。
+- `content-provenance.test.mts` 新增：掃 `app/`、`components/`、`lib/`、`scripts/`，凡 import 第 3 節資料檔、或檔名含 hkeaa 的抽取腳本，都要在紀錄內出現；並加反向自測。實測刪去 `SubjectDetailView` 一行即 fail。
+- 同一測試禁止紀錄出現 legal／compliant／licensed／permitted／合法／合規等字（repo 內沒有法律文件支持）。
+- 範圍說明：`scripts/` 內另有約 40 個檔案提及考評局（多為免責或出題提示），它們不讀取考評局資料，未列入；本輪沒有打開任何考評局文件。
+- 非 UI 改動，無需瀏覽器檢查。
