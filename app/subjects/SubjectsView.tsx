@@ -10,6 +10,8 @@ import {
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { useLocale } from '@/lib/i18n'
 import { bestSimilarity, FUZZY_THRESHOLD } from '@/lib/fuzzy'
+import { quickStartHref } from '@/lib/quickStart'
+import { SESSION_SIZE } from '@/lib/entitlements'
 
 // Tailwind needs literal class names, so map accents explicitly.
 // 2026-09-02（規格 v4.0-B §1.3）：原本 16 隻高飽和 Tailwind 色收斂成六個
@@ -71,19 +73,28 @@ export default function SubjectsView() {
   //      （實測 28 個題庫 chunk）。數字完全一樣 —— summary 由題庫產生，
   //      而 summary-parity 測試每次 npm test 拎真題庫重算比對。
     const { mc, written } = SUBJECT_SUMMARY[s.id] ?? { mc: 0, written: 0 }
+    // 2026-09-30（UX 循環 LOOP 5）：卡的底部原本寫「開始練習」，但整張卡只連去科目頁，
+    // 學生要在科目頁再撳一次「立即開始」。現在分成兩個連結：
+    //   ① 科目名稱 —— 延伸覆蓋整張卡（after:inset-0），去科目頁，行為與以前相同；
+    //   ② 「開始 10 題」—— 疊在最上層，直接開始一節（與首頁快速開始同一條 URL）。
+    // 不可把 ② 放在 ① 之內：連結不能巢狀，讀屏亦會讀成一條。
     return (
-      <Link
-        href={`/subjects/${s.id}`}
-        className={`group relative bg-surface-raised border border-line rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}
-      >
+      <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}>
         <div className="absolute top-4 right-4">
           <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
             <CheckCircle2 size={10} /> {mc}
             {en ? ' MC' : ' 條 MC'}
           </span>
         </div>
-        <div className="text-3xl mb-3">{s.emoji}</div>
-        <div className="font-medium mb-1 text-ink">{name(s)}</div>
+        <div className="text-3xl mb-3" aria-hidden>{s.emoji}</div>
+        <h2 className="font-medium mb-1 text-ink">
+          <Link
+            href={`/subjects/${s.id}`}
+            className="after:absolute after:inset-0 after:rounded-xl after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent"
+          >
+            {name(s)}
+          </Link>
+        </h2>
         <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
         <div className="text-[11px] text-ink-muted mb-3">
           {written > 0
@@ -94,10 +105,19 @@ export default function SubjectsView() {
               ? 'Written / oral / practical: not covered'
               : '書寫、口試、實作：未涵蓋'}
         </div>
-        <div className="flex items-center gap-1 text-sm text-accent font-medium">
-          {tl.startPractice} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+        <div className="mt-auto flex items-center justify-between gap-3">
+          <Link
+            href={quickStartHref(s.id)}
+            aria-label={en ? `${s.nameEn}: start ${SESSION_SIZE} questions` : `${s.name}：開始 ${SESSION_SIZE} 題`}
+            className="relative z-10 inline-flex min-h-12 items-center gap-1 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {en ? `Start ${SESSION_SIZE} questions` : `開始 ${SESSION_SIZE} 題`} <ArrowRight size={14} aria-hidden />
+          </Link>
+          <span aria-hidden className="text-xs text-ink-muted group-hover:text-accent transition-colors">
+            {en ? 'Topics & papers ›' : '課題及卷別 ›'}
+          </span>
         </div>
-      </Link>
+      </div>
     )
   }
 
@@ -118,27 +138,17 @@ export default function SubjectsView() {
     <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="text-ink-muted text-sm mb-2 flex items-center gap-1">
             <Link href="/" className="hover:text-accent">{t.common.home}</Link>
             <span>/</span>
             <span>{tl.title}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">{tl.title}</h1>
-          <p className="text-ink-muted text-lg max-w-2xl">
+          <p className="text-ink-muted text-base sm:text-lg max-w-2xl">
             {tl.introA}
             <span className="text-accent">{activeCount}{tl.introLiveA}</span>{tl.introB}
           </p>
-          {/* 紙筆戰士 2026-08-21 由頂部導覽降級落嚟。佢係一種【練習模式】
-              （生成可打印 A4 卷），結構上屬於呢個 hub，唔係「進度」「收藏」嘅同級物。
-              降級唔等於收埋 —— 呢度同 Footer 練習欄各有一個入口。 */}
-          <Link
-            href="/paper-warrior"
-            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-strong bg-surface-raised px-4 text-sm text-ink-soft transition-colors hover:border-accent/40 hover:text-accent"
-          >
-            <Printer size={15} aria-hidden />
-            {t.nav.paper}
-          </Link>
         </div>
 
         {/* 2026-09-05：「內容生產進度」進度條喺呢度剷走。
@@ -149,7 +159,7 @@ export default function SubjectsView() {
             覆蓋率而家逐科顯示（見 ActiveCard），跟實數行。 */}
 
         {/* Controls: search + sort */}
-        <div className="flex flex-col sm:flex-row gap-3 mb-4">
+        <div className="flex gap-3 mb-4">
           <div className="relative flex-1">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted" />
             <input
@@ -171,7 +181,7 @@ export default function SubjectsView() {
         </div>
 
         {/* Category chips */}
-        <div className="flex gap-2 mb-10 flex-wrap">
+        <div className="flex gap-2 mb-6 flex-wrap">
           {([
             ['all', en ? 'All' : '全部'],
             ['core', en ? 'Core' : '核心'],
@@ -218,6 +228,19 @@ export default function SubjectsView() {
             )
           )}
         </div>
+
+        {/* 紙筆戰士 2026-08-21 由頂部導覽降級落嚟。佢係一種【練習模式】
+            （生成可打印 A4 卷），結構上屬於呢個 hub，唔係「進度」「收藏」嘅同級物。
+            降級唔等於收埋 —— 呢度同 Footer 練習欄各有一個入口。
+            2026-09-30（UX 循環 LOOP 5）：由標題下方移到科目列表之後，令手機首屏先見到科目。 */}
+        <Link
+          href="/paper-warrior"
+          className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-strong bg-surface-raised px-4 text-sm text-ink-soft transition-colors hover:border-accent/40 hover:text-accent"
+        >
+          <Printer size={15} aria-hidden />
+          {t.nav.paper}
+          {en ? ': printable A4 paper' : '：打印 A4 練習卷'}
+        </Link>
 
         {/* Footer note */}
         <div className="mt-16 bg-surface-sunken border border-line rounded-2xl p-6 text-center">
