@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, PenLine, BookOpenCheck, FileText, Search, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronDown, PenLine, BookOpenCheck, FileText, Search, Sparkles } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
 import type { Topic } from '@/data/questions'
 import { useLocale } from '@/lib/i18n'
@@ -295,10 +295,16 @@ export default function SubjectDetailView({
         {/* 2027 年考卷結構 —— data/dse-paper-formats.ts 的 PAPER_STRUCTURE（2026-09-26 按評核大綱核對）。
             題數只分得出三類（選擇題、短答題、長題）；「資料題」「論述題」等真實題型各有幾多條，
             題庫未有標註，所以不列數字，只列考卷結構作參考。 */}
+        {/* 2026-09-30（UX 循環 LOOP 5／6）：改為預設收起的 <details>。375×812 實測這一節高 389px，
+            把「按課題練習」推到 y=1270；它是參考資料，不是練習入口。標題、題數及來源照舊，展開即見。 */}
         {structure && (
-          <section className="mb-10 rounded-2xl border border-line bg-surface-raised p-5">
-            <h2 className="text-lg font-medium text-ink">{en ? 'The 2027 exam, and what we have' : '2027 年考卷結構同現有題數'}</h2>
-            <div className="mt-3 flex flex-wrap gap-2">
+          <details className="group mb-10 rounded-2xl border border-line bg-surface-raised">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent [&::-webkit-details-marker]:hidden">
+              <h2 className="text-lg font-medium text-ink">{en ? 'The 2027 exam, and what we have' : '2027 年考卷結構同現有題數'}</h2>
+              <ChevronDown size={18} aria-hidden className="shrink-0 text-ink-muted transition-transform group-open:rotate-180" />
+            </summary>
+            <div className="px-5 pb-5">
+            <div className="flex flex-wrap gap-2">
               {([
                 ['mc', en ? 'Multiple-choice' : '選擇題', typeCounts.mc],
                 ['text', en ? 'Short answer' : '短答題', typeCounts.text],
@@ -364,7 +370,8 @@ export default function SubjectDetailView({
               </ExternalLinkGate>
               {en ? ', checked 26 Sep 2026.' : '，2026-09-26 核對。'}
             </p>
-          </section>
+            </div>
+          </details>
         )}
 
         {/* Topic list */}

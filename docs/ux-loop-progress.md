@@ -120,3 +120,18 @@
 - **新風險：** 對考試沒有選擇題的科目，從列表直接開始時不會經過科目頁的「僅供溫習」說明；卡上仍標示「N 條 MC」。
 - **下一輪最高優先問題：** 科目頁（`/subjects/[subject]`）快速開始卡之後是書寫卷、各科專屬工具、考卷結構及 20 多個課題，全部同等顯示。
 - **Commit：** 見 git log（`feat(subjects): start ten questions from each subject card`）。
+
+## LOOP 6 — 2026-09-30
+
+- **Slice：** 科目頁的考卷結構收入次級區域（P0-B 第二步）。
+- **優先級：** P0。
+- **量度（改動前，375×812，數學科）：** 快速開始卡 y=312–522、書寫卷 y=562、SENSEI y=685，之後是 389px 高的「2027 年考卷結構同現有題數」（y=841），「按課題練習」在 y=1270 才出現。
+- **影響範圍：** `app/subjects/[subject]/SubjectDetailView.tsx`（該節外層由 `<section>` 改為 `<details>`）；新增測試。內容、數字、來源連結不變。
+- **改動：** 考卷結構改為預設收起的 `<details>`，`<summary>` 內保留原本的 `<h2>` 標題及一個箭頭，高 52px。
+- **為何不收起課題列表、書寫卷或 SENSEI：** 三者都是練習入口；考卷結構是參考資料。課題列表仍然很長（數學 25 個課題，約 2,400px），留待下一輪處理。
+- **測試：** 新增 `lib/__tests__/subject-page-sections.test.mts`（2 項）：考卷結構是預設收起的 `<details>`，summary 內有 `<h2>`，題數、各卷、校本評核及來源連結仍在；兩張練習卡在它之前，課題列表在它之後。
+- **驗證：** `npm test` 1117/1117；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 收起時高 54px，「按課題練習」由 y=1270 移到 y=935；展開後高 381px，內含評核大綱來源；鍵盤聚焦 summary 按 Enter 可展開；無水平捲動。
+- **未完成：** 課題列表的長度及排序；最近使用的科目。
+- **下一輪最高優先問題：** P0-C 其餘：練習頁的 KaTeX 公式在窄屏會否截斷或撐闊頁面，及「下一題」在長解析之後要捲很遠才撳到。
+- **Commit：** 見 git log（`feat(subject): fold the paper structure below the practice entries`）。
