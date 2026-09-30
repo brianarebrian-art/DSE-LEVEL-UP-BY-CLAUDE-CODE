@@ -8,7 +8,7 @@ import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
 import { getSubject } from '@/data/subjects'
 import { loadSubjectQuestions } from '@/data/questions/load'
-import { isWithdrawn } from '@/data/questions/hidden-topics'
+import { isPendingReview, isWithdrawn } from '@/data/questions/hidden-topics'
 import type { AnyQuestion } from '@/data/questions/types'
 import {
   DEFAULT_FOLDER,
@@ -218,6 +218,13 @@ export default function BookmarksView() {
                         {en
                           ? 'This question has been withdrawn while its explanation is being corrected. Your bookmark stays; the question comes back here once it is fixed.'
                           : '呢條題暫時收起咗，因為解析要修正。收藏會保留，修好之後會喺度自動出返。'}
+                      </p>
+                    ) : isPendingReview(bm.subjectId, bm.questionId) ? (
+                      /* 等人手判斷的題目（pending-review.json，2026-09-30）：同樣收藏保留。 */
+                      <p className="text-sm text-ink-muted">
+                        {en
+                          ? 'This question is held back while a person checks its explanation. Your bookmark stays; the question comes back here if it is cleared.'
+                          : '呢條題暫時收起咗，等人手睇清楚解析有冇問題。收藏會保留，冇問題嘅話會喺度自動出返。'}
                       </p>
                     ) : (
                       <p className="text-sm text-ink-muted">

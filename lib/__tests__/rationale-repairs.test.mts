@@ -165,7 +165,7 @@ test('M1-01: parameters read from the stem, every option recomputed, every note 
 
 test('/transparency shows the repair progress from the log, not a hand-written number', () => {
   assert.match(read('data/questions/repair-stats.ts'), /from '\.\/rationale-repairs\.json'/)
-  assert.match(read('app/transparency/page.tsx'), /<TransparencyClient stats=\{repairStats\(\)\} \/>/)
+  assert.match(read('app/transparency/page.tsx'), /<TransparencyClient stats=\{repairStats\(\)\} content=\{CONTENT_STATS\} \/>/)
   const page = read('app/transparency/TransparencyClient.tsx')
   for (const k of ['stats.found', 'stats.rewritten', 'stats.restored']) assert.ok(page.includes(`n(${k})`), k)
 })

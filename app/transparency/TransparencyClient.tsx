@@ -30,7 +30,15 @@ const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en'))
 //   · 共收起的總數由程式按題號計聯集，不是把幾批相加。
 //   · Yuna 要求用「已修復」；此處用「已改寫」，因為改寫後未經真人內容覆核，
 //     不應暗示內容已確認正確（第三次決定：AI 不可自行宣稱解析內容正確）。
-export default function TransparencyClient({ stats }: { stats: RepairStats }) {
+export interface ContentCounts {
+  totalAuthored: number
+  published: number
+  withdrawn: number
+  withheldTopic: number
+  pendingReview: number
+}
+
+export default function TransparencyClient({ stats, content }: { stats: RepairStats; content: ContentCounts }) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const WITHDRAWN_COUNT = stats.withdrawnNow
@@ -160,6 +168,32 @@ export default function TransparencyClient({ stats }: { stats: RepairStats }) {
               ? `${PENDING_EN.toLocaleString()} questions are marked “Pending review” in the English interface and ${PENDING_ZH.toLocaleString()} in the Chinese interface. These are questions where our checks have found a specific problem that a person has not fixed yet: the explanation refers to an option by position, and because options are shuffled every time, that reference may point to the wrong one. The badge says so on the question itself.`
               : `有 ${PENDING_ZH.toLocaleString()} 條題目喺中文介面、${PENDING_EN.toLocaleString()} 條喺英文介面標住「待核」。呢啲係機器已經驗出具體問題、但仲未有人手修正嘅題目：解析用位置講選項，而選項每次都會洗牌，所以嗰句可能指錯。徽章會喺題目度直接講明。`}
         </p>
+        {/* 2026-09-30（UX 循環 LOOP 20）：題庫各狀態題數，與首頁、科目頁、練習頁同一來源
+            （summary.generated.ts 的 CONTENT_STATS）。四項相加等於已編寫題數，產生器不成立就不寫檔。 */}
+        <h3 className="text-base font-bold text-ink mb-2">{en ? 'Where every question stands' : '題庫數字'}</h3>
+        <dl className="mb-3 grid grid-cols-2 gap-3 rounded-xl border border-line bg-surface-raised p-4 sm:grid-cols-4">
+          <div>
+            <dt className="text-xs text-ink-muted">{en ? 'In practice' : '練習中'}</dt>
+            <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.published)}</dd>
+          </div>
+          <div>
+            <dt className="text-xs text-ink-muted">{en ? 'Withdrawn' : '已收起'}</dt>
+            <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.withdrawn)}</dd>
+          </div>
+          <div>
+            <dt className="text-xs text-ink-muted">{en ? 'Topic held back' : '課題暫緩'}</dt>
+            <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.withheldTopic)}</dd>
+          </div>
+          <div>
+            <dt className="text-xs text-ink-muted">{en ? 'Awaiting a person' : '等人手判斷'}</dt>
+            <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.pendingReview)}</dd>
+          </div>
+        </dl>
+        <p className="text-ink-muted text-sm leading-relaxed mb-5">
+          {en
+            ? `${n(content.totalAuthored)} questions have been written. Each is counted once, so the four figures add up to that total. Only the ones in practice are shown to students; every question count elsewhere on the site is this figure. “Topic held back”: whole topics that are not shown until each question in them is matched to the curriculum guide.`
+            : `題庫共編寫咗 ${n(content.totalAuthored)} 條題目，每條只計一次，所以四個數加埋就係呢個總數。只有「練習中」嘅題目會出畀學生，網站其他地方顯示嘅題數都係呢個數。「課題暫緩」：成個課題暫時唔出題，要逐題對返課程指引先會出。`}
+        </p>
         {WITHDRAWN_COUNT > 0 && (
           <p className="text-ink-soft leading-relaxed mb-5">
             {en
@@ -214,13 +248,13 @@ export default function TransparencyClient({ stats }: { stats: RepairStats }) {
               <div>
                 <dt className="text-xs text-ink-muted">{en ? 'Unclear' : '未能判斷'}</dt>
                 <dd className="text-2xl font-medium tabular-nums text-ink">{n(k.C)}</dd>
-                <dd className="text-xs text-ink-muted">{en ? 'awaits review' : '等人手睇'}</dd>
+                <dd className="text-xs text-ink-muted">{en ? 'held back' : '暫時收起'}</dd>
               </div>
             </dl>
             <p className="text-ink-muted text-sm leading-relaxed mb-5">
               {en
-                ? 'Questions a person has not yet looked at stay in practice until they do. New questions may not use position words at all.'
-                : '未能判斷嘅題目，喺有人睇過之前照常出題。新題一律唔准用位置詞。'}
+                ? 'Unclear questions are held back from practice until a person has looked at them. New questions may not use position words at all.'
+                : '未能判斷嘅題目，喺有人睇過之前暫時唔出題。新題一律唔准用位置詞。'}
             </p>
           </>
         )}

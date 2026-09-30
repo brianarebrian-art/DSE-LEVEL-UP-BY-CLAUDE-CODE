@@ -115,7 +115,7 @@ if (process.argv.includes('--write')) {
     '由 `scripts/qbank/classify-posref.mts --write` 生成，唔好人手改。',
     '',
     '這些題目的解析有位置詞（例如「最後一項」），但分類器判斷不到它指的是選項還是題目內容。',
-    '在判斷之前，題目照常上線（Yuna 2026-09-29 第四次決定：C 類不即時收起）。',
+    '在判斷之前，題目暫時不出題（2026-09-30 起，data/questions/pending-review.json；此前按 Yuna 2026-09-29 第四次決定照常上線）。',
     '',
     '判斷方法：看一條例子，決定整個模板。指選項 → A（收起）；指題目內容 → B（保留）。',
     '決定寫入 `scripts/qbank/posref-review-decisions.json`，鍵為 `科目/題號`，須填 `class`、`by`（代號）、`date`、`note`。',
@@ -139,7 +139,18 @@ if (process.argv.includes('--write')) {
     lines.push('', `題號：${rs.map((r) => r.id).join('、')}`, '')
   }
   writeFileSync(join(ROOT, 'docs/rationale-repairs/posref-review-queue.md'), lines.join('\n'))
-  console.log('written: data/questions/posref-classification.json, docs/rationale-repairs/posref-review-queue.md')
+
+  // Class C is held back until a person decides (2026-09-30; data/questions/hidden-topics.ts
+  // PENDING_REVIEW). An id keeps the date it was first held back.
+  const pPath = join(ROOT, 'data/questions/pending-review.json')
+  const prev = JSON.parse(readFileSync(pPath, 'utf8')) as Record<string, Record<string, { date: string; reason: string }>>
+  const pending: Record<string, Record<string, { date: string; reason: string }>> = {}
+  const day = new Date().toISOString().slice(0, 10)
+  for (const r of [...queue].sort((a, b) => (a.subject + a.id).localeCompare(b.subject + b.id))) {
+    ;(pending[r.subject] ??= {})[r.id] = prev[r.subject]?.[r.id] ?? { date: day, reason: 'POSREF_AMBIGUOUS' }
+  }
+  writeFileSync(pPath, JSON.stringify(pending, null, 2) + '\n')
+  console.log('written: data/questions/posref-classification.json, docs/rationale-repairs/posref-review-queue.md, data/questions/pending-review.json')
 }
 
 // ── --apply: decision ④, "A → withdraw" ─────────────────────────────────────────

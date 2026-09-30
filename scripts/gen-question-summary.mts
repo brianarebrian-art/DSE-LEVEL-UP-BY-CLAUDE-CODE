@@ -33,12 +33,16 @@ import { fileURLToPath } from 'node:url'
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const idx = await import(join(ROOT, 'data/questions/index.ts')) as {
   getSubjectQuestions: (id: string) => ({ type?: string } & Record<string, unknown>)[]
+  getSubjectQuestionsRaw: (id: string) => { id: string; topic: string }[]
   getSubjectTopics: (id: string) => Record<string, unknown>[]
 }
 const { subjects } = await import(join(ROOT, 'data/subjects.ts')) as {
   subjects: { id: string; isActive?: boolean }[]
 }
 
+const { contentStatus } = await import(join(ROOT, 'data/questions/hidden-topics.ts')) as {
+  contentStatus: (subjectId: string, q: { id: string; topic: string }) => 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review'
+}
 const { versionOf } = await import(join(ROOT, 'scripts/qbank/bank-version.mts')) as {
   versionOf: (qs: Record<string, unknown>[]) => string
 }
@@ -65,6 +69,27 @@ for (const s of active) {
 }
 
 const total = Object.values(summary).reduce((n, v) => n + v.total, 0)
+
+// One status per authored question (data/questions/hidden-topics.ts contentStatus).
+// Every question count shown anywhere on the site comes from here or from TOTAL_QUESTIONS,
+// which must equal `published`; the generator refuses to write a file where it does not.
+const stats = { totalAuthored: 0, published: 0, withdrawn: 0, withheldTopic: 0, pendingReview: 0 }
+for (const s of active) {
+  for (const q of idx.getSubjectQuestionsRaw(s.id)) {
+    stats.totalAuthored++
+    const st = contentStatus(s.id, q)
+    if (st === 'published') stats.published++
+    else if (st === 'withdrawn') stats.withdrawn++
+    else if (st === 'withheld_topic') stats.withheldTopic++
+    else stats.pendingReview++
+  }
+}
+if (stats.published + stats.withdrawn + stats.withheldTopic + stats.pendingReview !== stats.totalAuthored) {
+  throw new Error(`content stats do not add up: ${JSON.stringify(stats)}`)
+}
+if (stats.published !== total) {
+  throw new Error(`published (${stats.published}) differs from the practice pool (${total})`)
+}
 
 // ⚠️ 呢個檔【產生出嚟】—— 檔頭文案受 term-guard 管（同 load.ts 一樣位於
 // data/questions/ 之下），所以下面嘅字一律用書面語。
@@ -94,8 +119,14 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = ${JSON.stringify(
 /** 課題清單，連同逐課題題數。等同 getSubjectTopics()，但不會拉入題目。 */
 export const SUBJECT_TOPICS: Record<string, Topic[]> = ${JSON.stringify(topics, null, 2)}
 
-/** 全站題目總數。 */
+/** 全站題目總數（學生練習得到的題目，即 CONTENT_STATS.published）。 */
 export const TOTAL_QUESTIONS = ${total}
+
+/**
+ * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，四項相加等於 totalAuthored。
+ * 只有 published 會出現在練習中。狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
+ */
+export const CONTENT_STATS = ${JSON.stringify(stats, null, 2)} as const
 `
 
 const dest = join(ROOT, 'data/questions/summary.generated.ts')

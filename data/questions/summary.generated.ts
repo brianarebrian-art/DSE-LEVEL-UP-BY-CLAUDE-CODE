@@ -117,8 +117,8 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 10
   },
   "english-literature": {
-    "total": 1039,
-    "mc": 1026,
+    "total": 1027,
+    "mc": 1014,
     "written": 13,
     "topics": 10
   },
@@ -141,8 +141,8 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 11
   },
   "design-tech": {
-    "total": 1023,
-    "mc": 1010,
+    "total": 1022,
+    "mc": 1009,
     "written": 13,
     "topics": 10
   },
@@ -2491,8 +2491,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "Genre & Form",
       "frameworkEn": "Genre & Form",
       "emoji": "📖",
-      "count": 106,
-      "mcCount": 104,
+      "count": 94,
+      "mcCount": 92,
       "writtenCount": 2
     },
     {
@@ -3016,8 +3016,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "應用判斷",
       "frameworkEn": "Application",
       "emoji": "🛠️",
-      "count": 98,
-      "mcCount": 97,
+      "count": 97,
+      "mcCount": 96,
       "writtenCount": 1
     },
     {
@@ -3482,5 +3482,17 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
   ]
 }
 
-/** 全站題目總數。 */
-export const TOTAL_QUESTIONS = 26510
+/** 全站題目總數（學生練習得到的題目，即 CONTENT_STATS.published）。 */
+export const TOTAL_QUESTIONS = 26497
+
+/**
+ * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，四項相加等於 totalAuthored。
+ * 只有 published 會出現在練習中。狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
+ */
+export const CONTENT_STATS = {
+  "totalAuthored": 27326,
+  "published": 26497,
+  "withdrawn": 597,
+  "withheldTopic": 219,
+  "pendingReview": 13
+} as const

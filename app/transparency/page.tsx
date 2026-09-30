@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import ArticleJsonLd from '@/components/Seo/ArticleJsonLd'
 import TransparencyClient from './TransparencyClient'
 import { repairStats } from '@/data/questions/repair-stats'
+import { CONTENT_STATS } from '@/data/questions/summary.generated'
 
 // 2026-08-21：本版原本淨係一個 client component，冇自己嘅 metadata，所以喺搜尋
 // 結果同社交預覽入面同全站其他頁共用同一個泛用標題。老師／家長好多時就係由
@@ -19,7 +20,7 @@ export default function Page() {
   return (
     <>
       {/* 修復數字在 server 計算，只把數字傳到瀏覽器（data/questions/repair-stats.ts）。 */}
-      <TransparencyClient stats={repairStats()} />
+      <TransparencyClient stats={repairStats()} content={CONTENT_STATS} />
       {/* Article 結構化資料 ＋ 頁底可見日期（日期由 lib/articleDates.ts 讀） */}
       <ArticleJsonLd route="/transparency" meta={metadata} />
     </>

@@ -48,8 +48,8 @@ above attached to anything you quote.
 ## What it is
 
 - 100% free. No paywall, no subscription, no premium tier, no ads.
-- 26,510 questions across 25 HKDSE subjects: 25,449 multiple-choice and 1,061
-  written (short/long) items (verified 2026-09-29).
+- 26,497 questions across 25 HKDSE subjects: 25,436 multiple-choice and 1,061
+  written (short/long) items (verified 2026-09-30).
 - Every question passes automated gates before going live. The named approval
   records for batches added before 25 September 2026 were removed, so we make no
   claim about how many of those questions were individually approved.
@@ -103,8 +103,8 @@ math 1624 | physics 1120 | bafs 990 | chinese 1147 |
 economics 1061 | biology 1112 | geography 1108 | ict 1111 |
 history 1089 | chinese-history 1087 | ethics-religious 866 |
 chemistry 1015 | english 1051 | csd 984 | chinese-literature 1055 |
-english-literature 1039 | m1 898 | technology-living 1033 | pe 1032 |
-music 1027 | design-tech 1023 | ths 1021 | health-management 1021 |
+english-literature 1027 | m1 898 | technology-living 1033 | pe 1032 |
+music 1027 | design-tech 1022 | ths 1021 | health-management 1021 |
 m2 983 | visual-arts 1013
 
 URL pattern: /subjects/{id} and /notes/{id} — for example /subjects/math and

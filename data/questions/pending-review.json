@@ -1,0 +1,58 @@
+{
+  "design-tech": {
+    "dath_me_1": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    }
+  },
+  "english-literature": {
+    "el_po_6_0": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_1": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_10": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_11": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_2": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_3": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_4": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_5": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_6": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_7": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_8": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    },
+    "el_po_6_9": {
+      "date": "2026-09-30",
+      "reason": "POSREF_AMBIGUOUS"
+    }
+  }
+}

@@ -384,3 +384,29 @@ Yuna 於 2026-09-30 在對話中回覆 LOOP 17 的暫停報告，逐項決定如
 - **驗證：** `npm test` 1176/1176（第一次 1 項失敗：舊測試鎖住已移除的圓點寫法，已改指狀態列）；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812）：** 狀態列 y=140、高 24、每格 31px；答五題後顯示「答啱、盲點、盲點、答啱、盲點、而家」；無水平捲動；舊圓點 0 個。測試作答紀錄已從瀏覽器清走。
 - **Commit：** 見 git log（`feat(practice): status strip for questions 1–10, display only`）。
+
+---
+
+# 第二份 loop prompt：AUTONOMOUS PRODUCT REPAIR & HARDENING LOOP（2026-09-30）
+
+Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問是否繼續。沿用：一輪一個 commit；不 push；§4 以該 prompt 作所列項目的批准；考評局文件不給 AI 讀取（2026-09-30 決定）；不代簽；雲端同步鍵及 Supabase 結構不在未有創辦人決定下改動。與憲章或既有決定衝突的項目，記錄於下文「未執行項目」，不停下。
+
+## LOOP 20 — 2026-09-30
+
+- **Slice：** 題數唯一來源，以及未判斷題目不再出題（新 prompt §2、§3，P0）。
+- **量度（改動前）：**
+  - 已編寫 27,326 條；練習池 26,510；已收起 597；倫理與宗教科兩個暫緩課題 220 條（其中 1 條同時已收起）。
+  - 題數顯示在首頁及練習頁（26,510），收起數在透明度頁（597）。站內沒有任何地方說明兩者關係，讀者只能自行相加，得 27,107。prompt 所引首頁的 27,106 即 27,326 − 220，是較早版本的顯示；26,510 + 597 多出的 1，就是那條同時暫緩及收起的題目。
+  - 位置詞檢查判斷不到的 13 條（C 類：`el_po_6_*` 12 條、`dath_me_1`）一直照常出題，等人手判斷。
+- **影響範圍：** `data/questions/hidden-topics.ts`（新增 `PENDING_REVIEW`、`contentStatus`、`withoutWithheld` 改用它）、新增 `data/questions/pending-review.json`、`scripts/gen-question-summary.mts`（產生 `CONTENT_STATS`，四項相加不等於總數或 published 不等於練習池就不寫檔）、`summary.generated.ts` 及 `bank-versions.generated.ts`（重新產生）、`scripts/qbank/classify-posref.mts`（`--write` 時同時重寫 pending 清單）、`app/transparency/{page,TransparencyClient}.tsx`、`app/bookmarks/BookmarksView.tsx`、`public/llms.txt`（題數）、`docs/rationale-repairs.md` 及佇列檔的說明、測試。
+- **改動：**
+  - 每條已編寫題目只有一個狀態：`published`、`withdrawn`、`withheld_topic`、`pending_review`（次序：已知錯誤 > 暫緩課題 > 待判斷）。只有 `published` 會出題；兩條讀取路徑（`index.ts`；`load.ts` 的雲端及靜態）都經同一個 `withoutWithheld`。
+  - 產生器輸出 `CONTENT_STATS = { totalAuthored 27,326, published 26,497, withdrawn 597, withheldTopic 219, pendingReview 13 }`；`TOTAL_QUESTIONS` 等於 `published`。
+  - 透明度頁新增「題庫數字」四格及一句說明（四個數相加等於總數，網站其他題數即「練習中」）；數字由 server 傳入。C 類說明由「照常出題」改為「暫時唔出題」。
+  - 收藏了待判斷題目的學生，看到「暫時收起，等人手睇」，而不是「已經唔喺題庫」。
+- **與既有決定的關係：** Yuna 2026-09-29 第四次決定原本讓 C 類照常上線；新 prompt §3 要求未判斷內容不得進入練習池。以較新的指示為準。可逆：人手判斷寫入 `posref-review-decisions.json` 後重跑 `classify-posref.mts --write --apply`，清單會自動更新。
+- **測試：** 新增 `lib/__tests__/content-stats.test.mts`（6 項）：四項相加；與真題庫重算一致；練習池沒有非 published 題目，兩條讀取路徑都過濾；pending 清單等於 C 類清單；透明度頁由 server 取數；收藏說明。舊測試的定位跟新寫法更新，要求不變：`family-difficulty`（不在練習池的覆寫題必須是非 published）、`hidden-topics`（收起與暫緩在同一個狀態函數）、`rationale-repairs`（透明度頁由 server 取數）、`claim-parity`（`llms.txt` 題數改為 26,497；英國文學 1,027、設計與科技 1,022）。
+- **驗證：** `npm test` 1182/1182；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 透明度頁四格「26,497／597／219／13」，說明句總數 27,326，無水平捲動；首頁只出現 26,497 一個題數。
+- **未做：** 雲端題庫鏡像不用重新推送：過濾在讀取時進行。已部署的正式網站要等下次部署才會用新數字。
+- **Commit：** 見 git log（`fix(content): one status per question, one source for every count`）。

@@ -9,7 +9,7 @@ const { loadSubjectQuestions } = await import('../load.ts')
 const { subjects } = await import('../../subjects.ts')
 const { familyKey, familyLabel, stemSkeleton } = await import('../family.ts')
 const { DIFFICULTY_OVERRIDES } = await import('../difficulty-overrides.generated.ts')
-const { isHiddenTopic, isWithdrawn } = await import('../hidden-topics.ts')
+const { contentStatus } = await import('../hidden-topics.ts')
 
 const active: string[] = subjects.filter((s: { isActive?: boolean }) => s.isActive !== false).map((s: { id: string }) => s.id)
 const isMc = (q: { type?: string }) => (q.type ?? 'mc') === 'mc'
@@ -71,9 +71,10 @@ test('overrides only change difficulty, and only on questions that exist', () =>
     for (const [id, d] of Object.entries(map)) {
       const before = raw.get(id), after = out.get(id)
       assert.ok(before, `${s}: override for unknown id ${id}`)
-      // Families are computed on the whole bank, withheld topics and withdrawn questions
+      // Families are computed on the whole bank, withheld topics, withdrawn and pending questions
       // included (hidden-topics.ts), so their overrides stay ready for when they come back.
-      if (!after) { assert.ok(isHiddenTopic(s, before.topic) || isWithdrawn(s, id), `${s}/${id}: missing from the served bank`); continue }
+      // 2026-09-30: pending-review questions too, via the single contentStatus.
+      if (!after) { assert.notEqual(contentStatus(s, before), 'published', `${s}/${id}: missing from the served bank`); continue }
       assert.notEqual(before.difficulty, d, `${s}/${id}: override does not change anything`)
       assert.deepEqual({ ...after, difficulty: before.difficulty }, before, `${s}/${id}: override changed more than difficulty`)
     }

@@ -3,7 +3,7 @@
 由 `scripts/qbank/classify-posref.mts --write` 生成，唔好人手改。
 
 這些題目的解析有位置詞（例如「最後一項」），但分類器判斷不到它指的是選項還是題目內容。
-在判斷之前，題目照常上線（Yuna 2026-09-29 第四次決定：C 類不即時收起）。
+在判斷之前，題目暫時不出題（2026-09-30 起，data/questions/pending-review.json；此前按 Yuna 2026-09-29 第四次決定照常上線）。
 
 判斷方法：看一條例子，決定整個模板。指選項 → A（收起）；指題目內容 → B（保留）。
 決定寫入 `scripts/qbank/posref-review-decisions.json`，鍵為 `科目/題號`，須填 `class`、`by`（代號）、`date`、`note`。

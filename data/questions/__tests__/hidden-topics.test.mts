@@ -63,6 +63,9 @@ test('every withdrawn entry points at a real question and says when and why', ()
 
 test('withdrawn questions are filtered wherever withheld topics are', () => {
   const src = readFileSync('data/questions/hidden-topics.ts', 'utf8')
-  assert.match(src, /!hidden\.includes\(q\.topic\) && !out\[q\.id\]/)
+  // 2026-09-30: one status function decides; withdrawn and hidden topics are both in it.
+  assert.match(src, /return items\.filter\(\(q\) => contentStatus\(subjectId, q\) === 'published'\)/)
+  assert.match(src, /if \(isWithdrawn\(subjectId, q\.id\)\) return 'withdrawn'/)
+  assert.match(src, /if \(isHiddenTopic\(subjectId, q\.topic\)\) return 'withheld_topic'/)
   assert.match(readFileSync('scripts/qbank/withdraw.mts', 'utf8'), /data\/questions\/withdrawn\.json/)
 })

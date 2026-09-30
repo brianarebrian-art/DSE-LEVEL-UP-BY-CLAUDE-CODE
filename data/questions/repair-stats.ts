@@ -8,7 +8,7 @@
 //              Counted per finding and as a union of question ids, never by adding.
 //   candidates hits in the hand-written banks. A hit is not a fault: 「數列的第二項」 is
 //              content. Each is classified A (option reference, withdrawn), B (content,
-//              kept) or C (unclear, left live in a human review queue).
+//              kept) or C (unclear; held back from practice since 2026-09-30 until a person decides).
 import repairLog from './rationale-repairs.json'
 import classification from './posref-classification.json'
 import { WITHDRAWN } from './hidden-topics'

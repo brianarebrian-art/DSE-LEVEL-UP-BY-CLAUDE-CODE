@@ -113,7 +113,7 @@ withdrawn → rewritten → automated-checked → content-reviewed → restored
 |---|---|---|---|
 | A　CONFIDENT_OPTION_REFERENCE | 指選項（例如「陷阱：90,000 元漏了…；最後一項把…」「第三個選項」「the last option」） | 286 | 收起（`--apply`） |
 | B　LIKELY_CONTENT_REFERENCE | 指題目內容（「漏了第二項」＝算式的項；「缺了第三項」＝解析列出的第三個條件；詩歌核對清單的最後一項） | 238 | 保留 |
-| C　AMBIGUOUS | 判斷不到 | 13 | 照常上線，列入 `docs/rationale-repairs/posref-review-queue.md` 等人手判斷 |
+| C　AMBIGUOUS | 判斷不到 | 13 | 2026-09-30 起暫時不出題（`data/questions/pending-review.json`），列入 `docs/rationale-repairs/posref-review-queue.md` 等人手判斷；此前照常上線 |
 
 - 分類結果：`data/questions/posref-classification.json`（生成檔，不可人手改）。
 - C 類的人手決定寫入 `scripts/qbank/posref-review-decisions.json`（覆核人填代號、日期、理由），重跑 `classify-posref.mts --write --apply`。Claude 不會代填。
