@@ -153,7 +153,7 @@ export default function SubjectsView() {
         {/* Header */}
         <div className="mb-6">
           <div className="text-ink-muted text-sm mb-2 flex items-center gap-1">
-            <Link href="/" className="hover:text-accent">{t.common.home}</Link>
+            <Link href="/" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.home}</Link>
             <span>/</span>
             <span>{tl.title}</span>
           </div>
@@ -211,14 +211,14 @@ export default function SubjectsView() {
               type="search"
               aria-label={en ? 'Search subjects, e.g. Chem, ICT, 通識' : '搜尋科目，例如：數學、Chem、通識'}
               placeholder={en ? 'Search subjects…' : '搜尋科目…'}
-              className="w-full bg-surface-raised border border-line-strong rounded-xl pl-9 pr-3 py-2.5 text-sm text-ink-soft placeholder-ink-muted focus:border-accent/50 focus:outline-none"
+              className="w-full min-h-11 bg-surface-raised border border-line-strong rounded-xl pl-9 pr-3 py-2.5 text-sm text-ink-soft placeholder-ink-muted focus:border-accent/50 focus:outline-none"
             />
           </div>
           <select
             aria-label={en ? 'Sort subjects' : '科目排序'}
             value={sort}
             onChange={(e) => setSort(e.target.value as 'default' | 'az' | 'live')}
-            className="bg-surface-raised border border-line-strong rounded-xl px-3 py-2.5 text-sm text-ink-soft focus:border-accent/50 focus:outline-none"
+            className="min-h-11 bg-surface-raised border border-line-strong rounded-xl px-3 py-2.5 text-sm text-ink-soft focus:border-accent/50 focus:outline-none"
           >
             <option value="default">{en ? 'Default order' : '預設排序'}</option>
             <option value="az">{en ? 'Name A–Z' : '名稱 A–Z'}</option>
@@ -238,7 +238,7 @@ export default function SubjectsView() {
               key={val}
               type="button"
               onClick={() => setCategory(val)}
-              className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+              className={`inline-flex min-h-11 items-center text-xs px-3 rounded-full border transition-colors ${
                 category === val
                   ? 'bg-surface-sunken text-accent border-accent/40'
                   : 'bg-surface-raised text-ink-muted border-line-strong hover:text-accent'
@@ -296,7 +296,7 @@ export default function SubjectsView() {
           </p>
           <a
             href="mailto:dselevelup@gmail.com"
-            className="inline-flex items-center gap-2 text-sm bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2 rounded-xl transition-all"
+            className="inline-flex min-h-11 items-center gap-2 text-sm bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2 rounded-xl transition-all"
           >
             {tl.footerBtn}
           </a>

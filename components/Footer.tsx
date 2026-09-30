@@ -37,24 +37,24 @@ export default function Footer() {
           {/* 練習 */}
           <div>
             <div className="text-ink font-medium mb-3">{t.footer.practiceHeading}</div>
-            <ul className="space-y-2 text-sm text-ink-muted">
+            <ul className="grid grid-cols-2 gap-x-4 text-sm text-ink-muted sm:grid-cols-1">
               <li>
-                <Link href="/subjects/math" className="hover:text-accent transition-colors">
+                <Link href="/subjects/math" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.linkMath}
                 </Link>
               </li>
               <li>
-                <Link href="/paper-warrior" className="hover:text-accent transition-colors">
+                <Link href="/paper-warrior" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.nav.paper}
                 </Link>
               </li>
               <li>
-                <Link href="/methodology" className="hover:text-accent transition-colors">
+                <Link href="/methodology" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.linkMethodology}
                 </Link>
               </li>
               <li>
-                <Link href="/relax" className="hover:text-accent transition-colors">
+                <Link href="/relax" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.linkRelax}
                 </Link>
               </li>
@@ -64,9 +64,9 @@ export default function Footer() {
           {/* 關於 / 支援 */}
           <div>
             <div className="text-ink font-medium mb-3">{t.footer.aboutHeading}</div>
-            <ul className="space-y-2 text-sm text-ink-muted">
+            <ul className="grid grid-cols-2 gap-x-4 text-sm text-ink-muted sm:grid-cols-1">
               <li>
-                <Link href="/about" className="hover:text-accent transition-colors">
+                <Link href="/about" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.aboutUs}
                 </Link>
               </li>
@@ -82,31 +82,31 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <Link href="/trust" className="font-medium hover:text-accent transition-colors">
+                <Link href="/trust" className="inline-flex min-h-11 items-center font-medium hover:text-accent transition-colors">
                   {t.footer.trust}
                 </Link>
               </li>              <li>
-                <Link href="/transparency" className="hover:text-accent transition-colors">
+                <Link href="/transparency" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.transparency}
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-accent transition-colors">
+                <Link href="/privacy" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.privacy}
                 </Link>
               </li>
               <li>
-                <Link href="/community-safety" className="hover:text-accent transition-colors">
+                <Link href="/community-safety" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.communitySafety}
                 </Link>
               </li>
               <li>
-                <Link href="/prediction-method" className="hover:text-accent transition-colors">
+                <Link href="/prediction-method" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.predictionMethod}
                 </Link>
               </li>
               <li>
-                <a href="mailto:dselevelup@gmail.com" className="hover:text-accent transition-colors">
+                <a href="mailto:dselevelup@gmail.com" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.contact}
                 </a>
               </li>

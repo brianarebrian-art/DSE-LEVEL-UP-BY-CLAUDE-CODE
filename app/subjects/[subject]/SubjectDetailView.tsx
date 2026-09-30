@@ -185,9 +185,9 @@ export default function SubjectDetailView({
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <div className="text-ink-muted text-sm mb-2 flex items-center gap-1">
-          <Link href="/" className="hover:text-accent">{t.common.home}</Link>
+          <Link href="/" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.home}</Link>
           <span>/</span>
-          <Link href="/subjects" className="hover:text-accent">{t.common.subjects}</Link>
+          <Link href="/subjects" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.subjects}</Link>
           <span>/</span>
           <span>{short}</span>
         </div>
@@ -445,7 +445,7 @@ export default function SubjectDetailView({
           </div>
           <Link
             href="/subjects"
-            className="shrink-0 text-sm text-accent hover:text-accent-strong flex items-center gap-1"
+            className="shrink-0 min-h-11 text-sm text-accent hover:text-accent-strong flex items-center gap-1"
           >
             {sd.crossAll} <ArrowRight size={14} />
           </Link>

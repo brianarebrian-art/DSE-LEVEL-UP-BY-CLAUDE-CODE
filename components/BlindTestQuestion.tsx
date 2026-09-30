@@ -143,7 +143,7 @@ export default function BlindTestQuestion() {
       {/* 三大逆向錯因診斷欄 */}
       <div className="border-t border-paper-ink/15 pt-4">
         <p className="text-[11px] font-bold text-paper-warn mb-2 uppercase tracking-wide">
-          {tr('答錯？先診斷你嘅錯因 · Reverse Error Diagnosis', 'Wrong? Diagnose your cause first')}
+          {tr('答錯？先揀你嘅錯因', 'Wrong? Pick what tripped you up first')}
         </p>
         <div className="grid grid-cols-3 gap-2">
           {causes.map((c) => (

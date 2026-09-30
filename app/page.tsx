@@ -243,7 +243,7 @@ export default function HomePage() {
           <span aria-hidden className="text-ink-faint">·</span>
           <span>{locale === 'en' ? 'Not affiliated with the HKEAA' : '與考評局無從屬關係'}</span>
           <span aria-hidden className="text-ink-faint">·</span>
-          <Link href="/trust" className="font-medium text-accent-strong underline underline-offset-2">
+          <Link href="/trust" className="inline-flex min-h-11 items-center font-medium text-accent-strong underline underline-offset-2">
             {locale === 'en' ? 'Check any of this' : '逐項查得到'}
           </Link>
         </div>
@@ -314,7 +314,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/subjects/math"
-                className="block rounded-lg border border-accent/30 bg-surface-sunken py-2 text-center text-sm text-accent transition-all duration-200 hover:bg-surface-sunken"
+                className="flex min-h-11 items-center justify-center rounded-lg border border-accent/30 bg-surface-sunken text-center text-sm text-accent transition-all duration-200 hover:bg-surface-sunken"
               >
                 {h.step3Cta}
               </Link>
@@ -398,7 +398,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center">
-            <Link href="/subjects" className="inline-flex items-center gap-2 text-sm text-accent transition-colors hover:text-accent">
+            <Link href="/subjects" className="inline-flex min-h-11 items-center gap-2 text-sm text-accent transition-colors hover:text-accent">
               {h.roadmapA}{totalSubjects}{h.roadmapB} <ArrowRight size={14} />
             </Link>
           </div>

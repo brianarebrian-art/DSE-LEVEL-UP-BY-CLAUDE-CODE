@@ -168,14 +168,14 @@ export default function AccountPageClient() {
                 >
                   {busy ? (en ? 'Clearing…' : '清除中…') : en ? 'Confirm' : '確定清除'}
                 </button>
-                <button onClick={() => setConfirming(false)} disabled={busy} className="text-ink-muted hover:text-ink text-sm">
+                <button onClick={() => setConfirming(false)} disabled={busy} className="min-h-11 px-2 text-ink-muted hover:text-ink text-sm">
                   {en ? 'Cancel' : '取消'}
                 </button>
               </div>
             ) : (
               <button
                 onClick={() => setConfirming(true)}
-                className="border border-rose/40 text-rose hover:bg-surface-sunken font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
+                className="min-h-11 border border-rose/40 text-rose hover:bg-surface-sunken font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
               >
                 {en ? 'Clear this device' : '清除呢部機嘅資料'}
               </button>
@@ -217,7 +217,7 @@ export default function AccountPageClient() {
             ) : (
               <button
                 onClick={() => setConfirming(true)}
-                className="border border-rose/40 text-rose hover:bg-surface-sunken font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
+                className="min-h-11 border border-rose/40 text-rose hover:bg-surface-sunken font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
               >
                 {en ? 'Delete my data' : '刪除我的資料'}
               </button>

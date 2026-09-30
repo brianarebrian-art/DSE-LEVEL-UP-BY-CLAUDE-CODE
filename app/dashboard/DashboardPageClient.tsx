@@ -332,7 +332,7 @@ export default function DashboardPageClient() {
             </button>
             <Link
               href="/subjects"
-              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-all text-sm"
+              className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-all text-sm"
             >
               {d.continueP} <ArrowRight size={15} />
             </Link>
@@ -729,7 +729,7 @@ export default function DashboardPageClient() {
           ) : (
             <button
               onClick={() => setConfirmReset(true)}
-              className="inline-flex items-center gap-2 text-xs text-ink-muted hover:text-ink-soft transition-colors"
+              className="inline-flex min-h-11 items-center gap-2 text-xs text-ink-muted hover:text-ink-soft transition-colors"
             >
               <RotateCcw size={13} /> {d.resetBtn}
             </button>

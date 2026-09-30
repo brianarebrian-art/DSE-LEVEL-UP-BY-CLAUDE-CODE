@@ -62,7 +62,7 @@ export default function SyncStatus() {
             authSignInGoogle()
           }}
           disabled={binding}
-          className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover disabled:opacity-60 disabled:cursor-not-allowed text-on-accent font-medium px-4 py-2 rounded-xl transition-all text-sm shrink-0"
+          className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover disabled:opacity-60 disabled:cursor-not-allowed text-on-accent font-medium px-4 py-2 rounded-xl transition-all text-sm shrink-0"
         >
           {binding ? <Loader2 size={15} className="animate-spin" /> : <LogIn size={15} />}
           {binding ? (en ? 'Redirecting…' : '跳轉中…') : en ? '🔓 Bind Google' : '🔓 綁定 Google 帳戶'}

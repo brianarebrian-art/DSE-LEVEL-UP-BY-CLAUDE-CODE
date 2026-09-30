@@ -616,3 +616,24 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1229/1229；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812）：** `/paper-warrior` h1「列印練習卷」、副題「紙筆戰士」；科目列表及頁尾連結為新名稱；無水平捲動。
 - **Commit：** 見 git log（`fix(copy): call the printable set what it is`）。
+
+## LOOP 37 — 2026-09-30
+
+- **Slice：** 練習以外各頁的觸控目標至少 44px（新 prompt §21、§22，P1）。
+- **量度（改動前，360×800，production build，逐頁掃描主區及導航）：**
+  - 八頁都沒有水平捲動：首頁、科目、`/subjects/math`、練習、進度、帳戶、收藏、知識卡。
+  - 低於 44px 的控件：頁尾全部連結 17px；麵包屑 20px；科目篩選 30px；搜尋及排序 42px；首頁「逐項查得到」16px、「睇晒全部科路線圖」20px、示範卡「立即練習」38px；進度頁「繼續練習」40px、「綁定 Google 帳戶」36px、「清除進度紀錄」16px；帳戶頁兩個清除掣 42px、「取消」字掣；科目列表「告訴我哋你想要嘅課題」38px。
+  - 練習頁及收藏頁沒有低於 44px 的控件。
+- **影響範圍：** `components/Footer.tsx`、`components/SyncStatus.tsx`、`components/BlindTestQuestion.tsx`（一句文案）、`app/page.tsx`、`app/subjects/SubjectsView.tsx`、`app/subjects/[subject]/SubjectDetailView.tsx`、`app/dashboard/DashboardPageClient.tsx`、`app/account/AccountPageClient.tsx`、新增測試。
+- **改動：**
+  - 以上控件全部加 `min-h-11`（44px），文字連結改為 `inline-flex items-center`。
+  - 頁尾兩欄連結在手機改為兩欄排列，所以頁尾反而矮了（875 → 795px）。
+  - 首頁示範卡的「答錯？先診斷你嘅錯因 · Reverse Error Diagnosis」改為「答錯？先揀你嘅錯因」（§24 用詞）。
+- **不改：** 首頁示範題中被遮住的數字（撳一下顯示）是句內文字，高 20px，改成 44px 會拆散句子行距；屬 WCAG 2.5.8 的句內例外。
+- **測試：** 新增 `lib/__tests__/content-touch-targets.test.mts`（3 項）。
+- **驗證：** `npm test` 1232/1232；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build）：**
+  - 360×800 重掃：首頁只剩示範題的四個遮字；科目頁沒有低於 44px 的控件；第一張卡「開始 10 題」y=661。
+  - 手機橫放 812×375 練習頁：無水平捲動；sticky 頂行 64px；選項各 56px，要捲動才見；812px 屬平板闊度，所以用左下角浮動掣。
+- **已知：** 橫放時左下、右下兩個浮動掣會在捲動中蓋住選項兩端約 48px；選項中間仍可撳。
+- **Commit：** 見 git log（`fix(a11y): 44px targets across the content pages`）。
