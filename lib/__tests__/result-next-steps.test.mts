@@ -51,7 +51,7 @@ test('the result page shows next steps right after the score, once', () => {
   const code = page.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
   const steps = code.indexOf('resultNextSteps({')
   assert.ok(steps > 0)
-  assert.ok(steps < code.indexOf('{r.gradePosition}'), 'before the grade bar')
+  assert.ok(steps < code.indexOf('{r.timeUsedA}'), 'before the score bar')
   assert.ok(steps < code.indexOf('copyTeacherReport}'), 'before the teacher report')
   assert.equal(code.match(/\{r\.retry\}/g)?.length, 1, 'the old bottom buttons are gone, not duplicated')
 })

@@ -337,16 +337,11 @@ const zh = {
     emptyStart: '開始一節練習',
     emptyProgress: '睇我的進度',
     mixedResult: ' · 綜合練習成績',
-    predictedGrade: '今次表現等級',
-    // 2026-09-30（LOOP 42）：原文「你嘅水平指向…」「你嘅真實水平大概喺…」。十題改寫題講唔到一個人嘅真實水平。
-    rangeSingle: '以呢 {n} 題計，你今次嘅練習表現大約對應 Level {low}。',
-    rangeSpan: '以呢 {n} 題計，考慮到樣本細，你今次嘅練習表現大約對應 Level {low} 至 {high}。',
-    rangeWhy: '{n} 題分辨唔到相鄰等級 —— 同一個人今日做同聽日做，答對率本身就會上落。',
-    rangeNarrow: '做夠大約 {m} 題，個範圍就會收窄到單一等級。',
-    rangeNarrowUnknown: '等級之間嘅分界，比練習題數帶嚟嘅誤差範圍仲窄，所以再做幾多題都收窄唔到一個確定嘅級。與其追呢個數字，不如睇下面邊個課題最弱 —— 分界生欠嗰一兩分，通常就係嗰度嚟。',
-    cutoffOrigin: '呢個係本站練習數據嘅學習指標，唔係考評局成績預測。分界線由本平台按歷年分佈估算，並非考評局公布嘅官方分數；題目亦為改寫版本，難度分佈同真卷唔會完全一致。此數僅作自我診斷。',
-    marksToNext: '距離 {grade} 只差 {marks} 分',
-    gradePosition: '等級位置',
+    // 2026-09-30（改進循環 2）：刪去 DSE 等級（predictedGrade、gradeMessages、等級區間、距離下一級）。
+    // 本節表現只用三段中性字眼，見 lib/practiceBand.ts。
+    bandLead: '本節表現：',
+    bandNote: '只反映今次呢一節練習，唔係 DSE 等級，亦唔代表你已經掌握。',
+    bandTooFew: '題目太少，未夠證據講今節表現。',
     timeUsedA: '⏱ 用時 ',
     timeMin: ' 分 ',
     timeSec: ' 秒',
@@ -358,9 +353,9 @@ const zh = {
     pickTopic: '揀另一個課題',
     shareScore: '分享成績',
     shareTextA: '我喺 DSE Level Up 練習',
-    shareTextB: '，得到 ',
-    // 2026-09-29（Yuna 決定）：分享文字最易被當成真 DSE 成績轉發，改用與結果頁一致的「本節表現等級」。
-    shareTextC: ' 分，本節表現等級 ',
+    shareTextB: '，答對 ',
+    // 2026-09-30：分享文字最易被當成真 DSE 成績轉發，只寫答對題數，不附任何等級。
+    shareTextC: ' 題',
     // ⚠️ 唔好喺呢度寫網域。網址由呼叫點接上 `SITE_ORIGIN`（lib/site.ts 單一來源）。
     // 原文寫死咗 `dselevelup.hk` —— 而同一個 repo 入面 app/layout.tsx 同 app/sitemap.ts
     // 兩處註釋都寫住「dselevelup.hk 尚未購入」（Brian 2026-07-29 拍板）。即係每一次
@@ -368,21 +363,8 @@ const zh = {
     // 迴歸鎖：lib/__tests__/site-origin.test.mts。
     shareTextD: '！🔥 一齊練 DSE：',
     shareCopied: '已複製分享文字！',
-    disclaimer: '呢個等級只係根據你喺本平台嘅練習表現估算，唔係 HKEAA 成績預測；最終成績以 HKEAA 公布為準。',
+    disclaimer: '本網站的練習表現指標只反映本站練習數據，並不是 HKEAA 官方成績或預測。',
     defaultSubject: '數學',
-    gradeMessages: {
-      '5**': '頂尖水平！完美發揮！',
-      '5*': '優秀成績！繼續加油！',
-      '5': '5 級達標！你掌握到核心邏輯！',
-      '4': '不錯！距離 5 級不遠了！',
-      '3': '有進步空間，繼續練習！',
-      '2': '需要加油，多做練習！',
-      '1': '基礎需要鞏固！',
-      U: '繼續努力，你可以的！',
-      // 公民與社會發展科：官方只有達標／不達標，冇 1–5** 等級
-      達標: '已達參考水平！繼續保持這個節奏。',
-      不達標: '距離參考水平還差一點，再練幾組就補得回來。',
-    },
   },
   dashboard: {
     title: '我的進度',
@@ -777,15 +759,9 @@ const en: typeof zh = {
     emptyStart: 'Start a practice session',
     emptyProgress: 'See my progress',
     mixedResult: ' · mixed practice result',
-    predictedGrade: 'This session',
-    rangeSingle: 'Based on these {n} questions, this session’s practice performance corresponds roughly to Level {low}.',
-    rangeSpan: 'Based on these {n} questions, and allowing for the small sample, this session’s practice performance corresponds roughly to Level {low} to {high}.',
-    rangeWhy: '{n} questions cannot separate neighbouring levels — the same person scores differently from one day to the next.',
-    rangeNarrow: 'Around {m} questions would narrow this to a single level.',
-    rangeNarrowUnknown: 'The gaps between levels are narrower than the margin of error any realistic practice set can achieve, so no number of questions will settle on one level. Rather than chase this figure, look at your weakest topic below — for a borderline candidate, that is usually where the missing marks are.',
-    cutoffOrigin: 'This is a learning indicator from practice on this site, not an HKEAA grade prediction. These boundaries are this platform’s estimate from past distributions, not official HKEAA cut-offs; the questions are rewritten versions whose difficulty mix will not match a real paper exactly. Treat this as self-diagnosis only.',
-    marksToNext: 'Just {marks} more marks to {grade}',
-    gradePosition: 'Grade position',
+    bandLead: 'This session: ',
+    bandNote: 'This describes this one session only. It is not a DSE level and does not mean you have mastered the topic.',
+    bandTooFew: 'Too few questions to say how this session went.',
     timeUsedA: '⏱ Time: ',
     timeMin: 'm ',
     timeSec: 's',
@@ -797,26 +773,13 @@ const en: typeof zh = {
     pickTopic: 'Pick another topic',
     shareScore: 'Share score',
     shareTextA: 'I practised ',
-    shareTextB: ' on DSE Level Up and scored ',
-    shareTextC: ', level for this set ',
+    shareTextB: ' on DSE Level Up and got ',
+    shareTextC: ' right',
     // 見 zh 版同名鍵：網域唔喺文案入面，由呼叫點接上 SITE_ORIGIN。
     shareTextD: '! 🔥 Practise DSE: ',
     shareCopied: 'Share text copied!',
-    disclaimer: 'This level is estimated only from your practice on this platform. It is not a prediction of your HKEAA grade; final results are as published by the HKEAA.',
+    disclaimer: 'Performance on this site reflects practice here only. It is not an HKEAA result or a prediction of one.',
     defaultSubject: 'Maths',
-    gradeMessages: {
-      '5**': 'Top tier! A flawless performance!',
-      '5*': 'Excellent result — keep it up!',
-      '5': 'Level 5 reached! You’ve got the core logic!',
-      '4': 'Nice! Level 5 isn’t far away!',
-      '3': 'Room to grow — keep practising!',
-      '2': 'Push on — more practice will help!',
-      '1': 'Solidify the basics!',
-      U: 'Keep going — you can do this!',
-      // Citizenship & Social Development is reported as met / not-yet-met only
-      達標: 'You have reached the reference level — keep this rhythm going.',
-      不達標: 'A little short of the reference level — a few more sets will close it.',
-    },
   },
   dashboard: {
     title: 'My Progress',

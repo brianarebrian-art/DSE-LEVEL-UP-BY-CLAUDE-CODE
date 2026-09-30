@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
-import { SESSION_SIZE } from '@/lib/entitlements'
+import { MIN_BAND_EVIDENCE } from '@/lib/practiceBand'
 
 // 見 page.tsx 檔頭。呢版唔係為算法辯護，係公開佢有幾粗糙。
 
@@ -16,18 +16,6 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   )
 }
 
-// 直接對應 data/cutoffs.ts 嘅 practicePercentages。呢啲數會喺頁面顯示，
-// 唔係為咗好睇 —— 而係「你自己都計得返」係呢版唯一嘅價值。
-const BANDS: [grade: string, pct: number][] = [
-  ['5**', 92],
-  ['5*', 83],
-  ['5', 70],
-  ['4', 55],
-  ['3', 40],
-  ['2', 25],
-  ['1', 12],
-]
-
 export default function PredictionMethodClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -36,7 +24,7 @@ export default function PredictionMethodClient() {
     <div className="mx-auto max-w-2xl px-4 py-10">
       <header className="mb-8">
         <h1 className="text-2xl font-medium text-ink">
-          {en ? 'How the performance level is worked out' : '「今次表現等級」係點計出嚟'}
+          {en ? 'How the practice figures are worked out' : '練習表現係點計出嚟'}
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {en
@@ -45,82 +33,41 @@ export default function PredictionMethodClient() {
         </p>
       </header>
 
-      <Section title={en ? 'Two different numbers' : '兩個唔同嘅數'}>
-        <p>
-          {en
-            ? 'The result page shows two things that look similar but are worked out completely differently. Mixing them up is easy, so:'
-            : '結算頁有兩個數，樣衰似但計法完全唔同。好易混淆，所以講清楚：'}
-        </p>
+      {/* 2026-09-30（改進循環 2）：結果頁不再顯示 DSE 等級。原本的「本節表現等級」分界線表
+          （5** 92% … 1 12%）及 Wilson 區間一節隨之刪除。 */}
+      <Section title={en ? 'Two different things' : '兩樣唔同嘅嘢'}>
         <ul className="ml-4 list-disc space-y-1.5">
           <li>
-            <span className="font-medium text-ink">{en ? 'This set’s level' : '本節表現等級'}</span>
+            <span className="font-medium text-ink">{en ? 'This session (result page)' : '本節表現（結果頁）'}</span>
             {en
-              ? ' — a description of the set you just finished, compared against the bands below. Nothing more.'
-              : ' —— 描述你啱啱做完嗰份卷，同下面嗰組界線對照。冇多過呢樣。'}
+              ? ' — how the set you just finished went, in plain words. No DSE level.'
+              : ' —— 你啱啱做完嗰一節點樣，用普通字眼講。冇 DSE 等級。'}
           </li>
           <li>
-            <span className="font-medium text-ink">{en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</span>
+            <span className="font-medium text-ink">{en ? 'Practice performance (estimate)' : '練習表現估算'}</span>
             {en
-              ? ' — a cumulative range across every valid session in that subject, worked out in percentile space against the HKEAA’s published figures. This is the one described further down.'
-              : ' —— 累計本科所有有效練習，喺百分位空間對照考評局公布嘅實數計出。下面另有一節專講。'}
+              ? ' — a cumulative range across every valid session in a subject, compared with the HKEAA’s published share of candidates at each level. Described further down.'
+              : ' —— 累計本科所有有效練習，對照考評局公布嘅各級考生比例計出。下面另有一節專講。'}
           </li>
         </ul>
       </Section>
 
-      <Section title={en ? 'What goes into this set’s level' : '「本節表現等級」用咩去計'}>
+      <Section title={en ? 'This session: how the words are chosen' : '「本節表現」點樣揀字'}>
         <p>
           {en
-            ? 'Only one thing: how many multiple-choice questions you got right in the set you just finished, on this device.'
-            : '只有一樣嘢：你啱啱做完嗰份卷入面答啱咗幾多條選擇題，喺你呢部機。'}
+            ? 'Only one thing goes in: how many multiple-choice questions you got right in the set you just finished, on this device. Written answers are never scored by machine here.'
+            : '只計一樣嘢：你啱啱做完嗰一節答啱咗幾多條選擇題，喺你呢部機。書寫題喺呢度永遠唔由機器批改。'}
         </p>
+        <ul className="ml-4 list-disc space-y-1.5">
+          <li>{en ? `Fewer than ${MIN_BAND_EVIDENCE} questions: “Not enough evidence”.` : `少過 ${MIN_BAND_EVIDENCE} 題：「證據不足」。`}</li>
+          <li>{en ? 'Under half right: “Needs consolidating”.' : '答對少過一半：「需要鞏固」。'}</li>
+          <li>{en ? 'Half to under 80% right: “Developing”.' : '答對一半至八成以下：「發展中」。'}</li>
+          <li>{en ? '80% or more right: “Fairly steady”.' : '答對八成或以上：「相對穩定」。'}</li>
+        </ul>
         <p>
           {en
-            ? 'Not included: how long you took, how many sets you have done before, which topics you chose, how you did last week, or anything you wrote. Written papers are never scored by machine here, so they never enter this number.'
-            : '唔包括：你用咗幾耐、你之前做過幾多份、你揀咗邊啲課題、你上星期做得點，或者你寫過嘅任何文字。書寫題喺呢度永遠唔由機器批改，所以佢哋從來冇入過呢個數。'}
-        </p>
-      </Section>
-
-      <Section title={en ? 'The boundaries we compare against' : '我哋攞嚟對照嘅分界線'}>
-        <p>
-          {en
-            ? 'Your percentage is compared against these bands. They are approximations of how DSE grades typically distribute — they are NOT the HKEAA’s published cut-offs, and the HKEAA does not publish per-paper cut-offs in this form.'
-            : '你嘅百分率會同下面呢啲界線對照。佢哋係「DSE 等級大致點分佈」嘅近似值 —— 唔係考評局公布嘅分界線，而考評局亦冇以呢個形式公布逐卷分界。'}
-        </p>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-line text-left text-xs text-ink-muted">
-                <th className="py-2 pr-4 font-medium">{en ? 'Level' : '等級'}</th>
-                <th className="py-2 font-medium">{en ? 'Percentage correct at or above' : '答對率達到'}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BANDS.map(([g, p]) => (
-                <tr key={g} className="border-b border-line/60">
-                  <td className="py-2 pr-4 font-mono text-ink-soft">{g}</td>
-                  <td className="py-2 text-ink-soft">{p}%</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="text-ink-muted">
-          {en
-            ? 'That is the whole table. You can do the arithmetic yourself — that is the point of showing it.'
-            : '就係咁多。你自己都計得返 —— 貼出嚟就係為咗呢樣。'}
-        </p>
-      </Section>
-
-      <Section title={en ? 'Why you see a range, not a number' : '點解你見到一個範圍，唔係一個數字'}>
-        <p>
-          {en
-            ? 'Twenty questions is a small sample. The same student doing the same set today and tomorrow will not get the same percentage. So instead of one confident level, we compute a 95% confidence interval on your accuracy (a Wilson score interval) and show the levels at both ends.'
-            : '二十條題係一個好細嘅樣本。同一個學生今日做同聽日做，答對率本身就會上落。所以我哋唔畀一個肯定嘅等級，而係計你答對率嘅 95% 置信區間（Wilson score interval），再顯示兩端對應嘅等級。'}
-        </p>
-        <p>
-          {en
-            ? `We use Wilson rather than the more common p ± z·√(p(1−p)/n) because the latter breaks on small samples: it can produce intervals outside 0–100%, and at ${SESSION_SIZE} out of ${SESSION_SIZE} it collapses to zero width — which would tell you we are 100% certain you are a 5**. We are not. A shorter set makes the interval wider, not narrower — one set is a snapshot, and the estimate settles as you do more.`
-            : `用 Wilson 而唔用常見嘅 p ± z·√(p(1−p)/n)，係因為後者喺細樣本會出鬼：區間可以超出 0–100%，而 ${SESSION_SIZE} 題全對時更會收窄成寬度零 —— 即係話畀你聽我哋百分百肯定你係 5**。我哋唔係。一節短咗，個區間只會闊咗，唔會窄咗 —— 一節只係一個切面，做多幾節個估計自然會收窄。`}
+            ? 'These describe one session, not you, and none of them means “mastered”. Ten questions cannot say that.'
+            : '呢啲字眼描述嘅係一節練習，唔係你本人；冇一個代表「已經掌握」—— 十條題講唔到呢樣嘢。'}
         </p>
       </Section>
 
@@ -129,14 +76,14 @@ export default function PredictionMethodClient() {
           <li>
             <span className="font-medium text-ink">{en ? 'Sample size.' : '樣本大細。'}</span>{' '}
             {en
-              ? 'Measurable — this is the range you see.'
-              : '量得到 —— 就係你見到嗰個範圍。'}
+              ? 'Measurable — this is why the estimate shows a range.'
+              : '量得到 —— 所以估算顯示一個範圍。'}
           </li>
           <li>
             <span className="font-medium text-ink">{en ? 'The boundaries themselves.' : '分界線本身。'}</span>{' '}
             {en
-              ? 'For this set’s level: approximations, as above. For the cumulative range: now measured — see below. (This page said “not measurable” until 23 Aug 2026; that stopped being true when the ten-year series went in.)'
-              : '對「本節表現等級」而言：如上所述係近似值。對「累積估算」而言：而家量得到 —— 見下文。（呢版一直寫住「量唔到」，直至 2026-08-23 十年數據入庫為止；嗰句已經唔啱。）'}
+              ? 'For the cumulative range: now measured — see below. (This page said “not measurable” until 23 Aug 2026; that stopped being true when the ten-year series went in.)'
+              : '對「累積估算」而言：而家量得到 —— 見下文。（呢版一直寫住「量唔到」，直至 2026-08-23 十年數據入庫為止；嗰句已經唔啱。）'}
           </li>
           <li>
             <span className="font-medium text-ink">{en ? 'The questions are rewrites.' : '題目係改寫版本。'}</span>{' '}
@@ -160,8 +107,8 @@ export default function PredictionMethodClient() {
       <Section title={en ? 'The cumulative range: how it is worked out' : '「累積估算」係點計出嚟'}>
         <p>
           {en
-            ? 'This one does not use the bands above at all. It works in percentile space, because that is the only space in which the HKEAA has actually published anything.'
-            : '呢個完全唔用上面嗰組界線。佢喺百分位空間做嘢，因為考評局真正公布過嘅嘢，就只有喺呢個空間入面。'}
+            ? 'It works in percentile space, because that is the only space in which the HKEAA has actually published anything.'
+            : '佢喺百分位空間做嘢，因為考評局真正公布過嘅嘢，就只有喺呢個空間入面。'}
         </p>
         <ol className="ml-4 list-decimal space-y-2">
           <li>
@@ -270,8 +217,8 @@ export default function PredictionMethodClient() {
       <Section title={en ? 'If you want to check our arithmetic' : '想核我哋條數'}>
         <p>
           {en
-            ? 'The whole calculation is in the open-source repository. This set’s level: data/cutoffs.ts and lib/gradeConfidence.ts. The cumulative range: lib/mastery.ts, with the published figures in data/dse-2025-level-distribution.json and the ten-year series in data/dse-level-drift.json — both extracted straight from the HKEAA PDFs by scripts you can re-run.'
-            : '成條數都喺開源倉庫入面。本節表現等級：data/cutoffs.ts 同 lib/gradeConfidence.ts。累積估算：lib/mastery.ts，公布數字喺 data/dse-2025-level-distribution.json，十年序列喺 data/dse-level-drift.json —— 兩份都由考評局 PDF 直接抽出，抽取腳本你自己跑得返。'}
+            ? 'The whole calculation is in the open-source repository. This session’s words: lib/practiceBand.ts. The cumulative range: lib/mastery.ts, with the published figures in data/dse-2025-level-distribution.json and the ten-year series in data/dse-level-drift.json — both extracted straight from the HKEAA PDFs by scripts you can re-run.'
+            : '成條數都喺開源倉庫入面。本節表現：lib/practiceBand.ts。累積估算：lib/mastery.ts，公布數字喺 data/dse-2025-level-distribution.json，十年序列喺 data/dse-level-drift.json —— 兩份都由考評局 PDF 直接抽出，抽取腳本你自己跑得返。'}
         </p>
         <p>
           {en ? 'Related: ' : '相關：'}

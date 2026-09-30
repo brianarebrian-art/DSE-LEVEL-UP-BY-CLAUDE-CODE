@@ -56,7 +56,7 @@ test('unusable values return null instead of throwing', () => {
 test('the empty state is not rendered before localStorage has been read', () => {
   const src = readFileSync(join(ROOT, FILE), 'utf8')
   const loading = src.indexOf('if (!checked)')
-  const empty = src.indexOf('if (!result || !gradeResult)')
+  const empty = src.indexOf('if (!result)')
   assert.ok(loading > -1, 'the not-yet-checked branch is missing')
   assert.ok(empty > -1, 'the empty-state branch is missing')
   assert.ok(loading < empty, 'the not-yet-checked branch must return before the empty state')

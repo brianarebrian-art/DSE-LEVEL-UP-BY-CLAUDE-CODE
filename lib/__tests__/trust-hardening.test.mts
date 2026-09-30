@@ -86,7 +86,8 @@ test('llms.txt describes the automated publishing rule, not the old named approv
 
 test('the result page calls its level a platform estimate', () => {
   const dict = read('lib/dictionary.ts')
-  assert.match(dict, /唔係 HKEAA 成績預測/)
-  assert.match(dict, /not a prediction of your HKEAA grade/)
+  // Refinement loop 2 (2026-09-30): the result page no longer shows a level at all.
+  assert.match(dict, /並不是 HKEAA 官方成績或預測/)
+  assert.match(dict, /not an HKEAA result or a prediction of one/)
   assert.doesNotMatch(dict, /shareTextC: ' 分，預測等級 '|shareTextC: ', predicted grade '/)
 })

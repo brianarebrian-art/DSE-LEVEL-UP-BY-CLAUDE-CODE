@@ -64,6 +64,7 @@ test('every estimate says what it is right under the range', () => {
   const note = src.indexOf('唔係考評局成績預測', band)
   assert.ok(band > 0 && note > band && note - band < 400, 'note directly after the band')
   assert.match(src, /not an HKEAA grade prediction/)
-  // Both places that show the estimate use this component.
-  for (const f of ['app/result/ResultPageClient.tsx', 'app/predictor/PredictorClient.tsx']) assert.match(read(f), /<MasteryEstimate/, f)
+  // Only the estimate page shows it; the result page stopped on 2026-09-30 (refinement loop 2).
+  assert.match(read('app/predictor/PredictorClient.tsx'), /<MasteryEstimate/)
+  assert.doesNotMatch(read('app/result/ResultPageClient.tsx'), /MasteryEstimate/)
 })

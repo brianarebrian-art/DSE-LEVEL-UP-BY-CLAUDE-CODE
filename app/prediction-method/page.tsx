@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import ArticleJsonLd from '@/components/Seo/ArticleJsonLd'
 import PredictionMethodClient from './PredictionMethodClient'
 
-// /prediction-method —— 「今次表現等級」係點計出嚟。
+// /prediction-method —— 練習表現係點計出嚟。
+// 2026-09-30（改進循環 2）：結果頁不再顯示 DSE 等級，下文提到的 92%／83%／70% 分界線表已刪除。
 //
 // ══ 點解要有呢版 ══
 // 信譽審核 §4：「網站已在多處說明等級預測只供參考，這是正確的；但看不到樣本數、
@@ -12,9 +13,9 @@ import PredictionMethodClient from './PredictionMethodClient'
 // 呢版嘅取態：唔係為個算法辯護，係公開佢有幾粗糙。實際數值（92%／83%／70%…）
 // 直接由 data/cutoffs.ts 抄過嚟並標明佢係近似值，唔係考評局公布嘅分界線。
 export const metadata: Metadata = {
-  title: '表現等級點計 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
+  title: '練習表現點計 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
   // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
-  description: '「今次表現等級」用咩計、用邊條分界線、點解會顯示一個範圍而唔係一個數字，同埋佢唔代表咩。', // i18n-exempt
+  description: '結果頁「本節表現」點樣揀字、練習表現估算點計、點解顯示範圍，同埋佢唔代表咩。', // i18n-exempt
 }
 
 export default function Page() {

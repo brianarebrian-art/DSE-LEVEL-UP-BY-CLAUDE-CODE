@@ -3,20 +3,12 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
-import { predictGrade, gradeColors, gradeBgColors, CSD_PASS_RATIO, type GradeResult } from '@/lib/grading'
-import { gradeRange } from '@/lib/gradeConfidence'
-import MasteryEstimate from '@/components/MasteryEstimate'
-import { TIER_LEVEL_BANDS } from '@/lib/difficulty'
+import { getPracticePerformanceBand, PRACTICE_BAND_LABEL } from '@/lib/practiceBand'
 import { discoveriesSince } from '@/lib/discovery/local-store'
 import { DISCOVERY_COPY, dimensionShort } from '@/lib/discovery/copy'
 import { DIMENSION_BY_ID } from '@/lib/discovery/dimensions'
 import type { Discovery } from '@/lib/discovery/types'
 
-/** 佔位符替換。字典行文如 '以呢 {n} 題計'；同 marksToNext 沿用嘅 .replace 做法一致，
- *  只係抽成一個函數，免得多個佔位符時串成一長串 .replace()。 */
-const fmt = (tpl: string, vars: Record<string, string>) =>
-  Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(v), tpl)
-import { getPracticeCutoffs } from '@/data/cutoffs'
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 import { SITE_ORIGIN } from '@/lib/site'
@@ -126,13 +118,11 @@ export default function ResultPageClient() {
   const { t, locale } = useLocale()
   const r = t.result
   const [result, setResult] = useState<StoredResult | null>(null)
-  const [gradeResult, setGradeResult] = useState<GradeResult | null>(null)
   // Whether localStorage has been read yet. Before the mount effect runs (and in
   // the server-rendered HTML) `result` is null, so without this flag every visit
   // painted "no result found" first, including right after finishing a session.
   const [checked, setChecked] = useState(false)
   const [verify, setVerify] = useState<VerifyState>(null)
-  const [showBadge, setShowBadge] = useState(false)
   const [shared, setShared] = useState(false)
   const [reportCopied, setReportCopied] = useState(false)
   const [siteHost, setSiteHost] = useState('')
@@ -152,10 +142,7 @@ export default function ResultPageClient() {
     const data = readStoredResult(raw)
     setChecked(true)
     if (!data) return
-    const gr =predictGrade(data.score, getPracticeCutoffs(data.total, data.subjectId ?? 'practice'), data.subjectId)
     setResult(data)
-    setGradeResult(gr)
-    setTimeout(() => setShowBadge(true), 1600)
 
     // 服務端覆核：用答案庫重批一次對數。背景進行，唔阻塞結果畫面，
     // 離線／失敗一律靜靜跳過（憲章：網絡問題唔可以變成學生見到嘅錯誤）。
@@ -178,13 +165,6 @@ export default function ResultPageClient() {
         // 大字留住舊數、細字話你聽真數，等於同一版嘢自己講兩個答案。
         setVerify({ ok: false, score: v.score, total: v.total })
         setResult({ ...data, score: v.score, total: v.total })
-        setGradeResult(
-          predictGrade(
-            v.score,
-            getPracticeCutoffs(v.total, data.subjectId ?? 'practice'),
-            data.subjectId,
-          ),
-        )
       })
       .catch(() => {
         /* 離線／中斷 —— 覆核係額外保障，唔係必要條件 */
@@ -207,7 +187,7 @@ export default function ResultPageClient() {
     )
   }
 
-  if (!result || !gradeResult) {
+  if (!result) {
     return (
       <div className="min-h-[55dvh] grid place-items-center px-4 py-12 bg-surface">
         <section className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-6 text-center">
@@ -233,17 +213,10 @@ export default function ResultPageClient() {
   }
 
   const barWidth = Math.round((result.score / result.total) * 100)
-  // 公社科用二元評級。呢兩個係【等級值】而唔係顯示文字，故豁免雙語檢查。
-  const isBinaryGrade = gradeResult.grade === '達標' || gradeResult.grade === '不達標' // i18n-exempt: 等級值比較，非 UI 文字
-  const passLineColor = gradeColors['達標'] // i18n-exempt: 等級值做 key，非 UI 文字
-  // 等級區間 —— 公社科係二元評級，冇「相鄰等級」概念，故排除。
-  // 呢個係 A 選項（對內信心）嘅核心：與其畀一個假精確嘅數，不如講清楚
-  // 呢個數撐得起幾多，同埋點樣可以令佢更可信。
-  const range = isBinaryGrade
-    ? null
-    : gradeRange(result.score, result.total, getPracticeCutoffs(result.total, result.subjectId ?? 'practice'))
-  const color = gradeColors[gradeResult.grade] ?? '#64748B'
-  const bgColor = gradeBgColors[gradeResult.grade] ?? 'bg-slate-500 text-white'
+  // 2026-09-30（改進循環 2）：原本由十題推出 DSE 等級（5**、5* …），又畫等級刻度、
+  // 「距離下一級差幾分」。十題改寫題撐唔起一個考評局等級，所以改為只講本節表現。
+  const band = getPracticePerformanceBand(result.score, result.total)
+  const bandLabel = locale === 'en' ? PRACTICE_BAND_LABEL[band].en : PRACTICE_BAND_LABEL[band].zh
   const formatTime = (s: number) => `${Math.floor(s / 60)}${r.timeMin}${s % 60}${r.timeSec}`
 
   // Subject name in the active locale (falls back to the stored name).
@@ -268,10 +241,6 @@ export default function ResultPageClient() {
   ]
   const cardTiers = dr
     ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ label: m.label, correct: dr[m.key].correct, total: dr[m.key].total, color: m.color }))
-    : []
-  // Rows for the level-band section. Citizenship and Social Development has no levels.
-  const bandTiers = dr && !isBinaryGrade && result.subjectId !== 'csd'
-    ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ key: m.key, label: m.label, correct: dr[m.key].correct, total: dr[m.key].total }))
     : []
   const ratioSorted = [...result.topicResults].filter((tt) => tt.total > 0).sort((a, b) => b.correct / b.total - a.correct / a.total)
   const bestTopic = ratioSorted[0]
@@ -315,11 +284,11 @@ export default function ResultPageClient() {
     const topWeak = weakLines[0]?.topic
     const actions = topWeak
       ? en
-        ? `Prioritise targeted drilling on ${weakLines.map((w) => w.topic).join(' and ')}; review the Path A worked solutions, then re-attempt the L5+ elite-challenge set to convert recognition into mastery.`
-        : `優先針對 ${weakLines.map((w) => w.topic).join('、')} 集中操練；重溫 Path A 詳解，再重做 L5+ 拔尖挑戰題，將「識」化為「熟」。`
+        ? `Practise ${weakLines.map((w) => w.topic).join(' and ')} next; read the worked solutions, then try another set on the same topic.`
+        : `下一步集中練習 ${weakLines.map((w) => w.topic).join('、')}；先重溫詳解，再做一組同課題練習。`
       : en
-        ? 'Maintain momentum: advance to full timed past-paper sets to consolidate exam pacing.'
-        : '保持節奏：進階到全份計時歷屆試題，鞏固考試步速。'
+        ? 'Keep going: try a timed set to practise exam pacing.'
+        : '保持節奏：試做一份計時練習，練習考試步速。'
     return [
       en ? '[DSE Level Up — Student Diagnostic Report]' : '【DSE Level Up — 學生診斷報告】',
       divider,
@@ -328,8 +297,8 @@ export default function ResultPageClient() {
       `${en ? 'Date' : '日期'}: ${date}`,
       `${en ? 'Subject Evaluated' : '評估科目'}: ${subjName}`,
       divider,
-      `${en ? 'Diagnostic Level' : '診斷等級'}: ${gradeResult.grade}`,
-      `${en ? 'Accuracy Rate' : '準確率'}: ${result.score}/${result.total} (${pct}%)`,
+      `${en ? 'Correct' : '答對'}: ${result.score}/${result.total} (${pct}%)`,
+      `${en ? 'This session' : '本節表現'}: ${bandLabel}`,
       en ? 'Core Blind Spots Identified:' : '已識別核心盲點：',
       weaknesses,
       `${en ? 'Recommended Actions' : '建議行動'}: ${actions}`,
@@ -356,79 +325,23 @@ export default function ResultPageClient() {
           </div>
         )}
 
-        {/* Grade badge + Score */}
+        {/* 本節表現：先講答對幾多，再用中性字眼講表現。冇 DSE 等級、冇獎盃。 */}
         <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
           {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
           <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
-          {showBadge && (
-            <div
-              className="inline-block text-6xl mb-4 animate-pop-in"
-              style={{ animationDelay: '0ms' }}
-            >
-              {gradeResult.grade === '5**' ? '🏆'
-                : gradeResult.grade === '5*' ? '⭐'
-                : gradeResult.grade === '5' ? '🎉'
-                : gradeResult.grade === '4' ? '💪'
-                : '📚'}
-            </div>
-          )}
-
-          <div className="text-5xl sm:text-6xl font-medium mb-1" style={{ color }}>
+          <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
+            <span className="sr-only">{locale === 'en' ? 'Correct: ' : '正確：'}</span>
             {displayScore} / {result.total}
           </div>
           <div className="text-ink-muted mb-4" style={{ fontVariantNumeric: 'tabular-nums' }}>{displayPct}%</div>
 
-          {/* Predicted grade */}
-          <div className="mb-4">
-            <span className="text-ink-muted text-sm">{r.predictedGrade}</span>
-            <div
-              className={`inline-block ml-2 px-4 py-1 rounded-full font-medium text-lg ${bgColor}`}
-            >
-              {gradeResult.grade}
-            </div>
-          </div>
-
-          <p className="text-ink-muted text-sm mb-4">
-            {r.gradeMessages[gradeResult.grade]}
+          <p className="mb-2 text-base text-ink">
+            {r.bandLead}
+            <strong className="font-medium">{bandLabel}</strong>
           </p>
-
-          {/* 誠實區間。放喺等級正下方而唔係頁尾細字 —— 一個要 scroll 落去先睇到嘅
-              但書，等於冇講。 */}
-          {range && (
-            <div className="max-w-md mx-auto mb-6 text-left bg-surface-raised border border-line rounded-2xl p-4">
-              <p className="text-sm text-ink-soft leading-relaxed">
-                {range.isSingle
-                  ? fmt(r.rangeSingle, { n: String(range.n), low: range.low })
-                  : fmt(r.rangeSpan, { n: String(range.n), low: range.low, high: range.high })}
-              </p>
-              {!range.isSingle && (
-                <p className="text-xs text-ink-muted leading-relaxed mt-2">
-                  {fmt(r.rangeWhy, { n: String(range.n) })}{' '}
-                  {range.questionsToNarrow
-                    ? fmt(r.rangeNarrow, { m: String(range.questionsToNarrow) })
-                    : r.rangeNarrowUnknown}
-                </p>
-              )}
-              <p className="text-[11px] text-ink-muted leading-relaxed mt-3 pt-3 border-t border-line">
-                {r.cutoffOrigin}{' '}
-                {/* 2026-08-21：短一句免責唔夠 —— 學生睇完仍然唔知個數憑咩嚟。
-                    /prediction-method 貼晒實際分界線同用邊條區間公式，佢自己計得返。 */}
-                <Link href="/prediction-method" className="text-accent underline underline-offset-2">
-                  {locale === 'en' ? 'How this is worked out' : '呢個數點計出嚟'}
-                </Link>
-              </p>
-            </div>
-          )}
-
-          {/* 公社科：官方只有達標／不達標，冇 1–5** 等級。而考評局從未公布達標分數，
-              所以呢條線係平台自訂嘅練習參考值 —— 必須明講，唔可以扮官方標準。 */}
-          {isBinaryGrade && (
-            <p className="text-ink-muted text-xs leading-relaxed mb-6 max-w-md mx-auto">
-              {locale === 'en'
-                ? 'Citizenship & Social Development is reported as met / not-yet-met only — there are no 1–5** levels. The threshold used here is our own practice reference, not an HKEAA figure.'
-                : '公民與社會發展科官方只設「達標／不達標」，並無 1–5** 等級。此處採用的分界線為本平台自訂的練習參考值，並非考評局公布的標準。'}
-            </p>
-          )}
+          <p className="max-w-md mx-auto mb-6 text-xs leading-relaxed text-ink-muted">
+            {band === 'insufficient' ? r.bandTooFew : r.bandNote}
+          </p>
 
           {/* 服務端覆核結果。語氣係【安心】唔係【監察】—— 呢個數係核對過嘅，
               你可以信。對唔上時亦唔指控學生（答案庫本身就喺瀏覽器，覆核擋唔到
@@ -445,14 +358,6 @@ export default function ResultPageClient() {
             </p>
           )}
 
-          {/* Marks to next grade */}
-          {gradeResult.marksToNextGrade !== null && gradeResult.nextGrade && (
-            <div className="inline-flex items-center gap-2 text-sm text-ink bg-surface-sunken border border-gold rounded-full px-4 py-2">
-              {r.marksToNext
-                .replace('{grade}', gradeResult.nextGrade)
-                .replace('{marks}', String(gradeResult.marksToNextGrade))}
-            </div>
-          )}
         </div>
 
         {/* 下一步（UX 循環 LOOP 7，2026-09-30）：原本在頁底、教師報告及 IG 卡之後（360×800 實測 y≈2,470）。
@@ -527,91 +432,38 @@ export default function ResultPageClient() {
             </div>
             <p className="text-sm text-ink-soft leading-relaxed">
               {locale === 'en'
-                ? 'Your foundation questions came out clean — that base is now yours to keep. The marks that separate Level 4 and above sit in the higher-order inference questions, and those are a different skill, not a harder version of the same one. Foundation marks are the marks you bank; the inference questions are the ones you go and take next.'
-                : '你的基礎鞏固題全部答對，這一層已經穩住了。分開 Level 4 或以上的分數，落在高階文意推論題那一邊——它考的是另一種能力，而不是同一種能力的加強版。基礎題是穩守的分，高階推論題就是下一段要去攻的分。'}
+                ? 'Your foundation questions came out clean this session. The questions you missed are higher-order inference questions, and those test a different skill, not a harder version of the same one. Keep the foundation, then practise the inference questions next.'
+                : '今節的基礎鞏固題全部答對。失分落在高階文意推論題——它考的是另一種能力，而不是同一種能力的加強版。基礎題保持住，下一步就練高階推論題。'}
             </p>
           </div>
         )}
 
-        {/* Grade bar */}
+        {/* 答對比例條。2026-09-30 拆走 1–5** 等級刻度及「本節分層表現」的等級對應（難度標籤未校準）。 */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
-          <div className="text-sm font-medium text-ink mb-4">{r.gradePosition}</div>
-
-          {/* Grade scale */}
-          <div className="relative">
-            <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
-              <div
-                className="h-full rounded-full transition-all"
-                style={{
-                  width: `${barWidth}%`,
-                  background: `linear-gradient(to right, #E2E2DC, ${color})`,
-                  animation: 'fill-bar 1.2s ease-out forwards',
-                  ['--fill-width' as string]: `${barWidth}%`,
-                }}
-              />
-            </div>
-
-            {/* Grade markers —— 公社科唔存在 1–5** 階梯，改為只標達標參考線。 */}
-            <div className="flex justify-between text-xs text-ink-muted mt-1">
-              <span>0</span>
-              {isBinaryGrade ? (
-                <span style={{ color: passLineColor }}>
-                  {locale === 'en' ? 'reference line' : '達標參考線'}
-                  {' '}
-                  {Math.ceil(result.total * CSD_PASS_RATIO)}
-                </span>
-              ) : (
-                ['1', '2', '3', '4', '5', '5*', '5**'].map((g) => (
-                  <span key={g} style={{ color: gradeColors[g] }}>
-                    {g}
-                  </span>
-                ))
-              )}
-              <span>{result.total}</span>
-            </div>
+          <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
+            <div
+              className="h-full rounded-full bg-accent transition-all"
+              style={{
+                width: `${barWidth}%`,
+                animation: 'fill-bar 1.2s ease-out forwards',
+                ['--fill-width' as string]: `${barWidth}%`,
+              }}
+            />
           </div>
-
+          <div className="flex justify-between text-xs text-ink-muted tabular-nums">
+            <span>0</span>
+            <span>{result.total}</span>
+          </div>
           <div className="mt-4 text-xs text-ink-muted text-center">
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
         </div>
 
-        {/* This session by difficulty tier, with the level band each tier is written for.
-            The bands are the platform's estimate, so the note under them is not optional.
-            Citizenship and Social Development has no levels, so the section is skipped. */}
-        {bandTiers.length > 0 && (
-          <div className="bg-surface-raised border border-line rounded-2xl p-6">
-            <div className="text-sm font-medium text-ink mb-4">
-              {locale === 'en' ? 'This session by difficulty' : '本節分層表現'}
-            </div>
-            <div className="space-y-3">
-              {bandTiers.map((t) => (
-                <div key={t.key} className="flex items-baseline justify-between gap-3 text-sm">
-                  <span className="text-ink-soft">
-                    {t.label}
-                    <span className="text-ink-muted">{locale === 'en' ? ` (${TIER_LEVEL_BANDS[t.key].en})` : `（${TIER_LEVEL_BANDS[t.key].zh}）`}</span>
-                  </span>
-                  <span className="text-ink tabular-nums">{t.correct}/{t.total}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-ink-muted leading-relaxed">
-              {locale === 'en'
-                ? 'The level bands are our own estimate based on each question’s difficulty label, not an HKEAA standard. The labels are still being calibrated, so treat the bands as a rough guide.'
-                : '等級對應是本平台按題目難度標籤所作的估算，並非考評局標準。難度標籤仍在校準，現階段只供參考。'}
-            </p>
-          </div>
-        )}
-
-        {/* 累積掌握度估算（等級預測 v3）。擺喺本節成績之下、課題分析之上：
-            本節成績講「今次」，掌握度講「至今」，兩者要分得開。 */}
         <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} attempted={result.total} />
 
         {/* 聽日有嘢等你 —— 回訪鉤子。擺喺發現卡之後：先講「今日你搞明白咗乜」，
             再講「聽日有咩等緊你」，順序同學生嘅情緒節奏一致。 */}
         <TomorrowStrip en={locale === 'en'} />
-
-        {result.subjectId && <MasteryEstimate subjectId={result.subjectId} />}
 
         {/* Topic breakdown */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
@@ -676,7 +528,7 @@ export default function ResultPageClient() {
           onClick={() => {
             // 網址由 SITE_ORIGIN 接上，唔喺字典文案入面寫死 —— 見 lib/dictionary.ts
             // shareTextD 嘅註釋（原文寫死咗一個未購入嘅網域）。
-            const text = `${r.shareTextA}${subjName}${r.shareTextB}${result.score}/${result.total}${r.shareTextC}${gradeResult.grade}${r.shareTextD}${SITE_ORIGIN}`
+            const text = `${r.shareTextA}${subjName}${r.shareTextB}${result.score}/${result.total}${r.shareTextC}${r.shareTextD}${SITE_ORIGIN}`
             if (navigator.share) {
               navigator.share({ text }).catch(() => {})
             } else {

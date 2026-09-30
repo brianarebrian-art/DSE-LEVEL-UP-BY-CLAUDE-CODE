@@ -723,3 +723,20 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 | §31 | 三個考評局衍生資料檔、`/writing` 的「取材自 2023 DSE 英文卷二」 | 2026-09-30 版權規則下待法律釐清 | `CONTENT_PROVENANCE.md` §6 |
 
 **已確認毋須改動：** §37 題庫載入失敗有說明及「再試一次」；§35「答案唯一」已由 `structural.test.mts` 鎖住（四個相異選項、`correctIndex` 在範圍內、題號唯一）；§38 各頁 metadata 及結構化資料沒有官方或預測字眼；§39 結果頁已有分享卡（不含身份資料）；§40 答錯後第 1／3／7／14／30 日重溫，即 prompt 所講的「昨日錯、今日驗證」，不另建第二套。
+
+---
+
+# 改進循環 2（2026-09-30，第三份 loop prompt「AUTONOMOUS REFINEMENT LOOP 2」）
+
+原則：不改 §7.2 實驗（`DEFERRED_EXPERIMENT_CHANGE`）；與既有決定衝突者標 `DECISION_CONFLICT`，不自行推翻。
+
+## R2-1 結果頁不再顯示 DSE 等級（prompt §3–§5）
+
+- 新增 `lib/practiceBand.ts`：`getPracticePerformanceBand(correct, total)` → 證據不足／需要鞏固／發展中／相對穩定；少於 `MIN_BAND_EVIDENCE`（= `MIN_EVIDENCE` = 5）題不分類。
+- `/result`：刪去等級徽章（🏆⭐）、「今次表現等級」、等級區間、等級刻度、「距離下一級差幾分」、各難度層的「約 2–3／4／5 級」、`MasteryEstimate`；分享文字及教師報告不再附等級；教師報告刪去「歷屆試題」。
+- `/prediction-method`：刪去 5**–1 分界線表及 Wilson 區間一節，改為說明「本節表現」四個字眼的規則。
+- 刪除無人使用的 `lib/gradeConfidence.ts`（及其測試）與 `TIER_LEVEL_BANDS`。
+- **取代的舊決定：** Yuna 2026-09-26「在結果頁顯示各難度層對應等級」。本 prompt §4 明文要求結果頁不再用 5**、5*、4、3 等標籤，屬明確授權。
+- `STALE_CHARTER_COPY`：頁尾及 `/about` 的「等級預測僅供參考」為憲章 §13 逐字條文，本輪不改。
+- `DECISION_CONFLICT`：`/predictor`（練習表現估算）仍以 Level 範圍顯示。Yuna 2026-09-29 決定改名保留；本 prompt 只明確授權結果頁。未改。
+- 測試：`practice-band.test.mts`（新）；`tier-level-bands`、`result-wording`、`result-empty-state`、`result-next-steps`、`prediction-wording`、`trust-hardening` 改錨點（要求不變或更嚴）。
