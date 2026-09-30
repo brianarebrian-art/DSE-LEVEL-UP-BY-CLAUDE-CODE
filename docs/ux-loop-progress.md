@@ -452,3 +452,15 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **測試：** 新增 `lib/__tests__/content-provenance.test.mts`（3 項）：`data/`（題庫以外）凡提及考評局的檔案都要列入；不得聲稱法律上沒有問題或已獲授權；題數不抄入文件。
 - **驗證：** `npm test` 1191/1191；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。純文件及測試，無畫面改動。
 - **Commit：** 見 git log（`docs(provenance): record where every kind of content comes from`）。
+
+## LOOP 24 — 2026-09-30
+
+- **Slice：** `/subjects` 不再寫「25 科已全部上線」（新 prompt §8，P0）。
+- **量度（改動前）：** 介紹句「HKDSE 甲類科目（M1、M2 分開計），25 科已全部上線。全部科目嘅 MC 練習完全免費」。實情：25 科都有選擇題；書寫題每科 9 至 128 條（倫理與宗教 9 條，多科 13 條）；全站沒有聆聽、說話、實作、校本評核練習。
+- **影響範圍：** `lib/dictionary.ts`（中英 `introLiveA`、`introB`，新增 `introWrittenA/B/C`）、`app/subjects/SubjectsView.tsx`、新增測試。
+- **改動：** 介紹句改為「25 科都有選擇題練習；書寫題（對照參考答案自評）每科 9 至 128 條不等。本站未有聆聽、說話、實作同校本評核練習。全部免費，無限次做。」範圍由 `SUBJECT_SUMMARY` 即時計，文案本身不含數字。
+- **未做（prompt §8 的逐科 coverage schema）：** 要逐科分「不適用」與「尚未涵蓋」，需要知道每科考卷有沒有聆聽、說話、實作等部分，即考評局評核大綱的資料。這些資料在 `data/dse-paper-formats.ts`，屬 2026-09-30 起不新增用途、待法律釐清的檔案（`CONTENT_PROVENANCE.md` §3）。所以本輪只寫本站有甚麼、沒有甚麼，不逐科判斷適用與否；待創辦人決定該檔的處理方法後再做。
+- **測試：** 新增 `lib/__tests__/subject-coverage-copy.test.mts`（3 項）。
+- **驗證：** `npm test` 1194/1194；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 介紹句 4 行（y=188、高 80）；第一張卡「開始 10 題」y=645–693，仍在首屏及底部導航之上；無水平捲動。
+- **Commit：** 見 git log（`fix(subjects): say what is covered instead of "all live"`）。

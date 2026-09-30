@@ -31,6 +31,10 @@ export default function SubjectsView() {
   const { t, locale } = useLocale()
   const tl = t.subjectsList
   const activeCount = subjects.filter((s) => s.isActive).length
+  // 每科書寫題數的範圍，由題庫摘要計（LOOP 24）：有些科目只有十條左右，不能只說「有書寫題」。
+  const written = subjects.filter((s) => s.isActive).map((s) => SUBJECT_SUMMARY[s.id]?.written ?? 0)
+  const writtenMin = written.length ? Math.min(...written) : 0
+  const writtenMax = written.length ? Math.max(...written) : 0
   const name = (s: SubjectMeta) => (locale === 'en' ? s.nameEn : s.name)
   const desc = (s: SubjectMeta) => (locale === 'en' ? s.descriptionEn : s.description)
   const en = locale === 'en'
@@ -158,7 +162,9 @@ export default function SubjectsView() {
               第一張卡的「開始 10 題」會落到左下無障礙掣之下（375×812 實測 y=700–748）。 */}
           <p className="text-ink-muted text-sm sm:text-lg max-w-2xl">
             {tl.introA}
-            <span className="text-accent">{activeCount}{tl.introLiveA}</span>{tl.introB}
+            <span className="text-accent">{activeCount}{tl.introLiveA}</span>
+            {writtenMax > 0 && <>{tl.introWrittenA}{writtenMin}{tl.introWrittenB}{writtenMax}{tl.introWrittenC}</>}
+            {tl.introB}
           </p>
         </div>
 

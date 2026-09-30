@@ -291,8 +291,14 @@ const zh = {
     // 2026-09-29：原文「涵蓋全部 HKDSE 科目」屬過度聲稱 —— 本站 25 科均屬甲類科目（M1、M2 分開計），
     // 未有綜合科學，亦未有乙類、丙類科目。
     introA: 'HKDSE 甲類科目（M1、M2 分開計），',
-    introLiveA: ' 科已全部上線',
-    introB: '。全部科目嘅 MC 練習完全免費，無限次做。',
+    // 2026-09-30（UX 循環 LOOP 24）：原文「N 科已全部上線」令人以為每科所有卷別都有。
+    // 改為講本站實際有甚麼：全部科目有選擇題、部分科目有書寫題，以及全站都沒有的練習類型。
+    // 各科考卷有沒有聆聽、說話等部分屬考評局資料，未有真人核實前不逐科標示（CONTENT_PROVENANCE.md §3）。
+    introLiveA: ' 科都有選擇題練習',
+    introWrittenA: '；書寫題（對照參考答案自評）每科 ',
+    introWrittenB: ' 至 ',
+    introWrittenC: ' 條不等。',
+    introB: '本站未有聆聽、說話、實作同校本評核練習。全部免費，無限次做。',
     startPractice: '開始練習',
     priorities: {
       P0: { label: '核心必爭', desc: '最多考生、最易改寫、即時批改' },
@@ -732,8 +738,11 @@ const en: typeof zh = {
   subjectsList: {
     title: 'All Subjects',
     introA: 'HKDSE Category A subjects (M1 and M2 counted separately) — all ',
-    introLiveA: ' subjects are now live',
-    introB: '. MC practice in every subject is completely free and unlimited.',
+    introLiveA: ' subjects have multiple-choice practice',
+    introWrittenA: '; written questions, self-marked against a reference answer, range from ',
+    introWrittenB: ' to ',
+    introWrittenC: ' per subject. ',
+    introB: 'There is no listening, speaking, practical or school-based assessment practice here. Everything is free and unlimited.',
     startPractice: 'Start practice',
     priorities: {
       P0: { label: 'Core must-win', desc: 'Largest entry, easiest to rewrite, instant marking' },
