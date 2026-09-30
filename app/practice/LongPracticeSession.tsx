@@ -154,7 +154,7 @@ export default function LongPracticeSession({
           </p>
           <Link
             href={`/practice?subject=${subjectId}`}
-            className="min-h-11 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
+            className="min-h-12 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
           >
             {tr('去做選擇題', 'Practise multiple choice')} <ArrowRight size={16} aria-hidden />
           </Link>
@@ -195,13 +195,13 @@ export default function LongPracticeSession({
           <div className="flex flex-wrap gap-3">
             <Link
               href={`/practice?subject=${subjectId}&mode=long`}
-              className="min-h-11 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
+              className="min-h-12 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
             >
               {tr('再做一組', 'Another set')}
             </Link>
             <Link
               href="/dashboard"
-              className="min-h-11 inline-flex items-center gap-2 border border-line-strong text-ink-soft hover:text-accent hover:border-accent px-5 py-2.5 rounded-xl transition-colors"
+              className="min-h-12 inline-flex items-center gap-2 border border-line-strong text-ink-soft hover:text-accent hover:border-accent px-5 py-2.5 rounded-xl transition-colors"
             >
               {tr('睇返我嘅進度', 'See my progress')}
             </Link>
@@ -248,7 +248,7 @@ export default function LongPracticeSession({
                 <button
                   key={c.key}
                   onClick={() => logCause(inviteFor, c.key)}
-                  className="min-h-11 text-sm border border-line-strong hover:border-accent hover:text-accent text-ink-soft rounded-xl px-3 py-2.5 transition-colors"
+                  className="min-h-12 text-sm border border-line-strong hover:border-accent hover:text-accent text-ink-soft rounded-xl px-3 py-2.5 transition-colors"
                 >
                   {c.emoji} {en ? c.en : c.zh}
                 </button>
@@ -256,7 +256,7 @@ export default function LongPracticeSession({
             </div>
             <button
               onClick={advance}
-              className="min-h-11 mt-3 text-sm text-ink-muted hover:text-accent transition-colors"
+              className="min-h-12 mt-3 text-sm text-ink-muted hover:text-accent transition-colors"
             >
               {tr('暫時唔使，繼續 →', 'Skip for now →')}
             </button>

@@ -61,7 +61,7 @@ export default function EmotionTags() {
               <button
                 key={t.key}
                 onClick={() => { setPicked(t.key); logEmotion(t.key) }}
-                className="min-h-11 px-3 py-2 rounded-[10px] border border-line-strong bg-surface-sunken text-xs text-ink-soft hover:border-gold/50 hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+                className="min-h-12 px-3 py-2 rounded-[10px] border border-line-strong bg-surface-sunken text-xs text-ink-soft hover:border-gold/50 hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
               >
                 {t.emoji} {en ? t.en : t.zh}
               </button>

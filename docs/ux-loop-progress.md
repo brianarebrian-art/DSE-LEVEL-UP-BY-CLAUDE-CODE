@@ -317,3 +317,15 @@
 - **畫面（production build，375×812，本機有三科紀錄）：** 中文：三格在同一行（y=284），第一張卡「開始 10 題」y=605–653，在無障礙掣（y=692）之上。英文：第一張卡較長，「開始 10 題」y=684–732，與無障礙掣重疊約 40px，捲一下即可。
 - **需要創辦人決定：** 手機左下角無障礙掣及右下角情緒支援掣會蓋住每頁首屏底部的內容，本循環已在五處個別避開，但卡片內容一長就會再出現。徹底的做法是把手機的無障礙入口移入頂欄或底部導航（情緒支援掣是否同樣處理亦需決定）。這會改變 SEN 功能的入口位置，所以不自行改。
 - **Commit：** 見 git log（`feat(subjects): show recently practised subjects first`）。
+
+## LOOP 17 — 2026-09-30
+
+- **Slice：** 答題流程所有控件至少 48px 高（P0-5「48px touch target」）。
+- **優先級：** P0。
+- **量度（改動前，375×812，答錯並揀錯因後掃描主區）：** 頂部返回、計時、休息吓、今日夠了 44px；「睇埋成個解析」「以後唔好收埋」44px；情緒標籤三個 44px；收藏 44px；「下一題想要」四個難度 27px；披露句內「呢個代表咩」13px、「呢條題有問題？話我哋知」18px。
+- **影響範圍：** `app/practice/PracticeSession.tsx`、`app/practice/LongPracticeSession.tsx`、`components/PracticeSupport.tsx`、`components/StagedExplanation.tsx`、`components/BookmarkButton.tsx`、`components/EmotionTags.tsx`：`min-h-11` 改為 `min-h-12`（共 24 處），難度選擇改為 48px；新增測試。後三個組件亦用於其他頁，那些頁的控件同樣變為 48px。
+- **不改：** 披露句內的兩條文字連結屬句內連結（WCAG 2.5.8 的例外），改成 48px 會拆散句子。
+- **測試：** 新增 `lib/__tests__/practice-touch-targets.test.mts`（2 項）：六個檔案不再有 `min-h-11`；難度選擇為 48px。
+- **驗證：** `npm test` 1166/1166；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 同一流程重新掃描，低於 48px 的只剩上述兩條句內連結；頂部按鈕 48px；無水平捲動。
+- **Commit：** 見 git log（`fix(practice): 48px targets throughout the answer flow`）。

@@ -821,13 +821,13 @@ export default function PracticeSession({
           <div className="flex flex-col gap-2.5">
             <button
               onClick={() => window.location.reload()}
-              className="w-full min-h-11 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
+              className="w-full min-h-12 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
             >
               {tr('再做多 1 題', 'One more question')}
             </button>
             <Link
               href="/dashboard"
-              className="w-full min-h-11 flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
+              className="w-full min-h-12 flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
             >
               {tr('今日就到呢度', "That's it for today")}
             </Link>
@@ -861,13 +861,13 @@ export default function PracticeSession({
           <div className="flex flex-col gap-2.5">
             <button
               onClick={acceptResume}
-              className="w-full min-h-11 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
+              className="w-full min-h-12 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
             >
               {tr(`繼續做第 ${doneCount + 1} 題`, `Continue from question ${doneCount + 1}`)}
             </button>
             <button
               onClick={declineResume}
-              className="w-full min-h-11 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
+              className="w-full min-h-12 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
             >
               {tr('重新開始一份', 'Start a fresh one')}
             </button>
@@ -908,7 +908,7 @@ export default function PracticeSession({
         {/* 返回科目頁 —— 全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），
             所以呢個係練習頁【唯一】嘅離開路徑，唔可以刪。
             擺喺科目名左邊、細字弱對比：睇得到，但唔會同題目爭注意力
-            （規格 §7.3A「單一焦點」）；min-h-11 保持觸控靶大細。 */}
+            （規格 §7.3A「單一焦點」）；min-h-12（48px）保持觸控靶大細。 */}
         {/* sticky：捲落去睇解析嗰陣，返回掣要仲喺度。
             全屏模式冇 Navbar，佢係唯一出口，唔可以隨頁面捲走。
             用 bg-surface 同頁面底色一致，所以內容捲過去唔會見到接縫。 */}
@@ -916,7 +916,7 @@ export default function PracticeSession({
           <Link
             href="/subjects"
             aria-label={tr('返回科目選擇', 'Back to subject list')}
-            className="-ml-2 inline-flex items-center gap-0.5 min-h-11 pl-1 pr-2 rounded-lg text-ink-muted hover:text-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+            className="-ml-2 inline-flex items-center gap-0.5 min-h-12 pl-1 pr-2 rounded-lg text-ink-muted hover:text-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
           >
             <ChevronLeft size={16} aria-hidden />
             <span className="text-xs">{tr('返回', 'Back')}</span>
@@ -991,7 +991,7 @@ export default function PracticeSession({
                     }
                     title={tr('逐題計時：關 / 60 秒 / 90 秒。時間到唔會強制結束。',
                               'Per-question timer: off / 60s / 90s. Time-up never ends anything.')}
-                    className={`inline-flex items-center gap-1 min-h-11 px-2 -my-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
+                    className={`inline-flex items-center gap-1 min-h-12 px-2 -my-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
                       perQTimer === 0 ? 'text-ink-muted hover:text-ink-soft' : 'text-accent'
                     }`}
                   >
@@ -1006,7 +1006,7 @@ export default function PracticeSession({
                   支援掣、左下角有無障礙面板）。撳完計時停低，返嚟自動順延。 */}
               <button
                 onClick={() => setRestOpen(true)}
-                className="inline-flex items-center gap-1 min-h-11 px-2 -my-2 text-ink-muted hover:text-accent-strong transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent rounded-lg"
+                className="inline-flex items-center gap-1 min-h-12 px-2 -my-2 text-ink-muted hover:text-accent-strong transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent rounded-lg"
               >
                 <Coffee size={13} /> {tr('休息吓', 'Rest')}
               </button>
@@ -1392,7 +1392,7 @@ export default function PracticeSession({
                           key={tier ?? 'auto'}
                           onClick={() => setManualTier(tier)}
                           aria-pressed={on}
-                          className={`px-2.5 py-1 rounded-full border transition-colors ${
+                          className={`inline-flex min-h-12 items-center px-3 rounded-full border transition-colors ${
                             on
                               ? 'border-accent text-ink bg-surface-sunken'
                               : 'border-line text-ink-muted hover:text-ink-soft'

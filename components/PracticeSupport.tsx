@@ -48,7 +48,7 @@ export function EnoughTodayButton() {
       type="button"
       onClick={() => window.dispatchEvent(new Event(ENOUGH_TODAY_EVENT))}
       title={en ? 'Done for today — no guilt, see you tomorrow.' : '今日夠了 —— 收工冇罪疚，聽日再戰。'}
-      className="inline-flex items-center gap-1 min-h-11 px-2 -my-2 rounded-lg text-ink-muted hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+      className="inline-flex items-center gap-1 min-h-12 px-2 -my-2 rounded-lg text-ink-muted hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
       <Moon size={13} aria-hidden /> <span className="text-[11px]">{en ? 'Enough today' : '今日夠了'}</span>
     </button>
@@ -107,7 +107,7 @@ export default function PracticeSupport() {
             <div className="space-y-2">
               <Link
                 href="/dashboard"
-                className="block min-h-11 rounded-[10px] bg-accent-strong hover:bg-accent-hover text-on-accent text-sm px-4 py-3 transition-colors"
+                className="block min-h-12 rounded-[10px] bg-accent-strong hover:bg-accent-hover text-on-accent text-sm px-4 py-3 transition-colors"
               >
                 {en ? 'Back to dashboard' : '返回我的進度'}
               </Link>
@@ -115,7 +115,7 @@ export default function PracticeSupport() {
               <button
                 autoFocus
                 onClick={() => setDoneToday(false)}
-                className="block w-full min-h-11 rounded-[10px] border border-line-strong text-ink-muted text-sm px-4 py-3 hover:text-ink-soft transition-colors"
+                className="block w-full min-h-12 rounded-[10px] border border-line-strong text-ink-muted text-sm px-4 py-3 hover:text-ink-soft transition-colors"
               >
                 {en ? 'Actually, one more' : '諗返轉頭，再做多陣'}
               </button>
