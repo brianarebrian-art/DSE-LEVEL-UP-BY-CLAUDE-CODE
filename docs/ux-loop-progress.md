@@ -262,3 +262,23 @@
 - **未完成：** 手機三橫選單（`components/Navbar.tsx`，五項）未分組；它只有五項，暫不需要。
 - **下一輪最高優先問題：** P1-J：可恢復狀態，包括題庫載入失敗、空題庫、同步衝突、登入失敗、下架題目、書寫自評。
 - **Commit：** 見 git log（`feat(nav): group the sidebar by what the student is doing`）。
+
+## LOOP 14 — 2026-09-30
+
+- **Slice：** 登入失敗後可以返回練習（P1-J 其中一項）。
+- **優先級：** P1。
+- **盤點 P1-J 六項：**
+  - 題庫載入失敗：已有 `BankLoadError`（`app/practice/PracticeGate.tsx`），講明原因、列出本機做過的科目、有「再試一次」。
+  - 空題庫：MC 及書寫卷都有空狀態及返回連結。
+  - 同步衝突：已有 `sync-merge-union`、`sync-data-boundary`、`topic-stats-sync` 測試及 `sync:conflict-repro` 腳本。
+  - 下架題目：`withdrawn-lock` 測試鎖住收藏頁及紙筆戰士不會出收起題。
+  - 書寫自評：`SelfAssessment` 五級自評，對照參考答案及評分準則，機器不批改。
+  - **登入失敗：沒有處理。** `auth.ts` 沒有設定錯誤頁，取消或失敗的 Google 登入會去 Auth.js 內建的英文錯誤頁，沒有提到「唔登入都用得」，也沒有返回練習的連結。
+- **影響範圍：** `auth.ts`（`pages.error`）、新增 `app/sign-in-error/`（server 外殼加 client 內容）、新增 `lib/auth/signInError.ts`、`lib/pageOrder.ts`（路由分類）、`scripts/integration-guard.mjs`（豁免名單加一條並寫明理由）、新增測試。
+- **改動：** 新頁「未登入到」：按錯誤代碼分三種說法（取消／服務出錯／其他），代碼本身不顯示；一律說明「唔使登入都用得，照樣可以做題，練習紀錄留喺呢部機；登入淨係為咗跨機同步進度」（沿用 claims-guard 建議的真話）；主按鈕「返去練習」，取消及其他情況另有「再試一次登入」，服務出錯時改為「遲啲再試」並連去信任中心。`noindex`，不入 sitemap。
+- **測試：** 新增 `lib/__tests__/sign-in-error.test.mts`（5 項）：Auth.js 指向新頁；代碼分類，未知或惡意值一律歸入一般說法；頁面有「唔使登入都用得」及返回練習連結，只分類不顯示原始代碼；`noindex`、已分類、不入 sitemap；接線閘豁免有理由。
+- **驗證：** `npm test` 1157/1157（加最後一項前）；`qa` rc=0（第一次失敗：接線閘指新路由沒有站內連結，按規定加入豁免名單並寫明是 Auth.js 重新導向入口）；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** `?error=AccessDenied`、`?error=Configuration`、`?error=<b>x</b>` 三種都顯示正確說法；HTML 內沒有回顯 `<b>`；兩個按鈕高 48px；`<meta name="robots">` 為 `noindex, nofollow`。
+- **未能驗證：** 真實的 Google 登入失敗重新導向。Claude 不可以輸入登入憑證，所以只驗證了設定及頁面本身；Better Auth 後備（`NEXT_PUBLIC_AUTH_BACKEND=better-auth`，預設不啟用）的錯誤流程未改。
+- **下一輪：** P1 F–J 已全部有處理或有記錄的原因。檢查循環停止條件，並處理之前記下的已知問題（回訪學生首頁連結被角落掣遮住、1024×768「下一題」與情緒支援掣重疊）。
+- **Commit：** 見 git log（`feat(auth): a sign-in error page that leads back to practice`）。

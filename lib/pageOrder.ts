@@ -55,6 +55,7 @@ export const EXCLUDED: Record<string, string> = {
   '/(auth)/sign-in': '登入流程，中途插入循環會令人半路走咗',
   '/(auth)/sign-up': '註冊流程，同上',
   '/result': '一節練習嘅終點頁，本身已經帶住下一步',
+  '/sign-in-error': '登入失敗落腳頁（auth.ts pages.error），本身帶住返去練習的連結',
   '/waiting': '情緒支援落腳頁，唔應該喺呢度催人去下一頁',
 
   // 動態詳情頁：由上層列表入，返回路徑係返上層
