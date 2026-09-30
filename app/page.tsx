@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Brain, Zap } from 'lucide-react'
-import MathText from '@/components/MathText'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
 import CountdownBanner from '@/components/CountdownBanner'
 import InstallHint from '@/components/InstallHint'
@@ -43,6 +42,12 @@ const sessionMins = sessionMinutes()
 //     數學科頁面實際列出的框架只有七個。
 // 改為三個可由程式碼推導、學生關心的數字：題數、一節題數（SESSION_SIZE）、費用。
 const statNums = [TOTAL_QUESTIONS, SESSION_SIZE, 0]
+
+// 首頁示範的幾條算式用純文字（2026-09-30，UX 循環 LOOP 38）。原本經 MathText 用 KaTeX 排版，
+// 令首頁要下載 256KB（未壓縮）的 KaTeX，只為六條固定算式。上標「²」讀屏軟件會讀作 squared。
+function M({ children }: { children: string }) {
+  return <span className="whitespace-nowrap font-serif italic">{children}</span>
+}
 
 export default function HomePage() {
   const { t, locale } = useLocale()
@@ -281,10 +286,10 @@ export default function HomePage() {
               </div>
               <div className="mb-3 font-mono text-xs text-accent">{h.demoArchetype}</div>
               <p className="text-sm leading-relaxed text-ink-soft">
-                {h.demoSolve}<MathText>$2x^2 + 3x - 5 = 0$</MathText>{h.demoFind}<MathText>$x$</MathText>{h.demoValueEnd}
+                {h.demoSolve}<M>2x² + 3x − 5 = 0</M>{h.demoFind}<M>x</M>{h.demoValueEnd}
               </p>
               <div className="mt-4 border-t border-line pt-4 text-xs text-ink-muted">
-                {h.demoAnswer}<MathText>{'$x = 1$'}</MathText>{h.demoOr}<MathText>{'$x = -\\frac{5}{2}$'}</MathText>
+                {h.demoAnswer}<M>x = 1</M>{h.demoOr}<M>x = −5/2</M>
               </div>
             </div>
 
@@ -310,7 +315,7 @@ export default function HomePage() {
                 <span className="text-sm font-medium text-gold">{h.step3Tag}</span>
               </div>
               <p className="mb-4 text-sm leading-relaxed text-ink-soft">
-                {h.demoSolve}<MathText>$3x^2 + 5x - 2 = 0$</MathText>{h.demoFind}<MathText>$x$</MathText>{h.demoValueEnd}
+                {h.demoSolve}<M>3x² + 5x − 2 = 0</M>{h.demoFind}<M>x</M>{h.demoValueEnd}
               </p>
               <Link
                 href="/subjects/math"

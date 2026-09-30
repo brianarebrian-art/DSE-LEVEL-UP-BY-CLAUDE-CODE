@@ -637,3 +637,17 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
   - 手機橫放 812×375 練習頁：無水平捲動；sticky 頂行 64px；選項各 56px，要捲動才見；812px 屬平板闊度，所以用左下角浮動掣。
 - **已知：** 橫放時左下、右下兩個浮動掣會在捲動中蓋住選項兩端約 48px；選項中間仍可撳。
 - **Commit：** 見 git log（`fix(a11y): 44px targets across the content pages`）。
+
+## LOOP 38 — 2026-09-30
+
+- **Slice：** 首頁不再需要 KaTeX（新 prompt §36，P2 效能）。
+- **量度（改動前，production build，375×812，瀏覽器實測）：**
+  - 首頁載入 31 個 JS、共 1,348 KB（未壓縮）。最大四個是 KaTeX 256 KB、Next 235 KB、react-dom 196 KB、頁面 95 KB。KaTeX 只用於示範區六條固定算式。
+  - 另一個 67 KB chunk 含 Supabase URL 及 anon key，但沒有 `supabase-js`，只以 `fetch` 讀 PostgREST，符合憲章 §3.1 約束 6。
+  - 練習頁沒有載入整個題庫，只有單科。
+- **影響範圍：** `app/page.tsx`（移除 `MathText`，六條算式改為純文字小組件）、新增測試。
+- **改動：** 示範算式寫成「2x² + 3x − 5 = 0」「x = −5/2」等純文字（襯線斜體），讀屏軟件會把上標讀作 squared。
+- **結果：** 首頁初始 HTML 的 19 個 script 不再包括 KaTeX。瀏覽器仍會在頁面載入後預先抓取 KaTeX（`startTime` 89ms，屬首頁上練習頁連結的預取），不阻塞首屏；首頁本身不再依賴它。
+- **測試：** 新增 `lib/__tests__/home-no-katex.test.mts`（2 項）：首頁及其直接用到的組件都不 import `MathText` 或 `katex`。
+- **驗證：** `npm test` 1234/1234；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **Commit：** 見 git log（`perf(home): plain-text demo formulas, KaTeX off the first load`）。
