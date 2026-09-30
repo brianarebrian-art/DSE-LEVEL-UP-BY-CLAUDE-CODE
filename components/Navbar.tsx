@@ -94,7 +94,8 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Greeting />
           </div>
-          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-ink lg:hidden">
+          {/* md 起左側圖示列已有品牌標誌（2026-09-30 改進循環 2），這裏只在手機顯示。 */}
+          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-ink md:hidden">
             <BookOpen size={22} className="text-accent" />
             <span className="whitespace-nowrap">
               DSE <span className="text-accent">Level Up</span>
@@ -103,7 +104,9 @@ export default function Navbar() {
         </div>
 
         {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
-        <div className="hidden lg:flex items-center gap-6">
+        {/* 2026-09-30（改進循環 2，prompt §25）：原本 lg 起才出，768–1023px 平板同時有側欄及漢堡選單。
+            改為 md 起出，漢堡只留給手機。 */}
+        <div className="hidden md:flex items-center gap-3 lg:gap-6">
           {/* 2026-09-03：橫向連結搬咗落側欄（規格 §3.1）。同一組連結出兩次，
               學生要諗「呢兩個係咪同一樣嘢」，而且選中態要維護兩處。
               <lg 冇側欄，所以漢堡選單面板嗰份【原封不動】保留。 */}
@@ -123,7 +126,7 @@ export default function Navbar() {
         </div>
 
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
-        <div className="lg:hidden flex items-center gap-1">
+        <div className="md:hidden flex items-center gap-1">
           {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：放在漢堡掣旁邊，
               左下角浮動掣在手機上因此收起。平板及以上不顯示，維持浮動掣。 */}
           <A11yButton />
@@ -145,7 +148,7 @@ export default function Navbar() {
       {open && (
         <div
           id="site-menu"
-          className="lg:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="md:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
           <div className="mx-auto max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">

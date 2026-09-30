@@ -60,3 +60,19 @@ test('the snapshot the browser sends has no key the server would drop', async ()
   assert.ok(sent.length >= 8, `found ${sent.join(',')}`)
   for (const k of sent) assert.ok(allowed.has(k), k)
 })
+
+// Refinement loop 2 (2026-09-30; prompt §37): the check above only knows the names
+// `req` and `request`. Read each handler's own parameter name so a route written as
+// POST(r) cannot bypass the ceiling either.
+test('no handler reads its body directly, whatever the parameter is called', () => {
+  const bypass: string[] = []
+  for (const f of routes('app/api')) {
+    const src = readFileSync(f, 'utf8')
+    for (const m of src.matchAll(/export\s+async\s+function\s+(?:POST|PUT|PATCH|DELETE)\s*\(\s*(\w+)/g)) {
+      const name = m[1]
+      if (new RegExp(`\\b${name}\\.(json|text|arrayBuffer|formData|blob)\\(\\)`).test(src)) bypass.push(`${f} (${name})`)
+      if (new RegExp(`\\b${name}\\.body\\b`).test(src)) bypass.push(`${f} (${name}.body)`)
+    }
+  }
+  assert.deepEqual(bypass, [])
+})

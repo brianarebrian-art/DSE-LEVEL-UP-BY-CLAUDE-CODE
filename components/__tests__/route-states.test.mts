@@ -127,13 +127,15 @@ test('頂部導覽收成四條內容入口，並且 /bookmarks 有咗入口', ()
   assert.ok(hrefs.includes('/bookmarks'), '/bookmarks 又冇咗導覽入口')
 })
 
-test('橫向導覽條喺 lg(1024px) 出，唔係 xl(1280px)', () => {
+test('頂欄控制項喺 md(768px) 出，唔係 xl(1280px)', () => {
   const src = readFileSync(new URL('../Navbar.tsx', import.meta.url).pathname, 'utf8')
   // 實測：六條連結時連結組 natural 闊度 1,020px，要 xl 先擺得落 ——
   // 即係全部平板同細 mon 手提電腦都淨係得漢堡選單。收成四條之後 815px，
   // 1024px 下兩種語言都唔會斷行（實測 getClientRects().length === 1）。
   assert.ok(!/\bxl:(flex|hidden)\b/.test(src), 'Navbar 仲有 xl 斷點 —— 平板會冇咗橫向導航')
-  assert.ok(/\blg:flex\b/.test(src) && /\blg:hidden\b/.test(src), '橫向條／漢堡掣應該用 lg 斷點')
+  // 2026-09-30（改進循環 2，prompt §25）：連結早已搬入側欄；側欄 md 起出現，
+  // 頂欄控制項及漢堡掣改用 md 斷點，平板不會同時有側欄及漢堡選單。
+  assert.ok(/\bmd:flex\b/.test(src) && /\bmd:hidden\b/.test(src), '頂欄控制項／漢堡掣應該用 md 斷點')
 })
 
 test('紙筆戰士降級之後仍然有唔止一個入口', () => {

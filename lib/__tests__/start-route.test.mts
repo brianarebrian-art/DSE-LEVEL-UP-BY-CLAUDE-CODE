@@ -4,11 +4,13 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 
-const qs: any = await import('../quickStart.ts')
-const Q = qs.default?.startHref ? qs.default : qs
+type Mod = typeof import('../quickStart.ts')
+const qs = (await import('../quickStart.ts')) as Mod & { default?: Mod }
+const Q = qs.default ?? qs
 const live = (id: string) => id !== 'gone'
 
-const session = (over = {}) => ({
+type ActiveSession = import('../sessionResume.ts').ActiveSession
+const session = (over: Partial<ActiveSession> = {}): ActiveSession => ({
   v: 1, subjectId: 'math', topicFilter: null, mode: 'normal', questionIds: Array.from({ length: 10 }, (_, i) => `q${i}`),
   answers: [], current: 3, elapsed: 120, updatedAt: Date.now(), ...over,
 })
@@ -43,4 +45,25 @@ test('the page replaces itself, reads only local records, and the top bar CTA us
   assert.equal((nav.match(/href="\/start"/g) ?? []).length, 2)
   assert.match(readFileSync('lib/pageOrder.ts', 'utf8'), /'\/start': '/)
   assert.match(readFileSync('lib/quickStart.ts', 'utf8'), /pickContinueTarget\(session, last \?\? null, isLive\)\?\.href \?\? '\/subjects'/)
+})
+
+// Refinement loop 2 (2026-09-30; prompt §39): the five cases named in the prompt, against
+// the real list of live subjects rather than a stub.
+test('regression: new, returning, unfinished, nothing unfinished, invalid subject', async () => {
+  type S = typeof import('../../data/subjects.ts')
+  const sm = (await import('../../data/subjects.ts')) as S & { default?: S }
+  const { getActiveSubjects } = sm.default ?? sm
+  const liveIds = new Set(getActiveSubjects().map((s) => s.id))
+  const isLive = (id: string) => liveIds.has(id)
+  const now = Date.now()
+  // New user: nothing on this device.
+  assert.equal(Q.startHref(null, [], isLive), '/subjects')
+  // Returning user, no unfinished set: a new set in the latest subject.
+  assert.equal(Q.startHref(null, [{ subjectId: 'math', timestamp: now - 5 }, { subjectId: 'physics', timestamp: now }], isLive), '/practice?subject=physics')
+  // Unfinished set: resumed.
+  assert.equal(Q.startHref(session({ subjectId: 'chemistry' }), [{ subjectId: 'physics', timestamp: now }], isLive), '/practice?subject=chemistry')
+  // Invalid subject in both the session and the history: subject list, never a broken link.
+  assert.equal(Q.startHref(session({ subjectId: 'no-such-subject' }), [{ subjectId: 'no-such-subject', timestamp: now }], isLive), '/subjects')
+  // Invalid session subject, valid history: the history wins.
+  assert.equal(Q.startHref(session({ subjectId: 'no-such-subject' }), [{ subjectId: 'math', timestamp: now }], isLive), '/practice?subject=math')
 })

@@ -811,3 +811,9 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - 刪除死碼：`lib/grading.ts` 的 `gradeBgColors`、`gradeMessages`（R2-1／R2-2 之後無人使用）；`grading.test.mts` 改為確認兩者不再存在。
 - 刻意保留：`gradeColors` 及 `app/globals.css` 的 `--grade-*` 色值。現時也無 UI 使用，但刪除要連帶改 CSS token、`docs/tokens.md` 及對比度檢查，留待有需要時一併處理。`predictGrade` 仍為 `dse_progress` 的 `grade` 欄位計值（上雲 key，結構不改）。
 - §43 其餘字眼（上一頁／下一頁、模擬卷、Grade Predictor、predictedGrade、AI 分析 10 年、掌握度 +1、真實水平）：`app/`、`components/`、`lib/` 無 live UI 命中；剩下的只在註釋、測試或有日期的文件。
+
+## R2-10 平板導航重疊及回歸測試（prompt §25、§27、§37、§39、§45）
+
+- 發現：768–1023px 同時出現左側圖示列及漢堡選單。`Navbar` 頂欄控制項（開始練習、主題、語言、登入）改為 md 起顯示，漢堡及手機品牌只留給手機。
+- 新測試：`layout-breakpoints`（767／768／1024／1440 各用哪種版面；禁止 `min-[…]` 任意斷點）、`test-integrity`（禁 skip／todo／缺模組即 return）、`api-body-limit` 按 handler 參數名檢查、`start-route` 五種情況用真科目表。
+- 驗證：npm test 1268/1268、tsc、qa、lint 0 error、build 通過。⬜ 待驗證：本項 production 瀏覽器實測（768／820／912／1024 導航）未做。
