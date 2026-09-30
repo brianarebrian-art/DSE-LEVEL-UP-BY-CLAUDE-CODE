@@ -504,3 +504,21 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **畫面（production build，375×812）：** 首頁全文沒有「守護者」；`/about` 有 `#guardians`，h2「🛡️ 守護者致謝名單」排在「聯絡我們」之後；無水平捲動。
 - **已知：** 手機頁尾仍高 875px（三欄連結直排加免責聲明），可在之後的 P2 輪收窄。
 - **Commit：** 見 git log（`feat(about): move the guardians list from the footer to /about`）。
+
+## LOOP 28 — 2026-09-30
+
+- **Slice：** API 請求大小上限，及 `/api/progress` 在 server 端只存白名單 key（新 prompt §30，P0 安全／資料完整）。
+- **量度（改動前）：**
+  - 六條讀 JSON 的 API 都直接 `request.json()`，沒有大小上限；已登入的用戶可以上傳任意大小的進度，`/api/progress` 原樣寫入 `user_progress`。
+  - 上雲白名單（憲章 §16.E）只由瀏覽器端遵守；改過的 client 可以把任何 key 寫入雲端。
+  - 限流（`lib/rateLimit.ts`）只在單一 instance 內計數，檔頭已寫明這個限制，真正的分散式限流要在 Vercel Firewall 設定。本輪不改。
+- **正式資料庫量度（2026-09-30，只讀大小，不讀內容）：** `user_progress` 214 行，最大 29,617 bytes，中位 1,094，p95 9,346；`user_settings` 189 行，最大 308 bytes。
+- **影響範圍：** 新增 `lib/api/readJson.ts`、`lib/cloudKeys.ts`（上雲 key 清單由 `components/StoredDataInspector.tsx` 移出，原檔再匯出，import 不變）；六個 route（progress、sync/settings、admin、account/delete、push/subscribe、result/verify）；三個測試改讀新位置；新增測試。
+- **改動：**
+  - `readJsonLimited`：先看 `content-length`，讀取後再按實際 bytes 檢查。超過回 413，JSON 錯回 400（沿用各 route 原本的錯誤字串）。上限：進度 1 MB（約為現時最大一行的 35 倍），其餘 64 KB。
+  - `/api/progress` 只保留 `CLOUD_PROGRESS_KEYS` 及 `updatedAt`、`syncedAt`，其他 key 丟棄。瀏覽器本來就只送這些 key，所以對現有用戶沒有影響。
+  - 附帶修正：body 為 `null` 時，原本會拋錯回 500，現在回 400。
+- **測試：** 新增 `lib/__tests__/api-body-limit.test.mts`（5 項）：上限內可讀；按 header、按實際大小、多位元組文字都會回 413；壞 JSON 回 400；上限高於實測最大行；`app/api` 所有 route 都沒有直接讀 body；進度 route 用同一份白名單；瀏覽器送出的 key 全部在白名單內。`privacy-page`、`no-interaction`、`exam-countdown` 三個測試改讀 `lib/cloudKeys.ts`，並加上「確實找到清單」的檢查，避免因找不到而空過。
+- **驗證：** `npm test` 1208/1208；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **實測（production build，瀏覽器 fetch）：** `/api/result/verify` 70 KB → 413 `body too large`；壞 JSON → 400；正常大小照舊驗證；`/api/progress` 未登入 → 401。已登入路徑未能實測，因為 Claude 不可以登入。
+- **Commit：** 見 git log（`fix(api): body size ceiling and a server-side allow-list for progress`）。

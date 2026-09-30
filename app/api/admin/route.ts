@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { requireAdmin } from '@/lib/auth/adminAllowlist'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
@@ -35,12 +36,9 @@ export async function POST(request: Request) {
   const admin = await requireAdmin()
   if (!admin) return NextResponse.json({ error: 'forbidden' }, { status: 403 })
 
-  let body: unknown
-  try {
-    body = await request.json()
-  } catch {
-    return NextResponse.json({ error: 'bad_json' }, { status: 400 })
-  }
+  const read = await readJsonLimited<unknown>(request, BODY_LIMIT.small)
+  if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'bad_json' }, { status: read.status })
+  const body = (read.value ?? {}) as unknown
   const { batch, draft_id, subject, topic, decision, comment } = (body ?? {}) as Record<string, unknown>
 
   if (

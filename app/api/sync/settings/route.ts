@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
@@ -104,12 +105,9 @@ export async function POST(request: Request) {
   const userId = await getSyncUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
 
-  let body: { settings?: unknown }
-  try {
-    body = await request.json()
-  } catch {
-    return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 })
-  }
+  const read = await readJsonLimited<{ settings?: unknown }>(request, BODY_LIMIT.small)
+  if (!read.ok) return NextResponse.json({ error: read.error }, { status: read.status })
+  const body = read.value ?? {}
   if (body.settings == null || typeof body.settings !== 'object') {
     return NextResponse.json({ error: 'missing settings object' }, { status: 400 })
   }

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { vapidFromEnv } from '@/lib/push/vapid'
 import { safeLog } from '@/lib/safeLog'
@@ -36,12 +37,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'push-not-configured' }, { status: 503 })
   }
 
-  let body: Record<string, unknown>
-  try {
-    body = (await req.json()) as Record<string, unknown>
-  } catch {
-    return NextResponse.json({ error: 'bad-json' }, { status: 400 })
-  }
+  const read = await readJsonLimited<Record<string, unknown>>(req, BODY_LIMIT.small)
+  if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'bad-json' }, { status: read.status })
+  const body = (read.value ?? {}) as Record<string, unknown>
 
   const endpoint = body.endpoint
   const p256dh = str(body.p256dh, 256)
@@ -68,12 +66,9 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  let body: Record<string, unknown>
-  try {
-    body = (await req.json()) as Record<string, unknown>
-  } catch {
-    return NextResponse.json({ error: 'bad-json' }, { status: 400 })
-  }
+  const read = await readJsonLimited<Record<string, unknown>>(req, BODY_LIMIT.small)
+  if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'bad-json' }, { status: read.status })
+  const body = (read.value ?? {}) as Record<string, unknown>
   const endpoint = body.endpoint
   if (!validEndpoint(endpoint)) {
     return NextResponse.json({ error: 'bad-subscription' }, { status: 400 })

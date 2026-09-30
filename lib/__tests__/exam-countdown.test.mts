@@ -51,8 +51,9 @@ test('the toggle lives in /account, is a 48px pressed-state button, and is liste
 })
 
 test('the setting never syncs: not a cloud key, so the trust count stays 14', () => {
-  const inspector = readFileSync('components/StoredDataInspector.tsx', 'utf8')
-  const cloud = inspector.slice(inspector.indexOf('export const CLOUD_PROGRESS_KEYS'), inspector.indexOf('export const CLOUD_KEYS'))
+  const lists = readFileSync('lib/cloudKeys.ts', 'utf8')
+  const cloud = lists.slice(lists.indexOf('export const CLOUD_PROGRESS_KEYS'), lists.indexOf('export const CLOUD_KEYS'))
+  assert.ok(cloud.includes("'dse_progress'"), 'found the lists')
   assert.doesNotMatch(cloud, /dse_exam_countdown/)
   for (const f of ['lib/sync.ts', 'lib/settingsSync.ts']) assert.doesNotMatch(readFileSync(f, 'utf8'), /dse_exam_countdown/, f)
 })

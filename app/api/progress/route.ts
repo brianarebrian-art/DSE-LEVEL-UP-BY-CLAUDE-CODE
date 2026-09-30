@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
+import { CLOUD_PROGRESS_KEYS } from '@/lib/cloudKeys'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
@@ -45,15 +47,19 @@ export async function POST(request: Request) {
   const userId = await currentUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
 
-  let body: { progress?: unknown }
-  try {
-    body = await request.json()
-  } catch {
-    return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 })
-  }
-  if (body.progress == null || typeof body.progress !== 'object') {
+  const read = await readJsonLimited<{ progress?: unknown }>(request, BODY_LIMIT.progress)
+  if (!read.ok) return NextResponse.json({ error: read.error }, { status: read.status })
+  const body = read.value
+  if (body?.progress == null || typeof body.progress !== 'object' || Array.isArray(body.progress)) {
     return NextResponse.json({ error: 'missing progress object' }, { status: 400 })
   }
+  // Server-side allow-list (charter §16.E): only the approved keys are stored, whatever the
+  // client sends. The browser already sends only these; this makes the promise hold even for
+  // a modified client. updatedAt / syncedAt are bookkeeping the merge needs.
+  const allowed = new Set<string>([...CLOUD_PROGRESS_KEYS, 'updatedAt', 'syncedAt'])
+  const progress = Object.fromEntries(
+    Object.entries(body.progress as Record<string, unknown>).filter(([k]) => allowed.has(k)),
+  )
 
   try {
     const supabase = getServiceSupabase()
@@ -61,7 +67,7 @@ export async function POST(request: Request) {
     const { error } = await supabase
       .from(TABLE)
       .upsert(
-        { user_id: userId, progress_data: body.progress, updated_at },
+        { user_id: userId, progress_data: progress, updated_at },
         { onConflict: 'user_id' },
       )
     if (error) throw error

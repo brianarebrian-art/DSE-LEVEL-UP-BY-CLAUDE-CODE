@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { loadSubjectMCQuestions } from '@/data/questions/load'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
@@ -32,12 +33,9 @@ interface Body {
 }
 
 export async function POST(request: Request) {
-  let body: Body
-  try {
-    body = (await request.json()) as Body
-  } catch {
-    return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 })
-  }
+  const read = await readJsonLimited<Body>(request, BODY_LIMIT.small)
+  if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'invalid JSON body' }, { status: read.status })
+  const body = (read.value ?? {}) as Body
 
   if (typeof body.subjectId !== 'string' || body.subjectId.length === 0 || body.subjectId.length > 60) {
     return NextResponse.json({ error: 'invalid subjectId' }, { status: 400 })

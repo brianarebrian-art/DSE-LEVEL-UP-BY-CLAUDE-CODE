@@ -16,7 +16,8 @@ import path from 'node:path'
 // `npm test` 釘死 tsx@4.19.2，而喺呢個 repo（非 "type":"module"）佢做唔到 .ts/.tsx
 // 嘅具名 ESM import —— 會拋 'does not provide an export named …'。全部現有測試都係
 // 讀檔，唔係巧合。下次唔好「順手改返 import」，會喺 CI 紅而本機綠。
-const INSPECTOR = 'components/StoredDataInspector.tsx'
+// 2026-09-30: the cloud key lists moved to lib/cloudKeys.ts (StoredDataInspector re-exports them).
+const INSPECTOR = 'lib/cloudKeys.ts'
 
 /** 由原始碼抽出一個 `export const NAME = [ … ] as const` 陣列嘅字串成員。 */
 function constArray(file: string, name: string): string[] {

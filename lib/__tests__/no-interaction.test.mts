@@ -105,7 +105,9 @@ test('冇任何在線人數／打卡人數（真實或虛構）', () => {
 
 test('時間囊內容永遠唔上雲', () => {
   // 學生寫畀自己嘅字，同 dse_emotion_log 同一級：唔可以離開部機。
-  const inspector = fs.readFileSync('components/StoredDataInspector.tsx', 'utf8')
+  // 2026-09-30: the lists live in lib/cloudKeys.ts; an empty match would pass vacuously, so count them.
+  const inspector = fs.readFileSync('lib/cloudKeys.ts', 'utf8')
+  assert.equal((inspector.match(/export const CLOUD_(PROGRESS|SETTINGS)_KEYS\s*=/g) ?? []).length, 2)
   const cloud = /export const CLOUD_(PROGRESS|SETTINGS)_KEYS\s*=\s*\[([\s\S]*?)\]/g
   const keys: string[] = []
   for (const m of inspector.matchAll(cloud)) keys.push(...[...m[2].matchAll(/'([^']+)'/g)].map((x) => x[1]))

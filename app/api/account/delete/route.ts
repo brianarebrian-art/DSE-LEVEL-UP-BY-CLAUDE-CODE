@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
@@ -16,12 +17,9 @@ export async function POST(req: Request) {
   const userId = await getSyncUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
 
-  let body: { confirm?: unknown }
-  try {
-    body = await req.json()
-  } catch {
-    return NextResponse.json({ error: 'invalid JSON body' }, { status: 400 })
-  }
+  const read = await readJsonLimited<{ confirm?: unknown }>(req, BODY_LIMIT.small)
+  if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'invalid JSON body' }, { status: read.status })
+  const body = (read.value ?? {}) as { confirm?: unknown }
   if (body.confirm !== true) {
     return NextResponse.json({ error: 'confirmation required' }, { status: 400 })
   }

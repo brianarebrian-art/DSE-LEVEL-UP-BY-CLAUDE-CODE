@@ -19,35 +19,10 @@ import { useLocale } from '@/lib/i18n'
 //    lib/settingsSync.ts 嗰條，真實數目由 4 變 12 —— 即係差啲向學生講漏咗
 //    8 項。有測試同時對兩個檔，加咗新 key 而冇更新呢度就會 fail。
 
-/**
- * 登入後會上傳到 Supabase 嘅 key。
- *
- * ⚠️ 有【兩條】獨立同步通道，一開始只計到第一條就會向學生講漏嘢：
- *   ① 進度   —— lib/sync.ts snapshotLocal() → POST /api/progress → user_progress
- *   ② 設定   —— lib/settingsSync.ts pushSettings() → user_settings
- * 兩條都要列。有測試把關，加咗新 key 而冇更新呢度就會 fail。
- */
-export const CLOUD_PROGRESS_KEYS = [
-  'dse_progress',
-  'dse_free_attempts_total',
-  'dse_topic_stats',
-  'dse_active_session',
-  'dse_reverse_log',
-  'dse_electives', // 2026-09-26, Yuna: elective choices follow the student to another device
-] as const
-
-export const CLOUD_SETTINGS_KEYS = [
-  'dse_easy_font',
-  'dse_reading_ruler',
-  'dse_hide_timer',
-  'dse_calm_lock',
-  'dse_font_size',
-  'dse_line_height',
-  'dse_letter_spacing',
-  'dse_relax_sensory_pref',
-] as const
-
-export const CLOUD_KEYS = [...CLOUD_PROGRESS_KEYS, ...CLOUD_SETTINGS_KEYS] as const
+// 上雲 key 清單的正本在 lib/cloudKeys.ts（2026-09-30 移出：/api/progress 在 server 端亦要用同一份，
+// 而本檔是 client 組件）。此處再匯出，信任中心、私隱頁的 import 不變。
+import { CLOUD_KEYS } from '@/lib/cloudKeys'
+export { CLOUD_PROGRESS_KEYS, CLOUD_SETTINGS_KEYS, CLOUD_KEYS } from '@/lib/cloudKeys'
 
 /** 已知 key 嘅人話說明。未列嘅會顯示為「未分類」，唔會隱藏。 */
 const LABELS: Record<string, { zh: string; en: string }> = {
