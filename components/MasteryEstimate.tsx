@@ -54,6 +54,12 @@ export default function MasteryEstimate({
       {band ? (
         <>
           <p className="text-2xl font-medium text-ink mt-2">{band}</p>
+          {/* 2026-09-30（UX 循環 LOOP 21）：範圍旁邊直接講明性質，不留到頁底或第三點才講。 */}
+          <p className="text-sm text-ink mt-1">
+            {en
+              ? 'A learning indicator from your practice on this site, not an HKEAA grade prediction.'
+              : '呢個係按你喺本站練習計出嚟嘅學習指標，唔係考評局成績預測。'}
+          </p>
           <p className="text-sm text-ink-muted mt-1">
             {en
               ? `From ${m.sessions} valid session${m.sessions === 1 ? '' : 's'} in this subject. The boundaries below are the HKEAA's published figures, not ours.`

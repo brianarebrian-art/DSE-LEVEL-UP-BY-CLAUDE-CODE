@@ -123,7 +123,8 @@ const zh = {
     progress: '我的進度',
     practice: '練習',
     errorDna: '錯題 DNA',
-    predictor: '等級預測',
+    // 2026-09-30（UX 循環 LOOP 21）：「等級預測」改名。它是本站練習數據的估算，不是考評局成績預測。
+    predictor: '練習表現',
     relax: '呼吸空間',
     saved: '收藏',
     offSyllabus: '不考之地',
@@ -138,7 +139,7 @@ const zh = {
   // /predictor（Night Study「Grade Predictor」）。等級估算本身由 MasteryEstimate
   // 講，呢度淨係頁面框架同兩個聚合嘅文案。
   predictor: {
-    title: '等級預測',
+    title: '練習表現估算',
     lead: '一個範圍，唔係一個承諾 —— 會跟住你練習而郁。',
     overall: '總正確率',
     overallMeta: '{q} 題 · {s} 節練習',
@@ -162,7 +163,7 @@ const zh = {
     emptyTitle: '仲未有練習紀錄',
     emptyBody: '做完第一節練習，呢度就會開始有嘢睇。冇數據嘅時候，我哋唔會作一個等級出嚟。',
     emptyCta: '揀科目開始',
-    disclaimer: '等級預測僅供參考，最終成績以考評局公布為準。',
+    disclaimer: '呢頁數字只反映你喺本站嘅練習，唔係考評局成績預測；最終成績以考評局公布為準。',
     method: '呢個數點計出嚟',
   },
   greeting: {
@@ -280,7 +281,7 @@ const zh = {
     ctaTitle: '準備好開始？',
     ctaSub: '揀一科，即刻開始你嘅 DSE 溫習',
     ctaBtn: '開始練習',
-    ctaNote: '所有科目嘅練習題 · 系統即時批改 + 等級預測',
+    ctaNote: '所有科目嘅練習題 · 選擇題即時批改 + 練習表現估算',
   },
   subjectsList: {
     title: '科目總覽',
@@ -307,10 +308,10 @@ const zh = {
     backToSubjects: '返回科目總覽',
     quickStartTitle: '綜合練習（推薦入手）',
     quickDescA: ' 條選擇題，涵蓋全部 ',
-    quickDescB: ' 大課題 · 即時批改 · 等級預測',
+    quickDescB: ' 大課題 · 即時批改 · 練習表現估算',
     minutesAbout: '⏱ 約 ',
     minutesUnit: ' 分鐘',
-    gradePredict: '📊 即時等級預測',
+    gradePredict: '📊 練習表現估算（唔係成績預測）',
     fullMarksA: '🎯 ',
     fullMarksB: ' 題一節',
     startNow: '立即開始',
@@ -575,7 +576,7 @@ const en: typeof zh = {
     progress: 'My Progress',
     practice: 'Practise',
     errorDna: 'Error DNA',
-    predictor: 'Grade Predictor',
+    predictor: 'Practice performance',
     relax: 'Breathing Space',
     saved: 'Saved',
     offSyllabus: 'Off the Syllabus',
@@ -585,7 +586,7 @@ const en: typeof zh = {
     quote: 'Master the logic, not the answers. Whatever the numbers, you can solve it.',
   },
   predictor: {
-    title: 'Grade Predictor',
+    title: 'Practice performance estimate',
     lead: 'A range, not a promise — it moves as you practise.',
     overall: 'Overall accuracy',
     overallMeta: '{q} questions · {s} sessions',
@@ -609,7 +610,7 @@ const en: typeof zh = {
     emptyTitle: 'No practice yet',
     emptyBody: 'Finish your first session and this page will have something to show. Without data, we will not make a grade up.',
     emptyCta: 'Choose a subject to start',
-    disclaimer: 'Grade estimates are for reference only. Final results are those published by the HKEAA.',
+    disclaimer: 'These figures reflect your practice on this site only. They are not a prediction of your HKEAA grade; final results are those published by the HKEAA.',
     method: 'How this is worked out',
   },
   greeting: {
@@ -723,7 +724,7 @@ const en: typeof zh = {
     ctaTitle: 'Ready to start?',
     ctaSub: 'Pick a subject and start your DSE revision',
     ctaBtn: 'Start practising',
-    ctaNote: 'Practice questions for every subject · instant marking + grade prediction',
+    ctaNote: 'Practice questions for every subject · instant marking for multiple choice + practice performance estimate',
   },
   subjectsList: {
     title: 'All Subjects',
@@ -748,10 +749,10 @@ const en: typeof zh = {
     backToSubjects: 'Back to all subjects',
     quickStartTitle: 'Mixed practice (recommended start)',
     quickDescA: ' multiple-choice questions covering all ',
-    quickDescB: ' topics · instant marking · grade prediction',
+    quickDescB: ' topics · instant marking · practice performance estimate',
     minutesAbout: '⏱ approx. ',
     minutesUnit: ' min',
-    gradePredict: '📊 instant grade prediction',
+    gradePredict: '📊 practice performance estimate (not a grade prediction)',
     fullMarksA: '🎯 ',
     fullMarksB: ' questions a session',
     startNow: 'Start now',

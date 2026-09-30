@@ -175,8 +175,8 @@ export default function LongPracticeSession({
           </h1>
           <p className="text-sm text-ink-muted leading-relaxed mb-8">
             {tr(
-              '長題目冇機器分數 —— 因為真正嘅評分準則要人先睇得懂。你嘅自評已寫入課題掌握度，唔會計入準確率或等級預測。',
-              'There is no machine score here — a real marking scheme needs a human eye. Your self-assessment feeds your topic mastery only; it never counts towards accuracy or grade prediction.',
+              '長題目冇機器分數 —— 因為真正嘅評分準則要人先睇得懂。你嘅自評已寫入課題掌握度，唔會計入準確率或練習表現估算。',
+              'There is no machine score here — a real marking scheme needs a human eye. Your self-assessment feeds your topic mastery only; it never counts towards accuracy or the practice performance estimate.',
             )}
           </p>
 

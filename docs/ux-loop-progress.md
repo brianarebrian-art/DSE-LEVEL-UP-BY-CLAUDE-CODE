@@ -410,3 +410,18 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **畫面（production build，375×812）：** 透明度頁四格「26,497／597／219／13」，說明句總數 27,326，無水平捲動；首頁只出現 26,497 一個題數。
 - **未做：** 雲端題庫鏡像不用重新推送：過濾在讀取時進行。已部署的正式網站要等下次部署才會用新數字。
 - **Commit：** 見 git log（`fix(content): one status per question, one source for every count`）。
+
+## LOOP 21 — 2026-09-30
+
+- **Slice：** 「等級預測」改名，不再以成績預測的名義呈現（新 prompt §6，P0）。
+- **量度（改動前）：** 側欄、`/predictor` 標題及 `<title>`、進度頁卡片、科目頁快速開始、首頁結尾 CTA 註腳、全站 meta description 都寫「等級預測／即時等級預測／Grade Predictor」。估算本身已經只出範圍、分開講三種不確定性，並在第三點講明「唔係一個預測」；問題在名稱承諾了更多。
+- **影響範圍：** `lib/dictionary.ts`（中英各 6 處）、`app/layout.tsx`（meta description）、`app/predictor/page.tsx`、`app/dashboard/DashboardPageClient.tsx`、`components/FAQSection.tsx`、`app/transparency/TransparencyClient.tsx`、`app/methodology/MethodologyClient.tsx`、`app/practice/LongPracticeSession.tsx`、`components/MasteryEstimate.tsx`、新增測試。路由 `/predictor` 不變。
+- **改動：**
+  - 名稱：側欄「練習表現」；頁面「練習表現估算」；科目頁「練習表現估算（唔係成績預測）」；英文 Practice performance（estimate）。
+  - 每個範圍（結果頁及 `/predictor` 共用 `MasteryEstimate`）下面直接一句：「呢個係按你喺本站練習計出嚟嘅學習指標，唔係考評局成績預測。」
+  - meta description 由「改寫版歷屆試題 + 即時等級預測……涵蓋 25 個」改為「原創 DSE 練習題，選擇題即時批改，附練習表現估算……並非考評局官方網站」，同時去掉寫死的科目數。
+- **刻意不改：** 頁尾及 `/about` 的免責聲明句「等級預測僅供參考，最終成績以 HKEAA 公布為準」是憲章 §13 逐字要求的，`footer-disclaimer.test.mts` 亦鎖住。建議創辦人把 §13 改為「練習表現估算僅供參考，並非 HKEAA 成績預測……」，改憲章後再同步頁尾。
+- **測試：** 新增 `lib/__tests__/prediction-wording.test.mts`（3 項）：`app`、`components` 及字典內（去除註釋後）沒有把估算稱為成績預測的字眼，只容許 §13 句及其英譯、以及「不是成績預測」的否定句；新名稱在位；範圍下方 400 字元內有說明句。
+- **驗證：** `npm test` 1185/1185；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，1280×800）：** `/predictor` 的 `<title>`「練習表現估算 | DSE Level Up」、h1「練習表現估算」、側欄「練習表現」，無水平捲動。測試瀏覽器的練習量不足以出範圍，範圍下的說明句由測試覆蓋。
+- **Commit：** 見 git log（`fix(trust): call the practice estimate what it is, not a grade prediction`）。

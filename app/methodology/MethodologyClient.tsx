@@ -168,8 +168,8 @@ export default function MethodologyClient() {
           </h2>
           <p className="text-sm text-ink-muted leading-relaxed">
             {locale === 'en'
-              ? 'Short answers and long/structured responses are never machine-marked. After you submit, we reveal a reference answer (and a marking scheme for long questions) and you mark yourself on a three-level scale. Your self-assessment is yours alone — it does not feed the accuracy figure and does not move the predicted grade. Those two numbers come from multiple-choice answers only, so they stay honest.'
-              : '短答題同長題／結構式題永遠唔會由機器批改。你交卷之後，我哋攤開參考答案（長題另有評分準則），由你自己三級自評。你嘅自評淨係你自己嘅事 —— 唔會計入準確率，亦唔會郁到等級預測。嗰兩個數字只由選擇題得出，咁先誠實。'}
+              ? 'Short answers and long/structured responses are never machine-marked. After you submit, we reveal a reference answer (and a marking scheme for long questions) and you mark yourself on a three-level scale. Your self-assessment is yours alone — it does not feed the accuracy figure and does not move the practice performance estimate. Those two numbers come from multiple-choice answers only, so they stay honest.'
+              : '短答題同長題／結構式題永遠唔會由機器批改。你交卷之後，我哋攤開參考答案（長題另有評分準則），由你自己三級自評。你嘅自評淨係你自己嘅事 —— 唔會計入準確率，亦唔會郁到練習表現估算。嗰兩個數字只由選擇題得出，咁先誠實。'}
           </p>
         </div>
 
