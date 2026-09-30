@@ -24,7 +24,7 @@ export interface ArticleDates {
 export const ARTICLE_DATES: Record<string, ArticleDates> = {
   '/about': { published: '2026-06-18', modified: '2026-08-21' },
   '/methodology': { published: '2026-06-18', modified: '2026-09-02' },
-  '/transparency': { published: '2026-07-01', modified: '2026-09-29' },
+  '/transparency': { published: '2026-07-01', modified: '2026-09-30' },
   '/prediction-method': { published: '2026-08-21', modified: '2026-09-09' },
   '/trust': { published: '2026-08-21', modified: '2026-09-05' },
   '/community-safety': { published: '2026-08-20', modified: '2026-09-05' },

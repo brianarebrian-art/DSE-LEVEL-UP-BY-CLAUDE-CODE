@@ -141,6 +141,12 @@ export default function TransparencyClient({ stats }: { stats: RepairStats }) {
             ? 'Every question passes automated gates before it goes live: terminology and written-register checks, structural and difficulty-mix validation, and a format gate that refuses anything with missing materials. These are machine checks, not a person signing off on each question, and we do not claim otherwise.'
             : '每一條題目上線前都要通過自動閘：術語同書面語檢查、結構同難度比例驗證、以及一個材料唔齊就唔畀過嘅格式閘。呢啲係機器檢查，唔係有人逐題簽名 —— 我哋唔會扮有。'}
         </p>
+        {/* 2026-09-30（UX 循環 LOOP 12）：講清楚每題有咩、冇咩資料，冇嘅就唔標示。 */}
+        <p className="text-ink-soft leading-relaxed mb-5">
+          {en
+            ? 'Every question has an ID, shown under the explanation after you answer; quote it when you report a problem. Our question records do not store, question by question, which syllabus year a question was checked against or when it was last revised, so we do not show either.'
+            : '每條題目都有題號，答完之後喺解析底部見到；報錯時引用題號就得。題目紀錄冇逐題記低對照邊一年嘅課綱、幾時最後修訂，所以題目度唔會標示呢兩樣。'}
+        </p>
         {/* 第三個狀態「待核」（2026-09-15）。數字由生成檔即時計，唔寫死 —— 題目修好一條，
             呢度自動少一條。
             2026-09-29（Yuna 決定）：待核題由「照常出題、掛徽章」改為撤回，故刪去原文

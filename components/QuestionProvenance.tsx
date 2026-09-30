@@ -48,6 +48,12 @@ export default function QuestionProvenance({ questionId }: { questionId: string 
 
   return (
     <div className="mt-3 border-t border-gold/15 pt-3">
+      {/* 2026-09-30（UX 循環 LOOP 12，P1-G）：顯示題號，學生向老師或我哋提問時可以直接引用。
+          課綱年份及修訂日期沒有逐題記錄，所以不顯示；/transparency#provenance 有說明。 */}
+      <p className="mb-1 text-[11px] text-ink-muted">
+        {en ? 'Question ID ' : '題號 '}
+        <span className="font-mono select-all text-ink-soft">{questionId}</span>
+      </p>
       <p className="text-[11px] text-ink-muted leading-relaxed">
         {/* 色點係裝飾（aria-hidden）—— 狀態由後面嘅文字表達，唔靠顏色（WCAG 1.4.1）。 */}
         <span
