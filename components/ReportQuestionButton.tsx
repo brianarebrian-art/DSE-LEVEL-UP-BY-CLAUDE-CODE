@@ -35,6 +35,8 @@ export const CATEGORIES = [
   { key: 'wording', zh: '題目寫得唔清楚 ／ 有歧義', en: 'The question is unclear or ambiguous' },
   { key: 'display', zh: '排版、公式或顯示有問題', en: 'Formatting, formula or display problem' },
   { key: 'scope', zh: '超出課程範圍 ／ 難度標錯', en: 'Outside the syllabus, or mislabelled difficulty' },
+  // 2026-09-30（UX 循環 LOOP 30）：課題分類錯會令「練返呢個課題」及錯誤模式統計都跟住錯。
+  { key: 'topic', zh: '課題分類錯', en: 'Filed under the wrong topic' },
   { key: 'copyright', zh: '懷疑抄咗官方試題', en: 'Looks copied from an official paper' },
   { key: 'other', zh: '其他', en: 'Something else' },
 ] as const

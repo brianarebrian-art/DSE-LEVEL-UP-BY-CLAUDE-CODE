@@ -532,3 +532,13 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **測試：** 新增 `lib/__tests__/faq-tool-locations.test.mts`（1 項），同時核對文案所依據的兩個事實（Navbar 有頁頂按鈕、練習頁有「今日夠了」）。
 - **驗證：** `npm test` 1209/1209；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。純文案，無版面改動。
 - **Commit：** 見 git log（`fix(faq): say where the accessibility tools are now`）。
+
+## LOOP 30 — 2026-09-30
+
+- **Slice：** 報告題目問題加「課題分類錯」（新 prompt §34，P1）。
+- **量度（改動前）：** 報告掣已有 7 類：答案、解析、題目歧義、排版、超綱／難度、懷疑抄官方試題、其他。prompt 要求的類別只缺「課題分類錯」。
+- **影響範圍：** `components/ReportQuestionButton.tsx`（多一類）、新增測試。
+- **不改：** prompt 要求「internal content issue schema」。報告目前經電郵或複製全文送出，網站不儲存；組件檔頭寫明這是刻意的（避免「有掣但寫入唔到」）。要改為入資料庫，須新增資料表，涉及私隱及 Supabase 結構，屬創辦人決定。
+- **測試：** 新增 `lib/__tests__/report-categories.test.mts`（2 項）。
+- **驗證：** `npm test` 1211/1211；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **Commit：** 見 git log（`feat(report): a category for questions filed under the wrong topic`）。
