@@ -689,3 +689,20 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **測試：** 新增 `lib/__tests__/no-fake-mastery.test.mts`（2 項）。
 - **驗證：** `npm test` 1240/1240；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。純文案。
 - **Commit：** 見 git log（`fix(copy): no invented mastery +1`）。
+
+## LOOP 42 — 2026-09-30
+
+- **Slice：** 結果頁不再講「你嘅真實水平」，加上「唔係考評局成績預測」及 h1（新 prompt §6、§28；P0）。
+- **量度：**
+  - 標題結構審核（production build，桌面，伺服器 HTML 加上渲染後的 DOM）：首頁、科目、科目詳情、進度、收藏、帳戶、練習表現、透明度、關於、知識卡、列印練習卷、筆記、信任中心、私隱，每頁剛好一個 h1，沒有跳級，都有 `<main>`。只有 `/result` 沒有 h1，讀屏用戶以標題導航時由 h2 開始。
+  - 結果頁範圍句寫「以呢 10 題計。考慮到樣本大小，你嘅真實水平大概喺 Level 3 至 4 之間」。十題改寫題不能推斷一個人的真實水平；範圍框亦沒有直接說明這不是考評局成績預測。
+- **影響範圍：** `lib/dictionary.ts`（中英 `rangeSingle`、`rangeSpan`、`cutoffOrigin`）、`app/result/ResultPageClient.tsx`（h1）、新增測試。
+- **改動：**
+  - 範圍句改為「你今次嘅練習表現大約對應 Level X（至 Y）」。
+  - 範圍框說明句開頭加「呢個係本站練習數據嘅學習指標，唔係考評局成績預測。」
+  - 分數卡頂加 h1「練習結果」。
+- **測試：** 新增 `lib/__tests__/result-wording.test.mts`（3 項）。
+- **驗證：** `npm test` 1243/1243；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812，`/result`，測試瀏覽器最近一節）：** h1「練習結果」；範圍句「以呢 10 題計，考慮到樣本細，你今次嘅練習表現大約對應 Level 1 至 4」；有「唔係考評局成績預測」；全頁沒有「真實水平」；無水平捲動。
+- **未改（需創辦人決定）：** 結果頁仍以 DSE 等級名（5**、5*…）顯示「今次表現等級」，並按等級顯示 🏆⭐ 等圖示。等級顯示是現有產品設計，附有誠實範圍及方法頁；要否改為不用 DSE 等級名，屬產品方向。
+- **Commit：** 見 git log（`fix(result): this session's practice, not your true level`）。

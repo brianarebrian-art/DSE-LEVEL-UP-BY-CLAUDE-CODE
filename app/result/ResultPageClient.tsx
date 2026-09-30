@@ -358,6 +358,8 @@ export default function ResultPageClient() {
 
         {/* Grade badge + Score */}
         <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
+          {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
+          <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
           {showBadge && (
             <div
               className="inline-block text-6xl mb-4 animate-pop-in"
