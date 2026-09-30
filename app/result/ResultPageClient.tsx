@@ -26,6 +26,7 @@ import { useQuiet } from '@/lib/quietMode'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
 import { buildCauseCardData } from '@/lib/causeCard'
+import { resultNextSteps } from '@/lib/resultNextSteps'
 import { getReverseLog } from '@/lib/reverseLog'
 
 interface TopicResult {
@@ -50,6 +51,8 @@ interface StoredResult {
   startedAt?: number
   /** 覆核用逐題答案。舊記錄冇呢欄，覆核就靜靜跳過。 */
   submitted?: { questionId: string; selectedZh: string | null }[]
+  /** 課題顯示名稱 → 課題 id（2026-09-30 起）。舊記錄冇呢欄，就唔出「練返最弱課題」。 */
+  topicIds?: Record<string, string>
 }
 
 /**
@@ -450,6 +453,47 @@ export default function ResultPageClient() {
           )}
         </div>
 
+        {/* 下一步（UX 循環 LOOP 7，2026-09-30）：原本在頁底、教師報告及 IG 卡之後（360×800 實測 y≈2,470）。
+            現在緊接分數之後。規則見 lib/resultNextSteps.ts。 */}
+        {(() => {
+          const steps = resultNextSteps(result)
+          const en = locale === 'en'
+          return (
+            <nav aria-label={en ? 'Next steps' : '下一步'} className="no-print space-y-3">
+              {steps.weakest && (
+                <Link
+                  href={steps.weakest.href}
+                  className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-gold/50 bg-surface-sunken px-4 py-3 text-ink transition-colors hover:border-gold"
+                >
+                  <span className="min-w-0">
+                    <span className="block text-xs text-ink-muted">
+                      {en ? `Weakest this time: ${steps.weakest.correct}/${steps.weakest.total}` : `今次最弱：${steps.weakest.correct}/${steps.weakest.total}`}
+                    </span>
+                    <span className="block font-medium">
+                      {en ? `Practise ${steps.weakest.label}` : `練返「${steps.weakest.label}」`}
+                    </span>
+                  </span>
+                  <ArrowRight size={16} aria-hidden className="shrink-0 text-gold" />
+                </Link>
+              )}
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  href={steps.retryHref}
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-all hover:bg-accent-hover"
+                >
+                  <RotateCcw size={16} aria-hidden /> {r.retry}
+                </Link>
+                <Link
+                  href={steps.topicsHref}
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-all hover:bg-surface-sunken"
+                >
+                  {r.pickTopic} <ArrowRight size={16} aria-hidden />
+                </Link>
+              </div>
+            </nav>
+          )
+        })()}
+
         {/* 中文科高階提示 — 基礎全對但高階未穩：講清楚「執分位 ≠ 5**」。
             2026-08-23 第 4 週情緒安全審核改寫：原版用紅色 ⚠️「警示」，
             對一個基礎題啱晒嘅學生講「仍有不足」「絕不代表」——
@@ -607,21 +651,7 @@ export default function ResultPageClient() {
         {/* 分享戰績卡到 IG Story（誠實版：真數據 only，html2canvas 客戶端）*/}
         <ShareStatsCardButton data={cardData} causeData={causeCardData} en={locale === 'en'} />
 
-        {/* Action buttons */}
-        <div className="no-print grid sm:grid-cols-2 gap-3">
-          <Link
-            href={`/practice?subject=${result.subjectId ?? 'math'}`}
-            className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-4 rounded-xl transition-all"
-          >
-            <RotateCcw size={16} /> {r.retry}
-          </Link>
-          <Link
-            href={`/subjects/${result.subjectId ?? 'math'}`}
-            className="flex items-center justify-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-4 rounded-xl transition-all"
-          >
-            {r.pickTopic} <ArrowRight size={16} />
-          </Link>
-        </div>
+        {/* 「再做一次」「揀另一個課題」已移到分數之後的「下一步」。 */}
 
         {/* Share */}
         <button

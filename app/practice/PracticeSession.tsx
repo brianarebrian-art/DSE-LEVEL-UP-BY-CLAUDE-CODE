@@ -626,6 +626,10 @@ export default function PracticeSession({
         // 三個 key 之一（憲章 §16.E 執行第 1 點）。往嗰邊加欄位等於改雲端
         // schema，要創辦人書面批准；而呢個數字純粹係畀本機一版畫面用。
         startedAt: startTime,
+        // 結果頁「練返最弱課題」要課題 id 先砌得到連結（lib/resultNextSteps.ts）。
+        // topicResults 只存顯示名稱，而且同時寫入上雲的 dse_progress，所以 id 另存於此，
+        // 理由同上面 startedAt 一樣：只供本機一版畫面用，不改雲端 schema。
+        topicIds: Object.fromEntries(questions.map((q) => [q.topicZh, q.topic])),
         // 覆核用：逐題「題目 id + 揀咗邊個選項文字」。/result 會 POST 去
         // /api/result/verify 由服務端用答案庫重批一次對數。純本地＋一次過，
         // 唔存 server。用選項文字而唔用 index —— 選項每次 render 都洗牌。
