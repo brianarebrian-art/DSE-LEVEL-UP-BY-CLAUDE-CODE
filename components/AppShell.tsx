@@ -29,13 +29,14 @@ export default function AppShell({
   // 唔係淨係 main：一條由側欄底下穿出嚟嘅頁尾，睇落就係排版爛咗。
   // ⚠️ 呢度【只】管 <main>。Navbar 同 Footer 各自讓位：
   //   · Navbar 係 position:fixed，對住 viewport 唔對住父層 —— 包一個有 padding
-  //     嘅 div 推唔郁佢，所以佢喺自己身上出 lg:left-20 xl:left-[260px]。
+  //     嘅 div 推唔郁佢，所以佢喺自己身上出 md:left-20 xl:left-[260px]。
   //   · Footer 係靜態流內元素，喺自己身上出 padding 就得；而且沉浸式模式下
   //     佢根本唔 render，唔使再判斷一次。
   // 咁分法唔止係品味問題：包 div 會令 route-states.test.mts 嗰兩句
   // `!immersive && navbar` / `!immersive && footer` source 斷言失效，
   // 而嗰兩句守住嘅係「練習頁唔可以走返個導航列出嚟」呢個真行為。
-  const inset = immersive ? '' : 'lg:pl-20 xl:pl-[260px]'
+  // 2026-09-30（LOOP 39）：側欄圖示列由 lg 提早到 md（平板），平板不再只有漢堡選單。
+  const inset = immersive ? '' : 'md:pl-20 xl:pl-[260px]'
 
   return (
     <>

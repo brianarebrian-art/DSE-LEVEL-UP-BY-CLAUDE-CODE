@@ -926,9 +926,10 @@ html[data-bottomnav='on'] {
 :root {
   --sidebar-w: 0px;
 }
-/* 斷點必須同 Sidebar 嘅 lg / xl 完全一致（Tailwind v4：lg = 64rem、xl = 80rem）。
-   對唔齊嘅話會出現一條「掣讓咗位但側欄未出」嘅闊度帶。 */
-@media (min-width: 64rem) {
+/* 斷點必須同 Sidebar 嘅 md / xl 完全一致（Tailwind v4：md = 48rem、xl = 80rem）。
+   對唔齊嘅話會出現一條「掣讓咗位但側欄未出」嘅闊度帶。
+   2026-09-30（UX 循環 LOOP 39）：圖示列由 lg（64rem）提早到 md，平板有常駐導航。 */
+@media (min-width: 48rem) {
   html[data-sidebar='on'] {
     --sidebar-w: 5rem;
   }

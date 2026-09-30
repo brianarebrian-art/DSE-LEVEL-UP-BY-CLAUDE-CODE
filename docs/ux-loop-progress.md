@@ -651,3 +651,17 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **測試：** 新增 `lib/__tests__/home-no-katex.test.mts`（2 項）：首頁及其直接用到的組件都不 import `MathText` 或 `katex`。
 - **驗證：** `npm test` 1234/1234；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **Commit：** 見 git log（`perf(home): plain-text demo formulas, KaTeX off the first load`）。
+
+## LOOP 39 — 2026-09-30
+
+- **Slice：** 平板（768–1023px）有常駐側欄（新 prompt §20，P1）。
+- **量度（改動前）：** 手機底部導航在 768px 起收起（`md:hidden`），側欄要 1024px 起才出（`lg:flex`）。平板闊度兩者都沒有，只有頂部漢堡選單，每次轉頁都要先開選單。
+- **影響範圍：** `components/Sidebar.tsx`、`components/AppShell.tsx`、`components/Footer.tsx`、`components/Navbar.tsx`（各一個斷點 lg → md）、`app/globals.css`（`--sidebar-w` 的斷點 64rem → 48rem）、`docs/tokens.md`（生成檔）、新增測試。1280px 起的完整側欄及 1024px 起的頂欄內容不變。
+- **改動：** 768px 起顯示側欄的 80px 圖示列，內容、頂欄、頁尾同時讓位，左下浮動掣隨變數移到圖示列右邊。
+- **測試：** 新增 `lib/__tests__/tablet-rail.test.mts`（1 項）：側欄、三個讓位、CSS 變數都在 md 生效，與底部導航的 `md:hidden` 同一斷點。
+- **驗證：** `npm test` 1235/1235；`qa` rc=0（第一次失敗：`docs/tokens.md` 要重新生成）；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，`/subjects`）：**
+  - 768×1024：圖示列 80px（8 個連結），內容左邊讓 80px，左下浮動掣 x=96，底部導航不顯示，無水平捲動。
+  - 767px：圖示列不顯示，底部導航顯示，內容不讓位。
+  - 任何闊度都只有一種常駐導航。
+- **Commit：** 見 git log（`feat(layout): the side bar's icon rail on tablets`）。

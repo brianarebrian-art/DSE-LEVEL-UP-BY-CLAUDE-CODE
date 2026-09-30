@@ -85,7 +85,7 @@ export default function Navbar() {
   // left 要跟側欄讓位。position:fixed 係對住 viewport，唔係對住父層 ——
   // 所以喺 AppShell 包一個有 padding 嘅 div 推唔郁佢，一定要喺呢度出。
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-line bg-surface-raised lg:left-20 xl:left-[260px]">
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-line bg-surface-raised md:left-20 xl:left-[260px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">

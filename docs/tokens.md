@@ -45,7 +45,7 @@ node scripts/gen-token-doc.mjs
 | `--grade-5` | `#177E3C` (L128) | `#16793A` (L399) | `#16793A` |
 | `--color-ml-rose` | `#C5908B` (L175) | `#B7A6A3` (L180) | `#B7A6A3` |
 | `--color-ml-mist` | `#AFC2D1` (L176) | `#8A9BA8` (L181) | `#8A9BA8` |
-| `--ease-spring-settle` | `cubic-bezier(0.22, 1, 0.36, 1)` (L1171) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1172) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` |
+| `--ease-spring-settle` | `cubic-bezier(0.22, 1, 0.36, 1)` (L1172) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1173) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` |
 
 ## Resolved — 預設態（冇 `data-theme` 屬性）
 
@@ -108,7 +108,7 @@ node scripts/gen-token-doc.mjs
 | `--color-text-secondary` | `#94A3B8` | `#94A3B8` (L47) | — | = slate-400 |
 | `--color-violet` | `#5B666F` | `#5B666F` (L388) | — | mist-strong 4.95 |
 | `--color-violet-strong` | `#4A545C` | `#4A545C` (L389) | — | 白字 7.19 |
-| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1172) | — |  |
+| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1173) | — |  |
 | `--font-serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` (L21) | — |  |
 | `--grade-1` | `#334155` | `#334155` (L132) | — | 9.47 |
 | `--grade-2` | `#475569` | `#475569` (L131) | — | 6.93 |
@@ -181,7 +181,7 @@ node scripts/gen-token-doc.mjs
 | `--color-text-secondary` | `#94A3B8` | `#94A3B8` (L47) | — | = slate-400 |
 | `--color-violet` | `#8a9fb8` | `var(--color-ml-mist)` (L272) | `--color-ml-mist` | #8a9fb8 規格 --mist  4.99 |
 | `--color-violet-strong` | `#a8c2e0` | `#a8c2e0` (L273) | — | mist ×1.22  7.40 —— 3 處做字色 |
-| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1172) | — |  |
+| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1173) | — |  |
 | `--font-serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` (L21) | — |  |
 | `--grade-1` | `#a8a095` | `#a8a095` (L291) | — | 規格 --text-secondary 5.25 |
 | `--grade-2` | `#c1bab0` | `#c1bab0` (L290) | — | 岩灰                7.05 |
@@ -212,17 +212,17 @@ node scripts/gen-token-doc.mjs
 | `--color-line-strong` | `rgba(232, 224, 212, 0.20)` | `.on-dark-overlay` | — | L441 |
 | `--bottom-nav-h` | `3.5rem` | `html[data-bottomnav='on']` | — | L902 |
 | `--bottom-nav-h` | `0px` | `html[data-bottomnav='on']` | `@media (min-width: 768px)` | L909 |
-| `--sidebar-w` | `5rem` | `html[data-sidebar='on']` | `@media (min-width: 64rem)` | L933 |
-| `--sidebar-w` | `260px` | `html[data-sidebar='on']` | `@media (min-width: 80rem)` | L938 |
-| `--particle-speed` | `20s` | `.particle-bg` | — | L1006 |
-| `--particle-alpha` | `0.15` | `.particle-bg` | — | L1007 |
-| `--particle-speed` | `12s` | `.particle-combo-1` | — | L1017 |
-| `--particle-speed` | `8s` | `.particle-combo-2` | — | L1018 |
-| `--particle-speed` | `5s` | `.particle-combo-3` | — | L1019 |
-| `--particle-speed` | `40s` | `.particle-calm` | — | L1022 |
-| `--particle-alpha` | `0.05` | `.particle-calm` | — | L1022 |
-| `--flame-rgb` | `0, 245, 212` | `.combo-flame` | — | L1115 |
-| `--flame-speed` | `1.5s` | `.combo-flame` | — | L1116 |
+| `--sidebar-w` | `5rem` | `html[data-sidebar='on']` | `@media (min-width: 48rem)` | L934 |
+| `--sidebar-w` | `260px` | `html[data-sidebar='on']` | `@media (min-width: 80rem)` | L939 |
+| `--particle-speed` | `20s` | `.particle-bg` | — | L1007 |
+| `--particle-alpha` | `0.15` | `.particle-bg` | — | L1008 |
+| `--particle-speed` | `12s` | `.particle-combo-1` | — | L1018 |
+| `--particle-speed` | `8s` | `.particle-combo-2` | — | L1019 |
+| `--particle-speed` | `5s` | `.particle-combo-3` | — | L1020 |
+| `--particle-speed` | `40s` | `.particle-calm` | — | L1023 |
+| `--particle-alpha` | `0.05` | `.particle-calm` | — | L1023 |
+| `--flame-rgb` | `0, 245, 212` | `.combo-flame` | — | L1116 |
+| `--flame-speed` | `1.5s` | `.combo-flame` | — | L1117 |
 
 ## 掃過嘅 block
 
@@ -318,121 +318,121 @@ node scripts/gen-token-doc.mjs
 | L908 | `@media (min-width: 768px) › html[data-bottomnav='on']` |
 | L912 | `.floating-bottom` |
 | L926 | `:root` |
-| L931 | `@media (min-width: 64rem)` |
-| L932 | `@media (min-width: 64rem) › html[data-sidebar='on']` |
-| L936 | `@media (min-width: 80rem)` |
-| L937 | `@media (min-width: 80rem) › html[data-sidebar='on']` |
-| L945 | `html.no-motion .mascot` |
-| L950 | `.floating-left` |
-| L953 | `.floating-left-2` |
-| L958 | `.floating-bottom-2` |
-| L961 | `.floating-bottom-3` |
-| L973 | `.floating-panel-max-h` |
-| L1005 | `.particle-bg` |
-| L1012 | `@keyframes particle-drift` |
-| L1013 | `@keyframes particle-drift › from` |
-| L1014 | `@keyframes particle-drift › to` |
-| L1017 | `.particle-combo-1` |
-| L1018 | `.particle-combo-2` |
-| L1019 | `.particle-combo-3` |
-| L1022 | `.particle-calm` |
-| L1027 | `.scatter-title` |
-| L1030 | `@keyframes scatter-in` |
-| L1031 | `@keyframes scatter-in › from` |
-| L1032 | `@keyframes scatter-in › to` |
-| L1040 | `.shockwave` |
-| L1052 | `@keyframes shockwave-expand` |
-| L1053 | `@keyframes shockwave-expand › from` |
-| L1054 | `@keyframes shockwave-expand › to` |
-| L1067 | `.pulse-correct` |
-| L1070 | `@keyframes pulse-correct` |
-| L1071 | `@keyframes pulse-correct › 0%` |
-| L1072 | `@keyframes pulse-correct › 100%` |
-| L1076 | `.shockwave-gold` |
-| L1082 | `.blindspot-in` |
-| L1085 | `@keyframes blindspot-in` |
-| L1086 | `@keyframes blindspot-in › from` |
-| L1087 | `@keyframes blindspot-in › to` |
-| L1093 | `.ring-draw` |
-| L1096 | `@keyframes ring-draw` |
-| L1097 | `@keyframes ring-draw › from` |
-| L1102 | `.radar-grow` |
-| L1107 | `@keyframes radar-grow` |
-| L1108 | `@keyframes radar-grow › from` |
-| L1109 | `@keyframes radar-grow › to` |
-| L1114 | `.combo-flame` |
-| L1122 | `@keyframes flame-pulse` |
-| L1123 | `@keyframes flame-pulse › 0%, 100%` |
-| L1124 | `@keyframes flame-pulse › 50%` |
-| L1129 | `.carousel-3d` |
-| L1130 | `.carousel-card` |
-| L1134 | `.carousel-card:hover` |
-| L1135 | `.carousel-card[aria-current='true']` |
-| L1139 | `.ring-rotate` |
-| L1140 | `@keyframes ring-rotate` |
-| L1141 | `@keyframes ring-rotate › from` |
-| L1142 | `@keyframes ring-rotate › to` |
-| L1170 | `:root` |
-| L1182 | `.achievement-pop` |
-| L1185 | `@keyframes achievement-pop` |
-| L1186 | `@keyframes achievement-pop › from` |
-| L1187 | `@keyframes achievement-pop › to` |
-| L1197 | `.relax-in` |
-| L1212 | `@keyframes ml-q-enter` |
-| L1213 | `@keyframes ml-q-enter › from` |
-| L1214 | `@keyframes ml-q-enter › to` |
-| L1216 | `@keyframes ml-q-leave` |
-| L1217 | `@keyframes ml-q-leave › from` |
-| L1218 | `@keyframes ml-q-leave › to` |
-| L1220 | `.ml-q-enter` |
-| L1221 | `.ml-q-leave` |
-| L1225 | `.ml-press` |
-| L1226 | `.ml-press:active` |
-| L1230 | `.ml-pick-on` |
-| L1231 | `.ml-pick` |
-| L1234 | `@keyframes ml-reveal` |
-| L1235 | `@keyframes ml-reveal › from` |
-| L1236 | `@keyframes ml-reveal › to` |
-| L1238 | `.ml-reveal` |
-| L1241 | `@keyframes ml-modal-in` |
-| L1242 | `@keyframes ml-modal-in › from` |
-| L1243 | `@keyframes ml-modal-in › to` |
-| L1245 | `.ml-modal-in` |
-| L1249 | `.ml-stagger` |
-| L1255 | `.ml-lift` |
-| L1256 | `.ml-lift:hover` |
-| L1261 | `@keyframes ml-notice` |
-| L1262 | `@keyframes ml-notice › 0%, 100%` |
-| L1263 | `@keyframes ml-notice › 50%` |
-| L1265 | `.ml-notice` |
-| L1269 | `@media (prefers-reduced-motion: reduce)` |
-| L1270 | `@media (prefers-reduced-motion: reduce) › .ml-q-enter, .ml-q-leave, .ml-reveal, .ml-modal-in, .ml-stagger` |
-| L1274 | `@media (prefers-reduced-motion: reduce) › .ml-press, .ml-pick, .ml-lift` |
-| L1275 | `@media (prefers-reduced-motion: reduce) › .ml-press:active, .ml-pick-on, .ml-lift:hover` |
-| L1276 | `@media (prefers-reduced-motion: reduce) › .ml-notice` |
-| L1288 | `html.font-easy .ml-q-enter, html.font-easy .ml-q-leave, html.font-easy .ml-reveal, html.font-easy .ml-modal-in, html.font-easy .ml-stagger, html.font-easy .ml-notice` |
-| L1295 | `html.font-easy .ml-press, html.font-easy .ml-pick, html.font-easy .ml-lift` |
-| L1300 | `html.font-easy .ml-press:active, html.font-easy .ml-pick-on, html.font-easy .ml-lift:hover` |
-| L1305 | `@keyframes relax-in` |
-| L1306 | `@keyframes relax-in › from` |
-| L1307 | `@keyframes relax-in › to` |
-| L1314 | `:root[data-theme='light'] .particle-bg, :root[data-theme='light'] .combo-flame` |
-| L1322 | `html.font-easy .particle-bg, html.font-easy .combo-flame` |
-| L1329 | `html.font-easy .scatter-title, html.font-easy .achievement-pop, html.font-easy .shockwave, html.font-easy .ring-rotate, html.font-easy .carousel-card` |
-| L1336 | `html.font-easy .shockwave` |
-| L1343 | `html.font-easy .pulse-correct, html.font-easy .blindspot-in, html.font-easy .ring-draw, html.font-easy .radar-grow` |
-| L1360 | `html.font-easy .relax-in, html.font-easy .animate-slide-up, html.font-easy .animate-pop-in, html.font-easy .skeleton, html.font-easy .cmd-hl` |
-| L1367 | `@media (prefers-reduced-motion: reduce)` |
-| L1373 | `@media (prefers-reduced-motion: reduce) › .particle-bg, .combo-flame, .scatter-title, .achievement-pop, .ring-rotate, .carousel-card` |
-| L1377 | `@media (prefers-reduced-motion: reduce) › .scatter-title` |
-| L1378 | `@media (prefers-reduced-motion: reduce) › .achievement-pop` |
-| L1379 | `@media (prefers-reduced-motion: reduce) › .carousel-card:hover` |
-| L1380 | `@media (prefers-reduced-motion: reduce) › .shockwave` |
-| L1387 | `@media (prefers-reduced-motion: reduce) › .pulse-correct, .blindspot-in, .ring-draw, .radar-grow, .relax-in` |
-| L1402 | `@media (prefers-reduced-motion: reduce) › .animate-slide-up, .animate-pop-in` |
-| L1412 | `@media (max-height: 760px)` |
-| L1413 | `@media (max-height: 760px) › .sidebar-quote` |
-| L1420 | `@media (max-width: 639px)` |
-| L1421 | `@media (max-width: 639px) › section:has([data-continue-card]) .hero-mascot` |
-| L1428 | `@media (max-width: 767px)` |
-| L1429 | `@media (max-width: 767px) › body:has([data-a11y-trigger]) .a11y-fab` |
+| L932 | `@media (min-width: 48rem)` |
+| L933 | `@media (min-width: 48rem) › html[data-sidebar='on']` |
+| L937 | `@media (min-width: 80rem)` |
+| L938 | `@media (min-width: 80rem) › html[data-sidebar='on']` |
+| L946 | `html.no-motion .mascot` |
+| L951 | `.floating-left` |
+| L954 | `.floating-left-2` |
+| L959 | `.floating-bottom-2` |
+| L962 | `.floating-bottom-3` |
+| L974 | `.floating-panel-max-h` |
+| L1006 | `.particle-bg` |
+| L1013 | `@keyframes particle-drift` |
+| L1014 | `@keyframes particle-drift › from` |
+| L1015 | `@keyframes particle-drift › to` |
+| L1018 | `.particle-combo-1` |
+| L1019 | `.particle-combo-2` |
+| L1020 | `.particle-combo-3` |
+| L1023 | `.particle-calm` |
+| L1028 | `.scatter-title` |
+| L1031 | `@keyframes scatter-in` |
+| L1032 | `@keyframes scatter-in › from` |
+| L1033 | `@keyframes scatter-in › to` |
+| L1041 | `.shockwave` |
+| L1053 | `@keyframes shockwave-expand` |
+| L1054 | `@keyframes shockwave-expand › from` |
+| L1055 | `@keyframes shockwave-expand › to` |
+| L1068 | `.pulse-correct` |
+| L1071 | `@keyframes pulse-correct` |
+| L1072 | `@keyframes pulse-correct › 0%` |
+| L1073 | `@keyframes pulse-correct › 100%` |
+| L1077 | `.shockwave-gold` |
+| L1083 | `.blindspot-in` |
+| L1086 | `@keyframes blindspot-in` |
+| L1087 | `@keyframes blindspot-in › from` |
+| L1088 | `@keyframes blindspot-in › to` |
+| L1094 | `.ring-draw` |
+| L1097 | `@keyframes ring-draw` |
+| L1098 | `@keyframes ring-draw › from` |
+| L1103 | `.radar-grow` |
+| L1108 | `@keyframes radar-grow` |
+| L1109 | `@keyframes radar-grow › from` |
+| L1110 | `@keyframes radar-grow › to` |
+| L1115 | `.combo-flame` |
+| L1123 | `@keyframes flame-pulse` |
+| L1124 | `@keyframes flame-pulse › 0%, 100%` |
+| L1125 | `@keyframes flame-pulse › 50%` |
+| L1130 | `.carousel-3d` |
+| L1131 | `.carousel-card` |
+| L1135 | `.carousel-card:hover` |
+| L1136 | `.carousel-card[aria-current='true']` |
+| L1140 | `.ring-rotate` |
+| L1141 | `@keyframes ring-rotate` |
+| L1142 | `@keyframes ring-rotate › from` |
+| L1143 | `@keyframes ring-rotate › to` |
+| L1171 | `:root` |
+| L1183 | `.achievement-pop` |
+| L1186 | `@keyframes achievement-pop` |
+| L1187 | `@keyframes achievement-pop › from` |
+| L1188 | `@keyframes achievement-pop › to` |
+| L1198 | `.relax-in` |
+| L1213 | `@keyframes ml-q-enter` |
+| L1214 | `@keyframes ml-q-enter › from` |
+| L1215 | `@keyframes ml-q-enter › to` |
+| L1217 | `@keyframes ml-q-leave` |
+| L1218 | `@keyframes ml-q-leave › from` |
+| L1219 | `@keyframes ml-q-leave › to` |
+| L1221 | `.ml-q-enter` |
+| L1222 | `.ml-q-leave` |
+| L1226 | `.ml-press` |
+| L1227 | `.ml-press:active` |
+| L1231 | `.ml-pick-on` |
+| L1232 | `.ml-pick` |
+| L1235 | `@keyframes ml-reveal` |
+| L1236 | `@keyframes ml-reveal › from` |
+| L1237 | `@keyframes ml-reveal › to` |
+| L1239 | `.ml-reveal` |
+| L1242 | `@keyframes ml-modal-in` |
+| L1243 | `@keyframes ml-modal-in › from` |
+| L1244 | `@keyframes ml-modal-in › to` |
+| L1246 | `.ml-modal-in` |
+| L1250 | `.ml-stagger` |
+| L1256 | `.ml-lift` |
+| L1257 | `.ml-lift:hover` |
+| L1262 | `@keyframes ml-notice` |
+| L1263 | `@keyframes ml-notice › 0%, 100%` |
+| L1264 | `@keyframes ml-notice › 50%` |
+| L1266 | `.ml-notice` |
+| L1270 | `@media (prefers-reduced-motion: reduce)` |
+| L1271 | `@media (prefers-reduced-motion: reduce) › .ml-q-enter, .ml-q-leave, .ml-reveal, .ml-modal-in, .ml-stagger` |
+| L1275 | `@media (prefers-reduced-motion: reduce) › .ml-press, .ml-pick, .ml-lift` |
+| L1276 | `@media (prefers-reduced-motion: reduce) › .ml-press:active, .ml-pick-on, .ml-lift:hover` |
+| L1277 | `@media (prefers-reduced-motion: reduce) › .ml-notice` |
+| L1289 | `html.font-easy .ml-q-enter, html.font-easy .ml-q-leave, html.font-easy .ml-reveal, html.font-easy .ml-modal-in, html.font-easy .ml-stagger, html.font-easy .ml-notice` |
+| L1296 | `html.font-easy .ml-press, html.font-easy .ml-pick, html.font-easy .ml-lift` |
+| L1301 | `html.font-easy .ml-press:active, html.font-easy .ml-pick-on, html.font-easy .ml-lift:hover` |
+| L1306 | `@keyframes relax-in` |
+| L1307 | `@keyframes relax-in › from` |
+| L1308 | `@keyframes relax-in › to` |
+| L1315 | `:root[data-theme='light'] .particle-bg, :root[data-theme='light'] .combo-flame` |
+| L1323 | `html.font-easy .particle-bg, html.font-easy .combo-flame` |
+| L1330 | `html.font-easy .scatter-title, html.font-easy .achievement-pop, html.font-easy .shockwave, html.font-easy .ring-rotate, html.font-easy .carousel-card` |
+| L1337 | `html.font-easy .shockwave` |
+| L1344 | `html.font-easy .pulse-correct, html.font-easy .blindspot-in, html.font-easy .ring-draw, html.font-easy .radar-grow` |
+| L1361 | `html.font-easy .relax-in, html.font-easy .animate-slide-up, html.font-easy .animate-pop-in, html.font-easy .skeleton, html.font-easy .cmd-hl` |
+| L1368 | `@media (prefers-reduced-motion: reduce)` |
+| L1374 | `@media (prefers-reduced-motion: reduce) › .particle-bg, .combo-flame, .scatter-title, .achievement-pop, .ring-rotate, .carousel-card` |
+| L1378 | `@media (prefers-reduced-motion: reduce) › .scatter-title` |
+| L1379 | `@media (prefers-reduced-motion: reduce) › .achievement-pop` |
+| L1380 | `@media (prefers-reduced-motion: reduce) › .carousel-card:hover` |
+| L1381 | `@media (prefers-reduced-motion: reduce) › .shockwave` |
+| L1388 | `@media (prefers-reduced-motion: reduce) › .pulse-correct, .blindspot-in, .ring-draw, .radar-grow, .relax-in` |
+| L1403 | `@media (prefers-reduced-motion: reduce) › .animate-slide-up, .animate-pop-in` |
+| L1413 | `@media (max-height: 760px)` |
+| L1414 | `@media (max-height: 760px) › .sidebar-quote` |
+| L1421 | `@media (max-width: 639px)` |
+| L1422 | `@media (max-width: 639px) › section:has([data-continue-card]) .hero-mascot` |
+| L1429 | `@media (max-width: 767px)` |
+| L1430 | `@media (max-width: 767px) › body:has([data-a11y-trigger]) .a11y-fab` |

@@ -104,7 +104,7 @@ export default function Sidebar() {
   return (
     <nav
       aria-label={en ? 'Sections' : '分區導航'}
-      className="no-print fixed inset-y-0 left-0 z-40 hidden w-20 flex-col border-r border-line bg-surface lg:flex xl:w-[260px]"
+      className="no-print fixed inset-y-0 left-0 z-40 hidden w-20 flex-col border-r border-line bg-surface md:flex xl:w-[260px]"
     >
       {/* 品牌區。模板將貓頭鷹置中放大、名字用襯線體；80px 欄下只剩吉祥物。
           模板嘅貓頭鷹係 150px —— 喺 1280×720 嘅手提電腦上，品牌區會食走
