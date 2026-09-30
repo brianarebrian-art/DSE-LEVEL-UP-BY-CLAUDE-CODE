@@ -11,7 +11,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-const { predictGrade, CSD_PASS_RATIO, gradeColors, gradeBgColors, gradeMessages } =
+const { predictGrade, CSD_PASS_RATIO, gradeColors } =
   await import('../grading.ts')
 const { getPracticeCutoffs } = await import('../../data/cutoffs.ts')
 import type { CutoffTable } from '../../data/cutoffs.ts'
@@ -176,26 +176,22 @@ test('percentage 按 totalMarks 計，唔係當 100 分制', () => {
 
 // ── 憲章 §7：查表唔可以有窿，亦唔可以用紅色責備 ────────────────────────
 
-test('每一個可能出現嘅等級，三張查表都有對應值', () => {
+test('每一個可能出現嘅等級，色表都有對應值', () => {
   const all = ['5**', '5*', '5', '4', '3', '2', '1', 'U', '達標', '不達標']
-  for (const g of all) {
-    assert.ok(gradeColors[g], `gradeColors 冇 ${g}`)
-    assert.ok(gradeBgColors[g], `gradeBgColors 冇 ${g}`)
-    assert.ok(gradeMessages[g], `gradeMessages 冇 ${g}`)
-  }
+  for (const g of all) assert.ok(gradeColors[g], `gradeColors 冇 ${g}`)
 })
 
-test('憲章 §7：訊息唔准有打擊自信字眼', () => {
-  const banned = ['FAIL', 'Fail', '失敗', '不合格', '差勁', '蠢']
-  for (const [g, msg] of Object.entries(gradeMessages)) {
-    for (const w of banned) assert.ok(!msg.includes(w), `${g} 含「${w}」`)
-  }
+// 2026-09-30（改進循環 2）：gradeBgColors、gradeMessages 已刪（不再向學生顯示等級）。
+test('等級徽章及等級訊息表已刪，唔好加返', async () => {
+  const mod = (await import('../grading.ts')) as Record<string, unknown>
+  const m = (mod.default ?? mod) as Record<string, unknown>
+  assert.equal(m.gradeBgColors, undefined)
+  assert.equal(m.gradeMessages, undefined)
 })
 
 test('不達標唔用紅色（憲章 §7 禁大紅）', () => {
   // 用主題 token，唔係 red-*；「未達標」係狀態唔係責備。
   assert.ok(!/red|#f?f?0000|rose/i.test(gradeColors['不達標']))
-  assert.ok(!/\bred-/.test(gradeBgColors['不達標']))
 })
 
 // ── 憲章 §8 / 等級預測 v3 §11：唔准聲稱任何分數線係官方嘅 ────────────────

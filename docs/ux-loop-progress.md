@@ -804,3 +804,10 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
   - `DECISION_CONFLICT`：`/writing`「取材自 2023 DSE 英文卷二『Poems & Songs』主題」— `CONTENT_PROVENANCE.md` §6 第 2 項待創辦人決定，未改。
   - 「獨立改寫」一詞由憲章 §1.4、§4、§13 指定（頁尾逐字要求），未改。
 - 測試：`mastery-wording.test.mts`。瀏覽器實測：`/dashboard` 顯示「課題練習紀錄」、無「掌握度」；`/subjects/math` 顯示「知識卡・SENSEI」。
+
+## R2-9 假精確度檢查及死碼（prompt §33、§43）
+
+- 假精確度：學生可見頁面沒有小數位的掌握度或信心百分比（只剩 `/admin` 覆核率及 `/writing` 自評平均 x.x / 7，後者是學生自己打的分）。無需改動。
+- 刪除死碼：`lib/grading.ts` 的 `gradeBgColors`、`gradeMessages`（R2-1／R2-2 之後無人使用）；`grading.test.mts` 改為確認兩者不再存在。
+- 刻意保留：`gradeColors` 及 `app/globals.css` 的 `--grade-*` 色值。現時也無 UI 使用，但刪除要連帶改 CSS token、`docs/tokens.md` 及對比度檢查，留待有需要時一併處理。`predictGrade` 仍為 `dse_progress` 的 `grade` 欄位計值（上雲 key，結構不改）。
+- §43 其餘字眼（上一頁／下一頁、模擬卷、Grade Predictor、predictedGrade、AI 分析 10 年、掌握度 +1、真實水平）：`app/`、`components/`、`lib/` 無 live UI 命中；剩下的只在註釋、測試或有日期的文件。
