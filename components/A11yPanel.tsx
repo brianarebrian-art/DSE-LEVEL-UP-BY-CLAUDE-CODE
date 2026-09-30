@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { readTimerPref, writeTimerHidden } from '@/lib/timerPreference'
 import { readSyncConsent, setSyncConsent, SETTINGS_SYNC_EVENT } from '@/lib/settingsSyncConsent'
 import Image from 'next/image'
-import { AlignJustify, Clock, Cloud, Feather, Lightbulb, Minus, MoveHorizontal, Plus, Type, Volume2, Wind, X } from 'lucide-react'
+import { AlignJustify, Clock, Cloud, Feather, Lightbulb, Minus, MoveHorizontal, Plus, Ruler, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
@@ -32,7 +32,8 @@ const LETTER_SPACING_PREVIEW: Record<LetterSpacing, string> = {
 // 但除咗練習頁外，全站根本冇 UI 畀學生自己調校。呢個常駐掣令每一頁都可以：
 //   • 放大／縮細字級（12–24px，即時生效，重用 GlobalA11y 匯出嘅 applyFontSize，存 dse_font_size）
 //   • 一撳切換易讀字體（BDA 友善無襯線堆疊，存 dse_easy_font，即時切換 html.font-easy）
-// 純前端、零成本、零新依賴。防跳行閱讀尺喺左下另一顆 📏 掣（ReadingRuler，全站掛載）。
+// 純前端、零成本、零新依賴。防跳行閱讀尺的開關亦在本面板（2026-09-30 起）；尺本身由 ReadingRuler 繪畫，
+// 開着時左下角另有一粒細掣調高度。
 //
 // 2026-07-30 對比度修正：本面板永遠深底（兩個主題一樣），所以【唔可以】靠 body
 // 繼承主題 text-ink —— 淺色主題下 −／＋ 掣嘅「A」會變 #1A1A1A 落 slate-800，
@@ -171,6 +172,21 @@ export default function A11yPanel() {
       return next
     })
   }, [])
+
+  // 2026-09-30：閱讀尺的獨立開關。以前只可以由左下角常駐的 📏 掣開關，
+  // 現在該掣只在閱讀尺開着時出現（components/ReadingRuler.tsx），開關集中在本面板。
+  const toggleRuler = useCallback(() => {
+    const next = !ruler
+    try {
+      const saved = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
+      // 保留學生揀開嘅尺帶高度，只改 on/off
+      localStorage.setItem(RULER_KEY, JSON.stringify({ on: next, hIdx: Number(saved?.hIdx) || 0 }))
+    } catch {
+      /* ignore */
+    }
+    setRuler(next)
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [ruler])
 
   const toggleTimer = useCallback(() => {
     setHideTimer((prev) => {
@@ -311,7 +327,7 @@ export default function A11yPanel() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
-        title={en ? 'Accessibility · text size & easy-read font' : '無障礙 · 字級同易讀字體'}
+        title={en ? 'Accessibility · text size, easy-read font, reading ruler' : '無障礙 · 字級、易讀字體、閱讀尺'}
         className="no-print fixed floating-bottom floating-left z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-surface-raised border border-line-strong flex items-center justify-center hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
       >
         {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
@@ -480,6 +496,32 @@ export default function A11yPanel() {
               }`}
             >
               {easy ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
+
+          {/* 閱讀尺開關（2026-09-30 由左下角常駐掣搬入）。開着時左下角會出現一粒細掣調高度。 */}
+          <button
+            onClick={toggleRuler}
+            aria-pressed={ruler}
+            className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+              ruler
+                ? 'bg-surface-sunken border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+            }`}
+          >
+            <span className="text-left flex items-center gap-2">
+              <Ruler size={14} className="shrink-0" aria-hidden />
+              <span>
+                <span className="block text-sm">{en ? 'Reading ruler' : '閱讀尺'}</span>
+                <span className="block text-[11px] text-ink-muted">{en ? 'Keeps your place line by line' : '防跳行，逐行讀'}</span>
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                ruler ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+              }`}
+            >
+              {ruler ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
           </button>
 
@@ -652,11 +694,6 @@ export default function A11yPanel() {
             </span>
           </button>
 
-          <p className="text-[11px] text-ink-muted mt-3 leading-relaxed">
-            {en
-              ? 'Reading ruler is the 📏 button next to this one.'
-              : '防跳行閱讀尺喺隔籬顆 📏 掣。'}
-          </p>
           {/* v8 UI1：溫和同步狀態。放喺設定區底部，唔會喺做題途中彈出打斷心流。 */}
           <div className="mt-2">
             <OfflineBadge />

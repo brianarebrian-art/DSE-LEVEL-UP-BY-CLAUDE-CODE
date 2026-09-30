@@ -68,7 +68,8 @@ test('底欄高度只喺一個地方定義，浮動掣一律靠變數讓位', ()
     '桌面斷點冇把 --bottom-nav-h 歸零 —— 浮動掣會為咗一條 display:none 嘅底欄讓出 3.5rem',
   )
   // 浮動掣唔准再硬編 bottom：硬編就唔會跟住底欄郁。
-  for (const f of ['A11yPanel', 'GlobalA11y', 'ReadingRuler', 'PracticeSupport']) {
+  // PracticeSupport 自 2026-09-30 起冇浮動掣（lib/__tests__/hotfix-0823.test.mts 第三節鎖住）。
+  for (const f of ['A11yPanel', 'GlobalA11y', 'ReadingRuler']) {
     const src = readFileSync(new URL(`../${f}.tsx`, import.meta.url).pathname, 'utf8')
     assert.ok(
       !/bottom-\[max\(/.test(src),

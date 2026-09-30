@@ -43,6 +43,7 @@ import { useLocale } from '@/lib/i18n'
 import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, Lock, Coffee, Timer } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
+import { EnoughTodayButton } from '@/components/PracticeSupport'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { logReverseError, getReverseLog, type ReverseCause } from '@/lib/reverseLog'
@@ -984,6 +985,8 @@ export default function PracticeSession({
               >
                 <Coffee size={13} /> {tr('休息吓', 'Rest')}
               </button>
+              {/* 2026-09-30：「今日夠了」由左下角浮動藥丸移到這裏，理由同上（components/PracticeSupport.tsx）。 */}
+              <EnoughTodayButton />
             </span>
           </div>
           <div className="h-1.5 bg-line rounded-full overflow-hidden">

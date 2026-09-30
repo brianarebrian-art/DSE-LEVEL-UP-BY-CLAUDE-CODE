@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight, Brain } from 'lucide-react'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
+import { EnoughTodayButton } from '@/components/PracticeSupport'
 import { useLocale } from '@/lib/i18n'
 import { getSeen, orderUnseenFirst, recordSeen } from '@/lib/seen'
 import { recordTopicOutcomes } from '@/lib/topicStats'
@@ -217,8 +218,11 @@ export default function LongPracticeSession({
           <span className="text-xs text-ink-muted">
             {tr(`第 ${idx + 1} / ${questions.length} 條`, `${idx + 1} of ${questions.length}`)}
           </span>
-          <span className="text-[11px] text-ink-muted">
-            {tr('長題目練習 · 自評制', 'Written practice · self-assessed')}
+          <span className="flex items-center gap-3">
+            <span className="text-[11px] text-ink-muted">
+              {tr('長題目練習 · 自評制', 'Written practice · self-assessed')}
+            </span>
+            <EnoughTodayButton />
           </span>
         </div>
 

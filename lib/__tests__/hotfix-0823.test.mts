@@ -84,19 +84,18 @@ test('logicLog 唔再導出 currentStreak —— 留住個函數等於留住一�
   assert.ok(/export\s+function\s+isConsecutive/.test(src), 'isConsecutive 仲有時間軸用緊')
 })
 
-// ── 三、練習頁支援掣唔可以打直排 ────────────────────────────────────────────
+// ── 三、練習頁支援掣唔可以再浮喺題目上面 ──────────────────────────────────
 // iPhone SE（375×667）實測：直排三粒藥丸高 118px，由下而上壓住答題區，
-// 四個選項之中有三個被遮（B 19%、C 24%、D 13%）。改橫排之後高度剩 34px。
+// 四個選項之中有三個被遮（B 19%、C 24%、D 13%）。HOTFIX-0823 改橫排之後高度剩 34px。
+// 2026-09-30（UX 循環 LOOP 3）再收緊：375×812 實測橫排仍然蓋住題目進度點及答錯後
+// 第一行回饋，所以整排移除 —— 字級、易讀字體本來已在無障礙面板，「今日夠了」移到頁頂。
 // 呢種【縱向遮擋】用 scrollWidth === innerWidth 係驗唔到嘅 —— 闊度一直都啱。
-test('練習頁支援掣打橫排，唔可以變返直柱壓住選項', () => {
+test('練習頁支援掣唔再浮動，唯一 fixed 元素係全屏彈窗', () => {
   const src = stripComments(read('components/PracticeSupport.tsx'))
-  const container = src.match(/className="fixed floating-bottom-2[^"]*"/)?.[0] ?? ''
-  assert.ok(container.length > 0, '搵唔到練習頁支援掣嘅容器')
-  assert.ok(!/flex-col/.test(container), `容器唔可以用 flex-col（會變返 118px 高嘅直柱）：${container}`)
-  assert.ok(/flex-row/.test(container), `容器應該用 flex-row：${container}`)
-
-  // 字級滑桿要脫離橫排流（absolute），否則會將成條橫帶推到爆出畫面右邊。
-  assert.ok(/absolute bottom-full/.test(src), '字級滑桿應該係浮喺掣上面嘅 popover')
+  assert.doesNotMatch(src, /className="fixed floating-bottom/, 'PracticeSupport 唔應該再有浮動藥丸')
+  const fixed = src.match(/className="fixed [^"]*"/g) ?? []
+  assert.ok(fixed.length > 0, '「今日夠了」彈窗仲要喺度')
+  for (const c of fixed) assert.match(c, /inset-0/, `唔係全屏彈窗嘅 fixed 元素：${c}`)
 })
 
 // ── 四、全局橫向溢出保險唔可以被人手刪走 ────────────────────────────────────

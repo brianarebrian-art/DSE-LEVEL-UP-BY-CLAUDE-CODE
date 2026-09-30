@@ -84,13 +84,17 @@ export default function ReadingRuler() {
         </div>
       )}
 
-      {/* FIX: [B8] safe-area — iPhone Home Indicator 唔遮擋 */}
+      {/* FIX: [B8] safe-area — iPhone Home Indicator 唔遮擋
+          2026-09-30（UX 循環 LOOP 3）：只在閱讀尺開着時顯示，用來調高度或即時關掉。
+          關着時不再常駐浮在左下角（375×812 實測會遮住首頁連結及練習頁回饋），
+          開關改在無障礙面板（components/A11yPanel.tsx），一鍵舒適模式亦會開。 */}
+      {on && (
       <div className="fixed floating-bottom floating-left-2 z-50 no-print flex items-center gap-2">
         <button
           onClick={() => { setOn(!on); persist(!on, hIdx) }}
           aria-pressed={on}
           title={en ? 'Reading ruler (focus aid)' : '閱讀尺（防跳行輔助）'}
-          className={`flex items-center gap-1.5 text-xs px-3 py-2 rounded-full border transition-all ${
+          className={`flex min-h-12 items-center gap-1.5 text-xs px-3 py-2 rounded-full border transition-all ${
             on
               ? 'bg-surface-sunken border-gold/50 text-gold'
               : 'bg-surface-raised border-line-strong text-ink-muted hover:text-accent'
@@ -101,13 +105,14 @@ export default function ReadingRuler() {
         {on && (
           <button
             onClick={() => { const n = (hIdx + 1) % HEIGHTS.length; setHIdx(n); persist(on, n) }}
-            className="text-xs px-2.5 py-2 rounded-full border bg-surface-raised border-line-strong text-ink-muted hover:text-accent transition-all"
+            className="min-h-12 min-w-12 text-xs px-2.5 py-2 rounded-full border bg-surface-raised border-line-strong text-ink-muted hover:text-accent transition-all"
             title={en ? 'Band height' : '調整高度'}
           >
             {['S', 'M', 'L'][hIdx]}
           </button>
         )}
       </div>
+      )}
     </>
   )
 }
