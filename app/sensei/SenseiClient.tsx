@@ -8,6 +8,7 @@ import { rankCards, type Match } from '@/lib/sensei/intent'
 import { loadPrefs, savePrefs, pickGreeting, orderSections, DEFAULT_PREFS, type TonePrefs, type SectionKey } from '@/lib/sensei/tone'
 import { loadSenseiCards } from '@/data/sensei/load'
 import { SENSEI_SUBJECTS } from '@/data/sensei/types'
+import { SENSEI_STARTERS } from '@/lib/sensei/starters'
 
 // SENSEI 零模型版。學生問一句，我哋【檢索】一張真人簽過名嘅卡，【唔生成】任何內容。
 //
@@ -48,7 +49,11 @@ export default function SenseiClient() {
 
   async function ask(e: React.FormEvent) {
     e.preventDefault()
-    const q = input.trim()
+    await run(input)
+  }
+
+  async function run(raw: string) {
+    const q = raw.trim()
     if (!q) return
 
     // 身份問題最優先 —— 喺任何檢索之前處理，確保永遠答得到。
@@ -82,11 +87,14 @@ export default function SenseiClient() {
           <Sparkles size={13} /> {en ? AI_BADGE.en : AI_BADGE.zh}
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-medium text-ink mb-2">SENSEI</h1>
+        {/* 2026-09-30（LOOP 35）：主名稱改為「知識卡」，SENSEI 作副題。學生一眼要知道這是查卡，
+            不是會自己作答的聊天機械人（第二份 loop prompt §24、§25）。 */}
+        <h1 className="text-2xl sm:text-3xl font-medium text-ink mb-1">{en ? 'Knowledge cards' : '知識卡'}</h1>
+        <p className="text-xs text-ink-muted mb-2">SENSEI</p>
         <p className="text-ink-muted text-sm leading-relaxed mb-6">
           {en
-            ? 'Ask about a concept. Sensei does not write answers — it looks up a knowledge card that a named person has already checked, and shows it to you. If there is no card, it says so.'
-            : '問一個概念。Sensei 不會自行寫答案 —— 它檢索一張已由具名真人審核過的知識卡並展示給你。沒有卡片時，它會直接說沒有。'}
+            ? 'Answers come only from knowledge cards on this site that a named person has checked. Ask about a concept and the matching card is shown; nothing new is written. If there is no card, it says so.'
+            : '答案只來自本站已由具名真人審核的知識卡。問一個概念，就會展示對應的卡；不會自行寫新答案。沒有卡片時，會直接說沒有。'}
         </p>
 
         <form onSubmit={ask} className="mb-3">
@@ -107,6 +115,21 @@ export default function SenseiClient() {
             </button>
           </div>
         </form>
+
+        {/* 起手問題：每條都保證找到一張已批准的卡（lib/sensei/starters.ts）。 */}
+        <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label={en ? 'Try asking' : '可以咁問'}>
+          {(en ? SENSEI_STARTERS.en : SENSEI_STARTERS.zh).map((s) => (
+            <button
+              key={s.q}
+              type="button"
+              disabled={busy}
+              onClick={() => { setInput(s.q); void run(s.q) }}
+              className="inline-flex min-h-11 items-center rounded-full border border-line-strong px-3 text-xs text-ink-soft hover:border-accent hover:text-accent disabled:opacity-50"
+            >
+              {s.q}
+            </button>
+          ))}
+        </div>
 
         {/* 呈現選項：一律用做法命名，唔用病名。冇「ADHD 模式」呢類標籤 ——
             一個 ADHD 學生同一個焦慮學生可能揀同一組設定，我哋唔需要知佢係邊種。

@@ -591,3 +591,17 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1225/1225；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812，`/dashboard`）：** 底部「再做 10 題」（`/start`）及「查看錯題」（`/bookmarks`），各 48px；舊的「頁面導航」已不存在；無水平捲動。
 - **Commit：** 見 git log（`feat(nav): next-step links instead of previous and next page`）。
+
+## LOOP 35 — 2026-09-30
+
+- **Slice：** SENSEI 頁以「知識卡」為主名，並提供保證找得到卡的起手問題（新 prompt §24、§25，P1）。
+- **量度（改動前）：** `/sensei` 標題只寫「SENSEI」，學生要讀完說明才知道是查卡，不是會自行作答的聊天機械人；沒有起手問題，隨便問容易撞到「沒有卡片」。
+- **影響範圍：** 新增 `lib/sensei/starters.ts`；`app/sensei/SenseiClient.tsx`（標題、說明、起手問題、把提問邏輯抽成 `run()`）；`app/sensei/page.tsx`（`<title>`）；新增測試。檢索邏輯、身份問題處理、AI 標示（憲章 §16.B）不變。
+- **改動：**
+  - h1 改為「知識卡」，下面細字「SENSEI」。
+  - 說明改為「答案只來自本站已由具名真人審核的知識卡……不會自行寫新答案」。
+  - 中文三條、英文兩條起手問題（44px），撳下即問。每條都指定應找到的卡，測試用真卡片核對該卡排第一。英文只放英文卡找得到的問題，因為知識卡大多只有中文關鍵字。
+- **測試：** 新增 `lib/__tests__/sensei-starters.test.mts`（2 項）。
+- **驗證：** `npm test` 1227/1227；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** AI 標示仍在最上；h1「知識卡」；三條起手問題各 44px；撳第一條後顯示判別式的卡；無水平捲動。
+- **Commit：** 見 git log（`feat(sensei): call it knowledge cards and offer questions that find one`）。
