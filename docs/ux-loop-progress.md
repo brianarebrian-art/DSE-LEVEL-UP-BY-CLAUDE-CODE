@@ -522,3 +522,13 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1208/1208；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **實測（production build，瀏覽器 fetch）：** `/api/result/verify` 70 KB → 413 `body too large`；壞 JSON → 400；正常大小照舊驗證；`/api/progress` 未登入 → 401。已登入路徑未能實測，因為 Claude 不可以登入。
 - **Commit：** 見 git log（`fix(api): body size ceiling and a server-side allow-list for progress`）。
+
+## LOOP 29 — 2026-09-30
+
+- **Slice：** FAQ 講錯工具位置（新 prompt §28「無障礙控制要容易發現」；P1 準確性）。
+- **量度（改動前）：** 關於頁 FAQ「SEN 同學有咩支援」寫「練習頁左下角係無障礙工具角……同埋今日夠了」，`content/community/faq.md` 亦寫閱讀尺是「練習頁左下角嘅開關」。LOOP 3 起「今日夠了」在題目頁頂；LOOP 18 起手機的無障礙入口在頁頂。
+- **影響範圍：** `components/FAQSection.tsx`（中英）、`content/community/faq.md`、新增測試。
+- **改動：** 改為「無障礙設定（閱讀尺、易讀字體、字級、行距、字距、一鍵舒適模式）喺手機頁頂嘅無障礙掣，平板同電腦喺左下角；今日夠了喺題目頁頂」。
+- **測試：** 新增 `lib/__tests__/faq-tool-locations.test.mts`（1 項），同時核對文案所依據的兩個事實（Navbar 有頁頂按鈕、練習頁有「今日夠了」）。
+- **驗證：** `npm test` 1209/1209；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。純文案，無版面改動。
+- **Commit：** 見 git log（`fix(faq): say where the accessibility tools are now`）。

@@ -46,8 +46,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: 'SEN 同學有咩支援？', qEn: 'What support is there for SEN students?',
-    aZh: '練習頁左下角係無障礙工具角：閱讀尺（防跳行）、易讀字體、字級調節，同埋「今日夠了」零罪疚收工。做題途中隨時撳得休息，唞幾耐計時就順延幾耐；想淨係專注一題就撳 Shift + F 開專注燈。呼吸練習喺「呼吸空間」，每週休息日喺帳戶頁揀。全部自選、預設關。有其他需要歡迎話我哋知。',
-    aEn: 'The practice page keeps an accessibility corner in the bottom-left: reading ruler, easy font, text size, and a guilt-free “that is enough for today”. You can rest mid-session — the timer is extended by exactly as long as you rest — and Shift + F dims everything around the question. Breathing exercises live in Breathing Space, and weekly rest days are set in your account. All of it is opt-in and off by default. Tell us what else would help.',
+    aZh: '無障礙設定（閱讀尺防跳行、易讀字體、字級、行距、字距、一鍵舒適模式）喺手機頁頂嘅無障礙掣，平板同電腦喺左下角；「今日夠了」零罪疚收工喺題目頁頂。做題途中隨時撳得休息，唞幾耐計時就順延幾耐；想淨係專注一題就撳 Shift + F 開專注燈。呼吸練習喺「呼吸空間」，每週休息日喺帳戶頁揀。全部自選、預設關。有其他需要歡迎話我哋知。',
+    aEn: 'Accessibility settings (reading ruler, easy-read font, text size, line and letter spacing, one-tap comfort mode) sit behind the accessibility button at the top of the page on phones, and in the bottom-left corner on tablets and computers. A guilt-free “enough for today” is at the top of each question. You can rest mid-session — the timer is extended by exactly as long as you rest — and Shift + F dims everything around the question. Breathing exercises live in Breathing Space, and weekly rest days are set in your account. All of it is opt-in and off by default. Tell us what else would help.',
   },
 ]
 
