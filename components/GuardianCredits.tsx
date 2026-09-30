@@ -57,9 +57,10 @@ export default function GuardianCredits() {
     <div className="py-8">
       <div className="border-t border-line mb-8" />
 
-      <h3 className="text-lg font-medium text-ink-soft mb-4">
+      {/* h2：2026-09-30 起只用於 /about，與該頁其他段落同一層級。 */}
+      <h2 id="guardians-title" className="text-lg font-medium text-ink-soft mb-4">
         🛡️ {en ? 'Guardians — with thanks' : '守護者致謝名單'}
-      </h3>
+      </h2>
 
       <p className="text-sm text-ink-muted mb-6 leading-relaxed">
         {en

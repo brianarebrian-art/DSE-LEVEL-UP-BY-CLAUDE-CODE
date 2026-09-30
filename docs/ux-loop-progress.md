@@ -492,3 +492,15 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - **驗證：** `npm test` 1201/1201；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
 - **畫面（production build，375×812）：** 首頁沒有倒數；帳戶頁撳「開啟倒數」（48px）後變「倒數已開」、`aria-pressed=true`；返首頁顯示「距 190 日 · 2027 DSE 開考」。驗證後已刪除測試用的設定。
 - **Commit：** 見 git log（`feat(home): exam countdown only when the student turns it on`）。
+
+## LOOP 27 — 2026-09-30
+
+- **Slice：** 守護者致謝名單由頁尾移到 `/about`（創辦人決定 7）。
+- **量度（改動前）：** 名單在頁尾，每一頁（包括首頁）都出現。
+- **影響範圍：** `components/Footer.tsx`（移除）、`app/about/AboutClient.tsx`（加入）、`components/GuardianCredits.tsx`（標題由 h3 改為 h2，加 id）、新增測試。
+- **改動：** 名單放在關於頁「聯絡我們」之後，外層 `<section id="guardians">`，標題 h2，與該頁其他段落同一層級；名單內「致謝，不是認證」的說明不變。選 `/about` 而不是 `/trust`：組件本身提醒這類名單容易被讀成資安審計或品質認證，放在信任中心會加重這個誤讀。
+- **測試：** 新增 `lib/__tests__/guardians-on-about.test.mts`（2 項）。
+- **驗證：** `npm test` 1203/1203；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 首頁全文沒有「守護者」；`/about` 有 `#guardians`，h2「🛡️ 守護者致謝名單」排在「聯絡我們」之後；無水平捲動。
+- **已知：** 手機頁尾仍高 875px（三欄連結直排加免責聲明），可在之後的 P2 輪收窄。
+- **Commit：** 見 git log（`feat(about): move the guardians list from the footer to /about`）。

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Mail, ShieldCheck } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import FAQSection from '@/components/FAQSection'
+import GuardianCredits from '@/components/GuardianCredits'
 
 // Four classical-Confucian cores the platform is built on. Quotes are from the
 // Analects (公有領域 — over two millennia old). Kept plain and human, no fanfare.
@@ -138,6 +139,12 @@ export default function AboutClient() {
             <Mail size={16} className="text-gold" /> dselevelup@gmail.com
           </a>
         </div>
+
+        {/* 守護者致謝名單（創辦人決定 7，2026-09-30）：由頁尾移來。放在「聯絡我們」之後，
+            因為名單本身邀請大家匯報問題。 */}
+        <section id="guardians" aria-labelledby="guardians-title" className="mt-5">
+          <GuardianCredits />
+        </section>
 
         {/* Legal */}
         <div className="bg-surface-sunken border border-line rounded-2xl p-5 text-xs text-ink-muted leading-relaxed mt-5">
