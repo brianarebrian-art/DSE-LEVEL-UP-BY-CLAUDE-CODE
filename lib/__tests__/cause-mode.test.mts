@@ -64,7 +64,9 @@ test('the session reorders before stratifying, so 3:5:2 still holds', () => {
 
 test('the pattern card links to a cause session', () => {
   const src = readFileSync('components/ErrorDNA.tsx', 'utf8')
-  assert.match(src, /mode=cause&cause=\$\{head\}/)
+  // 2026-09-30: the URL is built by causePracticeHref (shared with /result); check both the call and its output.
+  assert.match(src, /causePracticeHref\(subjectId, head\)/)
+  assert.equal(CM.causePracticeHref('math', 'A'), '/practice?subject=math&mode=cause&cause=A')
   assert.match(src, /即刻練返呢類/)
   const shell = readFileSync('app/practice/PracticeShell.tsx', 'utf8')
   assert.match(shell, /rawMode === 'cause' && cause \? 'cause'/)

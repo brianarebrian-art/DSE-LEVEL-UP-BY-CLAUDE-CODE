@@ -45,6 +45,7 @@ import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, L
 import RestMode from '@/components/RestMode'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
+import { INTERVALS, DAILY_REVIEW_LIMIT } from '@/lib/reviewSchedule'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { logReverseError, getReverseLog, type ReverseCause } from '@/lib/reverseLog'
@@ -1254,6 +1255,14 @@ export default function PracticeSession({
                           {tr('已記錄錯因：', 'Logged cause: ')}
                           <strong>{c ? `${c.emoji} ${tr(c.zh, c.en)}` : ''}</strong>
                           {tr(' → 已寫入逆向錯題本。', ' → saved to your reverse error log.')}
+                          {/* UX 循環 LOOP 10（P1-F）：講清楚之後幾時、喺邊度再見到呢題。數字讀 lib/reviewSchedule.ts，
+                              不另寫一套；重溫只在「進度」頁（ReviewScheduler），每日有上限。 */}
+                          <span className="mt-1 block text-ink-muted">
+                            {tr(
+                              `呢題會喺第 ${INTERVALS.join('、')} 日出現喺「進度」頁嘅重溫（每日最多 ${DAILY_REVIEW_LIMIT} 條）。`,
+                              `It comes back for review on the Progress page after ${INTERVALS.join(', ')} days (up to ${DAILY_REVIEW_LIMIT} a day).`,
+                            )}
+                          </span>
                         </p>
                       )
                     })()}

@@ -456,7 +456,7 @@ export default function ResultPageClient() {
         {/* 下一步（UX 循環 LOOP 7，2026-09-30）：原本在頁底、教師報告及 IG 卡之後（360×800 實測 y≈2,470）。
             現在緊接分數之後。規則見 lib/resultNextSteps.ts。 */}
         {(() => {
-          const steps = resultNextSteps(result)
+          const steps = resultNextSteps({ ...result, log: getReverseLog() })
           const en = locale === 'en'
           return (
             <nav aria-label={en ? 'Next steps' : '下一步'} className="no-print space-y-3">
@@ -474,6 +474,22 @@ export default function ResultPageClient() {
                     </span>
                   </span>
                   <ArrowRight size={16} aria-hidden className="shrink-0 text-gold" />
+                </Link>
+              )}
+              {steps.cause && (
+                <Link
+                  href={steps.cause.href}
+                  className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-line-strong bg-surface-raised px-4 py-3 text-ink transition-colors hover:border-gold"
+                >
+                  <span className="min-w-0">
+                    <span className="block text-xs text-ink-muted">
+                      {en ? `You chose this cause ${steps.cause.count} time${steps.cause.count > 1 ? 's' : ''} this session` : `今節揀咗 ${steps.cause.count} 次呢個錯因`}
+                    </span>
+                    <span className="block font-medium">
+                      {en ? `Practise against: ${dimensionShort(steps.cause.cause, true)}` : `專練「${dimensionShort(steps.cause.cause, false)}」`}
+                    </span>
+                  </span>
+                  <ArrowRight size={16} aria-hidden className="shrink-0 text-ink-muted" />
                 </Link>
               )}
               <div className="grid grid-cols-2 gap-3">

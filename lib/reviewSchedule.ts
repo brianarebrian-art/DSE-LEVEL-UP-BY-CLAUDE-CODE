@@ -14,6 +14,9 @@ export const INTERVALS = [1, 3, 7, 14, 30] as const
 
 export const REVIEW_DONE_KEY = 'dse_review_done'
 
+/** 「進度」頁每日最多顯示幾多條到期重溫（dueReviews 的預設上限）。練習頁的說明句亦讀這個數。 */
+export const DAILY_REVIEW_LIMIT = 5
+
 export interface DueItem {
   questionId: string
   subjectId: string
@@ -62,7 +65,7 @@ export function markReviewDone(questionId: string): void {
  * 今日到期重溫嘅題目。每條題目只計最近一次錯誤（reverseLog 新喺頭）。
  * @param limit 上限，預設 5 —— 每日最多 5 張卡，避免壓力堆疊。
  */
-export function dueReviews(limit = 5): DueItem[] {
+export function dueReviews(limit = DAILY_REVIEW_LIMIT): DueItem[] {
   const done = loadReviewDone()
   const today = todayStr()
   const seen = new Set<string>()

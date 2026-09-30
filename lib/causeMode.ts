@@ -22,6 +22,11 @@
 import type { ReverseCause, ReverseLogEntry } from '@/lib/reverseLog'
 import { hasCommandWord } from '@/lib/commandWords'
 
+/** URL of a session ordered by this cause. Shared by components/ErrorDNA.tsx and /result. */
+export function causePracticeHref(subjectId: string, cause: ReverseCause): string {
+  return `/practice?subject=${encodeURIComponent(subjectId)}&mode=cause&cause=${cause}`
+}
+
 export function parseCause(v: string | null | undefined): ReverseCause | null {
   return v === 'A' || v === 'B' || v === 'C' ? v : null
 }

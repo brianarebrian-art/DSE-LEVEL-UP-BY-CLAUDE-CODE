@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowRight, Fingerprint } from 'lucide-react'
 import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { useLocale } from '@/lib/i18n'
-import { causeHasMaterial } from '@/lib/causeMode'
+import { causeHasMaterial, causePracticeHref } from '@/lib/causeMode'
 
 // 錯因 DNA — visualises the distribution of the student's self-diagnosed error causes
 // (the A/B/C reverse-cause log written by the lockout). Pure client-side; reads the
@@ -55,7 +55,7 @@ export default function ErrorDNA() {
       const subjectId = log[0].subjectId
       const practiceHref =
         subjectId && causeHasMaterial(log, subjectId, head)
-          ? `/practice?subject=${encodeURIComponent(subjectId)}&mode=cause&cause=${head}`
+          ? causePracticeHref(subjectId, head)
           : null
       setStreak(len >= 3 ? { cause: head, len, practiceHref } : null)
     }

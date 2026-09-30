@@ -49,7 +49,7 @@ test('topics with no questions are ignored when ranking', () => {
 test('the result page shows next steps right after the score, once', () => {
   const page = read('app/result/ResultPageClient.tsx')
   const code = page.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
-  const steps = code.indexOf('resultNextSteps(result)')
+  const steps = code.indexOf('resultNextSteps({')
   assert.ok(steps > 0)
   assert.ok(steps < code.indexOf('{r.gradePosition}'), 'before the grade bar')
   assert.ok(steps < code.indexOf('copyTeacherReport}'), 'before the teacher report')

@@ -192,3 +192,21 @@
 - **未完成：** 「最近使用的科目」未做（Loop B 最後一項）。
 - **下一輪最高優先問題：** P0 A–E 主要項目已完成，轉入 P1-F：錯因自診後，同一頁沒有連去同一錯因的練習（`?mode=cause`）或同課題變式。
 - **Commit：** 見 git log（`feat(subjects): find subjects by the names students use`）。
+
+## LOOP 10 — 2026-09-30
+
+- **Slice：** 由錯因到補救（P1-F）。
+- **優先級：** P1。
+- **量度（改動前）：** 答錯並揀錯因後，練習頁只寫「已記錄錯因 → 已寫入逆向錯題本」。現有的重溫排程（第 1／3／7／14／30 日，只在「進度」頁出現，每日最多 5 條）及「按錯因練習」（`?mode=cause`，只在「進度」頁的錯題指紋卡、同一錯因連續 3 次時出現）在練習頁及結果頁都沒有提及。
+- **影響範圍：** `lib/reviewSchedule.ts`（每日上限改為具名常數 `DAILY_REVIEW_LIMIT`，數值不變）；`lib/causeMode.ts`（新增 `causePracticeHref`）；`components/ErrorDNA.tsx`（改用它）；`lib/resultNextSteps.ts`（新增 `sessionCause`）；`app/result/ResultPageClient.tsx`；`app/practice/PracticeSession.tsx`（一句說明）；測試。沒有新的儲存欄位，沒有第二套重溫或錯因邏輯。
+- **改動：**
+  - 揀錯因後多一句：「呢題會喺第 1、3、7、14、30 日出現喺『進度』頁嘅重溫（每日最多 5 條）。」數字讀 `INTERVALS` 及 `DAILY_REVIEW_LIMIT`。
+  - 結果頁「下一步」：如本節有揀錯因，顯示次數最多的一個（同數取最近揀的），「今節揀咗 N 次呢個錯因　專練『審題陷阱』」，連去按錯因排序的一節。只在該錯因確實有題可排前（`causeHasMaterial`）及結果記錄有開始時間時顯示。
+  - 按錯因練習的 URL 只在 `causePracticeHref` 組成，錯題指紋卡及結果頁共用。
+- **「已核實補救資料」：** 本輪沒有加入知識卡或新解說。SENSEI 知識卡只有四科、具名覆核；計數機貼士卡未核實的在 production 隱藏。沒有核實資料的科目，不顯示任何補救內容，而不是生成一段。
+- **測試：** 新增 `lib/__tests__/cause-remedy.test.mts`（6 項）：本節最多的錯因（忽略本節前及其他科）；同數取最近；只在有題可排及有開始時間時出連結；URL 可解析回錯因模式；兩處共用 URL 函數；說明句數字來自排程常數、不硬編。更新 `cause-mode.test.mts` 一項（由檢查 ErrorDNA 內的 URL 字串，改為檢查它呼叫共用函數，並驗證函數輸出）；`result-next-steps.test.mts` 一個定位字串。
+- **驗證：** `npm test` 1141/1141；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812，經濟科一節，7 題揀「審題陷阱」）：** 第一題揀錯因後出現重溫說明句，內容正確；結果頁「下一步」依次為「今次最弱：0/1 練返『國際貿易』」（y=893）、「今節揀咗 7 次呢個錯因　專練『審題陷阱』」（y=971）、「再做一次／揀另一個課題」（y=1049）；撳錯因連結即開始經濟科「🎯 專攻審題陷阱」一節，第一題四個選項出現。
+- **未完成：** 同一模板家族的「相似變式」未有獨立入口（按課題練習已涵蓋同課題題目）；圖示不一致（練習頁錯因用 🧠🎯🧮，發現卡用 🧩🔍✏️），屬既有問題，未改。
+- **下一輪最高優先問題：** P1-G／H：題目來源披露（`QuestionProvenance`）及題數單一來源——先核對現有披露是否準確、題數在首頁、科目頁、練習頁、信任頁、sitemap 是否由同一來源計算。
+- **Commit：** 見 git log（`feat(practice): point a chosen error cause to review and practice`）。
