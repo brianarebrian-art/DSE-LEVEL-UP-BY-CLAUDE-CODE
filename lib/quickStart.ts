@@ -23,3 +23,21 @@ export function quickStartSubjects(): SubjectMeta[] {
 export function quickStartHref(subjectId: string): string {
   return practiceHref(subjectId, null, 'normal')
 }
+
+/**
+ * Subjects the student practised most recently on this device, newest first
+ * (UX loop 16, 2026-09-30). Reads only the existing attempt log; nothing new is
+ * stored. Subjects that are no longer live are skipped.
+ */
+export function recentSubjectIds(
+  attempts: readonly { subjectId: string; timestamp: number }[],
+  isLive: (id: string) => boolean,
+  limit = 3,
+): string[] {
+  const out: string[] = []
+  for (const a of [...attempts].sort((x, y) => y.timestamp - x.timestamp)) {
+    if (out.length >= limit) break
+    if (!out.includes(a.subjectId) && isLive(a.subjectId)) out.push(a.subjectId)
+  }
+  return out
+}

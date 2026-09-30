@@ -17,7 +17,7 @@ const card = code.slice(code.indexOf('const ActiveCard'), code.indexOf('const Co
 
 test('every live card starts a session with the same URL as the homepage quick start', () => {
   assert.match(card, /href=\{quickStartHref\(s\.id\)\}/)
-  assert.match(code, /import \{ quickStartHref \} from '@\/lib\/quickStart'/)
+  assert.match(code, /import \{[^}]*\bquickStartHref\b[^}]*\} from '@\/lib\/quickStart'/)
   // The count comes from SESSION_SIZE, never a literal.
   assert.match(card, /開始 \$\{SESSION_SIZE\} 題/)
   assert.doesNotMatch(card, /開始 10 題|Start 10 questions/)

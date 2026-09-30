@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Lock, CheckCircle2, Search, Printer } from 'lucide-react'
 import {
@@ -10,7 +10,8 @@ import {
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { useLocale } from '@/lib/i18n'
 import { searchSubjects } from '@/lib/subjectSearch'
-import { quickStartHref } from '@/lib/quickStart'
+import { quickStartHref, recentSubjectIds } from '@/lib/quickStart'
+import { loadAttempts } from '@/lib/progress'
 import { SESSION_SIZE } from '@/lib/entitlements'
 
 // Tailwind needs literal class names, so map accents explicitly.
@@ -33,6 +34,13 @@ export default function SubjectsView() {
   const name = (s: SubjectMeta) => (locale === 'en' ? s.nameEn : s.name)
   const desc = (s: SubjectMeta) => (locale === 'en' ? s.descriptionEn : s.description)
   const en = locale === 'en'
+
+  // 最近練過的科目（UX 循環 LOOP 16）：只讀本機現有的練習紀錄，掛載後才讀，避免 SSR 不一致。
+  const [recent, setRecent] = useState<SubjectMeta[]>([])
+  useEffect(() => {
+    const live = (id: string) => subjects.some((s) => s.id === id && s.isActive)
+    setRecent(recentSubjectIds(loadAttempts(), live).map((id) => subjects.find((s) => s.id === id)!))
+  }, [])
 
   // Search / category / sort — over the single free, open subject grid.
   const [query, setQuery] = useState('')
@@ -146,7 +154,9 @@ export default function SubjectsView() {
             <span>{tl.title}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">{tl.title}</h1>
-          <p className="text-ink-muted text-base sm:text-lg max-w-2xl">
+          {/* 手機用 text-sm：英文介紹比中文長一行，回訪學生多了「最近練過」一行時，
+              第一張卡的「開始 10 題」會落到左下無障礙掣之下（375×812 實測 y=700–748）。 */}
+          <p className="text-ink-muted text-sm sm:text-lg max-w-2xl">
             {tl.introA}
             <span className="text-accent">{activeCount}{tl.introLiveA}</span>{tl.introB}
           </p>
@@ -158,6 +168,32 @@ export default function SubjectsView() {
             而嗰兩樣喺呢條科目層級嘅進度條上面永遠見唔到。
             一個永遠滿格嘅指標唔係報平安，係量錯咗嘢。
             覆蓋率而家逐科顯示（見 ActiveCard），跟實數行。 */}
+
+        {/* 最近練過：回訪學生毋須搜尋或捲動，直接再開一節。初次訪客沒有紀錄，這一行不出現。 */}
+        {recent.length > 0 && (
+          <section aria-labelledby="recent-subjects" className="mb-5">
+            {/* 標題只給讀屏；可見的「最近練過」與科目放同一行。375×812 實測，標題獨佔一行時，
+                第一張卡的「開始 10 題」會被推到左下無障礙掣之下。 */}
+            <h2 id="recent-subjects" className="sr-only">
+              {en ? `Practised recently: start ${SESSION_SIZE} questions` : `最近練過：直接開始 ${SESSION_SIZE} 題`}
+            </h2>
+            <ul className="flex flex-wrap items-center gap-2">
+              <li aria-hidden className="text-sm text-ink-muted">{en ? 'Recent' : '最近練過'}</li>
+              {recent.map((s) => (
+                <li key={s.id}>
+                  <Link
+                    href={quickStartHref(s.id)}
+                    aria-label={en ? `${s.nameEn}: start ${SESSION_SIZE} questions` : `${s.name}：開始 ${SESSION_SIZE} 題`}
+                    className="inline-flex min-h-12 items-center gap-1.5 rounded-xl border border-accent/40 bg-surface-raised px-3 text-sm font-medium text-ink transition-colors hover:border-accent"
+                  >
+                    <span aria-hidden>{s.emoji}</span>
+                    {en ? s.shortEn : s.short}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Controls: search + sort */}
         <div className="flex gap-3 mb-4">
