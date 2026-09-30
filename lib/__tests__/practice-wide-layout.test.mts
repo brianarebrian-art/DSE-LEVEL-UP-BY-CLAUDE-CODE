@@ -16,13 +16,16 @@ const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
 const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14">')
 const cardAt = code.indexOf('<div key={currentQ.id} className="bg-surface-raised')
 const feedbackAt = code.indexOf('<div ref={feedbackRef}')
-const trackerAt = code.indexOf('Array.from({ length: totalQ })')
+// 2026-09-30 (loop 19): the bottom score dots moved to the top status strip, so the
+// grid is now followed directly by the emotion check-in; anchor on that instead.
+const afterGridAt = code.indexOf('{emoOpen && <EmotionThermometer')
 
 test('the question card and the feedback share one two-column grid from lg up', () => {
   assert.ok(gridAt > 0, 'grid wrapper')
   assert.ok(gridAt < cardAt && cardAt < feedbackAt, 'card then feedback inside the grid')
-  // The grid closes before the score tracker, which stays full width.
-  const closeAt = code.lastIndexOf('</div>', trackerAt)
+  // The grid closes before the emotion check-in that follows the session.
+  assert.ok(afterGridAt > feedbackAt)
+  const closeAt = code.lastIndexOf('</div>', afterGridAt)
   assert.ok(feedbackAt < closeAt)
   assert.match(code, /<div className="max-w-2xl mx-auto lg:max-w-6xl">/)
 })
@@ -33,7 +36,7 @@ test('below lg nothing changes: every layout class on the wrapper is lg-prefixed
 })
 
 test('before an answer the right column explains itself instead of sitting empty, on lg only', () => {
-  const hint = code.slice(code.indexOf('{answerState === null && (', feedbackAt), trackerAt)
+  const hint = code.slice(code.indexOf('{answerState === null && (', feedbackAt), afterGridAt)
   assert.match(hint, /className="focus-dim hidden lg:block/)
   assert.match(hint, /揀咗答案之後/)
 })

@@ -45,6 +45,8 @@ import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, L
 import RestMode from '@/components/RestMode'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
 import { A11yButton } from '@/components/A11yPanel'
+import QuestionStatusStrip from '@/components/QuestionStatusStrip'
+import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import { INTERVALS, DAILY_REVIEW_LIMIT } from '@/lib/reviewSchedule'
 import DifficultyBadge from '@/components/DifficultyBadge'
@@ -452,7 +454,6 @@ export default function PracticeSession({
 
   const currentQ = questions[current]
   const totalQ = questions.length
-  const progress = totalQ > 0 ? (current / totalQ) * 100 : 0
   // 2026-09-09：「下一題」原本會喺反思鎖期間扣住（要答啱追問題 ＋ 等夠 30 秒）。
   // 鎖已剷除，所以永遠唔扣 —— 學生揀完錯因即刻睇得到解析，撳得到下一題。
 
@@ -1017,12 +1018,8 @@ export default function PracticeSession({
               <EnoughTodayButton />
             </span>
           </div>
-          <div className="h-1.5 bg-line rounded-full overflow-hidden">
-            <div
-              className="h-full bg-accent-strong rounded-full transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          {/* 2026-09-30（UX 循環 LOOP 19，創辦人決定 2）：細進度條改為各題狀態列，只顯示、不可跳題。 */}
+          <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
         </div>
 
         {/* 2026-09-30（UX 循環 LOOP 8）：≥1024px 題目與回饋並排。1024×768 實測，題目卡只佔中間 672px、
@@ -1419,21 +1416,6 @@ export default function PracticeSession({
                 'After you choose an answer, whether it was right, what tripped you up and the explanation appear here, without scrolling.')}
           </p>
         )}
-        </div>
-
-        {/* Score tracker */}
-        <div className="focus-dim mt-6 flex justify-center gap-2 flex-wrap">
-          {Array.from({ length: totalQ }).map((_, i) => {
-            let color = 'bg-line'
-            if (i < answers.length) {
-              // 規格書 §4.2 + 憲章第 7 條：一行紅點就係一行判決。
-              // 答錯改用金色（發現盲點），同答啱嘅青色一樣清晰可辨，但唔帶責備。
-              color = answers[i]?.isCorrect ? 'bg-accent' : 'bg-gold'
-            } else if (i === current) {
-              color = 'bg-accent-strong'
-            }
-            return <div key={i} className={`w-3 h-3 rounded-full ${color} transition-colors`} />
-          })}
         </div>
       </div>
 

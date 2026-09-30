@@ -372,3 +372,15 @@ Yuna 於 2026-09-30 在對話中回覆 LOOP 17 的暫停報告，逐項決定如
 - **未改：** 沒有頁頂的全屏頁（呼吸空間、紙筆戰士、答題紙）仍用浮動掣；如要一併移走，需要先為這些頁加頁頂，屬另一個 slice。
 - **下一輪：** 創辦人決定 2（第 1–10 題狀態列，不可跳題）。
 - **Commit：** 見 git log（`feat(a11y): phone accessibility entry in the page header`）。
+
+## LOOP 19 — 2026-09-30
+
+- **Slice：** 練習頁第 1–10 題狀態列（創辦人決定 2：只顯示，不可跳題）。
+- **優先級：** P1（練習流程）。
+- **量度（改動前）：** 頁頂只有一條 6px 進度條；各題對錯只在頁底一行 12px 圓點顯示，沒有題號，只靠顏色分對錯，並在回饋及解析之下，答題時看不到。
+- **影響範圍：** 新增 `lib/questionStatus.ts`、`components/QuestionStatusStrip.tsx`；`app/practice/PracticeSession.tsx`（進度條換成狀態列，移除頁底圓點）；測試：新增 `question-status.test.mts`，`practice-wide-layout.test.mts` 及 `answer-feedback.test.mts` 的定位改指狀態列（要求不變：答錯用金色、不用紅色）。
+- **改動：** 頁頂一列十格，每格有題號；已答的分「答啱」（實線）及「發現盲點」（虛線、金色），現時一題實心，其餘「未做」。用 `<ol>`，現時一題 `aria-current="step"`，每格有讀屏文字（例如「第 2 題：發現盲點」）。沒有按鈕、連結或點擊處理；轉題仍只經「下一題」。
+- **測試：** 5 項新測試。變異測試：加點擊處理、盲點改實線 → 2 項失敗。
+- **驗證：** `npm test` 1176/1176（第一次 1 項失敗：舊測試鎖住已移除的圓點寫法，已改指狀態列）；`qa` rc=0；`tsc` rc=0；`lint` 0 error；`build` rc=0。
+- **畫面（production build，375×812）：** 狀態列 y=140、高 24、每格 31px；答五題後顯示「答啱、盲點、盲點、答啱、盲點、而家」；無水平捲動；舊圓點 0 個。測試作答紀錄已從瀏覽器清走。
+- **Commit：** 見 git log（`feat(practice): status strip for questions 1–10, display only`）。

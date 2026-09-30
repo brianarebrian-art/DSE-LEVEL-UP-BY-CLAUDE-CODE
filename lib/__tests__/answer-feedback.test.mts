@@ -88,7 +88,14 @@ test('答錯回饋鏈由頭到尾冇任何玫紅（規格書 §4.2）', () => {
 })
 
 test('進度點答錯用金色，唔係紅點 —— 一行紅點就係一行判決', () => {
-  assert.match(PRACTICE, /isCorrect \? 'bg-accent' : 'bg-gold'/)
+  // 2026-09-30（UX 循環 LOOP 19）：頁底圓點改為頁頂各題狀態列，同一要求改為檢查狀態列。
+  assert.match(PRACTICE, /<QuestionStatusStrip statuses=\{questionStatuses\(totalQ, answers, current\)\}/)
+  const strip = readFileSync('components/QuestionStatusStrip.tsx', 'utf8')
+  const style = (k: string) => strip.match(new RegExp(`${k}: '([^']+)'`))![1]
+  assert.match(style('blindSpot'), /border-gold/)
+  assert.match(style('blindSpot'), /bg-gold/)
+  assert.match(style('correct'), /border-accent/)
+  assert.doesNotMatch(strip, /rose|red-|danger/)
 })
 
 test('答錯第一句係「發現盲點」而非「錯」', () => {
