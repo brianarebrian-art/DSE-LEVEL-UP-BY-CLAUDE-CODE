@@ -66,7 +66,9 @@ function readOwn(): string[] {
   }
 }
 
-export default function GoodTodayCard({ className = '' }: { className?: string }) {
+/** headingLevel：空狀態下卡片緊接頁面 h1，要用 h2，否則標題層級由 h1 跳到 h3（2026-10-01 R2-11）。 */
+export default function GoodTodayCard({ className = '', headingLevel = 3 }: { className?: string; headingLevel?: 2 | 3 }) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3'
   const { locale } = useLocale()
   const en = locale === 'en'
 
@@ -128,9 +130,9 @@ export default function GoodTodayCard({ className = '' }: { className?: string }
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <Heart size={16} className="text-gold shrink-0" aria-hidden />
-            <h3 className="text-sm font-medium text-ink">
+            <Heading className="text-sm font-medium text-ink">
               {en ? 'You already did well today' : '今日已經好叻'}
-            </h3>
+            </Heading>
           </div>
           <p className="mt-1 text-xs leading-relaxed text-ink-muted">
             {en

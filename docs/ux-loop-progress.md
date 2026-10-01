@@ -828,3 +828,23 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - 平板（production，未登入）：768／820／912／1024，中英文各一次。四個闊度都只有左側圖示列、無漢堡掣；頂欄「開始練習／主題／語言／Google 登入」無溢出、無重疊、無斷行；頁面無超出視窗元素。⬜ 待驗證：已登入狀態下的頂欄（無法登入）。
 - `/start` 五種情況（瀏覽器實測，清空 localStorage 後逐一建立狀態）：A 新用戶 → `/subjects`；B 有紀錄 → `/practice?subject=physics`；C 物理做到第 3 題、另有較新的數學紀錄 → 回到物理並提示「繼續做第 3 題」，撳後題目狀態列顯示第 3 題、題目 id 相同；D 已完成的 session → 最近科目的新一節，無續做提示；E 無效科目（session 及紀錄都是）→ `/subjects`，無 undefined、無重複跳轉。
 - **發現並修正：** 直接開 `/practice?subject=<不存在或已下架>` 而本機有該科的未完成紀錄時，頁面仍問「繼續做第 N 題」，撳後才顯示「呢個練習仲未上線」。改為只有保存的題目全部仍在題庫時才提出續做（與 `acceptResume` 同一條件）。實測：無效科目不再提示；數學正常續做提示仍出現。
+
+## R2-11b 結果頁 8 個闊度；字眼審查；無障礙掃描修正
+
+- 結果頁（production，7/10 數學）：360／375／390／430／768／1024／1280／1440 各一次，每次 1 個 h1、「本節表現：發展中」、無 5**／5*／Level 5／今次表現等級／真實水平／距離／等級位置／🏆、無超出視窗元素、無空框。
+- 等級字眼全 repo 分類：
+  - LIVE_UI：只剩否定句（「唔係 DSE 等級」等），保留。
+  - DEFERRED_DECISION：`/predictor`（`lib/mastery.ts`、`lib/levelDistribution.ts`、`MasteryEstimate`）；頁尾及 `/about`「等級預測僅供參考」（憲章 §13，`STALE_CHARTER_COPY`）。
+  - 資料層：`lib/progress.ts`、`lib/grading.ts` 的 `predictGrade` 仍為 `dse_progress.grade` 計值（上雲 key），不顯示。
+  - 舊註釋：`ResultPageClient` 中文科提示註釋、`lib/pageOrder.ts`「側欄『等級預測』」— 非 UI，見 R2-11c。
+- `/predictor` 入口（側欄、dashboard 卡、頁名）一律叫「練習表現（估算）」，空狀態寫「唔係考評局成績預測」，沒有被描述成官方預測。未改其內容（`DECISION_CONFLICT`）。
+- `/writing`「2023 Poems & Songs」字眼擴散檢查：SEO metadata、分享卡、頁尾、sitemap 都沒有；**另外出現在英文科科目頁的寫作卡**（`SubjectDetailView.tsx:226`：「HKEAA 7 分制自評量表（2023『Poems & Songs』主題）」）。按 prompt 不改，已加入衝突清單。
+- 「掌握／保證／一定／100%」審查：餘下的「100%」都是「100% 免費」或「100% 原創篇章」；「保證」全部是否定句；寫作量表「1 = 最弱」是量表端點。無需改。
+- 無障礙掃描（375px，14 條路由：/、/subjects、/subjects/math、/practice、/result、/dashboard、/writing、/answer-sheet、/sensei、/paper-warrior、/predictor、/about、/privacy；本站沒有 /progress，進度頁即 /dashboard）：每頁 1 個 `<main>`；對話框都有標籤。修正：
+  - `/answer-sheet` 有兩個 h1（讀屏區塊的 h1＋頁面 h1）→ 讀屏區塊改為段落。
+  - `/dashboard` 空狀態由 h1 跳到 h3 → `GoodTodayCard` 加 `headingLevel`，空狀態用 h2。
+  - `/writing` 文章輸入框只有 placeholder → 加 `aria-label`；1–7 自評掣加 `aria-pressed` 及「內容：4 分（滿分 7）」標籤，高度 38 → 44px（7 粒一行，闊度 37px，高於 WCAG 2.5.8 的 24px）；列印／清空掣 42 → 44px。
+  - `/sensei` 搜尋欄及「問」掣 38 → 44px。
+  - 誤報（已人手確認）：`/subjects/math` 考評局連結有文字（在未展開的 `<details>` 內）；`/practice` 超出視窗的是讀屏專用隱藏連結；`/subjects` 科目名連結以 `after:inset-0` 覆蓋整張卡。
+  - 未改：首頁盲測示範內「顯示被遮蓋嘅數值」行內掣（20px，屬句內例外）；`/paper-warrior` 分段掣 38–41px 闊；`/about` 電郵連結 42px 高。
+- 測試：`a11y-final-scan.test.mts`。瀏覽器重驗：/dashboard 標題 h1→h2；/answer-sheet 1 個 h1；/writing 標籤及 aria-pressed 生效；/sensei 44px。

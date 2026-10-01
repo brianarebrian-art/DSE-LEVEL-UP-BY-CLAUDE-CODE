@@ -104,12 +104,12 @@ export default function SenseiClient() {
               onChange={(e) => setInput(e.target.value)}
               placeholder={en ? 'e.g. why do public goods have a free-rider problem?' : '例如：點解共用品會有搭便車問題？'}
               aria-label={en ? 'Search knowledge cards' : '搜尋知識卡'}
-              className="flex-1 min-w-0 rounded-lg bg-ink/[0.04] border border-ink/15 px-3 py-2 text-sm text-ink placeholder:text-ink-muted/70 focus:outline-none focus:border-accent/50"
+              className="min-h-11 flex-1 min-w-0 rounded-lg bg-ink/[0.04] border border-ink/15 px-3 py-2 text-sm text-ink placeholder:text-ink-muted/70 focus:outline-none focus:border-accent/50"
             />
             <button
               type="submit"
               disabled={busy}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-surface-sunken border border-accent/40 px-4 py-2 text-sm text-accent disabled:opacity-50"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-surface-sunken border border-accent/40 px-4 py-2 text-sm text-accent disabled:opacity-50"
             >
               <Search size={14} /> {en ? 'Ask' : '問'}
             </button>
