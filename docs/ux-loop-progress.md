@@ -865,3 +865,49 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - 修正：讓位改由 `Footer` 負責（`calc(var(--bottom-nav-h) + env(safe-area-inset-bottom))`），`<main>` 不再讓位（沉浸式路由沒有底欄亦沒有頁尾）。
 - 實測（production）：`/dashboard` 360px 最後一行頁尾連結底部 693px < 底欄 743px。360px 的 /、/subjects、/subjects/math、/about、/privacy 及 430px 的 /dashboard、/writing、/sensei、/paper-warrior、/predictor、/answer-sheet：捲到最底無連結被固定元素蓋住、無超出視窗元素。
 - 測試：`route-states.test.mts` 加一項。
+
+## R2-11e 其餘驗證及收口
+
+- **手機打橫**（812×375、844×390，`/practice`）：頂部固定列 64px；兩粒浮動掣在內容欄左右之外；第 4 個選項捲到底可撳；報告對話框（338px 高）及無障礙對話框都在視窗內、可捲、關閉掣可見；數學式正常排版。
+- **桌面練習頁**：1280／1366 兩欄（各 564px，置中）；1440／1536／1920 三欄（220／514／514，總闊上限 1296px）；浮動掣全部在內容外，無重疊。1920 兩邊各約 312px 留白（刻意的闊度上限）。
+- **效能（只量度）**：未壓縮 JS — `/practice` 約 1.2MB（KaTeX 256KB、框架 432KB、題目相關代碼 78KB，無整個題庫）；`/subjects` 1.3MB、`/result` 1.5MB、`/dashboard` 1.3MB。後三頁的 KaTeX 不是初始 `<script>`，是 DOMContentLoaded 之後 Next 預載練習頁時下載，不阻塞首次顯示。無高把握修正，未改。
+- **API 請求上限**（本機 production 實測）：合格 body 200、69KB body 413、壞 JSON 400、未登入 `/api/progress`／`/api/sync/settings` 401；repo 內無直接讀 body 的寫法（R2-10 測試已按參數名掃描）。
+- **測試逃生門**：無 skip／todo／only；`test-integrity` 加入 `.only`。QA 腳本的 `process.exit(0)` 全部只在通過分支。
+- **私隱對照**（`PRIVACY_MISMATCH` 只記錄，不改政策）：
+  - 已修（客觀錯誤）：刪帳號清單把 `user_sessions` 列了兩次，私隱頁因此寫「共 8 張表」，實為 7 張。
+  - `PRIVACY_MISMATCH`：私隱頁「技術日誌」只講本站記錄的錯誤訊息，沒有提到 Vercel 平台本身的請求日誌（一般包括 IP 及 user-agent，由 Vercel 保存）。需創辦人決定是否補一句。
+  - `PRIVACY_MISMATCH`（待核實）：刪除清單仍含 `wall_posts`、`wall_likes`（代碼註釋寫 0011 未套用；記憶紀錄 2026-07-29 生產環境無這兩張表）。刪除路由對不存在的表當 no-op，不影響功能，但「共 7 張表」可能多算 2。需在 Supabase 核實。
+  - 其餘一致：未登入不寫 cookie 追蹤（代碼無 `document.cookie`）、無分析服務、同步 14 項由 `lib/cloudKeys.ts` 計、伺服器只在記憶體按 IP 計數。
+- **限流文件**：`proxy.ts` 檔頭及 `docs/SECURITY-audit-2026-09-25.md` 都寫明是每個 instance 各自計、不是分散式；私隱頁寫「記憶體按 IP 計數，重啟消失」，一致。沒有任何頁面聲稱全局防護。
+- **來源掃描回歸**：建立臨時 fixture → 測試 fail → 刪除 → pass。過程中發現 `data/` 根目錄的新檔不會被捉到（紀錄到處都有「data/」字樣），已修正。
+- **死碼**：`gradeBgColors`／`gradeMessages`／`predictedGrade`／`gradeConfidence`／舊 `neighbours()` 只剩說明註釋；`ErrorDNA` 是內部組件名；`/sensei` 的「SENSEI」是 h1「知識卡」上的副標題。
+- **頁尾**：沒有致謝名單、方法論長文或限制說明；保留導航連結及憲章 §13 免責句。未改。
+- **瀏覽器資料**：清空 localStorage、sessionStorage 及 IndexedDB（`dse-qbank`），最後以乾淨訪客狀態截圖首頁（390px）。
+- **最後完整驗證**（2026-10-01，HEAD `3991b9b` 之上僅文件改動）：npm test 1278/1278（skipped 0、todo 0）、qa rc=0、tsc rc=0、lint 0 error（35 warning 為原有）、build rc=0；production server 上 17 條路由回 200。
+
+### R2-11 停止條件逐項
+
+| 項目 | 結果 |
+|---|---|
+| R2-10 重新測試 | ✅ 全套重跑通過 |
+| 768／820／912／1024 平板 | ✅ 只有側欄（未登入狀態） |
+| 英文平板頂欄 | ✅ 無溢出、重疊、斷行（未登入狀態） |
+| `/start` 回歸 | ✅ A–E 瀏覽器實測；修正無效科目仍提示續做 |
+| 結果頁無等級 UI | ✅ 8 個闊度 |
+| 非暫緩頁面無舊等級 UI | ✅ |
+| `/predictor` 記為 DECISION_CONFLICT | ✅ |
+| `/writing` 來源衝突受控 | ✅ 另發現英文科頁寫作卡同一字眼（已記錄，未改） |
+| Recommendation V1 | ✅ |
+| 手機／平板／桌面 QA | ✅（修正底欄蓋住頁尾） |
+| 無障礙掃描 | ✅（修正 5 項，見 R2-11b／c） |
+| API 請求上限 | ✅ |
+| 測試逃生門 | ✅ |
+| 私隱實作對照 | ✅ 完成；2 項 PRIVACY_MISMATCH 待決定／核實 |
+| 限流文件對照 | ✅ |
+| 來源掃描 | ✅（修正一個漏洞） |
+| 死碼 | ✅ |
+| 頁尾 | ✅ |
+| 瀏覽器測試資料清理 | ✅ |
+| npm test／qa／tsc／lint／build | ✅ |
+| 已登入狀態的頂欄及請求上限 | ⬜ 待驗證（無法登入） |
+| React #418 一次 | ⬜ 待驗證：只在長時間使用的測試分頁出現一次，新分頁 10 條路由重現不到 |
