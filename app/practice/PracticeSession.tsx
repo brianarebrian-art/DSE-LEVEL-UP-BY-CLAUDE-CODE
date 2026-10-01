@@ -474,6 +474,11 @@ export default function PracticeSession({
     const id = requestAnimationFrame(() => {
       const el = feedbackRef.current
       if (!el) return
+      // R2-11（2026-10-01）：撳過的選項會變成 disabled，焦點因而跌回 <body>（Chrome 會延後才移走，
+      // 此刻 activeElement 可能仍是那粒 disabled 掣）；鍵盤及讀屏用戶要由頁頂重新 Tab。
+      // 焦點冇咗或者喺 disabled 掣上，才移到回饋區（唔捲動，捲動照下面規則）。
+      const active = document.activeElement as HTMLButtonElement | null
+      if (!active || active === document.body || active.disabled) el.focus({ preventScroll: true })
       const delta = feedbackScrollDelta(el.getBoundingClientRect().top, window.innerHeight)
       if (delta <= 0) return
       const reduce =
@@ -720,6 +725,20 @@ export default function PracticeSession({
   //    雷達圖、遺忘曲線重溫嘅唯一入料口（憲章 §7.2 明文保留）。
   //    原本嘅測試只驗咗「答啱之後 Enter 換題」，所以冇捉到。
   const canProceed = answerState !== null && (answerState.isCorrect || diagnosed !== null)
+
+  // R2-11（2026-10-01）：揀完錯因後，錯因掣被解析取代，焦點跌回 <body>，鍵盤用戶要由頁頂
+  // 重新 Tab。焦點冇咗才移到「下一題」（唔捲動；Shift+Tab 可返回解析）。
+  const diagnosedNextRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    if (diagnosed === null) return
+    const id = requestAnimationFrame(() => {
+      const active = document.activeElement as HTMLButtonElement | null
+      if (!active || active === document.body || active.disabled || !active.isConnected) {
+        diagnosedNextRef.current?.focus({ preventScroll: true })
+      }
+    })
+    return () => cancelAnimationFrame(id)
+  }, [diagnosed])
 
   // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
   //
@@ -1176,7 +1195,7 @@ export default function PracticeSession({
 
         {/* Feedback + Next */}
         {answerState !== null && (
-          <div ref={feedbackRef} className="animate-slide-up">
+          <div ref={feedbackRef} tabIndex={-1} className="animate-slide-up focus:outline-none">
             {/* canProceed：同 Enter 快捷鍵共用同一個判斷（見上面 canProceed 定義）。 */}
             {!canProceed ? (
               /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
@@ -1368,6 +1387,7 @@ export default function PracticeSession({
                 {/* 2026-09-09：呢個掣原本會喺反思鎖期間變灰、出一個鎖頭同倒數秒數。
                     鎖已剷除，所以佢永遠撳得。 */}
                 <button
+                  ref={diagnosedNextRef}
                   onClick={proceed}
                   className="w-full font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent"
                 >

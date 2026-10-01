@@ -51,7 +51,9 @@ export default function PracticePage() {
               const subjectMc = subjectQuestions.length - subjectWritten
               return (
                 <li key={s.id}>
-                  <a href={`/subjects/${s.id}`}>
+                  {/* tabIndex -1（R2-11）：隱藏區塊的連結原本會被 Tab 逐個經過，焦點落在畫面外，
+                      鍵盤用戶要按 25 次才到題目。讀屏軟件仍可用瀏覽模式讀到及跟隨。 */}
+                  <a href={`/subjects/${s.id}`} tabIndex={-1}>
                     {s.name} — {subjectQuestions.length} 總題數 / total questions（{subjectMc} MC / multiple-choice、{subjectWritten} 書寫題 / written-response）{/* i18n-exempt: 雙語並列（server component 冇 locale） */}
                   </a>
                 </li>

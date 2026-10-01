@@ -28,3 +28,43 @@ test('/sensei search field and button are 44px tall', () => {
   assert.match(s, /className="min-h-11 flex-1 min-w-0 rounded-lg/)
   assert.match(s, /type="submit"[\s\S]{0,80}className="inline-flex min-h-11/)
 })
+
+// Keyboard (R2-11, prompt §15): links inside a visually hidden block took Tab focus off
+// screen. On /practice a keyboard user pressed Tab 25 times before reaching the question.
+test('links inside visually hidden blocks are not in the Tab order', async () => {
+  const { readdirSync, statSync } = await import('node:fs')
+  const { join } = await import('node:path')
+  const bad: string[] = []
+  const walk = (d: string) => {
+    for (const f of readdirSync(d)) {
+      const p = join(d, f)
+      if (f === '__tests__' || f === 'node_modules') continue
+      if (statSync(p).isDirectory()) { walk(p); continue }
+      if (!/\.tsx$/.test(f)) continue
+      const src = readFileSync(p, 'utf8')
+      for (const m of src.matchAll(/^( *)<div className="sr-only">/gm)) {
+        const end = src.indexOf(`\n${m[1]}</div>`, m.index)
+        const block = src.slice(m.index, end < 0 ? undefined : end)
+        for (const a of block.matchAll(/<(a|Link)\s[^>]*>/g)) if (!/tabIndex=\{-1\}/.test(a[0])) bad.push(`${p}: ${a[0].slice(0, 60)}`)
+      }
+    }
+  }
+  walk('app'); walk('components')
+  assert.deepEqual(bad, [])
+})
+
+// Keyboard (R2-11): the chosen option becomes disabled, so focus fell back to <body>.
+test('after answering, lost focus moves to the feedback region without scrolling', () => {
+  const s = code('app/practice/PracticeSession.tsx')
+  assert.match(s, /if \(!active \|\| active === document\.body \|\| active\.disabled\) el\.focus\(\{ preventScroll: true \}\)/)
+  assert.match(s, /<div ref=\{feedbackRef\} tabIndex=\{-1\} className="animate-slide-up focus:outline-none">/)
+})
+
+test('after choosing a cause, lost focus moves to the next-question button', () => {
+  const s = code('app/practice/PracticeSession.tsx')
+  assert.match(s, /if \(diagnosed === null\) return/)
+  assert.match(s, /diagnosedNextRef\.current\?\.focus\(\{ preventScroll: true \}\)/)
+  assert.match(s, /ref=\{diagnosedNextRef\}\s+onClick=\{proceed\}/)
+  // Hooks must run before the component's first early return (the resume card).
+  assert.ok(s.indexOf('const diagnosedNextRef') < s.indexOf('if (resumeOffer) {'))
+})

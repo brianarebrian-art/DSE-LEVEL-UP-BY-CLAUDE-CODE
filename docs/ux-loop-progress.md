@@ -848,3 +848,13 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
   - 誤報（已人手確認）：`/subjects/math` 考評局連結有文字（在未展開的 `<details>` 內）；`/practice` 超出視窗的是讀屏專用隱藏連結；`/subjects` 科目名連結以 `after:inset-0` 覆蓋整張卡。
   - 未改：首頁盲測示範內「顯示被遮蓋嘅數值」行內掣（20px，屬句內例外）；`/paper-warrior` 分段掣 38–41px 闊；`/about` 電郵連結 42px 高。
 - 測試：`a11y-final-scan.test.mts`。瀏覽器重驗：/dashboard 標題 h1→h2；/answer-sheet 1 個 h1；/writing 標籤及 aria-pressed 生效；/sensei 44px。
+
+## R2-11c 鍵盤操作
+
+- 實測（production，375px）練習頁全程只用鍵盤：Tab 7 下到第一個選項（有可見焦點框）→ Enter 作答 → 焦點落在回饋區 → Tab 到錯因 → Space 揀 → 焦點落在「下一題」→ Enter → 題目狀態列顯示第 2 題。答錯時若先出情緒溫度計，焦點在其標題，揀完後回到回饋區。無障礙對話框：Enter 開、焦點入對話框、Escape 關、焦點回到觸發掣。
+- **發現並修正：**
+  1. `/practice`、`/notes/[subject]` 的讀屏專用區塊內有 25 條科目／課題連結，會被 Tab 逐條經過，焦點落在畫面外。改為 `tabIndex={-1}`（讀屏瀏覽模式仍可讀及跟隨），並加測試：任何 `sr-only` 區塊內的連結都要不在 Tab 次序內。
+  2. 作答後撳過的選項變 disabled，焦點跌回 `<body>`，要由頁頂重新 Tab。改為焦點冇咗（或仍在 disabled 掣上）時移到回饋區（`tabIndex=-1`，不捲動）。
+  3. 揀錯因後錯因掣被解析取代，焦點又跌回 `<body>`。改為移到「下一題」掣（不捲動；Shift+Tab 可返回解析）。
+- 兩處舊註釋（`lib/pageOrder.ts`「側欄『等級預測』」、結果頁中文科提示註釋）更正為現況。
+- 測試：`a11y-final-scan.test.mts` 加 3 項；`answer-feedback` 類測試錨點更新（`feedbackRef` 加 `tabIndex={-1}`）。
