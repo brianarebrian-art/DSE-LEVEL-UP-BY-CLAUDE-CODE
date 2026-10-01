@@ -325,7 +325,11 @@ export default function PracticeSession({
   // student chooses, never silently auto-applied.
   const [resumeOffer, setResumeOffer] = useState<ActiveSession | null>(() => {
     const saved = loadActiveSession()
-    return isResumable(saved, subjectId, topicFilter, mode) ? saved : null
+    if (!saved || !isResumable(saved, subjectId, topicFilter, mode)) return null
+    // 2026-10-01（改進循環 2 R2-11）：只在保存的題目全部仍在題庫時才提出續做。
+    // 原本科目已下架或不存在（題庫為空）時，仍會問「繼續做第 N 題」，撳完才發現做不到。
+    const ids = new Set(bank.map((q) => q.id))
+    return saved.questionIds.every((id) => ids.has(id)) ? saved : null
   })
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   // Which reverse-cause the student admitted to for the current wrong answer.
