@@ -14,7 +14,7 @@ const files = DIRS.flatMap((d) => readdirSync(d).filter((f) => f.endsWith('.test
 test('no skipped or todo tests', () => {
   const bad = files.filter((f) => {
     const src = readFileSync(f, 'utf8').replace(/^\s*\/\/.*$/gm, '')
-    return /\b(test|it|describe)\.(skip|todo)\s*\(|[{,]\s*(skip|todo)\s*:\s*(true|['"`])/.test(src)
+    return /\b(test|it|describe)\.(skip|todo|only)\s*\(|[{,]\s*(skip|todo|only)\s*:\s*(true|['"`])/.test(src)
   })
   assert.deepEqual(bad, [])
 })
@@ -28,6 +28,8 @@ test('no test returns early because a module or fixture is missing', () => {
 test('negative self-test: the scans catch the patterns they are for', () => {
   assert.ok(/\b(test|it|describe)\.(skip|todo)\s*\(/.test("test.skip('x', () => {})"))
   assert.ok(/[{,]\s*(skip|todo)\s*:\s*(true|['"`])/.test("test('x', { skip: true }, () => {})"))
+  // R2-11: .only would silently run one test and skip the rest of the file.
+  assert.ok(/\b(test|it|describe)\.(skip|todo|only)\s*\(/.test("test.only('x', () => {})"))
   const escape = /if\s*\(\s*!\s*(mod|m|module|ns|raw|lib|src|data|file|fixture)\s*\)\s*return\s*;?\s*($|\})|catch\s*(\(\w*\))?\s*\{\s*return\s*;?\s*\}/m
   assert.ok(escape.test('if (!mod) return'))
   assert.ok(escape.test('try { x() } catch { return }'))

@@ -26,7 +26,11 @@ test('every data file that mentions the HKEAA is listed', () => {
   for (const abs of walk(join(ROOT, 'data'))) {
     if (!/HKEAA|考評局|hkeaa/.test(readFileSync(abs, 'utf8'))) continue
     const rel = relative(ROOT, abs)
-    const listed = doc.includes(rel) || doc.includes(`${dirname(rel)}/`)
+    // R2-11 (2026-10-01): the old check accepted any file directly in data/, because the
+    // record mentions "data/" everywhere. A directory counts only when it is listed as
+    // its own entry, in backticks, and is not data/ itself.
+    const dir = dirname(rel)
+    const listed = doc.includes(`\`${rel}\``) || (dir !== 'data' && doc.includes(`\`${dir}/\``))
     if (!listed) missing.push(rel)
   }
   assert.deepEqual(missing, [], 'add a row to CONTENT_PROVENANCE.md')
