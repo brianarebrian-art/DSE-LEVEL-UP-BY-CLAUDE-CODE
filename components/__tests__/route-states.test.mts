@@ -148,3 +148,10 @@ test('紙筆戰士降級之後仍然有唔止一個入口', () => {
     assert.ok(/\/paper-warrior/.test(src), `${name} 冇紙筆戰士入口 —— 由導覽降級落嚟就唔可以兩邊都冇`)
   }
 })
+
+test('底欄讓位喺頁尾，唔喺 <main>（R2-11：捲到最底頁尾最後一行被底欄蓋住）', () => {
+  const shell = readFileSync(new URL('../AppShell.tsx', import.meta.url).pathname, 'utf8')
+  const footer = readFileSync(new URL('../Footer.tsx', import.meta.url).pathname, 'utf8')
+  assert.ok(!/paddingBottom: 'var\(--bottom-nav-h\)'/.test(shell), '<main> 仲有底欄讓位')
+  assert.ok(/paddingBottom: 'calc\(var\(--bottom-nav-h\) \+ env\(safe-area-inset-bottom\)\)'/.test(footer), 'Footer 冇底欄讓位')
+})

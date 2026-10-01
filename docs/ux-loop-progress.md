@@ -858,3 +858,10 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
   3. 揀錯因後錯因掣被解析取代，焦點又跌回 `<body>`。改為移到「下一題」掣（不捲動；Shift+Tab 可返回解析）。
 - 兩處舊註釋（`lib/pageOrder.ts`「側欄『等級預測』」、結果頁中文科提示註釋）更正為現況。
 - 測試：`a11y-final-scan.test.mts` 加 3 項；`answer-feedback` 類測試錨點更新（`feedbackRef` 加 `tabIndex={-1}`）。
+
+## R2-11d 手機底欄蓋住頁尾
+
+- 發現（360px，`/dashboard` 及首頁）：捲到最底，頁尾最後一行（透明度／私隱政策／社群安全，735–749px）仍在底部導航（743px 起）下面，撳唔到。原因：底欄讓位加在 `<main>`，但頁尾在 `<main>` 之後；`--bottom-nav-h` 亦未計 iPhone 底部安全區。
+- 修正：讓位改由 `Footer` 負責（`calc(var(--bottom-nav-h) + env(safe-area-inset-bottom))`），`<main>` 不再讓位（沉浸式路由沒有底欄亦沒有頁尾）。
+- 實測（production）：`/dashboard` 360px 最後一行頁尾連結底部 693px < 底欄 743px。360px 的 /、/subjects、/subjects/math、/about、/privacy 及 430px 的 /dashboard、/writing、/sensei、/paper-warrior、/predictor、/answer-sheet：捲到最底無連結被固定元素蓋住、無超出視窗元素。
+- 測試：`route-states.test.mts` 加一項。
