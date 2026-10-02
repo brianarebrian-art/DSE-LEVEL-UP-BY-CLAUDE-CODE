@@ -1,0 +1,4 @@
+Contact: mailto:dselevelup@gmail.com
+Expires: 2027-10-02T00:00:00.000Z
+Preferred-Languages: zh-HK, en
+Canonical: https://dse-level-up-by-claude-code.vercel.app/.well-known/security.txt
