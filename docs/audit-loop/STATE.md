@@ -60,9 +60,9 @@
 | T07 | SIGN | STALE | | 練習頁錯因三揀一已按創辦人 2026-10-02 決定刪除，答錯直接出解析（憲章 §7.2.1，commit `169e1bf`）；書寫題及答題紙保留 |
 | T08 | DIRECT | DONE | `1a4c801` | 本機 production build 實測：由首頁撳數學，載入期間 `role="status"` 讀出「正在準備你嘅 10 條練習題…」 |
 | T09 | DIRECT | DONE | `3796efa` | 首頁底部改為同頁頂一樣嘅四科快捷掣（`QuickStartGrid`）＋「揀其他科目」連結；本機 production build 375px 實測四掣 80×64、冇超出畫面 |
-| T40 | SIGN | TODO | | |
-| T41 | SIGN | TODO | | |
-| T42 | SIGN | TODO | | 依賴 T03 |
+| T40 | SIGN | STALE | | 已有：`/subjects` 頂部「最近練過」科目掣（`app/subjects/SubjectsView.tsx:182`，UX loop 16）；首頁回頭學生有「上次練緊／上次未做完」卡（`components/ContinueCard.tsx`），一撳返去。首頁再加一行會重複並擠迫 375px 首屏 |
+| T41 | SIGN | STALE | | 已有：`components/ShareStatsCardButton.tsx:55-69` 支援 files 就用 `navigator.share`，唔支援就下載 |
+| T42 | SIGN | DONE | `74bf9f0` | 結果頁一行文字連結「追蹤 @dselevelup 睇更多溫書貼士」，經 ExternalLinkGate；本機 production build 做完一節實測顯示 |
 | T10 | FOUNDER | TODO | | |
 | T11 | FOUNDER | TODO | | |
 | T12 | DIRECT | TODO | | |
