@@ -63,8 +63,8 @@
 | T40 | SIGN | STALE | | 已有：`/subjects` 頂部「最近練過」科目掣（`app/subjects/SubjectsView.tsx:182`，UX loop 16）；首頁回頭學生有「上次練緊／上次未做完」卡（`components/ContinueCard.tsx`），一撳返去。首頁再加一行會重複並擠迫 375px 首屏 |
 | T41 | SIGN | STALE | | 已有：`components/ShareStatsCardButton.tsx:55-69` 支援 files 就用 `navigator.share`，唔支援就下載 |
 | T42 | SIGN | DONE | `74bf9f0` | 結果頁一行文字連結「追蹤 @dselevelup 睇更多溫書貼士」，經 ExternalLinkGate；本機 production build 做完一節實測顯示 |
-| T10 | FOUNDER | TODO | | |
-| T11 | FOUNDER | TODO | | |
+| T10 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T10 |
+| T11 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T11 |
 | T12 | DIRECT | TODO | | |
 | T13 | DIRECT | TODO | | 改進循環 2 R2-11d 已修正（commit `23cdb01`），T13 iteration 時驗證後可標 STALE |
 | T14 | DIRECT | TODO | | |
