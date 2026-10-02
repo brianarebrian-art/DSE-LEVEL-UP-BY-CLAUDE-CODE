@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #3 · Branch: audit-loop
+最後更新：2026-10-02 · Iteration #4 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -119,11 +119,11 @@
 | U03 | FOUNDER | TODO | branch `fix/methodology-review-rate`（`952d00b`，2026-09-25） | S | 把 `/methodology` 實名審批比例改為即時計。審批紀錄已於 2026-09-25 刪除（`REVIEWED_COUNT` = 0），前提已不成立；與 T01／Q-P7 重疊 |
 | U04 | FOUNDER | TODO | `docs/SECURITY-audit-2026-09-25.md` §2 第 1 項；`lib/auth/better-auth.ts:34` | M | 開密碼註冊前要有電郵驗證（需發信服務，觸及 §5 成本），或只開 Google |
 | U05 | DIRECT | TODO | 同上 §2 第 4 項：`app/layout.tsx:166`、`app/subjects/[subject]/page.tsx:100`、`app/cantonese/page.tsx:99`、`app/cantonese/[sceneId]/page.tsx:85`、`app/cantonese/learn/page.tsx:66`、`components/Seo/ArticleJsonLd.tsx:57` | M | JSON-LD 以 `JSON.stringify` 直接放入 `<script>`，未轉義 `<`。6 個檔，超過 3 個檔，按憲章 §4 要先出影響報告 |
-| U06 | FOUNDER | TODO | 同上 §2 第 6 項 | S | `handle_updated_at` 未固定 `search_path`；`authenticated` 角色多餘 SELECT 權。要改 production schema |
-| U07 | FOUNDER | TODO | 同上 §2 第 7 項；`supabase/migrations/0012_push_subscriptions.sql`；`app/api/push/subscribe/route.ts` | S | production 未有 `push_subscriptions` 表；端點毋須登入可寫。決定上線（先加限流）或移除 |
+| U06 | FOUNDER | TODO | 同上 §2 第 6 項 | S | 2026-10-02 只讀核實仍然存在：`authenticated` 角色在 `review_decisions`、`user_settings` 有 SELECT，兩表 0 條 policy，所以 RLS 照樣擋住。`handle_updated_at` 未固定 `search_path`；`authenticated` 角色多餘 SELECT 權。要改 production schema |
+| U07 | FOUNDER | TODO | 2026-10-02 只讀核實：production 無 `push_subscriptions` 表。同上 §2 第 7 項；`supabase/migrations/0012_push_subscriptions.sql`；`app/api/push/subscribe/route.ts` | S | production 未有 `push_subscriptions` 表；端點毋須登入可寫。決定上線（先加限流）或移除 |
 | U08 | FOUNDER | TODO | 同上 §2 第 8 項 | S | 已刪的收款 QR 仍在 git 歷史；是否改寫歷史 |
 | U09 | FOUNDER | TODO | `docs/ux-loop-progress.md:878` | S | `PRIVACY_MISMATCH`：私隱頁未提 Vercel 平台請求日誌（IP、user-agent） |
-| U10 | DIRECT | TODO | `docs/ux-loop-progress.md:879`；`lib/privacy/userData.ts`；`supabase/migrations/0011_drop_wall.sql` | S | 刪除清單仍含 `wall_posts`、`wall_likes`，但 0011 已刪這兩張表。要以只讀方式核實 production；如無法連線則 `CANNOT-COMPLETE`（`NEED-EXTERNAL-ACCESS`） |
+| U10 | DIRECT | TODO | `docs/ux-loop-progress.md:879`；`lib/privacy/userData.ts`；`supabase/migrations/0011_drop_wall.sql` | S | 刪除清單仍含 `wall_posts`、`wall_likes`，但 0011 已刪這兩張表。2026-10-02 只讀核實：production `public` 只有 8 張表，無 `wall_posts`、`wall_likes`；私隱頁「共 7 張表」的說法要再對一次。改文案屬 SIGN |
 | U11 | FOUNDER | TODO | `docs/ux-loop-progress.md:804`；`CONTENT_PROVENANCE.md` §6 第 2 項 | S | `/writing`「取材自 2023 DSE 英文卷二」字眼，`DECISION_CONFLICT` |
 | U12 | DIRECT | TODO | `docs/ux-loop-progress.md:828`、`:912`、`:913` | S | ⬜ 待驗證：已登入狀態的頂欄；React #418 只出現過一次 |
 | U13 | FOUNDER | TODO | `docs/topic-remap-worklist.md`（2026-07-28） | L | 133 題課題歸邊及 3 組語義重疊（75 題）。部分可能已處理（例如 m1 `binomial`），要先重跑 `scripts/qbank/topic-coverage.mjs` 更新清單；改題庫屬 `NEED-HUMAN-REVIEW` |
@@ -148,9 +148,11 @@
 | D11 | DIRECT | TODO | `README.md:13`（Next 版本）、`README.md:23`（`middleware.ts`「靜靜忽略」） | S | 等 Q-P6、Q-P9 回覆 |
 | D12 | DIRECT | TODO | `docs/weekly_mission.md`（最後更新 2026-07-11） | S | 過時計劃檔，第 1 項（經濟科 push）早已完成；未決項目見 U16 |
 | D13 | SIGN | TODO | `npm audit`（含 dev，2026-10-02）：`brace-expansion` high | S | 只在開發依賴，不入 production bundle；與 D01 無關 |
+| D14 | FOUNDER | TODO | production `curl -sI`（2026-10-02）：`/`、`/subjects`、`/llms.txt`、`/robots.txt`、`/opengraph-image` 及靜態檔回 `access-control-allow-origin: *` | S | repo 無設定此 header（`next.config.ts`、`proxy.ts`、`vercel.json`、`app`、`lib` 零命中）；本機 production build 不送出；需登入的 `/api/progress`（401）亦無。判斷為 Vercel CDN 對公開快取內容的預設。這些回應不帶 cookie 或個人資料，風險低。要改須在 Vercel 設定或 `next.config.ts` 覆寫，效果要部署後實測，先記錄 |
 
 ## 備註
 
+- Supabase 只讀核對（2026-10-02，project `aegekxapxgcfdrkzisis`，只用 SELECT 查系統表，無寫入）：`public` 共 8 張表 —— `privacy_consents`、`profiles`、`question_bank_versions`、`questions`、`review_decisions`、`user_progress`、`user_sessions`、`user_settings`，全部開 RLS。`anon` 只在 `questions`、`question_bank_versions` 有 SELECT（policy `*_public_read`），其餘 6 張用戶資料表 `anon` 零權限，即未登入者讀不到任何學生資料。用戶資料表的 policy 只開放 `service_role`（伺服器）。審計「RLS 未核實、anon 可能讀到他人答案」不成立。
 - T54 盤點範圍及零結果項目（2026-10-02）：`git stash list` 空；`app`、`components`、`lib`、`scripts` 無 `TODO`／`FIXME`／`HACK`／`XXX`／`WIP`（「未完成」命中全是 UI 字眼或題目內容）；無 `.skip`／`.todo` 測試；非測試代碼無 `@ts-ignore`、`@ts-expect-error`、`as any`；`lib/`、`components/` 無未被 import 的模組（掃描 script 經負向自測：臨時加入一個無人 import 的檔，能被找出）；題目抽選、等級預測、錯題 DNA、`lib/sync.ts`、題庫雲端載入均有測試。
 - `BREAKING`：無。lint 0 error；T54 未改代碼，最近一次全套檢查在 `29e54f8`（npm test 1278/1278、tsc、qa、build 全過），之後只有文件 commit。本 iteration 未重跑 `npm test`、`tsc`、`build`。
 - 不列入的已排期覆檢：憲章 §7.1 中途離開率（2026-10-09）、§7.2 反思鎖實驗（2026-11-09）。由創辦人進行，不屬 loop 任務。
