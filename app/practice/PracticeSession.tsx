@@ -22,7 +22,6 @@ import { playCorrectChime } from '@/lib/answerChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
 import CalcTipCard from '@/components/CalcTipCard'
 import QuestionProvenance from '@/components/QuestionProvenance'
-import EmotionTags from '@/components/EmotionTags'
 import BookmarkButton from '@/components/BookmarkButton'
 import StagedExplanation from '@/components/StagedExplanation'
 import OptionNotes from '@/components/OptionNotes'
@@ -1102,8 +1101,6 @@ export default function PracticeSession({
                         唔會喺答題時分散注意力。 */}
                     <QuestionProvenance questionId={currentQ.id} />
 
-                    {/* F01 錯題情緒標籤（key 按題重置） */}
-                    <EmotionTags key={currentQ.id} />
                   </div>
                 )}
 

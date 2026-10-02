@@ -997,8 +997,8 @@ html.no-motion .mascot {
 .particle-combo-1 { --particle-speed: 12s; }
 .particle-combo-2 { --particle-speed: 8s; }
 .particle-combo-3 { --particle-speed: 5s; }
-/* 學生【自己標記】焦慮之後（EmotionTags，非機器推論）：放慢兼調淡。
-   規格書 §6.3 明訂無自動情緒偵測，故此 class 只可由學生行為觸發。 */
+/* 規格書 §6.3「焦慮 40s」：放慢兼調淡。原本由練習頁心情小卡（學生自己標記焦慮）觸發；
+   該卡已於 2026-10-02 刪除，現時冇觸發點。規格書明訂無自動情緒偵測，故不可改由機器觸發。 */
 .particle-calm { --particle-speed: 40s; --particle-alpha: 0.05; }
 
 /* ── §1.2 散點文字劇場 ──────────────────────────────────────────────────
