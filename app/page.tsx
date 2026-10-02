@@ -222,11 +222,12 @@ export default function HomePage() {
             <li>{h.trust2}</li>
             <li>{h.trust3}</li>
           </ul>
-          {/* 覆核狀態（創辦人決定 6）：一句講實情，連去透明度頁的細節。 */}
+          {/* 覆核狀態（創辦人決定 6）：一句講實情，連去透明度頁的細節。
+              2026-10-02 創辦人決定刪去「未經逐題人手覆核」半句，保留「經自動檢查」（憲章 §12.1 約束 1）。 */}
           <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
             {locale === 'en'
-              ? 'Questions go live after automated checks; no one has reviewed each one by hand. '
-              : '題目經自動檢查上線，未經逐題人手覆核。'}
+              ? 'Questions go live after automated checks. '
+              : '題目經自動檢查上線。'}
             <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
               {locale === 'en' ? 'How it works' : '點樣做'}
             </Link>
