@@ -34,8 +34,11 @@
  * 2026-10-02.v1 —— 刪走「心情記錄」：練習頁心情小卡已刪（創辦人 2026-10-02 決定，
  * 憲章 §7.2.1），網站唔再記錄心情。只係少收一樣嘢，冇新增採集；
  * 創辦人揀咗照規矩 bump，令登入學生睇過新版先再同意。
+ *
+ * 2026-10-02.v2 —— 新增一項：Vercel Web Analytics（網站整體瀏覽量，唔用 cookie）。
+ * 創辦人 2026-10-02 決定安裝。屬新增採集類別，所以一定要 bump。
  */
-export const POLICY_VERSION = '2026-10-02.v1'
+export const POLICY_VERSION = '2026-10-02.v2'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

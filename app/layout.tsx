@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Inter, EB_Garamond } from 'next/font/google'
 import './globals.css'
 import 'katex/dist/katex.min.css'
@@ -151,6 +152,12 @@ export default function RootLayout({
     // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
     <html lang="zh-HK" className={`h-full ${garamond.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-surface text-ink`}>
+        {/* Vercel Web Analytics（創辦人 2026-10-02 決定）。用 Vercel 提供的同源 script，
+            唔加套件（憲章 §1 第 5 點）；冇 cookie，只計整體瀏覽量。只喺 Vercel 正式部署載入，
+            本機及預覽版唔載。私隱頁「啲資料去咗邊」有對應說明。 */}
+        {process.env.VERCEL_ENV === 'production' && (
+          <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
+        )}
         {/* 防閃爍：必須喺任何內容繪製之前決定主題，否則深色用戶會見到一下白閃。
             內容與 lib/theme.ts 同一條日出方程 —— 呢度係鏡像副本，因為 inline
             script 用唔到 import。兩者若有偏差，ThemeProvider 會喺 mount 後以
