@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #1 · Branch: audit-loop
+最後更新：2026-10-02 · Iteration #2 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -48,13 +48,13 @@
 | ID | Gate | 狀態 | Commit | 證據／備註 |
 |---|---|---|---|---|
 | T00 | DIRECT | DONE | `ffbb870` | 見上方快照；FOUNDER-QUEUE Q-P1–Q-P10 |
-| T54 | DIRECT | TODO | | 依賴 T00 |
-| T01 | SIGN | TODO | | 前提與 repo 衝突，見 Q-P7 |
+| T54 | DIRECT | DONE | （本 commit） | Wave 8：U01–U16；Wave 9：D01–D12；無 `BREAKING` |
+| T01 | SIGN | TODO | | 前提與 repo 衝突，見 Q-P7；未 merge 的 `fix/methodology-review-rate` 見 U03 |
 | T02 | SIGN | TODO | | |
 | T03 | DIRECT | TODO | | |
 | T38 | SIGN | TODO | | 依賴 T01 |
 | T39 | SIGN | TODO | | |
-| T04 | SIGN | TODO | | `/predictor` 另有未決的 DECISION_CONFLICT（`docs/ux-loop-progress.md` R2-1） |
+| T04 | SIGN | TODO | | `/predictor` 另有未決的 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`）；T54 不另開項目 |
 | T05 | SIGN | TODO | | 反思鎖已於 2026-09-09 剷除（憲章 §7.2），見 Q-P2 |
 | T06 | SIGN | TODO | | |
 | T07 | SIGN | TODO | | 錯因自診是憲章 §7.2 實驗保留項，改動要確認不影響 2026-11-09 覆檢 |
@@ -102,7 +102,7 @@
 | T31 | DIRECT | TODO | | 快照顯示 production 已有 HSTS，預計 STALE；`preload` 見 Q-P5 |
 | T32 | DIRECT | TODO | | 快照 grep 零結果，預計 STALE |
 | T33 | FOUNDER | TODO | | |
-| T34 | SIGN | TODO | | 快照顯示已實施（`proxy.ts`） |
+| T34 | SIGN | TODO | | 快照顯示已實施（`proxy.ts`）；分散式限流（Vercel Firewall）屬 `docs/SECURITY-audit-2026-09-25.md` §2 第 3 項，T54 不另開項目 |
 | T35 | DIRECT | TODO | | |
 | T36 | DIRECT | TODO | | |
 | T37 | DIRECT | TODO | | |
@@ -114,13 +114,45 @@
 
 | ID | Gate | 狀態 | 出處 | 大細 | 備註 |
 |---|---|---|---|---|---|
+| U01 | DIRECT | TODO | branch `feat/homepage-copy-update`（`9b04c85`、`49aa8d0`，2026-08-13） | S | `GoodTodayCard.tsx`、`docs/TRIAGE-200-ideas-2026-08-09.md` 已在本 branch；只有 `scripts/qbank/_scan-clean.mts` 不在。預計 `SUPERSEDED`，待核實該 script 用途 |
+| U02 | DIRECT | TODO | branch `claude/nostalgic-montalcini-a21f8f`（`20dbe3d`，2026-08-29）；`.claude/worktrees/` 兩個 detached worktree 指向同一 commit | S | 改動（m1 `binomial_theorem` → `binomial`）已在本 branch `data/questions/m1-bank.ts:23`。預計 `SUPERSEDED`；branch 及 worktree 只盤點，不刪 |
+| U03 | FOUNDER | TODO | branch `fix/methodology-review-rate`（`952d00b`，2026-09-25） | S | 把 `/methodology` 實名審批比例改為即時計。審批紀錄已於 2026-09-25 刪除（`REVIEWED_COUNT` = 0），前提已不成立；與 T01／Q-P7 重疊 |
+| U04 | FOUNDER | TODO | `docs/SECURITY-audit-2026-09-25.md` §2 第 1 項；`lib/auth/better-auth.ts:34` | M | 開密碼註冊前要有電郵驗證（需發信服務，觸及 §5 成本），或只開 Google |
+| U05 | DIRECT | TODO | 同上 §2 第 4 項：`app/layout.tsx:166`、`app/subjects/[subject]/page.tsx:100`、`app/cantonese/page.tsx:99`、`app/cantonese/[sceneId]/page.tsx:85`、`app/cantonese/learn/page.tsx:66`、`components/Seo/ArticleJsonLd.tsx:57` | M | JSON-LD 以 `JSON.stringify` 直接放入 `<script>`，未轉義 `<`。6 個檔，超過 3 個檔，按憲章 §4 要先出影響報告 |
+| U06 | FOUNDER | TODO | 同上 §2 第 6 項 | S | `handle_updated_at` 未固定 `search_path`；`authenticated` 角色多餘 SELECT 權。要改 production schema |
+| U07 | FOUNDER | TODO | 同上 §2 第 7 項；`supabase/migrations/0012_push_subscriptions.sql`；`app/api/push/subscribe/route.ts` | S | production 未有 `push_subscriptions` 表；端點毋須登入可寫。決定上線（先加限流）或移除 |
+| U08 | FOUNDER | TODO | 同上 §2 第 8 項 | S | 已刪的收款 QR 仍在 git 歷史；是否改寫歷史 |
+| U09 | FOUNDER | TODO | `docs/ux-loop-progress.md:878` | S | `PRIVACY_MISMATCH`：私隱頁未提 Vercel 平台請求日誌（IP、user-agent） |
+| U10 | DIRECT | TODO | `docs/ux-loop-progress.md:879`；`lib/privacy/userData.ts`；`supabase/migrations/0011_drop_wall.sql` | S | 刪除清單仍含 `wall_posts`、`wall_likes`，但 0011 已刪這兩張表。要以只讀方式核實 production；如無法連線則 `CANNOT-COMPLETE`（`NEED-EXTERNAL-ACCESS`） |
+| U11 | FOUNDER | TODO | `docs/ux-loop-progress.md:804`；`CONTENT_PROVENANCE.md` §6 第 2 項 | S | `/writing`「取材自 2023 DSE 英文卷二」字眼，`DECISION_CONFLICT` |
+| U12 | DIRECT | TODO | `docs/ux-loop-progress.md:828`、`:912`、`:913` | S | ⬜ 待驗證：已登入狀態的頂欄；React #418 只出現過一次 |
+| U13 | FOUNDER | TODO | `docs/topic-remap-worklist.md`（2026-07-28） | L | 133 題課題歸邊及 3 組語義重疊（75 題）。部分可能已處理（例如 m1 `binomial`），要先重跑 `scripts/qbank/topic-coverage.mjs` 更新清單；改題庫屬 `NEED-HUMAN-REVIEW` |
+| U14 | FOUNDER | TODO | `docs/content-debt-2026-09-16.md:66-72` | L | 7 科翻譯債全部 ⬜；改題庫屬 `NEED-HUMAN-REVIEW` |
+| U15 | FOUNDER | TODO | `docs/PHASE1-privacy-consent-gate.md`、`docs/proposal-dropout-measurement-2026-09-16.md`、`docs/iso-loop-design-2026-11-09.md`、`docs/charter-amendment-2026-09-15-DRAFT.md`、`docs/charter-amendment-2026-09-26-family-stats-DRAFT.md` | M | 仍標「草稿／等 greenlight」的文件。按憲章 §18.2 須逐份決定；09-19、09-25、09-26-electives 三份草案已由憲章 §1 2.1、§12、§16.E 處理，不列入 |
+| U16 | FOUNDER | TODO | `docs/weekly_mission.md:9-14`（2026-07-11） | S | 第 5 項（人文科 1,000 題預算）、第 6 項（升學導航數據）仍 ⬜；第 6 項或觸及 §8 已否決的 JUPAS 方向，要創辦人確認是否作廢 |
 
 ## Wave 9 技術債（由 T54 填寫）
 
 | ID | Gate | 狀態 | 出處 | 大細 | 備註 |
 |---|---|---|---|---|---|
+| D01 | SIGN | TODO | `npm audit --omit=dev`（2026-10-02）：`next` 16.2.0–16.3.5 critical（GHSA-vcvr-r3jv-pc5j，`next/og` ImageResponse 遠端執行代碼）；本 repo 為 16.3.3 | S | 唯一使用點 `app/opengraph-image.tsx`，build 時以固定內容生成、無用戶輸入，實際風險估計偏低，但仍屬 critical。修補為 patch 升級至 16.3.8（`npm audit fix`），不屬新增套件。建議優先處理 |
+| D02 | DIRECT | TODO | `npm run lint`：`app/account/AccountPageClient.tsx:4`、`app/exam-day/ExamDayClient.tsx:619`、`app/practice/PracticeSession.tsx:588`（hook 依賴）、`components/PrivacyConsentGate.tsx:31`、`lib/jyutping.ts:56`；4 處多餘 `eslint-disable`（`app/subjects/[subject]/page.tsx:99`、`app/cantonese/**` 三處） | S | `PracticeSession.tsx:588` 的 hook 依賴改動可能影響行為，要先確認或另拆 |
+| D03 | DIRECT | TODO | `npm run lint`：`data/questions/` 7 個檔共 17 個未用變數警告（biology-bank2、chemistry-bank、chinese、design-tech-bank、health-management-bank、music-bank、visual-arts-bank） | S | 只是未用變數，不改題目內容；但按 §14.2 改題庫檔案一律 `CANNOT-COMPLETE`（`NEED-HUMAN-REVIEW`），預計照此標記 |
+| D04 | DIRECT | TODO | `npm run lint`：`scripts/copy-guard.mjs:39`、`scripts/qbank/gen-long-drafts.mjs:45`、`scripts/qbank/sample-review.mjs:51`、`scripts/qbank/validate-banks.mjs:56` | S | |
+| D05 | DIRECT | TODO | `npm run lint` 掃入 `.ds-sync/`（`.gitignore:49` 已忽略）及 `.design-sync/previews/`，共 6 個警告 | S | 在 eslint 設定加 ignore（不是新規則） |
+| D06 | DIRECT | TODO | `app/practice/PracticeSession.tsx:711-716` | S | 註解仍描述已剷除的 server 簽名鎖；`const proceed = next` 只是別名。只改註解及別名，不碰 §7.2 實驗；`discovery-local-only` 測試要繼續通過 |
+| D07 | DIRECT | TODO | `lib/__tests__/` 48 處 `any`（多為 `const mod: any = await import(…)`） | M | 只改測試；tsx CJS 載入方式要保留 |
+| D08 | FOUNDER | TODO | `supabase/migrations/0018_recreate_user_sessions.sql`、`0018_revoke_anon_on_user_tables.sql` | S | 兩個 migration 同用 0018 編號。已套用的 migration 改名有風險，只記錄 |
+| D09 | SIGN | TODO | `npm outdated`（2026-10-02）minor／patch：`@supabase/supabase-js` 2.117.2、`better-auth` 1.7.7、`lucide-react` 1.49.0、`pg` 8.23.1、`@types/*` | M | `next` 由 D01 處理 |
+| D10 | FOUNDER | TODO | `npm outdated` major：`eslint` 10、`typescript` 7、`@types/node` 26、`react`／`react-dom` 19.3、`katex` 0.19、`@anthropic-ai/sdk` 0.131 | L | 只盤點 |
+| D11 | DIRECT | TODO | `README.md:13`（Next 版本）、`README.md:23`（`middleware.ts`「靜靜忽略」） | S | 等 Q-P6、Q-P9 回覆 |
+| D12 | DIRECT | TODO | `docs/weekly_mission.md`（最後更新 2026-07-11） | S | 過時計劃檔，第 1 項（經濟科 push）早已完成；未決項目見 U16 |
 
 ## 備註
+
+- T54 盤點範圍及零結果項目（2026-10-02）：`git stash list` 空；`app`、`components`、`lib`、`scripts` 無 `TODO`／`FIXME`／`HACK`／`XXX`／`WIP`（「未完成」命中全是 UI 字眼或題目內容）；無 `.skip`／`.todo` 測試；非測試代碼無 `@ts-ignore`、`@ts-expect-error`、`as any`；`lib/`、`components/` 無未被 import 的模組（掃描 script 經負向自測：臨時加入一個無人 import 的檔，能被找出）；題目抽選、等級預測、錯題 DNA、`lib/sync.ts`、題庫雲端載入均有測試。
+- `BREAKING`：無。lint 0 error；T54 未改代碼，最近一次全套檢查在 `29e54f8`（npm test 1278/1278、tsc、qa、build 全過），之後只有文件 commit。本 iteration 未重跑 `npm test`、`tsc`、`build`。
+- 不列入的已排期覆檢：憲章 §7.1 中途離開率（2026-10-09）、§7.2 反思鎖實驗（2026-11-09）。由創辦人進行，不屬 loop 任務。
 
 - §8 拒絕項目照 prompt v5 全部記錄，不另開任務。
 - 憲章與 prompt §3 有出入的地方，按 §1.2 第 5 條以憲章為準，已列入 FOUNDER-QUEUE（Q-P1–Q-P3）。
