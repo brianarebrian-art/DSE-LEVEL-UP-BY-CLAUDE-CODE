@@ -67,3 +67,12 @@ test('regression: new, returning, unfinished, nothing unfinished, invalid subjec
   // Invalid session subject, valid history: the history wins.
   assert.equal(Q.startHref(session({ subjectId: 'no-such-subject' }), [{ subjectId: 'math', timestamp: now }], isLive), '/practice?subject=math')
 })
+
+// R2-11 (2026-10-01): the practice page only offers to resume when every saved question is
+// still in the bank. A removed or unknown subject has an empty bank and must not ask.
+test('the practice page does not offer a resume it cannot honour', () => {
+  const src = readFileSync('app/practice/PracticeSession.tsx', 'utf8')
+  const init = src.slice(src.indexOf('const [resumeOffer, setResumeOffer]'), src.indexOf('const [answerState'))
+  assert.match(init, /isResumable\(saved, subjectId, topicFilter, mode\)/)
+  assert.match(init, /saved\.questionIds\.every\(\(id\) => ids\.has\(id\)\)/)
+})

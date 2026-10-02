@@ -21,7 +21,6 @@ export const CLOUD_SETTINGS_KEYS = [
   'dse_easy_font',
   'dse_reading_ruler',
   'dse_hide_timer',
-  'dse_calm_lock',
   'dse_font_size',
   'dse_line_height',
   'dse_letter_spacing',

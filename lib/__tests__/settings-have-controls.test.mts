@@ -80,32 +80,15 @@ function constNameWrites(key: string): boolean {
   return names.some((n) => new RegExp(`setItem\\(${n}\\s*,`).test(UI))
 }
 
-// ── ② 柔和呈現嗰個掣（今次補返嗰個）────────────────────────────────────────
-test('A11yPanel 有柔和呈現嘅掣', () => {
+// ── ② 柔和呈現已刪除（2026-10-02，創辦人決定）──────────────────────────────
+// 呢個掣只控制指令字高亮嘅色調，高亮隨錯因自診一齊刪走（憲章 §7.2），
+// 個掣同設定亦一齊刪 —— 唔可以留一個撳咗冇反應嘅掣。
+test('柔和呈現嘅掣同設定已一齊刪走，冇留低撳咗冇反應嘅掣', () => {
   const panel = readFileSync('components/A11yPanel.tsx', 'utf8')
-  assert.match(panel, /const CALM_KEY = 'dse_calm_lock'/, '揾唔到 CALM_KEY')
-  assert.match(panel, /setItem\(CALM_KEY/, '個掣要寫得入 localStorage')
-  assert.match(panel, /aria-pressed=\{calm\}/, '要有 aria-pressed —— 鍵盤／screen reader 用家要知開咗未')
-  assert.match(panel, /toggleCalm/, '揾唔到 toggleCalm')
-})
-
-// ── ③ 改完要即刻生效 ──────────────────────────────────────────────────────
-//
-// A11yPanel 寫完 localStorage 之後派 `dse-a11y`。PracticeSession 如果只係
-// mount 讀一次，學生喺做緊題嗰陣撳個掣係【冇反應】嘅 —— 一個要 reload
-// 先生效嘅無障礙設定，等於冇。
-test('練習頁跟住 dse-a11y 更新柔和呈現，唔使 reload', () => {
-  const panel = readFileSync('components/A11yPanel.tsx', 'utf8')
-  const calmIdx = panel.indexOf('toggleCalm')
-  const seg = panel.slice(calmIdx, calmIdx + 700)
-  assert.match(seg, /dispatchEvent\(new Event\('dse-a11y'\)\)/, 'toggleCalm 要派 dse-a11y')
-
-  const ps = readFileSync('app/practice/PracticeSession.tsx', 'utf8')
-  const idx = ps.indexOf('dse_calm_lock')
-  assert.ok(idx > 0, 'PracticeSession 應該仍然讀 dse_calm_lock')
-  const window700 = ps.slice(Math.max(0, idx - 700), idx + 700)
-  assert.match(window700, /addEventListener\('dse-a11y'/,
-    'PracticeSession 要聽 dse-a11y —— 否則做緊題撳個掣冇反應')
+  assert.doesNotMatch(panel, /CALM_KEY|toggleCalm|柔和呈現/)
+  assert.doesNotMatch(SYNC, /dse_calm_lock|calm_lock/)
+  assert.doesNotMatch(readFileSync('lib/cloudKeys.ts', 'utf8'), /dse_calm_lock/)
+  assert.doesNotMatch(readFileSync('app/practice/PracticeSession.tsx', 'utf8'), /dse_calm_lock|calmLock/)
 })
 
 // ── ④ 唔可以順手改咗「一鍵舒適模式」嘅推導 ────────────────────────────────

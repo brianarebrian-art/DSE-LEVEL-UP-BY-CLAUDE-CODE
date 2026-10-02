@@ -42,11 +42,12 @@ export default function AppShell({
     <>
       {!immersive && <Sidebar />}
       {!immersive && navbar}
-      {/* pb 讀 --bottom-nav-h：底欄唔顯示時係 0，唔會平白多咗一段空白。 */}
+      {/* 2026-10-01（R2-11）：底欄讓位原本加喺 <main>，但頁尾喺 <main> 之後，
+          捲到最底頁尾最後一行仍被底欄蓋住（360px 實測）。讓位改由 Footer 負責；
+          沉浸式路由冇底欄亦冇頁尾，故 <main> 唔使讓位。 */}
       <main
         id="main-content"
         className={immersive ? '' : `pt-16 ${inset}`}
-        style={{ paddingBottom: 'var(--bottom-nav-h)' }}
       >
         {children}
         {/* 前／後頁導航掛喺呢度一次，唔喺任何 page.tsx 出現 —— 一張要人記得去

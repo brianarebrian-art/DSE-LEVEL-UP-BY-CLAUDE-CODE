@@ -93,7 +93,7 @@ function studentVisible(src) {
 // 句式「你差咗」中招，但成句係【否定】—— 佢正正就係喺度拆穿呢個聯想。
 // 冇呢層檢查，個閘第一個刪嘅就係佢想製造嘅嘢。
 //
-// 同樣手法喺 components/CommandWordText 用過（負向斷言防「消除了／所有權」
+// 同樣手法喺指令字高亮用過（lib/commandWords.ts，負向斷言防「消除了／所有權」
 // 誤亮）—— 中文冇詞界，靠單向 regex 一定會咬錯，呢個係已知模式。
 const NEGATION = /(唔等於|唔係|並非|唔會|從來唔|一啲都唔|does not mean|doesn['’]t mean|is not)/
 const near = (text, idx) => text.slice(Math.max(0, idx - 24), idx)

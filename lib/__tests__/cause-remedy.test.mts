@@ -62,10 +62,11 @@ test('ErrorDNA and /result build the URL in one place', () => {
   assert.match(read('app/result/ResultPageClient.tsx'), /resultNextSteps\(\{ \.\.\.result, log: getReverseLog\(\) \}\)/)
 })
 
-test('after a diagnosis the practice page says when the question comes back, from the schedule itself', () => {
+// 2026-10-02（憲章 §7.2）：練習頁答錯不再寫入錯題日誌，所以亦不可以再承諾「呢題會喺第 N 日重溫」。
+test('the practice page no longer promises a review it does not schedule', () => {
   const s = read('app/practice/PracticeSession.tsx')
-  assert.match(s, /呢題會喺第 \$\{INTERVALS\.join\('、'\)\} 日出現喺「進度」頁嘅重溫（每日最多 \$\{DAILY_REVIEW_LIMIT\} 條）/)
-  assert.doesNotMatch(s, /1、3、7、14、30/)
+  assert.doesNotMatch(s, /呢題會喺第/)
+  assert.doesNotMatch(s, /logReverseError/)
   assert.deepEqual([...RS.INTERVALS], [1, 3, 7, 14, 30])
   assert.equal(RS.DAILY_REVIEW_LIMIT, 5)
   assert.match(read('lib/reviewSchedule.ts'), /export function dueReviews\(limit = DAILY_REVIEW_LIMIT\)/)

@@ -36,13 +36,13 @@ const LABELS: Record<string, { zh: string; en: string }> = {
   dse_result: { zh: '最近一次練習結果', en: 'Your most recent result' },
   dse_review_done: { zh: '複習排程進度', en: 'Spaced-review progress' },
   dse_daily_spectrum: { zh: '每日難度分佈', en: 'Daily difficulty spread' },
-  dse_emotion_log: { zh: '情緒記錄（私密，永不上雲）', en: 'Mood records (private, never uploaded)' },
+  // 2026-10-02 起已停止記錄（練習頁心情小卡已刪）；保留標籤，令舊資料仍然認得出、刪得走。
+  dse_emotion_log: { zh: '舊情緒記錄（已停止記錄，永不上雲）', en: 'Old mood records (no longer recorded, never uploaded)' },
   dse_writing_draft: { zh: '寫作草稿', en: 'Writing drafts' },
   dse_own_cheers: { zh: '你寫過嘅打氣說話', en: 'Encouragement notes you wrote' },
   dse_good_today: { zh: '今日做得好嘅嘢', en: 'What went well today' },
   dse_focus_today: { zh: '今日想專注嘅嘢', en: "Today's focus" },
   dse_not_tonight_until: { zh: '「今晚唔溫」設定', en: '"Not tonight" setting' },
-  dse_calm_lock: { zh: '柔和呈現偏好', en: 'Soft-presentation preference' },
   dse_explain_always_full: { zh: '解析always攤開', en: 'Always expand explanations' },
   dse_locale: { zh: '語言選擇', en: 'Language preference' },
   dse_exam_countdown: { zh: '考期模式（首頁倒數）開關', en: 'Exam countdown on the home page' },
@@ -179,8 +179,8 @@ export default function StoredDataInspector() {
       <p className="text-[11px] text-ink-muted leading-relaxed mt-5 pt-4 border-t border-line">
         <Cloud size={11} className="inline text-accent mr-1 -mt-0.5" aria-hidden />
         {en
-          ? `${cloudCount} of these are uploaded — and only if you sign in, so your progress follows you to another device. Everything else, including your mood records, wrong-answer log and writing drafts, stays here.`
-          : `以上有 ${cloudCount} 項會上傳 —— 而且只喺你登入之後，目的係令你嘅進度跟得到去另一部機。其餘全部，包括情緒記錄、錯題日誌同寫作草稿，一世都留喺呢部機。`}
+          ? `${cloudCount} of these are uploaded — and only if you sign in, so your progress follows you to another device. Everything else, including your wrong-answer log and writing drafts, stays here.`
+          : `以上有 ${cloudCount} 項會上傳 —— 而且只喺你登入之後，目的係令你嘅進度跟得到去另一部機。其餘全部，包括錯題日誌同寫作草稿，一世都留喺呢部機。`}
       </p>
     </section>
   )

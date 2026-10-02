@@ -64,16 +64,14 @@ test('③ 個鎖唔可以靜靜哋返嚟 —— PracticeSession 一個倒數都�
   }
 })
 
-test('④ 錯因自診【一定要】留低 —— 佢係錯題 DNA 嘅唯一入料口', () => {
+// 2026-10-02 創辦人決定（憲章 §7.2 修訂）：練習頁刪除錯因自診卡，答錯直接出解析。
+// 原測試 ④ 守住「自診一定要留低」，已按該決定改為守住新行為。
+test('④ 練習頁答錯直接出解析，冇錯因自診卡', () => {
   const ps = read('app/practice/PracticeSession.tsx')
-  // 剷鎖嗰陣好易順手將成個 chooseCause 一齊剷。剷咗就冇咗：
-  // 錯題 DNA 雷達、遺忘曲線重溫、溫書地圖報告，同埋憲章 §16.E
-  //（2026-09-08 雙簽）跨機同步嗰個 dse_reverse_log。
-  assert.match(ps, /logReverseError\(logEntry\)/,
-    'chooseCause 冇再寫入錯題日誌 —— ErrorRadar／ReviewScheduler／溫書地圖會一齊變白')
-  assert.match(ps, /addDiscovery\(\{/,
-    'chooseCause 冇再記發現 —— /result 嘅「今日你發現咗 N 樣嘢」會永遠係 0')
-  assert.match(ps, /const chooseCause = useCallback\(/, 'chooseCause 本身唔見咗')
+  assert.doesNotMatch(ps, /chooseCause|REVERSE_CAUSES|停一停，諗一諗|你發現咗一個新盲點/)
+  assert.doesNotMatch(ps, /logReverseError|addDiscovery/,
+    '練習頁冇揀錯因，就唔可以再寫錯題日誌或發現簿（冇學生揀過嘅錯因）')
+  assert.match(ps, /const canProceed = answerState !== null\n/)
 })
 
 // 呢條測試 2026-09-18 收緊過兩次，兩個窿都係實際漏咗嘢先發現：

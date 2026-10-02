@@ -76,8 +76,8 @@ export default function ErrorDNA() {
       {total === 0 ? (
         <p className="text-sm text-ink-muted bg-surface-sunken rounded-xl px-4 py-6 text-center">
           {en
-            ? 'Practise and pick a cause after a wrong answer — your error patterns will appear here.'
-            : '開始練習，答錯後揀一個錯因，你嘅錯誤模式就會喺度顯示。'}
+            ? 'Do written questions or check a paper answer sheet, and tag the cause of a mistake — your error patterns will appear here.'
+            : '做書寫題或者用答題紙對答案，答錯時揀一個錯因，你嘅錯誤模式就會喺度顯示。'}
         </p>
       ) : (
         <>

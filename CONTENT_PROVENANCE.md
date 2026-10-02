@@ -42,7 +42,7 @@
 | `data/dse-level-drift.json` | `MasteryEstimate`：各級界線十年間的上落 | 考評局歷年成績統計表 7c（2016–2025） | 2026-08-23 由 `scripts/qbank/extract-hkeaa-drift.py` 抽取 | 未標 `HUMAN_VERIFIED_FACT` | 待確認 |
 | `data/dse-paper-formats.ts` | 科目頁「考卷結構」、選修規則（`lib/electives.ts`） | 考評局各科評核大綱 | AI 協助核對（2026-08-21、2026-09-26） | 未標 `HUMAN_VERIFIED_FACT` | 待確認；2026-09-30 起不新增用途 |
 | `data/reading.ts` | 英文卷一閱讀練習 | 本站原創文章；檔頭寫明對齊 2023 年文憑試某部分考核的技能類型 | 本站編寫 | — | 原創；技能對齊的描述來源待確認 |
-| `app/writing/WritingClient.tsx` | 英文卷二寫作練習 | 原創題目；頁面寫「取材自 2023 DSE 英文卷二『Poems & Songs』主題」 | — | — | 待確認：是否應保留對某年試卷主題的描述 |
+| `app/writing/WritingClient.tsx` | 英文卷二寫作練習 | 原創題目；頁面寫「取材自 2023 DSE 英文卷二『Poems & Songs』主題」。同一描述亦見於英文科科目頁的寫作卡（`app/subjects/[subject]/SubjectDetailView.tsx`：「HKEAA 7 分制自評量表（2023『Poems & Songs』主題）」，2026-10-01 R2-11 發現） | — | — | 待確認：是否應保留對某年試卷主題的描述，及「HKEAA 7 分制」的說法 |
 
 ### 3.1 讀取上表資料的程式檔
 

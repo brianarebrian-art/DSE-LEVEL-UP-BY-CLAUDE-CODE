@@ -15,8 +15,6 @@ import { notifyProgressChanged } from '@/lib/sync'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import MathText from '@/components/MathText'
-// P1-6-R2: 指令字高亮 — 自診「審題陷阱」後題幹指令字先亮
-import CommandWordText from '@/components/CommandWordText'
 // P1-6-R1: 沙漏 SVG 取代數字倒數
 // P1-6-R3: 鎖尾 5 秒溫和提示音（程序化生成，靜默降級）
 // 第 1 週 · 引擎一：答對輕柔提示音（預設關閉，A11yPanel 可開）
@@ -24,7 +22,6 @@ import { playCorrectChime } from '@/lib/answerChime'
 // #83: 計數機貼士卡 — 解析底部折疊區（未經真機驗證嘅卡 production 唔 render）
 import CalcTipCard from '@/components/CalcTipCard'
 import QuestionProvenance from '@/components/QuestionProvenance'
-import EmotionTags from '@/components/EmotionTags'
 import BookmarkButton from '@/components/BookmarkButton'
 import StagedExplanation from '@/components/StagedExplanation'
 import OptionNotes from '@/components/OptionNotes'
@@ -40,7 +37,7 @@ import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicSt
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, Lock, Coffee, Timer } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, Coffee, Timer } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
@@ -49,18 +46,11 @@ import QuestionStatusStrip from '@/components/QuestionStatusStrip'
 import PracticeContextRail from '@/components/PracticeContextRail'
 import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
-import { INTERVALS, DAILY_REVIEW_LIMIT } from '@/lib/reviewSchedule'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
-import { logReverseError, getReverseLog, type ReverseCause } from '@/lib/reverseLog'
+import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { orderByCause } from '@/lib/causeMode'
-// 真相引擎：由歷史錯誤記錄推斷「今次錯誤真正嘅成因」，喺解密卡加一句可執行建議
-import { diagnoseAfterLogging, type DiagnoseResult } from '@/lib/truth-engine'
-import { addDiscovery } from '@/lib/discovery/local-store'
-import { nameSuggestions } from '@/lib/discovery/copy'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
-import EmotionThermometer from '@/components/EmotionThermometer'
-import { logEmotion, type EmotionTag } from '@/lib/emotionLog'
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
 // 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
@@ -68,33 +58,11 @@ import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState
 import { weightedOrder } from '@/lib/empiricalWeighting'
 // 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
 import { readTimerPref, type TimerPref } from '@/lib/timerPreference'
-import { isQuiet, useQuiet } from '@/lib/quietMode'
+import { useQuiet } from '@/lib/quietMode'
 import {
   getQuestionTimer, setQuestionTimer, remainingSeconds, isTimeUp,
   TIMER_OPTIONS, type TimerOption,
 } from '@/lib/questionTimer'
-
-// The forced-lock countdown (seconds) after a wrong answer on a HARD question.
-// 2026-09-05 Brian 裁決：60 → 30 秒，而且【所有答錯題】都行（唔再限 hard）。
-// 憲章 §7 同日修訂。數值由 lib/discovery/dimensions.ts 出 —— 反思閘同發現引擎
-// 係同一件事，兩處各寫一個數字遲早會分叉。
-
-
-// 三維逆向錯因 (the forced self-diagnosis behind the "答錯即鎖死" lockout). The student
-// must own WHICH underlying trap caught them before the Marking Scheme unlocks.
-const REVERSE_CAUSES: {
-  key: ReverseCause; emoji: string; zh: string; zhDesc: string; en: string; enDesc: string
-}[] = [
-  { key: 'A', emoji: '🧠', zh: '概念盲區', en: 'Conceptual Blindspot',
-    zhDesc: '未完全理解定理底層邏輯（如忽略定義域或公式前提條件）',
-    enDesc: "Didn't fully grasp the underlying theorem (e.g. ignored a domain or a formula precondition)" },
-  { key: 'B', emoji: '🎯', zh: '審題陷阱', en: 'HKEAA Reading Trap',
-    zhDesc: '踩中題目隱蔽字眼、關鍵限制或雙重否定句',
-    enDesc: 'Fell for a hidden keyword, constraint or double-negative in the question' },
-  { key: 'C', emoji: '🧮', zh: '運算粗心', en: 'Execution / Calculator Error',
-    zhDesc: '按錯計算機或純運算失誤，思路其實正確',
-    enDesc: 'Mis-keyed the calculator or a pure arithmetic slip — the method was right' },
-]
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
@@ -325,37 +293,19 @@ export default function PracticeSession({
   // student chooses, never silently auto-applied.
   const [resumeOffer, setResumeOffer] = useState<ActiveSession | null>(() => {
     const saved = loadActiveSession()
-    return isResumable(saved, subjectId, topicFilter, mode) ? saved : null
+    if (!saved || !isResumable(saved, subjectId, topicFilter, mode)) return null
+    // 2026-10-01（改進循環 2 R2-11）：只在保存的題目全部仍在題庫時才提出續做。
+    // 原本科目已下架或不存在（題庫為空）時，仍會問「繼續做第 N 題」，撳完才發現做不到。
+    const ids = new Set(bank.map((q) => q.id))
+    return saved.questionIds.every((id) => ids.has(id)) ? saved : null
   })
   const [answerState, setAnswerState] = useState<AnswerState>(null)
-  // Which reverse-cause the student admitted to for the current wrong answer.
-  // While null on a WRONG answer, the lockout overlay hides the Marking Scheme.
-  const [diagnosed, setDiagnosed] = useState<ReverseCause | null>(null)
-  // 真相引擎輸出（揀完錯因即時算，純本地）
-  const [truth, setTruth] = useState<DiagnoseResult | null>(null)
   // 2026-09-09：呢度原本係反思鎖嘅 state。鎖已剷除（憲章 §7.2 實驗）。
   // about the chosen error cause + a countdown that both must clear before "Next".
   // P1-6-R1: 鎖嘅絕對死線（timestamp）。剩餘秒由死線倒推 —— 逐秒 setTimeout 鏈
   // 會累積漂移，倒數尾段誤差可以超過 100ms；deadline 制冇呢個問題。
   // P1-6-R3: 每次上鎖只響一次（server re-hold 跳返 3 秒都唔會重複響）
   const [elapsed, setElapsed] = useState(0)
-  // Optional server-signed lockout token (defence-in-depth; null = client timer only).
-  // 柔和計時（Emma/UDL 焦慮模式）：反思鎖照樣執行，但以進度條代替紅色
-  // 數字倒數、以暖色代替紅黑 —— 只改呈現，不改教學法。設定存 localStorage。
-  const [calmLock, setCalmLock] = useState(false)
-  // 2026-09-09 剷反思鎖嗰陣，`dse_calm_lock` 唯一嘅開關一齊冇咗 —— 個設定仲喺度、
-  // 仲會同步、仲影響下面 CommandWordText 嘅 soft 呈現，但學生改唔到。
-  // 2026-09-11 補返：個掣已搬入 A11yPanel（同其餘 SEN 控制擺埋一齊）。
-  // A11yPanel 同 applyCloudSettings 改完都會派 `dse-a11y`，所以呢度要跟住聽 ——
-  // 淨係 mount 讀一次嘅話，學生喺做緊題嗰陣撳個掣係唔會有反應嘅。
-  useEffect(() => {
-    const read = () => {
-      try { setCalmLock(localStorage.getItem('dse_calm_lock') === '1') } catch { /* ignore */ }
-    }
-    read()
-    window.addEventListener('dse-a11y', read)
-    return () => window.removeEventListener('dse-a11y', read)
-  }, [])
 
   // 隱藏練習計時器（SEN／焦慮友善）：A11yPanel 寫入 dse_hide_timer 並派 `dse-a11y` 事件，
   // 練習頁即時套用。只影響顯示 —— elapsed 照計，結果頁時間統計不受影響。
@@ -458,18 +408,19 @@ export default function PracticeSession({
   // 2026-09-09：「下一題」原本會喺反思鎖期間扣住（要答啱追問題 ＋ 等夠 30 秒）。
   // 鎖已剷除，所以永遠唔扣 —— 學生揀完錯因即刻睇得到解析，撳得到下一題。
 
-  // F-EMO: 情緒溫度計。gentleLock = 揀咗「有啲失落」→ 解析卡轉柔和呈現（鎖已剷，只剩色調）
-  const [emoOpen, setEmoOpen] = useState(false)
-  const [gentleLock, setGentleLock] = useState(false)
-
   // UX 循環 LOOP 4（2026-09-30）：答題後把回饋帶入視線（規則及實測見 lib/practiceScroll.ts）。
-  // 情緒溫度計開着時不捲，關閉後才捲；減少動態（系統設定或 html.no-motion）時不做平滑捲動。
+  // 減少動態（系統設定或 html.no-motion）時不做平滑捲動。
   const feedbackRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (answerState === null || emoOpen) return
+    if (answerState === null) return
     const id = requestAnimationFrame(() => {
       const el = feedbackRef.current
       if (!el) return
+      // R2-11（2026-10-01）：撳過的選項會變成 disabled，焦點因而跌回 <body>（Chrome 會延後才移走，
+      // 此刻 activeElement 可能仍是那粒 disabled 掣）；鍵盤及讀屏用戶要由頁頂重新 Tab。
+      // 焦點冇咗或者喺 disabled 掣上，才移到回饋區（唔捲動，捲動照下面規則）。
+      const active = document.activeElement as HTMLButtonElement | null
+      if (!active || active === document.body || active.disabled) el.focus({ preventScroll: true })
       const delta = feedbackScrollDelta(el.getBoundingClientRect().top, window.innerHeight)
       if (delta <= 0) return
       const reduce =
@@ -478,7 +429,7 @@ export default function PracticeSession({
       window.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' })
     })
     return () => cancelAnimationFrame(id)
-  }, [answerState, emoOpen])
+  }, [answerState])
 
   // §2.5 答題衝擊波：記住啱啱撳咗邊個選項，由該掣中心擴散一次。
   //
@@ -512,80 +463,14 @@ export default function PracticeSession({
       if (isCorrect) playCorrectChime()
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
-      // F-EMO: 拉分難度（hard = 5** 級）答錯 → 反思鎖之前先問感受
-      // Not in quiet mode (UX audit B5, Yuna 2026-09-26): no automatic pop-up.
-      if (!isCorrect && currentQ.difficulty === 'hard' && !isQuiet()) setEmoOpen(true)
     },
     [answerState, currentQ]
-  )
-
-  // F-EMO: 情緒選擇處理 — 記錄純本地（隱私紅線：永不入報告／排行榜）。
-  // 「好慌」= 跳過鎖死，直接導航去呼吸空間（Sarah 安全網優先於教學法）。
-  const pickEmotion = useCallback(
-    (tag: EmotionTag) => {
-      logEmotion(tag, subjectId)
-      setEmoOpen(false)
-      if (tag === 'anxious') {
-        router.push('/relax')
-        return
-      }
-      if (tag === 'neutral') setGentleLock(true)
-    },
-    [router, subjectId]
-  )
-
-  // Student completes the forced 3-way self-diagnosis → record the reverse cause
-  // to the local error log, which unlocks the Marking Scheme below.
-  const chooseCause = useCallback(
-    (cause: ReverseCause) => {
-      if (!currentQ || answerState === null) return
-      setDiagnosed(cause)
-      const logEntry = {
-        subjectId,
-        questionId: currentQ.id,
-        topic: currentQ.topicZh,
-        topicEn: currentQ.topicEn, // 非華語考生：英文介面嘅重溫建議要有英文課題名
-        topicId: currentQ.topic, // F-REV: 畀重溫排程砌返正確嘅 ?topic= 連結
-        cause,
-        selected: answerState.selectedZh,
-        correct: currentQ.correctZh,
-        ts: Date.now(),
-        difficulty: currentQ.difficulty, // 真相引擎：分辨基礎盲點 vs 進階未消化
-      }
-      logReverseError(logEntry)
-      // 必須喺 logReverseError 之後即刻叫 —— helper 靠 slice(1) 撇走啱啱寫入嗰條
-      setTruth(diagnoseAfterLogging(logEntry))
-
-      // 發現簿（BUILD-SPEC §2.3 步驟 4）。純本機，永不上雲 —— 見
-      // lib/discovery/local-store.ts 檔頭。
-      //
-      // ⚠️ 呢度個 label 係【系統砌】嘅（課題名 ＋ 維度）。規格原本要學生自己
-      // 揀／自己寫，嗰一步係 W3，未做。而家自動砌一個，好過一個都唔記 ——
-      // 「二次方程 · 審題陷阱」對學生自己睇返一樣有用，W3 只係將佢升級成
-      // 學生自己改嘅名。呢點喺 UI 上冇聲稱過係學生自己寫，所以唔構成假聲稱。
-      addDiscovery({
-        questionId: currentQ.id,
-        subjectId,
-        dimension: cause,
-        label: nameSuggestions(tr(currentQ.topicZh, currentQ.topicEn), cause, locale === 'en')[0],
-      })
-      // ⚠️ 2026-09-09：呢度原本會啟動 30 秒倒數 ＋ 一條追問題 ＋ server lock token。
-      // 全部剷咗（Yuna 裁決，兩個月實驗，憲章 §7.2）。
-      //
-      // 上面 logReverseError ＋ addDiscovery 【保留】—— 撳錯因係一下撳，唔係一個鎖，
-      // 而佢係錯題 DNA／雷達圖／遺忘曲線／溫書地圖嘅唯一入料口。兩樣一齊剷，
-      // 兩個月後條正確率 curve 就分唔清係「冇咗等待」定係「冇咗自我診斷」造成。
-    },
-    [currentQ, answerState, subjectId]
   )
 
   const next = useCallback(() => {
     const newAnswers = [...answers, answerState]
     setAnswers(newAnswers)
     setAnswerState(null)
-    setDiagnosed(null)
-    setTruth(null)
-    setGentleLock(false) // F-EMO: 柔和呈現只限本題
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -708,14 +593,9 @@ export default function PracticeSession({
   const proceed = next
 
   // 「下一題」掣出唔出、Enter 可唔可以推進 —— 【同一個判斷】，下面 JSX 同鍵盤
-  // handler 都用佢，唔准各自寫一份。
-  //
-  // ⚠️ 2026-09-15 實測捉到嘅 bug：鍵盤 handler 原本只檢查 answerState !== null。
-  //    答錯之後、三維自診未揀之前，介面仲未出「下一題」掣，但撳 Enter 就直接
-  //    跳去下一題 —— 自診被鍵盤繞過，dse_reverse_log 冇嗰一條。自診係錯題 DNA、
-  //    雷達圖、遺忘曲線重溫嘅唯一入料口（憲章 §7.2 明文保留）。
-  //    原本嘅測試只驗咗「答啱之後 Enter 換題」，所以冇捉到。
-  const canProceed = answerState !== null && (answerState.isCorrect || diagnosed !== null)
+  // handler 都用佢，唔准各自寫一份。2026-10-02 起答錯唔使先揀錯因（憲章 §7.2），
+  // 答完任何一題即可推進。
+  const canProceed = answerState !== null
 
   // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
   //
@@ -750,10 +630,8 @@ export default function PracticeSession({
       }
 
       if (e.key === 'Enter') {
-        // 同「下一題」掣同一個條件；情緒溫度計／休息模式開住嗰陣亦唔可以
-        // 喺 modal 背後推進（溫度計個掣有焦點時，下面嘅 BUTTON 分支會交返畀
-        // 瀏覽器原生觸發嗰個掣，唔受影響）。
-        if (!canProceed || emoOpen || restOpen) return
+        // 同「下一題」掣同一個條件；休息模式開住嗰陣亦唔可以喺 modal 背後推進。
+        if (!canProceed || restOpen) return
         if (el && /^(BUTTON|A)$/.test(el.tagName)) return // 交返畀瀏覽器原生觸發
         e.preventDefault()
         proceed()
@@ -771,7 +649,7 @@ export default function PracticeSession({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight, canProceed, emoOpen, restOpen])
+  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight, canProceed, restOpen])
 
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
@@ -1058,17 +936,9 @@ export default function PracticeSession({
             ) : null}
           </div>
 
-          {/* Content — P1-6-R2: 自診咗「B. 審題陷阱」先高亮題幹指令字 */}
           {/* 題幹維持無襯線：呢度係要逐字讀嘅正文，唔係標題（BDA）。只跟模板加大。 */}
           <p className="text-lg sm:text-xl leading-relaxed mb-8 text-ink">
-            {diagnosed === 'B' && answerState !== null && !answerState.isCorrect ? (
-              <CommandWordText
-                text={tr(currentQ.content, currentQ.contentEn)}
-                soft={calmLock || gentleLock}
-              />
-            ) : (
-              <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
-            )}
+            <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
           </p>
 
           {/* ── 第 3 週 · 引擎五之二：時間到 ──────────────────────────────
@@ -1133,7 +1003,7 @@ export default function PracticeSession({
                     <CheckCircle size={18} className="text-accent ml-auto shrink-0 mt-0.5" />
                   )}
                   {/* 規格書 §4.2 + 憲章第 7 條：答錯【不用大紅交叉】。
-                      燈泡 = 「你發現咗一個新盲點」，同一個符號貫穿全站錯題語境。 */}
+                      答錯嘅選項用燈泡標示，同一個符號貫穿全站錯題語境。 */}
                   {isSelectedWrong && (
                     <Lightbulb size={18} className="text-gold ml-auto shrink-0 mt-0.5" />
                   )}
@@ -1172,51 +1042,8 @@ export default function PracticeSession({
 
         {/* Feedback + Next */}
         {answerState !== null && (
-          <div ref={feedbackRef} className="animate-slide-up">
-            {/* canProceed：同 Enter 快捷鍵共用同一個判斷（見上面 canProceed 定義）。 */}
-            {!canProceed ? (
-              /* 答錯 → 停一停: a wrong answer holds the solution behind a short, forced
-                 3-way reverse-cause self-diagnosis. Calm gold, reflective (因材施教). */
-              <div className="rounded-2xl p-6 mb-4 border border-gold/40 bg-gold/[0.06]">
-                {/* 規格書 §4.2：答錯的第一句【不是】「錯咗」，而是「發現咗盲點」。
-                    400ms 淡入，無縮放無過衝 —— 過衝曲線讀落似慶祝，語意不符。 */}
-                <p className="blindspot-in text-gold font-medium text-base mb-3">
-                  {tr('你發現咗一個新盲點💡', 'You just found a new blind spot 💡')}
-                </p>
-                <div className="flex items-center gap-2 mb-1">
-                  <Lock size={18} className="text-gold" />
-                  <span className="text-gold font-medium tracking-wide text-sm">
-                    ✋ {tr('停一停，諗一諗', 'Pause & reflect')}
-                  </span>
-                </div>
-                <p className="text-ink-soft text-xs font-medium mb-1">
-                  {tr('答錯唔緊要 —— 一齊搵出今次嘅錯因，跟住就解鎖詳解。',
-                      'A wrong answer is fine — let’s find what tripped you up, then the solution unlocks.')}
-                </p>
-                <p className="text-ink-muted text-xs mb-4 leading-relaxed">
-                  {tr('誠實諗諗：你今次主要中咗邊一種底層陷阱？',
-                      'Honestly: which underlying trap caught you this time?')}
-                </p>
-                <div className="space-y-2">
-                  {REVERSE_CAUSES.map((c) => (
-                    <button
-                      key={c.key}
-                      onClick={() => chooseCause(c.key)}
-                      className="w-full text-left flex items-start gap-3 border border-line-strong bg-surface-sunken hover:bg-surface-sunken hover:border-gold/50 rounded-xl px-4 py-3 transition-all"
-                    >
-                      <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken text-gold flex items-center justify-center text-sm font-medium">
-                        {c.key}
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-sm font-medium text-ink">{c.emoji} {tr(c.zh, c.en)}</span>
-                        <span className="block text-xs text-ink-muted mt-0.5 leading-relaxed">{tr(c.zhDesc, c.enDesc)}</span>
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <>
+          <div ref={feedbackRef} tabIndex={-1} className="animate-slide-up focus:outline-none">
+            <>
                 {answerState.isCorrect ? (
                   /* Correct — calm acknowledgement, no fanfare. */
                   <div className="rounded-2xl p-5 mb-4 border bg-accent/[0.10] border-accent/30">
@@ -1246,32 +1073,12 @@ export default function PracticeSession({
                     </div>
                   </div>
                 ) : (
-                  /* Wrong → unlocked after self-diagnosis: the error IS the lesson. */
+                  /* Wrong → the solution shows straight away (2026-10-02, charter §7.2). */
                   <div className="rounded-2xl p-5 mb-4 border bg-gold/[0.10] border-gold/30">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-3">
                       <Brain size={18} className="text-gold" />
                       <span className="text-gold font-medium">{tr('🔍 思維逆襲解密', '🔍 Mind-flip decode')}</span>
                     </div>
-                    {(() => {
-                      const c = REVERSE_CAUSES.find((x) => x.key === diagnosed)
-                      return (
-                        /* 規格書 §4.2：呢句係「已記錄」嘅確認訊息，唔係警示。
-                           原本用玫紅，喺答錯回饋鏈入面讀落似再責備多一次；改金色。 */
-                        <p className="text-xs text-gold mb-3 leading-relaxed">
-                          {tr('已記錄錯因：', 'Logged cause: ')}
-                          <strong>{c ? `${c.emoji} ${tr(c.zh, c.en)}` : ''}</strong>
-                          {tr(' → 已寫入逆向錯題本。', ' → saved to your reverse error log.')}
-                          {/* UX 循環 LOOP 10（P1-F）：講清楚之後幾時、喺邊度再見到呢題。數字讀 lib/reviewSchedule.ts，
-                              不另寫一套；重溫只在「進度」頁（ReviewScheduler），每日有上限。 */}
-                          <span className="mt-1 block text-ink-muted">
-                            {tr(
-                              `呢題會喺第 ${INTERVALS.join('、')} 日出現喺「進度」頁嘅重溫（每日最多 ${DAILY_REVIEW_LIMIT} 條）。`,
-                              `It comes back for review on the Progress page after ${INTERVALS.join(', ')} days (up to ${DAILY_REVIEW_LIMIT} a day).`,
-                            )}
-                          </span>
-                        </p>
-                      )
-                    })()}
                     <div className="border-t border-gold/15 pt-3">
                       <StagedExplanation
                         text={tr(currentQ.explanation, currentQ.explanationEn)}
@@ -1294,31 +1101,6 @@ export default function PracticeSession({
                         唔會喺答題時分散注意力。 */}
                     <QuestionProvenance questionId={currentQ.id} />
 
-                    {/* 真相引擎 —— 由歷史錯誤記錄推斷成因，畀一句可執行嘅補救建議。
-                        同「正解思路」分開：上面講呢題點解，呢度講「你嘅錯法」點解。 */}
-                    {truth && (
-                      <div className="mt-3 border-t border-gold/15 pt-3">
-                        <p className="text-sm text-ink-soft leading-relaxed">
-                          <span className="text-accent text-xs font-medium mr-1">
-                            🧭 {tr('錯因真相：', 'What this error means: ')}
-                          </span>
-                          {tr(truth.truth.message[0], truth.truth.message[1])}
-                        </p>
-                        {truth.truth.lockReason && (
-                          <p className="mt-1.5 text-xs text-ink-muted leading-relaxed">
-                            {tr(truth.truth.lockReason[0], truth.truth.lockReason[1])}
-                          </p>
-                        )}
-                        {truth.cumulative && (
-                          <p className="mt-2 text-xs text-ink-muted leading-relaxed">
-                            📚 {tr(truth.cumulative.message[0], truth.cumulative.message[1])}
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    {/* F01 錯題情緒標籤（key 按題重置） */}
-                    <EmotionTags key={currentQ.id} />
                   </div>
                 )}
 
@@ -1353,13 +1135,6 @@ export default function PracticeSession({
                   topic={tr(currentQ.topicZh, currentQ.topicEn)}
                   className="mb-4"
                 />
-
-                {/* ⚠️ 2026-09-09：30 秒反思鎖已剷除（兩個月實驗）。
-                    倒數、追問題、server lock token 全部移走 —— 學生見唔到任何強制等待。
-                    【保留】上面嘅三維錯因一撳 —— 佢係錯題 DNA／雷達圖／遺忘曲線重溫嘅
-                    唯一入料口，亦係憲章 §16.E（2026-09-08 雙簽）跨機同步嗰個 key。
-                    兩樣一齊剷，兩個月後條正確率 curve 就分唔清係邊個變數造成。
-                    復活方法：git revert 本次 commit。憲章 §7.2 記低咗實驗條件。 */}
 
                 {/* 2026-09-09：呢個掣原本會喺反思鎖期間變灰、出一個鎖頭同倒數秒數。
                     鎖已剷除，所以佢永遠撳得。 */}
@@ -1409,22 +1184,18 @@ export default function PracticeSession({
                   </div>
                 )}
               </>
-            )}
           </div>
         )}
 
         {/* 未答題時右欄的說明（只在 lg 顯示），答題後由回饋取代，避免右欄一片空白。 */}
         {answerState === null && (
           <p className="focus-dim hidden lg:block rounded-2xl border border-dashed border-line p-6 text-sm leading-relaxed text-ink-muted">
-            {tr('揀咗答案之後，對錯、錯因同解析會喺呢邊出現，唔使捲落去。',
-                'After you choose an answer, whether it was right, what tripped you up and the explanation appear here, without scrolling.')}
+            {tr('揀咗答案之後，對錯同解析會喺呢邊出現，唔使捲落去。',
+                'After you choose an answer, whether it was right and the explanation appear here, without scrolling.')}
           </p>
         )}
         </div>
       </div>
-
-      {/* F-EMO: 情緒溫度計 — 拉分題答錯後、反思鎖之前先問感受 */}
-      {emoOpen && <EmotionThermometer onPick={pickEmotion} />}
 
       {/* B2: 一鍵休息 —— 反思鎖期間一樣開得，死線會一齊順延 */}
       <RestMode open={restOpen} onClose={closeRest} />

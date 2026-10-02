@@ -16,7 +16,12 @@ export default function Footer() {
   return (
     /* lg 起要讓返左側欄嘅闊度（80px → 260px）。沉浸式路由根本唔 render
        Footer，所以呢度唔使再判斷一次。 */
-    <footer className="border-t border-line bg-surface md:pl-20 xl:pl-[260px]">
+    /* 底部留白 = 手機底欄高度（--bottom-nav-h，md 起為 0）＋ 底欄自己的安全區留白，
+       捲到最底時頁尾最後一行不會被底欄蓋住（2026-10-01 R2-11）。 */
+    <footer
+      className="border-t border-line bg-surface md:pl-20 xl:pl-[260px]"
+      style={{ paddingBottom: 'calc(var(--bottom-nav-h) + env(safe-area-inset-bottom))' }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
         {/* Layer 1：Doormat 二級導航 */}
         <div className="grid sm:grid-cols-3 gap-8 mb-10">

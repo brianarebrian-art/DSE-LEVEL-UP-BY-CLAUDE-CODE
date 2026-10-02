@@ -14,7 +14,6 @@ const FILES = [
   'components/PracticeSupport.tsx',
   'components/StagedExplanation.tsx',
   'components/BookmarkButton.tsx',
-  'components/EmotionTags.tsx',
 ]
 const code = (p: string) => readFileSync(p, 'utf8').replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/^\s*\/\/.*$/gm, '')
 

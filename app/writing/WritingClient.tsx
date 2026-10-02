@@ -166,18 +166,19 @@ export default function WritingClient() {
             onChange={(e) => setDraft(e.target.value)}
             rows={14}
             placeholder={tr('在此開始你的文章……', 'Start writing your article here…')}
+            aria-label={tr('文章草稿', 'Article draft')}
             className="w-full bg-surface border border-line-strong rounded-xl p-4 text-sm text-ink leading-relaxed resize-y focus:outline-none focus:border-violet/60"
           />
           <div className="no-print flex flex-wrap gap-3 mt-3">
             <button
               onClick={() => window.print()}
-              className="inline-flex items-center gap-2 bg-surface-sunken hover:bg-surface-sunken border border-line-strong text-ink-soft text-sm font-medium px-4 py-2.5 rounded-xl transition-all"
+              className="inline-flex min-h-11 items-center gap-2 bg-surface-sunken hover:bg-surface-sunken border border-line-strong text-ink-soft text-sm font-medium px-4 py-2.5 rounded-xl transition-all"
             >
               <Printer size={15} /> {tr('列印 / 匯出 A4', 'Print / Export A4')}
             </button>
             <button
               onClick={() => { if (draft) { setDraft(''); localStorage.removeItem(DRAFT_KEY) } }}
-              className="inline-flex items-center gap-2 text-ink-muted hover:text-ink-soft text-sm px-3 py-2.5 transition-all"
+              className="inline-flex min-h-11 items-center gap-2 text-ink-muted hover:text-ink-soft text-sm px-3 py-2.5 transition-all"
             >
               <RotateCcw size={14} /> {tr('清空', 'Clear')}
             </button>
@@ -216,7 +217,9 @@ export default function WritingClient() {
                     <button
                       key={band}
                       onClick={() => setScores((s) => ({ ...s, [d.key]: band }))}
-                      className={`py-2 rounded-lg text-sm font-medium border transition-all ${
+                      aria-pressed={scores[d.key] === band}
+                      aria-label={en ? `${d.en}: ${band} of 7` : `${d.zh}：${band} 分（滿分 7）`}
+                      className={`min-h-11 py-2 rounded-lg text-sm font-medium border transition-all ${
                         scores[d.key] === band
                           ? 'bg-violet border-violet text-on-violet'
                           : 'bg-surface-sunken border-line-strong text-ink-muted hover:border-line-strong'

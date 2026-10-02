@@ -817,3 +817,97 @@ Yuna 於 LOOP 19 途中貼上，要求按 P0 → P3 持續修復，不再詢問�
 - 發現：768–1023px 同時出現左側圖示列及漢堡選單。`Navbar` 頂欄控制項（開始練習、主題、語言、登入）改為 md 起顯示，漢堡及手機品牌只留給手機。
 - 新測試：`layout-breakpoints`（767／768／1024／1440 各用哪種版面；禁止 `min-[…]` 任意斷點）、`test-integrity`（禁 skip／todo／缺模組即 return）、`api-body-limit` 按 handler 參數名檢查、`start-route` 五種情況用真科目表。
 - 驗證：npm test 1268/1268、tsc、qa、lint 0 error、build 通過。⬜ 待驗證：本項 production 瀏覽器實測（768／820／912／1024 導航）未做。
+
+---
+
+# R2-11 最終驗證及收口（2026-10-01）
+
+## R2-11a R2-10 重新驗證；`/start` 瀏覽器回歸
+
+- 全套重跑（R2-10 之後）：npm test 1268/1268（skipped 0、todo 0）、qa、tsc、lint 0 error、build 全部通過。
+- 平板（production，未登入）：768／820／912／1024，中英文各一次。四個闊度都只有左側圖示列、無漢堡掣；頂欄「開始練習／主題／語言／Google 登入」無溢出、無重疊、無斷行；頁面無超出視窗元素。⬜ 待驗證：已登入狀態下的頂欄（無法登入）。
+- `/start` 五種情況（瀏覽器實測，清空 localStorage 後逐一建立狀態）：A 新用戶 → `/subjects`；B 有紀錄 → `/practice?subject=physics`；C 物理做到第 3 題、另有較新的數學紀錄 → 回到物理並提示「繼續做第 3 題」，撳後題目狀態列顯示第 3 題、題目 id 相同；D 已完成的 session → 最近科目的新一節，無續做提示；E 無效科目（session 及紀錄都是）→ `/subjects`，無 undefined、無重複跳轉。
+- **發現並修正：** 直接開 `/practice?subject=<不存在或已下架>` 而本機有該科的未完成紀錄時，頁面仍問「繼續做第 N 題」，撳後才顯示「呢個練習仲未上線」。改為只有保存的題目全部仍在題庫時才提出續做（與 `acceptResume` 同一條件）。實測：無效科目不再提示；數學正常續做提示仍出現。
+
+## R2-11b 結果頁 8 個闊度；字眼審查；無障礙掃描修正
+
+- 結果頁（production，7/10 數學）：360／375／390／430／768／1024／1280／1440 各一次，每次 1 個 h1、「本節表現：發展中」、無 5**／5*／Level 5／今次表現等級／真實水平／距離／等級位置／🏆、無超出視窗元素、無空框。
+- 等級字眼全 repo 分類：
+  - LIVE_UI：只剩否定句（「唔係 DSE 等級」等），保留。
+  - DEFERRED_DECISION：`/predictor`（`lib/mastery.ts`、`lib/levelDistribution.ts`、`MasteryEstimate`）；頁尾及 `/about`「等級預測僅供參考」（憲章 §13，`STALE_CHARTER_COPY`）。
+  - 資料層：`lib/progress.ts`、`lib/grading.ts` 的 `predictGrade` 仍為 `dse_progress.grade` 計值（上雲 key），不顯示。
+  - 舊註釋：`ResultPageClient` 中文科提示註釋、`lib/pageOrder.ts`「側欄『等級預測』」— 非 UI，見 R2-11c。
+- `/predictor` 入口（側欄、dashboard 卡、頁名）一律叫「練習表現（估算）」，空狀態寫「唔係考評局成績預測」，沒有被描述成官方預測。未改其內容（`DECISION_CONFLICT`）。
+- `/writing`「2023 Poems & Songs」字眼擴散檢查：SEO metadata、分享卡、頁尾、sitemap 都沒有；**另外出現在英文科科目頁的寫作卡**（`SubjectDetailView.tsx:226`：「HKEAA 7 分制自評量表（2023『Poems & Songs』主題）」）。按 prompt 不改，已加入衝突清單。
+- 「掌握／保證／一定／100%」審查：餘下的「100%」都是「100% 免費」或「100% 原創篇章」；「保證」全部是否定句；寫作量表「1 = 最弱」是量表端點。無需改。
+- 無障礙掃描（375px，14 條路由：/、/subjects、/subjects/math、/practice、/result、/dashboard、/writing、/answer-sheet、/sensei、/paper-warrior、/predictor、/about、/privacy；本站沒有 /progress，進度頁即 /dashboard）：每頁 1 個 `<main>`；對話框都有標籤。修正：
+  - `/answer-sheet` 有兩個 h1（讀屏區塊的 h1＋頁面 h1）→ 讀屏區塊改為段落。
+  - `/dashboard` 空狀態由 h1 跳到 h3 → `GoodTodayCard` 加 `headingLevel`，空狀態用 h2。
+  - `/writing` 文章輸入框只有 placeholder → 加 `aria-label`；1–7 自評掣加 `aria-pressed` 及「內容：4 分（滿分 7）」標籤，高度 38 → 44px（7 粒一行，闊度 37px，高於 WCAG 2.5.8 的 24px）；列印／清空掣 42 → 44px。
+  - `/sensei` 搜尋欄及「問」掣 38 → 44px。
+  - 誤報（已人手確認）：`/subjects/math` 考評局連結有文字（在未展開的 `<details>` 內）；`/practice` 超出視窗的是讀屏專用隱藏連結；`/subjects` 科目名連結以 `after:inset-0` 覆蓋整張卡。
+  - 未改：首頁盲測示範內「顯示被遮蓋嘅數值」行內掣（20px，屬句內例外）；`/paper-warrior` 分段掣 38–41px 闊；`/about` 電郵連結 42px 高。
+- 測試：`a11y-final-scan.test.mts`。瀏覽器重驗：/dashboard 標題 h1→h2；/answer-sheet 1 個 h1；/writing 標籤及 aria-pressed 生效；/sensei 44px。
+
+## R2-11c 鍵盤操作
+
+- 實測（production，375px）練習頁全程只用鍵盤：Tab 7 下到第一個選項（有可見焦點框）→ Enter 作答 → 焦點落在回饋區 → Tab 到錯因 → Space 揀 → 焦點落在「下一題」→ Enter → 題目狀態列顯示第 2 題。答錯時若先出情緒溫度計，焦點在其標題，揀完後回到回饋區。無障礙對話框：Enter 開、焦點入對話框、Escape 關、焦點回到觸發掣。
+- **發現並修正：**
+  1. `/practice`、`/notes/[subject]` 的讀屏專用區塊內有 25 條科目／課題連結，會被 Tab 逐條經過，焦點落在畫面外。改為 `tabIndex={-1}`（讀屏瀏覽模式仍可讀及跟隨），並加測試：任何 `sr-only` 區塊內的連結都要不在 Tab 次序內。
+  2. 作答後撳過的選項變 disabled，焦點跌回 `<body>`，要由頁頂重新 Tab。改為焦點冇咗（或仍在 disabled 掣上）時移到回饋區（`tabIndex=-1`，不捲動）。
+  3. 揀錯因後錯因掣被解析取代，焦點又跌回 `<body>`。改為移到「下一題」掣（不捲動；Shift+Tab 可返回解析）。
+- 兩處舊註釋（`lib/pageOrder.ts`「側欄『等級預測』」、結果頁中文科提示註釋）更正為現況。
+- 測試：`a11y-final-scan.test.mts` 加 3 項；`answer-feedback` 類測試錨點更新（`feedbackRef` 加 `tabIndex={-1}`）。
+
+## R2-11d 手機底欄蓋住頁尾
+
+- 發現（360px，`/dashboard` 及首頁）：捲到最底，頁尾最後一行（透明度／私隱政策／社群安全，735–749px）仍在底部導航（743px 起）下面，撳唔到。原因：底欄讓位加在 `<main>`，但頁尾在 `<main>` 之後；`--bottom-nav-h` 亦未計 iPhone 底部安全區。
+- 修正：讓位改由 `Footer` 負責（`calc(var(--bottom-nav-h) + env(safe-area-inset-bottom))`），`<main>` 不再讓位（沉浸式路由沒有底欄亦沒有頁尾）。
+- 實測（production）：`/dashboard` 360px 最後一行頁尾連結底部 693px < 底欄 743px。360px 的 /、/subjects、/subjects/math、/about、/privacy 及 430px 的 /dashboard、/writing、/sensei、/paper-warrior、/predictor、/answer-sheet：捲到最底無連結被固定元素蓋住、無超出視窗元素。
+- 測試：`route-states.test.mts` 加一項。
+
+## R2-11e 其餘驗證及收口
+
+- **手機打橫**（812×375、844×390，`/practice`）：頂部固定列 64px；兩粒浮動掣在內容欄左右之外；第 4 個選項捲到底可撳；報告對話框（338px 高）及無障礙對話框都在視窗內、可捲、關閉掣可見；數學式正常排版。
+- **桌面練習頁**：1280／1366 兩欄（各 564px，置中）；1440／1536／1920 三欄（220／514／514，總闊上限 1296px）；浮動掣全部在內容外，無重疊。1920 兩邊各約 312px 留白（刻意的闊度上限）。
+- **效能（只量度）**：未壓縮 JS — `/practice` 約 1.2MB（KaTeX 256KB、框架 432KB、題目相關代碼 78KB，無整個題庫）；`/subjects` 1.3MB、`/result` 1.5MB、`/dashboard` 1.3MB。後三頁的 KaTeX 不是初始 `<script>`，是 DOMContentLoaded 之後 Next 預載練習頁時下載，不阻塞首次顯示。無高把握修正，未改。
+- **API 請求上限**（本機 production 實測）：合格 body 200、69KB body 413、壞 JSON 400、未登入 `/api/progress`／`/api/sync/settings` 401；repo 內無直接讀 body 的寫法（R2-10 測試已按參數名掃描）。
+- **測試逃生門**：無 skip／todo／only；`test-integrity` 加入 `.only`。QA 腳本的 `process.exit(0)` 全部只在通過分支。
+- **私隱對照**（`PRIVACY_MISMATCH` 只記錄，不改政策）：
+  - 已修（客觀錯誤）：刪帳號清單把 `user_sessions` 列了兩次，私隱頁因此寫「共 8 張表」，實為 7 張。
+  - `PRIVACY_MISMATCH`：私隱頁「技術日誌」只講本站記錄的錯誤訊息，沒有提到 Vercel 平台本身的請求日誌（一般包括 IP 及 user-agent，由 Vercel 保存）。需創辦人決定是否補一句。
+  - `PRIVACY_MISMATCH`（待核實）：刪除清單仍含 `wall_posts`、`wall_likes`（代碼註釋寫 0011 未套用；記憶紀錄 2026-07-29 生產環境無這兩張表）。刪除路由對不存在的表當 no-op，不影響功能，但「共 7 張表」可能多算 2。需在 Supabase 核實。
+  - 其餘一致：未登入不寫 cookie 追蹤（代碼無 `document.cookie`）、無分析服務、同步 14 項由 `lib/cloudKeys.ts` 計、伺服器只在記憶體按 IP 計數。
+- **限流文件**：`proxy.ts` 檔頭及 `docs/SECURITY-audit-2026-09-25.md` 都寫明是每個 instance 各自計、不是分散式；私隱頁寫「記憶體按 IP 計數，重啟消失」，一致。沒有任何頁面聲稱全局防護。
+- **來源掃描回歸**：建立臨時 fixture → 測試 fail → 刪除 → pass。過程中發現 `data/` 根目錄的新檔不會被捉到（紀錄到處都有「data/」字樣），已修正。
+- **死碼**：`gradeBgColors`／`gradeMessages`／`predictedGrade`／`gradeConfidence`／舊 `neighbours()` 只剩說明註釋；`ErrorDNA` 是內部組件名；`/sensei` 的「SENSEI」是 h1「知識卡」上的副標題。
+- **頁尾**：沒有致謝名單、方法論長文或限制說明；保留導航連結及憲章 §13 免責句。未改。
+- **瀏覽器資料**：清空 localStorage、sessionStorage 及 IndexedDB（`dse-qbank`），最後以乾淨訪客狀態截圖首頁（390px）。
+- **最後完整驗證**（2026-10-01，HEAD `3991b9b` 之上僅文件改動）：npm test 1278/1278（skipped 0、todo 0）、qa rc=0、tsc rc=0、lint 0 error（35 warning 為原有）、build rc=0；production server 上 17 條路由回 200。
+
+### R2-11 停止條件逐項
+
+| 項目 | 結果 |
+|---|---|
+| R2-10 重新測試 | ✅ 全套重跑通過 |
+| 768／820／912／1024 平板 | ✅ 只有側欄（未登入狀態） |
+| 英文平板頂欄 | ✅ 無溢出、重疊、斷行（未登入狀態） |
+| `/start` 回歸 | ✅ A–E 瀏覽器實測；修正無效科目仍提示續做 |
+| 結果頁無等級 UI | ✅ 8 個闊度 |
+| 非暫緩頁面無舊等級 UI | ✅ |
+| `/predictor` 記為 DECISION_CONFLICT | ✅ |
+| `/writing` 來源衝突受控 | ✅ 另發現英文科頁寫作卡同一字眼（已記錄，未改） |
+| Recommendation V1 | ✅ |
+| 手機／平板／桌面 QA | ✅（修正底欄蓋住頁尾） |
+| 無障礙掃描 | ✅（修正 5 項，見 R2-11b／c） |
+| API 請求上限 | ✅ |
+| 測試逃生門 | ✅ |
+| 私隱實作對照 | ✅ 完成；2 項 PRIVACY_MISMATCH 待決定／核實 |
+| 限流文件對照 | ✅ |
+| 來源掃描 | ✅（修正一個漏洞） |
+| 死碼 | ✅ |
+| 頁尾 | ✅ |
+| 瀏覽器測試資料清理 | ✅ |
+| npm test／qa／tsc／lint／build | ✅ |
+| 已登入狀態的頂欄及請求上限 | ⬜ 待驗證（無法登入） |
+| React #418 一次 | ⬜ 待驗證：只在長時間使用的測試分頁出現一次，新分頁 10 條路由重現不到 |

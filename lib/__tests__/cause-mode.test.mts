@@ -17,10 +17,11 @@ test('hasCommandWord gives the same answer every time (no /g lastIndex state)', 
   assert.equal(CW.hasCommandWord('Write a note on the cannon.'), false)
 })
 
-test('the highlight component uses the shared word list, not its own copy', () => {
-  const src = readFileSync('components/CommandWordText.tsx', 'utf8')
-  assert.match(src, /from '@\/lib\/commandWords'/)
-  assert.doesNotMatch(src, /except\\s\+for/, 'a second copy of the word list would drift')
+// 2026-10-02（憲章 §7.2）：練習頁的指令字高亮已隨錯因自診刪除，詞表只剩錯因練習使用。
+test('the command-word list now only feeds cause-based practice; the highlight is gone', async () => {
+  const { existsSync } = await import('node:fs')
+  assert.equal(existsSync('components/CommandWordText.tsx'), false)
+  assert.match(readFileSync('lib/causeMode.ts', 'utf8'), /from '@\/lib\/commandWords'/)
 })
 
 const q = (id: string, topic: string, content: string) => ({ id, topic, content })

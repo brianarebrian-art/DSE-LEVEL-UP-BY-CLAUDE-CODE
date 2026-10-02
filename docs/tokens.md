@@ -9,7 +9,7 @@
 node scripts/gen-token-doc.mjs
 ```
 
-掃到 **169** 個 custom property 宣告，分佈喺 **208** 個 block。
+掃到 **169** 個 custom property 宣告，分佈喺 **201** 個 block。
 
 ## ⚠️ 被覆蓋嘅宣告
 
@@ -45,7 +45,7 @@ node scripts/gen-token-doc.mjs
 | `--grade-5` | `#177E3C` (L131) | `#16793A` (L402) | `#16793A` |
 | `--color-ml-rose` | `#C5908B` (L178) | `#B7A6A3` (L183) | `#B7A6A3` |
 | `--color-ml-mist` | `#AFC2D1` (L179) | `#8A9BA8` (L184) | `#8A9BA8` |
-| `--ease-spring-settle` | `cubic-bezier(0.22, 1, 0.36, 1)` (L1175) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1176) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` |
+| `--ease-spring-settle` | `cubic-bezier(0.22, 1, 0.36, 1)` (L1151) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1152) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` |
 
 ## Resolved — 預設態（冇 `data-theme` 屬性）
 
@@ -53,7 +53,7 @@ node scripts/gen-token-doc.mjs
 
 | token | resolved | 宣告 | 經過 | 備註 |
 |---|---|---|---|---|
-| `--bottom-nav-h` | `0px` | `0px` (L902) | — |  |
+| `--bottom-nav-h` | `0px` | `0px` (L878) | — |  |
 | `--breakpoint-desk` | `90rem` | `90rem` (L16) | — |  |
 | `--color-accent` | `#57685C` | `var(--color-ml-sage)` (L374) | `--color-ml-sage` | 4.75 |
 | `--color-accent-hover` | `#4D584A` | `#4D584A` (L376) | — | 白字 7.47 |
@@ -109,7 +109,7 @@ node scripts/gen-token-doc.mjs
 | `--color-text-secondary` | `#94A3B8` | `#94A3B8` (L50) | — | = slate-400 |
 | `--color-violet` | `#5B666F` | `#5B666F` (L391) | — | mist-strong 4.95 |
 | `--color-violet-strong` | `#4A545C` | `#4A545C` (L392) | — | 白字 7.19 |
-| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1176) | — |  |
+| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1152) | — |  |
 | `--font-serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` (L24) | — |  |
 | `--grade-1` | `#334155` | `#334155` (L135) | — | 9.47 |
 | `--grade-2` | `#475569` | `#475569` (L134) | — | 6.93 |
@@ -119,7 +119,7 @@ node scripts/gen-token-doc.mjs
 | `--grade-5s` | `#846208` | `#846208` (L401) | — | 4.74（原 #8A6608 落莫蘭迪底只有 4.44） |
 | `--grade-5ss` | `#9A5B06` | `#9A5B06` (L129) | — | 4.96 |
 | `--grade-u` | `#9D1449` | `#9D1449` (L136) | — | 7.30 —— 玫紅，唔用正紅（憲章 §大愛） |
-| `--sidebar-w` | `0px` | `0px` (L930) | — |  |
+| `--sidebar-w` | `0px` | `0px` (L906) | — |  |
 
 ## Resolved — `data-theme='cyber'`（暗色）
 
@@ -127,7 +127,7 @@ node scripts/gen-token-doc.mjs
 
 | token | resolved | 宣告 | 經過 | 備註 |
 |---|---|---|---|---|
-| `--bottom-nav-h` | `0px` | `0px` (L902) | — |  |
+| `--bottom-nav-h` | `0px` | `0px` (L878) | — |  |
 | `--breakpoint-desk` | `90rem` | `90rem` (L16) | — |  |
 | `--color-accent` | `#7a9e7e` | `var(--color-ml-sage)` (L232) | `--color-ml-sage` |  |
 | `--color-accent-hover` | `#6b8f71` | `#6b8f71` (L234) | — | 規格 --moss-dark。深字掣 4.85 ✅ |
@@ -183,7 +183,7 @@ node scripts/gen-token-doc.mjs
 | `--color-text-secondary` | `#94A3B8` | `#94A3B8` (L50) | — | = slate-400 |
 | `--color-violet` | `#8a9fb8` | `var(--color-ml-mist)` (L275) | `--color-ml-mist` | #8a9fb8 規格 --mist  4.99 |
 | `--color-violet-strong` | `#a8c2e0` | `#a8c2e0` (L276) | — | mist ×1.22  7.40 —— 3 處做字色 |
-| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1176) | — |  |
+| `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1152) | — |  |
 | `--font-serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` (L24) | — |  |
 | `--grade-1` | `#a8a095` | `#a8a095` (L294) | — | 規格 --text-secondary 5.25 |
 | `--grade-2` | `#c1bab0` | `#c1bab0` (L293) | — | 岩灰                7.05 |
@@ -193,7 +193,7 @@ node scripts/gen-token-doc.mjs
 | `--grade-5s` | `#9ab89d` | `#9ab89d` (L289) | — | moss ×1.25          6.28 |
 | `--grade-5ss` | `#e8e0d4` | `#e8e0d4` (L288) | — | 規格 --cream        10.36 |
 | `--grade-u` | `#c49a9a` | `#c49a9a` (L295) | — | 規格 --rose         5.45 —— 唔用正紅（憲章 §7） |
-| `--sidebar-w` | `0px` | `0px` (L930) | — |  |
+| `--sidebar-w` | `0px` | `0px` (L906) | — |  |
 
 ## 其他 scope
 
@@ -212,19 +212,19 @@ node scripts/gen-token-doc.mjs
 | `--color-surface-sunken` | `#2F2E2C` | `.on-dark-overlay` | — | L442 |
 | `--color-line` | `rgba(232, 224, 212, 0.10)` | `.on-dark-overlay` | — | L443 |
 | `--color-line-strong` | `rgba(232, 224, 212, 0.20)` | `.on-dark-overlay` | — | L444 |
-| `--bottom-nav-h` | `3.5rem` | `html[data-bottomnav='on']` | — | L905 |
-| `--bottom-nav-h` | `0px` | `html[data-bottomnav='on']` | `@media (min-width: 768px)` | L912 |
-| `--sidebar-w` | `5rem` | `html[data-sidebar='on']` | `@media (min-width: 48rem)` | L937 |
-| `--sidebar-w` | `260px` | `html[data-sidebar='on']` | `@media (min-width: 80rem)` | L942 |
-| `--particle-speed` | `20s` | `.particle-bg` | — | L1010 |
-| `--particle-alpha` | `0.15` | `.particle-bg` | — | L1011 |
-| `--particle-speed` | `12s` | `.particle-combo-1` | — | L1021 |
-| `--particle-speed` | `8s` | `.particle-combo-2` | — | L1022 |
-| `--particle-speed` | `5s` | `.particle-combo-3` | — | L1023 |
-| `--particle-speed` | `40s` | `.particle-calm` | — | L1026 |
-| `--particle-alpha` | `0.05` | `.particle-calm` | — | L1026 |
-| `--flame-rgb` | `0, 245, 212` | `.combo-flame` | — | L1119 |
-| `--flame-speed` | `1.5s` | `.combo-flame` | — | L1120 |
+| `--bottom-nav-h` | `3.5rem` | `html[data-bottomnav='on']` | — | L881 |
+| `--bottom-nav-h` | `0px` | `html[data-bottomnav='on']` | `@media (min-width: 768px)` | L888 |
+| `--sidebar-w` | `5rem` | `html[data-sidebar='on']` | `@media (min-width: 48rem)` | L913 |
+| `--sidebar-w` | `260px` | `html[data-sidebar='on']` | `@media (min-width: 80rem)` | L918 |
+| `--particle-speed` | `20s` | `.particle-bg` | — | L986 |
+| `--particle-alpha` | `0.15` | `.particle-bg` | — | L987 |
+| `--particle-speed` | `12s` | `.particle-combo-1` | — | L997 |
+| `--particle-speed` | `8s` | `.particle-combo-2` | — | L998 |
+| `--particle-speed` | `5s` | `.particle-combo-3` | — | L999 |
+| `--particle-speed` | `40s` | `.particle-calm` | — | L1002 |
+| `--particle-alpha` | `0.05` | `.particle-calm` | — | L1002 |
+| `--flame-rgb` | `0, 245, 212` | `.combo-flame` | — | L1095 |
+| `--flame-speed` | `1.5s` | `.combo-flame` | — | L1096 |
 
 ## 掃過嘅 block
 
@@ -301,140 +301,133 @@ node scripts/gen-token-doc.mjs
 | L814 | `.katex-display` |
 | L824 | `.skip-link` |
 | L834 | `.skip-link:focus` |
-| L855 | `@keyframes cmd-hl-in` |
-| L856 | `@keyframes cmd-hl-in › from` |
-| L857 | `@keyframes cmd-hl-in › to` |
-| L859 | `.cmd-hl` |
-| L868 | `.cmd-hl-soft` |
-| L872 | `@media (prefers-reduced-motion: reduce)` |
-| L873 | `@media (prefers-reduced-motion: reduce) › .cmd-hl` |
-| L879 | `@keyframes sand-stream` |
-| L880 | `@keyframes sand-stream › to` |
-| L882 | `.hourglass-stream` |
-| L886 | `.hourglass-soft .hourglass-stream` |
-| L889 | `@media (prefers-reduced-motion: reduce)` |
-| L890 | `@media (prefers-reduced-motion: reduce) › .hourglass-stream` |
-| L901 | `:root` |
-| L904 | `html[data-bottomnav='on']` |
-| L910 | `@media (min-width: 768px)` |
-| L911 | `@media (min-width: 768px) › html[data-bottomnav='on']` |
-| L915 | `.floating-bottom` |
-| L929 | `:root` |
-| L935 | `@media (min-width: 48rem)` |
-| L936 | `@media (min-width: 48rem) › html[data-sidebar='on']` |
-| L940 | `@media (min-width: 80rem)` |
-| L941 | `@media (min-width: 80rem) › html[data-sidebar='on']` |
-| L949 | `html.no-motion .mascot` |
-| L954 | `.floating-left` |
-| L957 | `.floating-left-2` |
-| L962 | `.floating-bottom-2` |
-| L965 | `.floating-bottom-3` |
-| L977 | `.floating-panel-max-h` |
-| L1009 | `.particle-bg` |
-| L1016 | `@keyframes particle-drift` |
-| L1017 | `@keyframes particle-drift › from` |
-| L1018 | `@keyframes particle-drift › to` |
-| L1021 | `.particle-combo-1` |
-| L1022 | `.particle-combo-2` |
-| L1023 | `.particle-combo-3` |
-| L1026 | `.particle-calm` |
-| L1031 | `.scatter-title` |
-| L1034 | `@keyframes scatter-in` |
-| L1035 | `@keyframes scatter-in › from` |
-| L1036 | `@keyframes scatter-in › to` |
-| L1044 | `.shockwave` |
-| L1056 | `@keyframes shockwave-expand` |
-| L1057 | `@keyframes shockwave-expand › from` |
-| L1058 | `@keyframes shockwave-expand › to` |
-| L1071 | `.pulse-correct` |
-| L1074 | `@keyframes pulse-correct` |
-| L1075 | `@keyframes pulse-correct › 0%` |
-| L1076 | `@keyframes pulse-correct › 100%` |
-| L1080 | `.shockwave-gold` |
-| L1086 | `.blindspot-in` |
-| L1089 | `@keyframes blindspot-in` |
-| L1090 | `@keyframes blindspot-in › from` |
-| L1091 | `@keyframes blindspot-in › to` |
-| L1097 | `.ring-draw` |
-| L1100 | `@keyframes ring-draw` |
-| L1101 | `@keyframes ring-draw › from` |
-| L1106 | `.radar-grow` |
-| L1111 | `@keyframes radar-grow` |
-| L1112 | `@keyframes radar-grow › from` |
-| L1113 | `@keyframes radar-grow › to` |
-| L1118 | `.combo-flame` |
-| L1126 | `@keyframes flame-pulse` |
-| L1127 | `@keyframes flame-pulse › 0%, 100%` |
-| L1128 | `@keyframes flame-pulse › 50%` |
-| L1133 | `.carousel-3d` |
-| L1134 | `.carousel-card` |
-| L1138 | `.carousel-card:hover` |
-| L1139 | `.carousel-card[aria-current='true']` |
-| L1143 | `.ring-rotate` |
-| L1144 | `@keyframes ring-rotate` |
-| L1145 | `@keyframes ring-rotate › from` |
-| L1146 | `@keyframes ring-rotate › to` |
-| L1174 | `:root` |
-| L1186 | `.achievement-pop` |
-| L1189 | `@keyframes achievement-pop` |
-| L1190 | `@keyframes achievement-pop › from` |
-| L1191 | `@keyframes achievement-pop › to` |
-| L1201 | `.relax-in` |
-| L1216 | `@keyframes ml-q-enter` |
-| L1217 | `@keyframes ml-q-enter › from` |
-| L1218 | `@keyframes ml-q-enter › to` |
-| L1220 | `@keyframes ml-q-leave` |
-| L1221 | `@keyframes ml-q-leave › from` |
-| L1222 | `@keyframes ml-q-leave › to` |
-| L1224 | `.ml-q-enter` |
-| L1225 | `.ml-q-leave` |
-| L1229 | `.ml-press` |
-| L1230 | `.ml-press:active` |
-| L1234 | `.ml-pick-on` |
-| L1235 | `.ml-pick` |
-| L1238 | `@keyframes ml-reveal` |
-| L1239 | `@keyframes ml-reveal › from` |
-| L1240 | `@keyframes ml-reveal › to` |
-| L1242 | `.ml-reveal` |
-| L1245 | `@keyframes ml-modal-in` |
-| L1246 | `@keyframes ml-modal-in › from` |
-| L1247 | `@keyframes ml-modal-in › to` |
-| L1249 | `.ml-modal-in` |
-| L1253 | `.ml-stagger` |
-| L1259 | `.ml-lift` |
-| L1260 | `.ml-lift:hover` |
-| L1265 | `@keyframes ml-notice` |
-| L1266 | `@keyframes ml-notice › 0%, 100%` |
-| L1267 | `@keyframes ml-notice › 50%` |
-| L1269 | `.ml-notice` |
-| L1273 | `@media (prefers-reduced-motion: reduce)` |
-| L1274 | `@media (prefers-reduced-motion: reduce) › .ml-q-enter, .ml-q-leave, .ml-reveal, .ml-modal-in, .ml-stagger` |
-| L1278 | `@media (prefers-reduced-motion: reduce) › .ml-press, .ml-pick, .ml-lift` |
-| L1279 | `@media (prefers-reduced-motion: reduce) › .ml-press:active, .ml-pick-on, .ml-lift:hover` |
-| L1280 | `@media (prefers-reduced-motion: reduce) › .ml-notice` |
-| L1292 | `html.font-easy .ml-q-enter, html.font-easy .ml-q-leave, html.font-easy .ml-reveal, html.font-easy .ml-modal-in, html.font-easy .ml-stagger, html.font-easy .ml-notice` |
-| L1299 | `html.font-easy .ml-press, html.font-easy .ml-pick, html.font-easy .ml-lift` |
-| L1304 | `html.font-easy .ml-press:active, html.font-easy .ml-pick-on, html.font-easy .ml-lift:hover` |
-| L1309 | `@keyframes relax-in` |
-| L1310 | `@keyframes relax-in › from` |
-| L1311 | `@keyframes relax-in › to` |
-| L1318 | `:root[data-theme='light'] .particle-bg, :root[data-theme='light'] .combo-flame` |
-| L1326 | `html.font-easy .particle-bg, html.font-easy .combo-flame` |
-| L1333 | `html.font-easy .scatter-title, html.font-easy .achievement-pop, html.font-easy .shockwave, html.font-easy .ring-rotate, html.font-easy .carousel-card` |
-| L1340 | `html.font-easy .shockwave` |
-| L1347 | `html.font-easy .pulse-correct, html.font-easy .blindspot-in, html.font-easy .ring-draw, html.font-easy .radar-grow` |
-| L1364 | `html.font-easy .relax-in, html.font-easy .animate-slide-up, html.font-easy .animate-pop-in, html.font-easy .skeleton, html.font-easy .cmd-hl` |
-| L1371 | `@media (prefers-reduced-motion: reduce)` |
-| L1377 | `@media (prefers-reduced-motion: reduce) › .particle-bg, .combo-flame, .scatter-title, .achievement-pop, .ring-rotate, .carousel-card` |
-| L1381 | `@media (prefers-reduced-motion: reduce) › .scatter-title` |
-| L1382 | `@media (prefers-reduced-motion: reduce) › .achievement-pop` |
-| L1383 | `@media (prefers-reduced-motion: reduce) › .carousel-card:hover` |
-| L1384 | `@media (prefers-reduced-motion: reduce) › .shockwave` |
-| L1391 | `@media (prefers-reduced-motion: reduce) › .pulse-correct, .blindspot-in, .ring-draw, .radar-grow, .relax-in` |
-| L1406 | `@media (prefers-reduced-motion: reduce) › .animate-slide-up, .animate-pop-in` |
-| L1416 | `@media (max-height: 760px)` |
-| L1417 | `@media (max-height: 760px) › .sidebar-quote` |
-| L1424 | `@media (max-width: 639px)` |
-| L1425 | `@media (max-width: 639px) › section:has([data-continue-card]) .hero-mascot` |
-| L1432 | `@media (max-width: 767px)` |
-| L1433 | `@media (max-width: 767px) › body:has([data-a11y-trigger]) .a11y-fab` |
+| L855 | `@keyframes sand-stream` |
+| L856 | `@keyframes sand-stream › to` |
+| L858 | `.hourglass-stream` |
+| L862 | `.hourglass-soft .hourglass-stream` |
+| L865 | `@media (prefers-reduced-motion: reduce)` |
+| L866 | `@media (prefers-reduced-motion: reduce) › .hourglass-stream` |
+| L877 | `:root` |
+| L880 | `html[data-bottomnav='on']` |
+| L886 | `@media (min-width: 768px)` |
+| L887 | `@media (min-width: 768px) › html[data-bottomnav='on']` |
+| L891 | `.floating-bottom` |
+| L905 | `:root` |
+| L911 | `@media (min-width: 48rem)` |
+| L912 | `@media (min-width: 48rem) › html[data-sidebar='on']` |
+| L916 | `@media (min-width: 80rem)` |
+| L917 | `@media (min-width: 80rem) › html[data-sidebar='on']` |
+| L925 | `html.no-motion .mascot` |
+| L930 | `.floating-left` |
+| L933 | `.floating-left-2` |
+| L938 | `.floating-bottom-2` |
+| L941 | `.floating-bottom-3` |
+| L953 | `.floating-panel-max-h` |
+| L985 | `.particle-bg` |
+| L992 | `@keyframes particle-drift` |
+| L993 | `@keyframes particle-drift › from` |
+| L994 | `@keyframes particle-drift › to` |
+| L997 | `.particle-combo-1` |
+| L998 | `.particle-combo-2` |
+| L999 | `.particle-combo-3` |
+| L1002 | `.particle-calm` |
+| L1007 | `.scatter-title` |
+| L1010 | `@keyframes scatter-in` |
+| L1011 | `@keyframes scatter-in › from` |
+| L1012 | `@keyframes scatter-in › to` |
+| L1020 | `.shockwave` |
+| L1032 | `@keyframes shockwave-expand` |
+| L1033 | `@keyframes shockwave-expand › from` |
+| L1034 | `@keyframes shockwave-expand › to` |
+| L1047 | `.pulse-correct` |
+| L1050 | `@keyframes pulse-correct` |
+| L1051 | `@keyframes pulse-correct › 0%` |
+| L1052 | `@keyframes pulse-correct › 100%` |
+| L1056 | `.shockwave-gold` |
+| L1062 | `.blindspot-in` |
+| L1065 | `@keyframes blindspot-in` |
+| L1066 | `@keyframes blindspot-in › from` |
+| L1067 | `@keyframes blindspot-in › to` |
+| L1073 | `.ring-draw` |
+| L1076 | `@keyframes ring-draw` |
+| L1077 | `@keyframes ring-draw › from` |
+| L1082 | `.radar-grow` |
+| L1087 | `@keyframes radar-grow` |
+| L1088 | `@keyframes radar-grow › from` |
+| L1089 | `@keyframes radar-grow › to` |
+| L1094 | `.combo-flame` |
+| L1102 | `@keyframes flame-pulse` |
+| L1103 | `@keyframes flame-pulse › 0%, 100%` |
+| L1104 | `@keyframes flame-pulse › 50%` |
+| L1109 | `.carousel-3d` |
+| L1110 | `.carousel-card` |
+| L1114 | `.carousel-card:hover` |
+| L1115 | `.carousel-card[aria-current='true']` |
+| L1119 | `.ring-rotate` |
+| L1120 | `@keyframes ring-rotate` |
+| L1121 | `@keyframes ring-rotate › from` |
+| L1122 | `@keyframes ring-rotate › to` |
+| L1150 | `:root` |
+| L1162 | `.achievement-pop` |
+| L1165 | `@keyframes achievement-pop` |
+| L1166 | `@keyframes achievement-pop › from` |
+| L1167 | `@keyframes achievement-pop › to` |
+| L1177 | `.relax-in` |
+| L1192 | `@keyframes ml-q-enter` |
+| L1193 | `@keyframes ml-q-enter › from` |
+| L1194 | `@keyframes ml-q-enter › to` |
+| L1196 | `@keyframes ml-q-leave` |
+| L1197 | `@keyframes ml-q-leave › from` |
+| L1198 | `@keyframes ml-q-leave › to` |
+| L1200 | `.ml-q-enter` |
+| L1201 | `.ml-q-leave` |
+| L1205 | `.ml-press` |
+| L1206 | `.ml-press:active` |
+| L1210 | `.ml-pick-on` |
+| L1211 | `.ml-pick` |
+| L1214 | `@keyframes ml-reveal` |
+| L1215 | `@keyframes ml-reveal › from` |
+| L1216 | `@keyframes ml-reveal › to` |
+| L1218 | `.ml-reveal` |
+| L1221 | `@keyframes ml-modal-in` |
+| L1222 | `@keyframes ml-modal-in › from` |
+| L1223 | `@keyframes ml-modal-in › to` |
+| L1225 | `.ml-modal-in` |
+| L1229 | `.ml-stagger` |
+| L1235 | `.ml-lift` |
+| L1236 | `.ml-lift:hover` |
+| L1241 | `@keyframes ml-notice` |
+| L1242 | `@keyframes ml-notice › 0%, 100%` |
+| L1243 | `@keyframes ml-notice › 50%` |
+| L1245 | `.ml-notice` |
+| L1249 | `@media (prefers-reduced-motion: reduce)` |
+| L1250 | `@media (prefers-reduced-motion: reduce) › .ml-q-enter, .ml-q-leave, .ml-reveal, .ml-modal-in, .ml-stagger` |
+| L1254 | `@media (prefers-reduced-motion: reduce) › .ml-press, .ml-pick, .ml-lift` |
+| L1255 | `@media (prefers-reduced-motion: reduce) › .ml-press:active, .ml-pick-on, .ml-lift:hover` |
+| L1256 | `@media (prefers-reduced-motion: reduce) › .ml-notice` |
+| L1268 | `html.font-easy .ml-q-enter, html.font-easy .ml-q-leave, html.font-easy .ml-reveal, html.font-easy .ml-modal-in, html.font-easy .ml-stagger, html.font-easy .ml-notice` |
+| L1275 | `html.font-easy .ml-press, html.font-easy .ml-pick, html.font-easy .ml-lift` |
+| L1280 | `html.font-easy .ml-press:active, html.font-easy .ml-pick-on, html.font-easy .ml-lift:hover` |
+| L1285 | `@keyframes relax-in` |
+| L1286 | `@keyframes relax-in › from` |
+| L1287 | `@keyframes relax-in › to` |
+| L1294 | `:root[data-theme='light'] .particle-bg, :root[data-theme='light'] .combo-flame` |
+| L1302 | `html.font-easy .particle-bg, html.font-easy .combo-flame` |
+| L1309 | `html.font-easy .scatter-title, html.font-easy .achievement-pop, html.font-easy .shockwave, html.font-easy .ring-rotate, html.font-easy .carousel-card` |
+| L1316 | `html.font-easy .shockwave` |
+| L1323 | `html.font-easy .pulse-correct, html.font-easy .blindspot-in, html.font-easy .ring-draw, html.font-easy .radar-grow` |
+| L1337 | `html.font-easy .relax-in, html.font-easy .animate-slide-up, html.font-easy .animate-pop-in, html.font-easy .skeleton` |
+| L1344 | `@media (prefers-reduced-motion: reduce)` |
+| L1350 | `@media (prefers-reduced-motion: reduce) › .particle-bg, .combo-flame, .scatter-title, .achievement-pop, .ring-rotate, .carousel-card` |
+| L1354 | `@media (prefers-reduced-motion: reduce) › .scatter-title` |
+| L1355 | `@media (prefers-reduced-motion: reduce) › .achievement-pop` |
+| L1356 | `@media (prefers-reduced-motion: reduce) › .carousel-card:hover` |
+| L1357 | `@media (prefers-reduced-motion: reduce) › .shockwave` |
+| L1364 | `@media (prefers-reduced-motion: reduce) › .pulse-correct, .blindspot-in, .ring-draw, .radar-grow, .relax-in` |
+| L1379 | `@media (prefers-reduced-motion: reduce) › .animate-slide-up, .animate-pop-in` |
+| L1389 | `@media (max-height: 760px)` |
+| L1390 | `@media (max-height: 760px) › .sidebar-quote` |
+| L1397 | `@media (max-width: 639px)` |
+| L1398 | `@media (max-width: 639px) › section:has([data-continue-card]) .hero-mascot` |
+| L1405 | `@media (max-width: 767px)` |
+| L1406 | `@media (max-width: 767px) › body:has([data-a11y-trigger]) .a11y-fab` |

@@ -66,8 +66,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'What is stored on your own device' : '存喺你自己部機嘅嘢'}>
         <p>
           {en
-            ? 'By default everything lives in your browser’s local storage: your scores, which topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your mood log, your writing drafts, and anything you sealed in a time capsule.'
-            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你邊啲課題易錯、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅心情記錄、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
+            ? 'By default everything lives in your browser’s local storage: your scores, which topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your writing drafts, and anything you sealed in a time capsule.'
+            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你邊啲課題易錯、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
         </p>
         <p>
           {en ? 'You can see the exact list, on your own device, at ' : '你可以喺你自己部機睇到完整清單：'}
@@ -138,8 +138,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'If you are not signed in, we do not record that you were here at all — no tracking cookie, no visitor id, no row anywhere. Deliberately NOT synced, even when you are signed in: your time capsules, your mood log, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules and your mood log are words you wrote to yourself, and they are not something we want to hold.'
-            : '未登入嘅話，我哋唔會記錄你嚟過 —— 冇 cookie 追蹤、冇訪客編號、冇任何一行。就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅心情記錄、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊同心情記錄係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'If you are not signed in, we do not record that you were here at all — no tracking cookie, no visitor id, no row anywhere. Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
+            : '未登入嘅話，我哋唔會記錄你嚟過 —— 冇 cookie 追蹤、冇訪客編號、冇任何一行。就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 

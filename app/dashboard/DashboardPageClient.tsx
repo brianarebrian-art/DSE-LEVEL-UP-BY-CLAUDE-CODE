@@ -251,7 +251,7 @@ export default function DashboardPageClient() {
 
           {/* 空狀態【必須】有呢張卡 —— 一題都未做過嗰個學生，正正最需要聽到
               「你有嚟過已經算數」。只放喺有數據嗰個分支等於淨係恭喜已經做緊嘅人。 */}
-          <GoodTodayCard className="mt-4 text-left" />
+          <GoodTodayCard className="mt-4 text-left" headingLevel={2} />
         </div>
       </div>
     )
