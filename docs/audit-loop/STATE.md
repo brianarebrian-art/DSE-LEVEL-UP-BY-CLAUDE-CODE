@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #4 · Branch: audit-loop
+最後更新：2026-10-02 · Iteration #8 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -56,9 +56,9 @@
 | T39 | SIGN | TODO | | |
 | T04 | SIGN | TODO | | `/predictor` 另有未決的 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`）；T54 不另開項目 |
 | T05 | SIGN | TODO | | 反思鎖已於 2026-09-09 剷除（憲章 §7.2），見 Q-P2 |
-| T06 | SIGN | TODO | | |
-| T07 | SIGN | TODO | | 錯因自診是憲章 §7.2 實驗保留項，改動要確認不影響 2026-11-09 覆檢 |
-| T08 | DIRECT | TODO | | |
+| T06 | SIGN | STALE | | 情緒 check-in 彈窗（`EmotionThermometer`）及解析下心情小卡已按創辦人 2026-10-02 決定刪除（憲章 §7.2.1，commit `169e1bf`、`b636838`） |
+| T07 | SIGN | STALE | | 練習頁錯因三揀一已按創辦人 2026-10-02 決定刪除，答錯直接出解析（憲章 §7.2.1，commit `169e1bf`）；書寫題及答題紙保留 |
+| T08 | DIRECT | DONE | `1a4c801` | 本機 production build 實測：由首頁撳數學，載入期間 `role="status"` 讀出「正在準備你嘅 10 條練習題…」 |
 | T09 | DIRECT | TODO | | |
 | T40 | SIGN | TODO | | |
 | T41 | SIGN | TODO | | |
