@@ -16,14 +16,14 @@ const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
 const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14 desk:grid-cols-[220px_1fr_1fr]">')
 const cardAt = code.indexOf('<div key={currentQ.id} className="bg-surface-raised')
 const feedbackAt = code.indexOf('<div ref={feedbackRef}')
-// 2026-09-30 (loop 19): the bottom score dots moved to the top status strip, so the
-// grid is now followed directly by the emotion check-in; anchor on that instead.
-const afterGridAt = code.indexOf('{emoOpen && <EmotionThermometer')
+// 2026-10-02: the emotion check-in that followed the grid was removed; the grid is now
+// followed directly by the rest-mode overlay, so anchor on that instead.
+const afterGridAt = code.indexOf('<RestMode open={restOpen}')
 
 test('the question card and the feedback share one two-column grid from lg up', () => {
   assert.ok(gridAt > 0, 'grid wrapper')
   assert.ok(gridAt < cardAt && cardAt < feedbackAt, 'card then feedback inside the grid')
-  // The grid closes before the emotion check-in that follows the session.
+  // The grid closes before the rest-mode overlay that follows it.
   assert.ok(afterGridAt > feedbackAt)
   const closeAt = code.lastIndexOf('</div>', afterGridAt)
   assert.ok(feedbackAt < closeAt)

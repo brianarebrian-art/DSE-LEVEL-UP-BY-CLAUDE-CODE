@@ -28,7 +28,6 @@ export interface CloudSettings {
   easy_font: boolean
   reading_ruler: boolean
   hide_timer: boolean
-  calm_lock: boolean
   font_size: number
   line_height: number
   letter_spacing: LetterSpacing
@@ -47,7 +46,6 @@ function sanitise(raw: Record<string, unknown>): CloudSettings {
     easy_font: raw.easy_font === true,
     reading_ruler: raw.reading_ruler === true,
     hide_timer: raw.hide_timer === true,
-    calm_lock: raw.calm_lock === true,
     font_size: Math.round(clamp(raw.font_size, 12, 24, 16)),
     // 行距入面係 NUMERIC(2,1)，多過一位小數會被 Postgres 直接拒
     line_height: Math.round(clamp(raw.line_height, 1.2, 2, 1.6) * 10) / 10,

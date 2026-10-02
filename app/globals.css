@@ -849,30 +849,6 @@ html.focus-light .focus-dim:focus-within {
   border-radius: 0.75rem;
 }
 
-/* P1-6-R2（Leo 2026-07-16）：HKEAA 指令字高亮 —— 只喺學生自診「審題陷阱」後
-   先出現（唔預設亮，避免提示過度）。0.3s fade-in 進場，無閃爍、無彈跳。
-   <mark> 預設 UA 樣式係黃底黑字，要 color: inherit 蓋返。 */
-@keyframes cmd-hl-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.cmd-hl {
-  background: rgba(254, 228, 64, 0.15);
-  box-shadow: inset 0 -2px 0 var(--color-neon-yellow);
-  border-radius: 2px;
-  padding: 0 1px;
-  color: inherit;
-  animation: cmd-hl-in 0.3s cubic-bezier(0, 0, 0.2, 1);
-}
-/* 柔和變體（calmLock／gentleLock）：降飽和度、減對比 */
-.cmd-hl-soft {
-  background: rgba(254, 228, 64, 0.08);
-  box-shadow: inset 0 -2px 0 rgba(254, 228, 64, 0.45);
-}
-@media (prefers-reduced-motion: reduce) {
-  .cmd-hl { animation: none; }
-}
-
 /* P1-6-R1（Leo 2026-07-16）：沙漏落沙流 —— 虛線向下流動。柔和模式速度減半
    （視覺更靜），prefers-reduced-motion 完全停（沙面／沙堆位置照樣逐秒更新，
    計時功能不受影響）。0.9s／1.8s 週期遠低於 3Hz 閃爍上限（癲癇安全）。 */
@@ -1351,17 +1327,14 @@ html.font-easy .radar-grow {
   opacity: 1;
 }
 
-/* 2026-08-23 第 4 週 SEN 審核補漏：入場動畫、骨架呼吸、指令字淡入。
+/* 2026-08-23 第 4 週 SEN 審核補漏：入場動畫、骨架呼吸。
    憲章 §8.1 約束 4 要求一鍵舒適模式將裝飾層【整層關掉】，唔係調慢。
-   .cmd-hl 只係熄咗個淡入 —— 高亮本身係資訊（指令字），要留低；
-   熄嘅只係佢點樣出現。
    刻意【唔】收 .hourglass-stream：沙漏個沙流係 60 秒鎖嘅時間讀數，
    凍住佢等於攞走一個功能性指示，唔屬於裝飾層。 */
 html.font-easy .relax-in,
 html.font-easy .animate-slide-up,
 html.font-easy .animate-pop-in,
-html.font-easy .skeleton,
-html.font-easy .cmd-hl {
+html.font-easy .skeleton {
   animation: none !important;
   transform: none !important;
   opacity: 1;

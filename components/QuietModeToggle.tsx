@@ -23,11 +23,11 @@ export default function QuietModeToggle() {
       <Moon size={14} aria-hidden className="shrink-0" />
       {quiet
         ? en
-          ? 'Quiet mode on: scores, rank, clock, encouragement wall and mood pop-up hidden'
-          : '安靜模式：已收埋分數、段位、計時、打氣牆同心情彈窗'
+          ? 'Quiet mode on: scores, rank, clock and encouragement wall hidden'
+          : '安靜模式：已收埋分數、段位、計時同打氣牆'
         : en
-          ? 'Quiet mode: hide scores, rank, clock, encouragement wall and mood pop-up'
-          : '安靜模式：收埋分數、段位、計時、打氣牆同心情彈窗'}
+          ? 'Quiet mode: hide scores, rank, clock and encouragement wall'
+          : '安靜模式：收埋分數、段位、計時同打氣牆'}
     </button>
   )
 }

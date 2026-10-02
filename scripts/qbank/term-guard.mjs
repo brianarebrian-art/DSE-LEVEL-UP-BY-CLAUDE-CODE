@@ -217,7 +217,7 @@ for (const rel of ['lib/dictionary.ts', 'lib/i18n.tsx', 'data/heroContent.ts']) 
 // ── 2026-08-23 再補漏（第 4 週情緒安全審核）─────────────────────────────────
 // 上面嗰行係逐個檔寫死嘅白名單，所以每次有新嘅文案來源檔就會再漏一次 ——
 // 實測 lib/ 入面有 10 個檔帶用戶可見文案（practiceRank / breathingPatterns / conceptNet /
-// gentleSuggestions / stepHints / homestead / lockoutQuestions / truth-engine …），
+// gentleSuggestions / stepHints / homestead / lockoutQuestions / truth-engine（2026-10-02 已刪）…），
 // 全部從來冇受過情緒安全檢查。改為整個 lib/ 遞迴掃，唔再靠人手維護名單。
 //
 // 影響評估（憲章第 6 條，落閘前先量）：

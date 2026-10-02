@@ -5,7 +5,7 @@ import { useLocale } from '@/lib/i18n'
 
 // 盲測黑題目 (Blind Test) — a screenshot-ready hardcore showcase for the landing
 // page / IG Reels. Key numbers and keywords are blacked out so only the FIGURE,
-// the four options and the 三大逆向錯因診斷欄 remain. Click a black block to peek.
+// the four options remain. Click a black block to peek.
 //
 // 2026-09-03 莫蘭迪化：由「純黑卡 + 霓虹紅光」改為【一張試卷】。
 //
@@ -83,12 +83,6 @@ export default function BlindTestQuestion() {
   const [revealed, setRevealed] = useState(false)
   const reveal = () => setRevealed(true)
 
-  const causes = [
-    { emoji: '🧠', zh: '概念盲區', en: 'Conceptual Blindspot', dZh: '忽略定理前提', dEn: 'Missed a premise' },
-    { emoji: '🎯', zh: '審題陷阱', en: 'HKEAA Reading Trap', dZh: '看漏關鍵字眼', dEn: 'Missed a keyword' },
-    { emoji: '🧮', zh: '運算粗心', en: 'Calculator Slip', dZh: '按錯計算機', dEn: 'Mis-keyed the calc' },
-  ]
-
   return (
     <div className="bg-paper border border-paper-warn/40 rounded-2xl p-5 sm:p-6 shadow-lg">
       {/* Header */}
@@ -138,22 +132,6 @@ export default function BlindTestQuestion() {
             <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>{v}</Black><span className="text-paper-muted">°</span>
           </div>
         ))}
-      </div>
-
-      {/* 三大逆向錯因診斷欄 */}
-      <div className="border-t border-paper-ink/15 pt-4">
-        <p className="text-[11px] font-bold text-paper-warn mb-2 uppercase tracking-wide">
-          {tr('答錯？先揀你嘅錯因', 'Wrong? Pick what tripped you up first')}
-        </p>
-        <div className="grid grid-cols-3 gap-2">
-          {causes.map((c) => (
-            <div key={c.zh} className="border border-paper-warn/30 bg-paper-warn/5 rounded-lg px-2 py-2 text-center">
-              <div className="text-base leading-none mb-1 text-paper-ink">{c.emoji}</div>
-              <div className="text-[11px] font-bold text-paper-ink leading-tight">{tr(c.zh, c.en)}</div>
-              <div className="text-[10px] text-paper-muted mt-0.5 leading-tight">{tr(c.dZh, c.dEn)}</div>
-            </div>
-          ))}
-        </div>
       </div>
 
       <p className="text-[10px] text-paper-muted text-center mt-3">

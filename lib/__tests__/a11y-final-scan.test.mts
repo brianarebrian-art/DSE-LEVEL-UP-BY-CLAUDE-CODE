@@ -60,11 +60,8 @@ test('after answering, lost focus moves to the feedback region without scrolling
   assert.match(s, /<div ref=\{feedbackRef\} tabIndex=\{-1\} className="animate-slide-up focus:outline-none">/)
 })
 
-test('after choosing a cause, lost focus moves to the next-question button', () => {
+// 2026-10-02：錯因自診已刪除（憲章 §7.2），答完之後焦點由上面嗰條規則交畀回饋區。
+test('no leftover focus hand-off for the removed cause buttons', () => {
   const s = code('app/practice/PracticeSession.tsx')
-  assert.match(s, /if \(diagnosed === null\) return/)
-  assert.match(s, /diagnosedNextRef\.current\?\.focus\(\{ preventScroll: true \}\)/)
-  assert.match(s, /ref=\{diagnosedNextRef\}\s+onClick=\{proceed\}/)
-  // Hooks must run before the component's first early return (the resume card).
-  assert.ok(s.indexOf('const diagnosedNextRef') < s.indexOf('if (resumeOffer) {'))
+  assert.doesNotMatch(s, /diagnosedNextRef/)
 })

@@ -1,7 +1,6 @@
-// HKEAA command words ("except", "not", "must", 「除了」「並非」…), one source for
-// both the highlight (components/CommandWordText.tsx) and cause-based practice
-// (lib/causeMode.ts). Moved out of the component on 2026-09-26 (UX audit F1): a
-// second copy of the word list would drift.
+// HKEAA command words ("except", "not", "must", 「除了」「並非」…) for cause-based
+// practice (lib/causeMode.ts). Moved out of the highlight component on 2026-09-26
+// (UX audit F1); that component was removed on 2026-10-02 (charter §7.2.1).
 //
 // English words use (?<![A-Za-z])…(?![A-Za-z]) so "not" does not match "note" or
 // "cannot". Chinese has no word boundary, so negative look-arounds narrow it:

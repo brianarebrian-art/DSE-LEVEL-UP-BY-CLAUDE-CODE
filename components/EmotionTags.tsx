@@ -37,8 +37,8 @@ const REPLY: Record<Emotion, { zh: string; en: string }> = {
     en: 'You just found a new blind spot — that IS progress. Better here than in the exam hall. The “Breathe” button is there whenever you need it.',
   },
   neutral: {
-    zh: '收到。錯因已經入咗錯題本 —— 下次同類題就係你嘅攞分位。',
-    en: 'Noted. This cause is in your error log — next time, this question type is yours.',
+    zh: '收到。睇清楚正解思路，下次同類題就係你嘅攞分位。',
+    en: 'Noted. Get the reasoning straight, and next time this question type is yours.',
   },
   curious: {
     zh: '好嘢，呢種心態進步最快 🚀 上面「正解思路」逐步睇；想加操同類題，做完呢輪再嚟一輪同一課題。',

@@ -55,13 +55,11 @@ test('B4: the practice page hides the running clock unless the student chose to 
 })
 
 // ── B3 (a): the emotion check-in focuses its heading, not "I'm OK" ──────────
-test('B3: no option is auto-focused; the heading takes focus and the page goes inert', () => {
-  const src = read('components/EmotionThermometer.tsx')
-  assert.doesNotMatch(src, /autoFocus=/, 'an auto-focused option lets a reflexive Enter record a feeling')
-  assert.match(src, /ref=\{headingRef\} tabIndex=\{-1\}/)
-  assert.match(src, /headingRef\.current\?\.focus\(\)/)
-  assert.match(src, /setAttribute\('inert', ''\)/)
-  assert.match(src, /previous\.focus\(\)/, 'focus must return where it was')
+// 2026-10-02（創辦人決定）：情緒溫度計彈窗已刪除，B3 守嘅對象已不存在。
+test('B3: the mood check-in pop-up has been removed from practice', async () => {
+  const { existsSync } = await import('node:fs')
+  assert.equal(existsSync('components/EmotionThermometer.tsx'), false)
+  assert.doesNotMatch(read('app/practice/PracticeSession.tsx'), /EmotionThermometer|emoOpen/)
 })
 
 // ── B2 (a): a repeated error cause is a pattern the student found, not an alert ──
@@ -117,10 +115,9 @@ test('B5: the dashboard score line and stat cards are hidden in quiet mode, afte
   assert.ok(toggle > 0 && toggle < cards, 'the toggle must come before the stat cards')
 })
 
-test('B5: quiet mode also hides the practice clock, the mood pop-up and the encouragement wall', () => {
+test('B5: quiet mode also hides the practice clock and the encouragement wall', () => {
   const ps = read('app/practice/PracticeSession.tsx')
   assert.match(ps, /const showElapsed = timerPref === 'show' && !quiet/)
-  assert.match(ps, /if \(!isCorrect && currentQ\.difficulty === 'hard' && !isQuiet\(\)\) setEmoOpen\(true\)/)
   // The per-question timer button still depends only on an explicit hide.
   assert.match(ps, /const hideTimer = timerPref === 'hide'/)
   const result = read('app/result/ResultPageClient.tsx')

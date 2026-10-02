@@ -29,14 +29,12 @@ export const A11Y_EVENT = 'dse-a11y'
 const EASY_FONT_KEY = 'dse_easy_font'
 const READING_RULER_KEY = 'dse_reading_ruler'
 const HIDE_TIMER_KEY = 'dse_hide_timer'
-const CALM_LOCK_KEY = 'dse_calm_lock'
 const SENSORY_PREF_KEY = 'dse_relax_sensory_pref'
 
 export interface CloudSettings {
   easy_font: boolean
   reading_ruler: boolean
   hide_timer: boolean
-  calm_lock: boolean
   font_size: number
   line_height: number
   letter_spacing: LetterSpacing
@@ -80,7 +78,6 @@ export function collectLocalSettings(): CloudSettings {
     easy_font: flag(EASY_FONT_KEY),
     reading_ruler: flag(READING_RULER_KEY),
     hide_timer: flag(HIDE_TIMER_KEY),
-    calm_lock: flag(CALM_LOCK_KEY),
     font_size: num(FONT_KEY, 12, 24, 16),
     line_height: num(LINE_HEIGHT_KEY, 1.2, 2, DEFAULT_LINE_HEIGHT),
     letter_spacing: spacing,
@@ -97,7 +94,6 @@ export function applyCloudSettings(s: CloudSettings): void {
     localStorage.setItem(EASY_FONT_KEY, s.easy_font ? '1' : '0')
     localStorage.setItem(READING_RULER_KEY, s.reading_ruler ? '1' : '0')
     localStorage.setItem(HIDE_TIMER_KEY, s.hide_timer ? '1' : '0')
-    localStorage.setItem(CALM_LOCK_KEY, s.calm_lock ? '1' : '0')
     if (s.sensory_pref != null) {
       localStorage.setItem(SENSORY_PREF_KEY, JSON.stringify(s.sensory_pref))
     }

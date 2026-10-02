@@ -21,8 +21,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '答錯之後會點？', qEn: 'What happens after a wrong answer?',
-    aZh: '第一句唔係「錯咗」，係「你發現咗一個新盲點💡」。跟住撳低你覺得係邊種錯因（概念盲區／審題陷阱／運算粗心），撳咗就即刻見到解析。冇倒數、冇計時、冇追問題 —— 一下撳就過到。撳嗰一下會累積成你嘅錯誤模式。',
-    aEn: 'The first line is not “wrong” — it is “you just found a new blind spot”. You then tag which kind of slip it was (concept, HKEAA reading trap, or execution), and the explanation opens straight away. No countdown, no timer, no follow-up question: one tap and you are through. That tap is what builds your error patterns.',
+    aZh: '冇紅色交叉，亦冇「錯咗」兩隻字。解析會即刻打開，冇倒數、冇計時、冇追問題。做書寫題或者用答題紙對答案嗰陣，你仍然可以揀錯因，嗰啲會累積成你嘅錯誤模式。',
+    aEn: 'No red cross and no “wrong”. The explanation opens straight away: no countdown, no timer, no follow-up question. When you do written questions or check a paper answer sheet, you can still tag the cause of a mistake, and those tags build your error patterns.',
   },
   {
     qZh: '「錯誤模式」係乜嚟？', qEn: 'What are “error patterns”?',

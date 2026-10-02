@@ -37,9 +37,10 @@ test('bad measurements do not scroll', () => {
   assert.equal(P.feedbackScrollDelta(900, 0), 0)
 })
 
-test('the session scrolls only after the feelings check closes, and respects reduced motion', () => {
-  const fx = session.slice(session.indexOf('const feedbackRef'), session.indexOf('}, [answerState, emoOpen])'))
-  assert.match(fx, /if \(answerState === null \|\| emoOpen\) return/)
+test('the session scrolls to the feedback after an answer, and respects reduced motion', () => {
+  // 2026-10-02: the feelings check-in was removed, so nothing delays the scroll.
+  const fx = session.slice(session.indexOf('const feedbackRef'), session.indexOf('}, [answerState])'))
+  assert.match(fx, /if \(answerState === null\) return/)
   assert.match(fx, /feedbackScrollDelta\(el\.getBoundingClientRect\(\)\.top, window\.innerHeight\)/)
   assert.match(fx, /prefers-reduced-motion: reduce/)
   assert.match(fx, /classList\.contains\('no-motion'\)/)

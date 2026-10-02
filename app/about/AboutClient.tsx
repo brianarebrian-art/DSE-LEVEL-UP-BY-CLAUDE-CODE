@@ -32,10 +32,10 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '啟發式教學',
     enTitle: 'Learning through struggle',
     quote: '不憤不啟，不悱不發',
-    // 2026-09-29：原文「介面會鎖死……答對一條反思追問」描述的是 2026-09-09 已移除的反思鎖（憲章 §7.2，
-    // 為期兩個月的實驗，2026-11-09 覆檢）。現時答錯後只需揀一個錯因，詳解即打開。若反思鎖恢復，此段須同步改回。
-    zh: '不到你真正想通又想不通的臨界點，我們絕不直接施放答案。答錯任何一題，詳解會先收起，要你先誠實指出錯因（概念盲區、審題陷阱或運算粗心），詳解才會打開——逼你由「靠記」走向「靠想」，學會舉一反三。',
-    en: 'We will not hand you the answer until you have genuinely wrestled to the edge of understanding. Miss any question and the full solution stays folded until you name the cause of your error — a concept gap, a misread question, or a slip in working. That pushes you from memorising toward thinking, and toward reasoning by analogy.',
+    // 2026-10-02：練習頁的錯因自診已刪除（憲章 §7.2，創辦人決定），答錯後詳解即時打開，
+    // 先顯示第一步（StagedExplanation），學生再撳開全部。此段按此改寫。
+    zh: '我們不會一次過把答案攤開。答錯之後，詳解會先給你第一步，你想多一步，再撳開全部——逼你由「靠記」走向「靠想」，學會舉一反三。',
+    en: 'We do not lay the whole answer out at once. After a wrong answer the explanation opens with its first step; think one step further, then open the rest. That pushes you from memorising toward thinking, and toward reasoning by analogy.',
   },
   {
     icon: '🕊️',

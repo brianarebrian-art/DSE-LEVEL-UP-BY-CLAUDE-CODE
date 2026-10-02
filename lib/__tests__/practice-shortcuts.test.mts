@@ -94,25 +94,13 @@ test('⑥ 快捷鍵提示唔可以用 ink-faint，亦唔可以 aria-hidden', () 
   )
 })
 
-test('⑦ Enter 同「下一題」掣要用同一個判斷 —— 未自診唔可以由鍵盤跳過', () => {
-  // 2026-09-15 localhost:3001 實測：答錯、三維自診未揀，介面冇「下一題」掣，
-  // 但真 Enter（key: 'Enter'）一撳就由第 2 題跳去第 3 題，dse_reverse_log 冇增加。
-  // 自診係錯題 DNA 唯一入料口（憲章 §7.2 明文保留）。
-  assert.match(
-    SRC,
-    /const canProceed = answerState !== null && \(answerState\.isCorrect \|\| diagnosed !== null\)/,
-    'canProceed 定義唔見咗或者被改咗',
-  )
+test('⑦ Enter 同「下一題」掣用同一個判斷；modal 開住時 Enter 唔推進', () => {
+  // 2026-10-02 起練習頁冇錯因自診（憲章 §7.2），答完任何一題即可推進。
+  assert.match(SRC, /const canProceed = answerState !== null\n/, 'canProceed 定義唔見咗或者被改咗')
   const enter = handler.slice(handler.indexOf("e.key === 'Enter'"))
-  assert.match(enter, /if \(!canProceed/, 'Enter 冇檢查 canProceed —— 未自診都會跳去下一題')
-  assert.match(enter, /emoOpen/, 'Enter 冇擋情緒溫度計 —— 會喺 modal 背後推進')
+  assert.match(enter, /if \(!canProceed/, 'Enter 冇檢查 canProceed')
   assert.match(enter, /restOpen/, 'Enter 冇擋休息模式 —— 會喺 modal 背後推進')
-  // JSX 嗰邊要用返同一個變數，唔可以另寫一條等價但會分叉嘅條件
-  assert.match(SRC, /\{!canProceed \? \(/, '「下一題」嘅 JSX 條件冇用 canProceed —— 兩邊遲早會分叉')
-  assert.ok(
-    !/!answerState\.isCorrect && diagnosed === null/.test(SRC),
-    '仲有一條手寫嘅「答錯又未自診」條件 —— 應該用 canProceed',
-  )
+  assert.ok(!/setDiagnosed|diagnosed (?:===|!==)/.test(SRC), '仲有錯因自診嘅 state')
 })
 
 test('⑧ 休息模式開住，唔可以喺背後用 1–4／A–D 答題', () => {
