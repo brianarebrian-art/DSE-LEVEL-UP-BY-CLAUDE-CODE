@@ -47,7 +47,7 @@
 
 | ID | Gate | 狀態 | Commit | 證據／備註 |
 |---|---|---|---|---|
-| T00 | DIRECT | DONE | （本 commit） | 見上方快照；FOUNDER-QUEUE Q-P1–Q-P10 |
+| T00 | DIRECT | DONE | `ffbb870` | 見上方快照；FOUNDER-QUEUE Q-P1–Q-P10 |
 | T54 | DIRECT | TODO | | 依賴 T00 |
 | T01 | SIGN | TODO | | 前提與 repo 衝突，見 Q-P7 |
 | T02 | SIGN | TODO | | |
