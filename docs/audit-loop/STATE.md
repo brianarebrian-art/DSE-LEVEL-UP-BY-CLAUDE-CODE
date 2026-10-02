@@ -53,7 +53,7 @@
 | T02 | SIGN | STALE | | 2026-10-02 核實社群安全頁每句屬實：分享卡（`components/DailyStatsCard.tsx:136`）及呼吸空間（`app/relax/components/RelaxLanding.tsx:121` → `/relax/group`）確有 IG 群組連結，YouTube（`SoloPlayer.tsx`）、GitHub（`GuardianCredits.tsx`）亦經 ExternalLinkGate。prompt「分享卡永遠唔放」與 Yuna 2026-09-21 決定衝突，見 Q-T02 |
 | T03 | DIRECT | DONE | `70692a5` | 頁尾及關於頁經 ExternalLinkGate；本機 production build 390／768／1024／1920 四個闊度都見到、冇超出畫面；撳後出「你即將離開」提示，console 冇錯誤（CSP 無影響） |
 | T38 | SIGN | TODO | | 依賴 T01（WAITING-FOUNDER） |
-| T39 | SIGN | TODO | | |
+| T39 | SIGN | DONE | `2b616c8` | 文字引用同意書第一點，項數用 `lib/cloudKeys.ts` 的 `CLOUD_COUNT`（13），連私隱政策及帳戶頁。位置：手機／平板選單內登入掣下、進度頁「綁定 Google」卡。桌面版頂欄登入掣旁冇位放，未加。本機 production build 實測兩處都顯示、冇超出畫面。等 Q-T39 批核 |
 | T04 | SIGN | TODO | | `/predictor` 另有未決的 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`）；T54 不另開項目 |
 | T05 | SIGN | TODO | | 反思鎖已於 2026-09-09 剷除（憲章 §7.2），見 Q-P2 |
 | T06 | SIGN | STALE | | 情緒 check-in 彈窗（`EmotionThermometer`）及解析下心情小卡已按創辦人 2026-10-02 決定刪除（憲章 §7.2.1，commit `169e1bf`、`b636838`） |
