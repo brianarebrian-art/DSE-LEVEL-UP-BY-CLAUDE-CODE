@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #8 · Branch: audit-loop
+最後更新：2026-10-02 · Iteration #11 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -54,12 +54,12 @@
 | T03 | DIRECT | DONE | `70692a5` | 頁尾及關於頁經 ExternalLinkGate；本機 production build 390／768／1024／1920 四個闊度都見到、冇超出畫面；撳後出「你即將離開」提示，console 冇錯誤（CSP 無影響） |
 | T38 | SIGN | TODO | | 依賴 T01（WAITING-FOUNDER） |
 | T39 | SIGN | DONE | `2b616c8` | 文字引用同意書第一點，項數用 `lib/cloudKeys.ts` 的 `CLOUD_COUNT`（13），連私隱政策及帳戶頁。位置：手機／平板選單內登入掣下、進度頁「綁定 Google」卡。桌面版頂欄登入掣旁冇位放，未加。本機 production build 實測兩處都顯示、冇超出畫面。等 Q-T39 批核 |
-| T04 | SIGN | TODO | | `/predictor` 另有未決的 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`）；T54 不另開項目 |
-| T05 | SIGN | TODO | | 反思鎖已於 2026-09-09 剷除（憲章 §7.2），見 Q-P2 |
+| T04 | SIGN | WAITING-FOUNDER | | (a) 空狀態已有 CTA（`app/predictor/PredictorClient.tsx:94`「揀科目開始」→ `/subjects`）；(b) 已顯示「按本科 N 節有效練習」（`components/MasteryEstimate.tsx:67`），以節計唔係以題計；(c) 已係範圍。頁面會唔會繼續顯示 DSE 等級屬未決 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`），見 Q-T04 |
+| T05 | SIGN | WAITING-FOUNDER | | 現時答錯後解析先出第一步（`StagedExplanation`），學生可撳開全部或揀「以後直接睇晒」。今日創辦人批准嘅關於頁字眼正正描述「先給你第一步」，同 T05「預設展開」衝突，見 Q-T05 |
 | T06 | SIGN | STALE | | 情緒 check-in 彈窗（`EmotionThermometer`）及解析下心情小卡已按創辦人 2026-10-02 決定刪除（憲章 §7.2.1，commit `169e1bf`、`b636838`） |
 | T07 | SIGN | STALE | | 練習頁錯因三揀一已按創辦人 2026-10-02 決定刪除，答錯直接出解析（憲章 §7.2.1，commit `169e1bf`）；書寫題及答題紙保留 |
 | T08 | DIRECT | DONE | `1a4c801` | 本機 production build 實測：由首頁撳數學，載入期間 `role="status"` 讀出「正在準備你嘅 10 條練習題…」 |
-| T09 | DIRECT | TODO | | |
+| T09 | DIRECT | DONE | `3796efa` | 首頁底部改為同頁頂一樣嘅四科快捷掣（`QuickStartGrid`）＋「揀其他科目」連結；本機 production build 375px 實測四掣 80×64、冇超出畫面 |
 | T40 | SIGN | TODO | | |
 | T41 | SIGN | TODO | | |
 | T42 | SIGN | TODO | | 依賴 T03 |
@@ -149,6 +149,7 @@
 | D12 | DIRECT | TODO | `docs/weekly_mission.md`（最後更新 2026-07-11） | S | 過時計劃檔，第 1 項（經濟科 push）早已完成；未決項目見 U16 |
 | D13 | SIGN | TODO | `npm audit`（含 dev，2026-10-02）：`brace-expansion` high | S | 只在開發依賴，不入 production bundle；與 D01 無關 |
 | D14 | FOUNDER | TODO | production `curl -sI`（2026-10-02）：`/`、`/subjects`、`/llms.txt`、`/robots.txt`、`/opengraph-image` 及靜態檔回 `access-control-allow-origin: *` | S | repo 無設定此 header（`next.config.ts`、`proxy.ts`、`vercel.json`、`app`、`lib` 零命中）；本機 production build 不送出；需登入的 `/api/progress`（401）亦無。判斷為 Vercel CDN 對公開快取內容的預設。這些回應不帶 cookie 或個人資料，風險低。要改須在 Vercel 設定或 `next.config.ts` 覆寫，效果要部署後實測，先記錄 |
+| D15 | DIRECT | TODO | 2026-10-02 本機 `npm run build` 共 9 次，有 2 次喺 `next/font` 下載 Google 字型時失敗（`TypeError: Cannot read properties of null (reading '1')`，`node_modules/next/dist/compiled/@next/font/dist/google/loader.js:122`），代碼不變重跑即過 | S | 如果 Vercel 部署時遇到會令部署失敗。要查係網絡定 Next 16.3.8 嘅問題；可考慮改用本地字型檔（唔加套件） |
 
 ## 備註
 
