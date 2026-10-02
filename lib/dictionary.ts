@@ -174,7 +174,7 @@ const zh = {
     // 前者暗示題目取自歷屆試題；後者與題目是否可信無關。改為講課程對照及覆核狀態的實情
     // （docs/topic-syllabus-map-2027.md：AI 初步對照，未經學科負責人覆核；憲章 §12：自動檢查上線）。
     tagline1: '原創 DSE 練習題，掌握核心邏輯。',
-    tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線，未經逐題人手覆核。',
+    tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',
     practiceHeading: '練習',
     linkMath: '數學',
     linkMethodology: '方法論',
@@ -603,7 +603,7 @@ const en: typeof zh = {
   },
   footer: {
     tagline1: 'Original DSE practice questions — master the core logic.',
-    tagline2: 'Topics checked against the curriculum guides for the 2027 exam (first pass). Questions go live after automated checks; no one has reviewed each one by hand.',
+    tagline2: 'Topics checked against the curriculum guides for the 2027 exam (first pass). Questions go live after automated checks.',
     practiceHeading: 'Practice',
     linkMath: 'Mathematics',
     linkMethodology: 'Method',

@@ -153,6 +153,9 @@
 
 ## 備註
 
+- 2026-10-02 創辦人決定：暫時未有錢買域名，繼續用 `dse-level-up-by-claude-code.vercel.app`。審計再提域名問題，引用本句，不再開新問題。
+- 2026-10-02 創辦人決定（回覆「a」）：首頁及頁尾刪去「未經逐題人手覆核」半句，保留「經自動檢查」；憲章 §12.1 約束 1 已加修訂。T01 原前提（寫「有人手逐題覆核」）仍無紀錄支持，Q-P7 未答前不做。
+
 - Supabase 只讀核對（2026-10-02，project `aegekxapxgcfdrkzisis`，只用 SELECT 查系統表，無寫入）：`public` 共 8 張表 —— `privacy_consents`、`profiles`、`question_bank_versions`、`questions`、`review_decisions`、`user_progress`、`user_sessions`、`user_settings`，全部開 RLS。`anon` 只在 `questions`、`question_bank_versions` 有 SELECT（policy `*_public_read`），其餘 6 張用戶資料表 `anon` 零權限，即未登入者讀不到任何學生資料。用戶資料表的 policy 只開放 `service_role`（伺服器）。審計「RLS 未核實、anon 可能讀到他人答案」不成立。
 - T54 盤點範圍及零結果項目（2026-10-02）：`git stash list` 空；`app`、`components`、`lib`、`scripts` 無 `TODO`／`FIXME`／`HACK`／`XXX`／`WIP`（「未完成」命中全是 UI 字眼或題目內容）；無 `.skip`／`.todo` 測試；非測試代碼無 `@ts-ignore`、`@ts-expect-error`、`as any`；`lib/`、`components/` 無未被 import 的模組（掃描 script 經負向自測：臨時加入一個無人 import 的檔，能被找出）；題目抽選、等級預測、錯題 DNA、`lib/sync.ts`、題庫雲端載入均有測試。
 - `BREAKING`：無。lint 0 error；T54 未改代碼，最近一次全套檢查在 `29e54f8`（npm test 1278/1278、tsc、qa、build 全過），之後只有文件 commit。本 iteration 未重跑 `npm test`、`tsc`、`build`。
