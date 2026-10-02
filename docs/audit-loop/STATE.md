@@ -49,10 +49,10 @@
 |---|---|---|---|---|
 | T00 | DIRECT | DONE | `ffbb870` | 見上方快照；FOUNDER-QUEUE Q-P1–Q-P10 |
 | T54 | DIRECT | DONE | `234681a` | Wave 8：U01–U16；Wave 9：D01–D12；無 `BREAKING` |
-| T01 | SIGN | TODO | | 前提與 repo 衝突，見 Q-P7；未 merge 的 `fix/methodology-review-rate` 見 U03 |
-| T02 | SIGN | TODO | | |
-| T03 | DIRECT | TODO | | |
-| T38 | SIGN | TODO | | 依賴 T01 |
+| T01 | SIGN | WAITING-FOUNDER | | 前提與 repo 衝突，等 Q-P7 回覆；未 merge 的 `fix/methodology-review-rate` 見 U03 |
+| T02 | SIGN | STALE | | 2026-10-02 核實社群安全頁每句屬實：分享卡（`components/DailyStatsCard.tsx:136`）及呼吸空間（`app/relax/components/RelaxLanding.tsx:121` → `/relax/group`）確有 IG 群組連結，YouTube（`SoloPlayer.tsx`）、GitHub（`GuardianCredits.tsx`）亦經 ExternalLinkGate。prompt「分享卡永遠唔放」與 Yuna 2026-09-21 決定衝突，見 Q-T02 |
+| T03 | DIRECT | DONE | `70692a5` | 頁尾及關於頁經 ExternalLinkGate；本機 production build 390／768／1024／1920 四個闊度都見到、冇超出畫面；撳後出「你即將離開」提示，console 冇錯誤（CSP 無影響） |
+| T38 | SIGN | TODO | | 依賴 T01（WAITING-FOUNDER） |
 | T39 | SIGN | TODO | | |
 | T04 | SIGN | TODO | | `/predictor` 另有未決的 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`）；T54 不另開項目 |
 | T05 | SIGN | TODO | | 反思鎖已於 2026-09-09 剷除（憲章 §7.2），見 Q-P2 |

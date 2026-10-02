@@ -82,3 +82,10 @@
 - 選項：A 升級至 ^16.3.8 / B 維持現狀
 - Loop 建議：A。
 - 創辦人回覆：2026-10-02 於對話中回覆「批 D01」（loop 照錄原話，未代填）。已實施，commit 見 STATE.md D01；merge 仍由創辦人決定。
+
+### Q-T02 分享卡上嘅 IG 溫書群組連結
+- 類型：code 同 prompt 衝突
+- 背景：prompt T02 寫「群組連結有安全把關問題，分享卡上永遠唔放」。現時成績分享卡（`components/DailyStatsCard.tsx:136`，連結喺 `app/result/ResultPageClient.tsx:260`）印有「入 IG 溫書室：ig.me/j/…」。`app/community-safety/CommunitySafetyClient.tsx:134` 註明係 Yuna 2026-09-21 決定保留（UX audit A1 (b)），社群安全頁亦照實披露。錯因破解卡（預設分享嗰張）冇呢條連結。
+- 選項：A 維持 2026-09-21 決定，修改 prompt / B 由成績分享卡移除群組連結（社群安全頁同步改）/ C 維持現狀
+- Loop 建議：由創辦人決定；loop 未改任何嘢。
+- 創辦人回覆：＿＿＿＿（Brian / Yuna 填）
