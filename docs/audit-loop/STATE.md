@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #2 · Branch: audit-loop
+最後更新：2026-10-02 · Iteration #3 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -135,7 +135,7 @@
 
 | ID | Gate | 狀態 | 出處 | 大細 | 備註 |
 |---|---|---|---|---|---|
-| D01 | SIGN | TODO | `npm audit --omit=dev`（2026-10-02）：`next` 16.2.0–16.3.5 critical（GHSA-vcvr-r3jv-pc5j，`next/og` ImageResponse 遠端執行代碼）；本 repo 為 16.3.3 | S | 唯一使用點 `app/opengraph-image.tsx`，build 時以固定內容生成、無用戶輸入，實際風險估計偏低，但仍屬 critical。修補為 patch 升級至 16.3.8（`npm audit fix`），不屬新增套件。建議優先處理 |
+| D01 | SIGN | DONE | （本 commit） | `npm audit --omit=dev`（2026-10-02）：`next` 16.2.0–16.3.5 critical（GHSA-vcvr-r3jv-pc5j，`next/og` ImageResponse） | S | 創辦人 2026-10-02 於對話中批准（「批 D01」），見 FOUNDER-QUEUE Q-D01。`next` ^16.3.3 → ^16.3.8；lockfile 只改 `next`、`@next/env`、`@next/swc-*`。升級後 `npm audit --omit=dev` 0 個漏洞。驗收：npm test 1278/1278、tsc 0、qa 0、lint 0 error（35 warning，與升級前相同）、build 通過（第一次 build 在 `next/font` 下載 Google 字型時失敗，代碼不變重跑即通過，未能重現）；production build 實測 10 條 route 200、`/opengraph-image` 1200×630 PNG、練習頁作答一題正常、console 無 error |
 | D02 | DIRECT | TODO | `npm run lint`：`app/account/AccountPageClient.tsx:4`、`app/exam-day/ExamDayClient.tsx:619`、`app/practice/PracticeSession.tsx:588`（hook 依賴）、`components/PrivacyConsentGate.tsx:31`、`lib/jyutping.ts:56`；4 處多餘 `eslint-disable`（`app/subjects/[subject]/page.tsx:99`、`app/cantonese/**` 三處） | S | `PracticeSession.tsx:588` 的 hook 依賴改動可能影響行為，要先確認或另拆 |
 | D03 | DIRECT | TODO | `npm run lint`：`data/questions/` 7 個檔共 17 個未用變數警告（biology-bank2、chemistry-bank、chinese、design-tech-bank、health-management-bank、music-bank、visual-arts-bank） | S | 只是未用變數，不改題目內容；但按 §14.2 改題庫檔案一律 `CANNOT-COMPLETE`（`NEED-HUMAN-REVIEW`），預計照此標記 |
 | D04 | DIRECT | TODO | `npm run lint`：`scripts/copy-guard.mjs:39`、`scripts/qbank/gen-long-drafts.mjs:45`、`scripts/qbank/sample-review.mjs:51`、`scripts/qbank/validate-banks.mjs:56` | S | |
@@ -147,6 +147,7 @@
 | D10 | FOUNDER | TODO | `npm outdated` major：`eslint` 10、`typescript` 7、`@types/node` 26、`react`／`react-dom` 19.3、`katex` 0.19、`@anthropic-ai/sdk` 0.131 | L | 只盤點 |
 | D11 | DIRECT | TODO | `README.md:13`（Next 版本）、`README.md:23`（`middleware.ts`「靜靜忽略」） | S | 等 Q-P6、Q-P9 回覆 |
 | D12 | DIRECT | TODO | `docs/weekly_mission.md`（最後更新 2026-07-11） | S | 過時計劃檔，第 1 項（經濟科 push）早已完成；未決項目見 U16 |
+| D13 | SIGN | TODO | `npm audit`（含 dev，2026-10-02）：`brace-expansion` high | S | 只在開發依賴，不入 production bundle；與 D01 無關 |
 
 ## 備註
 

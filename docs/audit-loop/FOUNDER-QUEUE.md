@@ -75,3 +75,10 @@
 - 選項：A 先 merge `feat/ux-loop` 入 `main`，`audit-loop` 之後再 merge / B 兩條 branch 一併審閱後 merge / C 由 `origin/main` 重新開 `audit-loop`（R2 修正會缺席，部分快照結論要重做）
 - Loop 建議：A。Loop 不會 push 或 merge，所有 branch 操作由創辦人執行。
 - 創辦人回覆：＿＿＿＿（Brian / Yuna 填）
+
+### Q-D01 Next.js 安全修補（16.3.3 → 16.3.8）
+- 類型：SIGN 批核
+- 背景：`npm audit --omit=dev` 報 `next` 16.2.0–16.3.5 critical（GHSA-vcvr-r3jv-pc5j，`next/og` ImageResponse 遠端執行代碼）。本站唯一使用點 `app/opengraph-image.tsx`，build 時以固定內容生成。修補為 patch 升級，不新增套件。見 STATE.md D01。
+- 選項：A 升級至 ^16.3.8 / B 維持現狀
+- Loop 建議：A。
+- 創辦人回覆：2026-10-02 於對話中回覆「批 D01」（loop 照錄原話，未代填）。已實施，commit 見 STATE.md D01；merge 仍由創辦人決定。
