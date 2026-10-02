@@ -11,7 +11,8 @@ import type { Discovery } from '@/lib/discovery/types'
 
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
-import { SITE_ORIGIN } from '@/lib/site'
+import { SITE_ORIGIN, OFFICIAL_SOCIAL } from '@/lib/site'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
 import { useQuiet } from '@/lib/quietMode'
@@ -542,6 +543,19 @@ export default function ResultPageClient() {
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
+
+        {/* 官方帳戶（audit loop T42）：只喺結果頁網頁，唔放上分享卡；經出口閘門。 */}
+        <p className="no-print text-center text-sm text-ink-muted">
+          <ExternalLinkGate
+            href={OFFICIAL_SOCIAL[0].href}
+            platform={OFFICIAL_SOCIAL[0].platform}
+            className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent"
+          >
+            {locale === 'en'
+              ? `Follow ${OFFICIAL_SOCIAL[0].handle} on Instagram for more study tips`
+              : `追蹤 ${OFFICIAL_SOCIAL[0].handle} 睇更多溫書貼士`}
+          </ExternalLinkGate>
+        </p>
 
         {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
         {!quiet && <EncouragementWall />}
