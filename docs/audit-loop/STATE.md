@@ -66,9 +66,9 @@
 | T10 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T10 |
 | T11 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T11 |
 | T12 | DIRECT | TODO | | |
-| T13 | DIRECT | TODO | | 改進循環 2 R2-11d 已修正（commit `23cdb01`），T13 iteration 時驗證後可標 STALE |
+| T13 | DIRECT | STALE | | 改進循環 2 R2-11d 已修正（commit `23cdb01`）。2026-10-02 本機 production build 390×844 實測 `/about` 捲到底：頁尾最後一行底部 y=738，底欄頂 y=787，冇被遮 |
 | T14 | DIRECT | TODO | | |
-| T15 | DIRECT | TODO | | 快照未重現 |
+| T15 | DIRECT | STALE | | 側欄係 `position: fixed`（`components/Sidebar.tsx:107`）。2026-10-02 本機 production build 1920×1080 實測 `/about` 捲到底（scrollY 2542）側欄仍佔 0–1080，未重現審計描述 |
 | T16 | DIRECT | TODO | | |
 | T17 | DIRECT | TODO | | |
 | T18 | DIRECT | TODO | | |
