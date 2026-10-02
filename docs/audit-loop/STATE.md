@@ -104,7 +104,7 @@
 | T33 | FOUNDER | TODO | | |
 | T34 | SIGN | TODO | | 快照顯示已實施（`proxy.ts`）；分散式限流（Vercel Firewall）屬 `docs/SECURITY-audit-2026-09-25.md` §2 第 3 項，T54 不另開項目 |
 | T35 | DIRECT | TODO | | |
-| T36 | DIRECT | TODO | | |
+| T36 | DIRECT | DONE | `5e2534c` | 本機 production build 實測 `/.well-known/security.txt` 回 200 `text/plain`；測試會喺 Expires（2027-10-02）到期前提醒更新 |
 | T37 | DIRECT | TODO | | |
 | T53 | FOUNDER | TODO | | |
 | T47 | DIRECT／SIGN | TODO | | |
