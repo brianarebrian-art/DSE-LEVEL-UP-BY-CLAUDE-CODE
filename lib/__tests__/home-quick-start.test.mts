@@ -71,8 +71,10 @@ test('session length in minutes has one source', () => {
 test('the quick start sits in the hero, before the trust chips, with the other-subjects link beside it', () => {
   const page = read('app/page.tsx')
   const hero = page.slice(page.indexOf('── HERO ──'), page.indexOf('── 信任列 ──'))
-  const at = hero.indexOf('quickStartHref(s.id)')
+  // Since audit loop T09 the grid is a shared QuickStartGrid, also used by the bottom CTA.
+  const at = hero.indexOf('<QuickStartGrid labelledBy="quick-start-label"')
   assert.ok(at > 0, 'quick-start links in the hero')
+  assert.match(page, /function QuickStartGrid[\s\S]{0,400}href=\{quickStartHref\(s\.id\)\}/)
   assert.ok(at < hero.indexOf('h.trust1'), 'quick start before trust chips')
   assert.ok(hero.indexOf('hero.ctaStartHref') > at, 'other-subjects link after the quick start')
   // The seasonal link (/waiting and /relax in results season) stays on the first screen.
@@ -82,4 +84,12 @@ test('the quick start sits in the hero, before the trust chips, with the other-s
 
 test('negative self-test: an elective subject would be caught', () => {
   assert.equal(EL.hasElectives('ethics-religious'), true)
+})
+
+test('the bottom call to action starts practice directly, like the hero (audit loop T09)', () => {
+  const page = read('app/page.tsx')
+  const cta = page.slice(page.indexOf('── CTA ──'))
+  assert.match(cta, /<QuickStartGrid labelledBy="quick-start-label-bottom"/)
+  assert.match(cta, /id="quick-start-label-bottom"/)
+  assert.doesNotMatch(cta, /h\.ctaBtn/)
 })

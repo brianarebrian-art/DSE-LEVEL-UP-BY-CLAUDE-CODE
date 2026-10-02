@@ -280,7 +280,6 @@ const zh = {
     roadmapB: ' 科路線圖',
     ctaTitle: '準備好開始？',
     ctaSub: '揀一科，即刻開始你嘅 DSE 溫習',
-    ctaBtn: '開始練習',
     ctaNote: '所有科目嘅練習題 · 選擇題即時批改 + 練習表現估算',
   },
   subjectsList: {
@@ -706,7 +705,6 @@ const en: typeof zh = {
     roadmapB: ' subjects',
     ctaTitle: 'Ready to start?',
     ctaSub: 'Pick a subject and start your DSE revision',
-    ctaBtn: 'Start practising',
     ctaNote: 'Practice questions for every subject · instant marking for multiple choice + practice performance estimate',
   },
   subjectsList: {
