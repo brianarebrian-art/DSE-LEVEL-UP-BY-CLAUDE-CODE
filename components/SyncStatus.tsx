@@ -5,6 +5,7 @@ import { LogIn, LogOut, Loader2, CloudOff, Cloud } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { useSync } from '@/components/SyncProvider'
 import { useAuthSession, authSignInGoogle, authSignOut } from '@/lib/auth/session'
+import SignInNote from '@/components/SignInNote'
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 
@@ -67,6 +68,7 @@ export default function SyncStatus() {
           {binding ? <Loader2 size={15} className="animate-spin" /> : <LogIn size={15} />}
           {binding ? (en ? 'Redirecting…' : '跳轉中…') : en ? '🔓 Bind Google' : '🔓 綁定 Google 帳戶'}
         </button>
+        <SignInNote className="basis-full" />
       </div>
     )
   }
