@@ -48,7 +48,7 @@
 | ID | Gate | 狀態 | Commit | 證據／備註 |
 |---|---|---|---|---|
 | T00 | DIRECT | DONE | `ffbb870` | 見上方快照；FOUNDER-QUEUE Q-P1–Q-P10 |
-| T54 | DIRECT | DONE | （本 commit） | Wave 8：U01–U16；Wave 9：D01–D12；無 `BREAKING` |
+| T54 | DIRECT | DONE | `234681a` | Wave 8：U01–U16；Wave 9：D01–D12；無 `BREAKING` |
 | T01 | SIGN | TODO | | 前提與 repo 衝突，見 Q-P7；未 merge 的 `fix/methodology-review-rate` 見 U03 |
 | T02 | SIGN | TODO | | |
 | T03 | DIRECT | TODO | | |
