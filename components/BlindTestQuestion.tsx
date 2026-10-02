@@ -118,13 +118,13 @@ export default function BlindTestQuestion() {
       <p className="text-sm leading-relaxed text-paper-ink mb-4">
         {tr('由圓外一點 P 引兩條切線，', 'From external point P two tangents are drawn; ')}
         {tr('已知 ∠APB = ', '∠APB = ')}
-        <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>{tr('五十', 'fifty')}</Black>
+        <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>50</Black>
         {tr('°，C 為優弧上一點，求 ∠ACB。', '°, with C on the major arc. Find ∠ACB.')}
       </p>
 
       {/* Options with the key figures redacted */}
       <div className="grid grid-cols-2 gap-2 mb-5">
-        {[tr('六十五', '65'), tr('五十', '50'), tr('一三〇', '130'), tr('二十五', '25')].map((v, i) => (
+        {['65', '50', '130', '25'].map((v, i) => (
           <div key={i} className="flex items-center gap-2 border border-paper-ink/20 bg-paper-ink/5 rounded-lg px-3 py-2 text-sm">
             <span className="w-5 h-5 rounded bg-paper-ink/10 text-paper-ink text-xs font-bold flex items-center justify-center">
               {['A', 'B', 'C', 'D'][i]}
