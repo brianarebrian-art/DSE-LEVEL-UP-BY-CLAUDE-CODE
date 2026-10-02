@@ -121,8 +121,8 @@ export default function CommunitySafetyClient() {
       <Section title={en ? 'Links that leave this site' : '離開本站嘅連結'}>
         <p>
           {en
-            ? 'A few pages link out — a student-run Instagram group, YouTube, GitHub. Before you go, we show you exactly where you are heading. Once you are there, everything above stops applying: that platform has accounts, direct messages and its own rules, and we can neither see nor moderate what happens.'
-            : '有幾個頁會連出去 —— 一個學生自發嘅 Instagram 群組、YouTube、GitHub。你去之前，我哋會話你知你去緊邊。你一到咗嗰邊，以上全部唔再適用：對方平台有帳戶、有私訊、有自己嘅規則，我哋既睇唔到亦管唔到入面發生咩事。'}
+            ? 'A few pages link out — our official Instagram and Threads accounts, a student-run Instagram group, YouTube, GitHub. Before you go, we show you exactly where you are heading. Once you are there, everything above stops applying: that platform has accounts, direct messages and its own rules, and we can neither see nor moderate what happens.'
+            : '有幾個頁會連出去 —— 我哋嘅官方 Instagram 同 Threads 帳戶、一個學生自發嘅 Instagram 群組、YouTube、GitHub。你去之前，我哋會話你知你去緊邊。你一到咗嗰邊，以上全部唔再適用：對方平台有帳戶、有私訊、有自己嘅規則，我哋既睇唔到亦管唔到入面發生咩事。'}
         </p>
         <p>
           {en

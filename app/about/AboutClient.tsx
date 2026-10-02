@@ -5,6 +5,8 @@ import { ArrowRight, Mail, ShieldCheck } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import FAQSection from '@/components/FAQSection'
 import GuardianCredits from '@/components/GuardianCredits'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
+import { OFFICIAL_SOCIAL } from '@/lib/site'
 
 // Four classical-Confucian cores the platform is built on. Quotes are from the
 // Analects (公有領域 — over two millennia old). Kept plain and human, no fanfare.
@@ -138,6 +140,21 @@ export default function AboutClient() {
           >
             <Mail size={16} className="text-gold" /> dselevelup@gmail.com
           </a>
+          <p className="text-ink-muted mt-4 mb-2 text-sm">
+            {en ? 'Official accounts (study tips and updates):' : '官方帳戶（溫書貼士及更新）：'}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {OFFICIAL_SOCIAL.map((s) => (
+              <ExternalLinkGate
+                key={s.platform}
+                href={s.href}
+                platform={s.platform}
+                className="inline-flex min-h-11 items-center bg-surface-sunken border border-line-strong px-4 py-2.5 rounded-xl text-sm text-ink-soft transition-all"
+              >
+                {s.platform} {s.handle}
+              </ExternalLinkGate>
+            ))}
+          </div>
         </div>
 
         {/* 守護者致謝名單（創辦人決定 7，2026-09-30）：由頁尾移來。放在「聯絡我們」之後，

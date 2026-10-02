@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { BookOpen } from 'lucide-react'
 import { useT, useLocale } from '@/lib/i18n'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
+import { OFFICIAL_SOCIAL } from '@/lib/site'
 
 // Phase 2 Task 2（Kate/Leo 2026-07-18）：light-first 三層頁尾安全網（憲章 §10）。
 // 三層 = ① Doormat 二級導航 ② Trust 信任標誌（版權＋HKEAA 免責）③ Compliance 合規入口。
@@ -115,6 +117,18 @@ export default function Footer() {
                   {t.footer.contact}
                 </a>
               </li>
+              {/* 官方帳戶（audit loop T03）。經出口閘門，先講明將離開本站。 */}
+              {OFFICIAL_SOCIAL.map((s) => (
+                <li key={s.platform}>
+                  <ExternalLinkGate
+                    href={s.href}
+                    platform={s.platform}
+                    className="inline-flex min-h-11 items-center hover:text-accent transition-colors"
+                  >
+                    {s.platform} {s.handle}
+                  </ExternalLinkGate>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

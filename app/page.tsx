@@ -49,6 +49,26 @@ function M({ children }: { children: string }) {
   return <span className="whitespace-nowrap font-serif italic">{children}</span>
 }
 
+/** 四個核心科目，一撳開始一節（首頁頂部及底部共用，audit loop T09）。 */
+function QuickStartGrid({ labelledBy, en }: { labelledBy: string; en: boolean }) {
+  return (
+    <ul aria-labelledby={labelledBy} className="grid grid-cols-4 gap-2 sm:gap-3">
+      {quickSubjects.map((s) => (
+        <li key={s.id}>
+          <Link
+            href={quickStartHref(s.id)}
+            aria-label={en ? `${s.shortEn}: start ${SESSION_SIZE} questions` : `${s.short}：開始 ${SESSION_SIZE} 題`}
+            className="flex min-h-[64px] flex-col items-center justify-center gap-0.5 rounded-xl bg-accent-strong px-1 text-base font-medium text-on-accent transition-colors duration-200 hover:bg-accent-hover"
+          >
+            <span aria-hidden className="text-lg leading-none">{s.emoji}</span>
+            {en ? s.shortEn : s.short}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function HomePage() {
   const { t, locale } = useLocale()
   const h = t.home
@@ -169,20 +189,7 @@ export default function HomePage() {
             </p>
             {/* 四格一行（手機亦然）：兩行兩格會把「揀其他科目」推到 375×812 首屏底部，
                 被左下角無障礙按鈕及右下角情緒支援按鈕遮住。 */}
-            <ul aria-labelledby="quick-start-label" className="grid grid-cols-4 gap-2 sm:gap-3">
-              {quickSubjects.map((s) => (
-                <li key={s.id}>
-                  <Link
-                    href={quickStartHref(s.id)}
-                    aria-label={en ? `${s.shortEn}: start ${SESSION_SIZE} questions` : `${s.short}：開始 ${SESSION_SIZE} 題`}
-                    className="flex min-h-[64px] flex-col items-center justify-center gap-0.5 rounded-xl bg-accent-strong px-1 text-base font-medium text-on-accent transition-colors duration-200 hover:bg-accent-hover"
-                  >
-                    <span aria-hidden className="text-lg leading-none">{s.emoji}</span>
-                    {en ? s.shortEn : s.short}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <QuickStartGrid labelledBy="quick-start-label" en={en} />
             <p className="mt-2 text-sm text-ink-muted">
               {en ? `About ${sessionMins} minutes · no sign-in needed · free` : `約 ${sessionMins} 分鐘 · 唔使登入 · 免費`}
             </p>
@@ -414,13 +421,19 @@ export default function HomePage() {
       <section className="bg-surface px-4 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="animate-on-scroll mb-4 text-3xl font-medium text-ink sm:text-4xl">{h.ctaTitle}</h2>
-          <p className="animate-on-scroll stagger-1 mb-8 text-ink-muted">{h.ctaSub}</p>
-          <Link
-            href="/subjects"
-            className="animate-on-scroll stagger-2 inline-flex items-center gap-3 rounded-xl bg-accent-strong px-10 py-5 text-lg font-medium text-on-accent transition-all duration-200 hover:bg-accent-hover hover:-translate-y-0.5"
-          >
-            {h.ctaBtn} <ArrowRight size={22} />
-          </Link>
+          <p id="quick-start-label-bottom" className="animate-on-scroll stagger-1 mb-8 text-ink-muted">{h.ctaSub}</p>
+          {/* audit loop T09（2026-10-02）：原本係一個去 /subjects 嘅大掣，要再揀一次科目。
+              改為同頁頂一樣嘅四科快捷掣，一撳就開始；其他科目用下面文字連結。 */}
+          <div className="animate-on-scroll stagger-2 mx-auto max-w-md">
+            <QuickStartGrid labelledBy="quick-start-label-bottom" en={en} />
+            <Link
+              href="/subjects"
+              className="mt-3 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-accent-strong underline underline-offset-4"
+            >
+              {en ? `All ${activeSubjects.length} subjects` : `揀其他科目（共 ${activeSubjects.length} 科）`}
+              <ArrowRight size={14} aria-hidden />
+            </Link>
+          </div>
           <p className="animate-on-scroll stagger-3 mt-4 text-sm text-ink-muted">{h.ctaNote}</p>
         </div>
       </section>

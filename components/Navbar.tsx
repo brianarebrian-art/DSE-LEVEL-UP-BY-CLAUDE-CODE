@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
 import AuthButton from '@/components/AuthButton'
+import SignInNote from '@/components/SignInNote'
 import Greeting from '@/components/Greeting'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
@@ -183,6 +184,7 @@ export default function Navbar() {
               </div>
               <AuthButton onAction={() => setOpen(false)} />
             </div>
+            <SignInNote className="mt-2" />
 
             {/* 主題：選單內出完整三段式（自動／淺色／深色），選項一目了然。
                 同語言切換分開兩行，避免學生以為兩者相關。 */}

@@ -28,3 +28,6 @@ export const CLOUD_SETTINGS_KEYS = [
 ] as const
 
 export const CLOUD_KEYS = [...CLOUD_PROGRESS_KEYS, ...CLOUD_SETTINGS_KEYS] as const
+
+/** 上雲 key 總數。私隱頁標題同登入說明（components/SignInNote.tsx）用同一個數。 */
+export const CLOUD_COUNT = CLOUD_KEYS.length

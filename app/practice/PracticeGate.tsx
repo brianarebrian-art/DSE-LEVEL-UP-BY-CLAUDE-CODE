@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { useLocale, useT } from '@/lib/i18n'
+import { useLocale } from '@/lib/i18n'
 import { loadAttempts } from '@/lib/progress'
 import { getSubject } from '@/data/subjects'
 import { SESSION_SIZE } from '@/lib/entitlements'
@@ -19,7 +19,7 @@ import type { ReverseCause } from '@/lib/reverseLog'
 // the subject's question bank (its own lazy chunk) and run.
 const PracticeSession = dynamic(() => import('./PracticeSession'), {
   ssr: false,
-  loading: () => <Loading />,
+  loading: () => <Loading kind="mc" />,
 })
 
 // 書寫題（?mode=long）行完全獨立嘅 runner —— 決策 ②。刻意唔塞入 PracticeSession：
@@ -35,11 +35,21 @@ const LongPracticeSession = dynamic(() => import('./LongPracticeSession'), {
 //
 // 讀屏用戶：骨架本身 aria-hidden（純視覺），故此另設一個 sr-only 的載入文字，
 // 保留原本 `t.common.loading` 嘅語意，唔會因為改視覺而失去無障礙訊息。
-function Loading() {
-  const t = useT()
+//
+// audit loop T08（2026-10-02）：加一行看得見的文字，同時以 role="status"（aria-live polite）
+// 讀出。選擇題講明題數（SESSION_SIZE），其他情況只講「正在準備題目」。
+function Loading({ kind }: { kind?: 'mc' }) {
+  const { locale } = useLocale()
+  const en = locale === 'en'
+  const text =
+    kind === 'mc'
+      ? en ? `Getting your ${SESSION_SIZE} practice questions ready…` : `正在準備你嘅 ${SESSION_SIZE} 條練習題…`
+      : en ? 'Getting your questions ready…' : '正在準備題目…'
   return (
     <div aria-busy="true">
-      <span className="sr-only">{t.common.loading}</span>
+      <p role="status" aria-live="polite" className="px-4 pt-6 text-center text-sm text-ink-muted">
+        {text}
+      </p>
       <PracticeSkeleton />
     </div>
   )
@@ -171,7 +181,7 @@ export default function PracticeGate({
     )
   }
 
-  if (scopedMc === null) return <Loading />
+  if (scopedMc === null) return <Loading kind="mc" />
 
   return (
     <PracticeSession
