@@ -64,9 +64,9 @@
 
 ### Q-P9 T28 報告資料庫，以及 README 的 Next 版本
 - 類型：方向決定 + prompt 錯誤
-- 背景：(1) T28 要求把報告存入資料庫；改進循環 2 R2-6 曾按當時指示決定報告只經電郵、不存資料庫（`docs/ux-loop-progress.md` R2-6）。(2) `README.md:13` 寫 Next.js 16.2.9，`package.json` 為 `^16.3.3`。
-- 選項：(1) A 按 T28 新建資料表（migration 由創辦人 apply）/ B 維持 R2-6 決定，T28 改為 STALE / C 暫緩 T28；(2) A 更新 README 版本號 / B 維持現狀
-- Loop 建議：(1) 由創辦人決定，loop 不偏向任何一方；(2) A，屬 DIRECT 文件修正。
+- 背景：(1) T28 要求把報告存入資料庫；改進循環 2 R2-6 曾按當時指示決定報告只經電郵、不存資料庫（`docs/ux-loop-progress.md` R2-6）。(2) `README.md:13` 及憲章 §3 均寫 Next.js 16.2.9，`package.json` 為 `^16.3.3`。憲章文末記錄 2026-09-26「§3 Next.js 版本號 Yuna 不同意改，維持原文」。
+- 選項：(1) A 按 T28 新建資料表（migration 由創辦人 apply）/ B 維持 R2-6 決定，T28 改為 STALE / C 暫緩 T28；(2) A 更新 README 版本號（憲章不動）/ B 維持現狀
+- Loop 建議：(1) 由創辦人決定，loop 不偏向任何一方；(2) B。憲章版本號已有創辦人決定，loop 不改 README 亦不改憲章；只在此記錄差異，如創辦人想 README 跟 `package.json` 再另行指示。
 - 創辦人回覆：＿＿＿＿（Brian / Yuna 填）
 
 ### Q-P10 `audit-loop` 的起點包括未上 `main` 的 commit
