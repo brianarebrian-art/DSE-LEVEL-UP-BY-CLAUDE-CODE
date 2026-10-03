@@ -39,7 +39,7 @@ function playSoftChime() {
 // 彈窗、和音及盲點統計仍然只在本組件，兩種練習頁共用一份。
 export const ENOUGH_TODAY_EVENT = 'dse-enough-today'
 
-/** 題目頁頂部的「今日夠了」按鈕。只廣播事件，彈窗由 PracticeSupport 負責。 */
+/** 題目頁頂部的「先做到呢度」按鈕（2026-10-02 由「今日夠了」改名，Q-T10）。只廣播事件，彈窗由 PracticeSupport 負責。 */
 export function EnoughTodayButton() {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -47,10 +47,10 @@ export function EnoughTodayButton() {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event(ENOUGH_TODAY_EVENT))}
-      title={en ? 'Done for today — no guilt, see you tomorrow.' : '今日夠了 —— 收工冇罪疚，聽日再戰。'}
+      title={en ? 'Stop here for now — no guilt, pick it up next time.' : '先做到呢度 —— 收工冇罪疚，下次再嚟。'}
       className="inline-flex items-center gap-1 min-h-12 px-2 -my-2 rounded-lg text-ink-muted hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
-      <Moon size={13} aria-hidden /> <span className="text-[11px]">{en ? 'Enough today' : '今日夠了'}</span>
+      <Moon size={13} aria-hidden /> <span className="text-[11px]">{en ? 'Stop here for now' : '先做到呢度'}</span>
     </button>
   )
 }
@@ -94,7 +94,7 @@ export default function PracticeSupport() {
         <div className="fixed inset-0 z-[60] bg-scrim-soft backdrop-blur-sm flex items-center justify-center p-4">
           <div role="dialog" aria-modal="true" aria-labelledby="enough-today-title" className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
             <div className="text-3xl mb-3" aria-hidden>🌙</div>
-            <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'You did enough today.' : '你已經好叻，聽日再戰。'}</p>
+            <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'Good work. See you next time.' : '你已經好叻，下次再戰。'}</p>
             <p className="text-sm text-ink-muted mb-5 leading-relaxed">
               {blindSpotsToday > 0
                 ? en
