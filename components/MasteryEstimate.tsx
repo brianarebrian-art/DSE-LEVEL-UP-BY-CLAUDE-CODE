@@ -32,6 +32,8 @@ export default function MasteryEstimate({
   const { locale } = useLocale()
   const en = locale === 'en'
   const [m, setM] = useState<SubjectMastery | null>(null)
+  // Q-T04（創辦人 2026-10-03）：等級範圍預設收起，學生撳先出，避免被截圖當預測。唔記住。
+  const [revealed, setRevealed] = useState(false)
 
   useEffect(() => { setM(getSubjectMastery(subjectId)) }, [subjectId])
   if (m === null) return null
@@ -51,7 +53,28 @@ export default function MasteryEstimate({
         {heading ?? <>📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</>}
       </Heading>
 
-      {band ? (
+      {band && !revealed ? (
+        <div className="mt-2">
+          <p className="text-sm text-ink">
+            {en
+              ? 'A learning indicator from your practice on this site, not an HKEAA grade prediction.'
+              : '呢個係按你喺本站練習計出嚟嘅學習指標，唔係考評局成績預測。'}
+          </p>
+          <p className="text-sm text-ink-muted mt-1">
+            {en
+              ? `From ${m.sessions} valid session${m.sessions === 1 ? '' : 's'} in this subject.`
+              : `按本科 ${m.sessions} 節有效練習。`}
+          </p>
+          <button
+            type="button"
+            onClick={() => setRevealed(true)}
+            aria-expanded={false}
+            className="mt-3 inline-flex min-h-11 items-center rounded-xl border border-line-strong px-4 text-sm text-ink-soft transition-colors hover:border-accent hover:text-accent"
+          >
+            {en ? 'Show the rough estimate (for reference only)' : '睇粗糙估算（僅供參考）'}
+          </button>
+        </div>
+      ) : band ? (
         <>
           <p className="text-2xl font-medium text-ink mt-2">{band}</p>
           {/* 2026-09-30（UX 循環 LOOP 21）：範圍旁邊直接講明性質，不留到頁底或第三點才講。 */}

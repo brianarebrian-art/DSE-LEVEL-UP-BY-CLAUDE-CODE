@@ -18,3 +18,13 @@ test('Q-T02: the score share card carries no Instagram group link; the safety pa
   assert.doesNotMatch(safety, /分享卡同「呼吸空間」有一條|Your share card and the Breathing Space/)
   assert.match(safety, /「呼吸空間」有一條 Instagram 溫書群組連結/)
 })
+
+test('Q-T04: the level range is hidden until the student asks for it, with the disclaimer first', () => {
+  const s = read('components/MasteryEstimate.tsx')
+  assert.match(s, /const \[revealed, setRevealed\] = useState\(false\)/)
+  assert.match(s, /\{band && !revealed \? \(/)
+  const hidden = s.slice(s.indexOf('{band && !revealed ? ('), s.indexOf(') : band ? ('))
+  assert.match(hidden, /唔係考評局成績預測/)
+  assert.match(hidden, /睇粗糙估算（僅供參考）/)
+  assert.doesNotMatch(hidden, /\{band\}/, 'the hidden state must not render the range')
+})
