@@ -258,7 +258,6 @@ export default function ResultPageClient() {
     tiers: cardTiers,
     strengthTopic: bestTopic && bestTopic.correct === bestTopic.total && bestTopic.topic !== worstTopic?.topic ? bestTopic.topic : undefined,
     focusTopic: worstTopic && worstTopic.correct < worstTopic.total ? worstTopic.topic : undefined,
-    igLink: 'ig.me/j/AbYCy6ZUDR-yWVPN',
     siteUrl: siteHost || SITE_ORIGIN.replace(/^https:\/\//, ''),
   }
   // UX audit A2 (c): the cause card, shared instead of the score card by default.

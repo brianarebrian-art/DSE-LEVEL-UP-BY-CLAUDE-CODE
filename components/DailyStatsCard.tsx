@@ -25,7 +25,6 @@ export interface DailyStatsCardData {
   tiers?: { label: string; correct: number; total: number; color: string }[]
   strengthTopic?: string
   focusTopic?: string
-  igLink: string
   siteUrl: string
 }
 
@@ -133,7 +132,6 @@ const DailyStatsCard = forwardRef<HTMLDivElement, { data: DailyStatsCardData; en
             <img src={qrSrc} alt="" width={176} height={176} style={{ display: 'block', borderRadius: 4 }} />
           </div>
           <div style={{ fontSize: 22, color: C.cyan, fontWeight: 600, marginTop: 12 }}>{en ? 'Scan to enter' : '掃描入站'}</div>
-          <div style={{ fontSize: 20, color: C.cyan, fontWeight: 600, marginTop: 10 }}>{en ? 'Join our IG study room: ' : '入 IG 溫書室：'}{d.igLink}</div>
           <div style={{ fontSize: 18, color: C.faint, marginTop: 6 }}>{d.siteUrl}</div>
           <div style={{ fontSize: 15, color: C.faint, marginTop: 10 }}>© DSE Level Up 2026 · Not affiliated with HKEAA</div>
         </div>
