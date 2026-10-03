@@ -53,9 +53,9 @@
 | T02 | SIGN | STALE | | 2026-10-02 核實社群安全頁每句屬實：分享卡（`components/DailyStatsCard.tsx:136`）及呼吸空間（`app/relax/components/RelaxLanding.tsx:121` → `/relax/group`）確有 IG 群組連結，YouTube（`SoloPlayer.tsx`）、GitHub（`GuardianCredits.tsx`）亦經 ExternalLinkGate。prompt「分享卡永遠唔放」與 Yuna 2026-09-21 決定衝突，見 Q-T02 |
 | T03 | DIRECT | DONE | `70692a5` | 頁尾及關於頁經 ExternalLinkGate；本機 production build 390／768／1024／1920 四個闊度都見到、冇超出畫面；撳後出「你即將離開」提示，console 冇錯誤（CSP 無影響） |
 | T38 | SIGN | TODO | | 依賴 T01（WAITING-FOUNDER） |
-| T39 | SIGN | DONE | `2b616c8` | 文字引用同意書第一點，項數用 `lib/cloudKeys.ts` 的 `CLOUD_COUNT`（13），連私隱政策及帳戶頁。位置：手機／平板選單內登入掣下、進度頁「綁定 Google」卡。桌面版頂欄登入掣旁冇位放，未加。本機 production build 實測兩處都顯示、冇超出畫面。等 Q-T39 批核 |
-| T04 | SIGN | WAITING-FOUNDER | | (a) 空狀態已有 CTA（`app/predictor/PredictorClient.tsx:94`「揀科目開始」→ `/subjects`）；(b) 已顯示「按本科 N 節有效練習」（`components/MasteryEstimate.tsx:67`），以節計唔係以題計；(c) 已係範圍。頁面會唔會繼續顯示 DSE 等級屬未決 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`），見 Q-T04 |
-| T05 | SIGN | WAITING-FOUNDER | | 現時答錯後解析先出第一步（`StagedExplanation`），學生可撳開全部或揀「以後直接睇晒」。今日創辦人批准嘅關於頁字眼正正描述「先給你第一步」，同 T05「預設展開」衝突，見 Q-T05 |
+| T39 | SIGN | DONE | `c709fe6` | Q-T39：短句、講明可選；結果頁加可選登入掣；本機實測 |
+| T04 | SIGN | DONE | `918880d` | Q-T04：等級範圍預設收埋，撳「睇粗糙估算（僅供參考）」先出；本機實測 |
+| T05 | SIGN | STALE | | Q-T05：創辦人決定維持先出第一步 |
 | T06 | SIGN | STALE | | 情緒 check-in 彈窗（`EmotionThermometer`）及解析下心情小卡已按創辦人 2026-10-02 決定刪除（憲章 §7.2.1，commit `169e1bf`、`b636838`） |
 | T07 | SIGN | STALE | | 練習頁錯因三揀一已按創辦人 2026-10-02 決定刪除，答錯直接出解析（憲章 §7.2.1，commit `169e1bf`）；書寫題及答題紙保留 |
 | T08 | DIRECT | DONE | `1a4c801` | 本機 production build 實測：由首頁撳數學，載入期間 `role="status"` 讀出「正在準備你嘅 10 條練習題…」 |
@@ -63,8 +63,8 @@
 | T40 | SIGN | STALE | | 已有：`/subjects` 頂部「最近練過」科目掣（`app/subjects/SubjectsView.tsx:182`，UX loop 16）；首頁回頭學生有「上次練緊／上次未做完」卡（`components/ContinueCard.tsx`），一撳返去。首頁再加一行會重複並擠迫 375px 首屏 |
 | T41 | SIGN | STALE | | 已有：`components/ShareStatsCardButton.tsx:55-69` 支援 files 就用 `navigator.share`，唔支援就下載 |
 | T42 | SIGN | DONE | `74bf9f0` | 結果頁一行文字連結「追蹤 @dselevelup 睇更多溫書貼士」，經 ExternalLinkGate；本機 production build 做完一節實測顯示 |
-| T10 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T10 |
-| T11 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T11 |
+| T10 | FOUNDER | DONE | `501ca48` | Q-T10：改「先做到呢度」 |
+| T11 | FOUNDER | DONE | `b559469` | Q-T11：同類型再一題／難啲／易啲／換課題，一次性、只排次序；本機實測換課題同灰掣 |
 | T12 | DIRECT | TODO | | |
 | T13 | DIRECT | STALE | | 改進循環 2 R2-11d 已修正（commit `23cdb01`）。2026-10-02 本機 production build 390×844 實測 `/about` 捲到底：頁尾最後一行底部 y=738，底欄頂 y=787，冇被遮 |
 | T14 | DIRECT | TODO | | |
