@@ -60,15 +60,15 @@
 | T07 | SIGN | STALE | | 練習頁錯因三揀一已按創辦人 2026-10-02 決定刪除，答錯直接出解析（憲章 §7.2.1，commit `169e1bf`）；書寫題及答題紙保留 |
 | T08 | DIRECT | DONE | `1a4c801` | 本機 production build 實測：由首頁撳數學，載入期間 `role="status"` 讀出「正在準備你嘅 10 條練習題…」 |
 | T09 | DIRECT | DONE | `3796efa` | 首頁底部改為同頁頂一樣嘅四科快捷掣（`QuickStartGrid`）＋「揀其他科目」連結；本機 production build 375px 實測四掣 80×64、冇超出畫面 |
-| T40 | SIGN | TODO | | |
-| T41 | SIGN | TODO | | |
-| T42 | SIGN | TODO | | 依賴 T03 |
-| T10 | FOUNDER | TODO | | |
-| T11 | FOUNDER | TODO | | |
+| T40 | SIGN | STALE | | 已有：`/subjects` 頂部「最近練過」科目掣（`app/subjects/SubjectsView.tsx:182`，UX loop 16）；首頁回頭學生有「上次練緊／上次未做完」卡（`components/ContinueCard.tsx`），一撳返去。首頁再加一行會重複並擠迫 375px 首屏 |
+| T41 | SIGN | STALE | | 已有：`components/ShareStatsCardButton.tsx:55-69` 支援 files 就用 `navigator.share`，唔支援就下載 |
+| T42 | SIGN | DONE | `74bf9f0` | 結果頁一行文字連結「追蹤 @dselevelup 睇更多溫書貼士」，經 ExternalLinkGate；本機 production build 做完一節實測顯示 |
+| T10 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T10 |
+| T11 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T11 |
 | T12 | DIRECT | TODO | | |
-| T13 | DIRECT | TODO | | 改進循環 2 R2-11d 已修正（commit `23cdb01`），T13 iteration 時驗證後可標 STALE |
+| T13 | DIRECT | STALE | | 改進循環 2 R2-11d 已修正（commit `23cdb01`）。2026-10-02 本機 production build 390×844 實測 `/about` 捲到底：頁尾最後一行底部 y=738，底欄頂 y=787，冇被遮 |
 | T14 | DIRECT | TODO | | |
-| T15 | DIRECT | TODO | | 快照未重現 |
+| T15 | DIRECT | STALE | | 側欄係 `position: fixed`（`components/Sidebar.tsx:107`）。2026-10-02 本機 production build 1920×1080 實測 `/about` 捲到底（scrollY 2542）側欄仍佔 0–1080，未重現審計描述 |
 | T16 | DIRECT | TODO | | |
 | T17 | DIRECT | TODO | | |
 | T18 | DIRECT | TODO | | |
@@ -152,6 +152,8 @@
 | D15 | DIRECT | TODO | 2026-10-02 本機 `npm run build` 共 9 次，有 2 次喺 `next/font` 下載 Google 字型時失敗（`TypeError: Cannot read properties of null (reading '1')`，`node_modules/next/dist/compiled/@next/font/dist/google/loader.js:122`），代碼不變重跑即過 | S | 如果 Vercel 部署時遇到會令部署失敗。要查係網絡定 Next 16.3.8 嘅問題；可考慮改用本地字型檔（唔加套件） |
 
 ## 備註
+
+- 2026-10-02 創辦人決定（回覆「a」）：Vercel Web Analytics 用同源 script（commit `372d711`），唔裝 `@vercel/analytics` 套件，憲章 §1 第 5 點不變。
 
 - 2026-10-02 創辦人決定：暫時未有錢買域名，繼續用 `dse-level-up-by-claude-code.vercel.app`。審計再提域名問題，引用本句，不再開新問題。
 - 2026-10-02 創辦人決定（回覆「a」）：首頁及頁尾刪去「未經逐題人手覆核」半句，保留「經自動檢查」；憲章 §12.1 約束 1 已加修訂。T01 原前提（寫「有人手逐題覆核」）仍無紀錄支持，Q-P7 未答前不做。

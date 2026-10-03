@@ -93,7 +93,17 @@ test('頁面聲稱「心情記錄唔會上傳」—— 佢真係唔喺上雲清�
   }
 })
 
-test('頁面聲稱「冇任何分析／追蹤 SDK」—— 掃全站確認', () => {
+// 2026-10-02 創辦人決定裝 Vercel Web Analytics（同源 script，唔加套件）。私隱頁已照實寫明；
+// 除此之外照舊一個都唔准，而且唔准用 npm 套件版（@vercel/analytics），以免違反「唔加套件」。
+test('只有 Vercel Web Analytics（同源 script），私隱頁有寫明；其他追蹤器一個都冇', () => {
+  const layout = stripComments(fs.readFileSync('app/layout.tsx', 'utf8'))
+  assert.match(layout, /process\.env\.VERCEL_ENV === 'production' && \(\s*<Script src="\/_vercel\/insights\/script\.js"/)
+  const page = fs.readFileSync(PAGE, 'utf8')
+  assert.match(page, /我哋用一個分析服務：Vercel Web Analytics/)
+  assert.match(page, /唔用 cookie/)
+})
+
+test('頁面聲稱「除 Vercel Web Analytics 外冇其他分析／追蹤 SDK」—— 掃全站確認', () => {
   const TRACKERS =
     /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|@sentry|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics|speed-insights/i
   const hits = sources.filter(

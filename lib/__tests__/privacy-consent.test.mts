@@ -32,7 +32,7 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-10-02.v1',
+  version: '2026-10-02.v2',
   // 2026-09-11 基準。上一版 b2e44e871df73cd2（2026-09-09.v1）。
   // 今次改嘅唔係錯字，係新增咗一個【採集類別】——「你開過 app 嘅日期」
   // （migration 0018 重建嘅 user_sessions），同時明文寫低未登入唔記錄。
@@ -43,7 +43,9 @@ const EXPECTED = {
   // (a new category, Yuna 2026-09-26). Previous: b19716aab0b0c327 (2026-09-26.v1).
   // 2026-10-02 (2026-10-02.v1): the mood log is no longer recorded, so it was removed from
   // the policy (founder decision, charter §7.2.1). Previous: 7ee5a11e9b8877a4 (2026-09-26.v2).
-  hash: '897cc5a7d5330031',
+  // 2026-10-02 (2026-10-02.v2): Vercel Web Analytics added (aggregate page views, no cookies).
+  // Previous: 897cc5a7d5330031 (2026-10-02.v1).
+  hash: '28b23cb91eddf1c9',
 }
 
 function policyFingerprint(): string {

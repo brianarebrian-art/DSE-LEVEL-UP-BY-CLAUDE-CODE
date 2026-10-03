@@ -22,3 +22,10 @@ test('share cards do not carry the official accounts', () => {
     assert.doesNotMatch(read(f), /OFFICIAL_SOCIAL|instagram\.com\/dselevelup|threads\.com/, f)
   }
 })
+
+test('the result page links the official Instagram once, through the gate, outside the share cards (T42)', () => {
+  const s = read('app/result/ResultPageClient.tsx')
+  assert.match(s, /<ExternalLinkGate\s+href=\{OFFICIAL_SOCIAL\[0\]\.href\}/)
+  assert.match(s, /追蹤 \$\{OFFICIAL_SOCIAL\[0\]\.handle\} 睇更多溫書貼士/)
+  assert.doesNotMatch(s, /ig\.me\/(?!j\/AbYCy6ZUDR)/, 'no ig.me links except the existing group link')
+})
