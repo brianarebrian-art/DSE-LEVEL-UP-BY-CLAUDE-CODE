@@ -36,8 +36,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '發現題目有錯點算？', qEn: 'What if I find a mistake in a question?',
-    aZh: 'Email dselevelup@gmail.com 或喺社群 #平台反饋 留言。我哋會對照課綱核實，屬實即修正——學術準確係我哋嘅生死線。',
-    aEn: 'Email dselevelup@gmail.com. We verify against the syllabus and fix confirmed errors — academic accuracy is our red line.',
+    aZh: '每條題目答完之後，解析下面都有「呢條題有問題？話我哋知」掣，會自動填好題號；亦可以直接 email dselevelup@gmail.com。我哋會對照課綱核實，屬實即修正——學術準確係我哋嘅生死線。',
+    aEn: 'After you answer, the explanation of every question has a “Something wrong with this question?” button that fills in the question number for you; you can also email dselevelup@gmail.com. We verify against the syllabus and fix confirmed errors — academic accuracy is our red line.',
   },
   {
     qZh: '練習表現估算準唔準？', qEn: 'How accurate is the practice performance estimate?',
