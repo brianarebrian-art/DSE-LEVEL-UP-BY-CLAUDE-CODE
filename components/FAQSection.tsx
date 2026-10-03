@@ -21,8 +21,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '答錯之後會點？', qEn: 'What happens after a wrong answer?',
-    aZh: '冇紅色交叉，亦冇「錯咗」兩隻字。解析會即刻打開，冇倒數、冇計時、冇追問題。做書寫題或者用答題紙對答案嗰陣，你仍然可以揀錯因，嗰啲會累積成你嘅錯誤模式。',
-    aEn: 'No red cross and no “wrong”. The explanation opens straight away: no countdown, no timer, no follow-up question. When you do written questions or check a paper answer sheet, you can still tag the cause of a mistake, and those tags build your error patterns.',
+    aZh: '冇紅色交叉，亦冇「錯咗」兩隻字。解析會即刻出現：先畀你第一步，想睇晒撳一下就得（亦可以揀以後直接睇晒）。冇倒數、冇計時、冇追問題。做書寫題或者用答題紙對答案嗰陣，你仍然可以揀錯因，嗰啲會累積成你嘅錯誤模式。',
+    aEn: 'No red cross and no “wrong”. The explanation appears straight away: first step first, one tap for the rest (or choose to always see it all). No countdown, no timer, no follow-up question. When you do written questions or check a paper answer sheet, you can still tag the cause of a mistake, and those tags build your error patterns.',
   },
   {
     qZh: '「錯誤模式」係乜嚟？', qEn: 'What are “error patterns”?',
