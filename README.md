@@ -60,6 +60,6 @@ concept-webs/ → factory → drafts/ → _gate.mjs（機器客觀閘）
 
 ## 免責聲明
 
-本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。官方歷屆試題請前往 HKEAA 網站下載。等級預測僅供參考，最終成績以 HKEAA 公布為準。
+本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。官方歷屆試題請前往 HKEAA 網站下載。練習表現估算僅供參考，最終成績以 HKEAA 公布為準。
 
 © DSE Level Up 2026. Not affiliated with HKEAA. All questions are independently rewritten for educational purposes.

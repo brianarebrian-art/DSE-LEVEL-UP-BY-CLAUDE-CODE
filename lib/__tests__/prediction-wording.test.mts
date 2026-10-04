@@ -5,8 +5,9 @@
 // site-wide meta description called it 等級預測／Grade Predictor／即時等級預測. The estimate
 // itself already gave a range and three kinds of uncertainty; the name promised more.
 //
-// Allowed: the charter §13 disclaimer sentence (「等級預測僅供參考，最終成績以 HKEAA 公布為準」),
-// which the charter requires word for word, and sentences that say it is NOT a prediction.
+// Allowed: sentences that say it is NOT a prediction. The charter §13 disclaimer used to say
+// 「等級預測僅供參考」 and was exempt; the founders amended it on 2026-10-04 (audit #7, A7-1 A),
+// so the exemption is gone.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
@@ -29,8 +30,6 @@ const stripComments = (s: string) =>
 
 const CLAIM = /等級預測|即時等級|Grade Predictor|grade prediction|predicted grade|grade predictor/gi
 const ALLOWED = [
-  /等級預測僅供參考，最終成績以 HKEAA 公布為準/, // charter §13, verbatim
-  /Grade predictions are (?:for reference|indicative) only/, // its English translation (footer, /about)
   /not an? (?:HKEAA |DSE )?grade prediction/i,
 ]
 
