@@ -54,3 +54,11 @@ test('no visible copy says a person approves each question before it goes live',
   assert.match(pages, /經自動檢查之後上線；發現有錯，我哋會落架或者修正/)
   assert.match(pages, /go live after automated checks, and we withdraw or fix any that turn out to be wrong/)
 })
+
+// Audit #8 (2026-10-04, founders' reply 4a): /transparency says plainly that no registered
+// teacher has reviewed the questions.
+test('/transparency says the questions have not been reviewed by registered teachers', () => {
+  const t = readFileSync('app/transparency/TransparencyClient.tsx', 'utf8')
+  assert.match(t, /'每一條題目都由 DSE 舊生 \+ AI 協作編寫，上線前要通過自動檢查。題目未經註冊教師審定。'/)
+  assert.match(t, /The questions have not been reviewed by registered teachers\./)
+})
