@@ -175,3 +175,10 @@
   - 安全核對：`/api/*` 回應無 `access-control-allow-origin: *`，只有 CDN 靜態頁有（公開內容、不帶 cookie，風險低，不改）；`NEXT_PUBLIC_*` 只有 Supabase URL、anon key、VAPID 公鑰及 auth URL，資料庫連線 `DATABASE_URL` 只在 `lib/auth/better-auth.ts`（`import 'server-only'`）；`auth.ts` 無自訂 redirect callback，用 Auth.js 預設同源限制；RLS 見上 2026-10-02 只讀核對。
   - 未做、未排期：390px 精簡導航、1920px 題目解析並排、免登入進度碼、人工金標 50 題、每週電郵摘要。屬設計或內容工作，待創辦人排優先次序。
   - 檢查：npm test 1252/1252、tsc 0、改動檔 lint 0 error；本機 dev 實測信任中心及方法論新字眼、`/security.txt` → 308 → `/.well-known/security.txt`，console 無錯誤。production build 通過（2026-10-04）。
+- 2026-10-04 創辦人回覆審計 #7 四題（「A7-1 A、A7-2 A、A7-3 A、A7-4 B」）：
+  - A7-1：憲章 §13 修訂，commit `1777234`。
+  - A7-3：`/transparency` 最近退回紀錄，commit `fb42589`、`c8eca66`。
+  - A7-4：CSP nonce，commit `b79cc36`。代價：全部 HTML 頁面由預先產生改為每次請求即時產生（build 只剩 icon、manifest、OG 圖及 sitemap 為靜態），CDN 不再快取頁面，每次開頁都用一次 Vercel 運算。部署後要留意 Vercel 用量及開頁速度。本機正式版實測 23 條路徑：每個可執行 script 帶當次 nonce、每次 nonce 不同；注入的 inline script 及 eval 被擋；練習、筆記、進度、透明度頁無 console 錯誤。Vercel Web Analytics 只在正式部署載入，本機測不到（同源 script，`'self'` 已容許），⬜ 待部署後驗證。
+  - A7-2：與憲章 §16.E 約束 5 衝突，暫停，已再問創辦人（見 FOUNDER-QUEUE Q-A7-2）。
+  - 另見：`components/DataPortability.tsx` 已有「導出／導入進度檔案」，審計建議的「免登入進度碼」部分已存在。
+  - 檢查：npm test 1263/1263、tsc 0、lint 0 error（34 warnings）、qa 通過、production build 通過。
