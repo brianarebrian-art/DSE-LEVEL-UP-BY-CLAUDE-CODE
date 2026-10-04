@@ -243,3 +243,4 @@
   - 22：科目頁標題下「本站練唔到：…。呢啲部分要另外準備。」（`lib/notPractisedHere.ts`，由 `PAPER_STRUCTURE` 推算，14 科有句；commit `8d2d0cd`）。`CONTENT_PROVENANCE.md` §3.1 加新讀取者（測試要求）。本機正式版 390px：音樂頁句子照批准字眼、數學頁無句、關於頁新字眼及免責聲明正確。
   - 25a／26a／27a：改法草稿交創辦人（`pb_h6_*` 25 條、`physc_ra4_*` 20 條、`cb_e3_*` 8 條；cb_e3 另 2 條同一模板、浮點比較未捉到），未改題庫，未放入推送內容。
   - 檢查：npm test 1309/1309、qa 通過、tsc 0、lint 0 error、production build 通過。
+- 2026-10-04 創辦人已推送並合併 PR #78、#79（main `d744840`，包括 17A、17B、17C、19a、20a，至 `d1edcb8`）；Vercel 正式部署 READY。按 17B-2a 執行 `sync-questions --push`：只有中國歷史有落差（版本 3913c873ced256ac → 0bf4bd4a84037fa1），1,087 條同步；`--check` 25 科全部一致。正式網站核對：`/prediction-method`「已知問題：選項長短」列出中國歷史等科；`/progress`、`/breathe` 轉到 200；中國歷史練習正常出第 1／10 題，console 無錯誤（測試瀏覽器資料已清）。21、22 未在 main，待推送。
