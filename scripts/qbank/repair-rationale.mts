@@ -10,7 +10,7 @@
 //
 //   · Only questions that are currently withdrawn can be repaired.
 //   · correctIndex and the number of options must not change; option text may only
-//     change by the formatting fix the batch declares ("x^{1}" → "x").
+//     change by the formatting fixes in `tidy` ("x^{1}" → "x", ")^{1}" → ")").
 //   · Every option gets exactly one note, keyed by its stored index (optionId).
 //   · No positional wording anywhere (same patterns as check-posref.mjs).
 //   · `$` must balance in every text field.
@@ -36,7 +36,8 @@ if (!args.includes('--batch') || !batchName) {
 // Same patterns as scripts/qbank/check-posref.mjs.
 export const POS_ZH = /第[一二三四]項(?!因素|變[項數]|憑證|獨立)/
 export const POS_EN = /\b[Tt]he (?:first|second|third|fourth) (?:option|distractor)s?\b|\boptions? [ABCD]\b/
-const tidy = (s: string) => s.replace(/x\^\{1\}(?!\d)/g, 'x')
+// Formatting fixes a batch may make: "x^{1}" → "x" (M1-01), ")^{1}" → ")" (M1-02).
+const tidy = (s: string) => s.replace(/x\^\{1\}(?!\d)/g, 'x').replace(/\)\^\{1\}(?!\d)/g, ')')
 const dollarsBalanced = (s: string) => (s.replace(/\\\$/g, '').match(/\$/g)?.length ?? 0) % 2 === 0
 
 interface Note { optionId: number; zh: string; en: string; kind?: string }
@@ -94,4 +95,5 @@ for (const r of batch.repairs) {
 }
 writeFileSync(logPath, JSON.stringify(log, null, 2) + '\n')
 console.log(`✓ ${batch.batch}: ${batch.repairs.length} questions rewritten and automatically checked.`)
-console.log('  Still withdrawn. Next: content review by a person (docs/rationale-repairs/), then withdraw.mts --undo.')
+console.log('  Still withdrawn. Next: a computed batch → restore-computed.mts --batch <name> (founders 31-1c);')
+console.log('  a hand-written batch → content review by a person (docs/rationale-repairs/), then withdraw.mts --undo.')

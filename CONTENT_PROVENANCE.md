@@ -54,6 +54,7 @@
 | `lib/levelDrift.ts` | `data/dse-level-drift.json` | `MasteryEstimate`（`/predictor`） |
 | `lib/electives.ts` | `data/dse-paper-formats.ts` | 選修規則 |
 | `app/subjects/[subject]/SubjectDetailView.tsx` | `data/dse-paper-formats.ts` | 科目頁「考卷結構」 |
+| `lib/notPractisedHere.ts` | `data/dse-paper-formats.ts` | 科目頁「本站練唔到」一句（2026-10-04，創辦人回覆 22a）：只讀已有的卷別、題型及比重，不新增考評局資料 |
 | `scripts/qbank/dse-conformance.mts` | `data/dse-paper-formats.ts` | 題庫檢查腳本（不上線） |
 | `scripts/qbank/review-scope-difficulty.mts` | `data/dse-paper-formats.ts` | 題庫檢查腳本（不上線） |
 

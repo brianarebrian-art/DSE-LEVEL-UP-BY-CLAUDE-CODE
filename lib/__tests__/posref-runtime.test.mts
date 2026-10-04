@@ -49,7 +49,7 @@ const textsOf = (q: Q) => [q.explanation, q.explanationEn, q.mcHack, q.mcHackEn,
 const CEILING: Record<string, number> = {
   'scripts/qbank/posref-bank-baseline.json': 277,
   'scripts/qbank/posref-ordinal-baseline.json': 416,
-  'scripts/qbank/posref-runtime-baseline.json': 838,
+  'scripts/qbank/posref-runtime-baseline.json': 800, // 838 → 800: 38 M1-02 explanations rewritten (founders' reply 31-1c, 2026-10-04)
 }
 
 test('the ordinal and letter patterns catch what they are meant to', () => {

@@ -9,6 +9,11 @@
 //     re-promoted over a repaired question fails here);
 //   · the maths of each M1-01 question is recomputed here, separately from the script
 //     that generated it, and every note must sit on the option it describes.
+//
+// Founders' reply 31-1c (2026-10-04): a COMPUTED batch (batch file `computed: true`,
+// every template recomputed independently in this file) may go back into practice
+// without a person's review, recorded as `restoreBasis: "machine-gate"`. Such a record
+// carries no reviewer. Hand-written repairs still need the full review above.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync, readdirSync } from 'node:fs'
@@ -32,7 +37,7 @@ interface Review {
   items: Record<(typeof ITEMS)[number], 'pass' | 'fail'>
   notes: string
 }
-interface Rec { subject: string; batch: string | null; stage: Stage; updated: string; contentReview: null | Review }
+interface Rec { subject: string; batch: string | null; stage: Stage; updated: string; contentReview: null | Review; restoreBasis?: string }
 const log = JSON.parse(read('data/questions/rationale-repairs.json')) as Record<string, Rec>
 const withdrawn = JSON.parse(read('data/questions/withdrawn.json')) as Record<string, Record<string, unknown>>
 
@@ -40,7 +45,7 @@ interface Note { optionId: number; zh: string; en: string; kind: string }
 interface Repair { id: string; template: string; params: Record<string, number>; options: string[]; explanation: string; explanationEn: string; optionNotes: Note[] }
 const batches = readdirSync(join(ROOT, 'data/questions/rationale-repairs'))
   .filter((f) => f.endsWith('.json'))
-  .map((f) => JSON.parse(read(`data/questions/rationale-repairs/${f}`)) as { batch: string; subject: string; repairs: Repair[] })
+  .map((f) => JSON.parse(read(`data/questions/rationale-repairs/${f}`)) as { batch: string; subject: string; computed?: boolean; repairs: Repair[] })
 
 test('the repair log covers the positional withdrawals of 2026-09-29, one record per question', () => {
   // First decision: 176. Fourth decision: 135 machine-generated plus the hand-written
@@ -53,9 +58,17 @@ test('the repair log covers the positional withdrawals of 2026-09-29, one record
 })
 
 /** Every rule a repair record must satisfy. Returns the problems found (empty = fine). */
-function gateProblems(id: string, r: Rec, isWithdrawn: boolean): string[] {
+function gateProblems(id: string, r: Rec, isWithdrawn: boolean, computedHere: Set<string> = recomputedHere()): string[] {
   const out: string[] = []
   const bad = (m: string) => out.push(`${id}: ${m}`)
+  const machine = r.restoreBasis === 'machine-gate'
+  if (r.restoreBasis !== undefined && !machine) bad(`unknown restoreBasis ${r.restoreBasis}`)
+  if (machine) {
+    // 31-1c: only a computed batch, only as the final stage, never with a reviewer.
+    if (r.stage !== 'restored') bad('restoreBasis is recorded only when the question is restored')
+    if (r.contentReview !== null) bad('a machine-gate restore carries no review')
+    if (!computedHere.has(r.batch ?? '')) bad(`machine-gate restore needs a computed batch recomputed in this test, not ${r.batch}`)
+  }
   if (r.stage === 'restored' && isWithdrawn) bad('marked restored but still withdrawn')
   if (r.stage !== 'restored' && !isWithdrawn) bad(`back in the bank but its stage is ${r.stage}`)
   const cr = r.contentReview
@@ -70,7 +83,7 @@ function gateProblems(id: string, r: Rec, isWithdrawn: boolean): string[] {
   }
   const at = ORDER.indexOf(r.stage)
   if (at >= ORDER.indexOf('content-reviewed')) {
-    if (cr?.decision !== 'pass') bad(`${r.stage} needs a passed review`)
+    if (!machine && cr?.decision !== 'pass') bad(`${r.stage} needs a passed review`)
   } else if (at < ORDER.indexOf('automated-checked')) {
     // §16.C: no review is recorded for something that has not been rewritten yet.
     if (cr !== null) bad('review recorded before the rewrite')
@@ -100,6 +113,15 @@ test('restore gate rejects the shortcuts it exists to stop', () => {
   assert.ok(gateProblems('x', rec('withdrawn', review()), true).some((p) => p.includes('before the rewrite')))
   // a failed review without a reason
   assert.ok(gateProblems('x', rec('automated-checked', review({ decision: 'fail', items: { ...allPass, language: 'fail' } })), true).some((p) => p.includes('say why')))
+  // 31-1c machine-gate restore: refused for a batch not recomputed here, with a review
+  // attached, or before the restore; accepted for a computed batch with no reviewer.
+  const machine = (stage: Stage, batch: string, cr: Review | null = null): Rec => ({ ...rec(stage, cr), batch, restoreBasis: 'machine-gate' })
+  const computed = new Set(['M1-01'])
+  assert.ok(gateProblems('x', machine('restored', 'BAFS-01'), false, computed).some((p) => p.includes('computed batch')))
+  assert.ok(gateProblems('x', machine('restored', 'M1-01', review()), false, computed).some((p) => p.includes('carries no review')))
+  assert.ok(gateProblems('x', machine('automated-checked', 'M1-01'), true, computed).some((p) => p.includes('only when the question is restored')))
+  assert.ok(gateProblems('x', { ...rec('restored', null), restoreBasis: 'teacher-said-ok' }, false, computed).some((p) => p.includes('unknown restoreBasis')))
+  assert.deepEqual(gateProblems('x', machine('restored', 'M1-01'), false, computed), [])
   // the legitimate paths pass
   assert.deepEqual(gateProblems('x', rec('automated-checked', null), true), [])
   assert.deepEqual(gateProblems('x', rec('automated-checked', review({ decision: 'fail', items: { ...allPass, concept: 'fail' }, notes: 'wrong rule named' })), true), [])
@@ -161,6 +183,117 @@ test('M1-01: parameters read from the stem, every option recomputed, every note 
     assert.equal(new Set(q.options).size, q.options.length, `${r.id}: options distinct`)
     assert.doesNotMatch(q.options.join(' '), /x\^\{1\}(?!\d)/, `${r.id}: x^{1} left in an option`)
   }
+})
+
+// ── M1-02 (2026-10-04): recompute, independently of scripts/qbank/repairs/m1-02.mts ──
+// Each entry reads the parameters from the stem with its own pattern and rebuilds the
+// four options from the arithmetic. Written separately on purpose: if the generator
+// and this file shared code, a shared mistake would pass.
+const sup = (k: number) => (k === 1 ? '' : `^{${k}}`)
+const dec = (v: number) => String(Math.round(v * 10000) / 10000)
+const M1_02: Record<string, { parse: (stem: string) => Record<string, number> | null; expect: (p: Record<string, number>) => Record<string, string> }> = {
+  'chain-(ax+b)^n': {
+    parse: (s) => { const m = s.match(/\(\((\d+)x \+ (\d+)\)\^\{(\d+)\}/); return m ? { a: +m[1], b: +m[2], n: +m[3] } : null },
+    // d/dx (ax+b)^n = na(ax+b)^(n-1)
+    expect: ({ a, b, n }) => ({
+      correct: `$${n * a}(${a}x + ${b})${sup(n - 1)}$`,
+      missingInner: `$${n}(${a}x + ${b})${sup(n - 1)}$`,
+      exponentKept: `$${n * a}(${a}x + ${b})${sup(n)}$`,
+      bracketReplaced: `$${n}(${a})${sup(n - 1)}$`,
+    }),
+  },
+  'ln(ax^2+c)': {
+    parse: (s) => { const m = s.match(/\\ln\((\d+)x\^\{2\} \+ (\d+)\)/); return m ? { a: +m[1], c: +m[2] } : null },
+    // d/dx ln(ax^2 + c) = 2ax / (ax^2 + c)
+    expect: ({ a, c }) => ({
+      correct: `$\\dfrac{${a + a}x}{${a}x^{2} + ${c}}$`,
+      missingInner: `$\\dfrac{1}{${a}x^{2} + ${c}}$`,
+      droppedConstant: `$\\dfrac{${a + a}x}{${a}x^{2}}$`,
+      logFactor: `$${a + a}x \\ln(${a}x^{2} + ${c})$`,
+    }),
+  },
+  'implicit-px^2+qy^2': {
+    parse: (s) => { const m = s.match(/(\d+)x\^\{2\} \+ (\d+)y\^\{2\}/); return m ? { p: +m[1], q: +m[2] } : null },
+    // 2px + 2qy y' = 0  =>  y' = -px/(qy)
+    expect: ({ p, q }) => ({
+      correct: `$-\\dfrac{${p}x}{${q}y}$`,
+      missingNeg: `$\\dfrac{${p}x}{${q}y}$`,
+      numeratorUnreduced: `$-\\dfrac{${p * 2}x}{${q}y}$`,
+      denominatorUnreduced: `$-\\dfrac{${p}x}{${q * 2}y}$`,
+    }),
+  },
+  'second-derivative-cubic': {
+    parse: (s) => { const m = s.match(/f\(x\) = (\d+)x\^\{3\} \+ (\d+)x\^\{2\} \+ (\d+)x\$/); return m ? { a: +m[1], b: +m[2], c: +m[3] } : null },
+    // f = ax^3 + bx^2 + cx: f' = 3ax^2 + 2bx + c, f'' = 6ax + 2b, f''' = 6a
+    expect: ({ a, b, c }) => ({
+      correct: `$${a * 6}x + ${b * 2}$`,
+      firstOnly: `$${a * 3}x^{2} + ${b * 2}x + ${c}$`,
+      keptX: `$${a * 6}x + ${b * 2}x$`,
+      third: `$${a * 6}$`,
+    }),
+  },
+  'increasing-ax^2-kx': {
+    parse: (s) => { const m = s.match(/f\(x\) = (\d*)x\^\{2\} -(\d+) x\$。求 \$f\(x\)\$ 為【遞增】/); return m ? { a: m[1] ? +m[1] : 1, k: +m[2] } : null },
+    // f' = 2ax - k > 0  <=>  x > k / 2a
+    expect: ({ a, k }) => ({ correct: `$x > ${k / (2 * a)}$`, reversed: `$x < ${k / (2 * a)}$`, forgotCoefficient: `$x > ${k}$`, positive: '$x > 0$' }),
+  },
+  'second-derivative-test-quadratic': {
+    parse: (s) => { const m = s.match(/f\(x\) = (\d*)x\^\{2\} -(\d+) x \+ (\d+)\$。試用二階導數判別法，判斷 \$x = (\d+)\$/); return m ? { a: m[1] ? +m[1] : 1, k: +m[2], c: +m[3], x0: +m[4] } : null },
+    // f'' = 2a > 0 everywhere, so the stationary point is a minimum
+    expect: ({ a, x0 }) => ({
+      correct: `極小值點，因為 $f''(${x0}) = ${2 * a} > 0$`,
+      reversed: `極大值點，因為 $f''(${x0}) = ${2 * a} > 0$`,
+      inflection: `拐點，因為 $f''(${x0}) = 0$`,
+      firstDerivative: `極大值點，因為 $f'(${x0}) = 0$`,
+    }),
+  },
+  'z-score-normal': {
+    parse: (s) => { const m = s.match(/平均分 \$(\d+)\$，標準差 \$(\d+)\$。小明考獲 \$(\d+)\$ 分/); return m ? { mu: +m[1], sigma: +m[2], x: +m[3] } : null },
+    expect: ({ mu, sigma, x }) => ({
+      correct: `$${dec((x - mu) / sigma)}$ 個標準差`,
+      differenceOnly: `$${dec(x - mu)}$ 個標準差`,
+      scoreOverSigma: `$${dec(x / sigma)}$ 個標準差`,
+      meanOverSigma: `$${dec(mu / sigma)}$ 個標準差`,
+    }),
+  },
+}
+
+/** Batches that may use the machine gate: marked computed, every template recomputed in this file. */
+function recomputedHere(): Set<string> {
+  const known = new Set([...Object.keys(expectM1), ...Object.keys(M1_02)])
+  return new Set(batches.filter((b) => b.computed === true && b.repairs.every((r) => known.has(r.template))).map((b) => b.batch))
+}
+
+test('M1-02: parameters read from the stem, every option recomputed, every note on its own option', () => {
+  const b = batches.find((x) => x.batch === 'M1-02')
+  assert.ok(b, 'batch M1-02 exists')
+  assert.equal(b!.computed, true)
+  assert.equal(b!.repairs.length, 38)
+  const bank = new Map(I.getSubjectQuestionsRaw('m1').map((q) => [q.id, q as unknown as { content: string; options: string[]; correctIndex: number }]))
+  for (const r of b!.repairs) {
+    const q = bank.get(r.id)!
+    const t = M1_02[r.template]
+    assert.ok(t, `${r.id}: template ${r.template} has no independent recomputation`)
+    const params = t.parse(q.content)
+    assert.ok(params, `${r.id}: stem not recognised by ${r.template}`)
+    assert.deepEqual(r.params, params, `${r.id}: params in the batch differ from the stem`)
+    const exp = t.expect(params!)
+    assert.equal(r.optionNotes.length, q.options.length)
+    for (const n of r.optionNotes) {
+      assert.equal(q.options[n.optionId], exp[n.kind], `${r.id}: note "${n.kind}" is on option ${n.optionId} = ${q.options[n.optionId]}`)
+    }
+    const correct = r.optionNotes.filter((n) => n.kind === 'correct')
+    assert.equal(correct.length, 1)
+    assert.equal(correct[0].optionId, q.correctIndex, `${r.id}: correctIndex`)
+    assert.equal(new Set(r.optionNotes.map((n) => n.kind)).size, 4, `${r.id}: four different kinds`)
+    assert.doesNotMatch(q.options.join(' '), /\^\{1\}(?!\d)/, `${r.id}: ^{1} left in an option`)
+  }
+})
+
+test('every machine-gate restore is from a computed batch recomputed in this file', () => {
+  const ok = recomputedHere()
+  assert.ok(ok.has('M1-01') && ok.has('M1-02'), 'M1-01 and M1-02 are computed and recomputed here')
+  for (const [id, r] of Object.entries(log)) if (r.restoreBasis === 'machine-gate') assert.ok(ok.has(r.batch ?? ''), `${id}: ${r.batch}`)
 })
 
 test('/transparency shows the repair progress from the log, not a hand-written number', () => {

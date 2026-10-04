@@ -260,15 +260,17 @@ for (const h of [5, 20, 45, 80, 125, 180, 245, 320, 500]) {
 }
 
 // H6 — efficiency η = (useful / total) × 100%
+// 2026-10-04（創辦人回覆 25a）：第三個誤答原為小數 0.4 —— 效率寫作 0.4 亦屬正確，等於兩個正確選項。
+// 改為 0.4%（漏乘 100 卻加上百分號），保留同一個錯誤概念而確實錯誤。
 for (const total of [200, 400, 500, 800, 1000]) {
   for (const pct of [25, 40, 60, 75, 80]) {
     const useful = (total * pct) / 100
     add(`pb_h6_${total}_${pct}`, T.energy, FW.energy, 'hard',
       [`一部機器輸入 $${total}$ J，有用輸出 $${useful}$ J，求其效率。`,
        `A machine takes in $${total}$ J and gives $${useful}$ J useful output. Find its efficiency.`],
-      [n(`$${pct}\\%$`), n(`$${100 - pct}\\%$`), n(`$${round(useful / total, 2)}$`), n(`$${round(total / useful, 2)}$`)],
-      [`效率 $= \\dfrac{\\text{有用輸出}}{\\text{總輸入}} \\times 100\\% = \\dfrac{${useful}}{${total}} \\times 100\\% = ${pct}\\%$。陷阱：$${100 - pct}\\%$ 是損耗百分比；$${round(useful / total, 2)}$ 漏了 $\\times 100\\%$。`,
-       `Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = ${pct}\\%$. Trap: $${100 - pct}\\%$ is the wasted fraction.`])
+      [n(`$${pct}\\%$`), n(`$${100 - pct}\\%$`), n(`$${round(useful / total, 2)}\\%$`), n(`$${round(total / useful, 2)}$`)],
+      [`效率 $= \\dfrac{\\text{有用輸出}}{\\text{總輸入}} \\times 100\\% = \\dfrac{${useful}}{${total}} \\times 100\\% = ${pct}\\%$。陷阱：$${100 - pct}\\%$ 是損耗百分比；$${round(useful / total, 2)}\\%$ 計出比值後漏了乘以 100，卻照樣加上百分號。`,
+       `Efficiency $= \\frac{\\text{useful}}{\\text{total}} \\times 100\\% = ${pct}\\%$. Traps: $${100 - pct}\\%$ is the wasted fraction; $${round(useful / total, 2)}\\%$ forgets to multiply by 100 but keeps the % sign.`])
   }
 }
 
@@ -670,6 +672,7 @@ for (const A0 of [800, 1000, 1200, 1600, 2000, 3200]) {
 }
 
 // RA4 — 核方程中的質量數與原子序守恆
+// 2026-10-04（創辦人回覆 26a）：解析原本用同一句概括三個誤答，與實際選項不符；改為逐項說明。
 ;([['α', 4, 2], ['β', 0, -1]] as [string, number, number][]).forEach(([mode, dA, dZ]) => {
   for (const [A, Z] of [[226, 88], [238, 92], [214, 82], [210, 84], [232, 90], [220, 86],
     [212, 83], [228, 88], [234, 90], [206, 81]] as [number, number][]) {
@@ -685,8 +688,8 @@ for (const A0 of [800, 1000, 1200, 1600, 2000, 3200]) {
        [`$${otherA}$、$${otherZ}$`, `$${otherA}$, $${otherZ}$`],
        [`$${A2}$、$${Z + dZ}$`, `$${A2}$, $${Z + dZ}$`],
        [`$${A}$、$${Z}$`, `$${A}$, $${Z}$`]],
-      [`核反應中質量數與原子序皆守恆。${mode === 'α' ? 'α 粒子即氦核，帶走 4 個質量數與 2 個原子序，故兩者分別減 4 與減 2' : 'β 粒子是電子，質量數不變；核內一個中子轉為質子並放出電子，故原子序【增加】1'}：質量數 $${A} \\to ${A2}$，原子序 $${Z} \\to ${Z2}$。陷阱：其餘三項分別把原子序的增減方向寫反、把質量數的增減方向寫反，或忘記改動質量數。`,
-       `Both mass number and atomic number are conserved in nuclear reactions. ${mode === 'α' ? 'An alpha particle is a helium nucleus carrying away 4 mass units and 2 protons, so both fall, by 4 and by 2 respectively' : 'A beta particle is an electron, so the mass number is unchanged; a neutron becomes a proton and emits the electron, so the atomic number INCREASES by 1'}: mass number $${A} \\to ${A2}$, atomic number $${Z} \\to ${Z2}$. Traps: the other options reverse the direction of the atomic-number change, reverse the mass-number change, or leave the mass number untouched.`])
+      [`核反應中質量數與原子序皆守恆。${mode === 'α' ? 'α 粒子即氦核，帶走 4 個質量數與 2 個原子序，故兩者分別減 4 與減 2' : 'β 粒子是電子，質量數不變；核內一個中子轉為質子並放出電子，故原子序【增加】1'}：質量數 $${A} \\to ${A2}$，原子序 $${Z} \\to ${Z2}$。陷阱：$${otherA}$、$${otherZ}$ 是放出 ${mode === 'α' ? 'β' : 'α'} 粒子的結果；$${A2}$、$${Z + dZ}$ 把原子序的增減方向弄反；$${A}$、$${Z}$ ${mode === 'α' ? '是完全沒有改動' : '是忘記改動原子序'}。`,
+       `Both mass number and atomic number are conserved in nuclear reactions. ${mode === 'α' ? 'An alpha particle is a helium nucleus carrying away 4 mass units and 2 protons, so both fall, by 4 and by 2 respectively' : 'A beta particle is an electron, so the mass number is unchanged; a neutron becomes a proton and emits the electron, so the atomic number INCREASES by 1'}: mass number $${A} \\to ${A2}$, atomic number $${Z} \\to ${Z2}$. Traps: $${otherA}$, $${otherZ}$ is the result of ${mode === 'α' ? 'beta' : 'alpha'} emission; $${A2}$, $${Z + dZ}$ reverses the change in atomic number; $${A}$, $${Z}$ ${mode === 'α' ? 'changes nothing' : 'leaves the atomic number unchanged'}.`])
   }
 })
 

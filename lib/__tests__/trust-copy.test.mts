@@ -49,6 +49,9 @@ const pages = ['app/trust/TrustClient.tsx', 'app/methodology/MethodologyClient.t
 test('no visible copy claims the questions were reviewed by a person', () => {
   const visible = strip(dict) + strip(home) + pages
   assert.doesNotMatch(visible, /已(經)?(由.{0,12})?(人手|真人|老師|教師|考生)(逐題|逐條)?覆核|逐題人手覆核過|reviewed by (a person|teachers|students|hand)/)
+  // Founders' reply 29a (audit #11, 2026-10-04): no "peer reviewed" wording either. There is no
+  // review record (deleted 2026-09-25 on Yuna's order), so the claim cannot be made.
+  assert.doesNotMatch(visible, /同儕覆核|同儕審|應屆生逐(條|題)覆核|peer[- ]review/i)
 })
 
 test('no visible copy says a person approves each question before it goes live', () => {
@@ -70,8 +73,15 @@ test('/transparency says the questions have not been reviewed by registered teac
 test('/about describes what the site really does', () => {
   const a = strip(readFileSync('app/about/AboutClient.tsx', 'utf8'))
   assert.doesNotMatch(a, /每一種思維陷阱|逆向清錯策略|學術精準度是生死線|every trap you fall for|Academic precision is the red line/)
-  assert.match(a, /系統會記住你在哪些課題答錯，建議你下一步先練哪個課題，並按時提你重溫答錯的題/)
-  assert.match(a, /答案與釋義上線前均須通過自動檢查；題目未經註冊教師審定。接獲錯誤報告會盡快修正，退回的題目會在透明度頁公開。/)
+  // Wording since founders' reply 21a ("21 ok", audit #10, 2026-10-04): same meaning, in Cantonese.
+  assert.match(a, /系統會記住你喺邊啲課題答錯，建議你下一步練邊個課題，仲會按時提你重溫答錯嘅題/)
+  assert.match(a, /答案同解析上線前都要通過自動檢查；題目未經註冊教師審定。收到錯誤報告會盡快修正，收起咗嘅題目會喺透明度頁公開。/)
+})
+
+// Founders' reply 21a (audit #10): the Chinese About copy drops the overstatements.
+test('/about Chinese copy drops the nobility, fast-food and "zero noise" lines', () => {
+  const a = strip(readFileSync('app/about/AboutClient.tsx', 'utf8'))
+  assert.doesNotMatch(a, /貴族|麥當勞|最極致|零雜訊|純粹降噪/)
 })
 
 // Founders' reply 8a (2026-10-04): the FAQ on /about drops "academic accuracy is our red line" too.

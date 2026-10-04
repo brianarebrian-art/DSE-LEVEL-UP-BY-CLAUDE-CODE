@@ -402,82 +402,92 @@
   "m1_rep_0001": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0002": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0003": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0004": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0005": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0006": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0007": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0008": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0009": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0010": {
     "subject": "m1",
     "batch": "M1-01",
-    "stage": "automated-checked",
-    "updated": "2026-09-29",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0011": {
     "subject": "m1",
@@ -497,307 +507,345 @@
   },
   "m1_rep_0013": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0014": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0015": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0016": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0017": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0018": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0019": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0020": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0021": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0022": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0023": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0024": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0025": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0026": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0027": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0028": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0029": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0030": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0031": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0032": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0033": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0034": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0035": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0036": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0037": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0038": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0039": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0040": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0041": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0042": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0043": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0044": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0045": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0046": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0047": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0048": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0049": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0050": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-02",
+    "stage": "restored",
+    "updated": "2026-10-04",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0057": {
     "subject": "m1",

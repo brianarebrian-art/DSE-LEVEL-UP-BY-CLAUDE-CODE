@@ -11,6 +11,7 @@ import ExternalLinkGate from '@/components/ExternalLinkGate'
 import SubjectProgressPanel, { evidenceLine, useSubjectTopicTally } from '@/components/SubjectProgressPanel'
 import { topicEvidence } from '@/lib/topicEvidence'
 import { isMCExamFormat, PAPER_STRUCTURE, QUESTION_KIND_LABELS } from '@/data/dse-paper-formats'
+import { notPractisedSentence } from '@/lib/notPractisedHere'
 
 export default function SubjectDetailView({
   meta,
@@ -75,6 +76,8 @@ export default function SubjectDetailView({
   // 呢張卡描述嘅係【撳落去會開始嗰一節練習】，所以兩個數都要跟 SESSION_SIZE。
   // 每題 1 分，所以滿分 = 一節題數。
   const examHasMC = isMCExamFormat(meta.id)
+  // Founders' reply 22a (audit #10): say which exam parts this site cannot practise.
+  const notPractised = notPractisedSentence(meta.id, en)
   const structure = PAPER_STRUCTURE[meta.id]
   // 2026-09-29：此卡開始的是選擇題練習，所以只計選擇題。原本用全科總數（連書寫題），
   // 令數學科頁寫 1,624 題而科目總覽寫 1,594 條 MC，兩頁數字對不上。
@@ -205,6 +208,9 @@ export default function SubjectDetailView({
             {name}
           </h1>
           <p className="text-ink-muted text-lg">{description}</p>
+          {notPractised && (
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">{notPractised}</p>
+          )}
         </div>
 
         <ElectiveSelector subject={meta.id} />

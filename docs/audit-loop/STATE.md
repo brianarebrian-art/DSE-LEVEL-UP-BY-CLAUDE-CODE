@@ -237,3 +237,27 @@
   - 23b：不用自訂網址。
   - 24a：`docs/spot-check-2026-10-04-physics-biology.md`。40 條答案全部正確（Claude 驗算，非人手）。物理效率題 `pb_h6_*` 25 條：錯誤選項是答案的小數寫法（40% 對 0.4），兩個選項都對；α／β 衰變 `physc_ra4_*` 20 條解析對錯誤選項的描述不符。化學 `cb_e3_*` 6 條同類（質量百分比），屬邊緣。已問創辦人。
   - 檢查：npm test 1304/1304、qa 通過、tsc 0、lint 0 error、production build 通過。
+- 2026-10-04 創辦人回覆「17B ok 21 ok 22 ok 25a 26a 27a」：
+  - 17B：試點批准，可推送；上線後按 17B-2a 同步雲端。
+  - 21：關於頁中文照草稿改為廣東話（commit `0f7bfcf`）；英文、標題及 §13 免責聲明不變；`trust-copy.test.mts` 更新並鎖住刪去的字眼。
+  - 22：科目頁標題下「本站練唔到：…。呢啲部分要另外準備。」（`lib/notPractisedHere.ts`，由 `PAPER_STRUCTURE` 推算，14 科有句；commit `8d2d0cd`）。`CONTENT_PROVENANCE.md` §3.1 加新讀取者（測試要求）。本機正式版 390px：音樂頁句子照批准字眼、數學頁無句、關於頁新字眼及免責聲明正確。
+  - 25a／26a／27a：改法草稿交創辦人（`pb_h6_*` 25 條、`physc_ra4_*` 20 條、`cb_e3_*` 8 條；cb_e3 另 2 條同一模板、浮點比較未捉到），未改題庫，未放入推送內容。
+  - 檢查：npm test 1309/1309、qa 通過、tsc 0、lint 0 error、production build 通過。
+- 2026-10-04 創辦人已推送並合併 PR #78、#79（main `d744840`，包括 17A、17B、17C、19a、20a，至 `d1edcb8`）；Vercel 正式部署 READY。按 17B-2a 執行 `sync-questions --push`：只有中國歷史有落差（版本 3913c873ced256ac → 0bf4bd4a84037fa1），1,087 條同步；`--check` 25 科全部一致。正式網站核對：`/prediction-method`「已知問題：選項長短」列出中國歷史等科；`/progress`、`/breathe` 轉到 200；中國歷史練習正常出第 1／10 題，console 無錯誤（測試瀏覽器資料已清）。21、22 未在 main，待推送。
+- 2026-10-04 創辦人回覆「25 ok 26 ok 27 ok」：`pb_h6_*` 25 條、`cb_e3_*` 8 條第三個誤答由小數改為「0.4%」式（漏乘 100 卻加百分號），解析同步；`physc_ra4_*` 20 條解析逐項說明三個誤答。commit `919a7ec`。npm test 1309/1309、term-guard、qa、tsc、production build 通過。待推送；上線後同步物理及化學雲端題庫（同 17B-2a 做法）。
+- 審計 #11（2026-10-04，創辦人貼上）只讀核對：
+  - 不準確：信任中心題數已是 26,461（無 26,497）；關於頁無「等級預測」（只在程式註解）；手機頂欄（第三次同一錯誤）；做完練習兩條問題已上線（`session_feedback` 今日 6 條回應，`question_reports` 0 條）；結果頁已有同步提示（Q-T39）及 Instagram 連結；練習表現等級預設收起（Q-T04）。
+  - 資料庫（只讀 SQL）：`public` 10 張表全部開 RLS；anon／authenticated 只可讀 `questions`、`question_bank_versions`，其餘 8 張無任何權限；無 `practice_sessions` 表（審計 SQL 用的表不存在）。
+  - 瀏覽器檔案：`.next/static` 無 service role、Google secret、AUTH_SECRET 的值（只有 Better Auth 函式庫內的變數名稱）。
+  - Vercel 專案 ssoProtection `all_except_custom_domains`：預覽部署要 Vercel 登入。Google 只會把登入送回已登記的網址；Google Console 登記清單 Claude 看不到（⬜）。
+  - 準確：五頁「最後更新」日期過期（`lib/articleDates.ts`：關於 08-21、方法論 09-02、點計 09-09、信任 09-05、透明度 09-30），五頁今日均有事實更正；首頁四科捷徑頂部及底部各一（audit loop T09 刻意）；Threads 簡介仍寫 27,321、「60 秒逆向錯因診斷」、「等級預測」（創辦人自行更新）；597 條位置詞題「已改寫 10、重新上線 0」。
+  - 須提醒：審計稱創辦人說「26,497 條由 2026 應屆生逐條覆核」。網站無任何覆核紀錄（2026-09-25 按 Yuna 指示刪除，REVIEWED_COUNT=0），不可加「同儕覆核」字眼（憲章 §12.1 約束 1、trust-copy 測試）。已問創辦人。
+- 2026-10-04 創辦人回覆「28a 29a 30a 31a」：
+  - 28a：五頁 modified 改為 2026-10-04（`lib/articleDates.ts`）。29a：不加同儕覆核字眼，`trust-copy.test.mts` 拒絕「同儕覆核／應屆生逐條覆核／peer review」。30a：`docs/question-reports.md` §五；首次數字（只記 Notion）：登入用戶 7 日 8、30 日 48、今日 2；同步帳戶 214；報錯 0；完卷回應 6（had_error/yes 3、will_return/yes 3）。完卷有 3 次答「有題目出錯」但報錯掣 0 次，已告知創辦人。commit 見 log。
+  - 31a 未開始：與 2026-09-29 決定（`docs/DECISIONS-2026-09-29.md` 第七、八節）衝突 —— 恢復前須熟悉該科的真人逐題六項覆核；10 題一批；M1-01（10 題，已自動檢查）未覆核前 M1-02 不開始。loop 提出 31a 時漏看此規則，已向創辦人更正並再問。
+- 2026-10-04 創辦人回覆「31-1c 31-2b」：計算題的修復過自動檢查即恢復（未經人手覆核），文字題維持真人覆核；約 50 題一批，以整個模板為單位。
+  - 第一批 48 題：M1-01（10，2026-09-29 已自動檢查）＋ M1-02（`m1_rep_0013–0050`，7 個模板，38 題）。`scripts/qbank/repairs/m1-02.mts` 由題幹重算四個選項並逐一配對，152 個選項全部配對成功；`rationale-repairs.test.mts` 另以獨立程式重算（反向自測：調換一條解析即失敗）。
+  - 新工具 `scripts/qbank/restore-computed.mts`（拒絕非 computed 批次、不寫覆核人）；紀錄 `restoreBasis: "machine-gate"`；測試只准 computed 批次用此路徑。
+  - 練習中 26,461 → 26,509，收起 633 → 585；位置詞 runtime 祖父清單 838 → 800；llms.txt 更新。`/transparency` 顯示「其中 48 條未經人手覆核」及新規則。本機正式版實測：M1 微分法練習第 1 題即 `m1_rep_0041`，答錯後每個選項下顯示其解析、所揀選項標示正確；console 無錯誤；測試資料已清。
+  - 檢查：npm test 1311/1311、qa 通過、tsc 0、production build 通過。待推送；上線後同步 m1、physics、chemistry 雲端題庫。
+  - 舊解析問題（記錄）：M1-02 數個模板的舊解析不只用位置詞，對錯誤選項的描述亦不準（例如鏈式法則 $4(3)^{3}$、標準分數 $7.5$）。
