@@ -18,8 +18,10 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '因材施教',
     enTitle: 'Teach to the learner',
     quote: '夫子教人，各因其材',
-    zh: '我們拒絕麥當勞式、倒模般的公式教育。系統會記住你每一條答錯的題、每一種思維陷阱，按你真實的盲點砌出專屬的逆向清錯策略——你補的是你自己的洞，而不是別人的範本。',
-    en: 'We refuse one-size-fits-all, assembly-line teaching. The system remembers every question you miss and every trap you fall for, then builds a reverse error-clearing path around your real weaknesses — you patch your own gaps, not someone else’s template.',
+    // 2026-10-04（審計 #8，創辦人回覆 3a、草稿「3ok」）：原句「每一種思維陷阱……逆向清錯策略」超出現況
+    // （練習頁錯因自診已於 2026-10-02 刪除），改為照實描述。
+    zh: '我們拒絕麥當勞式、倒模般的公式教育。系統會記住你在哪些課題答錯，建議你下一步先練哪個課題，並按時提你重溫答錯的題——你補的是你自己的洞，而不是別人的範本。',
+    en: 'We refuse one-size-fits-all, assembly-line teaching. The system remembers which topics you get wrong, suggests which topic to practise next, and reminds you to revisit the questions you missed — you patch your own gaps, not someone else’s template.',
   },
   {
     icon: '🌏',
@@ -103,8 +105,8 @@ export default function AboutClient() {
           <div className="space-y-2.5 text-sm text-ink-soft">
             {[
               en
-                ? 'Academic precision is the red line: answers and explanations pass automated checks before going live, and reported errors are fixed as soon as we can.'
-                : '學術精準度是生死線：答案與釋義上線前均須通過自動檢查，接獲錯誤報告會盡快修正。',
+                ? 'Answers and explanations must pass automated checks before they go live; the questions have not been reviewed by registered teachers. We fix reported errors as soon as we can, and withdrawn questions are listed on the transparency page.'
+                : '答案與釋義上線前均須通過自動檢查；題目未經註冊教師審定。接獲錯誤報告會盡快修正，退回的題目會在透明度頁公開。',
               en
                 ? 'Original rewrites only — no reproduction of HKEAA past-paper content.'
                 : '一律獨立改寫——絕不複製香港考評局試題內容。',

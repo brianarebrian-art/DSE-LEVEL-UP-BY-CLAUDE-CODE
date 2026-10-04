@@ -62,3 +62,13 @@ test('/transparency says the questions have not been reviewed by registered teac
   assert.match(t, /'每一條題目都由 DSE 舊生 \+ AI 協作編寫，上線前要通過自動檢查。題目未經註冊教師審定。'/)
   assert.match(t, /The questions have not been reviewed by registered teachers\./)
 })
+
+// Audit #8 (2026-10-04, founders' reply 3a, draft approved "3ok"): /about no longer claims to
+// track "every thinking trap" or calls accuracy a "life-and-death line"; it says what the site does.
+test('/about describes what the site really does', () => {
+  const a = strip(readFileSync('app/about/AboutClient.tsx', 'utf8'))
+  assert.doesNotMatch(a, /每一種思維陷阱|逆向清錯策略|學術精準度是生死線|every trap you fall for|Academic precision is the red line/)
+  assert.match(a, /系統會記住你在哪些課題答錯，建議你下一步先練哪個課題，並按時提你重溫答錯的題/)
+  assert.match(a, /答案與釋義上線前均須通過自動檢查；題目未經註冊教師審定。接獲錯誤報告會盡快修正，退回的題目會在透明度頁公開。/)
+})
+
