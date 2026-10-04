@@ -27,7 +27,7 @@ test('the trust copy states curriculum and review status, and says first pass', 
   const hero = home.slice(home.indexOf('<li>{h.trust3}</li>'))
   // 2026-10-04 (founders' reply 10a): the line also says no registered teacher has reviewed the
   // questions, and how many are withdrawn.
-  assert.match(hero.slice(0, 1500), /`題目經自動檢查上線，未經註冊教師審定\$\{CONTENT_STATS\.withdrawn > 0 \? `；另有 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條因解析有錯暫時收起` : ''\}。`/)
+  assert.match(hero.slice(0, 1500), /`題目經自動檢查上線，未經註冊教師審定\$\{CONTENT_STATS\.withdrawn > 0 \? `；另有 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條發現有錯暫時收起` : ''\}。`/)
   assert.match(hero.slice(0, 1500), /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
 })
 
@@ -81,13 +81,10 @@ test('the FAQ no longer calls accuracy a red line', () => {
   assert.match(faq, /我哋會對照課綱核實，屬實即修正。'/)
 })
 
-// The home line says the withdrawn questions had wrong explanations. That is true while every
-// withdrawal has the positional-explanation code; a withdrawal for any other reason must update
-// the wording first (founders' reply 10a, 2026-10-04).
-test('every withdrawal is an explanation fault, as the home page says', async () => {
-  const { WITHDRAWN } = await import('../../data/questions/hidden-topics.ts')
-  const reasons = new Set(Object.values(WITHDRAWN).flatMap((byId) => Object.values(byId).map((e) => e.reason)))
-  assert.deepEqual([...reasons], ['POSITIONAL_RATIONALE_REFERENCE'])
+// 2026-10-04 (founders' reply 15a): withdrawals now have more than one reason, so the home line
+// names none. Every reason code must have a plain-words label on /transparency (withdrawal-log test).
+test('the home line does not name one withdrawal reason', () => {
+  assert.doesNotMatch(strip(home), /因解析有錯暫時收起|because their explanations were wrong/)
 })
 
 // Founders' reply 11a (2026-10-04): the home demo question says it is a demo.

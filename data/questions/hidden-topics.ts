@@ -30,6 +30,9 @@ export const WITHDRAW_CODES: Readonly<Record<string, string>> = {
   POSITIONAL_RATIONALE_REFERENCE:
     '解析以位置指稱選項（「第二項」「最後一項」「第三個選項」等）。選項每次呈現都會洗牌，這類字眼因此會指錯。' +
     '逐題改寫並經真人內容覆核後恢復（docs/rationale-repairs.md）。',
+  IMPOSSIBLE_PREMISE:
+    '題目設定違反科學事實，例如要求把不溶或幾乎不溶於水的物質「溶於水配成溶液」。' +
+    '2026-10-04 抽查發現（docs/spot-check-2026-10-04.md），創辦人回覆「15a」收起；須改用合理設定重寫。',
 }
 
 // Pending review (2026-09-30, UX loop 20; Yuna's hardening loop prompt §3): a question
@@ -53,6 +56,11 @@ export const HIDDEN_TOPICS: Readonly<Record<string, readonly string[]>> = {
 
 export function isHiddenTopic(subjectId: string, topicId: string): boolean {
   return HIDDEN_TOPICS[subjectId]?.includes(topicId) ?? false
+}
+
+/** The withdrawal reason (a WITHDRAW_CODES key or free text), or null if not withdrawn. */
+export function withdrawnReason(subjectId: string, id: string): string | null {
+  return WITHDRAWN[subjectId]?.[id]?.reason ?? null
 }
 
 export function isWithdrawn(subjectId: string, id: string): boolean {

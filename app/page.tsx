@@ -225,11 +225,12 @@ export default function HomePage() {
           {/* 覆核狀態（創辦人決定 6）：一句講實情，連去透明度頁的細節。
               2026-10-02 創辦人決定刪去「未經逐題人手覆核」半句，保留「經自動檢查」（憲章 §12.1 約束 1）。
               2026-10-04（審計 #9，創辦人回覆 10a）：加「未經註冊教師審定」及已收起題數。收起數由
-              summary.generated 計，0 條時不顯示；原因字眼「因解析有錯」由 trust-copy 測試核對。 */}
+              summary.generated 計，0 條時不顯示。同日收起 36 條設定有誤的化學題（回覆 15a），
+              原因不再只是解析，字眼改為「發現有錯」。 */}
           <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
             {locale === 'en'
-              ? `Questions go live after automated checks and have not been reviewed by registered teachers${CONTENT_STATS.withdrawn > 0 ? `; another ${CONTENT_STATS.withdrawn.toLocaleString()} have been withdrawn because their explanations were wrong` : ''}. `
-              : `題目經自動檢查上線，未經註冊教師審定${CONTENT_STATS.withdrawn > 0 ? `；另有 ${CONTENT_STATS.withdrawn.toLocaleString()} 條因解析有錯暫時收起` : ''}。`}
+              ? `Questions go live after automated checks and have not been reviewed by registered teachers${CONTENT_STATS.withdrawn > 0 ? `; another ${CONTENT_STATS.withdrawn.toLocaleString()} have been withdrawn because errors were found` : ''}. `
+              : `題目經自動檢查上線，未經註冊教師審定${CONTENT_STATS.withdrawn > 0 ? `；另有 ${CONTENT_STATS.withdrawn.toLocaleString()} 條發現有錯暫時收起` : ''}。`}
             <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
               {locale === 'en' ? 'How it works' : '點樣做'}
             </Link>

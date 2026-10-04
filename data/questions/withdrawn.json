@@ -869,6 +869,150 @@
     "chemf_re6_Zn_CuSO4": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "cb_m2_0_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_0_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_0_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_0_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_1_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_1_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_1_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_1_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_2_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_2_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_2_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_2_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_4_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_4_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_4_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_4_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_5_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_5_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_5_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_5_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_6_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_6_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_6_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_6_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_8_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_8_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_8_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_8_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_9_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_9_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_9_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_9_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_11_1_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_11_1_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_11_2_2": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "cb_m2_11_2_5": {
+      "date": "2026-10-04",
+      "reason": "IMPOSSIBLE_PREMISE"
     }
   },
   "economics": {
