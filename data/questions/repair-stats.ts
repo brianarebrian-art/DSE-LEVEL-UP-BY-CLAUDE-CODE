@@ -17,7 +17,7 @@ import { getSubject } from '../subjects'
 export const COHORTS = ['positional-first', 'positional-machine', 'positional-handwritten'] as const
 export type Cohort = (typeof COHORTS)[number]
 
-type Rec = { subject: string; stage: string; cohort?: string }
+type Rec = { subject: string; stage: string; cohort?: string; restoreBasis?: string }
 
 export interface RepairStats {
   /** All withdrawn questions, for any reason. */
@@ -28,6 +28,8 @@ export interface RepairStats {
   /** Cumulative: rewritten includes what was later reviewed and restored. */
   rewritten: number
   restored: number
+  /** Restored after the automated checks only, without a person's review (founders' reply 31-1c, 2026-10-04). */
+  restoredUnreviewed: number
   /** Hand-written candidates. `A` comes from the repair log, so it does not fall as questions are fixed. */
   candidates: { total: number; A: number; B: number; C: number }
 }
@@ -54,6 +56,7 @@ export function repairStats(): RepairStats {
     byCohort: Object.fromEntries(COHORTS.map((c) => [c, byCohort[c].size])) as Record<Cohort, number>,
     rewritten: stages.filter((s) => ['automated-checked', 'content-reviewed', 'restored'].includes(s)).length,
     restored: stages.filter((s) => s === 'restored').length,
+    restoredUnreviewed: Object.values(log).filter((r) => r.stage === 'restored' && r.restoreBasis === 'machine-gate').length,
     candidates: { total: A + hand.B + hand.C, A, B: hand.B, C: hand.C },
   }
 }

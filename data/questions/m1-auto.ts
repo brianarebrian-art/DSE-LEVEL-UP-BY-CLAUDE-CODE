@@ -629,7 +629,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left((3x + 2)^{4}\\right)$。",
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{4}$ 的導數為 $4u^{3}$，內層 $3x + 2$ 的導數為 $3$，兩者相乘得 $4 \\times 3 = 12$，故答案為 $12(3x + 2)^{3}$。第一個干擾項【漏了內層導數】$3$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $3x$。",
+    "explanation": "鏈式法則：把括號 $u = 3x + 2$ 當作一個整體。外層 $u^{4}$ 的導數是 $4u^{3}$，內層 $3x + 2$ 的導數是 $3$，兩者相乘，得 $4 \\times 3(3x + 2)^{3} = 12(3x + 2)^{3}$。",
     "options": [
       "$12(3x + 2)^{3}$",
       "$4(3x + 2)^{3}$",
@@ -645,8 +645,30 @@ export const m1AutoQuestions: Question[] = [
       "$12(3x + 2)^{4}$",
       "$4(3)^{3}$"
     ],
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{4}$ gives $4u^{3}$; the inside $3x + 2$ gives $3$; multiplying, $4 \\times 3 = 12$, so the answer is $12(3x + 2)^{3}$. The first distractor drops the inner derivative $3$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $3x$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Chain rule: treat the bracket $u = 3x + 2$ as one object. The outer $u^{4}$ differentiates to $4u^{3}$ and the inner $3x + 2$ to $3$; multiplying gives $4 \\times 3(3x + 2)^{3} = 12(3x + 2)^{3}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。外層導數 $4(3x + 2)^{3}$ 乘以內層導數 $3$。",
+        "en": "Correct. The outer derivative $4(3x + 2)^{3}$ times the inner derivative $3$."
+      },
+      {
+        "optionId": 1,
+        "zh": "只求了外層的導數，漏了乘以內層 $3x + 2$ 的導數 $3$。答案的形式看似正確，所以這個錯誤特別難自己察覺。",
+        "en": "Only the outer function is differentiated; the inner derivative $3$ of $3x + 2$ is missing. The form looks right, which makes this slip hard to spot."
+      },
+      {
+        "optionId": 2,
+        "zh": "係數 $12$ 正確，但指數沒有減一：$u^{4}$ 求導後應為 $4u^{3}$。",
+        "en": "The coefficient $12$ is right, but the power was not reduced: $u^{4}$ differentiates to $4u^{3}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "把括號內的 $3x + 2$ 換成了它的導數 $3$。外層求導時括號內的式子應原封不動，內層導數只作為乘數。",
+        "en": "The bracket $3x + 2$ was replaced by its derivative $3$. Differentiating the outer function leaves the bracket unchanged; the inner derivative is only a multiplier."
+      }
+    ]
   },
   {
     "id": "m1_rep_0014",
@@ -661,7 +683,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left((2x + 5)^{3}\\right)$。",
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{3}$ 的導數為 $3u^{2}$，內層 $2x + 5$ 的導數為 $2$，兩者相乘得 $3 \\times 2 = 6$，故答案為 $6(2x + 5)^{2}$。第一個干擾項【漏了內層導數】$2$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $2x$。",
+    "explanation": "鏈式法則：把括號 $u = 2x + 5$ 當作一個整體。外層 $u^{3}$ 的導數是 $3u^{2}$，內層 $2x + 5$ 的導數是 $2$，兩者相乘，得 $3 \\times 2(2x + 5)^{2} = 6(2x + 5)^{2}$。",
     "options": [
       "$3(2)^{2}$",
       "$6(2x + 5)^{2}$",
@@ -677,8 +699,30 @@ export const m1AutoQuestions: Question[] = [
       "$3(2x + 5)^{2}$",
       "$6(2x + 5)^{3}$"
     ],
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{3}$ gives $3u^{2}$; the inside $2x + 5$ gives $2$; multiplying, $3 \\times 2 = 6$, so the answer is $6(2x + 5)^{2}$. The first distractor drops the inner derivative $2$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $2x$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Chain rule: treat the bracket $u = 2x + 5$ as one object. The outer $u^{3}$ differentiates to $3u^{2}$ and the inner $2x + 5$ to $2$; multiplying gives $3 \\times 2(2x + 5)^{2} = 6(2x + 5)^{2}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把括號內的 $2x + 5$ 換成了它的導數 $2$。外層求導時括號內的式子應原封不動，內層導數只作為乘數。",
+        "en": "The bracket $2x + 5$ was replaced by its derivative $2$. Differentiating the outer function leaves the bracket unchanged; the inner derivative is only a multiplier."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。外層導數 $3(2x + 5)^{2}$ 乘以內層導數 $2$。",
+        "en": "Correct. The outer derivative $3(2x + 5)^{2}$ times the inner derivative $2$."
+      },
+      {
+        "optionId": 2,
+        "zh": "只求了外層的導數，漏了乘以內層 $2x + 5$ 的導數 $2$。答案的形式看似正確，所以這個錯誤特別難自己察覺。",
+        "en": "Only the outer function is differentiated; the inner derivative $2$ of $2x + 5$ is missing. The form looks right, which makes this slip hard to spot."
+      },
+      {
+        "optionId": 3,
+        "zh": "係數 $6$ 正確，但指數沒有減一：$u^{3}$ 求導後應為 $3u^{2}$。",
+        "en": "The coefficient $6$ is right, but the power was not reduced: $u^{3}$ differentiates to $3u^{2}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0015",
@@ -693,24 +737,46 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left((5x + 1)^{2}\\right)$。",
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{2}$ 的導數為 $2u^{1}$，內層 $5x + 1$ 的導數為 $5$，兩者相乘得 $2 \\times 5 = 10$，故答案為 $10(5x + 1)^{1}$。第一個干擾項【漏了內層導數】$5$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $5x$。",
+    "explanation": "鏈式法則：把括號 $u = 5x + 1$ 當作一個整體。外層 $u^{2}$ 的導數是 $2u$，內層 $5x + 1$ 的導數是 $5$，兩者相乘，得 $2 \\times 5(5x + 1) = 10(5x + 1)$。",
     "options": [
       "$10(5x + 1)^{2}$",
-      "$2(5)^{1}$",
-      "$10(5x + 1)^{1}$",
-      "$2(5x + 1)^{1}$"
+      "$2(5)$",
+      "$10(5x + 1)$",
+      "$2(5x + 1)$"
     ],
     "correctIndex": 2,
     "marks": 1,
     "contentEn": "Find $\\dfrac{d}{dx}\\left((5x + 1)^{2}\\right)$.",
     "optionsEn": [
       "$10(5x + 1)^{2}$",
-      "$2(5)^{1}$",
-      "$10(5x + 1)^{1}$",
-      "$2(5x + 1)^{1}$"
+      "$2(5)$",
+      "$10(5x + 1)$",
+      "$2(5x + 1)$"
     ],
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{2}$ gives $2u^{1}$; the inside $5x + 1$ gives $5$; multiplying, $2 \\times 5 = 10$, so the answer is $10(5x + 1)^{1}$. The first distractor drops the inner derivative $5$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $5x$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Chain rule: treat the bracket $u = 5x + 1$ as one object. The outer $u^{2}$ differentiates to $2u$ and the inner $5x + 1$ to $5$; multiplying gives $2 \\times 5(5x + 1) = 10(5x + 1)$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "係數 $10$ 正確，但指數沒有減一：$u^{2}$ 求導後應為 $2u$。",
+        "en": "The coefficient $10$ is right, but the power was not reduced: $u^{2}$ differentiates to $2u$."
+      },
+      {
+        "optionId": 1,
+        "zh": "把括號內的 $5x + 1$ 換成了它的導數 $5$。外層求導時括號內的式子應原封不動，內層導數只作為乘數。",
+        "en": "The bracket $5x + 1$ was replaced by its derivative $5$. Differentiating the outer function leaves the bracket unchanged; the inner derivative is only a multiplier."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。外層導數 $2(5x + 1)$ 乘以內層導數 $5$。",
+        "en": "Correct. The outer derivative $2(5x + 1)$ times the inner derivative $5$."
+      },
+      {
+        "optionId": 3,
+        "zh": "只求了外層的導數，漏了乘以內層 $5x + 1$ 的導數 $5$。答案的形式看似正確，所以這個錯誤特別難自己察覺。",
+        "en": "Only the outer function is differentiated; the inner derivative $5$ of $5x + 1$ is missing. The form looks right, which makes this slip hard to spot."
+      }
+    ]
   },
   {
     "id": "m1_rep_0016",
@@ -725,7 +791,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left((4x + 3)^{5}\\right)$。",
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{5}$ 的導數為 $5u^{4}$，內層 $4x + 3$ 的導數為 $4$，兩者相乘得 $5 \\times 4 = 20$，故答案為 $20(4x + 3)^{4}$。第一個干擾項【漏了內層導數】$4$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $4x$。",
+    "explanation": "鏈式法則：把括號 $u = 4x + 3$ 當作一個整體。外層 $u^{5}$ 的導數是 $5u^{4}$，內層 $4x + 3$ 的導數是 $4$，兩者相乘，得 $5 \\times 4(4x + 3)^{4} = 20(4x + 3)^{4}$。",
     "options": [
       "$5(4x + 3)^{4}$",
       "$20(4x + 3)^{5}$",
@@ -741,8 +807,30 @@ export const m1AutoQuestions: Question[] = [
       "$5(4)^{4}$",
       "$20(4x + 3)^{4}$"
     ],
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{5}$ gives $5u^{4}$; the inside $4x + 3$ gives $4$; multiplying, $5 \\times 4 = 20$, so the answer is $20(4x + 3)^{4}$. The first distractor drops the inner derivative $4$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $4x$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Chain rule: treat the bracket $u = 4x + 3$ as one object. The outer $u^{5}$ differentiates to $5u^{4}$ and the inner $4x + 3$ to $4$; multiplying gives $5 \\times 4(4x + 3)^{4} = 20(4x + 3)^{4}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "只求了外層的導數，漏了乘以內層 $4x + 3$ 的導數 $4$。答案的形式看似正確，所以這個錯誤特別難自己察覺。",
+        "en": "Only the outer function is differentiated; the inner derivative $4$ of $4x + 3$ is missing. The form looks right, which makes this slip hard to spot."
+      },
+      {
+        "optionId": 1,
+        "zh": "係數 $20$ 正確，但指數沒有減一：$u^{5}$ 求導後應為 $5u^{4}$。",
+        "en": "The coefficient $20$ is right, but the power was not reduced: $u^{5}$ differentiates to $5u^{4}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "把括號內的 $4x + 3$ 換成了它的導數 $4$。外層求導時括號內的式子應原封不動，內層導數只作為乘數。",
+        "en": "The bracket $4x + 3$ was replaced by its derivative $4$. Differentiating the outer function leaves the bracket unchanged; the inner derivative is only a multiplier."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。外層導數 $5(4x + 3)^{4}$ 乘以內層導數 $4$。",
+        "en": "Correct. The outer derivative $5(4x + 3)^{4}$ times the inner derivative $4$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0017",
@@ -757,7 +845,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left((2x + 7)^{3}\\right)$。",
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{3}$ 的導數為 $3u^{2}$，內層 $2x + 7$ 的導數為 $2$，兩者相乘得 $3 \\times 2 = 6$，故答案為 $6(2x + 7)^{2}$。第一個干擾項【漏了內層導數】$2$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $2x$。",
+    "explanation": "鏈式法則：把括號 $u = 2x + 7$ 當作一個整體。外層 $u^{3}$ 的導數是 $3u^{2}$，內層 $2x + 7$ 的導數是 $2$，兩者相乘，得 $3 \\times 2(2x + 7)^{2} = 6(2x + 7)^{2}$。",
     "options": [
       "$6(2x + 7)^{2}$",
       "$3(2x + 7)^{2}$",
@@ -773,8 +861,30 @@ export const m1AutoQuestions: Question[] = [
       "$6(2x + 7)^{3}$",
       "$3(2)^{2}$"
     ],
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{3}$ gives $3u^{2}$; the inside $2x + 7$ gives $2$; multiplying, $3 \\times 2 = 6$, so the answer is $6(2x + 7)^{2}$. The first distractor drops the inner derivative $2$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $2x$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Chain rule: treat the bracket $u = 2x + 7$ as one object. The outer $u^{3}$ differentiates to $3u^{2}$ and the inner $2x + 7$ to $2$; multiplying gives $3 \\times 2(2x + 7)^{2} = 6(2x + 7)^{2}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。外層導數 $3(2x + 7)^{2}$ 乘以內層導數 $2$。",
+        "en": "Correct. The outer derivative $3(2x + 7)^{2}$ times the inner derivative $2$."
+      },
+      {
+        "optionId": 1,
+        "zh": "只求了外層的導數，漏了乘以內層 $2x + 7$ 的導數 $2$。答案的形式看似正確，所以這個錯誤特別難自己察覺。",
+        "en": "Only the outer function is differentiated; the inner derivative $2$ of $2x + 7$ is missing. The form looks right, which makes this slip hard to spot."
+      },
+      {
+        "optionId": 2,
+        "zh": "係數 $6$ 正確，但指數沒有減一：$u^{3}$ 求導後應為 $3u^{2}$。",
+        "en": "The coefficient $6$ is right, but the power was not reduced: $u^{3}$ differentiates to $3u^{2}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "把括號內的 $2x + 7$ 換成了它的導數 $2$。外層求導時括號內的式子應原封不動，內層導數只作為乘數。",
+        "en": "The bracket $2x + 7$ was replaced by its derivative $2$. Differentiating the outer function leaves the bracket unchanged; the inner derivative is only a multiplier."
+      }
+    ]
   },
   {
     "id": "m1_rep_0018",
@@ -789,24 +899,46 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left((3x + 4)^{2}\\right)$。",
-    "explanation": "鏈式法則：先當作整體求外層導數，再乘以內層的導數。外層 $u^{2}$ 的導數為 $2u^{1}$，內層 $3x + 4$ 的導數為 $3$，兩者相乘得 $2 \\times 3 = 6$，故答案為 $6(3x + 4)^{1}$。第一個干擾項【漏了內層導數】$3$ —— 這是鏈式法則最集中的失分位，而且因為答案形式看似正確，特別難自己察覺。第二項忘記把指數減一。第三項把括號內整項誤當成單一個 $3x$。",
+    "explanation": "鏈式法則：把括號 $u = 3x + 4$ 當作一個整體。外層 $u^{2}$ 的導數是 $2u$，內層 $3x + 4$ 的導數是 $3$，兩者相乘，得 $2 \\times 3(3x + 4) = 6(3x + 4)$。",
     "options": [
-      "$2(3)^{1}$",
-      "$6(3x + 4)^{1}$",
-      "$2(3x + 4)^{1}$",
+      "$2(3)$",
+      "$6(3x + 4)$",
+      "$2(3x + 4)$",
       "$6(3x + 4)^{2}$"
     ],
     "correctIndex": 1,
     "marks": 1,
     "contentEn": "Find $\\dfrac{d}{dx}\\left((3x + 4)^{2}\\right)$.",
     "optionsEn": [
-      "$2(3)^{1}$",
-      "$6(3x + 4)^{1}$",
-      "$2(3x + 4)^{1}$",
+      "$2(3)$",
+      "$6(3x + 4)$",
+      "$2(3x + 4)$",
       "$6(3x + 4)^{2}$"
     ],
-    "explanationEn": "Chain rule: differentiate the outer function treating the bracket as one object, then multiply by the derivative of the inside. The outer $u^{2}$ gives $2u^{1}$; the inside $3x + 4$ gives $3$; multiplying, $2 \\times 3 = 6$, so the answer is $6(3x + 4)^{1}$. The first distractor drops the inner derivative $3$ — the commonest slip with the chain rule, and a hard one to catch because the answer still looks right in shape. The second forgets to reduce the exponent, and the third treats the whole bracket as just $3x$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Chain rule: treat the bracket $u = 3x + 4$ as one object. The outer $u^{2}$ differentiates to $2u$ and the inner $3x + 4$ to $3$; multiplying gives $2 \\times 3(3x + 4) = 6(3x + 4)$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把括號內的 $3x + 4$ 換成了它的導數 $3$。外層求導時括號內的式子應原封不動，內層導數只作為乘數。",
+        "en": "The bracket $3x + 4$ was replaced by its derivative $3$. Differentiating the outer function leaves the bracket unchanged; the inner derivative is only a multiplier."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。外層導數 $2(3x + 4)$ 乘以內層導數 $3$。",
+        "en": "Correct. The outer derivative $2(3x + 4)$ times the inner derivative $3$."
+      },
+      {
+        "optionId": 2,
+        "zh": "只求了外層的導數，漏了乘以內層 $3x + 4$ 的導數 $3$。答案的形式看似正確，所以這個錯誤特別難自己察覺。",
+        "en": "Only the outer function is differentiated; the inner derivative $3$ of $3x + 4$ is missing. The form looks right, which makes this slip hard to spot."
+      },
+      {
+        "optionId": 3,
+        "zh": "係數 $6$ 正確，但指數沒有減一：$u^{2}$ 求導後應為 $2u$。",
+        "en": "The coefficient $6$ is right, but the power was not reduced: $u^{2}$ differentiates to $2u$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0019",
@@ -821,7 +953,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\ln(3x^{2} + 2)$。",
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 3x^{2} + 2$，$f'(x) = 6x$，故答案為 $\\dfrac{6x}{3x^{2} + 2}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子是它的導數。此處 $f(x) = 3x^{2} + 2$，$f'(x) = 6x$，故答案為 $\\dfrac{6x}{3x^{2} + 2}$。",
     "options": [
       "$\\dfrac{6x}{3x^{2}}$",
       "$6x \\ln(3x^{2} + 2)$",
@@ -837,8 +969,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{6x}{3x^{2} + 2}$",
       "$\\dfrac{1}{3x^{2} + 2}$"
     ],
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 3x^{2} + 2$ and $f'(x) = 6x$, giving $\\dfrac{6x}{3x^{2} + 2}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: the original expression goes in the denominator and its derivative on top. Here $f(x) = 3x^{2} + 2$ and $f'(x) = 6x$, so the answer is $\\dfrac{6x}{3x^{2} + 2}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子正確，但分母刪去了常數 $2$。分母必須是完整的原式 $3x^{2} + 2$。",
+        "en": "The numerator is right, but the constant $2$ was dropped from the denominator. The denominator must be the whole of $3x^{2} + 2$."
+      },
+      {
+        "optionId": 1,
+        "zh": "把 $\\ln$ 當成可以留在外面的因子，再乘以內層的導數。對數求導之後不再含 $\\ln$。",
+        "en": "This keeps $\\ln$ as a factor and multiplies by the inner derivative. Differentiating a logarithm leaves no $\\ln$ behind."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。分子是 $f'(x) = 6x$，分母保留原式 $3x^{2} + 2$。",
+        "en": "Correct. The numerator is $f'(x) = 6x$ and the denominator keeps $3x^{2} + 2$ as it is."
+      },
+      {
+        "optionId": 3,
+        "zh": "這是 $\\ln u$ 對 $u$ 的導數 $\\dfrac{1}{u}$，漏了再乘以內層的導數 $6x$（鏈式法則）。",
+        "en": "This is the derivative of $\\ln u$ with respect to $u$, $\\dfrac{1}{u}$, without the inner derivative $6x$ (chain rule)."
+      }
+    ]
   },
   {
     "id": "m1_rep_0020",
@@ -853,7 +1007,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\ln(5x^{2} + 4)$。",
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 5x^{2} + 4$，$f'(x) = 10x$，故答案為 $\\dfrac{10x}{5x^{2} + 4}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子是它的導數。此處 $f(x) = 5x^{2} + 4$，$f'(x) = 10x$，故答案為 $\\dfrac{10x}{5x^{2} + 4}$。",
     "options": [
       "$\\dfrac{1}{5x^{2} + 4}$",
       "$\\dfrac{10x}{5x^{2}}$",
@@ -869,8 +1023,30 @@ export const m1AutoQuestions: Question[] = [
       "$10x \\ln(5x^{2} + 4)$",
       "$\\dfrac{10x}{5x^{2} + 4}$"
     ],
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 5x^{2} + 4$ and $f'(x) = 10x$, giving $\\dfrac{10x}{5x^{2} + 4}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: the original expression goes in the denominator and its derivative on top. Here $f(x) = 5x^{2} + 4$ and $f'(x) = 10x$, so the answer is $\\dfrac{10x}{5x^{2} + 4}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "這是 $\\ln u$ 對 $u$ 的導數 $\\dfrac{1}{u}$，漏了再乘以內層的導數 $10x$（鏈式法則）。",
+        "en": "This is the derivative of $\\ln u$ with respect to $u$, $\\dfrac{1}{u}$, without the inner derivative $10x$ (chain rule)."
+      },
+      {
+        "optionId": 1,
+        "zh": "分子正確，但分母刪去了常數 $4$。分母必須是完整的原式 $5x^{2} + 4$。",
+        "en": "The numerator is right, but the constant $4$ was dropped from the denominator. The denominator must be the whole of $5x^{2} + 4$."
+      },
+      {
+        "optionId": 2,
+        "zh": "把 $\\ln$ 當成可以留在外面的因子，再乘以內層的導數。對數求導之後不再含 $\\ln$。",
+        "en": "This keeps $\\ln$ as a factor and multiplies by the inner derivative. Differentiating a logarithm leaves no $\\ln$ behind."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。分子是 $f'(x) = 10x$，分母保留原式 $5x^{2} + 4$。",
+        "en": "Correct. The numerator is $f'(x) = 10x$ and the denominator keeps $5x^{2} + 4$ as it is."
+      }
+    ]
   },
   {
     "id": "m1_rep_0021",
@@ -885,7 +1061,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\ln(2x^{2} + 9)$。",
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 2x^{2} + 9$，$f'(x) = 4x$，故答案為 $\\dfrac{4x}{2x^{2} + 9}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子是它的導數。此處 $f(x) = 2x^{2} + 9$，$f'(x) = 4x$，故答案為 $\\dfrac{4x}{2x^{2} + 9}$。",
     "options": [
       "$\\dfrac{4x}{2x^{2} + 9}$",
       "$\\dfrac{1}{2x^{2} + 9}$",
@@ -901,8 +1077,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{4x}{2x^{2}}$",
       "$4x \\ln(2x^{2} + 9)$"
     ],
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 2x^{2} + 9$ and $f'(x) = 4x$, giving $\\dfrac{4x}{2x^{2} + 9}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: the original expression goes in the denominator and its derivative on top. Here $f(x) = 2x^{2} + 9$ and $f'(x) = 4x$, so the answer is $\\dfrac{4x}{2x^{2} + 9}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。分子是 $f'(x) = 4x$，分母保留原式 $2x^{2} + 9$。",
+        "en": "Correct. The numerator is $f'(x) = 4x$ and the denominator keeps $2x^{2} + 9$ as it is."
+      },
+      {
+        "optionId": 1,
+        "zh": "這是 $\\ln u$ 對 $u$ 的導數 $\\dfrac{1}{u}$，漏了再乘以內層的導數 $4x$（鏈式法則）。",
+        "en": "This is the derivative of $\\ln u$ with respect to $u$, $\\dfrac{1}{u}$, without the inner derivative $4x$ (chain rule)."
+      },
+      {
+        "optionId": 2,
+        "zh": "分子正確，但分母刪去了常數 $9$。分母必須是完整的原式 $2x^{2} + 9$。",
+        "en": "The numerator is right, but the constant $9$ was dropped from the denominator. The denominator must be the whole of $2x^{2} + 9$."
+      },
+      {
+        "optionId": 3,
+        "zh": "把 $\\ln$ 當成可以留在外面的因子，再乘以內層的導數。對數求導之後不再含 $\\ln$。",
+        "en": "This keeps $\\ln$ as a factor and multiplies by the inner derivative. Differentiating a logarithm leaves no $\\ln$ behind."
+      }
+    ]
   },
   {
     "id": "m1_rep_0022",
@@ -917,7 +1115,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\ln(7x^{2} + 3)$。",
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 7x^{2} + 3$，$f'(x) = 14x$，故答案為 $\\dfrac{14x}{7x^{2} + 3}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子是它的導數。此處 $f(x) = 7x^{2} + 3$，$f'(x) = 14x$，故答案為 $\\dfrac{14x}{7x^{2} + 3}$。",
     "options": [
       "$14x \\ln(7x^{2} + 3)$",
       "$\\dfrac{14x}{7x^{2} + 3}$",
@@ -933,8 +1131,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{1}{7x^{2} + 3}$",
       "$\\dfrac{14x}{7x^{2}}$"
     ],
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 7x^{2} + 3$ and $f'(x) = 14x$, giving $\\dfrac{14x}{7x^{2} + 3}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: the original expression goes in the denominator and its derivative on top. Here $f(x) = 7x^{2} + 3$ and $f'(x) = 14x$, so the answer is $\\dfrac{14x}{7x^{2} + 3}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把 $\\ln$ 當成可以留在外面的因子，再乘以內層的導數。對數求導之後不再含 $\\ln$。",
+        "en": "This keeps $\\ln$ as a factor and multiplies by the inner derivative. Differentiating a logarithm leaves no $\\ln$ behind."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。分子是 $f'(x) = 14x$，分母保留原式 $7x^{2} + 3$。",
+        "en": "Correct. The numerator is $f'(x) = 14x$ and the denominator keeps $7x^{2} + 3$ as it is."
+      },
+      {
+        "optionId": 2,
+        "zh": "這是 $\\ln u$ 對 $u$ 的導數 $\\dfrac{1}{u}$，漏了再乘以內層的導數 $14x$（鏈式法則）。",
+        "en": "This is the derivative of $\\ln u$ with respect to $u$, $\\dfrac{1}{u}$, without the inner derivative $14x$ (chain rule)."
+      },
+      {
+        "optionId": 3,
+        "zh": "分子正確，但分母刪去了常數 $3$。分母必須是完整的原式 $7x^{2} + 3$。",
+        "en": "The numerator is right, but the constant $3$ was dropped from the denominator. The denominator must be the whole of $7x^{2} + 3$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0023",
@@ -949,7 +1169,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\ln(4x^{2} + 5)$。",
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 4x^{2} + 5$，$f'(x) = 8x$，故答案為 $\\dfrac{8x}{4x^{2} + 5}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子是它的導數。此處 $f(x) = 4x^{2} + 5$，$f'(x) = 8x$，故答案為 $\\dfrac{8x}{4x^{2} + 5}$。",
     "options": [
       "$\\dfrac{8x}{4x^{2}}$",
       "$8x \\ln(4x^{2} + 5)$",
@@ -965,8 +1185,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{8x}{4x^{2} + 5}$",
       "$\\dfrac{1}{4x^{2} + 5}$"
     ],
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 4x^{2} + 5$ and $f'(x) = 8x$, giving $\\dfrac{8x}{4x^{2} + 5}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: the original expression goes in the denominator and its derivative on top. Here $f(x) = 4x^{2} + 5$ and $f'(x) = 8x$, so the answer is $\\dfrac{8x}{4x^{2} + 5}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子正確，但分母刪去了常數 $5$。分母必須是完整的原式 $4x^{2} + 5$。",
+        "en": "The numerator is right, but the constant $5$ was dropped from the denominator. The denominator must be the whole of $4x^{2} + 5$."
+      },
+      {
+        "optionId": 1,
+        "zh": "把 $\\ln$ 當成可以留在外面的因子，再乘以內層的導數。對數求導之後不再含 $\\ln$。",
+        "en": "This keeps $\\ln$ as a factor and multiplies by the inner derivative. Differentiating a logarithm leaves no $\\ln$ behind."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。分子是 $f'(x) = 8x$，分母保留原式 $4x^{2} + 5$。",
+        "en": "Correct. The numerator is $f'(x) = 8x$ and the denominator keeps $4x^{2} + 5$ as it is."
+      },
+      {
+        "optionId": 3,
+        "zh": "這是 $\\ln u$ 對 $u$ 的導數 $\\dfrac{1}{u}$，漏了再乘以內層的導數 $8x$（鏈式法則）。",
+        "en": "This is the derivative of $\\ln u$ with respect to $u$, $\\dfrac{1}{u}$, without the inner derivative $8x$ (chain rule)."
+      }
+    ]
   },
   {
     "id": "m1_rep_0024",
@@ -981,7 +1223,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\ln(6x^{2} + 7)$。",
-    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子放它的導數。此處 $f(x) = 6x^{2} + 7$，$f'(x) = 12x$，故答案為 $\\dfrac{12x}{6x^{2} + 7}$。第一個干擾項只寫了 $\\dfrac{1}{f(x)}$，漏了分子的 $f'(x)$ —— 那是 $\\ln x$ 本身的導數，套到複合函數上就不成立，屬鏈式法則的同一類疏漏。第二項把分母的常數項刪掉，但分母必須完整保留原式。第三項把對數當成可以直接搬到外面的因子。",
+    "explanation": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$：分母照抄原式，分子是它的導數。此處 $f(x) = 6x^{2} + 7$，$f'(x) = 12x$，故答案為 $\\dfrac{12x}{6x^{2} + 7}$。",
     "options": [
       "$\\dfrac{1}{6x^{2} + 7}$",
       "$\\dfrac{12x}{6x^{2}}$",
@@ -997,8 +1239,30 @@ export const m1AutoQuestions: Question[] = [
       "$12x \\ln(6x^{2} + 7)$",
       "$\\dfrac{12x}{6x^{2} + 7}$"
     ],
-    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: copy the original expression into the denominator and put its derivative on top. Here $f(x) = 6x^{2} + 7$ and $f'(x) = 12x$, giving $\\dfrac{12x}{6x^{2} + 7}$. The first distractor writes only $\\dfrac{1}{f(x)}$ and drops $f'(x)$ — that is the derivative of $\\ln x$ itself, which does not carry over to a composite, and it is the same chain-rule oversight in another guise. The second deletes the constant from the denominator, which must reproduce the original expression in full. The third treats the logarithm as a factor that can be pulled outside.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "$\\dfrac{d}{dx}\\ln f(x) = \\dfrac{f'(x)}{f(x)}$: the original expression goes in the denominator and its derivative on top. Here $f(x) = 6x^{2} + 7$ and $f'(x) = 12x$, so the answer is $\\dfrac{12x}{6x^{2} + 7}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "這是 $\\ln u$ 對 $u$ 的導數 $\\dfrac{1}{u}$，漏了再乘以內層的導數 $12x$（鏈式法則）。",
+        "en": "This is the derivative of $\\ln u$ with respect to $u$, $\\dfrac{1}{u}$, without the inner derivative $12x$ (chain rule)."
+      },
+      {
+        "optionId": 1,
+        "zh": "分子正確，但分母刪去了常數 $7$。分母必須是完整的原式 $6x^{2} + 7$。",
+        "en": "The numerator is right, but the constant $7$ was dropped from the denominator. The denominator must be the whole of $6x^{2} + 7$."
+      },
+      {
+        "optionId": 2,
+        "zh": "把 $\\ln$ 當成可以留在外面的因子，再乘以內層的導數。對數求導之後不再含 $\\ln$。",
+        "en": "This keeps $\\ln$ as a factor and multiplies by the inner derivative. Differentiating a logarithm leaves no $\\ln$ behind."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。分子是 $f'(x) = 12x$，分母保留原式 $6x^{2} + 7$。",
+        "en": "Correct. The numerator is $f'(x) = 12x$ and the denominator keeps $6x^{2} + 7$ as it is."
+      }
+    ]
   },
   {
     "id": "m1_rep_0025",
@@ -1013,7 +1277,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $2x^{2} + 3y^{2} = 10$。求 $\\dfrac{dy}{dx}$。",
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$4x + 6y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$。第一個干擾項漏了負號 —— 移項時 $4x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanation": "兩邊同時對 $x$ 求導。$2x^{2}$ 的導數是 $4x$；$3y^{2}$ 的導數是 $6y\\dfrac{dy}{dx}$ —— 因為 $y$ 是 $x$ 的函數，鏈式法則帶出 $\\dfrac{dy}{dx}$。右邊常數的導數為 $0$。由 $4x + 6y\\dfrac{dy}{dx} = 0$ 得 $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$。",
     "options": [
       "$-\\dfrac{2x}{3y}$",
       "$\\dfrac{2x}{3y}$",
@@ -1029,8 +1293,30 @@ export const m1AutoQuestions: Question[] = [
       "$-\\dfrac{4x}{3y}$",
       "$-\\dfrac{2x}{6y}$"
     ],
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $4x + 6y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$. The first distractor drops the minus sign, which must appear when $4x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate both sides with respect to $x$. $2x^{2}$ gives $4x$; $3y^{2}$ gives $6y\\dfrac{dy}{dx}$ — $y$ is a function of $x$, so the chain rule brings out $\\dfrac{dy}{dx}$. The constant on the right gives $0$. From $4x + 6y\\dfrac{dy}{dx} = 0$, $\\dfrac{dy}{dx} = -\\dfrac{4x}{6y} = -\\dfrac{2x}{3y}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。由 $4x + 6y\\dfrac{dy}{dx} = 0$ 移項，分子分母同除以 $2$。",
+        "en": "Correct. Rearrange $4x + 6y\\dfrac{dy}{dx} = 0$ and divide top and bottom by $2$."
+      },
+      {
+        "optionId": 1,
+        "zh": "漏了負號：$4x$ 移到等號另一邊時要變號。",
+        "en": "The minus sign is missing: $4x$ changes sign when it moves across the equals sign."
+      },
+      {
+        "optionId": 2,
+        "zh": "分母已除以 $2$，分子 $4x$ 卻沒有，兩邊約簡不一致。",
+        "en": "The denominator was divided by $2$ but the numerator $4x$ was not."
+      },
+      {
+        "optionId": 3,
+        "zh": "分子已除以 $2$，分母 $6y$ 卻沒有，兩邊約簡不一致。",
+        "en": "The numerator was divided by $2$ but the denominator $6y$ was not."
+      }
+    ]
   },
   {
     "id": "m1_rep_0026",
@@ -1045,7 +1331,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $5x^{2} + 2y^{2} = 10$。求 $\\dfrac{dy}{dx}$。",
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$10x + 4y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$。第一個干擾項漏了負號 —— 移項時 $10x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanation": "兩邊同時對 $x$ 求導。$5x^{2}$ 的導數是 $10x$；$2y^{2}$ 的導數是 $4y\\dfrac{dy}{dx}$ —— 因為 $y$ 是 $x$ 的函數，鏈式法則帶出 $\\dfrac{dy}{dx}$。右邊常數的導數為 $0$。由 $10x + 4y\\dfrac{dy}{dx} = 0$ 得 $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$。",
     "options": [
       "$-\\dfrac{5x}{4y}$",
       "$-\\dfrac{5x}{2y}$",
@@ -1061,8 +1347,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{5x}{2y}$",
       "$-\\dfrac{10x}{2y}$"
     ],
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $10x + 4y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$. The first distractor drops the minus sign, which must appear when $10x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate both sides with respect to $x$. $5x^{2}$ gives $10x$; $2y^{2}$ gives $4y\\dfrac{dy}{dx}$ — $y$ is a function of $x$, so the chain rule brings out $\\dfrac{dy}{dx}$. The constant on the right gives $0$. From $10x + 4y\\dfrac{dy}{dx} = 0$, $\\dfrac{dy}{dx} = -\\dfrac{10x}{4y} = -\\dfrac{5x}{2y}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子已除以 $2$，分母 $4y$ 卻沒有，兩邊約簡不一致。",
+        "en": "The numerator was divided by $2$ but the denominator $4y$ was not."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。由 $10x + 4y\\dfrac{dy}{dx} = 0$ 移項，分子分母同除以 $2$。",
+        "en": "Correct. Rearrange $10x + 4y\\dfrac{dy}{dx} = 0$ and divide top and bottom by $2$."
+      },
+      {
+        "optionId": 2,
+        "zh": "漏了負號：$10x$ 移到等號另一邊時要變號。",
+        "en": "The minus sign is missing: $10x$ changes sign when it moves across the equals sign."
+      },
+      {
+        "optionId": 3,
+        "zh": "分母已除以 $2$，分子 $10x$ 卻沒有，兩邊約簡不一致。",
+        "en": "The denominator was divided by $2$ but the numerator $10x$ was not."
+      }
+    ]
   },
   {
     "id": "m1_rep_0027",
@@ -1077,7 +1385,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $3x^{2} + 7y^{2} = 10$。求 $\\dfrac{dy}{dx}$。",
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$6x + 14y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$。第一個干擾項漏了負號 —— 移項時 $6x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanation": "兩邊同時對 $x$ 求導。$3x^{2}$ 的導數是 $6x$；$7y^{2}$ 的導數是 $14y\\dfrac{dy}{dx}$ —— 因為 $y$ 是 $x$ 的函數，鏈式法則帶出 $\\dfrac{dy}{dx}$。右邊常數的導數為 $0$。由 $6x + 14y\\dfrac{dy}{dx} = 0$ 得 $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$。",
     "options": [
       "$-\\dfrac{6x}{7y}$",
       "$-\\dfrac{3x}{14y}$",
@@ -1093,8 +1401,30 @@ export const m1AutoQuestions: Question[] = [
       "$-\\dfrac{3x}{7y}$",
       "$\\dfrac{3x}{7y}$"
     ],
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $6x + 14y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$. The first distractor drops the minus sign, which must appear when $6x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate both sides with respect to $x$. $3x^{2}$ gives $6x$; $7y^{2}$ gives $14y\\dfrac{dy}{dx}$ — $y$ is a function of $x$, so the chain rule brings out $\\dfrac{dy}{dx}$. The constant on the right gives $0$. From $6x + 14y\\dfrac{dy}{dx} = 0$, $\\dfrac{dy}{dx} = -\\dfrac{6x}{14y} = -\\dfrac{3x}{7y}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分母已除以 $2$，分子 $6x$ 卻沒有，兩邊約簡不一致。",
+        "en": "The denominator was divided by $2$ but the numerator $6x$ was not."
+      },
+      {
+        "optionId": 1,
+        "zh": "分子已除以 $2$，分母 $14y$ 卻沒有，兩邊約簡不一致。",
+        "en": "The numerator was divided by $2$ but the denominator $14y$ was not."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。由 $6x + 14y\\dfrac{dy}{dx} = 0$ 移項，分子分母同除以 $2$。",
+        "en": "Correct. Rearrange $6x + 14y\\dfrac{dy}{dx} = 0$ and divide top and bottom by $2$."
+      },
+      {
+        "optionId": 3,
+        "zh": "漏了負號：$6x$ 移到等號另一邊時要變號。",
+        "en": "The minus sign is missing: $6x$ changes sign when it moves across the equals sign."
+      }
+    ]
   },
   {
     "id": "m1_rep_0028",
@@ -1109,7 +1439,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $4x^{2} + 5y^{2} = 10$。求 $\\dfrac{dy}{dx}$。",
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$8x + 10y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$。第一個干擾項漏了負號 —— 移項時 $8x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanation": "兩邊同時對 $x$ 求導。$4x^{2}$ 的導數是 $8x$；$5y^{2}$ 的導數是 $10y\\dfrac{dy}{dx}$ —— 因為 $y$ 是 $x$ 的函數，鏈式法則帶出 $\\dfrac{dy}{dx}$。右邊常數的導數為 $0$。由 $8x + 10y\\dfrac{dy}{dx} = 0$ 得 $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$。",
     "options": [
       "$\\dfrac{4x}{5y}$",
       "$-\\dfrac{8x}{5y}$",
@@ -1125,8 +1455,30 @@ export const m1AutoQuestions: Question[] = [
       "$-\\dfrac{4x}{10y}$",
       "$-\\dfrac{4x}{5y}$"
     ],
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $8x + 10y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$. The first distractor drops the minus sign, which must appear when $8x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate both sides with respect to $x$. $4x^{2}$ gives $8x$; $5y^{2}$ gives $10y\\dfrac{dy}{dx}$ — $y$ is a function of $x$, so the chain rule brings out $\\dfrac{dy}{dx}$. The constant on the right gives $0$. From $8x + 10y\\dfrac{dy}{dx} = 0$, $\\dfrac{dy}{dx} = -\\dfrac{8x}{10y} = -\\dfrac{4x}{5y}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "漏了負號：$8x$ 移到等號另一邊時要變號。",
+        "en": "The minus sign is missing: $8x$ changes sign when it moves across the equals sign."
+      },
+      {
+        "optionId": 1,
+        "zh": "分母已除以 $2$，分子 $8x$ 卻沒有，兩邊約簡不一致。",
+        "en": "The denominator was divided by $2$ but the numerator $8x$ was not."
+      },
+      {
+        "optionId": 2,
+        "zh": "分子已除以 $2$，分母 $10y$ 卻沒有，兩邊約簡不一致。",
+        "en": "The numerator was divided by $2$ but the denominator $10y$ was not."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。由 $8x + 10y\\dfrac{dy}{dx} = 0$ 移項，分子分母同除以 $2$。",
+        "en": "Correct. Rearrange $8x + 10y\\dfrac{dy}{dx} = 0$ and divide top and bottom by $2$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0029",
@@ -1141,7 +1493,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $6x^{2} + 5y^{2} = 10$。求 $\\dfrac{dy}{dx}$。",
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$12x + 10y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$。第一個干擾項漏了負號 —— 移項時 $12x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanation": "兩邊同時對 $x$ 求導。$6x^{2}$ 的導數是 $12x$；$5y^{2}$ 的導數是 $10y\\dfrac{dy}{dx}$ —— 因為 $y$ 是 $x$ 的函數，鏈式法則帶出 $\\dfrac{dy}{dx}$。右邊常數的導數為 $0$。由 $12x + 10y\\dfrac{dy}{dx} = 0$ 得 $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$。",
     "options": [
       "$-\\dfrac{6x}{5y}$",
       "$\\dfrac{6x}{5y}$",
@@ -1157,8 +1509,30 @@ export const m1AutoQuestions: Question[] = [
       "$-\\dfrac{12x}{5y}$",
       "$-\\dfrac{6x}{10y}$"
     ],
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $12x + 10y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$. The first distractor drops the minus sign, which must appear when $12x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate both sides with respect to $x$. $6x^{2}$ gives $12x$; $5y^{2}$ gives $10y\\dfrac{dy}{dx}$ — $y$ is a function of $x$, so the chain rule brings out $\\dfrac{dy}{dx}$. The constant on the right gives $0$. From $12x + 10y\\dfrac{dy}{dx} = 0$, $\\dfrac{dy}{dx} = -\\dfrac{12x}{10y} = -\\dfrac{6x}{5y}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。由 $12x + 10y\\dfrac{dy}{dx} = 0$ 移項，分子分母同除以 $2$。",
+        "en": "Correct. Rearrange $12x + 10y\\dfrac{dy}{dx} = 0$ and divide top and bottom by $2$."
+      },
+      {
+        "optionId": 1,
+        "zh": "漏了負號：$12x$ 移到等號另一邊時要變號。",
+        "en": "The minus sign is missing: $12x$ changes sign when it moves across the equals sign."
+      },
+      {
+        "optionId": 2,
+        "zh": "分母已除以 $2$，分子 $12x$ 卻沒有，兩邊約簡不一致。",
+        "en": "The denominator was divided by $2$ but the numerator $12x$ was not."
+      },
+      {
+        "optionId": 3,
+        "zh": "分子已除以 $2$，分母 $10y$ 卻沒有，兩邊約簡不一致。",
+        "en": "The numerator was divided by $2$ but the denominator $10y$ was not."
+      }
+    ]
   },
   {
     "id": "m1_rep_0030",
@@ -1173,7 +1547,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $7x^{2} + 2y^{2} = 10$。求 $\\dfrac{dy}{dx}$。",
-    "explanation": "兩邊同時對 $x$ 求導。左邊：$14x + 4y\\dfrac{dy}{dx}$ —— 對 $y^{2}$ 求導時，因為 $y$ 是 $x$ 的函數，鏈式法則會帶出 $\\dfrac{dy}{dx}$ 這個因子，這正是隱函數微分的關鍵一步。右邊常數的導數為 $0$。整理得 $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$。第一個干擾項漏了負號 —— 移項時 $14x$ 過到右邊必定變號。餘下兩項只約簡了分子或分母其中一邊的系數 $2$，另一邊卻沒有約，屬計算疏漏。",
+    "explanation": "兩邊同時對 $x$ 求導。$7x^{2}$ 的導數是 $14x$；$2y^{2}$ 的導數是 $4y\\dfrac{dy}{dx}$ —— 因為 $y$ 是 $x$ 的函數，鏈式法則帶出 $\\dfrac{dy}{dx}$。右邊常數的導數為 $0$。由 $14x + 4y\\dfrac{dy}{dx} = 0$ 得 $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$。",
     "options": [
       "$-\\dfrac{7x}{4y}$",
       "$-\\dfrac{7x}{2y}$",
@@ -1189,8 +1563,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{7x}{2y}$",
       "$-\\dfrac{14x}{2y}$"
     ],
-    "explanationEn": "Differentiate both sides with respect to $x$. The left side gives $14x + 4y\\dfrac{dy}{dx}$ — differentiating $y^{2}$ brings out the factor $\\dfrac{dy}{dx}$ by the chain rule, because $y$ is a function of $x$, and this is the key step in implicit differentiation. The constant on the right differentiates to $0$. Rearranging, $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$. The first distractor drops the minus sign, which must appear when $14x$ is moved across. The other two cancel the factor $2$ on only one side of the fraction.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate both sides with respect to $x$. $7x^{2}$ gives $14x$; $2y^{2}$ gives $4y\\dfrac{dy}{dx}$ — $y$ is a function of $x$, so the chain rule brings out $\\dfrac{dy}{dx}$. The constant on the right gives $0$. From $14x + 4y\\dfrac{dy}{dx} = 0$, $\\dfrac{dy}{dx} = -\\dfrac{14x}{4y} = -\\dfrac{7x}{2y}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子已除以 $2$，分母 $4y$ 卻沒有，兩邊約簡不一致。",
+        "en": "The numerator was divided by $2$ but the denominator $4y$ was not."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。由 $14x + 4y\\dfrac{dy}{dx} = 0$ 移項，分子分母同除以 $2$。",
+        "en": "Correct. Rearrange $14x + 4y\\dfrac{dy}{dx} = 0$ and divide top and bottom by $2$."
+      },
+      {
+        "optionId": 2,
+        "zh": "漏了負號：$14x$ 移到等號另一邊時要變號。",
+        "en": "The minus sign is missing: $14x$ changes sign when it moves across the equals sign."
+      },
+      {
+        "optionId": 3,
+        "zh": "分母已除以 $2$，分子 $14x$ 卻沒有，兩邊約簡不一致。",
+        "en": "The denominator was divided by $2$ but the numerator $14x$ was not."
+      }
+    ]
   },
   {
     "id": "m1_rep_0031",
@@ -1205,7 +1601,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 2x^{3} + 5x^{2} + 3x$。求 $f''(x)$。",
-    "explanation": "求導兩次。第一次：$f'(x) = 6x^{2} + 10x + 3$。第二次：$f''(x) = 12x + 10$ —— 常數項 $3$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $10$ 誤寫成仍帶 $x$：$10x$ 求導之後應為 $10$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
+    "explanation": "求導兩次。第一次：$f'(x) = 6x^{2} + 10x + 3$。第二次：$f''(x) = 12x + 10$ —— 常數項 $3$ 在第二次求導時變成 $0$。",
     "options": [
       "$12x + 10x$",
       "$12$",
@@ -1221,8 +1617,30 @@ export const m1AutoQuestions: Question[] = [
       "$12x + 10$",
       "$6x^{2} + 10x + 3$"
     ],
-    "explanationEn": "Differentiate twice. First, $f'(x) = 6x^{2} + 10x + 3$. Again, $f''(x) = 12x + 10$ — the constant $3$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $10x$ differentiates to $10$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate twice. First: $f'(x) = 6x^{2} + 10x + 3$. Second: $f''(x) = 12x + 10$ — the constant $3$ becomes $0$ on the second differentiation.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$10x$ 求導後應為 $10$，$x$ 要消去；這裏把 $x$ 保留了。",
+        "en": "$10x$ differentiates to $10$; the $x$ should go, but it was kept."
+      },
+      {
+        "optionId": 1,
+        "zh": "這是 $f'''(x)$，多求了一次導數。",
+        "en": "This is $f'''(x)$: one derivative too many."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。對 $f'(x) = 6x^{2} + 10x + 3$ 再求導一次。",
+        "en": "Correct. Differentiate $f'(x) = 6x^{2} + 10x + 3$ once more."
+      },
+      {
+        "optionId": 3,
+        "zh": "這是 $f'(x)$，只求了一次導數。題目問的是 $f''(x)$，要再求導一次。",
+        "en": "This is $f'(x)$, one derivative only. The question asks for $f''(x)$, so differentiate again."
+      }
+    ]
   },
   {
     "id": "m1_rep_0032",
@@ -1237,7 +1655,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 3x^{3} + 2x^{2} + 7x$。求 $f''(x)$。",
-    "explanation": "求導兩次。第一次：$f'(x) = 9x^{2} + 4x + 7$。第二次：$f''(x) = 18x + 4$ —— 常數項 $7$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $4$ 誤寫成仍帶 $x$：$4x$ 求導之後應為 $4$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
+    "explanation": "求導兩次。第一次：$f'(x) = 9x^{2} + 4x + 7$。第二次：$f''(x) = 18x + 4$ —— 常數項 $7$ 在第二次求導時變成 $0$。",
     "options": [
       "$9x^{2} + 4x + 7$",
       "$18x + 4x$",
@@ -1253,8 +1671,30 @@ export const m1AutoQuestions: Question[] = [
       "$18$",
       "$18x + 4$"
     ],
-    "explanationEn": "Differentiate twice. First, $f'(x) = 9x^{2} + 4x + 7$. Again, $f''(x) = 18x + 4$ — the constant $7$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $4x$ differentiates to $4$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate twice. First: $f'(x) = 9x^{2} + 4x + 7$. Second: $f''(x) = 18x + 4$ — the constant $7$ becomes $0$ on the second differentiation.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "這是 $f'(x)$，只求了一次導數。題目問的是 $f''(x)$，要再求導一次。",
+        "en": "This is $f'(x)$, one derivative only. The question asks for $f''(x)$, so differentiate again."
+      },
+      {
+        "optionId": 1,
+        "zh": "$4x$ 求導後應為 $4$，$x$ 要消去；這裏把 $x$ 保留了。",
+        "en": "$4x$ differentiates to $4$; the $x$ should go, but it was kept."
+      },
+      {
+        "optionId": 2,
+        "zh": "這是 $f'''(x)$，多求了一次導數。",
+        "en": "This is $f'''(x)$: one derivative too many."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。對 $f'(x) = 9x^{2} + 4x + 7$ 再求導一次。",
+        "en": "Correct. Differentiate $f'(x) = 9x^{2} + 4x + 7$ once more."
+      }
+    ]
   },
   {
     "id": "m1_rep_0033",
@@ -1269,7 +1709,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 5x^{3} + 4x^{2} + 2x$。求 $f''(x)$。",
-    "explanation": "求導兩次。第一次：$f'(x) = 15x^{2} + 8x + 2$。第二次：$f''(x) = 30x + 8$ —— 常數項 $2$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $8$ 誤寫成仍帶 $x$：$8x$ 求導之後應為 $8$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
+    "explanation": "求導兩次。第一次：$f'(x) = 15x^{2} + 8x + 2$。第二次：$f''(x) = 30x + 8$ —— 常數項 $2$ 在第二次求導時變成 $0$。",
     "options": [
       "$30x + 8$",
       "$15x^{2} + 8x + 2$",
@@ -1285,8 +1725,30 @@ export const m1AutoQuestions: Question[] = [
       "$30x + 8x$",
       "$30$"
     ],
-    "explanationEn": "Differentiate twice. First, $f'(x) = 15x^{2} + 8x + 2$. Again, $f''(x) = 30x + 8$ — the constant $2$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $8x$ differentiates to $8$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate twice. First: $f'(x) = 15x^{2} + 8x + 2$. Second: $f''(x) = 30x + 8$ — the constant $2$ becomes $0$ on the second differentiation.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。對 $f'(x) = 15x^{2} + 8x + 2$ 再求導一次。",
+        "en": "Correct. Differentiate $f'(x) = 15x^{2} + 8x + 2$ once more."
+      },
+      {
+        "optionId": 1,
+        "zh": "這是 $f'(x)$，只求了一次導數。題目問的是 $f''(x)$，要再求導一次。",
+        "en": "This is $f'(x)$, one derivative only. The question asks for $f''(x)$, so differentiate again."
+      },
+      {
+        "optionId": 2,
+        "zh": "$8x$ 求導後應為 $8$，$x$ 要消去；這裏把 $x$ 保留了。",
+        "en": "$8x$ differentiates to $8$; the $x$ should go, but it was kept."
+      },
+      {
+        "optionId": 3,
+        "zh": "這是 $f'''(x)$，多求了一次導數。",
+        "en": "This is $f'''(x)$: one derivative too many."
+      }
+    ]
   },
   {
     "id": "m1_rep_0034",
@@ -1301,7 +1763,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 4x^{3} + 7x^{2} + 5x$。求 $f''(x)$。",
-    "explanation": "求導兩次。第一次：$f'(x) = 12x^{2} + 14x + 5$。第二次：$f''(x) = 24x + 14$ —— 常數項 $5$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $14$ 誤寫成仍帶 $x$：$14x$ 求導之後應為 $14$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
+    "explanation": "求導兩次。第一次：$f'(x) = 12x^{2} + 14x + 5$。第二次：$f''(x) = 24x + 14$ —— 常數項 $5$ 在第二次求導時變成 $0$。",
     "options": [
       "$24$",
       "$24x + 14$",
@@ -1317,8 +1779,30 @@ export const m1AutoQuestions: Question[] = [
       "$12x^{2} + 14x + 5$",
       "$24x + 14x$"
     ],
-    "explanationEn": "Differentiate twice. First, $f'(x) = 12x^{2} + 14x + 5$. Again, $f''(x) = 24x + 14$ — the constant $5$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $14x$ differentiates to $14$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate twice. First: $f'(x) = 12x^{2} + 14x + 5$. Second: $f''(x) = 24x + 14$ — the constant $5$ becomes $0$ on the second differentiation.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "這是 $f'''(x)$，多求了一次導數。",
+        "en": "This is $f'''(x)$: one derivative too many."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。對 $f'(x) = 12x^{2} + 14x + 5$ 再求導一次。",
+        "en": "Correct. Differentiate $f'(x) = 12x^{2} + 14x + 5$ once more."
+      },
+      {
+        "optionId": 2,
+        "zh": "這是 $f'(x)$，只求了一次導數。題目問的是 $f''(x)$，要再求導一次。",
+        "en": "This is $f'(x)$, one derivative only. The question asks for $f''(x)$, so differentiate again."
+      },
+      {
+        "optionId": 3,
+        "zh": "$14x$ 求導後應為 $14$，$x$ 要消去；這裏把 $x$ 保留了。",
+        "en": "$14x$ differentiates to $14$; the $x$ should go, but it was kept."
+      }
+    ]
   },
   {
     "id": "m1_rep_0035",
@@ -1333,7 +1817,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 6x^{3} + 3x^{2} + 4x$。求 $f''(x)$。",
-    "explanation": "求導兩次。第一次：$f'(x) = 18x^{2} + 6x + 4$。第二次：$f''(x) = 36x + 6$ —— 常數項 $4$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $6$ 誤寫成仍帶 $x$：$6x$ 求導之後應為 $6$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
+    "explanation": "求導兩次。第一次：$f'(x) = 18x^{2} + 6x + 4$。第二次：$f''(x) = 36x + 6$ —— 常數項 $4$ 在第二次求導時變成 $0$。",
     "options": [
       "$36x + 6x$",
       "$36$",
@@ -1349,8 +1833,30 @@ export const m1AutoQuestions: Question[] = [
       "$36x + 6$",
       "$18x^{2} + 6x + 4$"
     ],
-    "explanationEn": "Differentiate twice. First, $f'(x) = 18x^{2} + 6x + 4$. Again, $f''(x) = 36x + 6$ — the constant $4$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $6x$ differentiates to $6$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate twice. First: $f'(x) = 18x^{2} + 6x + 4$. Second: $f''(x) = 36x + 6$ — the constant $4$ becomes $0$ on the second differentiation.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$6x$ 求導後應為 $6$，$x$ 要消去；這裏把 $x$ 保留了。",
+        "en": "$6x$ differentiates to $6$; the $x$ should go, but it was kept."
+      },
+      {
+        "optionId": 1,
+        "zh": "這是 $f'''(x)$，多求了一次導數。",
+        "en": "This is $f'''(x)$: one derivative too many."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。對 $f'(x) = 18x^{2} + 6x + 4$ 再求導一次。",
+        "en": "Correct. Differentiate $f'(x) = 18x^{2} + 6x + 4$ once more."
+      },
+      {
+        "optionId": 3,
+        "zh": "這是 $f'(x)$，只求了一次導數。題目問的是 $f''(x)$，要再求導一次。",
+        "en": "This is $f'(x)$, one derivative only. The question asks for $f''(x)$, so differentiate again."
+      }
+    ]
   },
   {
     "id": "m1_rep_0036",
@@ -1365,7 +1871,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 7x^{3} + 5x^{2} + 6x$。求 $f''(x)$。",
-    "explanation": "求導兩次。第一次：$f'(x) = 21x^{2} + 10x + 6$。第二次：$f''(x) = 42x + 10$ —— 常數項 $6$ 在第二次求導時歸零。第一個干擾項只求了【一次】導數，是本題最主要的失分位，讀題時要留意撇號的數目。第二項把常數 $10$ 誤寫成仍帶 $x$：$10x$ 求導之後應為 $10$，$x$ 必須消去。第三項多求了一次，那是 $f'''(x)$。",
+    "explanation": "求導兩次。第一次：$f'(x) = 21x^{2} + 10x + 6$。第二次：$f''(x) = 42x + 10$ —— 常數項 $6$ 在第二次求導時變成 $0$。",
     "options": [
       "$21x^{2} + 10x + 6$",
       "$42x + 10x$",
@@ -1381,8 +1887,30 @@ export const m1AutoQuestions: Question[] = [
       "$42$",
       "$42x + 10$"
     ],
-    "explanationEn": "Differentiate twice. First, $f'(x) = 21x^{2} + 10x + 6$. Again, $f''(x) = 42x + 10$ — the constant $6$ vanishes on the second differentiation. The first distractor stops after one differentiation, the main trap here; count the primes when reading the question. The second keeps an $x$ on the constant term: $10x$ differentiates to $10$, and the $x$ must go. The third differentiates once too often and gives $f'''(x)$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Differentiate twice. First: $f'(x) = 21x^{2} + 10x + 6$. Second: $f''(x) = 42x + 10$ — the constant $6$ becomes $0$ on the second differentiation.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "這是 $f'(x)$，只求了一次導數。題目問的是 $f''(x)$，要再求導一次。",
+        "en": "This is $f'(x)$, one derivative only. The question asks for $f''(x)$, so differentiate again."
+      },
+      {
+        "optionId": 1,
+        "zh": "$10x$ 求導後應為 $10$，$x$ 要消去；這裏把 $x$ 保留了。",
+        "en": "$10x$ differentiates to $10$; the $x$ should go, but it was kept."
+      },
+      {
+        "optionId": 2,
+        "zh": "這是 $f'''(x)$，多求了一次導數。",
+        "en": "This is $f'''(x)$: one derivative too many."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。對 $f'(x) = 21x^{2} + 10x + 6$ 再求導一次。",
+        "en": "Correct. Differentiate $f'(x) = 21x^{2} + 10x + 6$ once more."
+      }
+    ]
   },
   {
     "id": "m1_rep_0037",
@@ -1397,7 +1925,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = x^{2} -8 x$。求 $f(x)$ 為【遞增】的 $x$ 範圍。",
-    "explanation": "函數遞增即導數為正。$f'(x) = 2x -8$，令 $f'(x) > 0$ 得 $x > 4$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 4$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanation": "函數遞增即導數為正。$f'(x) = 2x - 8$，令 $f'(x) > 0$，得 $x > 4$。亦可用圖像檢查：這是開口向上的拋物線，頂點在 $x = 4$，頂點右邊上升、左邊下降。",
     "options": [
       "$x > 4$",
       "$x < 4$",
@@ -1413,8 +1941,30 @@ export const m1AutoQuestions: Question[] = [
       "$x > 8$",
       "$x > 0$"
     ],
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -8$, and $f'(x) > 0$ gives $x > 4$. Check it graphically: this is an upward parabola with vertex at $x = 4$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x - 8$; $f'(x) > 0$ gives $x > 4$. Check with the graph: an upward parabola with its vertex at $x = 4$, rising to the right of the vertex and falling to the left.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。解 $2x - 8 > 0$，得 $x > 4$。",
+        "en": "Correct. Solving $2x - 8 > 0$ gives $x > 4$."
+      },
+      {
+        "optionId": 1,
+        "zh": "不等號方向反了：$x < 4$ 時 $f'(x) < 0$，那是遞減的範圍。",
+        "en": "The inequality is the wrong way round: for $x < 4$, $f'(x) < 0$, which is where $f$ decreases."
+      },
+      {
+        "optionId": 2,
+        "zh": "把 $f'(x)$ 寫成 $x - 8$，漏了 $x^{2}$ 求導時帶出的係數 $2$。",
+        "en": "This takes $f'(x)$ as $x - 8$, missing the coefficient $2$ that comes from differentiating $x^{2}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$x > 0$ 只是「正數」，但頂點在 $x = 4$，不在原點；$0 < x < 4$ 時函數其實在下降。",
+        "en": "$x > 0$ just means \"positive\", but the vertex is at $x = 4$, not at the origin; for $0 < x < 4$ the function is falling."
+      }
+    ]
   },
   {
     "id": "m1_rep_0038",
@@ -1429,7 +1979,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 2x^{2} -12 x$。求 $f(x)$ 為【遞增】的 $x$ 範圍。",
-    "explanation": "函數遞增即導數為正。$f'(x) = 4x -12$，令 $f'(x) > 0$ 得 $x > 3$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanation": "函數遞增即導數為正。$f'(x) = 4x - 12$，令 $f'(x) > 0$，得 $x > 3$。亦可用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。",
     "options": [
       "$x > 0$",
       "$x > 3$",
@@ -1445,8 +1995,30 @@ export const m1AutoQuestions: Question[] = [
       "$x < 3$",
       "$x > 12$"
     ],
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x -12$, and $f'(x) > 0$ gives $x > 3$. Check it graphically: this is an upward parabola with vertex at $x = 3$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x - 12$; $f'(x) > 0$ gives $x > 3$. Check with the graph: an upward parabola with its vertex at $x = 3$, rising to the right of the vertex and falling to the left.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$x > 0$ 只是「正數」，但頂點在 $x = 3$，不在原點；$0 < x < 3$ 時函數其實在下降。",
+        "en": "$x > 0$ just means \"positive\", but the vertex is at $x = 3$, not at the origin; for $0 < x < 3$ the function is falling."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。解 $4x - 12 > 0$，得 $x > 3$。",
+        "en": "Correct. Solving $4x - 12 > 0$ gives $x > 3$."
+      },
+      {
+        "optionId": 2,
+        "zh": "不等號方向反了：$x < 3$ 時 $f'(x) < 0$，那是遞減的範圍。",
+        "en": "The inequality is the wrong way round: for $x < 3$, $f'(x) < 0$, which is where $f$ decreases."
+      },
+      {
+        "optionId": 3,
+        "zh": "把 $f'(x)$ 寫成 $x - 12$，漏了 $2x^{2}$ 求導時帶出的係數 $4$。",
+        "en": "This takes $f'(x)$ as $x - 12$, missing the coefficient $4$ that comes from differentiating $2x^{2}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0039",
@@ -1461,7 +2033,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = x^{2} -4 x$。求 $f(x)$ 為【遞增】的 $x$ 範圍。",
-    "explanation": "函數遞增即導數為正。$f'(x) = 2x -4$，令 $f'(x) > 0$ 得 $x > 2$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 2$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanation": "函數遞增即導數為正。$f'(x) = 2x - 4$，令 $f'(x) > 0$，得 $x > 2$。亦可用圖像檢查：這是開口向上的拋物線，頂點在 $x = 2$，頂點右邊上升、左邊下降。",
     "options": [
       "$x > 4$",
       "$x > 0$",
@@ -1477,8 +2049,30 @@ export const m1AutoQuestions: Question[] = [
       "$x > 2$",
       "$x < 2$"
     ],
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -4$, and $f'(x) > 0$ gives $x > 2$. Check it graphically: this is an upward parabola with vertex at $x = 2$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x - 4$; $f'(x) > 0$ gives $x > 2$. Check with the graph: an upward parabola with its vertex at $x = 2$, rising to the right of the vertex and falling to the left.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把 $f'(x)$ 寫成 $x - 4$，漏了 $x^{2}$ 求導時帶出的係數 $2$。",
+        "en": "This takes $f'(x)$ as $x - 4$, missing the coefficient $2$ that comes from differentiating $x^{2}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$x > 0$ 只是「正數」，但頂點在 $x = 2$，不在原點；$0 < x < 2$ 時函數其實在下降。",
+        "en": "$x > 0$ just means \"positive\", but the vertex is at $x = 2$, not at the origin; for $0 < x < 2$ the function is falling."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。解 $2x - 4 > 0$，得 $x > 2$。",
+        "en": "Correct. Solving $2x - 4 > 0$ gives $x > 2$."
+      },
+      {
+        "optionId": 3,
+        "zh": "不等號方向反了：$x < 2$ 時 $f'(x) < 0$，那是遞減的範圍。",
+        "en": "The inequality is the wrong way round: for $x < 2$, $f'(x) < 0$, which is where $f$ decreases."
+      }
+    ]
   },
   {
     "id": "m1_rep_0040",
@@ -1493,7 +2087,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 3x^{2} -18 x$。求 $f(x)$ 為【遞增】的 $x$ 範圍。",
-    "explanation": "函數遞增即導數為正。$f'(x) = 6x -18$，令 $f'(x) > 0$ 得 $x > 3$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanation": "函數遞增即導數為正。$f'(x) = 6x - 18$，令 $f'(x) > 0$，得 $x > 3$。亦可用圖像檢查：這是開口向上的拋物線，頂點在 $x = 3$，頂點右邊上升、左邊下降。",
     "options": [
       "$x < 3$",
       "$x > 18$",
@@ -1509,8 +2103,30 @@ export const m1AutoQuestions: Question[] = [
       "$x > 0$",
       "$x > 3$"
     ],
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 6x -18$, and $f'(x) > 0$ gives $x > 3$. Check it graphically: this is an upward parabola with vertex at $x = 3$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 6x - 18$; $f'(x) > 0$ gives $x > 3$. Check with the graph: an upward parabola with its vertex at $x = 3$, rising to the right of the vertex and falling to the left.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "不等號方向反了：$x < 3$ 時 $f'(x) < 0$，那是遞減的範圍。",
+        "en": "The inequality is the wrong way round: for $x < 3$, $f'(x) < 0$, which is where $f$ decreases."
+      },
+      {
+        "optionId": 1,
+        "zh": "把 $f'(x)$ 寫成 $x - 18$，漏了 $3x^{2}$ 求導時帶出的係數 $6$。",
+        "en": "This takes $f'(x)$ as $x - 18$, missing the coefficient $6$ that comes from differentiating $3x^{2}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$x > 0$ 只是「正數」，但頂點在 $x = 3$，不在原點；$0 < x < 3$ 時函數其實在下降。",
+        "en": "$x > 0$ just means \"positive\", but the vertex is at $x = 3$, not at the origin; for $0 < x < 3$ the function is falling."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。解 $6x - 18 > 0$，得 $x > 3$。",
+        "en": "Correct. Solving $6x - 18 > 0$ gives $x > 3$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0041",
@@ -1525,7 +2141,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = x^{2} -10 x$。求 $f(x)$ 為【遞增】的 $x$ 範圍。",
-    "explanation": "函數遞增即導數為正。$f'(x) = 2x -10$，令 $f'(x) > 0$ 得 $x > 5$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanation": "函數遞增即導數為正。$f'(x) = 2x - 10$，令 $f'(x) > 0$，得 $x > 5$。亦可用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。",
     "options": [
       "$x > 5$",
       "$x < 5$",
@@ -1541,8 +2157,30 @@ export const m1AutoQuestions: Question[] = [
       "$x > 10$",
       "$x > 0$"
     ],
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x -10$, and $f'(x) > 0$ gives $x > 5$. Check it graphically: this is an upward parabola with vertex at $x = 5$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 2x - 10$; $f'(x) > 0$ gives $x > 5$. Check with the graph: an upward parabola with its vertex at $x = 5$, rising to the right of the vertex and falling to the left.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。解 $2x - 10 > 0$，得 $x > 5$。",
+        "en": "Correct. Solving $2x - 10 > 0$ gives $x > 5$."
+      },
+      {
+        "optionId": 1,
+        "zh": "不等號方向反了：$x < 5$ 時 $f'(x) < 0$，那是遞減的範圍。",
+        "en": "The inequality is the wrong way round: for $x < 5$, $f'(x) < 0$, which is where $f$ decreases."
+      },
+      {
+        "optionId": 2,
+        "zh": "把 $f'(x)$ 寫成 $x - 10$，漏了 $x^{2}$ 求導時帶出的係數 $2$。",
+        "en": "This takes $f'(x)$ as $x - 10$, missing the coefficient $2$ that comes from differentiating $x^{2}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$x > 0$ 只是「正數」，但頂點在 $x = 5$，不在原點；$0 < x < 5$ 時函數其實在下降。",
+        "en": "$x > 0$ just means \"positive\", but the vertex is at $x = 5$, not at the origin; for $0 < x < 5$ the function is falling."
+      }
+    ]
   },
   {
     "id": "m1_rep_0042",
@@ -1557,7 +2195,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $f(x) = 2x^{2} -20 x$。求 $f(x)$ 為【遞增】的 $x$ 範圍。",
-    "explanation": "函數遞增即導數為正。$f'(x) = 4x -20$，令 $f'(x) > 0$ 得 $x > 5$。可以用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。第一個干擾項把不等號方向弄反了，即答成遞減的範圍 —— 讀題時要看清楚問的是遞增還是遞減。第二項忘記了求導時 $x^{2}$ 帶出的因子 $2$。第三項憑直覺答「正數區間」，但頂點並不在原點。",
+    "explanation": "函數遞增即導數為正。$f'(x) = 4x - 20$，令 $f'(x) > 0$，得 $x > 5$。亦可用圖像檢查：這是開口向上的拋物線，頂點在 $x = 5$，頂點右邊上升、左邊下降。",
     "options": [
       "$x > 0$",
       "$x > 5$",
@@ -1573,8 +2211,30 @@ export const m1AutoQuestions: Question[] = [
       "$x < 5$",
       "$x > 20$"
     ],
-    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x -20$, and $f'(x) > 0$ gives $x > 5$. Check it graphically: this is an upward parabola with vertex at $x = 5$, rising to the right of the vertex and falling to the left. The first distractor reverses the inequality and describes where the function decreases — read carefully which is asked. The second forgets the factor $2$ that differentiating $x^{2}$ produces. The third guesses \"the positive side\", but the vertex is not at the origin.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A function increases where its derivative is positive. $f'(x) = 4x - 20$; $f'(x) > 0$ gives $x > 5$. Check with the graph: an upward parabola with its vertex at $x = 5$, rising to the right of the vertex and falling to the left.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$x > 0$ 只是「正數」，但頂點在 $x = 5$，不在原點；$0 < x < 5$ 時函數其實在下降。",
+        "en": "$x > 0$ just means \"positive\", but the vertex is at $x = 5$, not at the origin; for $0 < x < 5$ the function is falling."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。解 $4x - 20 > 0$，得 $x > 5$。",
+        "en": "Correct. Solving $4x - 20 > 0$ gives $x > 5$."
+      },
+      {
+        "optionId": 2,
+        "zh": "不等號方向反了：$x < 5$ 時 $f'(x) < 0$，那是遞減的範圍。",
+        "en": "The inequality is the wrong way round: for $x < 5$, $f'(x) < 0$, which is where $f$ decreases."
+      },
+      {
+        "optionId": 3,
+        "zh": "把 $f'(x)$ 寫成 $x - 20$，漏了 $2x^{2}$ 求導時帶出的係數 $4$。",
+        "en": "This takes $f'(x)$ as $x - 20$, missing the coefficient $4$ that comes from differentiating $2x^{2}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0043",
@@ -1589,7 +2249,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $f(x) = x^{2} -6 x + 2$。試用二階導數判別法，判斷 $x = 3$ 這個駐點的性質。",
-    "explanation": "二階導數判別法：先求駐點（$f' = 0$ 之處），再看該點的二階導數。$f'(x) = 2x -6$，令其為零確認駐點在 $x = 3$；$f''(x) = 2$，恆為正。二階導數為【正】代表曲線在該處向上凹，故為極小值點。記法：$f'' > 0$ 像個「U」形，是低點；$f'' < 0$ 像個「∩」形，是高點。第一個干擾項把方向記反了。第二項誤以為二階導數為零 —— 此處它恆等於 $2$，並不為零。第三項用 $f' = 0$ 作判別理由，但 $f' = 0$ 只能【找出】駐點，不能判斷它是高是低。",
+    "explanation": "二階導數判別法：先找駐點（$f'(x) = 0$），再看該點的二階導數。$f'(x) = 2x - 6$，在 $x = 3$ 時為 $0$，所以是駐點；$f''(x) = 2$，恆為正。$f'' > 0$ 表示曲線在該處向上凹（形如「U」），所以是極小值點。",
     "options": [
       "拐點，因為 $f''(3) = 0$",
       "極大值點，因為 $f'(3) = 0$",
@@ -1605,8 +2265,30 @@ export const m1AutoQuestions: Question[] = [
       "A minimum, since $f''(3) = 2 > 0$",
       "A maximum, since $f''(3) = 2 > 0$"
     ],
-    "explanationEn": "The second derivative test: locate the stationary point where $f' = 0$, then examine the second derivative there. $f'(x) = 2x -6$, which vanishes at $x = 3$; and $f''(x) = 2$, which is positive everywhere. A *positive* second derivative means the curve is concave up, so this is a minimum. As a memory aid: $f'' > 0$ looks like a \"U\" and sits at the bottom; $f'' < 0$ looks like an \"∩\" and sits at the top. The first distractor reverses this. The second wrongly claims the second derivative is zero, when it is identically $2$. The third cites $f' = 0$ as the reason, but that only *locates* a stationary point and cannot classify it.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Second-derivative test: find where $f'(x) = 0$, then look at $f''$ there. $f'(x) = 2x - 6$ is $0$ at $x = 3$, so the point is stationary; $f''(x) = 2$ is always positive. $f'' > 0$ means the curve is concave up (a \"U\" shape), so the point is a minimum.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$f''(x)$ 恆等於 $2$，不等於 $0$。而且即使 $f'' = 0$，二階導數判別法亦只是未能判斷，並不表示該點是拐點。",
+        "en": "$f''(x)$ is $2$ everywhere, not $0$. Even where $f'' = 0$, the test is only inconclusive; it does not make the point an inflection."
+      },
+      {
+        "optionId": 1,
+        "zh": "$f'(3) = 0$ 只說明這是駐點，不能分辨極大或極小；要看 $f''$ 的正負。",
+        "en": "$f'(3) = 0$ only shows the point is stationary; it cannot tell a maximum from a minimum. Look at the sign of $f''$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$f''(3) = 2 > 0$，曲線向上凹，是極小值點。",
+        "en": "Correct. $f''(3) = 2 > 0$: the curve is concave up, so this is a minimum."
+      },
+      {
+        "optionId": 3,
+        "zh": "$f''(3) > 0$ 的計算對，但結論反了：$f'' > 0$ 是極小值，$f'' < 0$ 才是極大值。",
+        "en": "$f''(3) > 0$ is right, but the conclusion is reversed: $f'' > 0$ means a minimum; $f'' < 0$ a maximum."
+      }
+    ]
   },
   {
     "id": "m1_rep_0044",
@@ -1621,7 +2303,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $f(x) = 2x^{2} -12 x + 5$。試用二階導數判別法，判斷 $x = 3$ 這個駐點的性質。",
-    "explanation": "二階導數判別法：先求駐點（$f' = 0$ 之處），再看該點的二階導數。$f'(x) = 4x -12$，令其為零確認駐點在 $x = 3$；$f''(x) = 4$，恆為正。二階導數為【正】代表曲線在該處向上凹，故為極小值點。記法：$f'' > 0$ 像個「U」形，是低點；$f'' < 0$ 像個「∩」形，是高點。第一個干擾項把方向記反了。第二項誤以為二階導數為零 —— 此處它恆等於 $4$，並不為零。第三項用 $f' = 0$ 作判別理由，但 $f' = 0$ 只能【找出】駐點，不能判斷它是高是低。",
+    "explanation": "二階導數判別法：先找駐點（$f'(x) = 0$），再看該點的二階導數。$f'(x) = 4x - 12$，在 $x = 3$ 時為 $0$，所以是駐點；$f''(x) = 4$，恆為正。$f'' > 0$ 表示曲線在該處向上凹（形如「U」），所以是極小值點。",
     "options": [
       "極大值點，因為 $f''(3) = 4 > 0$",
       "拐點，因為 $f''(3) = 0$",
@@ -1637,8 +2319,30 @@ export const m1AutoQuestions: Question[] = [
       "A maximum, since $f'(3) = 0$",
       "A minimum, since $f''(3) = 4 > 0$"
     ],
-    "explanationEn": "The second derivative test: locate the stationary point where $f' = 0$, then examine the second derivative there. $f'(x) = 4x -12$, which vanishes at $x = 3$; and $f''(x) = 4$, which is positive everywhere. A *positive* second derivative means the curve is concave up, so this is a minimum. As a memory aid: $f'' > 0$ looks like a \"U\" and sits at the bottom; $f'' < 0$ looks like an \"∩\" and sits at the top. The first distractor reverses this. The second wrongly claims the second derivative is zero, when it is identically $4$. The third cites $f' = 0$ as the reason, but that only *locates* a stationary point and cannot classify it.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Second-derivative test: find where $f'(x) = 0$, then look at $f''$ there. $f'(x) = 4x - 12$ is $0$ at $x = 3$, so the point is stationary; $f''(x) = 4$ is always positive. $f'' > 0$ means the curve is concave up (a \"U\" shape), so the point is a minimum.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$f''(3) > 0$ 的計算對，但結論反了：$f'' > 0$ 是極小值，$f'' < 0$ 才是極大值。",
+        "en": "$f''(3) > 0$ is right, but the conclusion is reversed: $f'' > 0$ means a minimum; $f'' < 0$ a maximum."
+      },
+      {
+        "optionId": 1,
+        "zh": "$f''(x)$ 恆等於 $4$，不等於 $0$。而且即使 $f'' = 0$，二階導數判別法亦只是未能判斷，並不表示該點是拐點。",
+        "en": "$f''(x)$ is $4$ everywhere, not $0$. Even where $f'' = 0$, the test is only inconclusive; it does not make the point an inflection."
+      },
+      {
+        "optionId": 2,
+        "zh": "$f'(3) = 0$ 只說明這是駐點，不能分辨極大或極小；要看 $f''$ 的正負。",
+        "en": "$f'(3) = 0$ only shows the point is stationary; it cannot tell a maximum from a minimum. Look at the sign of $f''$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$f''(3) = 4 > 0$，曲線向上凹，是極小值點。",
+        "en": "Correct. $f''(3) = 4 > 0$: the curve is concave up, so this is a minimum."
+      }
+    ]
   },
   {
     "id": "m1_rep_0045",
@@ -1653,7 +2357,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某校測驗成績服從正態分佈，平均分 $60$，標準差 $8$。小明考獲 $68$ 分。\n\n他的成績高於平均分多少個標準差？",
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $8$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanation": "標準分數量度的是「距離平均值有多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$。先減平均值得出差距，再除以標準差，把差距換算成標準差的數目。",
     "options": [
       "$1$ 個標準差",
       "$8$ 個標準差",
@@ -1669,8 +2373,30 @@ export const m1AutoQuestions: Question[] = [
       "$7.5$ standard deviations",
       "$8.5$ standard deviations"
     ],
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $8$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A standard score measures how many standard deviations a value is from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{68 - 60}{8} = 1$. Subtract the mean to get the gap, then divide by the standard deviation to count it in standard deviations.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$\\dfrac{68 - 60}{8} = 1$。",
+        "en": "Correct. $\\dfrac{68 - 60}{8} = 1$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$68 - 60 = 8$ 是分數的差距，單位仍然是「分」；還要除以標準差 $8$。",
+        "en": "$68 - 60 = 8$ is the gap in marks; it still has to be divided by the standard deviation $8$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{60}{8}$：這是平均分除以標準差，與小明的分數無關。",
+        "en": "$\\dfrac{60}{8}$ is the mean divided by the standard deviation; it has nothing to do with the student's score."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{68}{8}$：直接把分數除以標準差，漏了先減去平均分 $60$。",
+        "en": "$\\dfrac{68}{8}$ divides the score by the standard deviation without first subtracting the mean $60$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0046",
@@ -1685,7 +2411,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某校測驗成績服從正態分佈，平均分 $100$，標準差 $15$。小明考獲 $130$ 分。\n\n他的成績高於平均分多少個標準差？",
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $30$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanation": "標準分數量度的是「距離平均值有多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$。先減平均值得出差距，再除以標準差，把差距換算成標準差的數目。",
     "options": [
       "$8.6667$ 個標準差",
       "$2$ 個標準差",
@@ -1701,8 +2427,30 @@ export const m1AutoQuestions: Question[] = [
       "$30$ standard deviations",
       "$6.6667$ standard deviations"
     ],
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $30$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A standard score measures how many standard deviations a value is from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{130 - 100}{15} = 2$. Subtract the mean to get the gap, then divide by the standard deviation to count it in standard deviations.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{130}{15}$：直接把分數除以標準差，漏了先減去平均分 $100$。",
+        "en": "$\\dfrac{130}{15}$ divides the score by the standard deviation without first subtracting the mean $100$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$\\dfrac{130 - 100}{15} = 2$。",
+        "en": "Correct. $\\dfrac{130 - 100}{15} = 2$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$130 - 100 = 30$ 是分數的差距，單位仍然是「分」；還要除以標準差 $15$。",
+        "en": "$130 - 100 = 30$ is the gap in marks; it still has to be divided by the standard deviation $15$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{100}{15}$：這是平均分除以標準差，與小明的分數無關。",
+        "en": "$\\dfrac{100}{15}$ is the mean divided by the standard deviation; it has nothing to do with the student's score."
+      }
+    ]
   },
   {
     "id": "m1_rep_0047",
@@ -1717,7 +2465,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某校測驗成績服從正態分佈，平均分 $50$，標準差 $5$。小明考獲 $55$ 分。\n\n他的成績高於平均分多少個標準差？",
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $5$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanation": "標準分數量度的是「距離平均值有多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$。先減平均值得出差距，再除以標準差，把差距換算成標準差的數目。",
     "options": [
       "$10$ 個標準差",
       "$11$ 個標準差",
@@ -1733,8 +2481,30 @@ export const m1AutoQuestions: Question[] = [
       "$1$ standard deviations",
       "$5$ standard deviations"
     ],
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $5$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A standard score measures how many standard deviations a value is from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{55 - 50}{5} = 1$. Subtract the mean to get the gap, then divide by the standard deviation to count it in standard deviations.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{50}{5}$：這是平均分除以標準差，與小明的分數無關。",
+        "en": "$\\dfrac{50}{5}$ is the mean divided by the standard deviation; it has nothing to do with the student's score."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{55}{5}$：直接把分數除以標準差，漏了先減去平均分 $50$。",
+        "en": "$\\dfrac{55}{5}$ divides the score by the standard deviation without first subtracting the mean $50$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$\\dfrac{55 - 50}{5} = 1$。",
+        "en": "Correct. $\\dfrac{55 - 50}{5} = 1$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$55 - 50 = 5$ 是分數的差距，單位仍然是「分」；還要除以標準差 $5$。",
+        "en": "$55 - 50 = 5$ is the gap in marks; it still has to be divided by the standard deviation $5$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0048",
@@ -1749,7 +2519,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某校測驗成績服從正態分佈，平均分 $72$，標準差 $8$。小明考獲 $88$ 分。\n\n他的成績高於平均分多少個標準差？",
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $16$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanation": "標準分數量度的是「距離平均值有多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$。先減平均值得出差距，再除以標準差，把差距換算成標準差的數目。",
     "options": [
       "$16$ 個標準差",
       "$9$ 個標準差",
@@ -1765,8 +2535,30 @@ export const m1AutoQuestions: Question[] = [
       "$11$ standard deviations",
       "$2$ standard deviations"
     ],
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $16$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A standard score measures how many standard deviations a value is from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{88 - 72}{8} = 2$. Subtract the mean to get the gap, then divide by the standard deviation to count it in standard deviations.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$88 - 72 = 16$ 是分數的差距，單位仍然是「分」；還要除以標準差 $8$。",
+        "en": "$88 - 72 = 16$ is the gap in marks; it still has to be divided by the standard deviation $8$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{72}{8}$：這是平均分除以標準差，與小明的分數無關。",
+        "en": "$\\dfrac{72}{8}$ is the mean divided by the standard deviation; it has nothing to do with the student's score."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{88}{8}$：直接把分數除以標準差，漏了先減去平均分 $72$。",
+        "en": "$\\dfrac{88}{8}$ divides the score by the standard deviation without first subtracting the mean $72$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$\\dfrac{88 - 72}{8} = 2$。",
+        "en": "Correct. $\\dfrac{88 - 72}{8} = 2$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0049",
@@ -1781,7 +2573,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某校測驗成績服從正態分佈，平均分 $120$，標準差 $20$。小明考獲 $140$ 分。\n\n他的成績高於平均分多少個標準差？",
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $20$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanation": "標準分數量度的是「距離平均值有多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$。先減平均值得出差距，再除以標準差，把差距換算成標準差的數目。",
     "options": [
       "$1$ 個標準差",
       "$20$ 個標準差",
@@ -1797,8 +2589,30 @@ export const m1AutoQuestions: Question[] = [
       "$6$ standard deviations",
       "$7$ standard deviations"
     ],
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $20$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A standard score measures how many standard deviations a value is from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{140 - 120}{20} = 1$. Subtract the mean to get the gap, then divide by the standard deviation to count it in standard deviations.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$\\dfrac{140 - 120}{20} = 1$。",
+        "en": "Correct. $\\dfrac{140 - 120}{20} = 1$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$140 - 120 = 20$ 是分數的差距，單位仍然是「分」；還要除以標準差 $20$。",
+        "en": "$140 - 120 = 20$ is the gap in marks; it still has to be divided by the standard deviation $20$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{120}{20}$：這是平均分除以標準差，與小明的分數無關。",
+        "en": "$\\dfrac{120}{20}$ is the mean divided by the standard deviation; it has nothing to do with the student's score."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{140}{20}$：直接把分數除以標準差，漏了先減去平均分 $120$。",
+        "en": "$\\dfrac{140}{20}$ divides the score by the standard deviation without first subtracting the mean $120$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0050",
@@ -1813,7 +2627,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某校測驗成績服從正態分佈，平均分 $45$，標準差 $4$。小明考獲 $57$ 分。\n\n他的成績高於平均分多少個標準差？",
-    "explanation": "標準分數量度的正是「距離平均值多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$。兩個步驟缺一不可 —— 先【減平均】看差距，再【除標準差】把差距換算成「幾多個標準差」。第一個干擾項停在 $12$，那是分數的差距，單位仍然是分而不是標準差，是本題最主要的失分位。餘下兩項漏了減平均這一步。標準分數的用處在於：不同科目、不同卷別的分數本來無法直接比較，換算成 $z$ 之後就有了共同尺度。",
+    "explanation": "標準分數量度的是「距離平均值有多少個標準差」：$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$。先減平均值得出差距，再除以標準差，把差距換算成標準差的數目。",
     "options": [
       "$14.25$ 個標準差",
       "$3$ 個標準差",
@@ -1829,8 +2643,30 @@ export const m1AutoQuestions: Question[] = [
       "$12$ standard deviations",
       "$11.25$ standard deviations"
     ],
-    "explanationEn": "A standard score measures exactly this — how many standard deviations a value lies from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$. Both steps are needed: subtract the mean to get the gap, then divide by the standard deviation to express that gap in standard deviations. The first distractor stops at $12$, which is a gap in marks, not in standard deviations — the main trap here. The other two omit the subtraction. The value of standard scores is that marks from different subjects or papers, which cannot be compared directly, share a common scale once converted to $z$.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "A standard score measures how many standard deviations a value is from the mean: $z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{57 - 45}{4} = 3$. Subtract the mean to get the gap, then divide by the standard deviation to count it in standard deviations.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{57}{4}$：直接把分數除以標準差，漏了先減去平均分 $45$。",
+        "en": "$\\dfrac{57}{4}$ divides the score by the standard deviation without first subtracting the mean $45$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$\\dfrac{57 - 45}{4} = 3$。",
+        "en": "Correct. $\\dfrac{57 - 45}{4} = 3$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$57 - 45 = 12$ 是分數的差距，單位仍然是「分」；還要除以標準差 $4$。",
+        "en": "$57 - 45 = 12$ is the gap in marks; it still has to be divided by the standard deviation $4$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{45}{4}$：這是平均分除以標準差，與小明的分數無關。",
+        "en": "$\\dfrac{45}{4}$ is the mean divided by the standard deviation; it has nothing to do with the student's score."
+      }
+    ]
   },
   {
     "id": "m1_rep_0051",

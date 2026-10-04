@@ -33,8 +33,8 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 10
   },
   "m1": {
-    "total": 898,
-    "mc": 881,
+    "total": 946,
+    "mc": 929,
     "written": 17,
     "topics": 12
   },
@@ -626,8 +626,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "建模能力",
       "frameworkEn": "Modelling",
       "emoji": "🏗️",
-      "count": 57,
-      "mcCount": 56,
+      "count": 63,
+      "mcCount": 62,
       "writtenCount": 1
     },
     {
@@ -670,8 +670,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "微積分",
       "frameworkEn": "Calculus",
       "emoji": "📈",
-      "count": 100,
-      "mcCount": 98,
+      "count": 142,
+      "mcCount": 140,
       "writtenCount": 2
     },
     {
@@ -3483,7 +3483,7 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數（學生練習得到的題目，即 CONTENT_STATS.published）。 */
-export const TOTAL_QUESTIONS = 26461
+export const TOTAL_QUESTIONS = 26509
 
 /**
  * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，四項相加等於 totalAuthored。
@@ -3491,8 +3491,8 @@ export const TOTAL_QUESTIONS = 26461
  */
 export const CONTENT_STATS = {
   "totalAuthored": 27326,
-  "published": 26461,
-  "withdrawn": 633,
+  "published": 26509,
+  "withdrawn": 585,
   "withheldTopic": 219,
   "pendingReview": 13
 } as const

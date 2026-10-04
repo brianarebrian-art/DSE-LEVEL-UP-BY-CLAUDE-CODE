@@ -1,6 +1,7 @@
 {
   "batch": "M1-01",
   "subject": "m1",
+  "computed": true,
   "generatedBy": "scripts/qbank/repairs/m1-01.mts",
   "repairs": [
     {

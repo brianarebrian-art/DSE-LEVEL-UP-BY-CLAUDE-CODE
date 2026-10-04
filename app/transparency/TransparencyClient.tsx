@@ -264,12 +264,17 @@ export default function TransparencyClient({
               <div>
                 <dt className="text-xs text-ink-muted">{en ? 'Back in practice' : '已重新上線'}</dt>
                 <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.restored)}</dd>
+                {stats.restoredUnreviewed > 0 && (
+                  <dd className="mt-1 text-xs text-ink-muted">
+                    {en ? `${n(stats.restoredUnreviewed)} without a person’s review` : `其中 ${n(stats.restoredUnreviewed)} 條未經人手覆核`}
+                  </dd>
+                )}
               </div>
             </dl>
             <p className="text-ink-muted text-sm leading-relaxed mb-6">
               {en
-                ? `Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. A rewritten question goes back into practice only after a person has reviewed its content.`
-                : `分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。已改寫嘅題目要經真人內容覆核，先會重新加入練習池。`}
+                ? `Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. Since 4 October 2026, a calculation question whose answer and option-by-option explanation are recomputed by a program goes back into practice once it passes the automated checks, without a person's review. Text explanations still go back only after a person who knows the subject has reviewed them.`
+                : `分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。由 2026 年 10 月 4 日起，計算題嘅答案同逐個選項嘅解釋由程式重新計出，過咗自動檢查就重新上線，未經人手覆核。文字題嘅解析仍然要經熟悉該科嘅真人覆核，先會重新加入練習池。`}
             </p>
           </>
         )}
