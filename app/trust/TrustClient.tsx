@@ -86,13 +86,15 @@ export default function TrustClient() {
 
       <h2 className="mb-3 text-lg font-medium text-ink">{en ? 'The questions people actually ask' : '大家真係會問嘅問題'}</h2>
       <div className="space-y-3">
+        {/* 2026-10-04（審計 #7）：原文「出唔出街由人決定」與憲章 §12.1 不符 —— 題目經機器閘自動上線，
+            人只負責事後退回（withdraw.mts）。改為照實描述，與 /methodology 同一句。 */}
         <Card
           href="/transparency"
           q={en ? 'Who writes the questions? Does AI write them?' : '啲題目邊個寫？係咪 AI 寫？'}
           a={
             en
-              ? 'AI drafts and classifies; a person decides what goes live. Each question shows its own review status.'
-              : 'AI 出初稿同分類，出唔出街由人決定。每條題目都會顯示佢自己嘅覆核狀態。'
+              ? 'AI drafts and classifies. Questions go live after automated checks, and we withdraw or fix any that turn out to be wrong. Each question shows its own review status.'
+              : 'AI 出初稿同分類，經自動檢查之後上線；發現有錯，我哋會落架或者修正。每條題目都會顯示佢自己嘅覆核狀態。'
           }
           cta={en ? 'How questions are made' : '題目點樣做出嚟'}
         />
