@@ -144,7 +144,7 @@
 - 選項：A 照審計開表（只收題號、所選選項、500 字內描述；創辦人自行在 Supabase 建表；私隱頁同步更新）/ B 維持電郵 / C 先點算電郵收件匣的報錯數量，再決定
 - Loop 建議：C。數量少的話，電郵已足夠。
 - 創辦人回覆：2026-10-04 對話中回覆「A7-2 A」。其後 loop 指出選項 A 包括儲存學生自己寫的描述，與憲章 §16.E 約束 5 衝突，再問；創辦人回覆「b」（連文字儲存），實施時被 Claude Code 自動安全檢查以「個人資料處理」為由阻止，未寫入任何檔案；再問，創辦人回覆「a」：只存題號、問題類別、介面語言及時間，學生寫的描述照用電郵。已實施，commit `752efad`。憲章 §16.E 不變。
-- 資料表：2026-10-04 創辦人在對話中要求 Claude 代為建立（「你開埋嗰個嘅資料表」）。已用 Supabase `apply_migration`（名稱 `question_reports`）建立，內容同 `supabase/migrations/0020_question_reports.sql`。只讀核對：RLS 開、0 條 policy、anon 及 authenticated 無讀寫權、service_role 可讀寫、6 欄、0 行；`public` 由 8 張表變 9 張。同日創辦人表示暫不推送 `audit-loop`、不合併入 `main`，所以正式網站的報錯掣仍只有電郵，資料表暫時無人寫入。
+- 資料表：2026-10-04 創辦人在對話中要求 Claude 代為建立（「你開埋嗰個嘅資料表」）。已用 Supabase `apply_migration`（名稱 `question_reports`）建立，內容同 `supabase/migrations/0020_question_reports.sql`。只讀核對：RLS 開、0 條 policy、anon 及 authenticated 無讀寫權、service_role 可讀寫、6 欄、0 行；`public` 由 8 張表變 9 張。同日創辦人回覆「我唔會推送……維持原狀」，loop 誤解為「不想合併」；創辦人其後澄清是「不懂得合併」，並回覆「a」：照 loop 的步驟用 GitHub Desktop 推送及合併。
 
 ### Q-A7-3 公開「最近退回」清單
 - 類型：方向決定
