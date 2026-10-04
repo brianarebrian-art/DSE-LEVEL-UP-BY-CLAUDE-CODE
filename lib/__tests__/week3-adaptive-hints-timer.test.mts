@@ -264,18 +264,12 @@ test('英文文案唔可以夾中文（非華語考生）', () => {
 })
 
 // ── 層級叫法唔可以喺兩個地方開兩套 ─────────────────────────────────────────
-test('選擇器嘅層級名同徽章一致；hard 唔會因為選擇器而變返有徽章', async () => {
-  const { DIFFICULTY_TIERS, TIER_REQUEST_LABELS } = await import('../difficulty.ts')
-  assert.equal(TIER_REQUEST_LABELS.easy.zh, DIFFICULTY_TIERS.easy.label)
-  assert.equal(TIER_REQUEST_LABELS.medium.zh, DIFFICULTY_TIERS.medium.label)
-  assert.equal(TIER_REQUEST_LABELS.easy.en, DIFFICULTY_TIERS.easy.labelEn)
-  assert.equal(TIER_REQUEST_LABELS.medium.en, DIFFICULTY_TIERS.medium.labelEn)
-  // 「隱形最深層」設計不變：hard 依然冇徽章
+// 2026-10-03（Q-T11）：選擇器改為相對要求（難啲／易啲），唔再列出層級名，
+// 所以 TIER_REQUEST_LABELS 已刪除；「隱形最深層」設計不變。
+test('hard 依然冇徽章', async () => {
+  const { DIFFICULTY_TIERS } = await import('../difficulty.ts')
   assert.equal(DIFFICULTY_TIERS.hard.label, null, 'hard 唔應該有徽章')
   assert.equal(DIFFICULTY_TIERS.hard.labelEn, null)
-  // 但選擇器要叫得出佢
-  assert.ok(TIER_REQUEST_LABELS.hard.zh.length > 0)
-  assert.ok(TIER_REQUEST_LABELS.hard.en.length > 0)
 })
 
 test('練習頁唔可以自己另開一套層級叫法', () => {
@@ -283,5 +277,7 @@ test('練習頁唔可以自己另開一套層級叫法', () => {
   for (const word of ['普通', '拔尖']) {
     assert.ok(!code.includes(word), `練習頁出現咗第三套叫法「${word}」`)
   }
-  assert.match(code, /TIER_REQUEST_LABELS\[tier\]/)
+  // Q-T11：四個一次性要求，唔再列出層級名
+  assert.match(code, /\{ key: 'same', zh: '同類型再一題', en: 'Same type again' \}/)
+  assert.match(code, /wishIndex\(tail, currentQ, w\.key\) >= 0/)
 })

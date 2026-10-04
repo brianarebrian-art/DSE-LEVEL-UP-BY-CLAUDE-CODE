@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #11 · Branch: audit-loop
+最後更新：2026-10-04 · Iteration #12 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -53,9 +53,9 @@
 | T02 | SIGN | STALE | | 2026-10-02 核實社群安全頁每句屬實：分享卡（`components/DailyStatsCard.tsx:136`）及呼吸空間（`app/relax/components/RelaxLanding.tsx:121` → `/relax/group`）確有 IG 群組連結，YouTube（`SoloPlayer.tsx`）、GitHub（`GuardianCredits.tsx`）亦經 ExternalLinkGate。prompt「分享卡永遠唔放」與 Yuna 2026-09-21 決定衝突，見 Q-T02 |
 | T03 | DIRECT | DONE | `70692a5` | 頁尾及關於頁經 ExternalLinkGate；本機 production build 390／768／1024／1920 四個闊度都見到、冇超出畫面；撳後出「你即將離開」提示，console 冇錯誤（CSP 無影響） |
 | T38 | SIGN | TODO | | 依賴 T01（WAITING-FOUNDER） |
-| T39 | SIGN | DONE | `2b616c8` | 文字引用同意書第一點，項數用 `lib/cloudKeys.ts` 的 `CLOUD_COUNT`（13），連私隱政策及帳戶頁。位置：手機／平板選單內登入掣下、進度頁「綁定 Google」卡。桌面版頂欄登入掣旁冇位放，未加。本機 production build 實測兩處都顯示、冇超出畫面。等 Q-T39 批核 |
-| T04 | SIGN | WAITING-FOUNDER | | (a) 空狀態已有 CTA（`app/predictor/PredictorClient.tsx:94`「揀科目開始」→ `/subjects`）；(b) 已顯示「按本科 N 節有效練習」（`components/MasteryEstimate.tsx:67`），以節計唔係以題計；(c) 已係範圍。頁面會唔會繼續顯示 DSE 等級屬未決 DECISION_CONFLICT（`docs/ux-loop-progress.md:741`、`:837`），見 Q-T04 |
-| T05 | SIGN | WAITING-FOUNDER | | 現時答錯後解析先出第一步（`StagedExplanation`），學生可撳開全部或揀「以後直接睇晒」。今日創辦人批准嘅關於頁字眼正正描述「先給你第一步」，同 T05「預設展開」衝突，見 Q-T05 |
+| T39 | SIGN | DONE | `c709fe6` | Q-T39：短句、講明可選；結果頁加可選登入掣；本機實測 |
+| T04 | SIGN | DONE | `918880d` | Q-T04：等級範圍預設收埋，撳「睇粗糙估算（僅供參考）」先出；本機實測 |
+| T05 | SIGN | STALE | | Q-T05：創辦人決定維持先出第一步 |
 | T06 | SIGN | STALE | | 情緒 check-in 彈窗（`EmotionThermometer`）及解析下心情小卡已按創辦人 2026-10-02 決定刪除（憲章 §7.2.1，commit `169e1bf`、`b636838`） |
 | T07 | SIGN | STALE | | 練習頁錯因三揀一已按創辦人 2026-10-02 決定刪除，答錯直接出解析（憲章 §7.2.1，commit `169e1bf`）；書寫題及答題紙保留 |
 | T08 | DIRECT | DONE | `1a4c801` | 本機 production build 實測：由首頁撳數學，載入期間 `role="status"` 讀出「正在準備你嘅 10 條練習題…」 |
@@ -63,8 +63,8 @@
 | T40 | SIGN | STALE | | 已有：`/subjects` 頂部「最近練過」科目掣（`app/subjects/SubjectsView.tsx:182`，UX loop 16）；首頁回頭學生有「上次練緊／上次未做完」卡（`components/ContinueCard.tsx`），一撳返去。首頁再加一行會重複並擠迫 375px 首屏 |
 | T41 | SIGN | STALE | | 已有：`components/ShareStatsCardButton.tsx:55-69` 支援 files 就用 `navigator.share`，唔支援就下載 |
 | T42 | SIGN | DONE | `74bf9f0` | 結果頁一行文字連結「追蹤 @dselevelup 睇更多溫書貼士」，經 ExternalLinkGate；本機 production build 做完一節實測顯示 |
-| T10 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T10 |
-| T11 | FOUNDER | WAITING-FOUNDER | | 已寫 Q-T11 |
+| T10 | FOUNDER | DONE | `501ca48` | Q-T10：改「先做到呢度」 |
+| T11 | FOUNDER | DONE | `b559469` | Q-T11：同類型再一題／難啲／易啲／換課題，一次性、只排次序；本機實測換課題同灰掣 |
 | T12 | DIRECT | TODO | | |
 | T13 | DIRECT | STALE | | 改進循環 2 R2-11d 已修正（commit `23cdb01`）。2026-10-02 本機 production build 390×844 實測 `/about` 捲到底：頁尾最後一行底部 y=738，底欄頂 y=787，冇被遮 |
 | T14 | DIRECT | TODO | | |
@@ -165,3 +165,24 @@
 
 - §8 拒絕項目照 prompt v5 全部記錄，不另開任務。
 - 憲章與 prompt §3 有出入的地方，按 §1.2 第 5 條以憲章為準，已列入 FOUNDER-QUEUE（Q-P1–Q-P3）。
+
+- 審計 #7（2026-10-04，貼上內容，對象為線上版）核對結果：
+  - 已修：信任中心及 `/methodology`「出唔出街由人決定」與 §12.1 不符，改為照實描述（commit `7ad76b9`，trust-copy 測試擴至四頁）；`/security.txt` 404，加 308 轉址（commit `a25a743`）。
+  - 待創辦人：頁尾「等級預測」（Q-A7-1，憲章 §13 原文）、報錯入庫（Q-A7-2）、公開退回清單（Q-A7-3）、CSP nonce（Q-A7-4）。
+  - 已存在，不另開任務：每題覆核標籤（`components/QuestionProvenance.tsx`）、做完一節後的 IG／Threads 連結及登入提示（Q-T02、Q-T39）、私隱頁 Vercel Analytics 說明、科目頁「部分考核形式未於本站提供」（`app/subjects/SubjectsView.tsx:112`，逐科資料 ASSESSMENT_METADATA_DEFERRED）、情緒彈窗已刪（2026-10-02）。
+  - 已有決定，不再開問題：域名（見上 2026-10-02）、答錯先出第一步（Q-T05）。
+  - 與實況不符：「1024px 導航唔會變桌面欄、25 科變長列表」—— 2026-10-04 本機 dev 1024×768 實測 `/subjects` 有左側圖示欄及三欄科目卡。同一截圖見左下無障礙浮動掣疊住第一張卡的「開始 10 題」，屬 T12。
+  - 安全核對：`/api/*` 回應無 `access-control-allow-origin: *`，只有 CDN 靜態頁有（公開內容、不帶 cookie，風險低，不改）；`NEXT_PUBLIC_*` 只有 Supabase URL、anon key、VAPID 公鑰及 auth URL，資料庫連線 `DATABASE_URL` 只在 `lib/auth/better-auth.ts`（`import 'server-only'`）；`auth.ts` 無自訂 redirect callback，用 Auth.js 預設同源限制；RLS 見上 2026-10-02 只讀核對。
+  - 未做、未排期：390px 精簡導航、1920px 題目解析並排、免登入進度碼、人工金標 50 題、每週電郵摘要。屬設計或內容工作，待創辦人排優先次序。
+  - 檢查：npm test 1252/1252、tsc 0、改動檔 lint 0 error；本機 dev 實測信任中心及方法論新字眼、`/security.txt` → 308 → `/.well-known/security.txt`，console 無錯誤。production build 通過（2026-10-04）。
+- 2026-10-04 創辦人回覆審計 #7 四題（「A7-1 A、A7-2 A、A7-3 A、A7-4 B」）：
+  - A7-1：憲章 §13 修訂，commit `1777234`。
+  - A7-3：`/transparency` 最近退回紀錄，commit `fb42589`、`c8eca66`。
+  - A7-4：CSP nonce，commit `b79cc36`。代價：全部 HTML 頁面由預先產生改為每次請求即時產生（build 只剩 icon、manifest、OG 圖及 sitemap 為靜態），CDN 不再快取頁面，每次開頁都用一次 Vercel 運算。部署後要留意 Vercel 用量及開頁速度。本機正式版實測 23 條路徑：每個可執行 script 帶當次 nonce、每次 nonce 不同；注入的 inline script 及 eval 被擋；練習、筆記、進度、透明度頁無 console 錯誤。Vercel Web Analytics 只在正式部署載入，本機測不到（同源 script，`'self'` 已容許），⬜ 待部署後驗證。
+  - A7-2：與憲章 §16.E 約束 5 衝突，暫停，已再問創辦人（見 FOUNDER-QUEUE Q-A7-2）。
+  - 另見：`components/DataPortability.tsx` 已有「導出／導入進度檔案」，審計建議的「免登入進度碼」部分已存在。
+  - 檢查：npm test 1263/1263、tsc 0、lint 0 error（34 warnings）、qa 通過、production build 通過。
+- 2026-10-04 A7-2 最終方案（創辦人回覆「a」）：報錯可直接送出，只存題號、類別、語言、時間（commit `752efad`）。私隱政策 bump 至 `2026-10-04.v1`，登入學生會再見同意書。本機正式版實測：無效資料 5 種全部 400；瀏覽器以模擬伺服器回覆測試「送出」成功及失敗兩條路，送出內容只有題號、類別、語言（即使描述框有字）；未向正式資料庫寫入任何資料。資料表要創辦人在 Supabase 建立，⬜ 待建立後在正式網站驗證。檢查：npm test 1269/1269、tsc 0、lint 0 error、qa 通過、build 通過。
+- 2026-10-04 創辦人要求 Claude 建立 `question_reports`（Supabase project `aegekxapxgcfdrkzisis`，migration 名 `question_reports`）。建立前只讀確認表不存在；建立後只讀核對權限正確（見 FOUNDER-QUEUE Q-A7-2），未寫入任何資料行。Security advisor：新表只有 INFO「RLS enabled, no policy」（刻意，同其他 4 張用戶表）；另有一項舊有 WARN `public.handle_updated_at` search_path 未固定，非今次引入，未處理。
+- 更正（2026-10-04）：上一條紀錄寫「創辦人決定暫不推送、不合併」是 loop 誤解。創辦人原話「我唔會推送……」意思是「不懂得推送」，不是「不想」。澄清後創辦人回覆「a」：照 loop 提供的 GitHub Desktop 步驟推送 `audit-loop` 並合併入 `main`。
+

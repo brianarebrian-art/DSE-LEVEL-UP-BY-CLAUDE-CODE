@@ -13,6 +13,7 @@ import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
 import { SITE_ORIGIN, OFFICIAL_SOCIAL } from '@/lib/site'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import SignInNote from '@/components/SignInNote'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
 import { useQuiet } from '@/lib/quietMode'
@@ -258,7 +259,6 @@ export default function ResultPageClient() {
     tiers: cardTiers,
     strengthTopic: bestTopic && bestTopic.correct === bestTopic.total && bestTopic.topic !== worstTopic?.topic ? bestTopic.topic : undefined,
     focusTopic: worstTopic && worstTopic.correct < worstTopic.total ? worstTopic.topic : undefined,
-    igLink: 'ig.me/j/AbYCy6ZUDR-yWVPN',
     siteUrl: siteHost || SITE_ORIGIN.replace(/^https:\/\//, ''),
   }
   // UX audit A2 (c): the cause card, shared instead of the score card by default.
@@ -543,6 +543,9 @@ export default function ResultPageClient() {
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
+
+        {/* Q-T39（創辦人 2026-10-03）：做完一節先提示可選同步，唔喺首屏逼登入。已登入就唔顯示。 */}
+        <SignInNote withButton />
 
         {/* 官方帳戶（audit loop T42）：只喺結果頁網頁，唔放上分享卡；經出口閘門。 */}
         <p className="no-print text-center text-sm text-ink-muted">

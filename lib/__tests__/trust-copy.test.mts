@@ -37,7 +37,20 @@ test('nothing presents the questions as past papers', () => {
 })
 
 // Removing the disclosure must not turn into the opposite claim (charter §16.D, §8).
+// The trust and methodology pages are scanned too (audit #7, 2026-10-04): both said
+// 「出唔出街由人決定」 / "a person decides what goes live" for a month after charter §12.1 made
+// the machine gate the default way questions go live.
+const pages = ['app/trust/TrustClient.tsx', 'app/methodology/MethodologyClient.tsx', 'app/transparency/TransparencyClient.tsx', 'app/about/AboutClient.tsx']
+  .map((f) => strip(readFileSync(f, 'utf8')))
+  .join('\n')
+
 test('no visible copy claims the questions were reviewed by a person', () => {
-  const visible = strip(dict) + strip(home)
+  const visible = strip(dict) + strip(home) + pages
   assert.doesNotMatch(visible, /已(經)?(由.{0,12})?(人手|真人|老師|教師|考生)(逐題|逐條)?覆核|逐題人手覆核過|reviewed by (a person|teachers|students|hand)/)
+})
+
+test('no visible copy says a person approves each question before it goes live', () => {
+  assert.doesNotMatch(strip(dict) + strip(home) + pages, /出唔出街由人決定|上線由人決定|a person decides what goes live/)
+  assert.match(pages, /經自動檢查之後上線；發現有錯，我哋會落架或者修正/)
+  assert.match(pages, /go live after automated checks, and we withdraw or fix any that turn out to be wrong/)
 })

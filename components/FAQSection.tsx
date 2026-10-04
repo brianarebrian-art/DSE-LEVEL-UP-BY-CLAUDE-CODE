@@ -21,8 +21,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '答錯之後會點？', qEn: 'What happens after a wrong answer?',
-    aZh: '冇紅色交叉，亦冇「錯咗」兩隻字。解析會即刻打開，冇倒數、冇計時、冇追問題。做書寫題或者用答題紙對答案嗰陣，你仍然可以揀錯因，嗰啲會累積成你嘅錯誤模式。',
-    aEn: 'No red cross and no “wrong”. The explanation opens straight away: no countdown, no timer, no follow-up question. When you do written questions or check a paper answer sheet, you can still tag the cause of a mistake, and those tags build your error patterns.',
+    aZh: '冇紅色交叉，亦冇「錯咗」兩隻字。解析會即刻出現：先畀你第一步，想睇晒撳一下就得（亦可以揀以後直接睇晒）。冇倒數、冇計時、冇追問題。做書寫題或者用答題紙對答案嗰陣，你仍然可以揀錯因，嗰啲會累積成你嘅錯誤模式。',
+    aEn: 'No red cross and no “wrong”. The explanation appears straight away: first step first, one tap for the rest (or choose to always see it all). No countdown, no timer, no follow-up question. When you do written questions or check a paper answer sheet, you can still tag the cause of a mistake, and those tags build your error patterns.',
   },
   {
     qZh: '「錯誤模式」係乜嚟？', qEn: 'What are “error patterns”?',
@@ -36,8 +36,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: '發現題目有錯點算？', qEn: 'What if I find a mistake in a question?',
-    aZh: '每條題目答完之後，解析下面都有「呢條題有問題？話我哋知」掣，會自動填好題號；亦可以直接 email dselevelup@gmail.com。我哋會對照課綱核實，屬實即修正——學術準確係我哋嘅生死線。',
-    aEn: 'After you answer, the explanation of every question has a “Something wrong with this question?” button that fills in the question number for you; you can also email dselevelup@gmail.com. We verify against the syllabus and fix confirmed errors — academic accuracy is our red line.',
+    aZh: '每條題目答完之後，解析下面都有「呢條題有問題？話我哋知」掣：揀問題類別，撳「送出」就得，會自動帶埋題號；想講多啲，可以 email dselevelup@gmail.com。我哋會對照課綱核實，屬實即修正——學術準確係我哋嘅生死線。',
+    aEn: 'After you answer, the explanation of every question has a “Something wrong with this question?” button: pick the kind of problem and press Send, and the question number goes with it. To tell us more, email dselevelup@gmail.com. We verify against the syllabus and fix confirmed errors — academic accuracy is our red line.',
   },
   {
     qZh: '練習表現估算準唔準？', qEn: 'How accurate is the practice performance estimate?',
@@ -46,8 +46,8 @@ const FAQS: { qZh: string; qEn: string; aZh: string; aEn: string }[] = [
   },
   {
     qZh: 'SEN 同學有咩支援？', qEn: 'What support is there for SEN students?',
-    aZh: '無障礙設定（閱讀尺防跳行、易讀字體、字級、行距、字距、一鍵舒適模式）喺手機頁頂嘅無障礙掣，平板同電腦喺左下角；「今日夠了」零罪疚收工喺題目頁頂。做題途中隨時撳得休息，唞幾耐計時就順延幾耐；想淨係專注一題就撳 Shift + F 開專注燈。呼吸練習喺「呼吸空間」，每週休息日喺帳戶頁揀。全部自選、預設關。有其他需要歡迎話我哋知。',
-    aEn: 'Accessibility settings (reading ruler, easy-read font, text size, line and letter spacing, one-tap comfort mode) sit behind the accessibility button at the top of the page on phones, and in the bottom-left corner on tablets and computers. A guilt-free “enough for today” is at the top of each question. You can rest mid-session — the timer is extended by exactly as long as you rest — and Shift + F dims everything around the question. Breathing exercises live in Breathing Space, and weekly rest days are set in your account. All of it is opt-in and off by default. Tell us what else would help.',
+    aZh: '無障礙設定（閱讀尺防跳行、易讀字體、字級、行距、字距、一鍵舒適模式）喺手機頁頂嘅無障礙掣，平板同電腦喺左下角；「先做到呢度」零罪疚收工喺題目頁頂。做題途中隨時撳得休息，唞幾耐計時就順延幾耐；想淨係專注一題就撳 Shift + F 開專注燈。呼吸練習喺「呼吸空間」，每週休息日喺帳戶頁揀。全部自選、預設關。有其他需要歡迎話我哋知。',
+    aEn: 'Accessibility settings (reading ruler, easy-read font, text size, line and letter spacing, one-tap comfort mode) sit behind the accessibility button at the top of the page on phones, and in the bottom-left corner on tablets and computers. A guilt-free “Stop here for now” is at the top of each question. You can rest mid-session — the timer is extended by exactly as long as you rest — and Shift + F dims everything around the question. Breathing exercises live in Breathing Space, and weekly rest days are set in your account. All of it is opt-in and off by default. Tell us what else would help.',
   },
 ]
 

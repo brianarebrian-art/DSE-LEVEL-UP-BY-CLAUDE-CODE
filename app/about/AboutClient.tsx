@@ -167,8 +167,8 @@ export default function AboutClient() {
         <div className="bg-surface-sunken border border-line rounded-2xl p-5 text-xs text-ink-muted leading-relaxed mt-5">
           <strong className="text-ink-muted font-medium">{en ? 'Disclaimer: ' : '免責聲明：'}</strong>
           {en
-            ? 'All questions are independently rewritten practice items, not official HKEAA papers. Grade predictions are indicative only; final results are determined by the HKEAA.'
-            : '本平台所有試題均為獨立改寫版本，並非香港考試及評核局（HKEAA）官方試題。等級預測僅供參考，最終成績以 HKEAA 公布為準。'}
+            ? 'All questions are independently rewritten practice items, not official HKEAA papers. Practice performance estimates are indicative only; final results are determined by the HKEAA.'
+            : '本平台所有試題均為獨立改寫版本，並非香港考試及評核局（HKEAA）官方試題。練習表現估算僅供參考，最終成績以 HKEAA 公布為準。'}
         </div>
 
         {/* CTA */}

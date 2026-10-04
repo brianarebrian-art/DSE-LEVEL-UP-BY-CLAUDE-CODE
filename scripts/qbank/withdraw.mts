@@ -12,6 +12,10 @@
 // overwritten, so its first record stays. Bulk mode skips it and says how many it
 // skipped: two findings can then be checked for overlap instead of being added up.
 //
+// /transparency lists every withdrawal by date, reason and subject count (2026-10-04, A7-3).
+// A coded reason is shown with its plain-words label; free text is shown only as
+// 「題目發現有錯」, so it can stay a note for the team.
+//
 // Charter §12 (Yuna 2026-09-26): new questions go live through the machine gate
 // without prior human review; founders review afterwards and withdraw what is wrong.
 // This writes data/questions/withdrawn.json, which both read paths filter

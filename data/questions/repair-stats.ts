@@ -11,7 +11,8 @@
 //              kept) or C (unclear; held back from practice since 2026-09-30 until a person decides).
 import repairLog from './rationale-repairs.json'
 import classification from './posref-classification.json'
-import { WITHDRAWN } from './hidden-topics'
+import { WITHDRAWN, WITHDRAW_CODES, type WithdrawnEntry } from './hidden-topics'
+import { getSubject } from '../subjects'
 
 export const COHORTS = ['positional-first', 'positional-machine', 'positional-handwritten'] as const
 export type Cohort = (typeof COHORTS)[number]
@@ -55,4 +56,53 @@ export function repairStats(): RepairStats {
     restored: stages.filter((s) => s === 'restored').length,
     candidates: { total: A + hand.B + hand.C, A, B: hand.B, C: hand.C },
   }
+}
+
+// Withdrawal log for /transparency (audit #7, founders' reply A7-3 A, 2026-10-04): the latest
+// batches by date and reason, with the number of questions per subject. Question ids and text
+// are not listed. A free-text reason (withdraw.mts --reason "...") is written for the team, so it
+// is grouped as OTHER and published only as a generic label; give a reason a code in
+// WITHDRAW_CODES and a label in TransparencyClient to publish it.
+export interface WithdrawalBatch {
+  date: string
+  /** A WITHDRAW_CODES key, or 'OTHER'. */
+  reason: string
+  total: number
+  subjects: { zh: string; en: string; count: number }[]
+}
+
+type Withdrawn = Readonly<Record<string, Readonly<Record<string, WithdrawnEntry>>>>
+
+export function groupWithdrawals(
+  data: Withdrawn,
+  codes: Readonly<Record<string, string>>,
+  nameOf: (subject: string) => { zh: string; en: string },
+  limit: number,
+): WithdrawalBatch[] {
+  const batches = new Map<string, { date: string; reason: string; bySubject: Map<string, number> }>()
+  for (const [subject, byId] of Object.entries(data)) {
+    for (const { date, reason } of Object.values(byId)) {
+      const code = Object.hasOwn(codes, reason) ? reason : 'OTHER'
+      const key = `${date}|${code}`
+      const b = batches.get(key) ?? { date, reason: code, bySubject: new Map<string, number>() }
+      b.bySubject.set(subject, (b.bySubject.get(subject) ?? 0) + 1)
+      batches.set(key, b)
+    }
+  }
+  return [...batches.values()]
+    .sort((a, b) => b.date.localeCompare(a.date) || a.reason.localeCompare(b.reason))
+    .slice(0, limit)
+    .map(({ date, reason, bySubject }) => {
+      const subjects = [...bySubject]
+        .map(([id, count]) => ({ ...nameOf(id), count }))
+        .sort((a, b) => b.count - a.count || a.en.localeCompare(b.en))
+      return { date, reason, total: subjects.reduce((n, x) => n + x.count, 0), subjects }
+    })
+}
+
+export function recentWithdrawals(limit = 10): WithdrawalBatch[] {
+  return groupWithdrawals(WITHDRAWN, WITHDRAW_CODES, (id) => {
+    const s = getSubject(id)
+    return { zh: s?.name ?? id, en: s?.nameEn ?? id }
+  }, limit)
 }

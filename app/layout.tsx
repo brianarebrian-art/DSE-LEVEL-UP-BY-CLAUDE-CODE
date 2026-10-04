@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
+import { headers } from 'next/headers'
 import { Inter, EB_Garamond } from 'next/font/google'
 import './globals.css'
 import 'katex/dist/katex.min.css'
@@ -142,11 +143,15 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // CSP nonce for this request (proxy.ts, lib/csp.ts; audit #7, A7-4 B). Reading the request
+  // headers also makes every route render per request, which a nonce requires: a prebuilt
+  // page would carry no nonce, and the browser would block all of its scripts.
+  const nonce = (await headers()).get('x-nonce') ?? undefined
   return (
     // suppressHydrationWarning：下方防閃爍腳本會喺 React 水合之前改 data-theme，
     // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
@@ -156,13 +161,14 @@ export default function RootLayout({
             唔加套件（憲章 §1 第 5 點）；冇 cookie，只計整體瀏覽量。只喺 Vercel 正式部署載入，
             本機及預覽版唔載。私隱頁「啲資料去咗邊」有對應說明。 */}
         {process.env.VERCEL_ENV === 'production' && (
-          <Script src="/_vercel/insights/script.js" strategy="afterInteractive" />
+          <Script src="/_vercel/insights/script.js" strategy="afterInteractive" nonce={nonce} />
         )}
         {/* 防閃爍：必須喺任何內容繪製之前決定主題，否則深色用戶會見到一下白閃。
             內容與 lib/theme.ts 同一條日出方程 —— 呢度係鏡像副本，因為 inline
             script 用唔到 import。兩者若有偏差，ThemeProvider 會喺 mount 後以
             lib/theme.ts 為準覆寫，最多差一格畫面，唔會停留喺錯誤狀態。 */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var k='dse-theme',p=localStorage.getItem(k);if(p!=='light'&&p!=='cyber'&&p!=='auto')p='auto';var t=p;if(p==='auto'){var o=new Date(),hk=new Date(o.getTime()+(480+o.getTimezoneOffset())*6e4),s=Date.UTC(hk.getUTCFullYear(),0,0),n=Math.floor((hk.getTime()-s)/864e5),R=Math.PI/180,d=-23.44*Math.cos(R*(360/365)*(n+10)),b=R*(360/364)*(n-81),e=9.87*Math.sin(2*b)-7.53*Math.cos(b)-1.5*Math.sin(b),c=-Math.tan(R*22.3019)*Math.tan(R*d),w=c>1?0:c<-1?180:Math.acos(c)/R,m=12-e/60+(120-114.1742)/15,h=hk.getHours()+hk.getMinutes()/60;t=(h>=m-w/15&&h<m+w/15)?'light':'cyber'}document.documentElement.setAttribute('data-theme',t)}catch(_){document.documentElement.setAttribute('data-theme','light')}})()`,
           }}
@@ -170,6 +176,7 @@ export default function RootLayout({
         {/* 知識圖譜。放於 <body> 起首，令爬蟲毋須等待水合即可讀取。 */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {/* P1-3 WCAG：跳至主要內容連結（鍵盤/螢幕閱讀器用戶第一下 Tab 就見到，

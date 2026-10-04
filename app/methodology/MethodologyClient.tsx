@@ -231,8 +231,8 @@ export default function MethodologyClient() {
 
           <p className="text-sm text-ink-soft leading-relaxed border-t border-line pt-4">
             {locale === 'en'
-              ? 'And on the human/AI line: AI drafts and classifies; a person decides what goes live.'
-              : '至於人同 AI 嘅分工：AI 出初稿同分類，出唔出街由人決定。'}
+              ? 'And on the human/AI line: AI drafts and classifies, questions go live after automated checks, and we withdraw or fix any that turn out to be wrong.'
+              : '至於人同 AI 嘅分工：AI 出初稿同分類，經自動檢查之後上線；發現有錯，我哋會落架或者修正。'}
           </p>
         </div>
 

@@ -47,14 +47,13 @@ import PracticeContextRail from '@/components/PracticeContextRail'
 import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import DifficultyBadge from '@/components/DifficultyBadge'
-import { TIER_REQUEST_LABELS } from '@/lib/difficulty'
 import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { orderByCause } from '@/lib/causeMode'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
 // 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
-import { advanceStreak, nextIndex, preferredTier, EMPTY_STREAK, type StreakState } from '@/lib/adaptiveOrder'
+import { advanceStreak, nextIndex, preferredTier, wishIndex, EMPTY_STREAK, type StreakState, type NextWish } from '@/lib/adaptiveOrder'
 import { weightedOrder } from '@/lib/empiricalWeighting'
 // 第 3 週 · 引擎五之二：可選計時模式（預設關閉，時間到唔強制結束）
 import { readTimerPref, type TimerPref } from '@/lib/timerPreference'
@@ -284,7 +283,8 @@ export default function PracticeSession({
   // 唔寫 localStorage：呢個係「今日呢一刻嘅節奏」，唔應該變成一個跟住學生走嘅標籤。
   const [streak, setStreak] = useState<StreakState>(EMPTY_STREAK)
   // 學生手動揀嘅層級。有值就永遠蓋過自適應（規格書 §4.6：始終保留手動選擇權）。
-  const [manualTier, setManualTier] = useState<Difficulty | null>(null)
+  // Q-T11（創辦人 2026-10-03）：學生對下一題嘅一次性要求；做完下一題就清返。
+  const [nextWish, setNextWish] = useState<NextWish | null>(null)
   const [startTime, setStartTime] = useState(() => Date.now())
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<AnswerState[]>([])
@@ -552,11 +552,14 @@ export default function PracticeSession({
       // 只喺【未做嗰截】入面換位，做完嗰截原封不動，所以 answers[i] 同
       // questions[i] 永遠對得返。題目集合由頭到尾唔變 → 3:5:2 分毫不變。
       const nextStreak = advanceStreak(streak, answerState?.isCorrect ?? false)
-      const want = preferredTier(currentQ.difficulty, nextStreak, manualTier)
+      const want = preferredTier(currentQ.difficulty, nextStreak)
       let ordered = questions
-      if (want) {
-        const tail = questions.slice(current + 1)
-        const pick = nextIndex(tail.map((q) => q.difficulty), want)
+      const tail = questions.slice(current + 1)
+      // 學生有要求就照要求揀；冇符合嘅題（例如已經係最難一級）就交返自適應。
+      const wished = nextWish ? wishIndex(tail, currentQ, nextWish) : -1
+      if (nextWish) setNextWish(null)
+      if (wished >= 0 || want) {
+        const pick = wished >= 0 ? wished : nextIndex(tail.map((q) => q.difficulty), want)
         if (pick > 0) {
           const swapped = [...questions]
           const at = current + 1
@@ -582,7 +585,7 @@ export default function PracticeSession({
       })
       notifyProgressChanged()
     }
-  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, manualTier, currentQ])
+  }, [answers, answerState, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, nextWish, currentQ])
 
   // Proceed past a question. When a server-signed lock exists, do a final server check
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
@@ -1156,33 +1159,40 @@ export default function PracticeSession({
                     題目仲喺度嗰陣多一行控制項，係搶緊專注度（憲章 §8.1 約束 3：
                     遊戲化層唔可以侵蝕練習流程）。
                     亦刻意唔顯示自適應而家想俾你邊個層級 —— 顯示咗就唔再係「無聲」。 */}
-                {current + 1 < totalQ && (
-                  <div className="mt-3 flex items-center justify-center gap-1.5 flex-wrap text-[11px]">
-                    <span className="text-ink-muted">{tr('下一題想要：', 'Next one:')}</span>
-                    {([null, 'easy', 'medium', 'hard'] as const).map((tier) => {
-                      const on = manualTier === tier
-                      // 字直接由 lib/difficulty 攞 —— 唔可以喺呢度另開一套叫法，
-                      // 否則同一個層級喺徽章同選擇器會有兩個名。
-                      const label = tier === null
-                        ? tr('跟我節奏', 'My pace')
-                        : tr(TIER_REQUEST_LABELS[tier].zh, TIER_REQUEST_LABELS[tier].en)
-                      return (
-                        <button
-                          key={tier ?? 'auto'}
-                          onClick={() => setManualTier(tier)}
-                          aria-pressed={on}
-                          className={`inline-flex min-h-12 items-center px-3 rounded-full border transition-colors ${
-                            on
-                              ? 'border-accent text-ink bg-surface-sunken'
-                              : 'border-line text-ink-muted hover:text-ink-soft'
-                          }`}
-                        >
-                          {label}
-                        </button>
-                      )
-                    })}
-                  </div>
-                )}
+                {current + 1 < totalQ && (() => {
+                  // Q-T11：只喺未做嗰截揀次序，唔換題，所以 3:5:2 不變。冇符合嘅題就灰咗個掣。
+                  const tail = questions.slice(current + 1)
+                  const wishes: { key: NextWish; zh: string; en: string }[] = [
+                    { key: 'same', zh: '同類型再一題', en: 'Same type again' },
+                    { key: 'harder', zh: '難啲', en: 'Harder' },
+                    { key: 'easier', zh: '易啲', en: 'Easier' },
+                    { key: 'switch', zh: '換課題', en: 'Change topic' },
+                  ]
+                  return (
+                    <div className="mt-3 flex items-center justify-center gap-1.5 flex-wrap text-[11px]">
+                      <span className="text-ink-muted">{tr('下一題想要：', 'Next one:')}</span>
+                      {wishes.map((w) => {
+                        const on = nextWish === w.key
+                        const possible = wishIndex(tail, currentQ, w.key) >= 0
+                        return (
+                          <button
+                            key={w.key}
+                            onClick={() => setNextWish(on ? null : w.key)}
+                            disabled={!possible}
+                            aria-pressed={on}
+                            className={`inline-flex min-h-12 items-center px-3 rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
+                              on
+                                ? 'border-accent text-ink bg-surface-sunken'
+                                : 'border-line text-ink-muted hover:text-ink-soft'
+                            }`}
+                          >
+                            {tr(w.zh, w.en)}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  )
+                })()}
               </>
           </div>
         )}

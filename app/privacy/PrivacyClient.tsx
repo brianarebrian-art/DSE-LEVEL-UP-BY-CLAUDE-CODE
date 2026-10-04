@@ -138,8 +138,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database. (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
-            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶、資料庫冇任何一行。（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report, we receive the question ID and the kind of problem, and cannot tell who sent it; see “Reporting a problem with a question” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
+            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，我哋只收到題號同問題類別，認唔出係邊個送嘅，見下面「報告題目問題」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 
@@ -169,8 +169,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <ul className="ml-4 list-disc space-y-1">
           <li>
             {en
-              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit.'
-              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定就放喺度。'}
+              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, and question reports.'
+              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定，同埋題目問題報告，就放喺度。'}
           </li>
           <li>
             {en ? 'Vercel — this is where the website itself is hosted and served from.' : 'Vercel —— 個網站本身就係喺度寄存同發送。'}
@@ -180,6 +180,20 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
           {en
             ? 'We use one analytics service: Vercel Web Analytics, from the company that hosts the site. It counts traffic in total — how many visits, which pages, which country, phone or computer — so we know whether the site is being used. It uses no cookies and does not record your name, email or account, and we cannot see any one person in it. Apart from that there is no analytics service, no advertising network and no tracking pixel — we scanned for the usual ones (Google Analytics, Tag Manager, PostHog, Mixpanel, Sentry, Hotjar, Meta Pixel, Plausible, Umami) and there are none. We do not sell data, and we have never shared it with anyone for marketing.'
             : '我哋用一個分析服務：Vercel Web Analytics，即係寄存網站嗰間公司提供嘅。佢只計網站整體流量 —— 幾多人次瀏覽、睇咗邊啲頁、喺邊個地區、用手機定電腦 —— 等我哋知道個網站有冇人用。佢唔用 cookie，唔會記低你嘅名、電郵或帳戶，我哋亦睇唔到任何一個人。除此之外冇其他分析服務、冇廣告網絡、冇追蹤像素 —— 我哋掃過常見嗰批（Google Analytics、Tag Manager、PostHog、Mixpanel、Sentry、Hotjar、Meta Pixel、Plausible、Umami），一個都冇。我哋唔賣數據，亦從來冇為咗營銷而分享畀任何人。'}
+        </p>
+      </Section>
+
+      {/* 2026-10-04（審計 #7，創辦人回覆「a」）：報錯可直接送出，只存題號、類別、語言及時間。 */}
+      <Section title={en ? 'Reporting a problem with a question' : '報告題目問題'}>
+        <p>
+          {en
+            ? 'Under every question there is “Something wrong with this question?”. If you press Send, we receive three things: the question ID, the kind of problem you picked, and whether you use the site in Chinese or English, plus the time it arrived. We do not record your account, IP address or device, so a report cannot be traced back to you. Reports are used only to find and fix faulty questions.'
+            : '每條題目下面都有「呢條題有問題？話我哋知」。撳「送出」，我哋只會收到三樣嘢：題號、你揀嘅問題類別、你用緊中文定英文介面，加上收到嘅時間。唔會記低你嘅帳戶、IP 位址或者裝置，所以份報告認唔出係邊個送嘅。報告只會用嚟搵出同修正有問題嘅題目。'}
+        </p>
+        <p>
+          {en
+            ? 'If you want to tell us more, you can email us. What you write goes only through your own email app; this site does not store it.'
+            : '想講多啲，可以用電郵寄畀我哋。你寫嘅字只會經你自己嘅電郵寄出，本站唔會儲存。'}
         </p>
       </Section>
 

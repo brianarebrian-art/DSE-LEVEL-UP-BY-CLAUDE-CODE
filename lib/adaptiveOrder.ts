@@ -75,3 +75,29 @@ export function nextIndex(remaining: readonly Difficulty[], preferred: Difficult
   const i = remaining.indexOf(preferred)
   return i >= 0 ? i : 0
 }
+
+/**
+ * 學生對「下一題」嘅一次性要求（Q-T11，創辦人 2026-10-03）。只影響緊接嗰一題。
+ *   same   —— 同一課題再一題
+ *   harder —— 比啱啱嗰題難一級
+ *   easier —— 比啱啱嗰題易一級
+ *   switch —— 換一個課題
+ */
+export type NextWish = 'same' | 'harder' | 'easier' | 'switch'
+
+/**
+ * 喺剩低嘅題目入面，揀第一條符合要求嘅索引；冇符合就回傳 -1。
+ * 同 nextIndex 一樣只係揀次序，唔會換走題目，所以一節嘅 3:5:2 比例不變。
+ * 難啲／易啲：啱啱嗰題已經係最難／最易嗰級，就冇得再難／再易，回傳 -1。
+ */
+export function wishIndex(
+  remaining: readonly { difficulty: Difficulty; topic: string }[],
+  current: { difficulty: Difficulty; topic: string },
+  wish: NextWish,
+): number {
+  if (wish === 'same') return remaining.findIndex((q) => q.topic === current.topic)
+  if (wish === 'switch') return remaining.findIndex((q) => q.topic !== current.topic)
+  const target = shift(current.difficulty, wish === 'harder' ? +1 : -1)
+  if (target === current.difficulty) return -1
+  return remaining.findIndex((q) => q.difficulty === target)
+}
