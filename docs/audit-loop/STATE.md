@@ -183,4 +183,6 @@
   - 另見：`components/DataPortability.tsx` 已有「導出／導入進度檔案」，審計建議的「免登入進度碼」部分已存在。
   - 檢查：npm test 1263/1263、tsc 0、lint 0 error（34 warnings）、qa 通過、production build 通過。
 - 2026-10-04 A7-2 最終方案（創辦人回覆「a」）：報錯可直接送出，只存題號、類別、語言、時間（commit `752efad`）。私隱政策 bump 至 `2026-10-04.v1`，登入學生會再見同意書。本機正式版實測：無效資料 5 種全部 400；瀏覽器以模擬伺服器回覆測試「送出」成功及失敗兩條路，送出內容只有題號、類別、語言（即使描述框有字）；未向正式資料庫寫入任何資料。資料表要創辦人在 Supabase 建立，⬜ 待建立後在正式網站驗證。檢查：npm test 1269/1269、tsc 0、lint 0 error、qa 通過、build 通過。
+- 2026-10-04 創辦人要求 Claude 建立 `question_reports`（Supabase project `aegekxapxgcfdrkzisis`，migration 名 `question_reports`）。建立前只讀確認表不存在；建立後只讀核對權限正確（見 FOUNDER-QUEUE Q-A7-2），未寫入任何資料行。Security advisor：新表只有 INFO「RLS enabled, no policy」（刻意，同其他 4 張用戶表）；另有一項舊有 WARN `public.handle_updated_at` search_path 未固定，非今次引入，未處理。
+- 2026-10-04 創辦人決定：暫不推送 `audit-loop`、不合併入 `main`，維持原狀。`audit-loop` 比 `origin/main` 多 18 個 commit（本次記錄另加）。正式網站維持 PR #73 的版本。
 
