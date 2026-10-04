@@ -201,3 +201,15 @@
   - 9a：正式網站結果頁答兩條問題（均答「唔肯定／未知」作測試標記），網站顯示道謝；資料庫只讀查到 2 行、欄位正確；隨即刪除該 2 行（id 1、2），再查 0 行；瀏覽器測試資料已清。
   - 8a：常見問題刪去「學術準確係我哋嘅生死線」（commit 見 log），測試鎖住；npm test 1287/1287、qa 通過。待推送。
 
+- 2026-10-04 PR #75（main `e8ba8bf`）上線核對：`/about` 不再出現「生死線」，常見問題新句已上線，頁面正常。審計 #8 已批項目全部上線。
+- 審計 #9（2026-10-04）創辦人回覆「10a 11a 12b 13a 14b」：
+  - 10a、11a：首頁覆核句改為「題目經自動檢查上線，未經註冊教師審定；另有 N 條因解析有錯暫時收起。」（N 由 summary 計），示範題加「示範題，唔計分」；憲章 §12.1 約束 1 記錄（commit `3c913c9`）。本機正式版手機寬度實測顯示正確。
+  - 13a：`docs/spot-check-2026-10-04.md`。數學 20/20 計算正確（Claude 驗算，非人手）；化學 6/20 題目設定違反化學事實，全屬 `cb_m2_*` 模板，該模板練習中 48 條有 36 條同樣有誤；1 條干擾項解說不準。已問創辦人是否收起 36 條。
+  - 12b（CSP img-src 不收緊）、14b（Gmail 自動回覆不設）：創辦人決定不做。
+  - 審計不準確：手機頂欄（實為標誌＋無障礙＋選單，底欄四掣）；`/practice?subject=` 的「科目牆」是 sr-only 文字；平板導航為圖示欄。CSRF cookie `__Host-`、Secure、HttpOnly、SameSite=Lax；Auth.js 預設同源 redirect。
+  - 只讀數字：過去 7 日有開 app 的登入用戶 8、30 日 48（user_sessions 由 2026-09-11 起）；user_progress 214；question_reports 0；session_feedback 2；auth.users 0。Vercel Web Analytics API 回 404「Web Analytics not found」，但 `/_vercel/insights/script.js` 回 200，原因未查明（⬜）。
+  - D15：next/font 讀取 Google Fonts 今日連續失敗 3 次，第 4 次成功（loader.js 第 122 行 regex 取副檔名得 null）。直接取 CSS 時 URL 均為 .woff2，原因未明。
+  - 檢查：npm test 1289/1289、tsc 0、lint 0 error、qa 通過、production build 通過（第 4 次）。
+- 2026-10-04 創辦人回覆「15a」：收起 `cb_m2_*` 36 條設定有誤的化學題（reason `IMPOSSIBLE_PREMISE`，commit `bf475df`）；練習中 26,461、已收起 633、化學 979。首頁字眼改「發現有錯」，透明度頁新原因標籤，收藏頁按原因講，llms.txt 數字更新。npm test 1289/1289、qa、build 通過。
+- sync-questions 只讀預覽：雲端題庫鏡像 14 科與 repo 有落差（化學 1061→979；其餘 13 科自 2026-09-29 收起 597 條後未同步）。學生端兩條讀取路徑都會過濾已收起題，所以學生看不到。15a 只涵蓋化學；其餘 13 科是否一併 `--push` 已問創辦人。按憲章 §12.1 約束 3，`--push` 在部署後執行。
+

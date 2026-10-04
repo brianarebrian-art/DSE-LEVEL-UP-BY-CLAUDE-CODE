@@ -45,6 +45,8 @@ function reasonLabel(code: string, en: boolean): string {
   switch (code) {
     case 'POSITIONAL_RATIONALE_REFERENCE':
       return en ? 'The explanation points at an option by its position' : '解析用位置講選項，洗牌之後會指錯'
+    case 'IMPOSSIBLE_PREMISE':
+      return en ? 'The question’s set-up is scientifically wrong' : '題目設定唔符合科學事實'
     default:
       return en ? 'A fault was found in the question' : '題目發現有錯'
   }
