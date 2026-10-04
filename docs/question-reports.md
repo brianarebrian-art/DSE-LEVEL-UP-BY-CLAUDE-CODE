@@ -54,3 +54,30 @@ delete from public.question_reports where status <> 'open' and created_at < now(
 ```
 
 題目要退回，照用 `scripts/qbank/withdraw.mts`（憲章 §12.1 約束 3）；退回會自動出現在 `/transparency` 的「最近退回紀錄」。
+
+## 四、完卷兩條問題（`session_feedback`）
+
+2026-10-04 起（審計 #8，創辦人回覆「5a」），結果頁問兩條可以不答的問題。表已於同日由 Claude 應創辦人要求建立。
+每次按掣一行：科目、問題（`had_error` 有冇題目出錯／`will_return` 會唔會再用）、答案（`yes`／`no`／`unsure`）、語言、時間。
+
+過去 30 日，每科「覺得有題目出錯」的比例：
+
+```sql
+select subject,
+       count(*) filter (where answer = 'yes') as said_yes,
+       count(*) as answers,
+       round(100.0 * count(*) filter (where answer = 'yes') / count(*), 1) as pct_yes
+from public.session_feedback
+where question = 'had_error' and created_at > now() - interval '30 days'
+group by subject order by answers desc;
+```
+
+過去 30 日，「下次會唔會再用」：
+
+```sql
+select answer, count(*) from public.session_feedback
+where question = 'will_return' and created_at > now() - interval '30 days'
+group by answer order by 2 desc;
+```
+
+兩條答案互不相連，不能配對成「同一個學生」；亦不能從表內找出任何學生。

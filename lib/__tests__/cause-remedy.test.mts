@@ -62,11 +62,13 @@ test('ErrorDNA and /result build the URL in one place', () => {
   assert.match(read('app/result/ResultPageClient.tsx'), /resultNextSteps\(\{ \.\.\.result, log: getReverseLog\(\) \}\)/)
 })
 
-// 2026-10-02（憲章 §7.2）：練習頁答錯不再寫入錯題日誌，所以亦不可以再承諾「呢題會喺第 N 日重溫」。
-test('the practice page no longer promises a review it does not schedule', () => {
+// 2026-10-02 (charter §7.2): the cause card went, and with it the practice page's only write to
+// the wrong-answer log. 2026-10-04 (founders' reply 7a): wrong answers are logged again, without
+// a cause. The page still makes no "this comes back on day N" promise.
+test('the practice page logs wrong answers for review and promises no schedule', () => {
   const s = read('app/practice/PracticeSession.tsx')
   assert.doesNotMatch(s, /呢題會喺第/)
-  assert.doesNotMatch(s, /logReverseError/)
+  assert.match(s, /else\s+logReverseError\(\{/)
   assert.deepEqual([...RS.INTERVALS], [1, 3, 7, 14, 30])
   assert.equal(RS.DAILY_REVIEW_LIMIT, 5)
   assert.match(read('lib/reviewSchedule.ts'), /export function dueReviews\(limit = DAILY_REVIEW_LIMIT\)/)

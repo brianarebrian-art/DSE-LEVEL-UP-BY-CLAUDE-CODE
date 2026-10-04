@@ -40,8 +40,14 @@
  *
  * 2026-10-04.v1 —— 新增一項：題目問題報告（題號、問題類別、介面語言、時間；
  * 不記帳戶、IP、裝置）。審計 #7，創辦人 2026-10-04 回覆「a」。屬新增採集類別，所以 bump。
+ *
+ * 2026-10-04.v2 —— 逐句對住代碼同資料庫重新核實（審計 #8，創辦人回覆 1a）：
+ * 核實日期改為 2026-10-04；同步設定刪去已不同步的「平靜鎖」；「開過 app 的日期」
+ * 寫明亦記錄當日首次開啟時間（user_sessions.first_seen）；打氣牆資料的實際刪除日期
+ * （2026-09-09）；刪帳號涉及的表由 7 改為 5。練習答錯的題重新記錄（不問錯因，創辦人回覆 7a），
+ * 錯題紀錄的說明跟住改。並會加入完卷意見問卷（創辦人回覆 5a）。
  */
-export const POLICY_VERSION = '2026-10-04.v1'
+export const POLICY_VERSION = '2026-10-04.v2'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'
@@ -61,8 +67,8 @@ export const CONSENT_POINTS: { q: ConsentPoint; a: ConsentPoint }[] = [
   {
     q: { zh: '我哋會攞你啲咩？', en: 'What do we take?' },
     a: {
-      zh: '你嘅練習進度、逐個課題嘅答對率、未做完嗰份卷（連你每題揀咗邊個選項）、同埋你答錯之後揀嘅錯因。',
-      en: 'Your practice progress, your accuracy per topic, any unfinished set (including which option you picked on each question), and the cause you picked after a wrong answer.',
+      zh: '你嘅練習進度、逐個課題嘅答對率、未做完嗰份卷（連你每題揀咗邊個選項）、你答錯嘅題（連你揀嘅選項同正解），同埋你揀嘅錯因。',
+      en: 'Your practice progress, your accuracy per topic, any unfinished set (including which option you picked on each question), the questions you got wrong (with your option and the correct one), and any cause you picked.',
     },
   },
   {

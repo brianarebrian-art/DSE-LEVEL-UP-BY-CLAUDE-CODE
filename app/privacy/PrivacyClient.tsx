@@ -33,8 +33,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <h1 className="text-2xl font-medium text-ink">{en ? 'Privacy policy' : '私隱政策'}</h1>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {en
-            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. Every statement below was checked against the actual code and the actual database on 20 August 2026 — not against a specification.'
-            : '對照香港《個人資料（私隱）條例》寫。以下每一句都喺 2026 年 8 月 20 日對住實際代碼同實際資料庫核實過 —— 唔係對住一份文件。'}
+            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. Every statement below was last checked against the actual code and the actual database on 4 October 2026 — not against a specification.'
+            : '對照香港《個人資料（私隱）條例》寫。以下每一句最近一次喺 2026 年 10 月 4 日對住實際代碼同實際資料庫核實過 —— 唔係對住一份文件。'}
         </p>
       </header>
 
@@ -66,8 +66,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'What is stored on your own device' : '存喺你自己部機嘅嘢'}>
         <p>
           {en
-            ? 'By default everything lives in your browser’s local storage: your scores, which topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your writing drafts, and anything you sealed in a time capsule.'
-            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你邊啲課題易錯、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
+            ? 'By default everything lives in your browser’s local storage: your scores, the questions and topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your writing drafts, and anything you sealed in a time capsule.'
+            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你答錯嘅題同易錯嘅課題、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
         </p>
         <p>
           {en ? 'You can see the exact list, on your own device, at ' : '你可以喺你自己部機睇到完整清單：'}
@@ -104,11 +104,11 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             </span>
           </li>
           <li>
-            {en ? 'Your error-diagnosis notes: ' : '你嘅錯因自診紀錄：'}
+            {en ? 'Your wrong answers: ' : '你嘅錯題紀錄：'}
             <span className="text-ink-muted">
               {en
-                ? 'for each question you got wrong, which of the three causes you picked, plus the option you chose and the correct one — so your error radar follows you to another device instead of starting from zero.'
-                : '每條答錯嘅題，你揀咗三個原因入面邊個，連埋你揀嗰個選項同正解 —— 咁你部機換咗，錯題雷達圖唔使由零開始。'}
+                ? 'for each question you got wrong, the option you chose and the correct one; on the paper answer sheet and long questions, also which of the three causes you picked — so your due reviews and error radar follow you to another device instead of starting from zero.'
+                : '每條答錯嘅題，你揀嗰個選項同正解；喺紙筆答題紙同長題，亦包括你喺三個原因入面揀咗邊個 —— 咁你部機換咗，到期重溫同錯題雷達圖唔使由零開始。'}
             </span>
           </li>
           <li>
@@ -123,23 +123,23 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             {en ? 'The dates you opened the app: ' : '你開過 app 嘅日期：'}
             <span className="text-ink-muted">
               {en
-                ? 'one row per day — just the date, nothing else. Not the time beyond the first open, not which pages, not your IP or device. We added this to answer one question we could not otherwise answer: how many people open the app and never actually practise. Knowing that is how we find out the first screen is in the way.'
-                : '一日一行，淨係一個日期，冇其他。唔記你嗰日第一次之後開過幾多次，唔記你揭過邊啲頁，唔記你嘅 IP 或者裝置。加呢樣係為咗答一條我哋本來答唔到嘅問題：有幾多人開咗 app，但一題都冇做過。知道咗，先揾得出係咪第一版畫面攔住咗人。'}
+                ? 'one row per day: the date, and the time you first opened the app that day — nothing else. Not how many times you opened it after that, not which pages, not your IP or device. We added this to answer one question we could not otherwise answer: how many people open the app and never actually practise. Knowing that is how we find out the first screen is in the way.'
+                : '一日一行：日期，同埋你嗰日第一次開 app 嘅時間，冇其他。唔記你嗰日第一次之後開過幾多次，唔記你揭過邊啲頁，唔記你嘅 IP 或者裝置。加呢樣係為咗答一條我哋本來答唔到嘅問題：有幾多人開咗 app，但一題都冇做過。知道咗，先揾得出係咪第一版畫面攔住咗人。'}
             </span>
           </li>
           <li>
             {en ? 'Accessibility and display settings: ' : '無障礙同顯示設定：'}
             <span className="text-ink-muted">
               {en
-                ? 'easy-read font, reading ruler, hidden timer, calm lock, font size, line height, letter spacing, and your sensory preferences. Only if you turn “sync these settings” on in the accessibility panel; accounts created before 26 September 2026 that were already syncing stay on. Turning it off deletes our copy.'
-                : '易讀字體、閱讀尺、隱藏計時器、平靜鎖、字級、行距、字距，同你嘅感官偏好。要你喺無障礙設定打開「同步呢啲設定」先會上傳；2026 年 9 月 26 日之前已經同步緊嘅帳戶維持開住。閂咗會刪走我哋手上嗰份。'}
+                ? 'easy-read font, reading ruler, hidden timer, font size, line height, letter spacing, and your sensory preferences. Only if you turn “sync these settings” on in the accessibility panel; accounts created before 26 September 2026 that were already syncing stay on. Turning it off deletes our copy.'
+                : '易讀字體、閱讀尺、隱藏計時器、字級、行距、字距，同你嘅感官偏好。要你喺無障礙設定打開「同步呢啲設定」先會上傳；2026 年 9 月 26 日之前已經同步緊嘅帳戶維持開住。閂咗會刪走我哋手上嗰份。'}
             </span>
           </li>
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report, we receive the question ID and the kind of problem, and cannot tell who sent it; see “Reporting a problem with a question” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
-            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，我哋只收到題號同問題類別，認唔出係邊個送嘅，見下面「報告題目問題」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report or answer the two questions after a practice set, we receive only what you picked, and cannot tell who sent it; see “Reporting a problem with a question” and “Two questions after practice” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
+            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，或者答做完練習嗰兩條問題，我哋只收到你揀嘅答案，認唔出係邊個送嘅，見下面「報告題目問題」同「做完練習嘅兩條問題」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 
@@ -169,8 +169,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <ul className="ml-4 list-disc space-y-1">
           <li>
             {en
-              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, and question reports.'
-              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定，同埋題目問題報告，就放喺度。'}
+              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, along with question reports and the answers to the two questions after practice.'
+              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定、題目問題報告，同埋做完練習嗰兩條問題嘅答案，就放喺度。'}
           </li>
           <li>
             {en ? 'Vercel — this is where the website itself is hosted and served from.' : 'Vercel —— 個網站本身就係喺度寄存同發送。'}
@@ -197,6 +197,15 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </p>
       </Section>
 
+      {/* 2026-10-04（審計 #8，創辦人回覆 5a）：完卷兩條問題，只存科目、問題、答案、語言及時間。 */}
+      <Section title={en ? 'Two questions after practice' : '做完練習嘅兩條問題'}>
+        <p>
+          {en
+            ? 'After a practice set, the result page asks two questions you can skip: whether any of the questions looked wrong, and whether you will use the site again. If you answer, we receive the subject, the question, the answer you picked, and whether you use the site in Chinese or English, plus the time it arrived. We do not record your account, IP address or device, and the two answers are not linked to each other, so they cannot be traced back to you. We use them only to see whether the questions and the site are working for students.'
+            : '做完一節練習，結果頁會問兩條可以唔答嘅問題：你覺得有冇題目出錯，同埋你會唔會再用呢度。如果你答，我哋只會收到：科目、邊條問題、你揀嘅答案、你用緊中文定英文介面，加上收到嘅時間。唔會記低你嘅帳戶、IP 位址或者裝置，兩條答案亦唔會連埋一齊，所以認唔出係邊個答。我哋只會用嚟睇吓題目同網站對學生有冇用。'}
+        </p>
+      </Section>
+
       <Section title={en ? 'Technical logs' : '技術日誌'}>
         <p>
           {en
@@ -213,8 +222,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'No user content, so nothing about you is public' : '冇用戶內容，所以冇任何關於你嘅嘢係公開嘅'}>
         <p>
           {en
-            ? 'This site has no messaging, no posts, no comments and no likes — nothing you do here is visible to another user. The anonymous encouragement wall that used to exist was removed on 21 August 2026, along with everything it stored.'
-            : '本站冇訊息、冇留言、冇回覆、冇心心 —— 你喺呢度做嘅嘢，冇一樣係另一個用戶睇得到。以前嗰個匿名打氣互助牆已經喺 2026 年 8 月 21 日移除，連同佢儲存過嘅嘢一齊。'}
+            ? 'This site has no messaging, no posts, no comments and no likes — nothing you do here is visible to another user. The anonymous encouragement wall that used to exist was removed from the site on 21 August 2026, and everything it stored was deleted from our database on 9 September 2026.'
+            : '本站冇訊息、冇留言、冇回覆、冇心心 —— 你喺呢度做嘅嘢，冇一樣係另一個用戶睇得到。以前嗰個匿名打氣互助牆已經喺 2026 年 8 月 21 日由網站移除，佢儲存過嘅嘢亦已經喺 2026 年 9 月 9 日由資料庫刪走。'}
         </p>
         <p>
           {en ? 'Why, and what took its place: see ' : '點解，同埋用咩接住：見'}
@@ -255,8 +264,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'If you are under 18' : '如果你未夠 18 歲'}>
         <p>
           {en
-            ? 'This site is built for DSE candidates, so most of you are. We keep collection to the minimum that makes progress sync work, and we do not profile you, target you with advertising, or share anything with third parties for marketing.'
-            : '呢個網站係為 DSE 考生而做，所以你哋大部分都係。我哋將收集減到「令進度同步行得通」嘅最低限度，唔會為你建立個人檔案、唔會用廣告針對你，亦唔會為營銷而向第三方分享任何嘢。'}
+            ? 'This site is built for DSE candidates, so most of you are. We collect only what this page lists, and as little as we can, and we do not profile you, target you with advertising, or share anything with third parties for marketing.'
+            : '呢個網站係為 DSE 考生而做，所以你哋大部分都係。我哋只會收集呢版列明嘅嘢，而且盡量收少啲；唔會為你建立個人檔案、唔會用廣告針對你，亦唔會為營銷而向第三方分享任何嘢。'}
         </p>
         <p>
           {en

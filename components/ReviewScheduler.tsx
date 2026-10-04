@@ -54,7 +54,7 @@ export default function ReviewScheduler() {
         <div className="space-y-2.5">
           {due.map((d) => {
             const subj = getSubject(d.subjectId)
-            const tag = CAUSE_TAG[d.cause]
+            const tag = d.cause ? CAUSE_TAG[d.cause] : null
             return (
               <div key={d.questionId} className="flex flex-wrap items-center gap-3 bg-surface-sunken border border-line rounded-xl px-4 py-3">
                 <div className="flex-1 min-w-[10rem]">
@@ -62,7 +62,7 @@ export default function ReviewScheduler() {
                     {subj ? (en ? subj.nameEn : subj.name) : d.subjectId} · {d.topic}
                   </div>
                   <div className="flex items-center gap-2 mt-1 text-xs text-ink-muted">
-                    <span className={`px-2 py-0.5 rounded-full border text-[11px] ${tag.cls}`}>{en ? tag.en : tag.zh}</span>
+                    {tag && <span className={`px-2 py-0.5 rounded-full border text-[11px] ${tag.cls}`}>{en ? tag.en : tag.zh}</span>}
                     {en ? `Slipped here ${d.daysAgo} day${d.daysAgo > 1 ? 's' : ''} ago · due today` : `上次喺呢度跌倒係 ${d.daysAgo} 日前 · 建議今日重溫`}
                   </div>
                 </div>

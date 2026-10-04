@@ -1,15 +1,6 @@
-# DSE Level Up — 爬蟲政策
+# DSE Level Up
 #
-# 2026-07-29 修正（Brian 拍板）：
-#   舊值 `Sitemap: https://dse-level-up.vercel.app/sitemap.xml` 有兩個問題 ——
-#   ① 網域有誤（實際部署域為 dse-level-up-by-claude-code.vercel.app）；
-#   ② 指向一個當時並不存在的檔案。
-#   域名 dselevelup.hk 尚未購入，故一律沿用現行 Vercel 部署域。
-#   同時移除 `Disallow: /teacher/` —— 老師平台已於 2026-07-14 刪除，路由不再存在。
-#
-# 注意：robots.txt 的 User-agent 群組並不繼承 —— 具名爬蟲只讀屬於自己的群組，
-# 不會套用 `*` 的規則。故下方每個具名群組均自行重複一次 Disallow 清單，
-# 否則具名爬蟲反而會取得比一般爬蟲更寬的存取權。
+# Named crawlers do not inherit the `*` group, so each group repeats the Disallow list.
 
 User-agent: *
 Allow: /
@@ -19,7 +10,7 @@ Disallow: /account
 Disallow: /sign-in
 Disallow: /sign-up
 
-# 生成式 AI／答案引擎：明確容許索引，另設 /llms.txt 提供平台摘要。
+# AI answer engines may index the site; /llms.txt summarises it.
 User-agent: GPTBot
 Allow: /
 Disallow: /api/

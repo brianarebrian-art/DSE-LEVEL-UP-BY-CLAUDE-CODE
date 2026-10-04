@@ -7,7 +7,7 @@
 // 數據 100% 本地：lib/reverseLog（錯題紀錄）＋ dse_review_done（已完成）。
 // 冇伺服器表 —— question_events 2026-07-14 已剷，亦係隱私紅線。
 
-import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
+import { getWrongAnswerLog, type ReverseCause } from '@/lib/reverseLog'
 
 /** 錯誤之後第 N 日到期重溫。 */
 export const INTERVALS = [1, 3, 7, 14, 30] as const
@@ -24,7 +24,8 @@ export interface DueItem {
   /** 英文課題名；舊記錄冇，讀取端回落 `topic`。 */
   topicEn?: string
   topicId?: string
-  cause: ReverseCause
+  /** Absent for practice MC answers since 2026-10-02 (no cause card). */
+  cause?: ReverseCause
   daysAgo: number
 }
 
@@ -70,7 +71,7 @@ export function dueReviews(limit = DAILY_REVIEW_LIMIT): DueItem[] {
   const today = todayStr()
   const seen = new Set<string>()
   const items: DueItem[] = []
-  for (const e of getReverseLog()) {
+  for (const e of getWrongAnswerLog()) {
     if (seen.has(e.questionId)) continue
     seen.add(e.questionId)
     const days = daysBetween(e.ts)
@@ -117,7 +118,7 @@ export function upcomingReviews(limit = 3): DueItem[] {
   const today = todayStr()
   const seen = new Set<string>()
   const items: DueItem[] = []
-  for (const e of getReverseLog()) {
+  for (const e of getWrongAnswerLog()) {
     if (seen.has(e.questionId)) continue
     seen.add(e.questionId)
     // 今日係第 N 日，聽日就係第 N+1 日 —— 睇 N+1 落唔落喺間隔表之內。

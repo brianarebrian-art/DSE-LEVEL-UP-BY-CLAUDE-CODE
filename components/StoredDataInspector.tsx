@@ -30,7 +30,7 @@ const LABELS: Record<string, { zh: string; en: string }> = {
   dse_topic_stats: { zh: '逐個課題嘅答對率', en: 'Accuracy per topic' },
   dse_free_attempts_total: { zh: '累計做過幾多份卷', en: 'Total practice sets completed' },
   dse_active_session: { zh: '未做完嗰份卷（供續做）', en: 'An unfinished set, so you can resume' },
-  dse_reverse_log: { zh: '錯題同你自己揀嘅錯因', en: 'Wrong answers and the causes you picked' },
+  dse_reverse_log: { zh: '答錯嘅題（你揀嘅選項同正解），同你揀嘅錯因', en: 'Wrong answers (your option and the correct one), and the causes you picked' },
   dse_bookmarks: { zh: '你收藏咗嘅題目', en: 'Questions you bookmarked' },
   dse_capsule: { zh: '你封存喺時間囊入面嘅字', en: 'What you sealed in a time capsule' },
   dse_result: { zh: '最近一次練習結果', en: 'Your most recent result' },

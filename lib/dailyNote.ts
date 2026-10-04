@@ -23,7 +23,7 @@
 // 本檔為純函數，不觸碰 localStorage，時間由呼叫方傳入，方便測試。
 
 import type { AttemptRecord } from '@/lib/progress'
-import type { ReverseLogEntry } from '@/lib/reverseLog'
+import type { WrongAnswerEntry } from '@/lib/reverseLog'
 import type { TopicStatEntry } from '@/lib/topicStats'
 
 /** 觸發溫和提醒所需的錯誤次數。三次＝「同一個坑跌三次」，是介入的合理時機。 */
@@ -70,7 +70,7 @@ export function localDayStart(ts: number): number {
  * `lastNudgedAt` 由呼叫方提供（記於 localStorage），key 為 `${subjectId}::${topicId}`。
  */
 export function buildGentleNudge(
-  log: ReverseLogEntry[],
+  log: WrongAnswerEntry[],
   now: number,
   lastNudgedAt: Record<string, number> = {},
 ): NudgeMessage | null {
@@ -147,7 +147,7 @@ export function buildDailyNote(
  * 時效性與針對性都較高；後者屬日常陪伴，遲一日看到並無損失。
  */
 export function pickTodayMessage(input: {
-  log: ReverseLogEntry[]
+  log: WrongAnswerEntry[]
   attempts: AttemptRecord[]
   stats: TopicStatEntry[]
   now: number

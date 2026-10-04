@@ -15,6 +15,8 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
+  // Do not announce the framework in an X-Powered-By header (audit #8, 2026-10-04).
+  poweredByHeader: false,
   // /admin 隊列喺 request time 用 fs 讀草稿檔 —— 呢啲檔冇被 import，
   // Vercel file tracing 唔會自動打包，要明示 include。
   outputFileTracingIncludes: {

@@ -19,7 +19,7 @@ const AUTH_WINDOW_MS = 10 * 60_000
 const LIMIT_AUTH = 30 // per IP per 10 min on /api/auth/* (OAuth needs a handful; brute force needs hundreds)
 // Question reports (/api/report, 2026-10-04): a student reports a handful at most; a script
 // filling the table needs hundreds. Counted on top of the general bucket.
-const LIMIT_REPORT = 10 // per IP per 10 min
+const LIMIT_REPORT = 10 // per IP per 10 min; the post-session questions (/api/feedback) use the same limit
 
 // 限流本身喺 lib/rateLimit.ts（純函數，有測試；Map 有上限）。
 const limiter = createLimiter({ maxKeys: 2000, staleMs: AUTH_WINDOW_MS })
@@ -33,7 +33,8 @@ function rateLimit(request: NextRequest) {
   const ok = isAuthSensitive
     ? limiter.allow(`a:${ip}`, AUTH_WINDOW_MS, LIMIT_AUTH)
     : limiter.allow(`g:${ip}`, WINDOW_MS, LIMIT_GENERAL) &&
-      (pathname !== '/api/report' || limiter.allow(`r:${ip}`, AUTH_WINDOW_MS, LIMIT_REPORT))
+      (pathname !== '/api/report' || limiter.allow(`r:${ip}`, AUTH_WINDOW_MS, LIMIT_REPORT)) &&
+      (pathname !== '/api/feedback' || limiter.allow(`f:${ip}`, AUTH_WINDOW_MS, LIMIT_REPORT))
   if (!ok) {
     return NextResponse.json(
       { error: 'Too many requests, please slow down.', code: 'RATE_LIMITED' },

@@ -73,13 +73,13 @@ export default function TransparencyClient({
       title: en ? 'How we keep the questions sound' : '我哋點樣確保題目質素',
       points: en
         ? [
-            'Every question is co-authored by DSE alumni with AI, then passes automated checks before it goes live.',
+            'Every question is co-authored by DSE alumni with AI, then passes automated checks before it goes live. The questions have not been reviewed by registered teachers.',
             'All items are original rewrites written to DSE question types and assessment points — they are NOT official HKEAA questions, and no official content is copied.',
             'Numeric / calculation questions are verified by parametric brute-force checking.',
             'Spotted a mistake? Tell us and we’ll fix it as soon as we can.',
           ]
         : [
-            '每一條題目都由 DSE 舊生 + AI 協作編寫，上線前要通過自動檢查。',
+            '每一條題目都由 DSE 舊生 + AI 協作編寫，上線前要通過自動檢查。題目未經註冊教師審定。',
             '全部都係原創改寫，按 DSE 題型同考核重點撰寫 —— 並非 HKEAA 官方試題，亦無複製任何官方內容。',
             '數值／計算題以參數化方式 brute-force 驗算。',
             '發現錯誤？話我哋知，我哋會盡快修正。',

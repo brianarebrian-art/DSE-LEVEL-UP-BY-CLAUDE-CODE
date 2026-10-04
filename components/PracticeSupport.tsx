@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Moon } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
-import { getReverseLog } from '@/lib/reverseLog'
+import { getWrongAnswerLog } from '@/lib/reverseLog'
 
 // 練習頁支援小隊（Yuna/Sarah/Emma/Leo）：
 // 1. 「易讀字體」—— BDA 風格指引推薦嘅系統無襯線堆疊（零下載）
@@ -66,7 +66,7 @@ export default function PracticeSupport() {
       // 今日發現嘅盲點數（逆向錯因日誌，本地）—— 只講收穫，唔講「仲有幾多未做」
       const start = new Date()
       start.setHours(0, 0, 0, 0)
-      setBlindSpotsToday(getReverseLog().filter((e) => e.ts >= start.getTime()).length)
+      setBlindSpotsToday(getWrongAnswerLog().filter((e) => e.ts >= start.getTime()).length)
       playSoftChime()
       setDoneToday(true)
     }
