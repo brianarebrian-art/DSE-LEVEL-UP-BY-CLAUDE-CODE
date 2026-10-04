@@ -72,3 +72,10 @@ test('/about describes what the site really does', () => {
   assert.match(a, /答案與釋義上線前均須通過自動檢查；題目未經註冊教師審定。接獲錯誤報告會盡快修正，退回的題目會在透明度頁公開。/)
 })
 
+// Founders' reply 8a (2026-10-04): the FAQ on /about drops "academic accuracy is our red line" too.
+test('the FAQ no longer calls accuracy a red line', () => {
+  const faq = strip(readFileSync('components/FAQSection.tsx', 'utf8'))
+  assert.doesNotMatch(faq, /生死線|red line/)
+  assert.match(faq, /我哋會對照課綱核實，屬實即修正。'/)
+})
+
