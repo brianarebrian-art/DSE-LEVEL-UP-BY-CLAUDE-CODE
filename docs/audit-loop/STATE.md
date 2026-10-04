@@ -195,4 +195,5 @@
   - 5a：結果頁兩條可略過的問題（commit `1682c32`），表 `session_feedback` 已應創辦人批准建立於正式資料庫（migration `session_feedback`；RLS 開、0 policy、anon／authenticated 無權、6 欄、0 行；public 共 10 張表）。本機以模擬伺服器回覆測試：失敗訊息、重撳、「有」的提示、兩題答完的道謝；送出內容只有科目、問題、答案、語言。題目句中的「10」按該節實際題數顯示。
   - 私隱政策 `2026-10-04.v2` 已包括 1a、7a、5a 三項改動，未部署。
   - 檢查：npm test 1285/1285、tsc 0、lint 0 error、qa 通過、production build 通過。
+- 2026-10-04 創辦人回覆「3ok」：關於頁兩句照草稿修改（commit `489da69`），測試鎖住。全套檢查：npm test 1286/1286、tsc 0、lint 0 error、qa 通過、production build 通過。審計 #8 已批項目全部完成，待創辦人推送 `audit-loop` 並合併。
 
