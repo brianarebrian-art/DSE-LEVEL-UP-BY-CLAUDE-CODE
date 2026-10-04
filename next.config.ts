@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
     // 題目批次，卡片隊列會靜靜地空白（本地開發正常，所以最易走漏）。
     '/admin': ['./scripts/qbank/drafts/*.json', './data/sensei/*/drafts/*.json'],
   },
+  // RFC 9116 §3: the canonical file lives under /.well-known/; the legacy top-level path may
+  // redirect to it. Without this, scanners that only try /security.txt get a 404 (audit #7).
+  async redirects() {
+    return [{ source: '/security.txt', destination: '/.well-known/security.txt', permanent: true }]
+  },
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },

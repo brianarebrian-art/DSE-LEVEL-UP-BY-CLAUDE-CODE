@@ -19,3 +19,14 @@ test('security.txt has not expired and expires within a year and a month', () =>
   assert.ok(expires > Date.now(), 'security.txt has expired: renew Expires')
   assert.ok(expires - Date.now() < 396 * 24 * 3600 * 1000, 'RFC 9116 recommends less than a year')
 })
+
+// Audit #7 (2026-10-04): /security.txt returned 404. RFC 9116 allows the legacy top-level
+// path to redirect to the /.well-known/ file.
+test('the legacy /security.txt path redirects to the canonical file', async () => {
+  const { default: config } = await import('../../next.config.ts')
+  const rules = (await config.redirects?.()) ?? []
+  const rule = rules.find((r) => r.source === '/security.txt')
+  assert.ok(rule, 'next.config.ts must redirect /security.txt')
+  assert.equal(rule.destination, '/.well-known/security.txt')
+  assert.equal(rule.permanent, true)
+})
