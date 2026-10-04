@@ -185,4 +185,9 @@
 - 2026-10-04 A7-2 最終方案（創辦人回覆「a」）：報錯可直接送出，只存題號、類別、語言、時間（commit `752efad`）。私隱政策 bump 至 `2026-10-04.v1`，登入學生會再見同意書。本機正式版實測：無效資料 5 種全部 400；瀏覽器以模擬伺服器回覆測試「送出」成功及失敗兩條路，送出內容只有題號、類別、語言（即使描述框有字）；未向正式資料庫寫入任何資料。資料表要創辦人在 Supabase 建立，⬜ 待建立後在正式網站驗證。檢查：npm test 1269/1269、tsc 0、lint 0 error、qa 通過、build 通過。
 - 2026-10-04 創辦人要求 Claude 建立 `question_reports`（Supabase project `aegekxapxgcfdrkzisis`，migration 名 `question_reports`）。建立前只讀確認表不存在；建立後只讀核對權限正確（見 FOUNDER-QUEUE Q-A7-2），未寫入任何資料行。Security advisor：新表只有 INFO「RLS enabled, no policy」（刻意，同其他 4 張用戶表）；另有一項舊有 WARN `public.handle_updated_at` search_path 未固定，非今次引入，未處理。
 - 更正（2026-10-04）：上一條紀錄寫「創辦人決定暫不推送、不合併」是 loop 誤解。創辦人原話「我唔會推送……」意思是「不懂得推送」，不是「不想」。澄清後創辦人回覆「a」：照 loop 提供的 GitHub Desktop 步驟推送 `audit-loop` 並合併入 `main`。
+- 審計 #8（2026-10-04）創辦人回覆「1a 2a 3a 4a 5a 6a」：
+  - 已做：robots.txt 刪內部筆記、關 X-Powered-By（`c9fc195`）；收回 authenticated 對 review_decisions、user_settings 的 SELECT，已套用正式資料庫（`revoke_authenticated_on_user_tables`；repo `0021`，commit 見 log），之後 anon／authenticated 只可讀 questions、question_bank_versions；透明度頁加「題目未經註冊教師審定」（`1f280ee`）；私隱頁逐句核實，改正五處（`cd24d6f`，POLICY_VERSION `2026-10-04.v2`，未部署）。
+  - 待創辦人睇草稿：3a 關於頁兩句、5a 完卷兩條問題。
+  - 新發現（loop 自己造成）：2026-10-02 刪錯因自診卡（`169e1bf`）時，一併刪走了選擇題錯題寫入 `dse_reverse_log` 的唯一途徑。之後 10 題練習答錯不再記錄，「到期重溫」、錯誤模式、recommendNext 收不到新的選擇題錯題（紙筆答題紙、長題仍有）。已問創辦人。
+  - 審計不準確／已做：報錯表（`752efad`，只存題號類別）、公開退回紀錄（`fb42589`）、RLS（anon 只讀題目表）、OAuth（只取 sub，無自訂 redirect）、「60 秒逆向錯因診斷」不在網站（Threads）、頁尾每頁有 IG／Threads、域名（創辦人決定）。審計建議寫「經考生覆核」，無紀錄支持，憲章 §12.1 不准寫。
 
