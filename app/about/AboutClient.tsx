@@ -20,7 +20,9 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     quote: '夫子教人，各因其材',
     // 2026-10-04（審計 #8，創辦人回覆 3a、草稿「3ok」）：原句「每一種思維陷阱……逆向清錯策略」超出現況
     // （練習頁錯因自診已於 2026-10-02 刪除），改為照實描述。
-    zh: '我們拒絕麥當勞式、倒模般的公式教育。系統會記住你在哪些課題答錯，建議你下一步先練哪個課題，並按時提你重溫答錯的題——你補的是你自己的洞，而不是別人的範本。',
+    // 2026-10-04（審計 #10，創辦人回覆 21a、草稿「21 ok」）：中文改為廣東話，與其餘頁面語氣一致；
+    // 刪去「麥當勞式」「貴族壟斷」「最極致的訓練」「100% 純粹降噪、零雜訊」。英文不變。
+    zh: '我哋唔想用一套公式教晒所有人。系統會記住你喺邊啲課題答錯，建議你下一步練邊個課題，仲會按時提你重溫答錯嘅題。你補嘅係你自己嘅漏洞，唔係人哋嘅範本。',
     en: 'We refuse one-size-fits-all, assembly-line teaching. The system remembers which topics you get wrong, suggests which topic to practise next, and reminds you to revisit the questions you missed — you patch your own gaps, not someone else’s template.',
   },
   {
@@ -28,7 +30,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '有教無類',
     enTitle: 'Education for everyone',
     quote: '有教無類',
-    zh: '打破名校與貴族對資源的壟斷。不分貧富貴賤、不問出身學校，只要有心向學，任何人都可以免費用到最極致的訓練。沒有門檻、沒有白名單、沒有分級版本——全站功能，永久無條件對所有人免費開放。',
+    zh: '好嘅練習唔應該只係名校學生先有。唔理你屋企有冇錢、讀邊間學校，只要你想學，就可以免費用晒全部功能。冇門檻、冇白名單、冇分級版本，全站功能永遠對所有人免費開放。',
     en: 'We break the monopoly elite schools hold over resources. Regardless of wealth or background, anyone willing to learn gets the most demanding training, free. No barriers, no whitelist, no tiered editions — every feature is unconditionally and permanently free for all.',
   },
   {
@@ -38,7 +40,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     quote: '不憤不啟，不悱不發',
     // 2026-10-02：練習頁的錯因自診已刪除（憲章 §7.2，創辦人決定），答錯後詳解即時打開，
     // 先顯示第一步（StagedExplanation），學生再撳開全部。此段按此改寫。
-    zh: '我們不會一次過把答案攤開。答錯之後，詳解會先給你第一步，你想多一步，再撳開全部——逼你由「靠記」走向「靠想」，學會舉一反三。',
+    zh: '我哋唔會一嘢將答案攤晒出嚟。答錯之後，解析會先畀你第一步；你諗多一步，再撳開全部。咁樣由「靠記」變成「靠諗」，學識舉一反三。',
     en: 'We do not lay the whole answer out at once. After a wrong answer the explanation opens with its first step; think one step further, then open the rest. That pushes you from memorising toward thinking, and toward reasoning by analogy.',
   },
   {
@@ -46,7 +48,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     zhTitle: '仁',
     enTitle: 'Benevolence at the core',
     quote: '己所不欲，勿施於人',
-    zh: '己所不欲，勿施於人。我們自己也討厭被廣告、彈窗、課金心理戰騷擾，所以全站 100% 純粹降噪、零廣告、零雜訊——只為你留一個可以深夜安靜專注的空間。',
+    zh: '己所不欲，勿施於人。我哋自己都好憎俾廣告同催你課金嘅彈窗煩住，所以全站冇廣告，淨係留一個夜晚都可以靜靜哋專心溫書嘅地方。',
     en: '“Do not impose on others what you would not want for yourself.” We hate being hounded by ads, pop-ups and spending psychology too — so the whole platform is 100% noise-free, zero ads, zero clutter, leaving you a quiet space to focus, even late at night.',
   },
 ]
@@ -67,12 +69,12 @@ export default function AboutClient() {
           <p className="text-ink-muted text-lg leading-relaxed">
             {en
               ? 'A 100% free DSE practice platform for every Hong Kong student — built on a simple, old idea: that real teaching adapts to the learner, and that no one should ever be shut out of it.'
-              : '一個 100% 全免費、面向全港考生的 DSE 練習平台。它建基於一個古老而簡單的信念：真正的教育因人而異，而沒有人應該被拒諸門外。'}
+              : '一個全免費、畀全港 DSE 考生用嘅練習平台。我哋相信一件好舊但好簡單嘅事：教書要睇人教，亦唔應該有人被拒諸門外。'}
           </p>
           <p className="text-ink-muted text-sm mt-4 leading-relaxed">
             {en
               ? 'We turn four ideas from Confucius into the platform’s engineering: 因材施教 (teach to the learner), 有教無類 (education for all), 啟發式教學 (learning through struggle), and 仁 (benevolence).'
-              : '我們把孔子的四個教育理念，寫進平台的底層：因材施教、有教無類、啟發式教學，與仁。'}
+              : '我哋將孔子四個教育理念放咗入平台設計入面：因材施教、有教無類、啟發式教學，同埋仁。'}
           </p>
         </div>
 
@@ -106,16 +108,16 @@ export default function AboutClient() {
             {[
               en
                 ? 'Answers and explanations must pass automated checks before they go live; the questions have not been reviewed by registered teachers. We fix reported errors as soon as we can, and withdrawn questions are listed on the transparency page.'
-                : '答案與釋義上線前均須通過自動檢查；題目未經註冊教師審定。接獲錯誤報告會盡快修正，退回的題目會在透明度頁公開。',
+                : '答案同解析上線前都要通過自動檢查；題目未經註冊教師審定。收到錯誤報告會盡快修正，收起咗嘅題目會喺透明度頁公開。',
               en
                 ? 'Original rewrites only — no reproduction of HKEAA past-paper content.'
-                : '一律獨立改寫——絕不複製香港考評局試題內容。',
+                : '全部題目獨立改寫，絕對唔會抄考評局試題。',
               en
                 ? 'No ads, no selling your data, no fabricated statistics or score guarantees.'
-                : '無廣告、不販賣你的數據、不杜撰成績統計或分數保證。',
+                : '冇廣告、唔賣你嘅資料、唔會作假成績統計或者保證分數。',
               en
                 ? 'Free forever, for everyone — there is nothing to buy here.'
-                : '永遠免費，對所有人——這裏沒有任何嘢要你買。',
+                : '永遠免費，對所有人：呢度冇任何嘢要你買。',
             ].map((line, i) => (
               <div key={i} className="flex items-start gap-2">
                 <span className="text-accent mt-0.5 shrink-0">✓</span>
@@ -134,7 +136,7 @@ export default function AboutClient() {
           <p className="text-ink-muted mb-4 text-sm leading-relaxed">
             {en
               ? 'Spotted a mistake in a question, or want a subject prioritised? Tell us — accuracy depends on it.'
-              : '發現題目有錯，或想我們優先處理某一科？歡迎告訴我們——準確度全靠大家把關。'}
+              : '發現題目有錯，或者想我哋優先處理某一科？歡迎話我哋知，準確度要靠大家一齊把關。'}
           </p>
           <a
             href="mailto:dselevelup@gmail.com"
