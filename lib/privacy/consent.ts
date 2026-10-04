@@ -37,8 +37,11 @@
  *
  * 2026-10-02.v2 —— 新增一項：Vercel Web Analytics（網站整體瀏覽量，唔用 cookie）。
  * 創辦人 2026-10-02 決定安裝。屬新增採集類別，所以一定要 bump。
+ *
+ * 2026-10-04.v1 —— 新增一項：題目問題報告（題號、問題類別、介面語言、時間；
+ * 不記帳戶、IP、裝置）。審計 #7，創辦人 2026-10-04 回覆「a」。屬新增採集類別，所以 bump。
  */
-export const POLICY_VERSION = '2026-10-02.v2'
+export const POLICY_VERSION = '2026-10-04.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

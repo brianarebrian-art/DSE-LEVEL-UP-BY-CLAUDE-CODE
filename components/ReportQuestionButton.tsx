@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocale } from '@/lib/i18n'
+import { CATEGORIES, type CategoryKey } from '@/lib/questionReport'
 
 // 題目勘誤入口 —— 學生見到題目有問題，喺當場報得返。
 //
@@ -23,25 +24,15 @@ import { useLocale } from '@/lib/i18n'
 // 所以個對話框永遠攤開報告全文（唔係淨係一個「複製」掣）：就算剪貼板 API
 // 失敗、就算冇郵件程式，學生都仲可以自己揀字複製，用任何方式寄畀我哋。
 //
-// ══ 唔存任何嘢 ══
-// 冇 localStorage、冇 API、冇資料表。學生打嘅字只會去佢自己揀嘅地方。
-// 唔係做唔到後端，而係「有個掣但寫入唔到」嘅風險，喺呢個平台已經出過一次。
+// ══ 2026-10-04：可以直接送出（審計 #7，創辦人回覆「a」）══
+// 「送出」只傳學生【揀】的內容：題號、問題類別、介面語言（lib/questionReport.ts，
+// 表 question_reports）。學生自己寫的描述不會傳到本站，只會經學生自己的電郵寄出
+// （憲章 §16.E 約束 5）。不記帳戶、IP 或裝置。
+// 送出失敗（包括資料表未建立）一定會顯示，並指向電郵；只有伺服器回覆 { ok: true }
+// 才顯示「收到」，避免重犯「有個掣但寫入唔到」的錯。
 const REPORT_EMAIL = 'dselevelup@gmail.com'
 
-/** 分類要係學生講得出口嘅話，唔係內部術語 —— 揀錯類都好過唔報。 */
-export const CATEGORIES = [
-  { key: 'answer', zh: '答案好似唔啱', en: 'The answer looks wrong' },
-  { key: 'explain', zh: '解析講唔通 ／ 同答案對唔上', en: 'The explanation does not follow' },
-  { key: 'wording', zh: '題目寫得唔清楚 ／ 有歧義', en: 'The question is unclear or ambiguous' },
-  { key: 'display', zh: '排版、公式或顯示有問題', en: 'Formatting, formula or display problem' },
-  { key: 'scope', zh: '超出課程範圍 ／ 難度標錯', en: 'Outside the syllabus, or mislabelled difficulty' },
-  // 2026-09-30（UX 循環 LOOP 30）：課題分類錯會令「練返呢個課題」及錯誤模式統計都跟住錯。
-  { key: 'topic', zh: '課題分類錯', en: 'Filed under the wrong topic' },
-  { key: 'copyright', zh: '懷疑抄咗官方試題', en: 'Looks copied from an official paper' },
-  { key: 'other', zh: '其他', en: 'Something else' },
-] as const
-
-type CategoryKey = (typeof CATEGORIES)[number]['key']
+export { CATEGORIES }
 
 /** 組成報告全文 —— mailto 同「自己複製」用同一份，唔會兩邊唔一致。 */
 export function composeReport(questionId: string, cat: CategoryKey, detail: string, en: boolean): string {
@@ -87,6 +78,7 @@ export default function ReportQuestionButton({
   const [copied, setCopied] = useState(false)
   // 撳咗「用電郵寄出」：只代表郵件程式已開啟（或者冇反應），唔代表已寄出。
   const [prepared, setPrepared] = useState(false)
+  const [send, setSend] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
   const panelRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const wasOpen = useRef(false)
@@ -98,6 +90,7 @@ export default function ReportQuestionButton({
     setDetail('')
     setCopied(false)
     setPrepared(false)
+    setSend('idle')
   }, [questionId])
 
   useEffect(() => {
@@ -112,6 +105,7 @@ export default function ReportQuestionButton({
       if (panelRef.current) panelRef.current.scrollTop = 0
       setCopied(false)
       setPrepared(false)
+      setSend((s) => (s === 'sent' ? s : 'idle'))
       wasOpen.current = true
       return () => document.removeEventListener('keydown', onKey)
     }
@@ -125,6 +119,22 @@ export default function ReportQuestionButton({
   }, [open])
 
   const body = composeReport(questionId, cat, detail, en)
+
+  // 只送題號、類別、語言 —— detail（學生寫的字）刻意不送。
+  const submit = async () => {
+    setSend('sending')
+    try {
+      const res = await fetch('/api/report', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ questionId, category: cat, locale: en ? 'en' : 'zh' }),
+      })
+      const data = (await res.json().catch(() => null)) as { ok?: boolean } | null
+      setSend(res.ok && data?.ok === true ? 'sent' : 'failed')
+    } catch {
+      setSend('failed')
+    }
+  }
 
   const copy = async () => {
     try {
@@ -175,8 +185,8 @@ export default function ReportQuestionButton({
               </h2>
               <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                 {en
-                  ? 'Reports are sent by email from your own email app; this site does not store them. A person reads every one. If it turns out we are wrong, the question gets fixed or withdrawn.'
-                  : '報告會透過你自己嘅電郵寄出，本站唔會儲存。每一封都有真人睇；如果證實係我哋錯，條題會改或者落架。'}
+                  ? 'Pick the kind of problem and press Send. We receive only the question ID and the kind of problem, not who you are. A person reads every report; if we are wrong, the question gets fixed or withdrawn.'
+                  : '揀問題類別，撳「送出」就得。我哋只會收到題號同問題類別，唔會知道你係邊個。每一份都有真人睇；如果證實係我哋錯，條題會改或者落架。'}
               </p>
               <p className="mt-2 font-mono text-[11px] text-ink-muted">
                 {en ? 'Question ID' : '題號'}: {questionId}
@@ -206,7 +216,36 @@ export default function ReportQuestionButton({
                 </div>
               </fieldset>
 
-              <label htmlFor="report-detail" className="mt-4 block text-xs font-medium text-ink-soft">
+              <button
+                type="button"
+                onClick={submit}
+                disabled={send === 'sending' || send === 'sent'}
+                className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-60"
+              >
+                {send === 'sending' ? (en ? 'Sending…' : '傳送緊…') : send === 'sent' ? (en ? 'Sent' : '已送出') : en ? 'Send' : '送出'}
+              </button>
+              <p aria-live="polite" className="mt-2 text-xs leading-relaxed text-ink-muted">
+                {send === 'sent'
+                  ? en
+                    ? 'Received. Thank you — we will look at this question.'
+                    : '收到，多謝你！我哋會睇吓呢條題。'
+                  : send === 'failed'
+                    ? en
+                      ? 'It did not go through. Please send it by email below instead.'
+                      : '傳送唔到。請用下面嘅電郵寄出。'
+                    : ''}
+              </p>
+
+              {/* 學生自己寫的描述只經學生自己的電郵寄出，本站不儲存（憲章 §16.E 約束 5）。 */}
+              <h3 className="mt-5 border-t border-line pt-4 text-sm font-medium text-ink">
+                {en ? 'Want to tell us more? Send it by email' : '想講多啲？用電郵寄'}
+              </h3>
+              <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+                {en
+                  ? 'What you write here goes only through your own email app. This site does not store it.'
+                  : '呢度寫嘅字只會經你自己嘅電郵寄出，本站唔會儲存。'}
+              </p>
+              <label htmlFor="report-detail" className="mt-3 block text-xs font-medium text-ink-soft">
                 {en ? 'What did you notice? (optional)' : '你發現咗咩？（可以唔填）'}
               </label>
               <textarea
@@ -223,7 +262,7 @@ export default function ReportQuestionButton({
               {/* 報告全文永遠攤開 —— 就算冇郵件程式、就算剪貼板失敗，
                   學生都仲可以自己揀字。呢度係唯一唔會靜默失敗嘅一條路。 */}
               <label htmlFor="report-preview" className="mt-4 block text-xs font-medium text-ink-soft">
-                {en ? 'This is what gets sent' : '寄出去嘅就係呢啲'}
+                {en ? 'This is what the email will say' : '電郵內容就係呢啲'}
               </label>
               <textarea
                 id="report-preview"
@@ -237,7 +276,7 @@ export default function ReportQuestionButton({
                 <a
                   href={mailtoHref(questionId, body, en)}
                   onClick={() => setPrepared(true)}
-                  className="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
+                  className="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg border border-line-strong px-4 text-sm text-ink-soft transition-colors hover:border-accent/40 hover:text-accent"
                 >
                   {en ? 'Open email app' : '用電郵寄出'}
                 </a>
