@@ -50,7 +50,8 @@ const EXPECTED = {
   // 2026-10-04 (2026-10-04.v2): every sentence re-checked against code and database (audit #8,
   // founders' reply 1a). Previous: 47744c8ab9be3263 (2026-10-04.v1, deployed).
   // Same unshipped version, amended: wrong answers logged without a cause (reply 7a).
-  hash: 'e5347f99b787a65d',
+  // and the post-session questions section (reply 5a).
+  hash: 'ae88bb538181ea57',
 }
 
 function policyFingerprint(): string {

@@ -14,6 +14,7 @@ import { useLocale } from '@/lib/i18n'
 import { SITE_ORIGIN, OFFICIAL_SOCIAL } from '@/lib/site'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import SignInNote from '@/components/SignInNote'
+import SessionFeedback from '@/components/SessionFeedback'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
 import { useQuiet } from '@/lib/quietMode'
@@ -360,6 +361,9 @@ export default function ResultPageClient() {
           )}
 
         </div>
+
+        {/* 完卷兩條問題（審計 #8，創辦人回覆 5a、草稿「5 ok」，2026-10-04）：分數下面，可以唔答。 */}
+        {result.subjectId && <SessionFeedback subjectId={result.subjectId} total={result.total} />}
 
         {/* 下一步（UX 循環 LOOP 7，2026-09-30）：原本在頁底、教師報告及 IG 卡之後（360×800 實測 y≈2,470）。
             現在緊接分數之後。規則見 lib/resultNextSteps.ts。 */}
