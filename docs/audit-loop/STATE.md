@@ -1,5 +1,5 @@
 # Audit Loop State
-最後更新：2026-10-02 · Iteration #11 · Branch: audit-loop
+最後更新：2026-10-04 · Iteration #12 · Branch: audit-loop
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
@@ -165,3 +165,13 @@
 
 - §8 拒絕項目照 prompt v5 全部記錄，不另開任務。
 - 憲章與 prompt §3 有出入的地方，按 §1.2 第 5 條以憲章為準，已列入 FOUNDER-QUEUE（Q-P1–Q-P3）。
+
+- 審計 #7（2026-10-04，貼上內容，對象為線上版）核對結果：
+  - 已修：信任中心及 `/methodology`「出唔出街由人決定」與 §12.1 不符，改為照實描述（commit `7ad76b9`，trust-copy 測試擴至四頁）；`/security.txt` 404，加 308 轉址（commit `a25a743`）。
+  - 待創辦人：頁尾「等級預測」（Q-A7-1，憲章 §13 原文）、報錯入庫（Q-A7-2）、公開退回清單（Q-A7-3）、CSP nonce（Q-A7-4）。
+  - 已存在，不另開任務：每題覆核標籤（`components/QuestionProvenance.tsx`）、做完一節後的 IG／Threads 連結及登入提示（Q-T02、Q-T39）、私隱頁 Vercel Analytics 說明、科目頁「部分考核形式未於本站提供」（`app/subjects/SubjectsView.tsx:112`，逐科資料 ASSESSMENT_METADATA_DEFERRED）、情緒彈窗已刪（2026-10-02）。
+  - 已有決定，不再開問題：域名（見上 2026-10-02）、答錯先出第一步（Q-T05）。
+  - 與實況不符：「1024px 導航唔會變桌面欄、25 科變長列表」—— 2026-10-04 本機 dev 1024×768 實測 `/subjects` 有左側圖示欄及三欄科目卡。同一截圖見左下無障礙浮動掣疊住第一張卡的「開始 10 題」，屬 T12。
+  - 安全核對：`/api/*` 回應無 `access-control-allow-origin: *`，只有 CDN 靜態頁有（公開內容、不帶 cookie，風險低，不改）；`NEXT_PUBLIC_*` 只有 Supabase URL、anon key、VAPID 公鑰及 auth URL，資料庫連線 `DATABASE_URL` 只在 `lib/auth/better-auth.ts`（`import 'server-only'`）；`auth.ts` 無自訂 redirect callback，用 Auth.js 預設同源限制；RLS 見上 2026-10-02 只讀核對。
+  - 未做、未排期：390px 精簡導航、1920px 題目解析並排、免登入進度碼、人工金標 50 題、每週電郵摘要。屬設計或內容工作，待創辦人排優先次序。
+  - 檢查：npm test 1252/1252、tsc 0、改動檔 lint 0 error；本機 dev 實測信任中心及方法論新字眼、`/security.txt` → 308 → `/.well-known/security.txt`，console 無錯誤。未重跑 production build（⬜ 待驗證）。
