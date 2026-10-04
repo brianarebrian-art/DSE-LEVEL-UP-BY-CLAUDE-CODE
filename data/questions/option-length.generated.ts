@@ -27,7 +27,7 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
     "correct": 76
   },
   "chemistry": {
-    "unique": 518,
+    "unique": 524,
     "correct": 100
   },
   "biology": {

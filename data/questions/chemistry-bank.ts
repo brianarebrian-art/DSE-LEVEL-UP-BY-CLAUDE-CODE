@@ -97,12 +97,13 @@ COMP.forEach((c, ci) => {
   { f: 'NH_3', mr: 17, part: 14, el: ['氮 N', 'nitrogen N'] },
   { f: 'CaCO_3', mr: 100, part: 40, el: ['鈣 Ca', 'calcium Ca'] },
 ] as const).forEach((c, i) => {
+  // 2026-10-04（創辦人回覆 27a）：第三個誤答原為小數（例如 0.889），與答案數值相同；改為 0.889%（漏乘 100 卻加上百分號）。
   const pct = round((c.part / c.mr) * 100, 1)
   add(`cb_e3_${i}`, T.formula, FW.calc, 'easy',
     [`求 $\\mathrm{${c.f}}$（$M_r = ${c.mr}$）中${c.el[0]}的質量百分比。`, `Find the percentage by mass of ${c.el[1]} in $\\mathrm{${c.f}}$ ($M_r = ${c.mr}$).`],
-    [n(`$${pct}\\%$`), n(`$${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$`), n(`$${round(c.part / c.mr, 3)}$`), n(`$${round(c.mr / c.part, 2)}$`)],
-    [`質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{${c.part}}{${c.mr}} \\times 100\\% = ${pct}\\%$。陷阱：$${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$ 是其餘部分；$${round(c.part / c.mr, 3)}$ 漏了 $\\times 100\\%$。`,
-     `% by mass $= \\frac{${c.part}}{${c.mr}} \\times 100\\% = ${pct}\\%$. Trap: the "rest" is $${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$.`])
+    [n(`$${pct}\\%$`), n(`$${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$`), n(`$${round(c.part / c.mr, 3)}\\%$`), n(`$${round(c.mr / c.part, 2)}$`)],
+    [`質量百分比 $= \\dfrac{\\text{該元素質量}}{M_r} \\times 100\\% = \\dfrac{${c.part}}{${c.mr}} \\times 100\\% = ${pct}\\%$。陷阱：$${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$ 是其餘部分；$${round(c.part / c.mr, 3)}\\%$ 計出比值後漏了乘以 100，卻照樣加上百分號。`,
+     `% by mass $= \\frac{${c.part}}{${c.mr}} \\times 100\\% = ${pct}\\%$. Traps: the "rest" is $${round(((c.mr - c.part) / c.mr) * 100, 1)}\\%$; $${round(c.part / c.mr, 3)}\\%$ forgets to multiply by 100 but keeps the % sign.`])
 })
 
 // ═══════════════════════════════════════════════════════════════════════════
