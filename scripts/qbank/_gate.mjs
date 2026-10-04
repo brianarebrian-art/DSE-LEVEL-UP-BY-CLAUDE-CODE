@@ -82,6 +82,38 @@ export function answerShapeMargin(options, correctIndex) {
 }
 export const SHAPE_MARGIN_LIMIT = 6
 
+// ── Longest-option guessing, measured over a set of questions ───────────────
+// The per-question margin above misses one pattern: the correct option is longer
+// by only two or three characters, but in nearly every question. On 2026-10-04,
+// after removing every Chinese History question over the margin, the remaining
+// ones still had the correct option as the single longest 96.9% of the time.
+// Only a rate over many questions shows this. Guessing at random gives 25%.
+//
+// Founders' reply 17A-2a (2026-10-04): across all new questions in one subject,
+// "pick the longest option" may succeed at most 40% of the time. The rate is
+// judged only once there are SUBJECT_MIN_NEW questions with a single longest
+// option; with fewer, chance alone can push it high (3 heads in 3 coin tosses).
+export const SUBJECT_LONGEST_LIMIT = 0.4
+export const SUBJECT_MIN_NEW = 20
+
+/**
+ * For questions with four options: how many have a single longest option
+ * (by visual length), and in how many of those that option is the correct one.
+ */
+export function longestOptionStats(questions) {
+  let unique = 0
+  let correct = 0
+  for (const q of questions) {
+    if (!Array.isArray(q?.options) || q.options.length !== 4 || !Number.isInteger(q?.correctIndex)) continue
+    const v = q.options.map(visualLength)
+    const max = Math.max(...v)
+    if (v.filter((x) => x === max).length !== 1) continue
+    unique++
+    if (v[q.correctIndex] === max) correct++
+  }
+  return { unique, correct }
+}
+
 // 祖父清單：閘生效之前已經存在嘅題目 id。憲章 §6 —— 新閘唔可以令現有數據集失效。
 const SHAPE_BASELINE = (() => {
   try {

@@ -7,6 +7,7 @@ import {
 } from '@/lib/mastery'
 import { shareAtOrAbove, subjectDistribution, DISTRIBUTION_YEAR } from '@/lib/levelDistribution'
 import { driftYears } from '@/lib/levelDrift'
+import { isLengthBiased } from '@/lib/optionLengthBias'
 
 // 等級估算（v4）。呢個組件嘅責任唔止係出個數，而係令學生知道呢個數靠得住
 // 幾多 —— 所以三種不確定性各自有自己嘅一句，唔混埋一齊講。
@@ -22,11 +23,14 @@ export default function MasteryEstimate({
   className = '',
   heading,
   headingLevel = 'h2',
+  lengthBiasNote = false,
 }: {
   subjectId: string
   className?: string
   heading?: string
   headingLevel?: 'h2' | 'h3'
+  /** /predictor only (founders' reply 17C): say when this subject rewards picking the longest option. */
+  lengthBiasNote?: boolean
 }) {
   const Heading = headingLevel
   const { locale } = useLocale()
@@ -151,6 +155,14 @@ export default function MasteryEstimate({
               : '寧可乜都唔顯示，都好過畀一個闊到冇意義嘅範圍你。'}
           </p>
         </div>
+      )}
+
+      {lengthBiasNote && isLengthBiased(subjectId) && (
+        <p className="text-sm text-ink-soft mt-3 leading-relaxed">
+          {en
+            ? 'Note: in this subject, the correct answer to some multiple-choice questions is often the longest option, so a guess can be right without knowing the answer. The estimate for this subject may be too high.'
+            : '注意：呢科部分選擇題嘅正確答案往往係最長嗰個選項，唔識都可能估中，所以呢科嘅估算可能偏高。'}
+        </p>
       )}
 
       {(m.discarded > 0 || m.legacy > 0) && (

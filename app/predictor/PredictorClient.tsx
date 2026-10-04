@@ -189,7 +189,7 @@ function Body({ data, p, en }: { data: Data; p: P; en: boolean }) {
             const meta = getSubject(s.subjectId)
             const name = meta ? (en ? meta.nameEn : meta.name) : s.subjectName
             return (
-              <MasteryEstimate key={s.subjectId} subjectId={s.subjectId} heading={name} headingLevel="h3" />
+              <MasteryEstimate key={s.subjectId} subjectId={s.subjectId} heading={name} headingLevel="h3" lengthBiasNote />
             )
           })}
         </div>

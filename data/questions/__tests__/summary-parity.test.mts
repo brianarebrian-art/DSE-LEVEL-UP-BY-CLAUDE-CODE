@@ -73,3 +73,18 @@ test('BANK_VERSION 同真題庫內容一致（同 sync-questions.mts 同一算�
   }
   assert.equal(Object.keys(BANK_VERSION).length, active.length, `科目數對唔上 ${FIX}`)
 })
+
+// Added 2026-10-04 (founders' reply 17C). The practice estimate pages name the subjects
+// where picking the longest option is right more than half the time. A stale file would
+// keep naming a fixed subject, or miss a new one.
+test('LONGEST_OPTION 同真題庫一致', async () => {
+  const { LONGEST_OPTION } = await import('../option-length.generated.ts')
+  const { longestOptionStats } = (await import('../../../scripts/qbank/_gate.mjs')) as unknown as {
+    longestOptionStats: (qs: unknown[]) => { unique: number; correct: number }
+  }
+  for (const s of active) {
+    const mc = getSubjectQuestions(s.id).filter((q) => (q.type ?? 'mc') === 'mc')
+    assert.deepEqual(LONGEST_OPTION[s.id], longestOptionStats(mc), `${s.id} 最長選項統計對唔上 ${FIX}`)
+  }
+  assert.equal(Object.keys(LONGEST_OPTION).length, active.length, `科目數對唔上 ${FIX}`)
+})
