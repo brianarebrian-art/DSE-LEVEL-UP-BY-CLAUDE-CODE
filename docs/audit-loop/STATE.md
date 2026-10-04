@@ -252,3 +252,6 @@
   - Vercel 專案 ssoProtection `all_except_custom_domains`：預覽部署要 Vercel 登入。Google 只會把登入送回已登記的網址；Google Console 登記清單 Claude 看不到（⬜）。
   - 準確：五頁「最後更新」日期過期（`lib/articleDates.ts`：關於 08-21、方法論 09-02、點計 09-09、信任 09-05、透明度 09-30），五頁今日均有事實更正；首頁四科捷徑頂部及底部各一（audit loop T09 刻意）；Threads 簡介仍寫 27,321、「60 秒逆向錯因診斷」、「等級預測」（創辦人自行更新）；597 條位置詞題「已改寫 10、重新上線 0」。
   - 須提醒：審計稱創辦人說「26,497 條由 2026 應屆生逐條覆核」。網站無任何覆核紀錄（2026-09-25 按 Yuna 指示刪除，REVIEWED_COUNT=0），不可加「同儕覆核」字眼（憲章 §12.1 約束 1、trust-copy 測試）。已問創辦人。
+- 2026-10-04 創辦人回覆「28a 29a 30a 31a」：
+  - 28a：五頁 modified 改為 2026-10-04（`lib/articleDates.ts`）。29a：不加同儕覆核字眼，`trust-copy.test.mts` 拒絕「同儕覆核／應屆生逐條覆核／peer review」。30a：`docs/question-reports.md` §五；首次數字（只記 Notion）：登入用戶 7 日 8、30 日 48、今日 2；同步帳戶 214；報錯 0；完卷回應 6（had_error/yes 3、will_return/yes 3）。完卷有 3 次答「有題目出錯」但報錯掣 0 次，已告知創辦人。commit 見 log。
+  - 31a 未開始：與 2026-09-29 決定（`docs/DECISIONS-2026-09-29.md` 第七、八節）衝突 —— 恢復前須熟悉該科的真人逐題六項覆核；10 題一批；M1-01（10 題，已自動檢查）未覆核前 M1-02 不開始。loop 提出 31a 時漏看此規則，已向創辦人更正並再問。
