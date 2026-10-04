@@ -212,4 +212,5 @@
   - 檢查：npm test 1289/1289、tsc 0、lint 0 error、qa 通過、production build 通過（第 4 次）。
 - 2026-10-04 創辦人回覆「15a」：收起 `cb_m2_*` 36 條設定有誤的化學題（reason `IMPOSSIBLE_PREMISE`，commit `bf475df`）；練習中 26,461、已收起 633、化學 979。首頁字眼改「發現有錯」，透明度頁新原因標籤，收藏頁按原因講，llms.txt 數字更新。npm test 1289/1289、qa、build 通過。
 - sync-questions 只讀預覽：雲端題庫鏡像 14 科與 repo 有落差（化學 1061→979；其餘 13 科自 2026-09-29 收起 597 條後未同步）。學生端兩條讀取路徑都會過濾已收起題，所以學生看不到。15a 只涵蓋化學；其餘 13 科是否一併 `--push` 已問創辦人。按憲章 §12.1 約束 3，`--push` 在部署後執行。
+- 2026-10-04 PR 合併（main `8cf5925`）後：首頁「另有 633 條發現有錯暫時收起」、透明度頁新原因、llms.txt 26,461 均已上線。按創辦人回覆「16a」執行 `sync-questions --push`，14 科雲端鏡像更新（共刪走雲端舊題：m1 133、m2 36、chemistry 79、chinese 10、bafs 171、economics 46、csd 38、geography 4、english-literature 11、ethics-religious 1；physics、biology、english、design-tech 只更新內容）；`--check` 顯示 25 科全部一致。正式網站化學練習正常出題，console 無錯誤。Vercel runtime error 只有 1 組：12:11 UTC `/api/auth` UnknownAction，由 loop 以 HEAD 請求（curl -I）檢查 cookie 觸發，非用戶問題。
 
