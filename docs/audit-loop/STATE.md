@@ -210,4 +210,6 @@
   - 只讀數字：過去 7 日有開 app 的登入用戶 8、30 日 48（user_sessions 由 2026-09-11 起）；user_progress 214；question_reports 0；session_feedback 2；auth.users 0。Vercel Web Analytics API 回 404「Web Analytics not found」，但 `/_vercel/insights/script.js` 回 200，原因未查明（⬜）。
   - D15：next/font 讀取 Google Fonts 今日連續失敗 3 次，第 4 次成功（loader.js 第 122 行 regex 取副檔名得 null）。直接取 CSS 時 URL 均為 .woff2，原因未明。
   - 檢查：npm test 1289/1289、tsc 0、lint 0 error、qa 通過、production build 通過（第 4 次）。
+- 2026-10-04 創辦人回覆「15a」：收起 `cb_m2_*` 36 條設定有誤的化學題（reason `IMPOSSIBLE_PREMISE`，commit `bf475df`）；練習中 26,461、已收起 633、化學 979。首頁字眼改「發現有錯」，透明度頁新原因標籤，收藏頁按原因講，llms.txt 數字更新。npm test 1289/1289、qa、build 通過。
+- sync-questions 只讀預覽：雲端題庫鏡像 14 科與 repo 有落差（化學 1061→979；其餘 13 科自 2026-09-29 收起 597 條後未同步）。學生端兩條讀取路徑都會過濾已收起題，所以學生看不到。15a 只涵蓋化學；其餘 13 科是否一併 `--push` 已問創辦人。按憲章 §12.1 約束 3，`--push` 在部署後執行。
 
