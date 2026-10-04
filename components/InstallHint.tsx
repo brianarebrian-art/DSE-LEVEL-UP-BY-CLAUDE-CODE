@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Smartphone, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { loadAttempts } from '@/lib/progress'
 
 // 「加到主畫面」輕提示（首頁）—— 2026-09-15，回應《v4 Final Lean》§7。
 //
@@ -57,12 +58,18 @@ export default function InstallHint() {
       return // 儲存被封鎖 —— 記唔住「已關」，就寧願唔出，免得每次都彈
     }
     if (isStandalone()) return
+    // Founders' reply 20a (2026-10-04): show the hint only after the first finished
+    // session. A first visit is for starting 10 questions; the hint used to sit above
+    // the subject buttons. Before then the browser's own install bar is held back
+    // too (preventDefault), otherwise it would appear in place of ours.
+    const done = loadAttempts().length > 0
     if (isIosSafari()) {
-      setMode('ios')
+      if (done) setMode('ios')
       return
     }
     const onPrompt = (e: Event) => {
       e.preventDefault() // 唔好畀瀏覽器自己彈 mini-infobar；由學生決定幾時撳
+      if (!done) return
       setEvt(e as BeforeInstallPromptEvent)
       setMode('prompt')
     }

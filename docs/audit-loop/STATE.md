@@ -227,3 +227,13 @@
   - 17C：`data/questions/option-length.generated.ts`（`npm run gen:summary` 產生，日期只在數字改變時更新，summary-parity 鎖住）；`lib/optionLengthBias.ts` 門檻 >50%；`/predictor` 受影響科目卡片加註（只限該頁），`/prediction-method` 新段「已知問題：選項長短」，字眼照批准草稿，名單自動計算（現為 8 科）。本機正式版實測：中國歷史卡有註、數學卡無；說明頁列出 8 科；測試用本機紀錄已清。
   - 17B-2a：上線後直接 `sync-questions --push`。18a：中國歷史 3 個模板各 92 條、選項逐字相同、正解永遠同一句，記低，試點後處理。
   - 檢查：npm test 1302/1302、qa 通過、tsc 0、lint 0 error、production build 通過。
+- 審計 #10（2026-10-04，創辦人貼上）只讀核對（正式網站 390px）：
+  - 不準確：手機頂欄只有標誌、無障礙、選單（底欄四掣），審計 #9 已犯同一錯；`/practice?subject=math` 直接開「第 1／10 題」；首頁無孔子；首頁已有「另有 633 條發現有錯暫時收起」（10a）；做完一節兩條問題已上線（5a）；選擇題錯因卡 2026-10-02 已刪；頁尾已分組、免責獨立一段；私隱頁已寫家長可電郵要求移除；「26,497」是 Threads 舊數字（創辦人自行更新）。
+  - 準確：`/progress`、`/breathe` 404（站內無連結指向）；「加到主畫面」提示位於首頁最頂（只限支援的瀏覽器）；關於頁書面語、孔子四理念、「打破名校與貴族對資源的壟斷」；科目頁有考卷結構但無講明本站練不到的部分。
+- 創辦人回覆「19a 20a 21a 22a 23b 24a」（未覆 17B）：
+  - 19a：`next.config.ts` 加 `/progress` → `/dashboard`、`/breathe` → `/relax`（非永久），`public-surface.test.mts` 鎖住。本機正式版實測兩者轉到 200。
+  - 20a：「加到主畫面」提示改為有至少一節練習紀錄（`dse_progress`）先出；之前亦攔住瀏覽器自己的安裝列（`preventDefault`），否則會由瀏覽器的版本代替出現。`install-hint.test.mts` 測試 ⑤。本機以合成 `beforeinstallprompt` 實測：無紀錄時不出（事件已攔）、有一節紀錄後出現；測試紀錄已清。
+  - 21a、22a：草稿交創辦人，未改網站。
+  - 23b：不用自訂網址。
+  - 24a：`docs/spot-check-2026-10-04-physics-biology.md`。40 條答案全部正確（Claude 驗算，非人手）。物理效率題 `pb_h6_*` 25 條：錯誤選項是答案的小數寫法（40% 對 0.4），兩個選項都對；α／β 衰變 `physc_ra4_*` 20 條解析對錯誤選項的描述不符。化學 `cb_e3_*` 6 條同類（質量百分比），屬邊緣。已問創辦人。
+  - 檢查：npm test 1304/1304、qa 通過、tsc 0、lint 0 error、production build 通過。
