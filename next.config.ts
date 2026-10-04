@@ -1,32 +1,12 @@
 import type { NextConfig } from 'next'
 
-// Security headers (Supabase/Doc-3 P0-2 hardening). Tuned to what this app actually
-// loads: self-hosted next/font (Inter) + bundled KaTeX CSS (no font CDN), Google
-// avatars over https, and Google OAuth (redirect-based). Supabase is server-only.
+// Security headers (Supabase/Doc-3 P0-2 hardening).
 //
-// CSP keeps 'unsafe-inline' for script/style — Next's bootstrap scripts and KaTeX's
-// inline math styles need it (no nonce pipeline here). In dev we additionally allow
-// 'unsafe-eval' + ws: so webpack HMR keeps working; production drops both.
-const isDev = process.env.NODE_ENV !== 'production'
-
-const csp = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "frame-ancestors 'none'",
-  "img-src 'self' data: https:",
-  "font-src 'self' data:",
-  "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
-  `connect-src 'self' https://*.supabase.co https://accounts.google.com${isDev ? ' ws:' : ''}`,
-  // youtube-nocookie: Relax Zone 官方電台 iframe（只在用戶點播時載入，私隱優先）。
-  // 用「常規上載影片」ID（非直播）—— 直播 ID 會輪替、結束後變成無法嵌入嘅錄影存檔。
-  "frame-src 'self' https://accounts.google.com https://www.youtube-nocookie.com",
-  "form-action 'self' https://accounts.google.com",
-].join('; ')
-
+// Content-Security-Policy is not set here. Since 2026-10-04 (audit #7, A7-4 B) it carries a
+// per-request nonce, so proxy.ts sets it on every page (policy in lib/csp.ts). A second,
+// static CSP here would be enforced alongside it and could only make it stricter or
+// contradict it.
 const securityHeaders = [
-  { key: 'Content-Security-Policy', value: csp },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
