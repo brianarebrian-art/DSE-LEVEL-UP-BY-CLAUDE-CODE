@@ -17,12 +17,9 @@ export const USER_SCOPED_TABLES = [
   'user_settings', // 無障礙同介面偏好（易讀字體、閱讀尺、字級⋯）
   'profiles', // 顯示名稱同角色
   'user_sessions', // 每日一行嘅「開過 app」紀錄（2026-09-11 重建，見 migration 0018）
-  // ↓ 影子溫書室已於 2026-08-21 由代碼庫刪走（docs/DECISION-no-interaction.md），
-  //   但 `supabase/migrations/0011_drop_wall.sql` 【未套用】—— 兩張表仲喺生產。
-  //   所以呢兩行【要留住】：刪帳號仍然要清得走殘留資料。0011 套用之後留住亦無害
-  //   （刪除路由對 42P01「表唔存在」當 no-op）。
-  'wall_posts',
-  'wall_likes',
+  // 影子溫書室的 wall_posts、wall_likes 已於 2026-09-09 由生產資料庫 drop（migration
+  // drop_wall，即 0011）；2026-10-04 只讀核對確認兩表不存在，故自本清單移除，
+  // 私隱頁「共 N 張表」亦由 7 改為 5（審計 #8，創辦人回覆 1a）。
   // 2026-10-01（R2-11）：此處原本再列一次 'user_sessions'（已在上面），令私隱頁「共 N 張表」多算 1。
   // 私隱政策同意紀錄（0019，2026-09-09）。
   //

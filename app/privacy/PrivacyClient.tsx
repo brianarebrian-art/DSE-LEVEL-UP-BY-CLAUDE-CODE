@@ -33,8 +33,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <h1 className="text-2xl font-medium text-ink">{en ? 'Privacy policy' : '私隱政策'}</h1>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {en
-            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. Every statement below was checked against the actual code and the actual database on 20 August 2026 — not against a specification.'
-            : '對照香港《個人資料（私隱）條例》寫。以下每一句都喺 2026 年 8 月 20 日對住實際代碼同實際資料庫核實過 —— 唔係對住一份文件。'}
+            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. Every statement below was last checked against the actual code and the actual database on 4 October 2026 — not against a specification.'
+            : '對照香港《個人資料（私隱）條例》寫。以下每一句最近一次喺 2026 年 10 月 4 日對住實際代碼同實際資料庫核實過 —— 唔係對住一份文件。'}
         </p>
       </header>
 
@@ -123,16 +123,16 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             {en ? 'The dates you opened the app: ' : '你開過 app 嘅日期：'}
             <span className="text-ink-muted">
               {en
-                ? 'one row per day — just the date, nothing else. Not the time beyond the first open, not which pages, not your IP or device. We added this to answer one question we could not otherwise answer: how many people open the app and never actually practise. Knowing that is how we find out the first screen is in the way.'
-                : '一日一行，淨係一個日期，冇其他。唔記你嗰日第一次之後開過幾多次，唔記你揭過邊啲頁，唔記你嘅 IP 或者裝置。加呢樣係為咗答一條我哋本來答唔到嘅問題：有幾多人開咗 app，但一題都冇做過。知道咗，先揾得出係咪第一版畫面攔住咗人。'}
+                ? 'one row per day: the date, and the time you first opened the app that day — nothing else. Not how many times you opened it after that, not which pages, not your IP or device. We added this to answer one question we could not otherwise answer: how many people open the app and never actually practise. Knowing that is how we find out the first screen is in the way.'
+                : '一日一行：日期，同埋你嗰日第一次開 app 嘅時間，冇其他。唔記你嗰日第一次之後開過幾多次，唔記你揭過邊啲頁，唔記你嘅 IP 或者裝置。加呢樣係為咗答一條我哋本來答唔到嘅問題：有幾多人開咗 app，但一題都冇做過。知道咗，先揾得出係咪第一版畫面攔住咗人。'}
             </span>
           </li>
           <li>
             {en ? 'Accessibility and display settings: ' : '無障礙同顯示設定：'}
             <span className="text-ink-muted">
               {en
-                ? 'easy-read font, reading ruler, hidden timer, calm lock, font size, line height, letter spacing, and your sensory preferences. Only if you turn “sync these settings” on in the accessibility panel; accounts created before 26 September 2026 that were already syncing stay on. Turning it off deletes our copy.'
-                : '易讀字體、閱讀尺、隱藏計時器、平靜鎖、字級、行距、字距，同你嘅感官偏好。要你喺無障礙設定打開「同步呢啲設定」先會上傳；2026 年 9 月 26 日之前已經同步緊嘅帳戶維持開住。閂咗會刪走我哋手上嗰份。'}
+                ? 'easy-read font, reading ruler, hidden timer, font size, line height, letter spacing, and your sensory preferences. Only if you turn “sync these settings” on in the accessibility panel; accounts created before 26 September 2026 that were already syncing stay on. Turning it off deletes our copy.'
+                : '易讀字體、閱讀尺、隱藏計時器、字級、行距、字距，同你嘅感官偏好。要你喺無障礙設定打開「同步呢啲設定」先會上傳；2026 年 9 月 26 日之前已經同步緊嘅帳戶維持開住。閂咗會刪走我哋手上嗰份。'}
             </span>
           </li>
         </ul>
@@ -213,8 +213,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'No user content, so nothing about you is public' : '冇用戶內容，所以冇任何關於你嘅嘢係公開嘅'}>
         <p>
           {en
-            ? 'This site has no messaging, no posts, no comments and no likes — nothing you do here is visible to another user. The anonymous encouragement wall that used to exist was removed on 21 August 2026, along with everything it stored.'
-            : '本站冇訊息、冇留言、冇回覆、冇心心 —— 你喺呢度做嘅嘢，冇一樣係另一個用戶睇得到。以前嗰個匿名打氣互助牆已經喺 2026 年 8 月 21 日移除，連同佢儲存過嘅嘢一齊。'}
+            ? 'This site has no messaging, no posts, no comments and no likes — nothing you do here is visible to another user. The anonymous encouragement wall that used to exist was removed from the site on 21 August 2026, and everything it stored was deleted from our database on 9 September 2026.'
+            : '本站冇訊息、冇留言、冇回覆、冇心心 —— 你喺呢度做嘅嘢，冇一樣係另一個用戶睇得到。以前嗰個匿名打氣互助牆已經喺 2026 年 8 月 21 日由網站移除，佢儲存過嘅嘢亦已經喺 2026 年 9 月 9 日由資料庫刪走。'}
         </p>
         <p>
           {en ? 'Why, and what took its place: see ' : '點解，同埋用咩接住：見'}
@@ -255,8 +255,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'If you are under 18' : '如果你未夠 18 歲'}>
         <p>
           {en
-            ? 'This site is built for DSE candidates, so most of you are. We keep collection to the minimum that makes progress sync work, and we do not profile you, target you with advertising, or share anything with third parties for marketing.'
-            : '呢個網站係為 DSE 考生而做，所以你哋大部分都係。我哋將收集減到「令進度同步行得通」嘅最低限度，唔會為你建立個人檔案、唔會用廣告針對你，亦唔會為營銷而向第三方分享任何嘢。'}
+            ? 'This site is built for DSE candidates, so most of you are. We collect only what this page lists, and as little as we can, and we do not profile you, target you with advertising, or share anything with third parties for marketing.'
+            : '呢個網站係為 DSE 考生而做，所以你哋大部分都係。我哋只會收集呢版列明嘅嘢，而且盡量收少啲；唔會為你建立個人檔案、唔會用廣告針對你，亦唔會為營銷而向第三方分享任何嘢。'}
         </p>
         <p>
           {en

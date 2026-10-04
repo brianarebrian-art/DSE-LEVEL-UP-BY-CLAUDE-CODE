@@ -32,7 +32,7 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-10-04.v1',
+  version: '2026-10-04.v2',
   // 2026-09-11 基準。上一版 b2e44e871df73cd2（2026-09-09.v1）。
   // 今次改嘅唔係錯字，係新增咗一個【採集類別】——「你開過 app 嘅日期」
   // （migration 0018 重建嘅 user_sessions），同時明文寫低未登入唔記錄。
@@ -47,7 +47,9 @@ const EXPECTED = {
   // Previous: 897cc5a7d5330031 (2026-10-02.v1).
   // 2026-10-04 (2026-10-04.v1): question reports (question id, category, language, time; no
   // account, IP or device), audit #7, founders' reply "a". Previous: 28b23cb91eddf1c9 (2026-10-02.v2).
-  hash: '47744c8ab9be3263',
+  // 2026-10-04 (2026-10-04.v2): every sentence re-checked against code and database (audit #8,
+  // founders' reply 1a). Previous: 47744c8ab9be3263 (2026-10-04.v1, deployed).
+  hash: '313f48cb6df7213e',
 }
 
 function policyFingerprint(): string {
