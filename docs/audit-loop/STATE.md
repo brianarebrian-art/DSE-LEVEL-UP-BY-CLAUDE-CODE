@@ -174,4 +174,4 @@
   - 與實況不符：「1024px 導航唔會變桌面欄、25 科變長列表」—— 2026-10-04 本機 dev 1024×768 實測 `/subjects` 有左側圖示欄及三欄科目卡。同一截圖見左下無障礙浮動掣疊住第一張卡的「開始 10 題」，屬 T12。
   - 安全核對：`/api/*` 回應無 `access-control-allow-origin: *`，只有 CDN 靜態頁有（公開內容、不帶 cookie，風險低，不改）；`NEXT_PUBLIC_*` 只有 Supabase URL、anon key、VAPID 公鑰及 auth URL，資料庫連線 `DATABASE_URL` 只在 `lib/auth/better-auth.ts`（`import 'server-only'`）；`auth.ts` 無自訂 redirect callback，用 Auth.js 預設同源限制；RLS 見上 2026-10-02 只讀核對。
   - 未做、未排期：390px 精簡導航、1920px 題目解析並排、免登入進度碼、人工金標 50 題、每週電郵摘要。屬設計或內容工作，待創辦人排優先次序。
-  - 檢查：npm test 1252/1252、tsc 0、改動檔 lint 0 error；本機 dev 實測信任中心及方法論新字眼、`/security.txt` → 308 → `/.well-known/security.txt`，console 無錯誤。未重跑 production build（⬜ 待驗證）。
+  - 檢查：npm test 1252/1252、tsc 0、改動檔 lint 0 error；本機 dev 實測信任中心及方法論新字眼、`/security.txt` → 308 → `/.well-known/security.txt`，console 無錯誤。production build 通過（2026-10-04）。
