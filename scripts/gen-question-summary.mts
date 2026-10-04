@@ -26,7 +26,7 @@
 //    由人手維護改成衍生）。data/questions/__tests__/summary-parity.test.mts
 //    每次 npm test 都會拎真題庫重算一次同呢個檔比對，唔一致即刻紅。
 // ============================================================================
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -149,5 +149,43 @@ export const BANK_VERSION: Record<string, string> = ${JSON.stringify(versions, n
 `
 writeFileSync(join(ROOT, 'data/questions/bank-versions.generated.ts'), versionsOut)
 console.log(`✓ data/questions/bank-versions.generated.ts`)
+
+// Founders' reply 17C (2026-10-04): the practice estimate says, per subject, when
+// picking the longest option succeeds more than half the time. Measured on the
+// published MC questions with the same visual length as the answer-shape check.
+// The date only moves when a figure changes, so regenerating for an unrelated
+// reason does not make the page claim a new measurement.
+const { longestOptionStats } = (await import(join(ROOT, 'scripts/qbank/_gate.mjs'))) as unknown as {
+  longestOptionStats: (qs: unknown[]) => { unique: number; correct: number }
+}
+const longest: Record<string, { unique: number; correct: number }> = {}
+for (const s of active) {
+  longest[s.id] = longestOptionStats(idx.getSubjectQuestions(s.id).filter((q) => (q.type ?? 'mc') === 'mc'))
+}
+const LONGEST_FILE = join(ROOT, 'data/questions/option-length.generated.ts')
+let measuredAt = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Hong_Kong' }).format(new Date())
+try {
+  const prev = readFileSync(LONGEST_FILE, 'utf8')
+  const prevDate = prev.match(/OPTION_LENGTH_MEASURED_AT = '([\d-]+)'/)?.[1]
+  const prevBody = prev.slice(prev.indexOf('LONGEST_OPTION'))
+  if (prevDate && prevBody.includes(JSON.stringify(longest, null, 2))) measuredAt = prevDate
+} catch {
+  /* first run */
+}
+const longestOut = `// ⚠️ 本檔由 scripts/gen-question-summary.mts 產生 —— 請勿手動修改。
+// 重新產生：npm run gen:summary
+// 迴歸鎖：data/questions/__tests__/summary-parity.test.mts
+//
+// 逐科「揀最長選項」的命中情況（創辦人回覆 17C，2026-10-04）。只計已上線的選擇題；
+// unique 為四個選項中有唯一最長者的題數，correct 為該最長選項正是答案的題數。
+// 隨機揀選的命中率約為四分之一。長度以 scripts/qbank/_gate.mjs 的 visualLength 量度。
+// 日期只在數字改變時更新。
+
+export const OPTION_LENGTH_MEASURED_AT = '${measuredAt}'
+
+export const LONGEST_OPTION: Record<string, { unique: number; correct: number }> = ${JSON.stringify(longest, null, 2)}
+`
+writeFileSync(LONGEST_FILE, longestOut)
+console.log(`✓ data/questions/option-length.generated.ts (measured ${measuredAt})`)
 console.log(`  ${active.length} 科 · ${Object.values(summary).reduce((n, v) => n + v.topics, 0)} 個課題 · ${total} 條題目`)
 console.log(`  檔案大小 ${(out.length / 1024).toFixed(0)}KB`)

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { MIN_BAND_EVIDENCE } from '@/lib/practiceBand'
+import { lengthBiasedSubjects, OPTION_LENGTH_MEASURED_AT } from '@/lib/optionLengthBias'
+import { getSubject } from '@/data/subjects'
 
 // 見 page.tsx 檔頭。呢版唔係為算法辯護，係公開佢有幾粗糙。
 
@@ -19,6 +21,12 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function PredictionMethodClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
+  // Founders' reply 17C (2026-10-04), wording approved as drafted. Derived from the live bank.
+  const biased = lengthBiasedSubjects().map((id) => getSubject(id)).filter((m) => m !== undefined)
+  const [y, mo, d] = OPTION_LENGTH_MEASURED_AT.split('-').map(Number)
+  const measured = en
+    ? new Date(Date.UTC(y, mo - 1, d)).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+    : `${y} 年 ${mo} 月 ${d} 日`
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
@@ -103,6 +111,16 @@ export default function PredictionMethodClient() {
             : '第 2 層而家有得畀個數你。2016 至 2025 年之間，生物科「5 級或以上」嘅界線由 18.0% 郁到 20.9%；數學必修由 13.8% 到 15.4%。DSE 用水平參照，條線每年評卷之後先訂 —— 根本冇一條固定嘅線畀你瞄。累積估算會按呢個逐年幅度自動加闊。'}
         </p>
       </Section>
+
+      {biased.length > 0 && (
+        <Section title={en ? 'Known issue: option length' : '已知問題：選項長短'}>
+          <p>
+            {en
+              ? `On ${measured} we tested this ourselves: in the subjects below, picking the longest option gets the answer right more than half the time (guessing at random should give about one in four), so the practice estimate for these subjects may be too high: ${biased.map((m) => m.nameEn).join(', ')}. An automatic check now stops new questions from having this problem.`
+              : `${measured}我哋自己測試過：喺以下科目，揀最長嗰個選項有超過一半機會答中（亂揀應該只有大約四分之一），所以呢啲科目嘅練習表現估算可能偏高：${biased.map((m) => m.name).join('、')}。新題目已經有自動檢查擋住呢個問題。`}
+          </p>
+        </Section>
+      )}
 
       <Section title={en ? 'The cumulative range: how it is worked out' : '「累積估算」係點計出嚟'}>
         <p>
