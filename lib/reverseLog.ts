@@ -8,7 +8,13 @@ import type { Difficulty } from '@/data/questions'
 
 export type ReverseCause = 'A' | 'B' | 'C'
 
-export interface ReverseLogEntry {
+/**
+ * One wrong answer. `cause` is present only when the student picked one (answer sheet,
+ * long questions). Since 2026-10-04 (founders' reply 7a) every wrong MC answer in practice is
+ * logged too, without a cause: the cause card was removed on 2026-10-02 and, with it, the only
+ * write of MC wrong answers, so due reviews and topic nudges stopped receiving them.
+ */
+export interface WrongAnswerEntry {
   subjectId: string
   questionId: string
   topic: string
@@ -20,7 +26,7 @@ export interface ReverseLogEntry {
    * 加呢欄係為咗非華語考生 —— 英文介面之下重溫建議唔應該淨係得中文課題名。
    */
   topicEn?: string
-  cause: ReverseCause
+  cause?: ReverseCause
   selected: string
   correct: string
   ts: number
@@ -29,14 +35,19 @@ export interface ReverseLogEntry {
   difficulty?: Difficulty
 }
 
+/** An entry the student diagnosed. Cause-based views (error radar, error DNA, cause cards) read only these. */
+export type ReverseLogEntry = WrongAnswerEntry & { cause: ReverseCause }
+
+const hasCause = (e: WrongAnswerEntry): e is ReverseLogEntry => e?.cause === 'A' || e?.cause === 'B' || e?.cause === 'C'
+
 const KEY = 'dse_reverse_log'
 const CAP = 200
 
-export function logReverseError(entry: ReverseLogEntry): void {
+export function logReverseError(entry: WrongAnswerEntry): void {
   if (typeof window === 'undefined') return
   try {
     const raw = localStorage.getItem(KEY)
-    const list: ReverseLogEntry[] = raw ? JSON.parse(raw) : []
+    const list: WrongAnswerEntry[] = raw ? JSON.parse(raw) : []
     list.unshift(entry)
     localStorage.setItem(KEY, JSON.stringify(list.slice(0, CAP)))
   } catch {
@@ -44,12 +55,19 @@ export function logReverseError(entry: ReverseLogEntry): void {
   }
 }
 
-export function getReverseLog(): ReverseLogEntry[] {
+/** Every wrong answer, with or without a cause: due reviews, topic nudges, recommendations. */
+export function getWrongAnswerLog(): WrongAnswerEntry[] {
   if (typeof window === 'undefined') return []
   try {
     const raw = localStorage.getItem(KEY)
-    return raw ? JSON.parse(raw) : []
+    const list: unknown = raw ? JSON.parse(raw) : []
+    return Array.isArray(list) ? (list as WrongAnswerEntry[]) : []
   } catch {
     return []
   }
+}
+
+/** Only the entries with a cause the student picked. */
+export function getReverseLog(): ReverseLogEntry[] {
+  return getWrongAnswerLog().filter(hasCause)
 }

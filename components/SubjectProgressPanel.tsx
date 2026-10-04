@@ -9,7 +9,7 @@ import { getTopicStats } from '@/lib/topicStats'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { LEVEL_LABEL, type TopicEvidence } from '@/lib/topicEvidence'
 import { recommendNextPractice, type Recommendation } from '@/lib/recommendNext'
-import { getReverseLog } from '@/lib/reverseLog'
+import { getWrongAnswerLog } from '@/lib/reverseLog'
 
 // 科目頁頂的「你喺呢科」（UX 循環 LOOP 32；第二份 loop prompt §9、§41）。
 // 回答「下一步做咩」：上次練習、建議下一個課題。只讀本機已有紀錄（dse_progress、
@@ -80,7 +80,7 @@ export default function SubjectProgressPanel({
       subject: subjectId,
       questionCounts: topics,
       topicEvidence: tally,
-      recentErrors: getReverseLog(),
+      recentErrors: getWrongAnswerLog(),
       recentSessions: attempts,
     }))
   }, [subjectId, topics, tally])

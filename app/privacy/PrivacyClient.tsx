@@ -66,8 +66,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'What is stored on your own device' : '存喺你自己部機嘅嘢'}>
         <p>
           {en
-            ? 'By default everything lives in your browser’s local storage: your scores, which topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your writing drafts, and anything you sealed in a time capsule.'
-            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你邊啲課題易錯、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
+            ? 'By default everything lives in your browser’s local storage: your scores, the questions and topics you get wrong, the causes you pick during error diagnosis, your bookmarks, your accessibility settings, your writing drafts, and anything you sealed in a time capsule.'
+            : '預設情況下所有嘢都存喺你瀏覽器嘅本機儲存：你嘅分數、你答錯嘅題同易錯嘅課題、你喺錯因自診揀嘅原因、你嘅收藏、你嘅無障礙設定、你嘅寫作草稿，同埋你封存喺時間囊入面嘅字。'}
         </p>
         <p>
           {en ? 'You can see the exact list, on your own device, at ' : '你可以喺你自己部機睇到完整清單：'}
@@ -104,11 +104,11 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             </span>
           </li>
           <li>
-            {en ? 'Your error-diagnosis notes: ' : '你嘅錯因自診紀錄：'}
+            {en ? 'Your wrong answers: ' : '你嘅錯題紀錄：'}
             <span className="text-ink-muted">
               {en
-                ? 'for each question you got wrong, which of the three causes you picked, plus the option you chose and the correct one — so your error radar follows you to another device instead of starting from zero.'
-                : '每條答錯嘅題，你揀咗三個原因入面邊個，連埋你揀嗰個選項同正解 —— 咁你部機換咗，錯題雷達圖唔使由零開始。'}
+                ? 'for each question you got wrong, the option you chose and the correct one; on the paper answer sheet and long questions, also which of the three causes you picked — so your due reviews and error radar follow you to another device instead of starting from zero.'
+                : '每條答錯嘅題，你揀嗰個選項同正解；喺紙筆答題紙同長題，亦包括你喺三個原因入面揀咗邊個 —— 咁你部機換咗，到期重溫同錯題雷達圖唔使由零開始。'}
             </span>
           </li>
           <li>

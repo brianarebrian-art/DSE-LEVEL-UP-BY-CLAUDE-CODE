@@ -69,8 +69,11 @@ test('③ 個鎖唔可以靜靜哋返嚟 —— PracticeSession 一個倒數都�
 test('④ 練習頁答錯直接出解析，冇錯因自診卡', () => {
   const ps = read('app/practice/PracticeSession.tsx')
   assert.doesNotMatch(ps, /chooseCause|REVERSE_CAUSES|停一停，諗一諗|你發現咗一個新盲點/)
-  assert.doesNotMatch(ps, /logReverseError|addDiscovery/,
-    '練習頁冇揀錯因，就唔可以再寫錯題日誌或發現簿（冇學生揀過嘅錯因）')
+  // 2026-10-04 (founders' reply 7a): wrong answers are logged again for due reviews, but never
+  // with a cause, since no cause is asked. The discovery book stays off.
+  assert.doesNotMatch(ps, /addDiscovery/, '練習頁冇揀錯因，唔可以寫發現簿')
+  assert.doesNotMatch(ps.slice(ps.indexOf('else\n        logReverseError({'), ps.indexOf('recordSpectrumAnswer(currentQ.difficulty)')), /cause:/,
+    '練習頁冇問錯因，錯題紀錄唔可以帶 cause')
   assert.match(ps, /const canProceed = answerState !== null\n/)
 })
 

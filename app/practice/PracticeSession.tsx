@@ -47,7 +47,7 @@ import PracticeContextRail from '@/components/PracticeContextRail'
 import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import DifficultyBadge from '@/components/DifficultyBadge'
-import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
+import { getReverseLog, logReverseError, type ReverseCause } from '@/lib/reverseLog'
 import { orderByCause } from '@/lib/causeMode'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
@@ -461,10 +461,25 @@ export default function PracticeSession({
       // 自行檢查，關閉時直接 return。答錯【刻意不設任何音效】——
       // 用聲音標示答錯等於把錯誤變成一個可聽見的判決，違反憲章第 7 條。
       if (isCorrect) playCorrectChime()
+      // Wrong answers feed due reviews, topic nudges and recommendations (founders' reply 7a,
+      // 2026-10-04). Until 2026-10-02 this was written by the cause card; no cause is asked now.
+      // Only what the student picked is kept (charter §16.E constraint 5).
+      else
+        logReverseError({
+          subjectId,
+          questionId: currentQ.id,
+          topic: currentQ.topicZh,
+          topicEn: currentQ.topicEn,
+          topicId: currentQ.topic,
+          selected: zh,
+          correct: currentQ.correctZh,
+          ts: Date.now(),
+          difficulty: currentQ.difficulty,
+        })
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty)
     },
-    [answerState, currentQ]
+    [answerState, currentQ, subjectId]
   )
 
   const next = useCallback(() => {

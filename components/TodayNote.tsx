@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { loadAttempts } from '@/lib/progress'
-import { getReverseLog } from '@/lib/reverseLog'
+import { getWrongAnswerLog } from '@/lib/reverseLog'
 import { getTopicStats } from '@/lib/topicStats'
 import { localDayStart, pickTodayMessage, type TodayMessage } from '@/lib/dailyNote'
 
@@ -78,7 +78,7 @@ export default function TodayNote({ className = '' }: { className?: string }) {
     if (todayKey) delete nudged[todayKey]
 
     const m = pickTodayMessage({
-      log: getReverseLog(),
+      log: getWrongAnswerLog(),
       attempts: loadAttempts(),
       stats: getTopicStats(),
       now,

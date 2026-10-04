@@ -49,7 +49,8 @@ const EXPECTED = {
   // account, IP or device), audit #7, founders' reply "a". Previous: 28b23cb91eddf1c9 (2026-10-02.v2).
   // 2026-10-04 (2026-10-04.v2): every sentence re-checked against code and database (audit #8,
   // founders' reply 1a). Previous: 47744c8ab9be3263 (2026-10-04.v1, deployed).
-  hash: '313f48cb6df7213e',
+  // Same unshipped version, amended: wrong answers logged without a cause (reply 7a).
+  hash: 'e5347f99b787a65d',
 }
 
 function policyFingerprint(): string {
