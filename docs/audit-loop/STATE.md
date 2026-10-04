@@ -237,3 +237,9 @@
   - 23b：不用自訂網址。
   - 24a：`docs/spot-check-2026-10-04-physics-biology.md`。40 條答案全部正確（Claude 驗算，非人手）。物理效率題 `pb_h6_*` 25 條：錯誤選項是答案的小數寫法（40% 對 0.4），兩個選項都對；α／β 衰變 `physc_ra4_*` 20 條解析對錯誤選項的描述不符。化學 `cb_e3_*` 6 條同類（質量百分比），屬邊緣。已問創辦人。
   - 檢查：npm test 1304/1304、qa 通過、tsc 0、lint 0 error、production build 通過。
+- 2026-10-04 創辦人回覆「17B ok 21 ok 22 ok 25a 26a 27a」：
+  - 17B：試點批准，可推送；上線後按 17B-2a 同步雲端。
+  - 21：關於頁中文照草稿改為廣東話（commit `0f7bfcf`）；英文、標題及 §13 免責聲明不變；`trust-copy.test.mts` 更新並鎖住刪去的字眼。
+  - 22：科目頁標題下「本站練唔到：…。呢啲部分要另外準備。」（`lib/notPractisedHere.ts`，由 `PAPER_STRUCTURE` 推算，14 科有句；commit `8d2d0cd`）。`CONTENT_PROVENANCE.md` §3.1 加新讀取者（測試要求）。本機正式版 390px：音樂頁句子照批准字眼、數學頁無句、關於頁新字眼及免責聲明正確。
+  - 25a／26a／27a：改法草稿交創辦人（`pb_h6_*` 25 條、`physc_ra4_*` 20 條、`cb_e3_*` 8 條；cb_e3 另 2 條同一模板、浮點比較未捉到），未改題庫，未放入推送內容。
+  - 檢查：npm test 1309/1309、qa 通過、tsc 0、lint 0 error、production build 通過。
