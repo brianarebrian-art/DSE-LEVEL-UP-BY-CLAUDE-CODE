@@ -197,4 +197,7 @@
   - 檢查：npm test 1285/1285、tsc 0、lint 0 error、qa 通過、production build 通過。
 - 2026-10-04 創辦人回覆「3ok」：關於頁兩句照草稿修改（commit `489da69`），測試鎖住。全套檢查：npm test 1286/1286、tsc 0、lint 0 error、qa 通過、production build 通過。審計 #8 已批項目全部完成，待創辦人推送 `audit-loop` 並合併。
 - 2026-10-04 上線核對（main `3095af3`，PR #74）：23 頁全部帶 nonce、無缺 nonce 的 script；`X-Powered-By` 已消失；robots.txt 已換新版；`/api/feedback` 拒絕錯誤資料；關於頁、透明度頁、私隱頁新字眼已上線；結果頁兩條問題正常顯示（未按掣，正式資料庫無寫入）；console 無錯誤；Vercel 過去 1 小時無 runtime error。餘下：`/about` FAQ 仍有「學術準確係我哋嘅生死線」（`components/FAQSection.tsx`，不在 3a 範圍），已問創辦人。
+- 2026-10-04 創辦人回覆「8a 9a」：
+  - 9a：正式網站結果頁答兩條問題（均答「唔肯定／未知」作測試標記），網站顯示道謝；資料庫只讀查到 2 行、欄位正確；隨即刪除該 2 行（id 1、2），再查 0 行；瀏覽器測試資料已清。
+  - 8a：常見問題刪去「學術準確係我哋嘅生死線」（commit 見 log），測試鎖住；npm test 1287/1287、qa 通過。待推送。
 
