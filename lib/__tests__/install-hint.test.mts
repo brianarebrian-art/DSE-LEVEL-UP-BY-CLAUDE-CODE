@@ -37,3 +37,13 @@ test('④ 唔係彈窗 —— 冇 role=dialog、冇 fixed 定位', () => {
   assert.ok(!/role="dialog"|aria-modal/.test(CODE), '做咗彈窗')
   assert.ok(!/\bfixed\b/.test(CODE), '用咗 fixed 定位 —— 會遮住內容')
 })
+
+test('⑤ 做完第一節先出（創辦人回覆 20a，2026-10-04）', () => {
+  // 第一次嚟嘅學生要做嘅係揀科開始 10 題；提示原本排喺科目掣上面。
+  const eff = CODE.slice(CODE.indexOf('useEffect(() => {'))
+  assert.match(eff, /const done = loadAttempts\(\)\.length > 0/)
+  assert.match(eff, /if \(done\) setMode\('ios'\)/, 'iOS 未做過一節都出')
+  const prompt = eff.slice(eff.indexOf('const onPrompt'))
+  assert.ok(prompt.indexOf('if (!done) return') > prompt.indexOf('e.preventDefault()'), '未做過一節：要先攔住瀏覽器自己嘅安裝列，再唔出')
+  assert.ok(prompt.indexOf('if (!done) return') < prompt.indexOf("setMode('prompt')"), '未做過一節都出')
+})

@@ -17,3 +17,16 @@ test('next.config turns off the X-Powered-By header', async () => {
   const { default: config } = await import('../../next.config.ts')
   assert.equal(config.poweredByHeader, false)
 })
+
+// Founders' reply 19a (audit #10, 2026-10-04): /progress and /breathe returned 404 although
+// the nav calls those pages 進度 and 呼吸空間. Not permanent, so the addresses stay free.
+test('/progress and /breathe lead to the pages the nav names', async () => {
+  const { default: config } = await import('../../next.config.ts')
+  const rules = (await config.redirects?.()) ?? []
+  for (const [source, destination] of [['/progress', '/dashboard'], ['/breathe', '/relax']]) {
+    const r = rules.find((x: { source: string }) => x.source === source)
+    assert.ok(r, `${source} has no redirect`)
+    assert.equal(r.destination, destination)
+    assert.equal(r.permanent, false)
+  }
+})

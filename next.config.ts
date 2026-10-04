@@ -27,7 +27,13 @@ const nextConfig: NextConfig = {
   // RFC 9116 §3: the canonical file lives under /.well-known/; the legacy top-level path may
   // redirect to it. Without this, scanners that only try /security.txt get a 404 (audit #7).
   async redirects() {
-    return [{ source: '/security.txt', destination: '/.well-known/security.txt', permanent: true }]
+    return [
+      { source: '/security.txt', destination: '/.well-known/security.txt', permanent: true },
+      // Founders' reply 19a (2026-10-04): addresses people type by the nav labels.
+      // Not permanent, so a real page could take either address later.
+      { source: '/progress', destination: '/dashboard', permanent: false },
+      { source: '/breathe', destination: '/relax', permanent: false },
+    ]
   },
   async headers() {
     return [
