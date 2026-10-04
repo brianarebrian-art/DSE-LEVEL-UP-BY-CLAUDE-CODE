@@ -81,3 +81,22 @@ group by answer order by 2 desc;
 ```
 
 兩條答案互不相連，不能配對成「同一個學生」；亦不能從表內找出任何學生。
+
+## 五、每次開工的總數（創辦人回覆 30a，2026-10-04）
+
+Claude Code 每次開工以唯讀方式執行一次，結果只寫**總數**入 Notion 工作紀錄（憲章 §19.3：不寫任何個人資料、帳號或個別學生紀錄）。
+
+```sql
+select
+  (select count(distinct user_id) from user_sessions where day >= (now() at time zone 'Asia/Hong_Kong')::date - 6)  as active_7d,
+  (select count(distinct user_id) from user_sessions where day >= (now() at time zone 'Asia/Hong_Kong')::date - 29) as active_30d,
+  (select count(distinct user_id) from user_sessions where day = (now() at time zone 'Asia/Hong_Kong')::date)       as active_today,
+  (select count(*) from user_progress)    as synced_accounts,
+  (select count(*) from question_reports) as reports_total,
+  (select count(*) from session_feedback) as feedback_total,
+  (select json_object_agg(k, n) from (select question || '/' || answer as k, count(*) as n from session_feedback group by 1) x) as feedback_breakdown;
+```
+
+限制：`user_sessions` 只記錄**已登入**學生（2026-09-11 起），未登入的訪客不計；所以這不是全站人數，只是登入用戶的活躍數。
+
+每次的數字只記在 Notion 工作紀錄，不寫入 repo，免得每次開工都多一個 commit。

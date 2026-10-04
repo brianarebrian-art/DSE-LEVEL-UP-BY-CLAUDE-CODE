@@ -49,6 +49,9 @@ const pages = ['app/trust/TrustClient.tsx', 'app/methodology/MethodologyClient.t
 test('no visible copy claims the questions were reviewed by a person', () => {
   const visible = strip(dict) + strip(home) + pages
   assert.doesNotMatch(visible, /已(經)?(由.{0,12})?(人手|真人|老師|教師|考生)(逐題|逐條)?覆核|逐題人手覆核過|reviewed by (a person|teachers|students|hand)/)
+  // Founders' reply 29a (audit #11, 2026-10-04): no "peer reviewed" wording either. There is no
+  // review record (deleted 2026-09-25 on Yuna's order), so the claim cannot be made.
+  assert.doesNotMatch(visible, /同儕覆核|同儕審|應屆生逐(條|題)覆核|peer[- ]review/i)
 })
 
 test('no visible copy says a person approves each question before it goes live', () => {

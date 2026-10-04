@@ -21,11 +21,14 @@ export interface ArticleDates {
   modified: string
 }
 
+// 2026-10-04（審計 #11，創辦人回覆 28a）：關於、方法論、透明度、練習表現點計、信任中心五頁
+// 當日均有事實更正（關於頁改寫及刪誇張字眼、上線方式字眼、退回紀錄及教師句、選項長短段、
+// 「唔係有人決定上線」），modified 改為 2026-10-04。
 export const ARTICLE_DATES: Record<string, ArticleDates> = {
-  '/about': { published: '2026-06-18', modified: '2026-08-21' },
-  '/methodology': { published: '2026-06-18', modified: '2026-09-02' },
-  '/transparency': { published: '2026-07-01', modified: '2026-09-30' },
-  '/prediction-method': { published: '2026-08-21', modified: '2026-09-09' },
-  '/trust': { published: '2026-08-21', modified: '2026-09-05' },
+  '/about': { published: '2026-06-18', modified: '2026-10-04' },
+  '/methodology': { published: '2026-06-18', modified: '2026-10-04' },
+  '/transparency': { published: '2026-07-01', modified: '2026-10-04' },
+  '/prediction-method': { published: '2026-08-21', modified: '2026-10-04' },
+  '/trust': { published: '2026-08-21', modified: '2026-10-04' },
   '/community-safety': { published: '2026-08-20', modified: '2026-09-05' },
 }
