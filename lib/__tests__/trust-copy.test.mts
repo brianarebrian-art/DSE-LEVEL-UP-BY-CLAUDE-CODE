@@ -25,8 +25,10 @@ test('the trust copy states curriculum and review status, and says first pass', 
   // half-sentence is gone; the copy still says the questions are machine-checked.
   assert.match(dict, /tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',/)
   const hero = home.slice(home.indexOf('<li>{h.trust3}</li>'))
-  assert.match(hero.slice(0, 900), /'題目經自動檢查上線。'/)
-  assert.match(hero.slice(0, 700), /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
+  // 2026-10-04 (founders' reply 10a): the line also says no registered teacher has reviewed the
+  // questions, and how many are withdrawn.
+  assert.match(hero.slice(0, 1500), /`題目經自動檢查上線，未經註冊教師審定\$\{CONTENT_STATS\.withdrawn > 0 \? `；另有 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條因解析有錯暫時收起` : ''\}。`/)
+  assert.match(hero.slice(0, 1500), /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
 })
 
 test('nothing presents the questions as past papers', () => {
@@ -77,5 +79,20 @@ test('the FAQ no longer calls accuracy a red line', () => {
   const faq = strip(readFileSync('components/FAQSection.tsx', 'utf8'))
   assert.doesNotMatch(faq, /生死線|red line/)
   assert.match(faq, /我哋會對照課綱核實，屬實即修正。'/)
+})
+
+// The home line says the withdrawn questions had wrong explanations. That is true while every
+// withdrawal has the positional-explanation code; a withdrawal for any other reason must update
+// the wording first (founders' reply 10a, 2026-10-04).
+test('every withdrawal is an explanation fault, as the home page says', async () => {
+  const { WITHDRAWN } = await import('../../data/questions/hidden-topics.ts')
+  const reasons = new Set(Object.values(WITHDRAWN).flatMap((byId) => Object.values(byId).map((e) => e.reason)))
+  assert.deepEqual([...reasons], ['POSITIONAL_RATIONALE_REFERENCE'])
+})
+
+// Founders' reply 11a (2026-10-04): the home demo question says it is a demo.
+test('the home demo question is labelled as a demo', () => {
+  const b = readFileSync('components/BlindTestQuestion.tsx', 'utf8')
+  assert.match(b, /tr\('示範題，唔計分', 'Demo — not scored'\)/)
 })
 
