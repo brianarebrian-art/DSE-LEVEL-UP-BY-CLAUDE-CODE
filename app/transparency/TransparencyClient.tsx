@@ -3,7 +3,7 @@
 import { ShieldCheck, Database, AlertTriangle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { FLAGGED } from '@/data/qualityFlags'
-import type { RepairStats } from '@/data/questions/repair-stats'
+import type { RepairStats, WithdrawalBatch } from '@/data/questions/repair-stats'
 
 // 「待核」按介面語言分開計（同 components/QuestionProvenance.tsx 嘅 ZH_FLAGS／EN_FLAGS 一致）。
 const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).length
@@ -38,7 +38,27 @@ export interface ContentCounts {
   pendingReview: number
 }
 
-export default function TransparencyClient({ stats, content }: { stats: RepairStats; content: ContentCounts }) {
+// Plain-words labels for the withdrawal log. Every key of WITHDRAW_CODES
+// (data/questions/hidden-topics.ts) needs a case here (withdrawal-log.test.mts); free-text
+// reasons arrive as OTHER and are shown only as the generic label.
+function reasonLabel(code: string, en: boolean): string {
+  switch (code) {
+    case 'POSITIONAL_RATIONALE_REFERENCE':
+      return en ? 'The explanation points at an option by its position' : '解析用位置講選項，洗牌之後會指錯'
+    default:
+      return en ? 'A fault was found in the question' : '題目發現有錯'
+  }
+}
+
+export default function TransparencyClient({
+  stats,
+  content,
+  withdrawals,
+}: {
+  stats: RepairStats
+  content: ContentCounts
+  withdrawals: WithdrawalBatch[]
+}) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const WITHDRAWN_COUNT = stats.withdrawnNow
@@ -200,6 +220,32 @@ export default function TransparencyClient({ stats, content }: { stats: RepairSt
               ? `${n(WITHDRAWN_COUNT)} questions have been withdrawn and no longer appear in practice. Withdrawn is not deleted: each stays in the bank with the date and reason recorded. ${stillOut === WITHDRAWN_COUNT ? 'All of them were' : `${n(stillOut)} of them were`} withdrawn because the explanation refers to an option by its position (“the second option”, “the last option”). Options are shuffled every time, so those words point at the wrong option, and leaving them in would teach the wrong thing.`
               : `有 ${n(WITHDRAWN_COUNT)} 條題目已經收起，唔會再出現喺練習入面。收起唔係刪除：題目留喺題庫，每條都記低咗收起日期同原因。${stillOut === WITHDRAWN_COUNT ? '全部' : `其中 ${n(stillOut)} 條`}都係因為解析用位置講選項（例如「第二項」「最後一項」「第三個選項」）—— 選項每次都會洗牌，呢啲字眼會指錯，留住只會教錯。`}
           </p>
+        )}
+        {/* 最近退回紀錄（審計 #7，創辦人 2026-10-04 回覆 A7-3 A）：只列日期、原因、科目及條數，不列題目。 */}
+        {withdrawals.length > 0 && (
+          <>
+            <h3 className="text-base font-bold text-ink mb-2">{en ? 'Recent withdrawals' : '最近退回紀錄'}</h3>
+            <p className="text-ink-muted text-sm leading-relaxed mb-3">
+              {en
+                ? 'Each withdrawal by date and reason, newest first, with the number of questions per subject. The questions themselves are not listed.'
+                : '每次退回按日期同原因列出，最新嘅排先，附每科條數。唔會列出題目本身。'}
+            </p>
+            <ul className="mb-6 space-y-3">
+              {withdrawals.map((w) => (
+                <li key={`${w.date}-${w.reason}`} className="rounded-xl border border-line bg-surface-raised p-4">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <span className="text-sm font-medium text-ink">
+                      <time dateTime={w.date} className="tabular-nums">{w.date}</time> · {reasonLabel(w.reason, en)}
+                    </span>
+                    <span className="text-sm tabular-nums text-ink-muted">{en ? `${n(w.total)} questions` : `${n(w.total)} 條`}</span>
+                  </div>
+                  <p className="mt-2 text-xs leading-relaxed text-ink-muted">
+                    {w.subjects.map((x) => `${en ? x.en : x.zh} ${n(x.count)}`).join(en ? ', ' : '、')}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
         {stats.found > 0 && (
           <>
