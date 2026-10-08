@@ -258,9 +258,75 @@ const M1_02: Record<string, { parse: (stem: string) => Record<string, number> | 
   },
 }
 
+// ── M1-03 (2026-10-08, founders' reply 32a): recompute, independently of repairs/m1-03.mts ──
+const r4 = (v: number) => String(Math.round(v * 10000) / 10000)
+const pm = (c: number) => (c < 0 ? `− ${Math.abs(c)}` : `+ ${c}`)
+const M1_03: typeof M1_02 = {
+  'quotient-kx-over-x+c': {
+    parse: (s) => { const m = s.match(/\\dfrac\{(\d+)x\}\{x \+ (\d+)\}/); return m ? { k: +m[1], c: +m[2] } : null },
+    expect: (p) => expectM1['quotient-kx-over-x+c'](p),
+  },
+  'normal-x-from-z': {
+    parse: (s) => { const m = s.match(/N\((\d+), (\d+)\^\{2\}\)\$。已知某觀測值的標準分數為 \$z = (-?[\d.]+)\$/); return m ? { mu: +m[1], sigma: +m[2], z: +m[3] } : null },
+    // x = μ + zσ
+    expect: ({ mu, sigma, z }) => ({ correct: `$${r4(mu + sigma * z)}$`, reversed: `$${r4(mu - sigma * z)}$`, offsetOnly: `$${r4(sigma * z)}$`, zPlusMean: `$${r4(z + mu)}$` }),
+  },
+  'binomial-normal-approximation': {
+    parse: (s) => { const m = s.match(/B\((\d+), ([\d.]+)\)\$。當 \$n\$ 足夠大時/); return m ? { n: +m[1], p: +m[2] } : null },
+    // μ = np, σ² = np(1 − p)
+    expect: ({ n, p }) => {
+      const failures = n - n * p
+      const variance = n * p * (1 - p)
+      const pair = (m: number, s: number) => `$\\mu = ${r4(m)}$，$\\sigma = ${r4(s)}$`
+      return { correct: pair(n * p, Math.sqrt(variance)), varianceAsSd: pair(n * p, variance), failuresMean: pair(failures, Math.sqrt(variance)), missingQ: pair(n * p, Math.sqrt(n * p)) }
+    },
+  },
+  'definite-integral-kx': {
+    parse: (s) => { const m = s.match(/f\(x\) = (\d+)x\$。試求 \$f\$ 在區間 \$\[(\d+), (\d+)\]\$/); return m ? { k: +m[1], a: +m[2], b: +m[3] } : null },
+    // ∫ kx dx from a to b = k(b² − a²)/2
+    expect: ({ k, a, b }) => ({ correct: `$${r4((k * (b * b - a * a)) / 2)}$`, reversed: `$${r4((k * (a * a - b * b)) / 2)}$`, upperOnly: `$${r4((k * b * b) / 2)}$`, constantTimesLength: `$${r4(k * b - k * a)}$` }),
+  },
+  'antiderivative-through-point': {
+    parse: (s) => { const m = s.match(/= (\d+)x\$，且曲線經過點 \$\((\d+), (\d+)\)\$/); return m ? { k: +m[1], a: +m[2], b: +m[3] } : null },
+    // y = (k/2)x² + C with C = b − (k/2)a²
+    expect: ({ k, a, b }) => {
+      const C = b - (k * a * a) / 2
+      return { correct: `$y = ${k / 2}x^{2} ${pm(C)}$`, noConstant: `$y = ${k / 2}x^{2}$`, notHalved: `$y = ${k}x^{2} ${pm(C)}$`, signFlipped: `$y = ${k / 2}x^{2} ${pm(-C)}$` }
+    },
+  },
+  'area-under-cx^2': {
+    parse: (s) => { const m = s.match(/曲線 \$y = (\d*)x\^\{2\}\$ 與 \$x\$ 軸及直線 \$x = (\d+)\$/); return m ? { c: m[1] ? +m[1] : 1, b: +m[2] } : null },
+    // ∫₀ᵇ cx² dx = cb³/3
+    expect: ({ c, b }) => {
+      const sq = (v: number) => `$${r4(v)}$ 平方單位`
+      const cube = c * b * b * b
+      return { correct: sq(cube / 3), height: sq(c * b * b), halfInstead: sq(cube / 2), halved: sq(cube / 6) }
+    },
+  },
+  'binomial-variance': {
+    parse: (s) => { const m = s.match(/B\((\d+), ([\d.]+)\)\$。求 \$\\mathrm\{Var\}\(X\)\$/); return m ? { n: +m[1], p: +m[2] } : null },
+    expect: ({ n, p }) => ({ correct: `$${r4(n * p * (1 - p))}$`, mean: `$${r4(n * p)}$`, sd: `$${r4(Math.sqrt(n * p * (1 - p)))}$`, missingP: `$${r4(n - n * p)}$` }),
+  },
+  'binomial-at-least-one': {
+    parse: (s) => { const m = s.match(/B\((\d+), ([\d.]+)\)\$。求 \$P\(X \\geq 1\)\$/); return m ? { n: +m[1], p: +m[2] } : null },
+    // P(X ≥ 1) = 1 − (1 − p)ⁿ
+    expect: ({ n, p }) => ({ correct: `$${r4(1 - Math.pow(1 - p, n))}$`, complement: `$${r4(Math.pow(1 - p, n))}$`, exactlyOne: `$${r4(n * p * Math.pow(1 - p, n - 1))}$`, expectation: `$${r4(n * p)}$` }),
+  },
+  'sum-of-coefficients': {
+    parse: (s) => { const m = s.match(/求 \$\((\d+)x \+ (\d+)\)\^\{(\d+)\}\$ 展開式中/); return m ? { a: +m[1], b: +m[2], n: +m[3] } : null },
+    // put x = 1
+    expect: ({ a, b, n }) => ({ correct: `$${Math.pow(a + b, n)}$`, termwise: `$${Math.pow(a, n) + Math.pow(b, n)}$`, twoToN: `$${Math.pow(2, n)}$`, product: `$${n * (a + b)}$` }),
+  },
+  'standard-error-of-mean': {
+    parse: (s) => { const m = s.match(/總體的標準差為 \$(\d+)\$。現從中隨機抽取一個大小為 \$(\d+)\$ 的樣本/); return m ? { sigma: +m[1], n: +m[2] } : null },
+    // σ / √n
+    expect: ({ sigma, n }) => ({ correct: `$${r4(sigma / Math.sqrt(n))}$`, populationSd: `$${sigma}$`, overN: `$${r4(sigma / n)}$`, times: `$${r4(sigma * Math.sqrt(n))}$` }),
+  },
+}
+
 /** Batches that may use the machine gate: marked computed, every template recomputed in this file. */
 function recomputedHere(): Set<string> {
-  const known = new Set([...Object.keys(expectM1), ...Object.keys(M1_02)])
+  const known = new Set([...Object.keys(expectM1), ...Object.keys(M1_02), ...Object.keys(M1_03)])
   return new Set(batches.filter((b) => b.computed === true && b.repairs.every((r) => known.has(r.template))).map((b) => b.batch))
 }
 
@@ -290,9 +356,36 @@ test('M1-02: parameters read from the stem, every option recomputed, every note 
   }
 })
 
+test('M1-03: parameters read from the stem, every option recomputed, every note on its own option', () => {
+  const b = batches.find((x) => x.batch === 'M1-03')
+  assert.ok(b, 'batch M1-03 exists')
+  assert.equal(b!.computed, true)
+  assert.equal(b!.repairs.length, 42)
+  // 0063–0068 are held back: in 0067 the option marked correct is wrong (equal standard scores).
+  assert.ok(!b!.repairs.some((r) => /^m1_rep_006[3-8]$/.test(r.id)), 'the standard-score comparison template is not in this batch')
+  const bank = new Map(I.getSubjectQuestionsRaw('m1').map((q) => [q.id, q as unknown as { content: string; options: string[]; correctIndex: number }]))
+  for (const r of b!.repairs) {
+    const q = bank.get(r.id)!
+    const t = M1_03[r.template]
+    assert.ok(t, `${r.id}: template ${r.template} has no independent recomputation`)
+    const params = t.parse(q.content)
+    assert.ok(params, `${r.id}: stem not recognised by ${r.template}`)
+    assert.deepEqual(r.params, params, `${r.id}: params in the batch differ from the stem`)
+    const exp = t.expect(params!)
+    assert.equal(r.optionNotes.length, q.options.length)
+    for (const n of r.optionNotes) {
+      assert.equal(q.options[n.optionId], exp[n.kind], `${r.id}: note "${n.kind}" is on option ${n.optionId} = ${q.options[n.optionId]}`)
+    }
+    const correct = r.optionNotes.filter((n) => n.kind === 'correct')
+    assert.equal(correct.length, 1)
+    assert.equal(correct[0].optionId, q.correctIndex, `${r.id}: correctIndex`)
+    assert.equal(new Set(r.optionNotes.map((n) => n.kind)).size, 4, `${r.id}: four different kinds`)
+  }
+})
+
 test('every machine-gate restore is from a computed batch recomputed in this file', () => {
   const ok = recomputedHere()
-  assert.ok(ok.has('M1-01') && ok.has('M1-02'), 'M1-01 and M1-02 are computed and recomputed here')
+  assert.ok(ok.has('M1-01') && ok.has('M1-02') && ok.has('M1-03'), 'M1-01, M1-02 and M1-03 are computed and recomputed here')
   for (const [id, r] of Object.entries(log)) if (r.restoreBasis === 'machine-gate') assert.ok(ok.has(r.batch ?? ''), `${id}: ${r.batch}`)
 })
 

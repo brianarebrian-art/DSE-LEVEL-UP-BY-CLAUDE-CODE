@@ -10,7 +10,7 @@
 export const BANK_VERSION: Record<string, string> = {
   "math": "4326865440cba0da",
   "m2": "41b1812cac3c01de",
-  "m1": "3f3c2773398e7a79",
+  "m1": "b42d4692e0238170",
   "physics": "55fa56f8a6462080",
   "chemistry": "b9d57a4cab6dc18a",
   "biology": "a560e67f818923c1",
