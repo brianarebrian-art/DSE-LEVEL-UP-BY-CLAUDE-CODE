@@ -27,7 +27,7 @@ const garamond = EB_Garamond({
   variable: '--font-garamond',
 })
 
-// 部署網域。dselevelup.hk 尚未購入，一律沿用現行 Vercel 域（Brian 2026-07-29 拍板）。
+// 部署網域：www.dselevelup.com（2026-10-08 起；2026-10-09 創辦人回覆 58a 改用）。單一來源在 lib/site.ts。
 // 2026-08-14：原本此處與 app/sitemap.ts 各有一份字面值，靠註釋提醒「三處必須一致」。
 // 紙筆戰士把對答案網址印上實體試卷後，寫錯即無法補救，故改為單一來源匯入。
 // （public/robots.txt 為靜態檔，無法匯入，由 lib/__tests__/site-origin.test.mts 核對。）

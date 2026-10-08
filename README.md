@@ -2,7 +2,7 @@
 
 專為香港 DSE 考生而設嘅免費練習平台 —— 25 科、中英雙語、情緒安全同 SEN 友善行先。
 
-https://dse-level-up-by-claude-code.vercel.app/
+https://www.dselevelup.com/
 
 **100% 免費。** 無 Premium、無訂閱、無廣告。Google 登入只做跨裝置進度同步，唔會解鎖任何額外內容。
 

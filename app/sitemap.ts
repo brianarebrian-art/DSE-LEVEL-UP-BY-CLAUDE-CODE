@@ -16,7 +16,7 @@ import { getActiveSubjects } from '@/data/subjects'
 //    本站【永久】唔提供任何用戶對用戶互動，所以呢度亦唔會再出現社群類路由。
 // ④ `/admin`、`/sign-in`、`/sign-up`：權限頁，robots.txt 已明文 Disallow。
 //
-// 網域：dselevelup.hk 尚未購入，一律使用現行 Vercel 部署域（Brian 2026-07-29 拍板）。
+// 網域：www.dselevelup.com（2026-10-09 創辦人回覆 58a），由 lib/site.ts 匯入。
 // 2026-08-14 收攏為單一來源，理由見 lib/site.ts。
 import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
 import { sourceLabEntries } from '@/data/history-sources'

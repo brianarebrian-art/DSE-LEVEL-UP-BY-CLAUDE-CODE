@@ -10,7 +10,7 @@ const field = (name: string) => txt.match(new RegExp(`^${name}: (.+)$`, 'm'))?.[
 
 test('security.txt has the required Contact and Expires fields', () => {
   assert.equal(field('Contact'), 'mailto:dselevelup@gmail.com')
-  assert.equal(field('Canonical'), 'https://dse-level-up-by-claude-code.vercel.app/.well-known/security.txt')
+  assert.equal(field('Canonical'), 'https://www.dselevelup.com/.well-known/security.txt')
 })
 
 test('security.txt has not expired and expires within a year and a month', () => {

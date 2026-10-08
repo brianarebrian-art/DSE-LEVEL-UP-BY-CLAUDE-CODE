@@ -60,7 +60,7 @@ const ALLOW: { file: string; why: string }[] = [
 ]
 
 test('每個含外部 URL 嘅檔，唔係已引入閘門，就係喺白名單', () => {
-  const EXTERNAL = /https?:\/\/(?!dse-level-up-by-claude-code)[a-z0-9.-]+/gi
+  const EXTERNAL = /https?:\/\/(?!dse-level-up-by-claude-code|www\.dselevelup\.com)[a-z0-9.-]+/gi
   const bad: string[] = []
   for (const f of files) {
     const src = stripComments(fs.readFileSync(f, 'utf8'))

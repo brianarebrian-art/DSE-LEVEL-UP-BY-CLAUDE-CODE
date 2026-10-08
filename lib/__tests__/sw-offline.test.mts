@@ -37,7 +37,7 @@ const { shouldHandle, OFFLINE_ON } = require_('../../public/sw.js') as {
   OFFLINE_ON: boolean
 }
 
-const O = 'https://dse-level-up-by-claude-code.vercel.app'
+const O = 'https://www.dselevelup.com'
 const req = (url: string, method = 'GET', range: string | null = null) => ({
   url,
   method,

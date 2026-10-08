@@ -35,4 +35,4 @@ Disallow: /account
 Disallow: /sign-in
 Disallow: /sign-up
 
-Sitemap: https://dse-level-up-by-claude-code.vercel.app/sitemap.xml
+Sitemap: https://www.dselevelup.com/sitemap.xml
