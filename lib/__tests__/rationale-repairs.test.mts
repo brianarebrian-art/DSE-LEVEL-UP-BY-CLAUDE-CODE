@@ -324,9 +324,178 @@ const M1_03: typeof M1_02 = {
   },
 }
 
+// ── M1-04 (2026-10-08, founders' reply 33a): recompute, independently of repairs/m1-04.mts ──
+// Two papers compared by standard score. Options carry words, so the English option at
+// the same index is checked too.
+const paperZ = (mean: number, sd: number, mark: number) => (mark - mean) / sd
+const M1_04: typeof M1_02 = {
+  'compare-two-papers-by-z': {
+    parse: (s) => {
+      const nums = s.match(/甲卷平均分 \$(\d+)\$、標準差 \$(\d+)\$，他得 \$(\d+)\$ 分；乙卷平均分 \$(\d+)\$、標準差 \$(\d+)\$，他得 \$(\d+)\$ 分/)
+      if (!nums) return null
+      const [muA, sA, xA, muB, sB, xB] = nums.slice(1).map(Number)
+      return { muA, sA, xA, muB, sB, xB }
+    },
+    expect: ({ muA, sA, xA, muB, sB, xB }) => {
+      const a = paperZ(muA, sA, xA), b = paperZ(muB, sB, xB)
+      const better = a > b ? '甲' : '乙', worse = a > b ? '乙' : '甲'
+      return {
+        correct: `${better}卷，因為其標準分數較高（甲 $z = ${r4(a)}$，乙 $z = ${r4(b)}$）`,
+        otherPaper: `${worse}卷，因為其標準分數較高`,
+        rawMark: `${xA > xB ? '甲' : '乙'}卷，因為原始分數較高`,
+        bothAbove: '兩卷表現相同，因為兩者都高於各自的平均分',
+      }
+    },
+  },
+}
+const M1_04_EN: Record<string, (p: Record<string, number>) => Record<string, string>> = {
+  'compare-two-papers-by-z': ({ muA, sA, xA, muB, sB, xB }) => {
+    const a = paperZ(muA, sA, xA), b = paperZ(muB, sB, xB)
+    return {
+      correct: `Paper ${a > b ? 'A' : 'B'}, because its standard score is higher (A: $z = ${r4(a)}$, B: $z = ${r4(b)}$)`,
+      otherPaper: `Paper ${a > b ? 'B' : 'A'}, because its standard score is higher`,
+      rawMark: `Paper ${xA > xB ? 'A' : 'B'}, because the raw mark is higher`,
+      bothAbove: 'Equally well, since both marks are above their respective means',
+    }
+  },
+}
+
+// ── M2-01 and PHY-01 (2026-10-08, founders' reply 34a): recompute, independently of
+// repairs/m2-01.mts and repairs/phy-01.mts. Each template gives the Chinese and the
+// English option for every kind; both are checked at the stored index.
+type Pair = Record<string, [string, string]>
+type Tpl = { parse: (stem: string) => Record<string, number> | null; expect: (p: Record<string, number>) => Pair }
+const both = (zh: string, en = zh): [string, string] => [zh, en]
+const reduced = (p: number, q: number) => {
+  let [a, b] = [Math.abs(p), Math.abs(q)]
+  while (b) [a, b] = [b, a % b]
+  return q / a === 1 ? `$${p / a}$` : `$\\dfrac{${p / a}}{${q / a}}$`
+}
+const kEq = (v: number) => `$k = ${r4(v)}$`
+const mat = (e: number[]) => `$\\begin{pmatrix} ${e[0]} & ${e[1]} \\\\ ${e[2]} & ${e[3]} \\end{pmatrix}$`
+const M2_01: Record<string, Tpl> = {
+  'singular-2x2-find-k': {
+    parse: (s) => { const m = s.match(/begin\{pmatrix\} (-?\d+) & (-?\d+) \\\\ (-?\d+) & k \\end\{pmatrix\}\$。求 \$k\$ 的值，使 \$A\$ 【沒有】逆矩陣/); return m ? { a: +m[1], b: +m[2], c: +m[3] } : null },
+    // det = ak − bc = 0
+    expect: ({ a, b, c }) => ({ correct: both(kEq(b * c / a)), signFlip: both(kEq(-b * c / a)), swapped: both(kEq(a * b / c)), combined: both(kEq(a * c - b)) }),
+  },
+  'scalar-multiple-2x2': {
+    parse: (s) => { const m = s.match(/begin\{pmatrix\} (-?\d+) & (-?\d+) \\\\ (-?\d+) & (-?\d+) \\end\{pmatrix\}\$。求 \$(\d+)A\$/); return m ? { n: +m[5], p: +m[1], q: +m[2], r: +m[3], s: +m[4] } : null },
+    expect: ({ n, p, q, r, s }) => ({
+      correct: both(mat([p, q, r, s].map((x) => n * x))),
+      diagonalOnly: both(mat([n * p, q, r, n * s])),
+      added: both(mat([p, q, r, s].map((x) => x + n))),
+      transposed: both(mat([n * p, n * r, n * q, n * s])),
+    }),
+  },
+  'polynomial-limit-substitution': {
+    parse: (s) => {
+      const m = s.match(/\\lim_\{x \\to (-?\d+)\} \((\d+)x\^2 ([+−]) (\d+)x ([+−]) (\d+)\)/)
+      return m ? { x0: +m[1], A: +m[2], B: (m[3] === '+' ? 1 : -1) * +m[4], C: (m[5] === '+' ? 1 : -1) * +m[6] } : null
+    },
+    expect: ({ x0, A, B, C }) => {
+      const at = (x: number) => (A * x + B) * x + C // Horner form
+      return { correct: both(`$${r4(at(x0))}$`), noConstant: both(`$${r4(at(x0) - C)}$`), derivative: both(`$${r4(2 * A * x0 + B)}$`), atOne: both(`$${r4(A + B + C)}$`) }
+    },
+  },
+  'homogeneous-system-find-k': {
+    parse: (s) => { const m = s.match(/\\begin\{cases\} (\d+)x \+ (\d+)y = 0 \\\\ (\d+)x \+ ky = 0/); return m ? { a: +m[1], b: +m[2], c: +m[3] } : null },
+    expect: ({ a, b, c }) => ({ correct: both(kEq(b * c / a)), signFlip: both(kEq(-b * c / a)), crossPaired: both(kEq(a * c / b)), anyK: both('任何 $k$ 值皆可', 'Any value of $k$ will do') }),
+  },
+  'perpendicular-vectors-find-t': {
+    parse: (s) => { const m = s.match(/\\vec\{a\} = \((-?\d+), (-?\d+)\)\$、\$\\vec\{b\} = \((-?\d+), t\)\$。求 \$t\$ 的值，使 \$\\vec\{a\}\$ 與 \$\\vec\{b\}\$ 互相垂直/); return m ? { a1: +m[1], a2: +m[2], b1: +m[3] } : null },
+    // a1·b1 + a2·t = 0
+    expect: ({ a1, a2, b1 }) => {
+      const tEq = (v: number) => `$t = ${r4(v)}$`
+      return { correct: both(tEq(-a1 * b1 / a2)), signFlip: both(tEq(a1 * b1 / a2)), parallel: both(tEq(b1 * a2 / a1)), ratio: both(tEq(a2 / b1)) }
+    },
+  },
+  'rational-limit-at-infinity': {
+    parse: (s) => { const m = s.match(/\\lim_\{x \\to \\infty\} \\dfrac\{(\d*)x\^(\d+) \+ 1\}\{(\d*)x\^(\d+) \+ x\}/); return m ? { p: +(m[1] || 1), m: +m[2], q: +(m[3] || 1), n: +m[4] } : null },
+    expect: ({ p, m, q, n }) => {
+      const out: Pair = { zero: both('$0$'), infinite: both('不存在（趨向無限大）', 'Does not exist (tends to infinity)'), ratio: both(reduced(p, q)), inverse: both(reduced(q, p)) }
+      const right = m < n ? 'zero' : m > n ? 'infinite' : 'ratio'
+      out.correct = out[right]
+      delete out[right]
+      return out
+    },
+  },
+  'sin-px-over-qx': {
+    parse: (s) => { const m = s.match(/\\lim_\{x \\to 0\} \\dfrac\{\\sin (\d+)x\}\{(\d+)x\}/); return m ? { p: +m[1], q: +m[2] } : null },
+    expect: ({ p, q }) => ({ correct: both(reduced(p, q)), inverse: both(reduced(q, p)), one: both('$1$'), zero: both('$0$') }),
+  },
+}
+const withUnit = (u: string) => (v: number) => both(`$${r4(v)}\\,\\text{${u}}$`)
+const amp = withUnit('A'), watt = withUnit('W'), volt = withUnit('V')
+const PHY_01: Record<string, Tpl> = {
+  'ohm-current-from-v-and-r': {
+    parse: (s) => { const m = s.match(/^一個電阻為 \$([\d.]+)\\,\\Omega\$ 的電器接上 \$([\d.]+)\\,\\text\{V\}\$ 的電源/); return m ? { R: +m[1], V: +m[2] } : null },
+    expect: ({ R, V }) => ({ correct: amp(V / R), product: amp(V * R), inverted: amp(R / V), difference: amp(V - R) }),
+  },
+  'current-ratio-when-voltage-changes': {
+    parse: (s) => { const m = s.match(/電壓由 \$([\d.]+)\\,\\text\{V\}\$ 改為 \$([\d.]+)\\,\\text\{V\}\$，電阻值不變/); return m ? { V1: +m[1], V2: +m[2] } : null },
+    expect: ({ V1, V2 }) => {
+      const x = (v: number) => both(`$${r4(v)}$ 倍`, `$${r4(v)}$ times`)
+      return { correct: x(V2 / V1), inverse: x(V1 / V2), unchanged: x(1), difference: x(Math.abs(V1 - V2)) }
+    },
+  },
+  'electric-power-from-v-and-i': {
+    parse: (s) => { const m = s.match(/^某電器在 \$([\d.]+)\\,\\text\{V\}\$ 下工作，通過的電流為 \$([\d.]+)\\,\\text\{A\}\$/); return m ? { V: +m[1], I: +m[2] } : null },
+    expect: ({ V, I }) => ({ correct: watt(V * I), resistance: watt(V / I), sum: watt(V + I), perMinute: watt(60 * V * I) }),
+  },
+  'fuse-rating-choice': {
+    parse: (s) => { const m = s.match(/^一件 \$([\d.]+)\\,\\text\{W\}\$ 的電器接在 \$([\d.]+)\\,\\text\{V\}\$ 的家庭電源上/); return m ? { P: +m[1], V: +m[2] } : null },
+    // The available ratings are the same in every question of this template.
+    expect: ({ P, V }) => {
+      const ratings = [3, 5, 10, 13], I = P / V
+      const ok = ratings.findIndex((r) => r > I)
+      return { correct: amp(ratings[ok]), tooLow: amp(ratings[ok - 1] < I ? ratings[ok - 1] : ratings[ok - 2]), tooHigh: amp(ratings[ok + 1]), powerOverTen: amp(P / 10) }
+    },
+  },
+  'electricity-cost-kwh': {
+    parse: (s) => { const m = s.match(/^一件 \$([\d.]+)\\,\\text\{W\}\$ 的電器連續使用 \$([\d.]+)\\,\\text\{h\}\$。若每度電.*收費 \$([\d.]+)\$ 元/); return m ? { P: +m[1], t: +m[2], c: +m[3] } : null },
+    expect: ({ P, t, c }) => {
+      const x = (v: number) => both(`$${r4(v)}$ 元`, `$${r4(v)}$ dollars`)
+      return { correct: x((P * t * c) / 1000), wattsAsKw: x(P * t * c), energyOnly: x((P * t) / 1000), noTime: x((P * c) / 1000) }
+    },
+  },
+  'series-voltage-divider': {
+    parse: (s) => { const m = s.match(/^\$([\d.]+)\\,\\text\{V\}\$ 電源接上串聯的 \$([\d.]+)\\,\\Omega\$ 與 \$([\d.]+)\\,\\Omega\$。求 \$([\d.]+)\\,\\Omega\$ 兩端的電壓/); return m && m[4] === m[2] ? { V: +m[1], R1: +m[2], R2: +m[3] } : null },
+    expect: ({ V, R1, R2 }) => ({ correct: volt((V * R1) / (R1 + R2)), otherResistor: volt((V * R2) / (R1 + R2)), half: volt(V / 2), parallelResistance: volt((V * R1 * R2) / ((R1 + R2) * (R1 + R2))) }),
+  },
+}
+
+function checkBatch(name: string, subject: string, size: number, tpls: Record<string, Tpl>) {
+  const b = batches.find((x) => x.batch === name)
+  assert.ok(b, `batch ${name} exists`)
+  assert.equal(b!.computed, true)
+  assert.equal(b!.repairs.length, size)
+  const bank = new Map(I.getSubjectQuestionsRaw(subject).map((q) => [q.id, q as unknown as { content: string; options: string[]; optionsEn?: string[]; correctIndex: number }]))
+  for (const r of b!.repairs) {
+    const q = bank.get(r.id)!
+    const t = tpls[r.template]
+    assert.ok(t, `${r.id}: template ${r.template} has no independent recomputation`)
+    const params = t.parse(q.content)
+    assert.ok(params, `${r.id}: stem not recognised by ${r.template}`)
+    assert.deepEqual(r.params, params, `${r.id}: params in the batch differ from the stem`)
+    const exp = t.expect(params!)
+    assert.equal(new Set(Object.values(exp).map(([zh]) => zh)).size, 4, `${r.id}: four different options expected`)
+    assert.equal(r.optionNotes.length, q.options.length)
+    for (const n of r.optionNotes) {
+      assert.ok(exp[n.kind], `${r.id}: unknown kind ${n.kind}`)
+      assert.equal(q.options[n.optionId], exp[n.kind][0], `${r.id}: note "${n.kind}" is on option ${n.optionId} = ${q.options[n.optionId]}`)
+      assert.equal((q.optionsEn ?? q.options)[n.optionId], exp[n.kind][1], `${r.id}: English option ${n.optionId} is not ${n.kind}`)
+    }
+    const correct = r.optionNotes.filter((n) => n.kind === 'correct')
+    assert.equal(correct.length, 1)
+    assert.equal(correct[0].optionId, q.correctIndex, `${r.id}: correctIndex`)
+    assert.equal(new Set(r.optionNotes.map((n) => n.kind)).size, 4, `${r.id}: four different kinds`)
+  }
+}
+
 /** Batches that may use the machine gate: marked computed, every template recomputed in this file. */
 function recomputedHere(): Set<string> {
-  const known = new Set([...Object.keys(expectM1), ...Object.keys(M1_02), ...Object.keys(M1_03)])
+  const known = new Set([...Object.keys(expectM1), ...Object.keys(M1_02), ...Object.keys(M1_03), ...Object.keys(M1_04), ...Object.keys(M2_01), ...Object.keys(PHY_01)])
   return new Set(batches.filter((b) => b.computed === true && b.repairs.every((r) => known.has(r.template))).map((b) => b.batch))
 }
 
@@ -383,9 +552,52 @@ test('M1-03: parameters read from the stem, every option recomputed, every note 
   }
 })
 
+test('M1-04: the standard-score comparison, 0067 left out and still withdrawn', () => {
+  const b = batches.find((x) => x.batch === 'M1-04')
+  assert.ok(b, 'batch M1-04 exists')
+  assert.equal(b!.computed, true)
+  assert.deepEqual(b!.repairs.map((r) => r.id), ['m1_rep_0063', 'm1_rep_0064', 'm1_rep_0065', 'm1_rep_0066', 'm1_rep_0068'])
+  // 33a: in 0067 both standard scores are 2, so no option is correct; it stays withdrawn.
+  assert.ok(withdrawn.m1?.m1_rep_0067, 'm1_rep_0067 is still withdrawn')
+  assert.equal(log.m1_rep_0067?.stage, 'withdrawn')
+  const bank = new Map(I.getSubjectQuestionsRaw('m1').map((q) => [q.id, q as unknown as { content: string; options: string[]; optionsEn: string[]; correctIndex: number }]))
+  const p67 = M1_04['compare-two-papers-by-z'].parse(bank.get('m1_rep_0067')!.content)!
+  assert.equal(paperZ(p67.muA, p67.sA, p67.xA), paperZ(p67.muB, p67.sB, p67.xB), '0067 still has equal standard scores')
+  for (const r of b!.repairs) {
+    const q = bank.get(r.id)!
+    const t = M1_04[r.template]
+    assert.ok(t, `${r.id}: template ${r.template} has no independent recomputation`)
+    const params = t.parse(q.content)
+    assert.ok(params, `${r.id}: stem not recognised by ${r.template}`)
+    assert.deepEqual(r.params, params, `${r.id}: params in the batch differ from the stem`)
+    const exp = t.expect(params!)
+    const expEn = M1_04_EN[r.template](params!)
+    assert.equal(r.optionNotes.length, q.options.length)
+    for (const n of r.optionNotes) {
+      assert.equal(q.options[n.optionId], exp[n.kind], `${r.id}: note "${n.kind}" is on option ${n.optionId} = ${q.options[n.optionId]}`)
+      assert.equal(q.optionsEn[n.optionId], expEn[n.kind], `${r.id}: English option ${n.optionId} is not ${n.kind}`)
+    }
+    const correct = r.optionNotes.filter((n) => n.kind === 'correct')
+    assert.equal(correct.length, 1)
+    assert.equal(correct[0].optionId, q.correctIndex, `${r.id}: correctIndex`)
+    assert.equal(new Set(r.optionNotes.map((n) => n.kind)).size, 4, `${r.id}: four different kinds`)
+  }
+})
+
+test('M2-01: every withdrawn M2 template, options in both languages recomputed', () => {
+  checkBatch('M2-01', 'm2', 36, M2_01)
+})
+
+test('PHY-01: six physics templates; series resistance held back (unrenderable Omega)', () => {
+  checkBatch('PHY-01', 'physics', 35, PHY_01)
+  // 0013–0018 write the unit as \text{\Omega}, which KaTeX cannot parse; they wait for the founders (2026-10-08).
+  const b = batches.find((x) => x.batch === 'PHY-01')!
+  assert.ok(!b.repairs.some((r) => /^phy_rep_001[3-8]$/.test(r.id)), 'the series-resistance template is not in this batch')
+})
+
 test('every machine-gate restore is from a computed batch recomputed in this file', () => {
   const ok = recomputedHere()
-  assert.ok(ok.has('M1-01') && ok.has('M1-02') && ok.has('M1-03'), 'M1-01, M1-02 and M1-03 are computed and recomputed here')
+  assert.ok(['M1-01', 'M1-02', 'M1-03', 'M1-04', 'M2-01', 'PHY-01'].every((x) => ok.has(x)), 'every computed batch so far is recomputed here')
   for (const [id, r] of Object.entries(log)) if (r.restoreBasis === 'machine-gate') assert.ok(ok.has(r.batch ?? ''), `${id}: ${r.batch}`)
 })
 

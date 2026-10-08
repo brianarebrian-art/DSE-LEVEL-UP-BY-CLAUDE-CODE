@@ -3241,7 +3241,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $70$、標準差 $5$，他得 $80$ 分；乙卷平均分 $60$、標準差 $10$，他得 $75$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{80 - 70}{5} = 2$；乙卷 $z = \\dfrac{75 - 60}{10} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $80$ 分，另一份考 $75$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{80 - 70}{5} = 2$；乙卷 $z = \\dfrac{75 - 60}{10} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "甲卷，因為原始分數較高",
       "兩卷表現相同，因為兩者都高於各自的平均分",
@@ -3257,8 +3257,30 @@ export const m1AutoQuestions: Question[] = [
       "Paper A, because its standard score is higher (A: $z = 2$, B: $z = 1.5$)",
       "Paper B, because its standard score is higher"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{80 - 70}{5} = 2$ and Paper B gives $z = \\dfrac{75 - 60}{10} = 1.5$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $80$ on one paper and $75$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{80 - 70}{5} = 2$; Paper B: $z = \\dfrac{75 - 60}{10} = 1.5$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "卷別碰巧選對，但理由錯了：兩卷的平均分和標準差不同，原始分數 $80$ 與 $75$ 不可直接比較，判斷要靠標準分數。",
+        "en": "The paper happens to be right but the reason is wrong: the papers have different means and standard deviations, so the raw marks $80$ and $75$ cannot be compared directly. The standard score decides it."
+      },
+      {
+        "optionId": 1,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.5$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.5$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。甲卷 $z = \\dfrac{80 - 70}{5} = 2$，乙卷 $z = \\dfrac{75 - 60}{10} = 1.5$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{80 - 70}{5} = 2$; Paper B: $z = \\dfrac{75 - 60}{10} = 1.5$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      },
+      {
+        "optionId": 3,
+        "zh": "乙卷的標準分數是 $1.5$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.5$, lower than Paper A's $2$; the comparison is the wrong way round."
+      }
+    ]
   },
   {
     "id": "m1_rep_0064",
@@ -3273,7 +3295,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $50$、標準差 $4$，他得 $58$ 分；乙卷平均分 $100$、標準差 $20$，他得 $130$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{58 - 50}{4} = 2$；乙卷 $z = \\dfrac{130 - 100}{20} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $58$ 分，另一份考 $130$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{58 - 50}{4} = 2$；乙卷 $z = \\dfrac{130 - 100}{20} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "乙卷，因為其標準分數較高",
       "乙卷，因為原始分數較高",
@@ -3289,8 +3311,30 @@ export const m1AutoQuestions: Question[] = [
       "Equally well, since both marks are above their respective means",
       "Paper A, because its standard score is higher (A: $z = 2$, B: $z = 1.5$)"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{58 - 50}{4} = 2$ and Paper B gives $z = \\dfrac{130 - 100}{20} = 1.5$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $58$ on one paper and $130$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{58 - 50}{4} = 2$; Paper B: $z = \\dfrac{130 - 100}{20} = 1.5$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "乙卷的標準分數是 $1.5$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.5$, lower than Paper A's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 1,
+        "zh": "乙卷的原始分數較高，但兩卷的平均分和標準差不同，原始分數不可直接比較；按標準分數，乙卷其實較低（$z = 1.5$）。",
+        "en": "Paper B has the higher raw mark, but the papers have different means and standard deviations, so raw marks cannot be compared directly; by standard score Paper B is in fact lower ($z = 1.5$)."
+      },
+      {
+        "optionId": 2,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.5$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.5$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。甲卷 $z = \\dfrac{58 - 50}{4} = 2$，乙卷 $z = \\dfrac{130 - 100}{20} = 1.5$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{58 - 50}{4} = 2$; Paper B: $z = \\dfrac{130 - 100}{20} = 1.5$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      }
+    ]
   },
   {
     "id": "m1_rep_0065",
@@ -3305,7 +3349,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $120$、標準差 $15$，他得 $150$ 分；乙卷平均分 $80$、標準差 $6$，他得 $89$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{150 - 120}{15} = 2$；乙卷 $z = \\dfrac{89 - 80}{6} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $150$ 分，另一份考 $89$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{150 - 120}{15} = 2$；乙卷 $z = \\dfrac{89 - 80}{6} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "甲卷，因為其標準分數較高（甲 $z = 2$，乙 $z = 1.5$）",
       "乙卷，因為其標準分數較高",
@@ -3321,8 +3365,30 @@ export const m1AutoQuestions: Question[] = [
       "Paper A, because the raw mark is higher",
       "Equally well, since both marks are above their respective means"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{150 - 120}{15} = 2$ and Paper B gives $z = \\dfrac{89 - 80}{6} = 1.5$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $150$ on one paper and $89$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{150 - 120}{15} = 2$; Paper B: $z = \\dfrac{89 - 80}{6} = 1.5$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。甲卷 $z = \\dfrac{150 - 120}{15} = 2$，乙卷 $z = \\dfrac{89 - 80}{6} = 1.5$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{150 - 120}{15} = 2$; Paper B: $z = \\dfrac{89 - 80}{6} = 1.5$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      },
+      {
+        "optionId": 1,
+        "zh": "乙卷的標準分數是 $1.5$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.5$, lower than Paper A's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 2,
+        "zh": "卷別碰巧選對，但理由錯了：兩卷的平均分和標準差不同，原始分數 $150$ 與 $89$ 不可直接比較，判斷要靠標準分數。",
+        "en": "The paper happens to be right but the reason is wrong: the papers have different means and standard deviations, so the raw marks $150$ and $89$ cannot be compared directly. The standard score decides it."
+      },
+      {
+        "optionId": 3,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.5$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.5$ on Paper B, so the performances are not equal."
+      }
+    ]
   },
   {
     "id": "m1_rep_0066",
@@ -3337,7 +3403,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $65$、標準差 $10$，他得 $85$ 分；乙卷平均分 $40$、標準差 $5$，他得 $48$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{85 - 65}{10} = 2$；乙卷 $z = \\dfrac{48 - 40}{5} = 1.6$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $85$ 分，另一份考 $48$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{85 - 65}{10} = 2$；乙卷 $z = \\dfrac{48 - 40}{5} = 1.6$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "兩卷表現相同，因為兩者都高於各自的平均分",
       "甲卷，因為其標準分數較高（甲 $z = 2$，乙 $z = 1.6$）",
@@ -3353,8 +3419,30 @@ export const m1AutoQuestions: Question[] = [
       "Paper B, because its standard score is higher",
       "Paper A, because the raw mark is higher"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{85 - 65}{10} = 2$ and Paper B gives $z = \\dfrac{48 - 40}{5} = 1.6$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $85$ on one paper and $48$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{85 - 65}{10} = 2$; Paper B: $z = \\dfrac{48 - 40}{5} = 1.6$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.6$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.6$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。甲卷 $z = \\dfrac{85 - 65}{10} = 2$，乙卷 $z = \\dfrac{48 - 40}{5} = 1.6$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{85 - 65}{10} = 2$; Paper B: $z = \\dfrac{48 - 40}{5} = 1.6$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      },
+      {
+        "optionId": 2,
+        "zh": "乙卷的標準分數是 $1.6$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.6$, lower than Paper A's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 3,
+        "zh": "卷別碰巧選對，但理由錯了：兩卷的平均分和標準差不同，原始分數 $85$ 與 $48$ 不可直接比較，判斷要靠標準分數。",
+        "en": "The paper happens to be right but the reason is wrong: the papers have different means and standard deviations, so the raw marks $85$ and $48$ cannot be compared directly. The standard score decides it."
+      }
+    ]
   },
   {
     "id": "m1_rep_0067",
@@ -3401,7 +3489,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $90$、標準差 $12$，他得 $108$ 分；乙卷平均分 $45$、標準差 $9$，他得 $63$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{108 - 90}{12} = 1.5$；乙卷 $z = \\dfrac{63 - 45}{9} = 2$。乙卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $108$ 分，另一份考 $63$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{108 - 90}{12} = 1.5$；乙卷 $z = \\dfrac{63 - 45}{9} = 2$。乙卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "甲卷，因為其標準分數較高",
       "甲卷，因為原始分數較高",
@@ -3417,8 +3505,30 @@ export const m1AutoQuestions: Question[] = [
       "Equally well, since both marks are above their respective means",
       "Paper B, because its standard score is higher (A: $z = 1.5$, B: $z = 2$)"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{108 - 90}{12} = 1.5$ and Paper B gives $z = \\dfrac{63 - 45}{9} = 2$. The higher $z$ belongs to Paper B, so that is the better relative performance. Comparing raw marks is the main trap: scoring $108$ on one paper and $63$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{108 - 90}{12} = 1.5$; Paper B: $z = \\dfrac{63 - 45}{9} = 2$. Paper B has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "甲卷的標準分數是 $1.5$，低於乙卷的 $2$，比較的方向弄反了。",
+        "en": "Paper A's standard score is $1.5$, lower than Paper B's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 1,
+        "zh": "甲卷的原始分數較高，但兩卷的平均分和標準差不同，原始分數不可直接比較；按標準分數，甲卷其實較低（$z = 1.5$）。",
+        "en": "Paper A has the higher raw mark, but the papers have different means and standard deviations, so raw marks cannot be compared directly; by standard score Paper A is in fact lower ($z = 1.5$)."
+      },
+      {
+        "optionId": 2,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $1.5$ 個標準差，乙卷高出 $2$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $1.5$ standard deviations on Paper A and $2$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。甲卷 $z = \\dfrac{108 - 90}{12} = 1.5$，乙卷 $z = \\dfrac{63 - 45}{9} = 2$。乙卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{108 - 90}{12} = 1.5$; Paper B: $z = \\dfrac{63 - 45}{9} = 2$. Paper B has the higher standard score: that mark is more standard deviations above its paper's mean."
+      }
+    ]
   },
   {
     "id": "m1_rep_0069",

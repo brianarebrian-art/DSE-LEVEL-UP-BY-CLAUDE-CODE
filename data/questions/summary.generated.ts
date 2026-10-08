@@ -27,20 +27,20 @@ export const SUBJECT_SUMMARY: Record<string, SubjectSummary> = {
     "topics": 25
   },
   "m2": {
-    "total": 983,
-    "mc": 966,
+    "total": 1019,
+    "mc": 1002,
     "written": 17,
     "topics": 10
   },
   "m1": {
-    "total": 988,
-    "mc": 971,
+    "total": 993,
+    "mc": 976,
     "written": 17,
     "topics": 12
   },
   "physics": {
-    "total": 1120,
-    "mc": 1046,
+    "total": 1155,
+    "mc": 1081,
     "written": 74,
     "topics": 13
   },
@@ -481,8 +481,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "轉化思維",
       "frameworkEn": "Transformative Thinking",
       "emoji": "🔄",
-      "count": 87,
-      "mcCount": 86,
+      "count": 103,
+      "mcCount": 102,
       "writtenCount": 1
     },
     {
@@ -492,8 +492,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "條件分解",
       "frameworkEn": "Condition Decomposition",
       "emoji": "🎯",
-      "count": 93,
-      "mcCount": 91,
+      "count": 105,
+      "mcCount": 103,
       "writtenCount": 2
     },
     {
@@ -503,8 +503,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "幾何直覺",
       "frameworkEn": "Geometric Intuition",
       "emoji": "📐",
-      "count": 94,
-      "mcCount": 92,
+      "count": 98,
+      "mcCount": 96,
       "writtenCount": 2
     },
     {
@@ -558,8 +558,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "代數",
       "frameworkEn": "Algebra",
       "emoji": "🔢",
-      "count": 99,
-      "mcCount": 97,
+      "count": 103,
+      "mcCount": 101,
       "writtenCount": 2
     }
   ],
@@ -626,8 +626,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "建模能力",
       "frameworkEn": "Modelling",
       "emoji": "🏗️",
-      "count": 75,
-      "mcCount": 74,
+      "count": 80,
+      "mcCount": 79,
       "writtenCount": 1
     },
     {
@@ -716,8 +716,8 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
       "framework": "電路分析",
       "frameworkEn": "Circuit Analysis",
       "emoji": "⚡",
-      "count": 181,
-      "mcCount": 172,
+      "count": 216,
+      "mcCount": 207,
       "writtenCount": 9
     },
     {
@@ -3483,7 +3483,7 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = {
 }
 
 /** 全站題目總數（學生練習得到的題目，即 CONTENT_STATS.published）。 */
-export const TOTAL_QUESTIONS = 26551
+export const TOTAL_QUESTIONS = 26627
 
 /**
  * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，四項相加等於 totalAuthored。
@@ -3491,8 +3491,8 @@ export const TOTAL_QUESTIONS = 26551
  */
 export const CONTENT_STATS = {
   "totalAuthored": 27326,
-  "published": 26551,
-  "withdrawn": 543,
+  "published": 26627,
+  "withdrawn": 467,
   "withheldTopic": 219,
   "pendingReview": 13
 } as const

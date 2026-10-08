@@ -15,16 +15,16 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
     "correct": 43
   },
   "m2": {
-    "unique": 441,
-    "correct": 89
+    "unique": 459,
+    "correct": 91
   },
   "m1": {
-    "unique": 593,
-    "correct": 54
+    "unique": 598,
+    "correct": 59
   },
   "physics": {
-    "unique": 685,
-    "correct": 76
+    "unique": 714,
+    "correct": 78
   },
   "chemistry": {
     "unique": 524,

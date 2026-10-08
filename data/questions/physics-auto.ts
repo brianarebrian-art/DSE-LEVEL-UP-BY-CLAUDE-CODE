@@ -25,7 +25,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個電阻為 $4\\,\\Omega$ 的電器接上 $12\\,\\text{V}$ 的電源。求通過它的電流。",
-    "explanation": "歐姆定律 $V = IR$，移項得 $I = V/R = 12/4 = 3\\,\\text{A}$。把兩者相乘得 $48\\,\\text{A}$ 是最常見的錯誤：電阻越大電流應該越【小】，相乘卻令電流隨電阻上升，方向剛好相反，單憑這一點已可排除。$0.3333\\,\\text{A}$ 把分子分母對調，所得其實是電導與電壓的比值，並無物理意義。最後一項把公式當成減法——電壓與電阻的單位不同，本來就不能相減。",
+    "explanation": "歐姆定律 $V = IR$，移項得 $I = \\dfrac{V}{R} = \\dfrac{12}{4} = 3\\,\\text{A}$。可用常理檢查：電壓不變時，電阻越大，電流越小。",
     "options": [
       "$3\\,\\text{A}$",
       "$48\\,\\text{A}$",
@@ -41,8 +41,30 @@ export const physicsAutoQuestions: Question[] = [
       "$0.3333\\,\\text{A}$",
       "$8\\,\\text{A}$"
     ],
-    "explanationEn": "Ohm's law is $V = IR$, so $I = V/R = 12/4 = 3\\,\\text{A}$. Multiplying instead gives $48\\,\\text{A}$ and is the commonest error: a larger resistance must give a *smaller* current, yet multiplying makes current rise with resistance — the wrong way round. $0.3333\\,\\text{A}$ inverts the ratio and has no physical meaning. The last option subtracts, but voltage and resistance do not share a unit and cannot be subtracted.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Ohm's law $V = IR$ rearranges to $I = \\dfrac{V}{R} = \\dfrac{12}{4} = 3\\,\\text{A}$. A quick check: at a fixed voltage, a larger resistance gives a smaller current.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$I = \\dfrac{V}{R} = \\dfrac{12}{4} = 3\\,\\text{A}$。",
+        "en": "Correct. $I = \\dfrac{V}{R} = \\dfrac{12}{4} = 3\\,\\text{A}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$12 \\times 4 = 48$ 把電壓與電阻相乘。電阻越大，電流應該越小；相乘卻令電流隨電阻上升。",
+        "en": "$12 \\times 4 = 48$ multiplies voltage by resistance. A larger resistance should give a smaller current; multiplying makes it larger."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{4}{12} \\approx 0.3333$ 把分子分母對調了，數值上是電流的倒數，並非電流。",
+        "en": "$\\dfrac{4}{12} \\approx 0.3333$ has the fraction upside down; it is the reciprocal of the current, not the current."
+      },
+      {
+        "optionId": 3,
+        "zh": "$12 - 4 = 8$ 把電壓減去電阻；兩者單位不同，不能相減。",
+        "en": "$12 - 4 = 8$ subtracts resistance from voltage; quantities with different units cannot be subtracted."
+      }
+    ]
   },
   {
     "id": "phy_rep_0002",
@@ -57,7 +79,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個電阻為 $6\\,\\Omega$ 的電器接上 $24\\,\\text{V}$ 的電源。求通過它的電流。",
-    "explanation": "歐姆定律 $V = IR$，移項得 $I = V/R = 24/6 = 4\\,\\text{A}$。把兩者相乘得 $144\\,\\text{A}$ 是最常見的錯誤：電阻越大電流應該越【小】，相乘卻令電流隨電阻上升，方向剛好相反，單憑這一點已可排除。$0.25\\,\\text{A}$ 把分子分母對調，所得其實是電導與電壓的比值，並無物理意義。最後一項把公式當成減法——電壓與電阻的單位不同，本來就不能相減。",
+    "explanation": "歐姆定律 $V = IR$，移項得 $I = \\dfrac{V}{R} = \\dfrac{24}{6} = 4\\,\\text{A}$。可用常理檢查：電壓不變時，電阻越大，電流越小。",
     "options": [
       "$18\\,\\text{A}$",
       "$4\\,\\text{A}$",
@@ -73,8 +95,30 @@ export const physicsAutoQuestions: Question[] = [
       "$144\\,\\text{A}$",
       "$0.25\\,\\text{A}$"
     ],
-    "explanationEn": "Ohm's law is $V = IR$, so $I = V/R = 24/6 = 4\\,\\text{A}$. Multiplying instead gives $144\\,\\text{A}$ and is the commonest error: a larger resistance must give a *smaller* current, yet multiplying makes current rise with resistance — the wrong way round. $0.25\\,\\text{A}$ inverts the ratio and has no physical meaning. The last option subtracts, but voltage and resistance do not share a unit and cannot be subtracted.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Ohm's law $V = IR$ rearranges to $I = \\dfrac{V}{R} = \\dfrac{24}{6} = 4\\,\\text{A}$. A quick check: at a fixed voltage, a larger resistance gives a smaller current.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$24 - 6 = 18$ 把電壓減去電阻；兩者單位不同，不能相減。",
+        "en": "$24 - 6 = 18$ subtracts resistance from voltage; quantities with different units cannot be subtracted."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$I = \\dfrac{V}{R} = \\dfrac{24}{6} = 4\\,\\text{A}$。",
+        "en": "Correct. $I = \\dfrac{V}{R} = \\dfrac{24}{6} = 4\\,\\text{A}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$24 \\times 6 = 144$ 把電壓與電阻相乘。電阻越大，電流應該越小；相乘卻令電流隨電阻上升。",
+        "en": "$24 \\times 6 = 144$ multiplies voltage by resistance. A larger resistance should give a smaller current; multiplying makes it larger."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{6}{24} = 0.25$ 把分子分母對調了，數值上是電流的倒數，並非電流。",
+        "en": "$\\dfrac{6}{24} = 0.25$ has the fraction upside down; it is the reciprocal of the current, not the current."
+      }
+    ]
   },
   {
     "id": "phy_rep_0003",
@@ -89,7 +133,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個電阻為 $3\\,\\Omega$ 的電器接上 $9\\,\\text{V}$ 的電源。求通過它的電流。",
-    "explanation": "歐姆定律 $V = IR$，移項得 $I = V/R = 9/3 = 3\\,\\text{A}$。把兩者相乘得 $27\\,\\text{A}$ 是最常見的錯誤：電阻越大電流應該越【小】，相乘卻令電流隨電阻上升，方向剛好相反，單憑這一點已可排除。$0.3333\\,\\text{A}$ 把分子分母對調，所得其實是電導與電壓的比值，並無物理意義。最後一項把公式當成減法——電壓與電阻的單位不同，本來就不能相減。",
+    "explanation": "歐姆定律 $V = IR$，移項得 $I = \\dfrac{V}{R} = \\dfrac{9}{3} = 3\\,\\text{A}$。可用常理檢查：電壓不變時，電阻越大，電流越小。",
     "options": [
       "$0.3333\\,\\text{A}$",
       "$6\\,\\text{A}$",
@@ -105,8 +149,30 @@ export const physicsAutoQuestions: Question[] = [
       "$3\\,\\text{A}$",
       "$27\\,\\text{A}$"
     ],
-    "explanationEn": "Ohm's law is $V = IR$, so $I = V/R = 9/3 = 3\\,\\text{A}$. Multiplying instead gives $27\\,\\text{A}$ and is the commonest error: a larger resistance must give a *smaller* current, yet multiplying makes current rise with resistance — the wrong way round. $0.3333\\,\\text{A}$ inverts the ratio and has no physical meaning. The last option subtracts, but voltage and resistance do not share a unit and cannot be subtracted.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Ohm's law $V = IR$ rearranges to $I = \\dfrac{V}{R} = \\dfrac{9}{3} = 3\\,\\text{A}$. A quick check: at a fixed voltage, a larger resistance gives a smaller current.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{3}{9} \\approx 0.3333$ 把分子分母對調了，數值上是電流的倒數，並非電流。",
+        "en": "$\\dfrac{3}{9} \\approx 0.3333$ has the fraction upside down; it is the reciprocal of the current, not the current."
+      },
+      {
+        "optionId": 1,
+        "zh": "$9 - 3 = 6$ 把電壓減去電阻；兩者單位不同，不能相減。",
+        "en": "$9 - 3 = 6$ subtracts resistance from voltage; quantities with different units cannot be subtracted."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$I = \\dfrac{V}{R} = \\dfrac{9}{3} = 3\\,\\text{A}$。",
+        "en": "Correct. $I = \\dfrac{V}{R} = \\dfrac{9}{3} = 3\\,\\text{A}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$9 \\times 3 = 27$ 把電壓與電阻相乘。電阻越大，電流應該越小；相乘卻令電流隨電阻上升。",
+        "en": "$9 \\times 3 = 27$ multiplies voltage by resistance. A larger resistance should give a smaller current; multiplying makes it larger."
+      }
+    ]
   },
   {
     "id": "phy_rep_0004",
@@ -121,7 +187,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個電阻為 $9\\,\\Omega$ 的電器接上 $18\\,\\text{V}$ 的電源。求通過它的電流。",
-    "explanation": "歐姆定律 $V = IR$，移項得 $I = V/R = 18/9 = 2\\,\\text{A}$。把兩者相乘得 $162\\,\\text{A}$ 是最常見的錯誤：電阻越大電流應該越【小】，相乘卻令電流隨電阻上升，方向剛好相反，單憑這一點已可排除。$0.5\\,\\text{A}$ 把分子分母對調，所得其實是電導與電壓的比值，並無物理意義。最後一項把公式當成減法——電壓與電阻的單位不同，本來就不能相減。",
+    "explanation": "歐姆定律 $V = IR$，移項得 $I = \\dfrac{V}{R} = \\dfrac{18}{9} = 2\\,\\text{A}$。可用常理檢查：電壓不變時，電阻越大，電流越小。",
     "options": [
       "$162\\,\\text{A}$",
       "$0.5\\,\\text{A}$",
@@ -137,8 +203,30 @@ export const physicsAutoQuestions: Question[] = [
       "$9\\,\\text{A}$",
       "$2\\,\\text{A}$"
     ],
-    "explanationEn": "Ohm's law is $V = IR$, so $I = V/R = 18/9 = 2\\,\\text{A}$. Multiplying instead gives $162\\,\\text{A}$ and is the commonest error: a larger resistance must give a *smaller* current, yet multiplying makes current rise with resistance — the wrong way round. $0.5\\,\\text{A}$ inverts the ratio and has no physical meaning. The last option subtracts, but voltage and resistance do not share a unit and cannot be subtracted.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Ohm's law $V = IR$ rearranges to $I = \\dfrac{V}{R} = \\dfrac{18}{9} = 2\\,\\text{A}$. A quick check: at a fixed voltage, a larger resistance gives a smaller current.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$18 \\times 9 = 162$ 把電壓與電阻相乘。電阻越大，電流應該越小；相乘卻令電流隨電阻上升。",
+        "en": "$18 \\times 9 = 162$ multiplies voltage by resistance. A larger resistance should give a smaller current; multiplying makes it larger."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{9}{18} = 0.5$ 把分子分母對調了，數值上是電流的倒數，並非電流。",
+        "en": "$\\dfrac{9}{18} = 0.5$ has the fraction upside down; it is the reciprocal of the current, not the current."
+      },
+      {
+        "optionId": 2,
+        "zh": "$18 - 9 = 9$ 把電壓減去電阻；兩者單位不同，不能相減。",
+        "en": "$18 - 9 = 9$ subtracts resistance from voltage; quantities with different units cannot be subtracted."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$I = \\dfrac{V}{R} = \\dfrac{18}{9} = 2\\,\\text{A}$。",
+        "en": "Correct. $I = \\dfrac{V}{R} = \\dfrac{18}{9} = 2\\,\\text{A}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0005",
@@ -153,7 +241,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個電阻為 $12\\,\\Omega$ 的電器接上 $36\\,\\text{V}$ 的電源。求通過它的電流。",
-    "explanation": "歐姆定律 $V = IR$，移項得 $I = V/R = 36/12 = 3\\,\\text{A}$。把兩者相乘得 $432\\,\\text{A}$ 是最常見的錯誤：電阻越大電流應該越【小】，相乘卻令電流隨電阻上升，方向剛好相反，單憑這一點已可排除。$0.3333\\,\\text{A}$ 把分子分母對調，所得其實是電導與電壓的比值，並無物理意義。最後一項把公式當成減法——電壓與電阻的單位不同，本來就不能相減。",
+    "explanation": "歐姆定律 $V = IR$，移項得 $I = \\dfrac{V}{R} = \\dfrac{36}{12} = 3\\,\\text{A}$。可用常理檢查：電壓不變時，電阻越大，電流越小。",
     "options": [
       "$3\\,\\text{A}$",
       "$432\\,\\text{A}$",
@@ -169,8 +257,30 @@ export const physicsAutoQuestions: Question[] = [
       "$0.3333\\,\\text{A}$",
       "$24\\,\\text{A}$"
     ],
-    "explanationEn": "Ohm's law is $V = IR$, so $I = V/R = 36/12 = 3\\,\\text{A}$. Multiplying instead gives $432\\,\\text{A}$ and is the commonest error: a larger resistance must give a *smaller* current, yet multiplying makes current rise with resistance — the wrong way round. $0.3333\\,\\text{A}$ inverts the ratio and has no physical meaning. The last option subtracts, but voltage and resistance do not share a unit and cannot be subtracted.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Ohm's law $V = IR$ rearranges to $I = \\dfrac{V}{R} = \\dfrac{36}{12} = 3\\,\\text{A}$. A quick check: at a fixed voltage, a larger resistance gives a smaller current.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$I = \\dfrac{V}{R} = \\dfrac{36}{12} = 3\\,\\text{A}$。",
+        "en": "Correct. $I = \\dfrac{V}{R} = \\dfrac{36}{12} = 3\\,\\text{A}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$36 \\times 12 = 432$ 把電壓與電阻相乘。電阻越大，電流應該越小；相乘卻令電流隨電阻上升。",
+        "en": "$36 \\times 12 = 432$ multiplies voltage by resistance. A larger resistance should give a smaller current; multiplying makes it larger."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{12}{36} \\approx 0.3333$ 把分子分母對調了，數值上是電流的倒數，並非電流。",
+        "en": "$\\dfrac{12}{36} \\approx 0.3333$ has the fraction upside down; it is the reciprocal of the current, not the current."
+      },
+      {
+        "optionId": 3,
+        "zh": "$36 - 12 = 24$ 把電壓減去電阻；兩者單位不同，不能相減。",
+        "en": "$36 - 12 = 24$ subtracts resistance from voltage; quantities with different units cannot be subtracted."
+      }
+    ]
   },
   {
     "id": "phy_rep_0006",
@@ -185,7 +295,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個電阻為 $2\\,\\Omega$ 的電器接上 $6\\,\\text{V}$ 的電源。求通過它的電流。",
-    "explanation": "歐姆定律 $V = IR$，移項得 $I = V/R = 6/2 = 3\\,\\text{A}$。把兩者相乘得 $12\\,\\text{A}$ 是最常見的錯誤：電阻越大電流應該越【小】，相乘卻令電流隨電阻上升，方向剛好相反，單憑這一點已可排除。$0.3333\\,\\text{A}$ 把分子分母對調，所得其實是電導與電壓的比值，並無物理意義。最後一項把公式當成減法——電壓與電阻的單位不同，本來就不能相減。",
+    "explanation": "歐姆定律 $V = IR$，移項得 $I = \\dfrac{V}{R} = \\dfrac{6}{2} = 3\\,\\text{A}$。可用常理檢查：電壓不變時，電阻越大，電流越小。",
     "options": [
       "$4\\,\\text{A}$",
       "$3\\,\\text{A}$",
@@ -201,8 +311,30 @@ export const physicsAutoQuestions: Question[] = [
       "$12\\,\\text{A}$",
       "$0.3333\\,\\text{A}$"
     ],
-    "explanationEn": "Ohm's law is $V = IR$, so $I = V/R = 6/2 = 3\\,\\text{A}$. Multiplying instead gives $12\\,\\text{A}$ and is the commonest error: a larger resistance must give a *smaller* current, yet multiplying makes current rise with resistance — the wrong way round. $0.3333\\,\\text{A}$ inverts the ratio and has no physical meaning. The last option subtracts, but voltage and resistance do not share a unit and cannot be subtracted.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Ohm's law $V = IR$ rearranges to $I = \\dfrac{V}{R} = \\dfrac{6}{2} = 3\\,\\text{A}$. A quick check: at a fixed voltage, a larger resistance gives a smaller current.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$6 - 2 = 4$ 把電壓減去電阻；兩者單位不同，不能相減。",
+        "en": "$6 - 2 = 4$ subtracts resistance from voltage; quantities with different units cannot be subtracted."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$I = \\dfrac{V}{R} = \\dfrac{6}{2} = 3\\,\\text{A}$。",
+        "en": "Correct. $I = \\dfrac{V}{R} = \\dfrac{6}{2} = 3\\,\\text{A}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$6 \\times 2 = 12$ 把電壓與電阻相乘。電阻越大，電流應該越小；相乘卻令電流隨電阻上升。",
+        "en": "$6 \\times 2 = 12$ multiplies voltage by resistance. A larger resistance should give a smaller current; multiplying makes it larger."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{2}{6} \\approx 0.3333$ 把分子分母對調了，數值上是電流的倒數，並非電流。",
+        "en": "$\\dfrac{2}{6} \\approx 0.3333$ has the fraction upside down; it is the reciprocal of the current, not the current."
+      }
+    ]
   },
   {
     "id": "phy_rep_0013",
@@ -601,7 +733,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某電器在 $220\\,\\text{V}$ 下工作，通過的電流為 $2\\,\\text{A}$。求它的電功率。",
-    "explanation": "$P = VI = 220 \\times 2 = 440\\,\\text{W}$。$110\\,\\text{W}$ 其實是電阻值（單位應為 $\\Omega$），寫成瓦特已經自相矛盾——留意單位可以省下這一分。$222\\,\\text{W}$ 把兩個不同單位的量相加。最後一項乘多了 60 秒，那是【能量】而不是功率：功率是每秒的能量，時間一旦乘進去就變了另一個量。",
+    "explanation": "電功率 $P = VI = 220 \\times 2 = 440\\,\\text{W}$。功率是每秒轉換的能量，計算時不涉及時間；答案的單位必須是瓦特。",
     "options": [
       "$440\\,\\text{W}$",
       "$110\\,\\text{W}$",
@@ -617,8 +749,30 @@ export const physicsAutoQuestions: Question[] = [
       "$222\\,\\text{W}$",
       "$26400\\,\\text{W}$"
     ],
-    "explanationEn": "$P = VI = 220 \\times 2 = 440\\,\\text{W}$. $110\\,\\text{W}$ is actually the resistance and should carry $\\Omega$, so the unit alone rules it out. $222\\,\\text{W}$ adds unlike quantities. The last option multiplies by 60 s, giving *energy*, not power: power is energy per second, and folding time back in changes the quantity.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Electrical power is $P = VI = 220 \\times 2 = 440\\,\\text{W}$. Power is energy per second, so no time enters the calculation, and the answer must be in watts.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$P = VI = 220 \\times 2 = 440\\,\\text{W}$。",
+        "en": "Correct. $P = VI = 220 \\times 2 = 440\\,\\text{W}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{V}{I} = \\dfrac{220}{2} = 110$ 是電器的電阻（單位為 $\\Omega$），不是功率。",
+        "en": "$\\dfrac{V}{I} = \\dfrac{220}{2} = 110$ is the appliance's resistance (in $\\Omega$), not its power."
+      },
+      {
+        "optionId": 2,
+        "zh": "$220 + 2 = 222$ 把電壓與電流相加；兩者單位不同，不能相加。",
+        "en": "$220 + 2 = 222$ adds voltage and current; quantities with different units cannot be added."
+      },
+      {
+        "optionId": 3,
+        "zh": "$VI \\times 60 = 26400$ 多乘了 $60$ 秒，得出的是一分鐘內轉換的能量（焦耳），不是功率。功率是每秒轉換的能量。",
+        "en": "$VI \\times 60 = 26400$ multiplies by $60$ seconds, giving the energy converted in one minute (in joules), not the power. Power is energy per second."
+      }
+    ]
   },
   {
     "id": "phy_rep_0026",
@@ -633,7 +787,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某電器在 $12\\,\\text{V}$ 下工作，通過的電流為 $3\\,\\text{A}$。求它的電功率。",
-    "explanation": "$P = VI = 12 \\times 3 = 36\\,\\text{W}$。$4\\,\\text{W}$ 其實是電阻值（單位應為 $\\Omega$），寫成瓦特已經自相矛盾——留意單位可以省下這一分。$15\\,\\text{W}$ 把兩個不同單位的量相加。最後一項乘多了 60 秒，那是【能量】而不是功率：功率是每秒的能量，時間一旦乘進去就變了另一個量。",
+    "explanation": "電功率 $P = VI = 12 \\times 3 = 36\\,\\text{W}$。功率是每秒轉換的能量，計算時不涉及時間；答案的單位必須是瓦特。",
     "options": [
       "$2160\\,\\text{W}$",
       "$36\\,\\text{W}$",
@@ -649,8 +803,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4\\,\\text{W}$",
       "$15\\,\\text{W}$"
     ],
-    "explanationEn": "$P = VI = 12 \\times 3 = 36\\,\\text{W}$. $4\\,\\text{W}$ is actually the resistance and should carry $\\Omega$, so the unit alone rules it out. $15\\,\\text{W}$ adds unlike quantities. The last option multiplies by 60 s, giving *energy*, not power: power is energy per second, and folding time back in changes the quantity.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Electrical power is $P = VI = 12 \\times 3 = 36\\,\\text{W}$. Power is energy per second, so no time enters the calculation, and the answer must be in watts.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$VI \\times 60 = 2160$ 多乘了 $60$ 秒，得出的是一分鐘內轉換的能量（焦耳），不是功率。功率是每秒轉換的能量。",
+        "en": "$VI \\times 60 = 2160$ multiplies by $60$ seconds, giving the energy converted in one minute (in joules), not the power. Power is energy per second."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$P = VI = 12 \\times 3 = 36\\,\\text{W}$。",
+        "en": "Correct. $P = VI = 12 \\times 3 = 36\\,\\text{W}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{V}{I} = \\dfrac{12}{3} = 4$ 是電器的電阻（單位為 $\\Omega$），不是功率。",
+        "en": "$\\dfrac{V}{I} = \\dfrac{12}{3} = 4$ is the appliance's resistance (in $\\Omega$), not its power."
+      },
+      {
+        "optionId": 3,
+        "zh": "$12 + 3 = 15$ 把電壓與電流相加；兩者單位不同，不能相加。",
+        "en": "$12 + 3 = 15$ adds voltage and current; quantities with different units cannot be added."
+      }
+    ]
   },
   {
     "id": "phy_rep_0027",
@@ -665,7 +841,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某電器在 $240\\,\\text{V}$ 下工作，通過的電流為 $5\\,\\text{A}$。求它的電功率。",
-    "explanation": "$P = VI = 240 \\times 5 = 1200\\,\\text{W}$。$48\\,\\text{W}$ 其實是電阻值（單位應為 $\\Omega$），寫成瓦特已經自相矛盾——留意單位可以省下這一分。$245\\,\\text{W}$ 把兩個不同單位的量相加。最後一項乘多了 60 秒，那是【能量】而不是功率：功率是每秒的能量，時間一旦乘進去就變了另一個量。",
+    "explanation": "電功率 $P = VI = 240 \\times 5 = 1200\\,\\text{W}$。功率是每秒轉換的能量，計算時不涉及時間；答案的單位必須是瓦特。",
     "options": [
       "$245\\,\\text{W}$",
       "$72000\\,\\text{W}$",
@@ -681,8 +857,30 @@ export const physicsAutoQuestions: Question[] = [
       "$1200\\,\\text{W}$",
       "$48\\,\\text{W}$"
     ],
-    "explanationEn": "$P = VI = 240 \\times 5 = 1200\\,\\text{W}$. $48\\,\\text{W}$ is actually the resistance and should carry $\\Omega$, so the unit alone rules it out. $245\\,\\text{W}$ adds unlike quantities. The last option multiplies by 60 s, giving *energy*, not power: power is energy per second, and folding time back in changes the quantity.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Electrical power is $P = VI = 240 \\times 5 = 1200\\,\\text{W}$. Power is energy per second, so no time enters the calculation, and the answer must be in watts.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$240 + 5 = 245$ 把電壓與電流相加；兩者單位不同，不能相加。",
+        "en": "$240 + 5 = 245$ adds voltage and current; quantities with different units cannot be added."
+      },
+      {
+        "optionId": 1,
+        "zh": "$VI \\times 60 = 72000$ 多乘了 $60$ 秒，得出的是一分鐘內轉換的能量（焦耳），不是功率。功率是每秒轉換的能量。",
+        "en": "$VI \\times 60 = 72000$ multiplies by $60$ seconds, giving the energy converted in one minute (in joules), not the power. Power is energy per second."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$P = VI = 240 \\times 5 = 1200\\,\\text{W}$。",
+        "en": "Correct. $P = VI = 240 \\times 5 = 1200\\,\\text{W}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{V}{I} = \\dfrac{240}{5} = 48$ 是電器的電阻（單位為 $\\Omega$），不是功率。",
+        "en": "$\\dfrac{V}{I} = \\dfrac{240}{5} = 48$ is the appliance's resistance (in $\\Omega$), not its power."
+      }
+    ]
   },
   {
     "id": "phy_rep_0028",
@@ -697,7 +895,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某電器在 $6\\,\\text{V}$ 下工作，通過的電流為 $0.5\\,\\text{A}$。求它的電功率。",
-    "explanation": "$P = VI = 6 \\times 0.5 = 3\\,\\text{W}$。$12\\,\\text{W}$ 其實是電阻值（單位應為 $\\Omega$），寫成瓦特已經自相矛盾——留意單位可以省下這一分。$6.5\\,\\text{W}$ 把兩個不同單位的量相加。最後一項乘多了 60 秒，那是【能量】而不是功率：功率是每秒的能量，時間一旦乘進去就變了另一個量。",
+    "explanation": "電功率 $P = VI = 6 \\times 0.5 = 3\\,\\text{W}$。功率是每秒轉換的能量，計算時不涉及時間；答案的單位必須是瓦特。",
     "options": [
       "$12\\,\\text{W}$",
       "$6.5\\,\\text{W}$",
@@ -713,8 +911,30 @@ export const physicsAutoQuestions: Question[] = [
       "$180\\,\\text{W}$",
       "$3\\,\\text{W}$"
     ],
-    "explanationEn": "$P = VI = 6 \\times 0.5 = 3\\,\\text{W}$. $12\\,\\text{W}$ is actually the resistance and should carry $\\Omega$, so the unit alone rules it out. $6.5\\,\\text{W}$ adds unlike quantities. The last option multiplies by 60 s, giving *energy*, not power: power is energy per second, and folding time back in changes the quantity.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Electrical power is $P = VI = 6 \\times 0.5 = 3\\,\\text{W}$. Power is energy per second, so no time enters the calculation, and the answer must be in watts.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{V}{I} = \\dfrac{6}{0.5} = 12$ 是電器的電阻（單位為 $\\Omega$），不是功率。",
+        "en": "$\\dfrac{V}{I} = \\dfrac{6}{0.5} = 12$ is the appliance's resistance (in $\\Omega$), not its power."
+      },
+      {
+        "optionId": 1,
+        "zh": "$6 + 0.5 = 6.5$ 把電壓與電流相加；兩者單位不同，不能相加。",
+        "en": "$6 + 0.5 = 6.5$ adds voltage and current; quantities with different units cannot be added."
+      },
+      {
+        "optionId": 2,
+        "zh": "$VI \\times 60 = 180$ 多乘了 $60$ 秒，得出的是一分鐘內轉換的能量（焦耳），不是功率。功率是每秒轉換的能量。",
+        "en": "$VI \\times 60 = 180$ multiplies by $60$ seconds, giving the energy converted in one minute (in joules), not the power. Power is energy per second."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$P = VI = 6 \\times 0.5 = 3\\,\\text{W}$。",
+        "en": "Correct. $P = VI = 6 \\times 0.5 = 3\\,\\text{W}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0029",
@@ -729,7 +949,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某電器在 $110\\,\\text{V}$ 下工作，通過的電流為 $4\\,\\text{A}$。求它的電功率。",
-    "explanation": "$P = VI = 110 \\times 4 = 440\\,\\text{W}$。$27.5\\,\\text{W}$ 其實是電阻值（單位應為 $\\Omega$），寫成瓦特已經自相矛盾——留意單位可以省下這一分。$114\\,\\text{W}$ 把兩個不同單位的量相加。最後一項乘多了 60 秒，那是【能量】而不是功率：功率是每秒的能量，時間一旦乘進去就變了另一個量。",
+    "explanation": "電功率 $P = VI = 110 \\times 4 = 440\\,\\text{W}$。功率是每秒轉換的能量，計算時不涉及時間；答案的單位必須是瓦特。",
     "options": [
       "$440\\,\\text{W}$",
       "$27.5\\,\\text{W}$",
@@ -745,8 +965,30 @@ export const physicsAutoQuestions: Question[] = [
       "$114\\,\\text{W}$",
       "$26400\\,\\text{W}$"
     ],
-    "explanationEn": "$P = VI = 110 \\times 4 = 440\\,\\text{W}$. $27.5\\,\\text{W}$ is actually the resistance and should carry $\\Omega$, so the unit alone rules it out. $114\\,\\text{W}$ adds unlike quantities. The last option multiplies by 60 s, giving *energy*, not power: power is energy per second, and folding time back in changes the quantity.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Electrical power is $P = VI = 110 \\times 4 = 440\\,\\text{W}$. Power is energy per second, so no time enters the calculation, and the answer must be in watts.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$P = VI = 110 \\times 4 = 440\\,\\text{W}$。",
+        "en": "Correct. $P = VI = 110 \\times 4 = 440\\,\\text{W}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{V}{I} = \\dfrac{110}{4} = 27.5$ 是電器的電阻（單位為 $\\Omega$），不是功率。",
+        "en": "$\\dfrac{V}{I} = \\dfrac{110}{4} = 27.5$ is the appliance's resistance (in $\\Omega$), not its power."
+      },
+      {
+        "optionId": 2,
+        "zh": "$110 + 4 = 114$ 把電壓與電流相加；兩者單位不同，不能相加。",
+        "en": "$110 + 4 = 114$ adds voltage and current; quantities with different units cannot be added."
+      },
+      {
+        "optionId": 3,
+        "zh": "$VI \\times 60 = 26400$ 多乘了 $60$ 秒，得出的是一分鐘內轉換的能量（焦耳），不是功率。功率是每秒轉換的能量。",
+        "en": "$VI \\times 60 = 26400$ multiplies by $60$ seconds, giving the energy converted in one minute (in joules), not the power. Power is energy per second."
+      }
+    ]
   },
   {
     "id": "phy_rep_0030",
@@ -761,7 +1003,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某電器在 $24\\,\\text{V}$ 下工作，通過的電流為 $1.5\\,\\text{A}$。求它的電功率。",
-    "explanation": "$P = VI = 24 \\times 1.5 = 36\\,\\text{W}$。$16\\,\\text{W}$ 其實是電阻值（單位應為 $\\Omega$），寫成瓦特已經自相矛盾——留意單位可以省下這一分。$25.5\\,\\text{W}$ 把兩個不同單位的量相加。最後一項乘多了 60 秒，那是【能量】而不是功率：功率是每秒的能量，時間一旦乘進去就變了另一個量。",
+    "explanation": "電功率 $P = VI = 24 \\times 1.5 = 36\\,\\text{W}$。功率是每秒轉換的能量，計算時不涉及時間；答案的單位必須是瓦特。",
     "options": [
       "$2160\\,\\text{W}$",
       "$36\\,\\text{W}$",
@@ -777,8 +1019,30 @@ export const physicsAutoQuestions: Question[] = [
       "$16\\,\\text{W}$",
       "$25.5\\,\\text{W}$"
     ],
-    "explanationEn": "$P = VI = 24 \\times 1.5 = 36\\,\\text{W}$. $16\\,\\text{W}$ is actually the resistance and should carry $\\Omega$, so the unit alone rules it out. $25.5\\,\\text{W}$ adds unlike quantities. The last option multiplies by 60 s, giving *energy*, not power: power is energy per second, and folding time back in changes the quantity.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Electrical power is $P = VI = 24 \\times 1.5 = 36\\,\\text{W}$. Power is energy per second, so no time enters the calculation, and the answer must be in watts.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$VI \\times 60 = 2160$ 多乘了 $60$ 秒，得出的是一分鐘內轉換的能量（焦耳），不是功率。功率是每秒轉換的能量。",
+        "en": "$VI \\times 60 = 2160$ multiplies by $60$ seconds, giving the energy converted in one minute (in joules), not the power. Power is energy per second."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$P = VI = 24 \\times 1.5 = 36\\,\\text{W}$。",
+        "en": "Correct. $P = VI = 24 \\times 1.5 = 36\\,\\text{W}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{V}{I} = \\dfrac{24}{1.5} = 16$ 是電器的電阻（單位為 $\\Omega$），不是功率。",
+        "en": "$\\dfrac{V}{I} = \\dfrac{24}{1.5} = 16$ is the appliance's resistance (in $\\Omega$), not its power."
+      },
+      {
+        "optionId": 3,
+        "zh": "$24 + 1.5 = 25.5$ 把電壓與電流相加；兩者單位不同，不能相加。",
+        "en": "$24 + 1.5 = 25.5$ adds voltage and current; quantities with different units cannot be added."
+      }
+    ]
   },
   {
     "id": "phy_rep_0031",
@@ -793,7 +1057,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $1000\\,\\text{W}$ 的電器接在 $220\\,\\text{V}$ 的家庭電源上。可選的保險絲額定值為 $3\\,\\text{A}$、$5\\,\\text{A}$、$10\\,\\text{A}$、$13\\,\\text{A}$。應選哪一個？",
-    "explanation": "先求正常工作電流：$I = P/V = 1000/220 = 4.5455\\,\\text{A}$。保險絲要選【剛好高於】這個值的標準額定值，故選 $5\\,\\text{A}$。選 $3\\,\\text{A}$ 低於工作電流，電器一開就熔斷，根本用不了。選得太高則失去保護作用：故障電流要升到很高才切斷，導線可能已經過熱。最後一項把功率除以一個無關的數當成電流。",
+    "explanation": "先求正常工作電流：$I = \\dfrac{P}{V} = \\dfrac{1000}{220} \\approx 4.5455\\,\\text{A}$。保險絲的額定值要略高於這個電流：太低，電器一開就熔斷；太高，出現故障時未能及時切斷。可選的額定值中最合適的是 $5\\,\\text{A}$。",
     "options": [
       "$10\\,\\text{A}$",
       "$100\\,\\text{A}$",
@@ -809,8 +1073,30 @@ export const physicsAutoQuestions: Question[] = [
       "$5\\,\\text{A}$",
       "$3\\,\\text{A}$"
     ],
-    "explanationEn": "First find the working current: $I = P/V = 1000/220 = 4.5455\\,\\text{A}$. The fuse should be the standard rating *just above* this, so $5\\,\\text{A}$. A $3\\,\\text{A}$ fuse is below the working current and blows the moment the appliance is switched on. Too high a rating loses the protection: the fault current must climb very far before the fuse cuts, by which time the cable may already be overheating. The last option divides the power by an unrelated number.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "First find the working current: $I = \\dfrac{P}{V} = \\dfrac{1000}{220} \\approx 4.5455\\,\\text{A}$. The fuse rating should be just above it: too low and it blows when the appliance starts; too high and it does not cut off quickly in a fault. The best of the available ratings is $5\\,\\text{A}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$10\\,\\text{A}$ 不會熔斷，但比所需高；出現故障時，電流要升到很高才會切斷，保護作用減弱。",
+        "en": "$10\\,\\text{A}$ would not blow, but it is higher than needed; in a fault the current must rise much further before it cuts off, so it protects less."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{1000}{10} = 100$ 把功率除以 $10$，與電壓無關；電流應是 $\\dfrac{P}{V}$。",
+        "en": "$\\dfrac{1000}{10} = 100$ divides the power by $10$, which has nothing to do with the voltage; the current is $\\dfrac{P}{V}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。正常工作電流 $I = \\dfrac{P}{V} = \\dfrac{1000}{220} \\approx 4.5455\\,\\text{A}$，額定值要略高於此值，可選的額定值中最接近的是 $5\\,\\text{A}$。",
+        "en": "Correct. The working current is $I = \\dfrac{P}{V} = \\dfrac{1000}{220} \\approx 4.5455\\,\\text{A}$; the fuse rating should be just above it, and the closest available is $5\\,\\text{A}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$3\\,\\text{A}$ 低於正常工作電流 $4.5455\\,\\text{A}$，電器一開保險絲就會熔斷。",
+        "en": "$3\\,\\text{A}$ is below the working current of $4.5455\\,\\text{A}$, so the fuse would blow as soon as the appliance is switched on."
+      }
+    ]
   },
   {
     "id": "phy_rep_0032",
@@ -825,7 +1111,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $800\\,\\text{W}$ 的電器接在 $220\\,\\text{V}$ 的家庭電源上。可選的保險絲額定值為 $3\\,\\text{A}$、$5\\,\\text{A}$、$10\\,\\text{A}$、$13\\,\\text{A}$。應選哪一個？",
-    "explanation": "先求正常工作電流：$I = P/V = 800/220 = 3.6364\\,\\text{A}$。保險絲要選【剛好高於】這個值的標準額定值，故選 $5\\,\\text{A}$。選 $3\\,\\text{A}$ 低於工作電流，電器一開就熔斷，根本用不了。選得太高則失去保護作用：故障電流要升到很高才切斷，導線可能已經過熱。最後一項把功率除以一個無關的數當成電流。",
+    "explanation": "先求正常工作電流：$I = \\dfrac{P}{V} = \\dfrac{800}{220} \\approx 3.6364\\,\\text{A}$。保險絲的額定值要略高於這個電流：太低，電器一開就熔斷；太高，出現故障時未能及時切斷。可選的額定值中最合適的是 $5\\,\\text{A}$。",
     "options": [
       "$3\\,\\text{A}$",
       "$10\\,\\text{A}$",
@@ -841,8 +1127,30 @@ export const physicsAutoQuestions: Question[] = [
       "$80\\,\\text{A}$",
       "$5\\,\\text{A}$"
     ],
-    "explanationEn": "First find the working current: $I = P/V = 800/220 = 3.6364\\,\\text{A}$. The fuse should be the standard rating *just above* this, so $5\\,\\text{A}$. A $3\\,\\text{A}$ fuse is below the working current and blows the moment the appliance is switched on. Too high a rating loses the protection: the fault current must climb very far before the fuse cuts, by which time the cable may already be overheating. The last option divides the power by an unrelated number.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "First find the working current: $I = \\dfrac{P}{V} = \\dfrac{800}{220} \\approx 3.6364\\,\\text{A}$. The fuse rating should be just above it: too low and it blows when the appliance starts; too high and it does not cut off quickly in a fault. The best of the available ratings is $5\\,\\text{A}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$3\\,\\text{A}$ 低於正常工作電流 $3.6364\\,\\text{A}$，電器一開保險絲就會熔斷。",
+        "en": "$3\\,\\text{A}$ is below the working current of $3.6364\\,\\text{A}$, so the fuse would blow as soon as the appliance is switched on."
+      },
+      {
+        "optionId": 1,
+        "zh": "$10\\,\\text{A}$ 不會熔斷，但比所需高；出現故障時，電流要升到很高才會切斷，保護作用減弱。",
+        "en": "$10\\,\\text{A}$ would not blow, but it is higher than needed; in a fault the current must rise much further before it cuts off, so it protects less."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{800}{10} = 80$ 把功率除以 $10$，與電壓無關；電流應是 $\\dfrac{P}{V}$。",
+        "en": "$\\dfrac{800}{10} = 80$ divides the power by $10$, which has nothing to do with the voltage; the current is $\\dfrac{P}{V}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。正常工作電流 $I = \\dfrac{P}{V} = \\dfrac{800}{220} \\approx 3.6364\\,\\text{A}$，額定值要略高於此值，可選的額定值中最接近的是 $5\\,\\text{A}$。",
+        "en": "Correct. The working current is $I = \\dfrac{P}{V} = \\dfrac{800}{220} \\approx 3.6364\\,\\text{A}$; the fuse rating should be just above it, and the closest available is $5\\,\\text{A}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0033",
@@ -857,7 +1165,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $2000\\,\\text{W}$ 的電器接在 $220\\,\\text{V}$ 的家庭電源上。可選的保險絲額定值為 $3\\,\\text{A}$、$5\\,\\text{A}$、$10\\,\\text{A}$、$13\\,\\text{A}$。應選哪一個？",
-    "explanation": "先求正常工作電流：$I = P/V = 2000/220 = 9.0909\\,\\text{A}$。保險絲要選【剛好高於】這個值的標準額定值，故選 $10\\,\\text{A}$。選 $5\\,\\text{A}$ 低於工作電流，電器一開就熔斷，根本用不了。選得太高則失去保護作用：故障電流要升到很高才切斷，導線可能已經過熱。最後一項把功率除以一個無關的數當成電流。",
+    "explanation": "先求正常工作電流：$I = \\dfrac{P}{V} = \\dfrac{2000}{220} \\approx 9.0909\\,\\text{A}$。保險絲的額定值要略高於這個電流：太低，電器一開就熔斷；太高，出現故障時未能及時切斷。可選的額定值中最合適的是 $10\\,\\text{A}$。",
     "options": [
       "$10\\,\\text{A}$",
       "$5\\,\\text{A}$",
@@ -873,8 +1181,30 @@ export const physicsAutoQuestions: Question[] = [
       "$13\\,\\text{A}$",
       "$200\\,\\text{A}$"
     ],
-    "explanationEn": "First find the working current: $I = P/V = 2000/220 = 9.0909\\,\\text{A}$. The fuse should be the standard rating *just above* this, so $10\\,\\text{A}$. A $5\\,\\text{A}$ fuse is below the working current and blows the moment the appliance is switched on. Too high a rating loses the protection: the fault current must climb very far before the fuse cuts, by which time the cable may already be overheating. The last option divides the power by an unrelated number.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "First find the working current: $I = \\dfrac{P}{V} = \\dfrac{2000}{220} \\approx 9.0909\\,\\text{A}$. The fuse rating should be just above it: too low and it blows when the appliance starts; too high and it does not cut off quickly in a fault. The best of the available ratings is $10\\,\\text{A}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。正常工作電流 $I = \\dfrac{P}{V} = \\dfrac{2000}{220} \\approx 9.0909\\,\\text{A}$，額定值要略高於此值，可選的額定值中最接近的是 $10\\,\\text{A}$。",
+        "en": "Correct. The working current is $I = \\dfrac{P}{V} = \\dfrac{2000}{220} \\approx 9.0909\\,\\text{A}$; the fuse rating should be just above it, and the closest available is $10\\,\\text{A}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$5\\,\\text{A}$ 低於正常工作電流 $9.0909\\,\\text{A}$，電器一開保險絲就會熔斷。",
+        "en": "$5\\,\\text{A}$ is below the working current of $9.0909\\,\\text{A}$, so the fuse would blow as soon as the appliance is switched on."
+      },
+      {
+        "optionId": 2,
+        "zh": "$13\\,\\text{A}$ 不會熔斷，但比所需高；出現故障時，電流要升到很高才會切斷，保護作用減弱。",
+        "en": "$13\\,\\text{A}$ would not blow, but it is higher than needed; in a fault the current must rise much further before it cuts off, so it protects less."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{2000}{10} = 200$ 把功率除以 $10$，與電壓無關；電流應是 $\\dfrac{P}{V}$。",
+        "en": "$\\dfrac{2000}{10} = 200$ divides the power by $10$, which has nothing to do with the voltage; the current is $\\dfrac{P}{V}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0034",
@@ -889,7 +1219,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $1500\\,\\text{W}$ 的電器接在 $240\\,\\text{V}$ 的家庭電源上。可選的保險絲額定值為 $3\\,\\text{A}$、$5\\,\\text{A}$、$10\\,\\text{A}$、$13\\,\\text{A}$。應選哪一個？",
-    "explanation": "先求正常工作電流：$I = P/V = 1500/240 = 6.25\\,\\text{A}$。保險絲要選【剛好高於】這個值的標準額定值，故選 $10\\,\\text{A}$。選 $5\\,\\text{A}$ 低於工作電流，電器一開就熔斷，根本用不了。選得太高則失去保護作用：故障電流要升到很高才切斷，導線可能已經過熱。最後一項把功率除以一個無關的數當成電流。",
+    "explanation": "先求正常工作電流：$I = \\dfrac{P}{V} = \\dfrac{1500}{240} = 6.25\\,\\text{A}$。保險絲的額定值要略高於這個電流：太低，電器一開就熔斷；太高，出現故障時未能及時切斷。可選的額定值中最合適的是 $10\\,\\text{A}$。",
     "options": [
       "$150\\,\\text{A}$",
       "$10\\,\\text{A}$",
@@ -905,8 +1235,30 @@ export const physicsAutoQuestions: Question[] = [
       "$5\\,\\text{A}$",
       "$13\\,\\text{A}$"
     ],
-    "explanationEn": "First find the working current: $I = P/V = 1500/240 = 6.25\\,\\text{A}$. The fuse should be the standard rating *just above* this, so $10\\,\\text{A}$. A $5\\,\\text{A}$ fuse is below the working current and blows the moment the appliance is switched on. Too high a rating loses the protection: the fault current must climb very far before the fuse cuts, by which time the cable may already be overheating. The last option divides the power by an unrelated number.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "First find the working current: $I = \\dfrac{P}{V} = \\dfrac{1500}{240} = 6.25\\,\\text{A}$. The fuse rating should be just above it: too low and it blows when the appliance starts; too high and it does not cut off quickly in a fault. The best of the available ratings is $10\\,\\text{A}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{1500}{10} = 150$ 把功率除以 $10$，與電壓無關；電流應是 $\\dfrac{P}{V}$。",
+        "en": "$\\dfrac{1500}{10} = 150$ divides the power by $10$, which has nothing to do with the voltage; the current is $\\dfrac{P}{V}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。正常工作電流 $I = \\dfrac{P}{V} = \\dfrac{1500}{240} = 6.25\\,\\text{A}$，額定值要略高於此值，可選的額定值中最接近的是 $10\\,\\text{A}$。",
+        "en": "Correct. The working current is $I = \\dfrac{P}{V} = \\dfrac{1500}{240} = 6.25\\,\\text{A}$; the fuse rating should be just above it, and the closest available is $10\\,\\text{A}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$5\\,\\text{A}$ 低於正常工作電流 $6.25\\,\\text{A}$，電器一開保險絲就會熔斷。",
+        "en": "$5\\,\\text{A}$ is below the working current of $6.25\\,\\text{A}$, so the fuse would blow as soon as the appliance is switched on."
+      },
+      {
+        "optionId": 3,
+        "zh": "$13\\,\\text{A}$ 不會熔斷，但比所需高；出現故障時，電流要升到很高才會切斷，保護作用減弱。",
+        "en": "$13\\,\\text{A}$ would not blow, but it is higher than needed; in a fault the current must rise much further before it cuts off, so it protects less."
+      }
+    ]
   },
   {
     "id": "phy_rep_0035",
@@ -921,7 +1273,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $1200\\,\\text{W}$ 的電器接在 $240\\,\\text{V}$ 的家庭電源上。可選的保險絲額定值為 $3\\,\\text{A}$、$5\\,\\text{A}$、$10\\,\\text{A}$、$13\\,\\text{A}$。應選哪一個？",
-    "explanation": "先求正常工作電流：$I = P/V = 1200/240 = 5\\,\\text{A}$。保險絲要選【剛好高於】這個值的標準額定值，故選 $10\\,\\text{A}$。選 $3\\,\\text{A}$ 低於工作電流，電器一開就熔斷，根本用不了。選得太高則失去保護作用：故障電流要升到很高才切斷，導線可能已經過熱。最後一項把功率除以一個無關的數當成電流。",
+    "explanation": "先求正常工作電流：$I = \\dfrac{P}{V} = \\dfrac{1200}{240} = 5\\,\\text{A}$。保險絲的額定值要略高於這個電流：太低，電器一開就熔斷；太高，出現故障時未能及時切斷。可選的額定值中最合適的是 $10\\,\\text{A}$。",
     "options": [
       "$13\\,\\text{A}$",
       "$120\\,\\text{A}$",
@@ -937,8 +1289,30 @@ export const physicsAutoQuestions: Question[] = [
       "$10\\,\\text{A}$",
       "$3\\,\\text{A}$"
     ],
-    "explanationEn": "First find the working current: $I = P/V = 1200/240 = 5\\,\\text{A}$. The fuse should be the standard rating *just above* this, so $10\\,\\text{A}$. A $3\\,\\text{A}$ fuse is below the working current and blows the moment the appliance is switched on. Too high a rating loses the protection: the fault current must climb very far before the fuse cuts, by which time the cable may already be overheating. The last option divides the power by an unrelated number.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "First find the working current: $I = \\dfrac{P}{V} = \\dfrac{1200}{240} = 5\\,\\text{A}$. The fuse rating should be just above it: too low and it blows when the appliance starts; too high and it does not cut off quickly in a fault. The best of the available ratings is $10\\,\\text{A}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$13\\,\\text{A}$ 不會熔斷，但比所需高；出現故障時，電流要升到很高才會切斷，保護作用減弱。",
+        "en": "$13\\,\\text{A}$ would not blow, but it is higher than needed; in a fault the current must rise much further before it cuts off, so it protects less."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{1200}{10} = 120$ 把功率除以 $10$，與電壓無關；電流應是 $\\dfrac{P}{V}$。",
+        "en": "$\\dfrac{1200}{10} = 120$ divides the power by $10$, which has nothing to do with the voltage; the current is $\\dfrac{P}{V}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。正常工作電流 $I = \\dfrac{P}{V} = \\dfrac{1200}{240} = 5\\,\\text{A}$，額定值要略高於此值，可選的額定值中最接近的是 $10\\,\\text{A}$。",
+        "en": "Correct. The working current is $I = \\dfrac{P}{V} = \\dfrac{1200}{240} = 5\\,\\text{A}$; the fuse rating should be just above it, and the closest available is $10\\,\\text{A}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$3\\,\\text{A}$ 低於正常工作電流 $5\\,\\text{A}$，電器一開保險絲就會熔斷。",
+        "en": "$3\\,\\text{A}$ is below the working current of $5\\,\\text{A}$, so the fuse would blow as soon as the appliance is switched on."
+      }
+    ]
   },
   {
     "id": "phy_rep_0036",
@@ -953,7 +1327,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $900\\,\\text{W}$ 的電器接在 $220\\,\\text{V}$ 的家庭電源上。可選的保險絲額定值為 $3\\,\\text{A}$、$5\\,\\text{A}$、$10\\,\\text{A}$、$13\\,\\text{A}$。應選哪一個？",
-    "explanation": "先求正常工作電流：$I = P/V = 900/220 = 4.0909\\,\\text{A}$。保險絲要選【剛好高於】這個值的標準額定值，故選 $5\\,\\text{A}$。選 $3\\,\\text{A}$ 低於工作電流，電器一開就熔斷，根本用不了。選得太高則失去保護作用：故障電流要升到很高才切斷，導線可能已經過熱。最後一項把功率除以一個無關的數當成電流。",
+    "explanation": "先求正常工作電流：$I = \\dfrac{P}{V} = \\dfrac{900}{220} \\approx 4.0909\\,\\text{A}$。保險絲的額定值要略高於這個電流：太低，電器一開就熔斷；太高，出現故障時未能及時切斷。可選的額定值中最合適的是 $5\\,\\text{A}$。",
     "options": [
       "$3\\,\\text{A}$",
       "$10\\,\\text{A}$",
@@ -969,8 +1343,30 @@ export const physicsAutoQuestions: Question[] = [
       "$90\\,\\text{A}$",
       "$5\\,\\text{A}$"
     ],
-    "explanationEn": "First find the working current: $I = P/V = 900/220 = 4.0909\\,\\text{A}$. The fuse should be the standard rating *just above* this, so $5\\,\\text{A}$. A $3\\,\\text{A}$ fuse is below the working current and blows the moment the appliance is switched on. Too high a rating loses the protection: the fault current must climb very far before the fuse cuts, by which time the cable may already be overheating. The last option divides the power by an unrelated number.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "First find the working current: $I = \\dfrac{P}{V} = \\dfrac{900}{220} \\approx 4.0909\\,\\text{A}$. The fuse rating should be just above it: too low and it blows when the appliance starts; too high and it does not cut off quickly in a fault. The best of the available ratings is $5\\,\\text{A}$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$3\\,\\text{A}$ 低於正常工作電流 $4.0909\\,\\text{A}$，電器一開保險絲就會熔斷。",
+        "en": "$3\\,\\text{A}$ is below the working current of $4.0909\\,\\text{A}$, so the fuse would blow as soon as the appliance is switched on."
+      },
+      {
+        "optionId": 1,
+        "zh": "$10\\,\\text{A}$ 不會熔斷，但比所需高；出現故障時，電流要升到很高才會切斷，保護作用減弱。",
+        "en": "$10\\,\\text{A}$ would not blow, but it is higher than needed; in a fault the current must rise much further before it cuts off, so it protects less."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{900}{10} = 90$ 把功率除以 $10$，與電壓無關；電流應是 $\\dfrac{P}{V}$。",
+        "en": "$\\dfrac{900}{10} = 90$ divides the power by $10$, which has nothing to do with the voltage; the current is $\\dfrac{P}{V}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。正常工作電流 $I = \\dfrac{P}{V} = \\dfrac{900}{220} \\approx 4.0909\\,\\text{A}$，額定值要略高於此值，可選的額定值中最接近的是 $5\\,\\text{A}$。",
+        "en": "Correct. The working current is $I = \\dfrac{P}{V} = \\dfrac{900}{220} \\approx 4.0909\\,\\text{A}$; the fuse rating should be just above it, and the closest available is $5\\,\\text{A}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0037",
@@ -1177,7 +1573,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $1000\\,\\text{W}$ 的電器連續使用 $3\\,\\text{h}$。若每度電（$1\\,\\text{kW}\\,\\text{h}$）收費 $1.2$ 元，求電費。",
-    "explanation": "先把功率化為千瓦：$1000\\,\\text{W} = 1\\,\\text{kW}$。耗電量 $= 1 \\times 3 = 3\\,\\text{kW}\\,\\text{h}$，電費 $= 3 \\times 1.2 = 3.6$ 元。$3600$ 元漏了除以 1000，即把瓦特當成千瓦，數值會大一千倍——這是本題唯一的陷阱。$3$ 元只算到耗電量而未乘單價。最後一項漏了時間。",
+    "explanation": "先把功率化為千瓦：$1000\\,\\text{W} = 1\\,\\text{kW}$。耗電量 $= 1 \\times 3 = 3\\,\\text{kW}\\,\\text{h}$（即 $3$ 度電），電費 $= 3 \\times 1.2 = 3.6$ 元。",
     "options": [
       "$3$ 元",
       "$1.2$ 元",
@@ -1193,8 +1589,30 @@ export const physicsAutoQuestions: Question[] = [
       "$3.6$ dollars",
       "$3600$ dollars"
     ],
-    "explanationEn": "First convert the power to kilowatts: $1000\\,\\text{W} = 1\\,\\text{kW}$. Energy used $= 1 \\times 3 = 3\\,\\text{kW}\\,\\text{h}$, so the cost is $3 \\times 1.2 = 3.6$ dollars. $3600$ dollars omits the division by 1000, treating watts as kilowatts and inflating the answer a thousandfold — the one trap here. $3$ dollars stops at the energy and never applies the tariff, and the last option leaves out the time.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Convert the power to kilowatts: $1000\\,\\text{W} = 1\\,\\text{kW}$. Energy used $= 1 \\times 3 = 3\\,\\text{kW}\\,\\text{h}$ ($3$ units), so the cost is $3 \\times 1.2 = 3.6$ dollars.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$3$ 是耗電量（$\\text{kW}\\,\\text{h}$），還要乘以每度電的收費 $1.2$ 元。",
+        "en": "$3$ is the energy used (in $\\text{kW}\\,\\text{h}$); it still has to be multiplied by the price of $1.2$ dollars per unit."
+      },
+      {
+        "optionId": 1,
+        "zh": "$1 \\times 1.2 = 1.2$ 漏了使用時間 $3\\,\\text{h}$。",
+        "en": "$1 \\times 1.2 = 1.2$ leaves out the time of $3\\,\\text{h}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$1000\\,\\text{W} = 1\\,\\text{kW}$，耗電 $1 \\times 3 = 3\\,\\text{kW}\\,\\text{h}$，電費 $3 \\times 1.2 = 3.6$ 元。",
+        "en": "Correct. $1000\\,\\text{W} = 1\\,\\text{kW}$, energy $1 \\times 3 = 3\\,\\text{kW}\\,\\text{h}$, cost $3 \\times 1.2 = 3.6$ dollars."
+      },
+      {
+        "optionId": 3,
+        "zh": "沒有把瓦特化為千瓦，數值大了一千倍：$1000 \\times 3 \\times 1.2 = 3600$。",
+        "en": "The watts were not converted to kilowatts, so the value is a thousand times too big: $1000 \\times 3 \\times 1.2 = 3600$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0044",
@@ -1209,7 +1627,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $500\\,\\text{W}$ 的電器連續使用 $4\\,\\text{h}$。若每度電（$1\\,\\text{kW}\\,\\text{h}$）收費 $1.2$ 元，求電費。",
-    "explanation": "先把功率化為千瓦：$500\\,\\text{W} = 0.5\\,\\text{kW}$。耗電量 $= 0.5 \\times 4 = 2\\,\\text{kW}\\,\\text{h}$，電費 $= 2 \\times 1.2 = 2.4$ 元。$2400$ 元漏了除以 1000，即把瓦特當成千瓦，數值會大一千倍——這是本題唯一的陷阱。$2$ 元只算到耗電量而未乘單價。最後一項漏了時間。",
+    "explanation": "先把功率化為千瓦：$500\\,\\text{W} = 0.5\\,\\text{kW}$。耗電量 $= 0.5 \\times 4 = 2\\,\\text{kW}\\,\\text{h}$（即 $2$ 度電），電費 $= 2 \\times 1.2 = 2.4$ 元。",
     "options": [
       "$2400$ 元",
       "$2$ 元",
@@ -1225,8 +1643,30 @@ export const physicsAutoQuestions: Question[] = [
       "$0.6$ dollars",
       "$2.4$ dollars"
     ],
-    "explanationEn": "First convert the power to kilowatts: $500\\,\\text{W} = 0.5\\,\\text{kW}$. Energy used $= 0.5 \\times 4 = 2\\,\\text{kW}\\,\\text{h}$, so the cost is $2 \\times 1.2 = 2.4$ dollars. $2400$ dollars omits the division by 1000, treating watts as kilowatts and inflating the answer a thousandfold — the one trap here. $2$ dollars stops at the energy and never applies the tariff, and the last option leaves out the time.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Convert the power to kilowatts: $500\\,\\text{W} = 0.5\\,\\text{kW}$. Energy used $= 0.5 \\times 4 = 2\\,\\text{kW}\\,\\text{h}$ ($2$ units), so the cost is $2 \\times 1.2 = 2.4$ dollars.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "沒有把瓦特化為千瓦，數值大了一千倍：$500 \\times 4 \\times 1.2 = 2400$。",
+        "en": "The watts were not converted to kilowatts, so the value is a thousand times too big: $500 \\times 4 \\times 1.2 = 2400$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$2$ 是耗電量（$\\text{kW}\\,\\text{h}$），還要乘以每度電的收費 $1.2$ 元。",
+        "en": "$2$ is the energy used (in $\\text{kW}\\,\\text{h}$); it still has to be multiplied by the price of $1.2$ dollars per unit."
+      },
+      {
+        "optionId": 2,
+        "zh": "$0.5 \\times 1.2 = 0.6$ 漏了使用時間 $4\\,\\text{h}$。",
+        "en": "$0.5 \\times 1.2 = 0.6$ leaves out the time of $4\\,\\text{h}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$500\\,\\text{W} = 0.5\\,\\text{kW}$，耗電 $0.5 \\times 4 = 2\\,\\text{kW}\\,\\text{h}$，電費 $2 \\times 1.2 = 2.4$ 元。",
+        "en": "Correct. $500\\,\\text{W} = 0.5\\,\\text{kW}$, energy $0.5 \\times 4 = 2\\,\\text{kW}\\,\\text{h}$, cost $2 \\times 1.2 = 2.4$ dollars."
+      }
+    ]
   },
   {
     "id": "phy_rep_0045",
@@ -1241,7 +1681,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $2000\\,\\text{W}$ 的電器連續使用 $2\\,\\text{h}$。若每度電（$1\\,\\text{kW}\\,\\text{h}$）收費 $1.5$ 元，求電費。",
-    "explanation": "先把功率化為千瓦：$2000\\,\\text{W} = 2\\,\\text{kW}$。耗電量 $= 2 \\times 2 = 4\\,\\text{kW}\\,\\text{h}$，電費 $= 4 \\times 1.5 = 6$ 元。$6000$ 元漏了除以 1000，即把瓦特當成千瓦，數值會大一千倍——這是本題唯一的陷阱。$4$ 元只算到耗電量而未乘單價。最後一項漏了時間。",
+    "explanation": "先把功率化為千瓦：$2000\\,\\text{W} = 2\\,\\text{kW}$。耗電量 $= 2 \\times 2 = 4\\,\\text{kW}\\,\\text{h}$（即 $4$ 度電），電費 $= 4 \\times 1.5 = 6$ 元。",
     "options": [
       "$6$ 元",
       "$6000$ 元",
@@ -1257,8 +1697,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4$ dollars",
       "$3$ dollars"
     ],
-    "explanationEn": "First convert the power to kilowatts: $2000\\,\\text{W} = 2\\,\\text{kW}$. Energy used $= 2 \\times 2 = 4\\,\\text{kW}\\,\\text{h}$, so the cost is $4 \\times 1.5 = 6$ dollars. $6000$ dollars omits the division by 1000, treating watts as kilowatts and inflating the answer a thousandfold — the one trap here. $4$ dollars stops at the energy and never applies the tariff, and the last option leaves out the time.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Convert the power to kilowatts: $2000\\,\\text{W} = 2\\,\\text{kW}$. Energy used $= 2 \\times 2 = 4\\,\\text{kW}\\,\\text{h}$ ($4$ units), so the cost is $4 \\times 1.5 = 6$ dollars.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$2000\\,\\text{W} = 2\\,\\text{kW}$，耗電 $2 \\times 2 = 4\\,\\text{kW}\\,\\text{h}$，電費 $4 \\times 1.5 = 6$ 元。",
+        "en": "Correct. $2000\\,\\text{W} = 2\\,\\text{kW}$, energy $2 \\times 2 = 4\\,\\text{kW}\\,\\text{h}$, cost $4 \\times 1.5 = 6$ dollars."
+      },
+      {
+        "optionId": 1,
+        "zh": "沒有把瓦特化為千瓦，數值大了一千倍：$2000 \\times 2 \\times 1.5 = 6000$。",
+        "en": "The watts were not converted to kilowatts, so the value is a thousand times too big: $2000 \\times 2 \\times 1.5 = 6000$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$4$ 是耗電量（$\\text{kW}\\,\\text{h}$），還要乘以每度電的收費 $1.5$ 元。",
+        "en": "$4$ is the energy used (in $\\text{kW}\\,\\text{h}$); it still has to be multiplied by the price of $1.5$ dollars per unit."
+      },
+      {
+        "optionId": 3,
+        "zh": "$2 \\times 1.5 = 3$ 漏了使用時間 $2\\,\\text{h}$。",
+        "en": "$2 \\times 1.5 = 3$ leaves out the time of $2\\,\\text{h}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0046",
@@ -1273,7 +1735,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $1500\\,\\text{W}$ 的電器連續使用 $2\\,\\text{h}$。若每度電（$1\\,\\text{kW}\\,\\text{h}$）收費 $1.5$ 元，求電費。",
-    "explanation": "先把功率化為千瓦：$1500\\,\\text{W} = 1.5\\,\\text{kW}$。耗電量 $= 1.5 \\times 2 = 3\\,\\text{kW}\\,\\text{h}$，電費 $= 3 \\times 1.5 = 4.5$ 元。$4500$ 元漏了除以 1000，即把瓦特當成千瓦，數值會大一千倍——這是本題唯一的陷阱。$3$ 元只算到耗電量而未乘單價。最後一項漏了時間。",
+    "explanation": "先把功率化為千瓦：$1500\\,\\text{W} = 1.5\\,\\text{kW}$。耗電量 $= 1.5 \\times 2 = 3\\,\\text{kW}\\,\\text{h}$（即 $3$ 度電），電費 $= 3 \\times 1.5 = 4.5$ 元。",
     "options": [
       "$2.25$ 元",
       "$4.5$ 元",
@@ -1289,8 +1751,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4500$ dollars",
       "$3$ dollars"
     ],
-    "explanationEn": "First convert the power to kilowatts: $1500\\,\\text{W} = 1.5\\,\\text{kW}$. Energy used $= 1.5 \\times 2 = 3\\,\\text{kW}\\,\\text{h}$, so the cost is $3 \\times 1.5 = 4.5$ dollars. $4500$ dollars omits the division by 1000, treating watts as kilowatts and inflating the answer a thousandfold — the one trap here. $3$ dollars stops at the energy and never applies the tariff, and the last option leaves out the time.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Convert the power to kilowatts: $1500\\,\\text{W} = 1.5\\,\\text{kW}$. Energy used $= 1.5 \\times 2 = 3\\,\\text{kW}\\,\\text{h}$ ($3$ units), so the cost is $3 \\times 1.5 = 4.5$ dollars.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$1.5 \\times 1.5 = 2.25$ 漏了使用時間 $2\\,\\text{h}$。",
+        "en": "$1.5 \\times 1.5 = 2.25$ leaves out the time of $2\\,\\text{h}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$1500\\,\\text{W} = 1.5\\,\\text{kW}$，耗電 $1.5 \\times 2 = 3\\,\\text{kW}\\,\\text{h}$，電費 $3 \\times 1.5 = 4.5$ 元。",
+        "en": "Correct. $1500\\,\\text{W} = 1.5\\,\\text{kW}$, energy $1.5 \\times 2 = 3\\,\\text{kW}\\,\\text{h}$, cost $3 \\times 1.5 = 4.5$ dollars."
+      },
+      {
+        "optionId": 2,
+        "zh": "沒有把瓦特化為千瓦，數值大了一千倍：$1500 \\times 2 \\times 1.5 = 4500$。",
+        "en": "The watts were not converted to kilowatts, so the value is a thousand times too big: $1500 \\times 2 \\times 1.5 = 4500$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$3$ 是耗電量（$\\text{kW}\\,\\text{h}$），還要乘以每度電的收費 $1.5$ 元。",
+        "en": "$3$ is the energy used (in $\\text{kW}\\,\\text{h}$); it still has to be multiplied by the price of $1.5$ dollars per unit."
+      }
+    ]
   },
   {
     "id": "phy_rep_0047",
@@ -1305,7 +1789,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $800\\,\\text{W}$ 的電器連續使用 $5\\,\\text{h}$。若每度電（$1\\,\\text{kW}\\,\\text{h}$）收費 $1.5$ 元，求電費。",
-    "explanation": "先把功率化為千瓦：$800\\,\\text{W} = 0.8\\,\\text{kW}$。耗電量 $= 0.8 \\times 5 = 4\\,\\text{kW}\\,\\text{h}$，電費 $= 4 \\times 1.5 = 6$ 元。$6000$ 元漏了除以 1000，即把瓦特當成千瓦，數值會大一千倍——這是本題唯一的陷阱。$4$ 元只算到耗電量而未乘單價。最後一項漏了時間。",
+    "explanation": "先把功率化為千瓦：$800\\,\\text{W} = 0.8\\,\\text{kW}$。耗電量 $= 0.8 \\times 5 = 4\\,\\text{kW}\\,\\text{h}$（即 $4$ 度電），電費 $= 4 \\times 1.5 = 6$ 元。",
     "options": [
       "$4$ 元",
       "$1.2$ 元",
@@ -1321,8 +1805,30 @@ export const physicsAutoQuestions: Question[] = [
       "$6$ dollars",
       "$6000$ dollars"
     ],
-    "explanationEn": "First convert the power to kilowatts: $800\\,\\text{W} = 0.8\\,\\text{kW}$. Energy used $= 0.8 \\times 5 = 4\\,\\text{kW}\\,\\text{h}$, so the cost is $4 \\times 1.5 = 6$ dollars. $6000$ dollars omits the division by 1000, treating watts as kilowatts and inflating the answer a thousandfold — the one trap here. $4$ dollars stops at the energy and never applies the tariff, and the last option leaves out the time.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Convert the power to kilowatts: $800\\,\\text{W} = 0.8\\,\\text{kW}$. Energy used $= 0.8 \\times 5 = 4\\,\\text{kW}\\,\\text{h}$ ($4$ units), so the cost is $4 \\times 1.5 = 6$ dollars.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$4$ 是耗電量（$\\text{kW}\\,\\text{h}$），還要乘以每度電的收費 $1.5$ 元。",
+        "en": "$4$ is the energy used (in $\\text{kW}\\,\\text{h}$); it still has to be multiplied by the price of $1.5$ dollars per unit."
+      },
+      {
+        "optionId": 1,
+        "zh": "$0.8 \\times 1.5 = 1.2$ 漏了使用時間 $5\\,\\text{h}$。",
+        "en": "$0.8 \\times 1.5 = 1.2$ leaves out the time of $5\\,\\text{h}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$800\\,\\text{W} = 0.8\\,\\text{kW}$，耗電 $0.8 \\times 5 = 4\\,\\text{kW}\\,\\text{h}$，電費 $4 \\times 1.5 = 6$ 元。",
+        "en": "Correct. $800\\,\\text{W} = 0.8\\,\\text{kW}$, energy $0.8 \\times 5 = 4\\,\\text{kW}\\,\\text{h}$, cost $4 \\times 1.5 = 6$ dollars."
+      },
+      {
+        "optionId": 3,
+        "zh": "沒有把瓦特化為千瓦，數值大了一千倍：$800 \\times 5 \\times 1.5 = 6000$。",
+        "en": "The watts were not converted to kilowatts, so the value is a thousand times too big: $800 \\times 5 \\times 1.5 = 6000$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0048",
@@ -1337,7 +1843,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一件 $250\\,\\text{W}$ 的電器連續使用 $8\\,\\text{h}$。若每度電（$1\\,\\text{kW}\\,\\text{h}$）收費 $2$ 元，求電費。",
-    "explanation": "先把功率化為千瓦：$250\\,\\text{W} = 0.25\\,\\text{kW}$。耗電量 $= 0.25 \\times 8 = 2\\,\\text{kW}\\,\\text{h}$，電費 $= 2 \\times 2 = 4$ 元。$4000$ 元漏了除以 1000，即把瓦特當成千瓦，數值會大一千倍——這是本題唯一的陷阱。$2$ 元只算到耗電量而未乘單價。最後一項漏了時間。",
+    "explanation": "先把功率化為千瓦：$250\\,\\text{W} = 0.25\\,\\text{kW}$。耗電量 $= 0.25 \\times 8 = 2\\,\\text{kW}\\,\\text{h}$（即 $2$ 度電），電費 $= 2 \\times 2 = 4$ 元。",
     "options": [
       "$4000$ 元",
       "$2$ 元",
@@ -1353,8 +1859,30 @@ export const physicsAutoQuestions: Question[] = [
       "$0.5$ dollars",
       "$4$ dollars"
     ],
-    "explanationEn": "First convert the power to kilowatts: $250\\,\\text{W} = 0.25\\,\\text{kW}$. Energy used $= 0.25 \\times 8 = 2\\,\\text{kW}\\,\\text{h}$, so the cost is $2 \\times 2 = 4$ dollars. $4000$ dollars omits the division by 1000, treating watts as kilowatts and inflating the answer a thousandfold — the one trap here. $2$ dollars stops at the energy and never applies the tariff, and the last option leaves out the time.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Convert the power to kilowatts: $250\\,\\text{W} = 0.25\\,\\text{kW}$. Energy used $= 0.25 \\times 8 = 2\\,\\text{kW}\\,\\text{h}$ ($2$ units), so the cost is $2 \\times 2 = 4$ dollars.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "沒有把瓦特化為千瓦，數值大了一千倍：$250 \\times 8 \\times 2 = 4000$。",
+        "en": "The watts were not converted to kilowatts, so the value is a thousand times too big: $250 \\times 8 \\times 2 = 4000$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$2$ 是耗電量（$\\text{kW}\\,\\text{h}$），還要乘以每度電的收費 $2$ 元。",
+        "en": "$2$ is the energy used (in $\\text{kW}\\,\\text{h}$); it still has to be multiplied by the price of $2$ dollars per unit."
+      },
+      {
+        "optionId": 2,
+        "zh": "$0.25 \\times 2 = 0.5$ 漏了使用時間 $8\\,\\text{h}$。",
+        "en": "$0.25 \\times 2 = 0.5$ leaves out the time of $8\\,\\text{h}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$250\\,\\text{W} = 0.25\\,\\text{kW}$，耗電 $0.25 \\times 8 = 2\\,\\text{kW}\\,\\text{h}$，電費 $2 \\times 2 = 4$ 元。",
+        "en": "Correct. $250\\,\\text{W} = 0.25\\,\\text{kW}$, energy $0.25 \\times 8 = 2\\,\\text{kW}\\,\\text{h}$, cost $2 \\times 2 = 4$ dollars."
+      }
+    ]
   },
   {
     "id": "phy_rep_0049",
@@ -2073,7 +2601,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "$12\\,\\text{V}$ 電源接上串聯的 $4\\,\\Omega$ 與 $8\\,\\Omega$。求 $4\\,\\Omega$ 兩端的電壓。",
-    "explanation": "串聯電流相同：$I = 12/(4+8) = 1\\,\\text{A}$，故 $V_1 = I R_1 = 4\\,\\text{V}$；等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$。$8\\,\\text{V}$ 把另一個電阻放了在分子，是本題最主要的失分位——記法是：問邊一個電阻，分子就放邊一個。$6\\,\\text{V}$ 假設兩者平分，只有在兩個電阻相等時才成立。最後一項用了並聯總電阻，但這是串聯電路。",
+    "explanation": "串聯電路中電流處處相同：$I = \\dfrac{12}{4 + 8} = 1\\,\\text{A}$，故 $V_1 = IR_1 = 4\\,\\text{V}$。等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$：分子放所求的電阻。",
     "options": [
       "$6\\,\\text{V}$",
       "$2.6667\\,\\text{V}$",
@@ -2089,8 +2617,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4\\,\\text{V}$",
       "$8\\,\\text{V}$"
     ],
-    "explanationEn": "In series the current is common: $I = 12/(4+8) = 1\\,\\text{A}$, so $V_1 = I R_1 = 4\\,\\text{V}$; equivalently $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$. $8\\,\\text{V}$ puts the other resistor on top — the main trap; the rule is that the resistor you are asked about goes in the numerator. $6\\,\\text{V}$ assumes an even split, true only for equal resistors, and the last option uses the parallel combination in a series circuit.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In a series circuit the current is the same everywhere: $I = \\dfrac{12}{4 + 8} = 1\\,\\text{A}$, so $V_1 = IR_1 = 4\\,\\text{V}$. Equivalently, the divider formula $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$ puts the resistor asked about on top.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{12}{2} = 6$ 假設兩個電阻平分電壓，只在兩個電阻相等時才成立。",
+        "en": "$\\dfrac{12}{2} = 6$ assumes the two resistors share the voltage equally, which holds only when they are equal."
+      },
+      {
+        "optionId": 1,
+        "zh": "用了並聯組合電阻 $\\dfrac{4 \\times 8}{4 + 8} \\approx 2.6667\\,\\Omega$ 乘以電流；但兩個電阻是串聯的。",
+        "en": "This multiplies the current by the parallel combination $\\dfrac{4 \\times 8}{4 + 8} \\approx 2.6667\\,\\Omega$, but the resistors are in series."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$I = \\dfrac{12}{4 + 8} = 1\\,\\text{A}$，$V_1 = IR_1 = 1 \\times 4 = 4\\,\\text{V}$。",
+        "en": "Correct. $I = \\dfrac{12}{4 + 8} = 1\\,\\text{A}$, so $V_1 = IR_1 = 1 \\times 4 = 4\\,\\text{V}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$8\\,\\text{V}$ 是 $8\\,\\Omega$ 兩端的電壓。分壓式的分子要放所求的電阻 $4\\,\\Omega$。",
+        "en": "$8\\,\\text{V}$ is the p.d. across the $8\\,\\Omega$ resistor. In the divider formula, the resistor asked about goes on top."
+      }
+    ]
   },
   {
     "id": "phy_rep_0072",
@@ -2105,7 +2655,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "$24\\,\\text{V}$ 電源接上串聯的 $6\\,\\Omega$ 與 $18\\,\\Omega$。求 $6\\,\\Omega$ 兩端的電壓。",
-    "explanation": "串聯電流相同：$I = 24/(6+18) = 1\\,\\text{A}$，故 $V_1 = I R_1 = 6\\,\\text{V}$；等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$。$18\\,\\text{V}$ 把另一個電阻放了在分子，是本題最主要的失分位——記法是：問邊一個電阻，分子就放邊一個。$12\\,\\text{V}$ 假設兩者平分，只有在兩個電阻相等時才成立。最後一項用了並聯總電阻，但這是串聯電路。",
+    "explanation": "串聯電路中電流處處相同：$I = \\dfrac{24}{6 + 18} = 1\\,\\text{A}$，故 $V_1 = IR_1 = 6\\,\\text{V}$。等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$：分子放所求的電阻。",
     "options": [
       "$18\\,\\text{V}$",
       "$12\\,\\text{V}$",
@@ -2121,8 +2671,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4.5\\,\\text{V}$",
       "$6\\,\\text{V}$"
     ],
-    "explanationEn": "In series the current is common: $I = 24/(6+18) = 1\\,\\text{A}$, so $V_1 = I R_1 = 6\\,\\text{V}$; equivalently $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$. $18\\,\\text{V}$ puts the other resistor on top — the main trap; the rule is that the resistor you are asked about goes in the numerator. $12\\,\\text{V}$ assumes an even split, true only for equal resistors, and the last option uses the parallel combination in a series circuit.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In a series circuit the current is the same everywhere: $I = \\dfrac{24}{6 + 18} = 1\\,\\text{A}$, so $V_1 = IR_1 = 6\\,\\text{V}$. Equivalently, the divider formula $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$ puts the resistor asked about on top.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$18\\,\\text{V}$ 是 $18\\,\\Omega$ 兩端的電壓。分壓式的分子要放所求的電阻 $6\\,\\Omega$。",
+        "en": "$18\\,\\text{V}$ is the p.d. across the $18\\,\\Omega$ resistor. In the divider formula, the resistor asked about goes on top."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{24}{2} = 12$ 假設兩個電阻平分電壓，只在兩個電阻相等時才成立。",
+        "en": "$\\dfrac{24}{2} = 12$ assumes the two resistors share the voltage equally, which holds only when they are equal."
+      },
+      {
+        "optionId": 2,
+        "zh": "用了並聯組合電阻 $\\dfrac{6 \\times 18}{6 + 18} = 4.5\\,\\Omega$ 乘以電流；但兩個電阻是串聯的。",
+        "en": "This multiplies the current by the parallel combination $\\dfrac{6 \\times 18}{6 + 18} = 4.5\\,\\Omega$, but the resistors are in series."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$I = \\dfrac{24}{6 + 18} = 1\\,\\text{A}$，$V_1 = IR_1 = 1 \\times 6 = 6\\,\\text{V}$。",
+        "en": "Correct. $I = \\dfrac{24}{6 + 18} = 1\\,\\text{A}$, so $V_1 = IR_1 = 1 \\times 6 = 6\\,\\text{V}$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0073",
@@ -2137,7 +2709,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "$9\\,\\text{V}$ 電源接上串聯的 $3\\,\\Omega$ 與 $6\\,\\Omega$。求 $3\\,\\Omega$ 兩端的電壓。",
-    "explanation": "串聯電流相同：$I = 9/(3+6) = 1\\,\\text{A}$，故 $V_1 = I R_1 = 3\\,\\text{V}$；等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$。$6\\,\\text{V}$ 把另一個電阻放了在分子，是本題最主要的失分位——記法是：問邊一個電阻，分子就放邊一個。$4.5\\,\\text{V}$ 假設兩者平分，只有在兩個電阻相等時才成立。最後一項用了並聯總電阻，但這是串聯電路。",
+    "explanation": "串聯電路中電流處處相同：$I = \\dfrac{9}{3 + 6} = 1\\,\\text{A}$，故 $V_1 = IR_1 = 3\\,\\text{V}$。等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$：分子放所求的電阻。",
     "options": [
       "$3\\,\\text{V}$",
       "$6\\,\\text{V}$",
@@ -2153,8 +2725,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4.5\\,\\text{V}$",
       "$2\\,\\text{V}$"
     ],
-    "explanationEn": "In series the current is common: $I = 9/(3+6) = 1\\,\\text{A}$, so $V_1 = I R_1 = 3\\,\\text{V}$; equivalently $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$. $6\\,\\text{V}$ puts the other resistor on top — the main trap; the rule is that the resistor you are asked about goes in the numerator. $4.5\\,\\text{V}$ assumes an even split, true only for equal resistors, and the last option uses the parallel combination in a series circuit.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In a series circuit the current is the same everywhere: $I = \\dfrac{9}{3 + 6} = 1\\,\\text{A}$, so $V_1 = IR_1 = 3\\,\\text{V}$. Equivalently, the divider formula $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$ puts the resistor asked about on top.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$I = \\dfrac{9}{3 + 6} = 1\\,\\text{A}$，$V_1 = IR_1 = 1 \\times 3 = 3\\,\\text{V}$。",
+        "en": "Correct. $I = \\dfrac{9}{3 + 6} = 1\\,\\text{A}$, so $V_1 = IR_1 = 1 \\times 3 = 3\\,\\text{V}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$6\\,\\text{V}$ 是 $6\\,\\Omega$ 兩端的電壓。分壓式的分子要放所求的電阻 $3\\,\\Omega$。",
+        "en": "$6\\,\\text{V}$ is the p.d. across the $6\\,\\Omega$ resistor. In the divider formula, the resistor asked about goes on top."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{9}{2} = 4.5$ 假設兩個電阻平分電壓，只在兩個電阻相等時才成立。",
+        "en": "$\\dfrac{9}{2} = 4.5$ assumes the two resistors share the voltage equally, which holds only when they are equal."
+      },
+      {
+        "optionId": 3,
+        "zh": "用了並聯組合電阻 $\\dfrac{3 \\times 6}{3 + 6} = 2\\,\\Omega$ 乘以電流；但兩個電阻是串聯的。",
+        "en": "This multiplies the current by the parallel combination $\\dfrac{3 \\times 6}{3 + 6} = 2\\,\\Omega$, but the resistors are in series."
+      }
+    ]
   },
   {
     "id": "phy_rep_0074",
@@ -2169,7 +2763,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "$18\\,\\text{V}$ 電源接上串聯的 $12\\,\\Omega$ 與 $6\\,\\Omega$。求 $12\\,\\Omega$ 兩端的電壓。",
-    "explanation": "串聯電流相同：$I = 18/(12+6) = 1\\,\\text{A}$，故 $V_1 = I R_1 = 12\\,\\text{V}$；等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$。$6\\,\\text{V}$ 把另一個電阻放了在分子，是本題最主要的失分位——記法是：問邊一個電阻，分子就放邊一個。$9\\,\\text{V}$ 假設兩者平分，只有在兩個電阻相等時才成立。最後一項用了並聯總電阻，但這是串聯電路。",
+    "explanation": "串聯電路中電流處處相同：$I = \\dfrac{18}{12 + 6} = 1\\,\\text{A}$，故 $V_1 = IR_1 = 12\\,\\text{V}$。等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$：分子放所求的電阻。",
     "options": [
       "$4\\,\\text{V}$",
       "$12\\,\\text{V}$",
@@ -2185,8 +2779,30 @@ export const physicsAutoQuestions: Question[] = [
       "$6\\,\\text{V}$",
       "$9\\,\\text{V}$"
     ],
-    "explanationEn": "In series the current is common: $I = 18/(12+6) = 1\\,\\text{A}$, so $V_1 = I R_1 = 12\\,\\text{V}$; equivalently $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$. $6\\,\\text{V}$ puts the other resistor on top — the main trap; the rule is that the resistor you are asked about goes in the numerator. $9\\,\\text{V}$ assumes an even split, true only for equal resistors, and the last option uses the parallel combination in a series circuit.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In a series circuit the current is the same everywhere: $I = \\dfrac{18}{12 + 6} = 1\\,\\text{A}$, so $V_1 = IR_1 = 12\\,\\text{V}$. Equivalently, the divider formula $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$ puts the resistor asked about on top.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "用了並聯組合電阻 $\\dfrac{12 \\times 6}{12 + 6} = 4\\,\\Omega$ 乘以電流；但兩個電阻是串聯的。",
+        "en": "This multiplies the current by the parallel combination $\\dfrac{12 \\times 6}{12 + 6} = 4\\,\\Omega$, but the resistors are in series."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$I = \\dfrac{18}{12 + 6} = 1\\,\\text{A}$，$V_1 = IR_1 = 1 \\times 12 = 12\\,\\text{V}$。",
+        "en": "Correct. $I = \\dfrac{18}{12 + 6} = 1\\,\\text{A}$, so $V_1 = IR_1 = 1 \\times 12 = 12\\,\\text{V}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$6\\,\\text{V}$ 是 $6\\,\\Omega$ 兩端的電壓。分壓式的分子要放所求的電阻 $12\\,\\Omega$。",
+        "en": "$6\\,\\text{V}$ is the p.d. across the $6\\,\\Omega$ resistor. In the divider formula, the resistor asked about goes on top."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{18}{2} = 9$ 假設兩個電阻平分電壓，只在兩個電阻相等時才成立。",
+        "en": "$\\dfrac{18}{2} = 9$ assumes the two resistors share the voltage equally, which holds only when they are equal."
+      }
+    ]
   },
   {
     "id": "phy_rep_0075",
@@ -2201,7 +2817,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "$30\\,\\text{V}$ 電源接上串聯的 $5\\,\\Omega$ 與 $25\\,\\Omega$。求 $5\\,\\Omega$ 兩端的電壓。",
-    "explanation": "串聯電流相同：$I = 30/(5+25) = 1\\,\\text{A}$，故 $V_1 = I R_1 = 5\\,\\text{V}$；等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$。$25\\,\\text{V}$ 把另一個電阻放了在分子，是本題最主要的失分位——記法是：問邊一個電阻，分子就放邊一個。$15\\,\\text{V}$ 假設兩者平分，只有在兩個電阻相等時才成立。最後一項用了並聯總電阻，但這是串聯電路。",
+    "explanation": "串聯電路中電流處處相同：$I = \\dfrac{30}{5 + 25} = 1\\,\\text{A}$，故 $V_1 = IR_1 = 5\\,\\text{V}$。等價寫法是分壓式 $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$：分子放所求的電阻。",
     "options": [
       "$15\\,\\text{V}$",
       "$4.1667\\,\\text{V}$",
@@ -2217,8 +2833,30 @@ export const physicsAutoQuestions: Question[] = [
       "$5\\,\\text{V}$",
       "$25\\,\\text{V}$"
     ],
-    "explanationEn": "In series the current is common: $I = 30/(5+25) = 1\\,\\text{A}$, so $V_1 = I R_1 = 5\\,\\text{V}$; equivalently $V_1 = V \\times \\dfrac{R_1}{R_1+R_2}$. $25\\,\\text{V}$ puts the other resistor on top — the main trap; the rule is that the resistor you are asked about goes in the numerator. $15\\,\\text{V}$ assumes an even split, true only for equal resistors, and the last option uses the parallel combination in a series circuit.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In a series circuit the current is the same everywhere: $I = \\dfrac{30}{5 + 25} = 1\\,\\text{A}$, so $V_1 = IR_1 = 5\\,\\text{V}$. Equivalently, the divider formula $V_1 = V \\times \\dfrac{R_1}{R_1 + R_2}$ puts the resistor asked about on top.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{30}{2} = 15$ 假設兩個電阻平分電壓，只在兩個電阻相等時才成立。",
+        "en": "$\\dfrac{30}{2} = 15$ assumes the two resistors share the voltage equally, which holds only when they are equal."
+      },
+      {
+        "optionId": 1,
+        "zh": "用了並聯組合電阻 $\\dfrac{5 \\times 25}{5 + 25} \\approx 4.1667\\,\\Omega$ 乘以電流；但兩個電阻是串聯的。",
+        "en": "This multiplies the current by the parallel combination $\\dfrac{5 \\times 25}{5 + 25} \\approx 4.1667\\,\\Omega$, but the resistors are in series."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$I = \\dfrac{30}{5 + 25} = 1\\,\\text{A}$，$V_1 = IR_1 = 1 \\times 5 = 5\\,\\text{V}$。",
+        "en": "Correct. $I = \\dfrac{30}{5 + 25} = 1\\,\\text{A}$, so $V_1 = IR_1 = 1 \\times 5 = 5\\,\\text{V}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$25\\,\\text{V}$ 是 $25\\,\\Omega$ 兩端的電壓。分壓式的分子要放所求的電阻 $5\\,\\Omega$。",
+        "en": "$25\\,\\text{V}$ is the p.d. across the $25\\,\\Omega$ resistor. In the divider formula, the resistor asked about goes on top."
+      }
+    ]
   },
   {
     "id": "phy_rep_0076",
@@ -2393,7 +3031,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "同一個電阻器兩端的電壓由 $3\\,\\text{V}$ 改為 $6\\,\\text{V}$，電阻值不變。通過它的電流會變成原來的多少倍？",
-    "explanation": "$I = V/R$，電阻不變時電流與電壓成【正比】，故倍數 $= 6/3 = 2$。$0.5$ 倍把關係看成反比——反比的是電流與【電阻】，不是電流與電壓，兩者最容易混淆。答「$1$ 倍」的以為電阻不變電流就不變，但推動電荷的是電壓，電壓一改電流必改。最後一項把電壓的【差】當成倍數：$6 - 3 = 3$ 是變化量，不是比值。",
+    "explanation": "由 $I = \\dfrac{V}{R}$，電阻不變時電流與電壓成【正比】，故電流變為原來的 $\\dfrac{6}{3} = 2$ 倍。與電流成反比的是電阻，不是電壓。",
     "options": [
       "$1$ 倍",
       "$3$ 倍",
@@ -2409,8 +3047,30 @@ export const physicsAutoQuestions: Question[] = [
       "$2$ times",
       "$0.5$ times"
     ],
-    "explanationEn": "Since $I = V/R$ and $R$ is fixed, current is *directly* proportional to p.d., so the factor is $6/3 = 2$. $0.5$ treats the relation as inverse — it is current and *resistance* that vary inversely, not current and p.d., and the two are easily confused. Answering \"$1$ times\" assumes an unchanged resistor means an unchanged current, but it is the p.d. that drives the charge. The last option uses the *difference* $6 - 3 = 3$, which is a change, not a ratio.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "From $I = \\dfrac{V}{R}$, with the resistance fixed the current is *proportional* to the voltage, so it becomes $\\dfrac{6}{3} = 2$ times the original. Current is inversely proportional to resistance, not to voltage.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "電阻不變不代表電流不變；電壓改變，電流會按相同比例改變。",
+        "en": "A fixed resistance does not mean a fixed current; when the voltage changes, the current changes in the same proportion."
+      },
+      {
+        "optionId": 1,
+        "zh": "$|6 - 3| = 3$ 是電壓的變化量，不是比值。",
+        "en": "$|6 - 3| = 3$ is the change in voltage, not the ratio."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。電阻不變時，電流與電壓成正比：$\\dfrac{6}{3} = 2$。",
+        "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{6}{3} = 2$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{3}{6} = 0.5$ 把關係看成反比。與電流成反比的是電阻，不是電壓。",
+        "en": "$\\dfrac{3}{6} = 0.5$ treats the relation as inverse. Current is inversely proportional to resistance, not to voltage."
+      }
+    ]
   },
   {
     "id": "phy_rep_0008",
@@ -2425,7 +3085,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "同一個電阻器兩端的電壓由 $4\\,\\text{V}$ 改為 $12\\,\\text{V}$，電阻值不變。通過它的電流會變成原來的多少倍？",
-    "explanation": "$I = V/R$，電阻不變時電流與電壓成【正比】，故倍數 $= 12/4 = 3$。$0.3333$ 倍把關係看成反比——反比的是電流與【電阻】，不是電流與電壓，兩者最容易混淆。答「$1$ 倍」的以為電阻不變電流就不變，但推動電荷的是電壓，電壓一改電流必改。最後一項把電壓的【差】當成倍數：$12 - 4 = 8$ 是變化量，不是比值。",
+    "explanation": "由 $I = \\dfrac{V}{R}$，電阻不變時電流與電壓成【正比】，故電流變為原來的 $\\dfrac{12}{4} = 3$ 倍。與電流成反比的是電阻，不是電壓。",
     "options": [
       "$0.3333$ 倍",
       "$1$ 倍",
@@ -2441,8 +3101,30 @@ export const physicsAutoQuestions: Question[] = [
       "$8$ times",
       "$3$ times"
     ],
-    "explanationEn": "Since $I = V/R$ and $R$ is fixed, current is *directly* proportional to p.d., so the factor is $12/4 = 3$. $0.3333$ treats the relation as inverse — it is current and *resistance* that vary inversely, not current and p.d., and the two are easily confused. Answering \"$1$ times\" assumes an unchanged resistor means an unchanged current, but it is the p.d. that drives the charge. The last option uses the *difference* $12 - 4 = 8$, which is a change, not a ratio.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "From $I = \\dfrac{V}{R}$, with the resistance fixed the current is *proportional* to the voltage, so it becomes $\\dfrac{12}{4} = 3$ times the original. Current is inversely proportional to resistance, not to voltage.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{4}{12} \\approx 0.3333$ 把關係看成反比。與電流成反比的是電阻，不是電壓。",
+        "en": "$\\dfrac{4}{12} \\approx 0.3333$ treats the relation as inverse. Current is inversely proportional to resistance, not to voltage."
+      },
+      {
+        "optionId": 1,
+        "zh": "電阻不變不代表電流不變；電壓改變，電流會按相同比例改變。",
+        "en": "A fixed resistance does not mean a fixed current; when the voltage changes, the current changes in the same proportion."
+      },
+      {
+        "optionId": 2,
+        "zh": "$|12 - 4| = 8$ 是電壓的變化量，不是比值。",
+        "en": "$|12 - 4| = 8$ is the change in voltage, not the ratio."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。電阻不變時，電流與電壓成正比：$\\dfrac{12}{4} = 3$。",
+        "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{12}{4} = 3$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0009",
@@ -2457,7 +3139,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "同一個電阻器兩端的電壓由 $2\\,\\text{V}$ 改為 $10\\,\\text{V}$，電阻值不變。通過它的電流會變成原來的多少倍？",
-    "explanation": "$I = V/R$，電阻不變時電流與電壓成【正比】，故倍數 $= 10/2 = 5$。$0.2$ 倍把關係看成反比——反比的是電流與【電阻】，不是電流與電壓，兩者最容易混淆。答「$1$ 倍」的以為電阻不變電流就不變，但推動電荷的是電壓，電壓一改電流必改。最後一項把電壓的【差】當成倍數：$10 - 2 = 8$ 是變化量，不是比值。",
+    "explanation": "由 $I = \\dfrac{V}{R}$，電阻不變時電流與電壓成【正比】，故電流變為原來的 $\\dfrac{10}{2} = 5$ 倍。與電流成反比的是電阻，不是電壓。",
     "options": [
       "$5$ 倍",
       "$0.2$ 倍",
@@ -2473,8 +3155,30 @@ export const physicsAutoQuestions: Question[] = [
       "$1$ times",
       "$8$ times"
     ],
-    "explanationEn": "Since $I = V/R$ and $R$ is fixed, current is *directly* proportional to p.d., so the factor is $10/2 = 5$. $0.2$ treats the relation as inverse — it is current and *resistance* that vary inversely, not current and p.d., and the two are easily confused. Answering \"$1$ times\" assumes an unchanged resistor means an unchanged current, but it is the p.d. that drives the charge. The last option uses the *difference* $10 - 2 = 8$, which is a change, not a ratio.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "From $I = \\dfrac{V}{R}$, with the resistance fixed the current is *proportional* to the voltage, so it becomes $\\dfrac{10}{2} = 5$ times the original. Current is inversely proportional to resistance, not to voltage.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。電阻不變時，電流與電壓成正比：$\\dfrac{10}{2} = 5$。",
+        "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{10}{2} = 5$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{2}{10} = 0.2$ 把關係看成反比。與電流成反比的是電阻，不是電壓。",
+        "en": "$\\dfrac{2}{10} = 0.2$ treats the relation as inverse. Current is inversely proportional to resistance, not to voltage."
+      },
+      {
+        "optionId": 2,
+        "zh": "電阻不變不代表電流不變；電壓改變，電流會按相同比例改變。",
+        "en": "A fixed resistance does not mean a fixed current; when the voltage changes, the current changes in the same proportion."
+      },
+      {
+        "optionId": 3,
+        "zh": "$|10 - 2| = 8$ 是電壓的變化量，不是比值。",
+        "en": "$|10 - 2| = 8$ is the change in voltage, not the ratio."
+      }
+    ]
   },
   {
     "id": "phy_rep_0010",
@@ -2489,7 +3193,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "同一個電阻器兩端的電壓由 $5\\,\\text{V}$ 改為 $15\\,\\text{V}$，電阻值不變。通過它的電流會變成原來的多少倍？",
-    "explanation": "$I = V/R$，電阻不變時電流與電壓成【正比】，故倍數 $= 15/5 = 3$。$0.3333$ 倍把關係看成反比——反比的是電流與【電阻】，不是電流與電壓，兩者最容易混淆。答「$1$ 倍」的以為電阻不變電流就不變，但推動電荷的是電壓，電壓一改電流必改。最後一項把電壓的【差】當成倍數：$15 - 5 = 10$ 是變化量，不是比值。",
+    "explanation": "由 $I = \\dfrac{V}{R}$，電阻不變時電流與電壓成【正比】，故電流變為原來的 $\\dfrac{15}{5} = 3$ 倍。與電流成反比的是電阻，不是電壓。",
     "options": [
       "$10$ 倍",
       "$3$ 倍",
@@ -2505,8 +3209,30 @@ export const physicsAutoQuestions: Question[] = [
       "$0.3333$ times",
       "$1$ times"
     ],
-    "explanationEn": "Since $I = V/R$ and $R$ is fixed, current is *directly* proportional to p.d., so the factor is $15/5 = 3$. $0.3333$ treats the relation as inverse — it is current and *resistance* that vary inversely, not current and p.d., and the two are easily confused. Answering \"$1$ times\" assumes an unchanged resistor means an unchanged current, but it is the p.d. that drives the charge. The last option uses the *difference* $15 - 5 = 10$, which is a change, not a ratio.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "From $I = \\dfrac{V}{R}$, with the resistance fixed the current is *proportional* to the voltage, so it becomes $\\dfrac{15}{5} = 3$ times the original. Current is inversely proportional to resistance, not to voltage.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$|15 - 5| = 10$ 是電壓的變化量，不是比值。",
+        "en": "$|15 - 5| = 10$ is the change in voltage, not the ratio."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。電阻不變時，電流與電壓成正比：$\\dfrac{15}{5} = 3$。",
+        "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{15}{5} = 3$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{5}{15} \\approx 0.3333$ 把關係看成反比。與電流成反比的是電阻，不是電壓。",
+        "en": "$\\dfrac{5}{15} \\approx 0.3333$ treats the relation as inverse. Current is inversely proportional to resistance, not to voltage."
+      },
+      {
+        "optionId": 3,
+        "zh": "電阻不變不代表電流不變；電壓改變，電流會按相同比例改變。",
+        "en": "A fixed resistance does not mean a fixed current; when the voltage changes, the current changes in the same proportion."
+      }
+    ]
   },
   {
     "id": "phy_rep_0011",
@@ -2521,7 +3247,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "同一個電阻器兩端的電壓由 $6\\,\\text{V}$ 改為 $24\\,\\text{V}$，電阻值不變。通過它的電流會變成原來的多少倍？",
-    "explanation": "$I = V/R$，電阻不變時電流與電壓成【正比】，故倍數 $= 24/6 = 4$。$0.25$ 倍把關係看成反比——反比的是電流與【電阻】，不是電流與電壓，兩者最容易混淆。答「$1$ 倍」的以為電阻不變電流就不變，但推動電荷的是電壓，電壓一改電流必改。最後一項把電壓的【差】當成倍數：$24 - 6 = 18$ 是變化量，不是比值。",
+    "explanation": "由 $I = \\dfrac{V}{R}$，電阻不變時電流與電壓成【正比】，故電流變為原來的 $\\dfrac{24}{6} = 4$ 倍。與電流成反比的是電阻，不是電壓。",
     "options": [
       "$1$ 倍",
       "$18$ 倍",
@@ -2537,8 +3263,30 @@ export const physicsAutoQuestions: Question[] = [
       "$4$ times",
       "$0.25$ times"
     ],
-    "explanationEn": "Since $I = V/R$ and $R$ is fixed, current is *directly* proportional to p.d., so the factor is $24/6 = 4$. $0.25$ treats the relation as inverse — it is current and *resistance* that vary inversely, not current and p.d., and the two are easily confused. Answering \"$1$ times\" assumes an unchanged resistor means an unchanged current, but it is the p.d. that drives the charge. The last option uses the *difference* $24 - 6 = 18$, which is a change, not a ratio.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "From $I = \\dfrac{V}{R}$, with the resistance fixed the current is *proportional* to the voltage, so it becomes $\\dfrac{24}{6} = 4$ times the original. Current is inversely proportional to resistance, not to voltage.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "電阻不變不代表電流不變；電壓改變，電流會按相同比例改變。",
+        "en": "A fixed resistance does not mean a fixed current; when the voltage changes, the current changes in the same proportion."
+      },
+      {
+        "optionId": 1,
+        "zh": "$|24 - 6| = 18$ 是電壓的變化量，不是比值。",
+        "en": "$|24 - 6| = 18$ is the change in voltage, not the ratio."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。電阻不變時，電流與電壓成正比：$\\dfrac{24}{6} = 4$。",
+        "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{24}{6} = 4$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{6}{24} = 0.25$ 把關係看成反比。與電流成反比的是電阻，不是電壓。",
+        "en": "$\\dfrac{6}{24} = 0.25$ treats the relation as inverse. Current is inversely proportional to resistance, not to voltage."
+      }
+    ]
   },
   {
     "id": "phy_rep_0012",
@@ -2553,7 +3301,7 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "同一個電阻器兩端的電壓由 $8\\,\\text{V}$ 改為 $4\\,\\text{V}$，電阻值不變。通過它的電流會變成原來的多少倍？",
-    "explanation": "$I = V/R$，電阻不變時電流與電壓成【正比】，故倍數 $= 4/8 = 0.5$。$2$ 倍把關係看成反比——反比的是電流與【電阻】，不是電流與電壓，兩者最容易混淆。答「$1$ 倍」的以為電阻不變電流就不變，但推動電荷的是電壓，電壓一改電流必改。最後一項把電壓的【差】當成倍數：$4 - 8 = 4$ 是變化量，不是比值。",
+    "explanation": "由 $I = \\dfrac{V}{R}$，電阻不變時電流與電壓成【正比】，故電流變為原來的 $\\dfrac{4}{8} = 0.5$ 倍。與電流成反比的是電阻，不是電壓。",
     "options": [
       "$2$ 倍",
       "$1$ 倍",
@@ -2569,7 +3317,29 @@ export const physicsAutoQuestions: Question[] = [
       "$4$ times",
       "$0.5$ times"
     ],
-    "explanationEn": "Since $I = V/R$ and $R$ is fixed, current is *directly* proportional to p.d., so the factor is $4/8 = 0.5$. $2$ treats the relation as inverse — it is current and *resistance* that vary inversely, not current and p.d., and the two are easily confused. Answering \"$1$ times\" assumes an unchanged resistor means an unchanged current, but it is the p.d. that drives the charge. The last option uses the *difference* $4 - 8 = 4$, which is a change, not a ratio.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "From $I = \\dfrac{V}{R}$, with the resistance fixed the current is *proportional* to the voltage, so it becomes $\\dfrac{4}{8} = 0.5$ times the original. Current is inversely proportional to resistance, not to voltage.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{8}{4} = 2$ 把關係看成反比。與電流成反比的是電阻，不是電壓。",
+        "en": "$\\dfrac{8}{4} = 2$ treats the relation as inverse. Current is inversely proportional to resistance, not to voltage."
+      },
+      {
+        "optionId": 1,
+        "zh": "電阻不變不代表電流不變；電壓改變，電流會按相同比例改變。",
+        "en": "A fixed resistance does not mean a fixed current; when the voltage changes, the current changes in the same proportion."
+      },
+      {
+        "optionId": 2,
+        "zh": "$|4 - 8| = 4$ 是電壓的變化量，不是比值。",
+        "en": "$|4 - 8| = 4$ is the change in voltage, not the ratio."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。電阻不變時，電流與電壓成正比：$\\dfrac{4}{8} = 0.5$。",
+        "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{4}{8} = 0.5$."
+      }
+    ]
   }
 ]

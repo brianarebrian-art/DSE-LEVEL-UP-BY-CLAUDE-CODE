@@ -1211,211 +1211,237 @@
   },
   "m2_rep_0001": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0002": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0003": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0004": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0005": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0006": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0007": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0008": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0009": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0010": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0011": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0012": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0022": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0023": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0024": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0025": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0026": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0027": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0048": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0049": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0050": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0051": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0065": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0066": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0067": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0068": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-first"
+    "cohort": "positional-first",
+    "restoreBasis": "machine-gate"
   },
   "zh_floor_08": {
     "subject": "chinese",
@@ -3467,35 +3493,39 @@
   },
   "m1_rep_0063": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-04",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0064": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-04",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0065": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-04",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0066": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-04",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m1_rep_0067": {
     "subject": "m1",
@@ -3507,11 +3537,12 @@
   },
   "m1_rep_0068": {
     "subject": "m1",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M1-04",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m1b_el1_2_1": {
     "subject": "m1",
@@ -3827,83 +3858,93 @@
   },
   "m2_rep_0028": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0029": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0030": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0031": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0032": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0033": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0034": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0035": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0036": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "m2_rep_0037": {
     "subject": "m2",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "M2-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "zh_fl_lx02": {
     "subject": "chinese",
@@ -3915,99 +3956,111 @@
   },
   "phy_rep_0001": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0002": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0003": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0004": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0005": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0006": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0007": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0008": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0009": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0010": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0011": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0012": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0013": {
     "subject": "physics",
@@ -4059,187 +4112,210 @@
   },
   "phy_rep_0025": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0026": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0027": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0028": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0029": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0030": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0031": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0032": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0033": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0034": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0035": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0036": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0043": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0044": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0045": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0046": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0047": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0048": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0071": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0072": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0073": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0074": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0075": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-01",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "bioh_ph_6": {
     "subject": "biology",
