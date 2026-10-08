@@ -82,3 +82,36 @@
 1. 是否批准丙？
 2. 私隱頁加說明段落時，要不要提高版本號（登入學生會再被問一次同意）？
 3. 誰登入 Vercel 確認 Analytics 有沒有數？
+
+## 九、實施狀態（2026-10-08，創辦人回覆 40a）
+
+**已批准方案丙。** 已完成、但**全部關住**（`lib/practiceCount.ts` 的 `PRACTICE_COUNTS_ENABLED = false`）：
+
+| 部分 | 檔案 | 狀態 |
+|---|---|---|
+| 資料表及計數函數 | `supabase/migrations/0023_practice_counts.sql` | 已寫，**未套用到正式資料庫**（等創辦人批准） |
+| 寫入 API | `app/api/practice-count/route.ts` | 已寫；關住時、或不是正式網站時，一律不寫入 |
+| 練習頁 | `app/practice/PracticeSession.tsx` | 新一節第一題出現時送「開始」；兩種完成方式都送「完成」；續做上次練習不重複計 |
+| 結果頁 | `app/result/ResultPageClient.tsx` | 三條再練連結加 `?from=result` |
+| 防亂送 | `proxy.ts` | 每個 IP 每 10 分鐘 120 次（只在記憶體） |
+| 測試 | `lib/__tests__/practice-count.test.mts` | 無身份欄位、學生頁面不讀數字、關住時不送出 |
+
+**未做，等創辦人：**
+
+1. **私隱頁與版本號（與 40a 有衝突）。** 40a 選了「私隱頁加說明，但不用登入學生再撳一次同意」。但現有規則（`lib/__tests__/privacy-consent.test.mts`）要求私隱頁文字一改就要提高 `POLICY_VERSION`，而版本一提高，登入學生就會再見到同意視窗。之前三次新增匿名資料（Vercel 瀏覽量、報錯、完卷兩條問題）都有提高版本。提出 40a 時漏看了這條規則，已向創辦人更正並再問。
+2. **「打開解析」怎樣算。** 答題後解析會自動出現第一步；學生可撳「睇埋成個解析」或「下一步」看完整版，選了「以後直接睇晒」的學生則不用撳。所以數撳掣次數會少計這批學生。待創辦人決定是否數、怎樣數；決定前資料表沒有這一欄（migration 仍未套用，可以再改）。
+3. **套用 migration**，並同日開啟 `PRACTICE_COUNTS_ENABLED`、更新私隱頁。
+
+**每週唯讀計算**（開啟後使用，只把總數寫入 Notion）：
+
+```sql
+select
+  sum(sessions) filter (where event = 'started')                       as started,
+  sum(sessions) filter (where event = 'started' and from_result)       as started_from_result,
+  sum(sessions) filter (where event = 'completed')                     as completed,
+  sum(answered) filter (where event = 'completed')                     as questions_in_completed_sets
+from practice_counts
+where day >= (now() at time zone 'Asia/Hong_Kong')::date - 6;
+```
+
+中途離開率 ≈ 1 − 完成 ÷ 開始。某科某日數目太小時不單獨列出（最小分母原則）。

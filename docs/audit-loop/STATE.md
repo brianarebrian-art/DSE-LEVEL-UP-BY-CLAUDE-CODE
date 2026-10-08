@@ -274,3 +274,10 @@
   - 合共恢復 76 題：練習中 26,551 → 26,627，收起 543 → 467，`/transparency`「其中 166 條未經人手覆核」；位置詞 runtime 祖父清單 758 → 682；`posref-classification.json` 機器組 135 → 85；llms.txt 更新。
   - 37b：`docs/learning-loop-measurement-plan-2026-10-08.md`（計劃書，未寫程式、未收集資料）。Vercel Web Analytics API 查詢回覆「not found」，⬜ 待創辦人在 Vercel 網頁確認有否數據。
   - 檢查：npm test 1318/1318、qa 通過、tsc 0、production build 通過。待推送；上線後同步 m1、m2、physics 雲端題庫。
+- 2026-10-08 創辦人回覆「38a 39a 40a」：
+  - 38a：`docs/charter-review-2026-10-09.md`（維持 10 題；74% 目標停用；匿名計數滿 4 星期後再檢討，暫定 2026-11-09）；憲章 §7.1 及文末、`lib/entitlements.ts` 註解同步；`charter-review-dates.test.mts` 加 2026-11-09 的 §7.1 覆檢。
+  - 39a：`physics-auto.ts` 17 題選項 `\text{\Omega}` → `\Omega`（數字、答案不變，其中 11 題已上線）；`builders/replace-physics.mts` 的單位函數不再把指令包入 `\text{}`；新測試 `math-renders.test.mts` 按 `MathText` 的分割方式解析全部 27,326 條題每個欄位的數式（含反向自測；未修正前捉到 136 個）。其後 `phy_rep_0013–0018` 以計算題批次 PHY-02 修復並恢復。練習中 26,627 → 26,633，收起 467 → 461；位置詞 runtime 祖父清單 682 → 676。
+  - 40a：匿名計數已寫好但關住（`PRACTICE_COUNTS_ENABLED = false`）：`lib/practiceCount.ts`、`app/api/practice-count/route.ts`（只在正式網站且開啟時寫入）、`supabase/migrations/0023_practice_counts.sql`（**未套用**）、練習頁「開始／完成」、結果頁再練連結 `?from=result`、`proxy.ts` 限速、`practice-count.test.mts`。本機正式版：完整做兩節（開始到完成）均無送出計數；API 回 `{ ok: true, counted: false }`；結果頁連結帶 `from=result`；console 無錯誤；測試資料已清。
+  - 衝突（已向創辦人更正）：40a 選「私隱頁加說明但不再問同意」，但 `privacy-consent.test.mts` 要求私隱頁文字一改即提高 `POLICY_VERSION`，而版本提高會令登入學生再見同意視窗；之前三次新增匿名資料都有提高版本。提出 40 的選項時漏看此規則。私隱頁未改，待創辦人再答。
+  - 「打開解析」的定義未定（自動顯示第一步；選了「直接睇晒」的學生不用撳），migration 暫無此欄，待創辦人答。
+  - 檢查：npm test 1331/1331、qa 通過、tsc 0、production build 通過。
