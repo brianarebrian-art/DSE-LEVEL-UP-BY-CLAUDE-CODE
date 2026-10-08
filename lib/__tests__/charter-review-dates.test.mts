@@ -80,6 +80,17 @@ const REVIEWS: Review[] = [
       '「練習頁盲測模式」（預設隱藏數字與單位）同日決定於本次覆檢後再決定，見第 7 節。',
     tool: 'npm run analytics:retention（§② 逐週 curve · §③ 剷鎖前後對照）',
   },
+  {
+    // Founders' reply 38a (2026-10-08). Same date as the §7.2 review, so one record file covers both.
+    date: '2026-11-09',
+    what: '§7.1 第二次覆檢：以匿名計數重新檢討一節 10 題，並決定預設 5 題或 10 題',
+    where: 'docs/charter.md §7.1 · docs/charter-review-2026-10-09.md · docs/learning-loop-measurement-plan-2026-10-08.md',
+    question:
+      '用匿名計數（開始、完成）計中途離開率及從結果頁再練的比例。' +
+      '計數上線未滿 4 星期的話，寫明並延期，不可用不足 4 星期的數字下結論。' +
+      '舊的「74% → 30%」目標已於 2026-10-09 覆檢停用，不可拿新數字與 74% 比較。',
+    tool: 'docs/learning-loop-measurement-plan-2026-10-08.md 第七節第 6 點的唯讀計算',
+  },
 ]
 
 /** 裁決紀錄檔。命名沿用 docs/charter-amendment-YYYY-MM-DD.md 嘅慣例。 */

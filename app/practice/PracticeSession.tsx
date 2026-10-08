@@ -32,6 +32,7 @@ import { getSubject } from '@/data/subjects'
 import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
+import { cameFromResult, sendPracticeCount } from '@/lib/practiceCount'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicStats'
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
@@ -299,6 +300,9 @@ export default function PracticeSession({
     const ids = new Set(bank.map((q) => q.id))
     return saved.questionIds.every((id) => ids.has(id)) ? saved : null
   })
+  // Anonymous counts (founders' reply 40a): set when a resume is accepted; one start per set.
+  const resumedRef = useRef(false)
+  const startCounted = useRef(false)
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   // 2026-09-09：呢度原本係反思鎖嘅 state。鎖已剷除（憲章 §7.2 實驗）。
   // about the chosen error cause + a countdown that both must clear before "Next".
@@ -505,6 +509,7 @@ export default function PracticeSession({
           subjectId, subjectName, topicFilter: topicFilter ?? null,
           score, total: 1, grade: '—', topicResults, elapsed, timestamp: Date.now(),
         })
+        sendPracticeCount({ subject: subjectId, event: 'completed', fromResult: false, answered: 1 })
         recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
         if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
         clearActiveSession()
@@ -556,6 +561,8 @@ export default function PracticeSession({
         timestamp: Date.now(),
         difficultyResults,
       })
+      // Anonymous count (founders' reply 40a): sent before the move to /result, with keepalive.
+      sendPracticeCount({ subject: subjectId, event: 'completed', fromResult: false, answered: totalQ })
       // Update the weakness tally (powers the dashboard radar / repair worksheet).
       recordTopicOutcomes(subjectId, buildTopicOutcomes(questions, newAnswers))
       if (subjectId === 'chinese') recordConceptHits(buildConceptRows(questions, newAnswers))
@@ -685,12 +692,22 @@ export default function PracticeSession({
       setResumeOffer(null)
       return
     }
+    resumedRef.current = true // a resumed set was counted when it first started
     setQuestions(restored.map(prepareQuestion))
     setAnswers(resumeOffer.answers as AnswerState[])
     setCurrent(resumeOffer.current)
     setStartTime(Date.now() - resumeOffer.elapsed * 1000)
     setResumeOffer(null)
   }, [resumeOffer, bank])
+
+  // Anonymous count (founders' reply 40a): one "started" per new set, once the first
+  // question is on screen. Not while a resume card is waiting, and not for a resumed set.
+  useEffect(() => {
+    if (startCounted.current || resumedRef.current || resumeOffer || questions.length === 0) return
+    if (current !== 0 || answers.length !== 0) return
+    startCounted.current = true
+    sendPracticeCount({ subject: subjectId, event: 'started', fromResult: cameFromResult(window.location.search), answered: 0 })
+  }, [resumeOffer, questions.length, current, answers.length, subjectId])
 
   const declineResume = useCallback(() => {
     clearActiveSession()

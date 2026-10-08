@@ -22,6 +22,7 @@ import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
 import { buildCauseCardData } from '@/lib/causeCard'
 import { resultNextSteps } from '@/lib/resultNextSteps'
+import { withFromResult } from '@/lib/practiceCount'
 import { getReverseLog } from '@/lib/reverseLog'
 
 interface TopicResult {
@@ -374,7 +375,7 @@ export default function ResultPageClient() {
             <nav aria-label={en ? 'Next steps' : '下一步'} className="no-print space-y-3">
               {steps.weakest && (
                 <Link
-                  href={steps.weakest.href}
+                  href={withFromResult(steps.weakest.href)}
                   className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-gold/50 bg-surface-sunken px-4 py-3 text-ink transition-colors hover:border-gold"
                 >
                   <span className="min-w-0">
@@ -390,7 +391,7 @@ export default function ResultPageClient() {
               )}
               {steps.cause && (
                 <Link
-                  href={steps.cause.href}
+                  href={withFromResult(steps.cause.href)}
                   className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-line-strong bg-surface-raised px-4 py-3 text-ink transition-colors hover:border-gold"
                 >
                   <span className="min-w-0">
@@ -406,7 +407,7 @@ export default function ResultPageClient() {
               )}
               <div className="grid grid-cols-2 gap-3">
                 <Link
-                  href={steps.retryHref}
+                  href={withFromResult(steps.retryHref)}
                   className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-all hover:bg-accent-hover"
                 >
                   <RotateCcw size={16} aria-hidden /> {r.retry}

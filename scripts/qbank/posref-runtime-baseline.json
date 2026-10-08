@@ -6,7 +6,7 @@
     "用嘅 pattern 直接讀自 check-posref.mjs（ZH、EN、ZH_ORD、EN_ORD），兩邊唔會分叉。"
   ],
   "measuredAt": "2026-09-29",
-  "total": 682,
+  "total": 676,
   "grandfathered": {
     "math": [
       "mb_h2_10_1",
@@ -153,14 +153,6 @@
       "m1b_el2_7_1",
       "m1b_el2_7_2",
       "m1b_el2_7_4"
-    ],
-    "physics": [
-      "phy_rep_0013",
-      "phy_rep_0014",
-      "phy_rep_0015",
-      "phy_rep_0016",
-      "phy_rep_0017",
-      "phy_rep_0018"
     ],
     "chemistry": [
       "chem_rep_0007",

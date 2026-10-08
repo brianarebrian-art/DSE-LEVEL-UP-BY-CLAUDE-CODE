@@ -1545,32 +1545,6 @@
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
     }
   },
-  "physics": {
-    "phy_rep_0013": {
-      "date": "2026-09-29",
-      "reason": "POSITIONAL_RATIONALE_REFERENCE"
-    },
-    "phy_rep_0014": {
-      "date": "2026-09-29",
-      "reason": "POSITIONAL_RATIONALE_REFERENCE"
-    },
-    "phy_rep_0015": {
-      "date": "2026-09-29",
-      "reason": "POSITIONAL_RATIONALE_REFERENCE"
-    },
-    "phy_rep_0016": {
-      "date": "2026-09-29",
-      "reason": "POSITIONAL_RATIONALE_REFERENCE"
-    },
-    "phy_rep_0017": {
-      "date": "2026-09-29",
-      "reason": "POSITIONAL_RATIONALE_REFERENCE"
-    },
-    "phy_rep_0018": {
-      "date": "2026-09-29",
-      "reason": "POSITIONAL_RATIONALE_REFERENCE"
-    }
-  },
   "biology": {
     "bioh_ph_6": {
       "date": "2026-09-29",

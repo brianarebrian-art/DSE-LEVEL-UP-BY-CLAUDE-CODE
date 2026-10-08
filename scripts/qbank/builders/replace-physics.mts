@@ -30,7 +30,9 @@ const T = {
 } as const
 
 /** 帶單位的數值選項。單位符號中英一致，故 zh／en 同形。 */
-const u = (v: number | string, unit: string) => `$${v}\\,\\text{${unit}}$`
+// A unit given as a command (\Omega) is a maths symbol and must not go inside \text{}: KaTeX cannot
+// parse \text{\Omega}, and students saw a red "\Omega" (founders' reply 39a, 2026-10-08).
+const u = (v: number | string, unit: string) => (unit.startsWith('\\') ? `$${v}\\,${unit}$` : `$${v}\\,\\text{${unit}}$`)
 
 const archs: Arch[] = [
   // ══ 電學 80 ══════════════════════════════════════════════════════════════

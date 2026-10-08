@@ -11,7 +11,7 @@ export const BANK_VERSION: Record<string, string> = {
   "math": "4326865440cba0da",
   "m2": "3f47daa2eed83083",
   "m1": "abbcbb8b256c22fd",
-  "physics": "05d979d87c018cac",
+  "physics": "ff07e54dc63e9f76",
   "chemistry": "b9d57a4cab6dc18a",
   "biology": "a560e67f818923c1",
   "english": "03c7506362c20dc0",
