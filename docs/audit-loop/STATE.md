@@ -294,3 +294,6 @@
   - 47a：首頁大標題（heroContent）、dictionary 的 quote、subhead、示範頁 demoNote、方法頁 intro、/waiting 金句、數學科簡介，共 7 處（中英文各一）「無論數字點變／無論出乜題，你都識答」改為描述練習方法；方法頁標題「真係可以幫你考好 DSE？」未改。`claims-guard` 新增 `outcome-promise` 及 `fixed-countdown` 規則。
   - 48a：`components/MathText.tsx` 於瀏覽器載入 KaTeX 內建 copy-tex（不加套件）；`types/katex-copy-tex.d.ts`；`math-renders.test.mts` 加測試。本機：複製題目得「求通過 $A(1,2)$ 及 $B(4,-4)$ 的直線的斜率。」，不再重複。
   - 檢查：npm test 1335/1335、qa 通過、tsc 0、production build 通過；console 無錯誤；測試資料已清。
+- 2026-10-08 創辦人已推送並合併 PR #83（main `232f5f7`，Vercel READY）。唯讀核對 `practice_counts`：開始 2 次、完成 1 次（共答 10 題），計數運作正常。
+- 2026-10-08 創辦人貼入「題庫品質控制與重構引擎」指示（剔除純背誦題並以推理題取代）。唯讀核對：上線選擇題 25,572 條，字眼似背誦 385 條，其中短而無情境 103 條；`dse-conformance.mts` 第 4 項只量題幹長度，不判斷背誦。指示與現行做法的衝突（直接覆蓋、A–D 字母格式、只出 JSON、未附題目、第二項檢查範圍）已向創辦人列出。
+- 2026-10-08 創辦人回覆「49a 50a 51a 52a」：先試 103 條，只列清單不改；舊題日後以收起方式處理；新題用網站現有格式；第二項檢查只用於新題。已實施：`docs/recall-review-2026-10-08.md`（純背誦 99、保留 3、邊緣 1；建議新題 82 條，含三條中英示範）。題目檔、收起名單、雲端題庫均未改。npm test 1335/1335、claims-guard 通過。
