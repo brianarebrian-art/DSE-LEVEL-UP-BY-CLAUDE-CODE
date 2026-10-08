@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import katex from 'katex'
 
 interface MathTextProps {
@@ -69,7 +69,23 @@ function renderMathText(text: string): string {
   return out
 }
 
+// Copying a formula (founders' reply 48a, 2026-10-08). Each formula is drawn twice — the
+// visible layer and the MathML layer for screen readers — so a plain copy gave "55" for $5$,
+// and a student pasting a question into another tool asked the wrong question. KaTeX's own
+// copy-tex extension (part of the katex package, no new dependency) makes a copied
+// selection carry the LaTeX source instead, e.g. "$5$". It listens on `document`, so it is
+// loaded in the browser only, once per page.
+let copyTexLoaded = false
+function loadCopyTex() {
+  if (copyTexLoaded) return
+  copyTexLoaded = true
+  void import('katex/contrib/copy-tex').catch(() => {
+    copyTexLoaded = false
+  })
+}
+
 export default function MathText({ children, className }: MathTextProps) {
+  useEffect(loadCopyTex, [])
   const html = useMemo(() => renderMathText(children), [children])
   return (
     <span

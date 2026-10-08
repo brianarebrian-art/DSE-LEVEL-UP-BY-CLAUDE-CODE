@@ -444,6 +444,11 @@ export interface ElectiveRule {
   of: number
   units: { id: string; en?: string; zh?: string }[]
   source: string
+  /**
+   * 中文單元名的出處：教育局「課程及評估指引」中文版（2026-10-08 創辦人回覆 45a 補上）。
+   * 不用考評局文件（2026-09-30 決定：考評局刊物不作 AI 輸入）。
+   */
+  sourceZh?: string
 }
 
 export interface PaperStructure {
@@ -772,22 +777,27 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 4,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_c_20151126.pdf",
         "units": [
           {
             "id": "astronomy-and-space-science",
-            "en": "Astronomy and Space Science"
+            "en": "Astronomy and Space Science",
+            "zh": "天文學和航天科學"
           },
           {
             "id": "atomic-world",
-            "en": "Atomic World"
+            "en": "Atomic World",
+            "zh": "原子世界"
           },
           {
             "id": "energy-and-use-of-energy",
-            "en": "Energy and Use of Energy"
+            "en": "Energy and Use of Energy",
+            "zh": "能量和能源的使用"
           },
           {
             "id": "medical-physics",
-            "en": "Medical Physics"
+            "en": "Medical Physics",
+            "zh": "醫學物理學"
           }
         ]
       }
@@ -837,18 +847,22 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 3,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Chi_22082018.pdf",
         "units": [
           {
             "id": "industrial-chemistry",
-            "en": "Industrial Chemistry"
+            "en": "Industrial Chemistry",
+            "zh": "工業化學"
           },
           {
             "id": "materials-chemistry",
-            "en": "Materials Chemistry"
+            "en": "Materials Chemistry",
+            "zh": "物料化學"
           },
           {
             "id": "analytical-chemistry",
-            "en": "Analytical Chemistry"
+            "en": "Analytical Chemistry",
+            "zh": "分析化學"
           }
         ]
       }
@@ -898,22 +912,27 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 4,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_c_20151126.pdf",
         "units": [
           {
             "id": "human-physiology-regulation-and-control",
-            "en": "Human Physiology: Regulation and Control"
+            "en": "Human Physiology: Regulation and Control",
+            "zh": "人體生理學：調節與控制"
           },
           {
             "id": "applied-ecology",
-            "en": "Applied Ecology"
+            "en": "Applied Ecology",
+            "zh": "應用生態學"
           },
           {
             "id": "microorganisms-and-humans",
-            "en": "Microorganisms and Humans"
+            "en": "Microorganisms and Humans",
+            "zh": "微生物與人類"
           },
           {
             "id": "biotechnology",
-            "en": "Biotechnology"
+            "en": "Biotechnology",
+            "zh": "生物工程"
           }
         ]
       }
@@ -972,14 +991,17 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 1,
         "of": 2,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/pshe/Econ_C&A_Guide_E_with_updates_in_2025.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/pshe/Econ_C&A_Guide_C_with_updates_in_2025.pdf",
         "units": [
           {
             "id": "elective-part-1",
-            "en": "Elective Part 1: Monopoly Pricing; Anti-competitive Behaviours and Competition Policy"
+            "en": "Elective Part 1: Monopoly Pricing; Anti-competitive Behaviours and Competition Policy",
+            "zh": "選修單元（一）：壟斷定價；反競爭行為及競爭政策"
           },
           {
             "id": "elective-part-2",
-            "en": "Elective Part 2: Extension of Trade Theory; Economic Growth and Development"
+            "en": "Elective Part 2: Extension of Trade Theory; Economic Growth and Development",
+            "zh": "選修單元（二）：貿易理論之延伸；經濟增長及發展"
           }
         ]
       }
@@ -1139,18 +1161,22 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 3,
         "source": "/DocLibrary/HKDSE/Subject_Information/ict/2027hkdse-e-ict.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/technology-edu/curriculum-doc/ICT_C&A Guide_c_final.pdf",
         "units": [
           {
             "id": "databases",
-            "en": "Databases"
+            "en": "Databases",
+            "zh": "數據庫"
           },
           {
             "id": "web-application-development",
-            "en": "Web Application Development"
+            "en": "Web Application Development",
+            "zh": "網絡應用程式開發"
           },
           {
             "id": "algorithm-and-programming",
-            "en": "Algorithm and Programming"
+            "en": "Algorithm and Programming",
+            "zh": "算法與程式編寫"
           }
         ]
       }
@@ -1228,22 +1254,27 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 4,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/pshe/Geography%20C&A%20Guide%202022-eng.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/pshe/Geography%20C&A%20Guide%202022-chi.pdf",
         "units": [
           {
             "id": "dynamic-earth-the-building-of-hong-kong",
-            "en": "Dynamic Earth: the building of Hong Kong"
+            "en": "Dynamic Earth: the building of Hong Kong",
+            "zh": "動態的地球：香港地質與地貌的形成"
           },
           {
             "id": "weather-and-climate",
-            "en": "Weather and Climate"
+            "en": "Weather and Climate",
+            "zh": "天氣與氣候"
           },
           {
             "id": "transport-development-planning-and-management",
-            "en": "Transport Development, Planning and Management"
+            "en": "Transport Development, Planning and Management",
+            "zh": "運輸發展、規劃與管理"
           },
           {
             "id": "regional-study-of-zhujiang-pearl-river-delta",
-            "en": "Regional Study of Zhujiang (Pearl River) Delta"
+            "en": "Regional Study of Zhujiang (Pearl River) Delta",
+            "zh": "珠江三角洲區域研習"
           }
         ]
       }
@@ -1584,18 +1615,22 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 3,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/technology-edu/curriculum-doc/HMSC_CA_Guide_e_2015.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/technology-edu/curriculum-doc/HMSC_CA_Guide_c_2015.pdf",
         "units": [
           {
             "id": "extended-study-on-health-promotion-and-health-maintenance-services",
-            "en": "Extended Study on Health Promotion and Health Maintenance Services"
+            "en": "Extended Study on Health Promotion and Health Maintenance Services",
+            "zh": "健康推廣與健康護理服務的延伸學習"
           },
           {
             "id": "extended-study-on-community-and-social-care-services",
-            "en": "Extended Study on Community and Social Care Services"
+            "en": "Extended Study on Community and Social Care Services",
+            "zh": "社群與社會關懷服務的延伸學習"
           },
           {
             "id": "current-issues-of-health-and-social-care",
-            "en": "Current Issues of Health and Social Care"
+            "en": "Current Issues of Health and Social Care",
+            "zh": "健康與社會關懷時事議題"
           }
         ]
       }
@@ -1649,26 +1684,32 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 5,
         "source": "/DocLibrary/HKDSE/Subject_Information/dat/2027hkdse-e-dat.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/technology-edu/curriculum-doc/DAT_CAGuide_c_2015.pdf",
         "units": [
           {
             "id": "automation",
-            "en": "Automation"
+            "en": "Automation",
+            "zh": "自動化操作"
           },
           {
             "id": "creative-digital-media",
-            "en": "Creative Digital Media"
+            "en": "Creative Digital Media",
+            "zh": "創意數碼媒體"
           },
           {
             "id": "design-implementation-and-material-processing",
-            "en": "Design Implementation and Material Processing"
+            "en": "Design Implementation and Material Processing",
+            "zh": "設計實踐及材料處理"
           },
           {
             "id": "electronics",
-            "en": "Electronics"
+            "en": "Electronics",
+            "zh": "電子"
           },
           {
             "id": "visualisation-and-cad-modelling",
-            "en": "Visualisation and CAD Modelling"
+            "en": "Visualisation and CAD Modelling",
+            "zh": "視像化及電腦輔助設計(CAD)模塑"
           }
         ]
       }
@@ -1751,18 +1792,22 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 3,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/technology-edu/curriculum-doc/TL_CAGuide_e_2015.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/technology-edu/curriculum-doc/TL_CAGuide_c_2015.pdf",
         "units": [
           {
             "id": "food-culture",
-            "en": "Food Culture"
+            "en": "Food Culture",
+            "zh": "飲食文化"
           },
           {
             "id": "food-science-and-technology-extended-study",
-            "en": "Food Science and Technology Extended Study"
+            "en": "Food Science and Technology Extended Study",
+            "zh": "食品科學與科技的延伸學習"
           },
           {
             "id": "food-product-development",
-            "en": "Food Product Development"
+            "en": "Food Product Development",
+            "zh": "食品研究與開發"
           }
         ]
       },
@@ -1772,18 +1817,22 @@ export const PAPER_STRUCTURE: Record<string, PaperStructure> = {
         "choose": 2,
         "of": 3,
         "source": "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/technology-edu/curriculum-doc/TL_CAGuide_e_2015.pdf",
+        "sourceZh": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/technology-edu/curriculum-doc/TL_CAGuide_c_2015.pdf",
         "units": [
           {
             "id": "culture-and-fashion-design",
-            "en": "Culture and Fashion Design"
+            "en": "Culture and Fashion Design",
+            "zh": "文化與時裝設計"
           },
           {
             "id": "textiles-and-textile-technology",
-            "en": "Textiles and Textile Technology"
+            "en": "Textiles and Textile Technology",
+            "zh": "紡織品與紡織科技"
           },
           {
             "id": "apparel-industry",
-            "en": "Apparel Industry"
+            "en": "Apparel Industry",
+            "zh": "成衣工業"
           }
         ]
       }

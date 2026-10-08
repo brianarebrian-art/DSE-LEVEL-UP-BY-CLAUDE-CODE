@@ -131,7 +131,7 @@ const zh = {
     groupRest: '休息',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
-    quote: '掌握邏輯，唔係背答案。無論數字點變，你都識答。',
+    quote: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。',
   },
   // /predictor（Night Study「Grade Predictor」）。等級估算本身由 MasteryEstimate
   // 講，呢度淨係頁面框架同兩個聚合嘅文案。
@@ -225,7 +225,7 @@ const zh = {
     liveBadge: '完全免費 · 拆邏輯，唔係背答案',
     headline1: '身為考過 DSE 嘅中學生，',
     headline2: '我想幫你用最輕鬆嘅方法溫書',
-    subhead: '掌握邏輯，唔係背答案。無論出乜題，你都識答。',
+    subhead: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。',
     trust1: '✓ 課題初步對照 2027 年課程指引',
     // 2026-09-29：原文「✓ 涵蓋全部 DSE 科目」屬過度聲稱（未涵蓋綜合科學，亦未涵蓋書寫、口試、實作卷）。
     trust2: '✓ 全部功能免費',
@@ -251,7 +251,7 @@ const zh = {
     step3Label: '改寫版（本平台）',
     step3Tag: '全新數字，同款邏輯',
     step3Cta: '立即練習 →',
-    demoNote: '你做完改寫版練習後，遇到同類型題目——無論數字係咩——都識答。',
+    demoNote: '改寫版練習會換咗數字再出同一類題，等你練到識答為止。',
     fwTitle: 'DSE Math 的 12 個核心思維框架',
     fwSub: '每年出現，每年換湯不換藥——掌握框架，無懼任何變體',
     frameworks: [
@@ -405,7 +405,7 @@ const zh = {
     badge: '核心方法論',
     title1: '點解改寫版練習',
     title2: '真係可以幫你考好 DSE？',
-    intro: '佢唔係叫你背多幾道題目。係叫你睇穿每道題目背後的邏輯——然後無論 HKEAA 點改數字、點換情景，你都識答。',
+    intro: '佢唔係叫你背多幾道題目。係叫你睇穿每道題目背後的邏輯——同一類題換咗數字、換咗情景再練，練到識答為止。',
     insightTitle: '點解有人永遠考好成績？',
     insightP1Pre: '唔係因為佢背曬全部 past paper 答案。係因為佢知道每道題目背後考的是',
     insightP1Strong: '哪個底層邏輯',
@@ -565,7 +565,7 @@ const en: typeof zh = {
     groupStudy: 'Study',
     groupReview: 'Review',
     groupRest: 'Rest',
-    quote: 'Master the logic, not the answers. Whatever the numbers, you can solve it.',
+    quote: 'Master the logic, not the answers. Practise the same kind of question with new numbers until you can solve it.',
   },
   predictor: {
     title: 'Practice performance estimate',
@@ -654,7 +654,7 @@ const en: typeof zh = {
     liveBadge: '100% free · master the logic, not the answers',
     headline1: 'As a secondary student who’s sat the DSE,',
     headline2: 'I want to help you revise the easy way',
-    subhead: 'Master the logic, don’t memorise answers. Whatever they ask, you’ll know how.',
+    subhead: 'Master the logic, don’t memorise answers. Practise the same kind of question with new numbers until you can solve it.',
     trust1: '✓ Topics checked against the 2027 curriculum guides (first pass)',
     trust2: '✓ Every feature free',
     trust3: '✓ No ads',
@@ -677,7 +677,7 @@ const en: typeof zh = {
     step3Label: 'Rewritten (this platform)',
     step3Tag: 'New numbers, same logic',
     step3Cta: 'Practise now →',
-    demoNote: 'Once you finish the rewritten version, you can handle any similar question — whatever the numbers.',
+    demoNote: 'The rewritten practice gives you the same kind of question with different numbers, so you can keep going until you can solve it.',
     fwTitle: 'The 12 core thinking frameworks of DSE Maths',
     fwSub: 'They appear every year in new guises — master the framework, fear no variation',
     frameworks: [
@@ -814,7 +814,7 @@ const en: typeof zh = {
     badge: 'Core methodology',
     title1: 'Why can rewritten practice',
     title2: 'really help you ace the DSE?',
-    intro: 'It’s not about memorising a few more questions. It’s about seeing through the logic behind each one — so however the HKEAA changes the numbers or the scenario, you’ll know how.',
+    intro: 'It’s not about memorising a few more questions. It’s about seeing through the logic behind each one — practising the same kind of question with new numbers and new scenarios until you can solve it.',
     insightTitle: 'Why do some people always score well?',
     insightP1Pre: 'Not because they memorised every past-paper answer. It’s because they know which ',
     insightP1Strong: 'underlying logic',
