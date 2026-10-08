@@ -281,3 +281,9 @@
   - 衝突（已向創辦人更正）：40a 選「私隱頁加說明但不再問同意」，但 `privacy-consent.test.mts` 要求私隱頁文字一改即提高 `POLICY_VERSION`，而版本提高會令登入學生再見同意視窗；之前三次新增匿名資料都有提高版本。提出 40 的選項時漏看此規則。私隱頁未改，待創辦人再答。
   - 「打開解析」的定義未定（自動顯示第一步；選了「直接睇晒」的學生不用撳），migration 暫無此欄，待創辦人答。
   - 檢查：npm test 1331/1331、qa 通過、tsc 0、production build 通過。
+- 2026-10-08 創辦人已推送並合併 PR #82（main `7acb4e8`，Vercel READY），包括 38a、39a、40a（計數關住）。
+- 2026-10-08 創辦人回覆「41a 42a 43a 44a」：
+  - 41a：PR #82 上線後 `sync-questions --push`：m1、m2、physics（`--check` 先核實只有這三科有落差）。
+  - 42a：私隱頁新增「數練習次數」，Supabase 一句同未登入段落同步提及；`POLICY_VERSION` → `2026-10-08.v1`，`privacy-consent.test.mts` 基準 `d6efa727616740a0`。同意視窗摘要只講登入同步資料，不變。
+  - 43a：不數打開解析。
+  - 44a：migration `practice_counts` 已套用到正式資料庫；唯讀核對權限正確，函數以「試算後撤銷」測試正確，0 行；advisor 只有「RLS 開啟無 policy」（INFO，與其他 server-only 表相同）及舊有的 `handle_updated_at` search_path 警告。`PRACTICE_COUNTS_ENABLED = true`，待合併後生效。
