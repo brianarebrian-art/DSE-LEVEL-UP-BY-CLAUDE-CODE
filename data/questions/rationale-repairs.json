@@ -4064,51 +4064,57 @@
   },
   "phy_rep_0013": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-02",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0014": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-02",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0015": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-02",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0016": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-02",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0017": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-02",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0018": {
     "subject": "physics",
-    "batch": null,
-    "stage": "withdrawn",
-    "updated": "2026-09-29",
+    "batch": "PHY-02",
+    "stage": "restored",
+    "updated": "2026-10-08",
     "contentReview": null,
-    "cohort": "positional-machine"
+    "cohort": "positional-machine",
+    "restoreBasis": "machine-gate"
   },
   "phy_rep_0025": {
     "subject": "physics",

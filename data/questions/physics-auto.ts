@@ -349,24 +349,46 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "三個電阻 $2\\,\\Omega$、$3\\,\\Omega$ 及 $5\\,\\Omega$ 串聯接在同一電路中。求總電阻。",
-    "explanation": "串聯時電流只有一條路徑，各電阻的阻礙逐個累加：$R = 2 + 3 + 5 = 10\\,\\Omega$。$0.9677\\,\\Omega$ 是用了並聯公式 $1/R = \\sum 1/R_i$ 的結果——分辨方法是看電流有沒有分岔：串聯無分岔，總電阻必定【大於】其中任何一個；並聯有分岔，總電阻必定【小於】最小的一個。$5\\,\\Omega$ 漏了第三個電阻。最後一項把相加誤作相乘。",
+    "explanation": "串聯時電流只有一條路徑，各電阻逐個相加：$R = 2 + 3 + 5 = 10\\,\\Omega$。分辨方法：串聯的總電阻必定大於其中任何一個；並聯的總電阻必定小於最小的一個。",
     "options": [
-      "$10\\,\\text{\\Omega}$",
-      "$0.9677\\,\\text{\\Omega}$",
-      "$5\\,\\text{\\Omega}$",
-      "$30\\,\\text{\\Omega}$"
+      "$10\\,\\Omega$",
+      "$0.9677\\,\\Omega$",
+      "$5\\,\\Omega$",
+      "$30\\,\\Omega$"
     ],
     "correctIndex": 0,
     "marks": 1,
     "contentEn": "Three resistors of $2\\,\\Omega$, $3\\,\\Omega$ and $5\\,\\Omega$ are connected in series. Find the total resistance.",
     "optionsEn": [
-      "$10\\,\\text{\\Omega}$",
-      "$0.9677\\,\\text{\\Omega}$",
-      "$5\\,\\text{\\Omega}$",
-      "$30\\,\\text{\\Omega}$"
+      "$10\\,\\Omega$",
+      "$0.9677\\,\\Omega$",
+      "$5\\,\\Omega$",
+      "$30\\,\\Omega$"
     ],
-    "explanationEn": "In series there is only one path, so the resistances simply add: $R = 2 + 3 + 5 = 10\\,\\Omega$. $0.9677\\,\\Omega$ comes from the parallel formula $1/R = \\sum 1/R_i$. The test is whether the current branches: in series it does not, and the total must be *larger* than any single resistor; in parallel it does, and the total must be *smaller* than the smallest. $5\\,\\Omega$ omits the third resistor, and the last option multiplies instead of adding.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In series there is only one path for the current, so the resistances add: $R = 2 + 3 + 5 = 10\\,\\Omega$. A quick check: a series total is always larger than any one resistor; a parallel total is always smaller than the smallest.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。串聯時電阻直接相加：$2 + 3 + 5 = 10\\,\\Omega$。",
+        "en": "Correct. In series the resistances simply add: $2 + 3 + 5 = 10\\,\\Omega$."
+      },
+      {
+        "optionId": 1,
+        "zh": "這是並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{2} + \\dfrac{1}{3} + \\dfrac{1}{5}$ 的結果（$R \\approx 0.9677\\,\\Omega$），但三個電阻是串聯的。串聯的總電阻必定大於其中任何一個。",
+        "en": "This is the parallel formula $\\dfrac{1}{R} = \\dfrac{1}{2} + \\dfrac{1}{3} + \\dfrac{1}{5}$ (giving $R \\approx 0.9677\\,\\Omega$), but the three resistors are in series. A series total is always larger than any one of them."
+      },
+      {
+        "optionId": 2,
+        "zh": "$2 + 3 = 5$ 漏了第三個電阻 $5\\,\\Omega$。",
+        "en": "$2 + 3 = 5$ leaves out the third resistor, $5\\,\\Omega$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$2 \\times 3 \\times 5 = 30$ 把相加誤作相乘。",
+        "en": "$2 \\times 3 \\times 5 = 30$ multiplies the resistances instead of adding them."
+      }
+    ]
   },
   {
     "id": "phy_rep_0014",
@@ -381,24 +403,46 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "三個電阻 $4\\,\\Omega$、$6\\,\\Omega$ 及 $10\\,\\Omega$ 串聯接在同一電路中。求總電阻。",
-    "explanation": "串聯時電流只有一條路徑，各電阻的阻礙逐個累加：$R = 4 + 6 + 10 = 20\\,\\Omega$。$1.9355\\,\\Omega$ 是用了並聯公式 $1/R = \\sum 1/R_i$ 的結果——分辨方法是看電流有沒有分岔：串聯無分岔，總電阻必定【大於】其中任何一個；並聯有分岔，總電阻必定【小於】最小的一個。$10\\,\\Omega$ 漏了第三個電阻。最後一項把相加誤作相乘。",
+    "explanation": "串聯時電流只有一條路徑，各電阻逐個相加：$R = 4 + 6 + 10 = 20\\,\\Omega$。分辨方法：串聯的總電阻必定大於其中任何一個；並聯的總電阻必定小於最小的一個。",
     "options": [
-      "$240\\,\\text{\\Omega}$",
-      "$20\\,\\text{\\Omega}$",
-      "$1.9355\\,\\text{\\Omega}$",
-      "$10\\,\\text{\\Omega}$"
+      "$240\\,\\Omega$",
+      "$20\\,\\Omega$",
+      "$1.9355\\,\\Omega$",
+      "$10\\,\\Omega$"
     ],
     "correctIndex": 1,
     "marks": 1,
     "contentEn": "Three resistors of $4\\,\\Omega$, $6\\,\\Omega$ and $10\\,\\Omega$ are connected in series. Find the total resistance.",
     "optionsEn": [
-      "$240\\,\\text{\\Omega}$",
-      "$20\\,\\text{\\Omega}$",
-      "$1.9355\\,\\text{\\Omega}$",
-      "$10\\,\\text{\\Omega}$"
+      "$240\\,\\Omega$",
+      "$20\\,\\Omega$",
+      "$1.9355\\,\\Omega$",
+      "$10\\,\\Omega$"
     ],
-    "explanationEn": "In series there is only one path, so the resistances simply add: $R = 4 + 6 + 10 = 20\\,\\Omega$. $1.9355\\,\\Omega$ comes from the parallel formula $1/R = \\sum 1/R_i$. The test is whether the current branches: in series it does not, and the total must be *larger* than any single resistor; in parallel it does, and the total must be *smaller* than the smallest. $10\\,\\Omega$ omits the third resistor, and the last option multiplies instead of adding.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In series there is only one path for the current, so the resistances add: $R = 4 + 6 + 10 = 20\\,\\Omega$. A quick check: a series total is always larger than any one resistor; a parallel total is always smaller than the smallest.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$4 \\times 6 \\times 10 = 240$ 把相加誤作相乘。",
+        "en": "$4 \\times 6 \\times 10 = 240$ multiplies the resistances instead of adding them."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。串聯時電阻直接相加：$4 + 6 + 10 = 20\\,\\Omega$。",
+        "en": "Correct. In series the resistances simply add: $4 + 6 + 10 = 20\\,\\Omega$."
+      },
+      {
+        "optionId": 2,
+        "zh": "這是並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{4} + \\dfrac{1}{6} + \\dfrac{1}{10}$ 的結果（$R \\approx 1.9355\\,\\Omega$），但三個電阻是串聯的。串聯的總電阻必定大於其中任何一個。",
+        "en": "This is the parallel formula $\\dfrac{1}{R} = \\dfrac{1}{4} + \\dfrac{1}{6} + \\dfrac{1}{10}$ (giving $R \\approx 1.9355\\,\\Omega$), but the three resistors are in series. A series total is always larger than any one of them."
+      },
+      {
+        "optionId": 3,
+        "zh": "$4 + 6 = 10$ 漏了第三個電阻 $10\\,\\Omega$。",
+        "en": "$4 + 6 = 10$ leaves out the third resistor, $10\\,\\Omega$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0015",
@@ -413,24 +457,46 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "三個電阻 $1\\,\\Omega$、$2\\,\\Omega$ 及 $4\\,\\Omega$ 串聯接在同一電路中。求總電阻。",
-    "explanation": "串聯時電流只有一條路徑，各電阻的阻礙逐個累加：$R = 1 + 2 + 4 = 7\\,\\Omega$。$0.5714\\,\\Omega$ 是用了並聯公式 $1/R = \\sum 1/R_i$ 的結果——分辨方法是看電流有沒有分岔：串聯無分岔，總電阻必定【大於】其中任何一個；並聯有分岔，總電阻必定【小於】最小的一個。$3\\,\\Omega$ 漏了第三個電阻。最後一項把相加誤作相乘。",
+    "explanation": "串聯時電流只有一條路徑，各電阻逐個相加：$R = 1 + 2 + 4 = 7\\,\\Omega$。分辨方法：串聯的總電阻必定大於其中任何一個；並聯的總電阻必定小於最小的一個。",
     "options": [
-      "$3\\,\\text{\\Omega}$",
-      "$8\\,\\text{\\Omega}$",
-      "$7\\,\\text{\\Omega}$",
-      "$0.5714\\,\\text{\\Omega}$"
+      "$3\\,\\Omega$",
+      "$8\\,\\Omega$",
+      "$7\\,\\Omega$",
+      "$0.5714\\,\\Omega$"
     ],
     "correctIndex": 2,
     "marks": 1,
     "contentEn": "Three resistors of $1\\,\\Omega$, $2\\,\\Omega$ and $4\\,\\Omega$ are connected in series. Find the total resistance.",
     "optionsEn": [
-      "$3\\,\\text{\\Omega}$",
-      "$8\\,\\text{\\Omega}$",
-      "$7\\,\\text{\\Omega}$",
-      "$0.5714\\,\\text{\\Omega}$"
+      "$3\\,\\Omega$",
+      "$8\\,\\Omega$",
+      "$7\\,\\Omega$",
+      "$0.5714\\,\\Omega$"
     ],
-    "explanationEn": "In series there is only one path, so the resistances simply add: $R = 1 + 2 + 4 = 7\\,\\Omega$. $0.5714\\,\\Omega$ comes from the parallel formula $1/R = \\sum 1/R_i$. The test is whether the current branches: in series it does not, and the total must be *larger* than any single resistor; in parallel it does, and the total must be *smaller* than the smallest. $3\\,\\Omega$ omits the third resistor, and the last option multiplies instead of adding.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In series there is only one path for the current, so the resistances add: $R = 1 + 2 + 4 = 7\\,\\Omega$. A quick check: a series total is always larger than any one resistor; a parallel total is always smaller than the smallest.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$1 + 2 = 3$ 漏了第三個電阻 $4\\,\\Omega$。",
+        "en": "$1 + 2 = 3$ leaves out the third resistor, $4\\,\\Omega$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$1 \\times 2 \\times 4 = 8$ 把相加誤作相乘。",
+        "en": "$1 \\times 2 \\times 4 = 8$ multiplies the resistances instead of adding them."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。串聯時電阻直接相加：$1 + 2 + 4 = 7\\,\\Omega$。",
+        "en": "Correct. In series the resistances simply add: $1 + 2 + 4 = 7\\,\\Omega$."
+      },
+      {
+        "optionId": 3,
+        "zh": "這是並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{1} + \\dfrac{1}{2} + \\dfrac{1}{4}$ 的結果（$R \\approx 0.5714\\,\\Omega$），但三個電阻是串聯的。串聯的總電阻必定大於其中任何一個。",
+        "en": "This is the parallel formula $\\dfrac{1}{R} = \\dfrac{1}{1} + \\dfrac{1}{2} + \\dfrac{1}{4}$ (giving $R \\approx 0.5714\\,\\Omega$), but the three resistors are in series. A series total is always larger than any one of them."
+      }
+    ]
   },
   {
     "id": "phy_rep_0016",
@@ -445,24 +511,46 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "三個電阻 $5\\,\\Omega$、$5\\,\\Omega$ 及 $10\\,\\Omega$ 串聯接在同一電路中。求總電阻。",
-    "explanation": "串聯時電流只有一條路徑，各電阻的阻礙逐個累加：$R = 5 + 5 + 10 = 20\\,\\Omega$。$2\\,\\Omega$ 是用了並聯公式 $1/R = \\sum 1/R_i$ 的結果——分辨方法是看電流有沒有分岔：串聯無分岔，總電阻必定【大於】其中任何一個；並聯有分岔，總電阻必定【小於】最小的一個。$10\\,\\Omega$ 漏了第三個電阻。最後一項把相加誤作相乘。",
+    "explanation": "串聯時電流只有一條路徑，各電阻逐個相加：$R = 5 + 5 + 10 = 20\\,\\Omega$。分辨方法：串聯的總電阻必定大於其中任何一個；並聯的總電阻必定小於最小的一個。",
     "options": [
-      "$2\\,\\text{\\Omega}$",
-      "$10\\,\\text{\\Omega}$",
-      "$250\\,\\text{\\Omega}$",
-      "$20\\,\\text{\\Omega}$"
+      "$2\\,\\Omega$",
+      "$10\\,\\Omega$",
+      "$250\\,\\Omega$",
+      "$20\\,\\Omega$"
     ],
     "correctIndex": 3,
     "marks": 1,
     "contentEn": "Three resistors of $5\\,\\Omega$, $5\\,\\Omega$ and $10\\,\\Omega$ are connected in series. Find the total resistance.",
     "optionsEn": [
-      "$2\\,\\text{\\Omega}$",
-      "$10\\,\\text{\\Omega}$",
-      "$250\\,\\text{\\Omega}$",
-      "$20\\,\\text{\\Omega}$"
+      "$2\\,\\Omega$",
+      "$10\\,\\Omega$",
+      "$250\\,\\Omega$",
+      "$20\\,\\Omega$"
     ],
-    "explanationEn": "In series there is only one path, so the resistances simply add: $R = 5 + 5 + 10 = 20\\,\\Omega$. $2\\,\\Omega$ comes from the parallel formula $1/R = \\sum 1/R_i$. The test is whether the current branches: in series it does not, and the total must be *larger* than any single resistor; in parallel it does, and the total must be *smaller* than the smallest. $10\\,\\Omega$ omits the third resistor, and the last option multiplies instead of adding.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In series there is only one path for the current, so the resistances add: $R = 5 + 5 + 10 = 20\\,\\Omega$. A quick check: a series total is always larger than any one resistor; a parallel total is always smaller than the smallest.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "這是並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{5} + \\dfrac{1}{5} + \\dfrac{1}{10}$ 的結果（$R = 2\\,\\Omega$），但三個電阻是串聯的。串聯的總電阻必定大於其中任何一個。",
+        "en": "This is the parallel formula $\\dfrac{1}{R} = \\dfrac{1}{5} + \\dfrac{1}{5} + \\dfrac{1}{10}$ (giving $R = 2\\,\\Omega$), but the three resistors are in series. A series total is always larger than any one of them."
+      },
+      {
+        "optionId": 1,
+        "zh": "$5 + 5 = 10$ 漏了第三個電阻 $10\\,\\Omega$。",
+        "en": "$5 + 5 = 10$ leaves out the third resistor, $10\\,\\Omega$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$5 \\times 5 \\times 10 = 250$ 把相加誤作相乘。",
+        "en": "$5 \\times 5 \\times 10 = 250$ multiplies the resistances instead of adding them."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。串聯時電阻直接相加：$5 + 5 + 10 = 20\\,\\Omega$。",
+        "en": "Correct. In series the resistances simply add: $5 + 5 + 10 = 20\\,\\Omega$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0017",
@@ -477,24 +565,46 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "三個電阻 $8\\,\\Omega$、$12\\,\\Omega$ 及 $4\\,\\Omega$ 串聯接在同一電路中。求總電阻。",
-    "explanation": "串聯時電流只有一條路徑，各電阻的阻礙逐個累加：$R = 8 + 12 + 4 = 24\\,\\Omega$。$2.1818\\,\\Omega$ 是用了並聯公式 $1/R = \\sum 1/R_i$ 的結果——分辨方法是看電流有沒有分岔：串聯無分岔，總電阻必定【大於】其中任何一個；並聯有分岔，總電阻必定【小於】最小的一個。$20\\,\\Omega$ 漏了第三個電阻。最後一項把相加誤作相乘。",
+    "explanation": "串聯時電流只有一條路徑，各電阻逐個相加：$R = 8 + 12 + 4 = 24\\,\\Omega$。分辨方法：串聯的總電阻必定大於其中任何一個；並聯的總電阻必定小於最小的一個。",
     "options": [
-      "$24\\,\\text{\\Omega}$",
-      "$2.1818\\,\\text{\\Omega}$",
-      "$20\\,\\text{\\Omega}$",
-      "$384\\,\\text{\\Omega}$"
+      "$24\\,\\Omega$",
+      "$2.1818\\,\\Omega$",
+      "$20\\,\\Omega$",
+      "$384\\,\\Omega$"
     ],
     "correctIndex": 0,
     "marks": 1,
     "contentEn": "Three resistors of $8\\,\\Omega$, $12\\,\\Omega$ and $4\\,\\Omega$ are connected in series. Find the total resistance.",
     "optionsEn": [
-      "$24\\,\\text{\\Omega}$",
-      "$2.1818\\,\\text{\\Omega}$",
-      "$20\\,\\text{\\Omega}$",
-      "$384\\,\\text{\\Omega}$"
+      "$24\\,\\Omega$",
+      "$2.1818\\,\\Omega$",
+      "$20\\,\\Omega$",
+      "$384\\,\\Omega$"
     ],
-    "explanationEn": "In series there is only one path, so the resistances simply add: $R = 8 + 12 + 4 = 24\\,\\Omega$. $2.1818\\,\\Omega$ comes from the parallel formula $1/R = \\sum 1/R_i$. The test is whether the current branches: in series it does not, and the total must be *larger* than any single resistor; in parallel it does, and the total must be *smaller* than the smallest. $20\\,\\Omega$ omits the third resistor, and the last option multiplies instead of adding.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In series there is only one path for the current, so the resistances add: $R = 8 + 12 + 4 = 24\\,\\Omega$. A quick check: a series total is always larger than any one resistor; a parallel total is always smaller than the smallest.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。串聯時電阻直接相加：$8 + 12 + 4 = 24\\,\\Omega$。",
+        "en": "Correct. In series the resistances simply add: $8 + 12 + 4 = 24\\,\\Omega$."
+      },
+      {
+        "optionId": 1,
+        "zh": "這是並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{8} + \\dfrac{1}{12} + \\dfrac{1}{4}$ 的結果（$R \\approx 2.1818\\,\\Omega$），但三個電阻是串聯的。串聯的總電阻必定大於其中任何一個。",
+        "en": "This is the parallel formula $\\dfrac{1}{R} = \\dfrac{1}{8} + \\dfrac{1}{12} + \\dfrac{1}{4}$ (giving $R \\approx 2.1818\\,\\Omega$), but the three resistors are in series. A series total is always larger than any one of them."
+      },
+      {
+        "optionId": 2,
+        "zh": "$8 + 12 = 20$ 漏了第三個電阻 $4\\,\\Omega$。",
+        "en": "$8 + 12 = 20$ leaves out the third resistor, $4\\,\\Omega$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$8 \\times 12 \\times 4 = 384$ 把相加誤作相乘。",
+        "en": "$8 \\times 12 \\times 4 = 384$ multiplies the resistances instead of adding them."
+      }
+    ]
   },
   {
     "id": "phy_rep_0018",
@@ -509,24 +619,46 @@ export const physicsAutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "三個電阻 $10\\,\\Omega$、$15\\,\\Omega$ 及 $5\\,\\Omega$ 串聯接在同一電路中。求總電阻。",
-    "explanation": "串聯時電流只有一條路徑，各電阻的阻礙逐個累加：$R = 10 + 15 + 5 = 30\\,\\Omega$。$2.7273\\,\\Omega$ 是用了並聯公式 $1/R = \\sum 1/R_i$ 的結果——分辨方法是看電流有沒有分岔：串聯無分岔，總電阻必定【大於】其中任何一個；並聯有分岔，總電阻必定【小於】最小的一個。$25\\,\\Omega$ 漏了第三個電阻。最後一項把相加誤作相乘。",
+    "explanation": "串聯時電流只有一條路徑，各電阻逐個相加：$R = 10 + 15 + 5 = 30\\,\\Omega$。分辨方法：串聯的總電阻必定大於其中任何一個；並聯的總電阻必定小於最小的一個。",
     "options": [
-      "$750\\,\\text{\\Omega}$",
-      "$30\\,\\text{\\Omega}$",
-      "$2.7273\\,\\text{\\Omega}$",
-      "$25\\,\\text{\\Omega}$"
+      "$750\\,\\Omega$",
+      "$30\\,\\Omega$",
+      "$2.7273\\,\\Omega$",
+      "$25\\,\\Omega$"
     ],
     "correctIndex": 1,
     "marks": 1,
     "contentEn": "Three resistors of $10\\,\\Omega$, $15\\,\\Omega$ and $5\\,\\Omega$ are connected in series. Find the total resistance.",
     "optionsEn": [
-      "$750\\,\\text{\\Omega}$",
-      "$30\\,\\text{\\Omega}$",
-      "$2.7273\\,\\text{\\Omega}$",
-      "$25\\,\\text{\\Omega}$"
+      "$750\\,\\Omega$",
+      "$30\\,\\Omega$",
+      "$2.7273\\,\\Omega$",
+      "$25\\,\\Omega$"
     ],
-    "explanationEn": "In series there is only one path, so the resistances simply add: $R = 10 + 15 + 5 = 30\\,\\Omega$. $2.7273\\,\\Omega$ comes from the parallel formula $1/R = \\sum 1/R_i$. The test is whether the current branches: in series it does not, and the total must be *larger* than any single resistor; in parallel it does, and the total must be *smaller* than the smallest. $25\\,\\Omega$ omits the third resistor, and the last option multiplies instead of adding.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "In series there is only one path for the current, so the resistances add: $R = 10 + 15 + 5 = 30\\,\\Omega$. A quick check: a series total is always larger than any one resistor; a parallel total is always smaller than the smallest.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$10 \\times 15 \\times 5 = 750$ 把相加誤作相乘。",
+        "en": "$10 \\times 15 \\times 5 = 750$ multiplies the resistances instead of adding them."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。串聯時電阻直接相加：$10 + 15 + 5 = 30\\,\\Omega$。",
+        "en": "Correct. In series the resistances simply add: $10 + 15 + 5 = 30\\,\\Omega$."
+      },
+      {
+        "optionId": 2,
+        "zh": "這是並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{10} + \\dfrac{1}{15} + \\dfrac{1}{5}$ 的結果（$R \\approx 2.7273\\,\\Omega$），但三個電阻是串聯的。串聯的總電阻必定大於其中任何一個。",
+        "en": "This is the parallel formula $\\dfrac{1}{R} = \\dfrac{1}{10} + \\dfrac{1}{15} + \\dfrac{1}{5}$ (giving $R \\approx 2.7273\\,\\Omega$), but the three resistors are in series. A series total is always larger than any one of them."
+      },
+      {
+        "optionId": 3,
+        "zh": "$10 + 15 = 25$ 漏了第三個電阻 $5\\,\\Omega$。",
+        "en": "$10 + 15 = 25$ leaves out the third resistor, $5\\,\\Omega$."
+      }
+    ]
   },
   {
     "id": "phy_rep_0019",
@@ -2091,19 +2223,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "兩個電阻並聯後的總電阻為 $2\\,\\Omega$。已知其中一個為 $6\\,\\Omega$，求另一個。",
     "explanation": "並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$，移項得 $\\dfrac{1}{R_2} = \\dfrac{1}{2} - \\dfrac{1}{6}$，故 $R_2 = 3\\,\\Omega$。$4\\,\\Omega$ 把電阻本身相減，那是串聯的算法用錯了地方——並聯要相加的是【倒數】，不是電阻。驗算方法很簡單：並聯的總電阻必定小於任何一個分支，$2 < 6$ 與 $2 < 3$ 都成立，答案就合理。",
     "options": [
-      "$8\\,\\text{\\Omega}$",
-      "$12\\,\\text{\\Omega}$",
-      "$3\\,\\text{\\Omega}$",
-      "$4\\,\\text{\\Omega}$"
+      "$8\\,\\Omega$",
+      "$12\\,\\Omega$",
+      "$3\\,\\Omega$",
+      "$4\\,\\Omega$"
     ],
     "correctIndex": 2,
     "marks": 1,
     "contentEn": "Two resistors in parallel give a total resistance of $2\\,\\Omega$. One of them is $6\\,\\Omega$. Find the other.",
     "optionsEn": [
-      "$8\\,\\text{\\Omega}$",
-      "$12\\,\\text{\\Omega}$",
-      "$3\\,\\text{\\Omega}$",
-      "$4\\,\\text{\\Omega}$"
+      "$8\\,\\Omega$",
+      "$12\\,\\Omega$",
+      "$3\\,\\Omega$",
+      "$4\\,\\Omega$"
     ],
     "explanationEn": "From $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$ we get $\\dfrac{1}{R_2} = \\dfrac{1}{2} - \\dfrac{1}{6}$, so $R_2 = 3\\,\\Omega$. $4\\,\\Omega$ subtracts the resistances themselves, applying series arithmetic in the wrong place: in parallel it is the *reciprocals* that add. The check is quick — a parallel total must be smaller than either branch, and both $2 < 6$ and $2 < 3$ hold.",
     "frameworkEn": "Auto-gated"
@@ -2123,19 +2255,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "兩個電阻並聯後的總電阻為 $4\\,\\Omega$。已知其中一個為 $12\\,\\Omega$，求另一個。",
     "explanation": "並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$，移項得 $\\dfrac{1}{R_2} = \\dfrac{1}{4} - \\dfrac{1}{12}$，故 $R_2 = 6\\,\\Omega$。$8\\,\\Omega$ 把電阻本身相減，那是串聯的算法用錯了地方——並聯要相加的是【倒數】，不是電阻。驗算方法很簡單：並聯的總電阻必定小於任何一個分支，$4 < 12$ 與 $4 < 6$ 都成立，答案就合理。",
     "options": [
-      "$8\\,\\text{\\Omega}$",
-      "$16\\,\\text{\\Omega}$",
-      "$48\\,\\text{\\Omega}$",
-      "$6\\,\\text{\\Omega}$"
+      "$8\\,\\Omega$",
+      "$16\\,\\Omega$",
+      "$48\\,\\Omega$",
+      "$6\\,\\Omega$"
     ],
     "correctIndex": 3,
     "marks": 1,
     "contentEn": "Two resistors in parallel give a total resistance of $4\\,\\Omega$. One of them is $12\\,\\Omega$. Find the other.",
     "optionsEn": [
-      "$8\\,\\text{\\Omega}$",
-      "$16\\,\\text{\\Omega}$",
-      "$48\\,\\text{\\Omega}$",
-      "$6\\,\\text{\\Omega}$"
+      "$8\\,\\Omega$",
+      "$16\\,\\Omega$",
+      "$48\\,\\Omega$",
+      "$6\\,\\Omega$"
     ],
     "explanationEn": "From $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$ we get $\\dfrac{1}{R_2} = \\dfrac{1}{4} - \\dfrac{1}{12}$, so $R_2 = 6\\,\\Omega$. $8\\,\\Omega$ subtracts the resistances themselves, applying series arithmetic in the wrong place: in parallel it is the *reciprocals* that add. The check is quick — a parallel total must be smaller than either branch, and both $4 < 12$ and $4 < 6$ hold.",
     "frameworkEn": "Auto-gated"
@@ -2155,19 +2287,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "兩個電阻並聯後的總電阻為 $3\\,\\Omega$。已知其中一個為 $6\\,\\Omega$，求另一個。",
     "explanation": "並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$，移項得 $\\dfrac{1}{R_2} = \\dfrac{1}{3} - \\dfrac{1}{6}$，故 $R_2 = 6\\,\\Omega$。$3\\,\\Omega$ 把電阻本身相減，那是串聯的算法用錯了地方——並聯要相加的是【倒數】，不是電阻。驗算方法很簡單：並聯的總電阻必定小於任何一個分支，$3 < 6$ 與 $3 < 6$ 都成立，答案就合理。",
     "options": [
-      "$6\\,\\text{\\Omega}$",
-      "$3\\,\\text{\\Omega}$",
-      "$9\\,\\text{\\Omega}$",
-      "$18\\,\\text{\\Omega}$"
+      "$6\\,\\Omega$",
+      "$3\\,\\Omega$",
+      "$9\\,\\Omega$",
+      "$18\\,\\Omega$"
     ],
     "correctIndex": 0,
     "marks": 1,
     "contentEn": "Two resistors in parallel give a total resistance of $3\\,\\Omega$. One of them is $6\\,\\Omega$. Find the other.",
     "optionsEn": [
-      "$6\\,\\text{\\Omega}$",
-      "$3\\,\\text{\\Omega}$",
-      "$9\\,\\text{\\Omega}$",
-      "$18\\,\\text{\\Omega}$"
+      "$6\\,\\Omega$",
+      "$3\\,\\Omega$",
+      "$9\\,\\Omega$",
+      "$18\\,\\Omega$"
     ],
     "explanationEn": "From $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$ we get $\\dfrac{1}{R_2} = \\dfrac{1}{3} - \\dfrac{1}{6}$, so $R_2 = 6\\,\\Omega$. $3\\,\\Omega$ subtracts the resistances themselves, applying series arithmetic in the wrong place: in parallel it is the *reciprocals* that add. The check is quick — a parallel total must be smaller than either branch, and both $3 < 6$ and $3 < 6$ hold.",
     "frameworkEn": "Auto-gated"
@@ -2187,19 +2319,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "兩個電阻並聯後的總電阻為 $6\\,\\Omega$。已知其中一個為 $10\\,\\Omega$，求另一個。",
     "explanation": "並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$，移項得 $\\dfrac{1}{R_2} = \\dfrac{1}{6} - \\dfrac{1}{10}$，故 $R_2 = 15\\,\\Omega$。$4\\,\\Omega$ 把電阻本身相減，那是串聯的算法用錯了地方——並聯要相加的是【倒數】，不是電阻。驗算方法很簡單：並聯的總電阻必定小於任何一個分支，$6 < 10$ 與 $6 < 15$ 都成立，答案就合理。",
     "options": [
-      "$60\\,\\text{\\Omega}$",
-      "$15\\,\\text{\\Omega}$",
-      "$4\\,\\text{\\Omega}$",
-      "$16\\,\\text{\\Omega}$"
+      "$60\\,\\Omega$",
+      "$15\\,\\Omega$",
+      "$4\\,\\Omega$",
+      "$16\\,\\Omega$"
     ],
     "correctIndex": 1,
     "marks": 1,
     "contentEn": "Two resistors in parallel give a total resistance of $6\\,\\Omega$. One of them is $10\\,\\Omega$. Find the other.",
     "optionsEn": [
-      "$60\\,\\text{\\Omega}$",
-      "$15\\,\\text{\\Omega}$",
-      "$4\\,\\text{\\Omega}$",
-      "$16\\,\\text{\\Omega}$"
+      "$60\\,\\Omega$",
+      "$15\\,\\Omega$",
+      "$4\\,\\Omega$",
+      "$16\\,\\Omega$"
     ],
     "explanationEn": "From $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$ we get $\\dfrac{1}{R_2} = \\dfrac{1}{6} - \\dfrac{1}{10}$, so $R_2 = 15\\,\\Omega$. $4\\,\\Omega$ subtracts the resistances themselves, applying series arithmetic in the wrong place: in parallel it is the *reciprocals* that add. The check is quick — a parallel total must be smaller than either branch, and both $6 < 10$ and $6 < 15$ hold.",
     "frameworkEn": "Auto-gated"
@@ -2219,19 +2351,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "兩個電阻並聯後的總電阻為 $2.4\\,\\Omega$。已知其中一個為 $4\\,\\Omega$，求另一個。",
     "explanation": "並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$，移項得 $\\dfrac{1}{R_2} = \\dfrac{1}{2.4} - \\dfrac{1}{4}$，故 $R_2 = 6\\,\\Omega$。$1.6\\,\\Omega$ 把電阻本身相減，那是串聯的算法用錯了地方——並聯要相加的是【倒數】，不是電阻。驗算方法很簡單：並聯的總電阻必定小於任何一個分支，$2.4 < 4$ 與 $2.4 < 6$ 都成立，答案就合理。",
     "options": [
-      "$6.4\\,\\text{\\Omega}$",
-      "$9.6\\,\\text{\\Omega}$",
-      "$6\\,\\text{\\Omega}$",
-      "$1.6\\,\\text{\\Omega}$"
+      "$6.4\\,\\Omega$",
+      "$9.6\\,\\Omega$",
+      "$6\\,\\Omega$",
+      "$1.6\\,\\Omega$"
     ],
     "correctIndex": 2,
     "marks": 1,
     "contentEn": "Two resistors in parallel give a total resistance of $2.4\\,\\Omega$. One of them is $4\\,\\Omega$. Find the other.",
     "optionsEn": [
-      "$6.4\\,\\text{\\Omega}$",
-      "$9.6\\,\\text{\\Omega}$",
-      "$6\\,\\text{\\Omega}$",
-      "$1.6\\,\\text{\\Omega}$"
+      "$6.4\\,\\Omega$",
+      "$9.6\\,\\Omega$",
+      "$6\\,\\Omega$",
+      "$1.6\\,\\Omega$"
     ],
     "explanationEn": "From $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$ we get $\\dfrac{1}{R_2} = \\dfrac{1}{2.4} - \\dfrac{1}{4}$, so $R_2 = 6\\,\\Omega$. $1.6\\,\\Omega$ subtracts the resistances themselves, applying series arithmetic in the wrong place: in parallel it is the *reciprocals* that add. The check is quick — a parallel total must be smaller than either branch, and both $2.4 < 4$ and $2.4 < 6$ hold.",
     "frameworkEn": "Auto-gated"
@@ -2251,19 +2383,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "兩個電阻並聯後的總電阻為 $5\\,\\Omega$。已知其中一個為 $20\\,\\Omega$，求另一個。",
     "explanation": "並聯公式 $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$，移項得 $\\dfrac{1}{R_2} = \\dfrac{1}{5} - \\dfrac{1}{20}$，故 $R_2 = 6.6667\\,\\Omega$。$15\\,\\Omega$ 把電阻本身相減，那是串聯的算法用錯了地方——並聯要相加的是【倒數】，不是電阻。驗算方法很簡單：並聯的總電阻必定小於任何一個分支，$5 < 20$ 與 $5 < 6.6667$ 都成立，答案就合理。",
     "options": [
-      "$15\\,\\text{\\Omega}$",
-      "$25\\,\\text{\\Omega}$",
-      "$100\\,\\text{\\Omega}$",
-      "$6.6667\\,\\text{\\Omega}$"
+      "$15\\,\\Omega$",
+      "$25\\,\\Omega$",
+      "$100\\,\\Omega$",
+      "$6.6667\\,\\Omega$"
     ],
     "correctIndex": 3,
     "marks": 1,
     "contentEn": "Two resistors in parallel give a total resistance of $5\\,\\Omega$. One of them is $20\\,\\Omega$. Find the other.",
     "optionsEn": [
-      "$15\\,\\text{\\Omega}$",
-      "$25\\,\\text{\\Omega}$",
-      "$100\\,\\text{\\Omega}$",
-      "$6.6667\\,\\text{\\Omega}$"
+      "$15\\,\\Omega$",
+      "$25\\,\\Omega$",
+      "$100\\,\\Omega$",
+      "$6.6667\\,\\Omega$"
     ],
     "explanationEn": "From $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$ we get $\\dfrac{1}{R_2} = \\dfrac{1}{5} - \\dfrac{1}{20}$, so $R_2 = 6.6667\\,\\Omega$. $15\\,\\Omega$ subtracts the resistances themselves, applying series arithmetic in the wrong place: in parallel it is the *reciprocals* that add. The check is quick — a parallel total must be smaller than either branch, and both $5 < 20$ and $5 < 6.6667$ hold.",
     "frameworkEn": "Auto-gated"
@@ -2873,19 +3005,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "一個電動勢為 $12\\,\\text{V}$ 的電池接上負載後，端電壓降至 $11.4\\,\\text{V}$，此時電流為 $3\\,\\text{A}$。求電池的內阻。",
     "explanation": "電動勢分成兩部分：一部分落在外電路（端電壓），餘下的落在內阻上。內阻上的電壓 $= 12 - 11.4 = 0.6\\,\\text{V}$，故 $r = 0.6/3 = 0.2\\,\\Omega$。$3.8\\,\\Omega$ 用了端電壓，所得是【外】電阻，不是內阻；$4\\,\\Omega$ 用了整個電動勢，所得是內外電阻之和。$0.6\\,\\Omega$ 停在電壓差就當成電阻，漏了除以電流——留意單位就會發現不對。",
     "options": [
-      "$4\\,\\text{\\Omega}$",
-      "$3.8\\,\\text{\\Omega}$",
-      "$0.6\\,\\text{\\Omega}$",
-      "$0.2\\,\\text{\\Omega}$"
+      "$4\\,\\Omega$",
+      "$3.8\\,\\Omega$",
+      "$0.6\\,\\Omega$",
+      "$0.2\\,\\Omega$"
     ],
     "correctIndex": 3,
     "marks": 1,
     "contentEn": "A cell of e.m.f. $12\\,\\text{V}$ has its terminal p.d. drop to $11.4\\,\\text{V}$ when it delivers $3\\,\\text{A}$. Find the internal resistance.",
     "optionsEn": [
-      "$4\\,\\text{\\Omega}$",
-      "$3.8\\,\\text{\\Omega}$",
-      "$0.6\\,\\text{\\Omega}$",
-      "$0.2\\,\\text{\\Omega}$"
+      "$4\\,\\Omega$",
+      "$3.8\\,\\Omega$",
+      "$0.6\\,\\Omega$",
+      "$0.2\\,\\Omega$"
     ],
     "explanationEn": "The e.m.f. splits in two: part appears across the external circuit (the terminal p.d.) and the rest is lost inside the cell. The p.d. across the internal resistance is $12 - 11.4 = 0.6\\,\\text{V}$, so $r = 0.6/3 = 0.2\\,\\Omega$. $3.8\\,\\Omega$ uses the terminal p.d. and gives the *external* resistance; $4\\,\\Omega$ uses the whole e.m.f. and gives internal plus external. $0.6\\,\\Omega$ stops at the voltage difference without dividing by the current — the unit gives it away.",
     "frameworkEn": "Auto-gated"
@@ -2905,19 +3037,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "一個電動勢為 $9\\,\\text{V}$ 的電池接上負載後，端電壓降至 $8.4\\,\\text{V}$，此時電流為 $2\\,\\text{A}$。求電池的內阻。",
     "explanation": "電動勢分成兩部分：一部分落在外電路（端電壓），餘下的落在內阻上。內阻上的電壓 $= 9 - 8.4 = 0.6\\,\\text{V}$，故 $r = 0.6/2 = 0.3\\,\\Omega$。$4.2\\,\\Omega$ 用了端電壓，所得是【外】電阻，不是內阻；$4.5\\,\\Omega$ 用了整個電動勢，所得是內外電阻之和。$0.6\\,\\Omega$ 停在電壓差就當成電阻，漏了除以電流——留意單位就會發現不對。",
     "options": [
-      "$0.3\\,\\text{\\Omega}$",
-      "$4.5\\,\\text{\\Omega}$",
-      "$4.2\\,\\text{\\Omega}$",
-      "$0.6\\,\\text{\\Omega}$"
+      "$0.3\\,\\Omega$",
+      "$4.5\\,\\Omega$",
+      "$4.2\\,\\Omega$",
+      "$0.6\\,\\Omega$"
     ],
     "correctIndex": 0,
     "marks": 1,
     "contentEn": "A cell of e.m.f. $9\\,\\text{V}$ has its terminal p.d. drop to $8.4\\,\\text{V}$ when it delivers $2\\,\\text{A}$. Find the internal resistance.",
     "optionsEn": [
-      "$0.3\\,\\text{\\Omega}$",
-      "$4.5\\,\\text{\\Omega}$",
-      "$4.2\\,\\text{\\Omega}$",
-      "$0.6\\,\\text{\\Omega}$"
+      "$0.3\\,\\Omega$",
+      "$4.5\\,\\Omega$",
+      "$4.2\\,\\Omega$",
+      "$0.6\\,\\Omega$"
     ],
     "explanationEn": "The e.m.f. splits in two: part appears across the external circuit (the terminal p.d.) and the rest is lost inside the cell. The p.d. across the internal resistance is $9 - 8.4 = 0.6\\,\\text{V}$, so $r = 0.6/2 = 0.3\\,\\Omega$. $4.2\\,\\Omega$ uses the terminal p.d. and gives the *external* resistance; $4.5\\,\\Omega$ uses the whole e.m.f. and gives internal plus external. $0.6\\,\\Omega$ stops at the voltage difference without dividing by the current — the unit gives it away.",
     "frameworkEn": "Auto-gated"
@@ -2937,19 +3069,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "一個電動勢為 $6\\,\\text{V}$ 的電池接上負載後，端電壓降至 $5.6\\,\\text{V}$，此時電流為 $4\\,\\text{A}$。求電池的內阻。",
     "explanation": "電動勢分成兩部分：一部分落在外電路（端電壓），餘下的落在內阻上。內阻上的電壓 $= 6 - 5.6 = 0.4\\,\\text{V}$，故 $r = 0.4/4 = 0.1\\,\\Omega$。$1.4\\,\\Omega$ 用了端電壓，所得是【外】電阻，不是內阻；$1.5\\,\\Omega$ 用了整個電動勢，所得是內外電阻之和。$0.4\\,\\Omega$ 停在電壓差就當成電阻，漏了除以電流——留意單位就會發現不對。",
     "options": [
-      "$0.4\\,\\text{\\Omega}$",
-      "$0.1\\,\\text{\\Omega}$",
-      "$1.5\\,\\text{\\Omega}$",
-      "$1.4\\,\\text{\\Omega}$"
+      "$0.4\\,\\Omega$",
+      "$0.1\\,\\Omega$",
+      "$1.5\\,\\Omega$",
+      "$1.4\\,\\Omega$"
     ],
     "correctIndex": 1,
     "marks": 1,
     "contentEn": "A cell of e.m.f. $6\\,\\text{V}$ has its terminal p.d. drop to $5.6\\,\\text{V}$ when it delivers $4\\,\\text{A}$. Find the internal resistance.",
     "optionsEn": [
-      "$0.4\\,\\text{\\Omega}$",
-      "$0.1\\,\\text{\\Omega}$",
-      "$1.5\\,\\text{\\Omega}$",
-      "$1.4\\,\\text{\\Omega}$"
+      "$0.4\\,\\Omega$",
+      "$0.1\\,\\Omega$",
+      "$1.5\\,\\Omega$",
+      "$1.4\\,\\Omega$"
     ],
     "explanationEn": "The e.m.f. splits in two: part appears across the external circuit (the terminal p.d.) and the rest is lost inside the cell. The p.d. across the internal resistance is $6 - 5.6 = 0.4\\,\\text{V}$, so $r = 0.4/4 = 0.1\\,\\Omega$. $1.4\\,\\Omega$ uses the terminal p.d. and gives the *external* resistance; $1.5\\,\\Omega$ uses the whole e.m.f. and gives internal plus external. $0.4\\,\\Omega$ stops at the voltage difference without dividing by the current — the unit gives it away.",
     "frameworkEn": "Auto-gated"
@@ -2969,19 +3101,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "一個電動勢為 $12\\,\\text{V}$ 的電池接上負載後，端電壓降至 $10.8\\,\\text{V}$，此時電流為 $4\\,\\text{A}$。求電池的內阻。",
     "explanation": "電動勢分成兩部分：一部分落在外電路（端電壓），餘下的落在內阻上。內阻上的電壓 $= 12 - 10.8 = 1.2\\,\\text{V}$，故 $r = 1.2/4 = 0.3\\,\\Omega$。$2.7\\,\\Omega$ 用了端電壓，所得是【外】電阻，不是內阻；$3\\,\\Omega$ 用了整個電動勢，所得是內外電阻之和。$1.2\\,\\Omega$ 停在電壓差就當成電阻，漏了除以電流——留意單位就會發現不對。",
     "options": [
-      "$2.7\\,\\text{\\Omega}$",
-      "$1.2\\,\\text{\\Omega}$",
-      "$0.3\\,\\text{\\Omega}$",
-      "$3\\,\\text{\\Omega}$"
+      "$2.7\\,\\Omega$",
+      "$1.2\\,\\Omega$",
+      "$0.3\\,\\Omega$",
+      "$3\\,\\Omega$"
     ],
     "correctIndex": 2,
     "marks": 1,
     "contentEn": "A cell of e.m.f. $12\\,\\text{V}$ has its terminal p.d. drop to $10.8\\,\\text{V}$ when it delivers $4\\,\\text{A}$. Find the internal resistance.",
     "optionsEn": [
-      "$2.7\\,\\text{\\Omega}$",
-      "$1.2\\,\\text{\\Omega}$",
-      "$0.3\\,\\text{\\Omega}$",
-      "$3\\,\\text{\\Omega}$"
+      "$2.7\\,\\Omega$",
+      "$1.2\\,\\Omega$",
+      "$0.3\\,\\Omega$",
+      "$3\\,\\Omega$"
     ],
     "explanationEn": "The e.m.f. splits in two: part appears across the external circuit (the terminal p.d.) and the rest is lost inside the cell. The p.d. across the internal resistance is $12 - 10.8 = 1.2\\,\\text{V}$, so $r = 1.2/4 = 0.3\\,\\Omega$. $2.7\\,\\Omega$ uses the terminal p.d. and gives the *external* resistance; $3\\,\\Omega$ uses the whole e.m.f. and gives internal plus external. $1.2\\,\\Omega$ stops at the voltage difference without dividing by the current — the unit gives it away.",
     "frameworkEn": "Auto-gated"
@@ -3001,19 +3133,19 @@ export const physicsAutoQuestions: Question[] = [
     "content": "一個電動勢為 $24\\,\\text{V}$ 的電池接上負載後，端電壓降至 $22.5\\,\\text{V}$，此時電流為 $5\\,\\text{A}$。求電池的內阻。",
     "explanation": "電動勢分成兩部分：一部分落在外電路（端電壓），餘下的落在內阻上。內阻上的電壓 $= 24 - 22.5 = 1.5\\,\\text{V}$，故 $r = 1.5/5 = 0.3\\,\\Omega$。$4.5\\,\\Omega$ 用了端電壓，所得是【外】電阻，不是內阻；$4.8\\,\\Omega$ 用了整個電動勢，所得是內外電阻之和。$1.5\\,\\Omega$ 停在電壓差就當成電阻，漏了除以電流——留意單位就會發現不對。",
     "options": [
-      "$4.8\\,\\text{\\Omega}$",
-      "$4.5\\,\\text{\\Omega}$",
-      "$1.5\\,\\text{\\Omega}$",
-      "$0.3\\,\\text{\\Omega}$"
+      "$4.8\\,\\Omega$",
+      "$4.5\\,\\Omega$",
+      "$1.5\\,\\Omega$",
+      "$0.3\\,\\Omega$"
     ],
     "correctIndex": 3,
     "marks": 1,
     "contentEn": "A cell of e.m.f. $24\\,\\text{V}$ has its terminal p.d. drop to $22.5\\,\\text{V}$ when it delivers $5\\,\\text{A}$. Find the internal resistance.",
     "optionsEn": [
-      "$4.8\\,\\text{\\Omega}$",
-      "$4.5\\,\\text{\\Omega}$",
-      "$1.5\\,\\text{\\Omega}$",
-      "$0.3\\,\\text{\\Omega}$"
+      "$4.8\\,\\Omega$",
+      "$4.5\\,\\Omega$",
+      "$1.5\\,\\Omega$",
+      "$0.3\\,\\Omega$"
     ],
     "explanationEn": "The e.m.f. splits in two: part appears across the external circuit (the terminal p.d.) and the rest is lost inside the cell. The p.d. across the internal resistance is $24 - 22.5 = 1.5\\,\\text{V}$, so $r = 1.5/5 = 0.3\\,\\Omega$. $4.5\\,\\Omega$ uses the terminal p.d. and gives the *external* resistance; $4.8\\,\\Omega$ uses the whole e.m.f. and gives internal plus external. $1.5\\,\\Omega$ stops at the voltage difference without dividing by the current — the unit gives it away.",
     "frameworkEn": "Auto-gated"

@@ -459,6 +459,14 @@ const PHY_01: Record<string, Tpl> = {
       return { correct: x((P * t * c) / 1000), wattsAsKw: x(P * t * c), energyOnly: x((P * t) / 1000), noTime: x((P * c) / 1000) }
     },
   },
+  // PHY-02 (founders' reply 39a): options use \Omega after the notation fix.
+  'series-total-resistance': {
+    parse: (s) => { const m = s.match(/^三個電阻 \$([\d.]+)\\,\\Omega\$、\$([\d.]+)\\,\\Omega\$ 及 \$([\d.]+)\\,\\Omega\$ 串聯/); return m ? { R1: +m[1], R2: +m[2], R3: +m[3] } : null },
+    expect: ({ R1, R2, R3 }) => {
+      const o = (v: number) => both(`$${r4(v)}\\,\\Omega$`)
+      return { correct: o(R1 + R2 + R3), parallel: o(1 / (1 / R1 + 1 / R2 + 1 / R3)), twoOnly: o(R1 + R2), product: o(R1 * R2 * R3) }
+    },
+  },
   'series-voltage-divider': {
     parse: (s) => { const m = s.match(/^\$([\d.]+)\\,\\text\{V\}\$ 電源接上串聯的 \$([\d.]+)\\,\\Omega\$ 與 \$([\d.]+)\\,\\Omega\$。求 \$([\d.]+)\\,\\Omega\$ 兩端的電壓/); return m && m[4] === m[2] ? { V: +m[1], R1: +m[2], R2: +m[3] } : null },
     expect: ({ V, R1, R2 }) => ({ correct: volt((V * R1) / (R1 + R2)), otherResistor: volt((V * R2) / (R1 + R2)), half: volt(V / 2), parallelResistance: volt((V * R1 * R2) / ((R1 + R2) * (R1 + R2))) }),
@@ -595,9 +603,13 @@ test('PHY-01: six physics templates; series resistance held back (unrenderable O
   assert.ok(!b.repairs.some((r) => /^phy_rep_001[3-8]$/.test(r.id)), 'the series-resistance template is not in this batch')
 })
 
+test('PHY-02: series total resistance, after the Omega notation fix', () => {
+  checkBatch('PHY-02', 'physics', 6, PHY_01)
+})
+
 test('every machine-gate restore is from a computed batch recomputed in this file', () => {
   const ok = recomputedHere()
-  assert.ok(['M1-01', 'M1-02', 'M1-03', 'M1-04', 'M2-01', 'PHY-01'].every((x) => ok.has(x)), 'every computed batch so far is recomputed here')
+  assert.ok(['M1-01', 'M1-02', 'M1-03', 'M1-04', 'M2-01', 'PHY-01', 'PHY-02'].every((x) => ok.has(x)), 'every computed batch so far is recomputed here')
   for (const [id, r] of Object.entries(log)) if (r.restoreBasis === 'machine-gate') assert.ok(ok.has(r.batch ?? ''), `${id}: ${r.batch}`)
 })
 
