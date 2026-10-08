@@ -1,8 +1,9 @@
 -- 0023 —— 匿名練習計數（practice_counts）
 --
 -- 依據：創辦人回覆 40a（2026-10-08），docs/learning-loop-measurement-plan-2026-10-08.md 方案丙。
--- ⚠️ 未套用到正式資料庫：須創辦人另行批准（計劃書第七節第 1 點）。套用時須同日開啟
---    lib/practiceCount.ts 的 PRACTICE_COUNTS_ENABLED，並更新私隱頁。
+-- 2026-10-08 經創辦人回覆 44a 套用到正式資料庫（Supabase migration 名稱 practice_counts）；
+-- 同日開啟 lib/practiceCount.ts 的 PRACTICE_COUNTS_ENABLED，私隱頁升至 2026-10-08.v1（回覆 42a）。
+-- 不數「打開解析」（回覆 43a）。
 --
 -- 每日、每科、每種動作一行，只存累計數目，不存逐次紀錄：
 --   started    一節練習開始；from_result = 由結果頁的再練連結開始

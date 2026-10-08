@@ -9,7 +9,7 @@ import { safeLog } from '@/lib/safeLog'
 // route never looks up the session, the IP address or the user agent. Abuse is limited per
 // IP in proxy.ts (in memory only).
 //
-// Counts only on the production deployment, and only once PRACTICE_COUNTS_ENABLED is on;
+// Counts only on the production deployment, and only while PRACTICE_COUNTS_ENABLED is on;
 // otherwise it answers { ok: true, counted: false } and touches nothing, so local and
 // preview runs never write to the shared database.
 

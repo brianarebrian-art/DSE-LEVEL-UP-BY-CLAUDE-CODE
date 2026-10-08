@@ -101,10 +101,12 @@ test('no page or component reads the counts back: students never see them', () =
   assert.deepEqual(all.filter((p) => /['"]bump_practice_count['"]/.test(read(p))), ['app/api/practice-count/route.ts'])
 })
 
-test('nothing is sent until the counts are switched on together with the privacy page', () => {
+test('the counts are on only while the privacy page describes them', () => {
   const privacy = read('app/privacy/PrivacyClient.tsx')
   if (PRACTICE_COUNTS_ENABLED) {
-    assert.match(privacy, /practice-counts|數練習/, 'the privacy page must describe the counts before they are switched on')
+    assert.match(privacy, /title=\{en \? 'Counting practice sets' : '數練習次數'\}/, 'the privacy page must describe the counts while they are on')
+    // 43a: opening an explanation is not counted, so nothing about explanations is sent.
+    assert.doesNotMatch(strip(read('lib/practiceCount.ts')), /explanation/i)
   } else {
     // While off, the client sends nothing.
     assert.match(read('lib/practiceCount.ts'), /export function sendPracticeCount\(c: PracticeCount\): void \{\n  if \(!PRACTICE_COUNTS_ENABLED\) return/)
