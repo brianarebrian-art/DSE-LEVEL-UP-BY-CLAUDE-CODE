@@ -50,6 +50,7 @@ import TodayNote from '@/components/TodayNote'
 import TrailStrip from '@/components/TrailStrip'
 import Mascot from '@/components/Mascot'
 import { SESSION_SIZE } from '@/lib/entitlements'
+import { IG_GROUP_ENTRY_NOTE } from '@/lib/site'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -701,6 +702,7 @@ export default function DashboardPageClient() {
                 <div className="text-xs text-ink-muted mt-0.5">
                   {en ? 'IG Group · run by fellow students' : 'IG Group · 同路人管理'}
                 </div>
+                <div className="text-xs text-ink-muted mt-0.5">{en ? IG_GROUP_ENTRY_NOTE.en : IG_GROUP_ENTRY_NOTE.zh}</div>
               </div>
             </div>
             <span className="text-xs text-rose shrink-0 group-hover:translate-x-0.5 transition-transform">

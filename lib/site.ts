@@ -11,3 +11,12 @@ export const OFFICIAL_SOCIAL = [
   { platform: 'Instagram', handle: '@dselevelup', href: 'https://www.instagram.com/dselevelup' },
   { platform: 'Threads', handle: '@dselevelup', href: 'https://www.threads.com/@dselevelup' },
 ] as const
+
+// 學生自發 Instagram 溫書群組的入口卡標示（創辦人回覆 36a，2026-10-08）。
+// 群組頁本身已有「非官方」聲明及離站確認，但入口卡（呼吸空間、學習紀錄頁）原本只寫
+// 「同戰友傾偈」「影子溫書室」，學生點擊前會以為是本站功能。凡連到 /relax/group 的卡
+// 都必須顯示此句，由 lib/__tests__/ig-group-entry.test.mts 檢查。
+export const IG_GROUP_ENTRY_NOTE = {
+  zh: '喺 Instagram・站外・唔係官方',
+  en: 'On Instagram · off-site · not official',
+} as const
