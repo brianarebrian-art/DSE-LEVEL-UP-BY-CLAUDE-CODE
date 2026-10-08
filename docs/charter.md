@@ -44,7 +44,7 @@
 ## 2. 項目定位與路徑
 
 - **項目名稱：** DSE LEVEL UP（唯一名稱，非 Aethel / 學無止境 / WisdomPath）
-- **官方連結：** https://dse-level-up-by-claude-code.vercel.app/
+- **官方連結：** https://www.dselevelup.com/（2026-10-08 起；舊網址 `dse-level-up-by-claude-code.vercel.app` 自動轉址。2026-10-09 創辦人回覆「58a」網站內全部改用新網址）
 - **目標受眾：** 12-18 歲香港 DSE 考生（P1 邊緣分數考生、P2 自修生、SEN/基層學生、前線老師/SENCO）
 - **創辦人模式：** 業餘娛樂模式，每週一次異步同步
 - **生產紀律：** 新題過機器閘即自動上線，創辦人事後覆核，有問題即退回（2026-09-26 Yuna 決定，詳見 §12）。

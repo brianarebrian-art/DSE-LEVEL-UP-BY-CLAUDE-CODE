@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : geography
-//   count    : 22  (easy 22 / medium 0 / hard 0)
-//   types    : mc 22 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 34  (easy 30 / medium 4 / hard 0)
+//   types    : mc 34 / text 0 / long 0
+//   updated  : 2026-10-08
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -715,5 +715,389 @@ export const geographyAutoQuestions: Question[] = [
     ],
     "explanationEn": "Fossil fuels formed from the remains of ancient organisms under long periods of heat and pressure; reserves are finite and replenish only over geological time, and burning them releases carbon that had been locked away, which makes them the principal source of human carbon dioxide emissions. Note two common confusions. Firewood and straw are biomass fuels, whose carbon cycles over years rather than millions of years, so they are a different case. Nuclear fuels release no carbon dioxide in use but raise questions of radioactive waste and safety, which form a separate set of issues. Sorting the categories is what makes a discussion of emission trade-offs accurate.",
     "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "rcl_geo_hz_9",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "plate_hazards",
+    "topicZh": "板塊與自然災害",
+    "topicEn": "Plates & Natural Hazards",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "甲、乙兩次地震的震級相同。甲地震的震源深度為 10 公里，乙地震的震源深度為 300 公里，兩者的震央附近都是人口密集的城市。哪一次地震在震央附近造成的破壞可能較大？原因是甚麼？",
+    "explanation": "震級相同，表示兩次地震釋放的能量相若。震源是地底岩層破裂、釋放能量的位置，震央則是地面上正對震源的一點。淺源地震的地震波傳到地面時距離較短、損耗較少，地面震動較強，破壞往往較大。震源深淺並不決定釋放能量的多少。破壞程度除了震級，還受震源深度、地質和建築物質素等因素影響，所以震級相同不代表破壞一樣。即使震源很淺，震源仍在地底，震央在地面，兩者並非同一位置。",
+    "options": [
+      "乙，因為震源較深，所以地震釋放的能量亦較多。",
+      "兩者相同，因為震級相同，破壞程度亦必定一樣。",
+      "甲，因為震源較淺，地震波傳到地面時損耗的能量較少。",
+      "甲，因為震源較淺，所以它的震央與震源位於同一位置。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Earthquakes A and B have the same magnitude. The focus of A is 10 km deep and the focus of B is 300 km deep, and both epicentres are near densely populated cities. Which earthquake is likely to cause more damage near its epicentre, and why?",
+    "optionsEn": [
+      "B, because a deeper focus means the earthquake releases more energy.",
+      "The same, because equal magnitude must mean equal damage.",
+      "A, because the focus is shallower, so the waves lose less energy before reaching the surface.",
+      "A, because with a shallow focus the epicentre and the focus are at the same place."
+    ],
+    "explanationEn": "Equal magnitude means the two earthquakes released similar amounts of energy. The focus is where rocks underground rupture and release energy; the epicentre is the point on the surface directly above it. Waves from a shallow focus travel a shorter distance to the surface and lose less energy, so shaking is stronger and damage is usually greater. Focal depth does not decide how much energy is released. Damage depends on depth, geology and building quality as well as magnitude, so equal magnitude does not mean equal damage. Even when the focus is shallow it is still underground while the epicentre is on the surface, so they are not the same place."
+  },
+  {
+    "id": "rcl_geo_floor_02",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "plate_hazards",
+    "topicZh": "板塊與災害",
+    "topicEn": "Plate Movement and Hazards",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某次地震的震源位於地底 15 公里。新聞報道指「這次地震的震央位於某城市以東 20 公里的海面」。下列哪項正確描述震源與震央的關係？",
+    "explanation": "震源是地底岩層破裂並釋放能量的實際位置；震央則在地面，是正對震源的一點。本題的震源在地底 15 公里，震央就是它正上方、城市以東 20 公里的海面。兩者是同一次地震的兩個位置，一在地底、一在地面，不能視為同一位置，亦不可對調。震央是地面上最接近震源的地方，震動通常最強烈，破壞往往最嚴重，而不是最輕微。",
+    "options": [
+      "震源與震央是同一位置，只是一個以深度描述、一個以地點描述。",
+      "震央位於地底 15 公里，震源則是城市以東 20 公里的海面。",
+      "震央是破壞最輕微的地方，因為它距離震源最遠。",
+      "震央是地面上位於震源正上方的一點，震源在其下方 15 公里處。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "The focus of an earthquake is 15 km underground. A news report says “the epicentre was at sea 20 km east of the city”. Which statement correctly describes how the focus and the epicentre are related?",
+    "optionsEn": [
+      "The focus and the epicentre are the same place, one described by depth and the other by location.",
+      "The epicentre is 15 km underground, and the focus is the sea surface 20 km east of the city.",
+      "The epicentre is where damage is lightest, because it is furthest from the focus.",
+      "The epicentre is the point on the surface directly above the focus, which lies 15 km below it."
+    ],
+    "explanationEn": "The focus is the actual place underground where rocks rupture and release energy; the epicentre is on the surface, directly above the focus. Here the focus is 15 km underground, and the epicentre is the point above it, at sea 20 km east of the city. They are two positions of the same earthquake, one underground and one on the surface, so they are neither the same place nor interchangeable. The epicentre is the surface point closest to the focus, where shaking is usually strongest and damage often greatest, not lightest."
+  },
+  {
+    "id": "rcl_geo_rv_24",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "rivers_coasts",
+    "topicZh": "河流與海岸環境",
+    "topicEn": "River & Coastal Environments",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某沙灘的沿岸漂移把沙粒由東向西搬運。政府在沙灘中段興建了一道與海岸垂直的丁壩。數年後最可能出現甚麼變化？",
+    "explanation": "沿岸漂移由斜向沖上沙灘的進流和垂直退回的回流造成，沙粒因而沿海岸呈鋸齒狀移動。本題的沙粒由東向西移動，丁壩擋住去路，沙粒便在來向的一側，即東側堆積。丁壩以西得不到東面的沙粒補充，原有沙粒卻繼續被搬走，所以沙灘變窄。認為西側積沙，是把搬運方向倒轉了。認為整個沙灘變闊，忽略了沙的總量並沒有增加：丁壩只改變沙粒停留的位置。認為沒有變化，則忽略了丁壩阻擋的正是沿海岸方向的搬運。",
+    "options": [
+      "丁壩東側積聚沙粒，西側的沙灘變窄。",
+      "丁壩西側積聚沙粒，東側的沙灘變窄。",
+      "丁壩兩側都積聚沙粒，整個沙灘變闊。",
+      "沙灘沒有變化，因為丁壩不影響沿岸漂移。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "On a beach, longshore drift carries sand from east to west. A groyne is built at right angles to the coast in the middle of the beach. What is most likely to happen over the next few years?",
+    "optionsEn": [
+      "Sand builds up on the east side of the groyne, and the beach to the west becomes narrower.",
+      "Sand builds up on the west side of the groyne, and the beach to the east becomes narrower.",
+      "Sand builds up on both sides, so the whole beach becomes wider.",
+      "Nothing changes, because a groyne does not affect longshore drift."
+    ],
+    "explanationEn": "Longshore drift comes from swash running up the beach at an angle and backwash running straight back, so sand zigzags along the coast. Here sand moves from east to west; the groyne blocks it, so sand piles up on the side it comes from, the east. West of the groyne no new sand arrives while existing sand is still carried away, so the beach narrows. Saying sand builds up on the west reverses the direction of transport. Saying the whole beach widens ignores that the groyne adds no sand; it only changes where sand stops. Saying nothing changes ignores that the groyne blocks exactly the movement along the coast."
+  },
+  {
+    "id": "rcl_geo_ub_48",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "urban",
+    "topicZh": "城市發展",
+    "topicEn": "Urban Development",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某國城市人口佔總人口的比例，由 1980 年的 25% 上升至 2020 年的 60%，同期農村人口持續減少。下列哪項最可能是這個轉變的主要原因？",
+    "explanation": "城市化是指居於城市的人口比例上升，主要由農村人口遷入城市造成。農村的推力（就業不足、收入低、服務缺乏）與城市的拉力（工作機會、教育和醫療服務）共同推動遷移，農村人口因而減少。城市居民遷往農村，只會令城市人口比例下降。總人口減少本身並不會令城市人口比例必然上升，比例變化要看城鄉人口各自的增減。農村土地面積與人口密度的變化，不能解釋城市人口比例的上升。",
+    "options": [
+      "大量城市居民遷往農村居住，令城市人口所佔的比例上升。",
+      "城市提供較多就業和教育機會，吸引農村人口遷入城市。",
+      "該國總人口減少，所以城市人口的比例必定隨之上升。",
+      "農村土地面積擴大，令農村的人口密度不斷下降。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "In a country, the share of the population living in cities rose from 25% in 1980 to 60% in 2020, while the rural population kept falling. Which is most likely the main cause of this change?",
+    "optionsEn": [
+      "Many city dwellers move to live in the countryside, raising the cities’ share of the population.",
+      "Cities offer more jobs and education, drawing people in from the countryside.",
+      "The total population fell, so the urban share must have risen.",
+      "Rural land area expanded, so rural population density kept falling."
+    ],
+    "explanationEn": "Urbanisation is a rise in the share of people living in cities, caused mainly by migration from the countryside. Push factors in rural areas (few jobs, low incomes, poor services) and pull factors in cities (jobs, education and health care) drive the move, so the rural population falls. City dwellers moving to the countryside would lower the urban share. A falling total population does not by itself make the urban share rise; that depends on how urban and rural numbers each change. Changes in rural land area or density do not explain a rising urban share."
+  },
+  {
+    "id": "rcl_geo_ub_62",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "urban",
+    "topicZh": "城市發展",
+    "topicEn": "Urban Development",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某已發展國家的大城市在過去二十年人口持續下降，周邊小鎮和鄉郊的人口則上升；同期高速鐵路和遙距辦公日益普及。下列哪項最能解釋這個轉變？",
+    "explanation": "大城市人口下降、周邊小鎮及鄉郊人口上升，屬反城市化。大城市擠迫、樓價高、環境質素欠佳，形成推力；鄉郊環境寧靜、居住空間較大，形成拉力。高速鐵路縮短通勤時間，遙距辦公令工作不必天天到市區，使人可以遷出大城市而仍能工作。人口遷入市中心是城市化，與題目的趨勢相反。題目沒有顯示大城市的工廠全部停產。出生率上升會令人口增加，與大城市人口下降的事實不符。",
+    "options": [
+      "大城市正經歷城市化，人口不斷由郊區遷入市中心居住。",
+      "鄉郊的工業大量發展，令大城市的工廠全部停產。",
+      "交通和通訊改善，人們可以遷離大城市居住而仍能上班。",
+      "大城市的出生率上升，令人口密度過高，居民因而被迫遷出。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Over the past twenty years, the large cities of a developed country have lost population while nearby small towns and rural areas have gained; over the same period high-speed rail and remote working have become common. Which statement best explains this change?",
+    "optionsEn": [
+      "The large cities are urbanising, with people moving from the suburbs into the centres.",
+      "Rural industry has grown so much that every factory in the large cities has closed.",
+      "Better transport and communications let people move out of the cities and still work.",
+      "Birth rates in the large cities rose, so crowding forced residents to move out."
+    ],
+    "explanationEn": "Large cities losing people while nearby towns and rural areas gain is counter-urbanisation. Crowding, high housing costs and a poorer environment in large cities push people out; quiet surroundings and more living space in rural areas pull them in. High-speed rail shortens commuting and remote working means people need not go to the city every day, so they can leave the city and still work. People moving into city centres is urbanisation, the opposite of the trend described. Nothing suggests every factory in the cities has closed. A rising birth rate would increase the population, which contradicts the fall in the cities."
+  },
+  {
+    "id": "rcl_geo_ub_59",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "urban",
+    "topicZh": "城市發展",
+    "topicEn": "Urban Development",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "下列四個地區之中，哪一個最可能發展成大都會帶？",
+    "explanation": "大都會帶是多個相鄰的大都市區不斷向外擴展，最終連成一片的巨型城市群。形成條件包括：多個大城市彼此相距不遠、有便捷的交通走廊連接，以及市郊持續擴展。沿海平原上的五個大城市同時具備這些條件。單一大城市與其他城市相距甚遠，難以與其他都市區相連。人口持續流失的小鎮，規模只會縮小。受法例保護的綠化帶限制城市向外擴展，正好阻止都市區相連。",
+    "options": [
+      "內陸高原上一個百萬人口的大城市，與最近的其他城市相距八百公里。",
+      "一片農業區內分佈着多個小鎮，人口持續流向遠方的其他大城市。",
+      "一個大城市的外圍劃有受法例保護的綠化帶，嚴禁興建任何房屋。",
+      "沿海平原上五個大城市相距約一百公里，由高速鐵路連接，市郊不斷擴展。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Which of the following four areas is most likely to develop into a megalopolis?",
+    "optionsEn": [
+      "A city of a million people on an inland plateau, 800 km from the nearest other city.",
+      "Small towns scattered across a farming area, with people steadily leaving for other, distant cities.",
+      "A large city ringed by a legally protected green belt where no housing may be built.",
+      "Five large cities about 100 km apart on a coastal plain, linked by high-speed rail, with suburbs spreading."
+    ],
+    "explanationEn": "A megalopolis forms when several neighbouring metropolitan areas keep spreading outwards until they merge into one giant urban region. The conditions are several large cities fairly close together, fast transport corridors linking them, and continuing suburban growth. The five coastal cities have all of these. A single city far from any other is unlikely to merge with other urban areas. Small towns that keep losing people will only shrink. A protected green belt limits outward growth and so prevents urban areas from joining up."
+  },
+  {
+    "id": "rcl_geo_fo_84",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "food",
+    "topicZh": "糧食與飢荒",
+    "topicEn": "Food & Famine",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某發展中國家的農民把種植稻米的農田改種咖啡，出口到歐美市場。下列哪項最可能是這個轉變對當地帶來的影響？",
+    "explanation": "咖啡是經濟作物，主要用作出售賺取現金，而不是供自家食用。改種咖啡後，農民的收入取決於國際市場的咖啡價格，價格下跌時收入便會大減；同時本地稻米產量減少，糧食供應或須更依賴進口，糧食安全的風險亦隨之上升。咖啡不能代替稻米作主糧，改種只會令糧食自給率下降。咖啡價格由國際市場決定，波動往往很大，收入並不穩定。種植咖啡的目的正是出口賺錢，不是自家飲用。",
+    "options": [
+      "農民收入受國際咖啡價格影響，當地糧食供應或須更依賴進口。",
+      "當地糧食自給率必定上升，因為咖啡可以代替稻米作主糧。",
+      "農民收入變得完全穩定，因為咖啡的收購價格由政府長期固定。",
+      "咖啡只供農民自家飲用，所以對當地經濟沒有任何影響。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Farmers in a developing country switch fields from growing rice to growing coffee for export to Europe and North America. Which is the most likely effect of this change on the country?",
+    "optionsEn": [
+      "Farm incomes depend on world coffee prices, and food supply may rely more on imports.",
+      "Food self-sufficiency must rise, because coffee can replace rice as a staple.",
+      "Farm incomes become completely stable, because the government fixes coffee prices for the long term.",
+      "The coffee is only for the farmers to drink, so it has no effect on the economy."
+    ],
+    "explanationEn": "Coffee is a cash crop, grown mainly for sale rather than for the household’s own use. After the switch, farm incomes depend on world coffee prices and fall sharply when prices drop; meanwhile less rice is grown locally, so food supply may rely more on imports and food security risks rise. Coffee cannot replace rice as a staple, so the switch lowers food self-sufficiency. Coffee prices are set by the world market and often swing widely, so incomes are not stable. The point of growing coffee is to export it for money, not to drink it at home."
+  },
+  {
+    "id": "rcl_geo_rf_93",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "rainforest",
+    "topicZh": "熱帶雨林",
+    "topicEn": "Tropical Rainforest",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "研究員發現熱帶雨林的林地地面只有約 2% 的陽光可以到達，大部分光線被上方各層的樹冠攔截。下列哪項最能解釋林地地面的植物多具寬大而薄的葉片？",
+    "explanation": "雨林自上而下分為露生層、樹冠層、下木層和地被層。上方各層攔截了大部分陽光，林地地面光線極弱。寬大而薄的葉片表面積大，可盡量吸收僅有的光線進行光合作用，這是對弱光環境的適應。雨林地面潮濕而非乾旱，寬大的葉片反而會增加蒸騰。地面只有約 2% 的陽光，根本不存在強光曬傷的問題。地被層的植物得到的光線最少，不可能長得比位於最高層的露生層樹木更高。",
+    "options": [
+      "寬大的葉片可以減少水分蒸發，以適應地面乾旱的環境。",
+      "寬大的葉片能盡量吸收微弱的光線，以進行光合作用。",
+      "寬大的葉片可以遮擋陽光，避免地面植物被強光曬傷。",
+      "寬大的葉片可以承接雨水，令植物長得比露生層更高。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Researchers find that only about 2% of sunlight reaches the floor of a tropical rainforest, as most light is intercepted by the layers of canopy above. Which statement best explains why plants on the forest floor often have broad, thin leaves?",
+    "optionsEn": [
+      "Broad leaves reduce water loss, suiting the dry conditions on the floor.",
+      "Broad leaves capture as much of the weak light as possible for photosynthesis.",
+      "Broad leaves shade the plants from strong sunlight that would scorch them.",
+      "Broad leaves catch rain, so the plants grow taller than the emergent layer."
+    ],
+    "explanationEn": "From top to bottom a rainforest has an emergent layer, a canopy, an understorey and a shrub layer near the floor. The layers above intercept most sunlight, so the floor is very dim. Broad, thin leaves have a large surface area to capture what little light there is for photosynthesis, an adaptation to low light. The rainforest floor is humid, not dry, and broad leaves would increase transpiration rather than reduce it. With only about 2% of the sunlight, there is no danger of scorching. Plants on the floor get the least light and cannot outgrow the trees of the emergent layer, the tallest of all."
+  },
+  {
+    "id": "rcl_geo_rf_98",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "rainforest",
+    "topicZh": "熱帶雨林",
+    "topicEn": "Tropical Rainforest",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "若亞馬遜雨林遭大規模砍伐並焚燒，大氣中的二氧化碳濃度最可能出現甚麼變化？原因是甚麼？",
+    "explanation": "雨林植物透過光合作用吸收二氧化碳、釋放氧氣，並把碳儲存在樹木和土壤中，所以被稱為「地球之肺」。大規模砍伐令吸收二氧化碳的植物減少，焚燒樹木更把原本儲存的碳以二氧化碳形式釋放到大氣，兩者都令濃度上升。砍伐後的空地缺乏植物，吸收二氧化碳的能力只會更低。海洋雖然能吸收部分二氧化碳，但不能吸收所有多出的份量。說雨林「吸收氧氣」，是把光合作用的方向弄反了。",
+    "options": [
+      "下降，因為砍伐後的空地可以直接吸收更多二氧化碳。",
+      "不變，因為海洋會自動吸收所有多出的二氧化碳。",
+      "上升，因為吸收二氧化碳的植物減少，焚燒亦釋放儲存的碳。",
+      "上升，因為雨林原本吸收氧氣，砍伐後氧氣會變成二氧化碳。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "If large areas of the Amazon rainforest are cleared and burned, how is the carbon dioxide concentration in the atmosphere most likely to change, and why?",
+    "optionsEn": [
+      "It falls, because the cleared land can absorb more carbon dioxide directly.",
+      "It stays the same, because the oceans absorb all the extra carbon dioxide.",
+      "It rises, because fewer plants absorb carbon dioxide and burning releases stored carbon.",
+      "It rises, because the forest absorbed oxygen, which turns into carbon dioxide after clearing."
+    ],
+    "explanationEn": "Rainforest plants take in carbon dioxide and give out oxygen by photosynthesis, and store carbon in trees and soil, which is why the forest is called the “lungs of the Earth”. Large-scale clearing leaves fewer plants to absorb carbon dioxide, and burning the trees releases their stored carbon as carbon dioxide, so the concentration rises on both counts. Cleared land with few plants absorbs even less carbon dioxide. The oceans absorb some carbon dioxide but not all of the extra. Saying the forest absorbed oxygen gets photosynthesis the wrong way round."
+  },
+  {
+    "id": "rcl_geo_floor_06",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "rivers_coasts",
+    "topicZh": "河流與海岸",
+    "topicEn": "Rivers and Coasts",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某河流上游的森林被大規模砍伐，改作農地。在同樣的暴雨下，下游的氾濫風險會出現甚麼變化？",
+    "explanation": "集水區是一條河流及其支流收集地表徑流的整片範圍，上游與下游同屬一個集水區。森林能截留雨水，樹根和落葉亦有助雨水下滲。砍伐後截留和下滲減少，更多雨水變成地表徑流，並更快流入河道，河水在短時間內急升，下游的氾濫風險因而上升。雨水在上游更快排走，正正會更快、更集中地到達下游。砍伐樹木會令蒸騰減少，而不是令蒸發量增加而令河水增多。",
+    "options": [
+      "下降，因為砍伐後雨水可以更快排走，不會積聚在上游。",
+      "不變，因為上游與下游相距很遠，屬於不同的集水區。",
+      "上升，因為樹木被砍伐後蒸發量增加，令流入河道的水量增多。",
+      "上升，因為截留和下滲減少，地表徑流增加並更快流入河道。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Large areas of forest in the upper course of a river are cleared for farmland. In the same heavy rain, how does the flood risk downstream change?",
+    "optionsEn": [
+      "It falls, because rain drains away faster and does not collect upstream.",
+      "It stays the same, because the upper and lower courses are far apart in different drainage basins.",
+      "It rises, because removing trees increases evaporation, adding more water to the river.",
+      "It rises, because less interception and infiltration means more surface runoff reaching the river faster."
+    ],
+    "explanationEn": "A drainage basin is the whole area from which a river and its tributaries collect runoff, and the upper and lower courses lie in the same basin. Forests intercept rain, and roots and leaf litter help water infiltrate. After clearing, interception and infiltration fall, more rain becomes surface runoff and reaches the river faster, so the river rises sharply and the flood risk downstream rises. Rain draining faster from the upper course reaches the lower course sooner and in a bigger surge. Removing trees reduces transpiration; it does not add water to the river through more evaporation."
+  },
+  {
+    "id": "rcl_geo_floor_09",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "weather_climate",
+    "topicZh": "天氣與氣候",
+    "topicEn": "Weather and Climate",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "香港夏季多雨，冬季則較乾燥。下列哪項最能解釋這個降雨的季節差異？",
+    "explanation": "季風的成因在於海陸比熱的差異。夏季大陸增溫較快、氣壓較低，風由海洋吹向陸地，帶來大量水汽，形成降雨；冬季大陸降溫較快、氣壓較高，風由大陸吹向海洋，空氣乾冷，降雨較少。日照只會令空氣增溫，水汽要冷卻至露點才會凝結成雨。冬季的季風來自大陸而非海洋，題目所述的風向倒轉了。海陸風每日轉向，範圍只及沿岸，不能解釋全年降雨的季節分佈。",
+    "options": [
+      "夏季吹來自海洋的潮濕季風，冬季則吹來自大陸的乾冷季風。",
+      "夏季日照時間較長，陽光直接令空氣中的水汽凝結成雨。",
+      "冬季吹來自海洋的季風，海風較冷，所以香港冬季不容易下雨。",
+      "夏季的海陸風每日轉向，把水汽一直困在香港的上空。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Hong Kong is wet in summer and drier in winter. Which statement best explains this seasonal difference in rainfall?",
+    "optionsEn": [
+      "In summer a moist monsoon blows in from the sea; in winter a dry, cold monsoon blows from the continent.",
+      "Summer days are longer, and sunshine directly turns water vapour into rain.",
+      "In winter the monsoon blows from the sea, and cold sea winds bring Hong Kong little rain.",
+      "In summer the sea and land breezes change direction daily and trap moisture over Hong Kong."
+    ],
+    "explanationEn": "Monsoons arise from the difference in specific heat between land and sea. In summer the continent heats faster and pressure over it is lower, so winds blow from the sea to the land carrying moisture and bringing rain; in winter the continent cools faster and pressure is higher, so winds blow from the land to the sea, and the air is dry and cold with little rain. Sunshine only warms the air; water vapour must cool to its dew point to form rain. The winter monsoon comes from the continent, not the sea, so that option reverses the wind direction. Sea and land breezes reverse daily and affect only the coast, so they cannot explain a seasonal pattern."
+  },
+  {
+    "id": "rcl_geo_floor_17",
+    "type": "mc",
+    "subject": "geography",
+    "topic": "food",
+    "topicZh": "糧食問題",
+    "topicEn": "Food and Hunger",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某地區每年消耗糧食 200 萬公噸，其中 30 萬公噸由本地生產，其餘全部由一個鄰近地區供應。下列哪項正確？",
+    "explanation": "糧食自給率是本地生產量佔本地消耗量的比例：30 ÷ 200 = 15%。其餘 85% 依賴進口，而且只來自一個地區；一旦該地歉收或運輸中斷，供應便會即時受到嚴重影響，所以糧食安全的風險較高。85% 是進口所佔的比例，並非自給率。即使人口不增加，供應來源中斷的風險依然存在。自給率的分母是本地消耗量，不是進口量；30 ÷ 170 計算錯了分母。",
+    "options": [
+      "糧食自給率為 85%，所以該地區的糧食供應十分安全。",
+      "糧食自給率為 15%，進口來源單一，令糧食安全的風險較高。",
+      "糧食自給率為 15%，只要本地人口不增加便不會有任何風險。",
+      "糧食自給率約為 17.6%，因為應以本地產量除以進口量計算。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A region consumes 2 million tonnes of food a year, of which 0.3 million tonnes is produced locally; the rest all comes from one neighbouring region. Which statement is correct?",
+    "optionsEn": [
+      "Food self-sufficiency is 85%, so the region’s food supply is very secure.",
+      "Food self-sufficiency is 15%, and relying on one source makes food security risk high.",
+      "Food self-sufficiency is 15%, and there is no risk as long as the population does not grow.",
+      "Food self-sufficiency is about 17.6%, because it is local output divided by imports."
+    ],
+    "explanationEn": "Food self-sufficiency is local production as a share of local consumption: 0.3 ÷ 2 = 15%. The other 85% is imported, all from one region; if that region has a poor harvest or transport is cut, supply is hit at once and badly, so food security risk is high. 85% is the share imported, not the self-sufficiency rate. Even with no population growth, the risk of supply being cut remains. The denominator is local consumption, not imports; 0.3 ÷ 1.7 uses the wrong denominator."
   }
 ]

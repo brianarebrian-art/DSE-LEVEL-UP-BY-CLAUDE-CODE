@@ -1,0 +1,288 @@
+[
+  {
+    "id": "rcl_bio_cells_7",
+    "type": "mc",
+    "topic": "細胞",
+    "topicId": "cells",
+    "topicZh": "細胞",
+    "topicEn": "Cells",
+    "difficulty": "intermediate",
+    "question": "把紅血球分別放入清水和濃鹽水中。一段時間後，最可能觀察到甚麼？",
+    "questionEn": "Red blood cells are placed in distilled water and in concentrated salt solution. What is most likely observed after some time?",
+    "options": [
+      "清水中的紅血球皺縮；濃鹽水中的紅血球脹大。",
+      "清水中的紅血球脹大甚至破裂；濃鹽水中的紅血球皺縮。",
+      "兩者都沒有變化，因為細胞膜會阻止水分子進出。",
+      "清水中的紅血球破裂；濃鹽水中的紅血球因鹽分進入而脹大。"
+    ],
+    "optionsEn": [
+      "In distilled water the cells shrink; in concentrated salt solution they swell.",
+      "In distilled water the cells swell and may burst; in concentrated salt solution they shrink.",
+      "Neither changes, because the cell membrane stops water molecules moving in or out.",
+      "In distilled water the cells burst; in concentrated salt solution they swell because salt enters them."
+    ],
+    "correctIndex": 1,
+    "explanation": "清水的水勢高於紅血球的細胞質，水分子經細胞膜以滲透作用進入細胞；動物細胞沒有細胞壁，吸水過多便會脹破。濃鹽水的水勢低於細胞質，水分子由細胞流出，細胞因而皺縮。認為「清水中皺縮、濃鹽水中脹大」，是把方向倒轉了：水由高水勢流向低水勢。認為「兩者都沒有變化」，忽略了細胞膜容許水分子通過。認為「鹽分進入使細胞脹大」，是把滲透誤當成溶質的擴散；引起體積變化的是水的淨移動。",
+    "explanationEn": "Distilled water has a higher water potential than the cytoplasm, so water enters the cells by osmosis; animal cells have no cell wall, so they swell and may burst. Concentrated salt solution has a lower water potential, so water leaves the cells and they shrink. Saying the cells shrink in distilled water reverses the direction: water moves from higher to lower water potential. Saying neither changes ignores that the membrane lets water through. Saying salt entering makes the cells swell confuses osmosis with the diffusion of a solute; the change in volume comes from the net movement of water."
+  },
+  {
+    "id": "rcl_bio_cells_9",
+    "type": "mc",
+    "topic": "細胞",
+    "topicId": "cells",
+    "topicZh": "細胞",
+    "topicEn": "Cells",
+    "difficulty": "intermediate",
+    "question": "肺泡內空氣的氧氣濃度高於流經肺泡的血液。氧氣如何由肺泡進入血液？",
+    "questionEn": "The air in the alveoli has a higher oxygen concentration than the blood flowing past them. How does oxygen move from the alveoli into the blood?",
+    "options": [
+      "以主動運輸進入血液，因為氧氣對身體十分重要，必須盡快吸收。",
+      "以滲透作用進入血液，因為肺泡壁是一層半透膜。",
+      "以擴散方式順濃度梯度進入血液，不需細胞消耗能量。",
+      "以擴散方式由血液進入肺泡，因為血液流動得較快。"
+    ],
+    "optionsEn": [
+      "By active transport, because oxygen is so important to the body that it must be absorbed quickly.",
+      "By osmosis, because the alveolar wall is a partially permeable membrane.",
+      "By diffusion down the concentration gradient, without the cells using energy.",
+      "By diffusion from the blood into the alveoli, because blood flows faster."
+    ],
+    "correctIndex": 2,
+    "explanation": "擴散是粒子由濃度較高處向濃度較低處的淨移動，屬被動過程，不需細胞消耗能量。肺泡氧氣濃度較高，血液中較低，氧氣便順着濃度梯度擴散進入血液；血液不斷流走，帶走氧氣，令濃度梯度得以維持。一種物質重要與否，並不決定它的運輸方式；只有逆濃度梯度的運輸才需要主動運輸。滲透專指水分子經半透膜的移動，不適用於氧氣。擴散的方向由濃度決定，氧氣是由肺泡進入血液，而非相反。",
+    "explanationEn": "Diffusion is the net movement of particles from a higher to a lower concentration; it is passive and needs no energy from cells. Oxygen is more concentrated in the alveoli than in the blood, so it diffuses down the gradient into the blood, and the flowing blood carries it away so the gradient is kept. How important a substance is does not decide how it is transported; only movement against a gradient needs active transport. Osmosis refers only to water moving across a partially permeable membrane, not to oxygen. The direction of diffusion is set by concentration: oxygen moves from the alveoli into the blood, not the other way."
+  },
+  {
+    "id": "rcl_bio_floor_17",
+    "type": "mc",
+    "topic": "生理機制・因果鏈",
+    "topicId": "bio_physio_chain",
+    "topicZh": "生理機制・因果鏈",
+    "topicEn": "Physiology — causal chains",
+    "difficulty": "basic",
+    "question": "某植物根毛細胞內的硝酸根離子濃度比泥土水高約 20 倍。若加入抑制呼吸作用的物質，根毛細胞吸收硝酸根離子的速率便大幅下降。根毛細胞最可能以甚麼方式吸收硝酸根離子？",
+    "questionEn": "The nitrate ion concentration inside the root hair cells of a plant is about 20 times that in the soil water. When a respiratory inhibitor is added, the rate at which the root hair cells take up nitrate ions falls sharply. How do the root hair cells most likely take up nitrate ions?",
+    "options": [
+      "擴散，因為離子由濃度較高的細胞內移向濃度較低的泥土水，不需能量。",
+      "擴散，因為所有離子都是順濃度梯度進入根毛細胞的。",
+      "滲透作用，因為根毛細胞的主要功能是吸收水分。",
+      "主動運輸，因為離子逆濃度梯度進入細胞，需要呼吸作用提供能量。"
+    ],
+    "optionsEn": [
+      "Diffusion, because the ions move from the more concentrated cell into the soil water without energy.",
+      "Diffusion, because all ions enter root hair cells down their concentration gradient.",
+      "Osmosis, because the main job of root hair cells is to absorb water.",
+      "Active transport, because the ions enter against the gradient and need energy from respiration."
+    ],
+    "correctIndex": 3,
+    "explanation": "細胞內的硝酸根離子濃度比泥土水高，離子要由低濃度處移向高濃度處，即逆濃度梯度進入細胞，這不可能靠擴散完成。抑制呼吸作用後吸收速率大幅下降，說明吸收過程需要呼吸作用釋放的能量，所以是主動運輸。若以擴散移動，離子只會由細胞內流向泥土水，與「吸收」的方向相反。並非所有離子都順濃度梯度進入細胞，本題的數據正好是反例。滲透只指水分子的移動，不適用於離子。",
+    "explanationEn": "The nitrate concentration inside the cells is higher than in the soil water, so the ions must move from low to high concentration, against the gradient, which diffusion cannot do. The sharp fall in uptake when respiration is inhibited shows the process needs energy released by respiration, so it is active transport. By diffusion the ions would only move out of the cells into the soil water, the opposite of uptake. Not all ions enter cells down a gradient; these data are a counter-example. Osmosis refers only to the movement of water, not of ions."
+  },
+  {
+    "id": "rcl_bio_genetics_21",
+    "type": "mc",
+    "topic": "遺傳",
+    "topicId": "genetics",
+    "topicZh": "遺傳",
+    "topicEn": "Genetics",
+    "difficulty": "intermediate",
+    "question": "豌豆的紫花（R）對白花（r）為顯性。兩株紫花豌豆雜交，後代中約有四分之一開白花。下列哪項正確？",
+    "questionEn": "In pea plants, purple flowers (R) are dominant to white flowers (r). Two purple-flowered plants are crossed, and about a quarter of the offspring have white flowers. Which statement is correct?",
+    "options": [
+      "兩株親代的表現型相同，基因型都是 Rr。",
+      "兩株親代都開紫花，所以基因型都是 RR。",
+      "白花後代的出現，是因為親代在雜交時發生了突變。",
+      "一株親代是 RR，另一株是 rr，所以後代有白花。"
+    ],
+    "optionsEn": [
+      "The two parents have the same phenotype and both have the genotype Rr.",
+      "Both parents have purple flowers, so both must be RR.",
+      "The white-flowered offspring appear because the parents mutated during the cross.",
+      "One parent is RR and the other is rr, which is why some offspring are white."
+    ],
+    "correctIndex": 0,
+    "explanation": "白花後代的基因型必定是 rr，兩個 r 分別來自雙親，所以兩株紫花親代都帶有 r，基因型為 Rr。Rr × Rr 的後代比例約為 1 RR : 2 Rr : 1 rr，約四分之一開白花，與觀察相符。表現型相同（紫花）不代表基因型相同：RR 和 Rr 都開紫花。若雙親都是 RR，後代不可能出現 rr。白花以接近四分之一的比例出現，符合遺傳規律，毋須以突變解釋。rr 的植株會開白花，與「兩株紫花親代」不符。",
+    "explanationEn": "A white-flowered offspring must be rr, with one r from each parent, so both purple parents carry r and are Rr. Rr × Rr gives about 1 RR : 2 Rr : 1 rr, so about a quarter are white, which matches the observation. The same phenotype (purple) does not mean the same genotype: RR and Rr are both purple. If both parents were RR, no rr offspring could appear. White flowers appearing in about a quarter of the offspring follow the rules of inheritance and need no mutation to explain them. An rr plant would have white flowers, which contradicts two purple-flowered parents."
+  },
+  {
+    "id": "rcl_bio_genetics_22",
+    "type": "mc",
+    "topic": "遺傳",
+    "topicId": "genetics",
+    "topicZh": "遺傳",
+    "topicEn": "Genetics",
+    "difficulty": "intermediate",
+    "question": "某種貓的黑毛（B）對啡毛（b）為顯性。一隻黑毛貓與一隻啡毛貓交配，生下六隻小貓，其中三隻黑毛、三隻啡毛。這隻黑毛親代的基因型最可能是甚麼？",
+    "questionEn": "In a type of cat, black fur (B) is dominant to brown fur (b). A black cat mates with a brown cat and has six kittens: three black and three brown. What is the most likely genotype of the black parent?",
+    "options": [
+      "BB，因為顯性性狀的個體必定是純合子。",
+      "Bb，因為部分小貓從牠身上得到了等位基因 b。",
+      "bb，因為有一半小貓是啡毛的，與牠相同。",
+      "BB，因為啡毛小貓的等位基因全部來自啡毛親代。"
+    ],
+    "optionsEn": [
+      "BB, because an individual showing a dominant trait must be homozygous.",
+      "Bb, because some kittens received a b allele from it.",
+      "bb, because half the kittens are brown, like it.",
+      "BB, because the brown kittens got all their alleles from the brown parent."
+    ],
+    "correctIndex": 1,
+    "explanation": "啡毛小貓的基因型是 bb，兩個等位基因分別來自雙親，所以黑毛親代必定提供了一個 b，基因型為 Bb。Bb × bb 的後代約一半 Bb（黑毛）、一半 bb（啡毛），與觀察相符。顯性性狀的個體可以是純合子（BB）或雜合子（Bb），不一定是純合子。這隻親代是黑毛的，基因型不可能是 bb。每個後代都從雙親各得一個等位基因，啡毛小貓不可能只從啡毛親代得到全部等位基因。",
+    "explanationEn": "A brown kitten is bb, with one allele from each parent, so the black parent must have given a b and is Bb. Bb × bb gives about half Bb (black) and half bb (brown), which matches the observation. An individual showing a dominant trait can be homozygous (BB) or heterozygous (Bb); it need not be homozygous. The parent has black fur, so it cannot be bb. Every offspring gets one allele from each parent, so the brown kittens cannot have taken all their alleles from the brown parent."
+  },
+  {
+    "id": "rcl_bio_genetics_28",
+    "type": "mc",
+    "topic": "遺傳",
+    "topicId": "genetics",
+    "topicZh": "遺傳",
+    "topicEn": "Genetics",
+    "difficulty": "intermediate",
+    "question": "白化病是由隱性等位基因引致的遺傳病。一對夫婦都沒有白化病，但他們的第一個孩子患有白化病。下列哪項最能描述這對夫婦？",
+    "questionEn": "Albinism is an inherited condition caused by a recessive allele. A couple do not have albinism, but their first child does. Which statement best describes the couple?",
+    "options": [
+      "兩人都是純合顯性，孩子患病是由環境因素引致。",
+      "只有母親帶有致病的等位基因，因為遺傳物質主要來自母親。",
+      "兩人都是雜合子，各帶一個致病的隱性等位基因。",
+      "兩人都是純合隱性，只是病徵尚未在他們身上出現。"
+    ],
+    "optionsEn": [
+      "Both are homozygous dominant, and the child’s condition was caused by the environment.",
+      "Only the mother carries the allele, because genetic material comes mainly from the mother.",
+      "Both are heterozygous, each carrying one recessive allele for the condition.",
+      "Both are homozygous recessive; the signs just have not appeared in them yet."
+    ],
+    "correctIndex": 2,
+    "explanation": "孩子患白化病，基因型必定是隱性純合，兩個隱性等位基因一個來自父親、一個來自母親。父母都沒有患病，說明各自還有一個顯性等位基因，所以兩人都是雜合子。若父母都是純合顯性，便無法把隱性等位基因傳給孩子，白化病亦不是由環境引致的。孩子的兩個等位基因分別來自父母，並非主要來自母親。隱性純合的人會表現出白化病，父母沒有患病，就不可能是隱性純合。",
+    "explanationEn": "A child with albinism must be homozygous recessive, with one recessive allele from the father and one from the mother. Neither parent has the condition, so each also has a dominant allele: both are heterozygous. Homozygous dominant parents could not pass on a recessive allele, and albinism is not caused by the environment. The child’s two alleles come one from each parent, not mainly from the mother. A homozygous recessive person shows albinism, so parents without the condition cannot be homozygous recessive."
+  },
+  {
+    "id": "rcl_bio_genetics_27",
+    "type": "mc",
+    "topic": "遺傳",
+    "topicId": "genetics",
+    "topicZh": "遺傳",
+    "topicEn": "Genetics",
+    "difficulty": "hard",
+    "question": "一對同卵雙生兄弟之中，一人在戶外工作多年，皮膚明顯較黑。他的子女會否因此天生皮膚較黑？",
+    "questionEn": "One of a pair of identical twins has worked outdoors for years, and his skin is clearly darker. Will his children be born with darker skin because of this?",
+    "options": [
+      "會，因為後天獲得的特徵會在每一代逐漸累積並遺傳下去。",
+      "會，因為長期曬太陽必定會令精子或卵子的 DNA 發生可遺傳的突變。",
+      "不會，因為同卵雙生兒的基因不能遺傳給下一代。",
+      "不會，因為曬黑屬環境引起的變異，沒有改變生殖細胞的 DNA。"
+    ],
+    "optionsEn": [
+      "Yes, because features acquired during life build up and are passed on generation after generation.",
+      "Yes, because years in the sun must cause heritable mutations in the DNA of sperm or eggs.",
+      "No, because the genes of identical twins cannot be passed on to children.",
+      "No, because a tan is variation caused by the environment and does not change the DNA of sex cells."
+    ],
+    "correctIndex": 3,
+    "explanation": "曬黑是皮膚細胞受紫外光刺激而製造較多黑色素，屬環境引起的變異。只有生殖細胞（精子或卵子）DNA 的改變才可遺傳給下一代。紫外光雖然可能令皮膚細胞的 DNA 出現突變，但皮膚細胞是體細胞，這些改變不會傳給子女，所以不能說長期曬太陽「必定」令生殖細胞出現可遺傳的突變。後天獲得的特徵不會因此遺傳，這正是環境變異與遺傳變異的分別。同卵雙生兒的基因與其他人一樣，可以遺傳給下一代。",
+    "explanationEn": "A tan forms when skin cells make more melanin in response to ultraviolet light; it is variation caused by the environment. Only changes in the DNA of sex cells (sperm or eggs) can be passed to the next generation. Ultraviolet light may cause mutations in skin cells, but these are body cells, so the changes are not passed to children, and years in the sun do not necessarily cause heritable mutations in sex cells. Features acquired during life are not inherited in this way, which is the difference between environmental and genetic variation. Identical twins pass on their genes like anyone else."
+  },
+  {
+    "id": "rcl_bio_coordination_60",
+    "type": "mc",
+    "topic": "神經與協調",
+    "topicId": "coordination",
+    "topicZh": "神經與協調",
+    "topicEn": "Nervous Coordination",
+    "difficulty": "intermediate",
+    "question": "某種藥物會阻止神經元的軸突末端釋放神經遞質。服用該藥物後，神經訊號在神經元之間的傳遞會受到甚麼影響？",
+    "questionEn": "A drug stops the axon endings of neurones from releasing neurotransmitter. After taking the drug, how is the passing of signals between neurones affected?",
+    "options": [
+      "訊號無法跨過突觸，傳不到下一個神經元。",
+      "訊號在神經元內沿軸突傳得比平時更快。",
+      "訊號改為以電流直接跳過突觸間隙傳遞。",
+      "只有感覺神經元受影響，運動神經元照常傳遞。"
+    ],
+    "optionsEn": [
+      "The signal cannot cross the synapse and does not reach the next neurone.",
+      "The signal travels along the axon faster than usual.",
+      "The signal jumps across the synaptic gap as an electric current instead.",
+      "Only sensory neurones are affected; motor neurones carry on as normal."
+    ],
+    "correctIndex": 0,
+    "explanation": "神經衝動沿軸突以電的形式傳遞，到達軸突末端時觸發神經遞質釋放到突觸間隙；神經遞質擴散過間隙，與下一個神經元上的受體結合，才可引發新的衝動。藥物阻止神經遞質釋放，訊號便無法跨過突觸。軸突上的傳導並非由神經遞質推動，速度不會因此加快。突觸間隙阻隔了電流直接通過，所以訊號不會改為以電流跳過間隙。突觸存在於各類神經元之間，運動神經元同樣依賴神經遞質，因此亦會受影響。",
+    "explanationEn": "An impulse travels along the axon electrically; at the axon ending it triggers the release of neurotransmitter into the synaptic gap, and the neurotransmitter diffuses across and binds to receptors on the next neurone to start a new impulse. If the drug stops neurotransmitter release, the signal cannot cross the synapse. Conduction along the axon is not driven by neurotransmitter, so it does not speed up. The synaptic gap prevents current passing directly, so the signal cannot jump across as electricity. Synapses link all kinds of neurones, and motor neurones also rely on neurotransmitter, so they are affected too."
+  },
+  {
+    "id": "rcl_bio_enzymes_75",
+    "type": "mc",
+    "topic": "酶",
+    "topicId": "enzymes",
+    "topicZh": "酶",
+    "topicEn": "Enzymes",
+    "difficulty": "intermediate",
+    "question": "在兩支試管中各加入相同份量的唾液澱粉酶：試管甲加入澱粉溶液，試管乙加入蛋白質溶液，兩支試管都保持在 37°C。一段時間後，最可能出現甚麼結果？",
+    "questionEn": "The same amount of salivary amylase is added to two test tubes: tube A contains starch solution and tube B contains protein solution, both kept at 37°C. What is the most likely result after some time?",
+    "options": [
+      "兩支試管的受質都被分解，因為 37°C 是這種酶的最適溫度，活性最高。",
+      "只有試管甲的受質被分解，因為酶只作用於與活性部位相配的受質。",
+      "只有試管乙的受質被分解，因為蛋白質比澱粉更容易消化。",
+      "兩支試管都沒有變化，因為唾液澱粉酶只能在口腔內發揮作用。"
+    ],
+    "optionsEn": [
+      "Both substrates are broken down, because 37°C is the optimum temperature, where the enzyme is most active.",
+      "Only the substrate in tube A is broken down, because an enzyme acts only on substrates that fit its active site.",
+      "Only the substrate in tube B is broken down, because protein is easier to digest than starch.",
+      "Neither changes, because salivary amylase only works inside the mouth."
+    ],
+    "correctIndex": 1,
+    "explanation": "酶具有專一性：受質的形狀必須與酶的活性部位相配，才可形成酶—受質複合物並被分解。唾液澱粉酶的受質是澱粉，所以只有試管甲的澱粉會被分解成麥芽糖；蛋白質的形狀與其活性部位不相配，不會被分解。適當的溫度只令酶有效運作，不會令酶能分解其他受質。分解蛋白質需要蛋白酶，與「容易消化」無關。酶在體外只要條件合適同樣可以發揮作用，並不限於口腔之內。",
+    "explanationEn": "Enzymes are specific: a substrate must fit the active site to form an enzyme–substrate complex and be broken down. The substrate of salivary amylase is starch, so only the starch in tube A is broken down to maltose; protein does not fit the active site and is not broken down. A suitable temperature only lets the enzyme work well; it does not let it act on other substrates. Breaking down protein needs a protease and has nothing to do with being easy to digest. Enzymes work outside the body too when conditions are suitable; they are not limited to the mouth."
+  },
+  {
+    "id": "rcl_bio_digestion_112",
+    "type": "mc",
+    "topic": "營養與消化",
+    "topicId": "digestion",
+    "topicZh": "營養與消化",
+    "topicEn": "Nutrition & Digestion",
+    "difficulty": "intermediate",
+    "question": "太空人在失重的環境下進食，食物仍然可以由食道進入胃。下列哪項最能解釋這現象？",
+    "questionEn": "Astronauts eating in weightless conditions can still move food from the oesophagus into the stomach. Which statement best explains this?",
+    "options": [
+      "胃部會產生吸力，把食道中的食物直接吸進胃內。",
+      "唾液令食物變得濕滑，食物因此可以自行滑入胃中，毋須其他力量。",
+      "食道壁的肌肉有規律地收縮和舒張，把食物推向胃。",
+      "吞嚥時舌頭用力把食物一直推到胃部為止。"
+    ],
+    "optionsEn": [
+      "The stomach creates suction that draws food out of the oesophagus.",
+      "Saliva makes food slippery, so it slides into the stomach by itself with no other force needed.",
+      "The muscles of the oesophagus wall contract and relax in waves, pushing food to the stomach.",
+      "During swallowing the tongue pushes the food all the way down to the stomach."
+    ],
+    "correctIndex": 2,
+    "explanation": "食物在食道中靠蠕動推進：食道壁的環肌和縱肌有規律地收縮和舒張，形成波狀運動，把食團推向胃部。這過程不依靠地心吸力，所以在失重環境下仍可進行。胃部並不會產生吸力把食物吸入。唾液的潤滑作用只令食物較易移動，本身不能推動食物。舌頭只負責把食團推入咽部、展開吞嚥，之後的推進便由蠕動完成。",
+    "explanationEn": "Food moves along the oesophagus by peristalsis: the circular and longitudinal muscles of the wall contract and relax in waves that push the bolus towards the stomach. This does not rely on gravity, so it still works when weightless. The stomach does not create suction. Saliva only lubricates the food so it moves more easily; it cannot push the food. The tongue only pushes the bolus into the pharynx to start swallowing, after which peristalsis does the work."
+  },
+  {
+    "id": "rcl_bio_floor_01",
+    "type": "mc",
+    "topic": "數據與生態",
+    "topicId": "bio_data_ecology",
+    "topicZh": "數據與生態",
+    "topicEn": "Data & ecology",
+    "difficulty": "basic",
+    "question": "在一個池塘中，浮游藻類被水蚤吃，水蚤被小魚吃，小魚被翠鳥吃。若池塘受到污染，浮游藻類大量死亡，長遠而言最可能出現甚麼情況？",
+    "questionEn": "In a pond, algae are eaten by water fleas, water fleas by small fish, and small fish by kingfishers. If pollution kills most of the algae, what is most likely to happen in the long run?",
+    "options": [
+      "只有水蚤的數量會下降，因為只有水蚤直接以藻類為食，其他生物不受影響。",
+      "翠鳥的數量會上升，因為小魚失去食物後較容易被捕捉。",
+      "分解者會取代藻類，為水蚤提供生存所需的能量。",
+      "水蚤、小魚和翠鳥的數量都會下降，因為食物鏈的能量來自藻類。"
+    ],
+    "optionsEn": [
+      "Only the water fleas decline, because only they feed directly on algae; the others are unaffected.",
+      "Kingfishers increase, because hungry small fish are easier to catch.",
+      "Decomposers replace the algae and supply the energy water fleas need.",
+      "Water fleas, small fish and kingfishers all decline, because the chain’s energy comes from the algae."
+    ],
+    "correctIndex": 3,
+    "explanation": "浮游藻類是生產者，透過光合作用把光能轉化為有機物中的化學能，是整條食物鏈的能量入口。藻類大量死亡，水蚤失去食物而減少，小魚隨之減少，翠鳥最終亦會減少。只看直接以藻類為食的生物，忽略了能量沿食物鏈逐級傳遞。翠鳥短期內或可較易捕食，但小魚數量下降，長遠而言翠鳥的食物同樣減少。分解者分解死亡生物的遺骸，屬異養生物，並不能像生產者一樣固定光能。",
+    "explanationEn": "The algae are producers: by photosynthesis they turn light energy into chemical energy in organic matter, and they are the energy input for the whole food chain. When most algae die, water fleas lose their food and decline, then small fish, and in the end kingfishers too. Looking only at the animals that eat algae directly ignores how energy passes up the chain. Kingfishers might catch prey more easily for a short time, but with fewer small fish their food also shrinks in the long run. Decomposers break down dead remains; they are heterotrophs and cannot capture light energy as producers do."
+  }
+]

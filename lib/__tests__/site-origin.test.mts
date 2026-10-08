@@ -80,7 +80,6 @@ function stripComments(src: string): string {
 const OWN_DOMAIN_EXEMPT: Record<string, string> = {
   // 只係用嚟解析相對路徑嘅 base，值本身永遠唔會顯示畀學生。
   // 一行嘅修正（改 import SITE_ORIGIN），但唔屬於今次改動範圍。
-  'components/ExternalLinkGate.tsx': '相對網址解析用嘅 URL base，唔會外露',
 }
 
 function sourceFiles(dir: string, out: string[] = []): string[] {

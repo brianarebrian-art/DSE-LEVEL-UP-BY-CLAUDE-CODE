@@ -215,11 +215,16 @@ export default function BookmarksView() {
                       /* 撤回題（withdrawn.json）：不顯示內容，講明是暫時收起及原因，收藏保留。
                          題目修好並恢復後，這個收藏會自動顯示回題目（2026-09-29，Yuna 決定）。 */
                       <p className="text-sm text-ink-muted">
-                        {/* 2026-10-04：收起原因不再只有解析（IMPOSSIBLE_PREMISE），按原因講。 */}
+                        {/* 2026-10-04：收起原因不再只有解析（IMPOSSIBLE_PREMISE），按原因講。
+                            2026-10-09：PURE_RECALL 題目冇錯，已由新編號嘅應用題取代，唔會出返。 */}
                         {withdrawnReason(bm.subjectId, bm.questionId) === 'POSITIONAL_RATIONALE_REFERENCE'
                           ? en
                             ? 'This question has been withdrawn while its explanation is being corrected. Your bookmark stays; the question comes back here once it is fixed.'
                             : '呢條題暫時收起咗，因為解析要修正。收藏會保留，修好之後會喺度自動出返。'
+                          : withdrawnReason(bm.subjectId, bm.questionId) === 'PURE_RECALL'
+                          ? en
+                            ? 'This question only tested memorising a name or definition, so it has been replaced by a new question that asks you to apply the idea. You can practise the new one in this topic.'
+                            : '呢條題淨係考背名稱或者定義，已經換咗一條要你運用概念嘅新題。練返呢個課題就會見到新題。'
                           : en
                             ? 'This question has been withdrawn because an error was found in it. Your bookmark stays; the question comes back here once it is fixed.'
                             : '呢條題暫時收起咗，因為發現有錯，要修正。收藏會保留，修好之後會喺度自動出返。'}

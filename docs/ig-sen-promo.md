@@ -60,7 +60,7 @@ Hi！想同你分享一個香港學生免費溫書平台 —— DSE LEVEL UP �
 
 平台入面唔會標籤任何人 —— 所有功能都係「無痕」設計，邊個同學都用得，唔使申報、唔使解釋。
 
-網址：https://dse-level-up-by-claude-code.vercel.app/
+網址：https://www.dselevelup.com/
 IG：@dselevelup
 
 （我哋所有題目均為獨立改寫版本，並非 HKEAA 官方試題；平台與考評局並無任何關係。）

@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : economics
-//   count    : 84  (easy 42 / medium 42 / hard 0)
-//   types    : mc 84 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 88  (easy 46 / medium 42 / hard 0)
+//   types    : mc 88 / text 0 / long 0
+//   updated  : 2026-10-08
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -2699,5 +2699,133 @@ export const economicsAutoQuestions: Question[] = [
     ],
     "explanationEn": "Producer surplus is the area between the market price and the supply curve, to the left of the quantity traded. With a straight-line supply curve that area is a triangle: base 8, height 40 − 10 = \\$30, so the surplus is 8 × 30 ÷ 2 = \\$120. Omitting the division by 2 gives \\$240 and treats the triangle as a rectangle — the main trap. \\$160 uses the market price itself as the height, i.e. assumes the supply curve starts at zero. The last option gives the height alone, without multiplying by the base.",
     "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "rcl_econ_bc4_0",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "basic_concepts",
+    "topicZh": "基礎概念",
+    "topicEn": "Basic Concepts",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "李先生擁有一幅空置農地。他把農地租給農夫耕種，每年收取 50,000 元；同時他受僱於一間物流公司，每月收取薪金。下列哪項正確？",
+    "explanation": "土地指一切天然資源，其報酬是地租；勞動指人在生產中付出的體力和腦力，其報酬是工資。農地是天然資源，出租所得屬地租；受僱於物流公司提供勞動，所得薪金屬工資。農地雖然是李先生的財產，但經濟學按生產要素的性質分類，而不是按擁有權分類；資本是人造的生產工具，其報酬才是利息。把租金視為利潤，混淆了事先約定的報酬與承擔風險後的剩餘收入。",
+    "options": [
+      "農地租金屬利息，因為農地是李先生的資產。",
+      "農地租金屬地租，物流公司的薪金屬工資。",
+      "農地租金屬利潤，因為李先生承擔了出租的風險。",
+      "兩項收入都屬工資，因為李先生都付出了勞力打理。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Mr Lee owns a piece of idle farmland. He rents it to a farmer for \\$50,000 a year, and he is also employed by a logistics company and paid a monthly salary. Which statement is correct?",
+    "optionsEn": [
+      "The farmland rent is interest, because the land is Mr Lee’s asset.",
+      "The farmland rent is rent and the salary is wages.",
+      "The farmland rent is profit, because Mr Lee bears the risk of renting it out.",
+      "Both incomes are wages, because Mr Lee works to manage both."
+    ],
+    "explanationEn": "Land means all natural resources, and its reward is rent; labour is the physical and mental effort people put into production, and its reward is wages. The farmland is a natural resource, so renting it out earns rent; working for the logistics company supplies labour, so the salary is wages. The land is Mr Lee’s property, but economics classifies factors by their nature, not by ownership; capital is a man-made means of production, and its reward is interest. Calling the rent profit confuses a reward agreed in advance with the residual income earned by bearing risk."
+  },
+  {
+    "id": "rcl_econ_bc4_1",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "basic_concepts",
+    "topicZh": "基礎概念",
+    "topicEn": "Basic Concepts",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一名廚師受僱於一間餐廳，每月收取固定薪金。某月餐廳虧本，廚師的薪金仍然照發。下列哪項最能解釋這情況？",
+    "explanation": "廚師在生產中付出勞動，其報酬是工資。工資是事先約定的報酬，餐廳不論盈虧都要支付；承擔盈虧風險的是發揮企業家職能的老闆，其報酬利潤才會隨經營結果而變。工作為餐廳帶來收入，並不會令工資變成利潤。在固定位置工作與地租無關，地租是土地的報酬。利息是資本的報酬，付出時間工作屬勞動，不是借出資本。",
+    "options": [
+      "廚師的收入屬利潤，因為他的工作直接為餐廳帶來收入。",
+      "廚師的收入屬地租，因為他每天都在餐廳的固定位置工作。",
+      "廚師的收入屬工資，是事先約定的勞動報酬，不論盈虧都須支付。",
+      "廚師的收入屬利息，因為他把自己的時間借給了餐廳老闆。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A chef is employed by a restaurant and paid a fixed monthly salary. One month the restaurant makes a loss, but the chef is still paid in full. Which statement best explains this?",
+    "optionsEn": [
+      "The chef’s income is profit, because his work directly brings in revenue.",
+      "The chef’s income is rent, because he works in a fixed place in the restaurant every day.",
+      "The chef’s income is wages, a reward for labour agreed in advance and paid whether or not there is a profit.",
+      "The chef’s income is interest, because he lends his time to the owner."
+    ],
+    "explanationEn": "The chef supplies labour, and its reward is wages. Wages are agreed in advance and must be paid whether the restaurant makes a profit or a loss; it is the owner, performing the entrepreneurial function, who bears that risk, and only his reward, profit, rises and falls with the results. Work that brings in revenue does not turn wages into profit. Working in a fixed place has nothing to do with rent, which is the reward for land. Interest is the reward for capital; giving one’s working time is labour, not lending capital."
+  },
+  {
+    "id": "rcl_econ_bc4_2",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "basic_concepts",
+    "topicZh": "基礎概念",
+    "topicEn": "Basic Concepts",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一間成衣廠添置了一批縫紉機。下列哪項對縫紉機的生產要素分類及其報酬描述正確？",
+    "explanation": "資本指人造的、用於生產其他物品的工具，例如機器、廠房，其報酬是利息。縫紉機是人造的生產工具，所以屬資本。由工人操作並不會令機器變成勞動；工人付出的勞動另有工資作報酬。金屬雖然來自大自然，但經加工製成機器後已是人造物品，不再屬土地。企業家職能是承擔風險、統籌其他生產要素的功能，屬於人而非機器。",
+    "options": [
+      "縫紉機由工人操作，所以屬勞動，其報酬是工資。",
+      "縫紉機以金屬製成，金屬來自大自然，所以屬土地，其報酬是地租。",
+      "縫紉機為工廠帶來盈利，所以屬企業家職能，其報酬是利潤。",
+      "縫紉機是人造的生產工具，屬資本，其報酬是利息。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A garment factory buys a batch of sewing machines. Which statement correctly classifies the sewing machines as a factor of production and names their reward?",
+    "optionsEn": [
+      "The machines are operated by workers, so they are labour, rewarded with wages.",
+      "The machines are made of metal from nature, so they are land, rewarded with rent.",
+      "The machines bring the factory a profit, so they are entrepreneurship, rewarded with profit.",
+      "The machines are man-made means of production, so they are capital, rewarded with interest."
+    ],
+    "explanationEn": "Capital is man-made goods used to produce other goods, such as machines and factory buildings, and its reward is interest. Sewing machines are man-made means of production, so they are capital. Being operated by workers does not make a machine labour; the workers’ labour earns its own reward, wages. The metal comes from nature, but once made into a machine it is a man-made good and no longer land. The entrepreneurial function is the bearing of risk and organising of the other factors, which is done by people, not machines."
+  },
+  {
+    "id": "rcl_econ_bc4_3",
+    "type": "mc",
+    "subject": "economics",
+    "topic": "basic_concepts",
+    "topicZh": "基礎概念",
+    "topicEn": "Basic Concepts",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "張先生開設一間咖啡店，自己出資、聘請員工、租用舖位，並負責決定經營方針。某年咖啡店的總收入在支付租金、工資和借款利息之後出現虧損。下列哪項描述正確？",
+    "explanation": "張先生承擔風險、統籌資本、勞動和土地，並決定經營方針，發揮的是企業家職能，其報酬是利潤。地租、工資和利息都是事先約定的報酬，要先行支付；餘下的才歸企業家，所以利潤是剩餘收入，虧損時便是負數。即使張先生亦在店內工作，他的利潤並不固定，與受僱員工的工資不同。業主的租金按租約收取，不會因咖啡店虧損而減少。虧損正正是企業家承擔風險的結果，並不表示他沒有發揮企業家職能。",
+    "options": [
+      "張先生的報酬是利潤，屬剩餘收入，虧損時可以是負數。",
+      "張先生的報酬是工資，因為他每天都在店內工作，收入固定。",
+      "業主收取的租金會隨虧損而減少，因為各生產要素共同承擔風險。",
+      "咖啡店出現虧損，表示張先生沒有發揮企業家職能，所以沒有報酬。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Mr Cheung opens a café: he puts in his own money, hires staff, rents the premises and decides how the business is run. One year, after paying rent, wages and interest on loans, the café makes a loss. Which statement is correct?",
+    "optionsEn": [
+      "Mr Cheung’s reward is profit, a residual income that can be negative when there is a loss.",
+      "Mr Cheung’s reward is wages, because he works in the shop every day and his income is fixed.",
+      "The landlord’s rent falls with the loss, because all factors share the risk.",
+      "The loss shows Mr Cheung did not perform the entrepreneurial function, so he has no reward."
+    ],
+    "explanationEn": "Mr Cheung bears the risk, organises capital, labour and land, and decides how the business is run: he performs the entrepreneurial function, and its reward is profit. Rent, wages and interest are agreed in advance and paid first; what is left goes to the entrepreneur, so profit is a residual and becomes negative when there is a loss. Even if Mr Cheung also works in the café, his profit is not fixed, unlike an employee’s wages. The landlord’s rent is set by the lease and does not fall because the café loses money. A loss is the very risk the entrepreneur bears; it does not mean he did not perform the entrepreneurial function."
   }
 ]

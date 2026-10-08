@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
+import { SITE_ORIGIN } from '@/lib/site'
 
 // 第三方出口閘門。
 //
@@ -51,7 +52,7 @@ export default function ExternalLinkGate({
   // host 由真實 href 解析 —— 唔信任何人手填嘅名。URL 解析失敗就顯示原字串。
   let host = href
   try {
-    host = new URL(href, 'https://dse-level-up-by-claude-code.vercel.app').host
+    host = new URL(href, SITE_ORIGIN).host
   } catch {
     /* 保持原值 */
   }

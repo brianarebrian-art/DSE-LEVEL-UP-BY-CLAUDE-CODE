@@ -3,7 +3,10 @@
 // 此值原本在 `app/layout.tsx`、`app/sitemap.ts` 各有一份字面值。收攏成單一常數
 // 的直接原因：紙筆戰士會把對答案連結【印在實體試卷上】，紙一旦印出便無法修正，
 // 網址寫錯等於學生掃出死連結。多處字面值正是這種錯誤的來源，故不留第二份。
-export const SITE_ORIGIN = 'https://dse-level-up-by-claude-code.vercel.app'
+// 2026-10-08 起正式網址為 www.dselevelup.com（創辦人購入域名；Vercel 把 dselevelup.com 及舊網址
+// dse-level-up-by-claude-code.vercel.app 以 308 轉到此處）。2026-10-09 創辦人回覆「58a」：網站內的
+// 網址全部改用新網址。已印出舊網址的紙本仍可打開，因舊網址會自動轉址。
+export const SITE_ORIGIN = 'https://www.dselevelup.com'
 
 // 官方社交帳戶（audit loop T03，2026-10-02）。頁尾及「關於我們」共用，經 ExternalLinkGate
 // 先告知學生將離開本站。只用於網頁，不放上分享卡。

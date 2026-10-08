@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : m1
-//   count    : 102  (easy 52 / medium 48 / hard 2)
-//   types    : mc 102 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 106  (easy 52 / medium 51 / hard 3)
+//   types    : mc 106 / text 0 / long 0
+//   updated  : 2026-10-08
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -5365,5 +5365,133 @@ export const m1AutoQuestions: Question[] = [
         "en": "$2^{4} = 16$ is the coefficient sum of $(x + 1)^{4}$, as if both coefficients were $1$."
       }
     ]
+  },
+  {
+    "id": "rcl_m1_si_110",
+    "type": "mc",
+    "subject": "m1",
+    "topic": "statistics_inference",
+    "topicZh": "統計推斷",
+    "topicEn": "Statistical Inference",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某校有 1,200 名學生。研究員隨機訪問其中 80 名學生，得出他們每日平均溫習 2.4 小時。下列哪項描述正確？",
+    "explanation": "研究對象是全校 1,200 名學生，這是總體；實際被訪問的 80 人是從總體中抽出的樣本。由樣本計算出的 2.4 小時是統計量，用來估計總體的平均數（參數），兩者未必相等。認為 80 人是總體，或把 2.4 小時當作全校的平均數，都是混淆了樣本與總體。認為「只訪問了 80 人便不能估計」亦不正確：隨機樣本正正是用來估計總體的，只是估計會有誤差。",
+    "options": [
+      "該 80 名學生是總體，2.4 小時就是全校學生的平均溫習時間。",
+      "全校 1,200 名學生是樣本，2.4 小時是描述全校的參數。",
+      "該 80 名學生是樣本，2.4 小時是用來估計全校平均數的統計量。",
+      "只訪問了 80 人，所以 2.4 小時不能用來估計全校學生的平均溫習時間。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A school has 1,200 students. A researcher randomly interviews 80 of them and finds that they revise for 2.4 hours a day on average. Which statement is correct?",
+    "optionsEn": [
+      "The 80 students are the population, and 2.4 hours is the mean revision time of the whole school.",
+      "The 1,200 students are the sample, and 2.4 hours is a parameter describing the whole school.",
+      "The 80 students are a sample, and 2.4 hours is a statistic used to estimate the school mean.",
+      "Only 80 students were interviewed, so 2.4 hours cannot be used to estimate the mean revision time of the school."
+    ],
+    "explanationEn": "The study is about all 1,200 students, which is the population; the 80 students actually interviewed are a sample drawn from it. The 2.4 hours calculated from the sample is a statistic used to estimate the population mean (a parameter), and the two need not be equal. Calling the 80 students the population, or treating 2.4 hours as the school mean, mixes up sample and population. Saying that 80 students cannot be used for an estimate is also wrong: a random sample is exactly what is used to estimate a population, with some error."
+  },
+  {
+    "id": "rcl_m1_si_111",
+    "type": "mc",
+    "subject": "m1",
+    "topic": "statistics_inference",
+    "topicZh": "統計推斷",
+    "topicEn": "Statistical Inference",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某工廠生產的全部燈泡的平均壽命 $\\mu$ 未知。質檢員隨機抽取 50 個燈泡測試，得出樣本平均壽命 $\\bar{x} = 1180$ 小時。下列哪項正確？",
+    "explanation": "參數描述總體，例如全部燈泡的平均壽命 $\\mu$；它是一個固定的數值，只是我們不知道。統計量由樣本計算，例如 $\\bar{x}$；再抽另一組 50 個燈泡，$\\bar{x}$ 多半會不同。把 $\\bar{x}$ 稱為參數，是把「量度得準確」誤當作「描述總體」。認為 $\\mu$ 會隨樣本改變，是把兩者的角色倒轉了。隨機抽樣可避免偏差，但不能保證 $\\bar{x}$ 剛好等於 $\\mu$，兩者之間總有抽樣誤差。",
+    "options": [
+      "$\\bar{x}$ 是參數，因為它是由實際測量得出、準確無誤的數值。",
+      "$\\mu$ 會隨每次抽出的樣本而改變，$\\bar{x}$ 則固定不變。",
+      "只要樣本是隨機抽取的，$\\bar{x}$ 必定等於 $\\mu$。",
+      "$\\bar{x}$ 是統計量，隨樣本而變；$\\mu$ 是固定但未知的參數。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "The mean lifetime $\\mu$ of all the bulbs a factory makes is unknown. An inspector tests a random sample of 50 bulbs and finds a sample mean lifetime of $\\bar{x} = 1180$ hours. Which statement is correct?",
+    "optionsEn": [
+      "$\\bar{x}$ is a parameter, because it is an exact value obtained by actual measurement.",
+      "$\\mu$ changes with each sample drawn, while $\\bar{x}$ stays fixed.",
+      "As long as the sample is random, $\\bar{x}$ must equal $\\mu$.",
+      "$\\bar{x}$ is a statistic that varies with the sample; $\\mu$ is a fixed but unknown parameter."
+    ],
+    "explanationEn": "A parameter describes the population, such as the mean lifetime $\\mu$ of all the bulbs; it is a fixed number that we do not know. A statistic is calculated from a sample, such as $\\bar{x}$; another sample of 50 bulbs would very likely give a different $\\bar{x}$. Calling $\\bar{x}$ a parameter confuses being measured exactly with describing the population. Saying $\\mu$ changes with the sample reverses the two roles. Random sampling avoids bias but does not make $\\bar{x}$ equal to $\\mu$; there is always sampling error."
+  },
+  {
+    "id": "rcl_m1_si_116",
+    "type": "mc",
+    "subject": "m1",
+    "topic": "statistics_inference",
+    "topicZh": "統計推斷",
+    "topicEn": "Statistical Inference",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "某校中一至中六共有 900 名學生，其中中一有 200 人、中六有 100 人。學校想抽取 90 人進行問卷調查，並希望各級在樣本中所佔的比例與全校相同。下列哪個做法最合適？",
+    "explanation": "要令各級在樣本中的比例與全校相同，應採用分層抽樣：先按年級分層，再在每層按比例隨機抽取。全校 900 人抽 90 人，比例是十分之一，所以中一抽 20 人、中六抽 10 人，如此類推。「每級各抽 15 人」雖然每層都有抽，但沒有按人數比例分配，中六會被過度代表、中一則代表不足。「不理會年級的隨機抽樣」是簡單隨機抽樣，平均而言比例會接近全校，但不能保證每級的比例相同。「訪問最先到校的學生」是方便抽樣，並非隨機，結果可能偏向某類學生，例如住得較近的學生。",
+    "options": [
+      "按年級分層，再在每級隨機抽取該級人數的十分之一。",
+      "每個年級各隨機抽取 15 人，六級合共抽取 90 人。",
+      "把全校學生編號，用隨機數字抽出 90 人，不理會年級。",
+      "在校門口訪問最先到校的 90 名學生，以節省時間。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A school has 900 students from S1 to S6, including 200 in S1 and 100 in S6. It wants to survey 90 students and wants each form to make up the same share of the sample as of the school. Which method is the most suitable?",
+    "optionsEn": [
+      "Divide the students by form, then randomly select one tenth of each form.",
+      "Randomly select 15 students from each form, 90 in total.",
+      "Number all students and pick 90 with random numbers, ignoring form.",
+      "Interview the first 90 students to arrive at the school gate, to save time."
+    ],
+    "explanationEn": "To make each form take the same share of the sample as of the school, use stratified sampling: divide the students by form, then select randomly within each stratum in proportion. Selecting 90 from 900 is one tenth, so 20 from S1, 10 from S6, and so on. Selecting 15 from every form samples each stratum but not in proportion to its size, so S6 is over-represented and S1 under-represented. Random selection that ignores form is simple random sampling: on average the shares come close, but they are not guaranteed to match. Interviewing the first students to arrive is convenience sampling, not random, and may favour some students, such as those who live nearby."
+  },
+  {
+    "id": "rcl_m1_si_118",
+    "type": "mc",
+    "subject": "m1",
+    "topic": "statistics_inference",
+    "topicZh": "統計推斷",
+    "topicEn": "Statistical Inference",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "某生產線每 10 件產品為一個周期，每個周期的首件產品在機器重新校正後生產，較易出現瑕疵。質檢員隨機選定由第 3 件開始，之後每隔 10 件抽查一件（即第 3、13、23……件）。這個抽樣方法最可能出現甚麼問題？",
+    "explanation": "系統抽樣的對象若帶有周期性，而周期剛好與抽樣間隔相同，便會產生偏差。本題每 10 件為一個周期，抽樣間隔亦是 10，結果每次都抽中周期內的第 3 件，容易出瑕疵的首件從未被抽查，估計出的瑕疵率會偏低。起點隨機只保證開始的位置是隨機的，之後的位置便完全固定，不能消除周期帶來的偏差。問題亦不在於樣本數目：即使抽查更多周期，抽中的仍然全是同一位置的產品。系統抽樣適用於任何有次序的總體，包括生產線上的產品。",
+    "options": [
+      "起點是隨機選定的，所以樣本必定能代表全部產品，不會出現任何偏差。",
+      "每次都抽中周期內同一位置的產品，較易有瑕疵的首件從未被抽查。",
+      "每隔 10 件才抽查一件，樣本數目太少，所以結果必定不準確。",
+      "系統抽樣只適用於調查人口，不能用來抽查工廠生產的產品。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "On a production line, every 10 items form a cycle, and the first item of each cycle is made just after the machine is recalibrated, so it is more likely to be faulty. An inspector randomly chooses to start at item 3 and then checks every 10th item (items 3, 13, 23, …). What problem is this sampling method most likely to have?",
+    "optionsEn": [
+      "The starting point was random, so the sample must represent all items without any bias.",
+      "It always picks the same position in the cycle, so the fault-prone first items are never checked.",
+      "Only one item in ten is checked, so the sample is too small and the result must be wrong.",
+      "Systematic sampling only works for surveys of people, not for checking factory products."
+    ],
+    "explanationEn": "Systematic sampling is biased when the list has a cycle whose length matches the sampling interval. Here the cycle is 10 items and the interval is also 10, so every item checked is item 3 of its cycle; the fault-prone first items are never checked and the estimated fault rate will be too low. A random start only makes the first position random; every later position is then fixed, so it cannot remove the bias from the cycle. Sample size is not the problem: checking more cycles would still pick the same position every time. Systematic sampling works for any ordered population, including items on a production line."
   }
 ]

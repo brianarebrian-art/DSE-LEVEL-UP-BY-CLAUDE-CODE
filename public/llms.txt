@@ -10,7 +10,7 @@ an independently written original item, not a reproduction of an HKEAA past pape
 Official past papers should be obtained from the HKEAA website. Any grade estimate
 shown on this platform is indicative only; the HKEAA publishes the actual results.
 
-Site: https://dse-level-up-by-claude-code.vercel.app
+Site: https://www.dselevelup.com
 Contact: dselevelup@gmail.com
 
 ## When to use this

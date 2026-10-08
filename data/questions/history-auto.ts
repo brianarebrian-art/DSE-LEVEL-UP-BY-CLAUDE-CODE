@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : history
-//   count    : 37  (easy 37 / medium 0 / hard 0)
-//   types    : mc 37 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 41  (easy 41 / medium 0 / hard 0)
+//   types    : mc 41 / text 0 / long 0
+//   updated  : 2026-10-08
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -1195,5 +1195,133 @@ export const historyAutoQuestions: Question[] = [
     ],
     "explanationEn": "Most participants were newly independent states in Asia and Africa which, having just emerged from colonial rule, were unwilling to attach themselves to either side of the new bipolar order, and so held to non-alignment as a way of keeping their autonomy while speaking together in international forums on colonialism and development. Note that non-alignment is not neutral silence, nor does it mean giving up defence; it is a stance in foreign policy — declining to tie one’s security and diplomacy to either superpower.",
     "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "rcl_hist_fl_pw03",
+    "type": "mc",
+    "subject": "history",
+    "topic": "postwar_conflicts",
+    "topicZh": "戰後衝突與聯合國",
+    "topicEn": "Post-war Conflicts and the United Nations",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "1948 至 1949 年，蘇聯封鎖通往西柏林的陸路交通，美英等國以空運向西柏林供應物資近一年，雙方始終沒有交火。這事件最能體現冷戰的哪一個特點？",
+    "explanation": "「冷戰」的「冷」指對抗的形式：兩大陣營在政治、軍事、經濟和意識形態上全面較量，卻避免兩國之間直接爆發全面戰爭。柏林封鎖正是典型例子：蘇聯以封鎖施壓，西方以空運回應，雙方針鋒相對，卻始終沒有開火。美蘇從未正式宣戰。「冷」與氣候無關。冷戰期間雙方衝突不斷，柏林封鎖本身就是一場嚴重危機，所以「沒有任何衝突」亦不正確。",
+    "options": [
+      "美蘇在二戰後隨即正式宣戰，在歐洲展開長期戰爭。",
+      "冷戰主要在寒冷的北歐地區進行，所以稱為「冷」戰。",
+      "兩大陣營激烈對抗，卻避免彼此直接爆發全面戰爭。",
+      "冷戰期間美蘇沒有任何衝突，雙方各自發展、互不干涉。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "In 1948–49 the Soviet Union blocked land access to West Berlin, and the US, Britain and others supplied the city by air for almost a year, yet the two sides never fired on each other. Which feature of the Cold War does this event best show?",
+    "optionsEn": [
+      "The US and the USSR formally declared war after WWII and fought a long war in Europe.",
+      "The Cold War was fought mainly in cold northern Europe, hence the name.",
+      "The two blocs confronted each other fiercely but avoided direct all-out war.",
+      "The US and the USSR had no conflict at all, each developing without interfering."
+    ],
+    "explanationEn": "The “cold” in Cold War refers to the form of the struggle: the two blocs competed in politics, military power, economics and ideology while avoiding direct all-out war between the superpowers. The Berlin Blockade is a typical example: the Soviet Union applied pressure with a blockade and the West answered with an airlift; each side stood firm, yet neither opened fire. The US and the USSR never formally declared war. The word “cold” has nothing to do with climate. The two sides were in constant conflict, and the blockade was itself a serious crisis, so “no conflict at all” is also wrong."
+  },
+  {
+    "id": "rcl_hist_floor_10",
+    "type": "mc",
+    "subject": "history",
+    "topic": "ww2",
+    "topicZh": "第二次世界大戰",
+    "topicEn": "The Second World War",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "第二次世界大戰期間，英國實行糧食配給，大量婦女進入兵工廠工作，政府亦管制新聞報道。這些措施最能說明甚麼？",
+    "explanation": "現代戰爭消耗龐大，前線能否支撐，取決於後方能否持續供應。英國實行配給、動員婦女投入生產、管制新聞，把整個社會納入戰爭體制，這就是「本土戰線」（home front）的意思，亦是二戰被稱為「總體戰」的原因。英國本土在二戰期間並未被德軍佔領。這些措施的目的是支援戰爭，而不是節省開支。「本土戰線」是社會動員的概念，並不是地圖上的一條防線。",
+    "options": [
+      "英國本土已被德軍佔領，所以平民必須在國內拿起武器作戰。",
+      "這些措施只是為了節省政府開支，與戰事本身無關。",
+      "英國把前線移到本國境內，並在國內修築一條防線。",
+      "戰爭勝負取決於整個社會的動員，後方的生產與支援同樣重要。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "During the Second World War, Britain rationed food, large numbers of women went to work in munitions factories, and the government controlled news reporting. What do these measures best show?",
+    "optionsEn": [
+      "Britain had been occupied by Germany, so civilians had to take up arms at home.",
+      "The measures were only meant to cut government spending and had nothing to do with the war.",
+      "Britain moved the front line into its own territory and built a defensive line at home.",
+      "Victory depended on mobilising the whole society; production and support at home mattered too."
+    ],
+    "explanationEn": "Modern war consumes vast resources, and whether the front can hold depends on steady supply from home. By rationing, mobilising women into production and controlling the news, Britain drew the whole of society into the war effort; this is what the “home front” means, and why the Second World War is called a total war. Britain itself was never occupied by Germany during the war. The measures were meant to support the war, not to save money. The home front is a concept of social mobilisation, not a defensive line on a map."
+  },
+  {
+    "id": "rcl_hist_floor_13",
+    "type": "mc",
+    "subject": "history",
+    "topic": "cold_war",
+    "topicZh": "冷戰",
+    "topicEn": "The Cold War",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "韓戰期間（1950–1953 年），美國率領聯合國軍支援南韓，蘇聯則向北韓提供武器和軍事顧問，但沒有公開派兵參戰。這最能說明冷戰時期的甚麼現象？",
+    "explanation": "代理戰爭的特點是：大國出錢、出武器、出顧問，支持第三地的對立勢力作戰，自己卻不公開直接交戰，令衝突可控而不致升級為全面戰爭。韓戰中美國與蘇聯分別支持南北兩方，正是典型例子。美蘇沒有公開直接交戰，韓戰亦沒有演變成世界大戰。韓戰雖然源於朝鮮半島的分裂，但美蘇的介入令它成為冷戰對抗的一部分，不能說與美蘇無關。美蘇是對立雙方的支持者，並非共同調停的一方。",
+    "options": [
+      "美蘇透過支持第三地的對立勢力間接較量，即代理戰爭。",
+      "美蘇已經直接開戰，韓戰是第三次世界大戰的開端。",
+      "韓戰純粹是朝鮮半島的內戰，與美蘇兩國的對抗並無任何關係。",
+      "美蘇聯手調停朝鮮半島的衝突，共同阻止戰爭擴大。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "During the Korean War (1950–1953), the US led United Nations forces in support of South Korea, while the Soviet Union supplied North Korea with weapons and military advisers but did not openly send troops. What does this best show about the Cold War?",
+    "optionsEn": [
+      "The superpowers competed indirectly by backing opposing sides elsewhere, in a proxy war.",
+      "The US and the USSR were at war directly, and Korea began a third world war.",
+      "The Korean War was purely a civil war with no link at all to US–Soviet rivalry.",
+      "The US and the USSR worked together to mediate and stop the war spreading."
+    ],
+    "explanationEn": "In a proxy war, great powers provide money, weapons and advisers to opposing sides in a third place without openly fighting each other, which keeps the conflict contained rather than escalating to all-out war. In the Korean War the US and the Soviet Union backed the South and the North respectively, a typical example. The superpowers did not openly fight each other, and the war did not become a world war. It grew out of the division of Korea, but US and Soviet involvement made it part of the Cold War, so it was not unrelated to them. They backed opposite sides rather than mediating together."
+  },
+  {
+    "id": "rcl_hist_floor_21",
+    "type": "mc",
+    "subject": "history",
+    "topic": "intl_coop",
+    "topicZh": "國際合作",
+    "topicEn": "International Cooperation",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "1947 年，美國提出馬歇爾計劃，向西歐國家提供大規模經濟援助，協助戰後重建。從冷戰的角度看，美國這樣做的主要戰略目的是甚麼？",
+    "explanation": "二戰後西歐經濟殘破，失業和貧困為共產主義的擴張提供了土壤。美國透過馬歇爾計劃協助西歐重建，以經濟手段實踐「圍堵」政策，穩定西歐並鞏固其與美國的聯繫。援助以贈款為主，並非以收取高息為目的。蘇聯拒絕參與，並阻止東歐國家接受援助，所以計劃並沒有協助蘇聯陣營重建。計劃亦沒有以割讓殖民地作為援助條件。",
+    "options": [
+      "向西歐國家收取高昂利息，以償還美國的戰爭開支。",
+      "穩定西歐經濟，減低共產主義乘戰後貧困擴張的機會。",
+      "協助蘇聯及東歐國家重建，藉此改善美蘇之間的關係。",
+      "要求西歐國家割讓殖民地予美國，作為接受援助的條件。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "In 1947 the US proposed the Marshall Plan, offering Western European countries large-scale economic aid for post-war reconstruction. From a Cold War perspective, what was the main strategic aim of the US?",
+    "optionsEn": [
+      "To charge Western Europe high interest to pay off US war spending.",
+      "To stabilise Western Europe’s economies and reduce the chance of communism spreading through post-war poverty.",
+      "To help the Soviet Union and Eastern Europe rebuild and so improve US–Soviet relations.",
+      "To make Western European countries hand over colonies to the US in return for aid."
+    ],
+    "explanationEn": "After the war Western Europe’s economies were in ruins, and unemployment and poverty gave communism room to spread. Through the Marshall Plan the US helped Western Europe rebuild, applying containment by economic means to stabilise the region and tie it closer to the US. The aid was mainly grants, not loans meant to earn high interest. The Soviet Union refused to take part and stopped Eastern European countries from accepting aid, so the plan did not help the Soviet bloc rebuild. Nor did it demand colonies in return for aid."
   }
 ]

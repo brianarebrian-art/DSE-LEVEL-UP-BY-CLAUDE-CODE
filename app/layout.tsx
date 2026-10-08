@@ -27,7 +27,7 @@ const garamond = EB_Garamond({
   variable: '--font-garamond',
 })
 
-// 部署網域。dselevelup.hk 尚未購入，一律沿用現行 Vercel 域（Brian 2026-07-29 拍板）。
+// 部署網域：www.dselevelup.com（2026-10-08 起；2026-10-09 創辦人回覆 58a 改用）。單一來源在 lib/site.ts。
 // 2026-08-14：原本此處與 app/sitemap.ts 各有一份字面值，靠註釋提醒「三處必須一致」。
 // 紙筆戰士把對答案網址印上實體試卷後，寫錯即無法補救，故改為單一來源匯入。
 // （public/robots.txt 為靜態檔，無法匯入，由 lib/__tests__/site-origin.test.mts 核對。）
@@ -42,11 +42,15 @@ import { getActiveSubjects } from '@/data/subjects'
 // 科目數目由科目表計算（UX 循環 LOOP 11），不在各處寫死「25」。
 const SUBJECT_COUNT = getActiveSubjects().length
 
+// 首頁及搜尋結果顯示的標題。創辦人 2026-10-09 指示改為三段，加入「DSE 溫習平台」。
+// 首頁沒有自己的 metadata，所以 <title>、OG 及 Twitter 標題都取自這裏。
+const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 掌握 DSE 核心邏輯' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
+
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
   // 發出警告，且 og:image 會輸出成相對路徑，大部分社交平台抓不到。
   metadataBase: new URL(SITE_URL),
-  title: 'DSE Level Up | 掌握 DSE 核心邏輯', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
+  title: SITE_TITLE, // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
   description:
     '原創 DSE 練習題，選擇題即時批改，附練習表現估算。掌握邏輯，唔係背答案。HKDSE 甲類科目，免費，並非考評局官方網站。', // i18n-exempt: 靜態 SEO meta description
   // 刻意不設 `title.template` —— 各子頁（/subjects、/notes/[subject] 等）已自行
@@ -73,7 +77,7 @@ export const metadata: Metadata = {
     siteName: 'DSE Level Up',
     locale: 'zh_HK',
     url: SITE_URL,
-    title: 'DSE Level Up | 掌握 DSE 核心邏輯', // i18n-exempt: 靜態 SEO OG title
+    title: SITE_TITLE, // i18n-exempt: 靜態 SEO OG title
     description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。掌握邏輯，唔係背答案。`, // i18n-exempt: 靜態 SEO OG description
     // 刻意不在此宣告 images —— `app/opengraph-image.tsx` 屬 Next.js 檔案約定，
     // 建置時會自動注入 og:image / twitter:image（連 width／height／type）。
@@ -81,7 +85,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DSE Level Up | 掌握 DSE 核心邏輯', // i18n-exempt: 靜態 SEO Twitter title
+    title: SITE_TITLE, // i18n-exempt: 靜態 SEO Twitter title
     description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。`, // i18n-exempt: 靜態 SEO Twitter description
   },
 }

@@ -13,7 +13,7 @@ import { subjects, getActiveSubjects } from '@/data/subjects'
 // barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
 // 一條都冇顯示過）。呢一頁只係想要一個總數。
-import { TOTAL_QUESTIONS, CONTENT_STATS } from '@/data/questions/summary.generated'
+import { TOTAL_QUESTIONS, WITHDRAWN_FOR_FAULT } from '@/data/questions/summary.generated'
 import { SESSION_SIZE, sessionMinutes } from '@/lib/entitlements'
 import { quickStartSubjects, quickStartHref } from '@/lib/quickStart'
 import { useLocale } from '@/lib/i18n'
@@ -226,11 +226,12 @@ export default function HomePage() {
               2026-10-02 創辦人決定刪去「未經逐題人手覆核」半句，保留「經自動檢查」（憲章 §12.1 約束 1）。
               2026-10-04（審計 #9，創辦人回覆 10a）：加「未經註冊教師審定」及已收起題數。收起數由
               summary.generated 計，0 條時不顯示。同日收起 36 條設定有誤的化學題（回覆 15a），
-              原因不再只是解析，字眼改為「發現有錯」。 */}
+              原因不再只是解析，字眼改為「發現有錯」。2026-10-09：以 PURE_RECALL 收起並由應用題取代的
+              題目並無錯誤，不計入此數（WITHDRAWN_FOR_FAULT）。 */}
           <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
             {locale === 'en'
-              ? `Questions go live after automated checks and have not been reviewed by registered teachers${CONTENT_STATS.withdrawn > 0 ? `; another ${CONTENT_STATS.withdrawn.toLocaleString()} have been withdrawn because errors were found` : ''}. `
-              : `題目經自動檢查上線，未經註冊教師審定${CONTENT_STATS.withdrawn > 0 ? `；另有 ${CONTENT_STATS.withdrawn.toLocaleString()} 條發現有錯暫時收起` : ''}。`}
+              ? `Questions go live after automated checks and have not been reviewed by registered teachers${WITHDRAWN_FOR_FAULT > 0 ? `; another ${WITHDRAWN_FOR_FAULT.toLocaleString()} have been withdrawn because errors were found` : ''}. `
+              : `題目經自動檢查上線，未經註冊教師審定${WITHDRAWN_FOR_FAULT > 0 ? `；另有 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條發現有錯暫時收起` : ''}。`}
             <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
               {locale === 'en' ? 'How it works' : '點樣做'}
             </Link>

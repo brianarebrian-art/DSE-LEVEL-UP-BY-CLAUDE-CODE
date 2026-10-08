@@ -40,8 +40,9 @@ const { subjects } = await import(join(ROOT, 'data/subjects.ts')) as {
   subjects: { id: string; isActive?: boolean }[]
 }
 
-const { contentStatus } = await import(join(ROOT, 'data/questions/hidden-topics.ts')) as {
+const { contentStatus, withdrawnReason } = await import(join(ROOT, 'data/questions/hidden-topics.ts')) as {
   contentStatus: (subjectId: string, q: { id: string; topic: string }) => 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review'
+  withdrawnReason: (subjectId: string, id: string) => string | null
 }
 const { versionOf } = await import(join(ROOT, 'scripts/qbank/bank-version.mts')) as {
   versionOf: (qs: Record<string, unknown>[]) => string
@@ -91,6 +92,16 @@ if (stats.published !== total) {
   throw new Error(`published (${stats.published}) differs from the practice pool (${total})`)
 }
 
+// The homepage says how many questions were withdrawn because a fault was found. Questions
+// withdrawn as PURE_RECALL (founders' replies 49a–55a) had no fault: each was replaced by an
+// applied question, so they are left out of that sentence. /transparency lists them separately.
+let withdrawnForFault = 0
+for (const s of active) {
+  for (const q of idx.getSubjectQuestionsRaw(s.id)) {
+    if (contentStatus(s.id, q) === 'withdrawn' && withdrawnReason(s.id, q.id) !== 'PURE_RECALL') withdrawnForFault++
+  }
+}
+
 // ⚠️ 呢個檔【產生出嚟】—— 檔頭文案受 term-guard 管（同 load.ts 一樣位於
 // data/questions/ 之下），所以下面嘅字一律用書面語。
 const out = `// ⚠️ 本檔由 scripts/gen-question-summary.mts 產生 —— 請勿手動修改。
@@ -127,6 +138,12 @@ export const TOTAL_QUESTIONS = ${total}
  * 只有 published 會出現在練習中。狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
  */
 export const CONTENT_STATS = ${JSON.stringify(stats, null, 2)} as const
+
+/**
+ * 因發現錯誤而收起的題數（首頁使用）。不包括以 PURE_RECALL 收起的題目：那些題目並無錯誤，
+ * 已逐條由情境應用題取代（創辦人回覆 49a–55a）。
+ */
+export const WITHDRAWN_FOR_FAULT = ${withdrawnForFault}
 `
 
 const dest = join(ROOT, 'data/questions/summary.generated.ts')

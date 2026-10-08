@@ -1,0 +1,80 @@
+[
+  {
+    "id": "rcl_bafs_mgmt_36",
+    "type": "mc",
+    "topic": "管理",
+    "topicId": "management",
+    "topicZh": "管理",
+    "topicEn": "Management",
+    "difficulty": "intermediate",
+    "question": "一間本地小型麵包店想把產品推廣至全港，但資金有限，亦不想承擔租用新舖位的風險。下列哪個分銷安排最切合它的情況？",
+    "questionEn": "A small local bakery wants to sell its products across Hong Kong, but it has little capital and does not want the risk of renting new shops. Which distribution arrangement suits it best?",
+    "options": [
+      "透過連鎖超級市場代售，借用其現有的銷售點覆蓋全港。",
+      "在全港十八區各開設一間分店，直接控制每一個銷售點。",
+      "只在現有店舖銷售，並以提高售價的方法增加收入。",
+      "在網上直銷並自設車隊送貨，免除所有中間人的參與。"
+    ],
+    "optionsEn": [
+      "Sell through a supermarket chain and use its existing outlets to cover Hong Kong.",
+      "Open a branch in each of the 18 districts to control every outlet directly.",
+      "Sell only in the existing shop and raise prices to earn more.",
+      "Sell online and run its own delivery fleet, cutting out every middleman."
+    ],
+    "correctIndex": 0,
+    "explanation": "分銷渠道是產品由生產者到達消費者所經的途徑。經零售商（連鎖超級市場）代售屬間接渠道，企業可借用中間人現有的網絡和店舖，以較少資金迅速擴大覆蓋範圍，代價是要讓出部分利潤，對銷售點的控制亦較少。開設分店屬直接渠道，控制權高，但需要大量資金和租金承擔，不符合題目的限制。只在現有店舖銷售並加價，根本沒有擴大市場覆蓋。網上直銷雖然省去中間人，但自設車隊同樣需要大筆資金。",
+    "explanationEn": "A distribution channel is the route a product takes from producer to consumer. Selling through a retailer (a supermarket chain) is an indirect channel: the firm uses the middleman’s existing network and shops to reach the whole market quickly with little capital, at the cost of giving up part of the profit and some control over outlets. Opening branches is a direct channel with high control, but it needs large capital and rent commitments, which the bakery wants to avoid. Selling only in the existing shop at higher prices does not widen coverage at all. Selling online cuts out middlemen, but running a delivery fleet also needs a lot of capital."
+  },
+  {
+    "id": "rcl_bafs_mgmt_45",
+    "type": "mc",
+    "topic": "管理",
+    "topicId": "management",
+    "topicZh": "管理",
+    "topicEn": "Management",
+    "difficulty": "intermediate",
+    "question": "一間電訊公司推出月費較低、但附送大量數據用量的手機計劃，並只限持有學生證的人士申請。下列哪項最能描述這個計劃的目標市場及合適的宣傳方式？",
+    "questionEn": "A telecom company launches a mobile plan with a low monthly fee and a large data allowance, open only to holders of a student card. Which statement best describes the plan’s target market and a suitable way to promote it?",
+    "options": [
+      "目標市場是所有手機用戶，宜在各大報章刊登全版廣告。",
+      "目標市場是學生，宜在學生常用的社交媒體平台宣傳。",
+      "目標市場是商務人士，宜在金融區設置展銷攤位推廣。",
+      "目標市場是長者，宜在社區中心派發宣傳單張推廣。"
+    ],
+    "optionsEn": [
+      "The target market is all mobile users; place full-page adverts in major newspapers.",
+      "The target market is students; promote it on social media platforms students use.",
+      "The target market is business people; set up promotional stalls in the financial district.",
+      "The target market is the elderly; hand out leaflets at community centres."
+    ],
+    "correctIndex": 1,
+    "explanation": "目標市場是企業經市場區隔後選定、集中服務的顧客群。這個計劃只限學生申請，月費較低而數據量多，切合預算有限但上網需求大的學生，所以目標市場是學生。選定目標市場後，宣傳亦應選擇該群組最常接觸的渠道，例如學生常用的社交媒體。把所有手機用戶當作對象，忽略了計劃本身的申請限制，在報章刊登全版廣告亦難以接觸學生。商務人士和長者都不符合申請資格，向他們宣傳是浪費資源。",
+    "explanationEn": "A target market is the group of customers a firm selects after segmenting the market and chooses to serve. The plan is open only to students and offers a low fee with lots of data, which suits students with small budgets and heavy internet use, so the target market is students. Once the target market is chosen, promotion should use the channels that group sees most, such as the social media students use. Treating all mobile users as the target ignores the eligibility rule, and full-page newspaper adverts rarely reach students. Business people and the elderly are not eligible, so promoting to them wastes resources."
+  },
+  {
+    "id": "rcl_bafs_floor_02",
+    "type": "mc",
+    "topic": "折舊計算",
+    "topicId": "bafs_depreciation",
+    "topicZh": "折舊計算",
+    "topicEn": "Depreciation",
+    "difficulty": "basic",
+    "question": "某公司以 100,000 元購入一部機器，估計可用 5 年，按直線法計算折舊。會計主任把應為 10,000 元的殘值誤估為 30,000 元。這個錯誤對每年的折舊費用及純利有甚麼影響？",
+    "questionEn": "A company buys a machine for \\$100,000 with an estimated useful life of 5 years and uses the straight-line method of depreciation. The accountant estimates the residual value at \\$30,000 instead of the correct \\$10,000. How does this error affect the annual depreciation charge and the net profit?",
+    "options": [
+      "每年折舊費用多計 4,000 元，純利少計 4,000 元。",
+      "每年折舊費用少計 20,000 元，純利多計 20,000 元。",
+      "每年折舊費用少計 4,000 元，純利多計 4,000 元。",
+      "折舊費用不受影響，因為殘值要到出售機器時才入帳。"
+    ],
+    "optionsEn": [
+      "Depreciation is overstated by \\$4,000 a year and net profit understated by \\$4,000.",
+      "Depreciation is understated by \\$20,000 a year and net profit overstated by \\$20,000.",
+      "Depreciation is understated by \\$4,000 a year and net profit overstated by \\$4,000.",
+      "Depreciation is unaffected, because residual value is only recorded when the machine is sold."
+    ],
+    "correctIndex": 2,
+    "explanation": "直線法每年折舊 =（成本 − 殘值）÷ 使用年期。正確的折舊是（100,000 − 10,000）÷ 5 = 18,000 元；誤估後變成（100,000 − 30,000）÷ 5 = 14,000 元，每年少計 4,000 元。折舊是費用，費用少計，純利便多計同一數額。認為折舊多計，是把方向倒轉了：殘值估得越高，可分攤的金額越少。20,000 元是殘值的總差額，必須除以 5 年才是每年的影響。殘值在計算每年折舊時已經用上，並非只在出售機器時才有影響。",
+    "explanationEn": "Straight-line depreciation per year = (cost − residual value) ÷ useful life. The correct charge is (100,000 − 10,000) ÷ 5 = \\$18,000; with the error it becomes (100,000 − 30,000) ÷ 5 = \\$14,000, so it is \\$4,000 too low each year. Depreciation is an expense, so when it is understated, net profit is overstated by the same amount. Saying depreciation is overstated gets the direction wrong: the higher the residual value, the less there is to spread. \\$20,000 is the total difference in residual value and must be divided by 5 years to give the yearly effect. Residual value is used in every year’s depreciation, not only when the machine is sold."
+  }
+]
