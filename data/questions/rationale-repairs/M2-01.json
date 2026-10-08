@@ -1,0 +1,1792 @@
+{
+  "batch": "M2-01",
+  "subject": "m2",
+  "computed": true,
+  "generatedBy": "scripts/qbank/repairs/m2-01.mts",
+  "repairs": [
+    {
+      "id": "m2_rep_0001",
+      "template": "singular-2x2-find-k",
+      "params": {
+        "a": 2,
+        "b": 3,
+        "c": 4
+      },
+      "options": [
+        "$k = 6$",
+        "$k = -6$",
+        "$k = 5$",
+        "$k = 1.5$"
+      ],
+      "optionsEn": [
+        "$k = 6$",
+        "$k = -6$",
+        "$k = 5$",
+        "$k = 1.5$"
+      ],
+      "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 2k - (3)(4) = 2k - 12$，令其為 $0$ 得 $k = 6$。題目問的是【沒有】逆矩陣；若求「有逆矩陣」的條件，答案會是一個範圍（$k \\neq 6$），而不是單一數值。",
+      "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 2k - (3)(4) = 2k - 12$; setting it to $0$ gives $k = 6$. The question asks when there is *no* inverse; the condition for an inverse would be a range ($k \\neq 6$), not a single value.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。$\\det A = 2k - (3)(4) = 2k - 12$，令其為 $0$ 得 $k = 6$。",
+          "en": "Correct. $\\det A = 2k - (3)(4) = 2k - 12$; setting it to $0$ gives $k = 6$."
+        },
+        {
+          "optionId": 1,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\det A = 2(-6) - 12 = -24$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\det A = 2(-6) - 12 = -24$, which is not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "combined",
+          "zh": "$2 \\times 4 - 3 = 5$ 並非由行列式得出。代回得 $\\det A = -2$，不等於零。",
+          "en": "$2 \\times 4 - 3 = 5$ does not come from the determinant. Substituting gives $\\det A = -2$, which is not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "swapped",
+          "zh": "這是解 $4k - (2)(3) = 0$ 的結果，把矩陣元素的位置對調了。代回原矩陣得 $\\det A = -9$，不等於零。",
+          "en": "This solves $4k - (2)(3) = 0$, with the entries in the wrong places. In the actual matrix, $\\det A = -9$, which is not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0002",
+      "template": "singular-2x2-find-k",
+      "params": {
+        "a": 1,
+        "b": 5,
+        "c": 2
+      },
+      "options": [
+        "$k = 2.5$",
+        "$k = 10$",
+        "$k = -10$",
+        "$k = -3$"
+      ],
+      "optionsEn": [
+        "$k = 2.5$",
+        "$k = 10$",
+        "$k = -10$",
+        "$k = -3$"
+      ],
+      "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = k - (5)(2) = k - 10$，令其為 $0$ 得 $k = 10$。題目問的是【沒有】逆矩陣；若求「有逆矩陣」的條件，答案會是一個範圍（$k \\neq 10$），而不是單一數值。",
+      "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = k - (5)(2) = k - 10$; setting it to $0$ gives $k = 10$. The question asks when there is *no* inverse; the condition for an inverse would be a range ($k \\neq 10$), not a single value.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "swapped",
+          "zh": "這是解 $2k - (1)(5) = 0$ 的結果，把矩陣元素的位置對調了。代回原矩陣得 $\\det A = -7.5$，不等於零。",
+          "en": "This solves $2k - (1)(5) = 0$, with the entries in the wrong places. In the actual matrix, $\\det A = -7.5$, which is not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。$\\det A = k - (5)(2) = k - 10$，令其為 $0$ 得 $k = 10$。",
+          "en": "Correct. $\\det A = k - (5)(2) = k - 10$; setting it to $0$ gives $k = 10$."
+        },
+        {
+          "optionId": 2,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\det A = 1(-10) - 10 = -20$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\det A = 1(-10) - 10 = -20$, which is not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "combined",
+          "zh": "$1 \\times 2 - 5 = -3$ 並非由行列式得出。代回得 $\\det A = -13$，不等於零。",
+          "en": "$1 \\times 2 - 5 = -3$ does not come from the determinant. Substituting gives $\\det A = -13$, which is not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0003",
+      "template": "singular-2x2-find-k",
+      "params": {
+        "a": 3,
+        "b": 2,
+        "c": 6
+      },
+      "options": [
+        "$k = 16$",
+        "$k = 1$",
+        "$k = 4$",
+        "$k = -4$"
+      ],
+      "optionsEn": [
+        "$k = 16$",
+        "$k = 1$",
+        "$k = 4$",
+        "$k = -4$"
+      ],
+      "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 3k - (2)(6) = 3k - 12$，令其為 $0$ 得 $k = 4$。題目問的是【沒有】逆矩陣；若求「有逆矩陣」的條件，答案會是一個範圍（$k \\neq 4$），而不是單一數值。",
+      "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 3k - (2)(6) = 3k - 12$; setting it to $0$ gives $k = 4$. The question asks when there is *no* inverse; the condition for an inverse would be a range ($k \\neq 4$), not a single value.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "combined",
+          "zh": "$3 \\times 6 - 2 = 16$ 並非由行列式得出。代回得 $\\det A = 36$，不等於零。",
+          "en": "$3 \\times 6 - 2 = 16$ does not come from the determinant. Substituting gives $\\det A = 36$, which is not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "swapped",
+          "zh": "這是解 $6k - (3)(2) = 0$ 的結果，把矩陣元素的位置對調了。代回原矩陣得 $\\det A = -9$，不等於零。",
+          "en": "This solves $6k - (3)(2) = 0$, with the entries in the wrong places. In the actual matrix, $\\det A = -9$, which is not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。$\\det A = 3k - (2)(6) = 3k - 12$，令其為 $0$ 得 $k = 4$。",
+          "en": "Correct. $\\det A = 3k - (2)(6) = 3k - 12$; setting it to $0$ gives $k = 4$."
+        },
+        {
+          "optionId": 3,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\det A = 3(-4) - 12 = -24$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\det A = 3(-4) - 12 = -24$, which is not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0004",
+      "template": "singular-2x2-find-k",
+      "params": {
+        "a": 4,
+        "b": 1,
+        "c": 8
+      },
+      "options": [
+        "$k = -2$",
+        "$k = 31$",
+        "$k = 0.5$",
+        "$k = 2$"
+      ],
+      "optionsEn": [
+        "$k = -2$",
+        "$k = 31$",
+        "$k = 0.5$",
+        "$k = 2$"
+      ],
+      "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 4k - (1)(8) = 4k - 8$，令其為 $0$ 得 $k = 2$。題目問的是【沒有】逆矩陣；若求「有逆矩陣」的條件，答案會是一個範圍（$k \\neq 2$），而不是單一數值。",
+      "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 4k - (1)(8) = 4k - 8$; setting it to $0$ gives $k = 2$. The question asks when there is *no* inverse; the condition for an inverse would be a range ($k \\neq 2$), not a single value.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\det A = 4(-2) - 8 = -16$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\det A = 4(-2) - 8 = -16$, which is not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "combined",
+          "zh": "$4 \\times 8 - 1 = 31$ 並非由行列式得出。代回得 $\\det A = 116$，不等於零。",
+          "en": "$4 \\times 8 - 1 = 31$ does not come from the determinant. Substituting gives $\\det A = 116$, which is not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "swapped",
+          "zh": "這是解 $8k - (4)(1) = 0$ 的結果，把矩陣元素的位置對調了。代回原矩陣得 $\\det A = -6$，不等於零。",
+          "en": "This solves $8k - (4)(1) = 0$, with the entries in the wrong places. In the actual matrix, $\\det A = -6$, which is not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。$\\det A = 4k - (1)(8) = 4k - 8$，令其為 $0$ 得 $k = 2$。",
+          "en": "Correct. $\\det A = 4k - (1)(8) = 4k - 8$; setting it to $0$ gives $k = 2$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0005",
+      "template": "singular-2x2-find-k",
+      "params": {
+        "a": 5,
+        "b": 3,
+        "c": 10
+      },
+      "options": [
+        "$k = 6$",
+        "$k = -6$",
+        "$k = 47$",
+        "$k = 1.5$"
+      ],
+      "optionsEn": [
+        "$k = 6$",
+        "$k = -6$",
+        "$k = 47$",
+        "$k = 1.5$"
+      ],
+      "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 5k - (3)(10) = 5k - 30$，令其為 $0$ 得 $k = 6$。題目問的是【沒有】逆矩陣；若求「有逆矩陣」的條件，答案會是一個範圍（$k \\neq 6$），而不是單一數值。",
+      "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 5k - (3)(10) = 5k - 30$; setting it to $0$ gives $k = 6$. The question asks when there is *no* inverse; the condition for an inverse would be a range ($k \\neq 6$), not a single value.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。$\\det A = 5k - (3)(10) = 5k - 30$，令其為 $0$ 得 $k = 6$。",
+          "en": "Correct. $\\det A = 5k - (3)(10) = 5k - 30$; setting it to $0$ gives $k = 6$."
+        },
+        {
+          "optionId": 1,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\det A = 5(-6) - 30 = -60$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\det A = 5(-6) - 30 = -60$, which is not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "combined",
+          "zh": "$5 \\times 10 - 3 = 47$ 並非由行列式得出。代回得 $\\det A = 205$，不等於零。",
+          "en": "$5 \\times 10 - 3 = 47$ does not come from the determinant. Substituting gives $\\det A = 205$, which is not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "swapped",
+          "zh": "這是解 $10k - (5)(3) = 0$ 的結果，把矩陣元素的位置對調了。代回原矩陣得 $\\det A = -22.5$，不等於零。",
+          "en": "This solves $10k - (5)(3) = 0$, with the entries in the wrong places. In the actual matrix, $\\det A = -22.5$, which is not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0006",
+      "template": "singular-2x2-find-k",
+      "params": {
+        "a": 2,
+        "b": 7,
+        "c": 3
+      },
+      "options": [
+        "$k = 4.6667$",
+        "$k = 10.5$",
+        "$k = -10.5$",
+        "$k = -1$"
+      ],
+      "optionsEn": [
+        "$k = 4.6667$",
+        "$k = 10.5$",
+        "$k = -10.5$",
+        "$k = -1$"
+      ],
+      "explanation": "一個 $2 \\times 2$ 矩陣沒有逆矩陣，當且僅當其行列式為零。$\\det A = 2k - (7)(3) = 2k - 21$，令其為 $0$ 得 $k = 10.5$。題目問的是【沒有】逆矩陣；若求「有逆矩陣」的條件，答案會是一個範圍（$k \\neq 10.5$），而不是單一數值。",
+      "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant is zero. $\\det A = 2k - (7)(3) = 2k - 21$; setting it to $0$ gives $k = 10.5$. The question asks when there is *no* inverse; the condition for an inverse would be a range ($k \\neq 10.5$), not a single value.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "swapped",
+          "zh": "這是解 $3k - (2)(7) = 0$ 的結果，把矩陣元素的位置對調了。代回原矩陣得 $\\det A = -11.6667$，不等於零。",
+          "en": "This solves $3k - (2)(7) = 0$, with the entries in the wrong places. In the actual matrix, $\\det A = -11.6667$, which is not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。$\\det A = 2k - (7)(3) = 2k - 21$，令其為 $0$ 得 $k = 10.5$。",
+          "en": "Correct. $\\det A = 2k - (7)(3) = 2k - 21$; setting it to $0$ gives $k = 10.5$."
+        },
+        {
+          "optionId": 2,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\det A = 2(-10.5) - 21 = -42$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\det A = 2(-10.5) - 21 = -42$, which is not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "combined",
+          "zh": "$2 \\times 3 - 7 = -1$ 並非由行列式得出。代回得 $\\det A = -23$，不等於零。",
+          "en": "$2 \\times 3 - 7 = -1$ does not come from the determinant. Substituting gives $\\det A = -23$, which is not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0007",
+      "template": "scalar-multiple-2x2",
+      "params": {
+        "n": 3,
+        "p": 1,
+        "q": 2,
+        "r": 3,
+        "s": 4
+      },
+      "options": [
+        "$\\begin{pmatrix} 4 & 5 \\\\ 6 & 7 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 9 \\\\ 6 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 2 \\\\ 3 & 12 \\end{pmatrix}$"
+      ],
+      "optionsEn": [
+        "$\\begin{pmatrix} 4 & 5 \\\\ 6 & 7 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 9 \\\\ 6 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 2 \\\\ 3 & 12 \\end{pmatrix}$"
+      ],
+      "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，元素的位置保持不變，故 $3A = \\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$。結果的行數和列數與原矩陣相同。",
+      "explanationEn": "A scalar multiple multiplies *every* entry of the matrix and leaves each entry where it is, so $3A = \\begin{pmatrix} 3 & 6 \\\\ 9 & 12 \\end{pmatrix}$. The result has the same numbers of rows and columns as $A$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "added",
+          "zh": "每個元素都加上了 $3$，把乘法做成了加法。",
+          "en": "$3$ has been added to every entry instead of multiplying it."
+        },
+        {
+          "optionId": 1,
+          "kind": "transposed",
+          "zh": "每個元素都乘對了，但右上與左下兩個元素對調了位置（即轉置）。純量乘法不會改變元素的位置。",
+          "en": "Every entry is multiplied correctly, but the top-right and bottom-left entries have swapped places (a transpose). A scalar multiple does not move any entry."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。每個元素都乘以 $3$。",
+          "en": "Correct. Every entry is multiplied by $3$."
+        },
+        {
+          "optionId": 3,
+          "kind": "diagonalOnly",
+          "zh": "只把主對角線上的元素乘以 $3$，另外兩個元素 $2$、$3$ 原封不動；純量乘法要把每一個元素都乘以 $3$。",
+          "en": "Only the leading diagonal is multiplied by $3$; the other two entries $2$ and $3$ are left unchanged. A scalar multiple multiplies every entry."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0008",
+      "template": "scalar-multiple-2x2",
+      "params": {
+        "n": 4,
+        "p": 2,
+        "q": 0,
+        "r": 1,
+        "s": 5
+      },
+      "options": [
+        "$\\begin{pmatrix} 8 & 0 \\\\ 1 & 20 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 4 \\\\ 5 & 9 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 4 \\\\ 0 & 20 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$"
+      ],
+      "optionsEn": [
+        "$\\begin{pmatrix} 8 & 0 \\\\ 1 & 20 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 4 \\\\ 5 & 9 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 4 \\\\ 0 & 20 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$"
+      ],
+      "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，元素的位置保持不變，故 $4A = \\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$。結果的行數和列數與原矩陣相同。",
+      "explanationEn": "A scalar multiple multiplies *every* entry of the matrix and leaves each entry where it is, so $4A = \\begin{pmatrix} 8 & 0 \\\\ 4 & 20 \\end{pmatrix}$. The result has the same numbers of rows and columns as $A$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "diagonalOnly",
+          "zh": "只把主對角線上的元素乘以 $4$，另外兩個元素 $0$、$1$ 原封不動；純量乘法要把每一個元素都乘以 $4$。",
+          "en": "Only the leading diagonal is multiplied by $4$; the other two entries $0$ and $1$ are left unchanged. A scalar multiple multiplies every entry."
+        },
+        {
+          "optionId": 1,
+          "kind": "added",
+          "zh": "每個元素都加上了 $4$，把乘法做成了加法。",
+          "en": "$4$ has been added to every entry instead of multiplying it."
+        },
+        {
+          "optionId": 2,
+          "kind": "transposed",
+          "zh": "每個元素都乘對了，但右上與左下兩個元素對調了位置（即轉置）。純量乘法不會改變元素的位置。",
+          "en": "Every entry is multiplied correctly, but the top-right and bottom-left entries have swapped places (a transpose). A scalar multiple does not move any entry."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。每個元素都乘以 $4$。",
+          "en": "Correct. Every entry is multiplied by $4$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0009",
+      "template": "scalar-multiple-2x2",
+      "params": {
+        "n": 2,
+        "p": 3,
+        "q": 1,
+        "r": 2,
+        "s": 2
+      },
+      "options": [
+        "$\\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 1 \\\\ 2 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 5 & 3 \\\\ 4 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 4 \\\\ 2 & 4 \\end{pmatrix}$"
+      ],
+      "optionsEn": [
+        "$\\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 1 \\\\ 2 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 5 & 3 \\\\ 4 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 4 \\\\ 2 & 4 \\end{pmatrix}$"
+      ],
+      "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，元素的位置保持不變，故 $2A = \\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$。結果的行數和列數與原矩陣相同。",
+      "explanationEn": "A scalar multiple multiplies *every* entry of the matrix and leaves each entry where it is, so $2A = \\begin{pmatrix} 6 & 2 \\\\ 4 & 4 \\end{pmatrix}$. The result has the same numbers of rows and columns as $A$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。每個元素都乘以 $2$。",
+          "en": "Correct. Every entry is multiplied by $2$."
+        },
+        {
+          "optionId": 1,
+          "kind": "diagonalOnly",
+          "zh": "只把主對角線上的元素乘以 $2$，另外兩個元素 $1$、$2$ 原封不動；純量乘法要把每一個元素都乘以 $2$。",
+          "en": "Only the leading diagonal is multiplied by $2$; the other two entries $1$ and $2$ are left unchanged. A scalar multiple multiplies every entry."
+        },
+        {
+          "optionId": 2,
+          "kind": "added",
+          "zh": "每個元素都加上了 $2$，把乘法做成了加法。",
+          "en": "$2$ has been added to every entry instead of multiplying it."
+        },
+        {
+          "optionId": 3,
+          "kind": "transposed",
+          "zh": "每個元素都乘對了，但右上與左下兩個元素對調了位置（即轉置）。純量乘法不會改變元素的位置。",
+          "en": "Every entry is multiplied correctly, but the top-right and bottom-left entries have swapped places (a transpose). A scalar multiple does not move any entry."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0010",
+      "template": "scalar-multiple-2x2",
+      "params": {
+        "n": 5,
+        "p": 5,
+        "q": 2,
+        "r": 0,
+        "s": 3
+      },
+      "options": [
+        "$\\begin{pmatrix} 25 & 0 \\\\ 10 & 15 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 25 & 2 \\\\ 0 & 15 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 10 & 7 \\\\ 5 & 8 \\end{pmatrix}$"
+      ],
+      "optionsEn": [
+        "$\\begin{pmatrix} 25 & 0 \\\\ 10 & 15 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 25 & 2 \\\\ 0 & 15 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 10 & 7 \\\\ 5 & 8 \\end{pmatrix}$"
+      ],
+      "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，元素的位置保持不變，故 $5A = \\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$。結果的行數和列數與原矩陣相同。",
+      "explanationEn": "A scalar multiple multiplies *every* entry of the matrix and leaves each entry where it is, so $5A = \\begin{pmatrix} 25 & 10 \\\\ 0 & 15 \\end{pmatrix}$. The result has the same numbers of rows and columns as $A$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "transposed",
+          "zh": "每個元素都乘對了，但右上與左下兩個元素對調了位置（即轉置）。純量乘法不會改變元素的位置。",
+          "en": "Every entry is multiplied correctly, but the top-right and bottom-left entries have swapped places (a transpose). A scalar multiple does not move any entry."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。每個元素都乘以 $5$。",
+          "en": "Correct. Every entry is multiplied by $5$."
+        },
+        {
+          "optionId": 2,
+          "kind": "diagonalOnly",
+          "zh": "只把主對角線上的元素乘以 $5$，另外兩個元素 $2$、$0$ 原封不動；純量乘法要把每一個元素都乘以 $5$。",
+          "en": "Only the leading diagonal is multiplied by $5$; the other two entries $2$ and $0$ are left unchanged. A scalar multiple multiplies every entry."
+        },
+        {
+          "optionId": 3,
+          "kind": "added",
+          "zh": "每個元素都加上了 $5$，把乘法做成了加法。",
+          "en": "$5$ has been added to every entry instead of multiplying it."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0011",
+      "template": "scalar-multiple-2x2",
+      "params": {
+        "n": 3,
+        "p": 1,
+        "q": 4,
+        "r": 6,
+        "s": 1
+      },
+      "options": [
+        "$\\begin{pmatrix} 4 & 7 \\\\ 9 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 18 \\\\ 12 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 4 \\\\ 6 & 3 \\end{pmatrix}$"
+      ],
+      "optionsEn": [
+        "$\\begin{pmatrix} 4 & 7 \\\\ 9 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 18 \\\\ 12 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 4 \\\\ 6 & 3 \\end{pmatrix}$"
+      ],
+      "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，元素的位置保持不變，故 $3A = \\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$。結果的行數和列數與原矩陣相同。",
+      "explanationEn": "A scalar multiple multiplies *every* entry of the matrix and leaves each entry where it is, so $3A = \\begin{pmatrix} 3 & 12 \\\\ 18 & 3 \\end{pmatrix}$. The result has the same numbers of rows and columns as $A$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "added",
+          "zh": "每個元素都加上了 $3$，把乘法做成了加法。",
+          "en": "$3$ has been added to every entry instead of multiplying it."
+        },
+        {
+          "optionId": 1,
+          "kind": "transposed",
+          "zh": "每個元素都乘對了，但右上與左下兩個元素對調了位置（即轉置）。純量乘法不會改變元素的位置。",
+          "en": "Every entry is multiplied correctly, but the top-right and bottom-left entries have swapped places (a transpose). A scalar multiple does not move any entry."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。每個元素都乘以 $3$。",
+          "en": "Correct. Every entry is multiplied by $3$."
+        },
+        {
+          "optionId": 3,
+          "kind": "diagonalOnly",
+          "zh": "只把主對角線上的元素乘以 $3$，另外兩個元素 $4$、$6$ 原封不動；純量乘法要把每一個元素都乘以 $3$。",
+          "en": "Only the leading diagonal is multiplied by $3$; the other two entries $4$ and $6$ are left unchanged. A scalar multiple multiplies every entry."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0012",
+      "template": "scalar-multiple-2x2",
+      "params": {
+        "n": 2,
+        "p": 4,
+        "q": 3,
+        "r": 2,
+        "s": 6
+      },
+      "options": [
+        "$\\begin{pmatrix} 8 & 3 \\\\ 2 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 5 \\\\ 4 & 8 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 4 \\\\ 6 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$"
+      ],
+      "optionsEn": [
+        "$\\begin{pmatrix} 8 & 3 \\\\ 2 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 5 \\\\ 4 & 8 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 4 \\\\ 6 & 12 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$"
+      ],
+      "explanation": "純量乘法要把該數乘以矩陣的【每一個】元素，元素的位置保持不變，故 $2A = \\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$。結果的行數和列數與原矩陣相同。",
+      "explanationEn": "A scalar multiple multiplies *every* entry of the matrix and leaves each entry where it is, so $2A = \\begin{pmatrix} 8 & 6 \\\\ 4 & 12 \\end{pmatrix}$. The result has the same numbers of rows and columns as $A$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "diagonalOnly",
+          "zh": "只把主對角線上的元素乘以 $2$，另外兩個元素 $3$、$2$ 原封不動；純量乘法要把每一個元素都乘以 $2$。",
+          "en": "Only the leading diagonal is multiplied by $2$; the other two entries $3$ and $2$ are left unchanged. A scalar multiple multiplies every entry."
+        },
+        {
+          "optionId": 1,
+          "kind": "added",
+          "zh": "每個元素都加上了 $2$，把乘法做成了加法。",
+          "en": "$2$ has been added to every entry instead of multiplying it."
+        },
+        {
+          "optionId": 2,
+          "kind": "transposed",
+          "zh": "每個元素都乘對了，但右上與左下兩個元素對調了位置（即轉置）。純量乘法不會改變元素的位置。",
+          "en": "Every entry is multiplied correctly, but the top-right and bottom-left entries have swapped places (a transpose). A scalar multiple does not move any entry."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。每個元素都乘以 $2$。",
+          "en": "Correct. Every entry is multiplied by $2$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0022",
+      "template": "polynomial-limit-substitution",
+      "params": {
+        "x0": 2,
+        "A": 2,
+        "B": -3,
+        "C": 5
+      },
+      "options": [
+        "$4$",
+        "$7$",
+        "$2$",
+        "$5$"
+      ],
+      "optionsEn": [
+        "$4$",
+        "$7$",
+        "$2$",
+        "$5$"
+      ],
+      "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入：$2(2)^2 − 3(2) + 5 = 7$。只有代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+      "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point equals its value there, so substitute directly: $2(2)^2 − 3(2) + 5 = 7$. Simplifying first is needed only when substitution gives an indeterminate form such as $\\frac{0}{0}$, which is not the case here.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "atOne",
+          "zh": "這是 $x = 1$ 時的函數值；題目要的是 $x \\to 2$。",
+          "en": "This is the value at $x = 1$; the question asks about $x \\to 2$."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。多項式是連續函數，直接代入：$2(2)^2 − 3(2) + 5 = 7$。",
+          "en": "Correct. A polynomial is continuous, so substitute directly: $2(2)^2 − 3(2) + 5 = 7$."
+        },
+        {
+          "optionId": 2,
+          "kind": "noConstant",
+          "zh": "代入時漏了常數項 $5$。",
+          "en": "The constant term $5$ has been left out."
+        },
+        {
+          "optionId": 3,
+          "kind": "derivative",
+          "zh": "這是把 $x = 2$ 代入導函數 $4x − 3$ 的結果。求極限不是求導數。",
+          "en": "This substitutes $x = 2$ into the derivative $4x − 3$. A limit is not a derivative."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0023",
+      "template": "polynomial-limit-substitution",
+      "params": {
+        "x0": 3,
+        "A": 1,
+        "B": 4,
+        "C": -6
+      },
+      "options": [
+        "$10$",
+        "$-1$",
+        "$15$",
+        "$21$"
+      ],
+      "optionsEn": [
+        "$10$",
+        "$-1$",
+        "$15$",
+        "$21$"
+      ],
+      "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入：$1(3)^2 + 4(3) − 6 = 15$。只有代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+      "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point equals its value there, so substitute directly: $1(3)^2 + 4(3) − 6 = 15$. Simplifying first is needed only when substitution gives an indeterminate form such as $\\frac{0}{0}$, which is not the case here.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "derivative",
+          "zh": "這是把 $x = 3$ 代入導函數 $2x + 4$ 的結果。求極限不是求導數。",
+          "en": "This substitutes $x = 3$ into the derivative $2x + 4$. A limit is not a derivative."
+        },
+        {
+          "optionId": 1,
+          "kind": "atOne",
+          "zh": "這是 $x = 1$ 時的函數值；題目要的是 $x \\to 3$。",
+          "en": "This is the value at $x = 1$; the question asks about $x \\to 3$."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。多項式是連續函數，直接代入：$1(3)^2 + 4(3) − 6 = 15$。",
+          "en": "Correct. A polynomial is continuous, so substitute directly: $1(3)^2 + 4(3) − 6 = 15$."
+        },
+        {
+          "optionId": 3,
+          "kind": "noConstant",
+          "zh": "代入時漏了常數項 $−6$。",
+          "en": "The constant term $−6$ has been left out."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0024",
+      "template": "polynomial-limit-substitution",
+      "params": {
+        "x0": -2,
+        "A": 3,
+        "B": -1,
+        "C": 2
+      },
+      "options": [
+        "$14$",
+        "$-13$",
+        "$4$",
+        "$16$"
+      ],
+      "optionsEn": [
+        "$14$",
+        "$-13$",
+        "$4$",
+        "$16$"
+      ],
+      "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入：$3(-2)^2 − 1(-2) + 2 = 16$。只有代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+      "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point equals its value there, so substitute directly: $3(-2)^2 − 1(-2) + 2 = 16$. Simplifying first is needed only when substitution gives an indeterminate form such as $\\frac{0}{0}$, which is not the case here.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "noConstant",
+          "zh": "代入時漏了常數項 $2$。",
+          "en": "The constant term $2$ has been left out."
+        },
+        {
+          "optionId": 1,
+          "kind": "derivative",
+          "zh": "這是把 $x = -2$ 代入導函數 $6x − 1$ 的結果。求極限不是求導數。",
+          "en": "This substitutes $x = -2$ into the derivative $6x − 1$. A limit is not a derivative."
+        },
+        {
+          "optionId": 2,
+          "kind": "atOne",
+          "zh": "這是 $x = 1$ 時的函數值；題目要的是 $x \\to -2$。",
+          "en": "This is the value at $x = 1$; the question asks about $x \\to -2$."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。多項式是連續函數，直接代入：$3(-2)^2 − 1(-2) + 2 = 16$。",
+          "en": "Correct. A polynomial is continuous, so substitute directly: $3(-2)^2 − 1(-2) + 2 = 16$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0025",
+      "template": "polynomial-limit-substitution",
+      "params": {
+        "x0": -2,
+        "A": 2,
+        "B": 5,
+        "C": 1
+      },
+      "options": [
+        "$-1$",
+        "$-2$",
+        "$-3$",
+        "$8$"
+      ],
+      "optionsEn": [
+        "$-1$",
+        "$-2$",
+        "$-3$",
+        "$8$"
+      ],
+      "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入：$2(-2)^2 + 5(-2) + 1 = -1$。只有代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+      "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point equals its value there, so substitute directly: $2(-2)^2 + 5(-2) + 1 = -1$. Simplifying first is needed only when substitution gives an indeterminate form such as $\\frac{0}{0}$, which is not the case here.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。多項式是連續函數，直接代入：$2(-2)^2 + 5(-2) + 1 = -1$。",
+          "en": "Correct. A polynomial is continuous, so substitute directly: $2(-2)^2 + 5(-2) + 1 = -1$."
+        },
+        {
+          "optionId": 1,
+          "kind": "noConstant",
+          "zh": "代入時漏了常數項 $1$。",
+          "en": "The constant term $1$ has been left out."
+        },
+        {
+          "optionId": 2,
+          "kind": "derivative",
+          "zh": "這是把 $x = -2$ 代入導函數 $4x + 5$ 的結果。求極限不是求導數。",
+          "en": "This substitutes $x = -2$ into the derivative $4x + 5$. A limit is not a derivative."
+        },
+        {
+          "optionId": 3,
+          "kind": "atOne",
+          "zh": "這是 $x = 1$ 時的函數值；題目要的是 $x \\to -2$。",
+          "en": "This is the value at $x = 1$; the question asks about $x \\to -2$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0026",
+      "template": "polynomial-limit-substitution",
+      "params": {
+        "x0": 3,
+        "A": 4,
+        "B": 0,
+        "C": -7
+      },
+      "options": [
+        "$-3$",
+        "$29$",
+        "$36$",
+        "$24$"
+      ],
+      "optionsEn": [
+        "$-3$",
+        "$29$",
+        "$36$",
+        "$24$"
+      ],
+      "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入：$4(3)^2 + 0(3) − 7 = 29$。只有代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+      "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point equals its value there, so substitute directly: $4(3)^2 + 0(3) − 7 = 29$. Simplifying first is needed only when substitution gives an indeterminate form such as $\\frac{0}{0}$, which is not the case here.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "atOne",
+          "zh": "這是 $x = 1$ 時的函數值；題目要的是 $x \\to 3$。",
+          "en": "This is the value at $x = 1$; the question asks about $x \\to 3$."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。多項式是連續函數，直接代入：$4(3)^2 + 0(3) − 7 = 29$。",
+          "en": "Correct. A polynomial is continuous, so substitute directly: $4(3)^2 + 0(3) − 7 = 29$."
+        },
+        {
+          "optionId": 2,
+          "kind": "noConstant",
+          "zh": "代入時漏了常數項 $−7$。",
+          "en": "The constant term $−7$ has been left out."
+        },
+        {
+          "optionId": 3,
+          "kind": "derivative",
+          "zh": "這是把 $x = 3$ 代入導函數 $8x$ 的結果。求極限不是求導數。",
+          "en": "This substitutes $x = 3$ into the derivative $8x$. A limit is not a derivative."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0027",
+      "template": "polynomial-limit-substitution",
+      "params": {
+        "x0": 4,
+        "A": 1,
+        "B": -6,
+        "C": 9
+      },
+      "options": [
+        "$2$",
+        "$4$",
+        "$1$",
+        "$-8$"
+      ],
+      "optionsEn": [
+        "$2$",
+        "$4$",
+        "$1$",
+        "$-8$"
+      ],
+      "explanation": "多項式在整個實數域上連續，而連續函數在某點的極限就等於該點的函數值，故直接代入：$1(4)^2 − 6(4) + 9 = 1$。只有代入後出現 $\\frac{0}{0}$ 一類不定式時，才需要先化簡；本題不屬此類。",
+      "explanationEn": "A polynomial is continuous everywhere, and the limit of a continuous function at a point equals its value there, so substitute directly: $1(4)^2 − 6(4) + 9 = 1$. Simplifying first is needed only when substitution gives an indeterminate form such as $\\frac{0}{0}$, which is not the case here.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "derivative",
+          "zh": "這是把 $x = 4$ 代入導函數 $2x − 6$ 的結果。求極限不是求導數。",
+          "en": "This substitutes $x = 4$ into the derivative $2x − 6$. A limit is not a derivative."
+        },
+        {
+          "optionId": 1,
+          "kind": "atOne",
+          "zh": "這是 $x = 1$ 時的函數值；題目要的是 $x \\to 4$。",
+          "en": "This is the value at $x = 1$; the question asks about $x \\to 4$."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。多項式是連續函數，直接代入：$1(4)^2 − 6(4) + 9 = 1$。",
+          "en": "Correct. A polynomial is continuous, so substitute directly: $1(4)^2 − 6(4) + 9 = 1$."
+        },
+        {
+          "optionId": 3,
+          "kind": "noConstant",
+          "zh": "代入時漏了常數項 $9$。",
+          "en": "The constant term $9$ has been left out."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0028",
+      "template": "rational-limit-at-infinity",
+      "params": {
+        "p": 3,
+        "m": 2,
+        "q": 6,
+        "n": 2
+      },
+      "options": [
+        "$0$",
+        "不存在（趨向無限大）",
+        "$2$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "optionsEn": [
+        "$0$",
+        "Does not exist (tends to infinity)",
+        "$2$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "explanation": "$x \\to \\infty$ 時，有理式的極限只由分子與分母的【最高次項】決定，低次項與常數的影響趨於零。本題分子最高次為 $2$ 次，分母為 $2$ 次，兩者同次，極限等於最高次項係數之比 $\\dfrac{3}{6} = \\dfrac{1}{2}$。判斷次序應為：先比次數，同次才比係數。",
+      "explanationEn": "As $x \\to \\infty$ the limit of a rational expression depends only on the *highest-degree terms* of the numerator and denominator; lower terms and constants fade away. Here the numerator has degree $2$ and the denominator degree $2$: equal degrees, so the limit is the ratio of the leading coefficients, $\\dfrac{3}{6} = \\dfrac{1}{2}$. Compare degrees first, and coefficients only when the degrees are equal.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "zero",
+          "zh": "極限為 $0$ 只在分母次數較高時成立；本題分子最高次為 $2$ 次，分母為 $2$ 次。",
+          "en": "The limit is $0$ only when the denominator has the higher degree; here the numerator has degree $2$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 1,
+          "kind": "infinite",
+          "zh": "極限不存在只在分子次數較高時成立；本題分子最高次為 $2$ 次，分母為 $2$ 次。",
+          "en": "There is no finite limit only when the numerator has the higher degree; here the numerator has degree $2$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 2,
+          "kind": "inverse",
+          "zh": "把係數之比倒轉了：應是分子係數除以分母係數 $\\dfrac{3}{6}$。",
+          "en": "The coefficient ratio is upside down: it is the numerator's coefficient over the denominator's, $\\dfrac{3}{6}$."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。分子最高次為 $2$ 次，分母為 $2$ 次，兩者同次，極限等於最高次項係數之比 $\\dfrac{3}{6} = \\dfrac{1}{2}$。",
+          "en": "Correct. Here the numerator has degree $2$ and the denominator degree $2$: equal degrees, so the limit is the ratio of the leading coefficients, $\\dfrac{3}{6} = \\dfrac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0029",
+      "template": "rational-limit-at-infinity",
+      "params": {
+        "p": 5,
+        "m": 2,
+        "q": 2,
+        "n": 2
+      },
+      "options": [
+        "$\\dfrac{5}{2}$",
+        "$0$",
+        "不存在（趨向無限大）",
+        "$\\dfrac{2}{5}$"
+      ],
+      "optionsEn": [
+        "$\\dfrac{5}{2}$",
+        "$0$",
+        "Does not exist (tends to infinity)",
+        "$\\dfrac{2}{5}$"
+      ],
+      "explanation": "$x \\to \\infty$ 時，有理式的極限只由分子與分母的【最高次項】決定，低次項與常數的影響趨於零。本題分子最高次為 $2$ 次，分母為 $2$ 次，兩者同次，極限等於最高次項係數之比 $\\dfrac{5}{2} = \\dfrac{5}{2}$。判斷次序應為：先比次數，同次才比係數。",
+      "explanationEn": "As $x \\to \\infty$ the limit of a rational expression depends only on the *highest-degree terms* of the numerator and denominator; lower terms and constants fade away. Here the numerator has degree $2$ and the denominator degree $2$: equal degrees, so the limit is the ratio of the leading coefficients, $\\dfrac{5}{2} = \\dfrac{5}{2}$. Compare degrees first, and coefficients only when the degrees are equal.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。分子最高次為 $2$ 次，分母為 $2$ 次，兩者同次，極限等於最高次項係數之比 $\\dfrac{5}{2} = \\dfrac{5}{2}$。",
+          "en": "Correct. Here the numerator has degree $2$ and the denominator degree $2$: equal degrees, so the limit is the ratio of the leading coefficients, $\\dfrac{5}{2} = \\dfrac{5}{2}$."
+        },
+        {
+          "optionId": 1,
+          "kind": "zero",
+          "zh": "極限為 $0$ 只在分母次數較高時成立；本題分子最高次為 $2$ 次，分母為 $2$ 次。",
+          "en": "The limit is $0$ only when the denominator has the higher degree; here the numerator has degree $2$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 2,
+          "kind": "infinite",
+          "zh": "極限不存在只在分子次數較高時成立；本題分子最高次為 $2$ 次，分母為 $2$ 次。",
+          "en": "There is no finite limit only when the numerator has the higher degree; here the numerator has degree $2$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 3,
+          "kind": "inverse",
+          "zh": "把係數之比倒轉了：應是分子係數除以分母係數 $\\dfrac{5}{2}$。",
+          "en": "The coefficient ratio is upside down: it is the numerator's coefficient over the denominator's, $\\dfrac{5}{2}$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0030",
+      "template": "rational-limit-at-infinity",
+      "params": {
+        "p": 1,
+        "m": 2,
+        "q": 4,
+        "n": 3
+      },
+      "options": [
+        "$4$",
+        "$0$",
+        "$\\dfrac{1}{4}$",
+        "不存在（趨向無限大）"
+      ],
+      "optionsEn": [
+        "$4$",
+        "$0$",
+        "$\\dfrac{1}{4}$",
+        "Does not exist (tends to infinity)"
+      ],
+      "explanation": "$x \\to \\infty$ 時，有理式的極限只由分子與分母的【最高次項】決定，低次項與常數的影響趨於零。本題分子最高次為 $2$ 次，分母為 $3$ 次，分母次數較高，分母增長得快得多，故極限為 $0$。判斷次序應為：先比次數，同次才比係數。",
+      "explanationEn": "As $x \\to \\infty$ the limit of a rational expression depends only on the *highest-degree terms* of the numerator and denominator; lower terms and constants fade away. Here the numerator has degree $2$ and the denominator degree $3$: the denominator has the higher degree and grows much faster, so the limit is $0$. Compare degrees first, and coefficients only when the degrees are equal.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "inverse",
+          "zh": "這是倒轉了的係數之比；而且本題分子最高次為 $2$ 次，分母為 $3$ 次，次數不同時極限並不取決於係數。",
+          "en": "This is the coefficient ratio upside down; and here the numerator has degree $2$ and the denominator degree $3$, so with unequal degrees the coefficients do not decide the limit."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。分子最高次為 $2$ 次，分母為 $3$ 次，分母次數較高，分母增長得快得多，故極限為 $0$。",
+          "en": "Correct. Here the numerator has degree $2$ and the denominator degree $3$: the denominator has the higher degree and grows much faster, so the limit is $0$."
+        },
+        {
+          "optionId": 2,
+          "kind": "ratio",
+          "zh": "係數之比 $\\dfrac{1}{4}$ 只在分子分母同次時才是極限；本題分子最高次為 $2$ 次，分母為 $3$ 次。應先比較次數，同次才比係數。",
+          "en": "The coefficient ratio $\\dfrac{1}{4}$ is the limit only when the degrees are equal; here the numerator has degree $2$ and the denominator degree $3$. Compare degrees first, coefficients only when they are equal."
+        },
+        {
+          "optionId": 3,
+          "kind": "infinite",
+          "zh": "極限不存在只在分子次數較高時成立；本題分子最高次為 $2$ 次，分母為 $3$ 次。",
+          "en": "There is no finite limit only when the numerator has the higher degree; here the numerator has degree $2$ and the denominator degree $3$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0031",
+      "template": "rational-limit-at-infinity",
+      "params": {
+        "p": 2,
+        "m": 3,
+        "q": 1,
+        "n": 2
+      },
+      "options": [
+        "$0$",
+        "$\\dfrac{1}{2}$",
+        "不存在（趨向無限大）",
+        "$2$"
+      ],
+      "optionsEn": [
+        "$0$",
+        "$\\dfrac{1}{2}$",
+        "Does not exist (tends to infinity)",
+        "$2$"
+      ],
+      "explanation": "$x \\to \\infty$ 時，有理式的極限只由分子與分母的【最高次項】決定，低次項與常數的影響趨於零。本題分子最高次為 $3$ 次，分母為 $2$ 次，分子次數較高，分子增長得快得多，故極限不存在（趨向無限大）。判斷次序應為：先比次數，同次才比係數。",
+      "explanationEn": "As $x \\to \\infty$ the limit of a rational expression depends only on the *highest-degree terms* of the numerator and denominator; lower terms and constants fade away. Here the numerator has degree $3$ and the denominator degree $2$: the numerator has the higher degree and grows much faster, so there is no finite limit. Compare degrees first, and coefficients only when the degrees are equal.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "zero",
+          "zh": "極限為 $0$ 只在分母次數較高時成立；本題分子最高次為 $3$ 次，分母為 $2$ 次。",
+          "en": "The limit is $0$ only when the denominator has the higher degree; here the numerator has degree $3$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 1,
+          "kind": "inverse",
+          "zh": "這是倒轉了的係數之比；而且本題分子最高次為 $3$ 次，分母為 $2$ 次，次數不同時極限並不取決於係數。",
+          "en": "This is the coefficient ratio upside down; and here the numerator has degree $3$ and the denominator degree $2$, so with unequal degrees the coefficients do not decide the limit."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。分子最高次為 $3$ 次，分母為 $2$ 次，分子次數較高，分子增長得快得多，故極限不存在（趨向無限大）。",
+          "en": "Correct. Here the numerator has degree $3$ and the denominator degree $2$: the numerator has the higher degree and grows much faster, so there is no finite limit."
+        },
+        {
+          "optionId": 3,
+          "kind": "ratio",
+          "zh": "係數之比 $2$ 只在分子分母同次時才是極限；本題分子最高次為 $3$ 次，分母為 $2$ 次。應先比較次數，同次才比係數。",
+          "en": "The coefficient ratio $2$ is the limit only when the degrees are equal; here the numerator has degree $3$ and the denominator degree $2$. Compare degrees first, coefficients only when they are equal."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0032",
+      "template": "rational-limit-at-infinity",
+      "params": {
+        "p": 7,
+        "m": 2,
+        "q": 14,
+        "n": 2
+      },
+      "options": [
+        "$0$",
+        "不存在（趨向無限大）",
+        "$2$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "optionsEn": [
+        "$0$",
+        "Does not exist (tends to infinity)",
+        "$2$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "explanation": "$x \\to \\infty$ 時，有理式的極限只由分子與分母的【最高次項】決定，低次項與常數的影響趨於零。本題分子最高次為 $2$ 次，分母為 $2$ 次，兩者同次，極限等於最高次項係數之比 $\\dfrac{7}{14} = \\dfrac{1}{2}$。判斷次序應為：先比次數，同次才比係數。",
+      "explanationEn": "As $x \\to \\infty$ the limit of a rational expression depends only on the *highest-degree terms* of the numerator and denominator; lower terms and constants fade away. Here the numerator has degree $2$ and the denominator degree $2$: equal degrees, so the limit is the ratio of the leading coefficients, $\\dfrac{7}{14} = \\dfrac{1}{2}$. Compare degrees first, and coefficients only when the degrees are equal.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "zero",
+          "zh": "極限為 $0$ 只在分母次數較高時成立；本題分子最高次為 $2$ 次，分母為 $2$ 次。",
+          "en": "The limit is $0$ only when the denominator has the higher degree; here the numerator has degree $2$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 1,
+          "kind": "infinite",
+          "zh": "極限不存在只在分子次數較高時成立；本題分子最高次為 $2$ 次，分母為 $2$ 次。",
+          "en": "There is no finite limit only when the numerator has the higher degree; here the numerator has degree $2$ and the denominator degree $2$."
+        },
+        {
+          "optionId": 2,
+          "kind": "inverse",
+          "zh": "把係數之比倒轉了：應是分子係數除以分母係數 $\\dfrac{7}{14}$。",
+          "en": "The coefficient ratio is upside down: it is the numerator's coefficient over the denominator's, $\\dfrac{7}{14}$."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。分子最高次為 $2$ 次，分母為 $2$ 次，兩者同次，極限等於最高次項係數之比 $\\dfrac{7}{14} = \\dfrac{1}{2}$。",
+          "en": "Correct. Here the numerator has degree $2$ and the denominator degree $2$: equal degrees, so the limit is the ratio of the leading coefficients, $\\dfrac{7}{14} = \\dfrac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0033",
+      "template": "rational-limit-at-infinity",
+      "params": {
+        "p": 3,
+        "m": 2,
+        "q": 5,
+        "n": 3
+      },
+      "options": [
+        "$0$",
+        "$\\dfrac{3}{5}$",
+        "不存在（趨向無限大）",
+        "$\\dfrac{5}{3}$"
+      ],
+      "optionsEn": [
+        "$0$",
+        "$\\dfrac{3}{5}$",
+        "Does not exist (tends to infinity)",
+        "$\\dfrac{5}{3}$"
+      ],
+      "explanation": "$x \\to \\infty$ 時，有理式的極限只由分子與分母的【最高次項】決定，低次項與常數的影響趨於零。本題分子最高次為 $2$ 次，分母為 $3$ 次，分母次數較高，分母增長得快得多，故極限為 $0$。判斷次序應為：先比次數，同次才比係數。",
+      "explanationEn": "As $x \\to \\infty$ the limit of a rational expression depends only on the *highest-degree terms* of the numerator and denominator; lower terms and constants fade away. Here the numerator has degree $2$ and the denominator degree $3$: the denominator has the higher degree and grows much faster, so the limit is $0$. Compare degrees first, and coefficients only when the degrees are equal.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。分子最高次為 $2$ 次，分母為 $3$ 次，分母次數較高，分母增長得快得多，故極限為 $0$。",
+          "en": "Correct. Here the numerator has degree $2$ and the denominator degree $3$: the denominator has the higher degree and grows much faster, so the limit is $0$."
+        },
+        {
+          "optionId": 1,
+          "kind": "ratio",
+          "zh": "係數之比 $\\dfrac{3}{5}$ 只在分子分母同次時才是極限；本題分子最高次為 $2$ 次，分母為 $3$ 次。應先比較次數，同次才比係數。",
+          "en": "The coefficient ratio $\\dfrac{3}{5}$ is the limit only when the degrees are equal; here the numerator has degree $2$ and the denominator degree $3$. Compare degrees first, coefficients only when they are equal."
+        },
+        {
+          "optionId": 2,
+          "kind": "infinite",
+          "zh": "極限不存在只在分子次數較高時成立；本題分子最高次為 $2$ 次，分母為 $3$ 次。",
+          "en": "There is no finite limit only when the numerator has the higher degree; here the numerator has degree $2$ and the denominator degree $3$."
+        },
+        {
+          "optionId": 3,
+          "kind": "inverse",
+          "zh": "這是倒轉了的係數之比；而且本題分子最高次為 $2$ 次，分母為 $3$ 次，次數不同時極限並不取決於係數。",
+          "en": "This is the coefficient ratio upside down; and here the numerator has degree $2$ and the denominator degree $3$, so with unequal degrees the coefficients do not decide the limit."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0034",
+      "template": "sin-px-over-qx",
+      "params": {
+        "p": 3,
+        "q": 5
+      },
+      "options": [
+        "$0$",
+        "$\\dfrac{3}{5}$",
+        "$\\dfrac{5}{3}$",
+        "$1$"
+      ],
+      "optionsEn": [
+        "$0$",
+        "$\\dfrac{3}{5}$",
+        "$\\dfrac{5}{3}$",
+        "$1$"
+      ],
+      "explanation": "基本極限 $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母完全相同。本題分子的角是 $3x$，分母是 $5x$，故先湊：$\\dfrac{\\sin 3x}{5x} = \\dfrac{3}{5} \\cdot \\dfrac{\\sin 3x}{3x}$。右邊的分式趨向 $1$，故極限為 $\\dfrac{3}{5}$。",
+      "explanationEn": "The standard limit $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle inside the sine to match the denominator exactly. Here they are $3x$ and $5x$, so rewrite: $\\dfrac{\\sin 3x}{5x} = \\dfrac{3}{5} \\cdot \\dfrac{\\sin 3x}{3x}$. The second factor tends to $1$, so the limit is $\\dfrac{3}{5}$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "zero",
+          "zh": "分子 $\\sin 0 = 0$，但分母同樣趨於零；$\\frac{0}{0}$ 是不定式，不可直接判為零。",
+          "en": "The numerator tends to $\\sin 0 = 0$, but so does the denominator; $\\frac{0}{0}$ is indeterminate, not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。$\\dfrac{\\sin 3x}{5x} = \\dfrac{3}{5} \\cdot \\dfrac{\\sin 3x}{3x} \\to \\dfrac{3}{5} \\times 1 = \\dfrac{3}{5}$。",
+          "en": "Correct. $\\dfrac{\\sin 3x}{5x} = \\dfrac{3}{5} \\cdot \\dfrac{\\sin 3x}{3x} \\to \\dfrac{3}{5} \\times 1 = \\dfrac{3}{5}$."
+        },
+        {
+          "optionId": 2,
+          "kind": "inverse",
+          "zh": "比例倒轉了：正弦內的角 $3x$ 要放在分子一方，應是 $\\dfrac{3}{5}$。",
+          "en": "The ratio is upside down: the angle $3x$ inside the sine belongs on top, giving $\\dfrac{3}{5}$."
+        },
+        {
+          "optionId": 3,
+          "kind": "one",
+          "zh": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母相同；本題是 $3x$ 對 $5x$，要先湊成相同。",
+          "en": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle and the denominator to match; here they are $3x$ and $5x$, so adjust first."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0035",
+      "template": "sin-px-over-qx",
+      "params": {
+        "p": 2,
+        "q": 7
+      },
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\dfrac{2}{7}$",
+        "$\\dfrac{7}{2}$"
+      ],
+      "optionsEn": [
+        "$1$",
+        "$0$",
+        "$\\dfrac{2}{7}$",
+        "$\\dfrac{7}{2}$"
+      ],
+      "explanation": "基本極限 $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母完全相同。本題分子的角是 $2x$，分母是 $7x$，故先湊：$\\dfrac{\\sin 2x}{7x} = \\dfrac{2}{7} \\cdot \\dfrac{\\sin 2x}{2x}$。右邊的分式趨向 $1$，故極限為 $\\dfrac{2}{7}$。",
+      "explanationEn": "The standard limit $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle inside the sine to match the denominator exactly. Here they are $2x$ and $7x$, so rewrite: $\\dfrac{\\sin 2x}{7x} = \\dfrac{2}{7} \\cdot \\dfrac{\\sin 2x}{2x}$. The second factor tends to $1$, so the limit is $\\dfrac{2}{7}$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "one",
+          "zh": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母相同；本題是 $2x$ 對 $7x$，要先湊成相同。",
+          "en": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle and the denominator to match; here they are $2x$ and $7x$, so adjust first."
+        },
+        {
+          "optionId": 1,
+          "kind": "zero",
+          "zh": "分子 $\\sin 0 = 0$，但分母同樣趨於零；$\\frac{0}{0}$ 是不定式，不可直接判為零。",
+          "en": "The numerator tends to $\\sin 0 = 0$, but so does the denominator; $\\frac{0}{0}$ is indeterminate, not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。$\\dfrac{\\sin 2x}{7x} = \\dfrac{2}{7} \\cdot \\dfrac{\\sin 2x}{2x} \\to \\dfrac{2}{7} \\times 1 = \\dfrac{2}{7}$。",
+          "en": "Correct. $\\dfrac{\\sin 2x}{7x} = \\dfrac{2}{7} \\cdot \\dfrac{\\sin 2x}{2x} \\to \\dfrac{2}{7} \\times 1 = \\dfrac{2}{7}$."
+        },
+        {
+          "optionId": 3,
+          "kind": "inverse",
+          "zh": "比例倒轉了：正弦內的角 $2x$ 要放在分子一方，應是 $\\dfrac{2}{7}$。",
+          "en": "The ratio is upside down: the angle $2x$ inside the sine belongs on top, giving $\\dfrac{2}{7}$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0036",
+      "template": "sin-px-over-qx",
+      "params": {
+        "p": 4,
+        "q": 3
+      },
+      "options": [
+        "$\\dfrac{3}{4}$",
+        "$1$",
+        "$0$",
+        "$\\dfrac{4}{3}$"
+      ],
+      "optionsEn": [
+        "$\\dfrac{3}{4}$",
+        "$1$",
+        "$0$",
+        "$\\dfrac{4}{3}$"
+      ],
+      "explanation": "基本極限 $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母完全相同。本題分子的角是 $4x$，分母是 $3x$，故先湊：$\\dfrac{\\sin 4x}{3x} = \\dfrac{4}{3} \\cdot \\dfrac{\\sin 4x}{4x}$。右邊的分式趨向 $1$，故極限為 $\\dfrac{4}{3}$。",
+      "explanationEn": "The standard limit $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle inside the sine to match the denominator exactly. Here they are $4x$ and $3x$, so rewrite: $\\dfrac{\\sin 4x}{3x} = \\dfrac{4}{3} \\cdot \\dfrac{\\sin 4x}{4x}$. The second factor tends to $1$, so the limit is $\\dfrac{4}{3}$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "inverse",
+          "zh": "比例倒轉了：正弦內的角 $4x$ 要放在分子一方，應是 $\\dfrac{4}{3}$。",
+          "en": "The ratio is upside down: the angle $4x$ inside the sine belongs on top, giving $\\dfrac{4}{3}$."
+        },
+        {
+          "optionId": 1,
+          "kind": "one",
+          "zh": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母相同；本題是 $4x$ 對 $3x$，要先湊成相同。",
+          "en": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle and the denominator to match; here they are $4x$ and $3x$, so adjust first."
+        },
+        {
+          "optionId": 2,
+          "kind": "zero",
+          "zh": "分子 $\\sin 0 = 0$，但分母同樣趨於零；$\\frac{0}{0}$ 是不定式，不可直接判為零。",
+          "en": "The numerator tends to $\\sin 0 = 0$, but so does the denominator; $\\frac{0}{0}$ is indeterminate, not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。$\\dfrac{\\sin 4x}{3x} = \\dfrac{4}{3} \\cdot \\dfrac{\\sin 4x}{4x} \\to \\dfrac{4}{3} \\times 1 = \\dfrac{4}{3}$。",
+          "en": "Correct. $\\dfrac{\\sin 4x}{3x} = \\dfrac{4}{3} \\cdot \\dfrac{\\sin 4x}{4x} \\to \\dfrac{4}{3} \\times 1 = \\dfrac{4}{3}$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0037",
+      "template": "sin-px-over-qx",
+      "params": {
+        "p": 6,
+        "q": 2
+      },
+      "options": [
+        "$3$",
+        "$\\dfrac{1}{3}$",
+        "$1$",
+        "$0$"
+      ],
+      "optionsEn": [
+        "$3$",
+        "$\\dfrac{1}{3}$",
+        "$1$",
+        "$0$"
+      ],
+      "explanation": "基本極限 $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母完全相同。本題分子的角是 $6x$，分母是 $2x$，故先湊：$\\dfrac{\\sin 6x}{2x} = \\dfrac{6}{2} \\cdot \\dfrac{\\sin 6x}{6x}$。右邊的分式趨向 $1$，故極限為 $3$。",
+      "explanationEn": "The standard limit $\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle inside the sine to match the denominator exactly. Here they are $6x$ and $2x$, so rewrite: $\\dfrac{\\sin 6x}{2x} = \\dfrac{6}{2} \\cdot \\dfrac{\\sin 6x}{6x}$. The second factor tends to $1$, so the limit is $3$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。$\\dfrac{\\sin 6x}{2x} = \\dfrac{6}{2} \\cdot \\dfrac{\\sin 6x}{6x} \\to \\dfrac{6}{2} \\times 1 = 3$。",
+          "en": "Correct. $\\dfrac{\\sin 6x}{2x} = \\dfrac{6}{2} \\cdot \\dfrac{\\sin 6x}{6x} \\to \\dfrac{6}{2} \\times 1 = 3$."
+        },
+        {
+          "optionId": 1,
+          "kind": "inverse",
+          "zh": "比例倒轉了：正弦內的角 $6x$ 要放在分子一方，應是 $\\dfrac{6}{2}$。",
+          "en": "The ratio is upside down: the angle $6x$ inside the sine belongs on top, giving $\\dfrac{6}{2}$."
+        },
+        {
+          "optionId": 2,
+          "kind": "one",
+          "zh": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ 要求正弦內的角與分母相同；本題是 $6x$ 對 $2x$，要先湊成相同。",
+          "en": "$\\lim_{\\theta \\to 0} \\dfrac{\\sin \\theta}{\\theta} = 1$ needs the angle and the denominator to match; here they are $6x$ and $2x$, so adjust first."
+        },
+        {
+          "optionId": 3,
+          "kind": "zero",
+          "zh": "分子 $\\sin 0 = 0$，但分母同樣趨於零；$\\frac{0}{0}$ 是不定式，不可直接判為零。",
+          "en": "The numerator tends to $\\sin 0 = 0$, but so does the denominator; $\\frac{0}{0}$ is indeterminate, not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0048",
+      "template": "homogeneous-system-find-k",
+      "params": {
+        "a": 2,
+        "b": 4,
+        "c": 3
+      },
+      "options": [
+        "$k = -6$",
+        "$k = 1.5$",
+        "任何 $k$ 值皆可",
+        "$k = 6$"
+      ],
+      "optionsEn": [
+        "$k = -6$",
+        "$k = 1.5$",
+        "Any value of $k$ will do",
+        "$k = 6$"
+      ],
+      "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12 = 0$，得 $k = 6$。",
+      "explanationEn": "A homogeneous system always has the zero solution ($x = y = 0$); it has a *non-trivial* solution exactly when the coefficient determinant is zero. So $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12 = 0$, giving $k = 6$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得行列式 $= 2(-6) - 12 = -24$，不等於零。",
+          "en": "The sign is wrong. Substituting gives a determinant of $2(-6) - 12 = -24$, not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "crossPaired",
+          "zh": "這是解 $4k - (2)(3) = 0$ 的結果，交叉相乘時配錯了元素。代回得行列式 $= -9$，不等於零。",
+          "en": "This solves $4k - (2)(3) = 0$, pairing the wrong entries. Substituting gives a determinant of $-9$, not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "anyK",
+          "zh": "任何 $k$ 都保證有零解 $x = y = 0$，但題目要的是非零解，這必須令係數行列式為零。",
+          "en": "Any $k$ gives the zero solution $x = y = 0$, but a non-trivial solution needs the coefficient determinant to be zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。係數行列式 $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12$，令其為 $0$ 得 $k = 6$。",
+          "en": "Correct. The coefficient determinant is $\\begin{vmatrix} 2 & 4 \\\\ 3 & k \\end{vmatrix} = 2k - 12$; setting it to $0$ gives $k = 6$."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0049",
+      "template": "homogeneous-system-find-k",
+      "params": {
+        "a": 3,
+        "b": 6,
+        "c": 3
+      },
+      "options": [
+        "$k = 6$",
+        "$k = -6$",
+        "$k = 1.5$",
+        "任何 $k$ 值皆可"
+      ],
+      "optionsEn": [
+        "$k = 6$",
+        "$k = -6$",
+        "$k = 1.5$",
+        "Any value of $k$ will do"
+      ],
+      "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18 = 0$，得 $k = 6$。",
+      "explanationEn": "A homogeneous system always has the zero solution ($x = y = 0$); it has a *non-trivial* solution exactly when the coefficient determinant is zero. So $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18 = 0$, giving $k = 6$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。係數行列式 $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18$，令其為 $0$ 得 $k = 6$。",
+          "en": "Correct. The coefficient determinant is $\\begin{vmatrix} 3 & 6 \\\\ 3 & k \\end{vmatrix} = 3k - 18$; setting it to $0$ gives $k = 6$."
+        },
+        {
+          "optionId": 1,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得行列式 $= 3(-6) - 18 = -36$，不等於零。",
+          "en": "The sign is wrong. Substituting gives a determinant of $3(-6) - 18 = -36$, not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "crossPaired",
+          "zh": "這是解 $6k - (3)(3) = 0$ 的結果，交叉相乘時配錯了元素。代回得行列式 $= -13.5$，不等於零。",
+          "en": "This solves $6k - (3)(3) = 0$, pairing the wrong entries. Substituting gives a determinant of $-13.5$, not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "anyK",
+          "zh": "任何 $k$ 都保證有零解 $x = y = 0$，但題目要的是非零解，這必須令係數行列式為零。",
+          "en": "Any $k$ gives the zero solution $x = y = 0$, but a non-trivial solution needs the coefficient determinant to be zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0050",
+      "template": "homogeneous-system-find-k",
+      "params": {
+        "a": 1,
+        "b": 5,
+        "c": 3
+      },
+      "options": [
+        "任何 $k$ 值皆可",
+        "$k = 15$",
+        "$k = -15$",
+        "$k = 0.6$"
+      ],
+      "optionsEn": [
+        "Any value of $k$ will do",
+        "$k = 15$",
+        "$k = -15$",
+        "$k = 0.6$"
+      ],
+      "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = k - 15 = 0$，得 $k = 15$。",
+      "explanationEn": "A homogeneous system always has the zero solution ($x = y = 0$); it has a *non-trivial* solution exactly when the coefficient determinant is zero. So $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = k - 15 = 0$, giving $k = 15$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "anyK",
+          "zh": "任何 $k$ 都保證有零解 $x = y = 0$，但題目要的是非零解，這必須令係數行列式為零。",
+          "en": "Any $k$ gives the zero solution $x = y = 0$, but a non-trivial solution needs the coefficient determinant to be zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。係數行列式 $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = k - 15$，令其為 $0$ 得 $k = 15$。",
+          "en": "Correct. The coefficient determinant is $\\begin{vmatrix} 1 & 5 \\\\ 3 & k \\end{vmatrix} = k - 15$; setting it to $0$ gives $k = 15$."
+        },
+        {
+          "optionId": 2,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得行列式 $= 1(-15) - 15 = -30$，不等於零。",
+          "en": "The sign is wrong. Substituting gives a determinant of $1(-15) - 15 = -30$, not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "crossPaired",
+          "zh": "這是解 $5k - (1)(3) = 0$ 的結果，交叉相乘時配錯了元素。代回得行列式 $= -14.4$，不等於零。",
+          "en": "This solves $5k - (1)(3) = 0$, pairing the wrong entries. Substituting gives a determinant of $-14.4$, not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0051",
+      "template": "homogeneous-system-find-k",
+      "params": {
+        "a": 4,
+        "b": 2,
+        "c": 3
+      },
+      "options": [
+        "$k = 6$",
+        "任何 $k$ 值皆可",
+        "$k = 1.5$",
+        "$k = -1.5$"
+      ],
+      "optionsEn": [
+        "$k = 6$",
+        "Any value of $k$ will do",
+        "$k = 1.5$",
+        "$k = -1.5$"
+      ],
+      "explanation": "齊次方程組必定有零解（$x = y = 0$）；它有【非零】解，當且僅當係數行列式等於零。故 $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6 = 0$，得 $k = 1.5$。",
+      "explanationEn": "A homogeneous system always has the zero solution ($x = y = 0$); it has a *non-trivial* solution exactly when the coefficient determinant is zero. So $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6 = 0$, giving $k = 1.5$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "crossPaired",
+          "zh": "這是解 $2k - (4)(3) = 0$ 的結果，交叉相乘時配錯了元素。代回得行列式 $= 18$，不等於零。",
+          "en": "This solves $2k - (4)(3) = 0$, pairing the wrong entries. Substituting gives a determinant of $18$, not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "anyK",
+          "zh": "任何 $k$ 都保證有零解 $x = y = 0$，但題目要的是非零解，這必須令係數行列式為零。",
+          "en": "Any $k$ gives the zero solution $x = y = 0$, but a non-trivial solution needs the coefficient determinant to be zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。係數行列式 $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6$，令其為 $0$ 得 $k = 1.5$。",
+          "en": "Correct. The coefficient determinant is $\\begin{vmatrix} 4 & 2 \\\\ 3 & k \\end{vmatrix} = 4k - 6$; setting it to $0$ gives $k = 1.5$."
+        },
+        {
+          "optionId": 3,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得行列式 $= 4(-1.5) - 6 = -12$，不等於零。",
+          "en": "The sign is wrong. Substituting gives a determinant of $4(-1.5) - 6 = -12$, not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0065",
+      "template": "perpendicular-vectors-find-t",
+      "params": {
+        "a1": 3,
+        "a2": 4,
+        "b1": 2
+      },
+      "options": [
+        "$t = -1.5$",
+        "$t = 1.5$",
+        "$t = 2.6667$",
+        "$t = 2$"
+      ],
+      "optionsEn": [
+        "$t = -1.5$",
+        "$t = 1.5$",
+        "$t = 2.6667$",
+        "$t = 2$"
+      ],
+      "explanation": "兩個非零向量互相垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + 4t = 0$，故 $t = -1.5$。代回檢查：$3 \\times 2 + (4)(-1.5) = 0$。",
+      "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + 4t = 0$, so $t = -1.5$. Check: $3 \\times 2 + (4)(-1.5) = 0$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "correct",
+          "zh": "正確。$\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + (4)(-1.5) = 0$。",
+          "en": "Correct. $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + (4)(-1.5) = 0$."
+        },
+        {
+          "optionId": 1,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + (4)(1.5) = 12$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + (4)(1.5) = 12$, not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "parallel",
+          "zh": "這是令兩個向量【平行】的值（分量成比例：$\\dfrac{t}{2} = \\dfrac{4}{3}$）。垂直看純量積，平行看分量成比例。",
+          "en": "This value makes the vectors *parallel* (components in proportion: $\\dfrac{t}{2} = \\dfrac{4}{3}$). Perpendicular means a zero scalar product; parallel means proportional components."
+        },
+        {
+          "optionId": 3,
+          "kind": "ratio",
+          "zh": "$\\dfrac{4}{2} = 2$ 並非由純量積得出。代回得 $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + (4)(2) = 14$，不等於零。",
+          "en": "$\\dfrac{4}{2} = 2$ does not come from the scalar product. Substituting gives $\\vec{a} \\cdot \\vec{b} = 3 \\times 2 + (4)(2) = 14$, not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0066",
+      "template": "perpendicular-vectors-find-t",
+      "params": {
+        "a1": 2,
+        "a2": -6,
+        "b1": 3
+      },
+      "options": [
+        "$t = -2$",
+        "$t = 1$",
+        "$t = -1$",
+        "$t = -9$"
+      ],
+      "optionsEn": [
+        "$t = -2$",
+        "$t = 1$",
+        "$t = -1$",
+        "$t = -9$"
+      ],
+      "explanation": "兩個非零向量互相垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)t = 0$，故 $t = 1$。代回檢查：$2 \\times 3 + (-6)(1) = 0$。",
+      "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)t = 0$, so $t = 1$. Check: $2 \\times 3 + (-6)(1) = 0$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "ratio",
+          "zh": "$\\dfrac{-6}{3} = -2$ 並非由純量積得出。代回得 $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)(-2) = 18$，不等於零。",
+          "en": "$\\dfrac{-6}{3} = -2$ does not come from the scalar product. Substituting gives $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)(-2) = 18$, not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "correct",
+          "zh": "正確。$\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)(1) = 0$。",
+          "en": "Correct. $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)(1) = 0$."
+        },
+        {
+          "optionId": 2,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)(-1) = 12$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\vec{a} \\cdot \\vec{b} = 2 \\times 3 + (-6)(-1) = 12$, not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "parallel",
+          "zh": "這是令兩個向量【平行】的值（分量成比例：$\\dfrac{t}{3} = \\dfrac{-6}{2}$）。垂直看純量積，平行看分量成比例。",
+          "en": "This value makes the vectors *parallel* (components in proportion: $\\dfrac{t}{3} = \\dfrac{-6}{2}$). Perpendicular means a zero scalar product; parallel means proportional components."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0067",
+      "template": "perpendicular-vectors-find-t",
+      "params": {
+        "a1": 5,
+        "a2": 2,
+        "b1": 4
+      },
+      "options": [
+        "$t = 1.6$",
+        "$t = 0.5$",
+        "$t = -10$",
+        "$t = 10$"
+      ],
+      "optionsEn": [
+        "$t = 1.6$",
+        "$t = 0.5$",
+        "$t = -10$",
+        "$t = 10$"
+      ],
+      "explanation": "兩個非零向量互相垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + 2t = 0$，故 $t = -10$。代回檢查：$5 \\times 4 + (2)(-10) = 0$。",
+      "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + 2t = 0$, so $t = -10$. Check: $5 \\times 4 + (2)(-10) = 0$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "parallel",
+          "zh": "這是令兩個向量【平行】的值（分量成比例：$\\dfrac{t}{4} = \\dfrac{2}{5}$）。垂直看純量積，平行看分量成比例。",
+          "en": "This value makes the vectors *parallel* (components in proportion: $\\dfrac{t}{4} = \\dfrac{2}{5}$). Perpendicular means a zero scalar product; parallel means proportional components."
+        },
+        {
+          "optionId": 1,
+          "kind": "ratio",
+          "zh": "$\\dfrac{2}{4} = 0.5$ 並非由純量積得出。代回得 $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + (2)(0.5) = 21$，不等於零。",
+          "en": "$\\dfrac{2}{4} = 0.5$ does not come from the scalar product. Substituting gives $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + (2)(0.5) = 21$, not zero."
+        },
+        {
+          "optionId": 2,
+          "kind": "correct",
+          "zh": "正確。$\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + (2)(-10) = 0$。",
+          "en": "Correct. $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + (2)(-10) = 0$."
+        },
+        {
+          "optionId": 3,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + (2)(10) = 40$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\vec{a} \\cdot \\vec{b} = 5 \\times 4 + (2)(10) = 40$, not zero."
+        }
+      ]
+    },
+    {
+      "id": "m2_rep_0068",
+      "template": "perpendicular-vectors-find-t",
+      "params": {
+        "a1": 1,
+        "a2": 8,
+        "b1": 2
+      },
+      "options": [
+        "$t = 0.25$",
+        "$t = 16$",
+        "$t = 4$",
+        "$t = -0.25$"
+      ],
+      "optionsEn": [
+        "$t = 0.25$",
+        "$t = 16$",
+        "$t = 4$",
+        "$t = -0.25$"
+      ],
+      "explanation": "兩個非零向量互相垂直，當且僅當其純量積為零：$\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + 8t = 0$，故 $t = -0.25$。代回檢查：$1 \\times 2 + (8)(-0.25) = 0$。",
+      "explanationEn": "Two non-zero vectors are perpendicular exactly when their scalar product is zero: $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + 8t = 0$, so $t = -0.25$. Check: $1 \\times 2 + (8)(-0.25) = 0$.",
+      "optionNotes": [
+        {
+          "optionId": 0,
+          "kind": "signFlip",
+          "zh": "正負號錯了。代回得 $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(0.25) = 4$，不等於零。",
+          "en": "The sign is wrong. Substituting gives $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(0.25) = 4$, not zero."
+        },
+        {
+          "optionId": 1,
+          "kind": "parallel",
+          "zh": "這是令兩個向量【平行】的值（分量成比例：$\\dfrac{t}{2} = \\dfrac{8}{1}$）。垂直看純量積，平行看分量成比例。",
+          "en": "This value makes the vectors *parallel* (components in proportion: $\\dfrac{t}{2} = \\dfrac{8}{1}$). Perpendicular means a zero scalar product; parallel means proportional components."
+        },
+        {
+          "optionId": 2,
+          "kind": "ratio",
+          "zh": "$\\dfrac{8}{2} = 4$ 並非由純量積得出。代回得 $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(4) = 34$，不等於零。",
+          "en": "$\\dfrac{8}{2} = 4$ does not come from the scalar product. Substituting gives $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(4) = 34$, not zero."
+        },
+        {
+          "optionId": 3,
+          "kind": "correct",
+          "zh": "正確。$\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(-0.25) = 0$。",
+          "en": "Correct. $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(-0.25) = 0$."
+        }
+      ]
+    }
+  ]
+}

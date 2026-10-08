@@ -7,7 +7,7 @@
 // 隨機揀選的命中率約為四分之一。長度以 scripts/qbank/_gate.mjs 的 visualLength 量度。
 // 日期只在數字改變時更新。
 
-export const OPTION_LENGTH_MEASURED_AT = '2026-10-04'
+export const OPTION_LENGTH_MEASURED_AT = '2026-10-08'
 
 export const LONGEST_OPTION: Record<string, { unique: number; correct: number }> = {
   "math": {
@@ -15,16 +15,16 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
     "correct": 43
   },
   "m2": {
-    "unique": 441,
-    "correct": 89
+    "unique": 459,
+    "correct": 91
   },
   "m1": {
-    "unique": 565,
-    "correct": 51
+    "unique": 598,
+    "correct": 59
   },
   "physics": {
-    "unique": 685,
-    "correct": 76
+    "unique": 714,
+    "correct": 78
   },
   "chemistry": {
     "unique": 524,

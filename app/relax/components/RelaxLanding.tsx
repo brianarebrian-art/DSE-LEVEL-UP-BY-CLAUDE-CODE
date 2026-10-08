@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight, Coffee, Footprints, Headphones, Wind, Leaf } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { IG_GROUP_ENTRY_NOTE } from '@/lib/site'
 import type { SensoryPref } from './SensoryMenu'
 import Mascot from '@/components/Mascot'
 
@@ -128,6 +129,7 @@ export default function RelaxLanding({
           <div className="text-sm text-ink-soft">
             {en ? 'Chat, ask questions, or just watch others log their mood' : '傾偈、問問題、純粹睇人記錄心情都得'}
           </div>
+          <div className="mt-2 text-xs text-ink-muted">{en ? IG_GROUP_ENTRY_NOTE.en : IG_GROUP_ENTRY_NOTE.zh}</div>
         </Link>
       </div>
 

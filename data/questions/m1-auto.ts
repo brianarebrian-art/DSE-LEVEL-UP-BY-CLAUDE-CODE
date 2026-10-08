@@ -565,7 +565,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{7x}{x + 2}\\right)$。",
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 7x$、$v = x + 2$，則 $u' = 7$、$v' = 1$。分子 $= 7(x + 2) - 7x \\cdot 1 = 7x + 14 - 7x = 14$，故導數為 $\\dfrac{14}{(x + 2)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $7$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 7x$、$v = x + 2$，則 $u' = 7$、$v' = 1$。分子 $= 7(x + 2) - 7x \\cdot 1 = 14$，故導數為 $\\dfrac{14}{(x + 2)^{2}}$。分子的 $x$ 項恰好抵銷，是這類題目的特徵。",
     "options": [
       "$7$",
       "$\\dfrac{-14}{(x + 2)^{2}}$",
@@ -581,8 +581,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{14}{(x + 2)^{2}}$",
       "$\\dfrac{7}{(x + 2)^{2}}$"
     ],
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 7x$, $v = x + 2$, so $u' = 7$ and $v' = 1$. The numerator is $7(x + 2) - 7x \\cdot 1 = 7x + 14 - 7x = 14$, giving $\\dfrac{14}{(x + 2)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $7$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 7x$ and $v = x + 2$, so $u' = 7$ and $v' = 1$. The numerator is $7(x + 2) - 7x \\cdot 1 = 14$, giving $\\dfrac{14}{(x + 2)^{2}}$. The $x$ terms cancel exactly, which is characteristic of this type.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分別對分子和分母求導再相除：$\\dfrac{u'}{v'} = \\dfrac{7}{1} = 7$。商的導數並不等於導數的商。",
+        "en": "This differentiates the top and the bottom separately and divides: $\\dfrac{u'}{v'} = \\dfrac{7}{1} = 7$. The derivative of a quotient is not the quotient of the derivatives."
+      },
+      {
+        "optionId": 1,
+        "zh": "分子寫成 $uv' - u'v$，減法次序調轉了，所以答案的正負號相反。商法則的分子必須是 $u'v$ 在前。",
+        "en": "The numerator was written as $uv' - u'v$, the subtraction the wrong way round, so the sign is flipped. In the quotient rule $u'v$ always comes first."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。分子 $u'v - uv' = 7(x + 2) - 7x = 14$，分母為 $(x + 2)^{2}$。",
+        "en": "Correct. The numerator is $u'v - uv' = 7(x + 2) - 7x = 14$ and the denominator is $(x + 2)^{2}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "分子只寫了 $u' = 7$，漏了 $u'v - uv'$ 的結構。",
+        "en": "The numerator is just $u' = 7$; the $u'v - uv'$ structure is missing."
+      }
+    ]
   },
   {
     "id": "m1_rep_0012",
@@ -597,7 +619,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "求 $\\dfrac{d}{dx}\\left(\\dfrac{6x}{x + 5}\\right)$。",
-    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 6x$、$v = x + 5$，則 $u' = 6$、$v' = 1$。分子 $= 6(x + 5) - 6x \\cdot 1 = 6x + 30 - 6x = 30$，故導數為 $\\dfrac{30}{(x + 5)^{2}}$。留意分子的 $x$ 項【恰好抵銷】，這是本類題目的特徵。第一個干擾項只把分子的導數搬上去，忽略了商法則。答 $6$ 的把整條式當成一次函數直接求導。最後一項把分子兩項的減法次序調轉 —— 商法則的分子【必定是 $u'v$ 在前】，次序調轉會令整個符號相反。",
+    "explanation": "用商法則 $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$。取 $u = 6x$、$v = x + 5$，則 $u' = 6$、$v' = 1$。分子 $= 6(x + 5) - 6x \\cdot 1 = 30$，故導數為 $\\dfrac{30}{(x + 5)^{2}}$。分子的 $x$ 項恰好抵銷，是這類題目的特徵。",
     "options": [
       "$\\dfrac{6}{(x + 5)^{2}}$",
       "$6$",
@@ -613,8 +635,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\dfrac{-30}{(x + 5)^{2}}$",
       "$\\dfrac{30}{(x + 5)^{2}}$"
     ],
-    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 6x$, $v = x + 5$, so $u' = 6$ and $v' = 1$. The numerator is $6(x + 5) - 6x \\cdot 1 = 6x + 30 - 6x = 30$, giving $\\dfrac{30}{(x + 5)^{2}}$. Note that the $x$ terms cancel exactly, which is characteristic of this type. The first distractor just moves the derivative of the numerator up and ignores the rule. Answering $6$ treats the whole expression as linear. The last option reverses the order of subtraction — in the quotient rule $u'v$ must come first, and reversing it flips every sign.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Apply the quotient rule $\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^{2}}$ with $u = 6x$ and $v = x + 5$, so $u' = 6$ and $v' = 1$. The numerator is $6(x + 5) - 6x \\cdot 1 = 30$, giving $\\dfrac{30}{(x + 5)^{2}}$. The $x$ terms cancel exactly, which is characteristic of this type.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "分子只寫了 $u' = 6$，漏了 $u'v - uv'$ 的結構。",
+        "en": "The numerator is just $u' = 6$; the $u'v - uv'$ structure is missing."
+      },
+      {
+        "optionId": 1,
+        "zh": "分別對分子和分母求導再相除：$\\dfrac{u'}{v'} = \\dfrac{6}{1} = 6$。商的導數並不等於導數的商。",
+        "en": "This differentiates the top and the bottom separately and divides: $\\dfrac{u'}{v'} = \\dfrac{6}{1} = 6$. The derivative of a quotient is not the quotient of the derivatives."
+      },
+      {
+        "optionId": 2,
+        "zh": "分子寫成 $uv' - u'v$，減法次序調轉了，所以答案的正負號相反。商法則的分子必須是 $u'v$ 在前。",
+        "en": "The numerator was written as $uv' - u'v$, the subtraction the wrong way round, so the sign is flipped. In the quotient rule $u'v$ always comes first."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。分子 $u'v - uv' = 6(x + 5) - 6x = 30$，分母為 $(x + 5)^{2}$。",
+        "en": "Correct. The numerator is $u'v - uv' = 6(x + 5) - 6x = 30$ and the denominator is $(x + 5)^{2}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0013",
@@ -2873,7 +2917,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim N(60, 8^{2})$。已知某觀測值的標準分數為 $z = 1.5$，求該觀測值 $x$。",
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $60$。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉，得 $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$。$z > 0$，所以觀測值高於平均值 $60$。",
     "options": [
       "$72$",
       "$48$",
@@ -2889,8 +2933,30 @@ export const m1AutoQuestions: Question[] = [
       "$12$",
       "$61.5$"
     ],
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $60$. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Rearrange $z = \\dfrac{x - \\mu}{\\sigma}$ to $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$. Since $z > 0$, the value is above the mean $60$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$。",
+        "en": "Correct. $x = \\mu + z\\sigma = 60 + (1.5)(8) = 72$."
+      },
+      {
+        "optionId": 1,
+        "zh": "用了 $\\mu - z\\sigma$，方向反了：$z > 0$ 表示觀測值高於平均值。",
+        "en": "This uses $\\mu - z\\sigma$, the wrong direction: $z > 0$ means the value is above the mean."
+      },
+      {
+        "optionId": 2,
+        "zh": "$z\\sigma = 12$ 只是偏離平均值的距離，還要加上平均值 $60$。",
+        "en": "$z\\sigma = 12$ is only the distance from the mean; the mean $60$ still has to be added."
+      },
+      {
+        "optionId": 3,
+        "zh": "把 $z$ 直接加上平均值，漏了乘以標準差 $8$：$z$ 是「多少個標準差」，要先乘以標準差才是實際數值。",
+        "en": "This adds $z$ straight to the mean without multiplying by the standard deviation $8$: $z$ counts standard deviations, so multiply first."
+      }
+    ]
   },
   {
     "id": "m1_rep_0058",
@@ -2905,7 +2971,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim N(100, 15^{2})$。已知某觀測值的標準分數為 $z = -2$，求該觀測值 $x$。",
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $100$ —— 見到大過平均值的答案就應該起疑。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉，得 $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$。$z < 0$，所以觀測值低於平均值 $100$。",
     "options": [
       "$98$",
       "$70$",
@@ -2921,8 +2987,30 @@ export const m1AutoQuestions: Question[] = [
       "$130$",
       "$-30$"
     ],
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $100$ — an answer above the mean should raise suspicion. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Rearrange $z = \\dfrac{x - \\mu}{\\sigma}$ to $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$. Since $z < 0$, the value is below the mean $100$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把 $z$ 直接加上平均值，漏了乘以標準差 $15$：$z$ 是「多少個標準差」，要先乘以標準差才是實際數值。",
+        "en": "This adds $z$ straight to the mean without multiplying by the standard deviation $15$: $z$ counts standard deviations, so multiply first."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$x = \\mu + z\\sigma = 100 + (-2)(15) = 70$。",
+        "en": "Correct. $x = \\mu + z\\sigma = 100 + (-2)(15) = 70$."
+      },
+      {
+        "optionId": 2,
+        "zh": "用了 $\\mu - z\\sigma$，方向反了：$z < 0$ 表示觀測值低於平均值。",
+        "en": "This uses $\\mu - z\\sigma$, the wrong direction: $z < 0$ means the value is below the mean."
+      },
+      {
+        "optionId": 3,
+        "zh": "$z\\sigma = -30$ 只是偏離平均值的距離，還要加上平均值 $100$。",
+        "en": "$z\\sigma = -30$ is only the distance from the mean; the mean $100$ still has to be added."
+      }
+    ]
   },
   {
     "id": "m1_rep_0059",
@@ -2937,7 +3025,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim N(50, 5^{2})$。已知某觀測值的標準分數為 $z = 2.4$，求該觀測值 $x$。",
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $50$。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉，得 $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$。$z > 0$，所以觀測值高於平均值 $50$。",
     "options": [
       "$12$",
       "$52.4$",
@@ -2953,8 +3041,30 @@ export const m1AutoQuestions: Question[] = [
       "$62$",
       "$38$"
     ],
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $50$. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Rearrange $z = \\dfrac{x - \\mu}{\\sigma}$ to $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$. Since $z > 0$, the value is above the mean $50$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$z\\sigma = 12$ 只是偏離平均值的距離，還要加上平均值 $50$。",
+        "en": "$z\\sigma = 12$ is only the distance from the mean; the mean $50$ still has to be added."
+      },
+      {
+        "optionId": 1,
+        "zh": "把 $z$ 直接加上平均值，漏了乘以標準差 $5$：$z$ 是「多少個標準差」，要先乘以標準差才是實際數值。",
+        "en": "This adds $z$ straight to the mean without multiplying by the standard deviation $5$: $z$ counts standard deviations, so multiply first."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$。",
+        "en": "Correct. $x = \\mu + z\\sigma = 50 + (2.4)(5) = 62$."
+      },
+      {
+        "optionId": 3,
+        "zh": "用了 $\\mu - z\\sigma$，方向反了：$z > 0$ 表示觀測值高於平均值。",
+        "en": "This uses $\\mu - z\\sigma$, the wrong direction: $z > 0$ means the value is above the mean."
+      }
+    ]
   },
   {
     "id": "m1_rep_0060",
@@ -2969,7 +3079,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim N(72, 6^{2})$。已知某觀測值的標準分數為 $z = -1.5$，求該觀測值 $x$。",
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $72$ —— 見到大過平均值的答案就應該起疑。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉，得 $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$。$z < 0$，所以觀測值低於平均值 $72$。",
     "options": [
       "$81$",
       "$-9$",
@@ -2985,8 +3095,30 @@ export const m1AutoQuestions: Question[] = [
       "$70.5$",
       "$63$"
     ],
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $72$ — an answer above the mean should raise suspicion. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Rearrange $z = \\dfrac{x - \\mu}{\\sigma}$ to $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$. Since $z < 0$, the value is below the mean $72$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "用了 $\\mu - z\\sigma$，方向反了：$z < 0$ 表示觀測值低於平均值。",
+        "en": "This uses $\\mu - z\\sigma$, the wrong direction: $z < 0$ means the value is below the mean."
+      },
+      {
+        "optionId": 1,
+        "zh": "$z\\sigma = -9$ 只是偏離平均值的距離，還要加上平均值 $72$。",
+        "en": "$z\\sigma = -9$ is only the distance from the mean; the mean $72$ still has to be added."
+      },
+      {
+        "optionId": 2,
+        "zh": "把 $z$ 直接加上平均值，漏了乘以標準差 $6$：$z$ 是「多少個標準差」，要先乘以標準差才是實際數值。",
+        "en": "This adds $z$ straight to the mean without multiplying by the standard deviation $6$: $z$ counts standard deviations, so multiply first."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$。",
+        "en": "Correct. $x = \\mu + z\\sigma = 72 + (-1.5)(6) = 63$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0061",
@@ -3001,7 +3133,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim N(200, 25^{2})$。已知某觀測值的標準分數為 $z = 1.2$，求該觀測值 $x$。",
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$。注意 $z$ 為正，代表該觀測值【高於】平均值，所以答案必定大過 $200$。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉，得 $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$。$z > 0$，所以觀測值高於平均值 $200$。",
     "options": [
       "$230$",
       "$170$",
@@ -3017,8 +3149,30 @@ export const m1AutoQuestions: Question[] = [
       "$30$",
       "$201.2$"
     ],
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$. Since $z$ is positive the observation lies *above* the mean, so the answer must exceed $200$. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Rearrange $z = \\dfrac{x - \\mu}{\\sigma}$ to $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$. Since $z > 0$, the value is above the mean $200$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$。",
+        "en": "Correct. $x = \\mu + z\\sigma = 200 + (1.2)(25) = 230$."
+      },
+      {
+        "optionId": 1,
+        "zh": "用了 $\\mu - z\\sigma$，方向反了：$z > 0$ 表示觀測值高於平均值。",
+        "en": "This uses $\\mu - z\\sigma$, the wrong direction: $z > 0$ means the value is above the mean."
+      },
+      {
+        "optionId": 2,
+        "zh": "$z\\sigma = 30$ 只是偏離平均值的距離，還要加上平均值 $200$。",
+        "en": "$z\\sigma = 30$ is only the distance from the mean; the mean $200$ still has to be added."
+      },
+      {
+        "optionId": 3,
+        "zh": "把 $z$ 直接加上平均值，漏了乘以標準差 $25$：$z$ 是「多少個標準差」，要先乘以標準差才是實際數值。",
+        "en": "This adds $z$ straight to the mean without multiplying by the standard deviation $25$: $z$ counts standard deviations, so multiply first."
+      }
+    ]
   },
   {
     "id": "m1_rep_0062",
@@ -3033,7 +3187,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim N(88, 4^{2})$。已知某觀測值的標準分數為 $z = -0.5$，求該觀測值 $x$。",
-    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉即得 $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$。注意 $z$ 為負，代表該觀測值【低於】平均值，所以答案必定細過 $88$ —— 見到大過平均值的答案就應該起疑。第一個干擾項把加號寫成減號，方向剛好相反。第二項只算了 $z\\sigma$，即偏離平均值的距離，忘記加回平均值本身。第三項把 $z$ 直接加上平均值，漏了乘標準差 —— $z$ 是「幾多個標準差」，要先乘返標準差才是實際數值。",
+    "explanation": "把 $z = \\dfrac{x - \\mu}{\\sigma}$ 倒轉，得 $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$。$z < 0$，所以觀測值低於平均值 $88$。",
     "options": [
       "$87.5$",
       "$86$",
@@ -3049,8 +3203,30 @@ export const m1AutoQuestions: Question[] = [
       "$90$",
       "$-2$"
     ],
-    "explanationEn": "Rearranging $z = \\dfrac{x - \\mu}{\\sigma}$ gives $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$. Since $z$ is negative the observation lies *below* the mean, so the answer must be smaller than $88$ — an answer above the mean should raise suspicion. The first distractor subtracts where it should add, reversing the direction. The second computes only $z\\sigma$, the distance from the mean, and forgets to add the mean back. The third adds $z$ directly to the mean without multiplying by the standard deviation — $z$ counts standard deviations, so it must be scaled before it becomes a real value.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Rearrange $z = \\dfrac{x - \\mu}{\\sigma}$ to $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$. Since $z < 0$, the value is below the mean $88$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "把 $z$ 直接加上平均值，漏了乘以標準差 $4$：$z$ 是「多少個標準差」，要先乘以標準差才是實際數值。",
+        "en": "This adds $z$ straight to the mean without multiplying by the standard deviation $4$: $z$ counts standard deviations, so multiply first."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$。",
+        "en": "Correct. $x = \\mu + z\\sigma = 88 + (-0.5)(4) = 86$."
+      },
+      {
+        "optionId": 2,
+        "zh": "用了 $\\mu - z\\sigma$，方向反了：$z < 0$ 表示觀測值低於平均值。",
+        "en": "This uses $\\mu - z\\sigma$, the wrong direction: $z < 0$ means the value is below the mean."
+      },
+      {
+        "optionId": 3,
+        "zh": "$z\\sigma = -2$ 只是偏離平均值的距離，還要加上平均值 $88$。",
+        "en": "$z\\sigma = -2$ is only the distance from the mean; the mean $88$ still has to be added."
+      }
+    ]
   },
   {
     "id": "m1_rep_0063",
@@ -3065,7 +3241,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $70$、標準差 $5$，他得 $80$ 分；乙卷平均分 $60$、標準差 $10$，他得 $75$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{80 - 70}{5} = 2$；乙卷 $z = \\dfrac{75 - 60}{10} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $80$ 分，另一份考 $75$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{80 - 70}{5} = 2$；乙卷 $z = \\dfrac{75 - 60}{10} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "甲卷，因為原始分數較高",
       "兩卷表現相同，因為兩者都高於各自的平均分",
@@ -3081,8 +3257,30 @@ export const m1AutoQuestions: Question[] = [
       "Paper A, because its standard score is higher (A: $z = 2$, B: $z = 1.5$)",
       "Paper B, because its standard score is higher"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{80 - 70}{5} = 2$ and Paper B gives $z = \\dfrac{75 - 60}{10} = 1.5$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $80$ on one paper and $75$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{80 - 70}{5} = 2$; Paper B: $z = \\dfrac{75 - 60}{10} = 1.5$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "卷別碰巧選對，但理由錯了：兩卷的平均分和標準差不同，原始分數 $80$ 與 $75$ 不可直接比較，判斷要靠標準分數。",
+        "en": "The paper happens to be right but the reason is wrong: the papers have different means and standard deviations, so the raw marks $80$ and $75$ cannot be compared directly. The standard score decides it."
+      },
+      {
+        "optionId": 1,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.5$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.5$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。甲卷 $z = \\dfrac{80 - 70}{5} = 2$，乙卷 $z = \\dfrac{75 - 60}{10} = 1.5$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{80 - 70}{5} = 2$; Paper B: $z = \\dfrac{75 - 60}{10} = 1.5$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      },
+      {
+        "optionId": 3,
+        "zh": "乙卷的標準分數是 $1.5$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.5$, lower than Paper A's $2$; the comparison is the wrong way round."
+      }
+    ]
   },
   {
     "id": "m1_rep_0064",
@@ -3097,7 +3295,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $50$、標準差 $4$，他得 $58$ 分；乙卷平均分 $100$、標準差 $20$，他得 $130$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{58 - 50}{4} = 2$；乙卷 $z = \\dfrac{130 - 100}{20} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $58$ 分，另一份考 $130$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{58 - 50}{4} = 2$；乙卷 $z = \\dfrac{130 - 100}{20} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "乙卷，因為其標準分數較高",
       "乙卷，因為原始分數較高",
@@ -3113,8 +3311,30 @@ export const m1AutoQuestions: Question[] = [
       "Equally well, since both marks are above their respective means",
       "Paper A, because its standard score is higher (A: $z = 2$, B: $z = 1.5$)"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{58 - 50}{4} = 2$ and Paper B gives $z = \\dfrac{130 - 100}{20} = 1.5$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $58$ on one paper and $130$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{58 - 50}{4} = 2$; Paper B: $z = \\dfrac{130 - 100}{20} = 1.5$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "乙卷的標準分數是 $1.5$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.5$, lower than Paper A's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 1,
+        "zh": "乙卷的原始分數較高，但兩卷的平均分和標準差不同，原始分數不可直接比較；按標準分數，乙卷其實較低（$z = 1.5$）。",
+        "en": "Paper B has the higher raw mark, but the papers have different means and standard deviations, so raw marks cannot be compared directly; by standard score Paper B is in fact lower ($z = 1.5$)."
+      },
+      {
+        "optionId": 2,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.5$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.5$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。甲卷 $z = \\dfrac{58 - 50}{4} = 2$，乙卷 $z = \\dfrac{130 - 100}{20} = 1.5$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{58 - 50}{4} = 2$; Paper B: $z = \\dfrac{130 - 100}{20} = 1.5$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      }
+    ]
   },
   {
     "id": "m1_rep_0065",
@@ -3129,7 +3349,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $120$、標準差 $15$，他得 $150$ 分；乙卷平均分 $80$、標準差 $6$，他得 $89$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{150 - 120}{15} = 2$；乙卷 $z = \\dfrac{89 - 80}{6} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $150$ 分，另一份考 $89$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{150 - 120}{15} = 2$；乙卷 $z = \\dfrac{89 - 80}{6} = 1.5$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "甲卷，因為其標準分數較高（甲 $z = 2$，乙 $z = 1.5$）",
       "乙卷，因為其標準分數較高",
@@ -3145,8 +3365,30 @@ export const m1AutoQuestions: Question[] = [
       "Paper A, because the raw mark is higher",
       "Equally well, since both marks are above their respective means"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{150 - 120}{15} = 2$ and Paper B gives $z = \\dfrac{89 - 80}{6} = 1.5$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $150$ on one paper and $89$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{150 - 120}{15} = 2$; Paper B: $z = \\dfrac{89 - 80}{6} = 1.5$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。甲卷 $z = \\dfrac{150 - 120}{15} = 2$，乙卷 $z = \\dfrac{89 - 80}{6} = 1.5$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{150 - 120}{15} = 2$; Paper B: $z = \\dfrac{89 - 80}{6} = 1.5$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      },
+      {
+        "optionId": 1,
+        "zh": "乙卷的標準分數是 $1.5$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.5$, lower than Paper A's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 2,
+        "zh": "卷別碰巧選對，但理由錯了：兩卷的平均分和標準差不同，原始分數 $150$ 與 $89$ 不可直接比較，判斷要靠標準分數。",
+        "en": "The paper happens to be right but the reason is wrong: the papers have different means and standard deviations, so the raw marks $150$ and $89$ cannot be compared directly. The standard score decides it."
+      },
+      {
+        "optionId": 3,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.5$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.5$ on Paper B, so the performances are not equal."
+      }
+    ]
   },
   {
     "id": "m1_rep_0066",
@@ -3161,7 +3403,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $65$、標準差 $10$，他得 $85$ 分；乙卷平均分 $40$、標準差 $5$，他得 $48$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{85 - 65}{10} = 2$；乙卷 $z = \\dfrac{48 - 40}{5} = 1.6$。甲卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $85$ 分，另一份考 $48$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{85 - 65}{10} = 2$；乙卷 $z = \\dfrac{48 - 40}{5} = 1.6$。甲卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "兩卷表現相同，因為兩者都高於各自的平均分",
       "甲卷，因為其標準分數較高（甲 $z = 2$，乙 $z = 1.6$）",
@@ -3177,8 +3419,30 @@ export const m1AutoQuestions: Question[] = [
       "Paper B, because its standard score is higher",
       "Paper A, because the raw mark is higher"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{85 - 65}{10} = 2$ and Paper B gives $z = \\dfrac{48 - 40}{5} = 1.6$. The higher $z$ belongs to Paper A, so that is the better relative performance. Comparing raw marks is the main trap: scoring $85$ on one paper and $48$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{85 - 65}{10} = 2$; Paper B: $z = \\dfrac{48 - 40}{5} = 1.6$. Paper A has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $2$ 個標準差，乙卷高出 $1.6$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $2$ standard deviations on Paper A and $1.6$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。甲卷 $z = \\dfrac{85 - 65}{10} = 2$，乙卷 $z = \\dfrac{48 - 40}{5} = 1.6$。甲卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{85 - 65}{10} = 2$; Paper B: $z = \\dfrac{48 - 40}{5} = 1.6$. Paper A has the higher standard score: that mark is more standard deviations above its paper's mean."
+      },
+      {
+        "optionId": 2,
+        "zh": "乙卷的標準分數是 $1.6$，低於甲卷的 $2$，比較的方向弄反了。",
+        "en": "Paper B's standard score is $1.6$, lower than Paper A's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 3,
+        "zh": "卷別碰巧選對，但理由錯了：兩卷的平均分和標準差不同，原始分數 $85$ 與 $48$ 不可直接比較，判斷要靠標準分數。",
+        "en": "The paper happens to be right but the reason is wrong: the papers have different means and standard deviations, so the raw marks $85$ and $48$ cannot be compared directly. The standard score decides it."
+      }
+    ]
   },
   {
     "id": "m1_rep_0067",
@@ -3225,7 +3489,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "某生應考兩份試卷。甲卷平均分 $90$、標準差 $12$，他得 $108$ 分；乙卷平均分 $45$、標準差 $9$，他得 $63$ 分。兩卷成績均服從正態分佈。\n\n就相對表現而言，他在哪一卷表現較佳？",
-    "explanation": "兩份卷的平均分與標準差都不相同，原始分數【不可直接比較】—— 這正是標準分數存在的理由。甲卷 $z = \\dfrac{108 - 90}{12} = 1.5$；乙卷 $z = \\dfrac{63 - 45}{9} = 2$。乙卷的 $z$ 較高，故相對表現較佳。用原始分數比較是本題設下的主要陷阱：一份卷考 $108$ 分，另一份考 $63$ 分，數字大小與「表現好壞」並無必然關係，要看在各自的分佈中站在甚麼位置。最後一項只確認了兩卷都高於平均，但「都高於平均」並不代表「高得一樣多」。",
+    "explanation": "兩份卷的平均分與標準差都不相同，原始分數不可直接比較，要先化成標準分數。甲卷 $z = \\dfrac{108 - 90}{12} = 1.5$；乙卷 $z = \\dfrac{63 - 45}{9} = 2$。乙卷的 $z$ 較高，故相對表現較佳。兩個分數雖然都高於平均分，但高出的標準差數目不同，所以不能說表現相同。",
     "options": [
       "甲卷，因為其標準分數較高",
       "甲卷，因為原始分數較高",
@@ -3241,8 +3505,30 @@ export const m1AutoQuestions: Question[] = [
       "Equally well, since both marks are above their respective means",
       "Paper B, because its standard score is higher (A: $z = 1.5$, B: $z = 2$)"
     ],
-    "explanationEn": "The two papers have different means and standard deviations, so the raw marks *cannot* be compared directly — which is precisely why standard scores exist. Paper A gives $z = \\dfrac{108 - 90}{12} = 1.5$ and Paper B gives $z = \\dfrac{63 - 45}{9} = 2$. The higher $z$ belongs to Paper B, so that is the better relative performance. Comparing raw marks is the main trap: scoring $108$ on one paper and $63$ on another says nothing on its own — what matters is where each mark sits within its own distribution. The last option notes only that both are above average, which does not mean both are above it by the same amount.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The two papers have different means and standard deviations, so the raw marks cannot be compared directly; convert them to standard scores first. Paper A: $z = \\dfrac{108 - 90}{12} = 1.5$; Paper B: $z = \\dfrac{63 - 45}{9} = 2$. Paper B has the higher $z$, so that is the better relative performance. Both marks are above their means, but by different numbers of standard deviations, so the performances are not equal.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "甲卷的標準分數是 $1.5$，低於乙卷的 $2$，比較的方向弄反了。",
+        "en": "Paper A's standard score is $1.5$, lower than Paper B's $2$; the comparison is the wrong way round."
+      },
+      {
+        "optionId": 1,
+        "zh": "甲卷的原始分數較高，但兩卷的平均分和標準差不同，原始分數不可直接比較；按標準分數，甲卷其實較低（$z = 1.5$）。",
+        "en": "Paper A has the higher raw mark, but the papers have different means and standard deviations, so raw marks cannot be compared directly; by standard score Paper A is in fact lower ($z = 1.5$)."
+      },
+      {
+        "optionId": 2,
+        "zh": "兩個分數確實都高於各自的平均分，但高出的幅度不同：甲卷高出 $1.5$ 個標準差，乙卷高出 $2$ 個標準差，所以表現並不相同。",
+        "en": "Both marks are indeed above their means, but not by the same amount: $1.5$ standard deviations on Paper A and $2$ on Paper B, so the performances are not equal."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。甲卷 $z = \\dfrac{108 - 90}{12} = 1.5$，乙卷 $z = \\dfrac{63 - 45}{9} = 2$。乙卷的標準分數較高，即該分數高出該卷平均分較多個標準差。",
+        "en": "Correct. Paper A: $z = \\dfrac{108 - 90}{12} = 1.5$; Paper B: $z = \\dfrac{63 - 45}{9} = 2$. Paper B has the higher standard score: that mark is more standard deviations above its paper's mean."
+      }
+    ]
   },
   {
     "id": "m1_rep_0069",
@@ -3257,7 +3543,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(100, 0.4)$。當 $n$ 足夠大時可用正態分佈逼近。\n\n求該逼近正態分佈的平均值與標準差。",
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 100 \\times 0.4 = 40$，$\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{24} = 4.899$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
+    "explanation": "逼近的正態分佈沿用二項分佈的平均值與變異數：$\\mu = np = 100 \\times 0.4 = 40$，$\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$。標準差是變異數的平方根：$\\sigma = \\sqrt{24} \\approx 4.899$。",
     "options": [
       "$\\mu = 40$，$\\sigma = 4.899$",
       "$\\mu = 40$，$\\sigma = 24$",
@@ -3273,8 +3559,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\mu = 60$, $\\sigma = 4.899$",
       "$\\mu = 40$, $\\sigma = 6.3246$"
     ],
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 100 \\times 0.4 = 40$ and $\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{24} = 4.899$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The approximating normal distribution keeps the binomial mean and variance: $\\mu = np = 100 \\times 0.4 = 40$ and $\\mathrm{Var}(X) = np(1-p) = 100 \\times 0.4 \\times 0.6 = 24$. The standard deviation is the square root of the variance: $\\sigma = \\sqrt{24} \\approx 4.899$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$\\mu = np = 40$，$\\sigma = \\sqrt{np(1-p)} = \\sqrt{24} \\approx 4.899$。",
+        "en": "Correct. $\\mu = np = 40$ and $\\sigma = \\sqrt{np(1-p)} = \\sqrt{24} \\approx 4.899$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$24$ 是變異數 $np(1-p)$；標準差要再開平方根。",
+        "en": "$24$ is the variance $np(1-p)$; the standard deviation is its square root."
+      },
+      {
+        "optionId": 2,
+        "zh": "$n(1-p) = 60$ 是失敗次數的期望值；題目問的平均值是 $np$。",
+        "en": "$n(1-p) = 60$ is the expected number of failures; the mean asked for is $np$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\sqrt{np} \\approx 6.3246$ 漏了因子 $(1-p)$；變異數是 $np(1-p)$。",
+        "en": "$\\sqrt{np} \\approx 6.3246$ leaves out the factor $(1-p)$; the variance is $np(1-p)$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0070",
@@ -3289,7 +3597,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(400, 0.25)$。當 $n$ 足夠大時可用正態分佈逼近。\n\n求該逼近正態分佈的平均值與標準差。",
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 400 \\times 0.25 = 100$，$\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{75} = 8.6603$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
+    "explanation": "逼近的正態分佈沿用二項分佈的平均值與變異數：$\\mu = np = 400 \\times 0.25 = 100$，$\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$。標準差是變異數的平方根：$\\sigma = \\sqrt{75} \\approx 8.6603$。",
     "options": [
       "$\\mu = 100$，$\\sigma = 10$",
       "$\\mu = 100$，$\\sigma = 8.6603$",
@@ -3305,8 +3613,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\mu = 100$, $\\sigma = 75$",
       "$\\mu = 300$, $\\sigma = 8.6603$"
     ],
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 400 \\times 0.25 = 100$ and $\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{75} = 8.6603$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The approximating normal distribution keeps the binomial mean and variance: $\\mu = np = 400 \\times 0.25 = 100$ and $\\mathrm{Var}(X) = np(1-p) = 400 \\times 0.25 \\times 0.75 = 75$. The standard deviation is the square root of the variance: $\\sigma = \\sqrt{75} \\approx 8.6603$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\sqrt{np} \\approx 10$ 漏了因子 $(1-p)$；變異數是 $np(1-p)$。",
+        "en": "$\\sqrt{np} \\approx 10$ leaves out the factor $(1-p)$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$\\mu = np = 100$，$\\sigma = \\sqrt{np(1-p)} = \\sqrt{75} \\approx 8.6603$。",
+        "en": "Correct. $\\mu = np = 100$ and $\\sigma = \\sqrt{np(1-p)} = \\sqrt{75} \\approx 8.6603$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$75$ 是變異數 $np(1-p)$；標準差要再開平方根。",
+        "en": "$75$ is the variance $np(1-p)$; the standard deviation is its square root."
+      },
+      {
+        "optionId": 3,
+        "zh": "$n(1-p) = 300$ 是失敗次數的期望值；題目問的平均值是 $np$。",
+        "en": "$n(1-p) = 300$ is the expected number of failures; the mean asked for is $np$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0071",
@@ -3321,7 +3651,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(200, 0.1)$。當 $n$ 足夠大時可用正態分佈逼近。\n\n求該逼近正態分佈的平均值與標準差。",
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 200 \\times 0.1 = 20$，$\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{18} = 4.2426$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
+    "explanation": "逼近的正態分佈沿用二項分佈的平均值與變異數：$\\mu = np = 200 \\times 0.1 = 20$，$\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$。標準差是變異數的平方根：$\\sigma = \\sqrt{18} \\approx 4.2426$。",
     "options": [
       "$\\mu = 180$，$\\sigma = 4.2426$",
       "$\\mu = 20$，$\\sigma = 4.4721$",
@@ -3337,8 +3667,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\mu = 20$, $\\sigma = 4.2426$",
       "$\\mu = 20$, $\\sigma = 18$"
     ],
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 200 \\times 0.1 = 20$ and $\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{18} = 4.2426$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The approximating normal distribution keeps the binomial mean and variance: $\\mu = np = 200 \\times 0.1 = 20$ and $\\mathrm{Var}(X) = np(1-p) = 200 \\times 0.1 \\times 0.9 = 18$. The standard deviation is the square root of the variance: $\\sigma = \\sqrt{18} \\approx 4.2426$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$n(1-p) = 180$ 是失敗次數的期望值；題目問的平均值是 $np$。",
+        "en": "$n(1-p) = 180$ is the expected number of failures; the mean asked for is $np$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\sqrt{np} \\approx 4.4721$ 漏了因子 $(1-p)$；變異數是 $np(1-p)$。",
+        "en": "$\\sqrt{np} \\approx 4.4721$ leaves out the factor $(1-p)$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$\\mu = np = 20$，$\\sigma = \\sqrt{np(1-p)} = \\sqrt{18} \\approx 4.2426$。",
+        "en": "Correct. $\\mu = np = 20$ and $\\sigma = \\sqrt{np(1-p)} = \\sqrt{18} \\approx 4.2426$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$18$ 是變異數 $np(1-p)$；標準差要再開平方根。",
+        "en": "$18$ is the variance $np(1-p)$; the standard deviation is its square root."
+      }
+    ]
   },
   {
     "id": "m1_rep_0072",
@@ -3353,7 +3705,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(900, 0.2)$。當 $n$ 足夠大時可用正態分佈逼近。\n\n求該逼近正態分佈的平均值與標準差。",
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 900 \\times 0.2 = 180$，$\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{144} = 12$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
+    "explanation": "逼近的正態分佈沿用二項分佈的平均值與變異數：$\\mu = np = 900 \\times 0.2 = 180$，$\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$。標準差是變異數的平方根：$\\sigma = \\sqrt{144} \\approx 12$。",
     "options": [
       "$\\mu = 180$，$\\sigma = 144$",
       "$\\mu = 720$，$\\sigma = 12$",
@@ -3369,8 +3721,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\mu = 180$, $\\sigma = 13.4164$",
       "$\\mu = 180$, $\\sigma = 12$"
     ],
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 900 \\times 0.2 = 180$ and $\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{144} = 12$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The approximating normal distribution keeps the binomial mean and variance: $\\mu = np = 900 \\times 0.2 = 180$ and $\\mathrm{Var}(X) = np(1-p) = 900 \\times 0.2 \\times 0.8 = 144$. The standard deviation is the square root of the variance: $\\sigma = \\sqrt{144} \\approx 12$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$144$ 是變異數 $np(1-p)$；標準差要再開平方根。",
+        "en": "$144$ is the variance $np(1-p)$; the standard deviation is its square root."
+      },
+      {
+        "optionId": 1,
+        "zh": "$n(1-p) = 720$ 是失敗次數的期望值；題目問的平均值是 $np$。",
+        "en": "$n(1-p) = 720$ is the expected number of failures; the mean asked for is $np$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\sqrt{np} \\approx 13.4164$ 漏了因子 $(1-p)$；變異數是 $np(1-p)$。",
+        "en": "$\\sqrt{np} \\approx 13.4164$ leaves out the factor $(1-p)$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$\\mu = np = 180$，$\\sigma = \\sqrt{np(1-p)} = \\sqrt{144} \\approx 12$。",
+        "en": "Correct. $\\mu = np = 180$ and $\\sigma = \\sqrt{np(1-p)} = \\sqrt{144} \\approx 12$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0073",
@@ -3385,7 +3759,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(500, 0.4)$。當 $n$ 足夠大時可用正態分佈逼近。\n\n求該逼近正態分佈的平均值與標準差。",
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 500 \\times 0.4 = 200$，$\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{120} = 10.9545$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
+    "explanation": "逼近的正態分佈沿用二項分佈的平均值與變異數：$\\mu = np = 500 \\times 0.4 = 200$，$\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$。標準差是變異數的平方根：$\\sigma = \\sqrt{120} \\approx 10.9545$。",
     "options": [
       "$\\mu = 200$，$\\sigma = 10.9545$",
       "$\\mu = 200$，$\\sigma = 120$",
@@ -3401,8 +3775,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\mu = 300$, $\\sigma = 10.9545$",
       "$\\mu = 200$, $\\sigma = 14.1421$"
     ],
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 500 \\times 0.4 = 200$ and $\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{120} = 10.9545$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The approximating normal distribution keeps the binomial mean and variance: $\\mu = np = 500 \\times 0.4 = 200$ and $\\mathrm{Var}(X) = np(1-p) = 500 \\times 0.4 \\times 0.6 = 120$. The standard deviation is the square root of the variance: $\\sigma = \\sqrt{120} \\approx 10.9545$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$\\mu = np = 200$，$\\sigma = \\sqrt{np(1-p)} = \\sqrt{120} \\approx 10.9545$。",
+        "en": "Correct. $\\mu = np = 200$ and $\\sigma = \\sqrt{np(1-p)} = \\sqrt{120} \\approx 10.9545$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$120$ 是變異數 $np(1-p)$；標準差要再開平方根。",
+        "en": "$120$ is the variance $np(1-p)$; the standard deviation is its square root."
+      },
+      {
+        "optionId": 2,
+        "zh": "$n(1-p) = 300$ 是失敗次數的期望值；題目問的平均值是 $np$。",
+        "en": "$n(1-p) = 300$ is the expected number of failures; the mean asked for is $np$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\sqrt{np} \\approx 14.1421$ 漏了因子 $(1-p)$；變異數是 $np(1-p)$。",
+        "en": "$\\sqrt{np} \\approx 14.1421$ leaves out the factor $(1-p)$; the variance is $np(1-p)$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0074",
@@ -3417,7 +3813,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(300, 0.3)$。當 $n$ 足夠大時可用正態分佈逼近。\n\n求該逼近正態分佈的平均值與標準差。",
-    "explanation": "逼近正態分佈直接沿用二項分佈的平均值與變異數：$\\mu = np = 300 \\times 0.3 = 90$，$\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$，而標準差是變異數的【平方根】：$\\sigma = \\sqrt{63} = 7.9373$。第一個干擾項把變異數當成標準差，忘記開方 —— 這是本題最主要的失分位，亦是統計題最常見的單位混淆。第二項用了 $n(1-p)$ 作平均值，那是「失敗次數」的期望而非題目所問。第三項開方時漏了因子 $(1-p)$。",
+    "explanation": "逼近的正態分佈沿用二項分佈的平均值與變異數：$\\mu = np = 300 \\times 0.3 = 90$，$\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$。標準差是變異數的平方根：$\\sigma = \\sqrt{63} \\approx 7.9373$。",
     "options": [
       "$\\mu = 90$，$\\sigma = 9.4868$",
       "$\\mu = 90$，$\\sigma = 7.9373$",
@@ -3433,8 +3829,30 @@ export const m1AutoQuestions: Question[] = [
       "$\\mu = 90$, $\\sigma = 63$",
       "$\\mu = 210$, $\\sigma = 7.9373$"
     ],
-    "explanationEn": "The approximating normal keeps the binomial's mean and variance: $\\mu = np = 300 \\times 0.3 = 90$ and $\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$; the standard deviation is the *square root* of the variance, $\\sigma = \\sqrt{63} = 7.9373$. The first distractor reports the variance as the standard deviation, forgetting to take the root — the main trap here and the commonest unit confusion in statistics. The second uses $n(1-p)$ as the mean, which is the expected number of failures. The third omits the factor $(1-p)$ before taking the root.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The approximating normal distribution keeps the binomial mean and variance: $\\mu = np = 300 \\times 0.3 = 90$ and $\\mathrm{Var}(X) = np(1-p) = 300 \\times 0.3 \\times 0.7 = 63$. The standard deviation is the square root of the variance: $\\sigma = \\sqrt{63} \\approx 7.9373$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\sqrt{np} \\approx 9.4868$ 漏了因子 $(1-p)$；變異數是 $np(1-p)$。",
+        "en": "$\\sqrt{np} \\approx 9.4868$ leaves out the factor $(1-p)$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$\\mu = np = 90$，$\\sigma = \\sqrt{np(1-p)} = \\sqrt{63} \\approx 7.9373$。",
+        "en": "Correct. $\\mu = np = 90$ and $\\sigma = \\sqrt{np(1-p)} = \\sqrt{63} \\approx 7.9373$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$63$ 是變異數 $np(1-p)$；標準差要再開平方根。",
+        "en": "$63$ is the variance $np(1-p)$; the standard deviation is its square root."
+      },
+      {
+        "optionId": 3,
+        "zh": "$n(1-p) = 210$ 是失敗次數的期望值；題目問的平均值是 $np$。",
+        "en": "$n(1-p) = 210$ is the expected number of failures; the mean asked for is $np$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0075",
@@ -3449,7 +3867,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $f(x) = 3x$。試求 $f$ 在區間 $[1, 2]$ 上的定積分值。",
-    "explanation": "先求原函數：$\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$\\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanation": "先求原函數：$F(x) = \\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$F(2) - F(1) = \\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$。",
     "options": [
       "$-4.5$",
       "$3$",
@@ -3465,8 +3883,30 @@ export const m1AutoQuestions: Question[] = [
       "$4.5$",
       "$6$"
     ],
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Find an antiderivative: $F(x) = \\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then subtract the lower limit from the upper: $F(2) - F(1) = \\dfrac{3(2)^{2}}{2} - \\dfrac{3(1)^{2}}{2} = 6 - 1.5 = 4.5$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "用了下限減上限 $F(1) - F(2)$，所以正負號相反。",
+        "en": "This takes the lower limit minus the upper, $F(1) - F(2)$, so the sign is flipped."
+      },
+      {
+        "optionId": 1,
+        "zh": "$3 \\times (2 - 1) = 3$：把 $f(x) = 3x$ 當成常數 $3$ 乘以區間長度。只有被積函數是常數時才可以這樣做。",
+        "en": "$3 \\times (2 - 1) = 3$ treats $f(x) = 3x$ as the constant $3$ times the interval length, which works only for a constant integrand."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$F(2) - F(1) = 6 - 1.5 = 4.5$。",
+        "en": "Correct. $F(2) - F(1) = 6 - 1.5 = 4.5$."
+      },
+      {
+        "optionId": 3,
+        "zh": "只代入了上限：$F(2) = 6$，沒有減去 $F(1) = 1.5$。",
+        "en": "Only the upper limit was used: $F(2) = 6$, without subtracting $F(1) = 1.5$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0076",
@@ -3481,7 +3921,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $f(x) = 2x$。試求 $f$ 在區間 $[1, 3]$ 上的定積分值。",
-    "explanation": "先求原函數：$\\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$。再代入上下限相減：$\\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanation": "先求原函數：$F(x) = \\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$。再代入上下限相減：$F(3) - F(1) = \\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$。",
     "options": [
       "$9$",
       "$-8$",
@@ -3497,8 +3937,30 @@ export const m1AutoQuestions: Question[] = [
       "$4$",
       "$8$"
     ],
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Find an antiderivative: $F(x) = \\displaystyle\\int 2x \\, dx = \\dfrac{2x^{2}}{2}$. Then subtract the lower limit from the upper: $F(3) - F(1) = \\dfrac{2(3)^{2}}{2} - \\dfrac{2(1)^{2}}{2} = 9 - 1 = 8$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "只代入了上限：$F(3) = 9$，沒有減去 $F(1) = 1$。",
+        "en": "Only the upper limit was used: $F(3) = 9$, without subtracting $F(1) = 1$."
+      },
+      {
+        "optionId": 1,
+        "zh": "用了下限減上限 $F(1) - F(3)$，所以正負號相反。",
+        "en": "This takes the lower limit minus the upper, $F(1) - F(3)$, so the sign is flipped."
+      },
+      {
+        "optionId": 2,
+        "zh": "$2 \\times (3 - 1) = 4$：把 $f(x) = 2x$ 當成常數 $2$ 乘以區間長度。只有被積函數是常數時才可以這樣做。",
+        "en": "$2 \\times (3 - 1) = 4$ treats $f(x) = 2x$ as the constant $2$ times the interval length, which works only for a constant integrand."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$F(3) - F(1) = 9 - 1 = 8$。",
+        "en": "Correct. $F(3) - F(1) = 9 - 1 = 8$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0077",
@@ -3513,7 +3975,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $f(x) = 4x$。試求 $f$ 在區間 $[1, 3]$ 上的定積分值。",
-    "explanation": "先求原函數：$\\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$。再代入上下限相減：$\\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanation": "先求原函數：$F(x) = \\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$。再代入上下限相減：$F(3) - F(1) = \\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$。",
     "options": [
       "$16$",
       "$18$",
@@ -3529,8 +3991,30 @@ export const m1AutoQuestions: Question[] = [
       "$-16$",
       "$8$"
     ],
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Find an antiderivative: $F(x) = \\displaystyle\\int 4x \\, dx = \\dfrac{4x^{2}}{2}$. Then subtract the lower limit from the upper: $F(3) - F(1) = \\dfrac{4(3)^{2}}{2} - \\dfrac{4(1)^{2}}{2} = 18 - 2 = 16$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$F(3) - F(1) = 18 - 2 = 16$。",
+        "en": "Correct. $F(3) - F(1) = 18 - 2 = 16$."
+      },
+      {
+        "optionId": 1,
+        "zh": "只代入了上限：$F(3) = 18$，沒有減去 $F(1) = 2$。",
+        "en": "Only the upper limit was used: $F(3) = 18$, without subtracting $F(1) = 2$."
+      },
+      {
+        "optionId": 2,
+        "zh": "用了下限減上限 $F(1) - F(3)$，所以正負號相反。",
+        "en": "This takes the lower limit minus the upper, $F(1) - F(3)$, so the sign is flipped."
+      },
+      {
+        "optionId": 3,
+        "zh": "$4 \\times (3 - 1) = 8$：把 $f(x) = 4x$ 當成常數 $4$ 乘以區間長度。只有被積函數是常數時才可以這樣做。",
+        "en": "$4 \\times (3 - 1) = 8$ treats $f(x) = 4x$ as the constant $4$ times the interval length, which works only for a constant integrand."
+      }
+    ]
   },
   {
     "id": "m1_rep_0078",
@@ -3545,7 +4029,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $f(x) = 6x$。試求 $f$ 在區間 $[2, 4]$ 上的定積分值。",
-    "explanation": "先求原函數：$\\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$。再代入上下限相減：$\\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanation": "先求原函數：$F(x) = \\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$。再代入上下限相減：$F(4) - F(2) = \\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$。",
     "options": [
       "$12$",
       "$36$",
@@ -3561,8 +4045,30 @@ export const m1AutoQuestions: Question[] = [
       "$48$",
       "$-36$"
     ],
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Find an antiderivative: $F(x) = \\displaystyle\\int 6x \\, dx = \\dfrac{6x^{2}}{2}$. Then subtract the lower limit from the upper: $F(4) - F(2) = \\dfrac{6(4)^{2}}{2} - \\dfrac{6(2)^{2}}{2} = 48 - 12 = 36$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$6 \\times (4 - 2) = 12$：把 $f(x) = 6x$ 當成常數 $6$ 乘以區間長度。只有被積函數是常數時才可以這樣做。",
+        "en": "$6 \\times (4 - 2) = 12$ treats $f(x) = 6x$ as the constant $6$ times the interval length, which works only for a constant integrand."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$F(4) - F(2) = 48 - 12 = 36$。",
+        "en": "Correct. $F(4) - F(2) = 48 - 12 = 36$."
+      },
+      {
+        "optionId": 2,
+        "zh": "只代入了上限：$F(4) = 48$，沒有減去 $F(2) = 12$。",
+        "en": "Only the upper limit was used: $F(4) = 48$, without subtracting $F(2) = 12$."
+      },
+      {
+        "optionId": 3,
+        "zh": "用了下限減上限 $F(2) - F(4)$，所以正負號相反。",
+        "en": "This takes the lower limit minus the upper, $F(2) - F(4)$, so the sign is flipped."
+      }
+    ]
   },
   {
     "id": "m1_rep_0079",
@@ -3577,7 +4083,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $f(x) = 5x$。試求 $f$ 在區間 $[1, 2]$ 上的定積分值。",
-    "explanation": "先求原函數：$\\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$。再代入上下限相減：$\\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanation": "先求原函數：$F(x) = \\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$。再代入上下限相減：$F(2) - F(1) = \\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$。",
     "options": [
       "$-7.5$",
       "$5$",
@@ -3593,8 +4099,30 @@ export const m1AutoQuestions: Question[] = [
       "$7.5$",
       "$10$"
     ],
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Find an antiderivative: $F(x) = \\displaystyle\\int 5x \\, dx = \\dfrac{5x^{2}}{2}$. Then subtract the lower limit from the upper: $F(2) - F(1) = \\dfrac{5(2)^{2}}{2} - \\dfrac{5(1)^{2}}{2} = 10 - 2.5 = 7.5$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "用了下限減上限 $F(1) - F(2)$，所以正負號相反。",
+        "en": "This takes the lower limit minus the upper, $F(1) - F(2)$, so the sign is flipped."
+      },
+      {
+        "optionId": 1,
+        "zh": "$5 \\times (2 - 1) = 5$：把 $f(x) = 5x$ 當成常數 $5$ 乘以區間長度。只有被積函數是常數時才可以這樣做。",
+        "en": "$5 \\times (2 - 1) = 5$ treats $f(x) = 5x$ as the constant $5$ times the interval length, which works only for a constant integrand."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$F(2) - F(1) = 10 - 2.5 = 7.5$。",
+        "en": "Correct. $F(2) - F(1) = 10 - 2.5 = 7.5$."
+      },
+      {
+        "optionId": 3,
+        "zh": "只代入了上限：$F(2) = 10$，沒有減去 $F(1) = 2.5$。",
+        "en": "Only the upper limit was used: $F(2) = 10$, without subtracting $F(1) = 2.5$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0080",
@@ -3609,7 +4137,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $f(x) = 3x$。試求 $f$ 在區間 $[2, 5]$ 上的定積分值。",
-    "explanation": "先求原函數：$\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$\\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$。第一個干擾項只代入了上限而忘記減去下限的值 —— 定積分永遠是【上限減下限】兩項之差，這是最主要的失分位。第二項把相減次序調轉，得出的答案符號相反。第三項把被積函數當成常數乘以區間長度，那只有在被積函數確實是常數時才成立。",
+    "explanation": "先求原函數：$F(x) = \\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$。再代入上下限相減：$F(5) - F(2) = \\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$。",
     "options": [
       "$37.5$",
       "$-31.5$",
@@ -3625,8 +4153,30 @@ export const m1AutoQuestions: Question[] = [
       "$9$",
       "$31.5$"
     ],
-    "explanationEn": "First find an antiderivative: $\\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then substitute the limits and subtract: $\\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$. The first distractor substitutes the upper limit only and forgets to subtract the lower — a definite integral is always the difference *upper minus lower*, and this is the main trap. The second reverses the subtraction and flips the sign. The third multiplies the integrand by the width of the interval, which is valid only when the integrand really is constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Find an antiderivative: $F(x) = \\displaystyle\\int 3x \\, dx = \\dfrac{3x^{2}}{2}$. Then subtract the lower limit from the upper: $F(5) - F(2) = \\dfrac{3(5)^{2}}{2} - \\dfrac{3(2)^{2}}{2} = 37.5 - 6 = 31.5$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "只代入了上限：$F(5) = 37.5$，沒有減去 $F(2) = 6$。",
+        "en": "Only the upper limit was used: $F(5) = 37.5$, without subtracting $F(2) = 6$."
+      },
+      {
+        "optionId": 1,
+        "zh": "用了下限減上限 $F(2) - F(5)$，所以正負號相反。",
+        "en": "This takes the lower limit minus the upper, $F(2) - F(5)$, so the sign is flipped."
+      },
+      {
+        "optionId": 2,
+        "zh": "$3 \\times (5 - 2) = 9$：把 $f(x) = 3x$ 當成常數 $3$ 乘以區間長度。只有被積函數是常數時才可以這樣做。",
+        "en": "$3 \\times (5 - 2) = 9$ treats $f(x) = 3x$ as the constant $3$ times the interval length, which works only for a constant integrand."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$F(5) - F(2) = 37.5 - 6 = 31.5$。",
+        "en": "Correct. $F(5) - F(2) = 37.5 - 6 = 31.5$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0081",
@@ -3641,7 +4191,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $\\dfrac{dy}{dx} = 6x$，且曲線經過點 $(1, 5)$。求 $y$ 關於 $x$ 的表達式。",
-    "explanation": "不定積分得 $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$，其中 $C$ 是【積分常數】，必須靠題目給的一點定出來。代入 $(1, 5)$：$5 = 3(1)^{2} + C$，得 $C = 2$。第一個干擾項漏了積分常數 —— 不定積分的答案永遠帶一個 $C$，題目既然給了一點，就是要求你把它定出來，這是本題最主要的失分位。第二項積分時忘記除以 $2$。第三項的常數符號相反。",
+    "explanation": "不定積分得 $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$，其中 $C$ 是積分常數，要用題目給的點定出來。代入 $(1, 5)$：$5 = 3(1)^{2} + C$，得 $C = 2$。",
     "options": [
       "$y = 3x^{2} + 2$",
       "$y = 3x^{2}$",
@@ -3657,8 +4207,30 @@ export const m1AutoQuestions: Question[] = [
       "$y = 6x^{2} + 2$",
       "$y = 3x^{2} − 2$"
     ],
-    "explanationEn": "Integrating gives $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$, where $C$ is the *constant of integration* and must be pinned down by the given point. Substituting $(1, 5)$: $5 = 3(1)^{2} + C$, so $C = 2$. The first distractor omits the constant — an indefinite integral always carries one, and supplying a point is exactly how the question asks you to determine it. This is the main trap. The second forgets to divide by $2$ when integrating, and the third has the wrong sign on the constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Integrating gives $y = \\dfrac{6x^{2}}{2} + C = 3x^{2} + C$, where the constant $C$ is fixed by the given point. Substituting $(1, 5)$: $5 = 3(1)^{2} + C$, so $C = 2$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$y = 3x^{2} + C$，代入 $(1, 5)$ 得 $C = 2$。",
+        "en": "Correct. $y = 3x^{2} + C$; substituting $(1, 5)$ gives $C = 2$."
+      },
+      {
+        "optionId": 1,
+        "zh": "漏了積分常數 $C$。題目給出曲線經過的點，就是要用它求出 $C$。",
+        "en": "The constant of integration $C$ is missing. The given point is there to find $C$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$6x$ 的原函數是 $\\dfrac{6x^{2}}{2} = 3x^{2}$；這裏沒有除以 $2$。",
+        "en": "An antiderivative of $6x$ is $\\dfrac{6x^{2}}{2} = 3x^{2}$; this one is not divided by $2$."
+      },
+      {
+        "optionId": 3,
+        "zh": "常數的正負號錯了：由 $5 = 3(1)^{2} + C$ 得 $C = 2$。",
+        "en": "The constant has the wrong sign: $5 = 3(1)^{2} + C$ gives $C = 2$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0082",
@@ -3673,7 +4245,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $\\dfrac{dy}{dx} = 4x$，且曲線經過點 $(2, 3)$。求 $y$ 關於 $x$ 的表達式。",
-    "explanation": "不定積分得 $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$，其中 $C$ 是【積分常數】，必須靠題目給的一點定出來。代入 $(2, 3)$：$3 = 2(2)^{2} + C$，得 $C = -5$。第一個干擾項漏了積分常數 —— 不定積分的答案永遠帶一個 $C$，題目既然給了一點，就是要求你把它定出來，這是本題最主要的失分位。第二項積分時忘記除以 $2$。第三項的常數符號相反。",
+    "explanation": "不定積分得 $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$，其中 $C$ 是積分常數，要用題目給的點定出來。代入 $(2, 3)$：$3 = 2(2)^{2} + C$，得 $C = -5$。",
     "options": [
       "$y = 2x^{2} + 5$",
       "$y = 2x^{2} − 5$",
@@ -3689,8 +4261,30 @@ export const m1AutoQuestions: Question[] = [
       "$y = 2x^{2}$",
       "$y = 4x^{2} − 5$"
     ],
-    "explanationEn": "Integrating gives $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$, where $C$ is the *constant of integration* and must be pinned down by the given point. Substituting $(2, 3)$: $3 = 2(2)^{2} + C$, so $C = -5$. The first distractor omits the constant — an indefinite integral always carries one, and supplying a point is exactly how the question asks you to determine it. This is the main trap. The second forgets to divide by $2$ when integrating, and the third has the wrong sign on the constant.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "Integrating gives $y = \\dfrac{4x^{2}}{2} + C = 2x^{2} + C$, where the constant $C$ is fixed by the given point. Substituting $(2, 3)$: $3 = 2(2)^{2} + C$, so $C = -5$.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "常數的正負號錯了：由 $3 = 2(2)^{2} + C$ 得 $C = -5$。",
+        "en": "The constant has the wrong sign: $3 = 2(2)^{2} + C$ gives $C = -5$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$y = 2x^{2} + C$，代入 $(2, 3)$ 得 $C = -5$。",
+        "en": "Correct. $y = 2x^{2} + C$; substituting $(2, 3)$ gives $C = -5$."
+      },
+      {
+        "optionId": 2,
+        "zh": "漏了積分常數 $C$。題目給出曲線經過的點，就是要用它求出 $C$。",
+        "en": "The constant of integration $C$ is missing. The given point is there to find $C$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$4x$ 的原函數是 $\\dfrac{4x^{2}}{2} = 2x^{2}$；這裏沒有除以 $2$。",
+        "en": "An antiderivative of $4x$ is $\\dfrac{4x^{2}}{2} = 2x^{2}$; this one is not divided by $2$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0083",
@@ -3705,7 +4299,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "曲線 $y = x^{2}$ 與 $x$ 軸及直線 $x = 4$ 所圍成的區域（$0 \\leq x \\leq 4$）。\n\n求該區域的面積。",
-    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{4} 1x^{2}\\,dx = \\left[\\dfrac{1x^{3}}{3}\\right]_{0}^{4} = \\dfrac{1(4)^{3}}{3} - 0 = 21.3333$。第一個干擾項只把 $x = 4$ 代入原函數，得出的是該點的【高度】而非面積 —— 面積必須經積分累加，不能用單一點的函數值代替。第二項積分時把 $x^{2}$ 的原函數誤寫成除以 $2$（應為除以 $3$，因為指數加一之後是 $3$）。第三項把答案再除一次 $2$，那是三角形面積公式的殘留 —— 曲線下的區域並非三角形，不可套用。",
+    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{4} x^{2}\\,dx = \\left[\\dfrac{x^{3}}{3}\\right]_{0}^{4} = \\dfrac{(4)^{3}}{3} - 0 \\approx 21.3333$ 平方單位。",
     "options": [
       "$32$ 平方單位",
       "$10.6667$ 平方單位",
@@ -3721,8 +4315,30 @@ export const m1AutoQuestions: Question[] = [
       "$21.3333$ square units",
       "$16$ square units"
     ],
-    "explanationEn": "The area under a curve is given by a definite integral: $\\displaystyle\\int_{0}^{4} 1x^{2}\\,dx = \\left[\\dfrac{1x^{3}}{3}\\right]_{0}^{4} = \\dfrac{1(4)^{3}}{3} - 0 = 21.3333$. The first distractor substitutes $x = 4$ into the original function, which gives the *height* at that point, not an area; areas must be accumulated by integration and cannot be read off a single function value. The second divides by $2$ instead of $3$ when integrating $x^{2}$ — raising the index gives $3$. The third halves the correct answer, a leftover from the triangle formula, which does not apply to a region bounded by a curve.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The area under the curve is a definite integral: $\\displaystyle\\int_{0}^{4} x^{2}\\,dx = \\left[\\dfrac{x^{3}}{3}\\right]_{0}^{4} = \\dfrac{(4)^{3}}{3} - 0 \\approx 21.3333$ square units.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "原函數除錯了數：$x^{2}$ 的原函數是 $\\dfrac{x^{3}}{3}$，不是 $\\dfrac{x^{3}}{2}$。",
+        "en": "The antiderivative divides by the wrong number: for $x^{2}$ it is $\\dfrac{x^{3}}{3}$, not $\\dfrac{x^{3}}{2}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "把正確面積再除以 $2$，似是套用了三角形面積公式；曲線下的區域不是三角形。",
+        "en": "This halves the correct area, as if using the triangle formula; the region under a curve is not a triangle."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$\\displaystyle\\int_{0}^{4} x^{2}\\,dx = \\dfrac{(4)^{3}}{3} \\approx 21.3333$。",
+        "en": "Correct. $\\displaystyle\\int_{0}^{4} x^{2}\\,dx = \\dfrac{(4)^{3}}{3} \\approx 21.3333$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$16$ 是 $x = 4$ 時曲線的高度 $y$，不是面積；面積要用積分求。",
+        "en": "$16$ is the height $y$ of the curve at $x = 4$, not an area; the area needs an integral."
+      }
+    ]
   },
   {
     "id": "m1_rep_0084",
@@ -3737,7 +4353,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "曲線 $y = 2x^{2}$ 與 $x$ 軸及直線 $x = 5$ 所圍成的區域（$0 \\leq x \\leq 5$）。\n\n求該區域的面積。",
-    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 = 83.3333$。第一個干擾項只把 $x = 5$ 代入原函數，得出的是該點的【高度】而非面積 —— 面積必須經積分累加，不能用單一點的函數值代替。第二項積分時把 $x^{2}$ 的原函數誤寫成除以 $2$（應為除以 $3$，因為指數加一之後是 $3$）。第三項把答案再除一次 $2$，那是三角形面積公式的殘留 —— 曲線下的區域並非三角形，不可套用。",
+    "explanation": "曲線下的面積由定積分求出：$\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 \\approx 83.3333$ 平方單位。",
     "options": [
       "$50$ 平方單位",
       "$125$ 平方單位",
@@ -3753,8 +4369,30 @@ export const m1AutoQuestions: Question[] = [
       "$41.6667$ square units",
       "$83.3333$ square units"
     ],
-    "explanationEn": "The area under a curve is given by a definite integral: $\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 = 83.3333$. The first distractor substitutes $x = 5$ into the original function, which gives the *height* at that point, not an area; areas must be accumulated by integration and cannot be read off a single function value. The second divides by $2$ instead of $3$ when integrating $x^{2}$ — raising the index gives $3$. The third halves the correct answer, a leftover from the triangle formula, which does not apply to a region bounded by a curve.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The area under the curve is a definite integral: $\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\left[\\dfrac{2x^{3}}{3}\\right]_{0}^{5} = \\dfrac{2(5)^{3}}{3} - 0 \\approx 83.3333$ square units.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$50$ 是 $x = 5$ 時曲線的高度 $y$，不是面積；面積要用積分求。",
+        "en": "$50$ is the height $y$ of the curve at $x = 5$, not an area; the area needs an integral."
+      },
+      {
+        "optionId": 1,
+        "zh": "原函數除錯了數：$x^{2}$ 的原函數是 $\\dfrac{x^{3}}{3}$，不是 $\\dfrac{x^{3}}{2}$。",
+        "en": "The antiderivative divides by the wrong number: for $x^{2}$ it is $\\dfrac{x^{3}}{3}$, not $\\dfrac{x^{3}}{2}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "把正確面積再除以 $2$，似是套用了三角形面積公式；曲線下的區域不是三角形。",
+        "en": "This halves the correct area, as if using the triangle formula; the region under a curve is not a triangle."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\dfrac{2(5)^{3}}{3} \\approx 83.3333$。",
+        "en": "Correct. $\\displaystyle\\int_{0}^{5} 2x^{2}\\,dx = \\dfrac{2(5)^{3}}{3} \\approx 83.3333$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0085",
@@ -3769,7 +4407,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $X \\sim B(20, 0.4)$。求 $\\mathrm{Var}(X)$。",
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$。三個因子缺一不可。第一個干擾項 $8$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$。期望值 $np$ 與變異數 $np(1-p)$ 用同一組參數，但意義不同。",
     "options": [
       "$4.8$",
       "$8$",
@@ -3785,8 +4423,30 @@ export const m1AutoQuestions: Question[] = [
       "$2.1909$",
       "$12$"
     ],
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$; all three factors are required. The first distractor, $8$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$. The mean $np$ and the variance $np(1-p)$ use the same parameters but measure different things.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$。",
+        "en": "Correct. $np(1-p) = 20 \\times 0.4 \\times 0.6 = 4.8$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$np = 8$ 是期望值 $E(X)$，不是變異數；變異數還要乘以 $(1-p)$。",
+        "en": "$np = 8$ is the expected value $E(X)$, not the variance; the variance also multiplies by $(1-p)$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\sqrt{4.8} \\approx 2.1909$ 是標準差；變異數不用開方。",
+        "en": "$\\sqrt{4.8} \\approx 2.1909$ is the standard deviation; the variance is not square-rooted."
+      },
+      {
+        "optionId": 3,
+        "zh": "$n(1-p) = 12$ 漏了因子 $p$；變異數是 $np(1-p)$。",
+        "en": "$n(1-p) = 12$ leaves out the factor $p$; the variance is $np(1-p)$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0086",
@@ -3801,7 +4461,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $X \\sim B(50, 0.2)$。求 $\\mathrm{Var}(X)$。",
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$。三個因子缺一不可。第一個干擾項 $10$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$。期望值 $np$ 與變異數 $np(1-p)$ 用同一組參數，但意義不同。",
     "options": [
       "$40$",
       "$8$",
@@ -3817,8 +4477,30 @@ export const m1AutoQuestions: Question[] = [
       "$10$",
       "$2.8284$"
     ],
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$; all three factors are required. The first distractor, $10$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$. The mean $np$ and the variance $np(1-p)$ use the same parameters but measure different things.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$n(1-p) = 40$ 漏了因子 $p$；變異數是 $np(1-p)$。",
+        "en": "$n(1-p) = 40$ leaves out the factor $p$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$。",
+        "en": "Correct. $np(1-p) = 50 \\times 0.2 \\times 0.8 = 8$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$np = 10$ 是期望值 $E(X)$，不是變異數；變異數還要乘以 $(1-p)$。",
+        "en": "$np = 10$ is the expected value $E(X)$, not the variance; the variance also multiplies by $(1-p)$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\sqrt{8} \\approx 2.8284$ 是標準差；變異數不用開方。",
+        "en": "$\\sqrt{8} \\approx 2.8284$ is the standard deviation; the variance is not square-rooted."
+      }
+    ]
   },
   {
     "id": "m1_rep_0087",
@@ -3833,7 +4515,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $X \\sim B(12, 0.25)$。求 $\\mathrm{Var}(X)$。",
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$。三個因子缺一不可。第一個干擾項 $3$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$。期望值 $np$ 與變異數 $np(1-p)$ 用同一組參數，但意義不同。",
     "options": [
       "$1.5$",
       "$9$",
@@ -3849,8 +4531,30 @@ export const m1AutoQuestions: Question[] = [
       "$2.25$",
       "$3$"
     ],
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$; all three factors are required. The first distractor, $3$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$. The mean $np$ and the variance $np(1-p)$ use the same parameters but measure different things.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\sqrt{2.25} \\approx 1.5$ 是標準差；變異數不用開方。",
+        "en": "$\\sqrt{2.25} \\approx 1.5$ is the standard deviation; the variance is not square-rooted."
+      },
+      {
+        "optionId": 1,
+        "zh": "$n(1-p) = 9$ 漏了因子 $p$；變異數是 $np(1-p)$。",
+        "en": "$n(1-p) = 9$ leaves out the factor $p$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$。",
+        "en": "Correct. $np(1-p) = 12 \\times 0.25 \\times 0.75 = 2.25$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$np = 3$ 是期望值 $E(X)$，不是變異數；變異數還要乘以 $(1-p)$。",
+        "en": "$np = 3$ is the expected value $E(X)$, not the variance; the variance also multiplies by $(1-p)$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0088",
@@ -3865,7 +4569,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $X \\sim B(80, 0.15)$。求 $\\mathrm{Var}(X)$。",
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$。三個因子缺一不可。第一個干擾項 $12$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$。期望值 $np$ 與變異數 $np(1-p)$ 用同一組參數，但意義不同。",
     "options": [
       "$12$",
       "$3.1937$",
@@ -3881,8 +4585,30 @@ export const m1AutoQuestions: Question[] = [
       "$68$",
       "$10.2$"
     ],
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$; all three factors are required. The first distractor, $12$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$. The mean $np$ and the variance $np(1-p)$ use the same parameters but measure different things.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$np = 12$ 是期望值 $E(X)$，不是變異數；變異數還要乘以 $(1-p)$。",
+        "en": "$np = 12$ is the expected value $E(X)$, not the variance; the variance also multiplies by $(1-p)$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\sqrt{10.2} \\approx 3.1937$ 是標準差；變異數不用開方。",
+        "en": "$\\sqrt{10.2} \\approx 3.1937$ is the standard deviation; the variance is not square-rooted."
+      },
+      {
+        "optionId": 2,
+        "zh": "$n(1-p) = 68$ 漏了因子 $p$；變異數是 $np(1-p)$。",
+        "en": "$n(1-p) = 68$ leaves out the factor $p$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$。",
+        "en": "Correct. $np(1-p) = 80 \\times 0.15 \\times 0.85 = 10.2$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0089",
@@ -3897,7 +4623,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $X \\sim B(30, 0.6)$。求 $\\mathrm{Var}(X)$。",
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$。三個因子缺一不可。第一個干擾項 $18$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$。期望值 $np$ 與變異數 $np(1-p)$ 用同一組參數，但意義不同。",
     "options": [
       "$7.2$",
       "$18$",
@@ -3913,8 +4639,30 @@ export const m1AutoQuestions: Question[] = [
       "$2.6833$",
       "$12$"
     ],
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$; all three factors are required. The first distractor, $18$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$. The mean $np$ and the variance $np(1-p)$ use the same parameters but measure different things.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$。",
+        "en": "Correct. $np(1-p) = 30 \\times 0.6 \\times 0.4 = 7.2$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$np = 18$ 是期望值 $E(X)$，不是變異數；變異數還要乘以 $(1-p)$。",
+        "en": "$np = 18$ is the expected value $E(X)$, not the variance; the variance also multiplies by $(1-p)$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\sqrt{7.2} \\approx 2.6833$ 是標準差；變異數不用開方。",
+        "en": "$\\sqrt{7.2} \\approx 2.6833$ is the standard deviation; the variance is not square-rooted."
+      },
+      {
+        "optionId": 3,
+        "zh": "$n(1-p) = 12$ 漏了因子 $p$；變異數是 $np(1-p)$。",
+        "en": "$n(1-p) = 12$ leaves out the factor $p$; the variance is $np(1-p)$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0090",
@@ -3929,7 +4677,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "設 $X \\sim B(45, 0.8)$。求 $\\mathrm{Var}(X)$。",
-    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$。三個因子缺一不可。第一個干擾項 $36$ 是【期望值】$E(X) = np$ —— 期望值同變異數用同一組參數但意義完全不同，混淆兩者是本題最主要的失分位。第二項開了平方根，那是標準差而非變異數。第三項把 $p$ 同 $(1-p)$ 的角色搞混，漏了其中一個因子。記法：變異數的公式一定同時出現 $p$ 同 $(1-p)$，因為它量度的是「成功與失敗兩邊的不確定性」。",
+    "explanation": "二項分佈的變異數為 $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$。期望值 $np$ 與變異數 $np(1-p)$ 用同一組參數，但意義不同。",
     "options": [
       "$9$",
       "$7.2$",
@@ -3945,8 +4693,30 @@ export const m1AutoQuestions: Question[] = [
       "$36$",
       "$2.6833$"
     ],
-    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$; all three factors are required. The first distractor, $36$, is the *expectation* $E(X) = np$ — the two use the same parameters but mean quite different things, and confusing them is the main trap. The second takes a square root, giving the standard deviation rather than the variance. The third drops one factor by muddling $p$ with $(1-p)$. As a memory aid: the variance formula always contains both $p$ and $(1-p)$, because it measures uncertainty on both the success and failure sides.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The variance of a binomial distribution is $\\mathrm{Var}(X) = np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$. The mean $np$ and the variance $np(1-p)$ use the same parameters but measure different things.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$n(1-p) = 9$ 漏了因子 $p$；變異數是 $np(1-p)$。",
+        "en": "$n(1-p) = 9$ leaves out the factor $p$; the variance is $np(1-p)$."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$。",
+        "en": "Correct. $np(1-p) = 45 \\times 0.8 \\times 0.2 = 7.2$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$np = 36$ 是期望值 $E(X)$，不是變異數；變異數還要乘以 $(1-p)$。",
+        "en": "$np = 36$ is the expected value $E(X)$, not the variance; the variance also multiplies by $(1-p)$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\sqrt{7.2} \\approx 2.6833$ 是標準差；變異數不用開方。",
+        "en": "$\\sqrt{7.2} \\approx 2.6833$ is the standard deviation; the variance is not square-rooted."
+      }
+    ]
   },
   {
     "id": "m1_rep_0091",
@@ -3961,7 +4731,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(5, 0.2)$。求 $P(X \\geq 1)$。",
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} = 1 - 0.3277 = 0.6723$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=5)$，要算 $5$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $5$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanation": "「至少一次」的反面是「一次也沒有」：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} \\approx 1 - 0.3277 = 0.6723$。用補集只需計一項。",
     "options": [
       "$0.4096$",
       "$1$",
@@ -3977,8 +4747,30 @@ export const m1AutoQuestions: Question[] = [
       "$0.6723$",
       "$0.3277$"
     ],
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} = 1 - 0.3277 = 0.6723$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=5)$ instead means $5$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $5$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The opposite of \"at least one\" is \"none\": $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.2)^{5} \\approx 1 - 0.3277 = 0.6723$. The complement needs only one term.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$0.4096$ 是 $P(X = 1)$，只計了恰好一次；「至少一次」還包括兩次或以上。",
+        "en": "$0.4096$ is $P(X = 1)$, exactly one success; \"at least one\" also includes two or more."
+      },
+      {
+        "optionId": 1,
+        "zh": "$np = 1$ 是期望值（次數），不是概率。",
+        "en": "$np = 1$ is the expected number of successes, not a probability."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$1 - P(X = 0) = 1 - (0.8)^{5} \\approx 0.6723$。",
+        "en": "Correct. $1 - P(X = 0) = 1 - (0.8)^{5} \\approx 0.6723$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$(0.8)^{5} \\approx 0.3277$ 是 $P(X = 0)$，即一次也沒有成功；題目問的是它的補集。",
+        "en": "$(0.8)^{5} \\approx 0.3277$ is $P(X = 0)$, no success at all; the question asks for its complement."
+      }
+    ]
   },
   {
     "id": "m1_rep_0092",
@@ -3993,7 +4785,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(4, 0.5)$。求 $P(X \\geq 1)$。",
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} = 1 - 0.0625 = 0.9375$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=4)$，要算 $4$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $4$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanation": "「至少一次」的反面是「一次也沒有」：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} \\approx 1 - 0.0625 = 0.9375$。用補集只需計一項。",
     "options": [
       "$0.0625$",
       "$0.25$",
@@ -4009,8 +4801,30 @@ export const m1AutoQuestions: Question[] = [
       "$2$",
       "$0.9375$"
     ],
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} = 1 - 0.0625 = 0.9375$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=4)$ instead means $4$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $4$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The opposite of \"at least one\" is \"none\": $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.5)^{4} \\approx 1 - 0.0625 = 0.9375$. The complement needs only one term.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$(0.5)^{4} \\approx 0.0625$ 是 $P(X = 0)$，即一次也沒有成功；題目問的是它的補集。",
+        "en": "$(0.5)^{4} \\approx 0.0625$ is $P(X = 0)$, no success at all; the question asks for its complement."
+      },
+      {
+        "optionId": 1,
+        "zh": "$0.25$ 是 $P(X = 1)$，只計了恰好一次；「至少一次」還包括兩次或以上。",
+        "en": "$0.25$ is $P(X = 1)$, exactly one success; \"at least one\" also includes two or more."
+      },
+      {
+        "optionId": 2,
+        "zh": "$np = 2$ 是期望值（次數），不是概率。",
+        "en": "$np = 2$ is the expected number of successes, not a probability."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$1 - P(X = 0) = 1 - (0.5)^{4} \\approx 0.9375$。",
+        "en": "Correct. $1 - P(X = 0) = 1 - (0.5)^{4} \\approx 0.9375$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0093",
@@ -4025,7 +4839,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(6, 0.1)$。求 $P(X \\geq 1)$。",
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} = 1 - 0.5314 = 0.4686$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=6)$，要算 $6$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $6$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanation": "「至少一次」的反面是「一次也沒有」：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} \\approx 1 - 0.5314 = 0.4686$。用補集只需計一項。",
     "options": [
       "$0.4686$",
       "$0.5314$",
@@ -4041,8 +4855,30 @@ export const m1AutoQuestions: Question[] = [
       "$0.3543$",
       "$0.6$"
     ],
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} = 1 - 0.5314 = 0.4686$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=6)$ instead means $6$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $6$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The opposite of \"at least one\" is \"none\": $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.1)^{6} \\approx 1 - 0.5314 = 0.4686$. The complement needs only one term.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$1 - P(X = 0) = 1 - (0.9)^{6} \\approx 0.4686$。",
+        "en": "Correct. $1 - P(X = 0) = 1 - (0.9)^{6} \\approx 0.4686$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$(0.9)^{6} \\approx 0.5314$ 是 $P(X = 0)$，即一次也沒有成功；題目問的是它的補集。",
+        "en": "$(0.9)^{6} \\approx 0.5314$ is $P(X = 0)$, no success at all; the question asks for its complement."
+      },
+      {
+        "optionId": 2,
+        "zh": "$0.3543$ 是 $P(X = 1)$，只計了恰好一次；「至少一次」還包括兩次或以上。",
+        "en": "$0.3543$ is $P(X = 1)$, exactly one success; \"at least one\" also includes two or more."
+      },
+      {
+        "optionId": 3,
+        "zh": "$np = 0.6$ 是期望值（次數），不是概率。",
+        "en": "$np = 0.6$ is the expected number of successes, not a probability."
+      }
+    ]
   },
   {
     "id": "m1_rep_0094",
@@ -4057,7 +4893,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設 $X \\sim B(3, 0.4)$。求 $P(X \\geq 1)$。",
-    "explanation": "「至少一次」的反面是「一次也沒有」，用補集算最快：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} = 1 - 0.216 = 0.784$。若逐項相加 $P(X=1) + P(X=2) + \\cdots + P(X=3)$，要算 $3$ 項，既慢又易漏。第一個干擾項答了 $P(X = 0)$ 本身，即補集而非題目所問。第二項只算了 $P(X = 1)$ —— 「至少一次」包括一次、兩次…以至 $3$ 次，不止一次。第三項答了期望值 $np$，那是次數不是概率，而且可以大過 $1$，僅憑這一點就應該排除。",
+    "explanation": "「至少一次」的反面是「一次也沒有」：$P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} \\approx 1 - 0.216 = 0.784$。用補集只需計一項。",
     "options": [
       "$1.2$",
       "$0.784$",
@@ -4073,8 +4909,30 @@ export const m1AutoQuestions: Question[] = [
       "$0.216$",
       "$0.432$"
     ],
-    "explanationEn": "The complement of \"at least one\" is \"none at all\", which is far quicker: $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} = 1 - 0.216 = 0.784$. Summing $P(X=1) + P(X=2) + \\cdots + P(X=3)$ instead means $3$ separate terms, slower and easy to leave one out. The first distractor gives $P(X = 0)$, the complement rather than the answer. The second gives only $P(X = 1)$ — \"at least one\" also covers two, three and so on up to $3$. The third gives the expectation $np$, which counts occurrences rather than probability and can exceed $1$, ruling it out on that ground alone.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The opposite of \"at least one\" is \"none\": $P(X \\geq 1) = 1 - P(X = 0) = 1 - (1 - 0.4)^{3} \\approx 1 - 0.216 = 0.784$. The complement needs only one term.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$np = 1.2$ 是期望值（次數），不是概率。",
+        "en": "$np = 1.2$ is the expected number of successes, not a probability."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$1 - P(X = 0) = 1 - (0.6)^{3} \\approx 0.784$。",
+        "en": "Correct. $1 - P(X = 0) = 1 - (0.6)^{3} \\approx 0.784$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$(0.6)^{3} \\approx 0.216$ 是 $P(X = 0)$，即一次也沒有成功；題目問的是它的補集。",
+        "en": "$(0.6)^{3} \\approx 0.216$ is $P(X = 0)$, no success at all; the question asks for its complement."
+      },
+      {
+        "optionId": 3,
+        "zh": "$0.432$ 是 $P(X = 1)$，只計了恰好一次；「至少一次」還包括兩次或以上。",
+        "en": "$0.432$ is $P(X = 1)$, exactly one success; \"at least one\" also includes two or more."
+      }
+    ]
   },
   {
     "id": "m1_rep_0099",
@@ -4089,7 +4947,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某總體的標準差為 $12$。現從中隨機抽取一個大小為 $36$ 的樣本。\n\n求樣本平均數的標準差（標準誤）。",
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$。樣本越大，樣本平均數越集中；但標準誤隨樣本量的平方根下降，所以樣本量要增至四倍，標準誤才減半。",
     "options": [
       "$0.3333$",
       "$72$",
@@ -4105,8 +4963,30 @@ export const m1AutoQuestions: Question[] = [
       "$2$",
       "$12$"
     ],
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$. Larger samples give a more concentrated mean, but the standard error falls with the square root of the sample size: four times the sample halves it.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$\\dfrac{12}{36} \\approx 0.3333$ 除以了 $n$，應除以 $\\sqrt{n}$。",
+        "en": "$\\dfrac{12}{36} \\approx 0.3333$ divides by $n$; it should be $\\sqrt{n}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$12 \\times \\sqrt{36} = 72$ 把除號當成乘號；樣本越大，標準誤應該越小。",
+        "en": "$12 \\times \\sqrt{36} = 72$ multiplies instead of dividing; a larger sample should give a smaller standard error."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。$\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$。",
+        "en": "Correct. $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{12}{\\sqrt{36}} = \\dfrac{12}{6} = 2$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$12$ 是總體的標準差；樣本平均數的波動較小，要除以 $\\sqrt{n}$。",
+        "en": "$12$ is the population standard deviation; the sample mean varies less, so divide by $\\sqrt{n}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0100",
@@ -4121,7 +5001,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某總體的標準差為 $20$。現從中隨機抽取一個大小為 $100$ 的樣本。\n\n求樣本平均數的標準差（標準誤）。",
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$。樣本越大，樣本平均數越集中；但標準誤隨樣本量的平方根下降，所以樣本量要增至四倍，標準誤才減半。",
     "options": [
       "$20$",
       "$0.2$",
@@ -4137,8 +5017,30 @@ export const m1AutoQuestions: Question[] = [
       "$200$",
       "$2$"
     ],
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$. Larger samples give a more concentrated mean, but the standard error falls with the square root of the sample size: four times the sample halves it.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$20$ 是總體的標準差；樣本平均數的波動較小，要除以 $\\sqrt{n}$。",
+        "en": "$20$ is the population standard deviation; the sample mean varies less, so divide by $\\sqrt{n}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$\\dfrac{20}{100} \\approx 0.2$ 除以了 $n$，應除以 $\\sqrt{n}$。",
+        "en": "$\\dfrac{20}{100} \\approx 0.2$ divides by $n$; it should be $\\sqrt{n}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$20 \\times \\sqrt{100} = 200$ 把除號當成乘號；樣本越大，標準誤應該越小。",
+        "en": "$20 \\times \\sqrt{100} = 200$ multiplies instead of dividing; a larger sample should give a smaller standard error."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。$\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$。",
+        "en": "Correct. $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{20}{\\sqrt{100}} = \\dfrac{20}{10} = 2$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0101",
@@ -4153,7 +5055,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某總體的標準差為 $15$。現從中隨機抽取一個大小為 $25$ 的樣本。\n\n求樣本平均數的標準差（標準誤）。",
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$。樣本越大，樣本平均數越集中；但標準誤隨樣本量的平方根下降，所以樣本量要增至四倍，標準誤才減半。",
     "options": [
       "$3$",
       "$15$",
@@ -4169,8 +5071,30 @@ export const m1AutoQuestions: Question[] = [
       "$0.6$",
       "$75$"
     ],
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$. Larger samples give a more concentrated mean, but the standard error falls with the square root of the sample size: four times the sample halves it.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。$\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$。",
+        "en": "Correct. $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{15}{\\sqrt{25}} = \\dfrac{15}{5} = 3$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$15$ 是總體的標準差；樣本平均數的波動較小，要除以 $\\sqrt{n}$。",
+        "en": "$15$ is the population standard deviation; the sample mean varies less, so divide by $\\sqrt{n}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$\\dfrac{15}{25} \\approx 0.6$ 除以了 $n$，應除以 $\\sqrt{n}$。",
+        "en": "$\\dfrac{15}{25} \\approx 0.6$ divides by $n$; it should be $\\sqrt{n}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$15 \\times \\sqrt{25} = 75$ 把除號當成乘號；樣本越大，標準誤應該越小。",
+        "en": "$15 \\times \\sqrt{25} = 75$ multiplies instead of dividing; a larger sample should give a smaller standard error."
+      }
+    ]
   },
   {
     "id": "m1_rep_0102",
@@ -4185,7 +5109,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "某總體的標準差為 $8$。現從中隨機抽取一個大小為 $64$ 的樣本。\n\n求樣本平均數的標準差（標準誤）。",
-    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$。意義是：樣本越大，樣本平均數就越集中在總體平均值附近，故標準誤越細 —— 但它隨【樣本量的平方根】下降，不是隨樣本量本身下降，所以樣本量要加大四倍，標準誤才減半。第一個干擾項照抄總體標準差，忽略了抽樣會令平均數的波動變細。第二項除以 $n$ 而非 $\\sqrt{n}$，令標準誤下降得太快。第三項把除號當成乘號，方向完全相反 —— 樣本越大反而波動越大，明顯不合理。",
+    "explanation": "樣本平均數的標準差為 $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$。樣本越大，樣本平均數越集中；但標準誤隨樣本量的平方根下降，所以樣本量要增至四倍，標準誤才減半。",
     "options": [
       "$64$",
       "$1$",
@@ -4201,8 +5125,30 @@ export const m1AutoQuestions: Question[] = [
       "$8$",
       "$0.125$"
     ],
-    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$. The meaning: larger samples cluster more tightly around the population mean, so the standard error shrinks — but it shrinks with the *square root* of the sample size, not the size itself, so quadrupling the sample only halves the standard error. The first distractor reuses the population standard deviation and ignores that averaging reduces variability. The second divides by $n$ rather than $\\sqrt{n}$, shrinking it far too fast. The third multiplies instead of dividing, which would make larger samples *more* variable — clearly wrong.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The standard deviation of the sample mean is $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$. Larger samples give a more concentrated mean, but the standard error falls with the square root of the sample size: four times the sample halves it.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$8 \\times \\sqrt{64} = 64$ 把除號當成乘號；樣本越大，標準誤應該越小。",
+        "en": "$8 \\times \\sqrt{64} = 64$ multiplies instead of dividing; a larger sample should give a smaller standard error."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。$\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$。",
+        "en": "Correct. $\\dfrac{\\sigma}{\\sqrt{n}} = \\dfrac{8}{\\sqrt{64}} = \\dfrac{8}{8} = 1$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$8$ 是總體的標準差；樣本平均數的波動較小，要除以 $\\sqrt{n}$。",
+        "en": "$8$ is the population standard deviation; the sample mean varies less, so divide by $\\sqrt{n}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$\\dfrac{8}{64} \\approx 0.125$ 除以了 $n$，應除以 $\\sqrt{n}$。",
+        "en": "$\\dfrac{8}{64} \\approx 0.125$ divides by $n$; it should be $\\sqrt{n}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0095",
@@ -4217,7 +5163,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $(2x + 1)^{4}$ 展開式中【所有係數之和】。",
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 1)^{4} = 3^{4} = 81$ —— 完全不需展開。第一個干擾項 $17$ 把指數分別作用到兩項之上，但 $(u+v)^{4} \\neq u^{4} + v^{4}$，這是代數上最常見的錯誤展開。$16$ 是 $(1+x)^{4}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{4}$。$12$ 把乘方誤作乘法。",
+    "explanation": "展開式對任何 $x$ 都成立。代入 $x = 1$，每一項的 $x^{k}$ 都變成 $1$，剩下的就是所有係數之和：$(2 \\times 1 + 1)^{4} = 3^{4} = 81$，毋須展開。",
     "options": [
       "$16$",
       "$12$",
@@ -4233,8 +5179,30 @@ export const m1AutoQuestions: Question[] = [
       "$81$",
       "$17$"
     ],
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 1)^{4} = 3^{4} = 81$ — no expansion needed at all. The first distractor, $17$, applies the power to each term separately, but $(u+v)^{4} \\neq u^{4} + v^{4}$ — the commonest false expansion in algebra. $16$ is the coefficient sum for $(1+x)^{4}$, a formula that holds only when both terms are $1$. $12$ mistakes exponentiation for multiplication.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The expansion holds for every $x$. Putting $x = 1$ turns each $x^{k}$ into $1$, leaving the sum of all coefficients: $(2 \\times 1 + 1)^{4} = 3^{4} = 81$, with no expanding needed.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$2^{4} = 16$ 是 $(x + 1)^{4}$ 的係數之和，即把兩個係數都當成 $1$。",
+        "en": "$2^{4} = 16$ is the coefficient sum of $(x + 1)^{4}$, as if both coefficients were $1$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$(2 + 1) \\times 4 = 12$：把乘方當成乘法。",
+        "en": "$(2 + 1) \\times 4 = 12$ treats the power as a multiplication."
+      },
+      {
+        "optionId": 2,
+        "zh": "正確。代入 $x = 1$：$(2 + 1)^{4} = 81$。",
+        "en": "Correct. Put $x = 1$: $(2 + 1)^{4} = 81$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$2^{4} + 1^{4} = 17$：把指數分別作用在兩項上，但 $(u + v)^{4} \\neq u^{4} + v^{4}$。",
+        "en": "$2^{4} + 1^{4} = 17$ applies the power to each term separately, but $(u + v)^{4} \\neq u^{4} + v^{4}$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0096",
@@ -4249,7 +5217,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $(2x + 5)^{3}$ 展開式中【所有係數之和】。",
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 5)^{3} = 7^{3} = 343$ —— 完全不需展開。第一個干擾項 $133$ 把指數分別作用到兩項之上，但 $(u+v)^{3} \\neq u^{3} + v^{3}$，這是代數上最常見的錯誤展開。$8$ 是 $(1+x)^{3}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{3}$。$21$ 把乘方誤作乘法。",
+    "explanation": "展開式對任何 $x$ 都成立。代入 $x = 1$，每一項的 $x^{k}$ 都變成 $1$，剩下的就是所有係數之和：$(2 \\times 1 + 5)^{3} = 7^{3} = 343$，毋須展開。",
     "options": [
       "$133$",
       "$8$",
@@ -4265,8 +5233,30 @@ export const m1AutoQuestions: Question[] = [
       "$21$",
       "$343$"
     ],
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 5)^{3} = 7^{3} = 343$ — no expansion needed at all. The first distractor, $133$, applies the power to each term separately, but $(u+v)^{3} \\neq u^{3} + v^{3}$ — the commonest false expansion in algebra. $8$ is the coefficient sum for $(1+x)^{3}$, a formula that holds only when both terms are $1$. $21$ mistakes exponentiation for multiplication.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The expansion holds for every $x$. Putting $x = 1$ turns each $x^{k}$ into $1$, leaving the sum of all coefficients: $(2 \\times 1 + 5)^{3} = 7^{3} = 343$, with no expanding needed.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$2^{3} + 5^{3} = 133$：把指數分別作用在兩項上，但 $(u + v)^{3} \\neq u^{3} + v^{3}$。",
+        "en": "$2^{3} + 5^{3} = 133$ applies the power to each term separately, but $(u + v)^{3} \\neq u^{3} + v^{3}$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$2^{3} = 8$ 是 $(x + 1)^{3}$ 的係數之和，即把兩個係數都當成 $1$。",
+        "en": "$2^{3} = 8$ is the coefficient sum of $(x + 1)^{3}$, as if both coefficients were $1$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$(2 + 5) \\times 3 = 21$：把乘方當成乘法。",
+        "en": "$(2 + 5) \\times 3 = 21$ treats the power as a multiplication."
+      },
+      {
+        "optionId": 3,
+        "zh": "正確。代入 $x = 1$：$(2 + 5)^{3} = 343$。",
+        "en": "Correct. Put $x = 1$: $(2 + 5)^{3} = 343$."
+      }
+    ]
   },
   {
     "id": "m1_rep_0097",
@@ -4281,7 +5271,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $(3x + 2)^{3}$ 展開式中【所有係數之和】。",
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(3 \\times 1 + 2)^{3} = 5^{3} = 125$ —— 完全不需展開。第一個干擾項 $35$ 把指數分別作用到兩項之上，但 $(u+v)^{3} \\neq u^{3} + v^{3}$，這是代數上最常見的錯誤展開。$8$ 是 $(1+x)^{3}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{3}$。$15$ 把乘方誤作乘法。",
+    "explanation": "展開式對任何 $x$ 都成立。代入 $x = 1$，每一項的 $x^{k}$ 都變成 $1$，剩下的就是所有係數之和：$(3 \\times 1 + 2)^{3} = 5^{3} = 125$，毋須展開。",
     "options": [
       "$125$",
       "$35$",
@@ -4297,8 +5287,30 @@ export const m1AutoQuestions: Question[] = [
       "$8$",
       "$15$"
     ],
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(3 \\times 1 + 2)^{3} = 5^{3} = 125$ — no expansion needed at all. The first distractor, $35$, applies the power to each term separately, but $(u+v)^{3} \\neq u^{3} + v^{3}$ — the commonest false expansion in algebra. $8$ is the coefficient sum for $(1+x)^{3}$, a formula that holds only when both terms are $1$. $15$ mistakes exponentiation for multiplication.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The expansion holds for every $x$. Putting $x = 1$ turns each $x^{k}$ into $1$, leaving the sum of all coefficients: $(3 \\times 1 + 2)^{3} = 5^{3} = 125$, with no expanding needed.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "正確。代入 $x = 1$：$(3 + 2)^{3} = 125$。",
+        "en": "Correct. Put $x = 1$: $(3 + 2)^{3} = 125$."
+      },
+      {
+        "optionId": 1,
+        "zh": "$3^{3} + 2^{3} = 35$：把指數分別作用在兩項上，但 $(u + v)^{3} \\neq u^{3} + v^{3}$。",
+        "en": "$3^{3} + 2^{3} = 35$ applies the power to each term separately, but $(u + v)^{3} \\neq u^{3} + v^{3}$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$2^{3} = 8$ 是 $(x + 1)^{3}$ 的係數之和，即把兩個係數都當成 $1$。",
+        "en": "$2^{3} = 8$ is the coefficient sum of $(x + 1)^{3}$, as if both coefficients were $1$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$(3 + 2) \\times 3 = 15$：把乘方當成乘法。",
+        "en": "$(3 + 2) \\times 3 = 15$ treats the power as a multiplication."
+      }
+    ]
   },
   {
     "id": "m1_rep_0098",
@@ -4313,7 +5325,7 @@ export const m1AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "求 $(2x + 3)^{4}$ 展開式中【所有係數之和】。",
-    "explanation": "展開式是一條【恆等式】，對任何 $x$ 都成立。把每一項寫成 $c_k x^{k}$，代入 $x = 1$ 之後每個 $x^{k}$ 都變成 $1$，剩下的正好就是所有係數之和。故只需代 $x = 1$：$(2 \\times 1 + 3)^{4} = 5^{4} = 625$ —— 完全不需展開。第一個干擾項 $97$ 把指數分別作用到兩項之上，但 $(u+v)^{4} \\neq u^{4} + v^{4}$，這是代數上最常見的錯誤展開。$16$ 是 $(1+x)^{4}$ 的係數之和，套錯了公式 —— 只有當兩項都是 $1$ 時才等於 $2^{4}$。$20$ 把乘方誤作乘法。",
+    "explanation": "展開式對任何 $x$ 都成立。代入 $x = 1$，每一項的 $x^{k}$ 都變成 $1$，剩下的就是所有係數之和：$(2 \\times 1 + 3)^{4} = 5^{4} = 625$，毋須展開。",
     "options": [
       "$20$",
       "$625$",
@@ -4329,7 +5341,29 @@ export const m1AutoQuestions: Question[] = [
       "$97$",
       "$16$"
     ],
-    "explanationEn": "A binomial expansion is an *identity*, valid for every $x$. Writing each term as $c_k x^{k}$ and substituting $x = 1$ turns every $x^{k}$ into $1$, leaving exactly the sum of the coefficients. So simply put $x = 1$: $(2 \\times 1 + 3)^{4} = 5^{4} = 625$ — no expansion needed at all. The first distractor, $97$, applies the power to each term separately, but $(u+v)^{4} \\neq u^{4} + v^{4}$ — the commonest false expansion in algebra. $16$ is the coefficient sum for $(1+x)^{4}$, a formula that holds only when both terms are $1$. $20$ mistakes exponentiation for multiplication.",
-    "frameworkEn": "Auto-gated"
+    "explanationEn": "The expansion holds for every $x$. Putting $x = 1$ turns each $x^{k}$ into $1$, leaving the sum of all coefficients: $(2 \\times 1 + 3)^{4} = 5^{4} = 625$, with no expanding needed.",
+    "frameworkEn": "Auto-gated",
+    "optionNotes": [
+      {
+        "optionId": 0,
+        "zh": "$(2 + 3) \\times 4 = 20$：把乘方當成乘法。",
+        "en": "$(2 + 3) \\times 4 = 20$ treats the power as a multiplication."
+      },
+      {
+        "optionId": 1,
+        "zh": "正確。代入 $x = 1$：$(2 + 3)^{4} = 625$。",
+        "en": "Correct. Put $x = 1$: $(2 + 3)^{4} = 625$."
+      },
+      {
+        "optionId": 2,
+        "zh": "$2^{4} + 3^{4} = 97$：把指數分別作用在兩項上，但 $(u + v)^{4} \\neq u^{4} + v^{4}$。",
+        "en": "$2^{4} + 3^{4} = 97$ applies the power to each term separately, but $(u + v)^{4} \\neq u^{4} + v^{4}$."
+      },
+      {
+        "optionId": 3,
+        "zh": "$2^{4} = 16$ 是 $(x + 1)^{4}$ 的係數之和，即把兩個係數都當成 $1$。",
+        "en": "$2^{4} = 16$ is the coefficient sum of $(x + 1)^{4}$, as if both coefficients were $1$."
+      }
+    ]
   }
 ]
