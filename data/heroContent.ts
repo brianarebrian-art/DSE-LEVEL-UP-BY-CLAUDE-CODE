@@ -8,7 +8,9 @@ import type { Season } from '@/utils/season'
 // 主識別（badge／主標題／副標題／主 CTA）四項全年統一，六季一致：
 //   badge         📚 DSE LEVEL UP · 掌握邏輯
 //   headline      掌握邏輯，唔係背答案
-//   subhead       無論數字點變，你都識答。DSE 戰場上，你唔係一個人。
+//   subhead       同一類題換咗數字再練，練到識答為止。DSE 戰場上，你唔係一個人。
+//                 （2026-10-08 創辦人回覆 47a：原句「無論數字點變，你都識答」承諾學習效果，
+//                 但沒有數據支持，改為描述練習方法。）
 //   主 CTA        開始練習 → /subjects
 // 「掌握邏輯，唔係背答案」本身即憲章 §9 核心金句，亦已見於 layout.tsx 的 SEO
 // meta，故此更動令首頁與全站主張一致。
@@ -41,8 +43,8 @@ function championCore(en: boolean) {
     headline1: en ? 'Master the logic,' : '掌握邏輯',
     headline2: en ? 'not the answers' : '唔係背答案',
     subhead: en
-      ? "However the numbers change, you'll still know the answer. You are not alone on the DSE battlefield."
-      : '無論數字點變，你都識答。DSE 戰場上，你唔係一個人。',
+      ? 'Practise the same kind of question with new numbers until you can solve it. You are not alone on the DSE battlefield.'
+      : '同一類題換咗數字再練，練到識答為止。DSE 戰場上，你唔係一個人。',
     ctaStartLabel: en ? 'Start practising' : '開始練習',
     // 全科入口。注意路由為複數 `/subjects`（app/subjects/），單數 `/subject` 不存在。
     ctaStartHref: '/subjects',

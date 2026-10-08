@@ -138,8 +138,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report or answer the two questions after a practice set, we receive only what you picked, and cannot tell who sent it; see “Reporting a problem with a question” and “Two questions after practice” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
-            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，或者答做完練習嗰兩條問題，我哋只收到你揀嘅答案，認唔出係邊個送嘅，見下面「報告題目問題」同「做完練習嘅兩條問題」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report or answer the two questions after a practice set, we receive only what you picked, and cannot tell who sent it; see “Reporting a problem with a question” and “Two questions after practice” below.) (We also count how many practice sets start and finish each day, as totals only; see “Counting practice sets” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
+            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，或者答做完練習嗰兩條問題，我哋只收到你揀嘅答案，認唔出係邊個送嘅，見下面「報告題目問題」同「做完練習嘅兩條問題」。）（我哋亦會數每日有幾多節練習開始同做完，只存總數，見下面「數練習次數」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
         </p>
       </Section>
 
@@ -169,8 +169,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <ul className="ml-4 list-disc space-y-1">
           <li>
             {en
-              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, along with question reports and the answers to the two questions after practice.'
-              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定、題目問題報告，同埋做完練習嗰兩條問題嘅答案，就放喺度。'}
+              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, along with question reports, the answers to the two questions after practice, and the daily totals of practice sets started and finished.'
+              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定、題目問題報告、做完練習嗰兩條問題嘅答案，同埋每日練習開始同做完嘅總數，就放喺度。'}
           </li>
           <li>
             {en ? 'Vercel — this is where the website itself is hosted and served from.' : 'Vercel —— 個網站本身就係喺度寄存同發送。'}
@@ -203,6 +203,15 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
           {en
             ? 'After a practice set, the result page asks two questions you can skip: whether any of the questions looked wrong, and whether you will use the site again. If you answer, we receive the subject, the question, the answer you picked, and whether you use the site in Chinese or English, plus the time it arrived. We do not record your account, IP address or device, and the two answers are not linked to each other, so they cannot be traced back to you. We use them only to see whether the questions and the site are working for students.'
             : '做完一節練習，結果頁會問兩條可以唔答嘅問題：你覺得有冇題目出錯，同埋你會唔會再用呢度。如果你答，我哋只會收到：科目、邊條問題、你揀嘅答案、你用緊中文定英文介面，加上收到嘅時間。唔會記低你嘅帳戶、IP 位址或者裝置，兩條答案亦唔會連埋一齊，所以認唔出係邊個答。我哋只會用嚟睇吓題目同網站對學生有冇用。'}
+        </p>
+      </Section>
+
+      {/* 2026-10-08（創辦人回覆 40a、42a、43a）：匿名練習計數，只存每日每科總數（migration 0023）。 */}
+      <Section title={en ? 'Counting practice sets' : '數練習次數'}>
+        <p>
+          {en
+            ? 'We count how many practice sets start and how many finish each day in each subject, to see whether students finish a set and whether they practise again. When you start or finish a set, the site sends: the subject, whether it is a start or a finish, whether you started it from the “practise again” links on the result page, and how many questions a finished set had. We do not record your account, IP address, device, the time, the questions or your answers. The database keeps only each day’s totals per subject, not one record per set, so it cannot show what any one person did. These numbers are never shown to students anywhere on the site. This is the same whether or not you are signed in. This section was added on 8 October 2026.'
+            : '我哋會數每日每科有幾多節練習開始、幾多節做完，用嚟睇吓學生有冇做完一節、有冇再練。你開始或者做完一節，網站會送出：科目、係開始定做完、係咪由結果頁嘅「再練」連結開始，同埋做完嗰節有幾多題。唔會記低你嘅帳戶、IP 位址、裝置、時間、題目或者答案。資料庫只存每日每科嘅總數，唔係每節一條紀錄，所以睇唔出任何一個人做過咩。呢啲數字唔會喺網站任何地方顯示畀學生睇。登入定未登入都一樣。本節於 2026 年 10 月 8 日加入。'}
         </p>
       </Section>
 

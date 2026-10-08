@@ -35,8 +35,8 @@ export const subjects: SubjectMeta[] = [
     priority: 'P0',
     hasMC: true,
     isActive: true,
-    description: '二次方程、函數、數列、坐標幾何、概率與統計。逐類題型拆解考核重點，數字換了也懂得解。',
-    descriptionEn: 'Quadratics, functions, sequences, coordinate geometry, probability and statistics. Each question type is broken down so you can solve it whatever the numbers.',
+    description: '二次方程、函數、數列、坐標幾何、概率與統計。逐類題型拆解考核重點，換了數字可以再練。',
+    descriptionEn: 'Quadratics, functions, sequences, coordinate geometry, probability and statistics. Each question type is broken down, with new numbers to practise on.',
     accent: 'sage',
   },
   {

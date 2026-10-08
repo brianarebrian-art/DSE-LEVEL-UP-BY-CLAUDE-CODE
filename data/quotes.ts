@@ -10,7 +10,7 @@ export interface Quote {
 }
 
 export const quotes: Quote[] = [
-  { id: 1, zh: '掌握邏輯，唔係背答案。無論數字點變，你都識答。', en: 'Master the logic, not the answer. However the numbers change, you can still answer.' },
+  { id: 1, zh: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。', en: 'Master the logic, not the answers. Practise the same kind of question with new numbers until you can solve it.' },
   { id: 2, zh: '今日能打開嚟已經好叻。', en: 'Just showing up today already takes courage.' },
   { id: 3, zh: '每個錯誤都係一個新盲點，搵到就贏一半。', en: 'Every mistake is a new blind spot — finding it is half the battle.' },
   { id: 4, zh: '你唔係一個人溫書，我哋一齊行呢條路。', en: "You're not revising alone — we walk this road together." },

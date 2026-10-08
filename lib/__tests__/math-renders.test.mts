@@ -84,3 +84,13 @@ test('every formula in every question bank can be drawn', () => {
   assert.ok(questions > 20000, `only ${questions} questions scanned; the scan went blind`)
   assert.deepEqual(bad, [], `${bad.length} formula(s) cannot be drawn:\n  ${bad.slice(0, 20).join('\n  ')}`)
 })
+
+// Founders' reply 48a (2026-10-08): a copied formula carries its LaTeX source ("$5$"), not the
+// visible text plus the screen-reader text ("55"). KaTeX's copy-tex listens on `document`, so it
+// must be loaded in the browser only: a top-level import would run during server rendering.
+test('MathText loads KaTeX copy-tex in the browser only', () => {
+  const src = readFileSync(`${ROOT}components/MathText.tsx`, 'utf8')
+  assert.match(src, /void import\('katex\/contrib\/copy-tex'\)/, 'loaded with a dynamic import')
+  assert.match(src, /useEffect\(loadCopyTex, \[\]\)/, 'from an effect, after the page is in the browser')
+  assert.doesNotMatch(src, /^import .*copy-tex/m, 'never a top-level import')
+})

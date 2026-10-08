@@ -57,7 +57,7 @@ const DailyStatsCard = forwardRef<HTMLDivElement, { data: DailyStatsCardData; en
         {/* 品牌 */}
         <div style={{ textAlign: 'center', zIndex: 1 }}>
           <div style={{ fontSize: 52, fontWeight: 700, color: C.cyan, textShadow: '0 0 40px rgba(0,245,212,0.35)' }}>DSE LEVEL UP</div>
-          <div style={{ fontSize: 22, color: C.sub, marginTop: 8 }}>{en ? 'Final 30 days — not just studying, scoring.' : '最後 30 日，唔係溫書，係搶分'}</div>
+          <div style={{ fontSize: 22, color: C.sub, marginTop: 8 }}>{en ? 'Not cramming — scoring.' : '唔係死溫，係搶分'}</div>
         </div>
 
         <div style={{ width: '100%', height: 1, background: 'rgba(255,255,255,0.06)', margin: '28px 0 20px' }} />

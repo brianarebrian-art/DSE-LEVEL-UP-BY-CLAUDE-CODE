@@ -7,13 +7,14 @@
 // IP, device, time of day, question or answer, and the table keeps running totals, not
 // one row per event (supabase/migrations/0023_practice_counts.sql).
 //
-// PRACTICE_COUNTS_ENABLED stays false until three things are done together: the founders
-// approve applying the migration to the production database, the privacy page describes
-// the counts, and its POLICY_VERSION question is settled. While false, the practice page
-// sends nothing and the route stores nothing (lib/__tests__/practice-count.test.mts).
+// Switched on 2026-10-08 together with the privacy page section 「數練習次數」 and
+// POLICY_VERSION 2026-10-08.v1 (founders' replies 42a, 44a); migration 0023 applied the
+// same day. Opening an explanation is not counted (reply 43a). Turning this off makes
+// the practice page send nothing and the route store nothing
+// (lib/__tests__/practice-count.test.mts).
 import { getSubject } from '@/data/subjects'
 
-export const PRACTICE_COUNTS_ENABLED = false
+export const PRACTICE_COUNTS_ENABLED = true
 
 export const PRACTICE_EVENTS = ['started', 'completed'] as const
 export type PracticeEvent = (typeof PRACTICE_EVENTS)[number]

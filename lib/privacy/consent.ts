@@ -46,8 +46,12 @@
  * 寫明亦記錄當日首次開啟時間（user_sessions.first_seen）；打氣牆資料的實際刪除日期
  * （2026-09-09）；刪帳號涉及的表由 7 改為 5。練習答錯的題重新記錄（不問錯因，創辦人回覆 7a），
  * 錯題紀錄的說明跟住改。並會加入完卷意見問卷（創辦人回覆 5a）。
+ *
+ * 2026-10-08.v1 —— 新增「數練習次數」：每日每科練習開始及完成的總數（不記帳戶、IP、裝置、
+ * 時間、題目或答案；migration 0023）。創辦人 2026-10-08 回覆 40a、42a（按現有規則 bump，
+ * 登入學生會再見一次同意視窗）、43a（不數打開解析）。屬新增採集類別，所以 bump。
  */
-export const POLICY_VERSION = '2026-10-04.v2'
+export const POLICY_VERSION = '2026-10-08.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'
