@@ -47,6 +47,11 @@ function reasonLabel(code: string, en: boolean): string {
       return en ? 'The explanation points at an option by its position' : '解析用位置講選項，洗牌之後會指錯'
     case 'IMPOSSIBLE_PREMISE':
       return en ? 'The question’s set-up is scientifically wrong' : '題目設定唔符合科學事實'
+    // Founders' reply 55a (2026-10-09): their sentence, word for word.
+    case 'PURE_RECALL':
+      return en
+        ? 'Could be answered by recalling a name, definition or year alone, which does not fit this site’s focus on understanding and reasoning; replaced by an applied question'
+        : '題目只需背誦名稱、定義或年份即可作答，不符合本平台重理解、重推理的方向；已由情境應用題取代'
     default:
       return en ? 'A fault was found in the question' : '題目發現有錯'
   }

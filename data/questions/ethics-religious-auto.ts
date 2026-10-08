@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : ethics-religious
-//   count    : 29  (easy 29 / medium 0 / hard 0)
-//   types    : mc 29 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 32  (easy 31 / medium 1 / hard 0)
+//   types    : mc 32 / text 0 / long 0
+//   updated  : 2026-10-08
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -939,5 +939,101 @@ export const ethicsReligiousAutoQuestions: Question[] = [
     ],
     "explanationEn": "News value favours the rare and the conflictual, so religious coverage tends to over-represent extreme cases and invites readers to infer the whole from a few. Checking whether the sources include voices from within the tradition is the most direct correction. Note that the last option is textbook confirmation bias: judging a report’s reliability by whether it matches what one already thinks means hearing only what one already believes, which weakens judgement on any subject and on this one especially.",
     "frameworkEn": "Auto-gated"
+  },
+  {
+    "id": "rcl_er_mc_35",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "moral_concepts",
+    "topicZh": "道德概念",
+    "topicEn": "Moral Concepts",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "一名醫生答應為病人保密，但病人透露自己打算傷害一名同事。醫生面對的處境最能以下列哪項描述？",
+    "explanation": "義務的衝突（道德兩難）是指行為者同時負有兩項真實的道德義務，而履行其一必然違背另一。醫生對病人負有保密的義務，同時亦有保護他人免受傷害的責任；若保密，同事可能受傷害，若通知他人，便違背承諾，兩者無法同時履行。醫院規則或可提供指引，但不能取消醫生要作出的道德判斷。這個處境涉及的是兩項道德義務，而不是醫生的個人利益與病人的經濟利益。認為承諾必須無條件遵守，是只看一項義務而忽略另一項，並不能令兩難消失。",
+    "options": [
+      "義務的衝突：保密的承諾與保護他人免受傷害的責任無法同時履行。",
+      "並非道德問題，因為醫生只需要按照醫院的規則辦事便可。",
+      "義務的衝突：醫生的個人利益與病人的經濟利益互相矛盾。",
+      "不構成兩難，因為承諾一經作出，便必須無條件遵守到底，不論後果如何。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A doctor has promised to keep a patient’s information confidential, but the patient reveals a plan to harm a colleague. Which statement best describes the doctor’s situation?",
+    "optionsEn": [
+      "A conflict of duties: keeping a promise of confidentiality and protecting others from harm cannot both be fulfilled.",
+      "Not a moral issue, because the doctor need only follow hospital rules.",
+      "A conflict of duties between the doctor’s own interests and the patient’s finances.",
+      "Not a dilemma, because a promise once made must be kept unconditionally, whatever the consequences."
+    ],
+    "explanationEn": "A conflict of duties (a moral dilemma) arises when someone has two genuine moral duties and fulfilling one means breaking the other. The doctor owes the patient confidentiality and also has a responsibility to protect others from harm: keeping the secret may let the colleague be hurt, while warning others breaks the promise, so both cannot be fulfilled. Hospital rules may give guidance but do not remove the moral judgement the doctor must make. The two duties here are moral ones, not the doctor’s self-interest against the patient’s finances. Saying a promise must be kept unconditionally looks at one duty and ignores the other; it does not make the dilemma disappear."
+  },
+  {
+    "id": "rcl_eth_floor_16",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "buddhism",
+    "topicZh": "佛教",
+    "topicEn": "Buddhism",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一名學生因不斷追求最新款的名牌產品而負債累累，深感痛苦。按照佛教四聖諦中的「集諦」，應如何分析其痛苦的成因？",
+    "explanation": "四聖諦的結構近似診症：苦諦指出問題，集諦指出成因，滅諦指出苦可止息，道諦開出方法（八正道）。按集諦，痛苦的根源是貪愛與執取：學生對名牌的渴求不斷膨脹，得到後又想要更新的款式，於是負債和痛苦隨之而來。佛教講業和因緣，但並非宿命論，所以不能說「今生無法改變」。若不處理貪愛，收入增加後渴求亦可能隨之增加，痛苦未必消除。佛教並不以神明的賞罰解釋痛苦。",
+    "options": [
+      "痛苦源於前世的命運安排，今生無論如何都無法改變。",
+      "痛苦源於貪愛和執取，對名牌的渴求不斷膨脹。",
+      "痛苦只因收入不足，只要增加收入便可以完全消除。",
+      "痛苦是神明對他的懲罰，必須透過祈禱求得赦免。"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "A student keeps chasing the latest branded products, falls deep into debt and suffers greatly. According to the truth of the origin of suffering among the Buddhist Four Noble Truths, how should the cause of this suffering be analysed?",
+    "optionsEn": [
+      "The suffering is fate set in a past life and cannot be changed in this one.",
+      "The suffering comes from craving and clinging, as the desire for brands keeps growing.",
+      "The suffering is only due to low income and disappears once income rises.",
+      "The suffering is a punishment from a god and needs forgiveness through prayer."
+    ],
+    "explanationEn": "The Four Noble Truths work like a diagnosis: the first names the problem, the second its cause, the third says suffering can end, and the fourth gives the remedy (the Noble Eightfold Path). By the second truth, the root of suffering is craving and clinging: the student’s desire for brands keeps growing, each purchase leads to wanting a newer one, and debt and suffering follow. Buddhism teaches karma and dependent origination, but it is not fatalism, so the suffering is not unchangeable. Without dealing with craving, a higher income may simply bring greater wants, so the suffering need not end. Buddhism does not explain suffering as a god’s reward or punishment."
+  },
+  {
+    "id": "rcl_eth_floor_18",
+    "type": "mc",
+    "subject": "ethics-religious",
+    "topic": "buddhism",
+    "topicZh": "佛教",
+    "topicEn": "Buddhism",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一名學生考試失手後說：「佛教說『諸行無常』，一切都會改變，所以努力也沒有用。」按佛教的理解，這種說法的主要問題是甚麼？",
+    "explanation": "「諸行無常」是指一切因緣和合而生的事物都在變化，沒有恆常不變的狀態。無常說的是「變」，不是「無」：事物確實存在，只是不能以固定不變的方式存在。正因為事物由因緣構成、可以改變，努力、修行與行善才有意義，考試成績亦可以因為改變學習方法而改變。把無常理解為「一切都不存在」，是虛無主義的誤讀。無常適用於一切因緣和合的事物，包括人事。佛教以因緣解釋變化，並不以神明預先安排解釋。",
+    "options": [
+      "這種說法完全正確，因為無常表示一切事物根本都不存在，只是幻象。",
+      "問題在於無常只適用於自然界的事物，不適用於人事。",
+      "誤把無常當作虛無；正因事物隨因緣改變，努力才可能改變結果。",
+      "問題在於佛教認為一切事物早已由神明預先安排妥當。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "After doing badly in an exam, a student says: “Buddhism teaches that all conditioned things are impermanent; everything changes, so effort is pointless.” From a Buddhist point of view, what is the main problem with this claim?",
+    "optionsEn": [
+      "The claim is entirely right, because impermanence means nothing exists at all; it is all illusion.",
+      "The problem is that impermanence applies only to nature, not to human affairs.",
+      "It mistakes impermanence for nothingness; because things change with conditions, effort can change the outcome.",
+      "The problem is that Buddhism holds everything to be arranged in advance by a god."
+    ],
+    "explanationEn": "“All conditioned things are impermanent” means everything that arises from causes and conditions keeps changing and has no fixed, unchanging state. Impermanence is about change, not about nothing existing: things do exist, just not in a fixed way. Because things arise from conditions and can change, effort, practice and good deeds matter, and exam results can change with a better way of studying. Reading impermanence as “nothing exists” is a nihilistic misreading. Impermanence applies to all conditioned things, including human affairs. Buddhism explains change through causes and conditions, not through a god’s plan."
   }
 ]

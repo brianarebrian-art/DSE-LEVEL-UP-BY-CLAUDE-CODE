@@ -38,6 +38,20 @@ test('the generated counts match a recount of the real bank', () => {
   assert.deepEqual({ ...CONTENT_STATS }, c, 'run npm run gen:summary')
 })
 
+test('the homepage count of questions withdrawn for a fault leaves out the pure-recall replacements', async () => {
+  const { WITHDRAWN_FOR_FAULT } = await import('../../data/questions/summary.generated.ts')
+  let fault = 0
+  let recall = 0
+  for (const s of active) for (const q of getSubjectQuestionsRaw(s.id)) {
+    if (HT.contentStatus(s.id, q) !== 'withdrawn') continue
+    if (HT.withdrawnReason(s.id, q.id) === 'PURE_RECALL') recall++
+    else fault++
+  }
+  assert.equal(WITHDRAWN_FOR_FAULT, fault, 'run npm run gen:summary')
+  assert.equal(fault + recall, CONTENT_STATS.withdrawn)
+  assert.ok(recall >= 100, 'the 2026-10-09 pure-recall withdrawals are counted')
+})
+
 test('no student-facing pool contains a question that is not published', () => {
   for (const s of active) {
     for (const q of getSubjectQuestions(s.id)) assert.equal(HT.contentStatus(s.id, q), 'published', `${s.id}/${q.id}`)

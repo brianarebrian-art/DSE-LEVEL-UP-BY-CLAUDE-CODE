@@ -191,6 +191,15 @@ import { thsWrittenB1ReviewedQuestions } from './ths-written-b1-reviewed'
 import { thsWrittenB3ReviewedQuestions } from './ths-written-b3-reviewed'
 import { visualArtsWrittenB1ReviewedQuestions } from './visual-arts-written-b1-reviewed'
 import { visualArtsWrittenB3ReviewedQuestions } from './visual-arts-written-b3-reviewed'
+import { biologyAutoQuestions } from './biology-auto'
+import { csdAutoQuestions } from './csd-auto'
+import { designTechAutoQuestions } from './design-tech-auto'
+import { healthManagementAutoQuestions } from './health-management-auto'
+import { ictAutoQuestions } from './ict-auto'
+import { musicAutoQuestions } from './music-auto'
+import { peAutoQuestions } from './pe-auto'
+import { thsAutoQuestions } from './ths-auto'
+import { visualArtsAutoQuestions } from './visual-arts-auto'
 
 export type { Question, MCQuestion, TextQuestion, LongQuestion, AnyQuestion, WrittenQuestion, Topic, Difficulty } from './types'
 
@@ -256,6 +265,15 @@ const banks: Record<string, SubjectBank> = {
 // 工具及稽核統計的讀取路徑，只註冊其中一邊會令題目對統計隱形
 // （2026-08-07 曾因此少報 12 題，迴歸鎖：__tests__/loader-parity.test.mts）。
 const autoBanks: Record<string, AnyQuestion[]> = {
+  'visual-arts': visualArtsAutoQuestions,
+  'ths': thsAutoQuestions,
+  'pe': peAutoQuestions,
+  'music': musicAutoQuestions,
+  'ict': ictAutoQuestions,
+  'health-management': healthManagementAutoQuestions,
+  'design-tech': designTechAutoQuestions,
+  'csd': csdAutoQuestions,
+  'biology': biologyAutoQuestions,
   'physics': physicsAutoQuestions,
   'm1': m1AutoQuestions,
   'm2': m2AutoQuestions,

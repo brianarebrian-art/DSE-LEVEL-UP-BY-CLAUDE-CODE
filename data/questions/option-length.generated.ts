@@ -7,7 +7,7 @@
 // 隨機揀選的命中率約為四分之一。長度以 scripts/qbank/_gate.mjs 的 visualLength 量度。
 // 日期只在數字改變時更新。
 
-export const OPTION_LENGTH_MEASURED_AT = '2026-10-08'
+export const OPTION_LENGTH_MEASURED_AT = '2026-10-09'
 
 export const LONGEST_OPTION: Record<string, { unique: number; correct: number }> = {
   "math": {
@@ -19,20 +19,20 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
     "correct": 91
   },
   "m1": {
-    "unique": 598,
-    "correct": 59
+    "unique": 599,
+    "correct": 57
   },
   "physics": {
     "unique": 720,
     "correct": 78
   },
   "chemistry": {
-    "unique": 524,
-    "correct": 100
+    "unique": 529,
+    "correct": 101
   },
   "biology": {
-    "unique": 489,
-    "correct": 109
+    "unique": 493,
+    "correct": 107
   },
   "english": {
     "unique": 957,
@@ -44,63 +44,63 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
   },
   "bafs": {
     "unique": 452,
-    "correct": 94
+    "correct": 92
   },
   "ict": {
     "unique": 518,
-    "correct": 154
+    "correct": 148
   },
   "economics": {
-    "unique": 547,
-    "correct": 167
+    "unique": 551,
+    "correct": 168
   },
   "csd": {
-    "unique": 883,
-    "correct": 719
+    "unique": 885,
+    "correct": 716
   },
   "chinese-history": {
     "unique": 1060,
     "correct": 1004
   },
   "history": {
-    "unique": 333,
-    "correct": 264
+    "unique": 335,
+    "correct": 263
   },
   "geography": {
-    "unique": 689,
-    "correct": 170
+    "unique": 685,
+    "correct": 162
   },
   "chinese-literature": {
-    "unique": 961,
-    "correct": 872
+    "unique": 959,
+    "correct": 860
   },
   "english-literature": {
     "unique": 986,
     "correct": 814
   },
   "ethics-religious": {
-    "unique": 848,
-    "correct": 697
+    "unique": 849,
+    "correct": 695
   },
   "ths": {
-    "unique": 543,
-    "correct": 130
+    "unique": 541,
+    "correct": 126
   },
   "health-management": {
-    "unique": 626,
-    "correct": 268
+    "unique": 625,
+    "correct": 267
   },
   "design-tech": {
     "unique": 582,
-    "correct": 190
+    "correct": 187
   },
   "visual-arts": {
     "unique": 303,
-    "correct": 212
+    "correct": 211
   },
   "music": {
-    "unique": 338,
-    "correct": 149
+    "unique": 335,
+    "correct": 146
   },
   "pe": {
     "unique": 540,
@@ -108,6 +108,6 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
   },
   "technology-living": {
     "unique": 484,
-    "correct": 188
+    "correct": 183
   }
 }

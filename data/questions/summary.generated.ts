@@ -3490,9 +3490,15 @@ export const TOTAL_QUESTIONS = 26633
  * 只有 published 會出現在練習中。狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
  */
 export const CONTENT_STATS = {
-  "totalAuthored": 27326,
+  "totalAuthored": 27426,
   "published": 26633,
-  "withdrawn": 461,
+  "withdrawn": 561,
   "withheldTopic": 219,
   "pendingReview": 13
 } as const
+
+/**
+ * 因發現錯誤而收起的題數（首頁使用）。不包括以 PURE_RECALL 收起的題目：那些題目並無錯誤，
+ * 已逐條由情境應用題取代（創辦人回覆 49a–55a）。
+ */
+export const WITHDRAWN_FOR_FAULT = 461

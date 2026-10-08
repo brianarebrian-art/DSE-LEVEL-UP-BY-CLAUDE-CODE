@@ -1,0 +1,184 @@
+[
+  {
+    "id": "rcl_mus_fm_41",
+    "type": "mc",
+    "topic": "曲式與結構",
+    "topicId": "form_structure",
+    "topicZh": "曲式與結構",
+    "topicEn": "Form & Structure",
+    "difficulty": "hard",
+    "question": "一首鍵盤樂曲開始時，一個聲部先單獨奏出一段旋律；之後另一個聲部在另一個音高上模仿這段旋律，原來的聲部則同時奏出新的對位旋律；接着第三個聲部亦相繼進入。這種開首寫法最符合哪種曲式？",
+    "questionEn": "A keyboard piece begins with one voice playing a melody alone; then a second voice imitates the melody at a different pitch while the first voice plays a new counter-melody; then a third voice enters in turn. Which form does this opening best fit?",
+    "options": [
+      "迴旋曲，因為同一段旋律會在不同段落之間反覆出現。",
+      "主題與變奏，因為每個聲部都把旋律加以裝飾和變化。",
+      "賦格，開首的旋律是主題，其餘聲部相繼模仿進入。",
+      "二段體，因為樂曲明顯分為前後兩個互相對比的段落。"
+    ],
+    "optionsEn": [
+      "A rondo, because the same melody returns between different sections.",
+      "Theme and variations, because each voice decorates and varies the melody.",
+      "A fugue: the opening melody is the subject, and the other voices enter in imitation.",
+      "Binary form, because the piece clearly falls into two contrasting sections."
+    ],
+    "correctIndex": 2,
+    "explanation": "賦格以一個主題（subject）開始，先由一個聲部單獨奏出，之後各聲部相繼在不同音高上模仿進入；先進入的聲部則繼續奏出對位旋律，形成多聲部交織的織體。題目描述的正是賦格的呈示部。迴旋曲的特點是主要段落在不同的插段之間反覆出現（例如 ABACA），與聲部相繼模仿無關。主題與變奏是把主題整段地重複並加以變化，並非多個聲部相繼進入。二段體指樂曲分為兩個段落，題目描述的只是開首各聲部進入的方式。",
+    "explanationEn": "A fugue begins with a subject played by one voice alone; the other voices then enter in turn, imitating it at different pitches, while the voices already playing continue with counter-melodies, building a texture of interwoven parts. The question describes the exposition of a fugue. A rondo has a main section that returns between contrasting episodes (such as ABACA), which has nothing to do with voices entering in imitation. Theme and variations repeats the whole theme with changes each time rather than having voices enter one after another. Binary form means the piece has two sections; the question only describes how the voices enter at the start."
+  },
+  {
+    "id": "rcl_mus_fm_44",
+    "type": "mc",
+    "topic": "曲式與結構",
+    "topicId": "form_structure",
+    "topicZh": "曲式與結構",
+    "topicEn": "Form & Structure",
+    "difficulty": "intermediate",
+    "question": "一首古典時期的交響曲由四個相對獨立的部分組成，速度依次為快、慢、中庸（舞曲）、快。作曲家這樣安排，主要有甚麼作用？",
+    "questionEn": "A Classical symphony has four relatively independent parts, at fast, slow, moderate (dance) and fast tempos in turn. What is the main purpose of this arrangement?",
+    "options": [
+      "四個樂章的速度必須相同才算完整，所以這首作品結構鬆散。",
+      "每個樂章都是另一首獨立作品，彼此之間並無任何關係。",
+      "改變速度只是為了讓樂團在演奏途中休息，與音樂本身無關。",
+      "各樂章速度與性格互相對比，令整首作品張弛有致、富於變化。"
+    ],
+    "optionsEn": [
+      "The four movements should share one tempo to be complete, so this work is loosely built.",
+      "Each movement is a separate work with no connection to the others.",
+      "Changing tempo only lets the orchestra rest and has nothing to do with the music.",
+      "The movements contrast in tempo and character, giving the whole work balance and variety."
+    ],
+    "correctIndex": 3,
+    "explanation": "樂章是大型作品（如交響曲、奏鳴曲）中相對獨立而完整的部分。古典時期的交響曲常見四個樂章，速度多為快—慢—小步舞曲—快，各樂章在速度和性格上互相對比，令全曲有張有弛，同時構成一個完整的整體。樂章之間的對比正是設計所在，速度相同反而缺乏變化。各樂章雖然相對獨立，但同屬一首作品，在調性和整體構思上互相關連。速度安排是出於音樂結構的考慮，並非只為讓樂團休息。",
+    "explanationEn": "A movement is a relatively independent, complete part of a large work such as a symphony or sonata. Classical symphonies usually have four movements, often fast–slow–minuet–fast, which contrast in tempo and character to give the whole work tension and release while forming a complete whole. The contrast between movements is the design; the same tempo throughout would lack variety. The movements are relatively independent but belong to one work and are linked by key and overall plan. The tempo plan comes from musical structure, not from letting the orchestra rest."
+  },
+  {
+    "id": "rcl_mus_wh_55",
+    "type": "mc",
+    "topic": "西方音樂史",
+    "topicId": "western_history",
+    "topicZh": "西方音樂史",
+    "topicEn": "Western Music History",
+    "difficulty": "hard",
+    "question": "某首二十世紀的樂曲把八度內十二個半音排成一個固定的次序（音列），每個音出現一次後才可以重複，全曲由這個音列及其變化構成。這種寫法最主要打破了甚麼傳統？",
+    "questionEn": "A twentieth-century piece arranges the twelve semitones of the octave in a fixed order (a tone row); each note appears once before any is repeated, and the whole piece is built from this row and its transformations. Which tradition does this way of writing mainly break with?",
+    "options": [
+      "以主音為中心的調性，令十二個音的地位趨於平等。",
+      "以四四拍子為主的節拍，令全曲沒有任何固定拍子。",
+      "以弦樂為主的配器，令全曲改為只用電子樂器演奏。",
+      "以旋律為主的寫法，令全曲只有節奏而沒有任何音高。"
+    ],
+    "optionsEn": [
+      "Tonality centred on a tonic, so all twelve notes become roughly equal.",
+      "Metre based on four beats in a bar, so the piece has no fixed beat at all.",
+      "Orchestration based on strings, so the piece uses only electronic instruments.",
+      "Melody-led writing, so the piece has rhythm but no pitch at all."
+    ],
+    "correctIndex": 0,
+    "explanation": "這是荀白克（Schoenberg）於二十世紀二十年代提出的十二音技法。傳統調性以主音為中心，其他音圍繞主音組織，有主次之分；十二音技法規定每個音在音列中出現一次後才可重複，避免任何一個音被突出為中心，令十二個半音的地位趨於平等，從而打破調性。十二音技法處理的是音高的組織，與拍子無關。它亦不規定使用電子樂器。音列本身就是一組音高，樂曲當然有音高。",
+    "explanationEn": "This is the twelve-tone technique devised by Schoenberg in the 1920s. Traditional tonality centres on a tonic, with the other notes organised around it in a hierarchy; the twelve-tone technique requires each note of the row to appear before any is repeated, so that no note stands out as a centre and all twelve semitones become roughly equal, breaking with tonality. The technique organises pitch, not metre. It does not call for electronic instruments. A tone row is itself a set of pitches, so the music certainly has pitch."
+  },
+  {
+    "id": "rcl_mus_cr_110",
+    "type": "mc",
+    "topic": "創作與演奏",
+    "topicId": "creating",
+    "topicZh": "創作與演奏",
+    "topicEn": "Creating & Performing",
+    "difficulty": "intermediate",
+    "question": "一首歌原本是 C 大調，但歌手覺得太高，於是把整首歌移低至 A 大調演唱。移調之後，下列哪項正確？",
+    "questionEn": "A song is in C major, but the singer finds it too high, so the whole song is moved down to A major. After this transposition, which statement is correct?",
+    "options": [
+      "旋律的音程關係改變了，所以聽起來已是另一首歌。",
+      "每個音都降低相同的距離，旋律的音程關係保持不變。",
+      "只有最高的幾個音降低，其餘的音保持在原來的音高。",
+      "樂曲的速度會隨之變慢，因為整體的音高降低了。"
+    ],
+    "optionsEn": [
+      "The intervals of the melody change, so it sounds like a different song.",
+      "Every note moves down by the same distance, so the intervals of the melody stay the same.",
+      "Only the highest few notes go down; the rest stay at their original pitch.",
+      "The tempo becomes slower, because the overall pitch is lower."
+    ],
+    "correctIndex": 1,
+    "explanation": "移調是把整首樂曲的每個音升高或降低相同的距離，移到另一個調上。由 C 大調移到 A 大調，每個音都降低小三度，旋律中各音之間的音程關係保持不變，所以聽起來仍是同一首歌，只是整體較低，適合歌手的音域。音程關係不變，旋律才可辨認為同一首歌。只降低部分音，會令音程關係改變，那並不是移調。音高與速度是兩個獨立的元素，移調不會改變速度。",
+    "explanationEn": "Transposition moves every note of a piece up or down by the same distance into another key. Going from C major to A major lowers every note by a minor third, so the intervals between the notes stay the same and the song is still recognisable, just lower, to suit the singer’s range. It is because the intervals stay the same that the melody remains the same song. Lowering only some notes would change the intervals, which is not transposition. Pitch and tempo are independent, so transposing does not change the speed."
+  },
+  {
+    "id": "rcl_floor2_mus_hf_02",
+    "type": "mc",
+    "topic": "和聲・和弦與曲式",
+    "topicId": "mus_harmony_form",
+    "topicZh": "和聲・和弦與曲式",
+    "topicEn": "Harmony — chords & form",
+    "difficulty": "basic",
+    "question": "在 C 大調中，一個樂句停在由 G、B、D 組成的和弦上，聽起來有強烈的「未完、想繼續」的感覺。下列哪項最能解釋這種感覺？",
+    "questionEn": "In C major, a phrase stops on a chord made of G, B and D, and it sounds strongly unfinished, as if it wants to go on. Which statement best explains this?",
+    "options": [
+      "這是主和弦，因為 G 是 C 大調音階的第一級音。",
+      "這是下屬和弦，因為它建立在 C 大調的第四級音上。",
+      "這是屬和弦，其中的導音 B 傾向上行半音解決到主音 C。",
+      "這是屬和弦，它的作用是確立調性中心，予人完結的感覺。"
+    ],
+    "optionsEn": [
+      "It is the tonic chord, because G is the first degree of the C major scale.",
+      "It is the subdominant chord, because it is built on the fourth degree of C major.",
+      "It is the dominant chord, and its leading note B tends to rise a semitone to the tonic C.",
+      "It is the dominant chord, whose role is to establish the key centre and sound finished."
+    ],
+    "correctIndex": 2,
+    "explanation": "C 大調音階的第五級是 G，以 G 為根音的三和弦 G–B–D 是屬和弦（V）。屬和弦包含導音 B（第七級），導音與主音 C 只差半音，有強烈向上解決到主音的傾向，所以停在屬和弦上會帶有張力，聽起來未完，最典型的去向是回到主和弦（V–I）。C 大調的第一級是 C，主和弦是 C–E–G。下屬和弦建立在第四級 F 上，即 F–A–C。確立調性中心、予人完結感的是主和弦，而不是屬和弦。",
+    "explanationEn": "The fifth degree of C major is G, and the triad built on it, G–B–D, is the dominant chord (V). It contains the leading note B (the seventh degree), only a semitone below the tonic C, which pulls strongly upwards to resolve, so stopping on the dominant leaves tension and sounds unfinished; its usual next step is the tonic chord (V–I). The first degree of C major is C, and the tonic chord is C–E–G. The subdominant is built on the fourth degree, F: F–A–C. It is the tonic chord, not the dominant, that establishes the key centre and sounds finished."
+  },
+  {
+    "id": "rcl_floor2_mus_hf_03",
+    "type": "mc",
+    "topic": "和聲・和弦與曲式",
+    "topicId": "mus_harmony_form",
+    "topicZh": "和聲・和弦與曲式",
+    "topicEn": "Harmony — chords & form",
+    "difficulty": "intermediate",
+    "question": "以下是四個樂句在 C 大調中的最後兩個和弦。哪一個予人最明確、最完滿的結束感？",
+    "questionEn": "Below are the last two chords of four phrases in C major. Which gives the clearest, most complete sense of ending?",
+    "options": [
+      "C 大三和弦接 G 大三和弦（I–V）",
+      "F 大三和弦接 C 大三和弦（IV–I）",
+      "G 大三和弦接 A 小三和弦（V–vi）",
+      "G 大三和弦接 C 大三和弦（V–I）"
+    ],
+    "optionsEn": [
+      "C major chord to G major chord (I–V)",
+      "F major chord to C major chord (IV–I)",
+      "G major chord to A minor chord (V–vi)",
+      "G major chord to C major chord (V–I)"
+    ],
+    "correctIndex": 3,
+    "explanation": "終止式由樂句最後兩個和弦的關係界定。V–I 是完全終止：屬和弦的張力解決到主和弦，聽感最明確、最完滿，因此常用於樂曲或段落的結束。I–V 結束於屬和弦，張力未解決，是半終止，聽起來像逗號而不是句號。IV–I 是變格終止，同樣回到主和弦，但聲響較柔和，常用於聖詠的「阿們」處，結束感不及完全終止明確。V–vi 是假終止，本應解決到主和弦卻轉到 vi，帶來意料之外的轉折。",
+    "explanationEn": "A cadence is defined by the last two chords of a phrase. V–I is a perfect cadence: the tension of the dominant resolves to the tonic, giving the clearest, most complete ending, so it is often used to end pieces or sections. I–V ends on the dominant with the tension unresolved, an imperfect cadence that sounds like a comma rather than a full stop. IV–I is a plagal cadence; it also reaches the tonic but more softly, often heard at the “Amen” of hymns, and is less decisive than a perfect cadence. V–vi is an interrupted cadence: it should resolve to the tonic but moves to vi instead, giving a surprise."
+  },
+  {
+    "id": "rcl_floor2_mus_hf_05",
+    "type": "mc",
+    "topic": "和聲・和弦與曲式",
+    "topicId": "mus_harmony_form",
+    "topicZh": "和聲・和弦與曲式",
+    "topicEn": "Harmony — chords & form",
+    "difficulty": "intermediate",
+    "question": "一個和弦由低至高的三個音是 E、G、C。下列哪項正確描述這個和弦？",
+    "questionEn": "A chord has the three notes E, G and C, from lowest to highest. Which statement correctly describes it?",
+    "options": [
+      "C 大三和弦的第一轉位，因為三音 E 在最低。",
+      "E 小三和弦的原位，因為和弦的最低音是 E。",
+      "C 大三和弦的第二轉位，因為 C 在最高的位置。",
+      "C 大三和弦的原位，因為和弦內有 C、E、G 三個音。"
+    ],
+    "optionsEn": [
+      "C major chord in first inversion, because the third, E, is lowest.",
+      "E minor chord in root position, because the lowest note is E.",
+      "C major chord in second inversion, because C is at the top.",
+      "C major chord in root position, because it contains C, E and G."
+    ],
+    "correctIndex": 0,
+    "explanation": "和弦的名稱由組成音決定：C、E、G 組成 C 大三和弦，根音是 C。轉位只改變和弦音的上下排列，不改變和弦的名稱。根音 C 在最低是原位；三音 E 在最低是第一轉位；五音 G 在最低是第二轉位。這個和弦由低至高為 E、G、C，三音在最低，所以是第一轉位。E 小三和弦由 E、G、B 組成，這個和弦沒有 B，所以不是 E 小三和弦。判斷轉位看的是最低音，而不是最高音，所以不是第二轉位。單看和弦內有哪些音，只能判斷名稱，不能判斷是否原位。",
+    "explanationEn": "A chord is named by its notes: C, E and G make a C major chord with root C. An inversion only changes which note is at the bottom, not the name. With the root C lowest it is in root position; with the third E lowest, first inversion; with the fifth G lowest, second inversion. Here the notes from low to high are E, G, C, so the third is lowest and the chord is in first inversion. An E minor chord is E, G and B; there is no B here, so it is not E minor. Inversion depends on the lowest note, not the highest, so it is not second inversion. Knowing which notes are present gives the name, not whether it is in root position."
+  }
+]

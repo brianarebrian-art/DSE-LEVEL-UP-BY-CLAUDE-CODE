@@ -33,6 +33,11 @@ export const WITHDRAW_CODES: Readonly<Record<string, string>> = {
   IMPOSSIBLE_PREMISE:
     '題目設定違反科學事實，例如要求把不溶或幾乎不溶於水的物質「溶於水配成溶液」。' +
     '2026-10-04 抽查發現（docs/spot-check-2026-10-04.md），創辦人回覆「15a」收起；須改用合理設定重寫。',
+  // 2026-10-09, founders' replies 49a–55a (docs/recall-review-2026-10-08.md). Not a fault:
+  // each question is replaced one for one by an applied question with a new id (rcl_<old id>),
+  // so these never come back. The sentence is the one the founders chose (55a).
+  PURE_RECALL:
+    '題目只需背誦名稱、定義或年份即可作答，不符合本平台重理解、重推理的方向；已由情境應用題取代。',
 }
 
 // Pending review (2026-09-30, UX loop 20; Yuna's hardening loop prompt §3): a question

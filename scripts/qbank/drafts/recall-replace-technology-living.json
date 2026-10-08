@@ -1,0 +1,158 @@
+[
+  {
+    "id": "rcl_tl_nu_14",
+    "type": "mc",
+    "topic": "膳食營養素",
+    "topicId": "nutrition",
+    "topicZh": "膳食營養素",
+    "topicEn": "Nutrients",
+    "difficulty": "intermediate",
+    "question": "一名素食者每餐只以米飯作為蛋白質的主要來源。營養師建議他在飯中加入豆類。下列哪項最能解釋這個建議？",
+    "questionEn": "A vegetarian relies on rice as the main source of protein at every meal. A dietitian suggests adding beans to the rice. Which statement best explains this advice?",
+    "options": [
+      "豆類含大量澱粉，可以完全代替米飯提供熱量。",
+      "人體可自行合成所有氨基酸，加入豆類只是為了增加口感。",
+      "米飯缺乏某些必需氨基酸，與豆類配搭可以互相補足。",
+      "米飯含太多必需氨基酸，加入豆類可以把它們稀釋。"
+    ],
+    "optionsEn": [
+      "Beans are rich in starch and can fully replace rice as a source of energy.",
+      "The body can make all amino acids itself, so beans only add texture.",
+      "Rice lacks some essential amino acids, and combining it with beans makes up for this.",
+      "Rice has too many essential amino acids, and beans dilute them."
+    ],
+    "correctIndex": 2,
+    "explanation": "必需氨基酸是人體不能自行合成、必須從食物攝取的氨基酸。植物蛋白質大多缺乏一種或以上的必需氨基酸：穀類（如米飯）的賴氨酸較少，豆類則較多；豆類的含硫氨基酸較少，穀類則較多。兩者配搭便能互相補足，這稱為蛋白質的互補作用。建議的目的是改善蛋白質質素，而不是以豆類代替米飯提供熱量。人體不能自行合成必需氨基酸，所以必須從食物攝取。米飯的問題是缺乏某些必需氨基酸，而不是含量太多。",
+    "explanationEn": "Essential amino acids are those the body cannot make and must get from food. Most plant proteins are short of one or more of them: cereals such as rice are low in lysine, which beans have more of, while beans are low in sulfur-containing amino acids, which cereals have more of. Eating them together makes up for each other’s shortfall, which is protein complementation. The advice aims to improve protein quality, not to replace rice as an energy source. The body cannot make essential amino acids, so they must come from food. The problem with rice is a shortage of some essential amino acids, not too many."
+  },
+  {
+    "id": "rcl_tl_me_43",
+    "type": "mc",
+    "topic": "膳食計劃",
+    "topicId": "meal_planning",
+    "topicZh": "膳食計劃",
+    "topicEn": "Meal Planning",
+    "difficulty": "intermediate",
+    "question": "下列哪一份午餐最符合「三低一高」的健康飲食原則？",
+    "questionEn": "Which of these lunches best follows the healthy eating principle of “three lows and one high”?",
+    "options": [
+      "白飯、咕嚕肉、炸雲吞",
+      "即食麵、午餐肉、煎雙蛋",
+      "牛油多士、薯條、汽水",
+      "糙米飯、清蒸魚、灼菜心"
+    ],
+    "optionsEn": [
+      "White rice, sweet and sour pork and fried wontons",
+      "Instant noodles, luncheon meat and two fried eggs",
+      "Buttered toast, French fries and a soft drink",
+      "Brown rice, steamed fish and blanched choi sum"
+    ],
+    "correctIndex": 3,
+    "explanation": "「三低一高」指低鹽、低糖、低脂和高纖維。糙米飯保留了米糠，纖維比白飯多；清蒸魚少用油；灼菜少油少鹽而纖維豐富，四方面都符合。咕嚕肉和炸雲吞經油炸，脂肪高，咕嚕肉的醬汁亦含大量糖。即食麵和午餐肉含大量鹽和脂肪，煎蛋亦要用油。牛油多士和薯條脂肪高，汽水含大量糖，整份午餐亦缺乏纖維。",
+    "explanationEn": "“Three lows and one high” means low salt, low sugar, low fat and high fibre. Brown rice keeps its bran and has more fibre than white rice, steamed fish uses little oil, and blanched vegetables are low in oil and salt and rich in fibre, so all four points are met. Sweet and sour pork and fried wontons are deep-fried and high in fat, and the sauce is very sugary. Instant noodles and luncheon meat are high in salt and fat, and frying eggs adds oil. Buttered toast and fries are high in fat, the soft drink is high in sugar, and the meal lacks fibre."
+  },
+  {
+    "id": "rcl_tl_fs_49",
+    "type": "mc",
+    "topic": "食物科學",
+    "topicId": "food_science",
+    "topicZh": "食物科學",
+    "topicEn": "Food Science",
+    "difficulty": "hard",
+    "question": "煮芡汁時，有人在芡汁仍然冷的時候便把它淋在菜上，結果芡汁稀薄、不夠稠。下列哪項最能解釋這現象？",
+    "questionEn": "Someone pours a cornstarch sauce over a dish while it is still cold, and the sauce stays thin instead of thickening. Which statement best explains this?",
+    "options": [
+      "芡汁未經加熱至足夠溫度，澱粉粒未能吸水膨脹而糊化。",
+      "芡汁要加熱後才會發生梅納反應，令汁液變得濃稠和帶有香味。",
+      "澱粉遇冷會即時分解成葡萄糖，因此失去了黏性。",
+      "芡汁未經發酵，澱粉因此不能轉化為膠狀的物質。"
+    ],
+    "optionsEn": [
+      "The sauce was not heated enough, so the starch granules did not swell and gelatinise.",
+      "The sauce needs heat for the Maillard reaction, which thickens it and adds flavour.",
+      "Starch breaks down into glucose at once when cold, so it loses its stickiness.",
+      "The sauce was not fermented, so the starch could not turn into a gel."
+    ],
+    "correctIndex": 0,
+    "explanation": "澱粉粒在足夠的水分和熱力下吸水膨脹、破裂並釋出澱粉分子，令液體變稠，這稱為糊化。勾芡、煮粥都是利用這個原理。芡汁未加熱至足夠溫度，澱粉粒未能糊化，所以仍然稀薄。梅納反應是糖與蛋白質在高溫下產生褐變和香味的反應，並不負責令芡汁變稠。澱粉不會因為遇冷而分解成葡萄糖。發酵是微生物分解物質的過程，與勾芡無關。",
+    "explanationEn": "When starch granules are heated with enough water they absorb it, swell, burst and release starch molecules, which thickens the liquid; this is gelatinisation, the principle behind thickening sauces and making congee. A sauce that is not heated enough does not gelatinise, so it stays thin. The Maillard reaction is browning and flavour development between sugars and proteins at high temperature; it does not thicken sauces. Starch does not break down into glucose because it is cold. Fermentation is the breakdown of substances by microorganisms and has nothing to do with thickening."
+  },
+  {
+    "id": "rcl_tl_fh_97",
+    "type": "mc",
+    "topic": "成衣與時尚",
+    "topicId": "fashion",
+    "topicZh": "成衣與時尚",
+    "topicEn": "Garments & Fashion",
+    "difficulty": "intermediate",
+    "question": "一名身形較矮小的學生穿上一件長及小腿、腰線位置偏低的連身裙，看起來顯得更矮。設計師建議改穿腰線較高、裙長及膝的款式。這個建議主要運用了哪項設計原則？",
+    "questionEn": "A petite student wears a calf-length dress with a low waistline and looks even shorter. A designer suggests a style with a higher waistline and knee-length skirt. Which design principle does this advice mainly apply?",
+    "options": [
+      "強調：在裙上加入大量亮色圖案，以吸引別人的視線。",
+      "比例：調整上下身的長短關係，令身形顯得較修長。",
+      "韻律：在裙上重複使用相同的圖案，引導視線流動。",
+      "平衡：令裙子左右兩邊完全對稱，看起來更為穩定。"
+    ],
+    "optionsEn": [
+      "Emphasis: adding lots of bright patterns to the dress to draw attention.",
+      "Proportion: changing the relative lengths of upper and lower body to look taller.",
+      "Rhythm: repeating the same pattern on the dress to lead the eye.",
+      "Balance: making both sides of the dress exactly symmetrical so it looks stable."
+    ],
+    "correctIndex": 1,
+    "explanation": "比例是指服裝各部分之間大小、長短的相對關係。腰線偏低會令上身顯長、下身顯短，裙長及小腿又把身體切成較短的段落，令矮小的人顯得更矮。把腰線提高，下身在視覺上便會拉長；裙長及膝則露出更多腿部，令身形顯得修長，這是調整比例的做法。建議沒有加入圖案或製造焦點，所以不是強調。建議亦不涉及重複的圖案，與韻律無關。左右對稱屬平衡原則，而題目的問題在於上下的長短關係。",
+    "explanationEn": "Proportion is the relationship of size and length between the parts of an outfit. A low waistline makes the upper body look long and the legs short, and a calf-length skirt cuts the figure into shorter sections, so a petite person looks shorter still. Raising the waistline makes the lower body look longer, and a knee-length skirt shows more leg, so the figure looks taller: this adjusts proportion. The advice adds no pattern or focal point, so it is not emphasis. It involves no repeated pattern, so it is not rhythm. Left–right symmetry is balance, whereas the problem here is the relationship between upper and lower lengths."
+  },
+  {
+    "id": "rcl_tl_fh_101",
+    "type": "mc",
+    "topic": "成衣與時尚",
+    "topicId": "fashion",
+    "topicZh": "成衣與時尚",
+    "topicEn": "Garments & Fashion",
+    "difficulty": "intermediate",
+    "question": "一件設計簡潔的黑色連身裙，設計師在腰間加上一條鮮紅色的腰帶。這個設計主要運用了哪項設計原則？效果是甚麼？",
+    "questionEn": "A designer adds a bright red belt to a simple black dress. Which design principle does this mainly apply, and what is the effect?",
+    "options": [
+      "比例：令上身與下身的長度變得完全相等。",
+      "和諧：令整件衣服的顏色變得統一，沒有任何重點。",
+      "強調：以鮮明的對比色製造視覺焦點，吸引注意。",
+      "韻律：以重複出現的紅色線條引導視線在衣服上流動。"
+    ],
+    "optionsEn": [
+      "Proportion: it makes the upper and lower body exactly equal in length.",
+      "Harmony: it makes the colours of the whole dress uniform, with no focal point.",
+      "Emphasis: a strongly contrasting colour creates a focal point that draws attention.",
+      "Rhythm: repeated red lines lead the eye around the dress."
+    ],
+    "correctIndex": 2,
+    "explanation": "強調是指透過顏色、圖案、配飾或剪裁，在服裝上製造一個視覺焦點，令設計有重點而不平淡。在簡潔的黑色連身裙上加一條鮮紅色腰帶，紅與黑對比強烈，視線便集中在腰間，這是運用強調原則。腰帶製造的是焦點，並不會令上下身的長度完全相等。加入對比色正是為了製造重點，與「顏色統一、沒有重點」相反。一條腰帶只出現一次，並非重複出現的元素，所以不是韻律。",
+    "explanationEn": "Emphasis means using colour, pattern, accessories or cut to create a focal point so a design has a highlight rather than looking flat. Adding a bright red belt to a simple black dress gives a strong red–black contrast that draws the eye to the waist, which is emphasis. The belt creates a focal point; it does not make the upper and lower body equal in length. A contrasting colour is added precisely to create a highlight, the opposite of uniform colour with no focal point. A single belt appears once and is not a repeated element, so it is not rhythm."
+  },
+  {
+    "id": "rcl_tl_co_107",
+    "type": "mc",
+    "topic": "消費與可持續",
+    "topicId": "consumer",
+    "topicZh": "消費與可持續",
+    "topicEn": "Consumer & Sustainability",
+    "difficulty": "intermediate",
+    "question": "某家長在網上購買了一款兒童玩具，發現玩具含容易脫落的細小零件，但包裝上沒有任何年齡或窒息警告。下列哪項描述最恰當？",
+    "questionEn": "A parent buys a children’s toy online and finds it has small parts that come off easily, but the packaging has no age or choking warning. Which statement is most appropriate?",
+    "options": [
+      "這涉及「自由選擇」的權利，家長購買後應自行承擔所有風險和責任。",
+      "只要玩具的價格便宜，商家便毋須提供任何安全警告。",
+      "這只涉及「獲得賠償」的權利，與產品是否安全並無關係。",
+      "這涉及消費者「獲得安全」的權利，家長可向消費者委員會投訴。"
+    ],
+    "optionsEn": [
+      "This concerns the right to choose, so the parent must bear all the risk and responsibility after buying.",
+      "If the toy is cheap, the seller need not give any safety warning.",
+      "This concerns only the right to redress and has nothing to do with whether the product is safe.",
+      "This concerns the consumer’s right to safety, and the parent can complain to the Consumer Council."
+    ],
+    "correctIndex": 3,
+    "explanation": "消費者有權獲得安全的產品和服務，商品不應對健康或人身安全構成不合理的危險。玩具含容易脫落的細小零件，可能令幼童窒息，包裝卻沒有警告，涉及「獲得安全」的權利。家長可向消費者委員會投訴，香港亦有法例規管玩具及兒童產品的安全。消費者可以自由選擇，但商家仍有責任確保產品安全並提供足夠警示，風險不應全由消費者承擔。產品安全的責任與價格無關。消費者可能有權獲得賠償，但問題的核心是產品安全。",
+    "explanationEn": "Consumers have the right to safe goods and services: products should not pose unreasonable danger to health or personal safety. Small parts that come off easily could choke a young child, and there is no warning, so this concerns the right to safety. The parent can complain to the Consumer Council, and Hong Kong also has laws on the safety of toys and children’s products. Consumers can choose freely, but sellers are still responsible for safe products and adequate warnings, so the risk should not fall on the consumer alone. Responsibility for safety does not depend on price. The parent may also be entitled to redress, but the core issue is product safety."
+  }
+]

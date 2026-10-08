@@ -1,0 +1,210 @@
+[
+  {
+    "id": "rcl_chem_ab_18",
+    "type": "mc",
+    "topic": "酸鹼",
+    "topicId": "acids_bases",
+    "topicZh": "酸鹼",
+    "topicEn": "Acids & Bases",
+    "difficulty": "intermediate",
+    "question": "胃酸過多的人可服用含氫氧化鎂的胃藥紓緩不適。下列哪項最能解釋這種胃藥的作用？",
+    "questionEn": "People with too much stomach acid can take an antacid containing magnesium hydroxide to relieve discomfort. Which statement best explains how the antacid works?",
+    "options": [
+      "氫氧化鎂只是把胃酸稀釋，酸的總量其實沒有減少。",
+      "氫氧化鎂與胃中的鹽酸發生中和反應，生成鹽和水。",
+      "氫氧化鎂與鹽酸反應生成氫氣，把胃酸從胃中排走。",
+      "氫氧化鎂是強鹼，用量越多越好，可使胃液變成鹼性。"
+    ],
+    "optionsEn": [
+      "Magnesium hydroxide only dilutes the acid; the total amount of acid does not fall.",
+      "Magnesium hydroxide neutralises the hydrochloric acid in the stomach, forming a salt and water.",
+      "Magnesium hydroxide reacts with the acid to give hydrogen, which carries the acid away.",
+      "Magnesium hydroxide is a strong alkali, so the more the better, until the stomach turns alkaline."
+    ],
+    "correctIndex": 1,
+    "explanation": "$\\mathrm{Mg(OH)_2 + 2HCl \\rightarrow MgCl_2 + 2H_2O}$：鹼與酸反應生成鹽和水，屬中和反應，胃中的氫離子因此減少。稀釋只會降低濃度，不會減少酸的總量，與中和不同。產生氫氣的是較活潑的金屬與酸的反應，鹼與酸反應不會產生氫氣。氫氧化鎂難溶於水，只會與胃酸逐步反應；而且胃需要酸性環境消化蛋白質，令胃液變成鹼性並不理想，所以「用量越多越好」並不正確。",
+    "explanationEn": "$\\mathrm{Mg(OH)_2 + 2HCl \\rightarrow MgCl_2 + 2H_2O}$: a base reacts with an acid to form a salt and water, which is neutralisation, so the hydrogen ions in the stomach decrease. Dilution only lowers the concentration and does not reduce the total amount of acid, so it is not neutralisation. Hydrogen comes from the reaction of a reactive metal with an acid; a base and an acid do not produce hydrogen. Magnesium hydroxide is only sparingly soluble and reacts with the acid gradually, and the stomach needs acid to digest protein, so making the stomach alkaline is not desirable and more is not better."
+  },
+  {
+    "id": "rcl_chem_rx_40",
+    "type": "mc",
+    "topic": "氧化還原",
+    "topicId": "redox",
+    "topicZh": "氧化還原",
+    "topicEn": "Redox",
+    "difficulty": "basic",
+    "question": "把鋅片放入硫酸銅(II)溶液中，鋅片表面出現紅褐色固體，溶液的藍色變淡。反應的離子方程式為 $\\mathrm{Zn(s) + Cu^{2+}(aq) \\rightarrow Zn^{2+}(aq) + Cu(s)}$。下列哪項描述正確？",
+    "questionEn": "A piece of zinc is placed in copper(II) sulfate solution. A reddish-brown solid forms on the zinc and the blue colour of the solution fades. The ionic equation is $\\mathrm{Zn(s) + Cu^{2+}(aq) \\rightarrow Zn^{2+}(aq) + Cu(s)}$. Which statement is correct?",
+    "options": [
+      "鋅被氧化，所以鋅就是這個反應的氧化劑。",
+      "銅(II)離子被氧化，因為它由離子變成固體。",
+      "鋅失去電子而被氧化，銅(II)離子是氧化劑。",
+      "這不是氧化還原反應，因為反應中沒有氧參與。"
+    ],
+    "optionsEn": [
+      "Zinc is oxidised, so zinc is the oxidising agent in this reaction.",
+      "Copper(II) ions are oxidised, because they change from ions into a solid.",
+      "Zinc loses electrons and is oxidised; copper(II) ions are the oxidising agent.",
+      "This is not a redox reaction, because no oxygen is involved."
+    ],
+    "correctIndex": 2,
+    "explanation": "鋅變成鋅離子（$\\mathrm{Zn \\rightarrow Zn^{2+} + 2e^-}$），失去電子，氧化數由 0 升至 +2，被氧化；銅(II)離子變成銅（$\\mathrm{Cu^{2+} + 2e^- \\rightarrow Cu}$），得到電子，氧化數由 +2 降至 0，被還原。接收電子、令鋅被氧化的是銅(II)離子，所以它是氧化劑，鋅則是還原劑。認為「鋅被氧化，所以是氧化劑」，混淆了兩個概念：氧化劑本身是被還原的一方。認為「銅(II)離子變成固體所以被氧化」，是以物態判斷；判斷氧化還原要看電子得失或氧化數的變化。認為「沒有氧所以不是氧化還原」，沿用了舊定義；現時以電子轉移為準。",
+    "explanationEn": "Zinc becomes zinc ions ($\\mathrm{Zn \\rightarrow Zn^{2+} + 2e^-}$): it loses electrons and its oxidation number rises from 0 to +2, so it is oxidised. Copper(II) ions become copper ($\\mathrm{Cu^{2+} + 2e^- \\rightarrow Cu}$): they gain electrons and their oxidation number falls from +2 to 0, so they are reduced. The copper(II) ions accept the electrons and so oxidise the zinc: they are the oxidising agent, and zinc is the reducing agent. Saying zinc is the oxidising agent because it is oxidised mixes up the two ideas: the oxidising agent is itself reduced. Judging by the change from ions to a solid looks at the state, not at electrons or oxidation numbers. Saying there is no redox without oxygen uses the old definition; redox is defined by electron transfer."
+  },
+  {
+    "id": "rcl_chem_rx_41",
+    "type": "mc",
+    "topic": "氧化還原",
+    "topicId": "redox",
+    "topicZh": "氧化還原",
+    "topicEn": "Redox",
+    "difficulty": "basic",
+    "question": "把氯水加入無色的溴化鉀溶液中，溶液變成橙色。反應的離子方程式為 $\\mathrm{Cl_2 + 2Br^- \\rightarrow 2Cl^- + Br_2}$。下列哪項描述正確？",
+    "questionEn": "Chlorine water is added to colourless potassium bromide solution and the solution turns orange. The ionic equation is $\\mathrm{Cl_2 + 2Br^- \\rightarrow 2Cl^- + Br_2}$. Which statement is correct?",
+    "options": [
+      "氯被還原，所以氯就是這個反應的還原劑。",
+      "溴離子得到電子而被還原，令溶液變成橙色。",
+      "氯的氧化數由 0 升至 +1，所以氯被氧化。",
+      "氯的氧化數由 0 降至 −1，溴離子是還原劑。"
+    ],
+    "optionsEn": [
+      "Chlorine is reduced, so chlorine is the reducing agent in this reaction.",
+      "Bromide ions gain electrons and are reduced, turning the solution orange.",
+      "The oxidation number of chlorine rises from 0 to +1, so chlorine is oxidised.",
+      "The oxidation number of chlorine falls from 0 to −1; bromide ions are the reducing agent."
+    ],
+    "correctIndex": 3,
+    "explanation": "$\\mathrm{Cl_2 + 2e^- \\rightarrow 2Cl^-}$：氯得到電子，氧化數由 0 降至 −1，被還原。$\\mathrm{2Br^- \\rightarrow Br_2 + 2e^-}$：溴離子失去電子，氧化數由 −1 升至 0，被氧化，生成的溴令溶液呈橙色。提供電子、令氯被還原的是溴離子，所以溴離子是還原劑，氯則是氧化劑。認為「氯被還原，所以是還原劑」，混淆了被還原的物質與還原劑。認為溴離子得到電子，是把電子轉移的方向倒轉了。氯離子帶 −1 電荷，氯的氧化數是下降而不是上升。",
+    "explanationEn": "$\\mathrm{Cl_2 + 2e^- \\rightarrow 2Cl^-}$: chlorine gains electrons and its oxidation number falls from 0 to −1, so it is reduced. $\\mathrm{2Br^- \\rightarrow Br_2 + 2e^-}$: bromide ions lose electrons and their oxidation number rises from −1 to 0, so they are oxidised, and the bromine formed turns the solution orange. The bromide ions give the electrons that reduce the chlorine, so they are the reducing agent and chlorine is the oxidising agent. Saying chlorine is the reducing agent because it is reduced confuses the substance reduced with the reducing agent. Saying bromide ions gain electrons reverses the direction of electron transfer. Chloride ions carry a −1 charge, so the oxidation number of chlorine falls, not rises."
+  },
+  {
+    "id": "rcl_chem_rx_42",
+    "type": "mc",
+    "topic": "氧化還原",
+    "topicId": "redox",
+    "topicZh": "氧化還原",
+    "topicEn": "Redox",
+    "difficulty": "intermediate",
+    "question": "燃燒中的鎂帶放入二氧化碳中仍可繼續燃燒，生成氧化鎂和碳：$\\mathrm{2Mg + CO_2 \\rightarrow 2MgO + C}$。下列哪項正確？",
+    "questionEn": "Burning magnesium ribbon keeps burning in carbon dioxide, forming magnesium oxide and carbon: $\\mathrm{2Mg + CO_2 \\rightarrow 2MgO + C}$. Which statement is correct?",
+    "options": [
+      "鎂是還原劑，因為鎂的氧化數由 0 升至 +2。",
+      "二氧化碳是還原劑，因為它在反應中失去了氧。",
+      "鎂是氧化劑，因為鎂在反應中與氧結合。",
+      "這不是氧化還原反應，因為反應物中沒有氧氣。"
+    ],
+    "optionsEn": [
+      "Magnesium is the reducing agent, because its oxidation number rises from 0 to +2.",
+      "Carbon dioxide is the reducing agent, because it loses oxygen in the reaction.",
+      "Magnesium is the oxidising agent, because it combines with oxygen.",
+      "This is not a redox reaction, because there is no oxygen gas among the reactants."
+    ],
+    "correctIndex": 0,
+    "explanation": "鎂的氧化數由 0 升至 +2（在 MgO 中），失去電子，被氧化；碳的氧化數由 +4（在 $\\mathrm{CO_2}$ 中）降至 0，被還原。提供電子的鎂是還原劑，接收電子的二氧化碳是氧化劑。失去氧的物質是被還原，所以二氧化碳是氧化劑而不是還原劑。鎂與氧結合表示鎂被氧化，被氧化的物質是還原劑，不是氧化劑。反應物中雖然沒有氧氣，但有元素的氧化數改變，所以仍然是氧化還原反應。",
+    "explanationEn": "The oxidation number of magnesium rises from 0 to +2 (in MgO): it loses electrons and is oxidised. The oxidation number of carbon falls from +4 (in $\\mathrm{CO_2}$) to 0: it is reduced. Magnesium gives the electrons, so it is the reducing agent; carbon dioxide accepts them, so it is the oxidising agent. A substance that loses oxygen is reduced, so carbon dioxide is the oxidising agent, not the reducing agent. Magnesium combining with oxygen means magnesium is oxidised, and the substance oxidised is the reducing agent, not the oxidising agent. There is no oxygen gas, but oxidation numbers change, so it is still a redox reaction."
+  },
+  {
+    "id": "rcl_chem_rx_50",
+    "type": "mc",
+    "topic": "氧化還原",
+    "topicId": "redox",
+    "topicZh": "氧化還原",
+    "topicEn": "Redox",
+    "difficulty": "intermediate",
+    "question": "把酸化的過錳酸鉀溶液逐滴加入硫酸鐵(II)溶液中，紫色隨即褪去。反應為 $\\mathrm{MnO_4^- + 5Fe^{2+} + 8H^+ \\rightarrow Mn^{2+} + 5Fe^{3+} + 4H_2O}$。下列哪項正確？",
+    "questionEn": "Acidified potassium permanganate solution is added drop by drop to iron(II) sulfate solution, and the purple colour disappears at once. The reaction is $\\mathrm{MnO_4^- + 5Fe^{2+} + 8H^+ \\rightarrow Mn^{2+} + 5Fe^{3+} + 4H_2O}$. Which statement is correct?",
+    "options": [
+      "鐵(II)離子變成鐵(III)離子，所以鐵(II)離子被還原。",
+      "錳的氧化數由 +7 降至 +2，過錳酸根離子是氧化劑。",
+      "過錳酸根離子失去了氧，所以它是這個反應的還原劑。",
+      "紫色褪去，表示過錳酸根離子在反應中被氧化。"
+    ],
+    "optionsEn": [
+      "Iron(II) ions become iron(III) ions, so iron(II) ions are reduced.",
+      "Manganese falls from +7 to +2, so permanganate ions are the oxidising agent.",
+      "Permanganate ions lose oxygen, so they are the reducing agent in this reaction.",
+      "The purple colour fading shows that permanganate ions are oxidised."
+    ],
+    "correctIndex": 1,
+    "explanation": "在 $\\mathrm{MnO_4^-}$ 中錳的氧化數是 +7，變成 $\\mathrm{Mn^{2+}}$ 後是 +2：錳得到電子，被還原，所以過錳酸根離子是氧化劑。$\\mathrm{Fe^{2+} \\rightarrow Fe^{3+} + e^-}$：鐵(II)離子失去電子，氧化數上升，被氧化，是還原劑。認為鐵(II)離子被還原，是把氧化數上升誤當作還原。失去氧的物質是被還原，所以過錳酸根離子是氧化劑而不是還原劑。紫色褪去，是因為紫色的過錳酸根離子被還原成近乎無色的錳(II)離子。",
+    "explanationEn": "Manganese has an oxidation number of +7 in $\\mathrm{MnO_4^-}$ and +2 in $\\mathrm{Mn^{2+}}$: it gains electrons and is reduced, so permanganate ions are the oxidising agent. $\\mathrm{Fe^{2+} \\rightarrow Fe^{3+} + e^-}$: iron(II) ions lose an electron, their oxidation number rises, and they are oxidised, acting as the reducing agent. Saying iron(II) ions are reduced mistakes a rise in oxidation number for reduction. A substance that loses oxygen is reduced, so permanganate ions are the oxidising agent, not the reducing agent. The purple colour fades because purple permanganate ions are reduced to almost colourless manganese(II) ions."
+  },
+  {
+    "id": "rcl_chem_floor_01",
+    "type": "mc",
+    "topic": "氧化還原與平衡",
+    "topicId": "chem_hell_redox_equil",
+    "topicZh": "氧化還原與平衡",
+    "topicEn": "Redox & equilibrium",
+    "difficulty": "basic",
+    "question": "在反應 $\\mathrm{SO_2 + 2H_2S \\rightarrow 3S + 2H_2O}$ 中，兩種反應物都含有硫。下列哪項描述正確？",
+    "questionEn": "In the reaction $\\mathrm{SO_2 + 2H_2S \\rightarrow 3S + 2H_2O}$, both reactants contain sulfur. Which statement is correct?",
+    "options": [
+      "兩種反應物中的硫都被還原，因為最後都變成硫。",
+      "同一元素不能同時被氧化和被還原，所以不是氧化還原反應。",
+      "二氧化硫中的硫被還原，硫化氫中的硫被氧化。",
+      "二氧化硫中的硫被氧化，因為二氧化硫失去了氧。"
+    ],
+    "optionsEn": [
+      "The sulfur in both reactants is reduced, because both end up as sulfur.",
+      "One element cannot be both oxidised and reduced, so this is not a redox reaction.",
+      "The sulfur in sulfur dioxide is reduced and the sulfur in hydrogen sulfide is oxidised.",
+      "The sulfur in sulfur dioxide is oxidised, because sulfur dioxide loses oxygen."
+    ],
+    "correctIndex": 2,
+    "explanation": "計算硫的氧化數：在 $\\mathrm{SO_2}$ 中是 +4，在 $\\mathrm{H_2S}$ 中是 −2，在硫單質中是 0。由 +4 降至 0，二氧化硫中的硫得到電子，被還原；由 −2 升至 0，硫化氫中的硫失去電子，被氧化。兩者最後雖然都變成硫，但起點不同，變化方向相反，所以不能說兩者都被還原。同一元素可以在一個反應中同時被氧化和被還原，只要它來自不同的物質或處於不同的氧化數。失去氧表示被還原，所以二氧化硫中的硫是被還原而不是被氧化。",
+    "explanationEn": "Work out the oxidation number of sulfur: +4 in $\\mathrm{SO_2}$, −2 in $\\mathrm{H_2S}$ and 0 in elemental sulfur. Going from +4 to 0, the sulfur in sulfur dioxide gains electrons and is reduced; going from −2 to 0, the sulfur in hydrogen sulfide loses electrons and is oxidised. Both end up as sulfur, but they start from different oxidation numbers and change in opposite directions, so they are not both reduced. One element can be oxidised and reduced in the same reaction when it comes from different substances with different oxidation numbers. Losing oxygen means reduction, so the sulfur in sulfur dioxide is reduced, not oxidised."
+  },
+  {
+    "id": "rcl_chem_re_64",
+    "type": "mc",
+    "topic": "反應速率與能量",
+    "topicId": "rates_energy",
+    "topicZh": "反應速率與能量",
+    "topicEn": "Reaction Rates & Energy",
+    "difficulty": "hard",
+    "question": "火柴放在空氣中不會自行燃燒，但在火柴盒側面擦一下便會燃燒；燃燒開始後，即使不再擦，火柴仍會繼續燃燒。下列哪項最能解釋這現象？",
+    "questionEn": "A match left in air does not catch fire by itself, but it burns once struck on the side of the box; after that it keeps burning without being struck again. Which statement best explains this?",
+    "options": [
+      "擦火柴降低了燃燒反應的活化能，所以反應較容易進行。",
+      "燃燒是吸熱反應，所以必須不斷從外界吸收熱能才能進行。",
+      "火柴不會自燃，是因為燃燒產物的能量比反應物的能量高。",
+      "擦火柴提供能量，使反應物越過活化能；燃燒放出的熱再維持反應。"
+    ],
+    "optionsEn": [
+      "Striking lowers the activation energy of the reaction, so it happens more easily.",
+      "Burning is endothermic, so it must keep absorbing heat from outside to continue.",
+      "The match does not ignite because the products of burning have more energy than the reactants.",
+      "Striking supplies energy to overcome the activation energy; heat from burning then keeps it going."
+    ],
+    "correctIndex": 3,
+    "explanation": "反應物粒子相撞時，必須具有至少等於活化能的能量才可反應。常溫下只有極少粒子達到活化能，所以火柴不會自燃。擦火柴產生的熱提供能量，令部分反應物越過活化能；燃燒是放熱反應，放出的熱又令更多反應物越過活化能，所以反應能自行持續。擦火柴並沒有改變活化能的大小，降低活化能的是催化劑。燃燒能自行持續，正好說明它是放熱反應而非吸熱反應。火柴不自燃的原因是活化能高，而不是產物能量較高；燃燒的產物能量其實比反應物低。",
+    "explanationEn": "Reacting particles must collide with at least the activation energy. At room temperature very few particles have that much energy, so the match does not ignite by itself. The heat from striking supplies energy so that some reactants overcome the activation energy; burning is exothermic, and the heat it gives out lets more reactants overcome the activation energy, so the reaction sustains itself. Striking does not change the size of the activation energy; lowering it is what a catalyst does. Burning that sustains itself shows it is exothermic, not endothermic. The match does not ignite because the activation energy is high, not because the products have more energy; in fact the products of burning have less energy than the reactants."
+  },
+  {
+    "id": "rcl_chem_pt_101",
+    "type": "mc",
+    "topic": "週期表",
+    "topicId": "periodic_table",
+    "topicZh": "週期表",
+    "topicEn": "The Periodic Table",
+    "difficulty": "hard",
+    "question": "氯有兩種同位素：氯-35（17 個質子、18 個中子）及氯-37（17 個質子、20 個中子）。兩者與鈉反應時的化學性質是否相同？原因是甚麼？",
+    "questionEn": "Chlorine has two isotopes: chlorine-35 (17 protons, 18 neutrons) and chlorine-37 (17 protons, 20 neutrons). Do they have the same chemical properties when reacting with sodium, and why?",
+    "options": [
+      "相同，因為兩者的質子數和電子排布都相同。",
+      "不同，因為氯-37 的中子較多，反應會較慢。",
+      "不同，因為兩者的質量數不同，原子序亦因此不同。",
+      "相同，因為兩者的質量數相同，所以性質一樣。"
+    ],
+    "optionsEn": [
+      "Yes, because they have the same number of protons and the same electronic arrangement.",
+      "No, because chlorine-37 has more neutrons, so it reacts more slowly.",
+      "No, because their mass numbers differ, so their atomic numbers differ too.",
+      "Yes, because they have the same mass number, so they behave alike."
+    ],
+    "correctIndex": 0,
+    "explanation": "化學性質取決於電子，特別是最外層電子的數目。同位素的質子數相同，中性原子的電子數及電子排布亦相同，所以化學性質相同。中子數不同只影響原子質量及部分物理性質，例如密度。原子序就是質子數，兩者都是 17；質量數是質子數加中子數，分別為 35 和 37，並不相同。所以「質量數不同令原子序不同」和「質量數相同」兩種說法都不正確。",
+    "explanationEn": "Chemical properties depend on electrons, especially the number of outermost electrons. Isotopes have the same number of protons, so their neutral atoms have the same number and arrangement of electrons and the same chemical properties. A different number of neutrons only affects atomic mass and some physical properties, such as density. The atomic number is the number of protons, 17 for both; the mass number is protons plus neutrons, 35 and 37, which differ. So both the claim that different mass numbers change the atomic number and the claim that the mass numbers are the same are wrong."
+  }
+]

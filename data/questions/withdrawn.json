@@ -683,6 +683,18 @@
     "bb_pf1_80000_006_5": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bafs_mgmt_36": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bafs_mgmt_45": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bafs_floor_02": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "chemistry": {
@@ -1013,6 +1025,38 @@
     "cb_m2_11_2_5": {
       "date": "2026-10-04",
       "reason": "IMPOSSIBLE_PREMISE"
+    },
+    "chem_ab_18": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_rx_40": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_rx_41": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_rx_42": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_rx_50": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_floor_01": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_re_64": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "chem_pt_101": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "economics": {
@@ -1291,6 +1335,22 @@
     "econ_el4_1_80_20": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "econ_bc4_0": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "econ_bc4_1": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "econ_bc4_2": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "econ_bc4_3": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "english": {
@@ -1335,6 +1395,18 @@
     "eth_floor_29": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "er_mc_35": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "eth_floor_16": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "eth_floor_18": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "m1": {
@@ -1497,6 +1569,22 @@
     "m1b_el2_7_4": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "m1_si_110": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "m1_si_111": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "m1_si_116": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "m1_si_118": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "chinese": {
@@ -1549,6 +1637,50 @@
     "bioh_ph_6": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "bio_cells_7": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_cells_9": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_floor_17": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_genetics_21": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_genetics_22": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_genetics_28": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_genetics_27": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_coordination_60": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_enzymes_75": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_digestion_112": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "bio_floor_01": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "csd": {
@@ -1839,6 +1971,26 @@
     "csd_sus_7_8": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "csd_oc_2": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "csd_oc_12": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "csd_hs_35": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "csd_gl_76": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "floor8_csd_se_05": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   },
   "geography": {
@@ -1861,6 +2013,276 @@
     "geoh_ma_4": {
       "date": "2026-09-29",
       "reason": "POSITIONAL_RATIONALE_REFERENCE"
+    },
+    "geo_hz_9": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_floor_02": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_rv_24": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_ub_48": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_ub_62": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_ub_59": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_fo_84": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_rf_93": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_rf_98": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_floor_06": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_floor_09": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "geo_floor_17": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "physics": {
+    "phy_heatc_66": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "phy_heatc_67": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "phy_opt_97": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "ict": {
+    "ict_drc_23": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ict_prog_66": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ict_prog_68": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ict_prog_70": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ict_db_82": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ict_sec_87": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "history": {
+    "hist_fl_pw03": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "hist_floor_10": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "hist_floor_13": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "hist_floor_21": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "chinese-literature": {
+    "clit_an_7": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_tg_17": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_fc_69": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_tc_91": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_ap_107": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_ap_108": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_floor_10": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_floor_14": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_floor_16": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_floor_19": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_floor_24": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "clit_floor_37": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "ths": {
+    "ths_sv_18": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ths_ds_40": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ths_tr_76": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "ths_su_96": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "health-management": {
+    "hm_hc_1": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "hm_floor_10": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "design-tech": {
+    "dt_el_20": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "dt_mt_35": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "dt_st_49": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "visual-arts": {
+    "va_md_64": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "floor3_va_fa_05": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "music": {
+    "mus_fm_41": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "mus_fm_44": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "mus_wh_55": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "mus_cr_110": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "floor2_mus_hf_02": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "floor2_mus_hf_03": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "floor2_mus_hf_05": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "pe": {
+    "pe_inj_79": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    }
+  },
+  "technology-living": {
+    "tl_nu_14": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "tl_me_43": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "tl_fs_49": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "tl_fh_97": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "tl_fh_101": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
+    },
+    "tl_co_107": {
+      "date": "2026-10-08",
+      "reason": "PURE_RECALL"
     }
   }
 }

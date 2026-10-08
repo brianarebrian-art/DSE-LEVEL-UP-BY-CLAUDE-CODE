@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : physics
-//   count    : 80  (easy 48 / medium 22 / hard 10)
-//   types    : mc 80 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 83  (easy 49 / medium 24 / hard 10)
+//   types    : mc 83 / text 0 / long 0
+//   updated  : 2026-10-08
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -3473,5 +3473,101 @@ export const physicsAutoQuestions: Question[] = [
         "en": "Correct. With the resistance fixed, current is proportional to voltage: $\\dfrac{4}{8} = 0.5$."
       }
     ]
+  },
+  {
+    "id": "rcl_phy_heatc_66",
+    "type": "mc",
+    "subject": "physics",
+    "topic": "heat",
+    "topicZh": "熱學",
+    "topicEn": "Heat",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "把一塊 90°C 的金屬塊放入一杯 20°C 的水中，杯子妥善隔熱。下列哪項描述最終的情況？",
+    "explanation": "熱量總是由溫度較高的物體傳向溫度較低的物體。金屬塊溫度較高，熱量便傳到水中；金屬塊降溫、水升溫，直至兩者溫度相同（熱平衡），淨傳遞才停止。最終溫度介乎 20°C 與 90°C 之間：水吸熱時溫度亦會上升，所以金屬塊不會降至 20°C。熱傳遞的方向只取決於溫度高低，與比熱容無關；比熱容只影響兩者的溫度各自改變多少。溫度相同不代表內能相同，內能還取決於物體的質量和物料。",
+    "options": [
+      "熱量由金屬塊傳到水，直至金屬塊的溫度降至 20°C 為止。",
+      "熱量由水傳到金屬塊，因為水的比熱容比金屬大得多。",
+      "熱量由金屬塊傳到水，直至兩者溫度相同才停止淨傳遞。",
+      "兩者最終溫度相同，所以兩者所含的內能亦必定相同。"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A metal block at 90°C is placed in a cup of water at 20°C, and the cup is well insulated. Which statement describes the final situation?",
+    "optionsEn": [
+      "Heat flows from the metal to the water until the metal cools to 20°C.",
+      "Heat flows from the water to the metal, because water has a much higher specific heat capacity.",
+      "Heat flows from the metal to the water until both reach the same temperature.",
+      "Both end at the same temperature, so they must also have the same internal energy."
+    ],
+    "explanationEn": "Heat always flows from the hotter object to the colder one. The metal is hotter, so heat flows into the water; the metal cools and the water warms until both are at the same temperature (thermal equilibrium), and then the net flow stops. The final temperature lies between 20°C and 90°C: the water also warms as it gains heat, so the metal never cools to 20°C. The direction of heat flow depends only on temperature, not on specific heat capacity, which only affects how much each temperature changes. Equal temperature does not mean equal internal energy, which also depends on mass and material."
+  },
+  {
+    "id": "rcl_phy_heatc_67",
+    "type": "mc",
+    "subject": "physics",
+    "topic": "heat",
+    "topicZh": "熱學",
+    "topicEn": "Heat",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "用電熱器持續加熱一杯 0°C 的冰水混合物，並不斷攪拌。在冰完全熔化之前，溫度計讀數一直保持 0°C。電熱器在這段時間供應的能量主要用於甚麼？",
+    "explanation": "冰熔化期間溫度保持不變，所吸收的能量是熔解潛熱：能量用於削弱分子之間的作用力（增加分子的勢能），使固態變成液態，而不是增加分子的平均動能，所以溫度不變。若能量用於提高分子的平均動能，溫度便會上升，這與持續攪拌下讀數保持 0°C 的觀察不符，問題不在溫度計。雖然會有部分能量散失，但冰確實在逐漸熔化，說明能量被吸收了。比熱容是物料的性質，不會因加熱而增加。",
+    "options": [
+      "提高水分子的平均動能，只是溫度計反應太慢。",
+      "能量全部散失到周圍環境，所以溫度沒有改變。",
+      "提高冰的比熱容，使冰較難升溫至 0°C 以上。",
+      "削弱冰的分子之間的作用力，使冰熔化成水。"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "A cup of ice and water at 0°C is heated steadily with an electric heater and stirred all the time. Until all the ice has melted, the thermometer stays at 0°C. What is the energy from the heater mainly used for during this time?",
+    "optionsEn": [
+      "Raising the mean kinetic energy of the molecules; the thermometer is just slow.",
+      "All of it is lost to the surroundings, which is why the temperature does not change.",
+      "Raising the specific heat capacity of the ice, so it is harder to warm above 0°C.",
+      "Weakening the forces between the ice molecules, so the ice melts."
+    ],
+    "explanationEn": "The temperature stays constant while the ice melts because the energy absorbed is latent heat of fusion: it weakens the forces between molecules (raising their potential energy) so the solid becomes liquid, rather than raising their mean kinetic energy, so the temperature does not change. If the energy raised the mean kinetic energy, the temperature would rise, which does not match a steady 0°C reading with constant stirring; the thermometer is not the problem. Some energy is lost, but the ice is steadily melting, which shows energy is being absorbed. Specific heat capacity is a property of the material and does not increase with heating."
+  },
+  {
+    "id": "rcl_phy_opt_97",
+    "type": "mc",
+    "subject": "physics",
+    "topic": "optics",
+    "topicZh": "光學",
+    "topicEn": "Optics",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "一束白光射入玻璃三稜鏡。離開三稜鏡後，紅光與紫光哪一種偏折較大？原因是甚麼？",
+    "explanation": "玻璃的折射率隨光的顏色（波長）而不同：波長較短的紫光，折射率較大，在玻璃中的速率較慢，偏折亦較大；紅光的偏折則最小。白光因此分散成光譜，這就是色散。認為紅光偏折較大，是把波長與折射率的關係倒轉了。入射角相同並不代表折射角相同，因為各種顏色的折射率不同。認為紫光偏折較大是因為速率較快，結論對但理由錯：折射率越大，光在玻璃中的速率越慢。",
+    "options": [
+      "紫光偏折較大，因為玻璃對紫光的折射率較大。",
+      "紅光偏折較大，因為紅光波長較長，折射率亦較大。",
+      "兩者偏折相同，因為它們以相同的入射角射入稜鏡。",
+      "紫光偏折較大，因為紫光在玻璃中的速率較紅光快。"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A beam of white light enters a glass prism. After leaving the prism, which is deviated more, red light or violet light, and why?",
+    "optionsEn": [
+      "Violet, because the refractive index of glass is larger for violet light.",
+      "Red, because red light has a longer wavelength and so a larger refractive index.",
+      "They are deviated equally, because they enter the prism at the same angle of incidence.",
+      "Violet, because violet light travels faster in glass than red light."
+    ],
+    "explanationEn": "The refractive index of glass depends on the colour (wavelength) of light: violet light, with a shorter wavelength, has a larger refractive index, travels more slowly in glass and is deviated more; red light is deviated least. White light therefore spreads into a spectrum, which is dispersion. Saying red is deviated more reverses the link between wavelength and refractive index. The same angle of incidence does not give the same angle of refraction, because each colour has a different refractive index. Saying violet is deviated more because it travels faster gives the right answer for the wrong reason: a larger refractive index means a lower speed in glass."
   }
 ]
