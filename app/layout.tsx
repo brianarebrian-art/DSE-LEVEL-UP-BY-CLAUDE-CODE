@@ -31,7 +31,7 @@ const garamond = EB_Garamond({
 // 2026-08-14：原本此處與 app/sitemap.ts 各有一份字面值，靠註釋提醒「三處必須一致」。
 // 紙筆戰士把對答案網址印上實體試卷後，寫錯即無法補救，故改為單一來源匯入。
 // （public/robots.txt 為靜態檔，無法匯入，由 lib/__tests__/site-origin.test.mts 核對。）
-import { SITE_ORIGIN as SITE_URL } from '@/lib/site'
+import { SITE_ORIGIN as SITE_URL, OFFICIAL_SOCIAL } from '@/lib/site'
 
 // 題數由真題庫衍生，唔手寫 —— 手寫嗰個版本喺呢度漂咗兩個星期（26,204 vs 27,321）。
 // `summary.generated.ts` 淨係數字同課題名（gzip 12KB），唔會拉題庫入 bundle；
@@ -121,6 +121,11 @@ const jsonLd = {
       name: 'DSE Level Up',
       url: SITE_URL,
       email: 'dselevelup@gmail.com',
+      // 2026-10-09 (founders' reply 61a): the logo is the 512px PNG app icon, a format search
+      // engines accept for an organisation logo. sameAs lists only the accounts the site itself
+      // links in the footer and on /about (OFFICIAL_SOCIAL), so the two never disagree.
+      logo: `${SITE_URL}/icons/owl-512.png`,
+      sameAs: OFFICIAL_SOCIAL.map((s) => s.href),
       description:
         'An independent, non-commercial educational project. Not affiliated with, authorised by, or endorsed by the Hong Kong Examinations and Assessment Authority (HKEAA).',
     },

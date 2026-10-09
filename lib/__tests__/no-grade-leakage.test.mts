@@ -29,6 +29,6 @@ test('verify API does not return a grade', () => {
 })
 
 test('help copy no longer promises a level range on the result page', () => {
-  assert.doesNotMatch(code('components/FAQSection.tsx'), /結果頁會直接寫出範圍|result page states the range/)
+  assert.doesNotMatch(code('lib/faq.ts'), /結果頁會直接寫出範圍|result page states the range/) // FAQ text (reply 61a)
   assert.doesNotMatch(code('app/trust/TrustClient.tsx'), /我個等級係點嚟|Where does my level come from/)
 })

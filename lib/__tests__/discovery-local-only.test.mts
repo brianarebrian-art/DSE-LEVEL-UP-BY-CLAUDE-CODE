@@ -102,7 +102,7 @@ function walk(dir: string, out: string[] = []): string[] {
 test('⑤ 冇任何學生或者 agent 見到嘅文案仲講住個鎖', () => {
   // 2026-09-05 嗰次由 60 改 30，全站有五處文案冇跟住改。今次係整個剷除，
   // 同一個風險更大：對外仲寫住「答錯會鎖 30 秒」而實際上冇，就係假聲稱。
-  const files = [...walk('components'), ...walk('app'), 'public/llms.txt']
+  const files = [...walk('components'), ...walk('app'), 'public/llms.txt', 'lib/faq.ts'] // FAQ text lives in lib/faq.ts (reply 61a)
   const hits: string[] = []
   for (const f of files) {
     let src: string

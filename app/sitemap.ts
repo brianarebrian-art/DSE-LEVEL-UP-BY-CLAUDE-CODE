@@ -20,6 +20,17 @@ import { getActiveSubjects } from '@/data/subjects'
 // 2026-08-14 收攏為單一來源，理由見 lib/site.ts。
 import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
 import { sourceLabEntries } from '@/data/history-sources'
+import { ARTICLE_DATES } from '@/lib/articleDates'
+import { BANK_UPDATED_AT } from '@/data/questions/bank-dates.generated'
+
+// lastModified（創辦人回覆 61a，2026-10-09）。原本每條都寫 `new Date()`，即每次有人讀 sitemap
+// 就聲稱全站「今日更新」。搜尋器發現 lastmod 不可信便會整份忽略。現在只寫有真實紀錄的日期：
+// 文章頁用 lib/articleDates.ts，科目頁用題庫最後改動日期（bank-dates.generated.ts）；
+// 其餘頁面沒有可靠日期，不寫。
+const lastModifiedOf = (path: string): { lastModified?: string } => {
+  const d = ARTICLE_DATES[path]
+  return d ? { lastModified: d.modified || d.published } : {}
+}
 
 // 公開靜態頁。順序即優先級由高至低。
 const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
@@ -50,8 +61,6 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date()
-
   // 科目 id 一律由 `getActiveSubjects()` 即時讀取，不另行硬編清單 ——
   // 硬編的 slug 與真實 id 脫節時會產生一批 404（例如 mathematics／math、
   // citizenship-and-social-development／csd）。衍生則永遠對得上。
@@ -60,19 +69,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...STATIC_ROUTES.map((r) => ({
       url: `${DOMAIN}${r.path}`,
-      lastModified,
+      ...lastModifiedOf(r.path),
       changeFrequency: r.freq,
       priority: r.priority,
     })),
     ...subjectIds.map((id) => ({
       url: `${DOMAIN}/subjects/${id}`,
-      lastModified,
+      ...(BANK_UPDATED_AT[id] ? { lastModified: BANK_UPDATED_AT[id].date } : {}),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })),
     ...subjectIds.map((id) => ({
       url: `${DOMAIN}/notes/${id}`,
-      lastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     })),
@@ -80,7 +88,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 脫節時會產生一批 404。
     ...sourceLabEntries.map((e) => ({
       url: `${DOMAIN}/source-lab/${e.id}`,
-      lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),

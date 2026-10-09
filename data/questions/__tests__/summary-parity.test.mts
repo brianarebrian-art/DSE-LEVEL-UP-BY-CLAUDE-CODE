@@ -88,3 +88,18 @@ test('LONGEST_OPTION 同真題庫一致', async () => {
   }
   assert.equal(Object.keys(LONGEST_OPTION).length, active.length, `科目數對唔上 ${FIX}`)
 })
+
+// Sitemap dates (founders' reply 61a). A stale file would keep an old date for a subject whose
+// bank has changed, so each entry must carry the current version; the date is a real day.
+test('BANK_UPDATED_AT 逐科版本號同 BANK_VERSION 一致', async () => {
+  const { BANK_VERSION } = await import('../bank-versions.generated.ts')
+  const { BANK_UPDATED_AT } = await import('../bank-dates.generated.ts')
+  for (const s of active) {
+    const e = BANK_UPDATED_AT[s.id]
+    assert.ok(e, `${s.id} 冇日期 ${FIX}`)
+    assert.equal(e.version, BANK_VERSION[s.id], `${s.id} 日期屬於舊版本 ${FIX}`)
+    assert.match(e.date, /^\d{4}-\d{2}-\d{2}$/)
+    assert.ok(e.date >= '2026-10-09', `${s.id} 日期早於第一次產生（2026-10-09）`)
+  }
+  assert.equal(Object.keys(BANK_UPDATED_AT).length, active.length, `科目數對唔上 ${FIX}`)
+})

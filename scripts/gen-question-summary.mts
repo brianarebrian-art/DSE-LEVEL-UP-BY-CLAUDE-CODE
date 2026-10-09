@@ -167,6 +167,37 @@ export const BANK_VERSION: Record<string, string> = ${JSON.stringify(versions, n
 writeFileSync(join(ROOT, 'data/questions/bank-versions.generated.ts'), versionsOut)
 console.log(`✓ data/questions/bank-versions.generated.ts`)
 
+// Sitemap dates (founders' reply 61a, 2026-10-09). The date each subject's published bank
+// last changed, for <lastmod> on /subjects/<id>. A date moves only when that subject's
+// version above changes, so regenerating for another reason does not claim an update.
+// The first run (2026-10-09) dated every subject that day: the same commit added a FAQ
+// block to every subject page, so all 25 pages did change then.
+const DATES_FILE = join(ROOT, 'data/questions/bank-dates.generated.ts')
+const todayHK = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Hong_Kong' }).format(new Date())
+let prevDates: Record<string, { version: string; date: string }> = {}
+try {
+  const m = readFileSync(DATES_FILE, 'utf8').match(/BANK_UPDATED_AT[^=]*= (\{[\s\S]*\})\n/)
+  if (m) prevDates = JSON.parse(m[1])
+} catch {
+  /* first run */
+}
+const bankDates: Record<string, { version: string; date: string }> = {}
+for (const s of active) {
+  const prev = prevDates[s.id]
+  bankDates[s.id] = prev && prev.version === versions[s.id] ? prev : { version: versions[s.id], date: todayHK }
+}
+const datesOut = `// ⚠️ 本檔由 scripts/gen-question-summary.mts 產生 —— 請勿手動修改。
+// 重新產生：npm run gen:summary
+// 迴歸鎖：data/questions/__tests__/summary-parity.test.mts
+//
+// 每科已上線題庫最後一次改動的日期（香港時間），供 sitemap.xml 的 lastmod 使用（創辦人回覆 61a）。
+// version 與 bank-versions.generated.ts 相同；只有 version 改變時日期才會更新。
+
+export const BANK_UPDATED_AT: Record<string, { version: string; date: string }> = ${JSON.stringify(bankDates, null, 2)}
+`
+writeFileSync(DATES_FILE, datesOut)
+console.log(`✓ data/questions/bank-dates.generated.ts`)
+
 // Founders' reply 17C (2026-10-04): the practice estimate says, per subject, when
 // picking the longest option succeeds more than half the time. Measured on the
 // published MC questions with the same visual length as the answer-shape check.
