@@ -276,7 +276,7 @@ export const mathFloorBatch1Questions: Question[] = [
     "difficulty": "hard",
     "year": 0,
     "content": "已知 $y$ 捨入至 2 位小數後為 $6.80$，而 $z$ 捨入至 1 位小數後為 $3.5$。求 $y - z$ 的最大可能值。",
-    "explanation": "差最大時，被減數取最大而減數取最小。$y$ 的上限為 $6.805$，$z$ 的下限為 $3.45$，故 $y - z$ 的最大可能值為 $6.805 - 3.45 = 3.355$。$3.35$ 是直接以量得的值相減；$3.30$ 是把兩者的誤差方向弄反；$3.405$ 則是把 $z$ 的下限誤取為 $3.4$。",
+    "explanation": "差最大時，被減數取最大而減數取最小。$y$ 的上限為 $6.805$，$z$ 的下限為 $3.45$，故 $y - z$ 的最大可能值為 $6.805 - 3.45 = 3.355$。$3.30$ 是直接以量得的值相減（$6.80 - 3.5$）；$3.35$ 只把 $z$ 換成下限，漏了把 $y$ 換成上限（$6.80 - 3.45$）；$3.405$ 則是把 $z$ 的下限誤取為 $3.4$。",
     "options": [
       "$3.30$",
       "$3.355$",
@@ -292,7 +292,7 @@ export const mathFloorBatch1Questions: Question[] = [
       "$3.35$",
       "$3.405$"
     ],
-    "explanationEn": "A difference is greatest when the first number is largest and the second is smallest. The upper limit of $y$ is $6.805$ and the lower limit of $z$ is $3.45$, so the greatest possible value of $y - z$ is $6.805 - 3.45 = 3.355$. $3.35$ simply subtracts the measured values; $3.30$ reverses both error directions; $3.405$ takes the lower limit of $z$ as $3.4$."
+    "explanationEn": "A difference is greatest when the first number is largest and the second is smallest. The upper limit of $y$ is $6.805$ and the lower limit of $z$ is $3.45$, so the greatest possible value of $y - z$ is $6.805 - 3.45 = 3.355$. $3.30$ simply subtracts the measured values ($6.80 - 3.5$); $3.35$ uses the lower limit of $z$ but forgets the upper limit of $y$ ($6.80 - 3.45$); $3.405$ takes the lower limit of $z$ as $3.4$."
   },
   {
     "id": "math_fl_ns01",
@@ -724,7 +724,7 @@ export const mathFloorBatch1Questions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $z$ 與 $x$ 成正變，並與 $y$ 成反變。當 $x = 8$、$y = 2$ 時，$z = 20$。求當 $x = 6$、$y = 5$ 時 $z$ 的值。",
-    "explanation": "設 $z = \\dfrac{kx}{y}$。由 $20 = \\dfrac{8k}{2} = 4k$ 得 $k = 5$。故當 $x = 6$、$y = 5$ 時，$z = \\dfrac{5 \\times 6}{5} = 6$。$4.8$ 是把 $x$ 與 $y$ 的角色調轉；$7.5$ 是誤把 $k$ 取為 $\\dfrac{20}{8}$ 一類；$50$ 則是把兩者都當成正變。",
+    "explanation": "設 $z = \\dfrac{kx}{y}$。由 $20 = \\dfrac{8k}{2} = 4k$ 得 $k = 5$。故當 $x = 6$、$y = 5$ 時，$z = \\dfrac{5 \\times 6}{5} = 6$。$4.8$ 是把 $20 = 4k$ 中的 $4$ 誤當成 $k$（$\\dfrac{4 \\times 6}{5}$）；$7.5$ 及 $50$ 都沒有同時按「與 $x$ 成正變、與 $y$ 成反變」處理兩個變量。",
     "options": [
       "$4.8$",
       "$6$",
@@ -740,7 +740,7 @@ export const mathFloorBatch1Questions: Question[] = [
       "$7.5$",
       "$50$"
     ],
-    "explanationEn": "Let $z = \\dfrac{kx}{y}$. From $20 = \\dfrac{8k}{2} = 4k$ we get $k = 5$, so $z = \\dfrac{5 \\times 6}{5} = 6$. $4.8$ interchanges the roles of $x$ and $y$; $7.5$ takes $k$ as $\\dfrac{20}{8}$ or similar; $50$ treats both relations as direct."
+    "explanationEn": "Let $z = \\dfrac{kx}{y}$. From $20 = \\dfrac{8k}{2} = 4k$ we get $k = 5$, so $z = \\dfrac{5 \\times 6}{5} = 6$. $4.8$ takes the $4$ in $20 = 4k$ as $k$ ($\\dfrac{4 \\times 6}{5}$); $7.5$ and $50$ do not apply the direct variation with $x$ and the inverse variation with $y$ together."
   },
   {
     "id": "math_fl_va06",
@@ -756,7 +756,7 @@ export const mathFloorBatch1Questions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "已知 $y$ 為 $x$ 的部分變，即 $y = a + bx$，其中 $a$、$b$ 為常數。當 $x = 2$ 時 $y = 11$；當 $x = 5$ 時 $y = 20$。求 $a$ 的值。",
-    "explanation": "代入兩組數值得 $a + 2b = 11$ 及 $a + 5b = 20$。兩式相減得 $3b = 9$，即 $b = 3$；再代回得 $a = 11 - 2 \\times 3 = 5$。$3$ 是 $b$ 的值而非 $a$；$11$ 是把 $x = 2$ 時的 $y$ 值誤當成常數項；$1$ 則是相減時把 $b$ 誤算為 $\\dfrac{20-11}{5-2+3}$ 一類。",
+    "explanation": "代入兩組數值得 $a + 2b = 11$ 及 $a + 5b = 20$。兩式相減得 $3b = 9$，即 $b = 3$；再代回得 $a = 11 - 2 \\times 3 = 5$。$3$ 是 $b$ 的值而非 $a$；$11$ 是把 $x = 2$ 時的 $y$ 值誤當成常數項；$1$ 則是解聯立方程時計錯 $b$ 的結果（例如誤得 $b = 5$，代回便得 $a = 11 - 10 = 1$）。",
     "options": [
       "$3$",
       "$5$",
@@ -980,7 +980,7 @@ export const mathFloorBatch1Questions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "一個五邊形其中四個內角分別為 $100^{\\circ}$、$120^{\\circ}$、$90^{\\circ}$ 及 $130^{\\circ}$。求第五個內角。",
-    "explanation": "五邊形的內角和 $= (5-2) \\times 180^{\\circ} = 540^{\\circ}$。四個已知內角之和 $= 100^{\\circ} + 120^{\\circ} + 90^{\\circ} + 130^{\\circ} = 440^{\\circ}$，故第五個內角 $= 540^{\\circ} - 440^{\\circ} = 100^{\\circ}$。$80^{\\circ}$ 是誤用外角和 $360^{\\circ}$ 作總和；$110^{\\circ}$ 是把總和誤取為 $550^{\\circ}$；$140^{\\circ}$ 則是誤用了六邊形的內角和。",
+    "explanation": "五邊形的內角和 $= (5-2) \\times 180^{\\circ} = 540^{\\circ}$。四個已知內角之和 $= 100^{\\circ} + 120^{\\circ} + 90^{\\circ} + 130^{\\circ} = 440^{\\circ}$，故第五個內角 $= 540^{\\circ} - 440^{\\circ} = 100^{\\circ}$。$80^{\\circ}$ 是所求內角的外角（$180^{\\circ} - 100^{\\circ}$），題目問的是內角；$110^{\\circ}$ 是把總和誤取為 $550^{\\circ}$；$140^{\\circ}$ 則是把四個已知內角之和加錯成 $400^{\\circ}$。",
     "options": [
       "$100^{\\circ}$",
       "$110^{\\circ}$",
@@ -996,7 +996,7 @@ export const mathFloorBatch1Questions: Question[] = [
       "$140^{\\circ}$",
       "$80^{\\circ}$"
     ],
-    "explanationEn": "The interior angles of a pentagon sum to $(5-2) \\times 180^{\\circ} = 540^{\\circ}$. The four given angles sum to $100^{\\circ} + 120^{\\circ} + 90^{\\circ} + 130^{\\circ} = 440^{\\circ}$, so the fifth angle is $540^{\\circ} - 440^{\\circ} = 100^{\\circ}$. $80^{\\circ}$ wrongly uses the exterior angle sum of $360^{\\circ}$; $110^{\\circ}$ takes the total as $550^{\\circ}$; $140^{\\circ}$ uses the sum for a hexagon."
+    "explanationEn": "The interior angles of a pentagon sum to $(5-2) \\times 180^{\\circ} = 540^{\\circ}$. The four given angles sum to $100^{\\circ} + 120^{\\circ} + 90^{\\circ} + 130^{\\circ} = 440^{\\circ}$, so the fifth angle is $540^{\\circ} - 440^{\\circ} = 100^{\\circ}$. $80^{\\circ}$ is the exterior angle at that vertex ($180^{\\circ} - 100^{\\circ}$), not the interior angle asked for; $110^{\\circ}$ takes the total as $550^{\\circ}$; $140^{\\circ}$ adds the four given angles wrongly as $400^{\\circ}$."
   },
   {
     "id": "math_fl_pg05",
@@ -1012,7 +1012,7 @@ export const mathFloorBatch1Questions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "一個凸多邊形的每一個內角均為 $150^{\\circ}$。求其對角線的數目。",
-    "explanation": "每一個外角 $= 180^{\\circ} - 150^{\\circ} = 30^{\\circ}$，故邊數 $n = \\dfrac{360^{\\circ}}{30^{\\circ}} = 12$。對角線數目 $= \\dfrac{n(n-3)}{2} = \\dfrac{12 \\times 9}{2} = 54$。$12$ 是求得邊數之後停手，未回應題目所問；$66$ 是誤用 $\\dfrac{n(n-1)}{2}$，該式數的是所有連線而非只數對角線；$27$ 則是漏了除以 $2$ 之後再減半一類的運算錯誤。",
+    "explanation": "每一個外角 $= 180^{\\circ} - 150^{\\circ} = 30^{\\circ}$，故邊數 $n = \\dfrac{360^{\\circ}}{30^{\\circ}} = 12$。對角線數目 $= \\dfrac{n(n-3)}{2} = \\dfrac{12 \\times 9}{2} = 54$。$12$ 是求得邊數之後停手，未回應題目所問；$66$ 是誤用 $\\dfrac{n(n-1)}{2}$，該式數的是所有連線而非只數對角線；$27$ 則是在 $\\dfrac{n(n-3)}{2}$ 之後多除了一次 $2$。",
     "options": [
       "$12$",
       "$27$",
@@ -1268,7 +1268,7 @@ export const mathFloorBatch1Questions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "兩個相似立體的表面積之比為 $9:16$。若較小者的體積為 $54 \\text{ cm}^3$，求較大者的體積。",
-    "explanation": "表面積之比 $9:16$ 對應長度之比 $\\sqrt{9}:\\sqrt{16} = 3:4$，故體積之比 $= 3^3 : 4^3 = 27:64$。所求體積 $= 54 \\times \\dfrac{64}{27} = 128 \\text{ cm}^3$。$96 \\text{ cm}^3$ 是把表面積之比直接當成體積之比（$54 \\times \\dfrac{16}{9}$）；$72 \\text{ cm}^3$ 是誤用長度之比 $\\dfrac{4}{3}$；$216 \\text{ cm}^3$ 則是誤把長度之比取為 $1:2$ 而作立方。",
+    "explanation": "表面積之比 $9:16$ 對應長度之比 $\\sqrt{9}:\\sqrt{16} = 3:4$，故體積之比 $= 3^3 : 4^3 = 27:64$。所求體積 $= 54 \\times \\dfrac{64}{27} = 128 \\text{ cm}^3$。$96 \\text{ cm}^3$ 是把表面積之比直接當成體積之比（$54 \\times \\dfrac{16}{9}$）；$72 \\text{ cm}^3$ 是誤用長度之比 $\\dfrac{4}{3}$；$216 \\text{ cm}^3$ 則是直接把體積乘以 $4$，沒有把長度之比化成倍數 $\\dfrac{4}{3}$ 再立方。",
     "options": [
       "$72 \\text{ cm}^3$",
       "$128 \\text{ cm}^3$",
@@ -1284,7 +1284,7 @@ export const mathFloorBatch1Questions: Question[] = [
       "$216 \\text{ cm}^3$",
       "$96 \\text{ cm}^3$"
     ],
-    "explanationEn": "A surface area ratio of $9:16$ corresponds to a length ratio of $\\sqrt{9}:\\sqrt{16} = 3:4$, so the volume ratio is $3^3 : 4^3 = 27:64$ and the required volume is $54 \\times \\dfrac{64}{27} = 128 \\text{ cm}^3$. $96 \\text{ cm}^3$ uses the surface area ratio directly ($54 \\times \\dfrac{16}{9}$); $72 \\text{ cm}^3$ uses the length ratio $\\dfrac{4}{3}$; $216 \\text{ cm}^3$ cubes a length ratio wrongly taken as $1:2$."
+    "explanationEn": "A surface area ratio of $9:16$ corresponds to a length ratio of $\\sqrt{9}:\\sqrt{16} = 3:4$, so the volume ratio is $3^3 : 4^3 = 27:64$ and the required volume is $54 \\times \\dfrac{64}{27} = 128 \\text{ cm}^3$. $96 \\text{ cm}^3$ uses the surface area ratio directly ($54 \\times \\dfrac{16}{9}$); $72 \\text{ cm}^3$ uses the length ratio $\\dfrac{4}{3}$; $216 \\text{ cm}^3$ simply multiplies the volume by $4$ instead of cubing the scale factor $\\dfrac{4}{3}$."
   },
   {
     "id": "math_fl_ss06",

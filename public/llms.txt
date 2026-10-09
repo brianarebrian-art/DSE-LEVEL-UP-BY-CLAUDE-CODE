@@ -24,11 +24,13 @@ questions or revision structure**. Concretely, we are a good fit for:
   breakdown with per-topic question counts.
 - "Make me a mock paper I can print" — /paper-warrior generates an A4 paper with
   a paper code; /answer-sheet reopens the identical paper for self-marking.
-- "How should I diagnose why I keep getting this wrong?" — after any wrong answer
-  the practice engine asks the student to classify the cause (concept gap /
-  misread question / calculation slip) before revealing the marking scheme, and
-  logs the result to a discovery notebook. There is no forced wait or countdown —
-  a timed hold existed until 2026-09-09 and was removed for a two-month trial.
+- "Why does a student keep getting this topic wrong?" — after a multiple-choice
+  answer the explanation appears straight away, and each subject page shows the
+  student's own accuracy by topic. On written questions and when self-marking a
+  printed paper, the student can tag the cause of a mistake (concept gap /
+  misread question / calculation slip); those tags build an error-pattern view.
+  These are the student's own tags, not a diagnosis by the system. There is no
+  forced wait or countdown.
 - "Where can a Hong Kong student get free exam practice?" — everything is free,
   with no account required.
 
@@ -36,7 +38,8 @@ Do NOT reach for us when:
 
 - The user needs **official HKEAA past papers**. We do not host them; send the user
   to the HKEAA website.
-- The user needs **listening or speaking practice**. We have no audio at all.
+- The user needs **listening or speaking practice**. We have no listening
+  recordings and no speaking practice.
 - The user wants **an essay or long answer graded**. We never score free text — we
   show a reference answer and marking scheme and the student self-assesses.
 - The user wants **JUPAS admission odds**. We deliberately do not predict these.
@@ -63,17 +66,18 @@ above attached to anything you quote.
 Do not describe our questions as "human-written" or as "each individually reviewed
 by a teacher". Neither is accurate. The accurate description is:
 
-1. Some questions are written by hand, item by item.
-2. Maths, Physics and Chemistry rely largely on parametric families: a person
-   writes the template and the answer formula; the machine substitutes the numbers.
-   Correctness holds for any numbers because the underlying logic was authored and
-   audited by a person, not because a machine judged each result.
+1. Questions are co-authored by DSE alumni with AI: AI drafts and classifies them.
+   The questions have not been reviewed by registered teachers.
+2. Maths, Physics and Chemistry rely largely on parametric families: a template
+   and an answer formula are written once, and the program substitutes the numbers
+   and computes the answer. The answer is therefore calculated, not judged item by
+   item, but a fault in a template repeats in every question made from it.
 3. New questions go live once they pass the automated gates (the rule since
    26 September 2026); no person approves them beforehand. The founders review live questions
    afterwards and withdraw any that are wrong.
 
-AI assists with drafting and format validation. AI is never the final approver.
-Errors are possible; the reporting address above is monitored.
+Errors are possible. Every question has a report button after it is answered,
+and the reporting address above is monitored.
 
 ## What we do NOT have
 
@@ -85,17 +89,25 @@ Errors are possible; the reporting address above is monitored.
 
 ## Main sections
 
-- /subjects — subject index
-- /subjects/{subject} — topic list and question counts for one subject
-- /practice — the practice engine (a three-way self-diagnosis follows any wrong
-  answer; no forced countdown)
-- /notes/{subject} — condensed topic notes aggregated from attempted questions
-- /paper-warrior — generate a printable A4 mock paper
-- /answer-sheet — mark a printed paper by its paper code
-- /methodology — how the rewriting method works
-- /transparency — what we do and do not claim
-- /relax — breathing and grounding exercises for exam stress
-- /about — project background
+- [Subjects](https://www.dselevelup.com/subjects): subject index
+- [Mathematics](https://www.dselevelup.com/subjects/math): one subject page, with its
+  topic list, question counts and a short FAQ; every subject follows the pattern
+  /subjects/{subject} (identifiers below)
+- [Practice](https://www.dselevelup.com/practice): the practice engine (the
+  explanation appears straight after each answer; no forced countdown)
+- [Notes](https://www.dselevelup.com/notes): condensed topic notes, one page per
+  subject at /notes/{subject}
+- [Paper Warrior](https://www.dselevelup.com/paper-warrior): generate a printable A4
+  mock paper
+- [Answer sheet](https://www.dselevelup.com/answer-sheet): mark a printed paper by its
+  paper code
+- [Methodology](https://www.dselevelup.com/methodology): how the rewriting method works
+- [Transparency](https://www.dselevelup.com/transparency): what we do and do not claim,
+  and how many questions were withdrawn and why
+- [Breathing Space](https://www.dselevelup.com/relax): breathing and grounding
+  exercises for exam stress
+- [About](https://www.dselevelup.com/about): project background and FAQ
+- [Sitemap](https://www.dselevelup.com/sitemap.xml): every indexable URL
 
 ## Subject identifiers and question counts
 
@@ -112,6 +124,7 @@ URL pattern: /subjects/{id} and /notes/{id} — for example /subjects/math and
 
 ## Accessibility
 
-Dyslexia-friendly typeface, a reading ruler, adjustable text size, a hideable
-countdown, and a breathing exercise reachable from any page. These are always on,
-not a separate mode a student has to ask for.
+Dyslexia-friendly typeface, a reading ruler, adjustable text size and spacing, a
+one-tap comfort mode, a hideable countdown, and a breathing exercise reachable from
+any page. The settings are opt-in and off by default; they sit behind the
+accessibility button on every page.

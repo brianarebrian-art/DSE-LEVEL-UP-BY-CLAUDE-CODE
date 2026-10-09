@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import ArticleJsonLd from '@/components/Seo/ArticleJsonLd'
 import AboutClient from './AboutClient'
+import { ABOUT_FAQS, faqPageSchema, localiseFaq } from '@/lib/faq'
+import { SITE_ORIGIN } from '@/lib/site'
 
 // 2026-08-21：本版原本淨係一個 client component，冇自己嘅 metadata，所以喺搜尋
 // 結果同社交預覽入面同全站其他頁共用同一個泛用標題。老師／家長好多時就係由
@@ -14,9 +16,17 @@ export const metadata: Metadata = {
   description: 'DSE Level Up 係邊個做、點解免費、我哋承諾咗咩、又唔承諾咩。', // i18n-exempt
 }
 
+// The FAQ near the foot of the page, as FAQPage structured data (founders' reply 61a).
+// Same text as the visible list (components/FAQSection.tsx reads lib/faq.ts too).
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  ...faqPageSchema(localiseFaq(ABOUT_FAQS, false), `${SITE_ORIGIN}/about`),
+}
+
 export default function Page() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <AboutClient />
       {/* Article 結構化資料 ＋ 頁底可見日期（日期由 lib/articleDates.ts 讀） */}
       <ArticleJsonLd route="/about" meta={metadata} />

@@ -38,6 +38,8 @@ const pw = (c: number, e: number): string => {
   const xs = e === 1 ? 'x' : `x^{${e}}`
   return `${cs}${xs}`
 }
+// "^{1}" is not written (full check 2026-10-09, reply 62c).
+const pe = (e: number): string => (e === 1 ? '' : `^{${e}}`)
 
 // ── Differentiation (24) ─────────────────────────────────────────────────────
 const diff: Question[] = []
@@ -52,10 +54,10 @@ const diff: Question[] = []
   // d/dx (ax+1)^n = n·a·(ax+1)^{n-1}
   diff.push(q(id('dchain'), T.diff, FW.rate, 'medium', 2020 + (i % 4), 3,
     [`求 $\\frac{d}{dx}(${a}x+1)^{${n}}$。`, `Find $\\frac{d}{dx}(${a}x+1)^{${n}}$.`],
-    [optm(`${n * a}(${a}x+1)^{${n - 1}}`), optm(`${n}(${a}x+1)^{${n - 1}}`),
-      optm(`${n * a}(${a}x+1)^{${n}}`), optm(`${a}(${a}x+1)^{${n - 1}}`)],
-    [`鏈式法則：外層 $n(\\cdot)^{n-1}$ 乘內層導數 $${a}$，得 $${n * a}(${a}x+1)^{${n - 1}}$。`,
-      `Chain rule: outer $n(\\cdot)^{n-1}$ times inner derivative $${a}$ gives $${n * a}(${a}x+1)^{${n - 1}}$.`]))
+    [optm(`${n * a}(${a}x+1)${pe(n - 1)}`), optm(`${n}(${a}x+1)${pe(n - 1)}`),
+      optm(`${n * a}(${a}x+1)^{${n}}`), optm(`${a}(${a}x+1)${pe(n - 1)}`)],
+    [`鏈式法則：外層 $n(\\cdot)^{n-1}$ 乘內層導數 $${a}$，得 $${n * a}(${a}x+1)${pe(n - 1)}$。`,
+      `Chain rule: outer $n(\\cdot)^{n-1}$ times inner derivative $${a}$ gives $${n * a}(${a}x+1)${pe(n - 1)}$.`]))
 })
 ;([[2, 3], [3, 3], [2, 4], [3, 4]] as [number, number][]).forEach(([a, n], i) => {
   // second derivative of a x^n  → a·n·(n-1) x^{n-2}  (n≥3 keeps all 4 options distinct)
@@ -116,11 +118,12 @@ const integ: Question[] = []
 ;([[3, 2], [2, 4], [1, 4], [2, 3], [3, 4], [1, 6]] as [number, number][]).forEach(([a, b], i) => {
   // ∫_0^b a x dx = a b² / 2   (params chosen so a≠b and ans∉{a,b}: all 4 options distinct)
   const ans = a * b * b / 2
+  const ax = a === 1 ? '' : `${a}` // full check 2026-10-09 (reply 62c): "1x" is written "x"
   integ.push(q(id('idef'), T.integ, FW.transform, 'medium', 2020 + (i % 4), 3,
-    [`求定積分 $\\int_0^{${b}} ${a}x\\,dx$。`, `Evaluate $\\int_0^{${b}} ${a}x\\,dx$.`],
+    [`求定積分 $\\int_0^{${b}} ${ax}x\\,dx$。`, `Evaluate $\\int_0^{${b}} ${ax}x\\,dx$.`],
     [optm(`${rnd(ans)}`), optm(`${a * b * b}`), optm(`${ans + a}`), optm(`${ans + b}`)],
-    [`$\\int_0^{${b}} ${a}x\\,dx = \\left[\\frac{${a}x^2}{2}\\right]_0^{${b}} = ${rnd(ans)}$。`,
-      `$\\int_0^{${b}} ${a}x\\,dx = \\left[\\frac{${a}x^2}{2}\\right]_0^{${b}} = ${rnd(ans)}$.`]))
+    [`$\\int_0^{${b}} ${ax}x\\,dx = \\left[\\frac{${ax}x^2}{2}\\right]_0^{${b}} = ${rnd(ans)}$。陷阱：$${a * b * b}$ 漏了除以 $2$。`,
+      `$\\int_0^{${b}} ${ax}x\\,dx = \\left[\\frac{${ax}x^2}{2}\\right]_0^{${b}} = ${rnd(ans)}$. Trap: $${a * b * b}$ forgets to divide by $2$.`]))
 })
 integ.push(
   q(id('isp'), T.integ, FW.transform, 'easy', 2023, 2,
@@ -402,8 +405,8 @@ const calcapp: Question[] = []
   calcapp.push(q(id('catan'), T.calcapp, FW.rate, 'medium', 2020 + (i % 3), 3,
     [`曲線 $y=x^{${n}}$ 在 $x=${x0}$ 處的切線斜率是？`, `The slope of the tangent to $y=x^{${n}}$ at $x=${x0}$ is?`],
     [optm(`${slope}`), optm(`${Math.pow(x0, n)}`), optm(`${n}`), optm(`${slope + n}`)],
-    [`$\\frac{dy}{dx}=${n}x^{${n - 1}}$，代入 $x=${x0}$ 得斜率 $${slope}$。`,
-      `$\\frac{dy}{dx}=${n}x^{${n - 1}}$; at $x=${x0}$ the slope is $${slope}$.`]))
+    [`$\\frac{dy}{dx}=${pw(n, n - 1)}$，代入 $x=${x0}$ 得斜率 $${slope}$。`,
+      `$\\frac{dy}{dx}=${pw(n, n - 1)}$; at $x=${x0}$ the slope is $${slope}$.`]))
 })
 ;([2, 4, 5] as number[]).forEach((b, i) => {
   // area under y=x² from 0 to b = b³/3  (avoid b∈{1,3} where b² or b³ would equal the answer)

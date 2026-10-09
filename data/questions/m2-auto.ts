@@ -5,9 +5,9 @@
 // 可查證的原文。前端 QuestionProvenance 會如實向學生顯示
 // 「經自動檢查 …本題未有實名逐題審批紀錄」。
 //   subject  : m2
-//   count    : 68  (easy 41 / medium 27 / hard 0)
-//   types    : mc 68 / text 0 / long 0
-//   updated  : 2026-08-22
+//   count    : 100  (easy 51 / medium 43 / hard 6)
+//   types    : mc 100 / text 0 / long 0
+//   updated  : 2026-10-09
 // 請勿手動編輯 —— 修改將於下次執行 auto-promote 時被覆寫。
 import type { Question } from './types'
 
@@ -1952,7 +1952,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "easy",
     "year": 0,
-    "content": "考慮方程組 $\\begin{cases} 2x + 1y = 7 \\\\ 1x + 3y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
+    "content": "考慮方程組 $\\begin{cases} 2x + y = 7 \\\\ x + 3y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
     "explanation": "兩個二元一次方程有唯一解，當且僅當【係數行列式不為零】。此處 $\\begin{vmatrix} 2 & 1 \\\\ 1 & 3 \\end{vmatrix} = 2 \\times 3 - 1 \\times 1 = 5$，不為零，故有唯一解。幾何上，行列式為零即代表兩條直線平行或重合。方程數同未知數同為兩個，故「未知數多於方程」一項同題目不符。",
     "options": [
       "無法判斷，因為未知數多於方程",
@@ -1962,7 +1962,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "marks": 1,
-    "contentEn": "Consider $\\begin{cases} 2x + 1y = 7 \\\\ 1x + 3y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
+    "contentEn": "Consider $\\begin{cases} 2x + y = 7 \\\\ x + 3y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
     "optionsEn": [
       "It cannot be decided, as there are more unknowns than equations",
       "There is a unique solution",
@@ -1984,7 +1984,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "easy",
     "year": 0,
-    "content": "考慮方程組 $\\begin{cases} 1x + 2y = 7 \\\\ 2x + 4y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
+    "content": "考慮方程組 $\\begin{cases} x + 2y = 7 \\\\ 2x + 4y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
     "explanation": "兩個二元一次方程有唯一解，當且僅當【係數行列式不為零】。此處 $\\begin{vmatrix} 1 & 2 \\\\ 2 & 4 \\end{vmatrix} = 1 \\times 4 - 2 \\times 2 = 0$，等於零，故【沒有】唯一解 —— 但零行列式只告訴我們唯一解不存在，究竟是無解還是無限多解，要看兩條方程是否成比例，不能一口斷定。幾何上，行列式為零即代表兩條直線平行或重合。方程數同未知數同為兩個，故「未知數多於方程」一項同題目不符。",
     "options": [
       "必定有無限多解",
@@ -1994,7 +1994,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "marks": 1,
-    "contentEn": "Consider $\\begin{cases} 1x + 2y = 7 \\\\ 2x + 4y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
+    "contentEn": "Consider $\\begin{cases} x + 2y = 7 \\\\ 2x + 4y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
     "optionsEn": [
       "There must be infinitely many solutions",
       "It cannot be decided, as there are more unknowns than equations",
@@ -2016,7 +2016,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "easy",
     "year": 0,
-    "content": "考慮方程組 $\\begin{cases} 3x + 1y = 7 \\\\ 2x + 5y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
+    "content": "考慮方程組 $\\begin{cases} 3x + y = 7 \\\\ 2x + 5y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
     "explanation": "兩個二元一次方程有唯一解，當且僅當【係數行列式不為零】。此處 $\\begin{vmatrix} 3 & 1 \\\\ 2 & 5 \\end{vmatrix} = 3 \\times 5 - 1 \\times 2 = 13$，不為零，故有唯一解。幾何上，行列式為零即代表兩條直線平行或重合。方程數同未知數同為兩個，故「未知數多於方程」一項同題目不符。",
     "options": [
       "沒有解",
@@ -2026,7 +2026,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 3,
     "marks": 1,
-    "contentEn": "Consider $\\begin{cases} 3x + 1y = 7 \\\\ 2x + 5y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
+    "contentEn": "Consider $\\begin{cases} 3x + y = 7 \\\\ 2x + 5y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
     "optionsEn": [
       "There is no solution",
       "There are infinitely many solutions",
@@ -2080,7 +2080,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "easy",
     "year": 0,
-    "content": "考慮方程組 $\\begin{cases} 1x + 3y = 7 \\\\ 2x + 6y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
+    "content": "考慮方程組 $\\begin{cases} x + 3y = 7 \\\\ 2x + 6y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
     "explanation": "兩個二元一次方程有唯一解，當且僅當【係數行列式不為零】。此處 $\\begin{vmatrix} 1 & 3 \\\\ 2 & 6 \\end{vmatrix} = 1 \\times 6 - 3 \\times 2 = 0$，等於零，故【沒有】唯一解 —— 但零行列式只告訴我們唯一解不存在，究竟是無解還是無限多解，要看兩條方程是否成比例，不能一口斷定。幾何上，行列式為零即代表兩條直線平行或重合。方程數同未知數同為兩個，故「未知數多於方程」一項同題目不符。",
     "options": [
       "無法判斷，因為未知數多於方程",
@@ -2090,7 +2090,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 1,
     "marks": 1,
-    "contentEn": "Consider $\\begin{cases} 1x + 3y = 7 \\\\ 2x + 6y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
+    "contentEn": "Consider $\\begin{cases} x + 3y = 7 \\\\ 2x + 6y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
     "optionsEn": [
       "It cannot be decided, as there are more unknowns than equations",
       "There is no unique solution (either none or infinitely many — further checking needed)",
@@ -2112,7 +2112,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "easy",
     "year": 0,
-    "content": "考慮方程組 $\\begin{cases} 5x + 2y = 7 \\\\ 1x + 4y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
+    "content": "考慮方程組 $\\begin{cases} 5x + 2y = 7 \\\\ x + 4y = 9 \\end{cases}$。\n\n該方程組的解的情況是？",
     "explanation": "兩個二元一次方程有唯一解，當且僅當【係數行列式不為零】。此處 $\\begin{vmatrix} 5 & 2 \\\\ 1 & 4 \\end{vmatrix} = 5 \\times 4 - 2 \\times 1 = 18$，不為零，故有唯一解。幾何上，行列式為零即代表兩條直線平行或重合。方程數同未知數同為兩個，故「未知數多於方程」一項同題目不符。",
     "options": [
       "有無限多解",
@@ -2122,7 +2122,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "marks": 1,
-    "contentEn": "Consider $\\begin{cases} 5x + 2y = 7 \\\\ 1x + 4y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
+    "contentEn": "Consider $\\begin{cases} 5x + 2y = 7 \\\\ x + 4y = 9 \\end{cases}$.\n\nWhat can be said about its solutions?",
     "optionsEn": [
       "There are infinitely many solutions",
       "It cannot be decided, as there are more unknowns than equations",
@@ -2393,7 +2393,7 @@ export const m2AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設實數 $x$、$y$、$z$ 同時滿足以下三項條件：\n\n$x + y + z = 2$　　$x - y + 2z = 5$　　$2x + y - z = 2$\n\n試求 $x$ 的值。",
-    "explanation": "用消元法。第一式減第二式消去 $x$：$2y - z = -3$；第三式減第一式的兩倍消去 $x$：$-y - 3z = -2$。兩式聯立解得 $y = -1$、$z = 1$，代回第一式得 $x = 2 - -1 - 1 = 2$。三元方程組的關鍵在於【每次消去同一個未知數】，若第一步消 $x$、第二步卻消了 $y$，剩下的兩式仍有三個未知數，等於做了白工。其餘干擾項分別是 $y$ 與 $z$ 的值 —— 算對了方程組卻答錯了題目所問的那一個，是本類題目最可惜的失分。",
+    "explanation": "用消元法。第一式減第二式消去 $x$：$2y - z = -3$；第三式減第一式的兩倍消去 $x$：$-y - 3z = -2$。兩式聯立解得 $y = -1$、$z = 1$，代回第一式得 $x = 2 - (-1) - 1 = 2$。三元方程組的關鍵在於【每次消去同一個未知數】，若第一步消 $x$、第二步卻消了 $y$，剩下的兩式仍有三個未知數，等於做了白工。其餘干擾項分別是 $y$ 與 $z$ 的值 —— 算對了方程組卻答錯了題目所問的那一個，是本類題目最可惜的失分。",
     "options": [
       "$x = 2$",
       "$x = -1$",
@@ -2409,7 +2409,7 @@ export const m2AutoQuestions: Question[] = [
       "$x = 1$",
       "$x = -3$"
     ],
-    "explanationEn": "Eliminate systematically. Subtracting the second equation from the first removes $x$: $2y - z = -3$. Subtracting twice the first from the third also removes $x$: $-y - 3z = -2$. Solving these two gives $y = -1$ and $z = 1$, and substituting back into the first equation gives $x = 2 - -1 - 1 = 2$. The key with three unknowns is to eliminate the *same* variable each time; eliminating $x$ first and $y$ second leaves two equations still carrying three unknowns. The other distractors are the values of $y$ and $z$ — solving the system correctly but answering for the wrong variable is the most frustrating way to lose these marks.",
+    "explanationEn": "Eliminate systematically. Subtracting the second equation from the first removes $x$: $2y - z = -3$. Subtracting twice the first from the third also removes $x$: $-y - 3z = -2$. Solving these two gives $y = -1$ and $z = 1$, and substituting back into the first equation gives $x = 2 - (-1) - 1 = 2$. The key with three unknowns is to eliminate the *same* variable each time; eliminating $x$ first and $y$ second leaves two equations still carrying three unknowns. The other distractors are the values of $y$ and $z$ — solving the system correctly but answering for the wrong variable is the most frustrating way to lose these marks.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -2457,7 +2457,7 @@ export const m2AutoQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "設實數 $x$、$y$、$z$ 同時滿足以下三項條件：\n\n$x + y + z = 2$　　$x - y + 2z = -2$　　$2x + y - z = 9$\n\n試求 $x$ 的值。",
-    "explanation": "用消元法。第一式減第二式消去 $x$：$2y - z = 4$；第三式減第一式的兩倍消去 $x$：$-y - 3z = 5$。兩式聯立解得 $y = 1$、$z = -2$，代回第一式得 $x = 2 - 1 - -2 = 3$。三元方程組的關鍵在於【每次消去同一個未知數】，若第一步消 $x$、第二步卻消了 $y$，剩下的兩式仍有三個未知數，等於做了白工。其餘干擾項分別是 $y$ 與 $z$ 的值 —— 算對了方程組卻答錯了題目所問的那一個，是本類題目最可惜的失分。",
+    "explanation": "用消元法。第一式減第二式消去 $x$：$2y - z = 4$；第三式減第一式的兩倍消去 $x$：$-y - 3z = 5$。兩式聯立解得 $y = 1$、$z = -2$，代回第一式得 $x = 2 - 1 - (-2) = 3$。三元方程組的關鍵在於【每次消去同一個未知數】，若第一步消 $x$、第二步卻消了 $y$，剩下的兩式仍有三個未知數，等於做了白工。其餘干擾項分別是 $y$ 與 $z$ 的值 —— 算對了方程組卻答錯了題目所問的那一個，是本類題目最可惜的失分。",
     "options": [
       "$x = -2$",
       "$x = 4$",
@@ -2473,7 +2473,7 @@ export const m2AutoQuestions: Question[] = [
       "$x = 3$",
       "$x = 1$"
     ],
-    "explanationEn": "Eliminate systematically. Subtracting the second equation from the first removes $x$: $2y - z = 4$. Subtracting twice the first from the third also removes $x$: $-y - 3z = 5$. Solving these two gives $y = 1$ and $z = -2$, and substituting back into the first equation gives $x = 2 - 1 - -2 = 3$. The key with three unknowns is to eliminate the *same* variable each time; eliminating $x$ first and $y$ second leaves two equations still carrying three unknowns. The other distractors are the values of $y$ and $z$ — solving the system correctly but answering for the wrong variable is the most frustrating way to lose these marks.",
+    "explanationEn": "Eliminate systematically. Subtracting the second equation from the first removes $x$: $2y - z = 4$. Subtracting twice the first from the third also removes $x$: $-y - 3z = 5$. Solving these two gives $y = 1$ and $z = -2$, and substituting back into the first equation gives $x = 2 - 1 - (-2) = 3$. The key with three unknowns is to eliminate the *same* variable each time; eliminating $x$ first and $y$ second leaves two equations still carrying three unknowns. The other distractors are the values of $y$ and $z$ — solving the system correctly but answering for the wrong variable is the most frustrating way to lose these marks.",
     "frameworkEn": "Auto-gated"
   },
   {
@@ -2648,7 +2648,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "medium",
     "year": 0,
-    "content": "設 $f(x) = 1x^2 − 6x + 5$。求 $f(x)$ 的極小值。",
+    "content": "設 $f(x) = x^2 − 6x + 5$。求 $f(x)$ 的極小值。",
     "explanation": "極值出現在導函數為零之處。$f'(x) = 2x − 6$，令其為零得 $x = 3$。因為二次項係數 $1 > 0$，拋物線開口向上，此點為極小值點。把 $x = 3$ 代回【原函數】得極值 $f(3) = -4$。答 $3$ 的停在了使導數為零的 $x$ 值 —— 那是極值出現的【位置】，不是極值本身，這是本題最主要的失分位。答 $5$ 的把 $y$ 截距當成極值，兩者只在頂點恰好落在縱軸上時才相同。",
     "options": [
       "$-4$",
@@ -2658,7 +2658,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 0,
     "marks": 1,
-    "contentEn": "Let $f(x) = 1x^2 − 6x + 5$. Find the minimum value of $f(x)$.",
+    "contentEn": "Let $f(x) = x^2 − 6x + 5$. Find the minimum value of $f(x)$.",
     "optionsEn": [
       "$-4$",
       "$3$",
@@ -2712,7 +2712,7 @@ export const m2AutoQuestions: Question[] = [
     "frameworkEmoji": "⚙️",
     "difficulty": "medium",
     "year": 0,
-    "content": "設 $f(x) = 1x^2 + 4x − 1$。求 $f(x)$ 的極小值。",
+    "content": "設 $f(x) = x^2 + 4x − 1$。求 $f(x)$ 的極小值。",
     "explanation": "極值出現在導函數為零之處。$f'(x) = 2x + 4$，令其為零得 $x = -2$。因為二次項係數 $1 > 0$，拋物線開口向上，此點為極小值點。把 $x = -2$ 代回【原函數】得極值 $f(-2) = -5$。答 $-2$ 的停在了使導數為零的 $x$ 值 —— 那是極值出現的【位置】，不是極值本身，這是本題最主要的失分位。答 $-1$ 的把 $y$ 截距當成極值，兩者只在頂點恰好落在縱軸上時才相同。",
     "options": [
       "$-1$",
@@ -2722,7 +2722,7 @@ export const m2AutoQuestions: Question[] = [
     ],
     "correctIndex": 2,
     "marks": 1,
-    "contentEn": "Let $f(x) = 1x^2 + 4x − 1$. Find the minimum value of $f(x)$.",
+    "contentEn": "Let $f(x) = x^2 + 4x − 1$. Find the minimum value of $f(x)$.",
     "optionsEn": [
       "$-1$",
       "$5$",
@@ -2979,5 +2979,1029 @@ export const m2AutoQuestions: Question[] = [
         "en": "Correct. $\\vec{a} \\cdot \\vec{b} = 1 \\times 2 + (8)(-0.25) = 0$."
       }
     ]
+  },
+  {
+    "id": "rcl_m2_idprop_33",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "已知 $\\displaystyle\\int_{0}^{3} f(x)\\,dx = 7$ 及 $\\displaystyle\\int_{0}^{5} f(x)\\,dx = 12$。求 $\\displaystyle\\int_{3}^{5} f(x)\\,dx$。",
+    "explanation": "定積分可以按區間分段相加：$\\int_{0}^{5} = \\int_{0}^{3} + \\int_{3}^{5}$，故 $\\int_{3}^{5} f(x)\\,dx = 12 - 7 = 5$。陷阱：$19$ 把兩個積分相加；$-5$ 用 $7 - 12$，次序倒轉；$2$ 只計算了區間長度 $5 - 3$，與 $f(x)$ 無關。",
+    "options": [
+      "$5$",
+      "$19$",
+      "$-5$",
+      "$2$"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Given $\\displaystyle\\int_{0}^{3} f(x)\\,dx = 7$ and $\\displaystyle\\int_{0}^{5} f(x)\\,dx = 12$, find $\\displaystyle\\int_{3}^{5} f(x)\\,dx$.",
+    "optionsEn": [
+      "$5$",
+      "$19$",
+      "$-5$",
+      "$2$"
+    ],
+    "explanationEn": "Definite integrals add over adjacent intervals: $\\int_{0}^{5} = \\int_{0}^{3} + \\int_{3}^{5}$, so $\\int_{3}^{5} f(x)\\,dx = 12 - 7 = 5$. Traps: $19$ adds the two integrals; $-5$ subtracts the wrong way round; $2$ is just the length of the interval $5 - 3$, which has nothing to do with $f(x)$."
+  },
+  {
+    "id": "rcl_m2_idprop_34",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "已知 $\\displaystyle\\int_{1}^{4} f(x)\\,dx = 6$ 及 $\\displaystyle\\int_{1}^{4} g(x)\\,dx = -2$。求 $\\displaystyle\\int_{4}^{1} [2f(x) - 3g(x)]\\,dx$。",
+    "explanation": "先在 $1$ 至 $4$ 上計算：$\\int_{1}^{4} [2f(x) - 3g(x)]\\,dx = 2(6) - 3(-2) = 12 + 6 = 18$。題目的上下限是由 $4$ 到 $1$，對調上下限要變號，故答案為 $-18$。陷阱：$18$ 忘了上下限對調；$-6$ 把 $-3 \\times (-2)$ 算成 $-6$；$6$ 同時犯了這兩個錯誤。",
+    "options": [
+      "$18$",
+      "$-18$",
+      "$-6$",
+      "$6$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Given $\\displaystyle\\int_{1}^{4} f(x)\\,dx = 6$ and $\\displaystyle\\int_{1}^{4} g(x)\\,dx = -2$, find $\\displaystyle\\int_{4}^{1} [2f(x) - 3g(x)]\\,dx$.",
+    "optionsEn": [
+      "$18$",
+      "$-18$",
+      "$-6$",
+      "$6$"
+    ],
+    "explanationEn": "First on $1$ to $4$: $\\int_{1}^{4} [2f(x) - 3g(x)]\\,dx = 2(6) - 3(-2) = 12 + 6 = 18$. The limits run from $4$ to $1$, and reversing the limits changes the sign, so the answer is $-18$. Traps: $18$ ignores the reversed limits; $-6$ takes $-3 \\times (-2)$ as $-6$; $6$ makes both mistakes."
+  },
+  {
+    "id": "rcl_m2_isp_32",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一個水缸由空缸開始，以每分鐘 $5$ 公升的固定速率注水。設 $V(t)$ 為首 $t$ 分鐘注入的水量（公升），即 $\\dfrac{dV}{dt} = 5$ 及 $V(0) = 0$。求 $V(t)$。",
+    "explanation": "$V(t) = \\int 5\\,dt = 5t + C$。由 $V(0) = 0$ 得 $C = 0$，故 $V(t) = 5t$：每分鐘 $5$ 公升，$t$ 分鐘便是 $5t$ 公升。陷阱：$V(t) = 5$ 把速率當成水量；$\\dfrac{5t^2}{2}$ 把常數 $5$ 當成 $5t$ 來積分；$5t + 5$ 沒有用 $V(0) = 0$ 定出常數。",
+    "options": [
+      "$V(t) = 5$",
+      "$V(t) = \\dfrac{5t^2}{2}$",
+      "$V(t) = 5t$",
+      "$V(t) = 5t + 5$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "An empty tank is filled at a constant $5$ litres per minute. Let $V(t)$ be the volume in litres after $t$ minutes, so $\\dfrac{dV}{dt} = 5$ and $V(0) = 0$. Find $V(t)$.",
+    "optionsEn": [
+      "$V(t) = 5$",
+      "$V(t) = \\dfrac{5t^2}{2}$",
+      "$V(t) = 5t$",
+      "$V(t) = 5t + 5$"
+    ],
+    "explanationEn": "$V(t) = \\int 5\\,dt = 5t + C$, and $V(0) = 0$ gives $C = 0$, so $V(t) = 5t$: $5$ litres a minute for $t$ minutes. Traps: $V(t) = 5$ takes the rate as the volume; $\\dfrac{5t^2}{2}$ integrates $5t$ instead of the constant $5$; $5t + 5$ does not use $V(0) = 0$ to fix the constant."
+  },
+  {
+    "id": "rcl_m2_isp_27",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一個水缸開始注水後，第 $t$ 分鐘時的注水速率為 $e^{t}$ 公升／分鐘。由 $t = 0$ 至 $t = 1$ 共注入了多少公升水？",
+    "explanation": "注水量是速率對時間的積分：$\\int_{0}^{1} e^{t}\\,dt = [e^{t}]_{0}^{1} = e^{1} - e^{0} = e - 1$ 公升（約 $1.72$ 公升）。陷阱：$e$ 忘了減去下限的值 $e^{0}$；$1$ 只計算了下限的值；$e + 1$ 把下限的值加上去而不是減去。",
+    "options": [
+      "$e$",
+      "$1$",
+      "$e + 1$",
+      "$e - 1$"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Water flows into a tank at $e^{t}$ litres per minute, $t$ minutes after the tap is opened. How many litres flow in from $t = 0$ to $t = 1$?",
+    "optionsEn": [
+      "$e$",
+      "$1$",
+      "$e + 1$",
+      "$e - 1$"
+    ],
+    "explanationEn": "The volume is the integral of the rate: $\\int_{0}^{1} e^{t}\\,dt = [e^{t}]_{0}^{1} = e^{1} - e^{0} = e - 1$ litres (about $1.72$ litres). Traps: $e$ forgets to subtract the value at the lower limit, $e^{0}$; $1$ is only the lower-limit value; $e + 1$ adds that value instead of subtracting it."
+  },
+  {
+    "id": "rcl_m2_isp_28",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "一輛車在第 $t$ 秒時的速率為 $\\dfrac{1}{t}$ 米／秒（$t \\ge 1$）。由 $t = 1$ 至 $t = e^{2}$ 秒，這輛車行駛了多少米？",
+    "explanation": "速率為正，路程 $= \\int_{1}^{e^{2}} \\dfrac{1}{t}\\,dt = [\\ln t]_{1}^{e^{2}} = \\ln e^{2} - \\ln 1 = 2 - 0 = 2$ 米。陷阱：$e^{2} - 1$ 把 $\\dfrac{1}{x}$ 的原函數當成 $x$；$1 - e^{-2}$ 把原函數當成 $-\\dfrac{1}{x}$，那其實是 $\\dfrac{1}{x^2}$ 的原函數；$-2$ 上下限次序倒轉，而路程不會是負數。",
+    "options": [
+      "$2$",
+      "$e^{2} - 1$",
+      "$1 - e^{-2}$",
+      "$-2$"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A car moves at $\\dfrac{1}{t}$ metres per second at time $t$ seconds ($t \\ge 1$). How far does it travel from $t = 1$ to $t = e^{2}$?",
+    "optionsEn": [
+      "$2$",
+      "$e^{2} - 1$",
+      "$1 - e^{-2}$",
+      "$-2$"
+    ],
+    "explanationEn": "The speed is positive, so the distance is $\\int_{1}^{e^{2}} \\dfrac{1}{t}\\,dt = [\\ln t]_{1}^{e^{2}} = \\ln e^{2} - \\ln 1 = 2 - 0 = 2$ metres. Traps: $e^{2} - 1$ takes the antiderivative of $\\dfrac{1}{x}$ as $x$; $1 - e^{-2}$ uses $-\\dfrac{1}{x}$, which is the antiderivative of $\\dfrac{1}{x^2}$; $-2$ reverses the limits, and a distance cannot be negative."
+  },
+  {
+    "id": "rcl_m2_isp_29",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "求曲線 $y = \\cos x$ 與 $x$ 軸在 $0 \\le x \\le \\dfrac{\\pi}{2}$ 之間所圍成的面積。",
+    "explanation": "在 $0 \\le x \\le \\dfrac{\\pi}{2}$ 上 $\\cos x \\ge 0$，故面積 $= \\int_{0}^{\\pi/2} \\cos x\\,dx = [\\sin x]_{0}^{\\pi/2} = 1 - 0 = 1$。陷阱：$-1$ 把原函數寫成 $-\\sin x$（那是 $\\cos x$ 的導數）；$0$ 代入了 $\\cos x$ 本身而不是原函數；$\\dfrac{\\pi}{2}$ 只計算了區間長度。",
+    "options": [
+      "$-1$",
+      "$1$",
+      "$0$",
+      "$\\dfrac{\\pi}{2}$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Find the area between the curve $y = \\cos x$ and the $x$-axis for $0 \\le x \\le \\dfrac{\\pi}{2}$.",
+    "optionsEn": [
+      "$-1$",
+      "$1$",
+      "$0$",
+      "$\\dfrac{\\pi}{2}$"
+    ],
+    "explanationEn": "On $0 \\le x \\le \\dfrac{\\pi}{2}$, $\\cos x \\ge 0$, so the area is $\\int_{0}^{\\pi/2} \\cos x\\,dx = [\\sin x]_{0}^{\\pi/2} = 1 - 0 = 1$. Traps: $-1$ uses $-\\sin x$, which is the derivative of $\\cos x$, not its antiderivative; $0$ substitutes into $\\cos x$ itself; $\\dfrac{\\pi}{2}$ is just the length of the interval."
+  },
+  {
+    "id": "rcl_m2_isp_30",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "integration",
+    "topicZh": "積分法",
+    "topicEn": "Integration",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "求曲線 $y = \\sin x$ 與 $x$ 軸在 $0 \\le x \\le \\pi$ 之間所圍成的面積。",
+    "explanation": "在 $0 \\le x \\le \\pi$ 上 $\\sin x \\ge 0$，故面積 $= \\int_{0}^{\\pi} \\sin x\\,dx = [-\\cos x]_{0}^{\\pi} = -\\cos\\pi - (-\\cos 0) = 1 + 1 = 2$。陷阱：$-2$ 把原函數寫成 $\\cos x$，漏了負號；$0$ 與 $0$ 至 $2\\pi$ 的情況混淆，那時正負兩部分互相抵消；$1$ 只計到 $\\dfrac{\\pi}{2}$。",
+    "options": [
+      "$-2$",
+      "$0$",
+      "$2$",
+      "$1$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Find the area between the curve $y = \\sin x$ and the $x$-axis for $0 \\le x \\le \\pi$.",
+    "optionsEn": [
+      "$-2$",
+      "$0$",
+      "$2$",
+      "$1$"
+    ],
+    "explanationEn": "On $0 \\le x \\le \\pi$, $\\sin x \\ge 0$, so the area is $\\int_{0}^{\\pi} \\sin x\\,dx = [-\\cos x]_{0}^{\\pi} = -\\cos\\pi - (-\\cos 0) = 1 + 1 = 2$. Traps: $-2$ uses $\\cos x$ and loses the minus sign; $0$ confuses this with $0$ to $2\\pi$, where the positive and negative parts cancel; $1$ stops at $\\dfrac{\\pi}{2}$."
+  },
+  {
+    "id": "rcl_m2_dtrig_11",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "differentiation",
+    "topicZh": "微分法",
+    "topicEn": "Differentiation",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某地一天的氣溫可用 $T = 20 + 5\\sin t$（°C）描述，$t$ 以小時計。求 $t = \\dfrac{\\pi}{3}$ 時氣溫的變化率。",
+    "explanation": "變化率是導數：$\\dfrac{dT}{dt} = 5\\cos t$（常數 $20$ 的導數為 $0$）。代入 $t = \\dfrac{\\pi}{3}$ 得 $5 \\times \\dfrac{1}{2} = \\dfrac{5}{2}$ °C/h，氣溫正在上升。陷阱：$\\dfrac{5\\sqrt{3}}{2}$ 把 $\\sin t$ 的導數當成 $\\sin t$ 本身；$-\\dfrac{5}{2}$ 把導數寫成 $-\\cos t$；$20 + \\dfrac{5\\sqrt{3}}{2}$ 是該時刻的氣溫，不是變化率。",
+    "options": [
+      "$\\dfrac{5\\sqrt{3}}{2}$ °C/h",
+      "$-\\dfrac{5}{2}$ °C/h",
+      "$20 + \\dfrac{5\\sqrt{3}}{2}$ °C/h",
+      "$\\dfrac{5}{2}$ °C/h"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "The temperature in a place is modelled by $T = 20 + 5\\sin t$ (°C), with $t$ in hours. Find the rate of change of the temperature at $t = \\dfrac{\\pi}{3}$.",
+    "optionsEn": [
+      "$\\dfrac{5\\sqrt{3}}{2}$ °C/h",
+      "$-\\dfrac{5}{2}$ °C/h",
+      "$20 + \\dfrac{5\\sqrt{3}}{2}$ °C/h",
+      "$\\dfrac{5}{2}$ °C/h"
+    ],
+    "explanationEn": "The rate of change is the derivative: $\\dfrac{dT}{dt} = 5\\cos t$ (the constant $20$ differentiates to $0$). At $t = \\dfrac{\\pi}{3}$ this is $5 \\times \\dfrac{1}{2} = \\dfrac{5}{2}$ °C/h, so the temperature is rising. Traps: $\\dfrac{5\\sqrt{3}}{2}$ uses $\\sin t$ itself instead of its derivative; $-\\dfrac{5}{2}$ takes the derivative as $-\\cos t$; $20 + \\dfrac{5\\sqrt{3}}{2}$ is the temperature at that moment, not its rate of change."
+  },
+  {
+    "id": "rcl_m2_dtrig_12",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "differentiation",
+    "topicZh": "微分法",
+    "topicEn": "Differentiation",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "一質點沿直線運動，在時間 $t$ 秒時的位移為 $s = 3\\cos t$ 米。求 $t = \\dfrac{\\pi}{2}$ 時的速度。",
+    "explanation": "速度是位移對時間的導數：$v = \\dfrac{ds}{dt} = -3\\sin t$。代入 $t = \\dfrac{\\pi}{2}$ 得 $v = -3 \\times 1 = -3$ m/s，負號表示質點正向負方向移動。陷阱：$3$ m/s 漏了 $\\cos t$ 求導後的負號；$0$ m/s 是該時刻的位移 $3\\cos\\dfrac{\\pi}{2}$，不是速度；$-1$ m/s 漏了係數 $3$。",
+    "options": [
+      "$-3$ m/s",
+      "$3$ m/s",
+      "$0$ m/s",
+      "$-1$ m/s"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "A particle moves along a line with displacement $s = 3\\cos t$ metres at time $t$ seconds. Find its velocity at $t = \\dfrac{\\pi}{2}$.",
+    "optionsEn": [
+      "$-3$ m/s",
+      "$3$ m/s",
+      "$0$ m/s",
+      "$-1$ m/s"
+    ],
+    "explanationEn": "Velocity is the derivative of displacement: $v = \\dfrac{ds}{dt} = -3\\sin t$. At $t = \\dfrac{\\pi}{2}$, $v = -3 \\times 1 = -3$ m/s; the minus sign means the particle is moving in the negative direction. Traps: $3$ m/s loses the minus sign from differentiating $\\cos t$; $0$ m/s is the displacement $3\\cos\\dfrac{\\pi}{2}$ at that moment, not the velocity; $-1$ m/s drops the coefficient $3$."
+  },
+  {
+    "id": "rcl_m2_dtrig_14",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "differentiation",
+    "topicZh": "微分法",
+    "topicEn": "Differentiation",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "設 $g(x) = \\tan x$。求 $g\\prime(0)$ 及 $g\\prime\\!\\left(\\dfrac{\\pi}{4}\\right)$。",
+    "explanation": "$g\\prime(x) = \\sec^2 x = \\dfrac{1}{\\cos^2 x}$。$g\\prime(0) = \\dfrac{1}{1} = 1$；$\\cos\\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$，$\\cos^2\\dfrac{\\pi}{4} = \\dfrac{1}{2}$，故 $g\\prime\\!\\left(\\dfrac{\\pi}{4}\\right) = 2$。陷阱：$0$ 及 $1$ 是 $\\tan 0$ 與 $\\tan\\dfrac{\\pi}{4}$，即函數值而不是導數；$\\sqrt{2}$ 是 $\\sec\\dfrac{\\pi}{4}$，漏了平方；$\\dfrac{1}{2}$ 是 $\\cos^2\\dfrac{\\pi}{4}$，忘了取倒數。",
+    "options": [
+      "分別為 $0$ 及 $1$",
+      "分別為 $1$ 及 $2$",
+      "分別為 $1$ 及 $\\sqrt{2}$",
+      "分別為 $1$ 及 $\\dfrac{1}{2}$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Let $g(x) = \\tan x$. Find $g\\prime(0)$ and $g\\prime\\!\\left(\\dfrac{\\pi}{4}\\right)$.",
+    "optionsEn": [
+      "$0$ and $1$",
+      "$1$ and $2$",
+      "$1$ and $\\sqrt{2}$",
+      "$1$ and $\\dfrac{1}{2}$"
+    ],
+    "explanationEn": "$g\\prime(x) = \\sec^2 x = \\dfrac{1}{\\cos^2 x}$. $g\\prime(0) = \\dfrac{1}{1} = 1$; $\\cos\\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, so $\\cos^2\\dfrac{\\pi}{4} = \\dfrac{1}{2}$ and $g\\prime\\!\\left(\\dfrac{\\pi}{4}\\right) = 2$. Traps: $0$ and $1$ are $\\tan 0$ and $\\tan\\dfrac{\\pi}{4}$, values of the function rather than its derivative; $\\sqrt{2}$ is $\\sec\\dfrac{\\pi}{4}$ without squaring; $\\dfrac{1}{2}$ is $\\cos^2\\dfrac{\\pi}{4}$ without taking the reciprocal."
+  },
+  {
+    "id": "rcl_m2_lc_45",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "limits",
+    "topicZh": "極限",
+    "topicEn": "Limits",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "求 $\\displaystyle\\lim_{x \\to 0} \\dfrac{x}{\\sin 4x}$。",
+    "explanation": "利用 $\\displaystyle\\lim_{u \\to 0} \\dfrac{\\sin u}{u} = 1$。把式子改寫：$\\dfrac{x}{\\sin 4x} = \\dfrac{1}{4} \\cdot \\dfrac{4x}{\\sin 4x}$。當 $x \\to 0$ 時 $4x \\to 0$，$\\dfrac{4x}{\\sin 4x} \\to 1$，故極限為 $\\dfrac{1}{4}$。陷阱：$4$ 是 $\\dfrac{\\sin 4x}{x}$ 的極限，分子分母倒轉了；$1$ 沒有處理 $4x$ 與 $x$ 的分別；$0$ 把分子的 $x \\to 0$ 當成整個分數趨向 $0$，但分母同時趨向 $0$。",
+    "options": [
+      "$4$",
+      "$1$",
+      "$\\dfrac{1}{4}$",
+      "$0$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Find $\\displaystyle\\lim_{x \\to 0} \\dfrac{x}{\\sin 4x}$.",
+    "optionsEn": [
+      "$4$",
+      "$1$",
+      "$\\dfrac{1}{4}$",
+      "$0$"
+    ],
+    "explanationEn": "Use $\\displaystyle\\lim_{u \\to 0} \\dfrac{\\sin u}{u} = 1$. Rewrite: $\\dfrac{x}{\\sin 4x} = \\dfrac{1}{4} \\cdot \\dfrac{4x}{\\sin 4x}$. As $x \\to 0$, $4x \\to 0$ and $\\dfrac{4x}{\\sin 4x} \\to 1$, so the limit is $\\dfrac{1}{4}$. Traps: $4$ is the limit of $\\dfrac{\\sin 4x}{x}$, upside down; $1$ ignores the difference between $4x$ and $x$; $0$ looks only at the numerator, but the denominator also tends to $0$."
+  },
+  {
+    "id": "rcl_m2_lc_47",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "limits",
+    "topicZh": "極限",
+    "topicEn": "Limits",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "設 $f(x) = \\begin{cases} x^2 + k & x < 1 \\\\ 3x - 1 & x \\ge 1 \\end{cases}$。若 $f(x)$ 在 $x = 1$ 連續，求 $k$。",
+    "explanation": "在 $x = 1$ 連續，要求左極限、右極限與函數值三者相等。右極限及 $f(1)$ 都是 $3(1) - 1 = 2$；左極限是 $1^2 + k = 1 + k$。令 $1 + k = 2$，得 $k = 1$。陷阱：$k = 2$ 把右邊算成 $3(1) = 3$，漏了 $-1$；$k = -1$ 移項時弄錯符號；$k = 0$ 以為 $x^2$ 一段本身連續便足夠，忽略了兩段必須在 $x = 1$ 接得上。",
+    "options": [
+      "$k = 2$",
+      "$k = -1$",
+      "$k = 0$",
+      "$k = 1$"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Let $f(x) = \\begin{cases} x^2 + k & x < 1 \\\\ 3x - 1 & x \\ge 1 \\end{cases}$. If $f(x)$ is continuous at $x = 1$, find $k$.",
+    "optionsEn": [
+      "$k = 2$",
+      "$k = -1$",
+      "$k = 0$",
+      "$k = 1$"
+    ],
+    "explanationEn": "Continuity at $x = 1$ needs the left limit, the right limit and the function value to be equal. The right limit and $f(1)$ are both $3(1) - 1 = 2$; the left limit is $1^2 + k = 1 + k$. Setting $1 + k = 2$ gives $k = 1$. Traps: $k = 2$ takes the right side as $3(1) = 3$ and drops the $-1$; $k = -1$ gets the sign wrong when rearranging; $k = 0$ assumes the $x^2$ piece being continuous is enough, ignoring that the two pieces must meet at $x = 1$."
+  },
+  {
+    "id": "rcl_m2_mc_58",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "matrices",
+    "topicZh": "矩陣與行列式",
+    "topicEn": "Matrices & Determinants",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "下列哪一個矩陣沒有逆矩陣？",
+    "explanation": "二階矩陣沒有逆矩陣，當且僅當行列式 $ad - bc = 0$。逐個計算：$\\begin{pmatrix} 2 & 6 \\\\ 1 & 3 \\end{pmatrix}$ 的行列式為 $2(3) - 6(1) = 0$，沒有逆矩陣（第一行正是第二行的 $2$ 倍）。其餘三個的行列式分別為 $2(4) - 6(1) = 2$、$6(3) - 2(1) = 16$、$2(3) - (-6)(1) = 12$，都不是零，故都有逆矩陣。",
+    "options": [
+      "$\\begin{pmatrix} 2 & 6 \\\\ 1 & 3 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 2 & 6 \\\\ 1 & 4 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 6 & 2 \\\\ 1 & 3 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 2 & -6 \\\\ 1 & 3 \\end{pmatrix}$"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Which of the following matrices has no inverse?",
+    "optionsEn": [
+      "$\\begin{pmatrix} 2 & 6 \\\\ 1 & 3 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 2 & 6 \\\\ 1 & 4 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 6 & 2 \\\\ 1 & 3 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 2 & -6 \\\\ 1 & 3 \\end{pmatrix}$"
+    ],
+    "explanationEn": "A $2 \\times 2$ matrix has no inverse exactly when its determinant $ad - bc = 0$. Checking each: $\\begin{pmatrix} 2 & 6 \\\\ 1 & 3 \\end{pmatrix}$ has $2(3) - 6(1) = 0$, so it has no inverse (its first row is twice the second). The others have determinants $2(4) - 6(1) = 2$, $6(3) - 2(1) = 16$ and $2(3) - (-6)(1) = 12$, all non-zero, so each has an inverse."
+  },
+  {
+    "id": "rcl_m2_mc_61",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "matrices",
+    "topicZh": "矩陣與行列式",
+    "topicEn": "Matrices & Determinants",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "一個 $3 \\times 3$ 可逆矩陣 $M$ 的行列式為 $5$。把 $M$ 的逆矩陣乘以 $2$，得到矩陣 $N = 2M^{-1}$。求 $\\det N$。",
+    "explanation": "兩條性質：$\\det(M^{-1}) = \\dfrac{1}{\\det M} = \\dfrac{1}{5}$；把 $n \\times n$ 矩陣乘以純量 $k$，行列式乘以 $k^{n}$，此處 $n = 3$，故乘以 $2^{3} = 8$。合起來 $\\det N = 8 \\times \\dfrac{1}{5} = \\dfrac{8}{5}$。陷阱：$\\dfrac{2}{5}$ 只乘了一次 $2$；$40$ 忘了取逆矩陣，算成 $\\det(2M)$；$\\dfrac{1}{40}$ 把 $2$ 也一併取了倒數。",
+    "options": [
+      "$\\dfrac{2}{5}$",
+      "$\\dfrac{8}{5}$",
+      "$40$",
+      "$\\dfrac{1}{40}$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "An invertible $3 \\times 3$ matrix $M$ has determinant $5$. Multiplying its inverse by $2$ gives $N = 2M^{-1}$. Find $\\det N$.",
+    "optionsEn": [
+      "$\\dfrac{2}{5}$",
+      "$\\dfrac{8}{5}$",
+      "$40$",
+      "$\\dfrac{1}{40}$"
+    ],
+    "explanationEn": "Two properties: $\\det(M^{-1}) = \\dfrac{1}{\\det M} = \\dfrac{1}{5}$, and multiplying an $n \\times n$ matrix by $k$ multiplies the determinant by $k^{n}$; here $n = 3$, so by $2^{3} = 8$. Together $\\det N = 8 \\times \\dfrac{1}{5} = \\dfrac{8}{5}$. Traps: $\\dfrac{2}{5}$ multiplies by $2$ only once; $40$ forgets the inverse and finds $\\det(2M)$; $\\dfrac{1}{40}$ takes the reciprocal of the $2$ as well."
+  },
+  {
+    "id": "rcl_m2_mc_62",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "matrices",
+    "topicZh": "矩陣與行列式",
+    "topicEn": "Matrices & Determinants",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "設 $A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$、$B = \\begin{pmatrix} 1 & 0 \\\\ 3 & 1 \\end{pmatrix}$。求 $AB - BA$。",
+    "explanation": "$AB = \\begin{pmatrix} 1 + 6 & 0 + 2 \\\\ 0 + 3 & 0 + 1 \\end{pmatrix} = \\begin{pmatrix} 7 & 2 \\\\ 3 & 1 \\end{pmatrix}$，$BA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 6 + 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 7 \\end{pmatrix}$，相減得 $\\begin{pmatrix} 6 & 0 \\\\ 0 & -6 \\end{pmatrix}$。矩陣乘法一般不可交換，$AB$ 與 $BA$ 不相等。陷阱：零矩陣假設了 $AB = BA$；$\\begin{pmatrix} -6 & 0 \\\\ 0 & 6 \\end{pmatrix}$ 是 $BA - AB$；$\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$ 在右下角把 $1 - 7$ 算錯了符號。",
+    "options": [
+      "$\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$",
+      "$\\begin{pmatrix} -6 & 0 \\\\ 0 & 6 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 6 & 0 \\\\ 0 & -6 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Let $A = \\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$ and $B = \\begin{pmatrix} 1 & 0 \\\\ 3 & 1 \\end{pmatrix}$. Find $AB - BA$.",
+    "optionsEn": [
+      "$\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$",
+      "$\\begin{pmatrix} -6 & 0 \\\\ 0 & 6 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 6 & 0 \\\\ 0 & -6 \\end{pmatrix}$",
+      "$\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$"
+    ],
+    "explanationEn": "$AB = \\begin{pmatrix} 1 + 6 & 0 + 2 \\\\ 0 + 3 & 0 + 1 \\end{pmatrix} = \\begin{pmatrix} 7 & 2 \\\\ 3 & 1 \\end{pmatrix}$ and $BA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 6 + 1 \\end{pmatrix} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 7 \\end{pmatrix}$, so the difference is $\\begin{pmatrix} 6 & 0 \\\\ 0 & -6 \\end{pmatrix}$. Matrix multiplication is generally not commutative. Traps: the zero matrix assumes $AB = BA$; $\\begin{pmatrix} -6 & 0 \\\\ 0 & 6 \\end{pmatrix}$ is $BA - AB$; $\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$ gets the sign of $1 - 7$ wrong in the bottom-right entry."
+  },
+  {
+    "id": "rcl_m2_mc_63",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "matrices",
+    "topicZh": "矩陣與行列式",
+    "topicEn": "Matrices & Determinants",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "設 $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$。求 $A^{-1}$。",
+    "explanation": "$\\det A = 1(4) - 2(3) = -2 \\neq 0$，故逆矩陣存在。$A^{-1} = \\dfrac{1}{-2}\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix} = \\begin{pmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$。可驗算 $AA^{-1}$ 等於單位矩陣。陷阱：$\\begin{pmatrix} 2 & -1 \\\\ -\\frac{3}{2} & \\frac{1}{2} \\end{pmatrix}$ 用了 $+2$ 作行列式，正負號錯了；$\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix}$ 忘了除以行列式；$\\begin{pmatrix} -2 & \\frac{3}{2} \\\\ 1 & -\\frac{1}{2} \\end{pmatrix}$ 把結果轉置了。",
+    "options": [
+      "$\\begin{pmatrix} 2 & -1 \\\\ -\\frac{3}{2} & \\frac{1}{2} \\end{pmatrix}$",
+      "$\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix}$",
+      "$\\begin{pmatrix} -2 & \\frac{3}{2} \\\\ 1 & -\\frac{1}{2} \\end{pmatrix}$",
+      "$\\begin{pmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Let $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Find $A^{-1}$.",
+    "optionsEn": [
+      "$\\begin{pmatrix} 2 & -1 \\\\ -\\frac{3}{2} & \\frac{1}{2} \\end{pmatrix}$",
+      "$\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix}$",
+      "$\\begin{pmatrix} -2 & \\frac{3}{2} \\\\ 1 & -\\frac{1}{2} \\end{pmatrix}$",
+      "$\\begin{pmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$"
+    ],
+    "explanationEn": "$\\det A = 1(4) - 2(3) = -2 \\neq 0$, so the inverse exists: $A^{-1} = \\dfrac{1}{-2}\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix} = \\begin{pmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$. Check that $AA^{-1}$ is the identity. Traps: $\\begin{pmatrix} 2 & -1 \\\\ -\\frac{3}{2} & \\frac{1}{2} \\end{pmatrix}$ divides by $+2$; $\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix}$ forgets to divide by the determinant; $\\begin{pmatrix} -2 & \\frac{3}{2} \\\\ 1 & -\\frac{1}{2} \\end{pmatrix}$ is the transpose."
+  },
+  {
+    "id": "rcl_m2_mc_65",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "matrices",
+    "topicZh": "矩陣與行列式",
+    "topicEn": "Matrices & Determinants",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "設 $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$、$B = \\begin{pmatrix} 4 & 0 \\\\ 2 & 1 \\end{pmatrix}$。不計算 $AB$，求 $\\det(AB)$。",
+    "explanation": "$\\det A = 2(3) - 1(1) = 5$，$\\det B = 4(1) - 0(2) = 4$。行列式對乘法可分拆：$\\det(AB) = \\det A \\times \\det B = 20$。陷阱：$9$ 把兩個行列式相加；$21$ 是 $\\det(A + B)$，行列式對加法並不可分拆；$1$ 把兩個行列式相減。",
+    "options": [
+      "$20$",
+      "$9$",
+      "$21$",
+      "$1$"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Let $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$ and $B = \\begin{pmatrix} 4 & 0 \\\\ 2 & 1 \\end{pmatrix}$. Without finding $AB$, find $\\det(AB)$.",
+    "optionsEn": [
+      "$20$",
+      "$9$",
+      "$21$",
+      "$1$"
+    ],
+    "explanationEn": "$\\det A = 2(3) - 1(1) = 5$ and $\\det B = 4(1) - 0(2) = 4$. Determinants multiply: $\\det(AB) = \\det A \\times \\det B = 20$. Traps: $9$ adds the determinants; $21$ is $\\det(A + B)$, and determinants do not split over addition; $1$ subtracts them."
+  },
+  {
+    "id": "rcl_m2_mc_68",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "matrices",
+    "topicZh": "矩陣與行列式",
+    "topicEn": "Matrices & Determinants",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "方程組 $\\begin{cases} kx + 3y = 1 \\\\ 3x + ky = 2 \\end{cases}$ 有唯一解。$k$ 的取值範圍是甚麼？",
+    "explanation": "方程組有唯一解，當且僅當係數行列式不等於零：$\\begin{vmatrix} k & 3 \\\\ 3 & k \\end{vmatrix} = k^2 - 9 \\neq 0$，即 $k \\neq 3$ 且 $k \\neq -3$。陷阱：$k \\neq 3$ 漏了 $k^2 = 9$ 的負根；$k = \\pm 3$ 正是沒有唯一解的情況；$-3 < k < 3$ 把「不等於」當成了不等式，例如 $k = 5$ 時行列式為 $16$，亦有唯一解。",
+    "options": [
+      "$k \\neq 3$",
+      "$k \\neq 3$ 且 $k \\neq -3$",
+      "$k = 3$ 或 $k = -3$",
+      "$-3 < k < 3$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "The system $\\begin{cases} kx + 3y = 1 \\\\ 3x + ky = 2 \\end{cases}$ has a unique solution. What values can $k$ take?",
+    "optionsEn": [
+      "$k \\neq 3$",
+      "$k \\neq 3$ and $k \\neq -3$",
+      "$k = 3$ or $k = -3$",
+      "$-3 < k < 3$"
+    ],
+    "explanationEn": "The system has a unique solution exactly when the coefficient determinant is non-zero: $\\begin{vmatrix} k & 3 \\\\ 3 & k \\end{vmatrix} = k^2 - 9 \\neq 0$, so $k \\neq 3$ and $k \\neq -3$. Traps: $k \\neq 3$ misses the negative root of $k^2 = 9$; $k = \\pm 3$ are exactly the values with no unique solution; $-3 < k < 3$ turns \"not equal\" into an inequality — $k = 5$, for example, gives determinant $16$ and a unique solution."
+  },
+  {
+    "id": "rcl_m2_vc_83",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "vectors",
+    "topicZh": "向量",
+    "topicEn": "Vectors",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "平面上兩條直線分別沿向量 $(2,\\ k)$ 及 $(k - 3,\\ 4)$ 的方向延伸。若兩條直線互相垂直，求 $k$。",
+    "explanation": "兩個非零向量垂直，當且僅當點積為零：$2(k - 3) + 4k = 0$，即 $6k - 6 = 0$，$k = 1$。驗算：$k = 1$ 時兩個向量為 $(2, 1)$ 與 $(-2, 4)$，點積 $= -4 + 4 = 0$。陷阱：$\\dfrac{1}{2}$ 展開 $2(k - 3)$ 時只乘了 $k$，得 $2k - 3$；$-1$ 移項時弄錯符號；$3$ 以為每個分量都要等於零。",
+    "options": [
+      "$k = \\dfrac{1}{2}$",
+      "$k = -1$",
+      "$k = 1$",
+      "$k = 3$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Two lines in the plane run in the directions of $(2,\\ k)$ and $(k - 3,\\ 4)$. If the lines are perpendicular, find $k$.",
+    "optionsEn": [
+      "$k = \\dfrac{1}{2}$",
+      "$k = -1$",
+      "$k = 1$",
+      "$k = 3$"
+    ],
+    "explanationEn": "Two non-zero vectors are perpendicular exactly when their dot product is zero: $2(k - 3) + 4k = 0$, so $6k - 6 = 0$ and $k = 1$. Check: with $k = 1$ the vectors are $(2, 1)$ and $(-2, 4)$, with dot product $-4 + 4 = 0$. Traps: $\\dfrac{1}{2}$ expands $2(k - 3)$ as $2k - 3$; $-1$ gets the sign wrong when rearranging; $3$ assumes each component must be zero."
+  },
+  {
+    "id": "rcl_m2_vc_86",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "vectors",
+    "topicZh": "向量",
+    "topicEn": "Vectors",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "設 $\\vec{a} = (2,\\ -3)$、$\\vec{b} = (m,\\ 6)$，且 $\\vec{a}$ 與 $\\vec{b}$ 互相平行。求 $m$。",
+    "explanation": "平行即 $\\vec{b} = k\\vec{a}$，$k$ 為純量。由 $y$ 分量 $6 = -3k$ 得 $k = -2$，故 $m = 2k = -4$，即 $\\vec{b} = (-4, 6) = -2\\vec{a}$，方向相反但仍然平行。陷阱：$4$ 忽略了 $k$ 是負數；$-1$ 把比例寫反成 $\\dfrac{m}{2} = \\dfrac{-3}{6}$；$9$ 用了垂直的條件 $2m - 18 = 0$。",
+    "options": [
+      "$m = 4$",
+      "$m = -1$",
+      "$m = 9$",
+      "$m = -4$"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Let $\\vec{a} = (2,\\ -3)$ and $\\vec{b} = (m,\\ 6)$ be parallel. Find $m$.",
+    "optionsEn": [
+      "$m = 4$",
+      "$m = -1$",
+      "$m = 9$",
+      "$m = -4$"
+    ],
+    "explanationEn": "Parallel means $\\vec{b} = k\\vec{a}$ for a scalar $k$. The $y$-components give $6 = -3k$, so $k = -2$ and $m = 2k = -4$: $\\vec{b} = (-4, 6) = -2\\vec{a}$, opposite in direction but still parallel. Traps: $4$ ignores that $k$ is negative; $-1$ writes the ratio upside down as $\\dfrac{m}{2} = \\dfrac{-3}{6}$; $9$ uses the perpendicular condition $2m - 18 = 0$."
+  },
+  {
+    "id": "rcl_m2_vc_87",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "vectors",
+    "topicZh": "向量",
+    "topicEn": "Vectors",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "設 $\\vec{u} = (2,\\ 5)$、$\\vec{v} = (-2,\\ -5)$。求 $|\\vec{u} + \\vec{v}|$。",
+    "explanation": "$\\vec{u} + \\vec{v} = (2 - 2,\\ 5 - 5) = (0,\\ 0)$，即零向量，其模為 $0$。$\\vec{v} = -\\vec{u}$，兩個向量大小相同、方向相反，相加後完全抵消。陷阱：$2\\sqrt{29}$ 把兩個模相加，但 $|\\vec{u} + \\vec{v}|$ 一般不等於 $|\\vec{u}| + |\\vec{v}|$；$\\sqrt{29}$ 是 $|\\vec{u}|$；$\\sqrt{58}$ 把兩個模的平方相加再開方，那是兩向量垂直時才成立的情況。",
+    "options": [
+      "$0$",
+      "$2\\sqrt{29}$",
+      "$\\sqrt{29}$",
+      "$\\sqrt{58}$"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "Let $\\vec{u} = (2,\\ 5)$ and $\\vec{v} = (-2,\\ -5)$. Find $|\\vec{u} + \\vec{v}|$.",
+    "optionsEn": [
+      "$0$",
+      "$2\\sqrt{29}$",
+      "$\\sqrt{29}$",
+      "$\\sqrt{58}$"
+    ],
+    "explanationEn": "$\\vec{u} + \\vec{v} = (2 - 2,\\ 5 - 5) = (0,\\ 0)$, the zero vector, whose magnitude is $0$. $\\vec{v} = -\\vec{u}$: equal in size and opposite in direction, so they cancel exactly. Traps: $2\\sqrt{29}$ adds the magnitudes, but $|\\vec{u} + \\vec{v}|$ is not in general $|\\vec{u}| + |\\vec{v}|$; $\\sqrt{29}$ is $|\\vec{u}|$; $\\sqrt{58}$ adds the squared magnitudes, which holds only when the vectors are perpendicular."
+  },
+  {
+    "id": "rcl_m2_mi_89",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "用數學歸納法證明「對所有整數 $n \\ge 2$，$2^{n} > n + 1$」。基礎步驟應驗證下列哪一項？",
+    "explanation": "基礎步驟要驗證命題範圍內最小的 $n$。題目說 $n \\ge 2$，故驗證 $n = 2$：$2^{2} = 4 > 3$，成立。陷阱：$n = 1$ 不在命題範圍內，而且 $2 > 2$ 本身不成立 —— 這正是命題要由 $n = 2$ 開始的原因；$2^{k+1} > (k + 1) + 1$ 是歸納步驟要證的目標，不是基礎步驟；$n = 0$ 同樣不在範圍內。",
+    "options": [
+      "$2^{1} > 1 + 1$，即 $2 > 2$",
+      "$2^{2} > 2 + 1$，即 $4 > 3$",
+      "$2^{k+1} > (k + 1) + 1$",
+      "$2^{0} > 0 + 1$，即 $1 > 1$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Prove by induction that $2^{n} > n + 1$ for all integers $n \\ge 2$. What should the base step verify?",
+    "optionsEn": [
+      "$2^{1} > 1 + 1$, that is $2 > 2$",
+      "$2^{2} > 2 + 1$, that is $4 > 3$",
+      "$2^{k+1} > (k + 1) + 1$",
+      "$2^{0} > 0 + 1$, that is $1 > 1$"
+    ],
+    "explanationEn": "The base step checks the smallest $n$ in the statement. Here $n \\ge 2$, so check $n = 2$: $2^{2} = 4 > 3$, true. Traps: $n = 1$ lies outside the statement, and $2 > 2$ is false — which is exactly why the statement starts at $n = 2$; $2^{k+1} > (k + 1) + 1$ is the target of the inductive step, not the base step; $n = 0$ is also outside the range."
+  },
+  {
+    "id": "rcl_m2_mi_90",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "用數學歸納法證明 $1 + 2 + 2^{2} + \\cdots + 2^{n-1} = 2^{n} - 1$。假設 $n = k$ 時成立後，歸納步驟須證明下列哪一條？",
+    "explanation": "把 $n = k + 1$ 代入命題：左邊加到第 $k + 1$ 項 $2^{(k+1)-1} = 2^{k}$，右邊是 $2^{k+1} - 1$。證明時把左邊拆成「前 $k$ 項 $+ 2^{k}$」，用歸納假設得 $(2^{k} - 1) + 2^{k} = 2^{k+1} - 1$。陷阱：右邊仍寫 $2^{k} - 1$ 只改了一邊；$1 + \\cdots + 2^{k-1} = 2^{k} - 1$ 是歸納假設本身；$1 + 2 + \\cdots + 2^{k} + 2^{k+1}$ 多加了 $2^{k+1}$，把第 $k + 1$ 項寫錯。",
+    "options": [
+      "$1 + 2 + \\cdots + 2^{k-1} + 2^{k} = 2^{k} - 1$",
+      "$1 + 2 + \\cdots + 2^{k-1} = 2^{k} - 1$",
+      "$1 + 2 + \\cdots + 2^{k-1} + 2^{k} = 2^{k+1} - 1$",
+      "$1 + 2 + \\cdots + 2^{k} + 2^{k+1} = 2^{k+1} - 1$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Prove by induction that $1 + 2 + 2^{2} + \\cdots + 2^{n-1} = 2^{n} - 1$. After assuming it holds for $n = k$, what must the inductive step prove?",
+    "optionsEn": [
+      "$1 + 2 + \\cdots + 2^{k-1} + 2^{k} = 2^{k} - 1$",
+      "$1 + 2 + \\cdots + 2^{k-1} = 2^{k} - 1$",
+      "$1 + 2 + \\cdots + 2^{k-1} + 2^{k} = 2^{k+1} - 1$",
+      "$1 + 2 + \\cdots + 2^{k} + 2^{k+1} = 2^{k+1} - 1$"
+    ],
+    "explanationEn": "Put $n = k + 1$ into the statement: the left side runs to the $(k + 1)$th term $2^{(k+1)-1} = 2^{k}$, and the right side is $2^{k+1} - 1$. In the proof, split the left side into the first $k$ terms plus $2^{k}$ and use the hypothesis: $(2^{k} - 1) + 2^{k} = 2^{k+1} - 1$. Traps: keeping $2^{k} - 1$ on the right changes only one side; $1 + \\cdots + 2^{k-1} = 2^{k} - 1$ is the hypothesis itself; $1 + 2 + \\cdots + 2^{k} + 2^{k+1}$ adds an extra $2^{k+1}$, getting the $(k + 1)$th term wrong."
+  },
+  {
+    "id": "rcl_m2_mi_92",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "下列哪一個命題適合用數學歸納法證明？",
+    "explanation": "數學歸納法由一個起點逐步推到下一個整數，所以只適用於以正整數（或由某整數起的整數）為變量的命題。$7^{n} - 1$ 可被 $6$ 整除正是這類命題：$n = 1$ 時為 $6$，而且由 $n = k$ 可推到 $n = k + 1$。其餘三項的變量是實數，實數之間沒有「下一個」，無法逐步推進；解方程一項只涉及兩個數值，直接驗算即可。",
+    "options": [
+      "對所有實數 $x$，$x^{2} \\ge 0$",
+      "對所有實數 $x > 0$，$x + \\dfrac{1}{x} \\ge 2$",
+      "方程 $x^{2} - 5x + 6 = 0$ 的根是 $2$ 和 $3$",
+      "對所有正整數 $n$，$7^{n} - 1$ 可被 $6$ 整除"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Which of these statements is suited to proof by mathematical induction?",
+    "optionsEn": [
+      "For every real number $x$, $x^{2} \\ge 0$",
+      "For every real $x > 0$, $x + \\dfrac{1}{x} \\ge 2$",
+      "The roots of $x^{2} - 5x + 6 = 0$ are $2$ and $3$",
+      "For every positive integer $n$, $7^{n} - 1$ is divisible by $6$"
+    ],
+    "explanationEn": "Induction steps from a starting value to the next integer, so it suits statements about positive integers (or integers from some point on). \"$7^{n} - 1$ is divisible by $6$\" is one: it is $6$ when $n = 1$, and the case $n = k$ leads to $n = k + 1$. The other statements are about real numbers, which have no \"next\" value to step to, and the equation involves just two values that can be checked directly."
+  },
+  {
+    "id": "rcl_m2_mi_95",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "hard",
+    "year": 0,
+    "content": "用數學歸納法證明 $3^{n} - 1$ 是 $2$ 的倍數。歸納步驟寫出 $3^{k+1} - 1 = 3(3^{k} - 1) + 2$。接着應如何完成？",
+    "explanation": "歸納假設是 $n = k$ 時成立，即 $3^{k} - 1 = 2m$（$m$ 為整數）。於是 $3^{k+1} - 1 = 3(2m) + 2 = 2(3m + 1)$，是 $2$ 的倍數。陷阱：假設 $3^{k+1} - 1$ 是 $2$ 的倍數，等於先假設了要證明的結果；只用 $n = 1$ 的基礎步驟推不到一般的 $k + 1$；單憑 $+2$ 不足以斷定，還要知道 $3(3^{k} - 1)$ 是 $2$ 的倍數，而這一步正要用歸納假設。",
+    "options": [
+      "由歸納假設，$3(3^{k} - 1)$ 是 $2$ 的倍數，再加 $2$ 仍是 $2$ 的倍數",
+      "由歸納假設，$3^{k+1} - 1$ 是 $2$ 的倍數，故等式右邊亦是 $2$ 的倍數",
+      "由 $n = 1$ 時 $3^{1} - 1 = 2$，可直接推知對 $n = k + 1$ 亦成立",
+      "等式右邊有 $+2$ 一項，所以整個式子必定是 $2$ 的倍數"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "To prove by induction that $3^{n} - 1$ is a multiple of $2$, the inductive step writes $3^{k+1} - 1 = 3(3^{k} - 1) + 2$. How should it be completed?",
+    "optionsEn": [
+      "By the hypothesis $3(3^{k} - 1)$ is a multiple of $2$, and adding $2$ keeps it one",
+      "By the hypothesis $3^{k+1} - 1$ is a multiple of $2$, so the right side is one too",
+      "Since $3^{1} - 1 = 2$ when $n = 1$, it follows directly for $n = k + 1$",
+      "The right side has a $+2$ term, so the whole expression must be a multiple of $2$"
+    ],
+    "explanationEn": "The hypothesis is the case $n = k$: $3^{k} - 1 = 2m$ for an integer $m$. Then $3^{k+1} - 1 = 3(2m) + 2 = 2(3m + 1)$, a multiple of $2$. Traps: assuming $3^{k+1} - 1$ is a multiple of $2$ assumes the result being proved; the base case $n = 1$ alone does not reach a general $k + 1$; the $+2$ is not enough on its own — we also need $3(3^{k} - 1)$ to be a multiple of $2$, which is exactly where the hypothesis is used."
+  },
+  {
+    "id": "rcl_m2_mi_96",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "命題 $P(n)$：$n! > 2^{n}$。已知 $P(4)$ 成立，並已證明對所有 $k \\ge 4$，$P(k)$ 成立可推出 $P(k + 1)$ 成立。$P(3)$ 是否成立？",
+    "explanation": "歸納法的結論由起點開始：起點是 $n = 4$，所以只確立了 $n \\ge 4$。$n = 3$ 要另外直接驗算：$3! = 6$，$2^{3} = 8$，$6 < 8$，故 $P(3)$ 不成立。陷阱：歸納步驟只會向前推，不會向後推，所以「倒推」與「對所有正整數成立」都不對；「無法判斷」亦不對，因為 $n = 3$ 可以直接計算。",
+    "options": [
+      "成立：歸納步驟已證明，故對所有正整數都成立",
+      "不成立：$3! = 6 < 2^{3} = 8$；歸納法只確立了 $n \\ge 4$ 的情況",
+      "成立：由 $P(4)$ 成立，可以倒推得 $P(3)$ 成立",
+      "無法判斷：歸納法沒有提供 $n = 3$ 的任何資料"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Let $P(n)$ be $n! > 2^{n}$. $P(4)$ is true, and for every $k \\ge 4$, $P(k)$ implies $P(k + 1)$. Is $P(3)$ true?",
+    "optionsEn": [
+      "Yes: the inductive step is proved, so it holds for every positive integer",
+      "No: $3! = 6 < 2^{3} = 8$; the induction covers only $n \\ge 4$",
+      "Yes: $P(3)$ follows by working back from $P(4)$",
+      "Cannot tell: the induction gives no information about $n = 3$"
+    ],
+    "explanationEn": "An induction proves the statement from its starting point on: here $n = 4$, so only $n \\ge 4$ is established. $n = 3$ must be checked directly: $3! = 6$ and $2^{3} = 8$, so $6 < 8$ and $P(3)$ is false. Traps: the inductive step only pushes forward, never back, so neither \"working back\" nor \"every positive integer\" is right; \"cannot tell\" is also wrong, because $n = 3$ can simply be calculated."
+  },
+  {
+    "id": "rcl_m2_rep_0056",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "某學生想證明 $n^{2} + n + 41$ 對所有正整數 $n$ 都是質數。他驗證了 $n = 1, 2, 3$ 時結果都是質數，便作出結論。這個推理有甚麼問題？",
+    "explanation": "有限個例子只能顯示命題在那些 $n$ 成立，不能保證其餘無限多個 $n$。數學歸納法的作用，正是用「基礎步驟 + 歸納步驟」取代無止境的驗證。這個命題其實是錯的：$n = 40$ 時，$40^{2} + 40 + 41 = 1600 + 81 = 1681 = 41^{2}$，不是質數。陷阱：多驗證一兩個例子或改變起點，仍然只是驗證有限個情況。",
+    "options": [
+      "沒有問題：三個例子都成立，已足夠證明命題",
+      "只要再驗證 $n = 4$ 及 $n = 5$，證明便完成",
+      "幾個例子不是證明；$n = 40$ 時得 $41^{2}$，並非質數",
+      "問題只在於起點：應由 $n = 0$ 開始驗證"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "A student wants to show that $n^{2} + n + 41$ is prime for every positive integer $n$. He checks $n = 1, 2, 3$, finds primes each time, and concludes it is true. What is wrong with this reasoning?",
+    "optionsEn": [
+      "Nothing: all three cases work, which proves it",
+      "Checking $n = 4$ and $n = 5$ as well would finish the proof",
+      "A few cases are not a proof; $n = 40$ gives $41^{2}$, not a prime",
+      "The only problem is the start: it should begin at $n = 0$"
+    ],
+    "explanationEn": "A finite number of cases shows only that those values of $n$ work, not the infinitely many others. Induction replaces endless checking with a base step plus an inductive step. This statement is in fact false: at $n = 40$, $40^{2} + 40 + 41 = 1600 + 81 = 1681 = 41^{2}$, which is not prime. Traps: checking one more case or changing the starting value is still checking finitely many cases."
+  },
+  {
+    "id": "rcl_m2_rep_0057",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "mathematical_induction",
+    "topicZh": "數學歸納法",
+    "topicEn": "Mathematical Induction",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "用數學歸納法證明 $1 + 3 + 5 + \\cdots + (2n - 1) = n^{2}$ 時，歸納假設應寫成哪一條？",
+    "explanation": "歸納假設只假設命題對【某一個】正整數 $k$ 成立，然後用它推出 $k + 1$ 的情況。陷阱：假設「對所有正整數 $n$」成立，就是假設了要證明的結論，屬循環論證；$1 + \\cdots + (2k + 1) = (k + 1)^{2}$ 是歸納步驟要證的目標；$n = 1$ 的情況是基礎步驟，要實際驗證，不是假設。",
+    "options": [
+      "設對所有正整數 $n$，$1 + 3 + \\cdots + (2n - 1) = n^{2}$",
+      "設 $1 + 3 + \\cdots + (2k + 1) = (k + 1)^{2}$",
+      "設 $n = 1$ 時，$1 = 1^{2}$",
+      "設對某一正整數 $k$，$1 + 3 + \\cdots + (2k - 1) = k^{2}$"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "In an induction proof that $1 + 3 + 5 + \\cdots + (2n - 1) = n^{2}$, how should the inductive hypothesis be written?",
+    "optionsEn": [
+      "Assume that for all positive integers $n$, $1 + 3 + \\cdots + (2n - 1) = n^{2}$",
+      "Assume $1 + 3 + \\cdots + (2k + 1) = (k + 1)^{2}$",
+      "Assume that when $n = 1$, $1 = 1^{2}$",
+      "Assume that for some positive integer $k$, $1 + 3 + \\cdots + (2k - 1) = k^{2}$"
+    ],
+    "explanationEn": "The hypothesis assumes the statement for one particular positive integer $k$, and is then used to reach $k + 1$. Traps: assuming it for all positive integers $n$ assumes the very result being proved — circular reasoning; $1 + \\cdots + (2k + 1) = (k + 1)^{2}$ is the target of the inductive step; the case $n = 1$ is the base step, which is checked, not assumed."
+  },
+  {
+    "id": "rcl_m2_bin_109",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "binomial_theorem",
+    "topicZh": "二項式定理",
+    "topicEn": "Binomial Theorem",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "$(1 + x)^{n}$ 展開後共有 $12$ 項。求 $n$ 及 $x^{3}$ 項的係數。",
+    "explanation": "$(1 + x)^{n}$ 的展開式由 $x^{0}$ 至 $x^{n}$，共 $n + 1$ 項，故 $n + 1 = 12$，$n = 11$。$x^{3}$ 的係數為 $\\binom{11}{3} = \\dfrac{11 \\times 10 \\times 9}{3 \\times 2 \\times 1} = 165$。陷阱：$n = 12$ 把項數當成指數；$330$ 是 $\\binom{11}{4}$，把「第 $4$ 項」與「$x^{3}$ 項」混淆，但兩者都是 $\\binom{11}{3}$；$n = 13$ 多加了一。",
+    "options": [
+      "$n = 11$，係數為 $165$",
+      "$n = 12$，係數為 $220$",
+      "$n = 11$，係數為 $330$",
+      "$n = 13$，係數為 $286$"
+    ],
+    "correctIndex": 0,
+    "marks": 1,
+    "contentEn": "The expansion of $(1 + x)^{n}$ has $12$ terms. Find $n$ and the coefficient of $x^{3}$.",
+    "optionsEn": [
+      "$n = 11$, coefficient $165$",
+      "$n = 12$, coefficient $220$",
+      "$n = 11$, coefficient $330$",
+      "$n = 13$, coefficient $286$"
+    ],
+    "explanationEn": "$(1 + x)^{n}$ runs from $x^{0}$ to $x^{n}$, which is $n + 1$ terms, so $n + 1 = 12$ and $n = 11$. The coefficient of $x^{3}$ is $\\binom{11}{3} = \\dfrac{11 \\times 10 \\times 9}{3 \\times 2 \\times 1} = 165$. Traps: $n = 12$ takes the number of terms as the index; $330$ is $\\binom{11}{4}$, mixing up \"the 4th term\" with \"the $x^{3}$ term\" — both are $\\binom{11}{3}$; $n = 13$ adds one too many."
+  },
+  {
+    "id": "rcl_m2_bin_113",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "binomial_theorem",
+    "topicZh": "二項式定理",
+    "topicEn": "Binomial Theorem",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "設 $(2x + 3)^{5} = a_{0} + a_{1}x + a_{2}x^{2} + \\cdots + a_{5}x^{5}$。求 $a_{2}$。",
+    "explanation": "一般項為 $\\binom{5}{r}(2x)^{5-r}(3)^{r}$。$x^{2}$ 項要 $5 - r = 2$，即 $r = 3$：係數 $= \\binom{5}{3} \\times 2^{2} \\times 3^{3} = 10 \\times 4 \\times 27 = 1080$。陷阱：$720$ 把兩個冪調轉，算成 $2^{3} \\times 3^{2}$；$270$ 漏了 $2x$ 中的 $2$ 的冪；$40$ 漏了 $3$ 的冪。",
+    "options": [
+      "$720$",
+      "$1080$",
+      "$270$",
+      "$40$"
+    ],
+    "correctIndex": 1,
+    "marks": 1,
+    "contentEn": "Let $(2x + 3)^{5} = a_{0} + a_{1}x + a_{2}x^{2} + \\cdots + a_{5}x^{5}$. Find $a_{2}$.",
+    "optionsEn": [
+      "$720$",
+      "$1080$",
+      "$270$",
+      "$40$"
+    ],
+    "explanationEn": "The general term is $\\binom{5}{r}(2x)^{5-r}(3)^{r}$. For $x^{2}$ we need $5 - r = 2$, so $r = 3$: the coefficient is $\\binom{5}{3} \\times 2^{2} \\times 3^{3} = 10 \\times 4 \\times 27 = 1080$. Traps: $720$ swaps the powers, giving $2^{3} \\times 3^{2}$; $270$ leaves out the power of the $2$ in $2x$; $40$ leaves out the power of $3$."
+  },
+  {
+    "id": "rcl_m2_bin_118",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "binomial_theorem",
+    "topicZh": "二項式定理",
+    "topicEn": "Binomial Theorem",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "medium",
+    "year": 0,
+    "content": "已知 $\\binom{20}{r} = \\binom{20}{r + 4}$。求 $r$。",
+    "explanation": "二項式係數對稱：$\\binom{n}{r} = \\binom{n}{n - r}$。$r$ 與 $r + 4$ 不相等，故兩者之和必須等於 $20$：$r + (r + 4) = 20$，$r = 8$。驗算：$\\binom{20}{8} = \\binom{20}{12}$。陷阱：$12$ 是 $r + 4$ 的值，不是 $r$；$16$ 令 $r + 4 = 20$；$4$ 只看了相差的 $4$。",
+    "options": [
+      "$r = 12$",
+      "$r = 16$",
+      "$r = 8$",
+      "$r = 4$"
+    ],
+    "correctIndex": 2,
+    "marks": 1,
+    "contentEn": "Given $\\binom{20}{r} = \\binom{20}{r + 4}$, find $r$.",
+    "optionsEn": [
+      "$r = 12$",
+      "$r = 16$",
+      "$r = 8$",
+      "$r = 4$"
+    ],
+    "explanationEn": "Binomial coefficients are symmetric: $\\binom{n}{r} = \\binom{n}{n - r}$. Since $r$ and $r + 4$ differ, they must add up to $20$: $r + (r + 4) = 20$, so $r = 8$. Check: $\\binom{20}{8} = \\binom{20}{12}$. Traps: $12$ is the value of $r + 4$, not $r$; $16$ sets $r + 4 = 20$; $4$ is just the difference."
+  },
+  {
+    "id": "rcl_m2_bin_120",
+    "type": "mc",
+    "subject": "m2",
+    "topic": "binomial_theorem",
+    "topicZh": "二項式定理",
+    "topicEn": "Binomial Theorem",
+    "framework": "auto",
+    "frameworkZh": "機器閘放行題",
+    "frameworkEn": "Auto-gated",
+    "frameworkEmoji": "⚙️",
+    "difficulty": "easy",
+    "year": 0,
+    "content": "求 $(1 + x)^{7}$ 展開式中常數項與 $x^{7}$ 項的係數之和。",
+    "explanation": "常數項是 $\\binom{7}{0} = 1$，$x^{7}$ 項的係數是 $\\binom{7}{7} = 1$，和為 $2$。展開式首末兩項分別是 $1^{7}$ 與 $x^{7}$，係數都是 $1$。陷阱：$8$ 把常數項當成 $\\binom{7}{1} = 7$；$14$ 把兩個係數都當成 $7$；$0$ 誤以為 $\\binom{7}{0} = 0$。",
+    "options": [
+      "$8$",
+      "$14$",
+      "$0$",
+      "$2$"
+    ],
+    "correctIndex": 3,
+    "marks": 1,
+    "contentEn": "Find the sum of the constant term and the coefficient of $x^{7}$ in the expansion of $(1 + x)^{7}$.",
+    "optionsEn": [
+      "$8$",
+      "$14$",
+      "$0$",
+      "$2$"
+    ],
+    "explanationEn": "The constant term is $\\binom{7}{0} = 1$ and the coefficient of $x^{7}$ is $\\binom{7}{7} = 1$, so the sum is $2$. The first and last terms are $1^{7}$ and $x^{7}$, each with coefficient $1$. Traps: $8$ takes the constant term as $\\binom{7}{1} = 7$; $14$ takes both coefficients as $7$; $0$ assumes $\\binom{7}{0} = 0$."
   }
 ]

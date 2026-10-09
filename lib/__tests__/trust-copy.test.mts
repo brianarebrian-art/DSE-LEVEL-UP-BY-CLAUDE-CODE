@@ -87,7 +87,7 @@ test('/about Chinese copy drops the nobility, fast-food and "zero noise" lines',
 
 // Founders' reply 8a (2026-10-04): the FAQ on /about drops "academic accuracy is our red line" too.
 test('the FAQ no longer calls accuracy a red line', () => {
-  const faq = strip(readFileSync('components/FAQSection.tsx', 'utf8'))
+  const faq = strip(readFileSync('lib/faq.ts', 'utf8')) // the FAQ text moved here (reply 61a)
   assert.doesNotMatch(faq, /生死線|red line/)
   assert.match(faq, /我哋會對照課綱核實，屬實即修正。'/)
 })

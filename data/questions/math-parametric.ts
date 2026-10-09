@@ -83,13 +83,17 @@ const out: Question[] = []
     const A = k - m * h, rad = m * m + 1
     const D = -2 * h, E = -2 * k, F = h * h + k * k - r * r
     const dTerm = (v: number, s: string) => (v === 0 ? '' : `${v > 0 ? ' + ' : ' - '}${Math.abs(v) === 1 ? '' : Math.abs(v)}${s}`)
+    // 2026-10-09 full check (reply 62c): the numerator m·h − k + c equals c − A, so the
+    // absolute value is |c − A| (it was printed as |c + A|); and "1x" is written "x".
+    const mx = m === 1 ? '' : `${m}`
+    const cMinusA = `c ${A >= 0 ? '-' : '+'} ${Math.abs(A)}`
     const circle = `x^2 + y^2${dTerm(D, 'x')}${dTerm(E, 'y')}${F === 0 ? '' : `${F > 0 ? ' + ' : ' - '}${Math.abs(F)}`} = 0`
     out.push(pq(`mp_k1_${i}`, T.circles, FW.geometry, yr(i),
       [`直線 $y = ${m === 1 ? '' : m}x + c$ 與圓 $C:\\ ${circle}$ 相切。求 $c$ 的值。`,
        `The line $y = ${m === 1 ? '' : m}x + c$ is tangent to the circle $C:\\ ${circle}$. Find $c$.`],
       [n(`$${pmSurd(A, r, rad)}$`), n(`$${A} \\pm ${r}$`), n(`$${pmSurd(-A, r, rad)}$`), n(`$${pmSurd(A, 1, rad)}$`)],
-      [`配方求圓心半徑：$C$ 的圓心 $(${h},${k})$、半徑 $${r}$。切線 ⇔ 圓心到直線 $${m}x - y + c = 0$ 的距離 $=$ 半徑：$\\dfrac{|${m}(${h}) - (${k}) + c|}{\\sqrt{${m}^2+1}} = ${r}$ ⇒ $|c ${A >= 0 ? '+' : '-'} ${Math.abs(A)}|=${r}\\sqrt{${rad}}$ ⇒ $c = ${pmSurd(A, r, rad)}$。陷阱：$${A} \\pm ${r}$ 漏了 $\\sqrt{${rad}}$；另一個錯了 $(${k}-${m}\\cdot${h})$ 的符號。`,
-       `Complete the square: centre $(${h},${k})$, radius $${r}$. Tangent ⇔ distance from centre to $${m}x - y + c = 0$ equals $${r}$: $\\dfrac{|c ${A >= 0 ? '+' : '-'} ${Math.abs(A)}|}{\\sqrt{${rad}}} = ${r}$ ⇒ $c = ${pmSurd(A, r, rad)}$. Trap: $${A} \\pm ${r}$ drops the $\\sqrt{${rad}}$.`],
+      [`配方求圓心半徑：$C$ 的圓心 $(${h},${k})$、半徑 $${r}$。切線 ⇔ 圓心到直線 $${mx}x - y + c = 0$ 的距離 $=$ 半徑：$\\dfrac{|${m}(${h}) - (${k}) + c|}{\\sqrt{${m}^2+1}} = ${r}$ ⇒ $|${cMinusA}|=${r}\\sqrt{${rad}}$ ⇒ $c = ${pmSurd(A, r, rad)}$。陷阱：$${A} \\pm ${r}$ 漏了 $\\sqrt{${rad}}$；另一個錯了 $(${k}-${m}\\cdot${h})$ 的符號。`,
+       `Complete the square: centre $(${h},${k})$, radius $${r}$. Tangent ⇔ distance from centre to $${mx}x - y + c = 0$ equals $${r}$: $\\dfrac{|${cMinusA}|}{\\sqrt{${rad}}} = ${r}$ ⇒ $c = ${pmSurd(A, r, rad)}$. Trap: $${A} \\pm ${r}$ drops the $\\sqrt{${rad}}$.`],
       [`一般式先配方取圓心半徑，再用 $d=r$：$\\dfrac{|c+(${-A})|}{\\sqrt{${rad}}}=${r}$（負號小心）⇒ $c=${pmSurd(A, r, rad)}$。`,
        `Complete the square, then $d=r$ ⇒ $c=${pmSurd(A, r, rad)}$.`]))
   })
@@ -140,8 +144,8 @@ const out: Question[] = []
       [`解方程 $\\log_{${b}} x + \\log_{${b}} (x - ${d}) = ${k}$。`,
        `Solve $\\log_{${b}} x + \\log_{${b}} (x - ${d}) = ${k}$.`],
       [n(`$x = ${p}$`), n(`$x = ${q}$`), nOr(`$x = ${p}$`, `$x = ${-q}$`), n(`$x = ${bk}$`)],
-      [`合併對數：$\\log_{${b}}[x(x-${d})] = ${k}$ ⇒ $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2 - ${d}x - ${bk} = 0$ ⇒ $(x - ${p})(x + ${q}) = 0$ ⇒ $x = ${p}$ 或 $x = ${-q}$。但 $\\log$ 要求 $x>0$ 且 $x-${d}>0$，故 $x=${-q}$ 不合，捨去，只取 $x = ${p}$。致命陷阱：$x=${q}$／$x=${-q}$ 正是那條要捨去的根。`,
-       `Combine logs: $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2-${d}x-${bk}=0$ ⇒ $(x-${p})(x+${q})=0$. Domain needs $x>0$ and $x-${d}>0$, so $x=${-q}$ is rejected; only $x=${p}$. Trap: the rejected root is the bait.`],
+      [`合併對數：$\\log_{${b}}[x(x-${d})] = ${k}$ ⇒ $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2 - ${d}x - ${bk} = 0$ ⇒ $(x - ${p})(x + ${q}) = 0$ ⇒ $x = ${p}$ 或 $x = ${-q}$。但 $\\log$ 要求 $x>0$ 且 $x-${d}>0$，故 $x=${-q}$ 不合，捨去，只取 $x = ${p}$。陷阱：「$x = ${p}$ 或 $x = ${-q}$」漏了用定義域捨去 $x=${-q}$；$x = ${q}$ 把因式 $(x + ${q})$ 的根看成 $+${q}$；$x = ${bk}$ 停在 $${b}^{${k}}$ 未解方程。`,
+       `Combine logs: $x(x-${d}) = ${b}^{${k}} = ${bk}$ ⇒ $x^2-${d}x-${bk}=0$ ⇒ $(x-${p})(x+${q})=0$. Domain needs $x>0$ and $x-${d}>0$, so $x=${-q}$ is rejected; only $x=${p}$. Traps: keeping $x=${-q}$ ignores the domain; $x = ${q}$ misreads the root of $(x + ${q})$; $x = ${bk}$ stops at $${b}^{${k}}$.`],
       [`對數合併後 $x(x-${d})=${bk}$，因式分解取兩根，用定義域 $x-${d}>0$ 捨負根 ⇒ $x=${p}$。`,
        `After combining, factor $x(x-${d})=${bk}$ and reject the root failing $x-${d}>0$ ⇒ $x=${p}$.`]))
   })
@@ -213,13 +217,15 @@ function countNumbers(digits: number[], pred: (num: number, ds: number[]) => boo
     const E1 = (2 * by - 8 * ay) / 3
     const F1 = (4 * (ax * ax + ay * ay) - bx * bx - by * by) / 3
     const t = (v: number, s: string) => (v === 0 ? '' : `${v > 0 ? ' + ' : ' - '}${Math.abs(v) === 1 ? '' : Math.abs(v)}${s}`)
+    // 2026-10-09 full check (reply 62c): "(x--3)^2" is written "(x+3)^2" and "(x-0)^2" as "x^2".
+    const sq = (v: string, a: number) => (a === 0 ? `${v}^2` : `(${v} ${a > 0 ? '-' : '+'} ${Math.abs(a)})^2`)
     const eqn = (d: number, e: number, f: number) => `x^2 + y^2${t(d, 'x')}${t(e, 'y')}${f === 0 ? '' : `${f > 0 ? ' + ' : ' - '}${Math.abs(f)}`} = 0`
     out.push(pq(`mp_k7_${i}`, T.locus, FW.geometry, yr(i),
       [`動點 $P$ 與兩定點 $A(${ax},${ay})$、$B(${bx},${by})$ 滿足 $PA = 2\\,PB$。求 $P$ 的軌跡方程。`,
        `A moving point $P$ satisfies $PA = 2\\,PB$, where $A(${ax},${ay})$ and $B(${bx},${by})$. Find the equation of its locus.`],
       [n(`$${eqn(D, E, F)}$`), n(`$${eqn(D1, E1, F1)}$`), n(`$${eqn(-D, -E, -F)}$`), n(`$${eqn(D, E, F + 1)}$`)],
-      [`$PA=2PB ⇒ PA^2=4PB^2$：$(x-${ax})^2+(y-${ay})^2 = 4[(x-${bx})^2+(y-${by})^2]$。展開、移項，係數的 $x^2,y^2$ 變成 $-3x^2-3y^2$，整理（除以 $-3$）得 $${eqn(D, E, F)}$ —— 一個圓（阿波羅尼斯圓）。陷阱：用 $PA=PB$（公比 $1$）會得到垂直平分線（一條直線），完全不同。`,
-       `$PA=2PB ⇒ PA^2=4PB^2$. Expanding $(x-${ax})^2+(y-${ay})^2=4[(x-${bx})^2+(y-${by})^2]$ and simplifying gives $${eqn(D, E, F)}$ — a circle (Apollonius). Trap: using $PA=PB$ gives the perpendicular bisector (a straight line), which is wrong.`],
+      [`$PA=2PB ⇒ PA^2=4PB^2$：$${sq('x', ax)}+${sq('y', ay)} = 4[${sq('x', bx)}+${sq('y', by)}]$。展開、移項，係數的 $x^2,y^2$ 變成 $-3x^2-3y^2$，整理（除以 $-3$）得 $${eqn(D, E, F)}$ —— 一個圓（阿波羅尼斯圓）。陷阱：用 $PA=PB$（公比 $1$）會得到垂直平分線（一條直線），完全不同。`,
+       `$PA=2PB ⇒ PA^2=4PB^2$. Expanding $${sq('x', ax)}+${sq('y', ay)}=4[${sq('x', bx)}+${sq('y', by)}]$ and simplifying gives $${eqn(D, E, F)}$ — a circle (Apollonius). Trap: using $PA=PB$ gives the perpendicular bisector (a straight line), which is wrong.`],
       [`比例距離（$k\\ne1$）軌跡是圓：開 $PA^2=4PB^2$，平方項不抵消（係數變 $3$），整理即得 $${eqn(D, E, F)}$。`,
        `A ratio distance ($k\\ne1$) gives a circle: $PA^2=4PB^2$, the squares don't cancel ⇒ $${eqn(D, E, F)}$.`]))
   })

@@ -102,13 +102,15 @@ for (let x = 1; x <= 4; x++) {
 }
 
 // M3 — limit (x² − a²)/(x − a) as x→a = 2a
+// Full check 2026-10-09 (reply 62c): the trap said "$a$" (a symbol not in the question) and
+// called 0/0 "wrongly thought undefined"; 0/0 is indeterminate, and the error is reading it as 0.
 for (let a = 2; a <= 22; a++) {
   add(`m2_m3_${a}`, T.limits, FW.calc, 'medium',
     [`求 $\\displaystyle\\lim_{x \\to ${a}} \\dfrac{x^2 - ${a * a}}{x - ${a}}$。`,
      `Find $\\displaystyle\\lim_{x \\to ${a}} \\dfrac{x^2 - ${a * a}}{x - ${a}}$.`],
     [n(`$${2 * a}$`), n(`$${a}$`), n(`$${a * a}$`), n(`$0$`)],
-    [`因式分解：$\\dfrac{x^2 - ${a * a}}{x - ${a}} = \\dfrac{(x-${a})(x+${a})}{x-${a}} = x + ${a}$，代 $x = ${a}$ 得 $${2 * a}$。陷阱：$0$ 誤以為 $\\tfrac00$ 無定義；$${a}$ 漏了加 $a$。`,
-     `Factor: $\\frac{(x-${a})(x+${a})}{x-${a}} = x+${a} \\to ${2 * a}$. Trap: $0$ assumes $\\frac00$ is undefined.`])
+    [`因式分解：$\\dfrac{x^2 - ${a * a}}{x - ${a}} = \\dfrac{(x-${a})(x+${a})}{x-${a}} = x + ${a}$，代 $x = ${a}$ 得 $${2 * a}$。陷阱：$0$ 把直接代入所得的不定式 $\\tfrac{0}{0}$ 當成 $0$，不定式須先化簡；$${a}$ 化簡後只代入了 $x$，漏了加 $${a}$；$${a * a}$ 只取了分子的常數。`,
+     `Factor: $\\frac{(x-${a})(x+${a})}{x-${a}} = x+${a} \\to ${2 * a}$. Traps: $0$ treats the indeterminate form $\\frac{0}{0}$ from direct substitution as $0$; $${a}$ forgets to add $${a}$ after simplifying; $${a * a}$ takes only the constant in the numerator.`])
 }
 
 // M4 — 2D "cross" magnitude / parallelogram area: |a₁b₂ − a₂b₁|
@@ -218,12 +220,13 @@ for (const nn of [5, 6, 7, 8, 9, 10]) {
 for (const [aa, nn] of [[3, 2], [4, 1], [2, 3], [6, 2], [6, 1], [5, 4], [4, 3], [9, 2], [10, 1], [6, 3], [2, 1], [8, 1], [12, 2], [3, 3]] as [number, number][]) {
   const val = aa ** (nn + 1) / (nn + 1)
   if (!Number.isInteger(val)) continue
+  const xn = nn === 1 ? 'x' : `x^{${nn}}` // "x^{1}" is written "x" (full check 2026-10-09, reply 62c)
   add(`m2b_i1_${aa}_${nn}`, T.integration, FW.transform, 'medium',
-    [`求定積分 $\\displaystyle\\int_{0}^{${aa}} x^{${nn}}\\,dx$。`,
-     `Evaluate the definite integral $\\displaystyle\\int_{0}^{${aa}} x^{${nn}}\\,dx$.`],
+    [`求定積分 $\\displaystyle\\int_{0}^{${aa}} ${xn}\\,dx$。`,
+     `Evaluate the definite integral $\\displaystyle\\int_{0}^{${aa}} ${xn}\\,dx$.`],
     [n(`$${val}$`), n(`$${aa ** (nn + 1)}$`), n(`$${round(aa ** nn / (nn + 1), 3)}$`), n(`$${nn * aa ** (nn - 1)}$`)],
-    [`先求原函數：$\\int x^{${nn}}\\,dx = \\dfrac{x^{${nn + 1}}}{${nn + 1}}$。再代入上下限：$\\left[\\dfrac{x^{${nn + 1}}}{${nn + 1}}\\right]_{0}^{${aa}} = \\dfrac{${aa}^{${nn + 1}}}{${nn + 1}} - 0 = \\dfrac{${aa ** (nn + 1)}}{${nn + 1}} = ${val}$。定積分的結果是一個數值，不需要積分常數 $C$——這是它與不定積分最基本的分別。陷阱：$${aa ** (nn + 1)}$ 漏了除以新指數；$${round(aa ** nn / (nn + 1), 3)}$ 指數未加一；$${nn * aa ** (nn - 1)}$ 做了微分。`,
-     `First find the antiderivative: $\\int x^{${nn}}\\,dx = \\frac{x^{${nn + 1}}}{${nn + 1}}$. Then substitute the limits: $\\left[\\frac{x^{${nn + 1}}}{${nn + 1}}\\right]_{0}^{${aa}} = \\frac{${aa}^{${nn + 1}}}{${nn + 1}} - 0 = \\frac{${aa ** (nn + 1)}}{${nn + 1}} = ${val}$. A definite integral evaluates to a number and needs no constant of integration $C$, which is the most basic difference from an indefinite integral. Traps: $${aa ** (nn + 1)}$ omits the division by the new exponent; $${round(aa ** nn / (nn + 1), 3)}$ fails to raise the exponent; $${nn * aa ** (nn - 1)}$ differentiates instead.`])
+    [`先求原函數：$\\int ${xn}\\,dx = \\dfrac{x^{${nn + 1}}}{${nn + 1}}$。再代入上下限：$\\left[\\dfrac{x^{${nn + 1}}}{${nn + 1}}\\right]_{0}^{${aa}} = \\dfrac{${aa}^{${nn + 1}}}{${nn + 1}} - 0 = \\dfrac{${aa ** (nn + 1)}}{${nn + 1}} = ${val}$。定積分的結果是一個數值，不需要積分常數 $C$——這是它與不定積分最基本的分別。陷阱：$${aa ** (nn + 1)}$ 漏了除以新指數；$${round(aa ** nn / (nn + 1), 3)}$ 指數未加一；$${nn * aa ** (nn - 1)}$ 做了微分。`,
+     `First find the antiderivative: $\\int ${xn}\\,dx = \\frac{x^{${nn + 1}}}{${nn + 1}}$. Then substitute the limits: $\\left[\\frac{x^{${nn + 1}}}{${nn + 1}}\\right]_{0}^{${aa}} = \\frac{${aa}^{${nn + 1}}}{${nn + 1}} - 0 = \\frac{${aa ** (nn + 1)}}{${nn + 1}} = ${val}$. A definite integral evaluates to a number and needs no constant of integration $C$, which is the most basic difference from an indefinite integral. Traps: $${aa ** (nn + 1)}$ omits the division by the new exponent; $${round(aa ** nn / (nn + 1), 3)}$ fails to raise the exponent; $${nn * aa ** (nn - 1)}$ differentiates instead.`])
 }
 
 // MI1 — 數學歸納法常用求和公式
@@ -268,8 +271,8 @@ for (let a = 2; a <= 5; a++) {
         [`設 $f(x) = ${co(a)}x^{${nn}}$。求 $f'(${c})$。`,
          `Let $f(x) = ${co(a)}x^{${nn}}$. Find $f'(${c})$.`],
         [n(`$${ans}$`), n(`$${a * c ** nn}$`), n(`$${a * nn * c ** nn}$`), n(`$${nn * c ** (nn - 1)}$`)],
-        [`由冪法則，$f'(x) = ${a} \\times ${nn} x^{${nn - 1}} = ${a * nn}x^{${nn - 1}}$。代入 $x = ${c}$：$${a * nn} \\times ${c}^{${nn - 1}} = ${ans}$。陷阱：$${a * c ** nn}$ 只計算了 $f(${c})$ 而未求導；$${a * nn * c ** nn}$ 忘記把指數減一；$${nn * c ** (nn - 1)}$ 漏掉了係數 $${a}$。`,
-         `By the power rule $f'(x) = ${a} \\times ${nn} x^{${nn - 1}} = ${a * nn}x^{${nn - 1}}$. At $x = ${c}$ this gives $${a * nn} \\times ${c}^{${nn - 1}} = ${ans}$. Traps: $${a * c ** nn}$ evaluates $f(${c})$ without differentiating; $${a * nn * c ** nn}$ forgets to reduce the exponent by one; $${nn * c ** (nn - 1)}$ drops the coefficient $${a}$.`])
+        [`由冪法則，$f'(x) = ${a} \\times ${nn} x${nn - 1 === 1 ? '' : `^{${nn - 1}}`} = ${a * nn}x${nn - 1 === 1 ? '' : `^{${nn - 1}}`}$。代入 $x = ${c}$：$${a * nn} \\times ${c}${nn - 1 === 1 ? '' : `^{${nn - 1}}`} = ${ans}$。陷阱：$${a * c ** nn}$ 只計算了 $f(${c})$ 而未求導；$${a * nn * c ** nn}$ 忘記把指數減一；$${nn * c ** (nn - 1)}$ 漏掉了係數 $${a}$。`,
+         `By the power rule $f'(x) = ${a} \\times ${nn} x${nn - 1 === 1 ? '' : `^{${nn - 1}}`} = ${a * nn}x${nn - 1 === 1 ? '' : `^{${nn - 1}}`}$. At $x = ${c}$ this gives $${a * nn} \\times ${c}${nn - 1 === 1 ? '' : `^{${nn - 1}}`} = ${ans}$. Traps: $${a * c ** nn}$ evaluates $f(${c})$ without differentiating; $${a * nn * c ** nn}$ forgets to reduce the exponent by one; $${nn * c ** (nn - 1)}$ drops the coefficient $${a}$.`])
     }
   }
 }
@@ -280,12 +283,13 @@ for (let a = 2; a <= 4; a++) {
     for (let nn = 2; nn <= 4; nn++) {
       const s = a + b
       const ans = nn * a * s ** (nn - 1)
+      const p1 = nn - 1 === 1 ? '' : `^{${nn - 1}}` // "^{1}" is not written (full check 2026-10-09)
       add(`m2c_d2_${a}_${b}_${nn}`, T.diff, FW.transform, 'medium',
         [`設 $f(x) = (${co(a)}x + ${b})^{${nn}}$。求 $f'(1)$。`,
          `Let $f(x) = (${co(a)}x + ${b})^{${nn}}$. Find $f'(1)$.`],
         [n(`$${ans}$`), n(`$${nn * s ** (nn - 1)}$`), n(`$${a * s ** nn}$`), n(`$${nn * a * s ** nn}$`)],
-        [`連鎖法則：$f'(x) = ${nn}(${co(a)}x + ${b})^{${nn - 1}} \\times ${a}$。代入 $x = 1$，內層為 $${a} + ${b} = ${s}$，故 $f'(1) = ${nn} \\times ${a} \\times ${s}^{${nn - 1}} = ${ans}$。陷阱：$${nn * s ** (nn - 1)}$ 漏了內層導數 $${a}$；$${a * s ** nn}$ 只乘了內層導數而未用冪法則；$${nn * a * s ** nn}$ 忘記把指數減一。`,
-         `By the chain rule $f'(x) = ${nn}(${co(a)}x + ${b})^{${nn - 1}} \\times ${a}$. At $x = 1$ the inner value is $${a} + ${b} = ${s}$, so $f'(1) = ${nn} \\times ${a} \\times ${s}^{${nn - 1}} = ${ans}$. Traps: $${nn * s ** (nn - 1)}$ omits the inner derivative $${a}$; $${a * s ** nn}$ applies only the inner derivative; $${nn * a * s ** nn}$ forgets to reduce the exponent.`])
+        [`連鎖法則：$f'(x) = ${nn}(${co(a)}x + ${b})${p1} \\times ${a}$。代入 $x = 1$，內層為 $${a} + ${b} = ${s}$，故 $f'(1) = ${nn} \\times ${a} \\times ${s}${p1} = ${ans}$。陷阱：$${nn * s ** (nn - 1)}$ 漏了內層導數 $${a}$；$${a * s ** nn}$ 只乘了內層導數而未用冪法則；$${nn * a * s ** nn}$ 忘記把指數減一。`,
+         `By the chain rule $f'(x) = ${nn}(${co(a)}x + ${b})${p1} \\times ${a}$. At $x = 1$ the inner value is $${a} + ${b} = ${s}$, so $f'(1) = ${nn} \\times ${a} \\times ${s}${p1} = ${ans}$. Traps: $${nn * s ** (nn - 1)}$ omits the inner derivative $${a}$; $${a * s ** nn}$ applies only the inner derivative; $${nn * a * s ** nn}$ forgets to reduce the exponent.`])
     }
   }
 }
@@ -537,12 +541,13 @@ for (let nn = 4; nn <= 7; nn++) {
     for (let a = 1; a <= 3; a++) {
       for (let b = 2; b <= 3; b++) {
         const ans = nCr(nn, r) * a ** (nn - r) * b ** r
+        const xr = r === 1 ? 'x' : `x^{${r}}` // "x^{1}" is written "x" (full check 2026-10-09)
         add(`m2c_b2_${nn}_${r}_${a}${b}`, T.binomial, FW.decompose, 'medium',
-          [`在 $(${a} + ${co(b)}x)^{${nn}}$ 的展開式中，$x^{${r}}$ 的係數是多少？`,
-           `In the expansion of $(${a} + ${co(b)}x)^{${nn}}$, what is the coefficient of $x^{${r}}$?`],
+          [`在 $(${a} + ${co(b)}x)^{${nn}}$ 的展開式中，$${xr}$ 的係數是多少？`,
+           `In the expansion of $(${a} + ${co(b)}x)^{${nn}}$, what is the coefficient of $${xr}$?`],
           [n(`$${ans}$`), n(`$${nCr(nn, r)}$`), n(`$${nCr(nn, r) * a ** r * b ** (nn - r)}$`), n(`$${a ** (nn - r) * b ** r}$`)],
-          [`由二項式定理，$(a + bx)^{n}$ 的一般項為 $\\binom{n}{r} a^{n-r}(bx)^{r}$，故 $x^{${r}}$ 的係數為 $\\binom{${nn}}{${r}} \\times ${a}^{${nn - r}} \\times ${b}^{${r}} = ${nCr(nn, r)} \\times ${a ** (nn - r)} \\times ${b ** r} = ${ans}$。陷阱：$${nCr(nn, r)}$ 只寫了二項式係數而漏了 $a$、$b$ 的冪；$${nCr(nn, r) * a ** r * b ** (nn - r)}$ 把兩個指數對調；$${a ** (nn - r) * b ** r}$ 漏掉了二項式係數。`,
-           `By the binomial theorem the general term of $(a + bx)^{n}$ is $\\binom{n}{r} a^{n-r}(bx)^{r}$, so the coefficient of $x^{${r}}$ is $\\binom{${nn}}{${r}} \\times ${a}^{${nn - r}} \\times ${b}^{${r}} = ${nCr(nn, r)} \\times ${a ** (nn - r)} \\times ${b ** r} = ${ans}$. Traps: $${nCr(nn, r)}$ gives only the binomial coefficient and omits the powers of $a$ and $b$; $${nCr(nn, r) * a ** r * b ** (nn - r)}$ interchanges the two exponents; $${a ** (nn - r) * b ** r}$ drops the binomial coefficient.`])
+          [`由二項式定理，$(a + bx)^{n}$ 的一般項為 $\\binom{n}{r} a^{n-r}(bx)^{r}$，故 $${xr}$ 的係數為 $\\binom{${nn}}{${r}} \\times ${a}^{${nn - r}} \\times ${b}^{${r}} = ${nCr(nn, r)} \\times ${a ** (nn - r)} \\times ${b ** r} = ${ans}$。陷阱：$${nCr(nn, r)}$ 只寫了二項式係數而漏了 $a$、$b$ 的冪；$${nCr(nn, r) * a ** r * b ** (nn - r)}$ 把兩個指數對調；$${a ** (nn - r) * b ** r}$ 漏掉了二項式係數。`,
+           `By the binomial theorem the general term of $(a + bx)^{n}$ is $\\binom{n}{r} a^{n-r}(bx)^{r}$, so the coefficient of $${xr}$ is $\\binom{${nn}}{${r}} \\times ${a}^{${nn - r}} \\times ${b}^{${r}} = ${nCr(nn, r)} \\times ${a ** (nn - r)} \\times ${b ** r} = ${ans}$. Traps: $${nCr(nn, r)}$ gives only the binomial coefficient and omits the powers of $a$ and $b$; $${nCr(nn, r) * a ** r * b ** (nn - r)}$ interchanges the two exponents; $${a ** (nn - r) * b ** r}$ drops the binomial coefficient.`])
       }
     }
   }
@@ -610,12 +615,15 @@ for (let nn = 3; nn <= 16; nn++) {
 
 // MI3 — Σ(2k−1) = n²（前 n 個正奇數之和）
 for (let nn = 3; nn <= 20; nn++) {
+  // Full check 2026-10-09 (reply 62c): "1 + 3 + 5 + ⋯ + 5" for n = 3 and "1 + 3 + 5 + ⋯ + 7" for
+  // n = 4 do not read as sums, so short sums are written out in full.
+  const odds = nn <= 4 ? Array.from({ length: nn }, (_, k) => 2 * k + 1).join(' + ') : `1 + 3 + 5 + \\cdots + ${2 * nn - 1}`
   add(`m2c_mi3_${nn}`, T.induction, FW.decompose, 'easy',
-    [`由數學歸納法可證前 $n$ 個正奇數之和 $\\displaystyle\\sum_{k=1}^{n} (2k - 1) = n^2$。求 $1 + 3 + 5 + \\cdots + ${2 * nn - 1}$。`,
-     `Mathematical induction gives $\\displaystyle\\sum_{k=1}^{n} (2k - 1) = n^2$ for the sum of the first $n$ positive odd numbers. Evaluate $1 + 3 + 5 + \\cdots + ${2 * nn - 1}$.`],
+    [`由數學歸納法可證前 $n$ 個正奇數之和 $\\displaystyle\\sum_{k=1}^{n} (2k - 1) = n^2$。求 $${odds}$。`,
+     `Mathematical induction gives $\\displaystyle\\sum_{k=1}^{n} (2k - 1) = n^2$ for the sum of the first $n$ positive odd numbers. Evaluate $${odds}$.`],
     [n(`$${nn * nn}$`), n(`$${(nn * (nn + 1)) / 2}$`), n(`$${2 * nn * nn - nn}$`), n(`$${nn * (nn + 1)}$`)],
-    [`末項為 $${2 * nn - 1}$，解 $2n - 1 = ${2 * nn - 1}$ 得 $n = ${nn}$，故總和為 $${nn}^2 = ${nn * nn}$。先確定項數再套公式，是這類題最容易出錯的一步。陷阱：$${(nn * (nn + 1)) / 2}$ 用了 $\\sum k$ 的公式；$${2 * nn * nn - nn}$ 把末項公式當成了總和；$${nn * (nn + 1)}$ 多乘了一個因子。`,
-     `The last term is $${2 * nn - 1}$; solving $2n - 1 = ${2 * nn - 1}$ gives $n = ${nn}$, so the sum is $${nn}^2 = ${nn * nn}$. Identifying the number of terms before applying the formula is where this type of question is most often lost. Traps: $${(nn * (nn + 1)) / 2}$ uses the formula for $\\sum k$; $${2 * nn * nn - nn}$ mistakes the formula for the last term for the sum; $${nn * (nn + 1)}$ carries an extra factor.`])
+    [`末項為 $${2 * nn - 1}$，解 $2n - 1 = ${2 * nn - 1}$ 得 $n = ${nn}$，故總和為 $${nn}^2 = ${nn * nn}$。先確定項數再套公式，是這類題最容易出錯的一步。陷阱：$${(nn * (nn + 1)) / 2}$ 用了 $\\sum k$ 的公式；$${2 * nn * nn - nn}$ 把項數乘以末項（$${nn} \\times ${2 * nn - 1}$），但各項大小不同，不能這樣相乘；$${nn * (nn + 1)}$ 是 $\\sum k$ 的兩倍。`,
+     `The last term is $${2 * nn - 1}$; solving $2n - 1 = ${2 * nn - 1}$ gives $n = ${nn}$, so the sum is $${nn}^2 = ${nn * nn}$. Identifying the number of terms before applying the formula is where this type of question is most often lost. Traps: $${(nn * (nn + 1)) / 2}$ uses the formula for $\\sum k$; $${2 * nn * nn - nn}$ multiplies the number of terms by the last term ($${nn} \\times ${2 * nn - 1}$), but the terms are not all equal; $${nn * (nn + 1)}$ is twice $\\sum k$.`])
 }
 
 // MI4 — 等比數列之和 Σ r^k = (r^n − 1)/(r − 1)

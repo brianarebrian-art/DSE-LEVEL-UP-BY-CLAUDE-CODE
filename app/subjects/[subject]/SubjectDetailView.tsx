@@ -12,6 +12,7 @@ import SubjectProgressPanel, { evidenceLine, useSubjectTopicTally } from '@/comp
 import { topicEvidence } from '@/lib/topicEvidence'
 import { isMCExamFormat, PAPER_STRUCTURE, QUESTION_KIND_LABELS } from '@/data/dse-paper-formats'
 import { notPractisedSentence } from '@/lib/notPractisedHere'
+import { subjectFaq } from '@/lib/faq'
 
 export default function SubjectDetailView({
   meta,
@@ -78,6 +79,10 @@ export default function SubjectDetailView({
   const examHasMC = isMCExamFormat(meta.id)
   // Founders' reply 22a (audit #10): say which exam parts this site cannot practise.
   const notPractised = notPractisedSentence(meta.id, en)
+  const faq = subjectFaq(
+    { id: meta.id, name: meta.name, nameEn: meta.nameEn, mc: typeCounts.mc, written: writtenCount, topics },
+    en,
+  )
   const structure = PAPER_STRUCTURE[meta.id]
   // 2026-09-29：此卡開始的是選擇題練習，所以只計選擇題。原本用全科總數（連書寫題），
   // 令數學科頁寫 1,624 題而科目總覽寫 1,594 條 MC，兩頁數字對不上。
@@ -442,6 +447,23 @@ export default function SubjectDetailView({
             )
           })}
         </div>
+
+        {/* FAQ (founders' reply 61a). The page also carries these as FAQPage structured data
+            (page.tsx), built by the same function from the same counts. */}
+        <section className="mb-12" aria-labelledby="subject-faq">
+          <h2 id="subject-faq" className="text-lg font-medium mb-3 text-ink">{en ? 'Questions about this subject' : '關於呢科嘅常見問題'}</h2>
+          <div className="bg-surface-raised border border-line rounded-2xl px-5 divide-y divide-line">
+            {faq.map((f) => (
+              <details key={f.q} className="group py-3">
+                <summary className="cursor-pointer list-none flex items-start justify-between gap-3 text-sm font-medium text-ink-soft hover:text-ink transition-colors">
+                  <span>{f.q}</span>
+                  <span aria-hidden="true" className="text-ink-muted group-open:rotate-45 transition-transform shrink-0 mt-0.5">＋</span>
+                </summary>
+                <p className="text-sm text-ink-muted leading-relaxed mt-2 pr-6">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
 
         {/* Cross-link to other subjects */}
         <div className="bg-surface-sunken border border-line rounded-2xl p-5 flex items-center justify-between">

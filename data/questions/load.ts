@@ -192,6 +192,7 @@ const loaders: Record<string, Loader> = {
 //    經真人審批的批次走的是另一條路（promote-drafts.mjs → *-reviewed.ts），
 //    兩條路不可混用。
 const autoLoaders: Record<string, Loader> = {
+  'math': async () => (await import('./math-auto')).mathAutoQuestions,
   'visual-arts': async () => (await import('./visual-arts-auto')).visualArtsAutoQuestions,
   'ths': async () => (await import('./ths-auto')).thsAutoQuestions,
   'pe': async () => (await import('./pe-auto')).peAutoQuestions,

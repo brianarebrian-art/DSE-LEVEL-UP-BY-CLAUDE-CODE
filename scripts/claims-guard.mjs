@@ -209,7 +209,8 @@ const RULES = [
  */
 const NEGATORS = /(唔會|唔能|唔可以|冇能力|冇辦法|唔敢|不會|不能|無法|並非|從來唔)(?!.*但)/
 
-const TARGET_FILES = ['lib/dictionary.ts', 'data/heroContent.ts', 'data/quotes.ts']
+// lib/faq.ts: the About and subject-page FAQ text, shown to students (reply 61a, 2026-10-09).
+const TARGET_FILES = ['lib/dictionary.ts', 'data/heroContent.ts', 'data/quotes.ts', 'lib/faq.ts']
 const TARGET_DIRS = ['app', 'components']
 
 const walk = (dir, out = []) => {

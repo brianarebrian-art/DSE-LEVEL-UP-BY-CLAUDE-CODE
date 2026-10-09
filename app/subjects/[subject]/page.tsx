@@ -6,6 +6,7 @@ import { getSubjectQuestions, getSubjectTopics } from '@/data/questions'
 import { loadWrittenQuestions } from '@/data/questions/load'
 import SubjectDetailView from './SubjectDetailView'
 import { SITE_ORIGIN } from '@/lib/site'
+import { faqPageSchema, subjectFaq } from '@/lib/faq'
 
 // Pre-render the active subject routes at build time.
 export function generateStaticParams() {
@@ -42,6 +43,13 @@ export default async function SubjectPage({
   const questions = getSubjectQuestions(subject)
   const topics = getSubjectTopics(subject)
   const writtenCount = (await loadWrittenQuestions(subject)).length
+  const mcCount = questions.filter((q) => (q.type ?? 'mc') === 'mc').length
+  // The questions at the foot of the page (SubjectDetailView), in Chinese; same inputs as
+  // the visible list so the two cannot differ (founders' reply 61a).
+  const faq = subjectFaq(
+    { id: meta.id, name: meta.name, nameEn: meta.nameEn, mc: mcCount, written: writtenCount, topics },
+    false,
+  )
 
   // 科目頁嘅結構化資料。根 layout 已有 WebSite／Organization／WebApplication，
   // 呢度補返逐科嗰一層 —— 一個科目頁本身就係一份學習資源，`LearningResource`
@@ -50,6 +58,8 @@ export default async function SubjectPage({
   // ⚠️ 刻意【唔用】QAPage：QAPage 係畀「問題同答案都已經喺頁面上」嘅問答頁，
   //    而練習題載入嗰陣答案未揭。全部題目標 QAPage 等於向搜尋引擎聲稱一樣
   //    唔存在嘅嘢（§16.D）。
+  //    The FAQPage below is different: it covers only the few questions about the subject
+  //    that the page shows with their answers (lib/faq.ts), not the practice questions.
   // ⚠️ 亦刻意【唔加】SearchAction：全站冇任何 `?q=` 端點、冇 /search route
   //    （2026-09-19 實測），聲稱一個行唔到嘅搜尋框同樣係假聲稱。
   //
@@ -89,6 +99,7 @@ export default async function SubjectPage({
           { '@type': 'ListItem', position: 3, name: meta.name },
         ],
       },
+      faqPageSchema(faq, `${SITE_ORIGIN}/subjects/${subject}`),
     ],
   }
 
@@ -104,7 +115,7 @@ export default async function SubjectPage({
         questionsCount={questions.length}
         writtenCount={writtenCount}
         typeCounts={{
-          mc: questions.filter((q) => (q.type ?? 'mc') === 'mc').length,
+          mc: mcCount,
           text: questions.filter((q) => q.type === 'text').length,
           long: questions.filter((q) => q.type === 'long').length,
         }}

@@ -1332,7 +1332,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$4$ 名同學圍着一張圓桌而坐。若只考慮各人的相對位置（即整體旋轉後視為同一種坐法），共有多少種不同的坐法？",
-    "explanation": "圓桌排列要先固定一人作參考點，其餘 $3$ 人再排成一行，故坐法為 $(4-1)! = 6$ 種。答 $24$ 是直線排列 $4!$，把 $4$ 種只差一個整體旋轉的坐法重複計算了。答 $2$ 多固定了一人，等於把相對位置也固定了兩個。答 $12$ 是把「可翻轉」（如手鏈）的情況再除以 $2$，但圓桌的左右手方向是可分辨的，不應再除。",
+    "explanation": "圓桌排列要先固定一人作參考點，其餘 $3$ 人再排成一行，故坐法為 $(4-1)! = 6$ 種。答 $24$ 是直線排列 $4!$，把 $4$ 種只差一個整體旋轉的坐法重複計算了。答 $2$ 多固定了一人，等於把相對位置也固定了兩個。答 $12$ 是把直線排列 $4!$ 除以 $2$，以為每種坐法只重複計算了兩次；其實整體旋轉令每種坐法被計了 $4$ 次，應除以 $4$。",
     "options": [
       "$12$",
       "$6$",
@@ -1348,7 +1348,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$24$",
       "$2$"
     ],
-    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $3$ in a line: $(4-1)! = 6$. Answering $24$ uses the linear count $4!$, counting each seating $4$ times over (once per rotation). Answering $2$ fixes one person too many. Answering $12$ also divides by $2$ for reflections, which applies to a bracelet but not to a table where left and right are distinguishable."
+    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $3$ in a line: $(4-1)! = 6$. Answering $24$ uses the linear count $4!$, counting each seating $4$ times over (once per rotation). Answering $2$ fixes one person too many. Answering $12$ divides the linear count $4!$ by $2$ instead of by $4$: each seating is counted $4$ times, once per rotation."
   },
   {
     "id": "math_med_b1_0043",
@@ -1364,7 +1364,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$5$ 名同學圍着一張圓桌而坐。若只考慮各人的相對位置（即整體旋轉後視為同一種坐法），共有多少種不同的坐法？",
-    "explanation": "圓桌排列要先固定一人作參考點，其餘 $4$ 人再排成一行，故坐法為 $(5-1)! = 24$ 種。答 $120$ 是直線排列 $5!$，把 $5$ 種只差一個整體旋轉的坐法重複計算了。答 $6$ 多固定了一人，等於把相對位置也固定了兩個。答 $60$ 是把「可翻轉」（如手鏈）的情況再除以 $2$，但圓桌的左右手方向是可分辨的，不應再除。",
+    "explanation": "圓桌排列要先固定一人作參考點，其餘 $4$ 人再排成一行，故坐法為 $(5-1)! = 24$ 種。答 $120$ 是直線排列 $5!$，把 $5$ 種只差一個整體旋轉的坐法重複計算了。答 $6$ 多固定了一人，等於把相對位置也固定了兩個。答 $60$ 是把直線排列 $5!$ 除以 $2$，以為每種坐法只重複計算了兩次；其實整體旋轉令每種坐法被計了 $5$ 次，應除以 $5$。",
     "options": [
       "$6$",
       "$60$",
@@ -1380,7 +1380,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$24$",
       "$120$"
     ],
-    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $4$ in a line: $(5-1)! = 24$. Answering $120$ uses the linear count $5!$, counting each seating $5$ times over (once per rotation). Answering $6$ fixes one person too many. Answering $60$ also divides by $2$ for reflections, which applies to a bracelet but not to a table where left and right are distinguishable."
+    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $4$ in a line: $(5-1)! = 24$. Answering $120$ uses the linear count $5!$, counting each seating $5$ times over (once per rotation). Answering $6$ fixes one person too many. Answering $60$ divides the linear count $5!$ by $2$ instead of by $5$: each seating is counted $5$ times, once per rotation."
   },
   {
     "id": "math_med_b1_0044",
@@ -1396,7 +1396,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$6$ 名同學圍着一張圓桌而坐。若只考慮各人的相對位置（即整體旋轉後視為同一種坐法），共有多少種不同的坐法？",
-    "explanation": "圓桌排列要先固定一人作參考點，其餘 $5$ 人再排成一行，故坐法為 $(6-1)! = 120$ 種。答 $720$ 是直線排列 $6!$，把 $6$ 種只差一個整體旋轉的坐法重複計算了。答 $24$ 多固定了一人，等於把相對位置也固定了兩個。答 $360$ 是把「可翻轉」（如手鏈）的情況再除以 $2$，但圓桌的左右手方向是可分辨的，不應再除。",
+    "explanation": "圓桌排列要先固定一人作參考點，其餘 $5$ 人再排成一行，故坐法為 $(6-1)! = 120$ 種。答 $720$ 是直線排列 $6!$，把 $6$ 種只差一個整體旋轉的坐法重複計算了。答 $24$ 多固定了一人，等於把相對位置也固定了兩個。答 $360$ 是把直線排列 $6!$ 除以 $2$，以為每種坐法只重複計算了兩次；其實整體旋轉令每種坐法被計了 $6$ 次，應除以 $6$。",
     "options": [
       "$720$",
       "$24$",
@@ -1412,7 +1412,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$360$",
       "$120$"
     ],
-    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $5$ in a line: $(6-1)! = 120$. Answering $720$ uses the linear count $6!$, counting each seating $6$ times over (once per rotation). Answering $24$ fixes one person too many. Answering $360$ also divides by $2$ for reflections, which applies to a bracelet but not to a table where left and right are distinguishable."
+    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $5$ in a line: $(6-1)! = 120$. Answering $720$ uses the linear count $6!$, counting each seating $6$ times over (once per rotation). Answering $24$ fixes one person too many. Answering $360$ divides the linear count $6!$ by $2$ instead of by $6$: each seating is counted $6$ times, once per rotation."
   },
   {
     "id": "math_med_b1_0045",
@@ -1428,7 +1428,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$7$ 名同學圍着一張圓桌而坐。若只考慮各人的相對位置（即整體旋轉後視為同一種坐法），共有多少種不同的坐法？",
-    "explanation": "圓桌排列要先固定一人作參考點，其餘 $6$ 人再排成一行，故坐法為 $(7-1)! = 720$ 種。答 $5040$ 是直線排列 $7!$，把 $7$ 種只差一個整體旋轉的坐法重複計算了。答 $120$ 多固定了一人，等於把相對位置也固定了兩個。答 $2520$ 是把「可翻轉」（如手鏈）的情況再除以 $2$，但圓桌的左右手方向是可分辨的，不應再除。",
+    "explanation": "圓桌排列要先固定一人作參考點，其餘 $6$ 人再排成一行，故坐法為 $(7-1)! = 720$ 種。答 $5040$ 是直線排列 $7!$，把 $7$ 種只差一個整體旋轉的坐法重複計算了。答 $120$ 多固定了一人，等於把相對位置也固定了兩個。答 $2520$ 是把直線排列 $7!$ 除以 $2$，以為每種坐法只重複計算了兩次；其實整體旋轉令每種坐法被計了 $7$ 次，應除以 $7$。",
     "options": [
       "$720$",
       "$5040$",
@@ -1444,7 +1444,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$120$",
       "$2520$"
     ],
-    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $6$ in a line: $(7-1)! = 720$. Answering $5040$ uses the linear count $7!$, counting each seating $7$ times over (once per rotation). Answering $120$ fixes one person too many. Answering $2520$ also divides by $2$ for reflections, which applies to a bracelet but not to a table where left and right are distinguishable."
+    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $6$ in a line: $(7-1)! = 720$. Answering $5040$ uses the linear count $7!$, counting each seating $7$ times over (once per rotation). Answering $120$ fixes one person too many. Answering $2520$ divides the linear count $7!$ by $2$ instead of by $7$: each seating is counted $7$ times, once per rotation."
   },
   {
     "id": "math_med_b1_0046",
@@ -1460,7 +1460,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$8$ 名同學圍着一張圓桌而坐。若只考慮各人的相對位置（即整體旋轉後視為同一種坐法），共有多少種不同的坐法？",
-    "explanation": "圓桌排列要先固定一人作參考點，其餘 $7$ 人再排成一行，故坐法為 $(8-1)! = 5040$ 種。答 $40320$ 是直線排列 $8!$，把 $8$ 種只差一個整體旋轉的坐法重複計算了。答 $720$ 多固定了一人，等於把相對位置也固定了兩個。答 $20160$ 是把「可翻轉」（如手鏈）的情況再除以 $2$，但圓桌的左右手方向是可分辨的，不應再除。",
+    "explanation": "圓桌排列要先固定一人作參考點，其餘 $7$ 人再排成一行，故坐法為 $(8-1)! = 5040$ 種。答 $40320$ 是直線排列 $8!$，把 $8$ 種只差一個整體旋轉的坐法重複計算了。答 $720$ 多固定了一人，等於把相對位置也固定了兩個。答 $20160$ 是把直線排列 $8!$ 除以 $2$，以為每種坐法只重複計算了兩次；其實整體旋轉令每種坐法被計了 $8$ 次，應除以 $8$。",
     "options": [
       "$20160$",
       "$5040$",
@@ -1476,7 +1476,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$40320$",
       "$720$"
     ],
-    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $7$ in a line: $(8-1)! = 5040$. Answering $40320$ uses the linear count $8!$, counting each seating $8$ times over (once per rotation). Answering $720$ fixes one person too many. Answering $20160$ also divides by $2$ for reflections, which applies to a bracelet but not to a table where left and right are distinguishable."
+    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $7$ in a line: $(8-1)! = 5040$. Answering $40320$ uses the linear count $8!$, counting each seating $8$ times over (once per rotation). Answering $720$ fixes one person too many. Answering $20160$ divides the linear count $8!$ by $2$ instead of by $8$: each seating is counted $8$ times, once per rotation."
   },
   {
     "id": "math_med_b1_0047",
@@ -1492,7 +1492,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "$9$ 名同學圍着一張圓桌而坐。若只考慮各人的相對位置（即整體旋轉後視為同一種坐法），共有多少種不同的坐法？",
-    "explanation": "圓桌排列要先固定一人作參考點，其餘 $8$ 人再排成一行，故坐法為 $(9-1)! = 40320$ 種。答 $362880$ 是直線排列 $9!$，把 $9$ 種只差一個整體旋轉的坐法重複計算了。答 $5040$ 多固定了一人，等於把相對位置也固定了兩個。答 $181440$ 是把「可翻轉」（如手鏈）的情況再除以 $2$，但圓桌的左右手方向是可分辨的，不應再除。",
+    "explanation": "圓桌排列要先固定一人作參考點，其餘 $8$ 人再排成一行，故坐法為 $(9-1)! = 40320$ 種。答 $362880$ 是直線排列 $9!$，把 $9$ 種只差一個整體旋轉的坐法重複計算了。答 $5040$ 多固定了一人，等於把相對位置也固定了兩個。答 $181440$ 是把直線排列 $9!$ 除以 $2$，以為每種坐法只重複計算了兩次；其實整體旋轉令每種坐法被計了 $9$ 次，應除以 $9$。",
     "options": [
       "$5040$",
       "$181440$",
@@ -1508,7 +1508,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$40320$",
       "$362880$"
     ],
-    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $8$ in a line: $(9-1)! = 40320$. Answering $362880$ uses the linear count $9!$, counting each seating $9$ times over (once per rotation). Answering $5040$ fixes one person too many. Answering $181440$ also divides by $2$ for reflections, which applies to a bracelet but not to a table where left and right are distinguishable."
+    "explanationEn": "For a round table, fix one person as reference and arrange the remaining $8$ in a line: $(9-1)! = 40320$. Answering $362880$ uses the linear count $9!$, counting each seating $9$ times over (once per rotation). Answering $5040$ fixes one person too many. Answering $181440$ divides the linear count $9!$ by $2$ instead of by $9$: each seating is counted $9$ times, once per rotation."
   },
   {
     "id": "math_med_b1_0048",
@@ -2100,7 +2100,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個各面出現機會均等的 $4$ 面骰子連續擲兩次。求兩次擲出的數字相同的概率。",
-    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $4$ 個等可能結果，其中 $1$ 個符合，故概率為 \\dfrac{1}{4}。（亦可數：$4 \\times 4 = 16$ 個結果中有 $4$ 個是相同的。）答 $\\dfrac{1}{16}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{3}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{2}$ 把「兩次」誤當成分子要乘 $2$。",
+    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $4$ 個等可能結果，其中 $1$ 個符合，故概率為 $\\dfrac{1}{4}$。（亦可數：$4 \\times 4 = 16$ 個結果中有 $4$ 個是相同的。）答 $\\dfrac{1}{16}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{3}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{2}$ 把「兩次」誤當成分子要乘 $2$。",
     "options": [
       "$\\dfrac{1}{2}$",
       "$\\dfrac{1}{4}$",
@@ -2116,7 +2116,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$\\dfrac{1}{16}$",
       "$\\dfrac{1}{3}$"
     ],
-    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $4$ equally likely outcomes, $1$ of which matches, so the probability is \\dfrac{1}{4}. (Equivalently, $4$ of the $16$ ordered outcomes are matches.) The option $\\dfrac{1}{16}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{3}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{2}$ doubles the numerator because there are two throws."
+    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $4$ equally likely outcomes, $1$ of which matches, so the probability is $\\dfrac{1}{4}$. (Equivalently, $4$ of the $16$ ordered outcomes are matches.) The option $\\dfrac{1}{16}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{3}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{2}$ doubles the numerator because there are two throws."
   },
   {
     "id": "math_med_b1_0067",
@@ -2132,7 +2132,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個各面出現機會均等的 $6$ 面骰子連續擲兩次。求兩次擲出的數字相同的概率。",
-    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $6$ 個等可能結果，其中 $1$ 個符合，故概率為 \\dfrac{1}{6}。（亦可數：$6 \\times 6 = 36$ 個結果中有 $6$ 個是相同的。）答 $\\dfrac{1}{36}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{5}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{3}$ 把「兩次」誤當成分子要乘 $2$。",
+    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $6$ 個等可能結果，其中 $1$ 個符合，故概率為 $\\dfrac{1}{6}$。（亦可數：$6 \\times 6 = 36$ 個結果中有 $6$ 個是相同的。）答 $\\dfrac{1}{36}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{5}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{3}$ 把「兩次」誤當成分子要乘 $2$。",
     "options": [
       "$\\dfrac{1}{5}$",
       "$\\dfrac{1}{3}$",
@@ -2148,7 +2148,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$\\dfrac{1}{6}$",
       "$\\dfrac{1}{36}$"
     ],
-    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $6$ equally likely outcomes, $1$ of which matches, so the probability is \\dfrac{1}{6}. (Equivalently, $6$ of the $36$ ordered outcomes are matches.) The option $\\dfrac{1}{36}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{5}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{3}$ doubles the numerator because there are two throws."
+    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $6$ equally likely outcomes, $1$ of which matches, so the probability is $\\dfrac{1}{6}$. (Equivalently, $6$ of the $36$ ordered outcomes are matches.) The option $\\dfrac{1}{36}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{5}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{3}$ doubles the numerator because there are two throws."
   },
   {
     "id": "math_med_b1_0068",
@@ -2164,7 +2164,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個各面出現機會均等的 $8$ 面骰子連續擲兩次。求兩次擲出的數字相同的概率。",
-    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $8$ 個等可能結果，其中 $1$ 個符合，故概率為 \\dfrac{1}{8}。（亦可數：$8 \\times 8 = 64$ 個結果中有 $8$ 個是相同的。）答 $\\dfrac{1}{64}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{7}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{4}$ 把「兩次」誤當成分子要乘 $2$。",
+    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $8$ 個等可能結果，其中 $1$ 個符合，故概率為 $\\dfrac{1}{8}$。（亦可數：$8 \\times 8 = 64$ 個結果中有 $8$ 個是相同的。）答 $\\dfrac{1}{64}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{7}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{4}$ 把「兩次」誤當成分子要乘 $2$。",
     "options": [
       "$\\dfrac{1}{64}$",
       "$\\dfrac{1}{7}$",
@@ -2180,7 +2180,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$\\dfrac{1}{4}$",
       "$\\dfrac{1}{8}$"
     ],
-    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $8$ equally likely outcomes, $1$ of which matches, so the probability is \\dfrac{1}{8}. (Equivalently, $8$ of the $64$ ordered outcomes are matches.) The option $\\dfrac{1}{64}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{7}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{4}$ doubles the numerator because there are two throws."
+    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $8$ equally likely outcomes, $1$ of which matches, so the probability is $\\dfrac{1}{8}$. (Equivalently, $8$ of the $64$ ordered outcomes are matches.) The option $\\dfrac{1}{64}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{7}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{4}$ doubles the numerator because there are two throws."
   },
   {
     "id": "math_med_b1_0069",
@@ -2196,7 +2196,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個各面出現機會均等的 $10$ 面骰子連續擲兩次。求兩次擲出的數字相同的概率。",
-    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $10$ 個等可能結果，其中 $1$ 個符合，故概率為 \\dfrac{1}{10}。（亦可數：$10 \\times 10 = 100$ 個結果中有 $10$ 個是相同的。）答 $\\dfrac{1}{100}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{9}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{5}$ 把「兩次」誤當成分子要乘 $2$。",
+    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $10$ 個等可能結果，其中 $1$ 個符合，故概率為 $\\dfrac{1}{10}$。（亦可數：$10 \\times 10 = 100$ 個結果中有 $10$ 個是相同的。）答 $\\dfrac{1}{100}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{9}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{5}$ 把「兩次」誤當成分子要乘 $2$。",
     "options": [
       "$\\dfrac{1}{10}$",
       "$\\dfrac{1}{100}$",
@@ -2212,7 +2212,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$\\dfrac{1}{9}$",
       "$\\dfrac{1}{5}$"
     ],
-    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $10$ equally likely outcomes, $1$ of which matches, so the probability is \\dfrac{1}{10}. (Equivalently, $10$ of the $100$ ordered outcomes are matches.) The option $\\dfrac{1}{100}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{9}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{5}$ doubles the numerator because there are two throws."
+    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $10$ equally likely outcomes, $1$ of which matches, so the probability is $\\dfrac{1}{10}$. (Equivalently, $10$ of the $100$ ordered outcomes are matches.) The option $\\dfrac{1}{100}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{9}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{5}$ doubles the numerator because there are two throws."
   },
   {
     "id": "math_med_b1_0070",
@@ -2228,7 +2228,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
     "difficulty": "easy",
     "year": 0,
     "content": "一個各面出現機會均等的 $12$ 面骰子連續擲兩次。求兩次擲出的數字相同的概率。",
-    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $12$ 個等可能結果，其中 $1$ 個符合，故概率為 \\dfrac{1}{12}。（亦可數：$12 \\times 12 = 144$ 個結果中有 $12$ 個是相同的。）答 $\\dfrac{1}{144}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{11}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{6}$ 把「兩次」誤當成分子要乘 $2$。",
+    "explanation": "第一次擲出甚麼都可以，關鍵只在第二次是否與第一次相同 —— 第二次有 $12$ 個等可能結果，其中 $1$ 個符合，故概率為 $\\dfrac{1}{12}$。（亦可數：$12 \\times 12 = 144$ 個結果中有 $12$ 個是相同的。）答 $\\dfrac{1}{144}$ 只算了某一個【指定】數字連續出現兩次的概率，但題目沒有指定是哪一個數字。答 $\\dfrac{1}{11}$ 把分母寫成「不相同的結果數」，分母應為全部結果數。答 $\\dfrac{1}{6}$ 把「兩次」誤當成分子要乘 $2$。",
     "options": [
       "$\\dfrac{1}{6}$",
       "$\\dfrac{1}{12}$",
@@ -2244,7 +2244,7 @@ export const mathMedianB1ReviewedQuestions: Question[] = [
       "$\\dfrac{1}{144}$",
       "$\\dfrac{1}{11}$"
     ],
-    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $12$ equally likely outcomes, $1$ of which matches, so the probability is \\dfrac{1}{12}. (Equivalently, $12$ of the $144$ ordered outcomes are matches.) The option $\\dfrac{1}{144}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{11}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{6}$ doubles the numerator because there are two throws."
+    "explanationEn": "The first throw can be anything; what matters is whether the second matches it. The second throw has $12$ equally likely outcomes, $1$ of which matches, so the probability is $\\dfrac{1}{12}$. (Equivalently, $12$ of the $144$ ordered outcomes are matches.) The option $\\dfrac{1}{144}$ is the probability of one *specified* number appearing twice, but no number is specified. The option $\\dfrac{1}{11}$ uses the count of non-matching outcomes as the denominator. The option $\\dfrac{1}{6}$ doubles the numerator because there are two throws."
   },
   {
     "id": "math_med_b1_0071",
