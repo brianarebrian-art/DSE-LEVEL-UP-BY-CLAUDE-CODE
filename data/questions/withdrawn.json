@@ -2284,5 +2284,99 @@
       "date": "2026-10-08",
       "reason": "PURE_RECALL"
     }
+  },
+  "math": {
+    "math_trig_1": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_2": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_5": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_6": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_8": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_9": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_10": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_trig_11": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_0": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_1": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_2": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_3": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_4": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_5": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_6": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_7": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_8": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_9": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_10": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "mb2_tg2_11": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_log_5": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_log_8": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    },
+    "math_log_11": {
+      "date": "2026-10-09",
+      "reason": "PURE_RECALL"
+    }
   }
 }

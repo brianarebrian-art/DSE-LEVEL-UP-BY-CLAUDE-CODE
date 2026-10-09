@@ -1,0 +1,600 @@
+[
+  {
+    "id": "rcl_math_trig_1",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "basic",
+    "question": "一把長 $8$ m 的梯子斜靠在垂直的牆上，梯子與水平地面成 $60^\\circ$。梯腳與牆之間的距離是多少？",
+    "questionEn": "An $8$ m ladder leans against a vertical wall and makes $60^\\circ$ with the level ground. How far is the foot of the ladder from the wall?",
+    "options": [
+      "$4$ m",
+      "$4\\sqrt{3}$ m",
+      "$8\\sqrt{3}$ m",
+      "$16$ m"
+    ],
+    "optionsEn": [
+      "$4$ m",
+      "$4\\sqrt{3}$ m",
+      "$8\\sqrt{3}$ m",
+      "$16$ m"
+    ],
+    "correctIndex": 0,
+    "explanation": "梯腳到牆的距離是與 $60^\\circ$ 角相鄰的邊，梯子是斜邊，故距離 $= 8\\cos 60^\\circ = 8 \\times \\dfrac{1}{2} = 4$ m。陷阱：$4\\sqrt{3}$ m 用了 $\\sin 60^\\circ$，那是梯頂離地的高度；$8\\sqrt{3}$ m 用了 $\\tan 60^\\circ$；$16$ m 把斜邊除以 $\\cos 60^\\circ$，方向弄反。",
+    "explanationEn": "The distance from the foot to the wall is the side adjacent to the $60^\\circ$ angle and the ladder is the hypotenuse, so it is $8\\cos 60^\\circ = 8 \\times \\dfrac{1}{2} = 4$ m. Traps: $4\\sqrt{3}$ m uses $\\sin 60^\\circ$, which gives the height of the top; $8\\sqrt{3}$ m uses $\\tan 60^\\circ$; $16$ m divides by $\\cos 60^\\circ$ instead of multiplying."
+  },
+  {
+    "id": "rcl_math_trig_2",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "basic",
+    "question": "在地面上距離一座大廈底部 $35$ m 的一點，測得大廈頂部的仰角為 $45^\\circ$。大廈高多少？",
+    "questionEn": "From a point on the ground $35$ m from the foot of a building, the angle of elevation of the top is $45^\\circ$. How tall is the building?",
+    "options": [
+      "$35\\sqrt{2}$ m",
+      "$35$ m",
+      "$\\dfrac{35\\sqrt{2}}{2}$ m",
+      "$35\\sqrt{3}$ m"
+    ],
+    "optionsEn": [
+      "$35\\sqrt{2}$ m",
+      "$35$ m",
+      "$\\dfrac{35\\sqrt{2}}{2}$ m",
+      "$35\\sqrt{3}$ m"
+    ],
+    "correctIndex": 1,
+    "explanation": "大廈高度是仰角的對邊，$35$ m 是鄰邊，故高度 $= 35\\tan 45^\\circ = 35 \\times 1 = 35$ m。仰角是 $45^\\circ$ 時，高度與水平距離必定相等。陷阱：$35\\sqrt{2}$ m 是由該點到大廈頂部的視線長度；$\\dfrac{35\\sqrt{2}}{2}$ m 把 $35$ m 當成斜邊再乘 $\\sin 45^\\circ$；$35\\sqrt{3}$ m 用了 $\\tan 60^\\circ$。",
+    "explanationEn": "The height is opposite the angle of elevation and $35$ m is adjacent, so the height is $35\\tan 45^\\circ = 35 \\times 1 = 35$ m. At $45^\\circ$ the height always equals the horizontal distance. Traps: $35\\sqrt{2}$ m is the length of the line of sight; $\\dfrac{35\\sqrt{2}}{2}$ m treats $35$ m as the hypotenuse and multiplies by $\\sin 45^\\circ$; $35\\sqrt{3}$ m uses $\\tan 60^\\circ$."
+  },
+  {
+    "id": "rcl_math_trig_5",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "basic",
+    "question": "一個三角形其中兩邊長 $6$ cm 及 $10$ cm，這兩邊的夾角可以改變。這個三角形的面積最大可以是多少？",
+    "questionEn": "Two sides of a triangle are $6$ cm and $10$ cm, and the angle between them can vary. What is the largest possible area of the triangle?",
+    "options": [
+      "$60$ cm$^2$",
+      "$15\\sqrt{3}$ cm$^2$",
+      "$30$ cm$^2$",
+      "$15$ cm$^2$"
+    ],
+    "optionsEn": [
+      "$60$ cm$^2$",
+      "$15\\sqrt{3}$ cm$^2$",
+      "$30$ cm$^2$",
+      "$15$ cm$^2$"
+    ],
+    "correctIndex": 2,
+    "explanation": "面積 $= \\dfrac{1}{2}(6)(10)\\sin\\theta = 30\\sin\\theta$。$\\sin\\theta$ 最大是 $1$，在 $\\theta = 90^\\circ$ 時出現，故面積最大是 $30$ cm$^2$。陷阱：$60$ cm$^2$ 漏了 $\\dfrac{1}{2}$；$15\\sqrt{3}$ cm$^2$ 假設了夾角是 $60^\\circ$；$15$ cm$^2$ 假設了夾角是 $30^\\circ$。",
+    "explanationEn": "Area $= \\dfrac{1}{2}(6)(10)\\sin\\theta = 30\\sin\\theta$. The largest value of $\\sin\\theta$ is $1$, at $\\theta = 90^\\circ$, so the largest area is $30$ cm$^2$. Traps: $60$ cm$^2$ drops the $\\dfrac{1}{2}$; $15\\sqrt{3}$ cm$^2$ assumes a $60^\\circ$ angle; $15$ cm$^2$ assumes $30^\\circ$."
+  },
+  {
+    "id": "rcl_math_trig_6",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一條斜坡與水平成 $\\theta$ 角，已知 $\\sin\\theta = 0.6$、$\\cos\\theta = 0.8$。沿斜坡由坡底走到坡頂，水平方向前進了 $40$ m。坡頂比坡底高多少？",
+    "questionEn": "A slope makes an angle $\\theta$ with the horizontal, where $\\sin\\theta = 0.6$ and $\\cos\\theta = 0.8$. Walking from the bottom to the top covers $40$ m horizontally. How much higher is the top than the bottom?",
+    "options": [
+      "$24$ m",
+      "$32$ m",
+      "$53.3$ m",
+      "$30$ m"
+    ],
+    "optionsEn": [
+      "$24$ m",
+      "$32$ m",
+      "$53.3$ m",
+      "$30$ m"
+    ],
+    "correctIndex": 3,
+    "explanation": "升高的是 $\\theta$ 的對邊，$40$ m 是鄰邊，故升高 $= 40\\tan\\theta$，而 $\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta} = \\dfrac{0.6}{0.8} = 0.75$，得 $40 \\times 0.75 = 30$ m。陷阱：$24$ m 把 $40$ m 當成斜坡長度而乘 $\\sin\\theta$；$32$ m 乘了 $\\cos\\theta$；$53.3$ m 把 $\\tan\\theta$ 放在分母。",
+    "explanationEn": "The rise is opposite $\\theta$ and $40$ m is adjacent, so the rise is $40\\tan\\theta$, with $\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta} = \\dfrac{0.6}{0.8} = 0.75$, giving $40 \\times 0.75 = 30$ m. Traps: $24$ m treats $40$ m as the length of the slope and multiplies by $\\sin\\theta$; $32$ m multiplies by $\\cos\\theta$; $53.3$ m divides by $\\tan\\theta$."
+  },
+  {
+    "id": "rcl_math_trig_8",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一段長 $12$ m 的斜坡與水平成 $\\theta$。若 $\\theta$ 由 $30^\\circ$ 減至 $0^\\circ$（斜坡變成平路），這段路的水平距離會怎樣改變？",
+    "questionEn": "A $12$ m ramp makes an angle $\\theta$ with the horizontal. If $\\theta$ is reduced from $30^\\circ$ to $0^\\circ$ (the ramp becomes flat), how does its horizontal length change?",
+    "options": [
+      "由 $6\\sqrt{3}$ m 增至 $12$ m",
+      "由 $6$ m 增至 $12$ m",
+      "由 $6\\sqrt{3}$ m 減至 $0$ m",
+      "由 $6$ m 減至 $0$ m"
+    ],
+    "optionsEn": [
+      "From $6\\sqrt{3}$ m up to $12$ m",
+      "From $6$ m up to $12$ m",
+      "From $6\\sqrt{3}$ m down to $0$ m",
+      "From $6$ m down to $0$ m"
+    ],
+    "correctIndex": 0,
+    "explanation": "水平距離 $= 12\\cos\\theta$。$\\theta = 30^\\circ$ 時為 $12 \\times \\dfrac{\\sqrt{3}}{2} = 6\\sqrt{3}$ m；$\\theta = 0^\\circ$ 時 $\\cos 0^\\circ = 1$，水平距離就是整段 $12$ m，與「平路的長度等於路本身」相符。陷阱：由 $6$ m 開始的兩項用了 $\\sin 30^\\circ$；減至 $0$ m 的兩項誤以為 $\\cos 0^\\circ = 0$。",
+    "explanationEn": "Horizontal length $= 12\\cos\\theta$. At $30^\\circ$ it is $12 \\times \\dfrac{\\sqrt{3}}{2} = 6\\sqrt{3}$ m; at $0^\\circ$, $\\cos 0^\\circ = 1$, so it is the full $12$ m, as a flat road should be. Traps: the answers starting at $6$ m use $\\sin 30^\\circ$; the answers ending at $0$ m take $\\cos 0^\\circ$ as $0$."
+  },
+  {
+    "id": "rcl_math_trig_9",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "已知 $\\theta$ 為銳角，且 $\\sin\\theta + \\cos\\theta = \\dfrac{7}{5}$。求 $\\sin\\theta\\cos\\theta$ 的值。",
+    "questionEn": "Given that $\\theta$ is acute and $\\sin\\theta + \\cos\\theta = \\dfrac{7}{5}$, find $\\sin\\theta\\cos\\theta$.",
+    "options": [
+      "$\\dfrac{24}{25}$",
+      "$\\dfrac{12}{25}$",
+      "$\\dfrac{49}{50}$",
+      "$\\dfrac{7}{10}$"
+    ],
+    "optionsEn": [
+      "$\\dfrac{24}{25}$",
+      "$\\dfrac{12}{25}$",
+      "$\\dfrac{49}{50}$",
+      "$\\dfrac{7}{10}$"
+    ],
+    "correctIndex": 1,
+    "explanation": "兩邊平方：$\\sin^2\\theta + 2\\sin\\theta\\cos\\theta + \\cos^2\\theta = \\dfrac{49}{25}$。由 $\\sin^2\\theta + \\cos^2\\theta = 1$，得 $1 + 2\\sin\\theta\\cos\\theta = \\dfrac{49}{25}$，即 $\\sin\\theta\\cos\\theta = \\dfrac{12}{25}$。陷阱：$\\dfrac{24}{25}$ 漏了除以 $2$；$\\dfrac{49}{50}$ 平方後沒有用恆等式減去 $1$；$\\dfrac{7}{10}$ 只把和除以 $2$。",
+    "explanationEn": "Square both sides: $\\sin^2\\theta + 2\\sin\\theta\\cos\\theta + \\cos^2\\theta = \\dfrac{49}{25}$. Since $\\sin^2\\theta + \\cos^2\\theta = 1$, $1 + 2\\sin\\theta\\cos\\theta = \\dfrac{49}{25}$, so $\\sin\\theta\\cos\\theta = \\dfrac{12}{25}$. Traps: $\\dfrac{24}{25}$ forgets to divide by $2$; $\\dfrac{49}{50}$ does not subtract the $1$ from the identity; $\\dfrac{7}{10}$ just halves the sum."
+  },
+  {
+    "id": "rcl_math_trig_10",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "直線通過 $A(1,\\ 2)$ 及 $B(4,\\ 5)$。這條直線與 $x$ 軸正方向所成的角是多少？",
+    "questionEn": "A line passes through $A(1,\\ 2)$ and $B(4,\\ 5)$. What angle does it make with the positive $x$-axis?",
+    "options": [
+      "$135^\\circ$",
+      "$30^\\circ$",
+      "$45^\\circ$",
+      "$60^\\circ$"
+    ],
+    "optionsEn": [
+      "$135^\\circ$",
+      "$30^\\circ$",
+      "$45^\\circ$",
+      "$60^\\circ$"
+    ],
+    "correctIndex": 2,
+    "explanation": "斜率 $= \\dfrac{5-2}{4-1} = 1$，而斜率等於傾角的正切，$\\tan\\theta = 1$ 且斜率為正，故 $\\theta = 45^\\circ$。陷阱：$135^\\circ$ 是斜率為 $-1$ 的直線的傾角；$30^\\circ$ 與 $60^\\circ$ 分別是斜率為 $\\dfrac{\\sqrt{3}}{3}$ 及 $\\sqrt{3}$ 的情況。",
+    "explanationEn": "Slope $= \\dfrac{5-2}{4-1} = 1$, and the slope is the tangent of the angle of inclination: $\\tan\\theta = 1$ with a positive slope gives $\\theta = 45^\\circ$. Traps: $135^\\circ$ is the inclination of a line with slope $-1$; $30^\\circ$ and $60^\\circ$ correspond to slopes $\\dfrac{\\sqrt{3}}{3}$ and $\\sqrt{3}$."
+  },
+  {
+    "id": "rcl_math_trig_11",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一座塔高 $30$ m。在地面上 $P$ 點測得塔頂的仰角為 $60^\\circ$。$P$ 點與塔底相距多遠？",
+    "questionEn": "A tower is $30$ m tall. From a point $P$ on the ground the angle of elevation of the top is $60^\\circ$. How far is $P$ from the foot of the tower?",
+    "options": [
+      "$30\\sqrt{3}$ m",
+      "$20\\sqrt{3}$ m",
+      "$15$ m",
+      "$10\\sqrt{3}$ m"
+    ],
+    "optionsEn": [
+      "$30\\sqrt{3}$ m",
+      "$20\\sqrt{3}$ m",
+      "$15$ m",
+      "$10\\sqrt{3}$ m"
+    ],
+    "correctIndex": 3,
+    "explanation": "$\\tan 60^\\circ = \\dfrac{\\text{塔高}}{\\text{距離}}$，故距離 $= \\dfrac{30}{\\tan 60^\\circ} = \\dfrac{30}{\\sqrt{3}} = 10\\sqrt{3}$ m。仰角大，表示點離塔近，所以距離應比塔高短，可以此驗算。陷阱：$30\\sqrt{3}$ m 把 $\\tan 60^\\circ$ 乘在塔高上；$20\\sqrt{3}$ m 是 $P$ 點到塔頂的視線長度；$15$ m 用了 $\\cos 60^\\circ$。",
+    "explanationEn": "$\\tan 60^\\circ = \\dfrac{\\text{height}}{\\text{distance}}$, so the distance is $\\dfrac{30}{\\tan 60^\\circ} = \\dfrac{30}{\\sqrt{3}} = 10\\sqrt{3}$ m. A steep angle means the point is close, so the distance should be less than the height — a quick check. Traps: $30\\sqrt{3}$ m multiplies the height by $\\tan 60^\\circ$; $20\\sqrt{3}$ m is the line of sight from $P$ to the top; $15$ m uses $\\cos 60^\\circ$."
+  },
+  {
+    "id": "rcl_mb2_tg2_0",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一條長 $50$ m 的斜坡與水平成 $30^\\circ$。由坡底沿斜坡走到坡頂，垂直上升了多少？",
+    "questionEn": "A slope $50$ m long makes $30^\\circ$ with the horizontal. Walking up it from the bottom to the top, how much do you rise vertically?",
+    "options": [
+      "$25$ m",
+      "$25\\sqrt{3}$ m",
+      "$\\dfrac{50\\sqrt{3}}{3}$ m",
+      "$100$ m"
+    ],
+    "optionsEn": [
+      "$25$ m",
+      "$25\\sqrt{3}$ m",
+      "$\\dfrac{50\\sqrt{3}}{3}$ m",
+      "$100$ m"
+    ],
+    "correctIndex": 0,
+    "explanation": "斜坡長 $50$ m 是斜邊，垂直上升是 $30^\\circ$ 的對邊，故上升 $= 50\\sin 30^\\circ = 50 \\times \\dfrac{1}{2} = 25$ m。陷阱：$25\\sqrt{3}$ m 用了 $\\cos 30^\\circ$，那是水平距離；$\\dfrac{50\\sqrt{3}}{3}$ m 把 $50$ m 當成水平距離再乘 $\\tan 30^\\circ$；$100$ m 除以 $\\sin 30^\\circ$，比斜坡本身還長，不可能。",
+    "explanationEn": "The $50$ m slope is the hypotenuse and the rise is opposite $30^\\circ$, so the rise is $50\\sin 30^\\circ = 50 \\times \\dfrac{1}{2} = 25$ m. Traps: $25\\sqrt{3}$ m uses $\\cos 30^\\circ$, which gives the horizontal distance; $\\dfrac{50\\sqrt{3}}{3}$ m treats $50$ m as horizontal and multiplies by $\\tan 30^\\circ$; $100$ m divides by $\\sin 30^\\circ$ and is longer than the slope itself."
+  },
+  {
+    "id": "rcl_mb2_tg2_1",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一條纜車纜索長 $400$ m，與水平成 $60^\\circ$。纜索兩端的水平距離是多少？",
+    "questionEn": "A cable-car cable is $400$ m long and makes $60^\\circ$ with the horizontal. What is the horizontal distance between its two ends?",
+    "options": [
+      "$200\\sqrt{3}$ m",
+      "$200$ m",
+      "$400\\sqrt{3}$ m",
+      "$800$ m"
+    ],
+    "optionsEn": [
+      "$200\\sqrt{3}$ m",
+      "$200$ m",
+      "$400\\sqrt{3}$ m",
+      "$800$ m"
+    ],
+    "correctIndex": 1,
+    "explanation": "纜索是斜邊，水平距離是 $60^\\circ$ 的鄰邊，故水平距離 $= 400\\cos 60^\\circ = 400 \\times \\dfrac{1}{2} = 200$ m。陷阱：$200\\sqrt{3}$ m 用了 $\\sin 60^\\circ$，那是兩端的高度差；$400\\sqrt{3}$ m 用了 $\\tan 60^\\circ$；$800$ m 除以 $\\cos 60^\\circ$，比纜索還長。",
+    "explanationEn": "The cable is the hypotenuse and the horizontal distance is adjacent to $60^\\circ$, so it is $400\\cos 60^\\circ = 400 \\times \\dfrac{1}{2} = 200$ m. Traps: $200\\sqrt{3}$ m uses $\\sin 60^\\circ$, which gives the difference in height; $400\\sqrt{3}$ m uses $\\tan 60^\\circ$; $800$ m divides by $\\cos 60^\\circ$ and is longer than the cable."
+  },
+  {
+    "id": "rcl_mb2_tg2_2",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一個等邊三角形的邊長為 $10$ cm。求它的高。",
+    "questionEn": "An equilateral triangle has sides of $10$ cm. Find its height.",
+    "options": [
+      "$5$ cm",
+      "$10\\sqrt{3}$ cm",
+      "$5\\sqrt{3}$ cm",
+      "$\\dfrac{20\\sqrt{3}}{3}$ cm"
+    ],
+    "optionsEn": [
+      "$5$ cm",
+      "$10\\sqrt{3}$ cm",
+      "$5\\sqrt{3}$ cm",
+      "$\\dfrac{20\\sqrt{3}}{3}$ cm"
+    ],
+    "correctIndex": 2,
+    "explanation": "等邊三角形每隻角都是 $60^\\circ$。高把三角形分成兩個直角三角形，斜邊是 $10$ cm，高是 $60^\\circ$ 的對邊，故高 $= 10\\sin 60^\\circ = 10 \\times \\dfrac{\\sqrt{3}}{2} = 5\\sqrt{3}$ cm。陷阱：$5$ cm 是底邊的一半；$10\\sqrt{3}$ cm 漏了除以 $2$；$\\dfrac{20\\sqrt{3}}{3}$ cm 把 $10$ 除以 $\\sin 60^\\circ$。",
+    "explanationEn": "Each angle of an equilateral triangle is $60^\\circ$. The height splits it into two right-angled triangles with hypotenuse $10$ cm, and the height is opposite $60^\\circ$, so it is $10\\sin 60^\\circ = 10 \\times \\dfrac{\\sqrt{3}}{2} = 5\\sqrt{3}$ cm. Traps: $5$ cm is half the base; $10\\sqrt{3}$ cm forgets to divide by $2$; $\\dfrac{20\\sqrt{3}}{3}$ cm divides $10$ by $\\sin 60^\\circ$."
+  },
+  {
+    "id": "rcl_mb2_tg2_3",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一個正六邊形的邊長為 $4$ cm。求它的中心至任何一條邊的距離。",
+    "questionEn": "A regular hexagon has sides of $4$ cm. Find the distance from its centre to any side.",
+    "options": [
+      "$2$ cm",
+      "$4$ cm",
+      "$4\\sqrt{3}$ cm",
+      "$2\\sqrt{3}$ cm"
+    ],
+    "optionsEn": [
+      "$2$ cm",
+      "$4$ cm",
+      "$4\\sqrt{3}$ cm",
+      "$2\\sqrt{3}$ cm"
+    ],
+    "correctIndex": 3,
+    "explanation": "由中心連到六個頂點，正六邊形分成六個邊長 $4$ cm 的等邊三角形。中心至一邊的距離就是其中一個等邊三角形的高：$4\\cos 30^\\circ = 4 \\times \\dfrac{\\sqrt{3}}{2} = 2\\sqrt{3}$ cm。陷阱：$2$ cm 用了 $\\sin 30^\\circ$，那是邊長的一半；$4$ cm 是中心至頂點的距離；$4\\sqrt{3}$ cm 漏了除以 $2$。",
+    "explanationEn": "Joining the centre to the six vertices splits the hexagon into six equilateral triangles of side $4$ cm. The distance from the centre to a side is the height of one of them: $4\\cos 30^\\circ = 4 \\times \\dfrac{\\sqrt{3}}{2} = 2\\sqrt{3}$ cm. Traps: $2$ cm uses $\\sin 30^\\circ$ and is half a side; $4$ cm is the distance from the centre to a vertex; $4\\sqrt{3}$ cm forgets to divide by $2$."
+  },
+  {
+    "id": "rcl_mb2_tg2_4",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一塊直角三角形紙板的兩條直角邊長度相等。它的兩隻銳角各是多少度？斜邊與直角邊的長度之比是多少？",
+    "questionEn": "A right-angled triangular card has its two shorter sides equal. What is each acute angle, and what is the ratio of the hypotenuse to a shorter side?",
+    "options": [
+      "各 $45^\\circ$；$\\sqrt{2} : 1$",
+      "各 $45^\\circ$；$2 : 1$",
+      "$30^\\circ$ 及 $60^\\circ$；$2 : 1$",
+      "各 $45^\\circ$；$1 : \\sqrt{2}$"
+    ],
+    "optionsEn": [
+      "Each $45^\\circ$; $\\sqrt{2} : 1$",
+      "Each $45^\\circ$; $2 : 1$",
+      "$30^\\circ$ and $60^\\circ$; $2 : 1$",
+      "Each $45^\\circ$; $1 : \\sqrt{2}$"
+    ],
+    "correctIndex": 0,
+    "explanation": "兩條直角邊相等，故其中一隻銳角的 $\\tan$ 值 $= \\dfrac{\\text{對邊}}{\\text{鄰邊}} = 1$，即該角為 $45^\\circ$，另一隻亦是 $45^\\circ$。設直角邊為 $a$，斜邊 $= \\sqrt{a^2 + a^2} = \\sqrt{2}\\,a$，比為 $\\sqrt{2} : 1$。陷阱：$2 : 1$ 是 $30^\\circ$–$60^\\circ$–$90^\\circ$ 三角形中斜邊與短邊之比；$1 : \\sqrt{2}$ 把比的次序倒轉。",
+    "explanationEn": "The shorter sides are equal, so the tangent of an acute angle is $\\dfrac{\\text{opposite}}{\\text{adjacent}} = 1$: the angle is $45^\\circ$, and so is the other. With shorter sides $a$, the hypotenuse is $\\sqrt{a^2 + a^2} = \\sqrt{2}\\,a$, a ratio of $\\sqrt{2} : 1$. Traps: $2 : 1$ is the hypotenuse-to-short-side ratio of a $30^\\circ$–$60^\\circ$–$90^\\circ$ triangle; $1 : \\sqrt{2}$ reverses the order."
+  },
+  {
+    "id": "rcl_mb2_tg2_5",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一條長 $6\\sqrt{2}$ m 的拉索由一支垂直柱的頂部拉到地面，拉索與地面成 $45^\\circ$。柱高多少？",
+    "questionEn": "A stay wire $6\\sqrt{2}$ m long runs from the top of a vertical pole to the ground, making $45^\\circ$ with the ground. How tall is the pole?",
+    "options": [
+      "$12$ m",
+      "$6$ m",
+      "$3\\sqrt{2}$ m",
+      "$6\\sqrt{2}$ m"
+    ],
+    "optionsEn": [
+      "$12$ m",
+      "$6$ m",
+      "$3\\sqrt{2}$ m",
+      "$6\\sqrt{2}$ m"
+    ],
+    "correctIndex": 1,
+    "explanation": "拉索是斜邊，柱高是 $45^\\circ$ 的對邊，故柱高 $= 6\\sqrt{2}\\sin 45^\\circ = 6\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 6$ m。陷阱：$12$ m 除以 $\\sin 45^\\circ$，比拉索還長；$3\\sqrt{2}$ m 用了 $\\sin 30^\\circ$；$6\\sqrt{2}$ m 把拉索長度當成柱高。",
+    "explanationEn": "The wire is the hypotenuse and the pole is opposite $45^\\circ$, so the height is $6\\sqrt{2}\\sin 45^\\circ = 6\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 6$ m. Traps: $12$ m divides by $\\sin 45^\\circ$ and is longer than the wire; $3\\sqrt{2}$ m uses $\\sin 30^\\circ$; $6\\sqrt{2}$ m takes the wire length as the height."
+  },
+  {
+    "id": "rcl_mb2_tg2_6",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一個正方形的對角線長 $10$ cm。求它的邊長。",
+    "questionEn": "The diagonal of a square is $10$ cm. Find its side length.",
+    "options": [
+      "$5$ cm",
+      "$10\\sqrt{2}$ cm",
+      "$5\\sqrt{2}$ cm",
+      "$\\dfrac{5\\sqrt{2}}{2}$ cm"
+    ],
+    "optionsEn": [
+      "$5$ cm",
+      "$10\\sqrt{2}$ cm",
+      "$5\\sqrt{2}$ cm",
+      "$\\dfrac{5\\sqrt{2}}{2}$ cm"
+    ],
+    "correctIndex": 2,
+    "explanation": "對角線把正方形分成兩個等腰直角三角形，對角線是斜邊，邊與對角線成 $45^\\circ$，故邊長 $= 10\\cos 45^\\circ = 10 \\times \\dfrac{\\sqrt{2}}{2} = 5\\sqrt{2}$ cm。驗算：$(5\\sqrt{2})^2 + (5\\sqrt{2})^2 = 100 = 10^2$。陷阱：$10\\sqrt{2}$ cm 乘了 $\\sqrt{2}$，方向弄反，比對角線還長；$5$ cm 只把對角線除以 $2$；$\\dfrac{5\\sqrt{2}}{2}$ cm 先把對角線減半再乘 $\\cos 45^\\circ$。",
+    "explanationEn": "The diagonal splits the square into two isosceles right-angled triangles with the diagonal as hypotenuse and the side at $45^\\circ$ to it, so the side is $10\\cos 45^\\circ = 10 \\times \\dfrac{\\sqrt{2}}{2} = 5\\sqrt{2}$ cm. Check: $(5\\sqrt{2})^2 + (5\\sqrt{2})^2 = 100 = 10^2$. Traps: $10\\sqrt{2}$ cm multiplies by $\\sqrt{2}$ and is longer than the diagonal; $5$ cm just halves the diagonal; $\\dfrac{5\\sqrt{2}}{2}$ cm halves it and then multiplies by $\\cos 45^\\circ$."
+  },
+  {
+    "id": "rcl_mb2_tg2_7",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "由一座 $60$ m 高的大廈頂部，看見地面上一輛車的俯角為 $30^\\circ$。車與大廈底部相距多遠？",
+    "questionEn": "From the top of a building $60$ m tall, the angle of depression of a car on the ground is $30^\\circ$. How far is the car from the foot of the building?",
+    "options": [
+      "$20\\sqrt{3}$ m",
+      "$120$ m",
+      "$30$ m",
+      "$60\\sqrt{3}$ m"
+    ],
+    "optionsEn": [
+      "$20\\sqrt{3}$ m",
+      "$120$ m",
+      "$30$ m",
+      "$60\\sqrt{3}$ m"
+    ],
+    "correctIndex": 3,
+    "explanation": "俯角與車處看大廈頂部的仰角相等（錯角），都是 $30^\\circ$。$\\tan 30^\\circ = \\dfrac{60}{d}$，故 $d = \\dfrac{60}{\\tan 30^\\circ} = 60\\sqrt{3}$ m。俯角小，表示車離得遠，距離應比樓高長。陷阱：$20\\sqrt{3}$ m 把 $\\tan 30^\\circ$ 乘在樓高上；$120$ m 是大廈頂部到車的視線長度；$30$ m 用了 $\\sin 30^\\circ$ 乘樓高。",
+    "explanationEn": "The angle of depression equals the angle of elevation of the top from the car (alternate angles), $30^\\circ$. $\\tan 30^\\circ = \\dfrac{60}{d}$, so $d = \\dfrac{60}{\\tan 30^\\circ} = 60\\sqrt{3}$ m. A small angle means the car is far away, so the distance should exceed the height. Traps: $20\\sqrt{3}$ m multiplies the height by $\\tan 30^\\circ$; $120$ m is the line of sight from the top to the car; $30$ m multiplies the height by $\\sin 30^\\circ$."
+  },
+  {
+    "id": "rcl_mb2_tg2_8",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一條直線與 $x$ 軸正方向所成的角為 $60^\\circ$，並經過點 $(0,\\ 2)$。這條直線的方程是甚麼？",
+    "questionEn": "A line makes $60^\\circ$ with the positive $x$-axis and passes through $(0,\\ 2)$. What is its equation?",
+    "options": [
+      "$y = \\sqrt{3}x + 2$",
+      "$y = \\dfrac{\\sqrt{3}}{3}x + 2$",
+      "$y = \\dfrac{\\sqrt{3}}{2}x + 2$",
+      "$y = -\\sqrt{3}x + 2$"
+    ],
+    "optionsEn": [
+      "$y = \\sqrt{3}x + 2$",
+      "$y = \\dfrac{\\sqrt{3}}{3}x + 2$",
+      "$y = \\dfrac{\\sqrt{3}}{2}x + 2$",
+      "$y = -\\sqrt{3}x + 2$"
+    ],
+    "correctIndex": 0,
+    "explanation": "直線的斜率等於它與 $x$ 軸正方向所成角的正切：斜率 $= \\tan 60^\\circ = \\sqrt{3}$。直線經過 $(0,\\ 2)$，$y$ 截距為 $2$，故方程為 $y = \\sqrt{3}x + 2$。陷阱：$\\dfrac{\\sqrt{3}}{3}$ 是 $\\tan 30^\\circ$；$\\dfrac{\\sqrt{3}}{2}$ 是 $\\sin 60^\\circ$；$-\\sqrt{3}$ 是傾角 $120^\\circ$ 的直線的斜率。",
+    "explanationEn": "The slope of a line is the tangent of the angle it makes with the positive $x$-axis: $\\tan 60^\\circ = \\sqrt{3}$. The line passes through $(0,\\ 2)$, so the $y$-intercept is $2$ and the equation is $y = \\sqrt{3}x + 2$. Traps: $\\dfrac{\\sqrt{3}}{3}$ is $\\tan 30^\\circ$; $\\dfrac{\\sqrt{3}}{2}$ is $\\sin 60^\\circ$; $-\\sqrt{3}$ is the slope of a line inclined at $120^\\circ$."
+  },
+  {
+    "id": "rcl_mb2_tg2_9",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "一個三角形其中兩邊長 $8$ cm 及 $5$ cm。若這兩邊的夾角由 $30^\\circ$ 增至 $90^\\circ$，三角形的面積會怎樣改變？",
+    "questionEn": "Two sides of a triangle are $8$ cm and $5$ cm. If the angle between them increases from $30^\\circ$ to $90^\\circ$, how does the area change?",
+    "options": [
+      "由 $20$ cm$^2$ 增至 $40$ cm$^2$",
+      "由 $10$ cm$^2$ 增至 $20$ cm$^2$",
+      "由 $10\\sqrt{3}$ cm$^2$ 增至 $20$ cm$^2$",
+      "由 $10$ cm$^2$ 減至 $0$ cm$^2$"
+    ],
+    "optionsEn": [
+      "From $20$ cm$^2$ up to $40$ cm$^2$",
+      "From $10$ cm$^2$ up to $20$ cm$^2$",
+      "From $10\\sqrt{3}$ cm$^2$ up to $20$ cm$^2$",
+      "From $10$ cm$^2$ down to $0$ cm$^2$"
+    ],
+    "correctIndex": 1,
+    "explanation": "面積 $= \\dfrac{1}{2}(8)(5)\\sin\\theta = 20\\sin\\theta$。$\\theta = 30^\\circ$ 時面積為 $20 \\times \\dfrac{1}{2} = 10$ cm$^2$；$\\theta = 90^\\circ$ 時 $\\sin 90^\\circ = 1$，面積為 $20$ cm$^2$。陷阱：由 $20$ 增至 $40$ 漏了 $\\dfrac{1}{2}$；$10\\sqrt{3}$ 用了 $\\cos 30^\\circ$；減至 $0$ 誤以為 $\\sin 90^\\circ = 0$。",
+    "explanationEn": "Area $= \\dfrac{1}{2}(8)(5)\\sin\\theta = 20\\sin\\theta$. At $30^\\circ$ it is $20 \\times \\dfrac{1}{2} = 10$ cm$^2$; at $90^\\circ$, $\\sin 90^\\circ = 1$, so it is $20$ cm$^2$. Traps: $20$ to $40$ drops the $\\dfrac{1}{2}$; $10\\sqrt{3}$ uses $\\cos 30^\\circ$; ending at $0$ takes $\\sin 90^\\circ$ as $0$."
+  },
+  {
+    "id": "rcl_mb2_tg2_10",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "在 $\\triangle ABC$ 中，$a = 5$、$b = 12$ 及 $C = 90^\\circ$。用餘弦定理求 $c$。",
+    "questionEn": "In $\\triangle ABC$, $a = 5$, $b = 12$ and $C = 90^\\circ$. Use the cosine formula to find $c$.",
+    "options": [
+      "$7$",
+      "$17$",
+      "$13$",
+      "$\\sqrt{109}$"
+    ],
+    "optionsEn": [
+      "$7$",
+      "$17$",
+      "$13$",
+      "$\\sqrt{109}$"
+    ],
+    "correctIndex": 2,
+    "explanation": "$c^2 = a^2 + b^2 - 2ab\\cos C = 25 + 144 - 2(5)(12)\\cos 90^\\circ$。由於 $\\cos 90^\\circ = 0$，$2ab\\cos C$ 一項等於零，$c^2 = 169$，$c = 13$ —— 夾角是直角時，餘弦定理就變成畢氏定理。陷阱：$7$ 誤以為 $\\cos 90^\\circ = 1$；$\\sqrt{109}$ 用了 $\\cos 60^\\circ = \\dfrac{1}{2}$；$17$ 把兩邊直接相加。",
+    "explanationEn": "$c^2 = a^2 + b^2 - 2ab\\cos C = 25 + 144 - 2(5)(12)\\cos 90^\\circ$. Since $\\cos 90^\\circ = 0$, the $2ab\\cos C$ term is zero: $c^2 = 169$, $c = 13$ — with a right angle the cosine formula becomes Pythagoras’ theorem. Traps: $7$ takes $\\cos 90^\\circ$ as $1$; $\\sqrt{109}$ uses $\\cos 60^\\circ = \\dfrac{1}{2}$; $17$ just adds the two sides."
+  },
+  {
+    "id": "rcl_mb2_tg2_11",
+    "type": "mc",
+    "topic": "三角函數",
+    "topicId": "trigonometry",
+    "topicZh": "三角函數",
+    "topicEn": "Trigonometry",
+    "difficulty": "intermediate",
+    "question": "在 $\\triangle ABC$ 中，$a = 9$、$b = 4$。若夾角 $C$ 由 $30^\\circ$ 逐漸減小至接近 $0^\\circ$，三角形的面積會怎樣變化？",
+    "questionEn": "In $\\triangle ABC$, $a = 9$ and $b = 4$. If the included angle $C$ shrinks from $30^\\circ$ towards $0^\\circ$, how does the area change?",
+    "options": [
+      "由 $9\\sqrt{3}$ 減小至接近 $0$",
+      "由 $9$ 增大至接近 $18$",
+      "一直保持 $9$ 不變",
+      "由 $9$ 減小至接近 $0$"
+    ],
+    "optionsEn": [
+      "From $9\\sqrt{3}$ down to nearly $0$",
+      "From $9$ up to nearly $18$",
+      "It stays at $9$",
+      "From $9$ down to nearly $0$"
+    ],
+    "correctIndex": 3,
+    "explanation": "面積 $= \\dfrac{1}{2}(9)(4)\\sin C = 18\\sin C$。$C = 30^\\circ$ 時面積為 $9$；$C$ 越接近 $0^\\circ$，$\\sin C$ 越接近 $\\sin 0^\\circ = 0$，面積亦越接近 $0$ —— 兩邊幾乎疊在一起，三角形被壓扁。陷阱：$9\\sqrt{3}$ 用了 $\\cos 30^\\circ$；增大至接近 $18$ 誤以為 $\\sin 0^\\circ = 1$；保持不變誤以為面積只由兩邊長決定。",
+    "explanationEn": "Area $= \\dfrac{1}{2}(9)(4)\\sin C = 18\\sin C$. At $30^\\circ$ it is $9$; as $C$ approaches $0^\\circ$, $\\sin C$ approaches $\\sin 0^\\circ = 0$, so the area approaches $0$ — the two sides close up and the triangle flattens. Traps: $9\\sqrt{3}$ uses $\\cos 30^\\circ$; growing towards $18$ takes $\\sin 0^\\circ$ as $1$; staying the same assumes the area depends only on the two sides."
+  },
+  {
+    "id": "rcl_math_log_5",
+    "type": "mc",
+    "topic": "對數與指數",
+    "topicId": "logarithms",
+    "topicZh": "對數與指數",
+    "topicEn": "Logarithms & Exponents",
+    "difficulty": "basic",
+    "question": "某實驗中，細菌數目每小時倍增，$t$ 小時後的數目為 $N = 500 \\times 2^{t}$。實驗開始時（$t = 0$）有多少細菌？",
+    "questionEn": "In an experiment the number of bacteria doubles every hour; after $t$ hours it is $N = 500 \\times 2^{t}$. How many bacteria are there at the start ($t = 0$)?",
+    "options": [
+      "$500$",
+      "$0$",
+      "$1000$",
+      "$1$"
+    ],
+    "optionsEn": [
+      "$500$",
+      "$0$",
+      "$1000$",
+      "$1$"
+    ],
+    "correctIndex": 0,
+    "explanation": "$t = 0$ 時 $2^{0} = 1$（任何非零數的零次方都是 $1$），故 $N = 500 \\times 1 = 500$。這亦符合常理：式中的 $500$ 正是開始時的數目，之後每小時乘 $2$。陷阱：$0$ 誤以為 $2^{0} = 0$；$1000$ 誤以為 $2^{0} = 2$，即已過了一小時；$1$ 只算了 $2^{0}$ 而漏乘 $500$。",
+    "explanationEn": "At $t = 0$, $2^{0} = 1$ (any non-zero number to the power $0$ is $1$), so $N = 500 \\times 1 = 500$. This makes sense: $500$ is the starting number, doubled each hour after that. Traps: $0$ takes $2^{0}$ as $0$; $1000$ takes $2^{0}$ as $2$, which is after one hour; $1$ evaluates $2^{0}$ but forgets the $500$."
+  },
+  {
+    "id": "rcl_math_log_8",
+    "type": "mc",
+    "topic": "對數與指數",
+    "topicId": "logarithms",
+    "topicZh": "對數與指數",
+    "topicEn": "Logarithms & Exponents",
+    "difficulty": "intermediate",
+    "question": "一筆存款按複利增長，存款額 $A$ 與年數 $n$ 的關係為 $A = 8000(1.05)^{n}$，故 $n = \\dfrac{\\log(A \\div 8000)}{\\log 1.05}$。當 $A = 8000$ 時，$n$ 是多少？",
+    "questionEn": "A deposit grows at compound interest: $A = 8000(1.05)^{n}$, so $n = \\dfrac{\\log(A \\div 8000)}{\\log 1.05}$. What is $n$ when $A = 8000$?",
+    "options": [
+      "$1$",
+      "$0$",
+      "$\\dfrac{1}{\\log 1.05}$",
+      "無法計算，因 $\\log 1$ 沒有定義"
+    ],
+    "optionsEn": [
+      "$1$",
+      "$0$",
+      "$\\dfrac{1}{\\log 1.05}$",
+      "Cannot be found, as $\\log 1$ is undefined"
+    ],
+    "correctIndex": 1,
+    "explanation": "$A \\div 8000 = 1$，而 $\\log 1 = 0$（因為 $10^{0} = 1$），故 $n = \\dfrac{0}{\\log 1.05} = 0$，即存款剛存入、未有利息的時候。陷阱：$1$ 與 $\\dfrac{1}{\\log 1.05}$ 都把 $\\log 1$ 當成 $1$；「沒有定義」把 $\\log 1$ 與 $\\log 0$ 混淆了，沒有定義的是 $\\log 0$。",
+    "explanationEn": "$A \\div 8000 = 1$ and $\\log 1 = 0$ (because $10^{0} = 1$), so $n = \\dfrac{0}{\\log 1.05} = 0$: the moment the money is deposited, before any interest. Traps: $1$ and $\\dfrac{1}{\\log 1.05}$ both take $\\log 1$ as $1$; \"undefined\" confuses $\\log 1$ with $\\log 0$, which is the one that is undefined."
+  },
+  {
+    "id": "rcl_math_log_11",
+    "type": "mc",
+    "topic": "對數與指數",
+    "topicId": "logarithms",
+    "topicZh": "對數與指數",
+    "topicEn": "Logarithms & Exponents",
+    "difficulty": "intermediate",
+    "question": "已知 $\\log 2 \\approx 0.301$。不用計算機，$2^{20}$ 是一個多少位的整數？",
+    "questionEn": "Given $\\log 2 \\approx 0.301$, and without a calculator, how many digits does the integer $2^{20}$ have?",
+    "options": [
+      "$6$ 位",
+      "$20$ 位",
+      "$7$ 位",
+      "$4$ 位"
+    ],
+    "optionsEn": [
+      "$6$ digits",
+      "$20$ digits",
+      "$7$ digits",
+      "$4$ digits"
+    ],
+    "correctIndex": 2,
+    "explanation": "$\\log 2^{20} = 20\\log 2 \\approx 20 \\times 0.301 = 6.02$，即 $10^{6} < 2^{20} < 10^{7}$，所以 $2^{20}$ 是 $7$ 位數（實際上 $2^{20} = 1\\,048\\,576$）。陷阱：$6$ 位把對數的整數部分當成位數，位數應比整數部分多 $1$；$20$ 位把指數當成位數；$4$ 位是 $2^{10}$ 的位數。",
+    "explanationEn": "$\\log 2^{20} = 20\\log 2 \\approx 20 \\times 0.301 = 6.02$, so $10^{6} < 2^{20} < 10^{7}$ and $2^{20}$ has $7$ digits (in fact $2^{20} = 1\\,048\\,576$). Traps: $6$ takes the integer part of the logarithm as the number of digits, which is one more than that; $20$ takes the index as the number of digits; $4$ is the number of digits of $2^{10}$."
+  }
+]

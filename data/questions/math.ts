@@ -66,6 +66,18 @@ function q(
 const xTerm = (b: number) => b === 0 ? '' : b === 1 ? ' + x' : b === -1 ? ' - x' : b > 0 ? ` + ${b}x` : ` - ${-b}x`
 const cTerm = (c: number) => c === 0 ? '' : c > 0 ? ` + ${c}` : ` - ${-c}`
 const root = (r: number) => `x = ${r}`
+// 2026-10-09 full check (founders' reply 62c): coefficients of 1 and −1 are not written
+// ("x^2", "-x", not "1x^2", "-1x"); a negative number after a minus sign is bracketed
+// ("2-(-1)", not "2--1"); a fraction is shown as a fraction, not as 0.3333333333333333.
+const coef = (a: number) => a === 1 ? '' : a === -1 ? '-' : `${a}`
+const minus = (a: number, b: number) => `${a}-${b < 0 ? `(${b})` : b}`
+const gcd = (a: number, b: number): number => (b === 0 ? Math.abs(a) : gcd(b, a % b))
+const frac = (num: number, den: number): string => {
+  if (den < 0) { num = -num; den = -den }
+  const g = gcd(num, den) || 1
+  const p = num / g, d = den / g
+  return d === 1 ? `${p}` : p < 0 ? `-\\frac{${-p}}{${d}}` : `\\frac{${p}}{${d}}`
+}
 
 // ── Topic 1: Quadratic equations (integer roots, code-built) ─────────────────
 // (x - r1)(x - r2) = 0  ⇒  x^2 - (r1+r2)x + r1·r2 = 0
@@ -166,15 +178,15 @@ const probQs: Question[] = [
 function maxParab(n: number, a: number, h: number, k: number, year: number, diff: 'easy' | 'medium' | 'hard'): Question {
   // expand a(x-h)^2 + k = a x^2 - 2ah x + (a h^2 + k)
   const b = -2 * a * h, c = a * h * h + k
-  const expr = `${a}x^2${b > 0 ? ` + ${b}x` : b < 0 ? ` - ${-b}x` : ''}${cTerm(c)}`
+  const expr = `${coef(a)}x^2${b > 0 ? ` + ${b}x` : b < 0 ? ` - ${-b}x` : ''}${cTerm(c)}`
   const word = a < 0 ? ['極大值', 'maximum value'] : ['極小值', 'minimum value']
   return q(`math_func_${n}`, T.functions, FW.modelling, diff, year, 1,
     [`設 $f(x) = ${expr}$，求 $f(x)$ 的${word[0]}。`, `Let $f(x) = ${expr}$. Find the ${word[1]} of $f(x)$.`],
     [
       [`$${k}$`, `$${k}$`], [`$${h}$`, `$${h}$`], [`$${-k}$`, `$${-k}$`], [`$${c}$`, `$${c}$`],
     ],
-    [`配方得 $f(x) = ${a}(x${cTerm(-h)})^2${cTerm(k)}$，頂點在 $x = ${h}$，${word[0]} $= ${k}$（即頂點的 $y$ 值，非 $x$ 值）。`,
-      `Completing the square: $f(x) = ${a}(x${cTerm(-h)})^2${cTerm(k)}$, vertex at $x = ${h}$, ${word[1]} $= ${k}$ (the vertex's $y$-value, not its $x$-value).`])
+    [`配方得 $f(x) = ${coef(a)}(x${cTerm(-h)})^2${cTerm(k)}$，頂點在 $x = ${h}$，${word[0]} $= ${k}$（即頂點的 $y$ 值，非 $x$ 值）。`,
+      `Completing the square: $f(x) = ${coef(a)}(x${cTerm(-h)})^2${cTerm(k)}$, vertex at $x = ${h}$, ${word[1]} $= ${k}$ (the vertex's $y$-value, not its $x$-value).`])
 }
 // params chosen so {k, h, -k, c} are all distinct (no duplicate options).
 const funcParams: [number, number, number, number, 'easy' | 'medium' | 'hard'][] = [
@@ -412,8 +424,8 @@ function distance(n: number, x1: number, y1: number, x2: number, y2: number, yea
     [
       [`$${ansStr}$`, `$${ansStr}$`], [`$${d2}$`, `$${d2}$`], [`$\\sqrt{${(x2 - x1) ** 2}}$`, `$\\sqrt{${(x2 - x1) ** 2}}$`], [`$${Math.abs(x2 - x1) + Math.abs(y2 - y1)}$`, `$${Math.abs(x2 - x1) + Math.abs(y2 - y1)}$`],
     ],
-    [`距離 $= \\sqrt{(${x2}-${x1})^2 + (${y2}-${y1})^2} = \\sqrt{${d2}} = ${ansStr}$。`,
-      `Distance $= \\sqrt{(${x2}-${x1})^2 + (${y2}-${y1})^2} = \\sqrt{${d2}} = ${ansStr}$.`])
+    [`距離 $= \\sqrt{(${minus(x2, x1)})^2 + (${minus(y2, y1)})^2} = \\sqrt{${d2}} = ${ansStr}$。`,
+      `Distance $= \\sqrt{(${minus(x2, x1)})^2 + (${minus(y2, y1)})^2} = \\sqrt{${d2}} = ${ansStr}$.`])
 }
 function midpoint(n: number, x1: number, y1: number, x2: number, y2: number, year: number, diff: 'easy' | 'medium' | 'hard'): Question {
   const mx = (x1 + x2) / 2, my = (y1 + y2) / 2
@@ -426,14 +438,14 @@ function midpoint(n: number, x1: number, y1: number, x2: number, y2: number, yea
       `Midpoint $= (\\frac{${x1}+${x2}}{2}, \\frac{${y1}+${y2}}{2}) = (${mx}, ${my})$.`])
 }
 function slope(n: number, x1: number, y1: number, x2: number, y2: number, year: number, diff: 'easy' | 'medium' | 'hard'): Question {
-  const m = (y2 - y1) / (x2 - x1)
+  const m = frac(y2 - y1, x2 - x1)
   return q(`math_coord_s_${n}`, T.coordinate, FW.geometry, diff, year, 1,
     [`求通過 $(${x1}, ${y1})$ 與 $(${x2}, ${y2})$ 的直線斜率。`, `Find the slope of the line through $(${x1}, ${y1})$ and $(${x2}, ${y2})$.`],
     [
-      [`$${m}$`, `$${m}$`], [`$${-m}$`, `$${-m}$`], [`$${(x2 - x1) / (y2 - y1)}$`, `$${(x2 - x1) / (y2 - y1)}$`], [`$${y2 - y1}$`, `$${y2 - y1}$`],
+      [`$${m}$`, `$${m}$`], [`$${frac(y1 - y2, x2 - x1)}$`, `$${frac(y1 - y2, x2 - x1)}$`], [`$${frac(x2 - x1, y2 - y1)}$`, `$${frac(x2 - x1, y2 - y1)}$`], [`$${y2 - y1}$`, `$${y2 - y1}$`],
     ],
-    [`斜率 $= \\frac{${y2}-${y1}}{${x2}-${x1}} = ${m}$。`,
-      `Slope $= \\frac{${y2}-${y1}}{${x2}-${x1}} = ${m}$.`])
+    [`斜率 $= \\dfrac{${minus(y2, y1)}}{${minus(x2, x1)}} = ${m}$。陷阱：$${frac(x2 - x1, y2 - y1)}$ 把分子分母倒轉（用了 $x$ 的變化除以 $y$ 的變化）；$${y2 - y1}$ 只算了 $y$ 的變化，漏了除以 $x$ 的變化；$${frac(y1 - y2, x2 - x1)}$ 符號弄錯。`,
+      `Slope $= \\dfrac{${minus(y2, y1)}}{${minus(x2, x1)}} = ${m}$. Traps: $${frac(x2 - x1, y2 - y1)}$ divides the change in $x$ by the change in $y$; $${y2 - y1}$ is only the change in $y$; $${frac(y1 - y2, x2 - x1)}$ has the wrong sign.`])
 }
 const coordQs: Question[] = [
   distance(1, 0, 0, 3, 4, 2023, 'easy'), distance(2, 1, 2, 4, 6, 2022, 'medium'), distance(3, -1, -1, 2, 3, 2021, 'medium'),
@@ -448,12 +460,15 @@ const coordQs: Question[] = [
 function ineq(n: number, a: number, b: number, year: number, diff: 'easy' | 'medium' | 'hard'): Question {
   const bound = -b / a
   return q(`math_ineq_${n}`, T.inequalities, FW.decompose, diff, year, 1,
-    [`解不等式 $${a}x${cTerm(b)} > 0$。`, `Solve the inequality $${a}x${cTerm(b)} > 0$.`],
+    [`解不等式 $${coef(a)}x${cTerm(b)} > 0$。`, `Solve the inequality $${coef(a)}x${cTerm(b)} > 0$.`],
     [
       [`$x > ${bound}$`, `$x > ${bound}$`], [`$x < ${bound}$`, `$x < ${bound}$`], [`$x > ${-bound}$`, `$x > ${-bound}$`], [`$x < ${-bound}$`, `$x < ${-bound}$`],
     ],
-    [`移項得 $${a}x > ${-b}$，因 $${a} > 0$ 不變號，$x > ${bound}$。`,
-      `Rearranging, $${a}x > ${-b}$; since $${a} > 0$ the sign is unchanged, so $x > ${bound}$.`])
+    a === 1
+      ? [`移項得 $x > ${-b}$。陷阱：移項時 $${b}$ 要變號，故不是 $x > ${b}$ 或 $x < ${b}$。`,
+        `Moving the constant across gives $x > ${-b}$. Trap: $${b}$ changes sign when moved, so it is not $x > ${b}$.`]
+      : [`移項得 $${a}x > ${-b}$，兩邊除以正數 $${a}$，不等號方向不變，$x > ${bound}$。陷阱：只有除以【負數】時不等號才要反轉。`,
+        `Rearranging, $${a}x > ${-b}$; dividing by the positive number $${a}$ keeps the sign, so $x > ${bound}$. Trap: the sign flips only when dividing by a negative number.`])
 }
 const ineqParams: [number, number, number, 'easy' | 'medium' | 'hard'][] = [
   [1, -3, 2023, 'easy'], [2, -8, 2022, 'easy'], [1, 5, 2021, 'easy'], [4, -12, 2023, 'medium'],

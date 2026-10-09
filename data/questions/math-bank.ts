@@ -350,9 +350,11 @@ for (const nn of [3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24]) {
      `A regular polygon has equal exterior angles summing to $360^\\circ$, so each is $360 \\div ${nn} = ${ext}^\\circ$. Traps: $${int}^\\circ$ is each interior angle; $${180 / nn}^\\circ$ divides $180$ instead.`])
   add(`mb_p2b_${nn}`, T.polygons, FW.geometry, 'medium',
     [`一個正 ${nn} 邊形的每隻內角是多少度？`, `What is each interior angle of a regular ${nn}-sided polygon?`],
-    [n(`$${int}^\\circ$`), n(`$${ext}^\\circ$`), n(`$${(nn - 2) * 180}^\\circ$`), n(`$${180 - 360 / (nn + 1)}^\\circ$`)],
-    [`每隻內角 $= 180^\\circ -$ 每隻外角 $= 180 - ${ext} = ${int}^\\circ$；亦可用 $(n-2)\\times 180 \\div n = ${(nn - 2) * 180} \\div ${nn} = ${int}^\\circ$，兩條路徑必須一致。陷阱：$${ext}^\\circ$ 是外角；$${(nn - 2) * 180}^\\circ$ 是內角總和而非每隻。`,
-     `Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - ${ext} = ${int}^\\circ$; equivalently $(n-2)\\times 180 \\div n = ${(nn - 2) * 180} \\div ${nn} = ${int}^\\circ$, and the two routes must agree. Traps: $${ext}^\\circ$ is the exterior angle; $${(nn - 2) * 180}^\\circ$ is the total, not one angle.`])
+    // 2026-10-09 full check (reply 62c): the fourth option was 180 − 360/(n+1), an unexplained
+    // value that printed as 128.57142857142856° for n = 6. It is now 360° − exterior angle.
+    [n(`$${int}^\\circ$`), n(`$${ext}^\\circ$`), n(`$${(nn - 2) * 180}^\\circ$`), n(`$${360 - ext}^\\circ$`)],
+    [`每隻內角 $= 180^\\circ -$ 每隻外角 $= 180 - ${ext} = ${int}^\\circ$；亦可用 $(n-2)\\times 180 \\div n = ${(nn - 2) * 180} \\div ${nn} = ${int}^\\circ$，兩條路徑必須一致。陷阱：$${ext}^\\circ$ 是外角；$${(nn - 2) * 180}^\\circ$ 是內角總和而非每隻；$${360 - ext}^\\circ$ 用了 $360^\\circ$ 減外角，但內角與外角在同一直線上，兩者之和是 $180^\\circ$。`,
+     `Each interior angle is $180^\\circ$ minus each exterior angle $= 180 - ${ext} = ${int}^\\circ$; equivalently $(n-2)\\times 180 \\div n = ${(nn - 2) * 180} \\div ${nn} = ${int}^\\circ$, and the two routes must agree. Traps: $${ext}^\\circ$ is the exterior angle; $${(nn - 2) * 180}^\\circ$ is the total, not one angle; $${360 - ext}^\\circ$ subtracts from $360^\\circ$, but an interior and exterior angle lie on a straight line and add up to $180^\\circ$.`])
 }
 
 // S1 — 相似立體：長度比 a : b ⇒ 面積比 a² : b²、體積比 a³ : b³

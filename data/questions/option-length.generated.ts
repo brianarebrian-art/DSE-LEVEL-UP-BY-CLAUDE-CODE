@@ -11,8 +11,8 @@ export const OPTION_LENGTH_MEASURED_AT = '2026-10-09'
 
 export const LONGEST_OPTION: Record<string, { unique: number; correct: number }> = {
   "math": {
-    "unique": 557,
-    "correct": 43
+    "unique": 560,
+    "correct": 44
   },
   "m2": {
     "unique": 459,

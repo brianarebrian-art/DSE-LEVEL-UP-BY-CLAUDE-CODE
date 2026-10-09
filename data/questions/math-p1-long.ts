@@ -248,6 +248,9 @@ export const mathP1LongQuestions: AnyQuestion[] = [
     "markingSchemeEn": "(a) $T_{n}=a+(n-1)d$, so $T_{20}=5+19(4)$ …… 1 mark\n    $=81$ …… 1 mark\n(b) $S_{20}=\\dfrac{20}{2}(a+T_{20})=10(5+81)$ …… 1 mark\n    $=860$ …… 1 mark\n(c) $S_{n}=\\dfrac{n}{2}[2(5)+(n-1)(4)]=\\dfrac{n}{2}(4n+6)=n(2n+3)$ …… 1 mark\n    Require $2n^{2}+3n>1000$. When $n=21$: $2(441)+63=945<1000$ …… 1 mark\n    When $n=22$: $2(484)+66=1034>1000$, so the least $n$ is $22$ …… 1 mark",
     "suggestedMinutes": 9
   },
+  // math_p1_11: revised 2026-08-27 ("T and B on the same side" → "opposite sides"; the same-side
+  // configuration gives ∠TCA = 124°, not 56°). The note was moved out of the student-facing
+  // explanation on 2026-10-09 (founders' reply 62c).
   {
     "id": "math_p1_11",
     "type": "long",
@@ -262,12 +265,12 @@ export const mathP1LongQuestions: AnyQuestion[] = [
     "difficulty": "medium",
     "year": 0,
     "content": "〔卷一・甲部(2)〕（6 分）\n\n在圓 $O$ 中，$AB$ 為直徑，$C$ 為圓上另一點，且 $\\angle CAB=34^{\\circ}$。$TC$ 為圓在點 $C$ 的切線，$T$ 與 $B$ 在直線 $AC$ 的異側。\n(a) 求 $\\angle ACB$，並說明理由。（2 分）\n(b) 求 $\\angle ABC$。（2 分）\n(c) 求 $\\angle TCA$，並說明理由。（2 分）",
-    "explanation": "圓的幾何題，理由與答案同分。本題三問各對應一條性質：半圓上的圓周角為直角、三角形內角和、以及弦切角定理。弦切角定理最易混淆的地方在於「交錯」二字 —— $\\angle TCA$ 對應的是弦 $CA$ 另一側弓形內的圓周角 $\\angle ABC$，而不是同側的 $\\angle CAB$。作答時先在圖中標出弦，再確認自己取的是哪一邊的弓形，可避免這個錯。\n\n〔2026-08-27 校訂〕原稿寫「T 與 B 在直線 AC 的同一側」，該配置下 ∠TCA = 124°，與參考答案 56° 不符。本題考核點為弦切角等於交錯弓形內的圓周角（56°），故校訂題目為「異側」。",
+    "explanation": "圓的幾何題，理由與答案同分。本題三問各對應一條性質：半圓上的圓周角為直角、三角形內角和、以及弦切角定理。弦切角定理最易混淆的地方在於「交錯」二字 —— $\\angle TCA$ 對應的是弦 $CA$ 另一側弓形內的圓周角 $\\angle ABC$，而不是同側的 $\\angle CAB$。作答時先在圖中標出弦，再確認自己取的是哪一邊的弓形，可避免這個錯。",
     "referenceAnswer": "(a) $\\angle ACB=90^{\\circ}$（半圓上的圓周角）\n(b) $\\angle ABC=56^{\\circ}$\n(c) $\\angle TCA=56^{\\circ}$（弦切角等於交錯弓形內的圓周角）",
     "marks": 6,
     "referenceAnswerEn": "(a) $\\angle ACB=90^{\\circ}$ (angle in semi-circle)\n(b) $\\angle ABC=56^{\\circ}$\n(c) $\\angle TCA=56^{\\circ}$ (angle in alternate segment)",
     "contentEn": "[Paper 1 · Section A(2)] (6 marks)\n\nIn circle $O$, $AB$ is a diameter and $C$ is another point on the circle with $\\angle CAB=34^{\\circ}$. $TC$ is the tangent to the circle at $C$, and $T$ and $B$ lie on opposite sides of the line $AC$.\n(a) Find $\\angle ACB$, giving a reason. (2 marks)\n(b) Find $\\angle ABC$. (2 marks)\n(c) Find $\\angle TCA$, giving a reason. (2 marks)",
-    "explanationEn": "In circle geometry the reason carries as many marks as the answer. The three parts correspond to three properties: the angle in a semi-circle is a right angle, the angle sum of a triangle, and the tangent-chord angle. The word most easily misread in the tangent-chord property is \"alternate\": $\\angle TCA$ corresponds to the angle in the segment on the other side of the chord $CA$, namely $\\angle ABC$, and not to $\\angle CAB$ on the same side. Marking the chord on the diagram first and then confirming which segment has been taken prevents this error.\n\n[Revised 2026-08-27] The original text read \"T and B lie on the same side of the line AC\". In that configuration $\\angle TCA=124^{\\circ}$, which does not match the reference answer of $56^{\\circ}$. The point being tested is that the tangent-chord angle equals the angle in the alternate segment ($56^{\\circ}$), so the question has been revised to \"opposite sides\".",
+    "explanationEn": "In circle geometry the reason carries as many marks as the answer. The three parts correspond to three properties: the angle in a semi-circle is a right angle, the angle sum of a triangle, and the tangent-chord angle. The word most easily misread in the tangent-chord property is \"alternate\": $\\angle TCA$ corresponds to the angle in the segment on the other side of the chord $CA$, namely $\\angle ABC$, and not to $\\angle CAB$ on the same side. Marking the chord on the diagram first and then confirming which segment has been taken prevents this error.",
     "markingScheme": "(a) $AB$ 為直徑，$\\angle ACB$ 為半圓上的圓周角 …… 1 分\n　　故 $\\angle ACB=90^{\\circ}$ …… 1 分\n(b) 三角形內角和：$\\angle ABC=180^{\\circ}-90^{\\circ}-34^{\\circ}$ …… 1 分\n　　$=56^{\\circ}$ …… 1 分\n(c) 弦切角等於交錯弓形內的圓周角，故 $\\angle TCA=\\angle ABC$ …… 1 分\n　　$=56^{\\circ}$ …… 1 分",
     "markingSchemeEn": "(a) $AB$ is a diameter, so $\\angle ACB$ is an angle in a semi-circle …… 1 mark\n    Therefore $\\angle ACB=90^{\\circ}$ …… 1 mark\n(b) Angle sum of triangle: $\\angle ABC=180^{\\circ}-90^{\\circ}-34^{\\circ}$ …… 1 mark\n    $=56^{\\circ}$ …… 1 mark\n(c) The angle between a tangent and a chord equals the angle in the alternate segment, so $\\angle TCA=\\angle ABC$ …… 1 mark\n    $=56^{\\circ}$ …… 1 mark",
     "suggestedMinutes": 7
