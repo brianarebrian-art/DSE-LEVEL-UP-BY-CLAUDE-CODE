@@ -15,8 +15,8 @@ export const LONGEST_OPTION: Record<string, { unique: number; correct: number }>
     "correct": 44
   },
   "m2": {
-    "unique": 459,
-    "correct": 91
+    "unique": 462,
+    "correct": 86
   },
   "m1": {
     "unique": 599,

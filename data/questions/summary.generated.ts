@@ -3490,9 +3490,9 @@ export const TOTAL_QUESTIONS = 26633
  * 只有 published 會出現在練習中。狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
  */
 export const CONTENT_STATS = {
-  "totalAuthored": 27449,
+  "totalAuthored": 27481,
   "published": 26633,
-  "withdrawn": 584,
+  "withdrawn": 616,
   "withheldTopic": 219,
   "pendingReview": 13
 } as const

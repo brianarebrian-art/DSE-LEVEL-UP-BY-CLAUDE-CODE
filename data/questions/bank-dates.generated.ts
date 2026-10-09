@@ -11,7 +11,7 @@ export const BANK_UPDATED_AT: Record<string, { version: string; date: string }> 
     "date": "2026-10-09"
   },
   "m2": {
-    "version": "3f47daa2eed83083",
+    "version": "8d205b98514d52a8",
     "date": "2026-10-09"
   },
   "m1": {
