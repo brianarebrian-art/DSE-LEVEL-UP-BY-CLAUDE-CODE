@@ -92,7 +92,13 @@ export default function Footer() {
                 <Link href="/trust" className="inline-flex min-h-11 items-center font-medium hover:text-accent transition-colors">
                   {t.footer.trust}
                 </Link>
-              </li>              <li>
+              </li>
+              <li>
+                <Link href="/credits" className="inline-flex min-h-11 items-center font-medium hover:text-accent transition-colors">
+                  {en ? 'Guardians' : '守護者致謝名單'}
+                </Link>
+              </li>
+              <li>
                 <Link href="/transparency" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.transparency}
                 </Link>
