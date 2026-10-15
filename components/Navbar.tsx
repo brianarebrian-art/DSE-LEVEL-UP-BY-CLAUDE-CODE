@@ -120,7 +120,7 @@ export default function Navbar() {
           >
             {t.nav.startPractice}
           </Link>
-          {/* compact 單掣：三段式會令英文版超出 xl 斷點，重新出現標籤斷行 */}
+          {/* compact 單掣：三段式會令英文版超出 xl 斷點，重新出現標籤���行 */}
           <ThemeToggle compact />
           <LanguageToggle />
           <AuthButton />
@@ -165,6 +165,32 @@ export default function Navbar() {
                   {t.nav[l.key]}
                 </Link>
               ))}
+            </div>
+
+            <div className="mt-4 border-t border-line pt-3">
+              <p className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-muted">
+                {t.footer.aboutHeading}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+                <Link
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className={`min-h-11 flex items-center border-b border-line text-sm ${
+                    pathname === '/about' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
+                  }`}
+                >
+                  {t.footer.aboutUs}
+                </Link>
+                <Link
+                  href="/credits"
+                  onClick={() => setOpen(false)}
+                  className={`min-h-11 flex items-center border-b border-line text-sm ${
+                    pathname === '/credits' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
+                  }`}
+                >
+                  {en ? 'Guardians' : '守護者致謝名單'}
+                </Link>
+              </div>
             </div>
 
             {/* 漢堡選單內容須與橫向條完全一致 —— 連目標路由亦然。 */}
