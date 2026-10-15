@@ -80,13 +80,13 @@ export default function TransparencyClient({
       title: en ? 'How we keep the questions sound' : '我哋點樣確保題目質素',
       points: en
         ? [
-            'Every question is co-authored by DSE alumni with AI, then passes automated checks before it goes live. The questions have not been reviewed by registered teachers.',
+            'Every question is co-authored by DSE alumni with AI, then passes automated checks before it goes live. This is a beta question bank: questions have not been reviewed line by line by registered teachers and should not be treated as formal teaching material.',
             'All items are original rewrites written to DSE question types and assessment points — they are NOT official HKEAA questions, and no official content is copied.',
             'Numeric / calculation questions are verified by parametric brute-force checking.',
             'Spotted a mistake? Tell us and we’ll fix it as soon as we can.',
           ]
         : [
-            '每一條題目都由 DSE 舊生 + AI 協作編寫，上線前要通過自動檢查。題目未經註冊教師審定。',
+            '每一條題目都由 DSE 舊生 + AI 協作編寫，上線前要通過自動檢查。呢個係 Beta 題庫，題目未經註冊教師逐題審定，唔應視為正式教材。',
             '全部都係原創改寫，按 DSE 題型同考核重點撰寫 —— 並非 HKEAA 官方試題，亦無複製任何官方內容。',
             '數值／計算題以參數化方式 brute-force 驗算。',
             '發現錯誤？話我哋知，我哋會盡快修正。',
@@ -232,7 +232,7 @@ export default function TransparencyClient({
         <p className="text-ink-muted text-sm leading-relaxed mb-5">
           {en
             ? `${n(content.totalAuthored)} questions have been written. Each is counted once, so the four figures add up to that total. Only the ones in practice are shown to students; every question count elsewhere on the site is this figure. “Topic held back”: whole topics that are not shown until each question in them is matched to the curriculum guide.`
-            : `題庫共編寫咗 ${n(content.totalAuthored)} 條題目，每條只計一次，所以四個數加埋就係呢個總數。只有「練習中」嘅題目會出畀學生，網站其他地方顯示嘅題數都係呢個數。「課題暫緩」：成個課題暫時唔出題，要逐題對返課程指引先會出。`}
+            : `題庫共編寫咗 ${n(content.totalAuthored)} 條題目，每條只計一次，所以四個數加埋就係呢個總數。只有「練習中」嘅題目會出畀學生；首頁顯示嘅題數只代表目前可練習數量，唔代表已通過教師審核。「課題暫緩」：成個課題暫時唔出題，要逐題對返課程指引先會出。`}
         </p>
         {WITHDRAWN_COUNT > 0 && (
           <p className="text-ink-soft leading-relaxed mb-5">

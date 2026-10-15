@@ -135,7 +135,7 @@ export default function HomePage() {
       <InstallHint />
 
       {/* ── HERO ──
-          2026-09-29 手機首屏重排。375×812 實測：主 CTA「開始練習」原位於 y=807，
+          2026-09-29 手機首屏重排。375×812 實測：主 CTA「開始練���」原位於 y=807，
           而底部導航由 y=755 開始 —— 在最多人使用的裝置上，第一屏看不到主按鈕。
           ① 吉祥物在手機縮小（高約 104px），徽章在手機隱藏（與 h1 內容重複）；
           ② CTA 移到副標題之後，「DSE 舊生 + AI」及信任標記移到 CTA 之下；
@@ -213,8 +213,8 @@ export default function HomePage() {
 
           <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             {locale === 'en'
-              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind common DSE traps, one question at a time.'
-              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解 DSE 常見陷阱背後嘅核心邏輯。'}
+              ? 'Built by DSE alumni with AI — free practice to help you examine common DSE question patterns, one question at a time.'
+              : '由 DSE 舊生 + AI 協作，免費陪你逐題檢視常見 DSE 題型；唔取代官方試題或老師指導。'}
           </p>
 
           {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}
@@ -231,8 +231,8 @@ export default function HomePage() {
               題目並無錯誤，不計入此數（WITHDRAWN_FOR_FAULT）。 */}
           <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
             {locale === 'en'
-              ? `Questions go live after automated checks and have not been reviewed by registered teachers${WITHDRAWN_FOR_FAULT > 0 ? `; another ${WITHDRAWN_FOR_FAULT.toLocaleString()} have been withdrawn because errors were found` : ''}. `
-              : `題目經自動檢查上線，未經註冊教師審定${WITHDRAWN_FOR_FAULT > 0 ? `；另有 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條發現有錯暫時收起` : ''}。`}
+              ? `Beta question bank: questions pass automated checks but have not been reviewed by registered teachers${WITHDRAWN_FOR_FAULT > 0 ? `; ${WITHDRAWN_FOR_FAULT.toLocaleString()} have been withdrawn after errors were found` : ''}. Use official past papers and teacher guidance for exam preparation. `
+              : `Beta 題庫：題目只經自動檢查，未經註冊教師審定${WITHDRAWN_FOR_FAULT > 0 ? `；${WITHDRAWN_FOR_FAULT.toLocaleString()} 條發現有錯後已收起` : ''}。備試請同時使用官方歷屆試題及老師指導。`}
             <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
               {locale === 'en' ? 'How it works' : '點樣做'}
             </Link>
@@ -251,7 +251,7 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-center text-xs text-ink-muted">
           <span>
             {TOTAL_QUESTIONS.toLocaleString()}
-            {locale === 'en' ? ' rewritten questions' : ' 條改寫題目'}
+            {locale === 'en' ? ' questions currently in practice' : ' 條目前練習題'}
           </span>
           <span aria-hidden className="text-ink-faint">·</span>
           <span>
