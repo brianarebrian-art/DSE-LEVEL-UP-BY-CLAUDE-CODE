@@ -21,6 +21,7 @@ import { useLocale } from '@/lib/i18n'
 import { getCurrentSeason } from '@/utils/season'
 import { getSeasonalHero } from '@/data/heroContent'
 import Mascot from '@/components/Mascot'
+import { OFFICIAL_SOCIAL } from '@/lib/site'
 
 // UI/UX 憲章 §3「清晨圖書館」light-first 首階段：landing 自足淺色（自帶背景，
 // 唔郁全域 body），故內頁暗色維持不變、零爆版。全域 toggle + 內頁 migrate = Phase 2。
@@ -143,7 +144,7 @@ export default function HomePage() {
           2026-09-30（UX 循環 LOOP 2）：桌面頂部留白及徽章、副標題下方間距各減一級，
           令 1280×800 手提電腦的首屏亦見到「揀其他科目」。 */}
       <section className="relative px-4 pt-8 pb-16 sm:pt-12 sm:pb-24">
-        {/* 裝飾光暈。w-full max-w-[560px]：以前寫死 w-[560px]，喺 375px 機上左右各爆 93px，
+        {/* 裝飾光暈。w-full max-w-[560px]：以前寫死 w-[560px]，喺 375px 機上左右各��� 93px，
             令 Chrome 將版面視窗由 375 撐大到 467（＝成頁自動縮細 20%，字細咗一圈，
             對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
         <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
@@ -263,6 +264,26 @@ export default function HomePage() {
           <Link href="/trust" className="inline-flex min-h-11 items-center font-medium text-accent-strong underline underline-offset-2">
             {locale === 'en' ? 'Check any of this' : '逐項查得到'}
           </Link>
+        </div>
+      </section>
+
+      <section aria-labelledby="social-title" className="bg-surface-raised px-4 py-8">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <h2 id="social-title" className="text-base font-medium text-ink">
+              {en ? 'Small study tips, outside the question bank' : '題庫以外，追蹤溫書貼士'}
+            </h2>
+            <p className="mt-1 text-sm text-ink-muted">
+              {en ? 'Follow DSE Level Up on Instagram or Threads for short study ideas.' : '喺 Instagram 或 Threads 追蹤 DSE Level Up，睇短小溫書貼士。'}
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-2">
+            {OFFICIAL_SOCIAL.map((social) => (
+              <a key={social.platform} href={social.href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-full border border-line px-4 py-2 text-sm text-accent-strong underline-offset-2 hover:underline">
+                {social.platform}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 

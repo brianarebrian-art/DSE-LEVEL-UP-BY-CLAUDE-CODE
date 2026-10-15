@@ -109,7 +109,7 @@ export default function TransparencyClient({
     },
     {
       icon: AlertTriangle,
-      title: en ? 'Known limits (we won’t overstate)' : '已知限制（唔會誇大）',
+      title: en ? 'Known limits (we won’t overstate)' : '已知限制（唔會��大）',
       points: en
         ? [
             'These are rewritten practice questions, not official papers. For real past papers, go to the HKEAA website.',
@@ -134,19 +134,32 @@ export default function TransparencyClient({
       {/* light-first 遷移漏網：實測 text-ink-muted 落 #FAFAF8 得 2.52:1。
           呢段係全頁引言，改用 --color-ink-soft（12.59）而非 ink-muted —— 佢係正文，
           唔係註腳。頁內嗰幾張 bg-surface-raised 深色卡本身對比正常（12–16），另行處理。 */}
-      <p className="text-ink-soft mb-10 leading-relaxed">
+      <p className="text-ink-soft mb-6 leading-relaxed">
         {en
           ? 'We’d rather be honest about how this is built than oversell it. Here’s exactly how the questions are made, how your data is handled, and where the limits are.'
           : '我哋寧願老老實實講清楚係點整出嚟，都唔想誇大。以下係題目點樣製作、你嘅數據點樣處理、同埋邊度有限制。'}
       </p>
+      <nav aria-label={en ? 'On this page' : '本頁目錄'} className="mb-10 -mx-1 flex gap-2 overflow-x-auto pb-1">
+        {[
+          { id: 'quality', label: en ? 'Quality' : '題目質素' },
+          { id: 'data', label: en ? 'Data' : '數據' },
+          { id: 'limits', label: en ? 'Limits' : '限制' },
+          { id: 'provenance', label: en ? 'Question bank' : '題庫' },
+        ].map((item) => (
+          <a key={item.id} href={`#${item.id}`} className="min-h-11 shrink-0 rounded-full border border-line bg-surface-raised px-4 py-2 text-sm text-ink-soft hover:border-accent/50 hover:text-accent-strong">
+            {item.label}
+          </a>
+        ))}
+      </nav>
 
-      <div className="space-y-8">
+      <div className="flex flex-col gap-8">
         {sections.map((s) => {
           const Icon = s.icon
           return (
             <section
+              id={s.title === (en ? 'How we keep the questions sound' : '我哋點樣確保題目質素') ? 'quality' : s.title === (en ? 'How we handle your data' : '我哋點樣處理你嘅數據') ? 'data' : 'limits'}
               key={s.title}
-              className="bg-surface-raised border border-line rounded-2xl p-6"
+              className="scroll-mt-20 rounded-2xl border border-line bg-surface-raised p-6"
             >
               <div className="flex items-center gap-2.5 mb-4">
                 <Icon size={20} className="text-gold shrink-0" />
@@ -228,7 +241,7 @@ export default function TransparencyClient({
               : `有 ${n(WITHDRAWN_COUNT)} 條題目已經收起，唔會再出現喺練習入面。收起唔係刪除：題目留喺題庫，每條都記低咗收起日期同原因。${stillOut === WITHDRAWN_COUNT ? '全部' : `其中 ${n(stillOut)} 條`}都係因為解析用位置講選項（例如「第二項」「最後一項」「第三個選項」）—— 選項每次都會洗牌，呢啲字眼會指錯，留住只會教錯。`}
           </p>
         )}
-        {/* 最近退回紀錄（審計 #7，創辦人 2026-10-04 回覆 A7-3 A）：只列日期、原因、科目及條數，不列題目。 */}
+        {/* 最近退回紀錄（審計 #7��創辦人 2026-10-04 回覆 A7-3 A）：只列日期、原因、科目及條數，不列題目。 */}
         {withdrawals.length > 0 && (
           <>
             <h3 className="text-base font-bold text-ink mb-2">{en ? 'Recent withdrawals' : '最近退回紀錄'}</h3>
