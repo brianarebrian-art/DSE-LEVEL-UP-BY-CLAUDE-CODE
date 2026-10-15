@@ -324,7 +324,7 @@ export default function PracticeSession({
     setRestOpen(false)
     if (pausedMs <= 0) return
     setStartTime((t) => t + pausedMs)
-    // 2026-09-09：原本仲要順延個 30 秒鎖嘅死線。鎖已剷除，休息只影響計時。
+    // 2026-09-09：原本���要順延個 30 秒鎖嘅死線。鎖已剷除，休息只影響計時。
   }, [])
 
   // UX audit B4 (b): the running clock is hidden unless the student turns it on (lib/timerPreference.ts).
@@ -617,12 +617,12 @@ export default function PracticeSession({
   // 驗完先放行。鎖已剷除，所以「下一題」就係直接落下一題。
   const proceed = next
 
-  // 「下一題」掣出唔出、Enter 可唔可以推進 —— 【同一個判斷】，下面 JSX 同鍵盤
+  // 「下一題」掣出唔出、Enter 可唔可以推進 —— ���同一個判斷】，下面 JSX 同鍵盤
   // handler 都用佢，唔准各自寫一份。2026-10-02 起答錯唔使先揀錯因（憲章 §7.2），
   // 答完任何一題即可推進。
   const canProceed = answerState !== null
 
-  // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
+  // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────��───────────────
   //
   // ⚠️ 呢個【唔係】無障礙合規修補。選項掣本身一直 Tab 得到、Enter 撳得到，
   //    WCAG 2.1.1 本來就過。呢度做嘅係效率：一節 10 題，純鍵盤操作由
@@ -1048,7 +1048,7 @@ export default function PracticeSession({
           </div>
 
           {/* 快捷鍵提示。一個冇人知嘅快捷鍵等於冇 —— 所以一定要寫出嚟。
-              `hidden sm:block`：觸控裝置冇實體鍵盤，講咗只係阻頭阻勢。
+              `hidden sm:block`：觸控裝置冇實���鍵盤，講咗只係阻頭阻勢。
               ⚠️ 用 `text-ink-muted`（淺色 5.93 / 暗色 5.25）而【唔用】`ink-faint`：
               globals.css:62 明文寫住 ink-faint 係 2.43，未達 AA，只限停用控件同裝飾。
               ⚠️ 亦【唔加】`aria-hidden`。第一版加咗，錯 —— 咁樣做嘅話
@@ -1173,17 +1173,20 @@ export default function PracticeSession({
 
                 {/* 2026-09-09：呢個掣原本會喺反思鎖期間變灰、出一個鎖頭同倒數秒數。
                     鎖已剷除，所以佢永遠撳得。 */}
-                <button
-                  onClick={proceed}
-                  className="w-full font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent"
-                >
+                <div className="sticky bottom-0 z-20 -mx-5 mt-2 bg-surface/95 px-5 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-sm sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:pb-0 sm:pt-0 sm:backdrop-blur-none">
+                  <button
+                    onClick={proceed}
+                    aria-label={totalQ === 1 ? tr('完成練習', 'Finish practice') : tr('前往下一題或查看結果', 'Go to the next question or view results')}
+                    className="min-h-12 w-full rounded-xl py-3 font-medium transition-all flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent"
+                  >
                   {totalQ === 1 ? (
                     // C6：1 題卷冇結果頁，亦唔應該喺啱啱答錯之後彈「🎉」。
                     tr('做完喇', 'Done')
                   ) : current + 1 >= totalQ ? t.practice.seeResult : (
-                    <>{t.practice.next} <ChevronRight size={18} /></>
+                    <>{t.practice.next} <ChevronRight size={18} />                  </>
                   )}
-                </button>
+                  </button>
+                </div>
 
                 {/* ── 第 3 週 · 引擎五：手動選擇下一題層級 ──────────────────────
                     規格書 §4.6 設計原則：始終保留手動選擇權。
