@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { ExternalLink, ShieldCheck } from 'lucide-react'
+import { ShieldCheck } from 'lucide-react'
+import ExternalLinkGate from '@/components/ExternalLinkGate'
 
 export const metadata: Metadata = {
   title: '守護者致謝名單 | DSE Level Up',
@@ -46,10 +47,13 @@ export default function CreditsPage() {
                     <span className="mt-1 inline-flex rounded-full border border-ml-sage/45 bg-ml-muted px-2.5 py-1 text-xs font-medium text-ml-sage">科目審核 / 技術協作者</span>
                   </div>
                 </div>
-                <a href="https://github.com/hugow0528" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 self-start rounded-lg border border-ml-line/55 px-3 text-sm text-ml-ink-soft transition-colors hover:border-ml-sage hover:text-ml-sage" aria-label="前往 HugoWong 的 GitHub">
-                  <ExternalLink size={15} aria-hidden="true" />
+                <ExternalLinkGate
+                  href="https://github.com/hugow0528"
+                  platform="GitHub"
+                  className="inline-flex min-h-11 items-center gap-2 self-start rounded-lg border border-ml-line/55 px-3 text-sm text-ml-ink-soft transition-colors hover:border-ml-sage hover:text-ml-sage"
+                >
                   github.com/hugow0528
-                </a>
+                </ExternalLinkGate>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2" aria-label="負責科目">
@@ -82,7 +86,7 @@ export default function CreditsPage() {
         </section>
 
         <footer className="mt-12 border-t border-ml-line/40 pt-7 text-xs leading-6 text-ml-ink-soft">
-          <p>免責聲明：本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局 (HKEAA) 官方試題。官方歷屆試題請前往 HKEAA 網站下載。等級預測僅供參考，最終成績以 HKEAA 公布為準。</p>
+          <p>免責聲明：本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局 (HKEAA) 官方試題。官方歷屆試題請前往 HKEAA 網站下載。本平台表現估算僅供參考，不代表 HKEAA 預測，最終成績以 HKEAA 公布為準。</p>
           <p className="mt-3 text-ml-ink-soft">© 2026 DSE Level Up · 非商業用途 · 保留所有權利</p>
         </footer>
       </div>

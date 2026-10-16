@@ -149,6 +149,9 @@ const jsonLd = {
 // FIX: [B8] viewport-fit=cover — 冇佢 iOS 嘅 env(safe-area-inset-*) 恆等於 0，
 // 左下／右下懸浮掣嘅 safe-area 位移唔會生效（iPhone Home Indicator 遮擋）
 export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
   viewportFit: 'cover',
 }
 
