@@ -1405,3 +1405,17 @@ html.font-easy .skeleton {
 @media (max-width: 767px) {
   body:has([data-a11y-trigger]) .a11y-fab { display: none; }
 }
+
+/* 不考之地：native details 展開時只使用 opacity/transform，不影響版面流；
+   reduced-motion 用戶保留完整內容並移除動畫。 */
+.off-syllabus-card-body {
+  animation: off-syllabus-reveal 180ms ease-out both;
+  transform-origin: top center;
+}
+@keyframes off-syllabus-reveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .off-syllabus-card-body { animation: none; }
+}

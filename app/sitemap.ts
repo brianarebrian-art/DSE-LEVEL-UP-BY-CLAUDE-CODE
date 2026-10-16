@@ -22,6 +22,7 @@ import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
 import { sourceLabEntries } from '@/data/history-sources'
 import { ARTICLE_DATES } from '@/lib/articleDates'
 import { BANK_UPDATED_AT } from '@/data/questions/bank-dates.generated'
+import { CATEGORIES } from '@/data/offSyllabus'
 
 // lastModified（創辦人回覆 61a，2026-10-09）。原本每條都寫 `new Date()`，即每次有人讀 sitemap
 // 就聲稱全站「今日更新」。搜尋器發現 lastmod 不可信便會整份忽略。現在只寫有真實紀錄的日期：
@@ -51,6 +52,7 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/reading', priority: 0.6, freq: 'monthly' },
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
   { path: '/sensei', priority: 0.7, freq: 'weekly' },
+  { path: '/off-syllabus', priority: 0.7, freq: 'weekly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },
   { path: '/relax', priority: 0.5, freq: 'monthly' },
   { path: '/relax/breathing', priority: 0.4, freq: 'yearly' },
@@ -88,6 +90,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 脫節時會產生一批 404。
     ...sourceLabEntries.map((e) => ({
       url: `${DOMAIN}/source-lab/${e.id}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+    ...CATEGORIES.map((c) => ({
+      url: `${DOMAIN}/off-syllabus/${c.slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),

@@ -27,6 +27,18 @@ export async function generateMetadata({
     // 每科自報 canonical，令 25 個科目頁各自獨立收錄（此前繼承根 layout 的
     // `canonical: '/'`，等同全部指向首頁）。
     alternates: { canonical: `/subjects/${subject}` },
+    openGraph: {
+      type: 'article',
+      url: `${SITE_ORIGIN}/subjects/${subject}`,
+      title: `${meta.name}｜DSE 練習題 | DSE Level Up`,
+      description: subjectMetaDescription(meta),
+      siteName: 'DSE Level Up',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${meta.name}｜DSE 練習題`,
+      description: subjectMetaDescription(meta),
+    },
   }
 }
 

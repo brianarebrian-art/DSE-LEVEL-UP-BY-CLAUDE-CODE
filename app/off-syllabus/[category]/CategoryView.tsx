@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 import { useLocale, useT } from '@/lib/i18n'
 import { cardNo, type OffSyllabusCard } from '@/data/offSyllabus'
+import OffSyllabusShareButton from '@/components/OffSyllabusShareButton'
+import AdSlot from '@/components/AdSlot'
 
 // A category of topic cards. Each card is a native <details>: closed it shows the
 // number, title and one-line hook, so the page scans like a list; open it shows the
@@ -47,7 +49,7 @@ export default function CategoryView({
         <ul className="mt-6 grid gap-3">
           {cards.map((c) => (
             <li key={c.id}>
-              <details className="group rounded-2xl border border-line bg-surface-raised">
+              <details id={`card-${c.id}`} className="group off-syllabus-card rounded-2xl border border-line bg-surface-raised shadow-sm transition-[border-color,box-shadow] duration-200 open:border-accent/35 open:shadow-md">
                 <summary className="flex min-h-11 cursor-pointer list-none items-start gap-3 rounded-2xl p-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent [&::-webkit-details-marker]:hidden">
                   <span className="mt-0.5 shrink-0 text-xs text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>
                     {cardNo(c.id)}
@@ -59,7 +61,7 @@ export default function CategoryView({
                   <ChevronDown size={18} className="mt-0.5 shrink-0 text-ink-muted transition-transform group-open:rotate-180" aria-hidden />
                 </summary>
 
-                <div className="space-y-5 border-t border-line px-4 pb-5 pt-4 text-sm leading-relaxed">
+                <div className="off-syllabus-card-body space-y-5 border-t border-line px-4 pb-5 pt-4 text-sm leading-relaxed">
                   <p className="text-xs text-ink-muted">
                     {[...c.tags, t.nav.offSyllabus].map((tag) => `#${tag}`).join(' ')}
                   </p>
@@ -89,11 +91,13 @@ export default function CategoryView({
                     <h2 className="font-medium text-ink">💬 {o.chat}</h2>
                     <p className="mt-1">{c.chat}</p>
                   </section>
+                  <OffSyllabusShareButton card={c} />
                 </div>
               </details>
             </li>
           ))}
         </ul>
+        <AdSlot label={`off-syllabus-${titleEn}`} />
       </div>
     </div>
   )

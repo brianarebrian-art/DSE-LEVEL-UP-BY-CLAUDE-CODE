@@ -1,5 +1,6 @@
 import OffSyllabusView from './OffSyllabusView'
 import { CATEGORIES } from '@/data/offSyllabus'
+import { SITE_ORIGIN } from '@/lib/site'
 
 // 不考之地 —— content outside any DSE subject, learnt just for fun.
 //
@@ -14,6 +15,19 @@ import { CATEGORIES } from '@/data/offSyllabus'
 export const metadata = {
   title: '不考之地 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
   description: '不屬任何 DSE 科目、亦不會在考試出現的內容，純粹為樂趣而學。', // i18n-exempt: 靜態 SEO meta description
+  alternates: { canonical: '/off-syllabus' },
+  openGraph: {
+    type: 'website',
+    url: `${SITE_ORIGIN}/off-syllabus`,
+    title: '不考之地｜純粹為樂趣而學 | DSE Level Up',
+    description: '200 張不考冷知識卡，探索廣東話、香港、科技、生活與未來工作。',
+    siteName: 'DSE Level Up',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '不考之地｜DSE Level Up',
+    description: '200 張不考冷知識卡，純粹為樂趣而學。',
+  },
 }
 
 export default function OffSyllabusPage() {

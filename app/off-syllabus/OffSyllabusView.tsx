@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight, Compass } from 'lucide-react'
 import { useLocale, useT } from '@/lib/i18n'
+import AdSlot from '@/components/AdSlot'
 
 export interface CategorySummary {
   slug: string
@@ -72,6 +73,7 @@ export default function OffSyllabusView({ categories }: { categories: CategorySu
             ))}
           </ul>
         </section>
+        <AdSlot label="off-syllabus-home" />
       </div>
     </div>
   )
