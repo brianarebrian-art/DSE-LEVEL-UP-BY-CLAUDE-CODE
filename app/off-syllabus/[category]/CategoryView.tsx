@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 import { useLocale, useT } from '@/lib/i18n'
+import AdSlot from '@/components/AdSlot'
+import OffSyllabusShare from '@/components/OffSyllabusShare'
 import { cardNo, type OffSyllabusCard } from '@/data/offSyllabus'
 
 // A category of topic cards. Each card is a native <details>: closed it shows the
@@ -59,7 +61,7 @@ export default function CategoryView({
                   <ChevronDown size={18} className="mt-0.5 shrink-0 text-ink-muted transition-transform group-open:rotate-180" aria-hidden />
                 </summary>
 
-                <div className="space-y-5 border-t border-line px-4 pb-5 pt-4 text-sm leading-relaxed">
+                <div className="flex flex-col gap-5 border-t border-line px-4 pb-5 pt-4 text-sm leading-relaxed">
                   <p className="text-xs text-ink-muted">
                     {[...c.tags, t.nav.offSyllabus].map((tag) => `#${tag}`).join(' ')}
                   </p>
@@ -85,6 +87,10 @@ export default function CategoryView({
                     <p className="mt-1">{c.trivia}</p>
                   </section>
 
+                  <div className="flex flex-wrap items-center gap-2">
+                    <OffSyllabusShare title={c.title} text={`${c.title}：${c.hook}`} />
+                  </div>
+
                   <section className="rounded-xl bg-surface-sunken p-3">
                     <h2 className="font-medium text-ink">💬 {o.chat}</h2>
                     <p className="mt-1">{c.chat}</p>
@@ -94,6 +100,7 @@ export default function CategoryView({
             </li>
           ))}
         </ul>
+        <AdSlot className="mt-8" />
       </div>
     </div>
   )

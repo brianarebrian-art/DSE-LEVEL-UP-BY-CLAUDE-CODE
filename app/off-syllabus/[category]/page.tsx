@@ -25,5 +25,26 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   const { category } = await params
   const c = categoryBySlug(category)
   if (!c) notFound()
-  return <CategoryView emoji={c.emoji} title={c.title} titleEn={c.titleEn} cards={c.cards} />
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'LearningResource',
+    name: `${c.title}｜不考之地`,
+    description: `不考之地話題卡：${c.title}。不計分、不考試，純粹為樂趣而學。`,
+    educationalLevel: 'Secondary education',
+    isAccessibleForFree: true,
+    inLanguage: 'zh-HK',
+    learningResourceType: 'Informational resource',
+    hasPart: c.cards.map((card) => ({
+      '@type': 'LearningResource',
+      name: card.title,
+      description: card.hook,
+      isAccessibleForFree: true,
+    })),
+  }
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <CategoryView emoji={c.emoji} title={c.title} titleEn={c.titleEn} cards={c.cards} />
+    </>
+  )
 }

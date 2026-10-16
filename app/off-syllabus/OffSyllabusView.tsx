@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { ArrowRight, Compass } from 'lucide-react'
 import { useLocale, useT } from '@/lib/i18n'
+import AdSlot from '@/components/AdSlot'
 
 export interface CategorySummary {
   slug: string
@@ -34,6 +35,7 @@ export default function OffSyllabusView({ categories }: { categories: CategorySu
         </div>
         <p className="mt-1 font-serif text-lg text-ink-soft">{o.tagline}</p>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">{o.lead}</p>
+        <AdSlot className="mt-6" />
 
         <ul className="mt-8 grid gap-4">
           {items.map((it) => (
