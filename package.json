@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
+    "ai": "^7.0.143",
     "better-auth": "^1.6.23",
     "html2canvas": "^1.4.1",
     "katex": "^0.17.0",
