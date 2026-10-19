@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocale } from '@/lib/i18n'
 import { CATEGORIES, type CategoryKey } from '@/lib/questionReport'
+import { trackRetentionEvent } from '@/lib/retentionEvents'
 
 // 題目勘誤入口 —— 學生見到題目有問題，喺當場報得返。
 //
@@ -131,6 +132,7 @@ export default function ReportQuestionButton({
       })
       const data = (await res.json().catch(() => null)) as { ok?: boolean } | null
       setSend(res.ok && data?.ok === true ? 'sent' : 'failed')
+      if (res.ok && data?.ok === true) trackRetentionEvent('question_report_submitted')
     } catch {
       setSend('failed')
     }
@@ -157,7 +159,7 @@ export default function ReportQuestionButton({
       <button
         ref={triggerRef}
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => { setOpen(true); trackRetentionEvent('question_report_opened') }}
         className={triggerClass}
       >
         {en ? 'Something wrong with this question?' : '呢條題有問題？話我哋知'}
