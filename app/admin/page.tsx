@@ -213,6 +213,11 @@ export default async function AdminPage() {
           <p className="mt-1 text-sm text-ink-muted">
             {admin.name}（{admin.email}）{/* i18n-exempt: admin */}
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a href="/admin/quality" className="rounded-lg border border-accent/40 bg-accent/5 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/10">
+              開啟逐題質素覆核工作台
+            </a>
+          </div>
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatCard label="全站 Live 題數" /* i18n-exempt: admin */ value={liveTotal.toLocaleString()} className="text-accent" />
             <StatCard label="人手簽名題數" /* i18n-exempt: admin */ value={reviewedTotal.toLocaleString()} className="text-violet" />
