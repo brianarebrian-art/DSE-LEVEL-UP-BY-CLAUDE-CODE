@@ -3,6 +3,7 @@ import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { vapidFromEnv } from '@/lib/push/vapid'
 import { safeLog } from '@/lib/safeLog'
+import { requireSameOrigin } from '@/lib/api/origin'
 
 // 考試日推送訂閱／退訂。
 //
@@ -31,6 +32,8 @@ const str = (v: unknown, max: number) =>
   typeof v === 'string' && v.length > 0 && v.length <= max ? v : null
 
 export async function POST(req: Request) {
+  const originError = requireSameOrigin(req)
+  if (originError) return originError
   // 冇設 VAPID 金鑰 = 成個功能未開。回 503 而唔係 500 ——
   // 呢個係「而家冇呢個服務」，唔係「壞咗」。
   if (!vapidFromEnv()) {
@@ -66,6 +69,8 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const originError = requireSameOrigin(req)
+  if (originError) return originError
   const read = await readJsonLimited<Record<string, unknown>>(req, BODY_LIMIT.small)
   if (!read.ok) return NextResponse.json({ error: read.status === 413 ? 'body too large' : 'bad-json' }, { status: read.status })
   const body = (read.value ?? {}) as Record<string, unknown>

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { requireSameOrigin } from '@/lib/api/origin'
 
 // ════════════════════════════════════════════════════════════════════════════
 // 「今日開過 app」—— 每個用戶每日最多一行。
@@ -35,7 +36,9 @@ function todayUtc(): string {
   return new Date().toISOString().slice(0, 10)
 }
 
-export async function POST() {
+export async function POST(request: Request) {
+  const originError = requireSameOrigin(request)
+  if (originError) return originError
   const userId = await getSyncUserId()
   // 未登入＝唔記錄。回 204 而唔係 401 —— 呢個端點對客戶端嚟講係「盡力而為」，
   // 未登入唔係錯誤，而一個 401 會喺 console 嗌，令學生見到紅色。

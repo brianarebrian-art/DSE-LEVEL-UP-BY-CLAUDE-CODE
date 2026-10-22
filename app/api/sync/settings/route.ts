@@ -3,6 +3,7 @@ import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { requireSameOrigin } from '@/lib/api/origin'
 
 // v8.0 CLOUD-FIRST · API2 — SEN 偏好設定跨裝置同步。
 //
@@ -84,7 +85,9 @@ export async function GET() {
 }
 
 // DELETE: the student turned settings sync off (UX audit D1): remove this account's row.
-export async function DELETE() {
+export async function DELETE(request: Request) {
+  const originError = requireSameOrigin(request)
+  if (originError) return originError
   const userId = await getSyncUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
   try {
@@ -100,6 +103,8 @@ export async function DELETE() {
 
 // POST — upsert 設定。Body: { settings: {...} }
 export async function POST(request: Request) {
+  const originError = requireSameOrigin(request)
+  if (originError) return originError
   const userId = await getSyncUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
 

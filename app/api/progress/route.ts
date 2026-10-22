@@ -4,6 +4,7 @@ import { CLOUD_PROGRESS_KEYS } from '@/lib/cloudKeys'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { requireSameOrigin } from '@/lib/api/origin'
 
 // Per-user, request-time only — never cached or prerendered.
 export const dynamic = 'force-dynamic'
@@ -44,6 +45,8 @@ export async function GET() {
 
 // POST — upsert this user's progress snapshot. Body: { progress: <snapshot object> }.
 export async function POST(request: Request) {
+  const originError = requireSameOrigin(request)
+  if (originError) return originError
   const userId = await currentUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
 

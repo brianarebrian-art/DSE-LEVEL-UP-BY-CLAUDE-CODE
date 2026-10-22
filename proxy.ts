@@ -37,7 +37,7 @@ function applySecurityHeaders(response: NextResponse) {
 }
 
 function rateLimit(request: NextRequest) {
-  const ip = request.ip || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon'
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon'
   // 嚴格桶只覆蓋暴力破解面 —— 邊啲路徑、點解 session 唔包，見 lib/rateLimit.ts
   // isAuthSensitivePath 嘅註釋。
   const { pathname } = request.nextUrl

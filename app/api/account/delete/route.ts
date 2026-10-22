@@ -6,6 +6,7 @@ import { safeLog } from '@/lib/safeLog'
 import { USER_SCOPED_TABLES, BETTER_AUTH_TABLES } from '@/lib/privacy/userData'
 import { betterAuthEnabled, betterAuthServer } from '@/lib/auth/better-auth'
 import { headers } from 'next/headers'
+import { requireSameOrigin } from '@/lib/api/origin'
 
 // PDPO erasure right — the signed-in user deletes their OWN server-side data. Scoped
 // entirely to the caller's id (never another user's). Server-side data = cloud progress
@@ -14,6 +15,8 @@ import { headers } from 'next/headers'
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
+  const originError = requireSameOrigin(req)
+  if (originError) return originError
   const userId = await getSyncUserId()
   if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
 
