@@ -102,7 +102,9 @@ test('進度點答錯用金色，唔係紅點 —— 一行紅點就係一行判
 // 答錯直接出解析。仍然唔可以用「錯」字或紅色交叉開頭。
 test('答錯直接出解析，冇「停一停」卡，亦唔以「錯」字開頭', () => {
   assert.ok(!/停一停，諗一諗/.test(PRACTICE))
-  assert.ok(/💡 發現盲點/.test(PRACTICE), '答錯嘅解析卡標題唔見咗')
+  assert.ok(/未揀中/.test(PRACTICE), '答錯嘅解析卡標題唔見咗')
+  assert.ok(!/💡 發現盲點/.test(PRACTICE))
+  assert.ok(!/呢題失手/.test(PRACTICE))
   assert.ok(!/tr\('錯咗/.test(PRACTICE))
 })
 

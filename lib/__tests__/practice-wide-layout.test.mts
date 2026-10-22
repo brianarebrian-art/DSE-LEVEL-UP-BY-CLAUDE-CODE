@@ -27,7 +27,7 @@ test('the question card and the feedback share one two-column grid from lg up', 
   assert.ok(afterGridAt > feedbackAt)
   const closeAt = code.lastIndexOf('</div>', afterGridAt)
   assert.ok(feedbackAt < closeAt)
-  assert.match(code, /<div className="max-w-2xl mx-auto lg:max-w-6xl desk:max-w-\[1296px\]">/)
+  assert.match(code, /<div className="practice-session-column max-w-2xl mx-auto lg:max-w-6xl desk:max-w-\[1296px\]">/)
 })
 
 test('below lg nothing changes: every layout class on the wrapper is lg- or 1440-prefixed', () => {

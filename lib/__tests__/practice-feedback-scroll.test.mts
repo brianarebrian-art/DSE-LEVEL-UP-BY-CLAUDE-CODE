@@ -45,7 +45,8 @@ test('the session scrolls to the feedback after an answer, and respects reduced 
   assert.match(fx, /prefers-reduced-motion: reduce/)
   assert.match(fx, /classList\.contains\('no-motion'\)/)
   // R2-11: the region is focusable (tabIndex -1) so lost focus can land there.
-  assert.match(session, /<div ref=\{feedbackRef\} tabIndex=\{-1\} className="animate-slide-up focus:outline-none">/)
+  assert.match(session, /<div ref=\{feedbackRef\} tabIndex=\{-1\} className="animate-slide-up practice-feedback">/)
+  assert.doesNotMatch(session, /outline-none/)
 })
 
 test('the result is announced from a live region that exists before the answer', () => {
