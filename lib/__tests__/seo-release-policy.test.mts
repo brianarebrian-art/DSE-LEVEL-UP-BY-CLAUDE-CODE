@@ -71,6 +71,26 @@ test('sitemap excludes every noindex route and has no duplicate canonical URLs',
     assert.equal(shouldNoIndex(new URL(url).pathname), false, url)
   }
   for (const path of EDITORIAL_DRAFT_ROUTES) assert.ok(!urls.includes(SITE_ORIGIN + path))
+  // 任務外殼唔應出現喺 sitemap 輸出，亦唔應誤寫入 STATIC_ROUTES 清單。
+  assert.ok(!urls.includes(`${SITE_ORIGIN}/practice`))
+})
+
+test('STATIC_ROUTES must not list noindex paths (avoids maintainer traps)', async () => {
+  const { readFileSync } = await import('node:fs')
+  const { join } = await import('node:path')
+  const { fileURLToPath } = await import('node:url')
+  const root = fileURLToPath(new URL('../..', import.meta.url))
+  const src = readFileSync(join(root, 'app/sitemap.ts'), 'utf8')
+  const block = src.slice(src.indexOf('STATIC_ROUTES'), src.indexOf('export default'))
+  const listed = [...block.matchAll(/path:\s*'([^']*)'/g)].map((m) => m[1] || '/')
+  for (const path of listed) {
+    const normalised = path || '/'
+    assert.equal(
+      shouldNoIndex(normalised),
+      false,
+      `STATIC_ROUTES lists noindex path ${normalised} — remove it; filter alone is not enough documentation`,
+    )
+  }
 })
 
 test('robots permits reading page noindex, CSS, JS and images', () => {

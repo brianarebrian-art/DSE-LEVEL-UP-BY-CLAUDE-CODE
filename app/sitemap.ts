@@ -15,11 +15,13 @@ import { getActiveSubjects } from '@/data/subjects'
 // ③ 舊「影子溫書室」（`/wall`）已於 2026-08-21 整個移除 —— 見 docs/DECISION-no-interaction.md。
 //    本站【永久】唔提供任何用戶對用戶互動，所以呢度亦唔會再出現社群類路由。
 // ④ `/admin`、`/sign-in`、`/sign-up`：權限／登入頁。搜尋可見性由 metadata
-    //    robots noindex 控制（lib/seoPolicy.ts），不是 robots.txt Disallow ——
-    //    Disallow ≠ 登入閘，亦唔代替授權。robots.ts 只 Disallow `/api/`。
+//    robots noindex 控制（lib/seoPolicy.ts），不是 robots.txt Disallow ——
+//    Disallow ≠ 登入閘，亦唔代替授權。robots.ts 只 Disallow `/api/`。
+// ⑤ 任務外殼（`/practice`、`/relax`、`/paper-warrior`、`/answer-sheet`、`/waiting`、
+//    `/capsule`、`/sensei`、`/ai/*`）同編輯草稿：`shouldNoIndex` —— **唔寫入**
+//    STATIC_ROUTES，避免清單同政策打架（過濾 alone 唔夠做文件）。
 //
 // 網域：www.dselevelup.com（2026-10-09 創辦人回覆 58a），由 lib/site.ts 匯入。
-// 2026-08-14 收攏為單一來源，理由見 lib/site.ts。
 import { SITE_ORIGIN as DOMAIN } from '@/lib/site'
 import { sourceLabEntries } from '@/data/history-sources'
 import { ARTICLE_DATES } from '@/lib/articleDates'
@@ -28,58 +30,34 @@ import { CATEGORIES } from '@/data/offSyllabus'
 import { shouldNoIndex } from '@/lib/seoPolicy'
 import { SCENE_IDS } from '@/data/cantonese'
 
-// lastModified（創辦人回覆 61a，2026-10-09）。原本每條都寫 `new Date()`，即每次有人讀 sitemap
-// 就聲稱全站「今日更新」。搜尋器發現 lastmod 不可信便會整份忽略。現在只寫有真實紀錄的日期：
-// 文章頁用 lib/articleDates.ts，科目頁用題庫最後改動日期（bank-dates.generated.ts）；
-// 其餘頁面沒有可靠日期，不寫。
 const lastModifiedOf = (path: string): { lastModified?: string } => {
   const d = ARTICLE_DATES[path]
   return d ? { lastModified: d.modified || d.published } : {}
 }
 
-// 公開靜態頁。順序即優先級由高至低。
+// 公開靜態頁。只列 indexable 路徑；順序即優先級由高至低。
 const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
   { path: '', priority: 1.0, freq: 'weekly' },
-  // SEO learning cluster: only include routes that have server-rendered, useful content.
   { path: '/dse-maths', priority: 0.9, freq: 'weekly' },
-  { path: '/dse-maths/quadratic-equations', priority: 0.85, freq: 'monthly' },
   { path: '/dse-english', priority: 0.9, freq: 'weekly' },
-  { path: '/dse-english/writing-format', priority: 0.85, freq: 'monthly' },
-  { path: '/ai/practice-generator', priority: 0.8, freq: 'monthly' },
-  { path: '/ai/study-plan', priority: 0.75, freq: 'monthly' },
-  { path: '/ai/past-paper-explainer', priority: 0.75, freq: 'monthly' },
   { path: '/subjects', priority: 0.9, freq: 'weekly' },
-  { path: '/practice', priority: 0.9, freq: 'weekly' },
   { path: '/notes', priority: 0.8, freq: 'weekly' },
   { path: '/methodology', priority: 0.8, freq: 'monthly' },
-  { path: '/paper-warrior', priority: 0.7, freq: 'monthly' },
-  { path: '/answer-sheet', priority: 0.6, freq: 'monthly' },
   { path: '/about', priority: 0.6, freq: 'monthly' },
   { path: '/transparency', priority: 0.6, freq: 'monthly' },
   { path: '/privacy', priority: 0.6, freq: 'monthly' },
   { path: '/community-safety', priority: 0.6, freq: 'monthly' },
-  { path: '/capsule', priority: 0.5, freq: 'monthly' },
   { path: '/prediction-method', priority: 0.6, freq: 'monthly' },
   { path: '/trust', priority: 0.7, freq: 'monthly' },
   { path: '/reading', priority: 0.6, freq: 'monthly' },
   { path: '/source-lab', priority: 0.6, freq: 'monthly' },
-  { path: '/sensei', priority: 0.7, freq: 'weekly' },
   { path: '/off-syllabus', priority: 0.7, freq: 'weekly' },
   { path: '/writing', priority: 0.6, freq: 'monthly' },
-  { path: '/relax', priority: 0.5, freq: 'monthly' },
-  { path: '/relax/breathing', priority: 0.4, freq: 'yearly' },
-  { path: '/relax/grounding', priority: 0.4, freq: 'yearly' },
-  { path: '/relax/solo', priority: 0.4, freq: 'yearly' },
-  { path: '/relax/group', priority: 0.4, freq: 'yearly' },
-  { path: '/waiting', priority: 0.4, freq: 'yearly' },
   { path: '/cantonese', priority: 0.4, freq: 'monthly' },
   { path: '/cantonese/learn', priority: 0.4, freq: 'monthly' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // 科目 id 一律由 `getActiveSubjects()` 即時讀取，不另行硬編清單 ——
-  // 硬編的 slug 與真實 id 脫節時會產生一批 404（例如 mathematics／math、
-  // citizenship-and-social-development／csd）。衍生則永遠對得上。
   const subjectIds = getActiveSubjects().map((s) => s.id)
 
   return [
@@ -100,8 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     })),
-    // 史料判讀室條目。同科目頁一樣由資料衍生，唔硬編 —— 硬編清單同真實 id
-    // 脫節時會產生一批 404。
     ...sourceLabEntries.map((e) => ({
       url: `${DOMAIN}/source-lab/${e.id}`,
       changeFrequency: 'monthly' as const,
