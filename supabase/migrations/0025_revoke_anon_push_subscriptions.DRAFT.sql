@@ -1,0 +1,18 @@
+-- 0025 DRAFT —— revoke anon/authenticated grants on push_subscriptions
+--
+-- STATUS: local draft only. Do NOT apply to production without founder approval.
+-- Rollback: re-grant would need a deliberate reverse migration; prefer leave revoked.
+--
+-- Evidence (code review, not live DB probe this session):
+--   supabase/migrations/0012_push_subscriptions.sql enables RLS with zero policies
+--   but does not explicitly REVOKE table privileges from anon/authenticated.
+--   Prior audits (0017/0018/0021) showed Supabase DEFAULT PRIVILEGES can leave
+--   grants in place; RLS alone is one layer. Defence in depth = grant + RLS.
+--
+-- Impact if applied: none for current app paths (all access via service_role in
+-- app/api/push/subscribe and app/api/cron/exam-day-nudge).
+-- Residual: remote grant state is UNVERIFIED until someone runs:
+--   select grantee, privilege_type from information_schema.role_table_grants
+--   where table_schema='public' and table_name='push_subscriptions';
+
+-- revoke all on table public.push_subscriptions from anon, authenticated;

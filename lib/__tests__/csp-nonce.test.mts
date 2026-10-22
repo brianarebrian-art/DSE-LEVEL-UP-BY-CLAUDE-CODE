@@ -32,8 +32,13 @@ test('proxy sets the policy on pages and overwrites any client-sent nonce', () =
   assert.match(proxy, /headers\.set\('content-security-policy', csp\)/)
   assert.match(proxy, /response\.headers\.set\('Content-Security-Policy', csp\)/)
   assert.match(proxy, /process\.env\.NODE_ENV === 'production' \? createNonce\(\) : null/)
-  // the matcher must not skip pages, only build assets and files with an extension
-  assert.match(proxy, /matcher: \['\/\(\(\?!_next\/static\|_next\/image\|\.\*\\\\\.\[a-zA-Z0-9\]\+\$\)\.\*\)'\]/)
+  // Matcher must not skip HTML pages. Allowed exclusions: Next build assets, the
+  // Sentry tunnel path (`monitoring`), and any URL that ends in a file extension.
+  assert.match(
+    proxy,
+    /matcher:\s*\[[\s\S]*_next\/static[\s\S]*_next\/image[\s\S]*monitoring[\s\S]*\.\*\\\\\.\[a-zA-Z0-9\]\+\$[\s\S]*\]/,
+  )
+  assert.doesNotMatch(proxy, /matcher:[\s\S]*admin/, 'matcher must not blanket-skip app routes like /admin')
 })
 
 test('next.config no longer sends a second, static CSP', () => {

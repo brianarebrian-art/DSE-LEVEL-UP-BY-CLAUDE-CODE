@@ -50,8 +50,11 @@
  * 2026-10-08.v1 —— 新增「數練習次數」：每日每科練習開始及完成的總數（不記帳戶、IP、裝置、
  * 時間、題目或答案；migration 0023）。創辦人 2026-10-08 回覆 40a、42a（按現有規則 bump，
  * 登入學生會再見一次同意視窗）、43a（不數打開解析）。屬新增採集類別，所以 bump。
+ *
+ * 2026-10-22.v1 —— 新增 Sentry 錯誤監察披露（非分析、不開 Session Replay、預設不送姓名／電郵）。
+ * 屬新增第三方錯誤遙測類別，所以 bump；登入學生會再見一次同意視窗。
  */
-export const POLICY_VERSION = '2026-10-08.v1'
+export const POLICY_VERSION = '2026-10-22.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

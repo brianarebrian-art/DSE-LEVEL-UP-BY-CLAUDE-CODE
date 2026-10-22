@@ -12,8 +12,9 @@ import { betterAuthEnabled } from '@/lib/auth/better-auth'
 // 所以呢版嘅事實全部喺 2026-08-20 對住實物核實過，唔靠記憶亦唔靠任何文件聲稱：
 //   • localStorage key —— 掃全 repo 字面（37 個），對住 CLOUD_* 常數分「上雲／純本機」
 //   • Supabase 實表 —— 直接 query information_schema（7 張表）
-//   • 分析／追蹤 SDK —— 掃 gtag/GA/GTM/PostHog/Mixpanel/Sentry/Hotjar/fbq/Plausible
-//     /Umami/@vercel/analytics：【零命中】
+//   • 分析／追蹤 SDK —— 掃 gtag/GA/GTM/PostHog/Mixpanel/Hotjar/fbq/Plausible
+//     /Umami/@vercel/analytics：除 Vercel Web Analytics 外零命中；Sentry 僅作錯誤監察
+//     （見 PrivacyClient「啲資料去咗邊」），Session Replay 預設關閉
 //   • email 持久化 —— 全 repo 冇任何路徑將學生 email 寫入資料庫
 //   • `profiles` 表 —— 零讀寫路徑（純遺留，6 行）
 //

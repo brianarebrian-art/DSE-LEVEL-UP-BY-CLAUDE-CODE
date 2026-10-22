@@ -32,28 +32,10 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-10-08.v1',
-  // 2026-09-11 基準。上一版 b2e44e871df73cd2（2026-09-09.v1）。
-  // 今次改嘅唔係錯字，係新增咗一個【採集類別】——「你開過 app 嘅日期」
-  // （migration 0018 重建嘅 user_sessions），同時明文寫低未登入唔記錄。
-  // 所以 version 由 v1 bump 到 v2：v1 撳過同意嘅學生從來冇見過嗰句。
-  // 2026-09-26 (2026-09-26.v1): settings sync became opt-in for new accounts (UX audit D1),
-  // and turning it off deletes the cloud copy. Previous: 0eb32705b900395a (2026-09-11.v2).
-  // 2026-09-26 (2026-09-26.v2): elective choices are now uploaded with progress
-  // (a new category, Yuna 2026-09-26). Previous: b19716aab0b0c327 (2026-09-26.v1).
-  // 2026-10-02 (2026-10-02.v1): the mood log is no longer recorded, so it was removed from
-  // the policy (founder decision, charter §7.2.1). Previous: 7ee5a11e9b8877a4 (2026-09-26.v2).
-  // 2026-10-02 (2026-10-02.v2): Vercel Web Analytics added (aggregate page views, no cookies).
-  // Previous: 897cc5a7d5330031 (2026-10-02.v1).
-  // 2026-10-04 (2026-10-04.v1): question reports (question id, category, language, time; no
-  // account, IP or device), audit #7, founders' reply "a". Previous: 28b23cb91eddf1c9 (2026-10-02.v2).
-  // 2026-10-04 (2026-10-04.v2): every sentence re-checked against code and database (audit #8,
-  // founders' reply 1a). Previous: 47744c8ab9be3263 (2026-10-04.v1, deployed).
-  // Same unshipped version, amended: wrong answers logged without a cause (reply 7a).
-  // and the post-session questions section (reply 5a).
-  // 2026-10-08 (2026-10-08.v1): anonymous practice counts, daily totals per subject (founders'
-  // replies 40a, 42a, 43a). Previous: ae88bb538181ea57 (2026-10-04.v2).
-  hash: 'd6efa727616740a0',
+  version: '2026-10-22.v1',
+  // 2026-10-22 (2026-10-22.v1): Sentry error monitoring disclosed on /privacy; Session Replay
+  // remains off. Previous: d6efa727616740a0 (2026-10-08.v1).
+  hash: 'eb50525759bb586e',
 }
 
 function policyFingerprint(): string {

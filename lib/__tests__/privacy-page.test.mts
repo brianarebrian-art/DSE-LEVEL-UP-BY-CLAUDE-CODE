@@ -104,14 +104,35 @@ test('只有 Vercel Web Analytics（同源 script），私隱頁有寫明；其�
 })
 
 test('頁面聲稱「除 Vercel Web Analytics 外冇其他分析／追蹤 SDK」—— 掃全站確認', () => {
+  // Sentry is allowed only as disclosed error monitoring (no Session Replay).
+  // Other analytics / ad / product-analytics SDKs remain forbidden.
   const TRACKERS =
-    /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|@sentry|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics|speed-insights/i
+    /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics|speed-insights/i
   const hits = sources.filter(
     (f) => !PRIVACY_OWN_FILES.has(f) && TRACKERS.test(stripComments(fs.readFileSync(f, 'utf8'))),
   )
   assert.deepEqual(hits, [], `裝咗追蹤／分析 SDK，但 /privacy 寫住「一個都冇」：\n  ${hits.join('\n  ')}`)
   const pkg = fs.readFileSync('package.json', 'utf8')
   assert.doesNotMatch(pkg, TRACKERS, 'package.json 出現追蹤／分析套件，但 /privacy 寫住「一個都冇」')
+
+  const usesSentry =
+    /@sentry\/nextjs/.test(pkg) ||
+    sources.some((f) => /@sentry\//.test(stripComments(fs.readFileSync(f, 'utf8'))))
+  if (usesSentry) {
+    const page = fs.readFileSync(PAGE, 'utf8')
+    assert.match(page, /Sentry/, '裝咗 Sentry 就必須喺 /privacy 明文交代')
+    assert.match(page, /Session Replay/, '必須講明有冇開畫面錄影')
+    assert.match(
+      page,
+      /唔開 Session Replay|do not turn on Session Replay/,
+      '現況係關閉 Replay —— 文案要同代碼一致',
+    )
+    assert.doesNotMatch(
+      stripComments(fs.readFileSync('instrumentation-client.ts', 'utf8')),
+      /replayIntegration/,
+      'instrumentation-client 唔可以靜靜哋再開 Session Replay',
+    )
+  }
 })
 
 test('頁面聲稱「唔會將學生 email 寫入資料庫」—— 掃寫入路徑確認', () => {
