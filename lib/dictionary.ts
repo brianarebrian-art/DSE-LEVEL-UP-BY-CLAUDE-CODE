@@ -232,11 +232,11 @@ const zh = {
     trust3: '✓ 無廣告',
     ctaStart: '立即開始練習',
     ctaMethod: '了解方法論',
-    demoTitle: '睇下係點樣運作',
+    demoTitle: '點樣運作',
     // ⚠️ 唔可以講「真題」／「官方試題」。憲章 §1.4 零版權侵犯：本站所有題目
     // 都係原創平行改寫，一條都唔係 HKEAA 原文。每頁 footer 同時寫住「並非官方試題」——
     // 首頁講反話，係對外聲稱同免責聲明自己打架。迴歸鎖：scripts/claims-guard.mjs。
-    demoSub: '一個 DSE 常見題型 → 拆解核心邏輯 → 原創改寫練習題',
+    demoSub: '一個常見題型 → 拆核心邏輯 → 原創改寫再練',
     step1Label: '常見題型',
     demoArchetype: '二次方程 · 核心題型',
     demoSolve: '解方程 ',
@@ -247,11 +247,11 @@ const zh = {
     step2Label: '核心邏輯',
     step2Framework: '框架：轉化思維',
     step2Desc:
-      '考核「因式分解」或「求根公式」的應用能力。數字不重要——能否辨認方程形式、選擇正確方法才是考點。換咩數字都係考呢樣嘢。',
+      '考嘅係辨認方程形式、揀對方法——數字唔重要。換咩數字都係考呢樣嘢。',
     step3Label: '改寫版（本平台）',
     step3Tag: '全新數字，同款邏輯',
     step3Cta: '立即練習 →',
-    demoNote: '改寫版練習會換咗數字再出同一類題，等你練到識答為止。',
+    demoNote: '改寫版會換數字再出同一類題，等你練到自己答得出為止。換數字，唔換考點。',
     fwTitle: 'DSE Math 的 12 個核心思維框架',
     fwSub: '每年出現，每年換湯不換藥——掌握框架，無懼任何變體',
     frameworks: [
@@ -278,8 +278,9 @@ const zh = {
     subjectsSubA: ' 科都有改寫 MC 練習；部分考核形式未於本站提供',
     roadmapA: '睇晒全部 ',
     roadmapB: ' 科路線圖',
-    ctaTitle: '準備好開始？',
-    ctaSub: '揀一科，即刻開始你嘅 DSE 溫習',
+    ctaTitle: '今日練一節就得',
+    // {mins} 由首頁用 sessionMinutes() 代入。
+    ctaSub: '揀一科，約 {mins} 分鐘。免費，唔使登入。',
     ctaNote: '所有科目嘅練習題 · 選擇題即時批改 + 練習表現估算',
   },
   subjectsList: {
@@ -660,9 +661,9 @@ const en: typeof zh = {
     trust3: '✓ No ads',
     ctaStart: 'Start practising now',
     ctaMethod: 'See the method',
-    demoTitle: 'See how it works',
+    demoTitle: 'How it works',
     // 見 zh 版同名鍵：唔可以聲稱係官方／真題。
-    demoSub: 'A common HKDSE question type → unpack the core logic → an independently rewritten practice question',
+    demoSub: 'A common question type → unpack the core logic → an original rewrite to practise again',
     step1Label: 'Common type',
     demoArchetype: 'Quadratic equations · core type',
     demoSolve: 'Solve ',
@@ -673,11 +674,11 @@ const en: typeof zh = {
     step2Label: 'Core logic',
     step2Framework: 'Framework: Transformative thinking',
     step2Desc:
-      'It tests applying “factorisation” or the “quadratic formula”. The numbers don’t matter — recognising the equation’s form and choosing the right method is the real point. Any numbers test the same skill.',
+      'It tests whether you recognise the equation’s form and choose the right method — the numbers don’t matter. A new set of numbers still asks for that same method.',
     step3Label: 'Rewritten (this platform)',
     step3Tag: 'New numbers, same logic',
     step3Cta: 'Practise now →',
-    demoNote: 'The rewritten practice gives you the same kind of question with different numbers, so you can keep going until you can solve it.',
+    demoNote: 'The rewritten version brings the same kind of question back with new numbers, until you can answer it yourself. Change the numbers, not the exam point.',
     fwTitle: 'The 12 core thinking frameworks of DSE Maths',
     fwSub: 'They appear every year in new guises — master the framework, fear no variation',
     frameworks: [
@@ -703,8 +704,9 @@ const en: typeof zh = {
     subjectsSubA: ' subjects have rewritten MC practice; some assessment components are not offered here',
     roadmapA: 'See the full roadmap of all ',
     roadmapB: ' subjects',
-    ctaTitle: 'Ready to start?',
-    ctaSub: 'Pick a subject and start your DSE revision',
+    ctaTitle: 'One session today is enough',
+    // {mins} is filled on the homepage from sessionMinutes().
+    ctaSub: 'Pick a subject. About {mins} minutes. Free, no sign-in.',
     ctaNote: 'Practice questions for every subject · instant marking for multiple choice + practice performance estimate',
   },
   subjectsList: {

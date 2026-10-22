@@ -97,3 +97,14 @@ test('the homepage title is the one the founders chose, everywhere it is publish
   }
   assert.equal(src.match(/title: SITE_TITLE,/g)?.length, 3, 'page, OG and Twitter titles')
 })
+
+// Homepage route metadata overrides the layout fallback (app/page.tsx).
+test('the homepage route publishes the zh-HK landing title and description', () => {
+  const src = fs.readFileSync(path.join(process.cwd(), 'app/page.tsx'), 'utf8')
+  assert.match(src, /title: 'DSE Level Up｜免費 DSE 溫習平台｜練邏輯，唔背答案'/)
+  assert.match(src, /同一類題換數字再練，練到識答為止/)
+  assert.match(src, /免費、唔使登入、無廣告/)
+  assert.match(src, /getActiveSubjects\(\)/)
+  assert.match(src, /sessionMinutes\(\)/)
+  assert.doesNotMatch(src, /25 科|26,633/)
+})

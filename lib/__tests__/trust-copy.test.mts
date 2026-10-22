@@ -101,5 +101,5 @@ test('the home line does not name one withdrawal reason', () => {
 // Founders' reply 11a (2026-10-04): the home demo question says it is a demo.
 test('the home demo question is labelled as a demo', () => {
   const b = readFileSync('components/BlindTestQuestion.tsx', 'utf8')
-  assert.match(b, /tr\('示範題，唔計分', 'Demo — not scored'\)/)
+  assert.match(b, /tr\('示範題 · 唔計分', 'Demo · not scored'\)/)
 })
