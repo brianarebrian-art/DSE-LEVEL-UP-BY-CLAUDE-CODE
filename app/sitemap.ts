@@ -36,6 +36,14 @@ const lastModifiedOf = (path: string): { lastModified?: string } => {
 // 公開靜態頁。順序即優先級由高至低。
 const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
   { path: '', priority: 1.0, freq: 'weekly' },
+  // SEO learning cluster: only include routes that have server-rendered, useful content.
+  { path: '/dse-maths', priority: 0.9, freq: 'weekly' },
+  { path: '/dse-maths/quadratic-equations', priority: 0.85, freq: 'monthly' },
+  { path: '/dse-english', priority: 0.9, freq: 'weekly' },
+  { path: '/dse-english/writing-format', priority: 0.85, freq: 'monthly' },
+  { path: '/ai/practice-generator', priority: 0.8, freq: 'monthly' },
+  { path: '/ai/study-plan', priority: 0.75, freq: 'monthly' },
+  { path: '/ai/past-paper-explainer', priority: 0.75, freq: 'monthly' },
   { path: '/subjects', priority: 0.9, freq: 'weekly' },
   { path: '/practice', priority: 0.9, freq: 'weekly' },
   { path: '/notes', priority: 0.8, freq: 'weekly' },
