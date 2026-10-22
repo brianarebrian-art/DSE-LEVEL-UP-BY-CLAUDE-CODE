@@ -47,13 +47,14 @@ import QuestionStatusStrip from '@/components/QuestionStatusStrip'
 import PracticeContextRail from '@/components/PracticeContextRail'
 import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
+import { listPracticeFocusables, practiceTabDestination, slotFor, tabStopElement } from '@/lib/practiceFocusOrder'
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { assignWrongAnswerCause, getReverseLog, logReverseError, type ReverseCause } from '@/lib/reverseLog'
 
 const MC_CAUSES: { key: ReverseCause; emoji: string; zh: string; en: string }[] = [
-  { key: 'A', emoji: '🧠', zh: '概念盲區', en: 'Conceptual blind spot' },
-  { key: 'B', emoji: '🎯', zh: '審題陷阱', en: 'Misread the question' },
-  { key: 'C', emoji: '🧮', zh: '運算粗心', en: 'Careless working' },
+  { key: 'A', emoji: '🧠', zh: '概念未清', en: 'Concept to revisit' },
+  { key: 'B', emoji: '🎯', zh: '未睇清題目', en: 'Missed the question' },
+  { key: 'C', emoji: '🧮', zh: '計算步驟', en: 'A calculation step' },
 ]
 import { orderByCause } from '@/lib/causeMode'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
@@ -433,13 +434,26 @@ export default function PracticeSession({
       // R2-11（2026-10-01）：撳過的選項會變成 disabled，焦點因而跌回 <body>（Chrome 會延後才移走，
       // 此刻 activeElement 可能仍是那粒 disabled 掣）；鍵盤及讀屏用戶要由頁頂重新 Tab。
       // 焦點冇咗或者喺 disabled 掣上，才移到回饋區（唔捲動，捲動照下面規則）。
-      const active = document.activeElement as HTMLButtonElement | null
-      if (!active || active === document.body || active.disabled) el.focus({ preventScroll: true })
-      const delta = feedbackScrollDelta(el.getBoundingClientRect().top, window.innerHeight)
-      if (delta <= 0) return
+      // 選項改為 aria-disabled，焦點留在剛揀的選項上。只有焦點真的跌出文件時才放回該選項。
+      const active = document.activeElement as HTMLElement | null
+      const stayedOnOption = active?.hasAttribute('data-practice-option') ?? false
+      if (!stayedOnOption && (!active || active === document.body || (active as HTMLButtonElement).disabled)) {
+        const picked = document.querySelector<HTMLElement>('[data-practice-option][aria-pressed="true"]')
+        picked?.focus({ preventScroll: true })
+      }
       const reduce =
         window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
         document.documentElement.classList.contains('no-motion')
+      // 內層捲動只把解析頂部帶進視窗底部一帶，下一題掣維持在欄底，已聚焦的選項盡量仍留在畫面內。
+      const scroller = el.closest('.practice-revealed-scroll')
+      if (scroller instanceof HTMLElement) {
+        const scrollerRect = scroller.getBoundingClientRect()
+        const delta = el.getBoundingClientRect().top - (scrollerRect.bottom - 160)
+        if (delta > 8) scroller.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' })
+        return
+      }
+      const delta = feedbackScrollDelta(el.getBoundingClientRect().top, window.innerHeight)
+      if (delta <= 0) return
       window.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' })
     })
     return () => cancelAnimationFrame(id)
@@ -633,6 +647,7 @@ export default function PracticeSession({
   // handler 都用佢，唔准各自寫一份。2026-10-02 起答錯唔使先揀錯因（憲章 §7.2），
   // 答完任何一題即可推進。
   const canProceed = answerState !== null
+  const sessionRef = useRef<HTMLDivElement>(null)
 
   // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
   //
@@ -675,7 +690,25 @@ export default function PracticeSession({
         return
       }
 
+      // 方向鍵只移動焦點，不提交。揭曉後選項仍可讀，一樣可以在選項之間移動。
+      if (
+        el?.hasAttribute('data-practice-option') &&
+        (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowLeft')
+      ) {
+        if (restOpen) return
+        const group = el.closest('[data-practice-options]')
+        const buttons = group ? [...group.querySelectorAll<HTMLButtonElement>('[data-practice-option]')] : []
+        const at = buttons.indexOf(el as HTMLButtonElement)
+        if (at >= 0 && buttons.length > 0) {
+          e.preventDefault()
+          const dir = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : -1
+          buttons[(at + dir + buttons.length) % buttons.length]?.focus()
+        }
+        return
+      }
+
       // 休息模式係一個 modal —— 唔可以喺佢背後用鍵盤答題。
+      // 揭曉後不再接受 1–4／A–D，與 aria-disabled 一致，鍵盤不能改已揀的答案。
       if (answerState !== null || !currentQ || restOpen) return
       const k = e.key.toUpperCase()
       const idx = /^[1-4]$/.test(k) ? Number(k) - 1 : 'ABCD'.indexOf(k)
@@ -687,6 +720,37 @@ export default function PracticeSession({
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [answerState, currentQ, selectOption, proceed, toggleFocusLight, canProceed, restOpen])
+
+  // Tab：選項 → 下一題 → 解析。下一題在版面上貼住欄底，DOM 在解析之後，所以由這裡改次序。
+  // 無障礙浮動掣在頁面之後，不會插進 A–D 中間。
+  useEffect(() => {
+    if (answerState === null) return
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || e.altKey || e.metaKey || e.ctrlKey || restOpen) return
+      const root = sessionRef.current
+      const feedback = feedbackRef.current
+      if (!root || !feedback) return
+      const options = [...root.querySelectorAll<HTMLElement>('[data-practice-option]')]
+      const nextBtn = root.querySelector<HTMLElement>('.practice-next-btn')
+      if (!nextBtn || options.length === 0) return
+      const inFeedback = listPracticeFocusables(feedback)
+      const all = listPracticeFocusables(document.body)
+      const nextIdx = all.indexOf(nextBtn)
+      const afterNext = nextIdx >= 0 ? (all.slice(nextIdx + 1).find((el) => !feedback.contains(el)) ?? null) : null
+      const active = document.activeElement as HTMLElement | null
+      if (!active) return
+      if (!root.contains(active) && active !== afterNext) return
+      const slot = slotFor(active, { options, nextBtn, feedback, inFeedback, afterNext })
+      const dest = practiceTabDestination(slot, e.shiftKey)
+      if (!dest) return
+      const target = tabStopElement(dest, { options, nextBtn, feedback, inFeedback, afterNext })
+      if (!target) return
+      e.preventDefault()
+      target.focus(dest === 'next' || dest === 'option-last' ? { preventScroll: true } : undefined)
+    }
+    window.addEventListener('keydown', onTab)
+    return () => window.removeEventListener('keydown', onTab)
+  }, [answerState, restOpen])
 
   // Rebuild the exact run from the saved question IDs. Grading is anchored to option
   // TEXT (`correctZh`) and the drill is forward-only, so re-shuffling the options of
@@ -829,10 +893,11 @@ export default function PracticeSession({
   }
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+    <div ref={sessionRef} className={`practice-session min-h-screen bg-surface px-4 py-10 text-ink-soft${answerState ? ' practice-session-revealed' : ''}`}>
       {/* lg（≥1024px）加闊到 6xl，題目與回饋並排（UX 循環 LOOP 8，見下方 grid 註解）。
           1440px 起再加左欄（LOOP 40），整體加闊到 1296px：兩邊各留 72px，右欄唔會落入右下情緒支援掣（x=1376 起）之下。 */}
-      <div className="max-w-2xl mx-auto lg:max-w-6xl desk:max-w-[1296px]">
+      <div className="practice-session-column max-w-2xl mx-auto lg:max-w-6xl desk:max-w-[1296px]">
+        <div className={answerState ? 'practice-revealed-scroll' : undefined}>
 
         {/* 返回科目頁 —— 全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），
             所以呢個係練習頁【唯一】嘅離開路徑，唔可以刪。
@@ -841,7 +906,7 @@ export default function PracticeSession({
         {/* sticky：捲落去睇解析嗰陣，返回掣要仲喺度。
             全屏模式冇 Navbar，佢係唯一出口，唔可以隨頁面捲走。
             用 bg-surface 同頁面底色一致，所以內容捲過去唔會見到接縫。 */}
-        <div className="focus-dim sticky top-0 z-30 -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
+        <div className="focus-dim sticky top-0 z-30 practice-sticky-head -mt-2 pt-2 pb-2 mb-1 bg-surface flex items-center gap-2 text-sm">
           <Link
             href="/subjects"
             aria-label={tr('返回科目選擇', 'Back to subject list')}
@@ -945,7 +1010,7 @@ export default function PracticeSession({
           </div>
 
           {/* 題幹維持無襯線：呢度係要逐字讀嘅正文，唔係標題（BDA）。只跟模板加大。 */}
-          <p className="text-lg sm:text-xl leading-relaxed mb-8 text-ink">
+          <p id="practice-question" className="text-lg sm:text-xl leading-relaxed mb-8 text-ink">
             <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
           </p>
 
@@ -960,12 +1025,18 @@ export default function PracticeSession({
             </p>
           )}
 
-          {/* Options */}
-          <div className="space-y-3">
+          {/* Options. Real buttons: aria-pressed is the choice, aria-disabled keeps
+              the text readable after reveal. Arrow keys move focus; Space or Enter selects. */}
+          <div
+            className="space-y-3"
+            role="group"
+            aria-labelledby="practice-question"
+            data-practice-options
+          >
             {currentQ.shuffledOptions.map((opt, idx) => {
               const isCorrectOpt = opt.zh === currentQ.correctZh
-              const isSelectedWrong =
-                answerState !== null && opt.zh === answerState.selectedZh && !answerState.isCorrect
+              const isSelected = answerState !== null && opt.zh === answerState.selectedZh
+              const isSelectedWrong = isSelected && !answerState.isCorrect
 
               let style =
                 'border-line-strong bg-surface-sunken cursor-pointer [@media(hover:hover)]:hover:border-accent/40 [@media(hover:hover)]:hover:bg-surface-raised'
@@ -974,11 +1045,10 @@ export default function PracticeSession({
                 if (isCorrectOpt) {
                   style = 'border-accent bg-accent/[0.10] cursor-default shadow-sm'
                 } else if (isSelectedWrong) {
-                  // 規格書 §4.2：答錯【不出現紅色】。金色 = 「發現盲點」的語意，
-                  // 與冷靜艙、盲點修復卷一致；玫紅保留給系統級提醒。
+                  // 答錯用粘土／琥珀邊，加上文字「未揀中」，不單靠顏色，亦不用玫紅。
                   style = 'border-gold bg-gold/[0.08] cursor-default shadow-sm'
                 } else {
-                  style = 'border-line bg-surface-sunken opacity-50 cursor-default'
+                  style = 'border-line bg-surface-sunken cursor-default'
                 }
               }
 
@@ -991,9 +1061,12 @@ export default function PracticeSession({
               return (
                 <button
                   key={idx}
+                  type="button"
+                  data-practice-option=""
+                  aria-pressed={isSelected}
+                  aria-disabled={answerState !== null}
                   onClick={() => selectOption(opt.zh, idx)}
-                  disabled={answerState !== null}
-                  className={`ml-press relative overflow-hidden w-full text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}${pulse}`}
+                  className={`practice-option ml-press relative overflow-hidden w-full min-h-12 text-left flex items-start gap-3 border rounded-xl px-4 py-3 transition-all ${style}${pulse}`}
                 >
                   {shockIdx === idx && (
                     <span
@@ -1008,12 +1081,16 @@ export default function PracticeSession({
                     <MathText>{tr(opt.zh, opt.en)}</MathText>
                   </span>
                   {answerState !== null && isCorrectOpt && (
-                    <CheckCircle size={18} className="text-accent ml-auto shrink-0 mt-0.5" />
+                    <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
+                      <CheckCircle size={18} aria-hidden className="text-accent" />
+                      {tr('答案', 'Answer')}
+                    </span>
                   )}
-                  {/* 規格書 §4.2 + 憲章第 7 條：答錯【不用大紅交叉】。
-                      答錯嘅選項用燈泡標示，同一個符號貫穿全站錯題語境。 */}
                   {isSelectedWrong && (
-                    <Lightbulb size={18} className="text-gold ml-auto shrink-0 mt-0.5" />
+                    <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
+                      <Lightbulb size={18} aria-hidden className="text-gold" />
+                      {tr('未揀中', 'Not chosen')}
+                    </span>
                   )}
                 </button>
               )
@@ -1030,7 +1107,7 @@ export default function PracticeSession({
               而且讀屏用戶一樣用鍵盤，呢句對佢哋唔係多餘。 */}
           <p className="hidden sm:block mt-3 text-[11px] text-ink-muted">
             {answerState === null
-              ? tr('快捷鍵：1–4 或 A–D 揀答案', 'Shortcuts: 1–4 or A–D to answer')
+              ? tr('快捷鍵：1–4 或 A–D 揀答案；方向鍵移動，空白鍵或 Enter 確認', 'Shortcuts: 1–4 or A–D to answer. Arrow keys move, Space or Enter confirms')
               : tr('快捷鍵：Enter 落下一題', 'Shortcut: Enter for the next question')}
             {' · '}
             {focusLight
@@ -1045,24 +1122,24 @@ export default function PracticeSession({
             ? ''
             : answerState.isCorrect
               ? tr('答啱。解析喺下面。', 'Correct. The explanation is below.')
-              : tr('未答啱。正確答案同解析已經標示。可以揀錯因，亦可以略過。', 'Not this time. The correct answer and explanation are shown. You can tag a cause, or skip.')}
+              : tr('未揀中。正確答案同解析已經標示。可以記低原因，亦可以略過。', 'Not the one chosen. The answer and explanation are shown. You can note a reason, or skip.')}
         </p>
 
         {/* Feedback + Next */}
         {answerState !== null && (
-          <div ref={feedbackRef} tabIndex={-1} className="animate-slide-up focus:outline-none">
+          <div ref={feedbackRef} tabIndex={-1} className="animate-slide-up practice-feedback">
             <>
                 {answerState.isCorrect ? (
                   /* Correct — calm acknowledgement, no fanfare. */
-                  <div className="rounded-2xl p-5 mb-4 border bg-accent/[0.10] border-accent/30 shadow-sm">
+                  <div className="practice-explain rounded-2xl p-5 mb-4 border bg-accent/[0.10] border-accent/30 shadow-sm">
                     <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle size={18} className="text-accent" />
+                      <CheckCircle size={18} aria-hidden className="text-accent" />
                       <span className="text-accent font-medium">{t.practice.correct}</span>
                     </div>
                     {/* #54 逐步拆解：先出首句（或真步驟第一步），逼多諗一步先揭全部。
                         學生可一次過選擇「以後直接睇晒」，之後唔會再問。 */}
                     <div className="flex items-start gap-1.5">
-                      <Brain size={14} className="text-gold shrink-0 mt-1" />
+                      <Brain size={14} aria-hidden className="text-gold shrink-0 mt-1" />
                       <div className="min-w-0 flex-1">
                         <StagedExplanation
                           text={tr(currentQ.explanation, currentQ.explanationEn)}
@@ -1082,10 +1159,10 @@ export default function PracticeSession({
                   </div>
                 ) : (
                   /* Wrong → the solution shows straight away (2026-10-02, charter §7.2). */
-                  <div className="rounded-2xl p-5 mb-4 border bg-gold/[0.10] border-gold/30 shadow-sm">
+                  <div className="practice-explain practice-miss rounded-2xl p-5 mb-4 border shadow-sm">
                     <div className="flex items-center gap-2 mb-3">
-                      <Brain size={18} className="text-gold" />
-                      <span className="text-gold font-medium">{tr('💡 發現盲點', '💡 Blind spot spotted')}</span>
+                      <Brain size={18} aria-hidden className="text-gold" />
+                      <span className="text-gold font-medium">{tr('未揀中', 'Not the one chosen')}</span>
                     </div>
                     <div className="border-t border-gold/15 pt-3">
                       <StagedExplanation
@@ -1108,7 +1185,7 @@ export default function PracticeSession({
                     {/* 可選錯因 —— 唔鎖下一題；略過唔造假 cause。 */}
                     <div className="mt-4 border-t border-gold/15 pt-3">
                       <p className="mb-2 text-xs font-medium text-ink-muted">
-                        {tr('呢題失手係因為？（可略過）', 'What tripped you up? (optional)')}
+                        {tr('想記低原因？（可以唔揀）', 'Note a reason? (optional)')}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {MC_CAUSES.map((c) => {
@@ -1152,7 +1229,7 @@ export default function PracticeSession({
                 {currentQ.mcHack && (
                   <div className="rounded-2xl p-5 mb-4 border bg-violet/[0.08] border-violet/30">
                     <div className="flex items-center gap-2 mb-2">
-                      <Zap size={18} className="text-violet" />
+                      <Zap size={18} aria-hidden className="text-violet" />
                       <span className="text-violet font-medium">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
                     </div>
                     <p className="text-xs text-ink-muted mb-3 leading-relaxed">
@@ -1179,21 +1256,7 @@ export default function PracticeSession({
                   className="mb-4"
                 />
 
-                {/* 2026-09-09：呢個掣原本會喺反思鎖期間變灰、出一個鎖頭同倒數秒數。
-                    鎖已剷除，所以佢永遠撳得。 */}
-                <button
-                  onClick={proceed}
-                  className="w-full font-medium py-4 rounded-xl transition-all flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent shadow-sm"
-                >
-                  {totalQ === 1 ? (
-                    // C6：1 題卷冇結果頁，亦唔應該喺啱啱答錯之後彈「🎉」。
-                    tr('做完喇', 'Done')
-                  ) : current + 1 >= totalQ ? t.practice.seeResult : (
-                    <>{t.practice.next} <ChevronRight size={18} /></>
-                  )}
-                </button>
-
-                {/* 「下一題想要」預設摺疊 —— 主 CTA 唯一實心掣。 */}
+                {/* 「下一題想要」預設摺疊 —— 主 CTA 在欄底，唔同解析搶同一行。 */}
                 {current + 1 < totalQ && (() => {
                   const tail = questions.slice(current + 1)
                   const wishes: { key: NextWish; zh: string; en: string }[] = [
@@ -1251,6 +1314,18 @@ export default function PracticeSession({
           </p>
         )}
         </div>
+        </div>
+        {answerState !== null && (
+          <div className="practice-next-bar">
+            <button type="button" onClick={proceed} className="practice-next-btn">
+              {totalQ === 1 ? (
+                tr('做完喇', 'Done')
+              ) : current + 1 >= totalQ ? t.practice.seeResult : (
+                <>{t.practice.next} <ChevronRight size={18} aria-hidden /></>
+              )}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* B2: 一鍵休息 —— 反思鎖期間一樣開得，死線會一齊順延 */}

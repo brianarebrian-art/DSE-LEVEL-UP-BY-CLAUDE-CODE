@@ -53,11 +53,15 @@ test('links inside visually hidden blocks are not in the Tab order', async () =>
   assert.deepEqual(bad, [])
 })
 
-// Keyboard (R2-11): the chosen option becomes disabled, so focus fell back to <body>.
-test('after answering, lost focus moves to the feedback region without scrolling', () => {
+// Revealed options stay focusable (aria-disabled). Focus is not moved onto the
+// explanation, and the feedback region does not remove its outline.
+test('after answering, focus stays on the chosen option', () => {
   const s = code('app/practice/PracticeSession.tsx')
-  assert.match(s, /if \(!active \|\| active === document\.body \|\| active\.disabled\) el\.focus\(\{ preventScroll: true \}\)/)
-  assert.match(s, /<div ref=\{feedbackRef\} tabIndex=\{-1\} className="animate-slide-up focus:outline-none">/)
+  assert.match(s, /aria-disabled=\{answerState !== null\}/)
+  assert.match(s, /picked\?\.focus\(\{ preventScroll: true \}\)/)
+  assert.match(s, /<div ref=\{feedbackRef\} tabIndex=\{-1\} className="animate-slide-up practice-feedback">/)
+  assert.doesNotMatch(s, /outline-none/)
+  assert.doesNotMatch(s, /(?<!aria-)disabled=\{answerState !== null\}/)
 })
 
 // 2026-10-02：錯因自診已刪除（憲章 §7.2），答完之後焦點由上面嗰條規則交畀回饋區。

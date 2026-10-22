@@ -1419,3 +1419,105 @@ html.font-easy .skeleton {
 @media (prefers-reduced-motion: reduce) {
   .off-syllabus-card-body { animation: none; }
 }
+
+/* practice-revealed-p0
+   練習頁答完之後：下一題貼住內容欄底部，解析同掣同一屏。
+   無障礙浮動掣改到右上，唔再蓋住解析或下一題。
+   只作用於 .practice-session，其他頁的左下角掣維持原位。 */
+.practice-session-revealed {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: max(12px, env(safe-area-inset-top));
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+.practice-session-revealed > .practice-session-column {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+}
+.practice-revealed-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.practice-option {
+  min-height: 48px;
+}
+.practice-explain {
+  padding-bottom: 72px;
+}
+.practice-miss {
+  background: color-mix(in srgb, var(--color-ml-clay) 16%, var(--color-surface-raised));
+  border-color: color-mix(in srgb, var(--color-ml-clay) 55%, transparent);
+}
+.practice-next-bar {
+  position: sticky;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 20;
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding-right: 56px;
+  background: var(--color-surface-raised);
+  border-top: 1px solid var(--color-line-strong);
+}
+.practice-next-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 56px;
+  min-height: 48px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--color-accent-strong);
+  color: var(--color-on-accent);
+  font-weight: 500;
+}
+.practice-next-btn:hover {
+  background: var(--color-accent-hover);
+}
+.practice-next-btn:focus-visible,
+.practice-option:focus-visible,
+.practice-feedback:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+/* 練習頁的無障礙面板跟浮動掣一樣留在右上，避免蓋住底部的下一題。 */
+body:has(.practice-session) [role="dialog"][aria-label="無障礙設定"],
+body:has(.practice-session) [role="dialog"][aria-label="Accessibility options"] {
+  top: max(64px, calc(env(safe-area-inset-top) + 56px));
+  right: 12px;
+  bottom: auto;
+  left: auto;
+  max-height: min(70dvh, calc(100dvh - 9rem));
+}
+body:has(.practice-session) .a11y-fab {
+  display: flex;
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
+  bottom: auto;
+  left: auto;
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: 45;
+}
+.practice-session .practice-sticky-head {
+  padding-right: 60px;
+}
+.practice-session .practice-sticky-head [data-a11y-trigger] {
+  display: none;
+}
+/* /practice-revealed-p0 */
