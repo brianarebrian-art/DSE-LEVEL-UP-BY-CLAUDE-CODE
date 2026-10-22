@@ -55,6 +55,26 @@ export function logReverseError(entry: WrongAnswerEntry): void {
   }
 }
 
+/**
+ * Attach a self-diagnosed cause to the most recent wrong-answer log for this question.
+ * Optional — skipping leaves the entry without a cause (still feeds due reviews).
+ * Does not invent a row if none exists.
+ */
+export function assignWrongAnswerCause(questionId: string, cause: ReverseCause): void {
+  if (typeof window === 'undefined') return
+  if (cause !== 'A' && cause !== 'B' && cause !== 'C') return
+  try {
+    const raw = localStorage.getItem(KEY)
+    const list: WrongAnswerEntry[] = raw ? JSON.parse(raw) : []
+    const i = list.findIndex((e) => e.questionId === questionId)
+    if (i < 0) return
+    list[i] = { ...list[i], cause }
+    localStorage.setItem(KEY, JSON.stringify(list.slice(0, CAP)))
+  } catch {
+    /* best-effort */
+  }
+}
+
 /** Every wrong answer, with or without a cause: due reviews, topic nudges, recommendations. */
 export function getWrongAnswerLog(): WrongAnswerEntry[] {
   if (typeof window === 'undefined') return []

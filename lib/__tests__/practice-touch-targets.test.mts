@@ -12,6 +12,7 @@ const FILES = [
   'app/practice/PracticeSession.tsx',
   'app/practice/LongPracticeSession.tsx',
   'components/PracticeSupport.tsx',
+  'components/PracticeMoreMenu.tsx',
   'components/StagedExplanation.tsx',
   'components/BookmarkButton.tsx',
 ]
@@ -23,6 +24,7 @@ test('no 44px minimum is left in the practice flow', () => {
 
 test('the next-question difficulty chips are 48px targets', () => {
   const s = code('app/practice/PracticeSession.tsx')
-  const at = s.indexOf("tr('下一題想要：', 'Next one:')")
-  assert.match(s.slice(at, at + 1500), /inline-flex min-h-12 items-center px-3 rounded-full border/)
+  const at = s.indexOf("tr('調整下一題難度', 'Adjust next difficulty')")
+  assert.ok(at >= 0, 'fold control for next-wish missing')
+  assert.match(s.slice(at, at + 2500), /inline-flex min-h-12 items-center px-3 rounded-full border/)
 })
