@@ -23,6 +23,7 @@ import { sourceLabEntries } from '@/data/history-sources'
 import { ARTICLE_DATES } from '@/lib/articleDates'
 import { BANK_UPDATED_AT } from '@/data/questions/bank-dates.generated'
 import { CATEGORIES } from '@/data/offSyllabus'
+import { seoSubjects, aiTools } from '@/lib/seo-content'
 
 // lastModified（創辦人回覆 61a，2026-10-09）。原本每條都寫 `new Date()`，即每次有人讀 sitemap
 // 就聲稱全站「今日更新」。搜尋器發現 lastmod 不可信便會整份忽略。現在只寫有真實紀錄的日期：
@@ -68,7 +69,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // citizenship-and-social-development／csd）。衍生則永遠對得上。
   const subjectIds = getActiveSubjects().map((s) => s.id)
 
+  const seoRoutes = [
+    ...seoSubjects.map((subject) => `/${subject.slug}`),
+    ...seoSubjects.flatMap((subject) => subject.topics.map((topic) => `/${subject.slug}/${topic.slug}`)),
+    ...aiTools.map((tool) => `/ai/${tool.slug}`),
+    ...seoSubjects.map((subject) => `/${subject.slug}/past-papers/2023/paper-2/q12`),
+  ]
+
   return [
+    ...seoRoutes.map((path) => ({ url: `${DOMAIN}${path}`, changeFrequency: 'weekly' as const, priority: 0.8 })),
     ...STATIC_ROUTES.map((r) => ({
       url: `${DOMAIN}${r.path}`,
       ...lastModifiedOf(r.path),
