@@ -18,6 +18,8 @@ declare module 'next-auth' {
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
+  secret: process.env.AUTH_SECRET,
+  useSecureCookies: process.env.NODE_ENV === 'production',
   session: { strategy: 'jwt' },
   // Cancelled or failed sign-in: our own page (Chinese and English, practice still
   // works without signing in) instead of Auth.js's built-in English error page.

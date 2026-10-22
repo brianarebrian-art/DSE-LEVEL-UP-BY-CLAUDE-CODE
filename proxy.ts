@@ -33,6 +33,9 @@ function applySecurityHeaders(response: NextResponse) {
   response.headers.set('X-Frame-Options', 'DENY')
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), browsing-topics=()')
   response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload')
+  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
+  response.headers.set('Cross-Origin-Resource-Policy', 'same-origin')
+  response.headers.set('Origin-Agent-Cluster', '?1')
   return response
 }
 
