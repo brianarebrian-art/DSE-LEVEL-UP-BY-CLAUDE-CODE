@@ -177,7 +177,7 @@ export default function HomePage() {
             <span className="bg-gradient-to-r from-accent to-accent bg-clip-text text-transparent">{hero.headline2}</span>
           </h1>
 
-          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-6 sm:text-xl">{hero.subhead}</p>
+          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-6 sm:text-xl">{hero.subhead.replaceAll('{mins}', String(sessionMins))}</p>
 
           {/* 快速開始（UX 循環 LOOP 2，2026-09-30）。
               以前主按鈕「開始練習」只通往科目列表，新訪客要經過科目列表、科目頁、「立即開始」
@@ -185,7 +185,7 @@ export default function HomePage() {
               改為同一屏的文字連結，副入口（放榜季是 /waiting、/relax）仍然在首屏。 */}
           <div className="hero-rise hero-rise-2 mx-auto mb-6 max-w-md">
             <p id="quick-start-label" className="mb-3 text-base font-medium text-ink">
-              {en ? `Pick a subject to start ${SESSION_SIZE} questions` : `揀一科，即刻開始 ${SESSION_SIZE} 題`}
+              {en ? `Pick a subject, start ${SESSION_SIZE} questions` : `揀一科，開始 ${SESSION_SIZE} 題`}
             </p>
             {/* 四格一行（手機亦然）：兩行兩格會把「揀其他科目」推到 375×812 首屏底部，
                 被左下角無障礙按鈕及右下角情緒支援按鈕遮住。 */}
@@ -212,8 +212,8 @@ export default function HomePage() {
 
           <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             {locale === 'en'
-              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind common DSE traps, one question at a time.'
-              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解 DSE 常見陷阱背後嘅核心邏輯。'}
+              ? 'Built by DSE alumni with AI — free, unpacking the core logic behind common exam points with you, one question at a time.'
+              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解常見考點背後嘅核心邏輯。'}
           </p>
 
           {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}
@@ -273,10 +273,10 @@ export default function HomePage() {
       <section className="bg-surface-raised px-4 py-14">
         <div className="mx-auto max-w-md">
           <h2 className="animate-on-scroll mb-2 text-center text-2xl font-medium text-ink sm:text-3xl">
-            {locale === 'en' ? 'Can you see through the trap?' : '你睇唔睇穿到陷阱？'}
+            {locale === 'en' ? 'Can you see the exam point?' : '你睇唔睇穿考點？'}
           </h2>
           <p className="animate-on-scroll stagger-1 mb-7 text-center text-sm text-ink-muted">
-            {locale === 'en' ? 'Numbers blacked out — only the logic remains. See through it, don’t memorise.' : '數字全部塗黑，淨返邏輯。睇穿佢，唔使死記硬背。'}
+            {locale === 'en' ? 'The numbers are blacked out; only the logic remains. See the exam point, and you don’t have to memorise.' : '數字塗黑，淨返邏輯。睇穿考點，就唔使死記硬背。'}
           </p>
           <div className="animate-on-scroll stagger-2">
             <BlindTestQuestion />
@@ -373,14 +373,14 @@ export default function HomePage() {
           </h2>
           <p className="animate-on-scroll stagger-1 mx-auto mb-10 max-w-2xl leading-relaxed text-ink-muted">
             {locale === 'en'
-              ? 'Real exam skill should never sit behind a wall — so we built it and opened it free, unconditionally, to every student.'
-              : '攞分嘅真功夫，唔應該被任何一道牆擋住 —— 所以我哋重新砌返，無條件免費開放俾每一個學生。'}
+              ? 'The practice you need for marks shouldn’t sit behind a wall. So everything here is open, free, with no conditions.'
+              : '攞分要用嘅練習，唔應該被牆擋住。所以我哋全部開放，無條件免費。'}
           </p>
           <div className="grid gap-4 text-left sm:grid-cols-3">
             {[
-              { icon: '🧠', title: locale === 'en' ? 'Efficient' : '高效', body: locale === 'en' ? 'Crack the logic behind common DSE question types — not memorise answers that never come back.' : '拆穿 DSE 常見題型嘅底層邏輯 —— 唔係死背啲唔會再出嘅答案。' },
-              { icon: '⚖️', title: locale === 'en' ? 'Fair' : '公平', body: locale === 'en' ? 'Completely free. Every student — not only the ones who can afford star tutors — gets the same edge.' : '完全免費。唔止俾得起補習天王嘅人 —— 係每一個學生，都攞到同一個籌碼。' },
-              { icon: '🤝', title: locale === 'en' ? 'For your family' : '利他', body: locale === 'en' ? 'Whatever you’d have spent on tutoring stays home with your family. That is the whole point.' : '本來要使喺補習嘅，留返喺屋企。呢個先係我哋嘅初心。' },
+              { icon: '🧠', title: locale === 'en' ? 'Efficient' : '高效', body: locale === 'en' ? 'Unpack the logic under common question types — not memorise answers that won’t come back.' : '拆穿常見題型底層邏輯——唔係死背唔會再出嘅答案。' },
+              { icon: '⚖️', title: locale === 'en' ? 'Fair' : '公平', body: locale === 'en' ? 'Completely free. Not only people who can afford expensive courses — every student gets the same practice.' : '完全免費。唔止俾得起昂貴課程嘅人——每一個學生都用到同一套練習。' },
+              { icon: '🤝', title: locale === 'en' ? 'Why we started' : '初心', body: locale === 'en' ? 'The energy that would have gone into the tutoring wall stays for real practice. That is what we set out to do.' : '本來要花喺補習牆上嘅力氣，留返嚟真正練功。呢個先係我哋想做到嘅事。' },
             ].map((c, i) => (
               <div key={i} className={`animate-on-scroll stagger-${i + 1} rounded-2xl border border-line bg-surface-raised p-5`}>
                 <div className="mb-2 text-2xl">{c.icon}</div>
@@ -426,7 +426,10 @@ export default function HomePage() {
       <section className="bg-surface px-4 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="animate-on-scroll mb-4 text-3xl font-medium text-ink sm:text-4xl">{h.ctaTitle}</h2>
-          <p id="quick-start-label-bottom" className="animate-on-scroll stagger-1 mb-8 text-ink-muted">{h.ctaSub}</p>
+          <p className="animate-on-scroll stagger-1 mb-3 text-ink-muted">{h.ctaSub.replaceAll('{mins}', String(sessionMins))}</p>
+          <p id="quick-start-label-bottom" className="animate-on-scroll stagger-1 mb-8 text-base font-medium text-ink">
+            {en ? `Start ${SESSION_SIZE} questions` : `開始 ${SESSION_SIZE} 題`}
+          </p>
           {/* audit loop T09（2026-10-02）：原本係一個去 /subjects 嘅大掣，要再揀一次科目。
               改為同頁頂一樣嘅四科快捷掣，一撳就開始；其他科目用下面文字連結。 */}
           <div className="animate-on-scroll stagger-2 mx-auto max-w-md">
@@ -435,7 +438,7 @@ export default function HomePage() {
               href="/subjects"
               className="mt-3 inline-flex min-h-11 items-center gap-1 text-sm font-medium text-accent-strong underline underline-offset-4"
             >
-              {en ? `All ${activeSubjects.length} subjects` : `揀其他科目（共 ${activeSubjects.length} 科）`}
+              {en ? `See all ${activeSubjects.length} subjects` : `睇晒 ${activeSubjects.length} 科`}
               <ArrowRight size={14} aria-hidden />
             </Link>
           </div>

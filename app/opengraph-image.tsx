@@ -42,7 +42,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: 'flex', marginTop: 20, fontSize: 28, color: '#6B6B6B' }}>
-          Master the logic, not the answers.
+          Practise until you can answer it, without memorising.
         </div>
 
         <div style={{ display: 'flex', marginTop: 'auto', fontSize: 21, color: '#9CA3AF' }}>

@@ -43,7 +43,7 @@ import { getActiveSubjects } from '@/data/subjects'
 // 科目數目由科目表計算（UX 循環 LOOP 11），不在各處寫死「25」。
 const SUBJECT_COUNT = getActiveSubjects().length
 
-// 首頁及搜尋結果顯示的標題。創辦人 2026-10-09 指示改為三段，加入「DSE 溫習平台」。
+// 沒有自訂 title 的路由用呢個後備標題。首頁搜尋標題同 description 在 app/page.tsx。
 // Homepage route metadata is defined in app/page.tsx; this is the layout fallback.
 const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 掌握 DSE 核心邏輯' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
 
