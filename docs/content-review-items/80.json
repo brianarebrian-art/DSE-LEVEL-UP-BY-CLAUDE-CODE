@@ -1,0 +1,21 @@
+{
+  "index": 80,
+  "url": "/dse-physics/astronomy",
+  "priority": "BLOCKED",
+  "page_type": "天文與太空科學主題學習／題解頁（候選；暫不可發布）",
+  "intent": "學生準備 HKDSE 物理選修單元 Astronomy and Space Science，想弄清重力與軌道運動的公式關係、衛星能量與逃逸速度，並透過有步驟的計算例題辨認易錯位置。此為由官方課程範圍推導的合理學習意圖，不代表搜尋量已驗證。",
+  "h1": "DSE 物理天文與太空科學：軌道、衛星與重力題型",
+  "title": "DSE 物理天文與太空科學｜軌道與衛星題型拆解",
+  "description": "整理 DSE 物理天文與太空科學的重力、軌道、衛星及恆星概念，逐步拆解公式選用、圖像判讀與常見失分原因；配合原創平行改寫例題練習計算和解釋，明確標示課程範圍，並說明每步推理與單位核對。內容亦會區分圓形軌道與逃逸速度題型，提醒先辨認已知量、建立能量或引力關係，再檢查數值合理性；不重現受版權保護的考卷原題。",
+  "core_content": "取得可用的官方題目／評分依據及範圍核對後，章節應包括：1）天文尺度、觀測量與單位換算；2）圓形軌道中引力提供向心力，從已知量推求軌道速度、週期或半徑，並解釋適用假設；3）萬有引力位能與機械能守恆，分析衛星軌道、失重和逃逸速度；4）圖表／數據題讀取趨勢、比例關係與測量不確定性；5）原創平行改寫例題至少涵蓋一題軌道計算及一題能量／逃逸速度解釋題，展示列式、代入、單位、有效數字與常見錯因。官方課程指引的天文單元還涵蓋宇宙尺度、天文史、恆星與宇宙；應依官方課程範圍交代概念，不可只因頁名叫天文便宣稱全部是可考題型。若無法取得並核實對應試題和評分資料，不可標成Past Paper題解。",
+  "internal_links": "基線中確認存在：/ai/past-paper-explainer（anchor建議「了解題目拆解工具」；但不得暗示本頁已有AI自動解題）。規劃但基線未找到source，不可作現有內鏈：/dse-physics（物理筆記hub）、/past-papers（試題索引）。本頁路由 /dse-physics/astronomy 在基線不存在。",
+  "status": "Blocked",
+  "reason": "原始第80筆（CSV含header的row index 80；不含header第79筆）將此頁定位為「DSE Physics astronomy past paper 題解」，但基線 d25c637 的 app/ 下沒有 /dse-physics/astronomy 路由，也沒有可核驗的天文科目題目source或相應評分資料；不能把泛化例題冒稱Past Paper，故來源不足必須Blocked，而非現在發布。可確認的官方E​​DB《Physics Curriculum and Assessment Guide》將Astronomy and Space Science列為四個選修單元之一，核心包括宇宙尺度、天文史、重力下軌道運動、恆星與宇宙；足以支持課程概念規劃，卻不能替代逐題source。學生價值應在軌道、位能／機械能、衛星與逃逸速度的推導及錯誤診斷，並以原創改寫例題、必要圖示和自製圖表達成，不複製考卷圖表。憲章§4要求所有題目原創平行改寫，禁止侵權；§5禁止新增需付費第三方API。本基線AI past-paper explainer雖有頁面，不代表AI功能已實作：本審核不假設存在自動AI題解，亦不可新增付費API。待取得授權可用或可合法改寫的具體天文題目與評分資料、確認內容審核及生產驗證後，再解除Blocked；五個priority頁面仍在實作且未production驗證，不可因預期工作而標Published或PUBLISH NOW。此頁並非已確認重複內容，不建議合併／刪除；應保留為有source才開發的獨立選修主題頁。",
+  "sources": [
+    "Repo基線：/home/ubuntu/dse-level-up，HEAD d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv以csv.reader讀取row[80]。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&20（考評局物理科官方頁，列有課程與評估指引及試卷等資源入口；本次未取得可指向本頁的具體天文試題source。）",
+    "Repo憲章：/home/ubuntu/dse-level-up/docs/charter.md §4及§5。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/80.json"
+}

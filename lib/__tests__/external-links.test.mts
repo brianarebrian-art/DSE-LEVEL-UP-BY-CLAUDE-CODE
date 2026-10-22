@@ -57,6 +57,10 @@ const ALLOW: { file: string; why: string }[] = [
     file: 'app/relax/components/SoloPlayer.tsx',
     why: 'youtube-nocookie iframe src：唔係 <a>，而且只喺用戶按下播放之後先載入。外開連結本身已上閘。',
   },
+  {
+    file: 'components/OffSyllabusShareButton.tsx',
+    why: 'Threads／Instagram 只出現在複製到剪貼簿的分享文字，元件沒有 <a>、跳轉或網絡請求；網站內不存在可點擊離站出口。',
+  },
 ]
 
 test('每個含外部 URL 嘅檔，唔係已引入閘門，就係喺白名單', () => {

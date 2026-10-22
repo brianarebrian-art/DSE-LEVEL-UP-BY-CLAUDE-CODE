@@ -1,0 +1,22 @@
+{
+  "index": 78,
+  "url": "/dse-physics/momentum",
+  "priority": "BLOCKED",
+  "page_type": "DSE Physics 動量主題題解（題源待核實）",
+  "intent": "學生搜尋動量題解，想釐清向量方向、衝量、系統選取和動量守恆條件，並看懂碰撞題的列式及常見失分點；但現有證據不足以確認這些題型對應現行 HKDSE 的具體題目。",
+  "h1": "DSE Physics 動量：先判斷系統，再解碰撞題",
+  "title": "DSE Physics 動量題解：系統判斷、守恆列式與常見錯誤｜DSE Level Up",
+  "description": "用動量向量與方向、衝量和系統邊界拆解碰撞題，循序示範如何判斷守恆條件、設定正負方向、列出初末總動量並檢查答案。另整理常見失分原因及原創例題方向；本頁尚未核實現行考綱範圍、官方題目年份卷別與重用許可，故不冒稱Past Paper。頁面例題會標明自編，待官方資料確認後再補題號與評分準則，並避免誤導內容。",
+  "core_content": "若解除封鎖，定位為有原創示例與解題方法的動量主題頁，不可在未核驗前聲稱例題是 HKDSE Past Paper。章節建議：1）動量是向量：用一維碰撞練習正負方向，辨析質量、速度與動量；2）衝量與動量改變：用力—時間圖面積連結衝量，說明外力衝量；3）守恆前先劃定系統：用兩物體碰撞或分離情境判斷外力衝量是否可忽略；4）分步例題：自訂數值的一維碰撞，列初末總動量、求未知速度並核對符號和單位，再用自訂爆炸情境練方向；5）常見錯誤：只守恆單一物體動量、忽略速度方向、混淆動量守恆與動能守恆、把圖線斜率與面積混淆；6）自我檢查題與答案推理。圖表只採自繪系統示意及原創力—時間圖，不複製考卷圖片。只有取得並核實官方題目、年份／卷別／題號、評分要求及可再利用依據後，才可加具名 Past Paper 分析；否則保持原創例題並明示非官方題目。",
+  "internal_links": "實際存在：/practice —「開始練習」（app/practice/page.tsx）；/ai/past-paper-explainer —「查看題目拆解工具」（app/ai/past-paper-explainer/page.tsx；不可宣稱其支援AI生題或作文機評）。規劃但尚無路由：/dse-physics —「DSE Physics 主題總覽」；/past-papers —「歷屆試題索引」。",
+  "status": "Blocked",
+  "reason": "原始CSV第78筆指定動量 Past Paper 題解；基線 d25c637 的 app 沒有 /dse-physics/momentum、/dse-physics 或 /past-papers source route，不能假稱已存在或可發布。此意圖有具體學習價值：動量方向、系統邊界、外力衝量與碰撞列式可以形成深入分步教學；但現有資料沒有具體 HKDSE 動量題、年份卷別、評分要求或適用現行考綱的引用證據。官方頁列出的 PHY-SQ-2032-E 明示自2032起生效，不可用作目前Past Paper題型的依據；官方資源頁雖列有過往卷使用許可資訊入口，仍未核得本站逐題轉載／圖像重用條款。故無題目source不得稱Past Paper或假定能重製考卷圖表；須先核實現行考綱版本、官方題目與授權，再判斷原創例題頁深度及解封條件。此單頁不應與Physics hub合併；待hub與可用題源建立後再連結。不得假設AI生成或作文機評已實作，憲章禁止新增付費API。五個priority實作未經production驗證，只能Draft，不能視為已完成或據此發布。沒有搜尋量依據，不作搜尋需求數字推斷。",
+  "sources": [
+    "docs/seo-content-map.csv（CSV row 78；index不含header）",
+    "docs/charter.md §8.1：$0成本，不得引入付費API；§8.0列明禁止長答／作文自動批改、打分、評分。",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&20_5 — HKEAA HKDSE Physics Other Resources；列出官方資源，包括自HKDSE 2032 onwards生效的sample questions及考試簡報，並提供過往卷使用許可資訊入口；未據此推定本站已有重用授權。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/PHY-SQ-2032-E.pdf — HKEAA Physics sample questions；文件明示Effective from HKDSE 2032 onwards，不作目前Past Paper佐證。",
+    "https://www.hkeaa.edu.hk/doclibrary/hkale/subject_and_syllabuses/2012/2012al-e-phy.pdf — 搜尋結果中的文件標示2012 Advanced Level，非HKDSE，排除為現行DSE考綱依據。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/78.json"
+}

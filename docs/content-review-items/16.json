@@ -1,0 +1,21 @@
+{
+  "index": 16,
+  "url": "/past-papers",
+  "priority": "P1 NEXT",
+  "page_type": "歷屆試題官方入口與備試方法索引（非試題庫、非AI題解服務）",
+  "intent": "考生想按年份、科目及卷別快速找到可用的DSE歷屆試題和評分參考，了解如何限時作答、核對得分點並從錯題安排重做。不要承諾未查實可免費下載的卷別；以HKEAA實際提供/發售資訊導流。",
+  "h1": "DSE 歷屆試題：按年份與科目查找官方試卷",
+  "title": "DSE 歷屆試題官方入口與備試方法｜DSE Level Up",
+  "description": "按年份與科目整理香港DSE歷屆試題官方查閱入口，協助考生找到可用試卷及評分參考，並說明如何設定限時練習、逐題核對評分要求、記錄失分原因及安排重做。頁面提供獨立撰寫的備試方法與自編示例方向，不代載、不重製考評局試題、圖表或評分內容；各年份供應方式以考評局最新資料為準，並提示官方來源連結與使用限制；禁止把官方材料輸入AI。",
+  "core_content": "建議章節：1) 按年份列官方試題／評分參考入口，標明資料來源與取得方式；不得暗示全部免費下載。2) 按科目索引，僅納入逐一核實存在的官方材料；指出卷別、年份及官方頁面，不複製題幹、答案、評分準則、圖像或圖表。3) 三步練卷法：先按考試時間獨立作答，再對照官方評分參考自評，最後記錄錯因並隔日重做；採用自行撰寫的短小「虛構題型」示範，不仿寫或改數字重現實際題目。4) 視覺只可用原創流程圖／空白錯題紀錄表，不能截圖、描摹或重製官方圖表與卷面。5) 每年更新官方連結、卷別供應狀況與最後查核日期；明示HKEAA版權，未獲書面許可不得複製、託管、轉載或修改其材料。不得把HKEAA出版物用於任何AI/ML模型、平台、軟件、系統或工具。6) 僅連到現有練習／科目頁作延伸，不能聲稱已有自動題解或作文AI批改；相關app/api尚未實作，且憲章禁新增付費API。",
+  "internal_links": "現有：/practice —「開始原創題目練習」；/dse-maths —「查看數學科目內容」；/dse-english —「查看英文科目內容」。官方外鏈（直接使用官方頁面）：https://www.hkeaa.edu.hk/en/resources/publications/list_of_publications/hkdse_erqp_pub/ —「HKEAA歷屆試題及評分參考」。規劃、尚不存在：本頁/年級與科目篩選錨點；/dse-chinese 等未見基線路由，不作實際內鏈。/ai/past-paper-explainer雖有頁面路由，但不得描述為已能分析或解答歷屆卷，避免作功能性轉換連結。",
+  "status": "Draft",
+  "reason": "基線 d25c637 的 CSV 第16列列為 P0「DSE Past Paper 題解總覽」，但基線沒有 /past-papers 路由；現有科目 hub 內容不足，且不能因此立即發布。可辨識的真實學生需求是找官方試卷/評分參考並形成練習流程，若只列年份科目連結則價值有限，必須加入有深度的練卷、自評、錯因及重做指引。HKEAA官方頁列有2005至2025部分年份卷冊/取得入口，並說明HKEAA持有出版物版權、未經書面許可不得重製/上載等，且任何出版物不得用於AI/ML模型、平台、軟件、系統或工具；故只連官方來源，不代載或AI解題。不能用AI生成仿真官方題目/圖表或聲稱作文機評；只可自編、非仿作的一般方法示例。P1 NEXT、Draft，待逐科逐年核對來源、完成頁面並production驗證後再議；沒有搜尋量依據，不作流量聲稱。",
+  "sources": [
+    "Repo baseline d25c637: docs/seo-content-map.csv (csv.reader row 16; URL /past-papers); docs/charter.md §§1.4, 5, 13 — inspected in repository.",
+    "Baseline route inventory (d25c637): no app/past-papers route; app/practice/page.tsx, app/dse-maths/page.tsx, app/dse-english/page.tsx exist.",
+    "https://www.hkeaa.edu.hk/en/resources/publications/list_of_publications/hkdse_erqp_pub/ — HKEAA listing of years and Question Papers with marking schemes; access method differs by year.",
+    "https://www.hkeaa.edu.hk/en/resources/publications/copyright/ — HKEAA copyright notice; prior written permission for reproduction, and prohibition on use of publications in relation to AI/ML models/platforms/software/systems/tools."
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/16.json"
+}

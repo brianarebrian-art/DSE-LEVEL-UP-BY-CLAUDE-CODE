@@ -1,0 +1,21 @@
+{
+  "index": 40,
+  "url": "/dse-english/integrated-skills",
+  "priority": "BLOCKED",
+  "page_type": "DSE English Paper 3 專題學習指南",
+  "intent": "準備 HKDSE 英文 Paper 3 Listening and Integrated Skills 的學生，想知道如何聽取及閱讀多來源材料、篩選和整合資料，並完成實用情境下的寫作任務；也需要分清必答 Part A 與選做 B1／B2 的要求。此頁不應泛稱所有英文綜合能力。",
+  "h1": "DSE English Paper 3 綜合聆聽與讀寫：資料整合及答題步驟",
+  "title": "DSE English Paper 3 綜合聆聽與讀寫｜資料整合技巧",
+  "description": "DSE English Paper 3 綜合聆聽與讀寫：練習從錄音及閱讀材料篩選、整合資料，再完成實用情境寫作。掌握題目指令、筆記取捨、改寫與核對流程，並以原創短例示範常見失分。依考評局現行評核架構說明 Part A 與 B1／B2 的分工；不重製受版權保護的試卷或錄音。學生可按步驟練習資料整合。",
+  "core_content": "建議採用原創教學，不以空泛的「綜合能力核心概念」充數：1. 先按考評局評核架構界定 Paper 3 是 Listening and Integrated Skills，交代 Part A 的聆聽任務，以及 Part B1/B2 在同一主題下結合聆聽、閱讀和寫作；清楚標註資料、年份及適用架構，勿將 2028 架構不加說明地當成所有應屆考生規則。2. 教學生讀任務指令：標記受眾、目的、文體、必須涵蓋的要點、字數及資料來源。3. 建立聽讀筆記流程：把音訊/文本資訊按題目所需分類，記錄關鍵事實與來源，區分相同、互補及矛盾資料；避免整段抄錄。4. 示範整合與寫作：用自行編寫的短音訊稿摘要及短閱讀材料，先建立「要點—來源—寫作位置」表，再示範改寫、組織段落及核對覆蓋率。5. 加入原創迷你例題及逐步答案，展示漏答要點、誤聽數字/限定詞、把推論當事實、照抄原句及文體/受眾不合等錯誤，附訂正理由。6. 提供考前自查清單及一題由淺入深的練習；用原創示意表格呈現來源對照即可，若圖表有助展示整合則由團隊自行製作。不得承諾或暗示 AI 生成練習、AI Past Paper 解題或英文作文自動批改/打分已存在；app/api 未實作且憲章禁止新增付費 API。不得貼出考評局試卷題目、錄音、評分材料或大段原文；Past Paper 只可在有合法授權及明確可核對的題目來源時引用名稱/年份、頁碼及官方連結，無題目 source 不可宣稱已涵蓋真題或真題解析。",
+  "internal_links": "已存在：/dse-english — anchor「DSE English 科目頁」；/practice — anchor「開始英文練習」（確認 app/practice/page.tsx 存在，但需到正式頁核實其英文題型入口）；/writing — anchor「英文寫作練習」（確認 app/writing/page.tsx 存在）。不要連到未存在的 /ai/practice-generator（CSV提案路徑，非此基線可驗證路由）。",
+  "status": "Blocked",
+  "reason": "真實學習需求明確且與 /dse-english/writing-format 的一般文體格式指南不同，應聚焦 Paper 3 的聽讀資料整合，不建議合併或刪除；目前原始碼沒有 /dse-english/integrated-skills 路由，只有科目頁及 writing-format 頁，資料地圖列出的通用大綱也沒有可核實的專題教學、原創例題或題目來源。官方 2028 評核架構確認 Paper 3 含 Part A 及二選一 Part B1/B2，後者整合聽讀及寫作，但仍須依預定服務考生年度查明適用架構，且不可由架構文件推稱已有 Past Paper 教材。依任務要求來源不足即 BLOCKED；待補足年度適用性、原創示例及編輯覆核後再重新排序。基線 HEAD 為 d25c63740a9184d0303e2558c8ee6f51643258d6；未驗證不得列 Published。",
+  "sources": [
+    "docs/seo-content-map.csv：csv.reader 第40列（不含 header），目標 URL、原始意圖、類型、大綱、連結及 CTA。",
+    "docs/charter.md §16.A：禁止長答／作文自動批改與評分；§5 與紅線約束禁止新增付費 API；§19.3 第4點：受版權保護原文只記章節名稱、頁碼及連結。",
+    "基線原始碼：app/dse-english/page.tsx 與 app/dse-english/writing-format/page.tsx 存在；app/dse-english/integrated-skills/page.tsx 不存在。app/practice/page.tsx 及 app/writing/page.tsx 存在。",
+    "香港考試及評核局，《2028 HKDSE English Language Assessment Framework》，https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2028hkdse-e-elang-9d8.pdf ：Paper 3（Listening and Integrated Skills）約兩小時、佔30%；Part A必答，Part B1/B2二選一，B部分含整合聆聽/閱讀與寫作任務。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/40.json"
+}

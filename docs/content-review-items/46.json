@@ -1,0 +1,20 @@
+{
+  "index": 46,
+  "url": "/dse-chinese/modern-chinese",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記／DSE中文科現代文閱讀理解",
+  "intent": "備考學生要學會現代文閱讀題審題、回文定位、引用文本證據和組織答案，並透過例題辨析常見失分。不捏造搜尋量。",
+  "h1": "DSE中文現代文閱讀理解：審題、定位與答案組織",
+  "title": "DSE中文現代文閱讀理解：審題與答題方法｜DSE Level Up",
+  "description": "掌握DSE中文科現代文閱讀的審題與作答方法：學會定位文眼、梳理段落關係、辨析語氣與推論，並透過原創改寫例題逐步拆解證據選取、答案組織及常見失分原因。依2024年起官方卷別資訊核對範圍，附自我檢核清單與延伸練習入口，助你把理解步驟轉化為穩定作答策略。另列官方參考資料，避免混淆新舊卷別；並以不同題型練習落實方法。",
+  "core_content": "內容章節：分辨概括、分析、比較、推論等題幹指令及作答範圍；以段落功能、轉折詞、指代與語氣梳理文意；示範「題幹關鍵詞→回文定位→證據→解釋→精簡作答」步驟；用原創短文和原創平行改寫例題逐步示範證據與推論界線；比較過度推論、照抄、答非所問及漏答比較對象等錯誤答案；附自我檢核表和延伸練習。可用自製段落結構或證據標註圖。Past Paper只連官方來源，不轉載官方試題、文章或答案。不可宣稱AI生成題或作文機評已可用：app/api未實作且憲章禁止新增付費API和長答／作文自動評分；以人工自評取代。",
+  "internal_links": "/dse-chinese —「DSE中文科總覽」（planned，基線未有）；/practice —「開始閱讀理解練習」（存在）；/ai/practice-generator —「練習生成器」（存在，但不可宣稱支援中文閱讀理解生成）；/ai/past-paper-explainer —「官方試題說明」（存在，僅連官方材料）。",
+  "status": "Draft",
+  "reason": "基線 d25c637 的 app source 未有目標路由或中文科hub，現有中文hubs內容不足以發布；目標大綱缺少實際教學、原創例題及逐步答案分析，亦未production驗證。列P1 NEXT、Draft，待完成內容和教師核驗後再評估發布。考評局官方2024中文科資源分Paper 1與Paper 2教師研討會資料；頁面須聚焦現代文閱讀並再按官方現行資訊核實卷別，不將不同年份格式混為一談。遵守憲章版權要求，只用原創平行改寫例題並連官方參考，不重製受保護卷題、文章、答案。AI生成與作文機評未實作且付費API/作文自動評分受禁，不能假設存在。無重複項；保留而非合併或刪除。",
+  "sources": [
+    "基線 d25c637：docs/seo-content-map.csv 第46列，csv.reader計數不含header",
+    "基線 d25c637：docs/charter.md §1第4點、§5、§16.A",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chi_lang/or/bs2024.html — HKEAA 2024中文科Paper 1及Paper 2研討會資源"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/46.json"
+}

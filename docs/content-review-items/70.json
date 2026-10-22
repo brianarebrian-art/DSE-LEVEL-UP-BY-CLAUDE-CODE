@@ -1,0 +1,19 @@
+{
+  "index": 70,
+  "url": "/dse-chemistry/qualitative-analysis",
+  "priority": "BLOCKED",
+  "page_type": "化學定性分析主題教學／實驗技能頁；現CSV設定為未證實Past Paper題解",
+  "intent": "學生可能要學習定性分析測試步驟、觀察和推論。考評局框架只確認其為SBA必須評核，未證實此頁聲稱的Past Paper題解或失分位題源。",
+  "h1": "DSE 化學定性分析：實驗步驟、觀察結果與推論",
+  "title": "DSE 化學定性分析｜實驗步驟與觀察結果｜DSE Level Up",
+  "description": "整理 DSE 化學定性分析的實驗流程、觀察記錄與推論方法，說明定性分析在校本評核中的位置，並以原創例子練習如何由現象判斷物質；不冒稱歷屆試題。內容提示操作安全、觀察與結論的分別、答案推理步驟及反應依據核實方式，不列未查證題目。發佈前須核對官方版本及題目授權，勿把校本實驗評核誤寫成公開試題。各例標示來源。",
+  "core_content": "建議解除阻塞後改為主題教學：區分觀察／推論／結論；依官方課程或SBA手冊列出核實過的試劑、步驟、安全注意、陽性觀察及推論限制；用明確標為原創的情境題示範由觀察表判斷未知物、作答理由及常見誤判；以原創流程圖、觀察對照表深化學習，並附SBA記錄提示。每個反應和測試須核對現行官方來源並註明版本。現無具體題源／授權，不列Past Paper原題、評分要求或失分位；不可複製考評局圖表。AI出題、解題、批改未實作且憲章禁止新增付費API；無需AI圖，可用自製圖。",
+  "internal_links": "現存：/ai/past-paper-explainer（anchor「了解解題工具」；不代表支援本頁或AI批改）。planned、非現有連結：/dse-chemistry（化學科總覽）、/past-papers（須確認路由及授權）。",
+  "status": "Blocked",
+  "reason": "基線d25c637中目標頁及/dse-chemistry、/past-papers均不存在。CSV只有概括的題解描述，無卷年題號、題目來源或重用權利。考評局2029框架確認S5-S6至少一次Qualitative Analysis SBA評核，足以支持技能教學需求，不足以支持Past Paper題解宣稱。欠具體官方測試內容及可合法使用的題源，按來源不足規則BLOCKED。可改以官方核實的技能內容和原創例題、表格、流程圖提供深度；不得杜撰試題或AI功能。化學hub不足，不能PUBLISH NOW；實作未production驗證只可Draft。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/chem/2029hkdse-e-chem-hy5.pdf — HKEAA 2029 Chemistry Assessment Framework：公開考試/SBA及QA評核規定。",
+    "Repo baseline d25c63740a9184d0303e2558c8ee6f51643258d6：docs/seo-content-map.csv row 70；docs/charter.md §5、§8；基線路由檢查。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/70.json"
+}

@@ -1,0 +1,22 @@
+{
+  "index": 14,
+  "url": "/ai/past-paper-explainer",
+  "priority": "P1 NEXT",
+  "page_type": "AI 學習工具說明／安全使用指南（交互功能未驗證前不可宣稱可用）",
+  "intent": "考生搜尋 DSE Past Paper 題解或 AI 解題工具，想看懂題目條件、逐步推理及常見失分，而非只抄答案；以逐步提示與自我核對為學習價值核心。",
+  "h1": "DSE Past Paper AI 題解：逐步提示、核對思路與版權安全",
+  "title": "DSE Past Paper AI 題解指南：逐步拆題與核對思路｜DSE Level Up",
+  "description": "讓香港 DSE 考生逐步理解歷屆試題的條件、解法與失分原因：先自行嘗試，再用不代答的提示檢查推理，並回到課本或教師核實。頁面須說明 AI 可能出錯、輸入題目版權風險及不應貼上受保護全文；只示範原創平行題，不重刊考評局試題或評卷資料。以原創示例練習逐步驗算，辨認何時應停止依賴自動答案，改向教師或官方資料核實。",
+  "core_content": "建議章節：1. 說明適用情境及限制：基線頁只有靜態說明，不能聲稱有題目上傳、AI 生成解析或作文機評；app/api 未實作相關服務，憲章禁止新增付費 API。2. 六步學習流程：先獨立作答、標出已知條件與所求、要求只提示下一步、逐行檢查理由、對照課本／教師／官方公開要求、記錄錯因並重做，避免一次索取整份答案。3. 原創例題：以改寫情境與數字的二次方程示範條件→建模→解方程→代回檢查，含漸進提示、常見符號／移項錯誤及自我檢核；不複製歷屆試題、官方評分準則或題目圖像。4. AI 可靠性與私隱：可能計算錯誤或誤讀題意；逐步驗算、不輸入個資，並說明何時應問老師。5. Past Paper 版權：僅提供科目／年份／卷別／題號與官方連結作定位，不重刊受保護原文；示例遵守憲章的原創平行改寫並標明非考評局官方題目。6. CTA 至現有練習或主題筆記。插圖僅用自製抽象流程圖，不用受保護試卷截圖。數學例題須確認屬 M1 或 M2 才可標示微積分；此示例不涉及微積分。",
+  "internal_links": "現有：/paper-warrior（「查看題目練習」；基線頁已有）、/dse-maths/quadratic-equations（「Maths 一元二次方程題解」）、/ai/practice-generator（「AI 練習題生成器」）、/methodology（「內容與題庫方法」）、/practice（「開始練習」）、/dse-maths、/dse-english（科目 hub，內容補足後再導流）。未實作的按題目呼叫解析、即時 AI 及輸入框不可假裝為現有功能或連結。",
+  "status": "Draft",
+  "reason": "d25c637 基線 source 確實存在 app/ai/past-paper-explainer/page.tsx，但只含靜態使用流程、練習 CTA 與相關連結，沒有題目輸入或解題 API；不能把頁名當成可運作產品。保留作逐步學習及版權安全指南，補足內容並驗證功能與聲稱後再上線；不是 P0 PUBLISH NOW。例題限原創平行改寫，禁止複製考評局受保護原文、官方評分資料或試卷圖像。未核實現行卷別／考綱，本稿不聲稱對應特定卷別；如補充須先以考評局官方來源核查。第14筆不應合併：原始第21／31與第10／11為兩組 Maths quadratic equations、English writing format 重複，後組標 MERGE；均與本頁意圖不同。",
+  "sources": [
+    "docs/seo-content-map.csv（d25c637，Python csv.reader 第14列及相關重複列）",
+    "docs/charter.md（d25c637，版權原創平行改寫原則、§5 禁止付費 API）",
+    "app/ai/past-paper-explainer/page.tsx（d25c637，存在且內容為靜態）",
+    "app/api/（d25c637，未見此頁解題 API）",
+    "app/dse-maths/quadratic-equations/page.tsx、app/ai/practice-generator/page.tsx、app/methodology/page.tsx、app/paper-warrior/page.tsx（d25c637，內鏈路由存在）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/14.json"
+}

@@ -1,0 +1,21 @@
+{
+  "index": 76,
+  "url": "/dse-physics/thermal-physics",
+  "priority": "P1 NEXT",
+  "page_type": "DSE物理熱與氣體主題學習頁（原創例題；不冒稱官方歷屆題解）",
+  "intent": "學生溫習DSE物理熱與氣體，想理解熱量、比熱容量、比潛熱與氣體分子模型，並練習多步計算、解釋及實驗題。考評局2025評核簡報列出Heat & Gases題目；官方2024樣本卷亦有相應題型，故主題搜尋意圖可信，但不可由此推斷搜尋量或保證考試頻率。",
+  "h1": "DSE物理熱與氣體：熱量計算、氣體模型與實驗題",
+  "title": "DSE物理熱與氣體｜熱量、潛熱與氣體模型｜DSE Level Up",
+  "description": "溫習DSE物理熱與氣體：掌握熱容量、比熱容量、比潛熱和氣體分子模型，透過原創改寫例題練習能量轉移、實驗設計、圖表判讀及常見計算錯誤，並逐步拆解單位、有效數字與解釋題作答方法。聚焦考生易混淆的概念與解題步驟，附延伸自測方向，協助你由公式理解走到獨立應用，按步建立穩固概念，並清楚分辨題目給定條件、合理假設與答案表達要求。",
+  "core_content": "建議章節：1. 熱與內能、溫度和熱平衡的區分；2. 比熱容量與熱容量關係Q=mcΔT，說明單位、溫差及能量守恆；3. 相變與比潛熱Q=mL，辨析升溫與相變過程；4. 熱傳遞及量熱實驗的能量帳、熱損失假設與改善方法；5. 氣體分子模型、壓力與溫度的微觀解釋，以及適用範圍；6. 分步題型策略、單位換算、有效數字和常見錯誤。例題方向必須獨立改寫：電熱器加熱水並估算能量/潛熱；金屬球放入水中作熱容量估算；比較不同條件下氣體分子數、平均動能或均方根速率。提供原創示意熱曲線及「溫度—時間」或能量流程圖並標明為自製，不複製考評局圖。每題附步驟、物理理由、易錯點及變式練習；以考綱核實後界定範圍。不得直接刊載考評局試題、評分準則或掃描圖；可連往官方試卷頁並由讀者自行查閱。不得宣稱實作AI生成/作文機評或自動批改。",
+  "internal_links": "已存在：/practice（anchor：做相關物理練習；僅在確認含熱與氣體題目後使用，否則標 planned）、/ai/past-paper-explainer（anchor：查看現有歷屆題解工具；不可聲稱本頁接入自動生成或批改）。planned：/dse-physics（物理科目入口，基線不存在）、/past-papers（歷屆試題索引，基線不存在）。CSV原列兩條均不可當成已存在連結。",
+  "status": "Draft",
+  "reason": "基線 d25c637 中目標頁、/dse-physics hub 與 /past-papers 均不存在；/ai/past-paper-explainer 雖存在，但 app/api 和 lib 未見支援這頁的生成接口，不能暗示已有AI解題服務。憲章§4要求實際UI驗證、§4及§5禁止未驗證或付費API新增，§16.A禁止長答/作文自動評分；§4及§12亦要求內容準確，§13要求標示獨立改寫及官方試題另行下載。考評局官方2025簡報確認Heat & Gases是試題主題，2024樣本卷列有熱與氣體例題及對應題目年份，但本地沒有已驗證的熱學歷屆題目來源、答案/評分依據或授權供逐題講解；因此不可稱Past Paper題解、不可照錄原題或評分指引。改以具體概念教學和原創平行例題具有學習價值，深度應覆蓋熱量計算、潛熱、量熱實驗、氣體模型與圖表判讀。須先完成原創內容及官方考綱/來源核查、補齊真實導航並在production驗證，故僅Draft，不是Published。這筆無需合併；不將另一組原始重複列另行處理。",
+  "sources": [
+    "Repo baseline d25c63740a9184d0303e2558c8ee6f51643258d6: docs/seo-content-map.csv 原始第76筆（csv.reader、含header的row index 76）；app/dse-physics/thermal-physics、app/dse-physics、app/past-papers 不存在；app/ai/past-paper-explainer 存在。",
+    "docs/charter.md §4、§5、§8、§13、§16.A及§16.B：整合/成本限制、題目獨立改寫及版權聲明、禁止長答自動評分與AI身份隱瞞。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/PowerPoint-PHY-2025.pdf — HKEAA 2025 Physics Report on Assessment；列有Heat & Gases題目。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/SamplePaper-2024-PHY-E.pdf — HKEAA Physics Sample Paper (2024 onwards)；列出熱與氣體樣本題及題目改編年份。官方卷頁含版權聲明，僅作核實和導向，不複製題目。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/76.json"
+}

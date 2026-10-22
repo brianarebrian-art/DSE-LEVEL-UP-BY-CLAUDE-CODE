@@ -1,0 +1,22 @@
+{
+  "index": 75,
+  "url": "/dse-physics/waves",
+  "priority": "BLOCKED",
+  "page_type": "長尾題解／課題複習頁（待證據補齊）",
+  "intent": "學生搜尋 DSE Physics waves／波動題目解法、波速頻率波長週期的公式運用及常見失分位；CSV列宣稱 Past Paper 題解，但未能辨認考評局年份、卷別或題號。",
+  "h1": "DSE Physics 波動：波速、頻率、波長與週期題解",
+  "title": "DSE Physics 波動題解：波速、頻率、波長與週期｜DSE Level Up",
+  "description": "用 DSE Physics 波動題掌握波速、頻率、波長與週期的公式選用、單位換算和分步作答。整理讀題方法、計算示例與常見失分檢查，並清楚區分原創練習與經核實的歷屆試題，避免把未核對題目誤稱 Past Paper。附原創圖表讀法與逐步自我檢查，幫你釐清概念和算式。適合考前溫習，逐步建立穩定解題習慣。好。",
+  "core_content": "解除阻塞後可改作概念與練習頁：1. 從題幹辨認波速v、頻率f、波長λ、週期T，統一SI單位。2. 解說v=fλ、T=1/f及量間關係；現行考綱範圍須先官方核實。3. 例題方向採原創平行題：頻率與波長求波速；波速與頻率求波長；頻率求週期並作毫秒換秒。列已知、公式、代入、單位與合理性檢查，不標Past Paper。4. 原創波形圖練習讀同相點波長，區分位移—距離與位移—時間圖；加文字替代說明。5. 易錯：混淆速度頻率、峰到峰誤讀半波長、單位換算、週期公式倒置、量綱錯。6. 未取得可核對官方年份／卷別／題號與授權前，不呈現或改寫具體歷屆題目或評分要求；平行練習必須明示原創。",
+  "internal_links": "基線存在：/ai/past-paper-explainer（anchor：查看題目解釋工具；不代表具備波動題庫、生成或機評）。規劃但不存在：/dse-physics（物理總覽）、/past-papers（試題索引）。/dse-physics/waves本身在基線不存在。",
+  "status": "Blocked",
+  "reason": "原始列要求波動歷屆題解；指定基線d25c637不存在此URL，也不存在/dse-physics或/past-papers。題庫確有waves分類及以v=fλ、週期為本的參數化練習，足以支持一般教學，但檢視未見歷屆年份、卷別、題號或官方來源對照，不能稱Past Paper。需先以現行官方課程核對範圍，逐題建立來源登記並完成試題授權／引用權利核查；考評局官方科目頁列Physics及試卷資源、reproduction permission入口。圖表應原創，勿複製官方題圖。依憲章採原創平行改寫且不得侵權；不得新增付費API，AI生成及作文／長答機評不可假設已實作。現有hubs不足、未達production驗證，不得PUBLISH NOW；來源補齊後重審Draft。",
+  "sources": [
+    "docs/seo-content-map.csv以csv.reader讀第75筆；指定基線commit d25c637。",
+    "基線git ls-tree：無/dse-physics/waves、/dse-physics、/past-papers；data/questions/physics-bank.ts有waves分類及參數化練習，無可追溯歷屆題標識。",
+    "docs/charter.md §1、§5、§16.A：原創平行改寫、零版權侵犯、禁止新增付費API與長答機評。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A2&2&20",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/phy/faq_q/q3.html"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/75.json"
+}

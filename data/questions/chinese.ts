@@ -62,7 +62,10 @@ const id = (p: string) => `zh_${p}_${++uid}`
  *
  * 因此停用的做法是：照樣呼叫 `id()` 把編號用掉，但不產出題目。
  */
-const retire = (_consumedId: string): Question[] => []
+const retire = (_consumedId: string): Question[] => {
+  void _consumedId
+  return []
+}
 
 // ── 1. 指定範文・內容主旨（十二篇）─────────────────────────────────────────────
 const fwContent: Question[] = [

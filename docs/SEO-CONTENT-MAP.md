@@ -1,16 +1,9 @@
 # SEO 內容地圖
 
-> 每頁上線前仍須由內容負責人核對 syllabus、題目來源和更新日期。title 與 description 應以實際可見內容為準，不以關鍵字堆砌為目標。
+> HISTORICAL／已取代：以下是 d25c637 的原始 80 筆提案，不代表頁面存在、功能可用或可以發布。當前決策只採用 `SEO-CONTENT-MAP-V2.md` 與 `seo-content-map-v2.csv`；不再執行舊批量提案生成器。原始數據保留供審核追溯。
 
 | 優先級 | 目標搜尋意圖 | 建議頁面/title | URL | 頁面類型 | 內容大綱 | 內部連結 | CTA |
-|---| |
-|---| |
-|---| |
-|---| |
-|---| |
-|---| |
-|---| |
-|---||
+|---|---|---|---|---|---|---|---|
 | P0 | DSE 各科筆記與練習 | DSE 各科筆記與練習｜DSE Level Up | /subjects | 科目總覽 | 科目選擇、學習路線、練習入口 | 各科頁、AI 工具 | 選擇科目 |
 | P0 | DSE Maths 筆記與題解 | DSE Maths 筆記與題解｜DSE Level Up | /dse-maths | Maths | 核心章節、公式、例題、錯誤 | 二次方程、練習、Past Paper | 開始 Maths 練習 |
 | P0 | DSE English 筆記與寫作技巧 | DSE English 筆記與寫作技巧｜DSE Level Up | /dse-english | English | 文體、閱讀、文法、練習 | writing format、寫作 | 開始 English 練習 |

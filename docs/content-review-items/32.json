@@ -1,0 +1,22 @@
+{
+  "index": 32,
+  "url": "/dse-english/argumentative-writing",
+  "priority": "P1 NEXT",
+  "page_type": "DSE English 寫作文體教學頁（以 Paper 2 長文任務中的議論技巧為核心，不宣稱議論文是固定或每年必考文體）",
+  "intent": "學生搜尋 DSE English argumentative essay 寫法時，想知道怎樣提出清楚立場、發展理由及例證、處理反方觀點，並在限時寫作中組織及修訂約400字長文。這些是可遷移的寫作能力；搜尋量未查證，不作需求量聲稱。",
+  "h1": "DSE English 議論文寫作：立場、論據與反方回應",
+  "title": "DSE English 議論文寫作：立場、論據與反方回應｜DSE Level Up",
+  "description": "掌握 DSE English 議論文寫作：由立場、理由與例證組成有力段落，學會回應反方觀點、安排文章結構並修訂語言。附原創示範題、逐步構思與常見論證漏洞，協助你在 Paper 2 長文任務中切合情境、目的和讀者；內容說明議論文是可練習文體，並非每年必考題型。 逐步建立清晰、可信而有說服力的論證。",
+  "core_content": "以原創而非歷屆原題的題目示範完整寫作流程：先辨認情境、目的與讀者，再界定議題、寫出可辯護的立場；以「主張—理由—具體例子／解釋—扣回立場」發展每段；選擇性呈現反方理由並作有根據的回應；用清晰段落次序、連接語及適當語氣組織全文；最後檢查論點是否切題、例證是否支持主張、語法與用字是否準確。提供逐步構思樣例、弱／強論據對照、常見問題（空泛例證、重複理由、離題、只列正反兩邊而沒有立場、過度背誦套句）及限時寫作自查清單。說明考評局2027框架將Paper 2列為兩小時、佔科目25%；Part A約200字且有引導，Part B約400字、四題選一，較開放；寫作評核重視切合情境／目的／讀者、相關內容、支持細節、連貫組織及語言運用。明言 argumentative essay 是可練習的論證策略，不等同每年固定題型。示範題與所有例文須自行撰寫、作原創平行情境，不轉載考評局原題、範文或考生作品；如提及歷屆題，只列年份／卷別及官方連結，不重製題目或圖表。不得聲稱或連結不存在的AI作文生成／機評能力；本頁應為真人自學內容。",
+  "internal_links": "現有：/dse-english（anchor：DSE English 主題頁）；/dse-english/writing-format（anchor：英文寫作格式總覽）；/practice（anchor：前往練習平台；不得宣稱已有英文議論文題庫）。/ai/practice-generator 雖路由存在，但不是作文生成／作文批改功能，不應以作文AI功能作連結承諾。planned：待 English hub 實際列出文體連結後，由 hub 連入本頁。",
+  "status": "Draft",
+  "reason": "基線 d25c63740a9184d0303e2558c8ee6f51643258d6 的 source 沒有 app/dse-english/argumentative-writing 頁面；English hub 和 practice 路由存在，但尚未足以支持本頁直接發布。此議題與第32筆具體的議論論證技能相關，來源可核實，適合保留作下一批內容，不宜因五個priority實作正在進行而視作已完成或已production驗證。保留第32筆，不得另把重複的第21／31筆各自當成新頁保留；第10／11筆按指示合併處理，本筆無須再合併。寫作指南需超越泛泛模板，加入可逐步學習的原創題例、反方回應、論證診斷及修訂練習。考評局2027框架支持Paper 2的兩部分及約200／400字指引，但不支持將議論文說成必考固定文體。依法務／憲章限制，不可照錄受版權保護試題、考生作品或圖表；只用原創平行例題，必要時指向官方來源。AI生成及作文機評未在app/api實作，且憲章禁止新增付費API，不能假設具備或以此作價值承諾。",
+  "sources": [
+    "基線檢查：git rev-parse HEAD = d25c63740a9184d0303e2558c8ee6f51643258d6；CSV以Python csv.reader讀取，header後第32資料列即索引32。",
+    "docs/charter.md §1(4)；§末版權限制（約第862行）：題目使用原創平行改寫，不得重製考評局受版權保護原文；只可提供章節名稱、頁碼及連結。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2027hkdse-e-elang.pdf — 2027 HKDSE English Language Assessment Framework，Paper 2 Writing及Writing assessment objectives。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/eng_lang/faq_q/q4.html — HKEAA English Language FAQ，Paper 2字數指引與評分說明。",
+    "基線source路由檢查：app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx、app/practice/page.tsx、app/ai/practice-generator/page.tsx存在；app/dse-english/argumentative-writing不存在。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/32.json"
+}

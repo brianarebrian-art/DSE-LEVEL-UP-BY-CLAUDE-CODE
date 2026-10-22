@@ -5,7 +5,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 
-const home = readFileSync('app/page.tsx', 'utf8')
+const home = readFileSync('app/HomePageClient.tsx', 'utf8')
 
 test('the home page imports neither MathText nor katex', () => {
   assert.doesNotMatch(home, /from '@\/components\/MathText'|from 'katex'/)

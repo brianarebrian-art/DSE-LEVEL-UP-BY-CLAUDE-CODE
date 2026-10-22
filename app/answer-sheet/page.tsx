@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { completeSeoMetadata } from '@/lib/seo'
 import { Suspense } from 'react'
 import AnswerSheetClient from './AnswerSheetClient'
 
@@ -12,12 +12,10 @@ import AnswerSheetClient from './AnswerSheetClient'
 // 而家補返 server 端標題與用法說明（呢啲本來就係靜態文字，唔涉個人數據），
 // fallback 亦由「…」改為有意義嘅載入提示。互動邏輯無任何改動。
 
-export const metadata: Metadata = {
-  title: '紙筆對答案 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
-  description:
-    '掃描列印練習卷上的 QR 或輸入卷號，即時顯示全卷正確答案與解析。對照紙上答案自行批改，答錯可自診概念盲區、審題陷阱或運算粗心，成績併入個人進度。', // i18n-exempt: 靜態 SEO meta description
-  alternates: { canonical: '/answer-sheet' },
-}
+export const metadata = completeSeoMetadata({
+  title: '紙筆對答案 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '以列印練習卷的 QR 碼或卷號重開答案紙，對照正確答案、解析並自行記錄紙筆練習結果。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/answer-sheet')
 
 export default function AnswerSheetPage() {
   return (

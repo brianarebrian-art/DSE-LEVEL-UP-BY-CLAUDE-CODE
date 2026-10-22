@@ -1,0 +1,24 @@
+{
+  "index": 23,
+  "url": "/dse-maths/coordinate-geometry",
+  "priority": "P1 NEXT",
+  "page_type": "DSE Maths 單一主題教學頁（坐標幾何）",
+  "intent": "學生遇到DSE坐標幾何題，想掌握座標量度與直線性質的公式選用、列式步驟和常見錯誤，並透過有解釋的例題判斷自己是否懂得由題目條件建立方程。屬具體解題型學習意圖；不推斷搜尋量。",
+  "h1": "DSE 坐標幾何：距離、中點、斜率與直線方程",
+  "title": "DSE 坐標幾何筆記｜距離、中點、斜率與直線方程",
+  "description": "學習 DSE 坐標幾何的兩點距離、中點、斜率與直線方程，透過逐步例題練習由座標求線段性質、判斷平行垂直及建立直線方程，並整理負斜率、座標次序和代入檢查等常見失誤。另以自製圖示連結代數步驟與平面位置，提供可核對的解題方法與學習提示；附自我檢查方向，逐步練習，歷屆試題僅列官方來源，不重製未授權題文或圖表。",
+  "core_content": "建議新建目前不存在的專題頁，採「條件辨認→公式→逐步例題→自我檢查」教學：1）說明座標平面、點的橫縱座標與線段差值，避免將x、y或兩點次序混淆；2）按題目要求整理兩點距離、中點座標、斜率及直線方程的關係，交代公式適用條件（例如垂直線斜率未定義）及由一般式／斜截式讀取資訊；課程範圍及考試要求須先對照現行官方數學課程文件，不自行聲稱必考；3）安排至少三組原創平行例題：由兩點求距離與中點；由兩點求斜率再判斷平行／垂直；由點斜條件建立直線方程並代回核對。每題展示逐步推理、符號理由、答案及易錯替代步驟；4）以自行繪製、標示清晰的座標圖配合例題，圖中座標點、比例與方程互相核對，提供文字描述或表格作無障礙替代；不使用未授權Past Paper掃描、原題圖表或逐字題文；可列官方歷屆試題下載連結／年份卷別題號作延伸，未核實來源不得標為Past Paper；5）整理斜率正負、垂直斜率、分數運算、座標代入及方程未化簡等錯誤，附短題讓學生逐步自查。不要承諾AI生成題或作文機評（app/api未實作且憲章禁止新增付費API）；練習CTA只能導向現存練習入口。",
+  "internal_links": "/dse-maths —「返回 DSE Maths 主題索引」（基線存在）；/practice —「開始 DSE 練習」（基線存在）；/subjects/mathematics —「練習數學題目」（基線存在）。不採用原列 /ai/practice-generator 作本頁已可用生成器的暗示。",
+  "status": "Draft",
+  "reason": "csv.reader讀得原始第23筆（不含header）為P1坐標幾何主題筆記。基線d25c637中沒有 app/dse-maths/coordinate-geometry/page.tsx，僅 docs/SEO-CONTENT-MAP.md 有規劃記錄；已有 /dse-maths hub與二次方程專題可供導航，但不能當作本頁已存在或內容已達深度。坐標幾何對應明確且可教的計算／建模步驟，有獨立例題與圖示價值，故保留為單一專題而非泛化併入hub；但建議內容尚未落地及未經官方課程範圍核對，列P1 NEXT、Draft而非PUBLISH NOW。發布前需核查官方現行課程範圍，完成原創解法及自製、可驗證圖示；Past Paper僅列有官方來源的索引連結，不複製題目全文或受版權保護圖表。原csv第10／11筆為quadratic equation及English writing format的早期重複映射，第11筆應MERGE到其較完整對應主題列；不代表本坐標幾何頁需合併。不得把AI生成或作文機評當成既有功能，且不可新增付費API。",
+  "sources": [
+    "基線 d25c637: docs/seo-content-map.csv（csv.reader第23列，不含header）",
+    "基線 d25c637: docs/charter.md（§1第4點原創平行改寫及版權要求；§5零成本／禁止新增付費API；§13每頁免責聲明）",
+    "基線 d25c637: docs/SEO-CONTENT-MAP.md（僅有本URL規劃記錄，非實際頁面）",
+    "基線 d25c637: app/dse-maths/page.tsx（科目hub存在）",
+    "基線 d25c637: app/dse-maths/quadratic-equations/page.tsx（相鄰數學專題作頁型參照）",
+    "基線 d25c637: app/practice/page.tsx、app/subjects/mathematics（現存練習入口）",
+    "現行DSE考綱及卷別尚未作官方查核；內容定稿前須補官方來源核對，不能據此報稱考試範圍或Past Paper內容"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/23.json"
+}

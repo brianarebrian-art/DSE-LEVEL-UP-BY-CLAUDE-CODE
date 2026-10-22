@@ -49,6 +49,7 @@ const byDiff = { basic: [], intermediate: [], hard: [] }
 for (const r of rows) (byDiff[r.difficulty] ?? byDiff.intermediate).push(r)
 const picked = []
 for (const [d, list] of Object.entries(byDiff)) {
+  void d
   if (!list.length) continue
   const want = Math.max(1, Math.round(K * list.length / rows.length))
   picked.push(...[...list].sort((a, b) => keyed(a.id) < keyed(b.id) ? -1 : 1).slice(0, want))

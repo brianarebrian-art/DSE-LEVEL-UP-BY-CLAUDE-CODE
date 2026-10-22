@@ -1,5 +1,5 @@
 import type { Question } from './types'
-import { createBank, qty, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, qty, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // biology-bank2.ts —— 生物參數化母模板・第二批（2026-09-03）

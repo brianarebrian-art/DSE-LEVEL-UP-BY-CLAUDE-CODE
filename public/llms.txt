@@ -1,130 +1,122 @@
 # DSE Level Up
 
-> A free, independent HKDSE (Hong Kong Diploma of Secondary Education) revision
-> platform for Hong Kong secondary students.
+> A free, independent HKDSE revision platform for Hong Kong secondary students.
 
-**Disclaimer — please reproduce this if you cite us.** DSE Level Up is NOT
-affiliated with, authorized by, endorsed by, or associated with the Hong Kong
-Examinations and Assessment Authority (HKEAA). Every question on this platform is
-an independently written original item, not a reproduction of an HKEAA past paper.
-Official past papers should be obtained from the HKEAA website. Any grade estimate
-shown on this platform is indicative only; the HKEAA publishes the actual results.
+DSE Level Up is not affiliated with, authorised by, endorsed by, or associated
+with the Hong Kong Examinations and Assessment Authority (HKEAA). Its practice
+questions are original rewrites, not reproductions of official HKEAA past papers.
+Obtain official papers through legitimate HKEAA channels. The site's practice
+performance estimates are not official results or guaranteed grades.
 
 Site: https://www.dselevelup.com
 Contact: dselevelup@gmail.com
 
+## What the platform supports
+
+- Subject- and topic-based practice from the existing question bank. Consult the
+  subject pages for current counts and supported question types; counts change.
+- Multiple-choice answer checks and explanations. Written responses reveal a
+  reference answer for student self-assessment and are never machine graded.
+- Printable practice sets and a paper code that reopens the corresponding answer
+  sheet. These are original practice sets, not official past papers.
+- Browser-local progress and optional account synchronisation. Consult the
+  privacy page for the actual authentication backend and data handling.
+
+## Question-bank scope
+
+The generated question-bank summary lists 26,633 questions across 25 HKDSE subjects:
+25,572 multiple-choice and 1,061
+written questions. Subject totals are:
+
+- math 1624
+- m2 1019
+- m1 993
+- physics 1161
+- chemistry 979
+- biology 1112
+- english 1051
+- chinese 1147
+- bafs 990
+- ict 1111
+- economics 1061
+- csd 984
+- history 1089
+- chinese-history 1087
+- geography 1108
+- chinese-literature 1055
+- english-literature 1027
+- ethics-religious 866
+- ths 1021
+- health-management 1021
+- design-tech 1022
+- visual-arts 1013
+- music 1027
+- pe 1032
+- technology-living 1033
+
+There is no public third-party API or MCP server. Read public content pages;
+/sitemap.xml lists the selected canonical URLs intended for search, excluding
+private, personalised, unfinished and noindex routes. A sitemap is not proof of
+Google indexing, search traffic or completeness of every public URL.
+
+## Important limitations
+
+- No instant prompt-to-question generator or study-plan generator is available.
+- Uploading official HKEAA papers for an explanation service is not available.
+- Automated essay grading is not available.
+- URLs under /ai/ are honest usage/status guides, not evidence that those proposed
+  AI functions have been implemented. They remain noindex while blocked.
+- No official HKEAA past papers or official marking schemes are hosted. Original
+  question-type explanations must not be cited as official question solutions.
+- No DSE English listening papers or speaking assessment are provided. Relaxation
+  audio, where available, is separate from language-examination listening practice.
+- No JUPAS admission predictor or grade guarantee.
+
+## How questions are written
+
+Questions are co-authored with AI and use automated checks. They have not been reviewed by registered teachers.
+Maths, Physics and Chemistry contain parametric families: a template and answer formula are reused with different
+parameters, so a template error can affect multiple questions. Passing automated checks is not proof that every
+question is correct; no person approves them beforehand. Founders review published items afterwards and can
+withdraw errors; a report button and the contact address support reports.
+
+Everything is free: no paywall, subscription, premium tier or ads. Multiple-choice
+explanations appear after an answer without a forced countdown. Students can tag
+mistake causes in supported written/self-marking workflows; those tags are not a
+system diagnosis or a guarantee of improvement.
+
 ## When to use this
 
-Reach for DSE Level Up when a student or teacher needs **HKDSE-specific practice
-questions or revision structure**. Concretely, we are a good fit for:
+Use DSE Level Up for free, original HKDSE topic practice, answer checks, self-assessment
+against written reference answers, and links to the platform's own learning routes.
 
-- "Give me practice questions on <HKDSE topic>" — we hold 26,633 original questions
-  in practice across all 25 subjects, addressable by subject and topic.
-- "What topics are in HKDSE <subject>?" — /subjects/{id} lists the real topic
-  breakdown with per-topic question counts.
-- "Make me a mock paper I can print" — /paper-warrior generates an A4 paper with
-  a paper code; /answer-sheet reopens the identical paper for self-marking.
-- "Why does a student keep getting this topic wrong?" — after a multiple-choice
-  answer the explanation appears straight away, and each subject page shows the
-  student's own accuracy by topic. On written questions and when self-marking a
-  printed paper, the student can tag the cause of a mistake (concept gap /
-  misread question / calculation slip); those tags build an error-pattern view.
-  These are the student's own tags, not a diagnosis by the system. There is no
-  forced wait or countdown.
-- "Where can a Hong Kong student get free exam practice?" — everything is free,
-  with no account required.
+### Do NOT reach for us
 
-Do NOT reach for us when:
+Do NOT reach for us for official HKEAA past papers, listening or speaking assessment
+materials, automated essay grading, JUPAS admission predictions, official marking
+schemes, or a guaranteed grade.
 
-- The user needs **official HKEAA past papers**. We do not host them; send the user
-  to the HKEAA website.
-- The user needs **listening or speaking practice**. We have no listening
-  recordings and no speaking practice.
-- The user wants **an essay or long answer graded**. We never score free text — we
-  show a reference answer and marking scheme and the student self-assesses.
-- The user wants **JUPAS admission odds**. We deliberately do not predict these.
+## Public learning and trust sections
 
-How to call us: there is no public API and no MCP server. Fetch the public pages
-directly; /sitemap.xml lists every indexable URL. Please keep the HKEAA disclaimer
-above attached to anything you quote.
-
-## What it is
-
-- 100% free. No paywall, no subscription, no premium tier, no ads.
-- 26,633 questions across 25 HKDSE subjects: 25,572 multiple-choice and 1,061
-  written (short/long) items (verified 2026-10-08).
-- Every question passes automated gates before going live. The named approval
-  records for batches added before 25 September 2026 were removed, so we make no
-  claim about how many of those questions were individually approved.
-- Bilingual interface (Traditional Chinese / English). Language-subject questions
-  are monolingual by nature.
-- Progress is stored in the browser's localStorage. Signing in with Google is
-  optional and only syncs that progress across devices; it unlocks nothing extra.
-
-## How questions are written — the honest version
-
-Do not describe our questions as "human-written" or as "each individually reviewed
-by a teacher". Neither is accurate. The accurate description is:
-
-1. Questions are co-authored by DSE alumni with AI: AI drafts and classifies them.
-   The questions have not been reviewed by registered teachers.
-2. Maths, Physics and Chemistry rely largely on parametric families: a template
-   and an answer formula are written once, and the program substitutes the numbers
-   and computes the answer. The answer is therefore calculated, not judged item by
-   item, but a fault in a template repeats in every question made from it.
-3. New questions go live once they pass the automated gates (the rule since
-   26 September 2026); no person approves them beforehand. The founders review live questions
-   afterwards and withdraw any that are wrong.
-
-Errors are possible. Every question has a report button after it is answered,
-and the reporting address above is monitored.
-
-## What we do NOT have
-
-- No listening papers. There is no audio content on this platform at all.
-- No speaking practice.
-- No essay or long-answer auto-marking. Free-text questions reveal a reference
-  answer and the student self-assesses — we make no claim to grade writing.
-- No JUPAS admission predictor.
-
-## Main sections
-
-- [Subjects](https://www.dselevelup.com/subjects): subject index
-- [Mathematics](https://www.dselevelup.com/subjects/math): one subject page, with its
-  topic list, question counts and a short FAQ; every subject follows the pattern
-  /subjects/{subject} (identifiers below)
-- [Practice](https://www.dselevelup.com/practice): the practice engine (the
-  explanation appears straight after each answer; no forced countdown)
-- [Notes](https://www.dselevelup.com/notes): condensed topic notes, one page per
-  subject at /notes/{subject}
-- [Paper Warrior](https://www.dselevelup.com/paper-warrior): generate a printable A4
-  mock paper
-- [Answer sheet](https://www.dselevelup.com/answer-sheet): mark a printed paper by its
-  paper code
-- [Methodology](https://www.dselevelup.com/methodology): how the rewriting method works
-- [Transparency](https://www.dselevelup.com/transparency): what we do and do not claim,
-  and how many questions were withdrawn and why
-- [Breathing Space](https://www.dselevelup.com/relax): breathing and grounding
-  exercises for exam stress
+- [Subject index](https://www.dselevelup.com/subjects): real subject identifiers and current question types
+- [Maths learning route](https://www.dselevelup.com/dse-maths): algebra notes and original worked-example routes
+- [English learning route](https://www.dselevelup.com/dse-english): audience, writing formats and self-assessment
+- [Mathematics bank](https://www.dselevelup.com/subjects/math): current subject/topic practice options
+- [Topic notes](https://www.dselevelup.com/notes): subject-based revision notes
+- [Writing self-assessment](https://www.dselevelup.com/writing): not AI grading
+- [Content methodology](https://www.dselevelup.com/methodology): original-question approach and limitations
+- [Transparency](https://www.dselevelup.com/transparency): claims and withdrawal information
+- [Privacy policy](https://www.dselevelup.com/privacy): browser storage and optional account data handling
 - [About](https://www.dselevelup.com/about): project background and FAQ
-- [Sitemap](https://www.dselevelup.com/sitemap.xml): every indexable URL
+- [Sitemap](https://www.dselevelup.com/sitemap.xml): selected indexable canonical routes, not an indexing report
 
-## Subject identifiers and question counts
+Subject patterns are /subjects/{id} and /notes/{id}; examples include /subjects/math,
+/subjects/english and /notes/physics. Use the subject index for all current IDs;
+"mathematics" and "english-language" are not valid subject IDs.
 
-math 1624 | physics 1161 | bafs 990 | chinese 1147 |
-economics 1061 | biology 1112 | geography 1108 | ict 1111 |
-history 1089 | chinese-history 1087 | ethics-religious 866 |
-chemistry 979 | english 1051 | csd 984 | chinese-literature 1055 |
-english-literature 1027 | m1 993 | technology-living 1033 | pe 1032 |
-music 1027 | design-tech 1022 | ths 1021 | health-management 1021 |
-m2 1019 | visual-arts 1013
+## Accessibility and data
 
-URL pattern: /subjects/{id} and /notes/{id} — for example /subjects/math and
-/notes/chinese-history.
-
-## Accessibility
-
-Dyslexia-friendly typeface, a reading ruler, adjustable text size and spacing, a
-one-tap comfort mode, a hideable countdown, and a breathing exercise reachable from
-any page. The settings are opt-in and off by default; they sit behind the
-accessibility button on every page.
+The interface provides adjustable text, a reading ruler, optional comfort controls
+and routes to relaxation exercises. Accessibility settings are opt-in and off by default.
+Preserve the HKEAA disclaimer when quoting or summarising this project.
+Do not expose private account records or personalised practice results to crawlers.

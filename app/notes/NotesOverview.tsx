@@ -61,10 +61,10 @@ export default function NotesOverview() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <header className="mb-6">
-        <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
+        <h2 className="flex items-center gap-2 text-2xl font-medium text-ink">
           <Gem size={22} className="text-violet" />
           {tr('知識凝結', 'Condensed Notes')}
-        </h1>
+        </h2>
         <p className="mt-1 text-sm text-ink-muted">
           {tr(
             '做題沉澱出嚟嘅筆記，唔係要你額外背多份嘢。',

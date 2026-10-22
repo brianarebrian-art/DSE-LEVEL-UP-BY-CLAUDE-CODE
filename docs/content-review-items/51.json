@@ -1,0 +1,21 @@
+{
+  "index": 51,
+  "url": "/dse-biology/cell-structure",
+  "priority": "P2 LATER",
+  "page_type": "專題學習筆記＋原創練習（非逐題 Past Paper 解說）",
+  "intent": "學生搜尋 DSE Biology cell structure、細胞器功能比較、細胞圖辨認或細胞膜概念時，需要按香港中學文憑生物課程複習細胞組織，並練習將細胞結構連結功能。這是合理的學習意圖判斷，沒有搜尋量資料，不作流量推斷。",
+  "h1": "DSE 生物細胞結構：細胞器、細胞膜與細胞比較",
+  "title": "DSE Biology 細胞結構筆記：細胞器與細胞膜｜DSE Level Up",
+  "description": "DSE 生物細胞結構溫習：比較植物與動物細胞及原核、真核細胞，掌握細胞膜流動鑲嵌模型、細胞器功能與顯微鏡辨認。附圖解、逐步例題和易混概念辨析，練習把結構連結功能，並以題幹線索作答；說明滲透與膜運輸的關係及常見圖像判讀。按課程範圍整理，不把未核實題目標成歷屆試題，並提供自我檢核提示。適合考前快速複習。",
+  "core_content": "建議章節：1) 細胞作為生命基本單位與光學／電子顯微鏡下可見結構；2) 動物細胞與植物細胞比較，標示細胞膜、細胞壁、細胞核、染色體、內質網、線粒體、葉綠體及液泡並說明功能；3) 原核與真核細胞的組織差異；4) 以流動鑲嵌模型解釋細胞膜性質和功能；5) 把細胞膜連至擴散、滲透、主動運輸，並以質壁分離／溶血情境作概念銜接；6) 顯微鏡圖、簡圖標示及結構—功能題的作答步驟與常見失分（混淆細胞壁和細胞膜、只列名稱而沒有功能、把模型特徵當成可直接觀察事實）。例題方向應為原創題：給細胞圖辨認細胞類型並以證據說明；比較缺少某細胞器的影響；根據膜模型解釋選擇性通透現象；要求學生依題幹選取相關知識而非背誦整段答案。可用自行繪製並清晰標註的原創示意圖和表格，不複製教材或試卷圖。只有取得可核驗的官方試題／評分資料、逐題核對後，才可加入明確年份、卷別、題號及經授權的題目片段或連結；目前未找到本頁可用的具體題目來源，故不得聲稱已有 Past Paper 題解或評分要求。AI 可作為頁面導向既有解題資源的連結，但不得宣稱本頁生成題目、分析答案或自動批改；作文／長答自動批改亦受憲章禁止，且不新增付費 API。",
+  "internal_links": "基線確實存在：/practice（anchor：練習相關生物概念；練習入口存在，但未核實是否有細胞專屬題庫）、/ai/past-paper-explainer（anchor：查看既有 Past Paper 解題工具；只連到已存在頁面，不表示它已含細胞題目或本頁有自動生成／批改）。/dse-biology 與 /past-papers 在基線 source 未找到相應頁面，標為 planned，不作現存連結；/dse-biology 可作未來生物科索引，/past-papers 可作未來經來源核實的試題索引。",
+  "status": "Draft",
+  "reason": "基線 d25c637 的 app source 沒有 /dse-biology/cell-structure，也未發現 /dse-biology 或 /past-papers hub，因此目前不可發布；雖然細胞組織是課程明列的學習內容，原始大綱只有「題目重點、評分要求、分步解法、失分位、相似題與延伸概念」的泛化模板，沒有具體可核驗題目、年份卷別、題號或評分來源，不能把理科 topic 稱為 Past Paper 題解。需先補足原創講解、示意圖及有教學目的的例題，並在欲收錄歷屆題時逐題查官方來源及版權／引用條件；不應複製未授權題目、圖或評分材料。課程範圍以教育局 Biology Curriculum and Assessment Guide 的 cellular organisation 為依據；考評局 2024 報告只確認 Paper 1 約 22.5% 分數屬 Cells and Molecules of Life，並指出考生有不理會題目要求、術語配對錯誤和照背答案未能因應題目改寫等表現問題，不能據此推定本頁任何指定細胞題號。原始條目指定的 /dse-biology、/past-papers 尚不存在；/ai/past-paper-explainer 路徑存在，但不可推定有細胞資料或生成／批改功能。憲章禁止長答／作文自動批改且維持 $0 成本限制，不得新增付費 API。排序維持 P2 LATER，待內容、來源和實際頁面驗收後再評估發布。",
+  "sources": [
+    "基線 source：git d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv 以 csv.reader 讀取，不含 header 的第 51 筆為 /dse-biology/cell-structure；該路徑在基線 app source 不存在。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — 教育局 Biology Curriculum and Assessment Guide，cellular organisation、細胞膜、細胞器及原核／真核細胞學習目標。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/bio/PowerPoint-BIO-2024-01.pdf — 考評局 Biology Report on 2024 Exam；Paper 1 Section 1 Cells and Molecules of Life 分數比例及整體作答表現。未能證實本頁所需的特定細胞題目與題號。",
+    "docs/charter.md §16.A — 永久禁止長答／作文自動批改；§5／現行 $0 約束禁止遊戲化引入付費 API、新套件或雲端用量。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/51.json"
+}

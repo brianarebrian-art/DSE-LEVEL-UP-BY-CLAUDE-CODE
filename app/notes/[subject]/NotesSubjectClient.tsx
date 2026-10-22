@@ -81,9 +81,9 @@ function Inner({ subjectId }: { subjectId: string }) {
       </Link>
 
       <header className="mb-5">
-        <h1 className="text-2xl font-medium text-ink">
+        <h2 className="text-2xl font-medium text-ink">
           {meta?.emoji} {en ? meta?.nameEn : meta?.name}
-        </h1>
+        </h2>
         <p className="mt-1 text-sm text-ink-muted">
           {tr(`${topics.length} 個課題 · ${questionCount} 題`, `${topics.length} topics · ${questionCount} questions`)}
         </p>

@@ -1,0 +1,22 @@
+{
+  "index": 21,
+  "url": "/dse-maths/quadratic-equations",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記",
+  "intent": "香港 DSE Maths 學生要複習一元二次方程的求根方法、判別式與根的性質，尋找逐步解題和符號錯誤的訂正；不主張未查證的搜尋量或考試出題比重。",
+  "h1": "DSE Maths 一元二次方程：求根、判別式與解題步驟",
+  "title": "DSE Maths 一元二次方程｜公式法、判別式與例題",
+  "description": "DSE Maths 一元二次方程筆記：由標準形式與因式分解，逐步學會公式法、判別式及根的性質判斷；看懂負係數、分母與符號陷阱，透過原創示範題練習列式、檢查及選擇解法。附適用情境、常見錯誤訂正與自測方向，協助香港 DSE 考生把代數步驟寫清楚；題目為教學改寫，不重製考評局歷屆試題。先理解方法再獨立操練。",
+  "core_content": "建立標準形式 ax²+bx+c=0（a≠0）與係數辨認；比較因式分解及公式法的適用情境；用 Δ=b²−4ac 判斷兩相異實根、重根或無實根，說明判別式不等式如何處理參數。例題方向：整數根的因式分解、非整數根公式法、給定根的性質求參數、在情境限制下檢查捨根。每例列出理由與逐行等式，安排 b 負號、漏括號、分母 2a、平方根化簡與漏寫答案集的錯因訂正，附可自行作答的短題及答案核對。可用自製數軸／流程圖解釋判別結果；不需圖表套件，圖示須有文字替代。題目採原創平行改寫，不複製 Past Paper 題幹、圖像、評分準則或官方解答；若要標示年份／卷別／考試重點，先以考評局官方課程及試卷材料逐項核實並清楚標示來源。不可宣稱有 AI 生題或 AI 解題功能；長答／作文機評亦受憲章禁止。",
+  "internal_links": "現存可連結：/dse-maths（anchor：返回 DSE Maths 科目頁）；/practice（anchor：開始全科練習；連結目標存在，但不是專屬二次方程題組）；/methodology（anchor：了解內容與題庫方法）。若想連到數學專屬練習入口，可標 planned，先驗證題目篩選確實支持 quadratic_equations 後再上連結。不要將 /ai/practice-generator 寫成此頁必需流程或宣稱已有 AI 解題能力。",
+  "status": "Draft",
+  "reason": "基線 d25c637 中 URL 有實際 page.tsx，含標準式、三種方法、單一道公式法例題、失分位與泛化考試提示，足以支撐真實求根／判別式意圖；但解釋深度有限，缺不同方法比較、判別式參數例、配套自測與專題練習入口，科目 hub 本身不足以讓本頁 PUBLISH NOW。依指示保留本筆作為此 URL 的一筆 P1 草稿；原始第31筆與第21筆同 URL 應合併至第21筆，不要雙重建頁；另原始第10／11筆重複，較後第11筆應 MERGE 到第10筆而非再保留。不得把正在進行但未經 production 驗證的優先實作算成已完成。app/api 未實作 AI 生題／作文機評且憲章禁止新增付費 API；不得承諾此類功能。版權依憲章採原創平行改寫，若要引用官方歷屆試題、卷別或考綱細節，須先官方查核及遵守來源／使用權限制；本次未作官方考綱與試卷核對，故不作現行考試頻率或卷別聲稱。",
+  "sources": [
+    "docs/seo-content-map.csv：csv.reader 原始第21筆（不含 header）；同 URL 原始第31筆亦重複。",
+    "docs/charter.md §1.4、§1.5、§8、§13：題目原創平行改寫、零版權侵犯、禁止新增付費 API、全頁免責聲明及作文自動批改禁令。",
+    "app/dse-maths/quadratic-equations/page.tsx：基線頁面實際內容；URL 在 source 存在。",
+    "app/dse-maths/page.tsx、app/practice/page.tsx、app/methodology/page.tsx：內鏈目標存在。",
+    "app/api 與本任務明示限制：不可假設 AI 生成及作文機評已實作。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/21.json"
+}

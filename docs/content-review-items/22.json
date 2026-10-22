@@ -1,0 +1,21 @@
+{
+  "index": 22,
+  "url": "/dse-maths/functions",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記",
+  "intent": "學生查找 DSE Maths 函數概念與題型解法，特別需要理解函數表示、定義域和值域、代入求值及圖像，而非只看公式摘要。此為合理的學習意圖判斷，不代表有經核實的搜尋量數據。",
+  "h1": "DSE 函數：定義域、值域與圖像解題",
+  "title": "DSE 函數筆記：定義域、值域、圖像與例題｜DSE Level Up",
+  "description": "DSE 函數筆記：由函數表示、定義域和值域入手，逐步練習代入求值、函數圖像與變換，並以詳解例題拆解常見錯誤。按題目辨認已知條件、寫清推理步驟及核對答案；另設延伸閱讀提示，分清核心數學與 M1、M2 微積分內容，配合原創示意圖和自編題鞏固理解，不重製未授權試卷。適合課後溫習及考前自我檢查，按步操練即可。",
+  "core_content": "以核心數學函數概念為範圍，先說明函數記號及輸入輸出，再用逐步例題處理代入求值、由條件判斷定義域與值域，以及從簡單圖像讀取資訊；以原創 SVG 圖示說明圖像變化，避免只列術語。設至少三組自編例題：給定函數求值並核對代入；含分母或根式的式子判斷可取輸入範圍；由簡單圖像或條件判斷輸出範圍，逐步示範理由並指出常見混淆（輸入與輸出、定義域與值域、讀圖端點）。附短自測與答案解釋，鼓勵學生先作答再對照。官方課程指引確認數學科有必修部分及選修部分；涉及微積分的延伸內容不得混作通用函數核心，須分別標示 M1（Calculus and Statistics）及 M2（Algebra and Calculus），並只列入經課程範圍核實的內容。本頁若未取得並逐題核實授權來源，不展示或逐字轉載 Past Paper 題幹、圖表及評分資料；以自編題、原創圖示替代。只提供靜態人工編寫講解和習題，不宣稱 AI 即時生成題目或 AI 作文機評；不新增付費 API。",
+  "internal_links": "現有：/dse-maths — 錨文字「DSE Maths 科目筆記」；/dse-maths/quadratic-equations — 「一元二次方程例題」；/practice — 「開始練習」。planned（基線尚不存在目標函數頁本身；如另設函數專屬題組需先核實）：函數自編練習錨文字「練習函數題」。不將 /ai/practice-generator 宣稱為已實作 AI 生成功能。",
+  "status": "Draft",
+  "reason": "指定基線 d25c637 中不存在 app/dse-maths/functions/page.tsx，因此尚無可供學生使用的頁面。此主題可提供具體概念學習與逐步解題價值，保留為獨立函數頁而非併入二次方程頁；科目 hub 現有內容不足以直接發佈，且此頁目前尚未實作或 production 驗證，故只能列 Draft／P1 NEXT，不能 PUBLISH NOW。完善時須補上逐步自編例題、可讀的原創圖像、答案核對及經核實的課程邊界。不要把 M1 與 M2 微積分合併成模糊範圍，兩模組應分開標示。Past Paper 內容須先查清官方來源、引用及使用權，不以未授權逐字重製代替原創教學；目前缺少逐題來源，不宣稱已有可引用的 Past Paper 題。AI 生成及作文機評未在 app/api 實作，憲章亦禁止新增付費 API，故不得暗示具備該功能。未核實搜尋量，不提出搜尋量結論。",
+  "sources": [
+    "基線檢查：git d25c637 中 app/dse-maths/functions/page.tsx 不存在；現有路由包含 /dse-maths、/dse-maths/quadratic-equations 及 /practice。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&4 — HKEAA HKDSE Mathematics 科目頁（assessment framework、curriculum and assessment guide 等官方連結）。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&4_2 — HKEAA Mathematics Curriculum and Assessment Guide 頁面，連結至教育局中四至中六課程指引。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/res/m2_eng.pdf — 教育局 Module 2 課程文件；官方文件標示選修部分包括 M1 Calculus and Statistics 及 M2 Algebra and Calculus。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/22.json"
+}

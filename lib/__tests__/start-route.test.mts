@@ -7,7 +7,15 @@ import { readFileSync } from 'node:fs'
 type Mod = typeof import('../quickStart.ts')
 const qs = (await import('../quickStart.ts')) as Mod & { default?: Mod }
 const Q = qs.default ?? qs
+const route = await import('../../app/start/page.tsx')
 const live = (id: string) => id !== 'gone'
+
+function assertNoIndex(metadata: { robots?: unknown }) {
+  const robots = metadata.robots as { index?: boolean; googleBot?: { index?: boolean } } | undefined
+  assert.ok(robots, 'route must publish robots metadata')
+  assert.equal(robots.index, false, 'route must not be indexed')
+  assert.equal(robots.googleBot?.index, false, 'Googlebot must receive the same noindex directive')
+}
 
 type ActiveSession = import('../sessionResume.ts').ActiveSession
 const session = (over: Partial<ActiveSession> = {}): ActiveSession => ({
@@ -40,7 +48,8 @@ test('the page replaces itself, reads only local records, and the top bar CTA us
   assert.match(src, /router\.replace\(startHref\(loadActiveSession\(\), loadAttempts\(\)/)
   assert.doesNotMatch(src, /localStorage\.setItem|fetch\(/)
   assert.match(src, /href="\/subjects"/, 'fallback link if the redirect fails')
-  assert.match(readFileSync('app/start/page.tsx', 'utf8'), /robots: \{ index: false, follow: false \}/)
+  assert.match(readFileSync('app/start/page.tsx', 'utf8'), /completeSeoMetadata\(/)
+  assertNoIndex(route.metadata)
   const nav = readFileSync('components/Navbar.tsx', 'utf8')
   assert.equal((nav.match(/href="\/start"/g) ?? []).length, 2)
   assert.match(readFileSync('lib/pageOrder.ts', 'utf8'), /'\/start': '/)

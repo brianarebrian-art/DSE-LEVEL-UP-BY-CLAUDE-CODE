@@ -1,0 +1,20 @@
+{
+  "index": 9,
+  "url": "/dse-bafs",
+  "priority": "P1 NEXT",
+  "page_type": "BAFS 科目學習入口／主題導覽頁",
+  "intent": "香港DSE商業、會計與財務概論（BAFS）考生尋找按主題整理的溫習筆記、會計概念解說及可練習的題目；需要由科目入口找到合適主題和練習，而不只是泛稱「會計、管理、商業案例」。不推定搜尋量。",
+  "h1": "DSE BAFS 溫習：會計、管理與商業概念",
+  "title": "DSE BAFS 溫習筆記｜會計、管理與商業概念｜DSE Level Up",
+  "description": "為香港DSE BAFS考生整理會計、財務與管理主題的溫習入口，逐步掌握會計等式、財務報表及商業情境分析，配合原創例題理解概念、辨認常見錯誤，再按弱項前往相關練習；內容以清晰解說和解題步驟為主，不重製受版權保護的試卷題目，適合自行溫習並建立穩固基礎，並以步驟式解說建立考試所需的基本理解與應用能力。並提升作答應用能力。",
+  "core_content": "先按課程單元分開會計、財務及管理／商業概念，列明涵蓋範圍並連到可逐步擴寫的主題頁。會計部分解釋會計等式與交易對資產、負債、資本的影響；財務部分以原創小型數據示範由交易整理至報表、解讀項目關係及檢查計算；管理／商業部分提供短情境，示範辨識題目要求、抽取相關資料、比較方案並以證據作答。每個核心單元至少安排一題自行編寫的平行例題，逐步列出思路、計算或判斷依據、答案檢查方法和常見錯誤；另設自我檢核清單及可前往的現有練習入口。以原創、清楚標示的圖表呈現交易流程或報表關係；不複製考評局試卷文字、圖表或答案，只可在取得及確認官方來源後引用卷年／題號與官方連結。不可宣稱有未實作的AI出題、AI作文評分或即時批改，亦不可新增付費API。",
+  "internal_links": "/practice（anchor：開始練習；基線 app/practice 存在）；/subjects（anchor：選擇科目；基線 app/subjects 存在）。/dse-bafs/accounting、/dse-bafs/financial-statements、/dse-bafs/business-management 均屬 planned，尚非實際連結。",
+  "status": "Draft",
+  "reason": "基線 d25c637 的原始內容地圖第9筆建議 /dse-bafs，但基線沒有該 URL 的 page.tsx／路由來源，故不能視為已上線或 PUBLISH NOW。雖有 BAFS 題庫檔案，地圖大綱僅列「會計、管理、商業案例」及「會計等式、報表」，未證明入口頁具備分科導覽、完整分步例題、錯誤診斷或足夠的學習深度；應補上可核對的內容、原創例題及路徑後再排期。Past Paper 原文及圖表涉及版權，需使用官方連結／卷題識別而非重製；原創平行題須自行撰寫。AI生成與作文機評未在 app/api 實作，且憲章禁止增加付費API，不可宣稱現有功能。既有 /practice、/subjects 可作導流，細分BAFS主題URL均只標 planned。",
+  "sources": [
+    "repo baseline d25c637: docs/seo-content-map.csv（CSV reader 原始第9筆）",
+    "repo baseline d25c637: docs/charter.md（§1 第4點版權、§5成本約束、§8免費與禁止廣告／付費牆）",
+    "repo baseline d25c637: app/practice/page.tsx、app/subjects/page.tsx（實際存在路由）；基線未見 app/dse-bafs/page.tsx"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/09.json"
+}

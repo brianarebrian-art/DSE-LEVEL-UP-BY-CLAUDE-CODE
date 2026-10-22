@@ -1,0 +1,22 @@
+{
+  "index": 3,
+  "url": "/dse-english",
+  "priority": "P1 NEXT",
+  "page_type": "英文科編輯型主題樞紐（閱讀、寫作及卷別溫習導覽）",
+  "intent": "香港 DSE 英文科考生尋找按考卷和技能整理的溫習筆記、英文閱讀理解解題方法、Paper 2 文體格式與寫作步驟，並希望知道如何自行檢查答案及前往可用練習。這是明確的學習需求判斷，不代表或推測搜尋量。",
+  "h1": "DSE 英文科溫習指南：閱讀理解、寫作與答題步驟",
+  "title": "DSE 英文溫習指南｜閱讀理解、寫作方法與練習 | DSE Level Up",
+  "description": "為香港 DSE 英文科考生而設的溫習指南，按閱讀理解與寫作需要拆解讀題、找證據、組織段落和修訂答案的步驟，並以全新編寫的短篇材料示範推論、語氣判斷及文體選擇。頁面亦會說明聆聽、綜合能力和口試的練習方向，附可自行核對的清單；考卷安排以考評局對應應考年度的最新評核架構為準，不複製歷屆試題或官方範文。可按弱項開始。",
+  "core_content": "以學生做題流程組織，而非僅羅列「文體、閱讀、文法、練習」：① 頁首說明適用對象與年份，連結考評局該應考年度的評核架構；核對卷別／比重後才刊載，避免把不同年度框架混為一談。② 閱讀：用自創短文示範先讀題、定位證據、以語境推詞義、判斷推論與語氣；逐步展示一題原創例題的證據句、推理和常見錯誤。③ 寫作：以原創情境示範 letter/article/report 等常見文體如何分析讀者、目的、語氣、要點覆蓋及段落安排；提供開首—主體—結尾骨架、改寫示例和交卷前自查表，明示屬自學支架，不宣稱 HKEAA 官方評級。④ 聆聽／綜合能力及口試：只在對應年度官方框架核實卷別和任務後，逐項列出可練技能（記錄重點、整合資料、互動回應），設計原創微型任務及自我檢查步驟；未核實前不得斷言題型、時間或分數。⑤ 文法與詞彙：按例句解釋常見錯誤並配原創修訂練習，避免無脈絡規則表。⑥ 各節導向現存專項練習／筆記。圖表只在比較「目的—讀者—語氣—結構」時用自製簡表；不需要外來插圖或資料圖。題例須 Archetype Masking，替換情境、人名與文本，不得改寫得足以還原官方題目；Past Paper 只連往考評局官方資源，不轉載題幹、答案、評分準則或範文，並附非 HKEAA 官方聲明。不得承諾 AI 生成題目或 AI 作文批改：相關功能未在 app/api 實作，且憲章禁止新增付費 API；既有寫作頁只支援學生自評。",
+  "internal_links": "現存連結：/writing —「英文寫作練習」（專項自評工具，非機器批改）；/reading —「英文閱讀練習」（原創閱讀材料）；/notes/english-language —「英文課題筆記」（現有主題頁所列目標連結，發佈前核對動態科目slug實際可達）；/subjects/english —「英文科題庫與課題練習」。新增的卷別導覽錨點與自查清單只屬本頁規劃，標記 planned，不當作現存網站連結。官方評核架構外連考評局：https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&2_1。",
+  "status": "Draft",
+  "reason": "csv.reader 第三筆原始項目是 /dse-english，基線 d25c637 確有 app/dse-english/page.tsx，並另有 /dse-english/writing-format；因此不是不存在的建議 URL。原頁只有短導言、三步「認清文體／設計段落／修改答案」及三張導覽卡，尚未提供可跟做的閱讀解題、逐步示範例題、寫作修訂、自查清單或足以支撐涵蓋聆聽／綜合／口試的內容深度，不能 PUBLISH NOW。原始 CSV 的 P0 應調整為 P1 NEXT：路徑可保留，補足原創而實用的學習材料並按目標應考年官方核實卷別後才發布。此頁與 /subjects/english 有相鄰但不同目的：後者是科目題庫／課題入口；本頁宜承擔教學解說，不複製題庫列表。保留並明確分工，毋須合併或刪除；/dse-english/writing-format 則作本頁寫作格式專節的既有深入連結。插圖非必要；可用自製結構簡表。官方 Past Paper 僅連結、不複製，因憲章 §1.4 禁止版權侵害。AI 生成及作文機評尚未在 app/api 實作，且憲章 §1.5 禁新增付費 API；不得當成現有功能。未完成內容深度補足及 production 驗證前維持 Draft，另一項工作正在進行不等於驗證完成。",
+  "sources": [
+    "Repo baseline d25c637: docs/seo-content-map.csv, third data row parsed using Python csv.reader (DSE English 筆記與寫作技巧; /dse-english).",
+    "Repo baseline d25c637: docs/charter.md §1.4 (originally rewritten questions; copyright constraint), §1.5 (no paid third-party API), §16.B (AI identity honesty).",
+    "Repo baseline d25c637: app/dse-english/page.tsx and app/dse-english/writing-format/page.tsx (requested route exists; short hub structure and topic links).",
+    "Repo baseline d25c637: app/reading/page.tsx, app/writing/page.tsx, app/subjects/[subject]/page.tsx and app/subjects/[subject]/SubjectDetailView.tsx (actual related route destinations and writing self-assessment distinction).",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&2_1 (HKEAA official English Language assessment framework listings by examination year; verify target year's PDF before publishing claims about papers/tasks)."
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/03.json"
+}

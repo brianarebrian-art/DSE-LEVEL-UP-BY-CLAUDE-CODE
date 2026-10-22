@@ -38,11 +38,48 @@ jobs:
       # 2026-08-20 補上：CI 由開波以嚟【從來冇跑過 eslint】，所以 3 個
       # react-hooks correctness error（喺 render 期間建立組件、喺 render 期間叫
       # 不純函數、用咗未宣告嘅變量）可以長期積落嚟冇人發現。修完之後喺呢度落閘，
-      # 唔准再積返。warnings 唔阻 CI，只有 error 先會 fail。
-      - name: Lint (errors block, warnings do not)
-        run: npx eslint . --max-warnings=-1
+      # This SEO release requires zero errors and zero warnings.
+      - name: Lint (zero errors and zero warnings)
+        run: npx eslint . --max-warnings=0
 
       # 實測過：唔帶任何 env 都 build 得綠（SSG 唔喺 build time 讀 Supabase／Auth
       # 密鑰），所以 CI 唔使配 secrets。
       - name: Build check
         run: npm run build
+
+      # Raw production-mode HTML is a regression gate, not Google indexing evidence.
+      - name: Start production-mode SEO smoke server
+        run: |
+          nohup npm run start -- -p 3001 -H 127.0.0.1 > /tmp/dse-production-smoke.log 2>&1 &
+          echo $! > /tmp/dse-production-smoke.pid
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3001/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/dse-production-smoke.log
+          exit 1
+
+      - name: Verify sitemap and raw HTML with visitor, Googlebot and social agents
+        run: |
+          python3 scripts/seo/verify_responses.py \
+            --origin http://127.0.0.1:3001 \
+            --canonical-origin https://www.dselevelup.com \
+            --routes docs/seo-verification-routes.json \
+            --sitemap --strict --output /tmp/dse-seo-smoke
+
+      - name: Save SEO smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-production-html-smoke
+          path: |
+            /tmp/dse-seo-smoke/
+            /tmp/dse-production-smoke.log
+          if-no-files-found: ignore
+
+      - name: Stop production-mode SEO smoke server
+        if: always()
+        run: |
+          if [ -f /tmp/dse-production-smoke.pid ]; then
+            kill "$(cat /tmp/dse-production-smoke.pid)" 2>/dev/null || true
+          fi

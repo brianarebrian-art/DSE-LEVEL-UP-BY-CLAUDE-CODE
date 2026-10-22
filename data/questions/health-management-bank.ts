@@ -1,5 +1,5 @@
 import type { Question } from './types'
-import { createBank, n, qty, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, qty, round, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // health-management-bank.ts —— 健康管理與社會關懷參數化母模板（2026-08-29）
@@ -128,6 +128,7 @@ b.add('hmb_ho2_case', T.holistic, FW.apply, 'hard',
 // 每個面向另出一條應用題，題幹含該面向名稱，故彼此不會重複。
 for (const [zh, en, def, defEn] of dims) {
   const others = dims.filter((d) => d[0] !== zh).slice(0, 3)
+  void others
   b.add(`hmb_ho3_${en.slice(0, 10)}`, T.holistic, FW.apply, 'medium',
     [`若一項照顧計劃完全忽略「${zh}」這個面向，最可能出現甚麼後果？`,
      `What is the likely consequence if a care plan wholly neglects ${en}?`],
@@ -298,6 +299,7 @@ for (const [zh, en, key, keyEn] of [
 
 for (const [zh, en, def, defEn] of models) {
   const others = models.filter((m) => m[0] !== zh).slice(0, 3)
+  void others
   b.add(`hmb_hc2_${en.slice(4, 14)}`, T.concept, FW.apply, 'hard',
     [`若一項健康政策完全依照「${zh}」的視角制定，最可能出現甚麼盲點？`,
      `If a health policy were framed entirely through ${en}, what blind spot would most likely arise?`],
@@ -315,6 +317,7 @@ for (const [zh, en, def, defEn] of models) {
 
 for (const [zh, en, task, taskEn] of life) {
   const others = life.filter((l) => l[0] !== zh).slice(0, 3)
+  void others
   b.add(`hmb_ls2_${en.slice(0, 10)}`, T.lifespan, FW.apply, 'medium',
     [`一項為${zh}人士而設的服務，若完全不考慮該階段的發展任務，最可能出現甚麼問題？`,
      `A service designed for people in ${en} takes no account of the developmental task of that stage. What is the likely problem?`],
@@ -332,6 +335,7 @@ for (const [zh, en, task, taskEn] of life) {
 
 for (const [zh, en, def, defEn] of ethics) {
   const others = ethics.filter((e) => e[0] !== zh).slice(0, 3)
+  void others
   b.add(`hmb_ce2_${en.slice(0, 12)}`, T.ethics, FW.apply, 'medium',
     [`一名認知能力健全的服務使用者，其決定與照顧者認為對他最有利的做法相反。就「${zh}」而言，這個處境如何理解？`,
      `A service user with full capacity makes a decision contrary to what the carer believes is best for them. How does ${en} bear on this situation?`],

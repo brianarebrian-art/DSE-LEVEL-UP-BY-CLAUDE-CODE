@@ -1,0 +1,21 @@
+{
+  "index": 54,
+  "url": "/dse-biology/ecosystems",
+  "priority": "BLOCKED",
+  "page_type": "生物科生態系統主題學習／題型解析頁（原提案為Past Paper題解）",
+  "intent": "學生複習DSE Biology ecosystems，理解生境因素與生物群落如何互相影響，並練習解讀食物網、營養級能量轉移、物質循環及生態數據題。搜尋者可能期待可核對年份、卷別、題號與評分依據的歷屆題解；但目前沒有可確認的生態題目source，不能承諾Past Paper逐題解析。",
+  "h1": "DSE Biology 生態系統：能量流動、物質循環與數據題",
+  "title": "DSE Biology 生態系統：能量流動、物質循環與題型練習｜DSE Level Up",
+  "description": "溫習DSE Biology生態系統：掌握生境與群落、食物網、能量轉移效率、碳氮循環和生態保育，配合原創圖表題與逐步解題，練習證據判讀及常見失分位；另附術語整理與數據題閱讀指引，協助辨認營養級、解釋生物間關係，並把圖表證據連結至生態過程。補充野外調查概念，強化應試理解。並練習樣方與樣帶數據判讀及題意分析。",
+  "core_content": "建議以課程指南涵蓋的生態系統範圍撰寫，而非只有名詞摘要：1）由species、population、community至ecosystem辨認組織層次，分清habitat與niche；2）用光照、溫度、pH等非生物因素資料，解釋其對生物分布與豐度的影響；3）提供原創生物例子，辨析捕食、競爭、互利共生、偏利共生與寄生，並比較初級及次級演替；4）以自繪食物網、數目金字塔及生物量金字塔練習營養級判讀，說明能量流向、轉移效率和生產者／消費者／分解者角色；5）以自製碳循環及氮循環圖追蹤庫存、過程與方向，解釋生物群落與非生物環境的交互作用；6）以原創小型樣方或樣帶數據題，要求比較分布／豐度、指出趨勢及限制，並連結保育與人類活動影響。例題應使用自編情境及數據，附逐步推理、關鍵生物學術語、合理得分點和易錯答案修正。若未取得可查證的官方試題、卷別與題號，不得標作Past Paper或聲稱官方評分準則；不得複製未獲授權的原題、圖表或答案。圖表應自行繪製並標示原創。AI生成題及作文機評不是現有能力，不可承諾；不得新增付費API。",
+  "internal_links": "/dse-biology（planned；基線無app/dse-biology路由，僅可在該hub實際存在後連結，anchor：DSE Biology主題總覽）；/past-papers（planned；基線無app/past-papers路由，anchor：按科目及年份瀏覽歷屆試卷）；/ai/past-paper-explainer（基線有route檔案，但不代表生態題庫、AI批改或完整功能已存在；僅在核實可用功能及非付費API合規後連結，anchor：查看題目解析工具）。",
+  "status": "Blocked",
+  "reason": "原提案以Past Paper題解為主，但在基線d25c637查無/dse-biology/ecosystems頁面或生態專題頁路由；對biology題庫做關鍵字核查，未找到可核對的ecosystem/ecology/生態題目，只有泛化的decomposer問題片段不足以構成有年份、卷別、題號及評分依據的歷屆題解析source。官方課程指南確實涵蓋生態系統各知識點，足以設計原創學習內容，卻不能替代歷屆題source；須先取得可合法引用及逐項核對的官方卷題資料，否則移除Past Paper定位，來源不足故Blocked而非發布。學習價值應落在圖表解讀、數據推理、術語與能量／物質過程，不應製作薄弱詞彙頁。頁面若日後作為原創主題內容可保留並重審；現階段不可聲稱已完成或Published。可能與DSE Biology總覽的合併目標URL /dse-biology 目前不存在，先標planned；不主張與其他現存專頁重複。圖表自製、題目平行原創改寫並遵守憲章零版權侵犯原則；不能直接重刊考評局原題、答案或圖表，須先確認使用權。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — 教育局 Biology Curriculum and Assessment Guide：ecosystems涵蓋組織層次、主要生態系統、生物及非生物組成、群落關係、演替、食物鏈／網、能量轉移、碳氮循環、保育及本地生境調查。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/bio/PowerPoint-BIO-2024-01.pdf — 考評局2024 Biology考試報告：Paper 1中Organisms and Environment占建議教學時間47%、該年卷面分值53.3%；Applied Ecology選修平均分36.0%。這是整體範圍資訊，並非生態系統歷屆題證據。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5 — 考評局官方科目資訊頁呈現Biology評核框架、課程指南、樣本表現及sample questions資源入口；頁面路徑標示Category B但內容列出Category A Biology，引用時只作官方入口參考，不據此推斷現行題型細節。",
+    "基線repo d25c637：docs/seo-content-map.csv以csv.reader定位第54筆；docs/charter.md規定零版權侵犯、題目需原創平行改寫，並禁止付費第三方API及新增套件。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/54.json"
+}

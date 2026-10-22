@@ -1,0 +1,21 @@
+{
+  "index": 48,
+  "url": "/dse-chinese/narrative-writing",
+  "priority": "P1 NEXT",
+  "page_type": "主題學習指南",
+  "intent": "香港DSE考生搜尋記敘文寫作方法，想知道如何扣題、安排事件次序與轉折、以細節呈現人物情感，並改善開首、段落銜接及結尾；亦會想看可仿作的原創示例。此頁應聚焦記敘文寫作策略，不暗示它等同現行卷二固定題型。",
+  "h1": "DSE中文記敘文寫作：選材、鋪排與細節描寫",
+  "title": "DSE中文記敘文寫作｜選材、鋪排與描寫技巧",
+  "description": "DSE中文記敘文寫作指南：學習審題選材、事件鋪排、人物描寫與結尾回扣，透過原創短例看出流水帳與有層次敘事的差別，並用自我檢查步驟改善文章。內容聚焦實用寫作方法，不提供作文自動批改。提供扣題策略與例子，不假稱卷二固定題型。附自評清單，協助學生按題目要求檢查事件因果、人物轉變和段落連接，將寫作方法落到可操作的練習。",
+  "core_content": "先界定記敘文與其他寫作任務的差別，說明文章必須回應題目而非套用萬用故事；整理審題關鍵詞、素材取捨、事件因果和時間線。以一個原創校園情境示範「平鋪事件」與「加入選擇／阻礙／轉變」的段落差異，再逐步展示如何以動作、對話、感官細節代替抽象情緒標籤。另示範開首如何交代必要背景、段落如何銜接、結尾如何回扣題旨而不重述全文；提供常見問題診斷（離題、流水帳、細節堆砌、人物轉變欠因果）及可供學生自評的檢查清單。例題和示範文須完全原創或平行改寫，標清示範用途；不提供AI作文批改／打分。若引用現行考試要求，依考評局2024起適用資料更新並附官方連結。",
+  "internal_links": "/dse-chinese（planned：中文科入口；基線無此路由）；/dse-chinese/argumentation（planned：議論文寫作；基線無此路由）；/practice（實際存在：一般練習入口；不宣稱已有記敘文專項題庫）。不連至CSV所列 /ai/practice-generator 作作文批改，亦不宣稱生成器可評長答。",
+  "status": "Draft",
+  "reason": "基線 d25c637 中不存在 /dse-chinese/narrative-writing 路由；只有內容地圖紀錄，且中文 hub 與議論文子頁亦不存在，現有 subject hub 內容不足，不可發布。CSV此列description是通用模板，需改成記敘文獨特意圖與教學步驟；屬有獨立學習價值的體裁指南，暫不與議論文合併，宜保留為Draft待有原創例題、官方考綱核對和頁面實作。現行考評局頁列出適用2024 HKDSE的卷二實用寫作樣卷，故需避免將記敘文說成卷二固定類型或套用舊卷別描述。示例不可重製考評局受版權保護試題／答卷；Past Paper僅提供官方連結並按授權規則使用。圖表非必要；若用事件弧線圖須自製。AI生成或作文機評在app/api並未實作，且憲章禁止長答／作文自動批改並禁止新增付費API。五個priority實作仍未production驗證，不能標Published；本筆沒有發現第21/31或第10/11那類重複配對。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sq/sp2024.html",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1",
+    "docs/charter.md（基線 d25c637；§1、§5、§16.A、§19.3）",
+    "docs/seo-content-map.csv（以 csv.reader 讀取不含header第48筆）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/48.json"
+}

@@ -1,6 +1,9 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { SCENE_IDS, topicById } from '@/data/cantonese'
 import { SITE_ORIGIN } from '@/lib/site'
+import { JsonLd } from '@/components/Seo/JsonLd'
+import { cantoneseSeoDescription } from '@/lib/dynamicSeoDescriptions'
 import SceneView from './SceneView'
 
 // 一個場景嘅詳情頁（/cantonese/[sceneId]）。
@@ -29,12 +32,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ sceneId: string }> }) {
   const { sceneId } = await params
   const topic = topicById(sceneId)
-  if (!topic) return {}
-  return {
+  if (!topic) notFound()
+  return completeSeoMetadata({
     title: `${topic.zh}｜新來港・香港日常廣東話 | DSE Level Up`, // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
-    description: `${topic.whyZh} 六句香港日常廣東話，每句附粵拼、普通話與英文對照及溝通目的。獨立非正規生活支援課程，與中國語文科及任何 DSE 科目無關。`, // i18n-exempt: 靜態 SEO meta description
-    alternates: { canonical: `/cantonese/${topic.id}` },
-  }
+    description: cantoneseSeoDescription({ title: topic.zh, why: topic.whyZh, phraseCount: topic.phrases.length, wordCount: topic.words.length }), // i18n-exempt: 靜態 SEO meta description
+  }, `/cantonese/${topic.id}`)
 }
 
 export default async function ScenePage({ params }: { params: Promise<{ sceneId: string }> }) {
@@ -79,11 +81,7 @@ export default async function ScenePage({ params }: { params: Promise<{ sceneId:
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <SceneView topic={topic} />
     </>
   )

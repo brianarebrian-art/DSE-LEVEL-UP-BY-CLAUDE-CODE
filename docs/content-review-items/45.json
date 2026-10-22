@@ -1,0 +1,22 @@
+{
+  "index": 45,
+  "url": "/dse-chinese/classical-chinese",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記",
+  "intent": "考生搜尋 DSE 中文文言文筆記、實詞虛詞解釋及課外篇章閱讀技巧，目標是讀懂文句、選取文本證據並完成卷一閱讀題；需求具體而真實。未查或推測搜尋量。",
+  "h1": "DSE 中文文言文閱讀：逐句理解、詞義判斷與答題示範",
+  "title": "DSE 中文文言文閱讀筆記｜詞義、句意與篇章分析｜DSE Level Up",
+  "description": "整理 DSE 中文文言文閱讀：由實詞多義、虛詞、句意推斷到篇章主旨，逐步拆解答題證據與常見誤判，並用原創短篇示範如何把文意、人物行動和寓意連起來；按官方卷一甲乙部定位練習，題目不照錄歷屆試卷。附逐句翻譯與選項辨析，幫你把讀懂篇章轉化為有根據的作答，並分辨字面義、語境義和推論界線，逐步建立閱讀信心與答題方法。",
+  "core_content": "以原創平行短篇作教學材料，不複製考評局題幹或答案。章節：1) DSE 卷一甲部指定文言經典材料與乙部課外文白兼備篇章的區別（細節須逐年按官方架構更新）；2) 實詞一詞多義、虛詞語氣及通假字，示範由上下文排除錯誤義項；3) 句讀與省略、倒裝等句式，以逐句直譯再整合語意；4) 人物言行、因果、轉折、寫作手法和主旨推論，區分原文明示與無根據延伸；5) 原創短篇逐步例題，展示定位關鍵詞、引用證據、答案表述及干擾選項辨析；6) 常見失分（只背單字義、逐字硬譯、寓意過度推論）與自我檢核清單。深度應足以讓學生完成一題從閱讀到答案的示範，不只是詞語表；所有圖示用自製句法標記/文本證據流程圖，並非必要外部圖表。提供原創練習及詳解，不稱其為歷屆試題；歷屆題目如需參照只連往 HKEAA 官方下載來源，遵守憲章零版權侵害及獨立改寫要求。不要提供AI作文批改/評分：app/api 未實作且憲章禁止長答/作文自動批改，亦不可新增付費 API。",
+  "internal_links": "基線存在的可用URL：/practice（anchor「開始原創文言文閱讀練習」；練習需確認可篩選到文言文題目，否則改為planned）；/subjects（anchor「選擇中文科」；實際科目列表存在）。/dse-chinese、/dse-chinese/modern-chinese、/ai/practice-generator 均基線不存在，標planned，不可輸出為已存在連結；不建議連AI generator，避免暗示新AI能力。",
+  "status": "Draft",
+  "reason": "建議保留獨立主題頁而非合併：課外文言閱讀是中文卷一明確的學習子意圖，與現代文閱讀、卷二作文教學不同；若內容含實詞辨義、句意、證據推論及完整例題，學習價值具體且足夠。原始第45筆為此URL；目前基線 d25c637 沒有 /dse-chinese/classical-chinese，也沒有 /dse-chinese hub，僅有 /practice、/subjects 和中文題庫檔；因此不能 PUBLISH NOW。留作 P1 NEXT，待建立有足夠教學深度的獨立頁並驗證production；不能因其他優先頁正在實作而當作已完成。CSV所提 /ai/practice-generator 在基線存在，但生成/作文機評規劃不構成此頁功能，API並未實作且憲章禁止新增付費API。中文科2024起卷別/評核改動需按HKEAA當年官方文件逐年查核；本審核僅以官方2027架構確認卷一甲部指定文言經典、乙部課外文白兼備篇章，沒有把舊卷三/四寫進本頁。歷屆題原文、選項及答案不得複製；官方卷別/歷年材料可連官方站。基線題庫有中文題目檔並見課外文言相關題目，但不代表該頁已存在或取得可引用的Past Paper授權。未發現此URL與原始第21/31重複；不合併、不刪除。",
+  "sources": [
+    "Repo baseline d25c637：docs/seo-content-map.csv 原始第45筆（Python csv.reader、header後計數）；git cat-file 驗證 app/dse-chinese/classical-chinese/page.tsx 與 app/dse-chinese/page.tsx 均不存在。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/chi_lang/2027hkdse-c-clang.pdf — HKEAA《2027 HKDSE Chinese Language Assessment Framework》：卷一閱讀能力；甲部指定文言經典材料，乙部課外篇章、文白兼備。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?2&1&1_1 — HKEAA中國語文評核架構官方頁，列出2026–2029架構文件。",
+    "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/or/bs2023.html — HKEAA中文科2024評核資源，含2024 Paper 2更新資料；本頁卷別文案需遵循現行年度官方架構。",
+    "Repo baseline d25c637：docs/charter.md §4–5、§8、§13、§16.A（整合驗證、禁止新增付費API、版權、作文機評禁令、官方試題免責/下載來源）。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/45.json"
+}

@@ -1,0 +1,22 @@
+{
+  "index": 10,
+  "url": "/dse-maths/quadratic-equations",
+  "priority": "MERGE",
+  "page_type": "數學主題教學頁",
+  "intent": "學生搜尋 DSE 一元二次方程的解法、判別式和解題步驟，想知道何時因式分解、何時用公式，並避免符號及代入失誤；沒有搜尋量數據，不推斷流量。",
+  "h1": "DSE 一元二次方程：解法選擇、判別式與檢查",
+  "title": "DSE 一元二次方程解法與判別式｜分步例題與失分檢查｜DSE Level Up",
+  "description": "DSE 一元二次方程學習頁：從整理標準式、因式分解與公式法，到判別式判斷根的數目；以分步例題示範係數辨認、代入和根的核對，並拆解負號、分母及範圍限制等常見失分。適合想理解解法選擇與檢查步驟的香港中學考生，並附循序練習方向，幫助把公式運用到新題型。涵蓋由基礎到應用的練習，也說明如何檢查答案，方便考前複習。",
+  "core_content": "建議保留有實質教學的主題頁，並把原始第10筆合併至原始第21筆同一URL，避免重複規劃。內容須超越公式清單：將 ax²+bx+c=0 整理為標準式並標明 a、b、c；比較何時可因式分解、何時用求根公式，展示因式分解與非整數根公式法例題，逐步呈現代入、根式化簡及代回檢查；解釋 Δ=b²−4ac 與兩實根、重根、無實根的關係，附判斷根數例題；針對 b 的負號、2a 分母、漏根、範圍限制等錯誤設診斷題與修正。可用自製解法決策流程圖比較方法，提供原創平行改寫練習及逐步解說。不要放考評局原題或評分準則原文及未核實卷別；日後若做 Past Paper 題解，須先官方核對卷別並遵守授權，現有素材不足以標示特定卷。AI即時生成題或作文機評不是已實作功能，不納入承諾；憲章禁止新增付費API。",
+  "internal_links": "實際存在：/dse-maths（anchor「返回 DSE Maths 科目頁」）、/practice（anchor「開始全科練習」）。/subjects/mathematics不存在，不可當有效連結；/ai/practice-generator不宣稱已有AI生成服務。",
+  "status": "Merged",
+  "reason": "原始第10筆與原始第21筆同指 /dse-maths/quadratic-equations；第21筆大綱較完整，本筆 MERGE 至第21筆，不另保留頁。基線 d25c637 中此URL頁面存在，已有標準式、三種解法、一道公式例題及常見錯誤，但缺解法選擇邏輯、判別式情境例題、分層練習與完整錯誤診斷，深度不足。DSE hubs內容不足，不可 PUBLISH NOW；補足並production驗證前只能 Draft，開發中的優先頁不視為已驗證發布。插圖宜採自製流程圖。憲章要求題目原創平行改寫避免版權，不複製Past Paper原文。",
+  "sources": [
+    "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6",
+    "docs/seo-content-map.csv：csv.reader第10、21筆同URL；第11、31筆亦重複但不屬本次審核",
+    "docs/charter.md §1第4點、§3、§16.A",
+    "app/dse-maths/quadratic-equations/page.tsx：目標URL基線存在",
+    "app/dse-maths/page.tsx、app/practice/page.tsx存在；app/subjects/mathematics/page.tsx不存在"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/10.json"
+}

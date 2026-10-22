@@ -1,0 +1,22 @@
+{
+  "index": 27,
+  "url": "/dse-maths/statistics",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記（統計）",
+  "intent": "學生尋找 DSE 數學統計公式、概念解說、例題步驟和常見失分原因，亦需要辨清必修部分統計與 M1（微積分與統計）延伸內容的界線。不得宣稱搜尋量或各主題出題頻率。",
+  "h1": "DSE 數學統計：離差、箱形圖與標準差",
+  "title": "DSE 數學統計：箱形圖、標準差與解題例題｜DSE Level Up",
+  "description": "整理 DSE 數學統計的集中趨勢與離差、四分位距和箱形圖，逐步示範標準差及資料比較，拆解抽樣偏差與統計論證陷阱；分清必修部分與 M1 延伸統計範圍，附自編圖表例題與練習方向，方便考前按概念溫習，並理解如何選擇合適指標比較兩組數據，掌握圖表表達與統計推論的基本步驟，並建立由數據到結論的清晰解題流程示範。",
+  "core_content": "以官方課程範圍分段，明確標示必修部分與 M1；不可把統計一概歸為必修或混入 M2（代數與微積分）。先教集中趨勢及離差指標如何按資料特性選用；以一組自行編寫的小型數據逐步計算全距、四分位距與標準差，解釋四分位數慣例、四捨五入和計算器操作。配原創箱形圖及兩組分布圖，示範讀取五數概括、比較中心與離散程度、辨認圖像容易誤導之處；再以自行設計的問卷／新聞統計情境解釋抽樣、偏差及論據有效性。每節附一題由淺入深的自編例題、逐步推理、錯法對照和練習提示。統計範圍按官方現行指南逐項核對；不得無題目來源聲稱是真題/Past Paper，不重製考評局受版權保護的題文、圖表或答案，只可標註官方章節、試卷頁碼及連結。不可承諾生成式AI解題或作文／答題機評；相關功能沒有實作且憲章禁止新增付費API。",
+  "internal_links": "已存在：/dse-maths — anchor「DSE 數學科目總覽」；/dse-maths/quadratic-equations — anchor「一元二次方程主題筆記」（現有相鄰主題）。已存在：/practice — anchor「開始相關練習」；/ai/practice-generator —「AI 練習生成」（勿聲稱該AI功能可用於本頁統計內容）。",
+  "status": "Draft",
+  "reason": "基線 d25c637 中不存在 app/dse-maths/statistics/page.tsx，故此URL目前沒有對應source頁；現有 /dse-maths hub 內容偏總覽，無統計專屬教學，符合獨立頁可補足的學生學習需求，但僅CSV空泛大綱「核心概念、公式或流程、分步例題、常見錯誤、DSE考試重點」不足以支撐有深度內容。CSV第27列只有一筆 /dse-maths/statistics，未發現相同URL重複；不應與概率頁合併，統計與概率雖相連但此頁聚焦資料描述、離差、圖表及統計判讀。建議 P1 NEXT、Draft：先完成官方範圍核對、原創講解與圖表例題、專家審校及production驗證再考慮發布；目前未驗證，不可 PUBLISH NOW。基線只有一元二次方程專題頁，hub不足，另有五個priority頁正在實作但尚未production驗證，不構成本頁已完成證據。題庫中存在統計草稿／reviewed素材，不等同此路由已連線或可稱Past Paper；不得杜撰真題出處。AI解題生成及作文機評並未在app/api實作，且憲章§3規定全部免費、§5禁止新增需付費第三方API；不以AI能力作發布承諾。圖表及例題須自行原創；依憲章§1第4點，考評局原文受版權保護，僅用章節、頁碼及連結引用。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/CA_2017_e.pdf — EDB Mathematics Curriculum and Assessment Guide：數據處理範圍含離差、四分位距、箱形圖、標準差、用途與濫用統計；M1另有延伸統計學習單元。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2026hkdse-e-math.pdf — HKEAA 2026 Mathematics Assessment Framework：必修部分可單獨應考；延伸部分須選M1或M2，M1為Calculus and Statistics並有獨立試卷。",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&4_25 — HKEAA官方數學科頁面；本次頁面內容只見考生作答示例資源，未作任何特定統計題出現頻率推斷。",
+    "/home/ubuntu/dse-level-up/docs/charter.md §1第4點、§3、§5、§16.A — 基線憲章：題目須原創平行改寫、不可侵犯版權；禁止付費API；作文/長答不可假設機器批改。",
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv 第27列（csv.reader；不含header計）及基線 d25c637 app/dse-maths 路由樹 — 列出目標與大綱；基線無 statistics/page.tsx。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/27.json"
+}

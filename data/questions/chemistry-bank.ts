@@ -318,6 +318,8 @@ for (const [Z, el, per, grp, cfg] of [
   [15, 'P', 3, 15, '2, 8, 5'], [16, 'S', 3, 16, '2, 8, 6'], [17, 'Cl', 3, 17, '2, 8, 7'],
   [18, 'Ar', 3, 18, '2, 8, 8'], [19, 'K', 4, 1, '2, 8, 8, 1'], [20, 'Ca', 4, 2, '2, 8, 8, 2'],
 ] as [number, string, number, number, string][]) {
+  void el
+  void grp
   add(`cb_pt1_${Z}`, T.periodic, FW.structure, 'easy',
     [`某元素的原子序為 $${Z}$。其電子排布是甚麼？`, `An element has atomic number $${Z}$. What is its electronic arrangement?`],
     [n(`$${cfg}$`), n(`$${cfg.split(', ').reverse().join(', ')}$`), n(`$${Z}$`), n(`$2, ${Z - 2}$`)],
@@ -849,6 +851,8 @@ for (const dc of [0.2, 0.4, 0.5, 0.8, 1.0]) {
   [2, 'Na', 23, 1, 'Cl_2', 71], [4, 'Al', 27, 3, 'O_2', 32], [1, 'Zn', 65, 1, 'S', 32]] as
   [number, string, number, number, string, number][])
   .forEach(([cA, fA, mrA, cB, fB, mrB]) => {
+    void mrA
+    void mrB
     for (const molA of [2, 4]) {
       const needB = (molA * cB) / cA
       const haveB = needB / 2

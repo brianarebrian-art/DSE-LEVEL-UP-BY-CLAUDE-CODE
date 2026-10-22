@@ -23,6 +23,8 @@ import { sourceLabEntries } from '@/data/history-sources'
 import { ARTICLE_DATES } from '@/lib/articleDates'
 import { BANK_UPDATED_AT } from '@/data/questions/bank-dates.generated'
 import { CATEGORIES } from '@/data/offSyllabus'
+import { shouldNoIndex } from '@/lib/seoPolicy'
+import { SCENE_IDS } from '@/data/cantonese'
 
 // lastModified（創辦人回覆 61a，2026-10-09）。原本每條都寫 `new Date()`，即每次有人讀 sitemap
 // 就聲稱全站「今日更新」。搜尋器發現 lastmod 不可信便會整份忽略。現在只寫有真實紀錄的日期：
@@ -68,6 +70,8 @@ const STATIC_ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitem
   { path: '/relax/solo', priority: 0.4, freq: 'yearly' },
   { path: '/relax/group', priority: 0.4, freq: 'yearly' },
   { path: '/waiting', priority: 0.4, freq: 'yearly' },
+  { path: '/cantonese', priority: 0.4, freq: 'monthly' },
+  { path: '/cantonese/learn', priority: 0.4, freq: 'monthly' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -77,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const subjectIds = getActiveSubjects().map((s) => s.id)
 
   return [
-    ...STATIC_ROUTES.map((r) => ({
+    ...STATIC_ROUTES.filter((r) => !shouldNoIndex(r.path || '/')).map((r) => ({
       url: `${DOMAIN}${r.path}`,
       ...lastModifiedOf(r.path),
       changeFrequency: r.freq,
@@ -105,6 +109,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${DOMAIN}/off-syllabus/${c.slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.6,
+    })),
+    ...SCENE_IDS.map((id) => ({
+      url: `${DOMAIN}/cantonese/${id}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
     })),
   ]
 }

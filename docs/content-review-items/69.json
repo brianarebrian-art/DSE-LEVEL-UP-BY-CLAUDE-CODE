@@ -1,0 +1,20 @@
+{
+  "index": 69,
+  "url": "/dse-chemistry/electrochemistry",
+  "priority": "BLOCKED",
+  "page_type": "DSE Chemistry 電化學主題教學／原創平行題解析頁；未核實試題來源前不可標作 Past Paper 題解",
+  "intent": "考生在複習氧化還原、化學電池及電解時，想分清電子流向與電極反應、預測電解產物，並從具體例題理解電化學序和優先放電因素。這是有實際考試準備用途的主題查詢；沒有可引用的搜尋量資料，不作流量聲稱。",
+  "h1": "DSE Chemistry 電化學：氧化還原、化學電池與電解",
+  "title": "DSE Chemistry 電化學：電池與電解逐步解析｜DSE Level Up",
+  "description": "DSE Chemistry 電化學溫習：整理氧化還原、化學電池與電解的判斷方法，逐步拆解電極反應、電子流向、電化學序及離子優先放電。配原創情境題、標註示意圖、表格判讀與常見失分修正，練習由觀察推理到完整作答；不收錄未核實來源的歷屆試題，考試範圍以官方課程指引為準。另說明常見混淆及作答檢核，可供考生自行核對。",
+  "core_content": "若日後解除阻塞並把頁面改為電化學教學，而非未有題源支持的歷屆題解，內容應依教育局現行可查的高中化學課程指引 Topic VII 範圍編排：1. 氧化、還原及氧化數變化，將半反應與總反應配平；2. 原電池中的氧化／還原位置、電子外電路方向、離子流動、鹽橋作用及電池符號；3. 電化學序用以比較氧化還原反應可行性，將排序理由連到半反應；4. 電解槽中陰、陽極反應，以及水溶液電解時影響優先放電的因素，逐步判斷產物；5. 化學電池與電解池的比較，並以常見錯誤作答檢核。配置自製、標清粒子與電子方向的電池／電解槽示意圖，以及原創情境題：給定電極、電解質和觀察結果，要求預測產物、寫半反應及解釋；另用自製表格／資料題訓練比較電化學序及解釋推論。應提供每一步的推理、得失電子與電荷守恆核對、典型失分點。教育局指引確認此為必修範圍的一部分，但本審核未逐條核實所有可能延伸細節，定稿前須由化學教師對照指引確認。不得搬用受版權保護的題目、評分準則或插圖；無授權時只用原創平行題並依憲章顯示版權聲明。不能宣稱有AI生成題目、AI解題或作文機評：基線沒有相應 app/api 功能，且憲章禁止新增付費API及長答／作文自動批改。",
+  "internal_links": "基線實際存在：/practice（anchor建議「前往練習」；只在相關電化學原創題實際上線並可到達後連結）、/ai/past-paper-explainer（anchor建議「了解試題解析工具」；只作現存功能入口，不能表示本頁已整合AI）。/dse-chemistry 與 /past-papers 在基線 source 均不存在，僅可標planned，不得輸出為已存在連結；本頁URL本身亦不在基線。",
+  "status": "Blocked",
+  "reason": "基線 d25c637 中沒有 /dse-chemistry/electrochemistry，也沒有 /dse-chemistry 或 /past-papers hub；原始第69列只給「DSE Chemistry electrochemistry past paper 題解」這個意圖及泛化大綱，沒有年份、卷別、Paper、題號、題目ID或可供逐題核對的試題來源。理科topic不可在沒有題目source時稱作Past Paper，因此目前不能寫出可驗證的逐題解析、評分要求或相似題，屬來源不足而BLOCKED，而非把未完成內容標成Published。學習主題本身有明確學生價值：教育局化學課程指引列明必修Topic VII「Redox Reactions, Chemical Cells and Electrolysis」，涵蓋化學電池、電化學序及電解優先放電等；未來可考慮把頁面定位改為有逐步推理、示意圖、表格判讀和原創平行題的完整概念教學，這些能提供比列概念更具體的學習價值。考評局官方科目頁可作官方科目資料入口，但本次未取得此列任何特定考題及其授權；引用或重製試卷文字、評分準則或圖像前須確認授權，未獲准只採原創平行題並遵守憲章的版權聲明。基線沒有可宣稱已接入的本頁AI功能；app/api未實作生成／作文機評，憲章亦禁止新增付費API及長答／作文自動批改，不可把這些列作現成功能。現有DSE hub不足以支持發布，本URL在基線也不存在，故不列PUBLISH NOW；須先補足可核對題源或改成課程對照型主題教學、完成人工審核並驗證production後再重新評估。此頁沒有已確認的重複頁或合併目的URL。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chem/",
+    "docs/charter.md §1（原創平行改寫及版權聲明）、§5（禁止需付費第三方API）、§16.A（禁止長答／作文自動批改）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/69.json"
+}

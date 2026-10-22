@@ -1,0 +1,23 @@
+{
+  "index": 30,
+  "url": "/dse-maths/calculus",
+  "priority": "P2 LATER",
+  "page_type": "主題筆記",
+  "intent": "香港DSE考生搜尋微積分筆記、微分／積分解題步驟、應用題與常見失分原因；此主題須先辨明考生修讀數學延伸部分M1（Calculus and Statistics）還是M2（Algebra and Calculus），避免把兩個選修單元混成一套範圍。",
+  "h1": "DSE 微積分筆記：分清 M1 與 M2 的微分、積分及應用",
+  "title": "DSE 微積分筆記｜M1、M2 微分積分例題與錯誤解析｜DSE Level Up",
+  "description": "整理香港DSE數學延伸部分M1與M2微積分重點，分別講解極限、微分法則、切線與最佳化、積分及面積應用，配合原創分步例題、圖像解說和常見錯誤提示，說明兩卷範圍差異與練習方向。按修讀單元找對公式與題型，練習列式、檢查運算，並理解每一步的理由，建立完整解題方法。另附自我核對提示，協助考生檢視答案及步驟內容。",
+  "core_content": "應以兩個清楚分隔的M1、M2學習路徑組織，並讓學生先選自己修讀的延伸單元。M1（微積分與統計）部分按官方範圍涵蓋函數極限與導數概念、微分法則、二階導數、切線、極值／最佳化、不定積分及其應用、定積分及其應用、梯形法近似；頁面只深入微積分，不把統計章節混進來。例題由基本導數與鏈式法則，進至切線方程、由情境建立最佳化模型、反微分和定積分求面積；每題展示辨認題型、列式、運算、檢查答案與常見錯誤。M2（代數與微積分）另列極限、由第一原理求指定初等函數導數、乘積／商／鏈式法則、隱微分、二階導數、變率／極值、積分與旋轉體體積等；例題凸顯M2特有的三角函數／指數對數微分、隱微分、第一原理及體積應用，不可照搬M1題目或標題。可用原創函數圖像呈現割線趨近切線、導數正負與極值，以及定積分面積界線；附座標、變數及圖像敘述，圖表用純SVG或手繪式靜態原創示意，不新增套件。所有練習題採憲章要求的原創平行改寫，不重現考評局原題、掃描圖、官方答案或長段逐字題文；只引用考綱事實並連結官方來源。可提供題型年份／卷別索引的設計方向，但在取得並逐題核實合法可用的官方題源前，不宣稱任何自製題為Past Paper，也不轉載試題。頁面應同時提供分步解釋、適用條件、符號／單位檢查及錯誤對照，達到可獨立複習的深度，而非僅列公式。",
+  "internal_links": "/dse-maths — anchor：數學主題總覽；/practice — anchor：開始數學練習（實際入口需在接入時確認有可供M1/M2使用的題目）；/ai/practice-generator — planned：延伸部分微積分練習（不可假稱已有AI生成能力或特定M1/M2題庫）。",
+  "status": "Draft",
+  "reason": "基線d25c637中沒有 /dse-maths/calculus 頁面；只見內容地圖紀錄。基線已有 /dse-maths 與 /dse-maths/quadratic-equations 等實際路由，惟數學hub不足以支持立即發布。本項獨立URL並未在原始地圖與另一筆重複，故保留為後續內容規劃，不合併也不刪除。真實學生意圖合理且官方課程顯示M1與M2均含微積分，但學習邊界不同；目前沒有本頁內容可證明深度、例題品質、圖表及題源。AI生成與作文機評在app/api未實作，不得假設可用；憲章禁止新增付費API。Past Paper原題有版權與授權風險，依憲章只用原創平行改寫；沒有經核實的題源不可標稱Past Paper。須待M1/M2分流、原創題及解答完成、內容與引用核驗、實際內鏈驗證後才可考慮發布。現階段不因正在進行的其他優先頁面而視為完成。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2027hkdse-e-math.pdf",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/EN_M1_e.pdf",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/EN_M2_e.pdf",
+    "https://www.edb.gov.hk/en/curriculum-development/kla/ma/curr/index2.html",
+    "docs/charter.md §4–5、§16.B（repo基線d25c637）",
+    "docs/seo-content-map.csv CSV row 30（不含header；repo基線d25c637）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/30.json"
+}

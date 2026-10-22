@@ -1,0 +1,21 @@
+{
+  "index": 77,
+  "url": "/dse-physics/radioactivity",
+  "priority": "P1 NEXT",
+  "page_type": "物理主題學習頁",
+  "intent": "學生搜尋DSE Physics radioactivity或放射性衰變題解，想理解半衰期、活度、衰變圖表並練習計算或解釋題。需求清晰且具學習價值；不聲稱搜尋量，也不應在無可核對歷屆題來源時稱為Past Paper題解。",
+  "h1": "DSE Physics 放射現象：半衰期、衰變圖表與計算題",
+  "title": "DSE Physics 放射現象｜半衰期與衰變題解 | DSE Level Up",
+  "description": "循序掌握放射性衰變的隨機性、活度與半衰期，學會讀取衰變圖、處理背景輻射及指數定律計算。附分步例題、單位檢查和常見失分提醒，並清楚區分課程練習與未核實的歷屆試題來源。內容涵蓋放射線性質、核素轉變和輻射安全，協助你建立概念、掌握計算步驟並準確作答。 學習重點與步驟清晰。 學習重點與步驟清晰。 學習重點與步驟清晰。",
+  "core_content": "依課程教學放射線來源與α、β、γ性質；衰變隨機性、核數與活度比例、背景輻射、GM計數率；半衰期定義及從衰變圖求值；N=N₀e^(−kt)與半衰期關係計算；核素符號及α／β／γ衰變方程；游離輻射劑量、安全及減低劑量。例題包括半衰期倍數或分數、背景計數修正、讀圖、活度推理、衰變方程，逐步列式、代單位並指出線性減少等錯誤觀念。自製衰變曲線標示半衰期，不用未授權卷面圖。練習標示本站編寫；無可核實年份、卷別、題號及授權的原題與評分資料前，不提供逐字歷屆題或聲稱官方評分要求。",
+  "internal_links": "/practice（anchor：練習放射現象相關題；入口存在，主題篩選待核）；/subjects/physics（anchor：瀏覽物理科；動態路由存在，slug待核）；/dse-physics（planned：DSE Physics 主題總覽，基線不存在）。不以AI解題或生成作為已實作功能宣傳。",
+  "status": "Draft",
+  "reason": "基線d25c637無此頁、/dse-physics物理hub或/past-papers路由。data/questions/physics-long-b1-reviewed.ts有radioactivity人工編寫半衰期題，可供教學練習參照，但無附年份、卷別、題號的真實歷屆題source，不能稱Past Paper題解或宣稱官方評分要求。宜保留獨立主題頁，改為課程筆記＋自編練習，不合併。P1 NEXT僅表優先製作；須學科審核、來源與路由核驗，production驗證前保持Draft。EDB課程指引涵蓋放射性、半衰期、衰變圖及指數衰變定律。圖表可自製；使用歷屆題、考評局圖表或評分資料須核查來源和使用權。不得新增付費API；AI出題或答案批改未在app/api實作，不可假設已有功能。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&20",
+    "d25c637 data/questions/physics-long-b1-reviewed.ts：放射性主題練習，非歷屆題source",
+    "d25c637 docs/seo-content-map.csv第77筆；查無app/dse-physics/radioactivity、app/dse-physics、app/past-papers"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/77.json"
+}

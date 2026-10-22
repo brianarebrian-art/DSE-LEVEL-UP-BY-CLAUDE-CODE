@@ -1,0 +1,19 @@
+{
+  "index": 58,
+  "url": "/dse-biology/respiration",
+  "priority": "BLOCKED",
+  "page_type": "生物主題教學筆記（不應在缺少題目來源時定位為 Past Paper 題解）",
+  "intent": "學生搜尋「DSE Biology respiration／呼吸作用」以複習呼吸作用各途徑、區分有氧與無氧呼吸，理解ATP的能量轉移，並準備實驗設計及數據分析。現有課程指南支持這些實質學習需求；沒有足夠證據證明本頁可對應特定公開試題或其評分要求，不推測搜尋量。",
+  "h1": "DSE Biology 呼吸作用：有氧、無氧途徑與實驗分析",
+  "title": "DSE Biology 呼吸作用｜有氧與無氧途徑、ATP及實驗分析",
+  "description": "DSE Biology 呼吸作用專題，整理糖酵解、有氧與無氧途徑、ATP及常見混淆，配合原創分步例題和實驗數據判讀。依課程指引說明學習範圍；不重刊考評局題目，待核實具體試題後才補充題解與評分重點。學生可按細胞位置及反應條件建構過程圖，再用變因、對照和數據解讀呼吸作用實驗，提升答題能力與理解，提升考試表現與解題信心。",
+  "core_content": "以課程範圍建立有深度的教學頁：①呼吸作用的意義、ATP能量轉移，以及細胞質和粒線體位置；②糖酵解的主要轉變、NADH及ATP產生；③有氧途徑概述（丙酮酸轉化、Krebs cycle要點、氧化磷酸化），不把超出課程要求的細節冒充必考內容；④無氧途徑在肌肉細胞形成乳酸、酵母形成乙醇和二氧化碳，整理兩途徑比較及運動情境；⑤原創平行例題方向：依反應條件辨認途徑、判斷產物或能量載體、解釋結果，不複製公開試題；⑥原創表格／流程圖呈現細胞位置、底物、主要產物及ATP／NADH，並用自製實驗數據練習辨認自變項、因變項、控制變項及作圖解讀。若未取得可核實的試題年份、卷別及題號，不提供Past Paper題解或評分要求。",
+  "internal_links": "/dse-biology（planned；基線無此route，勿假裝已連結，待hub內容完善後加「DSE Biology 主題總覽」）；/past-papers（planned；基線無此route，待確認官方試題索引及版權處理後加「查看公開試題索引」）；/ai/past-paper-explainer（基線存在，可用anchor「查看解題工具」作一般工具入口，但不得宣稱其已具備呼吸作用題解或AI功能；是否連結須確認功能契合）。",
+  "status": "Blocked",
+  "reason": "基線 d25c637 不存在 /dse-biology/respiration route；同時未見 dse-biology 或 past-papers hub，因此目前只能是內容規劃，不能發布，且不得以 hub 已足夠為由標 PUBLISH NOW。教育局 Biology Curriculum and Assessment Guide 有呼吸作用學習範圍，可支持教材大綱，但原列「Past Paper 題解、評分要求、相似題」沒有任何具體年份／卷別／題號或可核查的官方題目來源；按限制不可無題 source 稱為 Past Paper，故整筆 BLOCKED，待提供官方試題索引並完成合規原創解說素材後重審。考評局／教育局受版權保護的題目原文、圖表不可重刊；只列章節、頁碼和連結，例題與圖表需原創平行改寫。AI題目生成與作文機評在 app/api 未實作，憲章禁止新增付費API，不可把 /ai/past-paper-explainer 當作已提供本頁AI功能。此列不與已知重複列重複保留：原始第21/31分別與第10/11重複，應由其審核結果合併處理，不影響本列。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/58.json"
+}

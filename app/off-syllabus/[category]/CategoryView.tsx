@@ -5,7 +5,6 @@ import { ChevronDown } from 'lucide-react'
 import { useLocale, useT } from '@/lib/i18n'
 import { cardNo, type OffSyllabusCard } from '@/data/offSyllabus'
 import OffSyllabusShareButton from '@/components/OffSyllabusShareButton'
-import AdSlot from '@/components/AdSlot'
 
 // A category of topic cards. Each card is a native <details>: closed it shows the
 // number, title and one-line hook, so the page scans like a list; open it shows the
@@ -97,7 +96,6 @@ export default function CategoryView({
             </li>
           ))}
         </ul>
-        <AdSlot label={`off-syllabus-${titleEn}`} />
       </div>
     </div>
   )

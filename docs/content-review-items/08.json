@@ -1,0 +1,22 @@
+{
+  "index": 8,
+  "url": "/dse-economics",
+  "priority": "P1 NEXT",
+  "page_type": "DSE Economics 科目總覽／核心概念教學頁",
+  "intent": "香港 DSE 經濟科學生希望按課題理解概念、掌握圖表判讀與政策分析，並用原創練習檢查理論應用；不只是查閱泛泛的經濟學百科。",
+  "h1": "DSE 經濟科筆記：供求圖、通脹與政策分析",
+  "title": "DSE 經濟科筆記｜供求圖、通脹與政策分析 | DSE Level Up",
+  "description": "為香港 DSE 經濟科整理核心概念、供求圖與宏觀經濟分析方法。循序學習圖表移動、通脹成因、政策取捨及資料題作答，配合原創平行例題逐步拆解推理和常見失分位，並連結相關練習與官方課程資源，適合自修複習與考前查漏補缺。另附圖表判讀步驟與資料題作答框架，協助你把概念應用到新情境。補充重點整理與答題示範詳解。",
+  "core_content": "頁面須由註冊教師審定前維持 Draft。建議章節：1) 經濟推理基本工具（稀缺、選擇、機會成本、誘因），練習將題幹轉成概念；2) 需求與供應：沿曲線移動 vs 曲線轉移、均衡價格／數量變化；逐步標軸、起點、變動原因、新均衡，配自創咖啡需求情境及純 SVG 圖；3) 市場干預與效率：價格上限／下限、稅項或補貼的方向、受影響者及取捨；須先核實考綱；4) 宏觀指標：實質／名義、本地生產總值、物價水平與失業，區分通脹率與物價水平；5) 通脹資料題：辨認趨勢、提出可能成因、建立因果鏈、分析政策效果與副作用，以證據作有條件結論；6) 原創分步例題：供求圖例與通脹資料題各一，按題眼→概念→圖／因果鏈→取捨→結論拆解，指出把需求量變動錯寫成需求轉移、只背政策名稱、混淆相關與因果等失分位；7) 自我檢核。例題情境與數字須自行創作，不得複製／改寫官方原題。不得宣傳AI生成或作文機評：相關API未實作，作文自動批改亦為憲章禁止。現行範圍由編輯對照最新官方文件覆核。",
+  "internal_links": "現存：/subjects（anchor：選擇 DSE 科目）、/practice（anchor：開始練習）。基線 d25c637 不存在 /dse-economics。planned：需求與供應主題頁、通脹／宏觀政策主題頁、經濟科主題練習入口（待有對應篩選與路由才可連結）。CSV 的 /ai/practice-generator 路由雖存在，不能聲稱已接通經濟科生成或暗示具備未驗證功能。",
+  "status": "Draft",
+  "reason": "基線 d25c637 無 app/dse-economics/page.tsx 或其他對應 route，故是新頁而非現存重複頁，暫無合併／刪除對象。學生價值具體：把概念轉為圖表、因果推理及資料題答案；CSV 僅寫「圖表、政策、資料題」，未有實際解說、圖表或可循步練習，深度不足。經濟題庫源存在（data/questions/economics.ts 等），但這不等於此頁有教學，也不可把題庫題宣稱為可重刊的 Past Paper。HKEAA 明示歷屆試卷及相關材料使用／複製需事先書面批准；連官方資源入口，不重刊題目、考卷截圖、原圖或資料表；需要引用先取得適用授權，學校許可不宜套用至本平台。憲章禁止付費API／新增套件及長答作文自動批改，app/api 未實作AI生成或作文機評。官方課程指引可作課程結構參照，但發布前仍須以現行 HKEAA 文件逐項核對範圍及卷別。不得 PUBLISH NOW：科目 hub 內容不足，五個 P0 頁仍在實作且未經 production 驗證，只能 Draft。排 P1 NEXT，完成考綱查核、真人學科審閱、例題驗算、圖表可讀性及上線驗證後重評。",
+  "sources": [
+    "Baseline d25c637：/dse-economics route 不存在；/subjects、/practice routes 及 data/questions/economics.ts 存在。",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&11 — HKEAA 經濟科官方入口，列 assessment framework、curriculum and assessment guide 等。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/pshe/Econ%20C&A%20Guide_updated_e_20140212.pdf — EDB/HKEAA 經濟科課程及評估指引。",
+    "https://www.hkeaa.edu.hk/en/resources/publications/licence/ — HKEAA 歷屆考卷材料授權說明：使用／複製需事先書面批准，頁面所列許可面向學校。",
+    "/home/ubuntu/dse-level-up/docs/charter.md §1.4、§5、§8、§13、§16.A — 原創平行改寫、免費與API限制、禁止作文自動評分及免責要求。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/08.json"
+}

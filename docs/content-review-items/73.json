@@ -1,0 +1,23 @@
+{
+  "index": 73,
+  "url": "/dse-physics/energy",
+  "priority": "P2 LATER",
+  "page_type": "Physics topic learning guide with original worked examples（物理主題教學頁；非歷屆試題重製頁）",
+  "intent": "DSE物理學生可能搜尋能量、能量守恆、動能／重力位能公式、功率或Energy and Use of Energy題目解法，以釐清概念、選式及改善計算失分。屬合理學習意圖推斷；沒有搜尋量或流量證據。",
+  "h1": "DSE物理能量：動能、位能、能量守恆與能量使用",
+  "title": "DSE物理能量題目：公式、能量守恆與例題｜DSE Level Up",
+  "description": "整理DSE物理能量與能量使用的核心概念，逐步練習動能、重力位能、能量守恆、功率及電器效率題型；以原創情境圖解能量轉換與常見失分，附單位檢查和變式自測。歷屆題目只連官方來源，不重製受版權保護的題幹、圖表或評分資料，並示範辨認條件、選式及檢查答案。最後以混合小測檢查能否獨立遷移解題，並說明各步物理意義。",
+  "core_content": "建議先講清楚此頁範圍：課程指南中的動能、重力位能、能量守恆與功率，以及Elective「Energy and Use of Energy」的用電、效率與能源議題，不可混稱為全屬必修。章節：1) 能量與單位、系統邊界及能量轉移；2) 動能與重力位能公式的適用條件、代入與單位；3) 原創情境例題：物體下滑／煞車，列初末能量、辨識耗散，逐步解守恆與能量損失；4) 功率與能量轉移率，從時間、功率或能量求未知量；5) 電器輸入／有用輸出、效率、額定功率及用電成本的原創例題；6) 能源轉換流程圖及一張自製能量條形圖，標示系統、輸入輸出與耗散，不仿製考評局圖表；7) 常見錯誤：混淆質量與重量、忽略單位、無理由把能量全視為守恆於所選物體、混用功率與能量；8) 由基礎到多步的原創變式題和答案推理，讓學生先嘗試再看逐步解法，附答案合理性檢查及可列印摘要。若未取得可核實的官方卷別與題號，不得稱任何題目為Past Paper或聲稱其評分要求；可提供官方卷頁連結／題目頁碼提示，不複製題幹、答案、評分指引及受保護圖表。依憲章以改變數值、情境及人物的原創平行題保留考核概念。不得宣稱已有AI生成或AI批改；憲章禁止新增付費API。",
+  "internal_links": "/practice —「開始物理練習」（實際存在通用練習頁，但未確認有能量專題題庫）；/subjects —「選擇科目」（實際存在）。/dse-physics、/past-papers、/ai/past-paper-explainer 為planned或需先查明路由與功能，不可當作現存連結；尤其AI Past Paper Explainer頁面路由存在，但不能宣稱AI功能已實作。",
+  "status": "Draft",
+  "reason": "基線 d25c63740a9184d0303e2558c8ee6f51643258d 的app source中找不到 /dse-physics/energy 路由或頁面；搜尋repo只有原始SEO CSV及其Markdown副本提及該URL，因此不可標Published或PUBLISH NOW。主題對學生有實際價值，因可把能量概念、公式選用與多步計算連起來；但原始簡述只有「題目重點、評分要求、分步解法、失分位、相似題」，沒有任何具體官方卷年／題號／題目source，也不足以支撐「Past Paper題解」或考評要求。改以P2 LATER規劃有深度的主題教學頁，待補原創講解例題、圖表及來源核對後再評估；不以虛構搜尋量提高優先級。不要合併到不存在的物理hub；若日後建立 `/dse-physics`，本頁可作其能量子頁，避免hub只複述本頁。`/ai/past-paper-explainer`雖有頁面檔案，但AI生成／作文機評尚未於app/api實作，且憲章禁止新增付費API，不能把AI列為現成功能。歷屆試題、答案、評分指引及圖表有版權風險，採原創平行改寫，或僅連官方來源並引用頁碼，不重製原文。現行考綱範圍依EDB課程指南：動能、重力位能、能量守恆、功率在力學內容；Energy and Use of Energy列於選修內容；不可把整個能源使用單元籠統說成必修。",
+  "sources": [
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader讀取header後第73筆；列值含題解概要及原訂內鏈）",
+    "/home/ubuntu/dse-level-up/docs/charter.md §1第4點、§5、§16.B（版權、成本及AI身份限制）",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf（Physics Curriculum and Assessment Guide；力學能量內容及Energy and Use of Energy選修單元）",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/（考評局科目資訊；核對HKDSE Physics為Category A科目；未查核具體能量題卷別或題號）",
+    "/home/ubuntu/dse-level-up/app/practice/page.tsx、/home/ubuntu/dse-level-up/app/subjects/page.tsx（實際存在路由）；/home/ubuntu/dse-level-up/app/ai/past-paper-explainer/page.tsx（有頁面路由，不代表AI功能可用）",
+    "基線 d25c63740a9184d0303e2558c8ee6f51643258d；app source中未找到 /dse-physics/energy 或 /dse-physics hub；沒有搜尋量資料"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/73.json"
+}

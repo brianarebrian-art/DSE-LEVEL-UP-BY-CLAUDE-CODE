@@ -1,0 +1,23 @@
+{
+  "index": 35,
+  "url": "/dse-english/report-writing",
+  "priority": "MERGE",
+  "page_type": "主題筆記（併入現存英文寫作格式指南）",
+  "intent": "香港 DSE 英文考生想掌握 report 的讀者與目的、標題和小標題、客觀語氣、資料整理及建議安排，並希望看具體寫作規劃和逐段示範，以避免遺漏題目要求。這是可辨識的學習需求；沒有搜尋量證據，不推測流量或排名。",
+  "h1": "DSE English Report 寫作：結構、語氣與逐步示範",
+  "title": "DSE English Report 寫作指南｜結構、語氣與例題",
+  "description": "掌握 DSE English report 寫作：分析讀者、目的與題目要求，安排標題、小標題和段落。以原創情境示範整理資料、提出建議及檢查語氣、文法與完整度；附常見錯誤訂正、自評清單和練習步驟，協助考生獨立完成寫作，不照抄歷屆試題或官方答案，逐步提升應考寫作能力與信心。加強自我檢查。加強自我檢查。加強自我檢查。",
+  "core_content": "建議將此意圖作為現存 /dse-english/writing-format 的 report 專節，不新建第二個近似文體指南。專節先拆解題目情境、讀者、目的與每項指示，再用「標題／簡短引言／按主題分段的小標題／結論或建議」示範如何組織資訊，說明格式須服務閱讀而非盲背模板。安排原創平行情境例題（如校園活動檢討）：逐步標記任務要求、把觀察分類、規劃段落、示範一段中性客觀語氣並說明建議如何對應證據；提供一份短篇完整示範或分段骨架及逐項講解。設計錯誤對照：漏答某項要求、把個人意見寫成無根據事實、段落混合多個主題、語域不一致、建議空泛、語法及連接詞錯誤；配上交卷前自查清單和可自行練習的新情境。圖表以自製簡單資料表／段落規劃圖為宜，須自行創作並附文字解讀及無障礙替代文字；不需圖表套件。不可把原題、官方圖表、評分準則或官方答案搬上頁面；Past Paper 若作參考，只提供經官方核對的卷年／題目章節名稱與官方連結，不重製受版權保護原文。不得宣稱已有 AI 生題或作文機評；作文機評未實作且憲章禁止新增付費 API。",
+  "internal_links": "合併目的URL /dse-english/writing-format（現存，anchor：「Report 寫作：結構、語氣與逐步示範」）；/dse-english（現存，anchor：「返回 DSE English 科目頁」）；/writing（現存於 writing-format 頁面的英文寫作入口，anchor：「開始英文寫作」）。/practice（現存，但非 report 專題練習，僅可用通用練習 anchor）；/ai/practice-generator 不應宣稱提供此頁 AI 生題。",
+  "status": "Merged",
+  "reason": "基線 d25c637 中 /dse-english/report-writing 沒有對應 source 路由；同一來源已存在 /dse-english/writing-format，metadata 與頁面內容明列 Letter、Article、Report 三文體，含 report 整理觀察／資料／建議、客觀語氣及小標題，另有規劃與交卷前檢查。新建薄頁會重複其主題與搜尋意圖；將報告專節、具體逐步例題及錯誤訂正補入既有頁面，合併目的為 /dse-english/writing-format。現有內容僅概括 report 特性，欠缺示範和深度，因此不可視為已達 PUBLISH NOW；本列 MERGE 僅表示合併決策，內容補足及 production 驗證仍未完成。全站英文 hub 內容不足，五個 priority 實作尚未 production 驗證，不得據此標 Published。Past Paper 需遵守憲章版權限制並以考評局資料核實；本次未作現行考綱／卷別官方查核，不對現行卷別、評分準則或出題頻率作聲稱。AI 生成及作文機評在 app/api 未實作，且不得新增付費 API，不能當作既有功能。原始第21／31筆為另一重複組；第10／11筆重複時後者應 MERGE 至第10筆，勿雙重保留。",
+  "sources": [
+    "docs/seo-content-map.csv：以 csv.reader 讀取，不含 header 的第35筆；目標 URL /dse-english/report-writing。",
+    "基線：d25c63740a9184d0303e2558c8ee6f51643258d6；git ls-tree 確認沒有 app/dse-english/report-writing/page.tsx。",
+    "app/dse-english/writing-format/page.tsx：基線實際存在；metadata及內容涵蓋 Letter、Article、Report，並有規劃及交卷檢查。",
+    "app/dse-english/page.tsx、app/writing/page.tsx、app/practice/page.tsx：存在的相關內部頁面；練習為通用入口，不是專屬 report 題組。",
+    "docs/charter.md §1 第4點、§5：原創平行改寫與零版權侵犯；不得新增付費API。",
+    "基線 app/api 檔案清單：沒有作文機評或任意生成 API；不假設 app/ai/practice-generator 的介面等於後端功能。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/35.json"
+}

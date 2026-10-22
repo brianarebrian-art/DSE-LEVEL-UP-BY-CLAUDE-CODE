@@ -1,0 +1,22 @@
+{
+  "index": 39,
+  "url": "/dse-english/speaking-skills",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記",
+  "intent": "考生準備HKDSE English Language Paper 4 Speaking，想知道小組討論與個人回應的考試流程、如何準備筆記、怎樣接續或回應同伴，以及如何按評核準則改善表現；另需分清公開試Paper 4與校本評核SBA口語活動。此為可合理推斷的學生需求，沒有搜尋量證據，不聲稱搜尋量。",
+  "h1": "DSE English Paper 4 Speaking：小組討論與個人回應技巧",
+  "title": "DSE English Paper 4 Speaking 應試技巧：小組討論與個人回應｜DSE Level Up",
+  "description": "DSE英文口語應試筆記：掌握Paper 4小組討論與個人回應的流程、備課筆記安排和互動策略；按發言、回應、詞彙、組織及語音逐項練習，附原創平行題例、示範改進與自評清單。內容區分公開試Paper 4與校本評核SBA，提供同伴搶話、冷場和不同意見等應對句型，並連結現有英文練習；不提供AI作文評分，歷屆試題請向考評局查閱。",
+  "core_content": "以考評局現行2026 English Language Assessment Framework核實範圍及時間，不將SBA誤寫成Paper 4：Paper 4佔科目10%；Part A為四人小組討論，準備10分鐘、討論8分鐘，依短文討論；Part B為每位考生一分鐘個人回應，問題承接討論。開篇給清晰流程圖或步驟清單。主體按Paper 4四項評核向度逐節說明：發音與表達（清晰度、音量、語速、停頓及重音）；互動策略（開場、邀請他人、接續觀點、澄清、同意／有理由地不同意、提出替代方案、收束）；詞彙與語言模式（用準確而適合情境的詞語、改述卡詞、避免背誦套句）；觀點與組織（提出立場、理由、例子及延伸，並對別人內容作實質回應）。提供原創平行練習題情境而非複製歷屆題目，示範把「同意」等短句改成「回應同伴觀點＋理由＋例子＋追問」的較完整發言；另設搶話、冷場、聽不清、意見分歧的情境演練。個人回應示範如何簡潔表明選擇／立場、說明理由並連回討論；以四項官方向度製作自評表和同伴互評提示，不給分數預測或AI評分。獨立短節說明SBA是校本評核，依讀／看文本後的group interaction或individual presentation等學校安排，目標與Paper 4相關但任務及流程不可混為一談。結尾提供一週短時操練安排及交談後反思問題。所有例題、回答、對話和圖示均自行創作；不要展示或重製HKEAA歷屆題目、評分表原文或考生作品。可提供考評局官方文件連結供學生自行查閱。避免導入付費API、AI生成口語或作文評分功能；憲章禁止長答／作文自動批改、打分、評分，且本基線不存在已實作的AI口語/作文評分功能。",
+  "internal_links": "實際存在：/dse-english（anchor：DSE English 科目頁，作為上層主題入口）；/writing（anchor：英文寫作練習，提供不同技能的練習入口）；/practice（anchor：開始練習，通用練習頁）。/dse-english/speaking-skills於基線d25c637不存在，不得宣稱已連結；頁面建成後可由/DSE English hub補入卡片。",
+  "status": "Draft",
+  "reason": "建議保留為獨立的英文口語主題，而非合併到writing-format：它對應不同公開試卷別、口語互動任務及評核向度，有清晰不同的搜尋問題和可落地的演練價值。基線d25c637中app/dse-english/speaking-skills/page.tsx不存在；sitemap僅列/dse-english與/dse-english/writing-format，且英文hub現有內容主要是寫作格式、寫作練習及英文課題筆記，尚不足以承載完整口語教學，因此不可PUBLISH NOW。內容地圖第39列的通用章節描述需落實成流程、四項評核向度、原創對話例題、故障情境應答和自評操練，並清楚區分公開試Paper 4與SBA；若不能提供足夠高質原創練習或取得教師審閱，延後發布而非用空泛技巧文代替。需避免AI批改宣稱；憲章§8及§16.A禁止長答／作文自動批改、打分、評分，不能假設app/api已有相關能力，也不可新增付費API（§5）。例題及圖表採原創：可以用自製流程圖、四向度自評圖及自行撰寫的平行情境；不得複製考評局歷屆試題、官方評分指引表格或考生作答。按憲章§1.4遵守原創平行改寫及頁尾聲明；連至HKEAA官方資源供查閱，不在本頁重刊試卷。官方資料確認2026 Paper 4規格及評核方向，但尚未完成production整合及頁面驗證，故維持Draft，不因其他priority工作進行中而視作完成。",
+  "sources": [
+    "Baseline d25c637: /home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader第39列，非header，index欄位所指原始內容地圖第39筆）；/home/ubuntu/dse-level-up/docs/charter.md §1.4、§5、§8、§16.A。",
+    "Baseline route check: d25c637:app/dse-english/speaking-skills/page.tsx 不存在；app/dse-english/page.tsx與app/dse-english/writing-format/page.tsx存在；sitemap列有/dse-english、/dse-english/writing-format、/writing、/practice。",
+    "Hong Kong Examinations and Assessment Authority, 2026 HKDSE English Language Assessment Framework: https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2026hkdse-e-elang.pdf",
+    "Hong Kong Examinations and Assessment Authority, HKDSE English Language Paper 4 Speaking Assessment Guidelines: https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/EngPaper4-Guidelines.pdf",
+    "Hong Kong Examinations and Assessment Authority, 2026 English Language SBA Teachers' Handbook: https://www.hkeaa.edu.hk/DocLibrary/SBA/HKDSE/SBAhandbook-2026-ELANG.pdf"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/39.json"
+}

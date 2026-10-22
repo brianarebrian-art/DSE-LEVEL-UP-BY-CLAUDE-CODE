@@ -1,0 +1,22 @@
+{
+  "index": 71,
+  "url": "/dse-physics/motion",
+  "priority": "BLOCKED",
+  "page_type": "物理運動主題教學頁（原列作長尾題解；不能無題源稱Past Paper）",
+  "intent": "學生搜尋DSE Physics motion／運動學時，想釐清位移與距離、速度與速率、加速度及運動圖像，並會在匀加速運動計算或圖表解讀時卡住；部分人會尋找具年份／題號的歷屆題分步解答。現有證據支持課程相關性，沒有搜尋量資料，亦不推斷搜尋量。",
+  "h1": "DSE Physics 運動學：位移、速度與運動圖像逐步掌握",
+  "title": "DSE Physics 運動學：位移、速度、圖像與解題｜DSE Level Up",
+  "description": "用位移、速度與加速度建立運動學概念，學會讀取位移時間及速度時間圖像，並逐步練習匀加速運動計算、單位檢查和常見失分。配合原創例題拆解思路，理解圖像斜率與面積的物理意義，釐清距離與位移、速率與速度的分別，並掌握如何由圖線形狀判斷物體運動變化，為DSE物理力與運動部分打好基礎。並按步驟核對符號與答案合理性。",
+  "core_content": "建議先將本頁定位為課程概念教學，而非歷屆題解目錄。具體章節：① 距離／位移、速率／速度與標量／向量（以往返路程說明淨位移）；② 平均與瞬時量及單位；③ 位移—時間圖的斜率代表速度、速度—時間圖的斜率代表加速度且面積代表位移，安排分段圖表判讀；④ 匀速及匀加速直線運動公式的選用條件，示範先列已知量、統一SI單位、選式、代入、方向符號及答案合理性檢查；⑤ 原創例題方向：往返行程比較距離和位移、由分段位移時間圖求速度、由速度時間圖讀加速度及位移、車輛由靜止加速後煞停的分段計算；⑥ 常見錯誤：把距離當位移、混淆速率與速度、把圖線高度當斜率、面積漏符號、公式使用條件不符；⑦ 自編圖表須標軸、單位、尺度和關鍵斜率／面積，提供文字替代說明。所有例題與圖表須自行創作／重繪並附完整解法。只有找到可核實題目年份、卷別、題號及合法來源後，才可另加「歷屆題」段落；不得重製受版權保護的原題、答案或官方圖表，按憲章只列章節、頁碼及來源連結。不得承諾自動生成題目或AI批改：相關能力未實作，且憲章禁止新增付費API及作文機評。",
+  "internal_links": "實際存在：/dse-maths（anchor：數學科目頁，非物理頁）；/practice（anchor：開始現有練習）；/ai/past-paper-explainer（anchor：現有Past Paper explainer入口，勿宣稱本頁已有AI題解整合）。規劃連結（目前不存在，不可輸出成可點擊連結）：/dse-physics（物理科目hub）；/past-papers（歷屆試題索引）。不可把目前不存在的物理hub或past-papers頁視為既有。",
+  "status": "Blocked",
+  "reason": "基線為d25c63740a9184d0303e2558c8ee6f51643258d6；csv.reader讀取header後第71列確為 /dse-physics/motion。基線沒有此路由或physics主題頁；目前僅見物理題庫資料，不等於可引用的歷屆題來源。原列以「DSE Physics motion past paper 題解」包裝但沒有具體年份／卷別／題號／題目source，依要求不得無題源稱Past Paper，故阻擋發布及任何歷屆題解析；先補合法且可核對的題目來源與逐題審核，再判定是否拆成概念頁＋題解頁或合併至有題源的頁。可先按上述純課程概念方向重寫規格，但本列目前BLOCKED而非PUBLISH NOW。教育局課程指引將Force and Motion列為50小時，涵蓋位置與運動、運動圖像及匀加速問題；考評局2024框架確認Paper 1考Compulsory Part，並列出呈現圖表、分析數據等評核能力。這支持學生學習價值，卻不證明任何特定past paper題目。現有physics hub缺失／不足不可當發布依據。AI題目生成或AI作文／長答機評均不能假設已實作；憲章禁止新增付費API及自動批改。例題、圖表須原創或自行重繪，不能複製考評局受版權保護原文。未宣稱搜尋量。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/2024hkdse-e-phy.pdf",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/Phy-Formulae-e.pdf",
+    "/home/ubuntu/dse-level-up/docs/charter.md §1、§3、§5、§16.A、§19.3（基線d25c637）",
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader row 71，header不計；基線d25c637）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/71.json"
+}

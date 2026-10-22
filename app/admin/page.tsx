@@ -1,3 +1,4 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { redirect } from 'next/navigation'
@@ -12,6 +13,11 @@ import UserOverview from '@/components/admin/UserOverview'
 // Admin 審核面板 — 只限 ADMIN_EMAILS 白名單（兩位創辦人）。中文單語內部工具。
 // 身份唔夠 → 直接彈返首頁，頁面唔會透露自己存在啲乜。
 export const dynamic = 'force-dynamic'
+
+export const metadata = completeSeoMetadata({
+  title: '內容審核管理 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '僅供授權管理員查看題庫覆核隊列、審核紀錄與內容統計的內部工作台。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/admin')
 
 interface DraftRow {
   id: string
@@ -215,7 +221,7 @@ export default async function AdminPage() {
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <a href="/admin/quality" className="rounded-lg border border-accent/40 bg-accent/5 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/10">
-              開啟逐題質素覆核工作台
+              開啟逐題質素覆核工作台 · Open question quality review{/* i18n-exempt: actual bilingual static link */}
             </a>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">

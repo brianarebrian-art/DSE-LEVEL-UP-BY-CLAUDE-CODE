@@ -1,3 +1,4 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import AnswerCardsPreview from './AnswerCardsPreview'
 
@@ -13,6 +14,11 @@ import AnswerCardsPreview from './AnswerCardsPreview'
 //
 // 生產環境一律 404：呢版唔屬於學生體驗，亦唔應該出現喺 sitemap 或搜尋結果。
 export const dynamic = 'force-dynamic'
+
+export const metadata = completeSeoMetadata({
+  title: '答題卡開發預覽 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '只供開發及視覺驗證書寫題答題卡版面的內部預覽頁，正式環境不提供。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/dev/answer-cards')
 
 export default function DevAnswerCardsPage() {
   if (process.env.NODE_ENV === 'production') notFound()

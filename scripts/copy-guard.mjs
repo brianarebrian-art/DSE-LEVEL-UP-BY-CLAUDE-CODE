@@ -36,7 +36,7 @@
 // 所以下面每一條都係【句式】—— 主語係學生、而且係貶損。
 // （Brian 2026-09-05 裁決：「差」由禁詞表剷走。）
 // ============================================================================
-import { readdirSync, readFileSync, statSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { join, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 

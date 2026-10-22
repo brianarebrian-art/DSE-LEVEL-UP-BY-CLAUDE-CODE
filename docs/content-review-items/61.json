@@ -1,0 +1,22 @@
+{
+  "index": 61,
+  "url": "/dse-chemistry/mole-calculation",
+  "priority": "BLOCKED",
+  "page_type": "化學主題教學／自編題解（暫不定位為 Past Paper 題解）",
+  "intent": "學生可能在準備 HKDSE 化學定量題時，想弄懂 mol、粒子數、摩爾質量、化學方程式比例及限量試劑的計算步驟，並找出單位、有效數字和比例換算的失分原因。此為依題目主題推斷的學習需求，不代表已驗證搜尋量。",
+  "h1": "DSE 化學摩爾計算：由粒子數到限量試劑的分步解法",
+  "title": "DSE 化學摩爾計算｜粒子數、反應質量與限量試劑分步教學",
+  "description": "逐步掌握 DSE 化學摩爾計算：由粒子數、摩爾質量和化學方程式比例求反應質量，學會處理限量試劑、單位與有效數字，並用原創例題檢查常見失分。內容示範配平及係數比例的使用，解釋如何由質量換算物質的量、判斷限量試劑，再檢查答案單位和有效數字，附自我練習與錯誤診斷，幫助建立可遷移的解題步驟。同時方便考生自我溫習。",
+  "core_content": "以循序教學而非泛列考點建立深度：先解釋 n=m/M 與 N=nNA 的量間關係及各符號、單位；再示範按題意抽取已知量、配平方程式、把已知量換算為 mol、套用係數比例、轉回所求單位的完整流程。例題方向一：給定化合物質量及相對式量，求物質的量與粒子數；方向二：由原創反應情境及已知反應物質量推算生成物質量，逐步標註係數比例；方向三：兩反應物皆給定時，逐一換算 mol、比較係數商判斷限量試劑，再求理論產量。每題附答案、單位與有效數字檢查、錯誤診斷及變式練習。圖表可用自製量間轉換流程圖或係數比示意表；非必要時不放裝飾圖。僅在取得可追溯的官方題目／評分資料並完成使用權核實後，才可增補特定年份題號的考點評論；否則只寫原創平行題，不稱其為 Past Paper 題解。不得照錄考評局題幹、圖表或評分答案；可列年份、卷別、題號及官方來源連結。勿承諾此頁提供 AI 自動題解：相關 API 功能未實作，憲章亦禁止新增付費 API。",
+  "internal_links": "/ai/past-paper-explainer — planned：該路由目前存在，但只是靜態使用建議，不能宣稱此頁題目可由 AI 自動解析；/dse-chemistry — planned（app 中不存在該 hub 路由）；/past-papers — planned（app 中不存在該路由）；可連至 /methodology —「內容與題庫方法」（實際存在），說明自編題與題目來源處理。",
+  "status": "Blocked",
+  "reason": "基線 d25c637 的 app source 不存在 /dse-chemistry/mole-calculation，也不存在 /dse-chemistry 與 /past-papers hub；目標目前只有內容地圖規劃列。這個主題具清楚的課程學習價值，但尚無可引用的特定考評局題目、年份／卷別或評分準則 source，因此不得稱為 Past Paper 題解，亦不得虛構官方題目案例。要解封，須先取得及核對指定題目與評分來源、確認只引用必要的題號／連結並以原創平行題教學，再實作及驗證內容頁和 hub。憲章要求原創平行改寫以避免版權侵犯，不能複製考評局原文或圖表；不得假設 AI 題解已可用或加入付費 API。基線現有 AI 題解頁只是說明使用流程，不構成可用的化學自動解析功能。故非 PUBLISH NOW，也不因其他頁正在實作而當作已完成。",
+  "sources": [
+    "基線 source：git d25c637，docs/seo-content-map.csv，csv.reader row 61（header 不計）；基線 app 無 /dse-chemistry/mole-calculation、/dse-chemistry 或 /past-papers 路由。",
+    "docs/charter.md §4（零版權侵犯；原創平行改寫題）、§5（不得新增需付費 API）；以 repository 基線為準。",
+    "教育局課程指引補充文件，反應質量單元列出 mole、Avogadro constant、molar mass、反應質量及 limiting reagents 的學習成果：https://cd1.edb.hkedcity.net/cd/science/NSS/supplement_cschem_e_15Aug2013.pdf",
+    "現有靜態 AI 題解說明頁（非自動解題 API）：基線 app/ai/past-paper-explainer/page.tsx。",
+    "重複檢查參照：CSV row 10/21 為同一 Maths quadratic URL，row 11/31 為同一 English writing URL；第61筆摩爾計算路徑不屬於這兩組重複項。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/61.json"
+}

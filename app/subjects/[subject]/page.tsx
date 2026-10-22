@@ -1,5 +1,6 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
-import { getSubject, getActiveSubjects, subjectMetaDescription } from '@/data/subjects'
+import { getSubject, getActiveSubjects } from '@/data/subjects'
 import { getSubjectQuestions, getSubjectTopics } from '@/data/questions'
 // 書寫題唔喺 eager barrel 度 —— `Question` 型別本身等同 `MCQuestion`，barrel 只載 MC。
 // 要數書寫題必須經 lazy loader；本頁係 server component，await 得，SSG 時就解好。
@@ -7,6 +8,8 @@ import { loadWrittenQuestions } from '@/data/questions/load'
 import SubjectDetailView from './SubjectDetailView'
 import { SITE_ORIGIN } from '@/lib/site'
 import { faqPageSchema, subjectFaq } from '@/lib/faq'
+import { JsonLd } from '@/components/Seo/JsonLd'
+import { subjectSeoDescription } from '@/lib/dynamicSeoDescriptions'
 
 // Pre-render the active subject routes at build time.
 export function generateStaticParams() {
@@ -20,26 +23,16 @@ export async function generateMetadata({
 }) {
   const { subject } = await params
   const meta = getSubject(subject)
-  if (!meta) return { title: '科目 | DSE Level Up' } // i18n-exempt: 靜態 SEO <title> fallback（generateMetadata 唔跟 client locale）
-  return {
+  if (!meta) notFound()
+  const questionCount = getSubjectQuestions(subject).length
+  const topicCount = getSubjectTopics(subject).length
+  return completeSeoMetadata({
     title: `${meta.name} | DSE Level Up`,
-    description: subjectMetaDescription(meta),
-    // 每科自報 canonical，令 25 個科目頁各自獨立收錄（此前繼承根 layout 的
-    // `canonical: '/'`，等同全部指向首頁）。
-    alternates: { canonical: `/subjects/${subject}` },
+    description: subjectSeoDescription({ name: meta.name, description: meta.description, questionCount, topicCount }), // i18n-exempt: 靜態 SEO meta description
     openGraph: {
       type: 'article',
-      url: `${SITE_ORIGIN}/subjects/${subject}`,
-      title: `${meta.name}｜DSE 練習題 | DSE Level Up`,
-      description: subjectMetaDescription(meta),
-      siteName: 'DSE Level Up',
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${meta.name}｜DSE 練習題`,
-      description: subjectMetaDescription(meta),
-    },
-  }
+  }, `/subjects/${subject}`)
 }
 
 export default async function SubjectPage({
@@ -117,11 +110,7 @@ export default async function SubjectPage({
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <SubjectDetailView
         meta={meta}
         questionsCount={questions.length}

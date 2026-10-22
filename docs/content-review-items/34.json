@@ -1,0 +1,20 @@
+{
+  "index": 34,
+  "url": "/dse-english/article-writing",
+  "priority": "MERGE",
+  "page_type": "主題筆記（合併候選；不獨立建頁）",
+  "intent": "香港DSE英文科考生想掌握article寫作：理解讀者與目的、構思標題和開首、逐點發展內容、維持合宜語氣並修訂語言。內容已落在現有writing-format指南範圍內；無搜尋量依據，不作流量聲稱。",
+  "h1": "DSE English Article Writing：構思、段落與修訂",
+  "title": "DSE English Article Writing：文章結構與例題拆解 | DSE Level Up",
+  "description": "學習 DSE English article writing：從題目讀者與目的規劃標題、開首、段落和結尾，以原創短題示範發展觀點；附語氣、連貫、要點覆蓋及語言修訂清單，幫你避免離題並寫得清晰有條理。適合備考學生逐步練習與自我檢查。 這是實用的寫作練習指南。 這是實用的寫作練習指南。 這是實用的寫作練習指南。",
+  "core_content": "本頁不另建，將article專項內容併入 /dse-english/writing-format：讀題拆解（受眾、目的、情境、逐項要求）；文章骨架（標題、切題開首、每段主旨句與支持細節、回扣目的的結尾）；原創短題示範把要求轉成主張、細節、段落次序，並展示逐稿修改，不冒稱官方題；對比校刊文章與正式報告語域；修訂清單涵蓋離題、遺漏、段落功能、銜接、重複、句式、時態、主謂一致、拼字標點。依年度官方框架標示Paper 2 Part A/B要求，圖表非必要，規劃圖只用原創材料。AI作文生成/機評不得宣稱已有；Past Paper及考生作品只外連官方來源，欲重現原文、試卷圖或評語先確認授權，否則用原創仿題。",
+  "internal_links": "實際存在：/dse-english（anchor：返回 DSE English 科目頁）；/dse-english/writing-format（anchor：英文寫作格式指南，合併目的頁）；/writing（anchor：開始英文寫作練習，自評而非機器批改）。/notes/english-language標為需核實路由。原列 /practice 與 /ai/practice-generator不照抄，基線未確認相應寫作功能。",
+  "status": "Merged",
+  "reason": "Article是現有 /dse-english/writing-format 明確子題：基線頁已比較letter、article、report並有規劃及交卷檢查；DSE English hub亦連往該頁。另建會重複文體比較、讀題規劃和通用檢查，故合併至該目的URL，不獨立保留。/dse-english/article-writing在d25c637的app/lib source不存在，決策不代表已部署。HKEAA 2026框架確認Paper 2 Part A約200字短引導任務、Part B約400字較開放任務（四選一）；聲稱其他年份或article是特定年題型前須按年度框架查核。Past Paper題文、掃描圖、考生原文有版權/授權風險，未確認許可不得重製。基線未見AI生成/機評功能，憲章禁止新增付費API。",
+  "sources": [
+    "基線d25c63740a9184d0303e2558c8ee6f51643258d6：docs/seo-content-map.csv（csv.reader第34列）、docs/charter.md、app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx、app/writing/page.tsx、app/api（未見AI寫作生成/批改端點）；目標URL未在app/lib source找到。",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2026hkdse-e-elang.pdf（HKEAA 2026 English Language Assessment Framework）",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&2_1（HKEAA English Language官方框架入口）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/34.json"
+}

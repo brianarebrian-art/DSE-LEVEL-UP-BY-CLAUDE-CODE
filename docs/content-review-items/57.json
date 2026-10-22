@@ -1,0 +1,22 @@
+{
+  "index": 57,
+  "url": "/dse-biology/photosynthesis",
+  "priority": "BLOCKED",
+  "page_type": "長尾主題教學／題解頁（須以原創示例呈現，非歷屆試題逐題解說）",
+  "intent": "考生搜尋光合作用概念、實驗測試或DSE題型時，期待釐清反應原料與產物、澱粉測試步驟、限制因子及讀圖作答；頁面有實際教學價值，但必須以原創平行例題補足練習。沒有可追溯來源的題目不得冒稱 Past Paper。",
+  "h1": "DSE Biology 光合作用：實驗、限制因子與圖表題解",
+  "title": "DSE Biology 光合作用：實驗與圖表題解｜DSE Level Up",
+  "description": "DSE Biology 光合作用：逐步理解光反應與碳固定、葉片澱粉測試及限制因子圖表判讀。整理概念混淆與實驗變因，透過原創平行例題逐步拆解答案推理，並練習氣體交換與速率圖表判讀；不重現受版權保護的考評局題目，亦不宣稱為官方歷屆試題。提供清晰步驟、作答框架及易錯位提示，方便自修後核對理解。自學者可循序建立答題能力。",
+  "core_content": "建議章節：1）光合作用方程式、原料、產物及能量轉換，釐清葡萄糖與澱粉關係。2）葉片澱粉測試的去澱粉、酒精脫色、水浴安全及碘液觀察，解釋各步目的。3）葉綠素、二氧化碳、光強與溫度等限制因子，以自製圖示說明速率平台。4）判讀光強／二氧化碳—光合速率圖，說趨勢、比較數值並指出另一限制因子。5）對照光合作用與呼吸作用，解釋淨氣體交換。例題使用自編情境、數值與自製示意圖：設計檢驗葉片澱粉的控制實驗；由速率數據找平台與限制因子；以日夜氣體交換說明淨吸收或釋放。分步展示證據、推理、結論，指出混淆原料產物、欠缺控制變因、誤讀趨勢等失分位。只有核實官方卷別、年份、題號與合法連結後才可索引歷屆題；不得複製受版權保護原文或圖。不得宣稱AI生成或作文機評已存在；app/api 未見此實作，憲章禁止新增付費API。",
+  "internal_links": "/practice —「開始相關生物練習」（路由存在，題目對應與來源須再核實，不能稱歷屆題）。/ai/past-paper-explainer —「查看題目解說工具」（路由存在，不代表AI解題功能已實作）。/dse-biology、/past-papers 基線未見路由，只能標planned，不能假裝現存連結。",
+  "status": "Blocked",
+  "reason": "d25c637 基線沒有 /dse-biology/photosynthesis 路由，也沒有 /dse-biology 或 /past-papers hub。biology 題庫雖有光合作用題，並不足以證明它們是考評局歷屆題。原始項目承諾 Past Paper 題解，卻欠缺年份、卷別、題號、官方來源和版權清理依據；憲章要求原創平行改寫並禁止重現受版權保護原文，只可提供章節名稱、頁碼、連結。app/api 未見AI生成或作文機評，且憲章禁止新增付費API，不能假設相關功能可用。來源不足以支撐歷屆題定位，故 BLOCKED；補足來源與合法引用方案後再考慮改為原創主題頁，現在不可發布。",
+  "sources": [
+    "docs/seo-content-map.csv 第57列（csv.reader，row index按含header計算），基線 d25c637。",
+    "docs/charter.md §1.3–5：免費原則、零版權侵犯、原創平行改寫；憲章末段限制考評局／教育局受版權保護原文只列章節名稱、頁碼及連結。",
+    "data/questions/biology.ts 含光合作用相關練習題，不能據此宣稱為官方Past Paper。",
+    "基線路由清單：存在 /practice、/ai/past-paper-explainer；未見 /dse-biology、/past-papers、/dse-biology/photosynthesis。",
+    "HEAD確認 d25c637；未採用共享工作樹其他未提交變更。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/57.json"
+}

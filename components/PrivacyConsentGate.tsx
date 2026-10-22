@@ -33,6 +33,8 @@ export default function PrivacyConsentGate() {
   const [saving, setSaving] = useState(false)
   const [failed, setFailed] = useState(false)
 
+  void state
+
   // 登入之後查一次：呢個人同意咗現行版本未？
   useEffect(() => {
     if (authStatus !== 'authenticated') {

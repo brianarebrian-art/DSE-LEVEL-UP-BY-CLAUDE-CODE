@@ -48,6 +48,7 @@ export const PAGE_ORDER = [
 export const EXCLUDED: Record<string, string> = {
   // 唔係畀學生嘅
   '/admin': '管理後台，唔應該有學生導航',
+  '/admin/quality': '管理品質後台，有權限守衛，不屬學生導航',
   '/dev/answer-cards': '開發工具頁',
   '/dev/long-session': '開發工具頁',
 
@@ -96,6 +97,15 @@ export const EXCLUDED: Record<string, string> = {
   '/sensei': '支線功能頁',
   '/source-lab': '支線功能頁',
   '/writing': '支線功能頁',
+  '/dse-maths': '教學科目入口，由首頁學習導覽進入，使用課題連結而非個人進度循環',
+  '/dse-english': '教學科目入口，由首頁學習導覽進入，使用技能連結而非個人進度循環',
+  '/dse-maths/quadratic-equations': '固定語言教學稿，使用麵包屑、相關章節及練習入口',
+  '/dse-english/writing-format': '固定語言教學稿，使用麵包屑、相關技能及自評入口',
+  '/dse-maths/question-types/quadratic-discriminant': '原創題型解析稿，返回數學筆記及相關練習',
+  '/dse-physics/motion-equations': '物理教學稿，使用麵包屑、相關筆記及科目練習入口',
+  '/ai/practice-generator': '功能受阻的題庫指南，只有真實題庫 CTA，不進個人進度循環',
+  '/ai/study-plan': '手動規劃指南，未提供 AI 工具，使用相關教學及練習連結',
+  '/ai/past-paper-explainer': '原創拆題指南，未提供上傳或生成工具，使用相关概念連結',
 }
 
 export type OrderedRoute = (typeof PAGE_ORDER)[number]

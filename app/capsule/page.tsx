@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { completeSeoMetadata } from '@/lib/seo'
 import CapsuleClient from './CapsuleClient'
 
 // /capsule —— 時間囊。接替已刪除嘅「影子溫書室」。
@@ -8,12 +8,10 @@ import CapsuleClient from './CapsuleClient'
 // 由「陌生人明白你」換成「幾個月後嘅你，會睇返幾個月前嘅你講過乜」。
 //
 // 零 server、零同步、零互動。內容一律留喺學生部機。
-export const metadata: Metadata = {
-  title: '時間囊 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
-  // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記須同行，故此句唔換行）
-  description: '寫低而家嘅心情，揀一個日期封存，到期先開得返。只存喺你部機，冇人睇得到，亦冇任何人可以回覆你。', // i18n-exempt
-  robots: { index: true, follow: true },
-}
+export const metadata = completeSeoMetadata({
+  title: '時間囊 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '把想留給未來自己的文字在本機封存，到指定日期再開啟的個人時間囊工具。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/capsule')
 
 export default function CapsulePage() {
   return (

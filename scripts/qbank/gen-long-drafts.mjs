@@ -42,7 +42,7 @@ const SCHEME_TAIL_EN =
   'nothing here is machine-marked.'
 
 const rows = []
-const push = (r) => rows.push(r)
+void rows
 
 // ── 物理 ────────────────────────────────────────────────────────────────
 // 每條的數值由參數算出，參考答案內的每一個數字都是由同一組參數推導的。

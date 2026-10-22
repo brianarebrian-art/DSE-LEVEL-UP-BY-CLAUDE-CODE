@@ -1,5 +1,5 @@
 import type { Question } from './types'
-import { createBank, n, qty, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, qty, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // visual-arts-bank.ts —— 視覺藝術參數化母模板（2026-08-29）
