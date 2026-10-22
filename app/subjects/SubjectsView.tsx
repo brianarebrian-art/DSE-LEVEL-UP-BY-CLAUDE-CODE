@@ -92,7 +92,7 @@ export default function SubjectsView() {
     //   ② 「開始 10 題」—— 疊在最上層，直接開始一節（與首頁快速開始同一條 URL）。
     // 不可把 ② 放在 ① 之內：連結不能巢狀，讀屏亦會讀成一條。
     return (
-      <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-xl p-5 transition-all ${accentRing[s.accent] ?? ''}`}>
+      <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-2xl p-5 shadow-sm transition-all [@media(hover:hover)]:hover:shadow-md ${accentRing[s.accent] ?? ''}`}>
         <div className="absolute top-4 right-4">
           <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
             <CheckCircle2 size={10} /> {mc}
@@ -100,32 +100,30 @@ export default function SubjectsView() {
           </span>
         </div>
         <div className="text-3xl mb-3" aria-hidden>{s.emoji}</div>
-        <h2 className="font-medium mb-1 text-ink">
+        <h2 className="text-lg font-medium mb-1 text-ink tracking-tight">
           <Link
             href={`/subjects/${s.id}`}
-            className="after:absolute after:inset-0 after:rounded-xl after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent"
+            className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent"
           >
             {name(s)}
           </Link>
         </h2>
         <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
-        {/* 2026-09-30（改進循環 2，prompt §15–§16）：原本每科都寫「口試、實作：未涵蓋」，
-            但並非每科都有口試或實作，而本站未有可靠的逐科考核組成資料（ASSESSMENT_METADATA_DEFERRED）。
-            改為不逐項判定的說法。 */}
-        <div className="text-[11px] text-ink-muted mb-3">
+        {/* 2026-09-30（改進循環 2）：唔逐項口試／實作；數字跟 summary。 */}
+        <div className="text-[11px] text-ink-muted mb-3 tabular-nums">
           {written > 0
             ? en
-              ? `Written (self-marked): ${written} · some assessment components are not offered here`
-              : `書寫（自評）${written} 條 · 部分考核形式未於本站提供`
+              ? `${mc} MC · ${written} written (self-marked) · some assessment components are not offered here`
+              : `${mc} 條 MC · 書寫（自評）${written} 條 · 部分考核形式未於本站提供`
             : en
-              ? 'Some assessment components are not offered here'
-              : '部分考核形式未於本站提供'}
+              ? `${mc} MC · some assessment components are not offered here`
+              : `${mc} 條 MC · 部分考核形式未於本站提供`}
         </div>
         <div className="mt-auto flex items-center justify-between gap-3">
           <Link
             href={quickStartHref(s.id)}
             aria-label={en ? `${s.nameEn}: start ${SESSION_SIZE} questions` : `${s.name}：開始 ${SESSION_SIZE} 題`}
-            className="relative z-10 inline-flex min-h-12 items-center gap-1 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="relative z-10 inline-flex min-h-12 items-center gap-1.5 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent shadow-sm transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {en ? `Start ${SESSION_SIZE} questions` : `開始 ${SESSION_SIZE} 題`} <ArrowRight size={14} aria-hidden />
           </Link>

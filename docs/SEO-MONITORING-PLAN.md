@@ -2,6 +2,8 @@
 
 Search Console 成效與索引資料目前為 BLOCKED；沒有可用的真實基線數據。此文件建立監測流程，不宣稱已啟動自動排程、已索引、流量增加或排名改善。每個數字都必須附資源、日期區間、篩選條件及原始匯出，資料缺失填 `BLOCKED`，不是 0。
 
+**可填日誌模板：** [`docs/seo-monitoring-log.md`](seo-monitoring-log.md)。創辦人 GSC 步驟：[`docs/search-console-steps-2026-10-09.md`](search-console-steps-2026-10-09.md)。教學稿解禁閘：[`docs/EDITORIAL-PUBLISH-GATE.md`](EDITORIAL-PUBLISH-GATE.md)。本機 schema 抽查：`python3 scripts/seo/verify_rich_results.py`（唔等於 Google Rich Results 合格）。
+
 監測責任由網站維護者及內容負責人承接。建議每週固定一個工作日處理技術異常，每月同日分析內容機會；開始日 T0 是本輪正式 release 完成並保存權限及基線的日期，不是文件撰寫日。未選擇負責人與未取得資料權限前，不把文件計劃當成已運作的監測系統。
 
 ## 每週檢查

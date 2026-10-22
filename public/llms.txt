@@ -56,8 +56,11 @@ written questions. Subject totals are:
 
 There is no public third-party API or MCP server. Read public content pages;
 /sitemap.xml lists the selected canonical URLs intended for search, excluding
-private, personalised, unfinished and noindex routes. A sitemap is not proof of
-Google indexing, search traffic or completeness of every public URL.
+private, personalised, unfinished and noindex routes (including /practice,
+/result, /dashboard, /ai/*, editorial drafts still gated, and task shells such
+as /relax). Use /subjects and /subjects/{id} as the public practice landings;
+/practice is a noindex session shell. A sitemap is not proof of Google indexing,
+search traffic or completeness of every public URL.
 
 ## Important limitations
 
@@ -81,9 +84,11 @@ question is correct; no person approves them beforehand. Founders review publish
 withdraw errors; a report button and the contact address support reports.
 
 Everything is free: no paywall, subscription, premium tier or ads. Multiple-choice
-explanations appear after an answer without a forced countdown. Students can tag
-mistake causes in supported written/self-marking workflows; those tags are not a
-system diagnosis or a guarantee of improvement.
+explanations appear after an answer without a forced countdown. Students may
+optionally tag mistake causes (concept / misread / careless working) after a
+wrong MC answer, or in written self-marking flows; tagging is never required to
+see the explanation, and tags are not a system diagnosis or a guarantee of
+improvement.
 
 ## When to use this
 

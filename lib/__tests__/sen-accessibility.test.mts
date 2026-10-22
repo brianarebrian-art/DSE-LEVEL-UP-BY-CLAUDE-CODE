@@ -133,8 +133,9 @@ test('沙漏沙流【刻意】唔納入舒適模式 —— 佢係時間讀數，
 test('隱藏計時器蓋過整個逐題計時層', () => {
   assert.match(PRACTICE, /const timerVisible = perQTimer !== 0 && !hideTimer/)
   assert.match(PRACTICE, /const qTimeUp = timerVisible &&/)
-  // 粒計時掣本身都要收埋
-  assert.match(PRACTICE, /\{!hideTimer && \(/)
+  // 計時掣喺「更多」選單；hideTimer 時唔出掣
+  assert.match(PRACTICE, /hideTimer=\{hideTimer\}/)
+  assert.match(read('components/PracticeMoreMenu.tsx'), /\{!hideTimer && \(/)
 })
 
 // ── 四、全站唔可以有震動 ───────────────────────────────────────────────────

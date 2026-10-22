@@ -12,6 +12,7 @@ test('FAQ copy matches the current tool locations', () => {
   assert.match(faq, /at the top of the page on phones/)
   // The facts the copy relies on.
   assert.match(readFileSync('components/Navbar.tsx', 'utf8'), /<A11yButton \/>/)
-  assert.match(readFileSync('app/practice/PracticeSession.tsx', 'utf8'), /<EnoughTodayButton \/>/)
+  assert.match(readFileSync('components/PracticeMoreMenu.tsx', 'utf8'), /<EnoughTodayButton \/>/)
+  assert.match(readFileSync('app/practice/PracticeSession.tsx', 'utf8'), /PracticeMoreMenu/)
   assert.doesNotMatch(readFileSync('content/community/faq.md', 'utf8'), /練習頁左下角嘅開關/)
 })

@@ -238,10 +238,11 @@ export default function ResultPageClient() {
   const showChineseWarning = result.subjectId === 'chinese' && baseAllCorrect && higherHasMiss
 
   // 戰績卡真數據 —— 只用 REAL session 數據；無虛構 JUPAS/搶分數/streak。
+  // Morandi share colours（同 DailyStatsCard SHARE_CARD_COLORS；html2canvas 要字面 hex）
   const tierMeta: { key: TierKey; label: string; color: string }[] = [
-    { key: 'easy', label: locale === 'en' ? 'Foundation' : '補底', color: '#34D399' },
-    { key: 'medium', label: locale === 'en' ? 'Standard' : '普通', color: '#FEE440' },
-    { key: 'hard', label: locale === 'en' ? 'Top-tier' : '拔尖', color: '#9B5DE5' },
+    { key: 'easy', label: locale === 'en' ? 'Foundation' : '補底', color: '#7A9E7E' },
+    { key: 'medium', label: locale === 'en' ? 'Standard' : '普通', color: '#B8956F' },
+    { key: 'hard', label: locale === 'en' ? 'Top-tier' : '拔尖', color: '#8A9FB8' },
   ]
   const cardTiers = dr
     ? tierMeta.filter((m) => dr[m.key].total > 0).map((m) => ({ label: m.label, correct: dr[m.key].correct, total: dr[m.key].total, color: m.color }))
@@ -329,7 +330,7 @@ export default function ResultPageClient() {
         )}
 
         {/* 本節表現：先講答對幾多，再用中性字眼講表現。冇 DSE 等級、冇獎盃。 */}
-        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
+        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center shadow-sm">
           {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
           <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
           <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>

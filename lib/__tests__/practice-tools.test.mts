@@ -48,17 +48,16 @@ test('the ruler chip is rendered only while the ruler is on', () => {
   assert.match(ruler.slice(0, at), /\{on && \(\s*<div\s*$/, 'the chip container must sit inside {on && ( … )}')
 })
 
-test('今日夠了 sits in both practice headers and opens the one dialog', () => {
+test('今日夠了 sits in practice tools (More menu / long header) and opens the one dialog', () => {
   assert.match(support, /export const ENOUGH_TODAY_EVENT = 'dse-enough-today'/)
   assert.match(support, /addEventListener\(ENOUGH_TODAY_EVENT/)
-  for (const f of ['app/practice/PracticeSession.tsx', 'app/practice/LongPracticeSession.tsx']) {
-    assert.match(code(f), /<EnoughTodayButton \/>/, f)
-  }
-  // The dialog listener is mounted once, around both runners.
+  // MC：收入「更多」選單，唔再佔頂欄。
+  assert.match(code('components/PracticeMoreMenu.tsx'), /<EnoughTodayButton \/>/)
+  assert.match(code('app/practice/PracticeSession.tsx'), /PracticeMoreMenu/)
+  assert.match(code('app/practice/LongPracticeSession.tsx'), /<EnoughTodayButton \/>/)
   assert.match(code('app/practice/PracticeShell.tsx'), /<PracticeSupport \/>/)
-  // In the MC header it sits beside 休息吓, the other way to stop.
-  const header = code('app/practice/PracticeSession.tsx')
-  assert.ok(header.indexOf('<EnoughTodayButton />') > header.indexOf("tr('休息吓', 'Rest')"))
+  const more = code('components/PracticeMoreMenu.tsx')
+  assert.ok(more.indexOf('<EnoughTodayButton />') > more.indexOf("en ? 'Rest' : '休息吓'"))
 })
 
 test('the dialog is announced as a dialog and closes with Escape', () => {

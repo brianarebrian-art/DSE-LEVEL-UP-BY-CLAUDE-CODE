@@ -10,7 +10,7 @@ Vercel 專案為 `prj_CQRC5oit3FL5KrrmCaAXxqUugfYu`，team 為 `team_Zkq68StxxxC
 - [ ] 在同一版本執行 `npm ci`、`npm run lint -- --max-warnings=0`、`npx tsc --noEmit`、`npm test`、`npm run qa` 和 `npm run build`，保存退出碼及測試數。
 - [ ] 用 `npm run start -- -p 3001 -H 0.0.0.0` 啟動已建置版本，不能用 dev 的成功回應冒充 production-mode HTML。
 - [ ] 執行下列 HTTP 驗證工具，另以真實瀏覽器檢查 390、768、1440 px 的閱讀、表格水平捲動、鍵盤焦點與對比。可存取性工具及實機測試結果須分開記錄。
-- [ ] 四個編輯稿保持 `EDITORIAL_DRAFT_ROUTES` 及 noindex，AI 三頁保持 Blocked／noindex。只有全部門檻通過後才另做 release PR；不存在的生成 API不能靠移除 noindex 變成完成。
+- [ ] 四個編輯稿保持 `EDITORIAL_DRAFT_ROUTES` 及 noindex，AI 三頁保持 Blocked／noindex。只有全部門檻通過後才另做 release PR；不存在的生成 API不能靠移除 noindex 變成完成。可勾選清單見 `docs/EDITORIAL-PUBLISH-GATE.md`；監測日誌見 `docs/seo-monitoring-log.md`。
 - [ ] 合併經核准的 PR 後，核對 Vercel production 的 commit SHA 與 PR merge SHA 一致，等待 READY，然後重新驗證正式 URL。
 
 ```bash
