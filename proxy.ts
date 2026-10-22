@@ -27,8 +27,17 @@ const LIMIT_COUNT = 120 // per IP per 10 min
 // 限流本身喺 lib/rateLimit.ts（純函數，有測試；Map 有上限）。
 const limiter = createLimiter({ maxKeys: 2000, staleMs: AUTH_WINDOW_MS })
 
+function applySecurityHeaders(response: NextResponse) {
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), browsing-topics=()')
+  response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload')
+  return response
+}
+
 function rateLimit(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon'
+  const ip = request.ip || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon'
   // 嚴格桶只覆蓋暴力破解面 —— 邊啲路徑、點解 session 唔包，見 lib/rateLimit.ts
   // isAuthSensitivePath 嘅註釋。
   const { pathname } = request.nextUrl
@@ -40,12 +49,12 @@ function rateLimit(request: NextRequest) {
       (pathname !== '/api/feedback' || limiter.allow(`f:${ip}`, AUTH_WINDOW_MS, LIMIT_REPORT)) &&
       (pathname !== '/api/practice-count' || limiter.allow(`c:${ip}`, AUTH_WINDOW_MS, LIMIT_COUNT))
   if (!ok) {
-    return NextResponse.json(
+    return applySecurityHeaders(NextResponse.json(
       { error: 'Too many requests, please slow down.', code: 'RATE_LIMITED' },
       { status: 429, headers: { 'Retry-After': '60' } },
-    )
+    ))
   }
-  return NextResponse.next()
+  return applySecurityHeaders(NextResponse.next())
 }
 
 // Pages: a fresh CSP nonce per request (lib/csp.ts; audit #7, founders' reply A7-4 B).
@@ -61,7 +70,7 @@ function withCsp(request: NextRequest) {
   headers.set('content-security-policy', csp)
   const response = NextResponse.next({ request: { headers } })
   response.headers.set('Content-Security-Policy', csp)
-  return response
+  return applySecurityHeaders(response)
 }
 
 export function proxy(request: NextRequest) {
