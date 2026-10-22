@@ -1,0 +1,22 @@
+{
+  "index": 74,
+  "url": "/dse-physics/electricity",
+  "priority": "BLOCKED",
+  "page_type": "電學主題教學／原創練習（非歷屆試題題解）",
+  "intent": "學生想按DSE物理電學主題理解電路概念、掌握常用關係式並練習計算；原列以past paper題解為意圖，但未提供具體試題或可用題目來源。",
+  "h1": "DSE物理電學：電路、功率與家居用電",
+  "title": "DSE物理電學筆記：電路分析、功率與家居用電｜DSE Level Up",
+  "description": "DSE物理電學涵蓋電流、電勢差、電動勢、電阻、串並聯電路及家居用電。本頁按課程範圍整理概念與公式，以原創電路圖和分步例題示範求電流、電勢差、功率及耗電量，並解釋單位換算和常見失分原因。內容不複製未獲授權的歷屆試題、圖表或答案；如需逐題Past Paper解析，須先確認題目來源和書面授權，以免錯引年份卷別或誤導考生。",
+  "core_content": "按教育局課程指引編寫：1) 電流、電勢差與電動勢（方向、單位、每單位電荷能量）；2) 電阻、歐姆定律適用情況、電阻率與元件I–V特性；3) 串並聯的電流、電勢差與等效電阻；4) 簡單電路分析及安培計／伏特計對量度的影響；5) P=VI、額定功率、kWh及耗電量。例題使用全新數值與情境：依自繪電路圖求支路電流及元件電勢差，再計算功率或耗電量；分步列式、核對電路規則及單位，解釋混淆電流／電勢差規則、誤用kWh、漏單位等失分點。圖表由作者自行繪製並核驗。不得複製歷屆題幹、圖表、評分準則或答案；若保留逐題Past Paper題解，先取得可追溯題源及書面授權。AI生題和作文機評未在app/api實作，不能宣稱已有此功能或新增付費API。",
+  "internal_links": "已存在：/ai/past-paper-explainer（anchor：「用分步提示檢查解題思路」；僅一般題解工具介紹，不代表物理AI解題已實作）。planned：/dse-physics（anchor：「返回DSE物理主題」；基線無此路由）。CSV原列 /past-papers 基線不存在，不作連結。",
+  "status": "Blocked",
+  "reason": "基線d25c637沒有 /dse-physics/electricity 路由，亦未找到任何DSE物理歷屆試題source、年份卷別、題號或答案來源；因此不能把本列當作Past Paper題解，也不能虛構逐題評分要求。課程指引證明電學主題有具體教學價值，但不等同提供歷屆試題來源。HKEAA說明未經事先書面批准不得使用或複製其歷屆試題及相關材料；憲章另要求題目原創平行改寫並禁止新增付費第三方API。須先提供可核查題源和授權，或正式改為完全原創課程／例題頁後解除阻塞；屆時可評P1 NEXT，不應因既有AI工具頁而合併。",
+  "sources": [
+    "基線 d25c637；docs/seo-content-map.csv 以csv.reader讀取第74列（不含header）；該基線不存在 /dse-physics/electricity。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf — Education Bureau, Physics Curriculum and Assessment Guide (Secondary 4–6)，Electricity and Magnetism／Circuits and domestic electricity。",
+    "https://www.hkeaa.edu.hk/en/resources/publications/licence/ — HKEAA歷屆考卷授權說明。",
+    "docs/charter.md §1(4)原創平行改寫及版權規定；§1(5)不得新增需付費第三方API。",
+    "基線既存 /ai/past-paper-explainer：一般題解工具介紹，非物理AI解題功能證據。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/74.json"
+}

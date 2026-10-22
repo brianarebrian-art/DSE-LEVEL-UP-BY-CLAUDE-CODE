@@ -6,7 +6,15 @@ import { readFileSync } from 'node:fs'
 
 const pick = <T,>(m: T): T => ((m as { default?: T }).default ?? m)
 const E = pick(await import('../auth/signInError.ts'))
+const route = await import('../../app/sign-in-error/page.tsx')
 const read = (p: string) => readFileSync(p, 'utf8')
+
+function assertNoIndex(metadata: { robots?: unknown }) {
+  const robots = metadata.robots as { index?: boolean; googleBot?: { index?: boolean } } | undefined
+  assert.ok(robots, 'route must publish robots metadata')
+  assert.equal(robots.index, false, 'route must not be indexed')
+  assert.equal(robots.googleBot?.index, false, 'Googlebot must receive the same noindex directive')
+}
 
 test('Auth.js sends sign-in errors to our page', () => {
   assert.match(read('auth.ts'), /pages: \{ error: '\/sign-in-error' \}/)
@@ -34,7 +42,8 @@ test('the page says practice works without signing in and links back to it', () 
 })
 
 test('the page is not indexed and is classified for page navigation', () => {
-  assert.match(read('app/sign-in-error/page.tsx'), /robots: \{ index: false, follow: false \}/)
+  assert.match(read('app/sign-in-error/page.tsx'), /completeSeoMetadata\(/)
+  assertNoIndex(route.metadata)
   assert.match(read('lib/pageOrder.ts'), /'\/sign-in-error': '/)
   assert.doesNotMatch(read('app/sitemap.ts'), /sign-in-error/)
 })

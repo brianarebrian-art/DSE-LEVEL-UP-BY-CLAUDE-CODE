@@ -1,0 +1,20 @@
+{
+  "index": 72,
+  "url": "/dse-physics/forces",
+  "priority": "P1 NEXT",
+  "page_type": "物理概念教學／原創練習頁（非Past Paper題解）",
+  "intent": "香港DSE物理學生搜尋力與運動相關概念、受力圖、合力及牛頓定律的解題方法；頁面應幫學生辨認受力、選定方向、列式並檢查單位與物理意義，而非只提供公式清單或無來源的歷屆題標籤。",
+  "h1": "DSE物理：力、受力圖與牛頓定律解題",
+  "title": "DSE物理力與運動｜受力圖、合力及牛頓定律解題 | DSE Level Up",
+  "description": "學習DSE物理力與運動：由辨認物體受力、繪畫自由體圖，到分解力、求合力及應用牛頓定律。透過原創情境例題逐步列式，拆解方向符號、摩擦力與單位檢查等常見錯誤，並練習把受力分析連結至加速度和運動狀態；不以未核實題目冒稱歷屆試題。適合補強基礎的考生按步驟重做，建立由受力圖到方程的解題流程，並自行檢查答案是否合理。",
+  "core_content": "建議先清楚限定本頁只教「力與運動」的力學解題，不將未有題目來源的內容包裝成Past Paper。內容按教育局物理課程指引Force and Motion的力學範圍組織。章節一：標量與向量、力的方向和合力，示範同一直線力及互相垂直分力的表示。章節二：自由體圖，例題方向為水平面上受拉物體，逐一標示重力、支持力、拉力及摩擦力，說明只畫作用於所選物體的力。章節三：牛頓第一、第二及第三定律，例題方向為合力不為零的推車或升降物體，先定正方向，再列ΣF=ma並解釋加速度方向；用一組作用力與反作用力說明兩力作用在不同物體，不能互相抵消。章節四：斜面或繩張力作延伸練習，分解重力並指出假設及適用條件。章節五：易錯點自檢，包括把質量與重量混淆、把速度與加速度方向混淆、漏掉摩擦力、符號正負不一致及單位錯誤。至少提供兩道原創平行改寫的分步例題及一題由淺入深的自測，附文字說明或自行繪製的受力圖；圖表可用自製向量示意，不需要付費圖表套件。答案解釋理由，不只列數值。不可複製考評局題目或評分指引原文；若將來要逐題解說歷屆題，須先取得具體題目年份／卷別／題號與合法可用的來源，核實後另行評估授權及引用方式。不要承諾AI生成題目或作文機評：此功能在app/api未實作，且憲章禁止新增付費API。",
+  "internal_links": "可連結：/practice — anchor「開始練習物理概念」（實際存在，指向一般練習入口，非聲稱已有物理題庫）。planned：/dse-physics — anchor「DSE物理總覽」；/past-papers — anchor「歷屆試題索引」。基線不存在上述planned目的頁及本頁，未建成前不得輸出為可點擊連結。原地圖列的/ai/past-paper-explainer雖存在，不應在本頁承諾AI自動解題或將其描述成已驗證的題目來源。",
+  "status": "Draft",
+  "reason": "原始地圖把本頁定位成「DSE Physics forces past paper 題解」，但基線d25c637中app/dse-physics/forces/page.tsx不存在，app/dse-physics及app/past-papers hub亦不存在；現有DSE hubs內容不足以支持PUBLISH NOW。教育局課程指引能支持力與運動概念教學範圍，卻不是某道歷屆題或卷別的題目來源。未取得可核實的物理題目年份、卷別、題號／來源前，依要求不可稱Past Paper，也不可重製受版權保護的題幹或評分內容；以原創平行例題重定義為概念教學，並把實作列為Draft。例題受力圖可自行繪製，無須另取受版權保護圖片；不加入付費API或未實作的AI生成／作文機評功能。具體缺口是物理題庫／來源、完整hub與生產驗證。未發現本條URL的內容重複證據；不建議為避免重複而合併或刪除。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf — 教育局《Physics Curriculum and Assessment Guide (Secondary 4–6)》，Force and Motion概覽及學習成果；課程範圍參照，不是Past Paper題目來源。",
+    "docs/seo-content-map.csv（以csv.reader取得不含header的第72筆）；repo基線d25c637。",
+    "docs/charter.md §1第4點（原創平行改寫及版權要求）、§5（零付費API及新增套件限制）。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/72.json"
+}

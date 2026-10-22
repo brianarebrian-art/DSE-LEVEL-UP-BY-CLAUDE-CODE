@@ -1,0 +1,23 @@
+{
+  "index": 67,
+  "url": "/dse-chemistry/rates-of-reaction",
+  "priority": "P1 NEXT",
+  "page_type": "化學反應速率主題教學頁（原始地圖標為長尾題解；不作未核實Past Paper題解）",
+  "intent": "DSE化學考生在學習反應速率或練習相關題目時，想弄清楚如何計算平均速率、由氣體體積或質量—時間圖比較速率，以及怎樣用碰撞理論解釋條件改變；亦需要看出答案只說「碰撞較多」等說法為何不完整。沒有搜尋量資料，不推斷搜尋需求規模。",
+  "h1": "DSE 化學反應速率：計算、圖表判讀與碰撞理論",
+  "title": "DSE 化學反應速率｜計算、圖表與碰撞理論例題｜DSE Level Up",
+  "description": "以原創例題拆解 DSE 化學反應速率：比較實驗中的控制變因，判讀氣體體積或質量變化圖，並以碰撞理論解釋溫度、濃度、表面積及催化劑的影響。逐步示範平均速率計算、圖線斜率和常見單位陷阱，附錯誤答案診斷與自我檢查練習；不冒稱歷屆試題，亦不複製考評局受版權保護的原題或評分資料，方便考前按步驟重溫並連結概念與作答方法。",
+  "core_content": "以「概念—觀察／計算—解釋—檢查」組織，而不是列背誦句。先說明平均反應速率是指定時間內的變化量除以時間，釐清單位與反應物減少、生成物增加的量值方向；用原創數值例題示範計算及檢查分子分母。再以自繪氣體體積—時間或質量—時間圖示範比較初始斜率、指定時段平均斜率、曲線變平與反應完成的意思，提醒座標、單位及不可把終點產物量直接當速率。用控制良好的原創實驗情境，逐項討論濃度、溫度、固體表面積及催化劑如何影響反應速率；對溫度變化的答案示範同時說明粒子動能、有效碰撞及活化能門檻，不把「碰撞頻率增加」當完整解釋。提供至少兩道原創平行例題：一題由氣體量／時間資料計平均速率及比較圖線斜率；一題辨析升溫或催化劑的碰撞理論解釋，附步驟答案、常見錯答與修正理由。圖表以自製數據和SVG／簡單圖形呈現，不使用未授權圖像或複製官方題圖。repo化學題庫已有反應速率與能量主題及速率計算、溫度碰撞理論素材，可作內容起點，但不能據此宣稱已有完整網頁或歷屆題目來源。沒有可核實的Past Paper題號、卷別、題文或評分資料來源，本頁不稱題解、不標官方評分要求、不貼考評局原題；如日後加入卷別或現行考綱細節，先以HKEAA官方資料查核。遵守憲章§1第4點，以原創平行改寫題目，不侵犯版權並加上非官方聲明。不得承諾AI生成題目或作文／長答AI評分；相關生成與評分在app/api未實作，憲章禁止新增付費API。",
+  "internal_links": "基線實際存在：/practice，anchor「開始化學練習」（全科練習入口，不聲稱已有此主題專屬題組）。/dse-chemistry不存在於基線，待化學hub實作後才可連結，標planned、anchor「返回 DSE 化學科」。/past-papers不存在於基線，不建立假連結。/ai/past-paper-explainer雖有路由，但此頁無已核實歷屆題源，故不以其作為Past Paper連結或宣稱該功能已驗證。",
+  "status": "Draft",
+  "reason": "原始內容地圖第67筆（不含header）指定P2長尾題解及此URL。基線d25c637中app/dse-chemistry/rates-of-reaction/page.tsx與化學hub app/dse-chemistry/page.tsx均不存在，因此屬建議新頁，非已發布頁面的更新。repo化學題庫確有反應速率與能量主題、平均速率計算及溫度碰撞理論題材，足以支撐具體教學切入；但現有hub內容不足，目標頁及導航均未建成，且priority項目尚未production驗證，不能標Published或PUBLISH NOW，故列P1 NEXT、Draft。原始條目定位為Past Paper題解，但基線未找到該題的官方年份／卷別／題號或可引用原題來源；無來源即不能把理科topic題稱為Past Paper，也不應編造評分要求。保留通用主題教學，不貼官方題文、圖表或評分資料，題目以原創平行改寫；正式納入任何歷屆題解前需補來源及版權界線。目標URL在原始地圖未見另一筆重複，暫不合併或刪除；全局重複治理仍按規則將原始第10/11筆後者MERGE，不重複保留。",
+  "sources": [
+    "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6",
+    "docs/seo-content-map.csv：以csv.reader讀取，不含header第67筆；原始URL、頁型、意圖與提綱",
+    "docs/charter.md §1第4點：題目原創平行改寫及版權限制；§5：禁止新增需付費第三方API",
+    "data/questions/chemistry-bank.ts：反應速率與能量主題、平均速率計算題素材",
+    "data/questions/chemistry-long-b1-reviewed.ts：反應速率與能量及溫度／碰撞理論題材",
+    "基線路徑核對：app/dse-chemistry/rates-of-reaction/page.tsx、app/dse-chemistry/page.tsx、app/past-papers/page.tsx不存在；app/practice/page.tsx及app/ai/past-paper-explainer/page.tsx存在"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/67.json"
+}

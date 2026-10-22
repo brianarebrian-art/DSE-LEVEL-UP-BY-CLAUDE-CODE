@@ -1,0 +1,19 @@
+{
+  "index": 68,
+  "url": "/dse-chemistry/equilibrium",
+  "priority": "P2 LATER",
+  "page_type": "化學主題學習筆記／原創平行例題；非 Past Paper 題解頁",
+  "intent": "學生搜尋 chemical equilibrium、equilibrium constant Kc、Le Chatelier principle 或 HKDSE 化學平衡題解時，需要弄清動態平衡、依化學方程式列 Kc、濃度與溫度改變的差異，並練習有步驟的計算和判斷。考綱支持這些學習內容，但目前不能驗證此網址已有特定官方試題或年份題目可供逐題解說，因此不應承諾 Past Paper 題解。",
+  "h1": "DSE Chemistry Chemical Equilibrium：Kc、平衡移動與計算例題",
+  "title": "DSE Chemistry Chemical Equilibrium｜Kc 與平衡移動例題",
+  "description": "掌握 DSE Chemistry 化學平衡：理解動態平衡與 Kc 表達式，逐步練習濃度、溫度改變的平衡判斷及計算，辨析常見失分點。以原創例題拆解 Kc 計算與反應商 Q 判斷，掌握平衡移動方向及解題步驟。清楚分辨濃度變化不改變 Kc、溫度變化會改變 Kc，並避免把速率相等誤當濃度相等，建立可靠作答習慣。",
+  "core_content": "建議內容：1) 動態平衡的條件與正逆反應速率相等的意義，避免誤解為反應停止；2) 由平衡反應方程式及化學計量數建立 Kc 表達式，指出純固體/液體不列入濃度式（並以適用範圍與原創例題說明）；3) 原創 Kc 代入計算例題，展示單位／有效數字處理和如何由濃度改變判斷系統調整；4) 濃度變化不改變固定溫度下 Kc，溫度變化可改變 Kc，依正反應 ΔH 定性預測方向；5) 原創反應商 Q 與 Kc 比較例題，訓練判斷反應方向；6) 常見失分：把速率相等寫成濃度相等、漏用計量數作指數、把改變濃度說成改變 Kc、混淆放熱/吸熱方向；7) 簡潔自製示意圖可呈現濃度—時間趨穩及改變條件後的平衡移動，但須標示為概念圖，不仿製考評局圖表。所有練習題採原創平行改寫，不重現考評局題目、圖表或答案文字；Past Paper 如日後有逐題來源，僅列年份、卷別、題號及官方連結，不展示受版權保護原文。",
+  "internal_links": "基線 source 中未找到 /dse-chemistry/equilibrium，也未找到可確認的化學專題或 Past Paper 路由，故不宣稱以下是現有連結。planned：/dse-chemistry（化學科目入口，待頁面存在後連結，anchor「DSE Chemistry」）；/past-papers（待核實現有頁面及題目索引後連結，anchor「官方試題索引」）；/practice（待確認路由後連結，anchor「化學平衡練習」）。不連結 /ai/past-paper-explainer：尚無依據證明功能存在；不得假設有 AI 題解或作文機評。",
+  "status": "Draft",
+  "reason": "原始第68筆 CSV row（csv.reader、含 header 的索引 68）主張 DSE Chemistry equilibrium Past Paper 題解，且列出評分要求、相似題及 /ai/past-paper-explainer；但基線 d25c637 不存在 /dse-chemistry/equilibrium 頁面，亦未找到可核實相應化學 Past Paper 題目逐題來源。題庫雖有平衡概念/練習資料，但不能因此稱作 Past Paper；章程 §1.4 與 §19.3 禁止侵犯考評局/教育局題目版權，要求題目原創平行改寫且只保留章節名稱、頁碼及連結。官方課程材料確認平衡動態性、Kc、濃度及溫度效應為課程內容，具實際學習價值，故不刪除；改作稍後的原創主題教學頁，不應以逐題Past Paper作核心。/dse-chemistry 未有可見實作，現有科目 hubs 內容不足不能 PUBLISH NOW；此頁僅 Draft，待 source、內容和連結落地驗證。/ai/past-paper-explainer 不得假設已實作，且不得新增付費 API（章程 §5）。此筆非第10/11組重複資料。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/ref-and-resources/Supplementory_note_for_Chem_20180818_Eng.pdf — EDB Chemistry Curriculum and Assessment Guide notes, Topic X Chemical Equilibrium：列明動態平衡、Kc、濃度和溫度影響及課程範圍。",
+    "Repo baseline d25c637: docs/seo-content-map.csv row 68（CSV index 含 header）；docs/charter.md §1.4、§5、§19.3；git tree 未有 /dse-chemistry/equilibrium 頁面。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/68.json"
+}

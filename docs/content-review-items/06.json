@@ -1,0 +1,23 @@
+{
+  "index": 6,
+  "url": "/dse-chemistry",
+  "priority": "P1 NEXT",
+  "page_type": "科目總覽／學習指南",
+  "intent": "香港DSE化學考生搜尋化學筆記、摩爾計算、酸鹼與實驗題解法，希望按考核範圍補概念、看示範步驟並找到相應練習。真實且具體的學習需要；不推測或聲稱搜尋量。",
+  "h1": "DSE 化學筆記與計算題解法",
+  "title": "DSE 化學筆記與計算題解法｜摩爾、酸鹼及實驗｜DSE Level Up",
+  "description": "DSE 化學筆記聚焦摩爾計算、酸鹼與氧化還原，逐步拆解方程式配平、濃度換算和單位檢查。以原創平行例題講解實驗數據判讀及常見失分，配合清晰反應粒子圖與滴定示意圖。內容依考評局現行年度課程及評核架構標示範圍；歷屆試題只提供官方查閱連結，不複製題目或圖像。適合補概念、練計算及考前按弱項覆習，並整理錯因與進度。",
+  "core_content": "先交代適用年度及課程範圍，逐項按HKEAA當年評核架構核對後才標為DSE內容。主章節建議：1) 化學方程式、粒子數與守恆；2) 摩爾概念、相對質量及質量—摩爾—粒子數換算；原創題示範如何列式、代入、保留單位及檢查有效數字；3) 溶液濃度與酸鹼中和滴定；以非官方自繪滴定裝置圖說明讀數、體積單位換算、平衡方程式係數比及由數據反推濃度；4) 氧化還原的電子轉移／氧化數判讀，配原創半反應練習；5) 實驗題：由觀察、表格或圖像判讀推論，區分觀察與解釋並辨識控制變量；6) 常見錯誤及逐步訂正（係數比誤用、cm³與dm³未換算、漏單位、方程式未配平）；7) 依概念弱項連到科目練習及官方資料。至少提供多個由淺入深、每步有理由及答案核對的原創平行例題，必要圖表須自行繪製或用可合法使用素材。化學題庫現有內容不能替代逐條考綱驗證；沒有核實題目所屬年卷、題號、答案與授權之前，不得標作Past Paper或重刊HKEAA原題／圖像；只可連到官方來源。",
+  "internal_links": "可連現存 /subjects/chemistry（anchor：化學科目練習）、/notes/chemistry（anchor：按課題查看化學筆記）、/practice（anchor：開始化學練習；提供科目選擇或確認參數有效後才定向）、/methodology（anchor：題目來源與改寫方法）。以上依基線動態路由／現有頁面存在；不可連到尚不存在的 /dse-chemistry 專頁子路徑。",
+  "status": "Draft",
+  "reason": "CSV第6資料列提出化學公式、計算、實驗及摩爾、酸鹼，方向能對應學生練習需求，並可利用現有化學題庫作支援；但於基線 d25c637，/dse-chemistry source route 不存在，僅有通用動態科目／筆記路由，且現有科目hub內容不足，故不能PUBLISH NOW。列為P1 NEXT而非保留P0立即發布：須先補足有教學深度的逐步原創例題、實驗圖表和錯因說明，按現行年度官方架構逐範圍核實後才能解除Draft。沒有專屬內容地圖重複頁需合併或刪除；不得與別科頁合併。Past Paper現階段不可宣稱已有化學題解索引或逐題來源：只引用官方可訪資料並遵守版權授權；本地題目必須原創平行改寫，footer依憲章標示非HKEAA官方題。SEO description已用Python依Unicode code point核對為154字元（目標150–160）。",
+  "sources": [
+    "基線檢查：repo /home/ubuntu/dse-level-up，commit d25c63740a9184d0303e2558c8ee6f51643258d6；app/dse-chemistry 不存在；app/subjects/[subject]、app/notes/[subject] 為動態科目頁。",
+    "docs/seo-content-map.csv，以Python csv.reader讀取；不含header第6筆為 /dse-chemistry。",
+    "docs/charter.md §1.4、§5、§8、§12及§13：零版權侵犯、原創平行改寫、禁止新增付費第三方API、長答／作文自動批改禁令、頁尾聲明等。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/assessment_framework/ — HKEAA現行評核架構入口，列有2026至2029各年化學架構；發布前按對應年度逐項核對。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chem/ — HKEAA Chemistry科目資料頁，列出課程／評核資料及Sample Papers入口。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/sample_practice_paper/ — HKEAA Sample Papers／試卷使用授權入口；不得因官方提供下載而假定可重刊或改編原題。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/06.json"
+}

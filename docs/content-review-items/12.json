@@ -1,0 +1,23 @@
+{
+  "index": 12,
+  "url": "/ai/practice-generator",
+  "priority": "BLOCKED",
+  "page_type": "AI 工具說明／練習工作流",
+  "intent": "學生希望按 DSE 科目、課題或弱項取得針對性的練習，並知道答案如何核對、錯題如何轉化為下一步操練。這是合理的學習需求；但不能將頁面寫成具有可用 AI 即時生成題目能力的產品頁，因目前 app/api 未實作生成端點，且憲章禁止新增付費第三方 API。",
+  "h1": "按 DSE 課題安排練習：選題、作答與檢討方法",
+  "title": "DSE 課題練習方法：選範圍、檢查答案與訂正｜DSE Level Up",
+  "description": "按 DSE 科目與課題安排有效練習：先訂明要掌握的概念，再獨立作答、核對步驟和整理錯因。本文說明如何選練習範圍、判斷解答是否合理，以及把錯題轉成下一輪複習任務；提供原創例題的核對方向與題目來源界線，平台目前不提供 AI 即時生成題目。適合自行安排溫習的考生使用，並可據此規劃每次練習的目標與檢討步驟。",
+  "core_content": "若解除阻塞，頁面應定位為有清楚能力邊界的練習方法指南，而非虛構已運作的生成器。章節：1) 先定科目、課題、目標概念及程度，不把「出一份卷」當成可核驗需求；2) 每次練習聚焦一項可觀察技能，以現有練習題為基礎；3) 原創例題方向需由各科內容負責人核對題目條件、答案及解釋，提供逐步示範和常見錯因，不聲稱是歷屆試題；4) 作答後核對答案與推理，區分概念錯誤、讀題遺漏、計算失誤，再安排重做；5) AI限制與可靠性：目前無生成 API，未來亦不可假設可接付費服務，任何生成內容須先有可追溯題源、答案驗證及安全評估；6) 圖表只在學科概念確有必要且可人工核對時使用；例題須原創平行改寫，不複製考評局題目或評分資料。未指定具體理科題源前，不標示為 Past Paper；Past Paper 原文及圖表受版權約束，只提供官方來源連結，不重刊。",
+  "internal_links": "現存：/practice（anchor：前往練習平台）；/dse-maths/quadratic-equations（anchor：一元二次方程例題）；/dse-english/writing-format（anchor：英文寫作格式）；/ai/study-plan（anchor：個人化溫習安排）；/methodology（anchor：了解內容與題庫方法）。subject hub 可列作 planned：/dse-biology、/dse-chemistry、/dse-physics；基線沒有足夠主題內容，不當成已具充分學習價值的連結。",
+  "status": "Blocked",
+  "reason": "基線 d25c637 的 app/ai/practice-generator/page.tsx 存在，但僅呈現選科目、先做題、回看錯誤及導向 /practice 的靜態說明；檢查 app/api 未見題目生成 API。現有頁面文案及第12筆原始地圖宣稱 AI 生成 DSE 練習題，與實際功能不符；憲章 §5 禁止新增需付費第三方 API，不能靠假設功能日後會完成而列 PUBLISH NOW。頁面要先改成不宣稱即時生成的誠實練習指南，並補足可核驗的科目內容、原創例題、答案品質流程及有價值深度後才能重評。/dse-maths/quadratic-equations 及 /dse-english/writing-format 等現有內容可提供例子，但不足以支撐廣泛跨科生成承諾；AI Past Paper 題解和 AI study-plan 頁面存在，不構成生成能力證明。未見可用的官方考綱或逐科題源清單，未作考綱一致性或特定歷屆試題主張。歷屆試題及圖表不可未經授權複製；題目需原創且來源標示清楚。",
+  "sources": [
+    "基線 d25c637：docs/seo-content-map.csv，csv.reader 第12列（不含 header）：P0／AI 生成 DSE 練習題／選科目、課題、難度、核對答案。",
+    "基線 d25c637：docs/charter.md §5（禁止任何需付費第三方 API；禁止新增套件），§1 第4點（題目版權與原創改寫要求）。",
+    "基線 d25c637：app/ai/practice-generator/page.tsx（靜態說明與 /practice 導流）；app/api/ 下無生成 API。",
+    "基線 d25c637：app/ai/past-paper-explainer/page.tsx、app/ai/study-plan/page.tsx（相關頁存在但不能證明生成器功能）。",
+    "基線 d25c637：app/practice、app/dse-maths/quadratic-equations、app/dse-english/writing-format、app/methodology（列出的現存內部連結）。",
+    "基線 d25c637：docs/seo-content-map.csv 原始第21/31列重複第10/11列的二次方程及英文寫作格式頁；按要求僅判斷本筆，本次不另保留或處置那些列。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/12.json"
+}

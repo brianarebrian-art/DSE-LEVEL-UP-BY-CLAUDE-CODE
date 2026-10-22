@@ -1,0 +1,1662 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-10-22T03:22:53+00:00",
+  "work_language": "zh-Hant",
+  "repository": "/home/ubuntu/dse-level-up",
+  "artifacts": {
+    "markdown": "/home/ubuntu/dse-level-up/docs/SEO-CONTENT-MAP-V2.md",
+    "csv": "/home/ubuntu/dse-level-up/docs/seo-content-map-v2.csv",
+    "source_reports": "/home/ubuntu/dse-level-up/docs/content-review-items"
+  },
+  "scope": {
+    "baseline_review_rows": 80,
+    "baseline_index_range": [
+      1,
+      80
+    ],
+    "canonical_publish_backlog_rows": 2,
+    "production_approved_rows": 0,
+    "note": "P1 NEXT is delivery priority only; it is not a production approval."
+  },
+  "columns": [
+    "優先級",
+    "URL",
+    "頁面類型",
+    "目標搜尋意圖",
+    "H1",
+    "Title",
+    "Meta Description",
+    "核心內容",
+    "內部連結",
+    "狀態",
+    "判斷原因"
+  ],
+  "decision_counts": {
+    "BLOCKED": 21,
+    "DELETE": 1,
+    "MERGE": 6,
+    "P1 NEXT": 39,
+    "P2 LATER": 13
+  },
+  "status_counts": {
+    "Blocked": 21,
+    "Deleted": 1,
+    "Draft": 52,
+    "Merged": 6
+  },
+  "merge_targets": [
+    {
+      "baseline_review_id": "R10",
+      "legacy_url": "/dse-maths/quadratic-equations",
+      "target": "R21 /dse-maths/quadratic-equations",
+      "reason": "[R10] 基線重複 URL；本輪已由 R21 對應的實際頁承接，故本筆只保留合併追溯，不能獨立發布。"
+    },
+    {
+      "baseline_review_id": "R11",
+      "legacy_url": "/dse-english/writing-format",
+      "target": "R31 /dse-english/writing-format",
+      "reason": "[R11] 基線重複 URL；將文體內容集中於 R31，避免同一搜尋意圖產生兩個頁面。"
+    },
+    {
+      "baseline_review_id": "R33",
+      "legacy_url": "/dse-english/letter-email",
+      "target": "R31 /dse-english/writing-format",
+      "reason": "[R33] 與 canonical 寫作格式頁高度重疊；合併可避免分散近似文體內容。"
+    },
+    {
+      "baseline_review_id": "R34",
+      "legacy_url": "/dse-english/article-writing",
+      "target": "R31 /dse-english/writing-format",
+      "reason": "[R34] 既有 canonical 頁已涵蓋 Article；獨立 URL 只會重複讀題、規劃與檢查內容。"
+    },
+    {
+      "baseline_review_id": "R35",
+      "legacy_url": "/dse-english/report-writing",
+      "target": "R31 /dse-english/writing-format",
+      "reason": "[R35] 同一 canonical 頁已有 Report 架構；合併以避免近似文體頁面競爭。"
+    },
+    {
+      "baseline_review_id": "R71",
+      "legacy_url": "/dse-physics/motion",
+      "target": "N02 /dse-physics/motion-equations",
+      "reason": "[R71] 本輪已交付更精確的 canonical 路徑 /dse-physics/motion-equations；原 /motion 無需另建，保留此列作 slug 替代追溯。"
+    }
+  ],
+  "actual_page_reconciliation": [
+    {
+      "id": "R21",
+      "url": "/dse-maths/quadratic-equations",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "evidence": "docs/page-evidence-quadratic.md"
+    },
+    {
+      "id": "R31",
+      "url": "/dse-english/writing-format",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "evidence": "docs/page-evidence-writing.md"
+    },
+    {
+      "id": "R12",
+      "url": "/ai/practice-generator",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "evidence": "docs/page-evidence-practice-guide.md"
+    },
+    {
+      "id": "N01",
+      "url": "/dse-maths/question-types/quadratic-discriminant",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "evidence": "docs/page-evidence-question-type.md"
+    },
+    {
+      "id": "N02",
+      "url": "/dse-physics/motion-equations",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "evidence": "docs/page-evidence-physics.md",
+      "replaces": "R71 /dse-physics/motion"
+    }
+  ],
+  "baseline_decisions": [
+    {
+      "review_id": "R01",
+      "source_index": 1,
+      "url": "/subjects",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/01.json",
+      "source_count": 9
+    },
+    {
+      "review_id": "R02",
+      "source_index": 2,
+      "url": "/dse-maths",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/02.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R03",
+      "source_index": 3,
+      "url": "/dse-english",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/03.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R04",
+      "source_index": 4,
+      "url": "/dse-chinese",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/04.json",
+      "source_count": 2
+    },
+    {
+      "review_id": "R05",
+      "source_index": 5,
+      "url": "/dse-biology",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/05.json",
+      "source_count": 7
+    },
+    {
+      "review_id": "R06",
+      "source_index": 6,
+      "url": "/dse-chemistry",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/06.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R07",
+      "source_index": 7,
+      "url": "/dse-physics",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/07.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R08",
+      "source_index": 8,
+      "url": "/dse-economics",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/08.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R09",
+      "source_index": 9,
+      "url": "/dse-bafs",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/09.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R10",
+      "source_index": 10,
+      "url": "/dse-maths/quadratic-equations",
+      "priority": "MERGE",
+      "status": "Merged",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/10.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R11",
+      "source_index": 11,
+      "url": "/dse-english/writing-format",
+      "priority": "MERGE",
+      "status": "Merged",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/11.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R12",
+      "source_index": 12,
+      "url": "/ai/practice-generator",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/12.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R13",
+      "source_index": 13,
+      "url": "/ai/study-plan",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/13.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R14",
+      "source_index": 14,
+      "url": "/ai/past-paper-explainer",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/14.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R15",
+      "source_index": 15,
+      "url": "/ai/essay-feedback",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/15.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R16",
+      "source_index": 16,
+      "url": "/past-papers",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/16.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R17",
+      "source_index": 17,
+      "url": "/dse-study-plan",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/17.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R18",
+      "source_index": 18,
+      "url": "/dse-exam-tips",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/18.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R19",
+      "source_index": 19,
+      "url": "/dse-revision-guide",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/19.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R20",
+      "source_index": 20,
+      "url": "/methodology",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/20.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R21",
+      "source_index": 21,
+      "url": "/dse-maths/quadratic-equations",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/21.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R22",
+      "source_index": 22,
+      "url": "/dse-maths/functions",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/22.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R23",
+      "source_index": 23,
+      "url": "/dse-maths/coordinate-geometry",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/23.json",
+      "source_count": 7
+    },
+    {
+      "review_id": "R24",
+      "source_index": 24,
+      "url": "/dse-maths/trigonometry",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/24.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R25",
+      "source_index": 25,
+      "url": "/dse-maths/permutation-combination",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/25.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R26",
+      "source_index": 26,
+      "url": "/dse-maths/probability",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/26.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R27",
+      "source_index": 27,
+      "url": "/dse-maths/statistics",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/27.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R28",
+      "source_index": 28,
+      "url": "/dse-maths/sequences",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/28.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R29",
+      "source_index": 29,
+      "url": "/dse-maths/exponential-logarithmic",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/29.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R30",
+      "source_index": 30,
+      "url": "/dse-maths/calculus",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/30.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R31",
+      "source_index": 31,
+      "url": "/dse-english/writing-format",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/31.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R32",
+      "source_index": 32,
+      "url": "/dse-english/argumentative-writing",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/32.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R33",
+      "source_index": 33,
+      "url": "/dse-english/letter-email",
+      "priority": "MERGE",
+      "status": "Merged",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/33.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R34",
+      "source_index": 34,
+      "url": "/dse-english/article-writing",
+      "priority": "MERGE",
+      "status": "Merged",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/34.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R35",
+      "source_index": 35,
+      "url": "/dse-english/report-writing",
+      "priority": "MERGE",
+      "status": "Merged",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/35.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R36",
+      "source_index": 36,
+      "url": "/dse-english/reading-comprehension",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/36.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R37",
+      "source_index": 37,
+      "url": "/dse-english/grammar-tenses",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/37.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R38",
+      "source_index": 38,
+      "url": "/dse-english/vocabulary-building",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/38.json",
+      "source_count": 2
+    },
+    {
+      "review_id": "R39",
+      "source_index": 39,
+      "url": "/dse-english/speaking-skills",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/39.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R40",
+      "source_index": 40,
+      "url": "/dse-english/integrated-skills",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/40.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R41",
+      "source_index": 41,
+      "url": "/dse-chinese/paper-one-reading",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/41.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R42",
+      "source_index": 42,
+      "url": "/dse-chinese/paper-two-writing",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/42.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R43",
+      "source_index": 43,
+      "url": "/dse-chinese/paper-three-listening",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/43.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R44",
+      "source_index": 44,
+      "url": "/dse-chinese/paper-four-speaking",
+      "priority": "DELETE",
+      "status": "Deleted",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/44.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R45",
+      "source_index": 45,
+      "url": "/dse-chinese/classical-chinese",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/45.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R46",
+      "source_index": 46,
+      "url": "/dse-chinese/modern-chinese",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/46.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R47",
+      "source_index": 47,
+      "url": "/dse-chinese/argumentation",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/47.json",
+      "source_count": 7
+    },
+    {
+      "review_id": "R48",
+      "source_index": 48,
+      "url": "/dse-chinese/narrative-writing",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/48.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R49",
+      "source_index": 49,
+      "url": "/dse-chinese/poetry-appreciation",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/49.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R50",
+      "source_index": 50,
+      "url": "/dse-chinese/common-mistakes",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/50.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R51",
+      "source_index": 51,
+      "url": "/dse-biology/cell-structure",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/51.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R52",
+      "source_index": 52,
+      "url": "/dse-biology/genetics",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/52.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R53",
+      "source_index": 53,
+      "url": "/dse-biology/homeostasis",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/53.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R54",
+      "source_index": 54,
+      "url": "/dse-biology/ecosystems",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/54.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R55",
+      "source_index": 55,
+      "url": "/dse-biology/human-reproduction",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/55.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R56",
+      "source_index": 56,
+      "url": "/dse-biology/enzymes",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/56.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R57",
+      "source_index": 57,
+      "url": "/dse-biology/photosynthesis",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/57.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R58",
+      "source_index": 58,
+      "url": "/dse-biology/respiration",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/58.json",
+      "source_count": 2
+    },
+    {
+      "review_id": "R59",
+      "source_index": 59,
+      "url": "/dse-biology/transport-in-plants",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/59.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R60",
+      "source_index": 60,
+      "url": "/dse-biology/data-analysis",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/60.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R61",
+      "source_index": 61,
+      "url": "/dse-chemistry/mole-calculation",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/61.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R62",
+      "source_index": 62,
+      "url": "/dse-chemistry/chemical-bonding",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/62.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R63",
+      "source_index": 63,
+      "url": "/dse-chemistry/periodic-table",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/63.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R64",
+      "source_index": 64,
+      "url": "/dse-chemistry/acids-bases",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/64.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R65",
+      "source_index": 65,
+      "url": "/dse-chemistry/redox",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/65.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R66",
+      "source_index": 66,
+      "url": "/dse-chemistry/organic-chemistry",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/66.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R67",
+      "source_index": 67,
+      "url": "/dse-chemistry/rates-of-reaction",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/67.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R68",
+      "source_index": 68,
+      "url": "/dse-chemistry/equilibrium",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/68.json",
+      "source_count": 2
+    },
+    {
+      "review_id": "R69",
+      "source_index": 69,
+      "url": "/dse-chemistry/electrochemistry",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/69.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R70",
+      "source_index": 70,
+      "url": "/dse-chemistry/qualitative-analysis",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/70.json",
+      "source_count": 2
+    },
+    {
+      "review_id": "R71",
+      "source_index": 71,
+      "url": "/dse-physics/motion",
+      "priority": "MERGE",
+      "status": "Merged",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/71.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R72",
+      "source_index": 72,
+      "url": "/dse-physics/forces",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/72.json",
+      "source_count": 3
+    },
+    {
+      "review_id": "R73",
+      "source_index": 73,
+      "url": "/dse-physics/energy",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/73.json",
+      "source_count": 6
+    },
+    {
+      "review_id": "R74",
+      "source_index": 74,
+      "url": "/dse-physics/electricity",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/74.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R75",
+      "source_index": 75,
+      "url": "/dse-physics/waves",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/75.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R76",
+      "source_index": 76,
+      "url": "/dse-physics/thermal-physics",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/76.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R77",
+      "source_index": 77,
+      "url": "/dse-physics/radioactivity",
+      "priority": "P1 NEXT",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/77.json",
+      "source_count": 4
+    },
+    {
+      "review_id": "R78",
+      "source_index": 78,
+      "url": "/dse-physics/momentum",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/78.json",
+      "source_count": 5
+    },
+    {
+      "review_id": "R79",
+      "source_index": 79,
+      "url": "/dse-physics/circular-motion",
+      "priority": "P2 LATER",
+      "status": "Draft",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/79.json",
+      "source_count": 2
+    },
+    {
+      "review_id": "R80",
+      "source_index": 80,
+      "url": "/dse-physics/astronomy",
+      "priority": "BLOCKED",
+      "status": "Blocked",
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/80.json",
+      "source_count": 4
+    }
+  ],
+  "additional_canonical_backlog": [
+    {
+      "id": "N01",
+      "優先級": "P1 NEXT",
+      "URL": "/dse-maths/question-types/quadratic-discriminant",
+      "頁面類型": "數學題型解析／原創教學頁",
+      "目標搜尋意圖": "理解二次方程判別式、參數條件、根的數目和驗算步驟；不把原創解析當官方歷屆題解。",
+      "H1": "DSE Maths 二次方程判別式題型解析（非官方題解）",
+      "Title": "DSE Maths 二次方程判別式題型解析：原創參數題與驗算 | DSE Level Up",
+      "Meta Description": "以原創參數題逐步拆解 DSE Maths 二次方程判別式：辨認係數、由 Δ 的正負判斷根的數目、解參數不等式並代入驗算；另附兩題相似原創練習、常見失分提醒、二次方程筆記與練習入口，說明本站不轉載考評局試題或建立年份／試卷／題號路由，方便按概念自學及核對下一步。亦同時說明重根、實根與二次項係數的檢查。",
+      "核心內容": "已交付原創判別式參數題、兩題相似題、逐步推導、代入驗算、失分提醒和版權 fallback；只講必修概念，無必考或官方題解聲稱。",
+      "內部連結": "/dse-maths/quadratic-equations、/notes/math、/subjects/math、/dse-physics/motion-equations、/sensei。",
+      "狀態": "Draft",
+      "判斷原因": "新實際頁，不屬原80筆 URL。靜態、數學與SEO覆核完成；未做 runtime／production gate，故 P1 NEXT 只是交付優先而非發布批准。證據：docs/page-evidence-question-type.md。"
+    },
+    {
+      "id": "N02",
+      "優先級": "P1 NEXT",
+      "URL": "/dse-physics/motion-equations",
+      "頁面類型": "物理勻加速運動教學頁／原創例題",
+      "目標搜尋意圖": "掌握一維恆定加速度運動的方向正負、公式選用、v–t 圖與分步計算；不把原創例題包裝成歷屆題解。",
+      "H1": "DSE Physics 勻加速運動方程：公式與分步例題",
+      "Title": "DSE Physics 勻加速運動方程：公式與分步例題 | DSE Level Up",
+      "Meta Description": "DSE Physics 勻加速運動方程教學：掌握方向正負、五個運動變數與 SI 單位，理解公式只適用於恆定加速度；透過加速、煞車及鉛直拋擲例題，練習由題意選取公式、分步列式和代入，並逐步核對數值、單位與正負號、解讀速度—時間圖，整理常見失分位與修正方法，連結物理科筆記、練習及考評局官方樣本試卷資源。",
+      "核心內容": "已交付恆定加速度限制、五變數與方向、v–t 圖表、三題原創例題、七項錯誤修正、官方資源與誠實 AI 功能界線。",
+      "內部連結": "/subjects/physics、/notes/physics、/practice、/dse-maths/question-types/quadratic-discriminant。",
+      "狀態": "Draft",
+      "判斷原因": "新實際 canonical 頁，並替代 R71 的舊 /dse-physics/motion slug。靜態、數學與SEO覆核完成；未做 runtime／production gate，故 P1 NEXT 只是交付優先而非發布批准。證據：docs/page-evidence-physics.md。"
+    }
+  ],
+  "references": {
+    "R01": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/01.json",
+      "sources": [
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader row 1；原始索引、不含header）",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1.4、§3、§5、§16.A",
+        "/home/ubuntu/dse-level-up/app/subjects/page.tsx",
+        "/home/ubuntu/dse-level-up/app/subjects/SubjectsView.tsx",
+        "/home/ubuntu/dse-level-up/app/subjects/[subject]/page.tsx",
+        "/home/ubuntu/dse-level-up/app/paper-warrior/page.tsx",
+        "/home/ubuntu/dse-level-up/app/transparency/page.tsx",
+        "/home/ubuntu/dse-level-up/app/trust/page.tsx",
+        "基線：d25c63740a9184d0303e2558c8ee6f51643258d"
+      ]
+    },
+    "R02": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/02.json",
+      "sources": [
+        "基線原始碼：git d25c637，app/dse-maths/page.tsx；另核實 app/dse-maths/quadratic-equations/page.tsx、app/subjects/[subject]/page.tsx、app/practice/page.tsx 存在。",
+        "專案限制：docs/charter.md §1.4、§5、§8、§13、§16.A、§16.B、§19.3；題目須原創平行改寫，禁止新增付費 API，禁止長答／作文自動批改，官方受版權保護原文只可列名稱、頁碼及連結。",
+        "香港考試及評核局，2025 HKDSE Mathematics Assessment Framework（官方 PDF）：https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2025hkdse-e-math.pdf",
+        "教育局，Mathematics Education - Curriculum Documents（必修部分、Module 1、Module 2 課程文件分列）：https://www.edb.gov.hk/en/curriculum-development/kla/ma/curr/index2.html",
+        "香港考試及評核局，Category A - HKDSE Core Subjects: Mathematics 官方資源頁：https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&4"
+      ]
+    },
+    "R03": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/03.json",
+      "sources": [
+        "Repo baseline d25c637: docs/seo-content-map.csv, third data row parsed using Python csv.reader (DSE English 筆記與寫作技巧; /dse-english).",
+        "Repo baseline d25c637: docs/charter.md §1.4 (originally rewritten questions; copyright constraint), §1.5 (no paid third-party API), §16.B (AI identity honesty).",
+        "Repo baseline d25c637: app/dse-english/page.tsx and app/dse-english/writing-format/page.tsx (requested route exists; short hub structure and topic links).",
+        "Repo baseline d25c637: app/reading/page.tsx, app/writing/page.tsx, app/subjects/[subject]/page.tsx and app/subjects/[subject]/SubjectDetailView.tsx (actual related route destinations and writing self-assessment distinction).",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&2_1 (HKEAA official English Language assessment framework listings by examination year; verify target year's PDF before publishing claims about papers/tasks)."
+      ]
+    },
+    "R04": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/04.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1_25",
+        "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sq/2024.html"
+      ]
+    },
+    "R05": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/05.json",
+      "sources": [
+        "docs/seo-content-map.csv：以csv.reader讀取，原始第5筆（排除header）為P0／DSE Biology notes／/dse-biology；僅審此列。",
+        "docs/charter.md §1、§5、§8、§12、§13、§16.A：免費與不新增付費API；題目須原創平行改寫、不可侵犯版權；禁止長答／作文自動批改與打分；所有頁面免責聲明。",
+        "source檢查：app/subjects/[subject]/page.tsx為動態科目頁，canonical採/subjects/{subject}；app/subjects/page.tsx、app/practice/page.tsx、app/notes/page.tsx存在；未找到app/dse-biology或獨立dse-biology頁。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — 教育局《Biology Curriculum and Assessment Guide》：列四個必修主題及四個選修主題，學生修讀其中兩個選修主題。",
+        "https://www.edb.gov.hk/en/curriculum-development/kla/science-edu/ref-and-resources/biology.html — 教育局生物科資源頁：課程補充文件標示適用於2016年及以後HKDSE；需留意新框架變動。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/ — 考評局生物科資料頁；頁列部分歷史文件（如2012 assessment framework），不足以單獨確認當屆考核細節。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/assessment_framework/ — 考評局Assessment Frameworks總頁；發布當屆生物科框架時應以其相應考試年份文件為準。"
+      ]
+    },
+    "R06": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/06.json",
+      "sources": [
+        "基線檢查：repo /home/ubuntu/dse-level-up，commit d25c63740a9184d0303e2558c8ee6f51643258d6；app/dse-chemistry 不存在；app/subjects/[subject]、app/notes/[subject] 為動態科目頁。",
+        "docs/seo-content-map.csv，以Python csv.reader讀取；不含header第6筆為 /dse-chemistry。",
+        "docs/charter.md §1.4、§5、§8、§12及§13：零版權侵犯、原創平行改寫、禁止新增付費第三方API、長答／作文自動批改禁令、頁尾聲明等。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/assessment_framework/ — HKEAA現行評核架構入口，列有2026至2029各年化學架構；發布前按對應年度逐項核對。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chem/ — HKEAA Chemistry科目資料頁，列出課程／評核資料及Sample Papers入口。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/sample_practice_paper/ — HKEAA Sample Papers／試卷使用授權入口；不得因官方提供下載而假定可重刊或改編原題。"
+      ]
+    },
+    "R07": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/07.json",
+      "sources": [
+        "基線 d25c637：docs/seo-content-map.csv（csv.reader第7筆；URL /dse-physics）",
+        "基線 d25c637：app/ 路由樹確認沒有 /dse-physics；app/api/ 路由清單未見生成/作文評核API",
+        "基線 d25c637：docs/charter.md §1 第4點（題目採原創平行改寫、零版權侵犯）；§5 成本約束（禁止付費API）",
+        "香港考試及評核局，2026 HKDSE Physics Assessment Framework：https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/2026hkdse-e-phy.pdf",
+        "香港考試及評核局，Category A Senior Secondary Subjects / Physics：https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A2&2&20"
+      ]
+    },
+    "R08": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/08.json",
+      "sources": [
+        "Baseline d25c637：/dse-economics route 不存在；/subjects、/practice routes 及 data/questions/economics.ts 存在。",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&11 — HKEAA 經濟科官方入口，列 assessment framework、curriculum and assessment guide 等。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/pshe/Econ%20C&A%20Guide_updated_e_20140212.pdf — EDB/HKEAA 經濟科課程及評估指引。",
+        "https://www.hkeaa.edu.hk/en/resources/publications/licence/ — HKEAA 歷屆考卷材料授權說明：使用／複製需事先書面批准，頁面所列許可面向學校。",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1.4、§5、§8、§13、§16.A — 原創平行改寫、免費與API限制、禁止作文自動評分及免責要求。"
+      ]
+    },
+    "R09": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/09.json",
+      "sources": [
+        "repo baseline d25c637: docs/seo-content-map.csv（CSV reader 原始第9筆）",
+        "repo baseline d25c637: docs/charter.md（§1 第4點版權、§5成本約束、§8免費與禁止廣告／付費牆）",
+        "repo baseline d25c637: app/practice/page.tsx、app/subjects/page.tsx（實際存在路由）；基線未見 app/dse-bafs/page.tsx"
+      ]
+    },
+    "R10": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/10.json",
+      "sources": [
+        "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6",
+        "docs/seo-content-map.csv：csv.reader第10、21筆同URL；第11、31筆亦重複但不屬本次審核",
+        "docs/charter.md §1第4點、§3、§16.A",
+        "app/dse-maths/quadratic-equations/page.tsx：目標URL基線存在",
+        "app/dse-maths/page.tsx、app/practice/page.tsx存在；app/subjects/mathematics/page.tsx不存在"
+      ]
+    },
+    "R11": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/11.json",
+      "sources": [
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader：不含header第11筆與第31筆同URL；第11筆範圍以原始資料列確認）",
+        "/home/ubuntu/dse-level-up/docs/charter.md（§1.4零版權侵犯及原創平行改寫；§1.5禁止需付費第三方API；§5英文科寫作要求）",
+        "/home/ubuntu/dse-level-up/app/dse-english/writing-format/page.tsx（指定頁基線存在及現有內容）",
+        "/home/ubuntu/dse-level-up/app/dse-english/page.tsx（hub及列出的實際連結）",
+        "/home/ubuntu/dse-level-up/app/writing/page.tsx、/home/ubuntu/dse-level-up/app/practice/page.tsx（實際路由存在）",
+        "/home/ubuntu/dse-level-up/app/api/（檢查現有API路由，未見作文機評路由）"
+      ]
+    },
+    "R12": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/12.json",
+      "sources": [
+        "基線 d25c637：docs/seo-content-map.csv，csv.reader 第12列（不含 header）：P0／AI 生成 DSE 練習題／選科目、課題、難度、核對答案。",
+        "基線 d25c637：docs/charter.md §5（禁止任何需付費第三方 API；禁止新增套件），§1 第4點（題目版權與原創改寫要求）。",
+        "基線 d25c637：app/ai/practice-generator/page.tsx（靜態說明與 /practice 導流）；app/api/ 下無生成 API。",
+        "基線 d25c637：app/ai/past-paper-explainer/page.tsx、app/ai/study-plan/page.tsx（相關頁存在但不能證明生成器功能）。",
+        "基線 d25c637：app/practice、app/dse-maths/quadratic-equations、app/dse-english/writing-format、app/methodology（列出的現存內部連結）。",
+        "基線 d25c637：docs/seo-content-map.csv 原始第21/31列重複第10/11列的二次方程及英文寫作格式頁；按要求僅判斷本筆，本次不另保留或處置那些列。"
+      ]
+    },
+    "R13": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/13.json",
+      "sources": [
+        "基線 d25c637: docs/seo-content-map.csv（csv.reader 第13列）",
+        "基線 d25c637: docs/charter.md §1 第4點、§5、§19.3",
+        "基線 d25c637: app/ai/study-plan/page.tsx",
+        "基線 d25c637: app/api/ 下現有路由未提供 AI study plan／作文機評"
+      ]
+    },
+    "R14": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/14.json",
+      "sources": [
+        "docs/seo-content-map.csv（d25c637，Python csv.reader 第14列及相關重複列）",
+        "docs/charter.md（d25c637，版權原創平行改寫原則、§5 禁止付費 API）",
+        "app/ai/past-paper-explainer/page.tsx（d25c637，存在且內容為靜態）",
+        "app/api/（d25c637，未見此頁解題 API）",
+        "app/dse-maths/quadratic-equations/page.tsx、app/ai/practice-generator/page.tsx、app/methodology/page.tsx、app/paper-warrior/page.tsx（d25c637，內鏈路由存在）"
+      ]
+    },
+    "R15": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/15.json",
+      "sources": [
+        "基線：d25c63740a9184d0303e2558c8ee6f51643258d6（工作樹 HEAD）",
+        "docs/seo-content-map.csv：csv.reader 第15列，目標 /ai/essay-feedback",
+        "docs/charter.md §5、§16.A（禁止新增付費 API；禁止長答／作文自動批改、打分、評分）",
+        "app/dse-english/writing-format/page.tsx（現有文體指南及交卷前檢查內容）",
+        "app/api/（基線檔案清單中無作文回饋 API；全域搜尋未見實作）",
+        "app/practice/page.tsx（練習路由存在；不代表有 AI 作文機評）"
+      ]
+    },
+    "R16": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/16.json",
+      "sources": [
+        "Repo baseline d25c637: docs/seo-content-map.csv (csv.reader row 16; URL /past-papers); docs/charter.md §§1.4, 5, 13 — inspected in repository.",
+        "Baseline route inventory (d25c637): no app/past-papers route; app/practice/page.tsx, app/dse-maths/page.tsx, app/dse-english/page.tsx exist.",
+        "https://www.hkeaa.edu.hk/en/resources/publications/list_of_publications/hkdse_erqp_pub/ — HKEAA listing of years and Question Papers with marking schemes; access method differs by year.",
+        "https://www.hkeaa.edu.hk/en/resources/publications/copyright/ — HKEAA copyright notice; prior written permission for reproduction, and prohibition on use of publications in relation to AI/ML models/platforms/software/systems/tools."
+      ]
+    },
+    "R17": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/17.json",
+      "sources": [
+        "docs/seo-content-map.csv：csv.reader 不含header第17筆；同一地圖第19筆列 /dse-revision-guide 作為相鄰溫習方法完整指南。",
+        "docs/charter.md §1.4、§5、§13、§16.A–B：題目原創平行改寫與版權邊界、禁止付費第三方API、免責聲明及禁止長答/作文自動批改與隱瞞AI身份。",
+        "基線 d25c637：app/ai/study-plan/page.tsx（短篇靜態介紹）、app/practice/page.tsx；未找到 app/dse-study-plan 路由。"
+      ]
+    },
+    "R18": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/18.json",
+      "sources": [
+        "基線原始內容地圖第18列（csv.reader，docs/seo-content-map.csv）：P0 DSE 考試技巧，範圍為讀題、時間管理、檢查、常見失分。",
+        "Repo source基線d25c637：未找到 /dse-exam-tips；存在 /dse-maths、/dse-english、/subjects、/practice。",
+        "docs/charter.md §1第4點及§5：考評局受版權保護原文只能列章節名稱、頁碼及連結；題目須原創平行改寫；不可新增付費API。"
+      ]
+    },
+    "R19": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/19.json",
+      "sources": [
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader，指定索引19）",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1第4點、§5、§16.B、§19.3第4–5點",
+        "/home/ubuntu/dse-level-up/app/practice/page.tsx（已存在路由）",
+        "/home/ubuntu/dse-level-up/app/subjects/page.tsx（已存在路由）",
+        "基線 d25c63740a9184d0303e2558c8ee6f51643258d；app中無 /dse-revision-guide；未作外部搜尋，無搜尋量或現行考綱聲稱"
+      ]
+    },
+    "R20": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/20.json",
+      "sources": [
+        "基線 d25c637: docs/seo-content-map.csv（csv.reader第20列；不含header）",
+        "基線 d25c637: docs/charter.md（§3免費原則、§5零成本、§8已否決項目及§16.A長答／作文自動批改禁令）",
+        "基線 d25c637: app/methodology/page.tsx",
+        "基線 d25c637: app/methodology/MethodologyClient.tsx",
+        "基線 d25c637: app/api/ 路由清單（無題目生成或作文機評端點；非對全站任意服務的證明）"
+      ]
+    },
+    "R21": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/21.json",
+      "sources": [
+        "docs/seo-content-map.csv：csv.reader 原始第21筆（不含 header）；同 URL 原始第31筆亦重複。",
+        "docs/charter.md §1.4、§1.5、§8、§13：題目原創平行改寫、零版權侵犯、禁止新增付費 API、全頁免責聲明及作文自動批改禁令。",
+        "app/dse-maths/quadratic-equations/page.tsx：基線頁面實際內容；URL 在 source 存在。",
+        "app/dse-maths/page.tsx、app/practice/page.tsx、app/methodology/page.tsx：內鏈目標存在。",
+        "app/api 與本任務明示限制：不可假設 AI 生成及作文機評已實作。"
+      ]
+    },
+    "R22": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/22.json",
+      "sources": [
+        "基線檢查：git d25c637 中 app/dse-maths/functions/page.tsx 不存在；現有路由包含 /dse-maths、/dse-maths/quadratic-equations 及 /practice。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&4 — HKEAA HKDSE Mathematics 科目頁（assessment framework、curriculum and assessment guide 等官方連結）。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&4_2 — HKEAA Mathematics Curriculum and Assessment Guide 頁面，連結至教育局中四至中六課程指引。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/res/m2_eng.pdf — 教育局 Module 2 課程文件；官方文件標示選修部分包括 M1 Calculus and Statistics 及 M2 Algebra and Calculus。"
+      ]
+    },
+    "R23": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/23.json",
+      "sources": [
+        "基線 d25c637: docs/seo-content-map.csv（csv.reader第23列，不含header）",
+        "基線 d25c637: docs/charter.md（§1第4點原創平行改寫及版權要求；§5零成本／禁止新增付費API；§13每頁免責聲明）",
+        "基線 d25c637: docs/SEO-CONTENT-MAP.md（僅有本URL規劃記錄，非實際頁面）",
+        "基線 d25c637: app/dse-maths/page.tsx（科目hub存在）",
+        "基線 d25c637: app/dse-maths/quadratic-equations/page.tsx（相鄰數學專題作頁型參照）",
+        "基線 d25c637: app/practice/page.tsx、app/subjects/mathematics（現存練習入口）",
+        "現行DSE考綱及卷別尚未作官方查核；內容定稿前須補官方來源核對，不能據此報稱考試範圍或Past Paper內容"
+      ]
+    },
+    "R24": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/24.json",
+      "sources": [
+        "docs/seo-content-map.csv：以 csv.reader 讀取，不含 header 的第24筆；原始列建議 P1、DSE Maths trigonometry、/dse-maths/trigonometry 及概括大綱。",
+        "docs/charter.md §1.4–1.5：題目須原創平行改寫、禁止侵權；禁止需付費第三方 API。",
+        "docs/charter.md §4：新模組須整合至 live app 並於運行中 UI 手動驗證。",
+        "docs/charter.md §12：題目入庫需依規範並如實披露；不應聲稱未經核實的官方題目。",
+        "基線 d25c637：app/dse-maths/page.tsx、app/dse-maths/quadratic-equations/page.tsx、app/practice/page.tsx 存在；app/dse-maths/trigonometry/page.tsx 不存在。",
+        "未核對官方 DSE 課程文件或試卷，因此本項目目前沒有支持具體考綱、卷別或歷屆題目主張的來源。"
+      ]
+    },
+    "R25": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/25.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/CA_2017_e.pdf (Learning Unit 15: counting principles, permutations, combinations and circular permutation exclusion)",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2026hkdse-e-math.pdf (2026 Mathematics assessment framework)",
+        "/home/ubuntu/dse-level-up/docs/charter.md §§3.7, 4, 5, 8, 12.1, 13",
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv (row 25 excluding header, parsed with csv.reader)",
+        "d25c637 source: app/dse-maths/page.tsx and app/dse-maths/quadratic-equations/page.tsx exist; target route and /past-papers do not."
+      ]
+    },
+    "R26": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/26.json",
+      "sources": [
+        "Repository baseline d25c63740a9184d0303e2558c8ee6f51643258d6: docs/seo-content-map.csv（csv.reader第26筆；並比對第10、11、21、31筆）",
+        "docs/charter.md §1（零版權侵犯、原創平行改寫），§5（禁止付費第三方API／新增套件）",
+        "app/dse-maths/page.tsx、app/dse-maths/quadratic-equations/page.tsx、app/practice/page.tsx（核實現有URL）",
+        "app/api/（現有API清單；無AI生成題目或作文機評API）"
+      ]
+    },
+    "R27": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/27.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/CA_2017_e.pdf — EDB Mathematics Curriculum and Assessment Guide：數據處理範圍含離差、四分位距、箱形圖、標準差、用途與濫用統計；M1另有延伸統計學習單元。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2026hkdse-e-math.pdf — HKEAA 2026 Mathematics Assessment Framework：必修部分可單獨應考；延伸部分須選M1或M2，M1為Calculus and Statistics並有獨立試卷。",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&4_25 — HKEAA官方數學科頁面；本次頁面內容只見考生作答示例資源，未作任何特定統計題出現頻率推斷。",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1第4點、§3、§5、§16.A — 基線憲章：題目須原創平行改寫、不可侵犯版權；禁止付費API；作文/長答不可假設機器批改。",
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv 第27列（csv.reader；不含header計）及基線 d25c637 app/dse-maths 路由樹 — 列出目標與大綱；基線無 statistics/page.tsx。"
+      ]
+    },
+    "R28": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/28.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/CA_2017_e.pdf",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2026hkdse-e-math.pdf",
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（基線d25c637，以csv.reader讀第28筆，不含header）",
+        "/home/ubuntu/dse-level-up/docs/charter.md（基線d25c637）",
+        "基線d25c637：app/dse-maths/page.tsx、app/dse-maths/quadratic-equations/page.tsx、app/practice/page.tsx；app/api無AI題目生成端點"
+      ]
+    },
+    "R29": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/29.json",
+      "sources": [
+        "docs/seo-content-map.csv（d25c637，Python csv.reader；原始第29筆及第10／11、21／31筆重複檢視）",
+        "docs/charter.md（d25c637，§5 成本與付費API限制、章程的內容／版權規範）",
+        "app/dse-maths/page.tsx、app/dse-maths/quadratic-equations/page.tsx（d25c637；數學hub與既有相鄰主題頁，未找到目標URL來源）",
+        "app/api/（d25c637；未見指數對數AI生成或作文機評功能API）",
+        "app/practice/page.tsx、app/methodology/page.tsx（d25c637；存在之練習與方法說明路由）"
+      ]
+    },
+    "R30": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/30.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2027hkdse-e-math.pdf",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/EN_M1_e.pdf",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/EN_M2_e.pdf",
+        "https://www.edb.gov.hk/en/curriculum-development/kla/ma/curr/index2.html",
+        "docs/charter.md §4–5、§16.B（repo基線d25c637）",
+        "docs/seo-content-map.csv CSV row 30（不含header；repo基線d25c637）"
+      ]
+    },
+    "R31": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/31.json",
+      "sources": [
+        "Repo baseline d25c637: docs/seo-content-map.csv（csv.reader row[31] 與 row[11]）",
+        "Repo baseline d25c637: app/dse-english/writing-format/page.tsx",
+        "Repo baseline d25c637: app/dse-english/page.tsx",
+        "Repo baseline d25c637: app/writing/page.tsx",
+        "Repo baseline d25c637: docs/charter.md §1（版權／題目限制）、§5（$0成本約束）"
+      ]
+    },
+    "R32": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/32.json",
+      "sources": [
+        "基線檢查：git rev-parse HEAD = d25c63740a9184d0303e2558c8ee6f51643258d6；CSV以Python csv.reader讀取，header後第32資料列即索引32。",
+        "docs/charter.md §1(4)；§末版權限制（約第862行）：題目使用原創平行改寫，不得重製考評局受版權保護原文；只可提供章節名稱、頁碼及連結。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2027hkdse-e-elang.pdf — 2027 HKDSE English Language Assessment Framework，Paper 2 Writing及Writing assessment objectives。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/eng_lang/faq_q/q4.html — HKEAA English Language FAQ，Paper 2字數指引與評分說明。",
+        "基線source路由檢查：app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx、app/practice/page.tsx、app/ai/practice-generator/page.tsx存在；app/dse-english/argumentative-writing不存在。"
+      ]
+    },
+    "R33": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/33.json",
+      "sources": [
+        "基線 d25c637：docs/seo-content-map.csv（csv.reader 第33筆，URL /dse-english/letter-email）",
+        "基線 d25c637：docs/charter.md §1 第4點（原創改寫及HKEAA版權限制）、§5（$0成本／禁止付費API）、§16.A（禁止作文自動批改評分）",
+        "基線 d25c637：app/dse-english/writing-format/page.tsx（既有文類指南、寫作練習及連結）",
+        "基線 d25c637：app/dse-english/page.tsx（現有英文科目頁與 writing-format 導航）",
+        "HKEAA, 2026 HKDSE English Language Assessment Framework, https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2026hkdse-e-elang.pdf（Paper 2 Part A約200字及任務設定）"
+      ]
+    },
+    "R34": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/34.json",
+      "sources": [
+        "基線d25c63740a9184d0303e2558c8ee6f51643258d6：docs/seo-content-map.csv（csv.reader第34列）、docs/charter.md、app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx、app/writing/page.tsx、app/api（未見AI寫作生成/批改端點）；目標URL未在app/lib source找到。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2026hkdse-e-elang.pdf（HKEAA 2026 English Language Assessment Framework）",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&2_1（HKEAA English Language官方框架入口）"
+      ]
+    },
+    "R35": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/35.json",
+      "sources": [
+        "docs/seo-content-map.csv：以 csv.reader 讀取，不含 header 的第35筆；目標 URL /dse-english/report-writing。",
+        "基線：d25c63740a9184d0303e2558c8ee6f51643258d6；git ls-tree 確認沒有 app/dse-english/report-writing/page.tsx。",
+        "app/dse-english/writing-format/page.tsx：基線實際存在；metadata及內容涵蓋 Letter、Article、Report，並有規劃及交卷檢查。",
+        "app/dse-english/page.tsx、app/writing/page.tsx、app/practice/page.tsx：存在的相關內部頁面；練習為通用入口，不是專屬 report 題組。",
+        "docs/charter.md §1 第4點、§5：原創平行改寫與零版權侵犯；不得新增付費API。",
+        "基線 app/api 檔案清單：沒有作文機評或任意生成 API；不假設 app/ai/practice-generator 的介面等於後端功能。"
+      ]
+    },
+    "R36": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/36.json",
+      "sources": [
+        "docs/seo-content-map.csv 第36筆（csv.reader，header不計）",
+        "docs/charter.md §1（DSE範圍、原創平行改寫、版權及付費API限制）；§19.3（官方受版權原文只記章節名稱／頁碼／連結）",
+        "基線來源：app/dse-english/page.tsx及app/dse-english/writing-format/page.tsx存在；目標路由不存在；app/api/未見AI生成或作文機評路由。未查核官方考綱，故Blocked。"
+      ]
+    },
+    "R37": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/37.json",
+      "sources": [
+        "docs/seo-content-map.csv：csv.reader 原始第37筆（不含 header）；URL /dse-english/grammar-tenses。",
+        "docs/charter.md §1.4、§1.5、§8、§13、§16.A：原創內容／版權、禁止新增付費 API及作文長答自動批改限制。",
+        "git 基線 d25c637：app/dse-english/grammar-tenses/page.tsx 不存在；app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx 存在。",
+        "基線 app/dse-english/page.tsx：實際連結 /writing、/dse-english/writing-format、/notes/english-language。",
+        "HKEAA English Language 科目資訊：https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&2 （課程與評核指南、評核框架及樣卷官方入口；本次未核實現行課綱細節）。"
+      ]
+    },
+    "R38": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/38.json",
+      "sources": [
+        "Repo baseline d25c637: docs/seo-content-map.csv（Python csv.reader row 38，不含 header）；docs/charter.md §§1.3、4、5、12、16。",
+        "Baseline source: app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx、app/practice/page.tsx；目標 route 不存在。"
+      ]
+    },
+    "R39": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/39.json",
+      "sources": [
+        "Baseline d25c637: /home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader第39列，非header，index欄位所指原始內容地圖第39筆）；/home/ubuntu/dse-level-up/docs/charter.md §1.4、§5、§8、§16.A。",
+        "Baseline route check: d25c637:app/dse-english/speaking-skills/page.tsx 不存在；app/dse-english/page.tsx與app/dse-english/writing-format/page.tsx存在；sitemap列有/dse-english、/dse-english/writing-format、/writing、/practice。",
+        "Hong Kong Examinations and Assessment Authority, 2026 HKDSE English Language Assessment Framework: https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2026hkdse-e-elang.pdf",
+        "Hong Kong Examinations and Assessment Authority, HKDSE English Language Paper 4 Speaking Assessment Guidelines: https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/EngPaper4-Guidelines.pdf",
+        "Hong Kong Examinations and Assessment Authority, 2026 English Language SBA Teachers' Handbook: https://www.hkeaa.edu.hk/DocLibrary/SBA/HKDSE/SBAhandbook-2026-ELANG.pdf"
+      ]
+    },
+    "R40": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/40.json",
+      "sources": [
+        "docs/seo-content-map.csv：csv.reader 第40列（不含 header），目標 URL、原始意圖、類型、大綱、連結及 CTA。",
+        "docs/charter.md §16.A：禁止長答／作文自動批改與評分；§5 與紅線約束禁止新增付費 API；§19.3 第4點：受版權保護原文只記章節名稱、頁碼及連結。",
+        "基線原始碼：app/dse-english/page.tsx 與 app/dse-english/writing-format/page.tsx 存在；app/dse-english/integrated-skills/page.tsx 不存在。app/practice/page.tsx 及 app/writing/page.tsx 存在。",
+        "香港考試及評核局，《2028 HKDSE English Language Assessment Framework》，https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2028hkdse-e-elang-9d8.pdf ：Paper 3（Listening and Integrated Skills）約兩小時、佔30%；Part A必答，Part B1/B2二選一，B部分含整合聆聽/閱讀與寫作任務。"
+      ]
+    },
+    "R41": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/41.json",
+      "sources": [
+        "Baseline repository d25c637: docs/seo-content-map.csv row 41 (csv.reader, excluding header); target row priority P1.",
+        "Baseline repository d25c637: app/dse-chinese/paper-one-reading/page.tsx absent; app/dse-chinese/page.tsx absent; app/practice/page.tsx present; app/ai/practice-generator/page.tsx present.",
+        "/home/ubuntu/dse-level-up/docs/charter.md §§1.4, 1.5, 8, 8.2, 13: independently rewritten questions, no paid third-party APIs, no long-answer/essay automatic marking, official-paper disclaimer and referral.",
+        "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sp/2024.html — official HKEAA 2024 Chinese Language samples page lists Paper 1 and Paper 2.",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1_25 — official HKEAA Chinese Language sample-performance listing, including 2024 and 2025."
+      ]
+    },
+    "R42": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/42.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?2&1&1_1",
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader第42筆）",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1.4、§5、§8、§13、§16.A",
+        "基線來源檢查：/dse-chinese/paper-two-writing 不存在；app/practice/page.tsx 與 app/ai/practice-generator/page.tsx 存在"
+      ]
+    },
+    "R43": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/43.json",
+      "sources": [
+        "docs/seo-content-map.csv（d25c637，CSV reader列索引43；原始規劃記錄）",
+        "docs/charter.md §7（每節練習題數）、§12（題目出處與上線說明）、§16.A（永久禁止長答自動批改）；d25c637",
+        "https://www.hkeaa.edu.hk/tc/hkdse/assessment/assessment_framework/（HKEAA：2026–2029核心科目中文科評核大綱入口；須依實際應考屆別核對）",
+        "https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&1_5（HKEAA：中文科其他資源，列出教師會議資料及卷二、卷三樣本資料）",
+        "https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/chi_lang/2016_paper3_pp.html（HKEAA：卷三聆聽及綜合能力練習卷資料入口；不可據此推定當屆考試格式）"
+      ]
+    },
+    "R44": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/44.json",
+      "sources": [
+        "基線 d25c637：docs/seo-content-map.csv，csv.reader 第44筆（不含header）。",
+        "基線 d25c637：app/dse-chinese/ 與 /dse-chinese/paper-four-speaking 路由均不存在；app/practice/page.tsx、app/methodology/page.tsx 存在。",
+        "docs/charter.md §3.1、§3.7–3.8：功能免費、題目原創平行改寫、零版權侵犯及禁止新增需付費第三方API。",
+        "考評局《2025香港中學文憑考試中國語文科》：https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/chi_lang/2025hkdse-c-clang.pdf（官方資料列公開試卷一、二及校本評核口頭匯報）。",
+        "考評局2025中文科表現示例索引：https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sp/2025.html"
+      ]
+    },
+    "R45": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/45.json",
+      "sources": [
+        "Repo baseline d25c637：docs/seo-content-map.csv 原始第45筆（Python csv.reader、header後計數）；git cat-file 驗證 app/dse-chinese/classical-chinese/page.tsx 與 app/dse-chinese/page.tsx 均不存在。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/chi_lang/2027hkdse-c-clang.pdf — HKEAA《2027 HKDSE Chinese Language Assessment Framework》：卷一閱讀能力；甲部指定文言經典材料，乙部課外篇章、文白兼備。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?2&1&1_1 — HKEAA中國語文評核架構官方頁，列出2026–2029架構文件。",
+        "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/or/bs2023.html — HKEAA中文科2024評核資源，含2024 Paper 2更新資料；本頁卷別文案需遵循現行年度官方架構。",
+        "Repo baseline d25c637：docs/charter.md §4–5、§8、§13、§16.A（整合驗證、禁止新增付費API、版權、作文機評禁令、官方試題免責/下載來源）。"
+      ]
+    },
+    "R46": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/46.json",
+      "sources": [
+        "基線 d25c637：docs/seo-content-map.csv 第46列，csv.reader計數不含header",
+        "基線 d25c637：docs/charter.md §1第4點、§5、§16.A",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chi_lang/or/bs2024.html — HKEAA 2024中文科Paper 1及Paper 2研討會資源"
+      ]
+    },
+    "R47": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/47.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1（考評局中國語文科入口）",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1_2（官方課程指引入口，頁面所列為2015指引連結）",
+        "/home/ubuntu/dse-level-up/docs/charter.md（d25c637，§1.4及§5）",
+        "/home/ubuntu/dse-level-up/docs/SEO-CONTENT-MAP.md（d25c637，卷二寫作總覽列於第41筆）",
+        "/home/ubuntu/dse-level-up/app/practice/page.tsx（d25c637）",
+        "/home/ubuntu/dse-level-up/app/writing/page.tsx（d25c637）",
+        "/home/ubuntu/dse-level-up/app/ai/practice-generator/page.tsx（d25c637；路由非作文AI功能證明）"
+      ]
+    },
+    "R48": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/48.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sq/sp2024.html",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1",
+        "docs/charter.md（基線 d25c637；§1、§5、§16.A、§19.3）",
+        "docs/seo-content-map.csv（以 csv.reader 讀取不含header第48筆）"
+      ]
+    },
+    "R49": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/49.json",
+      "sources": [
+        "Baseline d25c637: docs/seo-content-map.csv parsed with csv.reader, header excluded, item 49; priority P1.",
+        "Baseline d25c637: app/dse-chinese/poetry-appreciation/page.tsx and app/dse-chinese/page.tsx absent; app/practice/page.tsx and app/ai/practice-generator/page.tsx present.",
+        "Baseline docs/charter.md §§4–5, §16, §19.3: original rewriting, no paid third-party API, no essay/long-answer automatic marking; protected HKEAA text may only be referenced by chapter/page/link.",
+        "HKEAA Chinese Language assessment framework listing (2026–2029): https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?2&1&1_1",
+        "HKEAA Chinese Language sample questions page; Paper 2A practical writing sample explicitly applicable to 2024: https://www.hkeaa.edu.hk/tc/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sq/sp2024.html",
+        "HKEAA Chinese Language teacher resources listing including 2025/2026 resources: https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&1_5"
+      ]
+    },
+    "R50": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/50.json",
+      "sources": [
+        "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6",
+        "docs/seo-content-map.csv：csv.reader第50筆；目標URL、頁面類型及原始大綱",
+        "docs/charter.md §1第4點、§3及成本限制：原創平行改寫、禁止未授權原文及新增付費API",
+        "基線檢查：app/dse-chinese/common-mistakes/page.tsx、app/dse-chinese/page.tsx 不存在；app/practice/page.tsx 存在"
+      ]
+    },
+    "R51": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/51.json",
+      "sources": [
+        "基線 source：git d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv 以 csv.reader 讀取，不含 header 的第 51 筆為 /dse-biology/cell-structure；該路徑在基線 app source 不存在。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — 教育局 Biology Curriculum and Assessment Guide，cellular organisation、細胞膜、細胞器及原核／真核細胞學習目標。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/bio/PowerPoint-BIO-2024-01.pdf — 考評局 Biology Report on 2024 Exam；Paper 1 Section 1 Cells and Molecules of Life 分數比例及整體作答表現。未能證實本頁所需的特定細胞題目與題號。",
+        "docs/charter.md §16.A — 永久禁止長答／作文自動批改；§5／現行 $0 約束禁止遊戲化引入付費 API、新套件或雲端用量。"
+      ]
+    },
+    "R52": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/52.json",
+      "sources": [
+        "基線 d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv row 52 (csv.reader, header excluded)；確認 app/dse-biology/genetics/page.tsx 和 app/dse-biology/page.tsx 不存在。",
+        "docs/charter.md §1.4（原創平行改寫與免責/署名）、§5（禁止新增付費 API）、§8/§16.A（禁止作文/長答自動批改）、§19.3（官方受版權原文只可列章節、頁碼、連結）。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — Biology Curriculum and Assessment Guide, basic genetics learning outcomes.",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/ — HKEAA Biology subject page; official assessment/document links. Not used to claim current past-paper question coverage."
+      ]
+    },
+    "R53": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/53.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/DocLibrary/HKCEE/Subject_and_Syllabuses/2011/2011ce-e-bio.pdf — 考評局官方生物課程PDF指出第6節 Regulation and Defence涵蓋homeostasis、osmoregulation、體溫及血糖調節；屬舊版課程文件，不能單獨證明現行HKDSE範圍。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5 — 考評局科目資訊入口；擷取頁面只有Category A Biology評核架構及課程指引連結，沒有現行課綱/卷別細節，尚未完成對應查核。",
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（基線 d25c637，第53筆）",
+        "/home/ubuntu/dse-level-up/docs/charter.md（基線 d25c637，§1/§5等：版權原文限制、禁止新增需付費第三方API）"
+      ]
+    },
+    "R54": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/54.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — 教育局 Biology Curriculum and Assessment Guide：ecosystems涵蓋組織層次、主要生態系統、生物及非生物組成、群落關係、演替、食物鏈／網、能量轉移、碳氮循環、保育及本地生境調查。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/bio/PowerPoint-BIO-2024-01.pdf — 考評局2024 Biology考試報告：Paper 1中Organisms and Environment占建議教學時間47%、該年卷面分值53.3%；Applied Ecology選修平均分36.0%。這是整體範圍資訊，並非生態系統歷屆題證據。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5 — 考評局官方科目資訊頁呈現Biology評核框架、課程指南、樣本表現及sample questions資源入口；頁面路徑標示Category B但內容列出Category A Biology，引用時只作官方入口參考，不據此推斷現行題型細節。",
+        "基線repo d25c637：docs/seo-content-map.csv以csv.reader定位第54筆；docs/charter.md規定零版權侵犯、題目需原創平行改寫，並禁止付費第三方API及新增套件。"
+      ]
+    },
+    "R55": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/55.json",
+      "sources": [
+        "基線：git d25c63740a9184d0303e2558c8ee6f51643258d6；以csv.reader讀取docs/seo-content-map.csv，第55筆（不含header）為 /dse-biology/human-reproduction；基線app source未找到該路由或 /dse-biology hub。",
+        "https://cd1.edb.hkedcity.net/cd/science/biology/supplementary/bio_supplement_e_2016.pdf — 教育局《Biology Curriculum (Secondary 4–6) Supplementary Document for 2016》，人體生殖範圍及選修月經週期荷爾蒙調節內容。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A2&2&21_6 — 考評局Category A官方科目頁；確認生物為選修科。未用作證明具體題目年份、卷別或題源。",
+        "docs/charter.md §16.A／§16.B及付費服務限制：長答／作文自動批改禁止；不得新增付費API，AI身份須清楚披露。"
+      ]
+    },
+    "R56": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/56.json",
+      "sources": [
+        "基線檢查：d25c637；git tree 無 app/dse-biology/enzymes/page.tsx，內容地圖第56筆。",
+        "Repo原創題源：data/questions/biology-bank.ts，酶主題生成練習（反應速率、最適溫度等）；非Past Paper題源。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/bio/PowerPoint-BIO-2025-09.pdf"
+      ]
+    },
+    "R57": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/57.json",
+      "sources": [
+        "docs/seo-content-map.csv 第57列（csv.reader，row index按含header計算），基線 d25c637。",
+        "docs/charter.md §1.3–5：免費原則、零版權侵犯、原創平行改寫；憲章末段限制考評局／教育局受版權保護原文只列章節名稱、頁碼及連結。",
+        "data/questions/biology.ts 含光合作用相關練習題，不能據此宣稱為官方Past Paper。",
+        "基線路由清單：存在 /practice、/ai/past-paper-explainer；未見 /dse-biology、/past-papers、/dse-biology/photosynthesis。",
+        "HEAD確認 d25c637；未採用共享工作樹其他未提交變更。"
+      ]
+    },
+    "R58": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/58.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5"
+      ]
+    },
+    "R59": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/59.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/or/",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/"
+      ]
+    },
+    "R60": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/60.json",
+      "sources": [
+        "Repo baseline d25c637: docs/seo-content-map.csv 第60筆（csv.reader，header以外列序）；原始意圖與outline提出Past Paper題解。",
+        "Repo baseline d25c637: docs/charter.md §1第4點（原創平行改寫與零版權侵犯）、§5（不得調用需付費第三方API）、§16.B（AI身份誠實義務）。",
+        "Repo baseline d25c637: app/api 路由清單及 data/questions/biology*.ts；存在生物題庫但未提供本頁所需的具體歷屆題目／卷別／評分要求映射。",
+        "Repo baseline d25c637: app/ai/past-paper-explainer/page.tsx 路由存在；不可由此推定本頁生物題解或題目生成／機評能力已實作。"
+      ]
+    },
+    "R61": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/61.json",
+      "sources": [
+        "基線 source：git d25c637，docs/seo-content-map.csv，csv.reader row 61（header 不計）；基線 app 無 /dse-chemistry/mole-calculation、/dse-chemistry 或 /past-papers 路由。",
+        "docs/charter.md §4（零版權侵犯；原創平行改寫題）、§5（不得新增需付費 API）；以 repository 基線為準。",
+        "教育局課程指引補充文件，反應質量單元列出 mole、Avogadro constant、molar mass、反應質量及 limiting reagents 的學習成果：https://cd1.edb.hkedcity.net/cd/science/NSS/supplement_cschem_e_15Aug2013.pdf",
+        "現有靜態 AI 題解說明頁（非自動解題 API）：基線 app/ai/past-paper-explainer/page.tsx。",
+        "重複檢查參照：CSV row 10/21 為同一 Maths quadratic URL，row 11/31 為同一 English writing URL；第61筆摩爾計算路徑不屬於這兩組重複項。"
+      ]
+    },
+    "R62": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/62.json",
+      "sources": [
+        "docs/seo-content-map.csv（基線 d25c637，csv.reader 第62筆，不含 header）",
+        "docs/charter.md（基線 d25c637；版權、題庫來源與技術限制）",
+        "app/practice/page.tsx（基線 d25c637，現存路徑）",
+        "app/ai/past-paper-explainer/page.tsx（基線 d25c637；僅頁面路徑存在，不代表 API 已實作）"
+      ]
+    },
+    "R63": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/63.json",
+      "sources": [
+        "Repo baseline d25c637：docs/seo-content-map.csv，以Python csv.reader讀取第63筆（不含header）；原始分類為P2、長尾題解，未列題號或題目來源。",
+        "Repo baseline d25c637：確認 app/ 下不存在 /dse-chemistry/periodic-table 對應source；/practice、/methodology存在，可作實際內鏈。",
+        "Repo baseline d25c637：docs/charter.md §1（版權及原創平行改寫）、§5（禁止付費第三方API）、§16.A（禁止長答／作文自動批改）。",
+        "教育局與香港考試及評核局：《化學課程及評估指引（中四至中六）》英文版，Topic II, pp.20–21，官方PDF：https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf。",
+        "香港考試及評核局 HKDSE Chemistry官方科目頁：https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&7。"
+      ]
+    },
+    "R64": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/64.json",
+      "sources": [
+        "基線檢查：git HEAD d25c63740a9184d0303e2558c8ee6f51643258d6；/dse-chemistry/acids-bases、/dse-chemistry及/past-papers均無對應app route。",
+        "docs/seo-content-map.csv：csv.reader第64列（header不計）原始列為Chemistry acids bases Past Paper題解規劃。",
+        "docs/charter.md §1第4點：零版權侵犯；題目使用原創平行改寫法。§19.3第4點：考評局／教育局版權原文只記章節名、頁碼及連結。",
+        "docs/topic-syllabus-map-2027.md：acids_bases列為化學必修，對應Topic IV Acids and bases。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf （教育局 Chemistry Curriculum and Assessment Guide；Topic IV Acids and Bases，課程及學習成果）",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/ref-and-resources/Supplementory_note_for_Chem_20180818_Eng.pdf （教育局Supplementary Note；標示適用於2021 HKDSE及以後，Topic IV範圍及滴定補充說明）"
+      ]
+    },
+    "R65": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/65.json",
+      "sources": [
+        "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv 使用 csv.reader，原始第65筆為 /dse-chemistry/redox，類型長尾題解，提案大綱為題目重點、評分要求、分步解法、失分位、相似題與延伸概念。",
+        "基線路由檢查：app/dse-chemistry/redox/page.tsx、app/dse-chemistry/page.tsx、app/past-papers/page.tsx 均不存在；app/ai/past-paper-explainer/page.tsx 存在。基線 app/api 無 AI 生成或作文機評端點。",
+        "docs/charter.md §1 第4點：題目使用原創平行改寫，零版權侵犯；§5：嚴禁調用需付費第三方 API。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf — 教育局 Chemistry Curriculum and Assessment Guide，Topic VII redox learning objectives（氧化數、氧化還原辨認、氧化劑／還原劑、半方程式及方程配平）。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chem/ — HKEAA Chemistry 官方頁列有 assessment framework、課程及考評指引與官方資源入口；本次未據此核實任何特定 Past Paper 題號或答案。",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&7_25 — HKEAA 官方 Chemistry 考生表現資源頁；不能據此將本頁題解標成已核實的特定試題。"
+      ]
+    },
+    "R66": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/66.json",
+      "sources": [
+        "基線 d25c637：docs/seo-content-map.csv 第66筆（csv.reader；不含header計第66筆）",
+        "基線 d25c637：docs/charter.md §1 第4點（題目須原創平行改寫）及 §5（不得新增需付費API）",
+        "基線 d25c637：git ls-tree 檢查 app，未發現 /dse-chemistry、/past-papers 或目標頁；app/practice/page.tsx 存在"
+      ]
+    },
+    "R67": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/67.json",
+      "sources": [
+        "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6",
+        "docs/seo-content-map.csv：以csv.reader讀取，不含header第67筆；原始URL、頁型、意圖與提綱",
+        "docs/charter.md §1第4點：題目原創平行改寫及版權限制；§5：禁止新增需付費第三方API",
+        "data/questions/chemistry-bank.ts：反應速率與能量主題、平均速率計算題素材",
+        "data/questions/chemistry-long-b1-reviewed.ts：反應速率與能量及溫度／碰撞理論題材",
+        "基線路徑核對：app/dse-chemistry/rates-of-reaction/page.tsx、app/dse-chemistry/page.tsx、app/past-papers/page.tsx不存在；app/practice/page.tsx及app/ai/past-paper-explainer/page.tsx存在"
+      ]
+    },
+    "R68": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/68.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/ref-and-resources/Supplementory_note_for_Chem_20180818_Eng.pdf — EDB Chemistry Curriculum and Assessment Guide notes, Topic X Chemical Equilibrium：列明動態平衡、Kc、濃度和溫度影響及課程範圍。",
+        "Repo baseline d25c637: docs/seo-content-map.csv row 68（CSV index 含 header）；docs/charter.md §1.4、§5、§19.3；git tree 未有 /dse-chemistry/equilibrium 頁面。"
+      ]
+    },
+    "R69": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/69.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chem/",
+        "docs/charter.md §1（原創平行改寫及版權聲明）、§5（禁止需付費第三方API）、§16.A（禁止長答／作文自動批改）"
+      ]
+    },
+    "R70": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/70.json",
+      "sources": [
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/chem/2029hkdse-e-chem-hy5.pdf — HKEAA 2029 Chemistry Assessment Framework：公開考試/SBA及QA評核規定。",
+        "Repo baseline d25c63740a9184d0303e2558c8ee6f51643258d6：docs/seo-content-map.csv row 70；docs/charter.md §5、§8；基線路由檢查。"
+      ]
+    },
+    "R71": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/71.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/2024hkdse-e-phy.pdf",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/Phy-Formulae-e.pdf",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1、§3、§5、§16.A、§19.3（基線d25c637）",
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader row 71，header不計；基線d25c637）"
+      ]
+    },
+    "R72": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/72.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf — 教育局《Physics Curriculum and Assessment Guide (Secondary 4–6)》，Force and Motion概覽及學習成果；課程範圍參照，不是Past Paper題目來源。",
+        "docs/seo-content-map.csv（以csv.reader取得不含header的第72筆）；repo基線d25c637。",
+        "docs/charter.md §1第4點（原創平行改寫及版權要求）、§5（零付費API及新增套件限制）。"
+      ]
+    },
+    "R73": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/73.json",
+      "sources": [
+        "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader讀取header後第73筆；列值含題解概要及原訂內鏈）",
+        "/home/ubuntu/dse-level-up/docs/charter.md §1第4點、§5、§16.B（版權、成本及AI身份限制）",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf（Physics Curriculum and Assessment Guide；力學能量內容及Energy and Use of Energy選修單元）",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/（考評局科目資訊；核對HKDSE Physics為Category A科目；未查核具體能量題卷別或題號）",
+        "/home/ubuntu/dse-level-up/app/practice/page.tsx、/home/ubuntu/dse-level-up/app/subjects/page.tsx（實際存在路由）；/home/ubuntu/dse-level-up/app/ai/past-paper-explainer/page.tsx（有頁面路由，不代表AI功能可用）",
+        "基線 d25c63740a9184d0303e2558c8ee6f51643258d；app source中未找到 /dse-physics/energy 或 /dse-physics hub；沒有搜尋量資料"
+      ]
+    },
+    "R74": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/74.json",
+      "sources": [
+        "基線 d25c637；docs/seo-content-map.csv 以csv.reader讀取第74列（不含header）；該基線不存在 /dse-physics/electricity。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf — Education Bureau, Physics Curriculum and Assessment Guide (Secondary 4–6)，Electricity and Magnetism／Circuits and domestic electricity。",
+        "https://www.hkeaa.edu.hk/en/resources/publications/licence/ — HKEAA歷屆考卷授權說明。",
+        "docs/charter.md §1(4)原創平行改寫及版權規定；§1(5)不得新增需付費第三方API。",
+        "基線既存 /ai/past-paper-explainer：一般題解工具介紹，非物理AI解題功能證據。"
+      ]
+    },
+    "R75": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/75.json",
+      "sources": [
+        "docs/seo-content-map.csv以csv.reader讀第75筆；指定基線commit d25c637。",
+        "基線git ls-tree：無/dse-physics/waves、/dse-physics、/past-papers；data/questions/physics-bank.ts有waves分類及參數化練習，無可追溯歷屆題標識。",
+        "docs/charter.md §1、§5、§16.A：原創平行改寫、零版權侵犯、禁止新增付費API與長答機評。",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A2&2&20",
+        "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/phy/faq_q/q3.html"
+      ]
+    },
+    "R76": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/76.json",
+      "sources": [
+        "Repo baseline d25c63740a9184d0303e2558c8ee6f51643258d6: docs/seo-content-map.csv 原始第76筆（csv.reader、含header的row index 76）；app/dse-physics/thermal-physics、app/dse-physics、app/past-papers 不存在；app/ai/past-paper-explainer 存在。",
+        "docs/charter.md §4、§5、§8、§13、§16.A及§16.B：整合/成本限制、題目獨立改寫及版權聲明、禁止長答自動評分與AI身份隱瞞。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/PowerPoint-PHY-2025.pdf — HKEAA 2025 Physics Report on Assessment；列有Heat & Gases題目。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/SamplePaper-2024-PHY-E.pdf — HKEAA Physics Sample Paper (2024 onwards)；列出熱與氣體樣本題及題目改編年份。官方卷頁含版權聲明，僅作核實和導向，不複製題目。"
+      ]
+    },
+    "R77": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/77.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&20",
+        "d25c637 data/questions/physics-long-b1-reviewed.ts：放射性主題練習，非歷屆題source",
+        "d25c637 docs/seo-content-map.csv第77筆；查無app/dse-physics/radioactivity、app/dse-physics、app/past-papers"
+      ]
+    },
+    "R78": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/78.json",
+      "sources": [
+        "docs/seo-content-map.csv（CSV row 78；index不含header）",
+        "docs/charter.md §8.1：$0成本，不得引入付費API；§8.0列明禁止長答／作文自動批改、打分、評分。",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&20_5 — HKEAA HKDSE Physics Other Resources；列出官方資源，包括自HKDSE 2032 onwards生效的sample questions及考試簡報，並提供過往卷使用許可資訊入口；未據此推定本站已有重用授權。",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/PHY-SQ-2032-E.pdf — HKEAA Physics sample questions；文件明示Effective from HKDSE 2032 onwards，不作目前Past Paper佐證。",
+        "https://www.hkeaa.edu.hk/doclibrary/hkale/subject_and_syllabuses/2012/2012al-e-phy.pdf — 搜尋結果中的文件標示2012 Advanced Level，非HKDSE，排除為現行DSE考綱依據。"
+      ]
+    },
+    "R79": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/79.json",
+      "sources": [
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/Phy-Formulae-e.pdf"
+      ]
+    },
+    "R80": {
+      "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/80.json",
+      "sources": [
+        "Repo基線：/home/ubuntu/dse-level-up，HEAD d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv以csv.reader讀取row[80]。",
+        "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+        "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&20（考評局物理科官方頁，列有課程與評估指引及試卷等資源入口；本次未取得可指向本頁的具體天文試題source。）",
+        "Repo憲章：/home/ubuntu/dse-level-up/docs/charter.md §4及§5。"
+      ]
+    }
+  },
+  "validation": {
+    "csv_uses_utf8_sig": true,
+    "csv_header_matches_specified_11_columns": true,
+    "csv_row_count_excluding_header": 80,
+    "all_csv_rows_have_11_columns": true,
+    "baseline_decision_ids_are_unique": true,
+    "baseline_indices_cover_1_to_80": true,
+    "published_rows": 0,
+    "p0_publish_now_rows": 0,
+    "merge_targets_verified": {
+      "10": "R21 /dse-maths/quadratic-equations",
+      "11": "R31 /dse-english/writing-format",
+      "33": "R31 /dse-english/writing-format",
+      "34": "R31 /dse-english/writing-format",
+      "35": "R31 /dse-english/writing-format",
+      "71": "N02 /dse-physics/motion-equations"
+    }
+  }
+}

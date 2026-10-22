@@ -1,0 +1,21 @@
+{
+  "index": 59,
+  "url": "/dse-biology/transport-in-plants",
+  "priority": "P2 LATER",
+  "page_type": "DSE Biology 主題筆記／概念教學頁（不應定位為未具來源的Past Paper題解）",
+  "intent": "考生複習DSE植物蒸騰及物質運輸，理解水和礦物質由根吸收後經木質部運輸、蒸騰作用的過程與環境影響，以及有機養分經韌皮部轉運；希望能看懂路徑示意圖、解釋現象並掌握題目答題步驟。不可聲稱搜尋量已查證。",
+  "h1": "DSE Biology 植物運輸：蒸騰作用、木質部與韌皮部",
+  "title": "DSE Biology 植物運輸：蒸騰作用、木質部與韌皮部｜DSE Level Up",
+  "description": "整理DSE Biology植物運輸核心概念：根部吸收水和礦物質、蒸騰作用及環境因素、木質部水分運輸與韌皮部有機養分轉運。附路徑圖、數據解讀、分步原創例題和常見失分修正，協助考生串連根葉構造與運輸功能，練習以比較數據和因果完整作答；不冒稱Past Paper題解，並掌握考試答題重點與概念辨析，避免混淆。",
+  "core_content": "先用考綱對照框界定本頁範圍：植物蒸騰（過程、意義及濕度、光強、風對速率的影響）、水和礦物質運輸、有機養分轉運；連結根部吸收、葉片氣體交換及植物降溫，不擴寫超出課程指引的機制。主文分節：1. 根毛吸收水和礦物質及根部構造—功能關係；2. 葉片水分蒸發、氣孔逸散與蒸騰作用的因果流程；3. 濕度、光強、風如何改變蒸騰速率（辨明控制變因及解讀表格/曲線）；4. 木質部運水與礦物質、韌皮部轉運有機養分的功能比較及由源至庫的方向辨析；5. 將水分吸收、蒸騰拉力、運輸與降溫串成完整解釋。配一張自行繪製並標註的根—莖—葉運輸路徑圖，圖示木質部及韌皮部而不挪用受版權保護的試卷插圖。例題方向採原創平行題：給定不同風速或濕度下的蒸騰率資料，要求比較數據、指出趨勢、解釋機制並辨認需控制的變因；另以植物組織標示題練習判讀兩類運輸組織。提供逐步作答架構、因果鏈示範和易錯點（把蒸騰與光合作用混為一談、把韌皮部當作只向上運輸、只說趨勢而不解釋、漏寫比較數據）。須由熟悉本科者驗證文字答案；不建議自動評分。若引用任何HKDSE原卷題目或圖片，先確認HKEAA授權；未取得授權只用自創平行題，不稱作Past Paper，不重製原題、評分準則或插圖。",
+  "internal_links": "/dse-biology（planned：基線沒有該route，不能當作現有連結）；/practice（planned：可於生物主題及練習頁完成並驗證相符練習後連結）；/ai/past-paper-explainer（planned：該工具route存在，但不可宣稱本頁已有整合或自動解析功能）。基線實際存在相關頁只有 /practice、/ai/past-paper-explainer；本頁沒有現成生物hub可連。",
+  "status": "Draft",
+  "reason": "基線 d25c637 中找不到 /dse-biology/transport-in-plants route；亦沒有 /dse-biology hub，故不能發布或把原定P2題解當作已建成內容。此題目有真實學習用途：官方教育局生物課程指引明列植物蒸騰、運輸水和礦物質及有機養分轉運，並要求解釋蒸騰因素、描述開花植物物質運輸路徑，足以支撐聚焦且有深度的主題筆記；但內容需自行補足清晰路徑圖、數據解讀、分步原創例題及常見錯誤，不能只列概念標題。原始列用「Past Paper題解」但沒有提供任何試題來源、年份、卷別或題號；依規則不得聲稱是Past Paper。引用/重製HKEAA卷題前須查明授權；憲章要求題目採原創平行改寫並顯示指定版權聲明。現有app/api未實作生成/作文機評，憲章永久禁止長答或作文自動批改，且禁止新增付費API；因此不能以AI自動出題、評分或機評作本頁功能。結論為P2 LATER、Draft：待主題內容、題源/授權政策、實際內鏈與上線驗證完成後再審。不要與其他原始列重複保留；本列的植物運輸範圍獨立，無已確認重複列或合併目的URL。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/or/",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/59.json"
+}

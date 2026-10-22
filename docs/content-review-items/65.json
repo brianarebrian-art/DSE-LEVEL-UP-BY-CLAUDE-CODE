@@ -1,0 +1,23 @@
+{
+  "index": 65,
+  "url": "/dse-chemistry/redox",
+  "priority": "BLOCKED",
+  "page_type": "化學主題教學／題解頁（提案）",
+  "intent": "學生可能想理解 DSE 化學氧化還原概念、方程式配平步驟及題目常見失誤，並尋找有步驟解釋的練習。此為按頁面主題推斷的學習意圖，沒有搜尋量或關鍵字數據，不推斷需求規模。原列以 Past Paper 題解為主，但目前沒有已核對的卷別、題號、原創改寫題或評分依據，故不能將此頁稱為特定 Past Paper 題解。",
+  "h1": "DSE 化學氧化還原：氧化數、半方程式與配平步驟",
+  "title": "DSE 化學氧化還原：氧化數與方程式配平｜分步教學",
+  "description": "DSE 化學氧化還原主題整理氧化數、氧化劑與還原劑辨認，以及半方程式和氧化還原方程配平；以逐步原創例題拆解電子轉移與常見錯誤，附自製反應判斷流程圖及練習方向，並說明與化學電池、電解的連結。頁面依官方課程指引界定學習範圍，不重印考評局題目；Past Paper 卷別題號與評分資料待核實後再補。，供考生複習。",
+  "core_content": "如解除阻塞後保留為主題教學頁，應依官方課程指引分節講解氧化／還原的氧或氫轉移、電子得失及氧化數變化；氧化數規則與例外；判斷氧化劑和還原劑並指出自身被還原或氧化的例題；以半方程式法逐步平衡原子及電荷，再合併成整體方程式；比較以氧化數變化配平的方法，說明適用情境。例題應為自行設計或依憲章原創平行改寫的題目，示範常見氧化劑／還原劑及反應方程配平，逐步標出電子數、係數和檢查守恆；另設「找出錯誤係數／氧化數」的自我檢核題。用自製反應判斷流程圖呈現辨認線索，並以自製表格整理氧化數、電子轉移與氧化劑／還原劑關係；無需搬用受版權保護的試卷圖表。可延伸說明主題與化學電池、電解的概念連結，但勿把延伸內容誤作本頁已涵蓋的全部考核範圍。現階段沒有本頁可用的已核實理科 Past Paper 題目來源及評分資料，不可杜撰題號、卷別或評分要點，也不可直接重印考評局題目；憲章要求原創平行改寫並禁止版權侵犯。若未來補入 Past Paper 題解，應先由官方來源核實年份、Paper／題號、評分資料與相關授權，再以原創題示範考核邏輯。AI即時生成題及作文機評在基線 app/api 中沒有實作，頁面不得宣稱有這些功能；憲章 §5 禁止調用需付費第三方 API。",
+  "internal_links": "基線實際存在：/ai/past-paper-explainer（anchor「閱讀 Past Paper 題解的核對方法」；該路由是說明頁，不代表本頁具備即時 AI 題解功能）。/dse-chemistry 及 /past-papers 為地圖規劃項，基線不存在，不可當成有效連結；可標 planned，待相應頁面實際建立後再連。",
+  "status": "Blocked",
+  "reason": "基線 d25c63740a9184d0303e2558c8ee6f51643258d6 中 /dse-chemistry/redox 頁面不存在；/dse-chemistry 科目 hub 與 /past-papers 總覽亦不存在，故原列內鏈無法成立。官方教育局課程指引確有氧化還原、氧化數、常見氧化劑／還原劑及以半方程式或氧化數變化配平等學習目標，足以支持未來建立具體教學頁；但目前來源未提供任何可核對的紅氧化還原 Past Paper 題號、年份卷別或評分資料。按要求標 BLOCKED，而非以杜撰題目補位。與一般 Chemistry hub／Past Paper 總覽用途不同，氧化還原主題頁本可提供獨立教學價值，沒有證據要求將本頁合併；原始第10／11筆的重複與合併處理不屬本筆，不應藉此重複保留或改動其他列。若解除阻塞，頁面須達成上述章節與原創例題深度後才列 Draft；目前 DSE hubs內容不足且相關優先頁仍未production驗證，絕不可 PUBLISH NOW，也不能因有人正在實作而視為已完成。圖表只建議自製反應判斷流程圖；原卷題目、評分準則原文或掃描圖須遵守版權限制，優先採官方來源連結與自行改寫題目。不得假設 app/api 已有 AI生成題或作文機評；憲章 §5 禁止新增需付費第三方 API。",
+  "sources": [
+    "Repo基線 d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv 使用 csv.reader，原始第65筆為 /dse-chemistry/redox，類型長尾題解，提案大綱為題目重點、評分要求、分步解法、失分位、相似題與延伸概念。",
+    "基線路由檢查：app/dse-chemistry/redox/page.tsx、app/dse-chemistry/page.tsx、app/past-papers/page.tsx 均不存在；app/ai/past-paper-explainer/page.tsx 存在。基線 app/api 無 AI 生成或作文機評端點。",
+    "docs/charter.md §1 第4點：題目使用原創平行改寫，零版權侵犯；§5：嚴禁調用需付費第三方 API。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf — 教育局 Chemistry Curriculum and Assessment Guide，Topic VII redox learning objectives（氧化數、氧化還原辨認、氧化劑／還原劑、半方程式及方程配平）。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/chem/ — HKEAA Chemistry 官方頁列有 assessment framework、課程及考評指引與官方資源入口；本次未據此核實任何特定 Past Paper 題號或答案。",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&7_25 — HKEAA 官方 Chemistry 考生表現資源頁；不能據此將本頁題解標成已核實的特定試題。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/65.json"
+}

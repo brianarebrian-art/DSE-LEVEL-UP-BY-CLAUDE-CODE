@@ -1,0 +1,22 @@
+{
+  "index": 33,
+  "url": "/dse-english/letter-email",
+  "priority": "MERGE",
+  "page_type": "主題筆記（合併至既有英文 writing format 指南）",
+  "intent": "學生在準備 HKDSE English writing 時，想掌握正式／非正式書信與電郵的版面慣例、稱呼結尾、語氣與讀者關係，並學會依情境及目的逐點回應題目；不虛構搜尋量。",
+  "h1": "DSE English 書信與電郵寫作：格式、語氣與例題",
+  "title": "DSE English 書信與電郵寫作：格式、語氣與例題｜DSE Level Up",
+  "description": "掌握 DSE English 書信與電郵寫作：分辨正式及非正式語氣，安排稱呼、開首、段落與結尾，逐項回應題目要求，並用原創情境例題檢查格式和常見失分點。學會判斷讀者及寫作目的，令語域配合情境；掌握逐點回應及段落安排，避免漏答、語氣不一致和套語堆砌，並以自我檢查改善清晰度，練習讓每段有清楚功能。多做實用練習。",
+  "core_content": "不另建獨立URL；把以下內容併入 /dse-english/writing-format，設獨立書信／電郵專節：1) 解釋讀者、目的與正式程度如何決定語域，避免把格式當成唯一硬性模板。2) 以自創對照例比較正式電郵／書信與寫給熟人的非正式訊息，涵蓋稱呼、開首、轉接語、請求／建議措辭和結尾。3) 示範作答流程：圈出情境、讀者、目的及每個內容點；分段逐點回應並補充細節；完成後核對是否漏答。4) 用原創約200字 guided-writing 情境（例如向校方或社團負責人提出活動安排）逐步示範審題、段落規劃、語氣選擇和修訂；不用整篇可背範文。5) 用錯句及修訂理由講解語氣不一致、稱呼結尾不配、只列要點欠解釋、漏答和套語過多。6) 附交卷前自檢清單及短練習；答案解析示範判斷依據，不提供作文自動批改／評分。語域比較可用自製表格；情境、例句、示意圖須原創，不複製HKEAA試題、評卷參考或範文。2026框架可作情境設計依據：Paper 2 Part A約200字，提供寫作情境、目的和相關資訊；需標明年份並在發布前重新核對最新官方文件。",
+  "internal_links": "現存連結：/dse-english（anchor：DSE English 科目頁）；/dse-english/writing-format（anchor：英文寫作格式指南，合併目的頁）；/writing（anchor：開始英文寫作練習）；/notes/english-language（anchor：英文課題筆記）。不把 /ai/practice-generator 宣稱為作文工具，也不承諾AI生成或作文批改／評分。",
+  "status": "Draft",
+  "reason": "指定URL在基線 d25c637 source 不存在，只有內容地圖記錄，故不得標為 Published 或 PUBLISH NOW。既有 /dse-english/writing-format/page.tsx 已涵蓋 letter、article、report 的結構、語氣及檢查方法，英文科目頁亦連至該指南；再建獨立頁會分散相近意圖，應把書信／電郵語域對照、情境演示及錯誤解析併入該頁。內容地圖目前僅泛列主題，沒有具體步驟例題或錯誤解析，合併內容尚未實作驗證，故維持 Draft。原始第21／31及第10／11重複屬其他列，本筆不重審、不額外保留。憲章要求原創平行改寫並禁止公開複製HKEAA受版權題目及評卷參考；自創例題和自製表格足夠，不需官方試題圖表。憲章§16.A禁止長答／作文自動批改評分；app/api未實作此功能，且禁止新增付費API，不可假設AI作文功能存在。五項priority實作尚未production驗證，只可Draft。",
+  "sources": [
+    "基線 d25c637：docs/seo-content-map.csv（csv.reader 第33筆，URL /dse-english/letter-email）",
+    "基線 d25c637：docs/charter.md §1 第4點（原創改寫及HKEAA版權限制）、§5（$0成本／禁止付費API）、§16.A（禁止作文自動批改評分）",
+    "基線 d25c637：app/dse-english/writing-format/page.tsx（既有文類指南、寫作練習及連結）",
+    "基線 d25c637：app/dse-english/page.tsx（現有英文科目頁與 writing-format 導航）",
+    "HKEAA, 2026 HKDSE English Language Assessment Framework, https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/eng_lang/2026hkdse-e-elang.pdf（Paper 2 Part A約200字及任務設定）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/33.json"
+}

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { useAuthSession, authSignInGoogle, authSignOutAndWait } from '@/lib/auth/session'
 import { wipeThisDevice, type WipeReport } from '@/lib/privacy/wipeDevice'
 import { useLocale } from '@/lib/i18n'

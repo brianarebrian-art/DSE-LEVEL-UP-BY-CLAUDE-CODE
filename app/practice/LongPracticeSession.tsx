@@ -170,9 +170,9 @@ export default function LongPracticeSession({
     return (
       <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
         <div className="mx-auto max-w-2xl">
-          <h1 className="text-2xl font-medium mb-3">
+          <h2 className="text-2xl font-medium mb-3">
             {tr(`你做完咗 ${assessed.length} 條長題目`, `You worked through ${assessed.length} written questions`)}
-          </h1>
+          </h2>
           <p className="text-sm text-ink-muted leading-relaxed mb-8">
             {tr(
               '長題目冇機器分數 —— 因為真正嘅評分準則要人先睇得懂。你嘅自評已寫入課題練習紀錄，唔會計入準確率或練習表現估算。',

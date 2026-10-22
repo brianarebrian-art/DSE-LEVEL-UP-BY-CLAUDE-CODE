@@ -1,0 +1,22 @@
+{
+  "index": 56,
+  "url": "/dse-biology/enzymes",
+  "priority": "BLOCKED",
+  "page_type": "主題筆記（暫不作歷屆試題題解頁）",
+  "intent": "學生可能搜尋DSE Biology enzymes notes、酶反應速率、酶的最適溫度/pH或酶實驗數據解讀，希望釐清活性部位、專一性和變因影響。這是可成立的學習需求；不宣稱搜尋量。原列「Past Paper題解」另要求逐題追溯官方年份、卷別與題號，現有證據不足以支援該承諾。",
+  "h1": "DSE生物酶：活性部位、反應速率與實驗判讀",
+  "title": "DSE生物酶筆記：反應速率、實驗與常見錯誤｜DSE Level Up",
+  "description": "DSE生物酶筆記整理酶的活性部位與專一性，說明溫度、pH及抑制劑如何影響反應速率。透過原創情境例題、實驗變因控制、數據表和曲線判讀，逐步辨析最適條件、變性與常見失分；涵蓋代謝中的酶作用及日常應用，並清楚標示非官方歷屆試題題解。適合考前理解與訂正，附重點自測；官方試卷請查考評局原件，支持學生自主溫習。",
+  "core_content": "建議取得足夠原創內容與學科核實後，以教學順序組成深度主題筆記：1) 酶作為代謝催化者的性質與角色；2) 活性部位、酶—受質複合物及專一性，對照「酶被消耗／可任意作用」等迷思；3) 溫度、pH、抑制劑對反應速率的影響，區分最適條件與高溫造成的結構變性；4) 實驗設計：自變項、因變項、控制變項、重複測量與公平比較；5) 例題方向：用澱粉酶不同溫度或pH處理的原創情境，從產物量—時間表計初速率、解讀曲線斜率與平台，要求比較、以數據支持結論並指出控制變因；6) 生活應用及逐步解題、常見失分辨析與無障礙文字化圖表。只用自行編寫平行情境及示意圖；不可複製官方試題、圖表、評分準則或逐字解析。若日後要稱Past Paper，須先核實每題的官方年份、科目卷別、題號與合法引用界線。",
+  "internal_links": "基線 d25c637 可確認存在：/practice（anchor「開始相關生物練習」）。planned、不可視為現存連結：/dse-biology（生物科目總覽，需先建頁）、/past-papers（歷屆題索引，需先建頁）。/ai/past-paper-explainer 雖有路由檔，但不得假設具備AI解析能力；本頁不以AI功能作CTA或已存在功能連結。",
+  "status": "Blocked",
+  "reason": "原始CSV第56筆（header不計）是P2、長尾題解，承諾「DSE Biology enzymes past paper 題解」。基線 d25c637 不存在 /dse-biology/enzymes 路由；該URL於內容地圖僅此一筆，未見同路徑重複。source 題庫 data/questions/biology-bank.ts 有酶主題原創練習（如反應速率與最適溫度），足以證明主題筆記可有教學切入點，但不是可追溯的官方歷屆題source，不能把題庫題改稱Past Paper或捏造卷別。教育局課程指引列明酶及酶促反應、性質與角色、活性部位與專一性、溫度/pH/抑制劑影響及應用，故學生價值清楚；仍須先確認能提供經學科核實、足夠深度的原創教材，並補齊可合法使用且逐題可核實的官方題目來源，才解除阻塞。可考慮重定向成獨特的「酶主題筆記」而非與科目hub泛頁重複；目前 /dse-biology hub 與 /past-papers 不存在且既有hubs內容不足，故不可發布。官方卷面、評分指引及原圖有版權需求，遵循憲章零侵權與原創平行改寫，不重製；不依賴付費API或假設AI題解已實作。",
+  "sources": [
+    "基線檢查：d25c637；git tree 無 app/dse-biology/enzymes/page.tsx，內容地圖第56筆。",
+    "Repo原創題源：data/questions/biology-bank.ts，酶主題生成練習（反應速率、最適溫度等）；非Past Paper題源。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/bio/PowerPoint-BIO-2025-09.pdf"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/56.json"
+}

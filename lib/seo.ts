@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE_ORIGIN } from '@/lib/site'
+import { shouldNoIndex } from '@/lib/seoPolicy'
 
 export const SITE_NAME = 'DSE Level Up'
 export const DEFAULT_OG_IMAGE = '/opengraph-image'
@@ -14,12 +15,19 @@ export type SeoInput = {
 }
 
 export function createSeoMetadata({ title, description, path, type = 'article', image = DEFAULT_OG_IMAGE, noIndex = false }: SeoInput): Metadata {
+  if (!path.startsWith('/') || path.startsWith('//')) throw new Error('SEO paths must be site-relative')
   const url = new URL(path, SITE_ORIGIN).toString()
+  const imageUrl = new URL(image, SITE_ORIGIN).toString()
+  const blocked = noIndex || shouldNoIndex(path)
   return {
     title,
     description,
     alternates: { canonical: url },
-    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
+    robots: {
+      index: !blocked,
+      follow: true,
+      googleBot: { index: !blocked, follow: true, 'max-image-preview': 'large' },
+    },
     openGraph: {
       type,
       url,
@@ -27,9 +35,30 @@ export function createSeoMetadata({ title, description, path, type = 'article', 
       locale: 'zh_HK',
       title,
       description,
-      images: [{ url: image, alt: title }],
+      images: [{ url: imageUrl, alt: title }],
     },
-    twitter: { card: 'summary_large_image', title, description, images: [image] },
+    twitter: { card: 'summary_large_image', title, description, images: [imageUrl] },
+  }
+}
+
+/** Complete legacy metadata without changing route-specific titles or extra fields. */
+export function completeSeoMetadata(input: Metadata, path: string): Metadata {
+  const titleValue = input.title
+  const title = typeof titleValue === 'string' ? titleValue :
+    titleValue && 'absolute' in titleValue ? titleValue.absolute :
+    titleValue && 'default' in titleValue ? titleValue.default : SITE_NAME
+  const robots = input.robots
+  const explicitlyBlocked = typeof robots === 'object' && robots !== null && robots.index === false
+  const noIndex = explicitlyBlocked || typeof robots === 'string' && robots.includes('noindex')
+  const og = input.openGraph
+  const type = og && 'type' in og && og.type === 'article' ? 'article' : 'website'
+  const generated = createSeoMetadata({ title, description: input.description ?? '', path, type, noIndex })
+  return {
+    ...input,
+    ...generated,
+    alternates: { ...input.alternates, canonical: generated.alternates?.canonical },
+    openGraph: { ...input.openGraph, ...generated.openGraph },
+    twitter: { ...input.twitter, ...generated.twitter },
   }
 }
 
@@ -55,15 +84,18 @@ export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
 }
 
 export function articleJsonLd(input: { title: string; description: string; path: string; dateModified?: string }) {
+  const url = new URL(input.path, SITE_ORIGIN).toString()
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: input.title,
     description: input.description,
-    dateModified: input.dateModified,
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
     author: organizationJsonLd,
     publisher: organizationJsonLd,
-    mainEntityOfPage: new URL(input.path, SITE_ORIGIN).toString(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    image: new URL(DEFAULT_OG_IMAGE, SITE_ORIGIN).toString(),
     inLanguage: 'zh-HK',
   }
 }

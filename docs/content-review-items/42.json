@@ -1,0 +1,21 @@
+{
+  "index": 42,
+  "url": "/dse-chinese/paper-two-writing",
+  "priority": "P1 NEXT",
+  "page_type": "中文科寫作技巧教學頁（規劃；目前來源路由不存在）",
+  "intent": "香港DSE中文科考生尋找寫作卷準備方法、審題立意、選材組織及文章修訂策略，希望看可操作的示範與常見問題，而非泛泛應試口號、代寫或機器評分。未依搜尋量作判斷。",
+  "h1": "DSE中文寫作：審題、立意與文章修訂",
+  "title": "DSE中文寫作技巧：審題、立意與修訂｜DSE Level Up",
+  "description": "為香港DSE中文科考生整理寫作思路與實用練習：從讀題、立意、選材到分段修訂，逐步示範原創題例，分析常見失分與自查方法。依考評局當屆評核大綱核對卷別；不代寫、不提供作文機評，歷屆試題請到官方頁面查閱。內容聚焦實際寫作能力，附自我檢核步驟，方便溫習後立即練習與回顧，並以原創材料示範，不複製官方題目或範文。",
+  "core_content": "先以當屆考評局官方評核大綱確認中文科寫作相關卷別、卷二安排及試題形式；特別核對2024起的調整，避免把舊卷別或舊題型當作現行要求。章節一：拆解題目關鍵詞、寫作任務、讀者與目的，示範如何把題目轉成可回答的中心立意。章節二：用原創情境示範選材、取捨及例證如何扣題，列出構思提綱。章節三：展示段落推進、段首主旨、例證解釋及首尾照應，並比較一段原創初稿與修訂稿，逐點解釋修訂理由。章節四：以自創題目提供分步示範，不使用可還原的歷屆題幹或考評局範文；讓學生先自行構思，再展示思路與自評問題，不刊出可冒充標準答案的完整範文。章節五：按離題、論點空泛、例證未解釋、段落跳接及語句含糊分類常見問題，配短句修訂練習與交卷前自查表。例題／圖表：以自主創作短題與簡單純文字或SVG流程示意為主，不需外部插圖或圖表套件。歷屆試題僅連往考評局官方來源，不轉載題幹、答案、評分準則或範文，依憲章版權要求標明非HKEAA官方。寫作回饋採學生自評清單或同儕討論提示，不設AI作文生成、代寫或機評；app/api未實作此類功能，憲章禁止新增付費API且明文禁止長答／作文自動批改。",
+  "internal_links": "/practice —「開始中文科練習」（基線實際存在；先核對該練習入口是否提供適用寫作題型再上線連結）。/dse-chinese —「中文科筆記與資源」（planned；基線未找到此頁，不可當作現有連結）。/ai/practice-generator雖有頁面路由，但本寫作教學不應承諾AI生成作文題或作文機評，故不作此頁功能入口。",
+  "status": "Draft",
+  "reason": "CSV以csv.reader讀取的第42筆（不含header）是中文DSE寫作技巧，目標意圖合理且與科目總覽／題庫功能可區分，應優先於低價值泛談而保留，不合併或刪除；但基線中不存在 /dse-chinese/paper-two-writing，也沒有 /dse-chinese 科目hub，CSV原列的hub內鏈不能冒稱存在。候選頁目前只有大綱式承諾，尚無可直接教會學生的逐步示範，深度不足，不能Publish Now。應將實作優先度維持P1 NEXT；內容完成、按應考年度查核官方卷別並完成production驗證前只能Draft。官方考評局中文科頁列出2026–2029評核大綱，並連結2024相關樣本材料；中文卷別和2024起的變更必須以適用年度官方文件確認後才可寫成定論。題例須完全原創平行改寫；Past Paper只作官方連結，不重製題文、答案或範文。AI生成／作文自動批改在app/api未實作，且憲章禁止新增付費API及長答／作文自動批改。未主張或捏造搜尋量。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?2&1&1_1",
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader第42筆）",
+    "/home/ubuntu/dse-level-up/docs/charter.md §1.4、§5、§8、§13、§16.A",
+    "基線來源檢查：/dse-chinese/paper-two-writing 不存在；app/practice/page.tsx 與 app/ai/practice-generator/page.tsx 存在"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/42.json"
+}

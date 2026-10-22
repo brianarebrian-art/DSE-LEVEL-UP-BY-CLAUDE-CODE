@@ -1,0 +1,19 @@
+{
+  "index": 4,
+  "url": "/dse-chinese",
+  "priority": "P1 NEXT",
+  "page_type": "中文科目總覽／學習入口",
+  "intent": "考生搜尋DSE中文科閱讀、寫作、卷別要求與答題方法，希望快速判斷考核範圍、學習次序並找到可練習的內容；不宣稱搜尋量或保證提分。",
+  "h1": "DSE 中文科溫習指南：閱讀、寫作與答題練習",
+  "title": "DSE 中文科溫習指南｜閱讀理解、寫作與答題練習",
+  "description": "整理 DSE 中文科閱讀與寫作的溫習方向，說明學習重點、答題步驟與常見失誤。閱讀示範如何依題目尋找文本證據並組織答案；寫作拆解審題、立意、段落推進及修訂，附原創例題與逐步思路。另列自我檢查清單及練習入口。卷別以考評局最新資料為準；Past Paper只連官方或獲授權來源，不重刊受版權保護內容，並提示核對年度。",
+  "core_content": "以學生任務組織內容：先列考核結構及各部分學習入口，再引導按弱項選閱讀或寫作。正式上線前逐項依考評局當屆課程及評核文件核對現行卷別，尤其確認2024起卷二實用寫作安排及後續有否修訂，不把舊制SBA／卷別資料混入。閱讀部分用短小原創材料示範如何辨識題目要求、定位文本證據、組織答案及避免只抄原文；寫作部分拆解審題、立意、段落推進、語言修訂，附一則原創題目、答案提綱與逐步示範。每個例題標示思路而非冒稱考評局標準答案。可用自製流程圖比較閱讀作答步驟及寫作修訂流程，需有文字替代說明。補充錯題自我檢查清單與按能力選練習的方法。Past Paper只提供考評局官方資料連結或獲授權材料；未確認授權前不得重刊題幹、文章、圖片、考生答卷或評分材料。不得承諾AI作文批改／評分；該功能未實作且憲章禁止長答作文自動評分，也禁止新增付費API。",
+  "internal_links": "現有：/dse-english（anchor「英文科學習入口」，僅適合跨科導航）、/subjects（anchor「其他DSE科目」）、/practice（anchor「開始練習」）。/dse-chinese/quyi、/dse-chinese/reading、/dse-chinese/writing均為planned，尚不存在，不得假裝為實際連結；目標URL本身在基線d25c637不存在。",
+  "status": "Draft",
+  "reason": "CSV第4筆的科目概覽頁有實際導航與入門用途，沒有與其他原始筆重複，故保留為P1 NEXT而非合併或刪除。基線d25c637不存在app/dse-chinese/page.tsx，頁面無內容；現有科目hub內容不足，不能標PUBLISH NOW。須補有逐步例題的原創教學，並核對考評局當屆中文科卷別及題型。已查官方頁可見2024及2025考生表現資料，以及標明適用於2024的卷二實用寫作樣本，惟不能據此假設往後安排不變。Past Paper題目、文章、圖像及考生作品須確認授權，不可直接複製。AI作文機評未實作且憲章禁止作文自動評分及新增付費API。本筆無重複目標。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1_25",
+    "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sq/2024.html"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/04.json"
+}

@@ -5,7 +5,6 @@ import { StudyTimeInsight } from 'dse-level-up'
 // 所以**唔使加 user_sessions 表**（見 lib/studyTime.ts 檔頭）。
 
 const day = 86_400_000
-const hour = 3_600_000
 
 function session(daysAgo: number, hourOfDay: number, correct: number) {
   const d = new Date(Date.now() - daysAgo * day)

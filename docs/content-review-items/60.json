@@ -1,0 +1,21 @@
+{
+  "index": 60,
+  "url": "/dse-biology/data-analysis",
+  "priority": "BLOCKED",
+  "page_type": "長尾學習指南／題解（待來源核實）",
+  "intent": "學生可能想學會DSE生物科數據題的表格與圖表判讀、趨勢描述、證據支持結論，或查找歷屆相關題目及評分要點。原始列將其寫成Past Paper題解，但基線未能指認可對應的歷屆題目或官方評分資料；不可將一般題庫當成Past Paper來源。",
+  "h1": "DSE Biology 數據分析：表格、圖表與證據推論",
+  "title": "DSE Biology 數據分析：表格與圖表判讀指南｜DSE Level Up",
+  "description": "本頁規劃聚焦DSE生物科數據分析：教學生辨認自變項與因變項、讀取表格及圖表、比較趨勢與異常值，並用證據作結論。現階段未有核實的歷屆題目、評分要求或題源，故不提供Past Paper題解，也不宣稱可由AI自動解析。待補原創平行題、逐步示範及題源／考綱核對後再評估發布，並清楚標示資料限制，避免誤導考生選題。",
+  "core_content": "若解鎖後編寫，應包括：1）辨認題幹中的變項、對照與測量單位；2）讀取表格／坐標軸，從數據比較差異、趨勢及異常值；3）以具體數值支持生物學解釋，區分觀察與推論；4）討論證據不足、變因控制及結論適用範圍。例題方向採原創平行資料情境（例如環境因素與生物反應），示範逐步標註座標、引用數值、建立證據—解釋鏈，並展示常見失分如只寫趨勢、不引用數據或把相關性寫成因果。可用自製簡潔表格／SVG圖輔助，需有文字替代說明；不得複製考評局受版權保護題目、圖表或評分語句。沒有可追溯的具體歷屆題源與核實評分資料之前，不得標示Past Paper、年份、卷別或考評局評分要求。AI自動解題及作文機評不能作頁面承諾：基線app/api未實作此能力，且憲章§5禁止付費第三方API；若日後涉及AI須另行符合§16.B透明要求及零付費約束。",
+  "internal_links": "現有：/ai/past-paper-explainer（只可作一般相關工具頁連結；存在該路由不代表已支援本頁生物題或AI自動解析）。planned：/dse-biology（生物科hub，基線沒有該路由，anchor「DSE Biology 生物科」）；/past-papers（基線沒有該路由，須待題目索引與授權／來源整理後再建，anchor「按科目與題目查找歷屆試題」）。",
+  "status": "Blocked",
+  "reason": "基線 d25c637 中不存在 /dse-biology/data-analysis 頁面。原始第60列瞄準數據分析Past Paper題解，但repo雖有多個 biology 題庫檔，未找到能將某一道公開題目、年份／卷別及官方評分要求對應到本頁的明確題源，因此不能以題庫內容冒稱歷屆題或發布題解。頁面方向具實際學習價值，但要有足夠深度需加入原創數據表／圖、逐步推理例題、迷思及證據表達練習，並核驗考綱與題源。暫BLOCKED而非刪除：有具體數據判讀需求值得保留；若補足來源及改為原創平行示例，可重新審核。AI自動解析／機評目前未在app/api實作，且憲章§5禁止付費API，故不得宣稱功能已存在。審核只處理原始第60筆；沒有據第10/11、21/31重複指示將本列合併或刪除。",
+  "sources": [
+    "Repo baseline d25c637: docs/seo-content-map.csv 第60筆（csv.reader，header以外列序）；原始意圖與outline提出Past Paper題解。",
+    "Repo baseline d25c637: docs/charter.md §1第4點（原創平行改寫與零版權侵犯）、§5（不得調用需付費第三方API）、§16.B（AI身份誠實義務）。",
+    "Repo baseline d25c637: app/api 路由清單及 data/questions/biology*.ts；存在生物題庫但未提供本頁所需的具體歷屆題目／卷別／評分要求映射。",
+    "Repo baseline d25c637: app/ai/past-paper-explainer/page.tsx 路由存在；不可由此推定本頁生物題解或題目生成／機評能力已實作。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/60.json"
+}

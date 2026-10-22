@@ -9,7 +9,7 @@
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 const read = (rel: string) => readFileSync(fileURLToPath(new URL('../../' + rel, import.meta.url)), 'utf8')
@@ -31,12 +31,10 @@ test('layout.tsx 同 sitemap.ts 已改用匯入，冇再各自寫死網域', () 
   }
 })
 
-test('robots.txt 嘅 Sitemap 行同 SITE_ORIGIN 一致', () => {
-  const robots = read('public/robots.txt')
-  const line = robots.split('\n').find((l) => l.trim().toLowerCase().startsWith('sitemap:'))
-  assert.ok(line, 'robots.txt 須有 Sitemap 行')
-  const url = line!.split(/:\s*/).slice(1).join(':').trim()
-  assert.equal(url, `${SITE_ORIGIN}/sitemap.xml`)
+test('robots has one source and derives the sitemap from SITE_ORIGIN', async () => {
+  const { default: robots } = await import('../../app/robots.ts')
+  assert.equal(robots().sitemap, `${SITE_ORIGIN}/sitemap.xml`)
+  assert.equal(existsSync('public/robots.txt'), false, 'Static and metadata routes must not conflict')
 })
 
 test('對答案深連結指向正式網域，並帶得返卷號', async () => {

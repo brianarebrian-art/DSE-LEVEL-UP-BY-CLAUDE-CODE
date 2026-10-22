@@ -1,0 +1,23 @@
+{
+  "index": 15,
+  "url": "/ai/essay-feedback",
+  "priority": "BLOCKED",
+  "page_type": "AI工具提案（與憲章衝突；需改定位）",
+  "intent": "DSE 英文考生想在交卷前找出作文的內容回應、段落組織、語氣及文法問題，並取得可操作的修改方向。學生需求真實而具體，但原列的 AI 即時回饋／批改不能當作現有功能，也不能承諾打分。",
+  "h1": "DSE 英文作文自我檢查：內容、結構與語言修訂",
+  "title": "DSE 英文作文自我檢查｜內容、結構與語言修訂｜DSE Level Up",
+  "description": "DSE 英文作文交卷前自我檢查指南：逐項核對題目要求、段落功能、文體與語氣、句子清晰度及文法。透過原創短例子示範如何由題目清單規劃段落、找出漏答內容，再把含糊句改得具體，最後按時態、主謂一致、拼字與標點逐項校對。附可重複使用的修改清單與錯誤記錄方法，幫助學生自行修訂文章；不提供 AI 批改、評級或分數。",
+  "core_content": "原列 AI 作文回饋工具因憲章禁止長答／作文自動批改、打分、評分，且現有 app/api、lib 無相應實作，不可照原提案發布。若產品負責人另批准改成非 AI 自助指南，建議先移出 /ai/ 路徑再重審：1. 審題核對：把題目每項要求改寫成待回答清單，以原創示例展示漏答一點如何造成內容缺口。2. 結構檢查：用一個原創短提綱示範段落主旨、例證及連接如何逐項服務題目。3. 語氣與文體：比較正式 email 與 article 的同一訊息，指出稱呼、用字與讀者差異。4. 語言修訂：以原創句示範時態、主謂一致、拼字及標點的自我校對，呈現修改前後及修改理由；不可生成考評分數或模擬官方評級。5. 提供可重複使用的交卷前核對表及錯誤記錄方法。示例全文須原創；不需圖表、AI或 Past Paper 原題。",
+  "internal_links": "現有：/dse-english/writing-format（anchor：DSE English 文體格式與交卷前檢查）。/practice 路由存在但尚未確認有英文作文練習，故該連結標 planned，驗證內容適配後才可連結。不得連結不存在的 /ai/essay-feedback 作為已上線工具。",
+  "status": "Blocked",
+  "reason": "原始內容地圖第15列（以 csv.reader 讀取、含 header 索引為15）主張「AI 英文作文回饋」及「檢查文章」，但基線 d25c637 的 app/ 下不存在 /ai/essay-feedback 路由，app/api 與 lib 也沒有作文回饋實作。更關鍵的是 docs/charter.md §16.A 明文禁止長答／作文自動批改、打分、評分，§5 禁止新增付費第三方 API；不能照原方案推出。學生需要作文修訂指引，但既有 /dse-english/writing-format 已涵蓋文體、語氣與交卷前檢查，最適合把合規的非 AI 自查清單併入該頁，而不是再留一個宣稱 AI 批改的獨立頁。當前應阻止發布；若改為非 AI 自助文章，先調整名稱與 URL 並重新審核。無搜尋量資料，不推估搜尋量。",
+  "sources": [
+    "基線：d25c63740a9184d0303e2558c8ee6f51643258d6（工作樹 HEAD）",
+    "docs/seo-content-map.csv：csv.reader 第15列，目標 /ai/essay-feedback",
+    "docs/charter.md §5、§16.A（禁止新增付費 API；禁止長答／作文自動批改、打分、評分）",
+    "app/dse-english/writing-format/page.tsx（現有文體指南及交卷前檢查內容）",
+    "app/api/（基線檔案清單中無作文回饋 API；全域搜尋未見實作）",
+    "app/practice/page.tsx（練習路由存在；不代表有 AI 作文機評）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/15.json"
+}

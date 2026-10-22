@@ -1,0 +1,26 @@
+{
+  "index": 1,
+  "url": "/subjects",
+  "priority": "P1 NEXT",
+  "page_type": "科目總覽／學習資源導覽頁",
+  "intent": "香港DSE學生想按應考科目找到可用的練習、了解本站實際涵蓋的題型與工具，並決定從哪一科開始；不宣稱搜尋量或排名需求。",
+  "h1": "按DSE科目找練習與學習資源",
+  "title": "DSE科目練習與學習資源總覽｜DSE Level Up",
+  "description": "DSE考生可在此按科目搜尋數學、英文、中文及其他科目的練習入口，查看本站現有題型與學習工具，再前往科目頁開始練習。說明題庫範圍、尚未提供的考核形式、原創題目與官方試卷的分別，並提供按目標選擇科目及紙筆練習的指引。內容以實際可用功能為準，協助學生辨認適合的練習入口，避免將練習題庫誤當完整模擬考試。內容範圍以現有來源核實。",
+  "core_content": "建議正文補足而非重複科目卡片：①「如何選科開始」：依應考科目搜尋／篩選，說明點入科目頁後查看實際可用內容及開始練習；不聲稱全部科目有相同題型或覆蓋度。②「本站提供甚麼」：逐科卡片標示可用的選擇題、書寫題數量（以題庫摘要即時真值為準）、可用紙筆模式與尚未提供的考核形式，明確區分有科目名稱不等於有完整考試訓練。③「按目標選路徑」：需要短題練習者由科目頁進入現有練習；需要列印作答者到紙筆戰士；需要自主了解練習限制者連透明度／信任資訊。④「如何使用練習」：每節後查看答案解析、記錄錯因並回看；只介紹原始碼已存在流程，不承諾AI個人化規劃或自動批改。⑤例題方向：以原創平行改寫的一題短選擇題示範「辨識題目要求→選項判斷→逐步解析→常見錯因」，須採自現有題庫已核實內容，不能複製考評局題目。⑥視覺：用HTML文字清單／簡單SVG呈現「選科→查看內容→練習→回顧」路徑及題型供應狀態；避免無來源的考綱圖表。",
+  "internal_links": "已存在：/subjects/{subject} — anchor「查看[科目]練習與題庫範圍」（使用有效科目ID，科目卡已有連結）；/paper-warrior —「紙筆列印練習」；/transparency —「題庫與內容透明度」；/trust —「練習結果的限制」。/practice頁存在，但若導覽目的需指向特定科目練習，標為planned並先核實承接路徑。原始地圖所寫「AI工具」不是可假定的已實作內鏈或能力。",
+  "status": "Draft",
+  "reason": "原始地圖第1筆（以csv.reader讀取、不含header）為P0、科目總覽、/subjects；基線d25c63740a9184d0303e2558c8ee6f51643258d中app/subjects/page.tsx與SubjectsView.tsx均存在，故不是不存在頁的提案。頁面目前有科目搜尋／篩選、科目卡及紙筆戰士入口，足以承接導航意圖，但缺可逐科比較的真實供應範圍、選擇路徑、有效例題解法與清楚的未提供項目說明；既有DSE hubs內容不足，不能PUBLISH NOW。判P1 NEXT、Draft，待內容、資料標示與production逐項核驗。AI可在憲章允許且已實作範圍內說明，不得假設app/api已有AI生成或作文機評；長答／作文自動批改評分被憲章§16.A禁止，且不得新增付費API。Past Paper不得複製考評局受版權保護原文或圖表；僅可用官方公開連結／章節資料及自編平行改寫題，圖表亦須自行繪製且避免重現原卷。科目細節或考綱、卷別如需主張，須逐項官方核對；此頁總覽不自行宣稱已核實現行考綱。",
+  "sources": [
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader row 1；原始索引、不含header）",
+    "/home/ubuntu/dse-level-up/docs/charter.md §1.4、§3、§5、§16.A",
+    "/home/ubuntu/dse-level-up/app/subjects/page.tsx",
+    "/home/ubuntu/dse-level-up/app/subjects/SubjectsView.tsx",
+    "/home/ubuntu/dse-level-up/app/subjects/[subject]/page.tsx",
+    "/home/ubuntu/dse-level-up/app/paper-warrior/page.tsx",
+    "/home/ubuntu/dse-level-up/app/transparency/page.tsx",
+    "/home/ubuntu/dse-level-up/app/trust/page.tsx",
+    "基線：d25c63740a9184d0303e2558c8ee6f51643258d"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/01.json"
+}

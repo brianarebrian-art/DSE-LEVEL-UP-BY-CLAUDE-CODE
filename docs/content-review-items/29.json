@@ -1,0 +1,22 @@
+{
+  "index": 29,
+  "url": "/dse-maths/exponential-logarithmic",
+  "priority": "P1 NEXT",
+  "page_type": "DSE Maths 主題教學筆記／原創例題",
+  "intent": "學生搜尋 DSE 指數與對數，通常需要釐清指數律、對數的意義與限制，並學會選擇方法解指數方程或對數方程；此頁應協助由概念過渡到分步運算、解的驗證及常見錯誤自查，而不只羅列公式。未提出搜尋量或流量推測。",
+  "h1": "DSE Maths 指數與對數：從運算定律到方程解法",
+  "title": "DSE Maths 指數與對數：方程解法、例題與常見錯誤｜DSE Level Up",
+  "description": "以香港 DSE 考生理解指數律、對數定義與指數／對數互換為核心，從底數限制和運算規則開始，逐步示範解指數方程、以對數求未知數及代回檢查。配合自製函數圖像理解增長與反函數關係，整理常見錯誤，並提供原創練習方向；不重刊考評局歷屆試題或試卷圖表。每步附檢查提示，幫助學生自行找出錯因，供課後自學複習使用。圖例皆為作者原創。",
+  "core_content": "建議具體章節：1. 指數律及適用條件，釐清同底數乘除、冪的冪與零／負指數；用短題展示不可把加法誤當指數律。2. 對數定義 log_a b=c ⇔ a^c=b，說明 a>0、a≠1、b>0，並以指數形式互換作即時檢核。3. 對數運算定律和底數轉換；用反例提醒 log(x+y) 不等於 log x+log y。4. 分步原創例題：同底數化簡後解 2^(x+1)=16；不能直接同底時對 3^x=10 兩邊取對數；由 log_2(x−1)=3 解出 x 後先核對真數為正。每例展示理由、代回及定義域檢查。5. 常見錯誤診斷：底數條件漏寫、指數與底數混淆、誤用乘法公式、取對數後漏括號、未檢查真數。6. 自我練習按入門／混合應用排序，附答案及關鍵步驟，另設先提示後解答的紙筆自查方式。7. 圖表只需自製簡潔 y=a^x 與 y=log_a x 示意圖，標示漸近線、定義域／值域及互為反函數的對稱關係；以原創SVG或文字說明，不用外部圖表套件。例題和圖均須由作者自行創作並人工核數。不得宣稱AI生成或作文機評可用（app/api 無相應實作，且憲章禁止新增付費API）。不要重製考評局試題原文、試卷截圖、官方圖表或評分資料；若將來需要歷屆試題，僅經官方來源核實後提供定位資訊／官方連結，並由編輯確認授權界線。未在本審核中核實現行考綱或特定卷別，不標示特定年份卷別或Past Paper題號。",
+  "internal_links": "現存可連：/dse-maths（anchor：「返回 DSE Maths 主題入口」；hub目前內容不足，不可將其當成完備學習資源）、/dse-maths/quadratic-equations（「比較代數方程的分步解法」）、/practice（「前往現有練習」）、/methodology（「了解題庫與內容處理方式」）。/dse-maths/exponential-logarithmic 基線沒有對應頁面，為待建目標；/ai/practice-generator 雖有路由但不得以AI生成作本頁功能承諾。",
+  "status": "Draft",
+  "reason": "按原始內容地圖第29筆（Python csv.reader，排除header後序號）評估。基線 d25c637 source 未見 app/dse-maths/exponential-logarithmic 路由或同URL頁面；只有數學hub及一元二次方程頁，現有hub內容不足，故不可 PUBLISH NOW。指數律、對數定義與方程解題是具體可教的概念組合；須補足限制條件、逐步例題、錯誤診斷及自製圖像，並人工核算，才有足夠學習深度。保留為獨立主題，不與一元二次方程頁合併：兩者搜尋需求及核心技能不同。原始第21筆重複第10筆的一元二次方程、第31筆重複第11筆英文寫作格式；後者應MERGE，勿另保留重複頁。本頁與兩組重複項無關。不能引用或重刊未核授權的HKEAA Past Paper原文、試卷圖或評分資料；目前不列年份／卷別／題號。未宣稱已核現行DSE考綱，若後續要標示考綱範圍或歷屆卷別，先以考評局官方資料查核。AI生成及作文機評在 app/api 未實作，並受憲章禁止新增付費API，不能視作既有功能。",
+  "sources": [
+    "docs/seo-content-map.csv（d25c637，Python csv.reader；原始第29筆及第10／11、21／31筆重複檢視）",
+    "docs/charter.md（d25c637，§5 成本與付費API限制、章程的內容／版權規範）",
+    "app/dse-maths/page.tsx、app/dse-maths/quadratic-equations/page.tsx（d25c637；數學hub與既有相鄰主題頁，未找到目標URL來源）",
+    "app/api/（d25c637；未見指數對數AI生成或作文機評功能API）",
+    "app/practice/page.tsx、app/methodology/page.tsx（d25c637；存在之練習與方法說明路由）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/29.json"
+}

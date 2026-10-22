@@ -78,7 +78,7 @@ function BankLoadError({ subjectId }: { subjectId: string }) {
   }
   return (
     <div role="alert" className="mx-auto max-w-md px-4 py-16 text-center">
-      <h1 className="text-xl font-medium text-ink">{en ? 'This subject isn’t saved on this device yet' : '呢科未存喺部機'}</h1>
+      <h2 className="text-xl font-medium text-ink">{en ? 'This subject isn’t saved on this device yet' : '呢科未存喺部機'}</h2>
       <p className="mt-3 text-sm leading-relaxed text-ink-muted">
         {en
           ? 'The questions could not be downloaded, probably because there is no connection right now. Open it once while you are online and it will be saved.'

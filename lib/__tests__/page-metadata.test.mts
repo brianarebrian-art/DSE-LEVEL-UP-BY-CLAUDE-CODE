@@ -60,6 +60,14 @@ test('title 唔可以係泛用嘅 —— 要講返呢版係咩', () => {
   assert.deepEqual(bad, [], `以下頁面嘅 title 太泛用：\n  ${bad.join('\n  ')}`)
 })
 
+function hasMetadataDescription(src: string): boolean {
+  if (/description:/.test(src)) return true
+  // SEO helper 的 input 可以安全地轉交已命名的常數。兩項都要存在，避免只宣告而
+  // 沒有接入 metadata，或只出現一個無來源的 object shorthand。
+  return /const description\s*=\s*['"`]/.test(src) &&
+    /(?:createSeoMetadata|completeSeoMetadata)\(\{[\s\S]*?\bdescription\s*,/.test(src)
+}
+
 test('有 metadata 就要有 description —— 搜尋結果嗰兩行係佢', () => {
   const noDesc: string[] = []
   for (const f of all) {
@@ -67,7 +75,7 @@ test('有 metadata 就要有 description —— 搜尋結果嗰兩行係佢', ()
     if (!/export const metadata/.test(src)) continue
     // noindex 頁唔會出現喺搜尋結果，description 冇意義。
     if (/robots:\s*\{[^}]*index:\s*false/.test(src)) continue
-    if (!/description:/.test(src)) noDesc.push(f)
+    if (!hasMetadataDescription(src)) noDesc.push(f)
   }
   assert.deepEqual(noDesc, [], `以下頁面有 title 但冇 description：\n  ${noDesc.join('\n  ')}`)
 })

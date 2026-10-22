@@ -10,7 +10,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 
 const dict = readFileSync('lib/dictionary.ts', 'utf8')
-const home = readFileSync('app/page.tsx', 'utf8')
+const home = readFileSync('app/HomePageClient.tsx', 'utf8')
 const layout = readFileSync('app/layout.tsx', 'utf8')
 const strip = (s: string) => s.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/^\s*\/\/.*$/gm, '')
 
@@ -103,4 +103,3 @@ test('the home demo question is labelled as a demo', () => {
   const b = readFileSync('components/BlindTestQuestion.tsx', 'utf8')
   assert.match(b, /tr\('示範題，唔計分', 'Demo — not scored'\)/)
 })
-

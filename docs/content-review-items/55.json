@@ -1,0 +1,21 @@
+{
+  "index": 55,
+  "url": "/dse-biology/human-reproduction",
+  "priority": "P2 LATER",
+  "page_type": "DSE Biology 人體生殖主題教學筆記（不得在無題源下稱作Past Paper題解）",
+  "intent": "考生複習人體生殖系統、配子與受精、月經週期、胚胎及胎兒發育、胎盤與出生控制，想理解器官構造和功能關係，讀懂月經週期圖表，並練習用生物因果作答。此為合理學生學習意圖判斷，不代表已取得搜尋量數據。",
+  "h1": "DSE Biology 人體生殖：月經週期、受精與胚胎發育",
+  "title": "DSE Biology 人體生殖筆記：月經週期與受精｜DSE Level Up",
+  "description": "溫習DSE Biology人體生殖：辨認男女生殖系統及配子功能，理解排卵、受精、月經週期、胎盤與胎兒發育，並認識出生控制。附週期圖表判讀、原創分步例題和常見失分修正，練習把構造、過程與功能串成清晰因果答案，並分辨必修與選修的荷爾蒙內容。另以胎盤示意圖拆解母體與胎兒物質交換，逐步掌握題目線索，鞏固概念。",
+  "core_content": "依教育局課程指引設定明確範圍，區分必修人體生殖內容與選修 Human Physiology: Regulation and Control 中的月經週期荷爾蒙調節，不把選修細節混寫成所有學生必修。章節建議：1) 男、女生殖系統總圖，逐一標示主要構造並連結功能；2) 精子與卵子的結構適應及在受精中的角色；3) 排卵、精液轉移、受精及受精卵早期發育的順序；4) 子宮內膜週期變化、月經及排卵的圖表判讀；選修延伸另說明荷爾蒙水平曲線及與內膜變化的關聯；5) 胚胎與胎兒發育、胎盤的物質交換功能、同卵與異卵雙胞胎；6) 出生過程、親代照顧、母乳餵哺及出生控制的生物學基礎，分清課程內容與社會／倫理討論。例題採自創平行題：給月經週期內膜厚度或荷爾蒙變化的原創折線圖，要求辨認排卵時段、比較數據並用因果解釋；給自行繪製的生殖系統或胎盤圖作標示與構造—功能題；以情境題串連精子卵子、受精和胚胎發育。圖表需自行製作並附座標、單位和圖例，避免使用教材或試卷原圖。附分步答題架構、術語核對與易錯點（混淆月經與排卵、把精子與卵子功能互換、只列胎盤名稱不解釋交換、把必修及選修荷爾蒙範圍混淆）。目前沒有可核驗的具體歷屆試題／年份／卷別／題號及授權依據，不能聲稱提供Past Paper題解、官方評分要求或複製題目、評分準則和插圖；完成原創教材後才可另行逐題查證官方題源和版權條件。不得承諾AI生成題目或答案機評；現有app/api未實作該功能，且憲章禁止長答／作文自動批改及新增付費API。",
+  "internal_links": "基線實際存在：/practice（anchor建議：練習生物概念；尚未核實有人體生殖專屬題庫）；/ai/past-paper-explainer（anchor建議：前往既有試題解說工具；路由存在不表示有本題內容或自動AI功能）。/dse-biology、/past-papers及本頁均未在基線source找到，故生物科索引與試題索引只可標planned，不能當現存連結。",
+  "status": "Draft",
+  "reason": "原始內容地圖第55筆（不含header）列為 /dse-biology/human-reproduction，基線 d25c637 中未找到此路由；亦未找到 /dse-biology hub，現有hub內容不足不能作為立即發布依據。題目本身有明確的學生學習價值，教育局2016課程補充文件列出人體男女生殖系統、精子與卵子、月經週期、受精、胚胎與胎兒發育、胎盤、雙胞胎、出生、親代照顧及出生控制；選修範圍另列月經週期荷爾蒙調節及曲線解讀，因此具備足夠建立有深度教學頁的範圍，但原始列的通用「題目重點、評分要求、分步解法、失分位、相似題」沒有具體題源、章節教學或例題，現況不足以成立題解頁。先按獨立主題頁規劃而非與生態、植物或其他生物主題合併；未發現有可確認的重複目標頁。考評局官方頁確認 Biology 為HKDSE選修科並提供科目資訊入口，但未能由現有查核資料確認本頁任何具體歷屆題的年份、卷別、題號或使用授權；不得把理科topic無題源地稱為Past Paper，也不得重製受版權保護試題、評分準則或圖。AI生成與作文機評在app/api並未實作，憲章禁止新增付費API及長答／作文自動批改，不能假設已存在。優先級為P2 LATER；待原創內容、圖表例題、題源及版權政策、實際內鏈與production驗收完成後再評估，未驗證不能標Published。",
+  "sources": [
+    "基線：git d25c63740a9184d0303e2558c8ee6f51643258d6；以csv.reader讀取docs/seo-content-map.csv，第55筆（不含header）為 /dse-biology/human-reproduction；基線app source未找到該路由或 /dse-biology hub。",
+    "https://cd1.edb.hkedcity.net/cd/science/biology/supplementary/bio_supplement_e_2016.pdf — 教育局《Biology Curriculum (Secondary 4–6) Supplementary Document for 2016》，人體生殖範圍及選修月經週期荷爾蒙調節內容。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A2&2&21_6 — 考評局Category A官方科目頁；確認生物為選修科。未用作證明具體題目年份、卷別或題源。",
+    "docs/charter.md §16.A／§16.B及付費服務限制：長答／作文自動批改禁止；不得新增付費API，AI身份須清楚披露。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/55.json"
+}

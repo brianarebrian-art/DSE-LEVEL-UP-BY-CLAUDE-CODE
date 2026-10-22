@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+import { PageBreadcrumb } from '@/components/Seo/SeoNavigation'
+import { completeSeoMetadata } from '@/lib/seo'
 import PrivacyClient from './PrivacyClient'
 import { betterAuthEnabled } from '@/lib/auth/better-auth'
 
@@ -19,15 +20,15 @@ import { betterAuthEnabled } from '@/lib/auth/better-auth'
 // 上雲 key 清單【由 components/StoredDataInspector.tsx import】而唔係喺呢度重抄一次。
 // 抄一次就等於開咗第二個真相來源，兩邊遲早唔同步 —— 而唔同步嘅嗰日，錯嘅一定
 // 係呢版（因為冇人跑得起佢）。lib/__tests__/privacy-page.test.mts 守住呢點。
-export const metadata: Metadata = {
-  title: '私隱政策 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，唔跟 client locale
-  // i18n-exempt: 靜態 SEO description，唔跟 client locale（標記必須同行，故此句唔換行）
-  description: '我哋收集咩、點解收、放喺邊、留幾耐、你點樣刪除。對照香港《個人資料（私隱）條例》寫，每項都對得返實際代碼同資料庫。', // i18n-exempt
-}
+export const metadata = completeSeoMetadata({
+  title: '私隱政策 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '閱讀 DSE Level Up 對本機資料、同步資料、帳戶資料與保留期限的實際處理方式，並了解你可如何查看、刪除或停止同步個人紀錄；政策按現有程式與資料庫行為說明，不以空泛承諾取代細節，亦交代啟用不同登入後端時電郵資料是否會儲存的差異。你可在使用前先比較政策所述處理方式與自己選用的功能，作出知情的使用決定。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/privacy')
 
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-surface text-ink-soft">
+      <PageBreadcrumb path="/privacy" title={String(metadata.title).replace(/\s*\|\s*DSE Level Up$/, '')} />
       {/* 存唔存電郵【由實際 backend 決定】，唔係人手維護一句文字。
           email/password 一開，Better Auth 個 `user` 表就會存電郵 ——
           嗰一刻原本嗰句「我哋唔會將你嘅電郵地址存入資料庫」即刻變成假。

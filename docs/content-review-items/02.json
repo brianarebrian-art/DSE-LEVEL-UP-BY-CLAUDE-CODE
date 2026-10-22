@@ -1,0 +1,22 @@
+{
+  "index": 2,
+  "url": "/dse-maths",
+  "priority": "P1 NEXT",
+  "page_type": "科目總覽／學習路線",
+  "intent": "香港 DSE 數學考生需要按必修部分及延伸部分整理課題概念、公式適用條件和解題步驟，藉例題找出錯誤並選擇下一步練習；不把搜尋意圖假定為單純下載官方試卷。沒有搜尋量資料，不作流量判斷。",
+  "h1": "DSE Maths 核心數學筆記與解題路線",
+  "title": "DSE Maths 核心數學筆記與解題路線｜必修、M1、M2｜DSE Level Up",
+  "description": "DSE Maths 核心數學筆記與解題路線：按課題整理概念、公式適用條件、分步原創例題及常見失分原因，連結現有練習與一元二次方程筆記。另清楚分開必修部分、延伸單元 M1（微積分與統計）及 M2（代數與微積分），說明圖像判讀、計算機檢查與自我訂正方法；歷屆題只提供官方連結，不重刊受版權保護的題文。逐步",
+  "core_content": "以科目總覽作為進入實際學習的路徑，而非把短篇宣傳文字當完整筆記。建議章節：1）如何使用本頁及自我診斷：依先備概念、題目要求、列式、運算、檢查五步訂正；2）考核結構與範圍導航：按官方資料明確分必修部分與延伸部分，延伸 M1（微積分與統計）和 M2（代數與微積分）分列，不把微積分混成單一單元；列出 Paper 1／Paper 2 的題型方向時以當年度官方 assessment framework 為準並標明更新年份；3）課題索引：現有一元二次方程筆記作為具體入口，其餘只列已核實、已建置頁面，未有內容的課題標 planned；4）解題方法示例：用原創平行題演示辨認題目條件、選公式、逐步代入、保留適當精確度、檢查符號／定義域／答案合理性；例題應附常見錯法及錯因修正，不只給公式和答案；5）圖形與表徵：用有標籤的自製座標圖或純 SVG 說明函數圖像／幾何關係及圖形如何支持推理，禁止引入憲章禁用圖表套件；6）計算機使用：示範結果驗算與輸入檢查，不以計算機代替推導；7）練習與下一步：連到實際存在的練習頁及主題筆記，頁面不存在的 Past Paper 索引只標 planned。題目全文、官方評分材料或整份 Past Paper 不複製；僅指向考評局官方頁面。不得宣稱 AI 生成題目或作文機評已提供；長答／作文自動批改被憲章禁止，且不應假設未實作的 AI API 功能。",
+  "internal_links": "實際存在（基線 d25c637）：/dse-maths/quadratic-equations —「一元二次方程完整筆記」；/subjects/mathematics —「DSE Maths 練習題」（由 app/subjects/[subject]/page.tsx 提供）；/practice —「開始練習」。planned（目前基線沒有相應 route，不可呈現為可用連結）：Past Paper 年份／題型索引；應以考評局官方數學科頁的官方資源連結作對外導航，不複製受保護試題。",
+  "status": "Draft",
+  "reason": "指定基線 d25c637 存在 app/dse-maths/page.tsx，且工作樹基線相符；頁面已有科目標題、短介紹、三個導覽入口和四項簡短學習承諾，但未提供真正可用的分部／課題地圖、分步例題、逐步解題策略或具體錯誤診斷，故不足以滿足搜尋者的學習需求，也不足以標 Published 或 PUBLISH NOW。保留此獨立科目總覽，不與一元二次方程主題頁合併：本頁負責學科導航，子頁提供單一課題深度；把純重複介紹合併到本頁導航即可。充實後排 P1 NEXT；原始 P0 不構成可直接發布證據。圖表可採原創標註圖／純 SVG，不新增禁用套件。例題必須原創平行改寫，更換數字與情境但保留考核邏輯，並展示完整步驟；Past Paper 只連官方資源，不重刊原題。AI 生成及作文機評不可宣稱可用：app/api 未實作相關能力，憲章禁止新增付費 API，且禁止長答／作文自動批改。現有五個 priority 頁面仍在實作、未經 production 驗證，故一律僅 Draft，不可因其他 agent 正在處理而視為已完成。官方 2025 assessment framework 確認數學含必修部分及可選延伸部分之一；M1 為 Calculus and Statistics，M2 為 Algebra and Calculus，必須分列。沒有查得或使用搜尋量，亦未以「熱門」或頻率數據作主張。",
+  "sources": [
+    "基線原始碼：git d25c637，app/dse-maths/page.tsx；另核實 app/dse-maths/quadratic-equations/page.tsx、app/subjects/[subject]/page.tsx、app/practice/page.tsx 存在。",
+    "專案限制：docs/charter.md §1.4、§5、§8、§13、§16.A、§16.B、§19.3；題目須原創平行改寫，禁止新增付費 API，禁止長答／作文自動批改，官方受版權保護原文只可列名稱、頁碼及連結。",
+    "香港考試及評核局，2025 HKDSE Mathematics Assessment Framework（官方 PDF）：https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2025hkdse-e-math.pdf",
+    "教育局，Mathematics Education - Curriculum Documents（必修部分、Module 1、Module 2 課程文件分列）：https://www.edb.gov.hk/en/curriculum-development/kla/ma/curr/index2.html",
+    "香港考試及評核局，Category A - HKDSE Core Subjects: Mathematics 官方資源頁：https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&4"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/02.json"
+}

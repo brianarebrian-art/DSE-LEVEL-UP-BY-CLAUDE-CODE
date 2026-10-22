@@ -37,12 +37,33 @@ test('the maths description no longer claims 10 years and 12 frameworks', () => 
   assert.doesNotMatch(math.descriptionEn, /10 years|12 core/)
 })
 
-test('subject pages use the fuller search description', () => {
+test('subject pages use the fuller search description', async () => {
   const math = S.getSubject('math')!
   const d = S.subjectMetaDescription(math)
   assert.ok(d.startsWith(math.name), 'starts with the subject name')
   assert.ok(d.includes(math.description), 'keeps the topic list')
-  assert.match(read('app/subjects/[subject]/page.tsx'), /description: subjectMetaDescription\(meta\)/)
+  const routeMod = await import('../../app/subjects/[subject]/page.tsx')
+  const route = typeof routeMod.generateMetadata === 'function'
+    ? routeMod
+    : (routeMod as unknown as { default?: typeof routeMod }).default ?? routeMod
+  const descriptions = new Set<string>()
+  const titles = new Set<string>()
+  for (const subject of S.getActiveSubjects()) {
+    const metadata = await route.generateMetadata({ params: Promise.resolve({ subject: subject.id }) })
+    const description = metadata.description
+    assert.ok(typeof description === 'string', `${subject.id}: description is present`)
+    const length = Array.from(description).length
+    assert.ok(length >= 150 && length <= 160, `${subject.id}: 150–160 code points`)
+    assert.ok(description.includes(subject.name), `${subject.id}: correct subject name`)
+    assert.ok(description.includes(subject.description), `${subject.id}: keeps the real topic list`)
+    assert.ok(description.includes(String(Q.getSubjectQuestions(subject.id).length)), `${subject.id}: real question count`)
+    assert.doesNotMatch(description, INTERNAL_NOTES, `${subject.id}: no internal planning claims`)
+    assert.equal(String(metadata.alternates?.canonical), `https://www.dselevelup.com/subjects/${subject.id}`)
+    assert.ok(!descriptions.has(description), `${subject.id}: description is unique`)
+    assert.ok(!titles.has(String(metadata.title)), `${subject.id}: title is unique`)
+    descriptions.add(description)
+    titles.add(String(metadata.title))
+  }
 })
 
 test('every live question has an explanation, as the search description says', () => {
@@ -53,7 +74,7 @@ test('every live question has an explanation, as the search description says', (
 })
 
 test('the homepage stat wall has no unsupported numbers', () => {
-  const page = read('app/page.tsx')
+  const page = read('app/HomePageClient.tsx')
   const dict = read('lib/dictionary.ts')
   assert.match(page, /const statNums = \[TOTAL_QUESTIONS, SESSION_SIZE, 0\]/)
   assert.doesNotMatch(dict, /label: '年份分析|label: '核心思維框架'|Years analysed|Core thinking frameworks/)
@@ -61,7 +82,7 @@ test('the homepage stat wall has no unsupported numbers', () => {
 })
 
 test('the homepage hero does not wait for JavaScript to become visible', () => {
-  const page = read('app/page.tsx')
+  const page = read('app/HomePageClient.tsx')
   const hero = page.slice(page.indexOf('── HERO ──'), page.indexOf('── 信任列 ──'))
   assert.ok(hero.length > 0, 'hero section found')
   // Comments mention the old class by name; only real className strings count.

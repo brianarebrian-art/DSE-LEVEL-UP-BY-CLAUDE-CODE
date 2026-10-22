@@ -1,7 +1,9 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getSubjectTopics } from '@/data/questions'
 import { CANTONESE_TOPICS, type CantoneseTopic } from '@/data/cantonese'
 import { SITE_ORIGIN } from '@/lib/site'
+import { JsonLd } from '@/components/Seo/JsonLd'
 import CantoneseView from './CantoneseView'
 
 // 新來港 · 香港日常廣東話 —— 獨立非正規生活支援課程，唔屬中文科。
@@ -35,12 +37,10 @@ import CantoneseView from './CantoneseView'
 // ⚠️ 2026-09-19 之前入口曾經喺 /subjects/chinese 頂部，已剷 —— 呢個唔屬於任何一科。
 // 冇入口嘅路由 = 孤兒，scripts/integration-guard.mjs 會嗌。
 
-export const metadata = {
-  title: '新來港・香港日常廣東話 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
-  description:
-    '為新來港學生而設的獨立非正規生活支援課程：十六個日常生活場景、九十六句，每句附廣東話、粵拼、普通話與英文對照及溝通目的，另有詞語表與學習方法。與中國語文科及任何 DSE 科目無關。', // i18n-exempt: 靜態 SEO meta description
-  alternates: { canonical: '/cantonese' },
-}
+export const metadata = completeSeoMetadata({
+  title: '新來港・香港日常廣東話 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '為新來港學生整理香港日常廣東話的十六個生活情境，提供九十六句粵語、粵拼、普通話及英文對照、溝通目的與詞語表；這是獨立生活支援課程，不屬中國語文科或任何 DSE 考試科目，協助學生在校園與社區溝通時理解常用說法和文化提示。各場景均配有文化提示，讓學習者可按自己的日常需要選擇並反覆閱讀，再熟習實際用法。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/cantonese')
 
 /**
  * 十六個場景。現版全部冇 `topicId`，所以下面個檢查而家空轉 —— 留住佢，
@@ -93,11 +93,7 @@ export default function CantonesePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <CantoneseView topics={TOPICS} />
     </>
   )

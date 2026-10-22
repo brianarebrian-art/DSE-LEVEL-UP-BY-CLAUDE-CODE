@@ -1,0 +1,22 @@
+{
+  "index": 37,
+  "url": "/dse-english/grammar-tenses",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記",
+  "intent": "香港 DSE English 學生希望釐清常見英語時態的形式、語意和語境選擇，尤其是在閱讀、寫作及句子修訂中避免時態不一致，並尋找有解釋的原創例句與短練習。這是合理的學習需求；不推測搜尋量，也不宣稱時態是官方獨立考試題型或有特定出題頻率。",
+  "h1": "DSE English 時態用法：語境判斷、句子一致與常見錯誤",
+  "title": "DSE English 時態用法｜語境判斷與例句",
+  "description": "整理 DSE English 常見時態的形式與語境差異，從現在、過去到完成式逐步比較；用原創句例練習時間線索、時態一致及改錯，拆解常見中式直譯與動詞變化錯誤，並附答案理由和自測方向。不把練習冒稱歷屆試題，也不提供作文自動評分。先看懂上下文，再選對動詞形式，建立可遷移到閱讀與寫作的文法判斷能力。",
+  "core_content": "先用時間線解釋現在簡單式、現在進行式、一般過去式、過去進行式、現在完成式的形式及常見語意，再比較容易混淆的組合（一般過去式／現在完成式、過去簡單式／過去進行式）；避免把記號詞當作唯一判斷規則，強調上下文、時間範圍、完成與持續的意義。講解主詞與動詞一致、否定／疑問句助動詞、規則及不規則過去式、書寫中段落時間基準維持一致。例題方向：從短段落推斷事件先後並選擇時態；比較兩句不同時態造成的意思差異；找出並訂正動詞形式及敘事時間跳轉錯誤；提供逐步理由、答案和可獨立作答的自測。可用自製時間線／時態對照表，需用文字說明傳達同一資訊。控制範圍，以 DSE 學生常遇到的實用語境為主，不堆疊完整英語時態百科；對課程定位、卷別及考試要求須按官方現行文件核對，未核實前不標示某時態為指定考點。所有示例用原創句子，不複製 Past Paper 題幹、文章、圖像、評分準則或官方解答；欲引用試題須先核實版權／使用許可並列清來源。不可宣稱 AI 生題、作文批改或評分功能；app/api 未實作相關功能，且憲章禁止新增付費 API及長答／作文自動批改。",
+  "internal_links": "基線可連結：/dse-english（anchor：返回 DSE English 科目頁；實際頁面目前列出 writing、閱讀及課題筆記入口）；/dse-english/writing-format（anchor：查看英文寫作格式；可在講解段落時間一致處作延伸）；/notes/english-language（anchor：瀏覽 DSE English 課題筆記；基線 hub 已連結）；/writing（anchor：練習英文寫作；基線 hub 已連結，但不可聲稱有時態專項題庫）；/practice（planned：前往英文時態練習，需先確認可按時態篩題及答案解析再建立實際連結）。",
+  "status": "Draft",
+  "reason": "CSV 以 csv.reader 讀取後，本筆是原始第37筆（不含 header）；基線 d25c637 的 source tree 沒有 /dse-english/grammar-tenses，故目前是新建頁面提案而非既有頁面更新。其學習意圖具體且可透過時態對比、上下文判斷、原創句例、錯誤診斷與自測提供足夠深度；但通用文法內容若只列規則會與英文筆記泛頁重疊，需將定位收窄為語境選擇及段落時態一致，並由新頁補足練習深度。現有 /dse-english hub 內容不足以支持 PUBLISH NOW，且相關優先實作仍在進行、未經 production 驗證，只能 Draft。原始第21／31及第10／11是其他 URL 的重複項；本筆不是那些重複項，不應把它們的重複合併套用至本筆，也不可保留重複原始列為兩個頁面。官方 HKEAA English 科目資訊頁列出課程與評核指南、assessment framework、sample papers 等官方資料入口；本次未能核實時效中的課綱細目或卷別要求，故不作指定考點、卷別或歷屆試題聲稱。優先採原創平行例題與自製圖表；Past Paper 題文、圖像、答案／評分內容的再用須先核准來源及使用權。AI 生成與作文機評不可假設存在；不新增付費 API，長答自動批改受憲章禁止。",
+  "sources": [
+    "docs/seo-content-map.csv：csv.reader 原始第37筆（不含 header）；URL /dse-english/grammar-tenses。",
+    "docs/charter.md §1.4、§1.5、§8、§13、§16.A：原創內容／版權、禁止新增付費 API及作文長答自動批改限制。",
+    "git 基線 d25c637：app/dse-english/grammar-tenses/page.tsx 不存在；app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx 存在。",
+    "基線 app/dse-english/page.tsx：實際連結 /writing、/dse-english/writing-format、/notes/english-language。",
+    "HKEAA English Language 科目資訊：https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A1&1&2 （課程與評核指南、評核框架及樣卷官方入口；本次未核實現行課綱細節）。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/37.json"
+}

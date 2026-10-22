@@ -1,4 +1,6 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { SITE_ORIGIN } from '@/lib/site'
+import { JsonLd } from '@/components/Seo/JsonLd'
 import LearnView from './LearnView'
 
 // 「點樣學廣東話」（/cantonese/learn）。
@@ -15,12 +17,10 @@ import LearnView from './LearnView'
 //
 // 內容正本喺 data/cantoneseLearn.ts。
 
-export const metadata = {
-  title: '點樣學廣東話｜新來港・香港日常廣東話 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>
-  description:
-    '為識普通話的新來港學生而設：廣東話六個聲調、普通話與廣東話之間的對應規律（入聲、捲舌音、-n／-ng／-m 韻尾）、最常見的用詞陷阱，以及每日五分鐘的練習方法。', // i18n-exempt: 靜態 SEO meta description
-  alternates: { canonical: '/cantonese/learn' },
-}
+export const metadata = completeSeoMetadata({
+  title: '點樣學廣東話｜新來港・香港日常廣東話 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '為熟悉普通話的新來港學生說明廣東話六個聲調、入聲、捲舌音與韻尾的讀音差異，並整理常見用詞陷阱及每日五分鐘練習方法；內容配合本站日常情境句子使用，協助學習者把粵拼、聽辨和實際溝通連結起來，並非中國語文科或任何 DSE 考試的備試教材。學習者可先理解差異，再配合情境頁的句子逐步練習聽說，並建立溝通信心。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/cantonese/learn')
 
 export default function LearnPage() {
   const jsonLd = {
@@ -60,11 +60,7 @@ export default function LearnPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <LearnView />
     </>
   )

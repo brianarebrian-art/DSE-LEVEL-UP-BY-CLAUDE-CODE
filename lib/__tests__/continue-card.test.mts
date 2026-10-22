@@ -62,7 +62,7 @@ test('a first-time visitor gets no card', () => {
 })
 
 test('the card is on the homepage and stays out of the way', () => {
-  assert.match(read('app/page.tsx'), /<ContinueCard \/>/)
+  assert.match(read('app/HomePageClient.tsx'), /<ContinueCard \/>/)
   const card = read('components/ContinueCard.tsx')
   assert.match(card, /isNotTonight\(\)/, 'hidden while 今晚唔溫得 is on')
   // No streaks, day counts or grades (charter §8.1).

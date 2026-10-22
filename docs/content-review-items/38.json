@@ -1,0 +1,19 @@
+{
+  "index": 38,
+  "url": "/dse-english/vocabulary-building",
+  "priority": "P1 NEXT",
+  "page_type": "主題教學頁（英文詞彙學習策略）",
+  "intent": "香港 DSE 英文學生想擴充可理解及可運用的詞彙，並解決只背中英對照、閱讀遇生字無從推斷、寫作選詞不自然等困難；提供可立即操練的語境推斷、搭配辨識與複習方法。",
+  "h1": "DSE 英文詞彙建立：從語境理解到自然運用",
+  "title": "DSE 英文詞彙建立｜語境、搭配與有效複習｜DSE Level Up",
+  "description": "DSE 英文詞彙建立指南：學會由語境推斷詞義、辨認搭配與詞性，並用間隔複習鞏固；附分步例題、常見錯誤及自我測驗，適合香港 DSE 考生循序提升閱讀與寫作選詞能力。從短句練習如何判斷詞語用法，逐步把新詞轉化為能理解、能正確運用的詞彙，建立持久學習方法，並懂得在新文章中運用所學，避免死記硬背，並持續累積實用詞彙。",
+  "core_content": "建議章節：1) 詞彙知識不只等於中文譯義：詞性、語氣、常見搭配與語境；2) 分步語境推斷（先讀前後句、判斷詞性與語意方向、代入候選義再驗證）；例題方向：短句中辨認詞語的詞性與正負面線索，逐步說明推斷而非直接給答案；3) 搭配與詞形：以原創例句比較易混淆搭配、詞族變化及不自然直譯，不聲稱官方必考清單；4) 閱讀遇生字的處理策略，區分影響主旨的關鍵詞與可略讀細節；5) 寫作選詞的精確度、語域與過度使用罕見詞的風險；例題方向：修訂搭配不當的句子並解釋取捨；6) 間隔複習與主動回想：詞卡記語境、搭配、詞性及自造句，附一週複習安排；7) 迷你自我測驗、逐步答案及錯誤診斷。不得承諾 AI 生成詞彙練習或作文機評：現有 app/api 未實作相關功能，憲章禁止新增付費 API。題目和句例須原創，不複製 Past Paper 原題、閱讀篇章或官方答案；不需依賴 Past Paper 授權內容。可用自製詞族／搭配示意表，不需外部圖表套件。",
+  "internal_links": "/dse-english — anchor「返回 DSE English 科目頁」；/practice — anchor「開始英文練習」（路由存在，需確認可直接選英文）；/dse-english/writing-format — anchor「複習英文寫作格式」。不要連結 /ai/practice-generator 作為可用詞彙 AI 功能。",
+  "status": "Draft",
+  "reason": "基線 d25c637 存在 /dse-english 與 writing-format 主題頁，但不存在目標 /dse-english/vocabulary-building；英文科目 hub 內容不足，不可標為可發布。題材有明確學習價值，應獨立聚焦詞彙習得，不合併至寫作格式頁；寫作搭配只作交叉連結。先完成有步驟、原創例題及自查答案的實質內容，再核驗學科準確性和頁面行為，故 P1 NEXT、Draft。不得杜撰搜尋量或官方詞表；本提案不作現行考綱／卷別主張，未聲稱已核對考評局資料。例句自寫並遵守憲章零版權侵犯，不摘錄 Past Paper。不得承諾 AI 生成或作文自動評分。",
+  "sources": [
+    "Repo baseline d25c637: docs/seo-content-map.csv（Python csv.reader row 38，不含 header）；docs/charter.md §§1.3、4、5、12、16。",
+    "Baseline source: app/dse-english/page.tsx、app/dse-english/writing-format/page.tsx、app/practice/page.tsx；目標 route 不存在。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/38.json"
+}

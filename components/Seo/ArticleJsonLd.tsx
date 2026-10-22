@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { SITE_ORIGIN } from '@/lib/site'
 import { ARTICLE_DATES } from '@/lib/articleDates'
+import { JsonLd } from '@/components/Seo/JsonLd'
 
 // 文章型頁面嘅 Article 結構化資料 ＋ 頁底可見日期（server component）。
 //
@@ -22,15 +23,18 @@ export function toIso(d: string): string {
 export default function ArticleJsonLd({
   route,
   meta,
+  visibleHeadline,
 }: {
   /** 例如 '/about' —— 用嚟查日期同組 URL */
   route: string
   /** 頁面自己個 `metadata` —— headline／description 由佢取，唔另抄一份（抄咗遲早分叉）。 */
   meta: Metadata
+  /** Use the visible H1 where it differs from the search title. */
+  visibleHeadline?: string
 }) {
   const dates = ARTICLE_DATES[route]
   if (!dates) return null
-  const headline = String(meta.title ?? '').replace(/\s*\|\s*DSE Level Up$/, '')
+  const headline = visibleHeadline ?? String(meta.title ?? '').replace(/\s*\|\s*DSE Level Up$/, '')
   const description = meta.description ?? ''
 
   const url = `${SITE_ORIGIN}${route}`
@@ -54,7 +58,7 @@ export default function ArticleJsonLd({
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <p className="max-w-3xl mx-auto px-4 pb-10 text-xs text-ink-muted">
         {/* server component 冇 locale hook，雙語並列（同 skip-link 一樣嘅做法） */}
         發布 Published：<time dateTime={published}>{published}</time>{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}

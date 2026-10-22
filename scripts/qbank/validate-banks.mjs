@@ -54,6 +54,7 @@ const ts = (await import('typescript')).default
 let KATEX = null
 try { KATEX = (await import('katex')).default } catch { console.log('  ⚠️  katex 載入失敗 —— 已跳過渲染檢查（其餘檢查照跑）') }
 const _warn = console.warn; console.warn = () => {} // KaTeX 對 CJK 的 strict 警告與本檢查無關
+void _warn
 
 // The live parametric banks (never the hand-authored *.ts — those are separate).
 const BANKS = [

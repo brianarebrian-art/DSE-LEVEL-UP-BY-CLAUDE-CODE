@@ -1,0 +1,23 @@
+{
+  "index": 11,
+  "url": "/dse-english/writing-format",
+  "priority": "MERGE",
+  "page_type": "主題筆記／寫作格式指南",
+  "intent": "香港DSE考生想快速判斷英文寫作任務屬何文體，理解收件人／讀者、目的、語氣、格式與段落如何配合，並取得可操作的構思、寫作及自我檢查步驟；不是單純搜尋模板，也不應以未實作的AI批改作承諾。",
+  "h1": "DSE English 寫作格式：按讀者與目的安排文體、語氣及段落",
+  "title": "DSE English 寫作格式：Letter、Email、Article、Report｜DSE Level Up",
+  "description": "DSE English 寫作格式逐步拆解：辨認 letter、email、article、report 等文體的讀者、目的與語氣，學會段落安排、回應題目要點及修訂檢查；附自創短例與常見失分診斷，協助把格式知識轉化為清晰、切題的答案，並分清格式慣例與內容評核，避免只背模板，另列考場修訂步驟，供考前使用。",
+  "core_content": "此頁有真實學生意圖且基線已有頁面，惟內容規劃第11筆（P0）與第31筆（P1）同URL、同為 DSE English writing format，應合併去重，只留一個canonical頁；採第31筆較可操作的主題筆記方向，吸收第11筆文體比較內容。建議內容深度：①先拆題：讀者／身份、目的、情境、必答要點與字數限制如何轉為寫作清單；②文體比較表：formal/informal letter或email、article、report的常見版面慣例、稱謂／標題／小標、語氣及何者視題目而定，避免宣稱僵化萬用格式；③每種文體各給短小自創題目片段及示範開首、主體段功能、結尾，逐句標示選擇理由；④完整示範一題的計劃→段落→修改，涵蓋每個bullet point均有回應、論點／例證、連接、語域一致及文法修訂；⑤常見失分診斷（格式搶走內容、背模板離題、語氣不一致、漏答任務點）及考前檢查表；⑥學生自我練習題及示範答案／自評提示。以原創平行情境短例及自製表格即可，毋須圖表或圖片；不重製考評局Past Paper題幹、答卷或評分材料，若引用真題需另核版權授權／引用界線並標清年份題號，資料不足時不標榜Past Paper真題。不可聲稱AI生成練習或作文機評已提供：app/api並無作文回饋路由，AI付費API亦受憲章禁止。",
+  "internal_links": "可用既存路由：/dse-english（anchor：返回 DSE English 科目頁；hub現有內容較薄，只作導航，不可用作此頁已充分覆蓋的證據）；/writing（anchor：開始英文寫作練習；基線存在）；/practice（anchor：開始練習；基線存在，需人工確認入口與此頁任務相符）。/notes/english-language 在基線不存在，勿假裝為連結。/ai/essay-feedback 不存在，且相關機評未實作，勿連結或承諾；/ai/practice-generator 雖存在，但內容不可暗示作文生成能力。",
+  "status": "Merged",
+  "reason": "第11筆與原始第31筆均為 /dse-english/writing-format；按要求不重複保留，將兩筆合併為一個同URL主題頁紀錄（保留第31筆作內容規劃基礎，吸收第11筆的letter/article/report比較），因此本筆標為MERGE而非另立頁。基線 d25c637 指定路徑的 app/dse-english/writing-format/page.tsx 存在，已有三種文體對照、規劃及交卷檢查，但缺email及其他情境的逐步示範、完整自創例題解析、錯誤診斷與實質練習深度；可改善自然搜尋解題價值，不應只擴寫模板。現有 /dse-english hub內容不足，不可據此宣告PUBLISH NOW；五個priority實作仍未production驗證，只能Draft，本頁亦不得標Published。作品與練習例必須原創改寫；Past Paper材料涉及版權，未有核准來源／授權前不重刊。AI作文回饋不在基線API實作中，且憲章禁止新增付費API，故不得假設或宣傳此功能。此頁格式教學未需判定現行卷別／考綱，沒有以未查核考綱作內容主張；如新增考試規格需先核官方來源。",
+  "sources": [
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（csv.reader：不含header第11筆與第31筆同URL；第11筆範圍以原始資料列確認）",
+    "/home/ubuntu/dse-level-up/docs/charter.md（§1.4零版權侵犯及原創平行改寫；§1.5禁止需付費第三方API；§5英文科寫作要求）",
+    "/home/ubuntu/dse-level-up/app/dse-english/writing-format/page.tsx（指定頁基線存在及現有內容）",
+    "/home/ubuntu/dse-level-up/app/dse-english/page.tsx（hub及列出的實際連結）",
+    "/home/ubuntu/dse-level-up/app/writing/page.tsx、/home/ubuntu/dse-level-up/app/practice/page.tsx（實際路由存在）",
+    "/home/ubuntu/dse-level-up/app/api/（檢查現有API路由，未見作文機評路由）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/11.json"
+}

@@ -1,0 +1,24 @@
+{
+  "index": 5,
+  "url": "/dse-biology",
+  "priority": "P1 NEXT",
+  "page_type": "DSE Biology 科目學習樞紐",
+  "intent": "香港DSE生物科考生尋找按課程組織的概念筆記、術語釐清、圖表與實驗數據題練習，以及可立即銜接練習的複習指引；不以無證據的搜尋量作優先級依據。",
+  "h1": "DSE Biology 生物科筆記與數據題解題指南",
+  "title": "DSE Biology 生物科筆記、概念圖與數據題｜DSE Level Up",
+  "description": "為香港 DSE 生物科考生整理細胞與生命分子、遺傳與演化、生物與環境及健康與疾病的概念筆記；以圖解、術語辨析和原創數據題示範推理步驟，並說明實驗變因、圖表判讀與常見失分。內容依官方課程框架編寫，不複製歷屆試題；附課題自查清單與分步解題示例，考生可前往科目練習或課堂筆記，並按考評局更新覆核，供溫習使用。",
+  "core_content": "按教育局高中生物課程指引呈現四個必修主題：細胞與生命分子、遺傳與演化、生物與環境、健康與疾病；另把四個選修主題分欄標明，提醒考生須依其所修選修部分學習，不把未選內容混作必修。每節提供先備概念、概念關係圖、英中術語及容易混淆的界線，再以原創平行題展示由題幹抽取變因、讀圖表／顯微圖、建立證據與結論、檢查單位及措辭的步驟。例題方向涵蓋遺傳資料推理、生態數據趨勢、實驗設計與控制變因；每題附逐步推理、常見錯因及一題自我檢核，並註明圖示為自製示意或清楚標示來源。頁面須說明考核結構及年度變更只採考評局當屆框架核實；沒有特定主題的已核實題源，不得宣稱是Past Paper或標註年份卷題。不得複製HKEAA原題、評分準則、試卷圖表或插圖；以原創情境和數據改寫考核概念，並提供官方歷屆試題下載入口。此靜態筆記頁不宣稱已有AI生成題目或AI批改功能；長答／作文自動批改、打分永久禁止，且不可新增付費API。",
+  "internal_links": "現有連結：/subjects（anchor：瀏覽全部DSE科目）；/subjects/biology（anchor：前往生物科練習）；/practice（anchor：開始練習）；/notes（anchor：查看課堂筆記）。/subjects/biology由動態科目路由支援；/practice及/notes為現存路由。／dse-biology目前沒有對應的app路由或獨立source頁；本項只審核此目標頁，不把其他不存在的目標當成現有連結。",
+  "status": "Draft",
+  "reason": "有明確的學生任務價值：將現有生物科題庫練習與課程導向的概念教學連接，讓學生不只選答案，也能學會從生物圖表及實驗數據推論。CSV原始提案僅列「概念圖、術語、數據題」及「細胞、遺傳」，不足以構成全科、可驗證且有深度的學習頁；建議補足必修四主題、選修界線、原創分步例題、圖表／實驗推理和自查。已查到當前source沒有/dse-biology路由或獨立頁面；現有科目頁是/subjects/biology，內容主要為題庫練習入口，不能等同已完成此筆內容。故不准PUBLISH NOW，先列P1 NEXT並維持Draft；須待內容、題源、metadata與線上呈現完成及production驗證後再評估。現行考核框架應逐年核對考評局Assessment Framework；本次HKEAA生物科舊科目資料頁所列框架為2012年，不能當作當屆卷別依據。題目、圖表及例子須原創平行改寫，避免重製歷屆試題和受版權保護圖表。此頁與總科目頁/subjects及現存/subjects/biology有主題相鄰，但服務不同任務，暫不合併或刪除；讓新頁承擔概念學習，保留既有科目練習頁作練習入口。不得承諾不存在的AI生成或機評，也不得新增付費API；憲章並明禁長答／作文自動批改、評分。",
+  "sources": [
+    "docs/seo-content-map.csv：以csv.reader讀取，原始第5筆（排除header）為P0／DSE Biology notes／/dse-biology；僅審此列。",
+    "docs/charter.md §1、§5、§8、§12、§13、§16.A：免費與不新增付費API；題目須原創平行改寫、不可侵犯版權；禁止長答／作文自動批改與打分；所有頁面免責聲明。",
+    "source檢查：app/subjects/[subject]/page.tsx為動態科目頁，canonical採/subjects/{subject}；app/subjects/page.tsx、app/practice/page.tsx、app/notes/page.tsx存在；未找到app/dse-biology或獨立dse-biology頁。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — 教育局《Biology Curriculum and Assessment Guide》：列四個必修主題及四個選修主題，學生修讀其中兩個選修主題。",
+    "https://www.edb.gov.hk/en/curriculum-development/kla/science-edu/ref-and-resources/biology.html — 教育局生物科資源頁：課程補充文件標示適用於2016年及以後HKDSE；需留意新框架變動。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/ — 考評局生物科資料頁；頁列部分歷史文件（如2012 assessment framework），不足以單獨確認當屆考核細節。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/assessment_framework/ — 考評局Assessment Frameworks總頁；發布當屆生物科框架時應以其相應考試年份文件為準。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/05.json"
+}

@@ -1,0 +1,22 @@
+{
+  "index": 41,
+  "url": "/dse-chinese/paper-one-reading",
+  "priority": "P1 NEXT",
+  "page_type": "DSE 中文卷一閱讀理解專題教學頁",
+  "intent": "考生搜尋卷一閱讀理解作答方法、主旨與推論題拆解、如何引用文本作答及常見失分原因；尋求可實際套用於新材料的步驟，而非一般中文科介紹或歷屆試卷答案。未有搜尋量數據，不作流量判斷。",
+  "h1": "DSE 中文卷一閱讀理解：由讀懂題目到有根據地作答",
+  "title": "DSE 中文卷一閱讀理解技巧｜審題、找證據與推論｜DSE Level Up",
+  "description": "掌握 DSE 中文卷一閱讀理解的實用步驟：先辨認題目要求，再定位文本證據，組織答案並檢查推論是否過度。配合原創短文例題，練習主旨、語境、修辭與比較題，逐步找出失分原因；不搬用歷屆試題或標準答案，並說明卷別資料及練習限制。附設逐步示範及自我檢核方法，幫助考生把策略遷移到陌生材料。以原創材料示範並附自學檢查清單。",
+  "core_content": "以考生可遷移到陌生文本的答題流程為主軸：①拆解題目指令、範圍與作答對象；②標記段落功能及關鍵轉折；③將主旨、語境詞義、修辭效果、人物觀點／推論、比較題分開教；④示範「主張—文本線索—解釋」短答組織，展示證據不足與過度推論的對照；⑤提供兩至三組自行撰寫的短文／改寫材料例題及逐步思路、易錯答案與自我檢核表；⑥以不含官方原題的限時練習讓學生自行核對理由。官方考核形式、卷別及樣本更新應逐年核對 HKEAA，勿把舊有卷一模式直接套用 2024 起資料。可用簡單表格呈現題型／解題步驟，不必圖表；若用文本標註示意，使用原創材料。不可重製或貼出 HKEAA past paper、參考答案、掃描頁面或大段原文；可連往官方頁面供學生查閱。不得提供或暗示 AI 生成練習已實作，也不得提供作文／長答 AI 評分或批改；按憲章禁止新增付費 API及作文自動批改。",
+  "internal_links": "/practice —「開始中文閱讀練習」（實際存在的通用練習頁；不聲稱是卷一專屬）；/ai/practice-generator 不列為已實作功能，生成器頁雖有路徑，app/api 未見生成端點，應不連或標 planned；/dse-chinese — planned（目標中文hub在基線不存在，完成後才可連結）。官方外部參考：HKEAA 2024 Chinese Language sample performance / Paper 1。",
+  "status": "Draft",
+  "reason": "基線 d25c637 中沒有 app/dse-chinese/paper-one-reading/page.tsx，且中文 hub 路由也不存在；因此尚非可發布頁。使用者指出現有 DSE hubs 內容不足，五個 priority 頁仍在實作、未經 production 驗證，故只能列 Draft，不可標 Published 或 PUBLISH NOW。此頁具明確的卷一閱讀答題意圖，值得 NEXT，但須以原創材料做出可操作的深度；目前 CSV 只給籠統概念／例題方向，未提供具體內容、題庫來源或驗證。與 /dse-chinese/modern-chinese（原始第47筆）的「現代文閱讀」高度相鄰；規劃時需明確將本頁限定為官方卷一考試作答策略及題型演練，並把通用文本分析內容合併到本頁，避免兩頁重覆。未發現本URL的重覆列；不因第21/31及第10/11另有重複而對本項目作合併或刪除。可呈現自製短文、答題流程表或文本標註示意，毋須圖表；任何 HKEAA 歷屆題目、評分參考或掃描圖須尊重版權，優先改用原創平行材料並連官方來源。不得把 AI 生成、作文／長答機評寫成現有能力；憲章 §8.2 禁止作文自動批改，§5 禁止新增付費 API。",
+  "sources": [
+    "Baseline repository d25c637: docs/seo-content-map.csv row 41 (csv.reader, excluding header); target row priority P1.",
+    "Baseline repository d25c637: app/dse-chinese/paper-one-reading/page.tsx absent; app/dse-chinese/page.tsx absent; app/practice/page.tsx present; app/ai/practice-generator/page.tsx present.",
+    "/home/ubuntu/dse-level-up/docs/charter.md §§1.4, 1.5, 8, 8.2, 13: independently rewritten questions, no paid third-party APIs, no long-answer/essay automatic marking, official-paper disclaimer and referral.",
+    "https://www.hkeaa.edu.hk/en/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sp/2024.html — official HKEAA 2024 Chinese Language samples page lists Paper 1 and Paper 2.",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1_25 — official HKEAA Chinese Language sample-performance listing, including 2024 and 2025."
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/41.json"
+}

@@ -1,0 +1,22 @@
+{
+  "index": 28,
+  "url": "/dse-maths/sequences",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記（數列教學頁）",
+  "intent": "學生搜尋DSE數列、等差或等比公式、求第n項、求和與無窮等比級數，想辨認題型、選對公式並看逐步解法。屬具體課程學習需求；不宣稱搜尋量。",
+  "h1": "DSE 數列：等差、等比與求和解題方法",
+  "title": "DSE 數列筆記｜等差、等比數列公式與分步例題 | DSE Level Up",
+  "description": "由首幾項判斷等差或等比數列，學會求第 n 項與有限和；透過分步例題理解公式選用、反求項數及常見陷阱，並把等比數列應用於增長、折舊和無窮和。內容按香港中學文憑數學必修部分整理，說明符號、解題步驟和答案檢查，適合想補足數列概念、建立穩定解題方法的考生。並提醒不可直接套用公式的情況，以及解題後的檢查方向。",
+  "core_content": "依EDB課程指引第7單元涵蓋等差與等比數列：由首幾項求公差／公比並辨認類型；說明一般項公式及反求項數；講解有限項等差和、等比和與適用條件；說明無窮等比和的收斂條件；用增長、折舊情境示範建模。例題方向：給定數列求第n項；由兩項反求首項、公差或公比；已知總和或項數求未知量；比較有限和與無窮和。每例示範辨型、代式、計算及答案檢查，解析混淆公差／公比、錯置n與n−1、漏檢無窮和條件等錯誤。可用原創SVG呈現項數與增長趨勢，標清座標及假設。Past Paper題須逐題核對官方年份、卷別、題號、來源及可用權利；查核前只用原創同型題，不冒稱Past Paper。AI生成題或作文機評不列為現有功能：基線app/api無該實作，憲章禁止新增付費API。",
+  "internal_links": "實際現存：/dse-maths（anchor「DSE Maths 數學筆記與題解」）；/dse-maths/quadratic-equations（anchor「一元二次方程完整筆記」）；/practice（anchor「前往練習平台」）。不連結不存在的generator API功能。",
+  "status": "Draft",
+  "reason": "基線d25c637沒有app/dse-maths/sequences/page.tsx或該URL source。現有DSE Maths hub僅為概覽，另一主題頁為一元二次方程，無法取代數列公式、逐步例題及錯因解釋；因此不可PUBLISH NOW。數列由官方課程指引列為課題，具獨立教學價值，不與二次方程合併、不刪除；列P1 NEXT，完成原創教學內容及逐題來源／權利查核後，仍須production驗證才能發布。本次只審此筆，不把正在實作的其他priority當成已完成。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/CA_2017_e.pdf",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2026hkdse-e-math.pdf",
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（基線d25c637，以csv.reader讀第28筆，不含header）",
+    "/home/ubuntu/dse-level-up/docs/charter.md（基線d25c637）",
+    "基線d25c637：app/dse-maths/page.tsx、app/dse-maths/quadratic-equations/page.tsx、app/practice/page.tsx；app/api無AI題目生成端點"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/28.json"
+}

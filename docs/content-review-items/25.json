@@ -1,0 +1,22 @@
+{
+  "index": 25,
+  "url": "/dse-maths/permutation-combination",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記",
+  "intent": "香港DSE數學學生複習排列與組合時，需要分清加法／乘法計數原理、排列與組合的符號及適用情境，並透過例題判斷次序是否重要、避免重複計數；這是具體學習意圖，沒有可核實搜尋量。",
+  "h1": "DSE Maths 排列與組合：計數原理、判斷方法與例題",
+  "title": "DSE Maths 排列與組合｜計數原理、例題與常見錯誤｜DSE Level Up",
+  "description": "DSE Maths 排列與組合筆記：由加法、乘法計數原理辨認情境，掌握排列與組合記號及無重複計數；透過原創分步例題、易錯比較表與檢查步驟，練習判斷次序是否重要。依官方課程界定範圍，說明圓排列不考；不重印歷屆試題，並附自我測驗鞏固觀念。按步理解，解題更有把握，逐步提升列式準確度與應試信心。熟習列式方法。",
+  "core_content": "完整主題筆記而非公式清單：依官方數學課程Guide Learning Unit 15講加法與乘法計數原理、互異物件無重複排列與組合，明列圓排列不要求；不把來源未支持的變式說成考核範圍。先界定一種結果；多步驟相乘、互斥情況相加；再判斷次序是否令結果不同。以表格比較職位排序的排列與只選一組的組合。解釋nPr=n!/(n−r)!與nCr=n!/[r!(n−r)!]，標明0≤r≤n、互異對象且不重複的條件，推導nPr=nCr·r!。例題由二步衣著／交通選擇起步；對照選主席和副主席（排列）與選兩名代表（組合）；再解三個指定物件相鄰，將其先作一組排列並計入組內排序；附可用小型清單或樹圖驗算的原創例題，逐步列式並檢查答案意義。錯誤診斷涵蓋排列組合混淆、加乘規則誤用、漏算組內排序、至少題未拆情況及選取數超界，每項配修正提問。考試提示引用官方課程與當屆框架，不宣稱特定題型必見某卷某年。練習由易至難附完整解法和掌握檢核。小圖用文字表或純SVG即可，插圖非必要。Past Paper：不可複製考評局原題、圖表或答案解析；缺題目來源及授權資料，不可聲稱有真題題解。僅用獨立原創平行改寫，另可連官方下載處。遵守憲章頁面免責聲明。不得假設AI題目生成或作文自動批改存在，不用付費API。",
+  "internal_links": "基線d25c637存在/dse-maths（anchor「返回DSE Maths科目頁」）及/practice（anchor「開始數學練習」；現為通用練習，不宣稱有主題篩選）。不列/past-papers（無該路由）；不以/ai/practice-generator作AI功能承諾。",
+  "status": "Draft",
+  "reason": "基線HEAD為d25c63740a9184d0303e2558c8ee6f51643258d6；有/dse-maths hub與/dse-maths/quadratic-equations，但無目標頁；hub內容不足以支持PUBLISH NOW。此頁有獨立教學目的，不與機率合併：本頁教計數建模，機率頁應教事件機率。原始第21/31及10/11重複不適用本項；依指示10/11須MERGE而不可雙留。現況欠缺完整解說與逐步例題，故P1 NEXT、Draft，未實作及production驗證前不能視為Published。官方課程Guide確認加法／乘法計數原理、不同物件無重複排列組合，圓排列不要求；HKEAA 2026框架只確認Compulsory Part Paper 1常規題與Paper 2選擇題，不能據此聲稱個別題型固定卷別或年份。真題與答案來源／授權不足，不可重印或自稱Past Paper解題。AI生成及作文機評未在app/api實作且憲章禁止新增付費API，不能作本頁承諾。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/CA_2017_e.pdf (Learning Unit 15: counting principles, permutations, combinations and circular permutation exclusion)",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/math/2026hkdse-e-math.pdf (2026 Mathematics assessment framework)",
+    "/home/ubuntu/dse-level-up/docs/charter.md §§3.7, 4, 5, 8, 12.1, 13",
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv (row 25 excluding header, parsed with csv.reader)",
+    "d25c637 source: app/dse-maths/page.tsx and app/dse-maths/quadratic-equations/page.tsx exist; target route and /past-papers do not."
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/25.json"
+}

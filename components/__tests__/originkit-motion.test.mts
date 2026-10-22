@@ -32,6 +32,26 @@ function ruleBody(selector: string): string {
   return CSS.slice(open + 1, close)
 }
 
+/** 收集同一 media query 的全部區塊；後加的獨立降級規則不會掩蓋原有規則。 */
+function mediaBodies(query: string): string[] {
+  const bodies: string[] = []
+  let from = 0
+  while (true) {
+    const i = CSS.indexOf(query, from)
+    if (i === -1) return bodies
+    const open = CSS.indexOf('{', i)
+    let depth = 1
+    let close = open + 1
+    while (depth > 0 && close < CSS.length) {
+      if (CSS[close] === '{') depth += 1
+      if (CSS[close] === '}') depth -= 1
+      close += 1
+    }
+    bodies.push(CSS.slice(open + 1, close - 1))
+    from = close
+  }
+}
+
 // 2026-08-23（第 1 週 · 引擎一）：答錯版本由 .shockwave-pink 改為 .shockwave-gold。
 // 規格書 §4.2 要求答錯【不出現紅色】，霓虹粉 rgba(255,0,110) 讀落係紅系。
 // 「只准換色、唔准加碼」呢個核心斷言完全不變，只係換咗對象選擇器。
@@ -55,9 +75,8 @@ test('三重降級齊全：reduced-motion／SEN／Light 主題', () => {
   const decorative = ['.particle-bg', '.combo-flame', '.scatter-title', '.achievement-pop']
 
   // (a) prefers-reduced-motion
-  const rmIdx = CSS.lastIndexOf('@media (prefers-reduced-motion: reduce)')
-  assert.notEqual(rmIdx, -1, '缺 prefers-reduced-motion 區塊')
-  const rmBlock = CSS.slice(rmIdx)
+  const rmBlock = mediaBodies('@media (prefers-reduced-motion: reduce)').join('\n')
+  assert.notEqual(rmBlock, '', '缺 prefers-reduced-motion 區塊')
   for (const c of decorative) {
     assert.ok(rmBlock.includes(c), `${c} 未納入 prefers-reduced-motion 降級`)
   }

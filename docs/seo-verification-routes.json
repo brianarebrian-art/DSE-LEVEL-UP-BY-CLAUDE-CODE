@@ -1,0 +1,20 @@
+[
+  {"path":"/","noindex":false},
+  {"path":"/dse-maths","noindex":false},
+  {"path":"/dse-maths/quadratic-equations","noindex":true},
+  {"path":"/dse-english","noindex":false},
+  {"path":"/dse-english/writing-format","noindex":true},
+  {"path":"/ai/practice-generator","noindex":true},
+  {"path":"/ai/study-plan","noindex":true},
+  {"path":"/ai/past-paper-explainer","noindex":true},
+  {"path":"/dse-maths/question-types/quadratic-discriminant","noindex":true},
+  {"path":"/dse-physics/motion-equations","noindex":true},
+  {"path":"/account","noindex":true},
+  {"path":"/dev/answer-cards","status":404,"noindex":true},
+  {"path":"/this-route-does-not-exist","status":404},
+  {"path":"/subjects/not-a-subject","status":404},
+  {"path":"/notes/not-a-subject","status":404},
+  {"path":"/cantonese/not-a-scene","status":404},
+  {"path":"/source-lab/not-a-source","status":404},
+  {"path":"/off-syllabus/not-a-category","status":404}
+]

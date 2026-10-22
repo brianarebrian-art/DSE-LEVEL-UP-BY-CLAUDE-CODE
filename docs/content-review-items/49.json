@@ -1,0 +1,23 @@
+{
+  "index": 49,
+  "url": "/dse-chinese/poetry-appreciation",
+  "priority": "P1 NEXT",
+  "page_type": "主題教學／詩歌賞析策略",
+  "intent": "DSE中文考生溫習古典詩歌賞析，希望掌握如何從意象、用字、修辭、情感與語境提出有文本證據的解讀，並組織短答；需求具體但不推測搜尋量。",
+  "h1": "DSE中文詩歌賞析：由意象與字詞推論情感",
+  "title": "DSE中文詩歌賞析方法：意象、字詞與答題步驟｜DSE Level Up",
+  "description": "DSE中文詩歌賞析讀詩流程：辨認意象與關鍵字，分析修辭和語氣，引用詩句推論情感，再用原創例子練習組織答案與檢查常見跳步。循序掌握從文本線索到表達效果，再到情感主旨的推論方法，避免只貼術語、只作翻譯或脫離上下文，並提供自我檢核步驟，讓考生在沒有標準答案時也能逐項檢查自己的證據與推論是否相符並能自信作答。",
+  "core_content": "以原創短詩或獲授權材料作示範，不宣稱官方題型清單。章節：1. 讀題並圈出分析對象；2. 從意象、動詞、色彩／聲音詞及語氣找文本線索；3. 用「詩句線索→表達效果→情感／主旨」組成推論，避免只貼修辭名稱或猜作者心情；4. 視上下文解釋對比、借景抒情、象徵等，不把手法當固定答案；5. 分步例題：自創兩至四行短詩，示範標記字詞、提出兩種初步解讀、以全詩線索取捨並寫成精簡答案；6. 常見失分及修正：只有情感標籤、只翻譯字面、術語堆砌、脫離語境、引句未解釋；7. 練習後自我檢核清單與答題範本。可用一張自製「線索—效果—推論」流程圖或表，非必要不加圖表。考綱、卷別及評核安排須按官方年度資料查核；此頁只教通用文本分析，不稱詩歌題為現行必考。歷屆試題、詩作原文、評分參考及掃描圖不可擅自重製，優先原創平行材料並連HKEAA官方頁。不得宣稱AI生成練習或AI作文／長答機評已實作；憲章禁止新增付費API與長答自動評分。",
+  "internal_links": "/practice —「開始中文練習」（實際存在的通用練習，不聲稱詩歌專屬）；/dse-chinese — planned「瀏覽DSE中文科目內容」（基線中文hub不存在）；/dse-chinese/modern-chinese — planned「閱讀文本分析方法」（規劃頁未在基線存在，須界定詩歌專題避免重覆）；/ai/practice-generator 不作功能轉換連結：雖有頁面路由，生成API未實作。官方外鏈：HKEAA中國語文科目資訊／評核框架。",
+  "status": "Draft",
+  "reason": "按csv.reader讀取並排除header後，第49筆為P1；基線d25c637沒有目標頁或中文hub，現有hub內容不足，五個priority項目尚未production驗證，因此只可Draft，不能Published或PUBLISH NOW。詩歌賞析有明確學生學習需求，值得做獨立專題，但CSV僅列泛稱概念、例題和常見錯誤，未提供可操作示範或已核實的當屆考核依據，須補足具體教學後再進下一階段。未發現本URL重複。CSV原始第21/31為數學二次方程及英文寫作格式相同URL的列，另第10/11亦為這兩個URL的簡化列；依要求後者合併而非重覆保留，與本詩歌頁無關。未來若中文閱讀主頁已完整涵蓋通用文本分析，將共同方法合併至該主頁，保留本頁詩歌專屬示例，避免近似內容競爭。官方HKEAA頁列有2026至2029中文科評核框架；2024樣本頁明確標示卷二甲部樣本僅適用2024，故不能把舊卷別或樣本說成現屆安排，也不能未核實就稱詩歌為某卷必考。可用原創流程圖但非必要；歷屆題目、詩作、答案、評分參考及官方圖像不可擅自複製，採原創／授權材料並連官方來源。憲章§4要求題目獨立改寫及非隸屬聲明，§5禁止新增付費第三方API，§16禁止長答／作文自動評分；AI生成與作文機評在app/api未實作，不可假設已有。未捏造搜尋量。",
+  "sources": [
+    "Baseline d25c637: docs/seo-content-map.csv parsed with csv.reader, header excluded, item 49; priority P1.",
+    "Baseline d25c637: app/dse-chinese/poetry-appreciation/page.tsx and app/dse-chinese/page.tsx absent; app/practice/page.tsx and app/ai/practice-generator/page.tsx present.",
+    "Baseline docs/charter.md §§4–5, §16, §19.3: original rewriting, no paid third-party API, no essay/long-answer automatic marking; protected HKEAA text may only be referenced by chapter/page/link.",
+    "HKEAA Chinese Language assessment framework listing (2026–2029): https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?2&1&1_1",
+    "HKEAA Chinese Language sample questions page; Paper 2A practical writing sample explicitly applicable to 2024: https://www.hkeaa.edu.hk/tc/HKDSE/assessment/subject_information/category_a_subjects/chi_lang/sq/sp2024.html",
+    "HKEAA Chinese Language teacher resources listing including 2025/2026 resources: https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&1_5"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/49.json"
+}

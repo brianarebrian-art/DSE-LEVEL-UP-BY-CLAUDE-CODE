@@ -133,8 +133,10 @@ for (const r of roots) {
       '大三和弦': [4, 7], '小三和弦': [3, 7], '減三和弦': [3, 6], '增三和弦': [4, 8],
     }
     const [third, fifth] = spec[quality]
-    const opts: Array<[string, string]> = Object.entries(spec).map(([q, [a, c]]) =>
-      [`根音上方 ${a} 個半音與 ${c} 個半音`, `${a} and ${c} semitones above the root`] as [string, string])
+    const opts: Array<[string, string]> = Object.entries(spec).map(([q, [a, c]]) => {
+      void q
+      return [`根音上方 ${a} 個半音與 ${c} 個半音`, `${a} and ${c} semitones above the root`] as [string, string]
+    })
     const correct = opts.find((o) => o[0] === `根音上方 ${third} 個半音與 ${fifth} 個半音`)!
     const rest = opts.filter((o) => o !== correct).slice(0, 3)
     b.add(`musb_ha1_${r}_${quality}`, T.harmony, FW.apply, quality === '大三和弦' || quality === '小三和弦' ? 'medium' : 'hard',

@@ -1,0 +1,21 @@
+{
+  "index": 52,
+  "url": "/dse-biology/genetics",
+  "priority": "BLOCKED",
+  "page_type": "Topic guide / original parallel-practice lesson (not past-paper answer archive)",
+  "intent": "學生搜尋 DSE Biology genetics / 遺傳題解時，通常希望掌握遺傳題的解題步驟、家系圖推理及容易混淆的概念，並以近似考試題型自我檢查；沒有資料支持搜尋量或需求規模估算。",
+  "h1": "DSE Biology 遺傳題：孟德爾定律、家系圖與解題步驟",
+  "title": "DSE Biology 遺傳題解：孟德爾定律與家系圖｜DSE Level Up",
+  "description": "循序掌握 DSE Biology 遺傳題核心步驟：辨認等位基因與基因型，解單因子雜交、ABO 血型、伴性遺傳和家系圖；配合原創平行例題、逐步推理及常見失分分析，練習把遺傳規律應用於新情境，並分辨遺傳與環境變異，建立完整解題方法，掌握常見陷阱，提升獨立分析能力與答題信心，逐步形成穩定的解題思路，溫習更有方向。",
+  "core_content": "若日後重評後解除阻塞，採用範圍明確的原創課題頁，不發布 Past Paper 原文或逐題題解。章節建議：1) 遺傳題讀題順序：標示等位基因、顯隱性、表型/基因型及題目未知量；2) 單因子遺傳：由親代基因型列配子、Punnett 方格、基因型比例與表型比例，原創平行例題可用斑點/毛色而非照抄真題；3) 人類遺傳：ABO 多等位基因及共顯性、性別決定、X連鎖性狀，分清概率與必然；4) 家系圖：辨識顯/隱性、常染色體/伴性線索，逐代排除不可能基因型；5) 變異與遺傳界線：遺傳/環境因素、突變及是否可遺傳的情境辨析；6) 每節安排由基本到綜合的原創平行題、逐步推理、錯誤選項原因、自我檢核及延伸練習。以可讀的基因型表格、Punnett 方格和原創家系圖支援推理；圖示標明符號及親子關係，提供文字替代。深度須涵蓋列式、推導、例題與失分診斷，不以術語清單充數。不得聲稱 AI 可生成/解釋題目或機評答案：該功能未實作且憲章禁止新增付費 API；也不得自動批改作文/長答。只提供由本團隊原創改寫的平行練習，改換情境/數值/人物但保留考核邏輯，按憲章加免責及版權聲明。歷屆試題僅可列官方章節名稱/頁碼/連結；不得複製題幹、圖表、評分準則或答案，亦不可把自製圖表冒稱官方圖表。",
+  "internal_links": "實際存在：/ai/past-paper-explainer（anchor「Past Paper 題解工具的使用建議」；只能作一般學習流程參照，並非遺傳功能）；/dse-maths/quadratic-equations（anchor「分步拆解題目示範」）；/ai/practice-generator（anchor「AI 練習題生成器」——僅連至既有工具介紹，不宣稱其可產生遺傳題）。planned：/dse-biology（生物科主題索引；基線不存在）、/practice?subject=biology&topic=genetics（遺傳練習入口，確認實際可用後才連）、/past-papers（歷屆試題官方入口；基線不存在）。不得把不存在頁面當既有連結。",
+  "status": "Blocked",
+  "reason": "來源不足，依指示標 BLOCKED：基線 d25c637 確認 /dse-biology/genetics 與 /dse-biology hub 均無 route；biology-auto.ts 雖有4題 topic=genetics 的機器閘題，但其量不足以支撐長篇 Past Paper 題解、評分要求或跨題失分模式，且題目未能證明是官方歷屆題。現有 AI Past Paper 頁僅提供一般使用建議，不是可用的學科解析器；app/api 無此遺傳 AI 功能，不能暗示已實作。憲章 §1.4 禁止重製官方受版權保護題目，只准列章節名稱、頁碼及連結；須使用原創平行改寫題並附規定免責/版權聲明。憲章 §5 禁新增付費 API，§8/§16.A 禁長答或作文自動批改。EDB 課程指南列有孟德爾定律、人類遺傳（ABO/伴性/性別決定）、家系圖及變異等範圍，證明具體教學價值，但未能證明這一頁有足夠可核查題源。不得 PUBLISH NOW：生物 hub 缺失且現有主題頁不足；其他五個 priority 頁尚未 production 驗證亦不能視為本頁已完成。此頁不與其他候選重複，故非 MERGE；不要合併到數學/英文頁。待取得經核驗的題庫與來源、建立可用生物導航/練習連結及內容後再重評。",
+  "sources": [
+    "基線 d25c63740a9184d0303e2558c8ee6f51643258d6；docs/seo-content-map.csv row 52 (csv.reader, header excluded)；確認 app/dse-biology/genetics/page.tsx 和 app/dse-biology/page.tsx 不存在。",
+    "docs/charter.md §1.4（原創平行改寫與免責/署名）、§5（禁止新增付費 API）、§8/§16.A（禁止作文/長答自動批改）、§19.3（官方受版權原文只可列章節、頁碼、連結）。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Bio_C_and_A_Guide_updated_e_20151126.pdf — Biology Curriculum and Assessment Guide, basic genetics learning outcomes.",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/bio/ — HKEAA Biology subject page; official assessment/document links. Not used to claim current past-paper question coverage."
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/52.json"
+}

@@ -1,0 +1,23 @@
+{
+  "index": 64,
+  "url": "/dse-chemistry/acids-bases",
+  "priority": "P2 LATER",
+  "page_type": "DSE化學課題教學／原創題解頁（先補足內容與題源後評估發布）",
+  "intent": "學生複習DSE酸與鹼單元時，需要理解指示劑與pH、酸鹼性質、強弱與濃度的差別，並掌握鹽類製備、滴定及相關化學計算；搜尋題解的學生亦需要可核驗的步驟、判分依據與錯因說明。此筆「Past Paper 題解」承諾目前沒有該頁或可核驗的酸鹼歷屆試題來源支持，不能宣稱已提供歷屆題目或評分要求。",
+  "h1": "DSE 化學酸與鹼：pH、反應、鹽類製備與滴定",
+  "title": "DSE 化學酸與鹼｜pH、鹽類製備與滴定解題｜DSE Level Up",
+  "description": "整理 DSE 化學酸與鹼：由酸鹼反應、指示劑與 pH、強弱與濃度，到鹽類製備及酸鹼滴定的步驟和計算。以原創平行題示範離子方程式、失分檢查和數據判讀；不重刊考評局試題，先核實題源與評分依據再發布。附上濃度與 pH 計算、滴定數據解讀及安全操作要點，適合釐清概念後循序練習。附指示劑比較及單位核對。再練習",
+  "core_content": "以學習成果為序，涵蓋：(1) 酸、鹼與鹼液的定義和典型反應，以HCl、H2SO4、NaOH及氨水示範分子／離子方程式；(2) 指示劑顏色、pH尺度，以及強酸pH與[H+]換算；(3) 強弱與濃度、解離程度的辨析；(4) 中和與鹽類製備方法選擇；(5) 標準溶液、滴定讀數、化學計量及有效數字；(6) 安全操作和常見概念錯誤。例題須為自行撰寫的原創平行題，不抄錄考評局題幹、圖表、評分準則或答案；方向包括由強酸pH反求濃度、按酸鹼方程式求滴定未知濃度、選擇適當指示劑並解讀滴定數據。用自製滴定示意圖／數據表輔助，附每步單位、方程式及錯因解析。先建立足量、經學科審閱的本頁內容和逐題來源對照；沒有明確官方題源與授權確認之前，不標作Past Paper、不聲稱官方評分要求，也不展示受版權保護原題。AI生成題目及作文／作答機評未在app/api實作；不可假設有此功能或加入新增付費API。",
+  "internal_links": "已存在：/practice（anchor：練習化學相關題目；連結前應確認可按酸鹼課題篩選）、/ai/past-paper-explainer（anchor：查看題目解題工具；只作既有頁面連結，不承諾酸鹼專屬AI能力）。/dse-chemistry及/past-papers在基線均無對應route，標為planned、不得偽裝成現有內鏈。",
+  "status": "Draft",
+  "reason": "基線source d25c637 中不存在 /dse-chemistry/acids-bases；原始第64筆是生成式內容地圖規劃列。雖然酸與鹼是DSE化學必修Topic IV，學習需求具體且可由概念、pH、鹽類和滴定提供有深度的學習價值，但現有化學hub本身內容不足，且五個priority實作仍未production驗證，因此本頁不可PUBLISH NOW，只能保留Draft並列P2 LATER。基線只有一般題庫中標記acids_bases的題目資料，沒有此URL逐題對應的官方Past Paper來源／卷年題號及評分依據；故不能稱作Past Paper 題解。題庫可用來設計原創平行例題，但需核對課綱與學科審閱。原題、官方答案及評分準則涉及版權，依憲章只能引用章節名稱、頁碼及連結，題目須用原創平行改寫法。此頁不是其他現存內容的重複頁；不應與課題hub合併，應待hub和來源資料成熟後再獨立補足其針對性。",
+  "sources": [
+    "基線檢查：git HEAD d25c63740a9184d0303e2558c8ee6f51643258d6；/dse-chemistry/acids-bases、/dse-chemistry及/past-papers均無對應app route。",
+    "docs/seo-content-map.csv：csv.reader第64列（header不計）原始列為Chemistry acids bases Past Paper題解規劃。",
+    "docs/charter.md §1第4點：零版權侵犯；題目使用原創平行改寫法。§19.3第4點：考評局／教育局版權原文只記章節名、頁碼及連結。",
+    "docs/topic-syllabus-map-2027.md：acids_bases列為化學必修，對應Topic IV Acids and bases。",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf （教育局 Chemistry Curriculum and Assessment Guide；Topic IV Acids and Bases，課程及學習成果）",
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/ref-and-resources/Supplementory_note_for_Chem_20180818_Eng.pdf （教育局Supplementary Note；標示適用於2021 HKDSE及以後，Topic IV範圍及滴定補充說明）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/64.json"
+}

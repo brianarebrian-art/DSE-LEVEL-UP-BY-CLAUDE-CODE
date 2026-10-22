@@ -1,5 +1,5 @@
 import type { Question } from './types'
-import { createBank, n, qty, round, type TopicMeta, type FwMeta } from './_parametric'
+import { createBank, qty, round, type TopicMeta, type FwMeta } from './_parametric'
 
 // ═══════════════════════════════════════════════════════════════════════════
 // design-tech-bank.ts —— 設計與應用科技參數化母模板（2026-08-29）
@@ -268,6 +268,7 @@ const stages: Array<[string, string, number, string, string]> = [
   ['測試評估', 'testing and evaluation', 5, '以使用者實際試用的結果修正設計', 'revising the design from what real users actually do with it'],
 ]
 for (const [zh, en, order, why, whyEn] of stages) {
+  void order
   const others = stages.filter((s) => s[0] !== zh).slice(0, 3)
   b.add(`datb_dp1_${en.slice(0, 8)}_o`, T.process, FW.apply, 'hard',
     [`若略過設計過程中的「${zh}」階段而直接進入下一步，最可能出現甚麼後果？`,

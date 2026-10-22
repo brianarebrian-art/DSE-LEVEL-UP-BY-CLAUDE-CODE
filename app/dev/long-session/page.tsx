@@ -1,3 +1,4 @@
+import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import LongSessionHarness from './LongSessionHarness'
 
@@ -8,6 +9,11 @@ import LongSessionHarness from './LongSessionHarness'
 // ⚠️ 呢版會真正寫入本機 localStorage（課題掌握度／錯題本），同真實練習一樣。
 // 只作開發驗證用；生產環境一律 404。
 export const dynamic = 'force-dynamic'
+
+export const metadata = completeSeoMetadata({
+  title: '長練習開發驗證 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '只供開發驗證書寫題長練習流程的內部頁面，正式環境不提供。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/dev/long-session')
 
 export default function DevLongSessionPage() {
   if (process.env.NODE_ENV === 'production') notFound()

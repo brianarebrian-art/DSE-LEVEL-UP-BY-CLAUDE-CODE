@@ -13,6 +13,7 @@ import GlobalA11y from '@/components/GlobalA11y'
 import PrivacyConsentGate from '@/components/PrivacyConsentGate'
 import A11yPanel from '@/components/A11yPanel'
 import ReadingRuler from '@/components/ReadingRuler'
+import { serializeJsonLd } from '@/lib/structuredData'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,7 +44,7 @@ import { getActiveSubjects } from '@/data/subjects'
 const SUBJECT_COUNT = getActiveSubjects().length
 
 // 首頁及搜尋結果顯示的標題。創辦人 2026-10-09 指示改為三段，加入「DSE 溫習平台」。
-// 首頁沒有自己的 metadata，所以 <title>、OG 及 Twitter 標題都取自這裏。
+// Homepage route metadata is defined in app/page.tsx; this is the layout fallback.
 const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 掌握 DSE 核心邏輯' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
 
 export const metadata: Metadata = {
@@ -186,7 +187,7 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           nonce={nonce}
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
         {/* P1-3 WCAG：跳至主要內容連結（鍵盤/螢幕閱讀器用戶第一下 Tab 就見到，
             滑鼠用戶完全睇唔到）。Server component 冇 locale hook，雙語並列。 */}

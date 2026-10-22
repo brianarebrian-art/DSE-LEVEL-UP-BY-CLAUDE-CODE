@@ -1,0 +1,21 @@
+{
+  "index": 53,
+  "url": "/dse-biology/homeostasis",
+  "priority": "P2 LATER",
+  "page_type": "獨立課題教學頁（原定 Past Paper 題解改為不冒稱真題的概念教學）",
+  "intent": "學生查找 DSE Biology 恆常性筆記，尤其負回饋、腎臟排泄與滲透調節、體溫及血糖調節的因果流程，並想用情境題檢查理解。課題式複習有真實學習用途；但目前沒有可核實的恆常性 past-paper 題目來源，不能滿足『Past Paper 題解』承諾或杜撰年份／卷別。",
+  "h1": "DSE Biology 恆常性：負回饋、腎臟與血糖調節",
+  "title": "DSE Biology 恆常性：腎臟、體溫與血糖調節｜DSE Level Up",
+  "description": "用負回饋理解 DSE Biology 恆常性：逐步掌握腎元超濾與選擇性重吸收、體溫調節及胰島素與升糖素的血糖作用。透過原創情境例題拆解刺激、受器、效應器和復原因果鏈，辨認常見失分混淆，建立解釋機制的作答步驟；不依賴背誦零散名詞，適合按課題複習，並循序建立穩定的應試理解，提升辨析題目線索及準確說明生理調節機制的能力。",
+  "core_content": "先界定內環境維持相對穩定的意義，說明受器、控制中心、效應器與負回饋如何把偏離值拉回正常範圍。分別用流程圖講清：腎元中超濾、選擇性重吸收和尿液形成，以及水分調節的題目推理；體溫升高或降低時皮膚血管、汗腺及骨骼肌反應；血糖升高時胰島素作用、血糖降低時升糖素作用。每節包含一個標明『新編練習，非考評局真題』的情境例題、逐步因果鏈答案、常見混淆（如把負回饋寫成正回饋、混淆胰島素與升糖素、只列器官而未解釋變化方向）及自我檢核。圖表採自製標籤流程圖，避免複製考評局題目圖像。完成官方現行課程文件與歷屆卷別對照後，才可補充逐題真題分析；未核對之前不標年份、Paper、題號或評分原文。",
+  "internal_links": "/dse-biology — anchor『DSE Biology 課題總覽』（planned；基線不存在）；/practice — anchor『開始相關練習』（基線實際存在）；/ai/past-paper-explainer — anchor『Past Paper 題解工具』（基線實際存在，但此頁非其功能依賴）。本頁 /dse-biology/homeostasis 基線不存在，禁止宣稱已上線。避免連到 /ai/practice-generator：路徑雖存在，AI生成未在 app/api 實作且憲章禁新增付費 API。",
+  "status": "Draft",
+  "reason": "原始內容地圖第53筆承諾恆常性 Past Paper 題解並規劃連至 /dse-biology、/past-papers、/ai/past-paper-explainer；基線 d25c637 沒有 /dse-biology/homeostasis，也沒有 /dse-biology 或 /past-papers 路由。現存 AI 題解頁只是建議使用流程，不代表已有按學科解析功能；app/api 未實作本頁所需AI生成／機評，且憲章 §5 禁止付費第三方 API。基線 biology 題庫雖有恆常性相關血糖、體溫概念題，並沒有可核實的歷屆考評局真題來源標籤，因此不得稱為 Past Paper。評估保留此獨立課題教學頁為 P2 LATER：與一般 Biology hub 目的不同，不宜合併成泛科目頁；若以真題題解為必要定位，應延後到取得有來源標籤的題目及版權可用依據再改定位。僅用自編例題與原創示意圖；不得重製考評局受版權保護題目全文、評分準則原文或圖像，需官方核准或授權時先確認許可。考評局查核僅找到舊版生物課程PDF的題綱佐證，並未核對現行HKDSE課綱及歷屆卷別，故出版前須核查；不因其他代理工作或在建項目而視作完成。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/DocLibrary/HKCEE/Subject_and_Syllabuses/2011/2011ce-e-bio.pdf — 考評局官方生物課程PDF指出第6節 Regulation and Defence涵蓋homeostasis、osmoregulation、體溫及血糖調節；屬舊版課程文件，不能單獨證明現行HKDSE範圍。",
+    "https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_b_subjects/hkdse_subj.html?A2&2&5 — 考評局科目資訊入口；擷取頁面只有Category A Biology評核架構及課程指引連結，沒有現行課綱/卷別細節，尚未完成對應查核。",
+    "/home/ubuntu/dse-level-up/docs/seo-content-map.csv（基線 d25c637，第53筆）",
+    "/home/ubuntu/dse-level-up/docs/charter.md（基線 d25c637，§1/§5等：版權原文限制、禁止新增需付費第三方API）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/53.json"
+}

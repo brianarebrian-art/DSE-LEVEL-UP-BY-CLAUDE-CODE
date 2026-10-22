@@ -1,5 +1,7 @@
 # DSE Level Up SEO 審核報告
 
+> HISTORICAL／已取代：本文件由 d25c637 保留作追溯，不是本輪驗收或上線證據。當前真實狀態採用 `REPOSITORY-TRUTH-REPORT.md`，修復與剩餘門檻採用 `SEO-TECHNICAL-FIXES.md`。其「已加入」只表示原始提案／程式碼存在，不能當成完整工具或 Google 已索引。
+
 審核日期：2026-10-22。方法：檢查 GitHub repo 的 Next.js App Router 原始碼、公開路由宣告與 SEO 設定；未有正式站 Search Console 或 Lighthouse 數據，因此效能、實際索引量和搜尋成效標為「待部署後量度」，不把程式碼存在當成 Google 已索引的證據。
 
 ## 現況與風險

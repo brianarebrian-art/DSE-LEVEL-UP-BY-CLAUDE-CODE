@@ -1,0 +1,21 @@
+{
+  "index": 13,
+  "url": "/ai/study-plan",
+  "priority": "P2 LATER",
+  "page_type": "學習方法指南／工具介紹",
+  "intent": "香港 DSE 考生想按考試日期、可用溫習時間與弱項排出可執行的讀書計劃，拆解每日任務並定期調整。",
+  "h1": "DSE 溫習計劃：按考期、時間與弱項安排每週任務",
+  "title": "DSE 溫習計劃怎樣排？按考期與弱項拆解每週任務｜DSE Level Up",
+  "description": "面對 DSE 多科同時溫習，不知如何分配時間？本頁提供按考試日期、每週可用時段與自測弱項制定計劃的方法，示範如何把「溫數學」拆成可完成的題目、訂正與重做任務，並每週依錯題調整；亦說明考前衝刺與平日維持的安排。附可自行複製的週計劃檢視欄位，方便循序修正安排。不承諾未實作的 AI 自動分析或作文評分。即時微調。",
+  "core_content": "以不依賴未實作 AI 的實用指南深化內容：先盤點各科考試日期及每週真實可用時段；示範如何將弱項自測結果轉為單次 25–40 分鐘的具體任務（指定課題、原創平行題練習、核對答案、錯因紀錄、隔日重做），安排新題與訂正的比例；提供一個標明為示例而非官方建議的 7 日跨科計劃表，說明考前階段如何調整；附每週檢視流程，以完成度及錯題再測結果調整下週任務，提示休息及避免不切實際的超載。可用自製時間分配示意圖及原創例題示範「溫數學」如何拆項；若涉及微積分，須分開 M1/M2 對應範圍。不得重製考評局受版權保護的試題、圖表或答案，只能提供章節名稱、頁碼與官方連結；理科課題如無可核實的題目來源，不稱為 Past Paper。明確說明目前頁面僅是靜態建議，AI 自動分析及作文機評在 app/api 並未實作，且不得新增付費 API。",
+  "internal_links": "/practice（anchor：「由練習表現開始」；基線實際存在）；/dse-maths（「DSE Maths 科目頁」；存在）；/dse-english（「DSE English 科目頁」；存在）；/ai/practice-generator（「AI 練習題生成器」；存在）。如加週檢視範本，可在本頁內錨點 planned，勿當成既有路徑。",
+  "status": "Draft",
+  "reason": "基線 d25c637 的 docs/seo-content-map.csv 以 csv.reader 第13筆（不含 header）列為 P0「AI DSE 個人化學習計劃」，URL /ai/study-plan；基線 source 確實有 app/ai/study-plan/page.tsx，但內容只有三項泛用提示及練習入口，未提供具體排程方法、可照做的例表或足夠學習深度。真實需求應是多科時間配置、弱項轉任務、訂正與循環重做，而不是空泛 AI 方案；現頁不足以 PUBLISH NOW，故先 Draft、P2 LATER。source 的 app/api 未實作 AI 計劃或作文機評，憲章 §5 禁止新增需付費第三方 API；內容不可暗示已有自動化能力，若此頁定位必須是 AI 功能則來源與可行性不足應 BLOCKED。不要與練習生成器混為一頁：其目的為產生練習，本頁可保留為人工可執行的排程指南。以原創排程表／平行改寫例題即可，不需要照錄 Past Paper；憲章 §1 第4點及 §19.3 禁止複製考評局受版權保護原文，只能列章節、頁碼與連結。無需援引現行卷別或考綱斷言；若後續加入各科範圍須官方查核。",
+  "sources": [
+    "基線 d25c637: docs/seo-content-map.csv（csv.reader 第13列）",
+    "基線 d25c637: docs/charter.md §1 第4點、§5、§19.3",
+    "基線 d25c637: app/ai/study-plan/page.tsx",
+    "基線 d25c637: app/api/ 下現有路由未提供 AI study plan／作文機評"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/13.json"
+}

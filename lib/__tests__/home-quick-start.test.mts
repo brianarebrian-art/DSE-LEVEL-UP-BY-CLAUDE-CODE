@@ -57,7 +57,7 @@ test('session length in minutes has one source', () => {
   assert.equal(E.sessionMinutes(), 15)
   assert.equal(E.sessionMinutes(10), 15)
   assert.equal(E.sessionMinutes(2), 5)
-  const home = read('app/page.tsx')
+  const home = read('app/HomePageClient.tsx')
   const subject = read('app/subjects/[subject]/SubjectDetailView.tsx')
   assert.match(home, /sessionMinutes\(\)/)
   assert.match(subject, /sessionMinutes\(sessionQuestions\)/)
@@ -69,7 +69,7 @@ test('session length in minutes has one source', () => {
 })
 
 test('the quick start sits in the hero, before the trust chips, with the other-subjects link beside it', () => {
-  const page = read('app/page.tsx')
+  const page = read('app/HomePageClient.tsx')
   const hero = page.slice(page.indexOf('── HERO ──'), page.indexOf('── 信任列 ──'))
   // Since audit loop T09 the grid is a shared QuickStartGrid, also used by the bottom CTA.
   const at = hero.indexOf('<QuickStartGrid labelledBy="quick-start-label"')
@@ -87,7 +87,7 @@ test('negative self-test: an elective subject would be caught', () => {
 })
 
 test('the bottom call to action starts practice directly, like the hero (audit loop T09)', () => {
-  const page = read('app/page.tsx')
+  const page = read('app/HomePageClient.tsx')
   const cta = page.slice(page.indexOf('── CTA ──'))
   assert.match(cta, /<QuickStartGrid labelledBy="quick-start-label-bottom"/)
   assert.match(cta, /id="quick-start-label-bottom"/)

@@ -1,0 +1,24 @@
+{
+  "index": 47,
+  "url": "/dse-chinese/argumentation",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記（議論文寫作教學；保留為獨立頁）",
+  "intent": "DSE中文考生想學卷二作文議論文的審題立場、論證組織、例證運用與反方回應。這是特定體裁的實際學習需求，應提供由題目推導段落的示範，而非泛用作文模板；未推測搜尋量。",
+  "h1": "DSE中文議論文寫作：審題立論、論證段落與例題拆解",
+  "title": "DSE中文議論文寫作｜審題立論與論證例題拆解｜DSE Level Up",
+  "description": "DSE中文議論文寫作教學：掌握拆題、立場、論點安排及論證段落，透過原創例題學習反方回應、例證扣題與自我檢核，辨認離題、重複論據和只列正反而未判斷等問題。逐步練習寫出有理據的文章，掌握考試應用方法。了解寫作方法，做好中文科作文溫習準備。 寫作練習參考。 寫作練習參考。 寫作練習參考。 寫作練習參考。 寫作練習參考。",
+  "core_content": "撰寫前須以考評局當年度中國語文科課程及評核文件核實卷別與範圍，不把坊間模板稱官方評分公式。章節：拆解題目範圍、關鍵概念、限制詞與任務；建立可辯護立場並列出互不重複論點；以「主張—理由—具體例證—扣回題旨」寫論證段，分清理由與例子；安排段落、引言與結論；公平呈現反方並回應；診斷離題、口號式空泛、例證不相干、論點重複及只列正反未作判斷；限時構思與自我檢核。例題採原創平行情境（如校園是否應限制一次性用品），逐步展示審題、提綱、段落初稿與逐句修訂，再以錯誤示例說明修復，不冒稱官方標準答案。可用簡單論證結構圖，毋須數據圖表。Past Paper只列年份、題號及考評局官方連結，不複製受版權保護題幹、範文或評卷材料；未核實題源及授權前不提供歷屆題解。不得暗示AI生成或作文機評已存在：app/api並未實作，憲章禁止新增付費第三方API。",
+  "internal_links": "現存：/practice（anchor：前往練習；說明為一般練習入口，不暗示特定中文作文題已覆蓋）。/writing（anchor：查看寫作功能；須先確認內容吻合）。/ai/practice-generator（anchor：探索練習工具；不可宣稱支援中文議論文生成或作文評分）。/dse-chinese（planned：中文科總覽，基線不存在）。/dse-chinese/paper-two-writing（planned：卷二寫作總覽，基線不存在）。",
+  "status": "Draft",
+  "reason": "保留但只列Draft：議論文的論點推理與反方處理，對應特定學習問題，應與原始地圖第41筆卷二寫作總覽（/dse-chinese/paper-two-writing）互相導流而非合併；總覽涵蓋全卷，本頁專深論證方法，避免複製通用審題與結構模板。檢查d25c637，/dse-chinese/argumentation及中文hub均不存在；內容地圖僅有泛化章節，缺經核實的現行官方卷別／考綱界定、教師審閱例題與Past Paper來源及授權檢查，故不能PUBLISH NOW。考評局科目入口列assessment framework、課程指引、樣本題等，但其課程指引頁連至教育局2015文件，僅據此不能斷言現行細節，須另核對當年度官方文件。憲章§1.4要求原創平行改寫並禁止侵權，§5禁止付費第三方API與新增套件。不可假設作文AI或機評已實作；不得因其他優先工作正在進行而視同production驗證完成。",
+  "sources": [
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1（考評局中國語文科入口）",
+    "https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A1&1&1_2（官方課程指引入口，頁面所列為2015指引連結）",
+    "/home/ubuntu/dse-level-up/docs/charter.md（d25c637，§1.4及§5）",
+    "/home/ubuntu/dse-level-up/docs/SEO-CONTENT-MAP.md（d25c637，卷二寫作總覽列於第41筆）",
+    "/home/ubuntu/dse-level-up/app/practice/page.tsx（d25c637）",
+    "/home/ubuntu/dse-level-up/app/writing/page.tsx（d25c637）",
+    "/home/ubuntu/dse-level-up/app/ai/practice-generator/page.tsx（d25c637；路由非作文AI功能證明）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/47.json"
+}

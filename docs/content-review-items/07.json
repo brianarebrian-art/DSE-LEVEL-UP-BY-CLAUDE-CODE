@@ -1,0 +1,22 @@
+{
+  "index": 7,
+  "url": "/dse-physics",
+  "priority": "P1 NEXT",
+  "page_type": "Physics",
+  "intent": "香港DSE物理考生查找按課題整理的概念、公式、圖像與實驗題解法，釐清題目如何選模型、列式、讀圖及呈現推理；考生亦需要分清必修Paper 1、選修Paper 2及SBA要求。這是具體的學習意圖，但搜尋量未查證，不作流量推斷。",
+  "h1": "DSE Physics 物理筆記：公式、圖像與實驗題解法",
+  "title": "DSE Physics 物理筆記：公式、圖像與實驗題解法 | DSE Level Up",
+  "description": "為香港DSE物理考生整理必修概念、公式選用、圖表判讀和實驗題作答方法。以原創平行例題示範由物理情境建立模型、列式、檢查單位及解釋結果，並分清Paper 1必修、Paper 2選修與校本評核SBA；課題範圍和卷別依考評局最新資料核對。並提供圖表判讀和實驗題的逐步自查方法，協助考生按步驟溫習及訂正錯誤。",
+  "core_content": "建立一個真正可用的物理科學習入口，而非只列公式：1) 使用2026考評局框架標示Paper 1必修範圍（佔科目分數60%）、Paper 2選修部分（20%，四個選修中選答兩個）及SBA（20%），並清楚標示年份，更新框架時重新核對；不可把SBA實驗技能誤寫成公開試卷別。2) 依課程課題建立導航，每節包括概念和適用條件、符號/單位、常見模型選擇錯誤、圖像斜率或截距的物理意義，以及由文字轉成方程的步驟。3) 實驗題章節涵蓋器材用途、變因、程序、表格與座標軸、最佳直線、讀值/誤差、結論與改良建議；圖示用自製示意圖或具文字替代說明的原創SVG。4) 每節配有原創平行例題（非考評局題目改貼）：例如運動圖像辨析斜率與面積、電路中用電表讀值建立關係、實驗數據繪圖判斷比例；逐步展示解題、單位檢查及常見錯因，再附短練習及答案解釋。必須由物理教師核實答案及術語。5) 可列考評局官方框架/歷屆試卷入口作外部參考；不得重製、轉載或生成仿真Past Paper全文、原圖或官方評分語句。現有app/api未實作AI生成或作文機評，憲章禁止新增付費API，內容不得宣稱已有此功能。現有DSE hub內容不足以支持即時發布；本頁為待實作草案。",
+  "internal_links": "已存在路由：/dse-maths（anchor「DSE Maths 數學筆記與題解」；跨科目入口）、/dse-english（anchor「DSE English 英文筆記與寫作技巧」；跨科目入口）、/subjects/physics（planned；需先核實動態subject slug實際可用再連結）、/notes/physics（planned；notes動態頁需核實科目資料後才可連結）。勿把planned標成現有連結。",
+  "status": "Draft",
+  "reason": "基線d25c637中不存在app/dse-physics/page.tsx或/dse-physics相關source，因此不能列為已發布。原始row7只列「公式、圖像、實驗題」，沒有課題範圍、可教的例題、圖像解讀步驟、實驗作答深度或來源依據；須補齊並經物理教師審核。考評局2026框架核實公開試為Paper 1必修60%、Paper 2選修20%（四選二）、SBA 20%；實作須以年份標示以免沿用過時卷制。Past Paper受版權限制，應連往官方來源，教學例題採原創平行改寫並避免官方原文、圖像及評分語句。AI生成及作文機評在app/api未實作，且憲章禁止新增付費API，不可當作頁面功能宣傳。P0 PUBLISH NOW不成立：現有DSE hubs內容不足，五個priority實作仍在進行且未經production驗證；本筆只能Draft，完成內容、來源與上線驗證後重審。此為獨立物理科入口，無確認需合併的相同物理專頁；不改動其他索引列。",
+  "sources": [
+    "基線 d25c637：docs/seo-content-map.csv（csv.reader第7筆；URL /dse-physics）",
+    "基線 d25c637：app/ 路由樹確認沒有 /dse-physics；app/api/ 路由清單未見生成/作文評核API",
+    "基線 d25c637：docs/charter.md §1 第4點（題目採原創平行改寫、零版權侵犯）；§5 成本約束（禁止付費API）",
+    "香港考試及評核局，2026 HKDSE Physics Assessment Framework：https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/2026hkdse-e-phy.pdf",
+    "香港考試及評核局，Category A Senior Secondary Subjects / Physics：https://www.hkeaa.edu.hk/en/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A2&2&20"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/07.json"
+}

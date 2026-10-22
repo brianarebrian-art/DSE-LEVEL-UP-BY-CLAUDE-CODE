@@ -1,0 +1,19 @@
+{
+  "index": 79,
+  "url": "/dse-physics/circular-motion",
+  "priority": "P2 LATER",
+  "page_type": "獨立物理概念教學頁（題解型需有可核實題源；現階段不可標作 Past Paper 題解）",
+  "intent": "學生遇到圓周運動題時，想弄清角速度、線速度、向心加速度和合力的關係，並練習受力圖、公式選用、單位與方向判斷。教育局課程指引明列均勻圓周運動及向心加速度、指向圓心的合力；沒有搜尋量證據，不推斷流量。",
+  "h1": "DSE Physics 圓周運動：角速度、向心加速度與受力解題",
+  "title": "DSE Physics 圓周運動｜向心加速度與受力解題｜DSE Level Up",
+  "description": "學懂 DSE Physics 圓周運動的角速度、線速度、向心加速度與合力關係，配合受力圖和分步例題，練習公式選用、單位換算、方向判斷及常見錯誤，掌握圓周運動題的分析步驟，並分清向心力不是額外的新力。內容依課程範圍編寫，例題以原創情境示範。不把速度方向與加速度方向混淆，逐步建立可套用的解題流程。學會自我檢查。",
+  "core_content": "先界定均勻圓周運動，說明速率可不變但速度方向改變，因此有指向圓心的加速度；以圖解標示切線方向速度、徑向加速度及合力，避免把向心力當成額外一種力。依官方課程範圍整理角速度與線速度關係、向心加速度及向心合力，交代符號、SI單位、方向和適用條件。例題方向採自行編寫情境：已知半徑和週期求線速度／角速度／向心加速度；車輛轉彎或繩繫小球畫受力圖，辨認哪些實際力的徑向分量提供合力；給出錯把速度當徑向或把向心力另加一次的解答，逐步診斷。圖表用原創向量示意圖、公式量綱／變量關係表及步驟流程圖，標示方向且附文字說明。只有取得並逐題核實考評局公開題目年份、卷別、題號及授權範圍後，才可加入 Past Paper 題幹或評分要求；未有題源前明確標為原創練習，不稱歷屆題、不重製官方圖表或整題。不得承諾 AI 解題或作文／長答機評：現有 app/api 未實作相關功能，且憲章禁止新增付費 API與長答自動批改。",
+  "internal_links": "基線實際存在 /ai/past-paper-explainer（anchor：了解題目解析功能；只作一般入口，不可聲稱本頁題目已接入AI）。/dse-physics、/past-papers及本頁 /dse-physics/circular-motion 在基線均無對應頁面／路由；未來可由物理主題hub連入本頁並由本頁回連hub，但標為planned，不可作現存連結。",
+  "status": "Draft",
+  "reason": "基線 d25c637 原始地圖第79筆將本頁列為 P2 長尾 Past Paper 題解，但基線source沒有 /dse-physics/circular-motion 路由，也未找到對應圓周運動物理題庫題源；現有DSE hub內容不足以支撐發布。教育局課程指引確認此為課程涵蓋學習點，具教學價值，故保留為獨立概念頁草稿，先做有深度、原創且可核對的講解與示例，再核實有無可合法引用官方試題；之前不得宣稱 Past Paper、評分要求或AI個人化解題。原地圖連到不存在的物理hub與past-papers頁，不能假裝已連結。依指示只判斷此一列，不推斷跨列重複、不擅自合併；本列目前無足夠根據 MERGE/DELETE。未經production驗證，不能標 Published。",
+  "sources": [
+    "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Phy_C_and_A_Guide_updated_e_20151126.pdf",
+    "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Subject_Information/phy/Phy-Formulae-e.pdf"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/79.json"
+}

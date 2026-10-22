@@ -1,0 +1,22 @@
+{
+  "index": 31,
+  "url": "/dse-english/writing-format",
+  "priority": "MERGE",
+  "page_type": "主題筆記（合併重複規劃列；保留既有頁）",
+  "intent": "學生想辨認 DSE English Writing 常見文類格式，了解正式程度、段落安排及如何完整回應題目，並尋找考前可操作的檢查清單。屬具體實用的學習需求；不推測搜尋量。",
+  "h1": "DSE English Writing：Letter、Article、Report 格式與寫作步驟",
+  "title": "DSE English Writing 格式指南：Letter、Article、Report｜DSE Level Up",
+  "description": "給準備 HKDSE English Writing 的學生：比較 letter、article、report 的讀者、目的、語氣與版面，示範如何拆解題目要求、安排段落及逐項自查；另指出格式不能代替內容回應，並提供練習入口。補充自製題目示例與常見失誤修訂方向，幫你寫前規劃、寫後檢查，不依賴死背模板。實用。",
+  "core_content": "保留既有頁並深化：說明讀題辨識讀者、目的、情境及每個 bullet point；以自製平行題示範 letter/email、article、report 的稱呼／標題／小標、語氣、段落任務和結尾，不宣稱格式是硬性評分規則；展示短題幹如何列要求、逐項配對段落，再示範有效回應及常見失誤修訂；補充內容覆蓋、連貫、語域、文法和校對的分層檢查表；明確說明自我檢查，不暗示AI批改。圖表採原創比較表及題目規劃示意，無須圖片。只用自撰平行例題，不貼Past Paper題幹、考生答案或評分材料原文；如引用官方公開資料，只連官方頁面並遵守版權限制。",
+  "internal_links": "/dse-english —「返回 DSE English 科目頁」；/writing —「開始英文寫作自評」（非AI批改）；/notes/english-language —「英文課題筆記」。路徑均在基線存在。不要假定 /practice 或 /ai/practice-generator 提供英文文類練習／批改。",
+  "status": "Merged",
+  "reason": "原始第31列與第11列均指向 /dse-english/writing-format，主題、文類及內容規劃重複，不能當兩個獨立頁保留；第31列併入同URL既有頁（第11列規劃／同一canonical頁），保留URL而非另造目的URL。基線 d25c637 確有該頁；既有內容涵蓋三文體比較、簡短規劃及檢查清單，但缺逐步完整範例、要求對照及錯例修訂，應深化既有頁。科目hub內容不足，指定五個priority未production驗證，不能列 P0 PUBLISH NOW。基線沒有AI生成或作文機評實作，憲章禁止新增付費API，不得承諾此功能。",
+  "sources": [
+    "Repo baseline d25c637: docs/seo-content-map.csv（csv.reader row[31] 與 row[11]）",
+    "Repo baseline d25c637: app/dse-english/writing-format/page.tsx",
+    "Repo baseline d25c637: app/dse-english/page.tsx",
+    "Repo baseline d25c637: app/writing/page.tsx",
+    "Repo baseline d25c637: docs/charter.md §1（版權／題目限制）、§5（$0成本約束）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/31.json"
+}

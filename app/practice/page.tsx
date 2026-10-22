@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import { completeSeoMetadata } from '@/lib/seo'
 import { getActiveSubjects } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
 import PracticeShell from './PracticeShell'
@@ -11,14 +11,12 @@ import PracticeShell from './PracticeShell'
 // 互動邏輯原封不動搬入 `PracticeShell.tsx`（client）。
 // 練習引擎、反思鎖、錯因自診、NTM 二次確認、SEN 支援一律無改動。
 //
-// 標題用 `sr-only`：本頁係全螢幕應用介面，加一個可見大標題會破壞版面；
-// 但 `sr-only` 文字仍然存在於 HTML，爬蟲同螢幕閱讀器都讀得到。
+// 伺服器端標題與題庫導覽保持可見：內容服務學生，不是只給爬蟲或讀屏軟件的隱藏文字。
 
-export const metadata: Metadata = {
-  title: 'DSE 練習 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
-  description:
-    `免費 DSE 練習：${getActiveSubjects().length} 科獨立改寫題目，多項選擇題及書寫題兼備，答錯即時睇到解析。`, // i18n-exempt: 靜態 SEO meta description
-}
+export const metadata = completeSeoMetadata({
+  title: 'DSE 練習 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
+  description: '選擇科目與課題開始個人化 DSE 練習，作答紀錄只儲存在你的裝置。', // i18n-exempt: zh-Hant fixed search metadata
+}, '/practice')
 
 export default function PracticePage() {
   const subjects = getActiveSubjects()
@@ -32,8 +30,7 @@ export default function PracticePage() {
 
   return (
     <>
-      {/* 伺服器端渲染，`sr-only` 唔影響版面。雙語並列（server component 冇 locale hook）。 */}
-      <div className="sr-only">
+      <header className="mx-auto max-w-4xl px-4 pt-8">
         <h1>DSE 練習題庫 · HKDSE Practice{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
         <p>共 {total} 條獨立改寫題目（多項選擇 {mc} 條、書寫題 {written} 條），涵蓋 {subjects.length} 個 DSE 科目。答錯即時睇到解析。書寫題永不機器批改，交卷後對照參考答案自評。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: 雙語已並列，緊接下段英文（server component 冇 locale） */}</p>
         <p>
@@ -42,26 +39,26 @@ export default function PracticePage() {
           answer. Written-response questions are never machine-marked — you self-assess
           against the reference answer. Not affiliated with the HKEAA.
         </p>
-        <h2>科目 · Subjects{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h2>
-        <ul>
-          {subjects.map((s) => (
-            (() => {
-              const subjectQuestions = getSubjectQuestions(s.id)
-              const subjectWritten = subjectQuestions.filter((q) => q.type === 'long' || q.type === 'text').length
-              const subjectMc = subjectQuestions.length - subjectWritten
-              return (
-                <li key={s.id}>
-                  {/* tabIndex -1（R2-11）：隱藏區塊的連結原本會被 Tab 逐個經過，焦點落在畫面外，
-                      鍵盤用戶要按 25 次才到題目。讀屏軟件仍可用瀏覽模式讀到及跟隨。 */}
-                  <a href={`/subjects/${s.id}`} tabIndex={-1}>
-                    {s.name} — {subjectQuestions.length} 總題數 / total questions（{subjectMc} MC / multiple-choice、{subjectWritten} 書寫題 / written-response）{/* i18n-exempt: 雙語並列（server component 冇 locale） */}
-                  </a>
-                </li>
-              )
-            })()
-          ))}
-        </ul>
-      </div>
+        <section aria-labelledby="practice-subjects-heading">
+          <h2 id="practice-subjects-heading">科目 · Subjects{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h2>
+          <ul>
+            {subjects.map((s) => (
+              (() => {
+                const subjectQuestions = getSubjectQuestions(s.id)
+                const subjectWritten = subjectQuestions.filter((q) => q.type === 'long' || q.type === 'text').length
+                const subjectMc = subjectQuestions.length - subjectWritten
+                return (
+                  <li key={s.id}>
+                    <a href={`/subjects/${s.id}`}>
+                      {s.name} — {subjectQuestions.length} 總題數 / total questions（{subjectMc} MC / multiple-choice、{subjectWritten} 書寫題 / written-response）{/* i18n-exempt: 雙語並列（server component 冇 locale） */}
+                    </a>
+                  </li>
+                )
+              })()
+            ))}
+          </ul>
+        </section>
+      </header>
 
       <PracticeShell />
     </>

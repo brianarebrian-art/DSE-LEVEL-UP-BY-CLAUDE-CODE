@@ -1,0 +1,22 @@
+{
+  "index": 63,
+  "url": "/dse-chemistry/periodic-table",
+  "priority": "P2 LATER",
+  "page_type": "化學主題教學頁（週期表概念與原創練習；不應以Past Paper題解定位）",
+  "intent": "學生查找DSE化學週期表筆記與解題方法，想理解如何由元素在週期表的位置及電子排布推斷族、週期與性質，並掌握第I、II、VII及0族的性質和反應性趨勢。以概念講解、推理步驟及自行改寫的練習可提供實際學習價值；然而原始資料只籠統承諾「題目重點、評分要求、分步解法」，沒有對應的試題來源或年份題號，現階段不能宣稱提供Past Paper題解或評分要求。",
+  "h1": "DSE化學週期表：由電子排布推斷元素性質",
+  "title": "DSE化學週期表｜族、週期與元素性質推斷",
+  "description": "用清楚的週期表例子掌握週期與族、電子排布、鹼金屬及鹵素反應性趨勢，逐步推論陌生元素性質，並以原創題練習常見考法；附易錯位與自我檢查。適合DSE化學學生按概念循序溫習，整理如何由位置解釋性質，再把原子結構、族內趨勢和題目線索連起來；不照錄考評局試題，供課堂複習及考前查漏補缺。內容依官方課程範圍編排。",
+  "core_content": "建議分節：1) 先備概念：原子序、電子排布（課程範圍至Z=20）及價電子，配一幅自製示意圖說明週期數與族數如何對應電子排布；2) 週期表排序、族與週期的定義，練習由已給元素位置反推電子排布及反向判斷；3) 第I、II、VII及0族的電子結構與化學性質關聯，尤其鹼金屬、鹵素族內反應性差異，以自製趨勢圖和逐步推理表呈現；4) 陌生元素推論例題：給原子序／位置／最外層電子線索，逐步判斷族、週期、金屬或非金屬傾向及可能反應性，說清每步根據；5) 常見錯誤診斷：混淆原子序與質量數、族數與電子層數、將趨勢當作無例外定律、只背結論不說電子結構理由；6) 以原創平行題作形成性練習，附分步答案與自我核對清單。圖表須自行繪製，不複製考評局或教育局原圖／原文。若無核准題目清單，不列考評局年份題號或聲稱Past Paper逐題解析。",
+  "internal_links": "現存連結：/practice（anchor：練習化學題目；只連到練習平台，不假稱已有本主題專屬題組）；/methodology（anchor：了解題庫來源與內容核對方法）。/dse-chemistry 在基線沒有對應頁面，僅可列 planned 科目頁連結；/past-papers 與 /ai/past-paper-explainer 不列為本頁功能連結，避免暗示有已核實的週期表歷屆題庫或自動題解。",
+  "status": "Draft",
+  "reason": "基線 d25c637 的 app 中找不到 /dse-chemistry/periodic-table 對應source，故目前是待建構草案，不是已發布頁。官方教育局化學課程及評估指引明列週期表按原子序排列、族／週期與電子排布關係、第I、II、VII及0族性質及反應性差異，足以支持教學頁主題與核心範圍；來源不足以支持現存Past Paper試題、年份題號、評分要求或學生搜尋量。應由泛稱「Past Paper題解」改為獨立週期表教學頁，使用原創平行練習，不憑空編出歷屆題來源。建議P2 LATER：科目hub內容不足，五個priority頁面實作仍在進行且未production驗證，不能列PUBLISH NOW；本頁完成前維持Draft。憲章§1要求所有題目採原創平行改寫且不得侵犯版權，考評局／教育局受版權保護原文不可重刊；題目、文字及圖表要自製。基線app/api未實作AI題目生成／作文機評，且憲章§5禁止新增付費API，因此不得承諾AI生成或機評功能。",
+  "sources": [
+    "Repo baseline d25c637：docs/seo-content-map.csv，以Python csv.reader讀取第63筆（不含header）；原始分類為P2、長尾題解，未列題號或題目來源。",
+    "Repo baseline d25c637：確認 app/ 下不存在 /dse-chemistry/periodic-table 對應source；/practice、/methodology存在，可作實際內鏈。",
+    "Repo baseline d25c637：docs/charter.md §1（版權及原創平行改寫）、§5（禁止付費第三方API）、§16.A（禁止長答／作文自動批改）。",
+    "教育局與香港考試及評核局：《化學課程及評估指引（中四至中六）》英文版，Topic II, pp.20–21，官方PDF：https://www.edb.gov.hk/attachment/en/curriculum-development/kla/science-edu/Chem_C_and_A_Guide_updated_Eng_22082018.pdf。",
+    "香港考試及評核局 HKDSE Chemistry官方科目頁：https://www.hkeaa.edu.hk/en/hkdse/hkdse_subj.html?A2&2&7。"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/63.json"
+}

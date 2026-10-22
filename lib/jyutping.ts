@@ -53,7 +53,6 @@ export const FINALS = [
   'm', 'ng',
 ] as const
 
-const INITIAL_SET: readonly string[] = INITIALS
 const FINAL_SET: readonly string[] = FINALS
 
 /** 聲母由長到短排 —— 唔排嘅話 `gw` 會先被切成 `g`，剩低 `waa` 當韻母。 */

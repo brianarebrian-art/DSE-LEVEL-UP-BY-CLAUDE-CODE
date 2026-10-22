@@ -1,0 +1,22 @@
+{
+  "index": 43,
+  "url": "/dse-chinese/paper-three-listening",
+  "priority": "P1 NEXT",
+  "page_type": "主題筆記／聆聽應試策略",
+  "intent": "香港DSE中文科考生想了解卷三聆聽及綜合能力考核如何準備、如何邊聽邊記錄重點，以及如何把聆聽資料轉化為符合任務要求的答案。這是與卷一閱讀、卷二寫作、卷四說話不同的技能需求；不宣稱搜尋量或搜索趨勢。",
+  "h1": "DSE 中文卷三聆聽：聽取重點、整理資料與完成任務",
+  "title": "DSE 中文卷三聆聽技巧：筆記、整合資料與答題｜DSE Level Up",
+  "description": "掌握DSE中文卷三聆聽與綜合能力的備考方法：練習預覽任務、辨認說話者立場、精簡記錄關鍵資料，並按題目要求整合內容。附自擬練習方向、常見失分檢查清單及官方考核資料入口；以原創情境示範聽辨到組織答案，提供自我檢核步驟與易錯位提示，說明怎樣核對受眾、格式和要點及答題次序；實際安排以HKEAA當屆評核大綱為準。",
+  "core_content": "建議保留為獨立頁，與讀寫說話卷別分開。內容須至少包括：1) 當屆考核範圍與任務型態：每年先對照HKEAA對應屆別評核大綱，註明更新日期；不要把舊卷別格式當成現況。2) 聆聽前預覽：從題目指令圈出對象、目的、輸出格式和必須回應的要點；附一段自擬任務示範。3) 聆聽中筆記：用自創欄位記錄人物／立場／理由／例證／數字或時間，示範如何用縮寫避免抄錄全文；提醒分辨事實與意見。4) 聆聽後整合：按指定受眾和格式組織內容，以自擬短音頻或文字逐字稿演示「線索—筆記—答案」推理，給出可接受答案要點及常見漏答、錯配立場、無關抄錄等錯誤。5) 自我檢查清單與短練習：提供可由學生自行核對的示範答案／評分要點，不提供AI批改、AI生成個人回饋或作文機評。6) 例題必須原創，示意表格／筆記圖必須自行繪製；不得重製HKEAA試題、錄音、逐字稿或掃描圖。以連結方式引導學生到HKEAA官方歷屆試題，不將官方材料重新上載；使用任何官方摘錄前先核實授權。每一節練習按憲章採用10題上限。",
+  "internal_links": "/practice —「開始練習」：基線存在一般練習頁，但未核實有中文卷三專題題庫；須避免宣稱已提供卷三練習。/dse-chinese — planned：「中文科總覽」；基線不存在此路由，未建立前不可當成可點擊內鏈。/ai/practice-generator —「查看練習工具」：基線有此路由，但不可暗示其具中文卷三生成、聆聽音訊處理或作文／長答批改能力。",
+  "status": "Draft",
+  "reason": "基線d25c637中找不到 /dse-chinese/paper-three-listening 路由；內容地圖原始第43項雖列P1，只有通用模板式大綱，未提供卷三專屬教學、原創例題或核實的內鏈。卷三聆聽有別於其他卷別，具清楚的考生任務，不宜與卷一、二或四合併；也未見需要刪除的重複。按現有證據可列P1 NEXT、僅Draft，不可發布：須先依當屆HKEAA大綱逐點核實，再編寫自有聽力練習與答案說明。Past Paper音檔、題目及逐字稿受版權限制，不可逕自複製；只連到官方來源並使用原創材料。基線憲章禁止長答自動批改，app/api亦未實作所稱AI作文機評／付費API能力；頁面不得把這些列為既有功能或新增付費依賴。",
+  "sources": [
+    "docs/seo-content-map.csv（d25c637，CSV reader列索引43；原始規劃記錄）",
+    "docs/charter.md §7（每節練習題數）、§12（題目出處與上線說明）、§16.A（永久禁止長答自動批改）；d25c637",
+    "https://www.hkeaa.edu.hk/tc/hkdse/assessment/assessment_framework/（HKEAA：2026–2029核心科目中文科評核大綱入口；須依實際應考屆別核對）",
+    "https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/hkdse_subj.html?A1&1&1_5（HKEAA：中文科其他資源，列出教師會議資料及卷二、卷三樣本資料）",
+    "https://www.hkeaa.edu.hk/tc/hkdse/assessment/subject_information/category_a_subjects/chi_lang/2016_paper3_pp.html（HKEAA：卷三聆聽及綜合能力練習卷資料入口；不可據此推定當屆考試格式）"
+  ],
+  "report_path": "/home/ubuntu/dse-level-up/docs/content-review-items/43.json"
+}
