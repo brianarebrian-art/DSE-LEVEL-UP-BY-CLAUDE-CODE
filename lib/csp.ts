@@ -35,7 +35,9 @@ export function buildCsp(nonce: string | null): string {
     "font-src 'self' data:",
     "style-src 'self' 'unsafe-inline'",
     `script-src ${script}`,
-    `connect-src 'self' https://*.supabase.co https://accounts.google.com${nonce ? '' : ' ws:'}`,
+    // Sentry browser SDK uses tunnelRoute `/monitoring` (same-origin) when configured in
+    // next.config.ts. Keep ingest hosts listed as fallback if the tunnel is unavailable.
+    `connect-src 'self' https://*.supabase.co https://accounts.google.com https://*.ingest.sentry.io https://*.ingest.de.sentry.io${nonce ? '' : ' ws:'}`,
     // youtube-nocookie: the Relax Zone radio iframe, loaded only when the student presses play.
     "frame-src 'self' https://accounts.google.com https://www.youtube-nocookie.com",
     "form-action 'self' https://accounts.google.com",

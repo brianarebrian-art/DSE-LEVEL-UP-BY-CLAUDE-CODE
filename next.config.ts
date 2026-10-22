@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import { withSentryConfig } from '@sentry/nextjs/config'
 
 // Security headers (Supabase/Doc-3 P0-2 hardening).
 //
@@ -49,4 +50,19 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+export default withSentryConfig(nextConfig, {
+  org: 'dselevelup',
+  project: 'javascript-nextjs',
+
+  // Only print logs for uploading source maps in CI
+  silent: !process.env.CI,
+
+  // Upload a larger set of source maps for prettier stack traces (increases build time)
+  widenClientFileUpload: true,
+
+  // Auth token for source map upload — set SENTRY_AUTH_TOKEN in CI / .env.sentry-build-plugin
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // Route browser requests to Sentry through Next.js to avoid ad blockers
+  tunnelRoute: '/monitoring',
+})

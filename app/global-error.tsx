@@ -1,10 +1,23 @@
 'use client'
 
+import * as Sentry from '@sentry/nextjs'
+import { useEffect } from 'react'
+
 // Global error boundary — the last line before Next's built-in error screen. In
 // production Next already strips stack traces from the client (only a `digest` is
 // sent), but this guarantees users see an on-brand, detail-free page and a recovery
 // action instead of a bare framework fallback. Must render its own <html>/<body>.
-export default function GlobalError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  useEffect(() => {
+    Sentry.captureException(error)
+  }, [error])
+
   return (
     <html lang="zh-HK">
       <body style={{ background: '#0f172a', color: '#e2e8f0', fontFamily: 'system-ui, sans-serif' }}>

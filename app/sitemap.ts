@@ -14,7 +14,9 @@ import { getActiveSubjects } from '@/data/subjects'
 //    一批空白頁，拖低整站品質評分。待各頁補上伺服器端內容後方可加入。
 // ③ 舊「影子溫書室」（`/wall`）已於 2026-08-21 整個移除 —— 見 docs/DECISION-no-interaction.md。
 //    本站【永久】唔提供任何用戶對用戶互動，所以呢度亦唔會再出現社群類路由。
-// ④ `/admin`、`/sign-in`、`/sign-up`：權限頁，robots.txt 已明文 Disallow。
+// ④ `/admin`、`/sign-in`、`/sign-up`：權限／登入頁。搜尋可見性由 metadata
+    //    robots noindex 控制（lib/seoPolicy.ts），不是 robots.txt Disallow ——
+    //    Disallow ≠ 登入閘，亦唔代替授權。robots.ts 只 Disallow `/api/`。
 //
 // 網域：www.dselevelup.com（2026-10-09 創辦人回覆 58a），由 lib/site.ts 匯入。
 // 2026-08-14 收攏為單一來源，理由見 lib/site.ts。

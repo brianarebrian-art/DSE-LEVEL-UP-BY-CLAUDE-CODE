@@ -73,5 +73,6 @@ export function proxy(request: NextRequest) {
 // Everything except build assets and files with an extension (images, sw.js, robots.txt,
 // sitemap.xml, the web manifest, security.txt): those are not HTML and need no nonce.
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|.*\\.[a-zA-Z0-9]+$).*)'],
+  // Exclude Sentry tunnel (/monitoring) so proxy/CSP does not intercept SDK beacons.
+  matcher: ['/((?!_next/static|_next/image|monitoring|.*\\.[a-zA-Z0-9]+$).*)'],
 }
