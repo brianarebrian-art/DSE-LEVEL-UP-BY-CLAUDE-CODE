@@ -9,7 +9,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-const { createLimiter, isAuthSensitivePath } = await import('../rateLimit.ts')
+const { createLimiter, isAuthSensitivePath, isUnmeteredApiPath } = await import('../rateLimit.ts')
 
 test('限流本身：窗口內超過上限就擋，過咗窗口放返', () => {
   const l = createLimiter()
@@ -50,5 +50,12 @@ test('嚴格桶：session 輪詢同其他 API 唔包（否則正常用戶會被 
   for (const p of ['/api/auth/session', '/api/auth/get-session', '/api/auth/csrf', '/api/progress',
     '/api/auth/signinx', '/api/auth/sign-inx']) {
     assert.equal(isAuthSensitivePath(p), false, p)
+  }
+})
+
+test('健康探測唔計入限流，其他 API 仍然計', () => {
+  assert.equal(isUnmeteredApiPath('/api/health'), true)
+  for (const p of ['/api/healthz', '/api/health/extra', '/api/progress', '/api/auth/session', '/health']) {
+    assert.equal(isUnmeteredApiPath(p), false, p)
   }
 })
