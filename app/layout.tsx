@@ -14,6 +14,7 @@ import PrivacyConsentGate from '@/components/PrivacyConsentGate'
 import A11yPanel from '@/components/A11yPanel'
 import ReadingRuler from '@/components/ReadingRuler'
 import { serializeJsonLd } from '@/lib/structuredData'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -173,6 +174,9 @@ export default async function RootLayout({
         {process.env.VERCEL_ENV === 'production' && (
           <Script src="/_vercel/insights/script.js" strategy="afterInteractive" nonce={nonce} />
         )}
+        {/* Vercel Speed Insights：測量真實用戶的頁面載入速度（Web Vitals）。
+            只喺正式部署環境載入，本機及預覽版唔載。 */}
+        {process.env.VERCEL_ENV === 'production' && <SpeedInsights />}
         {/* 防閃爍：必須喺任何內容繪製之前決定主題，否則深色用戶會見到一下白閃。
             內容與 lib/theme.ts 同一條日出方程 —— 呢度係鏡像副本，因為 inline
             script 用唔到 import。兩者若有偏差，ThemeProvider 會喺 mount 後以
