@@ -43,7 +43,9 @@ export default function DailySpectrum() {
         )}
       </div>
       <p className="text-xs text-ink-muted mb-4">
-        {en ? '3 foundation · 5 core · 2 advanced' : '3 題基礎 · 5 題核心 · 2 題進階'}
+        {en
+          ? 'Counts are questions attempted, not questions answered correctly. Suggested pace: 3 foundation · 5 core · 2 advanced.'
+          : '數字係已練習題數，唔係答對數。建議節奏：3 題基礎 · 5 題核心 · 2 題進階。'}
       </p>
 
       {/* 10 段光譜條：逐段按今日真實完成數填色 */}
@@ -65,13 +67,23 @@ export default function DailySpectrum() {
       </div>
 
       <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-ink-muted">
-        {TIERS.map((t) => (
-          <span key={t.key} className="inline-flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full inline-block" style={{ background: t.color }} aria-hidden />
-            {en ? t.en : t.zh} {Math.min(s[t.key], t.target)}/{t.target}
-            {s[t.key] > t.target && <span className="text-ink-muted">(+{s[t.key] - t.target})</span>}
-          </span>
-        ))}
+        {TIERS.map((t) => {
+          const attempted = s[t.key]
+          const correctKey = t.key === 'easy' ? 'easyCorrect' : t.key === 'medium' ? 'mediumCorrect' : 'hardCorrect'
+          const correct = s[correctKey]
+          return (
+            <span key={t.key} className="inline-flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full inline-block" style={{ background: t.color }} aria-hidden />
+              {en ? t.en : t.zh}
+              {' '}
+              {en ? 'attempted' : '已練習'} {Math.min(attempted, t.target)}/{t.target}
+              {attempted > t.target && <span className="text-ink-muted">(+{attempted - t.target})</span>}
+              {correct !== undefined && (
+                <span>{en ? `· correct ${correct}` : `· 答對 ${correct}`}</span>
+              )}
+            </span>
+          )
+        })}
       </div>
     </div>
   )

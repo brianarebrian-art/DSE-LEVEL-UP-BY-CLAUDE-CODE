@@ -105,7 +105,7 @@ export default function SubjectDetailView({
     <div className={`rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${examHasMC ? 'bg-accent/[0.05] border border-accent/20' : 'bg-surface-raised border border-line'}`}>
       <div>
         <div className="font-medium text-lg mb-1 text-ink">
-          {examHasMC ? sd.quickStartTitle : en ? 'Multiple-choice (revision only)' : '選擇題（僅供溫習）'}
+          {examHasMC ? sd.quickStartTitle : en ? 'Concept warm-up MC (not the exam format)' : '概念溫習 MC（非考試題型）'}
         </div>
         {!examHasMC && (
           <p className="text-sm text-ink-soft mb-1">
@@ -115,12 +115,17 @@ export default function SubjectDetailView({
           </p>
         )}
         <p className="text-ink-muted text-sm">
-          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
+          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}
+          {examHasMC ? sd.quickDescB : (en ? ' topics · instant check · concept warm-up only' : ' 大課題 · 即時批改 · 只係概念熱身')}
         </p>
         <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
           <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
           <span>·</span>
-          <span>{sd.gradePredict}</span>
+          {examHasMC ? (
+            <span>{sd.gradePredict}</span>
+          ) : (
+            <span>{en ? 'Not counted in the practice-performance estimate' : '唔計入練習表現估算'}</span>
+          )}
           <span>·</span>
           <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
         </div>
@@ -130,7 +135,7 @@ export default function SubjectDetailView({
           href={`/practice?subject=${meta.id}`}
           className={`shrink-0 inline-flex items-center gap-2 font-medium px-6 py-3 rounded-xl transition-all ${examHasMC ? 'bg-accent-strong hover:bg-accent-hover text-on-accent' : 'bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft'}`}
         >
-          {sd.startNow} <ArrowRight size={16} />
+          {examHasMC ? sd.startNow : (en ? 'Start concept warm-up' : '開始概念溫習')} <ArrowRight size={16} />
         </Link>
       )}
     </div>

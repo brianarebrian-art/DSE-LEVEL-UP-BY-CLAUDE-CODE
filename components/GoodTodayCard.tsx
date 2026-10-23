@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Heart, Pencil, Check, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { latestSessionIsLow } from '@/lib/celebrationGate'
 
 // 「今日已經好叻」+ 個人化鼓勵語（Emma/UDL + Sarah）。
 //
@@ -73,12 +74,14 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
   const en = locale === 'en'
 
   const [msg, setMsg] = useState<string | null>(null)
+  const [tone, setTone] = useState<'pending' | 'low' | 'ok'>('pending')
   const [own, setOwn] = useState<string[]>([])
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState('')
 
   // 只在 mount 後讀 localStorage —— 避免 SSR／CSR 落差。
   useEffect(() => {
+    setTone(latestSessionIsLow() ? 'low' : 'ok')
     setOwn(readOwn())
     try {
       const saved = JSON.parse(localStorage.getItem(KEY_TODAY) ?? 'null')
@@ -131,7 +134,11 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
           <div className="flex items-center gap-2">
             <Heart size={16} className="text-gold shrink-0" aria-hidden />
             <Heading className="text-sm font-medium text-ink">
-              {en ? 'You already did well today' : '今日已經好叻'}
+              {tone === 'low'
+                ? (en ? 'You showed up' : '今日有嚟過')
+                : tone === 'ok'
+                  ? (en ? 'You already did well today' : '今日已經好叻')
+                  : (en ? 'Today' : '今日')}
             </Heading>
           </div>
           <p className="mt-1 text-xs leading-relaxed text-ink-muted">

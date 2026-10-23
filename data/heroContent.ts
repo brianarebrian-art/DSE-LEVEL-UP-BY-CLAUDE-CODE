@@ -6,14 +6,13 @@ import type { Season } from '@/utils/season'
 //
 // ── 2026-08-09 冠軍方案（Brian 提案，全年適用）────────────────────────────────
 // 主識別（badge／主標題／副標題／主 CTA）四項全年統一，六季一致：
-//   badge         📚 DSE LEVEL UP · 掌握邏輯
-//   headline      掌握邏輯，唔係背答案
-//   subhead       同一類題換咗數字再練，練到識答為止。DSE 戰場上，你唔係一個人。
-//                 （2026-10-08 創辦人回覆 47a：原句「無論數字點變，你都識答」承諾學習效果，
-//                 但沒有數據支持，改為描述練習方法。）
+//   badge         📚 DSE LEVEL UP · 選擇題練判斷
+//   headline      練判斷 / 唔係成張卷
+//   subhead       選擇題只練到窄窄一種技能：睇穿陷阱。唔等於掌握成張 DSE 卷。
+//                 （2026-10-23 信任審計：舊句「掌握邏輯，唔係背答案」可被讀成成卷掌握。
+//                 2026-10-08 創辦人回覆 47a 已刪「無論數字點變，你都識答」。）
 //   主 CTA        開始練習 → /subjects
-// 「掌握邏輯，唔係背答案」本身即憲章 §9 核心金句，亦已見於 layout.tsx 的 SEO
-// meta，故此更動令首頁與全站主張一致。
+// 首頁主張對齊 /methodology：選擇題只練一種窄技能，不是成卷掌握。
 //
 // 【刻意保留季節差異的一項】副 CTA（ctaSecLabel／ctaSecHref）維持逐季不同。
 // 冠軍方案並未指定副 CTA，而放榜季（transition／anxiety，5 月及 6-8 月）的副 CTA
@@ -37,14 +36,12 @@ export interface HeroCopy {
 // 冠軍方案共用部分 —— 六季一致，改一處即全年生效。
 function championCore(en: boolean) {
   return {
-    badge: en ? '📚 DSE LEVEL UP · Master the logic' : '📚 DSE LEVEL UP · 掌握邏輯',
-    // 中文上行不設逗號：兩行之間本已有換行分隔，逗號在行末會多出一段視覺留白。
-    // 英文保留逗號 —— 'Master the logic, not the answers' 屬同位語，缺逗號即不合文法。
-    headline1: en ? 'Master the logic,' : '掌握邏輯',
-    headline2: en ? 'not the answers' : '唔係背答案',
+    badge: en ? '📚 DSE LEVEL UP · Multiple-choice judgement' : '📚 DSE LEVEL UP · 選擇題練判斷',
+    headline1: en ? 'Train the judgement,' : '練判斷',
+    headline2: en ? 'not the whole paper' : '唔係成張卷',
     subhead: en
-      ? 'Practise the same kind of question with new numbers until you can solve it. You are not alone on the DSE battlefield.'
-      : '同一類題換咗數字再練，練到識答為止。DSE 戰場上，你唔係一個人。',
+      ? 'Multiple-choice only trains one narrow skill: spotting a trap. The same kind of question, new numbers. It is not mastery of a DSE paper.'
+      : '選擇題只練到窄窄一種技能：睇穿陷阱。同一類題換數字再練。呢個唔等於掌握成張 DSE 卷。',
     ctaStartLabel: en ? 'Start practising' : '開始練習',
     // 全科入口。注意路由為複數 `/subjects`（app/subjects/），單數 `/subject` 不存在。
     ctaStartHref: '/subjects',

@@ -36,6 +36,8 @@ export interface ContentCounts {
   withdrawn: number
   withheldTopic: number
   pendingReview: number
+  /** 程式重算後未經人手覆核，已暫停放入預設練習。與 pendingReview 不是同一批。 */
+  machineRestored: number
 }
 
 // Plain-words labels for the withdrawal log. Every key of WITHDRAW_CODES
@@ -196,9 +198,9 @@ export default function TransparencyClient({
               : `有 ${PENDING_ZH.toLocaleString()} 條題目喺中文介面、${PENDING_EN.toLocaleString()} 條喺英文介面標住「待核」。呢啲係機器已經驗出具體問題、但仲未有人手修正嘅題目：解析用位置講選項，而選項每次都會洗牌，所以嗰句可能指錯。徽章會喺題目度直接講明。`}
         </p>
         {/* 2026-09-30（UX 循環 LOOP 20）：題庫各狀態題數，與首頁、科目頁、練習頁同一來源
-            （summary.generated.ts 的 CONTENT_STATS）。四項相加等於已編寫題數，產生器不成立就不寫檔。 */}
+            （summary.generated.ts 的 CONTENT_STATS）。五項相加等於已編寫題數，產生器不成立就不寫檔。 */}
         <h3 className="text-base font-bold text-ink mb-2">{en ? 'Where every question stands' : '題庫數字'}</h3>
-        <dl className="mb-3 grid grid-cols-2 gap-3 rounded-xl border border-line bg-surface-raised p-4 sm:grid-cols-4">
+        <dl className="mb-3 grid grid-cols-2 gap-3 rounded-xl border border-line bg-surface-raised p-4 sm:grid-cols-3 lg:grid-cols-5">
           <div>
             <dt className="text-xs text-ink-muted">{en ? 'In practice' : '練習中'}</dt>
             <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.published)}</dd>
@@ -215,11 +217,15 @@ export default function TransparencyClient({
             <dt className="text-xs text-ink-muted">{en ? 'Awaiting a person' : '等人手判斷'}</dt>
             <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.pendingReview)}</dd>
           </div>
+          <div>
+            <dt className="text-xs text-ink-muted">{en ? 'Not item-checked' : '未人手覆核'}</dt>
+            <dd className="text-2xl font-medium tabular-nums text-ink">{n(content.machineRestored)}</dd>
+          </div>
         </dl>
         <p className="text-ink-muted text-sm leading-relaxed mb-5">
           {en
-            ? `${n(content.totalAuthored)} questions have been written. Each is counted once, so the four figures add up to that total. Only the ones in practice are shown to students; every question count elsewhere on the site is this figure. “Topic held back”: whole topics that are not shown until each question in them is matched to the curriculum guide.`
-            : `題庫共編寫咗 ${n(content.totalAuthored)} 條題目，每條只計一次，所以四個數加埋就係呢個總數。只有「練習中」嘅題目會出畀學生，網站其他地方顯示嘅題數都係呢個數。「課題暫緩」：成個課題暫時唔出題，要逐題對返課程指引先會出。`}
+            ? `${n(content.totalAuthored)} questions have been written. Each is counted once, so the five figures add up to that total. Only the ones in practice are shown in the default practice pool; every question count elsewhere on the site is that figure. “Topic held back”: whole topics that are not shown until each question in them is matched to the curriculum guide. “Not item-checked”: a program recomputed the answer and put the item back after automated checks. Those items stay out of the default pool until someone who knows the subject checks them. They are not the same list as “Awaiting a person”.`
+            : `題庫共編寫咗 ${n(content.totalAuthored)} 條題目，每條只計一次，所以五個數加埋就係呢個總數。只有「練習中」嘅題目會出喺預設練習，網站其他地方顯示嘅題數都係呢個數。「課題暫緩」：成個課題暫時唔出題，要逐題對返課程指引先會出。「未人手覆核」：程式重算咗答案，過咗自動檢查，但未經熟悉該科嘅人逐題核對，所以暫停放入預設練習。呢一批唔係「等人手判斷」。`}
         </p>
         {WITHDRAWN_COUNT > 0 && (
           <p className="text-ink-soft leading-relaxed mb-5">
@@ -259,7 +265,7 @@ export default function TransparencyClient({
             <h3 className="text-base font-bold text-ink mb-2">{en ? 'Repairing these explanations' : '修復進度'}</h3>
             <dl className="mb-3 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
               <div>
-                <dt className="text-xs text-ink-muted">{en ? 'Total withdrawn' : '共收起'}</dt>
+                <dt className="text-xs text-ink-muted">{en ? 'In this batch' : '呢批題數'}</dt>
                 <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.found)}</dd>
               </div>
               <div>
@@ -271,15 +277,15 @@ export default function TransparencyClient({
                 <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.restored)}</dd>
                 {stats.restoredUnreviewed > 0 && (
                   <dd className="mt-1 text-xs text-ink-muted">
-                    {en ? `${n(stats.restoredUnreviewed)} without a person’s review` : `其中 ${n(stats.restoredUnreviewed)} 條未經人手覆核`}
+                    {en ? `${n(stats.restoredUnreviewed)} not checked item by item; kept out of the default practice pool` : `其中 ${n(stats.restoredUnreviewed)} 條未經人手覆核，已暫停放入預設練習`}
                   </dd>
                 )}
               </div>
             </dl>
             <p className="text-ink-muted text-sm leading-relaxed mb-6">
               {en
-                ? `Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. Since 4 October 2026, a calculation question whose answer and option-by-option explanation are recomputed by a program goes back into practice once it passes the automated checks, without a person's review. Text explanations still go back only after a person who knows the subject has reviewed them.`
-                : `分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。由 2026 年 10 月 4 日起，計算題嘅答案同逐個選項嘅解釋由程式重新計出，過咗自動檢查就重新上線，未經人手覆核。文字題嘅解析仍然要經熟悉該科嘅真人覆核，先會重新加入練習池。`}
+                ? `“In this batch” (${n(stats.found)}) is the 29 September 2026 positional set. It is not the current withdrawn total (${n(content.withdrawn)}). Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. Since 4 October 2026, a program may recompute a calculation item. Items recomputed that way and not checked one by one stay out of the default practice pool (${n(content.machineRestored)} in “Not item-checked” above). A text explanation still returns only after someone who knows the subject has checked it.`
+                : `「呢批題數」（${n(stats.found)}）係 2026 年 9 月 29 日位置詞嗰一批，唔係而家「已收起」嘅總數（${n(content.withdrawn)}）。分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。由 2026 年 10 月 4 日起，計算題嘅答案可以由程式重算。重算之後未經人手逐題核對嘅題，暫停放入預設練習（見上面「未人手覆核」${n(content.machineRestored)} 條）。文字題嘅解析仍然要經熟悉該科嘅人核對，先會重新加入練習池。`}
             </p>
           </>
         )}

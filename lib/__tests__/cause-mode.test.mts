@@ -59,7 +59,7 @@ test('A and C only offer a session when the log has topic ids for them', () => {
 test('the session reorders before stratifying, so 3:5:2 still holds', () => {
   const src = readFileSync('app/practice/PracticeSession.tsx', 'utf8')
   const reorder = src.indexOf("if (mode === 'cause' && cause) ordered = orderByCause(")
-  const stratify = src.indexOf('return shuffle(pickByDifficulty(weighted, sessionSize))')
+  const stratify = src.indexOf('return shuffle(pickByDifficulty(weighted, sessionSize, subjectId))')
   assert.ok(reorder > 0 && reorder < stratify)
 })
 

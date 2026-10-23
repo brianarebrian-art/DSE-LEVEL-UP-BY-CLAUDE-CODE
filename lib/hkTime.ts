@@ -22,6 +22,12 @@ export function hkDayString(now: number = Date.now()): string {
   return new Date(now + (8 - BOUNDARY_HOUR) * HOUR).toISOString().slice(0, 10)
 }
 
+/** Study-day label. Same day string as the dashboard trail (HKT, 04:00 boundary). */
+export function formatStudyDay(now: number = Date.now(), en = false): string {
+  const [y, m, d] = hkDayString(now).split('-').map(Number)
+  return en ? `${d}/${m}/${y}` : `${m}月${d}日`
+}
+
 /**
  * 下一個 04:00 HKT 嘅 timestamp（ms）。
  * 04:00 HKT = 20:00 UTC，即所有滿足 T ≡ 20h (mod 24h) 嘅 UTC 時刻。

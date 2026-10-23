@@ -20,7 +20,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'DSE Level Up',
     short_name: 'DSE Level Up',
-    description: `免費 DSE 練習平台，涵蓋 ${getActiveSubjects().length} 科獨立改寫試題。掌握邏輯，唔係背答案。`,
+    description: `免費 DSE 練習平台，涵蓋 ${getActiveSubjects().length} 科獨立改寫試題。選擇題只練判斷，唔等於成卷掌握。`,
     start_url: '/',
     display: 'standalone',
     background_color: '#F4F0EA',

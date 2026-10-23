@@ -49,7 +49,7 @@ test('B4: an explicit hide still hides; turning the clock on is remembered', () 
 test('B4: the practice page hides the running clock unless the student chose to show it', () => {
   const ps = read('app/practice/PracticeSession.tsx')
   assert.match(ps, /const showElapsed = timerPref === 'show' && !quiet/)
-  assert.match(ps, /\{showElapsed && \(\s*<span className="flex items-center gap-1">\s*<Clock/, 'elapsed clock must depend on showElapsed')
+  assert.match(ps, /\{showElapsed && \(\s*<span className="flex items-center gap-1[^"]*">\s*<Clock/, 'elapsed clock must depend on showElapsed')
   // The per-question timer button stays available in the default state.
   assert.match(ps, /const hideTimer = timerPref === 'hide'/)
 })

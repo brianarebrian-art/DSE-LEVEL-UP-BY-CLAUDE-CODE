@@ -28,6 +28,7 @@ const ALLOW_UNLINKED = {
   '/dev/answer-cards': '開發用預覽頁，唔屬於學生流程',
   '/dev/long-session': '開發用預覽頁，唔屬於學生流程',
   '/sign-in-error': '登入失敗時由 Auth.js 重新導向入嚟（auth.ts 的 pages.error），唔應該有站內連結',
+  '/sentry-example-page': '開發時確認 Sentry 收到錯誤。production 直接 notFound，不應出現在學生導覽',
 }
 
 const files = []

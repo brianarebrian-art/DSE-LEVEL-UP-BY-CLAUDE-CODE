@@ -24,19 +24,18 @@ test('the trust copy states curriculum and review status, and says first pass', 
   // 2026-10-02 founder decision (charter §12.1 constraint 1): the "not reviewed by hand"
   // half-sentence is gone; the copy still says the questions are machine-checked.
   assert.match(dict, /tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',/)
-  const hero = home.slice(home.indexOf('<li>{h.trust3}</li>'))
-  // 2026-10-04 (founders' reply 10a): the line also says no registered teacher has reviewed the
-  // questions, and how many are withdrawn. 2026-10-09: only those withdrawn for a fault; questions
-  // replaced as pure recall (founders' replies 49a–55a) had no fault.
-  assert.match(hero.slice(0, 1500), /`題目經自動檢查上線，未經註冊教師審定\$\{WITHDRAWN_FOR_FAULT > 0 \? `；另有 \$\{WITHDRAWN_FOR_FAULT\.toLocaleString\(\)\} 條發現有錯暫時收起` : ''\}。`/)
-  assert.match(hero.slice(0, 1500), /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
+  // 2026-10-23 trust audit: the disclosure sits above the quick start, and the
+  // withdrawn total is CONTENT_STATS.withdrawn. WITHDRAWN_FOR_FAULT is only the fault subset.
+  assert.match(home, /題目經自動檢查上線，未經註冊教師審定。練習中 \$\{CONTENT_STATS\.published\.toLocaleString\(\)\} 條，已收起 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條/)
+  assert.match(home, /其中 \$\{WITHDRAWN_FOR_FAULT\.toLocaleString\(\)\} 條係發現有錯/)
+  assert.match(home, /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
 })
 
 test('nothing presents the questions as past papers', () => {
   const visible = strip(dict) + strip(home)
   assert.doesNotMatch(visible, /改寫版歷屆試題|Rewritten past-paper|拆穿歷屆試題|logic of past papers/)
   assert.doesNotMatch(layout.match(/keywords: \[[^\]]*\]/)![0], /歷屆試題/)
-  assert.match(dict, /tagline1: '原創 DSE 練習題，掌握核心邏輯。',/)
+  assert.match(dict, /tagline1: '原創 DSE 練習題。選擇題練判斷，唔等於成卷掌握。',/)
 })
 
 // Removing the disclosure must not turn into the opposite claim (charter §16.D, §8).

@@ -131,7 +131,7 @@ const zh = {
     groupRest: '休息',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
-    quote: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。',
+    quote: '選擇題練判斷，唔係背答案，亦唔等於成張卷。',
   },
   // /predictor（Night Study「Grade Predictor」）。等級估算本身由 MasteryEstimate
   // 講，呢度淨係頁面框架同兩個聚合嘅文案。
@@ -173,7 +173,7 @@ const zh = {
     // 2026-09-30（UX 循環 LOOP 22，創辦人決定 6）：原文「改寫版歷屆試題」「由 2026 DSE 考生製作」。
     // 前者暗示題目取自歷屆試題；後者與題目是否可信無關。改為講課程對照及覆核狀態的實情
     // （docs/topic-syllabus-map-2027.md：AI 初步對照，未經學科負責人覆核；憲章 §12：自動檢查上線）。
-    tagline1: '原創 DSE 練習題，掌握核心邏輯。',
+    tagline1: '原創 DSE 練習題。選擇題練判斷，唔等於成卷掌握。',
     tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',
     practiceHeading: '練習',
     linkMath: '數學',
@@ -184,6 +184,7 @@ const zh = {
     trust: '信任中心',
     transparency: '透明度',
     privacy: '私隱政策',
+    terms: '使用條款',
     communitySafety: '社群安全',
     predictionMethod: '練習表現點計',
     accessibility: '無障礙自評',
@@ -222,10 +223,10 @@ const zh = {
     minutesUnit: '分鐘',
   },
   home: {
-    liveBadge: '完全免費 · 拆邏輯，唔係背答案',
+    liveBadge: '完全免費 · 選擇題練判斷，唔係成張卷',
     headline1: '身為考過 DSE 嘅中學生，',
     headline2: '我想幫你用最輕鬆嘅方法溫書',
-    subhead: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。',
+    subhead: '選擇題只練判斷同陷阱，唔等於掌握成張卷。同一類題換咗數字再練。',
     trust1: '✓ 課題初步對照 2027 年課程指引',
     // 2026-09-29：原文「✓ 涵蓋全部 DSE 科目」屬過度聲稱（未涵蓋綜合科學，亦未涵蓋書寫、口試、實作卷）。
     trust2: '✓ 全部功能免費',
@@ -565,7 +566,7 @@ const en: typeof zh = {
     groupStudy: 'Study',
     groupReview: 'Review',
     groupRest: 'Rest',
-    quote: 'Master the logic, not the answers. Practise the same kind of question with new numbers until you can solve it.',
+    quote: 'Multiple-choice trains judgement, not memorised answers, and not the whole paper.',
   },
   predictor: {
     title: 'Practice performance estimate',
@@ -602,7 +603,7 @@ const en: typeof zh = {
     night: 'Good night',
   },
   footer: {
-    tagline1: 'Original DSE practice questions — master the core logic.',
+    tagline1: 'Original DSE practice. Multiple-choice trains judgement, not the whole paper.',
     tagline2: 'Topics checked against the curriculum guides for the 2027 exam (first pass). Questions go live after automated checks.',
     practiceHeading: 'Practice',
     linkMath: 'Mathematics',
@@ -613,6 +614,7 @@ const en: typeof zh = {
     trust: 'Trust centre',
     transparency: 'Transparency',
     privacy: 'Privacy',
+    terms: 'Terms',
     communitySafety: 'Community safety',
     predictionMethod: 'How practice figures are worked out',
     accessibility: 'Accessibility',
@@ -651,10 +653,10 @@ const en: typeof zh = {
     minutesUnit: 'min',
   },
   home: {
-    liveBadge: '100% free · master the logic, not the answers',
+    liveBadge: '100% free · multiple-choice judgement, not the whole paper',
     headline1: 'As a secondary student who’s sat the DSE,',
     headline2: 'I want to help you revise the easy way',
-    subhead: 'Master the logic, don’t memorise answers. Practise the same kind of question with new numbers until you can solve it.',
+    subhead: 'Multiple-choice only trains judgement and traps. It is not mastery of a whole paper.',
     trust1: '✓ Topics checked against the 2027 curriculum guides (first pass)',
     trust2: '✓ Every feature free',
     trust3: '✓ No ads',

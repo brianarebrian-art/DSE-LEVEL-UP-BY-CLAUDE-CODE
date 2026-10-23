@@ -53,8 +53,11 @@
  *
  * 2026-10-22.v1 —— 新增 Sentry 錯誤監察披露（非分析、不開 Session Replay、預設不送姓名／電郵）。
  * 屬新增第三方錯誤遙測類別，所以 bump；登入學生會再見一次同意視窗。
+ *
+ * 2026-10-23.v1 —— 私隱頁加一條去使用條款的連結。沒有新增採集類別。
+ * 指紋閘要求文案一改就 bump，所以登入學生會再見一次同意視窗。
  */
-export const POLICY_VERSION = '2026-10-22.v1'
+export const POLICY_VERSION = '2026-10-23.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

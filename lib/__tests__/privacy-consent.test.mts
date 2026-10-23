@@ -32,10 +32,10 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-10-22.v1',
-  // 2026-10-22 (2026-10-22.v1): Sentry error monitoring disclosed on /privacy; Session Replay
-  // remains off. Previous: d6efa727616740a0 (2026-10-08.v1).
-  hash: 'eb50525759bb586e',
+  version: '2026-10-23.v1',
+  // 2026-10-23 (2026-10-23.v1): /privacy links to /terms. No new data collection.
+  // Previous: eb50525759bb586e (2026-10-22.v1, Sentry disclosure).
+  hash: '34c4eb5c1bd9fcea',
 }
 
 function policyFingerprint(): string {

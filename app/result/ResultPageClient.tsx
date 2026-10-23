@@ -24,6 +24,7 @@ import { buildCauseCardData } from '@/lib/causeCard'
 import { resultNextSteps } from '@/lib/resultNextSteps'
 import { withFromResult } from '@/lib/practiceCount'
 import { getReverseLog } from '@/lib/reverseLog'
+import { formatStudyDay, hkDayString } from '@/lib/hkTime'
 
 interface TopicResult {
   topic: string
@@ -130,12 +131,17 @@ export default function ResultPageClient() {
   const [shared, setShared] = useState(false)
   const [reportCopied, setReportCopied] = useState(false)
   const [siteHost, setSiteHost] = useState('')
+  // Captured once on mount so the share card and the teacher report share the
+  // Hong Kong study day without calling Date.now during render.
+  const [studyAt, setStudyAt] = useState<number | null>(null)
   // Quiet mode hides the encouragement wall (UX audit B5, Yuna 2026-09-26).
   const quiet = useQuiet()
 
   // Hydrate the result from localStorage on mount. This must run client-side
   // (reading during render would mismatch the SSR'd HTML), so setState here is intentional.
   useEffect(() => {
+    const now = Date.now()
+    setStudyAt(now)
     setSiteHost(window.location.host)
     let raw: string | null = null
     try {
@@ -251,7 +257,7 @@ export default function ResultPageClient() {
   const bestTopic = ratioSorted[0]
   const worstTopic = ratioSorted[ratioSorted.length - 1]
   const cardData: DailyStatsCardData = {
-    date: new Date().toLocaleDateString(locale === 'en' ? 'en-GB' : 'zh-HK'),
+    date: formatStudyDay(studyAt ?? 0, locale === 'en'),
     subject: subjName,
     questionsDone: result.total,
     accuracy: Math.round((result.score / result.total) * 100),
@@ -275,7 +281,7 @@ export default function ResultPageClient() {
   const buildTeacherReport = (): string => {
     const divider = '-'.repeat(50)
     const pct = Math.round((result.score / result.total) * 100)
-    const date = new Date().toISOString().slice(0, 10)
+    const date = hkDayString(studyAt ?? 0)
     const ranked = [...result.topicResults].sort(
       (a, b) => a.correct / a.total - b.correct / b.total
     )

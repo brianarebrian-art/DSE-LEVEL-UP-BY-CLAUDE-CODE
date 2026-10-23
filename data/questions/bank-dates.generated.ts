@@ -7,20 +7,20 @@
 
 export const BANK_UPDATED_AT: Record<string, { version: string; date: string }> = {
   "math": {
-    "version": "40e15e70233d229b",
-    "date": "2026-10-09"
+    "version": "15b539cfcc449e48",
+    "date": "2026-10-23"
   },
   "m2": {
-    "version": "8d205b98514d52a8",
-    "date": "2026-10-09"
+    "version": "c4f4211b994b4f03",
+    "date": "2026-10-23"
   },
   "m1": {
-    "version": "4da53604cf5df560",
-    "date": "2026-10-09"
+    "version": "c817f944f7c7128d",
+    "date": "2026-10-23"
   },
   "physics": {
-    "version": "10186704be3e7e26",
-    "date": "2026-10-09"
+    "version": "e79c84ca65c58ae9",
+    "date": "2026-10-23"
   },
   "chemistry": {
     "version": "8cd65430c4a3bd62",
@@ -35,8 +35,8 @@ export const BANK_UPDATED_AT: Record<string, { version: string; date: string }> 
     "date": "2026-10-09"
   },
   "chinese": {
-    "version": "0d3a16fa37b20509",
-    "date": "2026-10-09"
+    "version": "76af1fdb5877a87e",
+    "date": "2026-10-23"
   },
   "bafs": {
     "version": "20df67eecd94c703",

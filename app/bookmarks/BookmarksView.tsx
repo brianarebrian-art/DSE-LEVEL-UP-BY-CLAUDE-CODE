@@ -9,6 +9,7 @@ import { useLocale } from '@/lib/i18n'
 import { getSubject } from '@/data/subjects'
 import { loadSubjectQuestions } from '@/data/questions/load'
 import { isPendingReview, isWithdrawn, withdrawnReason } from '@/data/questions/hidden-topics'
+import { isMachineRestored } from '@/data/questions/machine-restored-ids'
 import type { AnyQuestion } from '@/data/questions/types'
 import {
   DEFAULT_FOLDER,
@@ -228,6 +229,12 @@ export default function BookmarksView() {
                           : en
                             ? 'This question has been withdrawn because an error was found in it. Your bookmark stays; the question comes back here once it is fixed.'
                             : '呢條題暫時收起咗，因為發現有錯，要修正。收藏會保留，修好之後會喺度自動出返。'}
+                      </p>
+                    ) : isMachineRestored(bm.questionId) ? (
+                      <p className="text-sm text-ink-muted">
+                        {en
+                          ? 'This question was recomputed by a program and has not been checked item by item, so it is left out of the default practice pool. Your bookmark stays.'
+                          : '呢條由程式重算，未經人手覆核，所以暫停放入預設練習。收藏會保留。'}
                       </p>
                     ) : isPendingReview(bm.subjectId, bm.questionId) ? (
                       /* 等人手判斷的題目（pending-review.json，2026-09-30）：同樣收藏保留。 */

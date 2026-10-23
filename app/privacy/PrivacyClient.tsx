@@ -295,6 +295,13 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </p>
       </Section>
 
+      <p className="mt-10 text-sm leading-relaxed text-ink-soft">
+        {en ? 'What the site does not promise is in the ' : '本站不承諾嘅範圍寫喺'}
+        <Link href="/terms" className="font-medium text-accent-strong underline underline-offset-2">
+          {en ? 'terms of use' : '使用條款'}
+        </Link>
+        {en ? '.' : '。'}
+      </p>
       <p className="mt-10 border-t border-line pt-5 text-xs leading-relaxed text-ink-muted">
         {en
           ? 'If we change how any of this works, we change this page at the same time. If you ever find a statement here that does not match what the site actually does, tell us — that is a bug, and we will treat it as one.'
