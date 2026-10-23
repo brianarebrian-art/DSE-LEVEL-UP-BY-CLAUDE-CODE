@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.22.0",
-    "@supabase/supabase-js": "^2.108.2",
+    "@supabase/supabase-js": "^2.118.0",
     "@vercel/speed-insights": "^2.0.0",
     "better-auth": "^1.6.23",
     "html2canvas": "^1.4.1",
