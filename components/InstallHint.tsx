@@ -103,7 +103,7 @@ export default function InstallHint() {
   if (mode === 'hidden') return null
 
   return (
-    <div className="mx-auto max-w-2xl px-4 mt-4">
+    <div data-install-hint className="mx-auto mb-4 max-w-2xl">
       <div className="flex items-start gap-3 rounded-2xl border border-line bg-surface-raised px-4 py-3">
         <Smartphone size={18} className="text-accent shrink-0 mt-0.5" aria-hidden />
         <div className="flex-1 text-sm text-ink-soft leading-relaxed">
@@ -118,7 +118,7 @@ export default function InstallHint() {
             <button
               type="button"
               onClick={install}
-              className="ml-2 min-h-11 px-3 rounded-lg text-accent-strong font-medium underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              className="ml-2 inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-lg px-3 font-medium text-accent-strong underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
               {en ? 'Add to home screen' : '加到主畫面'}
             </button>

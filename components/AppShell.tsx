@@ -36,7 +36,7 @@ export default function AppShell({
   // `!immersive && navbar` / `!immersive && footer` source 斷言失效，
   // 而嗰兩句守住嘅係「練習頁唔可以走返個導航列出嚟」呢個真行為。
   // 2026-09-30（LOOP 39）：側欄圖示列由 lg 提早到 md（平板），平板不再只有漢堡選單。
-  const inset = immersive ? '' : 'md:pl-20 xl:pl-[260px]'
+  const inset = immersive ? '' : 'md:pl-20 lg:pl-[13rem] xl:pl-[260px]'
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function AppShell({
           沉浸式路由冇底欄亦冇頁尾，故 <main> 唔使讓位。 */}
       <main
         id="main-content"
-        className={immersive ? '' : `pt-16 ${inset}`}
+        className={immersive ? '' : `pt-16 max-md:pb-[calc(var(--bottom-nav-h)+1.25rem)] ${inset}`}
       >
         {children}
         {/* 前／後頁導航掛喺呢度一次，唔喺任何 page.tsx 出現 —— 一張要人記得去

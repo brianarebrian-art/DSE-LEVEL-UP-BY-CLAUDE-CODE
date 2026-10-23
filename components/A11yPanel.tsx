@@ -48,7 +48,7 @@ export function A11yButton({ className = '' }: { className?: string }) {
       aria-haspopup="dialog"
       aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
       title={en ? 'Accessibility · text size, easy-read font, reading ruler' : '無障礙 · 字級、易讀字體、閱讀尺'}
-      className={`md:hidden inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg hover:bg-line transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${className}`}
+      className={`xl:hidden inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg hover:bg-line transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${className}`}
     >
       <Image src="/icons/accessibility.svg" alt="" aria-hidden width={24} height={24} className="object-contain" unoptimized />
     </button>

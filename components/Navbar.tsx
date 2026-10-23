@@ -10,6 +10,7 @@ import Greeting from '@/components/Greeting'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
 import { A11yButton } from '@/components/A11yPanel'
+import { SosButton } from '@/components/GlobalA11y'
 import { useT, useLocale } from '@/lib/i18n'
 
 // Phase 2 Task 1（Kate/Leo 2026-07-18）：light-first 清晨圖書館。純白底 + #1A1A1A 文字
@@ -86,7 +87,7 @@ export default function Navbar() {
   // left 要跟側欄讓位。position:fixed 係對住 viewport，唔係對住父層 ——
   // 所以喺 AppShell 包一個有 padding 嘅 div 推唔郁佢，一定要喺呢度出。
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-line bg-surface-raised md:left-20 xl:left-[260px]">
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-line bg-surface-raised md:left-20 lg:left-[13rem] xl:left-[260px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -121,6 +122,8 @@ export default function Navbar() {
             {t.nav.startPractice}
           </Link>
           {/* compact 單掣：三段式會令英文版超出 xl 斷點，重新出現標籤���行 */}
+          <A11yButton />
+          <SosButton />
           <ThemeToggle compact />
           <LanguageToggle />
           <AuthButton />
@@ -128,9 +131,9 @@ export default function Navbar() {
 
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
         <div className="md:hidden flex items-center gap-1">
-          {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：放在漢堡掣旁邊，
-              左下角浮動掣在手機上因此收起。平板及以上不顯示，維持浮動掣。 */}
+          {/* 手機同平板的無障礙／情緒支援入口放在頁頂，浮動掣因此收起，避免蓋住內容。 */}
           <A11yButton />
+          <SosButton />
           {/* FIX: [C12類] icon-only 掣冇無障礙名，VoiceOver/TalkBack 用戶開唔到選單；
               順手補 44px 觸控目標（B10 標準）+ aria-expanded + aria-controls */}
           <button
@@ -190,6 +193,25 @@ export default function Navbar() {
                 >
                   {en ? 'Guardians' : '守護者致謝名單'}
                 </Link>
+                {([
+                  ['/methodology', t.nav.methodology],
+                  ['/transparency', t.footer.transparency],
+                  ['/privacy', t.footer.privacy],
+                  ['/trust', t.footer.trust],
+                  ['/relax', t.footer.linkRelax],
+                  ['/paper-warrior', t.nav.paper],
+                ] as const).map(([href, label]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className={`min-h-11 flex items-center border-b border-line text-sm ${
+                      pathname === href ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
 

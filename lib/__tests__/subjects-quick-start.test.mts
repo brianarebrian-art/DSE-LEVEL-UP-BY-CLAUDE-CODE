@@ -31,7 +31,7 @@ test('the subject page is still one tap away, through the subject name', () => {
 
 test('links are not nested and the card no longer says 開始練習 while opening the subject page', () => {
   // The card's root is a <div>, and it contains exactly two links.
-  assert.match(card, /return \(\s*<div className=\{`group relative flex flex-col/)
+  assert.match(card, /return \(\s*<div className=\{`group relative flex min-w-0 flex-col/)
   assert.equal(card.match(/<Link\b/g)?.length, 2)
   assert.doesNotMatch(card, /tl\.startPractice/)
 })

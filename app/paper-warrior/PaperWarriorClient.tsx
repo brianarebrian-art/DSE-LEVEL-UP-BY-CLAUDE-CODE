@@ -205,16 +205,16 @@ export default function PaperWarriorClient() {
             </div>
           )}
 
-          <label className="mt-4 flex min-h-11 items-center gap-2.5">
+          <label className="mt-4 flex min-h-11 items-start gap-2.5">
             <input
               type="checkbox"
               checked={withExplain}
               onChange={(e) => setWithExplain(e.target.checked)}
-              className="h-4 w-4 accent-accent-strong"
+              className="mt-1 h-4 w-4 accent-accent-strong"
             />
             <span className="text-sm text-ink-soft">
               {tr('連答案同解析一齊印（練習用）', 'Include answers and explanations (practice mode)')}
-              <span className="ml-1 text-xs text-ink-muted">
+              <span className="mt-0.5 block text-xs text-ink-muted">
                 {tr('唔剔＝純題目，當模擬考', 'Unchecked = questions only, like a real exam')}
               </span>
             </span>

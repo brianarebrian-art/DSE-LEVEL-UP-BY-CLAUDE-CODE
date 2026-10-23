@@ -13,7 +13,16 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
   const t = useT()
 
   if (status === 'loading') {
-    return <div className="w-7 h-7 rounded-full bg-black/10 animate-pulse" />
+    return (
+      <button
+        type="button"
+        disabled
+        aria-busy="true"
+        className="min-h-11 flex items-center gap-2 text-sm whitespace-nowrap border border-line-strong text-ink-soft rounded-lg px-3 py-1.5"
+      >
+        <LogIn size={14} aria-hidden /> {t.auth.signIn}
+      </button>
+    )
   }
 
   if (user) {

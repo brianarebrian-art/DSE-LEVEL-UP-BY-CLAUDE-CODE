@@ -104,7 +104,7 @@ export default function Sidebar() {
   return (
     <nav
       aria-label={en ? 'Sections' : '分區導航'}
-      className="no-print fixed inset-y-0 left-0 z-40 hidden w-20 flex-col border-r border-line bg-surface md:flex xl:w-[260px]"
+      className="no-print fixed inset-y-0 left-0 z-40 hidden w-20 flex-col border-r border-line bg-surface md:flex lg:w-[13rem] xl:w-[260px]"
     >
       {/* 品牌區。模板將貓頭鷹置中放大、名字用襯線體；80px 欄下只剩吉祥物。
           模板嘅貓頭鷹係 150px —— 喺 1280×720 嘅手提電腦上，品牌區會食走
@@ -115,11 +115,11 @@ export default function Sidebar() {
       >
         <OwlMark size={40} className="shrink-0 xl:hidden" />
         <OwlMark size={88} className="hidden shrink-0 xl:block" />
-        <span className="hidden min-w-0 xl:block">
-          <span className="block font-serif text-xl tracking-[0.12em] text-gold-strong">
+        <span className="hidden min-w-0 lg:block">
+          <span className="block font-serif text-sm tracking-normal text-gold-strong xl:text-xl xl:tracking-[0.12em]">
             DSE LEVEL UP
           </span>
-          <span className="mt-0.5 block font-serif text-sm text-ink-muted">
+          <span className="mt-0.5 hidden font-serif text-sm text-ink-muted xl:block">
             {t.sidebar.tagline}
           </span>
         </span>
@@ -134,10 +134,10 @@ export default function Sidebar() {
               key={g.id}
               role="group"
               aria-label={label}
-              className={g.id === 'other' ? 'mt-auto border-t border-line pt-3' : gi > 0 ? 'border-t border-line pt-3 xl:border-t-0 xl:pt-0' : ''}
+              className={g.id === 'other' ? 'mt-auto border-t border-line pt-3' : gi > 0 ? 'border-t border-line pt-3 lg:border-t-0 lg:pt-0' : ''}
             >
               {g.labelKey && (
-                <p aria-hidden className="mb-1 hidden px-3 text-[11px] font-medium uppercase tracking-[0.12em] text-ink-muted xl:block">
+                <p aria-hidden className="mb-1 hidden px-3 text-[11px] font-medium uppercase tracking-[0.12em] text-ink-muted lg:block">
                   {label}
                 </p>
               )}
@@ -162,8 +162,8 @@ export default function Sidebar() {
                         <Icon size={22} strokeWidth={1.3} aria-hidden className="shrink-0 text-gold" />
                         {/* 80px 欄收字，但唔可以淨靠 title —— 觸控裝置冇 hover。
                             故收字嗰陣用 sr-only 保住無障礙名，而 lg 斷點以下根本唔出側欄。 */}
-                        <span className="hidden xl:inline">{t.sidebar[key]}</span>
-                        <span className="sr-only xl:hidden">{t.sidebar[key]}</span>
+                        <span className="hidden lg:inline">{t.sidebar[key]}</span>
+                        <span className="sr-only lg:hidden">{t.sidebar[key]}</span>
                       </Link>
                     </li>
                   )

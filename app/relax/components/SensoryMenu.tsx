@@ -91,7 +91,7 @@ export default function SensoryMenu({
 
         <button
           onClick={onDone}
-          className="w-full min-h-11 rounded-[10px] bg-accent/10 border border-accent/40 text-accent font-medium py-3 hover:bg-accent/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+          className="w-full min-h-11 rounded-[10px] bg-accent-strong text-on-accent font-medium py-3 hover:bg-accent-hover transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           {en ? 'Enter' : '入去先'}
         </button>

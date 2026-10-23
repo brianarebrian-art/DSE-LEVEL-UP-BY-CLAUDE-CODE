@@ -92,7 +92,7 @@ export default function SubjectsView() {
     //   ② 「開始 10 題」—— 疊在最上層，直接開始一節（與首頁快速開始同一條 URL）。
     // 不可把 ② 放在 ① 之內：連結不能巢狀，讀屏亦會讀成一條。
     return (
-      <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-2xl p-5 shadow-sm transition-all [@media(hover:hover)]:hover:shadow-md ${accentRing[s.accent] ?? ''}`}>
+      <div className={`group relative flex min-w-0 flex-col bg-surface-raised border border-line rounded-2xl p-5 shadow-sm transition-all [@media(hover:hover)]:hover:shadow-md ${accentRing[s.accent] ?? ''}`}>
         <div className="absolute top-4 right-4">
           <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
             <CheckCircle2 size={10} /> {mc}
@@ -100,7 +100,7 @@ export default function SubjectsView() {
           </span>
         </div>
         <div className="text-3xl mb-3" aria-hidden>{s.emoji}</div>
-        <h2 className="text-lg font-medium mb-1 text-ink tracking-tight">
+        <h2 className="text-lg font-medium mb-1 pr-16 text-ink tracking-tight break-words">
           <Link
             href={`/subjects/${s.id}`}
             className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent"
@@ -108,9 +108,9 @@ export default function SubjectsView() {
             {name(s)}
           </Link>
         </h2>
-        <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
+        <div className="text-xs text-ink-muted mb-2 leading-relaxed break-words">{desc(s)}</div>
         {/* 2026-09-30（改進循環 2）：唔逐項口試／實作；數字跟 summary。 */}
-        <div className="text-[11px] text-ink-muted mb-3 tabular-nums">
+        <div className="text-[11px] text-ink-muted mb-3 break-words tabular-nums">
           {written > 0
             ? en
               ? `${mc} MC · ${written} written (self-marked) · some assessment components are not offered here`
@@ -136,7 +136,7 @@ export default function SubjectsView() {
   }
 
   const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
-    <div className="relative bg-surface border border-line rounded-xl p-5 opacity-80">
+    <div className="relative min-w-0 bg-surface border border-line rounded-xl p-5 opacity-80">
       <div className="absolute top-4 right-4">
         <span className="inline-flex items-center gap-1 text-[10px] text-ink-muted bg-surface-sunken px-2 py-0.5 rounded-full">
           <Lock size={10} /> {s.launchDate ?? t.common.comingSoon}
@@ -266,7 +266,7 @@ export default function SubjectsView() {
         )}
 
         {/* One flat grid — every subject is free and open to everyone. */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid min-w-0 sm:grid-cols-2 xl:grid-cols-3 gap-3">
           {sortGroup(matched).map((s) =>
             s.isActive ? (
               <ActiveCard key={s.id} s={s} />

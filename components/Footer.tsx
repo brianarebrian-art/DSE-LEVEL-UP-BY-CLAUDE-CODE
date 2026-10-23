@@ -21,7 +21,7 @@ export default function Footer() {
     /* 底部留白 = 手機底欄高度（--bottom-nav-h，md 起為 0）＋ 底欄自己的安全區留白，
        捲到最底時頁尾最後一行不會被底欄蓋住（2026-10-01 R2-11）。 */
     <footer
-      className="border-t border-line bg-surface md:pl-20 xl:pl-[260px]"
+      className="border-t border-line bg-surface md:pl-20 lg:pl-[13rem] xl:pl-[260px]"
       style={{ paddingBottom: 'calc(var(--bottom-nav-h) + env(safe-area-inset-bottom))' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">

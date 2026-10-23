@@ -57,7 +57,7 @@ export default function ContinueCard() {
               ? 'Last time you practised'
               : '上次練緊'}
         </p>
-        <p className="truncate text-sm font-medium text-ink">
+        <p className="break-words text-sm font-medium text-ink">
           <span aria-hidden>{subject.emoji} </span>
           {name}
           {target.kind === 'resume' && (

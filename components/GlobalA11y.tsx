@@ -13,6 +13,7 @@ import { useLocale } from '@/lib/i18n'
 // 2.「我唔開心」SOS 掣：全站常駐（/relax 內除外，嗰度已有熱線橫幅），
 //    modal = 呼吸 + 呼吸空間 + 熱線。溫和脈動，respect prefers-reduced-motion。
 
+export const OPEN_SOS_EVENT = 'dse-open-sos'
 export const FONT_KEY = 'dse_font_size'
 export const LINE_HEIGHT_KEY = 'dse_line_height'
 export const LETTER_SPACING_KEY = 'dse_letter_spacing'
@@ -56,6 +57,23 @@ export function applyTextSpacing(lineHeight: number, letterSpacing: LetterSpacin
   return { lineHeight: lh, letterSpacing }
 }
 
+export function SosButton({ className = '' }: { className?: string }) {
+  const { locale } = useLocale()
+  const en = locale === 'en'
+  return (
+    <button
+      type="button"
+      data-sos-trigger
+      onClick={() => window.dispatchEvent(new Event(OPEN_SOS_EVENT))}
+      aria-label={en ? 'Emotional support' : '情緒支援'}
+      title={en ? 'Feeling down? We are here.' : '我唔開心 —— 你唔係一個人，我哋喺度。'}
+      className={`xl:hidden inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg text-accent hover:bg-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${className}`}
+    >
+      <LifeBuoy size={20} aria-hidden />
+    </button>
+  )
+}
+
 export default function GlobalA11y() {
   const pathname = usePathname()
   const { locale } = useLocale()
@@ -85,6 +103,12 @@ export default function GlobalA11y() {
 
   // Esc 一鍵關閉（SEN）
   useEffect(() => {
+    const open = () => setSosOpen(true)
+    window.addEventListener(OPEN_SOS_EVENT, open)
+    return () => window.removeEventListener(OPEN_SOS_EVENT, open)
+  }, [])
+
+  useEffect(() => {
     if (!sosOpen) return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSosOpen(false) }
     window.addEventListener('keydown', onKey)
@@ -99,7 +123,7 @@ export default function GlobalA11y() {
         onClick={() => setSosOpen(true)}
         title={en ? 'Feeling down? We are here.' : '我唔開心 —— 你唔係一個人，我哋喺度。'}
         // FIX: [B8] safe-area — iPhone Home Indicator 唔會遮擋（root layout 已設 viewport-fit=cover）
-        className="no-print fixed floating-bottom right-4 z-40 w-12 h-12 rounded-full bg-surface-raised/90 border border-accent/40 text-accent flex items-center justify-center hover:bg-surface-sunken transition-colors animate-pulse motion-reduce:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        className="no-print fixed floating-bottom right-4 z-40 w-12 h-12 rounded-full bg-surface-raised/90 border border-accent/40 text-accent flex items-center justify-center hover:bg-surface-sunken transition-colors animate-pulse motion-reduce:animate-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent sos-fab"
         style={{ animationDuration: '3s' }}
         aria-label={en ? 'Emotional support' : '情緒支援'}
       >

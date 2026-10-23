@@ -29,6 +29,7 @@ const active = (prefix: keyof typeof BP | '', width: number) => prefix === '' ||
 test('breakpoints: desk is 1440px, and the side-bar width follows md / xl', () => {
   assert.equal(BP.desk, 1440)
   assert.match(css, /@media \(min-width: 48rem\) \{\s*html\[data-sidebar='on'\] \{\s*--sidebar-w: 5rem;/)
+  assert.match(css, /@media \(min-width: 64rem\) \{\s*html\[data-sidebar='on'\] \{\s*--sidebar-w: 13rem;/)
   assert.match(css, /@media \(min-width: 80rem\) \{\s*html\[data-sidebar='on'\] \{\s*--sidebar-w: 260px;/)
 })
 

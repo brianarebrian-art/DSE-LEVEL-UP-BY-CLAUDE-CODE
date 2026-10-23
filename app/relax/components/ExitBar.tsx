@@ -32,7 +32,7 @@ export default function ExitBar() {
 
       <Link
         href="/dashboard"
-        className="text-sm text-accent hover:text-accent-hover hover:underline underline-offset-4 transition-colors min-h-11 inline-flex items-center px-2"
+        className="text-sm text-ink font-medium hover:text-accent hover:underline underline-offset-4 transition-colors min-h-11 inline-flex items-center px-2"
       >
         {en ? 'Leave the Breathing Space →' : '離開呼吸空間 →'}
       </Link>

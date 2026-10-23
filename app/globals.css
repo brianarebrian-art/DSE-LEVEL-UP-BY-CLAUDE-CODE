@@ -913,6 +913,12 @@ html[data-bottomnav='on'] {
     --sidebar-w: 5rem;
   }
 }
+/* 1024–1279：有字側欄（13rem），同 Sidebar 的 lg:w-[13rem] 對齊。 */
+@media (min-width: 64rem) {
+  html[data-sidebar='on'] {
+    --sidebar-w: 13rem;
+  }
+}
 @media (min-width: 80rem) {
   html[data-sidebar='on'] {
     --sidebar-w: 260px;
@@ -1394,7 +1400,7 @@ html.font-easy .skeleton {
    「繼續」卡出現時，375×812 實測快速開始下面兩條連結（y=701–745）落在左下無障礙掣及右下
    情緒支援掣（y=692 起）之下。吉祥物是給初次來的人認得網站用的；回訪學生已經認得，
    所以只在有「繼續」卡時、只在手機闊度收起它，初次訪客所見不變。寫在 @layer 之外，蓋過 flex。 */
-@media (max-width: 639px) {
+@media (max-width: 1279px) {
   section:has([data-continue-card]) .hero-mascot { display: none; }
 }
 
@@ -1402,8 +1408,9 @@ html.font-easy .skeleton {
    頁面有頁頂按鈕（A11yButton，data-a11y-trigger）時，手機闊度收起左下角浮動掣；
    沒有頁頂按鈕的頁面，浮動掣照舊顯示。斷點與按鈕的 md:hidden 相同（768px）。
    寫在 @layer 之外，蓋過 Tailwind 的 flex。 */
-@media (max-width: 767px) {
+@media (max-width: 1279px) {
   body:has([data-a11y-trigger]) .a11y-fab { display: none; }
+  body:has([data-sos-trigger]) .sos-fab { display: none; }
 }
 
 /* 不考之地：native details 展開時只使用 opacity/transform，不影響版面流；
@@ -1466,7 +1473,7 @@ html.font-easy .skeleton {
   z-index: 20;
   flex-shrink: 0;
   margin-top: 16px;
-  padding-right: 56px;
+  padding-right: 0;
   background: var(--color-surface-raised);
   border-top: 1px solid var(--color-line-strong);
 }
@@ -1514,8 +1521,16 @@ body:has(.practice-session) .a11y-fab {
   min-height: 44px;
   z-index: 45;
 }
+body:has(.practice-session) .sos-fab {
+  display: flex;
+  top: max(12px, env(safe-area-inset-top));
+  right: 68px;
+  bottom: auto;
+  left: auto;
+  z-index: 45;
+}
 .practice-session .practice-sticky-head {
-  padding-right: 60px;
+  padding-right: 124px;
 }
 .practice-session .practice-sticky-head [data-a11y-trigger] {
   display: none;

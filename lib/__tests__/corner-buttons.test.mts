@@ -16,7 +16,7 @@ test('with a continue card on a phone, the mascot gives way; first-time visitors
   const css = read('app/globals.css')
   const at = css.indexOf('section:has([data-continue-card]) .hero-mascot')
   assert.ok(at > 0)
-  assert.match(css.slice(css.lastIndexOf('@media', at), at), /@media \(max-width: 639px\) \{\s*$/)
+  assert.match(css.slice(css.lastIndexOf('@media', at), at), /@media \(max-width: 1279px\) \{\s*$/)
 })
 
 test('between 1024 and 1279px the practice columns leave room for the right-corner button', () => {
