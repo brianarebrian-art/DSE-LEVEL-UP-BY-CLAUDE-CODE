@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { FLAGGED, type QualityFlag } from '@/data/qualityFlags'
+import { UNREVIEWED_RESTORED_IDS } from '@/data/questions/unreviewed-restored'
 import { useLocale } from '@/lib/i18n'
 import ReportQuestionButton from './ReportQuestionButton'
 
@@ -40,11 +41,13 @@ import ReportQuestionButton from './ReportQuestionButton'
 // automated checks, and pending (a specific problem found but not yet fixed).
 const ZH_FLAGS: QualityFlag[] = ['posref']
 const EN_FLAGS: QualityFlag[] = ['posref-en']
+const UNREVIEWED = new Set(UNREVIEWED_RESTORED_IDS)
 
 export default function QuestionProvenance({ questionId }: { questionId: string }) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const pending = (FLAGGED[questionId] ?? []).filter((f) => (en ? EN_FLAGS : ZH_FLAGS).includes(f))
+  const unreviewedRestore = UNREVIEWED.has(questionId)
 
   return (
     <div className="mt-3 border-t border-gold/15 pt-3">
@@ -75,8 +78,15 @@ export default function QuestionProvenance({ questionId }: { questionId: string 
         ) : (
           <>
             <span className="text-ink-soft font-medium">
-              {en ? 'Automated checks only' : '經自動檢查'}
+              {unreviewedRestore
+                ? (en ? 'Back online, awaiting a person’s check' : '未人手覆核')
+                : (en ? 'Automated checks only' : '經自動檢查')}
             </span>
+            {unreviewedRestore && (
+              en
+                ? ' This question was rewritten and returned to practice after automated checks only. No person has checked the explanation.'
+                : ' 呢條改寫後經自動檢查重新上線，解釋未經人手覆核。'
+            )}
             {' — '}
             {en
               ? 'terminology and register, structure and difficulty mix, format and completeness.'

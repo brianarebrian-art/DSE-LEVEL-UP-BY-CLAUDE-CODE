@@ -5,6 +5,7 @@ import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { MIN_BAND_EVIDENCE } from '@/lib/practiceBand'
 import { lengthBiasedSubjects, OPTION_LENGTH_MEASURED_AT } from '@/lib/optionLengthBias'
+import { DSE_PAPER_FORMATS } from '@/data/dse-paper-formats'
 import { getSubject } from '@/data/subjects'
 
 // 見 page.tsx 檔頭。呢版唔係為算法辯護，係公開佢有幾粗糙。
@@ -23,6 +24,7 @@ export default function PredictionMethodClient() {
   const en = locale === 'en'
   // Founders' reply 17C (2026-10-04), wording approved as drafted. Derived from the live bank.
   const biased = lengthBiasedSubjects().map((id) => getSubject(id)).filter((m) => m !== undefined)
+  const noMc = DSE_PAPER_FORMATS.filter((f) => !f.hasMC).map((f) => getSubject(f.subject)).filter((m) => m !== undefined)
   const [y, mo, d] = OPTION_LENGTH_MEASURED_AT.split('-').map(Number)
   const measured = en
     ? new Date(Date.UTC(y, mo - 1, d)).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
@@ -116,8 +118,18 @@ export default function PredictionMethodClient() {
         <Section title={en ? 'Known issue: option length' : '已知問題：選項長短'}>
           <p>
             {en
-              ? `On ${measured} we tested this ourselves: in the subjects below, picking the longest option gets the answer right more than half the time (guessing at random should give about one in four), so the practice estimate for these subjects may be too high: ${biased.map((m) => m.nameEn).join(', ')}. An automatic check now stops new questions from having this problem.`
-              : `${measured}我哋自己測試過：喺以下科目，揀最長嗰個選項有超過一半機會答中（亂揀應該只有大約四分之一），所以呢啲科目嘅練習表現估算可能偏高：${biased.map((m) => m.name).join('、')}。新題目已經有自動檢查擋住呢個問題。`}
+              ? `On ${measured} we tested this ourselves: in the subjects below, picking the longest option gets the answer right more than half the time (guessing at random should give about one in four), so the practice estimate for these subjects may be too high: ${biased.map((m) => m.nameEn).join(', ')}. The cumulative level estimate for these subjects is paused and no level range is shown. An automatic check now stops new questions from having this problem.`
+              : `${measured}我哋自己測試過：喺以下科目，揀最長嗰個選項有超過一半機會答中（亂揀應該只有大約四分之一），所以呢啲科目嘅練習表現估算可能偏高：${biased.map((m) => m.name).join('、')}。呢幾科嘅累積等級估算暫停，唔再顯示等級範圍。新題目已經有自動檢查擋住呢個問題。`}
+          </p>
+        </Section>
+      )}
+
+      {noMc.length > 0 && (
+        <Section title={en ? 'Exams with no multiple-choice paper' : '考卷冇選擇題嘅科目'}>
+          <p>
+            {en
+              ? `These subjects have no multiple-choice paper in the exam: ${noMc.map((m) => m.nameEn).join(', ')}. The questions here are a concept warm-up only. There is no cumulative level estimate for them.`
+              : `呢幾科嘅考卷冇選擇題：${noMc.map((m) => m.name).join('、')}。呢度嘅題只係概念熱身，唔設累積等級估算。`}
           </p>
         </Section>
       )}

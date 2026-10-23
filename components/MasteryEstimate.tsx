@@ -8,6 +8,7 @@ import {
 import { shareAtOrAbove, subjectDistribution, DISTRIBUTION_YEAR } from '@/lib/levelDistribution'
 import { driftYears } from '@/lib/levelDrift'
 import { isLengthBiased } from '@/lib/optionLengthBias'
+import { cumulativeEstimateBlocked } from '@/lib/estimateGate'
 
 // 等級估算（v4）。呢個組件嘅責任唔止係出個數，而係令學生知道呢個數靠得住
 // 幾多 —— 所以三種不確定性各自有自己嘅一句，唔混埋一齊講。
@@ -41,6 +42,33 @@ export default function MasteryEstimate({
 
   useEffect(() => { setM(getSubjectMastery(subjectId)) }, [subjectId])
   if (m === null) return null
+  const block = cumulativeEstimateBlocked(subjectId)
+  if (block) {
+    if (m.sessions === 0 && m.legacy === 0) return null
+    return (
+      <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
+        <Heading className="font-medium text-ink mb-1">
+          {heading ?? <>📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</>}
+        </Heading>
+        <p className="text-sm text-ink mt-2 leading-relaxed">
+          {block === 'no-mc-exam'
+            ? (en
+                ? 'This subject’s exam has no multiple-choice paper. These questions are a concept warm-up, so no level estimate is shown.'
+                : '呢科考卷冇選擇題。呢度只係概念熱身，所以唔顯示等級估算。')
+            : (en
+                ? 'The cumulative level estimate is paused for this subject. The longest option is still right too often, so a level range would overstate this practice.'
+                : '呢科嘅累積等級估算暫停。揀最長選項仍然太易答中，顯示等級範圍會講大咗。')}
+        </p>
+        {lengthBiasNote && isLengthBiased(subjectId) && (
+          <p className="text-sm text-ink-soft mt-3 leading-relaxed">
+            {en
+              ? 'Note: in this subject, the correct answer to some multiple-choice questions is often the longest option, so a guess can be right without knowing the answer. The estimate for this subject may be too high.'
+              : '注意：呢科部分選擇題嘅正確答案往往係最長嗰個選項，唔識都可能估中，所以呢科嘅估算可能偏高。'}
+          </p>
+        )}
+      </div>
+    )
+  }
   if (m.sessions === 0 && m.legacy === 0) return null
 
   const dist = subjectDistribution(subjectId)

@@ -11,6 +11,7 @@ import ExternalLinkGate from '@/components/ExternalLinkGate'
 import SubjectProgressPanel, { evidenceLine, useSubjectTopicTally } from '@/components/SubjectProgressPanel'
 import { topicEvidence } from '@/lib/topicEvidence'
 import { isMCExamFormat, PAPER_STRUCTURE, QUESTION_KIND_LABELS } from '@/data/dse-paper-formats'
+import { cumulativeEstimateBlocked } from '@/lib/estimateGate'
 import { notPractisedSentence } from '@/lib/notPractisedHere'
 import { subjectFaq } from '@/lib/faq'
 
@@ -77,6 +78,7 @@ export default function SubjectDetailView({
   // 呢張卡描述嘅係【撳落去會開始嗰一節練習】，所以兩個數都要跟 SESSION_SIZE。
   // 每題 1 分，所以滿分 = 一節題數。
   const examHasMC = isMCExamFormat(meta.id)
+  const estimateBlock = cumulativeEstimateBlocked(meta.id)
   // Founders' reply 22a (audit #10): say which exam parts this site cannot practise.
   const notPractised = notPractisedSentence(meta.id, en)
   const faq = subjectFaq(
@@ -115,12 +117,21 @@ export default function SubjectDetailView({
           </p>
         )}
         <p className="text-ink-muted text-sm">
-          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
+          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}
+          {estimateBlock
+            ? (en ? ' topics · instant marking' : ' 大課題 · 即時批改')
+            : sd.quickDescB}
         </p>
         <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
           <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
           <span>·</span>
-          <span>{sd.gradePredict}</span>
+          <span>
+            {estimateBlock === 'no-mc-exam'
+              ? (en ? 'Concept warm-up only' : '僅供概念溫習')
+              : estimateBlock === 'length-bias'
+                ? (en ? 'Level estimate paused' : '等級估算暫停')
+                : sd.gradePredict}
+          </span>
           <span>·</span>
           <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
         </div>
