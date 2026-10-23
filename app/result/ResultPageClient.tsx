@@ -17,6 +17,7 @@ import SignInNote from '@/components/SignInNote'
 import SessionFeedback from '@/components/SessionFeedback'
 import { upcomingReviews, type DueItem } from '@/lib/reviewSchedule'
 import EncouragementWall from '@/components/EncouragementWall'
+import { formatHkCivilDate } from '@/lib/hkTime'
 import { useQuiet } from '@/lib/quietMode'
 import ShareStatsCardButton from '@/components/ShareStatsCardButton'
 import { type DailyStatsCardData } from '@/components/DailyStatsCard'
@@ -251,7 +252,7 @@ export default function ResultPageClient() {
   const bestTopic = ratioSorted[0]
   const worstTopic = ratioSorted[ratioSorted.length - 1]
   const cardData: DailyStatsCardData = {
-    date: new Date().toLocaleDateString(locale === 'en' ? 'en-GB' : 'zh-HK'),
+    date: formatHkCivilDate(undefined, locale === 'en'),
     subject: subjName,
     questionsDone: result.total,
     accuracy: Math.round((result.score / result.total) * 100),
@@ -567,7 +568,7 @@ export default function ResultPageClient() {
         </p>
 
         {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
-        {!quiet && <EncouragementWall />}
+        {!quiet && result.total > 0 && result.score / result.total >= 0.5 && <EncouragementWall />}
 
         {/* Disclaimer */}
         <p className="text-xs text-ink-muted text-center">

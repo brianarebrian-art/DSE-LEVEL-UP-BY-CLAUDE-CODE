@@ -160,13 +160,14 @@ const out: Question[] = []
     const ans = Math.round((Math.acos(half / L) * 180) / Math.PI)
     const dFace = Math.round((Math.atan2(h, side / 2) * 180) / Math.PI) // slant FACE vs base (apothem)
     const dComp = 90 - ans
-    const dSide = Math.round((Math.atan2(h, side) * 180) / Math.PI) // used full side
+    // 干擾項必須係「把半對角線換成全底邊再取 arccos」算出的角度，解釋先對得上數字。
+    const dSide = Math.round((Math.acos(side / L) * 180) / Math.PI)
     out.push(pq(`mp_k5_${i}`, T.trig3d, FW.geometry, yr(i),
       [`正四棱錐底為邊長 $${side}$ 的正方形，每條側棱（頂點到底角）長 $${L}$。求側棱與底面所成的角（準至最接近的度）。`,
        `A right pyramid has a square base of side $${side}$; each slant edge (apex to a base corner) is $${L}$. Find the angle between a slant edge and the base (to the nearest degree).`],
       [deg(ans), deg(dFace), deg(dComp), deg(dSide)],
-      [`底面對角線一半 $= \\dfrac{${side}\\sqrt2}{2} = ${half.toFixed(2)}$。側棱、半對角線、高成直角三角形，$\\cos\\theta = \\dfrac{${half.toFixed(2)}}{${L}}$ ⇒ $\\theta \\approx ${ans}^\\circ$。陷阱：$${dFace}^\\circ$ 求了側面與底的二面角（用邊心距）；$${dComp}^\\circ$ 是餘角；$${dSide}^\\circ$ 誤用全底邊。`,
-       `Half-diagonal $= \\dfrac{${side}\\sqrt2}{2} \\approx ${half.toFixed(2)}$. With the slant edge $${L}$, $\\cos\\theta = \\dfrac{${half.toFixed(2)}}{${L}}$ ⇒ $\\theta \\approx ${ans}^\\circ$. Traps: $${dFace}^\\circ$ is the face dihedral; $${dComp}^\\circ$ the complement; $${dSide}^\\circ$ uses the full side.`],
+      [`底面對角線一半 $= \\dfrac{${side}\\sqrt2}{2} = ${half.toFixed(2)}$。側棱、半對角線、高成直角三角形，$\\cos\\theta = \\dfrac{${half.toFixed(2)}}{${L}}$ ⇒ $\\theta \\approx ${ans}^\\circ$。陷阱：$${dFace}^\\circ$ 求了側面與底的二面角（用邊心距）；$${dComp}^\\circ$ 是餘角；$${dSide}^\\circ$ 把半對角線換成全底邊，即 $\\cos^{-1}(${side}/${L})$。`,
+       `Half-diagonal $= \\dfrac{${side}\\sqrt2}{2} \\approx ${half.toFixed(2)}$. With the slant edge $${L}$, $\\cos\\theta = \\dfrac{${half.toFixed(2)}}{${L}}$ ⇒ $\\theta \\approx ${ans}^\\circ$. Traps: $${dFace}^\\circ$ is the face dihedral; $${dComp}^\\circ$ the complement; $${dSide}^\\circ$ replaces the half-diagonal with the full side, $\\cos^{-1}(${side}/${L})$.`],
       [`側棱配半對角線（並非邊心距！）：$\\cos\\theta=\\dfrac{\\text{半對角線}}{\\text{側棱}}$ ⇒ $\\theta\\approx${ans}^\\circ$。`,
        `Edge pairs with the half-diagonal (not the apothem): $\\cos\\theta=\\tfrac{\\text{half-diag}}{\\text{edge}} ⇒ ${ans}^\\circ$.`]))
   })

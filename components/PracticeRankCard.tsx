@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useQuiet } from '@/lib/quietMode'
 import { useLocale } from '@/lib/i18n'
 import { getPracticeRank, RANKS, type PracticeRankState } from '@/lib/practiceRank'
+import { latestAccuracyLow } from '@/lib/recentAccuracy'
 
 // 競技場卡 —— 段位 + EXP 進度（憲章 §8.1，2026-08-22 遊戲化解禁）
 //
@@ -51,11 +52,15 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
   const { locale } = useLocale()
   const en = locale === 'en'
   const [a, setA] = useState<PracticeRankState | null>(null)
+  const [humble, setHumble] = useState(false)
   // 安靜模式（lib/quietMode.ts，憲章 §8.1 約束 4）—— hook 一定要喺任何 return 之前叫
   const quiet = useQuiet()
 
   // 導出值，唔會寫任何嘢；掛喺 mount 之後避免 SSR／水合唔一致
-  useEffect(() => { setA(getPracticeRank()) }, [])
+  useEffect(() => {
+    setA(getPracticeRank())
+    setHumble(latestAccuracyLow())
+  }, [])
   if (quiet) return null
   if (!a || a.sessions === 0) return null
 
@@ -81,7 +86,13 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
               ? `${a.sessions} session${a.sessions > 1 ? 's' : ''} · ${a.activeDays} day${a.activeDays > 1 ? 's' : ''} practised`
               : `已完成 ${a.sessions} 節 · 練習過 ${a.activeDays} 日`}
           </p>
-          {a.next ? (
+          {humble ? (
+            <p className="text-[12px] text-ink-soft mt-2 leading-relaxed">
+              {en
+                ? 'The latest session was under half correct. Rank counts sessions finished, not how accurate they were. Quiet mode hides this card.'
+                : '最近一節未過一半。段位只計做完幾多節，唔代表答得準。開安靜模式可以收起呢張卡。'}
+            </p>
+          ) : a.next ? (
             <>
               <div className="mt-2.5 h-1.5 rounded-full bg-surface-sunken overflow-hidden">
                 <div

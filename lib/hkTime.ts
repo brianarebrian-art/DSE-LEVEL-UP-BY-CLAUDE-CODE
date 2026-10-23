@@ -31,3 +31,22 @@ export function nextHkFourAm(now: number = Date.now()): number {
   const anchor = (24 + BOUNDARY_HOUR - 8) * HOUR // = 20h UTC
   return (Math.floor((now - anchor) / DAY) + 1) * DAY + anchor
 }
+
+/** 香港民用曆日（午夜為界，唔係 04:00 溫書日界）。分享卡同進度頁用同一把尺。 */
+export function hkCivilParts(now: number = Date.now()): { year: string; month: string; day: string } {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Hong_Kong',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date(now))
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? ''
+  return { year: get('year'), month: get('month'), day: get('day') }
+}
+
+/** 學生睇到嘅日期。中文用「10月23日」，英文用 23/10/2026，兩邊都係香港時間。 */
+export function formatHkCivilDate(now: number = Date.now(), en = false): string {
+  const { year, month, day } = hkCivilParts(now)
+  if (en) return `${day}/${month}/${year}`
+  return `${Number(month)}月${Number(day)}日`
+}

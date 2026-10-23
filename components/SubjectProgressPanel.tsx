@@ -89,7 +89,9 @@ export default function SubjectProgressPanel({
   const step = rec
   const topic = step && topics.find((t) => t.id === step.topic)
   const name = topic ? (en ? (topic.en ?? topic.zh) : topic.zh) : ''
-  const date = last ? new Date(last.timestamp).toLocaleDateString(en ? 'en-GB' : 'zh-HK', { month: 'short', day: 'numeric' }) : ''
+  const date = last
+    ? new Date(last.timestamp).toLocaleDateString(en ? 'en-GB' : 'zh-HK', { month: 'short', day: 'numeric', timeZone: 'Asia/Hong_Kong' })
+    : ''
 
   return (
     <section aria-labelledby="subject-progress-title" className="mb-8 rounded-2xl border border-line bg-surface-raised p-5">

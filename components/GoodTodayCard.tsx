@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import { Heart, Pencil, Check, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { hkDayString } from '@/lib/hkTime'
+import { latestAccuracyLow } from '@/lib/recentAccuracy'
 
 // 「今日已經好叻」+ 個人化鼓勵語（Emma/UDL + Sarah）。
 //
@@ -55,7 +57,7 @@ const CHEERS_EN = [
   'Even one question. Tomorrow-you will be glad.',
 ]
 
-const today = () => new Date().toISOString().slice(0, 10)
+const today = () => hkDayString()
 
 function readOwn(): string[] {
   try {
@@ -76,9 +78,11 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
   const [own, setOwn] = useState<string[]>([])
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState('')
+  const [humble, setHumble] = useState(false)
 
   // 只在 mount 後讀 localStorage —— 避免 SSR／CSR 落差。
   useEffect(() => {
+    setHumble(latestAccuracyLow())
     setOwn(readOwn())
     try {
       const saved = JSON.parse(localStorage.getItem(KEY_TODAY) ?? 'null')
@@ -131,7 +135,9 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
           <div className="flex items-center gap-2">
             <Heart size={16} className="text-gold shrink-0" aria-hidden />
             <Heading className="text-sm font-medium text-ink">
-              {en ? 'You already did well today' : '今日已經好叻'}
+              {humble
+                ? (en ? 'You showed up today' : '今日有開過')
+                : (en ? 'You already did well today' : '今日已經好叻')}
             </Heading>
           </div>
           <p className="mt-1 text-xs leading-relaxed text-ink-muted">

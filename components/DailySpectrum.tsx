@@ -43,11 +43,13 @@ export default function DailySpectrum() {
         )}
       </div>
       <p className="text-xs text-ink-muted mb-4">
-        {en ? '3 foundation · 5 core · 2 advanced' : '3 題基礎 · 5 題核心 · 2 題進階'}
+        {en
+          ? 'Counts questions attempted today, not questions answered correctly. 3 foundation · 5 core · 2 advanced.'
+          : '呢度數嘅係今日已練習，唔係答對。3 題基礎 · 5 題核心 · 2 題進階。'}
       </p>
 
       {/* 10 段光譜條：逐段按今日真實完成數填色 */}
-      <div className="flex gap-1.5" role="img" aria-label={en ? `Today: ${done} of 10 suggested questions done` : `今日已完成建議節奏 ${done}/10 題`}>
+      <div className="flex gap-1.5" role="img" aria-label={en ? `Attempted today: ${done} of 10 suggested questions. This is not a correct-answer count.` : `今日已練習建議節奏 ${done}/10 題，唔係答對數。`}>
         {TIERS.flatMap((t) =>
           Array.from({ length: t.target }).map((_, i) => {
             const filled = s[t.key] > i
@@ -65,13 +67,21 @@ export default function DailySpectrum() {
       </div>
 
       <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-ink-muted">
-        {TIERS.map((t) => (
-          <span key={t.key} className="inline-flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full inline-block" style={{ background: t.color }} aria-hidden />
-            {en ? t.en : t.zh} {Math.min(s[t.key], t.target)}/{t.target}
-            {s[t.key] > t.target && <span className="text-ink-muted">(+{s[t.key] - t.target})</span>}
-          </span>
-        ))}
+        {TIERS.map((t) => {
+          const correctKey = `${t.key}Correct` as 'easyCorrect' | 'mediumCorrect' | 'hardCorrect'
+          const correct = s[correctKey]
+          return (
+            <span key={t.key} className="inline-flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full inline-block" style={{ background: t.color }} aria-hidden />
+              {en ? t.en : t.zh}{' '}
+              {en ? 'attempted' : '已練習'} {Math.min(s[t.key], t.target)}/{t.target}
+              {typeof correct === 'number' && (
+                <span>{en ? `· correct ${correct}` : `· 答對 ${correct}`}</span>
+              )}
+              {s[t.key] > t.target && <span className="text-ink-muted">(+{s[t.key] - t.target})</span>}
+            </span>
+          )
+        })}
       </div>
     </div>
   )

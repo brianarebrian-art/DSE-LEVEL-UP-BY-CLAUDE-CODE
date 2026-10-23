@@ -121,5 +121,5 @@ test('B5: quiet mode also hides the practice clock and the encouragement wall', 
   // The per-question timer button still depends only on an explicit hide.
   assert.match(ps, /const hideTimer = timerPref === 'hide'/)
   const result = read('app/result/ResultPageClient.tsx')
-  assert.match(result, /\{!quiet && <EncouragementWall \/>\}/)
+  assert.match(result, /\{!quiet && result\.total > 0 && result\.score \/ result\.total >= 0\.5 && <EncouragementWall \/>\}/)
 })

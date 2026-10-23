@@ -11,6 +11,10 @@ export interface DaySpectrum {
   easy: number
   medium: number
   hard: number
+  /** 答對數。舊紀錄冇呢三個欄，介面就只顯示已練習、唔假裝知道答對幾多。 */
+  easyCorrect?: number
+  mediumCorrect?: number
+  hardCorrect?: number
 }
 
 const KEY = 'dse_daily_spectrum'
@@ -35,11 +39,20 @@ export function getTodaySpectrum(): DaySpectrum {
   }
 }
 
-export function recordSpectrumAnswer(difficulty: 'easy' | 'medium' | 'hard'): void {
+const CORRECT_KEY = {
+  easy: 'easyCorrect',
+  medium: 'mediumCorrect',
+  hard: 'hardCorrect',
+} as const
+
+/** 每答一題記一次已練習；correct 為真先另計答對。兩組數字分開，避免把做過當成掌握。 */
+export function recordSpectrumAnswer(difficulty: 'easy' | 'medium' | 'hard', correct = false): void {
   if (typeof window === 'undefined') return
   try {
     const s = getTodaySpectrum()
     s[difficulty] += 1
+    const key = CORRECT_KEY[difficulty]
+    s[key] = (s[key] ?? 0) + (correct ? 1 : 0)
     localStorage.setItem(KEY, JSON.stringify(s))
   } catch {
     /* best-effort */

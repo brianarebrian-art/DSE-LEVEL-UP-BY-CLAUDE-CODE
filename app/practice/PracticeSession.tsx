@@ -60,6 +60,7 @@ import { orderByCause } from '@/lib/causeMode'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
+import { takeDiverse } from '@/lib/sessionDiversity'
 // 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
 import { advanceStreak, nextIndex, preferredTier, wishIndex, EMPTY_STREAK, type StreakState, type NextWish } from '@/lib/adaptiveOrder'
 import { weightedOrder } from '@/lib/empiricalWeighting'
@@ -121,23 +122,22 @@ function pickByDifficulty(ordered: Question[], size: number): Question[] {
   const chosen: Question[] = []
   const taken = new Set<string>()
   const take = (d: Difficulty, n: number) => {
-    for (const q of buckets[d]) {
-      if (chosen.length >= size || n <= 0) break
-      if (taken.has(q.id)) continue
+    const room = Math.min(n, size - chosen.length)
+    if (room <= 0) return
+    const pool = buckets[d].filter((q) => !taken.has(q.id))
+    for (const q of takeDiverse(pool, room, chosen)) {
       chosen.push(q)
       taken.add(q.id)
-      n--
     }
   }
   take('easy', target.easy)
   take('medium', target.medium)
   take('hard', target.hard)
 
-  // Top up any shortfall from the remaining pool, keeping recency preference.
+  // Top up any shortfall from the remaining pool, still preferring a new stem.
   if (chosen.length < size) {
-    for (const q of ordered) {
-      if (chosen.length >= size) break
-      if (taken.has(q.id)) continue
+    const rest = ordered.filter((q) => !taken.has(q.id))
+    for (const q of takeDiverse(rest, size - chosen.length, chosen)) {
       chosen.push(q)
       taken.add(q.id)
     }
@@ -507,7 +507,7 @@ export default function PracticeSession({
           difficulty: currentQ.difficulty,
         })
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
-      recordSpectrumAnswer(currentQ.difficulty)
+      recordSpectrumAnswer(currentQ.difficulty, isCorrect)
     },
     [answerState, currentQ, subjectId]
   )
@@ -949,7 +949,7 @@ export default function PracticeSession({
             </span>
             <span className="flex items-center gap-2 shrink-0">
               {showElapsed && (
-                <span className="flex items-center gap-1 text-xs">
+                <span className="flex items-center gap-1">
                   <Clock size={13} aria-hidden /> {formatTime(elapsed)}
                 </span>
               )}
@@ -973,6 +973,12 @@ export default function PracticeSession({
           </div>
           {/* 2026-09-30（UX 循環 LOOP 19，創辦人決定 2）：細進度條改為各題狀態列，只顯示、不可跳題。 */}
           <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
+          <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+            {tr(
+              '呢排題號只顯示進度，撳唔到返去之前嗰題。答完之後，正確選項留喺而家呢題。',
+              'These numbers show progress only. You cannot go back. After you answer, the correct option stays on this question.',
+            )}
+          </p>
         </div>
 
         {/* 2026-09-30（UX 循環 LOOP 8）：≥1024px 題目與回饋並排。1024×768 實測，題目卡只佔中間 672px、
@@ -1003,8 +1009,11 @@ export default function PracticeSession({
                 年份充當「歷屆」（憲章 §8 禁止虛構數據），故 0 直接不顯示，
                 而非印出一個「0」。 */}
             {currentQ.year ? (
-              <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
-                {currentQ.year}
+              <span
+                className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto"
+                title={tr('題庫內部標記，唔係考評局歷屆試卷年份', 'An internal bank tag, not an HKEAA past-paper year')}
+              >
+                {tr(`題庫標記 ${currentQ.year}`, `Bank tag ${currentQ.year}`)}
               </span>
             ) : null}
           </div>
@@ -1121,7 +1130,10 @@ export default function PracticeSession({
           {answerState === null
             ? ''
             : answerState.isCorrect
-              ? tr('答啱。解析喺下面。', 'Correct. The explanation is below.')
+              ? tr(
+                  '答啱。解析喺回饋區：寬畫面喺右邊，窄畫面喺選項下面。',
+                  'Correct. The explanation is in the feedback area: on the right on a wide screen, and below the options on a narrow one.',
+                )
               : tr('未揀中。正確答案同解析已經標示。可以記低原因，亦可以略過。', 'Not the one chosen. The answer and explanation are shown. You can note a reason, or skip.')}
         </p>
 
@@ -1230,12 +1242,12 @@ export default function PracticeSession({
                   <div className="rounded-2xl p-5 mb-4 border bg-violet/[0.08] border-violet/30">
                     <div className="flex items-center gap-2 mb-2">
                       <Zap size={18} aria-hidden className="text-violet" />
-                      <span className="text-violet font-medium">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
+                      <span className="text-violet font-medium">{tr('可選：選擇題捷徑', 'Optional: multiple-choice shortcut')}</span>
                     </div>
                     <p className="text-xs text-ink-muted mb-3 leading-relaxed">
                       {tr(
-                        '考場上唔使寫足證明 —— 呢招專為 MC 而設，秒級攞分。',
-                        'No full proof needed in the exam — this is the MC-only quick kill.',
+                        '呢段唔係課程教法，亦唔係要你靠估。想快手對選擇題先至睇；理解以上面嘅正解思路為準。',
+                        'This is not syllabus teaching, and it is not a reason to guess. Read it only if you want a shortcut for multiple choice. The reasoning above is what to understand.',
                       )}
                     </p>
                     <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">

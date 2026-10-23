@@ -8,7 +8,7 @@
 
 /** 科目 id → 題庫內容版本號（與 Supabase question_bank_versions.version 同一算法）。 */
 export const BANK_VERSION: Record<string, string> = {
-  "math": "40e15e70233d229b",
+  "math": "fb911bc38f82cfb9",
   "m2": "8d205b98514d52a8",
   "m1": "4da53604cf5df560",
   "physics": "10186704be3e7e26",
