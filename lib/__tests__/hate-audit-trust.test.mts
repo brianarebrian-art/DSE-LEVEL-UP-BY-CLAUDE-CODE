@@ -118,10 +118,31 @@ test('zh_cmp is not in the Chinese bank, and generic writing notes are not shown
   const { getSubjectQuestionsRaw } = await import('../../data/questions/index.ts')
   const chinese = getSubjectQuestionsRaw('chinese')
   assert.equal(chinese.some((q: { id: string }) => q.id.startsWith('zh_cmp_')), false)
-  const { isGenericWritingGuide } = await import('../genericWritingGuide.ts')
+  const { isGenericWritingGuide, isGenericMarkingScale } = await import('../genericWritingGuide.ts')
   const sample = '本題考核的是【由資料走到結論】的完整過程：計算要寫得出步驟。'
   assert.equal(isGenericWritingGuide(sample), true)
   assert.equal(isGenericWritingGuide('機會成本是放棄的最高價值。'), false)
+  assert.equal(
+    isGenericWritingGuide('What is being assessed is the whole path from the data to the conclusion: steps.'),
+    true,
+  )
+  assert.equal(isGenericMarkingScale('本題分三部分評分（本平台練習用尺度）：\n（a）計算'), true)
+  assert.equal(isGenericMarkingScale('Three parts (a practice scale used on this platform):\n(a) calculation'), true)
+  assert.equal(
+    isGenericMarkingScale('(a) 4 marks. The marks shown are a practice scale used on this platform, not an HKEAA mark allocation.'),
+    false,
+  )
+  const { MACHINE_RESTORED_IDS } = await import('../../data/questions/machine-restored-ids.ts')
+  const frozenId = MACHINE_RESTORED_IDS[0]
+  const { withoutWithheld } = await import('../../data/questions/hidden-topics.ts')
+  const pool = withoutWithheld('m1', [{ id: frozenId, topic: 't' }, { id: 'live', topic: 't' }])
+  assert.deepEqual(pool.map((q) => q.id), ['live'])
+  const regradePool = withoutWithheld('m1', [{ id: frozenId, topic: 't' }, { id: 'live', topic: 't' }], {
+    keepMachineRestored: true,
+  })
+  assert.deepEqual(regradePool.map((q) => q.id), [frozenId, 'live'])
+  assert.match(readFileSync('app/api/result/verify/route.ts', 'utf8'), /loadRegradeMCQuestions/)
+  assert.match(readFileSync('app/result/ResultPageClient.tsx', 'utf8'), /unmatched/)
   const card = readFileSync('components/LongQuestionCard.tsx', 'utf8')
   assert.match(card, /ExplanationBody/)
   assert.match(card, /isGenericWritingGuide/)

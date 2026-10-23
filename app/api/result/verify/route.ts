@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
-import { loadSubjectMCQuestions } from '@/data/questions/load'
+import { loadRegradeMCQuestions } from '@/data/questions/load'
 import { safeLog } from '@/lib/safeLog'
 import { regrade, isSubmittedAnswers, MAX_ANSWERS } from '@/lib/verifyResult'
 
@@ -46,7 +46,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    const bank = await loadSubjectMCQuestions(body.subjectId)
+    // 練習池不收錄 machine_restored，但學生可能剛剛做過這些題。覆核須用同一答案；
+    // 否則未知 id 會減少 total，結果頁會把較短的卷寫成學生的分數。
+    const bank = await loadRegradeMCQuestions(body.subjectId)
     if (bank.length === 0) {
       // 未知科目 —— 唔當錯誤，回一個「覆核唔到」畀前端靜靜收起。
       return NextResponse.json({ verified: false, reason: 'unknown_subject' })

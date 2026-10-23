@@ -98,12 +98,28 @@ export function contentStatus(subjectId: string, q: { id: string; topic: string 
   return 'published'
 }
 
+export interface WithoutWithheldOptions {
+  /**
+   * 只供已完成試卷的覆核。保留 machine_restored，以免題目退出練習池之後，
+   * 覆核用較少題數覆蓋學生剛得到的分數。練習池不得開啟。
+   */
+  keepMachineRestored?: boolean
+}
+
 /** Keeps only published questions: drops withheld topics, withdrawn, pending-review and machine-restored questions. */
-export function withoutWithheld<T extends { id: string; topic: string }>(subjectId: string, items: T[]): T[] {
+export function withoutWithheld<T extends { id: string; topic: string }>(
+  subjectId: string,
+  items: T[],
+  options?: WithoutWithheldOptions,
+): T[] {
   const hidden = HIDDEN_TOPICS[subjectId] ?? []
   const out = WITHDRAWN[subjectId] ?? {}
   const pending = PENDING_REVIEW[subjectId] ?? {}
   const frozen = items.some((q) => isMachineRestored(q.id))
   if (!hidden.length && !Object.keys(out).length && !Object.keys(pending).length && !frozen) return items
-  return items.filter((q) => contentStatus(subjectId, q) === 'published')
+  return items.filter((q) => {
+    const status = contentStatus(subjectId, q)
+    if (status === 'published') return true
+    return options?.keepMachineRestored === true && status === 'machine_restored'
+  })
 }
