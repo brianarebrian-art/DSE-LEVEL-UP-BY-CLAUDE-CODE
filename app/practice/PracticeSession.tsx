@@ -60,6 +60,8 @@ import { orderByCause } from '@/lib/causeMode'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
 // F-PRG: 今日學習光譜 — 每答一題按難度記一筆（本地）
 import { recordSpectrumAnswer } from '@/lib/dailySpectrum'
+import { pickByDifficulty } from '@/lib/sessionSample'
+import { levelEstimateBlock } from '@/lib/levelEstimatePolicy'
 // 第 3 週 · 引擎五：無聲難度自適應（只排序，唔重抽，故 3:5:2 分毫不變）
 import { advanceStreak, nextIndex, preferredTier, wishIndex, EMPTY_STREAK, type StreakState, type NextWish } from '@/lib/adaptiveOrder'
 import { weightedOrder } from '@/lib/empiricalWeighting'
@@ -95,55 +97,8 @@ function prepareQuestion(q: Question): PreparedQuestion {
   return { ...q, shuffledOptions: displayOptions(q), correctZh: q.options[q.correctIndex] }
 }
 
-// DSE difficulty mix served per run: 30% 基礎(easy) / 50% 普通(medium) / 20% 拔尖(hard).
-// Owner-mandated target = 300/500/200 per 1,000-question subject bank (the standard
-// foundation-weighted pyramid). pickByDifficulty tops up from whatever's left if a bank
-// is thin on a tier, so it never returns fewer than it can.
-const DIFF_RATIO: Record<Difficulty, number> = { easy: 0.3, medium: 0.5, hard: 0.2 }
-
-// Pick `size` questions from a recency-ordered pool honouring the 3:5:2 mix.
-// `ordered` is already in preference order (unseen first, then longest-ago-seen);
-// we draw per difficulty in that order, then top up from whatever's left if a
-// difficulty bucket runs short — so a thin bank never returns fewer than it can.
-function pickByDifficulty(ordered: Question[], size: number): Question[] {
-  if (ordered.length <= size) return ordered
-
-  const target: Record<Difficulty, number> = {
-    easy: Math.round(size * DIFF_RATIO.easy),
-    hard: Math.round(size * DIFF_RATIO.hard),
-    medium: 0,
-  }
-  target.medium = size - target.easy - target.hard
-
-  const buckets: Record<Difficulty, Question[]> = { easy: [], medium: [], hard: [] }
-  for (const q of ordered) buckets[q.difficulty]?.push(q)
-
-  const chosen: Question[] = []
-  const taken = new Set<string>()
-  const take = (d: Difficulty, n: number) => {
-    for (const q of buckets[d]) {
-      if (chosen.length >= size || n <= 0) break
-      if (taken.has(q.id)) continue
-      chosen.push(q)
-      taken.add(q.id)
-      n--
-    }
-  }
-  take('easy', target.easy)
-  take('medium', target.medium)
-  take('hard', target.hard)
-
-  // Top up any shortfall from the remaining pool, keeping recency preference.
-  if (chosen.length < size) {
-    for (const q of ordered) {
-      if (chosen.length >= size) break
-      if (taken.has(q.id)) continue
-      chosen.push(q)
-      taken.add(q.id)
-    }
-  }
-  return chosen
-}
+// 3:5:2 draw lives in lib/sessionSample.ts (same ratios, plus a family skip so
+// one template with the numbers swapped does not fill the session).
 
 function buildPool(
   bank: Question[],
@@ -200,7 +155,7 @@ function buildPool(
   )
 
   // Stratify to the DSE 30/50/20 mix, then shuffle so difficulties aren't clustered.
-  return shuffle(pickByDifficulty(weighted, sessionSize)).map(prepareQuestion)
+  return shuffle(pickByDifficulty(weighted, sessionSize, subjectId)).map(prepareQuestion)
 }
 
 type AnswerState = { selectedZh: string; isCorrect: boolean } | null
@@ -507,7 +462,7 @@ export default function PracticeSession({
           difficulty: currentQ.difficulty,
         })
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
-      recordSpectrumAnswer(currentQ.difficulty)
+      recordSpectrumAnswer(currentQ.difficulty, isCorrect)
     },
     [answerState, currentQ, subjectId]
   )
@@ -544,7 +499,11 @@ export default function PracticeSession({
         return
       }
 
-      const grade = predictGrade(score, getPracticeCutoffs(totalQ, subjectId), subjectId).grade
+      // Subjects with no MC exam, or a longest-option hold, do not store a level.
+      // The result page never renders this field; the predictor reads practice history.
+      const grade = levelEstimateBlock(subjectId)
+        ? '—'
+        : predictGrade(score, getPracticeCutoffs(totalQ, subjectId), subjectId).grade
       const resultData = {
         score,
         total: totalQ,
@@ -1003,8 +962,11 @@ export default function PracticeSession({
                 年份充當「歷屆」（憲章 §8 禁止虛構數據），故 0 直接不顯示，
                 而非印出一個「0」。 */}
             {currentQ.year ? (
-              <span className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto">
-                {currentQ.year}
+              <span
+                className="text-xs text-ink-muted bg-surface-sunken px-3 py-1 rounded-full ml-auto"
+                title={tr('內部題庫標記，唔係考評局年份', 'An internal bank tag, not an HKEAA paper year')}
+              >
+                {tr(`內部標記 ${currentQ.year}`, `Bank tag ${currentQ.year}`)}
               </span>
             ) : null}
           </div>
@@ -1121,7 +1083,7 @@ export default function PracticeSession({
           {answerState === null
             ? ''
             : answerState.isCorrect
-              ? tr('答啱。解析喺下面。', 'Correct. The explanation is below.')
+              ? tr('答啱。解析喺右邊；窄螢幕就喺下面。', 'Correct. The explanation is on the right; on a narrow screen it is below.')
               : tr('未揀中。正確答案同解析已經標示。可以記低原因，亦可以略過。', 'Not the one chosen. The answer and explanation are shown. You can note a reason, or skip.')}
         </p>
 
@@ -1230,12 +1192,12 @@ export default function PracticeSession({
                   <div className="rounded-2xl p-5 mb-4 border bg-violet/[0.08] border-violet/30">
                     <div className="flex items-center gap-2 mb-2">
                       <Zap size={18} aria-hidden className="text-violet" />
-                      <span className="text-violet font-medium">{tr('⚡ 名師速解（MC Hack）', '⚡ MC Hack — exam shortcut')}</span>
+                      <span className="text-violet font-medium">{tr('可選捷徑（選擇題）', 'Optional shortcut (multiple-choice)')}</span>
                     </div>
                     <p className="text-xs text-ink-muted mb-3 leading-relaxed">
                       {tr(
-                        '考場上唔使寫足證明 —— 呢招專為 MC 而設，秒級攞分。',
-                        'No full proof needed in the exam — this is the MC-only quick kill.',
+                        '可選捷徑，只適用於選擇題，唔係課程教學，亦唔代替上面嘅正解。',
+                        'Optional shortcut for multiple-choice only. It is not syllabus teaching, and it does not replace the reasoning above.',
                       )}
                     </p>
                     <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">

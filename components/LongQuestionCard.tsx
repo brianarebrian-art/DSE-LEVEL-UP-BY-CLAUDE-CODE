@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { ChevronDown, Flag, Clock } from 'lucide-react'
 import MathText from '@/components/MathText'
+import ExplanationBody from '@/components/ExplanationBody'
+import { isGenericMarkingScale, isGenericWritingGuide } from '@/lib/genericWritingGuide'
 // 第 3 週 · 引擎五之三：分步提示（只俾方向，唔收學生嘅字，結構上做唔到自動評分）
 import StepHints from '@/components/StepHints'
 import { useLocale } from '@/lib/i18n'
@@ -142,7 +144,11 @@ export default function LongQuestionCard({
                 onClick={() => setShowScheme((s) => !s)}
                 className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
               >
-                <span className="text-xs text-ink-soft font-bold">{en ? 'Marking scheme / step marks' : '評分準則 / 步驟分'}</span>
+                <span className="text-xs text-ink-soft font-bold">
+                  {isGenericMarkingScale(tr(q.markingScheme, q.markingSchemeEn))
+                    ? (en ? 'Shared practice scale (not a mark scheme for this question)' : '各題共用嘅練習尺度（唔係呢題嘅評卷參考）')
+                    : (en ? 'Marking scheme / step marks' : '評分準則 / 步驟分')}
+                </span>
                 <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showScheme ? 'rotate-180' : ''}`} />
               </button>
               {showScheme && (
@@ -160,12 +166,16 @@ export default function LongQuestionCard({
                 onClick={() => setShowWhy((s) => !s)}
                 className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
               >
-                <span className="text-xs text-ink-soft font-bold">{en ? 'How to think about it' : '解題思路'}</span>
+                <span className="text-xs text-ink-soft font-bold">
+                  {isGenericWritingGuide(tr(q.explanation, q.explanationEn))
+                    ? (en ? 'Shared self-check note' : '通用自評方向')
+                    : (en ? 'How to think about it' : '解題思路')}
+                </span>
                 <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showWhy ? 'rotate-180' : ''}`} />
               </button>
               {showWhy && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
-                  <MathText>{tr(q.explanation, q.explanationEn)}</MathText>
+                  <ExplanationBody text={tr(q.explanation, q.explanationEn)} />
                 </div>
               )}
             </>

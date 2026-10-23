@@ -5,7 +5,7 @@ import { createSeoMetadata, breadcrumbJsonLd } from '@/lib/seo'
 import { JsonLd } from '@/components/Seo/JsonLd'
 
 export const metadata: Metadata = createSeoMetadata({
-  title: 'DSE Level Up | DSE 溫習平台 | 掌握 DSE 核心邏輯', // i18n-exempt: zh-Hant fixed search metadata
+  title: 'DSE Level Up | DSE 溫習平台 | 選擇題練判斷', // i18n-exempt: zh-Hant fixed search metadata
   description: 'DSE Level Up 為香港中學生提供免費原創 DSE 題庫、科目筆記和寫作自評。由一元二次方程的完整步驟、英文文體比較到物理運動計算，先理解概念再選擇練習。多項選擇題提供答案核對，書寫題由學生自行評估；沒有即時 AI 生成題目或作文機器評分。本平台並非考評局官方網站，內容需配合課本及教師指引使用，不作成績保證。', // i18n-exempt: zh-Hant fixed search metadata
   path: '/',
   type: 'website',

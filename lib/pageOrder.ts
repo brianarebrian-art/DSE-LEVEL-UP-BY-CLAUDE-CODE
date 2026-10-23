@@ -51,6 +51,7 @@ export const EXCLUDED: Record<string, string> = {
   '/admin/quality': '管理品質後台，有權限守衛，不屬學生導航',
   '/dev/answer-cards': '開發工具頁',
   '/dev/long-session': '開發工具頁',
+  '/sentry-example-page': '開發時確認 Sentry。production 回 404，不屬於學生導航',
 
   // 流程中途，有自己嘅去向
   '/(auth)/sign-in': '登入流程，中途插入循環會令人半路走咗',
@@ -73,6 +74,7 @@ export const EXCLUDED: Record<string, string> = {
   '/methodology': 'Footer 資訊頁',
   '/prediction-method': 'Footer 資訊頁',
   '/privacy': 'Footer 法務頁',
+  '/terms': 'Footer 法務頁',
   '/transparency': 'Footer 資訊頁',
   '/trust': 'Footer 資訊頁',
   '/credits': 'Footer 資訊頁',

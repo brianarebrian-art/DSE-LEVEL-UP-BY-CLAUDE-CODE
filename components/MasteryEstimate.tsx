@@ -8,6 +8,7 @@ import {
 import { shareAtOrAbove, subjectDistribution, DISTRIBUTION_YEAR } from '@/lib/levelDistribution'
 import { driftYears } from '@/lib/levelDrift'
 import { isLengthBiased } from '@/lib/optionLengthBias'
+import { levelEstimateBlock } from '@/lib/levelEstimatePolicy'
 
 // 等級估算（v4）。呢個組件嘅責任唔止係出個數，而係令學生知道呢個數靠得住
 // 幾多 —— 所以三種不確定性各自有自己嘅一句，唔混埋一齊講。
@@ -42,6 +43,26 @@ export default function MasteryEstimate({
   useEffect(() => { setM(getSubjectMastery(subjectId)) }, [subjectId])
   if (m === null) return null
   if (m.sessions === 0 && m.legacy === 0) return null
+
+  const block = levelEstimateBlock(subjectId)
+  if (block) {
+    return (
+      <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
+        <Heading className="font-medium text-ink mb-1">
+          {heading ?? <>📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</>}
+        </Heading>
+        <p className="text-sm text-ink mt-2 leading-relaxed">
+          {block === 'no-mc-exam'
+            ? (en
+                ? 'The 2027 paper in this subject has no multiple-choice. These questions are a concept warm-up only. This is not a DSE level, and it is not a grade prediction.'
+                : '2027 年考卷呢科冇選擇題。呢啲題只係概念熱身，唔係 DSE 等級，亦唔係成績預測。')
+            : (en
+                ? 'Some multiple-choice items here reward the longest option, so a cumulative level range would overstate practice. The range stays hidden. Your practice is still saved. This is not a grade prediction.'
+                : '呢科有部分選擇題，最長嗰個選項較常係答案，累積等級範圍會誇大練習表現，所以暫時唔顯示。練習紀錄仍然保存。呢個唔係成績預測。')}
+        </p>
+      </div>
+    )
+  }
 
   const dist = subjectDistribution(subjectId)
   const years = driftYears(subjectId)

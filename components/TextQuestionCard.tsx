@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { CheckCircle2, Lightbulb, Flag } from 'lucide-react'
 import MathText from '@/components/MathText'
+import ExplanationBody from '@/components/ExplanationBody'
 import { useLocale } from '@/lib/i18n'
 import type { TextQuestion } from '@/data/questions/types'
 
@@ -95,7 +96,7 @@ export default function TextQuestionCard({
 
           {q.explanation && (
             <div className="text-sm text-ink-muted leading-relaxed mb-4 whitespace-pre-line">
-              <MathText>{tr(q.explanation, q.explanationEn)}</MathText>
+              <ExplanationBody text={tr(q.explanation, q.explanationEn)} />
             </div>
           )}
 

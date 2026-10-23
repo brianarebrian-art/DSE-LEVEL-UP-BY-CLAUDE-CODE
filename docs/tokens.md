@@ -9,7 +9,7 @@
 node scripts/gen-token-doc.mjs
 ```
 
-掃到 **169** 個 custom property 宣告，分佈喺 **207** 個 block。
+掃到 **169** 個 custom property 宣告，分佈喺 **221** 個 block。
 
 ## ⚠️ 被覆蓋嘅宣告
 
@@ -437,3 +437,17 @@ node scripts/gen-token-doc.mjs
 | L1417 | `@keyframes off-syllabus-reveal › to` |
 | L1419 | `@media (prefers-reduced-motion: reduce)` |
 | L1420 | `@media (prefers-reduced-motion: reduce) › .off-syllabus-card-body` |
+| L1427 | `.practice-session-revealed` |
+| L1437 | `.practice-session-revealed > .practice-session-column` |
+| L1445 | `.practice-revealed-scroll` |
+| L1453 | `.practice-option` |
+| L1456 | `.practice-explain` |
+| L1459 | `.practice-miss` |
+| L1463 | `.practice-next-bar` |
+| L1473 | `.practice-next-btn` |
+| L1487 | `.practice-next-btn:hover` |
+| L1492 | `.practice-next-btn:focus-visible, .practice-option:focus-visible, .practice-feedback:focus-visible` |
+| L1498 | `body:has(.practice-session) [role="dialog"][aria-label="無障礙設定"], body:has(.practice-session) [role="dialog"][aria-label="Accessibility options"]` |
+| L1505 | `body:has(.practice-session) .a11y-fab` |
+| L1517 | `.practice-session .practice-sticky-head` |
+| L1520 | `.practice-session .practice-sticky-head [data-a11y-trigger]` |

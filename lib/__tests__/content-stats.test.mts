@@ -20,17 +20,17 @@ const HT = ht.default?.contentStatus ? ht.default : ht
 const { subjects } = await import('../../data/subjects.ts')
 const active = subjects.filter((s: { isActive?: boolean }) => s.isActive !== false)
 
-test('the four statuses add up to the authored total, and published is the practice pool', () => {
+test('the five statuses add up to the authored total, and published is the practice pool', () => {
   const s = CONTENT_STATS
-  assert.equal(s.published + s.withdrawn + s.withheldTopic + s.pendingReview, s.totalAuthored)
+  assert.equal(s.published + s.withdrawn + s.withheldTopic + s.pendingReview + s.machineRestored, s.totalAuthored)
   assert.equal(s.published, TOTAL_QUESTIONS)
   const live = active.reduce((n: number, x: { id: string }) => n + getSubjectQuestions(x.id).length, 0)
   assert.equal(live, s.published, 'run npm run gen:summary')
 })
 
 test('the generated counts match a recount of the real bank', () => {
-  const c = { totalAuthored: 0, published: 0, withdrawn: 0, withheldTopic: 0, pendingReview: 0 }
-  const key = { published: 'published', withdrawn: 'withdrawn', withheld_topic: 'withheldTopic', pending_review: 'pendingReview' } as const
+  const c = { totalAuthored: 0, published: 0, withdrawn: 0, withheldTopic: 0, pendingReview: 0, machineRestored: 0 }
+  const key = { published: 'published', withdrawn: 'withdrawn', withheld_topic: 'withheldTopic', pending_review: 'pendingReview', machine_restored: 'machineRestored' } as const
   for (const s of active) for (const q of getSubjectQuestionsRaw(s.id)) {
     c.totalAuthored++
     c[key[HT.contentStatus(s.id, q) as keyof typeof key]]++
@@ -83,7 +83,7 @@ test('transparency shows the breakdown from the same source, passed from the ser
   assert.match(page, /content=\{CONTENT_STATS\}/)
   const client = read('app/transparency/TransparencyClient.tsx')
   assert.doesNotMatch(client, /from '@\/data\/questions\/summary\.generated'/, 'the client gets numbers only, not the topic lists')
-  for (const k of ['published', 'withdrawn', 'withheldTopic', 'pendingReview', 'totalAuthored']) {
+  for (const k of ['published', 'withdrawn', 'withheldTopic', 'pendingReview', 'machineRestored', 'totalAuthored']) {
     assert.match(client, new RegExp(`n\\(content\\.${k}\\)`), k)
   }
   const visible = client.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')

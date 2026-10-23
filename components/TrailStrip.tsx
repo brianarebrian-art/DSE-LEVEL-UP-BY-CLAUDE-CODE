@@ -21,12 +21,12 @@ const TONE_DOT = {
   gold: 'bg-gold',
 } as const
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
 function shortDate(date: string, en: boolean): string {
-  const d = new Date(`${date}T00:00:00`)
-  if (Number.isNaN(d.getTime())) return date
-  return en
-    ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
-    : `${d.getMonth() + 1}月${d.getDate()}日`
+  const [y, m, d] = date.split('-').map(Number)
+  if (!y || !m || !d) return date
+  return en ? `${d} ${MONTHS[m - 1]}` : `${m}月${d}日`
 }
 
 export default function TrailStrip({ className = '' }: { className?: string }) {

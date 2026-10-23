@@ -13,7 +13,7 @@ import { subjects, getActiveSubjects } from '@/data/subjects'
 // barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
 // 一條都冇顯示過）。呢一頁只係想要一個總數。
-import { TOTAL_QUESTIONS, WITHDRAWN_FOR_FAULT } from '@/data/questions/summary.generated'
+import { CONTENT_STATS, TOTAL_QUESTIONS, WITHDRAWN_FOR_FAULT } from '@/data/questions/summary.generated'
 import { SESSION_SIZE, sessionMinutes } from '@/lib/entitlements'
 import { quickStartSubjects, quickStartHref } from '@/lib/quickStart'
 import { useLocale } from '@/lib/i18n'
@@ -179,6 +179,17 @@ export default function HomePage() {
 
           <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-6 sm:text-xl">{hero.subhead}</p>
 
+          {/* 覆核狀態放喺行動之前。數字全部來自 CONTENT_STATS，同 /transparency 同一個來源。
+              WITHDRAWN_FOR_FAULT 只係「已收起」入面發現有錯嗰一部分，唔可以單獨當總數。 */}
+          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-xs leading-relaxed text-ink-muted">
+            {locale === 'en'
+              ? `Questions go live after automated checks and have not been reviewed by registered teachers. ${CONTENT_STATS.published.toLocaleString()} are in practice and ${CONTENT_STATS.withdrawn.toLocaleString()} are withdrawn (${WITHDRAWN_FOR_FAULT.toLocaleString()} because a fault was found; the rest were pure recall and have been replaced). Another ${CONTENT_STATS.machineRestored.toLocaleString()} were recomputed by a program and are kept out of practice until someone who knows the subject checks them. `
+              : `題目經自動檢查上線，未經註冊教師審定。練習中 ${CONTENT_STATS.published.toLocaleString()} 條，已收起 ${CONTENT_STATS.withdrawn.toLocaleString()} 條（其中 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條係發現有錯，其餘係純背誦題，已經換走）。另有 ${CONTENT_STATS.machineRestored.toLocaleString()} 條由程式重算、未經人手覆核，已暫停放入練習。`}
+            <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
+              {locale === 'en' ? 'Same figures on the transparency page' : '同透明度頁同一個數'}
+            </Link>
+          </p>
+
           {/* 快速開始（UX 循環 LOOP 2，2026-09-30）。
               以前主按鈕「開始練習」只通往科目列表，新訪客要經過科目列表、科目頁、「立即開始」
               三頁才見到第一題。現在四個核心科目直接開始一節練習；其他科目及季節性副入口
@@ -212,8 +223,8 @@ export default function HomePage() {
 
           <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             {locale === 'en'
-              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind common DSE traps, one question at a time.'
-              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解 DSE 常見陷阱背後嘅核心邏輯。'}
+              ? 'Built by DSE alumni with AI. Multiple-choice practice on common traps, free. It is not mastery of a whole paper.'
+              : '由 DSE 舊生 + AI 協作。免費練選擇題判斷同常見陷阱。呢個唔等於掌握成張卷。'}
           </p>
 
           {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}
@@ -222,20 +233,6 @@ export default function HomePage() {
             <li>{h.trust2}</li>
             <li>{h.trust3}</li>
           </ul>
-          {/* 覆核狀態（創辦人決定 6）：一句講實情，連去透明度頁的細節。
-              2026-10-02 創辦人決定刪去「未經逐題人手覆核」半句，保留「經自動檢查」（憲章 §12.1 約束 1）。
-              2026-10-04（審計 #9，創辦人回覆 10a）：加「未經註冊教師審定」及已收起題數。收起數由
-              summary.generated 計，0 條時不顯示。同日收起 36 條設定有誤的化學題（回覆 15a），
-              原因不再只是解析，字眼改為「發現有錯」。2026-10-09：以 PURE_RECALL 收起並由應用題取代的
-              題目並無錯誤，不計入此數（WITHDRAWN_FOR_FAULT）。 */}
-          <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
-            {locale === 'en'
-              ? `Questions go live after automated checks and have not been reviewed by registered teachers${WITHDRAWN_FOR_FAULT > 0 ? `; another ${WITHDRAWN_FOR_FAULT.toLocaleString()} have been withdrawn because errors were found` : ''}. `
-              : `題目經自動檢查上線，未經註冊教師審定${WITHDRAWN_FOR_FAULT > 0 ? `；另有 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條發現有錯暫時收起` : ''}。`}
-            <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
-              {locale === 'en' ? 'How it works' : '點樣做'}
-            </Link>
-          </p>
         </div>
       </section>
 

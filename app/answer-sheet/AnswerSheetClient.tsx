@@ -6,6 +6,8 @@ import { useSearchParams } from 'next/navigation'
 import { ClipboardCheck, Lightbulb, ArrowRight, Check, RotateCcw, Save } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
+import ExplanationBody from '@/components/ExplanationBody'
+import { isGenericMarkingScale, isGenericWritingGuide } from '@/lib/genericWritingGuide'
 import { subjects } from '@/data/subjects'
 // 答題卡由卷號重建試卷，只需要卷號指名嗰一科。改行 load.ts 逐科 lazy loader ——
 // 原本行 barrel，即係為咗重建一份卷而將全 25 科題庫 build 入瀏覽器
@@ -441,7 +443,9 @@ export default function AnswerSheetClient() {
                       {q.type === 'long' && q.markingScheme && (
                         <details className="mt-2 rounded-xl border border-line bg-surface p-3">
                           <summary className="cursor-pointer text-xs font-medium text-ink-soft">
-                            {tr('評分準則', 'Marking scheme')}
+                            {isGenericMarkingScale(tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme))
+                              ? tr('練習用自評尺度（不是這題的評卷參考）', 'Practice self-check scale (not a mark scheme for this question)')
+                              : tr('評分準則', 'Marking scheme')}
                           </summary>
                           <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
                             <MathText>{tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme)}</MathText>
@@ -452,10 +456,12 @@ export default function AnswerSheetClient() {
                       {q.explanation && (
                         <details className="mt-2 rounded-xl border border-line bg-surface p-3">
                           <summary className="cursor-pointer text-xs font-medium text-ink-soft">
-                            {tr('解題思路', 'How to approach it')}
+                            {isGenericWritingGuide(tr(q.explanation, q.explanationEn ?? q.explanation))
+                              ? tr('通用自評方向', 'Shared self-check note')
+                              : tr('解題思路', 'How to approach it')}
                           </summary>
                           <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
-                            <MathText>{tr(q.explanation, q.explanationEn ?? q.explanation)}</MathText>
+                            <ExplanationBody text={tr(q.explanation, q.explanationEn ?? q.explanation)} />
                           </div>
                         </details>
                       )}

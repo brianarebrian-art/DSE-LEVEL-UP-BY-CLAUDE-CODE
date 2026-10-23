@@ -32,7 +32,7 @@ export default function PracticePage() {
       <PracticeCatalogHeader>
         <h1>DSE 練習題庫 · HKDSE Practice{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}</h1>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-          共 {total} 條獨立改寫題目（多項選擇 {mc} 條、書寫題 {written} 條），涵蓋 {subjects.length} 個 DSE 科目。答錯即時睇到解析。書寫題永不機器批改，交卷後對照參考答案自評。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。
+          共 {total} 條獨立改寫題目（多項選擇 {mc} 條、書寫題 {written} 條），涵蓋 {subjects.length} 個 DSE 科目。答錯即時睇到解析。書寫題永不機器批改，交卷後對照參考答案自評。所有題目為原創改寫，並非香港考試及評核局（HKEAA）官方試題。{/* i18n-exempt: paired English paragraph below */}
           {/* i18n-exempt: 雙語已並列，緊接下段英文 */}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
@@ -58,7 +58,7 @@ export default function PracticePage() {
               return (
                 <li key={s.id}>
                   <Link href={`/subjects/${s.id}`} className="hover:text-accent underline-offset-2 hover:underline">
-                    {s.name} — {subjectQuestions.length} 總題數 / total questions（{subjectMc} MC / multiple-choice、{subjectWritten} 書寫題 / written-response）
+                    {s.name} — {subjectQuestions.length} 總題數 / total questions（{subjectMc} MC / multiple-choice、{subjectWritten} 書寫題 / written-response）{/* i18n-exempt: bilingual on one line */}
                     {/* i18n-exempt: 雙語並列 */}
                   </Link>
                 </li>

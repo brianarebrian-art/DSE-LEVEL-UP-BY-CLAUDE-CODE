@@ -12,7 +12,7 @@ const code = (p: string) =>
 test('subject cards and summaries use the neutral fallback', () => {
   const cards = code('app/subjects/SubjectsView.tsx')
   assert.match(cards, /部分考核形式未於本站提供/)
-  assert.match(cards, /Some assessment components are not offered here/)
+  assert.match(cards, /some assessment components are not offered here/)
   for (const f of ['app/subjects/SubjectsView.tsx', 'app/subjects/page.tsx', 'lib/dictionary.ts']) {
     const s = code(f)
     assert.doesNotMatch(s, /口試、實作：未涵蓋|書寫、口試同實作題型未涵蓋|書寫、口試及實作題型暫未涵蓋|oral \/ practical: not covered/, f)

@@ -23,6 +23,7 @@ export default function QuestionStatusStrip({
   en: boolean
 }) {
   return (
+    <div>
     <ol aria-label={en ? 'Question status' : '各題狀態'} className="flex gap-1">
       {statuses.map((s, i) => {
         const label = en ? QUESTION_STATUS_LABEL[s].en : QUESTION_STATUS_LABEL[s].zh
@@ -38,5 +39,11 @@ export default function QuestionStatusStrip({
         )
       })}
     </ol>
+    <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+      {en
+        ? 'Numbers show progress only. You cannot jump back. The correct option stays on this question.'
+        : '題號只顯示進度，唔可以跳返已做嘅題。正確答案留喺而家呢題。'}
+    </p>
+    </div>
   )
 }

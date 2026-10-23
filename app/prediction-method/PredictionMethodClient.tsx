@@ -116,8 +116,8 @@ export default function PredictionMethodClient() {
         <Section title={en ? 'Known issue: option length' : '已知問題：選項長短'}>
           <p>
             {en
-              ? `On ${measured} we tested this ourselves: in the subjects below, picking the longest option gets the answer right more than half the time (guessing at random should give about one in four), so the practice estimate for these subjects may be too high: ${biased.map((m) => m.nameEn).join(', ')}. An automatic check now stops new questions from having this problem.`
-              : `${measured}我哋自己測試過：喺以下科目，揀最長嗰個選項有超過一半機會答中（亂揀應該只有大約四分之一），所以呢啲科目嘅練習表現估算可能偏高：${biased.map((m) => m.name).join('、')}。新題目已經有自動檢查擋住呢個問題。`}
+              ? `On ${measured} we tested this ourselves: in the subjects below, picking the longest option gets the answer right more than half the time (guessing at random should give about one in four), so the practice estimate for these subjects may be too high: ${biased.map((m) => m.nameEn).join(', ')}. An automatic check now stops new questions from having this problem. Cumulative level ranges stay hidden for these subjects, and for any subject whose 2027 paper has no multiple-choice. Practice is still saved.`
+              : `${measured}我哋自己測試過：喺以下科目，揀最長嗰個選項有超過一半機會答中（亂揀應該只有大約四分之一），所以呢啲科目嘅練習表現估算可能偏高：${biased.map((m) => m.name).join('、')}。新題目已經有自動檢查擋住呢個問題。呢啲科目，以及 2027 年考卷冇選擇題嘅科目，累積等級範圍暫時唔顯示。練習紀錄仍然保存。`}
           </p>
         </Section>
       )}

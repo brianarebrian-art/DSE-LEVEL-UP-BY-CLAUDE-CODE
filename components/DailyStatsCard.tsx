@@ -60,7 +60,7 @@ const DailyStatsCard = forwardRef<HTMLDivElement, { data: DailyStatsCardData; en
 
         <div style={{ textAlign: 'center', zIndex: 1 }}>
           <div style={{ fontSize: 52, fontWeight: 700, color: C.sage }}>DSE LEVEL UP</div>
-          <div style={{ fontSize: 22, color: C.sub, marginTop: 8 }}>{en ? 'Master the logic, not the answers.' : '掌握邏輯，唔係背答案。'}</div>
+          <div style={{ fontSize: 22, color: C.sub, marginTop: 8 }}>{en ? 'Multiple-choice trains judgement, not the whole paper.' : '選擇題練判斷，唔係成卷掌握。'}</div>
         </div>
 
         <div style={{ width: '100%', height: 1, background: 'rgba(240,232,220,0.08)', margin: '28px 0 20px' }} />
