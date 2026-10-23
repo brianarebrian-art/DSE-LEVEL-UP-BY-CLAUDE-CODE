@@ -12,6 +12,15 @@ Sentry.init({
   tracesSampleRate: process.env.NODE_ENV === 'development' ? 1.0 : 0.1,
   // No replayIntegration — do not record student screens by default.
   enableLogs: false,
+  // Tag intentional smoke-test errors from the dev-only /sentry-example-page
+  // so alerts and issue views can exclude them (smoke_test:true).
+  beforeSend(event) {
+    const url = event.request?.url ?? (typeof window !== 'undefined' ? window.location.href : '')
+    if (url.includes('/sentry-example-page')) {
+      event.tags = { ...event.tags, smoke_test: 'true' }
+    }
+    return event
+  },
 })
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart
