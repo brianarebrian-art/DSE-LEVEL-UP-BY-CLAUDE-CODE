@@ -404,7 +404,7 @@ export async function loadSubjectMCQuestions(subjectId: string): Promise<MCQuest
 }
 
 /**
- * 已完成選擇題卷的覆核答案表。包含 machine_restored，使凍結唔會縮短卷面題數。
+ * 已完成選擇題卷的覆核答案表。包含 machine_restored，以免凍結縮短卷面題數。
  * 仍然剔除 withdrawn、隱藏課題同 pending review。練習流程不可使用。
  */
 export async function loadRegradeMCQuestions(subjectId: string): Promise<MCQuestion[]> {
