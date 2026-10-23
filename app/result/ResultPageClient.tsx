@@ -165,8 +165,11 @@ export default function ResultPageClient() {
       signal: ctrl.signal,
     })
       .then((r) => (r.ok ? r.json() : null))
-      .then((v: { verified?: boolean; score?: number; total?: number } | null) => {
+      .then((v: { verified?: boolean; score?: number; total?: number; unmatched?: number } | null) => {
         if (!v?.verified || typeof v.score !== 'number' || typeof v.total !== 'number') return
+        // 有題目已不在覆核答案表（收起、凍結後未納入、或已刪去）。這不是同一份卷，
+        // 不用較少的題數覆蓋學生剛得到的分數。
+        if ((v.unmatched ?? 0) > 0) return
         if (v.score === data.score && v.total === data.total) {
           setVerify({ ok: true })
           return

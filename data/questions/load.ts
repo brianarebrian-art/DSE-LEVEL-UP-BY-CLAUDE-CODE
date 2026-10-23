@@ -356,7 +356,10 @@ const reviewedLoaders: Record<string, Loader[]> = {
  * 回傳混合題型（MC + 書寫題）。呼叫者一般應使用下方兩個收窄版本之一 ——
  * 直接取用全部題目通常並不正確，因為兩類題目走完全不同的批改流程。
  */
-export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuestion[]> {
+export async function loadSubjectQuestions(
+  subjectId: string,
+  options?: { keepMachineRestored?: boolean },
+): Promise<AnyQuestion[]> {
   if (!loaders[subjectId] && !autoLoaders[subjectId] && !reviewedLoaders[subjectId]) return []
 
   // ① 瀏覽器直連 Supabase（2026-09-05）。節省的是 Vercel Edge Request ——
@@ -372,7 +375,7 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   const cloud = await loadFromCloud(subjectId, BANK_VERSION[subjectId])
   // Withheld topics are dropped on both paths (hidden-topics.ts), in case an older
   // cloud copy still carries them.
-  if (cloud?.length) return withoutWithheld(subjectId, cloud)
+  if (cloud?.length) return withoutWithheld(subjectId, cloud, options)
 
   // ② 回落靜態 chunk。此路徑【並未移除】，亦不得移除：
   //    離線、未設定 anon key、Supabase 故障、學生封鎖 IndexedDB —— 四種情況
@@ -392,12 +395,22 @@ export async function loadSubjectQuestions(subjectId: string): Promise<AnyQuesti
   // Family difficulty overrides (data/questions/family.ts). Imported lazily so the
   // map only downloads on this fallback path; the cloud copy already carries them.
   const { DIFFICULTY_OVERRIDES } = await import('./difficulty-overrides.generated')
-  return withoutWithheld(subjectId, applyDifficultyOverrides(all, DIFFICULTY_OVERRIDES[subjectId]))
+  return withoutWithheld(subjectId, applyDifficultyOverrides(all, DIFFICULTY_OVERRIDES[subjectId]), options)
 }
 
 /** 只取 MC。標準 20 題練習流程專用（讀 options／correctIndex）。 */
 export async function loadSubjectMCQuestions(subjectId: string): Promise<MCQuestion[]> {
   return (await loadSubjectQuestions(subjectId)).filter((q): q is MCQuestion => q.type === 'mc')
+}
+
+/**
+ * 已完成選擇題卷的覆核答案表。包含 machine_restored，使凍結唔會縮短卷面題數。
+ * 仍然剔除 withdrawn、隱藏課題同 pending review。練習流程不可使用。
+ */
+export async function loadRegradeMCQuestions(subjectId: string): Promise<MCQuestion[]> {
+  return (await loadSubjectQuestions(subjectId, { keepMachineRestored: true })).filter(
+    (q): q is MCQuestion => q.type === 'mc',
+  )
 }
 
 /**
