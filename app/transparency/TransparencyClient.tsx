@@ -3,11 +3,22 @@
 import { ShieldCheck, Database, AlertTriangle } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { FLAGGED } from '@/data/qualityFlags'
+import { DSE_PAPER_FORMATS } from '@/data/dse-paper-formats'
+import { getSubject } from '@/data/subjects'
+import { lengthBiasedSubjects } from '@/lib/optionLengthBias'
 import type { RepairStats, WithdrawalBatch } from '@/data/questions/repair-stats'
 
 // 「待核」按介面語言分開計（同 components/QuestionProvenance.tsx 嘅 ZH_FLAGS／EN_FLAGS 一致）。
 const PENDING_ZH = Object.values(FLAGGED).filter((f) => f.includes('posref')).length
 const PENDING_EN = Object.values(FLAGGED).filter((f) => f.includes('posref-en')).length
+
+function subjectNames(ids: string[], en: boolean): string {
+  const names = ids
+    .map((id) => getSubject(id))
+    .filter((s) => s !== undefined)
+    .map((s) => (en ? s.nameEn : s.name))
+  return names.join(en ? ', ' : '、')
+}
 
 // Transparency page — deliberately HONEST. It does NOT claim "not AI-generated" or
 // "reviewed by frontline tutors"; the content is alumni + AI co-authored and passes
@@ -221,6 +232,11 @@ export default function TransparencyClient({
             ? `${n(content.totalAuthored)} questions have been written. Each is counted once, so the four figures add up to that total. Only the ones in practice are shown to students; every question count elsewhere on the site is this figure. “Topic held back”: whole topics that are not shown until each question in them is matched to the curriculum guide.`
             : `題庫共編寫咗 ${n(content.totalAuthored)} 條題目，每條只計一次，所以四個數加埋就係呢個總數。只有「練習中」嘅題目會出畀學生，網站其他地方顯示嘅題數都係呢個數。「課題暫緩」：成個課題暫時唔出題，要逐題對返課程指引先會出。`}
         </p>
+        <p className="text-ink-muted text-sm leading-relaxed mb-5">
+          {en
+            ? `The cumulative level estimate is paused for exams with no multiple-choice paper (${subjectNames(DSE_PAPER_FORMATS.filter((f) => !f.hasMC).map((f) => f.subject), true)}) and for subjects where the longest option is still right more than half the time (${subjectNames(lengthBiasedSubjects(), true)}). Those questions stay available as practice or a concept warm-up. They are not mapped to a DSE level.`
+            : `累積等級估算暫停：考卷冇選擇題嘅科目（${subjectNames(DSE_PAPER_FORMATS.filter((f) => !f.hasMC).map((f) => f.subject), false)}），以及揀最長選項仍然超過一半機會答中嘅科目（${subjectNames(lengthBiasedSubjects(), false)}）。呢啲題仍然可以練，或者當概念熱身，但唔會對應一個 DSE 等級。`}
+        </p>
         {WITHDRAWN_COUNT > 0 && (
           <p className="text-ink-soft leading-relaxed mb-5">
             {en
@@ -259,7 +275,7 @@ export default function TransparencyClient({
             <h3 className="text-base font-bold text-ink mb-2">{en ? 'Repairing these explanations' : '修復進度'}</h3>
             <dl className="mb-3 grid grid-cols-3 gap-3 rounded-xl border border-line bg-surface-raised p-4 text-center">
               <div>
-                <dt className="text-xs text-ink-muted">{en ? 'Total withdrawn' : '共收起'}</dt>
+                <dt className="text-xs text-ink-muted">{en ? 'Position-word batch' : '位置詞批次'}</dt>
                 <dd className="text-2xl font-medium tabular-nums text-ink">{n(stats.found)}</dd>
               </div>
               <div>
@@ -278,8 +294,8 @@ export default function TransparencyClient({
             </dl>
             <p className="text-ink-muted text-sm leading-relaxed mb-6">
               {en
-                ? `Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. Since 4 October 2026, a calculation question whose answer and option-by-option explanation are recomputed by a program goes back into practice once it passes the automated checks, without a person's review. Text explanations still go back only after a person who knows the subject has reviewed them.`
-                : `分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。由 2026 年 10 月 4 日起，計算題嘅答案同逐個選項嘅解釋由程式重新計出，過咗自動檢查就重新上線，未經人手覆核。文字題嘅解析仍然要經熟悉該科嘅真人覆核，先會重新加入練習池。`}
+                ? `This batch size is the 29 September 2026 position-word repair, not the “Withdrawn” total in the grid above. Found in three rounds, counted by question with none counted twice: ${n(c['positional-first'])} in the first check, ${n(c['positional-machine'])} in the machine-generated banks, ${n(c['positional-handwritten'])} in the hand-written banks. Since 4 October 2026, a calculation question whose answer and option-by-option explanation are recomputed by a program goes back into practice once it passes the automated checks. The question itself is labelled as still awaiting a person’s check. Text explanations still go back only after someone who knows the subject has read them.`
+                : `呢個數係 2026 年 9 月 29 日位置詞修復批次，唔係上面「已收起」嗰格。分三次發現，按題號計，冇重複：第一次檢查 ${n(c['positional-first'])} 條、機器生成題庫 ${n(c['positional-machine'])} 條、手寫題庫 ${n(c['positional-handwritten'])} 條。由 2026 年 10 月 4 日起，計算題嘅答案同逐個選項嘅解釋由程式重新計出，過咗自動檢查就重新上線。呢批題目喺題目頁標「未人手覆核」。文字題嘅解析仍然要經熟悉該科嘅人覆核，先會重新加入練習池。`}
             </p>
           </>
         )}

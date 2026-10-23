@@ -28,7 +28,7 @@ test('the trust copy states curriculum and review status, and says first pass', 
   // 2026-10-04 (founders' reply 10a): the line also says no registered teacher has reviewed the
   // questions, and how many are withdrawn. 2026-10-09: only those withdrawn for a fault; questions
   // replaced as pure recall (founders' replies 49a–55a) had no fault.
-  assert.match(hero.slice(0, 1500), /`題目經自動檢查上線，未經註冊教師審定\$\{WITHDRAWN_FOR_FAULT > 0 \? `；另有 \$\{WITHDRAWN_FOR_FAULT\.toLocaleString\(\)\} 條發現有錯暫時收起` : ''\}。`/)
+  assert.match(hero.slice(0, 1500), /`題目經自動檢查上線，未經註冊教師審定\$\{CONTENT_STATS\.withdrawn > 0 \? `；另有 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條已收起，唔會再出題` : ''\}。`/)
   assert.match(hero.slice(0, 1500), /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
 })
 
@@ -36,7 +36,7 @@ test('nothing presents the questions as past papers', () => {
   const visible = strip(dict) + strip(home)
   assert.doesNotMatch(visible, /改寫版歷屆試題|Rewritten past-paper|拆穿歷屆試題|logic of past papers/)
   assert.doesNotMatch(layout.match(/keywords: \[[^\]]*\]/)![0], /歷屆試題/)
-  assert.match(dict, /tagline1: '原創 DSE 練習題，掌握核心邏輯。',/)
+  assert.match(dict, /tagline1: '原創 DSE 練習題，練選擇題邏輯。',/)
 })
 
 // Removing the disclosure must not turn into the opposite claim (charter §16.D, §8).

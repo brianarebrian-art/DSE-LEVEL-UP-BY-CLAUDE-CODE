@@ -34,16 +34,14 @@ export default function SyncStatus() {
     setLastSyncedAt(Number.isFinite(raw) && raw > 0 ? raw : null)
   }, [version, syncStatus])
 
-  // Auth disabled, or pre-hydration → keep the original on-device teaser.
+  const onDevice = `${t.dashboard.loginTeaserA}${AUTH_ENABLED ? t.dashboard.loginTeaserB : ''}`
+
+  // 未掛載或登入狀態未定：句子同登入後一致，避免手機同桌面各見一句。
   if (!AUTH_ENABLED || !mounted || authStatus === 'loading') {
     return (
       <div className="bg-surface-raised border border-line rounded-2xl p-4 mb-8 flex items-center gap-3 text-sm">
         <Cloud size={18} className="text-ink-muted shrink-0" />
-        <span className="text-ink-muted">
-          {t.dashboard.loginTeaserA}
-          <span className="text-ink-soft">{t.dashboard.loginTeaserGoogle}</span>
-          {t.dashboard.loginTeaserB}
-        </span>
+        <span className="text-ink-muted">{onDevice}</span>
       </div>
     )
   }
@@ -52,11 +50,7 @@ export default function SyncStatus() {
   if (!user) {
     return (
       <div className="bg-surface-raised border border-gold/30 rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap">
-        <span className="text-sm text-ink-muted">
-          {en
-            ? 'Progress is saved on this device. Bind a Google account to sync across devices.'
-            : '進度暫存喺呢部裝置。綁定 Google 帳戶即可跨裝置同步。'}
-        </span>
+        <span className="text-sm text-ink-muted">{onDevice}</span>
         <button
           onClick={() => {
             setBinding(true)

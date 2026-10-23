@@ -13,7 +13,7 @@ import { subjects, getActiveSubjects } from '@/data/subjects'
 // barrel 靜態 import 齊 25 科題庫，喺 'use client' 檔掂親就會將 2.2MB 題目
 // build 入首頁（2026-09-05 生產站實測：首頁載入 28 個題庫 chunk，涵蓋 23 科，
 // 一條都冇顯示過）。呢一頁只係想要一個總數。
-import { TOTAL_QUESTIONS, WITHDRAWN_FOR_FAULT } from '@/data/questions/summary.generated'
+import { CONTENT_STATS, TOTAL_QUESTIONS } from '@/data/questions/summary.generated'
 import { SESSION_SIZE, sessionMinutes } from '@/lib/entitlements'
 import { quickStartSubjects, quickStartHref } from '@/lib/quickStart'
 import { useLocale } from '@/lib/i18n'
@@ -130,8 +130,6 @@ export default function HomePage() {
   return (
     <div ref={rootRef} className="min-h-screen bg-surface text-ink-soft">
       <CountdownBanner />
-      {/* 「加到主畫面」輕提示：已裝／撳過唔使／瀏覽器唔支援都唔出（見組件檔頭） */}
-      <InstallHint />
 
       {/* ── HERO ──
           2026-09-29 手機首屏重排。375×812 實測：主 CTA「開始練習」原位於 y=807，
@@ -148,25 +146,7 @@ export default function HomePage() {
             對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
         <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
-          {/* 回訪學生：一按即繼續上次練習（沒有紀錄則不顯示，初次訪客所見不變）。 */}
-          <ContinueCard />
-
-          {/* 吉祥物擺喺標題之上 —— 訪客見到嘅第一件嘢。
-              擺呢隻嘅目的係認得出個網站，所以佢應該喺最強嗰個位，
-              唔係收埋喺頁尾做裝飾。揀「讀緊書」呢個姿勢而唔係滑板嗰隻：
-              首屏要一眼講到呢度係做咩嘅。
-              priority：佢喺 LCP 範圍，唔標會拖慢首屏。 */}
-          <div className="hero-mascot hero-rise mb-4 flex justify-center">
-            {/* 以外層闊度控制尺寸（手機 128px ≈ 高 104px；桌面 176px ≈ 高 142px。
-                2026-09-30 由 208px 縮小，令 1024×768 首屏容得下快速開始及「揀其他科目」）。
-                不能在 img 上用 h-[…]：globals.css 有一條不在 @layer 內的 `img { height: auto }`，
-                優先級高於所有 Tailwind 工具類，高度類別會被靜默覆蓋（2026-09-29 production 實測）。 */}
-            <div className="w-[128px] sm:w-[176px]">
-              <Mascot pose="reading" height={168} priority className="w-full" />
-            </div>
-          </div>
-
-          <div className="hero-rise hero-rise-1 mb-6 hidden items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent sm:inline-flex">
+          <div className="hero-rise hero-rise-1 mb-6 hidden items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent xl:inline-flex">
             <span className="inline-block h-2 w-2 rounded-full bg-accent" />
             {hero.badge}
           </div>
@@ -210,10 +190,19 @@ export default function HomePage() {
             </div>
           </div>
 
+          <InstallHint />
+          <ContinueCard />
+
+          <div className="hero-mascot hero-rise mb-4 flex justify-center">
+            <div className="w-[128px] sm:w-[176px]">
+              <Mascot pose="reading" height={168} priority className="w-full" />
+            </div>
+          </div>
+
           <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             {locale === 'en'
-              ? 'Built by DSE alumni with AI — free, to help every student crack the core logic behind common DSE traps, one question at a time.'
-              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解 DSE 常見陷阱背後嘅核心邏輯。'}
+              ? 'Built by DSE alumni with AI — free multiple-choice practice that walks through common traps, one question at a time.'
+              : '由 DSE 舊生 + AI 協作，免費同你逐題拆解選擇題入面嘅常見陷阱。'}
           </p>
 
           {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}
@@ -222,16 +211,12 @@ export default function HomePage() {
             <li>{h.trust2}</li>
             <li>{h.trust3}</li>
           </ul>
-          {/* 覆核狀態（創辦人決定 6）：一句講實情，連去透明度頁的細節。
-              2026-10-02 創辦人決定刪去「未經逐題人手覆核」半句，保留「經自動檢查」（憲章 §12.1 約束 1）。
-              2026-10-04（審計 #9，創辦人回覆 10a）：加「未經註冊教師審定」及已收起題數。收起數由
-              summary.generated 計，0 條時不顯示。同日收起 36 條設定有誤的化學題（回覆 15a），
-              原因不再只是解析，字眼改為「發現有錯」。2026-10-09：以 PURE_RECALL 收起並由應用題取代的
-              題目並無錯誤，不計入此數（WITHDRAWN_FOR_FAULT）。 */}
+          {/* 覆核狀態。已收起題數與 /transparency「題庫數字」同一格：CONTENT_STATS.withdrawn。
+              唔再另報「發現有錯」子集，避免同透明度頁兩個數並排。 */}
           <p className="hero-rise hero-rise-3 mt-2 text-xs text-ink-muted">
             {locale === 'en'
-              ? `Questions go live after automated checks and have not been reviewed by registered teachers${WITHDRAWN_FOR_FAULT > 0 ? `; another ${WITHDRAWN_FOR_FAULT.toLocaleString()} have been withdrawn because errors were found` : ''}. `
-              : `題目經自動檢查上線，未經註冊教師審定${WITHDRAWN_FOR_FAULT > 0 ? `；另有 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條發現有錯暫時收起` : ''}。`}
+              ? `Questions go live after automated checks and have not been reviewed by registered teachers${CONTENT_STATS.withdrawn > 0 ? `; another ${CONTENT_STATS.withdrawn.toLocaleString()} are withdrawn and no longer appear in practice` : ''}. `
+              : `題目經自動檢查上線，未經註冊教師審定${CONTENT_STATS.withdrawn > 0 ? `；另有 ${CONTENT_STATS.withdrawn.toLocaleString()} 條已收起，唔會再出題` : ''}。`}
             <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
               {locale === 'en' ? 'How it works' : '點樣做'}
             </Link>

@@ -55,6 +55,9 @@
 | `lib/electives.ts` | `data/dse-paper-formats.ts` | 選修規則 |
 | `app/subjects/[subject]/SubjectDetailView.tsx` | `data/dse-paper-formats.ts` | 科目頁「考卷結構」 |
 | `lib/notPractisedHere.ts` | `data/dse-paper-formats.ts` | 科目頁「本站練唔到」一句（2026-10-04，創辦人回覆 22a）：只讀已有的卷別、題型及比重，不新增考評局資料 |
+| `lib/estimateGate.ts` | `data/dse-paper-formats.ts` | 考卷沒有選擇題時暫停累積等級估算。只讀已有的 `hasMC`，不新增考評局資料 |
+| `app/prediction-method/PredictionMethodClient.tsx` | `data/dse-paper-formats.ts` | 方法頁說明哪些科目的考卷沒有選擇題，因此不設等級估算。只讀已有的 `hasMC` |
+| `app/transparency/TransparencyClient.tsx` | `data/dse-paper-formats.ts` | 透明度頁列出等級估算暫停的科目。只讀已有的 `hasMC` |
 | `scripts/qbank/dse-conformance.mts` | `data/dse-paper-formats.ts` | 題庫檢查腳本（不上線） |
 | `scripts/qbank/review-scope-difficulty.mts` | `data/dse-paper-formats.ts` | 題庫檢查腳本（不上線） |
 

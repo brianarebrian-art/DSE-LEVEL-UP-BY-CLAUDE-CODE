@@ -37,14 +37,14 @@ export interface HeroCopy {
 // 冠軍方案共用部分 —— 六季一致，改一處即全年生效。
 function championCore(en: boolean) {
   return {
-    badge: en ? '📚 DSE LEVEL UP · Master the logic' : '📚 DSE LEVEL UP · 掌握邏輯',
-    // 中文上行不設逗號：兩行之間本已有換行分隔，逗號在行末會多出一段視覺留白。
-    // 英文保留逗號 —— 'Master the logic, not the answers' 屬同位語，缺逗號即不合文法。
-    headline1: en ? 'Master the logic,' : '掌握邏輯',
+    badge: en ? '📚 DSE LEVEL UP · Multiple-choice practice' : '📚 DSE LEVEL UP · 選擇題練習',
+    // 2026-10-23 審計：主標題唔可以讀成「成個 DSE 都掌握到」。
+    // 金句仍在，但收窄到選擇題技巧，同方法論頁一致。
+    headline1: en ? 'Practise the logic,' : '練選擇題邏輯',
     headline2: en ? 'not the answers' : '唔係背答案',
     subhead: en
-      ? 'Practise the same kind of question with new numbers until you can solve it. You are not alone on the DSE battlefield.'
-      : '同一類題換咗數字再練，練到識答為止。DSE 戰場上，你唔係一個人。',
+      ? 'Same kind of multiple-choice question, new numbers. This drills a narrow skill. It does not cover essays, speaking, or the rest of a DSE paper.'
+      : '同一類選擇題換咗數字再練。呢度練嘅係選擇題技巧，唔包作文、口試，亦唔係成科 DSE。',
     ctaStartLabel: en ? 'Start practising' : '開始練習',
     // 全科入口。注意路由為複數 `/subjects`（app/subjects/），單數 `/subject` 不存在。
     ctaStartHref: '/subjects',

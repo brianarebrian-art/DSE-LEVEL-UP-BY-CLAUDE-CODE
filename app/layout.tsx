@@ -45,7 +45,7 @@ const SUBJECT_COUNT = getActiveSubjects().length
 
 // 首頁及搜尋結果顯示的標題。創辦人 2026-10-09 指示改為三段，加入「DSE 溫習平台」。
 // Homepage route metadata is defined in app/page.tsx; this is the layout fallback.
-const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 掌握 DSE 核心邏輯' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
+const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 選擇題練習' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
 
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE, // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
   description:
-    '原創 DSE 練習題，選擇題即時批改，附練習表現估算。掌握邏輯，唔係背答案。HKDSE 甲類科目，免費，並非考評局官方網站。', // i18n-exempt: 靜態 SEO meta description
+    '原創 DSE 練習題，選擇題即時批改。練選擇題邏輯，唔係背答案，亦唔等於成科掌握。HKDSE 甲類科目，免費，並非考評局官方網站。', // i18n-exempt: 靜態 SEO meta description
   // 刻意不設 `title.template` —— 各子頁（/subjects、/notes/[subject] 等）已自行
   // 於標題末尾附上「| DSE Level Up」，加 template 會變成重複兩次。
   applicationName: 'DSE Level Up',
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     locale: 'zh_HK',
     url: SITE_URL,
     title: SITE_TITLE, // i18n-exempt: 靜態 SEO OG title
-    description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。掌握邏輯，唔係背答案。`, // i18n-exempt: 靜態 SEO OG description
+    description: `免費 DSE 選擇題練習，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。練題型邏輯，唔等於成科掌握。`, // i18n-exempt: 靜態 SEO OG description
     // 刻意不在此宣告 images —— `app/opengraph-image.tsx` 屬 Next.js 檔案約定，
     // 建置時會自動注入 og:image / twitter:image（連 width／height／type）。
     // 兩邊都寫會產生重複標籤。

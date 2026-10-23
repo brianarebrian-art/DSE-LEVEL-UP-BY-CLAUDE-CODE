@@ -173,7 +173,7 @@ const zh = {
     // 2026-09-30（UX 循環 LOOP 22，創辦人決定 6）：原文「改寫版歷屆試題」「由 2026 DSE 考生製作」。
     // 前者暗示題目取自歷屆試題；後者與題目是否可信無關。改為講課程對照及覆核狀態的實情
     // （docs/topic-syllabus-map-2027.md：AI 初步對照，未經學科負責人覆核；憲章 §12：自動檢查上線）。
-    tagline1: '原創 DSE 練習題，掌握核心邏輯。',
+    tagline1: '原創 DSE 練習題，練選擇題邏輯。',
     tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',
     practiceHeading: '練習',
     linkMath: '數學',
@@ -374,7 +374,7 @@ const zh = {
     continueP: '繼續練習',
     loginTeaserA: '進度暫存喺呢部裝置。',
     loginTeaserGoogle: 'Google 登入',
-    loginTeaserB: '後嘅跨裝置同步功能開發中（需數據庫）。',
+    loginTeaserB: '用 Google 登入可以跨裝置同步進度。',
     statRecentDays: '近 30 日練習',
     statRecentDaysUnit: '日',
     statQuestions: '已練習題數',
@@ -602,7 +602,7 @@ const en: typeof zh = {
     night: 'Good night',
   },
   footer: {
-    tagline1: 'Original DSE practice questions — master the core logic.',
+    tagline1: 'Original DSE practice questions — multiple-choice logic, not the whole exam.',
     tagline2: 'Topics checked against the curriculum guides for the 2027 exam (first pass). Questions go live after automated checks.',
     practiceHeading: 'Practice',
     linkMath: 'Mathematics',
@@ -785,9 +785,9 @@ const en: typeof zh = {
     subtitleA: 'Active for ',
     subtitleB: ' days · ',
     continueP: 'Keep practising',
-    loginTeaserA: 'Progress is stored on this device. ',
+    loginTeaserA: 'Progress is saved on this device. ',
     loginTeaserGoogle: 'Google sign-in',
-    loginTeaserB: ' cross-device sync is in development (needs a database).',
+    loginTeaserB: 'Sign in with Google to sync it across devices.',
     statRecentDays: 'Practised (last 30d)',
     statRecentDaysUnit: 'days',
     statQuestions: 'Questions done',
