@@ -17,6 +17,7 @@ declare module 'next-auth' {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.AUTH_SECRET,
   providers: [Google],
   session: { strategy: 'jwt' },
   // Cancelled or failed sign-in: our own page (Chinese and English, practice still
