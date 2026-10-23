@@ -1,0 +1,28 @@
+# 每週為 npm 同 GitHub Actions 開 version update PR。
+# Dependabot security updates 由 repo 設定控制（需要 administration）；
+# 開啟之後，呢份 schedule、commit message 同 PR 上限會一併套用。
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Hong_Kong
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: chore
+      include: scope
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Hong_Kong
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
