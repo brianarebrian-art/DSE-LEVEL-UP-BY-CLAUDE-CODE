@@ -24,7 +24,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: { error: '/sign-in-error' },
   // Keep the secret explicit so Auth.js uses the project-provided AUTH_SECRET
   // consistently in preview and production environments.
-  secret: process.env.AUTH_SECRET,
+  secret:
+    process.env.AUTH_SECRET ??
+    (process.env.NODE_ENV === 'development'
+      ? 'dse-level-up-local-development-secret'
+      : undefined),
   trustHost: true,
   callbacks: {
     async session({ session, token }) {
