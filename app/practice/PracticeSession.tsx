@@ -612,7 +612,7 @@ export default function PracticeSession({
   //
   // ⚠️ 呢個【唔係】無障礙合規修補。選項掣本身一直 Tab 得到、Enter 撳得到，
   //    WCAG 2.1.1 本來就過。呢度做嘅係效率：一節 10 題，純鍵盤操作由
-  //    「Tab ×N ＋ Enter」變成一下掣。對 ADHD 學生特別實際 ——
+  //    「Tab ×N ＋ Enter」變成一下掣���對 ADHD 學生特別實際 ——
   //    每多一下操作就多一個分心位。講清楚呢點，係因為憲章 §16.D 判例
   //    就係「把一樣嘢講成保護學生」而實情唔係。
   //
@@ -1277,8 +1277,16 @@ export default function PracticeSession({
         )}
         </div>
         </div>
-        {answerState !== null && (
-          <div className="practice-next-bar">
+          {answerState !== null && (
+            <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-line bg-surface-sunken px-4 py-3 text-sm" role="status">
+              <span className="text-ink-muted">{tr('呢個解析對你有幫助嗎？', 'Was this explanation useful?')}</span>
+              <button type="button" className="min-h-11 rounded-lg border border-line-strong px-3 text-ink-soft hover:border-accent hover:text-accent" onClick={() => void fetch('/api/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: subjectId, question: 'had_error', answer: 'yes', locale: locale === 'en' ? 'en' : 'zh' }) })}>{tr('清晰', 'Clear')}</button>
+              <button type="button" className="min-h-11 rounded-lg border border-line-strong px-3 text-ink-soft hover:border-accent hover:text-accent" onClick={() => void fetch('/api/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ questionId: currentQ.id, kind: 'unclear', sourceSurface: 'practice' }) })}>{tr('未夠清晰', 'Not clear enough')}</button>
+            </div>
+          )}
+
+          {answerState !== null && (
+            <div className="practice-next-bar">
             <button type="button" onClick={proceed} className="practice-next-btn">
               {totalQ === 1 ? (
                 tr('做完喇', 'Done')

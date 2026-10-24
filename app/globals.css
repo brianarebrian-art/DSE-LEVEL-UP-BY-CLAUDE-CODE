@@ -111,7 +111,7 @@
   --color-gold: #756238;          /* PC-012↓ 年份／次要標記。⚠️ :root 會用
                                      var(--color-ml-clay) 覆蓋佢，呢度只係 @theme
                                      生成 utility 用嘅預設值。 */
-  --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色】，只做邊框／淡底 */
+  --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色���，只做邊框／淡底 */
   --color-gold-strong: #725106;   /* 6.63 */
   --color-violet: #6D28D9;        /* 課題／框架標記（6.50 / 淡底 5.09） */
   --color-violet-strong: #5B21B6; /* 白字 = 8.98 */
@@ -218,11 +218,11 @@
   --color-ink-muted: var(--color-ml-ink-soft);      /* #a8a095  5.25　規格 --text-secondary（原 4.63，升咗） */
   --color-ink-faint: #6b6560;                       /* 2.36 —— 停用控件／裝飾專用（原 2.28）
 
-     ⚠️ 呢隻就係規格嘅 --text-muted。規格 §2.1 派佢做「時間戳、極次要資訊」，
+     ⚠️ 呢隻就係規格嘅 --text-muted。���格 §2.1 派佢做「時間戳、極次要資訊」，
      但 §4.6 又派佢做 Focus Mode 嘅「Distractions can wait outside this room.」
      同 sidebar 嘅引言 —— 嗰兩處係真係要睇嘅字。實測落最亮嗰個暗底
      (#2f2e2c) 只有 2.36:1，連圖形 3:1 都唔夠，即係規格自己踩緊自己嘅
-     QA 清單第 9 條（≥4.5:1）。
+     QA 清單第 9 條（≥4.5:1）��
      解決方法唔係調亮佢 —— 本站本來就有四階，第四階（faint）嘅定位一路
      都係「WCAG 1.4.3 明文豁免嘅停用態／裝飾」。所以規格嗰隻色照收，
      但凡係真文案一律行 ink-muted（#a8a095，5.25）。 */
@@ -243,7 +243,7 @@
      0.06 → #312f2d，對比 1.16；0.12 → #3c3b37，對比 1.38。
      兩者都遠低於 3:1，但 WCAG 1.4.11 只管【載住資訊嘅】邊界；卡片外框
      純裝飾，唔喺規範內。真正要載資訊嗰啲（輸入框、可選項邊界）行
-     --color-ml-line（#918a7e，3.97），唔係行呢兩隻 —— 兩者唔可以撈亂。
+     --color-ml-line（#918a7e，3.97），唔係行呢兩隻 —— 兩者唔可以撈��。
      ⚠️ 舊值係 0.10 / 0.20，即係呢一步係【調暗】咗卡框。
      如果實機睇落太隱形，改返上去唔會影響任何合規計算。 */
   --color-line: rgba(232, 224, 212, 0.06);
@@ -331,7 +331,7 @@
      即係【圖形】用途，WCAG 下限 3:1；以下全部 ≥4.3，有餘裕。
      moss 由 #7E9179（3.50）調亮，唔係因為佢唔合格，
      而係佢同 sage 幾乎撞埋一齊，六個家族分唔開就冇意思。 */
-  --color-subj-sage: #7a9e7e;   /* 規格 --moss   4.53 */
+  --color-subj-sage: #7a9e7e;   /* 規��� --moss   4.53 */
   --color-subj-moss: #9ab89d;   /* moss ×1.25    6.28 */
   --color-subj-mist: #8a9fb8;   /* 規格 --mist   4.99 */
   --color-subj-clay: #b8956f;   /* 規格 --wood   4.89 */
@@ -444,6 +444,44 @@
   --color-line-strong: rgba(232, 224, 212, 0.20);
 }
 
+/* Phase 1 learning-system tokens: one semantic vocabulary for progress, evidence and states. */
+:root {
+  --color-background: var(--color-surface);
+  --color-surface-muted: var(--color-surface-sunken);
+  --color-surface-elevated: var(--color-surface-raised);
+  --color-text-primary: var(--color-ink);
+  --color-text-secondary: var(--color-ink-soft);
+  --color-text-muted: var(--color-ink-muted);
+  --color-border-subtle: var(--color-line);
+  --color-focus-ring: var(--color-accent);
+  --color-accent-primary: var(--color-accent);
+  --color-accent-secondary: var(--color-violet);
+  --color-success: var(--color-ml-good);
+  --color-warning: var(--color-gold);
+  --color-danger: var(--color-rose);
+  --color-ai: var(--color-violet);
+  --color-mastery: var(--color-ml-sage);
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 3rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --shadow-subtle: 0 1px 2px rgb(44 42 41 / 0.06), 0 8px 24px rgb(44 42 41 / 0.04);
+  --font-size-body: 1rem;
+  --font-size-question: 1.125rem;
+  --font-size-section: 1.25rem;
+  --font-size-title: clamp(1.75rem, 4vw, 2.5rem);
+  --line-height-body: 1.7;
+  --line-height-question: 1.75;
+  --line-height-heading: 1.25;
+}
+
 body {
   background-color: var(--color-surface);
   color: var(--color-ink);
@@ -460,13 +498,13 @@ html {
    點解要有：手機 Chrome 遇到內容闊過視窗時，唔係出橫向捲軸，而係【自動撐大
    版面視窗】—— 375px 機上量到 innerWidth 變 467，成頁跟住縮細到 80%。字細一
    圈，對讀寫障礙、弱視同 SEN 考生直接就係無障礙倒退，而且 `scrollWidth ===
-   innerWidth` 呢個常見檢查【驗唔到】（兩邊一齊變大，永遠相等）。
+   innerWidth` 呢個常見檢查【驗唔到��（兩邊一齊變大，永遠相等）。
 
    用 clip 唔用 hidden：`overflow: hidden` 會令元素變成捲動容器，
    `position: sticky` 嘅子元素（relax 頁 NowPlayingBar）會失效；`clip` 只裁剪、
    唔建立捲動容器。先寫 hidden 做舊瀏覽器後備，再寫 clip 畀支援嘅覆蓋。
 
-   ⚠️ 呢層係安全網，唔係修理。真正嘅溢出要喺元件度解決 —— 靠呢度冚住會令問題
+   ⚠️ 呢層係安全網，唔係修���。真正嘅溢出要喺元件度解決 —— 靠呢度冚住會令問題
    喺 iOS Safari 舊版走返出嚟。scripts/responsive-guard.mjs 會靜態攔截高風險寫法。
    ─────────────────────────────────────────────────────────────────────────── */
 html {
@@ -675,7 +713,7 @@ body {
    手動「減少動態」（html.no-motion）—— 2026-08-27
    --------------------------------------------------------------------------
    點解要有：全站本來只跟系統嘅 `prefers-reduced-motion`。但一個用學校電腦、
-   或者唔識點改 iOS／Android／Windows 動態設定嘅學生，就完全冇得揀。前庭敏感、
+   或者唔識點改 iOS／Android／Windows 動態設定嘅學生，就完全冇得揀。前庭敏感���
    自閉譜系、光敏性癲癇考生唔應該要先識改作業系統設定，先用得舒服。
 
    用【通用選擇器】而唔係逐個 class 寫：逐個寫嘅話，下一個新動畫又會漏一次
@@ -806,7 +844,7 @@ html.focus-light .focus-dim:focus-within {
 /* KaTeX 顯示式喺窄機橫向捲動（2026-09-15）。
    題庫最長嘅 $$…$$ 有 300 幾字元 TeX，375px 一定闊過屏幕。KaTeX 顯示式唔會自己斷行，
    冇呢條規則嘅話，一條長算式會將成個練習頁撐闊，學生要成版左右拉先睇到題目。
-   只限顯示式（.katex-display）：行內算式包 overflow 容器會打斷段落流，而且 KaTeX
+   只限顯示式（.katex-display）：行內算式包 overflow 容器會打��段落流，而且 KaTeX
    行內模式本身會喺頂層關係符號（=、<）斷行。
    overflow-y: hidden：唔加嘅話部分瀏覽器會因為 KaTeX 嘅上下標高度出一條垂直捲軸。
    ⚠️ 2026-09-13 嘅 34 條路由 375px 掃描報 0 爆版，但嗰次練習頁啱啱抽到短算式 ——
@@ -981,7 +1019,7 @@ html.no-motion .mascot {
 
 /* ── §2.1 粒子場（點陣流動）────────────────────────────────────────────
    用 background-image 畫點陣、動 background-position 造流動感，
-   一個元素、零 DOM 節點。速度用變數控，連擊時由呼叫端覆寫。 */
+   一個元素、零 DOM 節點。��度用變數控，連擊時由呼叫端覆寫。 */
 .particle-bg {
   --particle-speed: 20s;
   --particle-alpha: 0.15;
@@ -1146,7 +1184,7 @@ html.no-motion .mascot {
    舊瀏覽器：`linear()` 唔識就會跌返前一行嘅 cubic-bezier（漸進增強）。
    三條曲線全部係一次性動畫，冇 `infinite`，所以唔會觸及 WCAG 2.3.1
    每秒三閃嘅上限（lib/__tests__/sen-accessibility.test.mts）。
-   ═══════════════════════════════════════════════════════════════════════════ */
+   ════════��══════════════════════════════════════════════════════════════════ */
 :root {
   --ease-spring-settle: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring-settle: linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000);
@@ -1289,7 +1327,7 @@ html.font-easy .ml-lift:hover {
 
 /* ── 降級 1：Light 主題不套用霓虹裝飾層 ────────────────────────────────
    Originkit 係暗色主題嘅表達；Light（晨曦圖書館）維持原有觀感。
-   互動性組件（轉盤、環）保留，純裝飾層（粒子、火焰）關掉。 */
+   互動性組件（���盤、環）保留，純裝飾層（粒子、火焰）關掉。 */
 :root[data-theme='light'] .particle-bg,
 :root[data-theme='light'] .combo-flame {
   background-image: none;

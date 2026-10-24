@@ -340,6 +340,29 @@ export default function DashboardPageClient() {
           </div>
         </div>
 
+        <section className="mb-6 rounded-2xl border border-line bg-surface-raised p-5 shadow-[var(--shadow-subtle)]" aria-labelledby="next-step-title">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
+              <p className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-accent">
+                {en ? 'Your next useful step' : '你下一步最有用嘅一步'}
+              </p>
+              <h2 id="next-step-title" className="font-serif text-xl text-ink">
+                {en ? 'Continue with a focused practice set' : '繼續做一組針對性練習'}
+              </h2>
+              <p className="mt-1 max-w-xl text-sm leading-relaxed text-ink-muted">
+                {en ? 'Use your recent answers to revisit one topic. You can pause or stop at any time.' : '根據你最近嘅答案，先處理一個課題。想停低或者休息，任何時候都得。'}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={onRepair}
+              className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-accent-strong px-5 py-3 font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {en ? 'Start focused practice' : '開始針對性練習'} <ArrowRight size={16} aria-hidden />
+            </button>
+          </div>
+        </section>
+
         {/* Quiet mode toggle (lib/quietMode.ts), placed before the stat cards so a
             student can hide the numbers before seeing them (UX audit B5 (b)). */}
         <QuietModeToggle />

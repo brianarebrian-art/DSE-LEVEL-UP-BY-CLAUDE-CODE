@@ -180,6 +180,17 @@ export default function LongPracticeSession({
             )}
           </p>
 
+          <section className="mb-8 rounded-xl border border-line bg-surface-raised p-4" aria-labelledby="written-evidence-title">
+            <h3 id="written-evidence-title" className="text-sm font-medium text-ink">
+              {tr('今次帶走嘅學習證據', 'Evidence from this session')}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+              {shaky.length > 0
+                ? tr('你已標記需要再確認嘅課題；下一步可以重做相關題型，慢慢建立穩定證據。', 'You marked topics that need another look. A focused repeat will build stronger evidence over time.')
+                : tr('你完成咗一組自評；如想更有把握，可以之後再用另一題型核對。', 'You completed a self-assessed set. Try another question type later if you want more confirmation.')}
+            </p>
+          </section>
+
           {shaky.length > 0 && (
             <div className="rounded-2xl border border-gold/30 bg-gold/10 p-5 mb-8">
               <p className="text-sm font-medium text-gold mb-2">
