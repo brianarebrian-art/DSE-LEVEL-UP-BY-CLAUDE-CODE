@@ -22,6 +22,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   // Cancelled or failed sign-in: our own page (Chinese and English, practice still
   // works without signing in) instead of Auth.js's built-in English error page.
   pages: { error: '/sign-in-error' },
+  // Keep the secret explicit so Auth.js uses the project-provided AUTH_SECRET
+  // consistently in preview and production environments.
+  secret: process.env.AUTH_SECRET,
   trustHost: true,
   callbacks: {
     async session({ session, token }) {
