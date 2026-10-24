@@ -57,3 +57,13 @@ export function createLimiter({ maxKeys = 2000, staleMs = 10 * 60_000 } = {}): L
 export function isAuthSensitivePath(pathname: string): boolean {
   return /^\/api\/auth\/(signin|callback|sign-in|sign-up)(\/|$)/.test(pathname)
 }
+
+/**
+ * 唔計入 /api 限流桶嘅路徑。
+ *
+ * `/api/health` 係 Uptime Kuma 同負載平衡器嘅公開探測。佢哋同一般 API 共用
+ * 每分鐘 60 次嘅桶時，429 會被監控讀成宕機。只豁免精確路徑，唔好放寬成前綴。
+ */
+export function isUnmeteredApiPath(pathname: string): boolean {
+  return pathname === '/api/health'
+}

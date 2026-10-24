@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createLimiter, isAuthSensitivePath } from '@/lib/rateLimit'
+import { createLimiter, isAuthSensitivePath, isUnmeteredApiPath } from '@/lib/rateLimit'
 import { buildCsp, createNonce } from '@/lib/csp'
 
 // API rate limiting (Eric/資安 — $0 方案). In-memory sliding window per IP.
@@ -66,7 +66,11 @@ function withCsp(request: NextRequest) {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  if (pathname === '/api' || pathname.startsWith('/api/')) return rateLimit(request)
+  if (pathname === '/api' || pathname.startsWith('/api/')) {
+    // 公開健康探測唔計入限流。429 會被 Uptime Kuma 當成服務故障。
+    if (isUnmeteredApiPath(pathname)) return NextResponse.next()
+    return rateLimit(request)
+  }
   return withCsp(request)
 }
 
