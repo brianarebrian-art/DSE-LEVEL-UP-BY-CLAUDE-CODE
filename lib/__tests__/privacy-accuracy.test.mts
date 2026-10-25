@@ -19,7 +19,7 @@ test('the visit log says it keeps the time of the first open (user_sessions.firs
   assert.doesNotMatch(page, /淨係一個日期，冇其他/)
 })
 
-test('account deletion lists only tables that exist', () => {
+test('account deletion registry covers live and draft user-scoped tables', () => {
   assert.deepEqual([...USER_SCOPED_TABLES].sort(), ['auth_identity_mappings', 'privacy_consent_history', 'privacy_consents', 'profiles', 'user_progress', 'user_sessions', 'user_settings'])
 })
 

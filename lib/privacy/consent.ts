@@ -61,8 +61,11 @@
  * 細節；釐清同步同意只管雲端進度，另修正同步資料可見範圍。未來同意紀錄改為
  * append-only history。舊 consent version/time/scope 不覆寫；新版本需要用戶另行選擇。
  * 新 history migration 只作草稿，需另行批准套用。
+ *
+ * 2026-10-25.v2 —— 修正帳戶刪除文案，不再把尚未批准／套用的 DRAFT migration
+ * table 計入數字；避免 Preview 或未完成 schema rollout 時披露錯誤的表數。
  */
-export const POLICY_VERSION = '2026-10-25.v1'
+export const POLICY_VERSION = '2026-10-25.v2'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

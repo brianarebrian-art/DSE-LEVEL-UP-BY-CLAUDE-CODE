@@ -70,6 +70,12 @@ test('同步項目數量由代碼算出，唔係硬編喺文案', () => {
   assert.doesNotMatch(src, /【?\d{2} 項】?/, '文案唔可以出現硬編嘅項目數')
 })
 
+test('帳戶刪除文案不發布未套用 draft migration 的資料表數量', () => {
+  const src = fs.readFileSync(PAGE, 'utf8')
+  assert.match(src, /every table that holds anything keyed to you/)
+  assert.doesNotMatch(src, /USER_SCOPED_TABLES\.length/)
+})
+
 test('頁面聲稱「心情記錄唔會上傳」—— 佢真係唔喺上雲清單', () => {
   // 呢句係全版最敏感嘅承諾。如果有日有人為咗「跨機睇返心情」而加咗佢落同步清單，
   // 呢條測試就係最後一道防線。

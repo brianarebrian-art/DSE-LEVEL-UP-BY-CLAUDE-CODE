@@ -3,10 +3,9 @@
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import { CLOUD_PROGRESS_KEYS, CLOUD_SETTINGS_KEYS } from '@/components/StoredDataInspector'
-import { USER_SCOPED_TABLES } from '@/lib/privacy/userData'
 
-// 見 page.tsx 檔頭：呢版每一句都對過實物。數量由 import 嚟嘅常數即時算，
-// 唔硬編 —— 硬編一個「12」落去，同步代碼改嗰日呢版就會靜靜哋講錯。
+// Sync item count is derived from its code-owned keys. Account-deletion copy
+// avoids a table count because draft migrations are not live until separately approved.
 const CLOUD_COUNT = CLOUD_PROGRESS_KEYS.length + CLOUD_SETTINGS_KEYS.length
 
 const CONTACT = 'dselevelup@gmail.com'
@@ -255,8 +254,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             /account
           </Link>
           {en
-            ? `. That deletes your rows from every table that holds anything keyed to you (${USER_SCOPED_TABLES.length} tables). If any part of the deletion fails, we tell you rather than reporting success.`
-            : `。呢個動作會刪走你喺每一張帶住你識別碼嘅表入面嘅資料（共 ${USER_SCOPED_TABLES.length} 張表）。如果有任何一部分刪唔到，我哋會話你知，唔會扮成功。`}
+            ? '. That deletes your rows from every table that holds anything keyed to you. If any part of the deletion fails, we tell you rather than reporting success.'
+            : '。呢個動作會刪走所有帶住你識別碼嘅表入面屬於你嘅資料。如果有任何一部分刪唔到，我哋會話你知，唔會扮成功。'}
         </p>
         <p>
           {en
