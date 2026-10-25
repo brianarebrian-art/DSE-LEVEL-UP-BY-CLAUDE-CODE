@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/nextjs'
+import { scrubSentryEvent } from '@/lib/sentry/scrubEvent'
 
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN
 
@@ -19,7 +20,7 @@ Sentry.init({
     if (url.includes('/sentry-example-page')) {
       event.tags = { ...event.tags, smoke_test: 'true' }
     }
-    return event
+    return scrubSentryEvent(event)
   },
 })
 

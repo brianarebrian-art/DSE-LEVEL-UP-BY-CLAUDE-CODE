@@ -20,10 +20,11 @@ test('the visit log says it keeps the time of the first open (user_sessions.firs
 })
 
 test('account deletion lists only tables that exist', () => {
-  assert.deepEqual([...USER_SCOPED_TABLES].sort(), ['privacy_consents', 'profiles', 'user_progress', 'user_sessions', 'user_settings'])
+  assert.deepEqual([...USER_SCOPED_TABLES].sort(), ['auth_identity_mappings', 'privacy_consent_history', 'privacy_consents', 'profiles', 'user_progress', 'user_sessions', 'user_settings'])
 })
 
 test('the wall data deletion date and the check date are the real ones', () => {
   assert.match(page, /2026 年 9 月 9 日由資料庫刪走/)
-  assert.match(page, /最近一次喺 2026 年 10 月 4 日對住實際代碼同實際資料庫核實過/)
+  assert.match(page, /資料處理部分最近一次喺 2026 年 10 月 4 日對住實際代碼同資料庫核實/)
+  assert.match(page, /Vercel Speed Insights 披露於 2026 年 10 月 25 日/)
 })

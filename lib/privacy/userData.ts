@@ -19,9 +19,10 @@ export const USER_SCOPED_TABLES = [
   'user_sessions', // 每日一行嘅「開過 app」紀錄（2026-09-11 重建，見 migration 0018）
   // 影子溫書室的 wall_posts、wall_likes 已於 2026-09-09 由生產資料庫 drop（migration
   // drop_wall，即 0011）；2026-10-04 只讀核對確認兩表不存在，故自本清單移除，
-  // 私隱頁「共 N 張表」亦由 7 改為 5（審計 #8，創辦人回覆 1a）。
+  // 當時私隱頁「共 N 張表」由 7 改為 5（審計 #8，創辦人回覆 1a）；2026-10-25
+  // 新增 consent history 和 auth identity mappings 後，清理清單現為 7 張表。
   // 2026-10-01（R2-11）：此處原本再列一次 'user_sessions'（已在上面），令私隱頁「共 N 張表」多算 1。
-  // 私隱政策同意紀錄（0019，2026-09-09）。
+  // 私隱政策同意紀錄（0019，2026-09-09）及其 append-only history（0027 draft）。
   //
   // 「刪帳號要唔要連同意紀錄一齊刪」值得諗一諗：留住佢就等於留住一筆
   // 「呢個人曾經同意過」嘅個人資料，而佢已經叫我哋走。PDPO 之下，
@@ -30,6 +31,8 @@ export const USER_SCOPED_TABLES = [
   // 而且刪走亦冇後果：佢日後再登入，會當成從未被問過，重新見到同意書。
   // 呢個結果係啱嘅 —— 佢確實係一個全新開始。
   'privacy_consents',
+  'privacy_consent_history',
+  'auth_identity_mappings',
 ] as const
 
 /**

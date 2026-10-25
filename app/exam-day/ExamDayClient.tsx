@@ -7,7 +7,7 @@ import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import {
   pushSupported, currentSubscription, subscribePush, unsubscribePush,
-  writePushConfig, examDateOf, type SubscribeResult,
+  writePushConfig, examDateOf, type SubscribeResult, type UnsubscribeResult,
 } from '@/lib/push/client'
 import {
   resolvePlace, planJourney, suggestNames, stationLabel, lineLabel,
@@ -131,7 +131,7 @@ export default function ExamDayClient() {
 
   // 推送。'unknown' = 仲未問過瀏覽器（SSR 同首次 render 都係呢個）。
   const [pushOn, setPushOn] = useState<boolean | 'unknown'>('unknown')
-  const [pushMsg, setPushMsg] = useState<SubscribeResult | null>(null)
+  const [pushMsg, setPushMsg] = useState<(SubscribeResult | UnsubscribeResult) | null>(null)
   const [pushBusy, setPushBusy] = useState(false)
 
   useEffect(() => { setPrefs(readPrefs()) }, [])
@@ -249,20 +249,27 @@ export default function ExamDayClient() {
     setPushBusy(true); setPushMsg(null)
     try {
       if (pushOn === true) {
-        await unsubscribePush()
+        const result = await unsubscribePush()
         setPushOn(false)
+        setPushMsg(result === 'local-only' ? 'local-only' : null)
       } else {
         const r = await subscribePush(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY)
         setPushMsg(r)
-        setPushOn(r === 'ok')
+        const existing = await currentSubscription()
+        setPushOn(r === 'ok' || (r === 'ownership-check' && Boolean(existing)))
       }
+    } catch {
+      // Keep the enabled state when server-side deletion was not confirmed.
+      setPushMsg('failed')
     } finally { setPushBusy(false) }
   }
 
   // 逐個 case 用 tr()，唔用 [zh, en] 元組 —— i18n-guard 唔接受元組寫法
   // （佢分唔清「雙語資料表」同「淨中文寫死」），全站慣例係 en 三元／tr()。
-  const pushMessage = (r: SubscribeResult) => {
+  const pushMessage = (r: SubscribeResult | UnsubscribeResult) => {
     if (r === 'ok') return tr('開咗。前一晚同考試朝早各提你一次。', 'On. One reminder the night before, one on the exam morning.')
+    if (r === 'local-only') return tr('呢部機已關閉推送；伺服器無法驗證管理權，舊端點會喺推送服務確認失效後清理。', 'Push is off on this device. The server could not verify deletion ownership; the stale endpoint will be pruned after the push service confirms it is gone.')
+    if (r === 'ownership-check') return tr('未能安全驗證呢個推送訂閱，伺服器資料冇改動。請勿重覆嘗試；你仍可喺瀏覽器網站設定關閉通知。', 'Could not securely verify this push subscription; no server record was changed. Do not keep retrying. You can still turn notifications off in your browser site settings.')
     if (r === 'denied') return tr('你部機拒絕咗通知權限。要開返嘅話，去瀏覽器嘅網站設定度改。', 'Notifications were blocked. Re-enable them in your browser’s site settings.')
     if (r === 'unsupported') return tr('你個瀏覽器唔支援推送通知。', 'Your browser does not support push notifications.')
     if (r === 'not-configured') return tr('推送功能未設定好，暫時開唔到。', 'Push is not set up yet.')

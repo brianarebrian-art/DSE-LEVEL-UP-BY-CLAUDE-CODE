@@ -9,6 +9,10 @@ import { createAuthClient } from 'better-auth/react'
 export const AUTH_BACKEND: 'next-auth' | 'better-auth' =
   process.env.NEXT_PUBLIC_AUTH_BACKEND === 'better-auth' ? 'better-auth' : 'next-auth'
 
+// Deliberately hard-disabled until an email provider and its verification/recovery
+// paths are implemented and accepted. A public environment flag cannot enable it.
+export const EMAIL_PASSWORD_AUTH_ENABLED = false
+
 // Pure HTTP client to /api/auth — constructing it needs NO database, so it is safe to
 // import anywhere. baseURL defaults to the current origin when unset.
 export const authClient = createAuthClient({

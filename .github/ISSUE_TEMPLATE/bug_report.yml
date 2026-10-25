@@ -1,0 +1,41 @@
+name: 一般錯誤回報（草稿）
+description: 回報一般產品或文件問題；請勿提交安全漏洞或敏感資料。
+title: "[錯誤] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **DRAFT — NOT FOR PUBLICATION**
+
+        請勿在此表單提交安全漏洞、憑證、個人資料或學生資料。若涉及安全問題，請勿在公開 issue 張貼敏感細節；目前尚無已確認的私下通報渠道。
+  - type: textarea
+    id: summary
+    attributes:
+      label: 問題摘要
+      description: 用一般、非敏感的文字說明遇到的問題。
+      placeholder: 發生了甚麼？
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 重現步驟
+      description: 提供不包含帳戶或個人資料的重現步驟。
+      placeholder: |
+        1. …
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 預期結果與實際結果
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 環境（如適用）
+      description: 只提供一般版本或瀏覽器資訊；不要提供識別個人的資料。

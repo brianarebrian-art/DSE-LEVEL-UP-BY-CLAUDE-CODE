@@ -7,6 +7,9 @@
 //
 // The rate limiter in proxy.ts is per instance (lib/rateLimit.ts); this ceiling holds on every
 // instance because it is checked on each request.
+// The limit counts bytes yielded by Request.body after upstream runtime/proxy processing.
+// Vercel's Content-Encoding decompression point has not been independently verified; this
+// helper is not a decompression-bomb defense and does not replace platform-level limits.
 
 export const BODY_LIMIT = {
   /** /api/progress: the whole progress snapshot. About 35 times today's largest row. */
@@ -18,16 +21,47 @@ export const BODY_LIMIT = {
 export type ReadResult<T> = { ok: true; value: T } | { ok: false; status: 400 | 413; error: string }
 
 export async function readJsonLimited<T = unknown>(request: Request, maxBytes: number): Promise<ReadResult<T>> {
-  const declared = Number(request.headers.get('content-length'))
-  if (Number.isFinite(declared) && declared > maxBytes) return { ok: false, status: 413, error: 'body too large' }
-  let text: string
+  const contentLength = request.headers.get('content-length')
+  if (contentLength !== null && /^\d+$/.test(contentLength)) {
+    const declared = Number(contentLength)
+    if (Number.isFinite(declared) && declared > maxBytes) {
+      try { await request.body?.cancel() } catch { /* preserve early 413 */ }
+      return { ok: false, status: 413, error: 'body too large' }
+    }
+  }
+
+  const reader = request.body?.getReader()
+  if (!reader) return { ok: false, status: 400, error: 'unreadable body' }
+  const decoder = new TextDecoder('utf-8', { fatal: true })
+  let text = ''
+  let bytesRead = 0
   try {
-    text = await request.text()
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      if (!(value instanceof Uint8Array)) return { ok: false, status: 400, error: 'unreadable body' }
+      if (value.byteLength > maxBytes - bytesRead) {
+        try {
+          await reader.cancel()
+        } catch {
+          // Cancellation is best-effort; preserve the size-limit result.
+        }
+        return { ok: false, status: 413, error: 'body too large' }
+      }
+      bytesRead += value.byteLength
+      text += decoder.decode(value, { stream: true })
+    }
+    text += decoder.decode()
   } catch {
     return { ok: false, status: 400, error: 'unreadable body' }
+  } finally {
+    try {
+      reader.releaseLock()
+    } catch {
+      // A failed read/cancel may leave the stream locked; do not mask the result.
+    }
   }
-  // Checked again after reading: the header can be absent or wrong.
-  if (new TextEncoder().encode(text).length > maxBytes) return { ok: false, status: 413, error: 'body too large' }
+
   try {
     return { ok: true, value: JSON.parse(text) as T }
   } catch {

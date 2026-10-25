@@ -108,7 +108,38 @@ export async function currentSubscription(): Promise<PushSubscription | null> {
   }
 }
 
-export type SubscribeResult = 'ok' | 'denied' | 'unsupported' | 'not-configured' | 'failed'
+export type SubscribeResult = 'ok' | 'denied' | 'unsupported' | 'not-configured' | 'ownership-check' | 'failed'
+export type UnsubscribeResult = 'deleted' | 'local-only' | 'not-subscribed'
+
+/** Recover/claim ownership only after proving possession of the Push auth secret. */
+async function recoverManagementCookie(endpoint: string, auth: string): Promise<boolean> {
+  try {
+    const start = await fetch('/api/push/subscribe/claim', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ action: 'start', endpoint }),
+    })
+    if (!start.ok || !globalThis.crypto?.subtle) return false
+    const payload = await start.json() as { challenge?: unknown }
+    if (typeof payload.challenge !== 'string' || !/^[A-Za-z0-9_-]{43}$/.test(payload.challenge)) return false
+    const authBytes = new Uint8Array(urlB64ToBytes(auth))
+    const key = await crypto.subtle.importKey(
+      'raw', authBytes.buffer as unknown as ArrayBuffer, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
+    )
+    const signature = new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(payload.challenge)))
+    const proof = btoa(String.fromCharCode(...signature)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')
+    const complete = await fetch('/api/push/subscribe/claim', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ action: 'complete', endpoint, challenge: payload.challenge, proof }),
+    })
+    return complete.ok
+  } catch {
+    return false
+  }
+}
 
 /**
  * 開啟推送。
@@ -136,13 +167,17 @@ export async function subscribePush(publicKey: string | undefined): Promise<Subs
     const j = sub.toJSON() as { endpoint?: string; keys?: { p256dh?: string; auth?: string } }
     const r = await fetch('/api/push/subscribe', {
       method: 'POST',
+      credentials: 'same-origin',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys?.p256dh, auth: j.keys?.auth }),
     })
     if (!r.ok) {
-      // 伺服器收唔到就唔好留一個瀏覽器訂閱喺度 —— 佢永遠唔會收到嘢，
-      // 而學生會以為自己已經開咗。
-      await sub.unsubscribe().catch(() => {})
+      // A 409 may be a legacy row or a lost-cookie case. Never overwrite it using
+      // endpoint knowledge alone; recover only with a one-time Push-auth proof.
+      if (r.status === 409 && typeof j.endpoint === 'string' && typeof j.keys?.auth === 'string') {
+        return await recoverManagementCookie(j.endpoint, j.keys.auth) ? 'ok' : 'ownership-check'
+      }
+      if (r.status === 409) return 'ownership-check'
       return r.status === 503 ? 'not-configured' : 'failed'
     }
     return 'ok'
@@ -151,16 +186,31 @@ export async function subscribePush(publicKey: string | undefined): Promise<Subs
   }
 }
 
-export async function unsubscribePush(): Promise<void> {
+export async function unsubscribePush(): Promise<UnsubscribeResult> {
   const sub = await currentSubscription()
-  if (!sub) return
+  if (!sub) return 'not-subscribed'
   const endpoint = sub.endpoint
-  await sub.unsubscribe().catch(() => {})
-  // 就算瀏覽器嗰邊退咗，都要通知伺服器刪走 —— 唔刪就會日日打去一個
-  // 死咗嘅端點，而且張表會無限膨脹。
-  await fetch('/api/push/subscribe', {
+  // Server ownership deletion must succeed before removing local state. If it
+  // fails, keep the subscription and HttpOnly cookie available for retry.
+  let response: Response
+  try {
+    response = await fetch('/api/push/subscribe', {
     method: 'DELETE',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ endpoint }),
-  }).catch(() => {})
+    })
+  } catch {
+    throw new Error('無法連線以取消推送訂閱，請稍後重試。')
+  }
+  if (response.status === 409) {
+    // No server ownership proof: honour the user's local off action without
+    // deleting by endpoint. The provider/cron will later prune the dead endpoint.
+    const removed = await sub.unsubscribe()
+    if (!removed) throw new Error('瀏覽器未能移除本機訂閱。')
+    return 'local-only'
+  }
+  if (!response.ok) throw new Error('伺服器未能確認取消推送訂閱，請稍後重試。')
+  const removed = await sub.unsubscribe()
+  if (!removed) throw new Error('伺服器已取消訂閱，但瀏覽器未能移除本機訂閱。')
+  return 'deleted'
 }
