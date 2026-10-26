@@ -108,7 +108,8 @@ export async function currentSubscription(): Promise<PushSubscription | null> {
   }
 }
 
-export type SubscribeResult = 'ok' | 'denied' | 'unsupported' | 'not-configured' | 'failed'
+export type SubscribeResult = 'ok' | 'denied' | 'unsupported' | 'not-configured' | 'ownership-check' | 'failed'
+export type UnsubscribeResult = 'deleted' | 'local-only' | 'not-subscribed'
 
 /**
  * 開啟推送。
@@ -129,6 +130,23 @@ export async function subscribePush(publicKey: string | undefined): Promise<Subs
   if (perm !== 'granted') return 'denied'
 
   try {
+    const existing = await reg.pushManager.getSubscription()
+    if (existing) {
+      const existingEndpoint = existing.endpoint
+      const existingKeys = existing.toJSON().keys
+      if (existingEndpoint && existingKeys?.p256dh && existingKeys.auth) {
+        const response = await fetch('/api/push/subscribe', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ endpoint: existingEndpoint, p256dh: existingKeys.p256dh, auth: existingKeys.auth }),
+        })
+        if (response.ok) return 'ok'
+        if (response.status === 409) return 'ownership-check'
+        return response.status === 503 ? 'not-configured' : 'failed'
+      }
+      return 'ownership-check'
+    }
     const sub = await reg.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: urlB64ToBytes(publicKey) as BufferSource,
@@ -136,13 +154,13 @@ export async function subscribePush(publicKey: string | undefined): Promise<Subs
     const j = sub.toJSON() as { endpoint?: string; keys?: { p256dh?: string; auth?: string } }
     const r = await fetch('/api/push/subscribe', {
       method: 'POST',
+      credentials: 'same-origin',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys?.p256dh, auth: j.keys?.auth }),
     })
     if (!r.ok) {
-      // 伺服器收唔到就唔好留一個瀏覽器訂閱喺度 —— 佢永遠唔會收到嘢，
-      // 而學生會以為自己已經開咗。
-      await sub.unsubscribe().catch(() => {})
+      // If a browser rotates/reuses an endpoint, never overwrite an unrelated legacy row.
+      if (r.status === 409) return 'ownership-check'
       return r.status === 503 ? 'not-configured' : 'failed'
     }
     return 'ok'
@@ -151,16 +169,31 @@ export async function subscribePush(publicKey: string | undefined): Promise<Subs
   }
 }
 
-export async function unsubscribePush(): Promise<void> {
+export async function unsubscribePush(): Promise<UnsubscribeResult> {
   const sub = await currentSubscription()
-  if (!sub) return
+  if (!sub) return 'not-subscribed'
   const endpoint = sub.endpoint
-  await sub.unsubscribe().catch(() => {})
-  // 就算瀏覽器嗰邊退咗，都要通知伺服器刪走 —— 唔刪就會日日打去一個
-  // 死咗嘅端點，而且張表會無限膨脹。
-  await fetch('/api/push/subscribe', {
+  // Server ownership deletion must succeed before removing local state. If it
+  // fails, keep the subscription and HttpOnly cookie available for retry.
+  let response: Response
+  try {
+    response = await fetch('/api/push/subscribe', {
     method: 'DELETE',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ endpoint }),
-  }).catch(() => {})
+    })
+  } catch {
+    throw new Error('無法連線以取消推送訂閱，請稍後重試。')
+  }
+  if (response.status === 409) {
+    // No server ownership proof: honour the user's local off action without
+    // deleting by endpoint. The provider/cron will later prune the dead endpoint.
+    const removed = await sub.unsubscribe()
+    if (!removed) throw new Error('瀏覽器未能移除本機訂閱。')
+    return 'local-only'
+  }
+  if (!response.ok) throw new Error('伺服器未能確認取消推送訂閱，請稍後重試。')
+  const removed = await sub.unsubscribe()
+  if (!removed) throw new Error('伺服器已取消訂閱，但瀏覽器未能移除本機訂閱。')
+  return 'deleted'
 }

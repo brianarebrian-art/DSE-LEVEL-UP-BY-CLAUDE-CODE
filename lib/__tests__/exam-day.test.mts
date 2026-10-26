@@ -22,6 +22,7 @@ const { cachedJson, __resetCache, TTL, mtrDisrupted } = upstream
 // （例如將來有人把 cachedJson 改成 next.revalidate）。
 
 const realFetch = globalThis.fetch
+const TEST_UPSTREAM = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php'
 
 function stubFetch(seq: Array<{ status: number; body?: unknown } | 'throw'>) {
   let i = 0
@@ -39,11 +40,11 @@ const restore = () => { globalThis.fetch = realFetch; __resetCache() }
 test('上游 429 → 出返最後一次成功嘅快取，並標記 stale', async () => {
   __resetCache()
   stubFetch([{ status: 200, body: { v: 'good' } }, { status: 429 }])
-  const first = await cachedJson<{ v: string }>('t429', 'https://x.test/a', 0)
+  const first = await cachedJson<{ v: string }>('t429', TEST_UPSTREAM, 0)
   assert.equal(first.data.v, 'good')
   assert.equal(first.stale, false)
 
-  const second = await cachedJson<{ v: string }>('t429', 'https://x.test/a', 0)
+  const second = await cachedJson<{ v: string }>('t429', TEST_UPSTREAM, 0)
   assert.equal(second.data.v, 'good', '429 之後應該照出舊值')
   assert.equal(second.stale, true, '出舊值時必須標記 stale')
   assert.equal(second.fetchedAt, first.fetchedAt, '時間戳要係舊值嗰次，唔係而家')
@@ -53,8 +54,8 @@ test('上游 429 → 出返最後一次成功嘅快取，並標記 stale', async
 test('上游 5xx → 同樣熔斷，唔可以掉錯上去', async () => {
   __resetCache()
   stubFetch([{ status: 200, body: { v: 1 } }, { status: 503 }])
-  await cachedJson('t5xx', 'https://x.test/b', 0)
-  const r = await cachedJson<{ v: number }>('t5xx', 'https://x.test/b', 0)
+  await cachedJson('t5xx', TEST_UPSTREAM, 0)
+  const r = await cachedJson<{ v: number }>('t5xx', TEST_UPSTREAM, 0)
   assert.equal(r.data.v, 1)
   assert.equal(r.stale, true)
   restore()
@@ -63,14 +64,14 @@ test('上游 5xx → 同樣熔斷，唔可以掉錯上去', async () => {
 test('第一次就失敗（冇舊值可出）→ 要掉錯，唔可以扮成功', async () => {
   __resetCache()
   stubFetch([{ status: 500 }])
-  await assert.rejects(() => cachedJson('tcold', 'https://x.test/c', 0))
+  await assert.rejects(() => cachedJson('tcold', TEST_UPSTREAM, 0))
   restore()
 })
 
 test('空班次表唔算失敗 —— 尾班車走咗一樣係有效答案', async () => {
   __resetCache()
   stubFetch([{ status: 200, body: { status: 1, data: { 'TKL-TKO': { UP: [], DOWN: [] } } } }])
-  const r = await cachedJson<{ data: Record<string, { UP: unknown[] }> }>('tmtr', 'https://x.test/d', 0)
+  const r = await cachedJson<{ data: Record<string, { UP: unknown[] }> }>('tmtr', TEST_UPSTREAM, 0)
   assert.equal(r.stale, false)
   assert.deepEqual(r.data.data['TKL-TKO'].UP, [])
   restore()
@@ -100,9 +101,9 @@ test('TTL 之內唔會再打上游', async () => {
     calls++
     return new Response(JSON.stringify({ n: calls }), { status: 200 })
   }) as typeof fetch
-  await cachedJson('tttl', 'https://x.test/e', 60_000)
-  await cachedJson('tttl', 'https://x.test/e', 60_000)
-  await cachedJson('tttl', 'https://x.test/e', 60_000)
+  await cachedJson('tttl', TEST_UPSTREAM, 60_000)
+  await cachedJson('tttl', TEST_UPSTREAM, 60_000)
+  await cachedJson('tttl', TEST_UPSTREAM, 60_000)
   assert.equal(calls, 1, 'TTL 內應該只打一次上游')
   restore()
 })
@@ -110,8 +111,8 @@ test('TTL 之內唔會再打上游', async () => {
 test('網絡直接掉錯（唔係 HTTP 狀態碼）一樣要熔斷', async () => {
   __resetCache()
   stubFetch([{ status: 200, body: { ok: true } }, 'throw'])
-  await cachedJson('tnet', 'https://x.test/f', 0)
-  const r = await cachedJson<{ ok: boolean }>('tnet', 'https://x.test/f', 0)
+  await cachedJson('tnet', TEST_UPSTREAM, 0)
+  const r = await cachedJson<{ ok: boolean }>('tnet', TEST_UPSTREAM, 0)
   assert.equal(r.stale, true)
   restore()
 })
@@ -119,4 +120,12 @@ test('網絡直接掉錯（唔係 HTTP 狀態碼）一樣要熔斷', async () =>
 test('TTL 數值跟足規格 §6.2（天氣 5–10 分鐘、列車 15–30 秒）', () => {
   assert.ok(TTL.weather >= 5 * 60_000 && TTL.weather <= 10 * 60_000, `天氣 TTL ${TTL.weather}`)
   assert.ok(TTL.train >= 15_000 && TTL.train <= 30_000, `列車 TTL ${TTL.train}`)
+})
+
+test('cached upstream rejects arbitrary host/path before network access', async () => {
+  let calls = 0
+  globalThis.fetch = (async () => { calls++; return new Response('{}') }) as typeof fetch
+  await assert.rejects(() => cachedJson('tssrf', 'https://127.0.0.1/admin', 0), /upstream-url-not-allowed/)
+  assert.equal(calls, 0)
+  restore()
 })

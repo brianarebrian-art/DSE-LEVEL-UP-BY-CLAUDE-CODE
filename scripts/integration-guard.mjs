@@ -55,7 +55,10 @@ const src = new Map(files.map((f) => [f, readFileSync(join(ROOT, f), 'utf8')]))
 // 2026-09-25：proxy.ts 改用 lib/rateLimit.ts 之後，個閘誤報「模組冇被任何地方
 // import」—— 唔係冇接線，係個閘睇唔到 proxy.ts。修個閘，唔加豁免：一個
 // 靠豁免過關嘅閘，下一個真係冇接線嘅模組都會一樣靠豁免過關。
-for (const f of ['proxy.ts', 'auth.ts', 'instrumentation.ts', 'next.config.ts']) {
+for (const f of [
+  'proxy.ts', 'auth.ts', 'instrumentation.ts', 'instrumentation-client.ts',
+  'sentry.server.config.ts', 'sentry.edge.config.ts', 'next.config.ts',
+]) {
   if (existsSync(join(ROOT, f))) src.set(f, readFileSync(join(ROOT, f), 'utf8'))
 }
 const findings = []

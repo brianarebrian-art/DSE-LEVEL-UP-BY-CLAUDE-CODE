@@ -15,7 +15,36 @@ const securityHeaders = [
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
 ]
 
+const buildTarget = process.env.VERCEL_ENV ?? 'unknown'
+const publicSupabaseUrl = buildTarget === 'production'
+  ? process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
+  : buildTarget === 'preview'
+    ? process.env.DSE_PREVIEW_SUPABASE_URL ?? ''
+    : buildTarget === 'development'
+      ? process.env.DSE_DEVELOPMENT_SUPABASE_URL ?? ''
+      : ''
+const publicSupabaseAnonKey = buildTarget === 'production'
+  ? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
+  : buildTarget === 'preview'
+    ? process.env.DSE_PREVIEW_SUPABASE_ANON_KEY ?? ''
+    : buildTarget === 'development'
+      ? process.env.DSE_DEVELOPMENT_SUPABASE_ANON_KEY ?? ''
+      : ''
+
 const nextConfig: NextConfig = {
+  // Public Supabase values are selected at build time by deployment environment.
+  // Preview has no production fallback; these are public URL/anon-key values only.
+  env: {
+    NEXT_PUBLIC_SUPABASE_URL: publicSupabaseUrl,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: publicSupabaseAnonKey,
+    DSE_CLIENT_TARGET_ENV: buildTarget,
+    DSE_CLIENT_PREVIEW_SUPABASE_PROJECT_REF: buildTarget === 'preview'
+      ? process.env.DSE_PREVIEW_SUPABASE_PROJECT_REF ?? ''
+      : '',
+    DSE_CLIENT_DEVELOPMENT_SUPABASE_PROJECT_REF: buildTarget === 'development'
+      ? process.env.DSE_DEVELOPMENT_SUPABASE_PROJECT_REF ?? ''
+      : '',
+  },
   // Do not announce the framework in an X-Powered-By header (audit #8, 2026-10-04).
   poweredByHeader: false,
   // /admin 隊列喺 request time 用 fs 讀草稿檔 —— 呢啲檔冇被 import，
@@ -64,5 +93,8 @@ export default withSentryConfig(nextConfig, {
   authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // Route browser requests to Sentry through Next.js to avoid ad blockers
-  tunnelRoute: '/monitoring',
+  tunnelRoute: buildTarget === 'production' ? '/monitoring' : undefined,
+  sourcemaps: {
+    disable: buildTarget !== 'production',
+  },
 })

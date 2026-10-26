@@ -56,8 +56,16 @@
  *
  * 2026-10-23.v1 —— 私隱頁加一條去使用條款的連結。沒有新增採集類別。
  * 指紋閘要求文案一改就 bump，所以登入學生會再見一次同意視窗。
+ *
+ * 2026-10-25.v1 —— 補充 Vercel Speed Insights 匿名效能資料點及 Sentry scrub
+ * 細節；釐清同步同意只管雲端進度，另修正同步資料可見範圍。未來同意紀錄改為
+ * append-only history。舊 consent version/time/scope 不覆寫；新版本需要用戶另行選擇。
+ * 新 history migration 只作草稿，需另行批准套用。
+ *
+ * 2026-10-25.v2 —— 修正帳戶刪除文案，不再把尚未批准／套用的 DRAFT migration
+ * table 計入數字；避免 Preview 或未完成 schema rollout 時披露錯誤的表數。
  */
-export const POLICY_VERSION = '2026-10-23.v1'
+export const POLICY_VERSION = '2026-10-25.v2'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'
@@ -91,16 +99,16 @@ export const CONSENT_POINTS: { q: ConsentPoint; a: ConsentPoint }[] = [
   {
     q: { zh: '邊個睇到？', en: 'Who can see it?' },
     a: {
-      zh: '淨係你自己。唔會畀學校、老師、補習社、家長或者任何第三方，亦唔會攞你同其他學生比較或者排名。',
-      en: 'Only you. Never your school, teacher, tutor, parents or any third party, and never used to compare or rank you against other students.',
+      zh: '只會顯示喺你自己登入嘅帳戶；Supabase 會按私隱政策代我哋儲存同步資料。我哋唔會將進度提供畀學校、老師、補習社、家長或廣告商，亦唔會用嚟同其他學生比較或排名。',
+      en: 'Your progress is shown only in your own signed-in account; Supabase stores it for us as described in the privacy policy. We do not provide it to schools, teachers, tutors, parents or advertisers, and never compare or rank you against other students.',
     },
   },
 ]
 
 /** 唔同意會點 —— 要講到明明白白，唔可以令人以為做過嘅嘢會冇咗。 */
 export const DECLINE_NOTE = {
-  zh: '唔同意都照用得晒成個網站 —— 所有題目、所有科目、所有功能，一樣都唔會少。分別只係你嘅進度淨係留喺呢部機，唔會跟你去第二部機。你隨時可以喺「我嘅帳戶」度改。',
-  en: 'Declining still gives you the entire site — every question, every subject, every feature, nothing withheld. The only difference is that your progress stays on this device instead of following you to another one. You can change this any time from your account page.',
+  zh: '唔同意都照用得晒成個網站 —— 所有題目、所有科目、所有功能，一樣都唔會少。分別只係同步進度會留喺呢部機，唔會跟你去第二部機。網站另有私隱政策所述嘅匿名效能量度及錯誤監察，唔由呢個同步選擇控制。你隨時可以喺「我嘅帳戶」度改同步選擇。',
+  en: 'Declining still gives you the entire site — every question, every subject, every feature, nothing withheld. Your sync progress stays on this device instead of following you to another one. Anonymous performance measurement and error monitoring described in the privacy policy are separate from this sync choice. You can change the sync choice any time from your account page.',
 }
 
 /** 本機記住「今次已經問過」，避免同一個 session 彈完又彈。 */

@@ -1,0 +1,30 @@
+name: 一般功能建議（草稿）
+description: 提出與 DSE 學習用途相關的一般改善建議。
+title: "[建議] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **DRAFT — NOT FOR PUBLICATION**
+
+        請勿提交個人資料、學生資料、憑證或安全漏洞細節。建議請聚焦於 DSE 學習用途，並符合 `docs/charter.md`。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 想改善的需要
+      description: 描述一般學習情境或目前遇到的限制，不要包含可識別學生的資料。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建議方案
+      description: 說明你建議的改動及其預期效果。
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 其他考慮過的做法（選填）

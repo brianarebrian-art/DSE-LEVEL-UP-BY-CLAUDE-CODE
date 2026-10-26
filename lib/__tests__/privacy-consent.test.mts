@@ -32,10 +32,10 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-10-23.v1',
-  // 2026-10-23 (2026-10-23.v1): /privacy links to /terms. No new data collection.
+  version: '2026-10-25.v2',
+  // 2026-10-25 (2026-10-25.v2): Speed Insights/Sentry disclosure, consent scope clarification, append-only history, accurate deletion copy.
   // Previous: eb50525759bb586e (2026-10-22.v1, Sentry disclosure).
-  hash: '34c4eb5c1bd9fcea',
+  hash: 'bc3c1b1eeda83378',
 }
 
 function policyFingerprint(): string {
@@ -106,4 +106,15 @@ test('同意紀錄唔可以由 client 話畀 server 聽係邊個版本', () => {
       '否則改個 request 就可以扮成同意咗一個佢冇睇過嘅版本',
   )
   assert.match(route, /policy_version: POLICY_VERSION/, '寫入嘅版本要嚟自 server 常數')
+})
+
+test('新版 consent 只追加，不覆寫舊版本／時間／適用範圍', () => {
+  const route = read('app/api/privacy/consent/route.ts')
+  const migration = read('supabase/migrations/0027_privacy_consent_history.DRAFT.sql')
+  assert.match(route, /const TABLE = 'privacy_consent_history'/)
+  assert.match(route, /ignoreDuplicates:\s*true/)
+  assert.match(route, /scope_version:\s*POLICY_VERSION/)
+  assert.match(migration, /select user_id, policy_version, policy_version, 'granted', consented_at, 'legacy_snapshot'/)
+  assert.match(migration, /on conflict \(user_id, policy_version\) do nothing/i)
+  assert.doesNotMatch(migration, /update public\.privacy_consents|delete from public\.privacy_consents/i)
 })

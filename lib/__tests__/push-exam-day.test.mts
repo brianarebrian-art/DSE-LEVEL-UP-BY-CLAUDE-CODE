@@ -5,7 +5,7 @@ import { verify } from 'node:crypto'
 // default interop（同其他 .mts 測試一樣，見 exam-day.test.mts 檔頭）
 import * as ns from '../push/vapid.ts'
 const vapid = (ns as unknown as { default?: typeof ns }).default ?? ns
-const { signVapidJwt, sendEmptyPush, toPublicKey, vapidFromEnv } = vapid
+const { signVapidJwt, sendEmptyPush, toPublicKey, vapidFromEnv, isAllowedPushEndpoint } = vapid
 
 // ── 一對只喺測試入面用嘅金鑰 ──
 // 用 node:crypto 即場生成，唔會寫入任何檔，亦唔會同生產嘅金鑰有關。
@@ -73,7 +73,7 @@ test('推送冇 payload —— 冇 body，Content-Length 係 0', async () => {
   let init: RequestInit | undefined
   const real = globalThis.fetch
   globalThis.fetch = (async (_u: string, i: RequestInit) => { init = i; return new Response('', { status: 201 }) }) as unknown as typeof fetch
-  await sendEmptyPush('https://push.example.com/x/y', KEYS, SUB)
+  await sendEmptyPush('https://updates.push.services.mozilla.com/wpush/v2/synthetic', KEYS, SUB)
   globalThis.fetch = real
   assert.equal(init?.body, undefined)
   assert.equal((init?.headers as Record<string, string>)['Content-Length'], '0')
@@ -84,7 +84,7 @@ for (const status of [404, 410]) {
   test(`推送回 ${status} → 標記為已死（要由資料庫刪走）`, async () => {
     const real = globalThis.fetch
     globalThis.fetch = (async () => new Response('', { status })) as unknown as typeof fetch
-    const r = await sendEmptyPush('https://push.example.com/x', KEYS, SUB)
+    const r = await sendEmptyPush('https://updates.push.services.mozilla.com/wpush/v2/synthetic', KEYS, SUB)
     globalThis.fetch = real
     assert.equal(r.gone, true)
     assert.equal(r.ok, false)
@@ -94,9 +94,33 @@ for (const status of [404, 410]) {
 test('推送回 500 唔算已死 —— 唔可以因為上游一次抽筋就刪走訂閱', async () => {
   const real = globalThis.fetch
   globalThis.fetch = (async () => new Response('', { status: 500 })) as unknown as typeof fetch
-  const r = await sendEmptyPush('https://push.example.com/x', KEYS, SUB)
+  const r = await sendEmptyPush('https://updates.push.services.mozilla.com/wpush/v2/synthetic', KEYS, SUB)
   globalThis.fetch = real
   assert.equal(r.gone, false)
+})
+
+test('push endpoint allowlist rejects arbitrary public/private hosts and non-default ports', () => {
+  assert.equal(isAllowedPushEndpoint('https://fcm.googleapis.com/fcm/send/synthetic'), true)
+  assert.equal(isAllowedPushEndpoint('https://abc.push.apple.com/3/device/synthetic'), true)
+  assert.equal(isAllowedPushEndpoint('https://autopush.push.services.mozilla.com/wpush/v2/synthetic'), true)
+  for (const endpoint of [
+    'http://127.0.0.1:54321/admin',
+    'https://169.254.169.254/latest/meta-data',
+    'https://evil.example/push',
+    'https://fcm.googleapis.com.evil.example/fcm/send/x',
+    'https://fcm.googleapis.com:8443/fcm/send/x',
+    'https://user@fcm.googleapis.com/fcm/send/x',
+  ]) assert.equal(isAllowedPushEndpoint(endpoint), false, endpoint)
+})
+
+test('push sender refuses endpoint before making any outbound request', async () => {
+  const real = globalThis.fetch
+  let called = false
+  globalThis.fetch = (async () => { called = true; return new Response('', { status: 201 }) }) as unknown as typeof fetch
+  try {
+    await assert.rejects(sendEmptyPush('https://127.0.0.1:54321/admin', KEYS, SUB), /push-endpoint-not-allowed/)
+    assert.equal(called, false)
+  } finally { globalThis.fetch = real }
 })
 
 test('壞金鑰要即刻掉錯，唔可以簽出一個冇人收得到嘅 JWT', () => {

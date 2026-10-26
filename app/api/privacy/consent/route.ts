@@ -7,13 +7,12 @@ import { POLICY_VERSION } from '@/lib/privacy/consent'
 // 私隱政策同意 —— 讀 ＋ 寫。
 //
 // GET  → { consented: boolean, version: string | null }
-//        `consented` 只有喺【已同意嘅版本 === 現行版本】先至係 true。
-//        政策改咗、版本 bump 咗，全部人自動變返 false，會再問一次 ——
-//        呢個就係「補簽」機制，唔使另外寫一個 migration 去清紀錄。
+//        只讀 append-only history。舊版紀錄保留原版本與時間，不會被改寫。
 //
-// POST → 記低同意。冇 body：同意咗邊一版由 server 決定（POLICY_VERSION），
+// POST → append 一個版本限定嘅同意事件。冇 body：由 server 決定（POLICY_VERSION），
 //        唔接受 client 話畀我聽佢同意咗邊版 —— 否則改個 request 就可以
 //        扮成同意咗一個佢冇睇過嘅版本。
+//        重覆提交同一版本係 no-op；絕不 upsert 覆蓋舊 consent version/time。
 //
 // ⚠️ 冇 DELETE。撤回同意唔係刪走呢一行 —— 刪走等於「佢從來冇被問過」，
 //    而事實係佢被問過而且拒絕過。撤回改為由 /account 走既有嘅完整抹除流程
@@ -25,7 +24,7 @@ import { POLICY_VERSION } from '@/lib/privacy/consent'
 
 export const dynamic = 'force-dynamic'
 
-const TABLE = 'privacy_consents'
+const TABLE = 'privacy_consent_history'
 
 export async function GET() {
   const userId = await getSyncUserId()
@@ -37,6 +36,7 @@ export async function GET() {
       .from(TABLE)
       .select('policy_version')
       .eq('user_id', userId)
+      .eq('policy_version', POLICY_VERSION)
       .maybeSingle()
     if (error) throw error
 
@@ -57,12 +57,17 @@ export async function POST() {
   try {
     const supabase = getServiceSupabase()
     const now = new Date().toISOString()
-    const { error } = await supabase
-      .from(TABLE)
-      .upsert(
-        { user_id: userId, policy_version: POLICY_VERSION, consented_at: now, updated_at: now },
-        { onConflict: 'user_id' },
-      )
+    const { error } = await supabase.from(TABLE).upsert(
+      {
+        user_id: userId,
+        policy_version: POLICY_VERSION,
+        scope_version: POLICY_VERSION,
+        decision: 'granted',
+        consented_at: now,
+        source: 'new_acceptance',
+      },
+      { onConflict: 'user_id,policy_version', ignoreDuplicates: true },
+    )
     if (error) throw error
     return NextResponse.json({ ok: true, version: POLICY_VERSION })
   } catch (e) {

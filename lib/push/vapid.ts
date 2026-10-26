@@ -97,6 +97,21 @@ export interface PushResult {
   gone: boolean
 }
 
+const EXACT_PUSH_HOSTS = new Set(['fcm.googleapis.com'])
+export function isAllowedPushEndpoint(value: unknown): value is string {
+  if (typeof value !== 'string' || value.length > 1024) return false
+  try {
+    const url = new URL(value)
+    const host = url.hostname.toLowerCase()
+    const providerHost = EXACT_PUSH_HOSTS.has(host) ||
+      host.endsWith('.push.apple.com') || host.endsWith('.push.services.mozilla.com')
+    return url.protocol === 'https:' && !url.username && !url.password && !url.port &&
+      providerHost && url.pathname.length > 1
+  } catch {
+    return false
+  }
+}
+
 /**
  * send一個【冇內容】嘅推送，淨係叫部機醒返。
  *
@@ -109,10 +124,12 @@ export async function sendEmptyPush(
   subject: string,
   ttlSec = 3 * 60 * 60,
 ): Promise<PushResult> {
+  if (!isAllowedPushEndpoint(endpoint)) throw new Error('push-endpoint-not-allowed')
   const aud = new URL(endpoint).origin
   const jwt = signVapidJwt(keys, aud, subject)
   const res = await fetch(endpoint, {
     method: 'POST',
+    redirect: 'error',
     headers: {
       Authorization: `vapid t=${jwt}, k=${keys.publicKey}`,
       TTL: String(ttlSec),

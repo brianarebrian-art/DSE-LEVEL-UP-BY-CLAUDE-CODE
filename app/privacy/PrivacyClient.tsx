@@ -3,10 +3,9 @@
 import Link from 'next/link'
 import { useLocale } from '@/lib/i18n'
 import { CLOUD_PROGRESS_KEYS, CLOUD_SETTINGS_KEYS } from '@/components/StoredDataInspector'
-import { USER_SCOPED_TABLES } from '@/lib/privacy/userData'
 
-// 見 page.tsx 檔頭：呢版每一句都對過實物。數量由 import 嚟嘅常數即時算，
-// 唔硬編 —— 硬編一個「12」落去，同步代碼改嗰日呢版就會靜靜哋講錯。
+// Sync item count is derived from its code-owned keys. Account-deletion copy
+// avoids a table count because draft migrations are not live until separately approved.
 const CLOUD_COUNT = CLOUD_PROGRESS_KEYS.length + CLOUD_SETTINGS_KEYS.length
 
 const CONTACT = 'dselevelup@gmail.com'
@@ -33,8 +32,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <h1 className="text-2xl font-medium text-ink">{en ? 'Privacy policy' : '私隱政策'}</h1>
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">
           {en
-            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. Every statement below was last checked against the actual code and the actual database on 4 October 2026 — not against a specification.'
-            : '對照香港《個人資料（私隱）條例》寫。以下每一句最近一次喺 2026 年 10 月 4 日對住實際代碼同實際資料庫核實過 —— 唔係對住一份文件。'}
+            ? 'Written against Hong Kong’s Personal Data (Privacy) Ordinance. The data-handling statements were last checked against the actual code and database on 4 October 2026. The Vercel Speed Insights disclosure was updated on 25 October 2026 against the deployed integration code and Vercel’s current privacy documentation.'
+            : '對照香港《個人資料（私隱）條例》寫。資料處理部分最近一次喺 2026 年 10 月 4 日對住實際代碼同資料庫核實。Vercel Speed Insights 披露於 2026 年 10 月 25 日按網站整合代碼及 Vercel 當時嘅私隱文件更新。'}
         </p>
       </header>
 
@@ -178,8 +177,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p>
           {en
-            ? 'We use one analytics service: Vercel Web Analytics, from the company that hosts the site. It counts traffic in total — how many visits, which pages, which country, phone or computer — so we know whether the site is being used. It uses no cookies and does not record your name, email or account, and we cannot see any one person in it. Separately, we use Sentry for error monitoring so we can see when the site breaks and fix it. Sentry is not an analytics product here: we do not turn on Session Replay (screen recording), we do not ask it to send your name or email by default, and we do not use it for advertising. Apart from Vercel Web Analytics and Sentry error monitoring there is no other analytics service, no advertising network and no tracking pixel — we scanned for the usual ones (Google Analytics, Tag Manager, PostHog, Mixpanel, Hotjar, Meta Pixel, Plausible, Umami) and there are none. We do not sell data, and we have never shared it with anyone for marketing.'
-            : '我哋用一個分析服務：Vercel Web Analytics，即係寄存網站嗰間公司提供嘅。佢只計網站整體流量 —— 幾多人次瀏覽、睇咗邊啲頁、喺邊個地區、用手機定電腦 —— 等我哋知道個網站有冇人用。佢唔用 cookie，唔會記低你嘅名、電郵或帳戶，我哋亦睇唔到任何一個人。另外，我哋用 Sentry 做錯誤監察，等網站壞咗可以睇到同修。呢度唔當分析工具用：唔開 Session Replay（畫面錄影）、預設唔送你嘅名或電郵、亦唔用嚟做廣告。除咗 Vercel Web Analytics 同 Sentry 錯誤監察之外，冇其他分析服務、冇廣告網絡、冇追蹤像素 —— 我哋掃過常見嗰批（Google Analytics、Tag Manager、PostHog、Mixpanel、Hotjar、Meta Pixel、Plausible、Umami），一個都冇。我哋唔賣數據，亦從來冇為咗營銷而分享畀任何人。'}
+            ? 'We use two measurement services from Vercel, the company that hosts the site. Vercel Web Analytics counts total page views and broad traffic patterns without cookies. Vercel Speed Insights measures real visitors’ Web Vitals and, according to Vercel, stores anonymous data points that are not tied to an individual visitor or IP address and cannot reconstruct a browsing session; a data point can include the route/URL, network speed, browser, device type and OS, country, Web Vital and event time. Separately, we use Sentry for error monitoring so we can see when the site breaks and fix it. Sentry is not used for advertising, and Session Replay (screen recording) is off. Apart from these Vercel measurement services and Sentry error monitoring there is no other analytics service, advertising network or tracking pixel — we scanned for the usual ones (Google Analytics, Tag Manager, PostHog, Mixpanel, Hotjar, Meta Pixel, Plausible and Umami) and found none. We do not sell data or share it for marketing.'
+            : '我哋用兩項由寄存網站嘅 Vercel 提供嘅量度服務。Vercel Web Analytics 用整體數字計瀏覽量同大概流量模式，唔用 cookie。Vercel Speed Insights 會量度真實訪客嘅 Web Vitals；按 Vercel 說明，佢存嘅係匿名資料點，不會連結到個別訪客或 IP，亦不能重組瀏覽者跨頁嘅瀏覽過程。一個資料點可以包括路徑／網址、網絡速度、瀏覽器、裝置類型同作業系統、國家、Web Vital 同事件時間。另外，我哋用 Sentry 做錯誤監察，等網站壞咗可以睇到同修；唔用嚟做廣告，亦關閉 Session Replay（畫面錄影）。除咗呢兩項 Vercel 量度服務同 Sentry 錯誤監察之外，冇其他分析服務、廣告網絡或追蹤像素 —— 我哋掃過常見嗰批（Google Analytics、Tag Manager、PostHog、Mixpanel、Hotjar、Meta Pixel、Plausible 同 Umami），一個都冇。我哋唔賣數據，亦唔會為營銷而分享。'}
         </p>
       </Section>
 
@@ -223,8 +222,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </p>
         <p>
           {en
-            ? 'When something breaks, we log the error message and code only — never the contents of your data. Those logs are private to the project.'
-            : '出錯嗰陣，我哋只記錄錯誤訊息同代碼 —— 唔會記錄你資料嘅內容。呢啲日誌只有專案本身睇到。'}
+            ? 'When something breaks, operational logs contain only an allowlisted operation code, an allowlisted error code and a random correlation ID — not the raw error message, request body, SQL or rows. Sentry receives a scrubbed error type and limited stack location; request/user data, breadcrumbs and raw messages are removed before sending. Project logs are private to the project.'
+            : '出錯嗰陣，操作日誌只會記錄預先列明嘅操作代碼、錯誤代碼同隨機關聯編號 —— 唔會記錄原始錯誤訊息、請求內容、SQL 或資料列。Sentry 收到嘅錯誤類別同堆疊位置經過清理；發送前會移除請求／用戶資料、操作痕跡同原始訊息。專案日誌只有專案本身睇到。'}
         </p>
       </Section>
 
@@ -255,8 +254,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
             /account
           </Link>
           {en
-            ? `. That deletes your rows from every table that holds anything keyed to you (${USER_SCOPED_TABLES.length} tables). If any part of the deletion fails, we tell you rather than reporting success.`
-            : `。呢個動作會刪走你喺每一張帶住你識別碼嘅表入面嘅資料（共 ${USER_SCOPED_TABLES.length} 張表）。如果有任何一部分刪唔到，我哋會話你知，唔會扮成功。`}
+            ? '. That deletes your rows from every table that holds anything keyed to you. If any part of the deletion fails, we tell you rather than reporting success.'
+            : '。呢個動作會刪走所有帶住你識別碼嘅表入面屬於你嘅資料。如果有任何一部分刪唔到，我哋會話你知，唔會扮成功。'}
         </p>
         <p>
           {en

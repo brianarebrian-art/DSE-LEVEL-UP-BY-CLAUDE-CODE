@@ -48,12 +48,14 @@ test('② 刪帳號覆蓋 Better Auth 嘅表，而且用返正確 key', () => {
   assert.match(route, /if \(!value\) continue/, '攞唔到 key 值要跳過，唔可以用 undefined 去 delete')
 })
 
-test('③ getSyncUserId 解析唔到 Google accountId 時回 null，唔換 key', () => {
+test('③ Better Auth 暫時只接受已驗證 Google identity，解析失敗唔換 key', () => {
   const s = read('lib/auth/server.ts')
   // 舊寫法：catch 之後 `return session.user.id` —— 就係嗰個會 orphan 進度嘅回落
   assert.ok(!/\} catch \{[\s\S]*?\n *\}\n *return session\.user\.id/.test(s),
     'catch 之後又回落 session.user.id —— 會令 Google 用戶嘅雲端進度失聯')
-  assert.match(s, /if \(!google\) return session\.user\.id/,
-    '純 email/password 用戶（冇 Google 帳號）應該用 Better Auth id')
+  assert.match(s, /if \(!google \|\| typeof .*accountId !== 'string'\)/,
+    'Google proof missing/invalid 時必須 fail closed；email/password 尚未獲准開放')
+  assert.match(s, /resolveMappedBusinessUserId\(/,
+    'Better Auth identity 必須經由可追溯 mapping table，而非直接猜 user key')
   assert.match(s, /refusing to guess a key/, '失敗路徑要有明確 log')
 })

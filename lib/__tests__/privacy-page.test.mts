@@ -70,6 +70,12 @@ test('同步項目數量由代碼算出，唔係硬編喺文案', () => {
   assert.doesNotMatch(src, /【?\d{2} 項】?/, '文案唔可以出現硬編嘅項目數')
 })
 
+test('帳戶刪除文案不發布未套用 draft migration 的資料表數量', () => {
+  const src = fs.readFileSync(PAGE, 'utf8')
+  assert.match(src, /every table that holds anything keyed to you/)
+  assert.doesNotMatch(src, /USER_SCOPED_TABLES\.length/)
+})
+
 test('頁面聲稱「心情記錄唔會上傳」—— 佢真係唔喺上雲清單', () => {
   // 呢句係全版最敏感嘅承諾。如果有日有人為咗「跨機睇返心情」而加咗佢落同步清單，
   // 呢條測試就係最後一道防線。
@@ -93,21 +99,24 @@ test('頁面聲稱「心情記錄唔會上傳」—— 佢真係唔喺上雲清�
   }
 })
 
-// 2026-10-02 創辦人決定裝 Vercel Web Analytics（同源 script，唔加套件）。私隱頁已照實寫明；
-// 除此之外照舊一個都唔准，而且唔准用 npm 套件版（@vercel/analytics），以免違反「唔加套件」。
-test('只有 Vercel Web Analytics（同源 script），私隱頁有寫明；其他追蹤器一個都冇', () => {
+// Web Analytics and Speed Insights are approved Vercel measurement tools and must be disclosed;
+// unrelated analytics/ad trackers remain forbidden.
+test('Vercel Web Analytics and Speed Insights are disclosed; other trackers are absent', () => {
   const layout = stripComments(fs.readFileSync('app/layout.tsx', 'utf8'))
   assert.match(layout, /process\.env\.VERCEL_ENV === 'production' && \(\s*<Script src="\/_vercel\/insights\/script\.js"/)
   const page = fs.readFileSync(PAGE, 'utf8')
-  assert.match(page, /我哋用一個分析服務：Vercel Web Analytics/)
+  assert.match(page, /Vercel Web Analytics/)
+  assert.match(page, /Vercel Speed Insights/)
+  assert.match(page, /Web Vitals/)
   assert.match(page, /唔用 cookie/)
 })
 
-test('頁面聲稱「除 Vercel Web Analytics 外冇其他分析／追蹤 SDK」—— 掃全站確認', () => {
+test('頁面披露允許的量度工具；掃描其餘分析／廣告／追蹤 SDK', () => {
   // Sentry is allowed only as disclosed error monitoring (no Session Replay).
+  // Speed Insights is allowed only as disclosed anonymous performance measurement.
   // Other analytics / ad / product-analytics SDKs remain forbidden.
   const TRACKERS =
-    /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics|speed-insights/i
+    /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics/i
   const hits = sources.filter(
     (f) => !PRIVACY_OWN_FILES.has(f) && TRACKERS.test(stripComments(fs.readFileSync(f, 'utf8'))),
   )
@@ -124,7 +133,7 @@ test('頁面聲稱「除 Vercel Web Analytics 外冇其他分析／追蹤 SDK」
     assert.match(page, /Session Replay/, '必須講明有冇開畫面錄影')
     assert.match(
       page,
-      /唔開 Session Replay|do not turn on Session Replay/,
+      /唔開 Session Replay|do not turn on Session Replay|Session Replay.*(?:is off|is disabled)|關閉 Session Replay/,
       '現況係關閉 Replay —— 文案要同代碼一致',
     )
     assert.doesNotMatch(
@@ -132,6 +141,16 @@ test('頁面聲稱「除 Vercel Web Analytics 外冇其他分析／追蹤 SDK」
       /replayIntegration/,
       'instrumentation-client 唔可以靜靜哋再開 Session Replay',
     )
+  }
+
+  const usesSpeedInsights =
+    /@vercel\/speed-insights/.test(pkg) ||
+    sources.some((f) => /@vercel\/speed-insights/.test(stripComments(fs.readFileSync(f, 'utf8'))))
+  if (usesSpeedInsights) {
+    const page = fs.readFileSync(PAGE, 'utf8')
+    assert.match(page, /Vercel Speed Insights/, '使用 Speed Insights 必須在 /privacy 明文交代')
+    assert.match(page, /Web Vitals/, '必須交代 Speed Insights 的效能指標')
+    assert.match(page, /IP address|IP/, '必須準確說明 Vercel 對 IP/匿名資料點的說明')
   }
 })
 

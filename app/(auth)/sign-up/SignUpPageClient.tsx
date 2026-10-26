@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { LogIn, Loader2 } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import InAppBrowserNotice from '@/components/InAppBrowserNotice'
-import { AUTH_BACKEND } from '@/lib/auth/client'
+import { AUTH_BACKEND, EMAIL_PASSWORD_AUTH_ENABLED } from '@/lib/auth/client'
 import { authSignInGoogle, authSignUpEmail } from '@/lib/auth/session'
 
 // Sign-up page (Better Auth email/password). Google works in either backend; the
@@ -15,7 +15,7 @@ export default function SignUpPageClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const router = useRouter()
-  const emailEnabled = AUTH_BACKEND === 'better-auth'
+  const emailEnabled = AUTH_BACKEND === 'better-auth' && EMAIL_PASSWORD_AUTH_ENABLED
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

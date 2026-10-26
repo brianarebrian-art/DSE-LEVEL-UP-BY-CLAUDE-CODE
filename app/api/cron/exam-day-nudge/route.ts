@@ -28,6 +28,10 @@ const BATCH = 500
 const MAX_FAILS = 5
 
 export async function GET(req: Request) {
+  // Preview and development never send notifications or mutate subscription rows.
+  if (process.env.VERCEL_ENV !== 'production') {
+    return NextResponse.json({ error: 'cron-unavailable' }, { status: 404 })
+  }
   // Vercel Cron 會帶 `Authorization: Bearer $CRON_SECRET`。
   // 冇設 CRON_SECRET 就【唔准行】—— 一條任何人 curl 得到嘅推送路線，
   // 等於一個免費嘅滋擾工具。
@@ -43,15 +47,15 @@ export async function GET(req: Request) {
   const supabase = getServiceSupabase()
   const { data, error } = await supabase
     .from('push_subscriptions')
-    .select('endpoint, fail_count')
+    .select('endpoint, fail_count, version')
     .limit(BATCH)
   if (error) {
     safeLog('error', 'cron/exam-day-nudge:select', error)
     return NextResponse.json({ error: 'select-failed' }, { status: 500 })
   }
 
-  const rows = (data ?? []) as { endpoint: string; fail_count: number }[]
-  const dead: string[] = []
+  const rows = (data ?? []) as { endpoint: string; fail_count: number; version: number }[]
+  const dead: { endpoint: string; version: number }[] = []
   let sent = 0
   let failed = 0
 
@@ -64,23 +68,27 @@ export async function GET(req: Request) {
   for (let i = 0; i < rows.length; i++) {
     const res = results[i]
     if (res.status === 'fulfilled' && res.value.ok) { sent++; continue }
-    if (res.status === 'fulfilled' && res.value.gone) { dead.push(rows[i].endpoint); continue }
+    if (res.status === 'fulfilled' && res.value.gone) { dead.push({ endpoint: rows[i].endpoint, version: rows[i].version }); continue }
     failed++
-    if (rows[i].fail_count + 1 >= MAX_FAILS) dead.push(rows[i].endpoint)
+    if (rows[i].fail_count + 1 >= MAX_FAILS) dead.push({ endpoint: rows[i].endpoint, version: rows[i].version })
   }
 
+  let removed = 0
   try {
-    if (dead.length) {
-      await supabase.from('push_subscriptions').delete().in('endpoint', dead)
+    for (const row of dead) {
+      const { data: deleted } = await supabase.from('push_subscriptions').delete()
+        .eq('endpoint', row.endpoint).eq('version', row.version).select('endpoint').maybeSingle()
+      if (deleted) removed++
     }
-    if (sent) {
-      const ok = rows
-        .filter((r, i) => results[i].status === 'fulfilled' && (results[i] as PromiseFulfilledResult<{ ok: boolean }>).value.ok)
-        .map((r) => r.endpoint)
-      await supabase
-        .from('push_subscriptions')
-        .update({ last_ok_at: new Date().toISOString(), fail_count: 0 })
-        .in('endpoint', ok)
+    for (let i = 0; i < rows.length; i++) {
+      const res = results[i]
+      if (res.status === 'fulfilled' && res.value.ok) {
+        await supabase.from('push_subscriptions').update({ last_ok_at: new Date().toISOString(), fail_count: 0, version: rows[i].version + 1 })
+          .eq('endpoint', rows[i].endpoint).eq('version', rows[i].version)
+      } else if (!dead.some((d) => d.endpoint === rows[i].endpoint)) {
+        await supabase.from('push_subscriptions').update({ fail_count: rows[i].fail_count + 1, version: rows[i].version + 1 })
+          .eq('endpoint', rows[i].endpoint).eq('version', rows[i].version)
+      }
     }
   } catch (e) {
     // 記數失敗唔應該令成個 job 報錯 —— 推送本身已經send咗。
@@ -88,5 +96,5 @@ export async function GET(req: Request) {
   }
 
   // 只回數字，唔回端點 —— 端點係裝置識別碼，唔應該出現喺任何回應度。
-  return NextResponse.json({ total: rows.length, sent, failed, removed: dead.length })
+  return NextResponse.json({ total: rows.length, sent, failed, removed })
 }

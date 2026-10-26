@@ -92,8 +92,12 @@ test('刪除路由真係由登記表驅動，唔係硬編表名', () => {
 
 test('刪唔到嘢就唔可以回 ok', () => {
   const src = fs.readFileSync('app/api/account/delete/route.ts', 'utf8')
+  const errors = fs.readFileSync('lib/api/accountDeleteErrors.ts', 'utf8')
   assert.match(src, /failed\.length\s*>\s*0/, '必須偵測部分失敗')
-  assert.match(src, /status:\s*500/, '部分失敗必須回非 200 —— 唔可以扮成功')
+  assert.match(src, /return fail\('DELETION_INCOMPLETE'\)/, '部分失敗必須使用通用失敗回應')
+  assert.match(errors, /DELETION_INCOMPLETE:\s*\{ status: 500/, '部分失敗必須回非 200 —— 唔可以扮成功')
+  assert.match(src, /correlationId/, 'response/log 要可用關聯編號調查')
+  assert.doesNotMatch(src, /tables:\s*failed/, '不得向 caller 洩露失敗資料表名')
 })
 
 test('每個豁免都有實質理由', () => {

@@ -1,52 +1,96 @@
 import 'server-only'
 import { betterAuth } from 'better-auth'
 import { Pool } from 'pg'
+import { resolveAuthBackend } from '@/lib/auth/backendSelection'
+import { deploymentTarget, isAllowedSupabaseDatabaseTarget } from '@/lib/supabase/targetPolicy'
 
-// SERVER-ONLY Better Auth instance. It is constructed ONLY when both a Postgres
-// connection string and a secret are present in the environment; until then it is
-// `null` and the app transparently keeps using Auth.js (see lib/auth/server.ts and the
-// /api/auth route). This is what makes the cutover zero-downtime and reversible.
-//
-// ⚠️ Every credential is read from process.env at runtime — none is ever written to a
-// file. Provide them in .env.local / your host's env (see FLIP-TO-BETTER-AUTH.md):
-//   DATABASE_URL            — Supabase Postgres connection string (direct, not pooled-only)
-//   BETTER_AUTH_SECRET      — random 32+ char secret (read automatically by betterAuth)
-//   BETTER_AUTH_URL         — public base URL, e.g. http://localhost:3001 in dev
-//   GOOGLE_CLIENT_ID/SECRET — falls back to the existing AUTH_GOOGLE_* so you can reuse
-//                             the same Google OAuth app.
-
-const connectionString = process.env.DATABASE_URL
-
-export const betterAuthEnabled = Boolean(connectionString && process.env.BETTER_AUTH_SECRET)
-
-const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_BETTER_AUTH_URL
-const trustedOrigins = [process.env.BETTER_AUTH_URL, process.env.NEXT_PUBLIC_BETTER_AUTH_URL].filter(
-  (v): v is string => Boolean(v),
+// Private and public flags must agree; otherwise auth routes fail closed (no fallback).
+export const authBackendSelection = resolveAuthBackend(
+  process.env.AUTH_BACKEND,
+  process.env.NEXT_PUBLIC_AUTH_BACKEND,
 )
 
-export const betterAuthServer = betterAuthEnabled
+const target = deploymentTarget(process.env.VERCEL_ENV)
+const projectRef = target === 'preview'
+  ? process.env.DSE_PREVIEW_SUPABASE_PROJECT_REF
+  : target === 'development'
+    ? process.env.DSE_DEVELOPMENT_SUPABASE_PROJECT_REF
+    : undefined
+const connectionString = target === 'production'
+  ? process.env.DATABASE_URL
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_DATABASE_URL
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_DATABASE_URL
+      : undefined
+const secret = target === 'production'
+  ? process.env.BETTER_AUTH_SECRET
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_BETTER_AUTH_SECRET
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_BETTER_AUTH_SECRET
+      : undefined
+const baseURL = target === 'production'
+  ? process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_BETTER_AUTH_URL
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_BETTER_AUTH_URL
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_BETTER_AUTH_URL
+      : undefined
+const googleClientId = target === 'production'
+  ? process.env.GOOGLE_CLIENT_ID ?? process.env.AUTH_GOOGLE_ID
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_GOOGLE_CLIENT_ID
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_GOOGLE_CLIENT_ID
+      : undefined
+const googleClientSecret = target === 'production'
+  ? process.env.GOOGLE_CLIENT_SECRET ?? process.env.AUTH_GOOGLE_SECRET
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_GOOGLE_CLIENT_SECRET
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_GOOGLE_CLIENT_SECRET
+      : undefined
+const databaseTargetAllowed = isAllowedSupabaseDatabaseTarget(connectionString, target, projectRef)
+
+export const betterAuthConfigured = Boolean(
+  authBackendSelection.backend === 'better-auth' &&
+  databaseTargetAllowed && connectionString && secret && baseURL && googleClientId && googleClientSecret,
+)
+export const betterAuthEnabled = betterAuthConfigured
+
+export const betterAuthServer = betterAuthConfigured
   ? betterAuth({
-      // A Pool is lazy — it does not open a connection until the first query, so
-      // importing this module at build time never needs a live database.
-      database: new Pool({ connectionString }),
+      database: new Pool({ connectionString: connectionString! }),
+      secret,
       baseURL,
-      trustedOrigins: trustedOrigins.length ? trustedOrigins : undefined,
-      emailAndPassword: { enabled: true, minPasswordLength: 8, autoSignIn: true },
+      trustedOrigins: [baseURL!],
+      // Email/password stays unavailable until a mail provider, verification, reset,
+      // and abuse-control flows are configured and separately accepted.
+      emailAndPassword: { enabled: false },
       socialProviders: {
-        google: {
-          clientId: process.env.GOOGLE_CLIENT_ID ?? process.env.AUTH_GOOGLE_ID ?? '',
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? process.env.AUTH_GOOGLE_SECRET ?? '',
+        google: { clientId: googleClientId!, clientSecret: googleClientSecret! },
+      },
+      account: {
+        accountLinking: {
+          enabled: true,
+          disableImplicitLinking: true,
+          allowDifferentEmails: false,
         },
       },
-      session: { expiresIn: 60 * 60 * 24 * 30, updateAge: 60 * 60 * 24 },
-      // Security (directive Task 一.4): built-in CSRF via trusted-origin checks, rate
-      // limiting on auth endpoints, secure cookies in production only.
+      session: { expiresIn: 60 * 60 * 24 * 7, updateAge: 60 * 60 * 24 },
       rateLimit: { enabled: true, window: 60, max: 30 },
-      advanced: { useSecureCookies: process.env.NODE_ENV === 'production' },
+      advanced: {
+        useSecureCookies: process.env.NODE_ENV === 'production',
+        defaultCookieAttributes: {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+        },
+      },
     })
   : null
 
-// Alias for the Better Auth CLI (`npx @better-auth/cli migrate/generate`), which looks
-// for an exported `auth`. Non-null only when the env is configured (i.e. when you run
-// the migration). See FLIP-TO-BETTER-AUTH.md.
+// Alias used by the Better Auth CLI. It is non-null only in an explicitly selected,
+// fully configured, environment-isolated task/preview environment.
 export const auth = betterAuthServer
