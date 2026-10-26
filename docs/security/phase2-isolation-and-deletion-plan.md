@@ -68,10 +68,10 @@ Vercel variables 需按 target 明確分區：Production 只留既有 production
 
 ## 5. safeFetch 決定
 
-`safeFetch` 原意是對外部 HTTP request 下調 `Accept-Encoding`，不宣告 Brotli，避免已記錄的 Node/Brotli CVE Node2Shell 路徑；它不是 SSRF allowlist、DNS/IP filter 或 redirect protection。本分支將它接到使用固定可信 HKO/MTR URL 的 exam-day upstream；加 `redirect: 'error'` 避免可信端點 redirect 至未預期 host；題庫、Supabase、動態 push endpoint 不走該 helper。新增合成測試。尚需檢查完整 deployment Node runtime 是否已 patched 至官方修正版；helper 不能替代 patch。若 upstream helper 仍能被呼叫者提供任意 URL，須在該 module 層限制 allowed origins，或保留為未解除 blocker，而不能只靠呼叫端慣例。
+`safeFetch` 原意是對外部 HTTP request 下調 `Accept-Encoding`，不宣告 Brotli，避免已記錄的 Node/Brotli CVE Node2Shell 路徑；它不是 DNS/IP filter 或 runtime patch。本分支將它接到固定 HKO/MTR URL 的 exam-day upstream，且 `cachedJson` 在 cache lookup/network 前，只接受 HTTPS + 精確 host/path，拒絕任意 URL；再以 `redirect: 'error'` 防止允許的 upstream redirect 至未預期 host。題庫、Supabase、動態 push endpoint 不走該 helper。新增 synthetic regression 確認內網 URL 在 fetch 前遭拒絕。尚需查明 deployment Node runtime 是否已 patched；helper 不能替代 patch。
 
 ## 6. 遠端驗收／所需批准
 
-本地此 follow-up branch 測試已在同一工作樹執行，但尚未 commit/push；因此 GitHub Actions 與新的 Preview 部署不可能等於這份新源碼。PR #110 遠端目前仍是較舊 head `bf54e4e7fa8f5c5cd1c199e8bd2df8037e92b0bb`，最新已知 CI 曾 fail、Supabase Preview check skipped、Vercel Preview READY；本次沒有打開或操作 Preview。推送 follow-up 後須重新查 PR head/check SHA；仍不得登入或讀寫資料。
+本 follow-up 已提交至授權 task branch 並更新 PR #110；PR 維持 OPEN/未合併。新 head SHA、CI/Preview 建置狀態按 report appendix 記錄。程式推送會自動觸發 CI/Vercel Preview build，但 Preview 未被打開、登入或用於任何資料操作；Supabase Preview migration check 仍 skipped，沒有 migration E2E。所有本地通過項不能代替遠端 check，也不表示 Preview 安全配置已人工核實。
 
 要進行完整 cloud E2E，尚待你另行批准上述一個獨立 Free project 建立，以及 project 建立後指定 Vercel Preview target 的 env 設置。若 Vercel 當前共享 Auth.js/Google secrets 或 Sentry drain 的 Preview variables 要移除/更改，須列出精確 key 名及 target 後獨立批准；不會讀取秘密值，也不會自行改設定。migration 套用、Google OAuth client、Notion、Production 都是其他批准閘門。
