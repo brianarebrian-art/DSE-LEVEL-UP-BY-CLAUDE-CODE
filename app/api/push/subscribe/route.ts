@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto'
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getServiceSupabase } from '@/utils/supabase/server'
-import { vapidFromEnv } from '@/lib/push/vapid'
+import { isAllowedPushEndpoint, vapidFromEnv } from '@/lib/push/vapid'
 import { safeLog } from '@/lib/safeLog'
 import { constantTimeDigestMatch, createManagementToken, hashManagementToken, validManagementToken } from '@/lib/push/managementToken'
 
@@ -11,10 +11,8 @@ export const dynamic = 'force-dynamic'
 const COOKIE = 'push-management'
 const COOKIE_PATH = '/api/push/subscribe'
 const MAX_AGE = 60 * 60 * 24 * 365
-
 function validEndpoint(u: unknown): u is string {
-  if (typeof u !== 'string' || u.length > 1024) return false
-  try { return new URL(u).protocol === 'https:' } catch { return false }
+  return isAllowedPushEndpoint(u)
 }
 const str = (v: unknown, max: number) => typeof v === 'string' && v.length > 0 && v.length <= max ? v : null
 function cookieValue(req: Request): string | null {

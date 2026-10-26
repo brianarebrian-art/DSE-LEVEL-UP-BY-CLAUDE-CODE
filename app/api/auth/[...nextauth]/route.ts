@@ -12,12 +12,14 @@ function unavailable() {
 }
 
 export async function GET(request: NextRequest) {
+  if (process.env.VERCEL_ENV !== 'production') return unavailable()
   if (authBackendSelection.backend === 'authjs') return nextAuthHandlers.GET(request)
   if (authBackendSelection.backend === 'better-auth' && betterAuthHandlers) return betterAuthHandlers.GET(request)
   return unavailable()
 }
 
 export async function POST(request: NextRequest) {
+  if (process.env.VERCEL_ENV !== 'production') return unavailable()
   if (authBackendSelection.backend === 'authjs') return nextAuthHandlers.POST(request)
   if (authBackendSelection.backend === 'better-auth' && betterAuthHandlers) return betterAuthHandlers.POST(request)
   return unavailable()

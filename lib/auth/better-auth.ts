@@ -2,23 +2,60 @@ import 'server-only'
 import { betterAuth } from 'better-auth'
 import { Pool } from 'pg'
 import { resolveAuthBackend } from '@/lib/auth/backendSelection'
+import { deploymentTarget, isAllowedSupabaseDatabaseTarget } from '@/lib/supabase/targetPolicy'
 
-// This module never selects Better Auth merely because credentials happen to exist.
 // Private and public flags must agree; otherwise auth routes fail closed (no fallback).
 export const authBackendSelection = resolveAuthBackend(
   process.env.AUTH_BACKEND,
   process.env.NEXT_PUBLIC_AUTH_BACKEND,
 )
 
-const connectionString = process.env.DATABASE_URL
-const secret = process.env.BETTER_AUTH_SECRET
-const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_BETTER_AUTH_URL
-const googleClientId = process.env.GOOGLE_CLIENT_ID ?? process.env.AUTH_GOOGLE_ID
-const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET ?? process.env.AUTH_GOOGLE_SECRET
+const target = deploymentTarget(process.env.VERCEL_ENV)
+const projectRef = target === 'preview'
+  ? process.env.DSE_PREVIEW_SUPABASE_PROJECT_REF
+  : target === 'development'
+    ? process.env.DSE_DEVELOPMENT_SUPABASE_PROJECT_REF
+    : undefined
+const connectionString = target === 'production'
+  ? process.env.DATABASE_URL
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_DATABASE_URL
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_DATABASE_URL
+      : undefined
+const secret = target === 'production'
+  ? process.env.BETTER_AUTH_SECRET
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_BETTER_AUTH_SECRET
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_BETTER_AUTH_SECRET
+      : undefined
+const baseURL = target === 'production'
+  ? process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_BETTER_AUTH_URL
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_BETTER_AUTH_URL
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_BETTER_AUTH_URL
+      : undefined
+const googleClientId = target === 'production'
+  ? process.env.GOOGLE_CLIENT_ID ?? process.env.AUTH_GOOGLE_ID
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_GOOGLE_CLIENT_ID
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_GOOGLE_CLIENT_ID
+      : undefined
+const googleClientSecret = target === 'production'
+  ? process.env.GOOGLE_CLIENT_SECRET ?? process.env.AUTH_GOOGLE_SECRET
+  : target === 'preview'
+    ? process.env.DSE_PREVIEW_GOOGLE_CLIENT_SECRET
+    : target === 'development'
+      ? process.env.DSE_DEVELOPMENT_GOOGLE_CLIENT_SECRET
+      : undefined
+const databaseTargetAllowed = isAllowedSupabaseDatabaseTarget(connectionString, target, projectRef)
 
 export const betterAuthConfigured = Boolean(
   authBackendSelection.backend === 'better-auth' &&
-  connectionString && secret && baseURL && googleClientId && googleClientSecret,
+  databaseTargetAllowed && connectionString && secret && baseURL && googleClientId && googleClientSecret,
 )
 export const betterAuthEnabled = betterAuthConfigured
 
@@ -55,5 +92,5 @@ export const betterAuthServer = betterAuthConfigured
   : null
 
 // Alias used by the Better Auth CLI. It is non-null only in an explicitly selected,
-// fully configured Better Auth task/preview environment.
+// fully configured, environment-isolated task/preview environment.
 export const auth = betterAuthServer

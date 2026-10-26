@@ -269,7 +269,7 @@ export default function ExamDayClient() {
   const pushMessage = (r: SubscribeResult | UnsubscribeResult) => {
     if (r === 'ok') return tr('開咗。前一晚同考試朝早各提你一次。', 'On. One reminder the night before, one on the exam morning.')
     if (r === 'local-only') return tr('呢部機已關閉推送；伺服器無法驗證管理權，舊端點會喺推送服務確認失效後清理。', 'Push is off on this device. The server could not verify deletion ownership; the stale endpoint will be pruned after the push service confirms it is gone.')
-    if (r === 'ownership-check') return tr('未能安全驗證呢個推送訂閱，伺服器資料冇改動。請勿重覆嘗試；你仍可喺瀏覽器網站設定關閉通知。', 'Could not securely verify this push subscription; no server record was changed. Do not keep retrying. You can still turn notifications off in your browser site settings.')
+    if (r === 'ownership-check') return tr('未能安全驗證舊推送訂閱，伺服器資料冇改動。請先按「關閉」，再按「開啟」建立新訂閱；如仍失敗，可喺瀏覽器網站設定關閉通知。', 'Could not securely verify the old push subscription; no server record was changed. Turn it off here, then turn it on again to create a new subscription. If it still fails, disable notifications in your browser site settings.')
     if (r === 'denied') return tr('你部機拒絕咗通知權限。要開返嘅話，去瀏覽器嘅網站設定度改。', 'Notifications were blocked. Re-enable them in your browser’s site settings.')
     if (r === 'unsupported') return tr('你個瀏覽器唔支援推送通知。', 'Your browser does not support push notifications.')
     if (r === 'not-configured') return tr('推送功能未設定好，暫時開唔到。', 'Push is not set up yet.')

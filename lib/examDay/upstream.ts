@@ -1,3 +1,19 @@
+import { safeFetch } from '@/lib/api/safeFetch'
+
+const HKO = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php'
+const MTR = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php'
+const ALLOWED_UPSTREAM_URLS = new Set([HKO, MTR])
+
+function isAllowedUpstreamUrl(value: string): boolean {
+  try {
+    const url = new URL(value)
+    return url.protocol === 'https:' && !url.username && !url.password &&
+      ALLOWED_UPSTREAM_URLS.has(`${url.origin}${url.pathname}`)
+  } catch {
+    return false
+  }
+}
+
 // 考試日管家 —— 政府開放數據上游存取層（報告 v4.0 §6）
 //
 // ══ 三條硬規矩（§6.2）══
@@ -42,6 +58,8 @@ export async function cachedJson<T>(
   ttlMs: number,
   timeoutMs = 6000,
 ): Promise<Fetched<T>> {
+  if (!isAllowedUpstreamUrl(url)) throw new Error('upstream-url-not-allowed')
+
   const hit = store.get(key) as Slot<T> | undefined
   const now = Date.now()
   if (hit && now - hit.ts < ttlMs) {
@@ -51,9 +69,10 @@ export async function cachedJson<T>(
   const ctrl = new AbortController()
   const timer = setTimeout(() => ctrl.abort(), timeoutMs)
   try {
-    const res = await fetch(url, {
+    const res = await safeFetch(url, {
       signal: ctrl.signal,
       cache: 'no-store',
+      redirect: 'error',
       headers: { accept: 'application/json' },
     })
     if (!res.ok) throw new Error(`upstream ${res.status}`)
@@ -83,9 +102,6 @@ export function __resetCache() {
 // 冇人記得自己屋企附近嗰個站係 250 定 260，所以嗰格輸入框實際上
 // 永遠係空。而家「由屋企去到出發站要幾耐」用一個學生自己講得出嘅
 // 分鐘數代替咗佢，順便連巴士、小巴、行路嘅接駁一齊涵蓋咗。
-const HKO = 'https://data.weather.gov.hk/weatherAPI/opendata/weather.php'
-const MTR = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php'
-
 /** TTL 按規格 §6.2：天氣 5–10 分鐘、列車 15–30 秒。 */
 export const TTL = { weather: 5 * 60_000, warning: 60_000, train: 20_000 } as const
 

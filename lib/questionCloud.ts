@@ -31,13 +31,21 @@
 // 唔係靠呢度客氣。
 // ============================================================================
 import type { AnyQuestion } from '@/data/questions/types'
+import { deploymentTarget, isAllowedSupabaseApiTarget } from '@/lib/supabase/targetPolicy'
 
 const URL_ = process.env.NEXT_PUBLIC_SUPABASE_URL
 const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const TARGET = deploymentTarget(process.env.DSE_CLIENT_TARGET_ENV)
+const PROJECT_REF = TARGET === 'preview'
+  ? process.env.DSE_CLIENT_PREVIEW_SUPABASE_PROJECT_REF
+  : TARGET === 'development'
+    ? process.env.DSE_CLIENT_DEVELOPMENT_SUPABASE_PROJECT_REF
+    : undefined
 
 /** 未設 anon key（或喺 server）即係整層停用，caller 靜靜哋回落靜態 chunk。 */
 export const cloudBankEnabled = (): boolean =>
-  typeof window !== 'undefined' && !!URL_ && !!ANON
+  typeof window !== 'undefined' && !!URL_ && !!ANON &&
+  isAllowedSupabaseApiTarget(URL_, TARGET, PROJECT_REF)
 
 // ── IndexedDB（迷你封裝，唔為咗一個 object store 拉個套件入嚟）──────────────
 const DB = 'dse-qbank'

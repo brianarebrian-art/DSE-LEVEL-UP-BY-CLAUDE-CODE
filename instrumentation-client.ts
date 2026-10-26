@@ -8,9 +8,9 @@ const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN
 // Re-enable only with maskAllText + blockAllMedia and a documented decision.
 Sentry.init({
   dsn: dsn || undefined,
-  enabled: Boolean(dsn),
+  enabled: process.env.DSE_CLIENT_TARGET_ENV === 'production' && Boolean(dsn),
   sendDefaultPii: false,
-  tracesSampleRate: process.env.NODE_ENV === 'development' ? 1.0 : 0.1,
+  tracesSampleRate: 0,
   // No replayIntegration — do not record student screens by default.
   enableLogs: false,
   // Tag intentional smoke-test errors from the dev-only /sentry-example-page

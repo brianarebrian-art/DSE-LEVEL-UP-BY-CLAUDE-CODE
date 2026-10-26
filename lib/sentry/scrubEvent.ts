@@ -41,7 +41,8 @@ export function scrubSentryEvent<T extends object>(event: T): T {
 
   for (const key of [
     'request', 'user', 'extra', 'breadcrumbs', 'contexts', 'debug_meta', 'modules',
-    'transaction', 'culprit', 'logentry', 'message', 'fingerprint',
+    'transaction', 'culprit', 'logentry', 'message', 'fingerprint', 'attachments',
+    'spans', 'measurements', 'profile',
   ]) delete safe[key]
 
   safe.exception = safeValues.length ? { values: safeValues } : { values: [{ type: safeType, value: 'UNCLASSIFIED_ERROR' }] }

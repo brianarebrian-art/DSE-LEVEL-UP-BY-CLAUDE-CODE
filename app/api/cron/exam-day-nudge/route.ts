@@ -28,6 +28,10 @@ const BATCH = 500
 const MAX_FAILS = 5
 
 export async function GET(req: Request) {
+  // Preview and development never send notifications or mutate subscription rows.
+  if (process.env.VERCEL_ENV !== 'production') {
+    return NextResponse.json({ error: 'cron-unavailable' }, { status: 404 })
+  }
   // Vercel Cron 會帶 `Authorization: Bearer $CRON_SECRET`。
   // 冇設 CRON_SECRET 就【唔准行】—— 一條任何人 curl 得到嘅推送路線，
   // 等於一個免費嘅滋擾工具。

@@ -12,6 +12,10 @@ test('Sentry scrubber removes raw exceptions, request/user data, breadcrumbs and
     extra: { sql: 'SENTINEL_SQL_TABLE', detail: 'SENTINEL_ROW' },
     breadcrumbs: [{ message: 'SENTINEL_BREADCRUMB', data: { token: 'SENTINEL_CRUMB_TOKEN' } }],
     tags: { smoke_test: 'true', student_email: 'SENTINEL_TAG' },
+    attachments: [{ filename: 'SENTINEL_ATTACHMENT.txt', data: 'SENTINEL_ATTACHMENT_BODY' }],
+    spans: [{ description: 'SENTINEL_SPAN' }],
+    measurements: { sentinel_metric: { value: 42 } },
+    profile: { samples: ['SENTINEL_PROFILE'] },
     exception: { values: [{ type: 'TypeError', value: 'SENTINEL_EXCEPTION', stacktrace: { frames: [
       { filename: 'https://example.test/users/SENTINEL_ID/app.js?key=SENTINEL_QUERY', function: 'safeHandler', lineno: 7, colno: 2, context_line: 'SENTINEL_SOURCE_CONTEXT', vars: { row: 'SENTINEL_LOCAL' } },
     ] } }] },
@@ -22,6 +26,7 @@ test('Sentry scrubber removes raw exceptions, request/user data, breadcrumbs and
     'SENTINEL_STUDENT', 'SENTINEL_USER_ID', 'SENTINEL_SQL_TABLE', 'SENTINEL_ROW',
     'SENTINEL_BREADCRUMB', 'SENTINEL_CRUMB_TOKEN', 'SENTINEL_TAG', 'SENTINEL_EXCEPTION',
     'SENTINEL_ID', 'SENTINEL_QUERY', 'SENTINEL_SOURCE_CONTEXT', 'SENTINEL_LOCAL',
+    'SENTINEL_ATTACHMENT', 'SENTINEL_ATTACHMENT_BODY', 'SENTINEL_SPAN', 'SENTINEL_PROFILE', 'sentinel_metric',
   ]) assert.ok(!output.includes(secret), `Sentry event leaked ${secret}`)
   assert.match(output, /"safe_error_type":"TypeError"/)
   assert.match(output, /"correlation_id":"aabbccddeeff00112233445566778899"/)

@@ -71,10 +71,19 @@ test('④ 同步方向單向 —— sync script 唔准寫返 data/questions/', (
 
 test('⑤ 雲端版本同 build 唔一致就唔用雲端（連下載都唔好下載）', async () => {
   const g = globalThis as Record<string, unknown>
-  const saved = { window: g.window, fetch: g.fetch, url: process.env.NEXT_PUBLIC_SUPABASE_URL, anon: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY }
+  const saved = {
+    window: g.window,
+    fetch: g.fetch,
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    anon: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    target: process.env.DSE_CLIENT_TARGET_ENV,
+    previewRef: process.env.DSE_CLIENT_PREVIEW_SUPABASE_PROJECT_REF,
+  }
   // questionCloud reads the env at import time, and needs a `window` to enable itself.
-  process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://example.supabase.co'
+  process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://abcdefghijklmnopqrst.supabase.co'
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'anon'
+  process.env.DSE_CLIENT_TARGET_ENV = 'preview'
+  process.env.DSE_CLIENT_PREVIEW_SUPABASE_PROJECT_REF = 'abcdefghijklmnopqrst'
   g.window = globalThis
   const calls: string[] = []
   g.fetch = async (url: string) => {
@@ -104,6 +113,8 @@ test('⑤ 雲端版本同 build 唔一致就唔用雲端（連下載都唔好下
     g.fetch = saved.fetch
     process.env.NEXT_PUBLIC_SUPABASE_URL = saved.url
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = saved.anon
+    process.env.DSE_CLIENT_TARGET_ENV = saved.target
+    process.env.DSE_CLIENT_PREVIEW_SUPABASE_PROJECT_REF = saved.previewRef
   }
 })
 
