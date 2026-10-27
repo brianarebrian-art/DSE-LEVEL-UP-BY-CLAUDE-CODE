@@ -17,7 +17,11 @@ import { Pool } from 'pg'
 
 const connectionString = process.env.DATABASE_URL
 
-export const betterAuthEnabled = Boolean(connectionString && process.env.BETTER_AUTH_SECRET)
+export const betterAuthEnabled = Boolean(
+  connectionString &&
+    process.env.BETTER_AUTH_SECRET &&
+    process.env.NEXT_PUBLIC_AUTH_BACKEND === 'better-auth',
+)
 
 const baseURL = process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_BETTER_AUTH_URL
 const trustedOrigins = [process.env.BETTER_AUTH_URL, process.env.NEXT_PUBLIC_BETTER_AUTH_URL].filter(
