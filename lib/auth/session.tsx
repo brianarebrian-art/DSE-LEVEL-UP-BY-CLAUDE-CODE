@@ -102,10 +102,17 @@ export function authSignInGoogle(to?: string): void {
   // 同源保證：只取 pathname + search，唔會變成 open redirect。
   const target = to
     ?? (typeof window !== 'undefined' ? window.location.pathname + window.location.search : '/dashboard')
+  // 登入失敗（包括 fetch 層面的網絡錯誤，例如 iOS WebKit 的 "Load failed"）導向
+  // 現有的錯誤頁，令用戶睇到有用提示，而唔係靜靜哋變成 unhandled rejection。
+  const onError = () => {
+    if (typeof window !== 'undefined') {
+      window.location.href = '/sign-in-error?error=OAuthSignin'
+    }
+  }
   if (AUTH_BACKEND === 'better-auth') {
-    void authClient.signIn.social({ provider: 'google', callbackURL: target })
+    void authClient.signIn.social({ provider: 'google', callbackURL: target }).catch(onError)
   } else {
-    void nextSignIn('google', { redirectTo: target })
+    void nextSignIn('google', { redirectTo: target }).catch(onError)
   }
 }
 
