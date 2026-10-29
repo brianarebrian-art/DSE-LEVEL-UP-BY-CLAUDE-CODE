@@ -1,19 +1,14 @@
 import 'server-only'
 import { betterAuth } from 'better-auth'
+import { magicLink } from 'better-auth/plugins'
 import { Pool } from 'pg'
+import { sendAuthEmail } from '@/lib/auth/sendAuthEmail'
 
-// SERVER-ONLY Better Auth instance. It is constructed ONLY when both a Postgres
-// connection string and a secret are present in the environment; until then it is
-// `null` and the app transparently keeps using Auth.js (see lib/auth/server.ts and the
-// /api/auth route). This is what makes the cutover zero-downtime and reversible.
+// SERVER-ONLY Better Auth instance. Constructed ONLY when Postgres + secret +
+// NEXT_PUBLIC_AUTH_BACKEND=better-auth are present; otherwise null and Auth.js stays live.
+// See FLIP-TO-BETTER-AUTH.md and docs/AUTH_ARCHITECTURE.md.
 //
-// ⚠️ Every credential is read from process.env at runtime — none is ever written to a
-// file. Provide them in .env.local / your host's env (see FLIP-TO-BETTER-AUTH.md):
-//   DATABASE_URL            — Supabase Postgres connection string (direct, not pooled-only)
-//   BETTER_AUTH_SECRET      — random 32+ char secret (read automatically by betterAuth)
-//   BETTER_AUTH_URL         — public base URL, e.g. http://localhost:3001 in dev
-//   GOOGLE_CLIENT_ID/SECRET — falls back to the existing AUTH_GOOGLE_* so you can reuse
-//                             the same Google OAuth app.
+// Credentials are read from process.env at runtime — never written to a file.
 
 const connectionString = process.env.DATABASE_URL
 
@@ -28,29 +23,78 @@ const trustedOrigins = [process.env.BETTER_AUTH_URL, process.env.NEXT_PUBLIC_BET
   (v): v is string => Boolean(v),
 )
 
+const requireEmailVerification = process.env.AUTH_REQUIRE_EMAIL_VERIFICATION === 'true'
+
+const appleId = process.env.APPLE_CLIENT_ID?.trim()
+const appleSecret = process.env.APPLE_CLIENT_SECRET?.trim()
+const appleEnabled = Boolean(appleId && appleSecret)
+
 export const betterAuthServer = betterAuthEnabled
   ? betterAuth({
-      // A Pool is lazy — it does not open a connection until the first query, so
-      // importing this module at build time never needs a live database.
       database: new Pool({ connectionString }),
       baseURL,
       trustedOrigins: trustedOrigins.length ? trustedOrigins : undefined,
-      emailAndPassword: { enabled: true, minPasswordLength: 8, autoSignIn: true },
+      emailAndPassword: {
+        enabled: true,
+        minPasswordLength: 8,
+        autoSignIn: !requireEmailVerification,
+        requireEmailVerification,
+        revokeSessionsOnPasswordReset: true,
+        sendResetPassword: async ({ user, url }) => {
+          await sendAuthEmail({
+            kind: 'reset_password',
+            to: user.email,
+            subject: 'DSE Level Up — reset password / 重設密碼',
+            url,
+          })
+        },
+      },
+      emailVerification: {
+        sendOnSignUp: requireEmailVerification,
+        sendVerificationEmail: async ({ user, url }) => {
+          await sendAuthEmail({
+            kind: 'verify_email',
+            to: user.email,
+            subject: 'DSE Level Up — verify email / 驗證電郵',
+            url,
+          })
+        },
+      },
       socialProviders: {
         google: {
           clientId: process.env.GOOGLE_CLIENT_ID ?? process.env.AUTH_GOOGLE_ID ?? '',
           clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? process.env.AUTH_GOOGLE_SECRET ?? '',
         },
+        ...(appleEnabled
+          ? {
+              apple: {
+                clientId: appleId!,
+                clientSecret: appleSecret!,
+                // App ID / Services ID from Apple Developer; optional appBundleIdentifier for native later
+                ...(process.env.APPLE_APP_BUNDLE_IDENTIFIER
+                  ? { appBundleIdentifier: process.env.APPLE_APP_BUNDLE_IDENTIFIER }
+                  : {}),
+              },
+            }
+          : {}),
       },
+      plugins: [
+        magicLink({
+          sendMagicLink: async ({ email, url }) => {
+            await sendAuthEmail({
+              kind: 'magic_link',
+              to: email,
+              subject: 'DSE Level Up — sign-in link / 登入連結',
+              url,
+            })
+          },
+        }),
+      ],
       session: { expiresIn: 60 * 60 * 24 * 30, updateAge: 60 * 60 * 24 },
-      // Security (directive Task 一.4): built-in CSRF via trusted-origin checks, rate
-      // limiting on auth endpoints, secure cookies in production only.
       rateLimit: { enabled: true, window: 60, max: 30 },
       advanced: { useSecureCookies: process.env.NODE_ENV === 'production' },
     })
   : null
 
-// Alias for the Better Auth CLI (`npx @better-auth/cli migrate/generate`), which looks
-// for an exported `auth`. Non-null only when the env is configured (i.e. when you run
-// the migration). See FLIP-TO-BETTER-AUTH.md.
 export const auth = betterAuthServer
+export const appleSignInConfigured = appleEnabled

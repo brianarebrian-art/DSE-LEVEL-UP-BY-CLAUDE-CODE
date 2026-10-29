@@ -14,17 +14,32 @@ Thank you for helping Hong Kong DSE students. This guide is for people who want 
 
 ```bash
 npm ci
+cp .env.example .env.local   # fill secrets locally; never commit
 npm run dev      # http://localhost:3001 — keep this port (Google OAuth redirect)
 npm test
+npx tsc --noEmit
 npm run qa
 npm run build  # uses webpack (see package.json)
 ```
 
+### Supabase migrations
+
+1. Read the SQL under `supabase/migrations/` — files named `*.DRAFT.sql` are **not** for casual apply.
+2. Apply non-DRAFT migrations in order on staging first.
+3. Auth table cutover (`0027`) and user wipe (`0028`) need **written founder approval** and runbooks in `docs/auth/`.
+4. Analytics / triage (`0029`) is safe to apply after review; it creates empty tables with RLS lockdown.
+
+### Commit messages
+
+- Prefer conventional prefixes: `fix:`, `feat:`, `docs:`, `security:`, `test:`.
+- One logical change per commit when practical.
+
 Notes:
 
 - Next.js 16 uses **`proxy.ts`** (not a new `middleware.ts`).
-- Production auth default is **Auth.js v5** (Google). `better-auth` may exist in the repo but stays off until founders flip env and approve.
-- Supabase access is **server-only** (`service_role`). Browser clients must not hold that key.
+- Production auth default is **Auth.js v5** (Google). `better-auth` stays off until founders flip env (`FLIP-TO-BETTER-AUTH.md`, `docs/AUTH_ARCHITECTURE.md`).
+- Supabase access for user data is **server-only** (`service_role`). Browser clients must not hold that key.
+- Decisions log: `docs/ENGINEERING_DECISIONS.md`.
 
 ## Pull request checklist
 

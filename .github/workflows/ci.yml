@@ -29,6 +29,10 @@ jobs:
 
       - run: npm test
 
+      # Reliability audit 2026-10-29: do not rely on `next build` alone for types.
+      - name: Typecheck
+        run: npx tsc --noEmit
+
       # 憲章 §15 五閘：term-guard（術語＋書面語）／validate-banks（題庫結構）／
       # i18n-guard（漏譯）／contrast-guard（淺字疊淺底）／claims-guard（對外宣稱）。
       # 以前只有本地手動跑，push 上嚟係冇人守。

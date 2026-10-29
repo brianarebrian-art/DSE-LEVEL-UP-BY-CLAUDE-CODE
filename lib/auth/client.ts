@@ -1,6 +1,7 @@
 'use client'
 
 import { createAuthClient } from 'better-auth/react'
+import { magicLinkClient } from 'better-auth/client/plugins'
 
 // Which auth backend is live. BUILD-TIME constant (NEXT_PUBLIC_*), so it never changes
 // across renders — the AuthProvider can branch on it to mount a single, stable bridge
@@ -13,4 +14,5 @@ export const AUTH_BACKEND: 'next-auth' | 'better-auth' =
 // import anywhere. baseURL defaults to the current origin when unset.
 export const authClient = createAuthClient({
   baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL || undefined,
+  plugins: [magicLinkClient()],
 })

@@ -3,6 +3,8 @@
 import { useRef, useState } from 'react'
 import { Download, Upload } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { sanitizePortableValue } from '@/lib/progressPortability'
+import { notifyProgressChanged } from '@/lib/sync'
 
 // 進度檔案導出／導入（$0 跨裝置方案，取代技術不成立嘅 QR Code 同步）。
 // 純 client-side：<a download> 出 JSON、<input type="file"> 入 JSON，零後端、零新依賴。
@@ -13,16 +15,16 @@ import { useLocale } from '@/lib/i18n'
 const FORMAT = 'dse-levelup-progress'
 const VERSION = 1
 const MAX_FILE_BYTES = 2 * 1024 * 1024 // 2MB 上限（正常進度檔遠細過呢個數）
+const UPDATED_AT = 'dse_updated_at'
 
-// 可攜學習數據白名單（key → 值必須通過嘅形狀檢查）
-const PORTABLE_KEYS: Record<string, (v: unknown) => boolean> = {
-  dse_progress: Array.isArray,
-  dse_topic_stats: (v) => typeof v === 'object' && v !== null && !Array.isArray(v),
-  dse_reverse_log: Array.isArray,
-  dse_review_done: (v) => typeof v === 'object' && v !== null && !Array.isArray(v),
-  dse_daily_spectrum: (v) => typeof v === 'object' && v !== null,
-  dse_result: (v) => typeof v === 'object' && v !== null,
-}
+const PORTABLE_KEYS = [
+  'dse_progress',
+  'dse_topic_stats',
+  'dse_reverse_log',
+  'dse_review_done',
+  'dse_daily_spectrum',
+  'dse_result',
+] as const
 
 export default function DataPortability() {
   const { locale } = useLocale()
@@ -35,7 +37,7 @@ export default function DataPortability() {
   const exportFile = () => {
     try {
       const data: Record<string, unknown> = {}
-      for (const key of Object.keys(PORTABLE_KEYS)) {
+      for (const key of PORTABLE_KEYS) {
         const raw = localStorage.getItem(key)
         if (raw) data[key] = JSON.parse(raw)
       }
@@ -77,8 +79,11 @@ export default function DataPortability() {
           throw new Error('bad format')
         }
         const clean: Record<string, unknown> = {}
-        for (const [key, check] of Object.entries(PORTABLE_KEYS)) {
-          if (key in parsed.data && check(parsed.data[key])) clean[key] = parsed.data[key]
+        const src = parsed.data as Record<string, unknown>
+        for (const key of PORTABLE_KEYS) {
+          if (!(key in src)) continue
+          const sanitized = sanitizePortableValue(key, src[key])
+          if (sanitized !== undefined) clean[key] = sanitized
         }
         if (Object.keys(clean).length === 0) throw new Error('empty')
         setConfirmImport(clean) // 二次確認先寫入
@@ -96,6 +101,9 @@ export default function DataPortability() {
       for (const [key, value] of Object.entries(confirmImport)) {
         localStorage.setItem(key, JSON.stringify(value))
       }
+      // Bump merge clock so a later cloud pull does not treat this import as stale.
+      localStorage.setItem(UPDATED_AT, String(Date.now()))
+      notifyProgressChanged()
       setConfirmImport(null)
       setStatus('imported')
       // 令 dashboard／報告即時反映新數據
