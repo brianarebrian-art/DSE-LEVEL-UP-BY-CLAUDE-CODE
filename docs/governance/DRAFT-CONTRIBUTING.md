@@ -1,7 +1,7 @@
-# Contributing（DRAFT — 需創辦人批准後先移到倉庫根目錄）
+# Contributing（草稿存檔）
 
-狀態：**待批准** · 2026-10-29  
-擬定路徑（批准後）：`/CONTRIBUTING.md`
+狀態：**已晉升** · 2026-10-29（創辦人要求完善 GitHub 治理）  
+**正本：** [`/CONTRIBUTING.md`](../../CONTRIBUTING.md)
 
 ## Before you change code
 

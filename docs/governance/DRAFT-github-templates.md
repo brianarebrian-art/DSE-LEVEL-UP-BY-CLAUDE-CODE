@@ -1,9 +1,10 @@
-# GitHub issue／PR templates（DRAFT — 需創辦人批准後先建立檔案）
+# GitHub issue／PR templates（草稿存檔）
 
-狀態：**待批准** · 2026-10-29  
-擬定路徑（批准後）：
+狀態：**已晉升** · 2026-10-29（創辦人要求完善 GitHub 治理）  
+**正本：**
 
 - `.github/ISSUE_TEMPLATE/bug.yml`
+- `.github/ISSUE_TEMPLATE/content.yml`
 - `.github/ISSUE_TEMPLATE/config.yml`
 - `.github/pull_request_template.md`
 

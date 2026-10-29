@@ -1,7 +1,7 @@
-# Code of Conduct（DRAFT — 需創辦人批准後先移到倉庫根目錄）
+# Code of Conduct（草稿存檔）
 
-狀態：**待批准** · 2026-10-29  
-擬定路徑（批准後）：`/CODE_OF_CONDUCT.md`
+狀態：**已晉升** · 2026-10-29（創辦人要求完善 GitHub 治理）  
+**正本：** [`/CODE_OF_CONDUCT.md`](../../CODE_OF_CONDUCT.md)
 
 ## Our Pledge
 
