@@ -46,7 +46,8 @@ export function scrubHeaderValue(name: string, value: string): string {
   return scrubLogText(value)
 }
 
-type SentryLikeEvent = {
+/** Structural fields we scrub — kept loose so Sentry ErrorEvent (tags: Primitive, etc.) assigns. */
+type SentryScrubFields = {
   message?: string
   request?: {
     url?: string
@@ -58,20 +59,23 @@ type SentryLikeEvent = {
     values?: Array<{ value?: string; type?: string }>
   }
   extra?: Record<string, unknown>
-  tags?: Record<string, string>
 }
 
-/** Mutates a Sentry event in place; always returns the event (never drops). */
-export function scrubSentryEvent<T extends SentryLikeEvent>(event: T): T {
-  if (event.message) event.message = scrubLogText(event.message)
+/**
+ * Mutates a Sentry event in place; always returns the same reference (never drops).
+ * Generic `T extends object` so beforeSend can keep ErrorEvent in / ErrorEvent out.
+ */
+export function scrubSentryEvent<T extends object>(event: T): T {
+  const e = event as T & SentryScrubFields
+  if (e.message) e.message = scrubLogText(e.message)
 
-  if (event.exception?.values) {
-    for (const v of event.exception.values) {
+  if (e.exception?.values) {
+    for (const v of e.exception.values) {
       if (v.value) v.value = scrubLogText(v.value)
     }
   }
 
-  const req = event.request
+  const req = e.request
   if (req) {
     if (req.url) req.url = scrubLogText(req.url)
     if (req.headers) {
@@ -91,9 +95,9 @@ export function scrubSentryEvent<T extends SentryLikeEvent>(event: T): T {
     }
   }
 
-  if (event.extra) {
-    for (const [k, v] of Object.entries(event.extra)) {
-      if (typeof v === 'string') event.extra[k] = scrubLogText(v)
+  if (e.extra) {
+    for (const [k, v] of Object.entries(e.extra)) {
+      if (typeof v === 'string') e.extra[k] = scrubLogText(v)
     }
   }
 
