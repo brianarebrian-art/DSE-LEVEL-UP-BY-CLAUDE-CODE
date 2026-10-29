@@ -185,7 +185,9 @@ export default function HomePage() {
             {locale === 'en'
               ? `Questions go live after automated checks and have not been reviewed by registered teachers. ${CONTENT_STATS.published.toLocaleString()} are in practice and ${CONTENT_STATS.withdrawn.toLocaleString()} are withdrawn (${WITHDRAWN_FOR_FAULT.toLocaleString()} because a fault was found; the rest were pure recall and have been replaced). Another ${CONTENT_STATS.machineRestored.toLocaleString()} were recomputed by a program and are kept out of practice until someone who knows the subject checks them. `
               : `題目經自動檢查上線，未經註冊教師審定。練習中 ${CONTENT_STATS.published.toLocaleString()} 條，已收起 ${CONTENT_STATS.withdrawn.toLocaleString()} 條（其中 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條係發現有錯，其餘係純背誦題，已經換走）。另有 ${CONTENT_STATS.machineRestored.toLocaleString()} 條由程式重算、未經人手覆核，已暫停放入練習。`}
-            <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
+            {/* prefetch={false}：透明度屬次要資訊頁，唔係練習主路徑；首屏預取會同
+                快速開始搶帶寬（PERF-HOME-PREFETCH-2026-10-29；稽核僅 lab TTFB/FCP）。 */}
+            <Link href="/transparency" prefetch={false} className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
               {locale === 'en' ? 'Same figures on the transparency page' : '同透明度頁同一個數'}
             </Link>
           </p>
@@ -212,8 +214,11 @@ export default function HomePage() {
                 {en ? `All ${activeSubjects.length} subjects` : `揀其他科目（共 ${activeSubjects.length} 科）`}
                 <ArrowRight size={14} aria-hidden />
               </Link>
+              {/* 季節副入口（/relax、/waiting、/dashboard、/methodology）—— 唔係練習主 CTA；
+                  關閉預取，保留快速開始／揀其他科目預設預取。 */}
               <Link
                 href={hero.ctaSecHref}
+                prefetch={false}
                 className="inline-flex min-h-11 items-center gap-1 text-sm text-ink-soft underline underline-offset-4"
               >
                 <Brain size={14} aria-hidden className="text-accent" /> {hero.ctaSecLabel}
@@ -257,7 +262,7 @@ export default function HomePage() {
           <span aria-hidden className="text-ink-faint">·</span>
           <span>{locale === 'en' ? 'Not affiliated with the HKEAA' : '與考評局無從屬關係'}</span>
           <span aria-hidden className="text-ink-faint">·</span>
-          <Link href="/trust" className="inline-flex min-h-11 items-center font-medium text-accent-strong underline underline-offset-2">
+          <Link href="/trust" prefetch={false} className="inline-flex min-h-11 items-center font-medium text-accent-strong underline underline-offset-2">
             {locale === 'en' ? 'Check any of this' : '逐項查得到'}
           </Link>
         </div>

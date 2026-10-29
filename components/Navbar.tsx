@@ -49,6 +49,10 @@ import { useT, useLocale } from '@/lib/i18n'
 // 同手機底欄嘅關係：三條相同（練習／進度／收藏），第四條刻意唔同 ——
 // 桌面第四條係「筆記」，手機係「帳戶」。因為桌面右上角已經有 Google 登入掣，
 // 再放「帳戶」係重複；手機底欄嗰四格拇指夠得到嘅位置就冇登入掣，所以要有。
+// 次要殼層路由：關閉 Link 預取，避免首頁首屏同練習主 CTA 搶帶寬
+//（PERF-HOME-PREFETCH-2026-10-29；稽核僅 lab TTFB/FCP，無偽造 Lighthouse 分）。
+const NAV_PREFETCH_OFF = new Set(['/dashboard', '/bookmarks', '/notes', '/off-syllabus', '/about', '/credits'])
+
 const navLinks: {
   href: string
   key: 'subjects' | 'progress' | 'tabSaved' | 'notes' | 'offSyllabus'
@@ -157,6 +161,7 @@ export default function Navbar() {
                 <Link
                   key={l.href}
                   href={l.href}
+                  prefetch={NAV_PREFETCH_OFF.has(l.href) ? false : undefined}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
                     pathname === l.href ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
@@ -174,6 +179,7 @@ export default function Navbar() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
                 <Link
                   href="/about"
+                  prefetch={false}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
                     pathname === '/about' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
@@ -183,6 +189,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/credits"
+                  prefetch={false}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
                     pathname === '/credits' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
