@@ -13,6 +13,8 @@ import { SW_URL } from '@/lib/pwa/swUrl'
 const DB = 'dse-exam-day'
 const STORE = 'prefs'
 const KEY = 'config'
+/** SEC-R1-001: plaintext management token — server stores hash only. */
+const MGMT_TOKEN_KEY = 'mgmtToken'
 
 export interface PushConfig {
   /** 香港日期 YYYY-MM-DD。冇就唔會出任何通知。 */
@@ -108,6 +110,51 @@ export async function currentSubscription(): Promise<PushSubscription | null> {
   }
 }
 
+async function readMgmtToken(): Promise<string | null> {
+  try {
+    const db = await openDb()
+    return await new Promise<string | null>((resolve, reject) => {
+      const tx = db.transaction(STORE, 'readonly')
+      const req = tx.objectStore(STORE).get(MGMT_TOKEN_KEY)
+      req.onsuccess = () => {
+        const v = req.result
+        resolve(typeof v === 'string' && v.length > 0 ? v : null)
+      }
+      req.onerror = () => reject(req.error)
+    })
+  } catch {
+    return null
+  }
+}
+
+async function writeMgmtToken(token: string): Promise<void> {
+  try {
+    const db = await openDb()
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, 'readwrite')
+      tx.objectStore(STORE).put(token, MGMT_TOKEN_KEY)
+      tx.oncomplete = () => resolve()
+      tx.onerror = () => reject(tx.error)
+    })
+  } catch {
+    /* 私隱模式／storage 滿：退訂會失敗到要人工清；唔好搞冧訂閱流程 */
+  }
+}
+
+async function clearMgmtToken(): Promise<void> {
+  try {
+    const db = await openDb()
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, 'readwrite')
+      tx.objectStore(STORE).delete(MGMT_TOKEN_KEY)
+      tx.oncomplete = () => resolve()
+      tx.onerror = () => reject(tx.error)
+    })
+  } catch {
+    /* ignore */
+  }
+}
+
 export type SubscribeResult = 'ok' | 'denied' | 'unsupported' | 'not-configured' | 'failed'
 
 /**
@@ -134,16 +181,30 @@ export async function subscribePush(publicKey: string | undefined): Promise<Subs
       applicationServerKey: urlB64ToBytes(publicKey) as BufferSource,
     })
     const j = sub.toJSON() as { endpoint?: string; keys?: { p256dh?: string; auth?: string } }
+    const prior = await readMgmtToken()
     const r = await fetch('/api/push/subscribe', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys?.p256dh, auth: j.keys?.auth }),
+      body: JSON.stringify({
+        endpoint: j.endpoint,
+        p256dh: j.keys?.p256dh,
+        auth: j.keys?.auth,
+        ...(prior ? { managementToken: prior } : {}),
+      }),
     })
     if (!r.ok) {
       // 伺服器收唔到就唔好留一個瀏覽器訂閱喺度 —— 佢永遠唔會收到嘢，
       // 而學生會以為自己已經開咗。
       await sub.unsubscribe().catch(() => {})
       return r.status === 503 ? 'not-configured' : 'failed'
+    }
+    try {
+      const payload = (await r.json()) as { managementToken?: string }
+      if (typeof payload.managementToken === 'string' && payload.managementToken.length > 0) {
+        await writeMgmtToken(payload.managementToken)
+      }
+    } catch {
+      /* response parse fail — subscription stored server-side; DELETE may need re-subscribe */
     }
     return 'ok'
   } catch {
@@ -155,12 +216,14 @@ export async function unsubscribePush(): Promise<void> {
   const sub = await currentSubscription()
   if (!sub) return
   const endpoint = sub.endpoint
+  const managementToken = await readMgmtToken()
   await sub.unsubscribe().catch(() => {})
   // 就算瀏覽器嗰邊退咗，都要通知伺服器刪走 —— 唔刪就會日日打去一個
-  // 死咗嘅端點，而且張表會無限膨脹。
+  // 死咗嘅端點，而且張表會無限膨脹。SEC-R1-001：要連 management token。
   await fetch('/api/push/subscribe', {
     method: 'DELETE',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ endpoint }),
+    body: JSON.stringify({ endpoint, ...(managementToken ? { managementToken } : {}) }),
   }).catch(() => {})
+  await clearMgmtToken()
 }
