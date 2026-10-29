@@ -1,33 +1,22 @@
-# G · 登入實作（A3 + B1）— 2026-10-29
+# G · 登入實作備註 — 2026-10-29
 
-狀態：**創辦人指示開實作 PR** · 香港時間 2026-10-29  
-選定：**G-A3**（Better Auth · Google + email/password）＋ **G-B1**（保留並沿用 Google `sub` sync key）  
-明確否決本輪：**G-B3 全庫 wipe**（重建登入 ≠ 清空學生資料）
+> **歷史註記：** 本檔原鎖定 **A3 + B1**（#137）。同日創辦人改選 **B3 wipe + S1 session**。  
+> 現行決策以 `G-AUTH-AND-DATA-RESET-DECISIONS-2026-10-29.md` 同 `G-B3-WIPE-RUNBOOK-2026-10-29.md` 為準。
 
-## 已存在（唔使重寫）
+## 仍有效（A3 碼）
 
-- 雙 backend 閘：`NEXT_PUBLIC_AUTH_BACKEND` + `DATABASE_URL` + `BETTER_AUTH_SECRET`
-- `/sign-in`、`/sign-up`、Google／電郵密碼 UI（email 表單只喺 Better Auth 開）
-- `getSyncUserId()` B1 相容（Google → `accountId`＝舊 `sub`；失敗回 `null` 唔換 key）
-- 私隱文案按 `betterAuthEnabled` 分支；刪帳覆蓋 `BETTER_AUTH_TABLES`
-- 回歸：`lib/__tests__/email-auth-readiness.test.mts`
+- 雙 backend 閘、`/sign-in`／`/sign-up`、Google＋電郵 UI（BA 開先有電郵）
+- S1：已登入訪 `/sign-in` → redirect dashboard；JWT／BA session cookie 同裝置延續
+- `getSyncUserId()`：Google → `accountId`（= `sub`）；wipe 後同一 Google 帳戶會寫入**全新**空進度
+- DRAFT `0027`：只建 BA 四表（唔 wipe）
 
-## 本 PR 新增
+## B3 新增
 
-1. `supabase/migrations/0027_better_auth_tables.DRAFT.sql` — BA 四表 + revoke anon/authenticated（**未套用 production**）
-2. 登入方便度：導向 `/sign-in`（多種方式）、登入後 `?sync=ok` 提示、已登入訪 `/sign-in` 仍 redirect dashboard（session 自動延續）
-3. 決策紙更新為 A3+B1 鎖定；cutover 仍要創辦人 **R3** 設 Vercel env 同套用 DRAFT SQL
+- DRAFT `0028_g_b3_user_data_wipe.DRAFT.sql` — 只清用戶表；**未套用 production**
+- R4 必須：備份 → 公告 → 創辦人手跑 SQL
 
-## Production cutover（創辦人手動 · R3）
+## Production cutover 建議次序
 
-跟 `FLIP-TO-BETTER-AUTH.md`：
-
-1. 設 `DATABASE_URL`、`BETTER_AUTH_SECRET`、`BETTER_AUTH_URL`、`NEXT_PUBLIC_AUTH_BACKEND=better-auth`、`NEXT_PUBLIC_BETTER_AUTH_URL`
-2. 喺 Supabase 審完並執行 `0027_*.DRAFT.sql`（或 CLI migrate）— **確認無 TRUNCATE user_progress**
-3. 確認 Google redirect URI
-4. 驗證：Google 舊帳見返進度；電郵註冊；刪帳清 BA 表；`/privacy` 顯示存電郵文案
-5. 出事：Unset `NEXT_PUBLIC_AUTH_BACKEND` 回滾 Auth.js（BA 表可留）
-
-## 對外一句（B1）
-
-「登入升級中；用 Google 登入嘅同學，練習進度會保留。」
+1. R4 wipe（`0028`）  
+2. R3 Better Auth env + `0027`  
+3. 驗證：新 Google／電郵登入、跨裝置 sync、刪帳、S1 cookie 延續  

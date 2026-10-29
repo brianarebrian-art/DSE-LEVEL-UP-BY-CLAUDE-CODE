@@ -1,9 +1,11 @@
 # Cutover runbook — flip auth from Auth.js → Better Auth
 
-**Decision (2026-10-29):** founders selected **G-A3 + G-B1**
-(Google + email/password; **keep** existing Google `sub` progress keys).
-**G-B3 wipe is out of scope.** See `docs/auth/G-AUTH-A3-B1-IMPLEMENTATION-2026-10-29.md`.
-Draft SQL: `supabase/migrations/0027_better_auth_tables.DRAFT.sql` (apply only at R3).
+**Decision (2026-10-29, updated same day):** founders selected **G-A3 + G-B3 + S1**
+(Google + email/password; **wipe** user-scoped cloud data before/with cutover;
+same-device session cookie continuity only).
+See `docs/auth/G-AUTH-AND-DATA-RESET-DECISIONS-2026-10-29.md` and
+`docs/auth/G-B3-WIPE-RUNBOOK-2026-10-29.md`.
+Draft SQL: `0027_better_auth_tables.DRAFT.sql` (R3) · `0028_g_b3_user_data_wipe.DRAFT.sql` (R4 — founder only).
 
 The Better Auth migration is **code-complete and build-green**, but it ships **dormant**:
 the app keeps using the existing Auth.js (Google) login until you flip a single env var.
