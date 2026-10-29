@@ -233,7 +233,8 @@ export default function HomePage() {
           {locale === 'en'
             ? `Questions go live after automated checks and have not been reviewed by registered teachers. ${CONTENT_STATS.published.toLocaleString()} are in practice and ${CONTENT_STATS.withdrawn.toLocaleString()} are withdrawn (${WITHDRAWN_FOR_FAULT.toLocaleString()} because a fault was found; the rest were pure recall and have been replaced). Another ${CONTENT_STATS.machineRestored.toLocaleString()} were recomputed by a program and are kept out of practice until someone who knows the subject checks them. `
             : `題目經自動檢查上線，未經註冊教師審定。練習中 ${CONTENT_STATS.published.toLocaleString()} 條，已收起 ${CONTENT_STATS.withdrawn.toLocaleString()} 條（其中 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條係發現有錯，其餘係純背誦題，已經換走）。另有 ${CONTENT_STATS.machineRestored.toLocaleString()} 條由程式重算、未經人手覆核，已暫停放入練習。`}
-          <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
+          {/* prefetch={false}：次要資訊頁；PERF-HOME-PREFETCH-2026-10-29 */}
+          <Link href="/transparency" prefetch={false} className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
             {locale === 'en' ? 'Same figures on the transparency page' : '同透明度頁同一個數'}
           </Link>
         </p>
