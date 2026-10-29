@@ -1,9 +1,19 @@
 # Audit Loop State
-最後更新：2026-10-29 · 補記流程偏差（SEC-R1-003）· 其餘快照日期見各節
+最後更新：2026-10-29 · SEC-R1-004／#116 production 已驗證 · 流程偏差（SEC-R1-003）仍有效
 
-- Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
+- Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `77038bc`（含 #116）。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
 - Prompt：`docs/prompts/audit-loop.md`（v5，2026-10-01，按用戶貼上內容寫入）。
+
+## SEC-R1-004／FIX-004 上線核實（2026-10-29，香港時間）
+
+| 項目 | 紀錄 |
+|---|---|
+| PR | [#116](https://github.com/brianarebrian-art/DSE-LEVEL-UP-BY-CLAUDE-CODE/pull/116) squash merge → `main` `77038bc` |
+| 批准 | 創辦人明確批准 **merge & deploy**（與 Draft-only 關卡分開） |
+| Deploy | Vercel production `dpl_CKBJArotpdhxTZt9DLdAEWsGvaXa` · `readyState=READY` · commit `77038bc` · aliases 含 `www.dselevelup.com`／`dselevelup.com` |
+| 煙霧（合成／公開） | `GET /` → 200；未登入 `POST /api/account/delete` → 401 `{"error":"unauthenticated"}`（無表名）；唔用真學生帳、唔做攻擊探測 |
+| 下一批 | `SEC-R1-002`（錯誤日誌遮罩）— 等創辦人另批開波；預設只到 Draft PR |
 
 ## 流程偏差（2026-10-29，香港時間）
 
