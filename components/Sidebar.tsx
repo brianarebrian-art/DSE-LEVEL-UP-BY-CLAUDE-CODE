@@ -73,7 +73,8 @@ const ITEMS = [
 
 // /subjects 係練習主入口，保持預設預取；其餘次要殼層關預取
 //（PERF-HOME-PREFETCH-2026-10-29；稽核僅 lab TTFB/FCP）。
-const SIDEBAR_PREFETCH_OFF = new Set(
+// Set<string>：.has(href) 接受 ITEMS 完整 union（含 /subjects），避免 TS2345。
+const SIDEBAR_PREFETCH_OFF: ReadonlySet<string> = new Set(
   ITEMS.map((i) => i.href).filter((href) => href !== '/subjects'),
 )
 

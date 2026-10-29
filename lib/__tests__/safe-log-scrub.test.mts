@@ -68,14 +68,21 @@ test('scrubSentryEvent strips Authorization/Cookie and endpoint bodies', () => {
 })
 
 test('safeLog production path uses scrubbed message (no raw email)', async () => {
-  const prev = process.env.NODE_ENV
-  process.env.NODE_ENV = 'production'
+  // process.env.NODE_ENV is typed readonly under Next/TS — mutate via defineProperty.
+  const prevDesc = Object.getOwnPropertyDescriptor(process.env, 'NODE_ENV')
+  Object.defineProperty(process.env, 'NODE_ENV', {
+    value: 'production',
+    configurable: true,
+    enumerable: true,
+    writable: true,
+  })
   const lines: unknown[][] = []
   const orig = console.error
   console.error = (...args: unknown[]) => {
     lines.push(args)
   }
   try {
+    // Fresh import so module sees production NODE_ENV if it ever caches; safeLog reads env each call.
     const mod: any = await import('../safeLog.ts')
     const safeLog = mod.safeLog ?? mod.default?.safeLog
     safeLog('error', 'test-ctx', { message: 'fail for kid@school.hk', code: 'XX' })
@@ -87,6 +94,7 @@ test('safeLog production path uses scrubbed message (no raw email)', async () =>
     assert.match(joined, /code: XX/)
   } finally {
     console.error = orig
-    process.env.NODE_ENV = prev
+    if (prevDesc) Object.defineProperty(process.env, 'NODE_ENV', prevDesc)
+    else delete (process.env as { NODE_ENV?: string }).NODE_ENV
   }
 })
