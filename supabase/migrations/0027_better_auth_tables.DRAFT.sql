@@ -1,9 +1,9 @@
 -- 0027 · Better Auth core tables (DRAFT — do NOT apply until founder R3 cutover)
 --
--- Decision lock (2026-10-29): G-A3 + G-B1
+-- Decision lock (2026-10-29, updated): G-A3 + G-B3 + S1
 --   A3 = Better Auth with Google + email/password
---   B1 = KEEP existing cloud progress keyed on Google `sub`
---        (getSyncUserId resolves account.accountId). Do not clear progress tables.
+--   B3 user wipe lives in 0028_g_b3_user_data_wipe.DRAFT.sql (R4) — NOT here.
+--   After wipe, new progress still keys on Google `sub` via getSyncUserId.
 --
 -- This file only creates Better Auth's own tables. It does NOT:
 --   - wipe or clear user_progress / user_settings / privacy_consents, etc.
