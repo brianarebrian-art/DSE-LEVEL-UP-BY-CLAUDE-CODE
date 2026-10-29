@@ -12,7 +12,7 @@ const read = (p: string) => readFileSync(p, 'utf8')
 
 test('with a continue card on a phone, the mascot gives way; first-time visitors are unchanged', () => {
   assert.match(read('components/ContinueCard.tsx'), /<div data-continue-card className=/)
-  assert.match(read('app/HomePageClient.tsx'), /<div className="hero-mascot hero-rise mb-4 flex justify-center">/)
+  assert.match(read('app/HomePageClient.tsx'), /<div className="hero-mascot hero-rise mb-4 flex justify-center/)
   const css = read('app/globals.css')
   const at = css.indexOf('section:has([data-continue-card]) .hero-mascot')
   assert.ok(at > 0)
