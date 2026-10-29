@@ -1,13 +1,17 @@
 'use client'
 
+import Link from 'next/link'
 import { LogIn, LogOut } from 'lucide-react'
 import { useT } from '@/lib/i18n'
-import { useAuthSession, authSignInGoogle, authSignOut } from '@/lib/auth/session'
+import { useAuthSession, authSignOut } from '@/lib/auth/session'
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 
 // Inner component calls useSession — only mounted when auth is enabled (so the
 // SessionProvider is guaranteed to wrap it).
+//
+// G-A3：未登入去 /sign-in（Google＋可選電郵），唔喺 navbar 直接只開 Google，
+// 方便多種登入；已有 session cookie 嘅學生返嚟會自動顯示已登入（「自動登入」）。
 function AuthButtonInner({ onAction }: { onAction?: () => void }) {
   const { user, status } = useAuthSession()
   const t = useT()
@@ -41,17 +45,15 @@ function AuthButtonInner({ onAction }: { onAction?: () => void }) {
   }
 
   return (
-    <button
-      onClick={() => {
-        onAction?.()
-        authSignInGoogle()
-      }}
-      // whitespace-nowrap：橫向導航條擠迫時「Google 登入」會斷成兩行，令掣高度
+    <Link
+      href="/sign-in"
+      onClick={() => onAction?.()}
+      // whitespace-nowrap：橫向導航條擠迫時「登入」會斷成兩行，令掣高度
       // 不一致。同 2026-07-28 導航條修正一致，一律唔准喺條 bar 入面斷行。
       className="min-h-11 flex items-center gap-2 text-sm whitespace-nowrap border border-line-strong hover:border-accent text-ink-soft hover:text-accent rounded-lg px-3 py-1.5 transition-colors"
     >
       <LogIn size={14} /> {t.auth.signIn}
-    </button>
+    </Link>
   )
 }
 

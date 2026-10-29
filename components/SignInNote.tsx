@@ -3,13 +3,14 @@
 import Link from 'next/link'
 import { LogIn } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
-import { useAuthSession, authSignInGoogle } from '@/lib/auth/session'
+import { useAuthSession } from '@/lib/auth/session'
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
 
 // 登入前的同步說明（audit loop T39；創辦人 2026-10-03 回覆 Q-T39：要短、講明係可選）。
 // 擺喺登入掣附近，唔係彈窗。完整同步清單同刪除方法交由私隱頁，呢度只放連結，
 // 所以唔會同私隱頁分叉。`withButton`：練習完成後（結果頁）先提示，附登入掣。
+// G-A3：掣去 /sign-in（Google＋可選電郵），唔鎖死單一 OAuth。
 function Note({ className, withButton }: { className?: string; withButton?: boolean }) {
   const { user, status } = useAuthSession()
   const { locale } = useLocale()
@@ -31,13 +32,12 @@ function Note({ className, withButton }: { className?: string; withButton?: bool
   return (
     <div className={`no-print rounded-2xl border border-line bg-surface-raised p-4 ${className ?? ''}`}>
       {text}
-      <button
-        type="button"
-        onClick={() => authSignInGoogle('/dashboard')}
+      <Link
+        href="/sign-in"
         className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-strong px-4 text-sm text-ink-soft transition-colors hover:border-accent hover:text-accent"
       >
-        <LogIn size={14} aria-hidden /> {en ? 'Sign in with Google' : '用 Google 登入'}
-      </button>
+        <LogIn size={14} aria-hidden /> {en ? 'Sign in' : '去登入'}
+      </Link>
     </div>
   )
 }

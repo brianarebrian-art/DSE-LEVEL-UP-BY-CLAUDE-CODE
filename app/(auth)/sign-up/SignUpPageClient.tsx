@@ -37,7 +37,7 @@ export default function SignUpPageClient() {
       setBusy(false)
       return
     }
-    router.push('/dashboard')
+    router.push('/dashboard?sync=ok')
   }
 
   return (
@@ -48,8 +48,8 @@ export default function SignUpPageClient() {
         </h1>
         <p className="text-sm text-ink-muted mb-5">
           {en
-            ? 'Create a free account to sync your progress across devices.'
-            : '建立免費帳戶，跨裝置同步你嘅進度。'}
+            ? 'Create a free account to sync progress across devices. Google is fastest; email works too when enabled. Your existing Google progress is kept.'
+            : '建立免費帳戶，跨裝置同步進度。Google 最快；啟用後亦可用電郵。用過 Google 嘅進度會保留。'}
         </p>
 
         {/* Google OAuth 喺 App 內置瀏覽器會被 Google 自己封 —— 呢一版只有 Google
@@ -57,7 +57,7 @@ export default function SignUpPageClient() {
         <InAppBrowserNotice />
 
         <button
-          onClick={() => authSignInGoogle()}
+          onClick={() => authSignInGoogle('/dashboard?sync=ok')}
           className="w-full inline-flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-4 py-2.5 rounded-xl transition-colors"
         >
           <LogIn size={16} /> {en ? 'Continue with Google' : '用 Google 繼續'}

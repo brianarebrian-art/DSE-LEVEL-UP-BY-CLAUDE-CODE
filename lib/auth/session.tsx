@@ -143,7 +143,11 @@ export async function authSignOutAndWait(): Promise<void> {
 
 // Email/password (Better Auth only). Returns Better Auth's { data, error } result so
 // the sign-in/up pages can surface validation errors without throwing.
-export async function authSignInEmail(email: string, password: string, callbackURL = '/dashboard') {
+export async function authSignInEmail(
+  email: string,
+  password: string,
+  callbackURL = '/dashboard?sync=ok',
+) {
   return authClient.signIn.email({ email, password, callbackURL })
 }
 
@@ -151,7 +155,7 @@ export async function authSignUpEmail(
   name: string,
   email: string,
   password: string,
-  callbackURL = '/dashboard',
+  callbackURL = '/dashboard?sync=ok',
 ) {
   return authClient.signUp.email({ name, email, password, callbackURL })
 }
