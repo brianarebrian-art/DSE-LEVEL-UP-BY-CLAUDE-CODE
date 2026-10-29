@@ -49,4 +49,4 @@ body:
 Draft until founder approves merge/deploy.
 ```
 
-**本輪唔會**喺未批准前寫入 `.github/` 實體檔案。
+實體檔案已於 2026-10-29 寫入 `.github/`（創辦人要求完善倉庫）。
