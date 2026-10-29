@@ -1453,6 +1453,18 @@ html.font-easy .skeleton {
 .practice-option {
   min-height: 48px;
 }
+/* Wave 2 手機：答案選項加高，方便單手點按（≥56px；桌面維持 48）。 */
+@media (max-width: 639px) {
+  .practice-option {
+    min-height: 56px;
+  }
+  .practice-options-stack {
+    gap: 0.75rem;
+  }
+  .practice-sticky-head .practice-status-hint {
+    display: none;
+  }
+}
 .practice-explain {
   padding-bottom: 72px;
 }
@@ -1464,17 +1476,40 @@ html.font-easy .skeleton {
   position: sticky;
   bottom: max(12px, env(safe-area-inset-bottom));
   z-index: 20;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
   flex-shrink: 0;
   margin-top: 16px;
+  padding-top: 8px;
   padding-right: 56px;
   background: var(--color-surface-raised);
   border-top: 1px solid var(--color-line-strong);
+}
+.practice-retry-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 6.5rem;
+  height: 56px;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 16px;
+  background: var(--color-surface-sunken);
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+.practice-retry-btn:hover {
+  background: var(--color-surface);
 }
 .practice-next-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  flex: 1 1 auto;
   width: 100%;
   height: 56px;
   min-height: 48px;
@@ -1488,6 +1523,7 @@ html.font-easy .skeleton {
   background: var(--color-accent-hover);
 }
 .practice-next-btn:focus-visible,
+.practice-retry-btn:focus-visible,
 .practice-option:focus-visible,
 .practice-feedback:focus-visible {
   outline: 3px solid var(--color-accent);

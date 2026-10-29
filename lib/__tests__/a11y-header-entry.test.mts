@@ -49,7 +49,8 @@ test('the floating button hides on phones only when the page has a header button
 test('every header students see on a phone carries the button', () => {
   const sites = {
     'components/Navbar.tsx': /<A11yButton \/>/,
-    'app/practice/PracticeSession.tsx': /<A11yButton className="ml-auto" \/>/,
+    // Wave 2：進度同返回併入 sticky 頂欄，A11y 跟住題數／選單一齊靠右。
+    'app/practice/PracticeSession.tsx': /<A11yButton \/>/,
     'app/practice/LongPracticeSession.tsx': /<A11yButton \/>/,
   }
   for (const [file, re] of Object.entries(sites)) {
@@ -59,10 +60,10 @@ test('every header students see on a phone carries the button', () => {
   }
   // In the practice session it sits in the sticky top row, so it stays reachable mid-question.
   const s = read('app/practice/PracticeSession.tsx')
-  const sticky = s.indexOf('<div className="focus-dim sticky top-0 z-30')
-  const btn = s.indexOf('<A11yButton className="ml-auto" />')
-  const rowEnd = s.indexOf('{/* Progress bar */}', sticky)
-  assert.ok(sticky > 0 && sticky < btn && btn < rowEnd)
+  const sticky = s.indexOf('practice-sticky-head')
+  const btn = s.indexOf('<A11yButton />', sticky)
+  const headEnd = s.indexOf('</div>', s.indexOf('QuestionStatusStrip', sticky))
+  assert.ok(sticky > 0 && sticky < btn && btn < headEnd)
 })
 
 test('opening from far away moves focus into the panel and back on close', () => {

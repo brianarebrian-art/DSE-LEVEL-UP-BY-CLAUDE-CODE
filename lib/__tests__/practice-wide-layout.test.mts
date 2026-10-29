@@ -14,7 +14,7 @@ const src = readFileSync(join(ROOT, 'app/practice/PracticeSession.tsx'), 'utf8')
 const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
 
 const gridAt = code.indexOf('<div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14 desk:grid-cols-[220px_1fr_1fr]">')
-const cardAt = code.indexOf('<div key={currentQ.id} className="bg-surface-raised')
+const cardAt = code.indexOf('<div key={currentQ.id} className="practice-q-card bg-surface-raised')
 const feedbackAt = code.indexOf('<div ref={feedbackRef}')
 // 2026-10-02: the emotion check-in that followed the grid was removed; the grid is now
 // followed directly by the rest-mode overlay, so anchor on that instead.
