@@ -12,7 +12,8 @@
 // 舊路徑 POST /api/account/delete 保留 —— 已經載入咗舊版頁面嘅瀏覽器仍然會打佢。
 //
 // 行為完全相同：要登入（否則 401）、要 body { confirm: true }（否則 400）、
-// 有任何一張表刪唔到就回 500 ＋ 表名，唔會回 ok。
+// 有任何一張表刪唔到就回 500 ＋ 穩定錯誤碼 partial_erasure ＋ correlationId，
+// 唔會回 ok，亦唔會把表名回畀客戶端（SEC-R1-003）。
 export const dynamic = 'force-dynamic'
 
 export { POST as DELETE } from '../account/delete/route'
