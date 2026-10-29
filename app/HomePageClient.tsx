@@ -183,8 +183,11 @@ export default function HomePage() {
                 {en ? `All ${activeSubjects.length} subjects` : `揀其他科目（共 ${activeSubjects.length} 科）`}
                 <ArrowRight size={14} aria-hidden />
               </Link>
+              {/* 季節副入口（/relax、/waiting、/dashboard、/methodology）—— 唔係練習主 CTA；
+                  關閉預取，保留快速開始／揀其他科目預設預取。 */}
               <Link
                 href={hero.ctaSecHref}
+                prefetch={false}
                 className="inline-flex min-h-11 items-center gap-1 text-sm text-ink-soft underline underline-offset-4"
               >
                 <Brain size={14} aria-hidden className="text-accent" /> {hero.ctaSecLabel}
@@ -221,7 +224,7 @@ export default function HomePage() {
           <span aria-hidden className="text-ink-faint">·</span>
           <span>{locale === 'en' ? 'Not affiliated with the HKEAA' : '與考評局無從屬關係'}</span>
           <span aria-hidden className="text-ink-faint">·</span>
-          <Link href="/trust" className="inline-flex min-h-11 items-center font-medium text-accent-strong underline underline-offset-2">
+          <Link href="/trust" prefetch={false} className="inline-flex min-h-11 items-center font-medium text-accent-strong underline underline-offset-2">
             {locale === 'en' ? 'Check any of this' : '逐項查得到'}
           </Link>
         </div>

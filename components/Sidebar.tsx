@@ -71,6 +71,12 @@ const ITEMS = [
   { href: '/off-syllabus', key: 'offSyllabus', Icon: Compass, exact: false, group: 'other' },
 ] as const
 
+// /subjects 係練習主入口，保持預設預取；其餘次要殼層關預取
+//（PERF-HOME-PREFETCH-2026-10-29；稽核僅 lab TTFB/FCP）。
+const SIDEBAR_PREFETCH_OFF = new Set(
+  ITEMS.map((i) => i.href).filter((href) => href !== '/subjects'),
+)
+
 /** 錨點連結永遠唔算「目前頁」—— pathname 冇 hash，否則會同「我的進度」一齊亮。 */
 function isActive(pathname: string, href: string, exact: boolean): boolean {
   if (href.includes('#')) return false
@@ -148,6 +154,7 @@ export default function Sidebar() {
                     <li key={href}>
                       <Link
                         href={href}
+                        prefetch={SIDEBAR_PREFETCH_OFF.has(href) ? false : undefined}
                         aria-current={active ? 'page' : undefined}
                         title={t.sidebar[key]}
                         // 選中態跟模板：整格淺色底加一圈邊，冇左豎條。

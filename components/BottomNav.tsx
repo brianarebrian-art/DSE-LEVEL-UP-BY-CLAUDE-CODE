@@ -51,6 +51,9 @@ export default function BottomNav() {
 
   if (hidden) return null
 
+  // /subjects = 練習主 CTA，保持預設預取；其餘次要殼層關預取
+  //（PERF-HOME-PREFETCH-2026-10-29）。
+  const BOTTOM_PREFETCH_OFF = new Set(['/dashboard', '/bookmarks', '/account'])
   const tabs = [
     { href: '/subjects', label: t.nav.tabPractice, Icon: BookOpen },
     { href: '/dashboard', label: t.nav.tabProgress, Icon: TrendingUp },
@@ -74,6 +77,7 @@ export default function BottomNav() {
             <li key={href} className="flex-1">
               <Link
                 href={href}
+                prefetch={BOTTOM_PREFETCH_OFF.has(href) ? false : undefined}
                 aria-current={active ? 'page' : undefined}
                 className={`flex min-h-14 flex-col items-center justify-center gap-0.5 text-[11px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
                   active ? 'text-accent-strong' : 'text-ink-muted hover:text-ink-soft'
