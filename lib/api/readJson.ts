@@ -7,6 +7,10 @@
 //
 // The rate limiter in proxy.ts is per instance (lib/rateLimit.ts); this ceiling holds on every
 // instance because it is checked on each request.
+//
+// SEC-R1-004 / FIX-DSE-APP-004: count bytes while streaming. Content-Length is only a
+// pre-check — never the sole defence. Without a length header (or with a lying one), we
+// still stop reading as soon as actual bytes exceed maxBytes, instead of buffering first.
 
 export const BODY_LIMIT = {
   /** /api/progress: the whole progress snapshot. About 35 times today's largest row. */
@@ -17,17 +21,54 @@ export const BODY_LIMIT = {
 
 export type ReadResult<T> = { ok: true; value: T } | { ok: false; status: 400 | 413; error: string }
 
+function concatChunks(chunks: Uint8Array[], total: number): Uint8Array {
+  const out = new Uint8Array(total)
+  let offset = 0
+  for (const c of chunks) {
+    out.set(c, offset)
+    offset += c.byteLength
+  }
+  return out
+}
+
 export async function readJsonLimited<T = unknown>(request: Request, maxBytes: number): Promise<ReadResult<T>> {
   const declared = Number(request.headers.get('content-length'))
-  if (Number.isFinite(declared) && declared > maxBytes) return { ok: false, status: 413, error: 'body too large' }
-  let text: string
+  if (Number.isFinite(declared) && declared > maxBytes) {
+    return { ok: false, status: 413, error: 'body too large' }
+  }
+
+  const body = request.body
+  // No stream (e.g. already-consumed body, or empty): treat as zero bytes then parse.
+  if (!body) {
+    try {
+      return { ok: true, value: JSON.parse('') as T }
+    } catch {
+      return { ok: false, status: 400, error: 'invalid JSON body' }
+    }
+  }
+
+  const reader = body.getReader()
+  const chunks: Uint8Array[] = []
+  let total = 0
   try {
-    text = await request.text()
+    for (;;) {
+      const { done, value } = await reader.read()
+      if (done) break
+      if (!value || value.byteLength === 0) continue
+      total += value.byteLength
+      if (total > maxBytes) {
+        // Stop reading immediately — do not buffer the rest of an oversized body.
+        await reader.cancel('body too large').catch(() => {})
+        return { ok: false, status: 413, error: 'body too large' }
+      }
+      chunks.push(value)
+    }
   } catch {
+    await reader.cancel('unreadable body').catch(() => {})
     return { ok: false, status: 400, error: 'unreadable body' }
   }
-  // Checked again after reading: the header can be absent or wrong.
-  if (new TextEncoder().encode(text).length > maxBytes) return { ok: false, status: 413, error: 'body too large' }
+
+  const text = new TextDecoder().decode(concatChunks(chunks, total))
   try {
     return { ok: true, value: JSON.parse(text) as T }
   } catch {
