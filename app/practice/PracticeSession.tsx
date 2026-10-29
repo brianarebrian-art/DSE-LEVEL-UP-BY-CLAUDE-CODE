@@ -1107,7 +1107,10 @@ export default function PracticeSession({
               docs/a11y-runtime-sweep 個探針會跳過呢個元素（佢刻意唔掃裝飾元素），
               即係我自己整咗一段睇唔清嘅字，再親手令自己個閘睇唔到佢。
               而且讀屏用戶一樣用鍵盤，呢句對佢哋唔係多餘。 */}
-          <p className="hidden sm:block mt-3 text-[11px] text-ink-muted">
+          {/* focus-dim：快捷鍵提示係周邊 chrome；專注燈開時淡化，hover／focus-within 可還原。
+              Wave 2 合併頂欄後 PracticeSession 內只剩 sticky＋右欄兩個 focus-dim，
+              呢度補返第三個淡化區，令專注模式繼續收淡非題幹 UI。 */}
+          <p className="focus-dim hidden sm:block mt-3 text-[11px] text-ink-muted">
             {answerState === null
               ? tr('快捷鍵：1–4 或 A–D 揀答案；方向鍵移動，空白鍵或 Enter 確認', 'Shortcuts: 1–4 or A–D to answer. Arrow keys move, Space or Enter confirms')
               : tr('快捷鍵：Enter 落下一題', 'Shortcut: Enter for the next question')}
