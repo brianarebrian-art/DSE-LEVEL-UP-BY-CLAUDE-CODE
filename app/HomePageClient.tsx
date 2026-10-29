@@ -134,77 +134,48 @@ export default function HomePage() {
       <InstallHint />
 
       {/* ── HERO ──
-          2026-09-29 手機首屏重排。375×812 實測：主 CTA「開始練習」原位於 y=807，
-          而底部導航由 y=755 開始 —— 在最多人使用的裝置上，第一屏看不到主按鈕。
-          ① 吉祥物在手機縮小（高約 104px），徽章在手機隱藏（與 h1 內容重複）；
-          ② CTA 移到副標題之後，「DSE 舊生 + AI」及信任標記移到 CTA 之下；
-          ③ 進場動畫改用純 CSS（.hero-rise，見 globals.css），不再等待 JavaScript
-             hydrate 才由 opacity 0 變為可見。
-          2026-09-30（UX 循環 LOOP 2）：桌面頂部留白及徽章、副標題下方間距各減一級，
-          令 1280×800 手提電腦的首屏亦見到「揀其他科目」。 */}
-      <section className="relative px-4 pt-8 pb-16 sm:pt-12 sm:pb-24">
-        {/* 裝飾光暈。w-full max-w-[560px]：以前寫死 w-[560px]，喺 375px 機上左右各爆 93px，
-            令 Chrome 將版面視窗由 375 撐大到 467（＝成頁自動縮細 20%，字細咗一圈，
-            對讀寫障礙同弱視考生尤其傷）。改成流體寬度後桌面版一模一樣，手機版啱啱好。 */}
-        <div className="pointer-events-none absolute left-1/2 top-24 h-[280px] w-full max-w-[560px] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-3xl" />
-        <div className="relative z-10 mx-auto max-w-5xl text-center">
-          {/* 回訪學生：一按即繼續上次練習（沒有紀錄則不顯示，初次訪客所見不變）。 */}
-          <ContinueCard />
-
-          {/* 吉祥物擺喺標題之上 —— 訪客見到嘅第一件嘢。
-              擺呢隻嘅目的係認得出個網站，所以佢應該喺最強嗰個位，
-              唔係收埋喺頁尾做裝飾。揀「讀緊書」呢個姿勢而唔係滑板嗰隻：
-              首屏要一眼講到呢度係做咩嘅。
-              priority：佢喺 LCP 範圍，唔標會拖慢首屏。 */}
-          <div className="hero-mascot hero-rise mb-4 flex justify-center">
-            {/* 以外層闊度控制尺寸（手機 128px ≈ 高 104px；桌面 176px ≈ 高 142px。
-                2026-09-30 由 208px 縮小，令 1024×768 首屏容得下快速開始及「揀其他科目」）。
-                不能在 img 上用 h-[…]：globals.css 有一條不在 @layer 內的 `img { height: auto }`，
-                優先級高於所有 Tailwind 工具類，高度類別會被靜默覆蓋（2026-09-29 production 實測）。 */}
-            <div className="w-[128px] sm:w-[176px]">
-              <Mascot pose="reading" height={168} priority className="w-full" />
+          溫習工作台 Wave 1（2026-10-29 UI redesign brief）。
+          目標：打開就知下一步。首屏只保留品牌輕提示 + 一句任務標題 + 繼續練習 +
+          四科即開；長段覆核說明移到信任列之後，唔喺主 CTA 旁堆字。
+          左欄導航仍由 AppShell／Sidebar 提供（桌面）。 */}
+      <section className="relative px-4 pt-6 pb-12 sm:pt-10 sm:pb-16">
+        <div className="pointer-events-none absolute left-1/2 top-16 h-[200px] w-full max-w-[480px] -translate-x-1/2 rounded-full bg-accent/[0.05] blur-3xl" />
+        <div className="relative z-10 mx-auto max-w-3xl text-center md:text-left">
+          {/* 輕量品牌線索：縮小貓頭鷹，唔搶任務焦點（brief）。 */}
+          {/* class 名保留 hero-mascot + justify-center：corner-buttons 測試同手機「有 Continue 就收吉祥物」CSS 依賴。 */}
+          <div className="hero-mascot hero-rise mb-4 flex justify-center md:justify-start">
+            <div className="w-[72px] sm:w-[96px]">
+              <Mascot pose="reading" height={96} priority className="w-full" />
             </div>
           </div>
 
-          <div className="hero-rise hero-rise-1 mb-6 hidden items-center gap-2 rounded-full border border-accent/25 bg-surface-sunken px-4 py-2 text-sm font-medium text-accent sm:inline-flex">
-            <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-            {hero.badge}
-          </div>
-
-          <h1 className="hero-rise hero-rise-1 mb-4 text-4xl font-medium leading-[1.1] tracking-tight text-ink sm:mb-6 sm:text-5xl md:text-6xl">
-            {hero.headline1}
-            <br />
-            <span className="bg-gradient-to-r from-accent to-accent bg-clip-text text-transparent">{hero.headline2}</span>
-          </h1>
-
-          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-lg text-ink-muted sm:mb-6 sm:text-xl">{hero.subhead}</p>
-
-          {/* 覆核狀態放喺行動之前。數字全部來自 CONTENT_STATS，同 /transparency 同一個來源。
-              WITHDRAWN_FOR_FAULT 只係「已收起」入面發現有錯嗰一部分，唔可以單獨當總數。 */}
-          <p className="hero-rise hero-rise-2 mx-auto mb-6 max-w-2xl text-xs leading-relaxed text-ink-muted">
-            {locale === 'en'
-              ? `Questions go live after automated checks and have not been reviewed by registered teachers. ${CONTENT_STATS.published.toLocaleString()} are in practice and ${CONTENT_STATS.withdrawn.toLocaleString()} are withdrawn (${WITHDRAWN_FOR_FAULT.toLocaleString()} because a fault was found; the rest were pure recall and have been replaced). Another ${CONTENT_STATS.machineRestored.toLocaleString()} were recomputed by a program and are kept out of practice until someone who knows the subject checks them. `
-              : `題目經自動檢查上線，未經註冊教師審定。練習中 ${CONTENT_STATS.published.toLocaleString()} 條，已收起 ${CONTENT_STATS.withdrawn.toLocaleString()} 條（其中 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條係發現有錯，其餘係純背誦題，已經換走）。另有 ${CONTENT_STATS.machineRestored.toLocaleString()} 條由程式重算、未經人手覆核，已暫停放入練習。`}
-            <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
-              {locale === 'en' ? 'Same figures on the transparency page' : '同透明度頁同一個數'}
-            </Link>
+          <p className="hero-rise hero-rise-1 mb-2 text-sm font-medium text-accent">
+            {en ? 'Study desk' : '溫習工作台'}
+            <span className="text-ink-muted"> · {hero.badge}</span>
           </p>
 
-          {/* 快速開始（UX 循環 LOOP 2，2026-09-30）。
-              以前主按鈕「開始練習」只通往科目列表，新訪客要經過科目列表、科目頁、「立即開始」
-              三頁才見到第一題。現在四個核心科目直接開始一節練習；其他科目及季節性副入口
-              改為同一屏的文字連結，副入口（放榜季是 /waiting、/relax）仍然在首屏。 */}
-          <div className="hero-rise hero-rise-2 mx-auto mb-6 max-w-md">
+          <h1 className="hero-rise hero-rise-1 mb-3 text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl md:text-5xl">
+            {en ? 'What do you want to revise tonight?' : '今晚想溫邊科？'}
+          </h1>
+
+          <p className="hero-rise hero-rise-2 mx-auto mb-5 max-w-2xl text-base text-ink-muted md:mx-0 sm:text-lg">
+            {en
+              ? `One set ≈ ${SESSION_SIZE} multiple-choice questions · about ${sessionMins} minutes · no sign-in needed · free, no ads. Practice judgment — not a whole DSE paper.`
+              : `一節約 ${SESSION_SIZE} 條選擇題 · 約 ${sessionMins} 分鐘 · 唔使登入 · 免費無廣告。練判斷同常見陷阱 —— 唔等於掌握成張卷。`}
+          </p>
+
+          {/* 回訪：繼續練習（brief 核心 CTA #1）。無紀錄則組件自己隱藏。 */}
+          <div className="hero-rise hero-rise-2 mb-5">
+            <ContinueCard />
+          </div>
+
+          {/* 四科即開（brief 核心 CTA #2）。 */}
+          <div className="hero-rise hero-rise-2 mx-auto mb-4 max-w-md md:mx-0">
             <p id="quick-start-label" className="mb-3 text-base font-medium text-ink">
-              {en ? `Pick a subject to start ${SESSION_SIZE} questions` : `揀一科，即刻開始 ${SESSION_SIZE} 題`}
+              {en ? `Or pick a subject to start ${SESSION_SIZE} questions` : `或者揀一科，即刻開始 ${SESSION_SIZE} 題`}
             </p>
-            {/* 四格一行（手機亦然）：兩行兩格會把「揀其他科目」推到 375×812 首屏底部，
-                被左下角無障礙按鈕及右下角情緒支援按鈕遮住。 */}
             <QuickStartGrid labelledBy="quick-start-label" en={en} />
-            <p className="mt-2 text-sm text-ink-muted">
-              {en ? `About ${sessionMins} minutes · no sign-in needed · free` : `約 ${sessionMins} 分鐘 · 唔使登入 · 免費`}
-            </p>
-            <div className="mt-1 flex flex-wrap items-center justify-center gap-x-4">
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 md:justify-start">
               <Link
                 href={hero.ctaStartHref}
                 className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-accent-strong underline underline-offset-4"
@@ -221,14 +192,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <p className="hero-rise hero-rise-3 mx-auto mb-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            {locale === 'en'
-              ? 'Built by DSE alumni with AI. Multiple-choice practice on common traps, free. It is not mastery of a whole paper.'
-              : '由 DSE 舊生 + AI 協作。免費練選擇題判斷同常見陷阱。呢個唔等於掌握成張卷。'}
-          </p>
-
-          {/* 信任標記：手機自動換行，不用「·」分隔 —— 分隔點在窄屏會單獨落到下一行。 */}
-          <ul className="hero-rise hero-rise-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-ink-muted">
+          <ul className="hero-rise hero-rise-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-ink-muted md:justify-start">
             <li>{h.trust1}</li>
             <li>{h.trust2}</li>
             <li>{h.trust3}</li>
@@ -261,6 +225,15 @@ export default function HomePage() {
             {locale === 'en' ? 'Check any of this' : '逐項查得到'}
           </Link>
         </div>
+        {/* 覆核狀態：brief 要求可見但不阻礙練習 —— 放喺主 CTA 之下。 */}
+        <p className="mx-auto mt-3 max-w-3xl text-center text-xs leading-relaxed text-ink-muted">
+          {locale === 'en'
+            ? `Questions go live after automated checks and have not been reviewed by registered teachers. ${CONTENT_STATS.published.toLocaleString()} are in practice and ${CONTENT_STATS.withdrawn.toLocaleString()} are withdrawn (${WITHDRAWN_FOR_FAULT.toLocaleString()} because a fault was found; the rest were pure recall and have been replaced). Another ${CONTENT_STATS.machineRestored.toLocaleString()} were recomputed by a program and are kept out of practice until someone who knows the subject checks them. `
+            : `題目經自動檢查上線，未經註冊教師審定。練習中 ${CONTENT_STATS.published.toLocaleString()} 條，已收起 ${CONTENT_STATS.withdrawn.toLocaleString()} 條（其中 ${WITHDRAWN_FOR_FAULT.toLocaleString()} 條係發現有錯，其餘係純背誦題，已經換走）。另有 ${CONTENT_STATS.machineRestored.toLocaleString()} 條由程式重算、未經人手覆核，已暫停放入練習。`}
+          <Link href="/transparency" className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent-strong">
+            {locale === 'en' ? 'Same figures on the transparency page' : '同透明度頁同一個數'}
+          </Link>
+        </p>
       </section>
 
       {/* 2026-09-26：新來港廣東話卡已由首頁移走（Yuna：「唔好擺咁當眼位置」）。
