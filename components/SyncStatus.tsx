@@ -55,8 +55,8 @@ export default function SyncStatus() {
       <div className="bg-surface-raised border border-gold/30 rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap">
         <span className="text-sm text-ink-muted">
           {en
-            ? 'Progress is saved on this device. Bind a Google account to sync across devices.'
-            : '進度暫存喺呢部裝置。綁定 Google 帳戶即可跨裝置同步。'}
+            ? 'Progress is saved on this device. Sign in to sync across devices (Google or email when enabled).'
+            : '進度暫存喺呢部裝置。登入即可跨裝置同步（Google；啟用後亦可用電郵）。'}
         </span>
         <Link
           href="/sign-in"

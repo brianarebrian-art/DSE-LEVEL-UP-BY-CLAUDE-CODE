@@ -28,7 +28,8 @@ test('the trust copy states curriculum and review status, and says first pass', 
   // withdrawn total is CONTENT_STATS.withdrawn. WITHDRAWN_FOR_FAULT is only the fault subset.
   assert.match(home, /題目經自動檢查上線，未經註冊教師審定。練習中 \$\{CONTENT_STATS\.published\.toLocaleString\(\)\} 條，已收起 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條/)
   assert.match(home, /其中 \$\{WITHDRAWN_FOR_FAULT\.toLocaleString\(\)\} 條係發現有錯/)
-  assert.match(home, /<Link href="\/transparency" className="inline-flex min-h-11 /, '44px target')
+  // prefetch={false} may sit between href and className (PERF-HOME-PREFETCH).
+  assert.match(home, /<Link href="\/transparency"[^>]*className="inline-flex min-h-11 /, '44px target')
 })
 
 test('nothing presents the questions as past papers', () => {
