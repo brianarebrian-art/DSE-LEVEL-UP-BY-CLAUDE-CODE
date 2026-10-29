@@ -50,3 +50,12 @@ test('revealed copy does not scold', () => {
   assert.doesNotMatch(session, /呢題失手|以後唔好收埋|💡 發現盲點/)
   assert.match(session, /pickedCause === null|useState<ReverseCause \| null>\(null\)/)
 })
+
+test('Wave 2 sticky bar keeps retry beside next after reveal', () => {
+  assert.match(session, /practice-retry-btn/)
+  assert.match(session, /再試一次/)
+  assert.match(block, /\.practice-retry-btn\s*\{/)
+  assert.match(block, /display:\s*flex;/)
+  assert.match(session, /提示（可選）/)
+  assert.match(session, /aria-expanded=\{hintOpen\}/)
+})
