@@ -4,6 +4,10 @@ import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
 import { USER_SCOPED_TABLES, BETTER_AUTH_TABLES } from '@/lib/privacy/userData'
+import {
+  makeInternalErasureFailure,
+  makePartialErasureFailure,
+} from '@/lib/privacy/erasureResponse'
 import { betterAuthEnabled, betterAuthServer } from '@/lib/auth/better-auth'
 import { headers } from 'next/headers'
 
@@ -11,6 +15,9 @@ import { headers } from 'next/headers'
 // entirely to the caller's id (never another user's). Server-side data = cloud progress
 // = every table in USER_SCOPED_TABLES (lib/privacy/userData.ts). Requires an explicit
 // { confirm: true } to avoid misfires.
+//
+// SEC-R1-003 / FIX-DSE-APP-003: on partial failure the client receives a stable
+// error code + correlationId only — never table names, schema, SQL, or stacks.
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
@@ -59,13 +66,15 @@ export async function POST(req: Request) {
     }
 
     if (failed.length > 0) {
-      // 講真話：唔可以喺有嘢刪唔到嘅情況下回 ok。用戶要知道要跟進。
-      safeLog('error', 'api/account/delete partial', { failed })
-      return NextResponse.json({ error: 'partial', tables: failed }, { status: 500 })
+      // Tell the truth to the client (not ok) without naming schema objects.
+      const { clientBody, logMessage, logCode } = makePartialErasureFailure(failed)
+      safeLog('error', 'api/account/delete partial', { message: logMessage, code: logCode })
+      return NextResponse.json(clientBody, { status: 500 })
     }
     return NextResponse.json({ ok: true })
   } catch (e) {
-    safeLog('error', 'api/account/delete', e)
-    return NextResponse.json({ error: 'internal error' }, { status: 500 })
+    const { clientBody, correlationId } = makeInternalErasureFailure()
+    safeLog('error', `api/account/delete cid=${correlationId}`, e)
+    return NextResponse.json(clientBody, { status: 500 })
   }
 }
