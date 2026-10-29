@@ -93,27 +93,42 @@ test('頁面聲稱「心情記錄唔會上傳」—— 佢真係唔喺上雲清�
   }
 })
 
-// 2026-10-02 創辦人決定裝 Vercel Web Analytics（同源 script，唔加套件）。私隱頁已照實寫明；
-// 除此之外照舊一個都唔准，而且唔准用 npm 套件版（@vercel/analytics），以免違反「唔加套件」。
-test('只有 Vercel Web Analytics（同源 script），私隱頁有寫明；其他追蹤器一個都冇', () => {
+// 2026-10-02 創辦人決定裝 Vercel Web Analytics（同源 script）。
+// Speed Insights（@vercel/speed-insights）亦只喺 production 載入 —— 必須同私隱頁對齊，
+// 否則 CI「追蹤掃描」會同 layout 打架（WP-CI-SPEEDINSIGHTS）。
+// 仍然禁止 npm 套件版 @vercel/analytics 同其他廣告／產品分析 SDK。
+test('Vercel Web Analytics＋Speed Insights 只喺 production，私隱頁有寫明', () => {
   const layout = stripComments(fs.readFileSync('app/layout.tsx', 'utf8'))
   assert.match(layout, /process\.env\.VERCEL_ENV === 'production' && \(\s*<Script src="\/_vercel\/insights\/script\.js"/)
+  assert.match(layout, /@vercel\/speed-insights\/next/)
+  assert.match(layout, /process\.env\.VERCEL_ENV === 'production' && <SpeedInsights/)
   const page = fs.readFileSync(PAGE, 'utf8')
-  assert.match(page, /我哋用一個分析服務：Vercel Web Analytics/)
-  assert.match(page, /唔用 cookie/)
+  assert.match(page, /Vercel Web Analytics/)
+  assert.match(page, /Vercel Speed Insights/)
+  assert.match(page, /我哋用兩個嚟自 Vercel/)
 })
 
-test('頁面聲稱「除 Vercel Web Analytics 外冇其他分析／追蹤 SDK」—— 掃全站確認', () => {
+test('頁面聲稱「除已披露嘅 Vercel／Sentry 外冇其他分析／追蹤 SDK」—— 掃全站確認', () => {
   // Sentry is allowed only as disclosed error monitoring (no Session Replay).
+  // @vercel/speed-insights is allowed only when disclosed (see layout + privacy copy).
   // Other analytics / ad / product-analytics SDKs remain forbidden.
   const TRACKERS =
-    /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics|speed-insights/i
+    /\bgtag\b|google-analytics|googletagmanager|posthog|mixpanel|hotjar|\bfbq\b|plausible|umami|@vercel\/analytics/i
   const hits = sources.filter(
     (f) => !PRIVACY_OWN_FILES.has(f) && TRACKERS.test(stripComments(fs.readFileSync(f, 'utf8'))),
   )
-  assert.deepEqual(hits, [], `裝咗追蹤／分析 SDK，但 /privacy 寫住「一個都冇」：\n  ${hits.join('\n  ')}`)
+  assert.deepEqual(hits, [], `裝咗未披露追蹤／分析 SDK：\n  ${hits.join('\n  ')}`)
   const pkg = fs.readFileSync('package.json', 'utf8')
-  assert.doesNotMatch(pkg, TRACKERS, 'package.json 出現追蹤／分析套件，但 /privacy 寫住「一個都冇」')
+  assert.doesNotMatch(pkg, TRACKERS, 'package.json 出現未披露追蹤／分析套件')
+  assert.match(pkg, /@vercel\/speed-insights/, 'Speed Insights 套件必須存在且已披露')
+
+  const speedHits = sources.filter(
+    (f) =>
+      f !== 'app/layout.tsx' &&
+      !PRIVACY_OWN_FILES.has(f) &&
+      /speed-insights|SpeedInsights/i.test(stripComments(fs.readFileSync(f, 'utf8'))),
+  )
+  assert.deepEqual(speedHits, [], `Speed Insights 只准喺 app/layout.tsx：\n  ${speedHits.join('\n  ')}`)
 
   const usesSentry =
     /@sentry\/nextjs/.test(pkg) ||
