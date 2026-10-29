@@ -1,0 +1,34 @@
+name: Question / content issue
+description: Wrong answer, unclear explanation, or syllabus concern
+title: "[content] "
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        用嚟回報**題目／解析**問題。請提供科目同大概題意；**唔好**貼完整可能受版權保護嘅官方試卷原文。
+  - type: dropdown
+    id: subject
+    attributes:
+      label: Subject (approx.)
+      options:
+        - Maths
+        - English
+        - Chinese
+        - CSD / 公民
+        - Science
+        - Other / 其他
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is wrong?
+      description: Wrong key? Ambiguous wording? Out of syllabus? Broken KaTeX?
+    validations:
+      required: true
+  - type: textarea
+    id: hint
+    attributes:
+      label: How to find the item
+      description: Topic name, rough stem paraphrase, or screenshot description (no personal data).

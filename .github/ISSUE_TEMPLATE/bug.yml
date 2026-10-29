@@ -1,0 +1,46 @@
+name: Bug
+description: Something broken for students on the site
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        用白話寫就得（繁中／英文都得）。**唔好貼**電郵、全名、學校班別、或其他同學嘅資料。
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you see? What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: e.g. Open /practice → pick Maths → …
+    validations:
+      required: false
+  - type: input
+    id: where
+    attributes:
+      label: URL or page
+      placeholder: https://www.dselevelup.com/...
+  - type: dropdown
+    id: data
+    attributes:
+      label: Involves student account / progress data?
+      options:
+        - "No"
+        - "Yes — I will not paste personal data here"
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+        - Phone
+        - Tablet
+        - Desktop
+        - Not sure
