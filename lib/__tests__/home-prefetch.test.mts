@@ -73,7 +73,8 @@ test('shell nav: secondary routes set prefetch false; practice entries do not', 
 })
 
 test('sidebar and bottom nav secondary routes disable prefetch; /subjects stays default', () => {
-  assert.match(side, /SIDEBAR_PREFETCH_OFF = new Set\(/)
+  // Typed as ReadonlySet<string> so .has(href) accepts ITEMS union incl. /subjects.
+  assert.match(side, /SIDEBAR_PREFETCH_OFF(?::\s*ReadonlySet<string>)?\s*=\s*new Set\(/)
   assert.match(side, /href !== '\/subjects'/)
   assert.match(side, /prefetch=\{SIDEBAR_PREFETCH_OFF\.has\(href\) \? false : undefined\}/)
 
