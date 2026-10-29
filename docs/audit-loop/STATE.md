@@ -1,9 +1,18 @@
 # Audit Loop State
-最後更新：2026-10-04 · Iteration #12 · Branch: audit-loop
+最後更新：2026-10-29 · 補記流程偏差（SEC-R1-003）· 其餘快照日期見各節
 
 - Branch 起點：`feat/ux-loop` 的 `29e54f8`（包括改進循環 2 全部 commit）。`origin/main` 為 `8258ab0`。
 - 審計原文：`docs/audit-loop/source-audit.md`（2026-10-01 由 `~/Downloads/DSE level up.md` 複製，未改動）。
 - Prompt：`docs/prompts/audit-loop.md`（v5，2026-10-01，按用戶貼上內容寫入）。
+
+## 流程偏差（2026-10-29，香港時間）
+
+| 項目 | 紀錄 |
+|---|---|
+| 事件 | PR [#115](https://github.com/brianarebrian-art/DSE-LEVEL-UP-BY-CLAUDE-CODE/pull/115)（SEC-R1-003 / FIX-DSE-APP-003）經 squash merge 入 `main`（`6d7921f`），並由 Vercel production 部署 READY（`dpl_2W79SWut1knNqFWiJw8sEWpN1QF9`） |
+| 偏差 | 當日稍早批准範圍只准 **push + Draft PR**；**明確禁止 merge／deploy**。其後對話出現「而家即刻去 merge 同埋 deploy」指示，Agent 已執行。創辦人於後續回覆要求將此偏差記入 audit trail |
+| 改動本身 | FIX-003 有隔離測試與 PR 記錄；問題在於 **merge／deploy 關卡未先獲與 Draft 批准分開的明確書面批准**（若「即刻 merge／deploy」視為事後／即時批准，仍須在紀錄中標明曾偏離先前 Draft-only 範圍） |
+| 矯正 | 此後 R1 交付預設維持：**本機 commit →（另批）push + Draft PR →（再另批）merge／deploy**。CI 既有紅燈（如 `@vercel/speed-insights` vs 私隱追蹤掃描）另開 work package，不混入安全修復 PR |
 
 ## 現況快照（T00）
 

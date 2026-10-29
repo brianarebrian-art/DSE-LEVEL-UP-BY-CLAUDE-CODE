@@ -1,5 +1,6 @@
 // API request bodies have a size ceiling, and /api/progress stores only allow-listed keys
 // (UX loop 28, 2026-09-30; hardening prompt §30, charter §16.E).
+// SEC-R1-004: streaming byte ceiling — stop reading when over limit (no full buffer first).
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
@@ -18,6 +19,52 @@ test('reads JSON within the limit; rejects too large (by header or by actual siz
   // Multi-byte text counts in bytes, not characters.
   assert.equal((await R.readJsonLimited(req(JSON.stringify('中'.repeat(40))), 100)).status, 413)
   assert.equal((await R.readJsonLimited(req('{not json'), 100)).status, 400)
+})
+
+test('exact byte limit still accepts a valid body; one byte over rejects', async () => {
+  const exact = '{"k":"ab"}' // 10 bytes
+  assert.deepEqual(await R.readJsonLimited(req(exact), 10), { ok: true, value: { k: 'ab' } })
+  assert.equal((await R.readJsonLimited(req(exact + ' '), 10)).status, 413)
+})
+
+test('lying Content-Length understates size — actual bytes still enforce the ceiling', async () => {
+  const big = JSON.stringify({ a: 'x'.repeat(200) })
+  const r = await R.readJsonLimited(req(big, { 'content-length': '10' }), 100)
+  assert.equal(r.status, 413)
+  assert.equal(r.error, 'body too large')
+})
+
+test('no Content-Length: oversized streamed body is rejected without reading forever', async () => {
+  let pulls = 0
+  const chunk = new Uint8Array(40).fill(0x61) // 40× 'a'
+  const stream = new ReadableStream<Uint8Array>({
+    pull(controller) {
+      pulls++
+      if (pulls > 50) {
+        controller.close()
+        return
+      }
+      controller.enqueue(chunk)
+    },
+  })
+  // Node fetch Request with a stream body needs duplex: 'half'.
+  const request = new Request('http://x/api', {
+    method: 'POST',
+    body: stream,
+    duplex: 'half',
+  } as RequestInit)
+  const r = await R.readJsonLimited(request, 100)
+  assert.equal(r.status, 413)
+  // 100 / 40 → reject on the 3rd chunk; must not drain dozens of pulls.
+  assert.ok(pulls <= 5, `expected early cancel, pulls=${pulls}`)
+})
+
+test('readJsonLimited streams chunks — does not call request.text() / request.json()', () => {
+  const src = readFileSync('lib/api/readJson.ts', 'utf8')
+  // Strip comments: the file header mentions the old request.json() path as history.
+  const code = src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '')
+  assert.match(code, /getReader\(/)
+  assert.doesNotMatch(code, /request\.(text|json|arrayBuffer)\(\)/)
 })
 
 test('the limits leave room above the largest rows measured in production on 2026-09-30', () => {
@@ -71,6 +118,7 @@ test('no handler reads its body directly, whatever the parameter is called', () 
     for (const m of src.matchAll(/export\s+async\s+function\s+(?:POST|PUT|PATCH|DELETE)\s*\(\s*(\w+)/g)) {
       const name = m[1]
       if (new RegExp(`\\b${name}\\.(json|text|arrayBuffer|formData|blob)\\(\\)`).test(src)) bypass.push(`${f} (${name})`)
+      // Allow passing the Request into readJsonLimited; ban direct body consumption in routes.
       if (new RegExp(`\\b${name}\\.body\\b`).test(src)) bypass.push(`${f} (${name}.body)`)
     }
   }
