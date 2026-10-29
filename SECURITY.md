@@ -20,11 +20,21 @@ Preferred languages: **zh-HK**, English.
 
 **Out of scope without prior written OK:** load-testing production, social-engineering students, accessing other users’ accounts, scraping the full question bank for republication.
 
+## Response targets (best effort)
+
+| Severity | Ack | Next update |
+|---|---|---|
+| Credential leak / auth bypass | within 24h | Daily until mitigated |
+| Student data exposure | within 24h | Daily |
+| Lower-risk bug | within 7 days | When patched |
+
 ## Our commitments (small team)
 
 - We aim to acknowledge reports and triage as fast as a two-person volunteer project can.
 - There is **no paid bug bounty**.
+- Responsible disclosure: we prefer coordinated fix before public detail.
 - “Fix login / improve security” does **not** mean we will wipe the production database. Data resets need a separate, written founder decision and public notice.
+- Playbook: `docs/SECURITY_INCIDENT_RESPONSE.md`.
 
 ## For maintainers (short)
 

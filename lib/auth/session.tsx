@@ -159,3 +159,29 @@ export async function authSignUpEmail(
 ) {
   return authClient.signUp.email({ name, email, password, callbackURL })
 }
+
+/** Magic-link sign-in (Better Auth only). Always returns a generic OK to the UI. */
+export async function authRequestMagicLink(email: string, callbackURL = '/dashboard?sync=ok') {
+  if (AUTH_BACKEND !== 'better-auth') {
+    return { data: null, error: { message: 'Magic link requires Better Auth cutover.' } }
+  }
+  return authClient.signIn.magicLink({ email, callbackURL })
+}
+
+/** Password reset email (Better Auth only). */
+export async function authRequestPasswordReset(email: string, redirectTo = '/reset-password') {
+  if (AUTH_BACKEND !== 'better-auth') {
+    return { data: null, error: { message: 'Password reset requires Better Auth cutover.' } }
+  }
+  return authClient.requestPasswordReset({ email, redirectTo })
+}
+
+/** Revoke every server session for this user (Better Auth). Auth.js JWT cannot remote-revoke. */
+export async function authRevokeAllSessions(): Promise<{ ok: boolean; mode: 'better-auth' | 'next-auth-local-only' }> {
+  if (AUTH_BACKEND === 'better-auth') {
+    const res = await authClient.revokeSessions()
+    return { ok: !res.error, mode: 'better-auth' }
+  }
+  await authSignOutAndWait()
+  return { ok: true, mode: 'next-auth-local-only' }
+}

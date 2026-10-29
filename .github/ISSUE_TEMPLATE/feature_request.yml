@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest an improvement that helps students learn safely
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        兩人團隊 —— 請寫清楚**學生得益**。唔好要求收集學校／身份證等非必要資料。
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is hard for students today?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: What should change? Keep it small if possible.
+    validations:
+      required: true
+  - type: dropdown
+    id: sen
+    attributes:
+      label: Related to accessibility / SEN / emotional safety?
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true

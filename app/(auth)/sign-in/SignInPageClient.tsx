@@ -47,6 +47,11 @@ export default function SignInPageClient() {
             ? 'Sign in once to sync progress across devices. On this device you’ll usually stay signed in. Still 100% free — sign-in never unlocks paid content.'
             : '登入一次就可以跨裝置同步進度；喺呢部機返嚟通常唔使再撳（自動保持登入）。仍然 100% 免費 —— 登入唔會解鎖任何付費內容。'}
         </p>
+        <p className="text-xs text-ink-muted mb-4 leading-relaxed">
+          {en
+            ? 'Under 18? You can still use the site without signing in. If you sign in, we only sync study progress — never ask for school name, class, or ID card.'
+            : '未滿 18 歲？唔登入都可以用。如果登入，我哋只同步溫習進度 —— 唔會問學校、班別或身份證。'}
+        </p>
 
         {/* Google OAuth 喺 App 內置瀏覽器會被 Google 自己封 —— 呢一版只有 Google
             一個選項，封咗就零後路，所以提示要擺喺個掣【之上】而唔係之下。 */}
@@ -97,6 +102,14 @@ export default function SignInPageClient() {
               </button>
             </form>
 
+            <p className="text-sm text-ink-muted mt-3 text-center space-x-3">
+              <Link href="/forgot-password" className="text-accent hover:underline">
+                {en ? 'Forgot password?' : '忘記密碼？'}
+              </Link>
+              <Link href="/magic-link" className="text-accent hover:underline">
+                {en ? 'Email me a link' : '用電郵收連結'}
+              </Link>
+            </p>
             <p className="text-sm text-ink-muted mt-4 text-center">
               {en ? 'No account? ' : '未有帳戶？'}
               <Link href="/sign-up" className="text-accent hover:underline">

@@ -130,7 +130,13 @@ export default function ReportQuestionButton({
         body: JSON.stringify({ questionId, category: cat, locale: en ? 'en' : 'zh' }),
       })
       const data = (await res.json().catch(() => null)) as { ok?: boolean } | null
-      setSend(res.ok && data?.ok === true ? 'sent' : 'failed')
+      const ok = res.ok && data?.ok === true
+      setSend(ok ? 'sent' : 'failed')
+      if (ok) {
+        void import('@/lib/analytics/track').then(({ trackEvent }) => {
+          trackEvent('question_reported', { questionId, category: cat })
+        })
+      }
     } catch {
       setSend('failed')
     }

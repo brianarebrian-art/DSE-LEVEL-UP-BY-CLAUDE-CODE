@@ -51,7 +51,8 @@ test('the button sends no description and only says "received" on { ok: true }',
   const src = read('components/ReportQuestionButton.tsx')
   const body = src.match(/body: JSON\.stringify\((\{[^}]*\})\)/)![1]
   assert.equal(body, "{ questionId, category: cat, locale: en ? 'en' : 'zh' }")
-  assert.match(src, /setSend\(res\.ok && data\?\.ok === true \? 'sent' : 'failed'\)/)
+  assert.match(src, /setSend\(ok \? 'sent' : 'failed'\)|setSend\(res\.ok && data\?\.ok === true \? 'sent' : 'failed'\)/)
+  assert.match(src, /const ok = res\.ok && data\?\.ok === true/)
   assert.match(src, /傳送唔到。請用下面嘅電郵寄出。/)
   assert.match(src, /呢度寫嘅字只會經你自己嘅電郵寄出，本站唔會儲存。/)
 })

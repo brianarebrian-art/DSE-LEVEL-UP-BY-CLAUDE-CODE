@@ -187,6 +187,34 @@ export default function AccountPageClient() {
             </p>
           </div>
         ) : (
+          <>
+          <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-6">
+            <h2 className="text-base font-bold text-ink mb-2">
+              {en ? 'Sign out everywhere' : '登出所有裝置'}
+            </h2>
+            <p className="text-sm text-ink-muted leading-relaxed mb-4">
+              {en
+                ? 'Ends cloud sessions for this account when Better Auth is enabled. With the current Google JWT login, only this device is signed out; other devices expire with their session cookie.'
+                : '開通 Better Auth 之後，會結束呢個帳戶所有雲端 session。而家嘅 Google JWT 登入只能登出呢部機；其他裝置會等到 session 過期。'}
+            </p>
+            <button
+              type="button"
+              className="min-h-11 border border-line-strong text-ink hover:bg-surface-sunken font-medium px-4 py-2.5 rounded-xl text-sm transition-all"
+              onClick={async () => {
+                setBusy(true)
+                try {
+                  await fetch('/api/auth/revoke-sessions', { method: 'POST' })
+                  await authSignOutAndWait()
+                  window.location.replace('/sign-in')
+                } finally {
+                  setBusy(false)
+                }
+              }}
+              disabled={busy}
+            >
+              {en ? 'Sign out all devices' : '登出所有裝置'}
+            </button>
+          </div>
           <div className="bg-surface-raised border border-rose/25 rounded-2xl p-6">
             <h2 className="text-base font-bold text-ink mb-2">{en ? 'Delete my data' : '刪除我的資料'}</h2>
             <p className="text-sm text-ink-muted leading-relaxed mb-4">
@@ -222,6 +250,7 @@ export default function AccountPageClient() {
               </button>
             )}
           </div>
+          </>
         )}
       </div>
     </div>

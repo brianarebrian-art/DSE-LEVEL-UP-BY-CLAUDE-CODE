@@ -1,0 +1,47 @@
+name: Question error (for maintainers)
+description: Track a bad question found outside the in-app report button
+title: "[qbank] "
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        學生請優先用網站內「呢條題有問題？」掣（只會送類別，唔會送你寫嘅長文去我哋伺服器）。
+        呢個 Issue 俾維護者／義工追蹤。**唔好貼**學生電郵或私人資料。
+  - type: input
+    id: qid
+    attributes:
+      label: Question id
+      placeholder: e.g. math.quad.12
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - answer
+        - explain
+        - wording
+        - display
+        - scope
+        - topic
+        - copyright
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Maintainer notes
+      description: Internal only. No student personal data.
+  - type: dropdown
+    id: status
+    attributes:
+      label: Suggested status
+      options:
+        - new
+        - triaged
+        - human_review
+        - fixed
+        - rejected
