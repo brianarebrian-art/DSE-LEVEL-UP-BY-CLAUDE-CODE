@@ -13,7 +13,8 @@ test('the rail shows from 1440px only, as the first grid column', () => {
   assert.match(rail, /className="focus-dim hidden desk:block sticky top-20/)
   const grid = session.indexOf('desk:grid-cols-[220px_1fr_1fr]')
   const railAt = session.indexOf('<PracticeContextRail subjectId={subjectId}')
-  const cardAt = session.indexOf('<div key={currentQ.id} className="bg-surface-raised')
+  // Wave 2: question card also carries practice-q-card before bg-surface-raised.
+  const cardAt = session.indexOf('key={currentQ.id} className="practice-q-card bg-surface-raised')
   assert.ok(grid > 0 && grid < railAt && railAt < cardAt)
 })
 

@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { LogIn, LogOut, Loader2, CloudOff, Cloud } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import { useSync } from '@/components/SyncProvider'
-import { useAuthSession, authSignInGoogle, authSignOut } from '@/lib/auth/session'
+import { useAuthSession, authSignOut } from '@/lib/auth/session'
 import SignInNote from '@/components/SignInNote'
 
 const AUTH_ENABLED = process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true'
@@ -54,20 +55,17 @@ export default function SyncStatus() {
       <div className="bg-surface-raised border border-gold/30 rounded-2xl p-4 mb-8 flex items-center justify-between gap-4 flex-wrap">
         <span className="text-sm text-ink-muted">
           {en
-            ? 'Progress is saved on this device. Bind a Google account to sync across devices.'
-            : '進度暫存喺呢部裝置。綁定 Google 帳戶即可跨裝置同步。'}
+            ? 'Progress is saved on this device. Sign in to sync across devices (Google or email when enabled).'
+            : '進度暫存喺呢部裝置。登入即可跨裝置同步（Google；啟用後亦可用電郵）。'}
         </span>
-        <button
-          onClick={() => {
-            setBinding(true)
-            authSignInGoogle()
-          }}
-          disabled={binding}
-          className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover disabled:opacity-60 disabled:cursor-not-allowed text-on-accent font-medium px-4 py-2 rounded-xl transition-all text-sm shrink-0"
+        <Link
+          href="/sign-in"
+          onClick={() => setBinding(true)}
+          className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-4 py-2 rounded-xl transition-all text-sm shrink-0"
         >
           {binding ? <Loader2 size={15} className="animate-spin" /> : <LogIn size={15} />}
-          {binding ? (en ? 'Redirecting…' : '跳轉中…') : en ? '🔓 Bind Google' : '🔓 綁定 Google 帳戶'}
-        </button>
+          {binding ? (en ? 'Redirecting…' : '跳轉中…') : en ? 'Sign in to sync' : '登入以同步'}
+        </Link>
         <SignInNote className="basis-full" />
       </div>
     )

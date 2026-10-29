@@ -20,6 +20,7 @@ import RadarChart from '@/components/RadarChart'
 // 第 1 週 · 引擎二：課題掌握度圓環（純 SVG，只顯示百分比，無等級）
 import MasteryRing from '@/components/MasteryRing'
 import SyncStatus from '@/components/SyncStatus'
+import SyncReadyBannerGate from '@/components/SyncReadyBannerGate'
 import ErrorDNA from '@/components/ErrorDNA'
 import DailyPlan from '@/components/DailyPlan'
 // 第 2 週 · 引擎四：今日學習光譜（溫柔每日建議，每日最多 3 條，逐條可撳走）
@@ -225,6 +226,7 @@ export default function DashboardPageClient() {
       <div className="min-h-screen px-4 py-20 bg-surface text-ink-soft">
         <div className="max-w-md mx-auto">
           {/* Even with zero history, let new users bind Google to sync */}
+          <SyncReadyBannerGate />
           <SyncStatus />
           <div className="text-center">
             {/* 2026-09-03：📊 換成吉祥物（捧杯、瞇眼笑）。
@@ -345,6 +347,7 @@ export default function DashboardPageClient() {
         <QuietModeToggle />
 
         {/* Cross-device sync status (replaces the old on-device teaser) */}
+        <SyncReadyBannerGate />
         <SyncStatus />
 
         {/* 今日提示（藍圖 02 每日溫習信 + 06 錯題溫和提醒，合併為單一提示位）。

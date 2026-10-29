@@ -56,8 +56,11 @@
  *
  * 2026-10-23.v1 —— 私隱頁加一條去使用條款的連結。沒有新增採集類別。
  * 指紋閘要求文案一改就 bump，所以登入學生會再見一次同意視窗。
+ *
+ * 2026-10-29.v1 —— Speed Insights／安全日誌披露與 G-A3 登入文案對齊私隱頁。
+ * 指紋閘要求文案一改就 bump；登入學生會再見一次同意視窗。
  */
-export const POLICY_VERSION = '2026-10-23.v1'
+export const POLICY_VERSION = '2026-10-29.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

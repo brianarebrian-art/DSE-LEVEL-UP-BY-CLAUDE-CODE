@@ -33,7 +33,7 @@ export default function SignInPageClient() {
       setBusy(false)
       return
     }
-    router.push('/dashboard')
+    router.push('/dashboard?sync=ok')
   }
 
   return (
@@ -44,8 +44,8 @@ export default function SignInPageClient() {
         </h1>
         <p className="text-sm text-ink-muted mb-5">
           {en
-            ? 'Sign in to sync your progress across devices. The platform is 100% free.'
-            : '登入以跨裝置同步你嘅進度。平台 100% 免費。'}
+            ? 'Sign in once to sync progress across devices. On this device you’ll usually stay signed in. Still 100% free — sign-in never unlocks paid content.'
+            : '登入一次就可以跨裝置同步進度；喺呢部機返嚟通常唔使再撳（自動保持登入）。仍然 100% 免費 —— 登入唔會解鎖任何付費內容。'}
         </p>
 
         {/* Google OAuth 喺 App 內置瀏覽器會被 Google 自己封 —— 呢一版只有 Google
@@ -53,7 +53,7 @@ export default function SignInPageClient() {
         <InAppBrowserNotice />
 
         <button
-          onClick={() => authSignInGoogle()}
+          onClick={() => authSignInGoogle('/dashboard?sync=ok')}
           className="w-full inline-flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-4 py-2.5 rounded-xl transition-colors"
         >
           <LogIn size={16} /> {en ? 'Continue with Google' : '用 Google 繼續'}
