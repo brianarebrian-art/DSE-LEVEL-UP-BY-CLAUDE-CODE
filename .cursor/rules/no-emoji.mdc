@@ -1,0 +1,39 @@
+---
+description: 禁止在網站使用 emoji，必須使用原創圖案或原創 SVG 圖標
+alwaysApply: true
+---
+
+# Emoji 與圖形使用規範
+
+## 絕對禁止
+- 嚴禁在網站的任何地方使用 Unicode emoji，包括但不限於：😀 ✅ ❌ 🚀 🔍 📞 📧 ⭐ ❤️。
+- 禁止在以下位置使用 emoji：HTML、JSX/TSX、Vue、Svelte、CSS content、JSON、CMS 內容、meta description、Open Graph、電郵模板、按鈕、導覽、表單、錯誤訊息、toast、modal、聊天訊息、footer、404 頁面。
+- 禁止使用 emoji 作為圖標、狀態指示、按鈕、核取方塊、評分、導覽或任何功能性 UI 元素。
+- 禁止引入第三方 emoji 套件、emoji 字體、emoji CDN 或外部 emoji 資源。
+
+## 必須使用
+- 所有視覺符號必須使用原創設計的 SVG 圖標、插畫、品牌圖形或自製動態圖形。
+- 優先建立或使用專案內的 `/assets/icons/`、`/components/icons/` 或設計系統中的原創 SVG 圖標。
+- 圖標必須符合網站的品牌風格、色彩系統、線條粗細、圓角與尺寸比例。
+- 若需要新圖標，先檢查專案內是否已有可重複使用的原創 SVG；沒有時，建立新的原創 SVG component，不要使用 emoji 或未經授權的第三方圖標。
+
+## 實作要求
+- 功能性圖標必須搭配可見文字標籤，或提供正確的 accessible name。
+- 純裝飾性 SVG 必須設定 `aria-hidden="true"` 與 `focusable="false"`。
+- 功能性 SVG 必須使用 `role="img"` 與 `aria-label`，例如：
+  `<svg role="img" aria-label="搜尋">...</svg>`
+- SVG 必須設定明確的 `width` 與 `height`，避免版面異常。
+- 圖標顏色必須與背景保持足夠對比，並支援淺色、深色及高對比模式。
+- 不要以圖標作為唯一資訊來源；重要操作與狀態必須有文字說明。
+
+## 檢查流程
+在完成任何前端修改前：
+1. 搜尋專案中是否新增或保留 emoji 字符。
+2. 確認所有新增圖形均為原創 SVG、插畫或品牌圖形。
+3. 確認沒有引入 emoji 套件、emoji 字體或外部 emoji 資源。
+4. 確認功能性圖標具備文字標籤或 accessible name。
+5. 若發現 emoji，立即以適當的原創 SVG 圖標或文字取代。
+
+## 回應方式
+- 若使用者要求加入 emoji，請說明專案規範禁止 emoji，並主動提出原創 SVG 或文字替代方案。
+- 產生 UI、landing page、component、email template 或內容時，一律預設不使用 emoji。
