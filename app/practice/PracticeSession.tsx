@@ -38,7 +38,7 @@ import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicSt
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown, Sprout, MapPin, Loader2 } from 'lucide-react'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import PracticeMoreMenu from '@/components/PracticeMoreMenu'
@@ -777,13 +777,13 @@ export default function PracticeSession({
   // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
   if (justOneDone) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
-        <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
-          <div className="text-3xl mb-3" aria-hidden>🌱</div>
-          <h2 className="text-lg font-medium text-ink mb-2">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
+        <div className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface-raised p-7 text-center shadow-[var(--shadow-float)]">
+          <Sprout size={36} aria-hidden className="mx-auto mb-3 text-success" />
+          <h2 className="mb-2 text-lg font-semibold text-ink">
             {tr('你今日打開咗嚟，已經好叻。', 'You showed up today. That already counts.')}
           </h2>
-          <p className="text-sm text-ink-muted leading-relaxed mb-6">
+          <p className="mb-6 text-sm leading-relaxed text-ink-muted">
             {tr(
               '做完 1 題就夠喇。想再做就再做，唔想就收工 —— 兩樣都冇問題。',
               'One question is enough. Do another if you feel like it, or stop here — both are fine.',
@@ -792,13 +792,13 @@ export default function PracticeSession({
           <div className="flex flex-col gap-2.5">
             <button
               onClick={() => window.location.reload()}
-              className="w-full min-h-12 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
+              className="pressable min-h-12 w-full rounded-[var(--radius-control)] bg-accent-strong px-6 py-3 font-medium text-on-accent hover:bg-accent-hover"
             >
               {tr('再做多 1 題', 'One more question')}
             </button>
             <Link
               href="/dashboard"
-              className="w-full min-h-12 flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
+              className="pressable flex min-h-12 w-full items-center justify-center rounded-[var(--radius-control)] border border-line-strong bg-surface-raised px-6 py-3 text-sm text-ink-muted hover:bg-surface-sunken"
             >
               {tr('今日就到呢度', "That's it for today")}
             </Link>
@@ -814,31 +814,31 @@ export default function PracticeSession({
     const doneCount = resumeOffer.current
     const totalCount = resumeOffer.questionIds.length
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
-        <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
-          <div className="text-3xl mb-3" aria-hidden>📍</div>
-          <h2 className="text-lg font-medium text-ink mb-2">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
+        <div className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface-raised p-7 text-center shadow-[var(--shadow-float)]">
+          <MapPin size={36} aria-hidden className="mx-auto mb-3 text-accent" />
+          <h2 className="mb-2 text-lg font-semibold text-ink">
             {tr('你有份未做完嘅練習', 'You have an unfinished run')}
           </h2>
-          <p className="text-sm text-ink-muted leading-relaxed mb-1">
+          <p className="mb-1 text-sm leading-relaxed text-ink-muted">
             {tr(
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經做咗 ${doneCount} / ${totalCount} 題`,
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
             )}
           </p>
-          <p className="text-xs text-ink-muted leading-relaxed mb-6">
+          <p className="mb-6 text-xs leading-relaxed text-ink-muted">
             {tr('喺邊部機做都好，接返落去就得。', 'Pick up right where you left off, on any device.')}
           </p>
           <div className="flex flex-col gap-2.5">
             <button
               onClick={acceptResume}
-              className="w-full min-h-12 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
+              className="pressable min-h-12 w-full rounded-[var(--radius-control)] bg-accent-strong px-6 py-3 font-medium text-on-accent hover:bg-accent-hover"
             >
               {tr(`繼續做第 ${doneCount + 1} 題`, `Continue from question ${doneCount + 1}`)}
             </button>
             <button
               onClick={declineResume}
-              className="w-full min-h-12 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
+              className="pressable min-h-12 w-full rounded-[var(--radius-control)] border border-line-strong bg-surface-raised px-6 py-3 text-sm text-ink-muted hover:bg-surface-sunken"
             >
               {tr('重新開始一份', 'Start a fresh one')}
             </button>
@@ -851,14 +851,17 @@ export default function PracticeSession({
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 text-center text-ink-soft">
         <Brain size={40} aria-hidden className="text-ink-muted" />
-        <p className="text-ink-muted">
+        <p className="max-w-sm text-ink-muted">
           {subjectMeta
             ? t.practice.notLive.replace('{subject}', tr(subjectMeta.name, subjectMeta.nameEn))
             : t.practice.notLiveGeneric}
         </p>
-        <Link href="/subjects" className="text-accent hover:text-accent-strong underline">
+        <Link
+          href="/subjects"
+          className="pressable inline-flex min-h-12 items-center rounded-[var(--radius-control)] border border-line-strong px-4 text-sm font-medium text-accent hover:bg-surface-sunken"
+        >
           {t.practice.otherSubjects}
         </Link>
       </div>
@@ -867,7 +870,14 @@ export default function PracticeSession({
 
   if (!currentQ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
+      <div
+        className="flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 text-ink-muted"
+        role="status"
+        aria-live="polite"
+      >
+        <Loader2 size={28} aria-hidden className="animate-spin text-accent motion-reduce:animate-none" />
+        <span className="text-sm">{t.practice.loading}</span>
+      </div>
     )
   }
 
@@ -879,7 +889,7 @@ export default function PracticeSession({
         <div className={answerState ? 'practice-revealed-scroll' : undefined}>
 
         {/* 練習頂欄：返回｜科目｜題序；次要工具收入「更多」。判斷軌喺下面。 */}
-        <div className="focus-dim sticky top-0 z-30 practice-sticky-head -mt-2 pt-2 pb-3 mb-3 bg-surface">
+        <div className="focus-dim chrome-material sticky top-0 z-30 practice-sticky-head -mt-2 border-b border-line pt-2 pb-3 mb-3">
           <div className="flex items-center gap-2 text-sm">
             <Link
               href="/subjects"

@@ -13,8 +13,9 @@ test('the hamburger more-list and the sidebar end with 不考之地', () => {
   const more = [...moreBlock.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
   assert.equal(more.at(-1), '/off-syllabus', 'last more-list item')
   const side = read('components/Sidebar.tsx')
-  const items = [...side.matchAll(/\{ href: '([^']+)', key: '[a-zA-Z]+', Icon/g)].map((m) => m[1])
-  assert.equal(items.at(-1), '/off-syllabus', 'last sidebar item')
+  const moreSide = side.slice(side.indexOf('const MORE'), side.indexOf(']', side.indexOf('const MORE')) + 1)
+  const items = [...moreSide.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
+  assert.equal(items.at(-1), '/off-syllabus', 'last sidebar more item')
 })
 
 test('name and tagline are as decided', () => {

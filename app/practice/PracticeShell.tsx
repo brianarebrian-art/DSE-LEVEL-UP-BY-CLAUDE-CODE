@@ -9,7 +9,7 @@ import { parseCause } from '@/lib/causeMode'
 import PracticeSupport from '@/components/PracticeSupport'
 // NTM 溫柔二次確認：開咗「今晚唔溫得」入嚟會先問一次（零強制，確認即放行）
 import NotTonightGate from '@/components/NotTonightGate'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, BookOpen, Loader2 } from 'lucide-react'
 
 // 2026-07-29：由 `page.tsx` 原封不動搬過嚟。搬遷原因見 page.tsx 檔首註釋 ——
 // page.tsx 本身要變返 server component 先有伺服器端內容俾爬蟲讀，
@@ -18,7 +18,14 @@ import { ArrowRight } from 'lucide-react'
 function LoadingScreen() {
   const t = useT()
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.common.loading}</div>
+    <div
+      className="flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 text-ink-muted"
+      role="status"
+      aria-live="polite"
+    >
+      <Loader2 size={28} aria-hidden className="animate-spin text-accent motion-reduce:animate-none" />
+      <span className="text-sm">{t.common.loading}</span>
+    </div>
   )
 }
 
@@ -27,8 +34,9 @@ function MissingSubject() {
   const { locale } = useLocale()
   const en = locale === 'en'
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-      <h1 className="text-xl font-medium text-ink">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 text-center text-ink-soft">
+      <BookOpen size={36} aria-hidden className="text-accent" />
+      <h1 className="text-xl font-semibold text-ink">
         {en ? 'Pick a subject to start' : '先揀一科再開始'}
       </h1>
       <p className="max-w-sm text-sm leading-relaxed text-ink-muted">
@@ -39,13 +47,13 @@ function MissingSubject() {
       <div className="flex flex-wrap items-center justify-center gap-3">
         <Link
           href="/subjects"
-          className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-accent-strong px-5 text-sm font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover active:scale-[0.97]"
+          className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] bg-accent-strong px-5 text-sm font-medium text-on-accent hover:bg-accent-hover"
         >
           {en ? 'All subjects' : '科目總覽'} <ArrowRight size={16} aria-hidden />
         </Link>
         <Link
           href="/start"
-          className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-line-strong px-5 text-sm text-ink-soft transition-colors hover:bg-surface-sunken"
+          className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] border border-line-strong px-5 text-sm text-ink-soft hover:bg-surface-sunken"
         >
           {en ? 'Continue / start' : '繼續／開始練習'}
         </Link>

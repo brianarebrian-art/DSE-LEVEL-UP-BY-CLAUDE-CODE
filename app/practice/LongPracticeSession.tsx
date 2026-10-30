@@ -144,10 +144,11 @@ export default function LongPracticeSession({
 
   if (questions.length === 0) {
     return (
-      <div className="min-h-screen bg-surface text-ink flex items-center justify-center px-4">
+      <div className="flex min-h-screen items-center justify-center bg-surface px-4 text-ink">
         <div className="max-w-md text-center">
-          <p className="text-lg font-medium mb-2">{tr('呢科暫時未有長題目', 'No written questions here yet')}</p>
-          <p className="text-sm text-ink-muted leading-relaxed mb-6">
+          <Brain size={36} aria-hidden className="mx-auto mb-3 text-ink-muted" />
+          <p className="mb-2 text-lg font-semibold">{tr('呢科暫時未有長題目', 'No written questions here yet')}</p>
+          <p className="mb-6 text-sm leading-relaxed text-ink-muted">
             {tr(
               '想即刻練，可以先做選擇題。',
               'The multiple-choice bank is ready now.',
@@ -155,7 +156,7 @@ export default function LongPracticeSession({
           </p>
           <Link
             href={`/practice?subject=${subjectId}`}
-            className="min-h-12 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
+            className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] bg-accent-strong px-5 py-2.5 font-medium text-on-accent hover:bg-accent-hover"
           >
             {tr('去做選擇題', 'Practise multiple choice')} <ArrowRight size={16} aria-hidden />
           </Link>
@@ -213,9 +214,9 @@ export default function LongPracticeSession({
   }
 
   return (
-    <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
+    <div className="min-h-screen bg-surface px-4 py-6 text-ink sm:px-8 sm:py-10">
       <div className="mx-auto max-w-2xl">
-        <div className="flex items-center justify-between gap-2 mb-4">
+        <div className="chrome-material sticky top-0 z-30 -mx-1 mb-4 flex items-center justify-between gap-2 border-b border-line px-1 py-3">
           <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
             {tr(`第 ${idx + 1} / ${questions.length} 條`, `${idx + 1} of ${questions.length}`)}
           </span>

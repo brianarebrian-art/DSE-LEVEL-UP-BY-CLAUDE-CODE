@@ -51,3 +51,7 @@ ds-bundle/
 .design-sync/.cache/
 .design-sync/learnings/
 .design-sync/node_modules
+
+# Agent skill install scratch (canonical copy lives in .cursor/skills/)
+.agents/
+skills-lock.json

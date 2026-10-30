@@ -301,7 +301,7 @@ export default function FounderShell({
         {navOpen && (
           <button
             type="button"
-            className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+            className="fixed inset-0 z-30 bg-scrim lg:hidden"
             aria-label="關閉選單"
             onClick={() => setNavOpen(false)}
           />

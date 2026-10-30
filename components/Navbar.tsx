@@ -107,18 +107,15 @@ export default function Navbar() {
   // left 要跟側欄讓位。position:fixed 係對住 viewport，唔係對住父層 ——
   // 所以喺 AppShell 包一個有 padding 嘅 div 推唔郁佢，一定要喺呢度出。
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-line bg-surface-raised md:left-20 xl:left-[260px]">
+    <nav className="chrome-material fixed top-0 right-0 left-0 z-50 border-b border-line md:left-20 xl:left-[260px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          {/* lg 起側欄自己有品牌區（規格 §3.1.1），呢度再出一次就係重複；
-              頂部欄嗰個位規格 §3.2 係留畀問候語嘅。 */}
           <div className="hidden lg:block">
             <Greeting />
           </div>
-          {/* md 起左側圖示列已有品牌標誌（2026-09-30 改進循環 2），這裏只在手機顯示。 */}
-          <Link href="/" className="min-h-11 flex items-center gap-2 font-medium text-lg text-ink md:hidden">
-            <BookOpen size={22} className="text-accent" />
+          <Link href="/" className="min-h-11 flex items-center gap-2 font-semibold text-lg text-ink md:hidden">
+            <BookOpen size={22} className="text-accent" aria-hidden />
             <span className="whitespace-nowrap">
               DSE <span className="text-accent">Level Up</span>
             </span>

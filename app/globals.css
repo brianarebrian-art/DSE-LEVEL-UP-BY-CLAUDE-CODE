@@ -1,14 +1,13 @@
 @import "tailwindcss";
+/* Clear System（2026-10-30 UI reset）—— 語義 token 正本喺 tokens-clear.css。
+   下方舊 @theme／莫蘭迪區塊暫時保留做相容；檔尾 CLEAR-SYSTEM-WIN 會蓋過運行時色值。 */
+@import "./tokens-clear.css";
 
-/* ── Design tokens（2026-10-30 remap）──────────────────────────────────────
-   單一 role 表：surface／ink／accent／line／gold／violet／rose。
-   @theme 預設值 = 莫蘭迪 Light（同 :root 映射一致）；暗色由 [data-theme=cyber] 覆寫。
-   霓虹四色（--color-neon-*）【只】畀導出圖卡用（憲章 §14）—— UI 唔好再用。
+/* ── Legacy @theme（compat; runtime colours win from tokens-clear + CLEAR-SYSTEM-WIN）──
    刻意保留字面 hex 嘅例外（唔好「順手」遷移）：
-   • DailyStatsCard／溫書地圖報告卡（result/page tierMeta 都係餵佢）——
-     html2canvas 導出面鎖定標準色版，唔跟用戶 A11y 變數走（P3-2 規格）
-   • GroupCommunity f.color —— 以 `${hex}1f` 拼 alpha，var() 會整爛佢
-   • ErrorRadar —— SVG presentation attribute（fill="…"）按規範唔食 var() */
+   • DailyStatsCard／溫書地圖報告卡 —— html2canvas 導出鎖定標準色版
+   • GroupCommunity f.color —— `${hex}1f` 拼 alpha
+   • ErrorRadar —— SVG presentation attribute */
 @theme {
   /* 1440px 斷點（UX 循環 LOOP 40，練習頁三欄）。用具名斷點而唔用 min-[1440px]：
      Tailwind v4 把任意值 min-[…] 排喺 lg／xl 之前，同一元素上 lg:grid-cols-2 會蓋過佢。 */
@@ -1499,3 +1498,169 @@ body:has(.practice-session) [data-sos-fab] {
   animation: none !important;
 }
 /* /practice-revealed-p0 */
+
+/* ── CLEAR-SYSTEM-WIN（must be last colour layer）─────────────────────────
+   Re-assert Clear System after legacy Morandi / cyber blocks above. */
+:root {
+  --color-surface: #f2f2f7;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #e5e5ea;
+  --color-ink: #1c1c1e;
+  --color-ink-soft: #3a3a3c;
+  --color-ink-muted: #636366;
+  --color-ink-faint: #aeaeb2;
+  --color-accent: #0055aa;
+  --color-accent-strong: #0071e3;
+  --color-accent-hover: #0060c0;
+  --color-on-accent: #ffffff;
+  --color-line: rgba(60, 60, 67, 0.12);
+  --color-line-strong: rgba(60, 60, 67, 0.29);
+  --color-scrim: rgba(0, 0, 0, 0.4);
+  --color-scrim-soft: rgba(0, 0, 0, 0.24);
+  --color-gold: #b25000;
+  --color-gold-soft: #ffd60a;
+  --color-gold-strong: #9a4500;
+  --color-violet: #5856d6;
+  --color-violet-strong: #3634a3;
+  --color-rose: #d70015;
+  --color-rose-strong: #b00012;
+  --color-ml-canvas: #f2f2f7;
+  --color-ml-surface: #ffffff;
+  --color-ml-muted: #e5e5ea;
+  --color-ml-ink: #1c1c1e;
+  --color-ml-ink-soft: #6c6c70;
+  --color-ml-sage: #0071e3;
+  --color-ml-clay: #b25000;
+  --color-ml-warn: #d70015;
+  --color-ml-good: #248a3d;
+  --color-ml-on-brand: #ffffff;
+  --color-material: rgba(255, 255, 255, 0.72);
+  --color-material-heavy: rgba(242, 242, 247, 0.86);
+}
+:root[data-theme='cyber'] {
+  --color-surface: #000000;
+  --color-surface-raised: #1c1c1e;
+  --color-surface-sunken: #2c2c2e;
+  --color-ink: #f5f5f7;
+  --color-ink-soft: #ebebf5;
+  --color-ink-muted: #98989d;
+  --color-ink-faint: #636366;
+  --color-accent: #409cff;
+  --color-accent-strong: #0071e3;
+  --color-accent-hover: #0060c0;
+  --color-on-accent: #ffffff;
+  --color-line: rgba(84, 84, 88, 0.65);
+  --color-line-strong: rgba(142, 142, 147, 0.45);
+  --color-gold: #ff9f0a;
+  --color-gold-soft: #ffd60a;
+  --color-gold-strong: #ffb340;
+  --color-violet: #5e5ce6;
+  --color-violet-strong: #7d7aff;
+  --color-rose: #ff453a;
+  --color-rose-strong: #ff6961;
+  --color-ml-canvas: #000000;
+  --color-ml-surface: #1c1c1e;
+  --color-ml-muted: #2c2c2e;
+  --color-ml-ink: #f5f5f7;
+  --color-ml-ink-soft: #98989d;
+  --color-ml-sage: #409cff;
+  --color-ml-clay: #ff9f0a;
+  --color-ml-warn: #ff453a;
+  --color-ml-good: #30d158;
+  --color-ml-on-brand: #ffffff;
+  --color-material: rgba(28, 28, 30, 0.72);
+  --color-material-heavy: rgba(0, 0, 0, 0.72);
+}
+
+/* Material chrome helpers */
+.chrome-material {
+  background: var(--color-material);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .chrome-material {
+    background: var(--color-surface-raised);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Press feedback — instant on :active */
+.pressable {
+  transition: transform var(--duration-press) var(--ease-out), background-color var(--duration-ui) var(--ease-out);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pressable:active {
+    transform: none;
+  }
+}
+
+/* Increase Contrast must re-assert AFTER CLEAR-SYSTEM-WIN (same specificity otherwise loses). */
+@media (prefers-contrast: more) {
+  :root {
+    --color-ink: #000000;
+    --color-ink-soft: #1c1c1e;
+    --color-ink-muted: #3a3a3c;
+    --color-accent: #0051a8;
+    --color-accent-strong: #0051a8;
+    --color-accent-hover: #003d80;
+    --color-line: rgba(0, 0, 0, 0.45);
+    --color-line-strong: rgba(0, 0, 0, 0.7);
+    --color-material: #ffffff;
+    --color-material-heavy: #ffffff;
+  }
+  :root[data-theme='cyber'] {
+    --color-ink: #ffffff;
+    --color-ink-soft: #f5f5f7;
+    --color-ink-muted: #d1d1d6;
+    --color-accent: #64d2ff;
+    --color-accent-strong: #64d2ff;
+    --color-accent-hover: #70d7ff;
+    --color-on-accent: #000000;
+    --color-line: rgba(255, 255, 255, 0.55);
+    --color-line-strong: rgba(255, 255, 255, 0.8);
+    --color-material: #1c1c1e;
+    --color-material-heavy: #000000;
+  }
+}
+html[data-contrast='more'] {
+  --color-ink: #000000;
+  --color-ink-soft: #1c1c1e;
+  --color-ink-muted: #3a3a3c;
+  --color-accent: #0051a8;
+  --color-accent-strong: #0051a8;
+  --color-accent-hover: #003d80;
+  --color-line: rgba(0, 0, 0, 0.45);
+  --color-line-strong: rgba(0, 0, 0, 0.7);
+  --color-material: #ffffff;
+  --color-material-heavy: #ffffff;
+}
+html[data-contrast='more'][data-theme='cyber'] {
+  --color-ink: #ffffff;
+  --color-ink-soft: #f5f5f7;
+  --color-ink-muted: #d1d1d6;
+  --color-accent: #64d2ff;
+  --color-accent-strong: #64d2ff;
+  --color-accent-hover: #70d7ff;
+  --color-on-accent: #000000;
+  --color-line: rgba(255, 255, 255, 0.55);
+  --color-line-strong: rgba(255, 255, 255, 0.8);
+  --color-material: #1c1c1e;
+  --color-material-heavy: #000000;
+}
+
+/* Pure SVG charts — Clear System stroke/fill helpers (no chart libraries). */
+.chart-grid {
+  stroke: var(--color-line-strong);
+}
+.chart-mark {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
+}
+.chart-label {
+  fill: var(--color-ink-muted);
+}

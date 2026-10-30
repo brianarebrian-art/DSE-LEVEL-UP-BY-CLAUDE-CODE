@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { headers } from 'next/headers'
-import { Inter, EB_Garamond } from 'next/font/google'
+import { Noto_Sans_TC } from 'next/font/google'
 import './globals.css'
 import 'katex/dist/katex.min.css'
 import Navbar from '@/components/Navbar'
@@ -16,17 +16,12 @@ import ReadingRuler from '@/components/ReadingRuler'
 import { serializeJsonLd } from '@/lib/structuredData'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-const inter = Inter({ subsets: ['latin'] })
-
-// 標題用襯線體（Night Study 設計，2026-09-19）。只供 `font-serif` 標題用，
-// 正文維持 Inter —— 襯線正文對讀寫障礙學生較難讀（BDA 指引）。
-// next/font 會喺 build 時自行託管，瀏覽器唔會向 Google 發任何請求。
-// EB Garamond 冇中文字形，中文字由 globals.css `--font-serif` 嘅系統襯線接手。
-const garamond = EB_Garamond({
+// Clear System：全站 Noto Sans TC（中英一體）。next/font 自行託管。
+const noto = Noto_Sans_TC({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  style: ['normal', 'italic'],
-  variable: '--font-garamond',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-noto',
+  display: 'swap',
 })
 
 // 部署網域：www.dselevelup.com（2026-10-08 起；2026-10-09 創辦人回覆 58a 改用）。單一來源在 lib/site.ts。
@@ -166,8 +161,8 @@ export default async function RootLayout({
   return (
     // suppressHydrationWarning：下方防閃爍腳本會喺 React 水合之前改 data-theme，
     // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
-    <html lang="zh-HK" className={`h-full ${garamond.variable}`} suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-surface text-ink`}>
+    <html lang="zh-HK" className={`h-full ${noto.variable}`} suppressHydrationWarning>
+      <body className={`${noto.className} min-h-screen bg-surface text-ink`}>
         {/* Vercel Web Analytics（創辦人 2026-10-02 決定）。用 Vercel 提供的同源 script，
             唔加套件（憲章 §1 第 5 點）；冇 cookie，只計整體瀏覽量。只喺 Vercel 正式部署載入，
             本機及預覽版唔載。私隱頁「啲資料去咗邊」有對應說明。 */}
