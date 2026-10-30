@@ -27,9 +27,15 @@ interface SyncContextValue {
   status: SyncStatus
   /** Bumps on every local change AND after a cloud pull → consumers re-read. */
   version: number
+  /** Nielsen H1／H3／H9：同步失敗或離線時，畀用戶主動再試（唔使等 online 事件）。 */
+  retry: () => void
 }
 
-const SyncContext = createContext<SyncContextValue>({ status: 'idle', version: 0 })
+const SyncContext = createContext<SyncContextValue>({
+  status: 'idle',
+  version: 0,
+  retry: () => {},
+})
 
 export function useSync(): SyncContextValue {
   return useContext(SyncContext)
@@ -256,5 +262,13 @@ export default function SyncProvider({ children }: { children: React.ReactNode }
     }
   }, [])
 
-  return <SyncContext.Provider value={{ status, version }}>{children}</SyncContext.Provider>
+  // Manual retry for SyncStatus (and any future UI). Same path as reconnect / foreground.
+  const retry = useCallback(() => {
+    if (!maySync) return
+    void pullMerge()
+  }, [maySync, pullMerge])
+
+  return (
+    <SyncContext.Provider value={{ status, version, retry }}>{children}</SyncContext.Provider>
+  )
 }

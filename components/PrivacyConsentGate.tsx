@@ -111,26 +111,26 @@ export default function PrivacyConsentGate() {
       aria-labelledby="consent-title"
       className="fixed inset-0 z-[70] flex items-end justify-center bg-ink/40 p-4 sm:items-center"
     >
-      <div className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-line bg-surface-raised p-6 shadow-xl">
-        <h2 id="consent-title" className="text-xl font-medium text-ink">
+ <div className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-line bg-surface-raised p-6 shadow-xl">
+ <h2 id="consent-title" className="text-xl font-medium text-ink">
           {en ? 'Before your progress leaves this device' : '喺你嘅進度離開呢部機之前'}
         </h2>
-        <p className="mt-2 text-sm text-ink-soft">
+ <p className="mt-2 text-sm text-ink-soft">
           {en
             ? 'You signed in, so we can sync your progress across devices. Here is exactly what that means — three questions, three answers.'
             : '你登入咗，即係話我哋可以幫你將進度同步到第二部機。呢件事實際上係咩，三條問題答晒你。'}
         </p>
 
-        <dl className="mt-5 space-y-4">
+ <dl className="mt-5 space-y-4">
           {CONSENT_POINTS.map((p) => (
-            <div key={p.q.en}>
-              <dt className="text-sm font-medium text-ink">{en ? p.q.en : p.q.zh}</dt>
-              <dd className="mt-1 text-sm text-ink-soft">{en ? p.a.en : p.a.zh}</dd>
-            </div>
-          ))}
-        </dl>
+ <div key={p.q.en}>
+ <dt className="text-sm font-medium text-ink">{en ? p.q.en : p.q.zh}</dt>
+ <dd className="mt-1 text-sm text-ink-soft">{en ? p.a.en : p.a.zh}</dd>
+ </div>
+ ))}
+ </dl>
 
-        <p className="mt-5 rounded-xl border border-line bg-surface p-3 text-sm text-ink-soft">
+ <p className="mt-5 rounded-xl border border-line bg-surface p-3 text-sm text-ink-soft">
           {en ? DECLINE_NOTE.en : DECLINE_NOTE.zh}
         </p>
 
@@ -140,32 +140,32 @@ export default function PrivacyConsentGate() {
               ? 'That did not save, so we have not turned syncing on — we will not pretend it worked. Your practice is safe on this device either way. Try again in a moment.'
               : '記唔到入去，所以我哋冇開同步 —— 唔會扮咗做完。無論點你部機入面嘅練習一個字都冇少。等陣再試。'}
           </p>
-        )}
+ )}
 
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <button
+ <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+ <button
             onClick={accept}
             disabled={saving}
             className="min-h-11 flex-1 rounded-xl bg-accent-strong px-5 font-medium text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-60"
           >
             {saving ? (en ? 'Saving…' : '記緊…') : en ? 'Yes, sync my progress' : '好，幫我同步進度'}
           </button>
-          <button
+ <button
             onClick={decline}
             className="min-h-11 flex-1 rounded-xl border border-line-strong px-5 font-medium text-ink-soft transition-colors hover:border-accent hover:text-accent"
           >
             {en ? 'Not now — keep it on this device' : '而家唔好 —— 留喺呢部機'}
           </button>
-        </div>
+ </div>
 
         {/* 同意閘上通往完整私隱政策嘅連結。個 Link 冇自己嘅顏色，繼承呢個 p —— 
             用 ink-faint 等於叫學生喺 2.91 對比之下揾一條佢有權睇嘅政策。 */}
         <p className="mt-4 text-center text-xs text-ink-muted">
-          <Link href="/privacy" className="underline underline-offset-2 hover:text-accent">
+ <Link href="/privacy" className="underline underline-offset-2 hover:text-accent">
             {en ? 'Read the full privacy policy' : '睇完整私隱政策'}
           </Link>
-        </p>
-      </div>
-    </div>
+ </p>
+ </div>
+ </div>
   )
 }

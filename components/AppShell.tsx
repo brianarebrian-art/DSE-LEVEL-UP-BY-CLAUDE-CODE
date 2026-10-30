@@ -56,7 +56,7 @@ export default function AppShell({
             所以全屏模式、動態詳情頁、後台都唔會出。擺喺 <main> 入面係為咗
             食返上面 `inset` 嘅側欄讓位，唔使再算多次。 */}
         <PageNav />
-      </main>
+ </main>
       {!immersive && footer}
     </>
   )

@@ -3,8 +3,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { Gem, ArrowRight } from 'lucide-react'
+import SubjectMark from '@/components/marks/SubjectMark'
 import { useLocale } from '@/lib/i18n'
-import { subjects } from '@/data/subjects'
+import { subjects, getSubject } from '@/data/subjects'
 // 只要題數同課題數，唔要題目內容 —— 讀 summary.generated，唔好 import barrel。
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { getTopicStats, type TopicStatEntry } from '@/lib/topicStats'
@@ -16,7 +17,6 @@ interface Row {
   id: string
   name: string
   nameEn: string
-  emoji: string
   topics: number
   questions: number
   attempted: number
@@ -45,7 +45,6 @@ export default function NotesOverview() {
         id: s.id,
         name: s.name,
         nameEn: s.nameEn,
-        emoji: s.emoji,
         topics: sum.topics,
         questions: sum.total,
         attempted: mine.reduce((n, e) => n + e.total, 0),
@@ -95,15 +94,18 @@ export default function NotesOverview() {
       )}
 
       <div className="grid gap-3 sm:grid-cols-2">
-        {rows.map((r) => (
+        {rows.map((r) => {
+          const sub = getSubject(r.id)
+          return (
           <Link
             key={r.id}
             href={`/notes/${r.id}`}
             className="group rounded-2xl border border-line bg-surface-raised p-4 transition-colors hover:border-violet/40"
           >
             <div className="flex items-start justify-between gap-2">
-              <span className="text-sm font-medium text-ink">
-                {r.emoji} {en ? r.nameEn : r.name}
+              <span className="flex items-center gap-2 text-sm font-medium text-ink">
+                {sub ? <SubjectMark subject={sub} size="sm" /> : null}
+                {en ? r.nameEn : r.name}
               </span>
               <ArrowRight size={16} className="mt-0.5 shrink-0 text-ink-muted transition-colors group-hover:text-violet" />
             </div>
@@ -123,7 +125,8 @@ export default function NotesOverview() {
               )}
             </p>
           </Link>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

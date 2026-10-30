@@ -99,7 +99,7 @@ export function buildTopicNote(
 
   // 你錯過嘅題（reverseLog 已係最近優先）
   const byId = new Map(inTopic.map((q) => [q.id, q]))
-  const seen = new Set<string>()
+ const seen = new Set<string>()
   const yourMistakes: WrongNote[] = []
   for (const entry of reverseLog) {
     if (entry.topicId !== topicId && entry.topic !== label) continue
@@ -119,9 +119,9 @@ export function buildTopicNote(
 
   // 作者標註嘅陷阱（原文、去重）—— 優先出你錯過嗰啲題嘅陷阱
   const wrongIds = new Set(yourMistakes.map((m) => m.questionId))
-  const ordered = [...inTopic].sort((a, b) => Number(wrongIds.has(b.id)) - Number(wrongIds.has(a.id)))
-  const traps: TrapNote[] = []
-  const shapes = new Set<string>()
+ const ordered = [...inTopic].sort((a, b) => Number(wrongIds.has(b.id)) - Number(wrongIds.has(a.id)))
+ const traps: TrapNote[] = []
+ const shapes = new Set<string>()
   for (const q of ordered) {
     if (!isMC(q)) continue
     const t = extractTrap(q.explanation)

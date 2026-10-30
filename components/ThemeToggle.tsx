@@ -5,9 +5,8 @@ import { useTheme } from '@/components/ThemeProvider'
 import { useLocale } from '@/lib/i18n'
 import type { ThemePref } from '@/lib/theme'
 
-// 主題切換：自動（跟香港日出日落）／ 淺色 ／ 深色霓虹。
-// 三段式而非兩段式 —— 學生揀咗淺或深之後就固定，唔會半夜俾系統改返，
-// 想交返畀時間決定就撳「自動」。
+// 主題切換：自動（跟香港日出日落）／淺色／深色（Clear System）。
+// 三段式 —— 揀咗淺或深就固定；想交返畀日照就撳「自動」。
 
 const fmt = (h: number) =>
   `${String(Math.floor(h)).padStart(2, '0')}:${String(Math.round((h % 1) * 60)).padStart(2, '0')}`

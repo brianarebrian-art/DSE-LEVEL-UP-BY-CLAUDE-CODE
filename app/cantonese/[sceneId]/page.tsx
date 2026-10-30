@@ -81,8 +81,8 @@ export default async function ScenePage({ params }: { params: Promise<{ sceneId:
 
   return (
     <>
-      <JsonLd data={jsonLd} />
-      <SceneView topic={topic} />
-    </>
+ <JsonLd data={jsonLd} />
+ <SceneView topic={topic} />
+ </>
   )
 }

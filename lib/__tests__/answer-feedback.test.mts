@@ -73,9 +73,11 @@ test('答錯回饋唔可以出現大紅交叉（XCircle）', () => {
   assert.ok(/\bLightbulb\b/.test(PRACTICE), '答錯應該用燈泡而非交叉')
 })
 
-test('答錯衝擊波唔可以用霓虹粉', () => {
+test('答錯回饋唔用霓虹粉衝擊波；改用金色邊同安靜提示', () => {
   assert.ok(!/shockwave-pink/.test(PRACTICE), 'shockwave-pink 仍然接住答錯')
-  assert.ok(/shockwave-gold/.test(PRACTICE), '答錯衝擊波應該係金色')
+  assert.ok(!/shockwave-gold/.test(PRACTICE), '衝擊波已停用')
+  assert.ok(/answer-feedback-miss/.test(PRACTICE), '答錯應走安靜 answer-feedback')
+  assert.ok(/border-gold/.test(PRACTICE), '答錯選項用金色邊')
 })
 
 test('答錯回饋鏈由頭到尾冇任何玫紅（規格書 §4.2）', () => {
@@ -122,17 +124,17 @@ test('全站練習頁不得出現 FAIL 字眼或震動 API', () => {
 })
 
 // ── 答對與答錯的動畫力度必須一致（憲章第 7 條）────────────────────────────
-test('答對脈衝同答錯衝擊波時長一致 —— 都係 600ms', () => {
-  const pulse = CSS.match(/\.pulse-correct\s*\{[^}]*\}/)?.[0] ?? ''
-  const shock = CSS.match(/\.shockwave\s*\{[^}]*\}/)?.[0] ?? ''
-  assert.match(pulse, /600ms/, '.pulse-correct 唔係 600ms')
-  assert.match(shock, /600ms/, '.shockwave 唔係 600ms')
+test('答對同答錯回饋時長一致 —— 都 ≤200ms', () => {
+  const ok = CSS.match(/\.answer-feedback\s*\{[^}]*\}/)?.[0] ?? ''
+  const miss = CSS.match(/\.answer-feedback-miss\s*\{[^}]*\}/)?.[0] ?? ''
+  assert.match(ok, /180ms/, '.answer-feedback 應為 180ms')
+  assert.match(miss, /180ms/, '.answer-feedback-miss 應為 180ms')
 })
 
 test('答錯路徑冇 shake／放大／加速嘅動畫', () => {
-  const gold = CSS.match(/\.shockwave-gold\s*\{[^}]*\}/)?.[0] ?? ''
-  assert.ok(gold.length > 0, '搵唔到 .shockwave-gold')
-  assert.ok(!/shake|scale\(|animation-duration/.test(gold), '答錯動畫加咗額外力度')
+  const miss = CSS.match(/\.answer-feedback-miss\s*\{[^}]*\}/)?.[0] ?? ''
+  assert.ok(miss.length > 0, '搵唔到 .answer-feedback-miss')
+  assert.ok(!/shake|scale\(|animation-duration/.test(miss), '答錯動畫加咗額外力度')
 })
 
 test('答錯【不設任何音效】—— 只有答對先播', () => {
@@ -144,16 +146,16 @@ test('答錯【不設任何音效】—— 只有答對先播', () => {
 })
 
 // ── 三層降級：prefers-reduced-motion + 一鍵舒適模式 ────────────────────────
-const WEEK1_ANIMATIONS = ['pulse-correct', 'blindspot-in', 'ring-draw', 'radar-grow']
+const WEEK1_ANIMATIONS = ['answer-feedback', 'blindspot-in', 'ring-draw', 'radar-grow']
 
-test('第 1 週每個動畫都要喺 prefers-reduced-motion 度靜止', () => {
+test('答題回饋同微進度動畫都要喺 prefers-reduced-motion 度靜止', () => {
   const block = CSS.split('@media (prefers-reduced-motion: reduce)').slice(1).join('\n')
   for (const cls of WEEK1_ANIMATIONS) {
     assert.ok(block.includes(`.${cls}`), `${cls} 未喺 prefers-reduced-motion 降級層`)
   }
 })
 
-test('第 1 週每個動畫都要受一鍵舒適模式管轄', () => {
+test('答題回饋同微進度動畫都要受一鍵舒適模式管轄', () => {
   for (const cls of WEEK1_ANIMATIONS) {
     assert.ok(
       new RegExp(`html\\.font-easy[^{]*\\.${cls}`).test(CSS),

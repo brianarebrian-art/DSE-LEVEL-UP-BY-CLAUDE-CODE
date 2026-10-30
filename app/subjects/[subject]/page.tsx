@@ -110,8 +110,8 @@ export default async function SubjectPage({
 
   return (
     <>
-      <JsonLd data={jsonLd} />
-      <SubjectDetailView
+ <JsonLd data={jsonLd} />
+ <SubjectDetailView
         meta={meta}
         questionsCount={questions.length}
         writtenCount={writtenCount}
@@ -122,6 +122,6 @@ export default async function SubjectPage({
         }}
         topics={topics}
       />
-    </>
+ </>
   )
 }

@@ -177,8 +177,8 @@ export const MIN_QUESTIONS_PER_SLOT = 20
 export function bestSlot(slots: readonly TimeSlot[]): TimeSlot | null {
   const eligible = slots.filter(
     (s) => s.questions >= MIN_QUESTIONS_PER_SLOT && s.accuracy !== null,
-  )
-  if (eligible.length < 2) return null // 得一個時段唔存在「最」，冇比較就冇意義
+ )
+ if (eligible.length < 2) return null // 得一個時段唔存在「最」，冇比較就冇意義
   return eligible.reduce((best, s) => (s.accuracy! > best.accuracy! ? s : best))
 }
 

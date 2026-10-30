@@ -26,9 +26,10 @@ export default function RadarChart({
   tone?: 'theme' | 'dark'
 }) {
   const dark = tone === 'dark'
-  const labelCls = dark ? 'fill-slate-400' : 'fill-ink-muted'
-  const gridStroke = dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.10)'
-  const markCls = dark ? 'fill-cyan-300 stroke-cyan-300' : 'fill-accent stroke-accent'
+  const labelCls = dark ? 'fill-slate-400' : 'chart-label'
+  const gridStroke = dark ? 'rgba(255,255,255,0.12)' : undefined
+  const gridCls = dark ? undefined : 'chart-grid'
+  const markCls = dark ? 'fill-cyan-300 stroke-cyan-300' : 'chart-mark'
   const n = axes.length
   if (n < 3) return null // a polygon needs at least 3 axes
 
@@ -51,12 +52,24 @@ export default function RadarChart({
           points={axes.map((_, i) => point(i, r * R).join(',')).join(' ')}
           fill="none"
           stroke={gridStroke}
+          className={gridCls}
           strokeWidth={1}
         />
       ))}
       {axes.map((_, i) => {
         const [x, y] = point(i, R)
-        return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke={gridStroke} strokeWidth={1} />
+        return (
+          <line
+            key={i}
+            x1={cx}
+            y1={cy}
+            x2={x}
+            y2={y}
+            stroke={gridStroke}
+            className={gridCls}
+            strokeWidth={1}
+          />
+        )
       })}
       {/* 第 1 週 · 引擎二：數據變動時由中心展開重畫。
           key 綁定 valuePoly —— 數值一改，React 重掛載節點，動畫重新播放，

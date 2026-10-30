@@ -230,10 +230,10 @@ function computeRecentActiveDays(attempts: AttemptRecord[], windowDays = RECENT_
 export function computeStats(attempts: AttemptRecord[]): ProgressStats {
   const totalAttempts = attempts.length
   const totalQuestions = attempts.reduce((s, a) => s + a.total, 0)
-  const totalCorrect = attempts.reduce((s, a) => s + a.score, 0)
+ const totalCorrect = attempts.reduce((s, a) => s + a.score, 0)
 
-  const subjMap = new Map<string, SubjectStat>()
-  const topicMap = new Map<string, TopicStat>()
+ const subjMap = new Map<string, SubjectStat>()
+ const topicMap = new Map<string, TopicStat>()
 
   for (const a of attempts) {
     let s = subjMap.get(a.subjectId)
@@ -276,7 +276,7 @@ export function computeStats(attempts: AttemptRecord[]): ProgressStats {
 
   const weakTopics = [...topicMap.values()]
     .map((t) => ({ ...t, accuracy: t.total > 0 ? t.correct / t.total : 0 }))
-    .filter((t) => t.total >= 2 && t.accuracy < 0.8)
+ .filter((t) => t.total >= 2 && t.accuracy < 0.8)
     .sort((a, b) => a.accuracy - b.accuracy)
     .slice(0, 5)
 

@@ -40,18 +40,18 @@ export default function CantoneseTopicCard({
           舊版用 h3，大綱變成 H1 → H3，中間跳咗一級 —— 靠標題跳轉嘅
           screen reader 用家會以為漏咗一段。 */}
       <h2 className="mb-2 text-base font-medium text-ink">{en ? topic.en : topic.zh}</h2>
-      <p className="mb-4 text-sm leading-relaxed text-ink-muted">{en ? topic.whyEn : topic.whyZh}</p>
+ <p className="mb-4 text-sm leading-relaxed text-ink-muted">{en ? topic.whyEn : topic.whyZh}</p>
 
       {/* 每句一組，唔用 <table>。第一版用咗 `min-w-[26rem]` 嘅表：卡實際闊
           286px，於是每張卡都多咗一條 15px 橫向捲動條，而第四欄直情被切走。
           分組排版喺窄機自然斷行，零橫向溢出。 */}
       <ul className="space-y-4">
         {topic.phrases.map((p) => (
-          <li key={p.canto} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
-            <CantonesePhrase p={p} en={en} showNote={false} />
-          </li>
-        ))}
-      </ul>
+ <li key={p.canto} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
+ <CantonesePhrase p={p} en={en} showNote={false} />
+ </li>
+ ))}
+ </ul>
 
       {/* 唯一嘅 <a>。`after:absolute after:inset-0` 令成張卡可揿，而 DOM 入面
           仍然得一個連結 —— tab 停一次，讀屏讀到「深入了解，打招呼及寒暄」。
@@ -64,7 +64,7 @@ export default function CantoneseTopicCard({
       >
         {c.detailCta}
         <ArrowRight size={15} className="text-ink-muted" aria-hidden />
-      </Link>
-    </div>
+ </Link>
+ </div>
   )
 }

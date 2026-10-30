@@ -87,8 +87,8 @@ function loadCopyTex() {
 export default function MathText({ children, className }: MathTextProps) {
   useEffect(loadCopyTex, [])
   const html = useMemo(() => renderMathText(children), [children])
-  return (
-    <span
+ return (
+ <span
       className={className}
       dangerouslySetInnerHTML={{ __html: html }}
     />

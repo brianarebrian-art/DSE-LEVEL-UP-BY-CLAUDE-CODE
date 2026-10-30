@@ -28,16 +28,16 @@ export default function Greeting() {
     // 成本可忽略，但唔會出現凌晨三點仲寫住「晚上好」。
     const id = window.setInterval(tick, 5 * 60 * 1000)
     return () => window.clearInterval(id)
-  }, [])
+ }, [])
 
-  if (!slot) return null
+ if (!slot) return null
 
-  const Icon = isNightSlot(slot) ? Moon : Sun
+ const Icon = isNightSlot(slot) ? Moon : Sun
 
-  return (
-    <p className="flex items-center gap-2 text-sm text-ink-muted">
-      <span>{t.greeting[slot]}</span>
-      <Icon size={15} strokeWidth={1.5} aria-hidden className="text-ink-faint" />
-    </p>
+ return (
+ <p className="flex items-center gap-2 text-sm text-ink-muted">
+ <span>{t.greeting[slot]}</span>
+ <Icon size={15} strokeWidth={1.5} aria-hidden className="text-ink-faint" />
+ </p>
   )
 }

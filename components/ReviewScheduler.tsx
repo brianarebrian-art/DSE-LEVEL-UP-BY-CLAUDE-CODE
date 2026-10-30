@@ -39,8 +39,8 @@ export default function ReviewScheduler() {
 
   return (
     <div className="bg-surface-raised border border-line rounded-2xl p-6">
-      <h2 className="font-medium mb-1 text-ink">📖 {en ? "Today's review suggestions" : '今日建議重溫'}</h2>
-      <p className="text-xs text-ink-muted mb-4">
+ <h2 className="font-medium mb-1 text-ink">📖 {en ? "Today's review suggestions" : '今日建議重溫'}</h2>
+ <p className="text-xs text-ink-muted mb-4">
         {en
           ? 'Spaced repetition (day 1 / 3 / 7 / 14 / 30 after a slip) — these concepts are worth another look.'
           : '溫故知新 —— 按遺忘曲線（錯後第 1／3／7／14／30 日）排程，呢啲概念值得再鞏固。'}
@@ -50,22 +50,22 @@ export default function ReviewScheduler() {
         <p className="text-sm text-ink-muted py-4 text-center">
           {en ? 'No reviews due today — take it easy.' : '今日冇重溫任務，休息吓啦。'}
         </p>
-      ) : (
-        <div className="space-y-2.5">
+ ) : (
+ <div className="space-y-2.5">
           {due.map((d) => {
             const subj = getSubject(d.subjectId)
             const tag = d.cause ? CAUSE_TAG[d.cause] : null
             return (
               <div key={d.questionId} className="flex flex-wrap items-center gap-3 bg-surface-sunken border border-line rounded-xl px-4 py-3">
-                <div className="flex-1 min-w-[10rem]">
-                  <div className="text-sm text-ink font-medium">
+ <div className="flex-1 min-w-[10rem]">
+ <div className="text-sm text-ink font-medium">
                     {subj ? (en ? subj.nameEn : subj.name) : d.subjectId} · {d.topic}
                   </div>
-                  <div className="flex items-center gap-2 mt-1 text-xs text-ink-muted">
+ <div className="flex items-center gap-2 mt-1 text-xs text-ink-muted">
                     {tag && <span className={`px-2 py-0.5 rounded-full border text-[11px] ${tag.cls}`}>{en ? tag.en : tag.zh}</span>}
                     {en ? `Slipped here ${d.daysAgo} day${d.daysAgo > 1 ? 's' : ''} ago · due today` : `上次喺呢度跌倒係 ${d.daysAgo} 日前 · 建議今日重溫`}
                   </div>
-                </div>
+ </div>
                 {/* 舊記錄冇 topicId → fallback 去科目層級（傳 label 會令題池清零） */}
                 <Link
                   href={d.topicId
@@ -76,11 +76,11 @@ export default function ReviewScheduler() {
                 >
                   {en ? 'Review this topic' : '開始重溫'}
                 </Link>
-              </div>
-            )
-          })}
-        </div>
-      )}
-    </div>
+ </div>
+ )
+ })}
+ </div>
+ )}
+ </div>
   )
 }
