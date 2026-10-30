@@ -109,6 +109,7 @@ export const FOUNDER_NAV: FounderNavGroup[] = [
     label: '設定與審計',
     items: [
       { href: '/founder/settings', label: 'Founder 身份', labelEn: 'Identity' },
+      { href: '/founder/settings/security', label: '安全設定', labelEn: 'Security' },
       { href: '/founder/settings/flags', label: '功能開關', labelEn: 'Flags' },
       { href: '/founder/settings/audit', label: '操作審計', labelEn: 'Audit' },
       { href: '/founder/settings/integrations', label: '整合設定', labelEn: 'Integrations' },

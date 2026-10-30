@@ -141,24 +141,28 @@ test('綁定說明唔洩露 sub 值，並指明唯一電郵', () => {
   assert.match(text, /FOUNDER_GOOGLE_SUB/)
   assert.match(text, new RegExp(FOUNDER_EMAIL.replace('.', '\\.')))
   assert.doesNotMatch(text, /google-sub-/)
-  assert.match(text, /2FA|Passkey/)
 })
 
-test('接線：founderAllowlist 經 getAuthUser，要求 verified email，讀 FOUNDER_GOOGLE_SUB', () => {
+test('接線：founderAllowlist 經 getFounderGate（身份 + MFA）；唔用 NEXT_PUBLIC_FOUNDER', () => {
   const src = readFileSync(fileURLToPath(new URL('../auth/founderAllowlist.ts', import.meta.url)), 'utf8')
     .replace(/\/\*[\s\S]*?\*\//g, '')
     .replace(/(^|[^:])\/\/.*$/gm, '$1')
-  assert.match(src, /FOUNDER_GOOGLE_SUB/)
-  assert.match(src, /getAuthUser/)
+  assert.match(src, /getFounderGate/)
+  assert.match(src, /requireFounderApi/)
   assert.match(src, /googleSubFromAuthUser/)
   assert.match(src, /emailVerifiedFromAuthUser/)
-  assert.match(src, /requireVerifiedEmail:\s*true/)
-  assert.doesNotMatch(src, /requireVerifiedEmail:\s*false/)
   assert.doesNotMatch(src, /NEXT_PUBLIC_FOUNDER/)
-  assert.match(src, /founderFromUser\(/)
   assert.doesNotMatch(src, /from '@\/auth'/)
   // 唔准用 auth.users.id 當 Google sub
   assert.doesNotMatch(src, /googleSub:\s*user\.id/)
+
+  const gate = readFileSync(fileURLToPath(new URL('../founder/mfa/gate.ts', import.meta.url)), 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/(^|[^:])\/\/.*$/gm, '$1')
+  assert.match(gate, /FOUNDER_GOOGLE_SUB/)
+  assert.match(gate, /founderFromUser\(/)
+  assert.match(gate, /requireVerifiedEmail:\s*true/)
+  assert.doesNotMatch(gate, /requireVerifiedEmail:\s*false/)
 })
 
 test('googleSubFromAuthUser：優先 identity_data.sub，唔用 auth.users.id', () => {

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { requireFounder, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
+import { requireFounderApi, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
 import { loadPlatformOverview } from '@/lib/founder/metrics'
 import { founderCacheHeaders } from '@/lib/founder/env'
 import { safeLog } from '@/lib/safeLog'
@@ -7,7 +7,7 @@ import { safeLog } from '@/lib/safeLog'
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  const founder = await requireFounder()
+  const founder = await requireFounderApi()
   if (!founder) {
     return NextResponse.json(founderForbiddenBody(), {
       status: 403,

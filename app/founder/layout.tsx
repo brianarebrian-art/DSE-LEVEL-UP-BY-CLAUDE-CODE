@@ -3,12 +3,14 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { completeSeoMetadata } from '@/lib/seo'
 import {
-  getVerifiedFounderSession,
+  getFounderGate,
   founderBindingInstructions,
 } from '@/lib/auth/founderAllowlist'
 import FounderShell from '@/components/founder/FounderShell'
+import FounderMfaChrome from '@/components/founder/mfa/FounderMfaChrome'
 import { getFounderDeployEnv, founderEnvLabel } from '@/lib/founder/env'
 import { loadPlatformOverview } from '@/lib/founder/metrics'
+import '@/components/founder/founder-theme.css'
 
 export const dynamic = 'force-dynamic'
 
@@ -21,10 +23,18 @@ export const metadata = completeSeoMetadata(
   '/founder',
 )
 
+/**
+ * Founder layout 狀態機：
+ * - denied（未登入）→ MFA 登入 chrome（唔載後台資料）
+ * - denied（其他）→ 首頁／綁定說明
+ * - needs_* → 只渲染 MFA chrome + children（唔載後台資料）
+ * - full → FounderShell + 後台資料
+ */
 export default async function FounderLayout({ children }: { children: React.ReactNode }) {
-  const auth = await getVerifiedFounderSession()
-  if (!auth.ok) {
-    if (auth.reason === 'founder_sub_unset') {
+  const gate = await getFounderGate()
+
+  if (gate.state === 'denied') {
+    if (gate.reason === 'founder_sub_unset') {
       return (
         <div className="mx-auto max-w-lg px-4 py-16 text-slate-800">
           <h1 className="text-xl font-semibold">Founder OS 尚未完成身份綁定</h1>
@@ -36,8 +46,27 @@ export default async function FounderLayout({ children }: { children: React.Reac
         </div>
       )
     }
-    // 唔洩露後台存在細節畀未授權者 —— 同 /admin 一致彈返首頁
+    if (gate.reason === 'not_signed_in') {
+      return (
+        <FounderMfaChrome title="創辦人登入">
+          {children}
+        </FounderMfaChrome>
+      )
+    }
     redirect('/')
+  }
+
+  if (gate.state !== 'full') {
+    // Google 已通過、未完成 TOTP／需綁定 —— 唔載入任何後台 metrics
+    return (
+      <FounderMfaChrome
+        title="第二因素驗證"
+        email={gate.identity.email}
+        gateState={gate.state}
+      >
+        {children}
+      </FounderMfaChrome>
+    )
   }
 
   let badges: Record<string, number> = {}
@@ -65,8 +94,8 @@ export default async function FounderLayout({ children }: { children: React.Reac
   return (
     <Suspense fallback={<div className="min-h-dvh bg-[#050D18] p-6 text-cyan-200">載入 Founder OS…</div>}>
       <FounderShell
-        email={auth.identity.email}
-        name={auth.identity.name}
+        email={gate.identity.email}
+        name={gate.identity.name}
         envLabel={envLabel}
         platformStatus={platformStatus}
         badges={badges}

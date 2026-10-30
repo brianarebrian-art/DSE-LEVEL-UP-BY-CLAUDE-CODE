@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { requireFounder, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
+import { requireFounderApi, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
 import { assertSameOrigin } from '@/lib/founder/origin'
 import { founderCacheHeaders } from '@/lib/founder/env'
 import { writeFounderAudit } from '@/lib/founder/audit'
@@ -9,7 +9,7 @@ import { safeLog } from '@/lib/safeLog'
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: Request, ctx: { params: Promise<{ id: string }> }) {
-  const founder = await requireFounder()
+  const founder = await requireFounderApi()
   if (!founder) {
     return NextResponse.json(founderForbiddenBody(), { status: 403, headers: founderCacheHeaders() })
   }

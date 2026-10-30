@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createHash, randomUUID } from 'node:crypto'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
-import { requireFounder, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
+import { requireFounderApi, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
 import { assertSameOrigin } from '@/lib/founder/origin'
 import { founderCacheHeaders, founderAiConfigured } from '@/lib/founder/env'
 import { classifyCommand, searchFounderNav, payloadHash } from '@/lib/founder/command'
@@ -20,7 +20,7 @@ type Body = {
 }
 
 export async function POST(request: Request) {
-  const founder = await requireFounder()
+  const founder = await requireFounderApi()
   if (!founder) {
     return NextResponse.json(founderForbiddenBody(), { status: 403, headers: founderCacheHeaders() })
   }

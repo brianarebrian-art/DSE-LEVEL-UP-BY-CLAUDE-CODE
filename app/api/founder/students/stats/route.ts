@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { requireFounder, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
+import { requireFounderApi, founderForbiddenBody } from '@/lib/auth/founderAllowlist'
 import { founderCacheHeaders } from '@/lib/founder/env'
 import { writeFounderAudit } from '@/lib/founder/audit'
 import { loadPlatformOverview } from '@/lib/founder/metrics'
@@ -8,10 +8,10 @@ export const dynamic = 'force-dynamic'
 
 /**
  * Founder-only 學生聚合。唔返回逐人身份／逐題答案（憲章 §16.E）。
- * 授權用 requireFounder()，唔依賴 ADMIN_EMAILS。
+ * 授權用 requireFounderApi()，唔依賴 ADMIN_EMAILS。
  */
 export async function GET() {
-  const founder = await requireFounder()
+  const founder = await requireFounderApi()
   if (!founder) {
     return NextResponse.json(founderForbiddenBody(), { status: 403, headers: founderCacheHeaders() })
   }

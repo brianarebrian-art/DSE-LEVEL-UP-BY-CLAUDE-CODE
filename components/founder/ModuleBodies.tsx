@@ -591,13 +591,28 @@ async function IntegrationsBody() {
 
 async function SessionsBody() {
   const founder = await requireFounder()
+  const { getFounderGate } = await import('@/lib/founder/mfa/gate')
+  const { founderMfaIdleSec, founderMfaMaxAgeSec } = await import('@/lib/founder/mfa/config')
+  const gate = await getFounderGate()
+  const mfaAt =
+    gate.state === 'full'
+      ? new Date(gate.mfaVerifiedAt).toLocaleString('zh-HK', { timeZone: 'Asia/Hong_Kong', hour12: false })
+      : '—'
   return (
     <div className="fos-panel space-y-2 p-4 text-sm">
-      <p>目前 Founder session：{founder ? '有效' : '無'}</p>
+      <p>目前 Founder session：{founder && gate.state === 'full' ? 'Google + TOTP（AAL2）有效' : '無完整授權'}</p>
       <p className="text-xs text-[var(--fos-muted)]">電郵：{founder?.email}</p>
+      <p className="text-xs text-[var(--fos-muted)]">
+        MFA 驗證時間（Asia/Hong_Kong）：{mfaAt}
+        {gate.state === 'full' ? ` · 因素版本 ${gate.factorVersion}` : ''}
+      </p>
+      <p className="text-xs text-[var(--fos-muted)]">
+        閒置上限 {founderMfaIdleSec()}s · 最長 {founderMfaMaxAgeSec()}s · 每次新登入都要 TOTP
+      </p>
       <p className="text-xs text-[var(--fos-faint)]">
-        撤銷：使用頂部「登出」，或到 Google 帳戶 → 第三方應用存取權 → 撤銷本站。Auth.js 用 JWT strategy，伺服器無集中
-        session store。
+        撤銷：頂部「登出」（清除 Supabase session），或 Google 帳戶撤銷本應用授權。緊急撤銷 MFA：部署腳本{' '}
+        <code>scripts/founder-mfa-emergency-revoke.mts</code>。MFA 狀態綁定登入工作階段，唔係 User 列上永久
+        mfaPassed。
       </p>
     </div>
   )
@@ -649,7 +664,8 @@ async function SettingsIdentityBody() {
       <p className="text-xs text-[var(--fos-muted)]">{founderBindingInstructions()}</p>
       <p className="text-xs text-[var(--fos-warn)]">Founder OS 不提供新增其他創辦人嘅一般介面。</p>
       <p className="text-xs text-[var(--fos-faint)]">
-        部署前要求：請喺 {FOUNDER_EMAIL} Google 帳戶開啟 2FA 或 Passkey（由帳戶擁有人設定；程式唔會虛構已強制完成）。
+        進入後台必須：Google 身份（電郵＋sub＋email_verified）＋ Google Authenticator 相容 TOTP（AAL2）。TOTP
+        唔取代身份檢查，亦唔係防釣魚驗證。詳見「安全設定」。
       </p>
     </div>
   )

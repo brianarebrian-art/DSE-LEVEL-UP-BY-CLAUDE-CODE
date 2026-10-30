@@ -1,7 +1,6 @@
 import 'server-only'
-import { getAuthUser } from '@/lib/auth/server'
+import { redirect } from 'next/navigation'
 import {
-  founderFromUser,
   founderBindingInstructions,
   googleSubFromAuthUser,
   emailVerifiedFromAuthUser,
@@ -9,54 +8,66 @@ import {
   type FounderAuthResult,
   type FounderDenyReason,
 } from '@/lib/auth/founderIdentity'
+import { getFounderGate, type FounderGateState } from '@/lib/founder/mfa/gate'
 
-export type { FounderIdentity, FounderAuthResult, FounderDenyReason }
-export { founderBindingInstructions, googleSubFromAuthUser, emailVerifiedFromAuthUser }
+export type { FounderIdentity, FounderAuthResult, FounderDenyReason, FounderGateState }
+export { founderBindingInstructions, googleSubFromAuthUser, emailVerifiedFromAuthUser, getFounderGate }
 
 /**
- * 集中式 Founder 授權。所有 /founder 頁、API、Server Action、匯出、AI 入口必須經呢度。
- * Middleware／Layout 只係第一層；唔可以代替本函式。
- *
- * 永遠要求：
- *   - 經驗證嘅 Google 登入（Supabase Auth · Google provider）
- *   - 電郵已驗證
- *   - 電郵精確 = brianarebrian@gmail.com
- *   - Google sub = FOUNDER_GOOGLE_SUB（未設 → 拒絕）
+ * 只驗證 Google 創辦人身份（未要求 TOTP）。
+ * 僅供 MFA 綁定／驗證／復原頁使用 —— 唔授予後台資料權限。
  */
-export async function getVerifiedFounderSession(): Promise<FounderAuthResult> {
-  const founderSub = process.env.FOUNDER_GOOGLE_SUB
-  const user = await getAuthUser()
-  if (!user) return { ok: false, reason: 'not_signed_in' }
-
-  const googleSub = googleSubFromAuthUser(user)
-  const name =
-    (user.user_metadata?.full_name as string | undefined) ??
-    (user.user_metadata?.name as string | undefined) ??
-    user.email ??
-    ''
-
-  return founderFromUser(
-    {
-      email: user.email,
-      name,
-      emailVerified: emailVerifiedFromAuthUser(user),
-      googleSub,
-    },
-    founderSub,
-    { requireVerifiedEmail: true },
-  )
+export async function requireFounderIdentity(): Promise<FounderIdentity | null> {
+  const gate = await getFounderGate()
+  if (gate.state === 'denied') return null
+  return gate.identity
 }
 
-/** 已驗證創辦人 → 身份；否則 null。 */
-export async function requireFounder(): Promise<FounderIdentity | null> {
-  const result = await getVerifiedFounderSession()
-  return result.ok ? result.identity : null
-}
-
-/** API 用：未授權時回 403 JSON 本體（唔洩露內部細節）。 */
-export function founderForbiddenBody(reason?: FounderDenyReason): { error: string; code: string } {
-  if (reason === 'founder_sub_unset') {
-    return { error: 'forbidden', code: 'FOUNDER_SUB_UNSET' }
+/**
+ * 完整 Founder 授權：Google 身份 + Session 有效 + TOTP（AAL2）未超時。
+ * 所有 Founder 資料頁、API、Server Actions、下載、AI 必須經呢度。
+ */
+export async function getVerifiedFounderSession(): Promise<
+  FounderAuthResult | { ok: false; reason: FounderDenyReason | 'mfa_required' | 'mfa_enroll_required' | 'mfa_config' | 'session_error' }
+> {
+  const gate = await getFounderGate()
+  if (gate.state === 'full') return { ok: true, identity: gate.identity }
+  if (gate.state === 'denied') return { ok: false, reason: gate.reason }
+  if (gate.state === 'needs_enroll' || gate.state === 'recovery_reenroll') {
+    return { ok: false, reason: 'mfa_enroll_required' }
   }
+  return { ok: false, reason: 'mfa_required' }
+}
+
+/**
+ * 頁面用：未完成 MFA 則 redirect 去驗證／綁定頁；身份不符則回家。
+ * API 請用 requireFounderApi()。
+ */
+export async function requireFounder(): Promise<FounderIdentity | null> {
+  const gate = await getFounderGate()
+  if (gate.state === 'full') return gate.identity
+  if (gate.state === 'denied') {
+    if (gate.reason === 'founder_sub_unset') return null
+    if (gate.reason === 'not_signed_in') redirect('/founder/mfa/login')
+    redirect('/')
+  }
+  if (gate.state === 'needs_enroll' || gate.state === 'recovery_reenroll') {
+    redirect('/founder/mfa/enroll')
+  }
+  redirect('/founder/mfa/verify')
+}
+
+/** API／Server Action：唔 redirect，回 null；caller 回 403。 */
+export async function requireFounderApi(): Promise<FounderIdentity | null> {
+  const gate = await getFounderGate()
+  return gate.state === 'full' ? gate.identity : null
+}
+
+export function founderForbiddenBody(
+  reason?: string,
+): { error: string; code: string } {
+  if (reason === 'founder_sub_unset') return { error: 'forbidden', code: 'FOUNDER_SUB_UNSET' }
+  if (reason === 'mfa_required') return { error: 'forbidden', code: 'FOUNDER_MFA_REQUIRED' }
+  if (reason === 'mfa_enroll_required') return { error: 'forbidden', code: 'FOUNDER_MFA_ENROLL_REQUIRED' }
   return { error: 'forbidden', code: 'FOUNDER_FORBIDDEN' }
 }

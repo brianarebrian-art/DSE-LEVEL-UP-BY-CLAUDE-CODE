@@ -1,6 +1,6 @@
 'use server'
 
-import { requireFounder } from '@/lib/auth/founderAllowlist'
+import { requireFounderApi } from '@/lib/auth/founderAllowlist'
 import { writeFounderAudit } from '@/lib/founder/audit'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { headers } from 'next/headers'
@@ -36,7 +36,7 @@ export async function previewQuestionStatusBatch(input: {
   ids: string[]
   nextStatus: 'published' | 'withdrawn'
 }): Promise<BatchPreviewResult> {
-  const founder = await requireFounder()
+  const founder = await requireFounderApi()
   if (!founder) return { ok: false, error: 'forbidden' }
   if (!(await originFromHeaders())) return { ok: false, error: 'origin' }
 
@@ -65,7 +65,7 @@ export async function confirmQuestionStatusBatch(input: {
   nextStatus: 'published' | 'withdrawn'
   confirmationToken: string
 }): Promise<BatchPreviewResult> {
-  const founder = await requireFounder()
+  const founder = await requireFounderApi()
   if (!founder) return { ok: false, error: 'forbidden' }
   if (!(await originFromHeaders())) return { ok: false, error: 'origin' }
 

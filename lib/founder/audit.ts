@@ -18,7 +18,8 @@ export type AuditInput = {
   meta?: Record<string, unknown>
 }
 
-const SENSITIVE_META_KEYS = /^(password|secret|token|cookie|authorization|api[_-]?key|service[_-]?role)$/i
+const SENSITIVE_META_KEYS =
+  /^(password|secret|token|cookie|authorization|api[_-]?key|service[_-]?role|totp|otp|otpauth|qr|qr_code|recovery|recovery_code|enrollment)$/i
 
 function scrubMeta(meta: Record<string, unknown> | undefined): Record<string, unknown> {
   if (!meta) return {}
