@@ -528,13 +528,13 @@ body {
    A keyframe runs on first paint without JavaScript. The base style is visible,
    so `animation: none` leaves the content showing, not hidden. */
 @keyframes hero-rise {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: none; }
 }
-.hero-rise { animation: hero-rise 0.5s cubic-bezier(0, 0, 0.2, 1) both; }
-.hero-rise-1 { animation-delay: 0.06s; }
-.hero-rise-2 { animation-delay: 0.12s; }
-.hero-rise-3 { animation-delay: 0.18s; }
+.hero-rise { animation: hero-rise 300ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-rise-1 { animation-delay: 0.04s; }
+.hero-rise-2 { animation-delay: 0.08s; }
+.hero-rise-3 { animation-delay: 0.12s; }
 @media (prefers-reduced-motion: reduce) {
   .hero-rise { animation: none; }
 }
@@ -1012,49 +1012,26 @@ html.no-motion .mascot {
   to { letter-spacing: normal; opacity: 1; filter: blur(0); }
 }
 
-/* ── §2.5 答題衝擊波 ────────────────────────────────────────────────────
-   由掣中心擴散。力度同答啱【一致】—— 規格書 §0 明訂
-   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。
-   2026-08-23：答錯版本由霓虹粉（.shockwave-pink）改為金色（.shockwave-gold），
-   見下方「第 1 週 · 引擎一」段落 —— 規格書 §4.2 要求答錯【不出現紅色】。 */
-.shockwave {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, transparent 70%);
-  animation: shockwave-expand 600ms var(--ease-spring-settle) forwards;
+/* ── 答題回饋（Phase 3）：停用衝擊波／粒子；≤200ms opacity，對／錯力度一致 ──
+   規格書 §4.2／憲章 §7：答錯唔用紅色、唔 shake、唔加大；舒適模式整層關。 */
+.answer-feedback {
+  animation: answer-feedback 180ms ease-out both;
 }
-@keyframes shockwave-expand {
-  from { width: 0; height: 0; opacity: 1; }
-  to { width: 300px; height: 300px; opacity: 0; }
+/* .answer-feedback-miss：標記答錯路徑；動畫與答對同款（邊／底色由選項 class 負責）。 */
+.answer-feedback-miss {
+  animation: answer-feedback 180ms ease-out both;
+}
+@keyframes answer-feedback {
+  from { opacity: 0.78; }
+  to { opacity: 1; }
 }
 
-/* ── 第 1 週 · 引擎一：溫暖即時反饋 ──────────────────────────────────────
-   規格書 §4.2。三條規則貫穿以下所有動畫：
-     1. 答錯【不出現紅色】—— 答錯的衝擊波由霓虹粉改為金色（.shockwave-gold），
-        與「發現盲點」的金色語意一致；紅色只保留給真正的系統錯誤提示。
-     2. 答錯與答對的動畫【時長、幅度、緩動曲線完全相同】—— 憲章第 7 條要求
-        答錯的回饋力度與答對一致，故此處刻意沒有 shake、沒有加速、沒有放大。
-     3. 全部動畫均在 prefers-reduced-motion 及一鍵舒適模式下靜止（見文末降級層）。 */
-
-/* 答對：輕柔綠色脈衝。用 box-shadow 擴散，不改動 layout，不觸發 reflow。
-   峰值透明度 0.30 —— 屬「察覺得到但不奪目」的層級，非慶祝式閃光。 */
+/* 舊衝擊波／脈衝已停用；保留選擇器以免殘餘 class 突然現形。 */
+.shockwave,
+.shockwave-gold,
 .pulse-correct {
-  animation: pulse-correct 600ms var(--ease-spring-settle) forwards;
-}
-@keyframes pulse-correct {
-  0% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.30); }
-  100% { box-shadow: 0 0 0 12px rgba(0, 245, 212, 0); }
-}
-
-/* 答錯：金色衝擊波，時長與 .shockwave 完全相同（600ms ease-out）。 */
-.shockwave-gold {
-  background: radial-gradient(circle, rgba(212, 160, 23, 0.4) 0%, transparent 70%);
+  display: none !important;
+  animation: none !important;
 }
 
 /* 「你發現咗一個新盲點💡」淡入。只有透明度與 4px 上移，
@@ -1190,20 +1167,19 @@ html.no-motion .mascot {
 /* 題目轉場：舊題向左滑出、新題由右滑入（規格 §7.3A，400ms）。
    位移刻意細（24px）—— 規格講「暗示前後關係」，唔係做投影片。 */
 @keyframes ml-q-enter {
-  from { opacity: 0; transform: translateX(24px); }
+  from { opacity: 0; transform: translateX(12px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes ml-q-leave {
   from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 0; transform: translateX(-12px); }
 }
-.ml-q-enter { animation: ml-q-enter 400ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
-.ml-q-leave { animation: ml-q-leave 400ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+.ml-q-enter { animation: ml-q-enter 280ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.ml-q-leave { animation: ml-q-leave 280ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* 選項按落：scale 0.96（規格 §7.3A，150ms）。用 :active 而唔係 JS state ——
-   快速連點時瀏覽器自己處理，唔會卡住介面（規格 §7.5「可中斷」）。 */
-.ml-press { transition: transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1); }
-.ml-press:active { transform: scale(0.96); }
+/* 選項按落：scale 0.97（Phase 3，100ms）。用 :active，可中斷。 */
+.ml-press { transition: transform 100ms ease-out; }
+.ml-press:active { transform: scale(0.97); }
 
 /* 錯因選項選中：scale 1.02（規格 §7.3C，200ms）。1.02 唔算過衝 ——
    佢係終點值，唔係曲線超過 1；守閘查嘅係曲線。 */
@@ -1315,8 +1291,9 @@ html.font-easy .carousel-card {
 }
 html.font-easy .shockwave { display: none !important; }
 
-/* 第 1 週新增動畫同樣受一鍵舒適模式管轄 —— 整層關掉，唔係調慢（憲章第 7 條）。
-   圓環／雷達圖保留最終狀態，資訊唔可以因為關動畫而消失。 */
+/* 答題回饋同微進度：舒適模式整層關，保留最終狀態（憲章第 7 條）。 */
+html.font-easy .answer-feedback,
+html.font-easy .answer-feedback-miss,
 html.font-easy .pulse-correct,
 html.font-easy .blindspot-in,
 html.font-easy .ring-draw,
@@ -1356,7 +1333,9 @@ html.font-easy .skeleton {
   .carousel-card:hover { transform: none; }
   .shockwave { display: none !important; }
 
-  /* 第 1 週新增動畫：一律靜止，保留最終狀態。 */
+  /* 答題回饋同微進度：一律靜止，保留最終狀態。 */
+  .answer-feedback,
+  .answer-feedback-miss,
   .pulse-correct,
   .blindspot-in,
   .ring-draw,
@@ -1461,9 +1440,6 @@ html.font-easy .skeleton {
   .practice-options-stack {
     gap: 0.75rem;
   }
-  .practice-sticky-head .practice-status-hint {
-    display: none;
-  }
 }
 .practice-explain {
   padding-bottom: 72px;
@@ -1538,22 +1514,15 @@ body:has(.practice-session) [role="dialog"][aria-label="Accessibility options"] 
   left: auto;
   max-height: min(70dvh, calc(100dvh - 9rem));
 }
+/* 練習沉浸：A11y 留喺 sticky 頂欄（含桌面）；收起浮動掣同閱讀尺調校浮層。 */
 body:has(.practice-session) .a11y-fab {
-  display: flex;
-  top: max(12px, env(safe-area-inset-top));
-  right: 12px;
-  bottom: auto;
-  left: auto;
-  width: 48px;
-  height: 48px;
-  min-width: 44px;
-  min-height: 44px;
-  z-index: 45;
-}
-.practice-session .practice-sticky-head {
-  padding-right: 60px;
-}
-.practice-session .practice-sticky-head [data-a11y-trigger] {
   display: none;
+}
+body:has(.practice-session) [data-reading-ruler-fab] {
+  display: none;
+}
+/* 練習頁 SOS 唔 pulse；掣仍喺右下（a11y-header-entry 鎖死）。 */
+body:has(.practice-session) [data-sos-fab] {
+  animation: none !important;
 }
 /* /practice-revealed-p0 */

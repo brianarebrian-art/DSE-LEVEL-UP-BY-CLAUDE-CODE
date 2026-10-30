@@ -420,18 +420,11 @@ export default function PracticeSession({
     return () => cancelAnimationFrame(id)
   }, [answerState])
 
-  // §2.5 答題衝擊波：記住啱啱撳咗邊個選項，由該掣中心擴散一次。
-  //
-  // 呢個平台係【揀即等於交】，冇獨立提交掣，所以規格書講嘅「由提交掣中心擴散」
-  // 落到呢度即係「由選項掣中心擴散」——唔為咗遷就動畫而加一個多餘嘅提交步驟。
-  //
-  // 答錯用霓虹粉，但力度、大小、時長同答啱【完全一致】：規格書 §0 明訂
-  // 「答錯無震屏、無負面驚嚇回饋」，憲章 §7 亦禁止任何打擊自信嘅元素。
-  // 純 CSS 動畫（.shockwave），SEN 同 reduced-motion 之下由 globals.css 直接
-  // display:none，唔使喺呢度再判斷一次。
-  const [shockIdx, setShockIdx] = useState<number | null>(null)
-  const shockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  useEffect(() => () => { if (shockTimer.current) clearTimeout(shockTimer.current) }, [])
+  // 答題回饋：≤200ms 透明度提示（正確／錯誤力度一致）。唔再用衝擊波／粒子。
+  // 揀即等於交；SEN／reduced-motion／no-motion 由 globals.css 直接靜止。
+  const [flashIdx, setFlashIdx] = useState<number | null>(null)
+  const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => () => { if (flashTimer.current) clearTimeout(flashTimer.current) }, [])
 
   const selectOption = useCallback(
     (zh: string, idx: number) => {
@@ -441,10 +434,9 @@ export default function PracticeSession({
       setPickedCause(null)
       setWishOpen(false)
       setHackOpen(false)
-      // 衝擊波：600ms 之後拆走個節點，唔留喺 DOM 度
-      setShockIdx(idx)
-      if (shockTimer.current) clearTimeout(shockTimer.current)
-      shockTimer.current = setTimeout(() => setShockIdx(null), 600)
+      setFlashIdx(idx)
+      if (flashTimer.current) clearTimeout(flashTimer.current)
+      flashTimer.current = setTimeout(() => setFlashIdx(null), 200)
 
       // 「再試一次」之後再揀：畫面可以重答，但進度／錯題 log 只記首次。
       const alreadyLogged = loggedIdsRef.current.has(currentQ.id)
@@ -630,7 +622,7 @@ export default function PracticeSession({
   const retryCurrent = useCallback(() => {
     if (answerState === null) return
     setAnswerState(null)
-    setShockIdx(null)
+    setFlashIdx(null)
     setPickedCause(null)
     setWishOpen(false)
     setHackOpen(false)
@@ -860,7 +852,7 @@ export default function PracticeSession({
   if (totalQ === 0) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-        <div className="text-5xl">{subjectMeta?.emoji ?? '📝'}</div>
+        <Brain size={40} aria-hidden className="text-ink-muted" />
         <p className="text-ink-muted">
           {subjectMeta
             ? t.practice.notLive.replace('{subject}', tr(subjectMeta.name, subjectMeta.nameEn))
@@ -886,8 +878,7 @@ export default function PracticeSession({
       <div className="practice-session-column max-w-2xl mx-auto lg:max-w-6xl desk:max-w-[1296px]">
         <div className={answerState ? 'practice-revealed-scroll' : undefined}>
 
-        {/* Wave 2 手機答題頂欄：返回 + 科目 + 題數進度一齊 sticky（brief B）。
-            全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），返回係唯一離開路徑。 */}
+        {/* 練習頂欄：返回｜科目｜題序；次要工具收入「更多」。判斷軌喺下面。 */}
         <div className="focus-dim sticky top-0 z-30 practice-sticky-head -mt-2 pt-2 pb-3 mb-3 bg-surface">
           <div className="flex items-center gap-2 text-sm">
             <Link
@@ -899,29 +890,26 @@ export default function PracticeSession({
               <span className="text-xs">{tr('返回', 'Back')}</span>
             </Link>
             {subjectMeta && (
-              <>
-                <span aria-hidden>{subjectMeta.emoji}</span>
-                <span className="text-ink-soft font-medium truncate max-w-[40%] sm:max-w-none">
-                  {tr(subjectMeta.name, subjectMeta.nameEn)}
-                </span>
-              </>
+              <span className="min-w-0 truncate text-ink-soft font-medium max-w-[42%] sm:max-w-[14rem]">
+                {tr(subjectMeta.name, subjectMeta.nameEn)}
+              </span>
             )}
             {mode === 'weakness' && (
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
-                🛠️ {tr('盲點修復卷', 'Repair worksheet')}
+              <span className="hidden sm:inline text-[11px] text-ink-muted">
+                {tr('盲點修復', 'Repair set')}
               </span>
             )}
             {mode === 'cause' && cause && (
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
+              <span className="hidden sm:inline text-[11px] text-ink-muted truncate max-w-[10rem]">
                 {cause === 'A'
-                  ? tr('🧠 專攻概念盲區', '🧠 Concept blind spots')
+                  ? tr('專攻概念', 'Concept focus')
                   : cause === 'B'
-                    ? tr('🎯 專攻審題陷阱', '🎯 Reading the question')
-                    : tr('🧮 專攻運算粗心', '🧮 Careful calculation')}
+                    ? tr('專攻審題', 'Question focus')
+                    : tr('專攻運算', 'Calculation focus')}
               </span>
             )}
-            <span className="ml-auto flex items-center gap-2 shrink-0">
-              <span className="font-serif text-sm sm:text-base text-gold-strong tabular-nums">
+            <span className="ml-auto flex items-center gap-1.5 shrink-0">
+              <span className="text-sm sm:text-base text-ink tabular-nums font-medium">
                 {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
               </span>
               {showElapsed && (
@@ -945,11 +933,10 @@ export default function PracticeSession({
                 }}
                 onRest={() => setRestOpen(true)}
               />
-              {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：這一行是 sticky，做題途中隨時撳得到。 */}
-              <A11yButton />
+              {/* 無障礙入口：練習沉浸時頂欄常駐（含桌面），一撳可達。 */}
+              <A11yButton className="!inline-flex" />
             </span>
           </div>
-          {/* 2026-09-30（UX 循環 LOOP 19，創辦人決定 2）：各題狀態列，只顯示、不可跳題。 */}
           <div className="mt-2">
             <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
           </div>
@@ -1055,10 +1042,11 @@ export default function PracticeSession({
                 }
               }
 
-              // 第 1 週 · 引擎一：答對時正確選項輕柔綠色脈衝（600ms，與答錯衝擊波同長）
-              const pulse =
-                answerState !== null && answerState.isCorrect && isCorrectOpt && shockIdx === idx
-                  ? ' pulse-correct'
+              const flash =
+                flashIdx === idx
+                  ? answerState !== null && !answerState.isCorrect
+                    ? ' answer-feedback answer-feedback-miss'
+                    : ' answer-feedback'
                   : ''
 
               return (
@@ -1069,14 +1057,8 @@ export default function PracticeSession({
                   aria-pressed={isSelected}
                   aria-disabled={answerState !== null}
                   onClick={() => selectOption(opt.zh, idx)}
-                  className={`practice-option ml-press relative overflow-hidden w-full min-h-14 sm:min-h-12 text-left flex items-start gap-3 border rounded-xl px-4 py-4 sm:py-3 transition-all ${style}${pulse}`}
+                  className={`practice-option ml-press relative w-full min-h-14 sm:min-h-12 text-left flex items-start gap-3 border rounded-xl px-4 py-4 sm:py-3 transition-[colors,transform,opacity,box-shadow] duration-100 ${style}${flash}`}
                 >
-                  {shockIdx === idx && (
-                    <span
-                      aria-hidden
-                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-gold' : ''}`}
-                    />
-                  )}
                   <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
                     {optionLetters[idx]}
                   </span>

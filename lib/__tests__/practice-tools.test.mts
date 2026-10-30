@@ -43,9 +43,10 @@ test('the panel has its own ruler switch that the ruler overlay listens to', () 
 })
 
 test('the ruler chip is rendered only while the ruler is on', () => {
-  const at = ruler.indexOf('className="fixed floating-bottom floating-left-2')
+  const at = ruler.indexOf('data-reading-ruler-fab')
   assert.ok(at > 0, 'ruler chip container')
   assert.match(ruler.slice(0, at), /\{on && \(\s*<div\s*$/, 'the chip container must sit inside {on && ( … )}')
+  assert.match(ruler, /data-reading-ruler-fab className="fixed floating-bottom floating-left-2/)
 })
 
 test('今日夠了 sits in practice tools (More menu / long header) and opens the one dialog', () => {

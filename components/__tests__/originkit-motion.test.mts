@@ -52,22 +52,12 @@ function mediaBodies(query: string): string[] {
   }
 }
 
-// 2026-08-23（第 1 週 · 引擎一）：答錯版本由 .shockwave-pink 改為 .shockwave-gold。
-// 規格書 §4.2 要求答錯【不出現紅色】，霓虹粉 rgba(255,0,110) 讀落係紅系。
-// 「只准換色、唔准加碼」呢個核心斷言完全不變，只係換咗對象選擇器。
-test('答錯嘅衝擊波唔可以比答啱大聲 —— 金色版本只准換色，唔准改時長或尺寸', () => {
-  const base = ruleBody('.shockwave {')
-  const wrong = ruleBody('.shockwave-gold {')
-  // 基礎版必須訂明 600ms
-  assert.match(base, /animation:\s*shockwave-expand\s+600ms/, '.shockwave 應為 600ms')
-  // 答錯版【只准】覆寫 background —— 一旦出現 animation／width／height／transform 就係在加碼
-  for (const forbidden of ['animation', 'width', 'height', 'transform', 'box-shadow']) {
-    assert.ok(
-      !new RegExp(`(^|;)\\s*${forbidden}\\s*:`, 'm').test(wrong),
-      `.shockwave-gold 唔可以覆寫 ${forbidden} —— 答錯嘅回饋必須同答啱一致（憲章 §7）`,
-    )
-  }
-  // 全份 CSS 唔可以有針對答錯嘅震動關鍵幀
+// Phase 3：衝擊波停用；答對／答錯共用 ≤200ms opacity，力度一致（憲章 §7）。
+test('答錯回饋唔可以比答啱大聲 —— 共用 answer-feedback 時長', () => {
+  const ok = ruleBody('.answer-feedback {')
+  const miss = ruleBody('.answer-feedback-miss {')
+  assert.match(ok, /animation:\s*answer-feedback\s+180ms/, '.answer-feedback 應為 180ms')
+  assert.match(miss, /animation:\s*answer-feedback\s+180ms/, '.answer-feedback-miss 應為 180ms')
   assert.ok(!/@keyframes\s+[\w-]*shake/i.test(LIVE), 'CSS 唔應該有 shake 關鍵幀 —— 規格書 §0 明訂答錯無震屏')
 })
 
@@ -123,12 +113,11 @@ test('規格書明訂嘅數值唔可以飄走：×5 連擊 5s、焦慮 40s', () 
   assert.match(ruleBody('.particle-calm {'), /--particle-alpha:\s*0\.05/, '焦慮狀態透明度應降至 0.05')
 })
 
-test('練習頁真係用緊衝擊波 —— 唔可以淨係有 CSS 冇接線（憲章 §4）', () => {
+test('練習頁真係接上安靜答題回饋 —— 唔可以淨係有 CSS 冇接線（憲章 §4）', () => {
   const src = readFileSync(new URL('../../app/practice/PracticeSession.tsx', import.meta.url).pathname, 'utf8')
-  assert.match(src, /className=\{`shockwave\$\{/, 'PracticeSession 未 render 衝擊波')
-  assert.match(src, /shockwave-gold/, 'PracticeSession 未接答錯嘅金色版本')
-  assert.ok(!/shockwave-pink/.test(src), '答錯唔可以用返霓虹粉（規格書 §4.2：答錯無紅色）')
-  assert.match(src, /relative overflow-hidden/, '選項掣缺 relative／overflow-hidden，衝擊波會定位錯')
-  // 600ms 之後要拆走節點，唔好長期留喺 DOM
-  assert.match(src, /setShockIdx\(null\)\s*\}?,\s*600\s*\)/, '衝擊波節點應於 600ms 後移除')
+  assert.match(src, /answer-feedback/, 'PracticeSession 未接 answer-feedback')
+  assert.match(src, /answer-feedback-miss/, 'PracticeSession 未接答錯路徑')
+  assert.ok(!/shockwave-pink/.test(src), '答錯唔可以用霓虹粉（規格書 §4.2）')
+  assert.ok(!/shockwave-gold/.test(src), '衝擊波已停用')
+  assert.match(src, /setFlashIdx\(null\)\s*\}?,\s*200\s*\)/, '回饋標記應於 200ms 後移除')
 })

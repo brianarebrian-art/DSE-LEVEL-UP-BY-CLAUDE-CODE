@@ -96,6 +96,7 @@ export default function GlobalA11y() {
   return (
     <>
       <button
+        data-sos-fab
         onClick={() => setSosOpen(true)}
         title={en ? 'Feeling down? We are here.' : '我唔開心 —— 你唔係一個人，我哋喺度。'}
         // FIX: [B8] safe-area — iPhone Home Indicator 唔會遮擋（root layout 已設 viewport-fit=cover）

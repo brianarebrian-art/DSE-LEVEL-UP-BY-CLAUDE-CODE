@@ -15,11 +15,12 @@ export default function HomePage() {
   return <>
     <JsonLd data={breadcrumbJsonLd([{ name: 'DSE Level Up', path: '/' }])} />
     <HomePageClient />
-    <nav aria-label="Subject learning routes" className="mx-auto max-w-5xl px-4 py-10">
-      <h2 className="text-2xl font-medium text-ink">由概念筆記開始，再選擇練習 · Learn concepts, then practise</h2>{/* i18n-exempt: actual bilingual static text */}
-      <p lang="zh-Hant" className="mt-4 leading-8 text-ink-soft">數學先核對解題步驟，英文先辨認讀者與文體。本站提供原創教學及題庫練習，並非官方試卷或閱卷服務。</p>{/* i18n-exempt: paired with English paragraph below */}
-      <p lang="en" className="mt-2 leading-8 text-ink-soft">For maths, check each solution step; for English, identify the reader and text type. These are original learning materials and practice questions, not official papers or an examination marking service.</p>
-      <ul className="mt-5 flex flex-wrap gap-5 text-accent">
+    {/* SEO / crawler routes: keep links, demote visual weight so this is not a second hero. */}
+    <nav aria-label="Subject learning routes" className="mx-auto max-w-5xl border-t border-line px-4 py-6 text-sm">
+      <h2 className="text-base font-medium text-ink-muted">由概念筆記開始，再選擇練習 · Learn concepts, then practise</h2>{/* i18n-exempt: actual bilingual static text */}
+      <p lang="zh-Hant" className="mt-2 leading-6 text-ink-muted">數學先核對解題步驟，英文先辨認讀者與文體。本站提供原創教學及題庫練習，並非官方試卷或閱卷服務。</p>{/* i18n-exempt: paired with English paragraph below */}
+      <p lang="en" className="mt-1 leading-6 text-ink-muted">For maths, check each solution step; for English, identify the reader and text type. These are original learning materials and practice questions, not official papers or an examination marking service.</p>
+      <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-accent">
         <li><Link href="/dse-maths" className="underline underline-offset-4">數學學習路線 · Maths learning route</Link></li>{/* i18n-exempt: actual bilingual static text */}
         <li><Link href="/dse-english" className="underline underline-offset-4">英文閱讀與寫作 · English reading and writing</Link></li>{/* i18n-exempt: actual bilingual static text */}
         <li><Link href="/subjects" className="underline underline-offset-4">按科目選擇原創練習 · Original subject practice</Link></li>{/* i18n-exempt: actual bilingual static text */}

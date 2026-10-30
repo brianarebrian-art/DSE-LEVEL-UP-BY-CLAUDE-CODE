@@ -89,12 +89,12 @@ export default function ReadingRuler() {
           關着時不再常駐浮在左下角（375×812 實測會遮住首頁連結及練習頁回饋），
           開關改在無障礙面板（components/A11yPanel.tsx），一鍵舒適模式亦會開。 */}
       {on && (
-      <div className="fixed floating-bottom floating-left-2 z-50 no-print flex items-center gap-2">
+      <div data-reading-ruler-fab className="fixed floating-bottom floating-left-2 z-50 no-print flex items-center gap-2">
         <button
           onClick={() => { setOn(!on); persist(!on, hIdx) }}
           aria-pressed={on}
           title={en ? 'Reading ruler (focus aid)' : '閱讀尺（防跳行輔助）'}
-          className={`flex min-h-12 items-center gap-1.5 text-xs px-3 py-2 rounded-full border transition-all ${
+          className={`flex min-h-12 items-center gap-1.5 text-xs px-3 py-2 rounded-full border transition-colors ${
             on
               ? 'bg-surface-sunken border-gold/50 text-gold'
               : 'bg-surface-raised border-line-strong text-ink-muted hover:text-accent'
