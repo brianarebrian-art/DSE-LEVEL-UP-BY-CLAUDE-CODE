@@ -18,7 +18,7 @@ const data = {
   avgPerQuestion: '1 分 36 秒',
   strengthTopic: '供求分析',
   focusTopic: '彈性計算',
-  igLink: 'dse-level-up-by-claude-code.vercel.app',
+  igLink: 'www.dselevelup.com',
 }
 
 export function Zh() {
