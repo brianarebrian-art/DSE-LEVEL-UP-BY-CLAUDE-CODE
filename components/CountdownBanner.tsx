@@ -51,16 +51,16 @@ export default function CountdownBanner() {
     // 1.36:1、text-amber-300 更只有 1.33:1 —— 即係首頁頂第一眼睇到嘅倒數日數
     // 【實際上係睇唔到】。已全部改用主題 token，兩個主題都達 AA。
     <div className="border-b border-gold/25 bg-gold/[0.06]">
-      <div className="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-center gap-3 text-sm flex-wrap">
-        <CalendarDays size={15} className="text-gold shrink-0" />
-        <span className="text-ink-soft">
+ <div className="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-center gap-3 text-sm flex-wrap">
+ <CalendarDays size={15} className="text-gold shrink-0" />
+ <span className="text-ink-soft">
           {en ? 'About ' : '距 '}
           <span className="font-bold text-gold">{days}</span>
           {en ? ' days to HKDSE 2027' : ' 日 · 2027 DSE 開考'}
         </span>
-        <span className="text-ink-muted hidden sm:inline">·</span>
-        <span className="text-ink-muted">{note}</span>
-      </div>
-    </div>
+ <span className="text-ink-muted hidden sm:inline">·</span>
+ <span className="text-ink-muted">{note}</span>
+ </div>
+ </div>
   )
 }

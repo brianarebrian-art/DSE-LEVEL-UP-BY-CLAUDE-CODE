@@ -7,7 +7,7 @@ import type { LongQuestion, TextQuestion, WrittenQuestion } from '@/data/questio
 const sampleText: TextQuestion = {
   id: '_preview_text', type: 'text', subject: 'math',
   topic: 'quadratic_equations', topicZh: '二次方程', topicEn: 'Quadratic Equations',
-  framework: 'preview', frameworkZh: '樣本', frameworkEn: 'Sample', frameworkEmoji: '🧪',
+  framework: 'preview', frameworkZh: '樣本', frameworkEn: 'Sample', frameworkEmoji: '',
   difficulty: 'easy', year: 0,
   content: '寫出二次方程 $ax^2+bx+c=0$（其中 $a \\neq 0$）的判別式。',
   contentEn: 'Write down the discriminant of $ax^2+bx+c=0$ (where $a \\neq 0$).',
@@ -20,7 +20,7 @@ const sampleText: TextQuestion = {
 const sampleLong: LongQuestion = {
   id: '_preview_long', type: 'long', subject: 'math',
   topic: 'quadratic_equations', topicZh: '二次方程', topicEn: 'Quadratic Equations',
-  framework: 'preview', frameworkZh: '樣本', frameworkEn: 'Sample', frameworkEmoji: '🧪',
+  framework: 'preview', frameworkZh: '樣本', frameworkEn: 'Sample', frameworkEmoji: '',
   difficulty: 'hard', year: 0,
   content: '已知二次方程 $x^2-5x+6=0$ 的兩根為 $\\alpha$ 與 $\\beta$。求 $\\alpha+\\beta$ 及 $\\alpha\\beta$ 的值，並說明兩者與方程係數的關係。',
   contentEn: 'The roots of $x^2-5x+6=0$ are $\\alpha$ and $\\beta$. Find $\\alpha+\\beta$ and $\\alpha\\beta$.',

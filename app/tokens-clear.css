@@ -1,0 +1,313 @@
+/*
+  Clear System — DSE Level Up design tokens (2026-10-30 UI reset).
+  Semantic roles only. No Morandi / Night Study / neon UI.
+  Variants: Light (default), Dark ([data-theme=cyber]), Increase Contrast
+  ([data-contrast=more] or prefers-contrast: more).
+  Status must not rely on colour alone (pair with icon / label / shape).
+*/
+
+@theme {
+  --font-sans: var(--font-noto), 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei',
+    'Noto Sans CJK TC', sans-serif;
+  /* Serif kept only for rare editorial; UI uses sans. Easy-read mode overrides. */
+  --font-serif: var(--font-noto), 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+
+  --breakpoint-desk: 90rem;
+
+  /* ── Light (Clear System) ─────────────────────────────────────────── */
+  --color-surface: #f2f2f7;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #e5e5ea;
+  --color-ink: #1c1c1e;
+  --color-ink-soft: #3a3a3c;
+  --color-ink-muted: #636366; /* ≥4.5:1 on canvas / sunken */
+  --color-ink-faint: #aeaeb2; /* disabled / decorative only */
+  /* Accent: filled controls keep Apple system blue #0071E3 (≥4.5:1 with white).
+     Link/emphasis accent is deeper so body text clears 4.5:1 on canvas and sunken. */
+  --color-accent: #0055aa; /* links / emphasis */
+  --color-accent-strong: #0071e3; /* filled controls */
+  --color-accent-hover: #0060c0;
+  --color-on-accent: #ffffff;
+  --color-line: rgba(60, 60, 67, 0.12);
+  --color-line-strong: rgba(60, 60, 67, 0.29);
+  --color-scrim: rgba(0, 0, 0, 0.4);
+  --color-scrim-soft: rgba(0, 0, 0, 0.24);
+
+  --color-gold: #b25000; /* warn / attention — with icon */
+  --color-gold-soft: #ffd60a;
+  --color-gold-strong: #9a4500;
+  --color-violet: #5856d6; /* secondary info — with label */
+  --color-violet-strong: #3634a3;
+  --color-on-violet: #ffffff;
+  --color-rose: #d70015; /* error — with icon + text */
+  --color-rose-strong: #b00012;
+
+  --color-success: #248a3d;
+  --color-success-strong: #1b6b30;
+  --color-on-success: #ffffff;
+
+  --color-material: rgba(255, 255, 255, 0.72);
+  --color-material-heavy: rgba(242, 242, 247, 0.86);
+
+  /* Paper (blind-test card) — still reads as paper, not UI chrome */
+  --color-paper: #ffffff;
+  --color-paper-ink: #1c1c1e;
+  --color-paper-muted: #6c6c70;
+  --color-paper-warn: #9a4500;
+
+  /* Subject family tints (border/hover only, not text) */
+  --color-subj-sage: #248a3d;
+  --color-subj-moss: #1b6b30;
+  --color-subj-mist: #0071e3;
+  --color-subj-clay: #b25000;
+  --color-subj-rose: #d70015;
+  --color-subj-stone: #6c6c70;
+
+  /* Export-only neons (charter: not for live UI) */
+  --color-neon-cyan: #00f5d4;
+  --color-neon-pink: #ff006e;
+  --color-neon-yellow: #fee440;
+  --color-neon-purple: #9b5de5;
+
+  /* Legacy ml-* → Clear System (compat during migration) */
+  --color-ml-canvas: #f2f2f7;
+  --color-ml-surface: #ffffff;
+  --color-ml-muted: #e5e5ea;
+  --color-ml-ink: #1c1c1e;
+  --color-ml-ink-soft: #6c6c70;
+  --color-ml-sage: #0071e3;
+  --color-ml-clay: #b25000;
+  --color-ml-warn: #d70015;
+  --color-ml-good: #248a3d;
+  --color-ml-line: #8e8e93;
+  --color-ml-on-brand: #ffffff;
+  --color-ml-rose: #ff9f0a;
+  --color-ml-mist: #64d2ff;
+
+  --grade-5ss: #0071e3;
+  --grade-5s: #248a3d;
+  --grade-5: #248a3d;
+  --grade-4: #5856d6;
+  --grade-3: #b25000;
+  --grade-2: #6c6c70;
+  --grade-1: #3a3a3c;
+  --grade-u: #d70015;
+
+  /* Type scale (Noto Sans TC) */
+  --text-caption: 0.75rem; /* 12 */
+  --text-footnote: 0.8125rem; /* 13 */
+  --text-body: 0.9375rem; /* 15 */
+  --text-callout: 1rem; /* 16 */
+  --text-title: 1.25rem; /* 20 */
+  --text-headline: 1.75rem; /* 28 */
+  --text-display: 2.5rem; /* 40 */
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-body: 1.55;
+
+  /* Spacing rhythm (4pt base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-press: 120ms;
+  --duration-ui: 200ms;
+  --duration-panel: 280ms;
+
+  /* Radius / elevation */
+  --radius-control: 12px;
+  --radius-card: 16px;
+  --radius-sheet: 20px;
+  --shadow-float: 0 1px 0 rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Resolve semantic aliases for runtime (Tailwind @theme + CSS vars) */
+:root {
+  --color-surface: #f2f2f7;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #e5e5ea;
+  --color-ink: #1c1c1e;
+  --color-ink-soft: #3a3a3c;
+  --color-ink-muted: #636366;
+  --color-ink-faint: #aeaeb2;
+  --color-accent: #0055aa;
+  --color-accent-strong: #0071e3;
+  --color-accent-hover: #0060c0;
+  --color-on-accent: #ffffff;
+  --color-line: rgba(60, 60, 67, 0.12);
+  --color-line-strong: rgba(60, 60, 67, 0.29);
+  --color-scrim: rgba(0, 0, 0, 0.4);
+  --color-scrim-soft: rgba(0, 0, 0, 0.24);
+  --color-gold: #b25000;
+  --color-gold-soft: #ffd60a;
+  --color-gold-strong: #9a4500;
+  --color-violet: #5856d6;
+  --color-violet-strong: #3634a3;
+  --color-on-violet: #ffffff;
+  --color-rose: #d70015;
+  --color-rose-strong: #b00012;
+  --color-success: #248a3d;
+  --color-material: rgba(255, 255, 255, 0.72);
+  --color-material-heavy: rgba(242, 242, 247, 0.86);
+  --color-ml-canvas: #f2f2f7;
+  --color-ml-surface: #ffffff;
+  --color-ml-muted: #e5e5ea;
+  --color-ml-ink: #1c1c1e;
+  --color-ml-ink-soft: #6c6c70;
+  --color-ml-sage: #0071e3;
+  --color-ml-clay: #b25000;
+  --color-ml-warn: #d70015;
+  --color-ml-good: #248a3d;
+  --color-ml-line: #8e8e93;
+  --color-ml-on-brand: #ffffff;
+  --sidebar-w: 0px;
+  color-scheme: light;
+}
+
+/* Dark — keep data-theme=cyber key for ThemeProvider compat */
+:root[data-theme='cyber'] {
+  --color-surface: #000000;
+  --color-surface-raised: #1c1c1e;
+  --color-surface-sunken: #2c2c2e;
+  --color-ink: #f5f5f7;
+  --color-ink-soft: #ebebf5;
+  --color-ink-muted: #98989d;
+  --color-ink-faint: #636366;
+  /* Links use a brighter blue so text clears AA on raised/sunken; fills stay #0071E3 for white label. */
+  --color-accent: #409cff;
+  --color-accent-strong: #0071e3;
+  --color-accent-hover: #0060c0;
+  --color-on-accent: #ffffff;
+  --color-line: rgba(84, 84, 88, 0.65);
+  --color-line-strong: rgba(142, 142, 147, 0.45);
+  --color-scrim: rgba(0, 0, 0, 0.6);
+  --color-scrim-soft: rgba(0, 0, 0, 0.4);
+  --color-gold: #ff9f0a;
+  --color-gold-soft: #ffd60a;
+  --color-gold-strong: #ffb340;
+  --color-violet: #5e5ce6;
+  --color-violet-strong: #7d7aff;
+  --color-on-violet: #ffffff;
+  --color-rose: #ff453a;
+  --color-rose-strong: #ff6961;
+  --color-success: #30d158;
+  --color-material: rgba(28, 28, 30, 0.72);
+  --color-material-heavy: rgba(0, 0, 0, 0.72);
+  --color-ml-canvas: #000000;
+  --color-ml-surface: #1c1c1e;
+  --color-ml-muted: #2c2c2e;
+  --color-ml-ink: #f5f5f7;
+  --color-ml-ink-soft: #98989d;
+  --color-ml-sage: #409cff;
+  --color-ml-clay: #ff9f0a;
+  --color-ml-warn: #ff453a;
+  --color-ml-good: #30d158;
+  --color-ml-line: #636366;
+  --color-ml-on-brand: #ffffff;
+  --color-paper: #2c2c2e;
+  --color-paper-ink: #f5f5f7;
+  --color-paper-muted: #98989d;
+  color-scheme: dark;
+}
+
+/* Increase Contrast — OS preference or manual data-contrast=more */
+@media (prefers-contrast: more) {
+  :root {
+    --color-ink: #000000;
+    --color-ink-soft: #1c1c1e;
+    --color-ink-muted: #3a3a3c;
+    --color-accent: #0051a8;
+    --color-accent-strong: #0051a8;
+    --color-accent-hover: #003d80;
+    --color-line: rgba(0, 0, 0, 0.45);
+    --color-line-strong: rgba(0, 0, 0, 0.7);
+    --color-material: #ffffff;
+    --color-material-heavy: #ffffff;
+  }
+  :root[data-theme='cyber'] {
+    --color-ink: #ffffff;
+    --color-ink-soft: #f5f5f7;
+    --color-ink-muted: #d1d1d6;
+    --color-accent: #64d2ff;
+    --color-accent-strong: #64d2ff;
+    --color-accent-hover: #70d7ff;
+    --color-on-accent: #000000;
+    --color-line: rgba(255, 255, 255, 0.55);
+    --color-line-strong: rgba(255, 255, 255, 0.8);
+    --color-material: #1c1c1e;
+    --color-material-heavy: #000000;
+  }
+}
+
+html[data-contrast='more'] {
+  --color-ink: #000000;
+  --color-ink-soft: #1c1c1e;
+  --color-ink-muted: #3a3a3c;
+  --color-accent: #0051a8;
+  --color-accent-strong: #0051a8;
+  --color-accent-hover: #003d80;
+  --color-line: rgba(0, 0, 0, 0.45);
+  --color-line-strong: rgba(0, 0, 0, 0.7);
+  --color-material: #ffffff;
+  --color-material-heavy: #ffffff;
+}
+html[data-contrast='more'][data-theme='cyber'] {
+  --color-ink: #ffffff;
+  --color-ink-soft: #f5f5f7;
+  --color-ink-muted: #d1d1d6;
+  --color-accent: #64d2ff;
+  --color-accent-strong: #64d2ff;
+  --color-accent-hover: #70d7ff;
+  --color-on-accent: #000000;
+  --color-line: rgba(255, 255, 255, 0.55);
+  --color-line-strong: rgba(255, 255, 255, 0.8);
+  --color-material: #1c1c1e;
+  --color-material-heavy: #000000;
+}
+
+/* Mobile-native baseline (capability-based; no UA sniffing) */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+button,
+a,
+[role='button'],
+.tappable {
+  touch-action: manipulation;
+}
+
+button,
+[role='button'],
+.tab,
+.chip {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-press: 1ms;
+    --duration-ui: 1ms;
+    --duration-panel: 1ms;
+  }
+}

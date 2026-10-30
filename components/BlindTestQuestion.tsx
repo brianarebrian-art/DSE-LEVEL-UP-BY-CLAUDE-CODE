@@ -64,12 +64,12 @@ function Black({
           : undefined
       }
       className={`inline-block rounded px-1 mx-0.5 align-middle transition-colors ${
-        revealed
-          ? 'bg-paper-ink/10 text-paper-warn font-semibold'
-          : 'bg-paper-ink text-paper-ink cursor-pointer select-none'
-              + ' focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
-              + ' focus-visible:outline-paper-warn'
-      }`}
+ revealed
+ ? 'bg-paper-ink/10 text-paper-warn font-semibold'
+ : 'bg-paper-ink text-paper-ink cursor-pointer select-none'
+ + ' focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+ + ' focus-visible:outline-paper-warn'
+ }`}
     >
       {children}
     </span>
@@ -80,41 +80,41 @@ export default function BlindTestQuestion() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const tr = (zh: string, eng: string) => (en ? eng : zh)
-  const [revealed, setRevealed] = useState(false)
-  const reveal = () => setRevealed(true)
+ const [revealed, setRevealed] = useState(false)
+ const reveal = () => setRevealed(true)
 
-  return (
-    <div className="bg-paper border border-paper-warn/40 rounded-2xl p-5 sm:p-6 shadow-lg">
+ return (
+ <div className="bg-paper border border-paper-warn/40 rounded-2xl p-5 sm:p-6 shadow-lg">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <span className="text-paper-warn font-extrabold tracking-wide text-sm uppercase">🩻 {tr('盲測黑題', 'Blind Test')}</span>
+ <span className="text-paper-warn font-extrabold tracking-wide text-sm uppercase">🩻 {tr('盲測黑題', 'Blind Test')}</span>
         {/* 2026-10-04（審計 #9，創辦人回覆 11a）：講明係示範，唔係練習題。 */}
         <span className="rounded-full border border-paper-ink/20 px-2 py-0.5 text-xs text-paper-muted">{tr('示範題，唔計分', 'Demo — not scored')}</span>
-      </div>
+ </div>
 
       {/* Figure — two tangents from an external point P to a circle */}
       <svg viewBox="0 0 280 160" className="w-full h-36 mb-4" role="img" aria-label="circle with two tangents">
         {/* ⚠️ SVG presentation attribute（fill="…" / stroke="…"）唔會解析 var() ——
             佢哋唔係當 CSS 值咁 parse。要食 token 就一定要行 inline style。 */}
         <circle cx="178" cy="82" r="44" fill="none" style={INK} strokeWidth="2" />
-        <circle cx="178" cy="82" r="2.5" style={INK_FILL} />
-        <text x="186" y="80" style={INK_FILL} fontSize="11">O</text>
+ <circle cx="178" cy="82" r="2.5" style={INK_FILL} />
+ <text x="186" y="80" style={INK_FILL} fontSize="11">O</text>
         {/* external point P and the two tangents */}
         <line x1="58" y1="82" x2="160" y2="46" style={TRAP} strokeWidth="2" />
-        <line x1="58" y1="82" x2="160" y2="118" style={TRAP} strokeWidth="2" />
-        <circle cx="58" cy="82" r="2.5" style={TRAP_FILL} />
-        <text x="40" y="86" style={TRAP_FILL} fontSize="11">P</text>
-        <circle cx="160" cy="46" r="2.5" style={TRAP_FILL} />
-        <text x="150" y="40" style={TRAP_FILL} fontSize="11">A</text>
-        <circle cx="160" cy="118" r="2.5" style={TRAP_FILL} />
-        <text x="150" y="132" style={TRAP_FILL} fontSize="11">B</text>
+ <line x1="58" y1="82" x2="160" y2="118" style={TRAP} strokeWidth="2" />
+ <circle cx="58" cy="82" r="2.5" style={TRAP_FILL} />
+ <text x="40" y="86" style={TRAP_FILL} fontSize="11">P</text>
+ <circle cx="160" cy="46" r="2.5" style={TRAP_FILL} />
+ <text x="150" y="40" style={TRAP_FILL} fontSize="11">A</text>
+ <circle cx="160" cy="118" r="2.5" style={TRAP_FILL} />
+ <text x="150" y="132" style={TRAP_FILL} fontSize="11">B</text>
         {/* point C on the major arc */}
         <circle cx="214" cy="58" r="2.5" style={INK_FILL} />
-        <text x="220" y="56" style={INK_FILL} fontSize="11">C</text>
-        <line x1="214" y1="58" x2="160" y2="46" style={MUTED} strokeWidth="1.3" />
-        <line x1="214" y1="58" x2="160" y2="118" style={MUTED} strokeWidth="1.3" />
-        <path d="M 78 74 A 22 22 0 0 1 78 90" fill="none" style={TRAP} strokeWidth="1.3" />
-      </svg>
+ <text x="220" y="56" style={INK_FILL} fontSize="11">C</text>
+ <line x1="214" y1="58" x2="160" y2="46" style={MUTED} strokeWidth="1.3" />
+ <line x1="214" y1="58" x2="160" y2="118" style={MUTED} strokeWidth="1.3" />
+ <path d="M 78 74 A 22 22 0 0 1 78 90" fill="none" style={TRAP} strokeWidth="1.3" />
+ </svg>
 
       {/* Redacted question */}
       <p className="text-sm leading-relaxed text-paper-ink mb-4">
@@ -127,19 +127,19 @@ export default function BlindTestQuestion() {
       {/* Options with the key figures redacted */}
       <div className="grid grid-cols-2 gap-2 mb-5">
         {['65', '50', '130', '25'].map((v, i) => (
-          <div key={i} className="flex items-center gap-2 border border-paper-ink/20 bg-paper-ink/5 rounded-lg px-3 py-2 text-sm">
-            <span className="w-5 h-5 rounded bg-paper-ink/10 text-paper-ink text-xs font-bold flex items-center justify-center">
+ <div key={i} className="flex items-center gap-2 border border-paper-ink/20 bg-paper-ink/5 rounded-lg px-3 py-2 text-sm">
+ <span className="w-5 h-5 rounded bg-paper-ink/10 text-paper-ink text-xs font-bold flex items-center justify-center">
               {['A', 'B', 'C', 'D'][i]}
             </span>
-            <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>{v}</Black><span className="text-paper-muted">°</span>
-          </div>
-        ))}
-      </div>
+ <Black revealed={revealed} onReveal={reveal} label={tr('顯示被遮蓋嘅數值', 'Reveal the hidden value')}>{v}</Black><span className="text-paper-muted">°</span>
+ </div>
+ ))}
+ </div>
 
-      <p className="text-[10px] text-paper-muted text-center mt-3">
+ <p className="text-[10px] text-paper-muted text-center mt-3">
         {tr('黑色係考評局陷阱位 — 撳一下偷睇。喺 DSE Level Up，你要睇穿，唔係背答案。',
             'The black blocks are the examiner’s traps — tap to peek. On DSE Level Up you see through them, you don’t memorise.')}
       </p>
-    </div>
+ </div>
   )
 }

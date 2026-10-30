@@ -42,44 +42,44 @@ export default function TrailStrip({ className = '' }: { className?: string }) {
 
   return (
     <section className={className} aria-labelledby="trail-strip-heading">
-      <div className="flex items-baseline justify-between mb-3">
-        <h2 id="trail-strip-heading" className="font-medium text-ink">
+ <div className="flex items-baseline justify-between mb-3">
+ <h2 id="trail-strip-heading" className="font-medium text-ink">
           🗺️ {en ? 'Recent trail' : '最近足跡'}
         </h2>
-        <Link href="/logic-log" className="text-sm text-accent inline-flex items-center gap-1 min-h-11">
+ <Link href="/logic-log" className="text-sm text-accent inline-flex items-center gap-1 min-h-11">
           {en ? 'Full trail' : '完整足跡'}
           <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
-      </div>
+ </Link>
+ </div>
 
-      <div className="carousel-3d -mx-1 overflow-x-auto pb-2">
-        <ul className="flex gap-3 px-1">
+ <div className="carousel-3d -mx-1 overflow-x-auto pb-2">
+ <ul className="flex gap-3 px-1">
           {entries.slice(0, 7).map((e) => (
-            <li key={e.date} className="shrink-0 w-44">
-              <Link
+ <li key={e.date} className="shrink-0 w-44">
+ <Link
                 href="/logic-log"
                 className="carousel-card block h-full rounded-2xl border border-line bg-surface-raised p-4"
               >
-                <span className="flex items-center gap-2">
-                  <span aria-hidden className={`w-2.5 h-2.5 rounded-full ${TONE_DOT[nodeTone(e)]}`} />
-                  <span className="text-sm font-medium text-ink">{shortDate(e.date, en)}</span>
-                </span>
-                <span className="block text-xs text-ink-muted mt-2">
+ <span className="flex items-center gap-2">
+ <span aria-hidden className={`w-2.5 h-2.5 rounded-full ${TONE_DOT[nodeTone(e)]}`} />
+ <span className="text-sm font-medium text-ink">{shortDate(e.date, en)}</span>
+ </span>
+ <span className="block text-xs text-ink-muted mt-2">
                   {en ? `${e.questionsCount} questions · ${e.timeMinutes} min` : `${e.questionsCount} 題 · ${e.timeMinutes} 分鐘`}
                 </span>
                 {e.subjects.length > 0 && (
-                  <span className="block text-xs text-ink-muted mt-1 truncate">
+ <span className="block text-xs text-ink-muted mt-1 truncate">
                     {e.subjects.slice(0, 2).map((s) => subjectLabel(s, en)).join(en ? ', ' : '、')}
-                  </span>
+ </span>
                 )}
                 {e.moodNote && (
                   <span className="block text-xs text-ink mt-2 line-clamp-2">「{e.moodNote}」</span>
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+ )}
+ </Link>
+ </li>
+ ))}
+ </ul>
+ </div>
+ </section>
   )
 }

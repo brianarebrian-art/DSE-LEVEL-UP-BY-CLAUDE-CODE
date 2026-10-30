@@ -96,7 +96,7 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
   const nextPending = useCallback(
     (statusMap: Record<string, string>, fromKey: string): string | null => {
       const idx = flat.findIndex(({ batch, row }) => keyOf(batch, row.id) === fromKey)
-      for (let i = idx + 1; i < flat.length; i++) {
+ for (let i = idx + 1; i < flat.length; i++) {
         const k = keyOf(flat[i].batch, flat[i].row.id)
         if (statusMap[k] === 'pending') return k
       }
@@ -117,31 +117,31 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
         return updated
       })
       setRecorded((n) => n + 1)
-    },
-    [nextPending],
-  )
+ },
+ [nextPending],
+ )
 
-  const total = flat.length
-  const decidedCount = Object.values(statuses).filter((s) => s !== 'pending').length
-  const pendingCount = total - decidedCount
-  const allDone = total > 0 && pendingCount === 0
+ const total = flat.length
+ const decidedCount = Object.values(statuses).filter((s) => s !== 'pending').length
+ const pendingCount = total - decidedCount
+ const allDone = total > 0 && pendingCount === 0
 
-  return (
-    <div>
-      <section className="mb-10">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-medium text-accent-strong">📋 待審隊列{/* i18n-exempt: admin */}</h2>
+ return (
+ <div>
+ <section className="mb-10">
+ <div className="mb-4 flex items-center justify-between">
+ <h2 className="text-lg font-medium text-accent-strong">📋 待審隊列{/* i18n-exempt: admin */}</h2>
           {total > 0 && (
-            <span className="text-sm text-ink-muted">
+ <span className="text-sm text-ink-muted">
               本節已記錄 {recorded} · 待審 {pendingCount} / {total}{/* i18n-exempt: admin */}
             </span>
-          )}
-        </div>
+ )}
+ </div>
 
         {total > 0 && (
-          <div className="mb-6 h-2 w-full overflow-hidden rounded-full bg-line">
-            <div className="h-full rounded-full bg-accent-strong transition-all duration-300" style={{ width: `${(decidedCount / total) * 100}%` }} />
-          </div>
+ <div className="mb-6 h-2 w-full overflow-hidden rounded-full bg-line">
+ <div className="h-full rounded-full bg-accent-strong transition-all duration-300" style={{ width: `${(decidedCount / total) * 100}%` }} />
+ </div>
         )}
 
         {batches.length === 0 && (
@@ -150,63 +150,63 @@ export function ReviewPanel({ batches, history, dbOk }: { batches: Batch[]; hist
 
         {allDone && (
           <div className="mb-6 rounded-2xl border border-accent/30 bg-accent/5 p-8 text-center">
-            <div className="mb-2 text-4xl">🎉</div>
-            <h3 className="mb-1 text-xl font-medium text-accent-strong">隊列清空！{/* i18n-exempt: admin */}</h3>
-            <p className="text-sm text-ink-muted">本節已記錄 {recorded} 條決定。{/* i18n-exempt: admin */}</p>
-            <p className="mx-auto mt-3 max-w-md text-xs text-ink-muted">
+ <div className="mb-2 text-4xl"></div>
+ <h3 className="mb-1 text-xl font-medium text-accent-strong">隊列清空！{/* i18n-exempt: admin */}</h3>
+ <p className="text-sm text-ink-muted">本節已記錄 {recorded} 條決定。{/* i18n-exempt: admin */}</p>
+ <p className="mx-auto mt-3 max-w-md text-xs text-ink-muted">
               ⚠️ 記錄決定 ≠ 入題庫。呢啲決定要喺本地行 pull-decisions → promote-drafts → 人手 wire → push 先正式入庫並顯示「人手核對題」badge。{/* i18n-exempt: admin */}
             </p>
-          </div>
+ </div>
         )}
 
         {batches.map((b) => (
-          <BatchBlock key={b.batch} batch={b} statuses={statuses} activeKey={activeKey} onActivate={setActiveKey} onDecided={onDecided} dbOk={dbOk} />
+ <BatchBlock key={b.batch} batch={b} statuses={statuses} activeKey={activeKey} onActivate={setActiveKey} onDecided={onDecided} dbOk={dbOk} />
         ))}
 
         {!dbOk && total > 0 && (
-          <p className="mt-4 text-xs text-gold-strong">
+ <p className="mt-4 text-xs text-gold-strong">
             ⚠️ Supabase 未連通，暫時淨係睇得、記錄唔到 —— 撳鍵可以預選決定，但「提交」要等資料庫接通。{/* i18n-exempt: admin */}
           </p>
         )}
         {dbOk && total > 0 && (
-          <p className="mt-4 text-xs text-ink-muted">
+ <p className="mt-4 text-xs text-ink-muted">
             ⌨️ 快捷鍵：A / R / P（或 1 / 2 / 3）= 通過 / 退回 / 暫緩 · Enter = 提交（打緊備註時唔會觸發）。{/* i18n-exempt: admin */}
           </p>
-        )}
-      </section>
+ )}
+ </section>
 
-      <section>
-        <h2 className="mb-4 text-lg font-medium text-violet">📜 審核歷史（雲端最新 200 筆）{/* i18n-exempt: admin */}</h2>
+ <section>
+ <h2 className="mb-4 text-lg font-medium text-violet">📜 審核歷史（雲端最新 200 筆）{/* i18n-exempt: admin */}</h2>
         {history.length === 0 ? (
           <p className="text-sm text-ink-muted">未有雲端紀錄。{/* i18n-exempt: admin */}</p>
-        ) : (
-          <div className="overflow-x-auto rounded-xl border border-line-strong">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-surface-sunken text-xs text-ink-muted">
-                <tr>
-                  <th className="px-3 py-2">時間{/* i18n-exempt: admin */}</th>
-                  <th className="px-3 py-2">批次 / 題目{/* i18n-exempt: admin */}</th>
-                  <th className="px-3 py-2">決定{/* i18n-exempt: admin */}</th>
-                  <th className="px-3 py-2">覆核人{/* i18n-exempt: admin */}</th>
-                  <th className="px-3 py-2">備註{/* i18n-exempt: admin */}</th>
-                </tr>
-              </thead>
-              <tbody>
+ ) : (
+ <div className="overflow-x-auto rounded-xl border border-line-strong">
+ <table className="w-full text-left text-sm">
+ <thead className="bg-surface-sunken text-xs text-ink-muted">
+ <tr>
+ <th className="px-3 py-2">時間{/* i18n-exempt: admin */}</th>
+ <th className="px-3 py-2">批次 / 題目{/* i18n-exempt: admin */}</th>
+ <th className="px-3 py-2">決定{/* i18n-exempt: admin */}</th>
+ <th className="px-3 py-2">覆核人{/* i18n-exempt: admin */}</th>
+ <th className="px-3 py-2">備註{/* i18n-exempt: admin */}</th>
+ </tr>
+ </thead>
+ <tbody>
                 {history.map((h, i) => (
-                  <tr key={i} className="border-t border-line">
-                    <td className="whitespace-nowrap px-3 py-2 text-xs text-ink-muted">{h.created_at?.slice(0, 16).replace('T', ' ')}</td>
-                    <td className="px-3 py-2">{h.batch} · {h.draft_id}</td>
-                    <td className="px-3 py-2">{STATUS_ZH[h.decision] ?? h.decision}</td>
-                    <td className="px-3 py-2">{h.reviewer_name ?? '—'}</td>
-                    <td className="px-3 py-2 text-xs text-ink-muted">{h.comment ?? ''}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
-    </div>
+ <tr key={i} className="border-t border-line">
+ <td className="whitespace-nowrap px-3 py-2 text-xs text-ink-muted">{h.created_at?.slice(0, 16).replace('T', ' ')}</td>
+ <td className="px-3 py-2">{h.batch} · {h.draft_id}</td>
+ <td className="px-3 py-2">{STATUS_ZH[h.decision] ?? h.decision}</td>
+ <td className="px-3 py-2">{h.reviewer_name ?? '—'}</td>
+ <td className="px-3 py-2 text-xs text-ink-muted">{h.comment ?? ''}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
+ )}
+ </section>
+ </div>
   )
 }
 
@@ -226,14 +226,14 @@ function BatchBlock({
   dbOk: boolean
 }) {
   const pending = batch.rows.filter((r) => statuses[keyOf(batch.batch, r.id)] === 'pending').length
-  return (
-    <div className="mb-6 rounded-2xl border border-line-strong bg-surface-sunken p-4">
-      <h3 className="mb-3 font-semibold">
+ return (
+ <div className="mb-6 rounded-2xl border border-line-strong bg-surface-sunken p-4">
+ <h3 className="mb-3 font-semibold">
         {batch.batch}
         <span className="ml-2 text-sm text-ink-muted">
           {batch.subject} · {batch.rows.length} 題 · 待審 {pending}{/* i18n-exempt: admin */}
         </span>
-      </h3>
+ </h3>
       {batch.rows.map((r) => {
         const key = keyOf(batch.batch, r.id)
         return (
@@ -248,9 +248,9 @@ function BatchBlock({
             onDecided={onDecided}
             dbOk={dbOk}
           />
-        )
-      })}
-    </div>
+ )
+ })}
+ </div>
   )
 }
 
@@ -315,28 +315,28 @@ function ReviewCard({
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [isActive, flash, choice, submit])
+ }, [isActive, flash, choice, submit])
 
-  const expanded = isActive
-  const statusChip =
-    status === 'approved' ? 'text-accent border-accent/40' : status === 'rejected' ? 'text-rose border-rose/40' : 'text-gold border-gold/40'
+ const expanded = isActive
+ const statusChip =
+ status === 'approved' ? 'text-accent border-accent/40' : status === 'rejected' ? 'text-rose border-rose/40' : 'text-gold border-gold/40'
 
-  return (
-    <div id={`card-${cardKey}`} className={`mb-3 rounded-xl border bg-surface-raised p-4 ${isActive ? 'border-accent/50' : 'border-line-strong'}`}>
-      <button type="button" onClick={() => onActivate(cardKey)} className="flex w-full items-center gap-2 text-left">
-        <span className={`rounded-full border px-2 py-0.5 text-xs ${statusChip}`}>{STATUS_ZH[status] ?? status}</span>
+ return (
+ <div id={`card-${cardKey}`} className={`mb-3 rounded-xl border bg-surface-raised p-4 ${isActive ? 'border-accent/50' : 'border-line-strong'}`}>
+ <button type="button" onClick={() => onActivate(cardKey)} className="flex w-full items-center gap-2 text-left">
+ <span className={`rounded-full border px-2 py-0.5 text-xs ${statusChip}`}>{STATUS_ZH[status] ?? status}</span>
         {row.difficulty && <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">{DIFF_ZH[row.difficulty] ?? row.difficulty}</span>}
         {row.dnaTag && <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">🧠 {row.dnaTag}</span>}
         {row.type && row.type !== 'mc' && (
           <span className="rounded bg-surface-sunken px-2 py-0.5 text-xs text-accent">{row.type === 'card' ? '知識卡' : row.type === 'long' ? '長題目' : '文字題'}{/* i18n-exempt: admin */}</span>
-        )}
-        <span className="min-w-0 flex-1 truncate text-sm">{row.id} · {unesc(row.question)}</span>
-        <span className="text-ink-muted">{expanded ? '▾' : '▸'}</span>
-      </button>
+ )}
+ <span className="min-w-0 flex-1 truncate text-sm">{row.id} · {unesc(row.question)}</span>
+ <span className="text-ink-muted">{expanded ? '' : ''}</span>
+ </button>
 
       {expanded && (
         <div className="mt-3">
-          <p className="mb-3 leading-relaxed">{unesc(row.question)}</p>
+ <p className="mb-3 leading-relaxed">{unesc(row.question)}</p>
           {row.type === 'card' ? (
             /* SENSEI 知識卡：覆核人要睇嘅係四段內容本身啱唔啱、學生睇完會唔會誤解。
                冇選項、冇正解、冇分數 —— 憲章 §16.A：卡片一分都唔出。 */
@@ -347,66 +347,66 @@ function ReviewCard({
                 ['考試技巧', row.examTechnique], // i18n-exempt: admin 中文單語內部工具
                 ['常見陷阱', row.commonTrap], // i18n-exempt: admin 中文單語內部工具
               ] as const).map(([label, body]) => (
-                <div key={label} className="rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
-                  <span className="mb-1 block text-xs font-medium text-accent">{label}{/* i18n-exempt: admin */}</span>
+ <div key={label} className="rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
+ <span className="mb-1 block text-xs font-medium text-accent">{label}{/* i18n-exempt: admin */}</span>
                   {unesc(body ?? '（缺失 —— 呢張唔應該過到閘，請退回）') /* i18n-exempt: admin 覆核面板 */}
                 </div>
-              ))}
-              <p className="text-xs leading-relaxed text-gold">
+ ))}
+ <p className="text-xs leading-relaxed text-gold">
                 ⚠️ 知識卡：SENSEI 只【檢索】呢啲內容，唔會自行生成，亦唔會出任何分數。{/* i18n-exempt: admin */}
               </p>
-            </div>
-          ) : (row.type ?? 'mc') === 'mc' ? (
-            <div className="mb-3 space-y-2">
+ </div>
+ ) : (row.type ?? 'mc') === 'mc' ? (
+ <div className="mb-3 space-y-2">
               {(row.options ?? []).map((opt, i) => (
-                <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-accent/50 bg-accent/10' : 'border-line-strong'}`}>
+ <div key={i} className={`rounded-lg border p-3 text-sm ${i === row.correctIndex ? 'border-accent/50 bg-accent/10' : 'border-line-strong'}`}>
                   {unesc(opt)}
                   {i === row.correctIndex && <span className="ml-2 text-xs font-medium text-accent">✓ 正解{/* i18n-exempt: admin */}</span>}
                   {row.trapTypes[i] && row.trapTypes[i] !== 'correct' && (
                     <span className="ml-2 rounded bg-surface-sunken px-1.5 py-0.5 text-xs text-ink-muted">{row.trapTypes[i]}</span>
-                  )}
-                </div>
-              ))}
-            </div>
+ )}
+ </div>
+ ))}
+ </div>
           ) : (
             /* 書寫題：冇選項可揀，覆核人要睇嘅係「參考答案本身啱唔啱、
                夠唔夠學生自己對照判斷」。冇得睇就等於盲批。 */
             <div className="mb-3 space-y-2">
-              <div className="rounded-lg border border-accent/40 bg-accent/10 p-3 text-sm leading-relaxed">
-                <span className="mb-1 block text-xs font-medium text-accent">參考答案（學生提交後見到，用作自評）{/* i18n-exempt: admin */}</span>
+ <div className="rounded-lg border border-accent/40 bg-accent/10 p-3 text-sm leading-relaxed">
+ <span className="mb-1 block text-xs font-medium text-accent">參考答案（學生提交後見到，用作自評）{/* i18n-exempt: admin */}</span>
                 {unesc(row.referenceAnswer ?? '（缺失 —— 呢條唔應該過到閘，請退回）') /* i18n-exempt: admin 覆核面板，只有實名審批人見到 */}
               </div>
               {row.markingScheme && (
                 <div className="rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
-                  <span className="mb-1 block text-xs text-ink-muted">評分準則 / 步驟分{/* i18n-exempt: admin */}</span>
+ <span className="mb-1 block text-xs text-ink-muted">評分準則 / 步驟分{/* i18n-exempt: admin */}</span>
                   {unesc(row.markingScheme)}
                 </div>
-              )}
-              <p className="text-xs leading-relaxed text-gold">
+ )}
+ <p className="text-xs leading-relaxed text-gold">
                 ⚠️ {row.type === 'long' ? '長題目' : '文字題'}：機器【永不】批改，學生對照參考答案自評。{/* i18n-exempt: admin */}
               </p>
-            </div>
-          )}
-          <div className="mb-4 rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
-            <span className="mb-1 block text-xs text-ink-muted">{row.type === 'card' ? '檢索關鍵詞' : '解析'}{/* i18n-exempt: admin */}</span>
+ </div>
+ )}
+ <div className="mb-4 rounded-lg border border-line-strong bg-surface-sunken p-3 text-sm leading-relaxed">
+ <span className="mb-1 block text-xs text-ink-muted">{row.type === 'card' ? '檢索關鍵詞' : '解析'}{/* i18n-exempt: admin */}</span>
             {unesc(row.explanation)}
           </div>
 
           {flash ? (
             <p className="text-sm font-medium text-accent">✓ 已記錄，載入下一題…{/* i18n-exempt: admin */}</p>
-          ) : (
-            <div className="flex flex-wrap items-center gap-2">
-              <DecisionBtn label="✅ 通過" /* i18n-exempt: admin */ active={choice === 'approved'} activeCls="bg-accent-strong text-on-accent" onClick={() => setChoice('approved')} />
-              <DecisionBtn label="❌ 退回" /* i18n-exempt: admin */ active={choice === 'rejected'} activeCls="bg-rose text-white" onClick={() => setChoice('rejected')} />
-              <DecisionBtn label="⏸️ 暫緩" /* i18n-exempt: admin */ active={choice === 'pending'} activeCls="bg-gold text-white" onClick={() => setChoice('pending')} />
-              <input
+ ) : (
+ <div className="flex flex-wrap items-center gap-2">
+ <DecisionBtn label=" 通過" /* i18n-exempt: admin */ active={choice === 'approved'} activeCls="bg-accent-strong text-on-accent" onClick={() => setChoice('approved')} />
+ <DecisionBtn label=" 退回" /* i18n-exempt: admin */ active={choice === 'rejected'} activeCls="bg-rose text-white" onClick={() => setChoice('rejected')} />
+ <DecisionBtn label="暫緩" /* i18n-exempt: admin */ active={choice === 'pending'} activeCls="bg-gold text-white" onClick={() => setChoice('pending')} />
+ <input
                 type="text"
                 placeholder="備註（可選）" // i18n-exempt: admin
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                className="min-w-40 flex-1 rounded-lg border border-line-strong bg-surface-sunken px-3 py-2 text-sm"
-              />
-              <button
+ className="min-w-40 flex-1 rounded-lg border border-line-strong bg-surface-sunken px-3 py-2 text-sm"
+ />
+ <button
                 type="button"
                 onClick={() => void submit()}
                 disabled={!choice || busy || !dbOk}
@@ -416,11 +416,11 @@ function ReviewCard({
               </button>
               {status !== 'pending' && <span className="text-xs text-ink-muted">（已裁決過，可再提交覆蓋）{/* i18n-exempt: admin */}</span>}
               {err && <span className="text-xs text-rose">{err}</span>}
-            </div>
-          )}
-        </div>
-      )}
-    </div>
+ </div>
+ )}
+ </div>
+ )}
+ </div>
   )
 }
 

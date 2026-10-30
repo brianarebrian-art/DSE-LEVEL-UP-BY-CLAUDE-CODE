@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Brain } from 'lucide-react'
+import CauseMark from '@/components/marks/CauseMark'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
 import { EnoughTodayButton } from '@/components/PracticeSupport'
@@ -44,10 +45,10 @@ const CREDIT: Record<SelfAssessment, number> = {
 // scope 之後，呼叫點就明確唔屬於 render。
 const nowMs = () => Date.now()
 
-const CAUSES: { key: ReverseCause; emoji: string; zh: string; en: string }[] = [
-  { key: 'A', emoji: '🧠', zh: '概念盲區', en: 'Conceptual blind spot' },
-  { key: 'B', emoji: '🎯', zh: '審題陷阱', en: 'Misread the question' },
-  { key: 'C', emoji: '🧮', zh: '運算粗心', en: 'Careless working' },
+const CAUSES: { key: ReverseCause; zh: string; en: string }[] = [
+  { key: 'A', zh: '概念盲區', en: 'Conceptual blind spot' },
+  { key: 'B', zh: '審題陷阱', en: 'Misread the question' },
+  { key: 'C', zh: '運算粗心', en: 'Careless working' },
 ]
 
 function shuffle<T>(arr: T[]): T[] {
@@ -104,7 +105,7 @@ export default function LongPracticeSession({
   const [done, setDone] = useState(false)
   // 已自評但仲未決定要唔要記錯因嘅題目（決策 ③ 嘅溫和邀請）
   const [inviteFor, setInviteFor] = useState<WrittenQuestion | null>(null)
-  const [assessed, setAssessed] = useState<{ q: WrittenQuestion; credit: number }[]>([])
+ const [assessed, setAssessed] = useState<{ q: WrittenQuestion; credit: number }[]>([])
 
   const current = questions[idx]
 
@@ -144,23 +145,24 @@ export default function LongPracticeSession({
 
   if (questions.length === 0) {
     return (
-      <div className="min-h-screen bg-surface text-ink flex items-center justify-center px-4">
-        <div className="max-w-md text-center">
-          <p className="text-lg font-medium mb-2">{tr('呢科暫時未有長題目', 'No written questions here yet')}</p>
-          <p className="text-sm text-ink-muted leading-relaxed mb-6">
+      <div className="flex min-h-screen items-center justify-center bg-surface px-4 text-ink">
+ <div className="max-w-md text-center">
+ <Brain size={36} aria-hidden className="mx-auto mb-3 text-ink-muted" />
+ <p className="mb-2 text-lg font-semibold">{tr('呢科暫時未有長題目', 'No written questions here yet')}</p>
+ <p className="mb-6 text-sm leading-relaxed text-ink-muted">
             {tr(
               '想即刻練，可以先做選擇題。',
               'The multiple-choice bank is ready now.',
             )}
           </p>
-          <Link
+ <Link
             href={`/practice?subject=${subjectId}`}
-            className="min-h-12 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
+            className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] bg-accent-strong px-5 py-2.5 font-medium text-on-accent hover:bg-accent-hover"
           >
             {tr('去做選擇題', 'Practise multiple choice')} <ArrowRight size={16} aria-hidden />
-          </Link>
-        </div>
-      </div>
+ </Link>
+ </div>
+ </div>
     )
   }
 
@@ -169,11 +171,11 @@ export default function LongPracticeSession({
     const shaky = assessed.filter((a) => a.credit < 1)
     return (
       <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
-        <div className="mx-auto max-w-2xl">
-          <h2 className="text-2xl font-medium mb-3">
+ <div className="mx-auto max-w-2xl">
+ <h2 className="text-2xl font-medium mb-3">
             {tr(`你做完咗 ${assessed.length} 條長題目`, `You worked through ${assessed.length} written questions`)}
           </h2>
-          <p className="text-sm text-ink-muted leading-relaxed mb-8">
+ <p className="text-sm text-ink-muted leading-relaxed mb-8">
             {tr(
               '長題目冇機器分數 —— 因為真正嘅評分準則要人先睇得懂。你嘅自評已寫入課題練習紀錄，唔會計入準確率或練習表現估算。',
               'There is no machine score here — a real marking scheme needs a human eye. Your self-assessment goes into your topic practice record only; it never counts towards accuracy or the practice performance estimate.',
@@ -181,91 +183,92 @@ export default function LongPracticeSession({
           </p>
 
           {shaky.length > 0 && (
-            <div className="rounded-2xl border border-gold/30 bg-gold/10 p-5 mb-8">
-              <p className="text-sm font-medium text-gold mb-2">
+ <div className="rounded-2xl border border-gold/30 bg-gold/10 p-5 mb-8">
+ <p className="text-sm font-medium text-gold mb-2">
                 💡 {tr('你發現咗值得再睇嘅課題', 'Topics worth another look')}
               </p>
-              <ul className="text-sm text-ink-soft space-y-1">
+ <ul className="text-sm text-ink-soft space-y-1">
                 {[...new Set(shaky.map((a) => (en ? (a.q.topicEn ?? a.q.topicZh) : a.q.topicZh)))].map((t) => (
-                  <li key={t}>· {t}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+ <li key={t}>· {t}</li>
+ ))}
+ </ul>
+ </div>
+ )}
 
-          <div className="flex flex-wrap gap-3">
-            <Link
+ <div className="flex flex-wrap gap-3">
+ <Link
               href={`/practice?subject=${subjectId}&mode=long`}
               className="min-h-12 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-colors"
             >
               {tr('再做一組', 'Another set')}
             </Link>
-            <Link
+ <Link
               href="/dashboard"
               className="min-h-12 inline-flex items-center gap-2 border border-line-strong text-ink-soft hover:text-accent hover:border-accent px-5 py-2.5 rounded-xl transition-colors"
             >
               {tr('睇返我嘅進度', 'See my progress')}
             </Link>
-          </div>
-        </div>
-      </div>
-    )
-  }
+ </div>
+ </div>
+ </div>
+ )
+ }
 
-  return (
-    <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
-      <div className="mx-auto max-w-2xl">
-        <div className="flex items-center justify-between gap-2 mb-4">
-          <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
+ return (
+ <div className="min-h-screen bg-surface px-4 py-6 text-ink sm:px-8 sm:py-10">
+ <div className="mx-auto max-w-2xl">
+ <div className="chrome-material sticky top-0 z-30 -mx-1 mb-4 flex items-center justify-between gap-2 border-b border-line px-1 py-3">
+ <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
             {tr(`第 ${idx + 1} / ${questions.length} 條`, `${idx + 1} of ${questions.length}`)}
           </span>
-          <span className="flex items-center gap-2 sm:gap-3">
-            <span className="text-[11px] text-ink-muted">
+ <span className="flex items-center gap-2 sm:gap-3">
+ <span className="text-[11px] text-ink-muted">
               {tr('長題目練習 · 自評制', 'Written practice · self-assessed')}
             </span>
-            <EnoughTodayButton />
+ <EnoughTodayButton />
             {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）。 */}
-            <A11yButton />
-          </span>
-        </div>
+            <A11yButton className="!inline-flex" />
+ </span>
+ </div>
 
         {current.type === 'long' ? (
           <LongQuestionCard key={current.id} q={current} onResult={(l) => handleResult(current, l)} />
-        ) : (
-          <TextQuestionCard key={current.id} q={current} onResult={(l) => handleResult(current, l)} />
+ ) : (
+ <TextQuestionCard key={current.id} q={current} onResult={(l) => handleResult(current, l)} />
         )}
 
         {/* ③ 溫和邀請 —— 唔係強制凍結。撳「暫時唔使」一樣可以行落去。 */}
         {inviteFor && (
           <div className="mt-5 rounded-2xl border border-line bg-surface-raised p-5">
-            <p className="text-sm text-ink-soft mb-1 inline-flex items-center gap-2">
-              <Brain size={16} className="text-accent" aria-hidden />
+ <p className="text-sm text-ink-soft mb-1 inline-flex items-center gap-2">
+ <Brain size={16} className="text-accent" aria-hidden />
               {tr('想唔想順手記低今次係邊種盲點？', 'Want to note what tripped you up?')}
             </p>
-            <p className="text-xs text-ink-muted mb-3 leading-relaxed">
+ <p className="text-xs text-ink-muted mb-3 leading-relaxed">
               {tr('記低咗會入你嘅錯題本，之後溫書搵返會快好多。唔想記都完全冇問題。',
                   'It goes into your error notebook so revision is faster later. Skipping is completely fine.')}
             </p>
-            <div className="grid gap-2 sm:grid-cols-3">
+ <div className="grid gap-2 sm:grid-cols-3">
               {CAUSES.map((c) => (
-                <button
+ <button
                   key={c.key}
                   onClick={() => logCause(inviteFor, c.key)}
-                  className="min-h-12 text-sm border border-line-strong hover:border-accent hover:text-accent text-ink-soft rounded-xl px-3 py-2.5 transition-colors"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 text-sm border border-line-strong hover:border-accent hover:text-accent text-ink-soft rounded-xl px-3 py-2.5 transition-colors"
                 >
-                  {c.emoji} {en ? c.en : c.zh}
+                  <CauseMark cause={c.key} size="sm" />
+                  {en ? c.en : c.zh}
                 </button>
-              ))}
-            </div>
-            <button
+ ))}
+ </div>
+ <button
               onClick={advance}
               className="min-h-12 mt-3 text-sm text-ink-muted hover:text-accent transition-colors"
             >
               {tr('暫時唔使，繼續 →', 'Skip for now →')}
             </button>
-          </div>
-        )}
-      </div>
-    </div>
+ </div>
+ )}
+ </div>
+ </div>
   )
 }

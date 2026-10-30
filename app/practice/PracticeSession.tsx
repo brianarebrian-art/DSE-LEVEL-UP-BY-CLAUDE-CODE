@@ -38,7 +38,8 @@ import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicSt
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown, Sprout, MapPin, Loader2 } from 'lucide-react'
+import CauseMark from '@/components/marks/CauseMark'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
 import PracticeMoreMenu from '@/components/PracticeMoreMenu'
@@ -51,10 +52,10 @@ import { listPracticeFocusables, practiceTabDestination, slotFor, tabStopElement
 import DifficultyBadge from '@/components/DifficultyBadge'
 import { assignWrongAnswerCause, getReverseLog, logReverseError, type ReverseCause } from '@/lib/reverseLog'
 
-const MC_CAUSES: { key: ReverseCause; emoji: string; zh: string; en: string }[] = [
-  { key: 'A', emoji: '🧠', zh: '概念未清', en: 'Concept to revisit' },
-  { key: 'B', emoji: '🎯', zh: '未睇清題目', en: 'Missed the question' },
-  { key: 'C', emoji: '🧮', zh: '計算步驟', en: 'A calculation step' },
+const MC_CAUSES: { key: ReverseCause; zh: string; en: string }[] = [
+  { key: 'A', zh: '概念未清', en: 'Concept to revisit' },
+  { key: 'B', zh: '未睇清題目', en: 'Missed the question' },
+  { key: 'C', zh: '計算步驟', en: 'A calculation step' },
 ]
 import { orderByCause } from '@/lib/causeMode'
 // F-EMO: 情緒溫度計（拉分題答錯 → 先問感受再入反思鎖；「好慌」直去呼吸空間）
@@ -253,8 +254,8 @@ export default function PracticeSession({
   /** 「下一題想要」預設摺疊，避免同主 CTA 搶注意力。 */
   const [wishOpen, setWishOpen] = useState(false)
   const [startTime, setStartTime] = useState(() => Date.now())
-  const [current, setCurrent] = useState(0)
-  const [answers, setAnswers] = useState<AnswerState[]>([])
+ const [current, setCurrent] = useState(0)
+ const [answers, setAnswers] = useState<AnswerState[]>([])
   // v3.0 F1「多裝置續做」: an unfinished run for this exact subject/topic/mode — from this
   // device, or pulled from another one via the synced snapshot. Offered as a card the
   // student chooses, never silently auto-applied.
@@ -420,18 +421,11 @@ export default function PracticeSession({
     return () => cancelAnimationFrame(id)
   }, [answerState])
 
-  // §2.5 答題衝擊波：記住啱啱撳咗邊個選項，由該掣中心擴散一次。
-  //
-  // 呢個平台係【揀即等於交】，冇獨立提交掣，所以規格書講嘅「由提交掣中心擴散」
-  // 落到呢度即係「由選項掣中心擴散」——唔為咗遷就動畫而加一個多餘嘅提交步驟。
-  //
-  // 答錯用霓虹粉，但力度、大小、時長同答啱【完全一致】：規格書 §0 明訂
-  // 「答錯無震屏、無負面驚嚇回饋」，憲章 §7 亦禁止任何打擊自信嘅元素。
-  // 純 CSS 動畫（.shockwave），SEN 同 reduced-motion 之下由 globals.css 直接
-  // display:none，唔使喺呢度再判斷一次。
-  const [shockIdx, setShockIdx] = useState<number | null>(null)
-  const shockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  useEffect(() => () => { if (shockTimer.current) clearTimeout(shockTimer.current) }, [])
+  // 答題回饋：≤200ms 透明度提示（正確／錯誤力度一致）。唔再用衝擊波／粒子。
+  // 揀即等於交；SEN／reduced-motion／no-motion 由 globals.css 直接靜止。
+  const [flashIdx, setFlashIdx] = useState<number | null>(null)
+ const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => () => { if (flashTimer.current) clearTimeout(flashTimer.current) }, [])
 
   const selectOption = useCallback(
     (zh: string, idx: number) => {
@@ -441,10 +435,9 @@ export default function PracticeSession({
       setPickedCause(null)
       setWishOpen(false)
       setHackOpen(false)
-      // 衝擊波：600ms 之後拆走個節點，唔留喺 DOM 度
-      setShockIdx(idx)
-      if (shockTimer.current) clearTimeout(shockTimer.current)
-      shockTimer.current = setTimeout(() => setShockIdx(null), 600)
+      setFlashIdx(idx)
+      if (flashTimer.current) clearTimeout(flashTimer.current)
+      flashTimer.current = setTimeout(() => setFlashIdx(null), 200)
 
       // 「再試一次」之後再揀：畫面可以重答，但進度／錯題 log 只記首次。
       const alreadyLogged = loggedIdsRef.current.has(currentQ.id)
@@ -630,7 +623,7 @@ export default function PracticeSession({
   const retryCurrent = useCallback(() => {
     if (answerState === null) return
     setAnswerState(null)
-    setShockIdx(null)
+    setFlashIdx(null)
     setPickedCause(null)
     setWishOpen(false)
     setHackOpen(false)
@@ -718,7 +711,7 @@ export default function PracticeSession({
       const feedback = feedbackRef.current
       if (!root || !feedback) return
       const options = [...root.querySelectorAll<HTMLElement>('[data-practice-option]')]
-      const nextBtn = root.querySelector<HTMLElement>('.practice-next-btn')
+ const nextBtn = root.querySelector<HTMLElement>('.practice-next-btn')
       if (!nextBtn || options.length === 0) return
       const inFeedback = listPracticeFocusables(feedback)
       const all = listPracticeFocusables(document.body)
@@ -785,34 +778,34 @@ export default function PracticeSession({
   // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
   if (justOneDone) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
-        <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
-          <div className="text-3xl mb-3" aria-hidden>🌱</div>
-          <h2 className="text-lg font-medium text-ink mb-2">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
+ <div className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface-raised p-7 text-center shadow-[var(--shadow-float)]">
+ <Sprout size={36} aria-hidden className="mx-auto mb-3 text-success" />
+ <h2 className="mb-2 text-lg font-semibold text-ink">
             {tr('你今日打開咗嚟，已經好叻。', 'You showed up today. That already counts.')}
           </h2>
-          <p className="text-sm text-ink-muted leading-relaxed mb-6">
+ <p className="mb-6 text-sm leading-relaxed text-ink-muted">
             {tr(
               '做完 1 題就夠喇。想再做就再做，唔想就收工 —— 兩樣都冇問題。',
               'One question is enough. Do another if you feel like it, or stop here — both are fine.',
             )}
           </p>
-          <div className="flex flex-col gap-2.5">
-            <button
+ <div className="flex flex-col gap-2.5">
+ <button
               onClick={() => window.location.reload()}
-              className="w-full min-h-12 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
+              className="pressable min-h-12 w-full rounded-[var(--radius-control)] bg-accent-strong px-6 py-3 font-medium text-on-accent hover:bg-accent-hover"
             >
               {tr('再做多 1 題', 'One more question')}
             </button>
-            <Link
+ <Link
               href="/dashboard"
-              className="w-full min-h-12 flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
+              className="pressable flex min-h-12 w-full items-center justify-center rounded-[var(--radius-control)] border border-line-strong bg-surface-raised px-6 py-3 text-sm text-ink-muted hover:bg-surface-sunken"
             >
               {tr('今日就到呢度', "That's it for today")}
             </Link>
-          </div>
-        </div>
-      </div>
+ </div>
+ </div>
+ </div>
     )
   }
 
@@ -822,114 +815,120 @@ export default function PracticeSession({
     const doneCount = resumeOffer.current
     const totalCount = resumeOffer.questionIds.length
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-surface text-ink-soft">
-        <div className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-7 text-center">
-          <div className="text-3xl mb-3" aria-hidden>📍</div>
-          <h2 className="text-lg font-medium text-ink mb-2">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
+ <div className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface-raised p-7 text-center shadow-[var(--shadow-float)]">
+ <MapPin size={36} aria-hidden className="mx-auto mb-3 text-accent" />
+ <h2 className="mb-2 text-lg font-semibold text-ink">
             {tr('你有份未做完嘅練習', 'You have an unfinished run')}
           </h2>
-          <p className="text-sm text-ink-muted leading-relaxed mb-1">
+ <p className="mb-1 text-sm leading-relaxed text-ink-muted">
             {tr(
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經做咗 ${doneCount} / ${totalCount} 題`,
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
             )}
           </p>
-          <p className="text-xs text-ink-muted leading-relaxed mb-6">
+ <p className="mb-6 text-xs leading-relaxed text-ink-muted">
             {tr('喺邊部機做都好，接返落去就得。', 'Pick up right where you left off, on any device.')}
           </p>
-          <div className="flex flex-col gap-2.5">
-            <button
+ <div className="flex flex-col gap-2.5">
+ <button
               onClick={acceptResume}
-              className="w-full min-h-12 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-colors"
+              className="pressable min-h-12 w-full rounded-[var(--radius-control)] bg-accent-strong px-6 py-3 font-medium text-on-accent hover:bg-accent-hover"
             >
               {tr(`繼續做第 ${doneCount + 1} 題`, `Continue from question ${doneCount + 1}`)}
             </button>
-            <button
+ <button
               onClick={declineResume}
-              className="w-full min-h-12 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-muted px-6 py-3 rounded-xl transition-colors text-sm"
+              className="pressable min-h-12 w-full rounded-[var(--radius-control)] border border-line-strong bg-surface-raised px-6 py-3 text-sm text-ink-muted hover:bg-surface-sunken"
             >
               {tr('重新開始一份', 'Start a fresh one')}
             </button>
-          </div>
-        </div>
-      </div>
+ </div>
+ </div>
+ </div>
     )
   }
 
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-        <div className="text-5xl">{subjectMeta?.emoji ?? '📝'}</div>
-        <p className="text-ink-muted">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 text-center text-ink-soft">
+ <Brain size={40} aria-hidden className="text-ink-muted" />
+ <p className="max-w-sm text-ink-muted">
           {subjectMeta
             ? t.practice.notLive.replace('{subject}', tr(subjectMeta.name, subjectMeta.nameEn))
             : t.practice.notLiveGeneric}
         </p>
-        <Link href="/subjects" className="text-accent hover:text-accent-strong underline">
+ <Link
+          href="/subjects"
+          className="pressable inline-flex min-h-12 items-center rounded-[var(--radius-control)] border border-line-strong px-4 text-sm font-medium text-accent hover:bg-surface-sunken"
+        >
           {t.practice.otherSubjects}
         </Link>
-      </div>
+ </div>
     )
   }
 
   if (!currentQ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-surface text-ink-muted">{t.practice.loading}</div>
-    )
-  }
+      <div
+        className="flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 text-ink-muted"
+        role="status"
+        aria-live="polite"
+      >
+ <Loader2 size={28} aria-hidden className="animate-spin text-accent motion-reduce:animate-none" />
+ <span className="text-sm">{t.practice.loading}</span>
+ </div>
+ )
+ }
 
-  return (
-    <div ref={sessionRef} className={`practice-session min-h-screen bg-surface px-4 py-4 sm:py-10 text-ink-soft${answerState ? ' practice-session-revealed' : ''}`}>
+ return (
+ <div ref={sessionRef} className={`practice-session min-h-screen bg-surface px-4 py-4 sm:py-10 text-ink-soft${answerState ? ' practice-session-revealed' : ''}`}>
       {/* lg（≥1024px）加闊到 6xl，題目與回饋並排（UX 循環 LOOP 8，見下方 grid 註解）。
           1440px 起再加左欄（LOOP 40），整體加闊到 1296px：兩邊各留 72px，右欄唔會落入右下情緒支援掣（x=1376 起）之下。 */}
       <div className="practice-session-column max-w-2xl mx-auto lg:max-w-6xl desk:max-w-[1296px]">
-        <div className={answerState ? 'practice-revealed-scroll' : undefined}>
+ <div className={answerState ? 'practice-revealed-scroll' : undefined}>
 
-        {/* Wave 2 手機答題頂欄：返回 + 科目 + 題數進度一齊 sticky（brief B）。
-            全屏任務模式冇 Navbar（lib/immersiveRoutes.ts），返回係唯一離開路徑。 */}
-        <div className="focus-dim sticky top-0 z-30 practice-sticky-head -mt-2 pt-2 pb-3 mb-3 bg-surface">
-          <div className="flex items-center gap-2 text-sm">
-            <Link
+        {/* 練習頂欄：返回｜科目｜題序；次要工具收入「更多」。判斷軌喺下面。 */}
+        <div className="focus-dim chrome-material sticky top-0 z-30 practice-sticky-head -mt-2 border-b border-line pt-2 pb-3 mb-3">
+ <div className="flex items-center gap-2 text-sm">
+ <Link
               href="/subjects"
               aria-label={tr('返回科目選擇', 'Back to subject list')}
               className="-ml-2 inline-flex items-center gap-0.5 min-h-12 pl-1 pr-2 rounded-lg text-ink-muted hover:text-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             >
-              <ChevronLeft size={16} aria-hidden />
-              <span className="text-xs">{tr('返回', 'Back')}</span>
-            </Link>
+ <ChevronLeft size={16} aria-hidden />
+ <span className="text-xs">{tr('返回', 'Back')}</span>
+ </Link>
             {subjectMeta && (
-              <>
-                <span aria-hidden>{subjectMeta.emoji}</span>
-                <span className="text-ink-soft font-medium truncate max-w-[40%] sm:max-w-none">
-                  {tr(subjectMeta.name, subjectMeta.nameEn)}
-                </span>
-              </>
+              <span className="min-w-0 truncate text-ink-soft font-medium max-w-[42%] sm:max-w-[14rem]">
+                {tr(subjectMeta.name, subjectMeta.nameEn)}
+              </span>
             )}
             {mode === 'weakness' && (
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
-                🛠️ {tr('盲點修復卷', 'Repair worksheet')}
+              <span className="hidden sm:inline text-[11px] text-ink-muted">
+                {tr('盲點修復', 'Repair set')}
               </span>
             )}
             {mode === 'cause' && cause && (
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs text-ink bg-surface-sunken border border-gold px-2 py-0.5 rounded-full">
+              <span className="hidden sm:inline text-[11px] text-ink-muted truncate max-w-[10rem]">
                 {cause === 'A'
-                  ? tr('🧠 專攻概念盲區', '🧠 Concept blind spots')
+                  ? tr('專攻概念', 'Concept focus')
                   : cause === 'B'
-                    ? tr('🎯 專攻審題陷阱', '🎯 Reading the question')
-                    : tr('🧮 專攻運算粗心', '🧮 Careful calculation')}
+                    ? tr('專攻審題', 'Question focus')
+                    : tr('專攻運算', 'Calculation focus')}
               </span>
-            )}
-            <span className="ml-auto flex items-center gap-2 shrink-0">
-              <span className="font-serif text-sm sm:text-base text-gold-strong tabular-nums">
+ )}
+ <span className="ml-auto flex items-center gap-1.5 shrink-0">
+ <span className="text-sm sm:text-base text-ink tabular-nums font-medium">
                 {t.practice.progress.replace('{n}', String(current + 1)).replace('{total}', String(totalQ))}
               </span>
               {showElapsed && (
                 <span className="hidden sm:inline-flex items-center gap-1 text-xs text-ink-muted">
-                  <Clock size={13} aria-hidden /> {formatTime(elapsed)}
+ <Clock size={13} aria-hidden /> {formatTime(elapsed)}
                 </span>
-              )}
-              <PracticeMoreMenu
+ )}
+ <PracticeMoreMenu
                 en={locale === 'en'}
                 hideTimer={hideTimer}
                 perQTimer={perQTimer}
@@ -945,15 +944,14 @@ export default function PracticeSession({
                 }}
                 onRest={() => setRestOpen(true)}
               />
-              {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：這一行是 sticky，做題途中隨時撳得到。 */}
-              <A11yButton />
-            </span>
-          </div>
-          {/* 2026-09-30（UX 循環 LOOP 19，創辦人決定 2）：各題狀態列，只顯示、不可跳題。 */}
-          <div className="mt-2">
-            <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
-          </div>
-        </div>
+              {/* 無障礙入口：練習沉浸時頂欄常駐（含桌面），一撳可達。 */}
+              <A11yButton className="!inline-flex" />
+ </span>
+ </div>
+ <div className="mt-2">
+ <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
+ </div>
+ </div>
 
         {/* 2026-09-30（UX 循環 LOOP 8）：≥1024px 題目與回饋並排。1024×768 實測，題目卡只佔中間 672px、
             兩邊各約 170px 空白，答題後回饋由 y=668 開始，「下一題」在 y=1171，要捲約 500px。
@@ -962,7 +960,7 @@ export default function PracticeSession({
             （48px 加 16px 邊距）之下；留出 56px。xl 起版面已置中，右邊有足夠空位。 */}
         {/* desk（1440px，globals.css @theme）：左欄（PracticeContextRail）＋題目＋回饋三欄；左欄在 1440px 以下 display:none，不佔格。 */}
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6 lg:max-xl:pr-14 desk:grid-cols-[220px_1fr_1fr]">
-        <PracticeContextRail subjectId={subjectId} topicLabel={tr(currentQ.topicZh, currentQ.topicEn)} />
+ <PracticeContextRail subjectId={subjectId} topicLabel={tr(currentQ.topicZh, currentQ.topicEn)} />
         {/* Question card */}
         {/* 規格 §7.3A 頁面轉場：新題由右滑入（400ms）。key 綁題號，換題先重播。
             ⚠️ 只做【入場】—— 規格原文仲要「舊題向左滑出」，但離場動畫要留住
@@ -971,10 +969,10 @@ export default function PracticeSession({
         <div key={currentQ.id} className="practice-q-card bg-surface-raised border border-line rounded-2xl p-5 sm:p-8 mb-4 ml-q-enter shadow-sm">
           {/* Meta：課題優先；難度次要。框架改入可選提示（Wave 2 brief）。 */}
           <div className="flex items-center gap-2 flex-wrap mb-5 sm:mb-6">
-            <span className="text-xs font-medium text-ink bg-surface-sunken border border-line-strong px-3 py-1 rounded-full">
+ <span className="text-xs font-medium text-ink bg-surface-sunken border border-line-strong px-3 py-1 rounded-full">
               {tr(currentQ.topicZh, currentQ.topicEn)}
             </span>
-            <DifficultyBadge difficulty={currentQ.difficulty} />
+ <DifficultyBadge difficulty={currentQ.difficulty} />
             {/* 機器閘題目為原創改寫，並無對應年份，入庫時記為 0 —— 不可以憑空填一個
                 年份充當「歷屆」（憲章 §8 禁止虛構數據），故 0 直接不顯示，
                 而非印出一個「0」。 */}
@@ -985,36 +983,35 @@ export default function PracticeSession({
               >
                 {tr(`內部標記 ${currentQ.year}`, `Bank tag ${currentQ.year}`)}
               </span>
-            ) : null}
-          </div>
+ ) : null}
+ </div>
 
           {/* 題幹維持無襯線：呢度係要逐字讀嘅正文，唔係標題（BDA）。只跟模板加大。 */}
           <p id="practice-question" className="text-lg sm:text-xl leading-relaxed mb-5 sm:mb-8 text-ink">
-            <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
-          </p>
+ <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
+ </p>
 
           {answerState === null && (
             <div className="mb-5">
-              <button
+ <button
                 type="button"
                 aria-expanded={hintOpen}
                 onClick={() => setHintOpen((v) => !v)}
-                className="inline-flex min-h-12 items-center gap-1.5 rounded-xl border border-line px-3 text-xs text-ink-muted hover:text-ink-soft transition-colors"
-              >
-                <Lightbulb size={14} aria-hidden className="text-gold" />
+ className="inline-flex min-h-12 items-center gap-1.5 rounded-xl border border-line px-3 text-xs text-ink-muted hover:text-ink-soft transition-colors"
+ >
+ <Lightbulb size={14} aria-hidden className="text-gold" />
                 {tr('提示（可選）', 'Hint (optional)')}
                 <ChevronDown size={14} className={hintOpen ? 'rotate-180 transition-transform' : 'transition-transform'} aria-hidden />
-              </button>
+ </button>
               {hintOpen && (
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft rounded-xl border border-line bg-surface-sunken px-3 py-3">
-                  <span aria-hidden className="mr-1.5">{currentQ.frameworkEmoji}</span>
                   {tr(
                     `可以試用「${currentQ.frameworkZh}」嚟諗——唔一定啱，只係一個起步。`,
                     `Try thinking with “${currentQ.frameworkEn}” — optional, just a starting point.`,
                   )}
                 </p>
-              )}
-            </div>
+ )}
+ </div>
           )}
 
           {/* ── 第 3 週 · 引擎五之二：時間到 ──────────────────────────────
@@ -1055,10 +1052,11 @@ export default function PracticeSession({
                 }
               }
 
-              // 第 1 週 · 引擎一：答對時正確選項輕柔綠色脈衝（600ms，與答錯衝擊波同長）
-              const pulse =
-                answerState !== null && answerState.isCorrect && isCorrectOpt && shockIdx === idx
-                  ? ' pulse-correct'
+              const flash =
+                flashIdx === idx
+                  ? answerState !== null && !answerState.isCorrect
+                    ? ' answer-feedback answer-feedback-miss'
+                    : ' answer-feedback'
                   : ''
 
               return (
@@ -1069,36 +1067,30 @@ export default function PracticeSession({
                   aria-pressed={isSelected}
                   aria-disabled={answerState !== null}
                   onClick={() => selectOption(opt.zh, idx)}
-                  className={`practice-option ml-press relative overflow-hidden w-full min-h-14 sm:min-h-12 text-left flex items-start gap-3 border rounded-xl px-4 py-4 sm:py-3 transition-all ${style}${pulse}`}
+                  className={`practice-option ml-press relative w-full min-h-14 sm:min-h-12 text-left flex items-start gap-3 border rounded-xl px-4 py-4 sm:py-3 transition-[colors,transform,opacity,box-shadow] duration-100 ${style}${flash}`}
                 >
-                  {shockIdx === idx && (
-                    <span
-                      aria-hidden
-                      className={`shockwave${answerState !== null && !answerState.isCorrect ? ' shockwave-gold' : ''}`}
-                    />
-                  )}
-                  <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
+ <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
                     {optionLetters[idx]}
                   </span>
-                  <span className="leading-relaxed text-sm sm:text-base text-ink-soft">
-                    <MathText>{tr(opt.zh, opt.en)}</MathText>
-                  </span>
+ <span className="leading-relaxed text-sm sm:text-base text-ink-soft">
+ <MathText>{tr(opt.zh, opt.en)}</MathText>
+ </span>
                   {answerState !== null && isCorrectOpt && (
                     <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
-                      <CheckCircle size={18} aria-hidden className="text-accent" />
+ <CheckCircle size={18} aria-hidden className="text-accent" />
                       {tr('答案', 'Answer')}
                     </span>
                   )}
                   {isSelectedWrong && (
                     <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
-                      <Lightbulb size={18} aria-hidden className="text-gold" />
+ <Lightbulb size={18} aria-hidden className="text-gold" />
                       {tr('未揀中', 'Not chosen')}
                     </span>
-                  )}
-                </button>
-              )
-            })}
-          </div>
+ )}
+ </button>
+ )
+ })}
+ </div>
 
           {/* 快捷鍵提示。一個冇人知嘅快捷鍵等於冇 —— 所以一定要寫出嚟。
               `hidden sm:block`：觸控裝置冇實體鍵盤，講咗只係阻頭阻勢。
@@ -1120,7 +1112,7 @@ export default function PracticeSession({
               ? tr('Shift + F 熄專注燈', 'Shift + F to turn the focus light off')
               : tr('Shift + F 開專注燈', 'Shift + F for focus light')}
           </p>
-        </div>
+ </div>
 
         {/* 讀屏：答題結果一句講完。區域常駐（內容由空變有），讀屏軟件才會讀出。 */}
         <p className="sr-only" aria-live="polite">
@@ -1134,24 +1126,24 @@ export default function PracticeSession({
         {/* Feedback + Next */}
         {answerState !== null && (
           <div ref={feedbackRef} tabIndex={-1} className="animate-slide-up practice-feedback">
-            <>
+ <>
                 {answerState.isCorrect ? (
                   /* Correct — calm acknowledgement, no fanfare. */
                   <div className="practice-explain rounded-2xl p-5 mb-4 border bg-accent/[0.10] border-accent/30 shadow-sm">
-                    <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle size={18} aria-hidden className="text-accent" />
-                      <span className="text-accent font-medium">{t.practice.correct}</span>
-                    </div>
+ <div className="flex items-center gap-2 mb-2">
+ <CheckCircle size={18} aria-hidden className="text-accent" />
+ <span className="text-accent font-medium">{t.practice.correct}</span>
+ </div>
                     {/* #54 逐步拆解：先出首句（或真步驟第一步），逼多諗一步先揭全部。
                         學生可一次過選擇「以後直接睇晒」，之後唔會再問。 */}
                     <div className="flex items-start gap-1.5">
-                      <Brain size={14} aria-hidden className="text-gold shrink-0 mt-1" />
-                      <div className="min-w-0 flex-1">
-                        <StagedExplanation
+ <Brain size={14} aria-hidden className="text-gold shrink-0 mt-1" />
+ <div className="min-w-0 flex-1">
+ <StagedExplanation
                           text={tr(currentQ.explanation, currentQ.explanationEn)}
                           steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         />
-                        <OptionNotes
+ <OptionNotes
                           notes={currentQ.optionNotes}
                           options={currentQ.shuffledOptions}
                           correctId={currentQ.correctIndex}
@@ -1160,40 +1152,40 @@ export default function PracticeSession({
                         {/* 答啱一樣要出來源披露 —— 兩條分支都要，否則答啱嘅學生
                             永遠見唔到，個披露就變成「淨係錯先話你知」。 */}
                         <QuestionProvenance questionId={currentQ.id} />
-                      </div>
-                    </div>
-                  </div>
+ </div>
+ </div>
+ </div>
                 ) : (
                   /* Wrong → the solution shows straight away (2026-10-02, charter §7.2). */
                   <div className="practice-explain practice-miss rounded-2xl p-5 mb-4 border shadow-sm">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Brain size={18} aria-hidden className="text-gold" />
-                      <span className="text-gold font-medium">{tr('未揀中', 'Not the one chosen')}</span>
-                    </div>
-                    <div className="border-t border-gold/15 pt-3">
-                      <StagedExplanation
+ <div className="flex items-center gap-2 mb-3">
+ <Brain size={18} aria-hidden className="text-gold" />
+ <span className="text-gold font-medium">{tr('未揀中', 'Not the one chosen')}</span>
+ </div>
+ <div className="border-t border-gold/15 pt-3">
+ <StagedExplanation
                         text={tr(currentQ.explanation, currentQ.explanationEn)}
                         steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         label={
                           <span className="text-gold text-xs font-medium mr-1">
                             💡 {tr('正解思路：', 'Reasoning: ')}
                           </span>
-                        }
-                      />
-                      <OptionNotes
+ }
+ />
+ <OptionNotes
                         notes={currentQ.optionNotes}
                         options={currentQ.shuffledOptions}
                         correctId={currentQ.correctIndex}
                         selectedZh={answerState.selectedZh}
                       />
-                    </div>
+ </div>
 
                     {/* 可選錯因 —— 唔鎖下一題；略過唔造假 cause。 */}
                     <div className="mt-4 border-t border-gold/15 pt-3">
-                      <p className="mb-2 text-xs font-medium text-ink-muted">
+ <p className="mb-2 text-xs font-medium text-ink-muted">
                         {tr('想記低原因？（可以唔揀）', 'Note a reason? (optional)')}
                       </p>
-                      <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-2">
                         {MC_CAUSES.map((c) => {
                           const on = pickedCause === c.key
                           return (
@@ -1206,63 +1198,63 @@ export default function PracticeSession({
                                 assignWrongAnswerCause(currentQ.id, c.key)
                               }}
                               className={`inline-flex min-h-12 items-center gap-1.5 rounded-full border px-3 text-xs transition-colors ${
-                                on
-                                  ? 'border-gold bg-gold/15 text-ink'
-                                  : 'border-line text-ink-muted hover:text-ink-soft'
-                              }`}
+ on
+ ? 'border-gold bg-gold/15 text-ink'
+ : 'border-line text-ink-muted hover:text-ink-soft'
+ }`}
                             >
-                              <span aria-hidden>{c.emoji}</span>
+                              <CauseMark cause={c.key} size="sm" />
                               {tr(c.zh, c.en)}
                             </button>
-                          )
-                        })}
-                        <button
+ )
+ })}
+ <button
                           type="button"
                           onClick={() => setPickedCause(null)}
                           className="inline-flex min-h-12 items-center rounded-full border border-transparent px-3 text-xs text-ink-muted underline underline-offset-4 hover:text-ink-soft"
                         >
                           {tr('略過', 'Skip')}
                         </button>
-                      </div>
-                    </div>
+ </div>
+ </div>
 
-                    <QuestionProvenance questionId={currentQ.id} />
-                  </div>
+ <QuestionProvenance questionId={currentQ.id} />
+ </div>
                 )}
 
                 {/* Path B — 名師速解 / MC Hack。Wave 2：可選、預設收合，唔同正解搶位。 */}
                 {currentQ.mcHack && (
                   <div className="rounded-2xl mb-4 border bg-violet/[0.08] border-violet/30">
-                    <button
+ <button
                       type="button"
                       aria-expanded={hackOpen}
                       onClick={() => setHackOpen((v) => !v)}
-                      className="flex w-full min-h-12 items-center gap-2 px-5 py-3 text-left"
-                    >
-                      <Zap size={18} aria-hidden className="text-violet shrink-0" />
-                      <span className="text-violet font-medium flex-1">
+ className="flex w-full min-h-12 items-center gap-2 px-5 py-3 text-left"
+ >
+ <Zap size={18} aria-hidden className="text-violet shrink-0" />
+ <span className="text-violet font-medium flex-1">
                         {tr('可選捷徑（選擇題）', 'Optional shortcut (multiple-choice)')}
                       </span>
-                      <ChevronDown
+ <ChevronDown
                         size={16}
                         aria-hidden
                         className={`text-violet shrink-0 transition-transform ${hackOpen ? 'rotate-180' : ''}`}
                       />
-                    </button>
+ </button>
                     {hackOpen && (
                       <div className="px-5 pb-5">
-                        <p className="text-xs text-ink-muted mb-3 leading-relaxed">
+ <p className="text-xs text-ink-muted mb-3 leading-relaxed">
                           {tr(
                             '可選捷徑，只適用於選擇題，唔係課程教學，亦唔代替上面嘅正解。',
                             'Optional shortcut for multiple-choice only. It is not syllabus teaching, and it does not replace the reasoning above.',
                           )}
                         </p>
-                        <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">
-                          <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+ <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">
+ <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
+ </div>
+ </div>
+ )}
+ </div>
                 )}
 
                 {/* #83 計數機貼士卡 — 解析底部折疊區（按 topic 命中；未驗證卡 production 隱藏） */}
@@ -1288,7 +1280,7 @@ export default function PracticeSession({
                   ]
                   return (
                     <div className="mt-3">
-                      <button
+ <button
                         type="button"
                         aria-expanded={wishOpen}
                         onClick={() => setWishOpen((v) => !v)}
@@ -1296,35 +1288,35 @@ export default function PracticeSession({
                       >
                         {tr('調整下一題難度', 'Adjust next difficulty')}
                         <ChevronDown size={14} className={wishOpen ? 'rotate-180 transition-transform' : 'transition-transform'} aria-hidden />
-                      </button>
+ </button>
                       {wishOpen && (
                         <div className="mt-1 flex items-center justify-center gap-1.5 flex-wrap text-[11px]">
                           {wishes.map((w) => {
                             const on = nextWish === w.key
                             const possible = wishIndex(tail, currentQ, w.key) >= 0
-                            return (
-                              <button
+ return (
+ <button
                                 key={w.key}
                                 onClick={() => setNextWish(on ? null : w.key)}
                                 disabled={!possible}
                                 aria-pressed={on}
                                 className={`inline-flex min-h-12 items-center px-3 rounded-full border transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
-                                  on
-                                    ? 'border-accent text-ink bg-surface-sunken'
-                                    : 'border-line text-ink-muted hover:text-ink-soft'
-                                }`}
+ on
+ ? 'border-accent text-ink bg-surface-sunken'
+ : 'border-line text-ink-muted hover:text-ink-soft'
+ }`}
                               >
                                 {tr(w.zh, w.en)}
                               </button>
-                            )
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  )
-                })()}
-              </>
-          </div>
+ )
+ })}
+ </div>
+ )}
+ </div>
+ )
+ })()}
+ </>
+ </div>
         )}
 
         {/* 未答題時右欄的說明（只在 lg 顯示），答題後由回饋取代，避免右欄一片空白。 */}
@@ -1333,31 +1325,39 @@ export default function PracticeSession({
             {tr('揀咗答案之後，對錯同解析會喺呢邊出現，唔使捲落去。',
                 'After you choose an answer, whether it was right and the explanation appear here, without scrolling.')}
           </p>
-        )}
-        </div>
-        </div>
+ )}
+ </div>
+ </div>
         {answerState !== null && (
           <div className="practice-next-bar">
-            <button
+ <button
               type="button"
               onClick={retryCurrent}
               className="practice-retry-btn"
+              title={tr(
+                '只重設畫面，首次作答同分數唔會改',
+                'Resets the view only — first answer and score stay',
+              )}
+              aria-label={tr(
+                '再試一次（只重設畫面，首次作答同分數唔會改）',
+                'Try again (resets the view only; first answer and score stay)',
+              )}
             >
               {tr('再試一次', 'Try again')}
             </button>
-            <button type="button" onClick={proceed} className="practice-next-btn">
+ <button type="button" onClick={proceed} className="practice-next-btn">
               {totalQ === 1 ? (
                 tr('做完喇', 'Done')
               ) : current + 1 >= totalQ ? t.practice.seeResult : (
-                <>{t.practice.next} <ChevronRight size={18} aria-hidden /></>
-              )}
-            </button>
-          </div>
-        )}
-      </div>
+ <>{t.practice.next} <ChevronRight size={18} aria-hidden /></>
+ )}
+ </button>
+ </div>
+ )}
+ </div>
 
       {/* B2: 一鍵休息 —— 反思鎖期間一樣開得，死線會一齊順延 */}
       <RestMode open={restOpen} onClose={closeRest} />
-    </div>
+ </div>
   )
 }

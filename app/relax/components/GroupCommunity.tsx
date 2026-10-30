@@ -27,14 +27,14 @@ const IG_GROUP_ADMIN = 'school.q.1'
 // FIX: [A3][A4] 遊戲術語清除：「簽到 Buff」→「心情記錄」、「開黑語音房」→「群組語音房」、
 //               「打卡」→「記錄心情」（CEO 命名修訂 2026-07-15）
 const IG_FEATURES = [
-  { icon: '📸', titleZh: '每日心情記錄', titleEn: 'Daily mood log', descZh: '深夜溫書記錄心情，互相打氣唔孤單', descEn: 'Log your mood on late-night study sessions — keep each other going', color: 'var(--color-subj-sage)' },
-  { icon: '💬', titleZh: '科目戰術討論區', titleEn: 'Subject tactics board', descZh: 'Econ／中文／英文／數學互助', descEn: 'Econ / Chinese / English / Maths — help each other out', color: 'var(--color-subj-rose)' },
-  { icon: '📌', titleZh: '精選攻略', titleEn: 'Curated guides', descZh: '溫書資源、錯題整理、考試貼士', descEn: 'Study resources, mistake logs, exam tips', color: 'var(--color-subj-clay)' },
+  { icon: '', titleZh: '每日心情記錄', titleEn: 'Daily mood log', descZh: '深夜溫書記錄心情，互相打氣唔孤單', descEn: 'Log your mood on late-night study sessions — keep each other going', color: 'var(--color-subj-sage)' },
+  { icon: '', titleZh: '科目戰術討論區', titleEn: 'Subject tactics board', descZh: 'Econ／中文／英文／數學互助', descEn: 'Econ / Chinese / English / Maths — help each other out', color: 'var(--color-subj-rose)' },
+  { icon: '', titleZh: '精選攻略', titleEn: 'Curated guides', descZh: '溫書資源、錯題整理、考試貼士', descEn: 'Study resources, mistake logs, exam tips', color: 'var(--color-subj-clay)' },
 ]
 
 const TAGS = [
-  { zh: '🌙 深夜溫書記錄心情', en: '🌙 Late-night mood logs' },
-  { zh: '📚 科目互助', en: '📚 Subject help' },
+  { zh: ' 深夜溫書記錄心情', en: ' Late-night mood logs' },
+  { zh: ' 科目互助', en: ' Subject help' },
 ]
 
 export default function GroupCommunity() {
@@ -42,50 +42,50 @@ export default function GroupCommunity() {
   const en = locale === 'en'
   return (
     <div>
-      <BackButton />
-      <div className="mt-4 mb-4 text-center">
-        <h1 className="text-2xl font-bold text-ink">👥 {en ? 'Squad HQ' : '戰友集結區'}</h1>
-        <p className="text-sm text-ink-muted mt-1">{en ? "You're not alone. Come team up — don't grind solo." : '你唔係一個人。入嚟組隊，唔單打獨鬥。'}</p>
-      </div>
+ <BackButton />
+ <div className="mt-4 mb-4 text-center">
+ <h1 className="text-2xl font-bold text-ink">👥 {en ? 'Squad HQ' : '戰友集結區'}</h1>
+ <p className="text-sm text-ink-muted mt-1">{en ? "You're not alone. Come team up — don't grind solo." : '你唔係一個人。入嚟組隊，唔單打獨鬥。'}</p>
+ </div>
 
       {/* 狀態列（霓虹，誠實文案 —— 唔用作假嘅在線／打卡數字） */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-5 text-xs">
-        <span className="text-subj-rose">🔥 {en ? 'Late-night squad HQ · anonymous group study' : '深夜戰友集結區 · 匿名組隊溫書'}</span>
-        <span className="text-accent">📍 {en ? 'Just showing up makes you one of us' : '入到嚟就已經係一分子'}</span>
-      </div>
+ <span className="text-subj-rose">{en ? 'Late-night squad HQ · anonymous group study' : '深夜戰友集結區 · 匿名組隊溫書'}</span>
+ <span className="text-accent">{en ? 'Just showing up makes you one of us' : '入到嚟就已經係一分子'}</span>
+ </div>
 
       {/* 公會招募令：玻璃擬態 + 霓虹邊框發光，hover 上浮 + 發光增強 */}
-      <div className="rounded-xl bg-surface-sunken backdrop-blur-md border border-subj-rose/40 p-5 mb-4 transition-all hover:-translate-y-0.5 hover:border-subj-rose/70 hover:shadow-[0_0_28px_rgba(255,0,110,0.3)]">
-        <div className="flex items-center gap-3 mb-4">
-          <div
+      <div className="rounded-xl bg-surface-sunken border border-line p-5 mb-4 transition-colors hover:border-line-strong">
+ <div className="flex items-center gap-3 mb-4">
+ <div
             className="w-11 h-11 rounded-xl flex items-center justify-center bg-neutral-800 text-white text-xl shrink-0"
             /* ⚠️ Instagram 官方品牌漸變，刻意寫死 —— 品牌色唔跟我哋嘅主題走，
                改成莫蘭迪就唔再認得出係 Instagram。呢個唔係漏網之魚。 */
             style={{ background: 'linear-gradient(135deg, #833AB4, #FD1D1D, #F77737)' }}
             aria-hidden
           >
-            📷
-          </div>
-          <div>
-            <h2 className="text-base font-bold text-ink">{en ? 'DSE LEVEL UP · Shadow Study Room' : IG_GROUP_NAME}</h2>
-            <p className="text-xs text-ink-muted">{en ? 'The DSE final stretch · anonymous group study' : 'DSE 最後戰線 · 匿名組隊溫書'}</p>
-            <p className="text-xs text-ink-muted">{en ? "Run by fellow students who've been there · not official, more like comrades" : '由同路人學長姐管理 · 唔係官方，更似戰友'}</p>
-          </div>
-        </div>
+ 
+ </div>
+ <div>
+ <h2 className="text-base font-bold text-ink">{en ? 'DSE LEVEL UP · Shadow Study Room' : IG_GROUP_NAME}</h2>
+ <p className="text-xs text-ink-muted">{en ? 'The DSE final stretch · anonymous group study' : 'DSE 最後戰線 · 匿名組隊溫書'}</p>
+ <p className="text-xs text-ink-muted">{en ? "Run by fellow students who've been there · not official, more like comrades" : '由同路人學長姐管理 · 唔係官方，更似戰友'}</p>
+ </div>
+ </div>
 
-        <p className="text-sm text-ink-muted leading-relaxed mb-4">
+ <p className="text-sm text-ink-muted leading-relaxed mb-4">
           {en
             ? "A pressure-free space. Ask why Econ works the way it does, moan that the Chinese set texts are too hard, or just say “I'm wrecked today.” People who get it have your back — you don't grind alone."
             : '一個冇壓力嘅空間。你可以問 Econ 點解，可以呻中文範文太難，可以純粹講「今日好攰」。同路人罩住你，唔單打獨鬥。'}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+ <div className="flex flex-wrap gap-2 mb-4">
           {TAGS.map((tag) => (
-            <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-subj-rose/40 bg-surface-sunken text-subj-rose">
+ <span key={tag.zh} className="px-3 py-1.5 rounded-full text-xs border border-subj-rose/40 bg-surface-sunken text-subj-rose">
               {en ? tag.en : tag.zh}
             </span>
-          ))}
-        </div>
+ ))}
+ </div>
 
         {/* 關於管理員 — 學生自發，唔係官方（法律免責內容，NON-NEGOTIABLE，中文原文不變）。
             2026-08-20：由頁底搬到【CTA 上面】，令學生喺撳走之前一定睇得到。 */}
@@ -96,25 +96,25 @@ export default function GroupCommunity() {
     上面嘅註釋特登講明搬咗上 CTA 之前「令學生一定睇得到」——
     但 2.38 之下佢係睇唔清嘅。改用跟主題嘅 surface-sunken。 */}
         <div className="rounded-xl bg-surface-sunken border border-line p-4 mb-4">
-          <div className="flex items-start gap-3">
-            <span className="text-lg" aria-hidden>👤</span>
-            <div>
-              <div className="text-sm font-medium text-ink">{en ? 'Before you join' : '入群之前'}</div>
-              <div className="text-xs text-ink-muted leading-relaxed mt-1">
+ <div className="flex items-start gap-3">
+ <span className="text-lg" aria-hidden></span>
+ <div>
+ <div className="text-sm font-medium text-ink">{en ? 'Before you join' : '入群之前'}</div>
+ <div className="text-xs text-ink-muted leading-relaxed mt-1">
                 {en
                   ? `This group is created and run by ${IG_GROUP_ADMIN}, a student-led study space — not an official DSE LEVEL UP channel. For any issues, please contact the group admin directly.`
                   : `呢個群組由 ${IG_GROUP_ADMIN} 開設同管理，係學生自發嘅溫書空間，唔係 DSE LEVEL UP 官方頻道。如有問題，請直接聯絡群組管理員。`}
               </div>
-              <ul className="text-xs text-ink-muted leading-relaxed mt-2 space-y-1 list-disc pl-4">
-                <li>{en ? 'Never share your phone number, address, school or photos with people you don’t know.' : '唔好向唔認識嘅人畀電話、地址、就讀學校或者相片。'}</li>
-                <li>{en ? 'If anyone asks to move to private chat, asks for photos, or makes you uncomfortable — leave and tell an adult you trust.' : '如果有人要求私下傾、要相，或者令你唔舒服 —— 離開，並且話畀你信得過嘅大人知。'}</li>
-                <li>{en ? 'We cannot moderate that group and cannot see what happens in it.' : '我哋無法審核嗰個群組，亦睇唔到入面發生咩事。'}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+ <ul className="text-xs text-ink-muted leading-relaxed mt-2 space-y-1 list-disc pl-4">
+ <li>{en ? 'Never share your phone number, address, school or photos with people you don’t know.' : '唔好向唔認識嘅人畀電話、地址、就讀學校或者相片。'}</li>
+ <li>{en ? 'If anyone asks to move to private chat, asks for photos, or makes you uncomfortable — leave and tell an adult you trust.' : '如果有人要求私下傾、要相，或者令你唔舒服 —— 離開，並且話畀你信得過嘅大人知。'}</li>
+ <li>{en ? 'We cannot moderate that group and cannot see what happens in it.' : '我哋無法審核嗰個群組，亦睇唔到入面發生咩事。'}</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-        <ExternalLinkGate
+ <ExternalLinkGate
           href={INSTAGRAM_GROUP_LINK}
           platform="Instagram"
           extraWarning={
@@ -126,29 +126,29 @@ export default function GroupCommunity() {
         >
           {en ? 'Team up now →' : '立即組隊 →'}
         </ExternalLinkGate>
-      </div>
+ </div>
 
       {/* 功能一覽：Bento Box 網格，每張獨立霓虹色 icon + hover 動畫 */}
       <div className="grid grid-cols-2 gap-3 mb-4">
         {IG_FEATURES.map((f) => (
-          <div
+ <div
             key={f.titleZh}
-            className="rounded-xl bg-surface-raised border border-line p-4 transition-all hover:-translate-y-0.5"
+            className="rounded-xl bg-surface-raised border border-line p-4 transition-colors"
             style={{ ['--glow' as string]: f.color }}
           >
-            <div
+ <div
               className="w-9 h-9 rounded-lg flex items-center justify-center text-lg mb-2"
               style={{ background: `${f.color}1f`, boxShadow: `0 0 12px ${f.color}33` }}
               aria-hidden
             >
               {f.icon}
             </div>
-            <div className="text-sm font-medium text-ink">{en ? f.titleEn : f.titleZh}</div>
-            <div className="text-xs text-ink-muted mt-0.5">{en ? f.descEn : f.descZh}</div>
-          </div>
-        ))}
-      </div>
+ <div className="text-sm font-medium text-ink">{en ? f.titleEn : f.titleZh}</div>
+ <div className="text-xs text-ink-muted mt-0.5">{en ? f.descEn : f.descZh}</div>
+ </div>
+ ))}
+ </div>
 
-    </div>
+ </div>
   )
 }

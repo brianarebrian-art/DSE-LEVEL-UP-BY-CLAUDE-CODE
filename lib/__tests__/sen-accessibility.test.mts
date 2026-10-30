@@ -114,7 +114,7 @@ test('裝飾層喺舒適模式下要 display:none 或者 animation:none，唔可
     /html\.font-easy \.particle-bg,\s*\nhtml\.font-easy \.combo-flame \{\s*\n\s*display:\s*none/,
     '粒子場同連擊火焰必須整層隱藏',
   )
-  for (const cls of ['.shockwave', '.pulse-correct', '.blindspot-in', '.animate-slide-up', '.skeleton']) {
+  for (const cls of ['.shockwave', '.answer-feedback', '.blindspot-in', '.animate-slide-up', '.skeleton']) {
     assert.ok(
       new RegExp(`html\\.font-easy[^{]*\\${cls}`).test(CSS),
       `${cls} 未受一鍵舒適模式管轄`,

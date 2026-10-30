@@ -20,19 +20,19 @@ export interface DimensionDef {
 
 export const DIMENSIONS: readonly DimensionDef[] = [
   {
-    id: 'A', icon: '🧩',
+    id: 'A', icon: '',
     label: '我對呢個概念本身唔清楚',
     labelEn: 'I am not clear on the concept itself',
     short: '概念盲區', shortEn: 'Concept blind spot',
   },
   {
-    id: 'B', icon: '🔍',
+    id: 'B', icon: '',
     label: '概念我識，但我睇漏咗題目啲字',
     labelEn: 'I know the concept, but I misread the question',
     short: '審題陷阱', shortEn: 'Question-reading trap',
   },
   {
-    id: 'C', icon: '✏️',
+    id: 'C', icon: '',
     label: '我明，只係計錯／寫漏',
     labelEn: 'I understood it — I just slipped in the working',
     short: '運算粗心', shortEn: 'Careless slip',
@@ -40,7 +40,7 @@ export const DIMENSIONS: readonly DimensionDef[] = [
 ] as const
 
 export const DIMENSION_BY_ID: Record<Dimension, DimensionDef> =
-  Object.fromEntries(DIMENSIONS.map((d) => [d.id, d])) as Record<Dimension, DimensionDef>
+ Object.fromEntries(DIMENSIONS.map((d) => [d.id, d])) as Record<Dimension, DimensionDef>
 
 /**
  * 反思閘下限（秒）。

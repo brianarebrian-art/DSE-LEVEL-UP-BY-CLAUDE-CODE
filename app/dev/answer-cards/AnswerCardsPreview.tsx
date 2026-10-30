@@ -19,7 +19,7 @@ const sampleText: TextQuestion = {
   framework: 'preview',
   frameworkZh: '樣本',
   frameworkEn: 'Sample',
-  frameworkEmoji: '🧪',
+  frameworkEmoji: '',
   difficulty: 'easy',
   year: 0,
   content: '寫出二次方程 $ax^2+bx+c=0$（其中 $a \\neq 0$）的判別式。',
@@ -42,7 +42,7 @@ const sampleLong: LongQuestion = {
   framework: 'preview',
   frameworkZh: '樣本',
   frameworkEn: 'Sample',
-  frameworkEmoji: '🧪',
+  frameworkEmoji: '',
   difficulty: 'hard',
   year: 0,
   content:
@@ -73,43 +73,43 @@ const sampleNotes: OptionNote[] = [
 export default function AnswerCardsPreview() {
   // First render uses a fixed order so the server and client HTML match; the button reshuffles.
   const [shown, setShown] = useState(() => displayOptions({ options: sampleOptions }, () => 0.5))
-  return (
-    <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
-      <div className="mx-auto max-w-2xl">
-        <h1 className="text-2xl font-medium mb-2">書寫題答題卡預覽{/* i18n-exempt: 開發專用頁，生產環境 404，不對外顯示 */}</h1>
-        <p className="text-sm text-ink-muted mb-2 leading-relaxed">
+ return (
+ <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
+ <div className="mx-auto max-w-2xl">
+ <h1 className="text-2xl font-medium mb-2">書寫題答題卡預覽{/* i18n-exempt: 開發專用頁，生產環境 404，不對外顯示 */}</h1>
+ <p className="text-sm text-ink-muted mb-2 leading-relaxed">
           開發專用。樣本題目，不屬題庫。切換主題可同時檢查 Light／Cyber 兩套色。{/* i18n-exempt: 開發專用頁，生產環境 404 */}
         </p>
-        <p className="text-sm text-ink-muted mb-10 leading-relaxed">
+ <p className="text-sm text-ink-muted mb-10 leading-relaxed">
           兩張卡均【永不由機器批改】：提交後攤開參考答案（長題目另有評分準則），由學生自評。{/* i18n-exempt: 開發專用頁，生產環境 404 */}
         </p>
 
-        <div className="space-y-10">
-          <section>
-            <h2 className="text-sm font-medium text-ink-muted mb-3">TextQuestionCard{/* i18n-exempt: 組件名 */}</h2>
-            <TextQuestionCard q={sampleText} />
-          </section>
+ <div className="space-y-10">
+ <section>
+ <h2 className="text-sm font-medium text-ink-muted mb-3">TextQuestionCard{/* i18n-exempt: 組件名 */}</h2>
+ <TextQuestionCard q={sampleText} />
+ </section>
 
-          <section>
-            <h2 className="text-sm font-medium text-ink-muted mb-3">LongQuestionCard{/* i18n-exempt: 組件名 */}</h2>
-            <LongQuestionCard q={sampleLong} />
-          </section>
+ <section>
+ <h2 className="text-sm font-medium text-ink-muted mb-3">LongQuestionCard{/* i18n-exempt: 組件名 */}</h2>
+ <LongQuestionCard q={sampleLong} />
+ </section>
 
-          <section>
-            <h2 className="text-sm font-medium text-ink-muted mb-3">OptionNotes{/* i18n-exempt: 組件名 */}</h2>
-            <button
+ <section>
+ <h2 className="text-sm font-medium text-ink-muted mb-3">OptionNotes{/* i18n-exempt: 組件名 */}</h2>
+ <button
               type="button"
               onClick={() => setShown(displayOptions({ options: sampleOptions }))}
               className="mb-3 min-h-11 rounded-lg border border-line px-3 text-sm text-ink-soft hover:border-accent/40"
             >
               重新洗牌{/* i18n-exempt: 開發專用頁，生產環境 404 */}
             </button>
-            <div className="rounded-2xl border border-gold/30 bg-gold/[0.10] p-5">
-              <OptionNotes notes={sampleNotes} options={shown} correctId={1} selectedZh={'\\$270'} />
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
+ <div className="rounded-2xl border border-gold/30 bg-gold/[0.10] p-5">
+ <OptionNotes notes={sampleNotes} options={shown} correctId={1} selectedZh={'\\$270'} />
+ </div>
+ </section>
+ </div>
+ </div>
+ </div>
   )
 }
