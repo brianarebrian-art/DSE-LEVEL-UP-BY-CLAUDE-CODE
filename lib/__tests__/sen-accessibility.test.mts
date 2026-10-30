@@ -270,7 +270,7 @@ test('浮動掣有最小可觸控尺寸（44px = min-h-12 或 w-12 h-12）', () 
 // 呢條測試存在嘅原因：第 1 週改答錯回饋嗰陣，只改咗 /practice，
 // 漏咗 /reading（另一個練習介面）—— 到第 4 週審核先發現佢仲用緊
 // XCircle + 玫紅。逐個檔記住去改係靠唔住嘅，所以改為全域掃。
-const ADMIN_ONLY = ['app/admin/']
+const ADMIN_ONLY = ['app/admin/', 'app/founder/', 'components/founder/']
 
 test('冇任何學生介面用大紅交叉做答錯回饋', () => {
   const student = UI_FILES.filter((f) => !ADMIN_ONLY.some((p) => f.startsWith(p)))
