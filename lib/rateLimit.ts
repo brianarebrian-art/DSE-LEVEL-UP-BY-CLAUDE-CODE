@@ -46,14 +46,14 @@ export function createLimiter({ maxKeys = 2000, staleMs = 10 * 60_000 } = {}): L
 }
 
 /**
- * 行嚴格桶（10 分鐘 30 次）嘅路徑：會被用嚟撞密碼或者洗 OAuth 嘅入口。
- * `/api/auth/signin`、`/api/auth/callback` 係 Auth.js；`/api/auth/sign-in/*`、
- * `/api/auth/sign-up/*` 係 Better Auth 嘅電郵＋密碼登入同註冊（有橫線）。
- * 原本只包 Auth.js 嗰兩個 —— Better Auth 一開，撞密碼就只行一般桶（每分鐘 60 次）。
+ * 行嚴格桶（10 分鐘 30 次）嘅路徑：會被用嚟洗 OAuth 嘅入口。
+ * Supabase Auth：`/auth/callback`（code exchange）。
+ * 遷移 API：`/api/auth/migrate-legacy`（已登入，但防刷）。
  *
- * `/api/auth/session`、`/api/auth/get-session` 刻意唔包：SessionProvider 每次導航
- * 都會 poll，掟入嚴格桶會 429 斷正常用戶嘅登入狀態（2026-07-11 preview 實測）。
+ * 舊 Auth.js／Better Auth 路徑已拆除；保留 pattern 只係防殘餘探測。
  */
 export function isAuthSensitivePath(pathname: string): boolean {
+  if (pathname === '/auth/callback' || pathname.startsWith('/auth/callback/')) return true
+  if (pathname === '/api/auth/migrate-legacy') return true
   return /^\/api\/auth\/(signin|callback|sign-in|sign-up)(\/|$)/.test(pathname)
 }

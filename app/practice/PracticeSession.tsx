@@ -272,6 +272,10 @@ export default function PracticeSession({
   const [answerState, setAnswerState] = useState<AnswerState>(null)
   // Wave 2「再試一次」：畫面跟最新一揀；計分／session answers 用首次作答。
   const [firstAnswer, setFirstAnswer] = useState<AnswerState>(null)
+  // 必須喺 selectOption／next 之前 declare —— React Compiler 唔准 TDZ 用 setter。
+  const loggedIdsRef = useRef<Set<string>>(new Set())
+  const [hintOpen, setHintOpen] = useState(false)
+  const [hackOpen, setHackOpen] = useState(false)
   // 2026-09-09：呢度原本係反思鎖嘅 state。鎖已剷除（憲章 §7.2 實驗）。
   // about the chosen error cause + a countdown that both must clear before "Next".
   // P1-6-R1: 鎖嘅絕對死線（timestamp）。剩餘秒由死線倒推 —— 逐秒 setTimeout 鏈
@@ -622,9 +626,6 @@ export default function PracticeSession({
   const canProceed = answerState !== null
   const sessionRef = useRef<HTMLDivElement>(null)
   // Wave 2：答完可「再試一次」——只清本畫面，唔撤銷已記嘅首次作答；再揀唔重複記 log。
-  const loggedIdsRef = useRef<Set<string>>(new Set())
-  const [hintOpen, setHintOpen] = useState(false)
-  const [hackOpen, setHackOpen] = useState(false)
 
   const retryCurrent = useCallback(() => {
     if (answerState === null) return

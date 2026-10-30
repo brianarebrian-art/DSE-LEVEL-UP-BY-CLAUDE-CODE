@@ -1,40 +1,15 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { LogIn, Loader2 } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 import { useLocale } from '@/lib/i18n'
-import InAppBrowserNotice from '@/components/InAppBrowserNotice'
-import { AUTH_BACKEND } from '@/lib/auth/client'
-import { authSignInGoogle, authSignInEmail } from '@/lib/auth/session'
+import GoogleSignInButton from '@/components/auth/GoogleSignInButton'
 
-// Sign-in page (Better Auth). Google works in either backend; the email/password form
-// is shown only when Better Auth is the active backend (otherwise its endpoints are not
-// served, so we keep the page to Google-only — matching the pre-cutover behaviour).
 export default function SignInPageClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
-  const router = useRouter()
-  const emailEnabled = AUTH_BACKEND === 'better-auth'
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [busy, setBusy] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setBusy(true)
-    setError(null)
-    const res = await authSignInEmail(email, password)
-    if (res.error) {
-      setError(res.error.message ?? (en ? 'Sign-in failed.' : '登入失敗。'))
-      setBusy(false)
-      return
-    }
-    router.push('/dashboard?sync=ok')
-  }
+  const params = useSearchParams()
+  const err = params.get('error')
 
   return (
     <div className="min-h-[70vh] grid place-items-center px-4">
@@ -44,67 +19,36 @@ export default function SignInPageClient() {
         </h1>
         <p className="text-sm text-ink-muted mb-5">
           {en
-            ? 'Sign in once to sync progress across devices. On this device you’ll usually stay signed in. Still 100% free — sign-in never unlocks paid content.'
-            : '登入一次就可以跨裝置同步進度；喺呢部機返嚟通常唔使再撳（自動保持登入）。仍然 100% 免費 —— 登入唔會解鎖任何付費內容。'}
+            ? 'Sign in once with Google to sync progress across devices. Still 100% free — sign-in never unlocks paid content. Practice without signing in keeps progress only until you leave this page.'
+            : '用 Google 登入一次就可以跨裝置同步進度。仍然 100% 免費 —— 登入唔會解鎖任何付費內容。未登入練習嘅進度只喺呢次瀏覽有效，離開頁面就會消失。'}
         </p>
 
-        {/* Google OAuth 喺 App 內置瀏覽器會被 Google 自己封 —— 呢一版只有 Google
-            一個選項，封咗就零後路，所以提示要擺喺個掣【之上】而唔係之下。 */}
-        <InAppBrowserNotice />
+        <p className="text-xs text-ink-muted mb-4">
+          {en
+            ? 'If you opened this inside Instagram, Facebook, WeChat or LINE, use your system browser (Safari / Chrome) to sign in.'
+            : '若你喺 Instagram、Facebook、WeChat 或 LINE 內置瀏覽器打開，請改用系統瀏覽器（Safari／Chrome）登入。'}
+        </p>
 
-        <button
-          onClick={() => authSignInGoogle('/dashboard?sync=ok')}
-          className="w-full inline-flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-bold px-4 py-2.5 rounded-xl transition-colors"
-        >
-          <LogIn size={16} /> {en ? 'Continue with Google' : '用 Google 繼續'}
-        </button>
-
-        {emailEnabled && (
-          <>
-            <div className="flex items-center gap-3 my-5">
-              <span className="h-px flex-1 bg-line-strong" />
-              <span className="text-xs text-ink-muted">{en ? 'or' : '或'}</span>
-              <span className="h-px flex-1 bg-line-strong" />
-            </div>
-
-            <form onSubmit={onSubmit} className="space-y-3">
-              <input
-                type="email"
-                required
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={en ? 'Email' : '電郵'}
-                className="w-full bg-surface-sunken border border-line-strong focus:border-accent outline-none rounded-xl px-3 py-2.5 text-sm text-ink"
-              />
-              <input
-                type="password"
-                required
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder={en ? 'Password' : '密碼'}
-                className="w-full bg-surface-sunken border border-line-strong focus:border-accent outline-none rounded-xl px-3 py-2.5 text-sm text-ink"
-              />
-              {error && <p className="text-sm text-rose">{error}</p>}
-              <button
-                type="submit"
-                disabled={busy}
-                className="w-full inline-flex items-center justify-center gap-2 border border-line-strong hover:border-accent disabled:opacity-60 text-ink px-4 py-2.5 rounded-xl transition-colors text-sm"
-              >
-                {busy && <Loader2 size={15} className="animate-spin" />}
-                {en ? 'Sign in with email' : '用電郵登入'}
-              </button>
-            </form>
-
-            <p className="text-sm text-ink-muted mt-4 text-center">
-              {en ? 'No account? ' : '未有帳戶？'}
-              <Link href="/sign-up" className="text-accent hover:underline">
-                {en ? 'Sign up' : '註冊'}
-              </Link>
-            </p>
-          </>
+        {err && (
+          <p className="text-sm text-rose mb-3" role="alert">
+            {err === 'cancelled'
+              ? en
+                ? 'Sign-in was cancelled. You can still practise without an account.'
+                : '已取消登入。你仍然可以唔登入繼續練習。'
+              : en
+                ? 'Google sign-in failed. Please try again, or practise without signing in.'
+                : 'Google 登入失敗。請再試，或者唔登入繼續練習。'}
+          </p>
         )}
+
+        <GoogleSignInButton next="/dashboard?sync=ok" />
+
+        <p className="text-sm text-ink-muted mt-4 text-center">
+          {en ? 'New here? ' : '第一次嚟？'}
+          <Link href="/sign-up" className="text-accent hover:underline">
+            {en ? 'Create account' : '建立帳戶'}
+          </Link>
+        </p>
       </div>
     </div>
   )

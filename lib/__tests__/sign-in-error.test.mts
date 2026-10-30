@@ -2,7 +2,7 @@
 // (UX loop 14, P1-J, 2026-09-30).
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 
 const pick = <T,>(m: T): T => ((m as { default?: T }).default ?? m)
 const E = pick(await import('../auth/signInError.ts'))
@@ -16,9 +16,13 @@ function assertNoIndex(metadata: { robots?: unknown }) {
   assert.equal(robots.googleBot?.index, false, 'Googlebot must receive the same noindex directive')
 }
 
-test('Auth.js sends sign-in errors to our page', () => {
-  assert.match(read('auth.ts'), /pages: \{ error: '\/sign-in-error' \}/)
+test('OAuth failures land on /sign-in with error query (Supabase Auth)', () => {
+  assert.match(read('lib/auth/session.tsx'), /\/sign-in\?error=/)
+  assert.match(read('app/auth/callback/route.ts'), /\/sign-in\?error=oauth/)
+  assert.ok(!existsSync('auth.ts'), 'Auth.js auth.ts must stay removed')
 })
+
+
 
 test('known codes get their own wording; anything else gets the general message', () => {
   assert.equal(E.signInErrorKind('AccessDenied'), 'denied')
@@ -48,6 +52,7 @@ test('the page is not indexed and is classified for page navigation', () => {
   assert.doesNotMatch(read('app/sitemap.ts'), /sign-in-error/)
 })
 
-test('the integration guard knows why nothing links to the page', () => {
-  assert.match(read('scripts/integration-guard.mjs'), /'\/sign-in-error': '登入失敗時由 Auth\.js 重新導向入嚟/)
+test('the integration guard still knows /sign-in-error is an error landing page', () => {
+  assert.match(read('scripts/integration-guard.mjs'), /'\/sign-in-error':/)
 })
+

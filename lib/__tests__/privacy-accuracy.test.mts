@@ -20,8 +20,22 @@ test('the visit log says it keeps the time of the first open (user_sessions.firs
 })
 
 test('account deletion lists only tables that exist', () => {
-  assert.deepEqual([...USER_SCOPED_TABLES].sort(), ['privacy_consents', 'profiles', 'user_progress', 'user_sessions', 'user_settings'])
+  assert.deepEqual(
+    [...USER_SCOPED_TABLES].sort(),
+    [
+      'auth_identity_map',
+      'learning_profiles',
+      'learning_progress',
+      'practice_attempts',
+      'privacy_consents',
+      'profiles',
+      'user_progress',
+      'user_sessions',
+      'user_settings',
+    ],
+  )
 })
+
 
 test('the wall data deletion date and the check date are the real ones', () => {
   assert.match(page, /2026 年 9 月 9 日由資料庫刪走/)

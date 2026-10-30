@@ -8,6 +8,11 @@
 // All access is guarded by `typeof window` so it never runs during SSR (防線 B).
 
 import { ACTIVE_SESSION_KEY, type ActiveSession } from '@/lib/sessionResume'
+import {
+  loadAttempts,
+  replaceAttempts,
+  type AttemptRecord,
+} from '@/lib/progress'
 
 const KEYS = {
   progress: 'dse_progress',
@@ -167,7 +172,8 @@ export function snapshotLocal(): Snapshot {
   const electives = readJSON<Record<string, unknown>>(KEYS.electives, {})
   const hasElectives = electives && typeof electives === 'object' && Object.keys(electives).length > 0
   return {
-    dse_progress: readJSON<unknown[]>(KEYS.progress, []),
+    // C1: progress lives in memory (lib/progress.ts), not localStorage.
+    dse_progress: loadAttempts() as unknown[],
     dse_free_attempts_total: readNum(KEYS.counter) ?? 0,
     ...(hasTopicStats ? { dse_topic_stats: topicStats } : {}),
     // `null` 有意義（＝嗰節喺呢部機做完咗，要通知其他機清走），所以照帶。
@@ -469,7 +475,16 @@ function unionBy(
 export function applyLocal(s: Snapshot): void {
   if (!isBrowser()) return
   try {
-    localStorage.setItem(KEYS.progress, JSON.stringify(s.dse_progress ?? []))
+    // C1: never persist attempt history to localStorage.
+    replaceAttempts(
+      Array.isArray(s.dse_progress) ? (s.dse_progress as AttemptRecord[]) : [],
+    )
+    // Purge any legacy long-lived key left from pre-rebuild builds.
+    try {
+      localStorage.removeItem(KEYS.progress)
+    } catch {
+      /* ignore */
+    }
     localStorage.setItem(KEYS.counter, String(Number(s.dse_free_attempts_total) || 0))
     // ⚠️ 唔可以寫成 `s.dse_topic_stats ?? {}` —— 而家 snapshotLocal 唔再帶呢個欄位，
     // 一律 `?? {}` 會將本機累積咗嘅課題統計【洗成空白】。同 active session 一樣：

@@ -150,21 +150,28 @@ test('頁面聲稱「除已披露嘅 Vercel／Sentry 外冇其他分析／追蹤
   }
 })
 
-test('頁面聲稱「唔會將學生 email 寫入資料庫」—— 掃寫入路徑確認', () => {
-  // 只容許內部審題人／版主嗰兩欄（唔係學生資料）。
-  const ALLOWED = /reviewer_email|moderator_email/
+test('Supabase Auth 會寫 profiles.email —— 私隱頁必須 storesEmail=true 並有對應文案', () => {
+  const shell = fs.readFileSync(SHELL, 'utf8')
+  assert.match(shell, /storesEmail=\{true\}/, 'Google／profiles 存電郵時必須 storesEmail=true')
+  const page = fs.readFileSync(PAGE, 'utf8')
+  assert.match(page, /storesEmail\s*\?/, 'PrivacyClient 要按 storesEmail 分支')
+  // 只容許：profiles upsert 嘅 email、以及內部審題人／版主欄。
+  const ALLOWED = /reviewer_email|moderator_email|profiles|display_name|avatar_url/
   const bad: string[] = []
   for (const f of sources) {
     const src = fs.readFileSync(f, 'utf8')
     for (const m of src.matchAll(/\.(insert|upsert|update)\(([\s\S]{0,220}?)\)/g)) {
       const payload = m[2]
-      if (/\bemail\b/.test(payload) && !ALLOWED.test(payload)) {
+      if (/\bemail\b/.test(payload) && !ALLOWED.test(payload) && !ALLOWED.test(f)) {
+        // profiles upsert in auth callback is expected when storesEmail=true
+        if (f.includes('auth/callback') && /email:\s*user\.email/.test(payload)) continue
         bad.push(`${f} → ${payload.replace(/\s+/g, ' ').slice(0, 80)}`)
       }
     }
   }
-  assert.deepEqual(bad, [], `有路徑將 email 寫入資料庫，但 /privacy 寫住冇：\n  ${bad.join('\n  ')}`)
+  assert.deepEqual(bad, [], `未披露嘅 email 寫入路徑：\n  ${bad.join('\n  ')}`)
 })
+
 
 test('/privacy 必須由頁尾去到，並且喺 sitemap', () => {
   assert.match(fs.readFileSync('components/Footer.tsx', 'utf8'), /href="\/privacy"/, '頁尾冇私隱政策連結')

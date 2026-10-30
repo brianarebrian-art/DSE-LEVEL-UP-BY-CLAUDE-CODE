@@ -66,6 +66,10 @@ function withCsp(request: NextRequest) {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
+  // OAuth callback + migrate: strict auth bucket (see isAuthSensitivePath).
+  if (pathname === '/auth/callback' || pathname.startsWith('/auth/callback/')) {
+    return rateLimit(request)
+  }
   if (pathname === '/api' || pathname.startsWith('/api/')) return rateLimit(request)
   return withCsp(request)
 }

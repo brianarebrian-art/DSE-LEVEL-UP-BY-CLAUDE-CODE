@@ -25,12 +25,20 @@ function withStorage(store: Record<string, string>, fn: () => void) {
   const g = globalThis as unknown as { localStorage?: unknown; window?: unknown }
   const pl = g.localStorage
   const pw = g.window
-  g.localStorage = {
+  const ls = {
     getItem: (k: string) => (k in store ? store[k] : null),
     setItem: (k: string, v: string) => { store[k] = v },
     removeItem: (k: string) => { delete store[k] },
   }
-  g.window = g.window ?? {}
+  g.localStorage = ls
+  // C1: progress is window memory — seed from legacy test fixture key if present.
+  let mem: unknown[] = []
+  try {
+    mem = store.dse_progress ? (JSON.parse(store.dse_progress) as unknown[]) : []
+  } catch {
+    mem = []
+  }
+  g.window = { localStorage: ls, dispatchEvent: () => true, __dse_progress_mem: mem }
   try { fn() } finally { g.localStorage = pl; g.window = pw }
 }
 
