@@ -1,6 +1,6 @@
 # 設計：以 Supabase Auth Google 重建登入（階段 4）
 
-- **狀態：** 階段 5 實作中 · **未批准發布**（唔 apply production／唔改 Google Console 直至「批准發布」）
+- **狀態：** **已批准發布**（2026-10-30）· production DB 0030／0031 已 apply · 見 `PUBLISH-RUNBOOK-SUPABASE-GOOGLE-2026-10-30.md`（Google Console／Supabase Provider 仍要人手）
 - **基準分支：** `main` @ 設計開始時
 - **決策鎖定（創辦人 2026-10-30）：**
   - C1：**登入後先有雲端進度**；未登入可練，**唔寫長期本機、唔上雲**
