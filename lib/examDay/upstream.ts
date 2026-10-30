@@ -13,6 +13,8 @@
 // ⚠️ 唔好改成 fetch 嘅 next.revalidate 就算數：嗰個喺上游 5xx 嗰陣
 // 唔會保留舊值，熔斷（規矩 2）就冇咗。呢度要自己揸住 last-good。
 
+import { safeFetch } from '../api/safeFetch'
+
 /** 一格快取：value 係最後一次成功嘅結果，ts 係嗰次嘅時間。 */
 interface Slot<T> {
   value: T
@@ -51,7 +53,8 @@ export async function cachedJson<T>(
   const ctrl = new AbortController()
   const timer = setTimeout(() => ctrl.abort(), timeoutMs)
   try {
-    const res = await fetch(url, {
+    // safeFetch：外向 *.gov.hk 請求唔收 Brotli（CVE-2026-111497）
+    const res = await safeFetch(url, {
       signal: ctrl.signal,
       cache: 'no-store',
       headers: { accept: 'application/json' },

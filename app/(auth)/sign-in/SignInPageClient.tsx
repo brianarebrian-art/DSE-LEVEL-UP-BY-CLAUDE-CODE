@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useLocale } from '@/lib/i18n'
 import GoogleSignInButton from '@/components/auth/GoogleSignInButton'
@@ -41,6 +42,13 @@ export default function SignInPageClient() {
         )}
 
         <GoogleSignInButton next="/dashboard?sync=ok" />
+
+        <p className="text-sm text-ink-muted mt-4 text-center">
+          {en ? 'New here? ' : '第一次嚟？'}
+          <Link href="/sign-up" className="text-accent hover:underline">
+            {en ? 'Create account' : '建立帳戶'}
+          </Link>
+        </p>
       </div>
     </div>
   )
