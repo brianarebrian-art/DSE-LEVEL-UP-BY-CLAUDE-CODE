@@ -4,9 +4,9 @@ import { QRCode } from 'dse-level-up'
 // 由電話帶去另一部機，唔使登入。
 
 export function SiteLink() {
-  return <QRCode value="https://dse-level-up-by-claude-code.vercel.app/" />
+  return <QRCode value="https://www.dselevelup.com/" />
 }
 
 export function Larger() {
-  return <QRCode value="https://dse-level-up-by-claude-code.vercel.app/practice" size={200} />
+  return <QRCode value="https://www.dselevelup.com/practice" size={200} />
 }

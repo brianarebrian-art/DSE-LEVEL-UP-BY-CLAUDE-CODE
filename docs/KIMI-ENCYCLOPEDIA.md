@@ -15,7 +15,7 @@
 • 名稱：**DSE LEVEL UP**（絕對名稱。唔係 Aethel、唔係 WisdomPath——兩者已永久清除，任何文件再出現即刪）。
 • 核心使命：為**基層 DSE 考生**提供**免費、永不消失**嘅考試資源。
 • 戰場：**只有一個** —— 12–18 歲香港中學文憑試（HKDSE）。
-• 官方網址：https://dse-level-up-by-claude-code.vercel.app/ ・ IG：@dselevelup
+• 官方網址：https://www.dselevelup.com/ ・ IG：@dselevelup
 • GitHub：brianarebrian-art/DSE-LEVEL-UP-BY-CLAUDE-CODE
 • 創辦人：Brian（CEO/CTO，18 歲）＋ Yuna（COO，19 歲），全職學生創業。
 

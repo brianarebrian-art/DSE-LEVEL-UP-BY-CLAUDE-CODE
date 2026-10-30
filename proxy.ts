@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createLimiter, isAuthSensitivePath } from '@/lib/rateLimit'
 import { buildCsp, createNonce } from '@/lib/csp'
+import { canonicalSiteRedirectUrl } from '@/lib/site'
 
 // API rate limiting (Eric/資安 — $0 方案). In-memory sliding window per IP.
 // Next 16 renamed `middleware` → `proxy` (see node_modules/next/dist/docs/…/proxy.md).
@@ -65,6 +66,13 @@ function withCsp(request: NextRequest) {
 }
 
 export function proxy(request: NextRequest) {
+  // 生產站舊域／非 www → 永久導向 https://www.dselevelup.com（保留 path／query）
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host')
+  const canonical = canonicalSiteRedirectUrl(host, request.url)
+  if (canonical) {
+    return NextResponse.redirect(canonical, 308)
+  }
+
   const { pathname } = request.nextUrl
   // OAuth callback + migrate: strict auth bucket (see isAuthSensitivePath).
   if (pathname === '/auth/callback' || pathname.startsWith('/auth/callback/')) {

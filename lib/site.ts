@@ -6,7 +6,45 @@
 // 2026-10-08 起正式網址為 www.dselevelup.com（創辦人購入域名；Vercel 把 dselevelup.com 及舊網址
 // dse-level-up-by-claude-code.vercel.app 以 308 轉到此處）。2026-10-09 創辦人回覆「58a」：網站內的
 // 網址全部改用新網址。已印出舊網址的紙本仍可打開，因舊網址會自動轉址。
+// 2026-10-30：凡生產站 host 唔係正式 www，一律 308 到 SITE_ORIGIN（含舊 vercel.app、apex）。
 export const SITE_ORIGIN = 'https://www.dselevelup.com'
+
+/** 正式 host（無 protocol）。 */
+export const SITE_HOST = 'www.dselevelup.com'
+
+/**
+ * 已知應永久導向正式站嘅生產 host。
+ * 唔包括 Vercel preview（`*-git-*`／project 預覽域）同 localhost。
+ */
+export const LEGACY_PRODUCTION_HOSTS = [
+  'dse-level-up-by-claude-code.vercel.app',
+  'dselevelup.com',
+] as const
+
+/**
+ * 若 request host 需要導向正式站，回傳完整目標 URL（保留 path + query）；否則 null。
+ * `host` 可含 port（會剝走）。
+ */
+export function canonicalSiteRedirectUrl(
+  hostHeader: string | null | undefined,
+  requestUrl: string | URL,
+): string | null {
+  if (!hostHeader) return null
+  const host = hostHeader.split(':')[0]?.trim().toLowerCase() ?? ''
+  if (!host || host === SITE_HOST) return null
+  if (host === 'localhost' || host === '127.0.0.1') return null
+  // Vercel git／部署預覽：唔強制轉正式站，避免打爛 preview
+  if (host.endsWith('.vercel.app') && host !== 'dse-level-up-by-claude-code.vercel.app') {
+    return null
+  }
+
+  // 只導向已知舊生產 host（舊 vercel.app、apex）。Preview／localhost 已上面放行。
+  if (!(LEGACY_PRODUCTION_HOSTS as readonly string[]).includes(host)) return null
+
+  const src = typeof requestUrl === 'string' ? new URL(requestUrl) : requestUrl
+  const dest = new URL(src.pathname + src.search + src.hash, SITE_ORIGIN)
+  return dest.toString()
+}
 
 // 官方社交帳戶（audit loop T03，2026-10-02）。頁尾及「關於我們」共用，經 ExternalLinkGate
 // 先告知學生將離開本站。只用於網頁，不放上分享卡。
