@@ -31,10 +31,10 @@ export function saveSensoryPref(p: SensoryPref): void {
   try { localStorage.setItem(KEY, JSON.stringify(p)) } catch { /* ignore */ }
 }
 
-const OPTIONS: { key: keyof SensoryPref; emoji: string; labelZh: string; labelEn: string; hintZh: string; hintEn: string }[] = [
-  { key: 'quiet', emoji: '🔇', labelZh: '我想要安靜', labelEn: 'I want quiet', hintZh: '淨係文字，唔要聲音同動畫', hintEn: 'Text only — no sound or animation' },
-  { key: 'sound', emoji: '🎵', labelZh: '我想要聲音', labelEn: 'I want sound', hintZh: '顯示聲音清單', hintEn: 'Show the sound list' },
-  { key: 'visual', emoji: '🖼️', labelZh: '我想要畫面', labelEn: 'I want visuals', hintZh: '柔和漸變同動畫', hintEn: 'Soft gradients and animation' },
+const OPTIONS: { key: keyof SensoryPref; labelZh: string; labelEn: string; hintZh: string; hintEn: string }[] = [
+  { key: 'quiet', labelZh: '我想要安靜', labelEn: 'I want quiet', hintZh: '淨係文字，唔要聲音同動畫', hintEn: 'Text only — no sound or animation' },
+  { key: 'sound', labelZh: '我想要聲音', labelEn: 'I want sound', hintZh: '顯示聲音清單', hintEn: 'Show the sound list' },
+  { key: 'visual', labelZh: '我想要畫面', labelEn: 'I want visuals', hintZh: '柔和漸變同動畫', hintEn: 'Soft gradients and animation' },
 ]
 
 export default function SensoryMenu({
@@ -59,12 +59,12 @@ export default function SensoryMenu({
   return (
     // FIX: [B9][C11] 細屏內容唔會截斷（overflow-y-auto + max-h）；dialog ARIA
     <div className="fixed inset-0 z-50 bg-surface/96 flex items-center justify-center p-4 overflow-y-auto">
-      <div role="dialog" aria-modal="true" aria-labelledby="sensory-title" className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-surface-raised rounded-xl p-6">
+ <div role="dialog" aria-modal="true" aria-labelledby="sensory-title" className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-surface-raised rounded-xl p-6">
         {/* FIX: [A1] Buff 補給艙 → 呼吸空間 */}
-        <h2 id="sensory-title" className="text-lg font-bold text-ink mb-1">{en ? 'Welcome to the 🫁 Breathing Space' : '歡迎嚟到 🫁 呼吸空間'}</h2>
-        <p className="text-sm text-ink-muted mb-5">{en ? 'How do you want this space to feel today? (you can pick more than one)' : '今日你想點樣感受呢個空間？（可以多選）'}</p>
+        <h2 id="sensory-title" className="text-lg font-bold text-ink mb-1">{en ? 'Welcome to the Breathing Space' : '歡迎嚟到 呼吸空間'}</h2>
+ <p className="text-sm text-ink-muted mb-5">{en ? 'How do you want this space to feel today? (you can pick more than one)' : '今日你想點樣感受呢個空間？（可以多選）'}</p>
 
-        <div className="space-y-3 mb-6">
+ <div className="space-y-3 mb-6">
           {OPTIONS.map((o) => {
             const on = pref[o.key]
             return (
@@ -73,30 +73,29 @@ export default function SensoryMenu({
                 onClick={() => toggle(o.key)}
                 aria-pressed={on}
                 className={`w-full min-h-11 flex items-center gap-3 text-left rounded-[10px] border px-4 py-3 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
-                  on
-                    ? 'border-accent/60 bg-accent/10 text-ink'
-                    : 'border-line bg-transparent text-ink-muted hover:border-white/25'
-                }`}
+ on
+ ? 'border-accent/60 bg-accent/10 text-ink'
+ : 'border-line bg-transparent text-ink-muted hover:border-white/25'
+ }`}
               >
-                <span className="text-xl" aria-hidden>{o.emoji}</span>
-                <span className="flex-1">
-                  <span className="block text-sm font-medium">{en ? o.labelEn : o.labelZh}</span>
-                  <span className="block text-xs opacity-70">{en ? o.hintEn : o.hintZh}</span>
-                </span>
-                <span className={`text-xs ${on ? 'text-accent' : 'opacity-40'}`}>{on ? (en ? 'Selected' : '已選') : ''}</span>
-              </button>
-            )
-          })}
-        </div>
+ <span className="flex-1">
+ <span className="block text-sm font-medium">{en ? o.labelEn : o.labelZh}</span>
+ <span className="block text-xs opacity-70">{en ? o.hintEn : o.hintZh}</span>
+ </span>
+ <span className={`text-xs ${on ? 'text-accent' : 'opacity-40'}`}>{on ? (en ? 'Selected' : '已選') : ''}</span>
+ </button>
+ )
+ })}
+ </div>
 
-        <button
+ <button
           onClick={onDone}
           className="w-full min-h-11 rounded-[10px] bg-accent/10 border border-accent/40 text-accent font-medium py-3 hover:bg-accent/25 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           {en ? 'Enter' : '入去先'}
         </button>
-        <p className="text-[11px] text-ink-muted text-center mt-3">{en ? 'You can change this anytime from the main page.' : '之後隨時可以喺主頁改返。'}</p>
-      </div>
-    </div>
+ <p className="text-[11px] text-ink-muted text-center mt-3">{en ? 'You can change this anytime from the main page.' : '之後隨時可以喺主頁改返。'}</p>
+ </div>
+ </div>
   )
 }

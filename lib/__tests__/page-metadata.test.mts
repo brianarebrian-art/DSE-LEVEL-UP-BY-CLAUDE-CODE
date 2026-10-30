@@ -91,7 +91,9 @@ test('豁免名單每項都真實存在，並且有實質理由', () => {
 // no metadata of its own, so the layout's title, OG title and Twitter title are all this one.
 test('the homepage title is the one the founders chose, everywhere it is published', () => {
   const src = fs.readFileSync(path.join(process.cwd(), 'app/layout.tsx'), 'utf8')
-  assert.match(src, /const SITE_TITLE = 'DSE Level Up \| DSE 溫習平台 \| 掌握 DSE 核心邏輯'/)
+  assert.match(src, /const SITE_TITLE = 'DSE Level Up \| DSE 溫習平台 \| 選擇題練判斷'/)
+  const home = fs.readFileSync(path.join(process.cwd(), 'app/page.tsx'), 'utf8')
+  assert.match(home, /title: 'DSE Level Up \| DSE 溫習平台 \| 選擇題練判斷'/)
   for (const key of ['  title', '    title']) {
     assert.ok(src.split('\n').some((l) => l.startsWith(`${key}: SITE_TITLE,`)), `${key.trim()} uses SITE_TITLE`)
   }

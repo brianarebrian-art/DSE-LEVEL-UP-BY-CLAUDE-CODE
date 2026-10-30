@@ -19,6 +19,8 @@ const zh = {
     tabProgress: '進度',
     tabSaved: '收藏',
     tabAccount: '帳戶',
+    // 漢堡／側欄次要區標題（四格以外：筆記、不考之地、關於…）
+    more: '更多',
   },
   // 前／後頁導航（PageNav）。目的地名一律沿用上面 nav 嘅叫法 —— 同底欄、
   // 側欄同一個原則：掣寫一個名、頁寫另一個名，學生就要記兩套。
@@ -80,7 +82,7 @@ const zh = {
     //    查唔到「個音讀得啱唔啱」。兩句唔同意思，而憲章 §16.D 就係為咗呢種分別。
     sourceTitle: '呢啲內容邊個寫、查過乜',
     sourceBody:
-      '內容由 Claude Code 撰寫同校對。每個粵拼音節都經機器對返粵拼嘅封閉集合（19 個聲母、約 60 個韻母、6 個聲調），所以唔會出現唔存在嘅音節。⚠️ 但機器查唔到【個音讀得啱唔啱】—— 結構合法唔等於讀音正確。如果同你老師或者身邊人講嘅唔同，以佢哋為準。',
+      '內容由 Claude Code 撰寫同校對。每個粵拼音節都經機器對返粵拼嘅封閉集合（19 個聲母、約 60 個韻母、6 個聲調），所以唔會出現唔存在嘅音節。 但機器查唔到【個音讀得啱唔啱】—— 結構合法唔等於讀音正確。如果同你老師或者身邊人講嘅唔同，以佢哋為準。',
     learnHubTitle: '點樣學廣東話',
     learnHubLead: '識普通話嘅話，你已經識大部分字 —— 缺嘅淨係讀音。呢版教六個聲調、普通話同廣東話之間嘅對應規律，同最易踩嘅陷阱。',
     learnHubCta: '先睇點樣學',
@@ -114,24 +116,24 @@ const zh = {
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
-    // 模板叫「Daily Mission」「Today's Practice」，冇跟：上面嗰條原則 ——
-    // /dashboard 自己叫「我的進度」、底欄叫「練習」，側欄另起一個名就係兩套。
-    progress: '我的進度',
+    // IA：四格同名 —— 同 nav.tab*／底欄一字不差（進度唔再叫「我的進度」）。
+    progress: '進度',
     practice: '練習',
+    saved: '收藏',
+    account: '帳戶',
+    notes: '知識凝結',
     // 2026-09-30（UX 循環 LOOP 25）：「DNA」暗示系統建立了學習者模型，實際只是學生自選錯因的統計。
     errorDna: '錯誤模式',
     // 2026-09-30（UX 循環 LOOP 21）：「等級預測」改名。它是本站練習數據的估算，不是考評局成績預測。
     predictor: '練習表現',
     relax: '呼吸空間',
-    saved: '收藏',
     offSyllabus: '不考之地',
-    // 側欄組名（2026-09-30，UX 循環 LOOP 13）：按學生要做的事分組。
-    groupStudy: '溫習',
-    groupReview: '分析',
-    groupRest: '休息',
+    // 側欄組名：主要四格 ＋ 更多（次要工具）＋ 不考之地獨立尾組。
+    groupMain: '主要',
+    groupMore: '更多',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
-    quote: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。',
+    quote: '選擇題練判斷，唔係背答案，亦唔等於成張卷。',
   },
   // /predictor（Night Study「Grade Predictor」）。等級估算本身由 MasteryEstimate
   // 講，呢度淨係頁面框架同兩個聚合嘅文案。
@@ -173,7 +175,7 @@ const zh = {
     // 2026-09-30（UX 循環 LOOP 22，創辦人決定 6）：原文「改寫版歷屆試題」「由 2026 DSE 考生製作」。
     // 前者暗示題目取自歷屆試題；後者與題目是否可信無關。改為講課程對照及覆核狀態的實情
     // （docs/topic-syllabus-map-2027.md：AI 初步對照，未經學科負責人覆核；憲章 §12：自動檢查上線）。
-    tagline1: '原創 DSE 練習題，掌握核心邏輯。',
+    tagline1: '原創 DSE 練習題。選擇題練判斷，唔等於成卷掌握。',
     tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',
     practiceHeading: '練習',
     linkMath: '數學',
@@ -184,6 +186,7 @@ const zh = {
     trust: '信任中心',
     transparency: '透明度',
     privacy: '私隱政策',
+    terms: '使用條款',
     communitySafety: '社群安全',
     predictionMethod: '練習表現點計',
     accessibility: '無障礙自評',
@@ -198,7 +201,7 @@ const zh = {
     correct: '答啱！',
     wrong: '答錯了——再思考一下',
     next: '下一題',
-    seeResult: '睇結果 🎉',
+    seeResult: '睇結果',
     loading: '載入中…',
     notLive: '{subject} 嘅練習仲未上線。',
     notLiveGeneric: '呢個練習仲未上線。',
@@ -222,14 +225,14 @@ const zh = {
     minutesUnit: '分鐘',
   },
   home: {
-    liveBadge: '完全免費 · 拆邏輯，唔係背答案',
+    liveBadge: '完全免費 · 選擇題練判斷，唔係成張卷',
     headline1: '身為考過 DSE 嘅中學生，',
     headline2: '我想幫你用最輕鬆嘅方法溫書',
-    subhead: '掌握邏輯，唔係背答案。同一類題換咗數字再練，練到識答為止。',
-    trust1: '✓ 課題初步對照 2027 年課程指引',
+    subhead: '選擇題只練判斷同陷阱，唔等於掌握成張卷。同一類題換咗數字再練。',
+    trust1: ' 課題初步對照 2027 年課程指引',
     // 2026-09-29：原文「✓ 涵蓋全部 DSE 科目」屬過度聲稱（未涵蓋綜合科學，亦未涵蓋書寫、口試、實作卷）。
-    trust2: '✓ 全部功能免費',
-    trust3: '✓ 無廣告',
+    trust2: ' 全部功能免費',
+    trust3: ' 無廣告',
     ctaStart: '立即開始練習',
     ctaMethod: '了解方法論',
     demoTitle: '睇下係點樣運作',
@@ -314,10 +317,10 @@ const zh = {
     quickStartTitle: '綜合練習（推薦入手）',
     quickDescA: ' 條選擇題，涵蓋全部 ',
     quickDescB: ' 大課題 · 即時批改 · 練習表現估算',
-    minutesAbout: '⏱ 約 ',
+    minutesAbout: ' 約 ',
     minutesUnit: ' 分鐘',
-    gradePredict: '📊 練習表現估算（唔係成績預測）',
-    fullMarksA: '🎯 ',
+    gradePredict: ' 練習表現估算（唔係成績預測）',
+    fullMarksA: '',
     fullMarksB: ' 題一節',
     startNow: '立即開始',
     byTopic: '按課題練習',
@@ -333,7 +336,7 @@ const zh = {
   result: {
     emptyTitle: '呢度未有練習結果',
     emptyBody: '做完一節練習，結果就會喺呢度出現。結果只會存喺呢個瀏覽器入面 —— 換咗部機、用緊無痕模式，或者清咗瀏覽器資料，呢頁都會係空白。你嘅練習紀錄照樣可以喺「我的進度」睇返。',
-    emptyStart: '開始一節練習',
+    emptyStart: '去揀科目開始',
     emptyProgress: '睇我的進度',
     mixedResult: ' · 綜合練習成績',
     // 2026-09-30（改進循環 2）：刪去 DSE 等級（predictedGrade、gradeMessages、等級區間、距離下一級）。
@@ -341,11 +344,11 @@ const zh = {
     bandLead: '本節表現：',
     bandNote: '只反映今次呢一節練習，唔係 DSE 等級，亦唔代表你已經掌握。',
     bandTooFew: '題目太少，未夠證據講今節表現。',
-    timeUsedA: '⏱ 用時 ',
+    timeUsedA: ' 用時 ',
     timeMin: ' 分 ',
     timeSec: ' 秒',
     topicAnalysis: '課題分析',
-    weakAdviceA: '💡 建議加強：',
+    weakAdviceA: '建議加強：',
     weakAdviceB: '（',
     weakAdviceC: ' 分）——再做多幾條練習鞏固！',
     retry: '再做一次',
@@ -360,7 +363,7 @@ const zh = {
     // 兩處註釋都寫住「dselevelup.hk 尚未購入」（Brian 2026-07-29 拍板）。即係每一次
     // 分享都叫同學去一個我哋擁有唔到嘅網域，任何人註冊咗就接收得到呢批流量。
     // 迴歸鎖：lib/__tests__/site-origin.test.mts。
-    shareTextD: '！🔥 一齊練 DSE：',
+    shareTextD: '！一齊練 DSE：',
     shareCopied: '已複製分享文字！',
     disclaimer: '本網站的練習表現指標只反映本站練習數據，並不是 HKEAA 官方成績或預測。',
     defaultSubject: '數學',
@@ -374,7 +377,8 @@ const zh = {
     continueP: '繼續練習',
     loginTeaserA: '進度暫存喺呢部裝置。',
     loginTeaserGoogle: 'Google 登入',
-    loginTeaserB: '後嘅跨裝置同步功能開發中（需數據庫）。',
+    // Nielsen H1：唔再講「開發中」——登入同步已存在；AUTH 關／未 hydrate 時只講本機暫存。
+    loginTeaserB: '之後可跨裝置同步。',
     statRecentDays: '近 30 日練習',
     statRecentDaysUnit: '日',
     statQuestions: '已練習題數',
@@ -487,6 +491,7 @@ const en: typeof zh = {
     tabProgress: 'Progress',
     tabSaved: 'Saved',
     tabAccount: 'Account',
+    more: 'More',
   },
   offSyllabus: {
     tagline: 'Learning just for fun',
@@ -525,7 +530,7 @@ const en: typeof zh = {
     learnTitle: 'How to remember it',
     sourceTitle: 'Who wrote this, and what was checked',
     sourceBody:
-      'Written and checked by Claude Code. Every Jyutping syllable is machine-checked against the closed Jyutping inventory (19 initials, about 60 finals, 6 tones), so no impossible syllable can appear. ⚠️ What the machine cannot check is whether the reading is the right one — a structurally valid syllable is not necessarily the correct pronunciation. If it differs from what your teacher or the people around you say, go with them.',
+      'Written and checked by Claude Code. Every Jyutping syllable is machine-checked against the closed Jyutping inventory (19 initials, about 60 finals, 6 tones), so no impossible syllable can appear. What the machine cannot check is whether the reading is the right one — a structurally valid syllable is not necessarily the correct pronunciation. If it differs from what your teacher or the people around you say, go with them.',
     learnHubTitle: 'How to learn Cantonese',
     learnHubLead: 'If you already read Putonghua, you know most of the characters — what is missing is the sound. This page covers the six tones, the regular Putonghua-to-Cantonese correspondences, and the traps.',
     learnHubCta: 'Start with how to learn',
@@ -555,17 +560,18 @@ const en: typeof zh = {
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
-    progress: 'My Progress',
+    progress: 'Progress',
     practice: 'Practise',
+    saved: 'Saved',
+    account: 'Account',
+    notes: 'Notes',
     errorDna: 'Error patterns',
     predictor: 'Practice performance',
     relax: 'Breathing Space',
-    saved: 'Saved',
     offSyllabus: 'Off the Syllabus',
-    groupStudy: 'Study',
-    groupReview: 'Review',
-    groupRest: 'Rest',
-    quote: 'Master the logic, not the answers. Practise the same kind of question with new numbers until you can solve it.',
+    groupMain: 'Main',
+    groupMore: 'More',
+    quote: 'Multiple-choice trains judgement, not memorised answers, and not the whole paper.',
   },
   predictor: {
     title: 'Practice performance estimate',
@@ -602,7 +608,7 @@ const en: typeof zh = {
     night: 'Good night',
   },
   footer: {
-    tagline1: 'Original DSE practice questions — master the core logic.',
+    tagline1: 'Original DSE practice. Multiple-choice trains judgement, not the whole paper.',
     tagline2: 'Topics checked against the curriculum guides for the 2027 exam (first pass). Questions go live after automated checks.',
     practiceHeading: 'Practice',
     linkMath: 'Mathematics',
@@ -613,6 +619,7 @@ const en: typeof zh = {
     trust: 'Trust centre',
     transparency: 'Transparency',
     privacy: 'Privacy',
+    terms: 'Terms',
     communitySafety: 'Community safety',
     predictionMethod: 'How practice figures are worked out',
     accessibility: 'Accessibility',
@@ -627,7 +634,7 @@ const en: typeof zh = {
     correct: 'Correct!',
     wrong: 'Incorrect — think again',
     next: 'Next',
-    seeResult: 'See result 🎉',
+    seeResult: 'See result',
     loading: 'Loading…',
     notLive: '{subject} practice is not live yet.',
     notLiveGeneric: 'This practice is not live yet.',
@@ -651,13 +658,13 @@ const en: typeof zh = {
     minutesUnit: 'min',
   },
   home: {
-    liveBadge: '100% free · master the logic, not the answers',
+    liveBadge: '100% free · multiple-choice judgement, not the whole paper',
     headline1: 'As a secondary student who’s sat the DSE,',
     headline2: 'I want to help you revise the easy way',
-    subhead: 'Master the logic, don’t memorise answers. Practise the same kind of question with new numbers until you can solve it.',
-    trust1: '✓ Topics checked against the 2027 curriculum guides (first pass)',
-    trust2: '✓ Every feature free',
-    trust3: '✓ No ads',
+    subhead: 'Multiple-choice only trains judgement and traps. It is not mastery of a whole paper.',
+    trust1: ' Topics checked against the 2027 curriculum guides (first pass)',
+    trust2: ' Every feature free',
+    trust3: ' No ads',
     ctaStart: 'Start practising now',
     ctaMethod: 'See the method',
     demoTitle: 'See how it works',
@@ -734,10 +741,10 @@ const en: typeof zh = {
     quickStartTitle: 'Mixed practice (recommended start)',
     quickDescA: ' multiple-choice questions covering all ',
     quickDescB: ' topics · instant marking · practice performance estimate',
-    minutesAbout: '⏱ approx. ',
+    minutesAbout: ' approx. ',
     minutesUnit: ' min',
-    gradePredict: '📊 practice performance estimate (not a grade prediction)',
-    fullMarksA: '🎯 ',
+    gradePredict: ' practice performance estimate (not a grade prediction)',
+    fullMarksA: '',
     fullMarksB: ' questions a session',
     startNow: 'Start now',
     byTopic: 'Practise by topic',
@@ -753,17 +760,17 @@ const en: typeof zh = {
   result: {
     emptyTitle: 'No practice result here yet',
     emptyBody: 'Finish a practice session and your result will appear here. Results are kept only in this browser, so this page is empty on another device, in a private window, or after clearing browser data. Your practice history is still in My Progress.',
-    emptyStart: 'Start a practice session',
+    emptyStart: 'Choose a subject to start',
     emptyProgress: 'See my progress',
     mixedResult: ' · mixed practice result',
     bandLead: 'This session: ',
     bandNote: 'This describes this one session only. It is not a DSE level and does not mean you have mastered the topic.',
     bandTooFew: 'Too few questions to say how this session went.',
-    timeUsedA: '⏱ Time: ',
+    timeUsedA: ' Time: ',
     timeMin: 'm ',
     timeSec: 's',
     topicAnalysis: 'Topic analysis',
-    weakAdviceA: '💡 Focus on: ',
+    weakAdviceA: 'Focus on: ',
     weakAdviceB: ' (',
     weakAdviceC: ' marks) — a few more questions will lock it in!',
     retry: 'Try again',
@@ -773,7 +780,7 @@ const en: typeof zh = {
     shareTextB: ' on DSE Level Up and got ',
     shareTextC: ' right',
     // 見 zh 版同名鍵：網域唔喺文案入面，由呼叫點接上 SITE_ORIGIN。
-    shareTextD: '! 🔥 Practise DSE: ',
+    shareTextD: '! Practise DSE: ',
     shareCopied: 'Share text copied!',
     disclaimer: 'Performance on this site reflects practice here only. It is not an HKEAA result or a prediction of one.',
     defaultSubject: 'Maths',
@@ -787,7 +794,7 @@ const en: typeof zh = {
     continueP: 'Keep practising',
     loginTeaserA: 'Progress is stored on this device. ',
     loginTeaserGoogle: 'Google sign-in',
-    loginTeaserB: ' cross-device sync is in development (needs a database).',
+    loginTeaserB: ' enables cross-device sync when available.',
     statRecentDays: 'Practised (last 30d)',
     statRecentDaysUnit: 'days',
     statQuestions: 'Questions done',

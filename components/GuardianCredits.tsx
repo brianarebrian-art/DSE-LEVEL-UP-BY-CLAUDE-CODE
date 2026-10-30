@@ -55,34 +55,34 @@ export default function GuardianCredits() {
 
   return (
     <div className="py-8">
-      <div className="border-t border-line mb-8" />
+ <div className="border-t border-line mb-8" />
 
       {/* h2：2026-09-30 起只用於 /about，與該頁其他段落同一層級。 */}
       <h2 id="guardians-title" className="text-lg font-medium text-ink-soft mb-4">
         🛡️ {en ? 'Guardians — with thanks' : '守護者致謝名單'}
       </h2>
 
-      <p className="text-sm text-ink-muted mb-6 leading-relaxed">
+ <p className="text-sm text-ink-muted mb-6 leading-relaxed">
         {en
           ? 'DSE Level Up is a $0-budget, non-profit project built purely to make revision easier for every Hong Kong DSE candidate. Below are the technical fellow travellers who chose to give their time to students —'
           : 'DSE Level Up 係一個 $0 預算、純粹幫全港 DSE 考生輕鬆溫書嘅非營利專案。以下係願意為學生付出嘅技術同路人——'}
       </p>
 
       {guardians.map((g) => (
-        <div key={g.name} className="bg-surface-sunken rounded-xl p-6 mb-6">
+ <div key={g.name} className="bg-surface-sunken rounded-xl p-6 mb-6">
           {/* 2026-09-18：名由 16px/500 ink-soft 升做 18px/600 ink，貢獻項由 14px
               升做 16px，行距 1.8，卡內距 16→24px。呢張卡淨係得一個真人，
               而佢係全站唯一一個具名致謝 —— 用最細嗰級字去寫，同要表達嘅嘢相反。
               ⚠️ 加大字級唔等於加人：名單維持一個人，虛構 persona 唔上榜
               （憲章 §8 假見證、§16.C 虛擬 persona 唔可以做驗收人）。 */}
           <p className="text-lg font-semibold text-ink mb-3">{g.name}</p>
-          <ul className="text-base text-ink-muted mb-4 space-y-1 leading-[1.8]">
+ <ul className="text-base text-ink-muted mb-4 space-y-1 leading-[1.8]">
             {g.contributions.map((c) => (
-              <li key={c.zh}>· {en ? c.en : c.zh}</li>
-            ))}
-          </ul>
-          <p className="text-base text-ink-muted italic mb-4 leading-[1.8]">「{g.quoteZh}」</p>
-          <ExternalLinkGate
+ <li key={c.zh}>· {en ? c.en : c.zh}</li>
+ ))}
+ </ul>
+ <p className="text-base text-ink-muted italic mb-4 leading-[1.8]">「{g.quoteZh}」</p>
+ <ExternalLinkGate
             href={g.github}
             platform="GitHub"
             className="min-h-11 inline-flex items-center gap-1 text-sm text-accent hover:underline"
@@ -93,7 +93,7 @@ export default function GuardianCredits() {
             <ExternalLink size={14} aria-hidden />
             {g.githubLabel}
           </ExternalLinkGate>
-        </div>
+ </div>
       ))}
 
       {/* 免責 —— 「協助驗證 Supabase 性能架構」「提出 localStorage 篡改防禦方案」
@@ -105,11 +105,11 @@ export default function GuardianCredits() {
           : '以上名單純屬感謝，並非背書。它不代表第三方審計、資訊保安認證，亦不構成對內容準確性的任何保證。各位均為義務貢獻，不對平台整體承擔責任。'}
       </p>
 
-      <p className="text-sm text-ink-muted leading-relaxed">
+ <p className="text-sm text-ink-muted leading-relaxed">
         {en
           ? 'If you have found a bug, a vulnerability or anything that worries you security-wise, do get in touch. We have no bug bounty, no cash prize and no swag — but we would like to offer you one thing: a permanent, public place on this Guardians list.'
           : '如果你都發現咗 Bug、漏洞，或者有安全疑慮，歡迎 DM 我哋。我哋冇 Bug Bounty、冇獎金、冇禮品，但想送你一份心意：永久公開嘅「守護者致謝名單」。'}
       </p>
-    </div>
+ </div>
   )
 }

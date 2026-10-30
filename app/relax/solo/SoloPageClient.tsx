@@ -10,15 +10,15 @@ export default function SoloPageClient() {
   const en = locale === 'en'
   return (
     <div>
-      <BackButton />
-      <div className="mt-4 mb-6">
+ <BackButton />
+ <div className="mt-4 mb-6">
         {/* FIX: [A3] 「單排補 MP」→「獨處充電」 */}
         <h1 className="text-xl font-bold text-ink">🎧 {en ? 'Solo Recharge' : '獨處充電'}</h1>
-        <p className="text-sm text-ink-muted mt-1">
+ <p className="text-sm text-ink-muted mt-1">
           {en ? 'Pick a sound, close your eyes, rest a while. Even one track counts.' : '揀首聲音，閉埋眼，抖一陣。聽 1 首都得。'}
         </p>
-      </div>
-      <SoloPlayer />
-    </div>
+ </div>
+ <SoloPlayer />
+ </div>
   )
 }

@@ -35,8 +35,8 @@
    - **3.3 點解要連憲章一齊改。** 2026-09-04 嗰次修訂係 Brian ＋ Yuna 雙簽寫入憲章嘅。淨係剷代碼、留住條文，下一個 session 讀憲章就會照 §8.2 白名單再起一次 —— 呢個模式憲章自己喺 §8.1 同 §8.2 各記低過一次（「唔喺憲章度調和，每個新 session 都會…重新爭論一輪」）。所以代碼同條文同一日一齊改。
 
 4. **零版權侵犯。** 所有題目必須使用「原創平行改寫法 (Archetype Masking)」，更換數字、情境、人名，精準保留底層考核邏輯。Footer 每頁必須顯示：「© DSE Level Up 2026. Not affiliated with HKEAA. All questions are independently rewritten for educational purposes.」
-5. **每月總技術成本死鎖 US$200 以內。**（2026-07-29 Brian 拍板，2026-08-20 Yuna 確認；舊值 HK$180.81 作廢。與 `scripts/budget-guard.mjs` 一致 —— 兩者將來要一齊改。）嚴禁調用任何需付費嘅第三方 API，嚴禁**新增**套件（尤其 Drizzle ORM、Supabase Auth、Chart.js、D3、Recharts）。
-   - ⚠️ **Better Auth 唔屬於呢張禁單** —— `better-auth@^1.6.23` 已經安裝並已接線（`lib/auth/better-auth.ts`、`lib/auth/client.ts`、`lib/auth/session.tsx`、`app/api/auth/[...nextauth]/route.ts`、`app/(auth)/sign-in|sign-up`），係一個由 `NEXT_PUBLIC_AUTH_BACKEND` 控制嘅第二 backend，預設仍然係 Auth.js v5。**唔准當佢係幻覺刪走。**
+5. **每月總技術成本死鎖 US$200 以內。**（2026-07-29 Brian 拍板，2026-08-20 Yuna 確認；舊值 HK$180.81 作廢。與 `scripts/budget-guard.mjs` 一致 —— 兩者將來要一齊改。）嚴禁調用任何需付費嘅第三方 API，嚴禁**新增**套件（尤其 Drizzle ORM、Chart.js、D3、Recharts）。**例外（2026-10-30）：** 現有 Supabase 專案上啟用 **Supabase Auth Google**（`@supabase/ssr`）已批准；唔准另開第二個付費 auth 服務，亦唔准重建 Auth.js／Better Auth。
+   - ⚠️ **Auth 棧（2026-10-30 創辦人批准階段 5）：** 唯一登入 = **Supabase Auth · Google OAuth**（`@supabase/ssr`；anon key 上瀏覽器，service role 只 server）。**Auth.js／Better Auth 已拆除，唔准重建。** 「Supabase Auth」唔再列作禁止新增 —— 用現有 Supabase 專案，唔另開付費 auth 服務。
    - ⛔ **原「例外一：Stripe」已於 2026-09-05 撤銷。** `stripe` 套件已 `npm uninstall`，`scripts/budget-guard.mjs` 之 `EXCEPTIONS` 已同步收回 —— 即係話下次有人 `npm i stripe`，個閘會即刻嗌，而唔係靜靜哋放行一個已經廢除嘅例外。
 
 ---
@@ -56,35 +56,17 @@
 
 - **Framework:** Next.js 16.2.9 + React 19.2.4
 - **Styling:** Tailwind CSS v4
-- **Auth:** 雙 backend，由 `NEXT_PUBLIC_AUTH_BACKEND` 揀。**無 Supabase Auth。**
-  - 預設：Auth.js v5（Google OAuth，JWT strategy，**唔需要資料庫**）
-  - 可切換：Better Auth（Google ＋ **email/password**）—— 2026-09-07 Brian 裁決要開
-  - ⚠️ 原條文寫「**無 Better Auth**」，同 §5 嗰段「已經安裝並已接線…唔准當佢係幻覺刪走」
-    直接打架。§5 嗰段先啱：`better-auth@^1.6.23` 一直喺 `package.json`，
-    `lib/auth/{better-auth,client,session,server}.ts` 全部接咗線，
-    cutover runbook 喺 `FLIP-TO-BETTER-AUTH.md`。呢度更正。
-
-#### 開 email/password 之前必須成立（2026-09-07）
-
-Better Auth 一開，`user` 表就會存**學生電郵 ＋ 密碼 hash**。三件事同日處理：
-
-1. **私隱頁唔可以再講「我哋唔會將你嘅電郵地址存入資料庫」。**
-   已改為由 `betterAuthEnabled` 衍生 —— 兩個狀態各有一段真文案，
-   唔會出現「代碼改咗但私隱政策漏咗改」嗰個窗口。
-2. **刪帳號要清埋 Better Auth 嘅表。** 佢哋用 `id`／`userId`／`identifier`，
-   **唔係** `user_id`，塞入原本個迴圈會撞 42703 令成個抹除 500。
-   已加 `BETTER_AUTH_TABLES` 獨立處理（`verification` 由 email 做 key）。
-3. **`getSyncUserId()` 解析唔到 Google `accountId` 嗰陣一律回 `null`。**
-   原本會回落 Better Auth 自己個 user id —— 而現有 **169 個帳號**
-   （2026-09-07 實測）嘅雲端進度全部 keyed on Google `sub`，換咗 key 就永久失聯，
-   而且【冇聲】。回 `null` 只係「今次唔同步」，本機資料一個字都冇少。
-
-迴歸鎖：`lib/__tests__/email-auth-readiness.test.mts`。
+- **Auth:** **唯一** Supabase Auth · Google OAuth（2026-10-30 重建）。Session = `@supabase/ssr` cookie；身份 key = `auth.users.id`（uuid）。舊 Google `sub` 經 `auth_identity_map` 遷移。未登入可練，**唔寫長期本機進度、唔上雲**（C1）。
+  - 已拆除：Auth.js v5、Better Auth、`FLIP-TO-BETTER-AUTH.md`、`DataPortability`、`InAppBrowserNotice`。
+  - 設計／移除清單：`docs/auth/SUPABASE-GOOGLE-REBUILD-DESIGN.md`、`docs/auth/REMOVAL-CHECKLIST-GOOGLE-AUTH-REBUILD.md`。
+  - **生產 schema apply／Google Console redirect 改動** 要另一次創辦人「批准發布」。
+  - 私隱：`profiles.email` 存電郵 → `storesEmail={true}`；刪帳號清 `USER_SCOPED_TABLES`（`profiles` 用 `id`）。
+  - 迴歸鎖：`lib/__tests__/email-auth-readiness.test.mts`、`lib/__tests__/auth-callback.test.mts`。
 - **Middleware:** proxy.ts — **無 middleware.ts**
 - **Database:** Supabase PostgreSQL。**兩種存取模式，唔可以混淆：**
-  - **寫入 ＋ 一切用戶數據：僅經 server-only `getServiceSupabase()`**（service role key 永不入瀏覽器）
+  - **寫入 ＋ 一切用戶數據：僅經 server-only `getServiceSupabase()`**（service role key 永不入瀏覽器）—— 登入後學習表亦可經 user JWT + RLS
   - **題庫讀取：瀏覽器直連**（2026-09-05 新增，見 §3.1）
-- **Data:** 100% localStorage（客戶端），Supabase 只作 server-side 備份
+- **Data:** 未登入進度 = **分頁記憶體 only**（唔寫 `dse_progress` localStorage）；登入後雲端 = Supabase；其餘偏好仍可用 localStorage
 
 ### 3.1 題庫瀏覽器直連 —— 2026-09-05 新增
 

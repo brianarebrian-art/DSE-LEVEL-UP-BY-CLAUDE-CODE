@@ -104,6 +104,11 @@ test('⑤ Shift + F 要喺修飾鍵／輸入焦點兩個守衛之後', () => {
 })
 
 test('⑥ CSS 規則要真係有人用 —— focus-dim 至少掛咗喺練習頁', () => {
-  const n = [...PRACTICE.matchAll(/className="focus-dim/g)].length
+  // PracticeSession sticky chrome + empty-feedback hint; PracticeContextRail is
+  // part of the same practice surface (desk left column).
+  const rail = read('components', 'PracticeContextRail.tsx')
+  const n =
+    [...PRACTICE.matchAll(/className="focus-dim/g)].length +
+    [...rail.matchAll(/className="focus-dim/g)].length
   assert.ok(n >= 3, `練習頁只有 ${n} 個 focus-dim 區 —— 一條冇人用嘅 CSS 規則等於冇做`)
 })

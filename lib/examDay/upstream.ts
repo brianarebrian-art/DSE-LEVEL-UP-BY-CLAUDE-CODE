@@ -13,6 +13,8 @@
 // ⚠️ 唔好改成 fetch 嘅 next.revalidate 就算數：嗰個喺上游 5xx 嗰陣
 // 唔會保留舊值，熔斷（規矩 2）就冇咗。呢度要自己揸住 last-good。
 
+import { safeFetch } from '../api/safeFetch'
+
 /** 一格快取：value 係最後一次成功嘅結果，ts 係嗰次嘅時間。 */
 interface Slot<T> {
   value: T
@@ -37,21 +39,22 @@ export interface Fetched<T> {
  * @param ttlMs  幾耐之內直接用快取唔打上游
  */
 export async function cachedJson<T>(
-  key: string,
-  url: string,
-  ttlMs: number,
-  timeoutMs = 6000,
+ key: string,
+ url: string,
+ ttlMs: number,
+ timeoutMs = 6000,
 ): Promise<Fetched<T>> {
   const hit = store.get(key) as Slot<T> | undefined
-  const now = Date.now()
-  if (hit && now - hit.ts < ttlMs) {
+ const now = Date.now()
+ if (hit && now - hit.ts < ttlMs) {
     return { data: hit.value, fetchedAt: new Date(hit.ts).toISOString(), stale: false }
   }
 
   const ctrl = new AbortController()
   const timer = setTimeout(() => ctrl.abort(), timeoutMs)
   try {
-    const res = await fetch(url, {
+    // safeFetch：外向 *.gov.hk 請求唔收 Brotli（CVE-2026-111497）
+    const res = await safeFetch(url, {
       signal: ctrl.signal,
       cache: 'no-store',
       headers: { accept: 'application/json' },
@@ -100,7 +103,7 @@ export interface WarnSumEntry {
 export type WarnSum = Record<string, WarnSumEntry>
 
 export const getWarnings = () =>
-  cachedJson<WarnSum>('hko:warnsum', `${HKO}?dataType=warnsum&lang=tc`, TTL.warning)
+ cachedJson<WarnSum>('hko:warnsum', `${HKO}?dataType=warnsum&lang=tc`, TTL.warning)
 
 export interface RhrRead {
   temperature?: { data?: { place: string; value: number; unit: string }[] }
@@ -111,7 +114,7 @@ export interface RhrRead {
 }
 
 export const getCurrentWeather = () =>
-  cachedJson<RhrRead>('hko:rhrread', `${HKO}?dataType=rhrread&lang=tc`, TTL.weather)
+ cachedJson<RhrRead>('hko:rhrread', `${HKO}?dataType=rhrread&lang=tc`, TTL.weather)
 
 export interface MtrTrain {
   seq: string
@@ -150,7 +153,7 @@ export function mtrDisrupted(s: MtrSchedule | undefined): boolean {
 }
 
 export const getMtr = (line: string, sta: string) =>
-  cachedJson<MtrSchedule>(
+ cachedJson<MtrSchedule>(
     `mtr:${line}:${sta}`,
     `${MTR}?line=${encodeURIComponent(line)}&sta=${encodeURIComponent(sta)}&lang=tc`,
     TTL.train,

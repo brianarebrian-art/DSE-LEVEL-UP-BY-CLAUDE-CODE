@@ -8,6 +8,7 @@ import {
 import { shareAtOrAbove, subjectDistribution, DISTRIBUTION_YEAR } from '@/lib/levelDistribution'
 import { driftYears } from '@/lib/levelDrift'
 import { isLengthBiased } from '@/lib/optionLengthBias'
+import { levelEstimateBlock } from '@/lib/levelEstimatePolicy'
 
 // 等級估算（v4）。呢個組件嘅責任唔止係出個數，而係令學生知道呢個數靠得住
 // 幾多 —— 所以三種不確定性各自有自己嘅一句，唔混埋一齊講。
@@ -43,6 +44,26 @@ export default function MasteryEstimate({
   if (m === null) return null
   if (m.sessions === 0 && m.legacy === 0) return null
 
+  const block = levelEstimateBlock(subjectId)
+  if (block) {
+    return (
+      <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
+ <Heading className="font-medium text-ink mb-1">
+          {heading ?? <>📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</>}
+ </Heading>
+ <p className="text-sm text-ink mt-2 leading-relaxed">
+          {block === 'no-mc-exam'
+            ? (en
+                ? 'The 2027 paper in this subject has no multiple-choice. These questions are a concept warm-up only. This is not a DSE level, and it is not a grade prediction.'
+                : '2027 年考卷呢科冇選擇題。呢啲題只係概念熱身，唔係 DSE 等級，亦唔係成績預測。')
+            : (en
+                ? 'Some multiple-choice items here reward the longest option, so a cumulative level range would overstate practice. The range stays hidden. Your practice is still saved. This is not a grade prediction.'
+                : '呢科有部分選擇題，最長嗰個選項較常係答案，累積等級範圍會誇大練習表現，所以暫時唔顯示。練習紀錄仍然保存。呢個唔係成績預測。')}
+        </p>
+ </div>
+    )
+  }
+
   const dist = subjectDistribution(subjectId)
   const years = driftYears(subjectId)
   const lowShare = m.low !== null ? shareAtOrAbove(subjectId, m.low) : null
@@ -53,23 +74,23 @@ export default function MasteryEstimate({
 
   return (
     <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
-      <Heading className="font-medium text-ink mb-1">
+ <Heading className="font-medium text-ink mb-1">
         {heading ?? <>📐 {en ? 'Where your practice sits' : '你嘅練習表現落喺邊'}</>}
-      </Heading>
+ </Heading>
 
       {band && !revealed ? (
         <div className="mt-2">
-          <p className="text-sm text-ink">
+ <p className="text-sm text-ink">
             {en
               ? 'A learning indicator from your practice on this site, not an HKEAA grade prediction.'
               : '呢個係按你喺本站練習計出嚟嘅學習指標，唔係考評局成績預測。'}
           </p>
-          <p className="text-sm text-ink-muted mt-1">
+ <p className="text-sm text-ink-muted mt-1">
             {en
               ? `From ${m.sessions} valid session${m.sessions === 1 ? '' : 's'} in this subject.`
               : `按本科 ${m.sessions} 節有效練習。`}
           </p>
-          <button
+ <button
             type="button"
             onClick={() => setRevealed(true)}
             aria-expanded={false}
@@ -77,17 +98,17 @@ export default function MasteryEstimate({
           >
             {en ? 'Show the rough estimate (for reference only)' : '睇粗糙估算（僅供參考）'}
           </button>
-        </div>
-      ) : band ? (
-        <>
-          <p className="text-2xl font-medium text-ink mt-2">{band}</p>
+ </div>
+ ) : band ? (
+ <>
+ <p className="text-2xl font-medium text-ink mt-2">{band}</p>
           {/* 2026-09-30（UX 循環 LOOP 21）：範圍旁邊直接講明性質，不留到頁底或第三點才講。 */}
           <p className="text-sm text-ink mt-1">
             {en
               ? 'A learning indicator from your practice on this site, not an HKEAA grade prediction.'
               : '呢個係按你喺本站練習計出嚟嘅學習指標，唔係考評局成績預測。'}
           </p>
-          <p className="text-sm text-ink-muted mt-1">
+ <p className="text-sm text-ink-muted mt-1">
             {en
               ? `From ${m.sessions} valid session${m.sessions === 1 ? '' : 's'} in this subject. The boundaries below are the HKEAA's published figures, not ours.`
               : `按本科 ${m.sessions} 節有效練習。下面幾條界線係考評局公布嘅實數，唔係我哋定嘅。`}
@@ -104,31 +125,31 @@ export default function MasteryEstimate({
 
           {/* ── 三種不確定性，分開講 ────────────────────────────────── */}
           <div className="mt-4 pt-4 border-t border-line space-y-2">
-            <p className="text-xs text-ink-muted leading-relaxed">
-              <span className="text-ink">{en ? '① Sampling: ' : '① 抽樣誤差：'}</span>
+ <p className="text-xs text-ink-muted leading-relaxed">
+ <span className="text-ink">{en ? '① Sampling: ' : '① 抽樣誤差：'}</span>
               {en
                 ? `you have answered a finite number of questions, so your position moves about ${m.samplingSpread} percentage points either way. More questions narrows this — nothing else does.`
                 : `你做過嘅題數有限，所以你嘅位置本身有大約 ${m.samplingSpread} 個百分點嘅上落。只有做多啲題會收窄佢，其他嘢都唔會。`}
             </p>
             {m.driftSd !== null && years.length > 0 && (
-              <p className="text-xs text-ink-muted leading-relaxed">
-                <span className="text-ink">{en ? '② The line itself moves: ' : '② 條界線自己都會郁：'}</span>
+ <p className="text-xs text-ink-muted leading-relaxed">
+ <span className="text-ink">{en ? '② The line itself moves: ' : '② 條界線自己都會郁：'}</span>
                 {en
                   ? `across ${years[0]}–${years[years.length - 1]} this boundary shifted by about ${m.driftSd} percentage points from year to year. DSE is standards-referenced — the cut is set each year after marking, so there is no fixed line to hit.`
                   : `${years[0]} 至 ${years[years.length - 1]} 年之間，呢條界線每年郁大約 ${m.driftSd} 個百分點。DSE 用水平參照，條線每年評卷之後先訂 —— 根本冇一條固定嘅線畀你對。`}
               </p>
-            )}
-            <p className="text-xs text-ink-muted leading-relaxed">
-              <span className="text-rose">{en ? '③ Untested assumption: ' : '③ 未驗證嘅假設：'}</span>
+ )}
+ <p className="text-xs text-ink-muted leading-relaxed">
+ <span className="text-rose">{en ? '③ Untested assumption: ' : '③ 未驗證嘅假設：'}</span>
               {en
                 ? 'we assume that doing well on our questions means the same thing as doing well on the real paper. We have never checked this, because no student here has both a score with us and a real DSE result. Until that data exists, treat this as a rough bearing, not a prediction.'
                 : '我哋假設「喺我哋啲題做得好」等於「喺真卷做得好」。呢一步從來冇驗證過 —— 因為本平台冇一個學生同時有我哋量到嘅表現同真實 DSE 成績。呢批數據未有之前，當呢個係一個方向，唔係一個預測。'}
             </p>
-          </div>
-        </>
-      ) : (
-        <div className="mt-2">
-          <p className="text-sm text-ink">
+ </div>
+ </>
+ ) : (
+ <div className="mt-2">
+ <p className="text-sm text-ink">
             {m.reason === 'too_few'
               ? (en
                   ? `Not enough yet — ${m.questionsShort} more questions in this subject before an estimate means anything.`
@@ -149,12 +170,12 @@ export default function MasteryEstimate({
                       ? 'No estimate yet: your score is still close to what four-option guessing would give, so we cannot tell the two apart. Start from the basic tier — the signal appears as soon as it rises clear of chance.'
                       : '估算暫時出唔到：而家嘅正確率仲貼近四選一亂猜嘅水平，我哋分辨唔到兩者。由基礎題入手，一升過亂猜嗰條線，估算就會出返嚟。')}
           </p>
-          <p className="text-xs text-ink-muted mt-3 leading-relaxed">
+ <p className="text-xs text-ink-muted mt-3 leading-relaxed">
             {en
               ? 'We would rather show nothing than show a range so wide it means nothing.'
               : '寧可乜都唔顯示，都好過畀一個闊到冇意義嘅範圍你。'}
           </p>
-        </div>
+ </div>
       )}
 
       {lengthBiasNote && isLengthBiased(subjectId) && (
@@ -166,7 +187,7 @@ export default function MasteryEstimate({
       )}
 
       {(m.discarded > 0 || m.legacy > 0) && (
-        <p className="text-xs text-ink-muted mt-3">
+ <p className="text-xs text-ink-muted mt-3">
           {m.discarded > 0 && (en
             ? `${m.discarded} session${m.discarded === 1 ? '' : 's'} left out: under ${MIN_SECONDS_PER_QUESTION} seconds per question on average. `
             : `有 ${m.discarded} 節冇計入：平均每題不足 ${MIN_SECONDS_PER_QUESTION} 秒。`)}
@@ -174,13 +195,13 @@ export default function MasteryEstimate({
             ? `${m.legacy} earlier session${m.legacy === 1 ? '' : 's'} pre-date tier-by-tier recording.`
             : `有 ${m.legacy} 節喺平台開始逐層記錄之前完成，冇計入。`)}
         </p>
-      )}
+ )}
 
-      <p className="text-xs text-ink-muted mt-4 leading-relaxed">
+ <p className="text-xs text-ink-muted mt-4 leading-relaxed">
         {en
           ? 'The HKEAA has never published a cut-off score for any subject — DSE is standards-referenced. Nothing here is an official boundary, and this is not an HKEAA grade.'
           : '考評局從來冇公布過任何一科嘅分數線 —— DSE 用水平參照。呢度冇一條線係官方分數線，呢個亦唔係考評局嘅評級。'}
       </p>
-    </div>
+ </div>
   )
 }

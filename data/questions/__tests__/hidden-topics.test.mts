@@ -35,8 +35,11 @@ test('the topic list does not show them', () => {
 
 test('the client loader filters both the cloud and the static path', () => {
   const src = readFileSync('data/questions/load.ts', 'utf8')
-  assert.match(src, /if \(cloud\?\.length\) return withoutWithheld\(subjectId, cloud\)/)
-  assert.match(src, /return withoutWithheld\(subjectId, applyDifficultyOverrides\(all/)
+  assert.match(src, /if \(cloud\?\.length\) return withoutWithheld\(subjectId, cloud, options\)/)
+  assert.match(src, /return withoutWithheld\(subjectId, applyDifficultyOverrides\(all, DIFFICULTY_OVERRIDES\[subjectId\]\), options\)/)
+  // Practice MC uses the default filter. Only the regrade key may keep machine-restored items.
+  assert.match(src, /return \(await loadSubjectQuestions\(subjectId\)\)\.filter/)
+  assert.match(src, /loadSubjectQuestions\(subjectId, \{ keepMachineRestored: true \}\)/)
 })
 
 test('the record lists every withheld id', () => {
@@ -64,8 +67,15 @@ test('every withdrawn entry points at a real question and says when and why', ()
 test('withdrawn questions are filtered wherever withheld topics are', () => {
   const src = readFileSync('data/questions/hidden-topics.ts', 'utf8')
   // 2026-09-30: one status function decides; withdrawn and hidden topics are both in it.
-  assert.match(src, /return items\.filter\(\(q\) => contentStatus\(subjectId, q\) === 'published'\)/)
+  // Regrade may keep machine_restored. It must not keep a withdrawn id.
+  assert.match(src, /if \(status === 'published'\) return true/)
+  assert.match(src, /options\?\.keepMachineRestored === true && status === 'machine_restored'/)
   assert.match(src, /if \(isWithdrawn\(subjectId, q\.id\)\) return 'withdrawn'/)
   assert.match(src, /if \(isHiddenTopic\(subjectId, q\.topic\)\) return 'withheld_topic'/)
   assert.match(readFileSync('scripts/qbank/withdraw.mts', 'utf8'), /data\/questions\/withdrawn\.json/)
+  const withdrawn = JSON.parse(readFileSync('data/questions/withdrawn.json', 'utf8')) as Record<string, Record<string, unknown>>
+  const subject = Object.keys(withdrawn)[0]
+  const id = Object.keys(withdrawn[subject])[0]
+  const kept = H.withoutWithheld(subject, [{ id, topic: 't' }, { id: 'live', topic: 't' }], { keepMachineRestored: true })
+  assert.deepEqual(kept.map((q: { id: string }) => q.id), ['live'])
 })

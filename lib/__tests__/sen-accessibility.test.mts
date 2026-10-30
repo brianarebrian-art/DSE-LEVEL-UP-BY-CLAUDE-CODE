@@ -114,7 +114,7 @@ test('裝飾層喺舒適模式下要 display:none 或者 animation:none，唔可
     /html\.font-easy \.particle-bg,\s*\nhtml\.font-easy \.combo-flame \{\s*\n\s*display:\s*none/,
     '粒子場同連擊火焰必須整層隱藏',
   )
-  for (const cls of ['.shockwave', '.pulse-correct', '.blindspot-in', '.animate-slide-up', '.skeleton']) {
+  for (const cls of ['.shockwave', '.answer-feedback', '.blindspot-in', '.animate-slide-up', '.skeleton']) {
     assert.ok(
       new RegExp(`html\\.font-easy[^{]*\\${cls}`).test(CSS),
       `${cls} 未受一鍵舒適模式管轄`,
@@ -270,7 +270,7 @@ test('浮動掣有最小可觸控尺寸（44px = min-h-12 或 w-12 h-12）', () 
 // 呢條測試存在嘅原因：第 1 週改答錯回饋嗰陣，只改咗 /practice，
 // 漏咗 /reading（另一個練習介面）—— 到第 4 週審核先發現佢仲用緊
 // XCircle + 玫紅。逐個檔記住去改係靠唔住嘅，所以改為全域掃。
-const ADMIN_ONLY = ['app/admin/']
+const ADMIN_ONLY = ['app/admin/', 'app/founder/', 'components/founder/']
 
 test('冇任何學生介面用大紅交叉做答錯回饋', () => {
   const student = UI_FILES.filter((f) => !ADMIN_ONLY.some((p) => f.startsWith(p)))

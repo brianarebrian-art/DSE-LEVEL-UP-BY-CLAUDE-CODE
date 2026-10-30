@@ -113,18 +113,19 @@ test('練習頁必須自己有離開路徑 —— 全屏模式冇咗 Navbar', ()
   )
 })
 
-// ── 導覽收斂（2026-08-21）──────────────────────────────────────────────────
-test('頂部導覽收成四條內容入口，並且 /bookmarks 有咗入口', () => {
+// ── 導覽 IA：四格跨裝置同名（2026-10-30）──────────────────────────────────
+test('漢堡主列四格同底欄；筆記／不考之地喺更多', () => {
   const src = readFileSync(new URL('../Navbar.tsx', import.meta.url).pathname, 'utf8')
-  // 由 `}[] = [` 之後先開始切 —— 唔可以用第一個 `]`，嗰個係型別註釋 `}[]` 嘅。
-  const start = src.indexOf('}[] = [', src.indexOf('const navLinks'))
-  const block = src.slice(start, src.indexOf('\n]', start))
-  const hrefs = [...block.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
-  // 2026-09-26 Yuna：「不考之地」加喺最尾。navLinks 自 2026-09-03 起只供三橫選單用
-  // （橫向連結已搬去側欄），多一條唔影響橫向導覽闊度。
-  assert.deepEqual(hrefs, ['/subjects', '/dashboard', '/bookmarks', '/notes', '/off-syllabus'])
-  // /bookmarks 本來喺全站導覽入面一個入口都冇 —— 唔好又剷走。
-  assert.ok(hrefs.includes('/bookmarks'), '/bookmarks 又冇咗導覽入口')
+  const primaryStart = src.indexOf('}[] = [', src.indexOf('const primaryLinks'))
+  const primaryBlock = src.slice(primaryStart, src.indexOf('\n]', primaryStart))
+  const primary = [...primaryBlock.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
+  assert.deepEqual(primary, ['/subjects', '/dashboard', '/bookmarks', '/account'])
+
+  const moreStart = src.indexOf('}[] = [', src.indexOf('const moreLinks'))
+  const moreBlock = src.slice(moreStart, src.indexOf('\n]', moreStart))
+  const more = [...moreBlock.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
+  assert.deepEqual(more, ['/notes', '/off-syllabus'])
+  assert.ok(primary.includes('/bookmarks'), '/bookmarks 又冇咗導覽入口')
 })
 
 test('頂欄控制項喺 md(768px) 出，唔係 xl(1280px)', () => {

@@ -94,6 +94,9 @@ test('刪唔到嘢就唔可以回 ok', () => {
   const src = fs.readFileSync('app/api/account/delete/route.ts', 'utf8')
   assert.match(src, /failed\.length\s*>\s*0/, '必須偵測部分失敗')
   assert.match(src, /status:\s*500/, '部分失敗必須回非 200 —— 唔可以扮成功')
+  // SEC-R1-003：客戶端唔可以收到表名（舊回應 `tables: failed`）。
+  assert.doesNotMatch(src, /tables:\s*failed/)
+  assert.match(src, /makePartialErasureFailure/)
 })
 
 test('每個豁免都有實質理由', () => {

@@ -41,7 +41,7 @@ const { subjects } = await import(join(ROOT, 'data/subjects.ts')) as {
 }
 
 const { contentStatus, withdrawnReason } = await import(join(ROOT, 'data/questions/hidden-topics.ts')) as {
-  contentStatus: (subjectId: string, q: { id: string; topic: string }) => 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review'
+  contentStatus: (subjectId: string, q: { id: string; topic: string }) => 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review' | 'machine_restored'
   withdrawnReason: (subjectId: string, id: string) => string | null
 }
 const { versionOf } = await import(join(ROOT, 'scripts/qbank/bank-version.mts')) as {
@@ -74,7 +74,7 @@ const total = Object.values(summary).reduce((n, v) => n + v.total, 0)
 // One status per authored question (data/questions/hidden-topics.ts contentStatus).
 // Every question count shown anywhere on the site comes from here or from TOTAL_QUESTIONS,
 // which must equal `published`; the generator refuses to write a file where it does not.
-const stats = { totalAuthored: 0, published: 0, withdrawn: 0, withheldTopic: 0, pendingReview: 0 }
+const stats = { totalAuthored: 0, published: 0, withdrawn: 0, withheldTopic: 0, pendingReview: 0, machineRestored: 0 }
 for (const s of active) {
   for (const q of idx.getSubjectQuestionsRaw(s.id)) {
     stats.totalAuthored++
@@ -82,10 +82,12 @@ for (const s of active) {
     if (st === 'published') stats.published++
     else if (st === 'withdrawn') stats.withdrawn++
     else if (st === 'withheld_topic') stats.withheldTopic++
-    else stats.pendingReview++
+    else if (st === 'pending_review') stats.pendingReview++
+    else if (st === 'machine_restored') stats.machineRestored++
+    else throw new Error(`unknown content status ${st} on ${s.id}/${q.id}`)
   }
 }
-if (stats.published + stats.withdrawn + stats.withheldTopic + stats.pendingReview !== stats.totalAuthored) {
+if (stats.published + stats.withdrawn + stats.withheldTopic + stats.pendingReview + stats.machineRestored !== stats.totalAuthored) {
   throw new Error(`content stats do not add up: ${JSON.stringify(stats)}`)
 }
 if (stats.published !== total) {
@@ -134,8 +136,10 @@ export const SUBJECT_TOPICS: Record<string, Topic[]> = ${JSON.stringify(topics, 
 export const TOTAL_QUESTIONS = ${total}
 
 /**
- * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，四項相加等於 totalAuthored。
- * 只有 published 會出現在練習中。狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
+ * 題庫各狀態題數，全站唯一來源。每條已編寫的題目只屬一個狀態，五項相加等於 totalAuthored。
+ * 只有 published 會出現在預設練習。machineRestored 是程式重算後未經人手覆核、已暫停放入練習的題目，
+ * 與 pendingReview（位置詞未能判斷的 13 條）不是同一批。
+ * 狀態定義見 data/questions/hidden-topics.ts 的 contentStatus。
  */
 export const CONTENT_STATS = ${JSON.stringify(stats, null, 2)} as const
 

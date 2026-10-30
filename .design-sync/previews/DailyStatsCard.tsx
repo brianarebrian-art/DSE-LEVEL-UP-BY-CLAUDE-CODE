@@ -21,7 +21,7 @@ const data = {
   ],
   strengthTopic: '供求分析',
   focusTopic: '彈性計算',
-  igLink: 'dse-level-up-by-claude-code.vercel.app',
+  igLink: 'www.dselevelup.com',
 }
 
 export function Zh() {

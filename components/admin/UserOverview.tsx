@@ -112,21 +112,21 @@ function Cards({ items }: { items: { label: string; value: string; note: string 
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">
       {items.map((c) => (
-        <div key={c.label} className="rounded-xl border border-line bg-surface-raised p-4">
-          <div className="text-2xl font-medium text-ink tabular-nums">{c.value}</div>
-          <div className="text-sm text-ink-soft mt-0.5">{c.label}</div>
-          <div className="text-[11px] text-ink-faint mt-1">{c.note}</div>
-        </div>
-      ))}
-    </div>
+ <div key={c.label} className="rounded-xl border border-line bg-surface-raised p-4">
+ <div className="text-2xl font-medium text-ink tabular-nums">{c.value}</div>
+ <div className="text-sm text-ink-soft mt-0.5">{c.label}</div>
+ <div className="text-[11px] text-ink-faint mt-1">{c.note}</div>
+ </div>
+ ))}
+ </div>
   )
 }
 
 export default function UserOverview() {
   const [s, setS] = useState<UserStats | null>(null)
-  const [err, setErr] = useState(false)
+ const [err, setErr] = useState(false)
 
-  const [at, setAt] = useState<string>('')
+ const [at, setAt] = useState<string>('')
 
   useEffect(() => {
     let alive = true
@@ -153,7 +153,7 @@ export default function UserOverview() {
   }, [])
 
   if (err) return <p className="text-sm text-ink-muted">{T.failed}</p>
-  if (!s) return <p className="text-sm text-ink-muted">{T.loading}</p>
+ if (!s) return <p className="text-sm text-ink-muted">{T.loading}</p>
 
   const funnel = [
     { label: CARDS_FUNNEL.accounts, value: fmt(s.accounts), note: NOTE.accounts },
@@ -182,86 +182,86 @@ export default function UserOverview() {
   ]
 
   const max = Math.max(1, ...s.daily.map((d) => d.users))
-  const BAR = 9
-  const GAP = 3
-  const H = 96
-  const width = Math.max(1, s.daily.length) * (BAR + GAP)
+ const BAR = 9
+ const GAP = 3
+ const H = 96
+ const width = Math.max(1, s.daily.length) * (BAR + GAP)
 
-  return (
-    <section className="mb-10">
-      <h2 className="text-lg font-medium text-ink mb-1">{T.title}</h2>
-      <p className="text-xs text-ink-muted mb-4 max-w-3xl leading-relaxed">{T.intro}</p>
+ return (
+ <section className="mb-10">
+ <h2 className="text-lg font-medium text-ink mb-1">{T.title}</h2>
+ <p className="text-xs text-ink-muted mb-4 max-w-3xl leading-relaxed">{T.intro}</p>
 
-      <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6">
-        <div className="flex items-baseline justify-between mb-1">
-          <h3 className="text-sm font-medium text-ink-soft">{T.liveTitle}</h3>
-          <span className="text-[11px] text-ink-faint tabular-nums">
+ <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6">
+ <div className="flex items-baseline justify-between mb-1">
+ <h3 className="text-sm font-medium text-ink-soft">{T.liveTitle}</h3>
+ <span className="text-[11px] text-ink-faint tabular-nums">
             {at ? T.refreshed.replace('%t', at) : ''}
           </span>
-        </div>
-        <p className="text-[11px] text-ink-faint mb-3 max-w-2xl leading-relaxed">{T.liveNote}</p>
-        <div className="grid gap-3 sm:grid-cols-4">
+ </div>
+ <p className="text-[11px] text-ink-faint mb-3 max-w-2xl leading-relaxed">{T.liveNote}</p>
+ <div className="grid gap-3 sm:grid-cols-4">
           {[
             { l: T.live2, v: fmt(s.live.min2) },
             { l: T.live15, v: fmt(s.live.min15) },
             { l: T.live60, v: fmt(s.live.min60) },
             { l: T.liveNewest, v: ago(s.live.newestSyncAgoSec) },
           ].map((x) => (
-            <div key={x.l} className="rounded-lg border border-line p-3">
-              <div className="text-2xl font-medium text-ink tabular-nums">{x.v}</div>
-              <div className="text-sm text-ink-soft mt-0.5">{x.l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+ <div key={x.l} className="rounded-lg border border-line p-3">
+ <div className="text-2xl font-medium text-ink tabular-nums">{x.v}</div>
+ <div className="text-sm text-ink-soft mt-0.5">{x.l}</div>
+ </div>
+ ))}
+ </div>
+ </div>
 
-      <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6 overflow-x-auto">
-        <h3 className="text-sm font-medium text-ink-soft mb-3">{T.bucketTitle}</h3>
-        <table className="w-full text-sm min-w-[26rem]">
-          <thead>
-            <tr className="text-left text-[11px] text-ink-faint">
-              <th className="pb-2 font-normal" />
-              <th className="pb-2 font-normal text-right">{T.colUsers}</th>
-              <th className="pb-2 font-normal text-right">{T.colSessions}</th>
-              <th className="pb-2 font-normal text-right">{T.colQuestions}</th>
-              <th className="pb-2 font-normal text-right">{T.colCorrect}</th>
-              <th className="pb-2 font-normal text-right">{T.colAccuracy}</th>
-            </tr>
-          </thead>
-          <tbody className="tabular-nums">
+ <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6 overflow-x-auto">
+ <h3 className="text-sm font-medium text-ink-soft mb-3">{T.bucketTitle}</h3>
+ <table className="w-full text-sm min-w-[26rem]">
+ <thead>
+ <tr className="text-left text-[11px] text-ink-faint">
+ <th className="pb-2 font-normal" />
+ <th className="pb-2 font-normal text-right">{T.colUsers}</th>
+ <th className="pb-2 font-normal text-right">{T.colSessions}</th>
+ <th className="pb-2 font-normal text-right">{T.colQuestions}</th>
+ <th className="pb-2 font-normal text-right">{T.colCorrect}</th>
+ <th className="pb-2 font-normal text-right">{T.colAccuracy}</th>
+ </tr>
+ </thead>
+ <tbody className="tabular-nums">
             {s.buckets.map((b) => (
-              <tr key={b.key} className="border-t border-line">
-                <td className="py-1.5 text-ink-soft">
+ <tr key={b.key} className="border-t border-line">
+ <td className="py-1.5 text-ink-soft">
                   {b.key === 'today' ? T.bToday : b.key === 'week' ? T.bWeek : T.bMonth}
                 </td>
-                <td className="py-1.5 text-right text-ink">{fmt(b.users)}</td>
-                <td className="py-1.5 text-right text-ink">{fmt(b.sessions)}</td>
-                <td className="py-1.5 text-right text-ink font-medium">{fmt(b.questions)}</td>
-                <td className="py-1.5 text-right text-ink">{fmt(b.correct)}</td>
-                <td className="py-1.5 text-right text-ink">{pctText(b.accuracyPct)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+ <td className="py-1.5 text-right text-ink">{fmt(b.users)}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(b.sessions)}</td>
+ <td className="py-1.5 text-right text-ink font-medium">{fmt(b.questions)}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(b.correct)}</td>
+ <td className="py-1.5 text-right text-ink">{pctText(b.accuracyPct)}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-      <h3 className="text-sm font-medium text-ink-soft mb-2">{T.funnel}</h3>
-      <Cards items={funnel} />
+ <h3 className="text-sm font-medium text-ink-soft mb-2">{T.funnel}</h3>
+ <Cards items={funnel} />
 
-      <h3 className="text-sm font-medium text-ink-soft mb-2">{T.volume}</h3>
-      <Cards items={volume} />
+ <h3 className="text-sm font-medium text-ink-soft mb-2">{T.volume}</h3>
+ <Cards items={volume} />
 
-      <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6">
-        <div className="flex items-baseline justify-between mb-3">
-          <h3 className="text-sm font-medium text-ink-soft">{T.dailyTitle}</h3>
-          <span className="text-[11px] text-ink-faint tabular-nums">
+ <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6">
+ <div className="flex items-baseline justify-between mb-3">
+ <h3 className="text-sm font-medium text-ink-soft">{T.dailyTitle}</h3>
+ <span className="text-[11px] text-ink-faint tabular-nums">
             7d {s.practised7d} · 30d {s.practised30d}
           </span>
-        </div>
+ </div>
         {s.daily.length === 0 ? (
           <p className="text-xs text-ink-faint">{T.dailyEmpty}</p>
-        ) : (
-          <svg
+ ) : (
+ <svg
             viewBox={`0 0 ${width} ${H + 16}`}
             className="w-full"
             style={{ height: H + 16 }}
@@ -280,109 +280,109 @@ export default function UserOverview() {
                   rx={2}
                   className="fill-accent"
                 >
-                  <title>{barLabel(d)}</title>
-                </rect>
-              )
-            })}
-          </svg>
-        )}
-        <div className="mt-2 flex justify-between text-[11px] text-ink-faint tabular-nums">
-          <span>{s.daily[0]?.day ?? ''}</span>
-          <span>{s.daily[s.daily.length - 1]?.day ?? ''}</span>
-        </div>
-      </div>
+ <title>{barLabel(d)}</title>
+ </rect>
+ )
+ })}
+ </svg>
+ )}
+ <div className="mt-2 flex justify-between text-[11px] text-ink-faint tabular-nums">
+ <span>{s.daily[0]?.day ?? ''}</span>
+ <span>{s.daily[s.daily.length - 1]?.day ?? ''}</span>
+ </div>
+ </div>
 
-      <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6">
-        <h3 className="text-sm font-medium text-ink-soft mb-1">{T.diffTitle}</h3>
-        <p className="text-[11px] text-ink-faint mb-3">
+ <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6">
+ <h3 className="text-sm font-medium text-ink-soft mb-1">{T.diffTitle}</h3>
+ <p className="text-[11px] text-ink-faint mb-3">
           {T.diffWarn.replace('%n', String(s.difficultySample))}
         </p>
-        <div className="grid gap-3 sm:grid-cols-3">
+ <div className="grid gap-3 sm:grid-cols-3">
           {s.byDifficulty.map((d) => (
-            <div key={d.tier} className="rounded-lg border border-line p-3">
-              <div className="text-xl font-medium text-ink tabular-nums">{pctText(d.accuracyPct)}</div>
-              <div className="text-sm text-ink-soft mt-0.5">{tierLabel(d.tier)}</div>
-              <div className="text-[11px] text-ink-faint mt-1 tabular-nums">
+ <div key={d.tier} className="rounded-lg border border-line p-3">
+ <div className="text-xl font-medium text-ink tabular-nums">{pctText(d.accuracyPct)}</div>
+ <div className="text-sm text-ink-soft mt-0.5">{tierLabel(d.tier)}</div>
+ <div className="text-[11px] text-ink-faint mt-1 tabular-nums">
                 {fmt(d.correct)} / {fmt(d.answered)}
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
+ </div>
+ ))}
+ </div>
+ </div>
 
-      <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6 overflow-x-auto">
-        <h3 className="text-sm font-medium text-ink-soft mb-3">{T.subjectTitle}</h3>
-        <table className="w-full text-sm min-w-[30rem]">
-          <thead>
-            <tr className="text-left text-[11px] text-ink-faint">
-              <th className="pb-2 font-normal">{T.colSubject}</th>
-              <th className="pb-2 font-normal text-right">{T.colSessions}</th>
-              <th className="pb-2 font-normal text-right">{T.colUsers}</th>
-              <th className="pb-2 font-normal text-right">{T.colQuestions}</th>
-              <th className="pb-2 font-normal text-right">{T.colAccuracy}</th>
-            </tr>
-          </thead>
-          <tbody className="tabular-nums">
+ <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6 overflow-x-auto">
+ <h3 className="text-sm font-medium text-ink-soft mb-3">{T.subjectTitle}</h3>
+ <table className="w-full text-sm min-w-[30rem]">
+ <thead>
+ <tr className="text-left text-[11px] text-ink-faint">
+ <th className="pb-2 font-normal">{T.colSubject}</th>
+ <th className="pb-2 font-normal text-right">{T.colSessions}</th>
+ <th className="pb-2 font-normal text-right">{T.colUsers}</th>
+ <th className="pb-2 font-normal text-right">{T.colQuestions}</th>
+ <th className="pb-2 font-normal text-right">{T.colAccuracy}</th>
+ </tr>
+ </thead>
+ <tbody className="tabular-nums">
             {s.bySubject.map((r) => (
-              <tr key={r.subject} className="border-t border-line">
-                <td className="py-1.5 text-ink-soft">{r.subject}</td>
-                <td className="py-1.5 text-right text-ink">{fmt(r.sessions)}</td>
-                <td className="py-1.5 text-right text-ink">{fmt(r.users)}</td>
-                <td className="py-1.5 text-right text-ink">{fmt(r.questions)}</td>
-                <td className="py-1.5 text-right text-ink">{pctText(r.accuracyPct)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+ <tr key={r.subject} className="border-t border-line">
+ <td className="py-1.5 text-ink-soft">{r.subject}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(r.sessions)}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(r.users)}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(r.questions)}</td>
+ <td className="py-1.5 text-right text-ink">{pctText(r.accuracyPct)}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-      <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6 overflow-x-auto">
-        <h3 className="text-sm font-medium text-ink-soft mb-1">{T.weakTitle}</h3>
-        <p className="text-[11px] text-ink-faint mb-3 max-w-2xl leading-relaxed">{T.weakNote}</p>
+ <div className="rounded-xl border border-line bg-surface-raised p-4 mb-6 overflow-x-auto">
+ <h3 className="text-sm font-medium text-ink-soft mb-1">{T.weakTitle}</h3>
+ <p className="text-[11px] text-ink-faint mb-3 max-w-2xl leading-relaxed">{T.weakNote}</p>
         {s.weakTopics.length === 0 ? (
           <p className="text-xs text-ink-faint">{T.weakEmpty}</p>
-        ) : (
-          <table className="w-full text-sm min-w-[30rem]">
-            <thead>
-              <tr className="text-left text-[11px] text-ink-faint">
-                <th className="pb-2 font-normal">{T.colSubject}</th>
-                <th className="pb-2 font-normal">{T.colTopic}</th>
-                <th className="pb-2 font-normal text-right">{T.colQuestions}</th>
-                <th className="pb-2 font-normal text-right">{T.colWrong}</th>
-                <th className="pb-2 font-normal text-right">{T.colWrongPct}</th>
-              </tr>
-            </thead>
-            <tbody className="tabular-nums">
+ ) : (
+ <table className="w-full text-sm min-w-[30rem]">
+ <thead>
+ <tr className="text-left text-[11px] text-ink-faint">
+ <th className="pb-2 font-normal">{T.colSubject}</th>
+ <th className="pb-2 font-normal">{T.colTopic}</th>
+ <th className="pb-2 font-normal text-right">{T.colQuestions}</th>
+ <th className="pb-2 font-normal text-right">{T.colWrong}</th>
+ <th className="pb-2 font-normal text-right">{T.colWrongPct}</th>
+ </tr>
+ </thead>
+ <tbody className="tabular-nums">
               {s.weakTopics.map((t) => (
-                <tr key={`${t.subject}::${t.topic}`} className="border-t border-line">
-                  <td className="py-1.5 text-ink-faint">{t.subject}</td>
-                  <td className="py-1.5 text-ink-soft">{t.topic}</td>
-                  <td className="py-1.5 text-right text-ink">{fmt(t.answered)}</td>
-                  <td className="py-1.5 text-right text-ink">{fmt(t.wrong)}</td>
-                  <td className="py-1.5 text-right text-ink font-medium">{t.wrongPct}%</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
+ <tr key={`${t.subject}::${t.topic}`} className="border-t border-line">
+ <td className="py-1.5 text-ink-faint">{t.subject}</td>
+ <td className="py-1.5 text-ink-soft">{t.topic}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(t.answered)}</td>
+ <td className="py-1.5 text-right text-ink">{fmt(t.wrong)}</td>
+ <td className="py-1.5 text-right text-ink font-medium">{t.wrongPct}%</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ )}
+ </div>
 
-      <div className="rounded-xl border border-line p-4">
-        <h3 className="text-sm font-medium text-ink-soft mb-2">{T.notComputable}</h3>
-        <ul className="space-y-2">
+ <div className="rounded-xl border border-line p-4">
+ <h3 className="text-sm font-medium text-ink-soft mb-2">{T.notComputable}</h3>
+ <ul className="space-y-2">
           {s.notComputable.map((n) => (
-            <li key={n.metric} className="text-xs">
-              <span className="text-ink-soft">{n.metric}</span>
-              <span className="text-ink-faint"> — {n.reason}</span>
-            </li>
-          ))}
-        </ul>
+ <li key={n.metric} className="text-xs">
+ <span className="text-ink-soft">{n.metric}</span>
+ <span className="text-ink-faint"> — {n.reason}</span>
+ </li>
+ ))}
+ </ul>
         {s.discardedRecords > 0 && (
-          <p className="text-[11px] text-ink-faint mt-3">
+ <p className="text-[11px] text-ink-faint mt-3">
             {T.discarded.replace('%n', String(s.discardedRecords))}
           </p>
-        )}
-      </div>
-    </section>
+ )}
+ </div>
+ </section>
   )
 }

@@ -1,6 +1,6 @@
 /** Access control remains separate: this policy only controls search visibility. */
 export const NOINDEX_ROUTE_PREFIXES = [
-  '/account', '/admin', '/dev', '/sign-in', '/sign-up', '/sign-in-error',
+  '/account', '/admin', '/founder', '/dev', '/sign-in', '/sign-up', '/sign-in-error',
   '/dashboard', '/result', '/predictor', '/bookmarks', '/logic-log',
   '/concept-net', '/exam-day', '/capsule', '/answer-sheet', '/paper-warrior',
   '/practice', '/start', '/waiting', '/ai',

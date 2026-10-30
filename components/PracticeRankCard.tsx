@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useQuiet } from '@/lib/quietMode'
+import { setQuiet, useQuiet } from '@/lib/quietMode'
+import { latestSessionIsLow } from '@/lib/celebrationGate'
 import { useLocale } from '@/lib/i18n'
 import { getPracticeRank, RANKS, type PracticeRankState } from '@/lib/practiceRank'
 
@@ -51,13 +52,37 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
   const { locale } = useLocale()
   const en = locale === 'en'
   const [a, setA] = useState<PracticeRankState | null>(null)
+  const [low, setLow] = useState(false)
   // 安靜模式（lib/quietMode.ts，憲章 §8.1 約束 4）—— hook 一定要喺任何 return 之前叫
   const quiet = useQuiet()
 
   // 導出值，唔會寫任何嘢；掛喺 mount 之後避免 SSR／水合唔一致
-  useEffect(() => { setA(getPracticeRank()) }, [])
+  useEffect(() => {
+    setA(getPracticeRank())
+    setLow(latestSessionIsLow())
+  }, [])
   if (quiet) return null
   if (!a || a.sessions === 0) return null
+
+  if (low) {
+    return (
+      <div className={`border border-line rounded-xl bg-surface-raised p-4 sm:p-5 ${className}`}>
+        <p className="text-[11px] text-ink-muted mb-0.5">{en ? 'Practice rank' : '練習段位'}</p>
+        <p className="text-sm text-ink-soft leading-relaxed">
+          {en
+            ? 'This session is under half correct, so rank and EXP stay hidden for now.'
+            : '呢節答對未夠一半，段位同 EXP 暫時收起。'}
+        </p>
+        <button
+          type="button"
+          onClick={() => setQuiet(true)}
+          className="mt-3 inline-flex min-h-11 items-center rounded-xl border border-line-strong px-4 text-sm text-ink-soft hover:text-ink"
+        >
+          {en ? 'Turn on quiet mode' : '開安靜模式'}
+        </button>
+      </div>
+    )
+  }
 
   const tier = RANKS.indexOf(a.rank) + 1
   const ringLabel = en
@@ -66,7 +91,6 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
 
   return (
     <div className={`relative overflow-hidden border border-line rounded-xl bg-surface-raised p-4 sm:p-5 ${className}`}>
-      <div className="absolute inset-0 particle-bg opacity-30 pointer-events-none" aria-hidden />
       <div className="relative flex items-center gap-4">
         <MetallicRing progress={a.progress} label={ringLabel} />
         <div className="min-w-0 flex-1">
@@ -85,8 +109,8 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
             <>
               <div className="mt-2.5 h-1.5 rounded-full bg-surface-sunken overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-accent"
-                  style={{ width: `${Math.round(a.progress * 100)}%`, transition: 'width 700ms var(--ease-spring-settle)' }}
+                  className="h-full w-full origin-left rounded-full bg-accent"
+                  style={{ transform: `scaleX(${a.progress})`, transition: 'transform 700ms var(--ease-spring-settle)' }}
                 />
               </div>
               <p className="text-[11px] text-ink-muted mt-1.5" style={{ fontVariantNumeric: 'tabular-nums' }}>

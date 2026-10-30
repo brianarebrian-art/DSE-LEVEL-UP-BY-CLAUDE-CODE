@@ -9,7 +9,7 @@ import ExitBar from './components/ExitBar'
 
 export const metadata = {
   // FIX: [A1] 頁面標題統一為「呼吸空間」
-  title: '🫁 呼吸空間 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale 切換
+  title: ' 呼吸空間 | DSE Level Up', // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale 切換
   // FIX: [A1][A3] 副標移除 MP／補血補藍
   description: '溫書攰咗？入嚟唞一唞：聽聲、回氣、傾偈。你唔係一個人。', // i18n-exempt: 靜態 SEO meta description
 }
@@ -17,7 +17,7 @@ export const metadata = {
 export default function RelaxLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-surface text-ink">
-      <div className="max-w-2xl mx-auto px-4 py-8">
+ <div className="max-w-2xl mx-auto px-4 py-8">
         {/* 一鍵離開（SEN 要求：任何頁面一 click 返 Dashboard） */}
         <ExitBar />
 
@@ -25,7 +25,7 @@ export default function RelaxLayout({ children }: { children: ReactNode }) {
 
         {/* Sarah 嘅得獎方案：緊急熱線橫幅 — /relax/** 每一頁都必須出現 */}
         <EmergencyBanner />
-      </div>
-    </div>
+ </div>
+ </div>
   )
 }

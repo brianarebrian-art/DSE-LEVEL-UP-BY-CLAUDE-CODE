@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Fingerprint } from 'lucide-react'
+import CauseMark from '@/components/marks/CauseMark'
 import { getReverseLog, type ReverseCause } from '@/lib/reverseLog'
 import { useLocale } from '@/lib/i18n'
 import { causeHasMaterial, causePracticeHref } from '@/lib/causeMode'
@@ -13,19 +14,19 @@ import { causeHasMaterial, causePracticeHref } from '@/lib/causeMode'
 // Light-first（憲章 §3）：三色改用青／金／紫（on-white 讀得清、避開鮮紅錯誤主色）。
 // UX audit B2 (a), Yuna 2026-09-21: the concept-blind-spot colour leaves the red family
 // (was rose #C2185B, now violet #6D28D9, the palette's --color-violet).
-const CAUSE: Record<ReverseCause, { emoji: string; zh: string; en: string; color: string; adviceZh: string; adviceEn: string }> = {
+const CAUSE: Record<ReverseCause, { zh: string; en: string; color: string; adviceZh: string; adviceEn: string }> = {
   A: {
-    emoji: '🧠', zh: '概念盲區', en: 'Concept blind spot', color: '#6D28D9',
+    zh: '概念盲區', en: 'Concept blind spot', color: '#6D28D9',
     adviceZh: '你最常喺「概念盲區」跌倒 —— 做題前先重溫該課題嘅定義同前提，唔好急住計。',
     adviceEn: 'Your weak point is concept blind spots — revisit a topic’s definitions and conditions before drilling.',
   },
   B: {
-    emoji: '🎯', zh: '審題陷阱', en: 'Misreading the question', color: '#7E5D07',
+    zh: '審題陷阱', en: 'Misreading the question', color: '#7E5D07',
     adviceZh: '你最常「睇漏關鍵字」—— 答題前強迫自己圈起「最多／至少／除咗」等字眼。',
     adviceEn: 'You most often misread the prompt — circle keywords like “at least / except / not” before answering.',
   },
   C: {
-    emoji: '🧮', zh: '運算粗心', en: 'Careless calculation', color: '#006B65',
+    zh: '運算粗心', en: 'Careless calculation', color: '#006B65',
     adviceZh: '你最常「識做但計錯」—— 養成做完即驗算嘅習慣。',
     adviceEn: 'You know the method but slip on arithmetic — build a habit of checking every result.',
   },
@@ -63,13 +64,13 @@ export default function ErrorDNA() {
 
   const top = ORDER.reduce((a, b) => (counts[b] > counts[a] ? b : a), 'A' as ReverseCause)
 
-  return (
-    <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
-      <div className="flex items-center gap-2.5 mb-1">
-        <Fingerprint size={18} className="text-gold shrink-0" />
-        <h3 className="text-lg font-medium text-ink">{en ? 'Your error patterns' : '你嘅錯誤模式'}</h3>
-      </div>
-      <p className="text-ink-muted text-sm mb-4">
+ return (
+ <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
+ <div className="flex items-center gap-2.5 mb-1">
+ <Fingerprint size={18} className="text-gold shrink-0" />
+ <h3 className="text-lg font-medium text-ink">{en ? 'Your error patterns' : '你嘅錯誤模式'}</h3>
+ </div>
+ <p className="text-ink-muted text-sm mb-4">
         {en ? 'Counted from the causes you picked yourself after each wrong answer. It is your own read, not a diagnosis by the site.' : '按你每次答錯之後自己揀嘅錯因統計。呢個係你自己嘅判斷，唔係網站幫你診斷。'}
       </p>
 
@@ -79,8 +80,8 @@ export default function ErrorDNA() {
             ? 'Do written questions or check a paper answer sheet, and tag the cause of a mistake — your error patterns will appear here.'
             : '做書寫題或者用答題紙對答案，答錯時揀一個錯因，你嘅錯誤模式就會喺度顯示。'}
         </p>
-      ) : (
-        <>
+ ) : (
+ <>
           {/* DNA stripes — proportion of each cause */}
           <div className="h-8 flex rounded-full overflow-hidden mb-4 bg-surface-sunken">
             {ORDER.map((k) => {
@@ -93,31 +94,32 @@ export default function ErrorDNA() {
                   style={{ width: `${pct}%`, backgroundColor: CAUSE[k].color }}
                   title={`${en ? CAUSE[k].en : CAUSE[k].zh}: ${counts[k]}`}
                 />
-              )
-            })}
-          </div>
+ )
+ })}
+ </div>
 
           {/* Legend */}
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4">
             {ORDER.map((k, i) => (
-              <div
+ <div
                 key={k}
                 className="ml-stagger flex items-center gap-1.5 text-xs text-ink-muted"
                 style={{ ['--i' as string]: i }}
               >
-                <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: CAUSE[k].color }} />
-                <span>{CAUSE[k].emoji} {en ? CAUSE[k].en : CAUSE[k].zh}</span>
-                <span className="text-ink-muted">({counts[k]})</span>
-              </div>
-            ))}
-          </div>
+ <span className="w-2.5 h-2.5 rounded-sm shrink-0" style={{ backgroundColor: CAUSE[k].color }} />
+ <CauseMark cause={k} size="sm" />
+ <span>{en ? CAUSE[k].en : CAUSE[k].zh}</span>
+ <span className="text-ink-muted">({counts[k]})</span>
+ </div>
+ ))}
+ </div>
 
           {/* Same cause three or more times in a row. UX audit B2 (a): framed as a pattern the
               student found (gold, not rose), with one thing they can do next. */}
           {streak && (
             <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-[3px] border-gold mb-3">
-              <div className="text-xs text-gold font-medium mb-1">{en ? 'You found a pattern' : '你搵到一個規律'}</div>
-              <p className="text-sm text-ink-soft leading-relaxed">
+ <div className="text-xs text-gold font-medium mb-1">{en ? 'You found a pattern' : '你搵到一個規律'}</div>
+ <p className="text-sm text-ink-soft leading-relaxed">
                 {en
                   ? `Your last ${streak.len} slips were all “${CAUSE[streak.cause].en}”. Knowing that is useful. Next time: ${CAUSE[streak.cause].adviceEn.split(' — ')[1] ?? CAUSE[streak.cause].adviceEn}`
                   : `你最近 ${streak.len} 次都係「${CAUSE[streak.cause].zh}」—— 搵到呢個規律已經係進步。下次可以咁做：${CAUSE[streak.cause].adviceZh.split('——')[1]?.trim() ?? CAUSE[streak.cause].adviceZh}`}
@@ -129,18 +131,18 @@ export default function ErrorDNA() {
                 >
                   {en ? 'Practise this kind now' : '即刻練返呢類'}
                   <ArrowRight size={14} aria-hidden />
-                </Link>
-              )}
-            </div>
+ </Link>
+ )}
+ </div>
           )}
 
           {/* Diagnosis on the top cause */}
           <div className="bg-surface-sunken rounded-xl px-4 py-3 border-l-[3px] border-gold">
-            <div className="text-xs text-gold font-medium mb-1">{en ? 'Pattern read' : '模式診斷'}</div>
-            <p className="text-sm text-ink-soft leading-relaxed">{en ? CAUSE[top].adviceEn : CAUSE[top].adviceZh}</p>
-          </div>
-        </>
-      )}
-    </div>
+ <div className="text-xs text-gold font-medium mb-1">{en ? 'Pattern read' : '模式診斷'}</div>
+ <p className="text-sm text-ink-soft leading-relaxed">{en ? CAUSE[top].adviceEn : CAUSE[top].adviceZh}</p>
+ </div>
+ </>
+ )}
+ </div>
   )
 }

@@ -13,9 +13,10 @@
     "test": "npx --yes tsx@4.19.2 --test data/questions/__tests__/*.test.mts lib/__tests__/*.test.mts components/__tests__/*.test.mts",
     "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts",
     "qbank:queue": "node scripts/qbank/review-queue.mjs",
-    "qa": "node scripts/qbank/term-guard.mjs && node scripts/qbank/check-posref.mjs --banks && node scripts/qbank/validate-banks.mjs && node scripts/i18n-guard.mjs && node scripts/contrast-guard.mjs && node scripts/claims-guard.mjs && node scripts/integration-guard.mjs && node scripts/responsive-guard.mjs && node scripts/barrel-guard.mjs && node scripts/copy-guard.mjs && node scripts/gen-token-doc.mjs --check && node scripts/guard-nav.mjs",
+    "qa": "node scripts/qbank/term-guard.mjs && node scripts/qbank/check-posref.mjs --banks && node scripts/qbank/validate-banks.mjs && node scripts/i18n-guard.mjs && node scripts/contrast-guard.mjs && node scripts/emoji-guard.mjs && node scripts/claims-guard.mjs && node scripts/integration-guard.mjs && node scripts/responsive-guard.mjs && node scripts/barrel-guard.mjs && node scripts/copy-guard.mjs && node scripts/gen-token-doc.mjs --check && node scripts/guard-nav.mjs",
     "qa:claims": "node scripts/claims-guard.mjs",
     "qa:contrast": "node scripts/contrast-guard.mjs",
+    "qa:emoji": "node scripts/emoji-guard.mjs",
     "term-guard": "node scripts/qbank/term-guard.mjs",
     "tokens:doc": "node scripts/gen-token-doc.mjs",
     "nav:check": "node scripts/guard-nav.mjs",
@@ -46,13 +47,13 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.22.0",
+    "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.108.2",
-    "better-auth": "^1.6.23",
+    "@vercel/speed-insights": "^2.0.0",
     "html2canvas": "^1.4.1",
     "katex": "^0.17.0",
     "lucide-react": "^1.20.0",
-    "next": "^16.3.8",
-    "next-auth": "^5.0.0-beta.31",
+    "next": "^16.4.2",
     "pg": "^8.22.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -68,5 +69,9 @@
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "sharp": "^0.35.5",
+    "source-map-js": "^1.2.2"
   }
 }

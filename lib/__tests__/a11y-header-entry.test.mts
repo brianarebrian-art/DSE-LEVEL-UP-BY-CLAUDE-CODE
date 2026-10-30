@@ -40,17 +40,19 @@ test('the floating button hides on phones only when the page has a header button
   assert.ok(rule, 'conditional rule in globals.css')
   // Same breakpoint as md:hidden on the header button (Tailwind v4 md = 768px).
   assert.equal(Number(rule[1]), 767)
-  // Never hidden unconditionally: pages without a header button keep the floating one.
+  // Phone pages with a header button, plus practice immersives (sticky A11y always on).
   const hides = css.match(/[^\n{}]*\.a11y-fab[^{]*\{[^}]*display:\s*none/g) ?? []
-  assert.equal(hides.length, 1)
-  assert.match(hides[0], /body:has\(\[data-a11y-trigger\]\)/)
+  assert.ok(hides.length >= 1 && hides.length <= 2, `unexpected a11y-fab hide rules: ${hides.join(' | ')}`)
+  assert.ok(hides.some((h) => /body:has\(\[data-a11y-trigger\]\)/.test(h)))
+  assert.ok(hides.some((h) => /body:has\(\.practice-session\)/.test(h)), 'practice immersive hides the FAB')
 })
 
 test('every header students see on a phone carries the button', () => {
   const sites = {
     'components/Navbar.tsx': /<A11yButton \/>/,
-    'app/practice/PracticeSession.tsx': /<A11yButton className="ml-auto" \/>/,
-    'app/practice/LongPracticeSession.tsx': /<A11yButton \/>/,
+    // 練習沉浸：A11y 常駐 sticky 頂欄（含桌面 !inline-flex）。
+    'app/practice/PracticeSession.tsx': /<A11yButton className="!inline-flex" \/>/,
+    'app/practice/LongPracticeSession.tsx': /<A11yButton className="!inline-flex" \/>/,
   }
   for (const [file, re] of Object.entries(sites)) {
     const src = read(file)
@@ -59,10 +61,19 @@ test('every header students see on a phone carries the button', () => {
   }
   // In the practice session it sits in the sticky top row, so it stays reachable mid-question.
   const s = read('app/practice/PracticeSession.tsx')
-  const sticky = s.indexOf('<div className="focus-dim sticky top-0 z-30')
-  const btn = s.indexOf('<A11yButton className="ml-auto" />')
-  const rowEnd = s.indexOf('{/* Progress bar */}', sticky)
-  assert.ok(sticky > 0 && sticky < btn && btn < rowEnd)
+  const sticky = s.indexOf('practice-sticky-head')
+  const btn = s.indexOf('<A11yButton', sticky)
+  const headEnd = s.indexOf('</div>', s.indexOf('QuestionStatusStrip', sticky))
+  assert.ok(sticky > 0 && sticky < btn && btn < headEnd)
+
+  // Long written session must opt into .practice-session so desktop FAB hides
+  // while the sticky header A11yButton stays (!inline-flex). Without the class,
+  // md+ shows both controls opening the same panel.
+  const long = read('app/practice/LongPracticeSession.tsx')
+  assert.match(long, /className="practice-session min-h-screen/)
+  const longBtn = long.indexOf('<A11yButton className="!inline-flex"')
+  const longSession = long.indexOf('practice-session')
+  assert.ok(longSession > 0 && longSession < longBtn, 'A11yButton sits inside practice-session root')
 })
 
 test('opening from far away moves focus into the panel and back on close', () => {

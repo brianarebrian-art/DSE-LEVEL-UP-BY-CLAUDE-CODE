@@ -66,7 +66,7 @@ export default function TodayNote({ className = '' }: { className?: string }) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
-  const [msg, setMsg] = useState<TodayMessage | null>(null)
+ const [msg, setMsg] = useState<TodayMessage | null>(null)
 
   useEffect(() => {
     // 全部讀本機，未登入用戶一樣有效。
@@ -93,30 +93,30 @@ export default function TodayNote({ className = '' }: { className?: string }) {
   if (msg.kind === 'nudge') {
     return (
       <div className={`rounded-2xl border border-gold/30 bg-gold/10 p-5 ${className}`}>
-        <p className="text-sm font-medium text-gold mb-1">
+ <p className="text-sm font-medium text-gold mb-1">
           💡 {tr('你發現咗一個新盲點', 'You have found a blind spot')}
         </p>
-        <p className="text-sm text-ink-soft leading-relaxed mb-3">
+ <p className="text-sm text-ink-soft leading-relaxed mb-3">
           {tr(
             `最近喺「${msg.label}」呢個課題撞板咗 ${msg.count} 次。唔係你唔得 —— 係呢度真係有個位未打通。`,
             `You have stumbled ${msg.count} times on “${msg.label}” lately. That is not a lack of ability — there is simply a knot here that is not untied yet.`,
           )}
         </p>
-        <div className="flex flex-wrap gap-3">
-          <Link
+ <div className="flex flex-wrap gap-3">
+ <Link
             href={`/notes/${msg.subjectId}?topic=${encodeURIComponent(msg.topicId)}`}
             className="min-h-11 inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent text-sm font-medium px-4 py-2 rounded-xl transition-colors"
           >
             {tr('睇返呢個課題嘅拆解', 'Read the breakdown')} <ArrowRight size={15} aria-hidden />
-          </Link>
-          <Link
+ </Link>
+ <Link
             href="/relax"
             className="min-h-11 inline-flex items-center text-sm text-ink-muted hover:text-accent px-2 transition-colors"
           >
             {tr('或者，抖十分鐘先', 'Or take ten minutes first')}
           </Link>
-        </div>
-      </div>
+ </div>
+ </div>
     )
   }
 
@@ -124,11 +124,11 @@ export default function TodayNote({ className = '' }: { className?: string }) {
   const subjects = yesterdaySubjects.join(tr('、', ', '))
   return (
     <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
-      <p className="text-sm font-medium text-ink mb-1 inline-flex items-center gap-2">
-        <Sparkles size={16} className="text-accent" aria-hidden />
+ <p className="text-sm font-medium text-ink mb-1 inline-flex items-center gap-2">
+ <Sparkles size={16} className="text-accent" aria-hidden />
         {tr('今日小提示', 'A note for today')}
       </p>
-      <p className="text-sm text-ink-soft leading-relaxed mb-3">
+ <p className="text-sm text-ink-soft leading-relaxed mb-3">
         {subjects
           ? tr(
               `你昨日喺${subjects}練咗 ${yesterdayQuestions} 題。`,
@@ -148,8 +148,8 @@ export default function TodayNote({ className = '' }: { className?: string }) {
           className="min-h-11 inline-flex items-center gap-2 border border-accent/40 bg-surface-sunken hover:bg-surface-sunken text-accent text-sm font-medium px-4 py-2 rounded-xl transition-colors"
         >
           {tr('先做 1 題', 'Just one question')} <ArrowRight size={15} aria-hidden />
-        </Link>
-      )}
-    </div>
+ </Link>
+ )}
+ </div>
   )
 }

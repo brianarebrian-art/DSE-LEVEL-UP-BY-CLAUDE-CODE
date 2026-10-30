@@ -49,23 +49,23 @@ export default function SubjectDetailView({
   if (!meta.isActive || questionsCount === 0) {
     return (
       <div className="min-h-screen px-4 py-20 bg-surface text-ink-soft">
-        <div className="max-w-xl mx-auto text-center">
-          <div className="text-6xl mb-6">{meta.emoji}</div>
-          <h1 className="text-3xl font-medium mb-3 text-ink">{name}</h1>
-          <p className="text-ink-muted mb-2">{description}</p>
-          <div className="inline-flex items-center gap-2 text-sm text-gold bg-surface-sunken border border-gold/20 rounded-full px-4 py-2 mt-4">
+ <div className="max-w-xl mx-auto text-center">
+ <p className="mb-3 text-sm font-medium uppercase tracking-wide text-ink-muted">{short}</p>
+ <h1 className="text-3xl font-medium mb-3 text-ink">{name}</h1>
+ <p className="text-ink-muted mb-2">{description}</p>
+ <div className="inline-flex items-center gap-2 text-sm text-gold bg-surface-sunken border border-gold/20 rounded-full px-4 py-2 mt-4">
             {sd.launchPrefix}{meta.launchDate ?? sd.launchTBA}
           </div>
-          <div className="mt-8">
-            <Link
+ <div className="mt-8">
+ <Link
               href="/subjects"
-              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-5 py-3 rounded-xl transition-all text-sm"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-5 py-3 rounded-xl transition-colors text-sm"
             >
               ← {sd.backToSubjects}
             </Link>
-          </div>
-        </div>
-      </div>
+ </div>
+ </div>
+ </div>
     )
   }
 
@@ -103,9 +103,9 @@ export default function SubjectDetailView({
     <SubjectProgressPanel subjectId={meta.id} topics={topics} tally={tally} />
     {/* Quick start banner */}
     <div className={`rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${examHasMC ? 'bg-accent/[0.05] border border-accent/20' : 'bg-surface-raised border border-line'}`}>
-      <div>
-        <div className="font-medium text-lg mb-1 text-ink">
-          {examHasMC ? sd.quickStartTitle : en ? 'Multiple-choice (revision only)' : '選擇題（僅供溫習）'}
+ <div>
+ <div className="font-medium text-lg mb-1 text-ink">
+          {examHasMC ? sd.quickStartTitle : en ? 'Concept warm-up MC (not the exam format)' : '概念溫習 MC（非考試題型）'}
         </div>
         {!examHasMC && (
           <p className="text-sm text-ink-soft mb-1">
@@ -113,31 +113,36 @@ export default function SubjectDetailView({
               ? 'The 2027 exam has no multiple-choice questions in this subject. Use these to revise concepts, not to practise the exam format.'
               : '2027 年考卷呢科冇選擇題。呢啲題幫你溫概念，唔係練考試題型。'}
           </p>
-        )}
-        <p className="text-ink-muted text-sm">
-          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}{sd.quickDescB}
+ )}
+ <p className="text-ink-muted text-sm">
+          {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}
+          {examHasMC ? sd.quickDescB : (en ? ' topics · instant check · concept warm-up only' : ' 大課題 · 即時批改 · 只係概念熱身')}
         </p>
-        <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
-          <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
-          <span>·</span>
-          <span>{sd.gradePredict}</span>
-          <span>·</span>
-          <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
-        </div>
-      </div>
+ <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
+ <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
+ <span>·</span>
+          {examHasMC ? (
+            <span>{sd.gradePredict}</span>
+ ) : (
+ <span>{en ? 'Not counted in the practice-performance estimate' : '唔計入練習表現估算'}</span>
+ )}
+ <span>·</span>
+ <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
+ </div>
+ </div>
       {(
         <Link
           href={`/practice?subject=${meta.id}`}
-          className={`shrink-0 inline-flex items-center gap-2 font-medium px-6 py-3 rounded-xl transition-all ${examHasMC ? 'bg-accent-strong hover:bg-accent-hover text-on-accent' : 'bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft'}`}
+          className={`shrink-0 inline-flex min-h-12 items-center gap-2 font-medium px-6 py-3 rounded-xl transition-[colors,transform] duration-100 active:scale-[0.97] ${examHasMC ? 'bg-accent-strong hover:bg-accent-hover text-on-accent' : 'bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft'}`}
         >
-          {sd.startNow} <ArrowRight size={16} />
-        </Link>
-      )}
-    </div>
-    </>
-  )
-  const writtenCard = (
-    <>
+          {examHasMC ? sd.startNow : (en ? 'Start concept warm-up' : '開始概念溫習')} <ArrowRight size={16} />
+ </Link>
+ )}
+ </div>
+ </>
+ )
+ const writtenCard = (
+ <>
     {/* 長題目入口 —— 每一科都有，唔止 MC。
         `?mode=long` 的 runner（LongPracticeSession）一直存在，但此前全站冇任何
         科目頁連去嗰度，學生實際上只做得到選擇題。此卡就是缺失的入口。
@@ -146,59 +151,59 @@ export default function SubjectDetailView({
         比隱藏入口更好 —— 學生至少知道呢個題型存在、亦知道點解未有。 */}
     <Link
       href={`/practice?subject=${meta.id}&mode=long`}
-      className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-all ${
-        writtenCount > 0
-          ? 'bg-accent/[0.06] hover:bg-accent/[0.10] border-accent/25 hover:border-accent/40'
-          : 'bg-ink/[0.03] hover:bg-ink/[0.05] border-ink/10 hover:border-ink/20'
-      }`}
-    >
-      <div className="flex items-center gap-3">
-        <FileText
+      className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-colors ${
+ writtenCount > 0
+ ? 'bg-accent/[0.06] hover:bg-accent/[0.10] border-accent/25 hover:border-accent/40'
+ : 'bg-ink/[0.03] hover:bg-ink/[0.05] border-ink/10 hover:border-ink/20'
+ }`}
+ >
+ <div className="flex items-center gap-3">
+ <FileText
           size={20}
           className={`shrink-0 ${writtenCount > 0 ? 'text-accent' : 'text-ink-muted'}`}
-        />
-        <div>
-          <div className="font-medium text-ink">
+ />
+ <div>
+ <div className="font-medium text-ink">
             {en ? 'Written Paper · Long Questions' : '書寫卷・長題目'}
             {writtenCount > 0 && (
-              <span className="ml-2 text-xs font-normal text-ink-muted">
+ <span className="ml-2 text-xs font-normal text-ink-muted">
                 {writtenCount}
                 {en ? ' available' : ' 題'}
               </span>
-            )}
-          </div>
-          <p className="text-xs text-ink-muted mt-0.5 leading-relaxed">
+ )}
+ </div>
+ <p className="text-xs text-ink-muted mt-0.5 leading-relaxed">
             {writtenCount > 0
-              ? en
-                ? 'Write your own answer, then self-assess against the reference answer and marking scheme. Never machine-marked.'
-                : '自己寫答案，交卷後對照參考答案同評分準則自評。機器永不批改。'
-              : en
-                ? 'Coming soon — no written questions for this subject yet.'
-                : '準備中 —— 呢科暫時未有長題目。'}
-          </p>
-        </div>
-      </div>
-      <ArrowRight
+ ? en
+ ? 'Write your own answer, then self-assess against the reference answer and marking scheme. Never machine-marked.'
+ : '自己寫答案，交卷後對照參考答案同評分準則自評。機器永不批改。'
+ : en
+ ? 'Coming soon — no written questions for this subject yet.'
+ : '準備中 —— 呢科暫時未有長題目。'}
+ </p>
+ </div>
+ </div>
+ <ArrowRight
         size={16}
         className={`shrink-0 group-hover:translate-x-0.5 transition-transform ${
-          writtenCount > 0 ? 'text-accent' : 'text-ink-muted'
-        }`}
-      />
-    </Link>
-    </>
-  )
+ writtenCount > 0 ? 'text-accent' : 'text-ink-muted'
+ }`}
+ />
+ </Link>
+ </>
+ )
 
-  return (
-    <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
-      <div className="max-w-4xl mx-auto">
+ return (
+ <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
+ <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <div className="text-ink-muted text-sm mb-2 flex items-center gap-1">
-          <Link href="/" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.home}</Link>
-          <span>/</span>
-          <Link href="/subjects" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.subjects}</Link>
-          <span>/</span>
-          <span>{short}</span>
-        </div>
+ <Link href="/" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.home}</Link>
+ <span>/</span>
+ <Link href="/subjects" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.subjects}</Link>
+ <span>/</span>
+ <span>{short}</span>
+ </div>
 
         {/* 2026-09-19：呢度曾經有一條去 /cantonese 嘅新來港支援 banner，已剷。
             新來港支援唔屬於任何一科 —— 一個中文差、但數學物理好好嘅新來港
@@ -208,17 +213,17 @@ export default function SubjectDetailView({
 
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-medium mb-3 flex items-center gap-3 flex-wrap text-ink">
-            <span>{meta.emoji}</span>
+ <p className="mb-2 text-sm font-medium uppercase tracking-wide text-ink-muted">{short}</p>
+ <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">
             {name}
           </h1>
-          <p className="text-ink-muted text-lg">{description}</p>
+ <p className="text-ink-muted text-lg">{description}</p>
           {notPractised && (
             <p className="mt-3 text-sm leading-relaxed text-ink-soft">{notPractised}</p>
-          )}
-        </div>
+ )}
+ </div>
 
-        <ElectiveSelector subject={meta.id} />
+ <ElectiveSelector subject={meta.id} />
 
         {examHasMC ? <>{mcCard}{writtenCard}</> : <>{writtenCard}{mcCard}</>}
 
@@ -226,42 +231,42 @@ export default function SubjectDetailView({
         {meta.id === 'english' && (
           <Link
             href="/writing"
-            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
-            <div className="flex items-center gap-3">
-              <PenLine size={20} className="text-violet shrink-0" />
-              <div>
-                <div className="font-medium text-ink">{en ? 'Paper 2 · Writing Studio' : '卷二・寫作工作室'}</div>
-                <p className="text-xs text-ink-muted mt-0.5">
+ <div className="flex items-center gap-3">
+ <PenLine size={20} className="text-violet shrink-0" />
+ <div>
+ <div className="font-medium text-ink">{en ? 'Paper 2 · Writing Studio' : '卷二・寫作工作室'}</div>
+ <p className="text-xs text-ink-muted mt-0.5">
                   {en
                     ? 'Drafting canvas + HKEAA 7-point self-assessment rubric (2023 "Poems & Songs" theme).'
                     : '草稿區 + HKEAA 7 分制自評量表（2023「Poems & Songs」主題）。'}
                 </p>
-              </div>
-            </div>
-            <ArrowRight size={16} className="text-violet shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+ </div>
+ </div>
+ <ArrowRight size={16} className="text-violet shrink-0 group-hover:translate-x-0.5 transition-transform" />
+ </Link>
         )}
 
         {/* English-only: Paper 1 original parallel reading passages */}
         {meta.id === 'english' && (
           <Link
             href="/reading"
-            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
-            <div className="flex items-center gap-3">
-              <BookOpenCheck size={20} className="text-violet shrink-0" />
-              <div>
-                <div className="font-medium text-ink">{en ? 'Paper 1 · Reading Passages' : '卷一・閱讀理解篇章'}</div>
-                <p className="text-xs text-ink-muted mt-0.5">
+ <div className="flex items-center gap-3">
+ <BookOpenCheck size={20} className="text-violet shrink-0" />
+ <div>
+ <div className="font-medium text-ink">{en ? 'Paper 1 · Reading Passages' : '卷一・閱讀理解篇章'}</div>
+ <p className="text-xs text-ink-muted mt-0.5">
                   {en
                     ? '3 original parallel passages (Dramatic Irony · Attitude · Metaphor) + 12 questions.'
                     : '3 篇原創平行篇章（戲劇性反諷・態度・比喻）+ 12 道題。'}
                 </p>
-              </div>
-            </div>
-            <ArrowRight size={16} className="text-violet shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+ </div>
+ </div>
+ <ArrowRight size={16} className="text-violet shrink-0 group-hover:translate-x-0.5 transition-transform" />
+ </Link>
         )}
 
         {/* SENSEI 零模型知識檢索。只掛喺已有卡片庫嘅四科 —— 掛喺冇卡嘅科目
@@ -271,42 +276,42 @@ export default function SubjectDetailView({
         {['chinese', 'english', 'math', 'economics'].includes(meta.id) && (
           <Link
             href="/sensei"
-            className="group bg-accent/[0.06] hover:bg-accent/[0.10] border border-accent/25 hover:border-accent/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-accent/[0.06] hover:bg-accent/[0.10] border border-accent/25 hover:border-accent/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
-            <div className="flex items-center gap-3">
-              <Sparkles size={20} className="text-accent shrink-0" />
-              <div>
-                <div className="font-medium text-ink">{en ? 'Knowledge cards · SENSEI' : '知識卡・SENSEI'}</div>
-                <p className="text-xs text-ink-muted mt-0.5">
+ <div className="flex items-center gap-3">
+ <Sparkles size={20} className="text-accent shrink-0" />
+ <div>
+ <div className="font-medium text-ink">{en ? 'Knowledge cards · SENSEI' : '知識卡・SENSEI'}</div>
+ <p className="text-xs text-ink-muted mt-0.5">
                   {en
                     ? 'Ask about a concept and read a knowledge card a named person has checked. Nothing is generated — if there is no card, it says so.'
                     : '問一個概念，讀一張具名真人審核過的知識卡。內容不會自行生成 —— 沒有卡片時會直接說沒有。'}
                 </p>
-              </div>
-            </div>
-            <ArrowRight size={16} className="text-accent shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+ </div>
+ </div>
+ <ArrowRight size={16} className="text-accent shrink-0 group-hover:translate-x-0.5 transition-transform" />
+ </Link>
         )}
 
         {/* History-only: 史料判讀室（卷一資料題訓練）。中史科目前未有條目，故只掛歷史科。 */}
         {meta.id === 'history' && (
           <Link
             href="/source-lab"
-            className="group bg-gold/[0.06] hover:bg-gold/[0.10] border border-gold/25 hover:border-gold/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-gold/[0.06] hover:bg-gold/[0.10] border border-gold/25 hover:border-gold/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
-            <div className="flex items-center gap-3">
-              <Search size={20} className="text-gold shrink-0" />
-              <div>
-                <div className="font-medium text-ink">{en ? 'Paper 1 · Source Lab' : '卷一・史料判讀室'}</div>
-                <p className="text-xs text-ink-muted mt-0.5">
+ <div className="flex items-center gap-3">
+ <Search size={20} className="text-gold shrink-0" />
+ <div>
+ <div className="font-medium text-ink">{en ? 'Paper 1 · Source Lab' : '卷一・史料判讀室'}</div>
+ <p className="text-xs text-ink-muted mt-0.5">
                   {en
                     ? 'Fact / interpretation / position separated, each with a named citation and reliability grade.'
                     : '事實層、詮釋層、立場層分離陳列，逐項附具名引用與可靠性等級。'}
                 </p>
-              </div>
-            </div>
-            <ArrowRight size={16} className="text-gold shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
+ </div>
+ </div>
+ <ArrowRight size={16} className="text-gold shrink-0 group-hover:translate-x-0.5 transition-transform" />
+ </Link>
         )}
 
         {/* 2027 年考卷結構 —— data/dse-paper-formats.ts 的 PAPER_STRUCTURE（2026-09-26 按評核大綱核對）。
@@ -316,40 +321,40 @@ export default function SubjectDetailView({
             把「按課題練習」推到 y=1270；它是參考資料，不是練習入口。標題、題數及來源照舊，展開即見。 */}
         {structure && (
           <details className="group mb-10 rounded-2xl border border-line bg-surface-raised">
-            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent [&::-webkit-details-marker]:hidden">
-              <h2 className="text-lg font-medium text-ink">{en ? 'The 2027 exam, and what we have' : '2027 年考卷結構同現有題數'}</h2>
-              <ChevronDown size={18} aria-hidden className="shrink-0 text-ink-muted transition-transform group-open:rotate-180" />
-            </summary>
-            <div className="px-5 pb-5">
-            <div className="flex flex-wrap gap-2">
+ <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-5 py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent [&::-webkit-details-marker]:hidden">
+ <h2 className="text-lg font-medium text-ink">{en ? 'The 2027 exam, and what we have' : '2027 年考卷結構同現有題數'}</h2>
+ <ChevronDown size={18} aria-hidden className="shrink-0 text-ink-muted transition-transform group-open:rotate-180" />
+ </summary>
+ <div className="px-5 pb-5">
+ <div className="flex flex-wrap gap-2">
               {([
                 ['mc', en ? 'Multiple-choice' : '選擇題', typeCounts.mc],
                 ['text', en ? 'Short answer' : '短答題', typeCounts.text],
                 ['long', en ? 'Long questions' : '長題', typeCounts.long],
               ] as const).map(([k, label, n]) => (
-                <span
+ <span
                   key={k}
                   className={`inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3 text-sm ${n > 0 ? 'border-line-strong text-ink' : 'border-line text-ink-muted opacity-60'}`}
                 >
                   {label} <span className="tabular-nums">{n}</span>
                   {k === 'mc' && !examHasMC && n > 0 && (
-                    <span className="text-xs text-ink-muted">{en ? '· revision only' : '· 僅供溫習'}</span>
-                  )}
-                </span>
-              ))}
-            </div>
-            <ul className="mt-4 divide-y divide-line text-sm">
+ <span className="text-xs text-ink-muted">{en ? '· revision only' : '· 僅供溫習'}</span>
+ )}
+ </span>
+ ))}
+ </div>
+ <ul className="mt-4 divide-y divide-line text-sm">
               {structure.sections.map((sec, i) => {
                 const strandName = sec.strand
                   ? structure.electives?.find((r) => r.kind === 'strand')?.units.find((u) => u.id === sec.strand)
-                  : undefined
-                return (
-                  <li key={i} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-2">
-                    <span className="w-20 shrink-0 text-ink-muted">
+ : undefined
+ return (
+ <li key={i} className="flex flex-wrap items-baseline gap-x-3 gap-y-1 py-2">
+ <span className="w-20 shrink-0 text-ink-muted">
                       {en ? `Paper ${sec.paper}` : `卷 ${sec.paper}`}
                       {sec.section ? ` · ${sec.section}` : ''}
                     </span>
-                    <span className="min-w-0 flex-1 text-ink">
+ <span className="min-w-0 flex-1 text-ink">
                       {sec.kinds.map((k) => QUESTION_KIND_LABELS[k][en ? 'en' : 'zh']).join(en ? ', ' : '、')}
                       {sec.elective && (
                         <span className="ml-2 rounded-full bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">{en ? 'elective' : '選修'}</span>
@@ -358,23 +363,23 @@ export default function SubjectDetailView({
                         <span className="ml-2 rounded-full bg-surface-sunken px-2 py-0.5 text-xs text-ink-muted">
                           {en ? strandName.en : strandName.zh ?? strandName.en}
                         </span>
-                      )}
-                    </span>
-                    <span className="tabular-nums text-ink-soft">
+ )}
+ </span>
+ <span className="tabular-nums text-ink-soft">
                       {sec.weight === null ? '—' : `${sec.derived ? '≈' : ''}${sec.weight}%`}
                     </span>
                     {!en && sec.choice && <span className="basis-full text-xs text-ink-muted">{sec.choice}</span>}
-                  </li>
+ </li>
                 )
               })}
               {structure.sbaPct > 0 && (
-                <li className="flex items-baseline gap-x-3 py-2">
-                  <span className="flex-1 text-ink-muted">{en ? 'School-based assessment' : '校本評核'}</span>
-                  <span className="tabular-nums text-ink-soft">{structure.sbaPct}%</span>
-                </li>
-              )}
-            </ul>
-            <p className="mt-3 text-xs leading-relaxed text-ink-muted">
+ <li className="flex items-baseline gap-x-3 py-2">
+ <span className="flex-1 text-ink-muted">{en ? 'School-based assessment' : '校本評核'}</span>
+ <span className="tabular-nums text-ink-soft">{structure.sbaPct}%</span>
+ </li>
+ )}
+ </ul>
+ <p className="mt-3 text-xs leading-relaxed text-ink-muted">
               {en
                 ? '% is of the whole subject. ≈ means converted from the marks the framework gives; — means the framework does not split it. Source: '
                 : '百分比為佔全科總分。≈ 表示由大綱列出的分數換算；— 表示大綱未有分列。來源：'}
@@ -387,8 +392,8 @@ export default function SubjectDetailView({
               </ExternalLinkGate>
               {en ? ', checked 26 Sep 2026.' : '，2026-09-26 核對。'}
             </p>
-            </div>
-          </details>
+ </div>
+ </details>
         )}
 
         {/* Topic list */}
@@ -408,77 +413,79 @@ export default function SubjectDetailView({
             const mc = topic.mcCount ?? topic.count
             const written = topic.writtenCount ?? 0
             const writtenOnly = mc === 0 && written > 0
-            return (
-            <Link
+ return (
+ <Link
               key={topic.id}
               href={`/practice?subject=${meta.id}&topic=${topic.id}${writtenOnly ? '&mode=long' : ''}`}
-              className="group bg-surface-raised hover:bg-surface-sunken border border-line hover:border-accent/40 rounded-xl p-5 transition-all flex items-center justify-between"
+              className="group bg-surface-raised hover:bg-surface-sunken border border-line hover:border-accent/40 rounded-xl p-5 transition-colors flex items-center justify-between active:scale-[0.99]"
             >
-              <div className="flex items-center gap-4">
-                <div className="text-2xl">{topic.emoji}</div>
-                <div>
-                  <div className="font-medium mb-0.5 text-ink flex items-center gap-2">
-                    <span>{en ? (topic.en ?? topic.zh) : topic.zh}</span>
+ <div className="flex items-center gap-4">
+ <div className="w-9 h-9 shrink-0 rounded-lg bg-surface-sunken border border-line flex items-center justify-center text-xs font-medium text-ink-muted" aria-hidden>
+                  {(en ? (topic.en ?? topic.zh) : topic.zh).slice(0, 1)}
+                </div>
+ <div>
+ <div className="font-medium mb-0.5 text-ink flex items-center gap-2">
+ <span>{en ? (topic.en ?? topic.zh) : topic.zh}</span>
                     {writtenOnly && (
                       <span className="text-[10px] font-normal px-1.5 py-0.5 rounded border border-gold/40 text-gold shrink-0">
                         {sd.topicWrittenBadge}
                       </span>
-                    )}
-                  </div>
-                  <div className="text-xs text-ink-muted">
+ )}
+ </div>
+ <div className="text-xs text-ink-muted">
                     {sd.topicFwPrefix}{en ? (topic.frameworkEn ?? topic.framework) : topic.framework}{sd.topicCountA}
                     {writtenOnly ? `${written}${sd.topicWrittenCountB}` : `${topic.count}${sd.topicCountB}`}
                   </div>
                   {/* 本機答對率及題數（LOOP 32）。題數未夠只講題數，永不寫「已掌握」。 */}
                   {tally && tally[topic.id]?.total > 0 && (
-                    <div className="mt-1 text-xs text-ink-soft">{evidenceLine(topicEvidence(tally[topic.id]), en)}</div>
-                  )}
-                </div>
-              </div>
-              <svg
+ <div className="mt-1 text-xs text-ink-soft">{evidenceLine(topicEvidence(tally[topic.id]), en)}</div>
+ )}
+ </div>
+ </div>
+ <svg
                 className="w-4 h-4 text-ink-muted group-hover:text-accent transition-colors"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            )
-          })}
-        </div>
+ <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+ </svg>
+ </Link>
+ )
+ })}
+ </div>
 
         {/* FAQ (founders' reply 61a). The page also carries these as FAQPage structured data
             (page.tsx), built by the same function from the same counts. */}
         <section className="mb-12" aria-labelledby="subject-faq">
-          <h2 id="subject-faq" className="text-lg font-medium mb-3 text-ink">{en ? 'Questions about this subject' : '關於呢科嘅常見問題'}</h2>
-          <div className="bg-surface-raised border border-line rounded-2xl px-5 divide-y divide-line">
+ <h2 id="subject-faq" className="text-lg font-medium mb-3 text-ink">{en ? 'Questions about this subject' : '關於呢科嘅常見問題'}</h2>
+ <div className="bg-surface-raised border border-line rounded-2xl px-5 divide-y divide-line">
             {faq.map((f) => (
-              <details key={f.q} className="group py-3">
-                <summary className="cursor-pointer list-none flex items-start justify-between gap-3 text-sm font-medium text-ink-soft hover:text-ink transition-colors">
-                  <span>{f.q}</span>
-                  <span aria-hidden="true" className="text-ink-muted group-open:rotate-45 transition-transform shrink-0 mt-0.5">＋</span>
-                </summary>
-                <p className="text-sm text-ink-muted leading-relaxed mt-2 pr-6">{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
+ <details key={f.q} className="group py-3">
+ <summary className="cursor-pointer list-none flex items-start justify-between gap-3 text-sm font-medium text-ink-soft hover:text-ink transition-colors">
+ <span>{f.q}</span>
+ <span aria-hidden="true" className="text-ink-muted group-open:rotate-45 transition-transform shrink-0 mt-0.5">＋</span>
+ </summary>
+ <p className="text-sm text-ink-muted leading-relaxed mt-2 pr-6">{f.a}</p>
+ </details>
+ ))}
+ </div>
+ </section>
 
         {/* Cross-link to other subjects */}
         <div className="bg-surface-sunken border border-line rounded-2xl p-5 flex items-center justify-between">
-          <div>
-            <div className="font-medium text-sm mb-0.5 text-ink">{sd.crossTitle}</div>
-            <div className="text-xs text-ink-muted">{activeShortNames}{sd.crossLiveSuffix}</div>
-          </div>
-          <Link
+ <div>
+ <div className="font-medium text-sm mb-0.5 text-ink">{sd.crossTitle}</div>
+ <div className="text-xs text-ink-muted">{activeShortNames}{sd.crossLiveSuffix}</div>
+ </div>
+ <Link
             href="/subjects"
             className="shrink-0 min-h-11 text-sm text-accent hover:text-accent-strong flex items-center gap-1"
           >
             {sd.crossAll} <ArrowRight size={14} />
-          </Link>
-        </div>
-      </div>
-    </div>
+ </Link>
+ </div>
+ </div>
+ </div>
   )
 }

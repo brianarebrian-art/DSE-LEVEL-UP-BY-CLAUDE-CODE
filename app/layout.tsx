@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { headers } from 'next/headers'
-import { Inter, EB_Garamond } from 'next/font/google'
+import { Noto_Sans_TC } from 'next/font/google'
 import './globals.css'
 import 'katex/dist/katex.min.css'
 import Navbar from '@/components/Navbar'
@@ -14,18 +14,14 @@ import PrivacyConsentGate from '@/components/PrivacyConsentGate'
 import A11yPanel from '@/components/A11yPanel'
 import ReadingRuler from '@/components/ReadingRuler'
 import { serializeJsonLd } from '@/lib/structuredData'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
-const inter = Inter({ subsets: ['latin'] })
-
-// 標題用襯線體（Night Study 設計，2026-09-19）。只供 `font-serif` 標題用，
-// 正文維持 Inter —— 襯線正文對讀寫障礙學生較難讀（BDA 指引）。
-// next/font 會喺 build 時自行託管，瀏覽器唔會向 Google 發任何請求。
-// EB Garamond 冇中文字形，中文字由 globals.css `--font-serif` 嘅系統襯線接手。
-const garamond = EB_Garamond({
+// Clear System：全站 Noto Sans TC（中英一體）。next/font 自行託管。
+const noto = Noto_Sans_TC({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  style: ['normal', 'italic'],
-  variable: '--font-garamond',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-noto',
+  display: 'swap',
 })
 
 // 部署網域：www.dselevelup.com（2026-10-08 起；2026-10-09 創辦人回覆 58a 改用）。單一來源在 lib/site.ts。
@@ -45,7 +41,7 @@ const SUBJECT_COUNT = getActiveSubjects().length
 
 // 首頁及搜尋結果顯示的標題。創辦人 2026-10-09 指示改為三段，加入「DSE 溫習平台」。
 // Homepage route metadata is defined in app/page.tsx; this is the layout fallback.
-const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 掌握 DSE 核心邏輯' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
+const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 選擇題練判斷' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
 
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
@@ -53,7 +49,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE, // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
   description:
-    '原創 DSE 練習題，選擇題即時批改，附練習表現估算。掌握邏輯，唔係背答案。HKDSE 甲類科目，免費，並非考評局官方網站。', // i18n-exempt: 靜態 SEO meta description
+    '原創 DSE 練習題，選擇題即時批改。選擇題只練判斷同陷阱，唔等於掌握成張卷。HKDSE 甲類科目，免費，並非考評局官方網站。', // i18n-exempt: 靜態 SEO meta description
   // 刻意不設 `title.template` —— 各子頁（/subjects、/notes/[subject] 等）已自行
   // 於標題末尾附上「| DSE Level Up」，加 template 會變成重複兩次。
   applicationName: 'DSE Level Up',
@@ -79,7 +75,7 @@ export const metadata: Metadata = {
     locale: 'zh_HK',
     url: SITE_URL,
     title: SITE_TITLE, // i18n-exempt: 靜態 SEO OG title
-    description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。掌握邏輯，唔係背答案。`, // i18n-exempt: 靜態 SEO OG description
+    description: `免費 DSE 練習平台，涵蓋 ${SUBJECT_COUNT} 科獨立改寫試題。選擇題只練判斷，唔等於成卷掌握。`, // i18n-exempt: 靜態 SEO OG description
     // 刻意不在此宣告 images —— `app/opengraph-image.tsx` 屬 Next.js 檔案約定，
     // 建置時會自動注入 og:image / twitter:image（連 width／height／type）。
     // 兩邊都寫會產生重複標籤。
@@ -165,14 +161,17 @@ export default async function RootLayout({
   return (
     // suppressHydrationWarning：下方防閃爍腳本會喺 React 水合之前改 data-theme，
     // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
-    <html lang="zh-HK" className={`h-full ${garamond.variable}`} suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-surface text-ink`}>
+    <html lang="zh-HK" className={`h-full ${noto.variable}`} suppressHydrationWarning>
+ <body className={`${noto.className} min-h-screen bg-surface text-ink`}>
         {/* Vercel Web Analytics（創辦人 2026-10-02 決定）。用 Vercel 提供的同源 script，
             唔加套件（憲章 §1 第 5 點）；冇 cookie，只計整體瀏覽量。只喺 Vercel 正式部署載入，
             本機及預覽版唔載。私隱頁「啲資料去咗邊」有對應說明。 */}
         {process.env.VERCEL_ENV === 'production' && (
           <Script src="/_vercel/insights/script.js" strategy="afterInteractive" nonce={nonce} />
         )}
+        {/* Vercel Speed Insights：測量真實用戶的頁面載入速度（Web Vitals）。
+            只喺正式部署環境載入，本機及預覽版唔載。 */}
+        {process.env.VERCEL_ENV === 'production' && <SpeedInsights />}
         {/* 防閃爍：必須喺任何內容繪製之前決定主題，否則深色用戶會見到一下白閃。
             內容與 lib/theme.ts 同一條日出方程 —— 呢度係鏡像副本，因為 inline
             script 用唔到 import。兩者若有偏差，ThemeProvider 會喺 mount 後以
@@ -194,7 +193,7 @@ export default async function RootLayout({
         <a href="#main-content" className="skip-link">
           跳至主要內容 · Skip to main content{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}
         </a>
-        <Providers>
+ <Providers>
           {/* AppShell 負責全屏任務模式（/practice 等）隱藏 Navbar／Footer 同收起
               頂部留白。名單見 lib/immersiveRoutes.ts，同 BottomNav 共用同一張。 */}
           <AppShell navbar={<Navbar />} footer={<Footer />}>
@@ -206,12 +205,12 @@ export default async function RootLayout({
           <PrivacyConsentGate />
           {/* SEN 無障礙工具（全站常駐）：字級／易讀字體面板 + 防跳行閱讀尺 */}
           <A11yPanel />
-          <ReadingRuler />
+ <ReadingRuler />
           {/* 手機底部導航（桌面 md:hidden）。放最後：佢會喺 <html> 掛
               data-bottomnav，上面幾個浮動掣靠嗰個變數讓位。 */}
           <BottomNav />
-        </Providers>
-      </body>
-    </html>
+ </Providers>
+ </body>
+ </html>
   )
 }

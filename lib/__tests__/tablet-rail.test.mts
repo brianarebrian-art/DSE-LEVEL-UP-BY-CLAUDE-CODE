@@ -8,7 +8,8 @@ import { readFileSync } from 'node:fs'
 const read = (p: string) => readFileSync(p, 'utf8')
 
 test('the rail, every offset and the CSS variable switch on at the same breakpoint (md)', () => {
-  assert.match(read('components/Sidebar.tsx'), /hidden w-20 flex-col border-r border-line bg-surface md:flex xl:w-\[260px\]/)
+  assert.match(read('components/Sidebar.tsx'), /hidden w-20 flex-col border-r border-line md:flex xl:w-\[260px\]/)
+  assert.match(read('components/Sidebar.tsx'), /chrome-material/)
   assert.match(read('components/AppShell.tsx'), /'md:pl-20 xl:pl-\[260px\]'/)
   assert.match(read('components/Footer.tsx'), /md:pl-20 xl:pl-\[260px\]/)
   assert.match(read('components/Navbar.tsx'), /md:left-20 xl:left-\[260px\]/)

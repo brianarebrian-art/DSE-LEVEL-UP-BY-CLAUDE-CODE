@@ -13,11 +13,37 @@ import { readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 const read = (rel: string) => readFileSync(fileURLToPath(new URL('../../' + rel, import.meta.url)), 'utf8')
-const { SITE_ORIGIN } = await import('../site.ts')
+const { SITE_ORIGIN, SITE_HOST, canonicalSiteRedirectUrl } = await import('../site.ts')
 
-test('SITE_ORIGIN 格式正確（https、無尾斜線）', () => {
+test('SITE_ORIGIN 係正式 www 站（https、無尾斜線）', () => {
+  assert.equal(SITE_ORIGIN, 'https://www.dselevelup.com')
+  assert.equal(SITE_HOST, 'www.dselevelup.com')
   assert.match(SITE_ORIGIN, /^https:\/\/[a-z0-9.-]+$/, '須為 https 且無路徑、無尾斜線')
   assert.ok(!SITE_ORIGIN.endsWith('/'), '尾斜線會令拼出嚟嘅網址出現雙斜線')
+})
+
+test('舊生產 host／apex → 308 目標為 www；preview／localhost 唔轉', () => {
+  const path = 'https://dse-level-up-by-claude-code.vercel.app/practice?x=1'
+  assert.equal(
+    canonicalSiteRedirectUrl('dse-level-up-by-claude-code.vercel.app', path),
+    'https://www.dselevelup.com/practice?x=1',
+  )
+  assert.equal(
+    canonicalSiteRedirectUrl('dselevelup.com', 'https://dselevelup.com/subjects/math'),
+    'https://www.dselevelup.com/subjects/math',
+  )
+  assert.equal(canonicalSiteRedirectUrl('www.dselevelup.com', 'https://www.dselevelup.com/'), null)
+  assert.equal(canonicalSiteRedirectUrl('localhost:3001', 'http://localhost:3001/'), null)
+  assert.equal(
+    canonicalSiteRedirectUrl('dse-level-up-by-claude-code-git-main-foo.vercel.app', 'https://example.vercel.app/'),
+    null,
+  )
+})
+
+test('proxy 會呼叫 canonicalSiteRedirectUrl', () => {
+  const src = read('proxy.ts')
+  assert.match(src, /canonicalSiteRedirectUrl/)
+  assert.match(src, /308/)
 })
 
 test('layout.tsx 同 sitemap.ts 已改用匯入，冇再各自寫死網域', () => {

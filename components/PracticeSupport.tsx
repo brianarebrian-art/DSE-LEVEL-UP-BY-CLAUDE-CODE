@@ -50,8 +50,8 @@ export function EnoughTodayButton() {
       title={en ? 'Stop here for now — no guilt, pick it up next time.' : '先做到呢度 —— 收工冇罪疚，下次再嚟。'}
       className="inline-flex items-center gap-1 min-h-12 px-2 -my-2 rounded-lg text-ink-muted hover:text-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
-      <Moon size={13} aria-hidden /> <span className="text-[11px]">{en ? 'Stop here for now' : '先做到呢度'}</span>
-    </button>
+ <Moon size={13} aria-hidden /> <span className="text-[11px]">{en ? 'Stop here for now' : '先做到呢度'}</span>
+ </button>
   )
 }
 
@@ -80,10 +80,10 @@ export default function PracticeSupport() {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setDoneToday(false) }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [doneToday])
+ }, [doneToday])
 
-  return (
-    <>
+ return (
+ <>
       {/* UX 循環 LOOP 3（2026-09-30）：左下角原本一排三粒浮動藥丸（字級、易讀字體、今日夠了）已移除。
           375×812 實測，這一排（y=714–748）連同下面的無障礙、閱讀尺、情緒支援掣，蓋住題目進度點
           及答錯後的第一行回饋。字級及易讀字體本來已在無障礙面板（components/A11yPanel.tsx），
@@ -92,10 +92,10 @@ export default function PracticeSupport() {
       {/* F09 今日夠了 —— 零罪疚、零「你仲有 X 題未做」 */}
       {doneToday && (
         <div className="fixed inset-0 z-[60] bg-scrim-soft backdrop-blur-sm flex items-center justify-center p-4">
-          <div role="dialog" aria-modal="true" aria-labelledby="enough-today-title" className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
-            <div className="text-3xl mb-3" aria-hidden>🌙</div>
-            <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'Good work. See you next time.' : '你已經好叻，下次再戰。'}</p>
-            <p className="text-sm text-ink-muted mb-5 leading-relaxed">
+ <div role="dialog" aria-modal="true" aria-labelledby="enough-today-title" className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
+ <div className="text-3xl mb-3" aria-hidden></div>
+ <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'Good work. See you next time.' : '你已經好叻，下次再戰。'}</p>
+ <p className="text-sm text-ink-muted mb-5 leading-relaxed">
               {blindSpotsToday > 0
                 ? en
                   ? `You uncovered ${blindSpotsToday} blind spot${blindSpotsToday > 1 ? 's' : ''} today — each one is a mark saved in the exam.`
@@ -104,8 +104,8 @@ export default function PracticeSupport() {
                   ? 'Rest is part of the plan. See you tomorrow.'
                   : '休息一下係為咗行更遠嘅路。聽日見。'}
             </p>
-            <div className="space-y-2">
-              <Link
+ <div className="space-y-2">
+ <Link
                 href="/dashboard"
                 className="block min-h-12 rounded-[10px] bg-accent-strong hover:bg-accent-hover text-on-accent text-sm px-4 py-3 transition-colors"
               >
@@ -119,10 +119,10 @@ export default function PracticeSupport() {
               >
                 {en ? 'Actually, one more' : '諗返轉頭，再做多陣'}
               </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+ </div>
+ </div>
+ </div>
+ )}
+ </>
   )
 }

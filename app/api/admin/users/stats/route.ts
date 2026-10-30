@@ -155,13 +155,13 @@ export async function GET() {
     let sessions30d = 0
 
     const practisers = new Set<string>()
-    const active7d = new Set<string>()
-    const active30d = new Set<string>()
-    const sessionCount = new Map<string, number>()
-    const daysSeen = new Map<string, Set<string>>()
-    const daily = new Map<string, { users: Set<string>; sessions: number; questions: number }>()
-    const bySubject = new Map<string, { sessions: number; users: Set<string>; q: number; c: number }>()
-    const byTier = new Map<string, { answered: number; correct: number }>()
+ const active7d = new Set<string>()
+ const active30d = new Set<string>()
+ const sessionCount = new Map<string, number>()
+ const daysSeen = new Map<string, Set<string>>()
+ const daily = new Map<string, { users: Set<string>; sessions: number; questions: number }>()
+ const bySubject = new Map<string, { sessions: number; users: Set<string>; q: number; c: number }>()
+ const byTier = new Map<string, { answered: number; correct: number }>()
     let difficultySample = 0
 
     // 香港日界。HK 全年無夏令時間，所以字串比較即等同時區比較。
@@ -306,8 +306,8 @@ export async function GET() {
       live: (() => {
         const ages = rows
           .map((r) => (r.updated_at ? now - Date.parse(r.updated_at) : NaN))
-          .filter((n) => Number.isFinite(n) && n >= 0)
-        const within = (ms: number) => ages.filter((a) => a <= ms).length
+ .filter((n) => Number.isFinite(n) && n >= 0)
+ const within = (ms: number) => ages.filter((a) => a <= ms).length
         return {
           min2: within(2 * 60_000),
           min15: within(15 * 60_000),

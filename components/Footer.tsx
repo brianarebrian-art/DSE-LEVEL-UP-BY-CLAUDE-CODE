@@ -109,6 +109,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/terms" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
+                  {t.footer.terms}
+                </Link>
+              </li>
+              <li>
                 <Link href="/community-safety" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.communitySafety}
                 </Link>
@@ -158,6 +163,10 @@ export default function Footer() {
             <span className="mx-2">·</span>
             <Link href="/privacy" className="underline hover:text-accent transition-colors">
               {t.footer.privacy}
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/terms" className="underline hover:text-accent transition-colors">
+              {t.footer.terms}
             </Link>
             <span className="mx-2">·</span>
             <Link href="/community-safety" className="underline hover:text-accent transition-colors">

@@ -96,7 +96,7 @@ export default function StagedExplanation({
             </li>
           ))}
         </ol>
-        {visible < steps.length && moreButton('睇埋其餘', 'Show the rest')}
+        {visible < steps.length && moreButton('睇埋其餘', 'Show the rest') /* i18n-exempt: both languages are arguments */}
       </div>
     )
   }
@@ -112,7 +112,7 @@ export default function StagedExplanation({
           </p>
         ))}
       </div>
-      {!full && (preview?.rest.length ?? 0) > 0 && moreButton('睇埋其餘', 'Show the rest')}
+      {!full && (preview?.rest.length ?? 0) > 0 && moreButton('睇埋其餘', 'Show the rest') /* i18n-exempt: both languages are arguments */}
     </div>
   )
 }

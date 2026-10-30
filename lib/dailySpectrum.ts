@@ -8,9 +8,14 @@ import { hkDayString } from '@/lib/hkTime'
 
 export interface DaySpectrum {
   date: string // YYYY-MM-DD（HKT，04:00 日界線 — 見 lib/hkTime.ts）
+  /** Attempts finished today. Not correct counts. */
   easy: number
   medium: number
   hard: number
+  /** Correct answers today. Absent on records written before this field existed. */
+  easyCorrect?: number
+  mediumCorrect?: number
+  hardCorrect?: number
 }
 
 const KEY = 'dse_daily_spectrum'
@@ -35,11 +40,20 @@ export function getTodaySpectrum(): DaySpectrum {
   }
 }
 
-export function recordSpectrumAnswer(difficulty: 'easy' | 'medium' | 'hard'): void {
+const CORRECT_KEY = { easy: 'easyCorrect', medium: 'mediumCorrect', hard: 'hardCorrect' } as const
+
+export function recordSpectrumAnswer(difficulty: 'easy' | 'medium' | 'hard', correct = false): void {
   if (typeof window === 'undefined') return
   try {
     const s = getTodaySpectrum()
+    const key = CORRECT_KEY[difficulty]
+    const hadCorrect = s[key]
     s[difficulty] += 1
+    // A day that already counted attempts before correct-counts existed cannot
+    // grow a partial "correct" figure. Leave the field unset until tomorrow.
+    if (hadCorrect !== undefined || s[difficulty] === 1) {
+      s[key] = (hadCorrect ?? 0) + (correct ? 1 : 0)
+    }
     localStorage.setItem(KEY, JSON.stringify(s))
   } catch {
     /* best-effort */

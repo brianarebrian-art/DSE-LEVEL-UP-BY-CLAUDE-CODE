@@ -29,11 +29,13 @@ const { snapshotLocal, mergeSnapshots, applyLocal } = sync
 //    第一版就係自己 removeItem，於是啱啱好繞過咗佢個 bug —— 一份用捷徑
 //    模擬真實動作嘅 E2E，捉到嘅係捷徑，唔係產品。
 const { clearActiveSession } = await import('../sessionResume.ts')
+const { replaceAttempts, loadAttempts } = await import('../progress.ts')
 type Snapshot = Awaited<ReturnType<typeof snapshotLocal>>
 
-// ── 一部「機」＝ 一份獨立 localStorage ────────────────────────────────────
+// ── 一部「機」＝ 獨立 localStorage + 獨立 in-memory progress（C1）─────────
 class Device {
   store = new Map<string, string>()
+  progressMem: unknown[] = []
   constructor(public name: string) {}
 }
 /** 把 globalThis 換成呢部機嘅 storage，跑完還原 —— 三部機唔會互相污染。 */
@@ -46,8 +48,24 @@ function on<T>(d: Device, fn: () => T): T {
     removeItem: (k: string) => void d.store.delete(k),
   }
   g.localStorage = ls
-  g.window = { localStorage: ls, dispatchEvent: () => true }
-  try { return fn() } finally { g.window = prevW; g.localStorage = prevL }
+  const win = {
+    localStorage: ls,
+    dispatchEvent: () => true,
+    __dse_progress_mem: d.progressMem,
+  }
+  g.window = win
+  try {
+    const out = fn()
+    d.progressMem = (win.__dse_progress_mem as unknown[]) ?? d.progressMem
+    return out
+  } finally {
+    g.window = prevW
+    g.localStorage = prevL
+  }
+}
+
+function setProgress(list: unknown[]) {
+  replaceAttempts(list as never)
 }
 
 /** 雲端 —— 一行 user_progress。 */
@@ -70,7 +88,7 @@ const attempt = (id: string, subjectId: string, ts: number) =>
      grade: '4', topicResults: [{ topic: 't', correct: 7, total: 10 }], elapsed: 600, timestamp: ts })
 
 const readProgress = (d: Device) =>
-  (JSON.parse(d.store.get('dse_progress') ?? '[]') as { id: string }[]).map((a) => a.id).sort()
+  on(d, () => loadAttempts().map((a) => (a as { id?: string }).id!).filter(Boolean).sort())
 const readActive = (d: Device) => {
   const raw = d.store.get('dse_active_session')
   return raw ? (JSON.parse(raw) as { current: number; subjectId: string; answers: unknown[] }) : null
@@ -119,7 +137,7 @@ test('iPad 做完嗰節之後，手機唔可以「復活」返嗰節', () => {
   // iPad 做完 → 交卷（清走 active session、寫低成績）
   on(ipad, () => {
     clearActiveSession() // ← 真實交卷路徑（PracticeSession.tsx:587 叫嘅就係佢）
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('s1', 'chemistry', 2000)]))
+    setProgress([attempt('s1', 'chemistry', 2000)])
     localStorage.setItem('dse_free_attempts_total', '1')
     localStorage.setItem('dse_updated_at', '2000')
   })
@@ -139,7 +157,7 @@ test('Desktop 第三部機加入，兩邊嘅成績都見到', () => {
   const mobile = new Device('Mobile'), ipad = new Device('iPad'), desktop = new Device('Desktop')
 
   on(mobile, () => {
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000)]))
+    setProgress([attempt('m1', 'math', 1000)])
     localStorage.setItem('dse_free_attempts_total', '1')
     localStorage.setItem('dse_updated_at', '1000')
   })
@@ -147,7 +165,7 @@ test('Desktop 第三部機加入，兩邊嘅成績都見到', () => {
   pull(ipad, cloud)
 
   on(ipad, () => {
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000), attempt('i1', 'physics', 2000)]))
+    setProgress([attempt('m1', 'math', 1000), attempt('i1', 'physics', 2000)])
     localStorage.setItem('dse_free_attempts_total', '2')
     localStorage.setItem('dse_updated_at', '2000')
   })
@@ -166,7 +184,7 @@ test('兩部機離線各做一節，合併之後兩節都要在（唔可以一�
 
   // 共同起點：兩部機都同步過，各有 m1
   on(mobile, () => {
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000)]))
+    setProgress([attempt('m1', 'math', 1000)])
     localStorage.setItem('dse_free_attempts_total', '1')
     localStorage.setItem('dse_updated_at', '1000')
   })
@@ -175,12 +193,12 @@ test('兩部機離線各做一節，合併之後兩節都要在（唔可以一�
 
   // 各自離線做多一節
   on(mobile, () => {
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000), attempt('m2', 'math', 3000)]))
+    setProgress([attempt('m1', 'math', 1000), attempt('m2', 'math', 3000)])
     localStorage.setItem('dse_free_attempts_total', '2')
     localStorage.setItem('dse_updated_at', '3000')
   })
   on(ipad, () => {
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000), attempt('i2', 'physics', 2500)]))
+    setProgress([attempt('m1', 'math', 1000), attempt('i2', 'physics', 2500)])
     localStorage.setItem('dse_free_attempts_total', '2')
     localStorage.setItem('dse_updated_at', '2500')
   })
@@ -200,7 +218,7 @@ test('一部從未做過題嘅新機，唔可以將雲端洗白', () => {
   const mobile = new Device('Mobile'), blank = new Device('Blank')
 
   on(mobile, () => {
-    localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000)]))
+    setProgress([attempt('m1', 'math', 1000)])
     localStorage.setItem('dse_free_attempts_total', '1')
     localStorage.setItem('dse_topic_stats', JSON.stringify({ 'math::algebra': { total: 20, wrong: 3 } }))
     localStorage.setItem('dse_updated_at', '1000')
@@ -232,12 +250,12 @@ test('六種推拉次序，全部收斂到同一個結果', () => {
     const cloud = newCloud()
     const m = new Device('M'), i = new Device('I')
     on(m, () => {
-      localStorage.setItem('dse_progress', JSON.stringify([attempt('m1', 'math', 1000)]))
+      setProgress([attempt('m1', 'math', 1000)])
       localStorage.setItem('dse_free_attempts_total', '1')
       localStorage.setItem('dse_updated_at', '1000')
     })
     on(i, () => {
-      localStorage.setItem('dse_progress', JSON.stringify([attempt('i1', 'physics', 2000)]))
+      setProgress([attempt('i1', 'physics', 2000)])
       localStorage.setItem('dse_free_attempts_total', '1')
       localStorage.setItem('dse_updated_at', '2000')
     })

@@ -17,6 +17,7 @@
 
 import withdrawn from './withdrawn.json'
 import pendingReview from './pending-review.json'
+import { isMachineRestored } from './machine-restored-ids'
 
 /** `reason` is free text, or one of the codes in WITHDRAW_CODES. */
 export interface WithdrawnEntry { date: string; reason: string }
@@ -79,23 +80,46 @@ export function isPendingReview(subjectId: string, id: string): boolean {
 /**
  * Every authored question has exactly one status. Only `published` reaches students.
  * Order matters when two apply: a known fault (withdrawn) outranks a hidden topic,
- * which outranks an open question (pending review). The counts in CONTENT_STATS
+ * which outranks an open question (pending review), which outranks a machine-restored
+ * item that has not been checked by a person. The counts in CONTENT_STATS
  * (summary.generated.ts) use this function, so they add up to the total by construction.
+ *
+ * `machine_restored` is not the class-C pending list. Those 13 stay in pending_review.
+ * A machine-restored item stays in the repo and is labelled, but it is not in the
+ * default practice pool until a person who knows the subject has checked it.
  */
-export type ContentStatus = 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review'
+export type ContentStatus = 'published' | 'withdrawn' | 'withheld_topic' | 'pending_review' | 'machine_restored'
 
 export function contentStatus(subjectId: string, q: { id: string; topic: string }): ContentStatus {
   if (isWithdrawn(subjectId, q.id)) return 'withdrawn'
   if (isHiddenTopic(subjectId, q.topic)) return 'withheld_topic'
   if (isPendingReview(subjectId, q.id)) return 'pending_review'
+  if (isMachineRestored(q.id)) return 'machine_restored'
   return 'published'
 }
 
-/** Keeps only published questions: drops withheld topics, withdrawn and pending-review questions. */
-export function withoutWithheld<T extends { id: string; topic: string }>(subjectId: string, items: T[]): T[] {
+export interface WithoutWithheldOptions {
+  /**
+   * 只供已完成試卷的覆核。保留 machine_restored，以免題目退出練習池之後，
+   * 覆核用較少題數覆蓋學生剛得到的分數。練習池不得開啟。
+   */
+  keepMachineRestored?: boolean
+}
+
+/** Keeps only published questions: drops withheld topics, withdrawn, pending-review and machine-restored questions. */
+export function withoutWithheld<T extends { id: string; topic: string }>(
+  subjectId: string,
+  items: T[],
+  options?: WithoutWithheldOptions,
+): T[] {
   const hidden = HIDDEN_TOPICS[subjectId] ?? []
   const out = WITHDRAWN[subjectId] ?? {}
   const pending = PENDING_REVIEW[subjectId] ?? {}
-  if (!hidden.length && !Object.keys(out).length && !Object.keys(pending).length) return items
-  return items.filter((q) => contentStatus(subjectId, q) === 'published')
+  const frozen = items.some((q) => isMachineRestored(q.id))
+  if (!hidden.length && !Object.keys(out).length && !Object.keys(pending).length && !frozen) return items
+  return items.filter((q) => {
+    const status = contentStatus(subjectId, q)
+    if (status === 'published') return true
+    return options?.keepMachineRestored === true && status === 'machine_restored'
+  })
 }

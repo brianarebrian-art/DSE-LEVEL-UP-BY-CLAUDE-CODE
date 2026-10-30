@@ -1,0 +1,23 @@
+---
+description: 做介面、動效或設計審核時，用已釘選嘅設計 skills，並以憲章約束覆蓋 skill 建議
+alwaysApply: false
+---
+
+# 設計 skills
+
+已安裝：`emilkowalski/skills` @ `a81dbca07f2217b7103e510c0f13f8d5b017afc9`（MIT）。
+技能目錄喺 `.cursor/skills/`（`emil-design-eng`、`animate`、`apple-design`、`mobile-native` 等）。
+授權全文：`.cursor/skills/vendor/emilkowalski-skills/LICENSE`。
+登記：`docs/skills/D-SKILLS-REGISTRY-2026-10-29.md`。
+
+未安裝：`dickwu/apple-design-skill` @ `ff4ebddf0488598723a82bfdce1afb04de0b1c44`。
+`references/hig/` 係從 developer.apple.com 抽出嘅 Apple 原文，該 repo 冇 SPDX 授權。
+唔好 clone 入本 repo、唔好跑 `scripts/pull-hig.mjs`、唔好 commit 嗰啲頁面。
+要對照 HIG，開 Apple 公開頁並註明出處，只可短引。網頁動效用已安裝嘅 `apple-design`（Emil 蒸餾版，MIT）。
+
+憲章優先於任何 skill：
+
+- 唔好因為 skill 建議而新增 npm 套件（包括 motion、sonner、recharts、base-ui）。
+- 圖表只用現有純 SVG。禁止 Chart.js、D3、Recharts。
+- 本產品係 Next.js 網頁。唔好按 `write-swift` 或 `animate-expo` 改技術棧。
+- 唔好加付費、廣告或付費牆。

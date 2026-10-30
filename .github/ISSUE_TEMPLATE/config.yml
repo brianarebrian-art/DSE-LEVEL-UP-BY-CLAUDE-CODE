@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability (private)
+    url: mailto:dselevelup@gmail.com
+    about: Do not file public issues for security bugs — email dselevelup@gmail.com
+  - name: Use the live site
+    url: https://www.dselevelup.com/
+    about: Students practising DSE do not need a GitHub issue — open the website

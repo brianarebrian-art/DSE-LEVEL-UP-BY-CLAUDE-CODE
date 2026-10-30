@@ -8,14 +8,14 @@
 
 /** 科目 id → 題庫內容版本號（與 Supabase question_bank_versions.version 同一算法）。 */
 export const BANK_VERSION: Record<string, string> = {
-  "math": "40e15e70233d229b",
-  "m2": "8d205b98514d52a8",
-  "m1": "4da53604cf5df560",
-  "physics": "10186704be3e7e26",
+  "math": "15b539cfcc449e48",
+  "m2": "c4f4211b994b4f03",
+  "m1": "c817f944f7c7128d",
+  "physics": "e79c84ca65c58ae9",
   "chemistry": "8cd65430c4a3bd62",
   "biology": "ec6952ee80ef0b0a",
   "english": "03c7506362c20dc0",
-  "chinese": "0d3a16fa37b20509",
+  "chinese": "76af1fdb5877a87e",
   "bafs": "20df67eecd94c703",
   "ict": "858717b5a1a19f0c",
   "economics": "9b7f0314995579f5",

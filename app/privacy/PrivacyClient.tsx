@@ -178,8 +178,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p>
           {en
-            ? 'We use one analytics service: Vercel Web Analytics, from the company that hosts the site. It counts traffic in total — how many visits, which pages, which country, phone or computer — so we know whether the site is being used. It uses no cookies and does not record your name, email or account, and we cannot see any one person in it. Separately, we use Sentry for error monitoring so we can see when the site breaks and fix it. Sentry is not an analytics product here: we do not turn on Session Replay (screen recording), we do not ask it to send your name or email by default, and we do not use it for advertising. Apart from Vercel Web Analytics and Sentry error monitoring there is no other analytics service, no advertising network and no tracking pixel — we scanned for the usual ones (Google Analytics, Tag Manager, PostHog, Mixpanel, Hotjar, Meta Pixel, Plausible, Umami) and there are none. We do not sell data, and we have never shared it with anyone for marketing.'
-            : '我哋用一個分析服務：Vercel Web Analytics，即係寄存網站嗰間公司提供嘅。佢只計網站整體流量 —— 幾多人次瀏覽、睇咗邊啲頁、喺邊個地區、用手機定電腦 —— 等我哋知道個網站有冇人用。佢唔用 cookie，唔會記低你嘅名、電郵或帳戶，我哋亦睇唔到任何一個人。另外，我哋用 Sentry 做錯誤監察，等網站壞咗可以睇到同修。呢度唔當分析工具用：唔開 Session Replay（畫面錄影）、預設唔送你嘅名或電郵、亦唔用嚟做廣告。除咗 Vercel Web Analytics 同 Sentry 錯誤監察之外，冇其他分析服務、冇廣告網絡、冇追蹤像素 —— 我哋掃過常見嗰批（Google Analytics、Tag Manager、PostHog、Mixpanel、Hotjar、Meta Pixel、Plausible、Umami），一個都冇。我哋唔賣數據，亦從來冇為咗營銷而分享畀任何人。'}
+            ? 'We use two measurement tools from Vercel, the company that hosts the site. Vercel Web Analytics counts traffic in total — how many visits, which pages, which country, phone or computer — so we know whether the site is being used. Vercel Speed Insights measures how fast pages load for real visitors (Core Web Vitals). Both use no cookies for advertising, do not record your name, email or account, and we cannot see any one person in them. Separately, we use Sentry for error monitoring so we can see when the site breaks and fix it. Sentry is not an analytics product here: we do not turn on Session Replay (screen recording), we do not ask it to send your name or email by default, and we do not use it for advertising. Apart from Vercel Web Analytics, Vercel Speed Insights and Sentry error monitoring there is no other analytics service, no advertising network and no tracking pixel — we scanned for the usual ones (Google Analytics, Tag Manager, PostHog, Mixpanel, Hotjar, Meta Pixel, Plausible, Umami) and there are none. We do not sell data, and we have never shared it with anyone for marketing.'
+            : '我哋用兩個嚟自 Vercel（寄存網站嗰間公司）嘅量度工具。Vercel Web Analytics 只計網站整體流量 —— 幾多人次瀏覽、睇咗邊啲頁、喺邊個地區、用手機定電腦 —— 等我哋知道個網站有冇人用。Vercel Speed Insights 量度真實訪客嘅頁面載入速度（Core Web Vitals）。兩者都唔用嚟做廣告嘅 cookie，唔會記低你嘅名、電郵或帳戶，我哋亦睇唔到任何一個人。另外，我哋用 Sentry 做錯誤監察，等網站壞咗可以睇到同修。呢度唔當分析工具用：唔開 Session Replay（畫面錄影）、預設唔送你嘅名或電郵、亦唔用嚟做廣告。除咗 Vercel Web Analytics、Vercel Speed Insights 同 Sentry 錯誤監察之外，冇其他分析服務、冇廣告網絡、冇追蹤像素 —— 我哋掃過常見嗰批（Google Analytics、Tag Manager、PostHog、Mixpanel、Hotjar、Meta Pixel、Plausible、Umami），一個都冇。我哋唔賣數據，亦從來冇為咗營銷而分享畀任何人。'}
         </p>
       </Section>
 
@@ -295,6 +295,13 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </p>
       </Section>
 
+      <p className="mt-10 text-sm leading-relaxed text-ink-soft">
+        {en ? 'What the site does not promise is in the ' : '本站不承諾嘅範圍寫喺'}
+        <Link href="/terms" className="font-medium text-accent-strong underline underline-offset-2">
+          {en ? 'terms of use' : '使用條款'}
+        </Link>
+        {en ? '.' : '。'}
+      </p>
       <p className="mt-10 border-t border-line pt-5 text-xs leading-relaxed text-ink-muted">
         {en
           ? 'If we change how any of this works, we change this page at the same time. If you ever find a statement here that does not match what the site actually does, tell us — that is a bug, and we will treat it as one.'

@@ -60,8 +60,8 @@ export default function LearnPage() {
 
   return (
     <>
-      <JsonLd data={jsonLd} />
-      <LearnView />
-    </>
+ <JsonLd data={jsonLd} />
+ <LearnView />
+ </>
   )
 }

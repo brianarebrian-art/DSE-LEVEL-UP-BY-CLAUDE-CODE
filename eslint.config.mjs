@@ -29,6 +29,14 @@ const eslintConfig = defineConfig([
     "ds-bundle/**",
   ]),
   {
+    // CommonJS skill scripts. require() is the module system, not a TypeScript import.
+    files: ["**/*.cjs"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
+  {
     // This app deliberately hydrates localStorage in mount effects across many
     // components (a low-cost, intentional pattern, e.g. usePlan / dashboard / sync).
     // `set-state-in-effect` is a false positive here, so disable it project-wide

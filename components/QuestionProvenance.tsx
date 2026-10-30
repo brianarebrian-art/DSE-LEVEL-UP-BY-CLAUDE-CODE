@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { FLAGGED, type QualityFlag } from '@/data/qualityFlags'
+import { isMachineRestored } from '@/data/questions/machine-restored-ids'
 import { useLocale } from '@/lib/i18n'
 import ReportQuestionButton from './ReportQuestionButton'
 
@@ -45,6 +46,7 @@ export default function QuestionProvenance({ questionId }: { questionId: string 
   const { locale } = useLocale()
   const en = locale === 'en'
   const pending = (FLAGGED[questionId] ?? []).filter((f) => (en ? EN_FLAGS : ZH_FLAGS).includes(f))
+  const machineRestored = isMachineRestored(questionId)
 
   return (
     <div className="mt-3 border-t border-gold/15 pt-3">
@@ -92,6 +94,13 @@ export default function QuestionProvenance({ questionId }: { questionId: string 
         </span>
         <ReportQuestionButton questionId={questionId} />
       </p>
+      {machineRestored && (
+        <p className="mt-1 text-[11px] leading-relaxed text-ink-muted">
+          {en
+            ? 'Not checked item by item. A program recomputed this item. It is left out of the default practice pool.'
+            : '未人手覆核。程式重新計過呢條，預設練習唔會出呢條。'}
+        </p>
+      )}
     </div>
   )
 }

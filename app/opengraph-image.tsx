@@ -29,26 +29,26 @@ export default function OpengraphImage() {
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <div style={{ width: 20, height: 76, backgroundColor: '#008B84', borderRadius: 4 }} />
-          <div style={{ display: 'flex', fontSize: 76, fontWeight: 700, color: '#1A1A1A' }}>
-            DSE&nbsp;<span style={{ color: '#008B84' }}>Level Up</span>
-          </div>
-        </div>
+ <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+ <div style={{ width: 20, height: 76, backgroundColor: '#008B84', borderRadius: 4 }} />
+ <div style={{ display: 'flex', fontSize: 76, fontWeight: 700, color: '#1A1A1A' }}>
+ DSE&nbsp;<span style={{ color: '#008B84' }}>Level Up</span>
+ </div>
+ </div>
 
-        <div style={{ display: 'flex', marginTop: 36, fontSize: 40, color: '#2D2D2D', lineHeight: 1.35 }}>
+ <div style={{ display: 'flex', marginTop: 36, fontSize: 40, color: '#2D2D2D', lineHeight: 1.35 }}>
           {/* 2026-09-30（UX 循環 LOOP 11）：原本寫死「5,167 questions」，比實數少五倍。改由題庫摘要及科目表計算。 */}
           {`Free HKDSE practice — ${TOTAL_QUESTIONS.toLocaleString('en-US')} questions, ${getActiveSubjects().length} subjects`}
         </div>
 
-        <div style={{ display: 'flex', marginTop: 20, fontSize: 28, color: '#6B6B6B' }}>
-          Master the logic, not the answers.
-        </div>
+ <div style={{ display: 'flex', marginTop: 20, fontSize: 28, color: '#6B6B6B' }}>
+ Master the logic, not the answers.
+ </div>
 
-        <div style={{ display: 'flex', marginTop: 'auto', fontSize: 21, color: '#9CA3AF' }}>
-          Independently rewritten questions · Not affiliated with the HKEAA
-        </div>
-      </div>
+ <div style={{ display: 'flex', marginTop: 'auto', fontSize: 21, color: '#9CA3AF' }}>
+ Independently rewritten questions · Not affiliated with the HKEAA
+ </div>
+ </div>
     ),
     size,
   )

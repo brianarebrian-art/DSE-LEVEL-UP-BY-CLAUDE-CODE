@@ -1,8 +1,8 @@
-// Client-side learning-progress store (localStorage).
-// Designed so a server-backed implementation (once the user logs in + we add a DB)
-// can replace the storage layer without changing the public API.
-
-import { notifyProgressChanged } from '@/lib/sync'
+// Client-side learning-progress store (in-memory only for unsigned practice).
+// C1 (2026-10-30): unsigned practice must NOT write long-lived localStorage or cloud.
+// Signed-in sync still snapshots this memory via lib/sync.ts → /api/progress.
+//
+// ⚠️ Do not import @/lib/sync here — sync.ts imports this file (cycle).
 
 export interface AttemptRecord {
   subjectId: string
@@ -23,7 +23,21 @@ export interface AttemptRecord {
   difficultyResults?: Record<'easy' | 'medium' | 'hard', { correct: number; total: number }>
 }
 
-const KEY = 'dse_progress'
+/**
+ * In-tab memory only — refresh / close tab clears unsigned progress.
+ * Stored on `window` so test device shims (separate window objects) stay isolated.
+ */
+function memoryBag(): AttemptRecord[] {
+  if (!isBrowser()) return []
+  const w = window as unknown as { __dse_progress_mem?: AttemptRecord[] }
+  if (!w.__dse_progress_mem) w.__dse_progress_mem = []
+  return w.__dse_progress_mem
+}
+
+function setMemoryBag(list: AttemptRecord[]): void {
+  if (!isBrowser()) return
+  ;(window as unknown as { __dse_progress_mem?: AttemptRecord[] }).__dse_progress_mem = list
+}
 
 function isBrowser() {
   return typeof window !== 'undefined'
@@ -57,17 +71,13 @@ function isUsableAttempt(a: unknown): a is AttemptRecord {
 
 export function loadAttempts(): AttemptRecord[] {
   if (!isBrowser()) return []
-  try {
-    const raw = localStorage.getItem(KEY)
-    if (!raw) return []
-    const parsed = JSON.parse(raw)
-    if (!Array.isArray(parsed)) return []
-    // 靜靜哋隔走爛記錄：學生見到嘅只係少咗嗰一次紀錄，
-    // 而唔係成個進度頁冧咗。
-    return parsed.filter(isUsableAttempt)
-  } catch {
-    return []
-  }
+  return memoryBag().filter(isUsableAttempt)
+}
+
+/** Replace the in-memory attempt list (used by cloud merge / applyLocal). */
+export function replaceAttempts(list: AttemptRecord[]): void {
+  if (!isBrowser()) return
+  setMemoryBag(Array.isArray(list) ? list.filter(isUsableAttempt).slice(-500) : [])
 }
 
 /**
@@ -109,14 +119,19 @@ export function recordAttempt(a: AttemptRecord): void {
   const all = loadAttempts()
   all.push(a)
   // Keep the store bounded (most recent 500 attempts).
-  const trimmed = all.slice(-500)
-  localStorage.setItem(KEY, JSON.stringify(trimmed))
-  notifyProgressChanged() // queue a debounced cloud sync (if signed in)
+  setMemoryBag(all.slice(-500))
+  // Same contract as sync.notifyProgressChanged — keep the event name in sync.
+  try {
+    localStorage.setItem('dse_updated_at', String(Date.now()))
+    window.dispatchEvent(new Event('dse:progress-changed'))
+  } catch {
+    /* quota / private mode */
+  }
 }
 
 export function clearProgress(): void {
   if (!isBrowser()) return
-  localStorage.removeItem(KEY)
+  setMemoryBag([])
 }
 
 // ── Derived statistics ──────────────────────────────────────────────
@@ -215,10 +230,10 @@ function computeRecentActiveDays(attempts: AttemptRecord[], windowDays = RECENT_
 export function computeStats(attempts: AttemptRecord[]): ProgressStats {
   const totalAttempts = attempts.length
   const totalQuestions = attempts.reduce((s, a) => s + a.total, 0)
-  const totalCorrect = attempts.reduce((s, a) => s + a.score, 0)
+ const totalCorrect = attempts.reduce((s, a) => s + a.score, 0)
 
-  const subjMap = new Map<string, SubjectStat>()
-  const topicMap = new Map<string, TopicStat>()
+ const subjMap = new Map<string, SubjectStat>()
+ const topicMap = new Map<string, TopicStat>()
 
   for (const a of attempts) {
     let s = subjMap.get(a.subjectId)
@@ -261,7 +276,7 @@ export function computeStats(attempts: AttemptRecord[]): ProgressStats {
 
   const weakTopics = [...topicMap.values()]
     .map((t) => ({ ...t, accuracy: t.total > 0 ? t.correct / t.total : 0 }))
-    .filter((t) => t.total >= 2 && t.accuracy < 0.8)
+ .filter((t) => t.total >= 2 && t.accuracy < 0.8)
     .sort((a, b) => a.accuracy - b.accuracy)
     .slice(0, 5)
 

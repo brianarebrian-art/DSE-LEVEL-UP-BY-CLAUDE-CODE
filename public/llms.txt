@@ -24,18 +24,20 @@ Contact: dselevelup@gmail.com
 
 ## Question-bank scope
 
-The generated question-bank summary lists 26,633 questions across 25 HKDSE subjects:
-25,572 multiple-choice and 1,061
-written questions. Subject totals are:
+The generated question-bank summary lists 26,419 questions across 25 HKDSE subjects:
+25,358 multiple-choice and 1,061
+written questions. Subject totals are the default practice pool. Items recomputed by a
+program and not checked one by one are excluded from these totals; the transparency
+page is the single source for practice, withdrawn, and held-out counts. Subject totals:
 
 - math 1624
-- m2 1019
-- m1 993
-- physics 1161
+- m2 983
+- m1 898
+- physics 1120
 - chemistry 979
 - biology 1112
 - english 1051
-- chinese 1147
+- chinese 1105
 - bafs 990
 - ict 1111
 - economics 1061

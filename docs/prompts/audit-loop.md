@@ -89,7 +89,7 @@
 - 唔報人數：唔可以顯示任何實時或累計人數；只准用靜態句「有同學同你一齊溫」。
 - 唔用紅字、唔顯示「FAIL」；答錯用「再諗下💡」或「你發現咗一個新盲點！」。
 - 主 UI 用 Morandi 色系；**顏色 token 現時有未決定嘅差異（早期 `:root` 值 vs 實際生效嘅 Morandi ml 色板），任何改顏色 token 嘅動作都要入 FOUNDER-QUEUE，唔好自己揀。**
-- **永遠唔用 `dselevelup.hk` 域名**。正式網址係 `https://dse-level-up-by-claude-code.vercel.app`。
+- **永遠唔用 `dselevelup.hk` 域名**。正式網址係 `https://www.dselevelup.com`（舊 `dse-level-up-by-claude-code.vercel.app` 須 308 轉入）。
 - 分享卡已鎖定：只有「錯因破解卡」係主分享卡；卡面冇任何數字（包括年份）、%、x/y、時間、等級、排名、`ig.me`、`dselevelup.hk`。
 - 非語文科題目只用標準書面語。
 - 練習每節 10 題；反思鎖 30 秒（創辦人指令，唔好改時長）。
@@ -185,7 +185,7 @@ npm run build       # webpack，必須成功
 | T08 | 練習頁 skeleton loader 加文字「正在準備你嘅 10 條練習題…」，加 `aria-live="polite"` | DIRECT | 讀屏軟件會讀到 |
 | T09 | 首頁底部「開始練習」CTA 唔再跳去 `/start` 再揀一次，改為直接顯示同 hero 一樣嘅科目快捷按鈕 | DIRECT | 由首頁到第一題少一步 |
 | T40 | 手機快速切換科目：首頁同練習入口加水平捲動 chip row，顯示最近練習過嘅科目 + 「更多」。最近科目記錄只存 localStorage | SIGN | 390px 下一撳就入到最近科目；冇新 Supabase 欄位 |
-| T41 | Web Share API：喺現有「錯因破解卡」分享流程加 `navigator.share`（支援 files 就分享圖片，唔支援就退回現有下載方式）。**卡面內容完全唔改**，繼續遵守 §3 分享卡約束；分享文字只用正式 vercel.app 網址 | SIGN | 手機原生分享面板出現；唔支援嘅瀏覽器退回正常；卡面零數字 |
+| T41 | Web Share API：喺現有「錯因破解卡」分享流程加 `navigator.share`（支援 files 就分享圖片，唔支援就退回現有下載方式）。**卡面內容完全唔改**，繼續遵守 §3 分享卡約束；分享文字只用正式 `https://www.dselevelup.com` | SIGN | 手機原生分享面板出現；唔支援嘅瀏覽器退回正常；卡面零數字 |
 | T42 | 練習結束頁加一行文字連結「追蹤 @dselevelup 睇更多溫書貼士」（連 T03 嘅官方帳戶）。只限網頁，**唔加落分享卡**，唔用 `ig.me` | SIGN（依賴 T03） | 只出現喺結束頁 |
 | T10 | 「今日夠了」按鈕文案：提出 2–3 個中性選項（如「先做到呢度」） | FOUNDER | — |
 | T11 | 「下一題想要：跟我節奏／基礎／進階／再深入啲」維度混亂：寫出整理方案 | FOUNDER | — |
@@ -248,7 +248,7 @@ npm run build       # webpack，必須成功
 | T33 | CSP `unsafe-inline`：**唔好實施**。寫一份設計筆記：Next 16 正確做法係喺 `proxy.ts` 產生 nonce 並設 CSP header，代價係相關頁面變動態渲染，會影響 SSG、成本同 offline floor。列出受影響頁面同取捨 | FOUNDER | — |
 | T34 | Rate limiting：檢查私隱政策講嘅「伺服器喺記憶體按 IP 計算請求次數」有冇實際實施。有 → 記錄位置；冇 → 喺寫入型 API route 加簡單 in-memory 限流（註明 serverless 多實例下只係盡力而為），**唔用任何外部服務** | SIGN | 私隱政策同實際一致 |
 | T35 | Auth.js `redirect` callback：確認只接受同源 URL；未有就加 | DIRECT | 有對應 test 或手動驗證記錄 |
-| T36 | 加 `public/.well-known/security.txt`：`Contact: mailto:dselevelup@gmail.com`、`Expires:`（一年後）、`Preferred-Languages: zh-HK, en`、`Canonical: https://dse-level-up-by-claude-code.vercel.app/.well-known/security.txt` | DIRECT | Build 後路徑可存取 |
+| T36 | 加 `public/.well-known/security.txt`：`Contact: mailto:dselevelup@gmail.com`、`Expires:`（一年後）、`Preferred-Languages: zh-HK, en`、`Canonical: https://www.dselevelup.com/.well-known/security.txt` | DIRECT | Build 後路徑可存取 |
 | T37 | RLS 審計：寫 `scripts/metrics/rls-audit.sql`（列出 `public` schema 每張表嘅 `rowsecurity` 同 `pg_policies`），由創辦人跑完貼返結果；loop 再根據結果寫建議。**唔改任何 policy** | DIRECT | SQL 檔存在；FOUNDER-QUEUE 有「請跑呢個檔」項目 |
 | T53 | Vercel access token 同 deploy hook 定期輪換：帳戶管理事項，唔係 code。喺 FOUNDER-QUEUE 寫一份簡短 checklist | FOUNDER | — |
 

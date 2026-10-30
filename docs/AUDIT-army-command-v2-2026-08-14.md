@@ -88,8 +88,8 @@ const { subject } = await params
 ### 4.4 🔴 QR 網址錯 —— 且印上紙後無法補救
 
 ```
-dse-level-up.vercel.app/paper-mark/{code}     ← v2.0
-dse-level-up-by-claude-code.vercel.app        ← 實際網域（app/layout.tsx:16、app/sitemap.ts:20）
+https://www.dselevelup.com/paper-mark/{code}  ← 正式網域（舊 vercel.app／apex 308 轉入）
+www.dselevelup.com                            ← 實際網域（lib/site.ts SITE_ORIGIN）
 ```
 
 這是**紙筆**功能：QR 碼印在實體試卷上。網址錯即學生掃出死連結，而紙已印出，無法事後修正。四項之中以此項後果最不可逆。

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Heart, Pencil, Check, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { latestSessionIsLow } from '@/lib/celebrationGate'
 
 // 「今日已經好叻」+ 個人化鼓勵語（Emma/UDL + Sarah）。
 //
@@ -73,12 +74,14 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
   const en = locale === 'en'
 
   const [msg, setMsg] = useState<string | null>(null)
-  const [own, setOwn] = useState<string[]>([])
+ const [tone, setTone] = useState<'pending' | 'low' | 'ok'>('pending')
+ const [own, setOwn] = useState<string[]>([])
   const [editing, setEditing] = useState(false)
   const [draft, setDraft] = useState('')
 
   // 只在 mount 後讀 localStorage —— 避免 SSR／CSR 落差。
   useEffect(() => {
+    setTone(latestSessionIsLow() ? 'low' : 'ok')
     setOwn(readOwn())
     try {
       const saved = JSON.parse(localStorage.getItem(KEY_TODAY) ?? 'null')
@@ -126,31 +129,35 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
 
   return (
     <div className={`rounded-2xl border border-line bg-surface-raised p-5 ${className}`}>
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <Heart size={16} className="text-gold shrink-0" aria-hidden />
-            <Heading className="text-sm font-medium text-ink">
-              {en ? 'You already did well today' : '今日已經好叻'}
+ <div className="flex items-start justify-between gap-3">
+ <div className="min-w-0">
+ <div className="flex items-center gap-2">
+ <Heart size={16} className="text-gold shrink-0" aria-hidden />
+ <Heading className="text-sm font-medium text-ink">
+              {tone === 'low'
+                ? (en ? 'You showed up' : '今日有嚟過')
+                : tone === 'ok'
+                  ? (en ? 'You already did well today' : '今日已經好叻')
+                  : (en ? 'Today' : '今日')}
             </Heading>
-          </div>
-          <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+ </div>
+ <p className="mt-1 text-xs leading-relaxed text-ink-muted">
             {en
               ? 'Press it whenever — for anything at all. No streaks, no counting.'
               : '做咗任何嘢都撳得。唔記連續日數，唔計次數。'}
           </p>
-        </div>
-        <button
+ </div>
+ <button
           onClick={() => setEditing((s) => !s)}
           aria-expanded={editing}
           aria-label={en ? 'Edit my own messages' : '編輯自訂鼓勵語'}
           className="min-h-11 min-w-11 shrink-0 inline-flex items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-line hover:text-accent"
         >
-          <Pencil size={15} aria-hidden />
-        </button>
-      </div>
+ <Pencil size={15} aria-hidden />
+ </button>
+ </div>
 
-      <button
+ <button
         onClick={press}
         className="mt-4 min-h-11 w-full rounded-xl bg-accent-strong px-4 py-3 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
       >
@@ -168,13 +175,13 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
 
       {editing && (
         <div className="mt-4 border-t border-line pt-4">
-          <label htmlFor="own-cheer" className="block text-xs text-ink-muted">
+ <label htmlFor="own-cheer" className="block text-xs text-ink-muted">
             {en
               ? `Write your own (up to ${MAX_OWN}). Yours are used instead of ours.`
               : `寫你自己嘅（最多 ${MAX_OWN} 句）。有自訂就只出你嗰批。`}
           </label>
-          <div className="mt-2 flex gap-2">
-            <input
+ <div className="mt-2 flex gap-2">
+ <input
               id="own-cheer"
               value={draft}
               maxLength={MAX_LEN}
@@ -183,34 +190,34 @@ export default function GoodTodayCard({ className = '', headingLevel = 3 }: { cl
               placeholder={en ? 'e.g. Slow is still forward.' : '例如：慢都係向前。'}
               className="min-h-11 w-full rounded-xl border border-line-strong bg-surface-sunken px-3 py-2 text-sm text-ink-soft outline-none placeholder:text-ink-muted focus:border-accent"
             />
-            <button
+ <button
               onClick={saveOwn}
               disabled={!draft.trim()}
               aria-label={en ? 'Save' : '儲存'}
               className="min-h-11 min-w-11 shrink-0 inline-flex items-center justify-center rounded-xl border border-accent/30 bg-surface-sunken text-accent transition-colors hover:bg-surface-sunken disabled:opacity-40"
             >
-              <Check size={16} aria-hidden />
-            </button>
-          </div>
+ <Check size={16} aria-hidden />
+ </button>
+ </div>
 
           {own.length > 0 && (
-            <ul className="mt-3 space-y-1.5">
+ <ul className="mt-3 space-y-1.5">
               {own.map((c) => (
-                <li key={c} className="flex items-center gap-2 text-sm text-ink-soft">
-                  <span className="min-w-0 flex-1 break-words">{c}</span>
-                  <button
+ <li key={c} className="flex items-center gap-2 text-sm text-ink-soft">
+ <span className="min-w-0 flex-1 break-words">{c}</span>
+ <button
                     onClick={() => removeOwn(c)}
                     aria-label={en ? `Delete: ${c}` : `刪除：${c}`}
                     className="min-h-11 min-w-11 shrink-0 inline-flex items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-line hover:text-ink"
                   >
-                    <X size={14} aria-hidden />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      )}
-    </div>
+ <X size={14} aria-hidden />
+ </button>
+ </li>
+ ))}
+ </ul>
+ )}
+ </div>
+ )}
+ </div>
   )
 }

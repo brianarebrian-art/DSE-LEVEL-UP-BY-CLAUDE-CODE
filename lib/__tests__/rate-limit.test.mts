@@ -1,10 +1,8 @@
-// proxy.ts 嘅限流（lib/rateLimit.ts）—— 2026-09-25 保安審計。
+// proxy.ts 嘅限流（lib/rateLimit.ts）—— 2026-09-25 保安審計 + Supabase Auth 重建。
 //
 // 守兩件事：
-//   ① Map 有上限。原本短時間內大量唔同 IP 會令佢一路長，因為佢哋全部都未過
-//      「10 分鐘冇活動」嘅清理門檻。
-//   ② Better Auth 嘅密碼登入／註冊（/api/auth/sign-in、/api/auth/sign-up，有橫線）
-//      行嚴格桶。原本只包 Auth.js 嘅 /api/auth/signin、/api/auth/callback。
+//   ① Map 有上限。
+//   ② OAuth callback／migrate 行嚴格桶。
 
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
@@ -33,22 +31,28 @@ test('丟 key 由最耐冇郁嗰啲開始，啱啱郁過嘅唔會被丟', () => 
 })
 
 test('負向自測：冇上限嘅實作會長到 5000', () => {
-  // 證明上面第二條唔係永遠都綠：用一個大到唔會觸發嘅上限，size 會真係長上去
   const l = createLimiter({ maxKeys: 1_000_000 })
   for (let i = 0; i < 5000; i++) l.allow(`ip${i}`, 60_000, 60, 1000 + i)
   assert.equal(l.size(), 5000)
 })
 
-test('嚴格桶：Auth.js 同 Better Auth 嘅登入入口都包', () => {
-  for (const p of ['/api/auth/signin', '/api/auth/signin/google', '/api/auth/callback/google',
-    '/api/auth/sign-in/email', '/api/auth/sign-in/social', '/api/auth/sign-up/email']) {
+test('嚴格桶：Supabase callback 同 migrate、以及殘餘舊 auth 入口', () => {
+  for (const p of [
+    '/auth/callback',
+    '/api/auth/migrate-legacy',
+    '/api/auth/signin',
+    '/api/auth/signin/google',
+    '/api/auth/callback/google',
+    '/api/auth/sign-in/email',
+    '/api/auth/sign-in/social',
+    '/api/auth/sign-up/email',
+  ]) {
     assert.equal(isAuthSensitivePath(p), true, p)
   }
 })
 
-test('嚴格桶：session 輪詢同其他 API 唔包（否則正常用戶會被 429）', () => {
-  for (const p of ['/api/auth/session', '/api/auth/get-session', '/api/auth/csrf', '/api/progress',
-    '/api/auth/signinx', '/api/auth/sign-inx']) {
+test('嚴格桶：其他 API 唔包（否則正常用戶會被 429）', () => {
+  for (const p of ['/api/progress', '/api/auth/csrf', '/dashboard', '/sign-in']) {
     assert.equal(isAuthSensitivePath(p), false, p)
   }
 })

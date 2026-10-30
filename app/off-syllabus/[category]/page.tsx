@@ -53,7 +53,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     <>
       <Breadcrumb items={[{ name: 'DSE Level Up', path: '/' }, { name: '不考之地 · Beyond the syllabus', path: '/off-syllabus' }, { name: c.title, path: `/off-syllabus/${c.slug}` }]} />{/* i18n-exempt: actual bilingual static label; final name is content data */}
       <JsonLd data={jsonLd} />
-      <CategoryView emoji={c.emoji} title={c.title} titleEn={c.titleEn} cards={c.cards} />
+      <CategoryView title={c.title} titleEn={c.titleEn} cards={c.cards} />
     </>
   )
 }
