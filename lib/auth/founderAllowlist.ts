@@ -20,8 +20,8 @@ export { founderBindingInstructions, googleSubFromAuthUser, emailVerifiedFromAut
  * 永遠要求：
  *   - 經驗證嘅 Google 登入（Supabase Auth · Google provider）
  *   - 電郵已驗證
- *   - 電郵精確 = brianarebrian@gmail.com
- *   - Google sub = FOUNDER_GOOGLE_SUB（未設 → 拒絕）
+ *   - 電郵喺 FOUNDER_EMAILS（程式寫死；唔經 env）
+ *   - Google sub ∈ FOUNDER_GOOGLE_SUB 允許清單（逗號／空白分隔；未設 → 拒絕）
  */
 export async function getVerifiedFounderSession(): Promise<FounderAuthResult> {
   const founderSub = process.env.FOUNDER_GOOGLE_SUB

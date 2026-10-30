@@ -4,7 +4,7 @@ import { getServiceSupabase } from '@/utils/supabase/server'
 import { getActiveSubjects } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
 import { requireFounder, founderBindingInstructions } from '@/lib/auth/founderAllowlist'
-import { FOUNDER_EMAIL } from '@/lib/auth/founderIdentity'
+import { FOUNDER_EMAILS } from '@/lib/auth/founderIdentity'
 import { founderAiConfigured, getFounderDeployEnv, founderEnvLabel } from '@/lib/founder/env'
 import { safeLog } from '@/lib/safeLog'
 import { AiJobActionsClient } from '@/components/founder/AiJobActionsClient'
@@ -641,7 +641,13 @@ async function SettingsIdentityBody() {
   return (
     <div className="fos-panel space-y-3 p-4 text-sm">
       <p>
-        允許電郵（唯讀）：<code className="text-[var(--fos-cyan)]">{FOUNDER_EMAIL}</code>
+        允許電郵（唯讀）：{' '}
+        {FOUNDER_EMAILS.map((email, i) => (
+          <span key={email}>
+            {i > 0 ? '、' : null}
+            <code className="text-[var(--fos-cyan)]">{email}</code>
+          </span>
+        ))}
       </p>
       <p>FOUNDER_GOOGLE_SUB：{subSet ? '已設定（值唔顯示）' : '未設定'}</p>
       <p>目前登入：{founder?.email ?? '—'}</p>
@@ -649,7 +655,7 @@ async function SettingsIdentityBody() {
       <p className="text-xs text-[var(--fos-muted)]">{founderBindingInstructions()}</p>
       <p className="text-xs text-[var(--fos-warn)]">Founder OS 不提供新增其他創辦人嘅一般介面。</p>
       <p className="text-xs text-[var(--fos-faint)]">
-        部署前要求：請喺 {FOUNDER_EMAIL} Google 帳戶開啟 2FA 或 Passkey（由帳戶擁有人設定；程式唔會虛構已強制完成）。
+        部署前要求：請喺每位允許電郵嘅 Google 帳戶開啟 2FA 或 Passkey（由帳戶擁有人設定；程式唔會虛構已強制完成）。
       </p>
     </div>
   )
