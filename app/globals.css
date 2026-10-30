@@ -542,10 +542,24 @@ body {
 }
 
 /* Progress fill: scaleX only (no width layout thrash; Phase 4 site-wide).
-   End value comes from --fill-progress (0–1). */
+   End value comes from --fill-progress (0–1).
+   Inline `animation` would beat Tailwind `motion-reduce:animate-none`, so the
+   reduced-motion kill switch lives here. The element must also set a static
+   `transform: scaleX(var(--fill-progress))` (or equivalent) — without it,
+   `w-full` reads as 100% whenever this animation does not run. */
 @keyframes fill-bar {
   from { transform: scaleX(0); }
   to { transform: scaleX(var(--fill-progress, 1)); }
+}
+
+.fill-bar {
+  animation: fill-bar 280ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill-bar {
+    animation: none;
+  }
 }
 
 .animate-pop-in {
