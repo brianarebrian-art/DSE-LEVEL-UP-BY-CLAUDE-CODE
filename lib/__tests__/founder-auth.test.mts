@@ -136,10 +136,11 @@ test('前端可編輯欄位唔存在於判斷介面（無 role／isFounder）', 
   assert.doesNotMatch(src, /NEXT_PUBLIC_/)
 })
 
-test('綁定說明唔洩露 sub 值，並指明唯一電郵', () => {
+test('綁定說明唔洩露 sub 值同允許電郵', () => {
   const text = founderBindingInstructions()
   assert.match(text, /FOUNDER_GOOGLE_SUB/)
-  assert.match(text, new RegExp(FOUNDER_EMAIL.replace('.', '\\.')))
+  assert.doesNotMatch(text, /唯一允許電郵/)
+  assert.doesNotMatch(text, new RegExp(FOUNDER_EMAIL.replace('.', '\\.')))
   assert.doesNotMatch(text, /google-sub-/)
   assert.match(text, /2FA|Passkey/)
 })

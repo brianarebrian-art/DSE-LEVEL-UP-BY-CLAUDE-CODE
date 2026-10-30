@@ -87,7 +87,6 @@ export function founderBindingInstructions(): string {
     '部署擁有人登入 Google 後，可喺 IdP／Supabase Auth identity_data.sub 取得；',
     '或喺 Google Account → Security → Your connections to third-party apps 核對。',
     '設定後重新部署；未設定前一律拒絕進入，唔會自動認領。',
-    `唯一允許電郵：${FOUNDER_EMAIL}`,
     '建議喺該 Google 帳戶開啟 2FA／Passkey（由帳戶擁有人設定，程式唔會代為強制）。',
   ].join(' ')
 }
