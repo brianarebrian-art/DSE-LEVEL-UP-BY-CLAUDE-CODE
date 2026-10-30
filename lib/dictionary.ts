@@ -19,6 +19,8 @@ const zh = {
     tabProgress: '進度',
     tabSaved: '收藏',
     tabAccount: '帳戶',
+    // 漢堡／側欄次要區標題（四格以外：筆記、不考之地、關於…）
+    more: '更多',
   },
   // 前／後頁導航（PageNav）。目的地名一律沿用上面 nav 嘅叫法 —— 同底欄、
   // 側欄同一個原則：掣寫一個名、頁寫另一個名，學生就要記兩套。
@@ -114,21 +116,21 @@ const zh = {
   // 同底欄同一個原則：掣寫一個名、頁寫另一個名，學生要記兩套。
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
-    // 模板叫「Daily Mission」「Today's Practice」，冇跟：上面嗰條原則 ——
-    // /dashboard 自己叫「我的進度」、底欄叫「練習」，側欄另起一個名就係兩套。
-    progress: '我的進度',
+    // IA：四格同名 —— 同 nav.tab*／底欄一字不差（進度唔再叫「我的進度」）。
+    progress: '進度',
     practice: '練習',
+    saved: '收藏',
+    account: '帳戶',
+    notes: '知識凝結',
     // 2026-09-30（UX 循環 LOOP 25）：「DNA」暗示系統建立了學習者模型，實際只是學生自選錯因的統計。
     errorDna: '錯誤模式',
     // 2026-09-30（UX 循環 LOOP 21）：「等級預測」改名。它是本站練習數據的估算，不是考評局成績預測。
     predictor: '練習表現',
     relax: '呼吸空間',
-    saved: '收藏',
     offSyllabus: '不考之地',
-    // 側欄組名（2026-09-30，UX 循環 LOOP 13）：按學生要做的事分組。
-    groupStudy: '溫習',
-    groupReview: '分析',
-    groupRest: '休息',
+    // 側欄組名：主要四格 ＋ 更多（次要工具）＋ 不考之地獨立尾組。
+    groupMain: '主要',
+    groupMore: '更多',
     // 憲章 §9 金句。規格原本擺「Slow is smooth, smooth is fast. — Navy SEALs」，
     // 見 components/Sidebar.tsx 註釋解釋點解換咗。
     quote: '選擇題練判斷，唔係背答案，亦唔等於成張卷。',
@@ -489,6 +491,7 @@ const en: typeof zh = {
     tabProgress: 'Progress',
     tabSaved: 'Saved',
     tabAccount: 'Account',
+    more: 'More',
   },
   offSyllabus: {
     tagline: 'Learning just for fun',
@@ -557,16 +560,17 @@ const en: typeof zh = {
   },
   sidebar: {
     tagline: 'Study Smarter, Not Harder',
-    progress: 'My Progress',
+    progress: 'Progress',
     practice: 'Practise',
+    saved: 'Saved',
+    account: 'Account',
+    notes: 'Notes',
     errorDna: 'Error patterns',
     predictor: 'Practice performance',
     relax: 'Breathing Space',
-    saved: 'Saved',
     offSyllabus: 'Off the Syllabus',
-    groupStudy: 'Study',
-    groupReview: 'Review',
-    groupRest: 'Rest',
+    groupMain: 'Main',
+    groupMore: 'More',
     quote: 'Multiple-choice trains judgement, not memorised answers, and not the whole paper.',
   },
   predictor: {

@@ -6,10 +6,12 @@ import { readFileSync } from 'node:fs'
 
 const read = (p: string) => readFileSync(p, 'utf8')
 
-test('the hamburger menu and the sidebar end with 不考之地', () => {
+test('the hamburger more-list and the sidebar end with 不考之地', () => {
   const nav = read('components/Navbar.tsx')
-  const links = [...nav.matchAll(/\{ href: '([^']+)', key: '[a-zA-Z]+' \}/g)].map((m) => m[1])
-  assert.equal(links.at(-1), '/off-syllabus', 'last hamburger item')
+  const moreStart = nav.indexOf('}[] = [', nav.indexOf('const moreLinks'))
+  const moreBlock = nav.slice(moreStart, nav.indexOf('\n]', moreStart))
+  const more = [...moreBlock.matchAll(/href: '([^']+)'/g)].map((m) => m[1])
+  assert.equal(more.at(-1), '/off-syllabus', 'last more-list item')
   const side = read('components/Sidebar.tsx')
   const items = [...side.matchAll(/\{ href: '([^']+)', key: '[a-zA-Z]+', Icon/g)].map((m) => m[1])
   assert.equal(items.at(-1), '/off-syllabus', 'last sidebar item')
