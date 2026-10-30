@@ -50,7 +50,7 @@
     "@supabase/supabase-js": "^2.108.2",
     "@vercel/speed-insights": "^2.0.0",
     "html2canvas": "^1.4.1",
-    "katex": "^0.17.0",
+    "katex": "^0.19.1",
     "lucide-react": "^1.20.0",
     "next": "^16.4.2",
     "pg": "^8.22.0",
