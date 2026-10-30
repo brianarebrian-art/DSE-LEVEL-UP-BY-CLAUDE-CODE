@@ -1,6 +1,6 @@
--- 0030 DRAFT —— Supabase Auth Google 重建：legacy rename + 新學習表 + RLS
+-- 0030 —— Supabase Auth Google 重建：legacy rename + 新學習表 + RLS
 --
--- ⚠️ 檔名含 DRAFT：未經創辦人「批准發布」同 staging 驗收，禁止 apply 到 production。
+-- ⚠️ 實作 PR 已去 DRAFT 名；未經創辦人「批准發布」同 staging 驗收，禁止 apply 到 production。
 -- 設計說明：docs/auth/SUPABASE-GOOGLE-REBUILD-DESIGN.md
 --
 -- 決策鎖定：

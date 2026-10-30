@@ -8,11 +8,8 @@ import { AuthProvider } from '@/lib/auth/session'
 import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
 
 // LanguageProvider wraps everything so the whole UI can switch 中/EN client-side.
-// AuthProvider is the backend-agnostic seam: it mounts the active auth bridge (Auth.js
-// by default, Better Auth once NEXT_PUBLIC_AUTH_BACKEND=better-auth) and exposes one
-// useAuthSession() everywhere, so useAuthSession()/usePlan() are safe app-wide. When
-// auth is disabled it yields no session and everyone has full access (lib/usePlan.ts).
-// Login UI stays opt-in via the NEXT_PUBLIC_AUTH_ENABLED flag inside AuthButton.
+// AuthProvider mounts Supabase Auth session listener and exposes useAuthSession()
+// app-wide. Login UI stays opt-in via NEXT_PUBLIC_AUTH_ENABLED inside AuthButton.
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     // ThemeProvider 與 LanguageProvider 平行、互不巢狀依賴：主題用 `dse-theme`、

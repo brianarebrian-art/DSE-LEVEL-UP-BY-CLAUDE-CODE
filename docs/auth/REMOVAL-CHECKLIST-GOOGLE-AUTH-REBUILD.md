@@ -1,36 +1,36 @@
 # 移除驗收清單（舊 Google／Auth.js／Better Auth）
 
 配合 `docs/auth/SUPABASE-GOOGLE-REBUILD-DESIGN.md`。  
-**狀態：** 設計階段 · 項目尚未刪除 · 實作 PR 必須逐項打勾。
+**狀態：** 階段 5 實作 PR — 程式項已打勾；**生產發布／Google Console 仍待「批准發布」**。
 
 ## 程式／依賴
 
-- [ ] 刪除 `auth.ts`
-- [ ] 刪除 `app/api/auth/[...nextauth]/`
-- [ ] 刪除／取代 `lib/auth/better-auth.ts`、`lib/auth/client.ts`（BA）
-- [ ] 重寫 `lib/auth/session.tsx` → Supabase session（或拆成新檔後刪舊檔）
-- [ ] `package.json` 移除 `next-auth`、`better-auth`（及僅為 BA 嘅 `pg` 若適用）
-- [ ] 刪除 `components/DataPortability.tsx` 及所有引用
-- [ ] 刪除 `components/InAppBrowserNotice.tsx` 及所有引用
-- [ ] 停止 `lib/progress.ts`／`lib/sync.ts` 對長期 `localStorage` 進度寫入（未登入改 memory-only）
-- [ ] `rg "next-auth|better-auth|AUTH_GOOGLE|authSignInGoogle|DataPortability|InAppBrowserNotice"` → 零業務命中（測試／本清單除外）
+- [x] 刪除 `auth.ts`
+- [x] 刪除 `app/api/auth/[...nextauth]/`
+- [x] 刪除／取代 `lib/auth/better-auth.ts`、`lib/auth/client.ts`（BA）
+- [x] 重寫 `lib/auth/session.tsx` → Supabase session
+- [x] `package.json` 移除 `next-auth`、`better-auth`（`pg` 保留畀 `scripts/db-slow-queries.mjs`）
+- [x] 刪除 `components/DataPortability.tsx` 及所有引用
+- [x] 刪除 `components/InAppBrowserNotice.tsx` 及所有引用（改 sign-in 純文案）
+- [x] 停止 `lib/progress.ts` 對長期 `localStorage` 進度寫入（未登入 memory-only）
+- [ ] `rg "next-auth|better-auth|AUTH_GOOGLE|authSignInGoogle|DataPortability|InAppBrowserNotice"` → 零業務命中（測試／本清單／歷史 docs 除外）— 實作後跑
 
 ## 環境變數（Vercel／.env.example）
 
-- [ ] 移除或註明退役：`AUTH_GOOGLE_ID`、`AUTH_GOOGLE_SECRET`、`AUTH_SECRET`
-- [ ] 移除：`NEXT_PUBLIC_AUTH_BACKEND`、`BETTER_AUTH_*`、`GOOGLE_CLIENT_ID/SECRET`（BA）、`DATABASE_URL`（若只為 BA）
-- [ ] 保留：`NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`SUPABASE_SERVICE_ROLE_KEY`
+- [x] `.env.example` 註明退役：`AUTH_GOOGLE_*`、`AUTH_SECRET`、BA 相關
+- [x] 保留：`NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`SUPABASE_SERVICE_ROLE_KEY`
+- [ ] Vercel production env 實際清走舊 key — **等批准發布**
 
 ## Google Cloud Console
 
-- [ ] 新（或改）redirect **只**指向 Supabase `.../auth/v1/callback`
-- [ ] 移除舊 `.../api/auth/callback/google`
+- [ ] 新（或改）redirect **只**指向 Supabase `.../auth/v1/callback` — **等批准發布**
+- [ ] 移除舊 `.../api/auth/callback/google` — **等批准發布**
 
 ## 文件
 
-- [ ] 歸檔或刪除 `FLIP-TO-BETTER-AUTH.md`
-- [ ] 歸檔或刪除 `docs/auth/G-AUTH-*.md`（以本設計文為準）
-- [ ] 更新 `CONTRIBUTING.md`／`README` 登入說明
+- [x] 刪除 `FLIP-TO-BETTER-AUTH.md`
+- [x] 刪除 `docs/auth/G-AUTH-*.md`（以本設計文為準）
+- [x] 更新 `CONTRIBUTING.md`／`docs/charter.md` 登入說明
 
 ## 驗收指令（實作後）
 

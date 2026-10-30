@@ -1,4 +1,4 @@
-// 用戶資料登記表 —— 每一張帶 `user_id` 嘅表，喺呢度登記一次。
+// 用戶資料登記表 —— 每一張帶 `user_id`（或 profiles.id）嘅表，喺呢度登記一次。
 //
 // ══ 點解要有呢個檔 ══
 // 2026-08-20 查證發現 /api/account/delete 只刪 `user_progress` 同 `profiles`。
@@ -13,48 +13,21 @@
 
 /** 儲存該用戶自己資料、刪帳號時必須清走嘅表。 */
 export const USER_SCOPED_TABLES = [
-  'user_progress', // 雲端練習進度（分數、逐課題答對率、未完成嘅卷）
-  'user_settings', // 無障礙同介面偏好（易讀字體、閱讀尺、字級⋯）
-  'profiles', // 顯示名稱同角色
-  'user_sessions', // 每日一行嘅「開過 app」紀錄（2026-09-11 重建，見 migration 0018）
-  // 影子溫書室的 wall_posts、wall_likes 已於 2026-09-09 由生產資料庫 drop（migration
-  // drop_wall，即 0011）；2026-10-04 只讀核對確認兩表不存在，故自本清單移除，
-  // 私隱頁「共 N 張表」亦由 7 改為 5（審計 #8，創辦人回覆 1a）。
-  // 2026-10-01（R2-11）：此處原本再列一次 'user_sessions'（已在上面），令私隱頁「共 N 張表」多算 1。
-  // 私隱政策同意紀錄（0019，2026-09-09）。
-  //
-  // 「刪帳號要唔要連同意紀錄一齊刪」值得諗一諗：留住佢就等於留住一筆
-  // 「呢個人曾經同意過」嘅個人資料，而佢已經叫我哋走。PDPO 之下，
-  // 抹除請求就係抹除 —— 唔可以自己揀留低一件對我哋有用嘅嘢。
-  //
-  // 而且刪走亦冇後果：佢日後再登入，會當成從未被問過，重新見到同意書。
-  // 呢個結果係啱嘅 —— 佢確實係一個全新開始。
+  'user_progress', // 舊雲端練習進度 blob（遷移來源；仍可能有列）
+  'user_settings', // 無障礙同介面偏好
+  'profiles', // 顯示名稱同電郵（PK = auth.users.id，刪除用 id 欄）
+  'user_sessions', // 每日「開過 app」紀錄
   'privacy_consents',
+  'learning_profiles',
+  'learning_progress',
+  'practice_attempts',
+  'auth_identity_map',
 ] as const
 
 /**
  * 刻意【唔】刪嘅表，每個必須有理由。
  * 冇理由嘅豁免遲早會變成「加咗落去就算」，到時個測試等於冇。
  */
-// ── Better Auth 自己嘅表（只喺 email/password 開咗之後先存在）──────────────
-//
-// ⚠️ 呢批【唔可以】直接塞入 USER_SCOPED_TABLES：嗰個迴圈一律行
-// `.eq('user_id', …)`，而 Better Auth 用嘅係另一套 key。塞咗入去唔會靜靜哋
-// 唔刪 —— 係會撞 42703（undefined_column）令成個抹除 500。
-//
-// 而且 key 嘅【值】都唔同：USER_SCOPED_TABLES 用嘅 userId 係 Google `sub`
-// （見 lib/auth/server.ts），而呢批用嘅係 Better Auth 自己嘅 user id。
-// 兩個 id 喺同一次抹除入面同時存在，所以要分開攞。
-//
-// `verification` 冇 user id —— 佢由 email 做 identifier。唔清嘅話，一個
-// 刪咗帳號嘅學生嘅電郵會留喺嗰度直到 token 過期。所以照 email 清。
-export const BETTER_AUTH_TABLES = [
-  { table: 'session', key: 'userId', of: 'betterAuthUserId' },
-  { table: 'account', key: 'userId', of: 'betterAuthUserId' },
-  { table: 'user', key: 'id', of: 'betterAuthUserId' },
-  { table: 'verification', key: 'identifier', of: 'email' },
-] as const
-
 export const NOT_USER_SCOPED = [
   {
     table: 'review_decisions',
@@ -64,3 +37,8 @@ export const NOT_USER_SCOPED = [
 ] as const
 
 export type UserScopedTable = (typeof USER_SCOPED_TABLES)[number]
+
+/** Column used to scope a user-owned row. New `profiles` uses `id` = auth.uid(). */
+export function userScopeKey(table: UserScopedTable): 'user_id' | 'id' {
+  return table === 'profiles' ? 'id' : 'user_id'
+}

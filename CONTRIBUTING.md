@@ -23,7 +23,7 @@ npm run build  # uses webpack (see package.json)
 Notes:
 
 - Next.js 16 uses **`proxy.ts`** (not a new `middleware.ts`).
-- Production auth default is **Auth.js v5** (Google). `better-auth` may exist in the repo but stays off until founders flip env and approve.
+- Production auth is **Supabase Auth · Google OAuth only** (`@supabase/ssr`). Do not reintroduce Auth.js / Better Auth. Cloud schema changes for auth require founder 「批准發布」 before production apply.
 - Supabase access is **server-only** (`service_role`). Browser clients must not hold that key.
 
 ## Pull request checklist

@@ -1,7 +1,6 @@
 import { PageBreadcrumb } from '@/components/Seo/SeoNavigation'
 import { completeSeoMetadata } from '@/lib/seo'
 import PrivacyClient from './PrivacyClient'
-import { betterAuthEnabled } from '@/lib/auth/better-auth'
 
 // /privacy —— 私隱政策。
 //
@@ -30,11 +29,8 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-surface text-ink-soft">
       <PageBreadcrumb path="/privacy" title={String(metadata.title).replace(/\s*\|\s*DSE Level Up$/, '')} />
-      {/* 存唔存電郵【由實際 backend 決定】，唔係人手維護一句文字。
-          email/password 一開，Better Auth 個 `user` 表就會存電郵 ——
-          嗰一刻原本嗰句「我哋唔會將你嘅電郵地址存入資料庫」即刻變成假。
-          衍生就唔會有「改咗代碼但漏咗改私隱政策」呢個窗口。 */}
-      <PrivacyClient storesEmail={betterAuthEnabled} />
+      {/* Supabase Auth Google：profiles.email 會存電郵（見 migration 0030）。 */}
+      <PrivacyClient storesEmail={true} />
     </div>
   )
 }
