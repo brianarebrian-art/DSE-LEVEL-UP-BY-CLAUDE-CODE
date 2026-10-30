@@ -43,6 +43,15 @@ const nextConfig: NextConfig = {
       // 同緊急換版本都靠學生部機攞到新嘅 sw.js。瀏覽器本身檢查 SW 更新時會繞過
       // HTTP cache，但 CDN 唔會 —— 明寫 no-cache，唔靠預設。
       { source: '/sw.js', headers: [{ key: 'Cache-Control', value: 'no-cache' }] },
+      // 靜態媒體／圖示：長 cache，檔名或 query 有變更先會換。縮短重複造訪嘅載入。
+      {
+        source: '/owl/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/icons/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
       // The /supermarket/:path* iframe exception (SAMEORIGIN) was removed on 2026-09-16.
       // Its only consumer, the virtual supermarket, was deleted on 2026-09-05 (charter §8.1.1).
       // An unused relaxation of a security header must not remain in place.
