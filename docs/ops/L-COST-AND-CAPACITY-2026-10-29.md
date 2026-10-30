@@ -28,15 +28,35 @@ Hobby 超額後多數要等約 30 日額度重置；Function／Deployment Storag
 
 **唔准喺未書面批准下升級 Pro。**
 
-## 1. 創辦人而家要做（唔經 agent）
+## 1. 清舊 deployment（2026-10-30 創辦人已准）
 
-Dashboard：https://vercel.com/dselevelup/dse-level-up-by-claude-code
+創辦人已准清舊 deployment。執行受阻：
 
-1. **Usage** → 確認 Functions Storage／Active CPU 係咪真係 100%。截圖存檔。
-2. **Deployments** → 批量刪除舊 **Preview**（保留 production 最近 2–3 個同而家要用嘅 PR）。Storage 即時唔再計入；永久 GC 要等 recovery。
-3. **Settings → Deployment Retention** → 縮短 Pre-Production／Canceled／Errored（建議試 **1–7 日**；Production 可留 30 日）。預設 Hobby 30 日太長，會囤住 Function bundles。
-4. （可選，止血最強）**Settings → Git → Disable Preview Deployments**，直至 Storage 回落。之後只 deploy `main`。
-5. 若學生站已 5xx／暫停：要嘛等額度重置，要嘛**書面准** Pro trial／Pro（仍受憲章 US$200 死鎖約束）。
+| 途徑 | 結果 |
+|---|---|
+| Vercel MCP | 有 list／cancel，**冇** delete deployment tool |
+| Dashboard（browser） | 未登入（login wall） |
+| `vercel` CLI | 未登入；需要 `VERCEL_TOKEN` |
+
+**請二揀一：**
+
+A. 加 secret `VERCEL_TOKEN`（https://vercel.com/account/tokens，team `dselevelup` 可刪 deployment），agent 會跑：
+
+```bash
+node scripts/ops/delete-old-vercel-previews.mjs --dry-run   # 先預覽
+node scripts/ops/delete-old-vercel-previews.mjs             # 實刪；預設保留 3 個 production Ready、0 個 preview Ready
+```
+
+B. Dashboard 人手：https://vercel.com/dselevelup/dse-level-up-by-claude-code/deployments  
+刪舊 Preview；保留 production 最近 2–3 個。同時 **Settings → Security → Deployment Retention** 將 Pre-Production／Canceled／Errored 縮到 **1–7 日**。
+
+Storage 刪除後即時唔再計入用量；永久 GC 要等 recovery。
+
+其餘：
+
+1. **Usage** 截圖確認是否仍 100%。  
+2. （可選）暫時 **Disable Preview Deployments**。  
+3. 若學生站已 5xx／暫停：等額度重置，或**書面准** Pro（憲章 US$200）。
 
 ## 2. 已落地／建議嘅 repo 措施
 
