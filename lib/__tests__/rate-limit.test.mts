@@ -7,7 +7,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-const { createLimiter, isAuthSensitivePath } = await import('../rateLimit.ts')
+const { createLimiter, isAuthSensitivePath, isUnmeteredApiPath } = await import('../rateLimit.ts')
 
 test('限流本身：窗口內超過上限就擋，過咗窗口放返', () => {
   const l = createLimiter()
@@ -54,5 +54,12 @@ test('嚴格桶：Supabase callback 同 migrate、以及殘餘舊 auth 入口', 
 test('嚴格桶：其他 API 唔包（否則正常用戶會被 429）', () => {
   for (const p of ['/api/progress', '/api/auth/csrf', '/dashboard', '/sign-in']) {
     assert.equal(isAuthSensitivePath(p), false, p)
+  }
+})
+
+test('健康探測唔計入限流，其他 API 仍然計', () => {
+  assert.equal(isUnmeteredApiPath('/api/health'), true)
+  for (const p of ['/api/healthz', '/api/health/extra', '/api/progress', '/api/auth/session', '/health']) {
+    assert.equal(isUnmeteredApiPath(p), false, p)
   }
 })

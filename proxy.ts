@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createLimiter, isAuthSensitivePath } from '@/lib/rateLimit'
+import { createLimiter, isAuthSensitivePath, isUnmeteredApiPath } from '@/lib/rateLimit'
 import { buildCsp, createNonce } from '@/lib/csp'
 import { canonicalSiteRedirectUrl } from '@/lib/site'
 
@@ -78,7 +78,11 @@ export function proxy(request: NextRequest) {
   if (pathname === '/auth/callback' || pathname.startsWith('/auth/callback/')) {
     return rateLimit(request)
   }
-  if (pathname === '/api' || pathname.startsWith('/api/')) return rateLimit(request)
+  if (pathname === '/api' || pathname.startsWith('/api/')) {
+    // 公開健康探測唔計入限流。429 會被 Uptime Kuma 當成服務故障。
+    if (isUnmeteredApiPath(pathname)) return NextResponse.next()
+    return rateLimit(request)
+  }
   return withCsp(request)
 }
 
