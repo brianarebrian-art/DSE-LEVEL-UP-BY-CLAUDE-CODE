@@ -571,9 +571,11 @@ body {
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* Progress fill: scaleX only (no width layout thrash; Phase 4 site-wide).
+   End value comes from --fill-progress (0–1). */
 @keyframes fill-bar {
-  from { width: 0%; }
-  to { width: var(--fill-width); }
+  from { transform: scaleX(0); }
+  to { transform: scaleX(var(--fill-progress, 1)); }
 }
 
 .animate-pop-in {

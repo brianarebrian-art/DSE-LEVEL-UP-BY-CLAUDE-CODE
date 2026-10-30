@@ -50,12 +50,12 @@ export default function GroupCommunity() {
 
       {/* 狀態列（霓虹，誠實文案 —— 唔用作假嘅在線／打卡數字） */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mb-5 text-xs">
-        <span className="text-subj-rose">🔥 {en ? 'Late-night squad HQ · anonymous group study' : '深夜戰友集結區 · 匿名組隊溫書'}</span>
-        <span className="text-accent">📍 {en ? 'Just showing up makes you one of us' : '入到嚟就已經係一分子'}</span>
+        <span className="text-subj-rose">{en ? 'Late-night squad HQ · anonymous group study' : '深夜戰友集結區 · 匿名組隊溫書'}</span>
+        <span className="text-accent">{en ? 'Just showing up makes you one of us' : '入到嚟就已經係一分子'}</span>
       </div>
 
       {/* 公會招募令：玻璃擬態 + 霓虹邊框發光，hover 上浮 + 發光增強 */}
-      <div className="rounded-xl bg-surface-sunken backdrop-blur-md border border-subj-rose/40 p-5 mb-4 transition-all hover:-translate-y-0.5 hover:border-subj-rose/70 hover:shadow-[0_0_28px_rgba(255,0,110,0.3)]">
+      <div className="rounded-xl bg-surface-sunken border border-line p-5 mb-4 transition-colors hover:border-line-strong">
         <div className="flex items-center gap-3 mb-4">
           <div
             className="w-11 h-11 rounded-xl flex items-center justify-center bg-neutral-800 text-white text-xl shrink-0"
@@ -133,7 +133,7 @@ export default function GroupCommunity() {
         {IG_FEATURES.map((f) => (
           <div
             key={f.titleZh}
-            className="rounded-xl bg-surface-raised border border-line p-4 transition-all hover:-translate-y-0.5"
+            className="rounded-xl bg-surface-raised border border-line p-4 transition-colors"
             style={{ ['--glow' as string]: f.color }}
           >
             <div

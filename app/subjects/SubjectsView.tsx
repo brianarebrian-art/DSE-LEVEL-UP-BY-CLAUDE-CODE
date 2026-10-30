@@ -92,14 +92,16 @@ export default function SubjectsView() {
     //   ② 「開始 10 題」—— 疊在最上層，直接開始一節（與首頁快速開始同一條 URL）。
     // 不可把 ② 放在 ① 之內：連結不能巢狀，讀屏亦會讀成一條。
     return (
-      <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-2xl p-5 shadow-sm transition-all [@media(hover:hover)]:hover:shadow-md ${accentRing[s.accent] ?? ''}`}>
+      <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-2xl p-5 transition-[border-color,background-color] ${accentRing[s.accent] ?? ''}`}>
         <div className="absolute top-4 right-4">
           <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
             <CheckCircle2 size={10} /> {mc}
             {en ? ' MC' : ' 條 MC'}
           </span>
         </div>
-        <div className="text-3xl mb-3" aria-hidden>{s.emoji}</div>
+        <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+          {en ? s.shortEn : s.short}
+        </p>
         <h2 className="text-lg font-medium mb-1 text-ink tracking-tight">
           <Link
             href={`/subjects/${s.id}`}
@@ -123,7 +125,7 @@ export default function SubjectsView() {
           <Link
             href={quickStartHref(s.id)}
             aria-label={en ? `${s.nameEn}: start ${SESSION_SIZE} questions` : `${s.name}：開始 ${SESSION_SIZE} 題`}
-            className="relative z-10 inline-flex min-h-12 items-center gap-1.5 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent shadow-sm transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="relative z-10 inline-flex min-h-12 items-center gap-1.5 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {en ? `Start ${SESSION_SIZE} questions` : `開始 ${SESSION_SIZE} 題`} <ArrowRight size={14} aria-hidden />
           </Link>
@@ -142,7 +144,9 @@ export default function SubjectsView() {
           <Lock size={10} /> {s.launchDate ?? t.common.comingSoon}
         </span>
       </div>
-      <div className="text-3xl mb-3 grayscale opacity-80">{s.emoji}</div>
+      <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+        {en ? s.shortEn : s.short}
+      </p>
       <div className="font-medium mb-1 text-ink-muted">{name(s)}</div>
       <div className="text-xs text-ink-muted leading-relaxed">{desc(s)}</div>
     </div>

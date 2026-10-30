@@ -120,7 +120,7 @@ export default function Navbar() {
               屬通用行動呼籲，直接導向數學科等於代學生選定科目。路由為複數。 */}
           <Link
             href="/start"
-            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-colors"
+            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-[colors,transform] duration-100 active:scale-[0.97]"
           >
             {t.nav.startPractice}
           </Link>

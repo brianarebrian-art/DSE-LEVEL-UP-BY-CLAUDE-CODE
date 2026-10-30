@@ -185,10 +185,10 @@ export default function ResultPageClient() {
     return () => ctrl.abort()
   }, [])
 
-  const displayScore = useCountUp(result?.score ?? 0, 800) // 規格 §7.6：800ms
+  const displayScore = useCountUp(result?.score ?? 0, 280) // Phase 4：短 enter，唔慶祝
   const displayPct = useCountUp(
     result ? Math.round((result.score / result.total) * 100) : 0,
-    800
+    280
   )
 
   if (!checked) {
@@ -209,13 +209,13 @@ export default function ResultPageClient() {
           <div className="mt-6 grid gap-3">
             <Link
               href="/practice"
-              className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-all"
+              className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyStart} <ArrowRight size={16} />
             </Link>
             <Link
               href="/dashboard"
-              className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-all"
+              className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyProgress}
             </Link>
@@ -339,7 +339,7 @@ export default function ResultPageClient() {
         )}
 
         {/* 本節表現：先講答對幾多，再用中性字眼講表現。冇 DSE 等級、冇獎盃。 */}
-        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center shadow-sm">
+        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
           {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
           <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
           <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
@@ -418,13 +418,13 @@ export default function ResultPageClient() {
               <div className="grid grid-cols-2 gap-3">
                 <Link
                   href={withFromResult(steps.retryHref)}
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-all hover:bg-accent-hover"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover"
                 >
                   <RotateCcw size={16} aria-hidden /> {r.retry}
                 </Link>
                 <Link
                   href={steps.topicsHref}
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-all hover:bg-surface-sunken"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-[colors,transform] duration-100 hover:bg-surface-sunken"
                 >
                   {r.pickTopic} <ArrowRight size={16} aria-hidden />
                 </Link>
@@ -444,7 +444,7 @@ export default function ResultPageClient() {
         {showChineseWarning && (
           <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-gold text-lg">💡</span>
+              
               <span className="text-gold font-medium text-sm">{locale === 'en' ? 'Where the next marks are' : '下一段分數喺邊'}</span>
             </div>
             <p className="text-sm text-ink-soft leading-relaxed">
@@ -459,11 +459,10 @@ export default function ResultPageClient() {
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
           <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
             <div
-              className="h-full rounded-full bg-accent transition-all"
+              className="h-full w-full origin-left rounded-full bg-accent motion-reduce:animate-none"
               style={{
-                width: `${barWidth}%`,
-                animation: 'fill-bar 1.2s ease-out forwards',
-                ['--fill-width' as string]: `${barWidth}%`,
+                ['--fill-progress' as string]: String(barWidth / 100),
+                animation: 'fill-bar 280ms ease-out both',
               }}
             />
           </div>
@@ -500,8 +499,8 @@ export default function ResultPageClient() {
                   </div>
                   <div className="h-1.5 bg-line rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full ${pct >= 80 ? 'bg-accent' : pct >= 50 ? 'bg-gold' : 'bg-rose'}`}
-                      style={{ width: `${pct}%` }}
+                      className={`h-full w-full origin-left rounded-full ${pct >= 80 ? 'bg-accent' : pct >= 50 ? 'bg-gold' : 'bg-rose'}`}
+                      style={{ transform: `scaleX(${pct / 100})` }}
                     />
                   </div>
                 </div>
@@ -527,7 +526,7 @@ export default function ResultPageClient() {
         {/* Teacher hand-in tool — copies the fixed report template to clipboard */}
         <button
           onClick={copyTeacherReport}
-          className="no-print w-full flex items-center justify-center gap-2 bg-surface-sunken hover:bg-surface-raised border border-violet text-ink font-medium py-3.5 rounded-xl transition-all"
+          className="no-print w-full flex items-center justify-center gap-2 bg-surface-sunken hover:bg-surface-raised border border-violet text-ink font-medium py-3.5 rounded-xl transition-[colors,transform] duration-100"
         >
           {reportCopied ? <ClipboardCheck size={16} className="text-accent" /> : <ClipboardCopy size={16} />}
           {reportCopied
@@ -554,7 +553,7 @@ export default function ResultPageClient() {
               setTimeout(() => setShared(false), 1800)
             }
           }}
-          className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-all text-sm"
+          className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-[colors,transform] duration-100 text-sm"
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>

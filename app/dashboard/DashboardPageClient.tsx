@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  Bookmark, Moon, Wrench, Network, CloudSun, Wind, ChartColumnIncreasing } from 'lucide-react'
+  Bookmark, Moon, Leaf, Wrench, Network, CloudSun, Wind, ChartColumnIncreasing } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -155,7 +155,7 @@ export default function DashboardPageClient() {
   if (ntm) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-        <div className="text-6xl" aria-hidden>🌙</div>
+        <Moon size={40} aria-hidden className="text-ink-muted" />
         <h1 className="text-2xl font-serif text-ink">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
         <p className="text-ink-muted leading-relaxed">
           {en ? 'Rest well tonight. See you tomorrow.' : '今晚好好休息。聽日再見。'}
@@ -164,9 +164,9 @@ export default function DashboardPageClient() {
         </p>
         <Link
           href="/relax"
-          className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-all"
+          className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-[colors,transform] duration-100"
         >
-          🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
+          {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
         <button
           onClick={() => setNotTonight(false)}
@@ -185,7 +185,7 @@ export default function DashboardPageClient() {
     const last = stats.recent[0]?.subjectId
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-        <div className="text-6xl" aria-hidden>🌿</div>
+        <Leaf size={40} aria-hidden className="text-ink-muted" />
         <h1 className="text-2xl font-serif text-ink">{en ? 'Today is one of your rest days' : '今日係你自己揀咗嘅休息日'}</h1>
         <p className="text-ink-muted leading-relaxed max-w-sm">
           {en
@@ -196,9 +196,9 @@ export default function DashboardPageClient() {
         </p>
         <Link
           href="/relax"
-          className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-all"
+          className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-[colors,transform] duration-100"
         >
-          🌬️ {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
+          {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
         <Link
           href={last ? `/practice?subject=${encodeURIComponent(last)}&size=1` : '/subjects'}
@@ -244,7 +244,7 @@ export default function DashboardPageClient() {
             </p>
             <Link
               href="/subjects"
-              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-[colors,transform] duration-100"
             >
               {d.emptyCta} <ArrowRight size={16} />
             </Link>
@@ -321,7 +321,7 @@ export default function DashboardPageClient() {
                 Navbar 檔頭實測寬度），第 8 條會喺 1280px 斷點爆版。 */}
             <Link
               href="/bookmarks"
-              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm min-h-11"
             >
               <Bookmark size={15} aria-hidden /> {en ? 'Saved' : '我嘅收藏'}
             </Link>
@@ -329,13 +329,13 @@ export default function DashboardPageClient() {
             <button
               onClick={() => setNotTonight(true)}
               title={en ? 'Hide all nudges and counters until 04:00' : '收起所有題目推送同計數，到 04:00 自動恢復'}
-              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-accent px-4 py-2.5 rounded-xl transition-all text-sm min-h-11"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-accent px-4 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm min-h-11"
             >
               <Moon size={15} aria-hidden /> {en ? 'Not tonight' : '今晚唔溫得'}
             </button>
             <Link
               href="/subjects"
-              className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-all text-sm"
+              className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm"
             >
               {d.continueP} <ArrowRight size={15} />
             </Link>
@@ -511,7 +511,7 @@ export default function DashboardPageClient() {
               </p>
               <button
                 onClick={onRepair}
-                className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-all"
+                className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-[colors,transform] duration-100"
               >
                 <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '一鍵生成：專屬盲點修復卷'}
               </button>
@@ -561,7 +561,7 @@ export default function DashboardPageClient() {
             唔喺 Navbar —— 橫向條實測已迫到 1,024px 斷點。 */}
         <Link
           href="/concept-net"
-          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-all"
+          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-[colors,transform] duration-100"
         >
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -612,11 +612,11 @@ export default function DashboardPageClient() {
               <Link
                 key={s.subjectId}
                 href={`/subjects/${s.subjectId}`}
-                className="block bg-surface-raised hover:bg-surface-sunken border border-line rounded-xl p-4 transition-all"
+                className="block bg-surface-raised hover:bg-surface-sunken border border-line rounded-xl p-4 transition-[colors,transform] duration-100"
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2 font-medium text-ink">
-                    <span>{meta?.emoji ?? '📘'}</span>
+                    <span className="text-xs font-medium text-ink-muted">{meta ? (en ? meta.shortEn : meta.short) : '·'}</span>
                     {subjName(s.subjectId, s.subjectName)}
                   </div>
                   <div className="flex items-center gap-2">
@@ -627,8 +627,8 @@ export default function DashboardPageClient() {
                 <div className="flex items-center gap-3">
                   <div className="flex-1 h-2 bg-line rounded-full overflow-hidden">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-accent to-violet"
-                      style={{ width: `${pct}%` }}
+                      className="h-full w-full origin-left rounded-full bg-accent"
+                      style={{ transform: `scaleX(${pct / 100})` }}
                     />
                   </div>
                   <span className="text-sm text-ink-muted w-10 text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>{pct}%</span>
@@ -646,7 +646,7 @@ export default function DashboardPageClient() {
               <div className="space-y-3">
                 {stats.weakTopics.map((wt) => (
                   <div key={wt.topic} className="flex items-center justify-between text-sm">
-                    <span className="text-ink-soft">💡 {wt.topic}</span>
+                    <span className="text-ink-soft">{wt.topic}</span>
                     <span className="text-gold" style={{ fontVariantNumeric: 'tabular-nums' }}>
                       {wt.correct}/{wt.total}{d.weakCorrectA}{Math.round(wt.accuracy * 100)}%{d.weakCorrectB}
                     </span>
@@ -665,7 +665,7 @@ export default function DashboardPageClient() {
             return (
               <div key={i} className="flex items-center justify-between p-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xl">{meta?.emoji ?? '📘'}</span>
+                  <span className="text-xs font-medium text-ink-muted tabular-nums">{meta ? (en ? meta.shortEn : meta.short) : '·'}</span>
                   <div>
                     <div className="text-sm font-medium text-ink">{subjName(a.subjectId, a.subjectName)}</div>
                     <div className="text-xs text-ink-muted">{relativeTime(a.timestamp, d)}</div>
@@ -689,7 +689,7 @@ export default function DashboardPageClient() {
         {/* 社群卡：IG Group 影子溫書室（學生自發管理，唔係官方 — /relax/group 有清楚聲明） */}
         <Link
           href="/relax/group"
-          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-all"
+          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-[colors,transform] duration-100"
         >
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
