@@ -185,7 +185,7 @@ export default function LongPracticeSession({
           {shaky.length > 0 && (
  <div className="rounded-2xl border border-gold/30 bg-gold/10 p-5 mb-8">
  <p className="text-sm font-medium text-gold mb-2">
-                💡 {tr('你發現咗值得再睇嘅課題', 'Topics worth another look')}
+                {tr('你發現咗值得再睇嘅課題', 'Topics worth another look')}
               </p>
  <ul className="text-sm text-ink-soft space-y-1">
                 {[...new Set(shaky.map((a) => (en ? (a.q.topicEn ?? a.q.topicZh) : a.q.topicZh)))].map((t) => (
@@ -214,22 +214,24 @@ export default function LongPracticeSession({
  )
  }
 
- return (
- <div className="min-h-screen bg-surface px-4 py-6 text-ink sm:px-8 sm:py-10">
- <div className="mx-auto max-w-2xl">
- <div className="chrome-material sticky top-0 z-30 -mx-1 mb-4 flex items-center justify-between gap-2 border-b border-line px-1 py-3">
- <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
+  return (
+    // practice-session：同 MC 練習一樣，令 globals.css 收起 .a11y-fab（頂欄已有
+    // A11yButton !inline-flex）。缺呢個 class 時，md+ 會頂欄＋FAB 雙入口開同一個 panel。
+    <div className="practice-session min-h-screen bg-surface px-4 py-6 text-ink sm:px-8 sm:py-10">
+      <div className="mx-auto max-w-2xl">
+        <div className="chrome-material sticky top-0 z-30 -mx-1 mb-4 flex items-center justify-between gap-2 border-b border-line px-1 py-3">
+          <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
             {tr(`第 ${idx + 1} / ${questions.length} 條`, `${idx + 1} of ${questions.length}`)}
           </span>
- <span className="flex items-center gap-2 sm:gap-3">
- <span className="text-[11px] text-ink-muted">
+          <span className="flex items-center gap-2 sm:gap-3">
+            <span className="text-[11px] text-ink-muted">
               {tr('長題目練習 · 自評制', 'Written practice · self-assessed')}
             </span>
- <EnoughTodayButton />
-            {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）。 */}
+            <EnoughTodayButton />
+            {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）；!inline-flex 令桌面頂欄亦顯示。 */}
             <A11yButton className="!inline-flex" />
- </span>
- </div>
+          </span>
+        </div>
 
         {current.type === 'long' ? (
           <LongQuestionCard key={current.id} q={current} onResult={(l) => handleResult(current, l)} />

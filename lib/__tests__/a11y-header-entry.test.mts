@@ -65,6 +65,15 @@ test('every header students see on a phone carries the button', () => {
   const btn = s.indexOf('<A11yButton', sticky)
   const headEnd = s.indexOf('</div>', s.indexOf('QuestionStatusStrip', sticky))
   assert.ok(sticky > 0 && sticky < btn && btn < headEnd)
+
+  // Long written session must opt into .practice-session so desktop FAB hides
+  // while the sticky header A11yButton stays (!inline-flex). Without the class,
+  // md+ shows both controls opening the same panel.
+  const long = read('app/practice/LongPracticeSession.tsx')
+  assert.match(long, /className="practice-session min-h-screen/)
+  const longBtn = long.indexOf('<A11yButton className="!inline-flex"')
+  const longSession = long.indexOf('practice-session')
+  assert.ok(longSession > 0 && longSession < longBtn, 'A11yButton sits inside practice-session root')
 })
 
 test('opening from far away moves focus into the panel and back on close', () => {
