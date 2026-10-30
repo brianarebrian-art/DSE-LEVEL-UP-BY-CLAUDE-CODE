@@ -42,14 +42,14 @@ export default function OwlMark({
       <path d="M12.4 9.6 15.6 12M27.6 9.6 24.4 12" stroke="var(--color-ink-soft)" strokeWidth="2.4" strokeLinecap="round" />
       {/* 眼 —— 大眼、無攻擊性（規格 §5.1） */}
       <circle cx="16.6" cy="16" r="3.1" fill="var(--color-surface)" />
-      <circle cx="23.4" cy="16" r="3.1" fill="var(--color-surface)" />
-      <circle cx="16.6" cy="16.3" r="1.5" fill="var(--color-ink)" />
-      <circle cx="23.4" cy="16.3" r="1.5" fill="var(--color-ink)" />
+ <circle cx="23.4" cy="16" r="3.1" fill="var(--color-surface)" />
+ <circle cx="16.6" cy="16.3" r="1.5" fill="var(--color-ink)" />
+ <circle cx="23.4" cy="16.3" r="1.5" fill="var(--color-ink)" />
       {/* 喙 */}
       <path d="M20 18.6 18.7 20.8h2.6L20 18.6Z" fill="var(--color-gold)" />
       {/* 書 —— 捧書站立姿 */}
       <path d="M13 26.5h14v5.2H13z" fill="var(--color-surface-sunken)" />
-      <path d="M20 26.5v5.2" stroke="var(--color-ink-faint)" strokeWidth="1" />
-    </svg>
+ <path d="M20 26.5v5.2" stroke="var(--color-ink-faint)" strokeWidth="1" />
+ </svg>
   )
 }

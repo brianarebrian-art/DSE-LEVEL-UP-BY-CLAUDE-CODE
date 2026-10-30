@@ -73,8 +73,8 @@ export function readStoredResult(raw: string | null): StoredResult | null {
   }
   if (typeof d !== 'object' || d === null) return null
   const { score, total, topicResults, elapsed } = d as Record<string, unknown>
-  if (typeof score !== 'number' || typeof total !== 'number') return null
-  if (!Number.isInteger(total) || total <= 0) return null
+ if (typeof score !== 'number' || typeof total !== 'number') return null
+ if (!Number.isInteger(total) || total <= 0) return null
   if (!Number.isInteger(score) || score < 0 || score > total) return null
   if (!Array.isArray(topicResults)) return null
   if (typeof elapsed !== 'number' || !Number.isFinite(elapsed)) return null
@@ -194,9 +194,9 @@ export default function ResultPageClient() {
   if (!checked) {
     return (
       <div aria-busy="true" className="min-h-[55dvh] grid place-items-center px-4 bg-surface">
-        <span className="sr-only">{t.common.loading}</span>
-        <div className="w-full max-w-md h-48 rounded-2xl bg-surface-sunken animate-pulse" />
-      </div>
+ <span className="sr-only">{t.common.loading}</span>
+ <div className="w-full max-w-md h-48 rounded-2xl bg-surface-sunken animate-pulse" />
+ </div>
     )
   }
 
@@ -205,31 +205,31 @@ export default function ResultPageClient() {
     // 空結果頁主 CTA 去科目總覽；次要先睇進度／接返上次。
     return (
       <div className="min-h-[55dvh] grid place-items-center px-4 py-12 bg-surface">
-        <section className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-6 text-center">
-          <h1 className="text-lg font-semibold text-ink">{r.emptyTitle}</h1>
-          <p className="mt-3 text-sm leading-relaxed text-ink-muted">{r.emptyBody}</p>
-          <div className="mt-6 grid gap-3">
-            <Link
+ <section className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-6 text-center">
+ <h1 className="text-lg font-semibold text-ink">{r.emptyTitle}</h1>
+ <p className="mt-3 text-sm leading-relaxed text-ink-muted">{r.emptyBody}</p>
+ <div className="mt-6 grid gap-3">
+ <Link
               href="/subjects"
               className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyStart} <ArrowRight size={16} />
-            </Link>
-            <Link
+ </Link>
+ <Link
               href="/dashboard"
               className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyProgress}
             </Link>
-            <Link
+ <Link
               href="/start"
               className="text-sm text-ink-muted underline-offset-2 hover:text-accent hover:underline"
             >
               {locale === 'en' ? 'Continue where you left off' : '接返上次練習'}
             </Link>
-          </div>
-        </section>
-      </div>
+ </div>
+ </section>
+ </div>
     )
   }
 
@@ -250,8 +250,8 @@ export default function ResultPageClient() {
   // 戳破「答對基礎題 ≠ 5**」的錯覺；文意推論措辭只適用於中文閱讀，故僅限中文科。
   const dr = result.difficultyResults
   const baseAllCorrect = !!dr && dr.easy.total > 0 && dr.easy.correct === dr.easy.total
-  const higherHasMiss =
-    !!dr && (dr.medium.correct < dr.medium.total || dr.hard.correct < dr.hard.total)
+ const higherHasMiss =
+ !!dr && (dr.medium.correct < dr.medium.total || dr.hard.correct < dr.hard.total)
   const showChineseWarning = result.subjectId === 'chinese' && baseAllCorrect && higherHasMiss
 
   // 戰績卡真數據 —— 只用 REAL session 數據；無虛構 JUPAS/搶分數/streak。
@@ -295,8 +295,8 @@ export default function ResultPageClient() {
     const date = hkDayString(studyAt ?? 0)
     const ranked = [...result.topicResults].sort(
       (a, b) => a.correct / a.total - b.correct / b.total
-    )
-    const weak = ranked.filter((tr) => tr.correct / tr.total < 1)
+ )
+ const weak = ranked.filter((tr) => tr.correct / tr.total < 1)
     const weakLines = (weak.length ? weak : ranked).slice(0, 2)
     const en = locale === 'en'
     const weaknesses = weakLines.length
@@ -332,12 +332,12 @@ export default function ResultPageClient() {
     navigator.clipboard.writeText(buildTeacherReport()).then(() => {
       setReportCopied(true)
       setTimeout(() => setReportCopied(false), 2000)
-    })
-  }
+ })
+ }
 
-  return (
-    <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
-      <div className="max-w-2xl mx-auto space-y-6">
+ return (
+ <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
+ <div className="max-w-2xl mx-auto space-y-6">
 
         {/* Subject context */}
         {(result.subjectName || subjMeta) && (
@@ -350,17 +350,17 @@ export default function ResultPageClient() {
         <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
           {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
           <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
-          <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
-            <span className="sr-only">{locale === 'en' ? 'Correct: ' : '正確：'}</span>
+ <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
+ <span className="sr-only">{locale === 'en' ? 'Correct: ' : '正確：'}</span>
             {displayScore} / {result.total}
           </div>
-          <div className="text-ink-muted mb-4" style={{ fontVariantNumeric: 'tabular-nums' }}>{displayPct}%</div>
+ <div className="text-ink-muted mb-4" style={{ fontVariantNumeric: 'tabular-nums' }}>{displayPct}%</div>
 
-          <p className="mb-2 text-base text-ink">
+ <p className="mb-2 text-base text-ink">
             {r.bandLead}
             <strong className="font-medium">{bandLabel}</strong>
-          </p>
-          <p className="max-w-md mx-auto mb-6 text-xs leading-relaxed text-ink-muted">
+ </p>
+ <p className="max-w-md mx-auto mb-6 text-xs leading-relaxed text-ink-muted">
             {band === 'insufficient' ? r.bandTooFew : r.bandNote}
           </p>
 
@@ -371,15 +371,15 @@ export default function ResultPageClient() {
             <p className="text-ink-muted text-xs leading-relaxed mb-4">
               {verify.ok
                 ? locale === 'en'
-                  ? '✓ Re-marked against the question bank on our server — same result.'
-                  : '✓ 已用伺服器上嘅答案庫重批一次，結果一樣。'
+                  ? ' Re-marked against the question bank on our server — same result.'
+                  : ' 已用伺服器上嘅答案庫重批一次，結果一樣。'
                 : locale === 'en'
                   ? `Re-marked against the bank on our server — the figure above is the server's (${verify.score}/${verify.total}). Usually this just means the question bank was updated since your page loaded.`
                   : `已用伺服器上嘅答案庫重批，上面顯示嘅係伺服器嘅結果（${verify.score}/${verify.total}）。通常只係題庫喺你開頁之後更新過。`}
             </p>
-          )}
+ )}
 
-        </div>
+ </div>
 
         {/* 完卷兩條問題（審計 #8，創辦人回覆 5a、草稿「5 ok」，2026-10-04）：分數下面，可以唔答。 */}
         {result.subjectId && <SessionFeedback subjectId={result.subjectId} total={result.total} />}
@@ -396,48 +396,48 @@ export default function ResultPageClient() {
                   href={withFromResult(steps.weakest.href)}
                   className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-gold/50 bg-surface-sunken px-4 py-3 text-ink transition-colors hover:border-gold"
                 >
-                  <span className="min-w-0">
-                    <span className="block text-xs text-ink-muted">
+ <span className="min-w-0">
+ <span className="block text-xs text-ink-muted">
                       {en ? `Needs consolidating this time: ${steps.weakest.correct}/${steps.weakest.total}` : `今次較需要鞏固：${steps.weakest.correct}/${steps.weakest.total}`}
                     </span>
-                    <span className="block font-medium">
+ <span className="block font-medium">
                       {en ? `Practise ${steps.weakest.label}` : `練返「${steps.weakest.label}」`}
                     </span>
-                  </span>
-                  <ArrowRight size={16} aria-hidden className="shrink-0 text-gold" />
-                </Link>
+ </span>
+ <ArrowRight size={16} aria-hidden className="shrink-0 text-gold" />
+ </Link>
               )}
               {steps.cause && (
                 <Link
                   href={withFromResult(steps.cause.href)}
                   className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-line-strong bg-surface-raised px-4 py-3 text-ink transition-colors hover:border-gold"
                 >
-                  <span className="min-w-0">
-                    <span className="block text-xs text-ink-muted">
+ <span className="min-w-0">
+ <span className="block text-xs text-ink-muted">
                       {en ? `You chose this cause ${steps.cause.count} time${steps.cause.count > 1 ? 's' : ''} this session` : `今節揀咗 ${steps.cause.count} 次呢個錯因`}
                     </span>
-                    <span className="block font-medium">
+ <span className="block font-medium">
                       {en ? `Practise against: ${dimensionShort(steps.cause.cause, true)}` : `專練「${dimensionShort(steps.cause.cause, false)}」`}
                     </span>
-                  </span>
-                  <ArrowRight size={16} aria-hidden className="shrink-0 text-ink-muted" />
-                </Link>
-              )}
-              <div className="grid grid-cols-2 gap-3">
-                <Link
+ </span>
+ <ArrowRight size={16} aria-hidden className="shrink-0 text-ink-muted" />
+ </Link>
+ )}
+ <div className="grid grid-cols-2 gap-3">
+ <Link
                   href={withFromResult(steps.retryHref)}
                   className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover"
                 >
-                  <RotateCcw size={16} aria-hidden /> {r.retry}
+ <RotateCcw size={16} aria-hidden /> {r.retry}
                 </Link>
-                <Link
+ <Link
                   href={steps.topicsHref}
                   className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-[colors,transform] duration-100 hover:bg-surface-sunken"
                 >
                   {r.pickTopic} <ArrowRight size={16} aria-hidden />
-                </Link>
-              </div>
-            </nav>
+ </Link>
+ </div>
+ </nav>
           )
         })()}
 
@@ -451,39 +451,39 @@ export default function ResultPageClient() {
             由「你唔夠」改成「你已經拿穩咗乜、跟住攻乜」。 */}
         {showChineseWarning && (
           <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5">
-            <div className="flex items-center gap-2 mb-2">
-              
-              <span className="text-gold font-medium text-sm">{locale === 'en' ? 'Where the next marks are' : '下一段分數喺邊'}</span>
-            </div>
-            <p className="text-sm text-ink-soft leading-relaxed">
+ <div className="flex items-center gap-2 mb-2">
+ 
+ <span className="text-gold font-medium text-sm">{locale === 'en' ? 'Where the next marks are' : '下一段分數喺邊'}</span>
+ </div>
+ <p className="text-sm text-ink-soft leading-relaxed">
               {locale === 'en'
                 ? 'Your foundation questions came out clean this session. The questions you missed are higher-order inference questions, and those test a different skill, not a harder version of the same one. Keep the foundation, then practise the inference questions next.'
                 : '今節的基礎鞏固題全部答對。失分落在高階文意推論題——它考的是另一種能力，而不是同一種能力的加強版。基礎題保持住，下一步就練高階推論題。'}
             </p>
-          </div>
+ </div>
         )}
 
         {/* 答對比例條。2026-09-30 拆走 1–5** 等級刻度及「本節分層表現」的等級對應（難度標籤未校準）。 */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
-          <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
-            <div
+ <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
+ <div
               className="h-full w-full origin-left rounded-full bg-accent motion-reduce:animate-none"
               style={{
                 ['--fill-progress' as string]: String(barWidth / 100),
                 animation: 'fill-bar 280ms ease-out both',
               }}
             />
-          </div>
-          <div className="flex justify-between text-xs text-ink-muted tabular-nums">
-            <span>0</span>
-            <span>{result.total}</span>
-          </div>
-          <div className="mt-4 text-xs text-ink-muted text-center">
+ </div>
+ <div className="flex justify-between text-xs text-ink-muted tabular-nums">
+ <span>0</span>
+ <span>{result.total}</span>
+ </div>
+ <div className="mt-4 text-xs text-ink-muted text-center">
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
-        </div>
+ </div>
 
-        <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} attempted={result.total} />
+ <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} attempted={result.total} />
 
         {/* 聽日有嘢等你 —— 回訪鉤子。擺喺發現卡之後：先講「今日你搞明白咗乜」，
             再講「聽日有咩等緊你」，順序同學生嘅情緒節奏一致。 */}
@@ -491,45 +491,45 @@ export default function ResultPageClient() {
 
         {/* Topic breakdown */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
-          <div className="text-sm font-medium text-ink mb-4">{r.topicAnalysis}</div>
-          <div className="space-y-3">
+ <div className="text-sm font-medium text-ink mb-4">{r.topicAnalysis}</div>
+ <div className="space-y-3">
             {result.topicResults.map((tr) => {
               const pct = Math.round((tr.correct / tr.total) * 100)
               return (
                 <div key={tr.topic}>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-ink-soft">{tr.topic}</span>
-                    <span
+ <div className="flex justify-between text-sm mb-1">
+ <span className="text-ink-soft">{tr.topic}</span>
+ <span
                       className={pct >= 80 ? 'text-accent' : pct >= 50 ? 'text-gold' : 'text-rose'}
                     >
                       {tr.correct}/{tr.total}
                     </span>
-                  </div>
-                  <div className="h-1.5 bg-line rounded-full overflow-hidden">
-                    <div
+ </div>
+ <div className="h-1.5 bg-line rounded-full overflow-hidden">
+ <div
                       className={`h-full w-full origin-left rounded-full ${pct >= 80 ? 'bg-accent' : pct >= 50 ? 'bg-gold' : 'bg-rose'}`}
                       style={{ transform: `scaleX(${pct / 100})` }}
                     />
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+ </div>
+ </div>
+ )
+ })}
+ </div>
 
           {/* Weakest topic recommendation */}
           {(() => {
             const weak = [...result.topicResults].sort(
               (a, b) => a.correct / a.total - b.correct / b.total
-            )[0]
-            if (weak && weak.correct / weak.total < 0.8) {
+ )[0]
+ if (weak && weak.correct / weak.total < 0.8) {
               return (
                 <div className="mt-4 p-3 bg-surface-sunken border-l-[3px] border-gold rounded-xl text-sm text-ink">
                   {r.weakAdviceA}<strong>{weak.topic}</strong>{r.weakAdviceB}{weak.correct}/{weak.total}{r.weakAdviceC}
                 </div>
-              )
-            }
-          })()}
-        </div>
+ )
+ }
+ })()}
+ </div>
 
         {/* Teacher hand-in tool — copies the fixed report template to clipboard */}
         <button
@@ -559,11 +559,11 @@ export default function ResultPageClient() {
               navigator.clipboard.writeText(text)
               setShared(true)
               setTimeout(() => setShared(false), 1800)
-            }
-          }}
-          className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-[colors,transform] duration-100 text-sm"
-        >
-          <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
+ }
+ }}
+ className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-[colors,transform] duration-100 text-sm"
+ >
+ <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
 
         {/* Q-T39（創辦人 2026-10-03）：做完一節先提示可選同步，唔喺首屏逼登入。已登入就唔顯示。 */}
@@ -571,7 +571,7 @@ export default function ResultPageClient() {
 
         {/* 官方帳戶（audit loop T42）：只喺結果頁網頁，唔放上分享卡；經出口閘門。 */}
         <p className="no-print text-center text-sm text-ink-muted">
-          <ExternalLinkGate
+ <ExternalLinkGate
             href={OFFICIAL_SOCIAL[0].href}
             platform={OFFICIAL_SOCIAL[0].platform}
             className="inline-flex min-h-11 items-center underline underline-offset-2 hover:text-accent"
@@ -580,7 +580,7 @@ export default function ResultPageClient() {
               ? `Follow ${OFFICIAL_SOCIAL[0].handle} on Instagram for more study tips`
               : `追蹤 ${OFFICIAL_SOCIAL[0].handle} 睇更多溫書貼士`}
           </ExternalLinkGate>
-        </p>
+ </p>
 
         {/* 過來人打氣牆（Sarah — 完成練習嘅情緒時刻） */}
         {!quiet && <EncouragementWall />}
@@ -589,8 +589,8 @@ export default function ResultPageClient() {
         <p className="text-xs text-ink-muted text-center">
           {r.disclaimer}
         </p>
-      </div>
-    </div>
+ </div>
+ </div>
   )
 }
 
@@ -613,20 +613,20 @@ function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: 
   if (startedAt === undefined || items === null) return null
 
   const title = items.length > 0 ? DISCOVERY_COPY.cardTitle(items.length) : DISCOVERY_COPY.cardEmpty
-  return (
-    <section className="mb-6 rounded-xl border border-line bg-surface-raised p-5">
-      <h2 className="mb-1 text-base font-medium text-ink">{en ? title.en : title.zh}</h2>
-      <p className="mb-3 text-xs text-ink-muted">
+ return (
+ <section className="mb-6 rounded-xl border border-line bg-surface-raised p-5">
+ <h2 className="mb-1 text-base font-medium text-ink">{en ? title.en : title.zh}</h2>
+ <p className="mb-3 text-xs text-ink-muted">
         {en ? DISCOVERY_COPY.cardAttempted(attempted).en : DISCOVERY_COPY.cardAttempted(attempted).zh}
       </p>
       {items.length > 0 && (
-        <ul className="space-y-1.5">
+ <ul className="space-y-1.5">
           {/* 三張以下顯示全部；超過就顯示三張 —— 一次過鋪十幾行係資訊過載，
               而資訊過載本身就係壓力源（規格 §2.3 步驟 5）。 */}
           {items.slice(0, 3).map((d) => (
-            <li key={d.id} className="flex items-start gap-2 text-sm text-ink-soft">
-              <span aria-hidden>{DIMENSION_BY_ID[d.dimension].icon}</span>
-              <span>
+ <li key={d.id} className="flex items-start gap-2 text-sm text-ink-soft">
+ <span aria-hidden>{DIMENSION_BY_ID[d.dimension].icon}</span>
+ <span>
                 {d.label}
                 {/* 而家嘅 label 係系統砌（「課題 · 維度」），已經帶咗維度名，
                     再加個標籤就會出「概念盲區概念盲區」。W3 學生自己改名之後
@@ -638,18 +638,18 @@ function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: 
                     層次唔變。 */}
                 {!d.label.includes(dimensionShort(d.dimension, en)) && (
                   <span className="ml-2 text-xs text-ink-muted">{dimensionShort(d.dimension, en)}</span>
-                )}
-              </span>
-            </li>
+ )}
+ </span>
+ </li>
           ))}
           {items.length > 3 && (
-            <li className="text-xs text-ink-muted">
+ <li className="text-xs text-ink-muted">
               {en ? `+ ${items.length - 3} more` : `仲有 ${items.length - 3} 個`}
             </li>
-          )}
-        </ul>
-      )}
-    </section>
+ )}
+ </ul>
+ )}
+ </section>
   )
 }
 
@@ -697,26 +697,26 @@ function TomorrowStrip({ en }: { en: boolean }) {
 
   return (
     <section className="bg-surface-raised border border-line rounded-2xl p-5">
-      <h3 className="text-sm font-medium text-ink mb-1.5">
+ <h3 className="text-sm font-medium text-ink mb-1.5">
         {en ? `${items.length} ${items.length === 1 ? 'question is' : 'questions are'} waiting tomorrow` : `聽日有 ${items.length} 條等你`}
       </h3>
-      <p className="text-xs text-ink-muted leading-relaxed mb-3">
+ <p className="text-xs text-ink-muted leading-relaxed mb-3">
         {en
           ? 'Spaced review — these come back at the point where memory starts to fade, so one pass tomorrow is worth several today.'
           : '遺忘曲線排程 —— 呢幾條會喺記憶開始變淡嗰一刻返嚟，所以聽日做一次，抵過今日做幾次。'}
       </p>
-      <ul className="flex flex-wrap gap-2">
+ <ul className="flex flex-wrap gap-2">
         {topics.map((t) => (
-          <li key={t.href + t.label}>
-            <Link
+ <li key={t.href + t.label}>
+ <Link
               href={t.href}
               className="inline-flex min-h-11 items-center text-xs text-ink-soft bg-surface-sunken border border-line rounded-lg px-2.5 py-1 hover:border-accent hover:text-accent transition-colors"
             >
               {t.label}
             </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+ </li>
+ ))}
+ </ul>
+ </section>
   )
 }

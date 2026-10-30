@@ -14,7 +14,7 @@ import { OFFICIAL_SOCIAL } from '@/lib/site'
 // 青 #008B84 承諾勾、實心青 CTA #00726C。weight 400/500，無 font-extrabold。
 const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh: string; en: string }[] = [
   {
-    icon: '🎯',
+    icon: '',
     zhTitle: '因材施教',
     enTitle: 'Teach to the learner',
     quote: '夫子教人，各因其材',
@@ -26,7 +26,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     en: 'We refuse one-size-fits-all, assembly-line teaching. The system remembers which topics you get wrong, suggests which topic to practise next, and reminds you to revisit the questions you missed — you patch your own gaps, not someone else’s template.',
   },
   {
-    icon: '🌏',
+    icon: '',
     zhTitle: '有教無類',
     enTitle: 'Education for everyone',
     quote: '有教無類',
@@ -34,7 +34,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     en: 'We break the monopoly elite schools hold over resources. Regardless of wealth or background, anyone willing to learn gets the most demanding training, free. No barriers, no whitelist, no tiered editions — every feature is unconditionally and permanently free for all.',
   },
   {
-    icon: '💡',
+    icon: '',
     zhTitle: '啟發式教學',
     enTitle: 'Learning through struggle',
     quote: '不憤不啟，不悱不發',
@@ -44,7 +44,7 @@ const CORES: { icon: string; zhTitle: string; enTitle: string; quote: string; zh
     en: 'We do not lay the whole answer out at once. After a wrong answer the explanation opens with its first step; think one step further, then open the rest. That pushes you from memorising toward thinking, and toward reasoning by analogy.',
   },
   {
-    icon: '🕊️',
+    icon: '',
     zhTitle: '仁',
     enTitle: 'Benevolence at the core',
     quote: '己所不欲，勿施於人',
@@ -59,52 +59,52 @@ export default function AboutClient() {
 
   return (
     <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
-      <div className="max-w-2xl mx-auto">
+ <div className="max-w-2xl mx-auto">
 
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-3xl sm:text-4xl font-medium text-ink mb-4">
+ <h1 className="text-3xl sm:text-4xl font-medium text-ink mb-4">
             {en ? 'About ' : '關於 '}<span className="text-gold">DSE Level Up</span>
-          </h1>
-          <p className="text-ink-muted text-lg leading-relaxed">
+ </h1>
+ <p className="text-ink-muted text-lg leading-relaxed">
             {en
               ? 'A 100% free DSE practice platform for every Hong Kong student — built on a simple, old idea: that real teaching adapts to the learner, and that no one should ever be shut out of it.'
               : '一個全免費、畀全港 DSE 考生用嘅練習平台。我哋相信一件好舊但好簡單嘅事：教書要睇人教，亦唔應該有人被拒諸門外。'}
           </p>
-          <p className="text-ink-muted text-sm mt-4 leading-relaxed">
+ <p className="text-ink-muted text-sm mt-4 leading-relaxed">
             {en
               ? 'We turn four ideas from Confucius into the platform’s engineering: 因材施教 (teach to the learner), 有教無類 (education for all), 啟發式教學 (learning through struggle), and 仁 (benevolence).'
               : '我哋將孔子四個教育理念放咗入平台設計入面：因材施教、有教無類、啟發式教學，同埋仁。'}
           </p>
-        </div>
+ </div>
 
         {/* Four cores */}
         <div className="space-y-5">
           {CORES.map((c, i) => (
-            <div key={i} className="bg-surface-raised border border-line rounded-2xl p-6">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl">{c.icon}</span>
-                <div>
-                  <h2 className="font-medium text-lg leading-tight text-ink">
+ <div key={i} className="bg-surface-raised border border-line rounded-2xl p-6">
+ <div className="flex items-center gap-3 mb-2">
+ <span className="text-2xl">{c.icon}</span>
+ <div>
+ <h2 className="font-medium text-lg leading-tight text-ink">
                     {en ? c.enTitle : c.zhTitle}
                   </h2>
-                  <p className="text-gold text-xs mt-0.5 tracking-wide">「{c.quote}」</p>
-                </div>
-              </div>
-              <p className="text-ink-soft text-sm leading-relaxed mt-3">
+ <p className="text-gold text-xs mt-0.5 tracking-wide">「{c.quote}」</p>
+ </div>
+ </div>
+ <p className="text-ink-soft text-sm leading-relaxed mt-3">
                 {en ? c.en : c.zh}
               </p>
-            </div>
-          ))}
-        </div>
+ </div>
+ ))}
+ </div>
 
         {/* Promise — quality control */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6 mt-5">
-          <div className="flex items-center gap-2 mb-3">
-            <ShieldCheck size={20} className="text-accent" />
-            <h2 className="font-medium text-lg text-ink">{en ? 'Our promise' : '我們的承諾'}</h2>
-          </div>
-          <div className="space-y-2.5 text-sm text-ink-soft">
+ <div className="flex items-center gap-2 mb-3">
+ <ShieldCheck size={20} className="text-accent" />
+ <h2 className="font-medium text-lg text-ink">{en ? 'Our promise' : '我們的承諾'}</h2>
+ </div>
+ <div className="space-y-2.5 text-sm text-ink-soft">
             {[
               en
                 ? 'Answers and explanations must pass automated checks before they go live; the questions have not been reviewed by registered teachers. We fix reported errors as soon as we can, and withdrawn questions are listed on the transparency page.'
@@ -119,37 +119,37 @@ export default function AboutClient() {
                 ? 'Free forever, for everyone — there is nothing to buy here.'
                 : '永遠免費，對所有人：呢度冇任何嘢要你買。',
             ].map((line, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <span className="text-accent mt-0.5 shrink-0">✓</span>
-                <span>{line}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+ <div key={i} className="flex items-start gap-2">
+ <span className="text-accent mt-0.5 shrink-0"></span>
+ <span>{line}</span>
+ </div>
+ ))}
+ </div>
+ </div>
 
         {/* FAQ（精選 8 條；完整 20 條見 content/community/faq.md） */}
         <FAQSection />
 
         {/* Contact */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6 mt-5">
-          <h2 className="font-medium text-lg mb-3 text-ink">{en ? 'Get in touch' : '聯絡我們'}</h2>
-          <p className="text-ink-muted mb-4 text-sm leading-relaxed">
+ <h2 className="font-medium text-lg mb-3 text-ink">{en ? 'Get in touch' : '聯絡我們'}</h2>
+ <p className="text-ink-muted mb-4 text-sm leading-relaxed">
             {en
               ? 'Spotted a mistake in a question, or want a subject prioritised? Tell us — accuracy depends on it.'
               : '發現題目有錯，或者想我哋優先處理某一科？歡迎話我哋知，準確度要靠大家一齊把關。'}
           </p>
-          <a
+ <a
             href="mailto:dselevelup@gmail.com"
             className="inline-flex items-center gap-2 bg-surface-sunken hover:bg-surface-sunken border border-line-strong px-4 py-2.5 rounded-xl text-sm text-ink-soft transition-all"
           >
-            <Mail size={16} className="text-gold" /> dselevelup@gmail.com
-          </a>
-          <p className="text-ink-muted mt-4 mb-2 text-sm">
+ <Mail size={16} className="text-gold" /> dselevelup@gmail.com
+ </a>
+ <p className="text-ink-muted mt-4 mb-2 text-sm">
             {en ? 'Official accounts (study tips and updates):' : '官方帳戶（溫書貼士及更新）：'}
           </p>
-          <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-2">
             {OFFICIAL_SOCIAL.map((s) => (
-              <ExternalLinkGate
+ <ExternalLinkGate
                 key={s.platform}
                 href={s.href}
                 platform={s.platform}
@@ -157,19 +157,19 @@ export default function AboutClient() {
               >
                 {s.platform} {s.handle}
               </ExternalLinkGate>
-            ))}
-          </div>
-        </div>
+ ))}
+ </div>
+ </div>
 
         {/* 守護者致謝名單（創辦人決定 7，2026-09-30）：由頁尾移來。放在「聯絡我們」之後，
             因為名單本身邀請大家匯報問題。 */}
         <section id="guardians" aria-labelledby="guardians-title" className="mt-5">
-          <GuardianCredits />
-        </section>
+ <GuardianCredits />
+ </section>
 
         {/* Legal */}
         <div className="bg-surface-sunken border border-line rounded-2xl p-5 text-xs text-ink-muted leading-relaxed mt-5">
-          <strong className="text-ink-muted font-medium">{en ? 'Disclaimer: ' : '免責聲明：'}</strong>
+ <strong className="text-ink-muted font-medium">{en ? 'Disclaimer: ' : '免責聲明：'}</strong>
           {en
             ? 'All questions are independently rewritten practice items, not official HKEAA papers. Practice performance estimates are indicative only; final results are determined by the HKEAA.'
             : '本平台所有試題均為獨立改寫版本，並非香港考試及評核局（HKEAA）官方試題。練習表現估算僅供參考，最終成績以 HKEAA 公布為準。'}
@@ -177,14 +177,14 @@ export default function AboutClient() {
 
         {/* CTA */}
         <div className="mt-10">
-          <Link
+ <Link
             href="/subjects"
             className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-all"
           >
             {en ? 'Start practising' : '開始練習'} <ArrowRight size={16} />
-          </Link>
-        </div>
-      </div>
-    </div>
+ </Link>
+ </div>
+ </div>
+ </div>
   )
 }

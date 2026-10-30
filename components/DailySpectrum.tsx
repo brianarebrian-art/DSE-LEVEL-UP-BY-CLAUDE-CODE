@@ -29,20 +29,20 @@ export default function DailySpectrum() {
 
   if (!s) return null
   const done = TIERS.reduce((a, t) => a + Math.min(s[t.key], t.target), 0)
-  const complete = done >= 10
+ const complete = done >= 10
 
-  return (
-    <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-        <h2 className="font-medium text-ink">🌈 {en ? "Today's study spectrum" : '今日學習光譜'}</h2>
+ return (
+ <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
+ <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+ <h2 className="font-medium text-ink">🌈 {en ? "Today's study spectrum" : '今日學習光譜'}</h2>
         {complete && (
           <span className="text-sm font-medium text-accent">
             {/* 2026-09-30（LOOP 41）：原文「掌握度 +1」。網站沒有任何會加一的掌握度數值，這是虛構的量。 */}
             ✨ {en ? 'Today’s spectrum is complete' : '今日光譜完成'}
           </span>
-        )}
-      </div>
-      <p className="text-xs text-ink-muted mb-4">
+ )}
+ </div>
+ <p className="text-xs text-ink-muted mb-4">
         {en
           ? 'Counts are questions attempted, not questions answered correctly. Suggested pace: 3 foundation · 5 core · 2 advanced.'
           : '數字係已練習題數，唔係答對數。建議節奏：3 題基礎 · 5 題核心 · 2 題進階。'}
@@ -61,30 +61,30 @@ export default function DailySpectrum() {
                 className={`h-3 flex-1 rounded-full transition-colors ${isNewest ? 'animate-pulse motion-reduce:animate-none' : ''}`}
                 style={{ background: filled ? t.color : 'var(--color-surface-sunken)', animationDuration: '300ms', animationIterationCount: filled ? 2 : undefined }}
               />
-            )
-          }),
-        )}
-      </div>
+ )
+ }),
+ )}
+ </div>
 
-      <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-ink-muted">
+ <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-ink-muted">
         {TIERS.map((t) => {
           const attempted = s[t.key]
           const correctKey = t.key === 'easy' ? 'easyCorrect' : t.key === 'medium' ? 'mediumCorrect' : 'hardCorrect'
           const correct = s[correctKey]
           return (
             <span key={t.key} className="inline-flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full inline-block" style={{ background: t.color }} aria-hidden />
+ <span className="w-2 h-2 rounded-full inline-block" style={{ background: t.color }} aria-hidden />
               {en ? t.en : t.zh}
               {' '}
               {en ? 'attempted' : '已練習'} {Math.min(attempted, t.target)}/{t.target}
               {attempted > t.target && <span className="text-ink-muted">(+{attempted - t.target})</span>}
               {correct !== undefined && (
                 <span>{en ? `· correct ${correct}` : `· 答對 ${correct}`}</span>
-              )}
-            </span>
-          )
-        })}
-      </div>
-    </div>
+ )}
+ </span>
+ )
+ })}
+ </div>
+ </div>
   )
 }

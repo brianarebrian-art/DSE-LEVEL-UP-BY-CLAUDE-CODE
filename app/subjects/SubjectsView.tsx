@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Lock, CheckCircle2, Search, Printer } from 'lucide-react'
+import SubjectMark from '@/components/marks/SubjectMark'
 import {
   subjects,
   type SubjectMeta,
@@ -49,7 +50,7 @@ export default function SubjectsView() {
   // Search / category / sort — over the single free, open subject grid.
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<'all' | 'core' | 'extended' | 'elective'>('all')
-  const [sort, setSort] = useState<'default' | 'az' | 'live'>('default')
+ const [sort, setSort] = useState<'default' | 'az' | 'live'>('default')
 
   // 2026-07-31：由「精確 includes」改為錯字容忍比對（藍圖功能 09 的前端版）。
   //
@@ -93,24 +94,24 @@ export default function SubjectsView() {
     // 不可把 ② 放在 ① 之內：連結不能巢狀，讀屏亦會讀成一條。
     return (
       <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-2xl p-5 transition-[border-color,background-color] ${accentRing[s.accent] ?? ''}`}>
-        <div className="absolute top-4 right-4">
-          <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
-            <CheckCircle2 size={10} /> {mc}
+ <div className="absolute top-4 right-4">
+ <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
+ <CheckCircle2 size={10} /> {mc}
             {en ? ' MC' : ' 條 MC'}
           </span>
-        </div>
-        <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+ </div>
+ <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
           {en ? s.shortEn : s.short}
         </p>
-        <h2 className="text-lg font-medium mb-1 text-ink tracking-tight">
-          <Link
+ <h2 className="text-lg font-medium mb-1 text-ink tracking-tight">
+ <Link
             href={`/subjects/${s.id}`}
             className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent"
           >
             {name(s)}
           </Link>
-        </h2>
-        <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
+ </h2>
+ <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
         {/* 2026-09-30（改進循環 2）：唔逐項口試／實作；數字跟 summary。 */}
         <div className="text-[11px] text-ink-muted mb-3 tabular-nums">
           {written > 0
@@ -121,57 +122,57 @@ export default function SubjectsView() {
               ? `${mc} MC · some assessment components are not offered here`
               : `${mc} 條 MC · 部分考核形式未於本站提供`}
         </div>
-        <div className="mt-auto flex items-center justify-between gap-3">
-          <Link
+ <div className="mt-auto flex items-center justify-between gap-3">
+ <Link
             href={quickStartHref(s.id)}
             aria-label={en ? `${s.nameEn}: start ${SESSION_SIZE} questions` : `${s.name}：開始 ${SESSION_SIZE} 題`}
             className="relative z-10 inline-flex min-h-12 items-center gap-1.5 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {en ? `Start ${SESSION_SIZE} questions` : `開始 ${SESSION_SIZE} 題`} <ArrowRight size={14} aria-hidden />
-          </Link>
-          <span aria-hidden className="text-xs text-ink-muted group-hover:text-accent transition-colors">
+ </Link>
+ <span aria-hidden className="text-xs text-ink-muted group-hover:text-accent transition-colors">
             {en ? 'Topics & papers ›' : '課題及卷別 ›'}
           </span>
-        </div>
-      </div>
+ </div>
+ </div>
     )
   }
 
   // Nielsen H1／H5／H9：未上線科唔似可撳卡片——清楚標「未開放」、無連結、無 CTA。
   const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
-    <div
+ <div
       className="relative bg-surface border border-dashed border-line rounded-xl p-5 opacity-90"
       aria-disabled="true"
     >
-      <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1 text-[10px] text-ink-muted bg-surface-sunken px-2 py-0.5 rounded-md">
-          <Lock size={10} aria-hidden /> {s.launchDate ?? t.common.comingSoon}
+ <div className="absolute top-4 right-4">
+ <span className="inline-flex items-center gap-1 text-[10px] text-ink-muted bg-surface-sunken px-2 py-0.5 rounded-md">
+ <Lock size={10} aria-hidden /> {s.launchDate ?? t.common.comingSoon}
         </span>
-      </div>
-      <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+ </div>
+ <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
         {en ? s.shortEn : s.short}
       </p>
-      <div className="font-medium mb-1 text-ink-muted">{name(s)}</div>
-      <div className="text-xs text-ink-muted leading-relaxed">{desc(s)}</div>
-      <p className="mt-3 text-xs text-ink-muted">
+ <div className="font-medium mb-1 text-ink-muted">{name(s)}</div>
+ <div className="text-xs text-ink-muted leading-relaxed">{desc(s)}</div>
+ <p className="mt-3 text-xs text-ink-muted">
         {en
           ? 'Not open for practice yet — pick a live subject above.'
           : '呢科仲未開放練習 —— 請喺上面揀已上線科目。'}
       </p>
-    </div>
-  )
+ </div>
+ )
 
-  return (
-    <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
-      <div className="max-w-5xl mx-auto">
+ return (
+ <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
+ <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-6">
-          <div className="text-ink-muted text-sm mb-2 flex items-center gap-1">
-            <Link href="/" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.home}</Link>
-            <span>/</span>
-            <span>{tl.title}</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">{tl.title}</h1>
+ <div className="text-ink-muted text-sm mb-2 flex items-center gap-1">
+ <Link href="/" className="inline-flex min-h-11 items-center hover:text-accent">{t.common.home}</Link>
+ <span>/</span>
+ <span>{tl.title}</span>
+ </div>
+ <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">{tl.title}</h1>
           {/* 手機用 text-sm：英文介紹比中文長一行，回訪學生多了「最近練過」一行時，
               第一張卡的「開始 10 題」會落到左下無障礙掣之下（375×812 實測 y=700–748）。 */}
           <p className="text-ink-muted text-sm sm:text-lg max-w-2xl">
@@ -180,7 +181,7 @@ export default function SubjectsView() {
             {writtenMax > 0 && <>{tl.introWrittenA}{writtenMin}{tl.introWrittenB}{writtenMax}{tl.introWrittenC}</>}
             {tl.introB}
           </p>
-        </div>
+ </div>
 
         {/* 2026-09-05：「內容生產進度」進度條喺呢度剷走。
             佢一直顯示 25 / 25，即係一條永遠滿格嘅進度條 —— 25 科全部有題目，
@@ -191,35 +192,35 @@ export default function SubjectsView() {
 
         {/* 最近練過：回訪學生毋須搜尋或捲動，直接再開一節。初次訪客沒有紀錄，這一行不出現。 */}
         {recent.length > 0 && (
-          <section aria-labelledby="recent-subjects" className="mb-5">
+ <section aria-labelledby="recent-subjects" className="mb-5">
             {/* 標題只給讀屏；可見的「最近練過」與科目放同一行。375×812 實測，標題獨佔一行時，
                 第一張卡的「開始 10 題」會被推到左下無障礙掣之下。 */}
             <h2 id="recent-subjects" className="sr-only">
               {en ? `Practised recently: start ${SESSION_SIZE} questions` : `最近練過：直接開始 ${SESSION_SIZE} 題`}
             </h2>
-            <ul className="flex flex-wrap items-center gap-2">
-              <li aria-hidden className="text-sm text-ink-muted">{en ? 'Recent' : '最近練過'}</li>
+ <ul className="flex flex-wrap items-center gap-2">
+ <li aria-hidden className="text-sm text-ink-muted">{en ? 'Recent' : '最近練過'}</li>
               {recent.map((s) => (
-                <li key={s.id}>
-                  <Link
+ <li key={s.id}>
+ <Link
                     href={quickStartHref(s.id)}
                     aria-label={en ? `${s.nameEn}: start ${SESSION_SIZE} questions` : `${s.name}：開始 ${SESSION_SIZE} 題`}
                     className="inline-flex min-h-12 items-center gap-1.5 rounded-xl border border-accent/40 bg-surface-raised px-3 text-sm font-medium text-ink transition-colors hover:border-accent"
                   >
-                    <span aria-hidden>{s.emoji}</span>
+                    <SubjectMark subject={s} size="sm" />
                     {en ? s.shortEn : s.short}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+ </li>
+ ))}
+ </ul>
+ </section>
         )}
 
         {/* Controls: search + sort */}
         <div className="flex gap-3 mb-4">
-          <div className="relative flex-1">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted" />
-            <input
+ <div className="relative flex-1">
+ <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted" />
+ <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               type="search"
@@ -227,18 +228,18 @@ export default function SubjectsView() {
               placeholder={en ? 'Search subjects…' : '搜尋科目…'}
               className="w-full min-h-11 bg-surface-raised border border-line-strong rounded-xl pl-9 pr-3 py-2.5 text-sm text-ink-soft placeholder-ink-muted focus:border-accent/50 focus:outline-none"
             />
-          </div>
-          <select
+ </div>
+ <select
             aria-label={en ? 'Sort subjects' : '科目排序'}
             value={sort}
             onChange={(e) => setSort(e.target.value as 'default' | 'az' | 'live')}
-            className="min-h-11 bg-surface-raised border border-line-strong rounded-xl px-3 py-2.5 text-sm text-ink-soft focus:border-accent/50 focus:outline-none"
-          >
-            <option value="default">{en ? 'Default order' : '預設排序'}</option>
-            <option value="az">{en ? 'Name A–Z' : '名稱 A–Z'}</option>
-            <option value="live">{en ? 'Live first' : '已上線優先'}</option>
-          </select>
-        </div>
+ className="min-h-11 bg-surface-raised border border-line-strong rounded-xl px-3 py-2.5 text-sm text-ink-soft focus:border-accent/50 focus:outline-none"
+ >
+ <option value="default">{en ? 'Default order' : '預設排序'}</option>
+ <option value="az">{en ? 'Name A–Z' : '名稱 A–Z'}</option>
+ <option value="live">{en ? 'Live first' : '已上線優先'}</option>
+ </select>
+ </div>
 
         {/* Category chips */}
         <div className="flex gap-2 mb-6 flex-wrap">
@@ -248,46 +249,46 @@ export default function SubjectsView() {
             ['extended', en ? 'Extended (M1·M2)' : '延伸 M1·M2'],
             ['elective', en ? 'Elective' : '選修'],
           ] as const).map(([val, label]) => (
-            <button
+ <button
               key={val}
               type="button"
               onClick={() => setCategory(val)}
               className={`inline-flex min-h-11 items-center text-xs px-3 rounded-full border transition-colors ${
-                category === val
-                  ? 'bg-surface-sunken text-accent border-accent/40'
-                  : 'bg-surface-raised text-ink-muted border-line-strong hover:text-accent'
-              }`}
+ category === val
+ ? 'bg-surface-sunken text-accent border-accent/40'
+ : 'bg-surface-raised text-ink-muted border-line-strong hover:text-accent'
+ }`}
             >
               {label}
             </button>
-          ))}
-        </div>
+ ))}
+ </div>
 
         {/* No results */}
         {totalMatched === 0 && (
           <div className="text-center py-16 text-ink-muted">
-            <div className="text-4xl mb-3">🔍</div>
-            <p className="mb-4">{en ? 'No subjects match your search.' : '搵唔到符合嘅科目。'}</p>
-            <button
+ <div className="text-4xl mb-3"></div>
+ <p className="mb-4">{en ? 'No subjects match your search.' : '搵唔到符合嘅科目。'}</p>
+ <button
               type="button"
               onClick={() => { setQuery(''); setCategory('all') }}
               className="text-sm text-accent hover:underline"
             >
               {en ? 'Clear filters' : '清除篩選'}
             </button>
-          </div>
+ </div>
         )}
 
         {/* One flat grid — every subject is free and open to everyone. */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {sortGroup(matched).map((s) =>
-            s.isActive ? (
-              <ActiveCard key={s.id} s={s} />
-            ) : (
-              <ComingSoonCard key={s.id} s={s} />
-            )
-          )}
-        </div>
+ s.isActive ? (
+ <ActiveCard key={s.id} s={s} />
+ ) : (
+ <ComingSoonCard key={s.id} s={s} />
+ )
+ )}
+ </div>
 
         {/* 紙筆戰士 2026-08-21 由頂部導覽降級落嚟。佢係一種【練習模式】
             （生成可打印 A4 卷），結構上屬於呢個 hub，唔係「進度」「收藏」嘅同級物。
@@ -297,25 +298,25 @@ export default function SubjectsView() {
           href="/paper-warrior"
           className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-strong bg-surface-raised px-4 text-sm text-ink-soft transition-colors hover:border-accent/40 hover:text-accent"
         >
-          <Printer size={15} aria-hidden />
+ <Printer size={15} aria-hidden />
           {t.nav.paper}
           {en ? ' (A4, pen and paper)' : '（A4，用紙筆做）'}
         </Link>
 
         {/* Footer note */}
         <div className="mt-16 bg-surface-sunken border border-line rounded-2xl p-6 text-center">
-          <p className="text-ink-soft mb-2">{tl.footerTitle}</p>
-          <p className="text-sm text-ink-muted mb-4">
+ <p className="text-ink-soft mb-2">{tl.footerTitle}</p>
+ <p className="text-sm text-ink-muted mb-4">
             {tl.footerBody}
           </p>
-          <a
+ <a
             href="mailto:dselevelup@gmail.com"
             className="inline-flex min-h-11 items-center gap-2 text-sm bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2 rounded-xl transition-all"
           >
             {tl.footerBtn}
           </a>
-        </div>
-      </div>
-    </div>
+ </div>
+ </div>
+ </div>
   )
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import SubjectMark from '@/components/marks/SubjectMark'
 import { useLocale } from '@/lib/i18n'
 import { loadActiveSession, pickContinueTarget, type ContinueTarget } from '@/lib/sessionResume'
 import { loadAttempts } from '@/lib/progress'
@@ -47,8 +48,8 @@ export default function ContinueCard() {
   return (
     // data-continue-card：手機首屏有這張卡時，globals.css 收起吉祥物（UX 循環 LOOP 15）。
     <div data-continue-card className="hero-rise mx-auto mb-6 flex max-w-md items-center gap-3 rounded-2xl border border-accent/25 bg-surface-raised p-3 pl-4 text-left shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-      <div className="min-w-0 flex-1">
-        <p className="text-xs text-ink-muted">
+ <div className="min-w-0 flex-1">
+ <p className="text-xs text-ink-muted">
           {target.kind === 'resume'
             ? en
               ? 'You stopped halfway'
@@ -57,17 +58,17 @@ export default function ContinueCard() {
               ? 'Last time you practised'
               : '上次練緊'}
         </p>
-        <p className="truncate text-sm font-medium text-ink">
-          <span aria-hidden>{subject.emoji} </span>
+ <p className="flex items-center gap-2 truncate text-sm font-medium text-ink">
+          <SubjectMark subject={subject} size="sm" />
           {name}
           {target.kind === 'resume' && (
             <span className="font-normal text-ink-muted">
               {en ? ` · ${target.done}/${target.total} done` : ` · 做咗 ${target.done}/${target.total} 題`}
             </span>
-          )}
-        </p>
-      </div>
-      <Link
+ )}
+ </p>
+ </div>
+ <Link
         href={target.href}
         className="inline-flex min-h-[44px] shrink-0 items-center gap-1 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
       >
@@ -79,7 +80,7 @@ export default function ContinueCard() {
             ? 'Another set'
             : '再做一份'}
         <ArrowRight size={16} aria-hidden />
-      </Link>
-    </div>
+ </Link>
+ </div>
   )
 }

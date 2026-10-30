@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { ClipboardCheck, Lightbulb, ArrowRight, Check, RotateCcw, Save } from 'lucide-react'
+import SubjectMark from '@/components/marks/SubjectMark'
+import CauseMark from '@/components/marks/CauseMark'
 import { useLocale } from '@/lib/i18n'
 import MathText from '@/components/MathText'
 import ExplanationBody from '@/components/ExplanationBody'
@@ -34,15 +36,15 @@ import { buildPaper, buildWrittenSection, decodePaperCode, type PaperItem, type 
 // 錯因自診完整保留：剔「未啱」先出三維自診，一樣寫入 dse_reverse_log 餵錯因雷達。
 
 const REVERSE_CAUSES: {
-  key: ReverseCause; emoji: string; zh: string; zhDesc: string; en: string; enDesc: string
+  key: ReverseCause; zh: string; zhDesc: string; en: string; enDesc: string
 }[] = [
-  { key: 'A', emoji: '🧠', zh: '概念盲區', en: 'Conceptual Blindspot',
+  { key: 'A', zh: '概念盲區', en: 'Conceptual Blindspot',
     zhDesc: '未完全理解定理底層邏輯（如忽略定義域或公式前提條件）',
     enDesc: "Didn't fully grasp the underlying theorem (e.g. ignored a domain or a formula precondition)" },
-  { key: 'B', emoji: '🎯', zh: '審題陷阱', en: 'HKEAA Reading Trap',
+  { key: 'B', zh: '審題陷阱', en: 'HKEAA Reading Trap',
     zhDesc: '踩中題目隱蔽字眼、關鍵限制或雙重否定句',
     enDesc: 'Fell for a hidden keyword, constraint or double-negative in the question' },
-  { key: 'C', emoji: '🧮', zh: '運算粗心', en: 'Execution / Calculator Error',
+  { key: 'C', zh: '運算粗心', en: 'Execution / Calculator Error',
     zhDesc: '按錯計算機或純運算失誤，思路其實正確',
     enDesc: 'Mis-keyed the calculator or a pure arithmetic slip — the method was right' },
 ]
@@ -68,13 +70,13 @@ export default function AnswerSheetClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
-  const params = useSearchParams()
+ const params = useSearchParams()
 
-  const [code, setCode] = useState('')
-  const [paper, setPaper] = useState<
+ const [code, setCode] = useState('')
+ const [paper, setPaper] = useState<
     { spec: PaperSpec; items: PaperItem[]; writtenItems: WrittenQuestion[] } | null
   >(null)
-  const [writtenLevels, setWrittenLevels] = useState<Record<string, WrittenLevel>>({})
+ const [writtenLevels, setWrittenLevels] = useState<Record<string, WrittenLevel>>({})
   const [error, setError] = useState(false)
   // 題目改成按需載入，所以開卷有一段等待。冇呢個狀態嘅話，撳「開卷」之後
   // 畫面幾百毫秒完全冇反應 —— 學生只會再撳多次。
@@ -251,32 +253,32 @@ export default function AnswerSheetClient() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      <header className="mb-6">
-        <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
-          <ClipboardCheck size={22} className="text-accent" />
+ <header className="mb-6">
+ <h1 className="flex items-center gap-2 text-2xl font-medium text-ink">
+ <ClipboardCheck size={22} className="text-accent" />
           {tr('紙筆對答案', 'Paper answer sheet')}
         </h1>
-        <p className="mt-1 text-sm text-ink-muted">
+ <p className="mt-1 text-sm text-ink-muted">
           {tr(
             '掃張紙下面個 QR，或者打返個卷號，就會即刻出晒全部正確答案。',
             'Scan the QR at the bottom of your sheet, or type the paper code, to see every correct answer straight away.',
           )}
         </p>
-      </header>
+ </header>
 
       {/* 入卷號 */}
       <div className="rounded-2xl border border-line bg-surface-raised p-5">
-        <label className="block">
-          <span className="mb-1.5 block text-sm font-medium text-ink-soft">{tr('卷號', 'Paper code')}</span>
-          <div className="flex flex-wrap gap-2">
-            <input
+ <label className="block">
+ <span className="mb-1.5 block text-sm font-medium text-ink-soft">{tr('卷號', 'Paper code')}</span>
+ <div className="flex flex-wrap gap-2">
+ <input
               value={code}
               onChange={(e) => setCode(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && load(code)}
-              placeholder="math~all~20~k3q7"
-              className="min-h-11 flex-1 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
-            />
-            <button
+ placeholder="math~all~20~k3q7"
+ className="min-h-11 flex-1 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
+ />
+ <button
               onClick={() => load(code)}
               disabled={busy}
               aria-busy={busy}
@@ -284,8 +286,8 @@ export default function AnswerSheetClient() {
             >
               {busy ? tr('開緊…', 'Opening…') : tr('開卷', 'Open')}
             </button>
-          </div>
-        </label>
+ </div>
+ </label>
         {error && (
           <p className="mt-3 rounded-lg border border-gold/30 bg-surface-sunken p-3 text-sm text-gold-strong">
             {tr('搵唔到呢個卷號。再對一對張紙下面嗰行字？', "That code didn't match a paper — could you double-check the line at the bottom of your sheet?")}
@@ -297,83 +299,86 @@ export default function AnswerSheetClient() {
             <Link href="/paper-warrior" className="text-accent-strong underline underline-offset-2">
               {tr('去「列印練習卷」印一份', 'Print one from the printable practice set page')}
             </Link>
-          </p>
-        )}
-      </div>
+ </p>
+ )}
+ </div>
 
       {paper && (
         <>
-          <div className="mt-6 rounded-2xl border border-line bg-surface-raised p-4">
-            <p className="text-sm text-ink-soft">
-              {subjectMeta?.emoji} {en ? subjectMeta?.nameEn : subjectMeta?.name} ·{' '}
+ <div className="mt-6 rounded-2xl border border-line bg-surface-raised p-4">
+ <p className="flex flex-wrap items-center gap-2 text-sm text-ink-soft">
+              {subjectMeta ? <SubjectMark subject={subjectMeta} size="sm" /> : null}
+              <span>
+              {en ? subjectMeta?.nameEn : subjectMeta?.name} ·{' '}
+              </span>
               {tr(`${paper.items.length} 題`, `${paper.items.length} questions`)}
             </p>
-            <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+ <p className="mt-1 text-xs leading-relaxed text-ink-muted">
               {tr(
                 '下面係全部正確答案。對住你張紙逐題剔返啱定未啱 —— 剔咗先知道邊個課題要補。',
                 'Every correct answer is below. Mark each one against your paper — the marks are what tell you which topics to work on.',
               )}
             </p>
-            <p className="mt-2 text-sm font-medium text-accent-strong">
+ <p className="mt-2 text-sm font-medium text-accent-strong">
               {tr(
                 `已剔 ${tally.marked} / ${paper.items.length} · 啱 ${tally.right} · 未啱 ${tally.wrong}`,
                 `Marked ${tally.marked} of ${paper.items.length} · ${tally.right} right · ${tally.wrong} to revisit`,
               )}
             </p>
-          </div>
+ </div>
 
-          <ol className="mt-4 space-y-3">
+ <ol className="mt-4 space-y-3">
             {paper.items.map((item, i) => {
               const mark = marks[item.question.id]
               return (
                 <li key={item.question.id} className="rounded-2xl border border-line bg-surface-raised p-4">
-                  <div className="text-sm font-medium leading-relaxed text-ink">
+ <div className="text-sm font-medium leading-relaxed text-ink">
                     {i + 1}.{' '}
                     <MathText>{tr(item.question.content, item.question.contentEn ?? item.question.content)}</MathText>
-                  </div>
+ </div>
 
-                  <p className="mt-2 text-sm text-ink-soft">
-                    <span className="font-medium text-accent-strong">{tr('正確答案', 'Correct answer')}：</span>
-                    <MathText>{en ? item.optionsEn[item.answerIndex] : item.options[item.answerIndex]}</MathText>
-                  </p>
-                  <p className="mt-1.5 text-xs leading-relaxed text-ink-muted">
-                    <MathText>
+ <p className="mt-2 text-sm text-ink-soft">
+ <span className="font-medium text-accent-strong">{tr('正確答案', 'Correct answer')}：</span>
+ <MathText>{en ? item.optionsEn[item.answerIndex] : item.options[item.answerIndex]}</MathText>
+ </p>
+ <p className="mt-1.5 text-xs leading-relaxed text-ink-muted">
+ <MathText>
                       {tr(item.question.explanation, item.question.explanationEn ?? item.question.explanation)}
                     </MathText>
-                  </p>
+ </p>
 
                   {/* 自剔。再撳一次可取消，改錯咗唔使重開成份卷。 */}
                   <div className="mt-3 flex flex-wrap gap-2">
-                    <button
+ <button
                       onClick={() => setMark(item, 'right')}
                       aria-pressed={mark === 'right'}
                       className={`inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-3 text-sm font-medium transition-colors ${
-                        mark === 'right'
-                          ? 'border-accent/50 bg-surface-sunken text-accent-strong'
-                          : 'border-line bg-surface text-ink-muted hover:border-accent/40'
-                      }`}
+ mark === 'right'
+ ? 'border-accent/50 bg-surface-sunken text-accent-strong'
+ : 'border-line bg-surface text-ink-muted hover:border-accent/40'
+ }`}
                     >
-                      <Check size={15} aria-hidden /> {tr('我啱咗', 'I got it')}
+ <Check size={15} aria-hidden /> {tr('我啱咗', 'I got it')}
                     </button>
-                    <button
+ <button
                       onClick={() => setMark(item, 'wrong')}
                       aria-pressed={mark === 'wrong'}
                       className={`inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-3 text-sm font-medium transition-colors ${
-                        mark === 'wrong'
-                          ? 'border-gold/50 bg-surface-sunken text-gold-strong'
-                          : 'border-line bg-surface text-ink-muted hover:border-gold/40'
-                      }`}
+ mark === 'wrong'
+ ? 'border-gold/50 bg-surface-sunken text-gold-strong'
+ : 'border-line bg-surface text-ink-muted hover:border-gold/40'
+ }`}
                     >
-                      <RotateCcw size={15} aria-hidden /> {tr('我未啱', 'Not yet')}
+ <RotateCcw size={15} aria-hidden /> {tr('我未啱', 'Not yet')}
                     </button>
-                  </div>
+ </div>
 
                   {mark === 'wrong' && (
                     <div className="mt-3 rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
-                      <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
-                        <Lightbulb size={15} /> {tr('你發現咗一個新盲點💡 係邊一種？', 'You found a new blind spot 💡 which kind?')}
+ <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
+ <Lightbulb size={15} /> {tr('你發現咗一個新盲點 係邊一種？', 'You found a new blind spot which kind?')}
                       </p>
-                      <div className="mt-2 space-y-1.5">
+ <div className="mt-2 space-y-1.5">
                         {REVERSE_CAUSES.map((c) => {
                           const chosen = causes[item.question.id] === c.key
                           return (
@@ -381,117 +386,117 @@ export default function AnswerSheetClient() {
                               key={c.key}
                               onClick={() => chooseCause(item, c.key)}
                               className={`flex w-full items-start gap-2 rounded-lg border p-2 text-left transition-colors ${
-                                chosen
-                                  ? 'border-accent/50 bg-accent/[0.08]'
-                                  : 'border-line bg-surface-raised hover:border-accent/40'
-                              }`}
+ chosen
+ ? 'border-accent/50 bg-accent/[0.08]'
+ : 'border-line bg-surface-raised hover:border-accent/40'
+ }`}
                             >
-                              <span className="text-sm">{c.emoji}</span>
-                              <span className="min-w-0">
-                                <span className="block text-sm font-medium text-ink">{tr(c.zh, c.en)}</span>
-                                <span className="mt-0.5 block text-xs leading-relaxed text-ink-muted">
+ <CauseMark cause={c.key} size="sm" className="mt-0.5" />
+ <span className="min-w-0">
+ <span className="block text-sm font-medium text-ink">{tr(c.zh, c.en)}</span>
+ <span className="mt-0.5 block text-xs leading-relaxed text-ink-muted">
                                   {tr(c.zhDesc, c.enDesc)}
                                 </span>
-                              </span>
-                            </button>
-                          )
-                        })}
-                      </div>
+ </span>
+ </button>
+ )
+ })}
+ </div>
                       {causes[item.question.id] && (
                         <p className="mt-2 text-xs text-accent-strong">
                           {tr('已記低，錯因雷達會見到。', 'Logged — it will show up in your error radar.')}
                         </p>
-                      )}
-                    </div>
-                  )}
-                </li>
-              )
-            })}
-          </ol>
+ )}
+ </div>
+ )}
+ </li>
+ )
+ })}
+ </ol>
 
           {paper.writtenItems.length > 0 && (
-            <section className="mt-8">
-              <h2 className="text-base font-medium text-ink">{tr('乙部 · 書寫題', 'Section B · Written')}</h2>
-              <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+ <section className="mt-8">
+ <h2 className="text-base font-medium text-ink">{tr('乙部 · 書寫題', 'Section B · Written')}</h2>
+ <p className="mt-1 text-xs leading-relaxed text-ink-muted">
                 {tr(
                   '書寫題永遠唔會由機器批改。下面出參考答案同評分準則，你自己對住張紙評 —— 呢部分唔會計入上面個分數，只會記入你嘅課題練習紀錄。',
                   'Written questions are never machine-marked. Below is a model answer and marking scheme for you to judge your own work — this section never counts toward the score above; it only goes into your topic practice record.',
                 )}
               </p>
 
-              <ol className="mt-4 space-y-3">
+ <ol className="mt-4 space-y-3">
                 {paper.writtenItems.map((q, i) => {
                   const level = writtenLevels[q.id]
                   return (
                     <li key={q.id} className="rounded-2xl border border-line bg-surface-raised p-4">
-                      <div className="text-sm font-medium leading-relaxed text-ink">
+ <div className="text-sm font-medium leading-relaxed text-ink">
                         {paper.items.length + i + 1}.{' '}
                         <MathText>{tr(q.content, q.contentEn ?? q.content)}</MathText>
-                        <span className="ml-1 text-xs font-normal text-ink-muted">
+ <span className="ml-1 text-xs font-normal text-ink-muted">
                           （{q.marks} {tr('分', q.marks === 1 ? 'mark' : 'marks')}）
                         </span>
-                      </div>
+ </div>
 
-                      <div className="mt-2.5 rounded-xl border border-accent/25 bg-accent/[0.05] p-3">
-                        <p className="text-xs font-medium text-accent-strong">{tr('參考答案', 'Model answer')}</p>
-                        <div className="mt-1 text-sm leading-relaxed text-ink-soft">
-                          <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn ?? q.referenceAnswer)}</MathText>
-                        </div>
-                      </div>
+ <div className="mt-2.5 rounded-xl border border-accent/25 bg-accent/[0.05] p-3">
+ <p className="text-xs font-medium text-accent-strong">{tr('參考答案', 'Model answer')}</p>
+ <div className="mt-1 text-sm leading-relaxed text-ink-soft">
+ <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn ?? q.referenceAnswer)}</MathText>
+ </div>
+ </div>
 
                       {/* 評分準則只有 LongQuestion 先有；TextQuestion（短答）冇呢欄 */}
                       {q.type === 'long' && q.markingScheme && (
                         <details className="mt-2 rounded-xl border border-line bg-surface p-3">
-                          <summary className="cursor-pointer text-xs font-medium text-ink-soft">
+ <summary className="cursor-pointer text-xs font-medium text-ink-soft">
                             {isGenericMarkingScale(tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme))
                               ? tr('練習用自評尺度（不是這題的評卷參考）', 'Practice self-check scale (not a mark scheme for this question)')
                               : tr('評分準則', 'Marking scheme')}
                           </summary>
-                          <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
-                            <MathText>{tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme)}</MathText>
-                          </div>
-                        </details>
+ <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
+ <MathText>{tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme)}</MathText>
+ </div>
+ </details>
                       )}
 
                       {q.explanation && (
                         <details className="mt-2 rounded-xl border border-line bg-surface p-3">
-                          <summary className="cursor-pointer text-xs font-medium text-ink-soft">
+ <summary className="cursor-pointer text-xs font-medium text-ink-soft">
                             {isGenericWritingGuide(tr(q.explanation, q.explanationEn ?? q.explanation))
                               ? tr('通用自評方向', 'Shared self-check note')
                               : tr('解題思路', 'How to approach it')}
                           </summary>
-                          <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
-                            <ExplanationBody text={tr(q.explanation, q.explanationEn ?? q.explanation)} />
-                          </div>
-                        </details>
-                      )}
+ <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
+ <ExplanationBody text={tr(q.explanation, q.explanationEn ?? q.explanation)} />
+ </div>
+ </details>
+ )}
 
-                      <p className="mt-3 text-xs text-ink-muted">
+ <p className="mt-3 text-xs text-ink-muted">
                         {tr('對住你張紙，你覺得自己寫成點？', 'Comparing with your paper, how did you do?')}
                       </p>
-                      <div className="mt-1.5 flex flex-wrap gap-2">
+ <div className="mt-1.5 flex flex-wrap gap-2">
                         {WRITTEN_LEVELS.map((l) => (
-                          <button
+ <button
                             key={l.key}
                             onClick={() => assessWritten(q, l.key)}
                             disabled={!!level}
                             aria-pressed={level === l.key}
                             className={`min-h-11 rounded-xl border px-3 text-sm font-medium transition-colors disabled:opacity-60 ${
-                              level === l.key ? l.cls : 'border-line bg-surface text-ink-muted hover:border-accent/40'
-                            }`}
+ level === l.key ? l.cls : 'border-line bg-surface text-ink-muted hover:border-accent/40'
+ }`}
                           >
                             {tr(l.zh, l.en)}
                           </button>
-                        ))}
-                      </div>
+ ))}
+ </div>
 
                       {/* 未完全掌握先出錯因【邀請】。刻意唔強制：唔記錄好過捏造一個 cause。 */}
                       {level && level !== 'full' && (
                         <div className="mt-3 rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
-                          <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
-                            <Lightbulb size={15} /> {tr('想記低係邊種盲點？（唔想就跳過）', 'Want to log the kind of gap? (skip if you prefer)')}
+ <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
+ <Lightbulb size={15} /> {tr('想記低係邊種盲點？（唔想就跳過）', 'Want to log the kind of gap? (skip if you prefer)')}
                           </p>
-                          <div className="mt-2 space-y-1.5">
+ <div className="mt-2 space-y-1.5">
                             {REVERSE_CAUSES.map((c) => {
                               const chosen = causes[q.id] === c.key
                               return (
@@ -499,44 +504,44 @@ export default function AnswerSheetClient() {
                                   key={c.key}
                                   onClick={() => logWrittenCause(q, c.key)}
                                   className={`flex w-full items-start gap-2 rounded-lg border p-2 text-left transition-colors ${
-                                    chosen ? 'border-accent/50 bg-accent/[0.08]' : 'border-line bg-surface-raised hover:border-accent/40'
-                                  }`}
+ chosen ? 'border-accent/50 bg-accent/[0.08]' : 'border-line bg-surface-raised hover:border-accent/40'
+ }`}
                                 >
-                                  <span className="text-sm">{c.emoji}</span>
-                                  <span className="min-w-0">
-                                    <span className="block text-sm font-medium text-ink">{tr(c.zh, c.en)}</span>
-                                    <span className="mt-0.5 block text-xs leading-relaxed text-ink-muted">
+ <CauseMark cause={c.key} size="sm" className="mt-0.5" />
+ <span className="min-w-0">
+ <span className="block text-sm font-medium text-ink">{tr(c.zh, c.en)}</span>
+ <span className="mt-0.5 block text-xs leading-relaxed text-ink-muted">
                                       {tr(c.zhDesc, c.enDesc)}
                                     </span>
-                                  </span>
-                                </button>
-                              )
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </li>
-                  )
-                })}
-              </ol>
-            </section>
+ </span>
+ </button>
+ )
+ })}
+ </div>
+ </div>
+ )}
+ </li>
+ )
+ })}
+ </ol>
+ </section>
           )}
 
           {/* 成績存檔 */}
           <div className="mt-6 rounded-2xl border border-line bg-surface-raised p-5">
-            <h2 className="text-base font-medium text-ink">{tr('入返你張紙嘅成績', 'Log your paper result')}</h2>
-            <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+ <h2 className="text-base font-medium text-ink">{tr('入返你張紙嘅成績', 'Log your paper result')}</h2>
+ <p className="mt-1 text-xs leading-relaxed text-ink-muted">
               {tr(
                 '入咗之後會併入你嘅進度同錯因雷達，下次一眼睇返自己邊度進步咗。',
                 'Saved into your progress and error radar, so you can see how you are moving over time.',
               )}
             </p>
 
-            <div className="mt-4 flex flex-wrap items-end gap-4">
-              <label className="block">
-                <span className="mb-1 block text-xs font-medium text-ink-soft">{tr('啱咗幾多題', 'Number correct')}</span>
-                <div className="flex items-center gap-1.5">
-                  <input
+ <div className="mt-4 flex flex-wrap items-end gap-4">
+ <label className="block">
+ <span className="mb-1 block text-xs font-medium text-ink-soft">{tr('啱咗幾多題', 'Number correct')}</span>
+ <div className="flex items-center gap-1.5">
+ <input
                     type="number"
                     inputMode="numeric"
                     min={0}
@@ -546,25 +551,25 @@ export default function AnswerSheetClient() {
                     placeholder={String(tally.right)}
                     className="min-h-11 w-20 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
                   />
-                  <span className="text-sm text-ink-muted">/ {paper.items.length}</span>
-                </div>
-              </label>
+ <span className="text-sm text-ink-muted">/ {paper.items.length}</span>
+ </div>
+ </label>
 
-              <label className="block">
-                <span className="mb-1 block text-xs font-medium text-ink-soft">
+ <label className="block">
+ <span className="mb-1 block text-xs font-medium text-ink-soft">
                   {tr('用咗幾多分鐘（可以唔填）', 'Minutes taken (optional)')}
                 </span>
-                <input
+ <input
                   type="number"
                   inputMode="numeric"
                   min={0}
                   value={minutesInput}
                   onChange={(e) => setMinutesInput(e.target.value)}
-                  placeholder="—"
-                  className="min-h-11 w-24 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
-                />
-              </label>
-            </div>
+ placeholder="—"
+ className="min-h-11 w-24 rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink-soft placeholder:text-ink-muted focus:border-accent focus:outline-none"
+ />
+ </label>
+ </div>
 
             {scoreInput.trim() === '' && (
               <p className="mt-2 text-xs text-ink-muted">
@@ -581,24 +586,24 @@ export default function AnswerSheetClient() {
                   'You have not marked individual questions. The total alone still saves, but without knowing which ones you missed there is no topic breakdown — we will not guess one.',
                 )}
               </p>
-            )}
+ )}
 
-            <button
+ <button
               onClick={save}
               className="mt-4 inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-accent-strong px-4 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
             >
-              <Save size={15} aria-hidden /> {tr('存入我嘅進度', 'Save to my progress')}
+ <Save size={15} aria-hidden /> {tr('存入我嘅進度', 'Save to my progress')}
             </button>
 
             {saved && (
               <div className="mt-4 rounded-xl border border-accent/30 bg-accent/[0.07] p-3" role="status">
-                <p className="text-sm font-medium text-accent-strong">
+ <p className="text-sm font-medium text-accent-strong">
                   {tr(
                     `已存：${saved.total} 題入面啱咗 ${saved.score} 題`,
                     `Saved: ${saved.score} of ${saved.total} correct`,
                   )}
                 </p>
-                <p className="mt-1 text-xs text-ink-muted">
+ <p className="mt-1 text-xs text-ink-muted">
                   {saved.topics > 0
                     ? tr(
                         `${saved.topics} 個課題嘅表現已併入錯因雷達。`,
@@ -609,17 +614,17 @@ export default function AnswerSheetClient() {
                         'Result logged. Mark question by question next time to get the topic breakdown too.',
                       )}
                 </p>
-              </div>
-            )}
-          </div>
+ </div>
+ )}
+ </div>
 
-          <p className="mt-6 text-center text-sm">
-            <Link href="/dashboard" className="inline-flex min-h-11 items-center gap-1.5 text-accent-strong hover:underline">
+ <p className="mt-6 text-center text-sm">
+ <Link href="/dashboard" className="inline-flex min-h-11 items-center gap-1.5 text-accent-strong hover:underline">
               {tr('去睇錯因雷達', 'See your error radar')} <ArrowRight size={15} />
-            </Link>
-          </p>
-        </>
-      )}
-    </div>
+ </Link>
+ </p>
+ </>
+ )}
+ </div>
   )
 }

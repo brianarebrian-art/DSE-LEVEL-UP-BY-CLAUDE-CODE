@@ -66,16 +66,16 @@ export default function JustOneCard({
     return (
       <div
         className={`bg-surface-raised border border-line rounded-2xl p-6 flex flex-col gap-4 ${
-          stack ? '' : 'sm:flex-row sm:items-center'
-        } ${className}`}
+ stack ? '' : 'sm:flex-row sm:items-center'
+ } ${className}`}
       >
-        <div className="flex items-start gap-3 flex-1">
-          <CalendarHeart size={20} className="text-accent shrink-0 mt-0.5" aria-hidden />
-          <div>
-            <p className="text-ink font-medium mb-1">
+ <div className="flex items-start gap-3 flex-1">
+ <CalendarHeart size={20} className="text-accent shrink-0 mt-0.5" aria-hidden />
+ <div>
+ <p className="text-ink font-medium mb-1">
               {en ? 'Today is one of your rest days.' : '今日係你自己揀咗嘅休息日。'}
             </p>
-            <p className="text-sm text-ink-muted leading-relaxed">
+ <p className="text-sm text-ink-muted leading-relaxed">
               {en
                 ? 'Nothing is waiting for you here. Rest is part of the plan, not a gap in it.'
                 : '呢度冇嘢等緊你。休息本身就係計劃嘅一部分，唔係一個缺口。'}
@@ -87,38 +87,38 @@ export default function JustOneCard({
             >
               {en ? 'I still feel like doing one' : '今日想做少少都得'}
             </Link>
-          </div>
-        </div>
-        <Link
+ </div>
+ </div>
+ <Link
           href="/relax"
           className="shrink-0 min-h-11 inline-flex items-center justify-center border border-line-strong text-ink-soft font-medium px-5 py-3 rounded-xl hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
           {en ? 'Breathing Space' : '去呼吸空間'}
         </Link>
-      </div>
-    )
-  }
+ </div>
+ )
+ }
 
-  return (
-    <div
+ return (
+ <div
       className={`bg-surface-raised border border-line rounded-2xl p-6 flex flex-col gap-4 ${
-        stack ? '' : 'sm:flex-row sm:items-center'
-      } ${className}`}
+ stack ? '' : 'sm:flex-row sm:items-center'
+ } ${className}`}
     >
-      <div className="flex items-start gap-3 flex-1">
-        <Sprout size={20} className="text-accent shrink-0 mt-0.5" aria-hidden />
-        <div>
-          <p className="text-ink font-medium mb-1">
+ <div className="flex items-start gap-3 flex-1">
+ <Sprout size={20} className="text-accent shrink-0 mt-0.5" aria-hidden />
+ <div>
+ <p className="text-ink font-medium mb-1">
             {en ? 'Only got it in you for one? That works.' : '今日只做 1 題都得。'}
           </p>
-          <p className="text-sm text-ink-muted leading-relaxed">
+ <p className="text-sm text-ink-muted leading-relaxed">
             {en
               ? 'No timer pressure, no score, no streak. Just one question — then stop whenever you want.'
               : '冇計分、冇壓力。做 1 題就得，之後想幾時收工都得。'}
           </p>
-        </div>
-      </div>
-      <Link
+ </div>
+ </div>
+ <Link
         href={`/practice?subject=${encodeURIComponent(subjectId)}&size=1`}
         className="shrink-0 min-h-11 inline-flex items-center justify-center bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
@@ -130,6 +130,6 @@ export default function JustOneCard({
             ? 'Do one question'
             : '做 1 題'}
       </Link>
-    </div>
+ </div>
   )
 }

@@ -108,19 +108,19 @@ export default function Navbar() {
   // 所以喺 AppShell 包一個有 padding 嘅 div 推唔郁佢，一定要喺呢度出。
   return (
     <nav className="chrome-material fixed top-0 right-0 left-0 z-50 border-b border-line md:left-20 xl:left-[260px]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
+ <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="hidden lg:block">
-            <Greeting />
-          </div>
-          <Link href="/" className="min-h-11 flex items-center gap-2 font-semibold text-lg text-ink md:hidden">
-            <BookOpen size={22} className="text-accent" aria-hidden />
-            <span className="whitespace-nowrap">
-              DSE <span className="text-accent">Level Up</span>
-            </span>
-          </Link>
-        </div>
+ <div className="hidden lg:block">
+ <Greeting />
+ </div>
+ <Link href="/" className="min-h-11 flex items-center gap-2 font-semibold text-lg text-ink md:hidden">
+ <BookOpen size={22} className="text-accent" aria-hidden />
+ <span className="whitespace-nowrap">
+ DSE <span className="text-accent">Level Up</span>
+ </span>
+ </Link>
+ </div>
 
         {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
         {/* 2026-09-30（改進循環 2，prompt §25）：原本 lg 起才出，768–1023px 平板同時有側欄及漢堡選單。
@@ -140,9 +140,9 @@ export default function Navbar() {
           </Link>
           {/* compact 單掣：三段式會令英文版超出 xl 斷點，重新出現標籤���行 */}
           <ThemeToggle compact />
-          <LanguageToggle />
-          <AuthButton />
-        </div>
+ <LanguageToggle />
+ <AuthButton />
+ </div>
 
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
         <div className="md:hidden flex items-center gap-1">
@@ -159,9 +159,9 @@ export default function Navbar() {
             aria-label={en ? (open ? 'Close menu' : 'Open menu') : open ? '關閉選單' : '開啟選單'}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
+ </button>
+ </div>
+ </div>
 
       {/* 選單面板 —— 內容同橫向條完全一致。手機單欄、平板雙欄（唔會拉到成版咁長）。 */}
       {open && (
@@ -169,67 +169,67 @@ export default function Navbar() {
           id="site-menu"
           className="md:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
         >
-          <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+ <div className="mx-auto max-w-6xl">
+ <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
               {primaryLinks.map((l) => (
-                <Link
+ <Link
                   key={l.href}
                   href={l.href}
                   prefetch={NAV_PREFETCH_OFF.has(l.href) ? false : undefined}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
-                    pathname === l.href || pathname.startsWith(`${l.href}/`)
-                      ? 'text-accent font-medium'
-                      : 'text-ink-soft hover:text-accent'
-                  }`}
+ pathname === l.href || pathname.startsWith(`${l.href}/`)
+ ? 'text-accent font-medium'
+ : 'text-ink-soft hover:text-accent'
+ }`}
                 >
                   {t.nav[l.key]}
                 </Link>
-              ))}
-            </div>
+ ))}
+ </div>
 
-            <div className="mt-4 border-t border-line pt-3">
-              <p className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-muted">
+ <div className="mt-4 border-t border-line pt-3">
+ <p className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-muted">
                 {t.nav.more}
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+ <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
                 {moreLinks.map((l) => (
-                  <Link
+ <Link
                     key={l.href}
                     href={l.href}
                     prefetch={NAV_PREFETCH_OFF.has(l.href) ? false : undefined}
                     onClick={() => setOpen(false)}
                     className={`min-h-11 flex items-center border-b border-line text-sm ${
-                      pathname === l.href || pathname.startsWith(`${l.href}/`)
-                        ? 'text-accent font-medium'
-                        : 'text-ink-soft hover:text-accent'
-                    }`}
+ pathname === l.href || pathname.startsWith(`${l.href}/`)
+ ? 'text-accent font-medium'
+ : 'text-ink-soft hover:text-accent'
+ }`}
                   >
                     {t.nav[l.key]}
                   </Link>
-                ))}
-                <Link
+ ))}
+ <Link
                   href="/about"
                   prefetch={false}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
-                    pathname === '/about' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
-                  }`}
+ pathname === '/about' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
+ }`}
                 >
                   {t.footer.aboutUs}
                 </Link>
-                <Link
+ <Link
                   href="/credits"
                   prefetch={false}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
-                    pathname === '/credits' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
-                  }`}
+ pathname === '/credits' ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
+ }`}
                 >
                   {en ? 'Guardians' : '守護者致謝名單'}
                 </Link>
-              </div>
-            </div>
+ </div>
+ </div>
 
             {/* 漢堡選單內容須與橫向條完全一致 —— 連目標路由亦然。 */}
             <Link
@@ -242,23 +242,23 @@ export default function Navbar() {
 
             {/* 語言切換同登入 —— 手機／平板一樣搵得到（之前橫向條斷行時就係呢兩樣最易失蹤） */}
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
-              <div className="flex items-center gap-1">
-                <span className="text-xs text-ink-muted">{en ? 'Language' : '語言'}</span>
-                <LanguageToggle />
-              </div>
-              <AuthButton onAction={() => setOpen(false)} />
-            </div>
-            <SignInNote className="mt-2" />
+ <div className="flex items-center gap-1">
+ <span className="text-xs text-ink-muted">{en ? 'Language' : '語言'}</span>
+ <LanguageToggle />
+ </div>
+ <AuthButton onAction={() => setOpen(false)} />
+ </div>
+ <SignInNote className="mt-2" />
 
             {/* 主題：選單內出完整三段式（自動／淺色／深色），選項一目了然。
                 同語言切換分開兩行，避免學生以為兩者相關。 */}
             <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
-              <span className="text-xs text-ink-muted">{en ? 'Theme' : '主題'}</span>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
+ <span className="text-xs text-ink-muted">{en ? 'Theme' : '主題'}</span>
+ <ThemeToggle />
+ </div>
+ </div>
+ </div>
+ )}
+ </nav>
   )
 }

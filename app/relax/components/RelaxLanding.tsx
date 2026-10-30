@@ -44,23 +44,23 @@ export default function RelaxLanding({
 
   return (
     <div>
-      <header className="mb-8 text-center">
+ <header className="mb-8 text-center">
         {/* FIX: [A1] ⚡ Buff 補給艙 → 🫁 呼吸空間
             2026-09-03：🫁 再換成吉祥物（梳化捧杯、閉眼）。
             呢一版講嘅就係「入嚟唞一唞」，而呢隻姿勢本身已經係嗰句說話 ——
             比一個肺部 emoji 講得準，亦冇咗醫療聯想。 */}
         <div className="mb-2 flex justify-center">
-          <Mascot pose="armchair" height={132} />
-        </div>
-        <p className="text-sm tracking-[0.08em] text-gold-strong">{en ? 'Breathing Space' : '呼吸空間'}</p>
-        <h1 className="mt-1 font-serif text-3xl italic text-ink text-balance sm:text-4xl">
+ <Mascot pose="armchair" height={132} />
+ </div>
+ <p className="text-sm tracking-[0.08em] text-gold-strong">{en ? 'Breathing Space' : '呼吸空間'}</p>
+ <h1 className="mt-1 font-serif text-3xl italic text-ink text-balance sm:text-4xl">
           {en ? "You don't have to push every minute." : '唔使每一分鐘都逼自己。'}
         </h1>
         {/* FIX: [A1][A3] 「溫書耗 MP？入嚟補」→「溫書攰咗？入嚟唞一唞」（MP 概念整體移除） */}
         <p className="mt-3 text-sm font-medium text-accent">
           {en ? 'Study-tired? Come take a breather · recharge before heading back out' : '溫書攰咗？入嚟唞一唞 · 狀態回滿再出發'}
         </p>
-        <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+ <p className="mt-1 text-sm leading-relaxed text-ink-soft">
           {en ? 'Just opening this today already takes guts. No questions here, no countdown, no one rushing you.' : '今日肯打開嚟已經好叻。呢度冇題目、冇倒數、冇人會催促你。'}
         </p>
         {/* FIX: [B7] 純文字連結 → 高對比 cyan + underline-offset-4 + 更大觸控區（min-h-11 保留） */}
@@ -70,7 +70,7 @@ export default function RelaxLanding({
         >
           {en ? 'Reset sensory preferences' : '重新設定感官偏好'}
         </button>
-      </header>
+ </header>
 
       {/* 呼吸圓圈卡（模板右欄）。圓圈靜止，見檔頭 ③。 */}
       <Link
@@ -78,80 +78,80 @@ export default function RelaxLanding({
         style={{ ['--relax-in-delay' as string]: '0ms' }}
         className="relax-in mb-4 flex flex-col items-center gap-5 rounded-2xl border border-line bg-surface-raised p-6 text-center transition-colors hover:border-accent/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent sm:flex-row sm:text-left"
       >
-        <span
+ <span
           aria-hidden
           className="flex size-28 shrink-0 flex-col items-center justify-center rounded-full bg-accent/25 ring-8 ring-accent/10"
         >
-          <span className="text-sm text-ink">{en ? 'Breathe in' : '吸氣'}</span>
-          <span className="font-serif text-3xl text-ink tabular-nums">4</span>
-          <span className="text-xs text-ink-soft">{en ? 'sec' : '秒'}</span>
-        </span>
-        <span className="flex-1">
-          <span className="block font-serif text-xl text-ink">
+ <span className="text-sm text-ink">{en ? 'Breathe in' : '吸氣'}</span>
+ <span className="font-serif text-3xl text-ink tabular-nums">4</span>
+ <span className="text-xs text-ink-soft">{en ? 'sec' : '秒'}</span>
+ </span>
+ <span className="flex-1">
+ <span className="block font-serif text-xl text-ink">
             {en ? 'When it gets too much · 4-7-8 breathing' : '緊張嗰陣 · 4-7-8 呼吸'}
           </span>
-          <span className="mt-1 block text-sm leading-relaxed text-ink-soft">
+ <span className="mt-1 block text-sm leading-relaxed text-ink-soft">
             {en ? 'A quiet 4-7-8 cycle. Nothing needs to be solved in this moment.' : '一個靜靜哋嘅 4-7-8 循環。呢一刻，乜都唔使解決。'}
           </span>
-          <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+ <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
             {en ? 'Start (1 min)' : '開始（1 分鐘）'}
             <ArrowRight size={15} aria-hidden />
-          </span>
-        </span>
-      </Link>
+ </span>
+ </span>
+ </Link>
 
-      <div className="mb-4 grid gap-4 sm:grid-cols-2">
-        <Link
+ <div className="mb-4 grid gap-4 sm:grid-cols-2">
+ <Link
           href="/relax/solo"
           style={{ ['--relax-in-delay' as string]: '70ms' }}
           className={`relax-in block rounded-2xl border border-line bg-surface-raised p-6 transition-colors hover:border-accent/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
-            pref.quiet ? 'opacity-90' : ''
-          }`}
+ pref.quiet ? 'opacity-90' : ''
+ }`}
         >
-          <div className="mb-2 text-2xl" aria-hidden>🎧</div>
+ <div className="mb-2 text-2xl" aria-hidden></div>
           {/* FIX: [A3] 「單排補 MP」→「獨處充電」 */}
           <div className="mb-1 font-serif text-lg text-ink">{en ? 'Solo Recharge' : '獨處充電'}</div>
-          <div className="text-sm text-ink-soft">
+ <div className="text-sm text-ink-soft">
             {pref.quiet
               ? en ? 'Text-only breather, zone out (quiet mode)' : '文字回氣、放空（安靜模式）'
               : en ? 'Listen, breathe, zone out for a bit' : '聽聲、回氣、放空一陣'}
           </div>
-        </Link>
+ </Link>
 
-        <Link
+ <Link
           href="/relax/group"
           style={{ ['--relax-in-delay' as string]: '140ms' }}
           className="relax-in block rounded-2xl border border-line bg-surface-raised p-6 transition-colors hover:border-subj-rose/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
-          <div className="mb-2 text-2xl" aria-hidden>👥</div>
+ <div className="mb-2 text-2xl" aria-hidden></div>
           {/* FIX: [A3][A4][B9] 「組隊開黑」→「同戰友傾偈」；「打卡」→「記錄心情」；描述完整顯示 */}
           <div className="mb-1 font-serif text-lg text-ink">{en ? 'Chat with study buddies' : '同戰友傾偈'}</div>
-          <div className="text-sm text-ink-soft">
+ <div className="text-sm text-ink-soft">
             {en ? 'Chat, ask questions, or just watch others log their mood' : '傾偈、問問題、純粹睇人記錄心情都得'}
           </div>
-          <div className="mt-2 text-xs text-ink-muted">{en ? IG_GROUP_ENTRY_NOTE.en : IG_GROUP_ENTRY_NOTE.zh}</div>
-        </Link>
-      </div>
+ <div className="mt-2 text-xs text-ink-muted">{en ? IG_GROUP_ENTRY_NOTE.en : IG_GROUP_ENTRY_NOTE.zh}</div>
+ </Link>
+ </div>
 
       {/* 細休息（模板嘅「Virtual Supermarket」，見檔頭 ①④）。係一張清單，唔係一排掣。 */}
       <section className="mb-4 rounded-2xl border border-line bg-surface-raised p-5 sm:p-6">
-        <h2 className="flex items-center gap-2 font-serif text-lg text-ink">
-          <Leaf size={16} strokeWidth={1.2} aria-hidden className="text-gold" />
+ <h2 className="flex items-center gap-2 font-serif text-lg text-ink">
+ <Leaf size={16} strokeWidth={1.2} aria-hidden className="text-gold" />
           {en ? 'Small resets' : '細休息'}
         </h2>
-        <p className="mt-1 text-xs text-ink-muted">
+ <p className="mt-1 text-xs text-ink-muted">
           {en ? 'Nothing to tap — pick one and go do it.' : '唔使㩒 —— 揀一樣，去做就得。'}
         </p>
-        <ul className="mt-4 grid grid-cols-2 gap-3">
+ <ul className="mt-4 grid grid-cols-2 gap-3">
           {resets.map(({ Icon, title, body }) => (
-            <li key={title} className="rounded-xl bg-surface-sunken p-4 text-center">
-              <Icon size={26} strokeWidth={1.2} aria-hidden className="mx-auto text-gold" />
-              <p className="mt-2 font-serif text-base text-ink">{title}</p>
-              <p className="mt-1 text-xs leading-relaxed text-ink-soft">{body}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+ <li key={title} className="rounded-xl bg-surface-sunken p-4 text-center">
+ <Icon size={26} strokeWidth={1.2} aria-hidden className="mx-auto text-gold" />
+ <p className="mt-2 font-serif text-base text-ink">{title}</p>
+ <p className="mt-1 text-xs leading-relaxed text-ink-soft">{body}</p>
+ </li>
+ ))}
+ </ul>
+ </section>
 
       {/* 5-4-3-2-1 落地練習（SEN-07 靜態安全網）：慌／解離感時用五官拉返當下 */}
       <Link
@@ -176,6 +176,6 @@ export default function RelaxLanding({
       <p className="mt-4 text-center text-xs text-ink-soft">
         {en ? "Even one minute counts. Skip it if you're not up for it — no one will blame you." : '唞 1 分鐘都得。唔想做就唔做，冇人會怪你。'}
       </p>
-    </div>
+ </div>
   )
 }

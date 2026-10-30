@@ -25,7 +25,7 @@ const DISMISS_KEY = 'dse_install_hint_dismissed'
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
+ userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
 
 type Mode = 'hidden' | 'prompt' | 'ios'
@@ -49,7 +49,7 @@ export default function InstallHint() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [mode, setMode] = useState<Mode>('hidden')
-  const [evt, setEvt] = useState<BeforeInstallPromptEvent | null>(null)
+ const [evt, setEvt] = useState<BeforeInstallPromptEvent | null>(null)
 
   useEffect(() => {
     try {
@@ -104,9 +104,9 @@ export default function InstallHint() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 mt-4">
-      <div className="flex items-start gap-3 rounded-2xl border border-line bg-surface-raised px-4 py-3">
-        <Smartphone size={18} className="text-accent shrink-0 mt-0.5" aria-hidden />
-        <div className="flex-1 text-sm text-ink-soft leading-relaxed">
+ <div className="flex items-start gap-3 rounded-2xl border border-line bg-surface-raised px-4 py-3">
+ <Smartphone size={18} className="text-accent shrink-0 mt-0.5" aria-hidden />
+ <div className="flex-1 text-sm text-ink-soft leading-relaxed">
           {mode === 'prompt'
             ? en
               ? 'Want to open it faster? You can add DSE Level Up to your home screen — it opens like an app.'
@@ -122,17 +122,17 @@ export default function InstallHint() {
             >
               {en ? 'Add to home screen' : '加到主畫面'}
             </button>
-          )}
-        </div>
-        <button
+ )}
+ </div>
+ <button
           type="button"
           onClick={dismiss}
           aria-label={en ? 'No thanks — don’t show this again' : '唔使喇，唔好再出'}
           className="shrink-0 min-h-11 min-w-11 -mr-2 -mt-1 flex items-center justify-center rounded-lg text-ink-muted hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
         >
-          <X size={16} aria-hidden />
-        </button>
-      </div>
-    </div>
+ <X size={16} aria-hidden />
+ </button>
+ </div>
+ </div>
   )
 }

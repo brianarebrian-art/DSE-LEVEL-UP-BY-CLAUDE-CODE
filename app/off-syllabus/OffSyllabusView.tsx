@@ -61,7 +61,9 @@ export default function OffSyllabusView({ categories }: { categories: CategorySu
                   href={`/off-syllabus/${c.slug}`}
                   className="flex min-h-16 items-center gap-3 rounded-2xl border border-line bg-surface-raised p-4 transition-colors hover:border-accent/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  <span className="text-2xl" aria-hidden>{c.emoji}</span>
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-control)] border border-line-strong bg-surface-sunken text-sm font-semibold text-ink" aria-hidden>
+                    {(en ? c.titleEn : c.title).slice(0, 1)}
+                  </span>
                   <span className="min-w-0 flex-1">
                     <span className="block font-medium text-ink">{en ? c.titleEn : c.title}</span>
                     <span className="block text-xs text-ink-muted">{c.count}{o.cardsUnit}</span>

@@ -39,7 +39,7 @@ export default function BookmarksView() {
   const en = locale === 'en'
 
   const [rows, setRows] = useState<Resolved[] | null>(null)
-  const [renaming, setRenaming] = useState<string | null>(null)
+ const [renaming, setRenaming] = useState<string | null>(null)
   const [draft, setDraft] = useState('')
 
   const load = async () => {
@@ -93,16 +93,16 @@ export default function BookmarksView() {
 
   return (
     <div className="min-h-screen bg-surface px-4 py-12 text-ink-soft">
-      <div className="mx-auto max-w-3xl">
-        <Link
+ <div className="mx-auto max-w-3xl">
+ <Link
           href="/dashboard"
           className="mb-6 inline-flex min-h-11 items-center gap-1.5 text-sm text-ink-muted transition-colors hover:text-accent"
         >
-          <ArrowLeft size={15} aria-hidden /> {en ? 'Back to progress' : '返回我的進度'}
+ <ArrowLeft size={15} aria-hidden /> {en ? 'Back to progress' : '返回我的進度'}
         </Link>
 
-        <h1 className="mb-1 text-3xl font-medium text-ink">{en ? 'Saved questions' : '我嘅收藏'}</h1>
-        <p className="mb-8 text-sm text-ink-muted">
+ <h1 className="mb-1 text-3xl font-medium text-ink">{en ? 'Saved questions' : '我嘅收藏'}</h1>
+ <p className="mb-8 text-sm text-ink-muted">
           {en
             ? 'Only on this device unless you sign in. No counts, no ranking — just the questions you wanted to keep.'
             : '未登入就只留喺呢部裝置。唔計數、唔排名 —— 淨係你想留低嗰啲題。'}
@@ -112,27 +112,27 @@ export default function BookmarksView() {
 
         {rows?.length === 0 && (
           <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center">
-            <div className="mb-3 text-4xl" aria-hidden>🔖</div>
-            <p className="text-sm text-ink-muted">
+ <div className="mb-3 text-4xl" aria-hidden></div>
+ <p className="text-sm text-ink-muted">
               {en
                 ? 'Nothing saved yet. While practising, tap “Save” under the explanation.'
                 : '仲未收藏過。做練習嗰陣，喺解析下面撳「收藏」就得。'}
             </p>
-            <Link
+ <Link
               href="/subjects"
               className="mt-5 inline-flex min-h-11 items-center rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
             >
               {en ? 'Start practising' : '開始練習'}
             </Link>
-          </div>
+ </div>
         )}
 
         {folders.map(([folder, list]) => (
-          <section key={folder} className="mb-8">
-            <div className="mb-3 flex items-center gap-2">
+ <section key={folder} className="mb-8">
+ <div className="mb-3 flex items-center gap-2">
               {renaming === folder ? (
                 <>
-                  <input
+ <input
                     value={draft}
                     maxLength={FOLDER_MAX_LEN}
                     onChange={(e) => setDraft(e.target.value)}
@@ -140,26 +140,26 @@ export default function BookmarksView() {
                     aria-label={en ? 'Folder name' : '資料夾名'}
                     className="min-h-11 rounded-lg border border-line-strong bg-surface-sunken px-2.5 text-sm text-ink outline-none focus:border-accent"
                   />
-                  <button
+ <button
                     onClick={() => commitRename(folder)}
                     aria-label={en ? 'Save name' : '儲存名稱'}
                     className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-lg text-accent transition-colors hover:bg-line"
                   >
-                    <Check size={16} aria-hidden />
-                  </button>
-                  <button
+ <Check size={16} aria-hidden />
+ </button>
+ <button
                     onClick={() => setRenaming(null)}
                     aria-label={en ? 'Cancel' : '取消'}
                     className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-line"
                   >
-                    <X size={16} aria-hidden />
-                  </button>
-                </>
-              ) : (
-                <>
-                  <h2 className="text-lg font-medium text-ink">{folder}</h2>
-                  <span className="text-xs text-ink-muted">{list.length}</span>
-                  <button
+ <X size={16} aria-hidden />
+ </button>
+ </>
+ ) : (
+ <>
+ <h2 className="text-lg font-medium text-ink">{folder}</h2>
+ <span className="text-xs text-ink-muted">{list.length}</span>
+ <button
                     onClick={() => {
                       setRenaming(folder)
                       setDraft(folder)
@@ -167,51 +167,51 @@ export default function BookmarksView() {
                     aria-label={en ? `Rename folder ${folder}` : `重新命名「${folder}」`}
                     className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-line hover:text-accent"
                   >
-                    <FolderPen size={14} aria-hidden />
-                  </button>
-                </>
-              )}
-            </div>
+ <FolderPen size={14} aria-hidden />
+ </button>
+ </>
+ )}
+ </div>
 
-            <ul className="space-y-3">
+ <ul className="space-y-3">
               {list.map(({ bm, q }) => {
                 const meta = getSubject(bm.subjectId)
                 const subjectName = meta ? (en ? (meta.nameEn ?? meta.name) : meta.name) : bm.subjectId
                 return (
                   <li key={`${bm.subjectId}:${bm.questionId}`} className="rounded-2xl border border-line bg-surface-raised p-4">
-                    <div className="mb-2 flex items-start justify-between gap-3">
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-ink-muted">
-                        <span className="rounded-full border border-accent/30 bg-surface-sunken px-2 py-0.5 text-accent">
+ <div className="mb-2 flex items-start justify-between gap-3">
+ <div className="flex flex-wrap items-center gap-2 text-xs text-ink-muted">
+ <span className="rounded-full border border-accent/30 bg-surface-sunken px-2 py-0.5 text-accent">
                           {subjectName}
                         </span>
-                        <span>{bm.topic}</span>
-                      </div>
-                      <button
+ <span>{bm.topic}</span>
+ </div>
+ <button
                         onClick={() => drop(bm)}
                         aria-label={en ? 'Remove from saved' : '從收藏移除'}
                         className="min-h-11 min-w-11 shrink-0 inline-flex items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-line hover:text-ink"
                       >
-                        <BookmarkX size={15} aria-hidden />
-                      </button>
-                    </div>
+ <BookmarkX size={15} aria-hidden />
+ </button>
+ </div>
 
                     {q ? (
                       <>
-                        <div className="text-sm leading-relaxed text-ink">
-                          <MathText>{en && q.contentEn ? q.contentEn : q.content}</MathText>
-                        </div>
+ <div className="text-sm leading-relaxed text-ink">
+ <MathText>{en && q.contentEn ? q.contentEn : q.content}</MathText>
+ </div>
                         {/* 重溫嗰陣先發現題目有問題，係好常見嘅事 —— 練習頁有報錯入口，
                             呢度亦要有，否則學生要記住題號返去練習頁先報得到。 */}
                         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
-                          <Link
+ <Link
                             href={`/practice?subject=${bm.subjectId}&topic=${encodeURIComponent(q.topic)}`}
                             className="inline-flex min-h-11 items-center text-xs text-accent transition-colors hover:text-accent-strong"
                           >
                             {en ? 'Practise this topic →' : '練返呢個課題 →'}
                           </Link>
-                          <ReportQuestionButton questionId={q.id} variant="standalone" />
-                        </div>
-                      </>
+ <ReportQuestionButton questionId={q.id} variant="standalone" />
+ </div>
+ </>
                     ) : isWithdrawn(bm.subjectId, bm.questionId) ? (
                       /* 撤回題（withdrawn.json）：不顯示內容，講明是暫時收起及原因，收藏保留。
                          題目修好並恢復後，這個收藏會自動顯示回題目（2026-09-29，Yuna 決定）。 */
@@ -230,8 +230,8 @@ export default function BookmarksView() {
                             ? 'This question has been withdrawn because an error was found in it. Your bookmark stays; the question comes back here once it is fixed.'
                             : '呢條題暫時收起咗，因為發現有錯，要修正。收藏會保留，修好之後會喺度自動出返。'}
                       </p>
-                    ) : isMachineRestored(bm.questionId) ? (
-                      <p className="text-sm text-ink-muted">
+ ) : isMachineRestored(bm.questionId) ? (
+ <p className="text-sm text-ink-muted">
                         {en
                           ? 'This question was recomputed by a program and has not been checked item by item, so it is left out of the default practice pool. Your bookmark stays.'
                           : '呢條由程式重算，未經人手覆核，所以暫停放入預設練習。收藏會保留。'}
@@ -243,20 +243,20 @@ export default function BookmarksView() {
                           ? 'This question is held back while a person checks its explanation. Your bookmark stays; the question comes back here if it is cleared.'
                           : '呢條題暫時收起咗，等人手睇清楚解析有冇問題。收藏會保留，冇問題嘅話會喺度自動出返。'}
                       </p>
-                    ) : (
-                      <p className="text-sm text-ink-muted">
+ ) : (
+ <p className="text-sm text-ink-muted">
                         {en
                           ? 'This question is no longer in the bank (it may have been revised or withdrawn).'
                           : '呢條題已經唔喺題庫（可能已修訂或下架）。'}
                       </p>
-                    )}
-                  </li>
-                )
-              })}
-            </ul>
-          </section>
-        ))}
-      </div>
-    </div>
+ )}
+ </li>
+ )
+ })}
+ </ul>
+ </section>
+ ))}
+ </div>
+ </div>
   )
 }

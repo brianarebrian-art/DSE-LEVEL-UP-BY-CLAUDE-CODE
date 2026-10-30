@@ -162,7 +162,7 @@ export default async function RootLayout({
     // suppressHydrationWarning：下方防閃爍腳本會喺 React 水合之前改 data-theme，
     // 伺服器輸出與首次客戶端 render 因此必然不同，此屬預期行為。
     <html lang="zh-HK" className={`h-full ${noto.variable}`} suppressHydrationWarning>
-      <body className={`${noto.className} min-h-screen bg-surface text-ink`}>
+ <body className={`${noto.className} min-h-screen bg-surface text-ink`}>
         {/* Vercel Web Analytics（創辦人 2026-10-02 決定）。用 Vercel 提供的同源 script，
             唔加套件（憲章 §1 第 5 點）；冇 cookie，只計整體瀏覽量。只喺 Vercel 正式部署載入，
             本機及預覽版唔載。私隱頁「啲資料去咗邊」有對應說明。 */}
@@ -193,7 +193,7 @@ export default async function RootLayout({
         <a href="#main-content" className="skip-link">
           跳至主要內容 · Skip to main content{/* i18n-exempt: 雙語已並列（server component 冇 locale） */}
         </a>
-        <Providers>
+ <Providers>
           {/* AppShell 負責全屏任務模式（/practice 等）隱藏 Navbar／Footer 同收起
               頂部留白。名單見 lib/immersiveRoutes.ts，同 BottomNav 共用同一張。 */}
           <AppShell navbar={<Navbar />} footer={<Footer />}>
@@ -205,12 +205,12 @@ export default async function RootLayout({
           <PrivacyConsentGate />
           {/* SEN 無障礙工具（全站常駐）：字級／易讀字體面板 + 防跳行閱讀尺 */}
           <A11yPanel />
-          <ReadingRuler />
+ <ReadingRuler />
           {/* 手機底部導航（桌面 md:hidden）。放最後：佢會喺 <html> 掛
               data-bottomnav，上面幾個浮動掣靠嗰個變數讓位。 */}
           <BottomNav />
-        </Providers>
-      </body>
-    </html>
+ </Providers>
+ </body>
+ </html>
   )
 }

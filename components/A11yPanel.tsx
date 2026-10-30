@@ -50,8 +50,8 @@ export function A11yButton({ className = '' }: { className?: string }) {
       title={en ? 'Accessibility · text size, easy-read font, reading ruler' : '無障礙 · 字級、易讀字體、閱讀尺'}
       className={`md:hidden inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg hover:bg-line transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${className}`}
     >
-      <Image src="/icons/accessibility.svg" alt="" aria-hidden width={24} height={24} className="object-contain" unoptimized />
-    </button>
+ <Image src="/icons/accessibility.svg" alt="" aria-hidden width={24} height={24} className="object-contain" unoptimized />
+ </button>
   )
 }
 
@@ -105,7 +105,7 @@ export default function A11yPanel() {
   // 由頁頂按鈕或頁尾連結開啟時，發起者離面板很遠：焦點移到面板的「關閉」，
   // 關閉後返回發起者，鍵盤及讀屏使用者不會迷路。浮動掣本身就在面板旁邊，行為不變。
   const openerRef = useRef<HTMLElement | null>(null)
-  const closeRef = useRef<HTMLButtonElement>(null)
+ const closeRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
     const openIt = () => {
       openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
@@ -343,7 +343,7 @@ export default function A11yPanel() {
             OG 圖，SVG 重繪先有真透明背景）。無障礙名稱由 button aria-label 提供。
             unoptimized：SVG 不經 next 優化器。 */}
         <Image src="/icons/accessibility.svg" alt="" aria-hidden width={26} height={26} className="object-contain" unoptimized />
-      </button>
+ </button>
 
       {open && (
         <div
@@ -351,83 +351,83 @@ export default function A11yPanel() {
           role="dialog"
           aria-label={en ? 'Accessibility options' : '無障礙設定'}
         >
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2 text-ink font-bold text-sm">
-              <Image src="/icons/accessibility.svg" alt="" aria-hidden width={20} height={20} className="object-contain" unoptimized />
+ <div className="flex items-center justify-between mb-3">
+ <div className="flex items-center gap-2 text-ink font-bold text-sm">
+ <Image src="/icons/accessibility.svg" alt="" aria-hidden width={20} height={20} className="object-contain" unoptimized />
               {en ? 'Accessibility' : '無障礙設定'}
             </div>
-            <button
+ <button
               ref={closeRef}
               onClick={() => setOpen(false)}
               aria-label={en ? 'Close' : '關閉'}
               className="min-h-11 min-w-11 flex items-center justify-center text-ink-muted hover:text-ink transition-colors -mr-2 -mt-2"
             >
-              <X size={16} />
-            </button>
-          </div>
+ <X size={16} />
+ </button>
+ </div>
 
           {/* 一鍵舒適模式（總掣）：易讀字體＋閱讀尺＋隱藏計時器一次過開 */}
           <button
             onClick={toggleComfort}
             aria-pressed={comfortOn}
             className={`w-full min-h-11 mb-4 flex items-center justify-between rounded-xl border px-4 py-2.5 transition-colors ${
-              comfortOn
-                ? 'bg-surface-sunken border-accent/50 text-accent'
-                : 'bg-surface-raised border-line-strong text-ink hover:bg-surface-sunken'
-            }`}
+ comfortOn
+ ? 'bg-surface-sunken border-accent/50 text-accent'
+ : 'bg-surface-raised border-line-strong text-ink hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left">
-              <span className="block text-sm font-bold">✨ {en ? 'Comfort mode (one tap)' : '一鍵舒適模式'}</span>
-              <span className="block text-[11px] text-ink-muted">
+ <span className="text-left">
+ <span className="block text-sm font-bold">✨ {en ? 'Comfort mode (one tap)' : '一鍵舒適模式'}</span>
+ <span className="block text-[11px] text-ink-muted">
                 {en ? 'Easy font + ruler + timer off + muted' : '易讀字體＋閱讀尺＋隱藏計時器＋靜音'}
               </span>
-            </span>
-            <span
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                comfortOn ? 'bg-accent-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ comfortOn ? 'bg-accent-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {comfortOn ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
           {/* 字級 A− / A+ */}
           <div className="mb-4">
-            <div className="flex items-center gap-1.5 text-xs text-ink-muted mb-2">
-              <Type size={13} /> {en ? 'Text size' : '字級大細'}
+ <div className="flex items-center gap-1.5 text-xs text-ink-muted mb-2">
+ <Type size={13} /> {en ? 'Text size' : '字級大細'}
             </div>
-            <div className="flex items-center gap-2">
-              <button
+ <div className="flex items-center gap-2">
+ <button
                 onClick={() => setFont(size - STEP)}
                 disabled={size <= MIN}
                 aria-label={en ? 'Smaller text' : '縮細字'}
                 className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-line-strong bg-surface-raised text-ink hover:bg-surface-sunken disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
-                <Minus size={15} />
-                <span className="text-sm ml-1">A</span>
-              </button>
-              <span className="tabular-nums text-sm text-ink-soft w-14 text-center shrink-0">{size}px</span>
-              <button
+ <Minus size={15} />
+ <span className="text-sm ml-1">A</span>
+ </button>
+ <span className="tabular-nums text-sm text-ink-soft w-14 text-center shrink-0">{size}px</span>
+ <button
                 onClick={() => setFont(size + STEP)}
                 disabled={size >= MAX}
                 aria-label={en ? 'Larger text' : '放大字'}
                 className="min-h-11 flex-1 flex items-center justify-center rounded-xl border border-line-strong bg-surface-raised text-ink hover:bg-surface-sunken disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
-                <Plus size={15} />
-                <span className="text-base ml-1">A</span>
-              </button>
-            </div>
-          </div>
+ <Plus size={15} />
+ <span className="text-base ml-1">A</span>
+ </button>
+ </div>
+ </div>
 
           {/* B1 行距（1.2–2.0，每 0.1 一級） */}
           <div className="mb-4">
-            <div className="flex items-center justify-between text-xs text-ink-muted mb-2">
-              <span className="flex items-center gap-1.5">
-                <AlignJustify size={13} /> {en ? 'Line spacing' : '行距'}
+ <div className="flex items-center justify-between text-xs text-ink-muted mb-2">
+ <span className="flex items-center gap-1.5">
+ <AlignJustify size={13} /> {en ? 'Line spacing' : '行距'}
               </span>
-              <span className="tabular-nums text-ink-soft">{lineH.toFixed(1)}</span>
-            </div>
-            <input
+ <span className="tabular-nums text-ink-soft">{lineH.toFixed(1)}</span>
+ </div>
+ <input
               type="range"
               min={1.2}
               max={2}
@@ -441,16 +441,16 @@ export default function A11yPanel() {
               aria-label={en ? 'Line spacing' : '行距'}
               className="w-full accent-accent-strong cursor-pointer"
             />
-          </div>
+ </div>
 
           {/* B1 字間距（三檔） */}
           <div className="mb-4">
-            <div className="flex items-center gap-1.5 text-xs text-ink-muted mb-2">
-              <MoveHorizontal size={13} /> {en ? 'Letter spacing' : '字間距'}
+ <div className="flex items-center gap-1.5 text-xs text-ink-muted mb-2">
+ <MoveHorizontal size={13} /> {en ? 'Letter spacing' : '字間距'}
             </div>
-            <div className="grid grid-cols-3 gap-1.5">
+ <div className="grid grid-cols-3 gap-1.5">
               {(['normal', 'wide', 'extra-wide'] as LetterSpacing[]).map((v) => (
-                <button
+ <button
                   key={v}
                   onClick={() => {
                     setLetterSp(v)
@@ -458,10 +458,10 @@ export default function A11yPanel() {
                   }}
                   aria-pressed={letterSp === v}
                   className={`min-h-11 rounded-xl border text-xs transition-colors ${
-                    letterSp === v
-                      ? 'bg-surface-sunken border-gold/40 text-gold'
-                      : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-                  }`}
+ letterSp === v
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
                 >
                   {v === 'normal'
                     ? en ? 'Normal' : '正常'
@@ -469,14 +469,14 @@ export default function A11yPanel() {
                       ? en ? 'Wide' : '闊'
                       : en ? 'Extra' : '最闊'}
                 </button>
-              ))}
-            </div>
-          </div>
+ ))}
+ </div>
+ </div>
 
           {/* B1 即時預覽：拖動滑桿時即刻見到疏密度，唔使閂 panel 去試 */}
           <div className="mb-4 rounded-xl border border-line-strong bg-surface-raised/60 p-3">
-            <div className="text-[11px] text-ink-muted mb-1">{en ? 'Preview' : '即時預覽'}</div>
-            <p
+ <div className="text-[11px] text-ink-muted mb-1">{en ? 'Preview' : '即時預覽'}</div>
+ <p
               className="text-sm text-ink"
               style={{ lineHeight: lineH, letterSpacing: LETTER_SPACING_PREVIEW[letterSp] }}
             >
@@ -484,137 +484,137 @@ export default function A11yPanel() {
                 ? 'When price rises, the quantity supplied rises too. Read these two lines and see whether the spacing feels comfortable to you.'
                 : '價格上升，供應量亦隨之上升。讀一讀呢兩行字，睇下而家嘅疏密度你自己舒唔舒服。'}
             </p>
-          </div>
+ </div>
 
           {/* 易讀字體開關 */}
           <button
             onClick={toggleEasy}
             aria-pressed={easy}
             className={`w-full min-h-11 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-              easy
-                ? 'bg-surface-sunken border-gold/40 text-gold'
-                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-            }`}
+ easy
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left">
-              <span className="block text-sm">{en ? 'Easy-read font' : '易讀字體'}</span>
-              <span className="block text-[11px] text-ink-muted">{en ? 'Dyslexia-friendly' : '讀寫障礙友善'}</span>
-            </span>
-            <span
+ <span className="text-left">
+ <span className="block text-sm">{en ? 'Easy-read font' : '易讀字體'}</span>
+ <span className="block text-[11px] text-ink-muted">{en ? 'Dyslexia-friendly' : '讀寫障礙友善'}</span>
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                easy ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ easy ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {easy ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
           {/* 閱讀尺開關（2026-09-30 由左下角常駐掣搬入）。開着時左下角會出現一粒細掣調高度。 */}
           <button
             onClick={toggleRuler}
             aria-pressed={ruler}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-              ruler
-                ? 'bg-surface-sunken border-gold/40 text-gold'
-                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-            }`}
+ ruler
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left flex items-center gap-2">
-              <Ruler size={14} className="shrink-0" aria-hidden />
-              <span>
-                <span className="block text-sm">{en ? 'Reading ruler' : '閱讀尺'}</span>
-                <span className="block text-[11px] text-ink-muted">{en ? 'Keeps your place line by line' : '防跳行，逐行讀'}</span>
-              </span>
-            </span>
-            <span
+ <span className="text-left flex items-center gap-2">
+ <Ruler size={14} className="shrink-0" aria-hidden />
+ <span>
+ <span className="block text-sm">{en ? 'Reading ruler' : '閱讀尺'}</span>
+ <span className="block text-[11px] text-ink-muted">{en ? 'Keeps your place line by line' : '防跳行，逐行讀'}</span>
+ </span>
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                ruler ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ ruler ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {ruler ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
           {/* 隱藏練習計時器（焦慮友善 — SEN） */}
           <button
             onClick={toggleNoMotion}
             aria-pressed={noMotion}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-              noMotion
-                ? 'bg-surface-sunken border-gold/40 text-gold'
-                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-            }`}
+ noMotion
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left flex items-center gap-2">
-              <Wind size={14} className="shrink-0" />
-              <span>
-                <span className="block text-sm">{en ? 'Reduce motion' : '減少動態效果'}</span>
-                <span className="block text-[11px] text-ink-muted">
+ <span className="text-left flex items-center gap-2">
+ <Wind size={14} className="shrink-0" />
+ <span>
+ <span className="block text-sm">{en ? 'Reduce motion' : '減少動態效果'}</span>
+ <span className="block text-[11px] text-ink-muted">
                   {en ? 'Stops animations without changing device settings' : '唔使改機身設定都停到動畫'}
                 </span>
-              </span>
-            </span>
-            <span
+ </span>
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                noMotion ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ noMotion ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {noMotion ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
-          <button
+ <button
             onClick={toggleTimer}
             aria-pressed={hideTimer}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-              hideTimer
-                ? 'bg-surface-sunken border-gold/40 text-gold'
-                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-            }`}
+ hideTimer
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left flex items-center gap-2">
-              <Clock size={14} className="shrink-0" />
-              <span>
-                <span className="block text-sm">{en ? 'Hide practice timer' : '隱藏練習計時器'}</span>
-                <span className="block text-[11px] text-ink-muted">{en ? 'Less time pressure' : '減低時間壓力'}</span>
-              </span>
-            </span>
-            <span
+ <span className="text-left flex items-center gap-2">
+ <Clock size={14} className="shrink-0" />
+ <span>
+ <span className="block text-sm">{en ? 'Hide practice timer' : '隱藏練習計時器'}</span>
+ <span className="block text-[11px] text-ink-muted">{en ? 'Less time pressure' : '減低時間壓力'}</span>
+ </span>
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                hideTimer ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ hideTimer ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {hideTimer ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
           {/* 答對輕柔提示音（第 1 週 · 引擎一）—— 預設關閉，答錯永遠無聲 */}
           <button
             onClick={toggleSound}
             aria-pressed={sound}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-              sound
-                ? 'bg-surface-sunken border-gold/40 text-gold'
-                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-            }`}
+ sound
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left flex items-center gap-2">
-              <Volume2 size={14} className="shrink-0" />
-              <span>
-                <span className="block text-sm">{en ? 'Gentle chime on correct' : '答對輕柔提示音'}</span>
-                <span className="block text-[11px] text-ink-muted">
+ <span className="text-left flex items-center gap-2">
+ <Volume2 size={14} className="shrink-0" />
+ <span>
+ <span className="block text-sm">{en ? 'Gentle chime on correct' : '答對輕柔提示音'}</span>
+ <span className="block text-[11px] text-ink-muted">
                   {en ? 'Off by default · never on wrong answers' : '預設關閉 · 答錯永遠無聲'}
                 </span>
-              </span>
-            </span>
-            <span
+ </span>
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                sound ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ sound ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {sound ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
           {/* Settings sync to the account (UX audit D1 (b+)). Only shown when sign-in exists. */}
           {process.env.NEXT_PUBLIC_AUTH_ENABLED === 'true' && (
@@ -622,28 +622,28 @@ export default function A11yPanel() {
               onClick={() => setSyncConsent(!syncOn)}
               aria-pressed={syncOn}
               className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-                syncOn
-                  ? 'bg-surface-sunken border-gold/40 text-gold'
-                  : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-              }`}
+ syncOn
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
             >
-              <span className="text-left flex items-center gap-2">
-                <Cloud size={14} className="shrink-0" />
-                <span>
-                  <span className="block text-sm">{en ? 'Sync these settings to my account' : '同步呢啲設定去我個帳戶'}</span>
-                  <span className="block text-[11px] text-ink-muted">
+ <span className="text-left flex items-center gap-2">
+ <Cloud size={14} className="shrink-0" />
+ <span>
+ <span className="block text-sm">{en ? 'Sync these settings to my account' : '同步呢啲設定去我個帳戶'}</span>
+ <span className="block text-[11px] text-ink-muted">
                     {en ? 'Signed in: no need to set them again on another device. Off deletes our copy.' : '登入後換部機唔使再調。閂咗會刪走伺服器上嗰份。'}
                   </span>
-                </span>
-              </span>
-              <span
+ </span>
+ </span>
+ <span
                 className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                  syncOn ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-                }`}
+ syncOn ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
               >
                 {syncOn ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
               </span>
-            </button>
+ </button>
           )}
 
           {/* Focus 專注燈光（2026-09-13，ADHD／UDL） */}
@@ -651,37 +651,37 @@ export default function A11yPanel() {
             onClick={toggleFocusLight}
             aria-pressed={focusLight}
             className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
-              focusLight
-                ? 'bg-surface-sunken border-gold/40 text-gold'
-                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
-            }`}
+ focusLight
+ ? 'bg-surface-sunken border-gold/40 text-gold'
+ : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
           >
-            <span className="text-left flex items-center gap-2">
-              <Lightbulb size={14} className="shrink-0" />
-              <span>
-                <span className="block text-sm">{en ? 'Focus light' : 'Focus 專注燈'}</span>
-                <span className="block text-[11px] text-ink-muted">
+ <span className="text-left flex items-center gap-2">
+ <Lightbulb size={14} className="shrink-0" />
+ <span>
+ <span className="block text-sm">{en ? 'Focus light' : 'Focus 專注燈'}</span>
+ <span className="block text-[11px] text-ink-muted">
                   {en
                     ? 'Dims everything around the question. Shift + F while practising.'
                     : '做題時周邊淡落，題目卡維持全亮。練習頁可撳 Shift + F。'}
                 </span>
-              </span>
-            </span>
-            <span
+ </span>
+ </span>
+ <span
               className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
-                focusLight ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
-              }`}
+ focusLight ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+ }`}
             >
               {focusLight ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
-          </button>
+ </button>
 
           {/* v8 UI1：溫和同步狀態。放喺設定區底部，唔會喺做題途中彈出打斷心流。 */}
           <div className="mt-2">
-            <OfflineBadge />
-          </div>
-        </div>
-      )}
-    </>
+ <OfflineBadge />
+ </div>
+ </div>
+ )}
+ </>
   )
 }

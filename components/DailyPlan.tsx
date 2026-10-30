@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { CalendarCheck, ArrowRight } from 'lucide-react'
+import SubjectMark from '@/components/marks/SubjectMark'
 import { weakestTopics, winRate, type TopicStatEntry } from '@/lib/topicStats'
 import { MIN_EVIDENCE } from '@/lib/topicEvidence'
 import { getSubject } from '@/data/subjects'
@@ -30,40 +31,40 @@ export default function DailyPlan() {
 
   return (
     <div className="bg-surface-raised border border-gold/20 rounded-2xl p-6 mb-10">
-      <div className="flex items-center justify-between gap-3 mb-1 flex-wrap">
-        <div className="flex items-center gap-2.5">
-          <CalendarCheck size={18} className="text-gold shrink-0" />
-          <h3 className="text-lg font-medium text-ink">{en ? 'Today’s plan' : '今日溫習計劃'}</h3>
-        </div>
+ <div className="flex items-center justify-between gap-3 mb-1 flex-wrap">
+ <div className="flex items-center gap-2.5">
+ <CalendarCheck size={18} className="text-gold shrink-0" />
+ <h3 className="text-lg font-medium text-ink">{en ? 'Today’s plan' : '今日溫習計劃'}</h3>
+ </div>
         {items.length > 0 && (
-          <span className="text-xs text-ink-muted">
+ <span className="text-xs text-ink-muted">
             {en ? `≈ ${items.length * PER_TOPIC_MIN} min` : `約 ${items.length * PER_TOPIC_MIN} 分鐘`}
           </span>
-        )}
-      </div>
+ )}
+ </div>
 
       {items.length === 0 ? (
         <>
-          <p className="text-sm text-ink-muted mb-4">
+ <p className="text-sm text-ink-muted mb-4">
             {en
               ? `Once a topic has ${MIN_EVIDENCE} or more answers, the ones that need consolidating show up here.`
               : `一個課題做夠 ${MIN_EVIDENCE} 題之後，較需要鞏固嘅課題就會喺度出現。`}
           </p>
-          <Link
+ <Link
             href="/subjects"
             className="inline-flex items-center gap-2 text-sm bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-4 py-2 rounded-xl transition-colors"
           >
             {en ? 'Pick a subject' : '揀一科開始'} <ArrowRight size={15} />
-          </Link>
-        </>
-      ) : (
-        <>
-          <p className="text-sm text-ink-muted mb-4">
+ </Link>
+ </>
+ ) : (
+ <>
+ <p className="text-sm text-ink-muted mb-4">
             {en
               ? 'Recently needs consolidating — one at a time.'
               : '最近較需要鞏固嘅課題 —— 一個一個嚟。'}
           </p>
-          <div className="space-y-2.5">
+ <div className="space-y-2.5">
             {items.map((it) => {
               const meta = getSubject(it.subjectId)
               const pct = Math.round(winRate(it) * 100)
@@ -74,24 +75,24 @@ export default function DailyPlan() {
                   href={href}
                   className="group flex items-center gap-3 bg-surface-sunken hover:bg-surface-sunken border border-line hover:border-gold/50 rounded-xl px-4 py-3 transition-all"
                 >
-                  <span className="text-xl shrink-0">{meta?.emoji ?? '📘'}</span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-medium text-ink truncate">{it.label}</span>
-                    <span className="block text-xs text-ink-muted">
+                  {meta ? <SubjectMark subject={meta} size="sm" /> : null}
+ <span className="min-w-0 flex-1">
+ <span className="block text-sm font-medium text-ink truncate">{it.label}</span>
+ <span className="block text-xs text-ink-muted">
                       {meta ? (en ? meta.nameEn : meta.name) : it.subjectId}
                       {' · '}
                       <span className={pct < 60 ? 'text-rose' : 'text-gold'}>
                         {en ? `${pct}% correct` : `答對率 ${pct}%`}
                       </span>
-                    </span>
-                  </span>
-                  <ArrowRight size={16} className="text-ink-muted group-hover:text-gold shrink-0" />
-                </Link>
-              )
-            })}
-          </div>
-        </>
-      )}
-    </div>
+ </span>
+ </span>
+ <ArrowRight size={16} className="text-ink-muted group-hover:text-gold shrink-0" />
+ </Link>
+ )
+ })}
+ </div>
+ </>
+ )}
+ </div>
   )
 }

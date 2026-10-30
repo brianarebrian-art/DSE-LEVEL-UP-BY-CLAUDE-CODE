@@ -38,7 +38,7 @@ export default function LogicLogView() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [entries, setEntries] = useState<LogEntry[] | null>(null)
-  const [days, setDays] = useState<ActiveDayCounts>({ monthly: 0, total: 0 })
+ const [days, setDays] = useState<ActiveDayCounts>({ monthly: 0, total: 0 })
   const [editing, setEditing] = useState<string | null>(null)
   const [draft, setDraft] = useState('')
 
@@ -55,20 +55,20 @@ export default function LogicLogView() {
 
   if (entries === null) {
     return <main className="min-h-screen px-4 py-12"><div className="max-w-2xl mx-auto h-64 rounded-2xl bg-surface-raised animate-pulse" /></main>
-  }
+ }
 
-  return (
-    <main className="min-h-screen px-4 py-12">
-      <div className="max-w-2xl mx-auto">
-        <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-6 min-h-11">
-          <ArrowLeft className="w-4 h-4" />
+ return (
+ <main className="min-h-screen px-4 py-12">
+ <div className="max-w-2xl mx-auto">
+ <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink mb-6 min-h-11">
+ <ArrowLeft className="w-4 h-4" />
           {en ? 'Back to progress' : '返回我的進度'}
         </Link>
 
-        <h1 className="scatter-title text-3xl sm:text-4xl font-medium mb-2 text-ink">
+ <h1 className="scatter-title text-3xl sm:text-4xl font-medium mb-2 text-ink">
           {en ? 'Study trail' : '溫習足跡'}
         </h1>
-        <p className="text-ink-muted mb-8">
+ <p className="text-ink-muted mb-8">
           {en
             ? `The last ${LOG_WINDOW_DAYS} days of where you have been — which subjects, which topics, which traps you named. No scores here.`
             : `最近 ${LOG_WINDOW_DAYS} 日你走過的地方——做過哪些科、碰過哪些課題、認出過哪些陷阱。這裡不記分數。`}
@@ -79,90 +79,90 @@ export default function LogicLogView() {
             休息一日只是今日沒有加一，走過的路一日都不會被收回（憲章 §7）。
             375px 單欄堆疊，640px 起雙欄。 */}
         {days.total > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-            <div className="rounded-2xl border border-line bg-surface-raised p-5">
-              <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
-                <span aria-hidden>📅</span>
+ <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+ <div className="rounded-2xl border border-line bg-surface-raised p-5">
+ <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
+ <span aria-hidden></span>
                 {en ? 'This month' : '本月溫習'}
               </div>
-              <p className="text-3xl sm:text-4xl font-medium text-accent leading-tight">
+ <p className="text-3xl sm:text-4xl font-medium text-accent leading-tight">
                 {en ? `${days.monthly} ${days.monthly === 1 ? 'day' : 'days'}` : `${days.monthly} 日`}
               </p>
-              <p className="text-sm text-ink-muted mt-1">
+ <p className="text-sm text-ink-muted mt-1">
                 {en ? 'However many days it is, every one of them counts.' : '不論多少日，每一日都算數。'}
               </p>
-            </div>
-            <div className="rounded-2xl border border-line bg-surface-raised p-5">
-              <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
-                <span aria-hidden>🏆</span>
+ </div>
+ <div className="rounded-2xl border border-line bg-surface-raised p-5">
+ <div className="flex items-center gap-2 mb-1 text-sm text-ink-muted">
+ <span aria-hidden></span>
                 {en ? 'All time' : '總共溫習'}
               </div>
-              <p className="text-3xl sm:text-4xl font-medium text-gold leading-tight">
+ <p className="text-3xl sm:text-4xl font-medium text-gold leading-tight">
                 {en ? `${days.total} ${days.total === 1 ? 'day' : 'days'}` : `${days.total} 日`}
               </p>
-              <p className="text-sm text-ink-muted mt-1">
+ <p className="text-sm text-ink-muted mt-1">
                 {en ? 'What accumulates is stronger than what must stay unbroken.' : '累積的力量，遠比連續更強。'}
               </p>
-            </div>
-          </div>
+ </div>
+ </div>
         )}
 
         {entries.length === 0 ? (
           <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center">
-            <p className="text-ink mb-2">{en ? 'No trail yet' : '仲未有足跡'}</p>
-            <p className="text-sm text-ink-muted mb-6">
+ <p className="text-ink mb-2">{en ? 'No trail yet' : '仲未有足跡'}</p>
+ <p className="text-sm text-ink-muted mb-6">
               {en
                 ? 'Finish one practice session and the first marker appears here — even a single question counts.'
                 : '做完一節練習，第一個節點就會出現——就算只做一題都算。'}
             </p>
-            <Link href="/subjects" className="inline-flex items-center min-h-11 px-5 rounded-xl bg-accent-strong text-white font-medium">
+ <Link href="/subjects" className="inline-flex items-center min-h-11 px-5 rounded-xl bg-accent-strong text-white font-medium">
               {en ? 'Start practising' : '開始練習'}
             </Link>
-          </div>
-        ) : (
-          <ol className="relative">
+ </div>
+ ) : (
+ <ol className="relative">
             {entries.map((e, i) => {
               const linked = i > 0 && isConsecutive(entries[i - 1].date, e.date)
-              return (
-                <li key={e.date} className="relative pl-8 pb-8">
+ return (
+ <li key={e.date} className="relative pl-8 pb-8">
                   {/* 連續日子之間的發光連接線（規格書 §模組一）。非連續就不畫，
                       空白本身就是誠實的表達，不用虛線去暗示「你斷了」。 */}
                   {linked && (
                     <span aria-hidden className="absolute left-[7px] -top-8 h-8 w-px bg-gradient-to-b from-transparent to-accent/50" />
-                  )}
-                  <span
+ )}
+ <span
                     aria-hidden
                     className={`absolute left-0 top-1.5 rounded-full border ${TONE_CLASS[nodeTone(e)]} ${SIZE_CLASS[nodeSize(e)]}`}
                   />
-                  <div className="rounded-2xl border border-line bg-surface-raised p-5">
-                    <p className="font-medium text-ink">{formatDate(e.date, en)}</p>
-                    <p className="text-sm text-ink-muted mt-1">
+ <div className="rounded-2xl border border-line bg-surface-raised p-5">
+ <p className="font-medium text-ink">{formatDate(e.date, en)}</p>
+ <p className="text-sm text-ink-muted mt-1">
                       {en
                         ? `${e.questionsCount} questions · ${e.sessions} session${e.sessions === 1 ? '' : 's'} · ${e.timeMinutes} min`
                         : `${e.questionsCount} 題 · ${e.sessions} 節 · ${e.timeMinutes} 分鐘`}
                     </p>
 
                     {e.subjects.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 mt-3">
+ <div className="flex flex-wrap gap-1.5 mt-3">
                         {e.subjects.map((s) => (
-                          <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-surface-sunken text-accent border border-accent/30">
+ <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-surface-sunken text-accent border border-accent/30">
                             {subjectLabel(s, en)}
                           </span>
-                        ))}
-                      </div>
+ ))}
+ </div>
                     )}
 
                     {e.topics.length > 0 && (
-                      <p className="text-sm text-ink-muted mt-3">
-                        <span className="text-ink">{en ? 'Topics covered: ' : '涉獵課題：'}</span>
+ <p className="text-sm text-ink-muted mt-3">
+ <span className="text-ink">{en ? 'Topics covered: ' : '涉獵課題：'}</span>
                         {e.topics.slice(0, 6).join(en ? ', ' : '、')}
                         {e.topics.length > 6 && (en ? ` and ${e.topics.length - 6} more` : ` 等 ${e.topics.length} 個`)}
                       </p>
                     )}
 
                     {e.trapsFound.length > 0 && (
-                      <p className="text-sm text-ink-muted mt-2">
-                        <span className="text-gold">{en ? 'Traps you named: ' : '認出的陷阱：'}</span>
+ <p className="text-sm text-ink-muted mt-2">
+ <span className="text-gold">{en ? 'Traps you named: ' : '認出的陷阱：'}</span>
                         {e.trapsFound.slice(0, 4).join(en ? ', ' : '、')}
                       </p>
                     )}
@@ -171,7 +171,7 @@ export default function LogicLogView() {
                     <div className="mt-4 pt-4 border-t border-line">
                       {editing === e.date ? (
                         <div className="flex items-start gap-2">
-                          <textarea
+ <textarea
                             autoFocus
                             value={draft}
                             maxLength={MOOD_NOTE_MAX}
@@ -181,30 +181,30 @@ export default function LogicLogView() {
                             placeholder={en ? 'e.g. finally got independent events' : '例如：終於搞懂咗獨立事件'}
                             className="flex-1 text-sm rounded-xl border border-line bg-surface-sunken px-3 py-2 text-ink"
                           />
-                          <button onClick={() => saveNote(e.date)} aria-label={en ? 'Save note' : '儲存備註'} className="min-h-11 min-w-11 grid place-items-center rounded-xl bg-accent-strong text-white">
-                            <Check className="w-4 h-4" />
-                          </button>
-                          <button onClick={() => setEditing(null)} aria-label={en ? 'Cancel' : '取消'} className="min-h-11 min-w-11 grid place-items-center rounded-xl border border-line text-ink-muted">
-                            <X className="w-4 h-4" />
-                          </button>
-                        </div>
-                      ) : (
-                        <button
+ <button onClick={() => saveNote(e.date)} aria-label={en ? 'Save note' : '儲存備註'} className="min-h-11 min-w-11 grid place-items-center rounded-xl bg-accent-strong text-white">
+ <Check className="w-4 h-4" />
+ </button>
+ <button onClick={() => setEditing(null)} aria-label={en ? 'Cancel' : '取消'} className="min-h-11 min-w-11 grid place-items-center rounded-xl border border-line text-ink-muted">
+ <X className="w-4 h-4" />
+ </button>
+ </div>
+ ) : (
+ <button
                           onClick={() => { setEditing(e.date); setDraft(e.moodNote ?? '') }}
                           className="w-full text-left text-sm text-ink-muted hover:text-ink flex items-center gap-2 min-h-11"
                         >
-                          <Pencil className="w-3.5 h-3.5 shrink-0" />
+ <Pencil className="w-3.5 h-3.5 shrink-0" />
                           {e.moodNote ?? (en ? 'Add a note for this day' : '為這一日寫一句')}
                         </button>
-                      )}
-                    </div>
-                  </div>
-                </li>
-              )
-            })}
-          </ol>
-        )}
-      </div>
-    </main>
+ )}
+ </div>
+ </div>
+ </li>
+ )
+ })}
+ </ol>
+ )}
+ </div>
+ </main>
   )
 }

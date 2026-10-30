@@ -71,7 +71,7 @@ export default function DashboardPageClient() {
   const router = useRouter()
   const { version } = useSync() // re-read local progress after a cloud pull/merge
   const [stats, setStats] = useState<ProgressStats | null>(null)
-  const [topics, setTopics] = useState<TopicStatEntry[]>([])
+ const [topics, setTopics] = useState<TopicStatEntry[]>([])
   const [confirmReset, setConfirmReset] = useState(false)
   // F-NTM: 今晚唔溫得 — 開啟時 Dashboard 收起所有推送／計數，只顯示休息畫面
   const [ntm, setNtm] = useState(false)
@@ -145,9 +145,9 @@ export default function DashboardPageClient() {
   if (!stats) {
     return (
       <div aria-busy="true">
-        <span className="sr-only">{t.common.loading}</span>
-        <DashboardSkeleton />
-      </div>
+ <span className="sr-only">{t.common.loading}</span>
+ <DashboardSkeleton />
+ </div>
     )
   }
 
@@ -155,27 +155,27 @@ export default function DashboardPageClient() {
   if (ntm) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-        <Moon size={40} aria-hidden className="text-ink-muted" />
-        <h1 className="text-2xl font-serif text-ink">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
-        <p className="text-ink-muted leading-relaxed">
+ <Moon size={40} aria-hidden className="text-ink-muted" />
+ <h1 className="text-2xl font-serif text-ink">{en ? 'Not-tonight mode is on' : '今晚唔溫得模式已開啟'}</h1>
+ <p className="text-ink-muted leading-relaxed">
           {en ? 'Rest well tonight. See you tomorrow.' : '今晚好好休息。聽日再見。'}
           <br />
           {en ? 'Your progress has been saved automatically.' : '你嘅進度已自動儲存。'}
         </p>
-        <Link
+ <Link
           href="/relax"
           className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-[colors,transform] duration-100"
         >
           {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
-        <button
+ <button
           onClick={() => setNotTonight(false)}
           className="min-h-11 text-sm text-ink-muted hover:text-accent underline underline-offset-4 transition-colors"
         >
           {en ? 'Turn off early' : '提早關閉呢個模式'}
         </button>
-        <p className="text-xs text-ink-muted">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
-      </div>
+ <p className="text-xs text-ink-muted">{en ? 'Switches off automatically at 04:00.' : '會喺 04:00 自動關閉。'}</p>
+ </div>
     )
   }
 
@@ -185,31 +185,31 @@ export default function DashboardPageClient() {
     const last = stats.recent[0]?.subjectId
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center bg-surface text-ink-soft">
-        <Leaf size={40} aria-hidden className="text-ink-muted" />
-        <h1 className="text-2xl font-serif text-ink">{en ? 'Today is one of your rest days' : '今日係你自己揀咗嘅休息日'}</h1>
-        <p className="text-ink-muted leading-relaxed max-w-sm">
+ <Leaf size={40} aria-hidden className="text-ink-muted" />
+ <h1 className="text-2xl font-serif text-ink">{en ? 'Today is one of your rest days' : '今日係你自己揀咗嘅休息日'}</h1>
+ <p className="text-ink-muted leading-relaxed max-w-sm">
           {en
             ? 'Nothing is waiting for you here. Rest is part of the plan, not a gap in it.'
             : '呢度冇嘢等緊你。休息本身就係計劃嘅一部分，唔係一個缺口。'}
           <br />
           {en ? 'Your progress is saved.' : '你嘅進度已經儲好。'}
         </p>
-        <Link
+ <Link
           href="/relax"
           className="min-h-11 inline-flex items-center bg-surface-sunken text-accent border border-accent/30 hover:bg-surface-sunken rounded-xl px-6 py-3 font-medium transition-[colors,transform] duration-100"
         >
           {en ? 'Go to the Breathing Space →' : '去呼吸空間唞一唞 →'}
         </Link>
-        <Link
+ <Link
           href={last ? `/practice?subject=${encodeURIComponent(last)}&size=1` : '/subjects'}
           className="min-h-11 inline-flex items-center text-sm text-ink-muted hover:text-accent underline underline-offset-4 transition-colors"
         >
           {en ? 'I still feel like doing one' : '今日想做少少都得'}
         </Link>
-        <Link href="/account" className="text-xs text-ink-muted hover:text-accent underline underline-offset-4">
+ <Link href="/account" className="text-xs text-ink-muted hover:text-accent underline underline-offset-4">
           {en ? 'Change my rest days' : '更改休息日'}
         </Link>
-      </div>
+ </div>
     )
   }
 
@@ -224,11 +224,11 @@ export default function DashboardPageClient() {
   if (stats.totalAttempts === 0) {
     return (
       <div className="min-h-screen px-4 py-20 bg-surface text-ink-soft">
-        <div className="max-w-md mx-auto">
+ <div className="max-w-md mx-auto">
           {/* Even with zero history, let new users bind Google to sync */}
           <SyncReadyBannerGate />
-          <SyncStatus />
-          <div className="text-center">
+ <SyncStatus />
+ <div className="text-center">
             {/* 2026-09-03：📊 換成吉祥物（捧杯、瞇眼笑）。
                 呢個係「你仲未開始練習」嘅空狀態 —— 即係新用戶第一次入到嚟
                 見到嗰版。一個圖表 emoji 喺呢一刻讀落係「你冇數據」；
@@ -236,27 +236,27 @@ export default function DashboardPageClient() {
                 只擺喺空狀態：有數據嗰個分支係做緊嘢嘅版面，
                 而且兩個分支互斥，所以成版永遠最多一隻（規則①）。 */}
             <div className="mb-6 flex justify-center">
-              <Mascot pose="mug" height={148} />
-            </div>
-            <h1 className="text-3xl font-serif mb-3 text-ink">{d.title}</h1>
-            <p className="text-ink-muted mb-8">
+ <Mascot pose="mug" height={148} />
+ </div>
+ <h1 className="text-3xl font-serif mb-3 text-ink">{d.title}</h1>
+ <p className="text-ink-muted mb-8">
               {d.emptyBody}
             </p>
-            <Link
+ <Link
               href="/subjects"
               className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-[colors,transform] duration-100"
             >
               {d.emptyCta} <ArrowRight size={16} />
-            </Link>
-          </div>
+ </Link>
+ </div>
           {/* C6：對住「開始第一份練習」都撳唔落手嗰個，先係最需要呢個入口嗰個 */}
           <JustOneCard stack className="mt-8 text-left" />
 
           {/* 空狀態【必須】有呢張卡 —— 一題都未做過嗰個學生，正正最需要聽到
               「你有嚟過已經算數」。只放喺有數據嗰個分支等於淨係恭喜已經做緊嘅人。 */}
           <GoodTodayCard className="mt-4 text-left" headingLevel={2} />
-        </div>
-      </div>
+ </div>
+ </div>
     )
   }
 
@@ -291,17 +291,17 @@ export default function DashboardPageClient() {
 
   return (
     <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
-      <div className="max-w-4xl mx-auto">
+ <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-end justify-between mb-8 gap-4 flex-wrap">
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-serif mb-1 text-ink">{d.title}</h1>
+ <div>
+ <h1 className="text-3xl sm:text-4xl font-serif mb-1 text-ink">{d.title}</h1>
             {!quiet && (
               <p className="text-ink-muted text-sm">
                 {d.subtitleA}{stats.activeDays}{d.subtitleB}{stats.totalCorrect}/{stats.totalQuestions}{d.questionsUnit}
               </p>
-            )}
-          </div>
+ )}
+ </div>
           {/* ⚠️ flex-wrap 唔可以剷。2026-09-13 喺 375px 實測：四個掣被 flex 壓到
               75–82px 闊，中文標籤逐字斷行 ——「我嘅收藏」四個字佔咗【五行】
               （實測 0.8 字／行）。唔算橫向爆版，所以 responsive-guard 同
@@ -315,7 +315,7 @@ export default function DashboardPageClient() {
               href="/exam-day"
               className="inline-flex items-center gap-2 bg-surface-raised border border-line-strong text-ink-soft hover:text-ink hover:border-accent/40 px-4 py-2.5 rounded-xl transition-colors text-sm min-h-11"
             >
-              <CloudSun size={15} aria-hidden /> {en ? 'Exam-day brief' : '考試日管家'}
+ <CloudSun size={15} aria-hidden /> {en ? 'Exam-day brief' : '考試日管家'}
             </Link>
             {/* #106 收藏頁入口。刻意唔入 Navbar —— 橫向條 7 條連結已迫到盡（見
                 Navbar 檔頭實測寬度），第 8 條會喺 1280px 斷點爆版。 */}
@@ -323,7 +323,7 @@ export default function DashboardPageClient() {
               href="/bookmarks"
               className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm min-h-11"
             >
-              <Bookmark size={15} aria-hidden /> {en ? 'Saved' : '收藏'}
+ <Bookmark size={15} aria-hidden /> {en ? 'Saved' : '收藏'}
             </Link>
             {/* F-NTM: 今晚唔溫得開關（柔和款式，唔搶眼） */}
             <button
@@ -331,16 +331,16 @@ export default function DashboardPageClient() {
               title={en ? 'Hide all nudges and counters until 04:00' : '收起所有題目推送同計數，到 04:00 自動恢復'}
               className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-accent px-4 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm min-h-11"
             >
-              <Moon size={15} aria-hidden /> {en ? 'Not tonight' : '今晚唔溫得'}
+ <Moon size={15} aria-hidden /> {en ? 'Not tonight' : '今晚唔溫得'}
             </button>
-            <Link
+ <Link
               href="/subjects"
               className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm"
             >
               {d.continueP} <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
+ </Link>
+ </div>
+ </div>
 
         {/* Quiet mode toggle (lib/quietMode.ts), placed before the stat cards so a
             student can hide the numbers before seeing them (UX audit B5 (b)). */}
@@ -348,7 +348,7 @@ export default function DashboardPageClient() {
 
         {/* Cross-device sync status (replaces the old on-device teaser) */}
         <SyncReadyBannerGate />
-        <SyncStatus />
+ <SyncStatus />
 
         {/* 今日提示（藍圖 02 每日溫習信 + 06 錯題溫和提醒，合併為單一提示位）。
             擺喺數據卡之前：一打開就見到「今日做啲乜」，正正針對 ADHD 嘅啟動困難。
@@ -359,16 +359,16 @@ export default function DashboardPageClient() {
         {!quiet && (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
             {statCards.map((c) => (
-              <div key={c.label} className="bg-surface-raised border border-line rounded-2xl p-5">
-                <c.icon size={18} className={`${c.accent} mb-3`} />
-                <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
+ <div key={c.label} className="bg-surface-raised border border-line rounded-2xl p-5">
+ <c.icon size={18} className={`${c.accent} mb-3`} />
+ <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
                   {c.value}
                   <span className="text-sm text-ink-muted font-normal ml-1">{c.unit}</span>
-                </div>
-                <div className="text-xs text-ink-muted mt-1">{c.label}</div>
-              </div>
-            ))}
-          </div>
+ </div>
+ <div className="text-xs text-ink-muted mt-1">{c.label}</div>
+ </div>
+ ))}
+ </div>
         )}
 
         {/* 今日節奏（Night Study 模板「Today's rhythm」）。
@@ -378,8 +378,8 @@ export default function DashboardPageClient() {
             （536397f），換成等級預測：/predictor 除咗側欄之外本來冇任何入口，
             而側欄喺 1024px 以下唔出。 */}
         <section className="mb-10 rounded-2xl border border-line bg-surface-raised p-5">
-          <h2 className="mb-4 font-serif text-lg text-ink">{en ? "Today's rhythm" : '今日節奏'}</h2>
-          <div className="space-y-3">
+ <h2 className="mb-4 font-serif text-lg text-ink">{en ? "Today's rhythm" : '今日節奏'}</h2>
+ <div className="space-y-3">
             {[
               {
                 href: '/relax',
@@ -398,26 +398,26 @@ export default function DashboardPageClient() {
                 tone: 'bg-accent/15 text-accent',
               },
             ].map(({ href, Icon, title, body, cta, tone }) => (
-              <Link
+ <Link
                 key={href}
                 href={href}
                 className="flex min-h-16 items-center gap-4 rounded-xl border border-line bg-surface p-3 transition-colors hover:border-accent/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
               >
-                <span className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${tone}`}>
-                  <Icon size={20} strokeWidth={1.4} aria-hidden />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-serif text-base text-ink">{title}</span>
-                  <span className="block text-sm text-ink-muted">{body}</span>
-                </span>
-                <span className="inline-flex shrink-0 items-center gap-1 text-sm text-accent">
+ <span className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${tone}`}>
+ <Icon size={20} strokeWidth={1.4} aria-hidden />
+ </span>
+ <span className="min-w-0 flex-1">
+ <span className="block font-serif text-base text-ink">{title}</span>
+ <span className="block text-sm text-ink-muted">{body}</span>
+ </span>
+ <span className="inline-flex shrink-0 items-center gap-1 text-sm text-accent">
                   {cta}
                   <ArrowRight size={14} aria-hidden />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
+ </span>
+ </Link>
+ ))}
+ </div>
+ </section>
 
         {/* 計劃A §5.6：精進軌跡（每日正確率曲線，真實數據） */}
         <ProgressTrajectory />
@@ -438,7 +438,7 @@ export default function DashboardPageClient() {
         {/* 「今日已經好叻」+ 自訂鼓勵語。緊接 JustOneCard 之後：連「只做 1 題」都
             做唔到嗰日，呢張卡係最後一級台階 —— 唔要求任何產出，淨係認低你有嚟過。 */}
         <PracticeRankCard className="mb-6" />
-        <GoodTodayCard className="mb-6" />
+ <GoodTodayCard className="mb-6" />
 
         {/* 第 2 週 · 引擎四：溫柔每日建議。擺喺「今日計劃」之前 ——
             計劃係一張要做嘅清單，建議係可以撳走嘅一句說話；
@@ -451,73 +451,73 @@ export default function DashboardPageClient() {
         {/* F-REV: 錯題重溫智能排程（艾賓浩斯 1/3/7/14/30 日，本地數據）
             id 係 /predictor「下一步」嘅錨點。scroll-mt 避開 fixed Navbar（h-16）。 */}
         <div id="review" className="mb-10 scroll-mt-20">
-          <ReviewScheduler />
-        </div>
+ <ReviewScheduler />
+ </div>
 
         {/* 高效 ROI — replaces the EXP/rank vanity meter with honest money-and-time
             framing tied to the free-for-everyone mission (no fabricated peer percentiles). */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6 mb-10">
-          <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
-            <div>
-              <div className="text-xs text-ink-muted mb-1">{en ? 'Efficiency ROI' : '高效溫習 ROI'}</div>
-              <div className="text-xl font-medium text-ink">
+ <div className="flex items-start justify-between gap-3 mb-5 flex-wrap">
+ <div>
+ <div className="text-xs text-ink-muted mb-1">{en ? 'Efficiency ROI' : '高效溫習 ROI'}</div>
+ <div className="text-xl font-medium text-ink">
                 {en ? 'Every drill, a real return' : '每一卷，都係實打實嘅回報'}
               </div>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs text-accent bg-surface-sunken border border-accent/20 px-3 py-1.5 rounded-full">
-              <Coins size={13} /> {en ? '100% free · no tutoring fees' : '完全免費 · 慳返補習費'}
+ </div>
+ <span className="inline-flex items-center gap-1.5 text-xs text-accent bg-surface-sunken border border-accent/20 px-3 py-1.5 rounded-full">
+ <Coins size={13} /> {en ? '100% free · no tutoring fees' : '完全免費 · 慳返補習費'}
             </span>
-          </div>
+ </div>
 
-          <div className="grid grid-cols-3 gap-3 mb-6">
-            <div className="bg-surface-sunken rounded-xl p-4 text-center">
-              <Crosshair size={16} className="text-gold mx-auto mb-2" />
-              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{conquered}</div>
-              <div className="text-[11px] text-ink-muted mt-1">{en ? 'Blind spots conquered' : '攻克思維盲點'}</div>
-            </div>
-            <div className="bg-surface-sunken rounded-xl p-4 text-center">
-              <BookOpen size={16} className="text-accent mx-auto mb-2" />
-              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.totalQuestions}</div>
-              <div className="text-[11px] text-ink-muted mt-1">{en ? 'Questions drilled' : '已操練題數'}</div>
-            </div>
-            <div className="bg-surface-sunken rounded-xl p-4 text-center">
-              <CalendarCheck size={16} className="text-accent mx-auto mb-2" />
-              <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.activeDays}</div>
-              <div className="text-[11px] text-ink-muted mt-1">{en ? 'Days invested' : '自主溫習日數'}</div>
-            </div>
-          </div>
+ <div className="grid grid-cols-3 gap-3 mb-6">
+ <div className="bg-surface-sunken rounded-xl p-4 text-center">
+ <Crosshair size={16} className="text-gold mx-auto mb-2" />
+ <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{conquered}</div>
+ <div className="text-[11px] text-ink-muted mt-1">{en ? 'Blind spots conquered' : '攻克思維盲點'}</div>
+ </div>
+ <div className="bg-surface-sunken rounded-xl p-4 text-center">
+ <BookOpen size={16} className="text-accent mx-auto mb-2" />
+ <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.totalQuestions}</div>
+ <div className="text-[11px] text-ink-muted mt-1">{en ? 'Questions drilled' : '已操練題數'}</div>
+ </div>
+ <div className="bg-surface-sunken rounded-xl p-4 text-center">
+ <CalendarCheck size={16} className="text-accent mx-auto mb-2" />
+ <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{stats.activeDays}</div>
+ <div className="text-[11px] text-ink-muted mt-1">{en ? 'Days invested' : '自主溫習日數'}</div>
+ </div>
+ </div>
 
-          <div className="grid sm:grid-cols-2 gap-6 items-center">
-            <div>
+ <div className="grid sm:grid-cols-2 gap-6 items-center">
+ <div>
               {radarAxes.length >= 3 ? (
-                <RadarChart axes={radarAxes} />
-              ) : (
-                <div className="text-center text-sm text-ink-muted py-12">
+ <RadarChart axes={radarAxes} />
+ ) : (
+ <div className="text-center text-sm text-ink-muted py-12">
                   {en
                     ? 'Practise a few more topics to unlock your ability radar.'
                     : '再操多幾個唔同課題，就會解鎖你嘅能力雷達圖。'}
                 </div>
-              )}
-            </div>
-            <div className="text-center sm:text-left">
-              <h3 className="mb-1 flex items-center gap-2 text-lg font-medium text-ink">
-                <Wrench size={17} aria-hidden className="shrink-0 text-ink-muted" />
+ )}
+ </div>
+ <div className="text-center sm:text-left">
+ <h3 className="mb-1 flex items-center gap-2 text-lg font-medium text-ink">
+ <Wrench size={17} aria-hidden className="shrink-0 text-ink-muted" />
                 {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}
               </h3>
-              <p className="text-sm text-ink-muted mb-4">
+ <p className="text-sm text-ink-muted mb-4">
                 {en
                   ? `Auto-build a ${SESSION_SIZE}-question drill from your lowest win-rate topics.`
                   : `自動由你勝率最低嘅課題，砌一份 ${SESSION_SIZE} 題專屬特訓卷。`}
               </p>
-              <button
+ <button
                 onClick={onRepair}
                 className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-[colors,transform] duration-100"
               >
-                <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '一鍵生成：專屬盲點修復卷'}
+ <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '一鍵生成：專屬盲點修復卷'}
               </button>
-            </div>
-          </div>
-        </div>
+ </div>
+ </div>
+ </div>
 
         {/* ── 第 1 週 · 引擎二：課題掌握度圓環 ────────────────────────────
             規格書 §4.3。資料源 100% 本機 localStorage（lib/topicStats），
@@ -525,19 +525,19 @@ export default function DashboardPageClient() {
             排序用「已答題數」而非勝率 —— 用勝率排會令做得最差嘅課題永遠置頂，
             每次開儀表板都被迎面撞一次，違反憲章第 7 條。 */}
         {masteryTopics.length > 0 && (
-          <>
-            <h2 className="text-lg font-serif mb-1 text-ink">
+ <>
+ <h2 className="text-lg font-serif mb-1 text-ink">
               {en ? 'Topic practice record' : '課題練習紀錄'}
             </h2>
-            <p className="text-xs text-ink-muted mb-4">
+ <p className="text-xs text-ink-muted mb-4">
               {en
                 ? 'Your own record only — nobody else’s numbers appear here.'
                 : '只計你自己嘅紀錄 —— 呢度唔會出現其他人嘅數字。'}
             </p>
-            <div className="bg-surface-raised border border-line rounded-2xl p-5 mb-10">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-6">
+ <div className="bg-surface-raised border border-line rounded-2xl p-5 mb-10">
+ <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-6">
                 {masteryTopics.map((e) => (
-                  <MasteryRing
+ <MasteryRing
                     /* key 用 `${subjectId}::${topicId}` 複合鍵 —— 同一個 topic id
                        可以喺唔同科目重複出現（例：math 同 m1 都有「概率」）。 */
                     key={e.key}
@@ -545,16 +545,16 @@ export default function DashboardPageClient() {
                     correct={e.total - e.wrong}
                     total={e.total}
                   />
-                ))}
-              </div>
+ ))}
+ </div>
               {/* 規格書 §4.3：唔出「未完成」標記，用「持續進步中」代替 */}
               <p className="text-[11px] text-ink-muted mt-5 text-center leading-relaxed">
                 {en
                   ? 'Still growing — every attempt moves a ring.'
                   : '持續進步中 —— 每答一題，就有一個圓環會郁。'}
               </p>
-            </div>
-          </>
+ </div>
+ </>
         )}
 
         {/* 第 2 週 · 引擎三：知識概念網入口（中文指定文言範文十二篇）。
@@ -563,27 +563,27 @@ export default function DashboardPageClient() {
           href="/concept-net"
           className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-[colors,transform] duration-100"
         >
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <span className="w-11 h-11 rounded-xl bg-surface-sunken border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
-                <Network size={20} className="text-accent" />
-              </span>
-              <div>
-                <div className="text-sm font-medium text-ink">
+ <div className="flex items-center justify-between gap-4">
+ <div className="flex items-center gap-4">
+ <span className="w-11 h-11 rounded-xl bg-surface-sunken border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
+ <Network size={20} className="text-accent" />
+ </span>
+ <div>
+ <div className="text-sm font-medium text-ink">
                   {en ? 'Concept map' : '知識概念網'}
                 </div>
-                <div className="text-xs text-ink-muted mt-0.5">
+ <div className="text-xs text-ink-muted mt-0.5">
                   {en
                     ? 'Chinese · the twelve prescribed classical texts'
                     : '中國語文 · 指定文言範文十二篇'}
                 </div>
-              </div>
-            </div>
-            <span className="text-xs text-accent shrink-0 group-hover:translate-x-0.5 transition-transform">
+ </div>
+ </div>
+ <span className="text-xs text-accent shrink-0 group-hover:translate-x-0.5 transition-transform">
               {en ? 'Open the map →' : '睇版圖 →'}
             </span>
-          </div>
-        </Link>
+ </div>
+ </Link>
 
         {/* 第 3 週 · 引擎二之二：個人進度時間軸。擺喺課題掌握度同錯題指紋之間 ——
             掌握度講「而家點」，時間軸講「同上一段時間比點」，錯題指紋講「點解」。 */}
@@ -598,13 +598,13 @@ export default function DashboardPageClient() {
 
           {/* F-DNA: 錯題 DNA 雷達（30 日三軸分佈 + 規則式洞察） */}
           <div className="mt-6 mb-10">
-            <ErrorRadar />
-          </div>
-        </section>
+ <ErrorRadar />
+ </div>
+ </section>
 
         {/* Per-subject performance */}
         <h2 className="text-lg font-serif mb-4 text-ink">{d.perSubject}</h2>
-        <div className="space-y-3 mb-10">
+ <div className="space-y-3 mb-10">
           {stats.subjects.map((s) => {
             const meta = getSubject(s.subjectId)
             const pct = Math.round(s.accuracy * 100)
@@ -614,65 +614,65 @@ export default function DashboardPageClient() {
                 href={`/subjects/${s.subjectId}`}
                 className="block bg-surface-raised hover:bg-surface-sunken border border-line rounded-xl p-4 transition-[colors,transform] duration-100"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2 font-medium text-ink">
-                    <span className="text-xs font-medium text-ink-muted">{meta ? (en ? meta.shortEn : meta.short) : '·'}</span>
+ <div className="flex items-center justify-between mb-2">
+ <div className="flex items-center gap-2 font-medium text-ink">
+ <span className="text-xs font-medium text-ink-muted">{meta ? (en ? meta.shortEn : meta.short) : '·'}</span>
                     {subjName(s.subjectId, s.subjectName)}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-ink-muted">{s.questions}{d.questionsUnit}</span>
+ <div className="flex items-center gap-2">
+ <span className="text-xs text-ink-muted">{s.questions}{d.questionsUnit}</span>
                     {/* 2026-09-30（改進循環 2）：刪去「最佳 5**」等級標籤。每節由十題推出的等級不是 DSE 等級。 */}
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 h-2 bg-line rounded-full overflow-hidden">
-                    <div
+ </div>
+ <div className="flex items-center gap-3">
+ <div className="flex-1 h-2 bg-line rounded-full overflow-hidden">
+ <div
                       className="h-full w-full origin-left rounded-full bg-accent"
                       style={{ transform: `scaleX(${pct / 100})` }}
                     />
-                  </div>
-                  <span className="text-sm text-ink-muted w-10 text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>{pct}%</span>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
+ </div>
+ <span className="text-sm text-ink-muted w-10 text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>{pct}%</span>
+ </div>
+ </Link>
+ )
+ })}
+ </div>
 
         {/* Weak topics */}
         {stats.weakTopics.length > 0 && (
-          <>
-            <h2 className="text-lg font-serif mb-4 text-ink">{d.weakTitle}</h2>
-            <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5 mb-10">
-              <div className="space-y-3">
+ <>
+ <h2 className="text-lg font-serif mb-4 text-ink">{d.weakTitle}</h2>
+ <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5 mb-10">
+ <div className="space-y-3">
                 {stats.weakTopics.map((wt) => (
-                  <div key={wt.topic} className="flex items-center justify-between text-sm">
-                    <span className="text-ink-soft">{wt.topic}</span>
-                    <span className="text-gold" style={{ fontVariantNumeric: 'tabular-nums' }}>
+ <div key={wt.topic} className="flex items-center justify-between text-sm">
+ <span className="text-ink-soft">{wt.topic}</span>
+ <span className="text-gold" style={{ fontVariantNumeric: 'tabular-nums' }}>
                       {wt.correct}/{wt.total}{d.weakCorrectA}{Math.round(wt.accuracy * 100)}%{d.weakCorrectB}
                     </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </>
+ </div>
+ ))}
+ </div>
+ </div>
+ </>
         )}
 
         {/* Recent attempts */}
         <h2 className="text-lg font-serif mb-4 text-ink">{d.recentTitle}</h2>
-        <div className="bg-surface-raised border border-line rounded-2xl divide-y divide-line mb-10">
+ <div className="bg-surface-raised border border-line rounded-2xl divide-y divide-line mb-10">
           {stats.recent.map((a, i) => {
             const meta = getSubject(a.subjectId)
             return (
               <div key={i} className="flex items-center justify-between p-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-medium text-ink-muted tabular-nums">{meta ? (en ? meta.shortEn : meta.short) : '·'}</span>
-                  <div>
-                    <div className="text-sm font-medium text-ink">{subjName(a.subjectId, a.subjectName)}</div>
-                    <div className="text-xs text-ink-muted">{relativeTime(a.timestamp, d)}</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-sm text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>{a.score}/{a.total}</span>
+ <div className="flex items-center gap-3">
+ <span className="text-xs font-medium text-ink-muted tabular-nums">{meta ? (en ? meta.shortEn : meta.short) : '·'}</span>
+ <div>
+ <div className="text-sm font-medium text-ink">{subjName(a.subjectId, a.subjectName)}</div>
+ <div className="text-xs text-ink-muted">{relativeTime(a.timestamp, d)}</div>
+ </div>
+ </div>
+ <div className="flex items-center gap-3">
+ <span className="text-sm text-ink-muted" style={{ fontVariantNumeric: 'tabular-nums' }}>{a.score}/{a.total}</span>
                   {/* 2026-09-30：原本顯示該節的 DSE 等級（5** 等），改為本節表現字眼。 */}
                   <span className="text-xs text-ink-muted">
                     {(() => {
@@ -680,69 +680,69 @@ export default function DashboardPageClient() {
                       return locale === 'en' ? l.en : l.zh
                     })()}
                   </span>
-                </div>
-              </div>
-            )
-          })}
-        </div>
+ </div>
+ </div>
+ )
+ })}
+ </div>
 
         {/* 社群卡：IG Group 影子溫書室（學生自發管理，唔係官方 — /relax/group 有清楚聲明） */}
         <Link
           href="/relax/group"
           className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-[colors,transform] duration-100"
         >
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div
+ <div className="flex items-center justify-between gap-4">
+ <div className="flex items-center gap-4">
+ <div
                 className="w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0"
                 style={{ background: 'linear-gradient(135deg, #833AB4, #FD1D1D, #F77737)' }}
                 aria-hidden
               >
-                📷
-              </div>
-              <div>
-                <div className="text-sm font-medium text-ink">{en ? 'Shadow Study Room' : '影子溫書室'}</div>
-                <div className="text-xs text-ink-muted mt-0.5">
+ 
+ </div>
+ <div>
+ <div className="text-sm font-medium text-ink">{en ? 'Shadow Study Room' : '影子溫書室'}</div>
+ <div className="text-xs text-ink-muted mt-0.5">
                   {en ? 'IG Group · run by fellow students' : 'IG Group · 同路人管理'}
                 </div>
-                <div className="text-xs text-ink-muted mt-0.5">{en ? IG_GROUP_ENTRY_NOTE.en : IG_GROUP_ENTRY_NOTE.zh}</div>
-              </div>
-            </div>
-            <span className="text-xs text-rose shrink-0 group-hover:translate-x-0.5 transition-transform">
+ <div className="text-xs text-ink-muted mt-0.5">{en ? IG_GROUP_ENTRY_NOTE.en : IG_GROUP_ENTRY_NOTE.zh}</div>
+ </div>
+ </div>
+ <span className="text-xs text-rose shrink-0 group-hover:translate-x-0.5 transition-transform">
               {en ? 'Join the chat →' : '加入傾偈 →'}
             </span>
-          </div>
-        </Link>
+ </div>
+ </Link>
 
         {/* Reset */}
         <div className="text-center">
           {confirmReset ? (
             <div className="inline-flex items-center gap-3 text-xs flex-wrap justify-center">
-              <span className="text-ink-muted">{d.resetConfirm}</span>
-              <button
+ <span className="text-ink-muted">{d.resetConfirm}</span>
+ <button
                 onClick={() => { clearProgress(); setStats(computeStats([])); setConfirmReset(false) }}
                 className="font-medium text-rose hover:text-rose-strong"
               >
                 {en ? 'Confirm reset' : '確定清除'}
               </button>
-              <button
+ <button
                 onClick={() => setConfirmReset(false)}
                 className="text-ink-muted hover:text-ink-soft"
               >
                 {en ? 'Cancel' : '取消'}
               </button>
-            </div>
-          ) : (
-            <button
+ </div>
+ ) : (
+ <button
               onClick={() => setConfirmReset(true)}
-              className="inline-flex min-h-11 items-center gap-2 text-xs text-ink-muted hover:text-ink-soft transition-colors"
-            >
-              <RotateCcw size={13} /> {d.resetBtn}
+ className="inline-flex min-h-11 items-center gap-2 text-xs text-ink-muted hover:text-ink-soft transition-colors"
+ >
+ <RotateCcw size={13} /> {d.resetBtn}
             </button>
-          )}
-        </div>
-      </div>
+ )}
+ </div>
+ </div>
 
-    </div>
+ </div>
   )
 }

@@ -6,7 +6,7 @@ import type { Season } from '@/utils/season'
 //
 // ── 2026-08-09 冠軍方案（Brian 提案，全年適用）────────────────────────────────
 // 主識別（badge／主標題／副標題／主 CTA）四項全年統一，六季一致：
-//   badge         📚 DSE LEVEL UP · 選擇題練判斷
+//   badge         DSE LEVEL UP · 選擇題練判斷
 //   headline      練判斷 / 唔係成張卷
 //   subhead       選擇題只練到窄窄一種技能：睇穿陷阱。唔等於掌握成張 DSE 卷。
 //                 （2026-10-23 信任審計：舊句「掌握邏輯，唔係背答案」可被讀成成卷掌握。
@@ -36,7 +36,7 @@ export interface HeroCopy {
 // 冠軍方案共用部分 —— 六季一致，改一處即全年生效。
 function championCore(en: boolean) {
   return {
-    badge: en ? '📚 DSE LEVEL UP · Multiple-choice judgement' : '📚 DSE LEVEL UP · 選擇題練判斷',
+    badge: en ? 'DSE LEVEL UP · Multiple-choice judgement' : 'DSE LEVEL UP · 選擇題練判斷',
     headline1: en ? 'Train the judgement,' : '練判斷',
     headline2: en ? 'not the whole paper' : '唔係成張卷',
     subhead: en

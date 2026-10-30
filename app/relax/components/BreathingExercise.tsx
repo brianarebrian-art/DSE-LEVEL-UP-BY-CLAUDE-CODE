@@ -121,53 +121,53 @@ export default function BreathingExercise() {
     <div className="on-dark-overlay fixed inset-0 z-50 bg-[rgba(10,10,15,0.96)] flex flex-col items-center justify-center p-6">
       {done ? (
         <div className="text-center max-w-xs">
-          <div className="text-3xl mb-4" aria-hidden>🕊️</div>
-          <p className="text-ink mb-2">
+ <div className="text-3xl mb-4" aria-hidden></div>
+ <p className="text-ink mb-2">
             {en ? 'Breathing done.' : '呼吸完成。'}
           </p>
-          <p className="text-sm text-ink-muted mb-8 leading-relaxed">
+ <p className="text-sm text-ink-muted mb-8 leading-relaxed">
             {en
               ? `You just looked after yourself for about ${mins} minute${mins > 1 ? 's' : ''}.`
               : `你照顧咗自己大約 ${mins} 分鐘。`}
           </p>
-          <div className="flex flex-col gap-2.5">
-            <button
+ <div className="flex flex-col gap-2.5">
+ <button
               onClick={() => choosePattern(pattern)}
               className="min-h-11 px-5 py-2.5 rounded-[10px] border border-accent/50 text-accent text-[13px] hover:bg-accent/10 transition-colors"
             >
               {en ? 'Go again' : '再嚟一次'}
             </button>
-            <button
+ <button
               onClick={leave}
               className="min-h-11 px-5 py-2.5 rounded-[10px] border border-line-strong text-ink-soft text-[13px] hover:bg-surface-sunken transition-colors"
             >
               {en ? 'Back to the Breathing Space' : '返呼吸空間'}
             </button>
-          </div>
-        </div>
-      ) : (
-        <>
+ </div>
+ </div>
+ ) : (
+ <>
           {/* 模式揀選 —— 描述場景，唔分難度、唔評價用家 */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-8" role="group">
             {PATTERNS.map((p) => (
-              <button
+ <button
                 key={p.id}
                 onClick={() => choosePattern(p)}
                 aria-pressed={p.id === pattern.id}
                 className={`min-h-11 px-4 py-2 rounded-full border text-[13px] transition-colors ${
-                  p.id === pattern.id
-                    ? 'border-accent/60 text-accent bg-accent/10'
-                    : 'border-line-strong text-ink-muted hover:text-ink'
-                }`}
+ p.id === pattern.id
+ ? 'border-accent/60 text-accent bg-accent/10'
+ : 'border-line-strong text-ink-muted hover:text-ink'
+ }`}
               >
                 {en ? p.labelEn : p.labelZh}
               </button>
-            ))}
-          </div>
+ ))}
+ </div>
 
           {/* 呼吸圈（reduced-motion 時唔縮放，只轉文字） */}
           <div className="flex items-center justify-center h-64 mb-6">
-            <div
+ <div
               className="w-20 h-20 rounded-full border-[3px] flex items-center justify-center"
               style={{
                 borderColor: PHASE_COLOR[phase],
@@ -179,13 +179,13 @@ export default function BreathingExercise() {
                     }),
               }}
             >
-              <span className="text-sm text-ink">
+ <span className="text-sm text-ink">
                 {en ? PHASE_LABELS[phase].en : PHASE_LABELS[phase].zh}
               </span>
-            </div>
-          </div>
+ </div>
+ </div>
 
-          <p className="text-[13px] text-ink-muted mb-1 text-center">
+ <p className="text-[13px] text-ink-muted mb-1 text-center">
             🌬️ {en ? p_when(pattern, true) : p_when(pattern, false)}
             {reduced ? (en ? ' (animation off per your system setting)' : '（已按系統設定停用動畫）') : ''}
           </p>
@@ -198,8 +198,8 @@ export default function BreathingExercise() {
               : '如有呼吸系統疾病（如哮喘），請改為自然呼吸，唔好強迫深呼吸或屏息。'}
           </p>
 
-          <div className="flex items-center gap-3">
-            <button
+ <div className="flex items-center gap-3">
+ <button
               onClick={leave}
               className="min-h-11 px-5 py-2.5 rounded-[10px] border border-line-strong text-ink-soft text-[13px] hover:bg-surface-sunken transition-colors"
             >
@@ -215,8 +215,8 @@ export default function BreathingExercise() {
                 }}
                 aria-pressed={muted}
                 className={`min-h-11 px-5 py-2.5 rounded-[10px] border text-[13px] transition-colors ${
-                  muted ? 'border-line-strong text-ink-faint' : 'border-accent/50 text-accent'
-                }`}
+ muted ? 'border-line-strong text-ink-faint' : 'border-accent/50 text-accent'
+ }`}
               >
                 {/* 靜音／語音引導係【狀態指示】，唔屬憲章 §7 嘅情感層。
                     🔇 同 🫁 喺唔同平台字型差異好大，而狀態要一眼認得出。 */}
@@ -224,15 +224,15 @@ export default function BreathingExercise() {
                   {muted ? <VolumeX size={14} aria-hidden /> : <Volume2 size={14} aria-hidden />}
                   {muted ? (en ? 'Muted' : '已靜音') : en ? 'Voice guiding' : '語音引導中'}
                 </span>
-              </button>
-            )}
-          </div>
+ </button>
+ )}
+ </div>
           {!speechOk && (
             <p className="text-[11px] text-ink-muted mt-3">
               {en ? 'This browser doesn’t support speech; text guidance is used.' : '此瀏覽器不支援語音，已用純文字引導。'}
             </p>
-          )}
-        </>
+ )}
+ </>
       )}
 
       {/* 緊急熱線（Sarah — NON-NEGOTIABLE）：全屏 overlay 遮住 layout 橫幅，
@@ -247,7 +247,7 @@ export default function BreathingExercise() {
         <a href="tel:23820000" className="text-accent underline underline-offset-2">2382 0000</a>
         {' · '}{en ? 'In an emergency call 999' : '緊急請致電 999'}
       </p>
-    </div>
+ </div>
   )
 }
 
