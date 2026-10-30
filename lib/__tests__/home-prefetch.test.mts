@@ -40,10 +40,7 @@ test('homepage primary practice CTAs keep default prefetch (no prefetch={false})
   assert.ok(startCta)
   assert.doesNotMatch(startCta!, /prefetch=\{false\}/)
 
-  const subjectCard = linkTagContaining(home, '`/subjects/${s.id}`')
-  assert.ok(subjectCard)
-  assert.doesNotMatch(subjectCard!, /prefetch=\{false\}/)
-
+  // Phase 4 首頁收斂後唔再喺首屏鋪科目卡；主練習入口係 QuickStart + /subjects。
   const plain = [...home.matchAll(/<Link\b[\s\S]*?>/g)].filter((m) => /href="\/subjects"/.test(m[0]))
   assert.ok(plain.length >= 1, 'expected /subjects Links')
   for (const m of plain) assert.doesNotMatch(m[0], /prefetch=\{false\}/)
@@ -56,7 +53,7 @@ test('ContinueCard (primary resume CTA) does not disable prefetch', () => {
 
 test('shell nav: secondary routes set prefetch false; practice entries do not', () => {
   assert.match(nav, /NAV_PREFETCH_OFF = new Set\(\[/)
-  for (const href of ['/dashboard', '/bookmarks', '/notes', '/off-syllabus', '/about', '/credits']) {
+  for (const href of ['/dashboard', '/bookmarks', '/account', '/notes', '/off-syllabus', '/about', '/credits']) {
     assert.match(nav, new RegExp(`'${href}'`))
   }
   assert.match(nav, /prefetch=\{NAV_PREFETCH_OFF\.has\(l\.href\) \? false : undefined\}/)

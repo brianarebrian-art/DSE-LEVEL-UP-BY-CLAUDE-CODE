@@ -178,7 +178,7 @@ export default function AboutClient() {
         {/* CTA */}
         <div className="mt-10">
           <Link
-            href="/practice"
+            href="/subjects"
             className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-all"
           >
             {en ? 'Start practising' : '開始練習'} <ArrowRight size={16} />

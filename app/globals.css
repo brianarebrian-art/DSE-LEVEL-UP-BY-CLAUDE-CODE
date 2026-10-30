@@ -1,15 +1,14 @@
 @import "tailwindcss";
 
-/* P1-7-R1（Leo/Kate 2026-07-16）：霓虹色統一入 Tailwind v4 @theme ——
-   自動生成 text-neon-cyan / bg-neon-pink/15 等 utilities，同時以 --color-*
-   變數暴露畀 inline style 用（var(--color-neon-cyan)）。日後 P2-1 UDL 模式
-   （焦慮／抑鬱／高對比）只需喺對應 html class 下重寫呢批變數，全站跟住變。
+/* ── Design tokens（2026-10-30 remap）──────────────────────────────────────
+   單一 role 表：surface／ink／accent／line／gold／violet／rose。
+   @theme 預設值 = 莫蘭迪 Light（同 :root 映射一致）；暗色由 [data-theme=cyber] 覆寫。
+   霓虹四色（--color-neon-*）【只】畀導出圖卡用（憲章 §14）—— UI 唔好再用。
    刻意保留字面 hex 嘅例外（唔好「順手」遷移）：
    • DailyStatsCard／溫書地圖報告卡（result/page tierMeta 都係餵佢）——
      html2canvas 導出面鎖定標準色版，唔跟用戶 A11y 變數走（P3-2 規格）
    • GroupCommunity f.color —— 以 `${hex}1f` 拼 alpha，var() 會整爛佢
-   • ErrorRadar —— SVG presentation attribute（fill="…"）按規範唔食 var()，
-     而且被溫書地圖報告導出重用 */
+   • ErrorRadar —— SVG presentation attribute（fill="…"）按規範唔食 var() */
 @theme {
   /* 1440px 斷點（UX 循環 LOOP 40，練習頁三欄）。用具名斷點而唔用 min-[1440px]：
      Tailwind v4 把任意值 min-[…] 排喺 lg／xl 之前，同一元素上 lg:grid-cols-2 會蓋過佢。 */
@@ -40,58 +39,35 @@
   --color-paper-warn: #6B2B2B;    /* PC-004 陷阱標示（8.55 / 4.66）。
                                      色卡入面最深嗰隻磚紅，唔係螢光紅 —— 憲章 §7 */
 
+  /* 導出圖卡專用（憲章 §14）。UI 組件請用 accent／gold／rose／violet。 */
   --color-neon-cyan: #00F5D4;
   --color-neon-pink: #FF006E;
   --color-neon-yellow: #FEE440;
   --color-neon-purple: #9B5DE5;
-  --color-bg-dark: #080C14;
-  --color-bg-dark-2: #0B1120;
-  --color-text-primary: #E2E8F0; /* = slate-200；正文繼續用 slate utilities */
-  --color-text-secondary: #94A3B8; /* = slate-400 */
 
-  /* ── 語意主題 token（2026-07-29，Brian 拍板：Light／Cyber 雙主題）──────────
-     全部 utilities 自動生成：bg-surface、text-ink、border-line 等。
-     此處的值 = Light 主題；Cyber 於下方 [data-theme="cyber"] 覆寫同名變數。
-     由於 Tailwind v4 的 arbitrary value（如 bg-[#FAFAF8]）會編譯成字面色碼、
-     無法被變數覆寫，各頁必須改用下列 token 才切換得到（分批遷移中）。 */
-  --color-surface: #FAFAF8;        /* 頁面底色 */
-  --color-surface-raised: #FFFFFF; /* 卡片／浮起面 */
-  --color-surface-sunken: #F5F5F0; /* 凹陷區／次級面 */
-  /* ⚠️ 2026-07-30 Light 對比度修正（Brian 拍板）——【改色前必讀】
-     舊值 accent #008B84、gold #B8860B、ink-muted #6B6B6B 全部未達 WCAG AA
-     內文 4.5:1。實測不合格點 65/177（首頁）。修正原則有三：
-       1. 三個淺色底面都要達標，唔止 #FAFAF8：卡片係 #FFFFFF（最亮＝最差），
-          凹陷區係 #F5F5F0。落標必須取三者最差值。
-       2. 【最易踩】同色淡底藥丸 `text-accent bg-accent/12` ——
-          淡底會拉近前後景，對比比純底再跌約 0.9。舊 accent 落淡底只有 3.18。
-          故落標時已計到 α=0.15；α 唔可以再加大，加大就穿底。
-       3. 半透明 `bg-line`／`line-strong` 疊在底面上同樣會拉低對比，
-          ink-muted 已預留餘量應付 line-strong（12%）。
-     每個值後面括號＝【三底面最差純底值】/【同色 α=0.15 淡底值】。 */
-  --color-ink: #1A1A1A;            /* 正文（15.91） */
-  --color-ink-soft: #2D2D2D;       /* 次級正文（12.59） */
-  --color-ink-muted: #5E5E5E;      /* 輔助說明（5.93 / line-strong 4.53） */
-  /* ink-faint 保持 #9CA3AF（2.43）＝【未達 AA，刻意保留】。
-     只准用於 WCAG 1.4.3 明文豁免嘅兩類：(a) 停用狀態控件（inactive UI
-     component），(b) aria-hidden 純裝飾圖形。任何學生需要讀嘅字 ——
-     時間戳、題數、metadata、提示文案 —— 一律用 ink-muted。 */
-  --color-ink-faint: #9CA3AF;
-  --color-accent: #006B65;         /* 連結／強調字（5.83 / 淡底 4.67） */
-  --color-accent-strong: #00726C;  /* 實心掣底色：白字落佢 = 5.80。
-                                      注意佢比 accent 淺 ——「strong」係指
-                                      「夠實可以做底色」嘅角色，唔係「更深」嘅層級。
-                                      千萬唔好因為個名而揀佢做深色字。 */
-  --color-accent-hover: #005F5A;   /* 白字 = 7.54 */
-  --color-on-accent: #FFFFFF;      /* 實心掣上的字 */
-  --color-line: rgba(0, 0, 0, 0.06);
-  --color-line-strong: rgba(0, 0, 0, 0.12);
+  /* ── 語意主題 token（莫蘭迪 Light；Cyber 於 [data-theme="cyber"] 覆寫）──
+     2026-10-30 remap：@theme 預設值直接等於莫蘭迪，唔再宣告舊 #FAFAF8／#006B65
+     再靠 :root 覆蓋 —— 避免 docs／人類讀錯「宣告值」。:root 仍用 var(--color-ml-*)
+     做單一映射層（改 ml-* 即全站跟）。
+     任意值（bg-[#…]）唔會跟主題；各頁必須用下列 token。 */
+  --color-surface: #F4F0EA;        /* = ml-canvas 頁面底 */
+  --color-surface-raised: #FFFDF9; /* = ml-surface 卡片 */
+  --color-surface-sunken: #F0EBE3; /* = ml-muted 次級 */
+  --color-ink: #2C2A29;            /* = ml-ink 正文 */
+  --color-ink-soft: #3D3A38;       /* 次級正文 */
+  --color-ink-muted: #69635F;      /* = ml-ink-soft 輔助（四底面 AA） */
+  /* ink-faint【未達 AA，刻意保留】：只准停用控件／aria-hidden 裝飾。 */
+  --color-ink-faint: #9C958D;
+  --color-accent: #57685C;         /* = ml-sage */
+  --color-accent-strong: #57685C;  /* 白字掣＝sage（角色名「strong」＝可做底，唔係更深） */
+  --color-accent-hover: #4D584A;   /* 白字 7.47 */
+  --color-on-accent: #FFFFFF;
+  --color-line: rgba(44, 42, 41, 0.08);
+  --color-line-strong: rgba(44, 42, 41, 0.16);
 
-  /* 彈層遮罩。抽做 token 嘅原因：遮罩本身唔跟主題走 ——
-     純黑 70% 蓋落莫蘭迪暖米底，出嚟係一片冷灰，同頁面調子脫節。
-     呢兩個預設值 = 原本 bg-black/70 同 bg-black/40，即係
-     非莫蘭迪頁面【一個像素都唔變】；只有 [data-ml] 之下先轉暖。 */
-  --color-scrim: rgba(0, 0, 0, 0.70);
-  --color-scrim-soft: rgba(0, 0, 0, 0.40);
+  /* 彈層遮罩：暖墨同源，蓋落莫蘭迪米底唔出冷灰。 */
+  --color-scrim: rgba(44, 42, 41, 0.72);
+  --color-scrim-soft: rgba(44, 42, 41, 0.42);
 
   /* ── 科目家族色（規格 v4.0-B §1.3）─────────────────────────────────
      原本 25 科各自用一隻 Tailwind 高飽和色（amber／cyan／fuchsia…共 16 隻），
@@ -107,33 +83,28 @@
   --color-subj-rose: #845956;   /* PC-003↓ 4.69 */
   --color-subj-stone: #666557;  /* PC-028↓ 4.68 */
 
-  /* 三個輔助色族。Cyber 值全部經對比度實測（見下方）。 */
-  --color-gold: #756238;          /* PC-012↓ 年份／次要標記。⚠️ :root 會用
-                                     var(--color-ml-clay) 覆蓋佢，呢度只係 @theme
-                                     生成 utility 用嘅預設值。 */
-  --color-gold-soft: #D4A017;     /* 2.17 ——【永遠唔可以做字色】，只做邊框／淡底 */
-  --color-gold-strong: #725106;   /* 6.63 */
-  --color-violet: #6D28D9;        /* 課題／框架標記（6.50 / 淡底 5.09） */
-  --color-violet-strong: #5B21B6; /* 白字 = 8.98 */
-  --color-rose: #C2185B;          /* 提醒。憲章禁大紅，故用玫紅而非正紅
-                                     （5.37 / 淡底 4.57 —— rose 淡底 α 唔准超過 0.10） */
-  --color-rose-strong: #9D1449;   /* 7.30 */
-  /* 紫色實心底上的字。同 --color-on-accent 同一個道理：Light 下 violet 係深紫用白字，
-     Cyber 下 violet 變淺紫（#B98CF5），白字對比只有 1.6:1，必須反過來用深字。 */
+  /* 輔助色族＝莫蘭迪（gold→clay、violet→mist-strong、rose→warn）。 */
+  --color-gold: #706347;          /* = ml-clay */
+  --color-gold-soft: #B7A6A3;     /* = ml-rose 裝飾；永遠唔可以做字色 */
+  --color-gold-strong: #5F5144;   /* 字色 AA */
+  --color-violet: #5B666F;        /* mist-strong 字色 */
+  --color-violet-strong: #4A545C;
+  --color-rose: #845956;          /* = ml-warn；唔用正紅（憲章 §7） */
+  --color-rose-strong: #724D3D;
   --color-on-violet: #FFFFFF;
 
   /* ── 等級色（做文字色用，見 lib/grading.ts `gradeColors`）────────────────────
      刻意唔放入 --color-* 命名空間：呢批係語意數據色，唔應該生成
      bg-grade-5 / text-grade-5 等 utility，只准經 inline style 讀 var()。
-     括號＝落三個淺底嘅最差比值。 */
+     5*／5 已按莫蘭迪底加深（原值落 #F4F0EA 穿 AA）。 */
   --grade-5ss: #9A5B06; /* 4.96 */
-  --grade-5s:  #8A6608; /* 4.82 */
-  --grade-5:   #177E3C; /* 4.70 */
+  --grade-5s:  #846208; /* 4.74 */
+  --grade-5:   #16793A; /* 4.62 */
   --grade-4:   #1E52B8; /* 6.50 */
   --grade-3:   #7E22CE; /* 6.39 */
   --grade-2:   #475569; /* 6.93 */
   --grade-1:   #334155; /* 9.47 */
-  --grade-u:   #9D1449; /* 7.30 —— 玫紅，唔用正紅（憲章 §大愛） */
+  --grade-u:   #845956; /* = rose／warn，唔用正紅 */
 
   /* ── 莫蘭迪 token（ml-*）｜規格 v4.0-B｜2026-09-02 ─────────────────────────
      四大核心頁（做題／Result／60 秒引擎／錯題 DNA）專用色階。
@@ -528,13 +499,13 @@ body {
    A keyframe runs on first paint without JavaScript. The base style is visible,
    so `animation: none` leaves the content showing, not hidden. */
 @keyframes hero-rise {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: none; }
 }
-.hero-rise { animation: hero-rise 0.5s cubic-bezier(0, 0, 0.2, 1) both; }
-.hero-rise-1 { animation-delay: 0.06s; }
-.hero-rise-2 { animation-delay: 0.12s; }
-.hero-rise-3 { animation-delay: 0.18s; }
+.hero-rise { animation: hero-rise 300ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-rise-1 { animation-delay: 0.04s; }
+.hero-rise-2 { animation-delay: 0.08s; }
+.hero-rise-3 { animation-delay: 0.12s; }
 @media (prefers-reduced-motion: reduce) {
   .hero-rise { animation: none; }
 }
@@ -571,9 +542,11 @@ body {
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* Progress fill: scaleX only (no width layout thrash; Phase 4 site-wide).
+   End value comes from --fill-progress (0–1). */
 @keyframes fill-bar {
-  from { width: 0%; }
-  to { width: var(--fill-width); }
+  from { transform: scaleX(0); }
+  to { transform: scaleX(var(--fill-progress, 1)); }
 }
 
 .animate-pop-in {
@@ -1012,49 +985,26 @@ html.no-motion .mascot {
   to { letter-spacing: normal; opacity: 1; filter: blur(0); }
 }
 
-/* ── §2.5 答題衝擊波 ────────────────────────────────────────────────────
-   由掣中心擴散。力度同答啱【一致】—— 規格書 §0 明訂
-   「答錯無震屏、無負面驚嚇回饋」，故此處刻意冇 shake、冇加速、冇加大。
-   2026-08-23：答錯版本由霓虹粉（.shockwave-pink）改為金色（.shockwave-gold），
-   見下方「第 1 週 · 引擎一」段落 —— 規格書 §4.2 要求答錯【不出現紅色】。 */
-.shockwave {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(0, 245, 212, 0.4) 0%, transparent 70%);
-  animation: shockwave-expand 600ms var(--ease-spring-settle) forwards;
+/* ── 答題回饋（Phase 3）：停用衝擊波／粒子；≤200ms opacity，對／錯力度一致 ──
+   規格書 §4.2／憲章 §7：答錯唔用紅色、唔 shake、唔加大；舒適模式整層關。 */
+.answer-feedback {
+  animation: answer-feedback 180ms ease-out both;
 }
-@keyframes shockwave-expand {
-  from { width: 0; height: 0; opacity: 1; }
-  to { width: 300px; height: 300px; opacity: 0; }
+/* .answer-feedback-miss：標記答錯路徑；動畫與答對同款（邊／底色由選項 class 負責）。 */
+.answer-feedback-miss {
+  animation: answer-feedback 180ms ease-out both;
+}
+@keyframes answer-feedback {
+  from { opacity: 0.78; }
+  to { opacity: 1; }
 }
 
-/* ── 第 1 週 · 引擎一：溫暖即時反饋 ──────────────────────────────────────
-   規格書 §4.2。三條規則貫穿以下所有動畫：
-     1. 答錯【不出現紅色】—— 答錯的衝擊波由霓虹粉改為金色（.shockwave-gold），
-        與「發現盲點」的金色語意一致；紅色只保留給真正的系統錯誤提示。
-     2. 答錯與答對的動畫【時長、幅度、緩動曲線完全相同】—— 憲章第 7 條要求
-        答錯的回饋力度與答對一致，故此處刻意沒有 shake、沒有加速、沒有放大。
-     3. 全部動畫均在 prefers-reduced-motion 及一鍵舒適模式下靜止（見文末降級層）。 */
-
-/* 答對：輕柔綠色脈衝。用 box-shadow 擴散，不改動 layout，不觸發 reflow。
-   峰值透明度 0.30 —— 屬「察覺得到但不奪目」的層級，非慶祝式閃光。 */
+/* 舊衝擊波／脈衝已停用；保留選擇器以免殘餘 class 突然現形。 */
+.shockwave,
+.shockwave-gold,
 .pulse-correct {
-  animation: pulse-correct 600ms var(--ease-spring-settle) forwards;
-}
-@keyframes pulse-correct {
-  0% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.30); }
-  100% { box-shadow: 0 0 0 12px rgba(0, 245, 212, 0); }
-}
-
-/* 答錯：金色衝擊波，時長與 .shockwave 完全相同（600ms ease-out）。 */
-.shockwave-gold {
-  background: radial-gradient(circle, rgba(212, 160, 23, 0.4) 0%, transparent 70%);
+  display: none !important;
+  animation: none !important;
 }
 
 /* 「你發現咗一個新盲點💡」淡入。只有透明度與 4px 上移，
@@ -1190,20 +1140,19 @@ html.no-motion .mascot {
 /* 題目轉場：舊題向左滑出、新題由右滑入（規格 §7.3A，400ms）。
    位移刻意細（24px）—— 規格講「暗示前後關係」，唔係做投影片。 */
 @keyframes ml-q-enter {
-  from { opacity: 0; transform: translateX(24px); }
+  from { opacity: 0; transform: translateX(12px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 @keyframes ml-q-leave {
   from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 0; transform: translateX(-12px); }
 }
-.ml-q-enter { animation: ml-q-enter 400ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
-.ml-q-leave { animation: ml-q-leave 400ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+.ml-q-enter { animation: ml-q-enter 280ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.ml-q-leave { animation: ml-q-leave 280ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* 選項按落：scale 0.96（規格 §7.3A，150ms）。用 :active 而唔係 JS state ——
-   快速連點時瀏覽器自己處理，唔會卡住介面（規格 §7.5「可中斷」）。 */
-.ml-press { transition: transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1); }
-.ml-press:active { transform: scale(0.96); }
+/* 選項按落：scale 0.97（Phase 3，100ms）。用 :active，可中斷。 */
+.ml-press { transition: transform 100ms ease-out; }
+.ml-press:active { transform: scale(0.97); }
 
 /* 錯因選項選中：scale 1.02（規格 §7.3C，200ms）。1.02 唔算過衝 ——
    佢係終點值，唔係曲線超過 1；守閘查嘅係曲線。 */
@@ -1315,8 +1264,9 @@ html.font-easy .carousel-card {
 }
 html.font-easy .shockwave { display: none !important; }
 
-/* 第 1 週新增動畫同樣受一鍵舒適模式管轄 —— 整層關掉，唔係調慢（憲章第 7 條）。
-   圓環／雷達圖保留最終狀態，資訊唔可以因為關動畫而消失。 */
+/* 答題回饋同微進度：舒適模式整層關，保留最終狀態（憲章第 7 條）。 */
+html.font-easy .answer-feedback,
+html.font-easy .answer-feedback-miss,
 html.font-easy .pulse-correct,
 html.font-easy .blindspot-in,
 html.font-easy .ring-draw,
@@ -1356,7 +1306,9 @@ html.font-easy .skeleton {
   .carousel-card:hover { transform: none; }
   .shockwave { display: none !important; }
 
-  /* 第 1 週新增動畫：一律靜止，保留最終狀態。 */
+  /* 答題回饋同微進度：一律靜止，保留最終狀態。 */
+  .answer-feedback,
+  .answer-feedback-miss,
   .pulse-correct,
   .blindspot-in,
   .ring-draw,
@@ -1461,9 +1413,6 @@ html.font-easy .skeleton {
   .practice-options-stack {
     gap: 0.75rem;
   }
-  .practice-sticky-head .practice-status-hint {
-    display: none;
-  }
 }
 .practice-explain {
   padding-bottom: 72px;
@@ -1538,22 +1487,15 @@ body:has(.practice-session) [role="dialog"][aria-label="Accessibility options"] 
   left: auto;
   max-height: min(70dvh, calc(100dvh - 9rem));
 }
+/* 練習沉浸：A11y 留喺 sticky 頂欄（含桌面）；收起浮動掣同閱讀尺調校浮層。 */
 body:has(.practice-session) .a11y-fab {
-  display: flex;
-  top: max(12px, env(safe-area-inset-top));
-  right: 12px;
-  bottom: auto;
-  left: auto;
-  width: 48px;
-  height: 48px;
-  min-width: 44px;
-  min-height: 44px;
-  z-index: 45;
-}
-.practice-session .practice-sticky-head {
-  padding-right: 60px;
-}
-.practice-session .practice-sticky-head [data-a11y-trigger] {
   display: none;
+}
+body:has(.practice-session) [data-reading-ruler-fab] {
+  display: none;
+}
+/* 練習頁 SOS 唔 pulse；掣仍喺右下（a11y-header-entry 鎖死）。 */
+body:has(.practice-session) [data-sos-fab] {
+  animation: none !important;
 }
 /* /practice-revealed-p0 */

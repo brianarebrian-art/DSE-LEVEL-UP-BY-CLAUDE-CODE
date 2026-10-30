@@ -75,7 +75,7 @@ export default function AccountPageClient() {
   return (
     <div className="min-h-screen px-4 py-16">
       <div className="max-w-lg mx-auto">
-        <h1 className="text-2xl font-extrabold mb-6">{en ? 'Profile & Account' : '個人檔案與帳戶'}</h1>
+        <h1 className="text-2xl font-medium mb-6 text-ink">{en ? 'Account' : '帳戶'}</h1>
 
         <p className="text-sm text-ink-muted mb-6 leading-relaxed">
           {en

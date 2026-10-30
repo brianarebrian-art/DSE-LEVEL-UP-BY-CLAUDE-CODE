@@ -185,10 +185,10 @@ export default function ResultPageClient() {
     return () => ctrl.abort()
   }, [])
 
-  const displayScore = useCountUp(result?.score ?? 0, 800) // 規格 §7.6：800ms
+  const displayScore = useCountUp(result?.score ?? 0, 280) // Phase 4：短 enter，唔慶祝
   const displayPct = useCountUp(
     result ? Math.round((result.score / result.total) * 100) : 0,
-    800
+    280
   )
 
   if (!checked) {
@@ -201,6 +201,8 @@ export default function ResultPageClient() {
   }
 
   if (!result) {
+    // Nielsen H5／H9：唔再直跳 /practice（無 subject 會落 MissingSubject）——
+    // 空結果頁主 CTA 去科目總覽；次要先睇進度／接返上次。
     return (
       <div className="min-h-[55dvh] grid place-items-center px-4 py-12 bg-surface">
         <section className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-6 text-center">
@@ -208,16 +210,22 @@ export default function ResultPageClient() {
           <p className="mt-3 text-sm leading-relaxed text-ink-muted">{r.emptyBody}</p>
           <div className="mt-6 grid gap-3">
             <Link
-              href="/practice"
-              className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-all"
+              href="/subjects"
+              className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyStart} <ArrowRight size={16} />
             </Link>
             <Link
               href="/dashboard"
-              className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-all"
+              className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyProgress}
+            </Link>
+            <Link
+              href="/start"
+              className="text-sm text-ink-muted underline-offset-2 hover:text-accent hover:underline"
+            >
+              {locale === 'en' ? 'Continue where you left off' : '接返上次練習'}
             </Link>
           </div>
         </section>
@@ -339,7 +347,7 @@ export default function ResultPageClient() {
         )}
 
         {/* 本節表現：先講答對幾多，再用中性字眼講表現。冇 DSE 等級、冇獎盃。 */}
-        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center shadow-sm">
+        <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
           {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
           <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
           <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
@@ -418,13 +426,13 @@ export default function ResultPageClient() {
               <div className="grid grid-cols-2 gap-3">
                 <Link
                   href={withFromResult(steps.retryHref)}
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-all hover:bg-accent-hover"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-accent-strong py-3 font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover"
                 >
                   <RotateCcw size={16} aria-hidden /> {r.retry}
                 </Link>
                 <Link
                   href={steps.topicsHref}
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-all hover:bg-surface-sunken"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line-strong bg-surface-raised py-3 text-ink-soft transition-[colors,transform] duration-100 hover:bg-surface-sunken"
                 >
                   {r.pickTopic} <ArrowRight size={16} aria-hidden />
                 </Link>
@@ -444,7 +452,7 @@ export default function ResultPageClient() {
         {showChineseWarning && (
           <div className="bg-surface-sunken border border-gold/25 rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-gold text-lg">💡</span>
+              
               <span className="text-gold font-medium text-sm">{locale === 'en' ? 'Where the next marks are' : '下一段分數喺邊'}</span>
             </div>
             <p className="text-sm text-ink-soft leading-relaxed">
@@ -459,11 +467,10 @@ export default function ResultPageClient() {
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
           <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
             <div
-              className="h-full rounded-full bg-accent transition-all"
+              className="h-full w-full origin-left rounded-full bg-accent motion-reduce:animate-none"
               style={{
-                width: `${barWidth}%`,
-                animation: 'fill-bar 1.2s ease-out forwards',
-                ['--fill-width' as string]: `${barWidth}%`,
+                ['--fill-progress' as string]: String(barWidth / 100),
+                animation: 'fill-bar 280ms ease-out both',
               }}
             />
           </div>
@@ -500,8 +507,8 @@ export default function ResultPageClient() {
                   </div>
                   <div className="h-1.5 bg-line rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full ${pct >= 80 ? 'bg-accent' : pct >= 50 ? 'bg-gold' : 'bg-rose'}`}
-                      style={{ width: `${pct}%` }}
+                      className={`h-full w-full origin-left rounded-full ${pct >= 80 ? 'bg-accent' : pct >= 50 ? 'bg-gold' : 'bg-rose'}`}
+                      style={{ transform: `scaleX(${pct / 100})` }}
                     />
                   </div>
                 </div>
@@ -527,7 +534,7 @@ export default function ResultPageClient() {
         {/* Teacher hand-in tool — copies the fixed report template to clipboard */}
         <button
           onClick={copyTeacherReport}
-          className="no-print w-full flex items-center justify-center gap-2 bg-surface-sunken hover:bg-surface-raised border border-violet text-ink font-medium py-3.5 rounded-xl transition-all"
+          className="no-print w-full flex items-center justify-center gap-2 bg-surface-sunken hover:bg-surface-raised border border-violet text-ink font-medium py-3.5 rounded-xl transition-[colors,transform] duration-100"
         >
           {reportCopied ? <ClipboardCheck size={16} className="text-accent" /> : <ClipboardCopy size={16} />}
           {reportCopied
@@ -554,7 +561,7 @@ export default function ResultPageClient() {
               setTimeout(() => setShared(false), 1800)
             }
           }}
-          className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-all text-sm"
+          className="no-print w-full flex items-center justify-center gap-2 text-ink-muted hover:text-accent border border-line-strong py-3 rounded-xl transition-[colors,transform] duration-100 text-sm"
         >
           <Share2 size={14} /> {shared ? r.shareCopied : r.shareScore}
         </button>
@@ -675,7 +682,19 @@ function TomorrowStrip({ en }: { en: boolean }) {
   }, [])
   if (items.length === 0) return null
 
-  const topics = [...new Set(items.map((d) => (en ? d.topicEn ?? d.topic : d.topic)))]
+  // Nielsen H6／H7：課題可點進練習，唔使記住科目／課題再自己搵。
+  // 用 subjectId+topicId 去重；冇 topicId 就只帶 subject。
+  const byKey = new Map<string, { label: string; href: string }>()
+  for (const d of items) {
+    const label = en ? d.topicEn ?? d.topic : d.topic
+    const key = `${d.subjectId}|${d.topicId ?? ''}|${label}`
+    if (byKey.has(key)) continue
+    const q = new URLSearchParams({ subject: d.subjectId })
+    if (d.topicId) q.set('topic', d.topicId)
+    byKey.set(key, { label, href: `/practice?${q.toString()}` })
+  }
+  const topics = [...byKey.values()]
+
   return (
     <section className="bg-surface-raised border border-line rounded-2xl p-5">
       <h3 className="text-sm font-medium text-ink mb-1.5">
@@ -688,8 +707,13 @@ function TomorrowStrip({ en }: { en: boolean }) {
       </p>
       <ul className="flex flex-wrap gap-2">
         {topics.map((t) => (
-          <li key={t} className="text-xs text-ink-soft bg-surface-sunken border border-line rounded-lg px-2.5 py-1">
-            {t}
+          <li key={t.href + t.label}>
+            <Link
+              href={t.href}
+              className="inline-flex min-h-11 items-center text-xs text-ink-soft bg-surface-sunken border border-line rounded-lg px-2.5 py-1 hover:border-accent hover:text-accent transition-colors"
+            >
+              {t.label}
+            </Link>
           </li>
         ))}
       </ul>

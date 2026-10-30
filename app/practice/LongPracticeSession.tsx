@@ -225,7 +225,7 @@ export default function LongPracticeSession({
             </span>
             <EnoughTodayButton />
             {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）。 */}
-            <A11yButton />
+            <A11yButton className="!inline-flex" />
           </span>
         </div>
 

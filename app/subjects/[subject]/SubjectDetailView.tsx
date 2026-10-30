@@ -50,7 +50,7 @@ export default function SubjectDetailView({
     return (
       <div className="min-h-screen px-4 py-20 bg-surface text-ink-soft">
         <div className="max-w-xl mx-auto text-center">
-          <div className="text-6xl mb-6">{meta.emoji}</div>
+          <p className="mb-3 text-sm font-medium uppercase tracking-wide text-ink-muted">{short}</p>
           <h1 className="text-3xl font-medium mb-3 text-ink">{name}</h1>
           <p className="text-ink-muted mb-2">{description}</p>
           <div className="inline-flex items-center gap-2 text-sm text-gold bg-surface-sunken border border-gold/20 rounded-full px-4 py-2 mt-4">
@@ -59,7 +59,7 @@ export default function SubjectDetailView({
           <div className="mt-8">
             <Link
               href="/subjects"
-              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-5 py-3 rounded-xl transition-all text-sm"
+              className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-5 py-3 rounded-xl transition-colors text-sm"
             >
               ← {sd.backToSubjects}
             </Link>
@@ -133,7 +133,7 @@ export default function SubjectDetailView({
       {(
         <Link
           href={`/practice?subject=${meta.id}`}
-          className={`shrink-0 inline-flex items-center gap-2 font-medium px-6 py-3 rounded-xl transition-all ${examHasMC ? 'bg-accent-strong hover:bg-accent-hover text-on-accent' : 'bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft'}`}
+          className={`shrink-0 inline-flex min-h-12 items-center gap-2 font-medium px-6 py-3 rounded-xl transition-[colors,transform] duration-100 active:scale-[0.97] ${examHasMC ? 'bg-accent-strong hover:bg-accent-hover text-on-accent' : 'bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft'}`}
         >
           {examHasMC ? sd.startNow : (en ? 'Start concept warm-up' : '開始概念溫習')} <ArrowRight size={16} />
         </Link>
@@ -151,7 +151,7 @@ export default function SubjectDetailView({
         比隱藏入口更好 —— 學生至少知道呢個題型存在、亦知道點解未有。 */}
     <Link
       href={`/practice?subject=${meta.id}&mode=long`}
-      className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-all ${
+      className={`group border rounded-2xl p-5 mb-4 flex items-center justify-between gap-4 transition-colors ${
         writtenCount > 0
           ? 'bg-accent/[0.06] hover:bg-accent/[0.10] border-accent/25 hover:border-accent/40'
           : 'bg-ink/[0.03] hover:bg-ink/[0.05] border-ink/10 hover:border-ink/20'
@@ -213,8 +213,8 @@ export default function SubjectDetailView({
 
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-medium mb-3 flex items-center gap-3 flex-wrap text-ink">
-            <span>{meta.emoji}</span>
+          <p className="mb-2 text-sm font-medium uppercase tracking-wide text-ink-muted">{short}</p>
+          <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">
             {name}
           </h1>
           <p className="text-ink-muted text-lg">{description}</p>
@@ -231,7 +231,7 @@ export default function SubjectDetailView({
         {meta.id === 'english' && (
           <Link
             href="/writing"
-            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
             <div className="flex items-center gap-3">
               <PenLine size={20} className="text-violet shrink-0" />
@@ -252,7 +252,7 @@ export default function SubjectDetailView({
         {meta.id === 'english' && (
           <Link
             href="/reading"
-            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-violet/[0.06] hover:bg-violet/[0.10] border border-violet/25 hover:border-violet/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
             <div className="flex items-center gap-3">
               <BookOpenCheck size={20} className="text-violet shrink-0" />
@@ -276,7 +276,7 @@ export default function SubjectDetailView({
         {['chinese', 'english', 'math', 'economics'].includes(meta.id) && (
           <Link
             href="/sensei"
-            className="group bg-accent/[0.06] hover:bg-accent/[0.10] border border-accent/25 hover:border-accent/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-accent/[0.06] hover:bg-accent/[0.10] border border-accent/25 hover:border-accent/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
             <div className="flex items-center gap-3">
               <Sparkles size={20} className="text-accent shrink-0" />
@@ -297,7 +297,7 @@ export default function SubjectDetailView({
         {meta.id === 'history' && (
           <Link
             href="/source-lab"
-            className="group bg-gold/[0.06] hover:bg-gold/[0.10] border border-gold/25 hover:border-gold/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-all"
+            className="group bg-gold/[0.06] hover:bg-gold/[0.10] border border-gold/25 hover:border-gold/40 rounded-2xl p-5 mb-10 flex items-center justify-between gap-4 transition-colors"
           >
             <div className="flex items-center gap-3">
               <Search size={20} className="text-gold shrink-0" />
@@ -417,10 +417,12 @@ export default function SubjectDetailView({
             <Link
               key={topic.id}
               href={`/practice?subject=${meta.id}&topic=${topic.id}${writtenOnly ? '&mode=long' : ''}`}
-              className="group bg-surface-raised hover:bg-surface-sunken border border-line hover:border-accent/40 rounded-xl p-5 transition-all flex items-center justify-between"
+              className="group bg-surface-raised hover:bg-surface-sunken border border-line hover:border-accent/40 rounded-xl p-5 transition-colors flex items-center justify-between active:scale-[0.99]"
             >
               <div className="flex items-center gap-4">
-                <div className="text-2xl">{topic.emoji}</div>
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-surface-sunken border border-line flex items-center justify-center text-xs font-medium text-ink-muted" aria-hidden>
+                  {(en ? (topic.en ?? topic.zh) : topic.zh).slice(0, 1)}
+                </div>
                 <div>
                   <div className="font-medium mb-0.5 text-ink flex items-center gap-2">
                     <span>{en ? (topic.en ?? topic.zh) : topic.zh}</span>

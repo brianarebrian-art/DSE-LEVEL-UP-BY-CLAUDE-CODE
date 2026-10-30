@@ -130,9 +130,15 @@ export default function FounderShell({
           </div>
           <span
             className={`rounded-full border px-2.5 py-0.5 text-xs ${statusClass}`}
-            title="平台狀態（非合成健康分）"
+            role="status"
+            aria-live="polite"
+            title="平台狀態（由真實指標推斷，非合成健康分）"
           >
-            {platformStatus === 'optimal' ? 'OPTIMAL' : platformStatus === 'degraded' ? 'DEGRADED' : 'UNKNOWN'}
+            {platformStatus === 'optimal'
+              ? '狀態正常'
+              : platformStatus === 'degraded'
+                ? '狀態降級 — 請睇簡報'
+                : '狀態未知'}
           </span>
           <span className="rounded-full border border-[var(--fos-border-soft)] px-2.5 py-0.5 text-xs text-[var(--fos-muted)]">
             {envLabel}
@@ -281,9 +287,16 @@ export default function FounderShell({
               </div>
             ))}
           </nav>
-          <p className="border-t border-[var(--fos-border-soft)] p-3 text-[10px] leading-relaxed text-[var(--fos-faint)]">
-            身份由伺服器驗證。Session 撤銷：撳登出，或喺 Google 帳戶撤銷本應用授權後重新登入。
-          </p>
+          <div className="border-t border-[var(--fos-border-soft)] p-3 text-[10px] leading-relaxed text-[var(--fos-faint)]">
+            <p>身份由伺服器驗證。Session 撤銷：撳登出，或喺 Google 帳戶撤銷本應用授權後重新登入。</p>
+            <p className="mt-1.5">
+              快捷：頂欄搜尋模組；「我的最愛」可釘常用頁。內容審核去{' '}
+              <Link href="/admin" className="text-[var(--fos-cyan)] underline-offset-2 hover:underline">
+                /admin
+              </Link>
+              。
+            </p>
+          </div>
         </aside>
         {navOpen && (
           <button

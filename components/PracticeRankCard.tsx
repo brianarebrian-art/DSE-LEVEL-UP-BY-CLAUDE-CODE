@@ -91,7 +91,6 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
 
   return (
     <div className={`relative overflow-hidden border border-line rounded-xl bg-surface-raised p-4 sm:p-5 ${className}`}>
-      <div className="absolute inset-0 particle-bg opacity-30 pointer-events-none" aria-hidden />
       <div className="relative flex items-center gap-4">
         <MetallicRing progress={a.progress} label={ringLabel} />
         <div className="min-w-0 flex-1">
@@ -110,8 +109,8 @@ export default function PracticeRankCard({ className = '' }: { className?: strin
             <>
               <div className="mt-2.5 h-1.5 rounded-full bg-surface-sunken overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-accent"
-                  style={{ width: `${Math.round(a.progress * 100)}%`, transition: 'width 700ms var(--ease-spring-settle)' }}
+                  className="h-full w-full origin-left rounded-full bg-accent"
+                  style={{ transform: `scaleX(${a.progress})`, transition: 'transform 700ms var(--ease-spring-settle)' }}
                 />
               </div>
               <p className="text-[11px] text-ink-muted mt-1.5" style={{ fontVariantNumeric: 'tabular-nums' }}>

@@ -51,17 +51,34 @@ import { useT, useLocale } from '@/lib/i18n'
 // 再放「帳戶」係重複；手機底欄嗰四格拇指夠得到嘅位置就冇登入掣，所以要有。
 // 次要殼層路由：關閉 Link 預取，避免首頁首屏同練習主 CTA 搶帶寬
 //（PERF-HOME-PREFETCH-2026-10-29；稽核僅 lab TTFB/FCP，無偽造 Lighthouse 分）。
-const NAV_PREFETCH_OFF = new Set(['/dashboard', '/bookmarks', '/notes', '/off-syllabus', '/about', '/credits'])
+const NAV_PREFETCH_OFF = new Set([
+  '/dashboard',
+  '/bookmarks',
+  '/account',
+  '/notes',
+  '/off-syllabus',
+  '/about',
+  '/credits',
+])
 
-const navLinks: {
+// IA：四格跨裝置同名（練習·進度·收藏·帳戶）—— 漢堡主列同底欄一字不差。
+// 筆記／不考之地降入「更多」，唔再同第四格搶位（以前桌面第四＝筆記、手機第四＝帳戶）。
+const primaryLinks: {
   href: string
-  key: 'subjects' | 'progress' | 'tabSaved' | 'notes' | 'offSyllabus'
+  key: 'tabPractice' | 'tabProgress' | 'tabSaved' | 'tabAccount'
 }[] = [
-  { href: '/subjects', key: 'subjects' },
-  { href: '/dashboard', key: 'progress' },
+  { href: '/subjects', key: 'tabPractice' },
+  { href: '/dashboard', key: 'tabProgress' },
   { href: '/bookmarks', key: 'tabSaved' },
+  { href: '/account', key: 'tabAccount' },
+]
+
+const moreLinks: {
+  href: string
+  key: 'notes' | 'offSyllabus'
+}[] = [
   { href: '/notes', key: 'notes' },
-  // 2026-09-26 Yuna：非 DSE 範圍嘅內容（例如新來港廣東話）只由呢度入，唔放首頁。
+  // 2026-09-26 Yuna：非 DSE 範圍嘅內容只由「更多」入，唔放首頁。
   { href: '/off-syllabus', key: 'offSyllabus' },
 ]
 
@@ -120,7 +137,7 @@ export default function Navbar() {
               屬通用行動呼籲，直接導向數學科等於代學生選定科目。路由為複數。 */}
           <Link
             href="/start"
-            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-colors"
+            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-[colors,transform] duration-100 active:scale-[0.97]"
           >
             {t.nav.startPractice}
           </Link>
@@ -157,14 +174,16 @@ export default function Navbar() {
         >
           <div className="mx-auto max-w-6xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
-              {navLinks.map((l) => (
+              {primaryLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   prefetch={NAV_PREFETCH_OFF.has(l.href) ? false : undefined}
                   onClick={() => setOpen(false)}
                   className={`min-h-11 flex items-center border-b border-line text-sm ${
-                    pathname === l.href ? 'text-accent font-medium' : 'text-ink-soft hover:text-accent'
+                    pathname === l.href || pathname.startsWith(`${l.href}/`)
+                      ? 'text-accent font-medium'
+                      : 'text-ink-soft hover:text-accent'
                   }`}
                 >
                   {t.nav[l.key]}
@@ -174,9 +193,24 @@ export default function Navbar() {
 
             <div className="mt-4 border-t border-line pt-3">
               <p className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-muted">
-                {t.footer.aboutHeading}
+                {t.nav.more}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">
+                {moreLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    prefetch={NAV_PREFETCH_OFF.has(l.href) ? false : undefined}
+                    onClick={() => setOpen(false)}
+                    className={`min-h-11 flex items-center border-b border-line text-sm ${
+                      pathname === l.href || pathname.startsWith(`${l.href}/`)
+                        ? 'text-accent font-medium'
+                        : 'text-ink-soft hover:text-accent'
+                    }`}
+                  >
+                    {t.nav[l.key]}
+                  </Link>
+                ))}
                 <Link
                   href="/about"
                   prefetch={false}

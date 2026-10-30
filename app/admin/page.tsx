@@ -215,25 +215,46 @@ export default async function AdminPage() {
     <div className="min-h-screen bg-surface text-ink-soft">
       <div className="mx-auto max-w-5xl px-4 py-8">
         <header className="mb-8">
-          <h1 className="text-2xl font-medium text-ink">🔒 審核面板{/* i18n-exempt: admin 內部工具，只限創辦人 */}</h1>
+          <p className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-muted">
+            Admin · 內部工具{/* i18n-exempt: admin */}
+          </p>
+          <h1 className="text-2xl font-medium text-ink">內容審核面板{/* i18n-exempt: admin 內部工具，只限創辦人 */}</h1>
           <p className="mt-1 text-sm text-ink-muted">
             {admin.name}（{admin.email}）{/* i18n-exempt: admin */}
           </p>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            審草稿決定同睇覆蓋率。決定寫入資料庫；題庫入庫仍要本地 promote 流程。{/* i18n-exempt: admin */}
+          </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <a href="/admin/quality" className="rounded-lg border border-accent/40 bg-accent/5 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/10">
-              開啟逐題質素覆核工作台 · Open question quality review{/* i18n-exempt: actual bilingual static link */}
+            <a
+              href="/admin/quality"
+              className="inline-flex min-h-11 items-center rounded-lg border border-accent/40 bg-accent/5 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/10"
+            >
+              逐題質素覆核{/* i18n-exempt: admin */}
+            </a>
+            <a
+              href="/founder"
+              className="inline-flex min-h-11 items-center rounded-lg border border-line-strong bg-surface-raised px-3 py-2 text-sm text-ink-soft hover:border-accent hover:text-accent"
+            >
+              返 Founder OS{/* i18n-exempt: admin */}
             </a>
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4" role="status" aria-live="polite">
             <StatCard label="全站 Live 題數" /* i18n-exempt: admin */ value={liveTotal.toLocaleString()} className="text-accent" />
             <StatCard label="人手簽名題數" /* i18n-exempt: admin */ value={reviewedTotal.toLocaleString()} className="text-violet" />
             <StatCard label="覆蓋率" /* i18n-exempt: admin */ value={`${pct}%`} className="text-gold" />
             <StatCard label="待審題數" /* i18n-exempt: admin */ value={pendingCount.toLocaleString()} className="text-rose" />
           </div>
           {!dbOk && (
-            <p className="mt-3 rounded-lg border border-gold/30 bg-surface-sunken p-3 text-sm text-gold-strong">
-              ⚠️ Supabase 未連通 —— 決定暫時冇得喺網上儲存，隊列狀態只反映 repo 內本地 decisions。{/* i18n-exempt: admin */}
-            </p>
+            <div
+              className="mt-3 rounded-lg border border-gold/30 bg-surface-sunken p-3 text-sm text-gold-strong"
+              role="alert"
+            >
+              <p className="font-medium">資料庫暫時連唔上{/* i18n-exempt: admin */}</p>
+              <p className="mt-1 text-ink-muted">
+                隊列狀態只反映 repo 內本地 decisions；你可以繼續睇草稿，但網上儲存決定會失敗 —— 稍後再試，或者檢查 Supabase 連線。{/* i18n-exempt: admin */}
+              </p>
+            </div>
           )}
         </header>
 
