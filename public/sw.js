@@ -202,8 +202,8 @@ function offlinePage() {
 main{max-width:420px}a{color:#445148;font-weight:600}p{margin:.5em 0}</style></head>
 <body><main><p><strong>你而家冇網絡。</strong></p>
 <p>呢一頁你之前未開過，所以部機冇存底。之前做過嘅科目仍然可以練習：</p>
-<p><a href="/practice">去練習</a> · <a href="/dashboard">睇進度</a></p>
-<p lang="en" style="margin-top:1.5em">You are offline. This page was not saved on this device. Subjects you have practised before still work: <a href="/practice">Practice</a> · <a href="/dashboard">Progress</a></p>
+<p><a href="/subjects">去練習</a> · <a href="/dashboard">睇進度</a></p>
+<p lang="en" style="margin-top:1.5em">You are offline. This page was not saved on this device. Subjects you have practised before still work: <a href="/subjects">Practice</a> · <a href="/dashboard">Progress</a></p>
 </main></body></html>`
   return new Response(html, { status: 503, headers: { 'content-type': 'text/html; charset=utf-8' } })
 }

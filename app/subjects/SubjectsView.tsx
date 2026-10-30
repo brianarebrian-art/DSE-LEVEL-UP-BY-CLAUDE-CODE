@@ -137,11 +137,15 @@ export default function SubjectsView() {
     )
   }
 
+  // Nielsen H1／H5／H9：未上線科唔似可撳卡片——清楚標「未開放」、無連結、無 CTA。
   const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
-    <div className="relative bg-surface border border-line rounded-xl p-5 opacity-80">
+    <div
+      className="relative bg-surface border border-dashed border-line rounded-xl p-5 opacity-90"
+      aria-disabled="true"
+    >
       <div className="absolute top-4 right-4">
-        <span className="inline-flex items-center gap-1 text-[10px] text-ink-muted bg-surface-sunken px-2 py-0.5 rounded-full">
-          <Lock size={10} /> {s.launchDate ?? t.common.comingSoon}
+        <span className="inline-flex items-center gap-1 text-[10px] text-ink-muted bg-surface-sunken px-2 py-0.5 rounded-md">
+          <Lock size={10} aria-hidden /> {s.launchDate ?? t.common.comingSoon}
         </span>
       </div>
       <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
@@ -149,6 +153,11 @@ export default function SubjectsView() {
       </p>
       <div className="font-medium mb-1 text-ink-muted">{name(s)}</div>
       <div className="text-xs text-ink-muted leading-relaxed">{desc(s)}</div>
+      <p className="mt-3 text-xs text-ink-muted">
+        {en
+          ? 'Not open for practice yet — pick a live subject above.'
+          : '呢科仲未開放練習 —— 請喺上面揀已上線科目。'}
+      </p>
     </div>
   )
 

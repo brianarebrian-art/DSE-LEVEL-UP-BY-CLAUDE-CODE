@@ -201,6 +201,8 @@ export default function ResultPageClient() {
   }
 
   if (!result) {
+    // Nielsen H5／H9：唔再直跳 /practice（無 subject 會落 MissingSubject）——
+    // 空結果頁主 CTA 去科目總覽；次要先睇進度／接返上次。
     return (
       <div className="min-h-[55dvh] grid place-items-center px-4 py-12 bg-surface">
         <section className="w-full max-w-md bg-surface-raised border border-line rounded-2xl p-6 text-center">
@@ -208,7 +210,7 @@ export default function ResultPageClient() {
           <p className="mt-3 text-sm leading-relaxed text-ink-muted">{r.emptyBody}</p>
           <div className="mt-6 grid gap-3">
             <Link
-              href="/practice"
+              href="/subjects"
               className="flex items-center justify-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyStart} <ArrowRight size={16} />
@@ -218,6 +220,12 @@ export default function ResultPageClient() {
               className="flex items-center justify-center bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft py-3.5 rounded-xl transition-[colors,transform] duration-100"
             >
               {r.emptyProgress}
+            </Link>
+            <Link
+              href="/start"
+              className="text-sm text-ink-muted underline-offset-2 hover:text-accent hover:underline"
+            >
+              {locale === 'en' ? 'Continue where you left off' : '接返上次練習'}
             </Link>
           </div>
         </section>
@@ -674,7 +682,19 @@ function TomorrowStrip({ en }: { en: boolean }) {
   }, [])
   if (items.length === 0) return null
 
-  const topics = [...new Set(items.map((d) => (en ? d.topicEn ?? d.topic : d.topic)))]
+  // Nielsen H6／H7：課題可點進練習，唔使記住科目／課題再自己搵。
+  // 用 subjectId+topicId 去重；冇 topicId 就只帶 subject。
+  const byKey = new Map<string, { label: string; href: string }>()
+  for (const d of items) {
+    const label = en ? d.topicEn ?? d.topic : d.topic
+    const key = `${d.subjectId}|${d.topicId ?? ''}|${label}`
+    if (byKey.has(key)) continue
+    const q = new URLSearchParams({ subject: d.subjectId })
+    if (d.topicId) q.set('topic', d.topicId)
+    byKey.set(key, { label, href: `/practice?${q.toString()}` })
+  }
+  const topics = [...byKey.values()]
+
   return (
     <section className="bg-surface-raised border border-line rounded-2xl p-5">
       <h3 className="text-sm font-medium text-ink mb-1.5">
@@ -687,8 +707,13 @@ function TomorrowStrip({ en }: { en: boolean }) {
       </p>
       <ul className="flex flex-wrap gap-2">
         {topics.map((t) => (
-          <li key={t} className="text-xs text-ink-soft bg-surface-sunken border border-line rounded-lg px-2.5 py-1">
-            {t}
+          <li key={t.href + t.label}>
+            <Link
+              href={t.href}
+              className="inline-flex min-h-11 items-center text-xs text-ink-soft bg-surface-sunken border border-line rounded-lg px-2.5 py-1 hover:border-accent hover:text-accent transition-colors"
+            >
+              {t.label}
+            </Link>
           </li>
         ))}
       </ul>

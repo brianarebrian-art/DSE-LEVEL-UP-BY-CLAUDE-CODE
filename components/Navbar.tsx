@@ -53,11 +53,12 @@ import { useT, useLocale } from '@/lib/i18n'
 //（PERF-HOME-PREFETCH-2026-10-29；稽核僅 lab TTFB/FCP，無偽造 Lighthouse 分）。
 const NAV_PREFETCH_OFF = new Set(['/dashboard', '/bookmarks', '/notes', '/off-syllabus', '/about', '/credits'])
 
+// Nielsen H4：同底欄／側欄同一套地圖用詞（練習·進度·收藏·帳戶），唔另叫「科目」。
 const navLinks: {
   href: string
-  key: 'subjects' | 'progress' | 'tabSaved' | 'notes' | 'offSyllabus'
+  key: 'tabPractice' | 'progress' | 'tabSaved' | 'notes' | 'offSyllabus'
 }[] = [
-  { href: '/subjects', key: 'subjects' },
+  { href: '/subjects', key: 'tabPractice' },
   { href: '/dashboard', key: 'progress' },
   { href: '/bookmarks', key: 'tabSaved' },
   { href: '/notes', key: 'notes' },

@@ -146,7 +146,7 @@ export default function MethodologyClient() {
                           {m.answerLabel}<MathText>{f.rwAnswer}</MathText>
                         </div>
                         <Link
-                          href="/practice"
+                          href="/subjects"
                           className="text-xs text-accent bg-surface-sunken hover:bg-surface-raised border border-accent/20 px-3 py-1.5 rounded-lg transition-colors inline-block"
                         >
                           {m.practiseSimilar}
@@ -241,7 +241,7 @@ export default function MethodologyClient() {
           <h2 className="text-2xl font-medium mb-4 text-ink">{m.ctaTitle}</h2>
           <p className="text-ink-muted mb-6">{m.ctaSub}</p>
           <Link
-            href="/practice"
+            href="/subjects"
             className="inline-flex min-h-12 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-8 py-4 rounded-xl transition-[colors,transform] duration-100 active:scale-[0.97]"
           >
             {m.cta} <ArrowRight size={18} />

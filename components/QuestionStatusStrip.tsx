@@ -35,9 +35,10 @@ export default function QuestionStatusStrip({
           )
         })}
       </ol>
-      <p className="practice-status-hint sr-only">
+      {/* Nielsen H6／H10：可見說明（唔淨係 sr-only）——減少「點解撳唔到跳題」嘅猜測。 */}
+      <p className="practice-status-hint mt-1.5 text-[11px] leading-snug text-ink-muted">
         {en
-          ? 'Numbers show progress only. You cannot jump back. The correct option stays on this question.'
+          ? 'Numbers show progress only — you can’t jump back. The correct option stays on this question.'
           : '題號只顯示進度，唔可以跳返已做嘅題。正確答案留喺而家呢題。'}
       </p>
     </div>

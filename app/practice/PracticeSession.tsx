@@ -1324,6 +1324,14 @@ export default function PracticeSession({
               type="button"
               onClick={retryCurrent}
               className="practice-retry-btn"
+              title={tr(
+                '只重設畫面，首次作答同分數唔會改',
+                'Resets the view only — first answer and score stay',
+              )}
+              aria-label={tr(
+                '再試一次（只重設畫面，首次作答同分數唔會改）',
+                'Try again (resets the view only; first answer and score stay)',
+              )}
             >
               {tr('再試一次', 'Try again')}
             </button>

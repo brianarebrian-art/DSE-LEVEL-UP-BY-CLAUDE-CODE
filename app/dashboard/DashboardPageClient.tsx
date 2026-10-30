@@ -323,7 +323,7 @@ export default function DashboardPageClient() {
               href="/bookmarks"
               className="inline-flex items-center gap-2 bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm min-h-11"
             >
-              <Bookmark size={15} aria-hidden /> {en ? 'Saved' : '我嘅收藏'}
+              <Bookmark size={15} aria-hidden /> {en ? 'Saved' : '收藏'}
             </Link>
             {/* F-NTM: 今晚唔溫得開關（柔和款式，唔搶眼） */}
             <button
