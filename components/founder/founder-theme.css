@@ -1,0 +1,147 @@
+/* Founder OS —— JARVIS 指揮中心視覺（範圍限 [data-founder-os]） */
+
+[data-founder-os] {
+  --fos-bg: #050d18;
+  --fos-panel: #0b192b;
+  --fos-panel-2: #0f2137;
+  --fos-cyan: #22d3ee;
+  --fos-ok: #34d399;
+  --fos-warn: #fbbf24;
+  --fos-danger: #f87171;
+  --fos-ai: #a78bfa;
+  --fos-ink: #e2e8f0;
+  --fos-muted: #94a3b8;
+  --fos-faint: #64748b;
+  --fos-border: rgba(34, 211, 238, 0.28);
+  --fos-border-soft: rgba(34, 211, 238, 0.12);
+  --fos-grid: rgba(34, 211, 238, 0.05);
+  color: var(--fos-ink);
+  background-color: var(--fos-bg);
+  background-image:
+    linear-gradient(var(--fos-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fos-grid) 1px, transparent 1px),
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(34, 211, 238, 0.12), transparent 55%);
+  background-size: 48px 48px, 48px 48px, auto;
+  min-height: 100dvh;
+  font-family: 'IBM Plex Sans', 'Noto Sans TC', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+}
+
+[data-founder-os] *:focus-visible {
+  outline: 2px solid var(--fos-cyan);
+  outline-offset: 2px;
+}
+
+[data-founder-os] .fos-panel {
+  background: color-mix(in srgb, var(--fos-panel) 88%, transparent);
+  border: 1px solid var(--fos-border-soft);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+[data-founder-os] .fos-panel-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fos-cyan);
+  font-weight: 600;
+}
+
+[data-founder-os] .fos-metric-value {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fos-ink);
+  line-height: 1.2;
+}
+
+[data-founder-os] .fos-metric-label {
+  font-size: 0.75rem;
+  color: var(--fos-muted);
+}
+
+[data-founder-os] .fos-badge-ok {
+  color: var(--fos-ok);
+  border-color: color-mix(in srgb, var(--fos-ok) 40%, transparent);
+  background: color-mix(in srgb, var(--fos-ok) 12%, transparent);
+}
+[data-founder-os] .fos-badge-warn {
+  color: var(--fos-warn);
+  border-color: color-mix(in srgb, var(--fos-warn) 40%, transparent);
+  background: color-mix(in srgb, var(--fos-warn) 12%, transparent);
+}
+[data-founder-os] .fos-badge-danger {
+  color: var(--fos-danger);
+  border-color: color-mix(in srgb, var(--fos-danger) 40%, transparent);
+  background: color-mix(in srgb, var(--fos-danger) 12%, transparent);
+}
+[data-founder-os] .fos-badge-ai {
+  color: var(--fos-ai);
+  border-color: color-mix(in srgb, var(--fos-ai) 40%, transparent);
+  background: color-mix(in srgb, var(--fos-ai) 12%, transparent);
+}
+
+[data-founder-os] .fos-orb {
+  width: min(220px, 40vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-inline: auto;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(34, 211, 238, 0.45), transparent 45%),
+    radial-gradient(circle at 65% 70%, rgba(167, 139, 250, 0.35), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(11, 25, 43, 0.9), #050d18 70%);
+  border: 1px solid var(--fos-border);
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.15);
+  position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-founder-os] .fos-orb::before,
+  [data-founder-os] .fos-orb::after {
+    content: '';
+    position: absolute;
+    inset: -8%;
+    border-radius: 50%;
+    border: 1px solid rgba(34, 211, 238, 0.25);
+    animation: fos-orbit 18s linear infinite;
+  }
+  [data-founder-os] .fos-orb::after {
+    inset: -16%;
+    border-color: rgba(167, 139, 250, 0.2);
+    animation-duration: 28s;
+    animation-direction: reverse;
+  }
+  @keyframes fos-orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+[data-founder-os][data-mode='work'] .fos-orb,
+[data-founder-os][data-mode='work'] .fos-orb::before,
+[data-founder-os][data-mode='work'] .fos-orb::after {
+  animation: none !important;
+}
+
+[data-founder-os] .fos-cmd-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  border-top: 1px solid var(--fos-border-soft);
+  background: color-mix(in srgb, var(--fos-bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+[data-founder-os] a.fos-nav-link {
+  color: var(--fos-muted);
+  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  display: block;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+[data-founder-os] a.fos-nav-link:hover,
+[data-founder-os] a.fos-nav-link[aria-current='page'] {
+  color: var(--fos-cyan);
+  background: color-mix(in srgb, var(--fos-cyan) 10%, transparent);
+}

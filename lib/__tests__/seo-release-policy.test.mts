@@ -30,7 +30,7 @@ test('metadata uses the explicit production origin and complete sharing fields',
 })
 
 test('private, test, personalised and incomplete pages cannot inherit index=true', () => {
-  for (const path of ['/account', '/admin', '/admin/quality', '/dev/answer-cards', '/dashboard', '/result', '/practice', '/ai/practice-generator', ...EDITORIAL_DRAFT_ROUTES]) {
+  for (const path of ['/account', '/admin', '/admin/quality', '/founder', '/founder/questions', '/dev/answer-cards', '/dashboard', '/result', '/practice', '/ai/practice-generator', ...EDITORIAL_DRAFT_ROUTES]) {
     assert.equal(shouldNoIndex(path), true, path)
     assert.deepEqual(policy(createSeoMetadata({ ...input, path })), { index: false, googleIndex: false })
   }
