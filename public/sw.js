@@ -202,8 +202,8 @@ function offlinePage() {
 main{max-width:420px}a{color:#445148;font-weight:600}p{margin:.5em 0}</style></head>
 <body><main><p><strong>你而家冇網絡。</strong></p>
 <p>呢一頁你之前未開過，所以部機冇存底。之前做過嘅科目仍然可以練習：</p>
-<p><a href="/subjects">去練習</a> · <a href="/dashboard">睇進度</a></p>
-<p lang="en" style="margin-top:1.5em">You are offline. This page was not saved on this device. Subjects you have practised before still work: <a href="/subjects">Practice</a> · <a href="/dashboard">Progress</a></p>
+<p><a href="/practice">去練習</a> · <a href="/dashboard">睇進度</a></p>
+<p lang="en" style="margin-top:1.5em">You are offline. This page was not saved on this device. Subjects you have practised before still work: <a href="/practice">Practice</a> · <a href="/dashboard">Progress</a></p>
 </main></body></html>`
   return new Response(html, { status: 503, headers: { 'content-type': 'text/html; charset=utf-8' } })
 }
@@ -223,6 +223,8 @@ async function networkFirst(req) {
       (await caches.match(req)) ||
       // /practice?subject=physics 未開過，但 /practice?subject=math 開過：
       // 同一個頁面組件，科目由 client 讀 query 決定。
+      // offlinePage 嘅「去練習」亦必須係 /practice（唔係 /subjects）：
+      // ignoreSearch 只唔理 query，pathname 唔同就對唔上已練過嘅快取。
       (req.mode === 'navigate' ? await caches.match(req, { ignoreSearch: true }) : undefined)
     if (hit) return hit
     if (req.mode === 'navigate') return offlinePage()

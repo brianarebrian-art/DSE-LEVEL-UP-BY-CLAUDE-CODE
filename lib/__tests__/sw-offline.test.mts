@@ -108,3 +108,14 @@ test('⑤ 只存正常同源回應（唔存 404、重新導向、opaque）', () 
 test('⑥ sw.js 要 no-cache —— 回滾靠學生部機攞到新版', () => {
   assert.match(read('next.config.ts'), /source: '\/sw\.js', headers: \[\{ key: 'Cache-Control', value: 'no-cache' \}\]/)
 })
+
+test('⑦ 離線 503 頁「去練習」要去 /practice，唔好去 /subjects', () => {
+  // networkFirst 用 ignoreSearch 對 /practice?subject=… 同 /practice。
+  // /subjects 係另一個 pathname，離線時往往未快取，撳完又返同一個 503。
+  const i = SW.indexOf('function offlinePage()')
+  assert.ok(i > 0, 'offlinePage 冇咗')
+  const body = SW.slice(i, SW.indexOf('\n}\n', i))
+  assert.match(body, /href="\/practice"/)
+  assert.doesNotMatch(body, /href="\/subjects"/)
+  assert.match(SW, /caches\.match\(req,\s*\{\s*ignoreSearch:\s*true\s*\}/)
+})
