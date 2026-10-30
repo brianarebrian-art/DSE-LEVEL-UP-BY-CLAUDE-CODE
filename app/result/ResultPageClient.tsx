@@ -463,14 +463,15 @@ export default function ResultPageClient() {
  </div>
         )}
 
-        {/* 答對比例條。2026-09-30 拆走 1–5** 等級刻度及「本節分層表現」的等級對應（難度標籤未校準）。 */}
+        {/* 答對比例條。2026-09-30 拆走 1–5** 等級刻度及「本節分層表現」的等級對應（難度標籤未校準）。
+            長度靠靜態 scaleX（唔靠 w-full）；.fill-bar 只負責入場動畫，reduced-motion 喺 CSS 熄。 */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
  <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
  <div
-              className="h-full w-full origin-left rounded-full bg-accent motion-reduce:animate-none"
+              className="fill-bar h-full w-full origin-left rounded-full bg-accent"
               style={{
                 ['--fill-progress' as string]: String(barWidth / 100),
-                animation: 'fill-bar 280ms ease-out both',
+                transform: `scaleX(${barWidth / 100})`,
               }}
             />
  </div>
