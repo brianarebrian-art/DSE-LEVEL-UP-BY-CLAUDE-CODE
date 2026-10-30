@@ -13,9 +13,7 @@ import { getActiveSubjects } from '@/data/subjects'
 // 快取只喺真係斷網先用。詳細見 sw.js 檔頭。
 //
 // 色值：必須係字面值（manifest 由瀏覽器讀，唔會解析 CSS 變數）。
-// ⚠️ 2026-09-13 之前呢度係 '#00726C' ／ '#FAFAF8' —— 係 2026-09-02 莫蘭迪調色盤
-//    上線之前嘅青色主題，一直冇跟住改。而家用淺色主題實測值（localhost:3001，
-//    getComputedStyle）：canvas #F4F0EA。改主題色時記得一併改此處同 public/icons/owl.svg。
+// Clear System canvas #F2F2F7（app/tokens-clear.css）。改主題色時記得一併改此處。
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'DSE Level Up',
@@ -23,8 +21,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: `免費 DSE 練習平台，涵蓋 ${getActiveSubjects().length} 科獨立改寫試題。選擇題只練判斷，唔等於成卷掌握。`,
     start_url: '/',
     display: 'standalone',
-    background_color: '#F4F0EA',
-    theme_color: '#F4F0EA',
+    background_color: '#F2F2F7',
+    theme_color: '#F2F2F7',
     lang: 'zh-HK',
     categories: ['education'],
     icons: [

@@ -42,9 +42,9 @@ export default function LongQuestionCard({
   const en = locale === 'en'
   const tr = (zh: string, e?: string) => (en && e ? e : zh)
 
-  const [value, setValue] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [level, setLevel] = useState<Level | null>(null)
+ const [value, setValue] = useState('')
+ const [submitted, setSubmitted] = useState(false)
+ const [level, setLevel] = useState<Level | null>(null)
   const [showAnswer, setShowAnswer] = useState(true)
   const [showScheme, setShowScheme] = useState(false)
   const [showWhy, setShowWhy] = useState(false)
@@ -70,28 +70,28 @@ export default function LongQuestionCard({
     <div className="bg-surface-raised border border-line rounded-2xl p-6">
       {/* 題型標籤 + 建議用時 */}
       <div className="flex items-center gap-2 mb-3 flex-wrap">
-        <span className="text-[11px] font-bold tracking-wide text-gold bg-surface-sunken border border-gold/30 rounded-full px-2.5 py-1">
+ <span className="text-[11px] font-bold tracking-wide text-gold bg-surface-sunken border border-gold/30 rounded-full px-2.5 py-1">
           {en ? 'Long response' : '長題目'}
         </span>
         {q.suggestedMinutes ? (
           <span className="inline-flex items-center gap-1 text-xs text-ink-muted">
-            <Clock size={12} aria-hidden /> {en ? `~${q.suggestedMinutes} min` : `建議用時 ${q.suggestedMinutes} 分鐘`}
+ <Clock size={12} aria-hidden /> {en ? `~${q.suggestedMinutes} min` : `建議用時 ${q.suggestedMinutes} 分鐘`}
           </span>
-        ) : null}
-      </div>
+ ) : null}
+ </div>
 
-      <div className="text-sm sm:text-base text-ink leading-relaxed mb-4 whitespace-pre-line">
-        <MathText>{tr(q.content, q.contentEn)}</MathText>
-      </div>
+ <div className="text-sm sm:text-base text-ink leading-relaxed mb-4 whitespace-pre-line">
+ <MathText>{tr(q.content, q.contentEn)}</MathText>
+ </div>
 
       {!submitted ? (
         <>
           {/* 分步提示擺喺輸入框【之上】：學生卡住嗰陣係落筆之前，唔係寫完之後。
               預設收埋成一行細字，唔會搶走空白紙嘅位置。 */}
           <div className="mb-3">
-            <StepHints subjectId={q.subject} />
-          </div>
-          <textarea
+ <StepHints subjectId={q.subject} />
+ </div>
+ <textarea
             rows={7}
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -102,98 +102,98 @@ export default function LongQuestionCard({
           {/* Live KaTeX preview */}
           {value.includes('$') && (
             <div className="mt-2 rounded-lg border border-line bg-surface-sunken px-3 py-2">
-              <div className="text-[10px] uppercase tracking-wide text-ink-muted mb-1">{en ? 'Preview' : '預覽'}</div>
-              <div className="text-sm text-ink-soft leading-relaxed whitespace-pre-wrap">
-                <MathText>{value}</MathText>
-              </div>
-            </div>
-          )}
-          <button
+ <div className="text-[10px] uppercase tracking-wide text-ink-muted mb-1">{en ? 'Preview' : '預覽'}</div>
+ <div className="text-sm text-ink-soft leading-relaxed whitespace-pre-wrap">
+ <MathText>{value}</MathText>
+ </div>
+ </div>
+ )}
+ <button
             onClick={() => value.trim() && setSubmitted(true)}
             disabled={!value.trim()}
             className="mt-3 w-full min-h-11 bg-accent-strong hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed text-on-accent font-bold py-3 rounded-xl transition-colors"
           >
             {en ? 'Submit' : '提交'}
           </button>
-        </>
-      ) : (
-        <>
-          <div className="text-xs text-ink-muted mb-1">{en ? 'Your working' : '你嘅作答'}</div>
-          <div className="text-sm text-ink-soft bg-surface-sunken rounded-lg px-3 py-2 mb-4 whitespace-pre-wrap break-words">
-            <MathText>{value}</MathText>
-          </div>
+ </>
+ ) : (
+ <>
+ <div className="text-xs text-ink-muted mb-1">{en ? 'Your working' : '你嘅作答'}</div>
+ <div className="text-sm text-ink-soft bg-surface-sunken rounded-lg px-3 py-2 mb-4 whitespace-pre-wrap break-words">
+ <MathText>{value}</MathText>
+ </div>
 
           {/* Model answer (collapsible) */}
           <button
             onClick={() => setShowAnswer((s) => !s)}
-            className="w-full min-h-11 flex items-center justify-between text-left border border-accent/30 bg-accent/10 rounded-xl px-4 py-2.5 mb-2"
-          >
-            <span className="text-xs text-accent font-bold">{en ? 'Model answer' : '參考答案'}</span>
-            <ChevronDown size={16} aria-hidden className={`text-accent transition-transform ${showAnswer ? 'rotate-180' : ''}`} />
-          </button>
+ className="w-full min-h-11 flex items-center justify-between text-left border border-accent/30 bg-accent/10 rounded-xl px-4 py-2.5 mb-2"
+ >
+ <span className="text-xs text-accent font-bold">{en ? 'Model answer' : '參考答案'}</span>
+ <ChevronDown size={16} aria-hidden className={`text-accent transition-transform ${showAnswer ? 'rotate-180' : ''}`} />
+ </button>
           {showAnswer && (
             <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
-              <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn)}</MathText>
-            </div>
+ <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn)}</MathText>
+ </div>
           )}
 
           {/* Marking scheme (collapsible) */}
           {q.markingScheme && (
             <>
-              <button
+ <button
                 onClick={() => setShowScheme((s) => !s)}
-                className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
-              >
-                <span className="text-xs text-ink-soft font-bold">
+ className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
+ >
+ <span className="text-xs text-ink-soft font-bold">
                   {isGenericMarkingScale(tr(q.markingScheme, q.markingSchemeEn))
                     ? (en ? 'Shared practice scale (not a mark scheme for this question)' : '各題共用嘅練習尺度（唔係呢題嘅評卷參考）')
                     : (en ? 'Marking scheme / step marks' : '評分準則 / 步驟分')}
                 </span>
-                <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showScheme ? 'rotate-180' : ''}`} />
-              </button>
+ <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showScheme ? 'rotate-180' : ''}`} />
+ </button>
               {showScheme && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
-                  <MathText>{tr(q.markingScheme, q.markingSchemeEn)}</MathText>
-                </div>
-              )}
-            </>
+ <MathText>{tr(q.markingScheme, q.markingSchemeEn)}</MathText>
+ </div>
+ )}
+ </>
           )}
 
           {/* 解題思路（collapsible）—— 同評分準則分開：準則答「點畀分」，思路答「點解要咁諗」。 */}
           {q.explanation && (
             <>
-              <button
+ <button
                 onClick={() => setShowWhy((s) => !s)}
-                className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
-              >
-                <span className="text-xs text-ink-soft font-bold">
+ className="w-full min-h-11 flex items-center justify-between text-left border border-line-strong bg-surface-sunken rounded-xl px-4 py-2.5 mb-2"
+ >
+ <span className="text-xs text-ink-soft font-bold">
                   {isGenericWritingGuide(tr(q.explanation, q.explanationEn))
                     ? (en ? 'Shared self-check note' : '通用自評方向')
                     : (en ? 'How to think about it' : '解題思路')}
                 </span>
-                <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showWhy ? 'rotate-180' : ''}`} />
-              </button>
+ <ChevronDown size={16} aria-hidden className={`text-ink-muted transition-transform ${showWhy ? 'rotate-180' : ''}`} />
+ </button>
               {showWhy && (
                 <div className="text-sm text-ink-soft leading-relaxed px-4 pb-3 mb-2 whitespace-pre-line">
-                  <ExplanationBody text={tr(q.explanation, q.explanationEn)} />
-                </div>
-              )}
-            </>
+ <ExplanationBody text={tr(q.explanation, q.explanationEn)} />
+ </div>
+ )}
+ </>
           )}
 
           {/* 自我檢查清單（第二份 loop prompt §26，LOOP 33）。憲章 §16.A：本站不批改書寫題。 */}
           <fieldset className="mt-4 rounded-xl border border-line p-4">
-            <legend className="px-1 text-sm font-medium text-ink">
+ <legend className="px-1 text-sm font-medium text-ink">
               {en ? 'Check your answer yourself' : '自己對一對'}
             </legend>
-            <p className="mb-2 text-xs text-ink-muted">
+ <p className="mb-2 text-xs text-ink-muted">
               {en
                 ? 'This site does not mark written answers. Tick what your answer does, comparing it with the model answer and marking scheme. Nothing here is saved.'
                 : '本站唔會幫你評分。對住參考答案同評分準則，剔低你嘅答案做到嘅項目。呢度唔會儲存。'}
             </p>
             {RUBRIC.map((r) => (
-              <label key={r.key} className="flex min-h-11 items-center gap-3 text-sm text-ink-soft">
-                <input
+ <label key={r.key} className="flex min-h-11 items-center gap-3 text-sm text-ink-soft">
+ <input
                   type="checkbox"
                   className="h-5 w-5 shrink-0 accent-[var(--color-accent-strong)]"
                   checked={!!checks[r.key]}
@@ -201,38 +201,38 @@ export default function LongQuestionCard({
                 />
                 {en ? r.en : r.zh}
               </label>
-            ))}
-          </fieldset>
+ ))}
+ </fieldset>
 
           {/* 3-level self-assessment */}
           {level === null ? (
             <div className="mt-3">
-              <p className="text-sm text-ink-soft mb-2">
+ <p className="text-sm text-ink-soft mb-2">
                 {en ? 'Overall, how close is your answer to the model answer?' : '整體嚟講，你嘅答案同參考答案有幾接近？'}
               </p>
-              <div className="grid grid-cols-3 gap-2">
+ <div className="grid grid-cols-3 gap-2">
                 {levels.map((l) => (
-                  <button
+ <button
                     key={l.key}
                     onClick={() => pick(l.key)}
                     className={`min-h-11 text-sm font-semibold py-2.5 rounded-xl border transition-colors ${l.cls}`}
                   >
                     {en ? l.en : l.zh}
                   </button>
-                ))}
-              </div>
+ ))}
+ </div>
+ </div>
+ ) : (
+ <div className="text-sm text-ink-muted mt-3">
+              {en ? ' Self-assessment logged.' : ' 已記錄你嘅自評。'}
             </div>
-          ) : (
-            <div className="text-sm text-ink-muted mt-3">
-              {en ? '✓ Self-assessment logged.' : '✓ 已記錄你嘅自評。'}
-            </div>
-          )}
+ )}
 
-          <a href={reportHref} className="min-h-11 inline-flex items-center gap-1.5 text-xs text-ink-muted hover:text-accent mt-4 transition-colors">
-            <Flag size={12} aria-hidden /> {en ? 'I disagree / report' : '我唔同意 / 回報'}
+ <a href={reportHref} className="min-h-11 inline-flex items-center gap-1.5 text-xs text-ink-muted hover:text-accent mt-4 transition-colors">
+ <Flag size={12} aria-hidden /> {en ? 'I disagree / report' : '我唔同意 / 回報'}
           </a>
-        </>
-      )}
-    </div>
+ </>
+ )}
+ </div>
   )
 }

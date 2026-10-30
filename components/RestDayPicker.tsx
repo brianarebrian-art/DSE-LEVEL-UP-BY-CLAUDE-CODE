@@ -25,7 +25,7 @@ export default function RestDayPicker() {
   // SSR 同第一格 client render 都當冇揀 —— 讀 localStorage 要等 mount，
   // 否則 hydration 會對唔上（同 JustOneCard 一樣嘅處理）。
   const [days, setDays] = useState<Weekday[]>([])
-  const [today, setToday] = useState<Weekday | null>(null)
+ const [today, setToday] = useState<Weekday | null>(null)
 
   useEffect(() => {
     setDays(getRestDays())
@@ -34,22 +34,22 @@ export default function RestDayPicker() {
 
   const toggle = (d: Weekday) => {
     const next = days.includes(d) ? days.filter((x) => x !== d) : [...days, d].sort()
-    setDays(setRestDays(next))
-  }
+ setDays(setRestDays(next))
+ }
 
-  return (
-    <section className="bg-surface-raised border border-line rounded-2xl p-6">
-      <h2 className="text-base font-bold text-ink mb-1 flex items-center gap-2">
-        <CalendarHeart size={16} className="text-accent shrink-0" aria-hidden />
+ return (
+ <section className="bg-surface-raised border border-line rounded-2xl p-6">
+ <h2 className="text-base font-bold text-ink mb-1 flex items-center gap-2">
+ <CalendarHeart size={16} className="text-accent shrink-0" aria-hidden />
         {en ? 'Rest days' : '休息日'}
       </h2>
-      <p className="text-sm text-ink-muted leading-relaxed mb-4">
+ <p className="text-sm text-ink-muted leading-relaxed mb-4">
         {en
           ? 'Pick the days you plan to rest. On those days your dashboard stops suggesting questions. Nothing is locked — you can still practise whenever you want.'
           : '揀定你打算休息嘅日子。嗰幾日，dashboard 唔會再推題畀你。冇任何嘢會被鎖 —— 你想做題，照樣入得去。'}
       </p>
 
-      <div role="group" aria-label={en ? 'Rest days of the week' : '每星期休息日'} className="flex flex-wrap gap-2">
+ <div role="group" aria-label={en ? 'Rest days of the week' : '每星期休息日'} className="flex flex-wrap gap-2">
         {ORDER.map((d) => {
           const on = days.includes(d)
           const lbl = WEEKDAY_LABELS[d]
@@ -62,27 +62,27 @@ export default function RestDayPicker() {
               // aria-label 用長名：讀屏聽到「一」「二」係冇意思嘅
               aria-label={en ? lbl.enLong : lbl.zhLong}
               className={`min-h-11 min-w-11 px-3 rounded-xl border text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
-                on
-                  ? 'bg-surface-sunken border-accent/50 text-accent'
-                  : 'bg-surface border-line-strong text-ink-soft hover:bg-surface-sunken'
-              }`}
+ on
+ ? 'bg-surface-sunken border-accent/50 text-accent'
+ : 'bg-surface border-line-strong text-ink-soft hover:bg-surface-sunken'
+ }`}
             >
               {en ? lbl.enLong.slice(0, 3) : lbl.zh}
               {today === d && (
                 <span className="block text-[10px] text-ink-muted font-normal">{en ? 'today' : '今日'}</span>
-              )}
-            </button>
-          )
-        })}
-      </div>
+ )}
+ </button>
+ )
+ })}
+ </div>
 
-      <p className="text-[11px] text-ink-muted mt-3 leading-relaxed">
+ <p className="text-[11px] text-ink-muted mt-3 leading-relaxed">
         {/* 講明存喺邊 —— 同 /account 其餘部分（導出／導入、實際存咗乜、刪除）
             嘅取態一致：唔靠「我哋承諾」，直接講個機制。 */}
         {en
           ? 'Saved on this device only — never uploaded. A day runs 4am to 4am Hong Kong time, same as everything else here.'
           : '只存喺呢部機，唔會上傳。一日由香港時間凌晨 4 點計到下一個 4 點，同站內其他功能一致。'}
       </p>
-    </section>
+ </section>
   )
 }

@@ -355,8 +355,8 @@ export function planJourney(fromId: string, toId: string): Journey | null {
   if (!from || !to) return null
 
   const dist = new Map<string, number>()
-  const prev = new Map<string, string>()
-  const done = new Set<string>()
+ const prev = new Map<string, string>()
+ const done = new Set<string>()
   for (const l of from.lines) dist.set(node(fromId, l), 0)
 
   for (;;) {

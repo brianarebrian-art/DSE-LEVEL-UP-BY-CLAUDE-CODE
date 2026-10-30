@@ -36,7 +36,7 @@ test('767 → phone nav only; 768 and 1024 → rail, no hamburger; 1440 → rail
   const sidebar = read('components/Sidebar.tsx')
   const nav = read('components/Navbar.tsx')
   const bottom = read('components/BottomNav.tsx')
-  const railShownFrom = classesOf(sidebar, "aria-label={en ? 'Sections'").includes('md:flex') ? 'md' : null
+  const railShownFrom = classesOf(sidebar, "aria-label={en ? 'Main'").includes('md:flex') ? 'md' : null
   assert.equal(railShownFrom, 'md', 'side rail appears from md')
   const hamburger = classesOf(nav, '{/* 漢堡掣')
   assert.ok(hamburger.includes('md:hidden'), 'hamburger hidden from md')

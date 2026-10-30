@@ -24,7 +24,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
         className={`inline-flex items-center gap-1.5 text-xs text-ink-muted ${className}`}
         aria-live="off"
       >
-        <Check size={12} className="text-accent" />
+ <Check size={12} className="text-accent" />
         {en ? 'Settings synced' : '設定已同步'}
       </span>
     )
@@ -36,7 +36,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
         className={`inline-flex items-center gap-1.5 text-xs text-ink-muted ${className}`}
         aria-live="off"
       >
-        <Loader2 size={12} className="animate-spin motion-reduce:animate-none" />
+ <Loader2 size={12} className="animate-spin motion-reduce:animate-none" />
         {en ? 'Saving…' : '儲緊進度⋯⋯'}
       </span>
     )
@@ -47,7 +47,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
       <span
         className={`inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-surface-sunken px-3 py-1 text-xs text-ink-muted ${className}`}
       >
-        <CloudOff size={12} />
+ <CloudOff size={12} />
         {en
           ? 'Your progress is safe on this device — it will sync when you are back online.'
           : '進度喺呢部機好安全，返到網就會自動同步。'}
@@ -60,7 +60,7 @@ export default function OfflineBadge({ className = '' }: { className?: string })
     <span
       className={`inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-surface-sunken px-3 py-1 text-xs text-ink-muted ${className}`}
     >
-      <Cloud size={12} />
+ <Cloud size={12} />
       {en
         ? 'Sign in with Google to carry your settings across devices.'
         : '登入 Google 就可以將設定帶去其他裝置。'}

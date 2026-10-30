@@ -63,13 +63,13 @@ export function regrade(
 /** 提交 payload 嘅 shape-guard。呢啲嘢由瀏覽器嚟，一律當唔可信輸入。 */
 export function isSubmittedAnswers(v: unknown): v is SubmittedAnswer[] {
   if (!Array.isArray(v) || v.length === 0 || v.length > MAX_ANSWERS) return false
-  return v.every(
-    (a) =>
-      !!a &&
-      typeof a === 'object' &&
-      typeof (a as SubmittedAnswer).questionId === 'string' &&
-      (a as SubmittedAnswer).questionId.length > 0 &&
-      (a as SubmittedAnswer).questionId.length <= 100 &&
+ return v.every(
+ (a) =>
+ !!a &&
+ typeof a === 'object' &&
+ typeof (a as SubmittedAnswer).questionId === 'string' &&
+ (a as SubmittedAnswer).questionId.length > 0 &&
+ (a as SubmittedAnswer).questionId.length <= 100 &&
       ((a as SubmittedAnswer).selectedZh === null ||
         (typeof (a as SubmittedAnswer).selectedZh === 'string' &&
           ((a as SubmittedAnswer).selectedZh as string).length <= 500)),

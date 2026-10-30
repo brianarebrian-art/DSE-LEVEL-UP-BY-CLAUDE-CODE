@@ -93,8 +93,8 @@ export default function CantonesePage() {
 
   return (
     <>
-      <JsonLd data={jsonLd} />
-      <CantoneseView topics={TOPICS} />
-    </>
+ <JsonLd data={jsonLd} />
+ <CantoneseView topics={TOPICS} />
+ </>
   )
 }

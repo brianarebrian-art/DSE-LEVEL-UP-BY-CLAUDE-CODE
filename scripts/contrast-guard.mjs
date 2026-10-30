@@ -30,7 +30,8 @@ import path from 'node:path'
 // 高過個閘所報），所以冇放走過真缺陷 —— 但一個同佢守護嘅調色板脫節嘅閘，
 // 遲早會反方向出錯。呢類漂移只會喺有人對返實情嗰陣先發現，故此連埋
 // 出處一齊寫低。
-const SURFACE = '#F4F0EA'
+// Clear System canvas (app/tokens-clear.css --color-surface).
+const SURFACE = '#F2F2F7'
 
 // Tailwind 預設色階。只列會出問題嘅淺階；深階一律過 AA，不必列。
 //

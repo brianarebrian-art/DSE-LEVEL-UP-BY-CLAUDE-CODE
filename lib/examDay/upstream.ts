@@ -39,14 +39,14 @@ export interface Fetched<T> {
  * @param ttlMs  幾耐之內直接用快取唔打上游
  */
 export async function cachedJson<T>(
-  key: string,
-  url: string,
-  ttlMs: number,
-  timeoutMs = 6000,
+ key: string,
+ url: string,
+ ttlMs: number,
+ timeoutMs = 6000,
 ): Promise<Fetched<T>> {
   const hit = store.get(key) as Slot<T> | undefined
-  const now = Date.now()
-  if (hit && now - hit.ts < ttlMs) {
+ const now = Date.now()
+ if (hit && now - hit.ts < ttlMs) {
     return { data: hit.value, fetchedAt: new Date(hit.ts).toISOString(), stale: false }
   }
 
@@ -103,7 +103,7 @@ export interface WarnSumEntry {
 export type WarnSum = Record<string, WarnSumEntry>
 
 export const getWarnings = () =>
-  cachedJson<WarnSum>('hko:warnsum', `${HKO}?dataType=warnsum&lang=tc`, TTL.warning)
+ cachedJson<WarnSum>('hko:warnsum', `${HKO}?dataType=warnsum&lang=tc`, TTL.warning)
 
 export interface RhrRead {
   temperature?: { data?: { place: string; value: number; unit: string }[] }
@@ -114,7 +114,7 @@ export interface RhrRead {
 }
 
 export const getCurrentWeather = () =>
-  cachedJson<RhrRead>('hko:rhrread', `${HKO}?dataType=rhrread&lang=tc`, TTL.weather)
+ cachedJson<RhrRead>('hko:rhrread', `${HKO}?dataType=rhrread&lang=tc`, TTL.weather)
 
 export interface MtrTrain {
   seq: string
@@ -153,7 +153,7 @@ export function mtrDisrupted(s: MtrSchedule | undefined): boolean {
 }
 
 export const getMtr = (line: string, sta: string) =>
-  cachedJson<MtrSchedule>(
+ cachedJson<MtrSchedule>(
     `mtr:${line}:${sta}`,
     `${MTR}?line=${encodeURIComponent(line)}&sta=${encodeURIComponent(sta)}&lang=tc`,
     TTL.train,

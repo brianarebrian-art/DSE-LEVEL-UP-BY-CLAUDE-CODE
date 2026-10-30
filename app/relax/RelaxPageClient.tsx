@@ -23,8 +23,8 @@ export default function RelaxPageClient() {
 
   if (!ready) return <div className="min-h-[40vh]" />
 
-  return (
-    <>
+ return (
+ <>
       {menuOpen && (
         <SensoryMenu
           pref={pref}
@@ -34,8 +34,8 @@ export default function RelaxPageClient() {
             setMenuOpen(false)
           }}
         />
-      )}
-      <RelaxLanding pref={pref} onReopenMenu={() => setMenuOpen(true)} />
-    </>
+ )}
+ <RelaxLanding pref={pref} onReopenMenu={() => setMenuOpen(true)} />
+ </>
   )
 }

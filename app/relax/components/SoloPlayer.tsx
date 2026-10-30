@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { Play, Wind } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import { loadSensoryPref } from './SensoryMenu'
@@ -46,9 +47,9 @@ export default function SoloPlayer() {
   const [binauralVol, setBinauralVol] = useState(6) // 預設 6%（回應「蚊子聲」：低音量純 sine）
 
   const ctxRef = useRef<AudioContext | null>(null)
-  const teardownRef = useRef<(() => void) | null>(null)
-  const pomodoroTimer = useRef<ReturnType<typeof setInterval> | null>(null)
-  const binauralGainRef = useRef<GainNode | null>(null)
+ const teardownRef = useRef<(() => void) | null>(null)
+ const pomodoroTimer = useRef<ReturnType<typeof setInterval> | null>(null)
+ const binauralGainRef = useRef<GainNode | null>(null)
 
   function ensureCtx(): AudioContext {
     if (!ctxRef.current) {
@@ -161,12 +162,12 @@ export default function SoloPlayer() {
     setPlaying(id)
   }
 
-  const TRACKS: { id: TrackId; emoji: string; tint: string; nameZh: string; nameEn: string; descZh: string; descEn: string }[] = [
-    { id: 'lofi', emoji: '🎹', tint: 'bg-accent/10', nameZh: '深夜 Lo-fi 電台', nameEn: 'Late-night Lo-fi radio', descZh: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）', descEn: 'Piano + rain · calm your mind before revising (official Lofi Girl video)' },
+  const TRACKS: { id: TrackId; tint: string; nameZh: string; nameEn: string; descZh: string; descEn: string }[] = [
+    { id: 'lofi', tint: 'bg-accent/10', nameZh: '深夜 Lo-fi 電台', nameEn: 'Late-night Lo-fi radio', descZh: '鋼琴 + 雨聲 · 背書前平靜個心（Lofi Girl 官方影片）', descEn: 'Piano + rain · calm your mind before revising (official Lofi Girl video)' },
     // FIX: [A3] 遊戲術語清除：「回藍／refill MP」「Buff」「combo」→ 中性描述
-    { id: 'rain', emoji: '🌧️', tint: 'bg-emerald-400/15', nameZh: '落雨白噪音', nameEn: 'Rain white noise', descZh: '真實雨聲 · 做完卷減壓（官方長時影片）', descEn: 'Real rain sounds · de-stress after a paper (official long-form video)' },
-    { id: 'binaural', emoji: '🧘', tint: 'bg-subj-mist/20', nameZh: '低頻專注（雙耳節拍）', nameEn: 'Low-freq focus (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
-    { id: 'pomodoro', emoji: '⏳', tint: 'bg-subj-rose/15', nameZh: '25 分鐘專注（番茄鐘）', nameEn: '25-min focus (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
+    { id: 'rain', tint: 'bg-emerald-400/15', nameZh: '落雨白噪音', nameEn: 'Rain white noise', descZh: '真實雨聲 · 做完卷減壓（官方長時影片）', descEn: 'Real rain sounds · de-stress after a paper (official long-form video)' },
+    { id: 'binaural', tint: 'bg-subj-mist/20', nameZh: '低頻專注（雙耳節拍）', nameEn: 'Low-freq focus (binaural beats)', descZh: '低頻穩定節奏 · 有人覺得幫到專注（效果因人而異，請戴耳機）', descEn: 'Steady low-frequency beat · some find it aids focus (effect varies; use headphones)' },
+    { id: 'pomodoro', tint: 'bg-subj-rose/15', nameZh: '25 分鐘專注（番茄鐘）', nameEn: '25-min focus (Pomodoro)', descZh: '輕音樂漸弱提醒 · 唔使驚倒數壓力', descEn: 'Soft music fades out as a gentle reminder · no countdown pressure' },
   ]
 
   const names: Record<TrackId, string> = en
@@ -176,54 +177,54 @@ export default function SoloPlayer() {
   if (quietMode) {
     return (
       <div className="text-center py-10">
-        <div className="text-2xl mb-3" aria-hidden>🔇</div>
-        <p className="text-ink mb-2">{en ? 'You chose quiet mode, so there’s no sound here.' : '你揀咗「安靜模式」，呢度唔會有任何聲音。'}</p>
+ <div className="text-2xl mb-3" aria-hidden></div>
+ <p className="text-ink mb-2">{en ? 'You chose quiet mode, so there’s no sound here.' : '你揀咗「安靜模式」，呢度唔會有任何聲音。'}</p>
         {/* FIX: [A3] 「回藥術」（遊戲術語）→「呼吸練習」；[B5] 對比度提升 */}
         <p className="text-sm text-ink-soft mb-6">{en ? 'You can try the text-only breathing exercise, or head back to the main page to change your sensory preferences.' : '可以試下純文字嘅呼吸練習，或者返主頁改返感官偏好。'}</p>
-        <Link
+ <Link
           href="/relax/breathing"
-          className="inline-flex min-h-11 items-center rounded-[10px] border border-accent/30 text-accent text-sm px-5 py-3 hover:bg-accent/10 transition-colors"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-[10px] border border-accent/30 text-accent text-sm px-5 py-3 hover:bg-accent/10 transition-colors"
         >
-          🌬️ {en ? 'Silent breathing exercise' : '靜音呼吸練習'}
+          <Wind size={16} aria-hidden /> {en ? 'Silent breathing exercise' : '靜音呼吸練習'}
         </Link>
-      </div>
-    )
-  }
+ </div>
+ )
+ }
 
-  return (
-    <div>
+ return (
+ <div>
       {/* 頻譜條動畫（scoped keyframe；motion-reduce 自動停用） */}
       <style>{`
-        @keyframes buffEq { 0%,100% { transform: scaleY(0.35) } 50% { transform: scaleY(1) } }
-        .buff-eq-bar { transform-origin: bottom; animation: buffEq 900ms ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) { .buff-eq-bar { animation: none; transform: scaleY(0.6) } }
-      `}</style>
+ @keyframes buffEq { 0%,100% { transform: scaleY(0.35) } 50% { transform: scaleY(1) } }
+ .buff-eq-bar { transform-origin: bottom; animation: buffEq 900ms ease-in-out infinite; }
+ @media (prefers-reduced-motion: reduce) { .buff-eq-bar { animation: none; transform: scaleY(0.6) } }
+ `}</style>
 
-      <div className="space-y-3 mb-4">
+ <div className="space-y-3 mb-4">
         {TRACKS.map((t) => {
           const on = playing === t.id
           const isYt = t.id === 'lofi' || t.id === 'rain'
           const trackName = en ? t.nameEn : t.nameZh
           return (
             <div key={t.id} className={`rounded-xl bg-surface-raised border transition-colors ${on ? 'border-accent/50' : 'border-line'}`}>
-              <button
+ <button
                 onClick={() => select(t.id)}
                 aria-pressed={on}
                 className="w-full min-h-11 flex items-center gap-3 text-left p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent rounded-xl"
               >
                 {/* 全部曲目一律用本地霓虹色塊 —— 見 YT 常數上面關於遠端縮圖嘅註解 */}
-                <span className={`w-10 h-10 rounded-lg ${t.tint} flex items-center justify-center text-lg shrink-0`} aria-hidden>{t.emoji}</span>
-                <span className="flex-1">
-                  <span className="block text-sm font-medium text-ink">{trackName}</span>
-                  <span className="block text-xs text-ink-muted mt-0.5">{en ? t.descEn : t.descZh}</span>
-                </span>
-                <span className="text-xs text-accent shrink-0">{on ? (en ? 'Stop' : '停止') : en ? 'Play' : '播放'}</span>
-              </button>
+                <span className={`w-10 h-10 rounded-lg ${t.tint} shrink-0`} aria-hidden />
+ <span className="flex-1">
+ <span className="block text-sm font-medium text-ink">{trackName}</span>
+ <span className="block text-xs text-ink-muted mt-0.5">{en ? t.descEn : t.descZh}</span>
+ </span>
+ <span className="text-xs text-accent shrink-0">{on ? (en ? 'Stop' : '停止') : en ? 'Play' : '播放'}</span>
+ </button>
 
               {/* YT：播放時載入官方 iframe + 「喺 YouTube 開」後備（萬一嵌入播唔到） */}
               {isYt && on && (
                 <div className="px-4 pb-4">
-                  <iframe
+ <iframe
                     className="w-full aspect-video rounded-lg border border-line"
                     src={YT[t.id as 'lofi' | 'rain'].src}
                     title={trackName}
@@ -231,14 +232,14 @@ export default function SoloPlayer() {
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                   />
-                  <ExternalLinkGate
+ <ExternalLinkGate
                     href={YT[t.id as 'lofi' | 'rain'].open}
                     platform="YouTube"
-                    className="inline-block mt-2 text-xs text-ink-muted hover:text-accent underline underline-offset-2"
+                    className="inline-flex items-center gap-1 mt-2 text-xs text-ink-muted hover:text-accent underline underline-offset-2"
                   >
-                    ▶ {en ? "Won't play? Open on YouTube" : '播唔到？喺 YouTube 開'}
+                    <Play size={12} aria-hidden /> {en ? "Won't play? Open on YouTube" : '播唔到？喺 YouTube 開'}
                   </ExternalLinkGate>
-                </div>
+ </div>
               )}
 
               {/* 雙耳節拍：頻譜條 + 霓虹漸層音量滑條 */}
@@ -246,49 +247,49 @@ export default function SoloPlayer() {
                 <div className="px-4 pb-4">
                   {!stereoOk && (
                     <p className="text-xs text-ink-muted mb-2">{en ? 'This device seems to output mono only — use headphones for the binaural-beat effect.' : '此裝置似乎只有單聲道輸出——請使用耳機以獲得雙耳節拍效果。'}</p>
-                  )}
-                  <div className="flex items-end justify-center gap-1 h-10 mb-3" aria-hidden>
+ )}
+ <div className="flex items-end justify-center gap-1 h-10 mb-3" aria-hidden>
                     {[0.5, 0.9, 0.4, 1, 0.6, 0.85, 0.45, 0.75, 0.55].map((h, i) => (
-                      <span
+ <span
                         key={i}
                         className="buff-eq-bar w-1.5 rounded-full bg-gradient-to-t from-accent to-subj-mist"
                         style={{ height: `${h * 100}%`, animationDelay: `${i * 90}ms` }}
                       />
-                    ))}
-                  </div>
-                  <label className="block text-[11px] text-ink-muted mb-1">{en ? 'Volume' : '音量'} · {binauralVol}%</label>
-                  <input
+ ))}
+ </div>
+ <label className="block text-[11px] text-ink-muted mb-1">{en ? 'Volume' : '音量'} · {binauralVol}%</label>
+ <input
                     type="range" min={0} max={12} step={1} value={binauralVol}
                     onChange={(e) => setVol(Number(e.target.value))}
                     aria-label={en ? 'Binaural beat volume' : '雙耳節拍音量'}
                     className="w-full accent-accent-strong rounded-full"
                     style={{ background: 'linear-gradient(90deg,var(--color-subj-sage),var(--color-subj-rose),var(--color-subj-mist))' }}
                   />
-                </div>
+ </div>
               )}
 
               {t.id === 'pomodoro' && on && (
                 <div className="px-4 pb-4">
-                  <div className="h-1.5 rounded-full bg-surface-sunken overflow-hidden mb-2">
-                    <div
+ <div className="h-1.5 rounded-full bg-surface-sunken overflow-hidden mb-2">
+ <div
                       className="h-full bg-subj-mist rounded-full transition-all duration-1000"
                       style={{ width: `${(100 * (POMODORO_MIN * 60 - pomodoroLeft)) / (POMODORO_MIN * 60)}%` }}
                     />
-                  </div>
-                  <div className="flex items-center justify-between text-xs text-ink-muted">
-                    <span>{showTime ? `${en ? '' : '剩餘 '}${Math.floor(pomodoroLeft / 60)}:${String(pomodoroLeft % 60).padStart(2, '0')}${en ? ' left' : ''}` : en ? 'In progress · no need to watch the clock' : '進行中 · 唔使數住時間'}</span>
-                    <button onClick={() => setShowTime((v) => !v)} className="min-h-11 px-2 underline underline-offset-2 hover:text-ink">
+ </div>
+ <div className="flex items-center justify-between text-xs text-ink-muted">
+ <span>{showTime ? `${en ? '' : '剩餘 '}${Math.floor(pomodoroLeft / 60)}:${String(pomodoroLeft % 60).padStart(2, '0')}${en ? ' left' : ''}` : en ? 'In progress · no need to watch the clock' : '進行中 · 唔使數住時間'}</span>
+ <button onClick={() => setShowTime((v) => !v)} className="min-h-11 px-2 underline underline-offset-2 hover:text-ink">
                       {showTime ? (en ? 'Hide time left' : '隱藏剩餘時間') : en ? 'Show time left' : '顯示剩餘時間'}
                     </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          )
-        })}
-      </div>
+ </div>
+ </div>
+ )}
+ </div>
+ )
+ })}
+ </div>
 
-      <NowPlayingBar name={playing ? names[playing] : null} onStop={stopAll} />
-    </div>
+ <NowPlayingBar name={playing ? names[playing] : null} onStop={stopAll} />
+ </div>
   )
 }

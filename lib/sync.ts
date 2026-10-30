@@ -168,8 +168,8 @@ export function snapshotLocal(): Snapshot {
   // 所以要睇 raw string，唔可以只睇 parse 完嘅值。
   const rawActive = typeof localStorage !== 'undefined' ? localStorage.getItem(ACTIVE_SESSION_KEY) : null
   const activeSession = rawActive === null ? undefined : readJSON<ActiveSession | null>(ACTIVE_SESSION_KEY, null)
-  const reverseLog = readJSON<unknown[]>(KEYS.reverseLog, [])
-  const electives = readJSON<Record<string, unknown>>(KEYS.electives, {})
+ const reverseLog = readJSON<unknown[]>(KEYS.reverseLog, [])
+ const electives = readJSON<Record<string, unknown>>(KEYS.electives, {})
   const hasElectives = electives && typeof electives === 'object' && Object.keys(electives).length > 0
   return {
     // C1: progress lives in memory (lib/progress.ts), not localStorage.
@@ -425,7 +425,7 @@ export function mergeSnapshots(
  */
 export function mergeElectives(
   local: Record<string, unknown> | undefined,
-  cloud: Record<string, unknown> | undefined,
+ cloud: Record<string, unknown> | undefined,
 ): Record<string, unknown> {
   const L = local && typeof local === 'object' ? local : {}
   const C = cloud && typeof cloud === 'object' ? cloud : {}

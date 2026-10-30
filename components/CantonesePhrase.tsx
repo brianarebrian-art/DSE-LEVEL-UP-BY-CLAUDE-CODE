@@ -32,18 +32,18 @@ export default function CantonesePhrase({
 
   return (
     <>
-      <p className="mb-1 text-[0.6875rem] font-medium uppercase tracking-wide text-ink-muted">
+ <p className="mb-1 text-[0.6875rem] font-medium uppercase tracking-wide text-ink-muted">
         {t.cantonese.purposes[p.purpose]}
       </p>
       {/* 粵拼【另起一行】，唔同廣東話並排。短詞（「打包」）並排睇落冇事，
           而家啲句長到十幾個音節，並排就會喺窄機斷行斷到粵拼插入咗廣東話
           中間，逐個音節對唔返邊個字。 */}
       <p className="text-base font-medium leading-relaxed text-ink">{p.canto}</p>
-      <p className="mt-0.5 font-mono text-xs leading-relaxed tracking-tight text-accent">
+ <p className="mt-0.5 font-mono text-xs leading-relaxed tracking-tight text-accent">
         {p.jyut}
       </p>
-      <p className="mt-1 text-sm leading-relaxed text-ink-muted">{p.putong}</p>
-      <p className="text-sm leading-relaxed text-ink-muted">{p.en}</p>
+ <p className="mt-1 text-sm leading-relaxed text-ink-muted">{p.putong}</p>
+ <p className="text-sm leading-relaxed text-ink-muted">{p.en}</p>
       {/* 註解用 text-ink-muted 而唔係最淡嗰階 —— 最淡嗰階喺兩個主題嘅對比係
           2.36–2.91，遠低過 AA 4.5。呢啲係學生真係要讀嘅文化提示，唔係裝飾字。
           token-contrast 測試 ⑤ 捉返過一次。 */}
@@ -51,7 +51,7 @@ export default function CantonesePhrase({
         <p className="mt-1.5 border-l-2 border-line pl-2.5 text-xs leading-relaxed text-ink-muted">
           {note}
         </p>
-      )}
-    </>
+ )}
+ </>
   )
 }
