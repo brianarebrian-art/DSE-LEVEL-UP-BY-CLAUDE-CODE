@@ -2,7 +2,8 @@
 // ============================================================================
 // emoji-guard.mjs —— 全站禁止 emoji 入學生可見文案／UI（2026-10-30）
 // ----------------------------------------------------------------------------
-// 憲章外加產品規則：網站任何地方唔准用 emoji；圖案必須係原創 mark／SVG／lucide。
+// 產品規則（.cursor/rules/no-emoji.mdc）：網站任何地方唔准用 emoji；
+// 圖案必須係原創 mark／SVG（components/marks、專案內 icons），唔好用 emoji 套件／CDN。
 // 掃 app/ · components/ · lib/ 嘅字串字面值同 JSX 文字（剝註釋，同 copy-guard）。
 // 題庫 data/questions 唔掃（frameworkEmoji 欄位仍存，但 UI 禁止渲染 —— 見下方 JSX 規則）。
 // ============================================================================
@@ -66,14 +67,14 @@ for (const f of files) {
 
 const BAR = '─'.repeat(70)
 if (findings.length === 0) {
-  console.log(`\n${BAR}\n  ✅ EMOJI GUARD PASSED —— 學生可見文案／UI 冇 emoji。\n${BAR}\n`)
+  console.log(`\n${BAR}\n  EMOJI GUARD PASSED —— 學生可見文案／UI 冇 emoji。\n${BAR}\n`)
   process.exit(0)
 }
 
-console.log(`\n❌ 發現 ${findings.length} 處 emoji／pictograph（網站嚴禁）：\n`)
+console.log(`\n發現 ${findings.length} 處 emoji／pictograph（網站嚴禁，見 .cursor/rules/no-emoji.mdc）：\n`)
 for (const f of findings) {
   const tag = f.kind === 'field' ? ' [JSX .emoji/.frameworkEmoji]' : ''
   console.log(`  ${f.file}:${f.line}${tag}\n    ${f.sample}\n`)
 }
-console.log('修法：刪走 emoji；圖案改用 components/marks/* 或 lucide SVG。唔好加豁免。\n')
+console.log('修法：刪走 emoji；圖案改用 components/marks/* 或專案內原創 SVG。唔好加豁免。\n')
 process.exit(1)
