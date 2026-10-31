@@ -75,9 +75,12 @@ test('④ 唔可以變成鎖 —— 休息日一樣入得去做題', () => {
   const card = read('components', 'JustOneCard.tsx')
   const i = card.indexOf('if (resting)')
   assert.ok(i > 0, '休息日分支冇咗')
-  const branch = card.slice(i, card.indexOf('return (', card.indexOf('}', card.indexOf('</div>\n    )'))) )
+  // 休息日文案附近必須有 /practice 入口（「今日想做少少都得」），唔可以淨係去 /relax。
+  const restCopyAt = card.indexOf('今日係你自己揀咗嘅休息日')
+  assert.ok(restCopyAt > i, '休息日中文文案冇咗')
+  const nearby = card.slice(restCopyAt, restCopyAt + 900)
   assert.match(
-    branch,
+    nearby,
     /href=\{`\/practice\?subject=/,
     '休息日分支冇留返一條入 /practice 嘅路 —— 咁就係一個鎖，違反 Emma/UDL 2026-07-16 裁決',
   )

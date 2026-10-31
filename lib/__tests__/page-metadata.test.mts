@@ -23,6 +23,11 @@ const EXEMPT: { route: string; why: string }[] = [
   { route: 'app/admin/page.tsx', why: '管理員後台，noindex，唔會出現喺搜尋結果。' },
 ]
 
+/** Founder OS 全部子頁共用 app/founder/layout.tsx（noindex）；唔使每頁重複 metadata。 */
+function isFounderOsPage(route: string): boolean {
+  return route === 'app/founder/page.tsx' || route.startsWith('app/founder/')
+}
+
 function pages(dir: string, out: string[] = []): string[] {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name)
@@ -37,9 +42,15 @@ function pages(dir: string, out: string[] = []): string[] {
 const all = pages('app')
 
 test('每一版都有獨立 metadata（或者喺豁免名單並寫明理由）', () => {
+  // layout 必須真係有 noindex metadata，先至准批量豁免 founder 子頁。
+  const founderLayout = fs.readFileSync('app/founder/layout.tsx', 'utf8')
+  assert.match(founderLayout, /robots:\s*\{[^}]*index:\s*false/, 'founder layout 必須 noindex')
+  assert.match(founderLayout, /completeSeoMetadata|export const metadata/, 'founder layout 必須有 metadata')
+
   const missing: string[] = []
   for (const f of all) {
     if (EXEMPT.some((e) => e.route === f)) continue
+    if (isFounderOsPage(f)) continue
     const src = fs.readFileSync(f, 'utf8')
     // 動態路由由 generateMetadata 提供，一樣算數。
     if (/export const metadata|export async function generateMetadata|export function generateMetadata/.test(src)) continue
