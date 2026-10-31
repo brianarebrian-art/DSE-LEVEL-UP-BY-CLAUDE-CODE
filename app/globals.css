@@ -1,9 +1,10 @@
 @import "tailwindcss";
-/* Clear System（2026-10-30 UI reset）—— 語義 token 正本喺 tokens-clear.css。
-   下方舊 @theme／莫蘭迪區塊暫時保留做相容；檔尾 CLEAR-SYSTEM-WIN 會蓋過運行時色值。 */
+/* Morandi System（2026-10-31）—— 語義 token 正本喺 tokens-clear.css。
+   推翻 Apple 藍 #0071E3 Clear System accent。下方舊 @theme 區塊保留做相容；
+   檔尾 MORANDI-WIN 會蓋過運行時色值。 */
 @import "./tokens-clear.css";
 
-/* ── Legacy @theme（compat; runtime colours win from tokens-clear + CLEAR-SYSTEM-WIN）──
+/* ── Legacy @theme（compat; runtime colours win from tokens-clear + MORANDI-WIN）──
    刻意保留字面 hex 嘅例外（唔好「順手」遷移）：
    • DailyStatsCard／溫書地圖報告卡 —— html2canvas 導出鎖定標準色版
    • GroupCommunity f.color —— `${hex}1f` 拼 alpha
@@ -57,9 +58,10 @@
   --color-ink-muted: #69635F;      /* = ml-ink-soft 輔助（四底面 AA） */
   /* ink-faint【未達 AA，刻意保留】：只准停用控件／aria-hidden 裝飾。 */
   --color-ink-faint: #9C958D;
-  --color-accent: #57685C;         /* = ml-sage */
-  --color-accent-strong: #57685C;  /* 白字掣＝sage（角色名「strong」＝可做底，唔係更深） */
-  --color-accent-hover: #4D584A;   /* 白字 7.47 */
+  --color-accent: #4A656C;         /* grey-blue（#7C9AA6 同色相壓深至 AA） */
+  --color-accent-strong: #4A656C;  /* 白字掣 */
+  --color-accent-hover: #3E555B;
+  --color-accent-soft: #7C9AA6;    /* 裝飾／圖表；唔做唯一字色 */
   --color-on-accent: #FFFFFF;
   --color-line: rgba(44, 42, 41, 0.08);
   --color-line-strong: rgba(44, 42, 41, 0.16);
@@ -136,7 +138,7 @@
   --color-ml-ink-soft: #69635F;    /* 輔助（4.57，四底面） */
   /* 以下五隻嚟自虹牌莫蘭迪色卡【暗嗰半】，按同一色相壓深至 AA ——
      點解要壓深，見本區塊上方嘅「色卡係油漆卡」註釋。 */
-  --color-ml-sage: #57685C;        /* PC-016↓ 主行動、正確（4.59 / 白字掣 5.68） */
+  --color-ml-sage: #4A656C;        /* 主行動（灰藍壓深；4.82 四底面 / 白字 6.23） */
   --color-ml-clay: #706347;        /* PC-011↓ 強調、失分標示（4.56 / 白字掣 5.63） */
   --color-ml-warn: #845956;        /* PC-003↓ 超時、警告（4.58 / 白字掣 5.66）。
                                       用色卡嘅乾玫瑰，唔用螢光紅 —— 憲章 §7 */
@@ -1513,77 +1515,115 @@ body:has(.practice-session) [data-sos-fab] {
 }
 /* /practice-revealed-p0 */
 
-/* ── CLEAR-SYSTEM-WIN（must be last colour layer）─────────────────────────
-   Re-assert Clear System after legacy Morandi / cyber blocks above. */
+/* ── MORANDI-WIN（must be last colour layer）─────────────────────────────
+   Re-assert Morandi after any legacy / intermediate blocks above. */
 :root {
-  --color-surface: #f2f2f7;
-  --color-surface-raised: #ffffff;
-  --color-surface-sunken: #e5e5ea;
-  --color-ink: #1c1c1e;
-  --color-ink-soft: #3a3a3c;
-  --color-ink-muted: #636366;
-  --color-ink-faint: #aeaeb2;
-  --color-accent: #0055aa;
-  --color-accent-strong: #0071e3;
-  --color-accent-hover: #0060c0;
+  --color-surface: #f4f0ea;
+  --color-surface-raised: #fffdf9;
+  --color-surface-sunken: #f0ebe3;
+  --color-ink: #2c2a29;
+  --color-ink-soft: #3d3a38;
+  --color-ink-muted: #69635f;
+  --color-ink-faint: #9c958d;
+  --color-accent: #4a656c;
+  --color-accent-strong: #4a656c;
+  --color-accent-hover: #3e555b;
+  --color-accent-soft: #7c9aa6;
   --color-on-accent: #ffffff;
-  --color-line: rgba(60, 60, 67, 0.12);
-  --color-line-strong: rgba(60, 60, 67, 0.29);
-  --color-scrim: rgba(0, 0, 0, 0.4);
-  --color-scrim-soft: rgba(0, 0, 0, 0.24);
-  --color-gold: #b25000;
-  --color-gold-soft: #ffd60a;
-  --color-gold-strong: #9a4500;
-  --color-violet: #5856d6;
-  --color-violet-strong: #3634a3;
-  --color-rose: #d70015;
-  --color-rose-strong: #b00012;
-  --color-ml-canvas: #f2f2f7;
-  --color-ml-surface: #ffffff;
-  --color-ml-muted: #e5e5ea;
-  --color-ml-ink: #1c1c1e;
-  --color-ml-ink-soft: #6c6c70;
-  --color-ml-sage: #0071e3;
-  --color-ml-clay: #b25000;
-  --color-ml-warn: #d70015;
-  --color-ml-good: #248a3d;
+  --color-line: rgba(44, 42, 41, 0.08);
+  --color-line-strong: rgba(44, 42, 41, 0.16);
+  --color-scrim: rgba(44, 42, 41, 0.72);
+  --color-scrim-soft: rgba(44, 42, 41, 0.42);
+  --color-success: #566953;
+  --color-success-strong: #4a5c48;
+  --color-on-success: #ffffff;
+  --color-warning: #706347;
+  --color-warning-strong: #5f5144;
+  --color-on-warning: #ffffff;
+  --color-error: #845956;
+  --color-error-strong: #724d3d;
+  --color-on-error: #ffffff;
+  --color-info: #4d667e;
+  --color-info-strong: #3f5468;
+  --color-on-info: #ffffff;
+  --color-gold: #706347;
+  --color-gold-soft: #b7a6a3;
+  --color-gold-strong: #5f5144;
+  --color-violet: #5b666f;
+  --color-violet-strong: #4a545c;
+  --color-rose: #845956;
+  --color-rose-strong: #724d3d;
+  --color-ml-canvas: #f4f0ea;
+  --color-ml-surface: #fffdf9;
+  --color-ml-muted: #f0ebe3;
+  --color-ml-ink: #2c2a29;
+  --color-ml-ink-soft: #69635f;
+  --color-ml-sage: #4a656c;
+  --color-ml-clay: #706347;
+  --color-ml-warn: #845956;
+  --color-ml-good: #566953;
   --color-ml-on-brand: #ffffff;
-  --color-material: rgba(255, 255, 255, 0.72);
-  --color-material-heavy: rgba(242, 242, 247, 0.86);
+  --color-material: rgba(255, 253, 249, 0.78);
+  --color-material-heavy: rgba(244, 240, 234, 0.9);
+  --color-chart-1: #4a656c;
+  --color-chart-2: #706347;
+  --color-chart-3: #845956;
+  --color-chart-4: #566953;
+  --color-chart-5: #5b666f;
+  --color-chart-6: #8a8377;
 }
 :root[data-theme='cyber'] {
-  --color-surface: #000000;
-  --color-surface-raised: #1c1c1e;
-  --color-surface-sunken: #2c2c2e;
-  --color-ink: #f5f5f7;
-  --color-ink-soft: #ebebf5;
-  --color-ink-muted: #98989d;
-  --color-ink-faint: #636366;
-  --color-accent: #409cff;
-  --color-accent-strong: #0071e3;
-  --color-accent-hover: #0060c0;
-  --color-on-accent: #ffffff;
-  --color-line: rgba(84, 84, 88, 0.65);
-  --color-line-strong: rgba(142, 142, 147, 0.45);
-  --color-gold: #ff9f0a;
-  --color-gold-soft: #ffd60a;
-  --color-gold-strong: #ffb340;
-  --color-violet: #5e5ce6;
-  --color-violet-strong: #7d7aff;
-  --color-rose: #ff453a;
-  --color-rose-strong: #ff6961;
-  --color-ml-canvas: #000000;
-  --color-ml-surface: #1c1c1e;
-  --color-ml-muted: #2c2c2e;
-  --color-ml-ink: #f5f5f7;
-  --color-ml-ink-soft: #98989d;
-  --color-ml-sage: #409cff;
-  --color-ml-clay: #ff9f0a;
-  --color-ml-warn: #ff453a;
-  --color-ml-good: #30d158;
-  --color-ml-on-brand: #ffffff;
-  --color-material: rgba(28, 28, 30, 0.72);
-  --color-material-heavy: rgba(0, 0, 0, 0.72);
+  --color-surface: #1a1917;
+  --color-surface-raised: #252422;
+  --color-surface-sunken: #2f2e2c;
+  --color-ink: #f0e8dc;
+  --color-ink-soft: #c1bab0;
+  --color-ink-muted: #a8a095;
+  --color-ink-faint: #6b6560;
+  --color-accent: #8aa6a1;
+  --color-accent-strong: #8aa6a1;
+  --color-accent-hover: #6b8f8a;
+  --color-accent-soft: #7c9aa6;
+  --color-on-accent: #1a1917;
+  --color-line: rgba(232, 224, 212, 0.06);
+  --color-line-strong: rgba(232, 224, 212, 0.12);
+  --color-success: #a0b39b;
+  --color-success-strong: #8aa68a;
+  --color-on-success: #1a1917;
+  --color-warning: #b8956f;
+  --color-warning-strong: #c4a484;
+  --color-on-warning: #1a1917;
+  --color-error: #c49a9a;
+  --color-error-strong: #b89191;
+  --color-on-error: #1a1917;
+  --color-info: #7c9aa6;
+  --color-info-strong: #8aa6b0;
+  --color-on-info: #1a1917;
+  --color-gold: #b8956f;
+  --color-gold-soft: #e6ba8b;
+  --color-gold-strong: #d4ab80;
+  --color-violet: #8a9fb8;
+  --color-violet-strong: #a8c2e0;
+  --color-rose: #c49a9a;
+  --color-rose-strong: #b89191;
+  --color-ml-canvas: #1a1917;
+  --color-ml-surface: #252422;
+  --color-ml-muted: #2f2e2c;
+  --color-ml-ink: #f0e8dc;
+  --color-ml-ink-soft: #a8a095;
+  --color-ml-sage: #8aa6a1;
+  --color-ml-clay: #b8956f;
+  --color-ml-warn: #c49a9a;
+  --color-ml-good: #a0b39b;
+  --color-ml-on-brand: #1a1917;
+  --color-material: rgba(37, 36, 34, 0.78);
+  --color-material-heavy: rgba(26, 25, 23, 0.9);
+  --color-chart-1: #8aa6a1;
+  --color-chart-2: #b8956f;
+  --color-chart-3: #c49a9a;
+  --color-chart-4: #a0b39b;
+  --color-chart-5: #8a9fb8;
+  --color-chart-6: #918a7e;
 }
 
 /* Material chrome helpers */
@@ -1613,61 +1653,79 @@ body:has(.practice-session) [data-sos-fab] {
   }
 }
 
-/* Increase Contrast must re-assert AFTER CLEAR-SYSTEM-WIN (same specificity otherwise loses). */
+/* Increase Contrast must re-assert AFTER MORANDI-WIN (same specificity otherwise loses). */
 @media (prefers-contrast: more) {
   :root {
-    --color-ink: #000000;
-    --color-ink-soft: #1c1c1e;
-    --color-ink-muted: #3a3a3c;
-    --color-accent: #0051a8;
-    --color-accent-strong: #0051a8;
-    --color-accent-hover: #003d80;
-    --color-line: rgba(0, 0, 0, 0.45);
-    --color-line-strong: rgba(0, 0, 0, 0.7);
-    --color-material: #ffffff;
-    --color-material-heavy: #ffffff;
+    --color-ink: #141414;
+    --color-ink-soft: #1a1816;
+    --color-ink-muted: #4a4541;
+    --color-accent: #3a545c;
+    --color-accent-strong: #3a545c;
+    --color-accent-hover: #2f454c;
+    --color-on-accent: #ffffff;
+    --color-success: #3f5340;
+    --color-warning: #5a4a35;
+    --color-error: #6b4040;
+    --color-info: #3a545c;
+    --color-line: rgba(20, 20, 20, 0.45);
+    --color-line-strong: rgba(20, 20, 20, 0.7);
+    --color-material: #fffdf9;
+    --color-material-heavy: #f4f0ea;
   }
   :root[data-theme='cyber'] {
-    --color-ink: #ffffff;
-    --color-ink-soft: #f5f5f7;
-    --color-ink-muted: #d1d1d6;
-    --color-accent: #64d2ff;
-    --color-accent-strong: #64d2ff;
-    --color-accent-hover: #70d7ff;
-    --color-on-accent: #000000;
-    --color-line: rgba(255, 255, 255, 0.55);
-    --color-line-strong: rgba(255, 255, 255, 0.8);
-    --color-material: #1c1c1e;
-    --color-material-heavy: #000000;
+    --color-ink: #fff8f0;
+    --color-ink-soft: #f0e8dc;
+    --color-ink-muted: #d4ccc0;
+    --color-accent: #a3c0bb;
+    --color-accent-strong: #a3c0bb;
+    --color-accent-hover: #b5cec9;
+    --color-on-accent: #1a1917;
+    --color-success: #b5c9b0;
+    --color-warning: #d4ab80;
+    --color-error: #d4a8a8;
+    --color-info: #a3c0bb;
+    --color-line: rgba(255, 248, 240, 0.55);
+    --color-line-strong: rgba(255, 248, 240, 0.8);
+    --color-material: #252422;
+    --color-material-heavy: #1a1917;
   }
 }
 html[data-contrast='more'] {
-  --color-ink: #000000;
-  --color-ink-soft: #1c1c1e;
-  --color-ink-muted: #3a3a3c;
-  --color-accent: #0051a8;
-  --color-accent-strong: #0051a8;
-  --color-accent-hover: #003d80;
-  --color-line: rgba(0, 0, 0, 0.45);
-  --color-line-strong: rgba(0, 0, 0, 0.7);
-  --color-material: #ffffff;
-  --color-material-heavy: #ffffff;
+  --color-ink: #141414;
+  --color-ink-soft: #1a1816;
+  --color-ink-muted: #4a4541;
+  --color-accent: #3a545c;
+  --color-accent-strong: #3a545c;
+  --color-accent-hover: #2f454c;
+  --color-on-accent: #ffffff;
+  --color-success: #3f5340;
+  --color-warning: #5a4a35;
+  --color-error: #6b4040;
+  --color-info: #3a545c;
+  --color-line: rgba(20, 20, 20, 0.45);
+  --color-line-strong: rgba(20, 20, 20, 0.7);
+  --color-material: #fffdf9;
+  --color-material-heavy: #f4f0ea;
 }
 html[data-contrast='more'][data-theme='cyber'] {
-  --color-ink: #ffffff;
-  --color-ink-soft: #f5f5f7;
-  --color-ink-muted: #d1d1d6;
-  --color-accent: #64d2ff;
-  --color-accent-strong: #64d2ff;
-  --color-accent-hover: #70d7ff;
-  --color-on-accent: #000000;
-  --color-line: rgba(255, 255, 255, 0.55);
-  --color-line-strong: rgba(255, 255, 255, 0.8);
-  --color-material: #1c1c1e;
-  --color-material-heavy: #000000;
+  --color-ink: #fff8f0;
+  --color-ink-soft: #f0e8dc;
+  --color-ink-muted: #d4ccc0;
+  --color-accent: #a3c0bb;
+  --color-accent-strong: #a3c0bb;
+  --color-accent-hover: #b5cec9;
+  --color-on-accent: #1a1917;
+  --color-success: #b5c9b0;
+  --color-warning: #d4ab80;
+  --color-error: #d4a8a8;
+  --color-info: #a3c0bb;
+  --color-line: rgba(255, 248, 240, 0.55);
+  --color-line-strong: rgba(255, 248, 240, 0.8);
+  --color-material: #252422;
+  --color-material-heavy: #1a1917;
 }
 
-/* Pure SVG charts — Clear System stroke/fill helpers (no chart libraries). */
+/* Pure SVG charts — Morandi stroke/fill + series patterns (no chart libraries). */
 .chart-grid {
   stroke: var(--color-line-strong);
 }
@@ -1678,3 +1736,9 @@ html[data-contrast='more'][data-theme='cyber'] {
 .chart-label {
   fill: var(--color-ink-muted);
 }
+.chart-series-1 { stroke: var(--color-chart-1); fill: var(--color-chart-1); stroke-dasharray: none; }
+.chart-series-2 { stroke: var(--color-chart-2); fill: var(--color-chart-2); stroke-dasharray: 6 4; }
+.chart-series-3 { stroke: var(--color-chart-3); fill: var(--color-chart-3); stroke-dasharray: 2 3; }
+.chart-series-4 { stroke: var(--color-chart-4); fill: var(--color-chart-4); stroke-dasharray: 8 3 2 3; }
+.chart-series-5 { stroke: var(--color-chart-5); fill: var(--color-chart-5); stroke-dasharray: 1 2; }
+.chart-series-6 { stroke: var(--color-chart-6); fill: var(--color-chart-6); stroke-dasharray: 4 2 1 2; }

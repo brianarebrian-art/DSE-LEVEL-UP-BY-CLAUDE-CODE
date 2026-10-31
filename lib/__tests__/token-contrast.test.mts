@@ -105,28 +105,29 @@ function contrast(fg: string, bg: string): number {
 // 來源：2026-09-11 localhost:3001 /dashboard，getComputedStyle(documentElement)
 // 逐個 --color-* 讀出。呢啲唔係從 CSS 抄落嚟嘅 —— 係瀏覽器行完成個串聯之後
 // 嘅結果。解析器同佢對得上，先代表下面嘅比值講緊真實畫面。
-// Clear System（2026-10-30 UI reset）。錨對住 CLEAR-SYSTEM-WIN（globals.css 檔尾）。
+// Morandi System（2026-10-31）。錨對住 MORANDI-WIN（globals.css 檔尾）。
+// Light accent = #4A656C（#7C9AA6 同色相壓深至 AA）；Dark = #8AA6A1 + 深 on-accent。
 const MEASURED = {
   light: {
-    surface: '#F2F2F7', 'surface-raised': '#FFFFFF', 'surface-sunken': '#E5E5EA',
-    ink: '#1C1C1E', 'ink-soft': '#3A3A3C', 'ink-muted': '#636366',
-    accent: '#0055AA', 'accent-strong': '#0071E3', 'on-accent': '#FFFFFF',
+    surface: '#F4F0EA', 'surface-raised': '#FFFDF9', 'surface-sunken': '#F0EBE3',
+    ink: '#2C2A29', 'ink-soft': '#3D3A38', 'ink-muted': '#69635F',
+    accent: '#4A656C', 'accent-strong': '#4A656C', 'on-accent': '#FFFFFF',
   },
   cyber: {
-    surface: '#000000', 'surface-raised': '#1C1C1E', 'surface-sunken': '#2C2C2E',
-    ink: '#F5F5F7', 'ink-soft': '#EBEBF5', 'ink-muted': '#98989D',
-    accent: '#409CFF', 'accent-strong': '#0071E3', 'on-accent': '#FFFFFF',
+    surface: '#1A1917', 'surface-raised': '#252422', 'surface-sunken': '#2F2E2C',
+    ink: '#F0E8DC', 'ink-soft': '#C1BAB0', 'ink-muted': '#A8A095',
+    accent: '#8AA6A1', 'accent-strong': '#8AA6A1', 'on-accent': '#1A1917',
   },
 } as const
 
-test('① 解析器重現 Clear System token 值（CLEAR-SYSTEM-WIN）', () => {
+test('① 解析器重現 Morandi token 值（MORANDI-WIN）', () => {
   for (const [theme, raw] of [['light', LIGHT_RAW], ['cyber', CYBER_RAW]] as const) {
     for (const [short, want] of Object.entries(MEASURED[theme])) {
       assert.equal(
         tok(raw, short), want,
         `${theme} --color-${short}：解析得 ${tok(raw, short)}，錨係 ${want}。\n` +
         `兩者唔同代表解析器行錯 CSS 串聯（最常見：抓咗 @theme 而唔係後面覆寫嘅 :root），\n` +
-        `或者 Clear System 真係改咗值 —— 改完要同步更新 MEASURED。`,
+        `或者 Morandi 真係改咗值 —— 改完要同步更新 MEASURED。`,
       )
     }
   }

@@ -7,7 +7,7 @@ import { BookOpen, TrendingUp, Bookmark, UserRound } from 'lucide-react'
 import { useT, useLocale } from '@/lib/i18n'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 
-/** Clear System: four tabs — same labels as desktop rail. */
+/** Morandi shell: four tabs — same labels as desktop rail. */
 export default function BottomNav() {
   const pathname = usePathname()
   const t = useT()

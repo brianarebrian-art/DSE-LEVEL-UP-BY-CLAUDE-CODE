@@ -5,7 +5,7 @@ import { useTheme } from '@/components/ThemeProvider'
 import { useLocale } from '@/lib/i18n'
 import type { ThemePref } from '@/lib/theme'
 
-// 主題切換：自動（跟香港日出日落）／淺色／深色（Clear System）。
+// 主題切換：自動（跟香港日出日落）／淺色／深色（Morandi）。
 // 三段式 —— 揀咗淺或深就固定；想交返畀日照就撳「自動」。
 
 const fmt = (h: number) =>

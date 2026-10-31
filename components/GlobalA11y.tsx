@@ -20,6 +20,19 @@ export const LETTER_SPACING_KEY = 'dse_letter_spacing'
  *  而憲章 §16.E 執行第 1 點寫明每個上雲 key 要創辦人書面批准。主題（dse-theme）
  *  本身都係純本機，呢個跟返佢。 */
 export const FOCUS_LIGHT_KEY = 'dse_focus_light'
+/** Increase Contrast（data-contrast=more）。同主題一樣純本機，唔上雲。 */
+export const CONTRAST_MORE_KEY = 'dse_contrast_more'
+
+export function applyContrastMore(on: boolean) {
+  const root = document.documentElement
+  if (on) root.setAttribute('data-contrast', 'more')
+  else root.removeAttribute('data-contrast')
+  try {
+    localStorage.setItem(CONTRAST_MORE_KEY, on ? '1' : '0')
+  } catch {
+    /* ignore */
+  }
+}
 
 export function applyFontSize(px: number) {
   const v = Math.min(24, Math.max(12, px))
@@ -74,6 +87,10 @@ export default function GlobalA11y() {
       // 遲一格畫面，學生就會見到成版嘢全亮咗一閃再淡落去 —— 對一個【正正因為
       // 周邊太嘈先開呢個模式】嘅人嚟講，嗰一閃就係佢想避開嗰樣嘢。
       if (localStorage.getItem(FOCUS_LIGHT_KEY) === '1') document.documentElement.classList.add('focus-light')
+      // Increase Contrast：開機即套用，避免首幀用咗普通對比再跳。
+      if (localStorage.getItem(CONTRAST_MORE_KEY) === '1') {
+        document.documentElement.setAttribute('data-contrast', 'more')
+      }
       // B1: 開機套用已存嘅行距／字間距（同字級一樣，只喺有偏好時先郁）
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
       const ls = localStorage.getItem(LETTER_SPACING_KEY) as LetterSpacing | null
