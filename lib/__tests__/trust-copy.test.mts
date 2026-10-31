@@ -19,8 +19,9 @@ test('the maker line is gone in both languages', () => {
 })
 
 test('the trust copy states curriculum and review status, and says first pass', () => {
-  assert.match(dict, /trust1: '✓ 課題初步對照 2027 年課程指引',/)
-  assert.match(dict, /trust1: '✓ Topics checked against the 2027 curriculum guides \(first pass\)',/)
+  // 2026-10-31：emoji／✓ 標記已禁；trust 文案用純文字。
+  assert.match(dict, /trust1: ' 課題初步對照 2027 年課程指引',/)
+  assert.match(dict, /trust1: ' Topics checked against the 2027 curriculum guides \(first pass\)',/)
   // 2026-10-02 founder decision (charter §12.1 constraint 1): the "not reviewed by hand"
   // half-sentence is gone; the copy still says the questions are machine-checked.
   assert.match(dict, /tagline2: '課題初步對照 2027 年文憑試課程指引；題目經自動檢查上線。',/)
@@ -28,8 +29,12 @@ test('the trust copy states curriculum and review status, and says first pass', 
   // withdrawn total is CONTENT_STATS.withdrawn. WITHDRAWN_FOR_FAULT is only the fault subset.
   assert.match(home, /題目經自動檢查上線，未經註冊教師審定。練習中 \$\{CONTENT_STATS\.published\.toLocaleString\(\)\} 條，已收起 \$\{CONTENT_STATS\.withdrawn\.toLocaleString\(\)\} 條/)
   assert.match(home, /其中 \$\{WITHDRAWN_FOR_FAULT\.toLocaleString\(\)\} 條係發現有錯/)
-  // prefetch={false} may sit between href and className (PERF-HOME-PREFETCH).
-  assert.match(home, /<Link href="\/transparency"[^>]*className="inline-flex min-h-11 /, '44px target')
+  // Link 可跨行；prefetch={false} 可夾喺 href 同 className 之間。
+  assert.match(
+    home,
+    /<Link[\s\S]*?href="\/transparency"[\s\S]*?className="inline-flex min-h-11 /,
+    '44px target',
+  )
 })
 
 test('nothing presents the questions as past papers', () => {

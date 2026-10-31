@@ -155,8 +155,8 @@ test('Supabase Auth 會寫 profiles.email —— 私隱頁必須 storesEmail=tru
   assert.match(shell, /storesEmail=\{true\}/, 'Google／profiles 存電郵時必須 storesEmail=true')
   const page = fs.readFileSync(PAGE, 'utf8')
   assert.match(page, /storesEmail\s*\?/, 'PrivacyClient 要按 storesEmail 分支')
-  // 只容許：profiles upsert 嘅 email、以及內部審題人／版主欄。
-  const ALLOWED = /reviewer_email|moderator_email|profiles|display_name|avatar_url/
+  // 只容許：profiles upsert 嘅 email、內部審題人／版主欄、以及 Founder OS 審計 actor。
+  const ALLOWED = /reviewer_email|moderator_email|actor_email|founder_audit|profiles|display_name|avatar_url/
   const bad: string[] = []
   for (const f of sources) {
     const src = fs.readFileSync(f, 'utf8')
@@ -165,6 +165,8 @@ test('Supabase Auth 會寫 profiles.email —— 私隱頁必須 storesEmail=tru
       if (/\bemail\b/.test(payload) && !ALLOWED.test(payload) && !ALLOWED.test(f)) {
         // profiles upsert in auth callback is expected when storesEmail=true
         if (f.includes('auth/callback') && /email:\s*user\.email/.test(payload)) continue
+        // Founder OS 審計寫創辦人電郵（唔係學生）—— 檔名／欄位已標 actor_email。
+        if (f.includes('lib/founder/audit') && /actor_email/.test(payload)) continue
         bad.push(`${f} → ${payload.replace(/\s+/g, ' ').slice(0, 80)}`)
       }
     }

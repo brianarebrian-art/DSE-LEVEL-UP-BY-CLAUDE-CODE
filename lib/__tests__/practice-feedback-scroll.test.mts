@@ -50,11 +50,12 @@ test('the session scrolls to the feedback after an answer, and respects reduced 
 })
 
 test('the result is announced from a live region that exists before the answer', () => {
-  const at = session.indexOf('aria-live="polite"')
-  assert.ok(at > 0)
+  // Loading 狀態亦有 aria-live；答題結果必須係常駐嘅 sr-only 區。
+  const at = session.indexOf('className="sr-only" aria-live="polite"')
+  assert.ok(at > 0, 'missing sr-only polite live region for answer result')
   // The region must not sit inside {answerState !== null && …}, or it would be
   // inserted together with its text and screen readers would skip it.
-  const before = session.slice(session.lastIndexOf('{/*', at), at)
+  const before = session.slice(Math.max(0, at - 200), at)
   assert.doesNotMatch(before, /answerState !== null &&/)
-  assert.match(session.slice(at, at + 400), /answerState === null\s*\?\s*''/)
+  assert.match(session.slice(at, at + 500), /answerState === null\s*\?\s*['"]{2}/)
 })
