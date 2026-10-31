@@ -4,15 +4,17 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { readTimerPref, writeTimerHidden } from '@/lib/timerPreference'
 import { readSyncConsent, setSyncConsent, SETTINGS_SYNC_EVENT } from '@/lib/settingsSyncConsent'
 import Image from 'next/image'
-import { AlignJustify, Clock, Cloud, Lightbulb, Minus, MoveHorizontal, Plus, Ruler, Type, Volume2, Wind, X } from 'lucide-react'
+import { AlignJustify, Clock, Cloud, Contrast, Lightbulb, Minus, MoveHorizontal, Plus, Ruler, Type, Volume2, Wind, X } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
 import OfflineBadge from '@/components/OfflineBadge'
 // 第 1 週 · 引擎一：答對輕柔提示音開關（預設關閉）
 import { ANSWER_SOUND_KEY, isAnswerSoundOn, playCorrectChime } from '@/lib/answerChime'
 import { QUIET_KEY } from '@/lib/quietMode'
 import {
+  applyContrastMore,
   applyFontSize,
   applyTextSpacing,
+  CONTRAST_MORE_KEY,
   FONT_KEY,
   LINE_HEIGHT_KEY,
   LETTER_SPACING_KEY,
@@ -126,6 +128,7 @@ export default function A11yPanel() {
   const [size, setSize] = useState(16)
   const [easy, setEasy] = useState(false)
   const [focusLight, setFocusLight] = useState(false)
+  const [contrastMore, setContrastMore] = useState(false)
   const [hideTimer, setHideTimer] = useState(false)
   // UX audit D1 (b+): settings sync is opt-in for new accounts (lib/settingsSyncConsent.ts).
   const [syncOn, setSyncOn] = useState(false)
@@ -152,6 +155,7 @@ export default function A11yPanel() {
       setSound(isAnswerSoundOn())
       setNoMotion(localStorage.getItem(NO_MOTION_KEY) === '1')
       setFocusLight(localStorage.getItem(FOCUS_LIGHT_KEY) === '1')
+      setContrastMore(localStorage.getItem(CONTRAST_MORE_KEY) === '1')
       const r = JSON.parse(localStorage.getItem(RULER_KEY) ?? 'null')
       setRuler(!!r?.on)
       const lh = Number(localStorage.getItem(LINE_HEIGHT_KEY))
@@ -290,6 +294,14 @@ export default function A11yPanel() {
     // 而且頁內嗰個 Shift+F 同呢個掣會保持同一個狀態。
     window.dispatchEvent(new Event('dse-a11y'))
   }, [focusLight])
+
+  // Increase Contrast：套 data-contrast=more，加深墨同 accent（見 tokens-clear.css）。
+  const toggleContrastMore = useCallback(() => {
+    const next = !contrastMore
+    setContrastMore(next)
+    applyContrastMore(next)
+    window.dispatchEvent(new Event('dse-a11y'))
+  }, [contrastMore])
 
   // 一鍵舒適模式：三項支援（易讀字體＋閱讀尺＋隱藏計時器）一掣齊開／齊關。
   // 無痕設計（Emma/UDL）：UI 只描述功能，唔出任何診斷標籤字眼。
@@ -675,6 +687,36 @@ export default function A11yPanel() {
               {focusLight ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
             </span>
  </button>
+
+          {/* Increase Contrast — Morandi IC tokens（data-contrast=more） */}
+          <button
+            onClick={toggleContrastMore}
+            aria-pressed={contrastMore}
+            className={`w-full min-h-11 mt-2.5 flex items-center justify-between rounded-xl border px-4 py-2 transition-colors ${
+              contrastMore
+                ? 'bg-surface-sunken border-gold/40 text-gold'
+                : 'bg-surface-raised border-line-strong text-ink-soft hover:bg-surface-sunken'
+            }`}
+          >
+            <span className="text-left flex items-center gap-2">
+              <Contrast size={14} className="shrink-0" aria-hidden />
+              <span>
+                <span className="block text-sm">{en ? 'Increase contrast' : '提高對比'}</span>
+                <span className="block text-[11px] text-ink-muted">
+                  {en
+                    ? 'Darker text and stronger accent · works with light or dark'
+                    : '加深文字同主色 · 淺色／深色主題都適用'}
+                </span>
+              </span>
+            </span>
+            <span
+              className={`text-xs font-bold px-2 py-1 rounded-full shrink-0 ${
+                contrastMore ? 'bg-gold-strong text-on-accent' : 'bg-surface-sunken text-ink-soft'
+              }`}
+            >
+              {contrastMore ? (en ? 'ON' : '開') : en ? 'OFF' : '關'}
+            </span>
+          </button>
 
           {/* v8 UI1：溫和同步狀態。放喺設定區底部，唔會喺做題途中彈出打斷心流。 */}
           <div className="mt-2">

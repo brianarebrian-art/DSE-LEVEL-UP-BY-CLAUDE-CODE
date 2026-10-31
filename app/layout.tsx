@@ -16,7 +16,7 @@ import ReadingRuler from '@/components/ReadingRuler'
 import { serializeJsonLd } from '@/lib/structuredData'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-// Clear System：全站 Noto Sans TC（中英一體）。next/font 自行託管。
+// Morandi System：全站 Noto Sans TC（中英一體）。next/font 自行託管。
 const noto = Noto_Sans_TC({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -179,7 +179,7 @@ export default async function RootLayout({
         <script
           nonce={nonce}
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var k='dse-theme',p=localStorage.getItem(k);if(p!=='light'&&p!=='cyber'&&p!=='auto')p='auto';var t=p;if(p==='auto'){var o=new Date(),hk=new Date(o.getTime()+(480+o.getTimezoneOffset())*6e4),s=Date.UTC(hk.getUTCFullYear(),0,0),n=Math.floor((hk.getTime()-s)/864e5),R=Math.PI/180,d=-23.44*Math.cos(R*(360/365)*(n+10)),b=R*(360/364)*(n-81),e=9.87*Math.sin(2*b)-7.53*Math.cos(b)-1.5*Math.sin(b),c=-Math.tan(R*22.3019)*Math.tan(R*d),w=c>1?0:c<-1?180:Math.acos(c)/R,m=12-e/60+(120-114.1742)/15,h=hk.getHours()+hk.getMinutes()/60;t=(h>=m-w/15&&h<m+w/15)?'light':'cyber'}document.documentElement.setAttribute('data-theme',t)}catch(_){document.documentElement.setAttribute('data-theme','light')}})()`,
+            __html: `(function(){try{var k='dse-theme',p=localStorage.getItem(k);if(p!=='light'&&p!=='cyber'&&p!=='auto')p='auto';var t=p;if(p==='auto'){var o=new Date(),hk=new Date(o.getTime()+(480+o.getTimezoneOffset())*6e4),s=Date.UTC(hk.getUTCFullYear(),0,0),n=Math.floor((hk.getTime()-s)/864e5),R=Math.PI/180,d=-23.44*Math.cos(R*(360/365)*(n+10)),b=R*(360/364)*(n-81),e=9.87*Math.sin(2*b)-7.53*Math.cos(b)-1.5*Math.sin(b),c=-Math.tan(R*22.3019)*Math.tan(R*d),w=c>1?0:c<-1?180:Math.acos(c)/R,m=12-e/60+(120-114.1742)/15,h=hk.getHours()+hk.getMinutes()/60;t=(h>=m-w/15&&h<m+w/15)?'light':'cyber'}document.documentElement.setAttribute('data-theme',t);if(localStorage.getItem('dse_contrast_more')==='1')document.documentElement.setAttribute('data-contrast','more')}catch(_){document.documentElement.setAttribute('data-theme','light')}})()`,
           }}
         />
         {/* 知識圖譜。放於 <body> 起首，令爬蟲毋須等待水合即可讀取。 */}

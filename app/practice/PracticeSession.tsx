@@ -1043,10 +1043,11 @@ export default function PracticeSession({
 
               if (answerState !== null) {
                 if (isCorrectOpt) {
-                  style = 'border-accent bg-accent/[0.10] cursor-default shadow-sm'
+                  // 正確：success 莫蘭迪灰綠 + icon／「答案」文字，唔單靠色。
+                  style = 'border-success bg-success/[0.10] cursor-default shadow-sm'
                 } else if (isSelectedWrong) {
-                  // 答錯用粘土／琥珀邊，加上文字「未揀中」，不單靠顏色，亦不用玫紅。
-                  style = 'border-gold bg-gold/[0.08] cursor-default shadow-sm'
+                  // 未揀中：warning 莫蘭迪陶土 + icon／文字，唔用高飽和紅。
+                  style = 'border-warning bg-warning/[0.08] cursor-default shadow-sm'
                 } else {
                   style = 'border-line bg-surface-sunken cursor-default'
                 }
@@ -1077,13 +1078,13 @@ export default function PracticeSession({
  </span>
                   {answerState !== null && isCorrectOpt && (
                     <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
- <CheckCircle size={18} aria-hidden className="text-accent" />
+ <CheckCircle size={18} aria-hidden className="text-success" />
                       {tr('答案', 'Answer')}
                     </span>
                   )}
                   {isSelectedWrong && (
                     <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
- <Lightbulb size={18} aria-hidden className="text-gold" />
+ <Lightbulb size={18} aria-hidden className="text-warning" />
                       {tr('未揀中', 'Not chosen')}
                     </span>
  )}
@@ -1129,10 +1130,10 @@ export default function PracticeSession({
  <>
                 {answerState.isCorrect ? (
                   /* Correct — calm acknowledgement, no fanfare. */
-                  <div className="practice-explain rounded-2xl p-5 mb-4 border bg-accent/[0.10] border-accent/30 shadow-sm">
+                  <div className="practice-explain rounded-2xl p-5 mb-4 border bg-success/[0.10] border-success/30 shadow-sm">
  <div className="flex items-center gap-2 mb-2">
- <CheckCircle size={18} aria-hidden className="text-accent" />
- <span className="text-accent font-medium">{t.practice.correct}</span>
+ <CheckCircle size={18} aria-hidden className="text-success" />
+ <span className="text-success font-medium">{t.practice.correct}</span>
  </div>
                     {/* #54 逐步拆解：先出首句（或真步驟第一步），逼多諗一步先揭全部。
                         學生可一次過選擇「以後直接睇晒」，之後唔會再問。 */}
@@ -1157,17 +1158,17 @@ export default function PracticeSession({
  </div>
                 ) : (
                   /* Wrong → the solution shows straight away (2026-10-02, charter §7.2). */
-                  <div className="practice-explain practice-miss rounded-2xl p-5 mb-4 border shadow-sm">
+                  <div className="practice-explain practice-miss rounded-2xl p-5 mb-4 border border-warning/30 bg-warning/[0.06] shadow-sm">
  <div className="flex items-center gap-2 mb-3">
- <Brain size={18} aria-hidden className="text-gold" />
- <span className="text-gold font-medium">{tr('未揀中', 'Not the one chosen')}</span>
+ <Brain size={18} aria-hidden className="text-warning" />
+ <span className="text-warning font-medium">{tr('未揀中', 'Not the one chosen')}</span>
  </div>
- <div className="border-t border-gold/15 pt-3">
+ <div className="border-t border-warning/15 pt-3">
  <StagedExplanation
                         text={tr(currentQ.explanation, currentQ.explanationEn)}
                         steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         label={
-                          <span className="text-gold text-xs font-medium mr-1">
+                          <span className="text-warning text-xs font-medium mr-1">
                             💡 {tr('正解思路：', 'Reasoning: ')}
                           </span>
  }

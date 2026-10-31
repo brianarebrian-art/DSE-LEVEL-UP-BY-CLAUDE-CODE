@@ -51,11 +51,11 @@ export default function HomePage() {
       <CountdownBanner />
       <InstallHint />
 
-      {/* ── HERO ── Clear System: brand-first, one composition */}
+      {/* ── HERO ── Morandi: brand-first, warm wash, one composition */}
       <section className="relative overflow-hidden px-4 pb-12 pt-8 sm:pb-16 sm:pt-12">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,color-mix(in_srgb,var(--color-accent)_18%,transparent),transparent_55%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,color-mix(in_srgb,var(--color-accent)_14%,transparent),transparent_55%),radial-gradient(ellipse_60%_40%_at_90%_20%,color-mix(in_srgb,var(--color-ml-mist)_10%,transparent),transparent_50%)]"
         />
         <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
           <div className="text-center md:text-left">

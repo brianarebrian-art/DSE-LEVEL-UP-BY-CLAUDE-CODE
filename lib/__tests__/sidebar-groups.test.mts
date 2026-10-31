@@ -1,4 +1,4 @@
-// Clear System sidebar: four primary tabs match BottomNav; More tools follow.
+// Morandi shell sidebar: four primary tabs match BottomNav; More tools follow.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'

@@ -17,7 +17,7 @@ import {
 import { useT, useLocale } from '@/lib/i18n'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
 
-/** Clear System shell: narrow left rail — four primary tabs match BottomNav. */
+/** Morandi shell: narrow left rail — four primary tabs match BottomNav. */
 const PRIMARY = [
   { href: '/subjects', key: 'practice' as const, Icon: BookOpen, exact: false },
   { href: '/dashboard', key: 'progress' as const, Icon: TrendingUp, exact: true },
