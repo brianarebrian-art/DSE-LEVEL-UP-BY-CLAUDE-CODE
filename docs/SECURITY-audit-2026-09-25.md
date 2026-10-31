@@ -1,5 +1,10 @@
 # 保安審計 —— 2026-09-25
 
+> ⚠️ **Phase 0（2026-10-31）過時橫額：** 本文仍有參考價值，但部分條目已唔反映現役棧。
+> **現役 Auth = Supabase Auth · Google OAuth**（Auth.js／Better Auth 已拆除，見 `docs/charter.md` §3）。
+> Body size 上限、CSP nonce、JSON-LD escape 等其後已修項目，以程式同較新文件為準。
+> 勿依本文重建 Better Auth／Auth.js。正式基線見 `docs/baseline-2026-10-31.md`。
+
 > **範圍：** 網站程式碼、依賴套件、Supabase 權限。**方法：** read-only 為主；
 > 兩項已修（見 §1），其餘列為待辦，按嚴重度排。
 > 所有結果都係實跑或實讀，每項附可以重跑嘅指令或 `file:line`。
