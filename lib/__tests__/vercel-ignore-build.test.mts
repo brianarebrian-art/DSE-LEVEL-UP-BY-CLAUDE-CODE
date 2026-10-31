@@ -33,8 +33,8 @@ test('shouldSkipDocsOnly only when every path is docs-only', () => {
 })
 
 test('changedPaths prefers origin/main...HEAD over tip-only commands', () => {
-  const calls = []
-  const exec = (cmd) => {
+  const calls: string[] = []
+  const exec = (cmd: string) => {
     calls.push(cmd)
     if (cmd.includes('origin/main...HEAD')) {
       return 'app/page.tsx\ndocs/note.md\n'
@@ -47,7 +47,7 @@ test('changedPaths prefers origin/main...HEAD over tip-only commands', () => {
 })
 
 test('without main refs, changedPaths unions shallow-root diffs (not tip only)', () => {
-  const exec = (cmd) => {
+  const exec = (cmd: string) => {
     if (cmd.includes('origin/main') || cmd === 'git diff --name-only main...HEAD') {
       throw new Error('missing main')
     }
@@ -72,7 +72,7 @@ test('without main refs, changedPaths unions shallow-root diffs (not tip only)',
 test('docs-only tip on top of app history must not skip (regression for Bugbot)', () => {
   // Simulate the buggy tip-only world: HEAD^ would return only docs.
   // Our shallow-root union still sees the earlier app path.
-  const exec = (cmd) => {
+  const exec = (cmd: string) => {
     if (cmd.includes('origin/main') || cmd.includes('main...HEAD')) throw new Error('no main')
     if (cmd === 'git rev-list --max-parents=0 HEAD') return 'shallowRoot\n'
     if (cmd === 'git diff --name-only shallowRoot HEAD') {
