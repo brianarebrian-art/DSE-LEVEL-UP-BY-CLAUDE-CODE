@@ -27,7 +27,8 @@ test('globals .fill-bar respects prefers-reduced-motion', () => {
   assert.ok(i > 0, '.fill-bar class missing')
   // Scope to the rule + the media block that immediately follows (not earlier reduce blocks).
   const slice = css.slice(i, i + 280)
-  assert.match(slice, /\.fill-bar\s*\{[^}]*animation:\s*fill-bar/s)
+  // No `s` (dotAll) flag: target is ES2017, and these patterns never use `.`.
+  assert.match(slice, /\.fill-bar\s*\{[^}]*animation:\s*fill-bar/)
   assert.match(slice, /prefers-reduced-motion:\s*reduce/)
-  assert.match(slice, /\.fill-bar\s*\{[^}]*animation:\s*none/s)
+  assert.match(slice, /\.fill-bar\s*\{[^}]*animation:\s*none/)
 })
