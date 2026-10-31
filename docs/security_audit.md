@@ -1,5 +1,10 @@
 # 安全審核記錄 — 2026-07-10（Eric / 資安）
 
+> ⚠️ **Phase 0（2026-10-31）過時橫額：** 下文仍寫 Auth.js v5／雙 backend／「客戶端零直連」。
+> **現役：** Supabase Auth Google；題庫允許 anon SELECT（憲章 §3.1）；Auth.js／Better Auth 已拆除。
+> 請改讀 `docs/charter.md`、`docs/SECURITY-audit-2026-09-25.md`（亦有過時橫額）、`docs/baseline-2026-10-31.md`。
+> **禁止**依本文重建 Auth.js。
+
 ## 現有防護（已上線並驗證）
 
 | 層面 | 措施 | 位置 |

@@ -31,8 +31,14 @@ function scrubMeta(meta: Record<string, unknown> | undefined): Record<string, un
   return out
 }
 
-/** 寫入審計事件。表未 migrate 時唔抛爆 caller，只記 safeLog。 */
-export async function writeFounderAudit(input: AuditInput): Promise<{ correlationId: string }> {
+/**
+ * 寫入審計事件。
+ * 表未 migrate（0029）或寫入失敗時：**唔抛爆 caller**，但回傳 `persisted: false`
+ * 並 safeLog —— 創辦人指揮中心會另以 schema probe 顯示警報（Phase 0）。
+ */
+export async function writeFounderAudit(
+  input: AuditInput,
+): Promise<{ correlationId: string; persisted: boolean }> {
   const correlationId = input.correlationId?.trim() || randomUUID()
   try {
     const supabase = getServiceSupabase()
@@ -48,10 +54,11 @@ export async function writeFounderAudit(input: AuditInput): Promise<{ correlatio
       meta: scrubMeta(input.meta),
     })
     if (error) throw error
+    return { correlationId, persisted: true }
   } catch (e) {
     safeLog('warn', 'founder audit write skipped/failed', e)
+    return { correlationId, persisted: false }
   }
-  return { correlationId }
 }
 
 export function newCorrelationId(): string {
