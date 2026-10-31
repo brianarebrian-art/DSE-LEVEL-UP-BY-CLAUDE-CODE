@@ -3,7 +3,8 @@ import Script from 'next/script'
 import { headers } from 'next/headers'
 import { Noto_Sans_TC } from 'next/font/google'
 import './globals.css'
-import 'katex/dist/katex.min.css'
+// KaTeX CSS 唔放根 layout —— 首頁／筆記等唔用數式嘅頁唔應多載 ~24KB。
+// 改由 components/MathText.tsx 按需引入（練習／題卡頁）。
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AppShell from '@/components/AppShell'
@@ -148,6 +149,9 @@ const jsonLd = {
 export const viewport: Viewport = {
   viewportFit: 'cover',
 }
+
+// 香港學生為主：函數同靜態資源優先喺 hkg1，降低 TTFB。
+export const preferredRegion = ['hkg1']
 
 export default async function RootLayout({
   children,

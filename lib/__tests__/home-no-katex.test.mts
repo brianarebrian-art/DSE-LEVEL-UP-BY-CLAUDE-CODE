@@ -12,6 +12,17 @@ test('the home page imports neither MathText nor katex', () => {
   assert.match(home, /<M>2x² \+ 3x − 5 = 0<\/M>/)
 })
 
+test('root layout does not globally load katex CSS', () => {
+  const layout = readFileSync('app/layout.tsx', 'utf8')
+  assert.doesNotMatch(layout, /katex\/dist\/katex\.min\.css/)
+  assert.match(layout, /preferredRegion/)
+})
+
+test('MathText loads katex CSS locally', () => {
+  const src = readFileSync('components/MathText.tsx', 'utf8')
+  assert.match(src, /katex\/dist\/katex\.min\.css/)
+})
+
 test('components the home page renders do not import KaTeX either', () => {
   const imports = [...home.matchAll(/import \w+ from '@\/components\/(\w+)'/g)].map((m) => m[1])
   assert.ok(imports.length > 3)
