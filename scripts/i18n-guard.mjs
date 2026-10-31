@@ -9,15 +9,20 @@
  * 用法：node scripts/i18n-guard.mjs
  * 退出碼：發現漏譯 = 1（可用作 CI／qa 閘）；乾淨 = 0。
  *
- * 偵測範圍：app/ + components/ 下所有 .tsx。會先剝走註解（大量中文註解係正常，唔算漏譯）。
+ * 偵測範圍：app/ + components/ 下所有 .tsx（略過 founder/：創辦人內部中文單語）。
+ * 會先剝走註解（大量中文註解係正常，唔算漏譯）。
  * 一行 CJK 若含以下任一翻譯訊號即當「已配對」而略過：
  *   en 三元、tr(、locale、? '…'、: '…'、'en'、t.（字典取值）。
+ * 同行含 i18n-exempt 亦略過（須寫喺 CJK 同一行；下一行 JSX 註解唔算）。
  * 已知限制：只捉「字面量」漏譯；由 data 傳入嘅中文變量（如 subject.short）需另行人手核。
  */
 import fs from 'node:fs'
 import path from 'node:path'
 
 const ROOTS = ['app', 'components']
+// Founder OS（app/founder、components/founder）係創辦人內部指揮台，中文單語設計，
+// 同 /admin 一樣唔跟學生端 locale；page-metadata 亦批量豁免 founder 子頁。唔當漏譯。
+const SKIP_PATH = /(^|[/\\])founder([/\\]|$)/
 // CJK 統一表意文字 + 擴展A + CJK標點（、。「」）+ 全形標點／字母（！？，：）
 const CJK = /[㐀-鿿　-〿！-｠￠-￮]/
 // 視窗（該行 + 前兩行）內若出現以下任一，代表 CJK 已同英文配對（跟 locale 切換），略過。
@@ -48,6 +53,7 @@ function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, e.name)
+    if (SKIP_PATH.test(p)) continue
     if (e.isDirectory()) {
       if (!/node_modules|__tests__|\.next/.test(p)) walk(p, out)
     } else if (/\.tsx$/.test(p)) {

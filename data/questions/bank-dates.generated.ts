@@ -43,8 +43,8 @@ export const BANK_UPDATED_AT: Record<string, { version: string; date: string }> 
     "date": "2026-10-09"
   },
   "ict": {
-    "version": "858717b5a1a19f0c",
-    "date": "2026-10-09"
+    "version": "2d7e827bdef14374",
+    "date": "2026-10-31"
   },
   "economics": {
     "version": "9b7f0314995579f5",

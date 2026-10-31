@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { BookOpen } from 'lucide-react'
 import { useT, useLocale } from '@/lib/i18n'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
+import OwlMark from '@/components/OwlMark'
 import { OFFICIAL_SOCIAL } from '@/lib/site'
 
 // Phase 2 Task 2（Kate/Leo 2026-07-18）：light-first 三層頁尾安全網（憲章 §10）。
@@ -30,7 +30,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 font-medium text-lg mb-3 text-ink">
-              <BookOpen size={20} className="text-accent" />
+              <OwlMark size={20} className="shrink-0" />
               <span>
                 DSE <span className="text-accent">Level Up</span>
               </span>

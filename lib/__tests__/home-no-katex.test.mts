@@ -8,8 +8,9 @@ import { readFileSync } from 'node:fs'
 const home = readFileSync('app/HomePageClient.tsx', 'utf8')
 
 test('the home page imports neither MathText nor katex', () => {
+  // Clear／Morandi 首頁已唔再放 demo 公式；閘只守「唔拉 KaTeX 入 landing」。
   assert.doesNotMatch(home, /from '@\/components\/MathText'|from 'katex'/)
-  assert.match(home, /<M>2x² \+ 3x − 5 = 0<\/M>/)
+  assert.doesNotMatch(home, /\bMathText\b|\bkatex\b/i)
 })
 
 test('root layout does not globally load katex CSS', () => {
