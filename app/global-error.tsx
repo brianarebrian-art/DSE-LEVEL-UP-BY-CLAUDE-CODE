@@ -63,6 +63,9 @@ export default function GlobalError({
               >
                 再試一次 · Try again{/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
               </button>
+              {/* global-error 要自己 render <html>/<body>，Router 可能已壞；
+                  用原生 <a> 做硬導航返主頁，唔用 next/link。 */}
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- catastrophic recovery: hard nav */}
               <a
                 href="/"
                 style={{
