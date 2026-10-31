@@ -166,7 +166,7 @@ export async function loadPlatformOverview(): Promise<PlatformOverview> {
       timeRange: '滾動 7 日',
       source: 'user_progress',
       sampleSize: null,
-      missingRule: 'Auth.js 無註冊日；只知首次練習',
+      missingRule: '唔將註冊當活躍；只知首次練習時間',
     }),
   }
   let practiceSessions30d: MetricValue = {
@@ -247,7 +247,7 @@ export async function loadPlatformOverview(): Promise<PlatformOverview> {
         timeRange: '滾動 7 日',
         source: 'user_progress',
         sampleSize: firstSeen.size,
-        missingRule: 'Auth.js 無註冊日；只知首次練習',
+        missingRule: '唔將註冊當活躍；只知首次練習時間',
       }),
     }
     practiceSessions30d = {
@@ -560,7 +560,7 @@ export async function loadPlatformOverview(): Promise<PlatformOverview> {
       },
       {
         metric: '註冊人數',
-        reason: 'Auth.js JWT strategy 唔寫用戶表；唔將註冊當活躍。',
+        reason: '唔將註冊當活躍：活躍只計已登入且有練習紀錄嘅用戶；Auth 帳戶數 ≠ 活躍。',
       },
       {
         metric: '官方 DSE 等級',
