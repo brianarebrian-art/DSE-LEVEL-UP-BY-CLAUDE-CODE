@@ -216,11 +216,11 @@ const systems: Question[] = [
   q(id('sys'), T.systems, FW.concept, 'easy', 2021, 2,
     ['以下哪項是「揮發性」記憶體？', 'Which of the following is volatile memory?'],
     [opt('RAM', 'RAM'), opt('硬碟', 'Hard disk'), opt('ROM', 'ROM'), opt('USB 隨身碟', 'A USB flash drive')],
-    // 2026-10-30：錯題回報 explain（question_reports id=2）。答案鍵仍係 RAM（正確）；
-    // 舊解析把 ROM／硬碟／USB 一律叫「儲存」，同「記憶體」術語混亂，學生會覺得同答案對唔上。
-    // 改為：先定義揮發性 → 點解選 RAM → 逐項說明為何其餘唔啱。
+    // 2026-10-30：錯題回報 explain（question_reports id=2）。答案鍵仍是 RAM（正確）；
+    // 舊解析把 ROM／硬碟／USB 一律叫「儲存」，與「記憶體」術語混亂，學生會覺得與答案對不上。
+    // 改為：先定義揮發性 → 為何選 RAM → 逐項說明其餘為何不對。
     [
-      '「揮發性」指斷電後資料會消失。RAM 係主記憶體，斷電即失，故屬揮發性記憶體。ROM 雖係記憶體，但斷電仍保留（非揮發）。硬碟同 USB 隨身碟屬次級儲存裝置，同樣非揮發，而且唔屬主記憶體。',
+      '「揮發性」指斷電後資料會消失。RAM 是主記憶體，斷電即失，故屬揮發性記憶體。ROM 雖是記憶體，但斷電仍保留（非揮發）。硬碟與 USB 隨身碟屬次級儲存裝置，同樣非揮發，而且不屬主記憶體。',
       '“Volatile” means data is lost when power is off. RAM is main memory and loses its contents on power-off, so it is volatile memory. ROM is memory but non-volatile (it keeps data without power). A hard disk and a USB flash drive are secondary storage — also non-volatile, and not main memory.',
     ]),
   q(id('sys'), T.systems, FW.apply, 'medium', 2020, 2,
