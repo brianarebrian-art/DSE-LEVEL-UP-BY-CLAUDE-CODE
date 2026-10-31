@@ -11,12 +11,25 @@ import { fileURLToPath } from 'node:url'
 const {
   founderFromUser,
   FOUNDER_EMAIL,
+  FOUNDER_EMAILS,
   founderBindingInstructions,
   googleSubFromAuthUser,
+  parseFounderGoogleSubs,
+  isFounderEmail,
 } = await import('../auth/founderIdentity.ts')
 
 const BOUND_SUB = 'google-sub-founder-bound-001'
+const BOUND_SUB_2 = 'google-sub-founder-bound-002'
+const SECOND_EMAIL = 'yunawong0128@gmail.com'
 const opts = { requireVerifiedEmail: true } as const
+
+test('FOUNDER_EMAILS 包含主聯絡同第二創辦人電郵', () => {
+  assert.ok(FOUNDER_EMAILS.includes(FOUNDER_EMAIL))
+  assert.ok(FOUNDER_EMAILS.includes(SECOND_EMAIL))
+  assert.equal(isFounderEmail(FOUNDER_EMAIL), true)
+  assert.equal(isFounderEmail(SECOND_EMAIL), true)
+  assert.equal(isFounderEmail('student@gmail.com'), false)
+})
 
 test('正確電郵 + 正確 sub + 已驗證 → 放行', () => {
   const r = founderFromUser(
@@ -28,6 +41,19 @@ test('正確電郵 + 正確 sub + 已驗證 → 放行', () => {
   if (r.ok) {
     assert.equal(r.identity.email, FOUNDER_EMAIL)
     assert.equal(r.identity.googleSub, BOUND_SUB)
+  }
+})
+
+test('第二允許電郵 + 清單內 sub → 放行', () => {
+  const r = founderFromUser(
+    { email: SECOND_EMAIL, name: 'Yuna', emailVerified: true, googleSub: BOUND_SUB_2 },
+    `${BOUND_SUB},${BOUND_SUB_2}`,
+    opts,
+  )
+  assert.equal(r.ok, true)
+  if (r.ok) {
+    assert.equal(r.identity.email, SECOND_EMAIL)
+    assert.equal(r.identity.googleSub, BOUND_SUB_2)
   }
 })
 
@@ -115,6 +141,14 @@ test('缺少創辦人 sub 設定 → 拒絕（唔自動認領）', () => {
   if (!r2.ok) assert.equal(r2.reason, 'founder_sub_unset')
 })
 
+test('parseFounderGoogleSubs：逗號／空白分隔，去重', () => {
+  assert.deepEqual(parseFounderGoogleSubs(`${BOUND_SUB}, ${BOUND_SUB_2}  ${BOUND_SUB}`), [
+    BOUND_SUB,
+    BOUND_SUB_2,
+  ])
+  assert.deepEqual(parseFounderGoogleSubs(null), [])
+})
+
 test('未登入／缺電郵／缺 Google sub → 拒絕', () => {
   assert.equal(founderFromUser(null, BOUND_SUB, opts).ok, false)
   assert.equal(founderFromUser({ name: 'x', emailVerified: true, googleSub: BOUND_SUB }, BOUND_SUB, opts).ok, false)
@@ -136,10 +170,13 @@ test('前端可編輯欄位唔存在於判斷介面（無 role／isFounder）', 
   assert.doesNotMatch(src, /NEXT_PUBLIC_/)
 })
 
-test('綁定說明唔洩露 sub 值，並指明唯一電郵', () => {
+test('綁定說明唔洩露 sub 值同允許電郵', () => {
   const text = founderBindingInstructions()
   assert.match(text, /FOUNDER_GOOGLE_SUB/)
-  assert.match(text, new RegExp(FOUNDER_EMAIL.replace('.', '\\.')))
+  assert.doesNotMatch(text, /唯一允許電郵/)
+  for (const email of FOUNDER_EMAILS) {
+    assert.doesNotMatch(text, new RegExp(email.replace(/\./g, '\\.')))
+  }
   assert.doesNotMatch(text, /google-sub-/)
   assert.match(text, /2FA|Passkey/)
 })
