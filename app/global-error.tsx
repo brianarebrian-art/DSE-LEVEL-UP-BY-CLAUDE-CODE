@@ -41,12 +41,10 @@ export default function GlobalError({
         >
           <div style={{ maxWidth: '22rem' }}>
             <h1 style={{ fontSize: '1.35rem', fontWeight: 600, margin: '0 0 0.75rem' }}>
-              暫時載唔到呢頁 · Something went wrong
-              {/* i18n-exempt: 全域錯誤邊界喺 LanguageProvider 之外，讀唔到 locale，故雙語靜態 */}
+              暫時載唔到呢頁 · Something went wrong{/* i18n-exempt: 全域錯誤邊界喺 LanguageProvider 之外，讀唔到 locale，故雙語靜態 */}
             </h1>
             <p style={{ color: '#6B6560', margin: '0 0 1.5rem', fontSize: '0.875rem', lineHeight: 1.55 }}>
-              問題已記錄。你可以再試一次，或者返主頁繼續。 We’ve logged it — try again, or go home.
-              {/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
+              問題已記錄。你可以再試一次，或者返主頁繼續。 We’ve logged it — try again, or go home.{/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
               <button
@@ -63,8 +61,7 @@ export default function GlobalError({
                   minHeight: '2.75rem',
                 }}
               >
-                再試一次 · Try again
-                {/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
+                再試一次 · Try again{/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
               </button>
               <a
                 href="/"
@@ -82,8 +79,7 @@ export default function GlobalError({
                   minHeight: '2.75rem',
                 }}
               >
-                返主頁 · Home
-                {/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
+                返主頁 · Home{/* i18n-exempt: 錯誤邊界喺 Provider 外，雙語靜態 */}
               </a>
             </div>
           </div>

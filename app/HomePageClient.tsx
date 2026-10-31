@@ -13,6 +13,7 @@ import { useLocale } from '@/lib/i18n'
 import { getCurrentSeason } from '@/utils/season'
 import { getSeasonalHero } from '@/data/heroContent'
 import Mascot from '@/components/Mascot'
+import BlindTestQuestion from '@/components/BlindTestQuestion'
 
 const activeSubjects = getActiveSubjects()
 const quickSubjects = quickStartSubjects()
@@ -181,6 +182,10 @@ export default function HomePage() {
             {en ? 'Sources & checks' : '題庫來源同核對'}
             <ArrowRight size={14} aria-hidden />
           </Link>
+        </div>
+        {/* 示範盲測卡放喺首屏以下，唔搶 hero；接線符合憲章第 4 條。 */}
+        <div className="mx-auto mt-10 max-w-xl">
+          <BlindTestQuestion />
         </div>
       </section>
 

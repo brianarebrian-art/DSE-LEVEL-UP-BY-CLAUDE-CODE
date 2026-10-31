@@ -2,6 +2,7 @@ import 'server-only'
 import { getActiveSubjects, subjects } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
 import type { AnyQuestion } from '@/data/questions/types'
+import { stripEmoji } from '@/lib/stripEmoji'
 
 export type FounderQuestionRow = {
   id: string
@@ -35,7 +36,7 @@ export type QuestionListResult = {
 }
 
 function preview(text: string, n = 80): string {
-  const t = text.replace(/\s+/g, ' ').trim()
+  const t = stripEmoji(text).replace(/\s+/g, ' ').trim()
   return t.length <= n ? t : `${t.slice(0, n)}…`
 }
 

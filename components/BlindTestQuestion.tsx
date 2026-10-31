@@ -87,7 +87,7 @@ export default function BlindTestQuestion() {
  <div className="bg-paper border border-paper-warn/40 rounded-2xl p-5 sm:p-6 shadow-lg">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
- <span className="text-paper-warn font-extrabold tracking-wide text-sm uppercase">🩻 {tr('盲測黑題', 'Blind Test')}</span>
+ <span className="text-paper-warn font-extrabold tracking-wide text-sm uppercase">{tr('盲測黑題', 'Blind Test')}</span>
         {/* 2026-10-04（審計 #9，創辦人回覆 11a）：講明係示範，唔係練習題。 */}
         <span className="rounded-full border border-paper-ink/20 px-2 py-0.5 text-xs text-paper-muted">{tr('示範題，唔計分', 'Demo — not scored')}</span>
  </div>
