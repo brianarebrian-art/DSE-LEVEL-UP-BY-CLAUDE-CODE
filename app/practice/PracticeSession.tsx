@@ -33,6 +33,7 @@ import { predictGrade } from '@/lib/grading'
 import { getPracticeCutoffs } from '@/data/cutoffs'
 import { recordAttempt } from '@/lib/progress'
 import { cameFromResult, sendPracticeCount } from '@/lib/practiceCount'
+import { emitLearningEvent } from '@/lib/learningEvents'
 import { getSeen, recordSeen } from '@/lib/seen'
 import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicStats'
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
@@ -254,7 +255,8 @@ export default function PracticeSession({
   /** 「下一題想要」預設摺疊，避免同主 CTA 搶注意力。 */
   const [wishOpen, setWishOpen] = useState(false)
   const [startTime, setStartTime] = useState(() => Date.now())
- const [current, setCurrent] = useState(0)
+  const sessionId = `${subjectId}:${startTime}`
+  const [current, setCurrent] = useState(0)
  const [answers, setAnswers] = useState<AnswerState[]>([])
   // v3.0 F1「多裝置續做」: an unfinished run for this exact subject/topic/mode — from this
   // device, or pulled from another one via the synced snapshot. Offered as a card the
@@ -487,6 +489,13 @@ export default function PracticeSession({
       const topicResults = buildTopicResults(questions, newAnswers)
       const difficultyResults = buildDifficultyResults(questions, newAnswers)
       const elapsed = Math.floor((Date.now() - startTime) / 1000)
+      emitLearningEvent({
+        name: 'practice_session_completed',
+        occurredAt: Date.now(),
+        subjectId,
+        sessionId,
+        properties: { score, total: totalQ, elapsed, topicFilter: topicFilter ?? null },
+      })
 
       // C6「只做 1 題」收結：一題係出唔到有意義嘅等級嘅，硬計出嚟就係
       // 憑一個數據點貼標籤（違憲章 #2 零標籤傷害）。所以呢條路：
@@ -618,7 +627,7 @@ export default function PracticeSession({
   // 答完任何一題即可推進。
   const canProceed = answerState !== null
   const sessionRef = useRef<HTMLDivElement>(null)
-  // Wave 2：答完可「再試一次」——只清本畫面，唔撤銷已記嘅首次作答；再揀唔重複記 log。
+  // Wave 2：答完可「再試一次」——只清本畫面，唔撤銷已記��首次作答；再揀唔重複記 log。
 
   const retryCurrent = useCallback(() => {
     if (answerState === null) return
@@ -762,7 +771,15 @@ export default function PracticeSession({
     if (startCounted.current || resumedRef.current || resumeOffer || questions.length === 0) return
     if (current !== 0 || answers.length !== 0) return
     startCounted.current = true
-    sendPracticeCount({ subject: subjectId, event: 'started', fromResult: cameFromResult(window.location.search), answered: 0 })
+    const fromResult = cameFromResult(window.location.search)
+  sendPracticeCount({ subject: subjectId, event: 'started', fromResult, answered: 0 })
+  emitLearningEvent({
+    name: 'practice_session_started',
+    occurredAt: Date.now(),
+    subjectId,
+    sessionId,
+    properties: { fromResult, total: totalQ, topicFilter: topicFilter ?? null },
+  })
   }, [resumeOffer, questions.length, current, answers.length, subjectId])
 
   const declineResume = useCallback(() => {
