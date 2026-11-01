@@ -596,8 +596,8 @@ async function SessionsBody() {
       <p>目前 Founder session：{founder ? '有效' : '無'}</p>
       <p className="text-xs text-[var(--fos-muted)]">電郵：{founder?.email}</p>
       <p className="text-xs text-[var(--fos-faint)]">
-        撤銷：使用頂部「登出」，或到 Google 帳戶 → 第三方應用存取權 → 撤銷本站。Auth.js 用 JWT strategy，伺服器無集中
-        session store。
+        撤銷：使用頂部「登出」，或到 Google 帳戶 → 第三方應用存取權 → 撤銷本站。現役登入係 Supabase Auth
+        Google（cookie session）；Auth.js／Better Auth 已拆除，唔准重建。
       </p>
     </div>
   )

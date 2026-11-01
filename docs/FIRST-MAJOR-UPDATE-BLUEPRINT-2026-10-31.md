@@ -428,17 +428,34 @@ answered ≥ 8 的完成節數；以及 from_result 再練比例；登入用戶 
 
 ---
 
-## 4. 建議立即確認嘅創辦人決定
+## 4. 創辦人已鎖定決定（2026-10-31）
 
-1. **有效學習節**暫定義是否接受？`explanation_viewed` 繼續跟 43a 唔數？
-2. Phase 1 新事件：只擴 UX、定係批准最小新匿名事件？
-3. Phase 0 需要你提供：Vercel Analytics 截圖／有無數據、`practice_counts` 匯出、`FOUNDER_GOOGLE_SUB` 已綁確認（是／否）、`0029` 已 apply（是／否）
-4. Phase 順序是否按 0→1→2→3→4→5？定係 2 與 1 對調？
+| # | 決定 | 狀態 |
+|---|------|------|
+| 1 | 有效學習節暫定義 | **接受** |
+| 2 | `explanation_viewed`／43a | **繼續唔數** |
+| 3 | Phase 1 | **只修 UX + 批准最小新匿名事件**（事件留待 Phase 1 開工清單） |
+| 4 | Vercel Analytics | **冇數** |
+| 5 | Phase 順序 | **0→1→2→3→4→5**（進行中：Phase 0） |
+
+### Phase 0 代為核實（見 `docs/baseline-2026-10-31.md`）
+
+| 項目 | 結果 |
+|------|------|
+| `practice_counts` | 有；完成率 **24.2%**（769 started／186 completed） |
+| Migration **0029** | **未套用**（founder_* 表不存在） |
+| `FOUNDER_GOOGLE_SUB` | Vercel **有鍵**；值請登入 `/founder/settings` 確認「已設定」 |
 
 ---
 
 ## 5. 下一句指令（建議）
 
+Phase 0 完成後，二選一：
+
 ```text
-確認 Phase 0，開始建立安全網與 baseline。
+批准套用 0029
+```
+
+```text
+確認 Phase 1，開始修復核心學習漏斗（先列改動清單）。
 ```

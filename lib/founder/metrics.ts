@@ -4,6 +4,7 @@ import { getActiveSubjects, subjects } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
 import { safeLog } from '@/lib/safeLog'
 import { getFounderDeployEnv, founderAiConfigured } from '@/lib/founder/env'
+import { probeFounderOsSchema } from '@/lib/founder/schemaProbe'
 
 /** 指標元資料 —— 每個數字都要講清計算方式。 */
 export type MetricMeta = {
@@ -185,6 +186,28 @@ export async function loadPlatformOverview(): Promise<PlatformOverview> {
 
   const sessionsBySubject = new Map<string, number>()
   const intel: IntelItem[] = []
+
+  // Phase 0：0029 未套用時審計／任務寫入會 silent fail —— 必須喺指揮中心可見。
+  const founderSchema = await probeFounderOsSchema()
+  if (!founderSchema.ready) {
+    const missing = [
+      !founderSchema.auditEvents ? 'founder_audit_events' : null,
+      !founderSchema.operationalTasks ? 'founder_operational_tasks' : null,
+      !founderSchema.featureFlags ? 'founder_feature_flags' : null,
+    ].filter(Boolean)
+    intel.push({
+      id: 'founder-os-schema-missing',
+      severity: 'alert',
+      title: 'Founder OS 營運表未就緒（migration 0029）',
+      impact: `缺少：${missing.join('、')}。審計寫入會失敗且以往只記 log；套用前請先讀 docs/ops/APPLY-0029-FOUNDER-OS.md 並由創辦人批准。`,
+      firstSeenAt: founderSchema.auditedAt,
+      updatedAt: founderSchema.auditedAt,
+      owner: '創辦人',
+      status: 'blocked',
+      href: '/founder/settings/audit',
+      fingerprint: 'founder-os-schema-0029',
+    })
+  }
 
   try {
     const supabase = getServiceSupabase()
@@ -534,7 +557,12 @@ export async function loadPlatformOverview(): Promise<PlatformOverview> {
 
   const anyData =
     activeStudents7d.state === 'ok' || openReports.state === 'ok' || questionBankTotal.state === 'ok'
-  const platformStatus: PlatformOverview['platformStatus'] = anyData ? 'optimal' : 'unknown'
+  // 有靜態題庫就報 optimal 會掩蓋 0029／審計缺口；schema 未就緒一律 degraded。
+  const platformStatus: PlatformOverview['platformStatus'] = !founderSchema.ready
+    ? 'degraded'
+    : anyData
+      ? 'optimal'
+      : 'unknown'
 
   return {
     updatedAt,
