@@ -73,7 +73,7 @@ export default function LevelUpPractice() {
   if (completed) {
     const percentage = Math.round((score / questions.length) * 100)
     return (
-      <main className="min-h-[100svh] bg-surface px-4 py-5 text-ink sm:px-6">
+      <div className="min-h-[100svh] bg-surface px-4 py-5 text-ink sm:px-6">
         <div className="mx-auto flex min-h-[calc(100svh-2.5rem)] max-w-xl flex-col justify-center gap-5">
           <div className="flex items-center gap-2 text-sm font-semibold text-accent">
             <Sparkles aria-hidden />
@@ -99,12 +99,12 @@ export default function LevelUpPractice() {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     )
   }
 
   return (
-    <main className="min-h-[100svh] bg-surface px-4 py-4 text-ink sm:px-6 sm:py-6">
+    <div className="min-h-[100svh] bg-surface px-4 py-4 text-ink sm:px-6 sm:py-6">
       <div className="mx-auto flex min-h-[calc(100svh-2rem)] max-w-xl flex-col">
         <header className="flex items-center justify-between gap-3">
           <Link href="/" aria-label="返回首頁" className="pressable inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line text-ink-muted hover:bg-surface-sunken">
@@ -112,7 +112,7 @@ export default function LevelUpPractice() {
           </Link>
           <div className="text-center">
             <p className="text-xs font-semibold tracking-[0.16em] text-accent">DSE LEVEL UP</p>
-            <p className="mt-1 text-sm text-ink-muted">10 題學習節 · 示範版</p>
+            <p className="mt-1 text-sm text-ink-muted">3 題短練習 · 示範版</p>
           </div>
           <span className="min-w-11 text-right text-sm font-semibold text-ink-muted">{current + 1}/{questions.length}</span>
         </header>
@@ -159,6 +159,6 @@ export default function LevelUpPractice() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   )
 }
