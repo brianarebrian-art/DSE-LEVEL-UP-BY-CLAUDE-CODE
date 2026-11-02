@@ -75,6 +75,12 @@ export default function HomePage() {
             </p>
             <div className="mb-5">
               <ContinueCard />
+              <Link
+                href="/level-up"
+                className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-[var(--radius-control)] border border-line-strong px-4 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-surface-sunken"
+              >
+                試下新版 10 題學習節 <ArrowRight size={14} aria-hidden />
+              </Link>
             </div>
             <div className="mx-auto max-w-md md:mx-0">
               <p id="quick-start-label" className="mb-3 text-sm font-medium text-ink">
