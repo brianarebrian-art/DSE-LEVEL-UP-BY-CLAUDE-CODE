@@ -1,26 +1,25 @@
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { CLOUD_PROGRESS_KEYS } from '@/lib/cloudKeys'
-import { getSyncUserId } from '@/lib/auth/server'
+import { requireVerifiedUser } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { recordSecurityAudit } from '@/lib/auth/securityAudit'
 
 // Per-user, request-time only — never cached or prerendered.
 export const dynamic = 'force-dynamic'
 
 const TABLE = 'user_progress'
 
-// Identity is resolved by the backend-agnostic helper (Auth.js today, Better Auth once
-// flipped). It returns the stable Google `sub` either way, so the row key — and thus
-// every user's existing synced progress — is preserved across the cutover.
-async function currentUserId(): Promise<string | null> {
-  return getSyncUserId()
-}
-
 // GET — pull this user's cloud progress (null if they have none yet).
 export async function GET() {
-  const userId = await currentUserId()
-  if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  let userId: string
+  try {
+    const verified = await requireVerifiedUser()
+    userId = verified.id
+  } catch {
+    return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  }
 
   try {
     const supabase = getServiceSupabase()
@@ -44,8 +43,13 @@ export async function GET() {
 
 // POST — upsert this user's progress snapshot. Body: { progress: <snapshot object> }.
 export async function POST(request: Request) {
-  const userId = await currentUserId()
-  if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  let userId: string
+  try {
+    const verified = await requireVerifiedUser()
+    userId = verified.id
+  } catch {
+    return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  }
 
   const read = await readJsonLimited<{ progress?: unknown }>(request, BODY_LIMIT.progress)
   if (!read.ok) return NextResponse.json({ error: read.error }, { status: read.status })
@@ -71,6 +75,15 @@ export async function POST(request: Request) {
         { onConflict: 'user_id' },
       )
     if (error) throw error
+
+    void recordSecurityAudit({
+      actorId: userId,
+      actorRole: 'student',
+      action: 'sync_progress',
+      resourceType: 'user_progress',
+      resourceId: userId,
+    })
+
     return NextResponse.json({ ok: true, updated_at })
   } catch (e) {
     safeLog('error', 'api/progress POST', e)
