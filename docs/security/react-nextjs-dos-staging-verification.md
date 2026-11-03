@@ -57,4 +57,10 @@ For unpatched and patched previews, record the same run count and synthetic inpu
 
 Stop the test, disable the test runner, preserve aggregate metrics only, and do not promote the preview if any fail criterion occurs. Redeploy the last known-good patched artifact or revert the dependency commit only under the incident rollback approval; do not knowingly promote the affected React version.
 
-**Status:** prepared only; execution is pending dependency test approval and Vercel Preview deployment.
+## Execution Gate
+
+- **Current status:** prepared only; no staging or Preview attack-shaped traffic has been sent.
+- Do not execute until the ICT parity blocker is approved/resolved, the build passes in an adequately resourced environment, QA is recorded, and a Vercel Preview deployment is available.
+- This procedure is not a production readiness approval. The branch remains not safe to merge while any gate is open.
+
+**Status:** prepared only; execution is pending test-blocker approval, successful build/QA evidence, and Vercel Preview deployment.

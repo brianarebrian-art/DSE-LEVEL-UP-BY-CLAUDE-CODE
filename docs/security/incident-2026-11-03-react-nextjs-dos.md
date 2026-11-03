@@ -106,6 +106,23 @@
 - **Pending staging verification:** Vercel Preview deployment, founder Server Action smoke test, then controlled synthetic DoS regression test; production testing remains prohibited.
 - **Approval status:** dependency patch is prepared but not accepted for promotion. The pre-existing test failure requires review and explicit approval before further validation.
 
+## Fourth-Step Validation Status: Conditional Pass
+
+- **Patched versions:** `react 19.2.6`, `react-dom 19.2.6`, `next 16.4.2`.
+- **Completed checks:** clean `npm ci`, patched dependency inspection, `npm run lint`, and focused reproduction of the existing ICT parity failure.
+- **Test blocker:** `data/questions/__tests__/summary-parity.test.mts` fails because `ict` is `2d7e827bdef14374` in the generated file but recalculates to `8474815423402f54`. The same generated value exists on `main`; no dependency causality found. See `react-nextjs-dos-test-blocker-analysis.md`.
+- **Build:** `npm run build` started under Next 16.4.2 but exited 1 after approximately 68 seconds due to Node/V8 heap exhaustion. See `react-nextjs-dos-build-qa-evidence.md`.
+- **QA:** Not run because the build failure triggered the stop gate.
+- **Staging regression:** Procedure remains prepared only; no attack-shaped traffic was sent.
+- **Next approval gate:** approve the minimal generated ICT version refresh after reviewing its diff; separately approve an adequately resourced build rerun and subsequent QA.
+- **Production readiness:** This branch is **not ready for production merge**.
+
 ## Approval Gate
 
-第一步 assessment 已完成。第三步已更新 dependency manifest／lockfile，完成 clean install、npm ls evidence 及 lint；因現有 test failure 已停止，未執行 QA、build、merge、production attack test 或 business logic change。下一步必須先批准處理或豁免 `ict BANK_VERSION` 測試失敗，再繼續驗證。
+第四步已完成到 validation/documentation gate，但係 **Conditional Pass**。三個 blockers 係：
+
+1. Existing `ict BANK_VERSION` parity test failure (present on `main`; approval required before regenerating metadata).
+2. Production build failed with Node heap OOM; build evidence is incomplete until rerun with approved resources.
+3. QA and staging DoS regression test remain unexecuted because the failure gate/build gate is open.
+
+No assertion, fixture, business logic, student data, production deployment, or production attack test was changed or executed. Awaiting approval to address the generated ICT metadata and continue validation.
