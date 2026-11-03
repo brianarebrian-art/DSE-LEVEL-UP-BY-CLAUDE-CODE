@@ -1,0 +1,29 @@
+diff --git a/data/questions/bank-dates.generated.ts b/data/questions/bank-dates.generated.ts
+index 8fc41e1..b7e8f42 100644
+--- a/data/questions/bank-dates.generated.ts
++++ b/data/questions/bank-dates.generated.ts
+@@ -43,8 +43,8 @@ export const BANK_UPDATED_AT: Record<string, { version: string; date: string }>
+     "date": "2026-10-09"
+   },
+   "ict": {
+-    "version": "2d7e827bdef14374",
+-    "date": "2026-10-31"
++    "version": "8474815423402f54",
++    "date": "2026-11-03"
+   },
+   "economics": {
+     "version": "9b7f0314995579f5",
+
+diff --git a/data/questions/bank-versions.generated.ts b/data/questions/bank-versions.generated.ts
+index 4bebe0d..5fb0666 100644
+--- a/data/questions/bank-versions.generated.ts
++++ b/data/questions/bank-versions.generated.ts
+@@ -17,7 +17,7 @@ export const BANK_VERSION: Record<string, string> = {
+   "english": "03c7506362c20dc0",
+   "chinese": "76af1fdb5877a87e",
+   "bafs": "20df67eecd94c703",
+-  "ict": "2d7e827bdef14374",
++  "ict": "8474815423402f54",
+   "economics": "9b7f0314995579f5",
+   "csd": "6100ab2ab6198fdb",
+   "chinese-history": "0bf4bd4a84037fa1",
