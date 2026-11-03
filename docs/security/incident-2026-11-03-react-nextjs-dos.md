@@ -92,6 +92,20 @@
 4. 如仍不穩定，停止 promotion，回滾至最後已驗證嘅 patched deployment；不得為方便而重新部署已知 affected artifact。
 5. 確認是否需要 rotate secrets／credentials，完成通知、事後檢討及 hotfix approval。
 
+## Third-Step Patched Preview Status
+
+- **Patched preview branch:** `security/react-nextjs-dos-patched-preview`, created from `security/react-nextjs-dos-assessment`.
+- **Patched versions:** `next 16.4.2`, `react 19.2.6`, `react-dom 19.2.6`.
+- **Direct React Server DOM dependencies:** none; none added.
+- **Clean install:** `npm ci` passed and reified the clean dependency tree.
+- **Lint:** passed.
+- **Typecheck:** Not configured.
+- **Existing tests:** stopped on failure. `data/questions/__tests__/summary-parity.test.mts` reports `ict 版本號對唔上` and asks to run `npm run gen:summary`. No generated data or business logic was changed.
+- **QA:** not run after the required stop-on-failure gate.
+- **Build:** not run after the required stop-on-failure gate.
+- **Pending staging verification:** Vercel Preview deployment, founder Server Action smoke test, then controlled synthetic DoS regression test; production testing remains prohibited.
+- **Approval status:** dependency patch is prepared but not accepted for promotion. The pre-existing test failure requires review and explicit approval before further validation.
+
 ## Approval Gate
 
-第一步 assessment 已完成；本步只完成文件化嘅補償控制與升級準備。未執行 dependency upgrade、npm install／npm ci、build、merge、production attack test 或 business logic change。下一步 hotfix 必須另行批准。
+第一步 assessment 已完成。第三步已更新 dependency manifest／lockfile，完成 clean install、npm ls evidence 及 lint；因現有 test failure 已停止，未執行 QA、build、merge、production attack test 或 business logic change。下一步必須先批准處理或豁免 `ict BANK_VERSION` 測試失敗，再繼續驗證。
