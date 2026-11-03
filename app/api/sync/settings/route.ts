@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
-import { getSyncUserId } from '@/lib/auth/server'
+import { requireVerifiedUser } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { recordSecurityAudit } from '@/lib/auth/securityAudit'
 
 // v8.0 CLOUD-FIRST · API2 — SEN 偏好設定跨裝置同步。
 //
@@ -60,8 +61,13 @@ function sanitise(raw: Record<string, unknown>): CloudSettings {
 
 // GET — 攞呢個用戶雲端嘅設定（未存過就 null，由 client 沿用本機現狀）。
 export async function GET() {
-  const userId = await getSyncUserId()
-  if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  let userId: string
+  try {
+    const verified = await requireVerifiedUser()
+    userId = verified.id
+  } catch {
+    return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  }
 
   try {
     const supabase = getServiceSupabase()
@@ -85,8 +91,13 @@ export async function GET() {
 
 // DELETE: the student turned settings sync off (UX audit D1): remove this account's row.
 export async function DELETE() {
-  const userId = await getSyncUserId()
-  if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  let userId: string
+  try {
+    const verified = await requireVerifiedUser()
+    userId = verified.id
+  } catch {
+    return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  }
   try {
     const supabase = getServiceSupabase()
     const { error } = await supabase.from(TABLE).delete().eq('user_id', userId) // own row only
@@ -100,8 +111,13 @@ export async function DELETE() {
 
 // POST — upsert 設定。Body: { settings: {...} }
 export async function POST(request: Request) {
-  const userId = await getSyncUserId()
-  if (!userId) return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  let userId: string
+  try {
+    const verified = await requireVerifiedUser()
+    userId = verified.id
+  } catch {
+    return NextResponse.json({ error: 'unauthenticated' }, { status: 401 })
+  }
 
   const read = await readJsonLimited<{ settings?: unknown }>(request, BODY_LIMIT.small)
   if (!read.ok) return NextResponse.json({ error: read.error }, { status: read.status })
@@ -118,6 +134,15 @@ export async function POST(request: Request) {
       .from(TABLE)
       .upsert({ user_id: userId, ...clean, updated_at }, { onConflict: 'user_id' })
     if (error) throw error
+
+    void recordSecurityAudit({
+      actorId: userId,
+      actorRole: 'student',
+      action: 'sync_settings',
+      resourceType: 'user_settings',
+      resourceId: userId,
+    })
+
     return NextResponse.json({ ok: true, updated_at, settings: clean })
   } catch (e) {
     safeLog('error', 'api/sync/settings POST', e)
