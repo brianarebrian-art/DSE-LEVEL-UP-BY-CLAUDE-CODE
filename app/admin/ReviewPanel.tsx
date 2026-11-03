@@ -57,7 +57,7 @@ export interface HistoryRow {
 type Decision = 'approved' | 'rejected' | 'pending'
 
 // 草稿銀碼以 \$ 逃逸（LaTeX 閘要求）；顯示層還原做 $，唔郁底層數據。
-const unesc = (s: string) => s.replace(/\\\$/g, '$')
+const unesc = (s: string | undefined | null) => (s ?? '').replace(/\\\$/g, '$')
 
 // Light-first（憲章 §3，2026-07-22）：全檔由深色霓虹遷移為淺色 token。
 // 決定色語意：通過=青 #008B84 / 退回=玫 #C2185B（非鮮紅）/ 暫緩=金 #B8860B。

@@ -76,8 +76,17 @@ function loadSenseiBatches(): Batch[] {
     for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && !f.endsWith('.decisions.json')).sort()) {
       const stem = file.replace(/\.json$/, '')
       try {
-        const rows = JSON.parse(readFileSync(join(dir, file), 'utf8')) as CardRow[]
-        if (!Array.isArray(rows) || rows.length === 0) continue
+        const parsed = JSON.parse(readFileSync(join(dir, file), 'utf8')) as CardRow[]
+        if (!Array.isArray(parsed) || parsed.length === 0) continue
+        const rows = parsed.filter((r) => typeof r?.id === 'string' && typeof r?.topic === 'string')
+        const invalid = parsed.filter((r) => !(typeof r?.id === 'string' && typeof r?.topic === 'string'))
+        if (invalid.length > 0) {
+          safeLog(
+            'warn',
+            `admin: skipped ${invalid.length} invalid sensei card(s) in ${subject}/${file}: ${invalid.map((r) => String(r?.id ?? '?')).join(', ')}`,
+          )
+        }
+        if (rows.length === 0) continue
         let local: Record<string, string> = {}
         const decPath = join(dir, `${stem}.decisions.json`)
         if (existsSync(decPath)) local = (JSON.parse(readFileSync(decPath, 'utf8'))?.decisions ?? {}) as Record<string, string>
@@ -114,7 +123,11 @@ function loadSenseiBatches(): Batch[] {
 function loadBatches(): Batch[] {
   let files: string[] = []
   try {
-    files = readdirSync(DRAFTS_DIR).filter((f) => f.endsWith('.json') && !f.endsWith('.decisions.json'))
+    // *.decisions.json = 本地決定；*.rejected.json = 閘門退回報告（只有 {id, reasons}，冇題目內容）。
+    // 兩者都唔係草稿批次，唔可以入覆核隊列。
+    files = readdirSync(DRAFTS_DIR).filter(
+      (f) => f.endsWith('.json') && !f.endsWith('.decisions.json') && !f.endsWith('.rejected.json'),
+    )
   } catch (e) {
     safeLog('warn', 'admin: drafts dir unreadable', e)
     return []
@@ -123,8 +136,18 @@ function loadBatches(): Batch[] {
   for (const file of files.sort()) {
     const stem = file.replace(/\.json$/, '')
     try {
-      const rows = JSON.parse(readFileSync(join(DRAFTS_DIR, file), 'utf8')) as DraftRow[]
-      if (!Array.isArray(rows) || rows.length === 0) continue
+      const parsed = JSON.parse(readFileSync(join(DRAFTS_DIR, file), 'utf8')) as DraftRow[]
+      if (!Array.isArray(parsed) || parsed.length === 0) continue
+      // 唔合格嘅列（冇 id／question）唔入隊列，但要留低警告，唔好靜默吞咗。
+      const rows = parsed.filter((r) => typeof r?.id === 'string' && typeof r?.question === 'string')
+      const invalid = parsed.filter((r) => !(typeof r?.id === 'string' && typeof r?.question === 'string'))
+      if (invalid.length > 0) {
+        safeLog(
+          'warn',
+          `admin: skipped ${invalid.length} invalid draft row(s) in ${file}: ${invalid.map((r) => String(r?.id ?? '?')).join(', ')}`,
+        )
+      }
+      if (rows.length === 0) continue
       // 本地已有嘅 decisions（review.html 匯出流程）都計入狀態
       let local: Record<string, string> = {}
       const decPath = join(DRAFTS_DIR, `${stem}.decisions.json`)
