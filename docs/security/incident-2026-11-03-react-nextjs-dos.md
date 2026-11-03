@@ -125,4 +125,20 @@
 2. Production build failed with Node heap OOM; build evidence is incomplete until rerun with approved resources.
 3. QA and staging DoS regression test remain unexecuted because the failure gate/build gate is open.
 
-No assertion, fixture, business logic, student data, production deployment, or production attack test was changed or executed. Awaiting approval to address the generated ICT metadata and continue validation.
+No assertion, fixture, business logic, student data, production deployment, or production attack test was changed or executed. ## Fifth-Step Build Retry Status
+
+- **Generated diff approval:** approved at commit `733a2fd`.
+- **Build retry approval:** granted for a temporary `NODE_OPTIONS` memory setting only.
+- **Build command:** `NODE_OPTIONS="--max-old-space-size=8192" npm run build`.
+- **Result:** failed after 75 seconds with exit code `137`; the runner/kernel killed the build during webpack compilation.
+- **Runner evidence:** `/proc/meminfo` reported `8,605,824 kB`; kernel evidence recorded `out_of_memory` and page-allocation failure at `2026-11-03T07:51:20Z`.
+- **JavaScript heap error:** not present. The failure was an external runner/kernel memory kill, not a V8 heap stack trace.
+- **NODE_OPTIONS propagation:** present on the npm/Next build process; separate worker propagation could not be independently proven before termination.
+- **Upgrade causality:** not demonstrated; no React/Next compiler error occurred, and the build reached the existing webpack production phase.
+- **QA:** not run, per the hard stop rule.
+- **Staging DoS regression:** not run; no staging traffic was sent.
+- **Current release readiness:** **not ready for merge** until the production build succeeds, QA passes, and staging-only DoS regression passes.
+- **Remaining blockers:** (1) build runner memory/cgroup capacity; (2) QA; (3) staging-only regression evidence.
+- **Next approval gate:** approve a rerun of the unchanged commit on a runner with materially more memory (recommended minimum 16 GiB), then review build evidence before authorizing QA.
+
+The minimal remediation is runner capacity/configuration, not a repository code or dependency change. See `docs/security/react-nextjs-dos-build-memory-evidence.md` for the full evidence.
