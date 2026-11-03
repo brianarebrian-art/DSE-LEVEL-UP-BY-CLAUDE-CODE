@@ -63,13 +63,18 @@ export default function BookmarkButton({
     setDraft('')
   }
 
+  const label = en
+    ? (saved ? 'Remove bookmark' : 'Bookmark this question')
+    : (saved ? '取消收藏' : '收藏呢條題')
+
   return (
     <div className={className}>
       <button
         onClick={toggle}
         aria-pressed={saved}
-        aria-label={en ? (saved ? 'Remove bookmark' : 'Bookmark this question') : saved ? '取消收藏' : '收藏呢條題'}
-        className={`min-h-12 inline-flex items-center gap-1.5 rounded-lg px-2.5 text-xs transition-colors ${
+        aria-label={label}
+        title={label}
+        className={`min-h-12 inline-flex items-center gap-1.5 rounded-lg px-2.5 text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${
           saved ? 'text-gold hover:text-ink-soft' : 'text-ink-muted hover:text-accent'
         }`}
       >
@@ -88,7 +93,7 @@ export default function BookmarkButton({
                 <button
                   key={f}
                   onClick={() => assign(f)}
-                  className="min-h-12 rounded-lg border border-line-strong px-2.5 text-xs text-ink-soft transition-colors hover:border-accent/40 hover:text-accent"
+                  className="min-h-12 rounded-lg border border-line-strong px-2.5 text-xs text-ink-soft transition-colors hover:border-accent/40 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
                 >
                   {f}
                 </button>
@@ -103,19 +108,19 @@ export default function BookmarkButton({
               onKeyDown={(e) => e.key === 'Enter' && draft.trim() && assign(draft)}
               placeholder={en ? 'New folder name' : '新資料夾名'}
               aria-label={en ? 'New folder name' : '新資料夾名'}
-              className="min-h-12 w-full rounded-lg border border-line-strong bg-surface px-2.5 text-xs text-ink-soft outline-none placeholder:text-ink-muted focus:border-accent"
+              className="min-h-12 w-full rounded-lg border border-line-strong bg-surface px-2.5 text-xs text-ink-soft outline-none placeholder:text-ink-muted focus:border-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
             />
             <button
               onClick={() => draft.trim() && assign(draft)}
               disabled={!draft.trim()}
-              className="min-h-12 shrink-0 rounded-lg border border-accent/30 bg-surface-sunken px-3 text-xs text-accent transition-colors hover:bg-surface-sunken disabled:opacity-40"
+              className="min-h-12 shrink-0 rounded-lg border border-accent/30 bg-surface-sunken px-3 text-xs text-accent transition-colors hover:bg-surface-sunken focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {en ? 'Add' : '加入'}
             </button>
           </div>
           <button
             onClick={() => setPickerOpen(false)}
-            className="mt-2 min-h-12 text-xs text-ink-muted underline underline-offset-4 transition-colors hover:text-ink-soft"
+            className="mt-2 min-h-12 text-xs text-ink-muted underline underline-offset-4 transition-colors hover:text-ink-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
           >
             {en ? `Leave it in ${DEFAULT_FOLDER}` : `就咁放喺「${DEFAULT_FOLDER}」`}
           </button>
