@@ -2,9 +2,10 @@
 
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **結論：** Phase 5 **未完整完成**。只完成 **Milestone A**；Milestone B–G **未開工／未驗收**。  
-- **含義：** 進入 Phase 6 測試時，只能對「已落地嘅 A＋既有主線」做可執行驗證；產品閉環案多數 **Blocked**，唔代表全量 v6 已可發布。
+- **重做：** 見 [`phase-5-10-reset.md`](./phase-5-10-reset.md)。先前過早進入嘅 Phase 6–10「完成」已 **SUPERSEDED**。  
+- **現行閘口：** Milestone A 完成，**等待批准 Milestone B**（或書面收窄只交 A）。
 
-對齊：總 prompt §10；`phase-1-research.md` Milestone A–G；`phase-6-test-report.md`。
+對齊：總 prompt §10；`phase-1-research.md` Milestone A–G。
 
 ---
 
@@ -12,8 +13,8 @@
 
 | Milestone | 主題 | 狀態 | 證據 |
 |---|---|---|---|
-| A | 保安地基 | **完成（等合併／批准）** | PR #177 · `milestone-a-*.md` · commit `416e075` |
-| B | 法律／私隱／共融 | **未開始** | 需另批「批准 Milestone B」 |
+| A | 保安地基 | **完成（等合併／等你批 B 或收窄）** | PR #177 · `milestone-a-*.md` · CI 綠 |
+| B | 法律／私隱／共融 | **未開始** | 需「批准 Milestone B」 |
 | C | 內容可信 | **未開始** | — |
 | D | 練習解剖 | **未開始** | — |
 | E | 錯題／路線／進度 | **未開始** | 受 D4／P0 硬閘約束 |
@@ -34,20 +35,19 @@
 
 ---
 
-## 3. 同 Phase 6／7 嘅關係
+## 3. 同 Phase 6–10
 
-| Phase | 同 Phase 5 關係 |
+| Phase | 關係 |
 |---|---|
-| 6 測試 | 已跑；Fail=0；大量 Blocked 因 B–G／P0 |
-| 7 修正 | 無程式 Fail 可修；修正焦點＝Blocked 前置＋CI build heap＋狀態透明 |
-| 8–10 | **唔應**當「全量 v6 已可驗收／發布」，直至 B–G（或你收窄 scope）完成 |
+| 6–10（舊檔） | **SUPERSEDED**——過早進入；保留考古 |
+| 6–10（重做） | **未開始**——等 Phase 5 完整或書面收窄後先正式重跑 |
 
 ---
 
-## 4. 建議下一步（要你一句）
+## 4. 建議你回覆
 
-1. **繼續 Phase 5：** 回覆「批准 Milestone B」…逐個 milestone；或  
-2. **收窄 v6 scope：** 書面確認只交付 A（＋列明砍掉嘅 milestone）；或  
-3. **答 P0** 後先做 RLS 對帳／演練（仍唔等於 B–G 完成）。
+1. **批准 Milestone B**；或  
+2. **本輪只交付 A**（然後只對 A 重做 6–10）；或  
+3. **批准合併 Milestone A**。
 
-**Phase 5 未完成。** 呢份狀態檔係 Phase 7 remediation 嘅程序修正，避免誤以為已全數實作。
+**Milestone A 完成，等待批准。**

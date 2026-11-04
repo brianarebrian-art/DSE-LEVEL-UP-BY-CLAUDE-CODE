@@ -1,6 +1,7 @@
 # DSE Level Up v6 Phase 9 發布計劃
 
-- **狀態：** Phase 9 完成，等待批准  
+- **狀態：** **SUPERSEDED**（2026-11-04）——見 [`phase-5-10-reset.md`](./phase-5-10-reset.md)。兩軌思路可參考，唔當已批准 deploy。  
+- **原狀態（作廢）：** Phase 9 完成，等待批准  
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **前置：** Phase 8 隔離驗收；[`phase-5-status.md`](./phase-5-status.md)  
 - **硬原則：** **唔好直接 100% 發布全量 v6 產品。** 本計劃分兩軌。  

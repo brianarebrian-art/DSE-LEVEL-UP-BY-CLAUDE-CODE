@@ -1,6 +1,7 @@
 # DSE Level Up v6 Phase 7 修正報告
 
-- **狀態：** Phase 7 完成，等待批准  
+- **狀態：** **SUPERSEDED**（2026-11-04）——見 [`phase-5-10-reset.md`](./phase-5-10-reset.md)。  
+- **原狀態（作廢）：** Phase 7 完成，等待批准  
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **前置：** [`phase-6-test-report.md`](./phase-6-test-report.md)（基線 Milestone A `416e075`）  
 - **方法：** 分類 Phase 6 Fail／Blocked；可即修嘅做細 PR；其餘寫清 Root cause、Fix、Regression、Evidence、Owner、Deadline 佔位。  

@@ -1,6 +1,7 @@
 # DSE Level Up v6 Phase 10 發布後驗證
 
-- **狀態：** Phase 10 完成，等待批准  
+- **狀態：** **SUPERSEDED**（2026-11-04）——見 [`phase-5-10-reset.md`](./phase-5-10-reset.md)。無 deploy，唔當發布後驗證完成。  
+- **原狀態（作廢）：** Phase 10 完成，等待批准  
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **前置：** [`phase-9-release-plan.md`](./phase-9-release-plan.md)、[`phase-8-acceptance-checklist.md`](./phase-8-acceptance-checklist.md)  
 - **發布實況：** 截至本文寫作，**Milestone A PR #177 仍 OPEN、未合併** → **未發生 production 發布**。本檔係驗證工作簿：填咗 **預發布基線**；**發布後 Actual** 留空／Pending，等軌 1 合併後 24–72h 補。  
