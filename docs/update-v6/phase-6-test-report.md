@@ -1,6 +1,7 @@
 # DSE Level Up v6 Phase 6 測試報告
 
-- **狀態：** Phase 6 完成，等待批准  
+- **狀態：** **SUPERSEDED**（2026-11-04）——Phase 5 未完整就進入；見 [`phase-5-10-reset.md`](./phase-5-10-reset.md)。正式 Phase 6 重做前唔當收口。  
+- **原狀態（作廢）：** Phase 6 完成，等待批准  
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **測試基線：** `416e075`（`cursor/v6-phase-5a-security-97aa` · Milestone A）  
 - **方法：** 跑現有自動化閘＋靜態 Level 1 保安檢查＋SEO production-mode smoke。**無** staging／production Supabase 寫入；**無**新加 Playwright；**無** Level 3 事故演練（P0 未答）。  

@@ -1,6 +1,7 @@
 # DSE Level Up v6 Phase 8 隔離驗收清單
 
-- **狀態：** Phase 8 完成，等待批准  
+- **狀態：** **SUPERSEDED**（2026-11-04）——見 [`phase-5-10-reset.md`](./phase-5-10-reset.md)。  
+- **原狀態（作廢）：** Phase 8 完成，等待批准  
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **基線：** Phase 7 tip（含 Milestone A · Phase 6／7 文件）  
 - **驗收範圍（強制）：** 只驗 **Milestone A＋既有主線**。Milestone B–G 標 **N/A（Out of scope）**——見 [`phase-5-status.md`](./phase-5-status.md)、[`phase-7-remediation-report.md`](./phase-7-remediation-report.md) §8。  
