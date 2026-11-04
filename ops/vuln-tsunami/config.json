@@ -1,0 +1,83 @@
+{
+  "name": "DSE Level Up — Vulnerability Tsunami Defence",
+  "isolation": {
+    "mustNotImportFrom": ["app/", "components/", "lib/", "proxy.ts", "instrumentation.ts"],
+    "mustNotBeImportedBy": ["app/", "components/", "lib/", "scripts/"],
+    "mustNotDeployWith": ["vercel", "www.dselevelup.com"],
+    "runtime": "MacBook Pro desktop agent only"
+  },
+  "nvd": {
+    "baseUrl": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+    "resultsPerPage": 100,
+    "minRequestGapMs": 6500,
+    "defaultLookbackHours": 24
+  },
+  "triage": {
+    "minScore": 7.0,
+    "alwaysAlertKev": true,
+    "alwaysAlertCritical": true
+  },
+  "watchlist": [
+    {
+      "id": "next",
+      "label": "Next.js",
+      "keywords": ["next.js", "nextjs", "vercel next"],
+      "packageNames": ["next"],
+      "actionHint": "Upgrade `next` in package.json, run npm test, redeploy."
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "keywords": ["react", "react-dom"],
+      "packageNames": ["react", "react-dom"],
+      "actionHint": "Upgrade `react` / `react-dom`, run npm test."
+    },
+    {
+      "id": "node",
+      "label": "Node.js runtime",
+      "keywords": ["node.js", "nodejs"],
+      "packageNames": [],
+      "actionHint": "Check Vercel runtime Node version and local Node LTS."
+    },
+    {
+      "id": "supabase",
+      "label": "Supabase / PostgREST",
+      "keywords": ["supabase", "postgrest", "@supabase"],
+      "packageNames": ["@supabase/ssr", "@supabase/supabase-js"],
+      "actionHint": "Upgrade @supabase/* packages; review Auth / RLS advisories."
+    },
+    {
+      "id": "sentry",
+      "label": "Sentry SDK",
+      "keywords": ["sentry", "@sentry/nextjs"],
+      "packageNames": ["@sentry/nextjs"],
+      "actionHint": "Upgrade @sentry/nextjs; verify tunnel route still hardened."
+    },
+    {
+      "id": "katex",
+      "label": "KaTeX",
+      "keywords": ["katex"],
+      "packageNames": ["katex"],
+      "actionHint": "Upgrade katex; re-check math rendering on practice pages."
+    },
+    {
+      "id": "sharp",
+      "label": "sharp (image)",
+      "keywords": ["sharp image", "lovell sharp"],
+      "packageNames": ["sharp"],
+      "actionHint": "Bump sharp override in package.json; rebuild."
+    },
+    {
+      "id": "vercel",
+      "label": "Vercel platform",
+      "keywords": ["vercel"],
+      "packageNames": ["@vercel/speed-insights"],
+      "actionHint": "Read Vercel security bulletin; confirm Firewall rules."
+    }
+  ],
+  "adhd": {
+    "maxAlertsShown": 5,
+    "leadWithAction": true,
+    "endWithNextStep": true
+  }
+}
