@@ -1,6 +1,6 @@
 # DSE Level Up v6 Phase 4B 資料、保安、私隱與成本設計
 
-- **狀態：** Phase 4B 完成，等待批准進入 Phase 4C
+- **狀態：** Phase 4B 完成；已批准進入 Phase 4C（見 `phase-4c-seo-testing-design.md`）
 - **日期：** 2026-11-04（Asia/Hong_Kong）
 - **前置：** Phase 1–4A；尤其 D1–D5、SEC 風險登記、`0030` 未批准上 production 嘅約束
 - **方法：** 只做設計。**唔** apply migration、**唔**轉 key、**唔**改 RLS 到生產、**唔**搬學生資料。
