@@ -1,6 +1,6 @@
 # DSE Level Up v6 Phase 1 研究
 
-- **狀態：** Phase 1 完成，等待批准進入 Phase 2
+- **狀態：** Phase 1 完成；已批准進入 Phase 2（見 `phase-2-problem-definition.md`）
 - **研究日期：** 2026-11-04（Asia/Hong_Kong）
 - **基線 commit：** `95134df`（`main`，Merge pull request #175）
 - **方法：** 唯讀。讀 migration、route、auth、同步、私隱頁、CI。未連線 production Supabase，未改 code，未跑 migration。
