@@ -18,9 +18,16 @@ import {
   apiToggleTranslate,
   apiEdr,
   apiPatch,
+  apiDefenseNow,
 } from './lib/engine.mjs'
 import { logEvent, readLogTail } from './lib/logger.mjs'
 import { mockWafEdrStatus } from './lib/mock.mjs'
+
+const wafLogMemory = []
+function pushWafLog(line) {
+  wafLogMemory.push(`[${new Date().toISOString()}] ${line}`)
+  if (wafLogMemory.length > 80) wafLogMemory.splice(0, wafLogMemory.length - 80)
+}
 
 loadEnv()
 const cfg = loadAppConfig()
@@ -119,6 +126,11 @@ const dashboard = createServer(async (req, res) => {
     if (req.method === 'POST' && path === '/api/patch-schedule') {
       return send(res, 200, apiPatch((await readJson(req)).package), 'application/json; charset=utf-8')
     }
+    if (req.method === 'POST' && path === '/api/defense') {
+      const run = apiDefenseNow()
+      pushWafLog(`defense-matrix ${run.level} waf=${run.waf?.rules}`)
+      return send(res, 200, { ok: true, run, state: getState() }, 'application/json; charset=utf-8')
+    }
     if (req.method === 'GET' && path === '/api/logs') {
       return send(res, 200, { logs: readLogTail(100) }, 'application/json; charset=utf-8')
     }
@@ -143,6 +155,8 @@ const wafServer = createServer((req, res) => {
   const url = new URL(req.url || '/', `http://${HOST}:${wafPort}`)
   if (req.method === 'GET' && url.pathname === '/status') {
     const live = getState().wafEdr || mockWafEdrStatus()
+    const st = getState()
+    pushWafLog(`status-poll level=${st.level?.label} crit=${st.counts?.crit}`)
     return send(
       res,
       200,
@@ -152,10 +166,14 @@ const wafServer = createServer((req, res) => {
         simulated: true,
         waf: live.waf || { status: 'online', blocked_today: 0, label: '[模擬] WAF' },
         edr: live.edr || { status: 'standby', isolated_hosts: 0, label: '[模擬] EDR' },
+        cmdb_assets: (st.cmdb || []).length,
         updatedAt: new Date().toISOString(),
       },
       'application/json; charset=utf-8',
     )
+  }
+  if (req.method === 'GET' && url.pathname === '/logs') {
+    return send(res, 200, { logs: wafLogMemory.slice(-40) }, 'application/json; charset=utf-8')
   }
   return send(res, 404, 'not found')
 })

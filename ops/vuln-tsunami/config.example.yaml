@@ -2,9 +2,12 @@
 # Copy to config.yaml and paste your NVD key. Never commit config.yaml.
 
 nvd_api_key: ""          # or set NVD_API_KEY in .env
-poll_interval_sec: 60
+vulncheck_api_key: ""    # optional; or VULNCHECK_API_KEY — skip if empty
+poll_interval_sec: 60    # NVD + CISA KEV + VulnCheck every minute
 results_per_page: 20
 auto_block: false        # Mac pfctl real block — keep false until you understand the risk
+auto_defense: true       # LEV4+ fires Defense Matrix (WAF/EDR/Patch) into logs
+auto_defense_live: false # true = run actions/*.sh for real; default dry-run + log only
 translate_enabled: true
 translate_delay_ms: 500
 dashboard_port: 3005

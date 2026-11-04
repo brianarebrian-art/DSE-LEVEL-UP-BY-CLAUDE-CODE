@@ -1,30 +1,44 @@
 import { loadAppConfig } from './config.mjs'
-import { ingestNvd, fetchWafEdrStatus } from './ingest.mjs'
+import { ingestTsunami, fetchWafEdrStatus, fetchWafEdrLogs } from './ingest.mjs'
 import { scoreBatch, createLevelTracker } from './scoring.mjs'
 import { translateBatch, setTranslateEnabled, getTranslateStats } from './translate.mjs'
-import { blockCve, isBlocked, listBlocked, edrIsolatePlaceholder, patchSchedulePlaceholder } from './defense.mjs'
+import {
+  blockCve,
+  isBlocked,
+  listBlocked,
+  listDefenseRuns,
+  runDefenseMatrix,
+  edrIsolatePlaceholder,
+  patchSchedulePlaceholder,
+} from './defense.mjs'
 import { mockWafEdrStatus } from './mock.mjs'
 import { logEvent, readLogTail } from './logger.mjs'
 
 const levelTracker = createLevelTracker()
+let lastDefenseLevel = 0
 
 const state = {
   cves: [],
   wave: [],
   waveHeight: 0,
   batchScore: 0,
+  tsunamiSum: 0,
   crit: 0,
   high: 0,
   total: 0,
   level: { level: 1, label: 'LEV1', sum: 0, critCount: 0 },
   lastIngestAt: null,
   lastIngestSource: null,
+  ingestSources: [],
   simulated: false,
   ingestError: null,
   ingestMs: null,
   wafEdr: mockWafEdrStatus(),
+  wafEdrLogs: [],
+  cmdb: [],
   refreshing: false,
   countdownSec: 60,
+  lastDefense: null,
 }
 
 let timer = null
@@ -42,42 +56,67 @@ export function getState() {
       pollIntervalSec: cfg.pollIntervalSec,
       resultsPerPage: cfg.resultsPerPage,
       autoBlock: cfg.autoBlock,
+      autoDefense: cfg.autoDefense,
+      autoDefenseLive: cfg.autoDefenseLive,
       translateEnabled: cfg.translateEnabled,
       hasKey: Boolean(cfg.nvdApiKey),
+      hasVulncheck: Boolean(cfg.vulncheckApiKey),
     },
     assets: cfg.assets,
+    cmdb: state.cmdb,
     cves,
     wave: state.wave,
     waveHeight: state.waveHeight,
     batchScore: state.batchScore,
+    tsunamiSum: state.tsunamiSum,
     counts: { crit: state.crit, high: state.high, total: state.total },
     level: state.level,
     translate: getTranslateStats(),
     lastIngestAt: state.lastIngestAt,
     lastIngestSource: state.lastIngestSource,
+    ingestSources: state.ingestSources,
     simulated: state.simulated,
     ingestError: state.ingestError,
     ingestMs: state.ingestMs,
     wafEdr: state.wafEdr,
+    wafEdrLogs: state.wafEdrLogs,
     refreshing: state.refreshing,
     countdownSec: state.countdownSec,
     blocked: listBlocked(),
-    logs: readLogTail(60),
+    defenseRuns: listDefenseRuns(),
+    lastDefense: state.lastDefense,
+    logs: readLogTail(80),
   }
 }
 
 function buildWave(scored) {
-  // X = publish time, Y = CVSS — normalized points for canvas
   return scored
     .filter((c) => c.published)
     .map((c) => ({
       id: c.id,
       t: new Date(c.published).getTime(),
       y: c.cvss || 0,
+      tsunamiScore: c.tsunamiScore || 0,
       tier: c.tier,
       blocked: isBlocked(c.id),
     }))
     .sort((a, b) => a.t - b.t)
+}
+
+function maybeFireDefense(level, scored, cfg) {
+  if (!cfg.autoDefense) return null
+  if (level.level < 4) return null
+  // Fire once per escalation step (LEV4 then LEV5)
+  if (level.level <= lastDefenseLevel) return null
+  lastDefenseLevel = level.level
+  const run = runDefenseMatrix({
+    level,
+    cves: scored,
+    assets: cfg.assets,
+    live: Boolean(cfg.autoDefenseLive),
+  })
+  state.lastDefense = run
+  return run
 }
 
 export async function refreshOnce({ forceTranslate = true } = {}) {
@@ -85,26 +124,50 @@ export async function refreshOnce({ forceTranslate = true } = {}) {
   state.refreshing = true
   const cfg = loadAppConfig()
   setTranslateEnabled(cfg.translateEnabled)
-  logEvent('SYSTEM', 'refresh start')
+  logEvent('SYSTEM', 'refresh start (NVD+KEV+VulnCheck)')
 
   try {
-    const ingest = await ingestNvd({
-      apiKey: cfg.nvdApiKey,
+    const ingest = await ingestTsunami({
+      nvdApiKey: cfg.nvdApiKey,
+      vulncheckApiKey: cfg.vulncheckApiKey,
       resultsPerPage: cfg.resultsPerPage,
     })
     state.lastIngestSource = ingest.source
+    state.ingestSources = ingest.sources || []
     state.simulated = ingest.simulated
     state.ingestMs = ingest.durationMs
     state.ingestError = null
 
+    // CMDB snapshot each poll
+    state.cmdb = (cfg.assets || []).map((a) => ({
+      id: a.id,
+      name: a.name,
+      importance: a.importance,
+      exposure: a.exposure,
+    }))
+
     let scoredPack = scoreBatch(ingest.cves, cfg.assets)
+    // Rank by tsunami risk; keep dashboard set bounded
+    const ranked = [...scoredPack.scored].sort((a, b) => {
+      if (Boolean(b.kev) !== Boolean(a.kev)) return b.kev ? 1 : -1
+      return (b.tsunamiScore || 0) - (a.tsunamiScore || 0)
+    })
+    const display = ranked.slice(0, 40)
+    scoredPack = { ...scoredPack, scored: display }
+
     if (forceTranslate && cfg.translateEnabled) {
-      const withZh = await translateBatch(scoredPack.scored, cfg.translateDelayMs)
-      scoredPack = { ...scoredPack, scored: withZh }
+      const head = display.slice(0, 20)
+      const tail = display.slice(20).map((c) => ({
+        ...c,
+        descriptionZh: c.descriptionZh || c.description,
+        descriptionEn: c.descriptionEn || c.description,
+      }))
+      const withZh = await translateBatch(head, cfg.translateDelayMs)
+      scoredPack = { ...scoredPack, scored: [...withZh, ...tail] }
     } else {
       scoredPack = {
         ...scoredPack,
-        scored: scoredPack.scored.map((c) => ({
+        scored: display.map((c) => ({
           ...c,
           descriptionZh: c.descriptionZh || c.description,
           descriptionEn: c.descriptionEn || c.description,
@@ -118,6 +181,7 @@ export async function refreshOnce({ forceTranslate = true } = {}) {
     state.high = scoredPack.high
     state.total = scoredPack.total
     state.batchScore = scoredPack.batchScore
+    state.tsunamiSum = scoredPack.tsunamiSum
     state.waveHeight = scoredPack.waveHeight
     state.wave = buildWave(scoredPack.scored)
     state.level = levelTracker.level()
@@ -126,10 +190,13 @@ export async function refreshOnce({ forceTranslate = true } = {}) {
 
     const waf = await fetchWafEdrStatus(cfg.wafEdrStatusUrl)
     state.wafEdr = waf || mockWafEdrStatus()
+    state.wafEdrLogs = await fetchWafEdrLogs(cfg.wafEdrStatusUrl)
+
+    maybeFireDefense(state.level, scoredPack.scored, cfg)
 
     logEvent(
       'SYSTEM',
-      `refresh ok source=${ingest.source} total=${state.total} batch=${state.batchScore} ${state.level.label}`,
+      `refresh ok source=${ingest.source} total=${state.total} tsunamiSum=${state.tsunamiSum} critWindow=${state.level.critCount} ${state.level.label}`,
     )
   } catch (err) {
     state.ingestError = err instanceof Error ? err.message : String(err)
@@ -146,7 +213,6 @@ export function startEngine() {
   if (timer) clearInterval(timer)
   if (countdownTimer) clearInterval(countdownTimer)
 
-  // initial pull (non-blocking)
   refreshOnce().catch(() => {})
 
   timer = setInterval(() => {
@@ -158,7 +224,10 @@ export function startEngine() {
     state.countdownSec = Math.max(0, state.countdownSec - 1)
   }, 1000)
 
-  logEvent('SYSTEM', `engine started poll=${cfg.pollIntervalSec}s port=${cfg.dashboardPort}`)
+  logEvent(
+    'SYSTEM',
+    `engine started poll=${cfg.pollIntervalSec}s feeds=NVD+CISA-KEV+VulnCheck autoDefense=${cfg.autoDefense}`,
+  )
 }
 
 export function stopEngine() {
@@ -175,7 +244,6 @@ export function apiBlock(cveId, ip) {
 
 export function apiToggleTranslate(enabled) {
   const cfg = loadAppConfig()
-  // runtime override without rewriting yaml permanently
   cfg.translateEnabled = Boolean(enabled)
   setTranslateEnabled(cfg.translateEnabled)
   logEvent('SYSTEM', `translate ${cfg.translateEnabled ? 'ON' : 'OFF'}`)
@@ -188,4 +256,17 @@ export function apiEdr(hostId) {
 
 export function apiPatch(pkg) {
   return patchSchedulePlaceholder(pkg)
+}
+
+export function apiDefenseNow() {
+  const cfg = loadAppConfig()
+  const run = runDefenseMatrix({
+    level: state.level,
+    cves: state.cves,
+    assets: cfg.assets,
+    live: Boolean(cfg.autoDefenseLive),
+  })
+  state.lastDefense = run
+  lastDefenseLevel = Math.max(lastDefenseLevel, state.level.level || 0)
+  return run
 }

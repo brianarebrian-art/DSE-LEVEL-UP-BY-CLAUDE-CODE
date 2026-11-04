@@ -38,11 +38,17 @@ export function loadAppConfig() {
   }
   const y = loadYamlFile(yamlPath) || {}
   const key = (y.nvd_api_key || process.env.NVD_API_KEY || '').trim()
+  const vcKey = (y.vulncheck_api_key || process.env.VULNCHECK_API_KEY || '').trim()
   cached = {
     nvdApiKey: key,
+    vulncheckApiKey: vcKey,
     pollIntervalSec: Number(y.poll_interval_sec) || 60,
     resultsPerPage: Number(y.results_per_page) || 20,
     autoBlock: Boolean(y.auto_block),
+    // Auto Defense Matrix on LEV4+ (dry-run logs by default)
+    autoDefense: y.auto_defense !== false,
+    // Live side-effects (pfctl / real scripts) — keep false until ready
+    autoDefenseLive: Boolean(y.auto_defense_live),
     translateEnabled: y.translate_enabled !== false,
     translateDelayMs: Number(y.translate_delay_ms) || 500,
     dashboardPort: Number(y.dashboard_port) || 3005,
