@@ -3,7 +3,7 @@
 - **狀態：** Phase 8 完成，等待批准  
 - **日期：** 2026-11-04（Asia/Hong_Kong）  
 - **基線：** Phase 7 tip（含 Milestone A · Phase 6／7 文件）  
-- **驗收範圍（強制）：** 只驗 **Milestone A＋既有主線**。Milestone B–G 標 **N/A（Out of scope）**——見 [`phase-5-status.md`](./phase-5-status.md)、[`phase-7-remediation-report.md`](./phase-8 對齊 Phase 7 §8)。  
+- **驗收範圍（強制）：** 只驗 **Milestone A＋既有主線**。Milestone B–G 標 **N/A（Out of scope）**——見 [`phase-5-status.md`](./phase-5-status.md)、[`phase-7-remediation-report.md`](./phase-7-remediation-report.md) §8。  
 - **方法：** 自動化閘重跑＋靜態／文件對帳。**無** staging RLS 實彈；**無**全流程 browser 錄影（產品閉環多數 N/A；A 項以單元／接線＋Phase 6 SEO smoke 為證）。  
 - **硬閘：** P0 未答 → 唔宣稱「可上 production 遷移／全量發布」。
 
