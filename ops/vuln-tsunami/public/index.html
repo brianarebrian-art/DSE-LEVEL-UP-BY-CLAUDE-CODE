@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>DSE Level Up · Vulnerability Tsunami</title>
+  <link rel="stylesheet" href="/assets/dashboard.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="top">
+    <p class="brand">DSE Level Up</p>
+    <p class="iso">localhost:3005 · 同官網完全隔離</p>
+  </header>
+
+  <main class="stage">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Vulnerability Tsunami Defence</h1>
+      <p class="lede" id="next-action">載入狀態中…</p>
+      <div class="cta-row">
+        <button type="button" id="btn-scan" class="btn primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M12 2a1 1 0 0 1 1 1v2.07A8.001 8.001 0 0 1 19.93 11H22a1 1 0 1 1 0 2h-2.07A8.001 8.001 0 0 1 13 19.93V22a1 1 0 1 1-2 0v-2.07A8.001 8.001 0 0 1 4.07 13H2a1 1 0 1 1 0-2h2.07A8.001 8.001 0 0 1 11 4.07V3a1 1 0 0 1 1-1Zm0 5a5 5 0 1 0 0 10A5 5 0 0 0 12 7Z"/>
+          </svg>
+          立即掃描
+        </button>
+        <label class="field">
+          <span>回溯小時</span>
+          <input id="hours" type="number" min="1" max="720" value="24" />
+        </label>
+      </div>
+      <p class="meta" id="status-line">—</p>
+    </section>
+
+    <section class="alerts" aria-labelledby="alerts-title">
+      <div class="sec-head">
+        <h2 id="alerts-title">最新告警</h2>
+        <p id="alerts-count">最多顯示 5 條</p>
+      </div>
+      <ol id="alert-list" class="alert-list"></ol>
+      <pre id="report" class="report" hidden></pre>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>唔經 Vercel · 唔進官網 · NVD key 只喺本機 <code>.env</code></p>
+  </footer>
+
+  <script src="/assets/dashboard.js" type="module"></script>
+</body>
+</html>

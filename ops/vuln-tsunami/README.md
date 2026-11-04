@@ -6,13 +6,20 @@ Desktop-only NVD real-time monitor for the **DSE Level Up** stack.
 
 Output follows [i-have-adhd](https://github.com/ayghri/i-have-adhd): action first, numbered steps, max 5 alerts, one next step.
 
-## Start on MacBook Pro (about 5 minutes)
+## Open the dashboard (localhost:3005)
 
 1. `cd ops/vuln-tsunami`
-2. `cp .env.example .env`
-3. Paste `NVD_API_KEY=…` into `.env` (desktop only)
-4. `node monitor.mjs --hours 24 --notify`
-5. `bash mac/install-launchd.sh` — polls every 30 minutes + Notification Center
+2. `cp .env.example .env` then paste `NVD_API_KEY=…`
+3. `node server.mjs`
+4. Browser: [http://127.0.0.1:3005](http://127.0.0.1:3005)
+5. Press **立即掃描**
+
+Binds **127.0.0.1:3005 only**. Not the official site (`:3001` / dselevelup.com).
+
+## CLI + launchd (optional)
+
+1. `node monitor.mjs --hours 24 --notify`
+2. `bash mac/install-launchd.sh` — every 30 minutes + Notification Center
 
 ## What it watches
 
@@ -28,6 +35,7 @@ Only **HIGH / CRITICAL / CISA KEV** hits against the watchlist raise an alert.
 ## Commands
 
 ```bash
+node server.mjs                   # dashboard → http://127.0.0.1:3005
 node monitor.mjs                  # last 24h (default)
 node monitor.mjs --hours 72       # wider window
 node monitor.mjs --notify         # macOS banner on NEW hits
