@@ -175,15 +175,17 @@ export async function refreshOnce({ forceTranslate = true } = {}) {
       }
     }
 
-    levelTracker.note(scoredPack.scored)
-    state.cves = scoredPack.scored
-    state.crit = scoredPack.crit
-    state.high = scoredPack.high
-    state.total = scoredPack.total
-    state.batchScore = scoredPack.batchScore
-    state.tsunamiSum = scoredPack.tsunamiSum
-    state.waveHeight = scoredPack.waveHeight
-    state.wave = buildWave(scoredPack.scored)
+    // Recompute batch stats on the displayed set
+    const shown = scoreBatch(scoredPack.scored, cfg.assets)
+    levelTracker.note(shown.scored)
+    state.cves = shown.scored
+    state.crit = shown.crit
+    state.high = shown.high
+    state.total = shown.total
+    state.batchScore = shown.batchScore
+    state.tsunamiSum = shown.tsunamiSum
+    state.waveHeight = shown.waveHeight
+    state.wave = buildWave(shown.scored)
     state.level = levelTracker.level()
     state.lastIngestAt = new Date().toISOString()
     state.countdownSec = cfg.pollIntervalSec
@@ -192,7 +194,7 @@ export async function refreshOnce({ forceTranslate = true } = {}) {
     state.wafEdr = waf || mockWafEdrStatus()
     state.wafEdrLogs = await fetchWafEdrLogs(cfg.wafEdrStatusUrl)
 
-    maybeFireDefense(state.level, scoredPack.scored, cfg)
+    maybeFireDefense(state.level, shown.scored, cfg)
 
     logEvent(
       'SYSTEM',

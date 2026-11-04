@@ -22,7 +22,7 @@ Also serves WAF/EDR stub: [http://127.0.0.1:8765/status](http://127.0.0.1:8765/s
 1. **Ingestion (每分鐘)** — NVD + CISA KEV + optional VulnCheck；合併去重；CMDB `assets` + WAF/EDR `:8765/status|/logs`
 2. **Scoring** — 海嘯分 = `CVSS × 資產重要度 × 網絡暴露面`；**LEV4 = 10 分鐘內嚴重 > 15**
 3. **Defense Matrix** — LEV4+ 自動：WAF 規則檔 + EDR 隔離 + Patch 排程；全部寫 `vulntsunami.log`（`auto_defense_live=false` 時 dry-run）
-4. **Translate** — MyMemory `en|zh-TW`；ZH 主 / EN 灰
+4. **Translate** — MyMemory `en|zh-TW` + **SQLite `en→zh` 快取**（`data/translate-cache.sqlite`）；ZH 主 / EN 灰
 
 ## Mac MenuBar
 
