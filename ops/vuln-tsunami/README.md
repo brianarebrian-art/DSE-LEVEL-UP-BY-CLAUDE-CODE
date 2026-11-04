@@ -19,10 +19,10 @@ Also serves WAF/EDR stub: [http://127.0.0.1:8765/status](http://127.0.0.1:8765/s
 
 ## Layers
 
-1. **Ingestion** — every 60s NVD `cves/2.0?resultsPerPage=20`; fail → `api.allorigins.win`; fail → `[模擬]` mock
-2. **Scoring** — CVSS×importance×exposure; batch `crit*4 + high*2 + total`; LEV4 if crit surge ≥15 / 10min
-3. **Defense** — one-click 已攔截 + `vulntsunami.log`; optional `actions/block_ip.sh` + pfctl when `auto_block=true`
-4. **Translate** — MyMemory `en|zh-TW`, 500ms gap; ZH primary / EN gray; toggle top-right
+1. **Ingestion (每分鐘)** — NVD + CISA KEV + optional VulnCheck；合併去重；CMDB `assets` + WAF/EDR `:8765/status|/logs`
+2. **Scoring** — 海嘯分 = `CVSS × 資產重要度 × 網絡暴露面`；**LEV4 = 10 分鐘內嚴重 > 15**
+3. **Defense Matrix** — LEV4+ 自動：WAF 規則檔 + EDR 隔離 + Patch 排程；全部寫 `vulntsunami.log`（`auto_defense_live=false` 時 dry-run）
+4. **Translate** — MyMemory `en|zh-TW`；ZH 主 / EN 灰
 
 ## Mac MenuBar
 

@@ -126,11 +126,14 @@ function renderCves(cves) {
         : c.descriptionZh || c.description
       const en = c.descriptionEn || c.description
       const assets = (c.assets || []).map((a) => a.name).join('、') || '—'
+      const src = (c.sources || []).join('+') || '—'
       const blocked = c.blocked
       return `<tr class="${blocked ? 'blocked-row' : ''}" data-id="${escapeHtml(c.id)}">
         <td><a href="${nvd}" target="_blank" rel="noopener noreferrer">${escapeHtml(c.id)}</a>${c.simulated ? ' <span class="pill">模擬</span>' : ''}${c.kev ? ' <span class="pill">KEV</span>' : ''}</td>
         <td><span class="badge ${escapeHtml(c.tier)}">${c.cvss ?? '—'}</span></td>
+        <td class="mono">${c.tsunamiScore ?? '—'}</td>
         <td>${escapeHtml(c.tierZh || '—')}</td>
+        <td><span class="pill">${escapeHtml(src)}</span></td>
         <td>
           <p class="desc-zh">${escapeHtml(zh)}</p>
           <p class="desc-en">${escapeHtml(en)}</p>
@@ -194,9 +197,11 @@ function applyState(s) {
     $('status-msg').textContent = s.ingestError
     $('status-msg').classList.add('err')
   } else {
+    const feeds = (s.ingestSources || []).join('+') || s.lastIngestSource || '—'
+    const win = s.level?.critCount ?? 0
     $('status-msg').textContent = s.refreshing
       ? '刷新中…'
-      : `batch=${s.batchScore} · wave=${s.waveHeight} · crit ${s.counts?.crit ?? 0} / high ${s.counts?.high ?? 0}`
+      : `feeds=${feeds} · 海嘯分合計=${s.tsunamiSum ?? 0} · 10分窗嚴重=${win} · ${s.level?.label || ''}`
     $('status-msg').classList.remove('err')
   }
 
@@ -277,6 +282,20 @@ $('cve-body').addEventListener('click', async (e) => {
   }
 })
 
+$('btn-defense').addEventListener('click', async () => {
+  $('defense-msg').textContent = 'Defense Matrix 執行中…'
+  const res = await fetch('/api/defense', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: '{}',
+  })
+  const data = await res.json()
+  if (data.state) applyState(data.state)
+  $('defense-msg').textContent = data.run
+    ? `Matrix ${data.run.level} · WAF ${data.run.waf?.rules ?? 0} 條 · 已寫入日誌`
+    : data.error || '完成'
+})
+
 $('btn-edr').addEventListener('click', async () => {
   const res = await fetch('/api/edr-isolate', {
     method: 'POST',
@@ -284,7 +303,8 @@ $('btn-edr').addEventListener('click', async () => {
     body: JSON.stringify({ hostId: 'founder-mac' }),
   })
   const data = await res.json()
-  $('status-msg').textContent = data.message || 'EDR placeholder'
+  $('defense-msg').textContent = data.message || 'EDR'
+  fetchState().catch(() => {})
 })
 
 $('btn-patch').addEventListener('click', async () => {
@@ -294,7 +314,8 @@ $('btn-patch').addEventListener('click', async () => {
     body: JSON.stringify({ package: 'next' }),
   })
   const data = await res.json()
-  $('status-msg').textContent = data.message || 'Patch placeholder'
+  $('defense-msg').textContent = data.message || 'Patch'
+  fetchState().catch(() => {})
 })
 
 tickClock()

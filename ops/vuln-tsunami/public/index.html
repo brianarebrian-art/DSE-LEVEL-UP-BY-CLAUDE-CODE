@@ -56,7 +56,9 @@
             <tr>
               <th>CVE</th>
               <th>CVSS</th>
+              <th>海嘯分</th>
               <th>等級</th>
+              <th>來源</th>
               <th>描述</th>
               <th>資產</th>
               <th>防禦</th>
@@ -79,10 +81,12 @@
         <h2 id="def-title">Defense Matrix</h2>
       </div>
       <div class="def-row">
-        <button type="button" id="btn-edr" class="btn ghost">EDR 隔離（佔位）</button>
-        <button type="button" id="btn-patch" class="btn ghost">Patch 排程（佔位）</button>
+        <button type="button" id="btn-defense" class="btn">立即執行 Defense Matrix</button>
+        <button type="button" id="btn-edr" class="btn ghost">EDR 隔離</button>
+        <button type="button" id="btn-patch" class="btn ghost">Patch 排程</button>
         <span id="waf-edr" class="pill">WAF/EDR：—</span>
       </div>
+      <p id="defense-msg" class="status"></p>
     </section>
 
     <section class="panel" aria-labelledby="log-title">

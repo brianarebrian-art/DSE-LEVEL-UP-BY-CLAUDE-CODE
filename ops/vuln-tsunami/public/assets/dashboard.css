@@ -260,6 +260,7 @@ body.shake {
 .badge.high { color: #ffb020; border-color: #ffb020; }
 .badge.medium { color: var(--cyan); border-color: var(--cyan); }
 
+.mono { font-family: var(--mono); color: var(--cyan); }
 .desc-zh { margin: 0; font-weight: 600; line-height: 1.35; }
 .desc-en {
   margin: 0.2rem 0 0;
