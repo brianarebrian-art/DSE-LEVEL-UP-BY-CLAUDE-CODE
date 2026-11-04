@@ -56,8 +56,13 @@ test('the button sends no description and only says "received" on { ok: true }',
   assert.match(src, /呢度寫嘅字只會經你自己嘅電郵寄出，本站唔會儲存。/)
 })
 
-test('reports have their own per-IP limit, and the privacy page explains them', () => {
-  assert.match(read('proxy.ts'), /pathname !== '\/api\/report' \|\| limiter\.allow\(`r:\$\{ip\}`, AUTH_WINDOW_MS, LIMIT_REPORT\)/)
+test('reports have their own per-IP limit, and the privacy page explains them', async () => {
+  // Milestone A: report／feedback share route class `report` (10 / 10 min).
+  const { apiRouteClass, limitForRouteClass } = await import('../rateLimit.ts')
+  assert.equal(apiRouteClass('/api/report'), 'report')
+  assert.equal(apiRouteClass('/api/feedback'), 'report')
+  assert.equal(limitForRouteClass('report').limit, 10)
+  assert.match(read('proxy.ts'), /apiRouteClass|limitForRouteClass/)
   const privacy = read('app/privacy/PrivacyClient.tsx')
   assert.match(privacy, /'報告題目問題'/)
   assert.match(privacy, /唔會記低你嘅帳戶、IP 位址或者裝置/)

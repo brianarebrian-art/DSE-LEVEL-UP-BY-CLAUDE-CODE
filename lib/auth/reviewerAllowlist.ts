@@ -1,6 +1,7 @@
 import 'server-only'
 import { getAuthUser } from '@/lib/auth/server'
 import { parseAllowlist, type AdminIdentity, type SessionUser } from '@/lib/auth/adminIdentity'
+import { emailVerifiedFromAuthUser } from '@/lib/auth/founderIdentity'
 
 export type ReviewerRole = 'admin' | 'teacher' | 'subject_editor' | 'volunteer'
 export interface ReviewerIdentity extends AdminIdentity {
@@ -47,11 +48,11 @@ export async function requireReviewer(): Promise<ReviewerIdentity | null> {
             (user.user_metadata?.full_name as string | undefined) ??
             (user.user_metadata?.name as string | undefined) ??
             user.email,
-          emailVerified: Boolean(user.email),
+          emailVerified: emailVerifiedFromAuthUser(user),
         }
       : null,
     adminEmails,
     reviewerEmails,
-    { requireVerifiedEmail: false },
+    { requireVerifiedEmail: true },
   )
 }

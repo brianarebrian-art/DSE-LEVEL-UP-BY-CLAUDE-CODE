@@ -44,6 +44,17 @@ test('接線：requireAdmin 經 getAuthUser + adminFromUser，唔經 Auth.js／B
   const src = readFileSync(fileURLToPath(new URL('../auth/adminAllowlist.ts', import.meta.url)), 'utf8')
   assert.match(src, /getAuthUser/)
   assert.match(src, /adminFromUser/)
+  assert.match(src, /emailVerifiedFromAuthUser/)
+  assert.match(src, /requireVerifiedEmail:\s*true/)
+  assert.doesNotMatch(src, /requireVerifiedEmail:\s*false/)
   assert.doesNotMatch(src, /better-auth|nextAuth|from ['"]@\/auth['"]/)
   assert.doesNotMatch(src, /\.includes\(\s*[a-z.]*email/i, 'admin 判斷唔可以繞過 adminFromUser')
+})
+
+test('接線：requireReviewer 同樣要求真 email verified', () => {
+  const src = readFileSync(fileURLToPath(new URL('../auth/reviewerAllowlist.ts', import.meta.url)), 'utf8')
+  assert.match(src, /emailVerifiedFromAuthUser/)
+  assert.match(src, /requireVerifiedEmail:\s*true/)
+  assert.doesNotMatch(src, /requireVerifiedEmail:\s*false/)
+  assert.doesNotMatch(src, /emailVerified:\s*Boolean\(\s*user\.email\s*\)/)
 })

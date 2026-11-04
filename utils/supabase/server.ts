@@ -1,3 +1,4 @@
+import 'server-only'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 // SERVER-ONLY Supabase client using the service-role key.
@@ -5,6 +6,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 // ⚠️ NEVER import this from a client component. The service-role key bypasses Row
 // Level Security and must never reach the browser. It is read from process.env at
 // REQUEST time (not build time) and only inside server route handlers.
+// `import 'server-only'` makes accidental client imports fail at build time.
 //
 // Singleton: created once per server process so we don't open a fresh connection
 // pool on every request (防線 C).

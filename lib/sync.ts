@@ -538,6 +538,24 @@ export function emptySnapshot(): Snapshot {
 }
 
 /** The user id this device's local data last synced as (null if never). */
+/**
+ * True when this device may hold learning data newer than the last successful cloud merge.
+ * Used on logout (D5／S5): try sync first; if still dirty, force an explicit abandon choice.
+ */
+export function hasUnsyncedLocalProgress(): boolean {
+  if (!isBrowser()) return false
+  const updated = readNum(UPDATED_AT)
+  const synced = readNum(SYNCED_AT)
+  if (updated != null && (synced == null || updated > synced)) return true
+  // Tab-memory attempts (C1) that never bumped UPDATED_AT still count as local effort.
+  try {
+    if (loadAttempts().length > 0 && synced == null) return true
+  } catch {
+    /* ignore */
+  }
+  return false
+}
+
 export function getSyncOwner(): string | null {
   if (!isBrowser()) return null
   try {

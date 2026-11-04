@@ -67,3 +67,45 @@ export function isAuthSensitivePath(pathname: string): boolean {
 export function isUnmeteredApiPath(pathname: string): boolean {
   return pathname === '/api/health'
 }
+
+/**
+ * Route classes for shared-IP-friendly limits (v6 Milestone A / D5).
+ * School／hostel／subdivided-flat NAT must be rate-limited, never banned.
+ * Limits are per IP still at the edge (no distributed store); classes stop one
+ * busy path from starving another and give practice-count a wide school bucket.
+ */
+export type ApiRouteClass = 'auth' | 'report' | 'count' | 'sync' | 'general'
+
+export function apiRouteClass(pathname: string): ApiRouteClass {
+  if (isAuthSensitivePath(pathname)) return 'auth'
+  if (pathname === '/api/report' || pathname === '/api/feedback') return 'report'
+  if (pathname === '/api/practice-count') return 'count'
+  if (
+    pathname === '/api/progress' ||
+    pathname === '/api/sync/session' ||
+    pathname === '/api/sync/settings' ||
+    pathname.startsWith('/api/sync/')
+  ) {
+    return 'sync'
+  }
+  return 'general'
+}
+
+/** Sliding-window parameters: windowMs, max hits. */
+export function limitForRouteClass(routeClass: ApiRouteClass): { windowMs: number; limit: number } {
+  switch (routeClass) {
+    case 'auth':
+      return { windowMs: 10 * 60_000, limit: 30 }
+    case 'report':
+      return { windowMs: 10 * 60_000, limit: 10 }
+    case 'count':
+      // Wide on purpose: one school IP can finish many sets in ten minutes.
+      return { windowMs: 10 * 60_000, limit: 120 }
+    case 'sync':
+      // Progress／settings／session pings — many tabs on one NAT; still blunts floods.
+      return { windowMs: 60_000, limit: 120 }
+    case 'general':
+    default:
+      return { windowMs: 60_000, limit: 60 }
+  }
+}

@@ -27,6 +27,14 @@ jobs:
           if [ -e middleware.ts ] || [ -e src/middleware.ts ]; then echo "✗ 唔可以有 middleware.ts —— Next 16 用 proxy.ts（見 proxy.ts 檔頭）"; exit 1; fi
           echo "✓ build 設定 OK"
 
+      - name: Secret scan (block service-role / key material in client trees)
+        run: npm run secret:scan
+
+      # Block high/critical production advisories. Moderate transitive (e.g. Sentry
+      # bundler glob、KaTeX) need coordinated upgrades — do not --force in CI.
+      - name: Dependency audit (production, high+)
+        run: npm audit --omit=dev --audit-level=high
+
       - run: npm test
 
       # 憲章 §15 五閘：term-guard（術語＋書面語）／validate-banks（題庫結構）／

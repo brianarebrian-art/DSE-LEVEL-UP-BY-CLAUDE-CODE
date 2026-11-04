@@ -1,9 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createLimiter, isAuthSensitivePath, isUnmeteredApiPath } from '@/lib/rateLimit'
+import { apiRouteClass, createLimiter, isUnmeteredApiPath, limitForRouteClass } from '@/lib/rateLimit'
 import { buildCsp, createNonce } from '@/lib/csp'
 import { canonicalSiteRedirectUrl } from '@/lib/site'
 
-// API rate limiting (Eric/資安 — $0 方案). In-memory sliding window per IP.
+// API rate limiting (Eric/資安 — $0 方案). In-memory sliding window per IP + route class.
 // Next 16 renamed `middleware` → `proxy` (see node_modules/next/dist/docs/…/proxy.md).
 //
 // ⚠️ 唔好開 middleware.ts。Next 16.3.2 見到 middleware.ts 同 proxy.ts 同時存在，
@@ -14,32 +14,32 @@ import { canonicalSiteRedirectUrl } from '@/lib/site'
 // HONEST LIMITATION: proxy instances don't share state across edge isolates, so on
 // Vercel this is best-effort per-instance throttling — it blunts bursts and naive
 // brute force at $0, but is NOT a distributed limiter (that needs KV/Redis, Stage 2).
-const WINDOW_MS = 60_000
-const LIMIT_GENERAL = 60 // per IP per minute across /api/*
+//
+// v6 Milestone A / D5: school／hostel／subdivided-flat NAT — rate-limit only, never ban.
+// Route classes (lib/rateLimit.ts) give sync／practice-count wider buckets so a class
+// on one IP is not 429'd by the old single 60/min general bucket.
+
 const AUTH_WINDOW_MS = 10 * 60_000
-const LIMIT_AUTH = 30 // per IP per 10 min on /api/auth/* (OAuth needs a handful; brute force needs hundreds)
-// Question reports (/api/report, 2026-10-04): a student reports a handful at most; a script
-// filling the table needs hundreds. Counted on top of the general bucket.
-const LIMIT_REPORT = 10 // per IP per 10 min; the post-session questions (/api/feedback) use the same limit
-// Anonymous practice counts (/api/practice-count, founders' reply 40a): two per practice set.
-// A class on one school IP can start and finish many sets in ten minutes, so the limit is wide.
-const LIMIT_COUNT = 120 // per IP per 10 min
 
 // 限流本身喺 lib/rateLimit.ts（純函數，有測試；Map 有上限）。
 const limiter = createLimiter({ maxKeys: 2000, staleMs: AUTH_WINDOW_MS })
 
+function clientIp(request: NextRequest): string {
+  // Prefer the left-most X-Forwarded-For hop when the platform appends; still forgeable
+  // if the edge does not overwrite — treat as best-effort identity, never as ban key.
+  return (
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'anon'
+  )
+}
+
 function rateLimit(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'anon'
-  // 嚴格桶只覆蓋暴力破解面 —— 邊啲路徑、點解 session 唔包，見 lib/rateLimit.ts
-  // isAuthSensitivePath 嘅註釋。
+  const ip = clientIp(request)
   const { pathname } = request.nextUrl
-  const isAuthSensitive = isAuthSensitivePath(pathname)
-  const ok = isAuthSensitive
-    ? limiter.allow(`a:${ip}`, AUTH_WINDOW_MS, LIMIT_AUTH)
-    : limiter.allow(`g:${ip}`, WINDOW_MS, LIMIT_GENERAL) &&
-      (pathname !== '/api/report' || limiter.allow(`r:${ip}`, AUTH_WINDOW_MS, LIMIT_REPORT)) &&
-      (pathname !== '/api/feedback' || limiter.allow(`f:${ip}`, AUTH_WINDOW_MS, LIMIT_REPORT)) &&
-      (pathname !== '/api/practice-count' || limiter.allow(`c:${ip}`, AUTH_WINDOW_MS, LIMIT_COUNT))
+  const routeClass = apiRouteClass(pathname)
+  const { windowMs, limit } = limitForRouteClass(routeClass)
+  const ok = limiter.allow(`${routeClass}:${ip}`, windowMs, limit)
   if (!ok) {
     return NextResponse.json(
       { error: 'Too many requests, please slow down.', code: 'RATE_LIMITED' },

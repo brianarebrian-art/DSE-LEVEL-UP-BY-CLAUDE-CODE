@@ -59,13 +59,17 @@ test('the migration matches the events and holds nothing that identifies a stude
   assert.match(sql, /set search_path = public/)
 })
 
-test('the route reads no session, IP or device, and stores nothing unless enabled on production', () => {
+test('the route reads no session, IP or device, and stores nothing unless enabled on production', async () => {
   const route = strip(read('app/api/practice-count/route.ts'))
   assert.doesNotMatch(route, /getSyncUserId|auth\(|x-forwarded-for|x-real-ip|user-agent|cookies\(|headers\(/)
   assert.match(route, /if \(!PRACTICE_COUNTS_ENABLED \|\| process\.env\.VERCEL_ENV !== 'production'\) \{/)
   assert.match(route, /parsePracticeCount\(read\.value\)/)
   assert.match(route, /\.rpc\(FN, toRpcArgs\(parsed\.value\)\)/)
-  assert.match(read('proxy.ts'), /pathname !== '\/api\/practice-count' \|\| limiter\.allow\(`c:\$\{ip\}`/)
+  // Milestone A: practice-count uses route class `count` (wide school-friendly bucket).
+  const { apiRouteClass, limitForRouteClass } = await import('../rateLimit.ts')
+  assert.equal(apiRouteClass('/api/practice-count'), 'count')
+  assert.equal(limitForRouteClass('count').limit, 120)
+  assert.match(read('proxy.ts'), /apiRouteClass|limitForRouteClass/)
 })
 
 test('the practice page counts one start per new set and a finish on both ways to finish', () => {
