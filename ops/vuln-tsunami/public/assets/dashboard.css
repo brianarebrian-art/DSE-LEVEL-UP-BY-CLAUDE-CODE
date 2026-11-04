@@ -1,0 +1,234 @@
+:root {
+  --ink: #1c2420;
+  --muted: #5a6a62;
+  --paper: #eef3ef;
+  --panel: rgba(255, 255, 255, 0.72);
+  --line: rgba(28, 36, 32, 0.12);
+  --accent: #2f6b4f;
+  --accent-ink: #f4faf6;
+  --danger: #8b2e2e;
+  --warn: #8a5a12;
+  --ok: #2f6b4f;
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --body: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--body);
+  background: var(--paper);
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(47, 107, 79, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(138, 90, 18, 0.12), transparent 55%),
+    linear-gradient(180deg, #f7faf8 0%, #e7eee9 48%, #dfe8e2 100%);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.25rem clamp(1rem, 4vw, 2.5rem) 0;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.iso {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stage {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 3rem;
+}
+
+.hero h1 {
+  margin: 0.4rem 0 0.75rem;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  max-width: 42rem;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: end;
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0.55rem;
+  padding: 0.7rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn.primary:hover { filter: brightness(1.05); }
+.btn:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.field input {
+  width: 6.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  background: var(--panel);
+  font: inherit;
+  color: var(--ink);
+}
+
+.meta {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.alerts {
+  margin-top: 2.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.sec-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.sec-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.sec-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.alert-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.alert-list li {
+  padding: 0.95rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  backdrop-filter: blur(6px);
+}
+
+.alert-list li.critical { border-left-color: var(--danger); }
+.alert-list li.high { border-left-color: var(--warn); }
+
+.alert-list .id {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.alert-list .do {
+  margin: 0.45rem 0 0;
+  font-weight: 600;
+}
+
+.alert-list .desc {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.alert-list a {
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 1rem 0;
+}
+
+.report {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: rgba(28, 36, 32, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  white-space: pre-wrap;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  overflow: auto;
+}
+
+.foot {
+  padding: 0 clamp(1rem, 4vw, 2.5rem) 2rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.foot code {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+@media (max-width: 640px) {
+  .top { flex-direction: column; gap: 0.25rem; }
+}

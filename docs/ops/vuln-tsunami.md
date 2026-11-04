@@ -5,10 +5,11 @@
 | Item | Value |
 |---|---|
 | Code | `ops/vuln-tsunami/` |
-| Runtime | MacBook Pro + launchd (every 30 min) |
+| Dashboard | `node ops/vuln-tsunami/server.mjs` → **http://127.0.0.1:3005** (localhost only) |
+| Runtime | MacBook Pro dashboard + optional launchd (every 30 min) |
 | Data source | NVD CVE API 2.0 (`apiKey` header) |
 | Output style | [i-have-adhd](https://github.com/ayghri/i-have-adhd) |
-| Website coupling | **None** — isolation guard: `node ops/vuln-tsunami/check-isolation.mjs` |
+| Website coupling | **None** — isolation guard: `node ops/vuln-tsunami/check-isolation.mjs` · not port 3001 |
 | Cost | NVD free tier; zero new npm deps; charter §5 OK |
 
 ## Why isolated
