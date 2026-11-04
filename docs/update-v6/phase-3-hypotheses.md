@@ -1,6 +1,6 @@
 # DSE Level Up v6 Phase 3 假設驗證設計
 
-- **狀態：** Phase 3 完成，等待批准進入 Phase 4A
+- **狀態：** Phase 3 完成；已批准進入 Phase 4A（見 `phase-4a-product-design.md`）
 - **日期：** 2026-11-04（Asia/Hong_Kong）
 - **前置：** [`phase-1-research.md`](./phase-1-research.md)、[`phase-2-problem-definition.md`](./phase-2-problem-definition.md)
 - **方法：** 只設計低成本驗證。**唔**開發完整功能、**唔**改生產資料、**唔**加新追蹤供應商、**唔**開 AI runtime。
