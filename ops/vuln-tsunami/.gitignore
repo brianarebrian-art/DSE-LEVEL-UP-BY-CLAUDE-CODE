@@ -1,7 +1,9 @@
 .env
 .env.local
+config.yaml
 data/
 reports/
 *.log
+vulntsunami.log
 .DS_Store
 node_modules/

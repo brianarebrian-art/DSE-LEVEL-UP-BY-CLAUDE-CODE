@@ -1,0 +1,81 @@
+# DSE Level Up — Vulnerability Tsunami Defence (desktop-isolated)
+# Copy to config.yaml and paste your NVD key. Never commit config.yaml.
+
+nvd_api_key: ""          # or set NVD_API_KEY in .env
+vulncheck_api_key: ""    # optional; or VULNCHECK_API_KEY — skip if empty
+poll_interval_sec: 60    # NVD + CISA KEV + VulnCheck every minute
+results_per_page: 20
+auto_block: false        # Mac pfctl real block — keep false until you understand the risk
+auto_defense: true       # LEV4+ fires Defense Matrix (WAF/EDR/Patch) into logs
+auto_defense_live: false # true = run actions/*.sh for real; default dry-run + log only
+translate_enabled: true
+translate_delay_ms: 500
+dashboard_port: 3005
+waf_edr_status_url: "http://127.0.0.1:8765/status"
+
+# CMDB — up to 16 assets shown on the grid
+assets:
+  - id: next-web
+    name: Next.js 官網
+    importance: 5
+    exposure: 5
+  - id: supabase-auth
+    name: Supabase Auth
+    importance: 5
+    exposure: 4
+  - id: supabase-db
+    name: Supabase Postgres
+    importance: 5
+    exposure: 3
+  - id: vercel-edge
+    name: Vercel Edge
+    importance: 4
+    exposure: 5
+  - id: node-runtime
+    name: Node.js Runtime
+    importance: 5
+    exposure: 4
+  - id: sentry
+    name: Sentry
+    importance: 2
+    exposure: 2
+  - id: katex
+    name: KaTeX
+    importance: 2
+    exposure: 3
+  - id: sharp
+    name: sharp
+    importance: 2
+    exposure: 2
+  - id: founder-mac
+    name: Founder MacBook
+    importance: 4
+    exposure: 2
+  - id: google-oauth
+    name: Google OAuth
+    importance: 4
+    exposure: 4
+  - id: speed-insights
+    name: Speed Insights
+    importance: 1
+    exposure: 2
+  - id: practice-api
+    name: Practice API
+    importance: 4
+    exposure: 4
+  - id: sync-api
+    name: Sync API
+    importance: 4
+    exposure: 3
+  - id: admin
+    name: Admin Panel
+    importance: 3
+    exposure: 2
+  - id: founder-os
+    name: Founder OS
+    importance: 3
+    exposure: 1
+  - id: cdn-static
+    name: CDN Static
+    importance: 2
+    exposure: 5

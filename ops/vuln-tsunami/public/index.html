@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>DSE Level Up · Vulnerability Tsunami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/dashboard.css" />
+</head>
+<body>
+  <div id="quake" class="quake" hidden aria-hidden="true"></div>
+
+  <header class="bar">
+    <div class="brand-block">
+      <p class="brand">DSE Level Up</p>
+      <p class="sub">Vulnerability Tsunami Defence · 127.0.0.1:3005</p>
+    </div>
+    <div class="bar-meta">
+      <time id="clock">--:--:--</time>
+      <span id="last-update">最後更新：—</span>
+      <span id="translate-progress">已翻譯 0/0</span>
+      <label class="toggle" title="中文翻譯">
+        <input type="checkbox" id="translate-toggle" checked />
+        <span>中文</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel top-actions">
+      <div class="action-row">
+        <button type="button" id="btn-refresh" class="btn">立即刷新</button>
+        <span id="countdown" class="countdown">60s</span>
+        <span id="level-badge" class="level">LEV1</span>
+        <span id="source-badge" class="pill">—</span>
+        <span id="status-msg" class="status">載入中…</span>
+      </div>
+      <div class="spinner" id="spinner" hidden role="status" aria-label="載入中"></div>
+    </section>
+
+    <section class="panel wave-panel" aria-label="嚴重度波形">
+      <canvas id="wave" width="1200" height="220"></canvas>
+    </section>
+
+    <section class="panel" aria-labelledby="cve-title">
+      <div class="sec-head">
+        <h2 id="cve-title">CVE 清單</h2>
+        <p id="empty-cve" class="empty" hidden>暫無數據</p>
+      </div>
+      <div class="table-wrap">
+        <table class="cve-table" id="cve-table">
+          <thead>
+            <tr>
+              <th>CVE</th>
+              <th>CVSS</th>
+              <th>海嘯分</th>
+              <th>等級</th>
+              <th>來源</th>
+              <th>描述</th>
+              <th>資產</th>
+              <th>防禦</th>
+            </tr>
+          </thead>
+          <tbody id="cve-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="asset-title">
+      <div class="sec-head">
+        <h2 id="asset-title">資產 CMDB（16）</h2>
+      </div>
+      <div class="asset-grid" id="asset-grid"></div>
+    </section>
+
+    <section class="panel defense" aria-labelledby="def-title">
+      <div class="sec-head">
+        <h2 id="def-title">Defense Matrix</h2>
+      </div>
+      <div class="def-row">
+        <button type="button" id="btn-defense" class="btn">立即執行 Defense Matrix</button>
+        <button type="button" id="btn-edr" class="btn ghost">EDR 隔離</button>
+        <button type="button" id="btn-patch" class="btn ghost">Patch 排程</button>
+        <span id="waf-edr" class="pill">WAF/EDR：—</span>
+      </div>
+      <p id="defense-msg" class="status"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="log-title">
+      <div class="sec-head">
+        <h2 id="log-title">API 日誌</h2>
+        <p>NVD / TRANSLATE / SYSTEM</p>
+      </div>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+
+  <script src="/assets/dashboard.js" type="module"></script>
+</body>
+</html>
