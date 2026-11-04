@@ -52,7 +52,10 @@ jobs:
 
       # 實測過：唔帶任何 env 都 build 得綠（SSG 唔喺 build time 讀 Supabase／Auth
       # 密鑰），所以 CI 唔使配 secrets。
+      # Phase 7／T-PERF-002：webpack production build 喺細 heap 會 OOM；固定 8GB。
       - name: Build check
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
         run: npm run build
 
       # Raw production-mode HTML is a regression gate, not Google indexing evidence.
