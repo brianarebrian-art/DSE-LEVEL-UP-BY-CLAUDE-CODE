@@ -1,6 +1,6 @@
 # DSE Level Up v6 Phase 4A 產品設計
 
-- **狀態：** Phase 4A 完成，等待批准進入 Phase 4B
+- **狀態：** Phase 4A 完成；已批准進入 Phase 4B（見 `phase-4b-data-security-design.md`）
 - **日期：** 2026-11-04（Asia/Hong_Kong）
 - **前置：** Phase 1–3；憲章；現有 `PracticeSession`、`reverseLog`、`reviewSchedule`、`recommendNext`、`QuestionProvenance`、`A11yPanel`
 - **方法：** 只做產品設計。**唔**改 code、**唔**改 schema、**唔**遷移資料。
