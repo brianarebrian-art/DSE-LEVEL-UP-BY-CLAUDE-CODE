@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import type { User } from '@supabase/supabase-js'
 import { getSupabaseBrowser } from '@/lib/auth/supabase-browser'
 import { signInWithGoogle, signOutSupabase } from '@/lib/auth/google-auth'
+import { wipeThisDevice } from '@/lib/privacy/wipeDevice'
+import { hasUnsyncedLocalProgress, snapshotLocal } from '@/lib/sync'
 
 // Supabase Auth session seam for the whole app. Components use `useAuthSession()`
 // and `authSignOut*` helpers — never import @supabase/ssr directly in UI.
@@ -93,10 +95,49 @@ export function authSignInGoogle(to?: string): void {
   })
 }
 
+/**
+ * Sign out for shared-device safety (v6 D5／S5):
+ * 1. If local learning data may be unsynced, try one cloud push.
+ * 2. If still unsynced, require an explicit confirm to abandon local data (or cancel).
+ * 3. Sign out, wipe this device's platform data, full reload to `/`.
+ */
 export function authSignOut(): void {
-  void signOutSupabase().then(() => {
-    if (typeof window !== 'undefined') window.location.href = '/'
-  })
+  void (async () => {
+    if (typeof window === 'undefined') return
+
+    if (hasUnsyncedLocalProgress()) {
+      let synced = false
+      try {
+        const progress = snapshotLocal()
+        const res = await fetch('/api/progress', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ progress }),
+        })
+        synced = res.ok
+      } catch {
+        synced = false
+      }
+      if (!synced) {
+        const abandon = window.confirm(
+          '未能同步本機練習資料。按「確定」會登出並清除本機資料（未上雲嘅進度可能會冇）；按「取消」保持登入，方便稍後再同步。',
+        )
+        if (!abandon) return
+      }
+    }
+
+    try {
+      await signOutSupabase()
+    } catch {
+      /* still wipe local so the next person cannot read this session's data */
+    }
+    try {
+      await wipeThisDevice()
+    } catch {
+      /* best-effort */
+    }
+    window.location.href = '/'
+  })()
 }
 
 /**

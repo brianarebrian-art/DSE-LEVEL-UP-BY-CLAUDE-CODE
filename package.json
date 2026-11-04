@@ -10,6 +10,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "secret:scan": "node scripts/secret-scan.mjs",
     "test": "npx --yes tsx@4.19.2 --test data/questions/__tests__/*.test.mts lib/__tests__/*.test.mts components/__tests__/*.test.mts",
     "gen:questions": "npx --yes tsx@4.19.2 scripts/gen-questions.mts",
     "qbank:queue": "node scripts/qbank/review-queue.mjs",
@@ -57,7 +59,8 @@
     "next": "^16.4.2",
     "pg": "^8.22.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.105.0",

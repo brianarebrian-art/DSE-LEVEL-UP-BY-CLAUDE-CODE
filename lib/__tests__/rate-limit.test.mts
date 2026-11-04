@@ -7,7 +7,13 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-const { createLimiter, isAuthSensitivePath, isUnmeteredApiPath } = await import('../rateLimit.ts')
+const {
+  createLimiter,
+  isAuthSensitivePath,
+  isUnmeteredApiPath,
+  apiRouteClass,
+  limitForRouteClass,
+} = await import('../rateLimit.ts')
 
 test('限流本身：窗口內超過上限就擋，過咗窗口放返', () => {
   const l = createLimiter()
@@ -62,4 +68,18 @@ test('健康探測唔計入限流，其他 API 仍然計', () => {
   for (const p of ['/api/healthz', '/api/health/extra', '/api/progress', '/api/auth/session', '/health']) {
     assert.equal(isUnmeteredApiPath(p), false, p)
   }
+})
+
+test('route class：sync／count 與 general 分開，避免學校 NAT 被單一 60/min 誤傷', () => {
+  assert.equal(apiRouteClass('/api/progress'), 'sync')
+  assert.equal(apiRouteClass('/api/sync/session'), 'sync')
+  assert.equal(apiRouteClass('/api/sync/settings'), 'sync')
+  assert.equal(apiRouteClass('/api/practice-count'), 'count')
+  assert.equal(apiRouteClass('/api/report'), 'report')
+  assert.equal(apiRouteClass('/auth/callback'), 'auth')
+  assert.equal(apiRouteClass('/api/me'), 'general')
+  assert.equal(limitForRouteClass('sync').limit, 120)
+  assert.equal(limitForRouteClass('count').limit, 120)
+  assert.equal(limitForRouteClass('general').limit, 60)
+  assert.ok(limitForRouteClass('sync').limit > limitForRouteClass('general').limit)
 })

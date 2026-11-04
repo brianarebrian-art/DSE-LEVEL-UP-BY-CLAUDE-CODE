@@ -10,9 +10,9 @@ export const dynamic = 'force-dynamic'
 
 const TABLE = 'user_progress'
 
-// Identity is resolved by the backend-agnostic helper (Auth.js today, Better Auth once
-// flipped). It returns the stable Google `sub` either way, so the row key — and thus
-// every user's existing synced progress — is preserved across the cutover.
+// Identity = Supabase Auth `auth.users.id` (uuid) via getSyncUserId().
+// Never trust a client-supplied user_id. Legacy Google `sub` rows migrate via
+// auth_identity_map (see docs/auth + migration 0030) — do not switch the row key back.
 async function currentUserId(): Promise<string | null> {
   return getSyncUserId()
 }

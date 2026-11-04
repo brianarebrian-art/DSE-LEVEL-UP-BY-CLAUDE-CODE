@@ -41,7 +41,7 @@ test('the route reads no session, IP or device', () => {
   assert.match(route, /insert\(toFeedbackRow\(parsed\.value\)\)/)
 })
 
-test('the card uses the approved wording, says thanks only on { ok: true }, and sits on /result', () => {
+test('the card uses the approved wording, says thanks only on { ok: true }, and sits on /result', async () => {
   const card = read('components/SessionFeedback.tsx')
   for (const s of ['題入面，你覺得有冇題目出錯？', '下次溫書，你會唔會再用呢度？', "zh: '冇'", "zh: '有'", "zh: '唔肯定'", "zh: '會'", "zh: '唔會'", "zh: '未知'",
     '多謝！下次見到有問題嘅題目，可以喺嗰條題下面撳「呢條題有問題？話我哋知」，我哋就知道係邊條。', '多謝你話我哋知！'])
@@ -49,6 +49,10 @@ test('the card uses the approved wording, says thanks only on { ok: true }, and 
   assert.match(card, /res\.ok && data\?\.ok === true \? 'sent' : 'failed'/)
   assert.match(card, /body: JSON\.stringify\(\{ subject: subjectId, question, answer, locale: en \? 'en' : 'zh' \}\)/)
   assert.match(read('app/result/ResultPageClient.tsx'), /\{result\.subjectId && <SessionFeedback subjectId=\{result\.subjectId\} total=\{result\.total\} \/>\}/)
-  assert.match(read('proxy.ts'), /pathname !== '\/api\/feedback' \|\| limiter\.allow\(`f:\$\{ip\}`/)
+  // Milestone A: feedback shares route class `report` with /api/report.
+  const { apiRouteClass, limitForRouteClass } = await import('../rateLimit.ts')
+  assert.equal(apiRouteClass('/api/feedback'), 'report')
+  assert.equal(limitForRouteClass('report').limit, 10)
+  assert.match(read('proxy.ts'), /apiRouteClass|limitForRouteClass/)
   assert.match(read('app/privacy/PrivacyClient.tsx'), /'做完練習嘅兩條問題'/)
 })

@@ -32,12 +32,19 @@ test('proxy sets the policy on pages and overwrites any client-sent nonce', () =
   assert.match(proxy, /headers\.set\('content-security-policy', csp\)/)
   assert.match(proxy, /response\.headers\.set\('Content-Security-Policy', csp\)/)
   assert.match(proxy, /process\.env\.NODE_ENV === 'production' \? createNonce\(\) : null/)
-  // Matcher must not skip HTML pages. Allowed exclusions: Next build assets, the
-  // Sentry tunnel path (`monitoring`), and any URL that ends in a file extension.
+  // Matcher must not skip HTML pages. Exclusions: Next build assets and URLs that
+  // end in a file extension. `/monitoring` must stay *inside* the matcher (Sentry
+  // tunnel hardening) so arbitrary subpaths cannot bypass CSP／rate-limit.
   assert.match(
     proxy,
-    /matcher:\s*\[[\s\S]*_next\/static[\s\S]*_next\/image[\s\S]*monitoring[\s\S]*\.\*\\\\\.\[a-zA-Z0-9\]\+\$[\s\S]*\]/,
+    /matcher:\s*\[[\s\S]*_next\/static[\s\S]*_next\/image[\s\S]*\.\*\\\\\.\[a-zA-Z0-9\]\+\$[\s\S]*\]/,
   )
+  assert.doesNotMatch(
+    proxy,
+    /matcher:\s*\[[\s\S]*\|monitoring\|/,
+    'matcher must not negative-lookahead-skip /monitoring',
+  )
+  assert.match(proxy, /Keep \/monitoring in the matcher/)
   assert.doesNotMatch(proxy, /matcher:[\s\S]*admin/, 'matcher must not blanket-skip app routes like /admin')
 })
 
