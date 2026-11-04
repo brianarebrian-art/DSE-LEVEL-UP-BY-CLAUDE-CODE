@@ -179,7 +179,11 @@ function applyLevel(level) {
 function applyState(s) {
   state = s
   const t = s.translate || {}
-  $('translate-progress').textContent = `已翻譯 ${t.translated ?? 0}/${t.total ?? 0}`
+  const cacheBits =
+    t.sqliteRows != null
+      ? ` · 快取 ${t.sqliteRows}（命中 mem ${t.hitsMem ?? 0}/db ${t.hitsDb ?? 0}）`
+      : ''
+  $('translate-progress').textContent = `已翻譯 ${t.translated ?? 0}/${t.total ?? 0}${cacheBits}`
   $('translate-toggle').checked = t.enabled !== false
   $('countdown').textContent = `${s.countdownSec ?? 0}s`
   $('last-update').textContent = s.lastIngestAt
