@@ -88,7 +88,8 @@ export function proxy(request: NextRequest) {
 
 // Everything except build assets and files with an extension (images, sw.js, robots.txt,
 // sitemap.xml, the web manifest, security.txt): those are not HTML and need no nonce.
+// Keep /monitoring in the matcher so arbitrary subpaths cannot bypass this proxy. The patched
+// Sentry SDK handles only its exact tunnel endpoint; unrelated requests still reach this guard.
 export const config = {
-  // Exclude Sentry tunnel (/monitoring) so proxy/CSP does not intercept SDK beacons.
-  matcher: ['/((?!_next/static|_next/image|monitoring|.*\\.[a-zA-Z0-9]+$).*)'],
+  matcher: ['/((?!_next/static|_next/image|.*\\.[a-zA-Z0-9]+$).*)'],
 }
