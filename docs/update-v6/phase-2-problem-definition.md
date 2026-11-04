@@ -1,6 +1,6 @@
 # DSE Level Up v6 Phase 2 問題定義
 
-- **狀態：** Phase 2 完成，等待批准進入 Phase 3
+- **狀態：** Phase 2 完成；已批准進入 Phase 3（見 `phase-3-hypotheses.md`）
 - **日期：** 2026-11-04（Asia/Hong_Kong）
 - **前置：** [`phase-1-research.md`](./phase-1-research.md)（基線 `95134df`；研究 commit `841e76e`）
 - **方法：** 只定義問題、邊界同驗證計劃。唔改 code、唔改 schema、唔跑 migration、唔部署。
