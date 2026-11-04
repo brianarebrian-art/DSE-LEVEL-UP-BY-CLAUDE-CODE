@@ -1,0 +1,26 @@
+---
+description: Keep the Vulnerability Tsunami Defence monitor isolated from the official DSE Level Up website.
+alwaysApply: true
+---
+
+# Vulnerability Tsunami — isolation
+
+`ops/vuln-tsunami/` is a **desktop-only** NVD monitor for the founder MacBook Pro.
+
+## Forbidden
+
+- Importing it from `app/`, `components/`, `lib/`, `scripts/`, `proxy.ts`, or any Next.js route
+- Putting `NVD_API_KEY` in Vercel, `.env.local` of the website, or any `NEXT_PUBLIC_*` var
+- Deploying the monitor with `www.dselevelup.com`
+- Adding npm packages to the website root `package.json` for this monitor
+
+## Allowed
+
+- Editing files only under `ops/vuln-tsunami/`
+- Local `.env` under `ops/vuln-tsunami/` (gitignored)
+- macOS launchd agent via `ops/vuln-tsunami/mac/install-launchd.sh`
+- Running `node ops/vuln-tsunami/check-isolation.mjs` before merge
+
+## Output
+
+Alert / report text must follow `.cursor/skills/i-have-adhd/SKILL.md`.

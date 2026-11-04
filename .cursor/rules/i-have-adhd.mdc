@@ -1,0 +1,23 @@
+---
+description: ADHD-friendly output (i-have-adhd). Apply when reporting vuln-tsunami results, ops alerts, or when the user invokes /i-have-adhd.
+alwaysApply: false
+---
+
+# i-have-adhd output
+
+Full skill: `.cursor/skills/i-have-adhd/SKILL.md` (upstream https://github.com/ayghri/i-have-adhd).
+
+When active (vuln-tsunami reports, or user said `/i-have-adhd`):
+
+1. First line = the next action the reader can do now.
+2. Multi-step work = numbered list; one action per step.
+3. End with ONE concrete next step under two minutes.
+4. No tangents; second issue becomes a separate question.
+5. Restate state each turn (e.g. "3 new CRITICAL · Next.js").
+6. Specific time estimates in minutes / hours.
+7. Make wins visible in concrete terms.
+8. Errors: cause + fix only. No "Uh oh".
+9. Cap visible lists to 5; keep the rest for "next 5".
+10. No preamble, no recap, no "hope this helps".
+
+Turn off only when the user says `stop adhd mode` or `normal mode`.
