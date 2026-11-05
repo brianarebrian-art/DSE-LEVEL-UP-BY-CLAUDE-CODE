@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
   CalendarCheck, Target, BookOpen, TrendingUp, ArrowRight, RotateCcw, Sparkles, Coins, Crosshair,
-  Bookmark, Moon, Leaf, Wrench, Network, CloudSun, Wind, ChartColumnIncreasing } from 'lucide-react'
+  Bookmark, Moon, Leaf, Wrench, Network, CloudSun, Wind, ChartColumnIncreasing, Route } from 'lucide-react'
 import {
   loadAttempts,
   computeStats,
@@ -251,6 +251,17 @@ export default function DashboardPageClient() {
  </div>
           {/* C6：對住「開始第一份練習」都撳唔落手嗰個，先係最需要呢個入口嗰個 */}
           <JustOneCard stack className="mt-8 text-left" />
+          <Link
+            href="/review/trace"
+            className="mt-4 block rounded-2xl border border-line bg-surface-raised px-5 py-4 text-left text-sm text-ink"
+          >
+            <span className="font-medium">{en ? 'Prerequisite trace' : '先備回溯'}</span>
+            <span className="mt-1 block text-xs text-ink-muted">
+              {en
+                ? 'A step that does not land walks back two layers.'
+                : '答不上的一步會回溯兩層先備。'}
+            </span>
+          </Link>
 
           {/* 空狀態【必須】有呢張卡 —— 一題都未做過嗰個學生，正正最需要聽到
               「你有嚟過已經算數」。只放喺有數據嗰個分支等於淨係恭喜已經做緊嘅人。 */}
@@ -582,8 +593,34 @@ export default function DashboardPageClient() {
  <span className="text-xs text-accent shrink-0 group-hover:translate-x-0.5 transition-transform">
               {en ? 'Open the map →' : '睇版圖 →'}
             </span>
- </div>
- </Link>
+          </div>
+        </Link>
+
+        <Link
+          href="/review/trace"
+          className="group block bg-surface-raised hover:bg-surface-sunken border border-line rounded-2xl p-5 mb-10 transition-[colors,transform] duration-100"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <span className="w-11 h-11 rounded-xl bg-surface-sunken border border-accent/25 flex items-center justify-center shrink-0" aria-hidden>
+                <Route size={20} className="text-accent" />
+              </span>
+              <div>
+                <div className="text-sm font-medium text-ink">
+                  {en ? 'Prerequisite trace' : '先備回溯'}
+                </div>
+                <div className="text-xs text-ink-muted mt-0.5">
+                  {en
+                    ? 'A wrong step walks back two layers, then asks a guiding question'
+                    : '答不上的一步會回溯兩層先備，再以問題引導'}
+                </div>
+              </div>
+            </div>
+            <span className="text-xs text-accent shrink-0 group-hover:translate-x-0.5 transition-transform">
+              {en ? 'Open' : '開始'}
+            </span>
+          </div>
+        </Link>
 
         {/* 第 3 週 · 引擎二之二：個人進度時間軸。擺喺課題掌握度同錯題指紋之間 ——
             掌握度講「而家點」，時間軸講「同上一段時間比點」，錯題指紋講「點解」。 */}

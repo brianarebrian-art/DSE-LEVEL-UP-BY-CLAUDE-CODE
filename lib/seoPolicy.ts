@@ -2,7 +2,7 @@
 export const NOINDEX_ROUTE_PREFIXES = [
   '/account', '/admin', '/founder', '/dev', '/sign-in', '/sign-up', '/sign-in-error',
   '/dashboard', '/result', '/predictor', '/bookmarks', '/logic-log',
-  '/concept-net', '/exam-day', '/capsule', '/answer-sheet', '/paper-warrior',
+  '/concept-net', '/review', '/exam-day', '/capsule', '/answer-sheet', '/paper-warrior',
   '/practice', '/start', '/waiting', '/ai',
   '/relax', '/sensei', '/credits',
 ] as const

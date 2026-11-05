@@ -40,6 +40,24 @@ if (!url) {
   process.exit(1)
 }
 
+// 與 lib/db/pooler.ts 同一條規則：只接受 transaction pooler 的 6543。
+// 這裡用純 JavaScript，因為本腳本不經 tsx。不要把連接字串印出來。
+{
+  let parsed
+  try {
+    parsed = new URL(url)
+  } catch {
+    console.error('DATABASE_URL 不是合法的連接字串。')
+    process.exit(1)
+  }
+  const port = parsed.port || '5432'
+  const host = parsed.hostname
+  if (!(port === '6543' && host.includes('pooler.supabase.com'))) {
+    console.error('已拒絕連接：必須使用 Supabase transaction pooler（主機含 pooler.supabase.com，埠 6543）。')
+    process.exit(1)
+  }
+}
+
 // 過濾走 Supabase Studio／PostgREST 自身嘅內省查詢同 migration DDL ——
 // 佢哋一定佔住排行頭幾位（讀 pg_extension、pg_timezone_names 之類），
 // 但同學生見到嘅頁面速度完全無關，留住只會淹沒真正嘅訊號。

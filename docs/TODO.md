@@ -1,0 +1,13 @@
+# 十階段
+
+- [x] Phase 0：MCP 檢查寫入 `docs/mcp-status.md`
+- [x] Phase 1：四份研究在 `docs/research/`。Mobbin 因付費牆沒有截圖
+- [x] Phase 2：`docs/PRD.md`
+- [x] Phase 3：`docs/validation.md`。1000 行臨時表已回滾。裸 `auth.uid()` 在生產政策中是 0 條
+- [x] Phase 4：`docs/architecture.md`、Canva Open Graph、原創 SVG。README banner 的 PNG 匯出被拒絕
+- [x] Phase 5：FSRS、知識圖、蘇格拉底 API、排程 API、revalidate、講解圖。`0035` 只是草稿，未套用生產庫。沒有付費短片
+- [x] Phase 6：15 項單元測試通過。本機瀏覽器走完「三次未對上 → 代數 → 相似題 → 圖 → 英文」
+- [x] Phase 7：空的進度頁補上入口。文案由「播放」改為「顯示圖」，因為沒有短片。RLS 樣本低於 50 ms。生產 Sentry 仍有一條舊問題，見驗證文件
+- [ ] Phase 8：等分支推送後的 Preview
+- [ ] Phase 9：開 PR，不合併到 main
+- [x] Phase 10 文件：`docs/post-release-verification.md`。生產合併未做，檔內分開寫本機結果和生產底數
