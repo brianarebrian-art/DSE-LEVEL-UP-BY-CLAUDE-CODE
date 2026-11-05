@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "report_id": "9001",
+  "assigned_bot_id": "math-bot",
+  "is_valid": true,
+  "confidence": 0.91,
+  "error_type": "wrong_answer",
+  "correct_answer": "B",
+  "evidence": "FIXTURE — re-solve disagrees with stored key.",
+  "should_replace": true,
+  "reasoning": "FIXTURE high-confidence replace path for Agent B tests.",
+  "dual_review_required": true,
+  "completed_at": "2026-11-05T00:10:00.000Z"
+}

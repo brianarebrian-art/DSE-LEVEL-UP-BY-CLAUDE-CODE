@@ -54,6 +54,10 @@ test('the button sends no description and only says "received" on { ok: true }',
   assert.match(src, /setSend\(res\.ok && data\?\.ok === true \? 'sent' : 'failed'\)/)
   assert.match(src, /傳送唔到。請用下面嘅電郵寄出。/)
   assert.match(src, /呢度寫嘅字只會經你自己嘅電郵寄出，本站唔會儲存。/)
+  assert.match(src, /覺得有錯？一按即查/)
+  assert.match(src, /已收到，\$\{tutorLabel\}查緊/)
+  assert.doesNotMatch(src, /AI生成替換/)
+  assert.match(src, /scanInclusiveText/)
 })
 
 test('reports have their own per-IP limit, and the privacy page explains them', async () => {
