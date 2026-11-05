@@ -13,9 +13,9 @@ jobs:
       NEXT_DISABLE_SOURCEMAP: "1"
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 26.13.0
+          node-version: '26.x'
       - run: npm ci
 
       # 2026-09-15：build 設定守衛（快，擺喺長嘅 build 之前）。

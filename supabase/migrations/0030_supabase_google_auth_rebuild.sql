@@ -169,7 +169,8 @@ CREATE INDEX IF NOT EXISTS learning_progress_user_subject_idx
 
 ALTER TABLE public.learning_progress ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON TABLE public.learning_progress FROM anon, authenticated;
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.learning_progress TO authenticated;
+-- 嚴禁學生直接 DELETE 抹除進度（僅允許 service_role 在用戶刪除帳戶時操作）
+GRANT SELECT, INSERT, UPDATE ON TABLE public.learning_progress TO authenticated;
 
 DROP POLICY IF EXISTS learning_progress_select_own ON public.learning_progress;
 CREATE POLICY learning_progress_select_own ON public.learning_progress
@@ -187,10 +188,8 @@ CREATE POLICY learning_progress_update_own ON public.learning_progress
   USING (user_id = (SELECT auth.uid()))
   WITH CHECK (user_id = (SELECT auth.uid()));
 
+-- DELETE: 預設拒絕（authenticated 無 DELETE policy，禁止抹除歷史）
 DROP POLICY IF EXISTS learning_progress_delete_own ON public.learning_progress;
-CREATE POLICY learning_progress_delete_own ON public.learning_progress
-  FOR DELETE TO authenticated
-  USING (user_id = (SELECT auth.uid()));
 
 -- ══════════════════════════════════════════════════════════════════
 -- 6. practice_attempts
