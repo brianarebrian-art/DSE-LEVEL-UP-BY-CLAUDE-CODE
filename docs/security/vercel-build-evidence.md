@@ -1,9 +1,11 @@
-# Vercel Build Hardening Evidence
+# Vercel Build Hardening Evidence (Latest Configuration)
 
 - **Branch:** `security/p0-critical-rce-full-fix`
 - **Target Deployment:** Vercel `hkg1`
 - **Framework:** `nextjs` (Next.js 16.4.5)
 - **Install Command:** `npm ci --ignore-scripts`
+- **React Version:** `19.3.1` (Latest Stable)
+- **Supabase JS:** `2.119.0` (Latest release)
 
 ## Configured Hardening (`vercel.json`)
 ```json
@@ -19,10 +21,10 @@
 ```
 
 ## Dashboard Requirements
-- `NODE_VERSION`: `22.x`
+- `NODE_VERSION`: `22.x` (or `26.x` for latest active LTS)
 - `NODE_OPTIONS`: `--max-old-space-size=12288`
 - Build Machine: 16GB
 - Edge / WAF Settings: Rate limit POST 100/min, max request body 1MB.
 
 ## Limitation Notes
-Build machine settings and Vercel WAF limits require confirmation in the Vercel project dashboard. Local build verification passed cleanly with `experimental.webpackMemoryOptimizations: true`.
+Vercel dashboard settings (16GB build machine, WAF rate limit) require dashboard administrator access. Local builds compile cleanly with `experimental.webpackMemoryOptimizations: true`.

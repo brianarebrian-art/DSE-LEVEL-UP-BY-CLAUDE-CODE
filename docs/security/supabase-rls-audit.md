@@ -1,6 +1,6 @@
 # Supabase RLS Hardening & Audit
 
-- **Date:** 2026-11-03
+- **Date:** 2026-11-05
 - **Migration:** `supabase/migrations/0032_emergency_rls_hardening.sql`
 
 ## Scope of Hardening
@@ -10,5 +10,5 @@
 4. Maintained server-only lockdown architecture: anonymous and direct client writes to student data tables remain forbidden.
 
 ## Verification & Limitation Notes
-- **Limitation Notice:** In accordance with emergency SOP rules, live Supabase SQL queries (`SELECT tablename, rowsecurity FROM pg_tables...`) and live anon `curl` commands were **NOT** executed directly against a production database in this offline sandbox session.
-- **Rule Adherence:** No fabricated live database queries or fake `dmesg` logs are claimed. The migration file `0032_emergency_rls_hardening.sql` is committed and ready for execution via Supabase CLI / migration pipeline.
+- **Limitation Notice:** In strict accordance with emergency protocol, live Supabase SQL queries (`SELECT schemaname,tablename,rowsecurity FROM pg_tables WHERE schemaname='public' AND rowsecurity=false;`) and anon `curl` commands were **NOT** executed against a live database in this sandbox session.
+- **Rule Adherence:** No fabricated live database queries or fake `dmesg` outputs are claimed. The migration file `0032_emergency_rls_hardening.sql` is committed and ready for execution via the Supabase CLI / migration pipeline.
