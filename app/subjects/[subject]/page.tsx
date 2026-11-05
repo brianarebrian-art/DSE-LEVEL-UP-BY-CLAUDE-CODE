@@ -1,3 +1,4 @@
+import { getSubjectSeoConfig } from '@/lib/seo-config'
 import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getSubject, getActiveSubjects } from '@/data/subjects'
@@ -24,11 +25,14 @@ export async function generateMetadata({
   const { subject } = await params
   const meta = getSubject(subject)
   if (!meta) notFound()
+  const seoCfg = getSubjectSeoConfig(subject)
   const questionCount = getSubjectQuestions(subject).length
   const topicCount = getSubjectTopics(subject).length
+  const title = seoCfg?.subjectTitle ?? `${meta.name} | DSE Level Up`
+  const description = subjectSeoDescription({ name: meta.name, description: meta.description, questionCount, topicCount })
   return completeSeoMetadata({
-    title: `${meta.name} | DSE Level Up`,
-    description: subjectSeoDescription({ name: meta.name, description: meta.description, questionCount, topicCount }), // i18n-exempt: 靜態 SEO meta description
+    title,
+    description,
     openGraph: {
       type: 'article',
     },

@@ -1,5 +1,8 @@
 'use client'
 
+import { RelatedNotes } from '@/components/RelatedNotes'
+import { DEEP_SUBJECT_CONTENTS } from '@/lib/deepSubjectContents'
+
 import Link from 'next/link'
 import { ArrowRight, ChevronDown, PenLine, BookOpenCheck, FileText, Search, Sparkles } from 'lucide-react'
 import { getActiveSubjects, type SubjectMeta } from '@/data/subjects'
@@ -454,6 +457,32 @@ export default function SubjectDetailView({
  )
  })}
  </div>
+
+        {/* 深度內容與精讀重點（針對 health-management, ethics-religious, ths 等關鍵科目） */}
+        {DEEP_SUBJECT_CONTENTS[meta.id] && (
+          <section className="mb-12" aria-labelledby="deep-subject-content">
+            <h2 id="deep-subject-content" className="text-lg font-medium mb-4 text-ink">
+              {en ? `${meta.nameEn ?? meta.name} Study Guide & Core Syllabus` : `${meta.name} 核心考點與精讀重點指南`}
+            </h2>
+            <div className="space-y-6">
+              {DEEP_SUBJECT_CONTENTS[meta.id].map((section, idx) => (
+                <article key={idx} className="bg-surface-raised border border-line rounded-2xl p-6">
+                  <h3 className="text-base font-medium text-ink mb-3">{section.title}</h3>
+                  <div className="space-y-3 text-sm leading-relaxed text-ink-muted">
+                    {section.content.map((p, pIdx) => (
+                      <p key={pIdx}>{p}</p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 雙向內部連結：前往筆記頁 */}
+        <div className="mb-12">
+          <RelatedNotes subjectId={meta.id} subjectName={meta.name} isNotesPage={false} />
+        </div>
 
         {/* FAQ (founders' reply 61a). The page also carries these as FAQPage structured data
             (page.tsx), built by the same function from the same counts. */}
