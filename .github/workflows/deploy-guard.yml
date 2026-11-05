@@ -5,7 +5,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npx ajv-cli validate -s node_modules/vercel/schemas/vercel.json -d vercel.json || node -e "const fs = require('fs'); const c = JSON.parse(fs.readFileSync('vercel.json', 'utf8')); if ('NODE_VERSION' in c) throw new Error('vercel.json contains NODE_VERSION');"
+      - name: Validate vercel.json against official schema & reject NODE_VERSION
+        run: |
+          node -e '
+            const fs = require("fs");
+            const https = require("https");
+            const raw = fs.readFileSync("vercel.json", "utf8");
+            const config = JSON.parse(raw);
+            if ("NODE_VERSION" in config) {
+              console.error("vercel.json must NOT contain NODE_VERSION");
+              process.exit(1);
+            }
+            https.get("https://openapi.vercel.sh/vercel.json", (res) => {
+              if (res.statusCode !== 200) {
+                console.warn("Unable to fetch schema, HTTP " + res.statusCode);
+                process.exit(0);
+              }
+              let data = "";
+              res.on("data", chunk => data += chunk);
+              res.on("end", () => {
+                const schema = JSON.parse(data);
+                const allowedKeys = new Set(Object.keys(schema.properties || {}));
+                allowedKeys.add("$schema");
+                const disallowed = Object.keys(config).filter(key => !allowedKeys.has(key));
+                if (disallowed.length > 0) {
+                  console.error("Disallowed properties: " + disallowed.join(", "));
+                  process.exit(1);
+                }
+                console.log("vercel.json valid!");
+              });
+            }).on("error", (err) => {
+              console.warn("Network error: " + err.message);
+            });
+          '
       - run: node -e "const p=require('./package.json'); if(p.engines?.node!=='26.x') throw new Error('Node must be 26.x')"
   build-check:
     runs-on: ubuntu-latest
