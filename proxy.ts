@@ -77,8 +77,12 @@ export function proxy(request: NextRequest) {
 
   // Hardening for CVE-2026-114139 tunnelRoute bypass:
   // Sentry tunnelRoute uses exact '/monitoring'. Any subpath like '/monitoring/*' must be rejected with 404.
+  if (pathname === '/monitoring' || pathname === '/monitoring/') {
+    // Exact tunnel endpoint allowed for Sentry SDK telemetry forwarding
+    return NextResponse.next()
+  }
   if (pathname.startsWith('/monitoring/')) {
-    return new NextResponse('Not Found', { status: 404 })
+    return NextResponse.json({ error: 'Not found' }, { status: 404 })
   }
 
   // OAuth callback + migrate: strict auth bucket (see isAuthSensitivePath).

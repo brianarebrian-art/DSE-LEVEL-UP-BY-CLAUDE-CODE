@@ -1,5 +1,6 @@
 {
   "framework": "nextjs",
+  "NODE_VERSION": "26.x",
   "installCommand": "npm ci --ignore-scripts",
   "regions": ["hkg1"],
   "crons": [

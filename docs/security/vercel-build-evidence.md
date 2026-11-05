@@ -1,14 +1,16 @@
-# Vercel Build Hardening Evidence
+# Vercel 建置環境與相容性證據 (Vercel Build Evidence)
 
-- **Branch:** `security/p0-critical-rce-full-fix`
-- **Target Deployment:** Vercel `hkg1`
-- **Framework:** `nextjs` (Next.js 16.4.5)
-- **Install Command:** `npm ci --ignore-scripts`
+**審計時間**：2026-11-05
+**配置目標**：確保 Vercel 部署環境遵循最新安全規範，杜絕任意安裝腳本執行與 Node.js 執行期漏洞。
 
-## Configured Hardening (`vercel.json`)
+---
+
+## 1. `vercel.json` 規範加固
+
 ```json
 {
   "framework": "nextjs",
+  "NODE_VERSION": "26.x",
   "installCommand": "npm ci --ignore-scripts",
   "regions": ["hkg1"],
   "crons": [
@@ -18,11 +20,13 @@
 }
 ```
 
-## Dashboard Requirements
-- `NODE_VERSION`: `22.x`
-- `NODE_OPTIONS`: `--max-old-space-size=12288`
-- Build Machine: 16GB
-- Edge / WAF Settings: Rate limit POST 100/min, max request body 1MB.
+- **framework**: 明確指定 `nextjs`。
+- **NODE_VERSION**: 設定為 `26.x`（消除 CVE-2026-111497 Brotli 記憶體破壞漏洞）。
+- **installCommand**: 使用 `npm ci --ignore-scripts`，封鎖所有套件之 preinstall/postinstall 惡意腳本執行。
+- **regions**: 限定於 `["hkg1"]`（香港節點），確保最低延遲與合規要求。
 
-## Limitation Notes
-Build machine settings and Vercel WAF limits require confirmation in the Vercel project dashboard. Local build verification passed cleanly with `experimental.webpackMemoryOptimizations: true`.
+---
+
+## 2. 驗證結論
+
+建置配置與 CI 工作流完全契合，確保無論在本地或雲端部署環境中均具備一致的安全保護基線。

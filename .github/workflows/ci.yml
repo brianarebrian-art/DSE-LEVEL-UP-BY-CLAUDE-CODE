@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest-16-cores
     env:
       NODE_OPTIONS: --max-old-space-size=12288
+      NEXT_DISABLE_SOURCEMAP: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 26.13.0
       - run: npm ci
 
       # 2026-09-15：build 設定守衛（快，擺喺長嘅 build 之前）。
