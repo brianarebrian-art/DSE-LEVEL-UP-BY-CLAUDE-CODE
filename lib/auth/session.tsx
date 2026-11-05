@@ -90,6 +90,7 @@ export function authSignInGoogle(to?: string): void {
       : '/dashboard')
   void signInWithGoogle(target).then((r) => {
     if (r.error && typeof window !== 'undefined') {
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       window.location.href = `/sign-in?error=${encodeURIComponent(r.error)}`
     }
   })
@@ -136,6 +137,7 @@ export function authSignOut(): void {
     } catch {
       /* best-effort */
     }
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
     window.location.href = '/'
   })()
 }

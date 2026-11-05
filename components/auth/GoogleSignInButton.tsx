@@ -26,6 +26,7 @@ export default function GoogleSignInButton({
     const { error } = await signInWithGoogle(next)
     if (error) {
       setBusy(false)
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       window.location.href = `/sign-in?error=${encodeURIComponent(error)}`
     }
     // On success the browser navigates to Google / Supabase — leave busy=true.

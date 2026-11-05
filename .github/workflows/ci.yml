@@ -13,9 +13,23 @@ jobs:
       NEXT_DISABLE_SOURCEMAP: "1"
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@v4
         with:
           node-version: '26.x'
+          cache: npm
+
+      - name: Setup dummy env for CI
+        run: |
+          echo "NEXT_PUBLIC_SUPABASE_URL=https://dummy.supabase.co" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=dummy" >> $GITHUB_ENV
+
+      - name: Verify lockfile consistency
+        run: |
+          npm ci --ignore-scripts --dry-run || {
+            echo "::error::package.json and package-lock.json are out of sync! Run 'npm install' to re-sync lockfile."
+            exit 1
+          }
+
       - run: npm ci
 
       # 2026-09-15：build 設定守衛（快，擺喺長嘅 build 之前）。
@@ -51,12 +65,19 @@ jobs:
       # 不純函數、用咗未宣告嘅變量）可以長期積落嚟冇人發現。修完之後喺呢度落閘，
       # This SEO release requires zero errors and zero warnings.
       - name: Lint (zero errors and zero warnings)
-        run: npx eslint . --max-warnings=0
+        id: eslint_step
+        run: |
+          mkdir -p /tmp/ci-artifacts
+          npx eslint . --max-warnings=0
+          npx eslint . --format json -o /tmp/ci-artifacts/eslint-report.json || true
 
       # 實測過：唔帶任何 env 都 build 得綠（SSG 唔喺 build time 讀 Supabase／Auth
       # 密鑰），所以 CI 唔使配 secrets。
       - name: Build check
-        run: npm run build
+        id: build_step
+        run: |
+          mkdir -p /tmp/ci-artifacts
+          npm run build 2>&1 | tee /tmp/ci-artifacts/next-build.log
 
       # Raw production-mode HTML is a regression gate, not Google indexing evidence.
       - name: Start production-mode SEO smoke server
@@ -77,6 +98,16 @@ jobs:
             --canonical-origin https://www.dselevelup.com \
             --routes docs/seo-verification-routes.json \
             --sitemap --strict --output /tmp/dse-seo-smoke
+
+      - name: Save CI and build failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-failure-artifacts
+          path: |
+            /tmp/ci-artifacts/
+            /tmp/dse-production-smoke.log
+          if-no-files-found: ignore
 
       - name: Save SEO smoke evidence
         if: always()

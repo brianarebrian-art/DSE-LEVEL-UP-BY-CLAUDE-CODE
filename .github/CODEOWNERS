@@ -1,0 +1,6 @@
+# Global code owners
+* @brianarebrian-art
+
+# Workflows and infrastructure
+/.github/ @brianarebrian-art
+/scripts/ @brianarebrian-art

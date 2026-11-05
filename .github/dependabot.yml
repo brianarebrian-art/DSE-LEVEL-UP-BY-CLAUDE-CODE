@@ -11,6 +11,16 @@ updates:
       time: "09:00"
       timezone: Asia/Hong_Kong
     open-pull-requests-limit: 10
+    rebase-strategy: "auto"
+    groups:
+      dev-dependencies:
+        patterns: ["*"]
+        dependency-type: "development"
+        update-types: ["minor", "patch"]
+      prod-dependencies:
+        patterns: ["*"]
+        dependency-type: "production"
+        update-types: ["minor", "patch"]
     commit-message:
       prefix: chore
       include: scope
@@ -23,6 +33,11 @@ updates:
       time: "09:00"
       timezone: Asia/Hong_Kong
     open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+    groups:
+      actions:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
     commit-message:
       prefix: chore
       include: scope
