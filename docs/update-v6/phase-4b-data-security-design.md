@@ -65,14 +65,14 @@ flowchart TB
 | 項 | 設計 |
 |---|---|
 | 現況 | `0030` 新建（`id` = `auth.uid()`）；舊表可改名 `profiles_legacy`。生產是否已 apply：**未驗證** |
-| 欄位 | 現有：`id`、`email`、`display_name`、`avatar_url`、`created_at`、`updated_at`（以 0030 為準）。**新增（邏輯）：** `age_band`（`under_13`｜`13_15`｜`16_17`｜`18_plus`｜`undeclared`）、`consent_version`、`deletion_requested_at`、`deletion_status`（null｜`cooling`｜`processing`｜`done`） |
+| 欄位 | 現有：`id`、`email`、`display_name`、`avatar_url`、`created_at`、`updated_at`（以 0030 為準）。**新增（邏輯）：** `age_band`（`under_13`｜`13_15`｜`16_17`｜`18_plus`）、`consent_version`、`deletion_requested_at`、`deletion_status`（null｜`cooling`｜`processing`｜`done`）。**注意：** 家長通知邏輯涵蓋 16–18 歲（inclusive），`18_plus` 用戶在滿 18 歲翌日（18yo + 1 day）前依然納入家長通知帶，文件與程式邏輯必須明確記錄。 |
 | Migration | 僅在 0030 狀態確認後；用 `ADD COLUMN IF NOT EXISTS`；nullable 預設相容 |
 | Index | PK `id`；`deletion_requested_at` 部分索引（非 null） |
 | RLS | 0030：SELECT／INSERT／UPDATE own；無 DELETE（刪帳走 service role） |
 | 角色 | student：own；admin／founder：經 service role＋allowlist，寫 `audit_logs` |
 | 敏感 | email、age_band |
 | Audit | 電郵變更、刪除請求、年齡聲明 |
-| Retention | D1：用緊就留；刪除請求後 7 日可撤回，8–30 日內硬刪／不可逆匿名化（S1 預設） |
+| Retention | D1：用緊就留；刪除請求後 7 日冷靜期可撤回，8–30 日內由 service_role 執行硬刪／不可逆匿名化（S1 預設）。保留期限與狀態機嚴格對齊 profiles 欄位。 |
 | Compat | 唔刪 `email`；新欄 null 唔破舊 client |
 
 ### 1.2 `subjects`／`topics`
@@ -187,9 +187,9 @@ flowchart TB
 | 項 | 設計 |
 |---|---|
 | 現況 | `privacy_consents`（0019）產品同意；付款時代 `consent_logs` **已刪**（0015）——**唔好復活舊表名含意** |
-| `consent_logs`（新） | id、user_id、consent_type（`privacy`｜`sync`｜`parental`｜`age_declaration`）、version、actor_relation（`self`｜`parent`｜`legal_guardian`）、created_at、`ip_hash` nullable 短留、`evidence_hash` nullable、withdrawn_at |
+| `consent_logs`（新） | id、user_id、consent_type（`privacy`｜`sync`｜`parental`｜`age_declaration`）、version、actor_relation（`self`｜`parent`｜`legal_guardian`）、created_at、`ip_hash` nullable 短留、`evidence_hash` nullable、withdrawn_at、previous_consent_id（撤回時指向前一筆同意紀錄）。**嚴格 Append-only：** 絕對禁止 UPDATE。當用戶撤回同意時，**不得** UPDATE 既有紀錄，而必須 INSERT 一筆新紀錄，帶有 `withdrawn_at`、指向前次紀錄之 `previous_consent_id` 及相應事件中繼資料。 |
 | `parent_consents` | child_user_id、guardian_user_id 或 guardian_contact_hash、relation、status、verified_at、method |
-| RLS | 學生讀 own；guardian 流程經 server＋驗證；service 寫 |
+| RLS | 學生讀 own；guardian 流程經 server＋驗證；service 寫。政策規則：SELECT own, INSERT own/service, UPDATE deny, DELETE service only。 |
 | Retention | D2；ip_hash TTL 短（建議 ≤ 30 日）；證據只存 hash |
 | Compat | 現有 `privacy_consents` 保留；新類型另表或擴 type check |
 
@@ -244,9 +244,10 @@ flowchart TB
 |---|---|---|---|---|
 | `questions`（公開） | anon／auth `true` | deny | deny | deny |
 | `profiles` | own | own | own | deny（service 刪帳） |
-| `learning_*`／`practice_attempts` | own | own（attempts 無 update） | own where applicable | own／service |
+| `practice_attempts` | own | own | deny（無 UPDATE） | deny（嚴禁學生 DELETE；只准 service_role 在刪除帳戶時清理） |
+| `learning_*` | own | own | own where applicable | deny（嚴禁學生 DELETE 抹除學習歷程；只准 service_role 在刪除帳戶時清理） |
 | `mistakes`／`review_*` | own | own | own | own／service |
-| `consent_logs` | own | service or own limited | deny（append；withdraw 用新列／update withdrawn_at own） | service |
+| `consent_logs` | own | service or own limited | deny（純 append-only；撤回必須 INSERT 新列帶 withdrawn_at + previous_consent_id，絕無 UPDATE） | service only |
 | `parent_consents` | 經 server 授權 | service | service | service |
 | `security_audit_events`／`founder_*` | service／founder API | service | deny | deny |
 | `question_reports` | own if logged in | service only | service | service |
@@ -483,7 +484,7 @@ Password、API key、完整 session token、OTP、題目全文喺安全 log、�
 
 - 新登記：年齡聲明；under_13 要 `parent`／`legal_guardian` 先同步。  
 - 現有用戶：補錄唔鎖舊進度。  
-- S2 工作預設：13–15 強制；16–18 通知＋可選——**上線前要你／法律確認**。  
+- S2 工作預設：13–15 歲強制家長同意；16–18 歲（含 18 歲整至 18 歲翌日 18yo + 1 day）實施家長通知（parental-notification band）。即使在資料欄位聲明為 `18_plus`，在其出生滿 18 歲翌日之前，一律納入 16–18 歲家長通知邏輯，不可因標籤而遺漏。
 
 ---
 

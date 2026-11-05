@@ -29,6 +29,7 @@ import { BANK_UPDATED_AT } from '@/data/questions/bank-dates.generated'
 import { CATEGORIES } from '@/data/offSyllabus'
 import { shouldNoIndex } from '@/lib/seoPolicy'
 import { SCENE_IDS } from '@/data/cantonese'
+import { getSubjectQuestions } from '@/data/questions'
 
 const lastModifiedOf = (path: string): { lastModified?: string } => {
   const d = ARTICLE_DATES[path]
@@ -94,5 +95,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.4,
     })),
+    // 逐題 SEO 精解頁面（/subject/[subject]/[topic]/[id]）—— 收錄核心科目精選題以提升搜尋曝光與 >100 URLs 覆蓋
+    ...subjectIds.flatMap((subject) => {
+      const qs = getSubjectQuestions(subject)
+      // 每科挑選前 2 條核心題目進入 sitemap，總共增加 ~50 條穩定可索引路徑
+      return qs
+        .filter((q) => q.id && q.topic)
+        .slice(0, 2)
+        .map((q) => ({
+          url: `${DOMAIN}/subject/${subject}/${q.topic}/${q.id}`,
+          changeFrequency: 'monthly' as const,
+          priority: 0.5,
+        }))
+    }),
   ]
 }

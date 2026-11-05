@@ -3,5 +3,13 @@
     "sentry": {
       "enabled": true
     }
+  },
+  "audit": {
+    "bugbot": {
+      "status": "usage_limit_reached",
+      "disabled": true
+    },
+    "defaultProvider": "jules",
+    "checklist": ".jules/audit.md"
   }
 }

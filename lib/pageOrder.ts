@@ -67,6 +67,7 @@ export const EXCLUDED: Record<string, string> = {
   '/notes/[subject]': '動態詳情頁，返回路徑係返 /notes',
   '/source-lab/[id]': '動態詳情頁，返回路徑係返 /source-lab',
   '/subjects/[subject]': '動態詳情頁，返回路徑係返 /subjects',
+  '/subject/[subject]/[topic]/[id]': '動態題目詳解頁，由搜尋引擎或分享進入，內建麵包屑導航與練習入口',
 
   // Footer 資訊／法務頁：由 Footer 直達，唔屬瀏覽循環
   '/about': 'Footer 資訊頁',
