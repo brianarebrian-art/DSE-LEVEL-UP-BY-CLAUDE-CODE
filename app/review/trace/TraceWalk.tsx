@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useLocale } from '@/lib/i18n'
 import { applyReview, intervalDays, weightsForReviewCount, type CardState } from '@/lib/fsrs/scheduler'
 import { updateMastery } from '@/lib/fsrs/bkt'
@@ -19,7 +19,7 @@ export default function TraceWalk() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [topicId, setTopicId] = useState(TUTOR_DRILLS[0].topicId)
-  const [misses, setMisses] = useState(0)
+  const missesRef = useRef(0)
   const [reply, setReply] = useState<TutorReply | null>(null)
   const [card, setCard] = useState<CardState | null>(null)
   const [mastery, setMastery] = useState(0.3)
@@ -71,17 +71,18 @@ export default function TraceWalk() {
   async function onChoose(optionId: string) {
     const correct = optionId === drill.correctOptionId
     if (correct) {
+      missesRef.current = 0
       setReply(null)
-      setMisses(0)
       const gap = keywordGap(topicId, note)
       setKeywordNote(gap ? (en ? gap.en : gap.zh) : null)
       await scheduleReview(3, card ? 4 : 0)
       return
     }
-    const nextMisses = misses + 1
-    setMisses(nextMisses)
+    const nextMisses = missesRef.current + 1
+    missesRef.current = nextMisses
     setKeywordNote(null)
     const local = socraticReply(topicId, nextMisses, note)
+    setReply(local)
     try {
       const res = await fetch('/api/tutor/socratic', {
         method: 'POST',
@@ -89,7 +90,6 @@ export default function TraceWalk() {
         body: JSON.stringify({ topicId, misses: nextMisses, studentText: note }),
       })
       if (res.ok) setReply(await res.json() as TutorReply)
-      else setReply(local)
     } catch {
       setReply(local)
     }
@@ -98,7 +98,7 @@ export default function TraceWalk() {
 
   function switchTopic(next: string) {
     setTopicId(next)
-    setMisses(0)
+    missesRef.current = 0
     setReply(null)
     setCard(null)
     setMastery(0.3)

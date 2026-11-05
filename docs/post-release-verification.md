@@ -15,6 +15,13 @@
 - 截圖：`docs/research/ui-references/trace-third-miss-mobile.png`。
 - 開發伺服器的 HMR WebSocket 在用 `127.0.0.1` 開頁時會被 Next 擋住。用 `localhost:3001` 則客戶端腳本正常。這是開發伺服器的來源限制，不是這條功能的錯誤。
 
+## Preview
+
+- 部署 `dpl_AkCGPbbb9pv2DM8RZbnRbgsNRdt1` 狀態 READY，區域 `hkg1`。
+- 網址：`https://dse-level-up-by-claude-code-git-cursor-fsrs-s-b62071-dselevelup.vercel.app/review/trace`
+- 這個 Preview 有 Vercel SSO。用臨時分享連結打開之後，連續三次選未對上的選項，頁面出現「相似題」和「代數」。同一頁的 `POST /api/tutor/socratic` 回 200，`kind` 是 `similar`，`revealsAnswer` 是 false，回應不含 `2x`。
+- 主控台有兩類既有攔截：Vercel 工具列腳本被 CSP 擋下，以及 `/monitoring` 轉去 `vercel.com` 的連線被 `connect-src` 擋下。學生這條先備流程仍然完成。
+
 ## 生產站（尚未包含這次改動）
 
 - Vercel 專案仍是 `dse-level-up-by-claude-code`。這次沒有讀 Analytics，所以不能報 P95。目標仍是 P95 低於 300 ms，見 `docs/PRD.md`。
@@ -28,4 +35,4 @@
 - 沒有改 Vercel 的 Postgres 環境變數。
 - 沒有生成付費短片。
 - 沒有建立第二個 Sentry 專案。
-- Preview 部署要等這個分支推上去之後才會出現。若 Preview 的網址出來了，再用同一條三次答不上的流程走一次。
+- Preview 已用臨時分享連結走完三次未對上。沒有把分享參數寫進倉庫。
