@@ -1,0 +1,42 @@
+---
+description: 題目錯誤反映無 API 系統（file queue + 雙審）硬規則；改舉報／替換題／Grok queue 時套用。
+alwaysApply: false
+globs:
+  - .grok-queue/**
+  - .grok-investigations/**
+  - .grok-bots/**
+  - docs/update-error-noapi/**
+  - supabase/migrations/0034_error_system_phase1.sql
+  - app/api/report/**
+  - lib/questionReport.ts
+  - components/ReportQuestionButton.tsx
+---
+
+# 錯誤反映系統（No-API）
+
+詳見 `docs/update-error-noapi/phase-1-db.md`、`phase-2-queue.md`。
+
+## 創辦人決策（不可改）
+
+1. **冇冷門科豁免雙審** — 替換題一律 `human_review` → `second_review`；禁止「單審-冷門科」
+2. **替換題 L1 快審 24h** — `l1_due_at`；L1＝`human_review`，L2＝`second_review`
+3. **匿名可舉報** — 唔加 `reporter_id`／IP；唔存學生自由文字（§16.E）
+4. **唔標「AI生成替換」** — 學生端用「經自動檢查」；禁止該字串
+
+## File queue
+
+- Agent 寫 `.grok-queue/report-{id}.json`；Bot 寫 `.grok-investigations/result-{id}.json`
+- 忽略 `_` 開頭檔；零 Grok／xAI API Key
+- Bot 定義喺 `.grok-bots/`；共用硬規則 `_SHARED.md`
+
+## DB／題庫
+
+- 舉報表係 `question_reports`（擴 status），唔另開帶 `description` 嘅舉報表
+- 撤回走 `withdraw.mts`＋`withdrawn.json`；正本 `data/questions/*`；唔 runtime soft-delete `questions`
+- 替換入 `question_replacement_queue`；WORM 用 `error_system_audit_logs`
+- 高 confidence **唔**等於可跳過雙審或即 `fixed`
+
+## proxy／限流
+
+- 舉報繼續 `POST /api/report`；`proxy` 唔攔 public report
+- 限流沿用 `report` class（而家 10／10min／IP）

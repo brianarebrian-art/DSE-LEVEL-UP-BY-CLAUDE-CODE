@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "report_id": "0",
+  "assigned_bot_id": "math-bot",
+  "is_valid": true,
+  "confidence": 0.92,
+  "error_type": "wrong_answer",
+  "correct_answer": "B",
+  "evidence": "EXAMPLE ONLY — bots must ignore underscore-prefixed files. Re-solved steps omitted.",
+  "should_replace": true,
+  "reasoning": "EXAMPLE — original key does not match re-solve.",
+  "dual_review_required": true,
+  "completed_at": "2026-11-05T00:05:00.000Z"
+}
