@@ -123,7 +123,7 @@ export function patchAutoSchedule({ packages = [], dryRun = true } = {}) {
  * Defense Matrix — fire on LEV4+ tsunami.
  * Always writes SYSTEM logs. Live side-effects only when live=true.
  */
-export function runDefenseMatrix({ level, cves = [], assets = [], live = false } = {}) {
+export function runDefenseMatrix({ level, cves = [], live = false } = {}) {
   const at = new Date().toISOString()
   const critical = cves.filter((c) => c.tier === 'critical')
   const hostIds = [
