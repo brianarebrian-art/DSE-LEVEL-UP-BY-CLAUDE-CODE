@@ -16,6 +16,8 @@
 // 屬通行嘅文體歸類，但【並非考評局嘅官方分類】，UI 需如實說明。
 
 import { notifyProgressChanged } from '@/lib/sync'
+export * from '@/lib/knowledgeGraph'
+export * from '@/lib/socraticGuide'
 
 const KEY = 'dse_concept_net'
 const STORE_VERSION = 1
