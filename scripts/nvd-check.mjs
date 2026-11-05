@@ -43,7 +43,7 @@ const KNOWN_BASELINE_CVES = [
     severity: 'CRITICAL',
     score: 9.8,
     keyword: 'node',
-    remediation: 'Set .nvmrc to 26.13.0, engines.node >=26.13.0 || >=22.23.4, vercel.json NODE_VERSION 26.x.'
+    remediation: 'Set .nvmrc to 26.13.0, engines.node >=26.13.0 || >=22.23.4.'
   },
   {
     cveId: 'CVE-2026-114139',

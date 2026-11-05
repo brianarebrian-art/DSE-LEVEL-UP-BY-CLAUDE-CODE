@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE_ORIGIN } from '@/lib/site'
+import { SITE_ORIGIN, OFFICIAL_SOCIAL } from '@/lib/site'
 import { shouldNoIndex } from '@/lib/seoPolicy'
 
 export const SITE_NAME = 'DSE Level Up'
@@ -68,6 +68,7 @@ export const organizationJsonLd = {
   name: SITE_NAME,
   url: SITE_ORIGIN,
   description: '為香港中學生提供原創 DSE 學習內容與工具的獨立教育平台。',
+  sameAs: OFFICIAL_SOCIAL.map((s) => s.href),
 }
 
 export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {

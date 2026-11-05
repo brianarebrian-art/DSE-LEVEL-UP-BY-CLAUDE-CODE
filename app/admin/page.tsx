@@ -2,6 +2,7 @@ import { completeSeoMetadata } from '@/lib/seo'
 import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { redirect } from 'next/navigation'
+import * as Sentry from '@sentry/nextjs'
 import { requireAdmin } from '@/lib/auth/adminAllowlist'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { getSubjectQuestions } from '@/data/questions'
@@ -21,10 +22,10 @@ export const metadata = completeSeoMetadata({
 
 interface DraftRow {
   id: string
-  subject: string
+  subject?: string
   topic?: string
   difficulty?: string
-  question: string
+  question?: string
   // 混合題型（2026-07-31）：MC 有 options／correctIndex，
   // 書寫題（text／long）改為 referenceAnswer（＋ long 可有 markingScheme）。
   type?: 'mc' | 'text' | 'long'
@@ -32,7 +33,7 @@ interface DraftRow {
   correctIndex?: number
   referenceAnswer?: string
   markingScheme?: string
-  explanation: string
+  explanation?: string
   trapTypes?: string[]
   dnaTag?: string
 }
@@ -47,19 +48,30 @@ interface CardRow {
   topic: string
   subTopic?: string
   difficulty?: string
-  concept: string
-  example: string
-  examTechnique: string
-  commonTrap: string
+  concept?: string
+  example?: string
+  examTechnique?: string
+  commonTrap?: string
   keywords?: string[]
 }
 
 /**
+ * 嚴格過濾非草稿檔案：
+ * - *.decisions.json (決策檔)
+ * - *.rejected.json (退回報告檔)
+ * - *.sample.json (抽樣清單)
+ */
+function isIgnoredDraftFile(file: string): boolean {
+  return (
+    !file.endsWith('.json') ||
+    file.endsWith('.decisions.json') ||
+    file.endsWith('.rejected.json') ||
+    file.endsWith('.sample.json')
+  )
+}
+
+/**
  * 把 data/sensei/<科>/drafts/*.json 併入同一條覆核隊列。
- *
- * 點解唔另起一個面板：簽名紀律只應該有一套。多開一個介面，就會有第二套
- * 「邊個批准過」嘅規則，兩套將來一定會分歧。批次名加 `sensei/` 前綴，
- * pull-decisions.mjs 靠呢個前綴決定寫返邊個 decisions 檔。
  */
 function loadSenseiBatches(): Batch[] {
   const out: Batch[] = []
@@ -73,48 +85,62 @@ function loadSenseiBatches(): Batch[] {
   for (const subject of subjectDirs) {
     const dir = join(SENSEI_DIR, subject, 'drafts')
     if (!existsSync(dir)) continue
-    for (const file of readdirSync(dir).filter((f) => f.endsWith('.json') && !f.endsWith('.decisions.json')).sort()) {
-      const stem = file.replace(/\.json$/, '')
-      try {
-        const parsed = JSON.parse(readFileSync(join(dir, file), 'utf8')) as CardRow[]
-        if (!Array.isArray(parsed) || parsed.length === 0) continue
-        const rows = parsed.filter((r) => typeof r?.id === 'string' && typeof r?.topic === 'string')
-        const invalid = parsed.filter((r) => !(typeof r?.id === 'string' && typeof r?.topic === 'string'))
-        if (invalid.length > 0) {
-          safeLog(
-            'warn',
-            `admin: skipped ${invalid.length} invalid sensei card(s) in ${subject}/${file}: ${invalid.map((r) => String(r?.id ?? '?')).join(', ')}`,
-          )
+    try {
+      const draftFiles = readdirSync(dir).filter((f) => !isIgnoredDraftFile(f)).sort()
+      for (const file of draftFiles) {
+        const stem = file.replace(/\.json$/, '')
+        try {
+          const raw = JSON.parse(readFileSync(join(dir, file), 'utf8'))
+          const parsed = (Array.isArray(raw) ? raw : (raw?.cards ?? raw?.items ?? raw?.rows ?? [])) as CardRow[]
+          if (!Array.isArray(parsed) || parsed.length === 0) continue
+
+          const rows = parsed.filter((r) => r && typeof r.id === 'string' && typeof r.topic === 'string')
+          const invalid = parsed.filter((r) => !r || !(typeof r.id === 'string' && typeof r.topic === 'string'))
+          if (invalid.length > 0) {
+            safeLog(
+              'warn',
+              `admin: skipped ${invalid.length} invalid sensei card(s) in ${subject}/${file}: ${invalid.map((r) => String(r?.id ?? '?')).join(', ')}`,
+            )
+          }
+          if (rows.length === 0) continue
+
+          let local: Record<string, string> = {}
+          const decPath = join(dir, `${stem}.decisions.json`)
+          if (existsSync(decPath)) {
+            try {
+              local = (JSON.parse(readFileSync(decPath, 'utf8'))?.decisions ?? {}) as Record<string, string>
+            } catch (err) {
+              safeLog('warn', `admin: bad sensei decisions file ${subject}/${stem}.decisions.json`, err)
+            }
+          }
+          out.push({
+            batch: `sensei/${subject}/${stem}`,
+            subject,
+            rows: rows.map((r) => ({
+              id: r.id,
+              subject: r.subject || subject,
+              topic: r.subTopic ? `${r.topic}・${r.subTopic}` : r.topic,
+              difficulty: r.difficulty ?? '',
+              question: r.topic,
+              type: 'card' as const,
+              concept: r.concept ?? '',
+              example: r.example ?? '',
+              examTechnique: r.examTechnique ?? '',
+              commonTrap: r.commonTrap ?? '',
+              explanation: Array.isArray(r.keywords) ? r.keywords.join('、') : '', // i18n-exempt: admin 中文單語內部工具
+              trapTypes: [],
+              dnaTag: '',
+              status: local[r.id] === 'approved' || local[r.id] === 'rejected' ? local[r.id] : 'pending',
+              decidedBy: '',
+            })),
+          })
+        } catch (e) {
+          safeLog('warn', `admin: bad sensei drafts file ${subject}/${file}`, e)
+          Sentry.captureException(e)
         }
-        if (rows.length === 0) continue
-        let local: Record<string, string> = {}
-        const decPath = join(dir, `${stem}.decisions.json`)
-        if (existsSync(decPath)) local = (JSON.parse(readFileSync(decPath, 'utf8'))?.decisions ?? {}) as Record<string, string>
-        out.push({
-          batch: `sensei/${subject}/${stem}`,
-          subject,
-          rows: rows.map((r) => ({
-            id: r.id,
-            subject: r.subject,
-            topic: r.subTopic ? `${r.topic}・${r.subTopic}` : r.topic,
-            difficulty: r.difficulty ?? '',
-            // `question` 喺卡片語境即係卡片標題；面板用佢做每行嘅頭。
-            question: r.topic,
-            type: 'card' as const,
-            concept: r.concept,
-            example: r.example,
-            examTechnique: r.examTechnique,
-            commonTrap: r.commonTrap,
-            explanation: (r.keywords ?? []).join('、'), // i18n-exempt: admin 中文單語內部工具
-            trapTypes: [],
-            dnaTag: '',
-            status: local[r.id] === 'approved' || local[r.id] === 'rejected' ? local[r.id] : 'pending',
-            decidedBy: '',
-          })),
-        })
-      } catch (e) {
-        safeLog('warn', `admin: bad sensei drafts file ${subject}/${file}`, e)
       }
+    } catch (e) {
+      safeLog('warn', `admin: failed to read sensei dir ${dir}`, e)
     }
   }
   return out
@@ -123,11 +149,7 @@ function loadSenseiBatches(): Batch[] {
 function loadBatches(): Batch[] {
   let files: string[] = []
   try {
-    // *.decisions.json = 本地決定；*.rejected.json = 閘門退回報告（只有 {id, reasons}，冇題目內容）。
-    // 兩者都唔係草稿批次，唔可以入覆核隊列。
-    files = readdirSync(DRAFTS_DIR).filter(
-      (f) => f.endsWith('.json') && !f.endsWith('.decisions.json') && !f.endsWith('.rejected.json'),
-    )
+    files = readdirSync(DRAFTS_DIR).filter((f) => !isIgnoredDraftFile(f))
   } catch (e) {
     safeLog('warn', 'admin: drafts dir unreadable', e)
     return []
@@ -136,11 +158,30 @@ function loadBatches(): Batch[] {
   for (const file of files.sort()) {
     const stem = file.replace(/\.json$/, '')
     try {
-      const parsed = JSON.parse(readFileSync(join(DRAFTS_DIR, file), 'utf8')) as DraftRow[]
+      const raw = JSON.parse(readFileSync(join(DRAFTS_DIR, file), 'utf8'))
+      // 支援多種草稿資料結構：頂層陣列、{ items: [...] }、{ questions: [...] } 等
+      const parsed = (Array.isArray(raw)
+        ? raw
+        : (raw?.items ?? raw?.questions ?? raw?.rows ?? raw?.drafts ?? [])) as DraftRow[]
       if (!Array.isArray(parsed) || parsed.length === 0) continue
-      // 唔合格嘅列（冇 id／question）唔入隊列，但要留低警告，唔好靜默吞咗。
-      const rows = parsed.filter((r) => typeof r?.id === 'string' && typeof r?.question === 'string')
-      const invalid = parsed.filter((r) => !(typeof r?.id === 'string' && typeof r?.question === 'string'))
+
+      // 嚴格檢驗 draft row：id 必須為字串且非空，且 question 或 topic 必須為字串
+      const rows = parsed.filter(
+        (r) =>
+          r &&
+          typeof r.id === 'string' &&
+          r.id.trim() !== '' &&
+          ((typeof r.question === 'string' && r.question.trim() !== '') ||
+            (typeof r.topic === 'string' && r.topic.trim() !== '')),
+      )
+      const invalid = parsed.filter(
+        (r) =>
+          !r ||
+          typeof r.id !== 'string' ||
+          r.id.trim() === '' ||
+          ((typeof r.question !== 'string' || r.question.trim() === '') &&
+            (typeof r.topic !== 'string' || r.topic.trim() === '')),
+      )
       if (invalid.length > 0) {
         safeLog(
           'warn',
@@ -148,29 +189,33 @@ function loadBatches(): Batch[] {
         )
       }
       if (rows.length === 0) continue
-      // 本地已有嘅 decisions（review.html 匯出流程）都計入狀態
+
       let local: Record<string, string> = {}
       const decPath = join(DRAFTS_DIR, `${stem}.decisions.json`)
       if (existsSync(decPath)) {
-        const doc = JSON.parse(readFileSync(decPath, 'utf8'))
-        local = (doc?.decisions ?? {}) as Record<string, string>
+        try {
+          const doc = JSON.parse(readFileSync(decPath, 'utf8'))
+          local = (doc?.decisions ?? {}) as Record<string, string>
+        } catch (err) {
+          safeLog('warn', `admin: bad decisions file ${stem}.decisions.json`, err)
+        }
       }
       batches.push({
         batch: stem,
-        subject: rows[0]?.subject ?? 'unknown',
+        subject: rows[0]?.subject ?? file.split(/[-.]/)[0] ?? 'unknown',
         rows: rows.map((r) => ({
           id: r.id,
-          subject: r.subject,
+          subject: r.subject ?? file.split(/[-.]/)[0] ?? 'unknown',
           topic: r.topic ?? '',
           difficulty: r.difficulty ?? '',
-          question: r.question,
+          question: r.question ?? r.topic ?? '',
           type: r.type ?? 'mc',
-          options: r.options,
-          correctIndex: r.correctIndex,
+          options: Array.isArray(r.options) ? r.options : undefined,
+          correctIndex: typeof r.correctIndex === 'number' ? r.correctIndex : undefined,
           referenceAnswer: r.referenceAnswer,
           markingScheme: r.markingScheme,
-          explanation: r.explanation,
-          trapTypes: r.trapTypes ?? [],
+          explanation: r.explanation ?? '',
+          trapTypes: Array.isArray(r.trapTypes) ? r.trapTypes : [],
           dnaTag: r.dnaTag ?? '',
           status: local[r.id] === 'approved' || local[r.id] === 'rejected' ? local[r.id] : 'pending',
           decidedBy: '',
@@ -178,6 +223,7 @@ function loadBatches(): Batch[] {
       })
     } catch (e) {
       safeLog('warn', `admin: bad drafts file ${file}`, e)
+      Sentry.captureException(e)
     }
   }
   return batches
@@ -190,14 +236,26 @@ export default async function AdminPage() {
   // ── 全站覆蓋率（實時由真題庫計，唔寫死數字）─────────────────────────────
   let liveTotal = 0
   let reviewedTotal = 0
-  for (const s of subjects) {
-    const qs = getSubjectQuestions(s.id)
-    liveTotal += qs.length
-    reviewedTotal += qs.filter((q) => q.framework === 'reviewed').length
+  try {
+    for (const s of subjects) {
+      const qs = getSubjectQuestions(s.id)
+      liveTotal += qs.length
+      reviewedTotal += qs.filter((q) => q.framework === 'reviewed').length
+    }
+  } catch (err) {
+    safeLog('warn', 'admin: failed to compute coverage stats', err)
+    Sentry.captureException(err)
   }
 
   // ── 隊列 + 歷史（Supabase 未配置時降級為「本地 decisions only」照用）────
-  const batches = [...loadBatches(), ...loadSenseiBatches()]
+  let batches: Batch[] = []
+  try {
+    batches = [...loadBatches(), ...loadSenseiBatches()]
+  } catch (err) {
+    safeLog('warn', 'admin: failed to load batches', err)
+    Sentry.captureException(err)
+  }
+
   let history: HistoryRow[] = []
   let dbOk = true
   try {
