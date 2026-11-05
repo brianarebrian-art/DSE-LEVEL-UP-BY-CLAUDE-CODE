@@ -53,7 +53,7 @@
     "qbank:question-scope": "npx --yes tsx@4.19.2 scripts/qbank/gen-question-scope.mts"
   },
   "dependencies": {
-    "@sentry/nextjs": "10.78.0",
+    "@sentry/nextjs": "11.10.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.119.0",
     "@vercel/speed-insights": "^2.0.0",
