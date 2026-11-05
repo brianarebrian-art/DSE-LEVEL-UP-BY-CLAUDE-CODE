@@ -1,3 +1,6 @@
+import { RelatedNotes } from '@/components/RelatedNotes'
+import { FAQSchema } from '@/components/FAQSchema'
+import { getSubjectSeoConfig } from '@/lib/seo-config'
 import { completeSeoMetadata } from '@/lib/seo'
 import { notFound } from 'next/navigation'
 import { getActiveSubjects, getSubject } from '@/data/subjects'
@@ -17,11 +20,14 @@ export async function generateMetadata({ params }: { params: Promise<{ subject: 
   const { subject } = await params
   const meta = getSubject(subject)
   if (!meta) notFound()
+  const seoCfg = getSubjectSeoConfig(subject)
   const n = getSubjectQuestions(subject).length
   const topicCount = getSubjectTopics(subject).length
+  const title = seoCfg?.notesTitle ?? `${meta.name}筆記 | DSE Level Up` // i18n-exempt: 靜態 SEO <title>
+  const description = seoCfg?.notesDescription ?? notesSeoDescription({ name: meta.name, questionCount: n, topicCount })
   return completeSeoMetadata({
-    title: `${meta.name}筆記 | DSE Level Up`, // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
-    description: notesSeoDescription({ name: meta.name, questionCount: n, topicCount }), // i18n-exempt: 靜態 SEO meta description
+    title,
+    description,
   }, `/notes/${subject}`)
 }
 
@@ -34,7 +40,8 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
   // 保持為可見內容：這是真實頁面導覽，不是只給爬蟲或讀屏軟件的隱藏文字。
   const topics = getSubjectTopics(subject)
   const total = getSubjectQuestions(subject).length
-  const description = notesSeoDescription({ name: meta.name, questionCount: total, topicCount: topics.length })
+  const seoCfg = getSubjectSeoConfig(subject)
+  const description = seoCfg?.notesDescription ?? notesSeoDescription({ name: meta.name, questionCount: total, topicCount: topics.length })
   const h1 = `${meta.name}知識凝結筆記 · ${meta.name} revision notes` // i18n-exempt: actual bilingual resource title
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -91,6 +98,10 @@ export default async function NotesSubjectPage({ params }: { params: Promise<{ s
         </header>
 
         <NotesSubjectClient subjectId={subject} />
+        {seoCfg?.faqs && <FAQSchema faqs={seoCfg.faqs} />}
+        <footer className="mx-auto max-w-4xl px-4 pb-12">
+          <RelatedNotes subjectId={subject} subjectName={meta.name} isNotesPage={true} />
+        </footer>
       </div>
     </>
   )

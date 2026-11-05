@@ -64,7 +64,7 @@ function completeDescription(base: string, sentences: string[]): string {
 
 export function subjectSeoDescription({ name, description, questionCount, topicCount }: SubjectInput): string {
   return completeDescription(
-    `DSE Level Up 的${name}頁收錄${questionCount}條原創改寫題目，按${topicCount}個課題整理；${description}`,
+    `DSE Level Up 的免費${name}筆記與題庫頁收錄${questionCount}條原創改寫題目，按${topicCount}個課題整理；${description}`,
     [
       '可從課題入口選擇練習，答案與解析用於核對概念和解題步驟。',
       '內容並非香港考試及評核局官方試題或評分參考，應配合課本和教師指引溫習。',
@@ -73,6 +73,8 @@ export function subjectSeoDescription({ name, description, questionCount, topicC
       '本頁以題庫資料為準。',
       '可按課題安排溫習次序。',
       '先釐清自己的溫習重點。',
+      '立即查閱重點。',
+      '開始練習。',
     ],
   )
 }

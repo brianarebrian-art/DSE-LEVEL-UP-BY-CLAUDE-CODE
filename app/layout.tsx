@@ -42,7 +42,7 @@ const SUBJECT_COUNT = getActiveSubjects().length
 
 // 首頁及搜尋結果顯示的標題。創辦人 2026-10-09 指示改為三段，加入「DSE 溫習平台」。
 // Homepage route metadata is defined in app/page.tsx; this is the layout fallback.
-const SITE_TITLE = 'DSE Level Up | DSE 溫習平台 | 選擇題練判斷' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
+const SITE_TITLE = 'DSE LEVEL UP | DSE 溫習平台 免費26,000+題 選擇題操練 - 考試急症室' // i18n-exempt: 靜態 SEO <title>，Next.js metadata 唔跟 client locale
 
 export const metadata: Metadata = {
   // metadataBase 是 OG／canonical 相對路徑解析的基準；缺少它時 Next.js 會在建置期
