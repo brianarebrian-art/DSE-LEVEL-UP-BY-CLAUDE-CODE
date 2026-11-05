@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, BookmarkX, FolderPen, Check, X } from 'lucide-react'
+import Illustration from '@/src/components/ui/Illustration'
+import Icon from '@/src/components/ui/Icon'
 import MathText from '@/components/MathText'
 import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
@@ -111,20 +113,23 @@ export default function BookmarksView() {
         {rows === null && <p className="text-sm text-ink-muted">{en ? 'Loading…' : '載入中⋯'}</p>}
 
         {rows?.length === 0 && (
-          <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center">
- <div className="mb-3 text-4xl" aria-hidden></div>
- <p className="text-sm text-ink-muted">
+          <div className="rounded-2xl border border-line bg-surface-raised p-8 text-center flex flex-col items-center">
+            <div className="mb-4">
+              <Illustration name="empty-state" width={144} height={112} className="text-accent" />
+            </div>
+            <p className="text-sm text-ink-muted max-w-sm mb-4">
               {en
                 ? 'Nothing saved yet. While practising, tap “Save” under the explanation.'
                 : '仲未收藏過。做練習嗰陣，喺解析下面撳「收藏」就得。'}
             </p>
- <Link
+            <Link
               href="/subjects"
-              className="mt-5 inline-flex min-h-11 items-center rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
+              className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
             >
-              {en ? 'Start practising' : '開始練習'}
+              <Icon name="filter" size={16} label={en ? 'Start practising' : '開始練習'} />
+              <span>{en ? 'Start practising' : '開始練習'}</span>
             </Link>
- </div>
+          </div>
         )}
 
         {folders.map(([folder, list]) => (

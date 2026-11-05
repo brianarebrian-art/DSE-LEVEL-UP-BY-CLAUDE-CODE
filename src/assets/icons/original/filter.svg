@@ -1,0 +1,9 @@
+<!--
+  @provenance 100% Original SVG Geometric Design
+  @author DSE Level Up Engineering Team
+  @geometry Base 24x24 viewBox, stroke-width 2, round caps and joins.
+  @description Funnel filter icon composed of an upper trapezoid and lower collection stem.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-hidden="true">
+  <polygon points="3 4 21 4 14 13 14 20 10 20 10 13 3 4" />
+</svg>

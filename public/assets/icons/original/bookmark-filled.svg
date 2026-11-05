@@ -1,0 +1,9 @@
+<!--
+  @provenance 100% Original SVG Geometric Design
+  @author DSE Level Up Engineering Team
+  @geometry Base 24x24 viewBox, fill currentColor.
+  @description Bookmark filled icon representing active/saved state.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" stroke="none" role="img" aria-hidden="true">
+  <path d="M5 4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v18l-7-4-7 4V4z" />
+</svg>
