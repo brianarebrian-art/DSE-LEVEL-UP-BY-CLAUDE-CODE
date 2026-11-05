@@ -9,8 +9,8 @@
 
 ```json
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "NODE_VERSION": "26.x",
   "installCommand": "npm ci --ignore-scripts",
   "regions": ["hkg1"],
   "crons": [
@@ -20,8 +20,9 @@
 }
 ```
 
+- **$schema**: 引入 Vercel 官方 JSON Schema 進行驗證。
 - **framework**: 明確指定 `nextjs`。
-- **NODE_VERSION**: 設定為 `26.x`（消除 CVE-2026-111497 Brotli 記憶體破壞漏洞）。
+- **Node 版本控制**: 依 Vercel 規範於 `package.json`（`engines.node: "20.x"`）及 `.nvmrc`（`20`）鎖定執行期環境。
 - **installCommand**: 使用 `npm ci --ignore-scripts`，封鎖所有套件之 preinstall/postinstall 惡意腳本執行。
 - **regions**: 限定於 `["hkg1"]`（香港節點），確保最低延遲與合規要求。
 

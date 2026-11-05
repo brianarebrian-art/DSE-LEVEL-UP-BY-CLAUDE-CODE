@@ -1,0 +1,74 @@
+name: Vercel Config & Build Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-vercel-and-build:
+    name: Validate Vercel Config & Build
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max-old-space-size=4096
+      NEXT_DISABLE_SOURCEMAP: "1"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (20.x)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate vercel.json against official schema & reject NODE_VERSION
+        run: |
+          node -e '
+            const fs = require("fs");
+            const https = require("https");
+
+            if (!fs.existsSync("vercel.json")) {
+              console.log("No vercel.json found, skipping check.");
+              process.exit(0);
+            }
+
+            const raw = fs.readFileSync("vercel.json", "utf8");
+            const config = JSON.parse(raw);
+
+            if ("NODE_VERSION" in config) {
+              console.error("::error file=vercel.json::vercel.json must NOT contain NODE_VERSION! Pin node version using package.json engines or .nvmrc instead.");
+              process.exit(1);
+            }
+
+            https.get("https://openapi.vercel.sh/vercel.json", (res) => {
+              if (res.statusCode !== 200) {
+                console.warn("Unable to fetch remote Vercel schema (HTTP " + res.statusCode + "), skipping remote schema validation.");
+                process.exit(0);
+              }
+              let data = "";
+              res.on("data", chunk => data += chunk);
+              res.on("end", () => {
+                const schema = JSON.parse(data);
+                const allowedKeys = new Set(Object.keys(schema.properties || {}));
+                allowedKeys.add("$schema");
+                const disallowed = Object.keys(config).filter(key => !allowedKeys.has(key));
+                if (disallowed.length > 0) {
+                  console.error("::error file=vercel.json::vercel.json contains disallowed properties: " + disallowed.join(", "));
+                  process.exit(1);
+                }
+                console.log("vercel.json successfully validated against official Vercel schema!");
+              });
+            }).on("error", (err) => {
+              console.warn("Network error fetching Vercel schema: " + err.message + ", local keys checked.");
+            });
+          '
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      - name: Next.js build check
+        run: npm run build

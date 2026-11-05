@@ -13,7 +13,7 @@
 | `package.json` | 3-6 | Node.js 執行期引擎版本未明確限定最新安全修補版本 | 中度 (Medium) | **已修補**：更新 `engines.node` 為 `>=26.13.0 \|\| >=22.23.4`，`engines.npm` 為 `>=10`。 |
 | `package.json` | 65-75 | 核心依賴 React/Next.js/Sentry/Supabase/Sharp 基準版本 | 高度 (High) | **已修補**：精確鎖定 `next@16.4.5`, `react@19.3.1`, `react-dom@19.3.1`, `@sentry/nextjs@10.78.0`, `@supabase/supabase-js@2.119.0`, `sharp@0.35.5`。 |
 | `.nvmrc` | 1 | 執行期環境版本標記為舊版 | 中度 (Medium) | **已修補**：更新為 `26.13.0`。 |
-| `vercel.json` | 2 | 缺少部署平台執行期 `NODE_VERSION` 明確指定 | 中度 (Medium) | **已修補**：加入 `"NODE_VERSION": "26.x"`。 |
+| `vercel.json` | 2 | Vercel 部署設定與 schema 合規 | 中度 (Medium) | **已修補**：移除無效屬性，改由 `package.json` engines 與 `.nvmrc` 鎖定 Node 版本。 |
 | `.github/workflows/ci.yml` | 10-18 | CI 流程建置記憶體與原始碼映射安全設置 | 中度 (Medium) | **已修補**：指定 `node-version: 26.13.0`，加入 `NEXT_DISABLE_SOURCEMAP: "1"` 及記憶體優化限制。 |
 | `proxy.ts` | 77-87 | Sentry tunnelRoute 代理路徑繞過漏洞 (CVE-2026-114139) | 重大 (Critical) | **已修補**：僅放行精確之 `/monitoring` 與 `/monitoring/`，任何子路徑 `/monitoring/*` 一律回傳 404 JSON。 |
 | `next.config.ts` | 21-34 | Next.js 圖片處理 SVG XSS 風險與快取污染防護 | 重大 (Critical) | **已修補**：強制 `images.dangerouslyAllowSVG: false`，開啟 `reactStrictMode: true`，設定嚴格之 `remotePatterns`。 |
