@@ -93,6 +93,7 @@ export const EXCLUDED: Record<string, string> = {
   '/off-syllabus/[category]': '動態詳情頁（話題卡範疇），返回路徑係返 /off-syllabus',
   '/capsule': '支線功能頁',
   '/concept-net': '支線功能頁',
+  '/review/trace': '先備回溯練習，由進度頁進入，不加入主循環',
   '/exam-day': '支線功能頁',
   '/logic-log': '支線功能頁',
   '/predictor': '支線功能頁，由側欄「練習表現」入；個人化內容，同 /dashboard 一樣唔入 sitemap',

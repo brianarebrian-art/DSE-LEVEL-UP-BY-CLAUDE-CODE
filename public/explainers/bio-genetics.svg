@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="640" viewBox="0 0 480 640" role="img" aria-labelledby="title desc">
+  <title id="title">一對等位基因的空格</title>
+  <desc id="desc">只畫出四格和軸上的等位基因，格子內部留空，不寫比例。</desc>
+  <rect width="480" height="640" fill="#f4f0ea"/>
+  <text x="40" y="72" fill="#2c2a29" font-size="28" font-family="serif">先填四格</text>
+  <text x="175" y="150" fill="#4a656c" font-size="22" font-family="serif">A</text>
+  <text x="265" y="150" fill="#4a656c" font-size="22" font-family="serif">a</text>
+  <text x="100" y="214" fill="#4a656c" font-size="22" font-family="serif">A</text>
+  <text x="100" y="304" fill="#4a656c" font-size="22" font-family="serif">a</text>
+  <rect x="140" y="160" width="90" height="90" fill="none" stroke="#2c2a29" stroke-width="2"/>
+  <rect x="230" y="160" width="90" height="90" fill="none" stroke="#2c2a29" stroke-width="2"/>
+  <rect x="140" y="250" width="90" height="90" fill="none" stroke="#2c2a29" stroke-width="2"/>
+  <rect x="230" y="250" width="90" height="90" fill="none" stroke="#2c2a29" stroke-width="2"/>
+  <text x="40" y="440" fill="#2c2a29" font-size="20" font-family="serif">每一格來自雙親各一個</text>
+  <text x="40" y="484" fill="#2c2a29" font-size="20" font-family="serif">數完再寫比例</text>
+</svg>

@@ -34,6 +34,14 @@ export const NOT_USER_SCOPED = [
     why: '題目審批紀錄。`reviewer_email` 係內部審題人（Brian／Yuna），唔係學生資料；' +
       '而且係學術問責紀錄，刪咗就無法交代邊條題由邊個批過。',
   },
+  {
+    table: 'fsrs_cards',
+    why: '只存在於 0035 草稿，生產庫未有此表。套用該遷移的同一個改動必須把此表移入 USER_SCOPED_TABLES，否則刪帳號會留下複習卡。',
+  },
+  {
+    table: 'fsrs_reviews',
+    why: '只存在於 0035 草稿，生產庫未有此表。套用該遷移的同一個改動必須把此表移入 USER_SCOPED_TABLES，否則刪帳號會留下複習紀錄。',
+  },
 ] as const
 
 export type UserScopedTable = (typeof USER_SCOPED_TABLES)[number]
