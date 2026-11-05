@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Menu, X, BookOpen } from 'lucide-react'
+import Icon from '@/src/components/ui/Icon'
 import AuthButton from '@/components/AuthButton'
 import SignInNote from '@/components/SignInNote'
 import Greeting from '@/components/Greeting'
@@ -126,19 +127,30 @@ export default function Navbar() {
         {/* 2026-09-30（改進循環 2，prompt §25）：原本 lg 起才出，768–1023px 平板同時有側欄及漢堡選單。
             改為 md 起出，漢堡只留給手機。 */}
         <div className="hidden md:flex items-center gap-3 lg:gap-6">
-          {/* 2026-09-03：橫向連結搬咗落側欄（規格 §3.1）。同一組連結出兩次，
-              學生要諗「呢兩個係咪同一樣嘢」，而且選中態要維護兩處。
-              <lg 冇側欄，所以漢堡選單面板嗰份【原封不動】保留。 */}
-          {/* 2026-09-30（LOOP 31）改去 /start：回訪學生直接繼續或開新一節，初次來的學生仍到 /subjects。
-              全科入口 —— 2026-08-09 由 /subjects/math 改為 /subjects：「開始練習」
-              屬通用行動呼籲，直接導向數學科等於代學生選定科目。路由為複數。 */}
+          <Link
+            href="/subjects"
+            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line"
+            aria-label={en ? 'Search questions' : '搜尋題目'}
+            title={en ? 'Search questions' : '搜尋題目'}
+          >
+            <Icon name="search" size={16} label={en ? 'Search' : '搜尋題目'} />
+            <span>{en ? 'Search' : '搜尋題目'}</span>
+          </Link>
+          <Link
+            href="/subjects"
+            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line"
+            aria-label={en ? 'Filter subjects' : '篩選科目'}
+            title={en ? 'Filter subjects, years and difficulty' : '篩選科目、年份、難度'}
+          >
+            <Icon name="filter" size={16} label={en ? 'Filter' : '篩選科目'} />
+            <span>{en ? 'Filter' : '篩選科目'}</span>
+          </Link>
           <Link
             href="/start"
             className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-[colors,transform] duration-100 active:scale-[0.97]"
           >
             {t.nav.startPractice}
           </Link>
-          {/* compact 單掣：三段式會令英文版超出 xl 斷點，重新出現標籤���行 */}
           <ThemeToggle compact />
  <LanguageToggle />
  <AuthButton />

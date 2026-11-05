@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+import { autoFixLegacyIcons } from '@/src/lib/auto-fix-icons'
 import { LanguageProvider } from '@/lib/i18n'
 import SyncProvider from '@/components/SyncProvider'
 import SettingsSync from '@/components/SettingsSync'
@@ -11,6 +13,10 @@ import ServiceWorkerRegister from '@/components/ServiceWorkerRegister'
 // AuthProvider mounts Supabase Auth session listener and exposes useAuthSession()
 // app-wide. Login UI stays opt-in via NEXT_PUBLIC_AUTH_ENABLED inside AuthButton.
 export default function Providers({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    autoFixLegacyIcons()
+  }, [])
+
   return (
     // ThemeProvider 與 LanguageProvider 平行、互不巢狀依賴：主題用 `dse-theme`、
     // 語言用自己的鍵，切換其中一樣完全唔會觸碰另一樣（Brian 要求「語言轉換隔離」）。

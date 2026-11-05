@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Bookmark as BookmarkIcon, BookmarkCheck } from 'lucide-react'
+import Icon from '@/src/components/ui/Icon'
 import { useLocale } from '@/lib/i18n'
 import {
   DEFAULT_FOLDER,
@@ -37,6 +37,7 @@ export default function BookmarkButton({
   const [pickerOpen, setPickerOpen] = useState(false)
   const [folders, setFolders] = useState<string[]>([])
   const [draft, setDraft] = useState('')
+  const [toast, setToast] = useState<string | null>(null)
 
   // 只在 mount 後讀 localStorage（避免 SSR／CSR 落差）。題目一換就重讀。
   useEffect(() => {
@@ -44,15 +45,23 @@ export default function BookmarkButton({
     setPickerOpen(false)
   }, [subjectId, questionId])
 
+  useEffect(() => {
+    if (!toast) return
+    const timer = setTimeout(() => setToast(null), 3000)
+    return () => clearTimeout(timer)
+  }, [toast])
+
   const toggle = () => {
     if (saved) {
       removeBookmark(subjectId, questionId)
       setSaved(false)
       setPickerOpen(false)
+      setToast(en ? 'Removed from saved questions' : '已從錯題本移除')
       return
     }
     addBookmark({ subjectId, questionId, topic })
     setSaved(true)
+    setToast(en ? 'Added to review notebook' : '已收藏到錯題本')
     setFolders(getFolders().filter((f) => f !== DEFAULT_FOLDER))
     setPickerOpen(true)
   }
@@ -68,7 +77,7 @@ export default function BookmarkButton({
     : (saved ? '取消收藏' : '收藏呢條題')
 
   return (
-    <div className={className}>
+    <div className={`relative ${className}`}>
       <button
         onClick={toggle}
         aria-pressed={saved}
@@ -78,9 +87,19 @@ export default function BookmarkButton({
           saved ? 'text-gold hover:text-ink-soft' : 'text-ink-muted hover:text-accent'
         }`}
       >
-        {saved ? <BookmarkCheck size={14} aria-hidden /> : <BookmarkIcon size={14} aria-hidden />}
+        {saved ? <Icon name="bookmark-filled" size={14} label={en ? 'Saved' : '已收藏'} /> : <Icon name="bookmark" size={14} label={en ? 'Save' : '收藏'} />}
         {saved ? (en ? 'Saved' : '已收藏') : en ? 'Save' : '收藏'}
       </button>
+
+      {toast && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="absolute left-0 -top-8 z-20 whitespace-nowrap rounded bg-surface-raised border border-line px-2 py-1 text-xs text-accent font-medium shadow-sm"
+        >
+          {toast}
+        </div>
+      )}
 
       {pickerOpen && (
         <div className="mt-2 rounded-xl border border-line bg-surface-sunken p-3">

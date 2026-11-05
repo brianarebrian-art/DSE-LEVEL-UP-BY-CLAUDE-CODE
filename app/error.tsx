@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { useLocale } from '@/lib/i18n'
+import Illustration from '@/src/components/ui/Illustration'
 
 // 路由層錯誤邊界（App Router `error.tsx`）。
 //
@@ -67,7 +68,10 @@ export default function RouteError({
 
   return (
     <div role="alert" className="flex min-h-[60vh] items-center justify-center px-4 py-16">
-      <div className="w-full max-w-md text-center">
+      <div className="w-full max-w-md text-center flex flex-col items-center">
+        <div className="mb-4">
+          <Illustration name="error-state" width={144} height={112} className="text-warning" />
+        </div>
         <h1
           ref={headingRef}
           tabIndex={-1}
