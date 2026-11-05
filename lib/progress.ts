@@ -71,13 +71,34 @@ function isUsableAttempt(a: unknown): a is AttemptRecord {
 
 export function loadAttempts(): AttemptRecord[] {
   if (!isBrowser()) return []
-  return memoryBag().filter(isUsableAttempt)
+  let attempts = memoryBag().filter(isUsableAttempt)
+  if (attempts.length === 0) {
+    try {
+      const raw = localStorage.getItem('dse_progress_v2')
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        if (Array.isArray(parsed)) {
+          attempts = parsed.filter(isUsableAttempt).slice(-500)
+          setMemoryBag(attempts)
+        }
+      }
+    } catch {
+      /* ignore localStorage read errors */
+    }
+  }
+  return attempts
 }
 
 /** Replace the in-memory attempt list (used by cloud merge / applyLocal). */
 export function replaceAttempts(list: AttemptRecord[]): void {
   if (!isBrowser()) return
-  setMemoryBag(Array.isArray(list) ? list.filter(isUsableAttempt).slice(-500) : [])
+  const filtered = Array.isArray(list) ? list.filter(isUsableAttempt).slice(-500) : []
+  setMemoryBag(filtered)
+  try {
+    localStorage.setItem('dse_progress_v2', JSON.stringify(filtered))
+  } catch {
+    /* quota / private mode */
+  }
 }
 
 /**
@@ -116,12 +137,10 @@ export function recordAttempt(a: AttemptRecord): void {
   // ⚠️ 唔好改名做 isPlausible* —— 撞正 privacy-page.test.mts 掃緊嘅分析工具
   //    Plausible，會令一條私隱閘紅。實際踩過。
   if (!isPossibleAttempt(a)) return
-  const all = loadAttempts()
-  all.push(a)
-  // Keep the store bounded (most recent 500 attempts).
-  setMemoryBag(all.slice(-500))
-  // Same contract as sync.notifyProgressChanged — keep the event name in sync.
+  const all = [...loadAttempts(), a].slice(-500)
+  setMemoryBag(all)
   try {
+    localStorage.setItem('dse_progress_v2', JSON.stringify(all))
     localStorage.setItem('dse_updated_at', String(Date.now()))
     window.dispatchEvent(new Event('dse:progress-changed'))
   } catch {
@@ -132,6 +151,11 @@ export function recordAttempt(a: AttemptRecord): void {
 export function clearProgress(): void {
   if (!isBrowser()) return
   setMemoryBag([])
+  try {
+    localStorage.removeItem('dse_progress_v2')
+  } catch {
+    /* ignore */
+  }
 }
 
 // ── Derived statistics ──────────────────────────────────────────────

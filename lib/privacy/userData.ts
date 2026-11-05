@@ -42,3 +42,27 @@ export type UserScopedTable = (typeof USER_SCOPED_TABLES)[number]
 export function userScopeKey(table: UserScopedTable): 'user_id' | 'id' {
   return table === 'profiles' ? 'id' : 'user_id'
 }
+
+/** 獲取用戶關聯的 legacy Google identity sub（如有） */
+export async function getLegacyGoogleSub(supabase: any, userId: string): Promise<string | null> {
+  const IDENTITY_MAP_TABLE = 'auth_identity_map'
+  try {
+    const { data: mapRow } = await supabase
+      .from(IDENTITY_MAP_TABLE)
+      .select('legacy_google_sub')
+      .eq('user_id', userId)
+      .maybeSingle()
+    if (mapRow?.legacy_google_sub) {
+      return mapRow.legacy_google_sub
+    }
+  } catch {
+    /* ignore */
+  }
+  try {
+    const { data: listed } = await supabase.auth.admin.getUserById(userId)
+    const g = listed?.user?.identities?.find((i: any) => i.provider === 'google')
+    return (typeof g?.identity_data?.sub === 'string' ? g.identity_data.sub : null) ?? g?.id ?? null
+  } catch {
+    return null
+  }
+}

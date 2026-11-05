@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
+import { createServerClient } from '@supabase/ssr'
 import { apiRouteClass, createLimiter, isUnmeteredApiPath, limitForRouteClass } from '@/lib/rateLimit'
 import { buildCsp, createNonce } from '@/lib/csp'
 import { canonicalSiteRedirectUrl } from '@/lib/site'
@@ -65,7 +66,7 @@ function withCsp(request: NextRequest) {
   return response
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // 生產站舊域／非 www → 永久導向 https://www.dselevelup.com（保留 path／query）
   const host = request.headers.get('x-forwarded-host') || request.headers.get('host')
   const canonical = canonicalSiteRedirectUrl(host, request.url)
@@ -94,7 +95,32 @@ export function proxy(request: NextRequest) {
     if (isUnmeteredApiPath(pathname)) return NextResponse.next()
     return rateLimit(request)
   }
-  return withCsp(request)
+  const res = withCsp(request)
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (supabaseUrl && supabaseKey) {
+    const supabase = createServerClient(supabaseUrl, supabaseKey, {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            request.cookies.set(name, value)
+            res.cookies.set(name, value, options)
+          })
+        },
+      },
+    })
+    try {
+      await supabase.auth.getUser()
+    } catch {
+      /* ignore auth refresh errors in proxy */
+    }
+  }
+
+  return res
 }
 
 // Everything except build assets and files with an extension (images, sw.js, robots.txt,

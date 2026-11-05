@@ -1,0 +1,2 @@
+.agent/skills/** merge=ours
+.claude/skills/** merge=ours

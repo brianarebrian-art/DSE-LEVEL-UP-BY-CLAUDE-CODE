@@ -55,3 +55,7 @@ ds-bundle/
 # Agent skill install scratch (canonical copy lives in .cursor/skills/)
 .agents/
 skills-lock.json
+
+# Draft gate rejected reports
+*.rejected.json
+data/**/*.rejected.json

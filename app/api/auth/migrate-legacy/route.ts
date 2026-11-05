@@ -28,8 +28,8 @@ export async function POST() {
     if (!listErr && listed.user?.identities) {
       const g = listed.user.identities.find((i) => i.provider === 'google')
       legacySub =
-        g?.id ??
         (typeof g?.identity_data?.sub === 'string' ? g.identity_data.sub : null) ??
+        g?.id ??
         null
     }
   } catch (e) {
@@ -77,6 +77,7 @@ export async function POST() {
     return NextResponse.json({ ok: true, migrated: true, reason: 'empty' })
   }
 
+  let migrateSuccess = false
   try {
     const blob = legacyRow.progress_data as {
       dse_progress?: Array<{
@@ -97,11 +98,11 @@ export async function POST() {
       bySubject.set(a.subjectId, cur)
     }
     for (const [subjectId, s] of bySubject) {
-      await service.from('learning_progress').upsert(
+      const { error: upsertErr } = await service.from('learning_progress').upsert(
         {
           user_id: user.id,
           subject_id: subjectId,
-          topic_id: null,
+          topic_id: 'all',
           status: s.total > 0 ? 'in_progress' : 'not_started',
           correct_count: Math.max(0, Math.min(s.correct, s.total)),
           attempt_count: Math.max(0, s.total),
@@ -110,15 +111,20 @@ export async function POST() {
         },
         { onConflict: 'user_id,subject_id,topic_id' },
       )
+      if (upsertErr) throw upsertErr
     }
+    migrateSuccess = true
   } catch (e) {
     safeLog('error', 'migrate-legacy: parse/write failed', e)
   }
 
-  await service
-    .from('auth_identity_map')
-    .update({ migrated_at: new Date().toISOString(), source: 'user_progress' })
-    .eq('user_id', user.id)
+  if (migrateSuccess) {
+    await service
+      .from('auth_identity_map')
+      .update({ migrated_at: new Date().toISOString(), source: 'user_progress' })
+      .eq('user_id', user.id)
+    return NextResponse.json({ ok: true, migrated: true })
+  }
 
-  return NextResponse.json({ ok: true, migrated: true })
+  return NextResponse.json({ ok: false, migrated: false, error: 'migration_failed' }, { status: 500 })
 }

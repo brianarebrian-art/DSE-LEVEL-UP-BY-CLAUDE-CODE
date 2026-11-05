@@ -29,6 +29,7 @@ export async function GET(request: Request) {
   }
 
   const cookieStore = await cookies()
+  const queuedCookies = new Map<string, string>()
   const supabase = createServerClient(supabaseUrl, supabaseKey, {
     cookies: {
       getAll() {
@@ -37,6 +38,7 @@ export async function GET(request: Request) {
       setAll(cookiesToSet) {
         for (const { name, value, options } of cookiesToSet) {
           cookieStore.set(name, value, options)
+          queuedCookies.set(name, value)
         }
       },
     },
@@ -84,10 +86,21 @@ export async function GET(request: Request) {
     // Best-effort legacy migrate — failures must not block sign-in.
     try {
       const migrateUrl = new URL('/api/auth/migrate-legacy', origin)
+      const allCookiesMap = new Map<string, string>()
+      for (const c of cookieStore.getAll()) {
+        allCookiesMap.set(c.name, c.value)
+      }
+      for (const [k, v] of queuedCookies.entries()) {
+        allCookiesMap.set(k, v)
+      }
+      const cookieHeader = Array.from(allCookiesMap.entries())
+        .map(([k, v]) => `${k}=${v}`)
+        .join('; ')
+
       await fetch(migrateUrl, {
         method: 'POST',
         headers: {
-          cookie: cookieStore.getAll().map((c) => `${c.name}=${c.value}`).join('; '),
+          cookie: cookieHeader,
         },
       })
     } catch {

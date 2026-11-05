@@ -97,5 +97,5 @@ test('robots permits reading page noindex, CSS, JS and images', () => {
   assert.equal(robots().sitemap, SITE_ORIGIN + '/sitemap.xml')
   const rules = robots().rules
   assert.ok(Array.isArray(rules))
-  for (const rule of rules) assert.deepEqual(rule.disallow, ['/api/'])
+  for (const rule of rules) assert.deepEqual(rule.disallow, ['/admin', '/api/'])
 })

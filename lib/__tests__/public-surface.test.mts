@@ -8,7 +8,7 @@ test('robots exposes crawler rules only and keeps page noindex readable', async 
   const { default: robots } = await import('../../app/robots.ts')
   const rules = robots().rules
   assert.ok(Array.isArray(rules))
-  assert.deepEqual(rules.find(rule => rule.userAgent === '*'), { userAgent: '*', allow: '/', disallow: ['/api/'] })
+  assert.deepEqual(rules.find(rule => rule.userAgent === '*'), { userAgent: '*', allow: ['/', '/subjects', '/practice'], disallow: ['/admin', '/api/'] })
 })
 
 test('next.config turns off the X-Powered-By header', async () => {

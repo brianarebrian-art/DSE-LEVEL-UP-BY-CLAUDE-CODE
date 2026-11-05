@@ -1,0 +1,18 @@
+name: Deploy Guard
+on: [pull_request]
+jobs:
+  validate-vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx ajv-cli validate -s node_modules/vercel/schemas/vercel.json -d vercel.json || node -e "const fs = require('fs'); const c = JSON.parse(fs.readFileSync('vercel.json', 'utf8')); if ('NODE_VERSION' in c) throw new Error('vercel.json contains NODE_VERSION');"
+      - run: node -e "const p=require('./package.json'); if(p.engines?.node!=='26.x') throw new Error('Node must be 26.x')"
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - run: npm ci
+      - run: npm run build

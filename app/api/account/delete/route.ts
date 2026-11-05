@@ -3,7 +3,7 @@ import { BODY_LIMIT, readJsonLimited } from '@/lib/api/readJson'
 import { getSyncUserId } from '@/lib/auth/server'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
-import { USER_SCOPED_TABLES, userScopeKey } from '@/lib/privacy/userData'
+import { USER_SCOPED_TABLES, userScopeKey, getLegacyGoogleSub } from '@/lib/privacy/userData'
 import {
   makeInternalErasureFailure,
   makePartialErasureFailure,
@@ -36,9 +36,15 @@ export async function POST(req: Request) {
 
   try {
     const supabase = getServiceSupabase()
+
+    const legacySub = await getLegacyGoogleSub(supabase, userId)
     const failed: string[] = []
     for (const table of USER_SCOPED_TABLES) {
-      const { error } = await supabase.from(table).delete().eq(userScopeKey(table), userId)
+      const key = userScopeKey(table)
+      const { error } = await supabase.from(table).delete().eq(key, userId)
+      if (legacySub && key === 'user_id') {
+        await supabase.from(table).delete().eq(key, legacySub)
+      }
       // 42P01 = undefined_table（表已 drop）→ 當作已清走，唔算失敗。
       if (error && error.code !== '42P01') failed.push(table)
     }

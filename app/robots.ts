@@ -5,10 +5,10 @@ import { SITE_ORIGIN } from '@/lib/site'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/', disallow: ['/api/'] },
-      { userAgent: 'GPTBot', allow: '/', disallow: ['/api/'] },
-      { userAgent: 'ClaudeBot', allow: '/', disallow: ['/api/'] },
-      { userAgent: 'PerplexityBot', allow: '/', disallow: ['/api/'] },
+      { userAgent: '*', allow: ['/', '/subjects', '/practice'], disallow: ['/admin', '/api/'] },
+      { userAgent: 'GPTBot', allow: ['/', '/subjects', '/practice'], disallow: ['/admin', '/api/'] },
+      { userAgent: 'ClaudeBot', allow: ['/', '/subjects', '/practice'], disallow: ['/admin', '/api/'] },
+      { userAgent: 'PerplexityBot', allow: ['/', '/subjects', '/practice'], disallow: ['/admin', '/api/'] },
     ],
     sitemap: `${SITE_ORIGIN}/sitemap.xml`,
   }

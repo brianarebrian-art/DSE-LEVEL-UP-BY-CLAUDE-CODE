@@ -88,3 +88,11 @@ git status
 - 確認 working tree clean，或只包含本次變更相關檔案。
 - 確認 commit message 清楚描述變更目的、範圍及影響。
 - 任何檢查失敗時，不得提交；應先修正問題後重新執行完整驗證。
+
+### V2 防重複故障檢查清單（Deploy + Auth + Progress + Privacy）：
+- `vercel.json` 必須完全符合官方 Schema，且絕無 `NODE_VERSION` 欄位。
+- `package.json` 中的 `engines.node` 必須設為 `26.x`。
+- `proxy.ts` 必須於 middleware 調用 `supabase.auth.getUser()` 以自動刷新與旋轉 Session Cookies。
+- `recordAttempt` 必須立即寫入 `localStorage`（`dse_progress_v2`）以確保重新載入不遺失練習資料。
+- 題庫與草稿目錄嚴禁追蹤 `*.rejected.json`。
+- `npm run build` 必須完整通過且無錯誤。
