@@ -17,7 +17,7 @@
 | [`lib/__tests__/error-system-agent-b.test.mts`](../../lib/__tests__/error-system-agent-b.test.mts) | 合約測試 |
 | `npm run error:agent-b` | 入口 |
 
-**Phase 5 完成，等待批准**（唔開工 Phase 6）。
+**Phase 5 完成。** Phase 6 見 [`phase-6-ui-test.md`](./phase-6-ui-test.md)。
 
 ---
 
@@ -88,7 +88,7 @@ rm -f .grok-queue/report-9001.json .grok-investigations/result-9001.json \
 - [x] 公開標籤「經自動檢查」  
 - [x] 單元測試  
 - [ ] Production `--withdraw`／`--push-status` — 營運明確批准後  
-- [ ] Phase 6 UI／通知  
+- [x] Phase 6 UI／通知 — [`phase-6-ui-test.md`](./phase-6-ui-test.md)
 
 ---
 

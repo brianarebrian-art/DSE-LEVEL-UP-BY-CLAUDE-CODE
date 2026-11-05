@@ -90,7 +90,7 @@ rm -f .grok-queue/report-9001.json .grok-investigations/result-9001.json
 | Phase | 內容 |
 |---|---|
 | 5 | Agent B — 見 phase-5-executor.md |
-| 6 | UI／通知／共融黑名單測試 |
+| 6 | UI／通知／共融 — 見 phase-6-ui-test.md |
 
 ---
 

@@ -3,6 +3,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocale } from '@/lib/i18n'
+import {
+  inclusiveWarningEn,
+  inclusiveWarningZh,
+  scanInclusiveText,
+} from '@/lib/inclusiveFilter'
 import { CATEGORIES, type CategoryKey } from '@/lib/questionReport'
 
 // 題目勘誤入口 —— 學生見到題目有問題，喺當場報得返。
@@ -65,13 +70,23 @@ function mailtoHref(questionId: string, body: string, en: boolean): string {
 export default function ReportQuestionButton({
   questionId,
   variant = 'inline',
+  subjectLabel,
 }: {
   questionId: string
   /** inline＝解析區腳註連結；standalone＝卡片上獨立細掣（標記／錯題頁用）。 */
   variant?: 'inline' | 'standalone'
+  /** 科目顯示名（可選）。有就用「已收到，{科目}助教查緊」；無就用「分科助教」。 */
+  subjectLabel?: string
 }) {
   const { locale } = useLocale()
   const en = locale === 'en'
+  const tutorLabel = subjectLabel?.trim()
+    ? en
+      ? `${subjectLabel.trim()} tutors`
+      : `${subjectLabel.trim()}助教`
+    : en
+      ? 'subject tutors'
+      : '分科助教'
   const [open, setOpen] = useState(false)
   const [cat, setCat] = useState<CategoryKey>('answer')
   const [detail, setDetail] = useState('')
@@ -119,6 +134,12 @@ export default function ReportQuestionButton({
   }, [open])
 
   const body = composeReport(questionId, cat, detail, en)
+  const detailScan = scanInclusiveText(detail)
+  const detailWarn = detailScan.ok
+    ? ''
+    : en
+      ? inclusiveWarningEn(detailScan.blocked)
+      : inclusiveWarningZh(detailScan.blocked)
 
   // 只送題號、類別、語言 —— detail（學生寫的字）刻意不送。
   const submit = async () => {
@@ -160,7 +181,7 @@ export default function ReportQuestionButton({
         onClick={() => setOpen(true)}
         className={triggerClass}
       >
-        {en ? 'Something wrong with this question?' : '呢條題有問題？話我哋知'}
+        {en ? 'Think it is wrong? Tap to check' : '覺得有錯？一按即查'}
       </button>
 
       {open &&
@@ -227,8 +248,8 @@ export default function ReportQuestionButton({
               <p aria-live="polite" className="mt-2 text-xs leading-relaxed text-ink-muted">
                 {send === 'sent'
                   ? en
-                    ? 'Received. Thank you — we will look at this question.'
-                    : '收到，多謝你！我哋會睇吓呢條題。'
+                    ? `Received — ${tutorLabel} are checking. Reports are anonymous, so we cannot message you when it is fixed; withdrawn items show on Transparency.`
+                    : `已收到，${tutorLabel}查緊。舉報係匿名，修好唔會私人通知你；下架紀錄可喺透明度頁睇到。`
                   : send === 'failed'
                     ? en
                       ? 'It did not go through. Please send it by email below instead.'
@@ -258,6 +279,11 @@ export default function ReportQuestionButton({
                   en ? 'e.g. option 2 also works because…' : '例如：第二個選項其實都啱，因為⋯⋯'
                 }
               />
+              {detailWarn ? (
+                <p role="status" className="mt-2 text-xs leading-relaxed text-rose">
+                  {detailWarn}
+                </p>
+              ) : null}
 
               {/* 報告全文永遠攤開 —— 就算冇郵件程式、就算剪貼板失敗，
                   學生都仲可以自己揀字。呢度係唯一唔會靜默失敗嘅一條路。 */}

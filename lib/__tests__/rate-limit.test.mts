@@ -83,3 +83,47 @@ test('route class：sync／count 與 general 分開，避免學校 NAT 被單一
   assert.equal(limitForRouteClass('general').limit, 60)
   assert.ok(limitForRouteClass('sync').limit > limitForRouteClass('general').limit)
 })
+
+test('共用 IP（學校 NAT）：sync／count 闊桶可撑約 500 次練習流量；唔 ban，只 429', () => {
+  // 驗收：「共用IP 學校 500 request 唔會被 block」—— 指練習／count 路徑，
+  // 唔係永久 IP ban。proxy 只回 429；無 blacklist。
+  const sync = limitForRouteClass('sync')
+  const count = limitForRouteClass('count')
+  assert.equal(sync.limit, 120)
+  assert.equal(count.limit, 120)
+  // 10 分鐘視窗內，兩個闊桶合計可消化 ≥500 次（學校一班齊撳）
+  const tenMinSyncHits = Math.floor((10 * 60_000) / sync.windowMs) * sync.limit
+  assert.ok(tenMinSyncHits + count.limit >= 500, `capacity=${tenMinSyncHits + count.limit}`)
+
+  const l = createLimiter()
+  const schoolIp = 'nat-school-1'
+  const start = 1_000
+  // 500 次練習 sync，均勻攤喺 10 分鐘 —— 闊桶應全部放行（唔 ban）
+  let syncAllowed = 0
+  for (let i = 0; i < 500; i++) {
+    const t = start + Math.floor((i / 500) * 10 * 60_000)
+    const { windowMs, limit } = limitForRouteClass('sync')
+    if (l.allow(`${schoolIp}:sync`, windowMs, limit, t)) syncAllowed++
+  }
+  assert.equal(syncAllowed, 500, `school NAT 500 sync should all pass; got ${syncAllowed}`)
+
+  // 同 IP 另開 report 窄桶：仍會 429，證明限流在生效而唔係永久 ban
+  const rep = limitForRouteClass('report')
+  let reportDenied = 0
+  for (let i = 0; i < 15; i++) {
+    if (!l.allow(`${schoolIp}:report`, rep.windowMs, rep.limit, start + i * 1000)) reportDenied++
+  }
+  assert.ok(reportDenied >= 5, `report burst should 429; denied=${reportDenied}`)
+})
+
+test('report 窄桶：同 IP 10 分鐘內第 11 次擋；唔寫入 IP 黑名單結構', () => {
+  const { windowMs, limit } = limitForRouteClass('report')
+  assert.equal(limit, 10)
+  assert.equal(windowMs, 10 * 60_000)
+  const l = createLimiter()
+  const key = 'shared-ip:report'
+  for (let i = 0; i < 10; i++) assert.equal(l.allow(key, windowMs, limit, 1000 + i), true)
+  assert.equal(l.allow(key, windowMs, limit, 1010), false)
+  // 過窗口後放返 —— 證明係滑動限流，唔係永久 ban
+  assert.equal(l.allow(key, windowMs, limit, 1000 + windowMs), true)
+})
