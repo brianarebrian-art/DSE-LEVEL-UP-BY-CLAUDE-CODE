@@ -1,4 +1,7 @@
 {
+  "framework": "nextjs",
+  "installCommand": "npm ci --ignore-scripts",
+  "regions": ["hkg1"],
   "crons": [
     { "path": "/api/cron/exam-day-nudge", "schedule": "0 14 * * *" },
     { "path": "/api/cron/exam-day-nudge", "schedule": "30 22 * * *" }

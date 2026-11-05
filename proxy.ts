@@ -74,6 +74,13 @@ export function proxy(request: NextRequest) {
   }
 
   const { pathname } = request.nextUrl
+
+  // Hardening for CVE-2026-114139 tunnelRoute bypass:
+  // Sentry tunnelRoute uses exact '/monitoring'. Any subpath like '/monitoring/*' must be rejected with 404.
+  if (pathname.startsWith('/monitoring/')) {
+    return new NextResponse('Not Found', { status: 404 })
+  }
+
   // OAuth callback + migrate: strict auth bucket (see isAuthSensitivePath).
   if (pathname === '/auth/callback' || pathname.startsWith('/auth/callback/')) {
     return rateLimit(request)
