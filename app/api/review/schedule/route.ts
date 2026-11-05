@@ -12,18 +12,19 @@ function isRating(value: unknown): value is FsrsRating {
 }
 
 export async function POST(req: Request) {
+  const started = performance.now()
   const database = inspectConfiguredDatabaseUrl()
   if (!database.ok) {
-    return NextResponse.json({ error: 'database-url-refused', mode: database.mode }, { status: 503 })
+    return withTiming(NextResponse.json({ error: 'database-url-refused', mode: database.mode }, { status: 503 }), started)
   }
   const read = await readJsonLimited<Record<string, unknown>>(req, BODY_LIMIT.small)
-  if (!read.ok) return NextResponse.json({ error: read.error }, { status: read.status })
+  if (!read.ok) return withTiming(NextResponse.json({ error: read.error }, { status: read.status }), started)
   const body = read.value ?? {}
   const rating = body.rating
   const elapsedDays = body.elapsedDays
   const previous = body.previous
   if (!isRating(rating) || typeof elapsedDays !== 'number' || !Number.isFinite(elapsedDays)) {
-    return NextResponse.json({ error: 'invalid-review' }, { status: 400 })
+    return withTiming(NextResponse.json({ error: 'invalid-review' }, { status: 400 }), started)
   }
   let card: CardState | null = null
   if (previous && typeof previous === 'object') {
@@ -47,7 +48,7 @@ export async function POST(req: Request) {
   const rawMastery = body.mastery
   const prior = typeof rawMastery === 'number' && Number.isFinite(rawMastery) ? rawMastery : 0.3
   const mastery = updateMastery(prior, rating >= 3)
-  return NextResponse.json({
+  return withTiming(NextResponse.json({
     next,
     due: isDue(0, next.stability),
     reviewInDays: intervalDays(next.stability),
@@ -56,5 +57,10 @@ export async function POST(req: Request) {
     persisted: false,
     reason: 'migration-0035-awaiting-founder-approval',
     database: database.mode,
-  })
+  }), started)
+}
+
+function withTiming(response: NextResponse, started: number): NextResponse {
+  response.headers.set('Server-Timing', `handler;dur=${(performance.now() - started).toFixed(2)}`)
+  return response
 }

@@ -1,13 +1,24 @@
-# 十階段
+# 驗收對照
 
-- [x] Phase 0：MCP 檢查寫入 `docs/mcp-status.md`
-- [x] Phase 1：四份研究在 `docs/research/`。Mobbin 因付費牆沒有截圖
-- [x] Phase 2：`docs/PRD.md`
-- [x] Phase 3：`docs/validation.md`。1000 行臨時表已回滾。裸 `auth.uid()` 在生產政策中是 0 條
-- [x] Phase 4：`docs/architecture.md`、Canva Open Graph、原創 SVG。README banner 的 PNG 匯出被拒絕
-- [x] Phase 5：FSRS、知識圖、蘇格拉底 API、排程 API、revalidate、講解圖。`0035` 只是草稿，未套用生產庫。沒有付費短片
-- [x] Phase 6：15 項單元測試通過。本機瀏覽器走完「三次未對上 → 代數 → 相似題 → 圖 → 英文」
-- [x] Phase 7：空的進度頁補上入口。文案由「播放」改為「顯示圖」，因為沒有短片。RLS 樣本低於 50 ms。生產 Sentry 仍有一條舊問題，見驗證文件
-- [x] Phase 8：Preview `dpl_869iLD6vdQRqSjZzm8PHJrrhYJma` 已 READY。連續三次點選會出代數、相似題和圖
-- [x] Phase 9：PR #197 已開，未合併 main
-- [x] Phase 10：`docs/post-release-verification.md`。生產合併未做
+標準來自這次 PRD 的驗收條，以及原指令第七、八、十階段。未量到、未過線的維持未完成。
+
+## 已過
+
+- [x] 答錯微分時，回溯包含代數，不包含進階。單元測試同 Preview 走查都見到。
+- [x] 第一次提示是簡化，第二次是類比，第三次是相似題加講解圖。Preview 連續點三次後出現 x³ 同 `/explainers/` 的圖。
+- [x] 提示文字不含該題正確選項原文。單元測試掃過三題。
+- [x] 新的 Good 評分間隔是 3 日。經過穩定度之後，可提取性低於 0.9。
+- [x] 未設定 `DATABASE_URL` 時，排程 API 回 200，`persisted` 是 false。
+- [x] 埠 5432 的連接字串被拒絕。
+- [x] 進度頁可以進入。中英文都讀得到。沒有 emoji，沒有 FAIL。
+- [x] `0035` 未套用生產庫。
+- [x] 1000 行臨時表的兩種 RLS 計劃都是 0.15 ms，低於 50 ms。生產政策裡裸 `auth.uid()` 是 0 條。
+- [x] 本機暖機後，提示 API 的 `Server-Timing` handler 是 0.22–0.41 ms。
+
+## 未過
+
+- [ ] 1000 個同時請求、P95 低於 300 ms。未做 1000 併發。由波特蘭量到香港 Preview 的 20 次提示 API，P95 是 657 ms，最快 341 ms。`x-vercel-id` 是 `pdx1::hkg1`，等候時間約 348 ms，傳輸約 1 ms。這次量度未過 300 ms。
+- [ ] Sentry 零未解決問題。生產仍有 `JAVASCRIPT-NEXTJS-6`，堆疊只在 `executors/200.js`，受影響用戶數 0。沒有把它標成已解決。
+- [ ] 視覺回歸對住基準圖通過。只有一張手機截圖，沒有前後比對。
+- [ ] 生產網址的 E2E、生產 P95、release health 高於 99%。未合併，所以未量。
+- [ ] `lint-and-test` 通過。香港時間 10:30 起仍然排隊。全套 `npm test` 另有既有失敗：`ict` 的 `BANK_VERSION` 與題庫雜湊不一致。
