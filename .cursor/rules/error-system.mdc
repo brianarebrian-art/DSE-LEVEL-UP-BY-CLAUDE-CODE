@@ -9,6 +9,8 @@ globs:
   - supabase/migrations/0034_error_system_phase1.sql
   - app/api/report/**
   - lib/questionReport.ts
+  - lib/errorSystem/**
+  - scripts/error-system/**
   - components/ReportQuestionButton.tsx
 ---
 

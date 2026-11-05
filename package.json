@@ -49,7 +49,8 @@
     "qbank:calibrate": "npx --yes tsx@4.19.2 scripts/qbank/calibrate-topic-difficulty.mts",
     "qbank:gap": "npx --yes tsx@4.19.2 scripts/qbank/gap-2027.mts",
     "qbank:family-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/gen-difficulty-overrides.mts",
-    "qbank:question-scope": "npx --yes tsx@4.19.2 scripts/qbank/gen-question-scope.mts"
+    "qbank:question-scope": "npx --yes tsx@4.19.2 scripts/qbank/gen-question-scope.mts",
+    "error:agent-a": "npx --yes tsx@4.19.2 scripts/error-system/agent-a.mts"
   },
   "dependencies": {
     "@sentry/nextjs": "11.10.0",

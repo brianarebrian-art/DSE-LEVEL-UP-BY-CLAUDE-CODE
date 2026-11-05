@@ -107,7 +107,8 @@ M2／DAT／音樂等 **無豁免**。
 - [x] `.cursor/rules/error-system.mdc`
 - [x] 本文件
 - [ ] 手動放一張真 `report-*.json` 試掃 — **Phase 4**
-- [ ] Agent A／B — **Phase 3／5**
+- [x] Agent A — **Phase 3**（見 phase-3-agent-a.md）
+- [ ] Agent B — **Phase 5**
 
 ---
 
