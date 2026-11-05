@@ -1,6 +1,7 @@
 -- 0032_emergency_rls_hardening.sql
 -- Emergency Global Patch - RLS & View Security Invoker hardening
--- Ensures all public tables enforce ROW LEVEL SECURITY and revokes unauthorized permissions.
+-- Ensures all public tables enforce ROW LEVEL SECURITY, views enforce security_invoker = true,
+-- and grants access to authenticated only (never public/anon write access).
 
 DO $$
 DECLARE
@@ -51,7 +52,7 @@ ALTER TABLE IF EXISTS public.learning_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE IF EXISTS public.learning_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE IF EXISTS public.practice_attempts ENABLE ROW LEVEL SECURITY;
 
--- Set security_invoker = true on any existing views in public schema
+-- Set security_invoker = true on any existing views in public schema to fix 0010 advisory
 DO $$
 DECLARE
     v record;
@@ -64,3 +65,16 @@ BEGIN
         EXECUTE format('ALTER VIEW public.%I SET (security_invoker = true);', v.table_name);
     END LOOP;
 END $$;
+
+-- Hardening permissions: Revoke public write/all permissions, only grant to authenticated / service_role
+REVOKE ALL ON ALL TABLES IN SCHEMA public FROM anon;
+REVOKE ALL ON ALL SEQUENCES IN SCHEMA public FROM anon;
+REVOKE ALL ON ALL ROUTINES IN SCHEMA public FROM anon;
+
+-- Grant selective read on public questions bank
+GRANT SELECT ON TABLE public.questions TO anon, authenticated;
+GRANT SELECT ON TABLE public.question_bank_versions TO anon, authenticated;
+
+-- Grant standard CRUD to authenticated users governed strictly by RLS policies
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO authenticated;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO authenticated;
