@@ -72,7 +72,7 @@ npm run error:agent-a -- --write --push-status   # 要有 .env.local + 0034
 - [x] 單元測試 4 條 pass  
 - [x] 樣例寫出後無 PII 欄  
 - [ ] Production `--push-status` — 等 0034 apply  
-- [ ] Phase 4 Bot 掃真 `report-*.json`
+- [x] Phase 4 Bot 掃真 `report-*.json` — 見 phase-4-bots.md
 
 ---
 
