@@ -26,6 +26,24 @@ Notes:
 - Production auth is **Supabase Auth · Google OAuth only** (`@supabase/ssr`). Do not reintroduce Auth.js / Better Auth. Cloud schema changes for auth require founder 「批准發布」 before production apply.
 - Supabase access is **server-only** (`service_role`). Browser clients must not hold that key.
 
+## Pre-commit Verification
+
+Before opening a PR or pushing to a shared branch, complete the full checklist in
+[`docs/PRE_COMMIT_VERIFICATION.md`](./docs/PRE_COMMIT_VERIFICATION.md).
+
+At minimum, run:
+
+```bash
+npm test
+npm run typecheck
+npm run qa
+npm run secret:scan
+npm audit --omit=dev --audit-level=high
+npm run build
+```
+
+Do not commit if any check fails.
+
 ## Pull request checklist
 
 - Describe **student impact** in plain language (zh-HK welcome).
