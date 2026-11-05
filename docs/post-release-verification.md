@@ -17,9 +17,9 @@
 
 ## Preview
 
-- 部署 `dpl_AkCGPbbb9pv2DM8RZbnRbgsNRdt1` 狀態 READY，區域 `hkg1`。
+- 部署 `dpl_869iLD6vdQRqSjZzm8PHJrrhYJma`（提交 `0e8c3fa`）狀態 READY，區域 `hkg1`。
 - 網址：`https://dse-level-up-by-claude-code-git-cursor-fsrs-s-b62071-dselevelup.vercel.app/review/trace`
-- 這個 Preview 有 Vercel SSO。用臨時分享連結打開之後，連續三次選未對上的選項，頁面出現「相似題」和「代數」。同一頁的 `POST /api/tutor/socratic` 回 200，`kind` 是 `similar`，`revealsAnswer` 是 false，回應不含 `2x`。
+- 這個 Preview 有 Vercel SSO。打開之後連續三次點未對上的選項，頁面同時出現代數、相似題（x³）和 `/explainers/` 的圖。
 - 主控台有兩類既有攔截：Vercel 工具列腳本被 CSP 擋下，以及 `/monitoring` 轉去 `vercel.com` 的連線被 `connect-src` 擋下。學生這條先備流程仍然完成。
 
 ## 生產站（尚未包含這次改動）

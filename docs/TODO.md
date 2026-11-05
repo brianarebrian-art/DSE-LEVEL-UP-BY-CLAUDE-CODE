@@ -8,6 +8,6 @@
 - [x] Phase 5：FSRS、知識圖、蘇格拉底 API、排程 API、revalidate、講解圖。`0035` 只是草稿，未套用生產庫。沒有付費短片
 - [x] Phase 6：15 項單元測試通過。本機瀏覽器走完「三次未對上 → 代數 → 相似題 → 圖 → 英文」
 - [x] Phase 7：空的進度頁補上入口。文案由「播放」改為「顯示圖」，因為沒有短片。RLS 樣本低於 50 ms。生產 Sentry 仍有一條舊問題，見驗證文件
-- [x] Phase 8：Preview `dpl_AkCGPbbb9pv2DM8RZbnRbgsNRdt1` 已 READY。SSO 保護下走完三次未對上
+- [x] Phase 8：Preview `dpl_869iLD6vdQRqSjZzm8PHJrrhYJma` 已 READY。連續三次點選會出代數、相似題和圖
 - [x] Phase 9：PR #197 已開，未合併 main
 - [x] Phase 10：`docs/post-release-verification.md`。生產合併未做
