@@ -9,10 +9,10 @@ const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN
 Sentry.init({
   dsn: dsn || undefined,
   enabled: Boolean(dsn),
-  sendDefaultPii: false,
+  // PII stays off by SDK default; @sentry/nextjs@11.10.0 types omit sendDefaultPii.
+  // Sensitive fields are still stripped in beforeSend via scrubSentryEvent.
   tracesSampleRate: process.env.NODE_ENV === 'development' ? 1.0 : 0.1,
   // No replayIntegration — do not record student screens by default.
-  enableLogs: false,
   // SEC-R1-002 / FIX-DSE-APP-002: scrub Authorization / cookies / push endpoints
   // before events leave the browser. Also tag intentional smoke-test errors from
   // the dev-only /sentry-example-page so alerts can exclude them.
