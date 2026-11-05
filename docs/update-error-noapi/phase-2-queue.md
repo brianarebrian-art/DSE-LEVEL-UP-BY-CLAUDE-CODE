@@ -108,7 +108,7 @@ M2／DAT／音樂等 **無豁免**。
 - [x] 本文件
 - [x] 手動放一張真 `report-*.json` 試掃 — **Phase 4**（見 phase-4-bots.md）
 - [x] Agent A — **Phase 3**（見 phase-3-agent-a.md）
-- [ ] Agent B — **Phase 5**
+- [x] Agent B — **Phase 5**（見 phase-5-executor.md）
 
 ---
 

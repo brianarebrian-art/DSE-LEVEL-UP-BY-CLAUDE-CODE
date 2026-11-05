@@ -4,6 +4,8 @@ alwaysApply: false
 globs:
   - .grok-queue/**
   - .grok-investigations/**
+  - .grok-replacement-queue/**
+  - drafts/error-replacements/**
   - .grok-bots/**
   - docs/update-error-noapi/**
   - supabase/migrations/0034_error_system_phase1.sql

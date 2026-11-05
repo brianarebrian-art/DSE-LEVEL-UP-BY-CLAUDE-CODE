@@ -55,3 +55,6 @@ ds-bundle/
 # Agent skill install scratch (canonical copy lives in .cursor/skills/)
 .agents/
 skills-lock.json
+
+# Error-system Agent B ephemeral audit appends (WORM DB is migration 0034)
+.grok-investigations/_audit/

@@ -51,7 +51,8 @@
     "qbank:family-difficulty": "npx --yes tsx@4.19.2 scripts/qbank/gen-difficulty-overrides.mts",
     "qbank:question-scope": "npx --yes tsx@4.19.2 scripts/qbank/gen-question-scope.mts",
     "error:agent-a": "npx --yes tsx@4.19.2 scripts/error-system/agent-a.mts",
-    "error:bot-scan": "npx --yes tsx@4.19.2 scripts/error-system/bot-scan.mts"
+    "error:bot-scan": "npx --yes tsx@4.19.2 scripts/error-system/bot-scan.mts",
+    "error:agent-b": "npx --yes tsx@4.19.2 scripts/error-system/agent-b.mts"
   },
   "dependencies": {
     "@sentry/nextjs": "11.10.0",
