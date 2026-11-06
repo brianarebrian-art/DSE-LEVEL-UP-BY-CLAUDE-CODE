@@ -45,7 +45,12 @@ export function recentSubjectIds(
 /**
  * Where 開始練習 sends a student (UX loop 31, 2026-09-30; hardening prompt §11).
  * Same rule as the home 繼續 card: an unfinished set is resumed, otherwise a fresh set
- * in the most recent subject; a first-time visitor picks a subject.
+ * in the most recent subject.
+ *
+ * A guest with nothing on this device joins the homepage picker
+ * (`/#quick-start`, 「唔使登入／揀科開始 10 題」) — the same path as the hero,
+ * not a second start on the full subject catalogue. A record that cannot be
+ * resumed still opens `/subjects`, never a broken practice URL.
  */
 export function startHref(
   session: ActiveSession | null,
@@ -53,5 +58,8 @@ export function startHref(
   isLive: (id: string) => boolean,
 ): string {
   const [last] = recentSubjectIds(attempts, isLive, 1)
-  return pickContinueTarget(session, last ?? null, isLive)?.href ?? '/subjects'
+  const next = pickContinueTarget(session, last ?? null, isLive)?.href
+  if (next) return next
+  if (!session && attempts.length === 0) return '/#quick-start'
+  return '/subjects'
 }

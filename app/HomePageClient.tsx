@@ -28,7 +28,7 @@ function QuickStartGrid({ labelledBy, en }: { labelledBy: string; en: boolean })
           <Link
             href={quickStartHref(s.id)}
             aria-label={en ? `${s.shortEn}: start ${SESSION_SIZE} questions` : `${s.short}：開始 ${SESSION_SIZE} 題`}
-            className="pressable flex min-h-[64px] flex-col items-center justify-center gap-1 rounded-[var(--radius-control)] bg-accent-strong px-1 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+            className="pressable flex h-14 min-h-14 flex-col items-center justify-center gap-1 rounded-[var(--radius-control)] bg-accent-strong px-1 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {en ? s.shortEn : s.short}
           </Link>
@@ -76,25 +76,28 @@ export default function HomePage() {
             <div className="mb-5">
               <ContinueCard />
             </div>
-            <div className="mx-auto max-w-md md:mx-0">
-              <p id="quick-start-label" className="mb-3 text-sm font-medium text-ink">
-                {en ? `Or start ${SESSION_SIZE} questions in a core subject` : `或者揀核心科，開始 ${SESSION_SIZE} 題`}
+            <div id="quick-start" className="mx-auto max-w-md scroll-mt-24 md:mx-0">
+              <p id="quick-start-label" className="mb-3 text-base font-semibold text-ink">
+                {en
+                  ? `No sign-in · pick a subject, start ${SESSION_SIZE}`
+                  : `唔使登入／揀科開始 ${SESSION_SIZE} 題`}
               </p>
               <QuickStartGrid labelledBy="quick-start-label" en={en} />
-              <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 md:justify-start">
-                <Link
-                  href={hero.ctaStartHref}
-                  className="inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-accent underline underline-offset-4"
-                >
-                  {en ? `All ${activeSubjects.length} subjects` : `全部 ${activeSubjects.length} 科`}
-                  <ArrowRight size={14} aria-hidden />
-                </Link>
+              <div className="mt-3 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center md:justify-start">
                 <Link
                   href={hero.ctaSecHref}
                   prefetch={false}
-                  className="inline-flex min-h-11 items-center gap-1 text-sm text-ink-soft underline underline-offset-4"
+                  className="pressable inline-flex h-14 min-h-14 items-center justify-center gap-2 rounded-[var(--radius-control)] border border-line-strong bg-transparent px-4 text-sm font-semibold text-ink transition-colors hover:border-accent hover:bg-surface-sunken focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  <Brain size={14} aria-hidden className="text-accent" /> {hero.ctaSecLabel}
+                  <Brain size={16} aria-hidden className="text-accent" />
+                  {hero.ctaSecLabel}
+                </Link>
+                <Link
+                  href={hero.ctaStartHref}
+                  className="inline-flex min-h-11 items-center justify-center gap-1 text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  {en ? `All ${activeSubjects.length} subjects` : `全部 ${activeSubjects.length} 科`}
+                  <ArrowRight size={14} aria-hidden />
                 </Link>
               </div>
             </div>
@@ -193,14 +196,17 @@ export default function HomePage() {
       <section className="bg-surface-sunken px-4 py-16">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="mb-4 text-3xl font-semibold text-ink sm:text-4xl">{h.ctaTitle}</h2>
-          <p id="quick-start-label-bottom" className="mb-8 text-ink-muted">
-            {h.ctaSub}
+          <p id="quick-start-label-bottom" className="mb-3 text-base font-semibold text-ink">
+            {en
+              ? `No sign-in · pick a subject, start ${SESSION_SIZE}`
+              : `唔使登入／揀科開始 ${SESSION_SIZE} 題`}
           </p>
+          <p className="mb-8 text-ink-muted">{h.ctaSub}</p>
           <div className="mx-auto max-w-md">
             <QuickStartGrid labelledBy="quick-start-label-bottom" en={en} />
             <Link
               href="/subjects"
-              className="mt-3 inline-flex min-h-11 items-center gap-1 text-sm font-semibold text-accent underline underline-offset-4"
+              className="pressable mt-3 inline-flex h-14 min-h-14 w-full items-center justify-center gap-2 rounded-[var(--radius-control)] border border-line-strong bg-transparent px-4 text-sm font-semibold text-ink hover:border-accent hover:bg-surface-raised focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {en ? `All ${activeSubjects.length} subjects` : `全部 ${activeSubjects.length} 科`}
               <ArrowRight size={14} aria-hidden />

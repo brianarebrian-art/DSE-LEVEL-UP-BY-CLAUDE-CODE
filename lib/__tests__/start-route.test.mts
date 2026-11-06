@@ -23,8 +23,8 @@ const session = (over: Partial<ActiveSession> = {}): ActiveSession => ({
   answers: [], current: 3, elapsed: 120, updatedAt: Date.now(), ...over,
 })
 
-test('first-time visitor → subject list', () => {
-  assert.equal(Q.startHref(null, [], live), '/subjects')
+test('first-time visitor → homepage subject picker, same path as the hero', () => {
+  assert.equal(Q.startHref(null, [], live), '/#quick-start')
 })
 
 test('returning student without an unfinished set → a new set in the most recent subject', () => {
@@ -45,15 +45,20 @@ test('an unfinished set the practice page would resume → that set, even if ano
 
 test('the page replaces itself, reads only local records, and the top bar CTA uses it', () => {
   const src = readFileSync('app/start/StartRedirect.tsx', 'utf8')
-  assert.match(src, /router\.replace\(startHref\(loadActiveSession\(\), loadAttempts\(\)/)
+  assert.match(src, /const href = startHref\(loadActiveSession\(\), loadAttempts\(\)/)
+  assert.match(src, /window\.location\.replace\(href\)/)
+  assert.match(src, /router\.replace\(href\)/)
+  assert.doesNotMatch(src, /router\.push\(/)
   assert.doesNotMatch(src, /localStorage\.setItem|fetch\(/)
+  assert.match(src, /href="\/#quick-start"/, 'no-JS path joins the homepage picker')
   assert.match(src, /href="\/subjects"/, 'fallback link if the redirect fails')
   assert.match(readFileSync('app/start/page.tsx', 'utf8'), /completeSeoMetadata\(/)
   assertNoIndex(route.metadata)
   const nav = readFileSync('components/Navbar.tsx', 'utf8')
   assert.equal((nav.match(/href="\/start"/g) ?? []).length, 2)
   assert.match(readFileSync('lib/pageOrder.ts', 'utf8'), /'\/start': '/)
-  assert.match(readFileSync('lib/quickStart.ts', 'utf8'), /pickContinueTarget\(session, last \?\? null, isLive\)\?\.href \?\? '\/subjects'/)
+  assert.match(readFileSync('lib/quickStart.ts', 'utf8'), /if \(!session && attempts\.length === 0\) return '\/#quick-start'/)
+  assert.match(readFileSync('lib/quickStart.ts', 'utf8'), /return '\/subjects'/)
 })
 
 // Refinement loop 2 (2026-09-30; prompt §39): the five cases named in the prompt, against
@@ -65,8 +70,8 @@ test('regression: new, returning, unfinished, nothing unfinished, invalid subjec
   const liveIds = new Set(getActiveSubjects().map((s) => s.id))
   const isLive = (id: string) => liveIds.has(id)
   const now = Date.now()
-  // New user: nothing on this device.
-  assert.equal(Q.startHref(null, [], isLive), '/subjects')
+  // New user: nothing on this device — same picker as the homepage hero.
+  assert.equal(Q.startHref(null, [], isLive), '/#quick-start')
   // Returning user, no unfinished set: a new set in the latest subject.
   assert.equal(Q.startHref(null, [{ subjectId: 'math', timestamp: now - 5 }, { subjectId: 'physics', timestamp: now }], isLive), '/practice?subject=physics')
   // Unfinished set: resumed.

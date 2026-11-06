@@ -147,7 +147,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/start"
-            className="ml-2 min-h-11 inline-flex items-center whitespace-nowrap bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm px-4 py-2 rounded-lg transition-[colors,transform] duration-100 active:scale-[0.97]"
+            className="ml-2 inline-flex h-14 min-h-14 items-center whitespace-nowrap rounded-[var(--radius-control)] bg-accent-strong px-4 text-sm font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.97]"
           >
             {t.nav.startPractice}
           </Link>
@@ -247,7 +247,7 @@ export default function Navbar() {
             <Link
               href="/start"
               onClick={() => setOpen(false)}
-              className="mt-4 min-h-11 flex items-center justify-center bg-accent-strong hover:bg-accent-hover text-on-accent font-medium text-sm py-2.5 rounded-lg transition-colors"
+              className="mt-4 flex h-14 min-h-14 items-center justify-center rounded-[var(--radius-control)] bg-accent-strong text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {t.nav.startPractice}
             </Link>

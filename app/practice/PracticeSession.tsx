@@ -605,6 +605,17 @@ export default function PracticeSession({
     }
   }, [answers, answerState, firstAnswer, current, totalQ, questions, startTime, router, subjectId, subjectMeta, topicFilter, tr, mode, streak, nextWish, currentQ])
 
+  // 睇到解析先算取得價值。選單／結果頁的登入說明聽呢個事件，練習中唔彈窗。
+  useEffect(() => {
+    if (answerState === null) return
+    try {
+      sessionStorage.setItem('dse_seen_explanation', '1')
+    } catch {
+      /* private mode */
+    }
+    window.dispatchEvent(new Event('dse:practice-value'))
+  }, [answerState])
+
   // Proceed past a question. When a server-signed lock exists, do a final server check
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
   // returns OK, so a student is never wrongly stuck. A genuine "not expired" reply
