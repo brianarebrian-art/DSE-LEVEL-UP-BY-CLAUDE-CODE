@@ -124,6 +124,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/feedback" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
+                  {t.footer.feedback}
+                </Link>
+              </li>
+              <li>
                 <a href="mailto:dselevelup@gmail.com" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
                   {t.footer.contact}
                 </a>

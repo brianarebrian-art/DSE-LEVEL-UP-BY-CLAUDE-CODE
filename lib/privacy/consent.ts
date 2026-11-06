@@ -59,8 +59,11 @@
  *
  * 2026-10-29.v1 —— Speed Insights／安全日誌披露與 G-A3 登入文案對齊私隱頁。
  * 指紋閘要求文案一改就 bump；登入學生會再見一次同意視窗。
+ *
+ * 2026-11-06.v1 —— 新增「匿名意見」：/feedback 自願送出嘅情景選擇同短句
+ * （general_feedback.payload；不記帳戶、電郵、IP）。屬新增採集類別，所以 bump。
  */
-export const POLICY_VERSION = '2026-10-29.v1'
+export const POLICY_VERSION = '2026-11-06.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'
