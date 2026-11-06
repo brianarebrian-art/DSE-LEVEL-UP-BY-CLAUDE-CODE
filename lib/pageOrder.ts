@@ -79,6 +79,7 @@ export const EXCLUDED: Record<string, string> = {
   '/transparency': 'Footer 資訊頁',
   '/trust': 'Footer 資訊頁',
   '/credits': 'Footer 資訊頁',
+  '/feedback': 'Footer 資訊頁：匿名意見，由頁尾進入，唔屬主瀏覽循環',
 
   // 支線功能頁：由 /subjects 或各自入口入，唔喺主循環
   //

@@ -191,6 +191,7 @@ const zh = {
     predictionMethod: '練習表現點計',
     accessibility: '無障礙自評',
     contact: '聯絡我們',
+    feedback: '匿名意見',
     disclaimerLabel: '免責聲明：',
     disclaimerBody:
       '本平台提供之試題均為獨立改寫版本，旨在協助考生練習應試技巧，並非香港考試及評核局（HKEAA）官方試題。官方歷屆試題請前往 HKEAA 網站下載。練習表現估算僅供參考，最終成績以 HKEAA 公布為準。',
@@ -624,6 +625,7 @@ const en: typeof zh = {
     predictionMethod: 'How practice figures are worked out',
     accessibility: 'Accessibility',
     contact: 'Contact',
+    feedback: 'Anonymous feedback',
     disclaimerLabel: 'Disclaimer:',
     disclaimerBody:
       'All questions on this platform are independently rewritten versions intended to help candidates practise exam skills; they are not official HKEAA papers. Please download official past papers from the HKEAA website. Practice performance estimates are for reference only — final results are as published by the HKEAA.',

@@ -138,8 +138,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         </ul>
         <p className="rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
           {en
-            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report or answer the two questions after a practice set, we receive only what you picked, and cannot tell who sent it; see “Reporting a problem with a question” and “Two questions after practice” below.) (We also count how many practice sets start and finish each day, as totals only; see “Counting practice sets” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. What you WROTE stays on your device, always. Your capsules are words you wrote to yourself, and they are not something we want to hold.'
-            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，或者答做完練習嗰兩條問題，我哋只收到你揀嘅答案，認唔出係邊個送嘅，見下面「報告題目問題」同「做完練習嘅兩條問題」。）（我哋亦會數每日有幾多節練習開始同做完，只存總數，見下面「數練習次數」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你【寫】嘅嘢，永遠留喺你部機。時間囊係你寫畀自己嘅字，我哋唔想手上有一份。'}
+            ? 'If you are not signed in, we keep no record that is about you — no tracking cookie, no account, no row in our database that is about you. (If you send a question report or answer the two questions after a practice set, we receive only what you picked, and cannot tell who sent it; see “Reporting a problem with a question”, “Two questions after practice” and “Anonymous feedback” below.) (We also count how many practice sets start and finish each day, as totals only; see “Counting practice sets” below.) (Vercel Web Analytics counts page views in total, without cookies; see “Where it goes” below.) Deliberately NOT synced, even when you are signed in: your time capsules, your bookmarks, your writing drafts, and your most recent result. Those stay on your device. The line we drew is this — what you PICKED (an option in a multiple-choice question) can go to the cloud so your progress follows you between devices. Words you wrote for yourself (time capsules, writing drafts, your latest result) stay on your device. The only exception is a few sentences you choose to send on the anonymous feedback page: we keep those with the options you picked, without your account, email or IP, so we cannot tell who sent them.'
+            : '未登入嘅話，我哋唔會留低任何關於你嘅紀錄 —— 冇 cookie 追蹤、冇帳戶，資料庫冇任何一行係關於你嘅。（你撳「送出」報告題目問題，或者答做完練習嗰兩條問題，我哋只收到你揀嘅答案，認唔出係邊個送嘅，見下面「報告題目問題」、「做完練習嘅兩條問題」同「匿名意見」。）（我哋亦會數每日有幾多節練習開始同做完，只存總數，見下面「數練習次數」。）（Vercel Web Analytics 會計網站整體瀏覽量，唔用 cookie，見下面「啲資料去咗邊」。）就算你登入咗，以下都【刻意唔會】上傳：你嘅時間囊、你嘅收藏、你嘅寫作草稿，同你最近一次練習結果。呢啲留喺你部機。我哋條界線係咁劃嘅 —— 你【揀】嘅嘢（選擇題嗰個選項）會上雲，等你嘅進度可以跟你去另一部機；你寫畀自己嘅字（時間囊、寫作草稿、最近一次練習結果）永遠留喺你部機。唯一例外：你喺匿名意見頁自己撳送出嗰幾句，會同你揀嘅選項一齊收低，但唔記帳戶、電郵或 IP，認唔出係邊個。'}
         </p>
       </Section>
 
@@ -169,8 +169,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
         <ul className="ml-4 list-disc space-y-1">
           <li>
             {en
-              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, along with question reports, the answers to the two questions after practice, and the daily totals of practice sets started and finished.'
-              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定、題目問題報告、做完練習嗰兩條問題嘅答案，同埋每日練習開始同做完嘅總數，就放喺度。'}
+              ? 'Supabase (PostgreSQL), hosted in Tokyo (ap-northeast-1) — this is where synced progress and settings sit, along with question reports, the answers to the two questions after practice, the daily totals of practice sets started and finished, and anything you choose to send on the anonymous feedback page.'
+              : 'Supabase（PostgreSQL），伺服器喺東京（ap-northeast-1）—— 同步嘅進度同設定、題目問題報告、做完練習嗰兩條問題嘅答案、每日練習開始同做完嘅總數，同你喺匿名意見頁選擇送出嘅內容，就放喺度。'}
           </li>
           <li>
             {en ? 'Vercel — this is where the website itself is hosted and served from.' : 'Vercel —— 個網站本身就係喺度寄存同發送。'}
@@ -203,6 +203,15 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
           {en
             ? 'After a practice set, the result page asks two questions you can skip: whether any of the questions looked wrong, and whether you will use the site again. If you answer, we receive the subject, the question, the answer you picked, and whether you use the site in Chinese or English, plus the time it arrived. We do not record your account, IP address or device, and the two answers are not linked to each other, so they cannot be traced back to you. We use them only to see whether the questions and the site are working for students.'
             : '做完一節練習，結果頁會問兩條可以唔答嘅問題：你覺得有冇題目出錯，同埋你會唔會再用呢度。如果你答，我哋只會收到：科目、邊條問題、你揀嘅答案、你用緊中文定英文介面，加上收到嘅時間。唔會記低你嘅帳戶、IP 位址或者裝置，兩條答案亦唔會連埋一齊，所以認唔出係邊個答。我哋只會用嚟睇吓題目同網站對學生有冇用。'}
+        </p>
+      </Section>
+
+      {/* 2026-11-06：/feedback 匿名意見。只存 payload，唔記帳戶、電郵、IP。 */}
+      <Section title={en ? 'Anonymous feedback' : '匿名意見'}>
+        <p>
+          {en
+            ? 'The page /feedback is optional. If you send it, we store one row: the scenario you picked for each part of the site, your accessibility answers, whether you had an “oh, so that’s how” moment, any short note you typed, and the time it arrived. We do not store your account, email, IP address or device. The row is not linked to you, and other students cannot read it. We use it only to see which parts help. This section was added on 6 November 2026.'
+            : '/feedback 可以唔填。如果你送出，我哋只存一行：每個部分你揀嘅情況、無障礙嗰幾條、有冇「原來係咁」嘅瞬間、你自願寫低嘅短句，加上收到嘅時間。唔會記低帳戶、電郵、IP 位址或者裝置。呢一行認唔出係邊個，其他學生亦睇唔到。我哋只會用嚟睇吓邊部分有幫助。本節於 2026 年 11 月 6 日加入。'}
         </p>
       </Section>
 

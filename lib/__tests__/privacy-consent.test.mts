@@ -32,10 +32,10 @@ const { POLICY_VERSION, CONSENT_POINTS, DECLINE_NOTE } = await import('../privac
 //   2. 跑 npm test，由 fail 訊息抄返新 hash 入下面 EXPECTED
 //   3. 兩步都做完先 commit —— 只做第 2 步就係喺閘度作弊
 const EXPECTED = {
-  version: '2026-10-29.v1',
-  // 2026-10-29 (2026-10-29.v1): Speed Insights / safe-log / G-A3 login copy on /privacy.
-  // Previous: 34c4eb5c1bd9fcea (2026-10-23.v1, /privacy→/terms link).
-  hash: '6236d0cc92044b6e',
+  version: '2026-11-06.v1',
+  // 2026-11-06 (2026-11-06.v1): anonymous /feedback disclosure on /privacy.
+  // Previous: 6236d0cc92044b6e (2026-10-29.v1, Speed Insights / safe-log / G-A3).
+  hash: 'bc7e06f999ce3ebd',
 }
 
 function policyFingerprint(): string {

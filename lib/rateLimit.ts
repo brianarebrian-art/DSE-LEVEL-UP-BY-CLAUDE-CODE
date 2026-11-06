@@ -78,7 +78,7 @@ export type ApiRouteClass = 'auth' | 'report' | 'count' | 'sync' | 'general'
 
 export function apiRouteClass(pathname: string): ApiRouteClass {
   if (isAuthSensitivePath(pathname)) return 'auth'
-  if (pathname === '/api/report' || pathname === '/api/feedback') return 'report'
+  if (pathname === '/api/report' || pathname === '/api/feedback' || pathname === '/api/feedback-general') return 'report'
   if (pathname === '/api/practice-count') return 'count'
   if (
     pathname === '/api/progress' ||
