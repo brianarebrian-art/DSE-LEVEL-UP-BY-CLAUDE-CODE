@@ -28,3 +28,12 @@ test('the note sits next to the sign-in buttons, not in a pop-up', () => {
   assert.match(read('components/SyncStatus.tsx'), /<SignInNote className="basis-full" \/>/)
   assert.doesNotMatch(read('components/SignInNote.tsx'), /role="dialog"|createPortal/)
 })
+
+test('the note stays hidden until practice value, and does not use a countdown', () => {
+  const s = read('components/SignInNote.tsx')
+  assert.match(s, /export function practiceValueEarned/)
+  assert.match(s, /if \(status !== 'unauthenticated' \|\| user \|\| !earned\) return null/)
+  assert.match(s, /SEEN_EXPLANATION_KEY = 'dse_seen_explanation'/)
+  assert.match(read('app/practice/PracticeSession.tsx'), /sessionStorage\.setItem\('dse_seen_explanation', '1'\)/)
+  assert.doesNotMatch(s, /countdown|倒數|Top 25%|排名/)
+})

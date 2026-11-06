@@ -1513,6 +1513,15 @@ body:has(.practice-session) [data-reading-ruler-fab] {
 body:has(.practice-session) [data-sos-fab] {
   animation: none !important;
 }
+/* P1.2 拇指區。窄屏實測：欄 padding 16px + 右墊 56px，下一題右緣距離
+   右下情緒支援掣左緣只得 56−48＝8px（掣本身 right-4、寬 48px）。
+   窄屏把右墊加到 88px，水平間距約 40px。唔抬高情緒支援掣，避免蓋住解析。
+   桌面欄已置中，維持 56px。a11y 浮鈕仍由上面規則收起。 */
+@media (max-width: 639px) {
+  .practice-next-bar {
+    padding-right: 88px;
+  }
+}
 /* /practice-revealed-p0 */
 
 /* ── MORANDI-WIN（must be last colour layer）─────────────────────────────
