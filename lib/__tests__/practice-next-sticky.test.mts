@@ -12,9 +12,11 @@ const css = read('app/globals.css')
 const session = read('app/practice/PracticeSession.tsx')
 const block = css.slice(css.indexOf('/* practice-revealed-p0'), css.indexOf('/* /practice-revealed-p0 */'))
 
-test('the next bar is sticky inside the content column and only after an answer', () => {
-  assert.match(block, /position:\s*sticky;/)
-  assert.match(block, /bottom:\s*max\(12px,\s*env\(safe-area-inset-bottom\)\);/)
+test('the next bar stays in the column flow and only after an answer', () => {
+  assert.match(block, /\.practice-session-revealed\s*\{[^}]*min-height:\s*0;/)
+  assert.match(block, /\.practice-session-revealed\s*\{[^}]*height:\s*100dvh;/)
+  assert.match(block, /\.practice-next-bar\s*\{[^}]*position:\s*relative;/)
+  assert.doesNotMatch(block, /\.practice-next-bar\s*\{[^}]*position:\s*sticky;/)
   assert.match(block, /height:\s*56px;/)
   assert.match(block, /min-height:\s*48px;/)
   assert.match(block, /z-index:\s*20;/)
@@ -26,21 +28,22 @@ test('the next bar is sticky inside the content column and only after an answer'
   assert.match(session, /\{answerState !== null && \(\s*<div className="practice-next-bar">/)
 })
 
-test('the explanation card keeps 72px under the text and uses a clay tint', () => {
-  assert.match(block, /\.practice-explain\s*\{[^}]*padding-bottom:\s*72px;/)
+test('the explanation card is not padded to hide under the next bar', () => {
+  assert.doesNotMatch(block, /\.practice-explain\s*\{[^}]*padding-bottom:\s*72px;/)
   assert.match(block, /color-mix\(in srgb, var\(--color-ml-clay\)/)
   assert.doesNotMatch(block, /--color-rose|--color-neon/)
   assert.match(session, /practice-explain practice-miss/)
 })
 
-test('practice keeps a11y in the sticky header; the FAB stays off the next button', () => {
+test('practice keeps a11y in the sticky header; the emotion FAB is not on the next button', () => {
   // Phase 3：A11y 常駐 sticky 頂欄；練習沉浸收起 .a11y-fab，唔蓋下一題。
   assert.match(block, /body:has\(\.practice-session\) \.a11y-fab\s*\{\s*display:\s*none;/)
+  assert.match(block, /body:has\(\.practice-session\) \[data-sos-fab\]\s*\{\s*display:\s*none;/)
   assert.match(session, /practice-sticky-head/)
   assert.match(session, /<A11yButton className="!inline-flex" \/>/)
+  assert.match(session, /dse-open-sos/)
   assert.ok(Number(block.match(/\.practice-next-bar\s*\{[^}]*z-index:\s*(\d+)/)?.[1]) < 50)
-  // 下一題列仍為情緒支援掣留右墊，唔同左下 FAB 搶位。
-  assert.match(block, /\.practice-next-bar\s*\{[^}]*padding-right:\s*56px;/)
+  assert.doesNotMatch(block, /\.practice-next-bar\s*\{[^}]*padding-right:\s*56px;/)
 })
 
 test('revealed copy does not scold', () => {

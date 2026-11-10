@@ -320,7 +320,7 @@ export default function ResultPageClient() {
       divider,
       `${en ? 'Correct' : '答對'}: ${result.score}/${result.total} (${pct}%)`,
       `${en ? 'This session' : '本節表現'}: ${bandLabel}`,
-      en ? 'Core Blind Spots Identified:' : '已識別核心盲點：',
+      en ? 'Topics to look at again:' : '可以再睇的課題：',
       weaknesses,
       `${en ? 'Recommended Actions' : '建議行動'}: ${actions}`,
       divider,

@@ -9,6 +9,7 @@ import { subjects, getSubject } from '@/data/subjects'
 // 只要題數同課題數，唔要題目內容 —— 讀 summary.generated，唔好 import barrel。
 import { SUBJECT_SUMMARY } from '@/data/questions/summary.generated'
 import { getTopicStats, type TopicStatEntry } from '@/lib/topicStats'
+import { loadActiveSession, sessionAnswered } from '@/lib/sessionResume'
 
 // 知識凝結總覽 —— 每個有題目嘅科目一張卡。全部數字由真題庫／你嘅 localStorage 計，
 // 冇做過就顯示「仲未做過」，唔會當 0% 咁寫。
@@ -28,10 +29,12 @@ export default function NotesOverview() {
   const en = locale === 'en'
   const tr = (zh: string, e: string) => (en ? e : zh)
   const [stats, setStats] = useState<TopicStatEntry[]>([])
+  const [guestAnswered, setGuestAnswered] = useState(0)
 
   // localStorage 只可以喺 mount 之後讀（避免 hydration 唔一致）
   useEffect(() => {
     setStats(getTopicStats())
+    setGuestAnswered(sessionAnswered(loadActiveSession()).total)
   }, [])
 
   const rows = useMemo<Row[]>(() => {
@@ -56,6 +59,7 @@ export default function NotesOverview() {
   }, [stats])
 
   const totalAttempted = rows.reduce((n, r) => n + r.attempted, 0)
+  const started = totalAttempted > 0 || guestAnswered > 0
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
@@ -84,11 +88,19 @@ export default function NotesOverview() {
         )}
       </p>
 
-      {totalAttempted === 0 && (
+      {started && totalAttempted === 0 && (
+        <p className="mb-5 rounded-xl border border-line bg-surface-raised p-3 text-sm text-ink-soft">
+          {tr(
+            '今次練習已經開始。做完整份之後，呢度會按課題整理。',
+            'This practice set has started. After you finish it, topics will line up here.',
+          )}
+        </p>
+      )}
+      {!started && (
         <p className="mb-5 rounded-xl border border-gold/25 bg-surface-sunken p-3 text-sm text-gold-strong">
           {tr(
-            '你仲未做過練習，所以暫時淨係見到每個課題有幾多題。做多幾份，呢度就會開始顯示你自己嘅盲點。',
-            'You have not practised yet, so for now these only show how many questions each topic holds. Do a few sets and your own blind spots will start appearing here.',
+            '你仲未做過練習，所以暫時淨係見到每個課題有幾多題。做多幾份，呢度就會按你做過嘅題整理。',
+            'You have not practised yet, so for now these only show how many questions each topic holds. After a few sets, this page lines up with the questions you have done.',
           )}
         </p>
       )}

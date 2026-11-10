@@ -125,7 +125,7 @@ export default function TextQuestionCard({
  <div className="text-sm text-ink-muted">
               {marked === 'correct'
                 ? en ? ' Logged — your answer matched.' : ' 已記錄：大致對到'
-                : en ? ' A new blind spot found — saved to your review.' : ' 你發現咗一個新盲點，已寫入你嘅溫習'}
+                : en ? ' Saved for another look.' : ' 已寫入你嘅溫習，下次可以再睇。'}
             </div>
  )}
 

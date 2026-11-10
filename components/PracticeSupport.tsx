@@ -98,8 +98,8 @@ export default function PracticeSupport() {
  <p className="text-sm text-ink-muted mb-5 leading-relaxed">
               {blindSpotsToday > 0
                 ? en
-                  ? `You uncovered ${blindSpotsToday} blind spot${blindSpotsToday > 1 ? 's' : ''} today — each one is a mark saved in the exam.`
-                  : `今日發現咗 ${blindSpotsToday} 個盲點 —— 每一個都係考場慳返嘅分。`
+                  ? `You noted ${blindSpotsToday} question${blindSpotsToday > 1 ? 's' : ''} to look at again.`
+                  : `今日記低咗 ${blindSpotsToday} 題，下次可以再睇。`
                 : en
                   ? 'Rest is part of the plan. See you tomorrow.'
                   : '休息一下係為咗行更遠嘅路。聽日見。'}

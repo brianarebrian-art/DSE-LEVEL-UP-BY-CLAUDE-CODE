@@ -1,7 +1,7 @@
 // 練習頁各題狀態（UX 循環 LOOP 19；創辦人決定 2，2026-09-30）。
 //
 // 只顯示，不可撳：決定 2 選 A，作答維持只能向前，不設跳題。
-// 答錯稱為「發現盲點」，與結果頁及回饋的用語一致（憲章第 7 條：不用紅色、不寫判決）。
+// 答錯的學生可見名稱係「未揀中」，同練習頁回饋一致。唔用「盲點」標註學生。
 
 export type QuestionStatus = 'correct' | 'blindSpot' | 'current' | 'todo'
 
@@ -20,7 +20,7 @@ export function questionStatuses(
 
 export const QUESTION_STATUS_LABEL: Record<QuestionStatus, { zh: string; en: string }> = {
   correct: { zh: '答啱', en: 'correct' },
-  blindSpot: { zh: '發現盲點', en: 'blind spot found' },
+  blindSpot: { zh: '未揀中', en: 'Not chosen' },
   current: { zh: '而家做緊', en: 'current' },
   todo: { zh: '未做', en: 'not yet' },
 }

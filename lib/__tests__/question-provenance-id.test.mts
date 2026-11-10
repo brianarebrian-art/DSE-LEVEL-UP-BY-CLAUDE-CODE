@@ -14,10 +14,14 @@ const read = (p: string) => readFileSync(join(ROOT, p), 'utf8')
 const pick = <T,>(m: T): T => ((m as { default?: T }).default ?? m)
 const T = pick(await import('../../data/questions/types.ts'))
 
-test('the disclosure shows the question ID, the same one the report carries', () => {
+test('the disclosure does not print the raw question id; the report still sends it', () => {
   const src = read('components/QuestionProvenance.tsx')
-  assert.match(src, /\{en \? 'Question ID ' : '題號 '\}\s*<span className="font-mono select-all text-ink-soft">\{questionId\}<\/span>/)
-  assert.match(read('components/ReportQuestionButton.tsx'), /題號：\$\{questionId\}/)
+  const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/^\s*\/\/.*$/gm, '')
+  assert.doesNotMatch(code, /題號 |Question ID /)
+  assert.doesNotMatch(code, /font-mono/)
+  assert.match(code, /<ReportQuestionButton questionId=\{questionId\}/)
+  assert.match(read('components/ReportQuestionButton.tsx'), /Question ID: \$\{questionId\}/)
+  assert.doesNotMatch(read('components/ReportQuestionButton.tsx'), /font-mono text-\[11px\].*questionId/)
 })
 
 test('no syllabus year, revision date or reviewer is shown, because none is recorded per question', () => {

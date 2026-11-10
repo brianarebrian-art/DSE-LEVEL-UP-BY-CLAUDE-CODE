@@ -209,10 +209,6 @@ export default function ReportQuestionButton({
                   ? 'Pick the kind of problem and press Send. We receive only the question ID and the kind of problem, not who you are. A person reads every report; if we are wrong, the question gets fixed or withdrawn.'
                   : '揀問題類別，撳「送出」就得。我哋只會收到題號同問題類別，唔會知道你係邊個。每一份都有真人睇；如果證實係我哋錯，條題會改或者落架。'}
               </p>
-              <p className="mt-2 font-mono text-[11px] text-ink-muted">
-                {en ? 'Question ID' : '題號'}: {questionId}
-              </p>
-
               <fieldset className="mt-4">
                 <legend className="mb-2 text-xs font-medium text-ink-soft">
                   {en ? 'What kind of problem?' : '係邊一類問題？'}
@@ -295,7 +291,7 @@ export default function ReportQuestionButton({
                 readOnly
                 value={body}
                 rows={5}
-                className="mt-1.5 w-full rounded-lg border border-line bg-surface-sunken px-3 py-2 font-mono text-[11px] leading-relaxed text-ink-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                className="mt-1.5 w-full rounded-lg border border-line bg-surface-sunken px-3 py-2 text-sm leading-relaxed text-ink-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
               />
 
               <div className="mt-4 flex flex-wrap gap-2">

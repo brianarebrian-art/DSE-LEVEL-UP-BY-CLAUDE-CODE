@@ -38,7 +38,7 @@ import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicSt
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown, Sprout, MapPin, Loader2 } from 'lucide-react'
+import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown, Sprout, MapPin, Loader2, LifeBuoy } from 'lucide-react'
 import CauseMark from '@/components/marks/CauseMark'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
 import RestMode from '@/components/RestMode'
@@ -406,12 +406,19 @@ export default function PracticeSession({
       const reduce =
         window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
         document.documentElement.classList.contains('no-motion')
-      // 內層捲動只把解析頂部帶進視窗底部一帶，下一題掣維持在欄底，已聚焦的選項盡量仍留在畫面內。
+      // 解釋卡若被欄底切走，就把卡頂捲到黏頂列之下。下一題列在捲動區外面，唔會蓋住文字。
       const scroller = el.closest('.practice-revealed-scroll')
       if (scroller instanceof HTMLElement) {
         const scrollerRect = scroller.getBoundingClientRect()
-        const delta = el.getBoundingClientRect().top - (scrollerRect.bottom - 160)
-        if (delta > 8) scroller.scrollBy({ top: delta, behavior: reduce ? 'auto' : 'smooth' })
+        const header = scroller.querySelector('.practice-sticky-head')
+        const headerH = header instanceof HTMLElement ? header.getBoundingClientRect().height : 0
+        const visibleTop = scrollerRect.top + headerH + 8
+        const visibleBottom = scrollerRect.bottom - 8
+        const elRect = el.getBoundingClientRect()
+        const fits = elRect.top >= visibleTop - 8 && elRect.bottom <= visibleBottom + 8
+        if (!fits && elRect.top > visibleTop + 8) {
+          scroller.scrollBy({ top: elRect.top - visibleTop, behavior: reduce ? 'auto' : 'smooth' })
+        }
         return
       }
       const delta = feedbackScrollDelta(el.getBoundingClientRect().top, window.innerHeight)
@@ -470,8 +477,22 @@ export default function PracticeSession({
         })
       // F-PRG: 記入今日光譜（真實作答先記，唔靠估算）
       recordSpectrumAnswer(currentQ.difficulty, isCorrect)
+      // 未撳「下一題」離開時，進行中的作答都要留低，進度頁先不會當成尚未開始。
+      saveActiveSession({
+        v: 1,
+        subjectId,
+        topicFilter: topicFilter ?? null,
+        mode,
+        questionIds: questions.map((q) => q.id),
+        answers: answers.map((a) => (a ? { selectedZh: a.selectedZh, isCorrect: a.isCorrect } : null)),
+        openAnswer: { selectedZh: zh, isCorrect },
+        current,
+        elapsed: Math.floor((Date.now() - startTime) / 1000),
+        updatedAt: Date.now(),
+      })
+      notifyProgressChanged()
     },
-    [answerState, currentQ, subjectId]
+    [answerState, currentQ, subjectId, topicFilter, mode, questions, answers, current, startTime]
   )
 
   const next = useCallback(() => {
@@ -597,6 +618,7 @@ export default function PracticeSession({
         // 用重排之後嘅次序 —— 唔係嘅話，refresh 返嚟會見到另一條題
         questionIds: ordered.map((q) => q.id),
         answers: newAnswers.map((a) => (a ? { selectedZh: a.selectedZh, isCorrect: a.isCorrect } : null)),
+        openAnswer: null,
         current: current + 1,
         elapsed: Math.floor((Date.now() - startTime) / 1000),
         updatedAt: Date.now(),
@@ -763,6 +785,12 @@ export default function PracticeSession({
     setQuestions(restored.map(prepareQuestion))
     setAnswers(resumeOffer.answers as AnswerState[])
     setCurrent(resumeOffer.current)
+    if (resumeOffer.openAnswer && typeof resumeOffer.openAnswer.isCorrect === 'boolean') {
+      setAnswerState(resumeOffer.openAnswer)
+      setFirstAnswer(resumeOffer.openAnswer)
+      const onScreen = restored[resumeOffer.current]
+      if (onScreen) loggedIdsRef.current.add(onScreen.id)
+    }
     setStartTime(Date.now() - resumeOffer.elapsed * 1000)
     setResumeOffer(null)
   }, [resumeOffer, bank])
@@ -823,7 +851,8 @@ export default function PracticeSession({
   // v3.0 F1: an unfinished run is waiting (this device, or synced from another one).
   // Never auto-applied — the student chooses. Light-first tokens, no pressure language.
   if (resumeOffer) {
-    const doneCount = resumeOffer.current
+    const advanced = resumeOffer.current
+    const answeredCount = advanced + (resumeOffer.openAnswer ? 1 : 0)
     const totalCount = resumeOffer.questionIds.length
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
@@ -834,8 +863,8 @@ export default function PracticeSession({
           </h2>
  <p className="mb-1 text-sm leading-relaxed text-ink-muted">
             {tr(
-              `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經做咗 ${doneCount} / ${totalCount} 題`,
-              `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
+              `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經答咗 ${answeredCount} / ${totalCount} 題`,
+              `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${answeredCount} of ${totalCount} answered`,
             )}
           </p>
  <p className="mb-6 text-xs leading-relaxed text-ink-muted">
@@ -846,7 +875,7 @@ export default function PracticeSession({
               onClick={acceptResume}
               className="pressable min-h-12 w-full rounded-[var(--radius-control)] bg-accent-strong px-6 py-3 font-medium text-on-accent hover:bg-accent-hover"
             >
-              {tr(`繼續做第 ${doneCount + 1} 題`, `Continue from question ${doneCount + 1}`)}
+              {tr(`繼續做第 ${advanced + 1} 題`, `Continue from question ${advanced + 1}`)}
             </button>
  <button
               onClick={declineResume}
@@ -902,7 +931,7 @@ export default function PracticeSession({
 
         {/* 練習頂欄：返回｜科目｜題序；次要工具收入「更多」。判斷軌喺下面。 */}
         <div className="focus-dim chrome-material sticky top-0 z-30 practice-sticky-head -mt-2 border-b border-line pt-2 pb-3 mb-3">
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex flex-wrap items-center gap-2 text-sm">
  <Link
               href="/subjects"
               aria-label={tr('返回科目選擇', 'Back to subject list')}
@@ -918,7 +947,7 @@ export default function PracticeSession({
             )}
             {mode === 'weakness' && (
               <span className="hidden sm:inline text-[11px] text-ink-muted">
-                {tr('盲點修復', 'Repair set')}
+                {tr('重溫練習', 'Review set')}
               </span>
             )}
             {mode === 'cause' && cause && (
@@ -939,6 +968,15 @@ export default function PracticeSession({
  <Clock size={13} aria-hidden /> {formatTime(elapsed)}
                 </span>
  )}
+ <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event('dse-open-sos'))}
+                aria-label={tr('情緒支援', 'Emotional support')}
+                title={tr('情緒支援', 'Emotional support')}
+                className="inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg text-accent hover:bg-line focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+              >
+ <LifeBuoy size={20} aria-hidden />
+ </button>
  <PracticeMoreMenu
                 en={locale === 'en'}
                 hideTimer={hideTimer}
@@ -960,7 +998,15 @@ export default function PracticeSession({
  </span>
  </div>
  <div className="mt-2">
- <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
+ <QuestionStatusStrip
+              statuses={questionStatuses(
+                totalQ,
+                answerState ? Object.assign(answers.slice(), { [current]: answerState }) : answers,
+                current,
+              )}
+              current={current}
+              en={locale === 'en'}
+            />
  </div>
  </div>
 
@@ -1180,7 +1226,7 @@ export default function PracticeSession({
                         steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         label={
                           <span className="text-warning text-xs font-medium mr-1">
-                            💡 {tr('正解思路：', 'Reasoning: ')}
+                            {tr('正解思路：', 'Reasoning: ')}
                           </span>
  }
  />
@@ -1296,7 +1342,7 @@ export default function PracticeSession({
                         type="button"
                         aria-expanded={wishOpen}
                         onClick={() => setWishOpen((v) => !v)}
-                        className="mx-auto flex min-h-12 items-center gap-1 text-[11px] text-ink-muted hover:text-ink-soft"
+                        className="mx-auto flex min-h-12 items-center gap-1 text-sm text-ink-soft hover:text-ink"
                       >
                         {tr('調整下一題難度', 'Adjust next difficulty')}
                         <ChevronDown size={14} className={wishOpen ? 'rotate-180 transition-transform' : 'transition-transform'} aria-hidden />
@@ -1369,7 +1415,7 @@ export default function PracticeSession({
  </div>
 
       {/* B2: 一鍵休息 —— 反思鎖期間一樣開得，死線會一齊順延 */}
-      <RestMode open={restOpen} onClose={closeRest} />
+      <RestMode open={restOpen} timerRunning={showElapsed || timerVisible} onClose={closeRest} />
  </div>
   )
 }

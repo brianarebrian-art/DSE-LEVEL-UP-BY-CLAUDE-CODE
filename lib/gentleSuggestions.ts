@@ -118,12 +118,12 @@ export function buildSuggestions(now: number = Date.now()): Suggestion[] {
       kind: 'review',
       zh:
         due.length === 1
-          ? `「${topicZh}」有一個盲點今日啱好到期，睇返佢啱啱好。`
-          : `「${topicZh}」等 ${due.length} 個盲點今日啱好到期，睇返佢哋啱啱好。`,
+          ? `「${topicZh}」有一題今日啱好可以再睇。`
+          : `「${topicZh}」等 ${due.length} 題今日啱好可以再睇。`,
       en:
         due.length === 1
-          ? `One blind spot in “${topicEn}” comes due today — good timing to revisit it.`
-          : `${due.length} blind spots, starting with “${topicEn}”, come due today.`,
+          ? `“${topicEn}” is ready to revisit today.`
+          : `${due.length} questions, starting with “${topicEn}”, are ready to revisit today.`,
       href: topicHref,
       actionZh: '去重溫',
       actionEn: 'Revisit',

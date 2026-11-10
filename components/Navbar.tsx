@@ -76,10 +76,11 @@ const primaryLinks: {
 
 const moreLinks: {
   href: string
-  key: 'notes' | 'offSyllabus'
+  key: 'notes' | 'relax' | 'offSyllabus'
 }[] = [
   { href: '/notes', key: 'notes' },
-  // 2026-09-26 Yuna：非 DSE 範圍嘅內容只由「更多」入，唔放首頁。
+  { href: '/relax', key: 'relax' },
+  // 2026-09-26 Yuna：非 DSE 範圍嘅內容只由「更多」入，唔放首頁。不考之地保持最後。
   { href: '/off-syllabus', key: 'offSyllabus' },
 ]
 
@@ -179,7 +180,7 @@ export default function Navbar() {
       {open && (
         <div
           id="site-menu"
-          className="md:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 max-h-[calc(100vh-4rem)] overflow-y-auto"
+          className="md:hidden border-t border-line bg-surface-raised px-4 sm:px-8 pt-3 min-h-[calc(100dvh-4rem)] max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain pb-[calc(var(--bottom-nav-h)+env(safe-area-inset-bottom,0px)+1.5rem)]"
         >
  <div className="mx-auto max-w-6xl">
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6">

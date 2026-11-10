@@ -18,12 +18,16 @@ const NEXT: Record<Phase, Phase> = { in: 'hold', hold: 'out', out: 'in' }
 
 const DURATIONS = [60, 300] as const
 
-function mmss(s: number) {
-  const m = Math.floor(s / 60)
-  return `${m}:${String(s % 60).padStart(2, '0')}`
-}
-
-export default function RestMode({ open, onClose }: { open: boolean; onClose: (pausedMs: number) => void }) {
+export default function RestMode({
+  open,
+  onClose,
+  timerRunning = false,
+}: {
+  open: boolean
+  onClose: (pausedMs: number) => void
+  /** True only when a visible practice timer is actually running. */
+  timerRunning?: boolean
+}) {
   const { locale } = useLocale()
   const en = locale === 'en'
   const openedAt = useRef(0)
@@ -81,12 +85,11 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
   if (!open) return null
 
   const phaseLabel =
-    phase === 'in' ? (en ? 'Breathe in… 4' : '吸氣⋯⋯ 4')
-      : phase === 'hold' ? (en ? 'Hold… 7' : '屏息⋯⋯ 7')
-        : (en ? 'Breathe out… 8' : '呼氣⋯⋯ 8')
+    phase === 'in' ? (en ? 'Breathe in' : '吸氣')
+      : phase === 'hold' ? (en ? 'A gentle pause' : '輕輕停一停')
+        : (en ? 'Breathe out slowly' : '慢慢呼氣')
 
   const done = picked !== null && left === 0
-  const soon = picked !== null && left > 0 && left <= 10
 
   return (
     /* z-[70]：要蓋過練習頁左下角工具角（z-50）同佢自己嘅彈窗（z-[60]）——
@@ -102,7 +105,9 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
           {en ? 'You are doing well. Take a rest.' : '你做得好，休息吓。'}
         </p>
         <p className="text-sm text-ink-muted mb-8">
-          {en ? 'The timer is paused. Nothing is being lost.' : '計時已經停低咗，你冇蝕到任何嘢。'}
+          {timerRunning
+            ? (en ? 'The timer is paused while you rest.' : '計時已經停低，休息期間唔會計落去。')
+            : (en ? 'No timer is running. Rest for as long as you like.' : '而家冇計時。想唞幾耐都得。')}
         </p>
 
         {/* 呼吸圓 —— 進出以 CSS transition 驅動，reduced-motion 下唔縮放 */}
@@ -140,13 +145,10 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
           </div>
         ) : (
           <div className="space-y-3">
-            <p className="text-2xl text-ink-soft tabular-nums" aria-live="off">{mmss(left)}</p>
             <p className="text-sm text-ink-muted min-h-5">
               {done
                 ? (en ? 'Rest is over — come back whenever you are ready. No rush.' : '休息完喇 —— 準備好先返嚟，唔急。')
-                : soon
-                  ? (en ? 'About 10 seconds left. Still your call when to return.' : '仲有 10 秒左右。幾時返，一樣係你話事。')
-                  : (en ? 'Just follow the circle. Nothing else to do.' : '跟住個圓呼吸就得，冇其他嘢要做。')}
+                : (en ? 'Follow the circle. Nothing else to do.' : '跟住個圓呼吸就得，冇其他嘢要做。')}
             </p>
             <button
               onClick={close}
