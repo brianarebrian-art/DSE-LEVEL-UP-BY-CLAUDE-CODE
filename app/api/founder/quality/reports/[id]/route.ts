@@ -6,10 +6,19 @@ import { founderCacheHeaders } from '@/lib/founder/env'
 import { writeFounderAudit } from '@/lib/founder/audit'
 import { getServiceSupabase } from '@/utils/supabase/server'
 import { safeLog } from '@/lib/safeLog'
+import { buildAgentBAuditEvent } from '@/lib/errorSystem/agentB'
 
 export const dynamic = 'force-dynamic'
 
-const STATUSES = ['open', 'fixed', 'rejected'] as const
+const STATUSES = [
+  'open',
+  'queued',
+  'investigating',
+  'confirmed',
+  'needs_human',
+  'fixed',
+  'rejected',
+] as const
 
 /** 更新錯題回報狀態（持久化）。 */
 export async function PATCH(request: Request, ctx: { params: Promise<{ id: string }> }) {
@@ -52,6 +61,15 @@ export async function PATCH(request: Request, ctx: { params: Promise<{ id: strin
       targetId: String(reportId),
       result: 'ok',
       summary: `status→${status}`,
+    })
+
+    // 依 0034 及 Agent B 決策管線，紀錄結構化 audit 追蹤事件
+    buildAgentBAuditEvent({
+      action: 'founder.question_report.status_change',
+      target_type: 'question_report',
+      target_id: String(reportId),
+      report_id: String(reportId),
+      summary: `status changed to ${status}`,
     })
     return NextResponse.json({ ok: true, report: data }, { headers: founderCacheHeaders() })
   } catch (e) {

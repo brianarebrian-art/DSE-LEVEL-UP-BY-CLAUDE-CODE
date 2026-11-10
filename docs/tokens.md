@@ -9,7 +9,7 @@
 node scripts/gen-token-doc.mjs
 ```
 
-掃到 **330** 個 custom property 宣告，分佈喺 **249** 個 block。
+掃到 **330** 個 custom property 宣告，分佈喺 **251** 個 block。
 
 ## ⚠️ 被覆蓋嘅宣告
 
@@ -18,42 +18,42 @@ node scripts/gen-token-doc.mjs
 
 | token | 畫唔到嘅宣告 | 真正生效 | resolved |
 |---|---|---|---|
-| `--color-surface` | `#F4F0EA` (L53)<br>`var(--color-ml-canvas)` (L338) | `#f4f0ea` (L1521) | `#f4f0ea` |
-| `--color-surface-raised` | `#FFFDF9` (L54)<br>`var(--color-ml-surface)` (L339) | `#fffdf9` (L1522) | `#fffdf9` |
-| `--color-surface-sunken` | `#F0EBE3` (L55)<br>`var(--color-ml-muted)` (L340) | `#f0ebe3` (L1523) | `#f0ebe3` |
-| `--color-ink` | `#2C2A29` (L56)<br>`var(--color-ml-ink)` (L341) | `#2c2a29` (L1524) | `#2c2a29` |
-| `--color-ink-soft` | `#3D3A38` (L57)<br>`#3D3A38` (L342) | `#3d3a38` (L1525) | `#3d3a38` |
-| `--color-ink-muted` | `#69635F` (L58)<br>`var(--color-ml-ink-soft)` (L343) | `#69635f` (L1526) | `#69635f` |
-| `--color-ink-faint` | `#9C958D` (L60)<br>`#9C958D` (L344) | `#9c958d` (L1527) | `#9c958d` |
-| `--color-accent` | `#4A656C` (L61)<br>`var(--color-ml-sage)` (L346) | `#4a656c` (L1528) | `#4a656c` |
-| `--color-accent-strong` | `#4A656C` (L62)<br>`var(--color-ml-sage)` (L347) | `#4a656c` (L1529) | `#4a656c` |
-| `--color-accent-hover` | `#3E555B` (L63)<br>`#4D584A` (L348) | `#3e555b` (L1530) | `#3e555b` |
-| `--color-accent-soft` | `#7C9AA6` (L64) | `#7c9aa6` (L1531) | `#7c9aa6` |
-| `--color-on-accent` | `#FFFFFF` (L65)<br>`var(--color-ml-on-brand)` (L349) | `#ffffff` (L1532) | `#ffffff` |
-| `--color-line` | `rgba(44, 42, 41, 0.08)` (L66)<br>`rgba(44, 42, 41, 0.08)` (L350) | `rgba(44, 42, 41, 0.08)` (L1533) | `rgba(44, 42, 41, 0.08)` |
-| `--color-line-strong` | `rgba(44, 42, 41, 0.16)` (L67)<br>`rgba(44, 42, 41, 0.16)` (L351) | `rgba(44, 42, 41, 0.16)` (L1534) | `rgba(44, 42, 41, 0.16)` |
-| `--color-scrim` | `rgba(44, 42, 41, 0.72)` (L70)<br>`rgba(44, 42, 41, 0.72)` (L353) | `rgba(44, 42, 41, 0.72)` (L1535) | `rgba(44, 42, 41, 0.72)` |
-| `--color-scrim-soft` | `rgba(44, 42, 41, 0.42)` (L71)<br>`rgba(44, 42, 41, 0.42)` (L354) | `rgba(44, 42, 41, 0.42)` (L1536) | `rgba(44, 42, 41, 0.42)` |
-| `--color-gold` | `#706347` (L88)<br>`var(--color-ml-clay)` (L360) | `#706347` (L1549) | `#706347` |
-| `--color-gold-soft` | `#B7A6A3` (L89)<br>`var(--color-ml-rose)` (L361) | `#b7a6a3` (L1550) | `#b7a6a3` |
-| `--color-gold-strong` | `#5F5144` (L90)<br>`#5F5144` (L362) | `#5f5144` (L1551) | `#5f5144` |
-| `--color-violet` | `#5B666F` (L91)<br>`#5B666F` (L363) | `#5b666f` (L1552) | `#5b666f` |
-| `--color-violet-strong` | `#4A545C` (L92)<br>`#4A545C` (L364) | `#4a545c` (L1553) | `#4a545c` |
-| `--color-rose` | `#845956` (L93)<br>`var(--color-ml-warn)` (L366) | `#845956` (L1554) | `#845956` |
-| `--color-rose-strong` | `#724D3D` (L94)<br>`#724D3D` (L367) | `#724d3d` (L1555) | `#724d3d` |
+| `--color-surface` | `#F4F0EA` (L53)<br>`var(--color-ml-canvas)` (L338) | `#f4f0ea` (L1530) | `#f4f0ea` |
+| `--color-surface-raised` | `#FFFDF9` (L54)<br>`var(--color-ml-surface)` (L339) | `#fffdf9` (L1531) | `#fffdf9` |
+| `--color-surface-sunken` | `#F0EBE3` (L55)<br>`var(--color-ml-muted)` (L340) | `#f0ebe3` (L1532) | `#f0ebe3` |
+| `--color-ink` | `#2C2A29` (L56)<br>`var(--color-ml-ink)` (L341) | `#2c2a29` (L1533) | `#2c2a29` |
+| `--color-ink-soft` | `#3D3A38` (L57)<br>`#3D3A38` (L342) | `#3d3a38` (L1534) | `#3d3a38` |
+| `--color-ink-muted` | `#69635F` (L58)<br>`var(--color-ml-ink-soft)` (L343) | `#69635f` (L1535) | `#69635f` |
+| `--color-ink-faint` | `#9C958D` (L60)<br>`#9C958D` (L344) | `#9c958d` (L1536) | `#9c958d` |
+| `--color-accent` | `#4A656C` (L61)<br>`var(--color-ml-sage)` (L346) | `#4a656c` (L1537) | `#4a656c` |
+| `--color-accent-strong` | `#4A656C` (L62)<br>`var(--color-ml-sage)` (L347) | `#4a656c` (L1538) | `#4a656c` |
+| `--color-accent-hover` | `#3E555B` (L63)<br>`#4D584A` (L348) | `#3e555b` (L1539) | `#3e555b` |
+| `--color-accent-soft` | `#7C9AA6` (L64) | `#7c9aa6` (L1540) | `#7c9aa6` |
+| `--color-on-accent` | `#FFFFFF` (L65)<br>`var(--color-ml-on-brand)` (L349) | `#ffffff` (L1541) | `#ffffff` |
+| `--color-line` | `rgba(44, 42, 41, 0.08)` (L66)<br>`rgba(44, 42, 41, 0.08)` (L350) | `rgba(44, 42, 41, 0.08)` (L1542) | `rgba(44, 42, 41, 0.08)` |
+| `--color-line-strong` | `rgba(44, 42, 41, 0.16)` (L67)<br>`rgba(44, 42, 41, 0.16)` (L351) | `rgba(44, 42, 41, 0.16)` (L1543) | `rgba(44, 42, 41, 0.16)` |
+| `--color-scrim` | `rgba(44, 42, 41, 0.72)` (L70)<br>`rgba(44, 42, 41, 0.72)` (L353) | `rgba(44, 42, 41, 0.72)` (L1544) | `rgba(44, 42, 41, 0.72)` |
+| `--color-scrim-soft` | `rgba(44, 42, 41, 0.42)` (L71)<br>`rgba(44, 42, 41, 0.42)` (L354) | `rgba(44, 42, 41, 0.42)` (L1545) | `rgba(44, 42, 41, 0.42)` |
+| `--color-gold` | `#706347` (L88)<br>`var(--color-ml-clay)` (L360) | `#706347` (L1558) | `#706347` |
+| `--color-gold-soft` | `#B7A6A3` (L89)<br>`var(--color-ml-rose)` (L361) | `#b7a6a3` (L1559) | `#b7a6a3` |
+| `--color-gold-strong` | `#5F5144` (L90)<br>`#5F5144` (L362) | `#5f5144` (L1560) | `#5f5144` |
+| `--color-violet` | `#5B666F` (L91)<br>`#5B666F` (L363) | `#5b666f` (L1561) | `#5b666f` |
+| `--color-violet-strong` | `#4A545C` (L92)<br>`#4A545C` (L364) | `#4a545c` (L1562) | `#4a545c` |
+| `--color-rose` | `#845956` (L93)<br>`var(--color-ml-warn)` (L366) | `#845956` (L1563) | `#845956` |
+| `--color-rose-strong` | `#724D3D` (L94)<br>`#724D3D` (L367) | `#724d3d` (L1564) | `#724d3d` |
 | `--color-on-violet` | `#FFFFFF` (L95) | `#FFFFFF` (L365) | `#FFFFFF` |
 | `--grade-5s` | `#846208` (L102) | `#846208` (L373) | `#846208` |
 | `--grade-5` | `#16793A` (L103) | `#16793A` (L374) | `#16793A` |
-| `--color-ml-canvas` | `#F4F0EA` (L133) | `#f4f0ea` (L1556) | `#f4f0ea` |
-| `--color-ml-surface` | `#FFFDF9` (L134) | `#fffdf9` (L1557) | `#fffdf9` |
-| `--color-ml-muted` | `#F0EBE3` (L135) | `#f0ebe3` (L1558) | `#f0ebe3` |
-| `--color-ml-ink` | `#2C2A29` (L137) | `#2c2a29` (L1559) | `#2c2a29` |
-| `--color-ml-ink-soft` | `#69635F` (L138) | `#69635f` (L1560) | `#69635f` |
-| `--color-ml-sage` | `#4A656C` (L141) | `#4a656c` (L1561) | `#4a656c` |
-| `--color-ml-clay` | `#706347` (L142) | `#706347` (L1562) | `#706347` |
-| `--color-ml-warn` | `#845956` (L143) | `#845956` (L1563) | `#845956` |
-| `--color-ml-good` | `#566953` (L145) | `#566953` (L1564) | `#566953` |
-| `--color-ml-on-brand` | `#FFFFFF` (L149) | `#ffffff` (L1565) | `#ffffff` |
+| `--color-ml-canvas` | `#F4F0EA` (L133) | `#f4f0ea` (L1565) | `#f4f0ea` |
+| `--color-ml-surface` | `#FFFDF9` (L134) | `#fffdf9` (L1566) | `#fffdf9` |
+| `--color-ml-muted` | `#F0EBE3` (L135) | `#f0ebe3` (L1567) | `#f0ebe3` |
+| `--color-ml-ink` | `#2C2A29` (L137) | `#2c2a29` (L1568) | `#2c2a29` |
+| `--color-ml-ink-soft` | `#69635F` (L138) | `#69635f` (L1569) | `#69635f` |
+| `--color-ml-sage` | `#4A656C` (L141) | `#4a656c` (L1570) | `#4a656c` |
+| `--color-ml-clay` | `#706347` (L142) | `#706347` (L1571) | `#706347` |
+| `--color-ml-warn` | `#845956` (L143) | `#845956` (L1572) | `#845956` |
+| `--color-ml-good` | `#566953` (L145) | `#566953` (L1573) | `#566953` |
+| `--color-ml-on-brand` | `#FFFFFF` (L149) | `#ffffff` (L1574) | `#ffffff` |
 | `--color-ml-rose` | `#C5908B` (L150) | `#B7A6A3` (L155) | `#B7A6A3` |
 | `--color-ml-mist` | `#AFC2D1` (L151) | `#8A9BA8` (L156) | `#8A9BA8` |
 | `--ease-spring-settle` | `cubic-bezier(0.22, 1, 0.36, 1)` (L1116) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1117) | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` |
@@ -66,77 +66,77 @@ node scripts/gen-token-doc.mjs
 |---|---|---|---|---|
 | `--bottom-nav-h` | `0px` | `0px` (L866) | — |  |
 | `--breakpoint-desk` | `90rem` | `90rem` (L15) | — |  |
-| `--color-accent` | `#4a656c` | `#4a656c` (L1528) | — |  |
-| `--color-accent-hover` | `#3e555b` | `#3e555b` (L1530) | — |  |
-| `--color-accent-soft` | `#7c9aa6` | `#7c9aa6` (L1531) | — |  |
-| `--color-accent-strong` | `#4a656c` | `#4a656c` (L1529) | — |  |
-| `--color-chart-1` | `#4a656c` | `#4a656c` (L1568) | — |  |
-| `--color-chart-2` | `#706347` | `#706347` (L1569) | — |  |
-| `--color-chart-3` | `#845956` | `#845956` (L1570) | — |  |
-| `--color-chart-4` | `#566953` | `#566953` (L1571) | — |  |
-| `--color-chart-5` | `#5b666f` | `#5b666f` (L1572) | — |  |
-| `--color-chart-6` | `#8a8377` | `#8a8377` (L1573) | — |  |
-| `--color-error` | `#845956` | `#845956` (L1543) | — |  |
-| `--color-error-strong` | `#724d3d` | `#724d3d` (L1544) | — |  |
-| `--color-gold` | `#706347` | `#706347` (L1549) | — |  |
-| `--color-gold-soft` | `#b7a6a3` | `#b7a6a3` (L1550) | — |  |
-| `--color-gold-strong` | `#5f5144` | `#5f5144` (L1551) | — |  |
-| `--color-info` | `#4d667e` | `#4d667e` (L1546) | — |  |
-| `--color-info-strong` | `#3f5468` | `#3f5468` (L1547) | — |  |
-| `--color-ink` | `#2c2a29` | `#2c2a29` (L1524) | — |  |
-| `--color-ink-faint` | `#9c958d` | `#9c958d` (L1527) | — |  |
-| `--color-ink-muted` | `#69635f` | `#69635f` (L1526) | — |  |
-| `--color-ink-soft` | `#3d3a38` | `#3d3a38` (L1525) | — |  |
-| `--color-line` | `rgba(44, 42, 41, 0.08)` | `rgba(44, 42, 41, 0.08)` (L1533) | — |  |
-| `--color-line-strong` | `rgba(44, 42, 41, 0.16)` | `rgba(44, 42, 41, 0.16)` (L1534) | — |  |
-| `--color-material` | `rgba(255, 253, 249, 0.78)` | `rgba(255, 253, 249, 0.78)` (L1566) | — |  |
-| `--color-material-heavy` | `rgba(244, 240, 234, 0.9)` | `rgba(244, 240, 234, 0.9)` (L1567) | — |  |
-| `--color-ml-canvas` | `#f4f0ea` | `#f4f0ea` (L1556) | — |  |
-| `--color-ml-clay` | `#706347` | `#706347` (L1562) | — |  |
-| `--color-ml-good` | `#566953` | `#566953` (L1564) | — |  |
-| `--color-ml-ink` | `#2c2a29` | `#2c2a29` (L1559) | — |  |
-| `--color-ml-ink-soft` | `#69635f` | `#69635f` (L1560) | — |  |
+| `--color-accent` | `#4a656c` | `#4a656c` (L1537) | — |  |
+| `--color-accent-hover` | `#3e555b` | `#3e555b` (L1539) | — |  |
+| `--color-accent-soft` | `#7c9aa6` | `#7c9aa6` (L1540) | — |  |
+| `--color-accent-strong` | `#4a656c` | `#4a656c` (L1538) | — |  |
+| `--color-chart-1` | `#4a656c` | `#4a656c` (L1577) | — |  |
+| `--color-chart-2` | `#706347` | `#706347` (L1578) | — |  |
+| `--color-chart-3` | `#845956` | `#845956` (L1579) | — |  |
+| `--color-chart-4` | `#566953` | `#566953` (L1580) | — |  |
+| `--color-chart-5` | `#5b666f` | `#5b666f` (L1581) | — |  |
+| `--color-chart-6` | `#8a8377` | `#8a8377` (L1582) | — |  |
+| `--color-error` | `#845956` | `#845956` (L1552) | — |  |
+| `--color-error-strong` | `#724d3d` | `#724d3d` (L1553) | — |  |
+| `--color-gold` | `#706347` | `#706347` (L1558) | — |  |
+| `--color-gold-soft` | `#b7a6a3` | `#b7a6a3` (L1559) | — |  |
+| `--color-gold-strong` | `#5f5144` | `#5f5144` (L1560) | — |  |
+| `--color-info` | `#4d667e` | `#4d667e` (L1555) | — |  |
+| `--color-info-strong` | `#3f5468` | `#3f5468` (L1556) | — |  |
+| `--color-ink` | `#2c2a29` | `#2c2a29` (L1533) | — |  |
+| `--color-ink-faint` | `#9c958d` | `#9c958d` (L1536) | — |  |
+| `--color-ink-muted` | `#69635f` | `#69635f` (L1535) | — |  |
+| `--color-ink-soft` | `#3d3a38` | `#3d3a38` (L1534) | — |  |
+| `--color-line` | `rgba(44, 42, 41, 0.08)` | `rgba(44, 42, 41, 0.08)` (L1542) | — |  |
+| `--color-line-strong` | `rgba(44, 42, 41, 0.16)` | `rgba(44, 42, 41, 0.16)` (L1543) | — |  |
+| `--color-material` | `rgba(255, 253, 249, 0.78)` | `rgba(255, 253, 249, 0.78)` (L1575) | — |  |
+| `--color-material-heavy` | `rgba(244, 240, 234, 0.9)` | `rgba(244, 240, 234, 0.9)` (L1576) | — |  |
+| `--color-ml-canvas` | `#f4f0ea` | `#f4f0ea` (L1565) | — |  |
+| `--color-ml-clay` | `#706347` | `#706347` (L1571) | — |  |
+| `--color-ml-good` | `#566953` | `#566953` (L1573) | — |  |
+| `--color-ml-ink` | `#2c2a29` | `#2c2a29` (L1568) | — |  |
+| `--color-ml-ink-soft` | `#69635f` | `#69635f` (L1569) | — |  |
 | `--color-ml-line` | `#8A8377` | `#8A8377` (L146) | — | PC-027↓ 控件邊界（3.16，WCAG 1.4.11）。 |
 | `--color-ml-mist` | `#8A9BA8` | `#8A9BA8` (L156) | — | 資訊／交通 —— 純裝飾填色 |
-| `--color-ml-muted` | `#f0ebe3` | `#f0ebe3` (L1558) | — |  |
-| `--color-ml-on-brand` | `#ffffff` | `#ffffff` (L1565) | — |  |
+| `--color-ml-muted` | `#f0ebe3` | `#f0ebe3` (L1567) | — |  |
+| `--color-ml-on-brand` | `#ffffff` | `#ffffff` (L1574) | — |  |
 | `--color-ml-rose` | `#B7A6A3` | `#B7A6A3` (L155) | — | 情緒／關懷 —— 純裝飾填色 |
-| `--color-ml-sage` | `#4a656c` | `#4a656c` (L1561) | — |  |
-| `--color-ml-surface` | `#fffdf9` | `#fffdf9` (L1557) | — |  |
-| `--color-ml-warn` | `#845956` | `#845956` (L1563) | — |  |
+| `--color-ml-sage` | `#4a656c` | `#4a656c` (L1570) | — |  |
+| `--color-ml-surface` | `#fffdf9` | `#fffdf9` (L1566) | — |  |
+| `--color-ml-warn` | `#845956` | `#845956` (L1572) | — |  |
 | `--color-neon-cyan` | `#00F5D4` | `#00F5D4` (L43) | — |  |
 | `--color-neon-pink` | `#FF006E` | `#FF006E` (L44) | — |  |
 | `--color-neon-purple` | `#9B5DE5` | `#9B5DE5` (L46) | — |  |
 | `--color-neon-yellow` | `#FEE440` | `#FEE440` (L45) | — |  |
-| `--color-on-accent` | `#ffffff` | `#ffffff` (L1532) | — |  |
-| `--color-on-error` | `#ffffff` | `#ffffff` (L1545) | — |  |
-| `--color-on-info` | `#ffffff` | `#ffffff` (L1548) | — |  |
-| `--color-on-success` | `#ffffff` | `#ffffff` (L1539) | — |  |
+| `--color-on-accent` | `#ffffff` | `#ffffff` (L1541) | — |  |
+| `--color-on-error` | `#ffffff` | `#ffffff` (L1554) | — |  |
+| `--color-on-info` | `#ffffff` | `#ffffff` (L1557) | — |  |
+| `--color-on-success` | `#ffffff` | `#ffffff` (L1548) | — |  |
 | `--color-on-violet` | `#FFFFFF` | `#FFFFFF` (L365) | — |  |
-| `--color-on-warning` | `#ffffff` | `#ffffff` (L1542) | — |  |
+| `--color-on-warning` | `#ffffff` | `#ffffff` (L1551) | — |  |
 | `--color-paper` | `#F5E7C8` | `#F5E7C8` (L36) | — | PC-009 試卷紙（暗色模式改舊紙色，見下） |
 | `--color-paper-ink` | `#2C2A29` | `#2C2A29` (L37) | — | 墨、遮蓋條（淺紙 11.66 / 舊紙 6.36） |
 | `--color-paper-muted` | `#4A4642` | `#4A4642` (L38) | — | 輔助字（7.63 / 4.16） |
 | `--color-paper-warn` | `#6B2B2B` | `#6B2B2B` (L39) | — | PC-004 陷阱標示（8.55 / 4.66）。 |
-| `--color-rose` | `#845956` | `#845956` (L1554) | — |  |
-| `--color-rose-strong` | `#724d3d` | `#724d3d` (L1555) | — |  |
-| `--color-scrim` | `rgba(44, 42, 41, 0.72)` | `rgba(44, 42, 41, 0.72)` (L1535) | — |  |
-| `--color-scrim-soft` | `rgba(44, 42, 41, 0.42)` | `rgba(44, 42, 41, 0.42)` (L1536) | — |  |
+| `--color-rose` | `#845956` | `#845956` (L1563) | — |  |
+| `--color-rose-strong` | `#724d3d` | `#724d3d` (L1564) | — |  |
+| `--color-scrim` | `rgba(44, 42, 41, 0.72)` | `rgba(44, 42, 41, 0.72)` (L1544) | — |  |
+| `--color-scrim-soft` | `rgba(44, 42, 41, 0.42)` | `rgba(44, 42, 41, 0.42)` (L1545) | — |  |
 | `--color-subj-clay` | `#706347` | `#706347` (L83) | — | PC-011↓ 4.61 |
 | `--color-subj-mist` | `#4D667E` | `#4D667E` (L82) | — | PC-020↓ 4.67 |
 | `--color-subj-moss` | `#566953` | `#566953` (L81) | — | PC-032↓ 4.65 |
 | `--color-subj-rose` | `#845956` | `#845956` (L84) | — | PC-003↓ 4.69 |
 | `--color-subj-sage` | `#57685C` | `#57685C` (L80) | — | PC-016↓ 4.66 |
 | `--color-subj-stone` | `#666557` | `#666557` (L85) | — | PC-028↓ 4.68 |
-| `--color-success` | `#566953` | `#566953` (L1537) | — |  |
-| `--color-success-strong` | `#4a5c48` | `#4a5c48` (L1538) | — |  |
-| `--color-surface` | `#f4f0ea` | `#f4f0ea` (L1521) | — |  |
-| `--color-surface-raised` | `#fffdf9` | `#fffdf9` (L1522) | — |  |
-| `--color-surface-sunken` | `#f0ebe3` | `#f0ebe3` (L1523) | — |  |
-| `--color-violet` | `#5b666f` | `#5b666f` (L1552) | — |  |
-| `--color-violet-strong` | `#4a545c` | `#4a545c` (L1553) | — |  |
-| `--color-warning` | `#706347` | `#706347` (L1540) | — |  |
-| `--color-warning-strong` | `#5f5144` | `#5f5144` (L1541) | — |  |
+| `--color-success` | `#566953` | `#566953` (L1546) | — |  |
+| `--color-success-strong` | `#4a5c48` | `#4a5c48` (L1547) | — |  |
+| `--color-surface` | `#f4f0ea` | `#f4f0ea` (L1530) | — |  |
+| `--color-surface-raised` | `#fffdf9` | `#fffdf9` (L1531) | — |  |
+| `--color-surface-sunken` | `#f0ebe3` | `#f0ebe3` (L1532) | — |  |
+| `--color-violet` | `#5b666f` | `#5b666f` (L1561) | — |  |
+| `--color-violet-strong` | `#4a545c` | `#4a545c` (L1562) | — |  |
+| `--color-warning` | `#706347` | `#706347` (L1549) | — |  |
+| `--color-warning-strong` | `#5f5144` | `#5f5144` (L1550) | — |  |
 | `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1117) | — |  |
 | `--font-serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` (L23) | — |  |
 | `--grade-1` | `#334155` | `#334155` (L107) | — | 9.47 |
@@ -157,60 +157,60 @@ node scripts/gen-token-doc.mjs
 |---|---|---|---|---|
 | `--bottom-nav-h` | `0px` | `0px` (L866) | — |  |
 | `--breakpoint-desk` | `90rem` | `90rem` (L15) | — |  |
-| `--color-accent` | `#8aa6a1` | `#8aa6a1` (L1583) | — |  |
-| `--color-accent-hover` | `#6b8f8a` | `#6b8f8a` (L1585) | — |  |
-| `--color-accent-soft` | `#7c9aa6` | `#7c9aa6` (L1586) | — |  |
-| `--color-accent-strong` | `#8aa6a1` | `#8aa6a1` (L1584) | — |  |
-| `--color-chart-1` | `#8aa6a1` | `#8aa6a1` (L1621) | — |  |
-| `--color-chart-2` | `#b8956f` | `#b8956f` (L1622) | — |  |
-| `--color-chart-3` | `#c49a9a` | `#c49a9a` (L1623) | — |  |
-| `--color-chart-4` | `#a0b39b` | `#a0b39b` (L1624) | — |  |
-| `--color-chart-5` | `#8a9fb8` | `#8a9fb8` (L1625) | — |  |
-| `--color-chart-6` | `#918a7e` | `#918a7e` (L1626) | — |  |
-| `--color-error` | `#c49a9a` | `#c49a9a` (L1596) | — |  |
-| `--color-error-strong` | `#b89191` | `#b89191` (L1597) | — |  |
-| `--color-gold` | `#b8956f` | `#b8956f` (L1602) | — |  |
-| `--color-gold-soft` | `#e6ba8b` | `#e6ba8b` (L1603) | — |  |
-| `--color-gold-strong` | `#d4ab80` | `#d4ab80` (L1604) | — |  |
-| `--color-info` | `#7c9aa6` | `#7c9aa6` (L1599) | — |  |
-| `--color-info-strong` | `#8aa6b0` | `#8aa6b0` (L1600) | — |  |
-| `--color-ink` | `#f0e8dc` | `#f0e8dc` (L1579) | — |  |
-| `--color-ink-faint` | `#6b6560` | `#6b6560` (L1582) | — |  |
-| `--color-ink-muted` | `#a8a095` | `#a8a095` (L1581) | — |  |
-| `--color-ink-soft` | `#c1bab0` | `#c1bab0` (L1580) | — |  |
-| `--color-line` | `rgba(232, 224, 212, 0.06)` | `rgba(232, 224, 212, 0.06)` (L1588) | — |  |
-| `--color-line-strong` | `rgba(232, 224, 212, 0.12)` | `rgba(232, 224, 212, 0.12)` (L1589) | — |  |
-| `--color-material` | `rgba(37, 36, 34, 0.78)` | `rgba(37, 36, 34, 0.78)` (L1619) | — |  |
-| `--color-material-heavy` | `rgba(26, 25, 23, 0.9)` | `rgba(26, 25, 23, 0.9)` (L1620) | — |  |
-| `--color-ml-canvas` | `#1a1917` | `#1a1917` (L1609) | — |  |
-| `--color-ml-clay` | `#b8956f` | `#b8956f` (L1615) | — |  |
-| `--color-ml-good` | `#a0b39b` | `#a0b39b` (L1617) | — |  |
-| `--color-ml-ink` | `#f0e8dc` | `#f0e8dc` (L1612) | — |  |
-| `--color-ml-ink-soft` | `#a8a095` | `#a8a095` (L1613) | — |  |
+| `--color-accent` | `#8aa6a1` | `#8aa6a1` (L1592) | — |  |
+| `--color-accent-hover` | `#6b8f8a` | `#6b8f8a` (L1594) | — |  |
+| `--color-accent-soft` | `#7c9aa6` | `#7c9aa6` (L1595) | — |  |
+| `--color-accent-strong` | `#8aa6a1` | `#8aa6a1` (L1593) | — |  |
+| `--color-chart-1` | `#8aa6a1` | `#8aa6a1` (L1630) | — |  |
+| `--color-chart-2` | `#b8956f` | `#b8956f` (L1631) | — |  |
+| `--color-chart-3` | `#c49a9a` | `#c49a9a` (L1632) | — |  |
+| `--color-chart-4` | `#a0b39b` | `#a0b39b` (L1633) | — |  |
+| `--color-chart-5` | `#8a9fb8` | `#8a9fb8` (L1634) | — |  |
+| `--color-chart-6` | `#918a7e` | `#918a7e` (L1635) | — |  |
+| `--color-error` | `#c49a9a` | `#c49a9a` (L1605) | — |  |
+| `--color-error-strong` | `#b89191` | `#b89191` (L1606) | — |  |
+| `--color-gold` | `#b8956f` | `#b8956f` (L1611) | — |  |
+| `--color-gold-soft` | `#e6ba8b` | `#e6ba8b` (L1612) | — |  |
+| `--color-gold-strong` | `#d4ab80` | `#d4ab80` (L1613) | — |  |
+| `--color-info` | `#7c9aa6` | `#7c9aa6` (L1608) | — |  |
+| `--color-info-strong` | `#8aa6b0` | `#8aa6b0` (L1609) | — |  |
+| `--color-ink` | `#f0e8dc` | `#f0e8dc` (L1588) | — |  |
+| `--color-ink-faint` | `#6b6560` | `#6b6560` (L1591) | — |  |
+| `--color-ink-muted` | `#a8a095` | `#a8a095` (L1590) | — |  |
+| `--color-ink-soft` | `#c1bab0` | `#c1bab0` (L1589) | — |  |
+| `--color-line` | `rgba(232, 224, 212, 0.06)` | `rgba(232, 224, 212, 0.06)` (L1597) | — |  |
+| `--color-line-strong` | `rgba(232, 224, 212, 0.12)` | `rgba(232, 224, 212, 0.12)` (L1598) | — |  |
+| `--color-material` | `rgba(37, 36, 34, 0.78)` | `rgba(37, 36, 34, 0.78)` (L1628) | — |  |
+| `--color-material-heavy` | `rgba(26, 25, 23, 0.9)` | `rgba(26, 25, 23, 0.9)` (L1629) | — |  |
+| `--color-ml-canvas` | `#1a1917` | `#1a1917` (L1618) | — |  |
+| `--color-ml-clay` | `#b8956f` | `#b8956f` (L1624) | — |  |
+| `--color-ml-good` | `#a0b39b` | `#a0b39b` (L1626) | — |  |
+| `--color-ml-ink` | `#f0e8dc` | `#f0e8dc` (L1621) | — |  |
+| `--color-ml-ink-soft` | `#a8a095` | `#a8a095` (L1622) | — |  |
 | `--color-ml-line` | `#918a7e` | `#918a7e` (L294) | — | 控件邊界 3.97（WCAG 1.4.11 ≥3:1）。 |
 | `--color-ml-mist` | `#8a9fb8` | `#8a9fb8` (L300) | — | 規格 --mist  裝飾（4.99） |
-| `--color-ml-muted` | `#2f2e2c` | `#2f2e2c` (L1611) | — |  |
-| `--color-ml-on-brand` | `#1a1917` | `#1a1917` (L1618) | — |  |
+| `--color-ml-muted` | `#2f2e2c` | `#2f2e2c` (L1620) | — |  |
+| `--color-ml-on-brand` | `#1a1917` | `#1a1917` (L1627) | — |  |
 | `--color-ml-rose` | `#c49a9a` | `#c49a9a` (L299) | — | 規格 --rose  裝飾（5.45） |
-| `--color-ml-sage` | `#8aa6a1` | `#8aa6a1` (L1614) | — |  |
-| `--color-ml-surface` | `#252422` | `#252422` (L1610) | — |  |
-| `--color-ml-warn` | `#c49a9a` | `#c49a9a` (L1616) | — |  |
+| `--color-ml-sage` | `#8aa6a1` | `#8aa6a1` (L1623) | — |  |
+| `--color-ml-surface` | `#252422` | `#252422` (L1619) | — |  |
+| `--color-ml-warn` | `#c49a9a` | `#c49a9a` (L1625) | — |  |
 | `--color-neon-cyan` | `#00F5D4` | `#00F5D4` (L43) | — |  |
 | `--color-neon-pink` | `#FF006E` | `#FF006E` (L44) | — |  |
 | `--color-neon-purple` | `#9B5DE5` | `#9B5DE5` (L46) | — |  |
 | `--color-neon-yellow` | `#FEE440` | `#FEE440` (L45) | — |  |
-| `--color-on-accent` | `#1a1917` | `#1a1917` (L1587) | — |  |
-| `--color-on-error` | `#1a1917` | `#1a1917` (L1598) | — |  |
-| `--color-on-info` | `#1a1917` | `#1a1917` (L1601) | — |  |
-| `--color-on-success` | `#1a1917` | `#1a1917` (L1592) | — |  |
+| `--color-on-accent` | `#1a1917` | `#1a1917` (L1596) | — |  |
+| `--color-on-error` | `#1a1917` | `#1a1917` (L1607) | — |  |
+| `--color-on-info` | `#1a1917` | `#1a1917` (L1610) | — |  |
+| `--color-on-success` | `#1a1917` | `#1a1917` (L1601) | — |  |
 | `--color-on-violet` | `#1a1917` | `#1a1917` (L251) | — | 深字 on 霧藍 = 6.47（白字只有 1.9） |
-| `--color-on-warning` | `#1a1917` | `#1a1917` (L1595) | — |  |
+| `--color-on-warning` | `#1a1917` | `#1a1917` (L1604) | — |  |
 | `--color-paper` | `#DDD3C6` | `#DDD3C6` (L229) | — | PC-026 舊紙。純白紙落 #1a1917 頁底係 17.57， |
 | `--color-paper-ink` | `#2C2A29` | `#2C2A29` (L37) | — | 墨、遮蓋條（淺紙 11.66 / 舊紙 6.36） |
 | `--color-paper-muted` | `#4A4642` | `#4A4642` (L38) | — | 輔助字（7.63 / 4.16） |
 | `--color-paper-warn` | `#6B2B2B` | `#6B2B2B` (L39) | — | PC-004 陷阱標示（8.55 / 4.66）。 |
-| `--color-rose` | `#c49a9a` | `#c49a9a` (L1607) | — |  |
-| `--color-rose-strong` | `#b89191` | `#b89191` (L1608) | — |  |
+| `--color-rose` | `#c49a9a` | `#c49a9a` (L1616) | — |  |
+| `--color-rose-strong` | `#b89191` | `#b89191` (L1617) | — |  |
 | `--color-scrim` | `rgba(10, 9, 9, 0.78)` | `rgba(10, 9, 9, 0.78)` (L223) | — |  |
 | `--color-scrim-soft` | `rgba(10, 9, 9, 0.50)` | `rgba(10, 9, 9, 0.50)` (L224) | — |  |
 | `--color-subj-clay` | `#b8956f` | `#b8956f` (L309) | — | 規格 --wood   4.89 |
@@ -219,15 +219,15 @@ node scripts/gen-token-doc.mjs
 | `--color-subj-rose` | `#c49a9a` | `#c49a9a` (L310) | — | 規格 --rose   5.45 |
 | `--color-subj-sage` | `#7a9e7e` | `#7a9e7e` (L306) | — | 規格 --moss   4.53 |
 | `--color-subj-stone` | `#c1bab0` | `#c1bab0` (L311) | — | 岩灰          7.05 |
-| `--color-success` | `#a0b39b` | `#a0b39b` (L1590) | — |  |
-| `--color-success-strong` | `#8aa68a` | `#8aa68a` (L1591) | — |  |
-| `--color-surface` | `#1a1917` | `#1a1917` (L1576) | — |  |
-| `--color-surface-raised` | `#252422` | `#252422` (L1577) | — |  |
-| `--color-surface-sunken` | `#2f2e2c` | `#2f2e2c` (L1578) | — |  |
-| `--color-violet` | `#8a9fb8` | `#8a9fb8` (L1605) | — |  |
-| `--color-violet-strong` | `#a8c2e0` | `#a8c2e0` (L1606) | — |  |
-| `--color-warning` | `#b8956f` | `#b8956f` (L1593) | — |  |
-| `--color-warning-strong` | `#c4a484` | `#c4a484` (L1594) | — |  |
+| `--color-success` | `#a0b39b` | `#a0b39b` (L1599) | — |  |
+| `--color-success-strong` | `#8aa68a` | `#8aa68a` (L1600) | — |  |
+| `--color-surface` | `#1a1917` | `#1a1917` (L1585) | — |  |
+| `--color-surface-raised` | `#252422` | `#252422` (L1586) | — |  |
+| `--color-surface-sunken` | `#2f2e2c` | `#2f2e2c` (L1587) | — |  |
+| `--color-violet` | `#8a9fb8` | `#8a9fb8` (L1614) | — |  |
+| `--color-violet-strong` | `#a8c2e0` | `#a8c2e0` (L1615) | — |  |
+| `--color-warning` | `#b8956f` | `#b8956f` (L1602) | — |  |
+| `--color-warning-strong` | `#c4a484` | `#c4a484` (L1603) | — |  |
 | `--ease-spring-settle` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` | `linear(0.0000, 0.0788, 0.2360, 0.4028, 0.5508, 0.6709, 0.7636, 0.8328, 0.8831, 0.9191, 0.9444, 0.9621, 0.9743, 0.9826, 0.9883, 0.9922, 0.9948, 0.9965, 0.9977, 0.9985, 0.9990, 0.9993, 0.9996, 0.9997, 0.9998, 0.9999, 1.0000)` (L1117) | — |  |
 | `--font-serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` | `var(--font-garamond), 'Songti TC', 'PMingLiU', 'Noto Serif TC', 'Noto Serif CJK TC', 'Source Han Serif TC', Georgia, serif` (L23) | — |  |
 | `--grade-1` | `#a8a095` | `#a8a095` (L266) | — | 規格 --text-secondary 5.25 |
@@ -270,66 +270,66 @@ node scripts/gen-token-doc.mjs
 | `--particle-alpha` | `0.05` | `.particle-calm` | — | L990 |
 | `--flame-rgb` | `0, 245, 212` | `.combo-flame` | — | L1060 |
 | `--flame-speed` | `1.5s` | `.combo-flame` | — | L1061 |
-| `--color-ink` | `#141414` | `:root` | `@media (prefers-contrast: more)` | L1659 |
-| `--color-ink-soft` | `#1a1816` | `:root` | `@media (prefers-contrast: more)` | L1660 |
-| `--color-ink-muted` | `#4a4541` | `:root` | `@media (prefers-contrast: more)` | L1661 |
-| `--color-accent` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1662 |
-| `--color-accent-strong` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1663 |
-| `--color-accent-hover` | `#2f454c` | `:root` | `@media (prefers-contrast: more)` | L1664 |
-| `--color-on-accent` | `#ffffff` | `:root` | `@media (prefers-contrast: more)` | L1665 |
-| `--color-success` | `#3f5340` | `:root` | `@media (prefers-contrast: more)` | L1666 |
-| `--color-warning` | `#5a4a35` | `:root` | `@media (prefers-contrast: more)` | L1667 |
-| `--color-error` | `#6b4040` | `:root` | `@media (prefers-contrast: more)` | L1668 |
-| `--color-info` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1669 |
-| `--color-line` | `rgba(20, 20, 20, 0.45)` | `:root` | `@media (prefers-contrast: more)` | L1670 |
-| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `:root` | `@media (prefers-contrast: more)` | L1671 |
-| `--color-material` | `#fffdf9` | `:root` | `@media (prefers-contrast: more)` | L1672 |
-| `--color-material-heavy` | `#f4f0ea` | `:root` | `@media (prefers-contrast: more)` | L1673 |
-| `--color-ink` | `#fff8f0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1676 |
-| `--color-ink-soft` | `#f0e8dc` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1677 |
-| `--color-ink-muted` | `#d4ccc0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1678 |
-| `--color-accent` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1679 |
-| `--color-accent-strong` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1680 |
-| `--color-accent-hover` | `#b5cec9` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1681 |
-| `--color-on-accent` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1682 |
-| `--color-success` | `#b5c9b0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1683 |
-| `--color-warning` | `#d4ab80` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1684 |
-| `--color-error` | `#d4a8a8` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1685 |
-| `--color-info` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1686 |
-| `--color-line` | `rgba(255, 248, 240, 0.55)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1687 |
-| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1688 |
-| `--color-material` | `#252422` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1689 |
-| `--color-material-heavy` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1690 |
-| `--color-ink` | `#141414` | `html[data-contrast='more']` | — | L1694 |
-| `--color-ink-soft` | `#1a1816` | `html[data-contrast='more']` | — | L1695 |
-| `--color-ink-muted` | `#4a4541` | `html[data-contrast='more']` | — | L1696 |
-| `--color-accent` | `#3a545c` | `html[data-contrast='more']` | — | L1697 |
-| `--color-accent-strong` | `#3a545c` | `html[data-contrast='more']` | — | L1698 |
-| `--color-accent-hover` | `#2f454c` | `html[data-contrast='more']` | — | L1699 |
-| `--color-on-accent` | `#ffffff` | `html[data-contrast='more']` | — | L1700 |
-| `--color-success` | `#3f5340` | `html[data-contrast='more']` | — | L1701 |
-| `--color-warning` | `#5a4a35` | `html[data-contrast='more']` | — | L1702 |
-| `--color-error` | `#6b4040` | `html[data-contrast='more']` | — | L1703 |
-| `--color-info` | `#3a545c` | `html[data-contrast='more']` | — | L1704 |
-| `--color-line` | `rgba(20, 20, 20, 0.45)` | `html[data-contrast='more']` | — | L1705 |
-| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `html[data-contrast='more']` | — | L1706 |
-| `--color-material` | `#fffdf9` | `html[data-contrast='more']` | — | L1707 |
-| `--color-material-heavy` | `#f4f0ea` | `html[data-contrast='more']` | — | L1708 |
-| `--color-ink` | `#fff8f0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1711 |
-| `--color-ink-soft` | `#f0e8dc` | `html[data-contrast='more'][data-theme='cyber']` | — | L1712 |
-| `--color-ink-muted` | `#d4ccc0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1713 |
-| `--color-accent` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1714 |
-| `--color-accent-strong` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1715 |
-| `--color-accent-hover` | `#b5cec9` | `html[data-contrast='more'][data-theme='cyber']` | — | L1716 |
-| `--color-on-accent` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1717 |
-| `--color-success` | `#b5c9b0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1718 |
-| `--color-warning` | `#d4ab80` | `html[data-contrast='more'][data-theme='cyber']` | — | L1719 |
-| `--color-error` | `#d4a8a8` | `html[data-contrast='more'][data-theme='cyber']` | — | L1720 |
-| `--color-info` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1721 |
-| `--color-line` | `rgba(255, 248, 240, 0.55)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1722 |
-| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1723 |
-| `--color-material` | `#252422` | `html[data-contrast='more'][data-theme='cyber']` | — | L1724 |
-| `--color-material-heavy` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1725 |
+| `--color-ink` | `#141414` | `:root` | `@media (prefers-contrast: more)` | L1668 |
+| `--color-ink-soft` | `#1a1816` | `:root` | `@media (prefers-contrast: more)` | L1669 |
+| `--color-ink-muted` | `#4a4541` | `:root` | `@media (prefers-contrast: more)` | L1670 |
+| `--color-accent` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1671 |
+| `--color-accent-strong` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1672 |
+| `--color-accent-hover` | `#2f454c` | `:root` | `@media (prefers-contrast: more)` | L1673 |
+| `--color-on-accent` | `#ffffff` | `:root` | `@media (prefers-contrast: more)` | L1674 |
+| `--color-success` | `#3f5340` | `:root` | `@media (prefers-contrast: more)` | L1675 |
+| `--color-warning` | `#5a4a35` | `:root` | `@media (prefers-contrast: more)` | L1676 |
+| `--color-error` | `#6b4040` | `:root` | `@media (prefers-contrast: more)` | L1677 |
+| `--color-info` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1678 |
+| `--color-line` | `rgba(20, 20, 20, 0.45)` | `:root` | `@media (prefers-contrast: more)` | L1679 |
+| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `:root` | `@media (prefers-contrast: more)` | L1680 |
+| `--color-material` | `#fffdf9` | `:root` | `@media (prefers-contrast: more)` | L1681 |
+| `--color-material-heavy` | `#f4f0ea` | `:root` | `@media (prefers-contrast: more)` | L1682 |
+| `--color-ink` | `#fff8f0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1685 |
+| `--color-ink-soft` | `#f0e8dc` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1686 |
+| `--color-ink-muted` | `#d4ccc0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1687 |
+| `--color-accent` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1688 |
+| `--color-accent-strong` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1689 |
+| `--color-accent-hover` | `#b5cec9` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1690 |
+| `--color-on-accent` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1691 |
+| `--color-success` | `#b5c9b0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1692 |
+| `--color-warning` | `#d4ab80` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1693 |
+| `--color-error` | `#d4a8a8` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1694 |
+| `--color-info` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1695 |
+| `--color-line` | `rgba(255, 248, 240, 0.55)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1696 |
+| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1697 |
+| `--color-material` | `#252422` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1698 |
+| `--color-material-heavy` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1699 |
+| `--color-ink` | `#141414` | `html[data-contrast='more']` | — | L1703 |
+| `--color-ink-soft` | `#1a1816` | `html[data-contrast='more']` | — | L1704 |
+| `--color-ink-muted` | `#4a4541` | `html[data-contrast='more']` | — | L1705 |
+| `--color-accent` | `#3a545c` | `html[data-contrast='more']` | — | L1706 |
+| `--color-accent-strong` | `#3a545c` | `html[data-contrast='more']` | — | L1707 |
+| `--color-accent-hover` | `#2f454c` | `html[data-contrast='more']` | — | L1708 |
+| `--color-on-accent` | `#ffffff` | `html[data-contrast='more']` | — | L1709 |
+| `--color-success` | `#3f5340` | `html[data-contrast='more']` | — | L1710 |
+| `--color-warning` | `#5a4a35` | `html[data-contrast='more']` | — | L1711 |
+| `--color-error` | `#6b4040` | `html[data-contrast='more']` | — | L1712 |
+| `--color-info` | `#3a545c` | `html[data-contrast='more']` | — | L1713 |
+| `--color-line` | `rgba(20, 20, 20, 0.45)` | `html[data-contrast='more']` | — | L1714 |
+| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `html[data-contrast='more']` | — | L1715 |
+| `--color-material` | `#fffdf9` | `html[data-contrast='more']` | — | L1716 |
+| `--color-material-heavy` | `#f4f0ea` | `html[data-contrast='more']` | — | L1717 |
+| `--color-ink` | `#fff8f0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1720 |
+| `--color-ink-soft` | `#f0e8dc` | `html[data-contrast='more'][data-theme='cyber']` | — | L1721 |
+| `--color-ink-muted` | `#d4ccc0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1722 |
+| `--color-accent` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1723 |
+| `--color-accent-strong` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1724 |
+| `--color-accent-hover` | `#b5cec9` | `html[data-contrast='more'][data-theme='cyber']` | — | L1725 |
+| `--color-on-accent` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1726 |
+| `--color-success` | `#b5c9b0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1727 |
+| `--color-warning` | `#d4ab80` | `html[data-contrast='more'][data-theme='cyber']` | — | L1728 |
+| `--color-error` | `#d4a8a8` | `html[data-contrast='more'][data-theme='cyber']` | — | L1729 |
+| `--color-info` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1730 |
+| `--color-line` | `rgba(255, 248, 240, 0.55)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1731 |
+| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1732 |
+| `--color-material` | `#252422` | `html[data-contrast='more'][data-theme='cyber']` | — | L1733 |
+| `--color-material-heavy` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1734 |
 
 ## 掃過嘅 block
 
@@ -561,26 +561,28 @@ node scripts/gen-token-doc.mjs
 | L1506 | `body:has(.practice-session) .a11y-fab` |
 | L1509 | `body:has(.practice-session) [data-reading-ruler-fab]` |
 | L1513 | `body:has(.practice-session) [data-sos-fab]` |
-| L1520 | `:root` |
-| L1575 | `:root[data-theme='cyber']` |
-| L1630 | `.chrome-material` |
-| L1635 | `@media (prefers-reduced-transparency: reduce)` |
-| L1636 | `@media (prefers-reduced-transparency: reduce) › .chrome-material` |
-| L1644 | `.pressable` |
-| L1647 | `.pressable:active` |
-| L1650 | `@media (prefers-reduced-motion: reduce)` |
-| L1651 | `@media (prefers-reduced-motion: reduce) › .pressable:active` |
-| L1657 | `@media (prefers-contrast: more)` |
-| L1658 | `@media (prefers-contrast: more) › :root` |
-| L1675 | `@media (prefers-contrast: more) › :root[data-theme='cyber']` |
-| L1693 | `html[data-contrast='more']` |
-| L1710 | `html[data-contrast='more'][data-theme='cyber']` |
-| L1729 | `.chart-grid` |
-| L1732 | `.chart-mark` |
-| L1736 | `.chart-label` |
-| L1739 | `.chart-series-1` |
-| L1740 | `.chart-series-2` |
-| L1741 | `.chart-series-3` |
-| L1742 | `.chart-series-4` |
-| L1743 | `.chart-series-5` |
-| L1744 | `.chart-series-6` |
+| L1520 | `@media (max-width: 639px)` |
+| L1521 | `@media (max-width: 639px) › .practice-next-bar` |
+| L1529 | `:root` |
+| L1584 | `:root[data-theme='cyber']` |
+| L1639 | `.chrome-material` |
+| L1644 | `@media (prefers-reduced-transparency: reduce)` |
+| L1645 | `@media (prefers-reduced-transparency: reduce) › .chrome-material` |
+| L1653 | `.pressable` |
+| L1656 | `.pressable:active` |
+| L1659 | `@media (prefers-reduced-motion: reduce)` |
+| L1660 | `@media (prefers-reduced-motion: reduce) › .pressable:active` |
+| L1666 | `@media (prefers-contrast: more)` |
+| L1667 | `@media (prefers-contrast: more) › :root` |
+| L1684 | `@media (prefers-contrast: more) › :root[data-theme='cyber']` |
+| L1702 | `html[data-contrast='more']` |
+| L1719 | `html[data-contrast='more'][data-theme='cyber']` |
+| L1738 | `.chart-grid` |
+| L1741 | `.chart-mark` |
+| L1745 | `.chart-label` |
+| L1748 | `.chart-series-1` |
+| L1749 | `.chart-series-2` |
+| L1750 | `.chart-series-3` |
+| L1751 | `.chart-series-4` |
+| L1752 | `.chart-series-5` |
+| L1753 | `.chart-series-6` |
