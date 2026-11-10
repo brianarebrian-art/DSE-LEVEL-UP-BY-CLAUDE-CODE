@@ -129,21 +129,10 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3 lg:gap-6">
           <Link
             href="/subjects"
-            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line"
-            aria-label={en ? 'Search questions' : '搜尋題目'}
-            title={en ? 'Search questions' : '搜尋題目'}
+            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            <Icon name="search" size={16} label={en ? 'Search' : '搜尋題目'} />
-            <span>{en ? 'Search' : '搜尋題目'}</span>
-          </Link>
-          <Link
-            href="/subjects"
-            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line"
-            aria-label={en ? 'Filter subjects' : '篩選科目'}
-            title={en ? 'Filter subjects, years and difficulty' : '篩選科目、年份、難度'}
-          >
-            <Icon name="filter" size={16} label={en ? 'Filter' : '篩選科目'} />
-            <span>{en ? 'Filter' : '篩選科目'}</span>
+            <Icon name="search" size={16} />
+            <span>{en ? 'Search' : '搜尋科目'}</span>
           </Link>
           <Link
             href="/start"
@@ -255,7 +244,6 @@ export default function Navbar() {
             {/* 語言切換同登入 —— 手機／平板一樣搵得到（之前橫向條斷行時就係呢兩樣最易失蹤） */}
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
  <div className="flex items-center gap-1">
- <span className="text-xs text-ink-muted">{en ? 'Language' : '語言'}</span>
  <LanguageToggle />
  </div>
  <AuthButton onAction={() => setOpen(false)} />

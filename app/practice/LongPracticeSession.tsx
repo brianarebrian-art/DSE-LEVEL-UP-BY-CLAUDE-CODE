@@ -244,11 +244,11 @@ export default function LongPracticeSession({
           <div className="mt-5 rounded-2xl border border-line bg-surface-raised p-5">
  <p className="text-sm text-ink-soft mb-1 inline-flex items-center gap-2">
  <Brain size={16} className="text-accent" aria-hidden />
-              {tr('想唔想順手記低今次係邊種盲點？', 'Want to note what tripped you up?')}
+              {tr('想記低原因？', 'Note a reason?')}
             </p>
  <p className="text-xs text-ink-muted mb-3 leading-relaxed">
-              {tr('記低咗會入你嘅錯題本，之後溫書搵返會快好多。唔想記都完全冇問題。',
-                  'It goes into your error notebook so revision is faster later. Skipping is completely fine.')}
+              {tr('會入你嘅錯題本，之後溫書搵得返。',
+                  'It goes into your error notebook, so you can find it when you revise.')}
             </p>
  <div className="grid gap-2 sm:grid-cols-3">
               {CAUSES.map((c) => (

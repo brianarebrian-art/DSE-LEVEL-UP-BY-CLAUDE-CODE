@@ -796,10 +796,7 @@ export default function PracticeSession({
             {tr('你今日打開咗嚟，已經好叻。', 'You showed up today. That already counts.')}
           </h2>
  <p className="mb-6 text-sm leading-relaxed text-ink-muted">
-            {tr(
-              '做完 1 題就夠喇。想再做就再做，唔想就收工 —— 兩樣都冇問題。',
-              'One question is enough. Do another if you feel like it, or stop here — both are fine.',
-            )}
+            {tr('做完 1 題就夠喇。', 'One question is enough.')}
           </p>
  <div className="flex flex-col gap-2.5">
  <button
@@ -832,14 +829,11 @@ export default function PracticeSession({
  <h2 className="mb-2 text-lg font-semibold text-ink">
             {tr('你有份未做完嘅練習', 'You have an unfinished run')}
           </h2>
- <p className="mb-1 text-sm leading-relaxed text-ink-muted">
+ <p className="mb-6 text-sm leading-relaxed text-ink-muted">
             {tr(
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : '練習'}・已經做咗 ${doneCount} / ${totalCount} 題`,
               `${subjectMeta ? tr(subjectMeta.name, subjectMeta.nameEn) : 'Practice'} · ${doneCount} of ${totalCount} done`,
             )}
-          </p>
- <p className="mb-6 text-xs leading-relaxed text-ink-muted">
-            {tr('喺邊部機做都好，接返落去就得。', 'Pick up right where you left off, on any device.')}
           </p>
  <div className="flex flex-col gap-2.5">
  <button
@@ -918,7 +912,7 @@ export default function PracticeSession({
             )}
             {mode === 'weakness' && (
               <span className="hidden sm:inline text-[11px] text-ink-muted">
-                {tr('盲點修復', 'Repair set')}
+                {tr('重溫課題', 'Review set')}
               </span>
             )}
             {mode === 'cause' && cause && (
@@ -1178,11 +1172,6 @@ export default function PracticeSession({
  <StagedExplanation
                         text={tr(currentQ.explanation, currentQ.explanationEn)}
                         steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
-                        label={
-                          <span className="text-warning text-xs font-medium mr-1">
-                            💡 {tr('正解思路：', 'Reasoning: ')}
-                          </span>
- }
  />
  <OptionNotes
                         notes={currentQ.optionNotes}

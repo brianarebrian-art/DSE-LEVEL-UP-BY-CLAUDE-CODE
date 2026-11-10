@@ -320,7 +320,7 @@ export default function ResultPageClient() {
       divider,
       `${en ? 'Correct' : '答對'}: ${result.score}/${result.total} (${pct}%)`,
       `${en ? 'This session' : '本節表現'}: ${bandLabel}`,
-      en ? 'Core Blind Spots Identified:' : '已識別核心盲點：',
+      en ? 'Topics to revisit:' : '今節未穩課題：',
       weaknesses,
       `${en ? 'Recommended Actions' : '建議行動'}: ${actions}`,
       divider,
@@ -466,7 +466,7 @@ export default function ResultPageClient() {
         {/* 答對比例條。2026-09-30 拆走 1–5** 等級刻度及「本節分層表現」的等級對應（難度標籤未校準）。
             長度靠靜態 scaleX（唔靠 w-full）；.fill-bar 只負責入場動畫，reduced-motion 喺 CSS 熄。 */}
         <div className="bg-surface-raised border border-line rounded-2xl p-6">
- <div className="h-3 bg-line rounded-full overflow-hidden mb-2">
+ <div className="h-3 bg-line rounded-full overflow-hidden" aria-hidden>
  <div
               className="fill-bar h-full w-full origin-left rounded-full bg-accent"
               style={{
@@ -475,16 +475,12 @@ export default function ResultPageClient() {
               }}
             />
  </div>
- <div className="flex justify-between text-xs text-ink-muted tabular-nums">
- <span>0</span>
- <span>{result.total}</span>
- </div>
  <div className="mt-4 text-xs text-ink-muted text-center">
             {r.timeUsedA}{formatTime(result.elapsed)}
           </div>
  </div>
 
- <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} attempted={result.total} />
+ <DiscoveryStrip startedAt={result.startedAt} en={locale === 'en'} />
 
         {/* 聽日有嘢等你 —— 回訪鉤子。擺喺發現卡之後：先講「今日你搞明白咗乜」，
             再講「聽日有咩等緊你」，順序同學生嘅情緒節奏一致。 */}
@@ -517,19 +513,6 @@ export default function ResultPageClient() {
  })}
  </div>
 
-          {/* Weakest topic recommendation */}
-          {(() => {
-            const weak = [...result.topicResults].sort(
-              (a, b) => a.correct / a.total - b.correct / b.total
- )[0]
- if (weak && weak.correct / weak.total < 0.8) {
-              return (
-                <div className="mt-4 p-3 bg-surface-sunken border-l-[3px] border-gold rounded-xl text-sm text-ink">
-                  {r.weakAdviceA}<strong>{weak.topic}</strong>{r.weakAdviceB}{weak.correct}/{weak.total}{r.weakAdviceC}
-                </div>
- )
- }
- })()}
  </div>
 
         {/* Teacher hand-in tool — copies the fixed report template to clipboard */}
@@ -603,7 +586,7 @@ export default function ResultPageClient() {
 // 唔應該出，嗰個係更大嘅改動，未裁決，所以呢度係【加一層】而唔係取代。
 //
 // localStorage 要 mount 之後先讀（避免 hydration 唔一致），同 /notes 一致。
-function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: boolean; attempted: number }) {
+function DiscoveryStrip({ startedAt, en }: { startedAt?: number; en: boolean }) {
   const [items, setItems] = useState<Discovery[] | null>(null)
   useEffect(() => {
     if (startedAt === undefined) { setItems([]); return }
@@ -616,10 +599,7 @@ function DiscoveryStrip({ startedAt, en, attempted }: { startedAt?: number; en: 
   const title = items.length > 0 ? DISCOVERY_COPY.cardTitle(items.length) : DISCOVERY_COPY.cardEmpty
  return (
  <section className="mb-6 rounded-xl border border-line bg-surface-raised p-5">
- <h2 className="mb-1 text-base font-medium text-ink">{en ? title.en : title.zh}</h2>
- <p className="mb-3 text-xs text-ink-muted">
-        {en ? DISCOVERY_COPY.cardAttempted(attempted).en : DISCOVERY_COPY.cardAttempted(attempted).zh}
-      </p>
+ <h2 className="mb-3 text-base font-medium text-ink">{en ? title.en : title.zh}</h2>
       {items.length > 0 && (
  <ul className="space-y-1.5">
           {/* 三張以下顯示全部；超過就顯示三張 —— 一次過鋪十幾行係資訊過載，

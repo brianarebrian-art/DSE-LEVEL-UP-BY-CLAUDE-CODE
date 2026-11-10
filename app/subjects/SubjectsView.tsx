@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Lock, CheckCircle2, Search, Printer } from 'lucide-react'
+import { ArrowRight, Lock, Search, Printer } from 'lucide-react'
 import SubjectMark from '@/components/marks/SubjectMark'
 import {
   subjects,
@@ -87,6 +87,8 @@ export default function SubjectsView() {
   //      （實測 28 個題庫 chunk）。數字完全一樣 —— summary 由題庫產生，
   //      而 summary-parity 測試每次 npm test 拎真題庫重算比對。
     const { mc, written } = SUBJECT_SUMMARY[s.id] ?? { mc: 0, written: 0 }
+    const title = name(s)
+    const shortLabel = en ? s.shortEn : s.short
     // 2026-09-30（UX 循環 LOOP 5）：卡的底部原本寫「開始練習」，但整張卡只連去科目頁，
     // 學生要在科目頁再撳一次「立即開始」。現在分成兩個連結：
     //   ① 科目名稱 —— 延伸覆蓋整張卡（after:inset-0），去科目頁，行為與以前相同；
@@ -94,21 +96,17 @@ export default function SubjectsView() {
     // 不可把 ② 放在 ① 之內：連結不能巢狀，讀屏亦會讀成一條。
     return (
       <div className={`group relative flex flex-col bg-surface-raised border border-line rounded-2xl p-5 transition-[border-color,background-color] ${accentRing[s.accent] ?? ''}`}>
- <div className="absolute top-4 right-4">
- <span className="inline-flex items-center gap-1 text-[10px] text-accent bg-surface-sunken border border-accent/20 px-2 py-0.5 rounded-full">
- <CheckCircle2 size={10} /> {mc}
-            {en ? ' MC' : ' 條 MC'}
-          </span>
- </div>
- <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
-          {en ? s.shortEn : s.short}
-        </p>
+        {shortLabel !== title && (
+          <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+            {shortLabel}
+          </p>
+        )}
  <h2 className="text-lg font-medium mb-1 text-ink tracking-tight">
  <Link
             href={`/subjects/${s.id}`}
             className="after:absolute after:inset-0 after:rounded-2xl after:content-[''] focus-visible:outline-none focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-accent"
           >
-            {name(s)}
+            {title}
           </Link>
  </h2>
  <div className="text-xs text-ink-muted mb-2 leading-relaxed">{desc(s)}</div>
@@ -139,7 +137,10 @@ export default function SubjectsView() {
   }
 
   // Nielsen H1／H5／H9：未上線科唔似可撳卡片——清楚標「未開放」、無連結、無 CTA。
-  const ComingSoonCard = ({ s }: { s: SubjectMeta }) => (
+  const ComingSoonCard = ({ s }: { s: SubjectMeta }) => {
+    const title = name(s)
+    const shortLabel = en ? s.shortEn : s.short
+    return (
  <div
       className="relative bg-surface border border-dashed border-line rounded-xl p-5 opacity-90"
       aria-disabled="true"
@@ -149,10 +150,12 @@ export default function SubjectsView() {
  <Lock size={10} aria-hidden /> {s.launchDate ?? t.common.comingSoon}
         </span>
  </div>
- <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
-        {en ? s.shortEn : s.short}
-      </p>
- <div className="font-medium mb-1 text-ink-muted">{name(s)}</div>
+        {shortLabel !== title && (
+          <p className="mb-2 text-[11px] font-medium uppercase tracking-wide text-ink-muted">
+            {shortLabel}
+          </p>
+        )}
+ <div className="font-medium mb-1 text-ink-muted">{title}</div>
  <div className="text-xs text-ink-muted leading-relaxed">{desc(s)}</div>
  <p className="mt-3 text-xs text-ink-muted">
         {en
@@ -160,7 +163,8 @@ export default function SubjectsView() {
           : '呢科仲未開放練習 —— 請喺上面揀已上線科目。'}
       </p>
  </div>
- )
+    )
+  }
 
  return (
  <div className="min-h-screen px-4 py-12 bg-surface text-ink-soft">
@@ -267,7 +271,6 @@ export default function SubjectsView() {
         {/* No results */}
         {totalMatched === 0 && (
           <div className="text-center py-16 text-ink-muted">
- <div className="text-4xl mb-3"></div>
  <p className="mb-4">{en ? 'No subjects match your search.' : '搵唔到符合嘅科目。'}</p>
  <button
               type="button"
@@ -300,22 +303,7 @@ export default function SubjectsView() {
         >
  <Printer size={15} aria-hidden />
           {t.nav.paper}
-          {en ? ' (A4, pen and paper)' : '（A4，用紙筆做）'}
         </Link>
-
-        {/* Footer note */}
-        <div className="mt-16 bg-surface-sunken border border-line rounded-2xl p-6 text-center">
- <p className="text-ink-soft mb-2">{tl.footerTitle}</p>
- <p className="text-sm text-ink-muted mb-4">
-            {tl.footerBody}
-          </p>
- <a
-            href="mailto:dselevelup@gmail.com"
-            className="inline-flex min-h-11 items-center gap-2 text-sm bg-surface-raised hover:bg-surface-sunken border border-line-strong text-ink-soft px-4 py-2 rounded-xl transition-all"
-          >
-            {tl.footerBtn}
-          </a>
- </div>
  </div>
  </div>
   )

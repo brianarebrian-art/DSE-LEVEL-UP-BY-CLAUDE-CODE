@@ -55,23 +55,15 @@ export default function HomePage() {
       {/* ── HERO ── Morandi: brand-first, warm wash, one composition.
           hero-rise = CSS-only 入場（唔靠 JS／animate-on-scroll）。 */}
       <section className="relative overflow-hidden px-4 pb-12 pt-8 sm:pb-16 sm:pt-12">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,color-mix(in_srgb,var(--color-accent)_14%,transparent),transparent_55%),radial-gradient(ellipse_60%_40%_at_90%_20%,color-mix(in_srgb,var(--color-ml-mist)_10%,transparent),transparent_50%)]"
-        />
         <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
           <div className="hero-rise text-center md:text-left">
-            <p className="mb-3 text-sm font-semibold tracking-wide text-accent">
-              DSE Level Up
-              <span className="font-medium text-ink-muted"> · {hero.badge}</span>
-            </p>
             <h1 className="hero-rise-1 mb-4 text-4xl font-semibold leading-[1.15] tracking-tight text-ink sm:text-5xl md:text-[3.25rem]">
               {en ? 'Practise judgment, not memorisation.' : '練判斷，唔係背答案。'}
             </h1>
             <p className="mx-auto mb-6 max-w-xl text-base leading-relaxed text-ink-muted md:mx-0 sm:text-lg">
               {en
-                ? `About ${SESSION_SIZE} multiple-choice questions · ~${sessionMins} minutes · free, no ads, no sign-in required.`
-                : `約 ${SESSION_SIZE} 條選擇題 · ${sessionMins} 分鐘左右 · 免費無廣告，唔使登入。`}
+                ? `Multiple choice · about ${sessionMins} minutes.`
+                : `選擇題 · ${sessionMins} 分鐘左右。`}
             </p>
             <div className="mb-5">
               <ContinueCard />
@@ -105,10 +97,6 @@ export default function HomePage() {
 
           <div className="hero-mascot relative mx-auto mb-4 flex w-full max-w-sm justify-center md:mb-0 md:max-w-none">
             <div className="relative w-full max-w-[280px] sm:max-w-[320px]">
-              <div
-                aria-hidden
-                className="absolute inset-4 rounded-full bg-accent/10 blur-2xl"
-              />
               <Mascot pose="reading" height={280} priority className="relative w-full" />
             </div>
           </div>
@@ -171,9 +159,7 @@ export default function HomePage() {
               {en ? 'How practice works here' : '呢度點樣練'}
             </h2>
             <p className="mt-1 text-sm text-ink-muted">
-              {en
-                ? 'Short multiple-choice sets that train judgment — not a full paper simulator.'
-                : '短選擇題節流，練判斷同常見陷阱 —— 唔係成卷模擬考。'}
+              {en ? 'A short multiple-choice set, not a full paper.' : '一節短選擇題，唔係成卷模擬考。'}
             </p>
           </div>
           <Link
@@ -194,25 +180,20 @@ export default function HomePage() {
 
       {/* ── CTA ── */}
       <section className="bg-surface-sunken px-4 py-16">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="mb-4 text-3xl font-semibold text-ink sm:text-4xl">{h.ctaTitle}</h2>
-          <p id="quick-start-label-bottom" className="mb-3 text-base font-semibold text-ink">
+        <div className="mx-auto max-w-md text-center">
+          <h2 id="quick-start-label-bottom" className="mb-3 text-base font-semibold text-ink">
             {en
               ? `No sign-in · pick a subject, start ${SESSION_SIZE}`
               : `唔使登入／揀科開始 ${SESSION_SIZE} 題`}
-          </p>
-          <p className="mb-8 text-ink-muted">{h.ctaSub}</p>
-          <div className="mx-auto max-w-md">
-            <QuickStartGrid labelledBy="quick-start-label-bottom" en={en} />
-            <Link
-              href="/subjects"
-              className="pressable mt-3 inline-flex h-14 min-h-14 w-full items-center justify-center gap-2 rounded-[var(--radius-control)] border border-line-strong bg-transparent px-4 text-sm font-semibold text-ink hover:border-accent hover:bg-surface-raised focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              {en ? `All ${activeSubjects.length} subjects` : `全部 ${activeSubjects.length} 科`}
-              <ArrowRight size={14} aria-hidden />
-            </Link>
-          </div>
-          <p className="mt-4 text-sm text-ink-muted">{h.ctaNote}</p>
+          </h2>
+          <QuickStartGrid labelledBy="quick-start-label-bottom" en={en} />
+          <Link
+            href="/subjects"
+            className="pressable mt-3 inline-flex h-14 min-h-14 w-full items-center justify-center gap-2 rounded-[var(--radius-control)] border border-line-strong bg-transparent px-4 text-sm font-semibold text-ink hover:border-accent hover:bg-surface-raised focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {en ? `All ${activeSubjects.length} subjects` : `全部 ${activeSubjects.length} 科`}
+            <ArrowRight size={14} aria-hidden />
+          </Link>
         </div>
       </section>
     </div>

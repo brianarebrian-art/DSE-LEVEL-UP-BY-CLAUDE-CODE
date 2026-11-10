@@ -93,18 +93,15 @@ export default function PracticeSupport() {
       {doneToday && (
         <div className="fixed inset-0 z-[60] bg-scrim-soft backdrop-blur-sm flex items-center justify-center p-4">
  <div role="dialog" aria-modal="true" aria-labelledby="enough-today-title" className="w-full max-w-sm bg-surface-raised border border-line shadow-xl rounded-2xl p-6 text-center">
- <div className="text-3xl mb-3" aria-hidden></div>
- <p id="enough-today-title" className="text-ink font-medium mb-2">{en ? 'Good work. See you next time.' : '你已經好叻，下次再戰。'}</p>
- <p className="text-sm text-ink-muted mb-5 leading-relaxed">
-              {blindSpotsToday > 0
-                ? en
-                  ? `You uncovered ${blindSpotsToday} blind spot${blindSpotsToday > 1 ? 's' : ''} today — each one is a mark saved in the exam.`
-                  : `今日發現咗 ${blindSpotsToday} 個盲點 —— 每一個都係考場慳返嘅分。`
-                : en
-                  ? 'Rest is part of the plan. See you tomorrow.'
-                  : '休息一下係為咗行更遠嘅路。聽日見。'}
-            </p>
- <div className="space-y-2">
+ <p id="enough-today-title" className="text-ink font-medium">{en ? 'Good work. See you next time.' : '你已經好叻，下次再嚟。'}</p>
+            {blindSpotsToday > 0 && (
+ <p className="mt-2 text-sm text-ink-muted leading-relaxed">
+                {en
+                  ? `You noted ${blindSpotsToday} reason${blindSpotsToday > 1 ? 's' : ''} today.`
+                  : `今日記低咗 ${blindSpotsToday} 個原因。`}
+ </p>
+            )}
+ <div className="mt-5 space-y-2">
  <Link
                 href="/dashboard"
                 className="block min-h-12 rounded-[10px] bg-accent-strong hover:bg-accent-hover text-on-accent text-sm px-4 py-3 transition-colors"

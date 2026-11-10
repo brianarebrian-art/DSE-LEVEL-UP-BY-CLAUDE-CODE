@@ -22,11 +22,7 @@ export default function PracticeContextRail({ subjectId, topicLabel }: { subject
   return (
     <aside aria-label={en ? 'About this session' : '今節背景'} className="focus-dim hidden desk:block sticky top-20 space-y-5 text-sm">
       <section>
-        <h2 className="text-xs font-medium uppercase tracking-wide text-ink-muted">{en ? 'This question' : '呢一題'}</h2>
-        <p className="mt-1 text-ink-soft">{topicLabel}</p>
-      </section>
-      <section>
-        <h2 className="text-xs font-medium uppercase tracking-wide text-ink-muted">{en ? 'Topics to work on' : '本科最需要練'}</h2>
+        <h2 className="text-xs font-medium uppercase tracking-wide text-ink-muted">{en ? 'Topics to work on' : '可以再練'}</h2>
         {weakest.length === 0 ? (
           <p className="mt-1 text-xs text-ink-muted">
             {en ? 'Not enough answers in any topic yet to say.' : '未有課題做夠題數，暫時講唔到。'}
