@@ -3,8 +3,25 @@ import Link from 'next/link'
 import { getSubject } from '@/data/subjects'
 import { getSubjectQuestions } from '@/data/questions'
 import { completeSeoMetadata } from '@/lib/seo'
-import { SITE_ORIGIN } from '@/lib/site'
+import { subjectExplainSeo } from '@/lib/subjectExplainSeo'
 import { JsonLd } from '@/components/Seo/JsonLd'
+
+function explainFor(
+  subject: string,
+  topic: string,
+  id: string,
+  subjectName: string,
+  question: { topicZh: string; content: string; explanation?: string },
+) {
+  return subjectExplainSeo({
+    subjectId: subject,
+    subjectName,
+    topicName: question.topicZh || topic,
+    questionContent: question.content,
+    explanation: question.explanation,
+    pagePath: `/subject/${subject}/${topic}/${id}`,
+  })
+}
 
 export async function generateMetadata({
   params,
@@ -17,18 +34,17 @@ export async function generateMetadata({
 
   if (!meta || !question) notFound()
 
-  const title = `DSE 2026 ${meta.name} 題目精解 (${question.topicZh || topic}) | 考試急症室` // i18n-exempt: SEO title
-  const description = `DSE 2026 ${meta.name} (${question.topicZh || topic}) 題目解析與解題思維。考試急症室提供 DSE 考評局規格模擬題目與避陷提示。` // i18n-exempt: SEO description
+  const seo = explainFor(subject, topic, id, meta.name, question)
 
   return completeSeoMetadata(
     {
-      title,
-      description,
+      title: seo.title,
+      description: seo.description,
       openGraph: {
         type: 'article',
       },
     },
-    `/subject/${subject}/${topic}/${id}`,
+    seo.pagePath,
   )
 }
 
@@ -44,71 +60,16 @@ export default async function QuestionPage({
   if (!meta || !question) notFound()
 
   const topicName = question.topicZh || topic
-  const pageUrl = `${SITE_ORIGIN}/subject/${subject}/${topic}/${id}`
-
-  // JSON-LD schema with FAQPage and QAPage
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'QAPage',
-        '@id': `${pageUrl}#qapage`,
-        name: `DSE 2026 ${meta.name} ${topicName} 題目詳解 — 考試急症室`, // i18n-exempt: schema
-        url: pageUrl,
-        mainEntity: {
-          '@type': 'Question',
-          name: question.content,
-          text: question.content,
-          answerCount: 1,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: question.explanation || '題目詳細解析請參考解題步驟與概念重點。', // i18n-exempt: schema
-            url: pageUrl,
-          },
-        },
-      },
-      {
-        '@type': 'FAQPage',
-        '@id': `${pageUrl}#faq`,
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: `呢題 DSE 2026 ${meta.name} (${topicName}) 考核重點係咩？`, // i18n-exempt: schema
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: `本題針對 DSE 2026 ${meta.name} 課程重點考核 ${topicName} 核心概念，訓練審題與計算精確度。`, // i18n-exempt: schema
-            },
-          },
-          {
-            '@type': 'Question',
-            name: `考試急症室點樣協助溫習 ${meta.name}？`, // i18n-exempt: schema
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: '考試急症室提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。', // i18n-exempt: schema
-            },
-          },
-        ],
-      },
-      {
-        '@type': 'BreadcrumbList',
-        '@id': `${pageUrl}#breadcrumb`,
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'DSE Level Up 考試急症室', item: SITE_ORIGIN }, // i18n-exempt: schema
-          { '@type': 'ListItem', position: 2, name: meta.name, item: `${SITE_ORIGIN}/subjects/${subject}` },
-          { '@type': 'ListItem', position: 3, name: topicName },
-        ],
-      },
-    ],
-  }
+  const seo = explainFor(subject, topic, id, meta.name, question)
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
-      <JsonLd data={jsonLd} />
+      <JsonLd data={seo.jsonLd} />
 
       <nav aria-label="麵包屑導航 · Breadcrumb" className="mb-6 text-sm text-ink-muted"> {/* i18n-exempt: nav label */}
         <ol className="flex items-center space-x-2">
           <li>
-            <Link href="/" className="hover:underline">首頁 · Home</Link> {/* i18n-exempt: bilingual */}
+            <Link href="/" className="hover:underline">DSE Level Up</Link>
           </li>
           <li aria-hidden="true">/</li>
           <li>
@@ -170,22 +131,12 @@ export default async function QuestionPage({
       <section className="mt-8 rounded-2xl border border-stone-200 bg-white p-6 dark:border-stone-800 dark:bg-stone-900">
         <h2 className="mb-4 text-base font-bold text-stone-900 dark:text-stone-100">常見問題 · FAQ</h2> {/* i18n-exempt: bilingual */}
         <div className="space-y-4 text-sm">
-          <div>
-            <h3 className="font-semibold text-stone-800 dark:text-stone-200">
-              {`呢題 DSE 2026 ${meta.name} (${topicName}) 考核重點係咩？`} {/* i18n-exempt: zh-Hant FAQ */}
-            </h3>
-            <p className="mt-1 text-stone-600 dark:text-stone-400">
-              {`本題針對 DSE 2026 ${meta.name} 課程重點考核 ${topicName} 核心概念，訓練審題與計算精確度。`} {/* i18n-exempt: zh-Hant FAQ */}
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-stone-800 dark:text-stone-200">
-              {`考試急症室點樣協助溫習 ${meta.name}？`} {/* i18n-exempt: zh-Hant FAQ */}
-            </h3>
-            <p className="mt-1 text-stone-600 dark:text-stone-400">
-              考試急症室提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。{/* i18n-exempt: zh-Hant FAQ */}
-            </p>
-          </div>
+          {seo.faq.map((item) => (
+            <div key={item.question}>
+              <h3 className="font-semibold text-stone-800 dark:text-stone-200">{item.question}</h3>
+              <p className="mt-1 text-stone-600 dark:text-stone-400">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </section>
 
