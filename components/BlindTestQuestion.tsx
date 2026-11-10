@@ -86,8 +86,7 @@ export default function BlindTestQuestion() {
  return (
  <div className="bg-paper border border-paper-warn/40 rounded-2xl p-5 sm:p-6 shadow-lg">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
- <span className="text-paper-warn font-extrabold tracking-wide text-sm uppercase">{tr('盲測黑題', 'Blind Test')}</span>
+      <div className="mb-4 flex justify-end">
         {/* 2026-10-04（審計 #9，創辦人回覆 11a）：講明係示範，唔係練習題。 */}
         <span className="rounded-full border border-paper-ink/20 px-2 py-0.5 text-xs text-paper-muted">{tr('示範題，唔計分', 'Demo — not scored')}</span>
  </div>
@@ -136,9 +135,8 @@ export default function BlindTestQuestion() {
  ))}
  </div>
 
- <p className="text-[10px] text-paper-muted text-center mt-3">
-        {tr('黑色係考評局陷阱位 — 撳一下偷睇。喺 DSE Level Up，你要睇穿，唔係背答案。',
-            'The black blocks are the examiner’s traps — tap to peek. On DSE Level Up you see through them, you don’t memorise.')}
+ <p className="text-xs text-paper-muted text-center mt-3">
+        {tr('遮住嘅數字可以撳開。', 'Tap a covered number to reveal it.')}
       </p>
  </div>
   )

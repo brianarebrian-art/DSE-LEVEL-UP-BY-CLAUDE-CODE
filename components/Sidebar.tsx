@@ -80,9 +80,6 @@ export default function Sidebar() {
 
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-2 py-4 xl:px-3">
         <div role="group" aria-label={en ? 'Main' : '主要'}>
-          <p className="mb-1 hidden px-2 text-[11px] font-medium uppercase tracking-wider text-ink-muted xl:block">
-            {t.sidebar.groupMain}
-          </p>
           <ul className="flex flex-col gap-1">
             {PRIMARY.map(({ href, key, Icon, exact }) => {
               const active = isActive(pathname, href, exact)

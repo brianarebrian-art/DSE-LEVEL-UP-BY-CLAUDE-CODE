@@ -22,8 +22,8 @@ import { useLocale } from '@/lib/i18n'
 
 const MESSAGES: { zh: string; en: string }[] = [
   { zh: '入到大學嘅路唔止一條，band 幾都好，都唔係終點。', en: 'There is more than one road into university — whichever band you are in, it is not the end of the line.' },
-  { zh: '錯題係寶藏，唔係垃圾。今日搵到一個盲點，考試就少一個伏。', en: 'Wrong answers are treasure, not trash — every blind spot you find now is one fewer trap in the exam.' },
-  { zh: '今日肯打開嚟做題，已經贏咗好多同齡人。', en: 'Just showing up to practise today already puts you ahead.' },
+  { zh: '錯題係線索。睇明一題，下一題就少一個陷阱。', en: 'A missed question is a clue. Understanding one makes the next one clearer.' },
+  { zh: '今日肯打開嚟做題，已經算數。', en: 'Showing up to practise today already counts.' },
   { zh: '溫唔入腦嗰陣，唞 5 分鐘好過死撐 50 分鐘。', en: 'When nothing goes in, a 5-minute break beats 50 minutes of forcing it.' },
   { zh: 'DSE 係一場馬拉松，唔係鬥快 100 米。穩住自己個 pace。', en: 'The DSE is a marathon, not a 100m sprint. Hold your own pace.' },
   { zh: '分數只反映嗰一日嘅你，唔代表你嘅上限。', en: 'A score reflects you on one day — never your ceiling.' },

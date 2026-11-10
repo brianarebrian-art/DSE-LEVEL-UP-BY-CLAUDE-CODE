@@ -116,16 +116,18 @@ export default function SubjectDetailView({
  )}
  <p className="text-ink-muted text-sm">
           {typeCounts.mc.toLocaleString()}{sd.quickDescA}{coveredTopics}
-          {examHasMC ? sd.quickDescB : (en ? ' topics · instant check · concept warm-up only' : ' 大課題 · 即時批改 · 只係概念熱身')}
+          {examHasMC
+            ? <>{sd.quickDescB}{en ? ' Not a grade prediction.' : '（唔係成績預測）。'}</>
+            : (en ? ' topics · instant check · concept warm-up only' : ' 大課題 · 即時批改 · 只係概念熱身')}
         </p>
  <div className="flex gap-3 mt-2 text-xs text-ink-muted flex-wrap">
  <span>{sd.minutesAbout}{estimatedMinutes}{sd.minutesUnit}</span>
+          {!examHasMC && (
+            <>
  <span>·</span>
-          {examHasMC ? (
-            <span>{sd.gradePredict}</span>
- ) : (
  <span>{en ? 'Not counted in the practice-performance estimate' : '唔計入練習表現估算'}</span>
- )}
+            </>
+          )}
  <span>·</span>
  <span>{sd.fullMarksA}{totalMarks}{sd.fullMarksB}</span>
  </div>
@@ -213,7 +215,6 @@ export default function SubjectDetailView({
 
         {/* Header */}
         <div className="mb-10">
- <p className="mb-2 text-sm font-medium uppercase tracking-wide text-ink-muted">{short}</p>
  <h1 className="text-3xl sm:text-4xl font-medium mb-3 text-ink">
             {name}
           </h1>

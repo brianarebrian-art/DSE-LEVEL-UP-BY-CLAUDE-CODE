@@ -28,9 +28,11 @@ test('one status per question: answered by result, then current, then not yet', 
   assert.deepEqual(input, [ok], 'input unchanged')
 })
 
-test('labels name a blind spot, never a verdict', () => {
+test('labels use the neutral miss wording, never a verdict', () => {
   const L = QS.QUESTION_STATUS_LABEL
-  assert.equal(L.blindSpot.zh, '發現盲點')
+  assert.equal(L.blindSpot.zh, '未揀中')
+  assert.doesNotMatch(L.blindSpot.zh, /盲點/)
+  assert.doesNotMatch(L.blindSpot.en, /blind spot/i)
   for (const k of Object.keys(L)) {
     assert.doesNotMatch(L[k].zh, /錯|失敗/)
     assert.doesNotMatch(L[k].en, /wrong|fail/i)
