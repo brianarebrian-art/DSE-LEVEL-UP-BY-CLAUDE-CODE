@@ -4,14 +4,35 @@ import { useState } from 'react'
 import {
   A11Y_CHOICES,
   A11Y_IDS,
-  A11Y_LABEL,
+  COMFORT_AFTER_IDS,
+  COMFORT_AFTER_LABEL,
+  COMFORT_AFTER_QUESTION,
+  COMFORT_DURING_IDS,
+  COMFORT_DURING_LABEL,
+  COMFORT_DURING_QUESTION,
+  COMFORT_HEADING,
+  COMFORT_NOTE_LABEL,
   FEATURE_CHOICES,
   FEATURE_IDS,
   FEATURE_LABEL,
+  TEXT_MAX,
+  WOM_CHANGE_LABEL,
+  WOM_DESCRIBE_IDS,
+  WOM_DESCRIBE_LABEL,
+  WOM_DESCRIBE_QUESTION,
+  WOM_HEADING,
+  WOM_OTHER_LABEL,
+  WOM_RECOMMEND_IDS,
+  WOM_RECOMMEND_LABEL,
+  WOM_RECOMMEND_QUESTION,
   type A11yChoice,
   type A11yId,
+  type ComfortAfter,
+  type ComfortDuring,
   type FeatureChoice,
   type FeatureId,
+  type WomDescribe,
+  type WomRecommend,
   parseGeneralFeedback,
   reflectionCard,
 } from '@/lib/generalFeedback'
@@ -22,7 +43,7 @@ const FEATURE_HINT: Record<FeatureId, { zh: string; en: string }> = {
   error_analysis: { zh: '答錯之後自己揀嘅錯因', en: 'The cause you pick after a wrong answer' },
   focus_light: { zh: '做題時周邊淡落', en: 'Dims everything around the question' },
   quiet_mode: { zh: '收起分數、段位同計時', en: 'Hides scores, ranks and the timer' },
-  emergency_room: { zh: '本站嘅溫習支援，唔係醫院', en: 'Study support on this site, not a hospital' },
+  emergency_room: { zh: '考試日前後可以用嘅平靜支援', en: 'A quiet bit of support around exam day' },
   accessibility: { zh: '字級、對比、閱讀尺呢類', en: 'Type size, contrast, reading ruler and the like' },
 }
 
@@ -57,12 +78,88 @@ function choiceClass(on: boolean): string {
   }`
 }
 
+function NoteField({
+  id,
+  label,
+  value,
+  onChange,
+  disabled,
+  rows,
+}: {
+  id: string
+  label: string
+  value: string
+  onChange: (value: string) => void
+  disabled: boolean
+  rows: number
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-sm text-ink">
+        {label}
+      </label>
+      <textarea
+        id={id}
+        name={id}
+        value={value}
+        maxLength={TEXT_MAX}
+        disabled={disabled}
+        onChange={(event) => onChange(event.target.value)}
+        rows={rows}
+        autoComplete="off"
+        className={`mt-2 w-full rounded-xl border border-line-strong bg-surface-raised px-3 py-2 text-base leading-7 text-ink ${focusRing}`}
+      />
+    </div>
+  )
+}
+
+function ChoiceRow<T extends string>({
+  legend,
+  choices,
+  labels,
+  pressed,
+  onPick,
+  disabled,
+  en,
+}: {
+  legend: string
+  choices: readonly T[]
+  labels: Record<T, { zh: string; en: string }>
+  pressed: (choice: T) => boolean
+  onPick: (choice: T) => void
+  disabled: boolean
+  en: boolean
+}) {
+  return (
+    <fieldset disabled={disabled} className="min-w-0">
+      <legend className="text-sm text-ink">{legend}</legend>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {choices.map((choice) => {
+          const on = pressed(choice)
+          return (
+            <button key={choice} type="button" aria-pressed={on} onClick={() => onPick(choice)} className={choiceClass(on)}>
+              {labels[choice][en ? 'en' : 'zh']}
+            </button>
+          )
+        })}
+      </div>
+    </fieldset>
+  )
+}
+
 export default function FeedbackClient() {
   const { locale } = useLocale()
   const en = locale === 'en'
   const [features, setFeatures] = useState<Partial<Record<FeatureId, FeatureChoice>>>({})
   const [a11y, setA11y] = useState<Partial<Record<A11yId, A11yChoice>>>({})
   const [a11yNote, setA11yNote] = useState('')
+  const [comfortDuring, setComfortDuring] = useState<ComfortDuring | undefined>()
+  const [comfortAfter, setComfortAfter] = useState<ComfortAfter[]>([])
+  const [comfortNote, setComfortNote] = useState('')
+  const [womRecommend, setWomRecommend] = useState<WomRecommend | undefined>()
+  const [womDescribe, setWomDescribe] = useState<WomDescribe[]>([])
+  const [womOther, setWomOther] = useState('')
+  const [womChange, setWomChange] = useState('')
   const [hadMoment, setHadMoment] = useState(false)
   const [ahaText, setAhaText] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -78,6 +175,13 @@ export default function FeedbackClient() {
     const parsed = parseGeneralFeedback({
       features,
       accessibility: { answers: a11y, note: a11yNote },
+      comfort: { during: comfortDuring, after_wrong: comfortAfter, note: comfortNote },
+      word_of_mouth: {
+        recommend: womRecommend,
+        describe: womDescribe,
+        other: womDescribe.includes('other') ? womOther : '',
+        change: womChange,
+      },
       aha: { had_moment: hadMoment, text: ahaText },
       locale: en ? 'en' : 'zh',
     })
@@ -267,18 +371,102 @@ export default function FeedbackClient() {
               </div>
             </fieldset>
           ))}
-          <label className="block text-sm text-ink">
-            {tr('想補充一句（可以留空）', 'Add a sentence (optional)')}
-            <textarea
-              value={a11yNote}
-              maxLength={400}
+          <NoteField
+            id="feedback-a11y-note"
+            label={tr('想補充一句（可以留空）', 'Add a sentence (optional)')}
+            value={a11yNote}
+            onChange={setA11yNote}
+            disabled={status === 'sending'}
+            rows={3}
+          />
+        </section>
+
+        <section aria-labelledby="comfort-heading" className="space-y-6">
+          <div>
+            <h2 id="comfort-heading" className="text-lg font-medium text-ink">
+              {tr(COMFORT_HEADING.zh, COMFORT_HEADING.en)}
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-ink-muted">
+              {tr('每項都可以唔揀。揀咗再撳一次就取消。', 'You can skip any of these. Press a choice again to clear it.')}
+            </p>
+          </div>
+          <ChoiceRow
+            legend={tr(COMFORT_DURING_QUESTION.zh, COMFORT_DURING_QUESTION.en)}
+            choices={COMFORT_DURING_IDS}
+            labels={COMFORT_DURING_LABEL}
+            pressed={(choice) => comfortDuring === choice}
+            onPick={(choice) => setComfortDuring((prev) => (prev === choice ? undefined : choice))}
+            disabled={status === 'sending'}
+            en={en}
+          />
+          <ChoiceRow
+            legend={tr(COMFORT_AFTER_QUESTION.zh, COMFORT_AFTER_QUESTION.en)}
+            choices={COMFORT_AFTER_IDS}
+            labels={COMFORT_AFTER_LABEL}
+            pressed={(choice) => comfortAfter.includes(choice)}
+            onPick={(choice) =>
+              setComfortAfter((prev) => (prev.includes(choice) ? prev.filter((item) => item !== choice) : [...prev, choice]))
+            }
+            disabled={status === 'sending'}
+            en={en}
+          />
+          <NoteField
+            id="feedback-comfort-note"
+            label={tr(COMFORT_NOTE_LABEL.zh, COMFORT_NOTE_LABEL.en)}
+            value={comfortNote}
+            onChange={setComfortNote}
+            disabled={status === 'sending'}
+            rows={3}
+          />
+        </section>
+
+        <section aria-labelledby="wom-heading" className="space-y-6">
+          <div>
+            <h2 id="wom-heading" className="text-lg font-medium text-ink">
+              {tr(WOM_HEADING.zh, WOM_HEADING.en)}
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-ink-muted">
+              {tr('每項都可以唔揀。揀咗再撳一次就取消。', 'You can skip any of these. Press a choice again to clear it.')}
+            </p>
+          </div>
+          <ChoiceRow
+            legend={tr(WOM_RECOMMEND_QUESTION.zh, WOM_RECOMMEND_QUESTION.en)}
+            choices={WOM_RECOMMEND_IDS}
+            labels={WOM_RECOMMEND_LABEL}
+            pressed={(choice) => womRecommend === choice}
+            onPick={(choice) => setWomRecommend((prev) => (prev === choice ? undefined : choice))}
+            disabled={status === 'sending'}
+            en={en}
+          />
+          <ChoiceRow
+            legend={tr(WOM_DESCRIBE_QUESTION.zh, WOM_DESCRIBE_QUESTION.en)}
+            choices={WOM_DESCRIBE_IDS}
+            labels={WOM_DESCRIBE_LABEL}
+            pressed={(choice) => womDescribe.includes(choice)}
+            onPick={(choice) =>
+              setWomDescribe((prev) => (prev.includes(choice) ? prev.filter((item) => item !== choice) : [...prev, choice]))
+            }
+            disabled={status === 'sending'}
+            en={en}
+          />
+          {womDescribe.includes('other') && (
+            <NoteField
+              id="feedback-wom-other"
+              label={tr(WOM_OTHER_LABEL.zh, WOM_OTHER_LABEL.en)}
+              value={womOther}
+              onChange={setWomOther}
               disabled={status === 'sending'}
-              onChange={(event) => setA11yNote(event.target.value)}
-              rows={3}
-              autoComplete="off"
-              className={`mt-2 w-full rounded-xl border border-line-strong bg-surface-raised px-3 py-2 text-base leading-7 text-ink ${focusRing}`}
+              rows={2}
             />
-          </label>
+          )}
+          <NoteField
+            id="feedback-return-note"
+            label={tr(WOM_CHANGE_LABEL.zh, WOM_CHANGE_LABEL.en)}
+            value={womChange}
+            onChange={setWomChange}
+            disabled={status === 'sending'}
+            rows={3}
+          />
         </section>
 
         <section aria-labelledby="aha-heading" className="space-y-3">
@@ -297,18 +485,14 @@ export default function FeedbackClient() {
           >
             {tr('有過原來係咁嘅瞬間', 'I have had an “oh, so that’s how” moment')}
           </button>
-          <label className="block text-sm text-ink">
-            {tr('如果想講，可以寫低嗰一下（可以留空）', 'If you want to, write that moment (optional)')}
-            <textarea
-              value={ahaText}
-              maxLength={400}
-              disabled={status === 'sending'}
-              onChange={(event) => setAhaText(event.target.value)}
-              rows={4}
-              autoComplete="off"
-              className={`mt-2 w-full rounded-xl border border-line-strong bg-surface-raised px-3 py-2 text-base leading-7 text-ink ${focusRing}`}
-            />
-          </label>
+          <NoteField
+            id="feedback-aha-note"
+            label={tr('如果想講，可以寫低嗰一下（可以留空）', 'If you want to, write that moment (optional)')}
+            value={ahaText}
+            onChange={setAhaText}
+            disabled={status === 'sending'}
+            rows={4}
+          />
         </section>
 
         <div>

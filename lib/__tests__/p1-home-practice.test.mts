@@ -29,6 +29,18 @@ test('homepage primary path is the no-sign-in subject picker; secondary is outli
   assert.doesNotMatch(grid, /prefetch=\{false\}/)
 })
 
+test('homepage keeps one solid start path and does not style 繼續練習 as a second primary', () => {
+  const pageNav = read('components/PageNav.tsx')
+  assert.match(pageNav, /pathname === '\/'/)
+  assert.match(pageNav, /bg-accent-strong text-on-accent/)
+  assert.match(pageNav, /border border-line-strong bg-transparent/)
+  const dict = read('lib/dictionary.ts')
+  assert.match(dict, /predictor: '練習表現估算（唔係官方等級）'/)
+  assert.match(read('components/Sidebar.tsx'), /key === 'predictor'/)
+  assert.match(read('app/dashboard/DashboardPageClient.tsx'), /t\.sidebar\.predictor/)
+  assert.doesNotMatch(read('app/dashboard/DashboardPageClient.tsx'), /'練習表現'/)
+})
+
 test('header 開始練習 and the hero picker are one guest path', () => {
   const nav = read('components/Navbar.tsx')
   assert.equal((nav.match(/href="\/start"/g) ?? []).length, 2)

@@ -34,7 +34,7 @@
 
 ### 2.4 SEO 與增長 (P2 Growth & SEO)
 - [ ] `sitemap.xml` 包含之有效可索引網址數量維持 > 100。
-- [ ] 題目頁包含完整 QAPage 與 FAQPage JSON-LD 結構化資料，關鍵字涵蓋 "DSE 2026"、"考試急症室" 與科目名稱。
+- [ ] 題目頁包含完整 QAPage 與 FAQPage JSON-LD 結構化資料，關鍵字涵蓋 "DSE 2026"、"溫習支援" 與科目名稱。
 - [ ] Instagram DM 報名 Webhook `/api/enroll/webhook` 運作正常，支援自動建立 review_items 與 Stripe Payment Link。
 
 ### 2.5 建置與程式碼品質閘門 (Build & QA Gates)

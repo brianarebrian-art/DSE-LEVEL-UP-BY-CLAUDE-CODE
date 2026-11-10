@@ -403,8 +403,8 @@ export default function DashboardPageClient() {
               {
                 href: '/predictor',
                 Icon: ChartColumnIncreasing,
-                title: en ? 'Practice performance' : '練習表現',
-                body: en ? 'A range, not a promise — per subject.' : '每科一個範圍，唔係一個承諾。',
+                title: t.sidebar.predictor,
+                body: en ? 'A range from practice on this site, not an official grade.' : '按你喺本站嘅練習計一個範圍，唔係官方等級。',
                 cta: en ? 'Have a look' : '睇吓',
                 tone: 'bg-accent/15 text-accent',
               },

@@ -125,7 +125,8 @@ const zh = {
     // 2026-09-30（UX 循環 LOOP 25）：「DNA」暗示系統建立了學習者模型，實際只是學生自選錯因的統計。
     errorDna: '錯誤模式',
     // 2026-09-30（UX 循環 LOOP 21）：「等級預測」改名。它是本站練習數據的估算，不是考評局成績預測。
-    predictor: '練習表現',
+    // 2026-11-10：側欄短名「練習表現」仍易被讀成官方成績，改到連括號都講明唔係官方等級。
+    predictor: '練習表現估算（唔係官方等級）',
     relax: '呼吸空間',
     offSyllabus: '不考之地',
     // 側欄組名：主要四格 ＋ 更多（次要工具）＋ 不考之地獨立尾組。
@@ -567,7 +568,7 @@ const en: typeof zh = {
     account: 'Account',
     notes: 'Notes',
     errorDna: 'Error patterns',
-    predictor: 'Practice performance',
+    predictor: 'Practice estimate (not an official grade)',
     relax: 'Breathing Space',
     offSyllabus: 'Off the Syllabus',
     groupMain: 'Main',

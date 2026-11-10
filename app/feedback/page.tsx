@@ -4,7 +4,7 @@ import FeedbackClient from './FeedbackClient'
 
 export const metadata = completeSeoMetadata({
   title: '匿名意見 | DSE Level Up', // i18n-exempt: zh-Hant fixed search metadata
-  description: '匿名意見頁，可以唔填。用情景選擇話我哋知邊啲功能有幫助，包括只做一題、錯因分析、專注燈、安靜模式、考試急症室同無障礙，亦可以講一個「原來係咁」嘅瞬間。唔記帳戶、電郵或 IP，送出後冇分數。', // i18n-exempt: zh-Hant fixed search metadata
+  description: '匿名意見頁，可以唔填。用情景選擇話我哋知邊啲功能有幫助，包括只做一題、錯因分析、專注燈、安靜模式、溫習支援同無障礙，亦可以講答題時舒唔舒服、會唔會向同學提起，同一個「原來係咁」嘅瞬間。唔記帳戶、電郵或 IP，送出後冇分數。', // i18n-exempt: zh-Hant fixed search metadata
 }, '/feedback')
 
 export default function FeedbackPage() {

@@ -19,15 +19,20 @@ export default function PageNav() {
   const links = intentLinks(pathname)
   if (!links) return null
   const [primary, secondary] = links
+  // 首頁嘅實心主行動係科目快速開始。頁底「繼續練習」如果再實心，就同頂欄「開始練習」搶同一個視覺重心。
+  const onHome = pathname === '/'
 
-  // min-h-12 = 48px。第一個是主要動作（實心），第二個是次要（框線）。
+  // min-h-12 = 48px。第一個是主要動作（實心），第二個是次要（框線）。首頁兩個都用框線。
   const base =
     'min-h-12 flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-medium transition-colors ' +
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
+  const primaryLook = onHome
+    ? 'border border-line-strong bg-transparent text-ink-soft hover:border-accent hover:bg-surface-sunken hover:text-ink'
+    : 'bg-accent-strong text-on-accent hover:bg-accent-hover'
 
   return (
     <nav aria-label={en ? 'Next step' : '下一步'} className="mx-auto mt-10 flex w-full max-w-3xl items-stretch gap-3 px-4 pb-6">
-      <Link href={primary.href} className={`${base} bg-accent-strong text-on-accent hover:bg-accent-hover`}>
+      <Link href={primary.href} className={`${base} ${primaryLook}`}>
         {en ? primary.en : primary.zh} <ArrowRight size={16} aria-hidden />
       </Link>
       <Link href={secondary.href} className={`${base} border border-line bg-surface-raised text-ink-soft hover:bg-surface-sunken hover:text-ink`}>
