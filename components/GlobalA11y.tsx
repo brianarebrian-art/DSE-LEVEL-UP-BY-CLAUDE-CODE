@@ -108,6 +108,13 @@ export default function GlobalA11y() {
     return () => window.removeEventListener('keydown', onKey)
   }, [sosOpen])
 
+  // 練習頂欄同其他沒有浮動掣的位置用同一個彈窗。
+  useEffect(() => {
+    const open = () => setSosOpen(true)
+    window.addEventListener('dse-open-sos', open)
+    return () => window.removeEventListener('dse-open-sos', open)
+  }, [])
+
   if (pathname?.startsWith('/relax')) return null // 呼吸空間內已有常駐熱線
 
   return (

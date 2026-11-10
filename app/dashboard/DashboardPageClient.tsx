@@ -52,6 +52,7 @@ import TrailStrip from '@/components/TrailStrip'
 import Mascot from '@/components/Mascot'
 import { SESSION_SIZE } from '@/lib/entitlements'
 import { IG_GROUP_ENTRY_NOTE } from '@/lib/site'
+import { loadActiveSession, practiceHref, sessionAnswered, type ActiveSession } from '@/lib/sessionResume'
 
 function relativeTime(ts: number, d: Dictionary['dashboard']): string {
   const diff = Date.now() - ts
@@ -71,6 +72,7 @@ export default function DashboardPageClient() {
   const router = useRouter()
   const { version } = useSync() // re-read local progress after a cloud pull/merge
   const [stats, setStats] = useState<ProgressStats | null>(null)
+  const [guestRun, setGuestRun] = useState<ActiveSession | null>(null)
  const [topics, setTopics] = useState<TopicStatEntry[]>([])
   const [confirmReset, setConfirmReset] = useState(false)
   // F-NTM: 今晚唔溫得 — 開啟時 Dashboard 收起所有推送／計數，只顯示休息畫面
@@ -81,8 +83,14 @@ export default function DashboardPageClient() {
 
   // Read client-only progress after mount (avoids SSR hydration mismatch).
   useEffect(() => {
-    setStats(computeStats(loadAttempts()))
-    setTopics(getTopicStats())
+    const read = () => {
+      setStats(computeStats(loadAttempts()))
+      setTopics(getTopicStats())
+      setGuestRun(loadActiveSession())
+    }
+    read()
+    window.addEventListener('dse:progress-changed', read)
+    return () => window.removeEventListener('dse:progress-changed', read)
   }, [version])
 
   // 錨點（/dashboard#error-dna、#review）要等數據到咗先捲得到。
@@ -218,6 +226,46 @@ export default function DashboardPageClient() {
   const subjName = (subjectId: string, stored: string) => {
     const meta = getSubject(subjectId)
     return meta ? (en ? meta.nameEn : meta.name) : stored
+  }
+
+  const guest = sessionAnswered(guestRun)
+  // 進行中的訪客練習不是「尚未開始」。完成一整份之後先計入總表。
+  if (stats.totalAttempts === 0 && guest.total > 0 && guestRun) {
+    const meta = getSubject(guestRun.subjectId)
+    const subjectName = meta ? (en ? meta.nameEn : meta.name) : (en ? 'Practice' : '練習')
+    const href = practiceHref(
+      guestRun.subjectId,
+      guestRun.topicFilter,
+      guestRun.mode === 'weakness' ? 'weakness' : 'normal',
+    )
+    const fill = (template: string, values: Record<string, string | number>) =>
+      Object.entries(values).reduce((text, [key, value]) => text.replace(`{${key}}`, String(value)), template)
+    return (
+      <div className="min-h-screen px-4 py-20 bg-surface text-ink-soft">
+        <div className="max-w-md mx-auto">
+          <SyncReadyBannerGate />
+          <SyncStatus />
+          <div className="text-center">
+            <h1 className="text-3xl font-serif mb-3 text-ink">{d.title}</h1>
+            <p className="text-ink-muted mb-3">
+              {fill(d.guestLead, { subject: subjectName, n: guest.total })}
+            </p>
+            {guest.splitKnown && (
+              <p className="text-ink-soft mb-3">
+                {fill(d.guestSplit, { correct: guest.correct, missed: guest.missed })}
+              </p>
+            )}
+            <p className="text-sm text-ink-muted mb-8">{d.guestNote}</p>
+            <Link
+              href={href}
+              className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-6 py-3 rounded-xl transition-[colors,transform] duration-100"
+            >
+              {d.guestCta} <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   // Empty state — no practice yet.
@@ -484,7 +532,7 @@ export default function DashboardPageClient() {
  <div className="bg-surface-sunken rounded-xl p-4 text-center">
  <Crosshair size={16} className="text-gold mx-auto mb-2" />
  <div className="text-2xl font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>{conquered}</div>
- <div className="text-[11px] text-ink-muted mt-1">{en ? 'Blind spots conquered' : '攻克思維盲點'}</div>
+ <div className="text-[11px] text-ink-muted mt-1">{en ? 'Topics you know well' : '已經熟習的課題'}</div>
  </div>
  <div className="bg-surface-sunken rounded-xl p-4 text-center">
  <BookOpen size={16} className="text-accent mx-auto mb-2" />
@@ -513,18 +561,18 @@ export default function DashboardPageClient() {
  <div className="text-center sm:text-left">
  <h3 className="mb-1 flex items-center gap-2 text-lg font-medium text-ink">
  <Wrench size={17} aria-hidden className="shrink-0 text-ink-muted" />
-                {en ? 'Blind-spot Repair Worksheet' : '盲點修復卷'}
+                {en ? 'Review set' : '重溫卷'}
               </h3>
  <p className="text-sm text-ink-muted mb-4">
                 {en
-                  ? `Auto-build a ${SESSION_SIZE}-question drill from your lowest win-rate topics.`
-                  : `自動由你勝率最低嘅課題，砌一份 ${SESSION_SIZE} 題專屬特訓卷。`}
+                  ? `A ${SESSION_SIZE}-question set from topics you have already practised.`
+                  : `由你練過嘅課題砌一份 ${SESSION_SIZE} 題重溫卷。`}
               </p>
  <button
                 onClick={onRepair}
                 className="inline-flex items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-3 rounded-xl transition-[colors,transform] duration-100"
               >
- <Sparkles size={16} /> {en ? 'Generate repair worksheet' : '一鍵生成：專屬盲點修復卷'}
+ <Sparkles size={16} /> {en ? 'Build a review set' : '砌一份重溫卷'}
               </button>
  </div>
  </div>

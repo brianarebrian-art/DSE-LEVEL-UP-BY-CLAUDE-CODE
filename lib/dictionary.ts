@@ -12,6 +12,7 @@ const zh = {
     notes: '知識凝結',
     // 2026-09-26 Yuna：非 DSE 考核範圍嘅內容集中喺呢度，入口只喺三橫選單同側欄。
     offSyllabus: '不考之地',
+    relax: '呼吸空間',
     startPractice: '開始練習',
     // 手機底欄：刻意沿用各頁自己嘅叫法，唔另創「今日／回顧／我的」一套新詞 ——
     // 掣寫「今日」但撳落去個頁面寫「我的進度」，只會令學生要記兩套名。
@@ -373,6 +374,10 @@ const zh = {
     title: '我的進度',
     emptyBody: '你仲未開始練習。做完第一份練習後，呢度就會記錄你嘅練習日數、正確率同各科表現。',
     emptyCta: '開始第一份練習',
+    guestLead: '今次{subject}已經答咗 {n} 題。呢份未做完，所以練習日數同正確率未計落總表。',
+    guestSplit: '答啱 {correct}，未揀中 {missed}。',
+    guestNote: '未登入的紀錄留喺呢個分頁。登入可以跨裝置同步。',
+    guestCta: '繼續呢份練習',
     subtitleA: '已活躍 ',
     subtitleB: ' 日 · 共答對 ',
     continueP: '繼續練習',
@@ -487,6 +492,7 @@ const en: typeof zh = {
     paper: 'Printable practice set',
     notes: 'Notes',
     offSyllabus: 'Off the Syllabus',
+    relax: 'Breathing Space',
     startPractice: 'Start Practice',
     tabPractice: 'Practise',
     tabProgress: 'Progress',
@@ -791,6 +797,10 @@ const en: typeof zh = {
     title: 'My Progress',
     emptyBody: 'You haven’t started practising yet. After your first session, your practice days, accuracy and per-subject performance will show up here.',
     emptyCta: 'Start your first session',
+    guestLead: 'This {subject} set already has {n} answered. It is not finished, so practice days and accuracy are not on the summary yet.',
+    guestSplit: '{correct} correct, {missed} not chosen.',
+    guestNote: 'Without signing in, this stays in the current tab. Sign in to sync across devices.',
+    guestCta: 'Continue this set',
     subtitleA: 'Active for ',
     subtitleB: ' days · ',
     continueP: 'Keep practising',

@@ -35,7 +35,9 @@ test('the header button opens the same panel, is phone-only and 48px', () => {
 })
 
 test('the floating button hides on phones only when the page has a header button', () => {
-  assert.match(panel, /className="a11y-fab no-print fixed floating-bottom floating-left/)
+  assert.match(panel, /a11y-fab no-print fixed floating-bottom floating-left/)
+  assert.match(panel, /open \? 'pointer-events-none opacity-0'/)
+  assert.match(panel, /電話直接撳呢個掣/)
   const rule = css.match(/@media \(max-width: (\d+)px\) \{\s*body:has\(\[data-a11y-trigger\]\) \.a11y-fab \{ display: none; \}/)
   assert.ok(rule, 'conditional rule in globals.css')
   // Same breakpoint as md:hidden on the header button (Tailwind v4 md = 768px).

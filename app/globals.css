@@ -1388,18 +1388,20 @@ html.font-easy .skeleton {
 }
 
 /* practice-revealed-p0
-   練習頁答完之後：下一題貼住內容欄底部，解析同掣同一屏。
-   無障礙浮動掣改到右上，唔再蓋住解析或下一題。
-   只作用於 .practice-session，其他頁的左下角掣維持原位。 */
-.practice-session-revealed {
+   答完之後：解釋在欄內捲動，下一題列留在欄底的正常流，唔覆蓋解釋。
+   min-height: 0 壓過 min-h-screen（100vh）。100vh 高過可見視窗時，
+   sticky bottom 會把下一題拉上嚟蓋住解釋。
+   情緒支援改到頂欄，唔再擠下一題，亦唔放在解釋卡上。 */
+.practice-session.practice-session-revealed {
+  min-height: 0;
   height: 100dvh;
   max-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding-top: max(12px, env(safe-area-inset-top));
-  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-top: max(12px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
 }
 .practice-session-revealed > .practice-session-column {
   display: flex;
@@ -1429,24 +1431,19 @@ html.font-easy .skeleton {
     gap: 0.75rem;
   }
 }
-.practice-explain {
-  padding-bottom: 72px;
-}
 .practice-miss {
   background: color-mix(in srgb, var(--color-ml-clay) 16%, var(--color-surface-raised));
   border-color: color-mix(in srgb, var(--color-ml-clay) 55%, transparent);
 }
 .practice-next-bar {
-  position: sticky;
-  bottom: max(12px, env(safe-area-inset-bottom));
+  position: relative;
   z-index: 20;
   display: flex;
   align-items: stretch;
   gap: 8px;
   flex-shrink: 0;
-  margin-top: 16px;
+  margin-top: 8px;
   padding-top: 8px;
-  padding-right: 56px;
   background: var(--color-surface-raised);
   border-top: 1px solid var(--color-line-strong);
 }
@@ -1509,18 +1506,20 @@ body:has(.practice-session) .a11y-fab {
 body:has(.practice-session) [data-reading-ruler-fab] {
   display: none;
 }
-/* 練習頁 SOS 唔 pulse；掣仍喺右下（a11y-header-entry 鎖死）。 */
+/* 練習頁的情緒支援在頂欄。浮動掣收起，避免蓋住或擠窄「下一題」，亦唔放上解釋卡。 */
 body:has(.practice-session) [data-sos-fab] {
-  animation: none !important;
+  display: none;
 }
-/* P1.2 拇指區。窄屏實測：欄 padding 16px + 右墊 56px，下一題右緣距離
-   右下情緒支援掣左緣只得 56−48＝8px（掣本身 right-4、寬 48px）。
-   窄屏把右墊加到 88px，水平間距約 40px。唔抬高情緒支援掣，避免蓋住解析。
-   桌面欄已置中，維持 56px。a11y 浮鈕仍由上面規則收起。 */
-@media (max-width: 639px) {
-  .practice-next-bar {
-    padding-right: 88px;
-  }
+.feedback-submit-bar {
+  position: sticky;
+  z-index: 30;
+  bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px));
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-right: 4.5rem;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
 }
 /* /practice-revealed-p0 */
 
@@ -1635,11 +1634,13 @@ body:has(.practice-session) [data-sos-fab] {
   --color-chart-6: #918a7e;
 }
 
-/* Material chrome helpers */
+/* Material chrome helpers.
+   手機實測 0.78 透明加模糊會讓頁面文字透出頂欄、底欄同漢堡選單。
+   改為不透明表面色，淺色同深色都跟 --color-surface-raised。 */
 .chrome-material {
-  background: var(--color-material);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background-color: var(--color-surface-raised);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 @media (prefers-reduced-transparency: reduce) {
   .chrome-material {

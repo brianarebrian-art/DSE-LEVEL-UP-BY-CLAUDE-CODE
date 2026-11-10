@@ -37,9 +37,31 @@ export interface ActiveSession {
   mode: PracticeMode
   questionIds: string[]
   answers: (SavedAnswer | null)[]
+  /**
+   * The choice on the question still on screen, before 「下一題」.
+   * `current` stays the index of that question; `answers` stays the earlier ones.
+   */
+  openAnswer?: SavedAnswer | null
   current: number
   elapsed: number // seconds already spent in this run
   updatedAt: number
+}
+
+/** Questions answered in this run, including the one still on screen. */
+export function sessionAnswered(s: ActiveSession | null): {
+  total: number
+  correct: number
+  missed: number
+  splitKnown: boolean
+} {
+  if (!s) return { total: 0, correct: 0, missed: 0, splitKnown: false }
+  const closed = s.answers.filter((a): a is SavedAnswer => !!a && typeof a.isCorrect === 'boolean')
+  const open = s.openAnswer && typeof s.openAnswer.isCorrect === 'boolean' ? s.openAnswer : null
+  const total = Math.max(0, s.current) + (open ? 1 : 0)
+  const known = closed.length + (open ? 1 : 0)
+  const correct = closed.filter((a) => a.isCorrect).length + (open?.isCorrect ? 1 : 0)
+  const splitKnown = total > 0 && known === total
+  return { total, correct, missed: splitKnown ? total - correct : 0, splitKnown }
 }
 
 function isBrowser(): boolean {
@@ -122,7 +144,8 @@ export function isResumable(
   if (s.subjectId !== subjectId) return false
   if ((s.topicFilter ?? null) !== (topicFilter ?? null)) return false
   if (s.mode !== mode) return false
-  if (s.current <= 0) return false // nothing done yet — a fresh pool is just as good
+  const openAnswered = !!s.openAnswer && typeof s.openAnswer.isCorrect === 'boolean'
+  if (s.current <= 0 && !openAnswered) return false // nothing done yet — a fresh pool is just as good
   if (s.current >= s.questionIds.length) return false // already finished
   if (Date.now() - s.updatedAt > MAX_AGE_MS) return false
   return true
@@ -175,7 +198,7 @@ export function pickContinueTarget(
       kind: 'resume',
       subjectId: session.subjectId,
       href: practiceHref(session.subjectId, session.topicFilter ?? null, session.mode),
-      done: session.current,
+      done: session.current + (session.openAnswer && typeof session.openAnswer.isCorrect === 'boolean' ? 1 : 0),
       total: session.questionIds.length,
     }
   }

@@ -349,7 +349,7 @@ export default function A11yPanel() {
         aria-expanded={open}
         aria-label={en ? 'Open accessibility menu' : '開啟無障礙功能選單'}
         title={en ? 'Accessibility · text size, easy-read font, reading ruler' : '無障礙 · 字級、易讀字體、閱讀尺'}
-        className="a11y-fab no-print fixed floating-bottom floating-left z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-surface-raised border border-line-strong flex items-center justify-center hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
+        className={`a11y-fab no-print fixed floating-bottom floating-left z-50 min-h-12 min-w-12 w-12 h-12 rounded-full bg-surface-raised border border-line-strong flex items-center justify-center hover:bg-surface-sunken transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold ${open ? 'pointer-events-none opacity-0' : ''}`}
       >
         {/* 通用無障礙圖標（/public/icons，向量重繪自用戶提供嘅參考圖 —— 原檔係實色底
             OG 圖，SVG 重繪先有真透明背景）。無障礙名稱由 button aria-label 提供。
@@ -359,7 +359,7 @@ export default function A11yPanel() {
 
       {open && (
         <div
-          className="no-print fixed floating-bottom-3 floating-panel-max-h floating-left z-50 w-72 max-w-[calc(100vw-var(--sidebar-w)-2rem)] bg-surface-sunken border border-line-strong rounded-2xl p-4 shadow-xl"
+          className="no-print fixed floating-bottom-3 floating-panel-max-h floating-left z-[60] w-72 max-w-[calc(100vw-var(--sidebar-w)-2rem)] bg-surface-sunken border border-line-strong rounded-2xl p-4 pb-6 shadow-xl"
           role="dialog"
           aria-label={en ? 'Accessibility options' : '無障礙設定'}
         >
@@ -674,8 +674,8 @@ export default function A11yPanel() {
  <span className="block text-sm">{en ? 'Focus light' : 'Focus 專注燈'}</span>
  <span className="block text-[11px] text-ink-muted">
                   {en
-                    ? 'Dims everything around the question. Shift + F while practising.'
-                    : '做題時周邊淡落，題目卡維持全亮。練習頁可撳 Shift + F。'}
+                    ? 'Dims everything around the question and leaves the question card bright. This switch works on a phone. Shift + F is an extra shortcut only when a keyboard is connected.'
+                    : '做題時周邊淡落，題目卡維持全亮。電話直接撳呢個掣。有鍵盤先可以用 Shift + F。'}
                 </span>
  </span>
  </span>

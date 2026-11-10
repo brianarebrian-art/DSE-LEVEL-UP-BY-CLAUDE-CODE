@@ -376,7 +376,7 @@ export default function AnswerSheetClient() {
                   {mark === 'wrong' && (
                     <div className="mt-3 rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
  <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
- <Lightbulb size={15} /> {tr('你發現咗一個新盲點 係邊一種？', 'You found a new blind spot which kind?')}
+ <Lightbulb size={15} /> {tr('想記低係邊一種？（可以唔揀）', 'Note which kind? (optional)')}
                       </p>
  <div className="mt-2 space-y-1.5">
                         {REVERSE_CAUSES.map((c) => {
@@ -494,7 +494,7 @@ export default function AnswerSheetClient() {
                       {level && level !== 'full' && (
                         <div className="mt-3 rounded-xl border border-gold/25 bg-gold/[0.06] p-3">
  <p className="flex items-center gap-1.5 text-sm font-medium text-gold-strong">
- <Lightbulb size={15} /> {tr('想記低係邊種盲點？（唔想就跳過）', 'Want to log the kind of gap? (skip if you prefer)')}
+ <Lightbulb size={15} /> {tr('想記低係邊一種？（可以唔揀）', 'Note which kind? (optional)')}
                           </p>
  <div className="mt-2 space-y-1.5">
                             {REVERSE_CAUSES.map((c) => {

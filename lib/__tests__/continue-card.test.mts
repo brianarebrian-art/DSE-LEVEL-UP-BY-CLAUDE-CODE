@@ -56,6 +56,32 @@ test('runs the practice page would not offer fall back to the last subject', () 
   }
 })
 
+test('an answer still on screen counts, and a fresh run does not', () => {
+  const open = run({
+    current: 0,
+    answers: [],
+    openAnswer: { selectedZh: '甲', isCorrect: false },
+  })
+  assert.equal(R.isResumable(open, 'math', null, 'normal'), true)
+  assert.deepEqual(R.sessionAnswered(open), { total: 1, correct: 0, missed: 1, splitKnown: true })
+  const two = run({
+    current: 1,
+    answers: [{ selectedZh: '甲', isCorrect: false }],
+    openAnswer: { selectedZh: '乙', isCorrect: true },
+  })
+  assert.deepEqual(R.sessionAnswered(two), { total: 2, correct: 1, missed: 1, splitKnown: true })
+  assert.equal(R.sessionAnswered(run({ current: 0, answers: [] })).total, 0)
+})
+
+test('the dashboard tells the truth about an in-progress guest run', () => {
+  const src = read('app/dashboard/DashboardPageClient.tsx')
+  const guest = src.indexOf('guest.total > 0')
+  const empty = src.indexOf('d.emptyBody')
+  assert.ok(guest > 0 && empty > guest, 'in-progress copy must be chosen before the empty state')
+  assert.match(src, /sessionAnswered\(guestRun\)/)
+  assert.doesNotMatch(src, /盲點/)
+})
+
 test('a first-time visitor gets no card', () => {
   assert.equal(R.pickContinueTarget(null, null, live), null)
   assert.equal(R.pickContinueTarget(null, 'withdrawn-subject', live), null)

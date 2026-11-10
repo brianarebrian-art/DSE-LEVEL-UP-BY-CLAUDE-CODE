@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Brain } from 'lucide-react'
+import { ArrowRight, Brain, LifeBuoy } from 'lucide-react'
 import CauseMark from '@/components/marks/CauseMark'
 import TextQuestionCard from '@/components/TextQuestionCard'
 import LongQuestionCard from '@/components/LongQuestionCard'
@@ -228,6 +228,14 @@ export default function LongPracticeSession({
               {tr('長題目練習 · 自評制', 'Written practice · self-assessed')}
             </span>
             <EnoughTodayButton />
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event('dse-open-sos'))}
+              aria-label={tr('情緒支援', 'Emotional support')}
+              className="inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg text-accent hover:bg-line"
+            >
+              <LifeBuoy size={20} aria-hidden />
+            </button>
             {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）；!inline-flex 令桌面頂欄亦顯示。 */}
             <A11yButton className="!inline-flex" />
           </span>
@@ -244,7 +252,7 @@ export default function LongPracticeSession({
           <div className="mt-5 rounded-2xl border border-line bg-surface-raised p-5">
  <p className="text-sm text-ink-soft mb-1 inline-flex items-center gap-2">
  <Brain size={16} className="text-accent" aria-hidden />
-              {tr('想唔想順手記低今次係邊種盲點？', 'Want to note what tripped you up?')}
+              {tr('想唔想順手記低今次係邊一種？', 'Want to note what kind this was?')}
             </p>
  <p className="text-xs text-ink-muted mb-3 leading-relaxed">
               {tr('記低咗會入你嘅錯題本，之後溫書搵返會快好多。唔想記都完全冇問題。',

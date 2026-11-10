@@ -181,8 +181,8 @@ export default function TransparencyClient({
         {/* 2026-09-30（UX 循環 LOOP 12）：講清楚每題有咩、冇咩資料，冇嘅就唔標示。 */}
         <p className="text-ink-soft leading-relaxed mb-5">
           {en
-            ? 'Every question has an ID, shown under the explanation after you answer; quote it when you report a problem. Our question records do not store, question by question, which syllabus year a question was checked against or when it was last revised, so we do not show either.'
-            : '每條題目都有題號，答完之後喺解析底部見到；報錯時引用題號就得。題目紀錄冇逐題記低對照邊一年嘅課綱、幾時最後修訂，所以題目度唔會標示呢兩樣。'}
+            ? 'Reporting a problem sends the question reference with the report, so you do not need to copy a code. Our question records do not store, question by question, which syllabus year a question was checked against or when it was last revised, so we do not show either.'
+            : '報錯時會一併帶上題目編號，你唔使抄。題目紀錄冇逐題記低對照邊一年嘅課綱、幾時最後修訂，所以題目度唔會標示呢兩樣。'}
         </p>
         {/* 第三個狀態「待核」（2026-09-15）。數字由生成檔即時計，唔寫死 —— 題目修好一條，
             呢度自動少一條。

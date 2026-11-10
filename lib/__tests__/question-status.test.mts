@@ -28,9 +28,11 @@ test('one status per question: answered by result, then current, then not yet', 
   assert.deepEqual(input, [ok], 'input unchanged')
 })
 
-test('labels name a blind spot, never a verdict', () => {
+test('labels name an unchosen answer, never a verdict or a blind spot', () => {
   const L = QS.QUESTION_STATUS_LABEL
-  assert.equal(L.blindSpot.zh, '發現盲點')
+  assert.equal(L.blindSpot.zh, '未揀中')
+  assert.equal(L.blindSpot.en, 'Not chosen')
+  assert.doesNotMatch(L.blindSpot.zh, /盲點/)
   for (const k of Object.keys(L)) {
     assert.doesNotMatch(L[k].zh, /錯|失敗/)
     assert.doesNotMatch(L[k].en, /wrong|fail/i)
@@ -56,7 +58,7 @@ test('correct and blind spot differ by more than colour', () => {
 test('the practice page shows the strip at the top and drops the old bar and dots', () => {
   const src = read('app/practice/PracticeSession.tsx')
   const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
-  const strip = code.indexOf('<QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current}')
+  const strip = code.indexOf('<QuestionStatusStrip')
   const grid = code.indexOf('<div className="lg:grid lg:grid-cols-2')
   assert.ok(strip > 0 && strip < grid, 'above the question')
   assert.doesNotMatch(code, /Array\.from\(\{ length: totalQ \}\)/, 'bottom dots removed')

@@ -94,7 +94,7 @@ export default function TodayNote({ className = '' }: { className?: string }) {
     return (
       <div className={`rounded-2xl border border-gold/30 bg-gold/10 p-5 ${className}`}>
  <p className="text-sm font-medium text-gold mb-1">
-          💡 {tr('你發現咗一個新盲點', 'You have found a blind spot')}
+          {tr('有個課題可以再睇一次', 'One topic is ready to revisit')}
         </p>
  <p className="text-sm text-ink-soft leading-relaxed mb-3">
           {tr(

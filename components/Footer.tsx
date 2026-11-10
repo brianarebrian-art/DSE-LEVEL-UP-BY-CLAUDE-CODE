@@ -22,7 +22,7 @@ export default function Footer() {
        捲到最底時頁尾最後一行不會被底欄蓋住（2026-10-01 R2-11）。 */
     <footer
       className="border-t border-line bg-surface md:pl-20 xl:pl-[260px]"
-      style={{ paddingBottom: 'calc(var(--bottom-nav-h) + env(safe-area-inset-bottom))' }}
+      style={{ paddingBottom: 'calc(var(--bottom-nav-h) + env(safe-area-inset-bottom, 0px) + 4.5rem)' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-8 py-12">
         {/* Layer 1：Doormat 二級導航 */}

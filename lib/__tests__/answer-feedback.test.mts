@@ -91,7 +91,8 @@ test('答錯回饋鏈由頭到尾冇任何玫紅（規格書 §4.2）', () => {
 
 test('進度點答錯用金色，唔係紅點 —— 一行紅點就係一行判決', () => {
   // 2026-09-30（UX 循環 LOOP 19）：頁底圓點改為頁頂各題狀態列，同一要求改為檢查狀態列。
-  assert.match(PRACTICE, /<QuestionStatusStrip statuses=\{questionStatuses\(totalQ, answers, current\)\}/)
+  assert.match(PRACTICE, /<QuestionStatusStrip/)
+  assert.match(PRACTICE, /Object\.assign\(answers\.slice\(\), \{ \[current\]: answerState \}\)/)
   const strip = readFileSync('components/QuestionStatusStrip.tsx', 'utf8')
   const style = (k: string) => strip.match(new RegExp(`${k}: '([^']+)'`))![1]
   assert.match(style('blindSpot'), /border-gold/)
