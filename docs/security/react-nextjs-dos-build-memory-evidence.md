@@ -50,3 +50,11 @@ No causal link to the React/Next.js security upgrade was demonstrated. The build
 ## Next recommended action
 
 Do not change application logic, tests, dependencies, or build flags in the repository. Re-run the unchanged commit on a build runner with materially more memory than the reported ~8.2 GiB (recommended minimum 16 GiB) and capture cgroup limits/events. Keep QA and staging regression blocked until that build succeeds. This branch is not safe to merge while the production build gate is failing.
+
+## Remediation decision
+
+- **Decision:** use a 16 GiB build runner; no repository workaround.
+- **Approved by:** project owner via chat selection.
+- **Decision date:** 2026-11-03 (HKT; exact approval timestamp is retained in chat history).
+- **Current sandbox check:** still reports `MemTotal: 8605824 kB` (~8.21 GiB), so the selected 16 GiB runner has not been provisioned in this workspace.
+- **Acceptance:** rerun the unchanged commit on the 16 GiB runner; record exit code, cgroup memory limit/events, and complete `npm run build` output. Only after a successful build should QA and staging regression resume.
