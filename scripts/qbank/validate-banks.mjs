@@ -48,8 +48,17 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { createRequire } from 'node:module'
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
-const ts = (await import('typescript')).default
+const require = createRequire(import.meta.url)
+let swcTransform = null
+try {
+  swcTransform = require('next/dist/build/swc').transformSync
+} catch {}
+let ts = null
+try {
+  ts = (await import('typescript')).default
+} catch {}
 // KaTeX 用於「真的渲染一次」檢查。載入失敗時降級為跳過並明示，不靜靜放行。
 let KATEX = null
 try { KATEX = (await import('katex')).default } catch { console.log('  ⚠️  katex 載入失敗 —— 已跳過渲染檢查（其餘檢查照跑）') }
@@ -99,9 +108,22 @@ const RATIO = { easy: 0.3, medium: 0.5, hard: 0.2 } // 300 / 500 / 200 per 1,000
 // ── transpile a .ts to a temp .mjs and import it ────────────────────────────
 const TMP = mkdtempSync(join(tmpdir(), 'qbank-'))
 function transpile(absPath) {
-  return ts.transpileModule(readFileSync(absPath, 'utf8'), {
-    compilerOptions: { module: 'ES2020', target: 'ES2020' },
-  }).outputText
+  const content = readFileSync(absPath, 'utf8')
+  if (swcTransform) {
+    return swcTransform(content, {
+      jsc: {
+        parser: { syntax: 'typescript' },
+        target: 'es2020',
+      },
+      module: { type: 'es6' },
+    }).code
+  }
+  if (ts?.transpileModule) {
+    return ts.transpileModule(content, {
+      compilerOptions: { module: 'ES2020', target: 'ES2020' },
+    }).outputText
+  }
+  throw new Error('Neither swc nor ts.transpileModule is available for transpile')
 }
 async function loadBank(file, exportName) {
   // Shared runtime deps of a bank file; transpile them once next to the bank.
