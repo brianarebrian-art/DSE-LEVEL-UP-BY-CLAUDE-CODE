@@ -65,6 +65,21 @@ export default function Footer() {
                   {t.footer.linkRelax}
                 </Link>
               </li>
+              <li>
+                <Link href="/free" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
+                  {en ? 'Free Q-Bank' : '全免費題庫'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/free-vs-tutor" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
+                  {en ? 'Free vs Tutoring' : '免費 vs 補習社'}
+                </Link>
+              </li>
+              <li>
+                <Link href="/dse-2027" className="inline-flex min-h-11 items-center hover:text-accent transition-colors">
+                  {en ? 'DSE 2027 Syllabus' : '2027 DSE 改革'}
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -7,6 +7,7 @@ import { useLocale, useT } from '@/lib/i18n'
 import PracticeGate from './PracticeGate'
 import { parseCause } from '@/lib/causeMode'
 import PracticeSupport from '@/components/PracticeSupport'
+import PracticeGameUI from '@/components/practice/PracticeGameUI'
 // NTM 溫柔二次確認：開咗「今晚唔溫得」入嚟會先問一次（零強制，確認即放行）
 import NotTonightGate from '@/components/NotTonightGate'
 import { ArrowRight, BookOpen, Loader2 } from 'lucide-react'
@@ -95,6 +96,7 @@ function PracticeRouter() {
 export default function PracticeShell() {
   return (
     <>
+      <PracticeGameUI />
       <Suspense fallback={<LoadingScreen />}>
         <NotTonightGate>
           <PracticeRouter />

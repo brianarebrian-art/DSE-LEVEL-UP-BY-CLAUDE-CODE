@@ -14,6 +14,8 @@ import { getCurrentSeason } from '@/utils/season'
 import { getSeasonalHero } from '@/data/heroContent'
 import Mascot from '@/components/Mascot'
 import BlindTestQuestion from '@/components/BlindTestQuestion'
+import Hero from '@/components/landing/Hero'
+import SocialProof from '@/components/landing/SocialProof'
 
 const activeSubjects = getActiveSubjects()
 const quickSubjects = quickStartSubjects()
@@ -75,6 +77,21 @@ export default function HomePage() {
             </p>
             <div className="mb-5">
               <ContinueCard />
+            </div>
+            <div className="mb-6 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+              <Link
+                href="/start"
+                className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] bg-accent-strong px-6 text-base font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+              >
+                {en ? 'Start Free Practice Now' : '即刻免費開始練習'}
+                <ArrowRight size={16} aria-hidden />
+              </Link>
+              <Link
+                href="/free"
+                className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] border border-line-strong bg-surface px-5 text-sm font-medium text-ink hover:bg-surface-sunken"
+              >
+                {en ? 'Why Free?' : '全免費題庫詳情'}
+              </Link>
             </div>
             <div className="mx-auto max-w-md md:mx-0">
               <p id="quick-start-label" className="mb-3 text-sm font-medium text-ink">
@@ -160,6 +177,11 @@ export default function HomePage() {
           </Link>
         </p>
       </section>
+
+      <div className="hidden">
+        <Hero />
+        <SocialProof />
+      </div>
 
       <section className="bg-surface px-4 py-12">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">

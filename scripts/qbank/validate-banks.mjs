@@ -49,7 +49,30 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
-const ts = (await import('typescript')).default
+let tsTranspiler = null
+try {
+  const tsModule = (await import('typescript')).default || (await import('typescript'))
+  if (typeof tsModule.transpileModule === 'function') {
+    tsTranspiler = (source) => tsModule.transpileModule(source, {
+      compilerOptions: { module: 'ES2020', target: 'ES2020' },
+    }).outputText
+  }
+} catch {}
+
+if (!tsTranspiler) {
+  try {
+    const babel = (await import('next/dist/compiled/babel/core.js')).default || (await import('next/dist/compiled/babel/core.js'))
+    const { createRequire } = await import('node:module')
+    const require = createRequire(import.meta.url)
+    const tsPreset = require.resolve('next/dist/compiled/babel/preset-typescript')
+    tsTranspiler = (source, filename) => {
+      return babel.transformSync(source, {
+        presets: [tsPreset],
+        filename: filename || 'bank.ts',
+      }).code
+    }
+  } catch {}
+}
 // KaTeX 用於「真的渲染一次」檢查。載入失敗時降級為跳過並明示，不靜靜放行。
 let KATEX = null
 try { KATEX = (await import('katex')).default } catch { console.log('  ⚠️  katex 載入失敗 —— 已跳過渲染檢查（其餘檢查照跑）') }
@@ -99,9 +122,8 @@ const RATIO = { easy: 0.3, medium: 0.5, hard: 0.2 } // 300 / 500 / 200 per 1,000
 // ── transpile a .ts to a temp .mjs and import it ────────────────────────────
 const TMP = mkdtempSync(join(tmpdir(), 'qbank-'))
 function transpile(absPath) {
-  return ts.transpileModule(readFileSync(absPath, 'utf8'), {
-    compilerOptions: { module: 'ES2020', target: 'ES2020' },
-  }).outputText
+  if (!tsTranspiler) throw new Error('No TypeScript transpiler available');
+  return tsTranspiler(readFileSync(absPath, 'utf8'), absPath);
 }
 async function loadBank(file, exportName) {
   // Shared runtime deps of a bank file; transpile them once next to the bank.

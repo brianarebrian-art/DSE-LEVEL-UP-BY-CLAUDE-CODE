@@ -29,6 +29,7 @@ const ALLOW_UNLINKED = {
   '/dev/long-session': '開發用預覽頁，唔屬於學生流程',
   '/sign-in-error': '登入失敗時由 OAuth／callback 重新導向入嚟，唔應該有站內連結',
   '/sentry-example-page': '開發時確認 Sentry 收到錯誤。production 直接 notFound，不應出現在學生導覽',
+  '/acceptance': '隔離驗收頁面，僅供團隊人手驗收，不入站內導覽與 sitemap',
 }
 
 const files = []
@@ -40,13 +41,14 @@ function walk(dir) {
       if (e.name !== '__tests__') walk(rel)
       continue
     }
-    if (/\.(ts|tsx)$/.test(e.name)) files.push(rel)
+    if (/\.(ts|tsx|mts)$/.test(e.name)) files.push(rel)
   }
 }
 walk('app')
 walk('components')
 walk('lib')
 walk('data')
+walk('scripts')
 
 const src = new Map(files.map((f) => [f, readFileSync(join(ROOT, f), 'utf8')]))
 
@@ -82,6 +84,7 @@ for (const rel of files.filter((f) => f.startsWith('lib/'))) {
     if (other === rel) continue
     if (new RegExp(`@/lib/${short}(['"\`/]|$)`, 'm').test(code)) used++
     else if (new RegExp(`from '\\.\\.?/[^']*${leaf}(\\.ts)?'`).test(code)) used++
+    else if (code.includes(`/${leaf}.ts`) || code.includes(`/${leaf}'`) || code.includes(`/${leaf}"`)) used++
   }
   if (used === 0) findings.push([rel, '模組冇被任何地方 import'])
 }

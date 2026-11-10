@@ -52,6 +52,15 @@ export const EXCLUDED: Record<string, string> = {
   '/dev/answer-cards': '開發工具頁',
   '/dev/long-session': '開發工具頁',
   '/sentry-example-page': '開發時確認 Sentry。production 回 404，不屬於學生導航',
+  '/acceptance': '隔離驗收路由，僅供團隊人手驗收，不屬於學生導航',
+
+  // 外部獲客廣告落地頁（獲客入口，非學生學習循環）
+  '/free': '廣告專屬獲客 Landing，直達註冊或做卷，不入學生線性導航',
+  '/free-vs-tutor': '廣告專屬比較 Landing，專注轉換，不入學生線性導航',
+  '/dse-2027': '廣告專屬考綱 Landing，專注轉換，不入學生線性導航',
+
+  // 程式化 SEO 題目頁（自帶麵包屑與上下一題，不入首頁循環）
+  '/questions/[subject]/[id]': '程式化 SEO 題目頁，有獨立題目導航，不入全站線性循環',
 
   // 流程中途，有自己嘅去向
   '/(auth)/sign-in': '登入流程，中途插入循環會令人半路走咗',
