@@ -126,10 +126,10 @@ export default function Navbar() {
         {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
         {/* 2026-09-30（改進循環 2，prompt §25）：原本 lg 起才出，768–1023px 平板同時有側欄及漢堡選單。
             改為 md 起出，漢堡只留給手機。 */}
-        <div className="hidden md:flex items-center gap-3 lg:gap-6">
+        <div className="hidden md:flex items-center gap-3 lg:gap-5">
           <Link
             href="/subjects"
-            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line"
+            className="pressable min-h-11 px-3.5 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-2 rounded-[var(--radius-control)] border border-line bg-surface-raised shadow-2xs hover:border-line-strong transition-colors"
             aria-label={en ? 'Search questions' : '搜尋題目'}
             title={en ? 'Search questions' : '搜尋題目'}
           >
@@ -138,7 +138,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/subjects"
-            className="min-h-11 px-3 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-1.5 rounded-lg border border-line"
+            className="pressable min-h-11 px-3.5 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-2 rounded-[var(--radius-control)] border border-line bg-surface-raised shadow-2xs hover:border-line-strong transition-colors"
             aria-label={en ? 'Filter subjects' : '篩選科目'}
             title={en ? 'Filter subjects, years and difficulty' : '篩選科目、年份、難度'}
           >
@@ -147,13 +147,15 @@ export default function Navbar() {
           </Link>
           <Link
             href="/start"
-            className="ml-2 inline-flex h-14 min-h-14 items-center whitespace-nowrap rounded-[var(--radius-control)] bg-accent-strong px-4 text-sm font-medium text-on-accent transition-[colors,transform] duration-100 hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.97]"
+            className="pressable ml-1 inline-flex h-12 min-h-12 items-center whitespace-nowrap rounded-[var(--radius-control)] bg-accent-strong px-5 text-sm font-semibold tracking-wide text-on-accent shadow-xs transition-[background-color,transform,box-shadow] hover:bg-accent-hover hover:shadow-md focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.97]"
           >
             {t.nav.startPractice}
           </Link>
-          <ThemeToggle compact />
- <LanguageToggle />
- <AuthButton />
+          <div className="flex items-center gap-2 pl-2 border-l border-line">
+            <ThemeToggle compact />
+            <LanguageToggle />
+            <AuthButton />
+          </div>
  </div>
 
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
