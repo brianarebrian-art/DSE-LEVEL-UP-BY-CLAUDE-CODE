@@ -1635,17 +1635,37 @@ body:has(.practice-session) [data-sos-fab] {
   --color-chart-6: #918a7e;
 }
 
-/* Material chrome helpers */
+/* Material chrome helpers — Apple-inspired translucent glass with subtle boundary */
 .chrome-material {
   background: var(--color-material);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  box-shadow: 0 1px 0 rgba(44, 42, 41, 0.05);
 }
 @media (prefers-reduced-transparency: reduce) {
   .chrome-material {
     background: var(--color-surface-raised);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+}
+
+/* Apple-inspired sleek card elevation and focus treatments */
+.apple-card {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: 0 2px 8px -2px rgba(44, 42, 41, 0.05), 0 1px 2px rgba(44, 42, 41, 0.03);
+  transition: transform var(--duration-ui) var(--ease-out), box-shadow var(--duration-ui) var(--ease-out), border-color var(--duration-ui) var(--ease-out);
+}
+.apple-card:hover {
+  border-color: var(--color-line-strong);
+  box-shadow: 0 8px 24px -4px rgba(44, 42, 41, 0.08), 0 2px 6px rgba(44, 42, 41, 0.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .apple-card {
+    transition: none;
   }
 }
 
