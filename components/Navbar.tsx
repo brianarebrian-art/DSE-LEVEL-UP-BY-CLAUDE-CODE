@@ -146,8 +146,8 @@ export default function Navbar() {
             <span>{en ? 'Filter' : '篩選科目'}</span>
           </Link>
           <Link
-            href="/start"
-            className="pressable ml-1 inline-flex h-12 min-h-12 items-center whitespace-nowrap rounded-[var(--radius-control)] bg-accent-strong px-5 text-sm font-semibold tracking-wide text-on-accent shadow-xs transition-[background-color,transform,box-shadow] hover:bg-accent-hover hover:shadow-md focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.97]"
+            href="/#quick-start"
+            className="pressable ml-1 inline-flex h-12 min-h-12 items-center whitespace-nowrap rounded-[var(--radius-control)] border border-line-strong bg-transparent px-5 text-sm font-semibold tracking-wide text-ink shadow-xs transition-[background-color,transform,box-shadow] hover:bg-surface-sunken focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.97]"
           >
             {t.nav.startPractice}
           </Link>
@@ -247,9 +247,9 @@ export default function Navbar() {
 
             {/* 漢堡選單內容須與橫向條完全一致 —— 連目標路由亦然。 */}
             <Link
-              href="/start"
+              href="/#quick-start"
               onClick={() => setOpen(false)}
-              className="mt-4 flex h-14 min-h-14 items-center justify-center rounded-[var(--radius-control)] bg-accent-strong text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="mt-4 flex h-14 min-h-14 items-center justify-center rounded-[var(--radius-control)] border border-line-strong bg-transparent text-sm font-medium text-ink transition-colors hover:bg-surface-sunken focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {t.nav.startPractice}
             </Link>

@@ -115,7 +115,7 @@ export default function LogicLogView() {
                 ? 'Finish one practice session and the first marker appears here — even a single question counts.'
                 : '做完一節練習，第一個節點就會出現——就算只做一題都算。'}
             </p>
- <Link href="/subjects" className="inline-flex items-center min-h-11 px-5 rounded-xl bg-accent-strong text-white font-medium">
+ <Link href="/#quick-start" className="inline-flex items-center min-h-11 px-5 rounded-xl bg-accent-strong text-on-accent font-medium">
               {en ? 'Start practising' : '開始練習'}
             </Link>
  </div>

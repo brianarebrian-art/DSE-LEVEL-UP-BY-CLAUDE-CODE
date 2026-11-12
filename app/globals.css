@@ -1430,7 +1430,25 @@ html.font-easy .skeleton {
   }
 }
 .practice-explain {
-  padding-bottom: 72px;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+/* Mobile feedback reads as a sheet that slides up; the sticky bar stays below it. */
+@media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  html:not(.no-motion):not(.font-easy) .practice-feedback.animate-slide-up {
+    animation: practice-sheet-up 280ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+}
+@keyframes practice-sheet-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@media (max-width: 1023px) {
+  .practice-feedback {
+    margin-top: 12px;
+    border-radius: 24px 24px 0 0;
+    background: color-mix(in srgb, var(--color-ml-clay) 14%, var(--color-surface));
+    padding: 14px 12px calc(16px + env(safe-area-inset-bottom, 0px));
+  }
 }
 .practice-miss {
   background: color-mix(in srgb, var(--color-ml-clay) 16%, var(--color-surface-raised));
@@ -1517,8 +1535,40 @@ body:has(.practice-session) [data-sos-fab] {
    右下情緒支援掣左緣只得 56−48＝8px（掣本身 right-4、寬 48px）。
    窄屏把右墊加到 88px，水平間距約 40px。唔抬高情緒支援掣，避免蓋住解析。
    桌面欄已置中，維持 56px。a11y 浮鈕仍由上面規則收起。 */
+.practice-check-bar {
+  position: sticky;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 8px;
+  padding-right: 56px;
+  background: var(--color-surface-raised);
+  border-top: 1px solid var(--color-line);
+}
+.practice-next-btn:disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-ink-muted);
+  border: 1px solid var(--color-line);
+  cursor: not-allowed;
+}
+.practice-session:not(.practice-session-revealed) {
+  min-height: 100dvh;
+}
+.practice-session:not(.practice-session-revealed) > .practice-session-column {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
 @media (max-width: 639px) {
   .practice-next-bar {
+    padding-right: 88px;
+  }
+  .practice-check-bar {
     padding-right: 88px;
   }
 }

@@ -7,15 +7,17 @@ import { readFileSync, existsSync } from 'node:fs'
 const po: any = await import('../pageOrder.ts')
 const P = po.default?.intentLinks ? po.default : po
 
-const routeExists = (href: string) =>
-  href === '/' ? existsSync('app/page.tsx') : existsSync(`app${href}/page.tsx`)
+const routeExists = (href: string) => {
+  const path = href.split('#')[0] || '/'
+  return path === '/' ? existsSync('app/page.tsx') : existsSync(`app${path}/page.tsx`)
+}
 
 test('every page in the loop gets two links: practise first, then one other real page', () => {
   for (const route of P.PAGE_ORDER as string[]) {
     const links = P.intentLinks(route)
     assert.ok(links, route)
     assert.equal(links.length, 2)
-    assert.equal(links[0].href, '/start', `${route}: practise first`)
+    assert.equal(links[0].href, '/#quick-start', `${route}: practise first`)
     assert.notEqual(links[1].href, route, `${route}: not a link to itself`)
     for (const l of links) {
       assert.ok(routeExists(l.href), `${route} → ${l.href} exists`)

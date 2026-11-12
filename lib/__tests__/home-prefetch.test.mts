@@ -61,7 +61,7 @@ test('shell nav: secondary routes set prefetch false; practice entries do not', 
   const offBlock = nav.slice(nav.indexOf('NAV_PREFETCH_OFF = new Set(['), nav.indexOf('])', nav.indexOf('NAV_PREFETCH_OFF = new Set([')) + 2)
   assert.doesNotMatch(offBlock, /'\/subjects'/)
 
-  const startTags = [...nav.matchAll(/<Link\b[\s\S]*?>/g)].filter((m) => m[0].includes('"/start"'))
+  const startTags = [...nav.matchAll(/<Link\b[\s\S]*?>/g)].filter((m) => m[0].includes('"/#quick-start"'))
   assert.ok(startTags.length >= 1)
   for (const m of startTags) assert.doesNotMatch(m[0], /prefetch=\{false\}/)
 

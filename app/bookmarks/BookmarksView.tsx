@@ -123,7 +123,7 @@ export default function BookmarksView() {
                 : '仲未收藏過。做練習嗰陣，喺解析下面撳「收藏」就得。'}
             </p>
             <Link
-              href="/subjects"
+              href="/#quick-start"
               className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-xl bg-accent-strong px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-hover"
             >
               <Icon name="filter" size={16} label={en ? 'Start practising' : '開始練習'} />

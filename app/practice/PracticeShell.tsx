@@ -52,7 +52,7 @@ function MissingSubject() {
           {en ? 'All subjects' : '科目總覽'} <ArrowRight size={16} aria-hidden />
         </Link>
         <Link
-          href="/start"
+          href="/#quick-start"
           className="pressable inline-flex min-h-12 items-center gap-2 rounded-[var(--radius-control)] border border-line-strong px-5 text-sm text-ink-soft hover:bg-surface-sunken"
         >
           {en ? 'Continue / start' : '繼續／開始練習'}

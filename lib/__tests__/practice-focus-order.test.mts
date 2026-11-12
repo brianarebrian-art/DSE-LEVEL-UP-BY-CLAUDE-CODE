@@ -46,7 +46,7 @@ test('arrows and Tab meet the practice order: options, next, then explanation', 
 test('the session wires that order and does not drop revealed options', () => {
   assert.match(session, /practiceTabDestination\(/)
   assert.match(session, /aria-disabled=\{answerState !== null\}/)
-  assert.match(session, /aria-pressed=\{isSelected\}/)
+  assert.match(session, /aria-pressed=\{isSelected \|\| isPending\}/)
   assert.match(session, /data-practice-option/)
   assert.doesNotMatch(session, /(?<!aria-)disabled=\{answerState !== null\}/)
   assert.doesNotMatch(session, /outline-none/)

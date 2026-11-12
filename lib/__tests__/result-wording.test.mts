@@ -21,5 +21,9 @@ test('the result page says it is not an HKEAA result or prediction, in both lang
 
 test('the result page has one h1', () => {
   const src = readFileSync('app/result/ResultPageClient.tsx', 'utf8')
-  assert.match(src, /<h1 className="mb-2 text-sm font-medium text-ink-muted">\{locale === 'en' \? 'Practice result' : '練習結果'\}<\/h1>/)
+  assert.match(src, /<h1 className="font-serif text-\[1\.875rem\] font-bold leading-snug text-ink">/)
+  assert.match(src, /呢份 \$\{result\.total\} 題已完成。/)
+  const done = src.indexOf('呢份 ${result.total} 題已完成。')
+  const nextH1 = src.indexOf('<h1', done + 1)
+  assert.equal(nextH1, -1, 'the finished-session screen has a single h1')
 })

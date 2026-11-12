@@ -44,8 +44,8 @@ import CauseMark from '@/components/marks/CauseMark'
 import RestMode from '@/components/RestMode'
 import PracticeMoreMenu from '@/components/PracticeMoreMenu'
 import { A11yButton } from '@/components/A11yPanel'
-import QuestionStatusStrip from '@/components/QuestionStatusStrip'
 import PracticeContextRail from '@/components/PracticeContextRail'
+import PracticeSyncInvite from '@/components/PracticeSyncInvite'
 import { questionStatuses } from '@/lib/questionStatus'
 import { feedbackScrollDelta } from '@/lib/practiceScroll'
 import { listPracticeFocusables, practiceTabDestination, slotFor, tabStopElement } from '@/lib/practiceFocusOrder'
@@ -271,6 +271,10 @@ export default function PracticeSession({
   const resumedRef = useRef(false)
   const startCounted = useRef(false)
   const [answerState, setAnswerState] = useState<AnswerState>(null)
+  /** Picked, not yet checked. Reveal waits for 「檢查」. */
+  const [pendingZh, setPendingZh] = useState<string | null>(null)
+  /** First question whose explanation opened the optional sync line. */
+  const [syncAt, setSyncAt] = useState<number | null>(null)
   // Wave 2「再試一次」：畫面跟最新一揀；計分／session answers 用首次作答。
   const [firstAnswer, setFirstAnswer] = useState<AnswerState>(null)
   // 必須喺 selectOption／next 之前 declare —— React Compiler 唔准 TDZ 用 setter。
@@ -474,12 +478,20 @@ export default function PracticeSession({
     [answerState, currentQ, subjectId]
   )
 
+  const confirmPending = useCallback(() => {
+    if (!currentQ || answerState !== null || !pendingZh) return
+    const idx = currentQ.shuffledOptions.findIndex((o) => o.zh === pendingZh)
+    if (idx < 0) return
+    selectOption(pendingZh, idx)
+  }, [currentQ, answerState, pendingZh, selectOption])
+
   const next = useCallback(() => {
     const scored = firstAnswer ?? answerState
     const newAnswers = [...answers, scored]
     setAnswers(newAnswers)
     setAnswerState(null)
     setFirstAnswer(null)
+    setPendingZh(null)
 
     if (current + 1 >= totalQ) {
       const score = newAnswers.filter((a) => a?.isCorrect).length
@@ -616,6 +628,10 @@ export default function PracticeSession({
     window.dispatchEvent(new Event('dse:practice-value'))
   }, [answerState])
 
+  useEffect(() => {
+    if (answerState && syncAt === null) setSyncAt(current)
+  }, [answerState, syncAt, current])
+
   // Proceed past a question. When a server-signed lock exists, do a final server check
   // (blocks a DevTools-zeroed countdown). FAIL-OPEN: any disabled/offline/error path
   // returns OK, so a student is never wrongly stuck. A genuine "not expired" reply
@@ -634,11 +650,29 @@ export default function PracticeSession({
   const retryCurrent = useCallback(() => {
     if (answerState === null) return
     setAnswerState(null)
+    setPendingZh(null)
     setFlashIdx(null)
     setPickedCause(null)
     setWishOpen(false)
     setHackOpen(false)
   }, [answerState])
+
+  const checkpointAttempt = useCallback(() => {
+    if (questions.length === 0) return
+    const scored = firstAnswer ?? answerState
+    const savedAnswers = scored ? [...answers, scored] : answers
+    saveActiveSession({
+      v: 1,
+      subjectId,
+      topicFilter: topicFilter ?? null,
+      mode,
+      questionIds: questions.map((q) => q.id),
+      answers: savedAnswers.map((a) => (a ? { selectedZh: a.selectedZh, isCorrect: a.isCorrect } : null)),
+      current,
+      elapsed: Math.floor((Date.now() - startTime) / 1000),
+      updatedAt: Date.now(),
+    })
+  }, [questions, firstAnswer, answerState, answers, subjectId, topicFilter, mode, current, startTime])
 
   // ── 鍵盤快捷鍵：1–4 ／ A–D 揀選項，Enter 落下一題 ────────────────────────
   //
@@ -673,9 +707,16 @@ export default function PracticeSession({
       }
 
       if (e.key === 'Enter') {
-        // 同「下一題」掣同一個條件；休息模式開住嗰陣亦唔可以喺 modal 背後推進。
-        if (!canProceed || restOpen) return
-        if (el && /^(BUTTON|A)$/.test(el.tagName)) return // 交返畀瀏覽器原生觸發
+        // 焦點喺掣上就交返瀏覽器，避免「下一題」被攔截後跳兩題。
+        if (el && /^(BUTTON|A)$/.test(el.tagName)) return
+        // 未檢查：Enter 確認已揀的選項。已揭曉：同「下一題」同一個 canProceed。
+        if (!canProceed || restOpen) {
+          if (pendingZh && !restOpen && !canProceed) {
+            e.preventDefault()
+            confirmPending()
+          }
+          return
+        }
         e.preventDefault()
         proceed()
         return
@@ -706,11 +747,11 @@ export default function PracticeSession({
       const opt = idx >= 0 ? currentQ.shuffledOptions[idx] : undefined
       if (!opt) return
       e.preventDefault()
-      selectOption(opt.zh, idx)
+      setPendingZh(opt.zh)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [answerState, currentQ, selectOption, proceed, toggleFocusLight, canProceed, restOpen])
+  }, [answerState, currentQ, confirmPending, proceed, toggleFocusLight, canProceed, restOpen, pendingZh])
 
   // Tab：選項 → 下一題 → 解析。下一題在版面上貼住欄底，DOM 在解析之後，所以由這裡改次序。
   // 無障礙浮動掣在頁面之後，不會插進 A–D 中間。
@@ -760,12 +801,38 @@ export default function PracticeSession({
       return
     }
     resumedRef.current = true // a resumed set was counted when it first started
-    setQuestions(restored.map(prepareQuestion))
-    setAnswers(resumeOffer.answers as AnswerState[])
-    setCurrent(resumeOffer.current)
+    const prepared = restored.map(prepareQuestion)
+    setQuestions(prepared)
+    const savedAnswers = resumeOffer.answers as AnswerState[]
+    const at = resumeOffer.current
+    // A mid-question sign-in stores the revealed answer at `current`.
+    // Put it back on screen and keep earlier answers in the scored list.
+    const onThis = at >= 0 && at < savedAnswers.length ? savedAnswers[at] : null
+    if (onThis) {
+      setAnswers(savedAnswers.slice(0, at))
+      setAnswerState(onThis)
+      setFirstAnswer(onThis)
+      const qid = prepared[at]?.id
+      if (qid) loggedIdsRef.current.add(qid)
+    } else {
+      setAnswers(savedAnswers)
+      setAnswerState(null)
+      setFirstAnswer(null)
+    }
+    setPendingZh(null)
+    setCurrent(at)
     setStartTime(Date.now() - resumeOffer.elapsed * 1000)
     setResumeOffer(null)
   }, [resumeOffer, bank])
+
+  // Returning from Google sign-in (?resume=1) stays on this same 10-question attempt.
+  const autoResume = useRef(false)
+  useEffect(() => {
+    if (autoResume.current || !resumeOffer) return
+    if (new URLSearchParams(window.location.search).get('resume') !== '1') return
+    autoResume.current = true
+    acceptResume()
+  }, [resumeOffer, acceptResume])
 
   // Anonymous count (founders' reply 40a): one "started" per new set, once the first
   // question is on screen. Not while a resume card is waiting, and not for a resumed set.
@@ -883,15 +950,32 @@ export default function PracticeSession({
   if (!currentQ) {
     return (
       <div
-        className="flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 text-ink-muted"
+        className="practice-session relative flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 text-ink-muted"
         role="status"
         aria-live="polite"
       >
+        <div className="absolute right-2 top-2">
+          <A11yButton className="!inline-flex h-12 w-12 min-h-12 min-w-12" />
+        </div>
  <Loader2 size={28} aria-hidden className="animate-spin text-accent motion-reduce:animate-none" />
  <span className="text-sm">{t.practice.loading}</span>
  </div>
  )
  }
+
+  const progressValue = answerState ? current + 1 : current
+  const progressPct = totalQ <= 0 ? 0 : progressValue === 0 ? 4 : (progressValue / totalQ) * 100
+  const progressStatuses = questionStatuses(
+    totalQ,
+    answerState ? [...answers, answerState] : answers,
+    answerState ? Math.min(current + 1, Math.max(totalQ - 1, 0)) : current,
+  )
+  const progressChosen = progressStatuses.filter((s) => s === 'correct').length
+  const progressMissed = progressStatuses.filter((s) => s === 'blindSpot').length
+  const returnParams = new URLSearchParams({ subject: subjectId, resume: '1' })
+  if (topicFilter) returnParams.set('topic', topicFilter)
+  if (mode !== 'normal') returnParams.set('mode', mode)
+  const practiceReturn = `/practice?${returnParams.toString()}`
 
  return (
  <div ref={sessionRef} className={`practice-session min-h-screen bg-surface px-4 py-4 sm:py-10 text-ink-soft${answerState ? ' practice-session-revealed' : ''}`}>
@@ -959,8 +1043,20 @@ export default function PracticeSession({
               <A11yButton className="!inline-flex" />
  </span>
  </div>
- <div className="mt-2">
- <QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current} en={locale === 'en'} />
+ <div className="mt-2 px-1">
+          <div
+            className="h-2 overflow-hidden rounded-full bg-surface-sunken"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={totalQ}
+            aria-valuenow={progressValue}
+            aria-valuetext={locale === 'en'
+              ? `${progressChosen} chosen, ${progressMissed} not chosen, question ${current + 1} of ${totalQ}`
+              : `揀中 ${progressChosen}，未揀中 ${progressMissed}，第 ${current + 1} / ${totalQ} 題`}
+            aria-label={locale === 'en' ? 'Progress' : '進度'}
+          >
+            <div className="h-full rounded-full bg-accent" style={{ width: `${progressPct}%` }} />
+          </div>
  </div>
  </div>
 
@@ -1046,21 +1142,24 @@ export default function PracticeSession({
           >
             {currentQ.shuffledOptions.map((opt, idx) => {
               const isCorrectOpt = opt.zh === currentQ.correctZh
+              const isPending = answerState === null && pendingZh === opt.zh
               const isSelected = answerState !== null && opt.zh === answerState.selectedZh
               const isSelectedWrong = isSelected && !answerState.isCorrect
 
               let style =
-                'border-line-strong bg-surface-sunken cursor-pointer [@media(hover:hover)]:hover:border-accent/40 [@media(hover:hover)]:hover:bg-surface-raised'
+                'border-line-strong bg-surface-raised cursor-pointer [@media(hover:hover)]:hover:border-accent/40 [@media(hover:hover)]:hover:bg-surface-sunken'
 
-              if (answerState !== null) {
+              if (isPending) {
+                style = 'border-2 border-accent bg-accent/10 cursor-pointer shadow-sm'
+              } else if (answerState !== null) {
                 if (isCorrectOpt) {
                   // 正確：success 莫蘭迪灰綠 + icon／「答案」文字，唔單靠色。
-                  style = 'border-success bg-success/[0.10] cursor-default shadow-sm'
+                  style = 'border-2 border-success bg-success/[0.10] cursor-default shadow-sm'
                 } else if (isSelectedWrong) {
-                  // 未揀中：warning 莫蘭迪陶土 + icon／文字，唔用高飽和紅。
-                  style = 'border-warning bg-warning/[0.08] cursor-default shadow-sm'
+                  // 未揀中：金色／陶土淡底 + icon／文字，唔用高飽和紅。
+                  style = 'border-2 border-gold bg-warning/[0.08] cursor-default shadow-sm'
                 } else {
-                  style = 'border-line bg-surface-sunken cursor-default'
+                  style = 'border-line bg-surface-sunken cursor-default opacity-70'
                 }
               }
 
@@ -1076,12 +1175,15 @@ export default function PracticeSession({
                   key={idx}
                   type="button"
                   data-practice-option=""
-                  aria-pressed={isSelected}
+                  aria-pressed={isSelected || isPending}
                   aria-disabled={answerState !== null}
-                  onClick={() => selectOption(opt.zh, idx)}
-                  className={`practice-option ml-press relative w-full min-h-14 sm:min-h-12 text-left flex items-start gap-3 border rounded-xl px-4 py-4 sm:py-3 transition-[colors,transform,opacity,box-shadow] duration-100 ${style}${flash}`}
+                  onClick={() => {
+                    if (answerState !== null) return
+                    setPendingZh(opt.zh)
+                  }}
+                  className={`practice-option ml-press relative w-full min-h-14 sm:min-h-12 text-left flex items-center gap-3 border rounded-[var(--radius-control)] px-4 py-3 transition-[colors,transform,opacity,box-shadow] duration-100 ${style}${flash}`}
                 >
- <span className="shrink-0 w-7 h-7 rounded-lg bg-surface-sunken flex items-center justify-center text-sm font-medium text-ink-muted mt-0.5">
+ <span className={`shrink-0 flex h-7 w-7 items-center justify-center rounded-lg text-sm font-bold ${isPending ? 'bg-accent text-on-accent' : 'border border-line bg-surface-sunken text-ink-muted'}`}>
                     {optionLetters[idx]}
                   </span>
  <span className="leading-relaxed text-sm sm:text-base text-ink-soft">
@@ -1139,6 +1241,14 @@ export default function PracticeSession({
         {answerState !== null && (
           <div ref={feedbackRef} tabIndex={-1} className="animate-slide-up practice-feedback">
  <>
+                <p className="mb-3 text-base font-medium leading-relaxed text-ink">
+                  <MathText>
+                    {tr(
+                      `你選擇了「${answerState.selectedZh}」。正確答案是「${currentQ.correctZh}」。`,
+                      `You chose “${currentQ.shuffledOptions.find((o) => o.zh === answerState.selectedZh)?.en || answerState.selectedZh}”. The answer is “${currentQ.shuffledOptions.find((o) => o.zh === currentQ.correctZh)?.en || currentQ.correctZh}”.`,
+                    )}
+                  </MathText>
+                </p>
                 {answerState.isCorrect ? (
                   /* Correct — calm acknowledgement, no fanfare. */
                   <div className="practice-explain rounded-2xl p-5 mb-4 border bg-success/[0.10] border-success/30 shadow-sm">
@@ -1180,7 +1290,7 @@ export default function PracticeSession({
                         steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
                         label={
                           <span className="text-warning text-xs font-medium mr-1">
-                            💡 {tr('正解思路：', 'Reasoning: ')}
+                            {tr('正解思路：', 'Reasoning: ')}
                           </span>
  }
  />
@@ -1327,6 +1437,12 @@ export default function PracticeSession({
  </div>
  )
  })()}
+                <PracticeSyncInvite
+                  open={syncAt === current}
+                  returnPath={practiceReturn}
+                  onBeforeLeave={checkpointAttempt}
+                  questionCount={totalQ}
+                />
  </>
  </div>
         )}
@@ -1334,12 +1450,25 @@ export default function PracticeSession({
         {/* 未答題時右欄的說明（只在 lg 顯示），答題後由回饋取代，避免右欄一片空白。 */}
         {answerState === null && (
           <p className="focus-dim hidden lg:block rounded-2xl border border-dashed border-line p-6 text-sm leading-relaxed text-ink-muted">
-            {tr('揀咗答案之後，對錯同解析會喺呢邊出現，唔使捲落去。',
-                'After you choose an answer, whether it was right and the explanation appear here, without scrolling.')}
+            {tr('撳「檢查」之後，對錯同解析會喺呢邊出現，唔使捲落去。',
+                'After you tap Check, whether it was right and the explanation appear here, without scrolling.')}
           </p>
  )}
  </div>
  </div>
+        {answerState === null && (
+          <div className="practice-check-bar">
+            <button
+              type="button"
+              onClick={confirmPending}
+              disabled={pendingZh === null}
+              aria-disabled={pendingZh === null}
+              className="practice-next-btn"
+            >
+              {tr('檢查', 'Check')}
+            </button>
+          </div>
+        )}
         {answerState !== null && (
           <div className="practice-next-bar">
  <button
