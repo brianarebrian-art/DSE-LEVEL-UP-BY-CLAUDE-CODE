@@ -122,7 +122,9 @@ export function isResumable(
   if (s.subjectId !== subjectId) return false
   if ((s.topicFilter ?? null) !== (topicFilter ?? null)) return false
   if (s.mode !== mode) return false
-  if (s.current <= 0) return false // nothing done yet — a fresh pool is just as good
+  // current 0 with no recorded answer is a fresh pool. A revealed first question
+  // (Google sync on that explanation) stores the answer at index 0 and must resume.
+  if (s.current <= 0 && !s.answers.some((a) => a != null)) return false
   if (s.current >= s.questionIds.length) return false // already finished
   if (Date.now() - s.updatedAt > MAX_AGE_MS) return false
   return true
