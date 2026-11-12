@@ -9,7 +9,7 @@
 node scripts/gen-token-doc.mjs
 ```
 
-掃到 **330** 個 custom property 宣告，分佈喺 **251** 個 block。
+掃到 **330** 個 custom property 宣告，分佈喺 **255** 個 block。
 
 ## ⚠️ 被覆蓋嘅宣告
 
@@ -270,66 +270,66 @@ node scripts/gen-token-doc.mjs
 | `--particle-alpha` | `0.05` | `.particle-calm` | — | L990 |
 | `--flame-rgb` | `0, 245, 212` | `.combo-flame` | — | L1060 |
 | `--flame-speed` | `1.5s` | `.combo-flame` | — | L1061 |
-| `--color-ink` | `#141414` | `:root` | `@media (prefers-contrast: more)` | L1668 |
-| `--color-ink-soft` | `#1a1816` | `:root` | `@media (prefers-contrast: more)` | L1669 |
-| `--color-ink-muted` | `#4a4541` | `:root` | `@media (prefers-contrast: more)` | L1670 |
-| `--color-accent` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1671 |
-| `--color-accent-strong` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1672 |
-| `--color-accent-hover` | `#2f454c` | `:root` | `@media (prefers-contrast: more)` | L1673 |
-| `--color-on-accent` | `#ffffff` | `:root` | `@media (prefers-contrast: more)` | L1674 |
-| `--color-success` | `#3f5340` | `:root` | `@media (prefers-contrast: more)` | L1675 |
-| `--color-warning` | `#5a4a35` | `:root` | `@media (prefers-contrast: more)` | L1676 |
-| `--color-error` | `#6b4040` | `:root` | `@media (prefers-contrast: more)` | L1677 |
-| `--color-info` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1678 |
-| `--color-line` | `rgba(20, 20, 20, 0.45)` | `:root` | `@media (prefers-contrast: more)` | L1679 |
-| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `:root` | `@media (prefers-contrast: more)` | L1680 |
-| `--color-material` | `#fffdf9` | `:root` | `@media (prefers-contrast: more)` | L1681 |
-| `--color-material-heavy` | `#f4f0ea` | `:root` | `@media (prefers-contrast: more)` | L1682 |
-| `--color-ink` | `#fff8f0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1685 |
-| `--color-ink-soft` | `#f0e8dc` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1686 |
-| `--color-ink-muted` | `#d4ccc0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1687 |
-| `--color-accent` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1688 |
-| `--color-accent-strong` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1689 |
-| `--color-accent-hover` | `#b5cec9` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1690 |
-| `--color-on-accent` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1691 |
-| `--color-success` | `#b5c9b0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1692 |
-| `--color-warning` | `#d4ab80` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1693 |
-| `--color-error` | `#d4a8a8` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1694 |
-| `--color-info` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1695 |
-| `--color-line` | `rgba(255, 248, 240, 0.55)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1696 |
-| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1697 |
-| `--color-material` | `#252422` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1698 |
-| `--color-material-heavy` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1699 |
-| `--color-ink` | `#141414` | `html[data-contrast='more']` | — | L1703 |
-| `--color-ink-soft` | `#1a1816` | `html[data-contrast='more']` | — | L1704 |
-| `--color-ink-muted` | `#4a4541` | `html[data-contrast='more']` | — | L1705 |
-| `--color-accent` | `#3a545c` | `html[data-contrast='more']` | — | L1706 |
-| `--color-accent-strong` | `#3a545c` | `html[data-contrast='more']` | — | L1707 |
-| `--color-accent-hover` | `#2f454c` | `html[data-contrast='more']` | — | L1708 |
-| `--color-on-accent` | `#ffffff` | `html[data-contrast='more']` | — | L1709 |
-| `--color-success` | `#3f5340` | `html[data-contrast='more']` | — | L1710 |
-| `--color-warning` | `#5a4a35` | `html[data-contrast='more']` | — | L1711 |
-| `--color-error` | `#6b4040` | `html[data-contrast='more']` | — | L1712 |
-| `--color-info` | `#3a545c` | `html[data-contrast='more']` | — | L1713 |
-| `--color-line` | `rgba(20, 20, 20, 0.45)` | `html[data-contrast='more']` | — | L1714 |
-| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `html[data-contrast='more']` | — | L1715 |
-| `--color-material` | `#fffdf9` | `html[data-contrast='more']` | — | L1716 |
-| `--color-material-heavy` | `#f4f0ea` | `html[data-contrast='more']` | — | L1717 |
-| `--color-ink` | `#fff8f0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1720 |
-| `--color-ink-soft` | `#f0e8dc` | `html[data-contrast='more'][data-theme='cyber']` | — | L1721 |
-| `--color-ink-muted` | `#d4ccc0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1722 |
-| `--color-accent` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1723 |
-| `--color-accent-strong` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1724 |
-| `--color-accent-hover` | `#b5cec9` | `html[data-contrast='more'][data-theme='cyber']` | — | L1725 |
-| `--color-on-accent` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1726 |
-| `--color-success` | `#b5c9b0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1727 |
-| `--color-warning` | `#d4ab80` | `html[data-contrast='more'][data-theme='cyber']` | — | L1728 |
-| `--color-error` | `#d4a8a8` | `html[data-contrast='more'][data-theme='cyber']` | — | L1729 |
-| `--color-info` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1730 |
-| `--color-line` | `rgba(255, 248, 240, 0.55)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1731 |
-| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1732 |
-| `--color-material` | `#252422` | `html[data-contrast='more'][data-theme='cyber']` | — | L1733 |
-| `--color-material-heavy` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1734 |
+| `--color-ink` | `#141414` | `:root` | `@media (prefers-contrast: more)` | L1688 |
+| `--color-ink-soft` | `#1a1816` | `:root` | `@media (prefers-contrast: more)` | L1689 |
+| `--color-ink-muted` | `#4a4541` | `:root` | `@media (prefers-contrast: more)` | L1690 |
+| `--color-accent` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1691 |
+| `--color-accent-strong` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1692 |
+| `--color-accent-hover` | `#2f454c` | `:root` | `@media (prefers-contrast: more)` | L1693 |
+| `--color-on-accent` | `#ffffff` | `:root` | `@media (prefers-contrast: more)` | L1694 |
+| `--color-success` | `#3f5340` | `:root` | `@media (prefers-contrast: more)` | L1695 |
+| `--color-warning` | `#5a4a35` | `:root` | `@media (prefers-contrast: more)` | L1696 |
+| `--color-error` | `#6b4040` | `:root` | `@media (prefers-contrast: more)` | L1697 |
+| `--color-info` | `#3a545c` | `:root` | `@media (prefers-contrast: more)` | L1698 |
+| `--color-line` | `rgba(20, 20, 20, 0.45)` | `:root` | `@media (prefers-contrast: more)` | L1699 |
+| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `:root` | `@media (prefers-contrast: more)` | L1700 |
+| `--color-material` | `#fffdf9` | `:root` | `@media (prefers-contrast: more)` | L1701 |
+| `--color-material-heavy` | `#f4f0ea` | `:root` | `@media (prefers-contrast: more)` | L1702 |
+| `--color-ink` | `#fff8f0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1705 |
+| `--color-ink-soft` | `#f0e8dc` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1706 |
+| `--color-ink-muted` | `#d4ccc0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1707 |
+| `--color-accent` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1708 |
+| `--color-accent-strong` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1709 |
+| `--color-accent-hover` | `#b5cec9` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1710 |
+| `--color-on-accent` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1711 |
+| `--color-success` | `#b5c9b0` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1712 |
+| `--color-warning` | `#d4ab80` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1713 |
+| `--color-error` | `#d4a8a8` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1714 |
+| `--color-info` | `#a3c0bb` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1715 |
+| `--color-line` | `rgba(255, 248, 240, 0.55)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1716 |
+| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1717 |
+| `--color-material` | `#252422` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1718 |
+| `--color-material-heavy` | `#1a1917` | `:root[data-theme='cyber']` | `@media (prefers-contrast: more)` | L1719 |
+| `--color-ink` | `#141414` | `html[data-contrast='more']` | — | L1723 |
+| `--color-ink-soft` | `#1a1816` | `html[data-contrast='more']` | — | L1724 |
+| `--color-ink-muted` | `#4a4541` | `html[data-contrast='more']` | — | L1725 |
+| `--color-accent` | `#3a545c` | `html[data-contrast='more']` | — | L1726 |
+| `--color-accent-strong` | `#3a545c` | `html[data-contrast='more']` | — | L1727 |
+| `--color-accent-hover` | `#2f454c` | `html[data-contrast='more']` | — | L1728 |
+| `--color-on-accent` | `#ffffff` | `html[data-contrast='more']` | — | L1729 |
+| `--color-success` | `#3f5340` | `html[data-contrast='more']` | — | L1730 |
+| `--color-warning` | `#5a4a35` | `html[data-contrast='more']` | — | L1731 |
+| `--color-error` | `#6b4040` | `html[data-contrast='more']` | — | L1732 |
+| `--color-info` | `#3a545c` | `html[data-contrast='more']` | — | L1733 |
+| `--color-line` | `rgba(20, 20, 20, 0.45)` | `html[data-contrast='more']` | — | L1734 |
+| `--color-line-strong` | `rgba(20, 20, 20, 0.7)` | `html[data-contrast='more']` | — | L1735 |
+| `--color-material` | `#fffdf9` | `html[data-contrast='more']` | — | L1736 |
+| `--color-material-heavy` | `#f4f0ea` | `html[data-contrast='more']` | — | L1737 |
+| `--color-ink` | `#fff8f0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1740 |
+| `--color-ink-soft` | `#f0e8dc` | `html[data-contrast='more'][data-theme='cyber']` | — | L1741 |
+| `--color-ink-muted` | `#d4ccc0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1742 |
+| `--color-accent` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1743 |
+| `--color-accent-strong` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1744 |
+| `--color-accent-hover` | `#b5cec9` | `html[data-contrast='more'][data-theme='cyber']` | — | L1745 |
+| `--color-on-accent` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1746 |
+| `--color-success` | `#b5c9b0` | `html[data-contrast='more'][data-theme='cyber']` | — | L1747 |
+| `--color-warning` | `#d4ab80` | `html[data-contrast='more'][data-theme='cyber']` | — | L1748 |
+| `--color-error` | `#d4a8a8` | `html[data-contrast='more'][data-theme='cyber']` | — | L1749 |
+| `--color-info` | `#a3c0bb` | `html[data-contrast='more'][data-theme='cyber']` | — | L1750 |
+| `--color-line` | `rgba(255, 248, 240, 0.55)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1751 |
+| `--color-line-strong` | `rgba(255, 248, 240, 0.8)` | `html[data-contrast='more'][data-theme='cyber']` | — | L1752 |
+| `--color-material` | `#252422` | `html[data-contrast='more'][data-theme='cyber']` | — | L1753 |
+| `--color-material-heavy` | `#1a1917` | `html[data-contrast='more'][data-theme='cyber']` | — | L1754 |
 
 ## 掃過嘅 block
 
@@ -566,23 +566,27 @@ node scripts/gen-token-doc.mjs
 | L1529 | `:root` |
 | L1584 | `:root[data-theme='cyber']` |
 | L1639 | `.chrome-material` |
-| L1644 | `@media (prefers-reduced-transparency: reduce)` |
-| L1645 | `@media (prefers-reduced-transparency: reduce) › .chrome-material` |
-| L1653 | `.pressable` |
-| L1656 | `.pressable:active` |
-| L1659 | `@media (prefers-reduced-motion: reduce)` |
-| L1660 | `@media (prefers-reduced-motion: reduce) › .pressable:active` |
-| L1666 | `@media (prefers-contrast: more)` |
-| L1667 | `@media (prefers-contrast: more) › :root` |
-| L1684 | `@media (prefers-contrast: more) › :root[data-theme='cyber']` |
-| L1702 | `html[data-contrast='more']` |
-| L1719 | `html[data-contrast='more'][data-theme='cyber']` |
-| L1738 | `.chart-grid` |
-| L1741 | `.chart-mark` |
-| L1745 | `.chart-label` |
-| L1748 | `.chart-series-1` |
-| L1749 | `.chart-series-2` |
-| L1750 | `.chart-series-3` |
-| L1751 | `.chart-series-4` |
-| L1752 | `.chart-series-5` |
-| L1753 | `.chart-series-6` |
+| L1645 | `@media (prefers-reduced-transparency: reduce)` |
+| L1646 | `@media (prefers-reduced-transparency: reduce) › .chrome-material` |
+| L1655 | `.apple-card` |
+| L1662 | `.apple-card:hover` |
+| L1666 | `@media (prefers-reduced-motion: reduce)` |
+| L1667 | `@media (prefers-reduced-motion: reduce) › .apple-card` |
+| L1673 | `.pressable` |
+| L1676 | `.pressable:active` |
+| L1679 | `@media (prefers-reduced-motion: reduce)` |
+| L1680 | `@media (prefers-reduced-motion: reduce) › .pressable:active` |
+| L1686 | `@media (prefers-contrast: more)` |
+| L1687 | `@media (prefers-contrast: more) › :root` |
+| L1704 | `@media (prefers-contrast: more) › :root[data-theme='cyber']` |
+| L1722 | `html[data-contrast='more']` |
+| L1739 | `html[data-contrast='more'][data-theme='cyber']` |
+| L1758 | `.chart-grid` |
+| L1761 | `.chart-mark` |
+| L1765 | `.chart-label` |
+| L1768 | `.chart-series-1` |
+| L1769 | `.chart-series-2` |
+| L1770 | `.chart-series-3` |
+| L1771 | `.chart-series-4` |
+| L1772 | `.chart-series-5` |
+| L1773 | `.chart-series-6` |
