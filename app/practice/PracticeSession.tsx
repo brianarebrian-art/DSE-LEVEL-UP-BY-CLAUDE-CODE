@@ -38,7 +38,7 @@ import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicSt
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
-import { isEnglishPaperSubject, paperText } from '@/lib/localePreference'
+import { practiceText } from '@/lib/localePreference'
 import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown, Sprout, MapPin, Loader2 } from 'lucide-react'
 import CauseMark from '@/components/marks/CauseMark'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
@@ -1095,9 +1095,10 @@ export default function PracticeSession({
  </div>
 
           {/* 題幹維持無襯線：呢度係要逐字讀嘅正文，唔係標題（BDA）。只跟模板加大。 */}
-          {/* 題幹跟題目原文，不跟介面語言。中文卷保持中文，英文卷的原文本身就是英文。 */}
+          {/* 練習題、選項與解析跟隨介面語言；缺少譯文時保留原文。 */}
           <p id="practice-question" className="text-lg sm:text-xl leading-relaxed mb-5 sm:mb-8 text-ink">
- <MathText>{paperText(subjectId, currentQ.content, currentQ.contentEn)}</MathText>
+            <MathText>{practiceText(subjectId, currentQ.content, currentQ.contentEn, locale)}</MathText>
+
  </p>
 
           {answerState === null && (
@@ -1189,7 +1190,7 @@ export default function PracticeSession({
                     {optionLetters[idx]}
                   </span>
  <span className="leading-relaxed text-sm sm:text-base text-ink-soft">
- <MathText>{paperText(subjectId, opt.zh, opt.en)}</MathText>
+ <MathText>{practiceText(subjectId, opt.zh, opt.en, locale)}</MathText>
  </span>
                   {answerState !== null && isCorrectOpt && (
                     <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
@@ -1264,8 +1265,8 @@ export default function PracticeSession({
  <Brain size={14} aria-hidden className="text-gold shrink-0 mt-1" />
  <div className="min-w-0 flex-1">
  <StagedExplanation
-                          text={paperText(subjectId, currentQ.explanation, currentQ.explanationEn)}
-                          steps={isEnglishPaperSubject(subjectId) && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
+                          text={practiceText(subjectId, currentQ.explanation, currentQ.explanationEn, locale)}
+                          steps={locale === 'en' && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
                         />
  <OptionNotes
                           notes={currentQ.optionNotes}
@@ -1289,8 +1290,8 @@ export default function PracticeSession({
  </div>
  <div className="border-t border-warning/15 pt-3">
  <StagedExplanation
-                        text={paperText(subjectId, currentQ.explanation, currentQ.explanationEn)}
-                        steps={isEnglishPaperSubject(subjectId) && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
+                        text={practiceText(subjectId, currentQ.explanation, currentQ.explanationEn, locale)}
+                        steps={locale === 'en' && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
                         label={
                           <span className="text-warning text-xs font-medium mr-1">
                             {tr('正解思路：', 'Reasoning: ')}
@@ -1376,7 +1377,7 @@ export default function PracticeSession({
                           )}
                         </p>
  <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">
- <MathText>{paperText(subjectId, currentQ.mcHack, currentQ.mcHackEn)}</MathText>
+ <MathText>{practiceText(subjectId, currentQ.mcHack, currentQ.mcHackEn, locale)}</MathText>
  </div>
  </div>
  )}

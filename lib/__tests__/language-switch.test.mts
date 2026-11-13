@@ -1,4 +1,4 @@
-// Phase 1：學生介面語言按鈕。題庫正文不在這次範圍。
+// 學生介面語言按鈕及練習題正文切換。
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
@@ -14,6 +14,7 @@ const {
   parseStoredLocale,
   resolveLocale,
   showsStudentLanguageControl,
+  practiceText,
   tr,
 } = localeMod
 
@@ -49,6 +50,14 @@ test('考卷語言不跟介面：數學用原文，英文科用英文欄', () =>
   assert.equal(localeMod.paperText('chinese', '文言', 'classical'), '文言')
   assert.equal(localeMod.isEnglishPaperSubject('english-literature'), true)
   assert.equal(localeMod.isEnglishPaperSubject('math'), false)
+})
+
+test('練習題跟隨語言；譯文缺漏時回落原文，英文卷仍保留原題', () => {
+  assert.equal(practiceText('math', '求解', 'Find the value', 'en'), 'Find the value')
+  assert.equal(practiceText('math', '求解', 'Find the value', 'zh'), '求解')
+  assert.equal(practiceText('math', '求解', '  ', 'en'), '求解')
+  assert.equal(practiceText('english', '中文翻譯', 'Original English', 'zh'), 'Original English')
+  assert.equal(practiceText('english', '中文翻譯', 'Original English', 'en'), 'Original English')
 })
 
 test('tr：英文缺漏回落到中文，兩邊皆空白才是空字串', () => {
@@ -104,10 +113,10 @@ test('語言按鈕寫出將要切換去的語言，而且是真正的 button', (
   assert.match(src, /type="button"/)
   assert.match(src, /locale === 'zh' \? 'English' : '中文'/)
   assert.match(src, /min-h-11/)
-  assert.match(src, /min-w-20/)
+  assert.match(src, /shrink-0/)
   assert.doesNotMatch(src, /'EN'|"EN"|'中'|"中"/)
-  assert.match(src, /Switch interface language to English/)
-  assert.match(src, /將介面語言切換至中文/)
+  assert.match(src, /語言 \/ Language：切換介面至 English（英文）/)
+  assert.match(src, /Language \/ 語言: switch interface to 中文（Chinese）/)
 })
 
 test('右上角按鈕在選單之外，導覽列留出空位', () => {
@@ -126,9 +135,17 @@ test('練習頂欄在語言按鈕下方開始，避免蓋住題幹', () => {
   const session = read('app/practice/PracticeSession.tsx')
   const sticky = session.slice(session.indexOf('practice-sticky-head'), session.indexOf('practice-sticky-head') + 220)
   assert.match(sticky, /pt-14/)
-  assert.match(session, /paperText\(subjectId, currentQ\.content, currentQ\.contentEn\)/)
+  assert.match(session, /practiceText\(subjectId, currentQ\.content, currentQ\.contentEn, locale\)/)
+  assert.match(session, /practiceText\(subjectId, opt\.zh, opt\.en, locale\)/)
+  assert.match(session, /practiceText\(subjectId, currentQ\.explanation, currentQ\.explanationEn, locale\)/)
+  assert.match(session, /locale === 'en' && currentQ\.stepsEn\?\.length/)
+  assert.doesNotMatch(session, /paperText\(subjectId, currentQ\.content/)
   assert.doesNotMatch(session, /tr\(currentQ\.content/)
   assert.doesNotMatch(session, /tr\(opt\.zh, opt\.en\)/)
+  const textCard = read('components/TextQuestionCard.tsx')
+  const longCard = read('components/LongQuestionCard.tsx')
+  assert.match(textCard, /practiceText\(q\.subject, q\.content, q\.contentEn, locale\)/)
+  assert.match(longCard, /practiceText\(q\.subject, q\.content, q\.contentEn, locale\)/)
   const long = read('app/practice/LongPracticeSession.tsx')
   assert.match(long, /pt-14/)
   assert.match(read('components/founder/FounderShell.tsx'), /^(?![\s\S]*LanguageToggle)/)
