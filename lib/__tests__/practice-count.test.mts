@@ -100,9 +100,17 @@ function files(dir: string): string[] {
 
 test('no page or component reads the counts back: students never see them', () => {
   const all = [...files('app'), ...files('components'), ...files('lib')]
-  // Nothing selects from the table; only the write route calls the function.
-  assert.deepEqual(all.filter((p) => /from\(['"]practice_counts['"]\)/.test(read(p))), [])
+  // The only read is the server-side daily-wake check in the write route.
+  // The student response is still { ok, counted } and never includes sessions.
+  assert.deepEqual(all.filter((p) => /from\(['"]practice_counts['"]\)/.test(read(p))), ['app/api/practice-count/route.ts'])
+  const route = read('app/api/practice-count/route.ts')
+  assert.match(route, /select\('sessions'\)/)
+  assert.doesNotMatch(route, /NextResponse\.json\(\{[^}]*sessions/)
   assert.deepEqual(all.filter((p) => /['"]bump_practice_count['"]/.test(read(p))), ['app/api/practice-count/route.ts'])
+  assert.deepEqual(
+    all.filter((p) => p !== 'lib/practiceDataWebhook.ts' && /practiceDataWebhook/.test(read(p))),
+    ['app/api/practice-count/route.ts'],
+  )
 })
 
 test('the counts are on only while the privacy page describes them', () => {
