@@ -27,7 +27,7 @@ export default function NotTonightGate({ children }: { children: React.ReactNode
   if (asking) {
     const hhmm = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
     return (
-      <div className="min-h-screen flex items-center justify-center px-4 bg-surface">
+      <div className="flex min-h-screen items-center justify-center bg-surface px-4 pt-16">
  <div
           role="dialog"
           aria-modal="true"

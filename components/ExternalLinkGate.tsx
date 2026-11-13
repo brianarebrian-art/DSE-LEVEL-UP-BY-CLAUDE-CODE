@@ -94,7 +94,7 @@ export default function ExternalLinkGate({
           and a dialog with headings and paragraphs is not valid inside one. */}
       {open && createPortal(
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-scrim p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-scrim px-4 pb-4 pt-16"
           onClick={() => setOpen(false)}
         >
           <div

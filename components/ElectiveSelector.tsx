@@ -129,12 +129,12 @@ function ElectiveDialog({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 p-4 sm:items-center">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 px-4 pb-4 pt-16 sm:items-center">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="elective-dialog-title"
-        className="max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-2xl border border-line bg-surface-raised p-6 shadow-lg"
+        className="max-h-[calc(100dvh-5rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-line bg-surface-raised p-6 shadow-lg"
       >
         <h2 id="elective-dialog-title" ref={headingRef} tabIndex={-1} className="text-lg font-medium text-ink outline-none">
           {en ? 'Which electives has your school assigned?' : '你學校幫你揀咗邊個選修單元？'}

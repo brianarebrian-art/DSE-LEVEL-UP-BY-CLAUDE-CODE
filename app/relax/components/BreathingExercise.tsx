@@ -118,7 +118,7 @@ export default function BreathingExercise() {
   const expanded = phase === 'in' || phase === 'hold'
 
   return (
-    <div className="on-dark-overlay fixed inset-0 z-50 bg-[rgba(10,10,15,0.96)] flex flex-col items-center justify-center p-6">
+    <div className="on-dark-overlay fixed inset-0 z-50 flex flex-col items-center justify-center bg-[rgba(10,10,15,0.96)] px-6 pb-6 pt-16">
       {done ? (
         <div className="text-center max-w-xs">
  <div className="text-3xl mb-4" aria-hidden></div>

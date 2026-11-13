@@ -38,6 +38,7 @@ import { weakestTopics, recordTopicOutcomes, getTopicStats } from '@/lib/topicSt
 // 第 2 週 · 引擎三：知識概念網（中文指定文言範文）
 import { recordConceptHits, textsInQuestion } from '@/lib/conceptNet'
 import { useLocale } from '@/lib/i18n'
+import { isEnglishPaperSubject, paperText } from '@/lib/localePreference'
 import { CheckCircle, Lightbulb, ChevronRight, ChevronLeft, Clock, Brain, Zap, ChevronDown, Sprout, MapPin, Loader2 } from 'lucide-react'
 import CauseMark from '@/components/marks/CauseMark'
 // B2: 一鍵休息 —— 全屏呼吸遮罩，關閉時回報暫停時長畀呢度順延所有計時
@@ -856,7 +857,7 @@ export default function PracticeSession({
   // 亦冇「連續做咗幾多日」之類嘅計數（憲章 §2 禁 streak／解鎖）。
   if (justOneDone) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 pt-16 text-ink-soft">
  <div className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface-raised p-7 text-center shadow-[var(--shadow-float)]">
  <Sprout size={36} aria-hidden className="mx-auto mb-3 text-success" />
  <h2 className="mb-2 text-lg font-semibold text-ink">
@@ -893,7 +894,7 @@ export default function PracticeSession({
     const doneCount = resumeOffer.current
     const totalCount = resumeOffer.questionIds.length
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 text-ink-soft">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4 pt-16 text-ink-soft">
  <div className="w-full max-w-md rounded-[var(--radius-card)] border border-line bg-surface-raised p-7 text-center shadow-[var(--shadow-float)]">
  <MapPin size={36} aria-hidden className="mx-auto mb-3 text-accent" />
  <h2 className="mb-2 text-lg font-semibold text-ink">
@@ -930,7 +931,7 @@ export default function PracticeSession({
   // No questions for this subject/topic yet.
   if (totalQ === 0) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 text-center text-ink-soft">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 pt-16 text-center text-ink-soft">
  <Brain size={40} aria-hidden className="text-ink-muted" />
  <p className="max-w-sm text-ink-muted">
           {subjectMeta
@@ -954,7 +955,7 @@ export default function PracticeSession({
         role="status"
         aria-live="polite"
       >
-        <div className="absolute right-2 top-2">
+        <div className="absolute right-3 top-16">
           <A11yButton className="!inline-flex h-12 w-12 min-h-12 min-w-12" />
         </div>
  <Loader2 size={28} aria-hidden className="animate-spin text-accent motion-reduce:animate-none" />
@@ -985,7 +986,7 @@ export default function PracticeSession({
  <div className={answerState ? 'practice-revealed-scroll' : undefined}>
 
         {/* 練習頂欄：返回｜科目｜題序；次要工具收入「更多」。判斷軌喺下面。 */}
-        <div className="focus-dim chrome-material sticky top-0 z-30 practice-sticky-head -mt-2 border-b border-line pt-2 pb-3 mb-3">
+        <div className="focus-dim chrome-material sticky top-0 z-30 practice-sticky-head -mt-2 border-b border-line pt-14 pb-3 mb-3">
  <div className="flex items-center gap-2 text-sm">
  <Link
               href="/subjects"
@@ -1094,8 +1095,9 @@ export default function PracticeSession({
  </div>
 
           {/* 題幹維持無襯線：呢度係要逐字讀嘅正文，唔係標題（BDA）。只跟模板加大。 */}
+          {/* 題幹跟題目原文，不跟介面語言。中文卷保持中文，英文卷的原文本身就是英文。 */}
           <p id="practice-question" className="text-lg sm:text-xl leading-relaxed mb-5 sm:mb-8 text-ink">
- <MathText>{tr(currentQ.content, currentQ.contentEn)}</MathText>
+ <MathText>{paperText(subjectId, currentQ.content, currentQ.contentEn)}</MathText>
  </p>
 
           {answerState === null && (
@@ -1187,7 +1189,7 @@ export default function PracticeSession({
                     {optionLetters[idx]}
                   </span>
  <span className="leading-relaxed text-sm sm:text-base text-ink-soft">
- <MathText>{tr(opt.zh, opt.en)}</MathText>
+ <MathText>{paperText(subjectId, opt.zh, opt.en)}</MathText>
  </span>
                   {answerState !== null && isCorrectOpt && (
                     <span className="ml-auto inline-flex items-center gap-1 shrink-0 text-xs font-medium text-ink">
@@ -1262,14 +1264,15 @@ export default function PracticeSession({
  <Brain size={14} aria-hidden className="text-gold shrink-0 mt-1" />
  <div className="min-w-0 flex-1">
  <StagedExplanation
-                          text={tr(currentQ.explanation, currentQ.explanationEn)}
-                          steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
+                          text={paperText(subjectId, currentQ.explanation, currentQ.explanationEn)}
+                          steps={isEnglishPaperSubject(subjectId) && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
                         />
  <OptionNotes
                           notes={currentQ.optionNotes}
                           options={currentQ.shuffledOptions}
                           correctId={currentQ.correctIndex}
                           selectedZh={answerState.selectedZh}
+                          subjectId={subjectId}
                         />
                         {/* 答啱一樣要出來源披露 —— 兩條分支都要，否則答啱嘅學生
                             永遠見唔到，個披露就變成「淨係錯先話你知」。 */}
@@ -1286,8 +1289,8 @@ export default function PracticeSession({
  </div>
  <div className="border-t border-warning/15 pt-3">
  <StagedExplanation
-                        text={tr(currentQ.explanation, currentQ.explanationEn)}
-                        steps={locale === 'en' ? (currentQ.stepsEn ?? currentQ.steps) : currentQ.steps}
+                        text={paperText(subjectId, currentQ.explanation, currentQ.explanationEn)}
+                        steps={isEnglishPaperSubject(subjectId) && currentQ.stepsEn?.length ? currentQ.stepsEn : currentQ.steps}
                         label={
                           <span className="text-warning text-xs font-medium mr-1">
                             {tr('正解思路：', 'Reasoning: ')}
@@ -1299,6 +1302,7 @@ export default function PracticeSession({
                         options={currentQ.shuffledOptions}
                         correctId={currentQ.correctIndex}
                         selectedZh={answerState.selectedZh}
+                        subjectId={subjectId}
                       />
  </div>
 
@@ -1372,7 +1376,7 @@ export default function PracticeSession({
                           )}
                         </p>
  <div className="text-sm text-ink-soft leading-relaxed border-t border-violet/15 pt-3">
- <MathText>{tr(currentQ.mcHack, currentQ.mcHackEn)}</MathText>
+ <MathText>{paperText(subjectId, currentQ.mcHack, currentQ.mcHackEn)}</MathText>
  </div>
  </div>
  )}

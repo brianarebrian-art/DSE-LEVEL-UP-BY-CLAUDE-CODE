@@ -3,7 +3,9 @@
 import { usePathname } from 'next/navigation'
 import Sidebar from '@/components/Sidebar'
 import PageNav from '@/components/PageNav'
+import LanguageToggle from '@/components/LanguageToggle'
 import { isImmersiveRoute } from '@/lib/immersiveRoutes'
+import { immersiveLanguageOffset, showsStudentLanguageControl } from '@/lib/localePreference'
 
 // 全站外殼 —— 決定 Navbar／Footer 出唔出，同埋 <main> 要唔要留返導航列嘅位。
 //
@@ -21,7 +23,12 @@ export default function AppShell({
   footer: React.ReactNode
   children: React.ReactNode
 }) {
-  const immersive = isImmersiveRoute(usePathname())
+  const pathname = usePathname()
+  const immersive = isImmersiveRoute(pathname)
+  // 學生語言按鈕固定在視窗右上角（z 高於全螢幕對話框）。
+  // 練習頁自己在頂欄留白，避免把 100dvh 直欄再往下推。
+  const studentLanguage = showsStudentLanguageControl(pathname)
+  const immersiveOffset = immersiveLanguageOffset(pathname) ? 'pt-14' : ''
 
 
   // 側欄由 lg 起出現（80px），xl 起 260px —— 見 components/Sidebar.tsx。
@@ -47,7 +54,7 @@ export default function AppShell({
           沉浸式路由冇底欄亦冇頁尾，故 <main> 唔使讓位。 */}
       <main
         id="main-content"
-        className={immersive ? '' : `pt-16 ${inset}`}
+        className={immersive ? immersiveOffset : `pt-16 ${inset}`}
       >
         {children}
         {/* 前／後頁導航掛喺呢度一次，唔喺任何 page.tsx 出現 —— 一張要人記得去
@@ -58,6 +65,9 @@ export default function AppShell({
         <PageNav />
  </main>
       {!immersive && footer}
+      {studentLanguage && (
+        <LanguageToggle className="no-print fixed right-3 top-2.5 z-[110]" />
+      )}
     </>
   )
 }

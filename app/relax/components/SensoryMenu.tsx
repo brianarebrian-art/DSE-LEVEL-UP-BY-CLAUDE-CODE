@@ -58,8 +58,8 @@ export default function SensoryMenu({
 
   return (
     // FIX: [B9][C11] 細屏內容唔會截斷（overflow-y-auto + max-h）；dialog ARIA
-    <div className="fixed inset-0 z-50 bg-surface/96 flex items-center justify-center p-4 overflow-y-auto">
- <div role="dialog" aria-modal="true" aria-labelledby="sensory-title" className="w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto bg-surface-raised rounded-xl p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-surface/96 px-4 pb-4 pt-16">
+ <div role="dialog" aria-modal="true" aria-labelledby="sensory-title" className="max-h-[calc(100dvh-6rem)] w-full max-w-md overflow-y-auto rounded-xl bg-surface-raised p-6">
         {/* FIX: [A1] Buff 補給艙 → 呼吸空間 */}
         <h2 id="sensory-title" className="text-lg font-bold text-ink mb-1">{en ? 'Welcome to the Breathing Space' : '歡迎嚟到 呼吸空間'}</h2>
  <p className="text-sm text-ink-muted mb-5">{en ? 'How do you want this space to feel today? (you can pick more than one)' : '今日你想點樣感受呢個空間？（可以多選）'}</p>

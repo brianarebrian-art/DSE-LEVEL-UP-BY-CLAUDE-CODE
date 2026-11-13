@@ -109,9 +109,9 @@ export default function PrivacyConsentGate() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="consent-title"
-      className="fixed inset-0 z-[70] flex items-end justify-center bg-ink/40 p-4 sm:items-center"
+      className="fixed inset-0 z-[70] flex items-end justify-center bg-ink/40 px-4 pb-4 pt-16 sm:items-center"
     >
- <div className="w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-line bg-surface-raised p-6 shadow-xl">
+ <div className="max-h-[calc(100dvh-5rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-line bg-surface-raised p-6 shadow-xl">
  <h2 id="consent-title" className="text-xl font-medium text-ink">
           {en ? 'Before your progress leaves this device' : '喺你嘅進度離開呢部機之前'}
         </h2>

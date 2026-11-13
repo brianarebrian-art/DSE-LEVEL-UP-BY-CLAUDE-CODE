@@ -145,7 +145,7 @@ export default function LongPracticeSession({
 
   if (questions.length === 0) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-surface px-4 text-ink">
+      <div className="flex min-h-screen items-center justify-center bg-surface px-4 pt-16 text-ink">
  <div className="max-w-md text-center">
  <Brain size={36} aria-hidden className="mx-auto mb-3 text-ink-muted" />
  <p className="mb-2 text-lg font-semibold">{tr('呢科暫時未有長題目', 'No written questions here yet')}</p>
@@ -170,7 +170,7 @@ export default function LongPracticeSession({
     // 刻意【冇分數、冇等級、冇百分比】—— 自評唔係客觀分（決策 ①）。
     const shaky = assessed.filter((a) => a.credit < 1)
     return (
-      <div className="min-h-screen bg-surface text-ink px-4 py-24 sm:px-8">
+      <div className="min-h-screen bg-surface px-4 pb-24 pt-16 text-ink sm:px-8">
  <div className="mx-auto max-w-2xl">
  <h2 className="text-2xl font-medium mb-3">
             {tr(`你做完咗 ${assessed.length} 條長題目`, `You worked through ${assessed.length} written questions`)}
@@ -219,7 +219,7 @@ export default function LongPracticeSession({
     // A11yButton !inline-flex）。缺呢個 class 時，md+ 會頂欄＋FAB 雙入口開同一個 panel。
     <div className="practice-session min-h-screen bg-surface px-4 py-6 text-ink sm:px-8 sm:py-10">
       <div className="mx-auto max-w-2xl">
-        <div className="chrome-material sticky top-0 z-30 -mx-1 mb-4 flex items-center justify-between gap-2 border-b border-line px-1 py-3">
+        <div className="chrome-material sticky top-0 z-30 -mx-1 mb-4 flex items-center justify-between gap-2 border-b border-line px-1 pb-3 pt-14">
           <span className="shrink-0 whitespace-nowrap text-xs text-ink-muted">
             {tr(`第 ${idx + 1} / ${questions.length} 條`, `${idx + 1} of ${questions.length}`)}
           </span>

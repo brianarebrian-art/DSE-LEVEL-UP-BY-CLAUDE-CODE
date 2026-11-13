@@ -194,12 +194,12 @@ export default function ReportQuestionButton({
             role="dialog"
             aria-modal="true"
             aria-labelledby="report-title"
-            className="fixed inset-0 z-[100] flex items-end justify-center bg-surface/95 p-4 backdrop-blur-sm sm:items-center"
+            className="fixed inset-0 z-[100] flex items-end justify-center bg-surface/95 px-4 pb-4 pt-16 backdrop-blur-sm sm:items-center"
           >
             <div
               ref={panelRef}
               tabIndex={-1}
-              className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl border border-line bg-surface-raised p-5 focus:outline-none"
+              className="max-h-[calc(100dvh-5rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-line bg-surface-raised p-5 focus:outline-none"
             >
               <h2 id="report-title" className="text-base font-medium text-ink">
                 {en ? 'Report a problem with this question' : '報告呢條題嘅問題'}

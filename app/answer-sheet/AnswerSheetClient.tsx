@@ -7,6 +7,7 @@ import { ClipboardCheck, Lightbulb, ArrowRight, Check, RotateCcw, Save } from 'l
 import SubjectMark from '@/components/marks/SubjectMark'
 import CauseMark from '@/components/marks/CauseMark'
 import { useLocale } from '@/lib/i18n'
+import { paperText } from '@/lib/localePreference'
 import MathText from '@/components/MathText'
 import ExplanationBody from '@/components/ExplanationBody'
 import { isGenericMarkingScale, isGenericWritingGuide } from '@/lib/genericWritingGuide'
@@ -334,16 +335,16 @@ export default function AnswerSheetClient() {
                 <li key={item.question.id} className="rounded-2xl border border-line bg-surface-raised p-4">
  <div className="text-sm font-medium leading-relaxed text-ink">
                     {i + 1}.{' '}
-                    <MathText>{tr(item.question.content, item.question.contentEn ?? item.question.content)}</MathText>
+                    <MathText>{paperText(paper.spec.subject, item.question.content, item.question.contentEn)}</MathText>
  </div>
 
  <p className="mt-2 text-sm text-ink-soft">
  <span className="font-medium text-accent-strong">{tr('正確答案', 'Correct answer')}：</span>
- <MathText>{en ? item.optionsEn[item.answerIndex] : item.options[item.answerIndex]}</MathText>
+ <MathText>{paperText(paper.spec.subject, item.options[item.answerIndex], item.optionsEn[item.answerIndex])}</MathText>
  </p>
  <p className="mt-1.5 text-xs leading-relaxed text-ink-muted">
  <MathText>
-                      {tr(item.question.explanation, item.question.explanationEn ?? item.question.explanation)}
+                      {paperText(paper.spec.subject, item.question.explanation, item.question.explanationEn)}
                     </MathText>
  </p>
 
@@ -431,7 +432,7 @@ export default function AnswerSheetClient() {
                     <li key={q.id} className="rounded-2xl border border-line bg-surface-raised p-4">
  <div className="text-sm font-medium leading-relaxed text-ink">
                         {paper.items.length + i + 1}.{' '}
-                        <MathText>{tr(q.content, q.contentEn ?? q.content)}</MathText>
+                        <MathText>{paperText(paper.spec.subject, q.content, q.contentEn)}</MathText>
  <span className="ml-1 text-xs font-normal text-ink-muted">
                           （{q.marks} {tr('分', q.marks === 1 ? 'mark' : 'marks')}）
                         </span>
@@ -440,7 +441,7 @@ export default function AnswerSheetClient() {
  <div className="mt-2.5 rounded-xl border border-accent/25 bg-accent/[0.05] p-3">
  <p className="text-xs font-medium text-accent-strong">{tr('參考答案', 'Model answer')}</p>
  <div className="mt-1 text-sm leading-relaxed text-ink-soft">
- <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn ?? q.referenceAnswer)}</MathText>
+ <MathText>{paperText(paper.spec.subject, q.referenceAnswer, q.referenceAnswerEn)}</MathText>
  </div>
  </div>
 
@@ -448,12 +449,12 @@ export default function AnswerSheetClient() {
                       {q.type === 'long' && q.markingScheme && (
                         <details className="mt-2 rounded-xl border border-line bg-surface p-3">
  <summary className="cursor-pointer text-xs font-medium text-ink-soft">
-                            {isGenericMarkingScale(tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme))
+                            {isGenericMarkingScale(paperText(paper.spec.subject, q.markingScheme, q.markingSchemeEn))
                               ? tr('練習用自評尺度（不是這題的評卷參考）', 'Practice self-check scale (not a mark scheme for this question)')
                               : tr('評分準則', 'Marking scheme')}
                           </summary>
  <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
- <MathText>{tr(q.markingScheme, q.markingSchemeEn ?? q.markingScheme)}</MathText>
+ <MathText>{paperText(paper.spec.subject, q.markingScheme, q.markingSchemeEn)}</MathText>
  </div>
  </details>
                       )}
@@ -461,12 +462,12 @@ export default function AnswerSheetClient() {
                       {q.explanation && (
                         <details className="mt-2 rounded-xl border border-line bg-surface p-3">
  <summary className="cursor-pointer text-xs font-medium text-ink-soft">
-                            {isGenericWritingGuide(tr(q.explanation, q.explanationEn ?? q.explanation))
+                            {isGenericWritingGuide(paperText(paper.spec.subject, q.explanation, q.explanationEn))
                               ? tr('通用自評方向', 'Shared self-check note')
                               : tr('解題思路', 'How to approach it')}
                           </summary>
  <div className="mt-1.5 text-xs leading-relaxed text-ink-muted">
- <ExplanationBody text={tr(q.explanation, q.explanationEn ?? q.explanation)} />
+ <ExplanationBody text={paperText(paper.spec.subject, q.explanation, q.explanationEn)} />
  </div>
  </details>
  )}

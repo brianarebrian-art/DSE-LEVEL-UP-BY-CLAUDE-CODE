@@ -99,11 +99,11 @@ export default function ConceptNetView() {
               {related.map((q) => (
  <div key={q.id} className="border-t border-line pt-4 first:border-t-0 first:pt-0">
  <p className="text-sm text-ink-soft leading-relaxed mb-2">
- <MathText>{(en ? q.contentEn || q.content : q.content) as string}</MathText>
+ <MathText>{q.content as string}</MathText>
  </p>
  <p className="text-xs text-ink-muted leading-relaxed">
  <span className="text-gold"> </span>
- <MathText>{(en ? q.explanationEn || q.explanation : q.explanation) as string}</MathText>
+ <MathText>{q.explanation as string}</MathText>
  </p>
  </div>
  ))}

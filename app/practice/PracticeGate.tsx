@@ -48,10 +48,10 @@ function Loading({ kind }: { kind?: 'mc' }) {
       : en ? 'Getting your questions ready…' : '正在準備題目…'
   return (
     <div aria-busy="true" className="practice-session relative min-h-[100svh]">
-      <div className="absolute right-2 top-2 z-30">
+      <div className="absolute right-3 top-16 z-30">
         <A11yButton className="!inline-flex h-12 w-12 min-h-12 min-w-12" />
       </div>
-      <p role="status" aria-live="polite" className="px-4 pt-6 text-center text-sm text-ink-muted">
+      <p role="status" aria-live="polite" className="px-4 pt-16 text-center text-sm text-ink-muted">
         {text}
       </p>
       <PracticeSkeleton />
