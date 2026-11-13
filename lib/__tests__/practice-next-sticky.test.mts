@@ -27,7 +27,7 @@ test('the next bar is sticky inside the content column and only after an answer'
 })
 
 test('the explanation card keeps 72px under the text and uses a clay tint', () => {
-  assert.match(block, /\.practice-explain\s*\{[^}]*padding-bottom:\s*72px;/)
+  assert.match(block, /\.practice-explain\s*\{[^}]*padding-bottom:\s*calc\(72px \+ env\(safe-area-inset-bottom, 0px\)\);/)
   assert.match(block, /color-mix\(in srgb, var\(--color-ml-clay\)/)
   assert.doesNotMatch(block, /--color-rose|--color-neon/)
   assert.match(session, /practice-explain practice-miss/)
@@ -48,6 +48,16 @@ test('revealed copy does not scold', () => {
   assert.match(session, /想記低原因？（可以唔揀）/)
   assert.doesNotMatch(session, /呢題失手|以後唔好收埋|💡 發現盲點/)
   assert.match(session, /pickedCause === null|useState<ReverseCause \| null>\(null\)/)
+})
+
+test('checking is a separate step: the bar stays disabled until an option is picked', () => {
+  assert.match(session, /className="practice-check-bar"/)
+  assert.match(session, /disabled=\{pendingZh === null\}/)
+  assert.match(session, /tr\('檢查', 'Check'\)/)
+  assert.match(session, /setPendingZh\(opt\.zh\)/)
+  assert.doesNotMatch(session, /上一題/)
+  assert.match(read('components/PracticeSyncInvite.tsx'), /想喺第二部裝置繼續？可用 Google 同步呢份進度（可選）。唔同步都得，而家呢 10 題唔會中斷。/)
+  assert.match(session, /你選擇了「\$\{answerState\.selectedZh\}」/)
 })
 
 test('Wave 2 sticky bar keeps retry beside next after reveal', () => {

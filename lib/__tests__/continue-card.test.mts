@@ -41,6 +41,17 @@ test('the resume link rebuilds topic and weakness mode so the practice page matc
   assert.equal(t?.href, '/practice?subject=math&topic=quadratic&mode=weakness')
 })
 
+test('a revealed first question is the same attempt, not a fresh pool', () => {
+  const revealed = run({
+    current: 0,
+    answers: [{ selectedZh: '9.5 小時', isCorrect: false }, ...Array(9).fill(null)],
+  })
+  assert.equal(R.isResumable(revealed, 'math', null, 'normal'), true)
+  const t = R.pickContinueTarget(revealed, 'physics', live)
+  assert.equal(t?.kind, 'resume')
+  assert.equal(t && 'href' in t ? t.href : '', '/practice?subject=math')
+})
+
 test('runs the practice page would not offer fall back to the last subject', () => {
   const cases: Partial<ActiveSession>[] = [
     { current: 0 }, // nothing answered yet

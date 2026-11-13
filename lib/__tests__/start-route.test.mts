@@ -2,20 +2,12 @@
 // 2026-09-30; hardening prompt §11). First-time visitors still pick a subject.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 
 type Mod = typeof import('../quickStart.ts')
 const qs = (await import('../quickStart.ts')) as Mod & { default?: Mod }
 const Q = qs.default ?? qs
-const route = await import('../../app/start/page.tsx')
 const live = (id: string) => id !== 'gone'
-
-function assertNoIndex(metadata: { robots?: unknown }) {
-  const robots = metadata.robots as { index?: boolean; googleBot?: { index?: boolean } } | undefined
-  assert.ok(robots, 'route must publish robots metadata')
-  assert.equal(robots.index, false, 'route must not be indexed')
-  assert.equal(robots.googleBot?.index, false, 'Googlebot must receive the same noindex directive')
-}
 
 type ActiveSession = import('../sessionResume.ts').ActiveSession
 const session = (over: Partial<ActiveSession> = {}): ActiveSession => ({
@@ -43,20 +35,21 @@ test('an unfinished set the practice page would resume → that set, even if ano
   assert.equal(Q.startHref(session({ subjectId: 'gone' }), [], live), '/subjects')
 })
 
-test('the page replaces itself, reads only local records, and the top bar CTA uses it', () => {
-  const src = readFileSync('app/start/StartRedirect.tsx', 'utf8')
-  assert.match(src, /const href = startHref\(loadActiveSession\(\), loadAttempts\(\)/)
-  assert.match(src, /window\.location\.replace\(href\)/)
-  assert.match(src, /router\.replace\(href\)/)
-  assert.doesNotMatch(src, /router\.push\(/)
-  assert.doesNotMatch(src, /localStorage\.setItem|fetch\(/)
-  assert.match(src, /href="\/#quick-start"/, 'no-JS path joins the homepage picker')
-  assert.match(src, /href="\/subjects"/, 'fallback link if the redirect fails')
-  assert.match(readFileSync('app/start/page.tsx', 'utf8'), /completeSeoMetadata\(/)
-  assertNoIndex(route.metadata)
+test('/start is the homepage document, and in-site start links go to the picker', () => {
+  const config = readFileSync('next.config.ts', 'utf8')
+  assert.match(config, /source:\s*'\/start',\s*destination:\s*'\/'/)
+  assert.match(config, /source:\s*'\/start'[\s\S]*noindex/)
+  assert.equal(existsSync('app/start/page.tsx'), false, 'a separate /start document would client-redirect')
+  assert.equal(existsSync('app/start/StartRedirect.tsx'), false)
+  const home = readFileSync('app/HomePageClient.tsx', 'utf8')
+  assert.match(home, /pathname !== '\/start'/)
+  assert.match(home, /getElementById\('quick-start'\)/)
+  assert.doesNotMatch(home, /router\.(replace|push)\(/)
   const nav = readFileSync('components/Navbar.tsx', 'utf8')
-  assert.equal((nav.match(/href="\/start"/g) ?? []).length, 2)
-  assert.match(readFileSync('lib/pageOrder.ts', 'utf8'), /'\/start': '/)
+  assert.equal((nav.match(/href="\/#quick-start"/g) ?? []).length, 2)
+  assert.doesNotMatch(nav, /href="\/start"/)
+  assert.doesNotMatch(readFileSync('lib/pageOrder.ts', 'utf8'), /'\/start':/)
+  assert.match(readFileSync('lib/pageOrder.ts', 'utf8'), /href: '\/#quick-start'/)
   assert.match(readFileSync('lib/quickStart.ts', 'utf8'), /if \(!session && attempts\.length === 0\) return '\/#quick-start'/)
   assert.match(readFileSync('lib/quickStart.ts', 'utf8'), /return '\/subjects'/)
 })

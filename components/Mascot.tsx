@@ -40,7 +40,9 @@ export default function Mascot({
       aria-hidden
       width={width}
       height={height}
-      priority={priority}
+      {...(priority
+        ? { priority: true as const }
+        : { loading: 'lazy' as const, fetchPriority: 'low' as const })}
       className={`mascot pointer-events-none select-none ${className}`}
     />
   )

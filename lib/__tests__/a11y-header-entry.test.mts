@@ -63,7 +63,7 @@ test('every header students see on a phone carries the button', () => {
   const s = read('app/practice/PracticeSession.tsx')
   const sticky = s.indexOf('practice-sticky-head')
   const btn = s.indexOf('<A11yButton', sticky)
-  const headEnd = s.indexOf('</div>', s.indexOf('QuestionStatusStrip', sticky))
+  const headEnd = s.indexOf('</div>', s.indexOf('role="progressbar"', sticky))
   assert.ok(sticky > 0 && sticky < btn && btn < headEnd)
 
   // Long written session must opt into .practice-session so desktop FAB hides

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
+import { ArrowRight, ChevronLeft, Share2, RotateCcw, ClipboardCopy, ClipboardCheck } from 'lucide-react'
 import { getPracticePerformanceBand, PRACTICE_BAND_LABEL } from '@/lib/practiceBand'
 import { discoveriesSince } from '@/lib/discovery/local-store'
 import { DISCOVERY_COPY, dimensionShort } from '@/lib/discovery/copy'
@@ -11,6 +11,9 @@ import type { Discovery } from '@/lib/discovery/types'
 
 import { getSubject } from '@/data/subjects'
 import { useLocale } from '@/lib/i18n'
+import { useAuthSession } from '@/lib/auth/session'
+import { signInWithGoogle } from '@/lib/auth/google-auth'
+import Mascot from '@/components/Mascot'
 import { SITE_ORIGIN, OFFICIAL_SOCIAL } from '@/lib/site'
 import ExternalLinkGate from '@/components/ExternalLinkGate'
 import SignInNote from '@/components/SignInNote'
@@ -121,6 +124,7 @@ function useCountUp(target: number, duration = 1500) {
 
 export default function ResultPageClient() {
   const { t, locale } = useLocale()
+  const { user, status } = useAuthSession()
   const r = t.result
   const [result, setResult] = useState<StoredResult | null>(null)
   // Whether localStorage has been read yet. Before the mount effect runs (and in
@@ -222,7 +226,7 @@ export default function ResultPageClient() {
               {r.emptyProgress}
             </Link>
  <Link
-              href="/start"
+              href="/#quick-start"
               className="text-sm text-ink-muted underline-offset-2 hover:text-accent hover:underline"
             >
               {locale === 'en' ? 'Continue where you left off' : '接返上次練習'}
@@ -339,6 +343,79 @@ export default function ResultPageClient() {
  <div className="min-h-screen px-4 py-10 bg-surface text-ink-soft">
  <div className="max-w-2xl mx-auto space-y-6">
 
+        <div className="flex items-center justify-between gap-3">
+          <Link href="/" className="inline-flex min-h-12 items-center gap-0.5 font-semibold text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent">
+            <ChevronLeft size={20} aria-hidden />
+            {locale === 'en' ? 'Home' : '主頁'}
+          </Link>
+          <p className="min-w-0 truncate text-sm font-semibold text-ink">{subjName}</p>
+        </div>
+        <div
+          className="grid gap-1"
+          style={{ gridTemplateColumns: `repeat(${result.total}, minmax(0, 1fr))` }}
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={result.total}
+          aria-valuenow={result.total}
+          aria-label={locale === 'en' ? 'Progress' : '進度'}
+        >
+          {Array.from({ length: result.total }, (_, i) => (
+            <span key={i} className="h-2 rounded-full bg-accent" />
+          ))}
+        </div>
+        <p className="-mt-4 text-right text-xs text-ink-muted">{result.total} / {result.total}</p>
+
+        <section className="rounded-[var(--radius-card)] border border-line bg-surface-raised px-5 pb-6 pt-6 text-center">
+          <div className="mx-auto mb-3 flex h-[88px] w-[88px] items-center justify-center rounded-full bg-surface-sunken">
+            <Mascot pose="reading" height={64} />
+          </div>
+          <h1 className="font-serif text-[1.875rem] font-bold leading-snug text-ink">
+            {locale === 'en'
+              ? `These ${result.total} questions are done.`
+              : `呢份 ${result.total} 題已完成。`}
+          </h1>
+          <div className="mt-5 grid grid-cols-2 gap-3">
+            <div className="rounded-[var(--radius-control)] bg-surface-sunken px-2 py-3">
+              <b className="block text-[2.125rem] font-semibold leading-tight text-success">{result.score}</b>
+              <span className="text-sm text-ink-muted">{locale === 'en' ? 'Chosen' : '揀中'}</span>
+            </div>
+            <div className="rounded-[var(--radius-control)] bg-surface-sunken px-2 py-3">
+              <b className="block text-[2.125rem] font-semibold leading-tight text-ink">{result.total - result.score}</b>
+              <span className="text-sm text-ink-muted">{locale === 'en' ? 'Not chosen' : '未揀中'}</span>
+            </div>
+          </div>
+          <Link
+            href={result.subjectId ? `/practice?subject=${encodeURIComponent(result.subjectId)}` : '/#quick-start'}
+            className="mt-5 flex h-14 w-full items-center justify-center rounded-[var(--radius-control)] bg-accent-strong text-[17px] font-bold text-on-accent focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {locale === 'en' ? `Another ${result.total}` : `再開 ${result.total} 題`}
+          </Link>
+          <Link
+            href="/subjects"
+            className="mt-5 inline-flex min-h-12 items-center font-bold text-accent underline underline-offset-4 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            {locale === 'en' ? 'Pick another subject' : '揀其他科目'}
+            <span aria-hidden>{' →'}</span>
+          </Link>
+        </section>
+
+        <section className="rounded-[var(--radius-card)] border border-line bg-surface-sunken p-4 pr-16 text-sm leading-relaxed text-ink-muted">
+          <p>
+            {locale === 'en'
+              ? 'To keep this progress, sync with Google. Skipping is fine — you can start another set whenever you want.'
+              : '想記住進度，可用 Google 同步。唔同步都得，隨時可以再開另一份。'}
+          </p>
+          {status !== 'authenticated' && !user && (
+            <button
+              type="button"
+              onClick={() => { void signInWithGoogle('/result') }}
+              className="mt-3 flex h-12 w-full items-center justify-center rounded-[var(--radius-control)] border border-accent bg-surface-raised text-base font-bold text-ink focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {locale === 'en' ? 'Sync with Google (optional)' : '用 Google 同步（可選）'}
+            </button>
+          )}
+        </section>
+
         {/* Subject context */}
         {(result.subjectName || subjMeta) && (
           <div className="text-center text-sm text-ink-muted">
@@ -349,7 +426,7 @@ export default function ResultPageClient() {
         {/* 本節表現：先講答對幾多，再用中性字眼講表現。冇 DSE 等級、冇獎盃。 */}
         <div className="bg-surface-raised border border-line rounded-2xl p-8 text-center">
           {/* 2026-09-30（LOOP 42）：此頁原本冇 h1，讀屏用戶以標題導航時由 h2 開始。 */}
-          <h1 className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'Practice result' : '練習結果'}</h1>
+          <p className="mb-2 text-sm font-medium text-ink-muted">{locale === 'en' ? 'This session' : '本節分數'}</p>
  <div className="text-5xl sm:text-6xl font-medium mb-1 text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
  <span className="sr-only">{locale === 'en' ? 'Correct: ' : '正確：'}</span>
             {displayScore} / {result.total}

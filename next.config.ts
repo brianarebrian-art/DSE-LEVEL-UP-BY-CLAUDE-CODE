@@ -18,6 +18,8 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   // Do not announce the framework in an X-Powered-By header (audit #8, 2026-10-04).
   poweredByHeader: false,
+  // Local Playwright / curl against 127.0.0.1 is a cross-origin dev request in Next 16.
+  allowedDevOrigins: ['127.0.0.1'],
   productionBrowserSourceMaps: false,
   reactStrictMode: true,
   experimental: {
@@ -41,6 +43,13 @@ const nextConfig: NextConfig = {
   },
   // RFC 9116 §3: the canonical file lives under /.well-known/; the legacy top-level path may
   // redirect to it. Without this, scanners that only try /security.txt get a 404 (audit #7).
+  async rewrites() {
+    return {
+      // /start is the same homepage document, scrolled to #quick-start.
+      // A separate 200 page that then client-navigates would pay LCP twice.
+      beforeFiles: [{ source: '/start', destination: '/' }],
+    }
+  },
   async redirects() {
     return [
       { source: '/security.txt', destination: '/.well-known/security.txt', permanent: true },
@@ -53,6 +62,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
+      // Legacy /start is the homepage document. Keep it out of the index.
+      { source: '/start', headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }] },
       // service worker 腳本唔可以被 CDN／瀏覽器 cache 住：回滾（NEXT_PUBLIC_SW_OFFLINE=0）
       // 同緊急換版本都靠學生部機攞到新嘅 sw.js。瀏覽器本身檢查 SW 更新時會繞過
       // HTTP cache，但 CDN 唔會 —— 明寫 no-cache，唔靠預設。

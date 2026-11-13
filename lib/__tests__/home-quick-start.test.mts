@@ -77,9 +77,11 @@ test('the quick start sits in the hero, before the trust chips, with the other-s
   assert.match(page, /function QuickStartGrid[\s\S]{0,400}href=\{quickStartHref\(s\.id\)\}/)
   assert.ok(at < hero.indexOf('h.trust1'), 'quick start before trust chips')
   assert.ok(hero.indexOf('hero.ctaStartHref') > at, 'other-subjects link after the quick start')
-  // The seasonal link (/waiting and /relax in results season) stays on the first screen.
-  assert.match(hero, /hero\.ctaSecHref/)
   assert.match(hero, /唔使登入/)
+  assert.match(hero, /睇我的進度/)
+  // Seasonal support stays on the page, below the first screen.
+  const below = page.slice(page.indexOf('── 信任列 ──'))
+  assert.match(below, /hero\.ctaSecHref/)
 })
 
 test('negative self-test: an elective subject would be caught', () => {

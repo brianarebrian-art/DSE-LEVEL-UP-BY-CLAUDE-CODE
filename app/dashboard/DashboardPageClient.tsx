@@ -345,7 +345,7 @@ export default function DashboardPageClient() {
  <Moon size={15} aria-hidden /> {en ? 'Not tonight' : '今晚唔溫得'}
             </button>
  <Link
-              href="/subjects"
+              href="/#quick-start"
               className="inline-flex min-h-11 items-center gap-2 bg-accent-strong hover:bg-accent-hover text-on-accent font-medium px-5 py-2.5 rounded-xl transition-[colors,transform] duration-100 text-sm"
             >
               {d.continueP} <ArrowRight size={15} />

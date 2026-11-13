@@ -38,5 +38,5 @@ test('below lg nothing changes: every layout class on the wrapper is lg- or 1440
 test('before an answer the right column explains itself instead of sitting empty, on lg only', () => {
   const hint = code.slice(code.indexOf('{answerState === null && (', feedbackAt), afterGridAt)
   assert.match(hint, /className="focus-dim hidden lg:block/)
-  assert.match(hint, /揀咗答案之後/)
+  assert.match(hint, /撳「檢查」之後/)
 })

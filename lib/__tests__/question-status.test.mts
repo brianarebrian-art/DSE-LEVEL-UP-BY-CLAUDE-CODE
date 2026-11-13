@@ -37,30 +37,28 @@ test('labels name a blind spot, never a verdict', () => {
   }
 })
 
-test('the strip cannot be clicked: a plain list with no buttons, links or handlers', () => {
-  const src = read('components/QuestionStatusStrip.tsx')
-  assert.match(src, /<ol aria-label=\{en \? 'Question status' : '各題狀態'\}/)
-  assert.match(src, /aria-current=\{i === current \? 'step' : undefined\}/)
-  assert.match(src, /className="sr-only">\{en \? `Question \$\{i \+ 1\}: \$\{label\}` : `第 \$\{i \+ 1\} 題：\$\{label\}`\}/)
-  assert.doesNotMatch(src, /<button|<Link|<a\s|onClick|href=|tabIndex|role="button"/)
+test('the progress bar cannot jump between questions', () => {
+  const src = read('app/practice/PracticeSession.tsx')
+  const bar = src.slice(src.indexOf('role="progressbar"'), src.indexOf('role="progressbar"') + 700)
+  assert.match(bar, /aria-valuemin=\{0\}/)
+  assert.match(bar, /aria-valuemax=\{totalQ\}/)
+  assert.doesNotMatch(bar, /<button|<Link|<a\s|onClick|href=/)
 })
 
-test('correct and blind spot differ by more than colour', () => {
-  const src = read('components/QuestionStatusStrip.tsx')
-  const style = (k: string) => src.match(new RegExp(`${k}: '([^']+)'`))![1].split(' ')
-  assert.ok(style('blindSpot').includes('border-dashed'))
-  assert.ok(!style('correct').includes('border-dashed'))
-  assert.ok(!style('blindSpot').some((c) => /red|danger/.test(c)), 'no red for a blind spot')
+test('a miss is not drawn in red on the practice page', () => {
+  const src = read('app/practice/PracticeSession.tsx')
+  assert.match(src, /border-gold/)
+  assert.doesNotMatch(src, /rose|bg-red-|text-red-|danger/)
 })
 
-test('the practice page shows the strip at the top and drops the old bar and dots', () => {
+test('the practice page shows one continuous bar above the question and cannot jump', () => {
   const src = read('app/practice/PracticeSession.tsx')
   const code = src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
-  const strip = code.indexOf('<QuestionStatusStrip statuses={questionStatuses(totalQ, answers, current)} current={current}')
+  const bar = code.indexOf('role="progressbar"')
   const grid = code.indexOf('<div className="lg:grid lg:grid-cols-2')
-  assert.ok(strip > 0 && strip < grid, 'above the question')
-  assert.doesNotMatch(code, /Array\.from\(\{ length: totalQ \}\)/, 'bottom dots removed')
-  assert.doesNotMatch(code, /style=\{\{ width: `\$\{progress\}%` \}\}/, 'thin bar removed')
-  // Moving between questions still only happens through next(): the strip gets no setter.
-  assert.doesNotMatch(code, /<QuestionStatusStrip[^>]*setCurrent/)
+  assert.ok(bar > 0 && bar < grid, 'above the question')
+  assert.match(code, /第 \{n\} \/ \{total\} 題|t\.practice\.progress/)
+  assert.doesNotMatch(code, /<QuestionStatusStrip/)
+  assert.doesNotMatch(code, /上一題/)
+  assert.doesNotMatch(code, /setCurrent\([^)]*\)[\s\S]{0,80}progressbar/)
 })

@@ -57,7 +57,6 @@ export const EXCLUDED: Record<string, string> = {
   '/(auth)/sign-in': '登入流程，中途插入循環會令人半路走咗',
   '/(auth)/sign-up': '註冊流程，同上',
   '/result': '一節練習嘅終點頁，本身已經帶住下一步',
-  '/start': '「開始練習」中轉頁。回訪接上次；新訪客去首頁揀科（唔使登入／揀科開始 10 題）。本身冇內容',
   '/sign-in-error': '登入失敗落腳頁（auth.ts pages.error），本身帶住返去練習的連結',
   '/waiting': '情緒支援落腳頁，唔應該喺呢度催人去下一頁',
 
@@ -133,7 +132,7 @@ export function orderIndex(pathname: string | null): number {
  * scripts/guard-nav.mjs 照舊要求每條 route 分類。
  */
 export interface IntentLink { href: string; zh: string; en: string }
-const PRACTISE: IntentLink = { href: '/start', zh: '繼續練習', en: 'Keep practising' }
+const PRACTISE: IntentLink = { href: '/#quick-start', zh: '繼續練習', en: 'Keep practising' }
 export const INTENT_LINKS: Record<(typeof PAGE_ORDER)[number], readonly [IntentLink, IntentLink]> = {
   '/': [PRACTISE, { href: '/subjects', zh: '揀其他科目', en: 'Choose another subject' }],
   '/subjects': [PRACTISE, { href: '/bookmarks', zh: '查看錯題', en: 'Review saved questions' }],

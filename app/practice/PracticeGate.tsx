@@ -10,6 +10,7 @@ import { SESSION_SIZE } from '@/lib/entitlements'
 import { loadSubjectMCQuestions, loadWrittenQuestions } from '@/data/questions/load'
 import type { MCQuestion, WrittenQuestion } from '@/data/questions'
 import { PracticeSkeleton } from '@/components/Skeleton'
+import { A11yButton } from '@/components/A11yPanel'
 import ElectiveSelector, { useElectiveSelection } from '@/components/ElectiveSelector'
 import { hasElectives, isQuestionInScope, type ElectiveSelection } from '@/lib/electives'
 import type { ReverseCause } from '@/lib/reverseLog'
@@ -46,7 +47,10 @@ function Loading({ kind }: { kind?: 'mc' }) {
       ? en ? `Getting your ${SESSION_SIZE} practice questions ready…` : `正在準備你嘅 ${SESSION_SIZE} 條練習題…`
       : en ? 'Getting your questions ready…' : '正在準備題目…'
   return (
-    <div aria-busy="true">
+    <div aria-busy="true" className="practice-session relative min-h-[100svh]">
+      <div className="absolute right-2 top-2 z-30">
+        <A11yButton className="!inline-flex h-12 w-12 min-h-12 min-w-12" />
+      </div>
       <p role="status" aria-live="polite" className="px-4 pt-6 text-center text-sm text-ink-muted">
         {text}
       </p>
