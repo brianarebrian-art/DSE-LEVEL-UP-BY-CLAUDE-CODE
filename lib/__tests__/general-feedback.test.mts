@@ -56,7 +56,7 @@ test('the reflection card has no score', () => {
   assert.doesNotMatch(card.text, /[1-5]\s*\/\s*5|星|分[數级]|分數|等級|排名/)
 })
 
-test('the migration has only id, payload and created_at, and is insert-only', () => {
+test('the migration has only id, payload and created_at, and client roles cannot write', () => {
   const sql = strip(read('supabase/migrations/0036_general_feedback.sql'))
   const body = sql.match(/create table if not exists public\.general_feedback \(([\s\S]*?)\n\);/)
   assert.ok(body)
@@ -64,10 +64,16 @@ test('the migration has only id, payload and created_at, and is insert-only', ()
   assert.match(body![1], /\bpayload\s+jsonb\b/)
   assert.match(body![1], /\bcreated_at\s+timestamptz\b/)
   assert.doesNotMatch(body![1], /user_id|ip_address|email|cookie/)
+  assert.match(sql, /general_feedback_payload_shape/)
+  assert.match(sql, /octet_length\(payload::text\) <= 8192/)
+  assert.match(sql, /general_feedback_created_idx/)
+  assert.match(sql, /created_at desc/)
   assert.match(sql, /enable row level security/)
-  assert.match(sql, /grant insert on table public\.general_feedback to anon, authenticated/)
-  assert.match(sql, /for insert/)
-  assert.doesNotMatch(sql, /for select|for update|for delete/)
+  assert.match(sql, /revoke all on table public\.general_feedback from public/)
+  assert.match(sql, /revoke all on table public\.general_feedback from anon, authenticated/)
+  assert.doesNotMatch(sql, /grant\s+(insert|select|update|delete|all)\b/i)
+  assert.doesNotMatch(sql, /create policy/)
+  assert.doesNotMatch(sql, /for select|for update|for delete|for insert/)
 })
 
 test('the route inserts payload only and does not read identity', async () => {

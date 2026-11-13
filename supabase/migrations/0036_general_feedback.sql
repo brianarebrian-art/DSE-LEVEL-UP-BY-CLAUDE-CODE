@@ -2,10 +2,8 @@
 --
 -- /feedback 送出嘅情景選擇，同學生自願寫低嘅短句。
 -- 欄位只有 id、payload、created_at。冇 user_id、電郵、IP、cookie、裝置。
--- 寫入路徑係 app/api/feedback-general/route.ts（service role，唔讀 session）。
---
--- 公開角色只可以 insert，唔可以 select／update／delete，所以睇唔到其他人嘅列。
--- 呢張表係 0032「anon 唔准寫」嘅刻意例外：意見頁唔要求登入，但仍然冇公開讀取。
+-- 寫入只經 app/api/feedback-general/route.ts（server-only service role，唔讀 session）。
+-- anon、authenticated、public 無任何權限，RLS 開啟且不設 policy，同 0022 session_feedback。
 
 create table if not exists public.general_feedback (
   id uuid primary key default gen_random_uuid(),
@@ -38,14 +36,7 @@ alter table public.general_feedback enable row level security;
 revoke all on table public.general_feedback from public;
 revoke all on table public.general_feedback from anon, authenticated;
 
-grant insert on table public.general_feedback to anon, authenticated;
-
 drop policy if exists general_feedback_insert on public.general_feedback;
-create policy general_feedback_insert
-  on public.general_feedback
-  for insert
-  to anon, authenticated
-  with check (true);
 
 create index if not exists general_feedback_created_idx
   on public.general_feedback (created_at desc);
