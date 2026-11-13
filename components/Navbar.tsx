@@ -89,7 +89,7 @@ export default function Navbar() {
   const t = useT()
   const { locale } = useLocale()
   const en = locale === 'en'
-  // 語言按鈕由 AppShell 固定在右上角。這裡只留出同寬的空位，避免蓋住漢堡或登入。
+  // AppShell 將語言按鈕固定於右上；依其響應式寬度預留空間，避免蓋住漢堡或登入。
   const languageGutter = showsStudentLanguageControl(pathname)
 
   // 轉頁自動收埋（比逐個 Link onClick 可靠：瀏覽器上一頁／程式導航都收到）
@@ -155,7 +155,7 @@ export default function Navbar() {
           </Link>
  </div>
 
-        <div className={`ml-auto flex shrink-0 items-center gap-1 ${languageGutter ? 'pr-28' : 'pr-4 sm:pr-8'}`}>
+        <div className={`ml-auto flex shrink-0 items-center gap-1 ${languageGutter ? 'pr-28 sm:pr-40 xl:pr-64' : 'pr-4 sm:pr-8'}`}>
           <div className="hidden items-center gap-2 border-l border-line pl-2 md:flex">
             <ThemeToggle compact />
             <AuthButton />
