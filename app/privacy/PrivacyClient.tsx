@@ -210,8 +210,8 @@ export default function PrivacyClient({ storesEmail = false }: { storesEmail?: b
       <Section title={en ? 'Anonymous feedback' : '匿名意見'}>
         <p>
           {en
-            ? 'The page /feedback is optional. If you send it, we store one row: the scenario you picked for each part of the site, your accessibility answers, whether you had an “oh, so that’s how” moment, any short note you typed, and the time it arrived. We do not store your account, email, IP address or device. The row is not linked to you, and other students cannot read it. We use it only to see which parts help. This section was added on 6 November 2026.'
-            : '/feedback 可以唔填。如果你送出，我哋只存一行：每個部分你揀嘅情況、無障礙嗰幾條、有冇「原來係咁」嘅瞬間、你自願寫低嘅短句，加上收到嘅時間。唔會記低帳戶、電郵、IP 位址或者裝置。呢一行認唔出係邊個，其他學生亦睇唔到。我哋只會用嚟睇吓邊部分有幫助。本節於 2026 年 11 月 6 日加入。'}
+            ? 'The page /feedback is optional. If you send it, we store one row: the scenario you picked for each part of the site, your accessibility answers, how it felt while answering, whether you would mention this free site to a classmate, whether you had an “oh, so that’s how” moment, any short note you typed, and the time it arrived. We do not store your account, email, IP address, device, or any score. The row is not linked to you, and other students cannot read it. We use it only to see which parts help. This section was added on 6 November 2026, and on 10 November 2026 it added the optional comfort and word-of-mouth questions.'
+            : '/feedback 可以唔填。如果你送出，我哋只存一行：每個部分你揀嘅情況、無障礙嗰幾條、答題時舒唔舒服、會唔會向同學提起呢個免費網站、有冇「原來係咁」嘅瞬間、你自願寫低嘅短句，加上收到嘅時間。唔會記低帳戶、電郵、IP 位址、裝置或者任何分數。呢一行認唔出係邊個，其他學生亦睇唔到。我哋只會用嚟睇吓邊部分有幫助。本節於 2026 年 11 月 6 日加入，2026 年 11 月 10 日補上可以留空嘅舒服同口碑問題。'}
         </p>
       </Section>
 

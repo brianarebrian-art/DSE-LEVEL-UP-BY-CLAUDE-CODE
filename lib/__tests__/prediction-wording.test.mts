@@ -50,9 +50,10 @@ test('no user-facing string names the estimate a grade prediction', () => {
 
 test('the new names are used where the old ones were', () => {
   const dict = read('lib/dictionary.ts')
-  assert.match(dict, /predictor: '練習表現',/)
+  assert.match(dict, /predictor: '練習表現估算（唔係官方等級）',/)
   assert.match(dict, /title: '練習表現估算',/)
-  assert.match(dict, /predictor: 'Practice performance',/)
+  assert.match(dict, /predictor: 'Practice estimate \(not an official grade\)',/)
+  assert.doesNotMatch(dict, /predictor: '練習表現',/)
   assert.match(read('app/predictor/page.tsx'), /title: '練習表現估算 \| DSE Level Up'/)
   assert.match(read('app/layout.tsx'), /並非考評局官方網站/)
 })

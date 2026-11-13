@@ -62,8 +62,11 @@
  *
  * 2026-11-06.v1 —— 新增「匿名意見」：/feedback 自願送出嘅情景選擇同短句
  * （general_feedback.payload；不記帳戶、電郵、IP）。屬新增採集類別，所以 bump。
+ *
+ * 2026-11-10.v1 —— 同一張匿名意見加咗可以留空嘅「舒服唔舒服」同「口碑」。
+ * 仍然唔記帳戶、電郵、IP，亦唔記分數。披露文案改咗，所以 bump。
  */
-export const POLICY_VERSION = '2026-11-06.v1'
+export const POLICY_VERSION = '2026-11-10.v1'
 
 /** 同意狀態。`unknown` = 未問過或者查緊。 */
 export type ConsentState = 'unknown' | 'granted' | 'declined'

@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 
-const { parseGeneralFeedback, reflectionCard, FEATURE_IDS, FEATURE_CHOICES, A11Y_IDS } = await import('../generalFeedback.ts')
+const { parseGeneralFeedback, reflectionCard, FEATURE_IDS, FEATURE_CHOICES, FEATURE_LABEL, A11Y_IDS, COMFORT_DURING_QUESTION, WOM_DESCRIBE_LABEL } = await import('../generalFeedback.ts')
 const read = (p: string) => readFileSync(p, 'utf8')
 const strip = (s: string) => s.replace(/^\s*--.*$/gm, '').replace(/^\s*\/\/.*$/gm, '')
 
@@ -24,6 +24,8 @@ test('a valid form keeps scenario answers and drops identity fields', () => {
     version: 1,
     features: { focus_light: 'very_useful', quiet_mode: 'not_tried' },
     accessibility: { answers: { contrast: 'comfortable' }, note: '字夠清楚' },
+    comfort: { after_wrong: [], note: '' },
+    word_of_mouth: { describe: [], change: '' },
     aha: { had_moment: true, text: '原來係咁' },
     locale: 'zh',
   })
@@ -32,12 +34,75 @@ test('a valid form keeps scenario answers and drops identity fields', () => {
   assert.equal(JSON.stringify(r.value).includes('secret'), false)
 })
 
-test('numeric ratings and an empty form are rejected', () => {
+test('numeric ratings are rejected and a blank form still submits', () => {
   assert.equal(parseGeneralFeedback({ features: { focus_light: 5 } }).ok, false)
   assert.equal(parseGeneralFeedback({ features: { focus_light: '5' } }).ok, false)
-  assert.equal(parseGeneralFeedback({}).ok, false)
-  assert.equal(parseGeneralFeedback({ aha: { had_moment: false, text: '   ' } }).ok, false)
+  assert.equal(parseGeneralFeedback({ comfort: { during: 3 } }).ok, false)
+  assert.equal(parseGeneralFeedback({ comfort: { during: '5' } }).ok, false)
+  const blank = parseGeneralFeedback({})
+  assert.equal(blank.ok, true)
+  if (!blank.ok) return
+  assert.equal(blank.value.accessibility.note, '')
+  assert.equal(blank.value.aha.text, '')
+  assert.equal(blank.value.comfort.note, '')
+  assert.equal(blank.value.word_of_mouth.change, '')
+  assert.equal(JSON.stringify(blank.value).includes('rating'), false)
+  const whitespace = parseGeneralFeedback({ aha: { had_moment: false, text: '   ' } })
+  assert.equal(whitespace.ok, true)
+  if (!whitespace.ok) return
+  assert.equal(whitespace.value.aha.text, '')
   assert.equal(parseGeneralFeedback({ features: { just_one_card: 'not_tried' } }).ok, true)
+})
+
+test('comfort and word of mouth stay optional and are not scores', () => {
+  const filled = parseGeneralFeedback({
+    email: 'a@b.com',
+    ip: '1.2.3.4',
+    userId: 'student-1',
+    comfort: {
+      during: 'at_ease',
+      after_wrong: ['useful_next', 'uncomfortable_labelled', 'useful_next'],
+      note: '個「再試一次」 a@b.com',
+    },
+    word_of_mouth: {
+      recommend: 'if_asked',
+      describe: ['free_no_login', 'other'],
+      other: '字太細',
+      change: '解析短少少',
+    },
+    accessibility: { note: '' },
+    aha: { text: '' },
+  })
+  assert.ok(filled.ok)
+  if (!filled.ok) return
+  assert.deepEqual(filled.value.comfort, {
+    during: 'at_ease',
+    after_wrong: ['useful_next', 'uncomfortable_labelled'],
+    note: '個「再試一次」',
+  })
+  assert.deepEqual(filled.value.word_of_mouth, {
+    recommend: 'if_asked',
+    describe: ['free_no_login', 'other'],
+    other: '字太細',
+    change: '解析短少少',
+  })
+  assert.equal(filled.value.accessibility.note, '')
+  assert.equal(filled.value.aha.text, '')
+  assert.equal(JSON.stringify(filled.value).includes('a@b.com'), false)
+  assert.equal(JSON.stringify(filled.value).includes('student-1'), false)
+
+  const otherHidden = parseGeneralFeedback({
+    word_of_mouth: { describe: ['gentler_mood'], other: '唔應該出現' },
+  })
+  assert.ok(otherHidden.ok)
+  if (!otherHidden.ok) return
+  assert.equal(otherHidden.value.word_of_mouth.other, undefined)
+  assert.deepEqual(otherHidden.value.word_of_mouth.describe, ['gentler_mood'])
+
+  const card = reflectionCard(filled.value, 'zh')
+  assert.doesNotMatch(card.text, /[1-5]\s*\/\s*5|星|分[數级]|分數|等級|排名/)
+  assert.match(card.text, /幾放鬆，繼續得/)
+  assert.match(card.text, /字太細/)
 })
 
 test('the reflection card has no score', () => {
@@ -80,6 +145,21 @@ test('the route inserts payload only and does not read identity', async () => {
   const { apiRouteClass, limitForRouteClass } = await import('../rateLimit.ts')
   assert.equal(apiRouteClass('/api/feedback-general'), 'report')
   assert.equal(limitForRouteClass('report').limit, 10)
+  assert.equal(FEATURE_LABEL.emergency_room.zh, '溫習支援')
+  assert.equal(COMFORT_DURING_QUESTION.zh, '答緊題／睇完結果嗰陣，你多啲係？（單選）')
+  assert.equal(WOM_DESCRIBE_LABEL.gentler_mood.zh, '氣氛溫和啲')
+  const client = read('app/feedback/FeedbackClient.tsx')
+  assert.match(client, /id="feedback-a11y-note"/)
+  assert.match(client, /name=\{id\}/)
+  assert.match(client, /htmlFor=\{id\}/)
+  assert.match(client, /id="feedback-aha-note"/)
+  assert.match(client, /id="feedback-comfort-note"/)
+  assert.match(client, /id="feedback-wom-other"/)
+  assert.match(client, /id="feedback-return-note"/)
+  assert.match(client, /focus-visible:outline/)
+  assert.doesNotMatch(client, /醫院|考試急症室|嗎陣|氛圍溫和啲|[★☆]|1–5|1-5/)
+  assert.doesNotMatch(read('lib/generalFeedback.ts'), /考試急症室|嗎陣|氛圍溫和啲/)
+  assert.doesNotMatch(read('app/feedback/page.tsx'), /考試急症室/)
   assert.deepEqual([...FEATURE_IDS], ['just_one_card', 'error_analysis', 'focus_light', 'quiet_mode', 'emergency_room', 'accessibility'])
   assert.deepEqual([...FEATURE_CHOICES], ['not_tried', 'helped_a_bit', 'very_useful', 'not_for_me'])
   assert.deepEqual([...A11Y_IDS], ['contrast', 'keyboard', 'screen_reader', 'reduced_motion'])

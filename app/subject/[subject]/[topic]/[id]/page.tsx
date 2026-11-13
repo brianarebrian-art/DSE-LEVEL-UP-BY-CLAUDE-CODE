@@ -17,8 +17,8 @@ export async function generateMetadata({
 
   if (!meta || !question) notFound()
 
-  const title = `DSE 2026 ${meta.name} 題目精解 (${question.topicZh || topic}) | 考試急症室` // i18n-exempt: SEO title
-  const description = `DSE 2026 ${meta.name} (${question.topicZh || topic}) 題目解析與解題思維。考試急症室提供 DSE 考評局規格模擬題目與避陷提示。` // i18n-exempt: SEO description
+  const title = `DSE 2026 ${meta.name} 題目精解 (${question.topicZh || topic}) | 溫習支援` // i18n-exempt: SEO title
+  const description = `DSE 2026 ${meta.name} (${question.topicZh || topic}) 題目解析與解題思維。溫習支援提供原創改寫題目與避陷提示，並非考評局官方試題。` // i18n-exempt: SEO description
 
   return completeSeoMetadata(
     {
@@ -53,7 +53,7 @@ export default async function QuestionPage({
       {
         '@type': 'QAPage',
         '@id': `${pageUrl}#qapage`,
-        name: `DSE 2026 ${meta.name} ${topicName} 題目詳解 — 考試急症室`, // i18n-exempt: schema
+        name: `DSE 2026 ${meta.name} ${topicName} 題目詳解 — 溫習支援`, // i18n-exempt: schema
         url: pageUrl,
         mainEntity: {
           '@type': 'Question',
@@ -81,10 +81,10 @@ export default async function QuestionPage({
           },
           {
             '@type': 'Question',
-            name: `考試急症室點樣協助溫習 ${meta.name}？`, // i18n-exempt: schema
+            name: `溫習支援點樣協助溫習 ${meta.name}？`, // i18n-exempt: schema
             acceptedAnswer: {
               '@type': 'Answer',
-              text: '考試急症室提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。', // i18n-exempt: schema
+              text: '溫習支援提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。', // i18n-exempt: schema
             },
           },
         ],
@@ -93,7 +93,7 @@ export default async function QuestionPage({
         '@type': 'BreadcrumbList',
         '@id': `${pageUrl}#breadcrumb`,
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'DSE Level Up 考試急症室', item: SITE_ORIGIN }, // i18n-exempt: schema
+          { '@type': 'ListItem', position: 1, name: 'DSE Level Up 溫習支援', item: SITE_ORIGIN }, // i18n-exempt: schema
           { '@type': 'ListItem', position: 2, name: meta.name, item: `${SITE_ORIGIN}/subjects/${subject}` },
           { '@type': 'ListItem', position: 3, name: topicName },
         ],
@@ -180,10 +180,10 @@ export default async function QuestionPage({
           </div>
           <div>
             <h3 className="font-semibold text-stone-800 dark:text-stone-200">
-              {`考試急症室點樣協助溫習 ${meta.name}？`} {/* i18n-exempt: zh-Hant FAQ */}
+              {`溫習支援點樣協助溫習 ${meta.name}？`} {/* i18n-exempt: zh-Hant FAQ */}
             </h3>
             <p className="mt-1 text-stone-600 dark:text-stone-400">
-              考試急症室提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。{/* i18n-exempt: zh-Hant FAQ */}
+              溫習支援提供零壓力、即時錯因診斷與間隔重複溫習，協助 DSE 考生穩固應試思維。{/* i18n-exempt: zh-Hant FAQ */}
             </p>
           </div>
         </div>

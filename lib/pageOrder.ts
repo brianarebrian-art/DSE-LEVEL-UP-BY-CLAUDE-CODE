@@ -96,7 +96,7 @@ export const EXCLUDED: Record<string, string> = {
   '/review/trace': '先備回溯練習，由進度頁進入，不加入主循環',
   '/exam-day': '支線功能頁',
   '/logic-log': '支線功能頁',
-  '/predictor': '支線功能頁，由側欄「練習表現」入；個人化內容，同 /dashboard 一樣唔入 sitemap',
+  '/predictor': '支線功能頁，由側欄「練習表現估算（唔係官方等級）」入；個人化內容，同 /dashboard 一樣唔入 sitemap',
   '/reading': '支線功能頁',
   '/sensei': '支線功能頁',
   '/source-lab': '支線功能頁',

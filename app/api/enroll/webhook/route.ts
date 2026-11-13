@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     // Stripe Payment Link Template (configured per environment)
     const stripePaymentLink = process.env.STRIPE_PAYMENT_LINK || 'https://buy.stripe.com/test_dse_level_up_mock'
-    const replyTemplate = `多謝同學喺 Instagram 聯絡【考試急症室】！你揀選嘅專屬溫習計劃（${targetSubject}）已為你保留名額。請點擊連結完成啟動：${stripePaymentLink}?client_reference_id=${encodeURIComponent(senderId)}`
+    const replyTemplate = `多謝同學喺 Instagram 聯絡【溫習支援】！你揀選嘅專屬溫習計劃（${targetSubject}）已為你保留名額。請點擊連結完成啟動：${stripePaymentLink}?client_reference_id=${encodeURIComponent(senderId)}`
 
     return NextResponse.json({
       success: true,

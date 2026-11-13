@@ -121,7 +121,15 @@ export default function Sidebar() {
                     className={linkClass(active)}
                   >
                     <Icon size={20} strokeWidth={active ? 2.2 : 1.75} aria-hidden className="shrink-0" />
-                    <span className="sr-only xl:not-sr-only xl:truncate">{t.sidebar[key]}</span>
+                    <span
+                      className={
+                        key === 'predictor'
+                          ? 'sr-only xl:not-sr-only xl:min-w-0 xl:flex-1 xl:whitespace-normal xl:text-left xl:leading-snug'
+                          : 'sr-only xl:not-sr-only xl:truncate'
+                      }
+                    >
+                      {t.sidebar[key]}
+                    </span>
                   </Link>
                 </li>
               )
