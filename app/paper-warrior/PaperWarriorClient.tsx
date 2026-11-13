@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { Printer, FileText, RefreshCw, ArrowRight } from 'lucide-react'
 import { useLocale } from '@/lib/i18n'
+import { paperText } from '@/lib/localePreference'
 import MathText from '@/components/MathText'
 import { subjects } from '@/data/subjects'
 // 課題清單同「有冇書寫題」→ summary.generated（靜態）。
@@ -290,13 +291,13 @@ export default function PaperWarriorClient() {
             {paper.items.map((item, i) => (
  <li key={item.question.id} className="paper-q break-inside-avoid">
  <div className="text-sm font-medium leading-relaxed">
-                  {i + 1}. <MathText>{tr(item.question.content, item.question.contentEn ?? item.question.content)}</MathText>
+                  {i + 1}. <MathText>{paperText(subject, item.question.content, item.question.contentEn)}</MathText>
  </div>
  <ul className="mt-1.5 space-y-1 pl-5">
                   {item.options.map((opt, oi) => (
  <li key={oi} className="text-sm leading-relaxed">
                       {LETTERS[oi]}.{' '}
-                      <MathText>{en ? item.optionsEn[oi] : opt}</MathText>
+                      <MathText>{paperText(subject, opt, item.optionsEn[oi])}</MathText>
  </li>
  ))}
  </ul>
@@ -314,12 +315,12 @@ export default function PaperWarriorClient() {
  <p>
  <span className="font-medium text-accent-strong">{tr('答案', 'Answer')}：</span>
                       {/* 引選項內容，唔淨係引字母 —— 對答案時唔會撈亂 */}
-                      <MathText>{en ? item.optionsEn[item.answerIndex] : item.options[item.answerIndex]}</MathText>
+                      <MathText>{paperText(subject, item.options[item.answerIndex], item.optionsEn[item.answerIndex])}</MathText>
  </p>
  <p className="mt-1">
  <span className="font-medium text-accent-strong">{tr('解析', 'Why')}：</span>
  <MathText>
-                        {tr(item.question.explanation, item.question.explanationEn ?? item.question.explanation)}
+                        {paperText(subject, item.question.explanation, item.question.explanationEn)}
                       </MathText>
  </p>
  </div>
@@ -344,7 +345,7 @@ export default function PaperWarriorClient() {
  <li key={q.id} className="paper-q break-inside-avoid">
  <div className="text-sm font-medium leading-relaxed">
                       {paper.items.length + i + 1}.{' '}
-                      <MathText>{tr(q.content, q.contentEn ?? q.content)}</MathText>
+                      <MathText>{paperText(subject, q.content, q.contentEn)}</MathText>
  <span className="ml-1 text-xs font-normal text-ink-soft">
                         （{q.marks} {tr('分', q.marks === 1 ? 'mark' : 'marks')}
                         {q.type === 'long' && q.suggestedMinutes

@@ -95,7 +95,7 @@ export default function RestMode({ open, onClose }: { open: boolean; onClose: (p
       role="dialog"
       aria-modal="true"
       aria-labelledby="rest-title"
-      className="fixed inset-0 z-[70] bg-surface/97 backdrop-blur-sm flex items-center justify-center p-6"
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-surface/97 px-6 pb-6 pt-16 backdrop-blur-sm"
     >
       <div className="w-full max-w-sm text-center">
         <p id="rest-title" className="text-xl text-ink font-medium mb-1">

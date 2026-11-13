@@ -8,8 +8,8 @@ import Icon from '@/src/components/ui/Icon'
 import AuthButton from '@/components/AuthButton'
 import SignInNote from '@/components/SignInNote'
 import Greeting from '@/components/Greeting'
-import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
+import { showsStudentLanguageControl } from '@/lib/localePreference'
 import { A11yButton } from '@/components/A11yPanel'
 import { useT, useLocale } from '@/lib/i18n'
 
@@ -89,6 +89,8 @@ export default function Navbar() {
   const t = useT()
   const { locale } = useLocale()
   const en = locale === 'en'
+  // 語言按鈕由 AppShell 固定在右上角。這裡只留出同寬的空位，避免蓋住漢堡或登入。
+  const languageGutter = showsStudentLanguageControl(pathname)
 
   // 轉頁自動收埋（比逐個 Link onClick 可靠：瀏覽器上一頁／程式導航都收到）
   useEffect(() => {
@@ -109,16 +111,16 @@ export default function Navbar() {
   // 所以喺 AppShell 包一個有 padding 嘅 div 推唔郁佢，一定要喺呢度出。
   return (
     <nav className="chrome-material fixed top-0 right-0 left-0 z-50 border-b border-line md:left-20 xl:left-[260px]">
- <div className="max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-16">
+ <div className="flex h-16 items-center gap-2 pl-4 sm:pl-8">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
  <div className="hidden lg:block">
  <Greeting />
  </div>
- <Link href="/" className="min-h-11 flex items-center gap-2 font-semibold text-lg text-ink md:hidden">
- <BookOpen size={22} className="text-accent" aria-hidden />
+ <Link href="/" aria-label="DSE Level Up" className="flex min-h-11 min-w-0 items-center gap-2 text-lg font-semibold text-ink md:hidden">
+ <BookOpen size={22} className="shrink-0 text-accent" aria-hidden />
  <span className="whitespace-nowrap">
- DSE <span className="text-accent">Level Up</span>
+            DSE<span className="text-accent hidden sm:inline"> Level Up</span>
  </span>
  </Link>
  </div>
@@ -126,7 +128,7 @@ export default function Navbar() {
         {/* 橫向導航條 —— 只喺真係夠位（≥1280px）先出，否則寧願用漢堡都唔好斷行 */}
         {/* 2026-09-30（改進循環 2，prompt §25）：原本 lg 起才出，768–1023px 平板同時有側欄及漢堡選單。
             改為 md 起出，漢堡只留給手機。 */}
-        <div className="hidden md:flex items-center gap-3 lg:gap-5">
+        <div className="hidden min-w-0 flex-1 items-center justify-end gap-3 md:flex lg:gap-5">
           <Link
             href="/subjects"
             className="pressable min-h-11 px-3.5 py-2 text-sm font-medium text-ink-soft hover:text-accent flex items-center gap-2 rounded-[var(--radius-control)] border border-line bg-surface-raised shadow-2xs hover:border-line-strong transition-colors"
@@ -151,13 +153,13 @@ export default function Navbar() {
           >
             {t.nav.startPractice}
           </Link>
-          <div className="flex items-center gap-2 pl-2 border-l border-line">
-            <ThemeToggle compact />
-            <LanguageToggle />
-            <AuthButton />
-          </div>
  </div>
 
+        <div className={`ml-auto flex shrink-0 items-center gap-1 ${languageGutter ? 'pr-28' : 'pr-4 sm:pr-8'}`}>
+          <div className="hidden items-center gap-2 border-l border-line pl-2 md:flex">
+            <ThemeToggle compact />
+            <AuthButton />
+          </div>
         {/* 漢堡掣 —— 手機同平板都係佢（<1280px） */}
         <div className="md:hidden flex items-center gap-1">
           {/* 手機的無障礙入口（2026-09-30 Yuna 決定 1）：放在漢堡掣旁邊，
@@ -174,6 +176,7 @@ export default function Navbar() {
           >
             {open ? <X size={24} /> : <Menu size={24} />}
  </button>
+ </div>
  </div>
  </div>
 
@@ -254,12 +257,8 @@ export default function Navbar() {
               {t.nav.startPractice}
             </Link>
 
-            {/* 語言切換同登入 —— 手機／平板一樣搵得到（之前橫向條斷行時就係呢兩樣最易失蹤） */}
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-2">
- <div className="flex items-center gap-1">
- <span className="text-xs text-ink-muted">{en ? 'Language' : '語言'}</span>
- <LanguageToggle />
- </div>
+            {/* 語言按鈕在右上角常駐，不放進選單。登入仍與橫向列一致。 */}
+            <div className="mt-3 flex flex-wrap items-center justify-end gap-2 border-t border-line pt-2">
  <AuthButton onAction={() => setOpen(false)} />
  </div>
  <SignInNote className="mt-2" />

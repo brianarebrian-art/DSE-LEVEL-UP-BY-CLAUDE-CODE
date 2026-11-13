@@ -1,9 +1,25 @@
 'use client'
 
-import { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { dictionary, type Dictionary, type Locale } from './dictionary'
+import {
+  interfaceLanguageAnnouncement,
+  LOCALE_STORAGE_KEY,
+  resolveLocale,
+} from './localePreference'
 
-const STORAGE_KEY = 'dse_locale'
+export {
+  interfaceLanguageAnnouncement,
+  immersiveLanguageOffset,
+  localeFromBrowserLanguage,
+  LOCALE_STORAGE_KEY,
+  parseStoredLocale,
+  resolveLocale,
+  isEnglishPaperSubject,
+  paperText,
+  showsStudentLanguageControl,
+  tr,
+} from './localePreference'
 
 interface LanguageContextValue {
   locale: Locale
@@ -22,14 +38,34 @@ export function htmlLang(locale: Locale): string {
   return locale === 'en' ? 'en' : 'zh-HK'
 }
 
+function readStoredRaw(): string | null {
+  try {
+    return localStorage.getItem(LOCALE_STORAGE_KEY)
+  } catch {
+    return null
+  }
+}
+
+function writeStored(next: Locale) {
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, next)
+  } catch {
+    // 私密模式寫不入。這次瀏覽仍然切換，不假裝已經記住。
+  }
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Always start at 'zh' so the server-rendered HTML and the first client render
-  // match (no hydration mismatch). A previously saved choice is applied after mount.
+  // match (no hydration mismatch). A previously saved choice, or the browser
+  // language when nothing valid is stored, is applied after mount.
   const [locale, setLocaleState] = useState<Locale>('zh')
+  const [announcement, setAnnouncement] = useState('')
+  const userActed = useRef(false)
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'zh' || saved === 'en') setLocaleState(saved)
+    // 不寫 localStorage。未選擇時只在這次瀏覽套用瀏覽器語言。
+    const next = resolveLocale(readStoredRaw(), navigator.language)
+    setLocaleState(next)
   }, [])
 
   // <html lang> 一定要跟住介面語言轉（WCAG 3.1.1，A 級）。
@@ -40,21 +76,31 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = htmlLang(locale)
   }, [locale])
 
+  useEffect(() => {
+    if (!userActed.current) return
+    setAnnouncement(interfaceLanguageAnnouncement(locale))
+  }, [locale])
+
   const setLocale = useCallback((next: Locale) => {
+    userActed.current = true
     setLocaleState(next)
-    localStorage.setItem(STORAGE_KEY, next)
+    writeStored(next)
   }, [])
 
   const toggle = useCallback(() => {
+    userActed.current = true
     setLocaleState((prev) => {
       const next = prev === 'zh' ? 'en' : 'zh'
-      localStorage.setItem(STORAGE_KEY, next)
+      writeStored(next)
       return next
     })
   }, [])
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, toggle, t: dictionary[locale] }}>
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </div>
       {children}
     </LanguageContext.Provider>
   )

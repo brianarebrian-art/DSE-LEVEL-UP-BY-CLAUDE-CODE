@@ -8,6 +8,7 @@ import Icon from '@/src/components/ui/Icon'
 import MathText from '@/components/MathText'
 import ReportQuestionButton from '@/components/ReportQuestionButton'
 import { useLocale } from '@/lib/i18n'
+import { paperText } from '@/lib/localePreference'
 import { getSubject } from '@/data/subjects'
 import { loadSubjectQuestions } from '@/data/questions/load'
 import { isPendingReview, isWithdrawn, withdrawnReason } from '@/data/questions/hidden-topics'
@@ -203,7 +204,7 @@ export default function BookmarksView() {
                     {q ? (
                       <>
  <div className="text-sm leading-relaxed text-ink">
- <MathText>{en && q.contentEn ? q.contentEn : q.content}</MathText>
+ <MathText>{paperText(bm.subjectId, q.content, q.contentEn)}</MathText>
  </div>
                         {/* 重溫嗰陣先發現題目有問題，係好常見嘅事 —— 練習頁有報錯入口，
                             呢度亦要有，否則學生要記住題號返去練習頁先報得到。 */}

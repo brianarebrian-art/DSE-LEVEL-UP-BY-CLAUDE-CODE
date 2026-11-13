@@ -5,6 +5,7 @@ import { CheckCircle2, Lightbulb, Flag } from 'lucide-react'
 import MathText from '@/components/MathText'
 import ExplanationBody from '@/components/ExplanationBody'
 import { useLocale } from '@/lib/i18n'
+import { paperText } from '@/lib/localePreference'
 import type { TextQuestion } from '@/data/questions/types'
 
 // 文字題 — a short free-text answer. HONESTY RULE: we never claim to auto-grade. After
@@ -57,7 +58,7 @@ export default function TextQuestionCard({
  </div>
 
  <div className="text-sm sm:text-base text-ink leading-relaxed mb-4 whitespace-pre-line">
- <MathText>{tr(q.content, q.contentEn)}</MathText>
+ <MathText>{paperText(q.subject, q.content, q.contentEn)}</MathText>
  </div>
 
       {!submitted ? (
@@ -90,13 +91,13 @@ export default function TextQuestionCard({
           <div className="rounded-xl border border-accent/30 bg-surface-sunken px-4 py-3 mb-3">
  <div className="text-xs text-accent font-bold mb-1">{en ? 'Reference answer' : '參考答案'}</div>
  <div className="text-sm text-ink-soft leading-relaxed whitespace-pre-line">
- <MathText>{tr(q.referenceAnswer, q.referenceAnswerEn)}</MathText>
+ <MathText>{paperText(q.subject, q.referenceAnswer, q.referenceAnswerEn)}</MathText>
  </div>
  </div>
 
           {q.explanation && (
             <div className="text-sm text-ink-muted leading-relaxed mb-4 whitespace-pre-line">
- <ExplanationBody text={tr(q.explanation, q.explanationEn)} />
+ <ExplanationBody text={paperText(q.subject, q.explanation, q.explanationEn)} />
  </div>
           )}
 

@@ -105,7 +105,7 @@ export default function AnswerCardsPreview() {
               重新洗牌{/* i18n-exempt: 開發專用頁，生產環境 404 */}
             </button>
  <div className="rounded-2xl border border-gold/30 bg-gold/[0.10] p-5">
- <OptionNotes notes={sampleNotes} options={shown} correctId={1} selectedZh={'\\$270'} />
+ <OptionNotes notes={sampleNotes} options={shown} correctId={1} selectedZh={'\\$270'} subjectId="math" />
  </div>
  </section>
  </div>

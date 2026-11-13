@@ -2,6 +2,7 @@
 
 import MathText from '@/components/MathText'
 import { useLocale } from '@/lib/i18n'
+import { paperText } from '@/lib/localePreference'
 import { notesInDisplayOrder, type DisplayOption } from '@/lib/optionNotes'
 import type { OptionNote } from '@/data/questions/types'
 
@@ -16,6 +17,7 @@ export default function OptionNotes({
   options,
   correctId,
   selectedZh,
+  subjectId,
 }: {
   notes: readonly OptionNote[] | undefined
   /** The options exactly as displayed, in display order. */
@@ -24,6 +26,7 @@ export default function OptionNotes({
   correctId: number
   /** The option the student picked, by its Chinese text (grading is anchored to it). */
   selectedZh: string | null
+  subjectId: string
 }) {
   const { locale } = useLocale()
   const en = locale === 'en'
@@ -44,13 +47,13 @@ export default function OptionNotes({
             >
               <div className="mb-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                 <span className="font-medium text-ink">
-                  <MathText>{en && option.en ? option.en : option.zh}</MathText>
+                  <MathText>{paperText(subjectId, option.zh, option.en)}</MathText>
                 </span>
                 {correct && <span className="text-xs font-medium text-accent-strong">{en ? 'Correct answer' : '正確答案'}</span>}
                 {picked && !correct && <span className="text-xs font-medium text-ink-muted">{en ? 'Your choice' : '你揀咗呢個'}</span>}
               </div>
               <p className="leading-relaxed text-ink-soft">
-                <MathText>{en && note.en ? note.en : note.zh}</MathText>
+                <MathText>{paperText(subjectId, note.zh, note.en)}</MathText>
               </p>
             </li>
           )

@@ -19,7 +19,7 @@ function LoadingScreen() {
   const t = useT()
   return (
     <div
-      className="flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 text-ink-muted"
+      className="flex min-h-screen flex-col items-center justify-center gap-3 bg-surface px-4 pt-16 text-ink-muted"
       role="status"
       aria-live="polite"
     >
@@ -34,7 +34,7 @@ function MissingSubject() {
   const { locale } = useLocale()
   const en = locale === 'en'
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 text-center text-ink-soft">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface px-4 pt-16 text-center text-ink-soft">
       <BookOpen size={36} aria-hidden className="text-accent" />
       <h1 className="text-xl font-semibold text-ink">
         {en ? 'Pick a subject to start' : '先揀一科再開始'}

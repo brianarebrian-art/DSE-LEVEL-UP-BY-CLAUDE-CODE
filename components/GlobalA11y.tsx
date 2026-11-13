@@ -124,7 +124,7 @@ export default function GlobalA11y() {
  </button>
 
       {sosOpen && (
-        <div className="fixed inset-0 z-50 bg-surface-sunken/85 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setSosOpen(false)}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-surface-sunken/85 px-4 pb-4 pt-16 backdrop-blur-sm" onClick={() => setSosOpen(false)}>
           {/* FIX: [C11] dialog ARIA + 打開時自動聚焦第一個按鈕（autoFocus） */}
           <div
             role="dialog"

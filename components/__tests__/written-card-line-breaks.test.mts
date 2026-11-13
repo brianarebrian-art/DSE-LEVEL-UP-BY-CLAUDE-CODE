@@ -15,7 +15,7 @@ import { join } from 'node:path'
 
 const ROOT = join(import.meta.dirname, '..', '..')
 const CARDS = ['components/LongQuestionCard.tsx', 'components/TextQuestionCard.tsx']
-const FIELDS = /<MathText>\{tr\(q\.(content|referenceAnswer|markingScheme|explanation),/
+const FIELDS = /<MathText>\{(?:tr\(q\.(content|referenceAnswer|markingScheme|explanation),[^}]*\)|paperText\([^,]+,\s*q\.(content|referenceAnswer|markingScheme|explanation),[^}]*\)|q\.(content|referenceAnswer|markingScheme|explanation))\}/
 
 /** For each MathText that renders a question field, the class list of the element that wraps it. */
 function wrappers(src: string) {
@@ -23,7 +23,7 @@ function wrappers(src: string) {
   const out: { field: string; cls: string }[] = []
   lines.forEach((line, i) => {
     const m = line.match(FIELDS)
-    if (m) out.push({ field: m[1], cls: lines[i - 1] ?? '' })
+    if (m) out.push({ field: m[1] || m[2] || m[3], cls: lines[i - 1] ?? '' })
   })
   return out
 }
